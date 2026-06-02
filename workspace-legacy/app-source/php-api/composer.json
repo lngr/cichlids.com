@@ -1,0 +1,16 @@
+{
+    "require": {
+        "slim/slim": "^3.0",
+        "firebase/php-jwt": "^3.0",
+        "tuupola/slim-jwt-auth": "2.1.0",
+        "akrabat/rka-ip-address-middleware": "^0.4.0",
+        "ramsey/uuid": "^2.9",
+        "hashids/hashids": "^1.0",
+        "aws/aws-sdk-php": "^3.82"
+    },
+    "autoload": {
+	"psr-4": {
+            "Cichlids\\": "src/"
+        }
+    }
+}

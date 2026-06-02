@@ -1,0 +1,36 @@
+# Legacy-Datenrettung: MySQL 5.7 (passend zum Dump-Ursprung 5.7.27-log) + phpMyAdmin.
+# Ziel ist die originalgetreue Wiederherstellung der Daten (latin1-DB mit utf8mb4-Dump-Verbindung),
+# nicht der Produktivbetrieb.
+name: cichlids-legacy
+
+services:
+  db:
+    image: mysql:5.7
+    command:
+      - --max_allowed_packet=1G
+      - --innodb_buffer_pool_size=2G
+      - --skip-name-resolve
+    environment:
+      MYSQL_ROOT_PASSWORD: legacy
+      MYSQL_DATABASE: cichlids
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "127.0.0.1:3306:3306"
+    restart: unless-stopped
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: legacy
+      UPLOAD_LIMIT: 1G
+    ports:
+      - "127.0.0.1:8085:80"
+    depends_on:
+      - db
+    restart: unless-stopped
+
+volumes:
+  db_data:

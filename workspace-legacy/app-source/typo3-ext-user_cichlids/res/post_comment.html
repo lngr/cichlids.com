@@ -1,0 +1,24 @@
+
+<h2>Post a comment</h2>
+
+<form method="POST" action="###REQUEST_URL###">
+
+    <input type="hidden" name="user_cichlids_pi1[comment_action]" value="post">
+
+    <table border="0">
+	<tr><td>Your name:</td><td>###SHOWN_USER###</td></tr>
+	<tr><td valign="top">Your  rating:</td><td>
+	    <input type="radio" name="user_cichlids_pi1[rating]" value="5"><img src="/fileadmin/smile5.gif"> Excellent<br>
+	    <input type="radio" name="user_cichlids_pi1[rating]" value="4"><img src="/fileadmin/smile4.gif"> Good<br>
+	    <input type="radio" name="user_cichlids_pi1[rating]" value="3"><img src="/fileadmin/smile3.gif"> Moderate<br>
+	    <input type="radio" name="user_cichlids_pi1[rating]" value="2"><img src="/fileadmin/smile2.gif"> Poor<br>
+	    <input type="radio" name="user_cichlids_pi1[rating]" value="1"><img src="/fileadmin/smile1.gif"> Bad<br>
+	</td></tr>
+	<tr><td valign="top">Your comment:</td><td>
+	    <textarea rows="5" cols="40" name="user_cichlids_pi1[note]"></textarea>
+	</td></tr>
+	<tr><td>&nbsp;</td><td><input type="submit" value="Post comment!"></td></tr>
+    </table>
+    
+
+</form>

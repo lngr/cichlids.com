@@ -1,0 +1,14 @@
+Im Falle eines der üblichen Crashes:
+
+
+Zunächst restore_images.php aufrufen.
+	Dieses Skript testet, ob eine Datei in uploads/ zu finden ist.
+	Wenn nicht, wird probiert, sie von fileadmin/ wiederherzustellen.
+	Wenn das auch niht geht, existiert hoffentlich eine in data2
+
+dann restore_data3 auf windows
+
+chown -R www:www /data3/cichlids/typo3.uploads
+chown -R alex:www /data3/cichlids/typo3.fileadmin
+chown -R www:www /data3/cichlids/typo3.fileadmin/user_pics
+

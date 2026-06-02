@@ -1,0 +1,23 @@
+<p>
+You are about to suspend the following user for 24h:
+
+<p>
+<b>Name: </b> ###NAME###
+
+<p><b>Please consider twice before suspending a user.</b>
+
+<form method="POST" action="###REQUEST_URL###">
+    <input type="hidden" name="user_cichlids_pi1[confirmed]" value="yes">
+    <input type="hidden" name="user_cichlids_pi1[user]" value="###USERID###">
+
+    <br>
+
+    Why do you want to suspend the user?<br>
+    <input type="text" name="user_cichlids_pi1[reason]" size="50" maxlength="500">
+    <input type="submit" value="suspend user"><br>
+
+	<br><br>
+    If you do not want to suspend the user, <a href="javascript:history.back(-1)">click here</a>.
+
+</form>
+

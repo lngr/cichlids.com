@@ -1,0 +1,2364 @@
+
+plugin.user_cichlids_pi1 {
+	tankPid = 15
+	genusListPid = 17
+	genusPid = 31
+	speciesPid = 19
+	picturesPid = 21
+	commonNamesPid = 33
+	tankPicturesPid = 29
+	profilesPid = 20
+	commentsPid = 52
+	catPid = 16
+	usersPid = 4
+
+	cichlidPicturesView = 18
+	tankPicturesView = 13
+	profilesView = 17
+
+	editCichlidsPid = 47
+
+	pagebrowser_top = TEMPLATE
+	pagebrowser_top {
+		template = FILE
+		template.file = EXT:user_cichlids/res/pagebrowser.html
+
+		marks {
+			FIRST = IMAGE
+			FIRST {
+				file.import {
+					cObject = TEXT
+					cObject.value = EXT:user_cichlids/res/nav_first.gif
+				}
+				stdWrap.typolink {
+					parameter.data = TSFE:id
+                               		useCacheHash = 1
+                               		additionalParams.cObject = COA
+					additionalParams.cObject {
+						10 = TEXT
+						10.field = first
+						10.wrap = &user_cichlids_pi1[page]=|
+
+						20 = TEXT
+						20.data = GPVar : user_cichlids_pi1 | category
+						20.wrap = &user_cichlids_pi1[category]=|
+						20.if {
+							value =
+							equals.data = GPVar : user_cichlids_pi1 | category
+							negate = 1
+						}
+
+						30 = TEXT
+						30.data = GPVar : user_cichlids_pi1 | user
+						30.wrap = &user_cichlids_pi1[user]=|
+						30.if {
+							value =
+							equals.data = GPVar : user_cichlids_pi1 | user
+							negate = 1
+						}
+
+						40 = TEXT
+						40.data = GPVar : user_cichlids_pi1 | species
+						40.wrap = &user_cichlids_pi1[species]=|
+						40.if {
+							value =
+							equals.data = GPVar : user_cichlids_pi1 | species
+							negate = 1
+						}
+
+						50 = TEXT
+						50.data = GPVar : user_cichlids_pi1 | genus
+						50.wrap = &user_cichlids_pi1[genus]=|
+						50.if {
+							value =
+							equals.data = GPVar : user_cichlids_pi1 | genus
+							negate = 1
+						}
+
+					}
+				}
+				stdWrap.if {
+					value.field = current_page
+					isLessThan = 1
+				}
+			}	
+
+			PREV < plugin.user_cichlids_pi1.pagebrowser_top.marks.FIRST
+			PREV.file.import.cObject.value = EXT:user_cichlids/res/nav_prev.gif
+			PREV.stdWrap.typolink.additionalParams.cObject.10.field = prev
+			PREV.stdWrap.if >
+			PREV.stdWrap.if {
+				value.field = current_page
+				isLessThan.field = prev
+			}
+
+			NEXT < plugin.user_cichlids_pi1.pagebrowser_top.marks.FIRST
+			NEXT.file.import.cObject.value = EXT:user_cichlids/res/nav_next.gif
+			NEXT.stdWrap.typolink.additionalParams.cObject.10.field = next
+			NEXT.stdWrap.if >
+			NEXT.stdWrap.if {
+				value.field = current_page
+				isGreaterThan.field = next
+			}
+
+			LAST < plugin.user_cichlids_pi1.pagebrowser_top.marks.FIRST
+			LAST.file.import.cObject.value = EXT:user_cichlids/res/nav_last.gif
+			LAST.stdWrap.typolink.additionalParams.cObject.10.field = last
+			LAST.stdWrap.if >
+			LAST.stdWrap.if {
+				value.field = current_page
+				isGreaterThan.field = last
+			}
+
+			RESULTS = TEXT
+			RESULTS.field = results
+
+			CURRENT_PAGE = TEXT
+			CURRENT_PAGE.field = current_page
+
+			MAX_PAGE = TEXT
+			MAX_PAGE.field = last
+
+			ALLPAGES = USER
+			ALLPAGES {
+				userFunc = user_cichlids_pi1->make_page_browser
+				link_page = COA
+				link_page {
+					10 = TEXT
+					10 {
+						field = link_page
+						typolink {
+							parameter.data = TSFE:id
+                               				useCacheHash = 1
+                               				additionalParams.cObject = COA
+							additionalParams.cObject {
+								10 = TEXT
+								10.field = link_page
+								10.wrap = &user_cichlids_pi1[page]=|
+
+								20 = TEXT
+								20.data = GPVar : user_cichlids_pi1 | category
+								20.wrap = &user_cichlids_pi1[category]=|
+								20.if {
+									value =
+									equals.data = GPVar : user_cichlids_pi1 | category
+									negate = 1
+								}
+
+								30 = TEXT
+								30.data = GPVar : user_cichlids_pi1 | user
+								30.wrap = &user_cichlids_pi1[user]=|
+								30.if {
+									value =
+									equals.data = GPVar : user_cichlids_pi1 | user
+									negate = 1
+								}
+
+								40 = TEXT
+								40.data = GPVar : user_cichlids_pi1 | species
+								40.wrap = &user_cichlids_pi1[species]=|
+								40.if {
+									value =
+									equals.data = GPVar : user_cichlids_pi1 | species
+									negate = 1
+								}
+							}
+						}
+						wrap = <div class="pagebrowser_page_current"><a name="pagebrowser_page_current_mark">|</a></div>&nbsp;
+						if {
+							value.field = link_page
+							equals.field = current_page
+						}
+					}
+
+					20 < plugin.user_cichlids_pi1.pagebrowser_top.marks.ALLPAGES.link_page.10
+					20.wrap = <div class="pagebrowser_page">|</div>&nbsp;
+					20.if.negate = 1
+
+					10.typolink >
+				}
+			}
+		}
+	}
+	pagebrowser_bottom < plugin.user_cichlids_pi1.pagebrowser_top
+
+	genus = TEMPLATE
+	genus {
+		template = FILE
+		template.file = EXT:user_cichlids/res/genus.html
+		marks {
+			TITLE = TEXT
+			TITLE {
+				field = title
+				typolink {
+					parameter < plugin.user_cichlids_pi1.genusListPid
+                               		useCacheHash = 1
+					additionalParams.cObject = COA
+					additionalParams.cObject {
+						10 = TEXT
+						10.field = uid
+						10.wrap = &user_cichlids_pi1[genus]=|
+
+						#20 = TEXT
+						#20.data = GPVar : user_cichlids_pi1 | category
+						#20.wrap = &user_cichlids_pi1[category]=|
+					}
+				}
+			}
+		}
+	}
+
+	min_species = TEMPLATE
+	min_species {
+		template = FILE
+		template.file = EXT:user_cichlids/res/species.html
+		marks {
+
+			1 = LOAD_REGISTER
+			1.current_species_uid.field = uid
+
+
+			GENUS = RECORDS
+			GENUS {
+				source.field = genus
+				tables = user_cichlids_genus_names
+				conf.user_cichlids_genus_names = COA
+				conf.user_cichlids_genus_names {
+					10 = TEXT
+					10.field = title
+			#		10.typolink {
+			#			parameter < plugin.user_cichlids_pi1.genusListPid
+			#		}
+				}
+                        }
+			SPECIES = RECORDS
+			SPECIES {
+				source.field = species
+				tables = user_cichlids_species_names
+				conf.user_cichlids_species_names = COA
+				conf.user_cichlids_species_names {
+					10 = TEXT
+					10.field = title
+			#		10.typolink {
+			#			parameter < plugin.user_cichlids_pi1.profilesView
+			#			additionalParams.data = register : current_species_uid
+			#			additionalParams.wrap = &user_cichlids_pi1[species]=|
+			#		}
+				}
+                        }
+
+			NAME = COA
+			NAME {
+				10 < plugin.user_cichlids_pi1.min_species.marks.GENUS
+				15 = TEXT
+				15.value = &nbsp;
+				20 < plugin.user_cichlids_pi1.min_species.marks.SPECIES
+
+				stdWrap.typolink {
+					parameter < plugin.user_cichlids_pi1.profilesView
+					useCacheHash = 1
+					additionalParams.field = uid
+					additionalParams.wrap = &user_cichlids_pi1[species]=|
+				}
+			}
+		}
+	}
+
+
+	species < plugin.user_cichlids_pi1.min_species
+	species {
+		marks {
+			MOPRH = RECORDS
+			MOPRH {
+				source.field = morph
+				tables = user_cichlids_moprh_names
+				conf.user_cichlids_moprh_names = COA
+				conf.user_cichlids_morph_names {
+					10 = TEXT
+					10.field = title
+				}
+                        }
+
+			IMAGES = CONTENT
+			IMAGES {
+				table = user_cichlids_pictures
+				select {
+					pidInList < plugin.user_cichlids_pi1.picturesPid
+					leftjoin = user_cichlids_species_pictures_mm ON user_cichlids_pictures.uid = user_cichlids_species_pictures_mm.uid_local
+					where = 1=1
+					andWhere.field = uid
+					andWhere.wrap = user_cichlids_species_pictures_mm.uid_foreign = |
+					max = 6
+				}
+				# geht noch nich, hier picture zu referenzieren, da es erst weiter unten definiert wird
+				renderObj = IMAGE
+				renderObj {
+ 					file {
+						import = uploads/tx_usercichlids/
+						import.field = image
+						maxW = 130
+						maxH = 88
+						
+					}
+					stdWrap.typolink {
+						parameter < plugin.user_cichlids_pi1.cichlidPicturesView
+                        	       		additionalParams.field = uid
+                        	       		additionalParams.wrap = &user_cichlids_pi1[picture]=|
+                        	       		useCacheHash = 1
+					}
+				}
+			}
+			IMAGE < plugin.user_cichlids_pi1.species.marks.IMAGES
+			IMAGE {
+				select.max = 1
+				renderObj {
+					file.maxW = 200
+					file.maxH = 135
+				}
+			}
+
+			COMMON_NAMES = CONTENT
+			COMMON_NAMES {
+				table = user_cichlids_common_name
+				select {
+					pidInList < plugin.user_cichlids_pi1.commonNamesPid
+					leftjoin = user_cichlids_species_common_mm ON user_cichlids_common_name.uid = user_cichlids_species_common_mm.uid_foreign
+					where = 1=1
+					andWhere.field = uid
+					andWhere.wrap = user_cichlids_species_common_mm.uid_local = |
+				}
+				# geht noch nich, hier picture zu referenzieren, da es erst weiter unten definiert wird
+				renderObj = TEXT
+				renderObj {
+					field = title
+				}
+			}
+
+			MORPHS = TEXT
+			MORPHS.field = morph_text
+
+
+			DESCR = TEXT
+			DESCR {
+				field = description
+                                parseFunc < tt_content.text.20.parseFunc
+			}
+
+			LINKS = TEXT
+			LINKS.value = links
+
+			CATEGORY = RECORDS
+			CATEGORY {
+				source.field = category
+				tables = user_cichlids_category
+				conf.user_cichlids_category = TEXT
+				conf.user_cichlids_category.field = title
+                        }
+
+			ORIGIN = TEXT
+			ORIGIN.field = origin
+
+			HABITAT = TEXT
+			HABITAT.field = habitat
+
+			WATER = COA
+			WATER {
+				20 = CASE
+				20 {
+					key.field = category
+
+					1 = TEXT
+					1.value = Lake Tanganyika water recommendations
+
+					2 = TEXT
+					2.value = Lake Malawi water recommendations
+				}
+
+			}
+
+			MAXSIZE = TEXT
+			MAXSIZE.field = maxsize
+
+			DIET = TEXT
+			DIET.value = 
+			BREEDING = TEXT
+			BREEDING.value = 
+			AGGRO = TEXT
+			AGGRO.value = 
+			INNERAGGRO = TEXT
+			INNERAGGRO.value = 
+
+			LINKS = TEXT
+			LINKS {
+				field = link_texts
+				split {
+					token.char = 10
+					cObjNum = 1
+					
+					1 = COA
+					1 {
+						5 = LOAD_REGISTER
+						5.current_species_links.field = links
+
+						10 = TEXT
+						10 {
+							current = 1
+							typolink.parameter {
+								data = register : current_species_links
+                                                        	listNum.stdWrap.cObject = TEXT
+                                                        	listNum.stdWrap.cObject.data = register : SPLIT_COUNT
+								listNum.splitChar = 10
+								#value = http://www.narf.de
+							}
+							required = 1
+							wrap = <li class="profile_link">|</li>
+						}
+					}
+				}
+				required = 1
+				wrap = <div class="profile_links"><div class="profile_links_header">External Links:</div><ul class="profile_links_list">|</ul></div>
+			}
+
+
+		
+			
+#                                2 = RECORDS
+#                                2 {
+#                                        source.field = fish
+#                                        tables = user_cichlids_species
+#                                        conf.user_cichlids_species = COA
+#                                        conf.user_cichlids_species {
+#                                                10 < plugin.user_cichlids_pi1.min_species
+#                                                10.template.file = EXT:user_cichlids/res/tank_species.html
+#
+#                                                15 = TEXT
+#                                                15.value = (
+#
+#                                                20 = TEXT
+#                                                20 {
+#                                                        data = register : fish_count
+#                                                        listNum.stdWrap.cObject = COA
+#                                                        listNum.stdWrap.cObject {
+#                                                                1 = TEXT
+#                                                                1.data = cObj:parentRecordNumber
+#                                                                2 = TEXT
+#                                                                2.value = -1
+#                                                        }
+#                                                        listNum.splitChar = |
+#                                                }
+#
+#                                                30 = TEXT
+#                                                30.value = )
+#
+#                                                60 = TEXT
+#                                                60.value = <br>
+#                                        }
+#                                }
+#                        }
+#
+
+
+		}
+	}
+
+	category = TEMPLATE
+	category {
+		template = FILE
+		template.file = EXT:user_cichlids/res/category.html
+		marks {
+			TITLE = TEXT
+			TITLE {
+				field = title
+				wrap = |
+				typolink {
+					parameter.data = TSFE:id
+                               		additionalParams.field = uid
+                               		additionalParams.wrap = &user_cichlids_pi1[category]=|
+                               		useCacheHash = 1
+				}
+			}
+			IMAGE = IMAGE
+			IMAGE {
+ 				file {
+					import = uploads/tx_usercichlids/
+					import.field = image
+					maxW = 120
+					maxH = 90
+				}
+				stdWrap.typolink {
+					parameter.data = TSFE:id
+                               		additionalParams.field = uid
+                               		additionalParams.wrap = &user_cichlids_pi1[category]=|
+                               		useCacheHash = 1
+				}
+				stdWrap.if.isTrue.field = image
+			}
+		}
+	}
+	owner = TEMPLATE
+	owner {
+		template = FILE
+		template.file = EXT:user_cichlids/res/owner.html
+		marks {
+			NAME = COA
+			NAME {
+				10 = TEXT
+				10.field = first_name
+
+				15 = TEXT
+				15.value = &nbsp;
+
+				20 = TEXT
+				20.field = last_name
+			}
+			
+			CITY = TEXT
+			CITY.field = city
+
+			COUNTRY = TEXT
+			COUNTRY.field = static_info_country
+
+			IN_THE_HOBBY = TEXT
+			IN_THE_HOBBY.field = company
+			IN_THE_HOBBY.wrap = In the hobby since&nbsp;|.
+			IN_THE_HOBBY.required = 1
+			IN_THE_HOBBY.removeBadHTML = 1
+		}
+	}
+
+	comment = TEMPLATE
+	comment {
+		template = FILE
+		template.file = EXT:user_cichlids/res/comment.html
+		marks {
+			TEXT = TEXT
+			TEXT {
+				field = note
+				removeBadHTML = 1
+				#parseFunc < lib.parseFunc
+				#parseFunc {
+				#	allowTags = b,i,u,a,img,br,div,center,pre,sub,sup,li,ul,ol,strike
+				#	allowTags = a
+				#}
+				stripHtml = 1
+				br = 1
+			}
+
+			DELETE = TEXT
+			DELETE.value =
+
+			IP = TEXT
+			IP.value = 
+
+			DATE = TEXT
+			DATE.field = crdate
+			DATE.date = Y/m/d - H:i
+			DATE.wrap = &raquo; posted&nbsp;| 
+
+			NAME = COA
+			NAME {
+
+				10 = TEXT
+				10.field = poster
+
+				20 = RECORDS
+				20 {
+					source.field = fe_user
+					tables = fe_users
+					conf.fe_users < plugin.user_cichlids_pi1.owner
+					conf.fe_users.template.file = EXT:user_cichlids/res/comment_owner.html
+					conf.fe_users.marks.NAME.stdWrap {
+						typolink {
+							parameter < plugin.user_cichlids_pi1.cichlidPicturesView
+                               				additionalParams.field = uid
+                               				additionalParams.wrap = &user_cichlids_pi1[user]=|
+                               				useCacheHash = 1
+						}
+					}
+				}
+			}
+
+			RATING = CASE
+			RATING {
+				key.field = rating
+				1 = TEXT
+				1.field = rating
+				1.wrap = <img src="/fileadmin/smile|.gif" width="75" height="15" align="right">
+
+				2 = TEXT
+				2.field = rating
+				2.wrap = <img src="/fileadmin/smile|.gif" width="75" height="15" align="right">
+
+				3 = TEXT
+				3.field = rating
+				3.wrap = <img src="/fileadmin/smile|.gif" width="75" height="15" align="right">
+
+				4 = TEXT
+				4.field = rating
+				4.wrap = <img src="/fileadmin/smile|.gif" width="75" height="15" align="right">
+
+				5 = TEXT
+				5.field = rating
+				5.wrap = <img src="/fileadmin/smile|.gif" width="75" height="15" align="right">
+			}
+		}
+	}
+
+	comments = TEMPLATE
+	comments {
+		template = FILE
+		template.file = EXT:user_cichlids/res/comments.html
+		marks {
+			COMMENTS = USER_INT
+			# userFunc wird weiter unten gesetzt
+			COMMENTS.comment < plugin.user_cichlids_pi1.comment
+
+			# nicht cachen!
+			POST_COMMENT = USER_INT
+			POST_COMMENT {
+				commentsPid < plugin.user_cichlids_pi1.commentsPid
+				userFunc = user_cichlids_pi1->post_comment
+
+				posted < plugin.user_cichlids_pi1.comment
+
+				input = TEMPLATE
+				input {
+					#template = FILE
+					#template.file = EXT:user_cichlids/res/post_comment.html
+
+					template = CASE
+					template {
+						key.data = TSFE : loginUser
+						1 = FILE
+						1.file = EXT:user_cichlids/res/post_comment.html
+
+						default = FILE
+						default.file = EXT:user_cichlids/res/post_comment_nologin.html
+					}
+
+					marks {
+
+						REQUEST_URL = TEXT
+						REQUEST_URL.data = getIndpEnv : TYPO3_REQUEST_URL
+
+						SHOWN_USER = CASE
+						SHOWN_USER {
+							key.data = TSFE : loginUser
+
+							# muss USER sein, mit USER_INT geht's nich
+							1 = USER
+							1.userFunc = user_cichlids_pi1->render_user
+							1.renderObj < plugin.user_cichlids_pi1.owner
+							1.renderObj.template.file = EXT:user_cichlids/res/post_comment_owner.html
+
+						#	default = TEXT
+						#	default.value = <input type="text" name="user_cichlids_pi1[poster]" size="40" maxlen="40">
+							default = TEXT
+							default.value = Must be logged in to post comments!
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+
+	picture = TEMPLATE
+	picture {
+		template = FILE
+		template.file = EXT:user_cichlids/res/picture.html
+		marks {
+			IMAGE = IMAGE
+			IMAGE {
+ 				file {
+					import = uploads/tx_usercichlids/
+					import.field = image
+					maxW = 430
+			#		params = -draw 'text +0,+80 "Some Text"' -fill white -pointsize 12 -background black
+				}
+				stdWrap.typolink {
+					parameter.cObject = CASE
+					parameter.cObject {
+						key.field = pid
+						
+						# tanks
+						29 = TEXT
+						29.value = 13
+
+						# fish
+						21 = TEXT
+						21.value = 18
+
+						# Deco
+						63 = TEXT
+						63.value = 66
+
+						# Tec
+						62 = TEXT
+						62.value = 66
+						
+					}
+                               		useCacheHash = 1
+                               		additionalParams.cObject = COA
+					additionalParams.cObject {
+				#		10 = TEXT
+				#		10.data = GPVar : user_cichlids_pi1 | tank
+				#		10.wrap = &user_cichlids_pi1[tank]=|
+
+						20 = TEXT
+						20.field = uid
+						20.wrap = &user_cichlids_pi1[picture]=|
+					}
+				}
+			}
+			TITLE = TEXT
+			TITLE {
+				field = title
+				ifEmpty = (Untitled)
+				#editIcons = user_cichlids_pictures : title, species
+				removeBadHTML = 1
+			}
+
+			VIEWS = TEXT
+			VIEWS.field = views
+
+			LINK_URL = TEXT
+			LINK_URL {
+				typolink {
+                                        returnLast = url
+					parameter.cObject = CASE
+					parameter.cObject {
+						key.field = pid
+						
+						# tanks
+						29 = TEXT
+						29.value = 13
+
+						# fish
+						21 = TEXT
+						21.value = 18
+
+						## deco und tec
+						#63 = TEXT
+						#63.value = 13
+						#62 = TEXT
+						#62.value = 13
+					}
+                               		additionalParams.field = uid
+                               		additionalParams.wrap = &user_cichlids_pi1[picture]=|
+                               		useCacheHash = 1
+				}
+			}
+
+
+			DESCR = TEXT
+			DESCR.field = description
+			DESCR.wrap = <div style="margin-top: 15px;">|</div>
+			DESCR.removeBadHTML = 1
+
+			DATE = TEXT
+			DATE.field = tstamp
+			DATE.date = M jS, Y
+
+			OWNER = RECORDS
+			OWNER {
+				source.field = fe_user
+				tables = fe_users
+				conf.fe_users < plugin.user_cichlids_pi1.owner
+				conf.fe_users.template.file = EXT:user_cichlids/res/picture_owner.html
+				conf.fe_users.marks {
+					NAME.stdWrap {
+						wrap = posted by&nbsp;|<br>
+						typolink {
+							parameter < plugin.user_cichlids_pi1.cichlidPicturesView
+                               				additionalParams.field = uid
+                               				additionalParams.wrap = &user_cichlids_pi1[user]=|
+                               				useCacheHash = 1
+						}
+					}
+
+					PICTURES_BY_OWNER {
+						value = (find all pictures of this user)
+						wrap = |<br>
+						if {
+							value = 0
+							equals.field = uid
+							negate = 1
+						}
+						typolink {
+							parameter < plugin.user_cichlids_pi1.cichlidPicturesView
+                               				additionalParams.field = uid
+                               				additionalParams.wrap = &user_cichlids_pi1[user]=|
+                               				useCacheHash = 1
+						}
+					}
+					EDIT_THIS = USER_INT
+					EDIT_THIS {
+						userFunc = user_cichlids_pi1->maybe_edit_this
+						cObject = TEXT
+						cObject {
+							value = (this is your picture, you may edit it)
+							wrap = |<br>
+							if {
+								value.data = register : frontend_user_id
+								equals.field = uid
+							}
+							typolink {
+								parameter < plugin.user_cichlids_pi1.editCichlidsPid
+								additionalParams.data = register : current_picture_uid
+								additionalParams.wrap = &user_cichlids_pi2[pictureUid]= 
+							}
+						}
+					}
+				}
+			}
+
+
+			SPECIES = CONTENT
+			SPECIES {
+				table = user_cichlids_species
+				select {
+					pidInList < plugin.user_cichlids_pi1.profilesPid
+					leftjoin = user_cichlids_species_pictures_mm ON user_cichlids_species.uid = user_cichlids_species_pictures_mm.uid_foreign
+					where = 1=1
+					andWhere.field = uid
+					andWhere.wrap = user_cichlids_species_pictures_mm.uid_local = |
+				}
+				renderObj < plugin.user_cichlids_pi1.min_species
+				renderObj.template.file = EXT:user_cichlids/res/picture_species.html
+				renderObj.NAME {
+					wrap = Picture shows:
+					required = 1
+				}
+			}
+
+			EDIT_AREA = TEXT
+			EDIT_AREA.value =
+
+			COMMENTS < plugin.user_cichlids_pi1.comments
+			COMMENTS.marks.COMMENTS {
+				commentsPid < plugin.user_cichlids_pi1.commentsPid
+				userFunc = user_cichlids_pi1->list_picture_comments
+			}
+			COMMENTS.marks.POST_COMMENT {
+				commentsType = 1
+			}
+		}
+	}
+	
+	tank = TEMPLATE
+	tank {
+		template = FILE
+		template.file = EXT:user_cichlids/res/tank.html
+		marks {
+			TITLE = TEXT
+			TITLE {
+				field = title
+				removeBadHTML = 1
+			}
+
+			LINK_URL = TEXT
+			LINK_URL {
+				typolink {
+                                        returnLast = url
+                                        parameter = 61
+                               		additionalParams.field = uid
+                               		additionalParams.wrap = &user_cichlids_pi1[tank]=|
+                               		useCacheHash = 1
+				}
+			}
+
+
+			DATE = TEXT
+			DATE.field = tstamp
+			DATE.date = M jS, Y
+
+			WIDTH = TEXT
+			WIDTH.field = width
+			WIDTH.removeBadHTML = 1
+
+			HEIGHT = TEXT
+			HEIGHT.field = height
+			HEIGHT.removeBadHTML = 1
+
+			DEPTH = TEXT
+			DEPTH.field = depth
+			DEPTH.removeBadHTML = 1
+
+			SIZE = TEXT
+			SIZE.field = size
+			SIZE.removeBadHTML = 1
+
+			WIDTH_M = TEXT
+			WIDTH_M.field = width_m
+			WIDTH_M.removeBadHTML = 1
+
+			HEIGHT_M = TEXT
+			HEIGHT_M.field = height_m
+			HEIGHT_M.removeBadHTML = 1
+
+			DEPTH_M = TEXT
+			DEPTH_M.field = depth_m
+			DEPTH_M.removeBadHTML = 1
+
+			SIZE_M = TEXT
+			SIZE_M.field = size_m
+			SIZE_M.removeBadHTML = 1
+
+			TANK_RATING = TEXT
+			TANK_RATING.value =
+			TANK_RATING.removeBadHTML = 1
+
+			TANK_IMAGE = RECORDS
+			TANK_IMAGE {
+				source.field = image
+				tables = user_cichlids_pictures
+				conf.user_cichlids_pictures < plugin.user_cichlids_pi1.picture
+				conf.user_cichlids_pictures.template.file = EXT:user_cichlids/res/tank_picture.html
+                        }
+
+			TANK_MORE_IMAGES = RECORDS
+			TANK_MORE_IMAGES {
+				source.field = tank_images
+				tables = user_cichlids_pictures
+				conf.user_cichlids_pictures < plugin.user_cichlids_pi1.picture
+				conf.user_cichlids_pictures.template.file = EXT:user_cichlids/res/tank_picture.html
+				conf.user_cichlids_pictures.marks.IMAGE.file.maxW = 100
+                        }
+
+			DECO_IMAGES = RECORDS
+			DECO_IMAGES {
+				source.field = deco_images
+				tables = user_cichlids_pictures
+				conf.user_cichlids_pictures < plugin.user_cichlids_pi1.picture
+				conf.user_cichlids_pictures.template.file = EXT:user_cichlids/res/tank_picture.html
+				conf.user_cichlids_pictures.marks.IMAGE.file.maxW = 100
+                        }
+
+			TEC_IMAGES = RECORDS
+			TEC_IMAGES {
+				source.field = tec_images
+				tables = user_cichlids_pictures
+				conf.user_cichlids_pictures < plugin.user_cichlids_pi1.picture
+				conf.user_cichlids_pictures.template.file = EXT:user_cichlids/res/tank_picture.html
+				conf.user_cichlids_pictures.marks.IMAGE.file.maxW = 100
+                        }
+
+			FISH_IMAGES = RECORDS
+			FISH_IMAGES {
+				source.field = fish_images
+				tables = user_cichlids_pictures
+				conf.user_cichlids_pictures < plugin.user_cichlids_pi1.picture
+				conf.user_cichlids_pictures.template.file = EXT:user_cichlids/res/tank_picture.html
+				conf.user_cichlids_pictures.marks.IMAGE.file.width = 120
+				conf.user_cichlids_pictures.marks.IMAGE.file.height = 80
+                        }
+
+			OWNER = RECORDS
+			OWNER {
+				source.field = fe_user
+				tables = fe_users
+				conf.fe_users < plugin.user_cichlids_pi1.owner
+				conf.fe_users.template.file = EXT:user_cichlids/res/tank_owner.html
+			}
+
+
+			DESCRIPTION = TEXT
+			DESCRIPTION {
+				field = description
+				removeBadHTML = 1
+				br = 1
+			}
+
+			GRAVEL = TEXT
+			GRAVEL.field = gravel
+			GRAVEL.removeBadHTML = 1
+			GRAVEL.br = 1
+
+			PLANTS = TEXT
+			PLANTS.field = plants
+			PLANTS.removeBadHTML = 1
+			PLANTS.br = 1
+
+			MORE_DECO = TEXT
+			MORE_DECO.field = more_deco
+			MORE_DECO.removeBadHTML = 1
+			MORE_DECO.br = 1
+
+			LIGHT = TEXT
+			LIGHT.field = light
+			LIGHT.br = 1
+			LIGHT.removeBadHTML = 1
+
+			LIGHT_DURATION = TEXT
+			LIGHT_DURATION.field = light_duration
+			LIGHT_DURATION.removeBadHTML = 1
+			LIGHT_DURATION.br = 1
+
+			FILTRATION = TEXT
+			FILTRATION.field = filtration
+			FILTRATION.removeBadHTML = 1
+			FILTRATION.br = 1
+
+			MORE_TEC = TEXT
+			MORE_TEC.field = more_tec
+			MORE_TEC.removeBadHTML = 1
+			MORE_TEC.br = 1
+
+			WATER_PH = TEXT
+			WATER_PH.field = water_ph
+			WATER_PH.removeBadHTML = 1
+
+			WATER_KH = TEXT
+			WATER_KH.field = water_kh
+			WATER_KH.removeBadHTML = 1
+
+			WATER_GH = TEXT
+			WATER_GH.field = water_gh
+			WATER_GH.removeBadHTML = 1
+
+			WATER_NO2 = TEXT
+			WATER_NO2.field = water_no2
+			WATER_NO2.removeBadHTML = 1
+
+			WATER_NO3 = TEXT
+			WATER_NO3.field = watrer_no3
+			WATER_NO3.removeBadHTML = 1
+
+			FOOD = TEXT
+			FOOD.field = food
+			FOOD.removeBadHTML = 1
+			FOOD.br = 1
+
+			FISH = COA
+			FISH {
+				1 = LOAD_REGISTER
+				1.fish_count.field = fish_count
+
+				2 = RECORDS
+				2 {
+					source.field = fish
+					tables = user_cichlids_species
+					conf.user_cichlids_species = COA
+					conf.user_cichlids_species {
+						10 < plugin.user_cichlids_pi1.min_species
+	                			10.template.file = EXT:user_cichlids/res/tank_species.html
+
+						15 = TEXT
+						15.value = (
+
+						20 = TEXT
+						20 {
+							data = register : fish_count
+							removeBadHTML = 1
+							listNum.stdWrap.cObject = COA
+							listNum.stdWrap.cObject {
+								1 = TEXT
+								1.data = cObj:parentRecordNumber
+								2 = TEXT
+								2.value = -1
+							}
+							listNum.splitChar = |
+						}
+
+						30 = TEXT
+						30.value = )
+
+						60 = TEXT
+						60.value = <br>
+					}
+				}
+			}
+
+			CATEGORY = RECORDS
+			CATEGORY {
+				source.field = category
+				tables = user_cichlids_category
+				conf.user_cichlids_category = TEXT
+				conf.user_cichlids_category.field = title
+                        }
+
+			COMMENTS < plugin.user_cichlids_pi1.comments
+			COMMENTS.marks.COMMENTS {
+				commentsPid < plugin.user_cichlids_pi1.commentsPid
+				userFunc = user_cichlids_pi1->list_tank_comments
+			}
+			COMMENTS.marks.POST_COMMENT {
+				commentsType = 2
+			}
+
+
+
+		}
+	}
+	
+	list_categories = TEMPLATE
+	list_categories {
+		template = FILE
+		template.file = EXT:user_cichlids/res/list_categories.html
+		subparts {
+			LIST_CATS = USER
+			LIST_CATS {
+				userFunc = user_cichlids_pi1->list_categories
+				catPid < plugin.user_cichlids_pi1.catPid
+				category < plugin.user_cichlids_pi1.category
+				category.template.file = EXT:user_cichlids/res/list_category.html
+			}
+		}
+	}
+
+	list_users = TEMPLATE
+	list_users {
+		template = FILE
+		template.file = EXT:user_cichlids/res/list_users.html
+		subparts {
+			LIST_USERS = USER_INT
+			LIST_USERS {
+				userFunc = user_cichlids_pi1->list_users
+				usersPid < plugin.user_cichlids_pi1.usersPid
+
+				pagebrowser_top < plugin.user_cichlids_pi1.pagebrowser_top
+				pagebrowser_bottom < plugin.user_cichlids_pi1.pagebrowser_bottom
+
+				user < plugin.user_cichlids_pi1.owner
+				user.template.file = EXT:user_cichlids/res/list_user.html
+				user.marks.NAME.stdWrap.typolink {
+					parameter.data = TSFE : id
+					additionalParams.field = uid
+					additionalParams.wrap = &user_cichlids_pi1[user]=
+                               		useCacheHash = 1
+				}
+				user.marks.NUMBER_OF_PICS = TEXT
+				user.marks.NUMBER_OF_PICS {
+					field = number_of_pics
+				}
+			}
+		}
+	}
+
+	list_tanks = TEMPLATE
+	list_tanks {
+		template = FILE
+		template.file = EXT:res/list_tanks.html
+		subparts {
+			LIST_TANKS = USER_INT
+			LIST_TANKS {
+				userFunc = user_cichlids_pi1->list_tanks
+				tankPid < plugin.user_cichlids_pi1.tankPid
+
+				max = 6
+				pagebrowser_top < plugin.user_cichlids_pi1.pagebrowser_top
+				pagebrowser_bottom < plugin.user_cichlids_pi1.pagebrowser_bottom
+
+
+				tank < plugin.user_cichlids_pi1.tank
+				tank {
+					marks.TANK_IMAGE.conf.user_cichlids_pictures.marks.IMAGE {
+						file.maxW = 200
+						file.maxH = 135
+						stdWrap.typolink >
+					}
+					marks.OWNER.conf.fe_users.template.file = EXT:user_cichlids/res/tank_list_owner.html
+				}
+			}
+		}
+	}
+
+	list_pictures = TEMPLATE
+	list_pictures {
+		template = FILE
+		template.file = EXT:res/list_pictures.html
+		subparts {
+			LIST_PICTURES = USER_INT
+			LIST_PICTURES {
+				userFunc = user_cichlids_pi1->list_pictures
+				picturesPid < plugin.user_cichlids_pi1.picturesPid
+				picture < plugin.user_cichlids_pi1.picture
+				picture.marks.OWNER.conf.fe_users.marks.NAME.stdWrap.typolink >
+				picture.marks.OWNER.conf.fe_users.marks.NAME.stdWrap.wrap >
+
+				max = 12
+				clear = 3
+				pagebrowser_top < plugin.user_cichlids_pi1.pagebrowser_top
+				pagebrowser_bottom < plugin.user_cichlids_pi1.pagebrowser_bottom
+
+				picture.marks.IMAGE.stdWrap.typolink >
+			}
+		}
+	}
+
+	list_genus = TEMPLATE
+	list_genus {
+		template = FILE
+		template.file = EXT:user_cichlids/res/list_genus.html
+		subparts {
+			LIST_GENUS = USER_INT
+			LIST_GENUS {
+				userFunc = user_cichlids_pi1->list_genus
+				max = 10
+				genusPid < plugin.user_cichlids_pi1.genusPid
+				genus < plugin.user_cichlids_pi1.genus
+
+				pagebrowser_top < plugin.user_cichlids_pi1.pagebrowser_top
+				pagebrowser_bottom < plugin.user_cichlids_pi1.pagebrowser_bottom
+
+
+				genus {
+					template.file = EXT:user_cichlids/res/profiles_list_genus_genus.html
+
+					marks.SPECIES = CONTENT
+					marks.SPECIES {
+						table = user_cichlids_species
+						select {
+							selectFields = user_cichlids_species.*, user_cichlids_species_names.title AS species_title
+							pidInList < plugin.user_cichlids_pi1.profilesPid
+							leftjoin = user_cichlids_species_names ON user_cichlids_species_names.uid = user_cichlids_species.species
+							#where 1 = 1
+							andWhere {
+								field = species_uid
+								wrap = user_cichlids_species.uid IN (|)
+							}
+                        			}
+						renderObj < plugin.user_cichlids_pi1.min_species
+						renderObj {
+							template.file = EXT:user_cichlids/res/profiles_list_genus_species.html
+							marks {
+								GENUS >
+								NAME >
+								# IMAGES < plugin.user_cichlids_pi1.species.marks.IMAGES
+								# IMAGES {
+								# 	select.max = 1
+								# 	renderObj {
+								# 		file.maxW = 120
+								# 		file.maxH = 90
+								# 		file.params = -bordercolor black -border 50 -gravity center -crop 120x90+0+0 +repage
+			
+								# 		stdWrap >
+								# 		stdWrap {
+								# 			required = 1
+								# 			wrap = <div class="genus_list_species_image">|</div>
+
+								# 			typolink {
+								# 				parameter < plugin.user_cichlids_pi1.profilesView
+                               					# 				additionalParams.data = register : current_species_uid
+								# 				additionalParams.wrap = &user_cichlids_pi1[species]=|
+                               					# 				useCacheHash = 1
+								# 			}
+								# 		}
+								# 	}
+								# }
+								SPECIES.conf.user_cichlids_species_names.10.typolink {
+									parameter < plugin.user_cichlids_pi1.profilesView
+                               						additionalParams.data = register : current_species_uid
+									additionalParams.wrap = &user_cichlids_pi1[species]=|
+                               						useCacheHash = 1
+								}
+
+			#		10.typolink {
+			#			parameter < plugin.user_cichlids_pi1.profilesView
+			#			additionalParams.data = register : current_species_uid
+			#			additionalParams.wrap = &user_cichlids_pi1[species]=|
+			#		}
+							}
+						}
+						#renderObj = TEXT
+						#renderObj.field = uid
+						#renderObj.wrap = ..
+					}
+				}
+
+			}
+		}
+	}
+
+	list_profiles = TEMPLATE
+	list_profiles {
+		template = FILE
+		template.file = EXT:user_cichlids/res/list_profiles.html
+		subparts {
+			LIST_PROFILES = USER_INT
+			LIST_PROFILES {
+				userFunc = user_cichlids_pi1->list_profiles
+				profilesPid < plugin.user_cichlids_pi1.profilesPid
+				picturesPid < plugin.user_cichlids_pi1.picturesPid
+				species < plugin.user_cichlids_pi1.min_species
+				pagebrowser_top < plugin.user_cichlids_pi1.pagebrowser_top
+				pagebrowser_bottom < plugin.user_cichlids_pi1.pagebrowser_bottom
+
+				max = 50
+				count_pictures = 0
+			}
+		}
+	}
+
+
+
+	tanks {
+		tankPid < plugin.user_cichlids_pi1.tankPid
+
+		# Single View, einfach übernehmen
+		tank < plugin.user_cichlids_pi1.tank
+		tank.marks.TITLE.typolink >
+
+		# Bilder ansicht
+		picturesPid < plugin.user_cichlids_pi1.picturesPid
+		picture < plugin.user_cichlids_pi1.picture
+	
+		list_tanks < plugin.user_cichlids_pi1.list_tanks
+		list_tanks {
+			template.file = EXT:user_cichlids/res/tank_list_tanks.html
+			subparts.LIST_TANKS.tank.template.file = EXT:user_cichlids/res/tank_list_tank.html
+		}
+	}
+
+	pictures {
+		picturesPid < plugin.user_cichlids_pi1.picturesPid
+		picture < plugin.user_cichlids_pi1.picture
+		picture {
+			marks.TITLE.typolink >
+			marks.IMAGE {
+				file.maxW = 430
+				stdWrap >
+				stdWrap {
+    					typolink {
+        					parameter.cObject = IMG_RESOURCE
+        					parameter.cObject {
+							file {
+								import = uploads/tx_usercichlids/
+								import.field = image
+					#			params = -draw 'text +3,+10 "Posted at cichlids.com"' -fill white -pointsize 12 -background white
+							}
+        					}
+					}
+    				}
+			}
+		}
+
+		# PageBrowser für die Single-View
+		pagebrowser_top < plugin.user_cichlids_pi1.pagebrowser_top
+		pagebrowser_top.template.file = EXT:user_cichlids/res/pagebrowser_pic.html
+		pagebrowser_top.marks {
+			PREV.stdWrap.typolink.additionalParams.cObject.10.wrap = &user_cichlids_pi1[picture]=
+			PREV.stdWrap.if >
+			PREV.stdWrap.if {
+				value.field = prev
+				equals.field = current_page
+				negate = 1
+			}
+			NEXT.stdWrap.typolink.additionalParams.cObject.10.wrap = &user_cichlids_pi1[picture]=
+			NEXT.stdWrap.if >
+			NEXT.stdWrap.if {
+				value.field = next
+				equals.field = current_page
+				negate = 1
+			}
+
+		}
+		pagebrowser_bottom < plugin.user_cichlids_pi1.pictures.pagebrowser_top
+
+		list_categories < plugin.user_cichlids_pi1.list_categories
+		list_users < plugin.user_cichlids_pi1.list_users
+		list_users.subparts.LIST_USERS.picturesPid < plugin.user_cichlids_pi1.picturesPid
+
+		list_profiles < plugin.user_cichlids_pi1.list_profiles
+		list_profiles {
+			template.file = EXT:user_cichlids/res/profiles_list_profiles.html
+			subparts.LIST_PROFILES.count_pictures = 1
+			subparts.LIST_PROFILES.species {
+				template.file = EXT:user_cichlids/res/pictures_list_species.html
+				marks {
+					NUMBER_OF_PICS = TEXT
+					NUMBER_OF_PICS.field = number_of_pics
+
+					NAME >
+					NAME = COA
+					NAME {
+						10 = TEXT
+						10.field = genus_title
+						10.wrap = |&nbsp;
+						10.required = 1
+
+						20 = TEXT
+						20.field = species_title
+
+						99 = TEXT
+						99.field = anon_title
+
+						stdWrap >
+						stdWrap.typolink.parameter.data = TSFE : id
+						stdWrap.typolink.additionalParams.field = uid
+						stdWrap.typolink.additionalParams.wrap = &user_cichlids_pi1[species]=|
+						stdWrap.typolink.useCacheHash = 1
+					}
+					IMAGES >
+				}
+			}
+		}
+
+		list_pictures < plugin.user_cichlids_pi1.list_pictures
+		list_pictures {
+			template.file = EXT:user_cichlids/res/pictures_list_pictures.html
+			subparts.LIST_PICTURES.picture {
+				template.file = EXT:user_cichlids/res/pictures_list_picture.html
+				marks.IMAGE {
+					#file.maxW = 220
+					#file.maxH = 165
+					#file.params = -bordercolor black -border 200 -gravity center -crop 220x165+0+0 +repage
+					file.maxW = 167
+					file.maxH = 123
+					file.params = -bordercolor black -border 200 -gravity center -crop 167x123+0+0 +repage
+					# das folgende erst mit imagemagick 6.3
+					# file.params = -extent 225x170 -gravity center -background blue
+					# -extend 225x170 -background Red -gravity center
+					#			params = -draw 'text +3,+10 "Posted at cichlids.com"' -fill white -pointsize 12 -background white
+					stdWrap.typolink.additionalParams.wrap = &user_cichlids_pi1[picture]=|
+				}
+				marks.TITLE.crop = 20 | ...
+			}
+		}
+	}
+
+	profiles {
+		profilesPid < plugin.user_cichlids_pi1.profilesPid
+
+		# Single View
+		species < plugin.user_cichlids_pi1.species
+		species.marks {
+
+			IMAGE {
+				renderObj.stdWrap {
+					wrap = <div class="profile_single_image">|<div class="image_text">Click picture to enlarge</div></div>
+					required = 1
+				}
+			}
+
+			IMAGES {
+				#select.max = 50
+				#renderObj.file.maxW = 145
+				# renderObj.file.maxH = 98
+				renderObj.file.maxW = 140
+				renderObj.file.maxH = 105
+				renderObj.stdWrap.wrap = <div class="profile_image">|</div>
+				stdWrap.wrap = <div class="profile_images">A preview from the gallery:<br/> | </div>
+				stdWrap.required = 1
+			}
+
+
+
+			LINK_MORE_IMAGES < plugin.user_cichlids_pi1.species.marks.IMAGES
+			LINK_MORE_IMAGES {
+				select {
+					selectFields = count(*) as anzahl
+				}
+				renderObj >
+				renderObj = COA
+				renderObj {
+					10 = TEXT
+					10.field = anzahl
+					10.wrap = |&nbsp;pictures in the gallery! Click here to see all.
+					10.if {
+						value = 0
+						equals.field = anzahl
+						negate = 1
+					}
+
+					stdWrap {
+						required = 1
+						wrap = <div class="profile_more_pictures">|</div>
+						typolink {
+							parameter < plugin.user_cichlids_pi1.cichlidPicturesView
+							additionalParams.data = register : current_species_uid
+							additionalParams.wrap = &user_cichlids_pi1[species]=|
+						}
+					}
+				}
+			}
+
+      			COMMON_NAMES {
+				stdWrap.wrap = <div class="profile_info_entry"><span class="profile_info_header">Common Name(s): </span><div class="profile_info_data">|</div></div>
+				stdWrap.required = 1
+			}
+      			CATEGORY {
+				wrap = <div class="profile_info_entry"><span class="profile_info_header">Category: </span><div class="profile_info_data">|</div></div>
+				required = 1
+			}
+      			MORPHS {
+				wrap = <div class="profile_info_entry"><span class="profile_info_header">Varients: </span><div class="profile_info_data">|</div></div>
+				required = 1
+			}
+      			ORIGIN {
+				wrap = <div class="profile_info_entry"><span class="profile_info_header">Origin: </span><div class="profile_info_data">|</div></div>
+				required = 1
+			}
+      			HABITAT {
+				wrap = <div class="profile_info_entry"><span class="profile_info_header">Habitat: </span><div class="profile_info_data">|</div></div>
+				required = 1
+			}
+      			MAXSIZE {
+				wrap = <div class="profile_info_entry"><span class="profile_info_header">Max. size: </span><div class="profile_info_data">|</div></div>
+				required = 1
+			}
+      			WATER {
+				wrap = <div class="profile_info_entry"><span class="profile_info_header">Water: </span><div class="profile_info_data">|</div></div>
+				required = 1
+			}
+      			DIET {
+				wrap = <div class="profile_info_entry"><span class="profile_info_header">Diet: </span><div class="profile_info_data">|</div></div>
+				required = 1
+			}
+      			AGGRO {
+				wrap = <div class="profile_info_entry"><span class="profile_info_header">Temperament: </span><div class="profile_info_data">|</div></div>
+				required = 1
+			}
+      			INNERAGGRO {
+				wrap = <div class="profile_info_entry"><span class="profile_info_header">Innerspecific temp.: </span><div class="profile_info_data">|</div></div>
+				required = 1
+			}
+			BREEDING {
+				wrap = <div class="profile_info_entry"><span class="profile_info_header">Breeding: </span><div class="profile_info_data">|</div></div>
+				required = 1
+			}
+	
+
+
+
+
+		}
+
+		list_categories < plugin.user_cichlids_pi1.list_categories
+		list_genus < plugin.user_cichlids_pi1.list_genus
+		list_genus {
+			template.file = EXT:user_cichlids/res/profiles_list_genus.html
+			subparts.LIST_GENUS {
+				max = 100
+			}
+		}
+
+		list_profiles < plugin.user_cichlids_pi1.list_profiles
+		list_profiles {
+			template.file = EXT:user_cichlids/res/profiles_list_profiles.html
+			subparts.LIST_PROFILES {
+				max = 100
+				count_pictures = 1
+			}
+			subparts.LIST_PROFILES.species {
+				template.file = EXT:user_cichlids/res/profiles_list_species.html
+				marks {
+					NAME {
+						stdWrap.typolink.parameter < plugin.user_cichlids_pi1.profilesView
+						stdWrap.typolink.additionalParams.field = uid
+						stdWrap.typolink.additionalParams.wrap = &user_cichlids_pi1[species]=|
+
+					}
+
+					HAS_PIC = TEXT
+					HAS_PIC.field = number_of_pics
+
+					HAS_PROFILE = TEXT
+					HAS_LINKS = TEXT
+
+					IMAGES {
+						select.max = 1
+						renderObj {
+							file.maxW = 50
+							file.maxH = 40
+							stdWrap >
+							stdWrap.typolink.parameter < plugin.user_cichlids_pi1.profilesView
+                               				stdWrap.typolink.additionalParams.data = register : current_species_uid
+							stdWrap.typolink.additionalParams.wrap = &user_cichlids_pi1[species]=|
+                               				stdWrap.typolink.useCacheHash = 1
+						}
+					}
+				}
+			}
+			marks {
+				GENUS < plugin.user_cichlids_pi1.min_species.marks.GENUS
+				GENUS {
+					source.field >
+					source.data = GPvar : user_cichlids_pi1 | genus
+				}
+				
+			}
+		}
+
+
+	}
+
+    	# latest_comments = TEMPLATE
+    	# latest_comments {
+    	#     template = FILE
+    	#     template.file = EXT:user_cichlids/res/latest_comments.html
+	#     marks {
+	# 	LIST_COMMENTS = TEXT
+	# 	LIST_COMMENTS.value = ...
+	#     } 
+    	#     marks.LIST_COMMENTS = USER_INT
+    	#     marks.LIST_COMMENTS {
+    	#         userFunc = user_cichlids_pi1->latest_comments    
+    	#         commentsPid < plugin.user_cichlids_pi1.commentsPid    
+    	#         comment < plugin.user_cichlids_pi1.comment
+    	#         comment.template.file = EXT:user_cichlids/res/latest_comments_comment.html
+    	#         comment.marks {
+    	#             TEXT.crop = 50 | ...
+    	#             DATE.wrap > 
+    	#             WATCH = USER
+    	#             WATCH.userFunc = user_cichlids_pi1->comment_geturl
+
+	# 	 	PICTURE = RECORDS
+	# 		PICTURE {
+	# 			source.field = item
+	# 			tables = user_cichlids_pictures
+	# 			conf.user_cichlids_pictures = COA
+	# 			conf.user_cichlids_pictures {
+	# 				20 < plugin.user_cichlids_pi1.picture.marks.IMAGE
+	# 				20 {
+	# 					file.maxW = 118
+	# 					file.maxH = 90
+	# 					file.params = -bordercolor black -border 50 -gravity center -crop 118x90+0+0 +repage
+	# 					stdWrap.typolink >
+	# 				}
+	# 			}
+
+
+	# 		}
+    	#         }
+    	#     }
+    	# }
+
+
+
+
+
+}
+#Ende Pi1
+
+plugin.user_cichlids_pi3 {
+	tanksPid = 15
+	picturesPid = 21,29
+	cichlidPicturesPid = 21
+	tankPicturesPid = 29
+	cichlidPicturesView = 18
+	tankPicturesView = 13
+	tanksView = 61
+	commentsPid = 52
+}
+
+
+plugin.user_cichlids_pi2 {
+	editCichlidsPid < plugin.user_cichlids_pi1.editCichlidsPid
+	listMyCichlidsPid = 51
+
+	picturesPid = 21,29,63,62
+
+	tanks_listing = USER_INT
+	tanks_listing {
+		userFunc = user_cichlids_pi1->list_tanks
+		max = 10
+		tankPid < plugin.user_cichlids_pi1.tankPid
+		fe_user = current
+		showall = 1
+
+		pagebrowser_top < plugin.user_cichlids_pi1.pagebrowser_top
+		pagebrowser_bottom < plugin.user_cichlids_pi1.pagebrowser_top
+
+		tank < plugin.user_cichlids_pi1.tank
+		tank.template.file = EXT:user_cichlids/res/edit_tank_list.html
+		tank.marks.TITLE {
+			typolink >
+			typolink {
+				parameter = 46
+				additionalParams.field = uid
+				additionalParams.wrap = &user_cichlids_pi2[tankUid]= 
+			}
+		}
+		tank.marks.EDIT = TEXT
+		tank.marks.EDIT {
+			value = Edit this tank
+			wrap = <br> |
+			typolink {
+				parameter = 46
+				additionalParams.field = uid
+				additionalParams.wrap = &user_cichlids_pi2[tankUid]= 
+			}
+		}
+
+		tank.marks.TANK_IMAGE.conf.user_cichlids_pictures.marks.IMAGE {
+			file.maxW = 200
+			stdWrap.typolink >
+			stdWrap.typolink {
+				parameter = 46
+				additionalParams.data = register : current_tank_uid
+				additionalParams.wrap = &user_cichlids_pi2[tankUid]= 
+			}
+		}
+
+	}
+
+
+	pics_listing = USER_INT
+	pics_listing {
+		userFunc = user_cichlids_pi1->list_pictures
+		max = 9
+		picturesPid < plugin.user_cichlids_pi2.picturesPid
+		fe_user = current
+
+		pagebrowser_top < plugin.user_cichlids_pi1.pagebrowser_top
+		pagebrowser_bottom < plugin.user_cichlids_pi1.pagebrowser_top
+
+		picture < plugin.user_cichlids_pi1.picture
+		picture.template.file = EXT:user_cichlids/res/pics_listing_pic.html
+		picture.marks.IMAGE {
+			file.maxW = 150
+			stdWrap.typolink >
+		}
+		picture.marks.TITLE {
+			typolink.parameter >
+		}
+
+		picture.marks.EDIT = TEXT
+		picture.marks.EDIT {
+			value = Edit this picture
+			wrap = <br> |
+			typolink {
+				parameter < plugin.user_cichlids_pi2.editCichlidsPid
+				additionalParams.field = uid
+				additionalParams.wrap = &user_cichlids_pi2[pictureUid]= 
+			}
+		}
+
+		picture.marks.VIEW < plugin.user_cichlids_pi1.picture.marks.LINK_URL
+		picture.marks.VIEW {
+			value = View picture and comments
+			wrap = <br> |
+			typolink {
+				returnLast >
+			}
+		}
+
+	}
+
+
+	edit_picture = TEMPLATE
+	edit_picture {
+		template = FILE
+		template.file = EXT:user_cichlids/res/edit_pic.html
+		marks {
+			UID = TEXT
+			UID.field = uid
+
+			ERROR = TEXT
+			ERROR {
+				field = error
+				wrap = <br><font color="red"><b>Error: </b> |</font><br>
+				required = 1
+			}
+
+			TITLE = TEXT
+			TITLE.field = title
+
+			# muss USER sein, mit USER_INT geht's nich
+			SPECIESLIST = USER
+			SPECIESLIST {
+				userFunc = user_cichlids_pi2->species_selectbox
+				pidInList < plugin.user_cichlids_pi1.profilesPid
+				orderBy = title ASC
+			}
+
+			IMAGE = IMAGE
+			IMAGE {
+ 				file {
+					import = uploads/tx_usercichlids/
+					import.field = image
+					maxW = 430
+				}
+			}
+
+			OVERWRITE = TEXT
+			OVERWRITE.value = (<b>Attention!</b> This overwrites the image above.  Leave blank if you want to keep above image)
+			OVERWRITE.if {
+				value = 
+				equals.field = image
+				negate = 1
+			}
+
+			TYPE_CHECKED_TANK = TEXT
+			TYPE_CHECKED_TANK.value = selected
+			TYPE_CHECKED_TANK.if {
+				value < plugin.user_cichlids_pi1.tankPicturesPid
+				equals.field = pid
+			}
+
+			TYPE_CHECKED_FISH = TEXT
+			TYPE_CHECKED_FISH.value = selected
+			TYPE_CHECKED_FISH.if {
+				value < plugin.user_cichlids_pi1.picturesPid
+				equals.field = pid
+			}
+
+			DESCR = TEXT
+			DESCR.field = description
+
+			RETURNLINK = TEXT
+			RETURNLINK {
+				value = &raquo; Return to the listing of your personal pictures
+				wrap = |<br><br>
+				required = 1
+				if {
+					value = 1
+					equals.data = TSFE : loginUser
+				}
+				typolink.parameter < plugin.user_cichlids_pi2.listMyCichlidsPid
+
+			}
+
+			REQUEST_URL = TEXT
+			REQUEST_URL.data = getIndpEnv : TYPO3_REQUEST_URL
+		}
+	}
+
+	uploaded_picture = TEMPLATE
+	uploaded_picture {
+		template = FILE
+		template.file = EXT:user_cichlids/res/uploaded_pic.html
+		marks {
+			LINK_PIC = TEXT
+			LINK_PIC {
+				value = view this picture
+				typolink {
+					parameter < plugin.user_cichlids_pi1.cichlidPicturesView
+                        	       	additionalParams.field = uid
+                        	       	additionalParams.wrap = &user_cichlids_pi1[picture]=|
+                        	       	useCacheHash = 1
+				}
+			}
+		}
+	}
+
+
+	edit_or_post_pic {
+		picturesPid < plugin.user_cichlids_pi2.picturesPid
+		edit_picture < plugin.user_cichlids_pi2.edit_picture
+		uploaded_picture < plugin.user_cichlids_pi2.uploaded_picture
+	}
+
+
+
+	edit_or_post_tank {
+		list_pictures < plugin.user_cichlids_pi2.pics_listing
+		list_pictures {
+			picturesPid = 29
+			max = 1000
+			pagebrowser_top >
+			pagebrowser_bottom >
+
+
+
+			picture.template.file = EXT:user_cichlids/res/edit_tank_select_pic.html
+			picture.marks {
+
+				REQUEST_URL = TEXT
+				REQUEST_URL.typolink {
+					returnLast = url
+					parameter.data = TSFE : id
+					additionalParams.cObject = COA
+					additionalParams.cObject {
+						10 = TEXT
+						10.data = GPVar : user_cichlids_pi2 | tankUid
+						10.wrap = &user_cichlids_pi2[tankUid]=|
+					}
+				}
+
+				IMAGE {
+					file.maxW = 90
+					file.maxH = 68
+					stdWrap.typolink >
+				}
+
+				UID = TEXT
+				UID.field = uid
+
+			}
+		}
+
+		edit_tank_picture {
+			edit_picture < plugin.user_cichlids_pi2.edit_picture
+			edit_picture.template.file = EXT:user_cichlids/res/edit_tank_edit_pic.html
+			edit_picture.marks {
+				RETURNLINK = TEXT
+				RETURNLINK {
+					value = &raquo; Back to your tank
+					wrap = |<br><br>
+					required = 1
+					typolink.parameter.data = TSFE:id
+					typolink.additionalParams.cObject = COA
+					typolink.additionalParams.cObject {
+						10 = TEXT
+						10.data = GPVar : user_cichlids_pi2 | tankUid
+						10.wrap = &user_cichlids_pi2[tankUid]=|
+					}
+				}
+
+				REQUEST_URL = TEXT
+				REQUEST_URL.typolink {
+					returnLast = url
+					parameter.data = TSFE : id
+					additionalParams.cObject = COA
+					additionalParams.cObject {
+						10 = TEXT
+						10.data = GPVar : user_cichlids_pi2 | tankUid
+						10.wrap = &user_cichlids_pi2[tankUid]=|
+					}
+				}
+
+
+				TYPE_CHECKED_TANK >
+				TYPE_CHECKED_TANK = TEXT
+				TYPE_CHECKED_TANK.value = selected
+
+				TYPE_CHECKED_FISH >
+				TYPE_CHECKED_FISH = TEXT
+				TYPE_CHECKED_FISH.value =
+
+			}
+		}
+
+
+		edit_tank = TEMPLATE
+		edit_tank {
+			template = FILE
+			template.file = EXT:user_cichlids/res/edit_tank.html
+			marks {
+
+				REQUEST_URL = TEXT
+				REQUEST_URL.data = getIndpEnv : TYPO3_REQUEST_URL
+
+
+				UID = TEXT
+				UID.field = uid
+
+				TITLE = TEXT
+				TITLE.field = title
+
+				WIDTH = TEXT
+				WIDTH.field = width
+				HEIGHT = TEXT
+				HEIGHT.field = height
+				DEPTH = TEXT
+				DEPTH.field = depth
+
+				UNIT_INCHES = TEXT
+				UNIT_INCHES.value = selected
+				UNIT_INCHES.if {
+					value = inches
+					equals.field = unit
+				}
+				UNIT_CM = TEXT
+				UNIT_CM.value = selected
+				UNIT_CM.if {
+					value = centimeters
+					equals.field = unit
+				}
+
+				DESCRIPTION = TEXT
+				DESCRIPTION.field = description
+
+				IMAGE = RECORDS
+				IMAGE {
+					source.field = image
+					tables = user_cichlids_pictures
+					conf.user_cichlids_pictures < plugin.user_cichlids_pi1.picture
+					conf.user_cichlids_pictures {
+						template >
+						template = TEXT
+						template.value = ###IMAGE###
+						marks.IMAGE {
+							file.maxW = 400
+							stdWrap.typolink >
+						}
+					}
+                        	}
+
+				MORE_IMAGES = RECORDS
+				MORE_IMAGES {
+					source.field = tank_images
+					tables = user_cichlids_pictures
+					conf.user_cichlids_pictures < plugin.user_cichlids_pi1.picture
+					conf.user_cichlids_pictures {
+						template.file = EXT:user_cichlids/res/edit_tank_small_pic.html
+						marks.IMAGE.file.maxW = 75
+						marks.IMAGE.stdWrap.typolink >
+						marks.UID = TEXT
+						marks.UID.field = uid
+
+						marks.WHAT = TEXT
+						marks.WHAT.value = tank_images
+					}
+                        	}
+
+				DECO_IMAGES = RECORDS
+				DECO_IMAGES {
+					source.field = deco_images
+					tables = user_cichlids_pictures
+					conf.user_cichlids_pictures < plugin.user_cichlids_pi1.picture
+					conf.user_cichlids_pictures {
+						template.file = EXT:user_cichlids/res/edit_tank_small_pic.html
+						marks.IMAGE.file.maxW = 75
+						marks.IMAGE.stdWrap.typolink >
+						marks.UID = TEXT
+						marks.UID.field = uid
+
+						marks.WHAT = TEXT
+						marks.WHAT.value = deco_images
+					}
+                        	}
+
+				TEC_IMAGES = RECORDS
+				TEC_IMAGES {
+					source.field = tec_images
+					tables = user_cichlids_pictures
+					conf.user_cichlids_pictures < plugin.user_cichlids_pi1.picture
+					conf.user_cichlids_pictures {
+						template.file = EXT:user_cichlids/res/edit_tank_small_pic.html
+						marks.IMAGE.file.maxW = 75
+						marks.IMAGE.stdWrap.typolink >
+						marks.UID = TEXT
+						marks.UID.field = uid
+
+						marks.WHAT = TEXT
+						marks.WHAT.value = tec_images
+					}
+                        	}
+
+
+
+				RETURNLINK = TEXT
+				RETURNLINK {
+					value = &raquo; Return to the listing of your personal pictures and tanks
+					wrap = |<br><br>
+					required = 1
+					if {
+						value = 1
+						equals.data = TSFE : loginUser
+					}
+					typolink.parameter < plugin.user_cichlids_pi2.listMyCichlidsPid
+
+				}
+
+
+				CATEGORY_ENTRIES = CONTENT
+				CATEGORY_ENTRIES {
+					table = user_cichlids_category
+					select {
+						pidInList = 16
+					}
+					renderObj = COA
+					renderObj {
+						10 = TEXT
+						10.field = uid
+						10.noTrimWrap = |<option value="|" |
+
+						20 = TEXT
+						20.value = selected
+						20.if {
+							value.field = uid
+							equals.data = register : current_tank_category
+						}
+
+						30 = TEXT
+						30.field = title
+						30.wrap = >|</option>
+					}
+				}
+
+
+				GRAVEL = TEXT
+				GRAVEL.field = gravel
+
+				PLANTS = TEXT
+				PLANTS.field = plants
+
+				MORE_DECO = TEXT
+				MORE_DECO.field = more_deco
+
+				LIGHT = TEXT
+				LIGHT.field = light
+
+				LIGHT_DURATION = TEXT
+				LIGHT_DURATION.field = light_duration
+
+				FILTRATION = TEXT
+				FILTRATION.field = filtration
+
+				MORE_TEC = TEXT
+				MORE_TEC.field = more_tec
+
+
+			}
+		}
+	}
+
+}
+# Ende pi2
+
+[usergroup = 3]
+# Species editer
+
+plugin.user_cichlids_pi1.pictures.picture.marks.EDIT_AREA = TEMPLATE
+plugin.user_cichlids_pi1.pictures.picture.marks.EDIT_AREA {
+	template = FILE
+	template.file = EXT:user_cichlids/res/picture_edit_area.html
+
+	marks {
+		DELETE_LINK = TEXT
+		DELETE_LINK {
+			value = (delete pic)
+			typolink {
+				parameter = 59
+				additionalParams.cObject = COA
+				additionalParams.cObject {
+					10 = TEXT
+					10.data = register : current_picture_uid
+					10.wrap = &user_cichlids_pi1[picture]=|
+
+					20 = TEXT
+					20.value = confirm
+					20.wrap = &user_cichlids_pi1[action]=|
+
+					30 = TEXT
+					30.data = TSFE : id
+					30.wrap = &user_cichlids_pi1[backPid]=|
+				}
+			}
+		}
+
+		MOVE_LINK = TEXT
+		MOVE_LINK {
+			value = (move pic)
+			typolink {
+				no_cache = 1
+				parameter.data = TSFE : id
+				additionalParams.cObject = COA
+				additionalParams.cObject {
+					10 = TEXT
+					10.data = register : current_picture_uid
+					10.wrap = &user_cichlids_pi1[picture]=|
+
+					20 = TEXT
+					20.value = move_pic
+					20.wrap = &user_cichlids_pi1[edit_area_action]=|
+				}
+			}
+		}
+
+		EDIT_SPECIES_LINK = TEXT
+		EDIT_SPECIES_LINK {
+			value = (edit_species)
+			typolink {
+				no_cache = 1
+				parameter.data = TSFE : id
+				additionalParams.cObject = COA
+				additionalParams.cObject {
+					10 = TEXT
+					10.data = register : current_picture_uid
+					10.wrap = &user_cichlids_pi1[picture]=|
+
+					20 = TEXT
+					20.value = edit_species
+					20.wrap = &user_cichlids_pi1[edit_area_action]=|
+				}
+			}
+		}
+
+		# Muss USER_INT sein, damit es nicht gecached wird
+		ACTION = USER_INT
+		ACTION {
+			userFunc = user_cichlids_pi1->edit_area
+
+			move_pic = TEMPLATE
+			move_pic {
+				template = FILE
+				template.file = EXT:user_cichlids/res/picture_move_pic.html
+				marks {
+					TYPE_CHECKED_TANK = TEXT
+					TYPE_CHECKED_TANK.value = selected
+					TYPE_CHECKED_TANK.if {
+						value < plugin.user_cichlids_pi1.tankPicturesPid
+						equals.field = pid
+					}
+
+					TYPE_CHECKED_FISH = TEXT
+					TYPE_CHECKED_FISH.value = selected
+					TYPE_CHECKED_FISH.if {
+						value < plugin.user_cichlids_pi1.picturesPid
+						equals.field = pid
+					}
+
+					EDIT_AREA_ACTION=TEXT
+					EDIT_AREA_ACTION.data = GPVar : user_cichlids_pi1 | edit_area_action
+
+					REQUEST_URL = TEXT
+					REQUEST_URL.data = getIndpEnv : TYPO3_REQUEST_URL
+				}
+			}
+
+			edit_species = TEMPLATE
+			edit_species {
+				template = FILE
+				template.file = EXT:user_cichlids/res/picture_edit_species.html
+		
+				marks {
+					# muss USER sein, mit USER_INT geht's nich
+					SPECIESLIST = USER
+					SPECIESLIST {
+						userFunc = user_cichlids_pi2->species_selectbox
+						pidInList < plugin.user_cichlids_pi1.profilesPid
+						orderBy = title ASC
+					}
+
+					EDIT_AREA_ACTION=TEXT
+					EDIT_AREA_ACTION.data = GPVar : user_cichlids_pi1 | edit_area_action
+
+					REQUEST_URL = TEXT
+					REQUEST_URL.data = getIndpEnv : TYPO3_REQUEST_URL
+					
+				}
+			}
+
+		}
+		
+	}
+
+}
+
+plugin.user_cichlids_pi1.delete_picture {
+	confirm < plugin.user_cichlids_pi1.picture
+	confirm {
+		template.file = EXT:user_cichlids/res/confirm_delete_picture.html
+		marks.PICID = TEXT
+		marks.PICID.data = GPVar : user_cichlids_pi1 | picture
+
+		marks.BACKPID = TEXT
+		marks.BACKPID.data = GPVar : user_cichlids_pi1 | backPid
+
+		marks.REQUEST_URL = TEXT
+		marks.REQUEST_URL.data = getIndpEnv : TYPO3_REQUEST_URL
+	}
+
+	deleted = TEXT
+	deleted {
+		value = Picture deleted, click here return to the picture list.
+		typolink {
+			parameter.data = GPVar : user_cichlids_pi1 | backPid
+			additionalParams.cObject = COA
+			additionalParams.cObject {
+				10 = TEXT
+				10.data = GPVar : user_cichlids_pi1 | picture
+				10.wrap = &user_cichlids_pi1[picture]=|
+			}
+		}
+	}
+}
+
+# Comments loescher
+
+plugin.user_cichlids_pi1.pictures.picture.marks.COMMENTS.marks.COMMENTS.comment.marks.IP = TEXT
+plugin.user_cichlids_pi1.pictures.picture.marks.COMMENTS.marks.COMMENTS.comment.marks.IP.field = ip
+plugin.user_cichlids_pi1.pictures.picture.marks.COMMENTS.marks.COMMENTS.comment.marks.IP.wrap = &nbsp;(|)
+
+# geht nur mit USER
+plugin.user_cichlids_pi1.pictures.picture.marks.COMMENTS.marks.COMMENTS.comment.marks.DELETE = USER
+plugin.user_cichlids_pi1.pictures.picture.marks.COMMENTS.marks.COMMENTS.comment.marks.DELETE {
+	userFunc = user_cichlids_pi1->delete_comment
+
+	make_link = TEXT
+	make_link {
+		value = (delete)
+		wrap = <div style="float: right">|</div>
+		typolink {
+			parameter = 58
+			additionalParams.cObject = COA
+			additionalParams.cObject {
+				10 = TEXT
+				10.data = register : current_picture_uid
+				10.wrap = &user_cichlids_pi1[picture]=|
+				10.required = true
+
+				15 = TEXT
+				15.data = register : current_tank_uid
+				15.wrap = &user_cichlids_pi1[tank]=|
+				15.required = true
+
+
+				20 = TEXT
+				20.value = confirm
+				20.wrap = &user_cichlids_pi1[action]=|
+
+				30 = TEXT
+				30.field = uid
+				30.wrap = &user_cichlids_pi1[comment]=|
+
+				40 = TEXT
+				40.data = TSFE : id
+				40.wrap = &user_cichlids_pi1[backPid]=|
+			}
+		}
+	}
+}
+
+plugin.user_cichlids_pi1.tanks.tank.marks.COMMENTS.marks.COMMENTS.comment.marks.DELETE < plugin.user_cichlids_pi1.pictures.picture.marks.COMMENTS.marks.COMMENTS.comment.marks.DELETE
+
+plugin.user_cichlids_pi1.delete_comment {
+	confirm < plugin.user_cichlids_pi1.comment
+	confirm {
+		template.file = EXT:user_cichlids/res/confirm_delete_comment.html
+		marks.PICID = TEXT
+		marks.PICID.data = GPVar : user_cichlids_pi1 | picture
+
+		marks.TANKID = TEXT
+		marks.TANKID.data = GPVar : user_cichlids_pi1 | tank
+
+		marks.BACKPID = TEXT
+		marks.BACKPID.data = GPVar : user_cichlids_pi1 | backPid
+
+		marks.REQUEST_URL = TEXT
+		marks.REQUEST_URL.data = getIndpEnv : TYPO3_REQUEST_URL
+	}
+
+	deleted = TEXT
+	deleted {
+		value = Comment deleted, click here return to the picture/tank.
+		typolink {
+			parameter.data = GPVar : user_cichlids_pi1 | backPid
+			additionalParams.cObject = COA
+			additionalParams.cObject {
+				10 = TEXT
+				10.data = GPVar : user_cichlids_pi1 | picture
+				10.wrap = &user_cichlids_pi1[picture]=|
+				10.required = 1
+
+				20 = TEXT
+				20.data = GPVar : user_cichlids_pi1 | tank
+				20.wrap = &user_cichlids_pi1[tank]=|
+				20.required = 1
+			}
+		}
+	}
+}
+
+
+
+[GLOBAL]
+	
+
+
+#tt_content.shortcut.field = layout
+
+user_cichlids_tanks = TEXT
+user_cichlids_tanks.value = Dummy Tank in Typoscript
+user_cichlids_tanks.displayCurrentRecord = 1 
+
+#tt_content.shortcut.20.0 {
+#	tables = {$content.shortcut.tables},user_cichlids_tanks
+#	conf.user_mytable < user_mytable
+#} 

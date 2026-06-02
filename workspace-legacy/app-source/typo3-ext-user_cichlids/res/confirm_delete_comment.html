@@ -1,0 +1,32 @@
+This is the comment you want to delete:
+<div style="
+    border: 1px solid #AAAAAA;
+    margin-bottom: 10px;
+    padding: 5px;
+">
+  <div style="
+    background: #DDDDDD;
+    padding: 5px;
+    margin-bottom: 5px;
+  ">###RATING### <b>###NAME###</b><br>
+  ###DATE###</div>
+###TEXT###
+</div>
+
+<form method="POST" action="###REQUEST_URL###">
+    <input type="hidden" name="user_cichlids_pi1[confirmed]" value="yes">
+    <input type="hidden" name="user_cichlids_pi1[picture]" value="###PICID###">
+    <input type="hidden" name="user_cichlids_pi1[tank]" value="###TANKID###">
+    <input type="hidden" name="user_cichlids_pi1[backPid]" value="###BACKPID###">
+
+    <br>
+
+    Why do you want to delete the comment?<br>
+    <input type="text" name="user_cichlids_pi1[reason]" size="50" maxlength="500">
+    <input type="submit" value="delete comment"><br>
+
+	<br><br>
+    If you do not want to delete the comment, <a href="javascript:history.back(-1)">click here</a>.
+
+</form>
+

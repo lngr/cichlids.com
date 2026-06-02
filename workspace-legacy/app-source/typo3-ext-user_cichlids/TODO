@@ -1,0 +1,46 @@
+post-picture: überprüfen, ob gültiges bild (bild schonmal speichern und in datenbank, aber noch hidden lassen, wenn nicht ok)
+	überprüfen, ob alles ausgefüllt
+	überprüfen
+	erst dann auf enable setzen.
+
+tagging dazu:
+tags können als text-felder angegeben werden.
+comma und leerzeichen separiert
+"lake" tag vielleicht automatisch löschen
+kleinschreibung egal (alles in klein convertieren)
+
+user_cichlids_tagging:
+	spalte tag
+	spalte type (1 fuer picture, 2 fuer tank, abe rnoch nich drin)
+	spalte item (picture id)
+
+
+show-picture: category ausgeben
+tags ausgeben
+tags verlinken (s.u).)
+
+view szaehlen pro pic
+
+
+- paging also seiten-apges usw.
+- commentar-funktion wieder aktiviern.  auch mit picture-reply machen
+
+- Ein Modul für "User Page" machen, wo seine
+	- pictures
+	- tanks
+	- galleries
+	--> dort linken dann alle "user" sachen drauf
+- dann noch "by category" "by user" und "by species",
+	inkl. der "list" funktion
+	das gleiche für tags
+
+ne tag could machen
+
+
+- gallery crdate ausfüllen bei erstellung.
+- tstamp ändert sich, wenn bilder gemoved (up, down, usw.) oder hinzugefügt werden.
+- Bilder gezielt in eine Gallery hochladen können
+- gallery-create:  so machen, daß es auch ohne javascript funktioniert
+
+- bei list_pictures - type tank zusammen mit ner category, macht das sinn?
+

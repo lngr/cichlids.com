@@ -1,0 +1,123 @@
+Seite zum profiel updaten:
+    - username => muss dann auch via API an auth0 gesendet werden
+    - name - nur lokal, auth0 lässt unsdas nciht ändern
+
+PN Funktion bauen
+        erst einmal nur lokal evtl. mit java?
+    mit email benachrichtigung...
+
+wenn man eins siener bilder zum bearbeiten öffnet und dann ausloggt, kann man snicht speichern, aber die
+fehlermeldung ist nicht gut.
+
+/pictures/edit bild im server mode gibt noch exceptions
+
+highlight-canditat, gibt wohl einige suchtreffer:
+https://www.cichlids.com/pictures/pic/FiremouthNicaragua_Hybrid.html
+
+ACHTUNG, SIEHE AUCH TRELLO!!
+
+Was fehlt derzeit noch:
+
+
+- Species Listing
+- Guides (= Tutorials), Articles usw.
+- wir hatten doch mal Species profiles ganz am Anfang... wo sind die? (sind die ins wiki gekommen? kann man das wiki denn
+    wiederherstellen? oder haben die es nicht einmal ins wiki geschafft?)
+- Pictures: Type funktioniert (Cichlids, Tanks, Offtopic) funktioniert, aber Category (AFrican, ... usw.) nicht
+    => geht erst, wenn ich wieder erlaube, pics/tanks mit einem oder mehr species zu taggen
+- Forum
+- Photo Contest
+
+
+https://uploadcare.com/
+-------------
+
+bilder sollten jeweils captions haben, dami tman z.B. updates registrieren kann
+
+- danach private nachrichten zwischen usern mit entsprechendem microservice
+
+- danach forum konvertieren ... vielleicht shcon direkt mit entsprechendem microservice ?
+        => rudimentäres forum bauen => für "questiions" (market ist etwas anderes)
+        => altes forum auf archive-only setzen, später importieren
+
+- Pictures
+    - Most Recent
+    - Most Viewed
+    - Top Rated
+    Type:
+        - All
+        - Cichlid Pictures
+        - Tank Pictures
+        - Photo Contest
+        - offtopic
+
+    Category:
+        - All
+        - American
+        - African
+        - Lake Malawi
+        - Lake Tanganyika
+    View:
+        - by species
+
+Library
+Beginner guides
+Articles
+Natural habitats
+
+andere sachen, z.B. wie man protected bereiche schafft (Protected.ts) fuer eingelogtte user usw., Logout usw.
+http://plnkr.co/edit/Bim8OGO7oddxBaa26WzR?p=preview
+
+- keyboard navigation mit links-rechts z.B. bei der picturelist
+- /explore  und Explore Seit e- da einfach Pictures/Tanks, wie auf Startseite
+- /pictures/pic/<slug>.html --- vorsehen; geht leider im devmode nicht?? evlt. einfach
+        auf server loeschen/nginx redirect
+
+Startseite:
+    Anonymer User:
+        Frontpage component
+            - Liste von Bildern
+            - Liste von Tanks
+            - Liste von Usersn usw.
+    Logged in User:
+        User Dashboard
+
+    Login:
+        LoginForm / Registration Form
+
+    Community
+        Pictures        /pictures/
+        Tanks           /tanks/             (alt: /tank-examples/ REDIRECT)
+        Users usw.      /users/
+        Forum           /disc/
+
+    Market
+        wo die selbst ihre Fische usw. anbeiten koennen
+        ausserdem wo haendler ihre sachen anbiete koennen
+
+    Gear
+
+    Guides              /guides/            (alt: diverse /library/ REDIRECT)
+
+beiden bildern nich tnur einzelne bilder, sondern auch galerien vorsehen koennen
+
+gucken, ob auf dem serer analytics trackt (auf localhost tut er es nicht), eigentlich sollte er jede aktion trakcen
+
+----
+
+Forum:
+    sollte eigentlich relativ eigene app sein, auch um die andere app nach moeglichkeit klein zu halten.
+        andererseits teilen die sich eine Menge code, z.B. um Bilder einzubinden.
+
+------
+
+$(document).keydown(function(e){
+    if (e.keyCode == 37 && ${prevPage} != null) {
+        window.location.replace('${prevUrl}');
+        return false;
+    }
+    if (e.keyCode == 39 && ${nextPage} != null) {
+        window.location.replace('${nextUrl}');
+        return false;
+    }
+});

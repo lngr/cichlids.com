@@ -1,0 +1,17 @@
+
+HOWTO: 
+    - https://aws.amazon.com/blogs/compute/developing-net-core-aws-lambda-functions/
+      für local integratiaon testing, cloudwatch, xray (tracing)
+
+
+https://github.com/khellang/Scrutor
+8
+services.Scan(c =>  
+{
+    c.FromAssembliesOf(typeof(Startup))
+        .AddClasses(t => t.AssignableTo(typeof(IDocumentMessageHandler<>)))
+        .AsImplementedInterfaces()
+        .WithTransientLifetime();
+});
+
+

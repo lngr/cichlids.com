@@ -1,0 +1,27 @@
+This is the picture you want to delete:
+
+<div style="
+    text-align: center;
+">
+###IMAGE###<br>
+<b>###TITLE###</b><br>
+
+###DESCR###
+</div>
+
+<form method="POST" action="###REQUEST_URL###">
+    <input type="hidden" name="user_cichlids_pi1[confirmed]" value="yes">
+    <input type="hidden" name="user_cichlids_pi1[backPid]" value="###BACKPID###">
+    <input type="hidden" name="user_cichlids_pi1[picture]" value="###PICID###">
+
+    <br>
+
+    Why do you want to delete the picture?<br>
+    <input type="text" name="user_cichlids_pi1[reason]" size="50" maxlength="500">
+    <input type="submit" value="delete picture"><br>
+
+	<br><br>
+    If you do not want to delete the picture, <a href="javascript:history.back(-1)">click here</a>.
+
+</form>
+

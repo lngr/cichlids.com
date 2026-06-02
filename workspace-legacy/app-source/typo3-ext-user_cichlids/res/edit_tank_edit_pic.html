@@ -1,0 +1,28 @@
+
+    ###RETURNLINK###
+
+<form method="POST" enctype="multipart/form-data" action="###REQUEST_URL###">
+
+    <input type="hidden" name="user_cichlids_pi2[pictureUid]" value="###UID###">
+    <input type="hidden" name="user_cichlids_pi2[action]" value="upload_pic">
+    <input type="hidden" name="user_cichlids_pi2[type]" value="tank">
+
+    <h1>Upload new tank image</h1>
+
+    <p>
+    Please select an image file from your PC: ###OVERWRITE###<br>
+    <input type="file" name="user_cichlids_pi2[###UID###]" maxlength="5000000" accept="image/*">
+
+    <p>
+    The title for this image:
+    <input type="text" name="user_cichlids_pi2[title]" value="###TITLE###" size="50">
+
+    <p>
+    A description for this image:<br>
+    <textarea name="user_cichlids_pi2[descr]" cols="50" rows="10">###DESCR###</textarea>
+
+    <p>
+    <input name="disable" type="submit" value="Click here to save this picture!"><br>
+    (please click only once, uploading the picture might take a while)
+
+</form>

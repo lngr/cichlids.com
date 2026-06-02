@@ -1,0 +1,41 @@
+<div style="
+    text-align: center;
+">
+###EDIT_AREA###
+<div id="single_picture_area">
+  <div class="the_image">###IMAGE###</div>
+  <div class="the_title">###TITLE###</div>
+###SPECIES###
+###OFFTOPIC###
+###PHOTOCONTEST###
+
+  <table border="0" width="80%" align="center" cellpadding="2" style="border: 1px solid #AAAAAA; margin-top: 10px; margin-bottom: 10px;">
+    <tr>
+	<td width="50%">###OWNER###</td>
+	<td width="50%">
+	<div style="float: right; text-align: center;">
+<form onSubmit="return false;" method="POST" enctype="multipart/form-data" style="display: inline;">
+<input type="hidden" name="user_cichlids_pi1[picture]" value="###UID###">
+<input onClick="user_cichlids_pi1reportPicture(xajax.getFormValues(this.form))"
+  type="image" value="report" title="Report as inappropriate or copyright theft"
+  src="/fileadmin/delete.gif" width="20" height="20"
+/>
+<br>
+<div style="font-size: 6pt;">(report)</div>
+</form>
+</div>
+	###DATE###
+	</td>
+    </tr>
+    <tr>
+	<td width="50%">Views:  ###VIEWS###</td>
+	<td width="50%">Rated: ###RATING### (###RATED### votes)</td>
+    </tr>
+    </tr>
+  </table>
+</div>  
+
+###DESCR###
+</div>
+
+###COMMENTS###

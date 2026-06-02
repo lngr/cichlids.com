@@ -1,0 +1,116 @@
+
+    ###RETURNLINK###
+
+<form method="POST" enctype="multipart/form-data" action="###REQUEST_URL###">
+
+    <input type="hidden" name="user_cichlids_pi2[tankUid]" value="###UID###">
+    <input type="hidden" name="user_cichlids_pi2[action]" value="save">
+
+
+    <table border="0">
+      <!--<tr><td>Hide/Show:</td><td>###HIDDEN### <input type="submit" name="user_cichlids_pi2[toggle_hidden]" value="###HIDDEN_SUBMIT###"></td></tr>-->
+      <tr><td>Title of the tank:</td><td><input type="text" name="user_cichlids_pi2[title]" value="###TITLE###" size="50"></td></tr>
+      <tr><td>Category:</td><td>
+	  <select name="user_cichlids_pi2[category]">
+	      ###CATEGORY_ENTRIES###
+	  </select>	
+      </td></tr>
+      <tr><td>Main picture:</td><td>###IMAGE###<br>
+				    <input type="submit" name="user_cichlids_pi2[add_main_picture]" value="Upload new pic">
+				    <input type="submit" name="user_cichlids_pi2[select_main_picture]" value="Select from your pictures"><br>
+				    </td></tr>
+      <tr><td>More tank pictures:</td><td>
+				    ###MORE_IMAGES###
+				    <div style="clear: both;"></div>
+				    <input type="submit" name="user_cichlids_pi2[add_more_picture]" value="Upload new pic">
+				    <input type="submit" name="user_cichlids_pi2[select_more_picture]" value="Select from your pictures"><br>
+				    </td></tr>
+
+      <tr><td colspan="2"><b>Tank information</b></td></tr>
+      <tr><td>Size:</td><td>
+	      Width X Height X Depth <br>
+	      <input type="text" name="user_cichlids_pi2[width]" value="###WIDTH###" size="4" maxlen="10"> X
+	      <input type="text" name="user_cichlids_pi2[height]" value="###HEIGHT###" size="4" maxlen="10"> X
+	      <input type="text" name="user_cichlids_pi2[depth]" value="###DEPTH###" size="4" maxlen="10"> 
+	      <select name="user_cichlids_pi2[unit]">
+		  <option ###UNIT_INCHES###>inches</option>
+		  <option ###UNIT_CM###>centimeters</option>
+	      </select><br>
+
+      </td></tr>
+      <tr><td>Description:</td><td>
+	  <textarea name="user_cichlids_pi2[description]" cols="45" rows="10">###DESCRIPTION###</textarea>
+      </td></tr>
+
+      <tr><td colspan="2"><b>Tank decoration</b></td></tr>
+      <tr><td>Gravel:</td><td>
+	  <textarea name="user_cichlids_pi2[gravel]" cols="45" rows="2">###GRAVEL###</textarea>
+      </td></tr>
+
+      <tr><td>Plants:</td><td>
+	  <textarea name="user_cichlids_pi2[plants]" cols="45" rows="7">###PLANTS###</textarea>
+      </td></tr>
+
+      <tr><td>Other decoration:</td><td>
+	  <textarea name="user_cichlids_pi2[more_deco]" cols="45" rows="7">###MORE_DECO###</textarea>
+      </td></tr>
+
+      <tr><td>Decoration images:</td><td>
+				    ###DECO_IMAGES###
+				    <div style="clear: both;"></div>
+				    <input type="submit" name="user_cichlids_pi2[add_deco_picture]" value="Upload new pic">
+				    <input type="submit" name="user_cichlids_pi2[select_deco_picture]" value="Select from your pictures"><br>
+      </td></tr>
+
+      <tr><td colspan="2"><b>Tank technics</b></td></tr>
+
+      <tr><td>Light:</td><td>
+	  <textarea name="user_cichlids_pi2[light]" cols="45" rows="2">###LIGHT###</textarea>
+      </td></tr>
+
+      <tr><td>Light duration:</td><td>
+	  <textarea name="user_cichlids_pi2[light_duration]" cols="45" rows="2">###LIGHT_DURATION###</textarea>
+      </td></tr>
+      
+      <tr><td>Filtration:</td><td>
+	  <textarea name="user_cichlids_pi2[filtration]" cols="45" rows="5">###FILTRATION###</textarea>
+      </td></tr>
+
+      <tr><td>More Technics:</td><td>
+	  <textarea name="user_cichlids_pi2[more_tec]" cols="45" rows="10">###MORE_TEC###</textarea>
+      </td></tr>
+
+      <tr><td>Tec images:</td><td>
+				    ###TEC_IMAGES###
+				    <div style="clear: both;"></div>
+				    <input type="submit" name="user_cichlids_pi2[add_tec_picture]" value="Upload new pic">
+				    <input type="submit" name="user_cichlids_pi2[select_tec_picture]" value="Select from your pictures"><br>
+      </td></tr>
+
+<!--
+      <tr><td>Cichlids:</td><td>Species Listing<br>
+				  alle species soweit mit einem "delete" button dabei
+				  darunter jeweils noch eine selectbox mit einer die man neu hinzuf&uuml;gen kann
+				<table border="1">
+				    ###LIST_SPECIES###
+				    <tr>
+					<td>
+					</td><td><input type="text" name="species[0]">
+				  ###ADD_SPECIES###
+				    upload new pic
+				    select from your pictures
+				    </td></tr>
+
+
+
+				</table>
+
+-->
+
+    </table>
+				    
+    <p>
+    <input name="disable" type="submit" value="Click here to save this tank!"><br>
+    (please click only once, uploading the pictures and the tank information might take a while)
+
+</form>

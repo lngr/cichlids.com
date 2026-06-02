@@ -1,0 +1,83 @@
+
+    ###RETURNLINK###
+
+<SCRIPT TYPE="text/javascript">
+  function validateOnSubmit() {
+    var errs=0;
+    if (!document.forms.upload_picture['user_cichlids_pi2[title]'].value) {
+	alert('Please enter a title for your picture!');
+        return false;
+    }
+    return (true);
+  };
+</SCRIPT>
+
+<form name="upload_picture" onsubmit="return validateOnSubmit()" method="POST" enctype="multipart/form-data" action="###REQUEST_URL###">
+
+    <input type="hidden" name="user_cichlids_pi2[pictureUid]" value="###UID###">
+    <input type="hidden" name="user_cichlids_pi2[action]" value="save">
+
+    <center>###IMAGE###</center>
+
+    ###ERROR###
+
+    <div class="box">
+      <div class="box_header">Image file</div>
+      <div class="box_subheader">Please select an image file from your PC: ###OVERWRITE###</div>
+      <div class="box_content"><input type="file" name="user_cichlids_pi2[###UID###]" accept="image/*"></div>
+    </div>
+
+    <div class="box">
+	<div class="box_header">Picture title</div>
+	<div class="box_subheader">The title for this image under which it'll be shown in the picture gallery.</div>
+	<div class="box_content"><input type="text" name="user_cichlids_pi2[title]" value="###TITLE###" size="50"> <b>(required)</b></div>
+    </div>
+
+    
+    <div class="box">
+      <div class="box_header">Display as</div>
+      <div class="box_subheader">Your picture can either appear in the "cichlids" gallery or in the "tank" gallery.  Please choose:</div>
+      <div class="box_content">List this picture as a <select name="user_cichlids_pi2[type]" onChange="if (this.value == 'fish') { document.getElementById('edit_species').style.display = 'block'; } else { document.getElementById('edit_species').style.display = 'none'; };">
+	    <option value="fish" ###TYPE_CHECKED_FISH###> cichlid picture</option>
+	    <option value="tank" ###TYPE_CHECKED_TANK###> tank picture</option>
+	    <option value="offtopic" ###TYPE_CHECKED_OFFTOPIC###> offtopic</option>
+	    <option value="contest" ###TYPE_CHECKED_CONTEST###> photo contest submission</option>
+	  </select>
+      </div>
+    </div>
+
+    <div id="edit_species">
+    <div class="box">
+	<div class="box_header">Species</div>
+	<div class="box_content">If you know the scientific name of the fish, please select it here.  This helps other users to find pictures of a given species:
+	    <select name="user_cichlids_pi2[species]">
+	    <option value="0">Unknown / Need to ID first</option>
+		###SPECIESLIST###
+	    </select>
+	</div>
+    </div>
+    </div>
+
+    <div class="box">
+	<div class="box_header">Description</div>
+	<div class="box_subheader">A description for this image:</div>
+	<div class="box_content">This description will be shown together with your picture.  Please feel free to give as much information as you want, e.g.
+	  the fish shown, their age, names, or maybe about your tank size and setup.<br>
+	  <textarea name="user_cichlids_pi2[descr]" cols="50" rows="10" style="width: 100%;">###DESCR###</textarea>
+	</div>
+    </div>
+
+    <div class="box">
+	<div class="box_header">Upload Picture!</div>
+	<div class="box_content">
+	  <!-- <b>By uploading a picture you confirm you are the copyright holder of this picture.  <a href="http://en.wikipedia.org/wiki/Copyright_infringement">Click here</a> for more information
+	      on copyright violation.</b><br><br>
+
+	  <span style="font-size: 12pt; font-weight: bold;">Please keep this site a site dedicated to cichlids, i.e., please do post pictures from cichlids or your tanks only.  Thanks for your understanding.</span>	<br>-->
+
+	  <input name="disable" type="submit" value="Click here to save this picture!" style="font-size: 15pt; font-weight: bold; display: block;"><br>
+	  (please click only once, uploading the picture might take a while)<br>
+	</div>
+    </div>
+
+</form>

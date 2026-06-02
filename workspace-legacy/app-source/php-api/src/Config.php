@@ -1,0 +1,37 @@
+<?php 
+namespace Cichlids;
+
+class Config {
+	static function Auth0JWTPubkey() {
+		return <<<EOD
+-----BEGIN CERTIFICATE-----
+MIIDBTCCAe2gAwIBAgIJKLUtLOU/kWxVMA0GCSqGSIb3DQEBCwUAMCAxHjAcBgNV
+BAMTFWNpY2hsaWRzLmV1LmF1dGgwLmNvbTAeFw0xODAzMTkxOTU0NTZaFw0zMTEx
+MjYxOTU0NTZaMCAxHjAcBgNVBAMTFWNpY2hsaWRzLmV1LmF1dGgwLmNvbTCCASIw
+DQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAODi7uf3Hze+lxkVNKtit8J2Zmgw
+NW1+fwVklV1PQAjWFWc0oO5LiJMKrcicxV5gRKSmi/tGoRlmkQ1LB/OwwA2TgamK
+QxxuCyebVMtfs6ObqMoIa4lrupsrPoMzmOfIFKEW2KkybYJD8VMJNFpGtmhkEJ4H
+eVOVdaqO3lKuKwDSf+Hkmsg25/WqNc/cu11NLuix0gva150xSJqvTvfnvidkZFeG
+ODK+sWCta90v+FC04siKWAECsnGTZ+Ndgg7NxFN1PW0rKWFsIDoMvuSENRn9mDEN
+Sq6Yh5J9+plKPZ/g2G8ZBoF5ZdTTtwJ158P8qqiZrkyg1g9OXEABOcSMMN8CAwEA
+AaNCMEAwDwYDVR0TAQH/BAUwAwEB/zAdBgNVHQ4EFgQUxLeT4eug9zxuB+/wBUug
+hOwC974wDgYDVR0PAQH/BAQDAgKEMA0GCSqGSIb3DQEBCwUAA4IBAQBgLPojObf7
+oR/w2nzEWNLVefxH0Beg44pa6wtPIGCjNrl1mvHQBVgNRHMVcc6ERrYGKG2gPS0y
+n1yqjg96sDlc9qcqTR/GWEu6AutFAIImYsX+7PoFiO4UsHSiaE+wQRy648iyVQn7
+And8+d4j/gepI7TDctFXhNuBALSoQH+Cy933SC7RuPKciQ8npQPy06U5rz95eQ7h
+9uluwL6B+1+1XncJeepSk9ALWN6EUxileuZJICqIvz0aa6KUTySs/VemcHTaR5Ms
+JP8GIOT8p2y95TcGJ2ygegYFHslQCoX00HK9Mio6lwr3k0oZkJF4kFGbvHi39+pH
+in0rQOHLy1vE
+-----END CERTIFICATE-----
+EOD;
+	}
+
+	static function uploadDir() {
+		return "/var/www/uploads/";
+	}
+
+	static function imageDir() {
+		return "/var/www/user_pics/";
+	}
+
+}

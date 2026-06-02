@@ -1,0 +1,69 @@
+Cronjob:
+	1x am Tag den langsamen der alle Bidler neu generiert
+	5 minütlich cronjob, der nur bilder genereirt mit tstamp änderung seit 86400 sekunden
+
+- Startseite und latest comments werdne statisch generiert durch einen Cronjob.
+	latest comments dann in zwei verschiedenen groessen halt, 1x breit
+	fuer startseite und 1x schmal für alle anderne seiten
+
+Ein Cronjob erstellt zu jedem Bild flatfiles mit related usw.
+
+- "Related"-Bilder gehen nach Tags, die bei bildern übereinstimmen
+
+Das passiert in unterschiedlichen Abständen:
+
+	- Pics by this user:  stündlich (?)
+		einfach alle pics von diesem user. das kann dann included werden
+	- by this species: täglich
+		einfach alle pics von dieser species, dito
+	- related (tags) täglich
+		einfach alle bilder wie oben
+
+das kommt in ein extra verzeichnis, z.B. fileadmin/generated
+
+In jede Seiten unten "generated at <uhrzeit>/datum".
+
+Wenn jemand ein comment postet, dann müssen comments zu diesem bild geupdated werden.
+
+cool wäre, wenn es pro Bild schon fertige Dateien geben würde. z.B. für die Listings.
+	fileadmin/generated/pics/<uid>/list_pic_20x40.html
+
+	fuer Listings einmal, und einmal fuer comments-preview (picture reply mit comments)
+		und einmal fuer related.
+
+	HTML-Files:
+
+	Pics:
+		Format fuer related usw. mit links bild, rechts schrift
+		Format fuer pagebrwoser
+
+		Format fuer altes_layout soltle vielleicht extra bezeichnet
+			werden, damit ich hinterher die dateien löschen kann,
+			aber trotzdem schonmal übernehmen kann fuer geschwindigkeit
+			layout single und layout listing
+
+	eventuell noch ne extra größe fuer das listing des jetzigen layouts, bis richtig fertig is.
+		dazu dann am besten besseren namen rein, damit ich hinterher alle lsöchen kann.
+
+oder so. dann wären die mysql-queries schenll (nur noch uid), und könnten einfach aus
+den dateien includen.  Dann ginge auch trotzdem ein pagebrowser.
+
+- pictures nach views und tstamp und rating zu sortieren geht super schnell.
+- pictures nach type einzurscärnken geht auch super schnell.
+
+Pictures nach Category einzuschränken geht langsam, aber da kann man vielleicht
+auch nochmal nen cronjob basteln, der die category regelmäßig updated und mit
+reinschreibt, dann wäre das auch kein Problem.
+Pictures nach Tags zu gruppieren wäre auch sehr schnell.
+
+Also: Planung:
+	dann zu jedem Bild ein Listing-Template fuer den browser genereiren, wo u.a.
+	auch rating usw. schon drin stehen.
+
+	dort auch schon preview-bilder fuer die webseiten und bbcode usw. generieren.
+	
+wann muss etwas vom bild geupdate dwerden?
+	
+- Bildänderungen (tstamp updaten)
+- neue comments
+

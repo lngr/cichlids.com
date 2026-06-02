@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>cichlids.com – Legacy-Bestandsaufnahme</title>
+<style>
+  :root{
+    --bg:#0e1116; --panel:#161b22; --panel2:#1c232d; --line:#2b3440;
+    --txt:#e6edf3; --muted:#9aa7b4; --accent:#1f9cf0; --accent2:#36c2a6;
+    --ok:#3fb950; --warn:#d29922; --bad:#f85149; --info:#6e7bf2;
+    --chip:#21303f;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--txt);
+    font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  header{padding:26px 20px 18px;border-bottom:1px solid var(--line);
+    background:linear-gradient(135deg,#11203a,#0e1116 60%)}
+  header h1{margin:0 0 4px;font-size:24px}
+  header .sub{color:var(--muted);font-size:13px}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+  nav.tabs{position:sticky;top:0;z-index:10;background:var(--bg);
+    border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:4px;padding:8px 0}
+  nav.tabs button{background:var(--panel);color:var(--muted);border:1px solid var(--line);
+    border-radius:8px;padding:7px 12px;font-size:13px;cursor:pointer}
+  nav.tabs button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+  section.tab{display:none;padding:22px 0 60px}
+  section.tab.active{display:block}
+  h2{font-size:20px;margin:6px 0 14px;border-left:3px solid var(--accent);padding-left:10px}
+  h3{font-size:16px;margin:22px 0 8px;color:#cfe6ff}
+  p{margin:8px 0}
+  .muted{color:var(--muted)}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:14px 0}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px}
+  .card .n{font-size:24px;font-weight:700}
+  .card .l{color:var(--muted);font-size:12px;margin-top:2px}
+  table{border-collapse:collapse;width:100%;margin:12px 0;font-size:13.5px;background:var(--panel);
+    border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  th,td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:var(--panel2);color:#cfe6ff;font-weight:600}
+  tr:last-child td{border-bottom:none}
+  code,kbd{background:#0b0f14;border:1px solid var(--line);border-radius:5px;padding:1px 5px;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12.5px}
+  pre{background:#0b0f14;border:1px solid var(--line);border-radius:8px;padding:12px;overflow:auto;font-size:12.5px}
+  .tag{display:inline-block;padding:1px 8px;border-radius:20px;font-size:11.5px;border:1px solid var(--line);background:var(--chip)}
+  .ok{color:var(--ok)} .warn{color:var(--warn)} .bad{color:var(--bad)} .info{color:var(--info)}
+  .b-ok{border-color:#234d2b;background:#15251a;color:#aef0b8}
+  .b-warn{border-color:#5a4a1a;background:#2a2410;color:#f0d79a}
+  .bad-box{border-color:#5a2222;background:#2a1414;color:#f6b3ae}
+  .callout{border:1px solid var(--line);border-left:4px solid var(--accent);background:var(--panel);
+    border-radius:8px;padding:12px 14px;margin:14px 0}
+  .callout.good{border-left-color:var(--ok)} .callout.warn{border-left-color:var(--warn)}
+  .callout.bad{border-left-color:var(--bad)}
+  details{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:8px 12px;margin:10px 0}
+  summary{cursor:pointer;font-weight:600;color:#cfe6ff}
+  .bar-row{display:flex;align-items:center;gap:8px;margin:3px 0;font-size:12.5px}
+  .bar-row .lab{width:120px;color:var(--muted);text-align:right}
+  .bar-row .barwrap{flex:1;background:#0b0f14;border-radius:4px;overflow:hidden}
+  .bar-row .bar{height:16px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+  .bar-row .val{width:64px}
+  .flow text{fill:var(--txt);font-size:12px}
+  .flow .box{fill:var(--panel2);stroke:var(--line)}
+  .flow .edge{fill:var(--panel);stroke:var(--accent)}
+  .flow .lab{fill:var(--muted);font-size:10.5px}
+  .toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 16px}
+  .toolbar button{background:var(--panel2);color:var(--txt);border:1px solid var(--line);
+    border-radius:8px;padding:6px 11px;font-size:12.5px;cursor:pointer}
+  .toolbar button:hover{border-color:var(--accent)}
+  footer{border-top:1px solid var(--line);padding:18px 0;color:var(--muted);font-size:12px}
+  a{color:var(--accent)}
+  ul{margin:8px 0 8px 18px} li{margin:3px 0}
+  @media(max-width:720px){.bar-row .lab{width:84px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>🐟 cichlids.com — Legacy-Bestandsaufnahme</h1>
+    <div class="sub">Foto-Sharing-Community für Buntbarsch-Enthusiasten · Datenquelle: Host-Backup <b>frontosa</b> (2023-09-20) inkl. Web-Baum &amp; Quellcode-Repos · seit 2023 offline</div>
+  </div>
+</header>
+
+<div class="wrap">
+<nav class="tabs" id="tabs">
+  <button data-t="ov" class="active">Übersicht</button>
+  <button data-t="arch">Architektur</button>
+  <button data-t="src">Quellcode</button>
+  <button data-t="db">Datenbank</button>
+  <button data-t="img">Bilder</button>
+  <button data-t="users">Nutzer &amp; Auth0</button>
+  <button data-t="vision">Vision &amp; Features</button>
+  <button data-t="loc">Daten &amp; Speicherorte</button>
+  <button data-t="mig">Migration</button>
+  <button data-t="sec">Sicherheit</button>
+</nav>
+
+<div class="toolbar">
+  <button onclick="copyMd()">⧉ Copy as Markdown</button>
+  <button onclick="copyJson()">⧉ Copy as JSON</button>
+  <span class="muted" id="copynote" style="align-self:center"></span>
+</div>
+
+<!-- ============ ÜBERSICHT ============ -->
+<section class="tab active" id="ov">
+  <h2>Überblick</h2>
+  <p><b>cichlids.com</b> ist eine seit den 2000er-Jahren bestehende, große englischsprachige Foto-Sharing-
+  und Bewertungs-Community für Buntbarsch-Halter. Nutzer laden Fotos ihrer Fische und Aquarien hoch,
+  ordnen sie einer <b>Spezies-Taxonomie</b> zu, bewerten und <b>kommentieren</b> sie und pflegen
+  <b>Tank-Profile</b>. Technische Basis ist eine TYPO3-4.x-Anwendung (Extension <code>user_cichlids</code>),
+  überlagert von einem modernen Angular-Frontend mit PHP-REST-API, einem dynamischen Bildserver,
+  AWS-Lambda-Diensten und Auth0-Login.</p>
+
+  <div class="cards">
+    <div class="card"><div class="n">11.948</div><div class="l">Nutzer</div></div>
+    <div class="card"><div class="n">189.571</div><div class="l">Bilder (180.455 aktiv)</div></div>
+    <div class="card"><div class="n">1.647.849</div><div class="l">Kommentare</div></div>
+    <div class="card"><div class="n">6.729</div><div class="l">Aquarien</div></div>
+    <div class="card"><div class="n">829</div><div class="l">Spezies</div></div>
+    <div class="card"><div class="n">≈235 GB</div><div class="l">Bild-Originale</div></div>
+  </div>
+
+  <h3>Stand der Datenbasis</h3>
+  <div class="callout good">
+    <b>Die Datenbasis ist vollständig und konsistent verfügbar.</b> Alle drei Produktiv-Datenbanken
+    sind charset-korrekt (kein Mojibake) in einem MySQL-5.7-Stack wiederhergestellt, der Bildbestand
+    (≈235&nbsp;GB) liegt entpackt vor, und der <b>komplette Anwendungs-Quellcode</b> ist vorhanden
+    (Frontend, PHP-API, TYPO3-Site samt Custom-Extension, Forum, Serverless-Teile).
+  </div>
+  <ul>
+    <li><b>Datenbanken:</b> <code>cichlids_typo3</code> (Kerndaten), <code>cichlids_phorum5</code> (Forum),
+      <code>cichlids</code> (leerer Event-Store des unfertigen .NET-Prototyps) — laufend in MySQL 5.7 + phpMyAdmin.</li>
+    <li><b>Bilder:</b> Original-Dateien praktisch vollständig erhalten; die Resize-Pipeline überschreibt
+      Originale prinzipbedingt nie (separater Cache).</li>
+    <li><b>Quellcode:</b> Angular-7-Frontend, PHP-Slim-API, TYPO3-Extension <code>user_cichlids</code>,
+      Resize-Bibliothek <code>libcichlids</code>, AWS-Lambda-Dienste, Phorum-Forum.</li>
+    <li><b>Auth0-Export</b> (12.147 Konten) liegt vor.</li>
+  </ul>
+
+  <div class="callout">
+    <b>Ziel:</b> Eine moderne <b>Mobile-First-App</b> („Instagram für Buntbarsch-Enthusiasten") auf Basis
+    dieser Bestandsdaten. Beim Deployment ist nur eine einmalige Datenmigration aus dem aktuellen Stand nötig.
+  </div>
+</section>
+
+<!-- ============ ARCHITEKTUR ============ -->
+<section class="tab" id="arch">
+  <h2>Architektur</h2>
+  <p>Öffentlicher TLS-Endpunkt ist <b>nginx</b> (Edge/Router) auf CentOS 6.10, das pfadbasiert auf fünf
+  lokal gebundene Backend-Container routet. Daten liegen in MySQL und im Dateisystem; Original-Bilder
+  werden über einen dynamischen Bildserver in beliebigen Größen ausgeliefert.</p>
+
+  <svg class="flow" viewBox="0 0 980 430" width="100%" role="img" aria-label="Architektur-Diagramm">
+    <rect class="box" x="20" y="180" rx="8" width="120" height="48"/>
+    <text x="80" y="200" text-anchor="middle">Browser /</text>
+    <text x="80" y="216" text-anchor="middle">Mobile</text>
+    <rect class="edge" x="190" y="170" rx="8" width="140" height="68"/>
+    <text x="260" y="196" text-anchor="middle">nginx (TLS-Edge)</text>
+    <text x="260" y="214" text-anchor="middle" class="lab">www.cichlids.com :443</text>
+    <text x="260" y="228" text-anchor="middle" class="lab">pfadbasiertes Routing</text>
+    <line x1="140" y1="204" x2="190" y2="204" stroke="#1f9cf0"/>
+    <g>
+      <rect class="box" x="420" y="20"  rx="7" width="220" height="52"/>
+      <text x="430" y="40">Angular 7 SSR (Node)</text>
+      <text x="430" y="58" class="lab">:8084 · „/" catch-all</text>
+      <rect class="box" x="420" y="86" rx="7" width="220" height="52"/>
+      <text x="430" y="106">PHP-API (Slim 3)</text>
+      <text x="430" y="124" class="lab">PHP5.6+ImageMagick · :8081 · „/api"</text>
+      <rect class="box" x="420" y="152" rx="7" width="220" height="52"/>
+      <text x="430" y="172">.NET-Prototyp (Orleans)</text>
+      <text x="430" y="190" class="lab">:8086 · „/api2" · ohne Fachlogik</text>
+      <rect class="box" x="420" y="218" rx="7" width="220" height="52"/>
+      <text x="430" y="238">nginx-image-server</text>
+      <text x="430" y="256" class="lab">small_light · :8082 · „/p/…"</text>
+      <rect class="box" x="420" y="284" rx="7" width="220" height="52"/>
+      <text x="430" y="304">Apache/TYPO3 4.x</text>
+      <text x="430" y="322" class="lab">:8080 · „/fileadmin,/uploads"</text>
+      <rect class="box" x="420" y="350" rx="7" width="220" height="52"/>
+      <text x="430" y="370">AWS Lambda (C#)</text>
+      <text x="430" y="388" class="lab">Member-Settings · SNS/SQS · Mailgun</text>
+    </g>
+    <g stroke="#2b3440">
+      <line x1="330" y1="200" x2="420" y2="46"/>
+      <line x1="330" y1="202" x2="420" y2="112"/>
+      <line x1="330" y1="204" x2="420" y2="178"/>
+      <line x1="330" y1="206" x2="420" y2="244"/>
+      <line x1="330" y1="210" x2="420" y2="310"/>
+    </g>
+    <rect class="box" x="720" y="86" rx="7" width="200" height="60" style="fill:#13233a"/>
+    <text x="730" y="110">MySQL 5.7</text>
+    <text x="730" y="128" class="lab">cichlids_typo3 / _phorum5</text>
+    <text x="730" y="142" class="lab">/ cichlids (leer)</text>
+    <rect class="box" x="720" y="210" rx="7" width="200" height="60" style="fill:#13233a"/>
+    <text x="730" y="234">Dateispeicher</text>
+    <text x="730" y="252" class="lab">user_pics (Originale)</text>
+    <text x="730" y="266" class="lab">+ /p Resize-Cache</text>
+    <g stroke="#36c2a6">
+      <line x1="640" y1="112" x2="720" y2="116"/>
+      <line x1="640" y1="178" x2="720" y2="120"/>
+      <line x1="640" y1="244" x2="720" y2="240"/>
+      <line x1="640" y1="112" x2="720" y2="236"/>
+    </g>
+  </svg>
+
+  <h3>Komponenten</h3>
+  <table>
+    <tr><th>Container</th><th>Technologie</th><th>Port</th><th>Rolle</th></tr>
+    <tr><td>cich-node-prod</td><td>Angular 7 + Universal SSR (Node, PM2)</td><td>8084</td><td>Frontend, Catch-all „/"</td></tr>
+    <tr><td>cichlids-api</td><td><b>PHP 5.6, Slim 3</b> + ImageMagick (Apache/CentOS 6)</td><td>8081</td><td>REST-API „/api" (Bilder, Tanks, Kommentare, Upload, User)</td></tr>
+    <tr><td>nginx-image-server</td><td>ngx_small_light</td><td>8082</td><td>On-the-fly Resize/Crop „/p/…" aus Originalen</td></tr>
+    <tr><td>Apache/TYPO3</td><td>TYPO3 4.x, PHP5, GD (Ext <code>user_cichlids</code>)</td><td>8080</td><td>Legacy-Webroot, „/fileadmin,/uploads"</td></tr>
+    <tr><td>cichlidsbackend_api_1</td><td>.NET Core / Orleans</td><td>8086</td><td>„/api2" – Prototyp ohne Fachlogik (Event-Store leer)</td></tr>
+    <tr><td>phpmyadmin</td><td>phpMyAdmin</td><td>8085</td><td>DB-Admin</td></tr>
+  </table>
+  <p class="muted">Ergänzend: AWS-Lambda-Dienste (C#) für Member-Settings (API-Gateway, Auth0 + „PayingUsers"-Policy),
+  Login-Tracking (SQS→DynamoDB) und Kommentar-Mails (SNS/SQS→Mailgun). Die PHP-API publiziert dazu Events auf SNS.</p>
+
+  <div class="callout">Der Bildserver speichert <b>keine</b> vorgerenderten Thumbnails – Größen werden pro
+  Request aus dem Original erzeugt (Cache unter <code>/p</code>). Auf der Platte liegen die <b>Originale</b>.</div>
+
+  <h3>Domains</h3>
+  <table>
+    <tr><th>Host</th><th>Funktion</th></tr>
+    <tr><td>www.cichlids.com</td><td>Primäre öffentliche Site (kanonisch)</td></tr>
+    <tr><td>cichlids.com</td><td>Apex → 301 auf www</td></tr>
+    <tr><td>dev.cichlids.com</td><td>Staging/Dev</td></tr>
+    <tr><td>api.cichlids.fishauth.net / cichlids.fishauth.net</td><td>Auth/API-Host(s)</td></tr>
+  </table>
+  <p class="muted">Auth0-Tenant: <code>cichlids.eu.auth0.com</code>.</p>
+  <details><summary>vhost → Backend-Routing (www :443)</summary>
+  <table>
+    <tr><th>Pfad</th><th>Backend</th></tr>
+    <tr><td>/api</td><td>127.0.0.1:8081 (PHP Slim 3)</td></tr>
+    <tr><td>/api2</td><td>127.0.0.1:8086 (.NET-Prototyp)</td></tr>
+    <tr><td>/p/n/, /p/u/</td><td>127.0.0.1:8082 (Bildserver, 1y cache)</td></tr>
+    <tr><td>/fileadmin, /typo3temp, /uploads</td><td>127.0.0.1:8080 (TYPO3/Apache)</td></tr>
+    <tr><td>/ (catch-all)</td><td>127.0.0.1:8084 (Node SSR)</td></tr>
+  </table></details>
+</section>
+
+<!-- ============ QUELLCODE ============ -->
+<section class="tab" id="src">
+  <h2>Quellcode-Bestand</h2>
+  <p>Der vollständige Anwendungs-Quellcode liegt vor – im Web-Baum des Backups
+  (<code>/workspaces/_extract/data1/www/html/www-cichlids/</code>) sowie in separaten Repositories
+  (<code>/workspaces/legacy-source/</code>). Kuratierte, schlanke Kopien der Kernteile liegen unter
+  <code>workspace-legacy/app-source/</code>.</p>
+
+  <table>
+    <tr><th>Komponente</th><th>Technologie</th><th>Rolle</th><th>Ort</th></tr>
+    <tr><td><b>Frontend</b></td><td>Angular 7 + Universal SSR (TypeScript, Material/Fuse-Template), Auth0, FineUploader, Sentry</td><td>Web-/Mobile-UI</td><td>legacy-source/cichlids-com</td></tr>
+    <tr><td><b>PHP-REST-API</b></td><td>PHP, <b>Slim 3</b>, firebase/php-jwt + tuupola/slim-jwt-auth (Auth0-RS256), hashids, ramsey/uuid, aws-sdk-php</td><td>„/api": Bilder/Tanks/Kommentare/Upload/User</td><td>…/cichlids.extra/api · app-source/php-api</td></tr>
+    <tr><td><b>TYPO3-Extension <code>user_cichlids</code></b></td><td>TYPO3 4.x (pibase, pre-Extbase), pi1/pi2/pi3</td><td>Die eigentliche Sharing-App (Schema + Logik)</td><td>…/cichlids/typo3conf/ext · app-source/typo3-ext-user_cichlids</td></tr>
+    <tr><td><b>Resize-Bibliothek <code>libcichlids</code></b></td><td>PHP + ImageMagick (<code>cichlids_getImageFilename</code>)</td><td>Renditions-Cache (100×75 … 450×600)</td><td>…/libcichlids · app-source/libcichlids</td></tr>
+    <tr><td>AWS-Serverless</td><td>AWS Lambda (C#, .NET Core 2.1), Serverless FW, DynamoDB, SNS/SQS, Mailgun</td><td>Member-Settings, Login-Tracking, Kommentar-Mails</td><td>legacy-source/cichlids-serverless</td></tr>
+    <tr><td>Forum</td><td>Phorum 5.x (PHP)</td><td>Diskussionsforum „/disc"</td><td>…/cichlids.extra/phorum-5.2.17</td></tr>
+    <tr><td>TYPO3-Core(s)</td><td>typo3_src 4.1 / 4.3 / 4.4 / 4.5</td><td>CMS-Unterbau</td><td>…/www-cichlids/typo3_src-4.*</td></tr>
+    <tr><td>.NET-Prototyp</td><td>.NET Core 2.0, MS Orleans 2.1, CQRS/Event-Sourcing</td><td>Unfertiger Rewrite (nur „HelloWorld"-Beispiel, keine Fachlogik)</td><td>legacy-source/cichlids.backend</td></tr>
+  </table>
+
+  <h3>PHP-API – Endpunkte (Slim 3)</h3>
+  <ul>
+    <li><b>pictures</b>: list / view / edit / delete / discard / type + Kommentare</li>
+    <li><b>upload</b>: <code>/upload/files</code> (Fine Uploader) → <code>convertToPicture | TankPicture | ProfileImage | AvatarImage</code></li>
+    <li><b>tanks</b>: list / view / edit / delete, <code>addFromPicture</code>, Bildverwaltung, Kommentare</li>
+    <li><b>comments</b>: list / delete · <b>users</b>: <code>/userid/{id}</code>, <code>/authuser</code></li>
+  </ul>
+  <p class="muted">Auth via Auth0-JWT (RS256, In-Process-Verifikation; Rollen-Claim <code>http://www.cichlids.com/roles</code>).
+  Daten in <code>cichlids_typo3</code> (<code>user_cichlids_*</code>, <code>fe_users</code>, <code>fe_users_auth0</code>,
+  <code>tx_realurl_uniqalias</code> für Slugs). Uploads: <code>api_uploads</code> → <code>user_pics</code>.
+  Neue Kommentare/Logins werden auf AWS SNS publiziert (<code>sync_*.php</code>).</p>
+
+  <details><summary>TYPO3-Extension <code>user_cichlids</code> – Plugins</summary>
+  <ul>
+    <li><b>pi1</b>: Anzeige/Listing + Legacy-Moderation (xajax Report/Rate, Delete/Suspend)</li>
+    <li><b>pi2</b>: Upload/Bearbeitung von Bildern &amp; Tanks, Galerie-Verwaltung</li>
+    <li><b>pi3</b>: neuere OO-Rendering-Schicht (Tanks, Pictures, Profile, Species, Comments)</li>
+    <li>Definiert das komplette <code>user_cichlids_*</code>-Schema (<code>ext_tables.sql</code>, <code>tca.php</code>);
+      <code>banlist.php</code> = Spam-Filter.</li>
+  </ul></details>
+
+  <h3>Architektur-Generationen</h3>
+  <table>
+    <tr><th>Gen</th><th>Stack</th><th>Daten</th><th>Status</th></tr>
+    <tr><td>1</td><td>TYPO3 4.x (Ext <code>user_cichlids</code>) + Phorum-Forum, PHP/MySQL</td><td>cichlids_typo3, cichlids_phorum5</td><td>Datenbasis</td></tr>
+    <tr><td>2</td><td>Angular 7 SSR ⇄ PHP-Slim-API + nginx-image-server + AWS-Lambda + Auth0</td><td>cichlids_typo3 (gemeinsame Tabellen)</td><td><span class="ok">finaler Live-Stand</span></td></tr>
+    <tr><td>3</td><td>.NET Core + Orleans Event-Sourcing</td><td>cichlids (Event-Store, leer)</td><td><span class="bad">unfertiger Prototyp</span></td></tr>
+  </table>
+</section>
+
+<!-- ============ DATENBANK ============ -->
+<section class="tab" id="db">
+  <h2>Datenbanken</h2>
+  <p>MySQL-5.7-Stand, charset-verifiziert (z.B. <code>Güçhan</code>, <code>Miguel Ángel Aburto</code>
+  korrekt als UTF-8). TYPO3-Extension und PHP-API arbeiten auf denselben <code>user_cichlids_*</code>-Tabellen.</p>
+  <table>
+    <tr><th>Datenbank</th><th>Tabellen</th><th>Größe</th><th>Charset</th><th>Bedeutung</th></tr>
+    <tr><td><b>cichlids_typo3</b></td><td>101</td><td>~635 MB</td><td>utf8mb4_unicode_ci</td><td><span class="tag b-ok">Kerndaten</span> Sharing-App, Nutzer, Taxonomie</td></tr>
+    <tr><td>cichlids_phorum5</td><td>20</td><td>~428 MB</td><td>latin1</td><td>Forum: 65.545 Beiträge / 3.963 User</td></tr>
+    <tr><td>cichlids</td><td>9</td><td>~0</td><td>utf8</td><td>Event-Store des .NET-Prototyps – leer</td></tr>
+  </table>
+
+  <h3>Kern-Tabellen (<code>user_cichlids_*</code>)</h3>
+  <table>
+    <tr><th>Tabelle</th><th>Zeilen</th><th>Inhalt</th></tr>
+    <tr><td>user_cichlids_pictures</td><td>189.571 <span class="muted">(180.455 aktiv)</span></td><td><code>image</code>-Pfad, <code>fe_user</code>, <code>species</code>, <code>rating</code>, <code>views</code>, Titel/Beschreibung, Soft-Delete</td></tr>
+    <tr><td>user_cichlids_comments</td><td>1.647.849</td><td>Kommentare (type=1 Foto, sonst Tank); inkl. Rating, IP</td></tr>
+    <tr><td>user_cichlids_comments_rated</td><td>13.378</td><td>Bewertungen von Kommentaren</td></tr>
+    <tr><td>user_cichlids_tanks</td><td>6.729</td><td>Aquarien-Profile</td></tr>
+    <tr><td>user_cichlids_species (+_names/_genus_names/_common_name)</td><td>829 / 824 / 182 / 2</td><td>Taxonomie (Gattung/Art/Trivial/Morphe)</td></tr>
+    <tr><td>user_cichlids_species_pictures_mm</td><td>185.778</td><td>Bild ↔ Spezies</td></tr>
+    <tr><td>user_cichlids_gallery (+_pictures_mm)</td><td>263 / 1.039</td><td>Kuratierte Galerien</td></tr>
+    <tr><td>fe_users / fe_users_auth0</td><td>11.948 / 816</td><td>Nutzer (Unicode) / Auth0-<code>sub</code>→fe_user-Mapping</td></tr>
+  </table>
+  <div class="callout">Die TYPO3-Community-Extension <code>tx_cwtcommunity_*</code> (Alben, Buddylist, Nachrichten,
+  Gästebuch) ist <b>leer</b>. Maßgeblich ist <code>user_cichlids_*</code>. Das Forum (Phorum 5) ist eigenständig.</div>
+  <details><summary>Bild ↔ Datei-Mapping</summary>
+  <p><code>user_cichlids_pictures.image</code> = Pfad relativ zu <code>userpics/</code>, z.B.
+  <code>user_pics/&lt;fe_user&gt;/&lt;datei&gt;</code>. Vollpfad: <code>/workspaces/legacy-data/images/userpics/&lt;image&gt;</code>.</p></details>
+</section>
+
+<!-- ============ BILDER ============ -->
+<section class="tab" id="img">
+  <h2>Bilder: Originale vs. Resized</h2>
+  <div class="callout good"><b>Die Original-Bilder sind praktisch vollständig erhalten.</b> Die Resize-Pipeline
+  (<code>libcichlids</code>) liest aus dem Original und schreibt ausschließlich in einen separaten
+  Renditions-Cache – Originale werden im Normalbetrieb nie überschrieben.</div>
+
+  <div class="cards">
+    <div class="card"><div class="n">189.262</div><div class="l">Dateien auf Platte</div></div>
+    <div class="card"><div class="n ok">176.783</div><div class="l">echte Originale (&gt;600px)</div></div>
+    <div class="card"><div class="n warn">8.394</div><div class="l">klein ≤600px</div></div>
+    <div class="card"><div class="n bad">5</div><div class="l">aktive Bilder fehlen</div></div>
+    <div class="card"><div class="n">3.880</div><div class="l">verwaiste Dateien</div></div>
+  </div>
+
+  <h3>Befunde (DB ↔ Platte, 188.664 Verweise)</h3>
+  <table>
+    <tr><th>Befund</th><th>Anzahl</th><th>Bewertung</th></tr>
+    <tr><td>Datei vorhanden</td><td>185.382</td><td><span class="ok">98,3 %</span></td></tr>
+    <tr><td>davon Original (&gt;600px)</td><td>176.783</td><td><span class="ok">95,4 %</span></td></tr>
+    <tr><td>davon ≤600px (klein)</td><td>8.394 <span class="muted">(7.924 aktiv)</span></td><td><span class="warn">überwiegend klein-von-Herkunft (frühe Uploads)</span></td></tr>
+    <tr><td>– exakt 450×600-Signatur</td><td>~281 (max ~618)</td><td><span class="warn">theoret. Resize-Restfälle</span></td></tr>
+    <tr><td>Datei fehlt</td><td>3.279 <span class="muted">(nur 5 aktiv)</span></td><td><span class="ok">3.274 betreffen gelöschte Bilder</span></td></tr>
+    <tr><td>verwaiste Dateien</td><td>3.880</td><td>v.a. <code>api_uploads/chunks</code> (Upload-Temp)</td></tr>
+  </table>
+
+  <h3>Verteilung längste Bildkante (vorhandene DB-Bilder)</h3>
+  <div id="hist"></div>
+  <p class="muted">Schwerpunkt 2000–3999&nbsp;px → Kamera-Originale. Methodik &amp; Listen:
+  <code>tools/verify_images.py</code>, <code>findings/img_*.csv</code>.</p>
+
+  <details><summary>Einziges theoretisches Restrisiko</summary>
+  <p>Ein Crash-Recovery-Skript (<code>restore_images.php</code>) konnte historisch eine 450×600-Rendition
+  in einen Original-Slot kopieren. In der Datenbasis passen dazu max. ~281–618 Dateien
+  (<code>findings/img_suspect_resized.csv</code>). Plus 5 aktive Bilder ohne Datei (4 davon <code>hidden</code>).</p></details>
+</section>
+
+<!-- ============ USERS ============ -->
+<section class="tab" id="users">
+  <h2>Nutzer &amp; Auth0</h2>
+  <div class="cards">
+    <div class="card"><div class="n">12.147</div><div class="l">Auth0-Konten</div></div>
+    <div class="card"><div class="n">11.948</div><div class="l">fe_users (TYPO3)</div></div>
+    <div class="card"><div class="n">816</div><div class="l">verknüpft</div></div>
+    <div class="card"><div class="n ok">99,2 %</div><div class="l">E-Mail verifiziert</div></div>
+  </div>
+  <ul>
+    <li>Auth0-Export (<code>/workspaces/legacy-data/auth0/auth0-cichlids.json</code>): NDJSON, 12.147 Konten, <b>ohne Passwort-Hashes</b>.</li>
+    <li>95,3 % Username/Password, 2,6 % Google, 2,1 % Facebook. 99,2 % E-Mail verifiziert.</li>
+    <li>Kein Legacy-ID-Feld im Export → Zuordnung <code>Auth0 → fe_user → user_pics/&lt;id&gt;</code> via
+      <b>E-Mail-Join</b> bzw. <code>fe_users_auth0</code> (sub→uid).</li>
+  </ul>
+  <div class="callout warn"><b>Login-Migration:</b> bcrypt-Hash-Export bei Auth0 anfordern (nahtlos) oder
+  Passwort-Reset bei Erst-Login (geringes Risiko – 99,2 % verifizierte E-Mails). Social-Logins per OAuth
+  neu verknüpfen; ~75 Mehrfach-E-Mails → Account-Merge.</div>
+</section>
+
+<!-- ============ VISION ============ -->
+<section class="tab" id="vision">
+  <h2>Produktvision &amp; geplante Features</h2>
+  <p>Aus den Planungsnotizen (<code>features.txt</code>, <code>marketplace.txt</code>, <code>TODO.txt</code>,
+  <code>Blog-Themen.txt</code>). Die Vision verbindet <b>Flickr/Pinterest</b>-Sharing, <b>StackOverflow</b>-
+  Reputation/Q&amp;A und einen vertrauensbasierten <b>Marketplace</b> – als Roadmap für die neue App.</p>
+  <table>
+    <tr><th>Thema</th><th>Features</th><th>Bereits live?</th></tr>
+    <tr><td><b>Content / Sharing</b></td><td>Pictures &amp; Tanks; Sortierung Newest/Most-viewed/Top-rated (Zeitfenster); „Interesting" (personalisiert); Kommentare m. Bewertung; Pin→Galerie</td><td><span class="warn">teilweise</span></td></tr>
+    <tr><td><b>Social / Community</b></td><td>Follow/Followers, Photostream, Collections, private Nachrichten, Activity-Feed, Buddylist</td><td><span class="bad">überwiegend nein</span></td></tr>
+    <tr><td><b>Reputation &amp; Gamification</b></td><td>Reputation (Zeitfenster), Badges, Leaderboards (Top Reviewers/Taggers/Uploaders), Voting</td><td><span class="bad">nein</span></td></tr>
+    <tr><td><b>Q&amp;A</b></td><td>Fragen mit Bounty, Filter featured/unanswered/active, Tags, FAQ</td><td><span class="bad">nein</span></td></tr>
+    <tr><td><b>Discovery / Explore</b></td><td>Highlights, User-Galerien, Tag-Taxonomie (Seen/Arten), Badge-Übersicht</td><td><span class="warn">Galerien/Filter</span></td></tr>
+    <tr><td><b>Marketplace</b></td><td>„Trusted Profiles" (Vertrauen aus Fisch-/Tank-/Anlagen-Bildern + Expertenadvice + Empfehlungen)</td><td><span class="bad">nein</span></td></tr>
+    <tr><td><b>Notifications</b></td><td>Header-Indikatoren (PN, Freund-Post, Kommentar); E-Mail mit Opt-out</td><td><span class="warn">E-Mail (Lambda)</span></td></tr>
+    <tr><td><b>Monetarisierung</b></td><td>„PayingUsers"-Policy (Premium); Amazon-Affiliate-Blog „Aquariumbedarf" + Sub-Blogs</td><td><span class="warn">PayingUsers im Code</span></td></tr>
+    <tr><td><b>Ranking / ML</b></td><td>Online-Parameter-Selektion fürs „Interesting"-Ranking; Churn/Clustering; Polly</td><td><span class="bad">nein</span></td></tr>
+  </table>
+  <h3>Original-Notizen (Auszug)</h3>
+  <pre>Single-Picture → profile, follow, message, Photostream, Collections, Galleries, Tags, Favorites, Followers
+- Favourite  - Pin (to gallery; Tanks/Einrichtungsbeispiele zusammenstellen; wie Pinterest)
+Users (week..all time): Reputation / New users / Voters / Newest Comments
+Explore: Highlights · Galleries · Tags (wie StackOverflow) · Badges (wie StackOverflow)
+Marketplace: "Trusted profile" – Bilder von Fischen/Tanks/Anlage + Expertenadvice + Empfehlungen</pre>
+  <p class="muted">Zusatz-Asset: <code>Checklist_of_the_Cichlid_Fishes_of_Lake….pdf</code> = wissenschaftliche
+  Arten-Checkliste, nutzbar als Taxonomie-Datenquelle. Detail: <code>findings/09-vision-and-serverless.md</code>.</p>
+</section>
+
+<!-- ============ LOCATIONS ============ -->
+<section class="tab" id="loc">
+  <h2>Daten &amp; Speicherorte</h2>
+  <table>
+    <tr><th>Was</th><th>Ort</th><th>Größe</th></tr>
+    <tr><td>Bild-Originale</td><td><code>/workspaces/legacy-data/images/userpics/</code></td><td>~235 GB</td></tr>
+    <tr><td>MySQL-Daten (3 DBs)</td><td>Docker-Volume <code>cichlids-legacy_db_data</code></td><td>~1,3 GB</td></tr>
+    <tr><td>Web-Baum (TYPO3, PHP-API, Forum, Cores)</td><td><code>/workspaces/_extract/data1/www/html/www-cichlids/</code></td><td>~61 GB</td></tr>
+    <tr><td>Quellcode-Repos (Frontend, Serverless, .NET)</td><td><code>/workspaces/legacy-source/</code></td><td>~1,3 GB</td></tr>
+    <tr><td>Kuratierte Kern-Quellen</td><td><code>workspace-legacy/app-source/</code> (php-api, typo3-ext-user_cichlids, libcichlids, docker-web …)</td><td>~6 MB</td></tr>
+    <tr><td>Roh-DB-Dump</td><td><code>/workspaces/legacy-data/db-dump/frontosa-…sql.gz</code></td><td>400 MB</td></tr>
+    <tr><td>Auth0-Export</td><td><code>/workspaces/legacy-data/auth0/auth0-cichlids.json</code></td><td>4,3 MB</td></tr>
+    <tr><td>Detail-Analysen</td><td><code>workspace-legacy/findings/</code> (MD + CSVs)</td><td>~1,3 MB</td></tr>
+  </table>
+
+  <h3>MySQL-Stack starten</h3>
+  <pre>cd workspace-legacy/legacy-stack
+docker compose up -d        # MySQL 5.7 :3306 (root/legacy) + phpMyAdmin :8085</pre>
+</section>
+
+<!-- ============ MIGRATION ============ -->
+<section class="tab" id="mig">
+  <h2>Migration zur Mobile-First-App</h2>
+  <h3>Datenmodell-Mapping (Legacy → Neu)</h3>
+  <table>
+    <tr><th>Neu</th><th>Quelle</th><th>Hinweis</th></tr>
+    <tr><td>User / Profil</td><td>fe_users (+ fe_users_auth0, Auth0-Export)</td><td>Join über E-Mail; Legacy-uid als <code>legacy_id</code></td></tr>
+    <tr><td>Post / Foto</td><td>user_cichlids_pictures</td><td><code>image</code>→Objektspeicher; rating/views/title übernehmen</td></tr>
+    <tr><td>Kommentar</td><td>user_cichlids_comments</td><td>1,6 Mio; type=1→Foto sonst Tank; Spam/IP filtern</td></tr>
+    <tr><td>Spezies-Tag</td><td>user_cichlids_species(+names)/_pictures_mm</td><td>Taxonomie als Tag-/Kategoriensystem</td></tr>
+    <tr><td>Aquarium</td><td>user_cichlids_tanks</td><td>Optionales Tank-Profil</td></tr>
+    <tr><td>Like / Bewertung</td><td>rating/rating_count, comments_rated</td><td>In Like/Reaktions-Modell überführen</td></tr>
+    <tr><td>Forum (optional)</td><td>cichlids_phorum5.phorum_*</td><td>Separat / read-only-Archiv</td></tr>
+  </table>
+
+  <h3>Aus dem Quellcode nutzen</h3>
+  <ul>
+    <li><b>PHP-Slim-API als Referenz-Spezifikation:</b> Endpunkte, Upload-Flow (Fine Uploader →
+      convertTo…), Auth0-JWT-Verifikation und Datenzugriff sind dokumentiert nachvollziehbar.</li>
+    <li><b>Angular-7-Frontend</b> zeigt die real gebauten Flows (Galerien, Detail, Upload-Multi-Target,
+      Profile-Tabs, Moderation) – Vorlage für neue Mobile-Screens.</li>
+    <li><b>Resize-Logik (<code>libcichlids</code>)</b> + nginx-image-server als Muster für eine moderne
+      On-the-fly-Transformation (imgproxy/Thumbor/CDN).</li>
+    <li><b>AWS-Side-Effect-Muster</b> (SNS→SQS→Lambda für Login-Tracking &amp; Kommentar-Mails) als
+      Notification-Blaupause.</li>
+  </ul>
+
+  <h3>Bilder &amp; Login</h3>
+  <ul>
+    <li>Originale (~235 GB) nach Objektspeicher (S3/MinIO), Key = <code>user_pics/&lt;uid&gt;/&lt;datei&gt;</code>;
+      Unicode-/<code>%20</code>-Dateinamen beim Re-Key normalisieren.</li>
+    <li>Login: Auth0-bcrypt-Hash-Export oder Reset bei Erst-Login; Social re-link; Account-Merge.</li>
+  </ul>
+
+  <div class="callout"><b>Nächste Schritte:</b>
+    <ol>
+      <li>Datenqualität sichten (phpMyAdmin :8085): Spam/Test-Accounts, gelöschte Inhalte, Moderation.</li>
+      <li>Tech-Stack der neuen App festlegen (Backend/DB, Objektspeicher, IdP, Mobile-Framework).</li>
+      <li>ETL Legacy-MySQL → neues Schema (idempotent, <code>legacy_id</code>-Brücke).</li>
+      <li>Bild-Migration + Transform-Layer; Feature-Roadmap aus Tab „Vision" priorisieren.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ SECURITY ============ -->
+<section class="tab" id="sec">
+  <h2>Sicherheit – eingebettete Klartext-Secrets</h2>
+  <div class="callout bad"><b>Als kompromittiert behandeln und rotieren.</b> Quellcode und Backups enthalten
+  produktive Zugangsdaten im Klartext. <code>workspace-legacy/.gitignore</code> schützt die sensiblen
+  Dateien – vor jedem Commit prüfen.</div>
+  <table>
+    <tr><th>Secret</th><th>Fundstelle</th></tr>
+    <tr><td>DB-Passwort (PHP-API)</td><td>php-api/src/Db.php</td></tr>
+    <tr><td>AWS Access Key/Secret</td><td>php-api/src/Sns.php, sync_comments_sqs.php</td></tr>
+    <tr><td>Auth0-Verifikations-Zertifikat / Mgmt-Token</td><td>php-api/src/Config.php, admin-scripts/auth0-pw-change.php</td></tr>
+    <tr><td>MySQL-Passwort (Admin-Scripts)</td><td>admin-scripts/config.php</td></tr>
+    <tr><td>MySQL-Backup- / Hetzner-FTP-Credentials</td><td>mysql-backup.sh, duplicity-job.sh, backup-space.sh</td></tr>
+    <tr><td>Docker-Registry-Token</td><td>root/.docker/config.json</td></tr>
+    <tr><td>SSH Private Key</td><td>root/.ssh, alex/.ssh</td></tr>
+    <tr><td>PII / OAuth-Subjekt-IDs</td><td>SQL-Dump, Auth0-Export</td></tr>
+  </table>
+  <p class="muted">Empfehlung: alle Credentials rotieren/deaktivieren; PII DSGVO-konform behandeln
+  (Zweckbindung, Lösch-/Auskunftskonzept in der neuen App).</p>
+</section>
+
+<footer class="wrap">
+  cichlids.com Legacy-Bestandsaufnahme · Datenquelle: Host-Backup frontosa 2023-09-20 ·
+  Detail-Analysen unter <code>findings/</code>. Single-file HTML, offline lauffähig.
+</footer>
+</div>
+
+<script>
+const tabs=document.getElementById('tabs');
+tabs.addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b)return;
+  document.querySelectorAll('nav.tabs button').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('section.tab').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');
+  document.getElementById(b.dataset.t).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+
+const HIST=[["≤600 px",8394],["601–999",25731],["1000–1999",37859],
+  ["2000–2999",57290],["3000–3999",39781],["4000+ px",16741]];
+const max=Math.max(...HIST.map(h=>h[1]));
+document.getElementById('hist').innerHTML=HIST.map(([l,v])=>
+ `<div class="bar-row"><div class="lab">${l}</div>
+  <div class="barwrap"><div class="bar" style="width:${(v/max*100).toFixed(1)}%"></div></div>
+  <div class="val">${v.toLocaleString('de-DE')}</div></div>`).join('');
+
+const DATA={
+ datenquelle:"Host-Backup frontosa 2023-09-20 (Web-Baum + Quellcode-Repos)", offline_seit:2023,
+ nutzer:11948, auth0_konten:12147, auth0_verknuepft:816,
+ bilder_gesamt:189571, bilder_aktiv:180455, kommentare:1647849, tanks:6729, spezies:829,
+ bild_dateien:189262, originale_gt600:176783, klein_le600:8394, resize_signatur:281,
+ aktive_fehlend:5, verwaiste_dateien:3880, bilder_groesse_gb:235,
+ datenbanken:{cichlids_typo3:{tabellen:101,charset:"utf8mb4_unicode_ci"},
+   cichlids_phorum5:{tabellen:20,charset:"latin1",beitraege:65545},
+   cichlids:{tabellen:9,status:"leer (.NET-Prototyp Event-Store)"}},
+ stack:{frontend:"Angular 7 SSR (Node)", api:"PHP Slim 3 (/api, Auth0-JWT, AWS-SDK)",
+   bildserver:"nginx-image-server (/p, on-the-fly)", typo3:"TYPO3 4.x Ext user_cichlids",
+   serverless:"AWS Lambda (Member-Settings, Login-Tracking, Kommentar-Mails)",
+   dotnet:".NET/Orleans Prototyp ohne Fachlogik"},
+ quellcode_vorhanden:["Angular-Frontend","PHP-Slim-API","TYPO3-Ext user_cichlids","libcichlids (Resize)",
+   "AWS-Serverless","Phorum-Forum","TYPO3-Cores"],
+ vision_themen:["Content/Sharing","Social/Community","Reputation & Gamification","Q&A mit Bounty",
+   "Discovery/Explore","Marketplace (Trusted Profiles)","Notifications","Monetarisierung/Affiliate-Blog","Ranking/ML"],
+ fazit:"Datenbasis und vollstaendiger Anwendungs-Quellcode liegen vor; Originalbilder praktisch vollstaendig erhalten."
+};
+function MD(){return `# cichlids.com – Legacy-Bestandsaufnahme
+Datenquelle: ${DATA.datenquelle} · offline seit ${DATA.offline_seit}
+
+## Kennzahlen
+- Nutzer: ${DATA.nutzer} · Auth0-Konten: ${DATA.auth0_konten} (verknuepft ${DATA.auth0_verknuepft})
+- Bilder: ${DATA.bilder_gesamt} (aktiv ${DATA.bilder_aktiv}) · Kommentare: ${DATA.kommentare}
+- Tanks: ${DATA.tanks} · Spezies: ${DATA.spezies} · Bilddateien: ${DATA.bild_dateien} (~${DATA.bilder_groesse_gb} GB)
+
+## Stack (finaler Live-Stand)
+- Frontend: ${DATA.stack.frontend}
+- API: ${DATA.stack.api}
+- Bildserver: ${DATA.stack.bildserver}
+- TYPO3: ${DATA.stack.typo3}
+- Serverless: ${DATA.stack.serverless}
+- .NET: ${DATA.stack.dotnet}
+
+## Datenbanken
+- cichlids_typo3: 101 Tabellen (utf8mb4) – Kerndaten
+- cichlids_phorum5: 20 Tabellen (latin1) – Forum, 65545 Beitraege
+- cichlids: 9 Tabellen – Event-Store des .NET-Prototyps (leer)
+
+## Bilder
+- Originale (>600px): ${DATA.originale_gt600} · klein <=600px: ${DATA.klein_le600} (450x600-Signatur ~${DATA.resize_signatur})
+- aktive fehlend: ${DATA.aktive_fehlend} · verwaiste Dateien: ${DATA.verwaiste_dateien}
+
+## Vorhandener Quellcode
+${DATA.quellcode_vorhanden.map(t=>"- "+t).join("\n")}
+
+## Vision / Feature-Themen
+${DATA.vision_themen.map(t=>"- "+t).join("\n")}
+
+## Fazit
+${DATA.fazit}`;}
+function note(t){const n=document.getElementById('copynote');n.textContent=t;setTimeout(()=>n.textContent='',2000);}
+function copyMd(){navigator.clipboard.writeText(MD()).then(()=>note('✓ Markdown kopiert'));}
+function copyJson(){navigator.clipboard.writeText(JSON.stringify(DATA,null,2)).then(()=>note('✓ JSON kopiert'));}
+</script>
+</body>
+</html>
