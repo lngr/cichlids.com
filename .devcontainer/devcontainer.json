@@ -1,0 +1,28 @@
+{
+  "name": "cichlids",
+  "dockerComposeFile": ["docker-compose.yml", "docker-compose.workspace.yml", "docker-compose.local.yml"],
+  "service": "dev",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "runServices": ["dev"],
+
+  "initializeCommand": "bash ${localWorkspaceFolder}/.devcontainer/init-worktree.sh",
+
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/node:1": {},
+    "ghcr.io/eitsupi/devcontainer-features/jq-likes:2": {},
+    "ghcr.io/devcontainers/features/docker-in-docker:2": { "dockerDashComposeVersion": "v2" }
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": []
+    }
+  },
+  "containerEnv": {
+    "TZ": "Europe/Berlin"
+  },
+  "postCreateCommand": "bash -lc 'bash .devcontainer/postCreateCommand.sh'",
+  "postStartCommand": "bash -lc 'bash .devcontainer/postStartCommand.sh'",
+  "remoteUser": "vscode"
+}

@@ -1,0 +1,22 @@
+name: ${COMPOSE_PROJECT_NAME:-devcontainer-cichlids}
+
+services:
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    init: true
+    privileged: true
+    volumes:
+      - ../..:/workspaces
+      # .git mounted rw via parent volume
+      - ~/.gitconfig:/home/vscode/.gitconfig:cached
+    command: sleep infinity
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - devnet
+
+networks:
+  devnet:
+    driver: bridge
