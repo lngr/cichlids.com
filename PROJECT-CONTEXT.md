@@ -18,6 +18,8 @@ Welche Quelle beantwortet welche Frage:
 
 | Frage | Quelle |
 |---|---|
+| **Architektur-Entscheidungen** (Stack, Hosting/Auslieferung, Event-Driven, GitOps, KI-Agenten, Video, Test-First) | **`adr/`** (ADR-0001–0012, Einstieg `adr/index.md`) |
+| **Transformations-Roadmap** (Legacy→neu: Domänenmodell, ETL, Auth0→Keycloak, Phasen) | **`PLAN.md`** |
 | Schnellüberblick + Arbeitskonventionen | `CLAUDE.md` |
 | Gesamter Projektkontext (Architektur, DB, Bilder, Auth0, Orte, Gotchas) | `PROJECT-CONTEXT.md` (diese Datei) |
 | Visueller Report mit Tabs/Diagrammen | `workspace-legacy/cichlids-legacy-bestandsaufnahme.html` |
