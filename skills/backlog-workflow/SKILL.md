@@ -48,7 +48,7 @@ Spezifikation vor Code – in dieser Reihenfolge:
    (`-s`, `--check-ac <index>`, `--check-dod <index>`) passieren **im Feature-Branch**
    zusammen mit Feature und Test – Details siehe „Verknuepfung mit Test und Merge-Ablauf".
 
-Dieser Ablauf setzt die Architektur-Entscheidungen in `adr/` operativ um – insbesondere die
+Dieser Ablauf setzt die Architektur-Entscheidungen in `docs/adr/` operativ um – insbesondere die
 Teststrategie und Definition of Done (ADR-0003), das E2E-Werkzeug Maestro (ADR-0004) und die
 User-Story-/Spec-Verwaltung (ADR-0015).
 

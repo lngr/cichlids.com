@@ -44,7 +44,7 @@ if [ -f "/usr/share/zoneinfo/$TZ" ]; then
   echo "$TZ" | sudo tee /etc/timezone >/dev/null 2>/dev/null || true
 fi
 
-# Provide the Backlog.md CLI (user stories / spec management; see adr/0015).
+# Provide the Backlog.md CLI (user stories / spec management; see docs/adr/0015).
 # Installed into $HOME/.local (already on PATH above) so it is available to humans
 # in the container and as the `backlog mcp` server the coding agent uses via .mcp.json.
 if ! command -v backlog >/dev/null 2>&1; then

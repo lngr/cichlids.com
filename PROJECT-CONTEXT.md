@@ -18,9 +18,10 @@ Welche Quelle beantwortet welche Frage:
 
 | Frage | Quelle |
 |---|---|
-| **Architektur-Entscheidungen** (Stack, Hosting/Auslieferung, Event-Driven, GitOps, KI-Agenten, Video, Backup/DR, Destruktiv-Schutz, Test-First, User Stories/Specs) | **`adr/`** (ADR-0001–0015, Einstieg `adr/index.md`) |
+| **Architektur-Entscheidungen** (Stack, Hosting/Auslieferung, Event-Driven, GitOps, KI-Agenten, Video, Backup/DR, Destruktiv-Schutz, Test-First, User Stories/Specs) | **`docs/adr/`** (ADR-0001–0015, Einstieg `docs/adr/index.md`) |
+| **Produktvision / PMF** (Engagement-Logik, „ein Becken – zwei Blickwinkel", Epics — was/warum für Nutzer) | **`PRODUCT-VISION.md`** |
 | **Transformations-Roadmap** (Legacy→neu: Domänenmodell, ETL, Auth0→Keycloak, Phasen) | **`PLAN.md`** |
-| **User Stories / Specs / Tasks** (Backlog.md, Definition of Done) | **`backlog/`** + `adr/0015`; Agent-Workflow in `AGENTS.md` |
+| **User Stories / Specs / Tasks** (Backlog.md, Definition of Done) | **`backlog/`** + `docs/adr/0015`; Agent-Workflow in `AGENTS.md` |
 | Schnellüberblick + Arbeitskonventionen + Agent-Workflow | `AGENTS.md` (`CLAUDE.md` verweist nur dorthin) |
 | Gesamter Projektkontext (Architektur, DB, Bilder, Auth0, Orte, Gotchas) | `PROJECT-CONTEXT.md` (diese Datei) |
 | Visueller Report mit Tabs/Diagrammen | `workspace-legacy/cichlids-legacy-bestandsaufnahme.html` |
@@ -148,6 +149,10 @@ Kern (`cichlids_typo3`): `user_cichlids_pictures` 189.571 (180.455 aktiv), `user
 ---
 
 ## 7. Produktvision / Roadmap
+
+> Die **aktuelle, verfeinerte** Produktrichtung (Zielbild, Engagement-Logik, Epics) steht in
+> [`PRODUCT-VISION.md`](PRODUCT-VISION.md). Die folgenden Notizen sind die **historischen
+> Eingangs-Ideen** der Legacy-Plattform.
 
 Original-Notizen im Repo unter `workspace-legacy/planning-notes/` (features, marketplace, Blog-Themen,
 root-/serverless-/frontend-TODO, frontend-notes); Synthese in `findings/09-vision-and-serverless.md`.

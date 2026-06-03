@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Generate the ADR list in adr/index.md from the ADR files themselves.
+"""Generate the ADR list in docs/adr/index.md from the ADR files themselves.
 
-The list of ADRs is derived from the files in ``adr/`` by globbing, so it never
+The list of ADRs is derived from the files in ``docs/adr/`` by globbing, so it never
 has to be maintained by hand. Each ADR's number, title, and status are read from
 its first heading (``# ADR-NNNN: <title>``) and its ``- **Status:** <status>``
 line. The rendered table is written between the marker comments in ``index.md``.
@@ -18,7 +18,7 @@ import re
 import sys
 from pathlib import Path
 
-ADR_DIR = Path(__file__).resolve().parent.parent / "adr"
+ADR_DIR = Path(__file__).resolve().parent.parent / "docs" / "adr"
 INDEX_FILE = ADR_DIR / "index.md"
 
 # ADR files are NNNN-kebab-title.md; 0000 is the template and is excluded.

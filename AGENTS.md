@@ -4,8 +4,9 @@
 strukturierte Wissensbasis. Abschnitt §0 enthält die **Dokumentations-Landkarte** (welche Quelle
 beantwortet welche Frage) und die empfohlene Lese-Reihenfolge.
 
-Weitere Quellen: Voll-Report `workspace-legacy/cichlids-legacy-bestandsaufnahme.html` · Detail-Analysen
-`workspace-legacy/findings/01–10` · geplante Features/Vision `findings/09` + `workspace-legacy/planning-notes/`.
+Weitere Quellen: **Produktvision/PMF (Zielbild, Engagement-Logik, Epics)** [`PRODUCT-VISION.md`](PRODUCT-VISION.md) ·
+Voll-Report `workspace-legacy/cichlids-legacy-bestandsaufnahme.html` · Detail-Analysen
+`workspace-legacy/findings/01–10` · historische Feature-Notizen `findings/09` + `workspace-legacy/planning-notes/`.
 
 ## Kurzfassung
 - Wiederbelebung der Foto-Sharing-Community **cichlids.com** (seit 2023 offline) als moderne **Mobile-First-App**.
@@ -24,7 +25,7 @@ Weitere Quellen: Voll-Report `workspace-legacy/cichlids-legacy-bestandsaufnahme.
 Die Entwicklung erfolgt **test-first und spec-driven**: Eine Story wird zuerst über einen
 durchgängigen Anwendungspfad im Given-When-Then-Format spezifiziert, dann nach dem
 Red-Green-Prinzip umgesetzt; „fertig" ist sie erst mit grünem End-to-End-Pfad und grünem
-CI-Gate. Maßgeblich sind die Architektur-Entscheidungen in [`adr/`](adr/), insbesondere ADR-0003
+CI-Gate. Maßgeblich sind die Architektur-Entscheidungen in [`docs/adr/`](docs/adr/), insbesondere ADR-0003
 (Teststrategie/Definition of Done) und ADR-0015 (User-Story-/Spec-Verwaltung).
 
 ## Skills
@@ -41,7 +42,7 @@ Die konkreten Verfahren liegen als versionierte **Agent Skills** (offenes Format
 ## User Stories / Specs / Tasks (Backlog.md)
 
 User Stories, Specs und Tasks werden mit **Backlog.md** verwaltet (Entscheidung:
-[`adr/0015`](adr/0015-user-story-and-spec-management.md)). Sie liegen als Markdown unter
+[`docs/adr/0015`](docs/adr/0015-user-story-and-spec-management.md)). Sie liegen als Markdown unter
 [`backlog/`](backlog/) und sind die einzige Quelle der Wahrheit für das, was gebaut wird.
 Stories werden auf **Englisch** verfasst (konsistent mit Code und ADRs).
 
@@ -64,11 +65,19 @@ Historie konsistent bleiben.
 5. **Gegen die Definition of Done abschließen:** Ein Task ist erst *Done*, wenn seine
    DoD-Checkliste erfüllt ist.
 
+### Lesbarkeit der Tasks
+
+Die `## Description` als **strukturiertes Markdown** schreiben, nicht als Fließtext-Block:
+Unter-Header (`###`/`####`) und Bullet-Listen für Ziel, Scope, Mechanik, betroffene Artefakte
+und Referenzen. So bleibt der Task auf dem Board und im Diff schnell erfassbar. Acceptance
+Criteria bleiben im **Given-When-Then**-Format im eigenen Abschnitt; Scope gehört in die
+Description, nicht in die DoD.
+
 ### Definition of Done (spiegelt ADR-0003)
 
 Die projektweite DoD-Checkliste ist in [`backlog/config.yml`](backlog/config.yml) konfiguriert und
 hängt an jedem Task. Sie kodiert den testgebundenen Akzeptanzvertrag aus
-[`adr/0003`](adr/0003-test-strategy-and-definition-of-done.md): jede Story spezifiziert mindestens
+[`docs/adr/0003`](docs/adr/0003-test-strategy-and-definition-of-done.md): jede Story spezifiziert mindestens
 einen **Given-When-Then**-Pfad, folgt **Red-Green** (zuerst fehlschlagender Test) und ist erst
 *Done* mit grünem **End-to-End-Test** für diesen Pfad, Unit-/Integration-Abdeckung der
 maßgeblichen Logik und vollständig grüner CI. Verhaltens-Scope gehört in die **Acceptance

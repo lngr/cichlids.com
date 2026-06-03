@@ -11,7 +11,7 @@ fi
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:${PATH:-}"
 export PATH="$HOME/.local/bin:$PATH"
 
-# Start the Backlog.md web UI as a background service (see adr/0015).
+# Start the Backlog.md web UI as a background service (see docs/adr/0015).
 # Coding agents use the MCP server; the web UI is the human board and is reachable
 # from the host via the port forwarded in devcontainer.json. Idempotent across restarts.
 start_backlog_browser() {

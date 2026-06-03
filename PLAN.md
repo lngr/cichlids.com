@@ -1,7 +1,7 @@
 # cichlids.com — Vogelperspektiven-Plan (Transformation Legacy → moderner Stack)
 
 > Entwickler-Planungsdokument (Roadmap & Sequenzierung). Die **verbindlichen Entscheidungen**
-> stehen in den ADRs unter [`adr/`](adr/index.md); der **Ist-Zustand der Legacy-Daten** in
+> stehen in den ADRs unter [`docs/adr/`](docs/adr/index.md); der **Ist-Zustand der Legacy-Daten** in
 > [`PROJECT-CONTEXT.md`](PROJECT-CONTEXT.md). Dieses Dokument verbindet beides zu einem
 > Umsetzungspfad. Sprache bewusst Deutsch (internes Planungsdoc); Code und ADRs sind Englisch.
 

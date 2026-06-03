@@ -15,7 +15,7 @@ the toolchain is installed and the Backlog.md web UI is launched as a background
 
 User stories, specs, and tasks are managed with [Backlog.md](https://github.com/MrLesk/Backlog.md).
 They live as Markdown under [`backlog/`](backlog/) and are the single source of truth for what
-gets built (see [`adr/0015`](adr/0015-user-story-and-spec-management.md)).
+gets built (see [`docs/adr/0015`](docs/adr/0015-user-story-and-spec-management.md)).
 
 - **Web board:** **http://localhost:6480** — started automatically on every container start and
   published to the host loopback by the devcontainer, so you only need to open the URL in your
