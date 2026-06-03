@@ -12,6 +12,12 @@ services:
       # .git mounted rw via parent volume
       - ~/.gitconfig:/home/vscode/.gitconfig:cached
     command: sleep infinity
+    # Publish the Backlog.md web UI to the host loopback so it is reachable at
+    # http://localhost:6480 regardless of editor. devcontainer.json's forwardPorts
+    # only applies when VS Code drives the container; this Docker-level publish also
+    # covers plain `docker compose` / exec-devcontainer usage.
+    ports:
+      - "127.0.0.1:6480:6480"
     extra_hosts:
       - "host.docker.internal:host-gateway"
     networks:
