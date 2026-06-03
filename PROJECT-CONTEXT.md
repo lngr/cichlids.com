@@ -9,7 +9,7 @@
 
 Diese Datei ist der zentrale Einstieg. Empfohlene Lese-Reihenfolge:
 
-1. `CLAUDE.md` (lädt automatisch) — Kurzfassung + Konventionen.
+1. `AGENTS.md` — Kurzfassung, Konventionen + Agent-Workflow (`CLAUDE.md` lädt automatisch und verweist nur dorthin).
 2. Dieser Abschnitt + der Rest von `PROJECT-CONTEXT.md` — vollständiger Kontext.
 3. `workspace-legacy/cichlids-legacy-bestandsaufnahme.html` — visueller Gesamt-Report (im Browser).
 4. Bei Bedarf gezielt in `workspace-legacy/findings/` (Detail) und `workspace-legacy/planning-notes/` (Feature-Ideen).
@@ -18,9 +18,10 @@ Welche Quelle beantwortet welche Frage:
 
 | Frage | Quelle |
 |---|---|
-| **Architektur-Entscheidungen** (Stack, Hosting/Auslieferung, Event-Driven, GitOps, KI-Agenten, Video, Test-First) | **`adr/`** (ADR-0001–0012, Einstieg `adr/index.md`) |
+| **Architektur-Entscheidungen** (Stack, Hosting/Auslieferung, Event-Driven, GitOps, KI-Agenten, Video, Backup/DR, Destruktiv-Schutz, Test-First, User Stories/Specs) | **`adr/`** (ADR-0001–0015, Einstieg `adr/index.md`) |
 | **Transformations-Roadmap** (Legacy→neu: Domänenmodell, ETL, Auth0→Keycloak, Phasen) | **`PLAN.md`** |
-| Schnellüberblick + Arbeitskonventionen | `CLAUDE.md` |
+| **User Stories / Specs / Tasks** (Backlog.md, Definition of Done) | **`backlog/`** + `adr/0015`; Agent-Workflow in `AGENTS.md` |
+| Schnellüberblick + Arbeitskonventionen + Agent-Workflow | `AGENTS.md` (`CLAUDE.md` verweist nur dorthin) |
 | Gesamter Projektkontext (Architektur, DB, Bilder, Auth0, Orte, Gotchas) | `PROJECT-CONTEXT.md` (diese Datei) |
 | Visueller Report mit Tabs/Diagrammen | `workspace-legacy/cichlids-legacy-bestandsaufnahme.html` |
 | Architektur / Komponenten | `findings/01-architecture.md`, `07-dotnet-backend.md`, `08-cichlids-com-app.md` |
@@ -185,6 +186,11 @@ cd /workspaces/cichlids.com/workspace-legacy/legacy-stack && docker compose up -
 # DB-Query (INLINE aufrufen — nicht über Shell-Variable)
 docker exec cichlids-legacy-db-1 mysql -uroot -plegacy --default-character-set=utf8mb4 \
   cichlids_typo3 -e "SELECT COUNT(*) FROM user_cichlids_pictures;"
+
+# Backlog.md (User Stories / Specs; Web-UI als Devcontainer-Service auf :6480, vom Host erreichbar)
+backlog task list                 # Tasks auflisten (TUI: backlog board)
+backlog task create "Title" --ac "Given … When … Then …" --priority high
+# Coding-Agent nutzt stattdessen den MCP-Server `backlog` (.mcp.json) — siehe AGENTS.md
 ```
 
 ---

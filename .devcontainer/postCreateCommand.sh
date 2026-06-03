@@ -44,6 +44,15 @@ if [ -f "/usr/share/zoneinfo/$TZ" ]; then
   echo "$TZ" | sudo tee /etc/timezone >/dev/null 2>/dev/null || true
 fi
 
+# Provide the Backlog.md CLI (user stories / spec management; see adr/0015).
+# Installed into $HOME/.local (already on PATH above) so it is available to humans
+# in the container and as the `backlog mcp` server the coding agent uses via .mcp.json.
+if ! command -v backlog >/dev/null 2>&1; then
+  echo "Installing Backlog.md CLI..."
+  NPM_CONFIG_PREFIX="$HOME/.local" npm i -g --progress=false --loglevel=warn backlog.md \
+    || echo "WARNING: backlog.md install failed (network?). Install later with: npm i -g backlog.md"
+fi
+
 # --- Personal overlay hook ---
 if [ -f ".devcontainer/postCreateCommand.local.sh" ]; then
   echo "=== Running personal postCreate hook ==="

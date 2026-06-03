@@ -1,0 +1,21 @@
+project_name: "cichlids.com"
+default_status: "To Do"
+statuses: ["To Do", "In Progress", "In Review", "Done"]
+labels: []
+date_format: yyyy-mm-dd
+max_column_width: 20
+definition_of_done:
+  - "At least one Given-When-Then acceptance criterion is specified"
+  - "A failing test was written first, then made to pass (red-green)"
+  - "An automated end-to-end test for the user path runs green"
+  - "Authoritative domain logic is covered by unit/integration tests"
+  - "All CI test suites are fully green"
+auto_open_browser: false
+default_port: 6480
+remote_operations: false
+auto_commit: false
+filesystem_only: false
+bypass_git_hooks: false
+check_active_branches: false
+active_branch_days: 30
+task_prefix: "task"

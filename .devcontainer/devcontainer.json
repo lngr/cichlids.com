@@ -22,6 +22,10 @@
   "containerEnv": {
     "TZ": "Europe/Berlin"
   },
+  "forwardPorts": [6480],
+  "portsAttributes": {
+    "6480": { "label": "Backlog.md Web UI", "onAutoForward": "silent" }
+  },
   "postCreateCommand": "bash -lc 'bash .devcontainer/postCreateCommand.sh'",
   "postStartCommand": "bash -lc 'bash .devcontainer/postStartCommand.sh'",
   "remoteUser": "vscode"
