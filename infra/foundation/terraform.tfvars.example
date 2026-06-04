@@ -1,0 +1,24 @@
+# Copy to terraform.tfvars and adjust. Secrets are NOT placed here: supply tokens and
+# keys via environment variables so they never land in a file:
+#   export TF_VAR_hcloud_token=...        # routine, least-privilege (no delete rights)
+#   export TF_VAR_hetznerdns_token=...
+#   export TF_VAR_s3_access_key=...
+#   export TF_VAR_s3_secret_key=...
+# The destroy-capable break-glass credential is never used here (ADR-0014).
+
+project_name = "cichlids"
+
+# Development default: small EU node. Override for the production node at go-live
+# (e.g. location = "ash", server_type = "cpx41") — see ADR-0009.
+location    = "nbg1"
+server_type = "cx33"
+
+ssh_public_key = "ssh-ed25519 AAAA... operator@host"
+
+dns_zone_name = "cichlids.com"
+
+s3_endpoint = "https://nbg1.your-objectstorage.com"
+s3_region   = "nbg1"
+
+# Object Lock stays off in development; enable for the production buckets at go-live.
+enable_object_lock = false

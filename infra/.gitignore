@@ -1,0 +1,14 @@
+# OpenTofu / Terraform working files and state. State and variable files can contain
+# resource identifiers and secrets and must never be committed; the dependency lock
+# (.terraform.lock.hcl) is committed and therefore not ignored.
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+crash.log
+crash.*.log
+
+# Variable files may hold tokens/keys; only the *.example template is committed.
+*.tfvars
+*.tfvars.json
+!*.tfvars.example
