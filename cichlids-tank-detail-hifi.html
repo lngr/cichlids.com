@@ -1,0 +1,312 @@
+
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>cichlids.com — Becken-Detail (High Fidelity)</title>
+<style>
+:root{
+  --bg:oklch(97% 0.006 230);--surface:#fff;--fg:oklch(24% 0.02 255);--muted:oklch(56% 0.016 255);
+  --border:oklch(91% 0.008 255);--accent:oklch(54% 0.10 205);--accent-weak:oklch(95% 0.03 205);
+  --accent-deep:oklch(40% 0.09 220);--warn:oklch(72% 0.13 70);--good:oklch(62% 0.12 150);
+  --on-accent:#fff;--font:-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{font-family:var(--font);background:radial-gradient(120% 80% at 50% -10%,oklch(28% 0.03 255),oklch(17% 0.02 255) 60%);min-height:100dvh;display:flex;flex-direction:column;align-items:center;gap:14px;padding:26px 16px}
+.cap{color:oklch(90% 0.01 255);text-align:center;max-width:460px}
+.cap .k{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:oklch(74% 0.09 205);font-weight:700}
+.cap h1{font-size:19px;margin:6px 0 4px;font-weight:800;letter-spacing:-.02em}
+.cap p{margin:0;font-size:12.5px;color:oklch(70% 0.015 255);line-height:1.5}
+
+.device{position:relative;width:412px;height:858px;flex:0 0 auto;border-radius:46px;padding:9px;background:linear-gradient(160deg,#1c1c1f,#090909);box-shadow:0 0 0 2px #000 inset,0 30px 70px -16px rgba(0,0,0,.55)}
+.punch{position:absolute;top:20px;left:50%;transform:translateX(-50%);width:11px;height:11px;border-radius:50%;background:#000;z-index:60}
+.screen{position:relative;width:100%;height:100%;background:var(--bg);color:var(--fg);border-radius:38px;overflow:hidden;display:flex;flex-direction:column}
+.content{flex:1 1 auto;overflow-y:auto;-webkit-overflow-scrolling:touch}
+
+/* floating app bar over hero */
+.abar{position:absolute;top:0;left:0;right:0;height:84px;z-index:30;display:flex;align-items:flex-end;gap:8px;padding:0 12px 8px;background:linear-gradient(180deg,rgba(8,16,24,.45),transparent)}
+.statusbar{position:absolute;top:0;left:0;right:0;height:34px;display:flex;align-items:flex-start;justify-content:space-between;padding:11px 22px 0;font-size:12.5px;font-weight:600;color:#fff;z-index:40;pointer-events:none}
+.statusbar svg{width:15px;height:11px;fill:#fff;vertical-align:middle}
+.statusbar .r{display:inline-flex;gap:5px;align-items:center}
+.cbtn{width:38px;height:38px;border-radius:50%;border:0;background:rgba(12,20,28,.42);backdrop-filter:blur(6px);display:grid;place-items:center;cursor:pointer}
+.cbtn svg{width:21px;height:21px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.abar .sp{flex:1}
+
+/* hero */
+.hero{position:relative;height:288px;flex:0 0 auto;overflow:hidden;
+  background:
+    radial-gradient(90% 70% at 18% 8%, oklch(86% 0.07 200 / .85), transparent 55%),
+    radial-gradient(80% 80% at 92% 18%, oklch(68% 0.12 210 / .75), transparent 50%),
+    radial-gradient(120% 100% at 50% 120%, oklch(34% 0.08 235), transparent 60%),
+    linear-gradient(176deg, oklch(60% 0.10 205), oklch(40% 0.085 228));
+}
+.hero .rays{position:absolute;inset:0;opacity:.35;mix-blend-mode:screen;background:repeating-linear-gradient(105deg,rgba(255,255,255,.5) 0 2px,transparent 2px 26px);transform:skewX(-8deg) scale(1.4);transform-origin:top}
+.hero .glint{position:absolute;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.5),transparent 60%);top:-40px;left:30px;filter:blur(6px)}
+.hero .scrim{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(6,14,22,.66))}
+.hero .cam{position:absolute;bottom:14px;right:14px;z-index:25;font-size:10.5px;color:#fff;background:rgba(12,20,28,.45);backdrop-filter:blur(6px);border-radius:999px;padding:6px 11px;display:inline-flex;gap:6px;align-items:center}
+.hero .cam svg{width:13px;height:13px;fill:none;stroke:#fff;stroke-width:1.8}
+.hero .info{position:absolute;left:18px;right:18px;bottom:16px;z-index:20;color:#fff}
+.hero .bio{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.04em;background:rgba(255,255,255,.16);backdrop-filter:blur(4px);padding:5px 11px;border-radius:999px}
+.hero h2{margin:9px 0 4px;font-size:27px;font-weight:800;letter-spacing:-.03em;text-shadow:0 2px 14px rgba(0,0,0,.3)}
+.hero .by{display:flex;align-items:center;gap:8px;font-size:12.5px;color:rgba(255,255,255,.86)}
+.hero .by .av{width:22px;height:22px;border-radius:50%;background:linear-gradient(140deg,#ffd9a8,#e8927c);border:1.5px solid rgba(255,255,255,.6)}
+
+/* segmented */
+.seg{display:flex;background:var(--accent-weak);border-radius:13px;padding:4px;margin:16px 18px 6px}
+.seg button{flex:1;border:0;background:none;min-height:40px;border-radius:10px;font:inherit;font-weight:600;font-size:13.5px;color:var(--accent);cursor:pointer;transition:.18s}
+.seg button.on{background:var(--surface);color:var(--fg);box-shadow:0 2px 8px -2px rgba(20,40,60,.18)}
+
+.pad{padding:14px 18px}
+.eyebrow{font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.muted{color:var(--muted)}
+
+/* specs */
+.specs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:2px}
+.spec{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:11px 6px;text-align:center;box-shadow:0 1px 2px rgba(20,40,60,.04)}
+.spec .n{font-weight:800;font-size:15px;letter-spacing:-.01em}
+.spec .l{font-size:9px;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;margin-top:3px}
+
+/* time machine */
+.tmcard{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:14px;box-shadow:0 6px 20px -14px rgba(20,40,60,.4)}
+.tmhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:11px}
+.film{display:flex;gap:6px}
+.frame{flex:1;aspect-ratio:3/4;border-radius:7px;background:linear-gradient(160deg,oklch(72% 0.09 205),oklch(46% 0.08 225));position:relative;opacity:.62;transition:.18s}
+.frame:nth-child(2n){background:linear-gradient(160deg,oklch(68% 0.10 200),oklch(42% 0.08 232))}
+.frame:nth-child(3n){background:linear-gradient(160deg,oklch(76% 0.07 198),oklch(50% 0.07 222))}
+.frame.cur{opacity:1;outline:2.5px solid var(--accent);outline-offset:2px}
+.scrub{width:100%;margin:14px 0 4px;accent-color:var(--accent)}
+.tmfoot{display:flex;align-items:center;gap:11px}
+.play{width:44px;height:44px;border-radius:50%;background:var(--accent);display:grid;place-items:center;flex:0 0 auto;box-shadow:0 8px 16px -6px color-mix(in oklab,var(--accent),transparent 30%);cursor:pointer}
+.play svg{width:17px;height:17px;fill:#fff;margin-left:2px}
+.tmdate{font-weight:700;font-size:14px}
+
+/* time-machine trigger preview */
+.tmtrigger{cursor:pointer}
+.tmpreview{position:relative;height:152px;border-radius:13px;overflow:hidden;margin-top:2px;background:linear-gradient(176deg,oklch(60% 0.10 205),oklch(40% 0.085 228))}
+.tmpreview .prays{position:absolute;inset:0;opacity:.3;mix-blend-mode:screen;background:repeating-linear-gradient(102deg,rgba(255,255,255,.5) 0 3px,transparent 3px 30px);transform:skewX(-8deg) scale(1.4);transform-origin:top}
+.tmpreview .tmsand{position:absolute;left:0;right:0;bottom:0;height:24%;background:linear-gradient(180deg,oklch(86% 0.05 80 / .75),oklch(80% 0.06 75 / .92))}
+.tmpreview .play.big{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:54px;height:54px;box-shadow:0 8px 24px -6px rgba(0,0,0,.5)}
+.tmprev-cap{position:absolute;left:13px;bottom:10px;color:#fff;font-size:12px;font-weight:600;text-shadow:0 1px 6px rgba(0,0,0,.5)}
+
+/* time-machine fullscreen player */
+.tmplayer{position:absolute;inset:0;z-index:80;background:#0a1016;display:none;flex-direction:column}
+.tmplayer.open{display:flex}
+.tmtop{display:flex;align-items:center;gap:12px;padding:14px 14px 10px;color:#fff;z-index:5}
+.tmtop .tmtitle{font-weight:700;font-size:14px}
+.cbtn.dark{background:rgba(255,255,255,.14)}
+.tmstage{position:relative;flex:1;overflow:hidden}
+.tmstage .scene{position:absolute;inset:0}
+.tmstage .scene.young{background:linear-gradient(180deg,oklch(72% 0.06 200),oklch(48% 0.07 222))}
+.tmstage .scene.mature{background:linear-gradient(180deg,oklch(54% 0.10 206),oklch(30% 0.09 234));opacity:0}
+.tmstage .prays{position:absolute;inset:0;opacity:.28;mix-blend-mode:screen;background:repeating-linear-gradient(102deg,rgba(255,255,255,.5) 0 3px,transparent 3px 32px);transform:skewX(-8deg) scale(1.5);transform-origin:top}
+.tmstage .tmsand{position:absolute;left:0;right:0;bottom:0;height:22%;background:linear-gradient(180deg,oklch(86% 0.05 80),oklch(76% 0.06 72))}
+.tmstage .growth{position:absolute;left:0;right:0;bottom:0;height:50%;transform-origin:bottom;transform:scaleY(.2);opacity:.15;background:radial-gradient(40% 100% at 14% 100%,oklch(52% 0.12 150 / .92),transparent 72%),radial-gradient(38% 92% at 40% 100%,oklch(46% 0.13 155 / .88),transparent 72%),radial-gradient(42% 100% at 68% 100%,oklch(54% 0.12 148 / .92),transparent 72%),radial-gradient(34% 86% at 90% 100%,oklch(48% 0.12 152 / .88),transparent 72%)}
+.fishlayer{position:absolute;inset:0}
+.fish{position:absolute;width:30px;height:13px;border-radius:50% / 60%;opacity:0;transition:opacity .25s;background:radial-gradient(circle at 32% 38%,oklch(82% 0.13 62),oklch(58% 0.18 33) 75%)}
+.fish:after{content:'';position:absolute;right:-7px;top:2px;border-left:9px solid oklch(58% 0.18 33);border-top:5px solid transparent;border-bottom:5px solid transparent}
+.bigdate{position:absolute;top:12px;left:0;right:0;text-align:center;color:#fff;font-weight:800;font-size:22px;letter-spacing:-.01em;text-shadow:0 2px 14px rgba(0,0,0,.55)}
+.tmctrl{padding:14px 18px 22px;background:#0a1016;color:#fff;display:flex;flex-direction:column;gap:9px}
+.tmctrl .row1{display:flex;align-items:center;gap:13px}
+#bigScrub{flex:1;accent-color:var(--accent)}
+.tmrange{display:flex;justify-content:space-between;font-size:10.5px;color:rgba(255,255,255,.6)}
+
+/* timeline */
+.tl{position:relative;margin-left:8px;padding-left:22px}
+.tl:before{content:'';position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--accent),var(--border))}
+.ev{position:relative;padding:0 0 18px;display:flex;gap:12px}
+.ev:before{content:'';position:absolute;left:-22px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--surface);border:2.5px solid var(--accent);box-shadow:0 0 0 4px var(--bg)}
+.ev.mil:before{background:var(--accent)}
+.ev .thumb{width:46px;height:46px;border-radius:10px;flex:0 0 auto;background:linear-gradient(150deg,oklch(70% 0.10 205),oklch(46% 0.08 226))}
+.ev.warm .thumb{background:linear-gradient(150deg,oklch(80% 0.12 60),oklch(58% 0.16 35))}
+.ev .dt{font-size:10.5px;color:var(--muted);letter-spacing:.03em}
+.ev .tx{font-weight:600;font-size:14px;margin-top:2px;line-height:1.3}
+.ev .badge{display:inline-block;margin-top:5px;font-size:9.5px;font-weight:800;letter-spacing:.04em;color:var(--accent);background:var(--accent-weak);padding:3px 9px;border-radius:999px;text-transform:uppercase}
+
+/* spotlight */
+.spot{position:relative;display:flex;gap:14px;align-items:center;background:linear-gradient(135deg,oklch(97% 0.02 205),oklch(95% 0.03 215));border:1px solid var(--border);border-radius:18px;padding:14px;overflow:hidden}
+.spot .ribbon{position:absolute;top:10px;right:-26px;transform:rotate(45deg);background:var(--accent);color:#fff;font-size:9px;font-weight:800;letter-spacing:.08em;padding:3px 30px;text-transform:uppercase}
+.spot .por{width:64px;height:64px;border-radius:50%;flex:0 0 auto;background:radial-gradient(circle at 35% 30%,oklch(82% 0.13 70),oklch(58% 0.19 33) 70%);box-shadow:inset 0 -6px 12px rgba(0,0,0,.25),0 4px 12px -4px rgba(180,80,40,.4)}
+.spot .nm{font-weight:800;font-size:15px}
+.spot .sci{font-style:italic;color:var(--muted);font-size:12.5px;margin-top:1px}
+
+/* inhabitants */
+.inh{display:flex;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--border)}
+.mono{width:40px;height:40px;border-radius:12px;flex:0 0 auto;display:grid;place-items:center;font-weight:800;font-size:13px;color:var(--accent);background:var(--accent-weak)}
+.inh .sci{font-weight:600;font-style:italic;font-size:13.5px}
+.inh .meta{font-size:11.5px;color:var(--muted);margin-top:1px}
+.inh .ct{margin-left:auto;font-weight:700;font-variant-numeric:tabular-nums;color:var(--muted)}
+
+.cta{display:flex;gap:10px;padding:6px 18px 22px}
+.btn{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;min-height:48px;border-radius:13px;border:1px solid var(--border);background:var(--surface);font:inherit;font-weight:600;font-size:14.5px;color:var(--fg);cursor:pointer}
+.btn.primary{background:var(--accent);color:#fff;border:0;box-shadow:0 10px 20px -10px color-mix(in oklab,var(--accent),transparent 20%)}
+.btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2}
+.hint{color:oklch(64% 0.015 255);font-size:12px;text-align:center;max-width:412px;line-height:1.5}
+.hint b{color:oklch(88% 0.01 255)}
+@media(max-height:920px){.device{transform:scale(.92);transform-origin:top center;margin-bottom:-68px}}
+</style>
+</head>
+<body>
+  <div class="cap">
+    <div class="k">cichlids.com · High Fidelity</div>
+    <h1>Becken-Detail — das Herzstück</h1>
+    <p>Hochauflösender Feinschliff des zentralen Screens. Aquatische Bildflächen sind gestaltete Platzhalter — echte Fotos lassen sich 1:1 einsetzen, sobald der Bild-Provider verbunden ist.</p>
+  </div>
+
+  <div class="device">
+    <span class="punch"></span>
+    <div class="screen">
+      <div class="statusbar"><span>9:41</span><span class="r">
+        <svg viewBox="0 0 15 11"><path d="M0 10h2V6H0v4zm4 1h2V4H4v7zm4 0h2V2H8v9zm4 0h2V0h-2v11z"/></svg>
+        <svg viewBox="0 0 15 11"><path d="M7.5 2C5 2 2.7 3 1 4.6L2 5.8C3.5 4.5 5.4 3.8 7.5 3.8s4 .7 5.5 2l1-1.2C12.3 3 10 2 7.5 2z"/></svg>
+        <svg viewBox="0 0 24 11"><rect x="0.5" y="0.5" width="20" height="10" rx="2.5" fill="none" stroke="#fff"/><rect x="21" y="3.5" width="2" height="4" rx="1" fill="#fff"/><rect x="2" y="2" width="15" height="7" rx="1" fill="#fff"/></svg>
+      </span></div>
+
+      <div class="abar">
+        <button class="cbtn" aria-label="Zurück"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <span class="sp"></span>
+        <button class="cbtn" aria-label="Teilen"><svg viewBox="0 0 24 24"><circle cx="6" cy="12" r="2.4"/><circle cx="18" cy="6" r="2.4"/><circle cx="18" cy="18" r="2.4"/><path d="m8 11 8-4M8 13l8 4"/></svg></button>
+        <button class="cbtn" aria-label="Einstellungen"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 4v2M12 18v2M4 12h2M18 12h2M6 6l1.5 1.5M16.5 16.5 18 18M18 6l-1.5 1.5M7.5 16.5 6 18"/></svg></button>
+      </div>
+
+      <div class="content">
+        <!-- HERO -->
+        <div class="hero">
+          <div class="rays"></div><div class="glint"></div><div class="scrim"></div>
+          <span class="cam"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="14" rx="3"/><circle cx="12" cy="13" r="3.4"/><path d="M8 6l1.5-2h5L16 6"/></svg> Titelbild ändern</span>
+          <div class="info">
+            <span class="bio">◷ Tanganjika-Biotop · seit Mär 2021</span>
+            <h2>Tanganjika 450 L</h2>
+            <div class="by"><span class="av"></span> Markus_TG · 2,1k Follower</div>
+          </div>
+        </div>
+
+        <!-- toggle -->
+        <div class="seg" id="seg"><button class="on">Story</button><button>Pflege</button></div>
+
+        <!-- specs -->
+        <div class="pad" style="padding-top:8px;padding-bottom:6px">
+          <div class="specs">
+            <div class="spec"><div class="n">450 L</div><div class="l">Volumen</div></div>
+            <div class="spec"><div class="n">150×60</div><div class="l">cm</div></div>
+            <div class="spec"><div class="n">7</div><div class="l">Arten</div></div>
+            <div class="spec"><div class="n">312</div><div class="l">Anerkennung</div></div>
+          </div>
+        </div>
+
+        <!-- time machine -->
+        <div class="pad" style="padding-top:8px;padding-bottom:6px">
+          <div class="tmcard tmtrigger" id="tmOpen">
+            <div class="tmhead"><span class="eyebrow">Time-Machine · Zeitraffer</span><span class="muted" style="font-size:11px">62 Fotos · 5 Jahre</span></div>
+            <div class="tmpreview">
+              <div class="prays"></div>
+              <div class="tmsand"></div>
+              <span class="play big" aria-label="Zeitraffer abspielen"><svg viewBox="0 0 24 24"><path d="M7 5l12 7-12 7z"/></svg></span>
+              <span class="tmprev-cap">5 Jahre Becken-Verlauf abspielen ›</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- timeline -->
+        <div class="pad" style="padding-bottom:4px">
+          <div class="eyebrow" style="margin-bottom:14px">Timeline</div>
+          <div class="tl">
+            <div class="ev warm"><span class="thumb"></span><div><div class="dt">Jun 2026</div><div class="tx">Leitmännchen voll ausgefärbt</div></div></div>
+            <div class="ev mil"><span class="thumb"></span><div><div class="dt">Nov 2025</div><div class="tx">Erste Nachzucht — 20+ Jungtiere</div><span class="badge">Meilenstein</span></div></div>
+            <div class="ev"><span class="thumb"></span><div><div class="dt">Mär 2025</div><div class="tx">Rescape der linken Felsseite</div></div></div>
+            <div class="ev mil"><span class="thumb"></span><div><div class="dt">Mär 2021</div><div class="tx">Becken eingerichtet</div><span class="badge">Start</span></div></div>
+          </div>
+        </div>
+
+        <!-- spotlight -->
+        <div class="pad" style="padding-top:6px;padding-bottom:8px">
+          <div class="eyebrow" style="margin-bottom:10px">Fisch-Spotlight</div>
+          <div class="spot">
+            <span class="por"></span>
+            <div><div class="nm">„Kasanga"</div><div class="sci">Tropheus moorii · Leitmännchen seit 2022</div></div>
+          </div>
+        </div>
+
+        <!-- inhabitants -->
+        <div class="pad" style="padding-top:6px">
+          <div class="eyebrow" style="margin-bottom:4px">Besatz · 7 Arten</div>
+          <div class="inh" style="border-top:0"><span class="mono">Tm</span><div><div class="sci">Tropheus moorii „Kasanga"</div><div class="meta">Kolonie · friedlich untereinander</div></div><span class="ct">12</span></div>
+          <div class="inh"><span class="mono">Ac</span><div><div class="sci">Altolamprologus calvus</div><div class="meta">Paar · Raubfisch, ruhig</div></div><span class="ct">2</span></div>
+          <div class="inh"><span class="mono">Nm</span><div><div class="sci">Neolamprologus multifasciatus</div><div class="meta">Schnecken-Kolonie · Sandzone</div></div><span class="ct">∞</span></div>
+          <div class="inh"><span class="mono">Jo</span><div><div class="sci">Julidochromis ornatus</div><div class="meta">Paar · Felszone</div></div><span class="ct">2</span></div>
+        </div>
+
+        <div class="cta">
+          <button class="btn"><svg viewBox="0 0 24 24"><path d="M14 4l6 6M4 20l1-4L16 5l3 3L8 19z"/></svg> Bearbeiten</button>
+          <button class="btn primary"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5v14"/></svg> Eintrag</button>
+        </div>
+      </div>
+
+      <!-- Time-Machine — Vollbild-Player -->
+      <div class="tmplayer" id="tmPlayer">
+        <div class="tmtop">
+          <button class="cbtn dark" id="tmClose" aria-label="Schließen"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+          <div class="tmtitle">Time-Machine · Tanganjika 450 L</div>
+        </div>
+        <div class="tmstage">
+          <div class="scene young"></div>
+          <div class="scene mature" id="mature"></div>
+          <div class="prays"></div>
+          <div class="tmsand"></div>
+          <div class="growth" id="growth"></div>
+          <div class="fishlayer">
+            <span class="fish" style="top:40%;left:14%"></span>
+            <span class="fish" style="top:56%;left:58%"></span>
+            <span class="fish" style="top:30%;left:74%"></span>
+            <span class="fish" style="top:64%;left:28%"></span>
+            <span class="fish" style="top:46%;left:44%"></span>
+            <span class="fish" style="top:72%;left:82%"></span>
+          </div>
+          <div class="bigdate" id="bigdate">Mär 2021</div>
+        </div>
+        <div class="tmctrl">
+          <div class="row1">
+            <button class="play" id="tmPlay" aria-label="Abspielen"><svg viewBox="0 0 24 24"><path d="M7 5l12 7-12 7z"/></svg></button>
+            <input type="range" id="bigScrub" min="0" max="1000" value="0">
+          </div>
+          <div class="tmrange"><span>Mär 2021 · Einrichtung</span><span>Jun 2026 · heute</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="hint"><b>Echte Fotos:</b> sobald der Bild-Provider verbunden ist (Einstellungen → AI Providers), ersetze ich Hero, Time-Machine-Frames, Timeline-Thumbnails und das Spotlight-Porträt durch generierte Aquarien-/Fisch-Bilder — Layout bleibt identisch.</p>
+
+<script>
+  var seg=document.getElementById('seg');
+  seg.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;seg.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b)});});
+  // Time-Machine player — continuous "film": scene crossfades young→mature,
+  // plants grow in, fish appear over time, date ticks monthly.
+  var MN=['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez'];
+  function dateFor(p){var t=2021*12+2+Math.round(p*63);return MN[t%12]+' '+Math.floor(t/12);}
+  var player=document.getElementById('tmPlayer'),mature=document.getElementById('mature'),
+      growth=document.getElementById('growth'),bigdate=document.getElementById('bigdate'),
+      bigScrub=document.getElementById('bigScrub'),fishes=document.querySelectorAll('.fish'),
+      tmPlay=document.getElementById('tmPlay');
+  var p=0,playing=false,last=0,DUR=11000;
+  var PLAY='<svg viewBox="0 0 24 24"><path d="M7 5l12 7-12 7z"/></svg>';
+  var PAUSE='<svg viewBox="0 0 24 24"><path d="M8 5h3v14H8zM13 5h3v14h-3z"/></svg>';
+  function render(){
+    mature.style.opacity=p;
+    growth.style.transform='scaleY('+(0.2+0.8*p)+')';
+    growth.style.opacity=(0.15+0.85*p);
+    fishes.forEach(function(f,i){f.style.opacity=Math.max(0,Math.min(1,(p-i*0.13)*4.5));});
+    bigdate.textContent=dateFor(p);
+    bigScrub.value=Math.round(p*1000);
+  }
+  function frame(ts){ if(!playing)return; if(!last)last=ts; p+=(ts-last)/DUR; last=ts; if(p>=1){p=1;render();stop();return;} render(); requestAnimationFrame(frame); }
+  function play(){ if(p>=1)p=0; playing=true; last=0; tmPlay.innerHTML=PAUSE; requestAnimationFrame(frame); }
+  function stop(){ playing=false; tmPlay.innerHTML=PLAY; }
+  tmPlay.addEventListener('click',function(){ playing?stop():play(); });
+  bigScrub.addEventListener('input',function(){ stop(); p=bigScrub.value/1000; render(); });
+  document.getElementById('tmOpen').addEventListener('click',function(){ player.classList.add('open'); p=0; render(); });
+  document.getElementById('tmClose').addEventListener('click',function(){ stop(); player.classList.remove('open'); });
+</script>
+</body>
+</html>

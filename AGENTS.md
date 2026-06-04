@@ -14,11 +14,33 @@ Voll-Report `workspace-legacy/cichlids-legacy-bestandsaufnahme.html` · Detail-A
 - Kerndaten: DB `cichlids_typo3`, Tabellen `user_cichlids_*` (189k Bilder, 1,6 Mio Kommentare, 11.948 Nutzer).
 - Bilder: `/workspaces/legacy-data/images/userpics/`. Kuratierte Daten + Voll-Report: `workspace-legacy/`.
 
+## Design & Design System (App-UI)
+
+Die Design-Richtung steht und ist verbindliche Grundlage für jede UI-Umsetzung. Produkt-These:
+**das Becken als lebendes Projekt** — die private Pflege-Routine erzeugt automatisch den
+öffentlichen Stolz (Begründung: [`PRODUCT-VISION.md`](PRODUCT-VISION.md); Fokus zuerst Epic 1 + 2).
+
+- **Tokens (Quelle der Wahrheit):** [`design-system/tokens.css`](design-system/tokens.css) +
+  [`design-system/tokens.json`](design-system/tokens.json) — Palette A „Aquatisches Teal", Light
+  **und** Dark, plus Abstände/Typo/Radien/Elevation (OKLCH). Keine Einmal-Farben einführen.
+- **Visuelle Doku:** [`cichlids-design-system.html`](cichlids-design-system.html) (Foundations +
+  Komponenten, live).
+- **Referenz-Screens (Design-Vorlage, keine App):**
+  [`cichlids-tank-prototype.html`](cichlids-tank-prototype.html) — vollständiger interaktiver
+  Userflow (Light/Dark): Becken-Portfolio, Becken-Detail (Story/Pflege), Quick-Log, Pflege-
+  Dashboard, Entdecken, Profil, Onboarding, „Becken anlegen"-Wizard mit Kompatibilitäts-Warnung,
+  Becken-Einstellungen (Sichtbarkeits-Stufen). Hi-Fi-Ausarbeitung des Herzstücks:
+  [`cichlids-tank-detail-hifi.html`](cichlids-tank-detail-hifi.html).
+- **Umsetzungsregeln:** mobile-first **Android zuerst** (iOS später), Light+Dark, Ziel **WCAG AA**,
+  Touch-Targets ≥ 48dp; ein Akzent (max. 2× pro Screen); Text auf Akzentflächen über `--on-accent`.
+  Eine `design-system/README.md` fasst Einstieg und Regeln zusammen.
+
 ## Konventionen
 - Antwortsprache: **Deutsch**.
 - ⚠️ Backups/Configs enthalten **Klartext-Secrets + PII** — niemals committen; `workspace-legacy/.gitignore` beachten.
 - MySQL-Aufrufe **inline** (nicht über Shell-Variable); bei MyISAM echte `COUNT(*)` statt `information_schema`.
 - Stack starten: `cd workspace-legacy/legacy-stack && docker compose up -d` (MySQL :3306 root/legacy, phpMyAdmin :8085).
+- **Repo-Hygiene:** Open-Design-Wegwerf-Artefakte gehören **nicht** ins Repo und sind in [`.gitignore`](.gitignore): `*.artifact.json` (Vorschau-Sidecars) und `mpz*-image.png` (eingefügte Screenshots). Design-**Quellen** dagegen schon: `design-system/`, `cichlids-design-system.html`, `cichlids-tank-prototype.html`, `cichlids-tank-detail-hifi.html`.
 
 ## Grundhaltung
 

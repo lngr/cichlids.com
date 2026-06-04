@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>cichlids.com — Design System v0.3</title>
+<style>
+/* ─────────────────────────────────────────────────────────────
+   cichlids.com — Design System v0.3
+   Grown from the validated tank prototype. Token source:
+   the OKLCH values proven in the prototype. Deliberately restrained,
+   border-led, a single aquatic accent. Light first; dark documented in tokens.
+   ───────────────────────────────────────────────────────────── */
+:root{
+  /* surfaces */
+  --bg:oklch(97% 0.006 230);
+  --surface:#fff;
+  --surface-2:oklch(98.5% 0.004 230);
+  --border:oklch(91% 0.008 255);
+  /* text */
+  --fg:oklch(24% 0.02 255);
+  --muted:oklch(56% 0.016 255);
+  /* accent (aquatic) */
+  --accent:oklch(54% 0.10 205);
+  --accent-weak:oklch(95% 0.03 205);
+  --accent-mid:oklch(72% 0.09 205);
+  /* status */
+  --good:oklch(62% 0.12 150);
+  --warn:oklch(72% 0.13 70);
+  --danger:oklch(55% 0.20 28);
+  --danger-weak:oklch(95% 0.04 28);
+  /* placeholder */
+  --ph:oklch(94% 0.008 230);
+  /* radii */
+  --r-sm:9px; --r-md:12px; --r-lg:16px; --r-pill:999px;
+  /* spacing scale */
+  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s6:24px; --s8:32px;
+  /* motion */
+  --dur-fast:120ms; --dur-base:200ms; --dur-slow:280ms;
+  --ease-standard:cubic-bezier(.2,.8,.2,1); --ease-emphasized:cubic-bezier(.3,.8,.3,1);
+  /* focus */
+  --focus-ring:0 0 0 3px color-mix(in oklab,var(--accent),transparent 62%);
+  --font:'Roboto',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:var(--font);color:var(--fg);background:var(--bg);line-height:1.5;-webkit-font-smoothing:antialiased}
+
+/* top bar */
+.top{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:12px;padding:14px 24px;background:color-mix(in oklab,var(--surface),transparent 8%);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.brand{display:flex;align-items:center;gap:9px}
+.brandmark{width:30px;height:30px;border-radius:var(--r-sm);background:linear-gradient(150deg,color-mix(in oklab,var(--accent),white 10%),var(--accent));display:grid;place-items:center;box-shadow:0 2px 5px -2px color-mix(in oklab,var(--accent),transparent 30%)}
+.brandmark svg{width:19px;height:19px;display:block}
+.brandword{font-size:18px;font-weight:800;letter-spacing:-.025em}
+.top .ver{font-size:11px;font-weight:700;color:var(--accent);background:var(--accent-weak);padding:3px 9px;border-radius:var(--r-pill)}
+.top .sp{flex:1}
+.top .meta{font-size:12px;color:var(--muted)}
+
+.wrap{max-width:980px;margin:0 auto;padding:0 24px}
+.hero{padding:44px 0 8px}
+.hero h1{font-size:clamp(26px,4vw,36px);font-weight:800;letter-spacing:-.03em;margin:0 0 10px}
+.hero p{margin:0;max-width:62ch;color:var(--muted);font-size:15px}
+
+section{padding:36px 0;border-top:1px solid var(--border)}
+.eyebrow{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.sec-h{font-size:21px;font-weight:800;letter-spacing:-.02em;margin:8px 0 4px}
+.sec-d{color:var(--muted);font-size:13.5px;margin:0 0 22px;max-width:60ch}
+.grp-l{font-size:12px;font-weight:700;color:var(--muted);margin:22px 0 10px;letter-spacing:.02em}
+
+/* color swatches */
+.swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.sw{border:1px solid var(--border);border-radius:var(--r-md);overflow:hidden;background:var(--surface)}
+.sw .chip{height:70px}
+.sw .info{padding:9px 11px}
+.sw .nm{font-weight:700;font-size:12.5px}
+.sw .vl{font-size:10.5px;color:var(--muted);font-variant-numeric:tabular-nums;margin-top:2px;word-break:break-all}
+.sw .role{font-size:10.5px;color:var(--muted);margin-top:4px}
+
+/* type scale */
+.type-row{display:flex;align-items:baseline;gap:18px;padding:12px 0;border-top:1px solid var(--border)}
+.type-row:first-child{border-top:0}
+.type-row .spec{flex:0 0 132px;font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+.t-display{font-size:28px;font-weight:800;letter-spacing:-.03em}
+.t-h1{font-size:21px;font-weight:800;letter-spacing:-.02em}
+.t-h2{font-size:17px;font-weight:700;letter-spacing:-.01em}
+.t-body{font-size:15px;font-weight:400}
+.t-bodystrong{font-size:15px;font-weight:600}
+.t-meta{font-size:12px;color:var(--muted)}
+.t-eyebrow{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--muted)}
+.t-num{font-size:22px;font-weight:700;font-variant-numeric:tabular-nums}
+
+/* spacing + radius */
+.scale{display:flex;gap:18px;flex-wrap:wrap;align-items:flex-end}
+.scale .item{text-align:center;font-size:11px;color:var(--muted)}
+.scale .bar{background:var(--accent-weak);border:1px solid color-mix(in oklab,var(--accent),transparent 65%);border-radius:4px;margin-bottom:6px}
+.radii{display:flex;gap:18px;flex-wrap:wrap}
+.radii .item{text-align:center;font-size:11px;color:var(--muted)}
+.radii .box{width:64px;height:64px;background:var(--accent-weak);border:1.5px solid color-mix(in oklab,var(--accent),transparent 55%);margin-bottom:6px}
+
+/* elevation */
+.elev{display:flex;gap:18px;flex-wrap:wrap}
+.elev .item{width:160px;font-size:11px;color:var(--muted);text-align:center}
+.elev .box{height:74px;background:var(--surface);border-radius:var(--r-lg);margin-bottom:8px;border:1px solid var(--border)}
+.elev .e-flat{border:1px solid var(--border)}
+.elev .e-raised{border:0;box-shadow:0 8px 16px -5px color-mix(in oklab,var(--accent),transparent 60%)}
+.elev .e-modal{border:0;box-shadow:0 -6px 24px -8px rgba(10,12,16,.25),0 2px 8px rgba(10,12,16,.06)}
+
+/* component gallery */
+.comp{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.demo{border:1px solid var(--border);border-radius:var(--r-lg);background:var(--surface-2);padding:16px}
+.demo .lbl{font-size:11px;font-weight:700;color:var(--muted);margin-bottom:12px;letter-spacing:.02em}
+.demo .stack{display:flex;flex-direction:column;gap:10px}
+.demo .inline{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+
+/* === component classes (mirrored from the app) === */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 18px;border-radius:var(--r-md);border:1px solid var(--border);background:var(--surface);color:var(--fg);font-size:15px;font-weight:600;cursor:pointer;font-family:inherit}
+.btn.primary{background:var(--accent);color:#fff;border-color:transparent}
+.btn.block{width:100%}
+.btn.pill{border-radius:var(--r-pill);min-height:36px}
+.chip{display:inline-flex;align-items:center;gap:5px;padding:6px 12px;border:1px solid var(--border);border-radius:var(--r-pill);font-size:12px;background:var(--surface);color:var(--fg);cursor:pointer;white-space:nowrap}
+.chip.species{color:var(--accent);border-color:color-mix(in oklab,var(--accent),transparent 65%);background:var(--accent-weak);font-style:italic}
+.chip.on{background:var(--accent);color:#fff;border-color:transparent}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg)}
+.due{background:var(--accent-weak);border:1px solid color-mix(in oklab,var(--accent),transparent 70%);border-radius:var(--r-lg);padding:14px}
+.due .ttl{font-weight:700;margin:3px 0 2px}
+.muted{color:var(--muted)}
+.eyb{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.ph{background:var(--ph);border:1.5px dashed color-mix(in oklab,var(--muted),transparent 55%);border-radius:var(--r-md);display:grid;place-items:center;color:var(--muted);font-size:10px;letter-spacing:.09em;text-transform:uppercase;text-align:center}
+.ph.wide{aspect-ratio:16/9}.ph.sq{aspect-ratio:1/1;width:54px}
+.li{display:flex;align-items:center;gap:12px;padding:10px 0}
+.li .meta{font-size:11.5px;color:var(--muted)}
+.dot-ic{width:34px;height:34px;border-radius:10px;background:var(--accent-weak);display:grid;place-items:center;flex:0 0 auto;color:var(--accent)}
+.dot-ic svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.9}
+.seg{display:flex;background:var(--ph);border-radius:11px;padding:3px}
+.seg button{flex:1;border:0;background:none;min-height:36px;border-radius:9px;font-weight:600;font-size:13px;color:var(--muted);cursor:pointer;font-family:inherit}
+.seg button.on{background:var(--surface);color:var(--accent);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.specs{display:grid;grid-template-columns:repeat(4,1fr);text-align:center}
+.specs .n{font-size:14px;font-weight:700}
+.specs .l{font-size:9.5px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;margin-top:2px}
+.streak{display:inline-flex;align-items:center;gap:7px;font-weight:700}
+.flame{width:18px;height:18px;fill:var(--warn);stroke:none}
+.badge{display:inline-block;font-size:10px;font-weight:700;color:var(--accent);background:var(--accent-weak);padding:3px 9px;border-radius:var(--r-pill)}
+.tl{position:relative;margin-left:6px;padding-left:20px}
+.tl:before{content:'';position:absolute;left:4px;top:6px;bottom:6px;width:2px;background:var(--border)}
+.tl .ev{position:relative;padding:0 0 14px}
+.tl .ev:last-child{padding-bottom:0}
+.tl .ev:before{content:'';position:absolute;left:-20px;top:3px;width:10px;height:10px;border-radius:50%;background:var(--surface);border:2px solid var(--accent)}
+.tl .ev.mil:before{background:var(--accent)}
+.tl .dt{font-size:10.5px;color:var(--muted)}
+.tl .tx{font-weight:600;font-size:13.5px;margin-top:1px}
+.heat{display:grid;grid-template-rows:repeat(7,1fr);grid-auto-flow:column;grid-auto-columns:1fr;gap:3px;max-width:240px}
+.heat i{aspect-ratio:1;border-radius:2.5px;background:var(--ph)}
+.heat i.l1{background:color-mix(in oklab,var(--accent),white 65%)}
+.heat i.l2{background:color-mix(in oklab,var(--accent),white 40%)}
+.heat i.l4{background:var(--accent)}
+.bnav{display:grid;grid-template-columns:repeat(5,1fr);background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);overflow:hidden}
+.bnav .nav{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:10px;color:var(--muted);border:0;background:none;padding:9px 0;cursor:pointer}
+.bnav .nav.active{color:var(--accent);font-weight:600}
+.bnav .nav.mid{justify-content:center}
+.bnav .nav svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.fab{width:48px;height:40px;border-radius:14px;background:var(--accent);color:#fff;display:grid;place-items:center;box-shadow:0 8px 16px -5px color-mix(in oklab,var(--accent),transparent 35%)}
+.fab svg{stroke:#fff;width:23px;height:23px;fill:none;stroke-width:2}
+.bigaction{display:flex;align-items:center;gap:12px;width:100%;padding:14px;border-radius:14px;border:1.5px solid var(--accent);background:var(--accent-weak);color:var(--fg);cursor:pointer;text-align:left;font-family:inherit}
+.bigaction .ic{width:40px;height:40px;border-radius:12px;background:var(--accent);display:grid;place-items:center;flex:0 0 auto}
+.bigaction .ic svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:1.9}
+
+/* settings: radio list + toggle switch */
+.optlist{display:flex;flex-direction:column;border:1px solid var(--border);border-radius:var(--r-md);overflow:hidden;max-width:320px}
+.optlist .opt{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:48px;padding:0 14px;border:0;border-top:1px solid var(--border);background:var(--surface);font:inherit;font-size:14px;color:var(--fg);cursor:pointer}
+.optlist .opt:first-child{border-top:0}
+.optlist .opt .rdo{width:20px;height:20px;border-radius:50%;border:2px solid var(--border);flex:0 0 auto}
+.optlist .opt.on{color:var(--accent);font-weight:600}
+.optlist .opt.on .rdo{border-color:var(--accent);background:radial-gradient(circle at center,var(--accent) 0 5px,transparent 6px)}
+.toggle-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:4px 0}
+.switch{width:46px;height:28px;border-radius:999px;border:0;background:var(--border);position:relative;cursor:pointer;flex:0 0 auto;transition:background .2s}
+.switch .knob{position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:left .2s}
+.switch.on{background:var(--accent)}
+.switch.on .knob{left:21px}
+.stepper{display:flex;align-items:center;gap:8px}
+.stepper .st{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--muted);font-weight:600}
+.stepper .st .n{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--border);display:grid;place-items:center;font-size:11px;color:var(--muted)}
+.stepper .st.on .n{background:var(--accent);border-color:transparent;color:#fff}
+.stepper .st.on{color:var(--fg)}
+.stepper .bar{flex:1;height:1.5px;background:var(--border)}
+.warn-card{border:1px solid color-mix(in oklab,var(--warn),transparent 55%);background:color-mix(in oklab,var(--warn),white 84%);border-radius:14px;padding:14px}
+.warn-card .wt{display:flex;align-items:center;gap:8px;font-weight:700;color:oklch(46% 0.12 60)}
+.warn-card .wt svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2}
+.warn-card p{margin:8px 0 0;font-size:12.5px;color:var(--fg)}
+
+/* icons grid */
+.icons{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:10px}
+.ico{border:1px solid var(--border);border-radius:var(--r-md);background:var(--surface);padding:14px 8px;text-align:center;font-size:10.5px;color:var(--muted)}
+.ico svg{width:24px;height:24px;fill:none;stroke:var(--fg);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;margin-bottom:7px}
+
+/* form fields + validation */
+.field-wrap{max-width:320px;display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.field-wrap:last-child{margin-bottom:0}
+.field-lab{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.02em}
+.field{min-height:46px;padding:0 13px;border:1px solid var(--border);border-radius:var(--r-md);background:var(--surface);font:inherit;font-size:15px;color:var(--fg);width:100%}
+.field:focus-visible{outline:0;border-color:var(--accent);box-shadow:var(--focus-ring)}
+.field.err{border-color:var(--danger);background:var(--danger-weak)}
+.field:disabled{background:var(--bg);color:var(--muted);cursor:not-allowed}
+.field-help{font-size:11.5px;color:var(--muted)}
+.field-help.err{color:var(--danger);display:flex;align-items:center;gap:5px;font-weight:600}
+.field-help.err svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2.2}
+
+/* motion docs */
+.mrow{display:flex;align-items:center;gap:12px;padding:9px 0;border-top:1px solid var(--border);font-size:12.5px}
+.mrow:first-child{border-top:0}
+.mrow code{font-size:11px;color:var(--accent);background:var(--accent-weak);padding:2px 7px;border-radius:6px;font-variant-numeric:tabular-nums}
+.mrow .lab{flex:1;color:var(--muted)}
+.animbox{width:38px;height:38px;border-radius:10px;background:var(--accent);transition:transform var(--dur-base) var(--ease-standard)}
+.demo:hover .animbox{transform:translateX(190px)}
+
+/* empty state + skeleton */
+.empty{text-align:center;padding:18px 10px}
+.empty .ic{width:46px;height:46px;border-radius:14px;background:var(--accent-weak);color:var(--accent);display:grid;place-items:center;margin:0 auto 12px}
+.empty .ic svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8}
+.empty .t{font-weight:700;font-size:15px}
+.empty .d{color:var(--muted);font-size:12.5px;margin:4px auto 14px;max-width:30ch}
+.skel-line,.skel-block{background:linear-gradient(100deg,var(--ph) 30%,color-mix(in oklab,var(--ph),white 60%) 50%,var(--ph) 70%);background-size:200% 100%;animation:shimmer 1.3s linear infinite}
+.skel-line{height:12px;border-radius:6px;margin-bottom:9px}
+.skel-block{height:104px;border-radius:var(--r-md);margin-bottom:10px}
+@keyframes shimmer{to{background-position:-200% 0}}
+@media (prefers-reduced-motion: reduce){*{animation-duration:.001ms!important;transition-duration:.001ms!important}}
+
+/* accessibility */
+.a11y{margin:0;padding-left:18px;font-size:13.5px;color:var(--fg);max-width:62ch}
+.a11y li{margin-bottom:9px}
+.a11y b{font-weight:700}
+.focusbtn:focus-visible{outline:0;box-shadow:var(--focus-ring);border-color:var(--accent)}
+
+/* applied example */
+.applied{display:flex;gap:26px;flex-wrap:wrap;align-items:flex-start}
+.phone{width:320px;flex:0 0 auto;border:1px solid var(--border);border-radius:24px;overflow:hidden;background:var(--surface);box-shadow:0 18px 40px -16px rgba(10,12,16,.25)}
+.phone .ab{display:flex;align-items:center;gap:8px;padding:12px 14px;border-bottom:1px solid var(--border)}
+.phone .ab .t{font-weight:700;font-size:15px}
+.phone .body{padding:14px}
+.applied .note{flex:1;min-width:220px;font-size:13.5px;color:var(--muted)}
+.applied .note b{color:var(--fg)}
+.applied .note li{margin-bottom:8px}
+
+footer{padding:40px 0 64px;border-top:1px solid var(--border);color:var(--muted);font-size:13px;line-height:1.6}
+footer b{color:var(--fg)}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.pills span{font-size:11.5px;border:1px dashed var(--border);border-radius:var(--r-pill);padding:5px 11px}
+</style>
+</head>
+<body>
+  <div class="top">
+    <div class="brand">
+      <span class="brandmark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 12c0-3.2 3.2-5.6 7.2-5.6S22.5 8.8 22.5 12s-3.2 5.6-6.8 5.6S8.5 15.2 8.5 12z" fill="#fff"/><path d="M10 12 2.6 7.6v8.8z" fill="#fff"/><circle cx="18.4" cy="10.6" r="1.15" fill="var(--accent)"/></svg></span>
+      <span class="brandword">cichlids</span>
+    </div>
+    <span class="ver">Design System v0.3</span>
+    <span class="sp"></span>
+    <span class="meta">Light · Android-first</span>
+  </div>
+
+  <div class="wrap">
+    <div class="hero">
+      <h1>Design System</h1>
+      <p>Extracted from the finished, validated tank prototype — including the building blocks from onboarding, the "create tank" wizard and tank settings. A restrained, border-led language with a single aquatic accent. v0.3 captures foundations and components; machine-readable tokens (light + dark) live in <code>design-system/tokens.css</code> and <code>tokens.json</code>.</p>
+    </div>
+
+    <!-- COLOR -->
+    <section>
+      <div class="eyebrow">Foundations</div>
+      <h2 class="sec-h">Color</h2>
+      <p class="sec-d">Neutral, cool surfaces carry the content; one accent (aquatic teal) marks only actions and active states — at most twice per screen. Status colors used sparingly.</p>
+
+      <div class="grp-l">Surfaces &amp; lines</div>
+      <div class="swatches">
+        <div class="sw"><div class="chip" style="background:var(--bg)"></div><div class="info"><div class="nm">--bg</div><div class="vl">oklch(97% .006 230)</div><div class="role">App background</div></div></div>
+        <div class="sw"><div class="chip" style="background:var(--surface);box-shadow:inset 0 0 0 1px var(--border)"></div><div class="info"><div class="nm">--surface</div><div class="vl">#fff</div><div class="role">Cards, bars</div></div></div>
+        <div class="sw"><div class="chip" style="background:var(--border)"></div><div class="info"><div class="nm">--border</div><div class="vl">oklch(91% .008 255)</div><div class="role">Hairlines, dividers</div></div></div>
+      </div>
+
+      <div class="grp-l">Text</div>
+      <div class="swatches">
+        <div class="sw"><div class="chip" style="background:var(--fg)"></div><div class="info"><div class="nm">--fg</div><div class="vl">oklch(24% .02 255)</div><div class="role">Primary text</div></div></div>
+        <div class="sw"><div class="chip" style="background:var(--muted)"></div><div class="info"><div class="nm">--muted</div><div class="vl">oklch(56% .016 255)</div><div class="role">Secondary, meta</div></div></div>
+      </div>
+
+      <div class="grp-l">Accent</div>
+      <div class="swatches">
+        <div class="sw"><div class="chip" style="background:var(--accent)"></div><div class="info"><div class="nm">--accent</div><div class="vl">oklch(54% .10 205)</div><div class="role">Actions, active</div></div></div>
+        <div class="sw"><div class="chip" style="background:var(--accent-weak)"></div><div class="info"><div class="nm">--accent-weak</div><div class="vl">oklch(95% .03 205)</div><div class="role">Accent fills</div></div></div>
+        <div class="sw"><div class="chip" style="background:var(--accent-mid)"></div><div class="info"><div class="nm">--accent-mid</div><div class="vl">oklch(72% .09 205)</div><div class="role">Hover / gradient</div></div></div>
+      </div>
+
+      <div class="grp-l">Status</div>
+      <div class="swatches">
+        <div class="sw"><div class="chip" style="background:var(--good)"></div><div class="info"><div class="nm">--good</div><div class="vl">oklch(62% .12 150)</div><div class="role">done, on track</div></div></div>
+        <div class="sw"><div class="chip" style="background:var(--warn)"></div><div class="info"><div class="nm">--warn</div><div class="vl">oklch(72% .13 70)</div><div class="role">due, streak</div></div></div>
+        <div class="sw"><div class="chip" style="background:var(--danger)"></div><div class="info"><div class="nm">--danger</div><div class="vl">oklch(55% .20 28)</div><div class="role">errors, destructive</div></div></div>
+        <div class="sw"><div class="chip" style="background:var(--ph)"></div><div class="info"><div class="nm">--ph</div><div class="vl">oklch(94% .008 230)</div><div class="role">Media placeholder</div></div></div>
+      </div>
+    </section>
+
+    <!-- TYPE -->
+    <section>
+      <div class="eyebrow">Foundations</div>
+      <h2 class="sec-h">Typography</h2>
+      <p class="sec-d">One sans family (Roboto / system) with strong weight contrast — utility-oriented, legible on small Android screens. Numbers always tabular.</p>
+      <div>
+        <div class="type-row"><span class="spec">Display · 28 / 800</span><span class="t-display">Tanganyika 450 L</span></div>
+        <div class="type-row"><span class="spec">H1 · 21 / 800</span><span class="t-h1">My tanks</span></div>
+        <div class="type-row"><span class="spec">H2 · 17 / 700</span><span class="t-h2">Next care</span></div>
+        <div class="type-row"><span class="spec">Body · 15 / 400</span><span class="t-body">Recommended every 14 days</span></div>
+        <div class="type-row"><span class="spec">Body strong · 15 / 600</span><span class="t-bodystrong">Water change · 30 %</span></div>
+        <div class="type-row"><span class="spec">Meta · 12 / 400</span><span class="t-meta">11 days ago</span></div>
+        <div class="type-row"><span class="spec">Eyebrow · 10.5 / 700</span><span class="t-eyebrow">Due today</span></div>
+        <div class="type-row"><span class="spec">Numeric · tabular</span><span class="t-num">18 · 8.4 · 450 L</span></div>
+      </div>
+      <p class="sec-d" style="margin:18px 0 0"><b>Decision (final for v1):</b> system / Roboto sans only — no custom display face. Native feel, zero load cost, full weight range available. Revisit only if the brand later needs a distinct display face.</p>
+    </section>
+
+    <!-- SPACING + RADIUS + ELEVATION -->
+    <section>
+      <div class="eyebrow">Foundations</div>
+      <h2 class="sec-h">Spacing, radii &amp; elevation</h2>
+      <p class="sec-d">4px base grid. Radii stepped by component size. Elevation minimal: the system is flat and border-led — shadows only where something physically floats above the surface (FAB, sheet, modal).</p>
+
+      <div class="grp-l">Spacing</div>
+      <div class="scale">
+        <div class="item"><div class="bar" style="width:4px;height:4px"></div>4</div>
+        <div class="item"><div class="bar" style="width:8px;height:8px"></div>8</div>
+        <div class="item"><div class="bar" style="width:12px;height:12px"></div>12</div>
+        <div class="item"><div class="bar" style="width:16px;height:16px"></div>16</div>
+        <div class="item"><div class="bar" style="width:24px;height:24px"></div>24</div>
+        <div class="item"><div class="bar" style="width:32px;height:32px"></div>32</div>
+      </div>
+
+      <div class="grp-l">Radii</div>
+      <div class="radii">
+        <div class="item"><div class="box" style="border-radius:9px"></div>9 · Input</div>
+        <div class="item"><div class="box" style="border-radius:12px"></div>12 · Button</div>
+        <div class="item"><div class="box" style="border-radius:16px"></div>16 · Card</div>
+        <div class="item"><div class="box" style="border-radius:999px"></div>999 · Pill</div>
+      </div>
+
+      <div class="grp-l">Elevation</div>
+      <div class="elev">
+        <div class="item"><div class="box e-flat"></div>Flat · Cards (border only)</div>
+        <div class="item"><div class="box e-raised"></div>Raised · FAB, accent</div>
+        <div class="item"><div class="box e-modal"></div>Modal · Sheet, dialog</div>
+      </div>
+    </section>
+
+    <!-- COMPONENTS -->
+    <section>
+      <div class="eyebrow">Components</div>
+      <h2 class="sec-h">Building blocks</h2>
+      <p class="sec-d">The components proven in the prototype, live. Each uses only the tokens above — no one-off values.</p>
+
+      <div class="comp">
+        <div class="demo"><div class="lbl">Buttons</div><div class="stack">
+          <button class="btn primary block">Open quick-log</button>
+          <button class="btn block">Later</button>
+          <button class="btn pill">Follow</button>
+        </div></div>
+
+        <div class="demo"><div class="lbl">Chips</div><div class="inline">
+          <span class="chip">Newest</span>
+          <span class="chip on">Tanganyika</span>
+          <span class="chip species">Tropheus moorii</span>
+        </div></div>
+
+        <div class="demo"><div class="lbl">Segmented control</div>
+          <div class="seg" id="segDemo"><button class="on" data-s="a">Story</button><button data-s="b">Care</button></div>
+        </div>
+
+        <div class="demo"><div class="lbl">Care card (due)</div>
+          <div class="due"><div class="eyb">Due today</div><div class="ttl">Water change · Tanganyika 450 L</div><div class="muted" style="font-size:12px">Recommended every 14 days</div></div>
+        </div>
+
+        <div class="demo"><div class="lbl">Stat strip</div>
+          <div class="specs"><div><div class="n">450 L</div><div class="l">Volume</div></div><div><div class="n">150×60</div><div class="l">cm</div></div><div><div class="n">Tang.</div><div class="l">Biotope</div></div><div><div class="n">2021</div><div class="l">since</div></div></div>
+        </div>
+
+        <div class="demo"><div class="lbl">Streak &amp; badge</div><div class="inline" style="gap:14px">
+          <span class="streak"><svg class="flame" viewBox="0 0 24 24"><path d="M12 2c1 4-3 5-3 9a3 3 0 0 0 6 0c0-1-1-2-1-3 2 1 4 3 4 6a6 6 0 0 1-12 0c0-5 5-7 6-12z"/></svg>18-day streak</span>
+          <span class="badge">Milestone</span>
+        </div></div>
+
+        <div class="demo"><div class="lbl">List item</div>
+          <div class="li"><span class="dot-ic"><svg viewBox="0 0 24 24"><path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z"/></svg></span><div style="flex:1"><div style="font-weight:600">Water change · 30 %</div><div class="meta">11 days ago</div></div></div>
+        </div>
+
+        <div class="demo"><div class="lbl">Timeline event</div>
+          <div class="tl"><div class="ev mil"><div class="dt">Nov 2025</div><div class="tx">First spawn — 20+ fry</div></div><div class="ev"><div class="dt">Mar 2025</div><div class="tx">Rescaped left rockwork</div></div></div>
+        </div>
+
+        <div class="demo"><div class="lbl">Heatmap</div>
+          <div class="heat" id="heatDemo"></div>
+        </div>
+
+        <div class="demo"><div class="lbl">Quick-log big action</div>
+          <button class="bigaction"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z"/></svg></span><span><span style="font-weight:700;display:block">Water change</span><span class="muted" style="font-size:12px">1 tap — amount optional</span></span></button>
+        </div>
+
+        <div class="demo"><div class="lbl">Media placeholder</div><div class="inline" style="align-items:stretch">
+          <div class="ph wide" style="flex:1">Photo · 16:9</div><div class="ph sq">img</div>
+        </div></div>
+
+        <div class="demo"><div class="lbl">Bottom nav + FAB</div>
+          <div class="bnav">
+            <button class="nav active"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg>Tanks</button>
+            <button class="nav"><svg viewBox="0 0 24 24"><path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z"/></svg>Care</button>
+            <button class="nav mid"><span class="fab"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></button>
+            <button class="nav"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15 9l-2 4-4 2 2-4z"/></svg>Explore</button>
+            <button class="nav"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>Profile</button>
+          </div>
+        </div>
+
+        <div class="demo"><div class="lbl">Toggle switch</div><div class="toggle-row">
+          <div style="flex:1"><div style="font-weight:600;font-size:14px">Measurements public</div><div class="muted" style="font-size:11.5px">Show water values on the tank</div></div>
+          <button class="switch on" id="swDemo"><span class="knob"></span></button>
+        </div></div>
+
+        <div class="demo"><div class="lbl">Settings list (single select)</div>
+          <div class="optlist" id="optDemo">
+            <button class="opt on"><span>Public</span><span class="rdo"></span></button>
+            <button class="opt"><span>Followers only</span><span class="rdo"></span></button>
+            <button class="opt"><span>Private</span><span class="rdo"></span></button>
+          </div>
+        </div>
+
+        <div class="demo"><div class="lbl">Wizard stepper</div>
+          <div class="stepper"><span class="st on"><span class="n">1</span>Basics</span><span class="bar"></span><span class="st"><span class="n">2</span>Stock</span><span class="bar"></span><span class="st"><span class="n">3</span>Done</span></div>
+        </div>
+
+        <div class="demo"><div class="lbl">Warning card (compatibility)</div>
+          <div class="warn-card"><div class="wt"><svg viewBox="0 0 24 24"><path d="M12 3 2 20h20z"/><path d="M12 10v4M12 17v.5"/></svg> Does this go together?</div><p>Mbuna (Malawi) and Tropheus (Tanganyika) are considered a risky mix.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ICONS -->
+    <section>
+      <div class="eyebrow">Foundations</div>
+      <h2 class="sec-h">Icon set</h2>
+      <p class="sec-d">Consistent line icons, 24×24, stroke 1.8, round caps. One style — no mix of filled and outline.</p>
+      <div class="icons">
+        <div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg>Tanks</div>
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z"/></svg>Care</div>
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Add</div>
+        <div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15 9l-2 4-4 2 2-4z"/></svg>Explore</div>
+        <div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>Profile</div>
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>Back</div>
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/></svg>Notifications</div>
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M7 5l12 7-12 7z" fill="currentColor" stroke="none"/></svg>Play</div>
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M14 4l6 6M4 20l1-4L16 5l3 3L8 19z"/></svg>Edit</div>
+        <div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg>Settings</div>
+      </div>
+    </section>
+
+    <!-- MOTION -->
+    <section>
+      <div class="eyebrow">Foundations</div>
+      <h2 class="sec-h">Motion</h2>
+      <p class="sec-d">Three durations, two easings — that's the whole budget. Animate <b>opacity and transform only</b> (never layout). Motion confirms an action or guides attention; it is never decorative. <code>prefers-reduced-motion</code> is honored everywhere.</p>
+      <div style="max-width:420px">
+        <div class="mrow"><span class="mbox" style="width:34px;height:34px;border-radius:9px;background:var(--accent);flex:0 0 auto"></span><span class="lab">Toggles, hovers, chip selection</span><code>120ms</code></div>
+        <div class="mrow"><span class="mbox" style="width:34px;height:34px;border-radius:9px;background:var(--accent);flex:0 0 auto"></span><span class="lab">Most transitions, sheets, reveals</span><code>200ms</code></div>
+        <div class="mrow"><span class="mbox" style="width:34px;height:34px;border-radius:9px;background:var(--accent);flex:0 0 auto"></span><span class="lab">Screen / player transitions</span><code>280ms</code></div>
+      </div>
+      <p class="sec-d" style="margin:16px 0 8px">Easing: <code>--ease-standard</code> cubic-bezier(.2,.8,.2,1) for most; <code>--ease-emphasized</code> cubic-bezier(.3,.8,.3,1) for sheets &amp; large surfaces.</p>
+      <div class="demo" style="max-width:280px;cursor:pointer"><div class="lbl">Hover to play (200ms / standard)</div><div class="animbox"></div></div>
+    </section>
+
+    <!-- FORM FIELDS -->
+    <section>
+      <div class="eyebrow">Components</div>
+      <h2 class="sec-h">Form fields &amp; validation</h2>
+      <p class="sec-d">One text-field component with explicit states. Errors are <b>never color-only</b>: the red border pairs with an icon and a message. Validation shows on blur or submit, not on every keystroke.</p>
+      <div class="comp">
+        <div class="demo"><div class="lbl">Default / focus</div>
+          <div class="field-wrap"><span class="field-lab">Tank name</span><input class="field" value="Tanganyika 450 L"></div>
+          <div class="field-wrap"><span class="field-lab">Volume (L)</span><input class="field" placeholder="450" inputmode="numeric"><span class="field-help">Used to estimate the care frequency.</span></div>
+        </div>
+        <div class="demo"><div class="lbl">Error</div>
+          <div class="field-wrap"><span class="field-lab">Volume (L)</span><input class="field err" value="-20"><span class="field-help err"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16v.5"/></svg> Enter a value greater than 0.</span></div>
+        </div>
+        <div class="demo"><div class="lbl">Disabled</div>
+          <div class="field-wrap"><span class="field-lab">Species (auto from stock)</span><input class="field" value="Tropheus moorii" disabled></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EMPTY + SKELETON -->
+    <section>
+      <div class="eyebrow">Patterns</div>
+      <h2 class="sec-h">Empty states &amp; loading</h2>
+      <p class="sec-d">First-run and empty lists get a real empty state — icon, one line of guidance, one action — never a blank screen. While data loads, show skeletons in the shape of the content (not spinners).</p>
+      <div class="comp">
+        <div class="demo"><div class="lbl">Empty state</div>
+          <div class="empty">
+            <span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 11h18"/></svg></span>
+            <div class="t">No tanks yet</div>
+            <div class="d">Add your first tank to start its timeline and care log.</div>
+            <button class="btn primary" style="min-height:42px">Create tank</button>
+          </div>
+        </div>
+        <div class="demo"><div class="lbl">Skeleton (loading)</div>
+          <div class="skel-block"></div>
+          <div class="skel-line" style="width:70%"></div>
+          <div class="skel-line" style="width:45%"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACCESSIBILITY -->
+    <section>
+      <div class="eyebrow">Foundations</div>
+      <h2 class="sec-h">Accessibility</h2>
+      <p class="sec-d">Target is <b>WCAG AA</b> in both themes — binding, not aspirational.</p>
+      <ul class="a11y">
+        <li><b>Contrast:</b> body text (<code>--fg</code>) and the primary-button pairing (<code>--on-accent</code> on <code>--accent</code>) meet AA in light and dark. <code>--muted</code> is for secondary text only and must not drop below AA at its size; never use it for primary content.</li>
+        <li><b>Color is never the only signal:</b> status and errors always pair color with an icon and/or text (see warning card &amp; field error).</li>
+        <li><b>Focus:</b> every interactive element shows a visible ring on keyboard navigation via <code>:focus-visible</code> (<code>--focus-ring</code>).</li>
+        <li><b>Hit areas:</b> minimum 48dp; icon buttons are 44–48px even when the glyph is smaller.</li>
+        <li><b>Motion:</b> honors <code>prefers-reduced-motion</code>; nothing essential depends on animation.</li>
+      </ul>
+      <div class="demo" style="max-width:280px;margin-top:18px"><div class="lbl">Focus ring (Tab to the button)</div>
+        <button class="btn focusbtn">Focusable action</button>
+      </div>
+    </section>
+
+    <!-- APPLIED -->
+    <section>
+      <div class="eyebrow">In use</div>
+      <h2 class="sec-h">Tank detail from building blocks</h2>
+      <p class="sec-d">The same screen as in the prototype — but composed only from the documented tokens &amp; components. That's how the system proves itself on its core screen.</p>
+      <div class="applied">
+        <div class="phone">
+          <div class="ab"><svg viewBox="0 0 24 24" style="width:22px;height:22px;fill:none;stroke:var(--fg);stroke-width:1.8"><path d="M15 5l-7 7 7 7"/></svg><span class="t">Tanganyika 450 L</span></div>
+          <div class="body">
+            <div class="seg" style="margin-bottom:14px"><button class="on">Story</button><button>Care</button></div>
+            <div class="ph wide" style="margin-bottom:12px">Hero · tank photo</div>
+            <div class="specs card" style="padding:12px 4px;margin-bottom:14px"><div><div class="n">450 L</div><div class="l">Volume</div></div><div><div class="n">150×60</div><div class="l">cm</div></div><div><div class="n">Tang.</div><div class="l">Biotope</div></div><div><div class="n">2021</div><div class="l">since</div></div></div>
+            <div class="eyb" style="margin-bottom:12px">Timeline</div>
+            <div class="tl"><div class="ev"><div class="dt">Jun 2026</div><div class="tx">Dominant male fully coloured up</div></div><div class="ev mil"><div class="dt">Nov 2025</div><div class="tx">First spawn — 20+ fry</div><span class="badge" style="margin-top:5px">Milestone</span></div><div class="ev"><div class="dt">Mar 2021</div><div class="tx">Tank set up</div></div></div>
+          </div>
+        </div>
+        <ul class="note">
+          <li><b>Card = </b><code>.card</code> + <code>.specs</code>, dividers via <code>--border</code>.</li>
+          <li><b>Toggle = </b><code>.seg</code> — the same block as filters &amp; tabs everywhere.</li>
+          <li><b>Timeline = </b><code>.tl</code> with milestone variant <code>.ev.mil</code>; accent dot from <code>--accent</code>.</li>
+          <li><b>Accent budget</b> respected: one teal, only on active markers and milestones.</li>
+          <li>Not a single hardcoded hex — everything via tokens, so dark-ready by simply swapping the <code>:root</code> values.</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      <b>Status v0.3 — decided, ready to build against.</b> Foundations (color, type, spacing, radii, elevation), core &amp; flow components, plus <b>motion</b>, <b>form fields &amp; validation</b>, <b>empty states &amp; loading</b>, the <b>final type scale</b>, and <b>accessibility</b> (contrast, focus, hit areas, reduced motion). Machine-readable tokens — including motion, focus and danger — live in <code>design-system/tokens.css</code> + <code>tokens.json</code> (light + dark). No "to be decided later" left at the system level: the foundation is settled, so implementation won't drift.
+      <p style="margin-top:18px"><b>Next step:</b> cut the v1 stories (Epics 1 + 2) into Backlog.md and start implementation. New components are added here as real screens introduce them — always token-first.</p>
+    </footer>
+  </div>
+
+<script>
+  // segmented demo
+  var seg=document.getElementById('segDemo');
+  if(seg) seg.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;seg.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b)});});
+  // heatmap demo — biweekly cadence
+  var el=document.getElementById('heatDemo');
+  if(el){var h='';for(var d=0;d<16*7;d++){var s=(d+3)%14,c=s===0?'l4':(s===1||s===13?'l2':(d%5===3?'l1':''));h+='<i class="'+c+'"></i>';}el.innerHTML=h;}
+  // switch demo
+  var sw=document.getElementById('swDemo');
+  if(sw) sw.addEventListener('click',function(){sw.classList.toggle('on');});
+  // option list demo
+  var opt=document.getElementById('optDemo');
+  if(opt) opt.addEventListener('click',function(e){var o=e.target.closest('.opt');if(!o)return;opt.querySelectorAll('.opt').forEach(function(x){x.classList.toggle('on',x===o);});});
+</script>
+</body>
+</html>

@@ -1,0 +1,846 @@
+
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>cichlids.com — Prototyp (Android, low-fi)</title>
+<style>
+/* ─────────────────────────────────────────────────────────────
+   cichlids.com — self-contained Android prototype (no iframes).
+   Thesis (PRODUCT-VISION.md): the tank is a living project over time.
+   Private care routine (Epic 2) automatically produces public pride (Epic 1).
+   Deliberately low-fi: neutral surfaces, one aquatic accent, media = labelled
+   placeholders. This small token set is the seed for the design system.
+   ───────────────────────────────────────────────────────────── */
+:root{
+  --bg:oklch(97% 0.006 230);
+  --surface:#fff;
+  --fg:oklch(24% 0.02 255);
+  --muted:oklch(56% 0.016 255);
+  --border:oklch(91% 0.008 255);
+  --accent:oklch(54% 0.10 205);
+  --accent-weak:oklch(95% 0.03 205);
+  --accent-mid:oklch(72% 0.09 205);
+  --ph:oklch(94% 0.008 230);
+  --good:oklch(62% 0.12 150);
+  --warn:oklch(72% 0.13 70);
+  --on-accent:#fff;
+  --font:'Roboto',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+}
+
+/* Dark theme — same palette A family, lightness inverted, accent lifted for contrast.
+   Scoped to the app shell so the whole UI re-themes by toggling one class. */
+.screenwrap.dark{
+  --bg:oklch(23% 0.018 245);
+  --surface:oklch(27% 0.02 245);
+  --fg:oklch(96% 0.006 250);
+  --muted:oklch(77% 0.014 250);
+  --border:oklch(38% 0.018 245);
+  --accent:oklch(66% 0.085 205);
+  --accent-weak:oklch(32% 0.045 215);
+  --accent-mid:oklch(58% 0.075 205);
+  --ph:oklch(32% 0.014 245);
+  --good:oklch(72% 0.12 155);
+  --warn:oklch(80% 0.14 70);
+  --on-accent:oklch(22% 0.03 230);
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{
+  font-family:var(--font);
+  background:
+    radial-gradient(120% 80% at 50% -10%, oklch(28% 0.03 255) 0%, oklch(18% 0.02 255) 60%);
+  color:var(--fg);
+  min-height:100dvh;
+  display:flex;flex-direction:column;align-items:center;gap:14px;
+  padding:26px 16px;
+}
+
+/* stage header */
+.stage-head{color:oklch(92% 0.01 255);text-align:center;max-width:520px}
+.stage-head .k{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-mid);font-weight:700}
+.stage-head h1{font-size:20px;margin:6px 0 4px;font-weight:800;letter-spacing:-.02em}
+.stage-head p{margin:0;font-size:12.5px;color:oklch(72% 0.015 255);line-height:1.5}
+
+/* device */
+.device{
+  position:relative;width:412px;height:858px;flex:0 0 auto;
+  border-radius:46px;padding:9px;background:linear-gradient(160deg,#1c1c1f,#090909);
+  box-shadow:0 0 0 2px #000 inset,0 30px 70px -16px rgba(0,0,0,.55);
+}
+.punch{position:absolute;top:20px;left:50%;transform:translateX(-50%);width:11px;height:11px;border-radius:50%;background:#000;z-index:40}
+.screenwrap{position:relative;width:100%;height:100%;background:var(--bg);color:var(--fg);border-radius:38px;overflow:hidden;display:flex;flex-direction:column}
+
+/* status bar */
+.statusbar{flex:0 0 34px;display:flex;align-items:flex-start;justify-content:space-between;padding:11px 22px 0;font-size:12.5px;font-weight:600;color:var(--fg);pointer-events:none;z-index:30}
+.statusbar svg{width:15px;height:11px;fill:currentColor;vertical-align:middle}
+.statusbar .r{display:inline-flex;gap:5px;align-items:center}
+
+/* viewport holds stacked screens + bottom nav */
+.viewport{position:relative;flex:1 1 auto;overflow:hidden}
+.screen{position:absolute;inset:0;display:none;flex-direction:column}
+.screen.active{display:flex}
+.appbar{flex:0 0 auto;height:54px;display:flex;align-items:center;gap:6px;padding:0 8px 0 16px;background:var(--surface);border-bottom:1px solid var(--border)}
+.appbar h2{font-size:19px;font-weight:800;margin:0;letter-spacing:-.02em}
+.appbar h2 .d{color:var(--accent)}
+.brand{display:flex;align-items:center;gap:9px}
+.brandmark{width:30px;height:30px;border-radius:9px;background:linear-gradient(150deg,color-mix(in oklab,var(--accent),white 10%),var(--accent));display:grid;place-items:center;box-shadow:0 2px 5px -2px color-mix(in oklab,var(--accent),transparent 30%)}
+.brandmark svg{width:19px;height:19px;display:block}
+.brandword{font-size:18px;font-weight:800;letter-spacing:-.025em}
+.appbar .title{font-size:16px;font-weight:700}
+.appbar .sp{flex:1}
+.content{flex:1 1 auto;overflow-y:auto;-webkit-overflow-scrolling:touch;padding-bottom:78px}
+.content.flush{padding-bottom:78px}
+
+.iconbtn{width:42px;height:42px;border:0;background:transparent;border-radius:50%;display:grid;place-items:center;color:var(--fg);cursor:pointer}
+.iconbtn svg,.tabicon{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.avatar{width:34px;height:34px;border-radius:50%;background:var(--ph);border:1.5px dashed color-mix(in oklab,var(--muted),transparent 55%);flex:0 0 auto}
+.avatar.lg{width:64px;height:64px}
+
+/* bottom nav */
+.bottomnav{position:absolute;left:0;right:0;bottom:0;height:64px;display:grid;grid-template-columns:repeat(5,1fr);background:var(--surface);border-top:1px solid var(--border);z-index:20}
+.bottomnav .nav{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:10px;color:var(--muted);border:0;background:none;cursor:pointer;min-height:48px}
+.bottomnav .nav.active{color:var(--accent);font-weight:600}
+.bottomnav .nav.mid{justify-content:flex-start}
+.bottomnav .nav.mid .fab{width:50px;height:42px;border-radius:15px;background:var(--accent);color:#fff;display:grid;place-items:center;margin-top:-15px;box-shadow:0 8px 16px -5px color-mix(in oklab,var(--accent),transparent 35%)}
+.bottomnav .nav.mid .fab svg{stroke:var(--on-accent);width:24px;height:24px}
+
+/* generic */
+.pad{padding:16px}
+.eyebrow{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.muted{color:var(--muted)}
+.tabular{font-variant-numeric:tabular-nums}
+.ph{background:var(--ph);border:1.5px dashed color-mix(in oklab,var(--muted),transparent 55%);border-radius:12px;display:grid;place-items:center;color:var(--muted);font-size:10px;letter-spacing:.09em;text-transform:uppercase;text-align:center}
+.ph.wide{aspect-ratio:16/9}.ph.sq{aspect-ratio:1/1}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px}
+.row{display:flex;align-items:center;gap:10px}
+.chip{display:inline-flex;align-items:center;gap:5px;padding:5px 11px;border:1px solid var(--border);border-radius:999px;font-size:11.5px;background:var(--surface);color:var(--fg);cursor:pointer;white-space:nowrap}
+.chip.species{color:var(--accent);border-color:color-mix(in oklab,var(--accent),transparent 65%);background:var(--accent-weak);font-style:italic}
+.chip.on{background:var(--accent);color:var(--on-accent);border-color:transparent}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:48px;border-radius:12px;border:1px solid var(--border);background:var(--surface);color:var(--fg);font-size:15px;font-weight:600;cursor:pointer;font-family:inherit}
+.btn.primary{background:var(--accent);color:var(--on-accent);border-color:transparent}
+.btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2}
+
+/* flame / streak */
+.streak{display:inline-flex;align-items:center;gap:7px;font-weight:700}
+.flame{width:18px;height:18px;fill:var(--warn);stroke:none}
+
+/* care-due banner */
+.due{background:var(--accent-weak);border:1px solid color-mix(in oklab,var(--accent),transparent 70%);border-radius:16px;padding:14px 14px 12px}
+.due .ttl{font-weight:700;margin:3px 0 2px}
+
+/* tank card */
+.tankcard{overflow:hidden;cursor:pointer;margin-bottom:14px}
+.tankcard .ph{border:0;border-radius:0}
+.tankcard .body{padding:12px 14px 14px}
+.tankcard .nm{font-weight:700;font-size:15px}
+.status{display:flex;gap:14px;margin-top:9px;font-size:11.5px;color:var(--muted)}
+.status b{color:var(--fg);font-weight:600}
+.statdot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:5px;vertical-align:middle}
+
+/* specs strip */
+.specs{display:grid;grid-template-columns:repeat(4,1fr);text-align:center;margin-top:2px}
+.specs .n{font-size:14px;font-weight:700}
+.specs .l{font-size:9.5px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;margin-top:2px}
+
+/* segmented */
+.seg{display:flex;background:var(--ph);border-radius:11px;padding:3px;margin:14px 16px 4px}
+.seg button{flex:1;border:0;background:none;min-height:38px;border-radius:9px;font-weight:600;font-size:13px;color:var(--muted);cursor:pointer}
+.seg button.on{background:var(--surface);color:var(--accent);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+
+/* time machine */
+.tm .scrub{width:100%;margin:12px 0 4px;accent-color:var(--accent)}
+.tm .ends{display:flex;justify-content:space-between;font-size:10.5px;color:var(--muted)}
+.tmlabel{font-weight:700;font-size:13px}
+.playbtn{width:42px;height:42px;border-radius:50%;background:var(--surface);border:1.5px solid var(--accent);display:grid;place-items:center;flex:0 0 auto}
+.playbtn svg{width:16px;height:16px;fill:var(--accent);stroke:none;margin-left:2px}
+
+/* timeline */
+.tl{position:relative;margin:6px 0 0 6px;padding-left:20px}
+.tl:before{content:'';position:absolute;left:4px;top:6px;bottom:6px;width:2px;background:var(--border)}
+.tl .ev{position:relative;padding:0 0 18px}
+.tl .ev:before{content:'';position:absolute;left:-20px;top:3px;width:10px;height:10px;border-radius:50%;background:var(--surface);border:2px solid var(--accent)}
+.tl .ev.mil:before{background:var(--accent)}
+.tl .dt{font-size:10.5px;color:var(--muted);letter-spacing:.04em}
+.tl .tx{font-weight:600;font-size:13.5px;margin-top:1px}
+.tl .badge{display:inline-block;margin-top:5px;font-size:10px;font-weight:700;color:var(--accent);background:var(--accent-weak);padding:2px 8px;border-radius:999px}
+
+/* list item */
+.li{display:flex;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--border)}
+.li:first-child{border-top:0}
+.li .meta{font-size:11.5px;color:var(--muted)}
+.dot-ic{width:34px;height:34px;border-radius:10px;background:var(--accent-weak);display:grid;place-items:center;flex:0 0 auto;color:var(--accent)}
+.dot-ic svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.9}
+
+/* heatmap */
+.heat{display:grid;grid-template-rows:repeat(7,1fr);grid-auto-flow:column;grid-auto-columns:1fr;gap:3px}
+.heat i{aspect-ratio:1;border-radius:2.5px;background:var(--ph)}
+.heat i.l1{background:color-mix(in oklab,var(--accent),white 65%)}
+.heat i.l2{background:color-mix(in oklab,var(--accent),white 40%)}
+.heat i.l3{background:color-mix(in oklab,var(--accent),white 15%)}
+.heat i.l4{background:var(--accent)}
+.legend{display:flex;align-items:center;gap:6px;justify-content:flex-end;font-size:10px;color:var(--muted);margin-top:8px}
+.legend i{width:11px;height:11px;border-radius:2.5px;display:inline-block}
+
+/* sheet */
+.scrim{position:absolute;inset:0;background:rgba(10,12,16,.45);opacity:0;pointer-events:none;transition:opacity .22s;z-index:50}
+.scrim.open{opacity:1;pointer-events:auto}
+.sheet{position:absolute;left:0;right:0;bottom:0;background:var(--surface);border-radius:22px 22px 0 0;transform:translateY(102%);transition:transform .26s cubic-bezier(.3,.8,.3,1);z-index:60;max-height:88%;display:flex;flex-direction:column}
+.sheet.open{transform:translateY(0)}
+.sheet .grip{width:38px;height:4px;border-radius:2px;background:var(--border);margin:9px auto 4px}
+.sheet .sh-body{overflow-y:auto;padding:6px 16px 18px}
+.bigaction{display:flex;align-items:center;gap:12px;width:100%;padding:16px;border-radius:14px;border:1.5px solid var(--accent);background:var(--accent-weak);color:var(--fg);cursor:pointer;text-align:left;font-family:inherit}
+.bigaction .ic{width:40px;height:40px;border-radius:12px;background:var(--accent);display:grid;place-items:center;flex:0 0 auto}
+.bigaction .ic svg{width:22px;height:22px;stroke:var(--on-accent);fill:none;stroke-width:1.9}
+.bigaction.done{border-color:var(--good);background:color-mix(in oklab,var(--good),white 86%)}
+.bigaction.done .ic{background:var(--good)}
+.reveal{max-height:0;overflow:hidden;transition:max-height .28s ease}
+.reveal.open{max-height:320px}
+.fieldgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px}
+.f{display:flex;flex-direction:column;gap:4px}
+.f label{font-size:10.5px;color:var(--muted);font-weight:600;letter-spacing:.03em}
+.f input{min-height:44px;padding:0 12px;border:1px solid var(--border);border-radius:10px;font:inherit;font-size:15px;color:var(--fg);background:var(--surface)}
+.linkbtn{border:0;background:none;color:var(--accent);font-weight:700;font-size:13px;cursor:pointer;padding:12px 0 4px;font-family:inherit}
+
+.hint{color:oklch(66% 0.015 255);font-size:12px;text-align:center;max-width:412px;line-height:1.5}
+.hint b{color:oklch(88% 0.01 255)}
+
+/* stage launcher (page chrome, not product UI) */
+.launch{display:flex;gap:8px;justify-content:center;margin-top:14px;flex-wrap:wrap}
+.launch button{font-family:inherit;font-size:12px;font-weight:600;color:oklch(94% 0.01 255);background:color-mix(in oklab,var(--accent),transparent 76%);border:1px solid color-mix(in oklab,var(--accent),transparent 50%);border-radius:999px;padding:7px 14px;cursor:pointer}
+.launch button.ghost{background:transparent;color:oklch(72% 0.015 255)}
+
+/* onboarding */
+.onb{display:flex;flex-direction:column;padding:30px 22px 22px;background:var(--surface)}
+.onb .mark{width:54px;height:54px;border-radius:16px;background:linear-gradient(150deg,color-mix(in oklab,var(--accent),white 10%),var(--accent));display:grid;place-items:center;box-shadow:0 6px 16px -6px color-mix(in oklab,var(--accent),transparent 30%)}
+.onb .mark svg{width:32px;height:32px}
+.onb h1{font-size:27px;font-weight:800;letter-spacing:-.03em;line-height:1.1;margin:24px 0 10px}
+.onb h1 em{color:var(--accent);font-style:normal}
+.onb .sub{color:var(--muted);font-size:15px;max-width:30ch;margin:0}
+.onb .spring{flex:1 1 auto;min-height:20px}
+
+/* wizard */
+.stepper{flex:0 0 auto;display:flex;align-items:center;gap:8px;padding:14px 16px 6px;background:var(--surface)}
+.stepper .st{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--muted);font-weight:600}
+.stepper .st .n{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--border);display:grid;place-items:center;font-size:11px;color:var(--muted)}
+.stepper .st.on .n{background:var(--accent);border-color:transparent;color:#fff}
+.stepper .st.on{color:var(--fg)}
+.stepper .bar{flex:1;height:1.5px;background:var(--border)}
+.wizfoot{flex:0 0 auto;display:flex;gap:10px;padding:12px 16px;border-top:1px solid var(--border);background:var(--surface)}
+.wizfoot .btn{flex:1;min-height:48px}
+.grp{font-size:11px;font-weight:700;color:var(--muted);margin:18px 0 8px;letter-spacing:.02em}
+.addcand{cursor:pointer}
+.addcand .plus{width:30px;height:30px;border-radius:50%;border:1.5px solid var(--accent);color:var(--accent);display:grid;place-items:center;flex:0 0 auto}
+.addcand .plus svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2}
+.warn-card{margin-top:14px;border:1px solid color-mix(in oklab,var(--warn),transparent 55%);background:color-mix(in oklab,var(--warn),var(--surface) 80%);border-radius:14px;padding:14px}
+.warn-card .wt{display:flex;align-items:center;gap:8px;font-weight:700;color:var(--fg)}
+.warn-card .wt svg{width:18px;height:18px;fill:none;stroke:var(--warn);stroke-width:2}
+.warn-card p{margin:8px 0 12px;font-size:12.5px;color:var(--fg)}
+.vis-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.vis-grid .chip{justify-content:flex-start;width:100%}
+.success{display:flex;flex-direction:column;align-items:center;text-align:center;padding:26px 16px 8px}
+.success .big{width:64px;height:64px;border-radius:50%;background:color-mix(in oklab,var(--good),var(--surface) 78%);color:var(--good);display:grid;place-items:center;margin-bottom:16px}
+.success .big svg{width:32px;height:32px;fill:none;stroke:currentColor;stroke-width:2.5}
+
+/* settings: radio list + toggle switch */
+.optlist{display:flex;flex-direction:column;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.optlist .opt{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:50px;padding:0 14px;border:0;border-top:1px solid var(--border);background:var(--surface);font:inherit;font-size:14px;color:var(--fg);cursor:pointer}
+.optlist .opt:first-child{border-top:0}
+.optlist .opt .rdo{width:20px;height:20px;border-radius:50%;border:2px solid var(--border);flex:0 0 auto}
+.optlist .opt.on{color:var(--accent);font-weight:600}
+.optlist .opt.on .rdo{border-color:var(--accent);background:radial-gradient(circle at center,var(--accent) 0 5px,transparent 6px)}
+.toggle-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0}
+.switch{width:46px;height:28px;border-radius:999px;border:0;background:var(--border);position:relative;cursor:pointer;flex:0 0 auto;transition:background .2s}
+.switch .knob{position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:left .2s}
+.switch.on{background:var(--accent)}
+.switch.on .knob{left:21px}
+
+@media(max-height:920px){ .device{transform:scale(.92);transform-origin:top center;margin-bottom:-68px} }
+</style>
+</head>
+<body>
+  <div class="stage-head">
+    <div class="k">cichlids.com · Prototyp · Android · low-fi</div>
+    <h1>Das Becken als lebendes Projekt</h1>
+    <p>Pflege erzeugt Stolz: die tägliche Routine (Epic 2) speist automatisch Timeline & Portfolio (Epic 1). Jetzt mit komplettem Pfad — Onboarding, „Becken anlegen"-Wizard (inkl. Kompatibilitäts-Warnung) und Sichtbarkeits-Stufen.</p>
+    <div class="launch">
+      <button data-open="ob-welcome">Erststart-Flow ▶</button>
+      <button class="ghost" data-open="home">App (eingeloggt)</button>
+      <button class="ghost" id="themeBtn">Dark-Modus</button>
+    </div>
+  </div>
+
+  <div class="device">
+    <span class="punch"></span>
+    <div class="screenwrap">
+      <div class="statusbar">
+        <span>9:41</span>
+        <span class="r">
+          <svg viewBox="0 0 15 11"><path d="M0 10h2V6H0v4zm4 1h2V4H4v7zm4 0h2V2H8v9zm4 0h2V0h-2v11z"/></svg>
+          <svg viewBox="0 0 15 11"><path d="M7.5 2C5 2 2.7 3 1 4.6L2 5.8C3.5 4.5 5.4 3.8 7.5 3.8s4 .7 5.5 2l1-1.2C12.3 3 10 2 7.5 2z"/></svg>
+          <svg viewBox="0 0 24 11"><rect x="0.5" y="0.5" width="20" height="10" rx="2.5" fill="none" stroke="currentColor"/><rect x="21" y="3.5" width="2" height="4" rx="1"/><rect x="2" y="2" width="15" height="7" rx="1"/></svg>
+        </span>
+      </div>
+
+      <div class="viewport">
+
+        <!-- ════════ HOME — Meine Becken ════════ -->
+        <section class="screen active" data-screen="home">
+          <div class="appbar">
+            <div class="brand">
+              <span class="brandmark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 12c0-3.2 3.2-5.6 7.2-5.6S22.5 8.8 22.5 12s-3.2 5.6-6.8 5.6S8.5 15.2 8.5 12z" fill="#fff"/><path d="M10 12 2.6 7.6v8.8z" fill="#fff"/><circle cx="18.4" cy="10.6" r="1.15" fill="var(--accent)"/></svg></span>
+              <span class="brandword">cichlids</span>
+            </div>
+            <span class="sp"></span>
+            <button class="iconbtn" aria-label="Hinweise"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></button>
+            <span class="avatar"></span>
+          </div>
+          <div class="content pad">
+            <!-- daily return motor -->
+            <div class="due">
+              <div class="eyebrow">Heute fällig</div>
+              <div class="ttl">Wasserwechsel · Tanganjika 450 L</div>
+              <div class="muted" style="font-size:12px">Empfohlen alle 14 Tage · zuletzt vor 14 Tagen</div>
+              <div class="row" style="margin-top:12px">
+                <button class="btn primary" style="flex:2" data-log>Erledigt – Quick-Log</button>
+                <button class="btn" style="flex:1">Später</button>
+              </div>
+            </div>
+
+            <div class="row" style="justify-content:space-between;margin:16px 2px 12px">
+              <span class="streak"><svg class="flame" viewBox="0 0 24 24"><path d="M12 2c1 4-3 5-3 9a3 3 0 0 0 6 0c0-1-1-2-1-3 2 1 4 3 4 6a6 6 0 0 1-12 0c0-5 5-7 6-12z"/></svg>18-Tage-Streak</span>
+              <span class="muted" style="font-size:11.5px">diese Woche 3/3 Pflege-Tage</span>
+            </div>
+
+            <div class="row" style="justify-content:space-between;margin:0 2px 10px">
+              <span class="eyebrow">Meine Becken · 3</span>
+              <button class="chip" data-open="wizard" data-wiz-reset><svg viewBox="0 0 24 24" width="14" height="14" style="fill:none;stroke:currentColor;stroke-width:2"><path d="M12 5v14M5 12h14"/></svg> Neues Becken</button>
+            </div>
+
+            <div class="card tankcard" data-open="tank">
+              <div class="ph wide">Hero · Becken-Foto</div>
+              <div class="body">
+                <div class="row" style="justify-content:space-between">
+                  <span class="nm">Tanganjika 450 L</span>
+                  <span class="chip species">Tanganjika</span>
+                </div>
+                <div class="status">
+                  <span><span class="statdot" style="background:var(--warn)"></span>nächster WW <b>in 3 T</b></span>
+                  <span>letzter <b>vor 11 T</b></span>
+                  <span>7 Arten</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card tankcard" data-open="tank">
+              <div class="ph wide">Hero · Becken-Foto</div>
+              <div class="body">
+                <div class="row" style="justify-content:space-between">
+                  <span class="nm">Malawi Mbuna 240 L</span>
+                  <span class="chip species">Malawi</span>
+                </div>
+                <div class="status">
+                  <span><span class="statdot" style="background:var(--good)"></span>nächster WW <b>in 6 T</b></span>
+                  <span>letzter <b>vor 8 T</b></span>
+                  <span>4 Arten</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card tankcard" data-open="tank">
+              <div class="ph wide">Hero · Becken-Foto</div>
+              <div class="body">
+                <div class="row" style="justify-content:space-between">
+                  <span class="nm">Shellie-Nano 60 L</span>
+                  <span class="chip species">Tanganjika</span>
+                </div>
+                <div class="status">
+                  <span><span class="statdot" style="background:var(--good)"></span>nächster WW <b>in 9 T</b></span>
+                  <span>letzter <b>vor 5 T</b></span>
+                  <span>1 Art</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ════════ TANK DETAIL ════════ -->
+        <section class="screen" data-screen="tank">
+          <div class="appbar">
+            <button class="iconbtn" data-open="home" aria-label="Zurück"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+            <span class="title">Tanganjika 450 L</span><span class="sp"></span>
+            <button class="iconbtn" data-open="tank-settings" aria-label="Becken-Einstellungen"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg></button>
+          </div>
+
+          <div class="seg" id="tankseg">
+            <button class="on" data-view="story">Story</button>
+            <button data-view="care">Pflege</button>
+          </div>
+
+          <div class="content">
+            <!-- STORY VIEW (pride) -->
+            <div data-pane="story">
+              <div class="pad" style="padding-bottom:0">
+                <div class="ph wide">Hero · Becken-Foto</div>
+                <div class="specs card" style="padding:12px 4px;margin-top:14px">
+                  <div><div class="n">450 L</div><div class="l">Volumen</div></div>
+                  <div><div class="n">150×60</div><div class="l">cm</div></div>
+                  <div><div class="n">Tang.</div><div class="l">Biotop</div></div>
+                  <div><div class="n">2021</div><div class="l">seit</div></div>
+                </div>
+              </div>
+
+              <!-- Time machine -->
+              <div class="pad tm" style="padding-bottom:6px">
+                <div class="eyebrow">Time-Machine · Zeitraffer</div>
+                <div class="ph wide" style="margin-top:8px">Foto-Verlauf · <span id="tmframe">Heute</span></div>
+                <input type="range" class="scrub" id="tmscrub" min="0" max="100" value="100">
+                <div class="row" style="gap:12px">
+                  <button class="playbtn" aria-label="Abspielen"><svg viewBox="0 0 24 24"><path d="M7 5l12 7-12 7z"/></svg></button>
+                  <div><div class="tmlabel" id="tmdate">Jun 2026</div><div class="muted" style="font-size:11px">62 Fotos über 5 Jahre</div></div>
+                </div>
+              </div>
+
+              <!-- Timeline -->
+              <div class="pad" style="padding-top:8px">
+                <div class="eyebrow" style="margin-bottom:12px">Timeline</div>
+                <div class="tl">
+                  <div class="ev"><div class="dt">Jun 2026</div><div class="tx">Leitmännchen voll ausgefärbt</div></div>
+                  <div class="ev mil"><div class="dt">Nov 2025</div><div class="tx">Erste Nachzucht — 20+ Jungtiere</div><span class="badge">Meilenstein</span></div>
+                  <div class="ev"><div class="dt">Mär 2025</div><div class="tx">Rescape linke Felsseite</div></div>
+                  <div class="ev"><div class="dt">Aug 2024</div><div class="tx">Besatz erweitert: Calvus-Paar</div></div>
+                  <div class="ev mil"><div class="dt">Mär 2021</div><div class="tx">Becken eingerichtet</div><span class="badge">Start</span></div>
+                </div>
+              </div>
+
+              <!-- Spotlight -->
+              <div class="pad" style="padding-top:0">
+                <div class="eyebrow" style="margin-bottom:10px">Fisch-Spotlight</div>
+                <div class="card row" style="padding:12px;gap:12px">
+                  <span class="ph sq" style="width:58px;border-radius:10px">Foto</span>
+                  <div><div style="font-weight:700">„Kasanga" · Leitmännchen</div><div class="muted" style="font-size:12px;font-style:italic">Tropheus moorii · seit 2022</div></div>
+                </div>
+              </div>
+
+              <!-- Inhabitants -->
+              <div class="pad" style="padding-top:0">
+                <div class="eyebrow" style="margin-bottom:6px">Besatz</div>
+                <div class="li"><span class="ph sq" style="width:40px;border-radius:9px">img</span><div style="flex:1"><div style="font-weight:600;font-style:italic">Tropheus moorii „Kasanga"</div><div class="meta">12 · Kolonie</div></div></div>
+                <div class="li"><span class="ph sq" style="width:40px;border-radius:9px">img</span><div style="flex:1"><div style="font-weight:600;font-style:italic">Altolamprologus calvus</div><div class="meta">2 · Paar</div></div></div>
+                <div class="li"><span class="ph sq" style="width:40px;border-radius:9px">img</span><div style="flex:1"><div style="font-weight:600;font-style:italic">Neolamprologus multifasciatus</div><div class="meta">Kolonie · Schnecken</div></div></div>
+              </div>
+            </div>
+
+            <!-- CARE VIEW (utility) -->
+            <div data-pane="care" style="display:none">
+              <div class="pad" style="padding-bottom:4px">
+                <div class="card due" style="background:var(--accent-weak)">
+                  <div class="eyebrow">Nächste Pflege</div>
+                  <div class="ttl">Wasserwechsel in 3 Tagen</div>
+                  <div class="muted" style="font-size:12px">Empfehlung aus Besatz & Bioload: alle 14 Tage</div>
+                  <button class="btn primary" style="margin-top:12px" data-log>Quick-Log öffnen</button>
+                </div>
+              </div>
+
+              <div class="pad" style="padding-top:14px;padding-bottom:6px">
+                <div class="row" style="justify-content:space-between;margin-bottom:10px">
+                  <span class="eyebrow">Wasserwechsel-Heatmap</span>
+                  <span class="muted" style="font-size:11px">letzte 16 Wochen</span>
+                </div>
+                <div class="heat" id="heatTank"></div>
+              </div>
+
+              <div class="pad" style="padding-top:10px;padding-bottom:6px">
+                <div class="eyebrow" style="margin-bottom:8px">Nitrat (NO₃) · mg/l</div>
+                <div class="card" style="padding:12px 10px 8px">
+                  <svg viewBox="0 0 300 90" style="width:100%;height:84px">
+                    <polyline fill="none" stroke="var(--accent)" stroke-width="2.5" points="6,60 46,52 86,64 126,40 166,48 206,30 246,36 294,22"/>
+                    <line x1="0" y1="78" x2="300" y2="78" stroke="var(--border)"/>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="pad" style="padding-top:10px">
+                <div class="eyebrow" style="margin-bottom:6px">Letzte Einträge</div>
+                <div class="li"><span class="dot-ic"><svg viewBox="0 0 24 24"><path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z"/></svg></span><div style="flex:1"><div style="font-weight:600">Wasserwechsel · 30 %</div><div class="meta">vor 11 Tagen</div></div></div>
+                <div class="li"><span class="dot-ic"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5v14"/></svg></span><div style="flex:1"><div style="font-weight:600">Messung · pH 8.4 · NO₃ 10</div><div class="meta">vor 11 Tagen</div></div></div>
+                <div class="li"><span class="dot-ic"><svg viewBox="0 0 24 24"><path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z"/></svg></span><div style="flex:1"><div style="font-weight:600">Wasserwechsel · 30 %</div><div class="meta">vor 25 Tagen</div></div></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ════════ PFLEGE-DASHBOARD ════════ -->
+        <section class="screen" data-screen="care">
+          <div class="appbar"><span class="title">Pflege</span></div>
+          <div class="content pad">
+            <div class="card" style="padding:16px;text-align:center">
+              <span class="streak" style="font-size:26px"><svg class="flame" viewBox="0 0 24 24" style="width:26px;height:26px"><path d="M12 2c1 4-3 5-3 9a3 3 0 0 0 6 0c0-1-1-2-1-3 2 1 4 3 4 6a6 6 0 0 1-12 0c0-5 5-7 6-12z"/></svg>18</span>
+              <div class="muted" style="font-size:12px;margin-top:4px">Tage in Folge · längster: 41 Tage</div>
+            </div>
+
+            <div class="row" style="justify-content:space-between;margin:18px 2px 10px">
+              <span class="eyebrow">Pflege-Aktivität · alle Becken</span>
+              <span class="muted" style="font-size:11px">16 Wochen</span>
+            </div>
+            <div class="heat" id="heatAll"></div>
+            <div class="legend">weniger <i style="background:var(--ph)"></i><i class="" style="background:color-mix(in oklab,var(--accent),white 65%)"></i><i style="background:color-mix(in oklab,var(--accent),white 40%)"></i><i style="background:var(--accent)"></i> mehr</div>
+
+            <div class="eyebrow" style="margin:22px 2px 10px">Fällige Pflege</div>
+            <div class="li"><span class="dot-ic" style="background:color-mix(in oklab,var(--warn),white 80%);color:var(--warn)"><svg viewBox="0 0 24 24"><path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z"/></svg></span><div style="flex:1"><div style="font-weight:600">Tanganjika 450 L</div><div class="meta">Wasserwechsel in 3 Tagen</div></div><button class="chip" data-log>Log</button></div>
+            <div class="li"><span class="dot-ic"><svg viewBox="0 0 24 24"><path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z"/></svg></span><div style="flex:1"><div style="font-weight:600">Malawi Mbuna 240 L</div><div class="meta">Wasserwechsel in 6 Tagen</div></div><button class="chip" data-log>Log</button></div>
+          </div>
+        </section>
+
+        <!-- ════════ ENTDECKEN ════════ -->
+        <section class="screen" data-screen="discover">
+          <div class="appbar"><span class="title">Entdecken</span></div>
+          <div class="content pad">
+            <div class="chip on" style="margin-right:6px">Tanganjika</div><div class="chip" style="margin-right:6px">Malawi</div><div class="chip">Südamerika</div>
+            <p class="muted" style="font-size:12px;margin:14px 2px 8px">Becken, denen du folgst — wie eine Serie. Updates, keine Einzelfotos.</p>
+
+            <div class="card" style="padding:14px;margin-bottom:12px">
+              <div class="row"><span class="avatar"></span><div style="flex:1"><div style="font-weight:600">Tanganjika-Schau 720 L</div><div class="meta muted" style="font-size:11.5px">von rift_keeper · folgt 312</div></div><button class="chip on">Folgt</button></div>
+              <div class="ph wide" style="margin:12px 0 8px">Update · Meilenstein-Foto</div>
+              <div style="font-weight:600;font-size:13.5px">Meilenstein: Frontosa-Kolonie umgezogen</div>
+              <div class="meta muted" style="font-size:11.5px;margin-top:2px">neuer Timeline-Eintrag · vor 2 Std</div>
+            </div>
+
+            <div class="card" style="padding:14px">
+              <div class="row"><span class="avatar"></span><div style="flex:1"><div style="font-weight:600">Multi-Shellbed 90 L</div><div class="meta muted" style="font-size:11.5px">von sandsifter · folgt 88</div></div><button class="chip">Folgen</button></div>
+              <div class="ph wide" style="margin:12px 0 8px">Update · Zeitraffer</div>
+              <div style="font-weight:600;font-size:13.5px">Time-Machine: 6 Monate Schneckenhaus-Feld</div>
+              <div class="meta muted" style="font-size:11.5px;margin-top:2px">neuer Zeitraffer · gestern</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ════════ PROFIL ════════ -->
+        <section class="screen" data-screen="profile">
+          <div class="appbar"><span class="title">Profil</span><span class="sp"></span>
+            <button class="iconbtn" aria-label="Einstellungen"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg></button>
+          </div>
+          <div class="content pad">
+            <div class="row" style="gap:14px"><span class="avatar lg"></span><div><div style="font-weight:800;font-size:17px">Markus_TG</div><div class="muted" style="font-size:12px">Tanganjika-Halter seit 2021</div></div></div>
+            <div class="row" style="gap:8px;flex-wrap:wrap;margin-top:14px"><span class="chip on">★ Vertrauter Halter</span><span class="chip">41-Tage-Streak</span><span class="chip">3 Becken</span></div>
+            <div class="eyebrow" style="margin:20px 2px 6px">Meine Becken</div>
+            <div class="li" data-open="tank" style="cursor:pointer"><span class="ph wide" style="width:74px">img</span><div style="flex:1"><div style="font-weight:600">Tanganjika 450 L</div><div class="meta">7 Arten · seit 2021</div></div></div>
+            <div class="li"><span class="ph wide" style="width:74px">img</span><div style="flex:1"><div style="font-weight:600">Malawi Mbuna 240 L</div><div class="meta">4 Arten · seit 2023</div></div></div>
+            <div class="li"><span class="ph wide" style="width:74px">img</span><div style="flex:1"><div style="font-weight:600">Shellie-Nano 60 L</div><div class="meta">1 Art · seit 2024</div></div></div>
+          </div>
+        </section>
+
+        <!-- ════════ BECKEN-EINSTELLUNGEN ════════ -->
+        <section class="screen" data-screen="tank-settings">
+          <div class="appbar">
+            <button class="iconbtn" data-open="tank" aria-label="Zurück"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+            <span class="title">Becken-Einstellungen</span>
+          </div>
+          <div class="content pad">
+            <div class="eyebrow" style="margin:4px 2px 6px">Sichtbarkeit</div>
+            <p class="muted" style="font-size:12.5px;margin:0 2px 12px">Wer dieses Becken und seine Inhalte sehen darf.</p>
+
+            <div class="grp" style="margin-top:0">Becken sichtbar für</div>
+            <div class="optlist" id="tankVis">
+              <button class="opt on" data-v="public"><span class="lab">Öffentlich</span><span class="rdo"></span></button>
+              <button class="opt" data-v="followers"><span class="lab">Nur Follower</span><span class="rdo"></span></button>
+              <button class="opt" data-v="private"><span class="lab">Privat</span><span class="rdo"></span></button>
+            </div>
+
+            <div class="grp" style="margin-top:22px">Was Besucher sehen</div>
+            <div class="card" style="padding:2px 14px">
+              <div class="toggle-row">
+                <div style="flex:1"><div style="font-weight:600;font-size:14px">Messwerte öffentlich</div><div class="muted" style="font-size:11.5px">Wasserwerte (pH, NO₃, KH …) im öffentlichen Becken zeigen</div></div>
+                <button class="switch" id="swMeas" role="switch" aria-checked="false"><span class="knob"></span></button>
+              </div>
+            </div>
+            <p class="muted" style="font-size:11.5px;margin:10px 2px 0">Pflege-Logs &amp; Messwerte sind standardmäßig privat — unabhängig von der Becken-Sichtbarkeit. Erst dieser Schalter gibt die Messwerte für andere frei.</p>
+          </div>
+        </section>
+
+        <!-- ════════ ONBOARDING — Welcome ════════ -->
+        <section class="screen" data-screen="ob-welcome">
+          <div class="content onb">
+            <div class="mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 12c0-3.2 3.2-5.6 7.2-5.6S22.5 8.8 22.5 12s-3.2 5.6-6.8 5.6S8.5 15.2 8.5 12z" fill="#fff"/><path d="M10 12 2.6 7.6v8.8z" fill="#fff"/><circle cx="18.4" cy="10.6" r="1.15" fill="var(--accent)"/></svg></div>
+            <div class="spring" style="flex:0 0 18px"></div>
+            <h1>Dein Becken ist ein <em>lebendes Projekt.</em></h1>
+            <p class="sub">Dranbleiben, Fortschritt festhalten, stolz zeigen — über Monate und Jahre. Gemacht für Buntbarsch-Halter.</p>
+            <div class="spring"></div>
+            <button class="btn primary" data-open="ob-interests">Los geht’s</button>
+            <button class="btn" style="margin-top:10px">Ich habe schon ein Konto</button>
+          </div>
+        </section>
+
+        <!-- ════════ ONBOARDING — Interessen ════════ -->
+        <section class="screen" data-screen="ob-interests">
+          <div class="appbar">
+            <button class="iconbtn" data-open="ob-welcome" aria-label="Zurück"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+            <span class="title">Deine Interessen</span>
+          </div>
+          <div class="content pad" style="padding-bottom:20px">
+            <p class="muted" style="font-size:13.5px;margin:4px 2px 0">Wähle, was dich interessiert — Start-Feed und Vorschläge richten sich danach. Später jederzeit änderbar.</p>
+            <div class="grp">Cichliden-Gruppen</div>
+            <div class="chips" id="interests" style="display:flex;flex-wrap:wrap;gap:8px">
+              <span class="chip on">Tanganjika</span>
+              <span class="chip on">Malawi</span>
+              <span class="chip">Süd-/Mittelamerika</span>
+              <span class="chip">Diskus</span>
+              <span class="chip">Apistogramma</span>
+              <span class="chip">Mbuna</span>
+              <span class="chip">Nano / Shellies</span>
+              <span class="chip">Zucht / Nachzucht</span>
+            </div>
+          </div>
+          <div class="wizfoot">
+            <button class="btn primary" style="flex:1" data-open="wizard" data-wiz-reset>Weiter — erstes Becken anlegen</button>
+          </div>
+        </section>
+
+        <!-- ════════ BECKEN ANLEGEN — Wizard ════════ -->
+        <section class="screen" data-screen="wizard">
+          <div class="appbar">
+            <button class="iconbtn" data-open="home" aria-label="Abbrechen"><svg viewBox="0 0 24 24" style="stroke-width:2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+            <span class="title">Becken anlegen</span>
+          </div>
+          <div class="stepper">
+            <span class="st on" data-st="1"><span class="n">1</span>Basics</span>
+            <span class="bar"></span>
+            <span class="st" data-st="2"><span class="n">2</span>Besatz</span>
+            <span class="bar"></span>
+            <span class="st" data-st="3"><span class="n">3</span>Fertig</span>
+          </div>
+          <div class="content" style="padding:16px">
+            <!-- step 1 -->
+            <div data-wstep="1">
+              <div class="f" style="margin-bottom:12px"><label>Becken-Name</label><input placeholder="z.B. Tanganjika 450 L"></div>
+              <div class="fieldgrid" style="margin-top:0">
+                <div class="f"><label>Volumen (L)</label><input placeholder="450" inputmode="numeric"></div>
+                <div class="f"><label>Maße (cm)</label><input placeholder="150×60×50"></div>
+              </div>
+              <div class="grp">Biotop</div>
+              <div class="chips" style="display:flex;flex-wrap:wrap;gap:8px">
+                <span class="chip on">Tanganjika</span><span class="chip">Malawi</span><span class="chip">Südamerika</span><span class="chip">Hartwasser</span><span class="chip">Weichwasser</span>
+              </div>
+              <div class="f" style="margin-top:16px"><label>Eingerichtet am</label><input placeholder="03 / 2021"></div>
+            </div>
+            <!-- step 2 -->
+            <div data-wstep="2" style="display:none">
+              <div class="eyebrow">Besatz</div>
+              <p class="muted" style="font-size:12.5px;margin:8px 2px 0">Arten verknüpfen — die App prüft Wasserwerte, Aggression und Endgröße aus dem Katalog.</p>
+              <div class="grp">Im Becken</div>
+              <div class="chips" id="stockList" style="display:flex;flex-wrap:wrap;gap:8px">
+                <span class="chip species">Tropheus moorii „Kasanga"</span>
+              </div>
+              <div class="f" style="margin-top:16px"><label>Art suchen</label><input placeholder="z.B. Pseudotropheus, Synodontis…"></div>
+              <div class="grp">Vorschläge</div>
+              <div class="li addcand" data-add="ok" data-name="Synodontis petricola"><span class="plus"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span><div style="flex:1"><div style="font-weight:600;font-style:italic">Synodontis petricola</div><div class="meta">Tanganjika · verträglich</div></div></div>
+              <div class="li addcand" data-add="warn" data-name="Pseudotropheus demasoni"><span class="plus"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span><div style="flex:1"><div style="font-weight:600;font-style:italic">Pseudotropheus demasoni</div><div class="meta">Malawi-Mbuna</div></div></div>
+              <div class="warn-card" id="warnCard" style="display:none">
+                <div class="wt"><svg viewBox="0 0 24 24"><path d="M12 3 2 20h20z"/><path d="M12 10v4M12 17v.5"/></svg> Passt das zusammen?</div>
+                <p>Mbuna (Malawi) und Tropheus (Tanganjika) brauchen zwar ähnliche Wasserwerte, haben aber sehr unterschiedliche Ernährung und Sozialverhalten — die Mischung gilt als heikel und wird meist nicht empfohlen.</p>
+                <div class="row" style="gap:8px">
+                  <button class="btn" id="warnNo" style="flex:1">Doch nicht</button>
+                  <button class="btn primary" id="warnYes" style="flex:1">Trotzdem</button>
+                </div>
+              </div>
+            </div>
+            <!-- step 3 -->
+            <div data-wstep="3" style="display:none">
+              <div class="success">
+                <span class="big"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>
+                <div style="font-weight:800;font-size:19px">Becken angelegt</div>
+                <p class="muted" style="font-size:13.5px;max-width:30ch">Aus dem Besatz haben wir eine empfohlene Pflege-Frequenz geschätzt und die erste Erinnerung gesetzt.</p>
+              </div>
+              <div class="due" style="margin-top:6px"><div class="eyebrow">Erste Erinnerung</div><div class="ttl">Wasserwechsel in 14 Tagen</div><div class="muted" style="font-size:12px">aus Besatz & Bioload geschätzt — anpassbar</div></div>
+            </div>
+          </div>
+          <div class="wizfoot">
+            <button class="btn" id="wizBack">Abbrechen</button>
+            <button class="btn primary" id="wizNext">Weiter</button>
+          </div>
+        </section>
+
+        <!-- bottom nav -->
+        <nav class="bottomnav" id="nav">
+          <button class="nav active" data-go="home"><svg class="tabicon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg>Becken</button>
+          <button class="nav" data-go="care"><svg class="tabicon" viewBox="0 0 24 24"><path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z"/></svg>Pflege</button>
+          <button class="nav mid" data-log><span class="fab"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></button>
+          <button class="nav" data-go="discover"><svg class="tabicon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15 9l-2 4-4 2 2-4z"/></svg>Entdecken</button>
+          <button class="nav" data-go="profile"><svg class="tabicon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>Profil</button>
+        </nav>
+
+        <!-- quick-log sheet -->
+        <div class="scrim" id="scrim"></div>
+        <div class="sheet" id="sheet">
+          <div class="grip"></div>
+          <div class="sh-body">
+            <div class="row" style="justify-content:space-between;margin-bottom:12px">
+              <strong style="font-size:16px">Schnell-Eintrag</strong>
+              <button class="iconbtn" id="sheetClose" aria-label="Schließen"><svg viewBox="0 0 24 24" style="stroke:var(--fg);stroke-width:2;fill:none;width:20px;height:20px"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+            </div>
+            <div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:4px">
+              <span class="chip on">Tanganjika 450 L</span><span class="chip">Malawi 240 L</span><span class="chip">Shellie 60 L</span>
+            </div>
+
+            <button class="bigaction" id="wcAction" style="margin-top:14px">
+              <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z"/></svg></span>
+              <span><span style="font-weight:700;display:block" id="wcTitle">Wasserwechsel</span><span class="muted" style="font-size:12px" id="wcSub">1 Tap — Menge optional</span></span>
+            </button>
+            <div class="reveal" id="wcReveal">
+              <div class="fieldgrid">
+                <div class="f"><label>Menge %</label><input value="30" inputmode="numeric"></div>
+                <div class="f"><label>oder Liter</label><input placeholder="—" inputmode="numeric"></div>
+              </div>
+            </div>
+
+            <button class="linkbtn" id="measToggle">+ Messung hinzufügen</button>
+            <div class="reveal" id="measReveal">
+              <div class="fieldgrid">
+                <div class="f"><label>Temp °C</label><input placeholder="25.5" inputmode="decimal"></div>
+                <div class="f"><label>pH</label><input placeholder="8.4" inputmode="decimal"></div>
+                <div class="f"><label>KH</label><input placeholder="12" inputmode="decimal"></div>
+                <div class="f"><label>GH</label><input placeholder="14" inputmode="decimal"></div>
+                <div class="f"><label>NO₃ mg/l</label><input placeholder="10" inputmode="decimal"></div>
+                <div class="f"><label>Leitwert µS</label><input placeholder="430" inputmode="numeric"></div>
+              </div>
+            </div>
+
+            <button class="btn primary" id="sheetSave" style="margin-top:16px">Eintragen</button>
+          </div>
+        </div>
+
+      </div><!-- /viewport -->
+    </div><!-- /screenwrap -->
+  </div><!-- /device -->
+
+  <p class="hint"><b>Bewusst offen:</b> echte Visuals, Onboarding/„Becken anlegen"-Wizard, Sichtbarkeits-Stufen pro Eintrag, Kompatibilitäts-Warnungen aus dem Besatz. <b>Nächster Schritt:</b> Becken-Detail + Quick-Log hochauflösend ausarbeiten, daraus die ersten Design-System-Tokens ziehen.</p>
+
+<script>
+(function(){
+  var V = document.querySelector('.viewport');
+  var nav = document.getElementById('nav');
+  function show(name){
+    V.querySelectorAll('.screen').forEach(function(s){ s.classList.toggle('active', s.dataset.screen===name); });
+    nav.querySelectorAll('.nav[data-go]').forEach(function(b){ b.classList.toggle('active', b.dataset.go===name); });
+    nav.style.display = (['home','care','discover','profile'].indexOf(name)>=0) ? '' : 'none';
+    V.querySelectorAll('.content').forEach(function(c){ c.scrollTop=0; });
+  }
+  document.addEventListener('click', function(e){
+    var go = e.target.closest('[data-go]'); if(go){ show(go.dataset.go); return; }
+    var op = e.target.closest('[data-open]'); if(op){ show(op.dataset.open); return; }
+    if(e.target.closest('[data-log]')){ openSheet(); return; }
+  });
+
+  // tank story/care toggle
+  var seg = document.getElementById('tankseg');
+  seg.addEventListener('click', function(e){
+    var b = e.target.closest('button'); if(!b) return;
+    seg.querySelectorAll('button').forEach(function(x){ x.classList.toggle('on', x===b); });
+    document.querySelectorAll('[data-pane]').forEach(function(p){ p.style.display = (p.dataset.pane===b.dataset.view)?'':'none'; });
+  });
+
+  // time machine scrubber
+  var scrub = document.getElementById('tmscrub'), tmdate=document.getElementById('tmdate'), tmframe=document.getElementById('tmframe');
+  var months=['Mär 2021','Sep 2021','Feb 2022','Aug 2022','Jan 2023','Jul 2023','Dez 2023','Jun 2024','Nov 2024','Mai 2025','Okt 2025','Apr 2026','Jun 2026'];
+  scrub.addEventListener('input', function(){
+    var i = Math.round(scrub.value/100*(months.length-1));
+    tmdate.textContent = months[i];
+    tmframe.textContent = (i===months.length-1)?'Heute':months[i];
+  });
+
+  // heatmaps — deterministic water-change cadence (~every 14d) over 16 weeks
+  function fillHeat(el, seed){
+    if(!el) return; var html=''; var n=16*7;
+    for(var d=0; d<n; d++){
+      var cls='';
+      var since = (d+seed)%14;            // distance to a ~biweekly change day
+      if(since===0) cls='l4'; else if(since===1||since===13) cls='l2'; else if(d%5===(seed%5)) cls='l1';
+      html += '<i class="'+cls+'"></i>';
+    }
+    el.innerHTML = html;
+  }
+  fillHeat(document.getElementById('heatTank'),3);
+  fillHeat(document.getElementById('heatAll'),1);
+
+  // quick-log sheet
+  var scrim=document.getElementById('scrim'), sheet=document.getElementById('sheet');
+  function openSheet(){ scrim.classList.add('open'); sheet.classList.add('open'); }
+  function closeSheet(){ scrim.classList.remove('open'); sheet.classList.remove('open'); }
+  scrim.addEventListener('click', closeSheet);
+  document.getElementById('sheetClose').addEventListener('click', closeSheet);
+
+  // water-change progressive reveal + done state
+  var wc=document.getElementById('wcAction'), wcReveal=document.getElementById('wcReveal'), wcTitle=document.getElementById('wcTitle'), wcSub=document.getElementById('wcSub');
+  var wcOn=false;
+  wc.addEventListener('click', function(){
+    wcOn=!wcOn;
+    wc.classList.toggle('done', wcOn);
+    wcReveal.classList.toggle('open', wcOn);
+    wcTitle.textContent = wcOn ? 'Wasserwechsel erfasst ✓' : 'Wasserwechsel';
+    wcSub.textContent = wcOn ? 'Menge anpassbar' : '1 Tap — Menge optional';
+  });
+
+  // measurement progressive reveal
+  var mt=document.getElementById('measToggle'), mr=document.getElementById('measReveal');
+  mt.addEventListener('click', function(){
+    var open=mr.classList.toggle('open');
+    mt.textContent = open ? '– Messung ausblenden' : '+ Messung hinzufügen';
+  });
+
+  // save closes + resets
+  document.getElementById('sheetSave').addEventListener('click', function(){
+    closeSheet();
+    setTimeout(function(){
+      wcOn=false; wc.classList.remove('done'); wcReveal.classList.remove('open');
+      wcTitle.textContent='Wasserwechsel'; wcSub.textContent='1 Tap — Menge optional';
+      mr.classList.remove('open'); mt.textContent='+ Messung hinzufügen';
+    },300);
+  });
+
+  // interests multi-select (onboarding)
+  var interests=document.getElementById('interests');
+  if(interests) interests.addEventListener('click',function(e){var c=e.target.closest('.chip');if(c)c.classList.toggle('on');});
+
+  // tank settings: visibility radio + measurements switch
+  var tankVis=document.getElementById('tankVis');
+  if(tankVis) tankVis.addEventListener('click',function(e){var o=e.target.closest('.opt');if(!o)return;tankVis.querySelectorAll('.opt').forEach(function(x){x.classList.toggle('on',x===o);});});
+  var swMeas=document.getElementById('swMeas');
+  if(swMeas) swMeas.addEventListener('click',function(){var on=swMeas.classList.toggle('on');swMeas.setAttribute('aria-checked',on?'true':'false');});
+
+  // theme toggle (chrome control, not product UI)
+  var themeBtn=document.getElementById('themeBtn'), wrapEl=document.querySelector('.screenwrap');
+  if(themeBtn) themeBtn.addEventListener('click',function(){var d=wrapEl.classList.toggle('dark');themeBtn.textContent=d?'Light-Modus':'Dark-Modus';});
+
+  // create-tank wizard
+  var wstep=1;
+  function wizGo(n){
+    wstep=n;
+    document.querySelectorAll('[data-wstep]').forEach(function(p){p.style.display=(+p.dataset.wstep===n)?'':'none';});
+    document.querySelectorAll('.stepper .st').forEach(function(s){s.classList.toggle('on',+s.dataset.st<=n);});
+    var back=document.getElementById('wizBack'), next=document.getElementById('wizNext');
+    if(back) back.textContent = n===1?'Abbrechen':'Zurück';
+    if(next) next.textContent = n===3?'Zum Becken':'Weiter';
+  }
+  function resetWiz(){ var w=document.getElementById('warnCard'); if(w)w.style.display='none'; wizGo(1); }
+  document.addEventListener('click',function(e){ if(e.target.closest('[data-wiz-reset]')) setTimeout(resetWiz,0); });
+  var wizBack=document.getElementById('wizBack'), wizNext=document.getElementById('wizNext');
+  if(wizNext) wizNext.addEventListener('click',function(){ if(wstep<3) wizGo(wstep+1); else show('home'); });
+  if(wizBack) wizBack.addEventListener('click',function(){ if(wstep>1) wizGo(wstep-1); else show('home'); });
+
+  // stock add + compatibility warning (wizard step 2)
+  var stockList=document.getElementById('stockList'), warnCard=document.getElementById('warnCard'), pendName='';
+  function addStock(nm){ if(!stockList) return; var s=document.createElement('span'); s.className='chip species'; s.textContent=nm; stockList.appendChild(s); }
+  document.querySelectorAll('.addcand').forEach(function(c){
+    c.addEventListener('click',function(){
+      if(c.dataset.add==='warn'){ pendName=c.dataset.name; if(warnCard) warnCard.style.display=''; }
+      else { addStock(c.dataset.name); }
+    });
+  });
+  var warnYes=document.getElementById('warnYes'), warnNo=document.getElementById('warnNo');
+  if(warnYes) warnYes.addEventListener('click',function(){ addStock(pendName); warnCard.style.display='none'; });
+  if(warnNo) warnNo.addEventListener('click',function(){ warnCard.style.display='none'; });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+/* cichlids.com — design tokens (Palette A "aquatic teal").
+   Source of truth for the app UI: color, spacing, typography, radii, elevation,
+   motion, focus. Light is the default; dark is a desaturated "deep water" variant
+   of the same family. Values in OKLCH. Visual docs: ../cichlids-design-system.html */
+
+:root{
+  /* surfaces */
+  --bg:oklch(97% 0.006 230);
+  --surface:#ffffff;
+  --surface-2:oklch(98.5% 0.004 230);
+  --border:oklch(91% 0.008 255);
+  /* text */
+  --fg:oklch(24% 0.02 255);
+  --muted:oklch(56% 0.016 255);
+  /* accent (single accent — at most 2x per screen) */
+  --accent:oklch(54% 0.10 205);
+  --accent-weak:oklch(95% 0.03 205);
+  --accent-mid:oklch(72% 0.09 205);
+  --on-accent:#ffffff;           /* text/icon on accent fills */
+  /* status */
+  --good:oklch(62% 0.12 150);
+  --warn:oklch(72% 0.13 70);
+  --danger:oklch(55% 0.20 28);   /* errors, destructive */
+  --danger-weak:oklch(95% 0.04 28);
+  --placeholder:oklch(94% 0.008 230);
+
+  /* radii */
+  --radius-sm:9px; --radius-md:12px; --radius-lg:16px; --radius-sheet:22px; --radius-pill:999px;
+  /* spacing (4px base) */
+  --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px; --space-6:24px; --space-8:32px;
+
+  /* typography (final for v1: system/Roboto sans only, no custom display face) */
+  --font-sans:'Roboto',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --text-display:28px; --text-h1:21px; --text-h2:17px; --text-body:15px; --text-meta:12px; --text-eyebrow:10.5px;
+  --weight-regular:400; --weight-medium:600; --weight-bold:700; --weight-black:800;
+
+  /* motion (animate opacity/transform only; honor prefers-reduced-motion) */
+  --dur-fast:120ms; --dur-base:200ms; --dur-slow:280ms;
+  --ease-standard:cubic-bezier(.2,.8,.2,1);   /* most transitions (decelerate) */
+  --ease-emphasized:cubic-bezier(.3,.8,.3,1); /* sheets, large surfaces */
+
+  /* focus (keyboard) — visible ring via :focus-visible; adapts to accent per theme */
+  --focus-ring:0 0 0 3px color-mix(in oklab, var(--accent), transparent 62%);
+
+  /* elevation (border-led; shadows only for floating layers) */
+  --elev-raised:0 8px 16px -5px color-mix(in oklab, var(--accent), transparent 60%);
+  --elev-modal:0 -6px 24px -8px rgba(10,12,16,.25), 0 2px 8px rgba(10,12,16,.06);
+}
+
+/* Dark — same palette family; accent slightly lifted and desaturated.
+   Important: the theme scope must also set `color: var(--fg)`, not just the
+   variables, otherwise text inherits the light `color`. */
+:root[data-theme="dark"], .theme-dark{
+  --bg:oklch(23% 0.018 245);
+  --surface:oklch(27% 0.02 245);
+  --surface-2:oklch(30% 0.02 245);
+  --border:oklch(38% 0.018 245);
+  --fg:oklch(96% 0.006 250);
+  --muted:oklch(77% 0.014 250);
+  --accent:oklch(66% 0.085 205);
+  --accent-weak:oklch(32% 0.045 215);
+  --accent-mid:oklch(58% 0.075 205);
+  --on-accent:oklch(22% 0.03 230);
+  --good:oklch(72% 0.12 155);
+  --warn:oklch(80% 0.14 70);
+  --danger:oklch(70% 0.16 25);
+  --danger-weak:oklch(34% 0.07 25);
+  --placeholder:oklch(32% 0.014 245);
+}
+
+/* Dark automatically follows the system setting (unless explicitly set to light) */
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:oklch(23% 0.018 245);
+    --surface:oklch(27% 0.02 245);
+    --surface-2:oklch(30% 0.02 245);
+    --border:oklch(38% 0.018 245);
+    --fg:oklch(96% 0.006 250);
+    --muted:oklch(77% 0.014 250);
+    --accent:oklch(66% 0.085 205);
+    --accent-weak:oklch(32% 0.045 215);
+    --accent-mid:oklch(58% 0.075 205);
+    --on-accent:oklch(22% 0.03 230);
+    --good:oklch(72% 0.12 155);
+    --warn:oklch(80% 0.14 70);
+    --danger:oklch(70% 0.16 25);
+    --danger-weak:oklch(34% 0.07 25);
+    --placeholder:oklch(32% 0.014 245);
+  }
+}
+
+/* Reduced motion — disable non-essential animation/transition */
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; }
+}
