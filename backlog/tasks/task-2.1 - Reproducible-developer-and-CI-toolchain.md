@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - claude
 created_date: '2026-06-03 16:00'
-updated_date: '2026-06-03 16:09'
+updated_date: '2026-06-04 12:56'
 labels:
   - infra
   - tooling
@@ -21,9 +21,29 @@ ordinal: 3000
 ## Description
 
 <!-- SECTION:DESCRIPTION:BEGIN -->
-Provide the full toolchain needed to build, validate and test the platform reproducibly in the devcontainer and in CI, so every later task runs against pinned, known-good tools. Tools: OpenTofu, kubectl, helm, kustomize, sops, age, conftest, .NET 10 SDK, JDK + Android SDK/cmdline-tools + a KVM-accelerated emulator, the Maestro CLI, and kind/k3d. Installed via the devcontainer image/features (versions pinned), exposed on PATH. A verification script asserts each tool is present at the expected version and is the single source of truth used by the CI `toolchain` job.
+### Goal
+Provide the full toolchain to build, validate and test the platform reproducibly in the
+devcontainer and in CI, so every later task runs against pinned, known-good tools.
 
-Realises the execution-environment needs of ADR-0004/0006 (Maestro + Android emulator) and the IaC/GitOps tooling of ADR-0010/0014. Verifying artifact: tools/verify-toolchain.sh (carries the task id as a back-reference for the story-test-binding gate).
+### Tools
+- OpenTofu, kubectl, helm, kustomize
+- sops, age, conftest
+- .NET 10 SDK
+- JDK + Android SDK/cmdline-tools + a KVM-accelerated emulator, the Maestro CLI
+- kind / k3d
+
+### Approach
+- Installed via the devcontainer image/features (versions pinned), exposed on PATH.
+- A verification script asserts each tool is present at the expected version and is the single
+  source of truth used by the CI `toolchain` job.
+
+### Realises
+- Execution-environment needs of ADR-0004/0006 (Maestro + Android emulator) and the IaC/GitOps
+  tooling of ADR-0010/0014.
+
+### Verifying artifact
+- `tools/verify-toolchain.sh` (carries the task id as back-reference for the story-test-binding
+  gate).
 <!-- SECTION:DESCRIPTION:END -->
 
 ## Acceptance Criteria

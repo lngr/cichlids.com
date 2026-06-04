@@ -4,7 +4,7 @@ title: First tested database restore drill
 status: To Do
 assignee: []
 created_date: '2026-06-03 16:02'
-updated_date: '2026-06-03 16:03'
+updated_date: '2026-06-04 12:56'
 labels:
   - infra
   - backup
@@ -23,9 +23,26 @@ ordinal: 12000
 ## Description
 
 <!-- SECTION:DESCRIPTION:BEGIN -->
-Prove the recovery path, not just the backup (ADR-0013): a backup that has never been restored is treated as broken. Provide an automated restore drill that, against an ephemeral CloudNativePG instance (local kind + MinIO is acceptable for the agent-side proof; the cluster's real backup bucket for the operator), seeds synthetic data, takes a backup, restores it into a fresh, throwaway target and asserts the restored row counts match. The drill runs as a scheduled/manual CI job and tears the target down afterwards. The production restore-test environment that restores real (transient) PII is documented as out-of-band with no agent/CI access; this drill uses synthetic data only.
+### Goal
+Prove the recovery path, not just the backup (ADR-0013): a backup that has never been restored
+is treated as broken.
 
-Realises ADR-0013 (tested restores, RTO<=4h, restore-test environment). Verifying artifact: tools/restore-drill/ + CI job restore-drill.
+### Scope
+- An automated restore drill that, against an ephemeral CloudNativePG instance (local kind +
+  MinIO is acceptable for the agent-side proof; the cluster's real backup bucket for the
+  operator), seeds synthetic data, takes a backup, restores it into a fresh throwaway target and
+  asserts the restored row counts match.
+- Runs as a scheduled/manual CI job and tears the target down afterwards.
+
+### Constraints
+- The production restore-test environment that restores real (transient) PII is documented as
+  out-of-band with no agent/CI access; this drill uses synthetic data only.
+
+### Realises
+- ADR-0013 (tested restores, RTO≤4h, restore-test environment).
+
+### Verifying artifact
+- `tools/restore-drill/` + CI job `restore-drill`.
 <!-- SECTION:DESCRIPTION:END -->
 
 ## Acceptance Criteria

@@ -4,6 +4,7 @@ title: Foundation and strict GitOps platform
 status: In Progress
 assignee: []
 created_date: '2026-06-03 15:59'
+updated_date: '2026-06-04 12:57'
 labels:
   - epic
   - infra
@@ -17,13 +18,39 @@ ordinal: 2000
 ## Description
 
 <!-- SECTION:DESCRIPTION:BEGIN -->
-Epic. Stand up the complete, real GitOps platform from day one so later feature work merely fills in workloads — no big-bang migration. OpenTofu provisions the Hetzner node, object storage (media-master + backup buckets) and the Hetzner DNS zone, and bootstraps single-node k3s + Argo CD; from then on Argo CD continuously reconciles everything from Git (ADR-0010).
+### Goal
+Epic. Stand up the complete, real GitOps platform from day one so later feature work merely
+fills in workloads — no big-bang migration.
 
-Binding from day one: layered safeguards against destructive infrastructure changes (ADR-0014) and PostgreSQL continuous-archiving/PITR backup via CloudNativePG with a first tested restore (ADR-0013, RPO<=5min/RTO<=4h). Global delivery and cost stance per ADR-0009 (Hetzner object storage as master, Cloudflare R2+CDN for image serving later). CI green gate and infra pipeline on GitHub Actions (ADR-0005).
+### Scope
+- **OpenTofu** provisions the Hetzner node, object storage (media-master + backup buckets) and
+  the Hetzner DNS zone, and bootstraps single-node **k3s + Argo CD**; from then on Argo CD
+  continuously reconciles everything from Git (ADR-0010).
+- Binding from day one: layered safeguards against destructive infrastructure changes (ADR-0014)
+  and PostgreSQL continuous-archiving/PITR backup via CloudNativePG with a first tested restore
+  (ADR-0013, RPO≤5min / RTO≤4h).
+- Global delivery and cost stance per ADR-0009 (Hetzner object storage as master, Cloudflare
+  R2+CDN for image serving later).
+- CI green gate and infra pipeline on GitHub Actions (ADR-0005).
 
-Environments on a single k3s node (cost; splittable later): persistent prod and staging plus ephemeral per-PR preview environments (Argo CD ApplicationSet PR generator), promotion flow feature-branch/PR -> preview URL -> merge to main -> staging (auto) -> deliberate promotion -> prod. A placeholder workload proves the full preview->staging->prod path over TLS before real application code lands.
+### Environments (single k3s node; splittable later)
+- Persistent **prod** and **staging** plus ephemeral **per-PR preview** environments (Argo CD
+  ApplicationSet PR generator).
+- Promotion flow: feature-branch/PR → preview URL → merge to main → **staging (auto)** → **cut a
+  git tag / GitHub release → prod**.
+- A placeholder workload proves the full preview→staging→prod path over TLS before real
+  application code lands.
 
-Children: the technical subtasks (toolchain, OpenTofu foundation/app tiers, Conftest plan gate, SOPS+age, Argo CD app-of-apps, ingress/cert-manager, CloudNativePG backup, restore drill, bootstrap runbook) and the one user-observable vertical-slice story (first green end-to-end smoke path). Operator (repository owner) performs all account/token creation, git commits/pushes/merges and the initial tofu apply; the destroy-capable break-glass credential stays out-of-band (ADR-0014).
+### Children
+- Technical subtasks: toolchain, OpenTofu foundation/app tiers, Conftest plan gate, SOPS+age,
+  Argo CD app-of-apps, ingress/cert-manager, CloudNativePG backup, restore drill, bootstrap
+  runbook.
+- One user-observable vertical-slice story: first green end-to-end smoke path.
+
+### Operator responsibilities
+- The operator (repository owner) performs all account/token creation, git
+  commits/pushes/merges and the initial `tofu apply`; the destroy-capable break-glass credential
+  stays out-of-band (ADR-0014).
 <!-- SECTION:DESCRIPTION:END -->
 
 ## Definition of Done

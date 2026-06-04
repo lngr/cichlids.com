@@ -4,7 +4,7 @@ title: OpenTofu foundation tier with day-one destructive-change safeguards
 status: To Do
 assignee: []
 created_date: '2026-06-03 16:00'
-updated_date: '2026-06-03 16:03'
+updated_date: '2026-06-04 12:56'
 labels:
   - infra
   - opentofu
@@ -22,11 +22,34 @@ ordinal: 4000
 ## Description
 
 <!-- SECTION:DESCRIPTION:BEGIN -->
-Define the stateful (foundation) OpenTofu tier that the operator applies: the Hetzner node and its disk, the PostgreSQL block volume, two object-storage buckets (media-master with versioning + Object Lock in Governance mode; backup with Object Lock in Compliance mode), and the Hetzner DNS zone. The DNS provider is structured behind a variable so the authoritative-zone choice stays adjustable.
+### Goal
+Define the stateful (**foundation**) OpenTofu tier that the operator applies.
 
-Layer 1 of ADR-0014 is built in here: lifecycle prevent_destroy=true on every critical resource, a critical=\"true\" tag/label where the provider supports it, and Hetzner delete-protection on the server and volume. Object Lock retention durations follow ADR-0013. This tier is rarely touched and is applied out-of-band by the operator; routine automation must not reference it (see app tier). No secrets in Git. Validation is static only (tofu fmt/validate, no real apply by the agent).
+### Scope
+- The Hetzner node and its disk, and the PostgreSQL block volume.
+- Two object-storage buckets: **media-master** (versioning + Object Lock, Governance mode) and
+  **backup** (Object Lock, Compliance mode).
+- The Hetzner DNS zone; the DNS provider is structured behind a variable so the
+  authoritative-zone choice stays adjustable.
 
-Realises ADR-0009 (master bucket), ADR-0010 (provisioning split), ADR-0013 (retention), ADR-0014 (Layer 1+2 state separation). Verifying artifact: infra/foundation + a Conftest assertion over a plan fixture that prevent_destroy is present on all critical resources.
+### Day-one safeguards (ADR-0014 Layer 1)
+- `lifecycle prevent_destroy = true` on every critical resource.
+- A `critical = "true"` tag/label where the provider supports it.
+- Hetzner delete-protection on the server and volume.
+- Object Lock retention durations follow ADR-0013.
+
+### Constraints
+- Rarely touched, applied out-of-band by the operator; routine automation must not reference it
+  (see app tier).
+- No secrets in Git. Validation is static only (`tofu fmt`/`validate`, no real apply by the agent).
+
+### Realises
+- ADR-0009 (master bucket), ADR-0010 (provisioning split), ADR-0013 (retention), ADR-0014
+  (Layer 1+2 state separation).
+
+### Verifying artifact
+- `infra/foundation` + a Conftest assertion over a plan fixture that `prevent_destroy` is
+  present on all critical resources.
 <!-- SECTION:DESCRIPTION:END -->
 
 ## Acceptance Criteria
