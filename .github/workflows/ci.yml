@@ -1,6 +1,6 @@
 name: CI
 
-# Hartes Gruen-Gate (ADR-0003, ADR-0005): kein Merge ohne gruene Suiten.
+# Hard green gate (ADR-0003, ADR-0005): no merge without green suites.
 on:
   push:
     branches: [main]
@@ -8,32 +8,46 @@ on:
 
 jobs:
   adr-index:
-    name: ADR-Index aktuell
+    name: ADR index up to date
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.x"
-      - name: ADR-Index pruefen
+      - name: Check ADR index
         run: python3 tools/generate_adr_index.py --check
 
   story-test-binding:
-    name: Story↔Test-Bindung (Definition of Done)
+    name: Story-to-test binding (Definition of Done)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: "24"
-      - name: Selbsttest des Checks
+      - name: Self-test of the check
         run: node --test tools/check-story-test-binding.test.mjs
-      - name: Story↔Test-Bindung erzwingen (ADR-0015)
+      - name: Enforce story-to-test binding (ADR-0015)
         run: node tools/check-story-test-binding.mjs
 
-  # Mit dem Anwendungscode kommen weitere required Jobs hinzu und vervollstaendigen das
-  # Gruen-Gate aus ADR-0003 / ADR-0005:
-  #   - backend:     Unit- + Integrationstests (.NET, ADR-0002)
-  #   - client-core: Typecheck + Lint + Unit (TypeScript)
-  #   - e2e:         Maestro gegen den real hochgefahrenen Stack (ADR-0004, ADR-0006),
-  #                  dieselbe Suite fuer native App und Web-Kanal
+  toolchain:
+    name: Toolchain pinned and present
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Install pinned core toolchain
+        run: bash tools/install-toolchain.sh
+      - name: Verify core toolchain
+        run: ./tools/verify-toolchain.sh core
+
+  # Further required jobs land with the application code and complete the green gate
+  # from ADR-0003 / ADR-0005. Each verifies its own toolchain scope
+  # (tools/verify-toolchain.sh backend or e2e) as part of the job:
+  #   - backend:     unit + integration tests (.NET, ADR-0002); scope backend
+  #   - client-core: typecheck + lint + unit (TypeScript)
+  #   - e2e:         Maestro against the fully started stack (ADR-0004, ADR-0006),
+  #                  the same suite for the native app and the web channel; scope e2e

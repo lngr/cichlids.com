@@ -53,6 +53,15 @@ if ! command -v backlog >/dev/null 2>&1; then
     || echo "WARNING: backlog.md install failed (network?). Install later with: npm i -g backlog.md"
 fi
 
+# Provide the pinned core platform toolchain (OpenTofu, kubectl, helm, kustomize,
+# sops, age, conftest, kind, kubeconform). Single installer shared with CI so the
+# devcontainer and the pipeline run identical versions; see tools/toolchain.versions.
+if [ -f "tools/install-toolchain.sh" ]; then
+  echo "=== Installing core platform toolchain ==="
+  bash tools/install-toolchain.sh \
+    || echo "WARNING: toolchain install failed (network?). Re-run later: bash tools/install-toolchain.sh"
+fi
+
 # --- Personal overlay hook ---
 if [ -f ".devcontainer/postCreateCommand.local.sh" ]; then
   echo "=== Running personal postCreate hook ==="
