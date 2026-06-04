@@ -51,7 +51,9 @@ Becken, zwei Sichten auf dieselben Daten:**
   Zeitraffer, Specs, Besatz, Fisch-Spotlights. Das ist die **Auszahlung** — was andere sehen
   und bewundern.
 
-Beide Sichten lesen aus **denselben Daten**. Damit produziert die private Pflege-Routine
+Beide Sichten lesen aus **denselben Daten**. Sie sind **Funktions-Sichten**, keine
+Sichtbarkeits-Stufen — wer was sieht, regelt die Sichtbarkeit pro Eintrag (§8.1, default
+öffentlich). Damit produziert die private Pflege-Routine
 (Tracking) ohne Zusatzaufwand den öffentlichen Stolz (Portfolio). Das ist die Übertragung des
 Strava-Prinzips auf die Aquaristik: Das *Ausüben des Hobbys selbst* erzeugt automatisch
 teilbaren, wiederkehrenden Content.
@@ -207,7 +209,7 @@ Die Entscheidungen greifen zu einem selbstverstärkenden Kreislauf ineinander:
   in selbst gewählter Sichtbarkeit geteilt
         │
         ▼
-  andere folgen dem Becken · kommentieren an konkreten Einträgen
+  andere folgen dem Becken · Daumen-hoch (auch auf Streaks) · fragen die Runde · helfen
         │
         └──►  (perspektivisch) Einzeltier-Tracking · KI-Diagnose · Marktplatz
 ```
@@ -251,21 +253,35 @@ Messwerte, Reminder, Heatmap, Zeitraffer) ist eine **Erweiterung** dieses Modell
   Messen ist unabhängig vom Wasserwechsel möglich und umgekehrt; **Pflege-Plan & Reminder**
   (Default z.B. alle 2 Wochen Wasserwechsel, aus dem Besatz verfeinert); **Wasserwechsel-
   Heatmap** (Kalender-Raster im Stil eines Contribution-Graphen); **Streak** (Duolingo-
-  artig); **Verlaufs-Graphen** je Messwert.
+  artig); **Verlaufs-Graphen** je Messwert; **jedes Event anreichern** mit Foto/Video (z.B. vom
+  Wasserwechsel), Notiz/Kommentar (was ist aufgefallen) oder einem **Todo/Merker für später**
+  (z.B. „Wasseraufbereiter/Chemikalien nachkaufen"); **auf Events reagieren / Daumen-hoch**
+  (gerade bei gehaltener Streak — §8.1/§8.3).
 - **Schlüssel-Screens:** Quick-Log-Sheet (groß, einhändig bedienbar), Mess-Eingabe (progressiv
-  offengelegt), Werte-Graphen, Heatmap-/Streak-Dashboard, Reminder-/Pflege-Einstellungen.
+  offengelegt), Werte-Graphen, Heatmap-/Streak-Dashboard, Reminder-/Pflege-Einstellungen,
+  Event-Detail mit Anhängen (Medien/Notiz/Todo) und Reaktionen, Todo-/Merkliste.
 - **Löst (siehe §8):** Quick-Log vs. Tiefe sauber getrennt; Gamification mit Opt-out und
   besatz-basierter, begründeter Empfehlung statt Schuld-Druck.
 
-### 🌊 Epic 3 — „Entdecken & Folgen": Feed, Becken-Abos & kontextuelle Hilfe
-*Aus Dokumentation wird Community.*
+### 🌊 Epic 3 — „Entdecken, Folgen & Helfen": Feed, Becken-Abos, Reaktionen & Q&A
+*Aus Dokumentation wird Community — inklusive der „Hilfe, ich hab ein Problem"-Schleife.*
 
 - **Jobs:** Niche-Feed (nach Biotop/Interessen); **einem Becken folgen** wie einer Serie;
-  Meilensteine/Updates erscheinen im Follower-Feed; **Kommentare an konkreten Log-/Timeline-
-  Einträgen** (Brücke zur späteren Diagnose); Reaktionen.
-- **Schlüssel-Screens:** Feed, Becken-Follow-Ansicht, Kommentar-Thread am Event,
-  Entdecken/Explore nach Niche.
-- **Löst (siehe §8):** Sichtbarkeits-Stufen bestimmen, wer im Feed was sieht.
+  Meilensteine/Updates im Follower-Feed; **Reaktionen / Daumen-hoch** auf Posts und Pflege-Events
+  (auch auf Streaks, §8.3); **Kommentare an konkreten Log-/Timeline-Einträgen**.
+  - **Becken-Posts mit öffentlicher Frage an die Runde** („kennt jemand sowas?") — ein
+    dokumentiertes Problem (Foto-Event, §8.2; ggf. mit KI-Vorschlag, §9) lässt sich mit einem
+    Schritt als Frage heben.
+  - **Themen-/Nischen-Abos:** Fragen & Diskussionen aus abonnierten Bereichen erscheinen im
+    Stream — beantworten oder nicht.
+  - **Ignore-/Mute-Funktion** (Benutzer und Threads stummschalten), damit der Stream relevant
+    und freundlich bleibt.
+- **Schlüssel-Screens:** Feed, Becken-Follow-Ansicht, Frage-Composer, Q&A-/Diskussions-Thread,
+  Kommentar-Thread am Event, Entdecken/Explore nach Niche, Themen-Abo-Verwaltung, Ignore-/Mute-
+  Einstellungen.
+- **Löst (siehe §8):** Sichtbarkeits-Stufen bestimmen, wer im Feed was sieht; bedient den
+  Reziprozitäts-/Hilfe-Treiber (§4.3) — schnelle, kompetente Hilfe von Leuten mit denselben
+  Fischen.
 
 ### 🚀 Epic 4 — „Ankommen": Onboarding, Interessen & lebendiger Start
 *Damit die App ab Sekunde 1 relevant wirkt (Kaltstart entscheidet über Retention).*
@@ -285,8 +301,10 @@ Diese Festlegungen wirken über mehrere Epics und sind beim Design verbindlich.
 ### 8.1 Sichtbarkeit (Privatsphäre)
 Pro Inhalt (Becken und einzelne Einträge) wählbar in vier Stufen:
 **privat** · **nur Follower** · **nur ausgewählte Benutzer** · **komplett öffentlich.**
-Vorschlag für Defaults: Pflege-Logs/Messwerte eher privat, Story/Meilensteine eher öffentlich —
-jederzeit überschreibbar. Diese Logik bestimmt, was in Epic 3 im Feed sichtbar wird.
+**Default öffentlich — auch für Pflege-/Tracking-Events** (Wasserwechsel, Messungen): So können
+andere reagieren und **Daumen-hoch** geben, gerade wenn jemand seine Streak hält (§8.3). Wer mag,
+stellt einzelne Einträge oder ganze Becken jederzeit auf eine engere Stufe (sensible Werte bleiben
+so granular schützbar). Diese Logik bestimmt, was in Epic 3 im Feed sichtbar wird.
 
 ### 8.2 Tracking-Datenmodell
 Jede Messung trägt **von Anfang an ihre Herkunft** als **Reading-Event mit
@@ -296,4 +314,98 @@ in v1 im Modell verankert, obwohl Sensor/Foto erst später kommen (§9): So werd
 Datenquellen zu *zusätzlichen Quellen* statt zu einem Modell-Umbau, und Auswertungen können
 nach Verlässlichkeit der Quelle unterscheiden. Nachträglich lässt sich die Herkunft nicht
 rekonstruieren — deshalb von Beginn an mitschreiben.
+
+Wasserwechsel, Pflege-Aktionen, Meilensteine und Journal-Posts sind ebenfalls **Events auf der
+Becken-Zeitachse**. So lesen Pflege-Sicht, Stolz-Sicht (und später Diagnose) denselben
+Event-Stream. Jedes Event kann **Anhänge** tragen — MediaItems (Foto/Video, z.B. vom
+Wasserwechsel), **Notizen/Kommentare** und **Todos/Merker** (offene Aufgaben für später, etwa
+„Wasseraufbereiter nachkaufen" — Anknüpfung an Monetarisierung, §9).
+
+**Welche Messwerte überhaupt relevant sind, hängt am Becken-/Nischen-Typ** (Malawi ≠ Aquascape
+≠ Reef) und ist daher **konfigurierbar, nicht hartcodiert** — das stützt die niche-agnostische
+Architektur aus §3.
+
+### 8.3 Gamification (Heatmap & Streaks)
+Heatmap und Streaks sind **default aktiv** und in den Einstellungen **deaktivierbar** (Opt-out).
+Die App erinnert default an Pflege (z.B. alle 2 Wochen Wasserwechsel). Aus **Besatz und
+Besatzdichte** kann sich die **Empfehlung häufigerer Wasserwechsel** ergeben; wer der Empfehlung
+folgt, wird über Streak/Heatmap belohnt. Ziel ist Ansporn, nicht Schuld — die Mechanik bleibt
+begründet (warum diese Frequenz) und abschaltbar.
+
+**Soziale Verstärkung:** Da Tracking-Events per Default öffentlich sind (§8.1), können andere
+**reagieren und Daumen-hoch** vergeben — eine gehaltene Streak wird so zum gefeierten, sichtbaren
+Signal (Epic 3), nicht nur zur Selbstmotivation.
+
+### 8.4 Besatz, Species-Katalog & Kompatibilität
+Jedes Becken führt eine **Besatzliste**, deren Einträge an einen **Species-Katalog** geknüpft
+sind. Jede Art trägt dort ihre **Haltungs-Eckdaten**: verträgliche/benötigte Wasserwerte (Temp,
+pH, GH/KH …), **Aggressivität/Sozialverhalten**, **Endgröße**, Mindestbecken/Schwarmgröße,
+Ernährung. (Grundstock: die 829 Arten der Legacy-Taxonomie.) Daraus folgen zwei Wirkungen:
+
+- **Kompatibilitäts-Hinweise & Warnungen.** Passt der geplante/aktuelle Besatz nicht zusammen —
+  kein gemeinsames Wasserwert-Fenster, zu aggressiv kombiniert, Becken zu klein für die Endgröße
+  — gibt die App **begründete Empfehlungen/Warnungen** statt stiller Fehler. (Aggressions-
+  Konflikte sind gerade bei territorialen Arten zentral.)
+- **Fundierte Pflege-Empfehlung.** Der Katalog liefert die Datenbasis für die besatz-basierte
+  Wasserwechsel-/Pflege-Empfehlung aus §8.3 (Bioload aus Endgröße × Anzahl → Pflegefrequenz).
+
+v1 = Besatz↔Species + Katalog-Grunddaten + einfache Warnungen; Tiefe und Datenpflege wachsen
+iterativ. Die spätere becken-übergreifende Problem-Suche (§9) baut darauf auf.
+
+---
+
+## 9. Bewusst später — nicht in v1, aber fest eingeplant
+
+Diese Stränge sind Teil der Produktrichtung und sollen **nicht vergessen** werden; sie folgen
+nach den v1-Epics. Das Datenmodell (§8.2) und die Becken-/Fisch-Entitäten sind so zu bauen,
+dass sie sich additiv ergänzen lassen.
+
+- **Einzeltier-Tracking.** Viele Nutzer geben ihren Fischen Namen. Einzelne Tiere über die Zeit
+  verfolgen (Färbung, Wachstum, Gesundheit). Speist direkt die **Fisch-Spotlights** (Epic 1).
+- **Brutpaare / Zuchtpaare.** Paare und Zuchtprojekte abbilden — Grundlage für Nachzucht-Logs
+  und den späteren Züchter-/Marktplatz-Strang.
+- **Utility / KI-Diagnose & Bestimmung.** Foto von Algen / Krankheit / Fisch / Pflanze →
+  **KI-Analyse** (Arten-/Pflanzen-Bestimmung, Krankheits-/Algen-Diagnose), Pflegewissen verknüpft
+  mit dem konkreten Besatz. Das Ergebnis wird als **Becken-Event dokumentiert** (§8.2) und lässt
+  sich mit einem Schritt als **öffentliche Frage in die Community** heben (Epic 3) — KI-Vorschlag
+  *plus* menschliche Hilfestellung. (Der manuelle Pfad „Problem fotografieren → Community fragen"
+  funktioniert bereits über Epic 1/2 + Epic 3; die KI automatisiert und beschleunigt ihn.) Nutzt
+  die geretteten ~235 GB Bilder als ID-/Trainingsbasis; bildet den Utility-Burggraben gegen
+  Instagram.
+- **Engagement-Priming via KI-Agenten.** Zum Anschieben des Kaltstarts können KI-Agenten /
+  Bot-Identitäten (ADR-0011, [`PLAN.md`](PLAN.md) Phase 7) auf Inhalte reagieren (Auto-Antworten/
+  Bewertungen) und so ergänzend zum geseedeten Legacy-Material (Epic 4) frühe Aktivität erzeugen.
+  Kennzeichnung von KI-Inhalten beachten.
+- **Ähnliche Becken & Problem-Matching.** Becken mit ähnlichem Besatz/Setup finden — um von
+  Haltern mit denselben Problemen zu lernen (Aggression im Becken, verkümmernde/nicht wachsende
+  Fische, hartnäckige Werte). Nutzt Besatz/Species (§8.4) und die Becken-Historie;
+  Discovery-Erweiterung von Epic 3, grenzt an die KI-Diagnose.
+- **Sensor-/API-Anbindung & Teststreifen-Foto.** Automatische Messwerte über Hardware
+  (`source = sensor`) und Auslesen von Tröpfchentests/Teststreifen per Foto (`source = photo`) —
+  beides reine Erweiterung von §8.2.
+- **Weitere Nischen / Stamm-Expansion.** Nach dem Cichlid-Brückenkopf (§3): zuerst weitere
+  Süßwasser-Stämme (Aquascaper/Planted), danach Reef/Meerwasser — als neue Stämme im
+  föderierten Modell, ggf. unter einer späteren Dachmarke.
+- **Verbrauchsmaterial & Affiliate.** Pflege-**Todos** wie „Wasseraufbereiter/Chemikalien
+  nachkaufen" (§8.2, Epic 2) sind ein natürlicher Aufhänger für **Shop-/Affiliate-Links** zu
+  Verbrauchsmaterial, Futter und Zubehör — Monetarisierung direkt aus dem Pflege-Flow.
+- **Marktplatz.** Tausch/Verkauf von Fischen & Pflanzen, Züchter-Profile (vgl. Houzz-Pro-Modell);
+  knüpft an die Legacy-Vision „Trusted Profiles" an.
+
+---
+
+## 10. Verhältnis zum bestehenden Domänenmodell
+
+[`PLAN.md`](PLAN.md) §2 stellt bereits **Tank, TankPost, MediaItem, Inhabitant→Species,
+Reputation** in den Mittelpunkt und verankert „Becken im Zentrum + Anerkennung für Pflege"
+(ADR-0001). Diese Produktvision **vertieft** das in zwei Punkten, die bei der nächsten
+Modell-/ADR-Iteration zu berücksichtigen sind:
+
+- **Care-/Tracking-Layer als Event-Stream** (§8.2): Reading-Events (Messwerte),
+  Maintenance-Events (Wasserwechsel, Pflege), Milestones — als erstklassige Becken-Historie
+  neben den TankPosts. Heatmap, Streaks und Reminder leiten sich daraus ab; Events tragen
+  **Medien/Notizen/Todos** als Anhänge.
+- **Zwei Blickwinkel** (§2) als bewusste UI-Achse (Pflege-Sicht = Utility-Dashboard,
+  Stolz-Sicht = Portfolio) über derselben Becken-Entität; die **Sichtbarkeit** ist davon
+  unabhängig pro Eintrag wählbar (§8.1, default öffentlich).
 
