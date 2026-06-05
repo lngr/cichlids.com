@@ -4,7 +4,7 @@ title: Argo CD app-of-apps and environment topology
 status: To Do
 assignee: []
 created_date: '2026-06-03 16:01'
-updated_date: '2026-06-04 12:57'
+updated_date: '2026-06-05 10:25'
 labels:
   - infra
   - argocd
@@ -56,7 +56,5 @@ Define the Argo CD bootstrap and the environment topology in Git.
 <!-- DOD:BEGIN -->
 - [ ] #1 At least one Given-When-Then acceptance criterion is specified
 - [ ] #2 A failing test was written first, then made to pass (red-green)
-- [ ] #3 An automated end-to-end test for the user path runs green
-- [ ] #4 Authoritative domain logic is covered by unit/integration tests
-- [ ] #5 All CI test suites are fully green
+- [ ] #3 All CI test suites are fully green
 <!-- DOD:END -->

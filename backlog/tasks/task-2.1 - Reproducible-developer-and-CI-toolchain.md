@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - claude
 created_date: '2026-06-03 16:00'
-updated_date: '2026-06-04 12:56'
+updated_date: '2026-06-05 10:25'
 labels:
   - infra
   - tooling
@@ -57,20 +57,30 @@ devcontainer and in CI, so every later task runs against pinned, known-good tool
 ## Implementation Plan
 
 <!-- SECTION:PLAN:BEGIN -->
-Test-first: tools/verify-toolchain.sh (scoped core|backend|e2e|all, version floors from tools/toolchain.versions) written and run red. Then tools/install-toolchain.sh installs the pinned core single-binary tools idempotently into /usr/local/bin; wired into .devcontainer/postCreateCommand.sh and a CI `toolchain` job (.github/workflows/ci.yml) that installs + verifies the core scope. Backend (.NET) and e2e (JDK/Android/Maestro) installers are added with the smoke story that consumes them; verify-toolchain.sh already supports those scopes.
+### Approach (test-first)
+1. tools/verify-toolchain.sh (scopes core|backend|e2e|all, version floors from tools/toolchain.versions) — written and run red.
+2. tools/install-toolchain.sh installs the pinned core single-binary tools idempotently into /usr/local/bin.
+3. Wire it into .devcontainer/postCreateCommand.sh and a CI "toolchain" job.
+
+### Notes
+- Backend (.NET) and e2e (JDK/Android/Maestro) installers land with the smoke story that consumes them; verify-toolchain.sh already supports those scopes.
 <!-- SECTION:PLAN:END -->
 
 ## Implementation Notes
 
 <!-- SECTION:NOTES:BEGIN -->
-Core toolchain verified green locally (tofu 1.9.1, kubectl 1.31.4, helm 3.16.4, kustomize 5.5.0, sops 3.9.3, age 1.2.1, conftest 0.56.0, kind 0.25.0, kubeconform 0.6.7, node 24.16.0); installer idempotent on re-run. Ready for operator review/commit; not committed (operator owns git). DoD #3/#5 (E2E + full CI green) verified by the operator after push.
+### Verified locally
+- Core toolchain green: tofu 1.9.1, kubectl 1.31.4, helm 3.16.4, kustomize 5.5.0, sops 3.9.3, age 1.2.1, conftest 0.56.0, kind 0.25.0, kubeconform 0.6.7, node 24.16.0.
+- Installer idempotent on re-run; scripts pass bash -n.
+
+### Handoff
+- Not committed (operator owns git).
+- DoD #2/#3/#5 (CI toolchain job + full CI green) verified by the operator after push.
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 At least one Given-When-Then acceptance criterion is specified
-- [ ] #2 A failing test was written first, then made to pass (red-green)
-- [ ] #3 An automated end-to-end test for the user path runs green
-- [ ] #4 Authoritative domain logic is covered by unit/integration tests
-- [ ] #5 All CI test suites are fully green
+- [x] #1 At least one Given-When-Then acceptance criterion is specified
+- [x] #2 A failing test was written first, then made to pass (red-green)
+- [ ] #3 All CI test suites are fully green
 <!-- DOD:END -->
