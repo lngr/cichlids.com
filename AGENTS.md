@@ -89,11 +89,15 @@ Historie konsistent bleiben.
 
 ### Lesbarkeit der Tasks
 
-Die `## Description` als **strukturiertes Markdown** schreiben, nicht als Fließtext-Block:
-Unter-Header (`###`/`####`) und Bullet-Listen für Ziel, Scope, Mechanik, betroffene Artefakte
-und Referenzen. So bleibt der Task auf dem Board und im Diff schnell erfassbar. Acceptance
-Criteria bleiben im **Given-When-Then**-Format im eigenen Abschnitt; Scope gehört in die
-Description, nicht in die DoD.
+**Jedes mehrzeilige Task-Feld** — `## Description`, `## Implementation Plan` und
+`## Implementation Notes` — wird als **strukturiertes Markdown** geschrieben, **nie** als
+einzelner Fließtext-/Run-on-Block in einer Zeile: Unter-Header (`###`/`####`) und Bullet-Listen
+für Ziel, Scope, Mechanik, betroffene Artefakte und Referenzen. Beim Setzen über CLI/MCP
+**echte Zeilenumbrüche** im mehrzeiligen String mitgeben (`-d`/`--plan`/`--notes` mit echten
+Newlines, nicht alles in einer Zeile), und danach gegenprüfen, dass das Feld nicht zu einer
+einzigen Zeile kollabiert ist. So bleibt der Task auf dem Board und im Diff schnell erfassbar.
+Acceptance Criteria bleiben im **Given-When-Then**-Format im eigenen Abschnitt; Scope gehört in
+die Description, nicht in die DoD.
 
 ### Definition of Done (spiegelt ADR-0003)
 

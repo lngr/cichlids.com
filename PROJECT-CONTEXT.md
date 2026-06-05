@@ -18,7 +18,7 @@ Welche Quelle beantwortet welche Frage:
 
 | Frage | Quelle |
 |---|---|
-| **Architektur-Entscheidungen** (Stack, Hosting/Auslieferung, Event-Driven, GitOps, KI-Agenten, Video, Backup/DR, Destruktiv-Schutz, Test-First, User Stories/Specs) | **`docs/adr/`** (ADR-0001–0015, Einstieg `docs/adr/index.md`) |
+| **Architektur-Entscheidungen** (Stack, Hosting/Auslieferung, Event-Driven, GitOps, KI-Agenten, Video, Backup/DR, Destruktiv-Schutz, State-Backend, Projekt-Trennung, Umgebungs-Daten, Test-First, User Stories/Specs) | **`docs/adr/`** (Einstieg `docs/adr/index.md`) |
 | **Produktvision / PMF** (Engagement-Logik, „ein Becken – zwei Blickwinkel", Epics — was/warum für Nutzer) | **`PRODUCT-VISION.md`** |
 | **Transformations-Roadmap** (Legacy→neu: Domänenmodell, ETL, Auth0→Keycloak, Phasen) | **`PLAN.md`** |
 | **User Stories / Specs / Tasks** (Backlog.md, Definition of Done) | **`backlog/`** + `docs/adr/0015`; Agent-Workflow in `AGENTS.md` |

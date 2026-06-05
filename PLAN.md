@@ -165,9 +165,14 @@ von Anfang an verbindlich, nicht nachgelagert.
   vom Medien-Provider (andere Region/Provider) — passt zur Provider-Entkapselung.
 - **Restores werden automatisch getestet** — ein Backup, das nie zurückgespielt wurde, gilt als
   kaputt.
-- **Regelmäßiger prod→staging-Refresh:** Staging wird periodisch aus einem **restaurierten**
-  Prod-Backup neu aufgebaut, PII **anonymisiert**. Beweist den Restore-Pfad *und* liefert
-  realistische Staging-Daten.
+- **Regelmäßiger prod→staging-Refresh:** Aus einem **restaurierten** Prod-Backup wird periodisch
+  ein **anonymisierter „Golden"-Snapshot** erzeugt (DB + repräsentative Medien-Teilmenge), der
+  **Staging und Preview** speist (ADR-0018). Das beweist den Restore-Pfad *und* liefert
+  realistische Daten. Preview-Umgebungen bekommen daraus eine **ephemere, per Copy-on-Write
+  geklonte DB** (Volume-Snapshot / Restore-from-Base-Backup); Medien werden **nicht je Umgebung
+  kopiert**, sondern über ein **Overlay** ausgeliefert (gemeinsame Read-only-Basis + kleiner
+  ephemerer Per-Preview-Schreib-Store). Ein minimaler synthetischer Seed bleibt als schnelle
+  Option verfügbar, ist aber nicht der Standard.
 - **Standby-Replica** für HA/Failover (getrennt von Read-Scaling-Replicas); Tag-1 sind PITR-
   Backups Pflicht, Hot-Standby der nächste Schritt.
 - **Medien:** Durability über Serving-Store **+** Master-Kopie (ADR-0009) + Objekt-Versionierung.
@@ -185,11 +190,18 @@ von Anfang an verbindlich, nicht nachgelagert.
 
 1. **Fundament & strict GitOps.** OpenTofu provisioniert Hetzner-Node + Hetzner-Object-Storage +
    DNS und **bootstrappt Single-Node-k3s + Argo CD**; ab da reconcilet Argo alles aus Git
-   (ADR-0010). CI mit Grün-Gate + ADR-Index-Check, OpenAPI-Pipeline + generierter TS-Client,
-   leere App/API laufen E2E (ADR-0005, 0006). **Von Anfang an:** dünne Storage/CDN-Abstraktion
-   (S3-API, Provider als Config — ADR-0009) und **Postgres-PITR via CloudNativePG + erster
-   getesteter Restore** (ADR-0013). **Destruktiv-Schutz ab Tag 1** (ADR-0014): `prevent_destroy`
-   + Hetzner-Delete-Protection + Bucket-Versioning/Object-Lock + fail-closed Plan-Diff-Gate.
+   (ADR-0010). Die Cloud-Ressourcen liegen über **drei getrennte Hetzner-Projekte** verteilt
+   (ADR-0017): das Projekt `cichlids` trägt alle live/wiederherstellbare Infrastruktur (Compute,
+   Netze, Firewalls, Load Balancer, DBs und Medien je Umgebung); `cichlids-backup` hält nur die
+   unveränderlichen Backups unter Object Lock; `cichlids-tfstate` nur den OpenTofu-State-Bucket.
+   CI besitzt ausschließlich das **Read&Write-Token des Projekts `cichlids`** und die S3-Keys für
+   den State-Bucket — keine Tokens für die Backup-/State-Projekte. CI mit Grün-Gate + ADR-Index-
+   Check, OpenAPI-Pipeline + generierter TS-Client, leere App/API laufen E2E (ADR-0005, 0006).
+   **Von Anfang an:** dünne Storage/CDN-Abstraktion (S3-API, Provider als Config — ADR-0009) und
+   **Postgres-PITR via CloudNativePG + erster getesteter Restore** (ADR-0013). **Destruktiv-Schutz
+   ab Tag 1** (ADR-0014): `prevent_destroy` + Hetzner-Delete-Protection + Bucket-Versioning/
+   Object-Lock + fail-closed Plan-Diff-Gate; die Projekt-Trennung (ADR-0017) ist dabei der
+   eigentlich durchsetzbare Schutzwall, da Hetzner-Tokens nur Read oder Read&Write kennen.
 2. **Auth.** Keycloak deklarativ, Login/Registrierung in der App, Bot-Service-Accounts. DoD:
    E2E-Login grün.
 3. **Event-Rückgrat.** Transactional Outbox + Broker/Queue (zum Start ggf. Postgres-basiert),
