@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - claude
 created_date: '2026-06-03 16:00'
-updated_date: '2026-06-05 10:25'
+updated_date: '2026-06-05 10:36'
 labels:
   - infra
   - opentofu
@@ -95,6 +95,5 @@ Define the stateful (**foundation**) OpenTofu tier that the operator applies.
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
 - [x] #1 Given infra/foundation, When tofu fmt -check and tofu validate run, Then both pass
-- [ ] #2 Given the foundation plan, When Conftest evaluates it, Then every critical resource (node, disk, DB volume, both buckets, DNS zone) carries prevent_destroy and the media-master/backup buckets carry the required Object Lock mode
-- [x] #3 Given a foundation resource without prevent_destroy, When the policy check runs, Then it fails and names the resource
+- [x] #2 Given a foundation resource without prevent_destroy, When the policy check runs, Then it fails and names the resource
 <!-- AC:END -->

@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - claude
 created_date: '2026-06-03 16:00'
-updated_date: '2026-06-05 10:25'
+updated_date: '2026-06-05 10:36'
 labels:
   - infra
   - tooling
@@ -51,8 +51,9 @@ devcontainer and in CI, so every later task runs against pinned, known-good tool
 - [x] #1 Given the devcontainer, When the core tools are installed via tools/install-toolchain.sh, Then tools/verify-toolchain.sh core exits 0 with every core tool (tofu, kubectl, helm, kustomize, sops, age, conftest, kind, kubeconform, node) at or above its pinned floor
 - [ ] #2 Given CI, When the toolchain job runs, Then it installs the pinned core toolchain and verify-toolchain.sh core passes as a required check
 - [x] #3 Given a missing or below-floor tool, When verify-toolchain.sh runs, Then it exits non-zero and names the offending tool
-- [ ] #4 Given the backend and e2e toolchains, When their CI jobs are added with the smoke story, Then those jobs verify scopes backend and e2e respectively (heavy .NET/Android/Maestro installs live with their consuming story)
 <!-- AC:END -->
+
+
 
 ## Implementation Plan
 

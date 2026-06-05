@@ -4,7 +4,7 @@ title: Establish first green end-to-end smoke path
 status: To Do
 assignee: []
 created_date: '2026-06-03 08:08'
-updated_date: '2026-06-04 12:56'
+updated_date: '2026-06-05 10:36'
 labels:
   - story
   - e2e
@@ -56,7 +56,10 @@ proves the test-bound Definition-of-Done pipeline works before feature work begi
 - [ ] #3 Given the API, When its health contract test runs, Then it passes and the OpenAPI document is generated
 - [ ] #4 Given the generated TypeScript client, When the client-core typecheck/lint/unit job runs, Then it passes
 - [ ] #5 Given the story marked Done, When the story-test-binding CI gate runs, Then app/mobile/e2e/maestro/smoke.yaml exists and carries the task-1 back-reference
+- [ ] #6 Given the backend and e2e toolchains, When this story adds their CI jobs, Then those jobs verify tools/verify-toolchain.sh scopes backend and e2e respectively
 <!-- AC:END -->
+
+
 
 ## Definition of Done
 <!-- DOD:BEGIN -->

@@ -4,7 +4,7 @@ title: Fail-closed Conftest plan-diff gate
 status: To Do
 assignee: []
 created_date: '2026-06-03 16:01'
-updated_date: '2026-06-05 10:25'
+updated_date: '2026-06-05 10:36'
 labels:
   - infra
   - policy
@@ -47,7 +47,10 @@ of a critical resource.
 - [ ] #2 Given a plan fixture that only creates or updates non-critical resources, When Conftest evaluates it, Then the policy allows and the CI job passes
 - [ ] #3 Given the policy was written test-first, When conftest verify runs the policy unit tests, Then a deny test exists that initially failed before the rule was implemented
 - [ ] #4 Given a plan with an unclassified change, When evaluated, Then the default decision is deny
+- [ ] #5 Given the foundation plan, When Conftest evaluates it, Then every critical resource (node, disk, DB volume, both buckets, DNS zone) carries prevent_destroy and the media-master/backup buckets carry the required Object Lock mode
 <!-- AC:END -->
+
+
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
