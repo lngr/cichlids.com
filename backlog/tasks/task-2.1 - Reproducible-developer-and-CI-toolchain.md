@@ -1,11 +1,11 @@
 ---
 id: TASK-2.1
 title: Reproducible developer and CI toolchain
-status: In Progress
+status: Done
 assignee:
   - claude
 created_date: '2026-06-03 16:00'
-updated_date: '2026-06-05 10:36'
+updated_date: '2026-06-05 10:45'
 labels:
   - infra
   - tooling
@@ -49,11 +49,9 @@ devcontainer and in CI, so every later task runs against pinned, known-good tool
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
 - [x] #1 Given the devcontainer, When the core tools are installed via tools/install-toolchain.sh, Then tools/verify-toolchain.sh core exits 0 with every core tool (tofu, kubectl, helm, kustomize, sops, age, conftest, kind, kubeconform, node) at or above its pinned floor
-- [ ] #2 Given CI, When the toolchain job runs, Then it installs the pinned core toolchain and verify-toolchain.sh core passes as a required check
+- [x] #2 Given CI, When the toolchain job runs, Then it installs the pinned core toolchain and verify-toolchain.sh core passes as a required check
 - [x] #3 Given a missing or below-floor tool, When verify-toolchain.sh runs, Then it exits non-zero and names the offending tool
 <!-- AC:END -->
-
-
 
 ## Implementation Plan
 
@@ -79,9 +77,15 @@ devcontainer and in CI, so every later task runs against pinned, known-good tool
 - DoD #2/#3/#5 (CI toolchain job + full CI green) verified by the operator after push.
 <!-- SECTION:NOTES:END -->
 
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Pinned core toolchain (tofu, kubectl, helm, kustomize, sops, age, conftest, kind, kubeconform, node) installed via tools/install-toolchain.sh, verified by tools/verify-toolchain.sh, enforced by the CI toolchain job (green on main). Backend and e2e toolchain scopes are verified by TASK-1 (smoke story).
+<!-- SECTION:FINAL_SUMMARY:END -->
+
 ## Definition of Done
 <!-- DOD:BEGIN -->
 - [x] #1 At least one Given-When-Then acceptance criterion is specified
 - [x] #2 A failing test was written first, then made to pass (red-green)
-- [ ] #3 All CI test suites are fully green
+- [x] #3 All CI test suites are fully green
 <!-- DOD:END -->

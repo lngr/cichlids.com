@@ -1,11 +1,11 @@
 ---
 id: TASK-2.2
 title: OpenTofu foundation tier with day-one destructive-change safeguards
-status: In Progress
+status: Done
 assignee:
   - claude
 created_date: '2026-06-03 16:00'
-updated_date: '2026-06-05 10:36'
+updated_date: '2026-06-05 10:45'
 labels:
   - infra
   - opentofu
@@ -53,9 +53,18 @@ Define the stateful (**foundation**) OpenTofu tier that the operator applies.
   present on all critical resources.
 <!-- SECTION:DESCRIPTION:END -->
 
+## Definition of Done
+<!-- DOD:BEGIN -->
+- [x] #1 At least one Given-When-Then acceptance criterion is specified
+- [x] #2 A failing test was written first, then made to pass (red-green)
+- [x] #3 All CI test suites are fully green
+<!-- DOD:END -->
 
-
-
+## Acceptance Criteria
+<!-- AC:BEGIN -->
+- [x] #1 Given infra/foundation, When tofu fmt -check and tofu validate run, Then both pass
+- [x] #2 Given a foundation resource without prevent_destroy, When the policy check runs, Then it fails and names the resource
+<!-- AC:END -->
 
 ## Implementation Plan
 
@@ -85,15 +94,8 @@ Define the stateful (**foundation**) OpenTofu tier that the operator applies.
 - Reference repointed from the infra/foundation/ directory to infra/foundation/guardrails_test.py (carries the task-2.2 back-tag) so the story-test-binding gate reads a file, not a directory.
 <!-- SECTION:NOTES:END -->
 
-## Definition of Done
-<!-- DOD:BEGIN -->
-- [x] #1 At least one Given-When-Then acceptance criterion is specified
-- [x] #2 A failing test was written first, then made to pass (red-green)
-- [ ] #3 All CI test suites are fully green
-<!-- DOD:END -->
+## Final Summary
 
-## Acceptance Criteria
-<!-- AC:BEGIN -->
-- [x] #1 Given infra/foundation, When tofu fmt -check and tofu validate run, Then both pass
-- [x] #2 Given a foundation resource without prevent_destroy, When the policy check runs, Then it fails and names the resource
-<!-- AC:END -->
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+infra/foundation OpenTofu tier (node, DB volume, media-master + backup buckets, Hetzner DNS zone) with day-one ADR-0014 Layer 1 safeguards (prevent_destroy, Hetzner delete_protection, versioning/Object-Lock capability), validated by tofu fmt/validate and guardrails_test.py in the CI infra-validate job (green on main). The plan-level fail-closed Conftest gate is delivered by TASK-2.5.
+<!-- SECTION:FINAL_SUMMARY:END -->
