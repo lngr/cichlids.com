@@ -12,15 +12,15 @@
 set -euo pipefail
 
 # --- pinned core versions ---
-TOFU_VERSION="${TOFU_VERSION:-1.9.1}"
-KUBECTL_VERSION="${KUBECTL_VERSION:-1.31.4}"
-HELM_VERSION="${HELM_VERSION:-3.16.4}"
-KUSTOMIZE_VERSION="${KUSTOMIZE_VERSION:-5.5.0}"
-SOPS_VERSION="${SOPS_VERSION:-3.9.3}"
-AGE_VERSION="${AGE_VERSION:-1.2.1}"
-CONFTEST_VERSION="${CONFTEST_VERSION:-0.56.0}"
-KIND_VERSION="${KIND_VERSION:-0.25.0}"
-KUBECONFORM_VERSION="${KUBECONFORM_VERSION:-0.6.7}"
+TOFU_VERSION="${TOFU_VERSION:-1.12.1}"
+KUBECTL_VERSION="${KUBECTL_VERSION:-1.36.1}"
+HELM_VERSION="${HELM_VERSION:-3.21.0}"
+KUSTOMIZE_VERSION="${KUSTOMIZE_VERSION:-5.8.1}"
+SOPS_VERSION="${SOPS_VERSION:-3.13.1}"
+AGE_VERSION="${AGE_VERSION:-1.3.1}"
+CONFTEST_VERSION="${CONFTEST_VERSION:-0.68.2}"
+KIND_VERSION="${KIND_VERSION:-0.32.0}"
+KUBECONFORM_VERSION="${KUBECONFORM_VERSION:-0.8.0}"
 
 case "$(uname -m)" in
 x86_64) ARCH=amd64; ARCH_X=x86_64 ;;
@@ -67,7 +67,9 @@ if have_version kustomize "v$KUSTOMIZE_VERSION" version; then echo "  kustomize 
   tar -xzf kustomize.tgz && install_bin kustomize kustomize
 fi
 
-if have_version sops "$SOPS_VERSION"; then echo "  sops $SOPS_VERSION present"; else
+# --disable-version-check: sops --version otherwise prints an upstream "newer available"
+# notice whose version string would falsely satisfy the presence check (and needs network).
+if have_version sops "$SOPS_VERSION" "--version --disable-version-check"; then echo "  sops $SOPS_VERSION present"; else
   curl -fsSL -o sops "https://github.com/getsops/sops/releases/download/v${SOPS_VERSION}/sops-v${SOPS_VERSION}.linux.${ARCH}" && install_bin sops sops
 fi
 

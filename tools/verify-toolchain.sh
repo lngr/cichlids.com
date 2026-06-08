@@ -73,7 +73,7 @@ check_core() {
   check kubectl "$KUBECTL_MIN" kubectl version --client
   check helm "$HELM_MIN" helm version --short
   check kustomize "$KUSTOMIZE_MIN" kustomize version
-  check sops "$SOPS_MIN" sops --version
+  check sops "$SOPS_MIN" sops --version --disable-version-check
   check age "$AGE_MIN" age --version
   check conftest "$CONFTEST_MIN" conftest --version
   check kind "$KIND_MIN" kind --version

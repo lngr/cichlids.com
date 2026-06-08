@@ -4,18 +4,21 @@
 # Story: task-2.1
 #
 # Format: TOOL_MIN=<minimum acceptable version> (semantic, compared with sort -V).
+# Story: task-2.14
 
 # --- core: infrastructure, GitOps and policy tooling ---
-TOFU_MIN=1.8.0
-KUBECTL_MIN=1.30.0
-HELM_MIN=3.15.0
-KUSTOMIZE_MIN=5.4.0
-SOPS_MIN=3.9.0
-AGE_MIN=1.2.0
-CONFTEST_MIN=0.55.0
-KIND_MIN=0.24.0
-KUBECONFORM_MIN=0.6.7
-NODE_MIN=22.0.0
+# TOFU_MIN is the feature floor (state encryption >= 1.7, use_lockfile >= 1.10); the rest
+# track the current stable line. Patch-flexible (major.minor.0) so a newer patch still passes.
+TOFU_MIN=1.10.0
+KUBECTL_MIN=1.36.0
+HELM_MIN=3.21.0
+KUSTOMIZE_MIN=5.8.0
+SOPS_MIN=3.13.0
+AGE_MIN=1.3.0
+CONFTEST_MIN=0.68.0
+KIND_MIN=0.32.0
+KUBECONFORM_MIN=0.8.0
+NODE_MIN=24.0.0
 
 # --- backend: .NET API build/test ---
 DOTNET_MIN=10.0.100
