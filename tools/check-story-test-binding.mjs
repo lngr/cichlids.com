@@ -74,8 +74,10 @@ export function checkAll({ root }) {
       failures.push(`Story ${id} (Done): referenzierte Testdatei(en) nicht gefunden: ${refs.join(", ")}.`);
       continue;
     }
+    // Match case-insensitively: task IDs in frontmatter are upper-case (TASK-2.3) while
+    // the back-tag in the referenced file follows the lower-case convention (task-2.3).
     const escaped = id.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    const tagRe = new RegExp(`\\b${escaped}\\b`);
+    const tagRe = new RegExp(`\\b${escaped}\\b`, "i");
     const backlinked = existing.some((r) => tagRe.test(readFileSync(join(root, r), "utf8")));
     if (!backlinked) {
       failures.push(

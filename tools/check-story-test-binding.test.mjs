@@ -45,6 +45,20 @@ test("Done-Story mit gueltiger bidirektionaler Bindung besteht", () => {
   }
 });
 
+test("Rueck-Tag wird unabhaengig von Gross-/Kleinschreibung erkannt", () => {
+  const root = makeRepo();
+  try {
+    // Konvention: Task-IDs im Frontmatter sind gross (TASK-6), die Rueck-Tags in den
+    // referenzierten Dateien klein (task-6). Beide Schreibweisen muessen binden.
+    writeFileSync(join(root, "e2e", "lower.yaml"), "# Story: task-6\nappId: x\n---\n- launchApp\n");
+    writeStory(root, "task-6 - case.md", { id: "TASK-6", status: "Done", references: ["e2e/lower.yaml"] });
+    const { failures } = checkAll({ root });
+    assert.deepEqual(failures, []);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
 test("Done-Story ohne References schlaegt fehl", () => {
   const root = makeRepo();
   try {
