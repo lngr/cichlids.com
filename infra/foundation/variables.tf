@@ -89,26 +89,16 @@ variable "media_master_bucket_name" {
   default     = "cichlids-media-master"
 }
 
-variable "backup_bucket_name" {
-  description = "Bucket holding database PITR backups (ADR-0013)."
-  type        = string
-  default     = "cichlids-backup"
-}
-
 # Object Lock can only be enabled at bucket creation and, once locked with a retention,
-# makes objects undeletable for the window. It is left OFF in development (the buckets
-# hold throwaway/synthetic data) and turned ON for production at go-live: Governance mode
-# for the media-master bucket and Compliance mode for the backup bucket (ADR-0013, ADR-0014).
+# makes objects undeletable for the window. It is left OFF in development (the bucket holds
+# throwaway/synthetic data) and turned ON for production at go-live in Governance mode, so a
+# privileged break-glass action can still erase objects for GDPR while routine credentials
+# cannot (ADR-0013, ADR-0014). The immutable Compliance-mode backup copies live in the separate
+# backup project (ADR-0017).
 variable "enable_object_lock" {
-  description = "Enable S3 Object Lock on the buckets (production posture; off for development)."
+  description = "Enable S3 Object Lock on the media-master bucket (production posture; off for development)."
   type        = bool
   default     = false
-}
-
-variable "backup_retention_days" {
-  description = "Object Lock retention window in days for the backup bucket when object lock is enabled (ADR-0013)."
-  type        = number
-  default     = 14
 }
 
 variable "media_master_retention_days" {

@@ -1,0 +1,19 @@
+# Copy to terraform.tfvars and adjust. Secrets are NOT placed here: supply the backup project's
+# object-storage credentials via environment variables so they never land in a file:
+#   export TF_VAR_s3_access_key=...   # backup project object storage (write-scoped)
+#   export TF_VAR_s3_secret_key=...
+#   export TF_VAR_state_encryption_passphrase=...   # native state encryption (ADR-0016)
+# Backend (state bucket) credentials are the state project's S3 keys, supplied as the standard
+# AWS_ACCESS_KEY_ID / AWS_SECRET_ACCESS_KEY env vars at `tofu init`.
+#
+# This tier has NO Hetzner Cloud token by design (ADR-0017): the backup project holds only
+# object storage, so no cloud token is ever supplied here or stored in CI.
+
+project_name = "cichlids-backup"
+
+s3_endpoint = "https://nbg1.your-objectstorage.com"
+s3_region   = "nbg1"
+
+# Object Lock (Compliance) stays off in development; enable it for the production buckets at
+# go-live so the backups become immutable for their retention window.
+enable_object_lock = false

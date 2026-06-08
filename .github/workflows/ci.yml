@@ -74,8 +74,18 @@ jobs:
         run: |
           tofu -chdir=infra/foundation init -backend=false
           tofu -chdir=infra/foundation validate
+      - name: Validate backup tier
+        run: |
+          tofu -chdir=infra/backup init -backend=false
+          tofu -chdir=infra/backup validate
       - name: Foundation guardrails (ADR-0014 Layer 1)
         run: python3 infra/foundation/guardrails_test.py
+      - name: Backup guardrails (ADR-0014 Layer 1)
+        run: python3 infra/backup/guardrails_test.py
+      - name: Project separation (ADR-0017)
+        run: |
+          python3 tools/check-project-separation.py --self-test
+          python3 tools/check-project-separation.py
       - name: Remote state backend present (ADR-0016)
         run: |
           python3 tools/check-remote-state-backend.py --self-test

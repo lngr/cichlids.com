@@ -20,10 +20,15 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 INFRA = os.path.join(os.path.dirname(HERE), "infra")
 
-TIERS = ("foundation", "app")
-# Variable names in the foundation whose defaults are the buckets that tier manages; the state
-# bucket must differ from each of them.
-MANAGED_BUCKET_VARS = ("media_master_bucket_name", "backup_bucket_name")
+TIERS = ("foundation", "backup", "app")
+# Variable names across the tiers whose defaults are the buckets those tiers manage; the state
+# bucket must differ from each of them (it must not live inside a resource its own state
+# creates, ADR-0016). The backup buckets live in the separate backup project (ADR-0017).
+MANAGED_BUCKET_VARS = (
+    "media_master_bucket_name",
+    "database_backup_bucket_name",
+    "media_master_backup_bucket_name",
+)
 
 
 def read_tf(tier_dir):
@@ -50,6 +55,23 @@ def backend_bucket(tf_text):
     body = tf_text[m.end():i - 1]
     b = re.search(r'bucket\s*=\s*"([^"]+)"', body)
     return b.group(1) if b else ""
+
+
+def backend_key(tf_text):
+    """Return the state key of a `backend "s3"` block, or "" if absent."""
+    m = re.search(r'backend\s+"s3"\s*\{', tf_text)
+    if not m:
+        return ""
+    depth, i = 1, m.end()
+    while i < len(tf_text) and depth > 0:
+        if tf_text[i] == "{":
+            depth += 1
+        elif tf_text[i] == "}":
+            depth -= 1
+        i += 1
+    body = tf_text[m.end():i - 1]
+    k = re.search(r'key\s*=\s*"([^"]+)"', body)
+    return k.group(1) if k else ""
 
 
 def managed_bucket_names(tf_text):
@@ -83,13 +105,26 @@ def main(argv):
         return self_test()
     failures = []
     present = 0
-    managed = managed_bucket_names(read_tf(os.path.join(INFRA, "foundation")))
+    managed = set()
+    for tier in ("foundation", "backup"):
+        managed |= managed_bucket_names(read_tf(os.path.join(INFRA, tier)))
+    keys = {}
     for tier in TIERS:
         tier_dir = os.path.join(INFRA, tier)
         if not glob.glob(os.path.join(tier_dir, "*.tf")):
             continue  # tier not built yet
         present += 1
-        failures += check_tier(tier, read_tf(tier_dir), managed)
+        tf_text = read_tf(tier_dir)
+        failures += check_tier(tier, tf_text, managed)
+        key = backend_key(tf_text)
+        if key:
+            keys.setdefault(key, []).append(tier)
+    # Each tier keeps its own state object: a shared key would let one tier's apply overwrite
+    # another's state. Distinct keys in the one dedicated bucket are how the tiers stay separate
+    # (ADR-0016, ADR-0017).
+    for key, tiers in keys.items():
+        if len(tiers) > 1:
+            failures.append(f"state key '{key}' is shared by tiers {', '.join(tiers)} (each tier needs a distinct key)")
     if failures:
         print("remote state backend check failed (ADR-0016):", file=sys.stderr)
         for f in failures:
@@ -104,7 +139,8 @@ def self_test():
     no_backend = 'terraform {\n  required_version = ">= 1.10.0"\n}'
     collision = 'terraform {\n  backend "s3" {\n    bucket = "cichlids-media-master"\n  }\n}'
     no_bucket = 'terraform {\n  backend "s3" {\n    key = "x"\n  }\n}'
-    managed = {"cichlids-media-master", "cichlids-backup"}
+    with_key = 'terraform {\n  backend "s3" {\n    bucket = "cichlids-tfstate"\n    key = "backup/terraform.tfstate"\n  }\n}'
+    managed = {"cichlids-media-master", "cichlids-db-backup", "cichlids-media-backup"}
     cases = [
         ("good", good, 0),
         ("missing backend", no_backend, 1),
@@ -116,13 +152,19 @@ def self_test():
         got = len(check_tier("t", text, managed))
         if got != want:
             errors.append(f"{label}: expected {want} failure(s), got {got}")
-    # The managed-name parser must read the foundation variable defaults.
+    # The managed-name parser must read each tier's variable defaults.
     sample_vars = (
         'variable "media_master_bucket_name" {\n  default = "cichlids-media-master"\n}\n'
-        'variable "backup_bucket_name" {\n  default = "cichlids-backup"\n}\n'
+        'variable "database_backup_bucket_name" {\n  default = "cichlids-db-backup"\n}\n'
+        'variable "media_master_backup_bucket_name" {\n  default = "cichlids-media-backup"\n}\n'
     )
     if managed_bucket_names(sample_vars) != managed:
         errors.append("managed_bucket_names did not parse the variable defaults")
+    # backend_key must extract the state key, and return "" when there is none.
+    if backend_key(with_key) != "backup/terraform.tfstate":
+        errors.append("backend_key did not extract the state key")
+    if backend_key(good) != "":
+        errors.append("backend_key should return '' when the backend has no key")
     if errors:
         print("remote-state-backend self-test FAILED:", file=sys.stderr)
         for e in errors:

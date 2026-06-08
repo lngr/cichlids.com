@@ -21,11 +21,6 @@ output "media_master_bucket" {
   value       = aws_s3_bucket.media_master.bucket
 }
 
-output "backup_bucket" {
-  description = "Name of the backup bucket."
-  value       = aws_s3_bucket.backup.bucket
-}
-
 output "dns_zone_id" {
   description = "Hetzner DNS zone ID."
   value       = hetznerdns_zone.primary.id

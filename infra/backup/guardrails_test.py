@@ -1,15 +1,13 @@
 #!/usr/bin/env python3
-"""Asserts the day-one Layer 1 safeguards (ADR-0014) are present on every critical
-foundation resource: lifecycle prevent_destroy on all of them, Hetzner delete_protection
-on the node and database volume, and versioning on the media-master bucket. Run before adding
-the safeguards it fails (red); with them in place it passes (green).
-
-The immutable backup buckets live in the separate backup project (ADR-0017) and are checked by
-infra/backup/guardrails_test.py.
+"""Asserts the day-one Layer 1 safeguards (ADR-0014) on the backup project's immutable buckets:
+lifecycle prevent_destroy and versioning on both the database PITR backup and the media-master
+backup copy. These buckets hold the irreplaceable data of last resort (ADR-0013), kept in their
+own project so no automation cloud token can reach them (ADR-0017). Run before adding the
+safeguards it fails (red); with them in place it passes (green).
 
 Parses the .tf sources directly (brace-matched resource blocks) so it needs no cloud
 credentials and runs offline in CI.
-Story: task-2.2
+Story: task-2.16
 """
 import glob
 import os
@@ -18,12 +16,12 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
-# (resource type, resource name, needs delete_protection)
+# (resource type, resource name) — every critical backup bucket. Buckets carry no Hetzner
+# delete-protection flag (that is a Cloud-resource attribute); their immutability comes from
+# versioning plus Object Lock Compliance and the prevent_destroy lifecycle.
 CRITICAL = [
-    ("hcloud_server", "node", True),
-    ("hcloud_volume", "database", True),
-    ("aws_s3_bucket", "media_master", False),
-    ("hetznerdns_zone", "primary", False),
+    ("aws_s3_bucket", "database_backup"),
+    ("aws_s3_bucket", "media_master_backup"),
 ]
 
 
@@ -50,27 +48,25 @@ def main():
     blocks = load_blocks()
     failures = []
 
-    for rtype, rname, needs_dp in CRITICAL:
+    for rtype, rname in CRITICAL:
         body = blocks.get((rtype, rname))
         if body is None:
             failures.append(f"{rtype}.{rname}: critical resource is missing")
             continue
         if not re.search(r"prevent_destroy\s*=\s*true", body):
             failures.append(f"{rtype}.{rname}: missing lifecycle prevent_destroy = true")
-        if needs_dp and not re.search(r"delete_protection\s*=\s*true", body):
-            failures.append(f"{rtype}.{rname}: missing delete_protection = true")
 
-    for bucket in ("media_master",):
+    for _, bucket in CRITICAL:
         vbody = blocks.get(("aws_s3_bucket_versioning", bucket))
         if vbody is None or "Enabled" not in vbody:
             failures.append(f"aws_s3_bucket_versioning.{bucket}: versioning is not Enabled")
 
     if failures:
-        print("foundation guardrails missing (ADR-0014):", file=sys.stderr)
+        print("backup guardrails missing (ADR-0014):", file=sys.stderr)
         for f in failures:
             print(f"  - {f}", file=sys.stderr)
         return 1
-    print(f"foundation guardrails OK ({len(CRITICAL)} critical resources protected)")
+    print(f"backup guardrails OK ({len(CRITICAL)} critical backup buckets protected)")
     return 0
 
 
