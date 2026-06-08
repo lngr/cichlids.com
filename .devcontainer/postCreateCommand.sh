@@ -62,6 +62,10 @@ if [ -f "tools/install-toolchain.sh" ]; then
     || echo "WARNING: toolchain install failed (network?). Re-run later: bash tools/install-toolchain.sh"
 fi
 
+# Activate the repo's committed Git hooks (e.g. the pre-push secret scan). Hooks are a
+# local early-warning; the CI secrets-scan job stays the enforced backstop.
+git config core.hooksPath .githooks 2>/dev/null || true
+
 # --- Personal overlay hook ---
 if [ -f ".devcontainer/postCreateCommand.local.sh" ]; then
   echo "=== Running personal postCreate hook ==="

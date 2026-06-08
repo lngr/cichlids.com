@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Pre-push guard: refuse the push if any tracked file holds a plaintext secret, so a secret
+# is caught before it leaves the machine rather than only in CI (where it is already pushed).
+#
+# This is a local early-warning and is bypassable (git push --no-verify); the CI secrets-scan
+# job remains the enforced backstop. Activated via core.hooksPath=.githooks (devcontainer
+# postCreate; other contributors: `git config core.hooksPath .githooks`).
+set -euo pipefail
+
+repo="$(git rev-parse --show-toplevel)"
+exec python3 "$repo/tools/check-no-plaintext-secrets.py"
