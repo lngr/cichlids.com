@@ -44,6 +44,23 @@ jobs:
       - name: Verify core toolchain
         run: ./tools/verify-toolchain.sh core
 
+  secrets-scan:
+    name: No plaintext secrets committed
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.x"
+      - name: Self-test of the secret detector
+        run: python3 tools/check-no-plaintext-secrets.py --self-test
+      - name: Scan tracked files for plaintext secrets
+        run: python3 tools/check-no-plaintext-secrets.py
+      - name: Pre-push secret-scan hook is wired
+        run: |
+          python3 tools/check-git-hooks.py --self-test
+          python3 tools/check-git-hooks.py
+
   infra-validate:
     name: OpenTofu foundation validates
     runs-on: ubuntu-latest
@@ -59,6 +76,10 @@ jobs:
           tofu -chdir=infra/foundation validate
       - name: Foundation guardrails (ADR-0014 Layer 1)
         run: python3 infra/foundation/guardrails_test.py
+      - name: Remote state backend present (ADR-0016)
+        run: |
+          python3 tools/check-remote-state-backend.py --self-test
+          python3 tools/check-remote-state-backend.py
 
   # Further required jobs land with the application code and complete the green gate
   # from ADR-0003 / ADR-0005. Each verifies its own toolchain scope
