@@ -4,7 +4,7 @@
 # operator, separate from the ephemeral app tier (ADR-0010, ADR-0014 Layer 2).
 # Story: task-2.2
 terraform {
-  required_version = ">= 1.8.0"
+  required_version = ">= 1.10.0"
 
   required_providers {
     hcloud = {
