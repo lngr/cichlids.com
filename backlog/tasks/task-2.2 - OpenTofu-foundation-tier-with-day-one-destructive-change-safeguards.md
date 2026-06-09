@@ -5,7 +5,7 @@ status: Done
 assignee:
   - claude
 created_date: '2026-06-03 16:00'
-updated_date: '2026-06-05 10:45'
+updated_date: '2026-06-09 15:37'
 labels:
   - infra
   - opentofu
@@ -14,7 +14,7 @@ milestone: m-0
 dependencies:
   - TASK-2.1
 references:
-  - infra/foundation/guardrails_test.py
+  - infra/platform/guardrails_test.py
 parent_task_id: TASK-2
 priority: high
 ordinal: 4000

@@ -20,12 +20,13 @@ line.
 
 ## Decision
 
-All four layers below are **binding from day one**. The protection is **capability-based, not
-approval-based**: because coding agents run under the operator's own GitHub identity, any
-in-CI label or approval an agent could also grant itself — so the real control is that **no
-credential able to destroy critical resources ever exists in the agent or CI environment**; that
-capability is held only **out-of-band** by the operator. Machine-enforced controls (Layers 1 and
-3) are the primary backstops.
+All four layers below are **binding from day one** and machine-enforced rather than
+approval-based: because coding agents run under the operator's own GitHub identity, any in-CI
+label or approval an agent could also grant itself. The catastrophic outcome is bounded by
+construction: the **irreplaceable backups are isolated** in a project no automation token can
+reach (ADR-0017) and are immutable, so any destruction of live infrastructure is **recoverable**.
+Within the live project, accidents are prevented by Layer 1 and caught by the plan-diff gate
+(Layer 3); recovery is guaranteed by Layer 4.
 
 ### Layer 1 — Critical resources are undeletable by default (by construction)
 - **OpenTofu `lifecycle { prevent_destroy = true }`** on every critical resource (cluster node
@@ -42,30 +43,28 @@ capability is held only **out-of-band** by the operator. Machine-enforced contro
 - **Argo CD `Prune=false` + finalizers** on stateful resources → reconciliation never deletes the
   CloudNativePG cluster, PVCs, or namespaces, even if a manifest disappears.
 
-### Layer 2 — Separated blast radius (state + credentials)
-- **Two OpenTofu state tiers:** a rarely-touched **foundation/stateful** tier (node disk, volumes,
-  buckets, DNS, database) and an **app/ephemeral** tier. Routine automation touches only the app
-  tier; "rebuild the cluster" does not reference the data resources.
-- **Least-privilege credentials:** the token agents/CI use for routine work has **no delete
-  rights** on the protected/stateful resources.
-- **Out-of-band break-glass credential (invariant):** the only destroy-capable credential is held
-  **entirely outside** the agent and CI environment — on the operator's host, never in the repo,
-  CI secrets, or the agents' devcontainer. Since agents share the operator's GitHub identity,
-  this credential separation — not any approval step — is what makes a destroy impossible for an
-  agent.
+### Layer 2 — Separated blast radius (the irreplaceable data is isolated)
+- **The immutable backups live in a separate project with no cloud token** (ADR-0017): the
+  database PITR/WAL backups and the off-master copy of the media originals. No automation
+  credential can see or delete them, and Compliance-mode Object Lock blocks deletion even with the
+  operator's object-storage credential. Everything in the live `cichlids` project is rebuildable
+  cattle, recoverable from these backups.
+- **The provider has no "may-not-delete" token level** (Read or Read & Write only), so
+  least-privilege cannot be enforced through the token; the enforceable boundary is the project
+  (ADR-0017). The live infrastructure is therefore guarded against accidents by Layer 1, not by
+  withholding it from automation.
 
-### Layer 3 — Pipeline gate, fail-closed (catch before execution)
-- **No `destroy` in automation:** no agent or CI path wires up `tofu destroy`, and the routine
-  pipeline holds no destroy-capable credential (Layer 2).
-- **Automated plan-diff policy gate (the machine backstop):** **Conftest (OPA/Rego)** evaluates
-  `tofu plan -json` in CI and **fails the pipeline (default deny)** on any `delete` or `replace`
-  of a **critical** resource, independent of human review. *Critical* = a resource in the
-  **foundation/stateful** OpenTofu state **or** one carrying the label `critical = "true"`.
-- **Destroys are out-of-band, not overridden in CI:** there is **no** in-CI "allow-destroy" label
-  or approval — agents run under the operator's GitHub identity and could grant it themselves.
-  A legitimate destroy runs **only** via a **manually-invoked local break-glass pipeline on the
-  operator's host**, using the out-of-band destroy credential (Layer 2); that script also removes
-  the relevant `prevent_destroy`/delete-protection as a deliberate, logged step.
+### Layer 3 — Fail-closed plan-diff gate (catch before execution)
+- **Automated plan-diff policy gate:** when CI applies the live project, **Conftest (OPA/Rego)**
+  evaluates the `tofu plan -json` and **fails the pipeline (default deny)** on any `delete` or
+  `replace` of a **critical** resource, while allowing in-place updates (so CI can resize a volume
+  but never destroy it), independent of human review. *Critical* = a protected resource type **or**
+  one carrying the label `critical = "true"`. The policy and its unit tests live in `policy/`; the
+  gate wires into the CI-apply pipeline when that tier is built.
+- **Deliberate destroys go through Git, not an in-CI override:** there is **no** in-CI
+  "allow-destroy" label or approval (an agent could grant it itself). A legitimate destroy of a
+  critical resource is a deliberate, reviewed change that removes the resource's
+  `prevent_destroy`/delete-protection; the immutable backups make even a mistaken one recoverable.
 - Branch protection on `main` (PR + green gate + review) per [ADR-0005](0005-ci-platform.md).
 
 ### Layer 4 — Assume-breach recovery (last line)
@@ -95,22 +94,22 @@ capability is held only **out-of-band** by the operator. Machine-enforced contro
 ## Rationale
 
 The risk is existential and the triggering actor is fallible automation, so the controls must not
-themselves depend on fallible humans. Layer 1 makes the destructive outcome impossible without a
-deliberate, multi-step un-protection; Layer 3's fail-closed plan-diff gate catches any attempt in
-the pipeline **without** relying on a reviewer; Layer 2 ensures routine automation never even
-holds the rights or references to reach the data; Layer 4 guarantees recovery if every preventive
-layer were somehow bypassed. Together they make accidental catastrophic loss prevented by
-construction and, at worst, fully recoverable.
+themselves depend on fallible humans. Layer 1 makes destruction of a live resource impossible
+without a deliberate, multi-step un-protection; Layer 3's fail-closed plan-diff gate catches any
+such attempt in the pipeline **without** relying on a reviewer; Layer 2 keeps the irreplaceable
+backups in a project no automation token can reach; Layer 4 guarantees recovery if every
+preventive layer were somehow bypassed. Together they make accidental catastrophic loss prevented
+by construction and, at worst, fully recoverable.
 
 ## Consequences
 
 - **Positive:** accidental cluster/data destruction is prevented on multiple independent layers
   and recoverable as a last resort; the safety does not hinge on human vigilance.
-- **Negative / Trade-offs:** legitimate destructive changes require a deliberate override + a
-  break-glass credential (intended friction); critical resources must be consistently tagged;
-  a policy gate and two credential tiers to build and operate.
-- **Open items:** none — tooling (Conftest/OPA), the critical-resource convention
-  (foundation-state **or** `critical=true` label), the out-of-band break-glass override, and the
+- **Negative / Trade-offs:** a legitimate destroy of a critical resource requires a deliberate,
+  reviewed change that removes its protection (intended friction); critical resources must be
+  consistently tagged; a policy gate to build and operate.
+- **Open items:** none. The tooling (Conftest/OPA), the critical-resource convention (protected
+  type **or** `critical=true` label), the project isolation of the backups (ADR-0017), and the
   Object-Lock modes are all decided above. (Retention *durations* are set in ADR-0013.)
 
 ## References
@@ -119,3 +118,5 @@ construction and, at worst, fully recoverable.
 - [ADR-0009: Hosting and Global Delivery](0009-hosting-and-global-delivery.md)
 - [ADR-0010: GitOps and Infrastructure as Code](0010-gitops-and-infrastructure-as-code.md)
 - [ADR-0013: Backup and Disaster Recovery](0013-backup-and-disaster-recovery.md)
+- [ADR-0016: Remote OpenTofu State Backend on Hetzner Object Storage](0016-remote-opentofu-state-backend.md)
+- [ADR-0017: Hetzner Project Separation for Capability-Based Blast Radius](0017-hetzner-project-separation.md)

@@ -6,14 +6,14 @@
 
 ## Context and Problem Statement
 
-[ADR-0014](0014-safeguards-against-destructive-infrastructure-changes.md) separates the
-infrastructure into a stateful foundation tier and an ephemeral app tier, and
+[ADR-0017](0017-hetzner-project-separation.md) separates the infrastructure across two projects
+(the cichlids platform and app tiers, and the immutable backups), and
 [ADR-0010](0010-gitops-and-infrastructure-as-code.md) makes OpenTofu the provisioner that
 bootstraps the platform. Neither decides **where the OpenTofu state itself lives**.
 
 This is not a detail. Without an explicit backend, OpenTofu keeps state in a local file. For the
-foundation tier that file would record the only management handle to the protected, hard-to-
-recreate resources (compute node, database volume, object-storage buckets, DNS zone). Losing it
+platform tier that file would record the only management handle to the hard-to-recreate
+resources (compute node, database volume, media-master bucket, DNS zone). Losing it
 — a discarded container, a wiped workstation — orphans those resources: they keep existing and
 billing but can no longer be planned, changed, or even deliberately destroyed through OpenTofu,
 which directly undermines the ADR-0014 safeguards. The app tier additionally runs from CI, where
@@ -24,13 +24,15 @@ A durable, lockable, machine-reachable state backend is therefore required befor
 
 ## Decision
 
-Both OpenTofu tiers (foundation now, app tier when it is built) use a **remote `s3` backend on
-Hetzner Object Storage**, with the following properties:
+Both OpenTofu tiers (platform and backup) use a **remote `s3` backend on Hetzner Object Storage**,
+with the following properties:
 
-- **A dedicated state bucket**, separate from every bucket that OpenTofu manages. Because the
-  foundation tier creates the media-master and backup buckets, the state must not live in either
-  of them (a chicken-and-egg dependency). The state bucket is created **once, out-of-band, by
-  the operator** before the first `init`; it is not managed by either tier.
+- **A dedicated state bucket per tier, in that tier's own project** (ADR-0017): the platform
+  state in `cichlids`, the backup state in `cichlids-backup`. Each is separate from the buckets
+  that tier manages (media-master, the backup buckets), so the state never lives inside a resource
+  its own state creates. Each state bucket is created **once, out-of-band** before the first
+  `init` and is not managed by either tier. Keeping the backup state in `cichlids-backup` keeps it,
+  like the backups, out of CI's reach.
 - **Versioning enabled** on the state bucket, so a corrupted or truncated write can be rolled
   back to a previous object version.
 - **Native state locking** via the backend's S3 lock-file mechanism (`use_lockfile`), which uses
@@ -69,7 +71,7 @@ environment, never committed.
 ## Rationale
 
 The chosen option is the only one that is simultaneously durable, lockable, machine-reachable,
-and rollback-capable — the properties the foundation's protected resources and the CI-driven app
+and rollback-capable — the properties the platform's protected resources and the CI-driven app
 tier both require. A dedicated, unmanaged bucket avoids the dependency cycle of storing state
 inside resources that the same state creates. Deliberately omitting Object Lock on the state
 bucket avoids a self-inflicted denial of service on the lock object, while versioning, private
@@ -84,8 +86,11 @@ cleartext secrets in state from being readable at rest, with keys never leaving 
 - **Negative / Trade-offs:** a one-time operator bootstrap of the state bucket precedes the first
   `init`; the encryption key and the state-bucket credentials are additional out-of-band secrets
   to manage.
-- **To be decided later:** the app tier adopts the same backend (separate state key in the same
-  bucket) when that tier is built.
+- **State placement:** the platform state lives in `cichlids` (reachable by the same credential CI
+  uses to manage that project) and the backup state in `cichlids-backup` (operator-only). The
+  backup state thus stays out of CI's reach, while the platform state, being recoverable cattle,
+  does not need its own project (ADR-0017). The app tier, when built, shares the platform state
+  project under its own state key.
 
 ## References
 

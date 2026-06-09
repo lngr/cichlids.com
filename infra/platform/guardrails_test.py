@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-"""Asserts the day-one Layer 1 safeguards (ADR-0014) are present on every critical
-foundation resource: lifecycle prevent_destroy on all of them, Hetzner delete_protection
-on the node and database volume, and versioning on the media-master bucket. Run before adding
-the safeguards it fails (red); with them in place it passes (green).
+"""Asserts the Layer 1 safeguards (ADR-0014) are present on every critical platform resource:
+lifecycle prevent_destroy on all of them, Hetzner delete_protection on the node and database
+volume, and versioning on the media-master bucket. Run before adding the safeguards it fails
+(red); with them in place it passes (green).
 
 The immutable backup buckets live in the separate backup project (ADR-0017) and are checked by
 infra/backup/guardrails_test.py.
 
 Parses the .tf sources directly (brace-matched resource blocks) so it needs no cloud
 credentials and runs offline in CI.
-Story: task-2.2
+Story: task-2.2, task-2.18, task-2.22
 """
 import glob
 import os
@@ -23,7 +23,7 @@ CRITICAL = [
     ("hcloud_server", "node", True),
     ("hcloud_volume", "database", True),
     ("aws_s3_bucket", "media_master", False),
-    ("hetznerdns_zone", "primary", False),
+    ("hcloud_zone", "primary", True),
 ]
 
 
@@ -66,11 +66,11 @@ def main():
             failures.append(f"aws_s3_bucket_versioning.{bucket}: versioning is not Enabled")
 
     if failures:
-        print("foundation guardrails missing (ADR-0014):", file=sys.stderr)
+        print("platform guardrails missing (ADR-0014):", file=sys.stderr)
         for f in failures:
             print(f"  - {f}", file=sys.stderr)
         return 1
-    print(f"foundation guardrails OK ({len(CRITICAL)} critical resources protected)")
+    print(f"platform guardrails OK ({len(CRITICAL)} critical resources protected)")
     return 0
 
 

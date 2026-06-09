@@ -46,14 +46,13 @@ variable "media_master_backup_bucket_name" {
 }
 
 # Object Lock can only be enabled at bucket creation and, once locked with a retention, makes
-# objects undeletable for the window. It is left OFF in development (the buckets hold
-# throwaway/synthetic data) and turned ON for production at go-live, in Compliance mode for both
-# backup buckets — not even a privileged credential can shorten or delete a locked object
-# (ADR-0013, ADR-0014 Layer 1).
+# objects undeletable for the window. It is on by default so the backup buckets carry the
+# production posture from creation, in Compliance mode for both: not even a privileged credential
+# can shorten or delete a locked object (ADR-0013, ADR-0014 Layer 1).
 variable "enable_object_lock" {
-  description = "Enable S3 Object Lock (Compliance) on the backup buckets (production posture; off for development)."
+  description = "Enable S3 Object Lock (Compliance) on the backup buckets. On by default: the backups are immutable from creation."
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "database_backup_retention_days" {

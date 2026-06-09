@@ -5,12 +5,12 @@
 # Cloud provider at all (ADR-0009 provider portability, ADR-0013 durability).
 # Story: task-2.16
 terraform {
-  required_version = ">= 1.10.0"
+  required_version = ">= 1.12.0"
 
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 5.0"
+      version = "~> 6.0"
     }
   }
 }

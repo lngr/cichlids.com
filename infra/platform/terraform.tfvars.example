@@ -1,0 +1,23 @@
+# Copy to terraform.tfvars and adjust. Secrets are NOT placed here: supply tokens and
+# keys via environment variables so they never land in a file:
+#   export TF_VAR_hcloud_token=...        # primary project Read & Write; also authorises DNS
+#   export TF_VAR_s3_access_key=...
+#   export TF_VAR_s3_secret_key=...
+# The destroy-capable break-glass credential is never used here (ADR-0014, ADR-0017).
+
+project_name = "cichlids"
+
+# Node sizing and location. Scale or relocate by changing these (ADR-0009, ADR-0010); a larger
+# US node would be location = "ash", server_type = "cpx41".
+location    = "nbg1"
+server_type = "cx33"
+
+ssh_public_key = "ssh-ed25519 AAAA... operator@host"
+
+dns_zone_name = "cichlids.com"
+
+s3_endpoint = "https://nbg1.your-objectstorage.com"
+s3_region   = "nbg1"
+
+# Object Lock (Governance) is on: the media-master bucket is immutable from creation.
+enable_object_lock = true

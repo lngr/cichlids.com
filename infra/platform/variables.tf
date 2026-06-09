@@ -1,15 +1,11 @@
 # Credentials are supplied at apply time via TF_VAR_* environment variables held by the
-# operator (never committed). The routine token used here is least-privilege; the
-# destroy-capable break-glass credential stays out-of-band (ADR-0014 Layer 2).
+# operator (never committed). The capability boundary is the project, not a token scope: this
+# project's token is Read & Write (the provider offers no finer "no-delete" scope), so isolation
+# comes from keeping the irreplaceable backups in a separate project with no cloud token, and
+# break-glass is privileged console access held out-of-band (ADR-0017, ADR-0014 Layer 2).
 
 variable "hcloud_token" {
-  description = "Hetzner Cloud API token (routine, least-privilege; no delete rights on protected resources)."
-  type        = string
-  sensitive   = true
-}
-
-variable "hetznerdns_token" {
-  description = "Hetzner DNS API token for the authoritative zone."
+  description = "Hetzner Cloud API token for the primary project (Read & Write). Authorises the compute resources and, since DNS is part of the project-scoped Cloud API, the DNS zone as well."
   type        = string
   sensitive   = true
 }
@@ -90,15 +86,14 @@ variable "media_master_bucket_name" {
 }
 
 # Object Lock can only be enabled at bucket creation and, once locked with a retention,
-# makes objects undeletable for the window. It is left OFF in development (the bucket holds
-# throwaway/synthetic data) and turned ON for production at go-live in Governance mode, so a
-# privileged break-glass action can still erase objects for GDPR while routine credentials
-# cannot (ADR-0013, ADR-0014). The immutable Compliance-mode backup copies live in the separate
-# backup project (ADR-0017).
+# makes objects undeletable for the window. It is on by default so the media-master bucket
+# carries the production posture from creation, in Governance mode: a privileged break-glass
+# action can still erase objects for GDPR while routine credentials cannot (ADR-0013, ADR-0014).
+# The immutable Compliance-mode backup copies live in the separate backup project (ADR-0017).
 variable "enable_object_lock" {
-  description = "Enable S3 Object Lock on the media-master bucket (production posture; off for development)."
+  description = "Enable S3 Object Lock (Governance) on the media-master bucket. On by default: production posture from creation."
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "media_master_retention_days" {

@@ -10,12 +10,12 @@ be scoped below Read & Write. This check enforces that boundary statically:
     object-storage credential reaches it);
   - the backup tier holds the immutable backup buckets, each undeletable by construction
     (prevent_destroy) and under Object Lock Compliance;
-  - the primary foundation tier keeps the single cloud-token tier and no longer holds a backup
+  - the primary platform tier keeps the single cloud-token tier and no longer holds a backup
     bucket, while the media originals stay there.
 
 Parses the .tf sources directly (no cloud credentials, runs offline in CI). `--self-test`
 exercises the checks against fixtures so the guard cannot silently rot.
-Story: task-2.16
+Story: task-2.16, task-2.22
 """
 import glob
 import os
@@ -82,16 +82,16 @@ def check_backup_tier(tf_text):
     return failures
 
 
-def check_foundation_tier(tf_text):
+def check_platform_tier(tf_text):
     failures = []
     blocks = resource_blocks(tf_text)
     if not has_provider(tf_text, "hcloud"):
-        failures.append('foundation: missing "hcloud" provider — the primary project holds the single cloud-token tier (ADR-0017)')
+        failures.append('platform: missing "hcloud" provider — the primary project holds the single cloud-token tier (ADR-0017)')
     for name in BACKUP_BUCKETS + ("backup",):
         if ("aws_s3_bucket", name) in blocks:
-            failures.append(f"foundation: still defines aws_s3_bucket.{name} — backup buckets belong in the backup project (ADR-0017)")
+            failures.append(f"platform: still defines aws_s3_bucket.{name} — backup buckets belong in the backup project (ADR-0017)")
     if ("aws_s3_bucket", "media_master") not in blocks:
-        failures.append("foundation: missing aws_s3_bucket.media_master — the media originals stay in the primary project (ADR-0017)")
+        failures.append("platform: missing aws_s3_bucket.media_master — the media originals stay in the primary project (ADR-0017)")
     return failures
 
 
@@ -99,7 +99,7 @@ def main(argv):
     if "--self-test" in argv:
         return self_test()
     failures = []
-    failures += check_foundation_tier(read_tf(os.path.join(INFRA, "foundation")))
+    failures += check_platform_tier(read_tf(os.path.join(INFRA, "platform")))
     failures += check_backup_tier(read_tf(os.path.join(INFRA, "backup")))
     if failures:
         print("project separation check failed (ADR-0017):", file=sys.stderr)
@@ -111,7 +111,7 @@ def main(argv):
 
 
 def self_test():
-    good_foundation = (
+    good_platform = (
         'provider "hcloud" {}\n'
         'resource "hcloud_server" "node" {}\n'
         'resource "aws_s3_bucket" "media_master" {}\n'
@@ -124,13 +124,13 @@ def self_test():
         'resource "aws_s3_bucket_object_lock_configuration" "database_backup" {\n'
         '  rule { default_retention { mode = "COMPLIANCE" } }\n}\n'
     )
-    foundation_cases = [
-        ("good foundation", good_foundation, 0),
-        ("foundation without cloud provider", good_foundation.replace('provider "hcloud" {}\n', ""), 1),
-        ("foundation still holds backup bucket",
-         good_foundation + 'resource "aws_s3_bucket" "database_backup" {}\n', 1),
-        ("foundation lost media_master",
-         good_foundation.replace('resource "aws_s3_bucket" "media_master" {}\n', ""), 1),
+    platform_cases = [
+        ("good platform", good_platform, 0),
+        ("platform without cloud provider", good_platform.replace('provider "hcloud" {}\n', ""), 1),
+        ("platform still holds backup bucket",
+         good_platform + 'resource "aws_s3_bucket" "database_backup" {}\n', 1),
+        ("platform lost media_master",
+         good_platform.replace('resource "aws_s3_bucket" "media_master" {}\n', ""), 1),
     ]
     backup_cases = [
         ("good backup", good_backup, 0),
@@ -144,10 +144,10 @@ def self_test():
         ("backup tier missing entirely", "", 1),
     ]
     errors = []
-    for label, text, want in foundation_cases:
-        got = len(check_foundation_tier(text))
+    for label, text, want in platform_cases:
+        got = len(check_platform_tier(text))
         if (got > 0) != (want > 0):
-            errors.append(f"foundation/{label}: expected {'failures' if want else 'pass'}, got {got} failure(s)")
+            errors.append(f"platform/{label}: expected {'failures' if want else 'pass'}, got {got} failure(s)")
     for label, text, want in backup_cases:
         got = len(check_backup_tier(text))
         if (got > 0) != (want > 0):

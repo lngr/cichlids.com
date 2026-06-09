@@ -24,36 +24,33 @@ depend on token-level permission granularity.
 
 ## Decision
 
-Use **three separate cloud projects** as the capability boundary. A token in one
-project cannot see or act on resources in another:
+Use **two separate cloud projects** as the capability boundary. A token in one project cannot see
+or act on resources in another:
 
-- **A primary project** holding *all* live, rebuildable infrastructure for every
-  environment: compute nodes, networks, firewalls, load balancers, the per-environment
-  databases, and the per-environment media stores (including the production media
-  originals and the serving path). CI holds this project's *Read & Write* token and
-  manages it with OpenTofu.
-- **A backup project** holding *only* the immutable backups: the database
-  point-in-time/WAL backups and an immutable backup copy of the media originals, on
-  object storage with **Object Lock in Compliance mode**. No CI cloud token exists for
-  it; the running system receives only a write-scoped object-storage credential, and
-  Compliance-mode immutability prevents deletion of backup objects even by that
-  credential.
-- **A state project** holding *only* the OpenTofu remote-state storage (versioned,
-  without Object Lock, consistent with
-  [ADR-0016](0016-remote-opentofu-state-backend.md)). No CI cloud token exists for it;
-  CI receives only object-storage credentials to read and write state objects.
+- **`cichlids`** holds *all* live infrastructure for every environment: compute nodes, networks,
+  firewalls, load balancers, the per-environment databases, the media stores (production originals
+  and the serving path), the DNS zone (project-scoped on the Cloud API, so the project token also
+  authorises it), and this project's own OpenTofu state. CI holds this project's *Read & Write*
+  token and manages everything here via OpenTofu under GitOps. Everything in `cichlids` is
+  "cattle": rebuildable, with its data recoverable from the immutable backups, so automation
+  manages it freely. Accidental destruction is guarded by `prevent_destroy` and delete-protection
+  (ADR-0014 Layer 1), not by withholding the project from automation.
+- **`cichlids-backup`** holds *only* the irreplaceable assets: the database point-in-time/WAL
+  backups and an immutable backup copy of the media originals, on object storage with **Object
+  Lock in Compliance mode**, plus this tier's own OpenTofu state. It has **no cloud token**; it is
+  reached only by an operator-held write-scoped object-storage credential that never enters CI,
+  and Compliance-mode immutability prevents deleting a backup object even with that credential.
 
-The principle: since tokens cannot be permission-scoped, isolation is **by project**.
-Everything in the primary project is "cattle" — rebuildable, with its data recoverable
-from the immutable backups. The irreplaceable assets — the immutable backups, the
-backup copy of the media originals, and the state — live in projects whose cloud token
-never enters automation.
+The principle: only the **irreplaceable backups** need isolation. Each tier's OpenTofu state lives
+with its tier (the `cichlids` state in `cichlids`, the backup state in `cichlids-backup`), so a
+credential reaches only its own project's state and the backup state stays out of CI's reach. The
+state in `cichlids` is itself cattle (a loss is re-imported; the resources persist and the data is
+in the backups), so it does not warrant a project of its own.
 
-This refines the blast-radius intent of ADR-0014: the unachievable "token without
-delete rights" is replaced by "a routine token confined to a project that holds nothing
-irreplaceable," while ADR-0014's other layers remain in force — undeletable-by-
-construction in the OpenTofu path, the fail-closed plan-diff gate, and assume-breach
-immutable backups.
+This refines the blast-radius intent of ADR-0014: the unachievable "token without delete rights"
+is replaced by confining the only irreplaceable asset to a project no automation token can reach,
+while ADR-0014's other layers remain in force (undeletable-by-construction in the OpenTofu path
+and assume-breach immutable backups).
 
 ## Considered Options
 
@@ -65,48 +62,47 @@ immutable backups.
     live database node and its volume cannot be separated across the boundary. This
     forces awkward placement and conflicts with keeping all live infrastructure
     together. Rejected.
-- **Three projects (live / backup / state).** **Chosen.**
-  - *Pro:* an enforceable capability boundary that does not depend on token permission
-    granularity; the automation token is confined to rebuildable infrastructure; the
-    irreplaceable data sits where no automation token can reach it.
-  - *Con:* three projects and several credentials to administer; the backup and state
-    projects are bootstrapped out-of-band.
-- **Separate cloud accounts/organizations** (as larger providers do with dedicated
-  backup and log-archive accounts).
-  - This is the same isolation pattern at a different provider; the three-project split
-    is its equivalent here.
+- **Separate state projects (isolating all OpenTofu state from CI).**
+  - *Con:* over-isolation. The CI-managed state is itself recoverable cattle (a loss is
+    re-imported; the resources persist and the data is in the immutable backups), so it does not
+    need a project of its own. Only the backups and the operator's backup state require isolation.
+- **Two projects (`cichlids`: all live infrastructure plus its state; `cichlids-backup`: the
+  immutable backups plus the backup state). Chosen.**
+  - *Pro:* an enforceable capability boundary on the only thing that is irreplaceable; automation
+    manages all live infrastructure declaratively; the backups sit where no automation token can
+    reach them; the fewest projects that still bound the catastrophic outcome.
+  - *Con:* the backup project is bootstrapped out-of-band by the operator; backups require
+    cross-project object-storage wiring.
+- **Separate cloud accounts/organizations** (as larger providers do with dedicated backup and
+  log-archive accounts).
+  - This is the same isolation pattern at a different provider; the two-project split is its
+    equivalent here.
 
-The volume-attach constraint is the decisive reason to keep all live compute and
-storage together in the primary project: durability comes from the immutable backups,
-not from isolating the live volume across a project boundary it cannot legally cross.
+The volume-attach constraint is why all live compute and storage stay together in `cichlids`:
+durability comes from the immutable backups, not from isolating the live volume across a project
+boundary it cannot legally cross.
 
 ## Rationale
 
 The catastrophic outcome becomes **bounded by construction**. The automation token
 simply cannot reach the irreplaceable data, regardless of what scripts run or how a
-token is misused, because that data lives in projects the token cannot see. Whatever
-happens to the primary project, recovery is always possible from the immutable backups.
+token is misused, because that data lives in a project the token cannot see. Whatever
+happens to `cichlids`, recovery is always possible from the immutable backups.
 This is a stronger guarantee than any permission-scoping the provider can offer, and it
 holds even against arbitrary raw-API calls rather than only the OpenTofu path.
 
 ## Consequences
 
-- **Positive:** a capability boundary that is actually enforceable on this provider;
-  automation is free to manage all live infrastructure declaratively; the irreplaceable
-  data is out of automation's reach and recoverable from immutable backups.
-- **Negative / Trade-offs:** three projects and several credentials to administer; the
-  backup and state projects are bootstrapped out-of-band by the operator; backups
-  require cross-project object-storage wiring.
-- **Residual exposures, stated honestly:**
-  - The DNS API is account-level rather than project-scoped, so a DNS credential held by
-    automation can change records. Mitigated by using the most-scoped DNS credential
-    available; the zone itself is reconstructible and delegation lives at the registrar.
-  - The object-storage credential automation holds for state can delete state objects.
-    Mitigated by versioning, which allows rollback.
-  - Backup objects remain protected by Compliance-mode immutability regardless of the
-    credential that touches them.
-- **To be decided later:** the exact granularity of object-storage credential scoping
-  available on this provider.
+- **Positive:** a capability boundary on the only irreplaceable asset; automation manages all
+  live infrastructure declaratively; the backups are out of automation's reach and recoverable.
+- **Negative / Trade-offs:** the backup project is bootstrapped out-of-band by the operator;
+  backups require cross-project object-storage wiring.
+- **Residual exposures:**
+  - A state-writing credential can overwrite or delete the state in its own project (the provider
+    offers no write-without-delete, and Object Lock is incompatible with mutable state). Versioning
+    makes this recoverable; the `cichlids` state is cattle, and the backup state is operator-only.
+  - Backup objects remain protected by Compliance-mode immutability regardless of the credential
+    that touches them.
 
 ## References
 

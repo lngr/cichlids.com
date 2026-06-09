@@ -23,10 +23,10 @@ output "media_master_bucket" {
 
 output "dns_zone_id" {
   description = "Hetzner DNS zone ID."
-  value       = hetznerdns_zone.primary.id
+  value       = hcloud_zone.primary.id
 }
 
 output "dns_zone_nameservers" {
   description = "Nameservers to delegate the domain to."
-  value       = hetznerdns_zone.primary.ns
+  value       = hcloud_zone.primary.authoritative_nameservers.assigned
 }

@@ -1,10 +1,11 @@
 # Authoritative master copy of media originals, independent of any serving provider so
 # the serving store can be re-seeded after a provider loss/ban (ADR-0009). Versioning is
 # always on; Object Lock (Governance) is enabled for production via var.enable_object_lock.
+# No tags: Hetzner Object Storage does not implement bucket tagging (PutBucketTagging returns
+# 501). The bucket is identified by name and is critical to the policy gate by resource type.
 resource "aws_s3_bucket" "media_master" {
   bucket              = var.media_master_bucket_name
   object_lock_enabled = var.enable_object_lock
-  tags                = local.critical_labels
 
   lifecycle {
     prevent_destroy = true

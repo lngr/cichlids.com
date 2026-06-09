@@ -5,7 +5,7 @@ locals {
   common_labels = {
     project    = var.project_name
     managed-by = "opentofu"
-    tier       = "foundation"
+    tier       = "platform"
   }
 
   critical_labels = merge(local.common_labels, {

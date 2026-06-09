@@ -2,10 +2,11 @@
 # window — not even a privileged credential can shorten or delete them (ADR-0013 retention,
 # ADR-0014 Layer 1/4). Versioning is always on; the lock is enabled for production via
 # var.enable_object_lock (it can only be set at bucket creation).
+# No tags: Hetzner Object Storage does not implement bucket tagging (PutBucketTagging returns 501).
+# The bucket is identified by name and is critical to the policy gate by resource type.
 resource "aws_s3_bucket" "database_backup" {
   bucket              = var.database_backup_bucket_name
   object_lock_enabled = var.enable_object_lock
-  tags                = local.critical_labels
 
   lifecycle {
     prevent_destroy = true
@@ -37,7 +38,6 @@ resource "aws_s3_bucket_object_lock_configuration" "database_backup" {
 resource "aws_s3_bucket" "media_master_backup" {
   bucket              = var.media_master_backup_bucket_name
   object_lock_enabled = var.enable_object_lock
-  tags                = local.critical_labels
 
   lifecycle {
     prevent_destroy = true

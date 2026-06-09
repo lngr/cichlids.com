@@ -62,7 +62,7 @@ jobs:
           python3 tools/check-git-hooks.py
 
   infra-validate:
-    name: OpenTofu foundation validates
+    name: OpenTofu tiers validate
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -70,16 +70,16 @@ jobs:
         run: bash tools/install-toolchain.sh
       - name: Check formatting
         run: tofu fmt -check -recursive infra
-      - name: Validate foundation tier
+      - name: Validate platform tier
         run: |
-          tofu -chdir=infra/foundation init -backend=false
-          tofu -chdir=infra/foundation validate
+          tofu -chdir=infra/platform init -backend=false
+          tofu -chdir=infra/platform validate
       - name: Validate backup tier
         run: |
           tofu -chdir=infra/backup init -backend=false
           tofu -chdir=infra/backup validate
-      - name: Foundation guardrails (ADR-0014 Layer 1)
-        run: python3 infra/foundation/guardrails_test.py
+      - name: Platform guardrails (ADR-0014 Layer 1)
+        run: python3 infra/platform/guardrails_test.py
       - name: Backup guardrails (ADR-0014 Layer 1)
         run: python3 infra/backup/guardrails_test.py
       - name: Project separation (ADR-0017)
@@ -90,6 +90,8 @@ jobs:
         run: |
           python3 tools/check-remote-state-backend.py --self-test
           python3 tools/check-remote-state-backend.py
+      - name: Destroy-gate policy unit tests (ADR-0014 Layer 3)
+        run: conftest verify -p policy/destroy_gate.rego -p policy/destroy_gate_test.rego
 
   # Further required jobs land with the application code and complete the green gate
   # from ADR-0003 / ADR-0005. Each verifies its own toolchain scope

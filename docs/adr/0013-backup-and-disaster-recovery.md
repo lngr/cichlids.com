@@ -84,6 +84,14 @@ The following principles hold:
   - *Pro:* least effort to switch on.
   - *Con:* ties recovery to one provider (the very ban risk we guard against), often untested
     by us, and without an off-provider copy.
+- **Provider VM backups (Hetzner Cloud server backups / disk snapshots).**
+  - *Pro:* one click, daily, low effort.
+  - *Con:* they snapshot the VM disk image (crash-consistent, daily), not the database, so no
+    PITR and up to a day of loss, and they do not cover the attached database volume; they live in
+    the same project as the server, reachable and deletable by the same cloud token, so they are
+    neither isolated (against ADR-0017) nor immutable. The node is rebuildable cattle (cloud-init),
+    so its disk needs no backup. Rejected as a backup of record; the irreplaceable data is covered
+    by the object-store PITR plus the immutable off-project copy above.
 - **Periodic `pg_dump` to a cron job only.**
   - *Pro:* trivially simple.
   - *Con:* no PITR, large RPO, slow restore as data grows, and easy to fail silently — exactly

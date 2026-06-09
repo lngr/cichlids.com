@@ -1,20 +1,14 @@
-# Remote state on Hetzner Object Storage (S3-compatible), per ADR-0016. The state for this
-# stateful tier is the only management handle to the protected resources, so it must be
-# durable, lockable, and recoverable rather than a local file.
-#
-# The state bucket is dedicated and created out-of-band by the operator before `tofu init`;
-# it is deliberately NOT one of the buckets this tier manages (media-master/backup), to avoid
-# a chicken-and-egg dependency. It has versioning on and Object Lock OFF: an Object-Lock
-# retention would make the lock object undeletable and cause stuck locks. Locking uses the
-# backend's native S3 lock file (use_lockfile); no separate lock database is needed.
-#
-# Non-secret backend settings (bucket, endpoint, region) are fixed here for the development
-# default and can be overridden at init with `-backend-config`. Access keys are supplied from
-# the environment (AWS_ACCESS_KEY_ID / AWS_SECRET_ACCESS_KEY) at init time, never committed.
+# Remote state on Hetzner Object Storage (S3-compatible), per ADR-0016. The platform tier's state
+# lives in a dedicated bucket in the cichlids project, durable and lockable rather than a local
+# file. The bucket is created out-of-band before `tofu init` and is not one of the buckets this
+# tier manages (media-master), avoiding a chicken-and-egg dependency. Versioning on, Object Lock
+# OFF (a retention would make the lock object undeletable and cause stuck locks). Locking uses the
+# backend's native S3 lock file (use_lockfile). Access keys come from the environment
+# (AWS_ACCESS_KEY_ID / AWS_SECRET_ACCESS_KEY) at init time, never committed.
 terraform {
   backend "s3" {
-    bucket = "cichlids-tfstate"
-    key    = "foundation/terraform.tfstate"
+    bucket = "cichlids-platform-tfstate"
+    key    = "platform/terraform.tfstate"
     region = "nbg1"
 
     endpoints = {
@@ -66,4 +60,4 @@ variable "state_encryption_passphrase" {
   default     = ""
 }
 
-# Story: task-2.13
+# Story: task-2.13, task-2.22

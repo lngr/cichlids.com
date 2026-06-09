@@ -12,3 +12,7 @@ crash.*.log
 *.tfvars
 *.tfvars.json
 !*.tfvars.example
+
+# Operator credential file lives only in the home directory; never commit a filled-in copy.
+*.env
+!*.env.example

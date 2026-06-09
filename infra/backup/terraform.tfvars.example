@@ -14,6 +14,6 @@ project_name = "cichlids-backup"
 s3_endpoint = "https://nbg1.your-objectstorage.com"
 s3_region   = "nbg1"
 
-# Object Lock (Compliance) stays off in development; enable it for the production buckets at
-# go-live so the backups become immutable for their retention window.
-enable_object_lock = false
+# Object Lock (Compliance) is on: the backup buckets are immutable for their retention window.
+# It can only be set at bucket creation, so it stays on from the start.
+enable_object_lock = true

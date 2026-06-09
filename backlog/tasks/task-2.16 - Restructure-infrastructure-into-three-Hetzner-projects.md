@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - Claude
 created_date: '2026-06-08 13:14'
-updated_date: '2026-06-08 14:07'
+updated_date: '2026-06-08 14:55'
 labels:
   - infra
 milestone: m-0
@@ -199,7 +199,7 @@ distinct key per tier.
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 At least one Given-When-Then acceptance criterion is specified
-- [ ] #2 A failing test was written first, then made to pass (red-green)
-- [ ] #3 All CI test suites are fully green
+- [x] #1 At least one Given-When-Then acceptance criterion is specified
+- [x] #2 A failing test was written first, then made to pass (red-green)
+- [x] #3 All CI test suites are fully green
 <!-- DOD:END -->

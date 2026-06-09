@@ -1,16 +1,15 @@
 #!/usr/bin/env python3
 """Asserts every OpenTofu tier uses a remote state backend, never implicit local state.
 
-The stateful tier's OpenTofu state is the only management handle to the protected resources;
-losing a local state file would orphan them and undermine the destructive-change safeguards.
-This check enforces ADR-0016: each tier that has OpenTofu code must declare a remote
-`backend "s3"`, and the dedicated state bucket must not be one of the buckets the foundation
-manages (media-master/backup) — otherwise the state would live inside a resource its own state
-creates.
+A tier's OpenTofu state is the management handle to its resources; losing a local state file would
+orphan them and undermine the destructive-change safeguards. This check enforces ADR-0016: each
+tier that has OpenTofu code must declare a remote `backend "s3"`, and the dedicated state bucket
+must not be one of the buckets that tier manages (media-master, the backup buckets), otherwise the
+state would live inside a resource its own state creates.
 
 Parses the .tf sources directly (no cloud credentials, runs offline in CI). `--self-test`
 exercises the parser against fixtures so the guard cannot silently rot.
-Story: task-2.13
+Story: task-2.13, task-2.22
 """
 import glob
 import os
@@ -20,7 +19,7 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 INFRA = os.path.join(os.path.dirname(HERE), "infra")
 
-TIERS = ("foundation", "backup", "app")
+TIERS = ("platform", "backup")
 # Variable names across the tiers whose defaults are the buckets those tiers manage; the state
 # bucket must differ from each of them (it must not live inside a resource its own state
 # creates, ADR-0016). The backup buckets live in the separate backup project (ADR-0017).
@@ -86,6 +85,20 @@ def managed_bucket_names(tf_text):
     return names
 
 
+def check_trust_boundary(buckets):
+    """The CI-managed platform state and the operator-held backup state live in different buckets
+    (different projects), so a cichlids credential cannot reach the backup state (ADR-0017)."""
+    failures = []
+    platform = buckets.get("platform")
+    backup = buckets.get("backup")
+    if platform and backup and platform == backup:
+        failures.append(
+            f"platform and backup share state bucket '{platform}'; the backup state must live in "
+            f"its own bucket/project so a cichlids credential cannot reach it (ADR-0017)"
+        )
+    return failures
+
+
 def check_tier(tier, tf_text, managed):
     failures = []
     bucket = backend_bucket(tf_text)
@@ -106,9 +119,10 @@ def main(argv):
     failures = []
     present = 0
     managed = set()
-    for tier in ("foundation", "backup"):
+    for tier in ("platform", "backup"):
         managed |= managed_bucket_names(read_tf(os.path.join(INFRA, tier)))
     keys = {}
+    buckets = {}
     for tier in TIERS:
         tier_dir = os.path.join(INFRA, tier)
         if not glob.glob(os.path.join(tier_dir, "*.tf")):
@@ -119,9 +133,12 @@ def main(argv):
         key = backend_key(tf_text)
         if key:
             keys.setdefault(key, []).append(tier)
+        bucket = backend_bucket(tf_text)
+        if bucket:
+            buckets[tier] = bucket
+    failures += check_trust_boundary(buckets)
     # Each tier keeps its own state object: a shared key would let one tier's apply overwrite
-    # another's state. Distinct keys in the one dedicated bucket are how the tiers stay separate
-    # (ADR-0016, ADR-0017).
+    # another's state, so the tiers use distinct keys (ADR-0016, ADR-0017).
     for key, tiers in keys.items():
         if len(tiers) > 1:
             failures.append(f"state key '{key}' is shared by tiers {', '.join(tiers)} (each tier needs a distinct key)")
@@ -165,6 +182,20 @@ def self_test():
         errors.append("backend_key did not extract the state key")
     if backend_key(good) != "":
         errors.append("backend_key should return '' when the backend has no key")
+    # The trust boundary: the CI-managed platform state and the operator-held backup state live in
+    # different buckets, so a cichlids credential cannot reach the backup state (ADR-0017).
+    boundary_cases = [
+        ("separate buckets",
+         {"platform": "cichlids-platform-tfstate", "backup": "cichlids-backup-tfstate"}, 0),
+        ("shared bucket",
+         {"platform": "cichlids-tfstate", "backup": "cichlids-tfstate"}, 1),
+        ("backup not built yet",
+         {"platform": "cichlids-platform-tfstate"}, 0),
+    ]
+    for label, bucket_map, want in boundary_cases:
+        got = len(check_trust_boundary(bucket_map))
+        if (got > 0) != (want > 0):
+            errors.append(f"trust-boundary/{label}: expected {'failure' if want else 'pass'}, got {got}")
     if errors:
         print("remote-state-backend self-test FAILED:", file=sys.stderr)
         for e in errors:

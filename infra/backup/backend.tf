@@ -1,16 +1,13 @@
-# Remote state on Hetzner Object Storage (S3-compatible), per ADR-0016. The backup tier keeps
-# its own state under a distinct key in the same dedicated, out-of-band state bucket, so it can
-# be planned and applied independently of the foundation tier without ever sharing a state file.
-#
-# The backend credentials (the state bucket's S3 keys, supplied as AWS_ACCESS_KEY_ID /
-# AWS_SECRET_ACCESS_KEY at init) are independent of this tier's provider credentials (the backup
-# project's object-storage keys): the backend talks to the state project, the provider talks to
-# the backup project. The state bucket has versioning on and Object Lock OFF (a retention would
-# make the lock object undeletable and cause stuck locks); locking uses the backend's native S3
-# lock file (use_lockfile).
+# Remote state on Hetzner Object Storage (S3-compatible), per ADR-0016. The backup tier's state
+# lives in its own out-of-band bucket in the backup project, so the operator-held backup setup
+# stays isolated from the CI-managed cichlids state. The state bucket is created by hand and is
+# not one of the buckets this tier manages (the two backup buckets), avoiding a chicken-and-egg
+# dependency. Both the backend and the provider use the backup project's object-storage key
+# (AWS_ACCESS_KEY_ID / AWS_SECRET_ACCESS_KEY at init). Versioning on, Object Lock OFF (a retention
+# would make the lock object undeletable); locking uses the backend's native S3 lock file.
 terraform {
   backend "s3" {
-    bucket = "cichlids-tfstate"
+    bucket = "cichlids-backup-tfstate"
     key    = "backup/terraform.tfstate"
     region = "nbg1"
 
