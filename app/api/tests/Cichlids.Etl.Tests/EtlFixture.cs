@@ -1,5 +1,11 @@
+using Amazon.Runtime;
+using Amazon.S3;
 using Cichlids.Infrastructure.Persistence;
+using Cichlids.Infrastructure.Storage;
+using DotNet.Testcontainers.Builders;
+using DotNet.Testcontainers.Containers;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using MySqlConnector;
 using Testcontainers.MySql;
 using Testcontainers.PostgreSql;
@@ -60,6 +66,20 @@ public sealed class EtlFixture : IAsyncLifetime
         .WithPassword("cichlids")
         .Build();
 
+    // Same image and credentials as the local stack (app/stack/compose.yaml), so
+    // ForumMigrationStepTests exercises the real S3-compatible upload path, not a mock.
+    private const string ObjectStoreAccessKey = "cichlids";
+    private const string ObjectStoreSecretKey = "cichlids-dev-secret";
+    private const string ObjectStoreBucket = "cichlids-media-test";
+    private const int RustfsPort = 9000;
+
+    private readonly IContainer _rustfs = new ContainerBuilder("rustfs/rustfs:1.0.0-beta.8")
+        .WithEnvironment("RUSTFS_ACCESS_KEY", ObjectStoreAccessKey)
+        .WithEnvironment("RUSTFS_SECRET_KEY", ObjectStoreSecretKey)
+        .WithPortBinding(RustfsPort, true)
+        .WithWaitStrategy(Wait.ForUnixContainer().UntilExternalTcpPortIsAvailable(RustfsPort))
+        .Build();
+
     // MySqlConnector defaults to SslMode=Preferred, but the mysql:5.7 test container's
     // self-signed certificate setup is not consistently ready by the time the fixture connects.
     // The legacy data never crosses a network boundary worth encrypting in the first place.
@@ -67,19 +87,50 @@ public sealed class EtlFixture : IAsyncLifetime
 
     public string TargetConnectionString => _target.GetConnectionString();
 
+    /// <summary>
+    /// The object store ForumMigrationStep exports attachments into, backed by the rustfs
+    /// container started for this fixture.
+    /// </summary>
+    public IObjectStore ObjectStore { get; private set; } = null!;
+
     public async Task InitializeAsync()
     {
-        await Task.WhenAll(_legacy.StartAsync(), _target.StartAsync());
+        await Task.WhenAll(_legacy.StartAsync(), _target.StartAsync(), _rustfs.StartAsync());
         await SeedLegacyAsync();
 
         await using var db = CreateTargetContext();
         await db.Database.MigrateAsync();
+
+        ObjectStore = await CreateObjectStoreAsync();
     }
 
     public async Task DisposeAsync()
     {
         await _legacy.DisposeAsync();
         await _target.DisposeAsync();
+        await _rustfs.DisposeAsync();
+    }
+
+    private async Task<IObjectStore> CreateObjectStoreAsync()
+    {
+        var options = new S3ObjectStoreOptions
+        {
+            ServiceUrl = $"http://{_rustfs.Hostname}:{_rustfs.GetMappedPublicPort(RustfsPort)}",
+            Region = "us-east-1",
+            Bucket = ObjectStoreBucket,
+            AccessKey = ObjectStoreAccessKey,
+            SecretKey = ObjectStoreSecretKey,
+            ForcePathStyle = true,
+            PublicBaseUrl = $"http://{_rustfs.Hostname}:{_rustfs.GetMappedPublicPort(RustfsPort)}/{ObjectStoreBucket}",
+        };
+
+        var client = new AmazonS3Client(
+            new BasicAWSCredentials(options.AccessKey, options.SecretKey),
+            new AmazonS3Config { ServiceURL = options.ServiceUrl, ForcePathStyle = options.ForcePathStyle, AuthenticationRegion = options.Region });
+
+        var store = new S3ObjectStore(client, Options.Create(options));
+        await store.EnsureBucketAsync();
+        return store;
     }
 
     /// <summary>

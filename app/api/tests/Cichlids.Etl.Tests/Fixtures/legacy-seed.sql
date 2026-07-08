@@ -296,3 +296,46 @@ INSERT INTO user_cichlids_gallery_pictures_mm (uid_gallery, uid_picture, sorting
     (6002, 9999, 1),
     (6003, 9998, 0),
     (6005, 4501, 0);
+
+-- Forum step fixtures (ForumMigrationStepTests): phorum ids (message/user/file) are their own
+-- range in the separate cichlids_phorum5 database, disjoint from every TYPO3-side range above.
+-- ForumMigrationStepTests seeds the matching profile/profile_identity rows for the e-mail-match
+-- case directly in Postgres, the same way the other steps' tests seed their own prerequisites.
+INSERT INTO cichlids_phorum5.phorum_users (user_id, email, display_name) VALUES
+    -- 901: matched by e-mail against a migrated profile's identity.
+    (901, 'alice.forum@example.com', 'Alice Forum'),
+    -- 902: registered, but no migrated profile carries this e-mail -- placeholder path, with a
+    -- Phorum display name to carry over.
+    (902, 'unmatched@example.com', 'Bob NoMatch');
+    -- 903 deliberately has no phorum_users row at all: placeholder path with no display name to
+    -- fall back from, exercising the "Former member" default.
+
+INSERT INTO cichlids_phorum5.phorum_messages
+    (message_id, forum_id, thread, parent_id, author, subject, body, user_id, datestamp, status)
+VALUES
+    -- Thread A (forum 1 = cichlids): root by 901 (e-mail match).
+    (90001, 1, 90001, 0, '', 'Root Subject A', 'Root post body with umlaut: Größe.', 901, 1700000100, 2),
+    -- Guest reply: no profile, poster_name carries the author field.
+    (90002, 1, 90001, 90001, 'GuestPoster', '', 'Guest reply body.', 0, 1700000200, 2),
+    -- Reply by 902 (placeholder, Phorum display name carried over). Earlier datestamp than 90002
+    -- despite the higher parent ordering, so sort must follow datestamp, not message_id.
+    (90003, 1, 90001, 90001, '', '', 'Placeholder reply body.', 902, 1700000150, 2),
+    -- Hidden (status -3): must not migrate as a post and must not count toward the thread.
+    (90004, 1, 90001, 90001, '', '', 'Hidden reply, must not migrate.', 901, 1700000300, -3),
+    -- Reply by 903 (no phorum_users row at all): placeholder path, "Former member" fallback.
+    (90005, 1, 90001, 90001, '', '', 'Reply from an unknown phorum user.', 903, 1700000250, 2),
+    -- Same datestamp as 90005: sort must tie-break on message_id (90005 before 90006).
+    (90006, 1, 90001, 90001, 'TieBreakGuest', '', 'Tie break body.', 0, 1700000250, 2),
+    -- Thread B (forum 2 = african): root with an attachment.
+    (90010, 2, 90010, 0, '', 'Attachment Thread', 'Post with an attachment.', 901, 1700001000, 2),
+    -- Reply whose thread column (90099) has no surviving root anywhere in this fixture.
+    (90020, 1, 90099, 90015, 'OrphanGuest', '', 'Orphan reply, thread root missing.', 0, 1700002000, 2);
+
+INSERT INTO cichlids_phorum5.phorum_files (file_id, filename, file_data, message_id, link) VALUES
+    -- Attached to 90010 (migrated): decodes to 61 bytes, sha256
+    -- c93a6c62ca94d9a9f209f9c99325e015d21443372252f343b7c8a759a00dafe8. The step never parses
+    -- image content, so a small arbitrary byte string exercises the decode/hash/upload path just
+    -- as well as a real JPEG would.
+    (9001, 'attach.jpg', 'RkFLRS1KUEVHLUJZVEVTLUZPUi1GT1JVTS1FVEwtQVRUQUNITUVOVC1URVNULTAwMDEtMDEyMzQ1Njc4OQ==', 90010, 'message'),
+    -- Attached to 90004 (hidden, never migrated): must be skipped before it is even decoded.
+    (9002, 'ignored.jpg', 'aWdub3JlZA==', 90004, 'message');

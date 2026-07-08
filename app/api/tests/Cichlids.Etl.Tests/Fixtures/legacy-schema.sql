@@ -203,3 +203,39 @@ CREATE TABLE user_cichlids_gallery_pictures_mm (
     uid_picture INT NOT NULL,
     sorting INT NOT NULL DEFAULT 0
 );
+
+-- The forum lives in its own legacy database (cichlids_phorum5) on the same MySQL server as the
+-- TYPO3 tables above, so ForumMigrationStep reaches it through fully qualified table names on the
+-- same connection. The fixture mirrors that with a second database in this same container.
+CREATE DATABASE IF NOT EXISTS cichlids_phorum5 CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+
+DROP TABLE IF EXISTS cichlids_phorum5.phorum_messages;
+DROP TABLE IF EXISTS cichlids_phorum5.phorum_users;
+DROP TABLE IF EXISTS cichlids_phorum5.phorum_files;
+
+CREATE TABLE cichlids_phorum5.phorum_messages (
+    message_id INT PRIMARY KEY,
+    forum_id INT NOT NULL DEFAULT 0,
+    thread INT NOT NULL DEFAULT 0,
+    parent_id INT NOT NULL DEFAULT 0,
+    author VARCHAR(255) NOT NULL DEFAULT '',
+    subject VARCHAR(255) NOT NULL DEFAULT '',
+    body TEXT NOT NULL,
+    user_id INT NOT NULL DEFAULT 0,
+    datestamp INT NOT NULL DEFAULT 0,
+    status TINYINT NOT NULL DEFAULT 2
+) CHARACTER SET latin1;
+
+CREATE TABLE cichlids_phorum5.phorum_users (
+    user_id INT PRIMARY KEY,
+    email VARCHAR(100) NOT NULL DEFAULT '',
+    display_name VARCHAR(255) NOT NULL DEFAULT ''
+) CHARACTER SET latin1;
+
+CREATE TABLE cichlids_phorum5.phorum_files (
+    file_id INT PRIMARY KEY,
+    filename VARCHAR(255) NOT NULL DEFAULT '',
+    file_data MEDIUMTEXT NOT NULL,
+    message_id INT NOT NULL DEFAULT 0,
+    link VARCHAR(10) NOT NULL DEFAULT ''
+) CHARACTER SET latin1;

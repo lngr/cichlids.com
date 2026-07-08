@@ -64,6 +64,13 @@ public sealed class StorageKeyNormalizerTests
     }
 
     [Fact]
+    public void NormalizeFilenameAppliesTheSameFoldingWithoutAnOriginalsPrefix()
+    {
+        Assert.Equal("gro_e.jpg", StorageKeyNormalizer.NormalizeFilename("größe.jpg"));
+        Assert.Equal("01_Frontosa_Web.jpg", StorageKeyNormalizer.NormalizeFilename("01_Frontosa%20Web.jpg"));
+    }
+
+    [Fact]
     public void RoutesAPathWithNoDirectoryUnderTheUnresolvedBucket()
     {
         Assert.Equal(
