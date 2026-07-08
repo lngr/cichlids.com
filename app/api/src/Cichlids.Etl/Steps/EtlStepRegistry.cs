@@ -15,6 +15,7 @@ public static class EtlStepRegistry
             new TankMigrationStep(),
             new PictureMigrationStep(),
             new CommentMigrationStep(),
+            new GalleryMigrationStep(),
         }.OrderBy(step => step.Order),
     ];
 
