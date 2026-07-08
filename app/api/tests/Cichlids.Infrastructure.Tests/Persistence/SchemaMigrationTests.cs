@@ -15,6 +15,7 @@ public sealed class SchemaMigrationTests
         "collection", "collection_entry",
         "follow", "slug_alias",
         "outbox_event", "webhook_subscription",
+        "discussion_thread", "discussion_post", "discussion_post_media",
     ];
 
     // legacy_id carries a unique index on every migrated aggregate; this checks a sample that
@@ -22,6 +23,7 @@ public sealed class SchemaMigrationTests
     private static readonly string[] TablesWithUniqueLegacyIdIndex =
     [
         "profile", "post", "comment", "media_item", "tank", "species", "collection",
+        "discussion_thread", "discussion_post",
     ];
 
     private readonly PostgresFixture _fixture;

@@ -125,4 +125,80 @@ public sealed class RoundtripTests
         Assert.Equal((short)5, readRating.Stars);
         Assert.Equal(profileId, readRating.ProfileId);
     }
+
+    [Fact]
+    public async Task Discussion_thread_post_and_post_media_roundtrip_through_the_db_context()
+    {
+        var username = $"roundtrip-forum-{Guid.NewGuid():N}";
+        long threadId;
+        long postId;
+        long mediaItemId;
+
+        await using (var writeContext = _fixture.CreateContext())
+        {
+            var profile = new Profile
+            {
+                Username = username,
+                DisplayName = "Roundtrip Forum Tester",
+                Kind = ProfileKind.Member,
+                CreatedAt = DateTimeOffset.UtcNow,
+            };
+            writeContext.Profiles.Add(profile);
+            await writeContext.SaveChangesAsync();
+
+            var mediaItem = new MediaItem
+            {
+                OwnerProfileId = profile.Id,
+                Kind = MediaKind.Photo,
+                StorageKey = $"forum_attachments/{Guid.NewGuid():N}.jpg",
+                CreatedAt = DateTimeOffset.UtcNow,
+            };
+            writeContext.MediaItems.Add(mediaItem);
+            await writeContext.SaveChangesAsync();
+
+            var thread = new DiscussionThread
+            {
+                Category = DiscussionCategory.African,
+                Title = "Roundtrip Thread",
+                State = DiscussionThreadState.Archived,
+                CreatedAt = DateTimeOffset.UtcNow,
+            };
+            writeContext.DiscussionThreads.Add(thread);
+            await writeContext.SaveChangesAsync();
+
+            var post = new DiscussionPost
+            {
+                ThreadId = thread.Id,
+                AuthorProfileId = profile.Id,
+                Body = "Roundtrip post body",
+                CreatedAt = DateTimeOffset.UtcNow,
+            };
+            writeContext.DiscussionPosts.Add(post);
+            await writeContext.SaveChangesAsync();
+
+            writeContext.DiscussionPostMedia.Add(new DiscussionPostMedia
+            {
+                DiscussionPostId = post.Id,
+                MediaItemId = mediaItem.Id,
+            });
+            await writeContext.SaveChangesAsync();
+
+            threadId = thread.Id;
+            postId = post.Id;
+            mediaItemId = mediaItem.Id;
+        }
+
+        await using var readContext = _fixture.CreateContext();
+
+        var readThread = await readContext.DiscussionThreads.SingleAsync(x => x.Id == threadId);
+        Assert.Equal(DiscussionCategory.African, readThread.Category);
+        Assert.Equal(DiscussionThreadState.Archived, readThread.State);
+
+        var readPost = await readContext.DiscussionPosts.SingleAsync(x => x.Id == postId);
+        Assert.Equal(threadId, readPost.ThreadId);
+        Assert.Equal("Roundtrip post body", readPost.Body);
+
+        var readMedia = await readContext.DiscussionPostMedia.SingleAsync(x => x.DiscussionPostId == postId);
+        Assert.Equal(mediaItemId, readMedia.MediaItemId);
+    }
 }

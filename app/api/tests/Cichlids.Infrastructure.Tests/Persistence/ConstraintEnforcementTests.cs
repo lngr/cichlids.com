@@ -1,5 +1,6 @@
 using Cichlids.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Npgsql;
 
 namespace Cichlids.Infrastructure.Tests.Persistence;
 
@@ -89,5 +90,24 @@ public sealed class ConstraintEnforcementTests
         });
 
         await Assert.ThrowsAsync<DbUpdateException>(() => context.SaveChangesAsync());
+    }
+
+    // The enum converter never produces a value outside the check constraint's allowed set
+    // through normal EF Core usage, so this goes around it with a raw insert to prove the
+    // database itself, not just the application, rejects an invalid discussion category.
+    [Fact]
+    public async Task Discussion_thread_with_an_invalid_category_is_rejected_by_the_database()
+    {
+        await using var connection = new NpgsqlConnection(_fixture.ConnectionString);
+        await connection.OpenAsync();
+
+        await using var command = new NpgsqlCommand(
+            """
+            INSERT INTO discussion_thread (category, title, state, created_at, post_count)
+            VALUES ('not_a_category', 'Invalid category thread', 'archived', now(), 0)
+            """,
+            connection);
+
+        await Assert.ThrowsAsync<PostgresException>(() => command.ExecuteNonQueryAsync());
     }
 }

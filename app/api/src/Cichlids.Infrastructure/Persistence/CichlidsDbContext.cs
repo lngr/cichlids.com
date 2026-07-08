@@ -35,6 +35,9 @@ public class CichlidsDbContext : DbContext
     public DbSet<CollectionEntry> CollectionEntries => Set<CollectionEntry>();
     public DbSet<Follow> Follows => Set<Follow>();
     public DbSet<SlugAlias> SlugAliases => Set<SlugAlias>();
+    public DbSet<DiscussionThread> DiscussionThreads => Set<DiscussionThread>();
+    public DbSet<DiscussionPost> DiscussionPosts => Set<DiscussionPost>();
+    public DbSet<DiscussionPostMedia> DiscussionPostMedia => Set<DiscussionPostMedia>();
     public DbSet<OutboxEvent> OutboxEvents => Set<OutboxEvent>();
     public DbSet<WebhookSubscription> WebhookSubscriptions => Set<WebhookSubscription>();
 
