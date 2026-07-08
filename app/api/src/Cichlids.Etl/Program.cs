@@ -1,8 +1,12 @@
+using Amazon.Runtime;
+using Amazon.S3;
 using Cichlids.Etl.Runtime;
 using Cichlids.Etl.Steps;
 using Cichlids.Infrastructure.Persistence;
+using Cichlids.Infrastructure.Storage;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 
 if (args.Length == 0)
 {
@@ -66,7 +70,10 @@ else
     steps = [step];
 }
 
-await using var context = await EtlContext.CreateAsync(legacyConnectionString, targetConnectionString, dryRun, cts.Token);
+var objectStore = await CreateObjectStoreAsync(configuration, cts.Token);
+
+await using var context = await EtlContext.CreateAsync(
+    legacyConnectionString, targetConnectionString, dryRun, cts.Token, objectStore);
 
 foreach (var step in steps)
 {
@@ -76,3 +83,40 @@ foreach (var step in steps)
 
 ConsoleReport.Print(context.Statistics, dryRun);
 return 0;
+
+// Builds the object store steps use to export legacy binary content (for example forum
+// attachments), and ensures its bucket exists. Only steps that actually need it (checked through
+// EtlContext.ObjectStore being null) fail when the "ObjectStorage" section is absent, so unrelated
+// steps and older configuration keep working without it.
+static async Task<IObjectStore?> CreateObjectStoreAsync(IConfiguration configuration, CancellationToken cancellationToken)
+{
+    var section = configuration.GetSection(S3ObjectStoreOptions.SectionName);
+    if (!section.Exists())
+    {
+        return null;
+    }
+
+    var options = new S3ObjectStoreOptions
+    {
+        ServiceUrl = section["ServiceUrl"] ?? string.Empty,
+        Region = section["Region"] ?? string.Empty,
+        Bucket = section["Bucket"] ?? string.Empty,
+        AccessKey = section["AccessKey"] ?? string.Empty,
+        SecretKey = section["SecretKey"] ?? string.Empty,
+        ForcePathStyle = bool.TryParse(section["ForcePathStyle"], out var forcePathStyle) && forcePathStyle,
+        PublicBaseUrl = section["PublicBaseUrl"] ?? string.Empty,
+    };
+
+    var s3Config = new AmazonS3Config
+    {
+        ServiceURL = options.ServiceUrl,
+        ForcePathStyle = options.ForcePathStyle,
+        AuthenticationRegion = options.Region,
+    };
+    var credentials = new BasicAWSCredentials(options.AccessKey, options.SecretKey);
+    var client = new AmazonS3Client(credentials, s3Config);
+    var store = new S3ObjectStore(client, Options.Create(options));
+
+    await store.EnsureBucketAsync(cancellationToken);
+    return store;
+}

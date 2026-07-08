@@ -29,11 +29,19 @@ public static partial class StorageKeyNormalizer
     /// </summary>
     public static string ToStorageKey(string legacyImagePath)
     {
-        var normalized = Normalize(legacyImagePath);
+        var normalized = NormalizeFilename(legacyImagePath);
         return legacyImagePath.Contains('/')
             ? $"originals/{normalized}"
             : $"originals/user_pics/unresolved/{normalized}";
     }
+
+    /// <summary>
+    /// Applies the same percent-decoding, ASCII folding and disallowed-character substitution
+    /// <see cref="ToStorageKey"/> uses, without its "originals/" placement decision, for callers
+    /// that need a safe storage key segment under a different prefix (for example forum
+    /// attachments).
+    /// </summary>
+    public static string NormalizeFilename(string filename) => Normalize(filename);
 
     /// <summary>
     /// The basename (last path segment) of the raw, un-normalized legacy path, used as

@@ -1,4 +1,5 @@
 using Cichlids.Infrastructure.Persistence;
+using Cichlids.Infrastructure.Storage;
 using Microsoft.EntityFrameworkCore;
 using MySqlConnector;
 using Npgsql;
@@ -31,6 +32,13 @@ public sealed class EtlContext : IAsyncDisposable
     public EtlStatistics Statistics { get; } = new();
 
     /// <summary>
+    /// Object store for steps that export legacy binary content (for example forum attachments)
+    /// into object storage. Null when the current invocation has no object store configured; only
+    /// steps that need it fail if it is missing.
+    /// </summary>
+    public IObjectStore? ObjectStore { get; set; }
+
+    /// <summary>
     /// The transaction the current step's reads and writes run in, set by <see cref="EtlRunner"/>
     /// before invoking the step so steps never need to cast the ambient EF Core transaction back
     /// to the underlying ADO.NET type themselves.
@@ -41,7 +49,8 @@ public sealed class EtlContext : IAsyncDisposable
         string legacyConnectionString,
         string targetConnectionString,
         bool dryRun,
-        CancellationToken cancellationToken)
+        CancellationToken cancellationToken,
+        IObjectStore? objectStore = null)
     {
         var legacy = new MySqlConnection(legacyConnectionString);
         await legacy.OpenAsync(cancellationToken);
@@ -52,7 +61,7 @@ public sealed class EtlContext : IAsyncDisposable
         var db = new CichlidsDbContext(optionsBuilder.Options);
         await db.Database.OpenConnectionAsync(cancellationToken);
 
-        return new EtlContext(legacy, db, dryRun);
+        return new EtlContext(legacy, db, dryRun) { ObjectStore = objectStore };
     }
 
     public async ValueTask DisposeAsync()
