@@ -62,6 +62,15 @@ public sealed class SpeciesCatalogStepTests(EtlFixture fixture)
             Assert.False(await db.Species.AnyAsync(s => s.LegacyId == 5));
         }
 
+        DateTimeOffset createdAtAfterFirstRun;
+        await using (var db = fixture.CreateTargetContext())
+        {
+            createdAtAfterFirstRun = (await db.Species.SingleAsync(s => s.LegacyId == 1)).CreatedAt;
+        }
+
+        // The step computes a fresh DateTimeOffset.UtcNow for created_at on every run; the upsert
+        // must still keep the first run's value on the row instead of overwriting it.
+        await Task.Delay(TimeSpan.FromMilliseconds(50));
         var stats2 = await RunStepAsync();
 
         Assert.Equal(4, stats2.Read);
@@ -73,6 +82,9 @@ public sealed class SpeciesCatalogStepTests(EtlFixture fixture)
             Assert.Equal(4, await db.Species.CountAsync());
             Assert.Equal(1, await db.SpeciesCommonNames.CountAsync());
             Assert.Equal(2, await db.SpeciesLinks.CountAsync());
+
+            var afterSecondRun = await db.Species.SingleAsync(s => s.LegacyId == 1);
+            Assert.Equal(createdAtAfterFirstRun, afterSecondRun.CreatedAt);
         }
     }
 

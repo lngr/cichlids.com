@@ -9,6 +9,12 @@ namespace Cichlids.Etl.Persistence;
 /// </summary>
 public static class PgUpsert
 {
+    // Every migrated table records a creation moment derived from the legacy row. That moment is
+    // a property of the row's first insert, not of the ETL run that happens to touch it later, so
+    // a repeated run must never overwrite it: created_at is always part of the INSERT column list
+    // (a step supplies its computed value there) but never part of the DO UPDATE SET clause.
+    private const string CreatedAtColumn = "created_at";
+
     /// <summary>
     /// Upserts one row and reports whether it was inserted or updated via the
     /// <c>xmax = 0</c> trick (a freshly inserted row has no prior transaction id in <c>xmax</c>).
@@ -25,7 +31,9 @@ public static class PgUpsert
         var insertParams = string.Join(", ", values.Select((_, i) => $"@p{i}"));
         var updateSet = string.Join(
             ", ",
-            values.Where(v => v.Column != conflictColumn).Select(v => $"{v.Column} = EXCLUDED.{v.Column}"));
+            values
+                .Where(v => v.Column != conflictColumn && v.Column != CreatedAtColumn)
+                .Select(v => $"{v.Column} = EXCLUDED.{v.Column}"));
 
         var sql = $"""
             INSERT INTO {table} ({insertColumns})
