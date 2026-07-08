@@ -25,7 +25,7 @@ public sealed class StepStatistics
 
     public void AddRead(int count = 1) => Read += count;
 
-    public void AddInserted() => Inserted++;
+    public void AddInserted(int count = 1) => Inserted += count;
 
     public void AddUpdated() => Updated++;
 

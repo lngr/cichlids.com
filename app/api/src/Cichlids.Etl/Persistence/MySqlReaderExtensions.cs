@@ -26,4 +26,10 @@ public static class MySqlReaderExtensions
         var ordinal = reader.GetOrdinal(column);
         return reader.IsDBNull(ordinal) ? string.Empty : reader.GetString(ordinal);
     }
+
+    public static int? GetNullableInt32(this MySqlDataReader reader, string column)
+    {
+        var ordinal = reader.GetOrdinal(column);
+        return reader.IsDBNull(ordinal) ? null : reader.GetInt32(ordinal);
+    }
 }
