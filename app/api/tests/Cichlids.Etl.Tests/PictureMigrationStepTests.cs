@@ -15,15 +15,17 @@ public sealed class PictureMigrationStepTests(EtlFixture fixture)
         await RunPrerequisiteStepsAsync();
 
         var stats1 = await RunStepAsync();
+        string generatedSlug2011;
 
         // This step scans user_cichlids_pictures unconditionally (unlike TankMigrationStep, it has
         // no SQL-level deleted filter), so it also reads the two pre-existing fixture rows uid 1
         // and 2 that ProfileMigrationStepTests' own fixture relies on for its content-eligibility
         // scan: both have no pid recorded (defaults to 0), so they land in the generic
         // media-item-only, unmapped-pid path alongside this class's own uid 2007.
-        // uid 2005 is soft-deleted; the other 13 (2001-2004, 2006-2014) plus uid 1/2 are active.
-        Assert.Equal(16, stats1.Read);
-        Assert.Equal(15, stats1.Inserted);
+        // uid 2005 is soft-deleted; the other 16 (2001-2004 and 2006-2017) plus uid 1/2 are
+        // active.
+        Assert.Equal(19, stats1.Read);
+        Assert.Equal(18, stats1.Inserted);
         Assert.Equal(0, stats1.Updated);
         Assert.Equal(1, stats1.SkipReasons.GetValueOrDefault("picture_deleted"));
         Assert.Equal(2, stats1.SkipReasons.GetValueOrDefault("picture_unmapped_pid_0"));
@@ -122,6 +124,7 @@ public sealed class PictureMigrationStepTests(EtlFixture fixture)
             var alias2011 = await db.SlugAliases.SingleAsync(a => a.PostId == post2011.Id);
             Assert.NotEqual("shared-slug", alias2011.Value);
             Assert.True(alias2011.IsCanonical);
+            generatedSlug2011 = alias2011.Value;
 
             // uid 2012 has a hashid-looking alias and a normal-looking one; the normal one wins.
             var post2012 = await db.Posts.SingleAsync(p => p.LegacyId == 2012);
@@ -138,6 +141,21 @@ public sealed class PictureMigrationStepTests(EtlFixture fixture)
             Assert.Equal("originals/user_pics/dup/same.jpg", media2013.StorageKey);
             Assert.Equal("originals/user_pics/dup/same-2014.jpg", media2014.StorageKey);
 
+            // uid 2015: a percent-encoded space and an umlaut in the legacy path, proving
+            // StorageKeyNormalizer is actually wired into the step end to end (it also has its
+            // own isolated unit tests covering the normalization rules themselves).
+            var media2015 = await db.MediaItems.SingleAsync(m => m.LegacyId == 2015);
+            Assert.Equal("originals/user_pics/301/Gro_e_Gruppe.jpg", media2015.StorageKey);
+
+            // uid 2016: no directory component at all, routed under the unresolved bucket.
+            var media2016 = await db.MediaItems.SingleAsync(m => m.LegacyId == 2016);
+            Assert.Equal("originals/user_pics/unresolved/01_no_directory.jpg", media2016.StorageKey);
+
+            // uid 2017: seeded with a nonzero legacy rating, which the INSERT path carries over.
+            var post2017 = await db.Posts.SingleAsync(p => p.LegacyId == 2017);
+            Assert.Equal(2.5, post2017.RatingAverage);
+            Assert.Equal(4, post2017.RatingCount);
+
             // Tank media wiring: main image resolves, showcase carries the resolvable entry and
             // skips the dangling uid 2099, decoration carries the placeholder-owned picture.
             var media2003 = await db.MediaItems.SingleAsync(m => m.LegacyId == 2003);
@@ -152,9 +170,9 @@ public sealed class PictureMigrationStepTests(EtlFixture fixture)
 
         var stats2 = await RunStepAsync();
 
-        Assert.Equal(16, stats2.Read);
+        Assert.Equal(19, stats2.Read);
         Assert.Equal(0, stats2.Inserted);
-        Assert.Equal(15, stats2.Updated);
+        Assert.Equal(18, stats2.Updated);
         Assert.Equal(1, stats2.SkipReasons.GetValueOrDefault("picture_deleted"));
         Assert.Equal(2, stats2.SkipReasons.GetValueOrDefault("picture_unmapped_pid_0"));
         Assert.Equal(1, stats2.SkipReasons.GetValueOrDefault("picture_unmapped_pid_9999"));
@@ -164,10 +182,10 @@ public sealed class PictureMigrationStepTests(EtlFixture fixture)
 
         await using (var db = fixture.CreateTargetContext())
         {
-            Assert.Equal(13, await db.MediaItems.CountAsync(m => m.LegacyId >= 2000 && m.LegacyId < 3000));
-            Assert.Equal(9, await db.Posts.CountAsync(p => p.LegacyId >= 2000 && p.LegacyId < 3000));
-            // Every post gets exactly one post_media row (all 9 posts from this class's fixture).
-            Assert.Equal(9, await db.PostMedia.CountAsync());
+            Assert.Equal(16, await db.MediaItems.CountAsync(m => m.LegacyId >= 2000 && m.LegacyId < 3000));
+            Assert.Equal(12, await db.Posts.CountAsync(p => p.LegacyId >= 2000 && p.LegacyId < 3000));
+            // Every post gets exactly one post_media row (all 12 posts from this class's fixture).
+            Assert.Equal(12, await db.PostMedia.CountAsync());
             var tank300 = await db.Tanks.Include(t => t.Media).SingleAsync(t => t.LegacyId == 300);
             Assert.Equal(2, tank300.Media.Count);
 
@@ -178,7 +196,38 @@ public sealed class PictureMigrationStepTests(EtlFixture fixture)
 
             var post2011Second = await db.Posts.SingleAsync(p => p.LegacyId == 2011);
             var alias2011Second = await db.SlugAliases.SingleAsync(a => a.PostId == post2011Second.Id);
-            Assert.NotEqual("shared-slug", alias2011Second.Value);
+            // The generated slug must survive a re-run byte for byte: the post's own slug from
+            // the previous run counts as available for it, not as a collision to retry past.
+            Assert.Equal(generatedSlug2011, alias2011Second.Value);
+
+            // A rerun must never re-seed the rating aggregate from the legacy row either: it stays
+            // exactly what the first INSERT produced.
+            var post2017Second = await db.Posts.SingleAsync(p => p.LegacyId == 2017);
+            Assert.Equal(2.5, post2017Second.RatingAverage);
+            Assert.Equal(4, post2017Second.RatingCount);
+        }
+
+        // uid 2017's post now stands in for what CommentMigrationStep does later in the pipeline:
+        // it recomputes rating_average/rating_count from the rating table and expects them to stay
+        // exactly as it left them. Simulate that here and rerun the pictures step once more: before
+        // the PgBatchUpsert fix, this DO UPDATE clobbered both columns back to the legacy picture's
+        // own denormalized rating/rating_count on every subsequent run.
+        await fixture.RunExclusiveAsync(async () =>
+        {
+            await using var db = fixture.CreateTargetContext();
+            var post2017 = await db.Posts.SingleAsync(p => p.LegacyId == 2017);
+            post2017.RatingAverage = 1.25;
+            post2017.RatingCount = 999;
+            await db.SaveChangesAsync();
+        });
+
+        await RunStepAsync();
+
+        await using (var db = fixture.CreateTargetContext())
+        {
+            var post2017Third = await db.Posts.SingleAsync(p => p.LegacyId == 2017);
+            Assert.Equal(1.25, post2017Third.RatingAverage);
+            Assert.Equal(999, post2017Third.RatingCount);
         }
     }
 

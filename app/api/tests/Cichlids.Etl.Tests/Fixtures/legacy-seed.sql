@@ -176,7 +176,22 @@ VALUES
     (2013, 21, 2000001300, 0, 0, 0, 'Pic Thirteen', 301, 'user_pics/dup/same.jpg', NULL,
      0, 0, 0, 0),
     (2014, 21, 2000001400, 0, 0, 0, 'Pic Fourteen', 301, 'user_pics/dup/same.jpg', NULL,
-     0, 0, 0, 0);
+     0, 0, 0, 0),
+    -- uid 2015: a legacy path with a percent-encoded space and an umlaut, exercising
+    -- StorageKeyNormalizer end to end through the real step (it also has its own isolated unit
+    -- tests covering the normalization rules themselves, this proves the step actually wires
+    -- that normalization into storage_key).
+    (2015, 21, 2000001500, 0, 0, 0, 'Pic Fifteen', 301, 'user_pics/301/Gro%C3%9Fe%20Gruppe.jpg', NULL,
+     0, 0, 0, 0),
+    -- uid 2016: a legacy path with no directory component at all, routed under the unresolved
+    -- storage bucket.
+    (2016, 21, 2000001600, 0, 0, 0, 'Pic Sixteen', 301, '01_no_directory.jpg', NULL,
+     0, 0, 0, 0),
+    -- uid 2017: a plain pid-21 picture with a nonzero legacy rating, seeded once and never
+    -- touched again by this table's other rows, so a test can freely corrupt its post's
+    -- rating_average/rating_count after the first run and prove a later run leaves them alone.
+    (2017, 21, 2000001700, 0, 0, 0, 'Pic Seventeen', 301, 'user_pics/301/pic17.jpg', NULL,
+     2.5, 4, 0, 0);
 
 INSERT INTO tx_realurl_uniqalias (uid, tablename, value_alias, value_id) VALUES
     (9001, 'user_cichlids_pictures', 'pic-one', 2001),
