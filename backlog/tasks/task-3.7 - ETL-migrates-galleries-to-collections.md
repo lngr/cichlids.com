@@ -1,9 +1,10 @@
 ---
 id: TASK-3.7
 title: ETL migrates galleries to collections
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-07-08 18:58'
+updated_date: '2026-07-08 22:49'
 labels: []
 dependencies:
   - TASK-3.5

@@ -1,10 +1,10 @@
 ---
 id: TASK-3.5
 title: ETL migrates pictures to posts and media
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-07-08 18:58'
-updated_date: '2026-07-08 20:29'
+updated_date: '2026-07-08 22:49'
 labels: []
 dependencies:
   - TASK-3.3
@@ -24,6 +24,12 @@ Pictures to posts plus media items: type mapping from legacy pid, species links,
 <!-- AC:BEGIN -->
 - [ ] #1 Given migrated profiles and tanks, When the picture ETL step runs twice, Then every non-filtered legacy picture exists exactly once as a post with media item including type, species links, counters and slugs, and tank image lists are resolved into ordered attachments
 <!-- AC:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Real double run: 177944 media items (19 videos), 176555 posts (154190 published, 1776 draft, 20589 archived), 176629 slug aliases with exactly one canonical per post, tank media sections and profile image backfills done; 11627 deleted pictures skipped and counted. Set-based batching, 19 s runtime, byte-stable second run.
+<!-- SECTION:NOTES:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->

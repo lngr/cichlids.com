@@ -1,10 +1,10 @@
 ---
 id: TASK-3.4
 title: ETL migrates tanks with inhabitants
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-07-08 18:58'
-updated_date: '2026-07-08 20:29'
+updated_date: '2026-07-08 22:49'
 labels: []
 dependencies:
   - TASK-3.2
@@ -24,6 +24,12 @@ Tanks with owner, category, dimensions and texts; fish and fish_count parallel l
 <!-- AC:BEGIN -->
 - [ ] #1 Given migrated profiles and species, When the tank ETL step runs twice, Then every non-filtered legacy tank exists exactly once with owner, category, dimensions and texts, and its fish lists are resolved into inhabitant rows with species references
 <!-- AC:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Real double run: 4990 tanks, inhabitants resolved from fish/fish_count parallel lists, 21 tanks with category 0 mapped to null, 130 placeholder profiles for hard-deleted owners. Idempotent, covered by container tests.
+<!-- SECTION:NOTES:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
