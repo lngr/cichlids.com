@@ -65,4 +65,5 @@ by hand. Run that script (or its `--check` mode in CI) after adding or changing 
 | [0018](0018-environment-data-provisioning.md) | Environment Data Provisioning for Staging and Preview | Accepted |
 | [0019](0019-persistence-and-migration-tooling.md) | Persistence and Migration Tooling | Accepted |
 | [0020](0020-relational-domain-schema.md) | Relational Domain Schema | Accepted |
+| [0021](0021-community-discussion-archive.md) | Community Discussion Archive | Proposed |
 <!-- END ADR LIST -->
