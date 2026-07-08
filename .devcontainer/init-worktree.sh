@@ -13,8 +13,22 @@ WORKTREE_NAME="$(basename "$PROJECT_DIR")"
 # Sanitize: lowercase, only alphanum + hyphens
 SANITIZED_NAME="$(echo "$WORKTREE_NAME" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9-]/-/g; s/--*/-/g; s/^-//; s/-$//')"
 
-# Build unique compose project name
-COMPOSE_PROJECT_NAME="devcontainer-cichlids-${SANITIZED_NAME}"
+# Mount und Scope werden zur Scaffold-Zeit gebacken; eine Env-Var überschreibt
+# den Scope für einen einzelnen Start (gesetzt vom Launcher).
+WORKSPACE_MOUNT="${WORKSPACE_MOUNT:-parent}"
+CONTAINER_SCOPE="${CONTAINER_SCOPE:-shared}"
+
+# project-Mount bindet jedes Verzeichnis an seinen eigenen Container.
+if [ "$WORKSPACE_MOUNT" = "project" ]; then
+  CONTAINER_SCOPE="per-worktree"
+fi
+
+# Compose-Projektname aus dem effektiven Scope.
+if [ "$CONTAINER_SCOPE" = "shared" ] || [ "$SANITIZED_NAME" = "cichlids" ]; then
+  COMPOSE_PROJECT_NAME="devcontainer-cichlids"
+else
+  COMPOSE_PROJECT_NAME="devcontainer-cichlids-${SANITIZED_NAME}"
+fi
 
 # Update COMPOSE_PROJECT_NAME in .env (preserve other variables)
 ENV_FILE="$SCRIPT_DIR/.env"
@@ -24,6 +38,17 @@ else
   touch "$ENV_FILE"
 fi
 echo "COMPOSE_PROJECT_NAME=${COMPOSE_PROJECT_NAME}" >> "$ENV_FILE"
+
+# Host-Identität festhalten, damit der Container-User dem Host-User entspricht.
+for _host_var in HOST_USER HOST_UID HOST_GID HOST_HOME; do
+  sed -i "/^${_host_var}=/d" "$ENV_FILE" 2>/dev/null || true
+done
+{
+  echo "HOST_USER=$(id -un)"
+  echo "HOST_UID=$(id -u)"
+  echo "HOST_GID=$(id -g)"
+  echo "HOST_HOME=$HOME"
+} >> "$ENV_FILE"
 
 echo "Devcontainer initialized: COMPOSE_PROJECT_NAME=${COMPOSE_PROJECT_NAME}"
 

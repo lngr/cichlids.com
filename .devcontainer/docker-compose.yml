@@ -5,12 +5,17 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        HOST_USER: ${HOST_USER:-vscode}
+        HOST_UID: ${HOST_UID:-1000}
+        HOST_GID: ${HOST_GID:-1000}
+        HOST_HOME: ${HOST_HOME:-/home/vscode}
     init: true
     privileged: true
     volumes:
       - ../..:/workspaces
-      # .git mounted rw via parent volume
-      - ~/.gitconfig:/home/vscode/.gitconfig:cached
+      # .git ist Teil des Workspace-Mounts
+      - ~/.gitconfig:${HOST_HOME:-/home/vscode}/.gitconfig:cached
     command: sleep infinity
     # Publish the Backlog.md web UI to the host loopback so it is reachable at
     # http://localhost:6480 regardless of editor. devcontainer.json's forwardPorts
