@@ -10,6 +10,7 @@ public static class EtlStepRegistry
     [
         .. new IEtlStep[]
         {
+            new SpeciesCatalogStep(),
         }.OrderBy(step => step.Order),
     ];
 
