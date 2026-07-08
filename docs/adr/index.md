@@ -63,4 +63,6 @@ by hand. Run that script (or its `--check` mode in CI) after adding or changing 
 | [0016](0016-remote-opentofu-state-backend.md) | Remote OpenTofu State Backend on Hetzner Object Storage | Accepted |
 | [0017](0017-hetzner-project-separation.md) | Hetzner Project Separation for Capability-Based Blast Radius | Accepted |
 | [0018](0018-environment-data-provisioning.md) | Environment Data Provisioning for Staging and Preview | Accepted |
+| [0019](0019-persistence-and-migration-tooling.md) | Persistence and Migration Tooling | Accepted |
+| [0020](0020-relational-domain-schema.md) | Relational Domain Schema | Accepted |
 <!-- END ADR LIST -->
