@@ -1,10 +1,10 @@
 ---
 id: TASK-3.7
 title: ETL migrates galleries to collections
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-07-08 18:58'
-updated_date: '2026-07-08 22:49'
+updated_date: '2026-07-08 23:20'
 labels: []
 dependencies:
   - TASK-3.5
@@ -23,6 +23,12 @@ user_cichlids_gallery and its picture relation become collections with ordered e
 <!-- AC:BEGIN -->
 - [ ] #1 Given migrated media, When the gallery ETL step runs twice, Then each legacy gallery exists exactly once as a collection with its ordered pictures
 <!-- AC:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Real double run: 161 collections with 1001 entries (38 entries on non-migrated pictures skipped, 2 collections empty after filtering), hidden galleries mapped to non-public collections.
+<!-- SECTION:NOTES:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->

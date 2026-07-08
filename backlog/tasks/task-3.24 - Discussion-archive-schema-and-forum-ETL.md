@@ -1,9 +1,10 @@
 ---
 id: TASK-3.24
 title: Discussion archive schema and forum ETL
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-07-08 19:34'
+updated_date: '2026-07-08 23:20'
 labels: []
 dependencies:
   - TASK-3.1
