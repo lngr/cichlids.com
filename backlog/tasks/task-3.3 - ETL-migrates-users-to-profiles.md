@@ -1,9 +1,10 @@
 ---
 id: TASK-3.3
 title: ETL migrates users to profiles
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-07-08 18:58'
+updated_date: '2026-07-08 19:31'
 labels: []
 dependencies:
   - TASK-3.1

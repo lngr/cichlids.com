@@ -1,9 +1,10 @@
 ---
 id: TASK-3.2
 title: ETL migrates species catalog
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-07-08 18:58'
+updated_date: '2026-07-08 19:31'
 labels: []
 dependencies:
   - TASK-3.1

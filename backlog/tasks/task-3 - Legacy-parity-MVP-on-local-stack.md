@@ -4,7 +4,7 @@ title: Legacy parity MVP on local stack
 status: To Do
 assignee: []
 created_date: '2026-07-08 18:58'
-updated_date: '2026-07-08 19:13'
+updated_date: '2026-07-08 19:26'
 labels: []
 dependencies: []
 priority: high
@@ -50,4 +50,14 @@ Rebuild the complete legacy feature set on the new stack (ASP.NET Core 10 API, P
 - Comment votes migrate with deduplication per comment and member.
 - Tanks: non-deleted tanks migrate, including tanks without media; the legacy not_shown flag is ignored.
 - Galleries: non-deleted galleries convert to collections; hidden galleries become non-public collections.
+
+### Agreed slug and redirect strategy
+- All legacy picture aliases from tx_realurl_uniqalias migrate into slug_alias and stay resolvable; the title-based alias is canonical where present, otherwise the hashid alias; non-canonical aliases answer with a permanent redirect to the canonical URL.
+- New posts mint a generated short slug (6 to 8 characters, base36, collision checked); the legacy hashids mechanism is not continued.
+- A redirect layer serves the indexed legacy paths: /pictures/pic/<alias>.html via slug_alias, /tanks/details/<legacy-id> and /members/<legacy-uid>/... via the legacy_id bridge, /browse/species/<alias>.html via species slugs.
+- Species get a slug column filled from the legacy species aliases.
+- Image file paths under /p/ are not redirected.
+
+### Forum direction (pending detailed proposal)
+- The Phorum content (cichlids_phorum5) is a migration candidate for a community section on the new platform; forum-only authors cannot log in again and map to unlisted placeholder profiles, matched to migrated profiles by email where possible. Migrated members are meant to post in the community section.
 <!-- SECTION:NOTES:END -->
