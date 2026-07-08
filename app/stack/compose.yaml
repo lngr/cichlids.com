@@ -1,0 +1,44 @@
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: cichlids
+      POSTGRES_USER: cichlids
+      POSTGRES_PASSWORD: cichlids
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cichlids -d cichlids"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  rustfs:
+    image: rustfs/rustfs:1.0.0-beta.8
+    environment:
+      RUSTFS_ACCESS_KEY: cichlids
+      RUSTFS_SECRET_KEY: cichlids-dev-secret
+    ports:
+      - "9000:9000"
+    volumes:
+      - rustfs-data:/data
+      - rustfs-logs:/logs
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.6.4
+    command: start-dev
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: admin
+    ports:
+      - "8180:8080"
+    volumes:
+      - keycloak-data:/opt/keycloak/data
+
+volumes:
+  postgres-data:
+  rustfs-data:
+  rustfs-logs:
+  keycloak-data:
