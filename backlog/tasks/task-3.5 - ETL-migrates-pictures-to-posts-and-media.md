@@ -1,9 +1,10 @@
 ---
 id: TASK-3.5
 title: ETL migrates pictures to posts and media
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-07-08 18:58'
+updated_date: '2026-07-08 20:29'
 labels: []
 dependencies:
   - TASK-3.3

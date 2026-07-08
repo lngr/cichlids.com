@@ -1,9 +1,10 @@
 ---
 id: TASK-3.4
 title: ETL migrates tanks with inhabitants
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-07-08 18:58'
+updated_date: '2026-07-08 20:29'
 labels: []
 dependencies:
   - TASK-3.2

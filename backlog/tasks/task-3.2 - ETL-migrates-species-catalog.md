@@ -1,10 +1,10 @@
 ---
 id: TASK-3.2
 title: ETL migrates species catalog
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-07-08 18:58'
-updated_date: '2026-07-08 19:31'
+updated_date: '2026-07-08 20:29'
 labels: []
 dependencies:
   - TASK-3.1
@@ -23,6 +23,12 @@ Species, genus and name lookups, common names and care data from user_cichlids_s
 <!-- AC:BEGIN -->
 - [ ] #1 Given the restored legacy MySQL and a migrated schema, When the species ETL step runs twice, Then 829 species with genus and name data exist exactly once and source and target counts match
 <!-- AC:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Idempotent upsert on legacy_id; real double run: 829 species, 825 slugs (4 without legacy alias), enums mapped, common names and links delete-and-insert under parent. Covered by Etl.Tests against mysql:5.7 plus postgres:17 containers.
+<!-- SECTION:NOTES:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
