@@ -1,0 +1,87 @@
+using System.Text;
+using Cichlids.Infrastructure.Storage;
+
+namespace Cichlids.Infrastructure.Tests;
+
+[Trait("Category", "Docker")]
+[Collection(RustFsCollection.Name)]
+public sealed class S3ObjectStoreTests
+{
+    private readonly RustFsFixture _fixture;
+
+    public S3ObjectStoreTests(RustFsFixture fixture)
+    {
+        _fixture = fixture;
+    }
+
+    [Fact]
+    public async Task PutAsync_then_GetAsync_returns_the_same_content()
+    {
+        var store = _fixture.CreateStoreForNewBucket();
+        var content = Encoding.UTF8.GetBytes("cichlids swim in schools");
+
+        await store.PutAsync("images/original.jpg", new MemoryStream(content), "image/jpeg");
+
+        await using var result = await store.GetAsync("images/original.jpg");
+        Assert.NotNull(result);
+        using var buffer = new MemoryStream();
+        await result!.CopyToAsync(buffer);
+        Assert.Equal(content, buffer.ToArray());
+    }
+
+    [Fact]
+    public async Task GetAsync_returns_null_for_a_missing_key()
+    {
+        var store = _fixture.CreateStoreForNewBucket();
+
+        var result = await store.GetAsync("does/not/exist.jpg");
+
+        Assert.Null(result);
+    }
+
+    [Fact]
+    public async Task ExistsAsync_reflects_whether_the_key_was_put()
+    {
+        var store = _fixture.CreateStoreForNewBucket();
+
+        Assert.False(await store.ExistsAsync("images/present.jpg"));
+
+        await store.PutAsync("images/present.jpg", new MemoryStream([1, 2, 3]), "application/octet-stream");
+
+        Assert.True(await store.ExistsAsync("images/present.jpg"));
+    }
+
+    [Fact]
+    public async Task DeleteAsync_removes_the_object()
+    {
+        var store = _fixture.CreateStoreForNewBucket();
+        await store.PutAsync("images/to-delete.jpg", new MemoryStream([1, 2, 3]), "application/octet-stream");
+        Assert.True(await store.ExistsAsync("images/to-delete.jpg"));
+
+        await store.DeleteAsync("images/to-delete.jpg");
+
+        Assert.False(await store.ExistsAsync("images/to-delete.jpg"));
+    }
+
+    [Fact]
+    public async Task ListKeysAsync_returns_every_key_across_more_than_one_provider_page()
+    {
+        // A small page size forces the SDK to hand back multiple result pages for five objects,
+        // exercising the continuation-token loop without uploading thousands of objects.
+        var store = _fixture.CreateStoreForNewBucket(listPageSize: 2);
+        var expectedKeys = Enumerable.Range(1, 5).Select(i => $"gallery/photo-{i}.jpg").ToArray();
+
+        foreach (var key in expectedKeys)
+        {
+            await store.PutAsync(key, new MemoryStream([1]), "application/octet-stream");
+        }
+
+        var listedKeys = new List<string>();
+        await foreach (var key in store.ListKeysAsync("gallery/"))
+        {
+            listedKeys.Add(key);
+        }
+
+        Assert.Equal(expectedKeys.OrderBy(k => k), listedKeys.OrderBy(k => k));
+    }
+}
