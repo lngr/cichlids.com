@@ -93,7 +93,9 @@ CREATE TABLE fe_users (
     tx_dixeasylogin_openid VARCHAR(255),
     email VARCHAR(80),
     deleted TINYINT NOT NULL DEFAULT 0,
-    disable TINYINT NOT NULL DEFAULT 0
+    disable TINYINT NOT NULL DEFAULT 0,
+    user_cichlids_profile_image BIGINT,
+    user_cichlids_avatar_image BIGINT
 );
 
 CREATE TABLE fe_users_auth0 (
@@ -103,7 +105,21 @@ CREATE TABLE fe_users_auth0 (
 
 CREATE TABLE user_cichlids_pictures (
     uid INT PRIMARY KEY,
-    fe_user INT NOT NULL
+    pid INT NOT NULL DEFAULT 0,
+    tstamp BIGINT NOT NULL DEFAULT 0,
+    crdate BIGINT NOT NULL DEFAULT 0,
+    deleted TINYINT NOT NULL DEFAULT 0,
+    hidden TINYINT NOT NULL DEFAULT 0,
+    title TEXT,
+    fe_user INT NOT NULL,
+    image VARCHAR(1000),
+    description MEDIUMTEXT,
+    rating FLOAT NOT NULL DEFAULT 0,
+    rating_count INT NOT NULL DEFAULT 0,
+    views INT NOT NULL DEFAULT 0,
+    delete_tstamp BIGINT NOT NULL DEFAULT 0,
+    delete_reason VARCHAR(500),
+    delete_user INT
 );
 
 CREATE TABLE user_cichlids_tanks (
@@ -137,7 +153,11 @@ CREATE TABLE user_cichlids_tanks (
     depth INT NOT NULL DEFAULT 0,
     unit TEXT,
     fish TEXT,
-    fish_count TEXT
+    fish_count TEXT,
+    image BLOB,
+    tank_images BLOB,
+    deco_images BLOB,
+    tec_images BLOB
 );
 
 CREATE TABLE user_cichlids_comments (

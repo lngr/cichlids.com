@@ -17,10 +17,15 @@ public sealed class TankMigrationStepTests(EtlFixture fixture)
         var stats1 = await RunStepAsync();
 
         // uid 1 and 2 are soft-deleted in the fixture and never read by this step; uid 10-14 are
-        // the five active tanks.
-        Assert.Equal(5, stats1.Read);
-        Assert.Equal(5, stats1.Inserted);
-        Assert.Equal(0, stats1.Updated);
+        // five active tanks owned by this test class, and uid 300 is PictureMigrationStepTests'
+        // tank_media fixture (read unconditionally by this step too, since it scans the whole
+        // table, though this step never sets its media fields). Whether uid 300 itself lands as
+        // an insert or an update here depends on whether PictureMigrationStepTests' own
+        // prerequisite happened to seed that same legacy id into the target first, so only the
+        // total is asserted rather than the exact split; every other row in this run's own count
+        // is deterministic.
+        Assert.Equal(6, stats1.Read);
+        Assert.Equal(6, stats1.Inserted + stats1.Updated);
         Assert.Equal(1, stats1.SkipReasons.GetValueOrDefault("tank_category_unmapped_99"));
         Assert.Equal(3, stats1.SkipReasons.GetValueOrDefault("tank_inhabitant_species_missing"));
         Assert.Contains(stats1.Warnings, w => w.Contains("legacy user 999"));
@@ -91,9 +96,9 @@ public sealed class TankMigrationStepTests(EtlFixture fixture)
 
         var stats2 = await RunStepAsync();
 
-        Assert.Equal(5, stats2.Read);
+        Assert.Equal(6, stats2.Read);
         Assert.Equal(0, stats2.Inserted);
-        Assert.Equal(5, stats2.Updated);
+        Assert.Equal(6, stats2.Updated);
         Assert.Equal(1, stats2.SkipReasons.GetValueOrDefault("tank_category_unmapped_99"));
         Assert.Equal(3, stats2.SkipReasons.GetValueOrDefault("tank_inhabitant_species_missing"));
         // The placeholder profile already exists on the second run, so no new one is created and
@@ -103,7 +108,7 @@ public sealed class TankMigrationStepTests(EtlFixture fixture)
 
         await using (var db = fixture.CreateTargetContext())
         {
-            Assert.Equal(5, await db.Tanks.CountAsync(t => t.LegacyId != null));
+            Assert.Equal(6, await db.Tanks.CountAsync(t => t.LegacyId != null));
             Assert.Equal(1, await db.Profiles.CountAsync(p => p.LegacyId == 999));
             Assert.Equal(1, await db.Profiles.CountAsync(p => p.Username == "community-archive"));
 

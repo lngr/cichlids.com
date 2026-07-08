@@ -114,3 +114,88 @@ VALUES
 INSERT INTO user_cichlids_comments (uid, fe_user) VALUES
     (1, 13),
     (2, 14);
+
+-- Picture step fixtures: owner legacy ids 300/301 and tank legacy id 300 are their own range,
+-- disjoint from every id range above (species/profile 1-16, tank/profile 10-14/101/102/999).
+-- PictureMigrationStepTests seeds the matching profile/tank rows directly in Postgres, the same
+-- way TankMigrationStepTests does, instead of running the profile/tank steps.
+--
+-- uid 300 exists only to give the profile-image/avatar backfill pass a legacy fe_users row to
+-- read: its own pictures are irrelevant, only the two image reference columns matter.
+INSERT INTO fe_users
+    (uid, username, name, first_name, last_name, city, static_info_country,
+     user_cichlids_auth0_image, crdate, tstamp, lastlogin, tx_dixeasylogin_openid, email,
+     deleted, disable, user_cichlids_profile_image, user_cichlids_avatar_image)
+VALUES
+    (300, 'picturefixtureowner300', 'Picture Fixture Owner 300', 'Picture', 'Owner300', '', '',
+     NULL, 2000000000, 2000000000, 0, NULL, NULL, 0, 0, 2008, 2009);
+
+-- uid 2001: an active, published pid-21 (cichlids) picture with one legacy realurl alias.
+-- uid 2002: hidden (draft) pid-29 (tanks) picture with no alias (falls through to a generated slug).
+-- uid 2003: owned by legacy user 950, who has no migrated profile at all (placeholder path),
+--   so the owner-kind rule makes its post archived regardless of the hidden flag.
+-- uid 2004: fe_user 0 (anonymous/community archive owner), also archived regardless of hidden.
+-- uid 2005: soft-deleted, must produce neither a media_item nor a post.
+-- uid 2006: a video-extension pid-62 (tank technic) picture: media_item only, kind=video.
+-- uid 2007: an out-of-catalogue pid (9999): media_item only, counted by pid.
+-- uid 2008/2009: pid-138/139 sources for the profile-image/avatar backfill on fe_users uid 300.
+-- uid 2010/2011: two pid-21/29 pictures whose realurl aliases collide on the same value_alias
+--   text: the lower uniqalias uid (2010's) wins, 2011 ends up with none and gets a generated slug.
+-- uid 2012: one alias that looks like an auto-generated hashid plus one that reads as a normal
+--   slug: the normal one must win canonical over the hashid-looking one.
+-- uid 2013/2014: identical image path, so both normalize to the same storage key: 2014 (the
+--   higher legacy id) must be suffixed to stay unique.
+INSERT INTO user_cichlids_pictures
+    (uid, pid, tstamp, crdate, deleted, hidden, title, fe_user, image, description,
+     rating, rating_count, views, delete_tstamp)
+VALUES
+    (2001, 21, 2000000100, 2000000050, 0, 0, 'Pic One', 301, 'user_pics/301/pic1.jpg', 'Desc one',
+     4.5, 3, 10, 0),
+    (2002, 29, 2000000200, 0, 0, 1, 'Pic Two', 301, 'user_pics/301/pic2.jpg', NULL,
+     0, 0, 0, 0),
+    (2003, 21, 2000000300, 2000000250, 0, 0, 'Pic Three', 950, 'user_pics/950/pic3.jpg', NULL,
+     0, 0, 0, 0),
+    (2004, 21, 2000000400, 0, 0, 0, 'Pic Four', 0, 'user_pics/anon/pic4.jpg', NULL,
+     0, 0, 0, 0),
+    (2005, 21, 2000000500, 0, 1, 0, 'Pic Deleted', 301, 'user_pics/301/deleted.jpg', NULL,
+     0, 0, 0, 0),
+    (2006, 62, 2000000600, 2000000550, 0, 0, NULL, 301, 'user_pics/301/clip.mp4', NULL,
+     0, 0, 0, 0),
+    (2007, 9999, 2000000700, 0, 0, 0, NULL, 301, 'user_pics/301/pic7.jpg', NULL,
+     0, 0, 0, 0),
+    (2008, 138, 2000000800, 0, 0, 0, NULL, 301, 'user_pics/301/profileimg.jpg', NULL,
+     0, 0, 0, 0),
+    (2009, 139, 2000000900, 0, 0, 0, NULL, 301, 'user_pics/301/avatar.jpg', NULL,
+     0, 0, 0, 0),
+    (2010, 21, 2000001000, 2000000950, 0, 0, 'Pic Ten', 301, 'user_pics/301/pic10.jpg', NULL,
+     0, 0, 0, 0),
+    (2011, 29, 2000001100, 0, 0, 0, 'Pic Eleven', 301, 'user_pics/301/pic11.jpg', NULL,
+     0, 0, 0, 0),
+    (2012, 21, 2000001200, 0, 0, 0, 'Pic Twelve', 301, 'user_pics/301/pic12.jpg', NULL,
+     0, 0, 0, 0),
+    (2013, 21, 2000001300, 0, 0, 0, 'Pic Thirteen', 301, 'user_pics/dup/same.jpg', NULL,
+     0, 0, 0, 0),
+    (2014, 21, 2000001400, 0, 0, 0, 'Pic Fourteen', 301, 'user_pics/dup/same.jpg', NULL,
+     0, 0, 0, 0);
+
+INSERT INTO tx_realurl_uniqalias (uid, tablename, value_alias, value_id) VALUES
+    (9001, 'user_cichlids_pictures', 'pic-one', 2001),
+    (9010, 'user_cichlids_pictures', 'shared-slug', 2010),
+    (9011, 'user_cichlids_pictures', 'shared-slug', 2011),
+    (9012, 'user_cichlids_pictures', 'ab12z', 2012),
+    (9013, 'user_cichlids_pictures', 'nice-slug-name', 2012);
+
+-- uid 300: references pictures 2001 (main image), 2006 and a nonexistent uid 2099 (tank_images),
+-- and 2003 (deco_images), to exercise tank.main_media_id plus all three tank_media sections
+-- including a dangling reference that must be counted, not crash the run. This row is also read
+-- by TankMigrationStep (it scans the whole table unconditionally), so its owner is legacy user
+-- 390, a dedicated id used nowhere else in this file: reusing 301 here would race
+-- TankMigrationStep's own owner resolution against the profile this file seeds directly for 301,
+-- and which of the two ran first would decide whether that profile ends up Member or a
+-- TankMigrationStep-created Archived placeholder.
+INSERT INTO user_cichlids_tanks
+    (uid, fe_user, deleted, hidden, category, title, width, height, depth, unit,
+     crdate, tstamp, fish, fish_count, image, tank_images, deco_images, tec_images)
+VALUES
+    (300, 390, 0, 0, 1, 'Picture Fixture Tank', 100, 40, 40, 'centimeters',
+     2000000000, 2000000000, '', '', '2001', ',2006,2099', ',2003', '');
