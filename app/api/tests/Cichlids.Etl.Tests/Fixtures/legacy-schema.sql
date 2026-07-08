@@ -15,6 +15,9 @@ DROP TABLE IF EXISTS fe_users_auth0;
 DROP TABLE IF EXISTS user_cichlids_pictures;
 DROP TABLE IF EXISTS user_cichlids_tanks;
 DROP TABLE IF EXISTS user_cichlids_comments;
+DROP TABLE IF EXISTS user_cichlids_comments_rated;
+DROP TABLE IF EXISTS user_cichlids_gallery;
+DROP TABLE IF EXISTS user_cichlids_gallery_pictures_mm;
 
 CREATE TABLE user_cichlids_genus_names (
     uid INT PRIMARY KEY,
@@ -162,5 +165,41 @@ CREATE TABLE user_cichlids_tanks (
 
 CREATE TABLE user_cichlids_comments (
     uid INT PRIMARY KEY,
+    type INT NOT NULL DEFAULT 0,
+    item INT NOT NULL DEFAULT 0,
+    rating INT NOT NULL DEFAULT 0,
+    poster TEXT,
+    note TEXT,
+    fe_user INT NOT NULL,
+    tstamp BIGINT NOT NULL DEFAULT 0,
+    crdate BIGINT NOT NULL DEFAULT 0,
+    deleted TINYINT NOT NULL DEFAULT 0,
+    hidden TINYINT NOT NULL DEFAULT 0,
+    delete_tstamp BIGINT NOT NULL DEFAULT 0,
+    delete_reason VARCHAR(500),
+    delete_user INT,
+    score INT NOT NULL DEFAULT 0
+);
+
+CREATE TABLE user_cichlids_comments_rated (
+    comment_uid INT NOT NULL,
+    fe_user INT NOT NULL,
+    rated INT NOT NULL,
+    tstamp DATETIME NOT NULL
+);
+
+CREATE TABLE user_cichlids_gallery (
+    uid INT PRIMARY KEY,
+    tstamp BIGINT NOT NULL DEFAULT 0,
+    crdate BIGINT NOT NULL DEFAULT 0,
+    deleted TINYINT NOT NULL DEFAULT 0,
+    hidden TINYINT NOT NULL DEFAULT 0,
+    title TEXT,
     fe_user INT NOT NULL
+);
+
+CREATE TABLE user_cichlids_gallery_pictures_mm (
+    uid_gallery INT NOT NULL,
+    uid_picture INT NOT NULL,
+    sorting INT NOT NULL DEFAULT 0
 );

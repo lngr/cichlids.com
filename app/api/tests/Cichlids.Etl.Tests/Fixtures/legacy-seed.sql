@@ -214,3 +214,85 @@ INSERT INTO user_cichlids_tanks
 VALUES
     (300, 390, 0, 0, 1, 'Picture Fixture Tank', 100, 40, 40, 'centimeters',
      2000000000, 2000000000, '', '', '2001', ',2006,2099', ',2003', '');
+
+-- Comment/rating/vote step fixtures (CommentMigrationStepTests): owner legacy ids 400-402 and
+-- target legacy id 4001 (post)/4101 (tank) are their own range, disjoint from every id range
+-- above. CommentMigrationStepTests seeds the matching profile/post/tank rows directly in
+-- Postgres, the same way PictureMigrationStepTests does, instead of running the earlier steps.
+--
+-- The "target_deleted" vault rows below deliberately target picture uid 2005 and tank uid 1, both
+-- already seeded above as soft-deleted rows nothing ever turns into a post/tank: reusing them
+-- keeps this fixture from adding its own row to user_cichlids_pictures/user_cichlids_tanks, which
+-- PictureMigrationStep/TankMigrationStep scan unconditionally (or on deleted = 0) and would
+-- otherwise count as their own extra row, the same way this file's uid 1/2 already do for them.
+INSERT INTO user_cichlids_comments
+    (uid, type, item, rating, poster, note, fe_user, tstamp, crdate, deleted, hidden,
+     delete_tstamp, delete_reason, delete_user, score)
+VALUES
+    -- uid 5001: text plus a star rating, split into both a comment and a rating row.
+    (5001, 1, 4001, 4, NULL, 'Great tank!', 400, 1700000000, 0, 0, 0, 0, NULL, NULL, 7),
+    -- uid 5002: no text, only a rating -- a rating-only row.
+    (5002, 1, 4001, 5, NULL, NULL, 400, 1700000010, 0, 0, 0, 0, NULL, NULL, 0),
+    -- uid 5003: neither text nor rating -- content-empty, skipped entirely.
+    (5003, 1, 4001, 0, NULL, NULL, 400, 1700000020, 0, 0, 0, 0, NULL, NULL, 0),
+    -- uid 5004: targets picture 2005 (PictureMigrationStepTests' soft-deleted fixture row), which
+    -- exists in the legacy source but was never migrated to a post -- vaulted with reason
+    -- target_deleted, full content preserved in the payload.
+    (5004, 1, 2005, 3, NULL, 'orphan comment', 400, 1700000030, 0, 0, 0, 0, NULL, NULL, 0),
+    -- uid 5005: targets picture 4900, which does not exist in the legacy source at all -- vaulted
+    -- with reason target_missing.
+    (5005, 1, 4900, 0, NULL, 'ghost', 400, 1700000040, 0, 0, 0, 0, NULL, NULL, 0),
+    -- uid 5006: an unrecognized type code -- vaulted with reason unknown_type.
+    (5006, 9, 4001, 0, NULL, 'mystery type', 400, 1700000050, 0, 0, 0, 0, NULL, NULL, 0),
+    -- uid 5007: anonymous (fe_user 0): author stays null, poster_name carries the guest name.
+    (5007, 1, 4001, 0, 'Guest Visitor', 'anon note', 0, 1700000060, 0, 0, 0, 0, NULL, NULL, 0),
+    -- uid 5008: legacy user 402 has no migrated profile -- placeholder profile path.
+    (5008, 1, 4001, 0, NULL, 'placeholder author note', 402, 1700000070, 0, 0, 0, 0, NULL, NULL, 0),
+    -- uid 5009: hidden with a delete trail -- the comment gets a moderation trail, its rating
+    -- still migrates (the comment text is moderated away, the star rating is not).
+    (5009, 1, 4001, 2, NULL, 'hidden comment text', 400, 1700000080, 0, 0, 1, 1700000090, 'spam', 401, 0),
+    -- uid 5010: targets tank 4101 instead of a post, exercising the tank side of the split.
+    (5010, 2, 4101, 3, NULL, 'tank comment', 400, 1700000100, 0, 0, 0, 0, NULL, NULL, 0),
+    -- uid 5011: soft-deleted at the top level -- skipped before target resolution even runs.
+    (5011, 1, 4001, 5, NULL, 'should not appear', 400, 1700000110, 0, 1, 0, 0, NULL, NULL, 0),
+    -- uid 5012: tank-side target_deleted (mirrors uid 5004 on the picture side), targeting tank
+    -- uid 1 (TankMigrationStepTests' soft-deleted stub row).
+    (5012, 2, 1, 0, NULL, 'orphan tank comment', 400, 1700000120, 0, 0, 0, 0, NULL, NULL, 0),
+    -- uid 5013: tank-side target_missing (mirrors uid 5005 on the picture side).
+    (5013, 2, 4999, 0, NULL, 'ghost tank', 400, 1700000130, 0, 0, 0, 0, NULL, NULL, 0);
+
+INSERT INTO user_cichlids_comments_rated (comment_uid, fe_user, rated, tstamp) VALUES
+    -- Earliest of the two 5001/401 rows wins (+1), the later one is a counted duplicate.
+    (5001, 401, 1, '2024-01-01 10:00:00'),
+    (5001, 401, -1, '2024-01-02 10:00:00'),
+    -- A second, distinct voter on the same comment: score ends up at 1 + 1 = 2.
+    (5001, 400, 1, '2024-01-01 11:00:00'),
+    -- A vote on a rating-only row and one on a vaulted row: neither ever became a comment.
+    (5002, 400, 1, '2024-01-01 12:00:00'),
+    (5004, 400, 1, '2024-01-01 13:00:00');
+
+-- Gallery step fixtures (GalleryMigrationStepTests): owner legacy id 450 and post legacy ids
+-- 4501/4502 are their own range, disjoint from every id range above including the comment step's
+-- 400s/4000s. GalleryMigrationStepTests seeds the matching profile/post rows directly in
+-- Postgres, the same way the other steps' tests seed their own prerequisites.
+INSERT INTO user_cichlids_gallery (uid, tstamp, deleted, hidden, title, fe_user) VALUES
+    -- uid 6001: both listed pictures resolve to a migrated post.
+    (6001, 1700000000, 0, 0, 'My Photos', 450),
+    -- uid 6002: hidden, no title (falls back to "Gallery 6002"), no tstamp (falls back to the
+    -- unknown-creation marker). One of its two pictures never migrated.
+    (6002, 0, 0, 1, NULL, 450),
+    -- uid 6003: every one of its pictures failed to migrate -- the collection is still created,
+    -- just with zero entries.
+    (6003, 1700000100, 0, 0, 'Empty After Filter', 450),
+    -- uid 6004: no mm rows at all -- excluded by the source query's EXISTS filter, never read.
+    (6004, 1700000200, 0, 0, 'No Entries At All', 450),
+    -- uid 6005: soft-deleted, with mm rows -- excluded by the source query's deleted filter.
+    (6005, 1700000300, 1, 0, 'Deleted Gallery', 450);
+
+INSERT INTO user_cichlids_gallery_pictures_mm (uid_gallery, uid_picture, sorting) VALUES
+    (6001, 4501, 0),
+    (6001, 4502, 1),
+    (6002, 4501, 0),
+    (6002, 9999, 1),
+    (6003, 9998, 0),
+    (6005, 4501, 0);
