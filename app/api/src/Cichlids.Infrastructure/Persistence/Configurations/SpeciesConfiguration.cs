@@ -23,6 +23,7 @@ public class SpeciesConfiguration : IEntityTypeConfiguration<Species>
 
         builder.HasIndex(x => x.LegacyId).IsUnique();
         builder.HasIndex(x => new { x.Genus, x.Name }).IsUnique();
+        builder.HasIndex(x => x.Slug).IsUnique();
 
         builder.ToTable("species", tb =>
         {

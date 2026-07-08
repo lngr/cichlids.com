@@ -12,6 +12,7 @@ public class Species
     public string Genus { get; set; } = string.Empty;
     public string Name { get; set; } = string.Empty;
     public string DisplayName { get; set; } = string.Empty;
+    public string? Slug { get; set; }
     public string? Category { get; set; }
     public string? TemperatureRange { get; set; }
     public string? PhRange { get; set; }
