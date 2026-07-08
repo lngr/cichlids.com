@@ -4,6 +4,8 @@ using MySqlConnector;
 using Testcontainers.MySql;
 using Testcontainers.PostgreSql;
 
+[assembly: CollectionBehavior(DisableTestParallelization = true)]
+
 namespace Cichlids.Etl.Tests;
 
 /// <summary>
@@ -13,6 +15,39 @@ namespace Cichlids.Etl.Tests;
 /// </summary>
 public sealed class EtlFixture : IAsyncLifetime
 {
+    // Every test class in this collection reads and writes the same target Postgres tables, so
+    // two step runs from different test classes must never execute at the same time even though
+    // xunit already restricts this collection to one test at a time: a run in flight here is a
+    // multi-statement, multi-round-trip sequence (several MySQL reads plus several Postgres
+    // upserts) that other test code must not interleave with.
+    private readonly SemaphoreSlim _stepLock = new(1, 1);
+
+    public async Task<T> RunExclusiveAsync<T>(Func<Task<T>> action)
+    {
+        await _stepLock.WaitAsync();
+        try
+        {
+            return await action();
+        }
+        finally
+        {
+            _stepLock.Release();
+        }
+    }
+
+    public async Task RunExclusiveAsync(Func<Task> action)
+    {
+        await _stepLock.WaitAsync();
+        try
+        {
+            await action();
+        }
+        finally
+        {
+            _stepLock.Release();
+        }
+    }
+
     private readonly MySqlContainer _legacy = new MySqlBuilder("mysql:5.7")
         .WithDatabase("cichlids_typo3")
         .WithUsername("root")

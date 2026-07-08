@@ -79,7 +79,9 @@ public sealed class SpeciesCatalogStepTests(EtlFixture fixture)
 
         await using (var db = fixture.CreateTargetContext())
         {
-            Assert.Equal(4, await db.Species.CountAsync());
+            // Scoped to this fixture's own legacy id range: TankMigrationStepTests seeds an
+            // unrelated species row (legacy id 101) directly into the same shared table.
+            Assert.Equal(4, await db.Species.CountAsync(s => s.LegacyId <= 5));
             Assert.Equal(1, await db.SpeciesCommonNames.CountAsync());
             Assert.Equal(2, await db.SpeciesLinks.CountAsync());
 
@@ -88,11 +90,11 @@ public sealed class SpeciesCatalogStepTests(EtlFixture fixture)
         }
     }
 
-    private async Task<StepStatistics> RunStepAsync()
+    private Task<StepStatistics> RunStepAsync() => fixture.RunExclusiveAsync(async () =>
     {
         await using var context = await EtlContext.CreateAsync(
             fixture.LegacyConnectionString, fixture.TargetConnectionString, dryRun: false, CancellationToken.None);
         await EtlRunner.RunAsync(new SpeciesCatalogStep(), context, CancellationToken.None);
         return context.Statistics.ForStep("species");
-    }
+    });
 }

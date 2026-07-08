@@ -66,16 +66,19 @@ public sealed class ProfileMigrationStepTests(EtlFixture fixture)
 
         await using (var db = fixture.CreateTargetContext())
         {
-            Assert.Equal(4, await db.Profiles.CountAsync(p => p.LegacyId != null));
+            // Scoped to this fixture's own legacy id range: TankMigrationStepTests seeds two
+            // unrelated profile rows (legacy ids 101/102) and a placeholder (999) directly into
+            // the same shared table.
+            Assert.Equal(4, await db.Profiles.CountAsync(p => p.LegacyId != null && p.LegacyId <= 16));
             Assert.Equal(6, await db.ProfileIdentities.CountAsync());
         }
     }
 
-    private async Task<StepStatistics> RunStepAsync()
+    private Task<StepStatistics> RunStepAsync() => fixture.RunExclusiveAsync(async () =>
     {
         await using var context = await EtlContext.CreateAsync(
             fixture.LegacyConnectionString, fixture.TargetConnectionString, dryRun: false, CancellationToken.None);
         await EtlRunner.RunAsync(new ProfileMigrationStep(), context, CancellationToken.None);
         return context.Statistics.ForStep("profiles");
-    }
+    });
 }

@@ -108,7 +108,36 @@ CREATE TABLE user_cichlids_pictures (
 
 CREATE TABLE user_cichlids_tanks (
     uid INT PRIMARY KEY,
-    fe_user INT NOT NULL
+    fe_user INT NOT NULL,
+    deleted TINYINT NOT NULL DEFAULT 0,
+    hidden TINYINT NOT NULL DEFAULT 0,
+    tstamp BIGINT NOT NULL DEFAULT 0,
+    crdate BIGINT NOT NULL DEFAULT 0,
+    category INT NOT NULL DEFAULT 0,
+    title TEXT,
+    description TEXT,
+    gravel TEXT,
+    plants TEXT,
+    more_deco TEXT,
+    light TEXT,
+    light_duration TEXT,
+    filtration TEXT,
+    more_tec TEXT,
+    water_ph TEXT,
+    water_kh TEXT,
+    water_gh TEXT,
+    water_no2 TEXT,
+    water_no3 TEXT,
+    water_po4 TEXT,
+    more_water TEXT,
+    food TEXT,
+    more TEXT,
+    width INT NOT NULL DEFAULT 0,
+    height INT NOT NULL DEFAULT 0,
+    depth INT NOT NULL DEFAULT 0,
+    unit TEXT,
+    fish TEXT,
+    fish_count TEXT
 );
 
 CREATE TABLE user_cichlids_comments (

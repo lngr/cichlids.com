@@ -12,6 +12,7 @@ public static class EtlStepRegistry
         {
             new SpeciesCatalogStep(),
             new ProfileMigrationStep(),
+            new TankMigrationStep(),
         }.OrderBy(step => step.Order),
     ];
 

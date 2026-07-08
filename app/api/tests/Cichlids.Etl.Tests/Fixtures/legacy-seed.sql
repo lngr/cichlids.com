@@ -72,9 +72,45 @@ INSERT INTO fe_users_auth0 (sub, user_id) VALUES
 INSERT INTO user_cichlids_pictures (uid, fe_user) VALUES
     (1, 10),
     (2, 15);
-INSERT INTO user_cichlids_tanks (uid, fe_user) VALUES
-    (1, 11),
-    (2, 16);
+-- uid 1 and 2 only exist to give bob and disableduser content for the profile eligibility check
+-- above (that scan ignores deleted rows). They are soft-deleted here so the tank step itself,
+-- which filters on deleted = 0, never reads them.
+INSERT INTO user_cichlids_tanks (uid, fe_user, deleted) VALUES
+    (1, 11, 1),
+    (2, 16, 1);
+
+-- Owner legacy ids 101/102 and species legacy id 101 below are a range of their own, disjoint
+-- from the species (1-5) and profile (10-16) fixtures above: TankMigrationStepTests seeds its own
+-- prerequisite profile/species rows directly (see that class for why) rather than running the
+-- species/profile steps, and those rows must never collide with the ones this file's other tests
+-- upsert under the shared legacy ids 1-5/10-16.
+--
+-- uid 10: a full published tank with a dirty fish/fish_count pairing -- a resolvable species, an
+-- explicit "0" placeholder, a leading double comma (empty token) with a count behind it, and a
+-- species uid that does not exist in the catalog, also with a count behind it.
+INSERT INTO user_cichlids_tanks
+    (uid, fe_user, deleted, hidden, category, title, width, height, depth, unit,
+     crdate, tstamp, fish, fish_count)
+VALUES
+    (10, 101, 0, 0, 1, 'Reef Tank', 100, 40, 40, 'centimeters',
+     1000000500, 1000000600, '101,0,,99', '5\n\n3\n2'),
+    -- uid 11: a draft (hidden) tank with an unmapped category code, no crdate (falls back to
+    -- tstamp), a zeroed dimension and no unit (empty/no-value keeps the inch default).
+    (11, 102, 0, 1, 99, 'Draft Tank', 0, 50, 0, NULL,
+     0, 1000000700, '', ''),
+    -- uid 12: owned by a legacy user id with no fe_users row at all, exercising the placeholder
+    -- profile path.
+    (12, 999, 0, 0, 2, 'Orphaned Tank', 200, 0, 60, NULL,
+     1000000800, 1000000900, '', ''),
+    -- uid 13: unit is the literal word "inches", which the legacy edit form only ever wrote when
+    -- an editor had switched the field to metric, so any non-empty unit value (however it reads)
+    -- means centimeters.
+    (13, 101, 0, 0, 3, 'Inches Tank', 80, 35, 35, 'inches',
+     1000001000, 1000001100, '', ''),
+    -- uid 14: fe_user 0, the anonymous/community-archive owner.
+    (14, 0, 0, 0, 6, 'Anonymous Community Tank', 0, 0, 0, NULL,
+     1000001200, 1000001300, '', '');
+
 INSERT INTO user_cichlids_comments (uid, fe_user) VALUES
     (1, 13),
     (2, 14);
