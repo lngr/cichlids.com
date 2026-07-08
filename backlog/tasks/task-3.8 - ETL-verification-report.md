@@ -1,9 +1,10 @@
 ---
 id: TASK-3.8
 title: ETL verification report
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-07-08 18:58'
+updated_date: '2026-07-08 23:53'
 labels: []
 dependencies:
   - TASK-3.2

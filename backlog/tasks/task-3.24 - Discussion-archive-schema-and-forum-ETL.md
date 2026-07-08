@@ -1,10 +1,10 @@
 ---
 id: TASK-3.24
 title: Discussion archive schema and forum ETL
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-07-08 19:34'
-updated_date: '2026-07-08 23:20'
+updated_date: '2026-07-08 23:53'
 labels: []
 dependencies:
   - TASK-3.1
@@ -24,6 +24,12 @@ Discussion thread and post entities per ADR-0021 plus the forum ETL stage: visib
 <!-- AC:BEGIN -->
 - [ ] #1 Given the restored phorum database and migrated profiles, When the forum ETL runs twice, Then all visible forum threads and posts exist exactly once with authorship mapped per ADR-0021, attachments stored as media items, and no private messages or email addresses migrated
 <!-- AC:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Real double run: 14302 threads (cichlids 7859, african 6194, market_place 249), 65348 posts (32478 guest, 32870 attributed, 690 posting authors matched by email, 1563 forum placeholder profiles), 1396 attachments decoded from the database into the object store (239 MB, verified via S3 API), idempotent second run including unchanged-size upload skip. Umlaut spot checks verified against raw source bytes.
+<!-- SECTION:NOTES:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
