@@ -1,5 +1,6 @@
 using Amazon.Runtime;
 using Amazon.S3;
+using Cichlids.Etl.Media;
 using Cichlids.Etl.Runtime;
 using Cichlids.Etl.Steps;
 using Cichlids.Infrastructure.Persistence;
@@ -10,7 +11,9 @@ using Microsoft.Extensions.Options;
 
 if (args.Length == 0)
 {
-    Console.Error.WriteLine("Usage: dotnet run -- <step|all|migrate> [--dry-run] [--out <path>]");
+    Console.Error.WriteLine(
+        "Usage: dotnet run -- <step|all|migrate|media> [--dry-run] [--out <path>]\n"
+        + "  media: [--limit N] [--workers P] [--force] [--missing-out <path>]");
     return 1;
 }
 
@@ -55,6 +58,32 @@ if (string.Equals(command, "migrate", StringComparison.OrdinalIgnoreCase))
     return 0;
 }
 
+if (string.Equals(command, "media", StringComparison.OrdinalIgnoreCase))
+{
+    var legacyImagesRoot =
+        Environment.GetEnvironmentVariable("CICHLIDS_ETL_LEGACY_IMAGES_ROOT")
+        ?? configuration["Etl:LegacyImagesRoot"]
+        ?? throw new InvalidOperationException(
+            "Missing legacy images root (Etl:LegacyImagesRoot in appsettings.json or CICHLIDS_ETL_LEGACY_IMAGES_ROOT).");
+
+    var mediaObjectStore = await RequireObjectStoreAsync(configuration, cts.Token);
+
+    var limitArgIndex = Array.IndexOf(args, "--limit");
+    var limit = limitArgIndex >= 0 && limitArgIndex + 1 < args.Length ? int.Parse(args[limitArgIndex + 1]) : (int?)null;
+
+    var workersArgIndex = Array.IndexOf(args, "--workers");
+    var workers = workersArgIndex >= 0 && workersArgIndex + 1 < args.Length ? int.Parse(args[workersArgIndex + 1]) : 8;
+
+    var onlyMissing = !args.Contains("--force", StringComparer.OrdinalIgnoreCase);
+
+    var missingOutArgIndex = Array.IndexOf(args, "--missing-out");
+    var missingOutPath = missingOutArgIndex >= 0 && missingOutArgIndex + 1 < args.Length ? args[missingOutArgIndex + 1] : null;
+
+    return await MediaSeedCommand.RunAsync(
+        legacyConnectionString, targetConnectionString, mediaObjectStore, legacyImagesRoot,
+        limit, workers, onlyMissing, missingOutPath, cts.Token);
+}
+
 IReadOnlyList<IEtlStep> steps;
 if (string.Equals(command, "all", StringComparison.OrdinalIgnoreCase))
 {
@@ -87,6 +116,16 @@ foreach (var step in steps)
 
 ConsoleReport.Print(context.Statistics, dryRun);
 return context.VerificationReport is { Passed: false } ? 1 : 0;
+
+// The media command always needs an object store to work at all, unlike the regular steps (where
+// only the forum step does), so it fails up front with a clear message instead of a
+// null-reference deeper in the command.
+static async Task<IObjectStore> RequireObjectStoreAsync(IConfiguration configuration, CancellationToken cancellationToken)
+{
+    return await CreateObjectStoreAsync(configuration, cancellationToken)
+        ?? throw new InvalidOperationException(
+            "This command requires an object store; configure the \"ObjectStorage\" section before running it.");
+}
 
 // Builds the object store steps use to export legacy binary content (for example forum
 // attachments), and ensures its bucket exists. Only steps that actually need it (checked through
