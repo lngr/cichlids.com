@@ -28,7 +28,7 @@ services:
 
   keycloak:
     image: quay.io/keycloak/keycloak:26.6.4
-    command: start-dev
+    command: start-dev --import-realm
     environment:
       KC_BOOTSTRAP_ADMIN_USERNAME: admin
       KC_BOOTSTRAP_ADMIN_PASSWORD: admin
@@ -36,6 +36,7 @@ services:
       - "8180:8080"
     volumes:
       - keycloak-data:/opt/keycloak/data
+      - ./keycloak:/opt/keycloak/data/import
 
 volumes:
   postgres-data:
