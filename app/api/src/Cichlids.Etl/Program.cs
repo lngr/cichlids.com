@@ -168,5 +168,14 @@ static async Task<IObjectStore?> CreateObjectStoreAsync(IConfiguration configura
     var store = new S3ObjectStore(client, Options.Create(options));
 
     await store.EnsureBucketAsync(cancellationToken);
+
+    var policyApplied = await store.EnsurePublicReadPolicyAsync(cancellationToken);
+    if (!policyApplied)
+    {
+        Console.Error.WriteLine(
+            $"Warning: the object store provider does not support PutBucketPolicy; bucket '{options.Bucket}' "
+            + "was not configured for public read. Served media may return 403 until this is configured another way.");
+    }
+
     return store;
 }

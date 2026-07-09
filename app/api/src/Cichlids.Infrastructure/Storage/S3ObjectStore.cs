@@ -22,6 +22,8 @@ public sealed class S3ObjectStore : IObjectStore
         _options = options.Value;
     }
 
+    public string Bucket => _options.Bucket;
+
     public async Task PutAsync(string key, Stream content, string contentType, CancellationToken cancellationToken = default)
     {
         if (content.CanSeek)
@@ -160,5 +162,42 @@ public sealed class S3ObjectStore : IObjectStore
         }
 
         await _client.PutBucketAsync(new PutBucketRequest { BucketName = _options.Bucket }, cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// Applies a public-read bucket policy (anonymous <c>s3:GetObject</c> on every key) so served
+    /// media reaches a browser directly instead of through a signed or authenticated request.
+    /// Every media key is a content-addressed original or a derived variant, neither of which is
+    /// sensitive, so a bucket-wide allow is the whole policy. Returns false instead of throwing
+    /// when the provider does not implement <c>PutBucketPolicy</c> at all, so a caller can log a
+    /// warning and fall back to provider-specific configuration rather than fail the run.
+    /// </summary>
+    public async Task<bool> EnsurePublicReadPolicyAsync(CancellationToken cancellationToken = default)
+    {
+        var policy = $$"""
+            {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Principal": "*",
+                  "Action": ["s3:GetObject"],
+                  "Resource": ["arn:aws:s3:::{{_options.Bucket}}/*"]
+                }
+              ]
+            }
+            """;
+
+        try
+        {
+            await _client.PutBucketPolicyAsync(
+                new PutBucketPolicyRequest { BucketName = _options.Bucket, Policy = policy }, cancellationToken)
+                .ConfigureAwait(false);
+            return true;
+        }
+        catch (AmazonS3Exception ex) when (ex.StatusCode is HttpStatusCode.NotImplemented or HttpStatusCode.BadRequest or HttpStatusCode.MethodNotAllowed)
+        {
+            return false;
+        }
     }
 }

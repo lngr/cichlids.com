@@ -1,3 +1,4 @@
+using System.Net;
 using System.Text;
 using Cichlids.Infrastructure.Storage;
 
@@ -120,5 +121,34 @@ public sealed class S3ObjectStoreTests
         }
 
         Assert.Empty(listedKeys);
+    }
+
+    [Fact]
+    public async Task EnsurePublicReadPolicyAsync_makes_an_existing_object_anonymously_readable()
+    {
+        var store = _fixture.CreateStoreForNewBucket();
+        await store.PutAsync("originals/public-read.jpg", new MemoryStream([1, 2, 3]), "image/jpeg");
+
+        var applied = await store.EnsurePublicReadPolicyAsync();
+        Assert.True(applied);
+
+        using var anonymousClient = new HttpClient();
+        var response = await anonymousClient.GetAsync($"{_fixture.ServiceUrl}/{store.Bucket}/originals/public-read.jpg");
+
+        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+    }
+
+    [Fact]
+    public async Task EnsurePublicReadPolicyAsync_leaves_a_missing_key_reported_as_not_found()
+    {
+        var store = _fixture.CreateStoreForNewBucket();
+
+        var applied = await store.EnsurePublicReadPolicyAsync();
+        Assert.True(applied);
+
+        using var anonymousClient = new HttpClient();
+        var response = await anonymousClient.GetAsync($"{_fixture.ServiceUrl}/{store.Bucket}/originals/does-not-exist.jpg");
+
+        Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
     }
 }
