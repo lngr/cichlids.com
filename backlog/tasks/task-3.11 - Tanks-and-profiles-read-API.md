@@ -1,9 +1,10 @@
 ---
 id: TASK-3.11
 title: Tanks and profiles read API
-status: To Do
+status: In Review
 assignee: []
 created_date: '2026-07-08 18:58'
+updated_date: '2026-07-09 01:25'
 labels: []
 dependencies:
   - TASK-3.4
@@ -22,6 +23,12 @@ Tank list and detail with ordered image sections and main image fallback; public
 <!-- AC:BEGIN -->
 - [ ] #1 Given a seeded local stack, When tanks are listed and a tank detail plus its owner profile are fetched, Then the responses cover the legacy tank fields including ordered image lists, main image fallback and public profile data
 <!-- AC:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Tank list and detail with sections, water values, dimensions and inhabitants; profile endpoint with public stats and preset picture and tank lists. Real-stack smoke verified.
+<!-- SECTION:NOTES:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->

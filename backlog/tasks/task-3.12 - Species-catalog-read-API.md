@@ -1,9 +1,10 @@
 ---
 id: TASK-3.12
 title: Species catalog read API
-status: To Do
+status: In Review
 assignee: []
 created_date: '2026-07-08 18:58'
+updated_date: '2026-07-09 01:25'
 labels: []
 dependencies:
   - TASK-3.2
@@ -22,6 +23,12 @@ Species list and detail with taxonomy, care ranges and enums.
 <!-- AC:BEGIN -->
 - [ ] #1 Given the migrated species catalog, When species are listed and fetched by id, Then taxonomy, care ranges and enum values are returned
 <!-- AC:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Species list with query filter plus detail with care data, common names and links. Real-stack smoke verified.
+<!-- SECTION:NOTES:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->

@@ -1,9 +1,10 @@
 ---
 id: TASK-3.10
 title: Pictures read API with legacy parity
-status: To Do
+status: In Review
 assignee: []
 created_date: '2026-07-08 18:58'
+updated_date: '2026-07-09 01:25'
 labels: []
 dependencies:
   - TASK-3.5
@@ -23,6 +24,12 @@ GET /pictures list with sort, type, user and paging semantics of the legacy API 
 - [ ] #1 Given a seeded local stack, When GET pictures is called with sort, type, user and paging parameters, Then the response matches the legacy list semantics including visibility filtering
 - [ ] #2 Given a picture slug, When the picture detail is fetched, Then the response contains the media variant URLs and the view counter increments
 <!-- AC:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Endpoints for picture lists (newest, views, bayesian rating), detail with alias resolution and atomic view increment, comments. Species filter deferred: the schema lacks a post to species link (follow-up in progress). Real-stack smoke verified.
+<!-- SECTION:NOTES:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
