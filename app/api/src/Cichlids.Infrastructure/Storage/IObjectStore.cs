@@ -23,6 +23,12 @@ public interface IObjectStore
     Task<bool> ExistsAsync(string key, CancellationToken cancellationToken = default);
 
     /// <summary>
+    /// Returns the byte size of the object stored under the given key without downloading its
+    /// content, or null when no object exists for that key.
+    /// </summary>
+    Task<long?> GetSizeAsync(string key, CancellationToken cancellationToken = default);
+
+    /// <summary>
     /// Deletes the object stored under the given key. Deleting a key that does not exist is not
     /// an error.
     /// </summary>

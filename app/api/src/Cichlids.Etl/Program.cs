@@ -12,8 +12,9 @@ using Microsoft.Extensions.Options;
 if (args.Length == 0)
 {
     Console.Error.WriteLine(
-        "Usage: dotnet run -- <step|all|migrate|media> [--dry-run] [--out <path>]\n"
-        + "  media: [--limit N] [--workers P] [--force] [--missing-out <path>]");
+        "Usage: dotnet run -- <step|all|migrate|media|media-verify> [--dry-run] [--out <path>]\n"
+        + "  media:        [--limit N] [--workers P] [--force] [--missing-out <path>]\n"
+        + "  media-verify: [--out <path>]");
     return 1;
 }
 
@@ -84,6 +85,12 @@ if (string.Equals(command, "media", StringComparison.OrdinalIgnoreCase))
         limit, workers, onlyMissing, missingOutPath, cts.Token);
 }
 
+if (string.Equals(command, "media-verify", StringComparison.OrdinalIgnoreCase))
+{
+    var verifyObjectStore = await RequireObjectStoreAsync(configuration, cts.Token);
+    return await MediaVerifyCommand.RunAsync(targetConnectionString, verifyObjectStore, verifyOutputPath, cts.Token);
+}
+
 IReadOnlyList<IEtlStep> steps;
 if (string.Equals(command, "all", StringComparison.OrdinalIgnoreCase))
 {
@@ -117,9 +124,9 @@ foreach (var step in steps)
 ConsoleReport.Print(context.Statistics, dryRun);
 return context.VerificationReport is { Passed: false } ? 1 : 0;
 
-// The media command always needs an object store to work at all, unlike the regular steps (where
-// only the forum step does), so it fails up front with a clear message instead of a
-// null-reference deeper in the command.
+// The media and media-verify commands always need an object store to work at all, unlike the
+// regular steps (where only the forum step does), so they fail up front with a clear message
+// instead of a null-reference deeper in the command.
 static async Task<IObjectStore> RequireObjectStoreAsync(IConfiguration configuration, CancellationToken cancellationToken)
 {
     return await CreateObjectStoreAsync(configuration, cancellationToken)

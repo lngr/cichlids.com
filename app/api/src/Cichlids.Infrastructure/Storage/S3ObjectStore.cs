@@ -82,6 +82,25 @@ public sealed class S3ObjectStore : IObjectStore
         }
     }
 
+    public async Task<long?> GetSizeAsync(string key, CancellationToken cancellationToken = default)
+    {
+        var request = new GetObjectMetadataRequest
+        {
+            BucketName = _options.Bucket,
+            Key = key,
+        };
+
+        try
+        {
+            var response = await _client.GetObjectMetadataAsync(request, cancellationToken).ConfigureAwait(false);
+            return response.ContentLength;
+        }
+        catch (AmazonS3Exception ex) when (ex.StatusCode == HttpStatusCode.NotFound)
+        {
+            return null;
+        }
+    }
+
     public async Task DeleteAsync(string key, CancellationToken cancellationToken = default)
     {
         var request = new DeleteObjectRequest
