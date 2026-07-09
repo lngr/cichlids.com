@@ -1,10 +1,10 @@
 ---
 id: TASK-3.9
 title: Media pipeline seeds originals and variants
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-07-08 18:58'
-updated_date: '2026-07-08 19:04'
+updated_date: '2026-07-09 02:35'
 labels: []
 dependencies:
   - TASK-3.5
@@ -32,6 +32,12 @@ Originals from the legacy image tree into the object store under stable keys wit
 2. Integration tests run the store via Testcontainers.
 3. Variant generation and the full legacy seed follow once the variant set and the media key scheme are decided.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Full seed complete: 179337 of 179340 media items in the object store (3 source files missing), 623220 variants (200/400/800/1600, no upscaling), 283 GB transferred in 94 minutes, idempotent restarts proven; 934 legacy files are not decodable and keep original-only delivery, list saved as session artifact. Public read verified anonymously.
+<!-- SECTION:NOTES:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
