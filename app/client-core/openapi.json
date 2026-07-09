@@ -1,0 +1,2856 @@
+{
+  "openapi": "3.1.1",
+  "info": {
+    "title": "Cichlids.Api | v1",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5045/"
+    }
+  ],
+  "paths": {
+    "/healthz": {
+      "get": {
+        "tags": [
+          "Cichlids.Api"
+        ],
+        "operationId": "GetHealth",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/comments/{id}": {
+      "delete": {
+        "tags": [
+          "Comments"
+        ],
+        "operationId": "DeleteComment",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteCommentRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/api/me": {
+      "get": {
+        "tags": [
+          "Me"
+        ],
+        "operationId": "GetMe",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MeDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pictures/pic/{alias}.html": {
+      "get": {
+        "tags": [
+          "LegacyRedirectsEndpoints"
+        ],
+        "operationId": "LegacyPictureRedirectHtml",
+        "parameters": [
+          {
+            "name": "alias",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/pictures/pic/{alias}": {
+      "get": {
+        "tags": [
+          "LegacyRedirectsEndpoints"
+        ],
+        "operationId": "LegacyPictureRedirect",
+        "parameters": [
+          {
+            "name": "alias",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/tanks/details/{legacyId}": {
+      "get": {
+        "tags": [
+          "LegacyRedirectsEndpoints"
+        ],
+        "operationId": "LegacyTankRedirect",
+        "parameters": [
+          {
+            "name": "legacyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/members/{legacyUid}/{rest}": {
+      "get": {
+        "tags": [
+          "LegacyRedirectsEndpoints"
+        ],
+        "operationId": "LegacyMemberRedirectWithRest",
+        "parameters": [
+          {
+            "name": "legacyUid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/members/{legacyUid}": {
+      "get": {
+        "tags": [
+          "LegacyRedirectsEndpoints"
+        ],
+        "operationId": "LegacyMemberRedirect",
+        "parameters": [
+          {
+            "name": "legacyUid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/browse/species/{alias}.html": {
+      "get": {
+        "tags": [
+          "LegacyRedirectsEndpoints"
+        ],
+        "operationId": "LegacySpeciesRedirect",
+        "parameters": [
+          {
+            "name": "alias",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/disc/read.php": {
+      "get": {
+        "tags": [
+          "LegacyRedirectsEndpoints"
+        ],
+        "operationId": "LegacyDiscussionReadRedirect",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/disc/list.php": {
+      "get": {
+        "tags": [
+          "LegacyRedirectsEndpoints"
+        ],
+        "operationId": "LegacyDiscussionListRedirect",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/wiki/index.php/{name}": {
+      "get": {
+        "tags": [
+          "LegacyRedirectsEndpoints"
+        ],
+        "operationId": "LegacyWikiRedirect",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/species": {
+      "get": {
+        "tags": [
+          "Species"
+        ],
+        "operationId": "ListSpecies",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedResponseOfSpeciesListItemDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/species/{idOrSlug}": {
+      "get": {
+        "tags": [
+          "Species"
+        ],
+        "operationId": "GetSpecies",
+        "parameters": [
+          {
+            "name": "idOrSlug",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SpeciesDetailDto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/api/pictures": {
+      "get": {
+        "tags": [
+          "Pictures"
+        ],
+        "operationId": "ListPictures",
+        "parameters": [
+          {
+            "name": "sort",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "topic",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int64"
+            }
+          },
+          {
+            "name": "species",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedResponseOfPictureListItemDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/pictures/{slug}": {
+      "get": {
+        "tags": [
+          "Pictures"
+        ],
+        "operationId": "GetPicture",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PictureDetailDto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/api/pictures/{slug}/comments": {
+      "get": {
+        "tags": [
+          "Pictures"
+        ],
+        "operationId": "ListPictureComments",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedResponseOfCommentDto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Pictures"
+        ],
+        "operationId": "CreatePictureComment",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCommentRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommentCreatedDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/api/tanks": {
+      "get": {
+        "tags": [
+          "Tanks"
+        ],
+        "operationId": "ListTanks",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int64"
+            }
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedResponseOfTankListItemDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tanks/{id}": {
+      "get": {
+        "tags": [
+          "Tanks"
+        ],
+        "operationId": "GetTank",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TankDetailDto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/api/tanks/{id}/comments": {
+      "get": {
+        "tags": [
+          "Tanks"
+        ],
+        "operationId": "ListTankComments",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedResponseOfCommentDto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Tanks"
+        ],
+        "operationId": "CreateTankComment",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCommentRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommentCreatedDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/api/profiles/{id}": {
+      "get": {
+        "tags": [
+          "Profiles"
+        ],
+        "operationId": "GetProfile",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfileDetailDto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/api/profiles/{id}/pictures": {
+      "get": {
+        "tags": [
+          "Profiles"
+        ],
+        "operationId": "ListProfilePictures",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedResponseOfPictureListItemDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/profiles/{id}/tanks": {
+      "get": {
+        "tags": [
+          "Profiles"
+        ],
+        "operationId": "ListProfileTanks",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedResponseOfTankListItemDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/community/categories": {
+      "get": {
+        "tags": [
+          "Community"
+        ],
+        "operationId": "ListCommunityCategories",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CommunityCategoryDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/community/threads": {
+      "get": {
+        "tags": [
+          "Community"
+        ],
+        "operationId": "ListCommunityThreads",
+        "parameters": [
+          {
+            "name": "category",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedResponseOfCommunityThreadListItemDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/community/threads/{id}": {
+      "get": {
+        "tags": [
+          "Community"
+        ],
+        "operationId": "GetCommunityThread",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommunityThreadDetailDto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/api/admin/webhooks": {
+      "post": {
+        "tags": [
+          "Webhooks"
+        ],
+        "operationId": "CreateWebhookSubscription",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateWebhookRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WebhookDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Webhooks"
+        ],
+        "operationId": "ListWebhookSubscriptions",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WebhookDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AggressionLevel": {
+        "enum": [
+          "unspecified",
+          "low",
+          "moderate",
+          "high"
+        ]
+      },
+      "AuthorDto": {
+        "required": [
+          "id",
+          "username",
+          "displayName",
+          "avatarUrl"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "username": {
+            "type": "string"
+          },
+          "displayName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "avatarUrl": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "CommentCreatedDto": {
+        "required": [
+          "comment",
+          "rating"
+        ],
+        "type": "object",
+        "properties": {
+          "comment": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/CommentDto"
+              }
+            ]
+          },
+          "rating": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/CreatedRatingDto"
+              }
+            ]
+          }
+        }
+      },
+      "CommentDto": {
+        "required": [
+          "id",
+          "body",
+          "createdAt",
+          "score",
+          "author",
+          "posterName"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "body": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "score": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "author": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/AuthorDto"
+              }
+            ]
+          },
+          "posterName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "CommunityAttachmentDto": {
+        "required": [
+          "mediaItemId",
+          "image"
+        ],
+        "type": "object",
+        "properties": {
+          "mediaItemId": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "image": {
+            "$ref": "#/components/schemas/ImageUrlsDto"
+          }
+        }
+      },
+      "CommunityCategoryDto": {
+        "required": [
+          "category",
+          "threadCount",
+          "postCount",
+          "lastPostAt"
+        ],
+        "type": "object",
+        "properties": {
+          "category": {
+            "$ref": "#/components/schemas/DiscussionCategory"
+          },
+          "threadCount": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "postCount": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "lastPostAt": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          }
+        }
+      },
+      "CommunityPostAuthorDto": {
+        "required": [
+          "id",
+          "username",
+          "displayName",
+          "avatarUrl"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "null",
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "username": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "avatarUrl": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "CommunityPostDto": {
+        "required": [
+          "id",
+          "body",
+          "createdAt",
+          "author",
+          "attachments"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "body": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "author": {
+            "$ref": "#/components/schemas/CommunityPostAuthorDto"
+          },
+          "attachments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CommunityAttachmentDto"
+            }
+          }
+        }
+      },
+      "CommunityThreadDetailDto": {
+        "required": [
+          "id",
+          "title",
+          "category",
+          "state",
+          "createdAt",
+          "lastPostAt",
+          "postCount",
+          "posts"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "title": {
+            "type": "string"
+          },
+          "category": {
+            "$ref": "#/components/schemas/DiscussionCategory"
+          },
+          "state": {
+            "$ref": "#/components/schemas/DiscussionThreadState"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastPostAt": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          },
+          "postCount": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "posts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CommunityPostDto"
+            }
+          }
+        }
+      },
+      "CommunityThreadListItemDto": {
+        "required": [
+          "id",
+          "title",
+          "category",
+          "createdAt",
+          "lastPostAt",
+          "postCount",
+          "startedBy"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "title": {
+            "type": "string"
+          },
+          "category": {
+            "$ref": "#/components/schemas/DiscussionCategory"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastPostAt": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          },
+          "postCount": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "startedBy": {
+            "$ref": "#/components/schemas/ThreadStartedByDto"
+          }
+        }
+      },
+      "CreateCommentRequest": {
+        "required": [
+          "body",
+          "stars"
+        ],
+        "type": "object",
+        "properties": {
+          "body": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "stars": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "null",
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          }
+        }
+      },
+      "CreatedRatingDto": {
+        "required": [
+          "id",
+          "stars"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "stars": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int16"
+          }
+        }
+      },
+      "CreateWebhookRequest": {
+        "required": [
+          "url",
+          "secret",
+          "eventTypes"
+        ],
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "secret": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "eventTypes": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "DeleteCommentRequest": {
+        "required": [
+          "reason"
+        ],
+        "type": "object",
+        "properties": {
+          "reason": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "DimensionsDto": {
+        "required": [
+          "width",
+          "height",
+          "depth",
+          "unit"
+        ],
+        "type": "object",
+        "properties": {
+          "width": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "null",
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "height": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "null",
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "depth": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "null",
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "unit": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/DimensionUnit"
+              }
+            ]
+          }
+        }
+      },
+      "DimensionUnit": {
+        "enum": [
+          "cm",
+          "inch",
+          null
+        ]
+      },
+      "DiscussionCategory": {
+        "enum": [
+          "cichlids",
+          "african",
+          "market_place"
+        ]
+      },
+      "DiscussionThreadState": {
+        "enum": [
+          "archived",
+          "open"
+        ]
+      },
+      "ImageUrlsDto": {
+        "required": [
+          "thumb",
+          "small",
+          "medium",
+          "large",
+          "original"
+        ],
+        "type": "object",
+        "properties": {
+          "thumb": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "small": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "medium": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "large": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "original": {
+            "type": "string"
+          }
+        }
+      },
+      "InhabitantDto": {
+        "required": [
+          "species",
+          "count"
+        ],
+        "type": "object",
+        "properties": {
+          "species": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/InhabitantSpeciesRefDto"
+              }
+            ]
+          },
+          "count": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "null",
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          }
+        }
+      },
+      "InhabitantSpeciesRefDto": {
+        "required": [
+          "id",
+          "slug",
+          "genus",
+          "name",
+          "displayName"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "slug": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "genus": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "displayName": {
+            "type": "string"
+          }
+        }
+      },
+      "MeDto": {
+        "required": [
+          "profile",
+          "roles"
+        ],
+        "type": "object",
+        "properties": {
+          "profile": {
+            "$ref": "#/components/schemas/ProfileDetailDto"
+          },
+          "roles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "PagedResponseOfCommentDto": {
+        "required": [
+          "total",
+          "items"
+        ],
+        "type": "object",
+        "properties": {
+          "total": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CommentDto"
+            }
+          }
+        }
+      },
+      "PagedResponseOfCommunityThreadListItemDto": {
+        "required": [
+          "total",
+          "items"
+        ],
+        "type": "object",
+        "properties": {
+          "total": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CommunityThreadListItemDto"
+            }
+          }
+        }
+      },
+      "PagedResponseOfPictureListItemDto": {
+        "required": [
+          "total",
+          "items"
+        ],
+        "type": "object",
+        "properties": {
+          "total": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PictureListItemDto"
+            }
+          }
+        }
+      },
+      "PagedResponseOfSpeciesListItemDto": {
+        "required": [
+          "total",
+          "items"
+        ],
+        "type": "object",
+        "properties": {
+          "total": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SpeciesListItemDto"
+            }
+          }
+        }
+      },
+      "PagedResponseOfTankListItemDto": {
+        "required": [
+          "total",
+          "items"
+        ],
+        "type": "object",
+        "properties": {
+          "total": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TankListItemDto"
+            }
+          }
+        }
+      },
+      "PictureDetailDto": {
+        "required": [
+          "id",
+          "slug",
+          "canonicalSlug",
+          "title",
+          "description",
+          "publishedAt",
+          "viewCount",
+          "ratingAverage",
+          "ratingCount",
+          "commentCount",
+          "topic",
+          "author",
+          "image"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "canonicalSlug": {
+            "type": "string"
+          },
+          "title": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "description": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "publishedAt": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          },
+          "viewCount": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "ratingAverage": {
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$",
+            "type": [
+              "null",
+              "number",
+              "string"
+            ],
+            "format": "double"
+          },
+          "ratingCount": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "commentCount": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "topic": {
+            "$ref": "#/components/schemas/PostTopic"
+          },
+          "author": {
+            "$ref": "#/components/schemas/AuthorDto"
+          },
+          "image": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/ImageUrlsDto"
+              }
+            ]
+          }
+        }
+      },
+      "PictureListItemDto": {
+        "required": [
+          "id",
+          "slug",
+          "title",
+          "description",
+          "publishedAt",
+          "viewCount",
+          "ratingAverage",
+          "ratingCount",
+          "commentCount",
+          "topic",
+          "author",
+          "image"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "title": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "description": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "publishedAt": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          },
+          "viewCount": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "ratingAverage": {
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?(?:[eE][+-]?\\d+)?$",
+            "type": [
+              "null",
+              "number",
+              "string"
+            ],
+            "format": "double"
+          },
+          "ratingCount": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "commentCount": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "topic": {
+            "$ref": "#/components/schemas/PostTopic"
+          },
+          "author": {
+            "$ref": "#/components/schemas/AuthorDto"
+          },
+          "image": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/ImageUrlsDto"
+              }
+            ]
+          }
+        }
+      },
+      "PostTopic": {
+        "enum": [
+          "cichlids",
+          "tanks",
+          "offtopic",
+          "contest",
+          "unknown"
+        ]
+      },
+      "ProfileDetailDto": {
+        "required": [
+          "id",
+          "username",
+          "displayName",
+          "city",
+          "countryCode",
+          "createdAt",
+          "avatarUrl",
+          "profileImageUrl",
+          "stats"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "username": {
+            "type": "string"
+          },
+          "displayName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "city": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "countryCode": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "avatarUrl": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "profileImageUrl": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "stats": {
+            "$ref": "#/components/schemas/ProfileStatsDto"
+          }
+        }
+      },
+      "ProfileStatsDto": {
+        "required": [
+          "pictureCount",
+          "tankCount",
+          "commentCount"
+        ],
+        "type": "object",
+        "properties": {
+          "pictureCount": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "tankCount": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "commentCount": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          }
+        }
+      },
+      "SpeciesBreeding": {
+        "enum": [
+          "unspecified",
+          "mouthbreeder",
+          "cave_breeder",
+          "substrate_breeder"
+        ]
+      },
+      "SpeciesDetailDto": {
+        "required": [
+          "id",
+          "slug",
+          "genus",
+          "name",
+          "displayName",
+          "category",
+          "temperatureRange",
+          "phRange",
+          "ghRange",
+          "khRange",
+          "maxSize",
+          "breeding",
+          "aggression",
+          "intraAggression",
+          "diet",
+          "commonNames",
+          "links",
+          "description",
+          "origin",
+          "habitat",
+          "morphs",
+          "pictureCount"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "slug": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "genus": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "category": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "temperatureRange": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "phRange": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "ghRange": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "khRange": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "maxSize": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "breeding": {
+            "$ref": "#/components/schemas/SpeciesBreeding"
+          },
+          "aggression": {
+            "$ref": "#/components/schemas/AggressionLevel"
+          },
+          "intraAggression": {
+            "$ref": "#/components/schemas/AggressionLevel"
+          },
+          "diet": {
+            "$ref": "#/components/schemas/SpeciesDiet"
+          },
+          "commonNames": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "links": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SpeciesLinkDto"
+            }
+          },
+          "description": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "origin": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "habitat": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "morphs": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "pictureCount": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          }
+        }
+      },
+      "SpeciesDiet": {
+        "enum": [
+          "unspecified",
+          "omnivore",
+          "carnivore",
+          "herbivore",
+          "limnivore"
+        ]
+      },
+      "SpeciesLinkDto": {
+        "required": [
+          "url",
+          "label"
+        ],
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string"
+          },
+          "label": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "SpeciesListItemDto": {
+        "required": [
+          "id",
+          "slug",
+          "genus",
+          "name",
+          "displayName",
+          "category"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "slug": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "genus": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "category": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "TankCategory": {
+        "enum": [
+          "tanganyika",
+          "malawi",
+          "american",
+          "african",
+          "community",
+          "central_american",
+          "south_american",
+          null
+        ]
+      },
+      "TankDetailDto": {
+        "required": [
+          "id",
+          "title",
+          "category",
+          "description",
+          "gravel",
+          "plants",
+          "decoration",
+          "light",
+          "lightDuration",
+          "filtration",
+          "technic",
+          "waterValues",
+          "food",
+          "notes",
+          "dimensions",
+          "mainImage",
+          "sections",
+          "inhabitants",
+          "author"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "title": {
+            "type": "string"
+          },
+          "category": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/TankCategory"
+              }
+            ]
+          },
+          "description": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "gravel": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "plants": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "decoration": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "light": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "lightDuration": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "filtration": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "technic": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "waterValues": {
+            "$ref": "#/components/schemas/WaterValuesDto"
+          },
+          "food": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "notes": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "dimensions": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/DimensionsDto"
+              }
+            ]
+          },
+          "mainImage": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/ImageUrlsDto"
+              }
+            ]
+          },
+          "sections": {
+            "$ref": "#/components/schemas/TankSectionsDto"
+          },
+          "inhabitants": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/InhabitantDto"
+            }
+          },
+          "author": {
+            "$ref": "#/components/schemas/AuthorDto"
+          }
+        }
+      },
+      "TankListItemDto": {
+        "required": [
+          "id",
+          "title",
+          "category",
+          "mainImage",
+          "imageCount",
+          "author"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "title": {
+            "type": "string"
+          },
+          "category": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/TankCategory"
+              }
+            ]
+          },
+          "mainImage": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/ImageUrlsDto"
+              }
+            ]
+          },
+          "imageCount": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "author": {
+            "$ref": "#/components/schemas/AuthorDto"
+          }
+        }
+      },
+      "TankMediaItemDto": {
+        "required": [
+          "mediaItemId",
+          "image"
+        ],
+        "type": "object",
+        "properties": {
+          "mediaItemId": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "image": {
+            "$ref": "#/components/schemas/ImageUrlsDto"
+          }
+        }
+      },
+      "TankSectionsDto": {
+        "required": [
+          "showcase",
+          "decoration",
+          "technic"
+        ],
+        "type": "object",
+        "properties": {
+          "showcase": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TankMediaItemDto"
+            }
+          },
+          "decoration": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TankMediaItemDto"
+            }
+          },
+          "technic": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TankMediaItemDto"
+            }
+          }
+        }
+      },
+      "ThreadStartedByDto": {
+        "required": [
+          "profileRef",
+          "posterName"
+        ],
+        "type": "object",
+        "properties": {
+          "profileRef": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/components/schemas/AuthorDto"
+              }
+            ]
+          },
+          "posterName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "WaterValuesDto": {
+        "required": [
+          "ph",
+          "kh",
+          "gh",
+          "no2",
+          "no3",
+          "po4",
+          "notes"
+        ],
+        "type": "object",
+        "properties": {
+          "ph": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "kh": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "gh": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "no2": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "no3": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "po4": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "notes": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "WebhookDto": {
+        "required": [
+          "id",
+          "url",
+          "eventTypes",
+          "active",
+          "createdAt"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "url": {
+            "type": "string"
+          },
+          "eventTypes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "active": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Cichlids.Api"
+    },
+    {
+      "name": "Comments"
+    },
+    {
+      "name": "Me"
+    },
+    {
+      "name": "LegacyRedirectsEndpoints"
+    },
+    {
+      "name": "Species"
+    },
+    {
+      "name": "Pictures"
+    },
+    {
+      "name": "Tanks"
+    },
+    {
+      "name": "Profiles"
+    },
+    {
+      "name": "Community"
+    },
+    {
+      "name": "Webhooks"
+    }
+  ]
+}

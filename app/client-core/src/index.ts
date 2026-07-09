@@ -1,1 +1,25 @@
-export {};
+export { createCichlidsClient, ApiError } from "./client.js";
+export type {
+  CichlidsClient,
+  CichlidsClientOptions,
+  PicturesListParams,
+  TanksListParams,
+  SpeciesListParams,
+  CommunityThreadsListParams,
+  PageParams,
+  PagedResponse,
+  PictureListItem,
+  PictureDetail,
+  TankListItem,
+  TankDetail,
+  ProfileDetail,
+  SpeciesListItem,
+  SpeciesDetail,
+  CommunityCategory,
+  CommunityThreadListItem,
+  CommunityThreadDetail,
+  Comment,
+  CommentCreated,
+  CreateCommentRequest,
+  Me,
+} from "./client.js";
