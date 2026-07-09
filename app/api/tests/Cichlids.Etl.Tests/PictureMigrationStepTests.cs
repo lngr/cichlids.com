@@ -77,6 +77,9 @@ public sealed class PictureMigrationStepTests(EtlFixture fixture)
             var alias2002 = await db.SlugAliases.SingleAsync(a => a.PostId == post2002.Id);
             Assert.True(alias2002.IsCanonical);
             Assert.NotEqual("pic-one", alias2002.Value);
+            // A generated slug is a fixed-length keyed hash, not the freeform text a legacy alias
+            // carries over.
+            Assert.Matches("^[0-9a-z]{10}$", alias2002.Value);
 
             // pid 21, owner has no migrated profile: a placeholder profile is created and the
             // post is archived regardless of the (unset) hidden flag.
@@ -124,6 +127,7 @@ public sealed class PictureMigrationStepTests(EtlFixture fixture)
             var alias2011 = await db.SlugAliases.SingleAsync(a => a.PostId == post2011.Id);
             Assert.NotEqual("shared-slug", alias2011.Value);
             Assert.True(alias2011.IsCanonical);
+            Assert.Matches("^[0-9a-z]{10}$", alias2011.Value);
             generatedSlug2011 = alias2011.Value;
 
             // uid 2012 has a hashid-looking alias and a normal-looking one; the normal one wins.

@@ -4,6 +4,7 @@ using Cichlids.Etl.Media;
 using Cichlids.Etl.Runtime;
 using Cichlids.Etl.Steps;
 using Cichlids.Infrastructure.Persistence;
+using Cichlids.Infrastructure.Slugs;
 using Cichlids.Infrastructure.Storage;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -40,6 +41,11 @@ var targetConnectionString =
     ?? configuration["Etl:TargetConnection"]
     ?? throw new InvalidOperationException(
         "Missing target connection string (Etl:TargetConnection in appsettings.json or CICHLIDS_ETL_TARGET_CONNECTION).");
+
+var slugSecret =
+    Environment.GetEnvironmentVariable(SlugGenerator.SecretEnvironmentVariable)
+    ?? configuration[SlugGenerator.SecretConfigurationKey]
+    ?? EtlContext.DevDefaultSlugSecret;
 
 using var cts = new CancellationTokenSource();
 Console.CancelKeyPress += (_, e) =>
@@ -112,7 +118,7 @@ else
 var objectStore = await CreateObjectStoreAsync(configuration, cts.Token);
 
 await using var context = await EtlContext.CreateAsync(
-    legacyConnectionString, targetConnectionString, dryRun, cts.Token, objectStore);
+    legacyConnectionString, targetConnectionString, dryRun, cts.Token, objectStore, slugSecret);
 context.VerifyOutputPath = verifyOutputPath;
 
 foreach (var step in steps)

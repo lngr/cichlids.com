@@ -1,9 +1,8 @@
-using System.Security.Cryptography;
-using System.Text;
 using Cichlids.Domain.Enums;
 using Cichlids.Etl.Persistence;
 using Cichlids.Etl.Runtime;
 using Cichlids.Infrastructure.Persistence.Conversions;
+using Cichlids.Infrastructure.Slugs;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MySqlConnector;
 using Npgsql;
@@ -646,7 +645,7 @@ public sealed class PictureMigrationStep : IEtlStep
 
         foreach (var (pictureLegacyId, postId) in postsNeedingGeneratedSlug)
         {
-            var slug = GenerateShortSlug(pictureLegacyId, postId, slugValueOwners);
+            var slug = GenerateShortSlug(context.SlugGenerator, pictureLegacyId, postId, slugValueOwners);
             aliasRows.Add(new object?[] { postId, slug, true, DateTimeOffset.UtcNow });
         }
 
@@ -716,55 +715,19 @@ public sealed class PictureMigrationStep : IEtlStep
     private static bool IsAsciiAlphanumeric(char c) =>
         (c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z');
 
-    // Deterministic across runs: the same legacy id, hashed with the same fixed input, always
-    // produces the same candidate slug; a collision retry perturbs the hash input rather than
-    // tracking any attempt counter outside of already-committed data, and a value this post
-    // already owns (its own slug from an earlier run) counts as available rather than as a
-    // collision, so the resolved slug is stable from run to run.
-    private static string GenerateShortSlug(int legacyId, long postId, Dictionary<string, long> slugValueOwners)
+    // Deterministic across runs: the same legacy id, hashed with the same fixed input under the
+    // same secret, always produces the same candidate slug. A value this post already owns (its
+    // own slug from an earlier run) counts as available rather than as a collision, so the
+    // resolved slug is stable from run to run; a genuine collision against a different post
+    // retries through SlugGenerator's own counter-suffix mechanism.
+    private static string GenerateShortSlug(
+        SlugGenerator slugGenerator, int legacyId, long postId, Dictionary<string, long> slugValueOwners)
     {
-        for (var attempt = 0; ; attempt++)
-        {
-            var input = attempt == 0 ? $"post-slug:{legacyId}" : $"post-slug:{legacyId}:{attempt}";
-            var hash = SHA256.HashData(Encoding.UTF8.GetBytes(input));
-
-            ulong numeric = 0;
-            for (var i = 0; i < 5; i++)
-            {
-                numeric = (numeric << 8) | hash[i];
-            }
-
-            var slug = ToBase36(numeric);
-            if (!slugValueOwners.TryGetValue(slug, out var owner))
-            {
-                slugValueOwners[slug] = postId;
-                return slug;
-            }
-
-            if (owner == postId)
-            {
-                return slug;
-            }
-        }
-    }
-
-    private static string ToBase36(ulong value)
-    {
-        const string digits = "0123456789abcdefghijklmnopqrstuvwxyz";
-        if (value == 0)
-        {
-            return "0";
-        }
-
-        var chars = new List<char>();
-        while (value > 0)
-        {
-            chars.Add(digits[(int)(value % 36)]);
-            value /= 36;
-        }
-
-        chars.Reverse();
-        return new string(chars.ToArray());
+        var slug = slugGenerator.GenerateUnique(
+            $"post:{legacyId}",
+            candidate => slugValueOwners.TryGetValue(candidate, out var owner) && owner != postId);
+        slugValueOwners[slug] = postId;
+        return slug;
     }
 
     private static async Task<Dictionary<int, List<(int Uid, string ValueAlias)>>> LoadPictureAliasesAsync(

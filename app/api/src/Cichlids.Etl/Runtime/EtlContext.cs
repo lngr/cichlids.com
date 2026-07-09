@@ -1,4 +1,5 @@
 using Cichlids.Infrastructure.Persistence;
+using Cichlids.Infrastructure.Slugs;
 using Cichlids.Infrastructure.Storage;
 using Microsoft.EntityFrameworkCore;
 using MySqlConnector;
@@ -14,11 +15,20 @@ namespace Cichlids.Etl.Runtime;
 /// </summary>
 public sealed class EtlContext : IAsyncDisposable
 {
-    private EtlContext(MySqlConnection legacy, CichlidsDbContext db, bool dryRun)
+    /// <summary>
+    /// Secret the local dev stack's Slugs:Secret configuration also defaults to; used here only
+    /// when a caller creates a context without resolving its own secret (tests, and any command
+    /// that never touches a generated slug), so a real deployment secret is never silently
+    /// guessed.
+    /// </summary>
+    public const string DevDefaultSlugSecret = "cichlids-local-dev-slug-secret";
+
+    private EtlContext(MySqlConnection legacy, CichlidsDbContext db, bool dryRun, SlugGenerator slugGenerator)
     {
         Legacy = legacy;
         Db = db;
         DryRun = dryRun;
+        SlugGenerator = slugGenerator;
     }
 
     public MySqlConnection Legacy { get; }
@@ -30,6 +40,13 @@ public sealed class EtlContext : IAsyncDisposable
     public bool DryRun { get; }
 
     public EtlStatistics Statistics { get; } = new();
+
+    /// <summary>
+    /// Derives short generated slugs for posts with no surviving legacy alias, keyed on the
+    /// secret this context was created with, falling back to DevDefaultSlugSecret above when the
+    /// caller passes none.
+    /// </summary>
+    public SlugGenerator SlugGenerator { get; }
 
     /// <summary>
     /// Object store for steps that export legacy binary content (for example forum attachments)
@@ -64,7 +81,8 @@ public sealed class EtlContext : IAsyncDisposable
         string targetConnectionString,
         bool dryRun,
         CancellationToken cancellationToken,
-        IObjectStore? objectStore = null)
+        IObjectStore? objectStore = null,
+        string? slugSecret = null)
     {
         var legacy = new MySqlConnection(legacyConnectionString);
         await legacy.OpenAsync(cancellationToken);
@@ -75,7 +93,8 @@ public sealed class EtlContext : IAsyncDisposable
         var db = new CichlidsDbContext(optionsBuilder.Options);
         await db.Database.OpenConnectionAsync(cancellationToken);
 
-        return new EtlContext(legacy, db, dryRun) { ObjectStore = objectStore };
+        var slugGenerator = new SlugGenerator(slugSecret ?? DevDefaultSlugSecret);
+        return new EtlContext(legacy, db, dryRun, slugGenerator) { ObjectStore = objectStore };
     }
 
     public async ValueTask DisposeAsync()
