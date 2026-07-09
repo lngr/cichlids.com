@@ -28,10 +28,12 @@ public sealed class VerifyStep : IEtlStep
 
         var migratedPostLegacyIds = await LoadLegacyIdSetAsync(context, "post", cancellationToken);
         var migratedTankLegacyIds = await LoadLegacyIdSetAsync(context, "tank", cancellationToken);
+        var migratedSpeciesLegacyIds = await LoadLegacyIdSetAsync(context, "species", cancellationToken);
 
         var eligibleForumMessageIds = await AddDiscussionRowsAsync(context, report, cancellationToken);
         await AddMediaRowsAsync(context, report, eligibleForumMessageIds, cancellationToken);
         await AddPostRowsAsync(context, report, cancellationToken);
+        await AddPostSpeciesRowsAsync(context, report, migratedPostLegacyIds, migratedSpeciesLegacyIds, cancellationToken);
         await AddSlugAliasRowsAsync(context, report, cancellationToken);
         var migratedCommentLegacyIds = await AddCommentRatingVaultRowsAsync(
             context, report, migratedPostLegacyIds, migratedTankLegacyIds, cancellationToken);
@@ -300,6 +302,42 @@ public sealed class VerifyStep : IEtlStep
         report.Add(VerificationRow.Info("post_state_published", byState.GetValueOrDefault("published")));
         report.Add(VerificationRow.Info("post_state_draft", byState.GetValueOrDefault("draft")));
         report.Add(VerificationRow.Info("post_state_archived", byState.GetValueOrDefault("archived")));
+    }
+
+    // === post_species (picture-species links) =======================================================
+
+    /// <summary>
+    /// Recomputes SpeciesLinksStep's eligibility formula (a link with a nonzero species reference,
+    /// whose picture resolved to a migrated post and whose species resolved to a migrated species)
+    /// as the count of distinct (post, species) pairs directly from the legacy source, and checks
+    /// it against post_species.
+    /// </summary>
+    private static async Task AddPostSpeciesRowsAsync(
+        EtlContext context,
+        VerificationReport report,
+        HashSet<int> migratedPostLegacyIds,
+        HashSet<int> migratedSpeciesLegacyIds,
+        CancellationToken cancellationToken)
+    {
+        var distinctPairs = new HashSet<(int PostLegacyId, int SpeciesLegacyId)>();
+        await using (var command = new MySqlCommand(
+            "SELECT uid_local, uid_foreign FROM user_cichlids_species_pictures_mm WHERE uid_foreign <> 0",
+            context.Legacy))
+        await using (var reader = await command.ExecuteReaderAsync(cancellationToken))
+        {
+            while (await reader.ReadAsync(cancellationToken))
+            {
+                var postLegacyId = reader.GetInt32(0);
+                var speciesLegacyId = reader.GetInt32(1);
+                if (migratedPostLegacyIds.Contains(postLegacyId) && migratedSpeciesLegacyIds.Contains(speciesLegacyId))
+                {
+                    distinctPairs.Add((postLegacyId, speciesLegacyId));
+                }
+            }
+        }
+
+        var actual = await PgScalarAsync(context, "SELECT COUNT(*) FROM post_species", cancellationToken);
+        report.Add(VerificationRow.Compare("post_species", distinctPairs.Count, actual));
     }
 
     // === slug_alias (target-side consistency only) =================================================

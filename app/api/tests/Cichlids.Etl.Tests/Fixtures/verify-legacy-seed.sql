@@ -130,3 +130,13 @@ VALUES
 INSERT INTO cichlids_phorum5.phorum_files (file_id, filename, file_data, message_id, link) VALUES
     -- Decodes to the ASCII string "VERIFY-ATTACHMENT-BYTES".
     (99001, 'verify-attach.txt', 'VkVSSUZZLUFUVEFDSE1FTlQtQllURVM=', 98001, 'message');
+
+-- Species links: 9101 and 9102 both migrate into posts (pid 21), 9103 is soft-deleted and never
+-- does. Species 9001/9002 both migrate. The uid_foreign = 0 row and the row targeting the
+-- never-migrated picture 9103 exercise the step's two other skip paths within a full pipeline run.
+INSERT INTO user_cichlids_species_pictures_mm (uid_local, uid_foreign, sorting) VALUES
+    (9101, 9001, 0),
+    (9101, 9002, 1),
+    (9102, 9001, 0),
+    (9103, 9001, 0),
+    (9101, 0, 2);

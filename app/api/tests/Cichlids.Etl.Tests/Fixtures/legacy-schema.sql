@@ -18,6 +18,7 @@ DROP TABLE IF EXISTS user_cichlids_comments;
 DROP TABLE IF EXISTS user_cichlids_comments_rated;
 DROP TABLE IF EXISTS user_cichlids_gallery;
 DROP TABLE IF EXISTS user_cichlids_gallery_pictures_mm;
+DROP TABLE IF EXISTS user_cichlids_species_pictures_mm;
 
 CREATE TABLE user_cichlids_genus_names (
     uid INT PRIMARY KEY,
@@ -201,6 +202,12 @@ CREATE TABLE user_cichlids_gallery (
 CREATE TABLE user_cichlids_gallery_pictures_mm (
     uid_gallery INT NOT NULL,
     uid_picture INT NOT NULL,
+    sorting INT NOT NULL DEFAULT 0
+);
+
+CREATE TABLE user_cichlids_species_pictures_mm (
+    uid_local INT NOT NULL,
+    uid_foreign INT NOT NULL,
     sorting INT NOT NULL DEFAULT 0
 );
 

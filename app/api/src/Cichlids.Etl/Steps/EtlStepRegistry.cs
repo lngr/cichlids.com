@@ -14,6 +14,7 @@ public static class EtlStepRegistry
             new ProfileMigrationStep(),
             new TankMigrationStep(),
             new PictureMigrationStep(),
+            new SpeciesLinksStep(),
             new CommentMigrationStep(),
             new GalleryMigrationStep(),
             new ForumMigrationStep(),

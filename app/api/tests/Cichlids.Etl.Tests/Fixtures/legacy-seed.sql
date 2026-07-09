@@ -339,3 +339,21 @@ INSERT INTO cichlids_phorum5.phorum_files (file_id, filename, file_data, message
     (9001, 'attach.jpg', 'RkFLRS1KUEVHLUJZVEVTLUZPUi1GT1JVTS1FVEwtQVRUQUNITUVOVC1URVNULTAwMDEtMDEyMzQ1Njc4OQ==', 90010, 'message'),
     -- Attached to 90004 (hidden, never migrated): must be skipped before it is even decoded.
     (9002, 'ignored.jpg', 'aWdub3JlZA==', 90004, 'message');
+
+-- Species-links step fixtures (SpeciesLinksStepTests): owner legacy id 480, post legacy ids
+-- 4801/4802 and species legacy ids 4810/4811 are their own range, disjoint from every id range
+-- above. SpeciesLinksStepTests seeds the matching profile/post/species rows directly in Postgres,
+-- the same way GalleryMigrationStepTests seeds its own prerequisites, instead of running the
+-- picture/species steps. Only the mm relation itself needs a legacy-side row: the step never reads
+-- user_cichlids_pictures or user_cichlids_species, only this table and the target's legacy_id maps.
+INSERT INTO user_cichlids_species_pictures_mm (uid_local, uid_foreign, sorting) VALUES
+    -- post 4801: two valid links, in sorting order.
+    (4801, 4810, 0),
+    (4801, 4811, 1),
+    -- post 4801/species 4810 again, at a higher sorting: a duplicate of the first row above, so
+    -- the smaller sorting (0) is the one that survives.
+    (4801, 4810, 5),
+    -- post 4802: species reference is 0 (no species picked) -- skipped, not a link at all.
+    (4802, 0, 0),
+    -- post 4899 was never migrated (no such post) -- skipped as an unresolved picture reference.
+    (4899, 4810, 0);

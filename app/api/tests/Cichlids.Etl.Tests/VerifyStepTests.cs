@@ -37,6 +37,7 @@ public sealed class VerifyStepTests(VerifyEtlFixture fixture)
         AssertRow(report, "media_originals", 2, 2);
         AssertRow(report, "media_forum_attachments", 1, 1);
         AssertRow(report, "post", 2, 2);
+        AssertRow(report, "post_species", 3, 3);
         AssertRow(report, "comment", 3, 3);
         AssertRow(report, "rating", 2, 2);
         AssertRow(report, "vault_legacy_comment", 3, 3);
