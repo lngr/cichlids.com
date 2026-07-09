@@ -128,7 +128,10 @@ public sealed class S3ObjectStore : IObjectStore
 
             var response = await _client.ListObjectsV2Async(request, cancellationToken).ConfigureAwait(false);
 
-            foreach (var entry in response.S3Objects)
+            // S3Objects is null, not an empty list, when the provider's response has no
+            // Contents element at all: real AWS S3 always includes it, but some S3-compatible
+            // providers omit it entirely for a prefix with zero matching objects.
+            foreach (var entry in response.S3Objects ?? [])
             {
                 yield return entry.Key;
             }

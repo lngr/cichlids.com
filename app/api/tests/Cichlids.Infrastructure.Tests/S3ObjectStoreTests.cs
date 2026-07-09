@@ -52,6 +52,29 @@ public sealed class S3ObjectStoreTests
     }
 
     [Fact]
+    public async Task GetSizeAsync_returns_the_byte_length_of_an_existing_object()
+    {
+        var store = _fixture.CreateStoreForNewBucket();
+        var content = Encoding.UTF8.GetBytes("cichlids swim in schools");
+
+        await store.PutAsync("images/sized.jpg", new MemoryStream(content), "image/jpeg");
+
+        var size = await store.GetSizeAsync("images/sized.jpg");
+
+        Assert.Equal(content.LongLength, size);
+    }
+
+    [Fact]
+    public async Task GetSizeAsync_returns_null_for_a_missing_key()
+    {
+        var store = _fixture.CreateStoreForNewBucket();
+
+        var size = await store.GetSizeAsync("does/not/exist.jpg");
+
+        Assert.Null(size);
+    }
+
+    [Fact]
     public async Task DeleteAsync_removes_the_object()
     {
         var store = _fixture.CreateStoreForNewBucket();
@@ -83,5 +106,19 @@ public sealed class S3ObjectStoreTests
         }
 
         Assert.Equal(expectedKeys.OrderBy(k => k), listedKeys.OrderBy(k => k));
+    }
+
+    [Fact]
+    public async Task ListKeysAsync_returns_no_keys_for_a_prefix_with_no_matching_objects()
+    {
+        var store = _fixture.CreateStoreForNewBucket();
+
+        var listedKeys = new List<string>();
+        await foreach (var key in store.ListKeysAsync("empty-prefix/"))
+        {
+            listedKeys.Add(key);
+        }
+
+        Assert.Empty(listedKeys);
     }
 }
