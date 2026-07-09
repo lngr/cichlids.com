@@ -1,10 +1,10 @@
 ---
 id: TASK-3.8
 title: ETL verification report
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-07-08 18:58'
-updated_date: '2026-07-08 23:53'
+updated_date: '2026-07-09 00:17'
 labels: []
 dependencies:
   - TASK-3.2
@@ -28,6 +28,12 @@ Final ETL stage comparing source and target counts per entity and per filter rea
 <!-- AC:BEGIN -->
 - [ ] #1 Given a completed ETL run, When the verification step runs, Then it reports source versus target counts per entity and per filter reason, lists every mismatch, and exits nonzero on unexpected differences
 <!-- AC:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Verify step recomputes expectations from the legacy source independently of step statistics; real run: 34 checks, 0 mismatches, exit 0 (JSON artifact in session scratchpad). Notable data fact: the legacy fish stocking column is empty across all live tanks, so inhabitants are genuinely 0.
+<!-- SECTION:NOTES:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
