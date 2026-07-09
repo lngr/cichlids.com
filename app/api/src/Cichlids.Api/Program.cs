@@ -1,5 +1,7 @@
 using System.Text.Json.Serialization;
 using Cichlids.Api.Features.Common;
+using Cichlids.Api.Features.Comments;
+using Cichlids.Api.Features.Pictures;
 using Cichlids.Api.Features.Species;
 using Cichlids.Infrastructure.Persistence;
 using Cichlids.Infrastructure.Storage;
@@ -16,6 +18,8 @@ builder.Services.AddCichlidsDbContext(builder.Configuration);
 builder.Services.AddS3ObjectStore(builder.Configuration);
 
 builder.Services.AddScoped<SpeciesQueryService>();
+builder.Services.AddScoped<PicturesQueryService>();
+builder.Services.AddScoped<CommentsQueryService>();
 
 var app = builder.Build();
 
@@ -28,6 +32,7 @@ app.MapGet("/healthz", () => Results.Ok(new { status = "ok" }))
     .WithName("GetHealth");
 
 app.MapSpeciesEndpoints();
+app.MapPicturesEndpoints();
 
 app.Run();
 
