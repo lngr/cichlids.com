@@ -1,10 +1,10 @@
 ---
 id: TASK-3.18
 title: Generated TypeScript client in client-core
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-07-08 18:58'
-updated_date: '2026-07-09 02:55'
+updated_date: '2026-07-09 03:34'
 labels: []
 dependencies:
   - TASK-3.10
@@ -23,6 +23,12 @@ Client generation from the OpenAPI document into client-core with typecheck and 
 <!-- AC:BEGIN -->
 - [ ] #1 Given the OpenAPI document of the API, When client generation runs, Then the typed client compiles, passes typecheck, and a smoke test calls the local API successfully
 <!-- AC:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+openapi-typescript generated schema plus openapi-fetch wrapper (createCichlidsClient with token hook), checked-in openapi.json copy, msw tests, real smoke against the live API.
+<!-- SECTION:NOTES:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->

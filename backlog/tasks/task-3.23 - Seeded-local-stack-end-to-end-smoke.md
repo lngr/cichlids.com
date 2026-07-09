@@ -1,9 +1,10 @@
 ---
 id: TASK-3.23
 title: Seeded local stack end to end smoke
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-07-08 18:58'
+updated_date: '2026-07-09 03:34'
 labels: []
 dependencies:
   - TASK-3.16

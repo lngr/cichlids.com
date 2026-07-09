@@ -1,9 +1,10 @@
 ---
 id: TASK-3.20
 title: Mobile app tank and profile screens
-status: To Do
+status: In Review
 assignee: []
 created_date: '2026-07-08 18:58'
+updated_date: '2026-07-09 03:34'
 labels: []
 dependencies:
   - TASK-3.19
@@ -23,6 +24,12 @@ Tank detail with image sections and public profile screen.
 <!-- AC:BEGIN -->
 - [ ] #1 Given the seeded local stack, When a tank and a user profile are opened in the app, Then tank data with image sections and public profile data render, verified by a Maestro flow
 <!-- AC:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Tank list and detail with datasheet and section galleries plus profile screen shipped with the app shell; Maestro flow checked in, execution blocked as on 3.19.
+<!-- SECTION:NOTES:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->

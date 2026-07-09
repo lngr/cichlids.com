@@ -1,9 +1,10 @@
 ---
 id: TASK-3.27
 title: Mobile app community archive screens
-status: To Do
+status: In Review
 assignee: []
 created_date: '2026-07-08 19:34'
+updated_date: '2026-07-09 03:34'
 labels: []
 dependencies:
   - TASK-3.25
@@ -22,6 +23,12 @@ Archive section in the app: category list, thread list, thread detail in read-on
 <!-- AC:BEGIN -->
 - [ ] #1 Given the seeded local stack, When the community archive is opened in the app, Then categories, threads and posts render read-only, verified by a Maestro flow
 <!-- AC:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Read-only community screens (categories, thread list, thread detail with archive notice) shipped with the app shell.
+<!-- SECTION:NOTES:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
