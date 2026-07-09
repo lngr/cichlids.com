@@ -66,7 +66,12 @@ public static class VerificationReportPrinter
     }
 
     private sealed record JsonRowDto(
-        string Entity, long Expected, long Actual, long Delta, string Status, string? Note);
+        [property: JsonPropertyName("entity")] string Entity,
+        [property: JsonPropertyName("expected")] long Expected,
+        [property: JsonPropertyName("actual")] long Actual,
+        [property: JsonPropertyName("delta")] long Delta,
+        [property: JsonPropertyName("status")] string Status,
+        [property: JsonPropertyName("note")] string? Note);
 
     private sealed record JsonDocumentDto(
         [property: JsonPropertyName("generatedAt")] DateTimeOffset GeneratedAt,
