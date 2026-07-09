@@ -10,7 +10,7 @@ public sealed class SchemaMigrationTests
         "species", "species_common_name", "species_link",
         "tank", "inhabitant", "tank_media",
         "media_item", "media_variant",
-        "post", "post_media",
+        "post", "post_media", "post_species",
         "comment", "rating", "comment_vote",
         "collection", "collection_entry",
         "follow", "slug_alias",

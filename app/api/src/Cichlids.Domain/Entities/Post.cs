@@ -28,4 +28,5 @@ public class Post
     public long? DeletedByProfileId { get; set; }
 
     public List<PostMedia> Media { get; set; } = [];
+    public List<PostSpecies> Species { get; set; } = [];
 }
