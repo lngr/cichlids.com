@@ -23,6 +23,16 @@ services:
     # covers plain `docker compose` / exec-devcontainer usage.
     ports:
       - "127.0.0.1:6480:6480"
+      # Host access to the app services (Expo web, API, object store). Host port and
+      # bind address come from .env, so a taken host port can be retargeted there
+      # without editing this file; the defaults publish on the loopback at the native
+      # ports. S3_PORT must match ObjectStorage:PublicBaseUrl in the API's
+      # appsettings.Development.json, because the image URLs the API returns embed that
+      # port. API_PORT stays 5045 unless the generated API clients are rebuilt for a
+      # different port.
+      - "${WEB_BIND:-127.0.0.1}:${WEB_PORT:-8081}:8081"
+      - "${S3_BIND:-127.0.0.1}:${S3_PORT:-9000}:9000"
+      - "${API_BIND:-127.0.0.1}:${API_PORT:-5045}:5045"
     extra_hosts:
       - "host.docker.internal:host-gateway"
     networks:
