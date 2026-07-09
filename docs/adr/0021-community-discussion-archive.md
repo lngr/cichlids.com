@@ -1,6 +1,6 @@
 # ADR-0021: Community Discussion Archive
 
-- **Status:** Proposed
+- **Status:** Accepted
 - **Date:** 2026-07-08
 - **Deciders:** Alexander Langer
 
