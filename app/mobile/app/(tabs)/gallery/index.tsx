@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { FlatList, StyleSheet, View } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
+import { useTranslation } from "react-i18next";
 import { apiClient } from "../../../src/api/client";
 import { useTheme } from "../../../src/theme";
 import { usePagedList } from "../../../src/hooks/usePagedList";
@@ -9,23 +10,24 @@ import { PictureCard } from "../../../src/components/PictureCard";
 import { EmptyView, ErrorView, LoadingView } from "../../../src/components/StatusView";
 import type { PictureListItem } from "@cichlids/client-core";
 
-const SORTS: { value: "newest" | "views" | "rating"; label: string }[] = [
-  { value: "newest", label: "Neueste" },
-  { value: "views", label: "Meiste Aufrufe" },
-  { value: "rating", label: "Beste Bewertung" },
+const SORTS: { value: "newest" | "views" | "rating"; labelKey: string }[] = [
+  { value: "newest", labelKey: "gallery.sort.newest" },
+  { value: "views", labelKey: "gallery.sort.views" },
+  { value: "rating", labelKey: "gallery.sort.rating" },
 ];
 
-const TOPICS: { value: string | undefined; label: string }[] = [
-  { value: undefined, label: "Alle" },
-  { value: "cichlids", label: "Cichliden" },
-  { value: "tanks", label: "Becken" },
-  { value: "offtopic", label: "Offtopic" },
-  { value: "contest", label: "Contest" },
+const TOPICS: { value: string | undefined; labelKey: string }[] = [
+  { value: undefined, labelKey: "gallery.topics.all" },
+  { value: "cichlids", labelKey: "gallery.topics.cichlids" },
+  { value: "tanks", labelKey: "gallery.topics.tanks" },
+  { value: "offtopic", labelKey: "gallery.topics.offtopic" },
+  { value: "contest", labelKey: "gallery.topics.contest" },
 ];
 
 export default function GalleryScreen() {
   const theme = useTheme();
   const router = useRouter();
+  const { t } = useTranslation();
   const params = useLocalSearchParams<{ species?: string }>();
   const [sort, setSort] = useState<"newest" | "views" | "rating">("newest");
   const [topic, setTopic] = useState<string | undefined>(undefined);
@@ -49,19 +51,19 @@ export default function GalleryScreen() {
     <View style={[styles.container, { backgroundColor: theme.colors.bg }]}>
       {species ? (
         <View style={styles.filterRow}>
-          <Chip label={`Art: ${species} ×`} active onPress={() => setSpecies(undefined)} />
+          <Chip label={t("gallery.speciesFilter", { species })} active onPress={() => setSpecies(undefined)} />
         </View>
       ) : null}
       <View style={styles.filterRow}>
         {SORTS.map((option) => (
-          <Chip key={option.value} label={option.label} active={sort === option.value} onPress={() => setSort(option.value)} />
+          <Chip key={option.value} label={t(option.labelKey)} active={sort === option.value} onPress={() => setSort(option.value)} />
         ))}
       </View>
       <View style={styles.filterRow}>
         {TOPICS.map((option) => (
           <Chip
-            key={option.label}
-            label={option.label}
+            key={option.labelKey}
+            label={t(option.labelKey)}
             active={topic === option.value}
             onPress={() => setTopic(option.value)}
           />
@@ -69,11 +71,11 @@ export default function GalleryScreen() {
       </View>
 
       {loading && items.length === 0 ? (
-        <LoadingView label="Bilder laden…" />
+        <LoadingView label={t("gallery.loading")} />
       ) : error && items.length === 0 ? (
         <ErrorView message={error} onRetry={reload} />
       ) : items.length === 0 ? (
-        <EmptyView message="Keine Bilder gefunden." />
+        <EmptyView message={t("gallery.empty")} />
       ) : (
         <FlatList
           key="grid-2"

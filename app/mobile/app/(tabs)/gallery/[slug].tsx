@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 import { Image } from "expo-image";
 import { useLocalSearchParams, useNavigation, useRouter } from "expo-router";
+import { useTranslation } from "react-i18next";
 import { apiClient } from "../../../src/api/client";
 import { useTheme } from "../../../src/theme";
 import { usePagedList } from "../../../src/hooks/usePagedList";
@@ -15,6 +16,7 @@ export default function PictureDetailScreen() {
   const theme = useTheme();
   const router = useRouter();
   const navigation = useNavigation();
+  const { t, i18n } = useTranslation();
 
   const [picture, setPicture] = useState<PictureDetail | null>(null);
   const [loading, setLoading] = useState(true);
@@ -29,20 +31,20 @@ export default function PictureDetailScreen() {
       .then((detail) => {
         if (cancelled) return;
         setPicture(detail);
-        navigation.setOptions({ title: detail.title ?? "Bild" });
+        navigation.setOptions({ title: detail.title ?? t("gallery.untitled") });
       })
-      .catch((err) => !cancelled && setError(err instanceof Error ? err.message : "Fehler beim Laden"))
+      .catch((err) => !cancelled && setError(err instanceof Error ? err.message : t("common.loadError")))
       .finally(() => !cancelled && setLoading(false));
     return () => {
       cancelled = true;
     };
-  }, [slug, navigation]);
+  }, [slug, navigation, t]);
 
   const fetchComments = useCallback((offset: number, limit: number) => apiClient.pictures.listComments(slug, { offset, limit }), [slug]);
   const comments = usePagedList<Comment>(fetchComments, [slug]);
 
-  if (loading) return <LoadingView label="Bild laden…" />;
-  if (error || !picture) return <ErrorView message={error ?? "Bild nicht gefunden"} />;
+  if (loading) return <LoadingView label={t("gallery.detail.loading")} />;
+  if (error || !picture) return <ErrorView message={error ?? t("gallery.detail.notFound")} />;
 
   return (
     <FlatList
@@ -60,14 +62,14 @@ export default function PictureDetailScreen() {
             contentFit="cover"
           />
           <View style={styles.body}>
-            <Text style={[theme.type.h1, { color: theme.colors.fg }]}>{picture.title ?? "Ohne Titel"}</Text>
+            <Text style={[theme.type.h1, { color: theme.colors.fg }]}>{picture.title ?? t("gallery.untitled")}</Text>
             <Pressable onPress={() => router.push(`/profile/${picture.author.id}`)}>
               <Text style={[theme.type.bodyStrong, { color: theme.colors.accent, marginTop: 4 }]}>
                 {picture.author.displayName ?? picture.author.username}
               </Text>
             </Pressable>
             <Text style={[theme.type.meta, { color: theme.colors.muted, marginTop: 2 }]}>
-              {formatDate(picture.publishedAt)} · {Number(picture.viewCount)} Aufrufe
+              {formatDate(picture.publishedAt, i18n.language)} · {Number(picture.viewCount)} {t("gallery.views", { count: Number(picture.viewCount) })}
               {picture.ratingAverage ? ` · ${"★".repeat(Math.round(Number(picture.ratingAverage)))} (${Number(picture.ratingCount)})` : ""}
             </Text>
             {picture.description ? (
@@ -75,12 +77,12 @@ export default function PictureDetailScreen() {
             ) : null}
 
             <Text style={[theme.type.h2, { color: theme.colors.fg, marginTop: 20 }]}>
-              Kommentare ({Number(picture.commentCount)})
+              {t("gallery.detail.comments", { count: Number(picture.commentCount) })}
             </Text>
           </View>
         </View>
       }
-      ListEmptyComponent={comments.loading ? <LoadingView label="Kommentare laden…" /> : <EmptyView message="Noch keine Kommentare." />}
+      ListEmptyComponent={comments.loading ? <LoadingView label={t("gallery.detail.commentsLoading")} /> : <EmptyView message={t("gallery.detail.commentsEmpty")} />}
       ListFooterComponent={comments.loadingMore ? <LoadingView /> : null}
       contentContainerStyle={styles.listContent}
     />

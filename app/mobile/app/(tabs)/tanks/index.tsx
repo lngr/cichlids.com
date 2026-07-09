@@ -1,6 +1,7 @@
 import { useCallback, useState } from "react";
 import { FlatList, StyleSheet, View } from "react-native";
 import { useRouter } from "expo-router";
+import { useTranslation } from "react-i18next";
 import { apiClient } from "../../../src/api/client";
 import { useTheme } from "../../../src/theme";
 import { usePagedList } from "../../../src/hooks/usePagedList";
@@ -9,20 +10,21 @@ import { TankCard } from "../../../src/components/TankCard";
 import { EmptyView, ErrorView, LoadingView } from "../../../src/components/StatusView";
 import type { TankListItem } from "@cichlids/client-core";
 
-const CATEGORIES: { value: string | undefined; label: string }[] = [
-  { value: undefined, label: "Alle" },
-  { value: "african", label: "Afrika" },
-  { value: "american", label: "Amerika" },
-  { value: "central_american", label: "Mittelamerika" },
-  { value: "south_american", label: "Südamerika" },
-  { value: "malawi", label: "Malawi" },
-  { value: "tanganyika", label: "Tanganjika" },
-  { value: "community", label: "Gesellschaft" },
+const CATEGORIES: { value: string | undefined; labelKey: string }[] = [
+  { value: undefined, labelKey: "tanks.categories.all" },
+  { value: "african", labelKey: "tanks.categories.african" },
+  { value: "american", labelKey: "tanks.categories.american" },
+  { value: "central_american", labelKey: "tanks.categories.central_american" },
+  { value: "south_american", labelKey: "tanks.categories.south_american" },
+  { value: "malawi", labelKey: "tanks.categories.malawi" },
+  { value: "tanganyika", labelKey: "tanks.categories.tanganyika" },
+  { value: "community", labelKey: "tanks.categories.community" },
 ];
 
 export default function TanksScreen() {
   const theme = useTheme();
   const router = useRouter();
+  const { t } = useTranslation();
   const [category, setCategory] = useState<string | undefined>(undefined);
 
   const fetchPage = useCallback(
@@ -35,16 +37,16 @@ export default function TanksScreen() {
     <View style={[styles.container, { backgroundColor: theme.colors.bg }]}>
       <View style={styles.filterRow}>
         {CATEGORIES.map((option) => (
-          <Chip key={option.label} label={option.label} active={category === option.value} onPress={() => setCategory(option.value)} />
+          <Chip key={option.labelKey} label={t(option.labelKey)} active={category === option.value} onPress={() => setCategory(option.value)} />
         ))}
       </View>
 
       {loading && items.length === 0 ? (
-        <LoadingView label="Becken laden…" />
+        <LoadingView label={t("tanks.loading")} />
       ) : error && items.length === 0 ? (
         <ErrorView message={error} onRetry={reload} />
       ) : items.length === 0 ? (
-        <EmptyView message="Keine Becken gefunden." />
+        <EmptyView message={t("tanks.empty")} />
       ) : (
         <FlatList
           data={items}

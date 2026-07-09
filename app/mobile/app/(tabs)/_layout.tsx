@@ -1,9 +1,11 @@
 import { Tabs } from "expo-router";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useTranslation } from "react-i18next";
 import { useTheme } from "../../src/theme";
 
 export default function TabsLayout() {
   const theme = useTheme();
+  const { t } = useTranslation();
 
   return (
     <Tabs
@@ -20,28 +22,28 @@ export default function TabsLayout() {
       <Tabs.Screen
         name="gallery"
         options={{
-          title: "Galerie",
+          title: t("tabs.gallery"),
           tabBarIcon: ({ color, size }) => <MaterialCommunityIcons name="image-multiple" color={color} size={size} />,
         }}
       />
       <Tabs.Screen
         name="tanks"
         options={{
-          title: "Becken",
+          title: t("tabs.tanks"),
           tabBarIcon: ({ color, size }) => <MaterialCommunityIcons name="fishbowl" color={color} size={size} />,
         }}
       />
       <Tabs.Screen
         name="community"
         options={{
-          title: "Community",
+          title: t("tabs.community"),
           tabBarIcon: ({ color, size }) => <MaterialCommunityIcons name="forum" color={color} size={size} />,
         }}
       />
       <Tabs.Screen
         name="species"
         options={{
-          title: "Arten",
+          title: t("tabs.species"),
           tabBarIcon: ({ color, size }) => <MaterialCommunityIcons name="fish" color={color} size={size} />,
         }}
       />

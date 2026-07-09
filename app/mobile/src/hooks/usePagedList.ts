@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import type { PagedResponse } from "@cichlids/client-core";
 
 const PAGE_SIZE = 20;
@@ -29,6 +30,7 @@ export function usePagedList<T>(
   const [loadingMore, setLoadingMore] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const requestId = useRef(0);
+  const { t } = useTranslation();
 
   const load = useCallback(
     async (offset: number, append: boolean) => {
@@ -42,7 +44,7 @@ export function usePagedList<T>(
         setItems((prev) => (append ? [...prev, ...page.items] : page.items));
       } catch (err) {
         if (id !== requestId.current) return;
-        setError(err instanceof Error ? err.message : "Unbekannter Fehler");
+        setError(err instanceof Error ? err.message : t("common.unknownError"));
       } finally {
         if (id !== requestId.current) return;
         append ? setLoadingMore(false) : setLoading(false);

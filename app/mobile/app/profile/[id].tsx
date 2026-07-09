@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { FlatList, Image, StyleSheet, Text, View } from "react-native";
 import { useLocalSearchParams, useNavigation, useRouter } from "expo-router";
+import { useTranslation } from "react-i18next";
 import { apiClient } from "../../src/api/client";
 import { useTheme } from "../../src/theme";
 import { usePagedList } from "../../src/hooks/usePagedList";
@@ -17,6 +18,7 @@ export default function ProfileScreen() {
   const theme = useTheme();
   const router = useRouter();
   const navigation = useNavigation();
+  const { t, i18n } = useTranslation();
 
   const [profile, setProfile] = useState<ProfileDetail | null>(null);
   const [loading, setLoading] = useState(true);
@@ -32,20 +34,20 @@ export default function ProfileScreen() {
         setProfile(detail);
         navigation.setOptions({ title: detail.displayName ?? detail.username });
       })
-      .catch((err) => !cancelled && setError(err instanceof Error ? err.message : "Fehler beim Laden"))
+      .catch((err) => !cancelled && setError(err instanceof Error ? err.message : t("common.loadError")))
       .finally(() => !cancelled && setLoading(false));
     return () => {
       cancelled = true;
     };
-  }, [profileId, navigation]);
+  }, [profileId, navigation, t]);
 
   const fetchPictures = useCallback((offset: number, limit: number) => apiClient.profiles.listPictures(profileId, { offset, limit }), [profileId]);
   const fetchTanks = useCallback((offset: number, limit: number) => apiClient.profiles.listTanks(profileId, { offset, limit }), [profileId]);
   const pictures = usePagedList<PictureListItem>(fetchPictures, [profileId]);
   const tanks = usePagedList<TankListItem>(fetchTanks, [profileId]);
 
-  if (loading) return <LoadingView label="Profil laden…" />;
-  if (error || !profile) return <ErrorView message={error ?? "Profil nicht gefunden"} />;
+  if (loading) return <LoadingView label={t("profile.loading")} />;
+  if (error || !profile) return <ErrorView message={error ?? t("profile.notFound")} />;
 
   const header = (
     <View>
@@ -58,18 +60,19 @@ export default function ProfileScreen() {
         <View style={{ flex: 1 }}>
           <Text style={[theme.type.h1, { color: theme.colors.fg }]}>{profile.displayName ?? profile.username}</Text>
           <Text style={[theme.type.meta, { color: theme.colors.muted }]}>
-            {[profile.city, profile.countryCode].filter(Boolean).join(", ") || `dabei seit ${formatDate(profile.createdAt)}`}
+            {[profile.city, profile.countryCode].filter(Boolean).join(", ") ||
+              t("profile.memberSince", { date: formatDate(profile.createdAt, i18n.language) })}
           </Text>
         </View>
       </View>
       <View style={styles.statsRow}>
-        <Text style={[theme.type.meta, { color: theme.colors.muted }]}>{Number(profile.stats.pictureCount)} Bilder</Text>
-        <Text style={[theme.type.meta, { color: theme.colors.muted }]}>{Number(profile.stats.tankCount)} Becken</Text>
-        <Text style={[theme.type.meta, { color: theme.colors.muted }]}>{Number(profile.stats.commentCount)} Kommentare</Text>
+        <Text style={[theme.type.meta, { color: theme.colors.muted }]}>{t("profile.pictures", { count: Number(profile.stats.pictureCount) })}</Text>
+        <Text style={[theme.type.meta, { color: theme.colors.muted }]}>{t("profile.tanks", { count: Number(profile.stats.tankCount) })}</Text>
+        <Text style={[theme.type.meta, { color: theme.colors.muted }]}>{t("profile.comments", { count: Number(profile.stats.commentCount) })}</Text>
       </View>
       <View style={styles.filterRow}>
-        <Chip label="Bilder" active={tab === "pictures"} onPress={() => setTab("pictures")} />
-        <Chip label="Becken" active={tab === "tanks"} onPress={() => setTab("tanks")} />
+        <Chip label={t("profile.picturesTab")} active={tab === "pictures"} onPress={() => setTab("pictures")} />
+        <Chip label={t("profile.tanksTab")} active={tab === "tanks"} onPress={() => setTab("tanks")} />
       </View>
     </View>
   );
@@ -87,7 +90,7 @@ export default function ProfileScreen() {
         renderItem={({ item }) => <PictureCard picture={item} onPress={() => router.push(`/gallery/${item.slug}`)} />}
         onEndReachedThreshold={0.4}
         onEndReached={pictures.loadMore}
-        ListEmptyComponent={pictures.loading ? <LoadingView /> : <EmptyView message="Keine Bilder." />}
+        ListEmptyComponent={pictures.loading ? <LoadingView /> : <EmptyView message={t("profile.emptyPictures")} />}
         ListFooterComponent={pictures.loadingMore ? <LoadingView /> : null}
       />
     );
@@ -104,7 +107,7 @@ export default function ProfileScreen() {
       renderItem={({ item }) => <TankCard tank={item} onPress={() => router.push(`/tanks/${item.id}`)} />}
       onEndReachedThreshold={0.4}
       onEndReached={tanks.loadMore}
-      ListEmptyComponent={tanks.loading ? <LoadingView /> : <EmptyView message="Keine Becken." />}
+      ListEmptyComponent={tanks.loading ? <LoadingView /> : <EmptyView message={t("profile.emptyTanks")} />}
       ListFooterComponent={tanks.loadingMore ? <LoadingView /> : null}
     />
   );

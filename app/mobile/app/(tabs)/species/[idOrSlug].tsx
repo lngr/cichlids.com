@@ -1,32 +1,19 @@
 import { useEffect, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { useLocalSearchParams, useNavigation, useRouter } from "expo-router";
+import { useTranslation } from "react-i18next";
 import { apiClient } from "../../../src/api/client";
 import { useTheme } from "../../../src/theme";
 import { DataRow } from "../../../src/components/DataRow";
 import { ErrorView, LoadingView } from "../../../src/components/StatusView";
 import type { SpeciesDetail, SpeciesLink } from "@cichlids/client-core";
 
-const BREEDING_LABELS: Record<string, string> = {
-  unspecified: "unbekannt",
-  mouthbreeder: "Maulbrüter",
-  cave_breeder: "Höhlenbrüter",
-  substrate_breeder: "Substratlaicher",
-};
-
-const DIET_LABELS: Record<string, string> = {
-  unspecified: "unbekannt",
-  omnivore: "Allesfresser",
-  carnivore: "Fleischfresser",
-  herbivore: "Pflanzenfresser",
-  limnivore: "Aufwuchsfresser",
-};
-
 export default function SpeciesDetailScreen() {
   const { idOrSlug } = useLocalSearchParams<{ idOrSlug: string }>();
   const theme = useTheme();
   const router = useRouter();
   const navigation = useNavigation();
+  const { t } = useTranslation();
 
   const [species, setSpecies] = useState<SpeciesDetail | null>(null);
   const [loading, setLoading] = useState(true);
@@ -42,15 +29,15 @@ export default function SpeciesDetailScreen() {
         setSpecies(detail);
         navigation.setOptions({ title: detail.displayName });
       })
-      .catch((err) => !cancelled && setError(err instanceof Error ? err.message : "Fehler beim Laden"))
+      .catch((err) => !cancelled && setError(err instanceof Error ? err.message : t("common.loadError")))
       .finally(() => !cancelled && setLoading(false));
     return () => {
       cancelled = true;
     };
-  }, [idOrSlug, navigation]);
+  }, [idOrSlug, navigation, t]);
 
-  if (loading) return <LoadingView label="Art laden…" />;
-  if (error || !species) return <ErrorView message={error ?? "Art nicht gefunden"} />;
+  if (loading) return <LoadingView label={t("species.detail.loading")} />;
+  if (error || !species) return <ErrorView message={error ?? t("species.detail.notFound")} />;
 
   const pictureCount = Number(species.pictureCount);
 
@@ -65,17 +52,17 @@ export default function SpeciesDetailScreen() {
         <Text style={[theme.type.body, { color: theme.colors.fg, marginTop: 12 }]}>{species.description}</Text>
       ) : null}
 
-      <Text style={[theme.type.h2, { color: theme.colors.fg, marginTop: 20, marginBottom: 4 }]}>Pflege</Text>
-      <DataRow label="Temperatur" value={species.temperatureRange} />
-      <DataRow label="pH-Wert" value={species.phRange} />
-      <DataRow label="GH" value={species.ghRange} />
-      <DataRow label="KH" value={species.khRange} />
-      <DataRow label="Endgröße" value={species.maxSize} />
-      <DataRow label="Fortpflanzung" value={BREEDING_LABELS[species.breeding] ?? species.breeding} />
-      <DataRow label="Ernährung" value={DIET_LABELS[species.diet] ?? species.diet} />
-      <DataRow label="Herkunft" value={species.origin} />
-      <DataRow label="Lebensraum" value={species.habitat} />
-      <DataRow label="Formen" value={species.morphs} />
+      <Text style={[theme.type.h2, { color: theme.colors.fg, marginTop: 20, marginBottom: 4 }]}>{t("species.detail.care")}</Text>
+      <DataRow label={t("species.detail.temperature")} value={species.temperatureRange} />
+      <DataRow label={t("species.detail.ph")} value={species.phRange} />
+      <DataRow label={t("species.detail.gh")} value={species.ghRange} />
+      <DataRow label={t("species.detail.kh")} value={species.khRange} />
+      <DataRow label={t("species.detail.maxSize")} value={species.maxSize} />
+      <DataRow label={t("species.detail.breeding")} value={t(`species.breeding.${species.breeding}`, species.breeding)} />
+      <DataRow label={t("species.detail.diet")} value={t(`species.diet.${species.diet}`, species.diet)} />
+      <DataRow label={t("species.detail.origin")} value={species.origin} />
+      <DataRow label={t("species.detail.habitat")} value={species.habitat} />
+      <DataRow label={t("species.detail.morphs")} value={species.morphs} />
 
       <Pressable
         style={[styles.pictureLink, { backgroundColor: theme.colors.accentWeak, borderRadius: theme.radius.md }]}
@@ -84,13 +71,13 @@ export default function SpeciesDetailScreen() {
         accessibilityRole="button"
       >
         <Text style={[theme.type.bodyStrong, { color: theme.colors.accent }]}>
-          {pictureCount} {pictureCount === 1 ? "Bild" : "Bilder"} in der Galerie ansehen →
+          {t("species.detail.viewPictures", { count: pictureCount })}
         </Text>
       </Pressable>
 
       {species.links.length > 0 ? (
         <View style={styles.links}>
-          <Text style={[theme.type.h2, { color: theme.colors.fg, marginBottom: 4 }]}>Links</Text>
+          <Text style={[theme.type.h2, { color: theme.colors.fg, marginBottom: 4 }]}>{t("species.detail.links")}</Text>
           {species.links.map((link: SpeciesLink, index: number) => (
             <Text key={index} style={[theme.type.body, { color: theme.colors.accent, marginTop: 4 }]}>
               {link.label ?? link.url}

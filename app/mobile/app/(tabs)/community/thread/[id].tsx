@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import { Image } from "expo-image";
 import { useLocalSearchParams, useNavigation } from "expo-router";
+import { useTranslation } from "react-i18next";
 import { apiClient } from "../../../../src/api/client";
 import { useTheme } from "../../../../src/theme";
 import { EmptyView, ErrorView, LoadingView } from "../../../../src/components/StatusView";
@@ -12,6 +13,7 @@ export default function ThreadDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const theme = useTheme();
   const navigation = useNavigation();
+  const { t, i18n } = useTranslation();
 
   const [thread, setThread] = useState<CommunityThreadDetail | null>(null);
   const [loading, setLoading] = useState(true);
@@ -27,15 +29,15 @@ export default function ThreadDetailScreen() {
         setThread(detail);
         navigation.setOptions({ title: detail.title });
       })
-      .catch((err) => !cancelled && setError(err instanceof Error ? err.message : "Fehler beim Laden"))
+      .catch((err) => !cancelled && setError(err instanceof Error ? err.message : t("common.loadError")))
       .finally(() => !cancelled && setLoading(false));
     return () => {
       cancelled = true;
     };
-  }, [id, navigation]);
+  }, [id, navigation, t]);
 
-  if (loading) return <LoadingView label="Thema laden…" />;
-  if (error || !thread) return <ErrorView message={error ?? "Thema nicht gefunden"} />;
+  if (loading) return <LoadingView label={t("community.thread.loading")} />;
+  if (error || !thread) return <ErrorView message={error ?? t("community.thread.notFound")} />;
 
   return (
     <FlatList
@@ -46,9 +48,9 @@ export default function ThreadDetailScreen() {
         <View style={[styles.post, { borderColor: theme.colors.border }]}>
           <View style={styles.postHeader}>
             <Text style={[theme.type.bodyStrong, { color: theme.colors.fg }]}>
-              {item.author.displayName ?? item.author.username ?? "Gast"}
+              {item.author.displayName ?? item.author.username ?? t("common.guest")}
             </Text>
-            <Text style={[theme.type.meta, { color: theme.colors.muted }]}>{formatDate(item.createdAt)}</Text>
+            <Text style={[theme.type.meta, { color: theme.colors.muted }]}>{formatDate(item.createdAt, i18n.language)}</Text>
           </View>
           <Text style={[theme.type.body, { color: theme.colors.fg, marginTop: 4 }]}>{item.body}</Text>
           {item.attachments.length > 0 ? (
@@ -70,14 +72,12 @@ export default function ThreadDetailScreen() {
           <Text style={[theme.type.h1, { color: theme.colors.fg }]}>{thread.title}</Text>
           <View style={[styles.notice, { backgroundColor: theme.colors.accentWeak }]}>
             <Text style={[theme.type.meta, { color: theme.colors.fg }]}>
-              {thread.state === "archived"
-                ? "Archivierter Thread aus dem alten Forum. Nur lesbar."
-                : "Aus dem Archiv des alten Forums. Nur lesbar."}
+              {thread.state === "archived" ? t("community.thread.archivedNotice") : t("community.thread.genericNotice")}
             </Text>
           </View>
         </View>
       }
-      ListEmptyComponent={<EmptyView message="Keine Beiträge in diesem Thema." />}
+      ListEmptyComponent={<EmptyView message={t("community.thread.empty")} />}
       contentContainerStyle={styles.listContent}
     />
   );

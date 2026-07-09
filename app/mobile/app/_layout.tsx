@@ -1,9 +1,12 @@
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
+import { useTranslation } from "react-i18next";
 import { useTheme } from "../src/theme";
+import "../src/i18n";
 
 export default function RootLayout() {
   const theme = useTheme();
+  const { t } = useTranslation();
 
   return (
     <>
@@ -18,7 +21,7 @@ export default function RootLayout() {
       >
         <Stack.Screen name="index" options={{ headerShown: false }} />
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="profile/[id]" options={{ title: "Profil" }} />
+        <Stack.Screen name="profile/[id]" options={{ title: t("profile.title") }} />
       </Stack>
     </>
   );

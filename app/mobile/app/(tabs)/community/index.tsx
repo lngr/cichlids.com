@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import { useRouter } from "expo-router";
+import { useTranslation } from "react-i18next";
 import { apiClient } from "../../../src/api/client";
 import { useTheme } from "../../../src/theme";
 import { usePagedList } from "../../../src/hooks/usePagedList";
@@ -9,15 +10,10 @@ import { ThreadRow } from "../../../src/components/ThreadRow";
 import { EmptyView, ErrorView, LoadingView } from "../../../src/components/StatusView";
 import type { CommunityCategory, CommunityThreadListItem } from "@cichlids/client-core";
 
-const CATEGORY_LABELS: Record<string, string> = {
-  cichlids: "Cichliden",
-  african: "Afrika",
-  market_place: "Marktplatz",
-};
-
 export default function CommunityScreen() {
   const theme = useTheme();
   const router = useRouter();
+  const { t } = useTranslation();
   const [category, setCategory] = useState<string | undefined>(undefined);
   const [categories, setCategories] = useState<CommunityCategory[]>([]);
 
@@ -35,15 +31,15 @@ export default function CommunityScreen() {
     <View style={[styles.container, { backgroundColor: theme.colors.bg }]}>
       <View style={[styles.notice, { backgroundColor: theme.colors.accentWeak }]}>
         <Text style={[theme.type.meta, { color: theme.colors.fg }]}>
-          Archiv der alten Community-Foren. Nur lesbar, keine neuen Beiträge.
+          {t("community.archiveNotice")}
         </Text>
       </View>
       <View style={styles.filterRow}>
-        <Chip label="Alle" active={category === undefined} onPress={() => setCategory(undefined)} />
+        <Chip label={t("community.all")} active={category === undefined} onPress={() => setCategory(undefined)} />
         {categories.map((c) => (
           <Chip
             key={c.category}
-            label={`${CATEGORY_LABELS[c.category] ?? c.category} (${Number(c.threadCount)})`}
+            label={`${t(`community.categories.${c.category}`, c.category)} (${Number(c.threadCount)})`}
             active={category === c.category}
             onPress={() => setCategory(c.category)}
           />
@@ -51,11 +47,11 @@ export default function CommunityScreen() {
       </View>
 
       {loading && items.length === 0 ? (
-        <LoadingView label="Themen laden…" />
+        <LoadingView label={t("community.loading")} />
       ) : error && items.length === 0 ? (
         <ErrorView message={error} onRetry={reload} />
       ) : items.length === 0 ? (
-        <EmptyView message="Keine Themen gefunden." />
+        <EmptyView message={t("community.empty")} />
       ) : (
         <FlatList
           data={items}

@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { FlatList, StyleSheet, View } from "react-native";
 import { useRouter } from "expo-router";
+import { useTranslation } from "react-i18next";
 import { apiClient } from "../../../src/api/client";
 import { useTheme } from "../../../src/theme";
 import { usePagedList } from "../../../src/hooks/usePagedList";
@@ -12,6 +13,7 @@ import type { SpeciesListItem } from "@cichlids/client-core";
 export default function SpeciesScreen() {
   const theme = useTheme();
   const router = useRouter();
+  const { t } = useTranslation();
   const [query, setQuery] = useState("");
   const [debouncedQuery, setDebouncedQuery] = useState("");
 
@@ -28,14 +30,14 @@ export default function SpeciesScreen() {
 
   return (
     <View style={[styles.container, { backgroundColor: theme.colors.bg }]}>
-      <SearchField value={query} onChangeText={setQuery} placeholder="Gattung oder Art suchen…" />
+      <SearchField value={query} onChangeText={setQuery} placeholder={t("species.searchPlaceholder")} />
 
       {loading && items.length === 0 ? (
-        <LoadingView label="Arten laden…" />
+        <LoadingView label={t("species.loading")} />
       ) : error && items.length === 0 ? (
         <ErrorView message={error} onRetry={reload} />
       ) : items.length === 0 ? (
-        <EmptyView message="Keine Arten gefunden." />
+        <EmptyView message={t("species.empty")} />
       ) : (
         <FlatList
           data={items}

@@ -1,24 +1,27 @@
 import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
+import { useTranslation } from "react-i18next";
 import { useTheme } from "../theme";
 
-export function LoadingView({ label = "Lädt…" }: { label?: string }) {
+export function LoadingView({ label }: { label?: string }) {
   const theme = useTheme();
+  const { t } = useTranslation();
   return (
     <View style={[styles.center, { backgroundColor: theme.colors.bg }]}>
       <ActivityIndicator color={theme.colors.accent} />
-      <Text style={[styles.label, { color: theme.colors.muted }]}>{label}</Text>
+      <Text style={[styles.label, { color: theme.colors.muted }]}>{label ?? t("common.loading")}</Text>
     </View>
   );
 }
 
 export function ErrorView({ message, onRetry }: { message: string; onRetry?: () => void }) {
   const theme = useTheme();
+  const { t } = useTranslation();
   return (
     <View style={[styles.center, { backgroundColor: theme.colors.bg }]}>
       <Text style={[styles.label, { color: theme.colors.danger }]}>{message}</Text>
       {onRetry ? (
         <Text style={[styles.retry, { color: theme.colors.accent }]} onPress={onRetry}>
-          Erneut versuchen
+          {t("common.retry")}
         </Text>
       ) : null}
     </View>

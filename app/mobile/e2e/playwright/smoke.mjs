@@ -5,6 +5,11 @@
 // where a local Maestro web device is not available; see this package's
 // README/task report for details.
 //
+// Also covers i18n: a plain load exercises the English fallback locale (the
+// default in a headless browser with no forced language), and a `?lang=de`
+// load exercises the German dev override so both locales get asserted
+// against real rendered text, not just the translation resource files.
+//
 // Prerequisites: `expo start --web` (or an export served statically) running
 // at PLAYWRIGHT_BASE_URL (default http://localhost:8098), a running
 // Cichlids.Api at the mobile app's configured API URL, and the Playwright
@@ -28,7 +33,7 @@ try {
   const pageErrors = [];
   page.on("pageerror", (err) => pageErrors.push(String(err)));
 
-  // Gallery: infinite grid of real pictures.
+  // Gallery: infinite grid of real pictures, English (the untouched default locale).
   await page.goto(`${BASE_URL}/`, { waitUntil: "networkidle", timeout: 60000 });
   await page.waitForSelector('[data-testid="picture-card"]', { timeout: 20000 });
   await page.waitForTimeout(1000);
@@ -36,11 +41,12 @@ try {
   console.log(`Gallery visible with ${pictureCount} picture cards`);
   await shot(page, "01-gallery.png");
   if (pictureCount === 0) throw new Error("Expected at least one picture card in the gallery");
+  await page.waitForSelector("text=Newest", { timeout: 5000 });
 
   // Picture detail: tapping a card opens it with comments.
   await page.locator('[data-testid="picture-card"]').first().click();
   await page.waitForURL(/\/gallery\/.+/, { timeout: 10000 });
-  await page.waitForSelector("text=Kommentare", { timeout: 15000 });
+  await page.waitForSelector("text=Comments", { timeout: 15000 });
   await page.waitForTimeout(800);
   console.log(`Picture detail reached: ${page.url()}`);
   await shot(page, "02-picture-detail.png");
@@ -52,7 +58,7 @@ try {
   await shot(page, "03-tanks-list.png");
   await page.locator('[data-testid="tank-card"]').first().click();
   await page.waitForURL(/\/tanks\/\d+/, { timeout: 10000 });
-  await page.waitForSelector("text=Datenblatt", { timeout: 15000 });
+  await page.waitForSelector("text=Datasheet", { timeout: 15000 });
   await page.waitForTimeout(800);
   console.log(`Tank detail reached: ${page.url()}`);
   await shot(page, "04-tank-detail.png");
@@ -61,6 +67,24 @@ try {
   await page.goto(`${BASE_URL}/community`, { waitUntil: "networkidle", timeout: 30000 });
   await page.waitForTimeout(1000);
   await shot(page, "05-community-threads.png");
+
+  // i18n: fresh gallery load in English (default) and one forced to German
+  // via the `?lang=de` dev override, each asserting real translated text.
+  await page.goto(`${BASE_URL}/`, { waitUntil: "networkidle", timeout: 30000 });
+  await page.waitForSelector('[data-testid="picture-card"]', { timeout: 20000 });
+  await page.waitForSelector("text=Gallery", { timeout: 5000 });
+  await page.waitForSelector("text=Most viewed", { timeout: 5000 });
+  await page.waitForTimeout(500);
+  console.log("English gallery labels confirmed (Gallery, Newest, Most viewed)");
+  await shot(page, "11-gallery-en.png");
+
+  await page.goto(`${BASE_URL}/?lang=de`, { waitUntil: "networkidle", timeout: 30000 });
+  await page.waitForSelector('[data-testid="picture-card"]', { timeout: 20000 });
+  await page.waitForSelector("text=Galerie", { timeout: 5000 });
+  await page.waitForSelector("text=Meiste Aufrufe", { timeout: 5000 });
+  await page.waitForTimeout(500);
+  console.log("German gallery labels confirmed (Galerie, Neueste, Meiste Aufrufe)");
+  await shot(page, "12-gallery-de.png");
 
   if (pageErrors.length > 0) {
     console.error("Page errors observed:", pageErrors);
