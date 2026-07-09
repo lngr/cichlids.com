@@ -167,6 +167,16 @@ public sealed record SeedData(
             new PostMedia { PostId = pictureB.Id, MediaItemId = pictureBMedia.Id, Sort = 0 });
         await context.SaveChangesAsync();
 
+        // pictureA and pictureC (both published) depict tropheus, so its public picture count is
+        // 2; draftPicture also depicts tropheus but must not count since it is never public.
+        // pictureB depicts neolamprologus, keeping the two species filters distinguishable.
+        context.PostSpecies.AddRange(
+            new PostSpecies { PostId = pictureA.Id, SpeciesId = tropheus.Id, Sort = 0 },
+            new PostSpecies { PostId = pictureC.Id, SpeciesId = tropheus.Id, Sort = 0 },
+            new PostSpecies { PostId = draftPicture.Id, SpeciesId = tropheus.Id, Sort = 0 },
+            new PostSpecies { PostId = pictureB.Id, SpeciesId = neolamprologus.Id, Sort = 0 });
+        await context.SaveChangesAsync();
+
         const string canonicalSlugA = "reef-tank-beauty";
         const string altSlugA = "old-reef-tank-beauty";
         const string canonicalSlugB = "tank-story";

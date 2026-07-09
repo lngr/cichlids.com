@@ -29,7 +29,7 @@ public static class ProfilesEndpoints
         PicturesQueryService queryService, long id, string? sort, int? offset, int? limit, CancellationToken cancellationToken)
     {
         var (normalizedOffset, normalizedLimit) = Pagination.Normalize(offset, limit);
-        var result = await queryService.ListAsync(sort, topic: null, userId: id, normalizedOffset, normalizedLimit, cancellationToken);
+        var result = await queryService.ListAsync(sort, topic: null, userId: id, species: null, normalizedOffset, normalizedLimit, cancellationToken);
         return TypedResults.Ok(result);
     }
 

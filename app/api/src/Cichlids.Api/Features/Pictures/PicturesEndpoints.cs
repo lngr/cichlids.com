@@ -25,6 +25,7 @@ public static class PicturesEndpoints
         string? sort,
         string? topic,
         long? user,
+        string? species,
         int? offset,
         int? limit,
         CancellationToken cancellationToken)
@@ -46,7 +47,7 @@ public static class PicturesEndpoints
         }
 
         var (normalizedOffset, normalizedLimit) = Pagination.Normalize(offset, limit);
-        var result = await queryService.ListAsync(sort, topicFilter, user, normalizedOffset, normalizedLimit, cancellationToken);
+        var result = await queryService.ListAsync(sort, topicFilter, user, species, normalizedOffset, normalizedLimit, cancellationToken);
         return TypedResults.Ok(result);
     }
 

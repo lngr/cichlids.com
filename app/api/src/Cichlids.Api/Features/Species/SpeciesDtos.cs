@@ -27,4 +27,5 @@ public sealed record SpeciesDetailDto(
     string? Description,
     string? Origin,
     string? Habitat,
-    string? Morphs);
+    string? Morphs,
+    int PictureCount);

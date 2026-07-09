@@ -84,6 +84,38 @@ public class PicturesEndpointsTests(ApiFixture fixture)
     }
 
     [Fact]
+    public async Task List_FiltersBySpeciesSlug()
+    {
+        var body = await ListAsync($"?species={fixture.Seed.Tropheus.Slug}");
+
+        Assert.Equal(2, body.Total);
+        var slugs = body.Items.Select(i => i.Slug).ToList();
+        Assert.Contains(fixture.Seed.PublishedPictureACanonicalSlug, slugs);
+        Assert.Contains(fixture.Seed.PublishedPictureCSlug, slugs);
+        Assert.DoesNotContain(fixture.Seed.PublishedPictureBCanonicalSlug, slugs);
+        // The draft picture also depicts tropheus but is never public, so it must not count.
+        Assert.DoesNotContain(fixture.Seed.DraftPictureSlug, slugs);
+    }
+
+    [Fact]
+    public async Task List_FiltersBySpeciesId()
+    {
+        var body = await ListAsync($"?species={fixture.Seed.Neolamprologus.Id}");
+
+        Assert.Equal(1, body.Total);
+        Assert.Equal(fixture.Seed.PublishedPictureBCanonicalSlug, body.Items[0].Slug);
+    }
+
+    [Fact]
+    public async Task List_UnknownSpeciesReturnsEmptyResult()
+    {
+        var body = await ListAsync("?species=does-not-exist");
+
+        Assert.Equal(0, body.Total);
+        Assert.Empty(body.Items);
+    }
+
+    [Fact]
     public async Task List_CapsLimitAtFifty()
     {
         var body = await ListAsync("?limit=999");

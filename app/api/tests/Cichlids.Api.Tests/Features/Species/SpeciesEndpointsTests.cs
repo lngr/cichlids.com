@@ -85,6 +85,21 @@ public class SpeciesEndpointsTests(ApiFixture fixture)
         Assert.Equal("Lake Tanganyika", detail.Origin);
         Assert.Equal("Rocky shore", detail.Habitat);
         Assert.Equal("Maswa, Bemba", detail.Morphs);
+        // Alice's and the high-rating post both depict tropheus; the draft post also links to it
+        // but is never public, so it must not count.
+        Assert.Equal(2, detail.PictureCount);
+    }
+
+    [Fact]
+    public async Task GetBySlug_PictureCountExcludesNonPublicPosts()
+    {
+        var response = await fixture.Client.GetAsync("/api/species/neolamprologus-pulcher");
+        response.EnsureSuccessStatusCode();
+
+        var detail = JsonSerializer.Deserialize<SpeciesDetailDto>(
+            await response.Content.ReadAsStringAsync(), TestJson.Options)!;
+
+        Assert.Equal(1, detail.PictureCount);
     }
 
     [Fact]

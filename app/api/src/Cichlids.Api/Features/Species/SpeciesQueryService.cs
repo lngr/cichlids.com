@@ -1,4 +1,5 @@
 using Cichlids.Api.Features.Common;
+using Cichlids.Domain.Enums;
 using Cichlids.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
@@ -66,10 +67,17 @@ public sealed class SpeciesQueryService(CichlidsDbContext context)
             .Select(l => new SpeciesLinkDto(l.Url, l.Label))
             .ToListAsync(cancellationToken);
 
+        var pictureCount = await (
+            from ps in context.PostSpecies
+            join p in context.Posts on ps.PostId equals p.Id
+            where ps.SpeciesId == species.Id && p.State == PostState.Published && p.DeletedAt == null
+            select ps.Id
+        ).CountAsync(cancellationToken);
+
         return new SpeciesDetailDto(
             species.Id, species.Slug, species.Genus, species.Name, species.DisplayName, species.Category,
             species.TemperatureRange, species.PhRange, species.GhRange, species.KhRange, species.MaxSize,
             species.Breeding, species.Aggression, species.IntraAggression, species.Diet,
-            commonNames, links, species.Description, species.Origin, species.Habitat, species.Morphs);
+            commonNames, links, species.Description, species.Origin, species.Habitat, species.Morphs, pictureCount);
     }
 }

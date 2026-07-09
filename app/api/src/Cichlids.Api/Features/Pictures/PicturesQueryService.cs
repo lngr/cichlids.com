@@ -18,7 +18,7 @@ public sealed class PicturesQueryService(CichlidsDbContext context, IObjectStore
     private readonly MediaUrlBuilder _mediaUrlBuilder = new(objectStore);
 
     public async Task<PagedResponse<PictureListItemDto>> ListAsync(
-        string? sort, PostTopic? topic, long? userId, int offset, int limit, CancellationToken cancellationToken)
+        string? sort, PostTopic? topic, long? userId, string? species, int offset, int limit, CancellationToken cancellationToken)
     {
         var filtered = context.Posts.Where(p => p.State == PostState.Published && p.DeletedAt == null);
 
@@ -29,6 +29,12 @@ public sealed class PicturesQueryService(CichlidsDbContext context, IObjectStore
         if (userId is { } authorId)
         {
             filtered = filtered.Where(p => p.AuthorProfileId == authorId);
+        }
+
+        if (species is not null)
+        {
+            var speciesId = await ResolveSpeciesIdAsync(species, cancellationToken);
+            filtered = filtered.Where(p => context.PostSpecies.Any(ps => ps.PostId == p.Id && ps.SpeciesId == speciesId));
         }
 
         var total = await filtered.CountAsync(cancellationToken);
@@ -103,6 +109,30 @@ public sealed class PicturesQueryService(CichlidsDbContext context, IObjectStore
             mapped.Id, mapped.Slug, mapped.Slug, mapped.Title, mapped.Description, mapped.PublishedAt,
             mapped.ViewCount, mapped.RatingAverage, mapped.RatingCount, mapped.CommentCount, mapped.Topic,
             mapped.Author, mapped.Image);
+    }
+
+    /// <summary>
+    /// Resolves a species route segment (as used by the species filter) by slug first, falling
+    /// back to a numeric id, the same resolution order as the species detail endpoint. Returns an
+    /// id no species ever has when the segment matches neither, so an unknown filter value narrows
+    /// the list to zero results instead of failing the request.
+    /// </summary>
+    private async Task<long> ResolveSpeciesIdAsync(string idOrSlug, CancellationToken cancellationToken)
+    {
+        var id = await context.Species
+            .Where(s => s.Slug == idOrSlug)
+            .Select(s => (long?)s.Id)
+            .FirstOrDefaultAsync(cancellationToken);
+
+        if (id is null && long.TryParse(idOrSlug, out var numericId))
+        {
+            id = await context.Species
+                .Where(s => s.Id == numericId)
+                .Select(s => (long?)s.Id)
+                .FirstOrDefaultAsync(cancellationToken);
+        }
+
+        return id ?? -1;
     }
 
     private async Task<List<PictureListItemDto>> MapPageAsync(List<PostProjection> page, CancellationToken cancellationToken)
