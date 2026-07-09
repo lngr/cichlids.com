@@ -1,9 +1,10 @@
 ---
 id: TASK-3.14
 title: Comments and ratings API
-status: To Do
+status: In Review
 assignee: []
 created_date: '2026-07-08 18:58'
+updated_date: '2026-07-09 02:33'
 labels: []
 dependencies:
   - TASK-3.6
@@ -24,6 +25,12 @@ Posting comments with optional star rating on pictures and tanks, comment lists,
 - [ ] #1 Given an authenticated user, When a comment with an optional star rating is posted on a picture or tank, Then it appears in the target comment list and the rating aggregate of the target updates
 - [ ] #2 Given a moderator, When a comment is deleted with a reason, Then it disappears from public lists but stays stored with its moderation trail
 <!-- AC:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Write endpoints for comments and ratings with legacy-parity split, set-based aggregate recompute, transactional outbox events, moderator delete with trail. Real smoke on live data; aggregate consistency check back to 0 after the picture-step upsert fix.
+<!-- SECTION:NOTES:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
