@@ -1,7 +1,9 @@
 using Cichlids.Infrastructure.Persistence;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Testcontainers.PostgreSql;
 
 namespace Cichlids.Api.Tests;
@@ -34,6 +36,7 @@ public sealed class ApiFixture : IAsyncLifetime
         await _postgres.StartAsync();
 
         _factory = new WebApplicationFactory<Program>().WithWebHostBuilder(builder =>
+        {
             builder.ConfigureAppConfiguration((_, configBuilder) =>
                 configBuilder.AddInMemoryCollection(new Dictionary<string, string?>
                 {
@@ -45,7 +48,22 @@ public sealed class ApiFixture : IAsyncLifetime
                     ["ObjectStorage:SecretKey"] = "test",
                     ["ObjectStorage:ForcePathStyle"] = "true",
                     ["ObjectStorage:PublicBaseUrl"] = ObjectStorePublicBaseUrl,
-                })));
+                    ["Authentication:Authority"] = TestTokens.Issuer,
+                    ["Authentication:Audience"] = TestTokens.Audience,
+                    ["Authentication:RequireHttpsMetadata"] = "false",
+                }));
+
+            // Tokens are validated against the test signing key directly instead of an identity
+            // provider's published metadata; clearing the authority prevents any metadata fetch.
+            // Only the validation parameters are replaced, so the claim promotion configured in
+            // the application (realm_access.roles into role claims) still runs.
+            builder.ConfigureServices(services =>
+                services.PostConfigure<JwtBearerOptions>(JwtBearerDefaults.AuthenticationScheme, options =>
+                {
+                    options.Authority = null;
+                    options.TokenValidationParameters = TestTokens.ValidationParameters;
+                }));
+        });
 
         Client = _factory.CreateClient();
 
