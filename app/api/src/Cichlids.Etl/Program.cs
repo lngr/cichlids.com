@@ -10,12 +10,15 @@ using Microsoft.Extensions.Options;
 
 if (args.Length == 0)
 {
-    Console.Error.WriteLine("Usage: dotnet run -- <step|all|migrate> [--dry-run]");
+    Console.Error.WriteLine("Usage: dotnet run -- <step|all|migrate> [--dry-run] [--out <path>]");
     return 1;
 }
 
 var command = args[0];
 var dryRun = args.Contains("--dry-run", StringComparer.OrdinalIgnoreCase);
+
+var outArgIndex = Array.IndexOf(args, "--out");
+var verifyOutputPath = outArgIndex >= 0 && outArgIndex + 1 < args.Length ? args[outArgIndex + 1] : null;
 
 var configuration = new ConfigurationBuilder()
     .SetBasePath(AppContext.BaseDirectory)
@@ -74,6 +77,7 @@ var objectStore = await CreateObjectStoreAsync(configuration, cts.Token);
 
 await using var context = await EtlContext.CreateAsync(
     legacyConnectionString, targetConnectionString, dryRun, cts.Token, objectStore);
+context.VerifyOutputPath = verifyOutputPath;
 
 foreach (var step in steps)
 {
@@ -82,7 +86,7 @@ foreach (var step in steps)
 }
 
 ConsoleReport.Print(context.Statistics, dryRun);
-return 0;
+return context.VerificationReport is { Passed: false } ? 1 : 0;
 
 // Builds the object store steps use to export legacy binary content (for example forum
 // attachments), and ensures its bucket exists. Only steps that actually need it (checked through

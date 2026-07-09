@@ -17,6 +17,7 @@ public static class EtlStepRegistry
             new CommentMigrationStep(),
             new GalleryMigrationStep(),
             new ForumMigrationStep(),
+            new VerifyStep(),
         }.OrderBy(step => step.Order),
     ];
 

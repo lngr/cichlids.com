@@ -45,6 +45,20 @@ public sealed class EtlContext : IAsyncDisposable
     /// </summary>
     public NpgsqlTransaction Transaction { get; internal set; } = null!;
 
+    /// <summary>
+    /// Destination path for the verification step's JSON report, set from the command line's
+    /// "--out" option. Null when no path was given, in which case the step only prints its console
+    /// table.
+    /// </summary>
+    public string? VerifyOutputPath { get; set; }
+
+    /// <summary>
+    /// The verification step's outcome, set once it has run, so the entry point can turn a
+    /// mismatch into a non-zero exit code without every other step needing to know verification
+    /// exists.
+    /// </summary>
+    public VerificationReport? VerificationReport { get; set; }
+
     public static async Task<EtlContext> CreateAsync(
         string legacyConnectionString,
         string targetConnectionString,
