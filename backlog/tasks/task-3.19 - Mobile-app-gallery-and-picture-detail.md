@@ -1,9 +1,10 @@
 ---
 id: TASK-3.19
 title: Mobile app gallery and picture detail
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-07-08 18:58'
+updated_date: '2026-07-09 02:55'
 labels: []
 dependencies:
   - TASK-3.18
