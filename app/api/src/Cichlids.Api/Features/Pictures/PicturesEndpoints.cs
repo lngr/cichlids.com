@@ -1,3 +1,5 @@
+using System.Security.Claims;
+using Cichlids.Api.Features.Auth;
 using Cichlids.Api.Features.Comments;
 using Cichlids.Api.Features.Common;
 using Cichlids.Domain.Enums;
@@ -16,6 +18,7 @@ public static class PicturesEndpoints
         group.MapGet("/", ListAsync).WithName("ListPictures");
         group.MapGet("/{slug}", GetBySlugAsync).WithName("GetPicture");
         group.MapGet("/{slug}/comments", ListCommentsAsync).WithName("ListPictureComments");
+        group.MapPost("/{slug}/comments", CreateCommentAsync).WithName("CreatePictureComment").RequireAuthorization();
 
         return app;
     }
@@ -75,5 +78,30 @@ public static class PicturesEndpoints
         var (normalizedOffset, normalizedLimit) = Pagination.Normalize(offset, limit);
         var result = await commentsQueryService.ListForPostAsync(postId.Value, normalizedOffset, normalizedLimit, cancellationToken);
         return TypedResults.Ok(result);
+    }
+
+    private static async Task<Results<Created<CommentCreatedDto>, BadRequest<string>, NotFound>> CreateCommentAsync(
+        PicturesQueryService picturesQueryService,
+        CommentsWriteService commentsWriteService,
+        CurrentProfileService currentProfileService,
+        ClaimsPrincipal user,
+        string slug,
+        CreateCommentRequest request,
+        CancellationToken cancellationToken)
+    {
+        if (!CommentsEndpoints.TryValidateCreate(request, out var body, out var stars, out var error))
+        {
+            return TypedResults.BadRequest(error);
+        }
+
+        var postId = await picturesQueryService.ResolveVisiblePostIdAsync(slug, cancellationToken);
+        if (postId is null)
+        {
+            return TypedResults.NotFound();
+        }
+
+        var author = await currentProfileService.ResolveAsync(user, cancellationToken);
+        var created = await commentsWriteService.CreateAsync(postId, tankId: null, author, body, stars, cancellationToken);
+        return TypedResults.Created($"/api/pictures/{slug}/comments", created);
     }
 }

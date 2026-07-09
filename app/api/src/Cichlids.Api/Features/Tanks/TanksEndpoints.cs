@@ -1,3 +1,5 @@
+using System.Security.Claims;
+using Cichlids.Api.Features.Auth;
 using Cichlids.Api.Features.Comments;
 using Cichlids.Api.Features.Common;
 using Cichlids.Domain.Enums;
@@ -14,6 +16,7 @@ public static class TanksEndpoints
         group.MapGet("/", ListAsync).WithName("ListTanks");
         group.MapGet("/{id:long}", GetByIdAsync).WithName("GetTank");
         group.MapGet("/{id:long}/comments", ListCommentsAsync).WithName("ListTankComments");
+        group.MapPost("/{id:long}/comments", CreateCommentAsync).WithName("CreateTankComment").RequireAuthorization();
 
         return app;
     }
@@ -60,5 +63,29 @@ public static class TanksEndpoints
         var (normalizedOffset, normalizedLimit) = Pagination.Normalize(offset, limit);
         var result = await commentsQueryService.ListForTankAsync(id, normalizedOffset, normalizedLimit, cancellationToken);
         return TypedResults.Ok(result);
+    }
+
+    private static async Task<Results<Created<CommentCreatedDto>, BadRequest<string>, NotFound>> CreateCommentAsync(
+        TanksQueryService tanksQueryService,
+        CommentsWriteService commentsWriteService,
+        CurrentProfileService currentProfileService,
+        ClaimsPrincipal user,
+        long id,
+        CreateCommentRequest request,
+        CancellationToken cancellationToken)
+    {
+        if (!CommentsEndpoints.TryValidateCreate(request, out var body, out var stars, out var error))
+        {
+            return TypedResults.BadRequest(error);
+        }
+
+        if (!await tanksQueryService.IsVisibleAsync(id, cancellationToken))
+        {
+            return TypedResults.NotFound();
+        }
+
+        var author = await currentProfileService.ResolveAsync(user, cancellationToken);
+        var created = await commentsWriteService.CreateAsync(postId: null, tankId: id, author, body, stars, cancellationToken);
+        return TypedResults.Created($"/api/tanks/{id}/comments", created);
     }
 }

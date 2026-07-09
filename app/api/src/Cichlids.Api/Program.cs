@@ -40,13 +40,15 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         options.Events = new JwtBearerEvents { OnTokenValidated = KeycloakRealmRoles.PromoteToRoleClaims };
     });
 
-builder.Services.AddAuthorization();
+builder.Services.AddAuthorization(options =>
+    options.AddPolicy(AuthorizationPolicies.Moderator, policy => policy.RequireRole("moderator", "admin")));
 
 builder.Services.AddScoped<SpeciesQueryService>();
 builder.Services.AddScoped<PicturesQueryService>();
 builder.Services.AddScoped<TanksQueryService>();
 builder.Services.AddScoped<ProfilesQueryService>();
 builder.Services.AddScoped<CommentsQueryService>();
+builder.Services.AddScoped<CommentsWriteService>();
 builder.Services.AddScoped<CurrentProfileService>();
 
 var app = builder.Build();
@@ -66,6 +68,7 @@ app.MapSpeciesEndpoints();
 app.MapPicturesEndpoints();
 app.MapTanksEndpoints();
 app.MapProfilesEndpoints();
+app.MapCommentsEndpoints();
 app.MapMeEndpoints();
 
 app.Run();
