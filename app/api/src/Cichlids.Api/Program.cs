@@ -19,6 +19,20 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi();
 
+// The Expo web target runs the app's browser build against this API from a
+// different origin (Metro's dev server port); browsers enforce CORS for
+// that cross-origin fetch even though native builds never hit this check.
+// Scoped to Development since only the local web dev server needs it.
+const string localWebDevCorsPolicy = "LocalWebDev";
+if (builder.Environment.IsDevelopment())
+{
+    builder.Services.AddCors(options =>
+        options.AddPolicy(localWebDevCorsPolicy, policy =>
+            policy.SetIsOriginAllowed(origin => new Uri(origin).Host is "localhost" or "127.0.0.1")
+                .AllowAnyHeader()
+                .AllowAnyMethod()));
+}
+
 builder.Services.ConfigureHttpJsonOptions(options =>
     options.SerializerOptions.Converters.Add(new JsonStringEnumConverter(new SnakeCaseJsonNamingPolicy())));
 
@@ -61,6 +75,11 @@ app.MapOpenApi();
 app.MapScalarApiReference();
 
 app.UseHttpsRedirection();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseCors(localWebDevCorsPolicy);
+}
 
 app.UseAuthentication();
 app.UseAuthorization();
