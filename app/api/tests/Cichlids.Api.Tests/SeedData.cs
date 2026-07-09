@@ -37,6 +37,8 @@ public sealed record SeedData(
     Tank PublishedTankWithExplicitMainImage,
     Tank DraftTank,
     Comment TankCommentWithAuthor,
+    Species CyphotilapiaFrontosa,
+    Species NeolamprologusBrichardiDaffodil,
     DiscussionThread CommunityCichlidsThreadA,
     DiscussionThread CommunityCichlidsThreadB,
     DiscussionThread CommunityAfricanThreadA,
@@ -53,7 +55,7 @@ public sealed record SeedData(
         var alice = new Profile
         {
             Username = "alice", DisplayName = "Alice A.", Kind = ProfileKind.Member,
-            City = "Berlin", CountryCode = "DE", CreatedAt = now.AddYears(-2),
+            City = "Berlin", CountryCode = "DE", CreatedAt = now.AddYears(-2), LegacyId = 3001,
         };
         var bob = new Profile
         {
@@ -104,7 +106,22 @@ public sealed record SeedData(
             Breeding = SpeciesBreeding.CaveBreeder, Aggression = AggressionLevel.Low, IntraAggression = AggressionLevel.Moderate,
             Diet = SpeciesDiet.Omnivore, CreatedAt = now,
         };
-        context.Species.AddRange(tropheus, neolamprologus);
+        // Display name intentionally does not equal "{Genus} {Name}", so a wiki redirect lookup
+        // for "Cyphotilapia frontosa" only resolves through the genus+name fallback, not the
+        // exact display-name match tried first.
+        var cyphotilapiaFrontosa = new Species
+        {
+            Genus = "Cyphotilapia", Name = "frontosa", DisplayName = "Frontosa Cichlid", Slug = "cyphotilapia-frontosa",
+            CreatedAt = now,
+        };
+        // Neither the display name nor "{Genus} {Name}" equals the wiki name below, so a lookup
+        // for "Neolamprologus brichardi daffodil" only resolves through the slug fallback.
+        var neolamprologusBrichardiDaffodil = new Species
+        {
+            Genus = "Neolamprologus", Name = "brichardi", DisplayName = "Neolamprologus brichardi (Daffodil)",
+            Slug = "neolamprologus-brichardi-daffodil", CreatedAt = now,
+        };
+        context.Species.AddRange(tropheus, neolamprologus, cyphotilapiaFrontosa, neolamprologusBrichardiDaffodil);
         await context.SaveChangesAsync();
 
         context.SpeciesCommonNames.AddRange(
@@ -243,7 +260,7 @@ public sealed record SeedData(
             Filtration = "Canister", Technic = "Heater 200W",
             WaterPh = "8.2", WaterKh = "12", WaterGh = "15", WaterNo2 = "0", WaterNo3 = "10", WaterPo4 = "0.5",
             WaterNotes = "Weekly 30% change", Food = "Pellets", Notes = "Established 2023",
-            State = TankState.Published, CreatedAt = now.AddDays(-40), PublishedAt = now.AddDays(-5),
+            State = TankState.Published, CreatedAt = now.AddDays(-40), PublishedAt = now.AddDays(-5), LegacyId = 5001,
         };
         var publishedTankWithExplicitMainImage = new Tank
         {
@@ -364,6 +381,7 @@ public sealed record SeedData(
             pictureCommentWithAuthor, pictureCommentAnonymous,
             publishedTank, publishedTankWithExplicitMainImage, draftTank,
             tankCommentWithAuthor,
+            cyphotilapiaFrontosa, neolamprologusBrichardiDaffodil,
             communityCichlidsThreadA, communityCichlidsThreadB, communityAfricanThreadA,
             communityCichlidsThreadAMemberPost, communityCichlidsThreadAGuestPost, forumAttachmentMedia.Id,
             communityCichlidsThreadBPlaceholderPost, communityAfricanThreadAPost);

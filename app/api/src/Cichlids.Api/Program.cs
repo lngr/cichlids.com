@@ -3,6 +3,7 @@ using Cichlids.Api.Features.Auth;
 using Cichlids.Api.Features.Common;
 using Cichlids.Api.Features.Comments;
 using Cichlids.Api.Features.Community;
+using Cichlids.Api.Features.LegacyRedirects;
 using Cichlids.Api.Features.Me;
 using Cichlids.Api.Features.Pictures;
 using Cichlids.Api.Features.Profiles;
@@ -52,6 +53,7 @@ builder.Services.AddScoped<CommentsQueryService>();
 builder.Services.AddScoped<CommentsWriteService>();
 builder.Services.AddScoped<CurrentProfileService>();
 builder.Services.AddScoped<CommunityQueryService>();
+builder.Services.AddScoped<LegacyRedirectsQueryService>();
 
 var app = builder.Build();
 
@@ -73,6 +75,7 @@ app.MapProfilesEndpoints();
 app.MapCommentsEndpoints();
 app.MapMeEndpoints();
 app.MapCommunityEndpoints();
+app.MapLegacyRedirectsEndpoints();
 
 app.Run();
 

@@ -29,6 +29,13 @@ public sealed class ApiFixture : IAsyncLifetime
 
     public HttpClient Client { get; private set; } = null!;
 
+    /// <summary>
+    /// A client that does not follow redirects automatically, for tests that assert on a 301/410
+    /// response and its Location header directly instead of on whatever the redirect target
+    /// returns.
+    /// </summary>
+    public HttpClient NoRedirectClient { get; private set; } = null!;
+
     public SeedData Seed { get; private set; } = null!;
 
     public async Task InitializeAsync()
@@ -66,6 +73,7 @@ public sealed class ApiFixture : IAsyncLifetime
         });
 
         Client = _factory.CreateClient();
+        NoRedirectClient = _factory.CreateClient(new WebApplicationFactoryClientOptions { AllowAutoRedirect = false });
 
         await using var context = CreateDbContext();
         await context.Database.MigrateAsync();
@@ -76,6 +84,7 @@ public sealed class ApiFixture : IAsyncLifetime
     public async Task DisposeAsync()
     {
         Client.Dispose();
+        NoRedirectClient.Dispose();
         await _factory.DisposeAsync();
         await _postgres.DisposeAsync();
     }

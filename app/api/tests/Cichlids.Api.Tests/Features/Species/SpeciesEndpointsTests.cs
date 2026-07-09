@@ -17,9 +17,13 @@ public class SpeciesEndpointsTests(ApiFixture fixture)
         var body = JsonSerializer.Deserialize<PagedResponse<SpeciesListItemDto>>(
             await response.Content.ReadAsStringAsync(), TestJson.Options)!;
 
-        Assert.Equal(2, body.Total);
-        Assert.Equal("Neolamprologus", body.Items[0].Genus);
-        Assert.Equal("Tropheus", body.Items[1].Genus);
+        Assert.Equal(4, body.Total);
+        Assert.Equal("Cyphotilapia", body.Items[0].Genus);
+        Assert.Equal("Neolamprologus", body.Items[1].Genus);
+        Assert.Equal("brichardi", body.Items[1].Name);
+        Assert.Equal("Neolamprologus", body.Items[2].Genus);
+        Assert.Equal("pulcher", body.Items[2].Name);
+        Assert.Equal("Tropheus", body.Items[3].Genus);
     }
 
     [Fact]
@@ -56,7 +60,7 @@ public class SpeciesEndpointsTests(ApiFixture fixture)
         var body = JsonSerializer.Deserialize<PagedResponse<SpeciesListItemDto>>(
             await response.Content.ReadAsStringAsync(), TestJson.Options)!;
 
-        Assert.Equal(2, body.Total);
+        Assert.Equal(4, body.Total);
         Assert.Single(body.Items);
     }
 
