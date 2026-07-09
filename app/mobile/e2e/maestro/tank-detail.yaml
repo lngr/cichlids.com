@@ -1,0 +1,12 @@
+appId: http://localhost:8098
+tags:
+  - TASK-3.20
+---
+- launchApp
+- assertVisible: "Galerie"
+- tapOn: "Becken"
+- assertVisible: "Becken"
+- tapOn:
+    id: "tank-card"
+    index: 0
+- assertVisible: "Datenblatt"

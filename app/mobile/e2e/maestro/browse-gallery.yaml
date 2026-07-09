@@ -1,0 +1,11 @@
+appId: http://localhost:8098
+tags:
+  - TASK-3.19
+---
+- launchApp
+- assertVisible: "Galerie"
+- tapOn:
+    id: "picture-card"
+    index: 0
+- assertVisible:
+    text: ".+"
