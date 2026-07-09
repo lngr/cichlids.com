@@ -1,10 +1,10 @@
 ---
 id: TASK-3.17
 title: Transactional outbox with webhook delivery
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-07-08 18:58'
-updated_date: '2026-07-09 03:34'
+updated_date: '2026-07-09 03:59'
 labels: []
 dependencies:
   - TASK-3.1
@@ -23,6 +23,12 @@ Outbox table written in the same transaction as domain changes; dispatcher deliv
 <!-- AC:BEGIN -->
 - [ ] #1 Given a domain change such as a created comment, When the outbox dispatcher runs, Then exactly one event is delivered to a registered webhook endpoint and redelivery is idempotent
 <!-- AC:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Dispatcher with SKIP LOCKED batching, HMAC-SHA256 signed webhook delivery, exponential backoff with give-up after 10 attempts, admin webhook endpoints. Live smoke: real delivery with independently recomputed signature.
+<!-- SECTION:NOTES:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
