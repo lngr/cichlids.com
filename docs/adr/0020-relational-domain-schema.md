@@ -38,6 +38,7 @@ Requirements shaping the schema:
 | Media | `media_item`, `media_variant` | Stored file (photo or video) with owner, storage key of the original, checksum and dimensions; generated renditions as variant rows with label, width and storage key. |
 | Posts | `post`, `post_media` | Publication unit (single post or multi-media story) with author, optional tank link, topic, title, description, draft/published state, moderation trail, view counter and denormalized rating aggregate; ordered media through `post_media`. |
 | Interaction | `comment`, `rating`, `comment_vote` | Comment (text) and rating (stars) as separate entities, each targeting exactly one post or one tank; up/down votes on comments with one vote per member and comment. |
+| Classification | `post_species` | Links a post to the species shown in it, with ordering; the basis for browsing pictures by species. |
 | Curation | `collection`, `collection_entry`, `follow` | Member-curated ordered sets of posts; follow relations from a profile to a tank or another profile. |
 | Addressing | `slug_alias` | Public URL aliases per post: every alias stays resolvable, exactly one is canonical per post. |
 | Events | `outbox_event`, `webhook_subscription` | Transactional outbox rows and registered webhook consumers ([ADR-0008](0008-event-driven-architecture.md)). |
