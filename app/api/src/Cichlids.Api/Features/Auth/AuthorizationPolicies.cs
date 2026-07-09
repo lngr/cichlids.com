@@ -10,4 +10,10 @@ public static class AuthorizationPolicies
     /// deleting a comment.
     /// </summary>
     public const string Moderator = "moderator";
+
+    /// <summary>
+    /// Satisfied by the admin realm role only; guards operator-only actions such as registering
+    /// webhook subscriptions.
+    /// </summary>
+    public const string Admin = "admin";
 }

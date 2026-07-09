@@ -9,6 +9,8 @@ using Cichlids.Api.Features.Pictures;
 using Cichlids.Api.Features.Profiles;
 using Cichlids.Api.Features.Species;
 using Cichlids.Api.Features.Tanks;
+using Cichlids.Api.Features.Webhooks;
+using Cichlids.Infrastructure.Outbox;
 using Cichlids.Infrastructure.Persistence;
 using Cichlids.Infrastructure.Storage;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -38,6 +40,8 @@ builder.Services.ConfigureHttpJsonOptions(options =>
 
 builder.Services.AddCichlidsDbContext(builder.Configuration);
 builder.Services.AddS3ObjectStore(builder.Configuration);
+builder.Services.AddOutboxDispatcher(builder.Configuration);
+builder.Services.AddHostedService<OutboxDispatcherHostedService>();
 
 var authenticationSection = builder.Configuration.GetSection("Authentication");
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -57,7 +61,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 
 builder.Services.AddAuthorization(options =>
-    options.AddPolicy(AuthorizationPolicies.Moderator, policy => policy.RequireRole("moderator", "admin")));
+{
+    options.AddPolicy(AuthorizationPolicies.Moderator, policy => policy.RequireRole("moderator", "admin"));
+    options.AddPolicy(AuthorizationPolicies.Admin, policy => policy.RequireRole("admin"));
+});
 
 builder.Services.AddScoped<SpeciesQueryService>();
 builder.Services.AddScoped<PicturesQueryService>();
@@ -95,6 +102,7 @@ app.MapCommentsEndpoints();
 app.MapMeEndpoints();
 app.MapCommunityEndpoints();
 app.MapLegacyRedirectsEndpoints();
+app.MapWebhookAdminEndpoints();
 
 app.Run();
 
