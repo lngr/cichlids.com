@@ -17,6 +17,9 @@ public class OpenApiDocumentTests(ApiFixture fixture)
     [InlineData("/api/profiles/{id}")]
     [InlineData("/api/profiles/{id}/pictures")]
     [InlineData("/api/profiles/{id}/tanks")]
+    [InlineData("/api/community/categories")]
+    [InlineData("/api/community/threads")]
+    [InlineData("/api/community/threads/{id}")]
     public async Task Document_ListsEveryReadEndpointPath(string path)
     {
         var response = await fixture.Client.GetAsync("/openapi/v1.json");

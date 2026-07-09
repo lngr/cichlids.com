@@ -36,7 +36,15 @@ public sealed record SeedData(
     Tank PublishedTank,
     Tank PublishedTankWithExplicitMainImage,
     Tank DraftTank,
-    Comment TankCommentWithAuthor)
+    Comment TankCommentWithAuthor,
+    DiscussionThread CommunityCichlidsThreadA,
+    DiscussionThread CommunityCichlidsThreadB,
+    DiscussionThread CommunityAfricanThreadA,
+    DiscussionPost CommunityCichlidsThreadAMemberPost,
+    DiscussionPost CommunityCichlidsThreadAGuestPost,
+    long CommunityCichlidsThreadAGuestPostAttachmentMediaItemId,
+    DiscussionPost CommunityCichlidsThreadBPlaceholderPost,
+    DiscussionPost CommunityAfricanThreadAPost)
 {
     public static async Task<SeedData> CreateAsync(CichlidsDbContext context)
     {
@@ -276,6 +284,73 @@ public sealed record SeedData(
         context.Comments.AddRange(tankCommentWithAuthor, tankCommentDeleted);
         await context.SaveChangesAsync();
 
+        var forumAttachmentMedia = new MediaItem { Kind = MediaKind.Photo, StorageKey = "originals/forum/attachment-1.jpg", CreatedAt = now };
+        context.MediaItems.Add(forumAttachmentMedia);
+        await context.SaveChangesAsync();
+
+        context.MediaVariants.AddRange(
+            new MediaVariant { MediaItemId = forumAttachmentMedia.Id, Label = "thumb", Width = 200, StorageKey = "variants/thumb/forum/attachment-1.jpg" },
+            new MediaVariant { MediaItemId = forumAttachmentMedia.Id, Label = "small", Width = 400, StorageKey = "variants/small/forum/attachment-1.jpg" });
+        await context.SaveChangesAsync();
+
+        // Thread A: a real member opens the thread, a guest without a profile replies with an
+        // attachment. Its legacy id matches the read.php redirect smoke value.
+        var communityCichlidsThreadA = new DiscussionThread
+        {
+            LegacyId = 9001, Category = DiscussionCategory.Cichlids, Title = "Best filtration setup for a 200L tank",
+            State = DiscussionThreadState.Archived, CreatedAt = now.AddDays(-10), LastPostAt = now.AddDays(-8), PostCount = 2,
+        };
+        // Thread B: its only post is attributed to the unlisted placeholder profile created for a
+        // forum author with no matching member account (ADR-0021). Posted more recently than
+        // thread A, so the default last-post-at ordering places it first.
+        var communityCichlidsThreadB = new DiscussionThread
+        {
+            Category = DiscussionCategory.Cichlids, Title = "pH swings after water change",
+            State = DiscussionThreadState.Archived, CreatedAt = now.AddDays(-5), LastPostAt = now.AddDays(-5), PostCount = 1,
+        };
+        var communityAfricanThreadA = new DiscussionThread
+        {
+            Category = DiscussionCategory.African, Title = "Malawi vs Tanganyika biotope debate",
+            State = DiscussionThreadState.Archived, CreatedAt = now.AddDays(-6), LastPostAt = now.AddDays(-6), PostCount = 1,
+        };
+        context.DiscussionThreads.AddRange(communityCichlidsThreadA, communityCichlidsThreadB, communityAfricanThreadA);
+        await context.SaveChangesAsync();
+
+        var communityCichlidsThreadAMemberPost = new DiscussionPost
+        {
+            ThreadId = communityCichlidsThreadA.Id, AuthorProfileId = alice.Id,
+            Body = "I run a canister filter rated for twice the tank volume, works well.",
+            CreatedAt = now.AddDays(-10), Sort = 0,
+        };
+        var communityCichlidsThreadAGuestPost = new DiscussionPost
+        {
+            ThreadId = communityCichlidsThreadA.Id, PosterName = "Guest Fisher",
+            Body = "Here is a picture of my own setup for comparison.",
+            CreatedAt = now.AddDays(-8), Sort = 1,
+        };
+        var communityCichlidsThreadBPlaceholderPost = new DiscussionPost
+        {
+            ThreadId = communityCichlidsThreadB.Id, AuthorProfileId = archivedProfile.Id,
+            Body = "Check your KH, a swing usually means it bottomed out.",
+            CreatedAt = now.AddDays(-5), Sort = 0,
+        };
+        var communityAfricanThreadAPost = new DiscussionPost
+        {
+            ThreadId = communityAfricanThreadA.Id, AuthorProfileId = bob.Id,
+            Body = "Both are great, depends how much aggression you want to manage.",
+            CreatedAt = now.AddDays(-6), Sort = 0,
+        };
+        context.DiscussionPosts.AddRange(
+            communityCichlidsThreadAMemberPost, communityCichlidsThreadAGuestPost,
+            communityCichlidsThreadBPlaceholderPost, communityAfricanThreadAPost);
+        await context.SaveChangesAsync();
+
+        context.DiscussionPostMedia.Add(new DiscussionPostMedia
+        {
+            DiscussionPostId = communityCichlidsThreadAGuestPost.Id, MediaItemId = forumAttachmentMedia.Id, Sort = 0,
+        });
+        await context.SaveChangesAsync();
+
         return new SeedData(
             alice, bob, archivedProfile,
             tropheus, neolamprologus,
@@ -288,6 +363,9 @@ public sealed record SeedData(
             deletedPicture, deletedSlug,
             pictureCommentWithAuthor, pictureCommentAnonymous,
             publishedTank, publishedTankWithExplicitMainImage, draftTank,
-            tankCommentWithAuthor);
+            tankCommentWithAuthor,
+            communityCichlidsThreadA, communityCichlidsThreadB, communityAfricanThreadA,
+            communityCichlidsThreadAMemberPost, communityCichlidsThreadAGuestPost, forumAttachmentMedia.Id,
+            communityCichlidsThreadBPlaceholderPost, communityAfricanThreadAPost);
     }
 }

@@ -2,6 +2,7 @@ using System.Text.Json.Serialization;
 using Cichlids.Api.Features.Auth;
 using Cichlids.Api.Features.Common;
 using Cichlids.Api.Features.Comments;
+using Cichlids.Api.Features.Community;
 using Cichlids.Api.Features.Me;
 using Cichlids.Api.Features.Pictures;
 using Cichlids.Api.Features.Profiles;
@@ -50,6 +51,7 @@ builder.Services.AddScoped<ProfilesQueryService>();
 builder.Services.AddScoped<CommentsQueryService>();
 builder.Services.AddScoped<CommentsWriteService>();
 builder.Services.AddScoped<CurrentProfileService>();
+builder.Services.AddScoped<CommunityQueryService>();
 
 var app = builder.Build();
 
@@ -70,6 +72,7 @@ app.MapTanksEndpoints();
 app.MapProfilesEndpoints();
 app.MapCommentsEndpoints();
 app.MapMeEndpoints();
+app.MapCommunityEndpoints();
 
 app.Run();
 
