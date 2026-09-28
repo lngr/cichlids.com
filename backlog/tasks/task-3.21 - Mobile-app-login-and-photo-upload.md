@@ -1,14 +1,18 @@
 ---
 id: TASK-3.21
 title: Mobile app login and photo upload
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-07-08 18:58'
-updated_date: '2026-09-28 14:38'
+updated_date: '2026-09-28 19:02'
 labels: []
 dependencies:
   - TASK-3.19
   - TASK-3.16
+references:
+  - app/mobile/e2e/playwright/upload.write.mjs
+  - app/mobile/e2e/playwright/login.write.mjs
+  - app/mobile/e2e/maestro/login-upload.yaml
 parent_task_id: TASK-3
 priority: medium
 ordinal: 41000
@@ -67,6 +71,25 @@ The app gets a Keycloak login (OIDC authorization code with PKCE, public client 
 - Keycloak login on Android needs the cichlids:// redirect in the realm; the existing dev realm needs that change applied (bootstrap skips an existing realm), handled by the write-stack script or documented.
 - Refresh token rotation on the web relies on sessionStorage; a full page reload keeps the session within the tab.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### Delivered
+- Keycloak login in the app: authorization code with PKCE (fresh state and verifier per login), public client cichlids-app, tokens in expo-secure-store (native) or sessionStorage (web), single-flight refresh 30 s before expiry that never overrides a newer login or a logout, logout via the end-session endpoint with id_token_hint. Me tab with profile from /api/me, login and logout.
+- Upload flow: Upload button in the gallery header, image picker (JPEG, quality 0.9; web file input), immediate draft upload with preview, title/description/topic form, publish to the picture detail, discard; API 400 messages with retry; leaving the screen keeps an unpublished draft, and the Me tab lists the drafts to resume on the upload screen or delete; the gallery refetches on focus only after a publish.
+- Isolated write stack for write E2E (app/mobile/e2e/write-stack.sh): database cichlids_e2e, bucket cichlids-e2e (name guarded), API :5046, static web export :8082; the seeded dev database is never written.
+- Realm: cichlids-app redirect cichlids://* and webOrigins http://localhost:8081, http://localhost:8082 (Keycloak matches web origins exactly). The running dev realm received the same change via kcadm (README).
+- app.json: android.package com.cichlids.app.
+
+### Tests
+- Unit (vitest): 37 in app/mobile (token logic, storage adapter, refresh outcome, upload form rules, publish signal).
+- Playwright on the write stack (pnpm run e2e:write): login.write.mjs (login, reload, logout, second login with fresh state), upload.write.mjs (login, upload, publish, detail, gallery first card, topic and description, discard, leave without publishing, 400 message with retry).
+- Web smoke (pnpm run e2e:web) green.
+
+### AC gap
+The AC names a Maestro flow. login-upload.yaml is written for a native Android build pointed at the write stack API and has not been executed: Maestro cannot attach a device in this environment (PROJECT-STATUS F13), and an emulator run also needs Keycloak reachable from the emulator with an issuer the API accepts.
+<!-- SECTION:NOTES:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
