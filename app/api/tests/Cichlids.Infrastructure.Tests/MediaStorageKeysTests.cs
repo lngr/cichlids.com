@@ -1,6 +1,6 @@
-using Cichlids.Etl.Media;
+using Cichlids.Infrastructure.Media;
 
-namespace Cichlids.Etl.Tests;
+namespace Cichlids.Infrastructure.Tests;
 
 public sealed class MediaStorageKeysTests
 {

@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Cichlids.Infrastructure.Media;
 using Cichlids.Infrastructure.Storage;
 using MySqlConnector;
 using Npgsql;

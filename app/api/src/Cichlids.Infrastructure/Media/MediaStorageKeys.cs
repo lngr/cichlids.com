@@ -1,4 +1,4 @@
-namespace Cichlids.Etl.Media;
+namespace Cichlids.Infrastructure.Media;
 
 /// <summary>
 /// Storage key conventions the media pipeline derives from an original's own key: the variant

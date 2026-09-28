@@ -1,4 +1,4 @@
-namespace Cichlids.Etl.Media;
+namespace Cichlids.Infrastructure.Media;
 
 /// <summary>
 /// The fixed set of photo renditions the media pipeline derives from every original: four target

@@ -1,6 +1,7 @@
 using System.Security.Cryptography;
 using System.Text.Json;
 using Cichlids.Etl.Media;
+using Cichlids.Infrastructure.Media;
 using Microsoft.EntityFrameworkCore;
 
 namespace Cichlids.Etl.Tests;

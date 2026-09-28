@@ -1,6 +1,6 @@
 using NetVips;
 
-namespace Cichlids.Etl.Media;
+namespace Cichlids.Infrastructure.Media;
 
 /// <summary>
 /// Decodes source image bytes and derives JPEG variants from them via libvips (NetVips). Every
@@ -32,10 +32,10 @@ public static class ImageProcessor
     }
 
     /// <summary>
-    /// Produces one JPEG-encoded variant at <paramref name="targetWidth"/>: never upscales, so a
-    /// target width at or above the source's own width leaves the image at its original size.
-    /// Callers are expected to have already resolved <paramref name="targetWidth"/> through
-    /// <see cref="MediaVariantSpec.Resolve"/>, which guarantees that invariant.
+    /// Produces one JPEG-encoded variant at the target width: never upscales, so a target width
+    /// at or above the source's own width leaves the image at its original size. Callers are
+    /// expected to have already resolved the target width through MediaVariantSpec.Resolve, which
+    /// guarantees that invariant.
     /// </summary>
     public static byte[] GenerateVariant(byte[] sourceBytes, int targetWidth)
     {
