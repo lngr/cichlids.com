@@ -23,6 +23,7 @@ export type CommentDto = {
     body: string;
     createdAt: string;
     score: number | string;
+    stars: null | number | string;
     author: null | AuthorDto;
     posterName: null | string;
 };
