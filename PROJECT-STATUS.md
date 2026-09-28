@@ -87,10 +87,12 @@ Danach folgt der Cutover: finale ETL, Medienmigration, Auth0 nach Keycloak, Go-L
 - **Laufen:**
   - `cichlids-legacy-db-1` (MySQL 5.7, 127.0.0.1:3306, root/legacy), Volume `cichlids-legacy_db_data` mit bereits importiertem Dump
   - `cichlids-legacy-phpmyadmin-1` (127.0.0.1:8085)
-- **Gestoppt, Volumes vorhanden:** die Container des MVP-Stacks `stack-postgres-1`, `stack-rustfs-1`
-  und `stack-keycloak-1` mit den Volumes `stack_postgres-data`, `stack_rustfs-data`,
-  `stack_rustfs-logs` und `stack_keycloak-data`. Die migrierten Daten und die geseedeten Medien
-  liegen vermutlich noch darin; das ist ungeprüft.
+  - Die Container des MVP-Stacks `stack-postgres-1`, `stack-rustfs-1` und `stack-keycloak-1` mit den
+    Volumes `stack_postgres-data`, `stack_rustfs-data` (270 GB), `stack_rustfs-logs` und
+    `stack_keycloak-data`. Geprüft am 2026-09-28: die migrierten Daten und Medien sind vollständig,
+    `etl verify` meldet 0 Abweichungen.
+- Die Grant-Tabellen der Legacy-MySQL stammten nach dem Dump-Import vom Altserver; `root/legacy` ist
+  per Grant-Reset wiederhergestellt. Rezept und Import ohne `mysql`-Schema: `app/stack/README.md`.
 
 ---
 
@@ -103,7 +105,7 @@ vom eigenen Host.
 | Branch | Worktree | Stand |
 |---|---|---|
 | `main` | `/workspaces/cichlids.com` | Mehrere Commits vor `origin/main`, Push durch den Operator ausstehend |
-| `feat/legacy-mvp` | `/workspaces/cichlids-mvp` | 82 Commits über der Merge-Base `c8ad766`, gepusht nach `origin/feat/legacy-mvp` |
+| `feat/legacy-mvp` | `/workspaces/cichlids-mvp` | 145 Commits über der Merge-Base `c8ad766`; 63 davon (2026-09-28) lokal, Push durch den Operator ausstehend |
 | `backup/pre-secret-scrub` | keiner | Historienstand vor dem Entfernen von AWS- und Auth0-Secrets. Er enthält vermutlich genau diese Secrets und wird nicht gepusht. |
 
 **Details zu den Commits:**
@@ -137,6 +139,7 @@ Einstellungen).
 | 2026-07-08 18:42 | `HANDOFF.md` für einen Maschinenwechsel geschrieben |
 | 2026-07-08 20:50 bis 07-09 16:48 | Branch `feat/legacy-mvp`: Epic TASK-3, 79 Commits |
 | 2026-09-28 | Diese Bestandsaufnahme; Scanner-Fix auf `feat/legacy-mvp`, Branch gepusht; Stand von `main` committet |
+| 2026-09-28 | Autonome Umsetzung auf `feat/legacy-mvp`: Stack lauffähig, Doku-Fäden F17 bis F19, Forum-ETL-Fix, Stories 3.15, 3.16, 3.21, 3.22 in Review |
 
 ---
 
@@ -381,16 +384,22 @@ Anschließend den Status prüfen und `node tools/check-story-test-binding.mjs` l
 
 ### 6.5 Backlog-Stand TASK-3
 
-Kein Task ist Done, kein AC ist abgehakt.
+Kein Task ist Done, kein AC ist abgehakt (Stand 2026-09-28).
 
 | Status | Tasks |
 |---|---|
-| In Review (22) | 3.1 Schema; 3.2 bis 3.9 ETL (Arten, User, Becken, Bilder, Kommentare/Ratings, Galerien, Verify, Medien); 3.10 bis 3.14 (Pictures-, Tanks-, Species-API, Keycloak, Comments/Ratings-API); 3.17 Outbox; 3.18 TS-Client; 3.19, 3.20 und 3.27 Mobile-Screens; 3.23 Bootstrap-Smoke; 3.24 Forum-ETL; 3.25 Community-API; 3.26 Legacy-Redirects |
-| To Do (4) | 3.15 Auth0-Import nach Keycloak; 3.16 Foto-Upload mit Varianten; 3.21 Mobile Login und Upload; 3.22 Mobile Kommentieren und Bewerten |
-| Draft (1) | DRAFT-1 Mail-Kampagne zur Rückgewinnung alter Mitglieder. Hängt von 3.15 ab; offen sind die Wahl des Mail-Providers (ca. 12k Mails) und die rechtliche Prüfung. |
+| In Review (26) | 3.1 Schema; 3.2 bis 3.9 ETL (Arten, User, Becken, Bilder, Kommentare/Ratings, Galerien, Verify, Medien); 3.10 bis 3.14 (Pictures-, Tanks-, Species-API, Keycloak, Comments/Ratings-API); 3.15 Auth0-Import nach Keycloak; 3.16 Foto-Upload mit Varianten; 3.17 Outbox; 3.18 TS-Client; 3.19, 3.20 und 3.27 Mobile-Screens; 3.21 Mobile Login und Upload; 3.22 Mobile Kommentieren und Bewerten; 3.23 Bootstrap-Smoke; 3.24 Forum-ETL; 3.25 Community-API; 3.26 Legacy-Redirects |
+| Draft (5) | DRAFT-1 Mail-Kampagne zur Rückgewinnung alter Mitglieder (Mail-Provider für ca. 12k Mails und rechtliche Prüfung offen); DRAFT-2 gitleaks statt Eigenbau-Scanner; DRAFT-3 gespeicherter Link zwischen Bewertung und Kommentar; DRAFT-4 wie oft ein Mitglied dasselbe Ziel bewerten darf; DRAFT-5 View-Zählung durch Smokes in der geseedeten Dev-DB |
 
-3.15 ist so zugeschnitten, dass alle Legacy-Konten mit bekannter E-Mail importiert werden, mit den
-Keycloak-Required-Actions "update password" und "terms", idempotent über die E-Mail.
+- 3.15 importiert jedes Legacy-Konto mit bekannter E-Mail (ca. 12.050 Konten) mit den Required
+  Actions "update password" und "terms", idempotent über die E-Mail; Grundsätze in ADR-0022. Der
+  Import ist nicht gegen den Dev-Stack gelaufen; die Prüfbefehle stehen in den Task-Notizen.
+- 3.16, 3.21 und 3.22 liefern Upload, Login (PKCE) und Kommentieren mit Bewertung. Schreibende
+  E2E-Tests laufen auf einem isolierten Schreib-Stack (`app/mobile/e2e/write-stack.sh`: DB
+  `cichlids_e2e`, Bucket `cichlids-e2e`, API :5046, Web :8082), nie gegen die geseedete Dev-DB.
+- Die Maestro-Flows der ACs von 3.21 und 3.22 sind geschrieben, aber nicht ausführbar (F13).
+- Eine Vorprüfung aller 22 älteren In-Review-Tasks liegt als `PRECHECK-IN-REVIEW.md` (untracked) im
+  Worktree `/workspaces/cichlids-mvp`.
 
 ### 6.6 Lokal starten
 
@@ -404,7 +413,11 @@ Die Anleitung steht in `app/stack/README.md` im Worktree `/workspaces/cichlids-m
    - `CICHLIDS_LEGACY_STACK_DIR` zeigt standardmäßig auf
      `/workspaces/cichlids.com/workspace-legacy/legacy-stack`.
 3. API starten: `dotnet run` in `Cichlids.Api` (http://0.0.0.0:5045).
-4. App starten: `pnpm exec expo start --web --port 8098`. Web-Smoke: `pnpm run e2e:web`.
+4. App starten: `pnpm exec expo start --web --port 8081`. Web-Smoke: `pnpm run e2e:web`; schreibende
+   E2E-Specs: `pnpm run e2e:write`.
+
+Das .NET-SDK installiert der Devcontainer bei der Erstellung über `tools/install-dotnet.sh` nach
+`~/.dotnet`, dazu pnpm-Abhängigkeiten und Playwright-Chromium.
 
 Ports:
 
@@ -414,7 +427,8 @@ Ports:
 | RustFS | 9000 |
 | Keycloak | 8180 (admin/admin) |
 | API | 5045 |
-| Expo Web | 8098 |
+| Expo Web | 8081 |
+| Schreib-Stack API / Web | 5046 / 8082 |
 | Legacy-MySQL | 3306 |
 | phpMyAdmin | 8085 |
 
@@ -426,11 +440,9 @@ Dev-User in Keycloak: `dev-user` und `dev-mod` (Moderator und Admin), Passwort j
   offene Lücke zum AC; als Ersatz gibt es nur den Playwright-Web-Smoke.
 - Für 3.1 stehen der Merge nach `main` und ein E2E-Lauf auf einem deployten Stack aus. Beides
   braucht die Delivery-Pipeline aus TASK-2.
-- Die Notiz in 3.10 nennt den Artenfilter "deferred". Der Filter ist umgesetzt (`93dc031`,
-  `ab004a8`, `1a3c336`).
-- Beim Expo-Web-Port gibt es einen Widerspruch: `.devcontainer/docker-compose.yml` des Branches
-  mappt 8081, README und Playwright erwarten 8098.
-- Dass der Dump vorab ins MySQL-Volume importiert werden muss, ist nicht dokumentiert.
+- Der Dev-Realm von Keycloak ist per kcadm angepasst (cichlids-app: webOrigins 8081 und 8082,
+  Redirect `cichlids://*`). Den `email_verified`-Mapper ergänzt der Account-Import beim ersten Lauf.
+- Jeder Aufruf eines Bilddetails zählt einen View, auch im Web-Smoke (DRAFT-5).
 - In `app/` gibt es keine TODO- oder FIXME-Marker und keine übersprungenen Tests.
 
 ---
@@ -530,26 +542,43 @@ Die IDs sind stabil, damit sich die Fäden einzeln abarbeiten und abhaken lassen
 
 ### Strang B
 
-- [ ] **F11** Prüfen, ob die Docker-Volumes des MVP-Stacks noch vollständig sind (Postgres, RustFS
-  mit 283 GB, Keycloak), und den Stack starten. Voraussetzung: das .NET-10-SDK unter
-  `~/.dotnet` (Standardpfad von `bootstrap.sh`). Im Devcontainer ist es nicht installiert. Der
-  Projektinhaber baut dafür einen eigenen Devcontainer.
-- [ ] **F12** Die 22 Tasks in Review am laufenden System abnehmen, mit ACs in Ground-Truth-Form.
+- [x] **F11** Docker-Volumes des MVP-Stacks geprüft und Stack gestartet: Daten vollständig,
+  `bootstrap.sh` grün, `etl verify` 0 Abweichungen, Playwright-Web-Smoke grün. Das .NET-SDK
+  installiert der Devcontainer über `tools/install-dotnet.sh`.
+- [ ] **F12** Die 26 Tasks in Review am laufenden System abnehmen, mit ACs in Ground-Truth-Form. Eine
+  Vorprüfung der 22 älteren Tasks liegt in `/workspaces/cichlids-mvp/PRECHECK-IN-REVIEW.md`
+  (untracked); die Notizen von 3.15, 3.16, 3.21 und 3.22 nennen die Prüfbefehle.
 - [ ] **F13** Den Maestro-Runner zum Laufen bringen oder den AC von 3.23 bewusst anpassen.
 - [ ] **F14** Über den Merge von `feat/legacy-mvp` nach `main` entscheiden (technisch konfliktfrei).
-- [ ] **F15** Die offenen MVP-Stories 3.15, 3.16, 3.21 und 3.22 sowie DRAFT-1 einplanen.
+- [x] **F15** Die MVP-Stories 3.15, 3.16, 3.21 und 3.22 sind umgesetzt und stehen in Review.
+  DRAFT-1 (Mail-Kampagne) ist offen.
+- [ ] **F21** Den Auth0-Import (`etl keycloak-import` bzw. `bootstrap.sh`) gegen den Dev-Stack
+  laufen lassen und die ACs von 3.15 beobachten (ca. 12.050 Konten, zweiter Lauf legt nichts an).
+- [ ] **F22** Die Interims-Entscheidungen der autonomen Umsetzung vom 2026-09-28 durchsehen
+  (Journal `SCHLAFENSMODUS.md` im Worktree `/workspaces/cichlids-mvp`, untracked).
+- [ ] **F23** Über DRAFT-3 (gespeicherter Link Bewertung zu Kommentar), DRAFT-4 (wiederholte
+  Bewertungen) und DRAFT-5 (View-Zählung in der geseedeten Dev-DB) entscheiden.
+- [ ] **F24** Die Android-Package-ID `com.cichlids.app` in `app/mobile/app.json` bestätigen oder
+  ersetzen, bevor ein nativer Build veröffentlicht wird.
+- [ ] **F25** Die Unverifiziertheit der Registrierung klären: Der Realm erlaubt Selbstregistrierung
+  ohne E-Mail-Verifikation (kein SMTP im Stack). Die API verknüpft migrierte Profile nur bei
+  verifizierter E-Mail; für den Relaunch braucht Keycloak SMTP und `verifyEmail`.
 
 ### Doku-Korrekturen
 
 - [ ] **F16** `PLAN.md` Abschnitt 7 beschreibt drei Hetzner-Projekte. Er sollte die zwei Projekte
   aus ADR-0017 beschreiben.
-- [ ] **F17** Die Notiz in TASK-3.10 zum Artenfilter an die Umsetzung anpassen.
-- [ ] **F18** Den Expo-Web-Port vereinheitlichen (Devcontainer 8081, README und Playwright 8098).
-- [ ] **F19** In `app/stack/README.md` dokumentieren, wie der Legacy-Dump ins MySQL-Volume kommt.
+- [x] **F17** Die Notiz in TASK-3.10 beschreibt den umgesetzten Artenfilter.
+- [x] **F18** Der Expo-Web-Port ist überall 8081 (Devcontainer, README, bootstrap, Playwright,
+  Maestro).
+- [x] **F19** `app/stack/README.md` beschreibt den Dump-Import ohne das `mysql`-Schema und den
+  Grant-Reset für `root/legacy`.
 
 ### Klärung
 
-- [ ] **O1** Die Rolle des Legacy-Parity-MVP gegenüber der Produktvision klären (siehe Abschnitt 7).
+- [x] **O1** Die Rolle des Legacy-Parity-MVP ist geklärt: Er liefert eine lauffähige Anwendung mit
+  den echten Altdaten, beweist die Migration und ist die Relaunch-Basis für die Rückgewinnung der
+  ca. 12k Bestandsmitglieder. Die Vision-Funktionen bauen später darauf auf.
 - [ ] **O2** Die Priorität festlegen: zuerst Deployment (Strang A) oder zuerst weitere
   MVP-Funktionen (Strang B)?
 - [ ] **O3** ADR-0015 (Backlog.md) steht auf Proposed. Soll er angenommen werden?
