@@ -8,10 +8,12 @@ namespace Cichlids.Api.Features.Auth;
 
 /// <summary>
 /// Resolves the authenticated principal to its profile. Resolution order: the token's subject
-/// against an existing oidc identity; then the token's email against an email identity from the
-/// legacy user migration, which links the migrated profile to the new login by creating its oidc
-/// identity; and as a last resort a fresh member profile with an oidc identity, so the first
-/// authenticated call is all a new user needs to exist in the domain.
+/// against an existing oidc identity; then, only when the token's email_verified claim is true,
+/// the token's email against an email identity from the legacy user migration, which links the
+/// migrated profile to the new login by creating its oidc identity; and as a last resort a fresh
+/// member profile with an oidc identity, so the first authenticated call is all a new user needs
+/// to exist in the domain. An unverified email never reaches a migrated profile, because anyone
+/// can enter any address at registration.
 /// </summary>
 public sealed class CurrentProfileService(CichlidsDbContext context)
 {
@@ -30,7 +32,8 @@ public sealed class CurrentProfileService(CichlidsDbContext context)
         }
 
         var email = user.FindFirst("email")?.Value?.Trim().ToLowerInvariant();
-        if (!string.IsNullOrEmpty(email))
+        var emailVerified = bool.TryParse(user.FindFirst("email_verified")?.Value, out var verified) && verified;
+        if (emailVerified && !string.IsNullOrEmpty(email))
         {
             var byEmail = await FindByIdentityAsync(EmailProvider, email, cancellationToken);
             if (byEmail is not null)

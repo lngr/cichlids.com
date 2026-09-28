@@ -72,31 +72,13 @@ public class MeEndpointTests(ApiFixture fixture)
     }
 
     [Fact]
-    public async Task Get_LinksMigratedProfileByEmailInsteadOfCreatingANewOne()
+    public async Task Get_LinksMigratedProfileByVerifiedEmailInsteadOfCreatingANewOne()
     {
-        long migratedProfileId;
-        await using (var db = fixture.CreateDbContext())
-        {
-            var migrated = new Profile
-            {
-                Username = "migrated-legacy-user", DisplayName = "Migrated Legacy User",
-                Kind = ProfileKind.Member, CreatedAt = DateTimeOffset.UtcNow.AddYears(-10),
-            };
-            db.Profiles.Add(migrated);
-            await db.SaveChangesAsync();
-
-            db.ProfileIdentities.Add(new ProfileIdentity
-            {
-                ProfileId = migrated.Id, Provider = "email", Subject = "migrated@example.test",
-                CreatedAt = DateTimeOffset.UtcNow.AddYears(-10),
-            });
-            await db.SaveChangesAsync();
-            migratedProfileId = migrated.Id;
-        }
+        var migratedProfileId = await SeedMigratedProfileAsync("migrated-legacy-user", "migrated@example.test");
 
         var subject = Guid.NewGuid().ToString();
         var token = TestTokens.Create(
-            subject, "some-new-keycloak-name", email: "Migrated@Example.test");
+            subject, "some-new-keycloak-name", email: "Migrated@Example.test", emailVerified: true);
 
         var me = await ReadMeAsync(await SendAsync(token));
         Assert.Equal(migratedProfileId, me.Profile.Id);
@@ -111,6 +93,24 @@ public class MeEndpointTests(ApiFixture fixture)
         }
     }
 
+    [Theory]
+    [InlineData("unverified-legacy-user", "unverified@example.test", false)]
+    [InlineData("unflagged-legacy-user", "unflagged@example.test", null)]
+    public async Task Get_CreatesAFreshProfileWhenTheEmailIsNotVerified(string legacyUsername, string email, bool? emailVerified)
+    {
+        var migratedProfileId = await SeedMigratedProfileAsync(legacyUsername, email);
+
+        var subject = Guid.NewGuid().ToString();
+        var token = TestTokens.Create(subject, $"{legacyUsername}-login", email: email, emailVerified: emailVerified);
+
+        var me = await ReadMeAsync(await SendAsync(token));
+        Assert.NotEqual(migratedProfileId, me.Profile.Id);
+        Assert.Equal($"{legacyUsername}-login", me.Profile.Username);
+
+        await using var db = fixture.CreateDbContext();
+        Assert.False(await db.ProfileIdentities.AnyAsync(i => i.ProfileId == migratedProfileId && i.Provider == "oidc"));
+    }
+
     [Fact]
     public async Task Get_MapsModeratorRealmRoleIntoRoles()
     {
@@ -119,6 +119,26 @@ public class MeEndpointTests(ApiFixture fixture)
 
         var me = await ReadMeAsync(await SendAsync(token));
         Assert.Contains("moderator", me.Roles);
+    }
+
+    private async Task<long> SeedMigratedProfileAsync(string username, string email)
+    {
+        await using var db = fixture.CreateDbContext();
+        var migrated = new Profile
+        {
+            Username = username, DisplayName = username,
+            Kind = ProfileKind.Member, CreatedAt = DateTimeOffset.UtcNow.AddYears(-10),
+        };
+        db.Profiles.Add(migrated);
+        await db.SaveChangesAsync();
+
+        db.ProfileIdentities.Add(new ProfileIdentity
+        {
+            ProfileId = migrated.Id, Provider = "email", Subject = email,
+            CreatedAt = DateTimeOffset.UtcNow.AddYears(-10),
+        });
+        await db.SaveChangesAsync();
+        return migrated.Id;
     }
 
     private async Task<HttpResponseMessage> SendAsync(string token)

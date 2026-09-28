@@ -30,8 +30,17 @@ internal static class TestTokens
         NameClaimType = "preferred_username",
     };
 
+    /// <summary>
+    /// Issues a token for the given subject and username. When emailVerified is set, the token has
+    /// an email_verified claim as a JSON boolean, shaped like Keycloak's.
+    /// </summary>
     public static string Create(
-        string subject, string username, string? name = null, string? email = null, params string[] roles)
+        string subject,
+        string username,
+        string? name = null,
+        string? email = null,
+        bool? emailVerified = null,
+        params string[] roles)
     {
         var claims = new List<Claim>
         {
@@ -59,14 +68,22 @@ internal static class TestTokens
             Subject = new ClaimsIdentity(claims),
         };
 
+        var jsonClaims = new Dictionary<string, object>();
+        if (emailVerified is not null)
+        {
+            jsonClaims["email_verified"] = emailVerified.Value;
+        }
+
         if (roles.Length > 0)
         {
             // Shaped exactly like Keycloak's realm role claim, so the API's claim promotion
             // (realm_access.roles into role claims) is exercised rather than bypassed.
-            descriptor.Claims = new Dictionary<string, object>
-            {
-                ["realm_access"] = new Dictionary<string, object> { ["roles"] = roles },
-            };
+            jsonClaims["realm_access"] = new Dictionary<string, object> { ["roles"] = roles };
+        }
+
+        if (jsonClaims.Count > 0)
+        {
+            descriptor.Claims = jsonClaims;
         }
 
         return new JsonWebTokenHandler().CreateToken(descriptor);
