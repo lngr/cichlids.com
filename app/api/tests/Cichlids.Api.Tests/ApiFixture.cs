@@ -99,6 +99,12 @@ public sealed class ApiFixture : IAsyncLifetime
     /// </summary>
     public static string ExpectedPublicUrlPrefix => ObjectStorePublicBaseUrl;
 
+    /// <summary>
+    /// The application's service provider, for tests that compute an expected value with the
+    /// same configured service the API uses.
+    /// </summary>
+    public IServiceProvider Services => _factory.Services;
+
     public CichlidsDbContext CreateDbContext()
     {
         var optionsBuilder = new DbContextOptionsBuilder<CichlidsDbContext>()

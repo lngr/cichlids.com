@@ -1,6 +1,7 @@
 using System.Security.Claims;
 using Cichlids.Domain.Entities;
 using Cichlids.Domain.Enums;
+using Cichlids.Infrastructure.Identity;
 using Cichlids.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,9 +14,10 @@ namespace Cichlids.Api.Features.Auth;
 /// migrated profile to the new login by creating its oidc identity; and as a last resort a fresh
 /// member profile with an oidc identity, so the first authenticated call is all a new user needs
 /// to exist in the domain. An unverified email never reaches a migrated profile, because anyone
-/// can enter any address at registration.
+/// can enter any address at registration. A fresh profile never shows an email address: its
+/// handle and display name come from the token only when they hold none.
 /// </summary>
-public sealed class CurrentProfileService(CichlidsDbContext context)
+public sealed class CurrentProfileService(CichlidsDbContext context, Lazy<GeneratedNames> generatedNames)
 {
     private const string OidcProvider = "oidc";
     private const string EmailProvider = "email";
@@ -64,11 +66,12 @@ public sealed class CurrentProfileService(CichlidsDbContext context)
     {
         var username = await ResolveFreeUsernameAsync(
             user.FindFirst("preferred_username")?.Value, subject, cancellationToken);
+        var name = user.FindFirst("name")?.Value;
 
         var profile = new Profile
         {
             Username = username,
-            DisplayName = user.FindFirst("name")?.Value ?? username,
+            DisplayName = PublicHandle.IsUsable(name) ? name! : username,
             Kind = ProfileKind.Member,
             CreatedAt = DateTimeOffset.UtcNow,
         };
@@ -88,20 +91,37 @@ public sealed class CurrentProfileService(CichlidsDbContext context)
     }
 
     /// <summary>
-    /// Picks the first free username: the token's preferred username as-is, then with a numeric
-    /// suffix counting up from 2. The subject stands in when the token has no usable username.
+    /// Picks the first free handle. A usable preferred username is taken as-is, then with a
+    /// numeric suffix counting up from 2. A blank or email-like preferred username yields the
+    /// generated handles keyed by the subject instead.
     /// </summary>
-    private async Task<string> ResolveFreeUsernameAsync(
-        string? preferredUsername, string subject, CancellationToken cancellationToken)
-    {
-        var baseUsername = string.IsNullOrWhiteSpace(preferredUsername) ? subject : preferredUsername.Trim();
+    private Task<string> ResolveFreeUsernameAsync(
+        string? preferredUsername, string subject, CancellationToken cancellationToken) =>
+        FirstFreeAsync(
+            PublicHandle.IsUsable(preferredUsername)
+                ? SuffixedCandidates(preferredUsername!.Trim())
+                : generatedNames.Value.Candidates(GeneratedNames.HandleInput(subject)),
+            cancellationToken);
 
-        var candidate = baseUsername;
-        for (var suffix = 2; await context.Profiles.AnyAsync(p => p.Username == candidate, cancellationToken); suffix++)
+    private static IEnumerable<string> SuffixedCandidates(string baseUsername)
+    {
+        yield return baseUsername;
+        for (var suffix = 2; ; suffix++)
         {
-            candidate = $"{baseUsername}-{suffix}";
+            yield return $"{baseUsername}-{suffix}";
+        }
+    }
+
+    private async Task<string> FirstFreeAsync(IEnumerable<string> candidates, CancellationToken cancellationToken)
+    {
+        foreach (var candidate in candidates)
+        {
+            if (!await context.Profiles.AnyAsync(p => p.Username == candidate, cancellationToken))
+            {
+                return candidate;
+            }
         }
 
-        return candidate;
+        throw new InvalidOperationException("The candidate sequence ended without a free username.");
     }
 }

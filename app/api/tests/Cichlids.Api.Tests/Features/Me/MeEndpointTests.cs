@@ -4,7 +4,9 @@ using System.Text.Json;
 using Cichlids.Api.Features.Me;
 using Cichlids.Domain.Entities;
 using Cichlids.Domain.Enums;
+using Cichlids.Infrastructure.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Cichlids.Api.Tests.Features.Me;
 
@@ -71,6 +73,63 @@ public class MeEndpointTests(ApiFixture fixture)
         Assert.Equal("collision-taken-2", me.Profile.Username);
     }
 
+    [Theory]
+    [InlineData("first.login@example.test", "First Login")]
+    [InlineData("", "First Login")]
+    [InlineData("   ", "First Login")]
+    public async Task Get_GeneratesTheHandleWhenThePreferredUsernameIsBlankOrAnEmailAddress(string preferredUsername, string name)
+    {
+        var subject = Guid.NewGuid().ToString();
+        var token = TestTokens.Create(subject, preferredUsername, name: name);
+
+        var me = await ReadMeAsync(await SendAsync(token));
+
+        Assert.Equal(Names().Generate(GeneratedNames.HandleInput(subject)), me.Profile.Username);
+        Assert.Equal(name, me.Profile.DisplayName);
+    }
+
+    [Theory]
+    [InlineData("mail-as-name", "first.login@example.test")]
+    [InlineData("mail-in-name", "First Login <first.login@example.test>")]
+    public async Task Get_UsesTheHandleAsDisplayNameWhenTheNameClaimHoldsAnEmailAddress(string preferredUsername, string name)
+    {
+        var token = TestTokens.Create(Guid.NewGuid().ToString(), preferredUsername, name: name);
+
+        var me = await ReadMeAsync(await SendAsync(token));
+
+        Assert.Equal(preferredUsername, me.Profile.Username);
+        Assert.Equal(preferredUsername, me.Profile.DisplayName);
+    }
+
+    [Fact]
+    public async Task Get_GeneratesTheHandleAndDisplayNameWhenBothClaimsHoldAnEmailAddress()
+    {
+        var subject = Guid.NewGuid().ToString();
+        var token = TestTokens.Create(subject, "both@example.test", name: "both@example.test", email: "both@example.test");
+
+        var me = await ReadMeAsync(await SendAsync(token));
+
+        var handle = Names().Generate(GeneratedNames.HandleInput(subject));
+        Assert.Equal(handle, me.Profile.Username);
+        Assert.Equal(handle, me.Profile.DisplayName);
+    }
+
+    [Fact]
+    public async Task Get_TakesTheNextGeneratedCandidateWhenTheFirstIsTaken()
+    {
+        var subject = Guid.NewGuid().ToString();
+        var candidates = Names().Candidates(GeneratedNames.HandleInput(subject)).Take(2).ToList();
+        await using (var db = fixture.CreateDbContext())
+        {
+            db.Profiles.Add(new Profile { Username = candidates[0], Kind = ProfileKind.Member, CreatedAt = DateTimeOffset.UtcNow });
+            await db.SaveChangesAsync();
+        }
+
+        var me = await ReadMeAsync(await SendAsync(TestTokens.Create(subject, "taken@example.test")));
+
+        Assert.Equal(candidates[1], me.Profile.Username);
+    }
+
     [Fact]
     public async Task Get_LinksMigratedProfileByVerifiedEmailInsteadOfCreatingANewOne()
     {
@@ -120,6 +179,8 @@ public class MeEndpointTests(ApiFixture fixture)
         var me = await ReadMeAsync(await SendAsync(token));
         Assert.Contains("moderator", me.Roles);
     }
+
+    private GeneratedNames Names() => fixture.Services.GetRequiredService<GeneratedNames>();
 
     private async Task<long> SeedMigratedProfileAsync(string username, string email)
     {

@@ -11,6 +11,7 @@ using Cichlids.Api.Features.Species;
 using Cichlids.Api.Features.Tanks;
 using Cichlids.Api.Features.Uploads;
 using Cichlids.Api.Features.Webhooks;
+using Cichlids.Infrastructure.Identity;
 using Cichlids.Infrastructure.Outbox;
 using Cichlids.Infrastructure.Persistence;
 using Cichlids.Infrastructure.Slugs;
@@ -81,20 +82,14 @@ builder.Services.AddScoped<UploadsWriteService>();
 builder.Services.AddScoped<DraftsQueryService>();
 builder.Services.AddScoped<PostPublishService>();
 
-// Resolved on first use, so only the publish endpoint requires a slug secret. The environment
-// variable takes precedence over configuration, the same order the ETL uses, so migrated and
-// newly published posts derive their slugs from the same secret.
+// Resolved on first use, so only the publish endpoint and a first login that needs a generated
+// handle require a slug secret. The environment variable takes precedence over configuration, the
+// same order the ETL uses, so migrated and new posts and profiles derive their generated values
+// from the same secret.
+builder.Services.AddSingleton(serviceProvider => new SlugGenerator(ResolveSlugSecret(serviceProvider)));
+builder.Services.AddSingleton(serviceProvider => new GeneratedNames(ResolveSlugSecret(serviceProvider)));
 builder.Services.AddSingleton(serviceProvider =>
-{
-    var secret = Environment.GetEnvironmentVariable(SlugGenerator.SecretEnvironmentVariable)
-        ?? serviceProvider.GetRequiredService<IConfiguration>()[SlugGenerator.SecretConfigurationKey];
-
-    return string.IsNullOrEmpty(secret)
-        ? throw new InvalidOperationException(
-            $"No slug secret configured: set {SlugGenerator.SecretEnvironmentVariable} or "
-            + $"{SlugGenerator.SecretConfigurationKey}.")
-        : new SlugGenerator(secret);
-});
+    new Lazy<GeneratedNames>(serviceProvider.GetRequiredService<GeneratedNames>));
 
 var app = builder.Build();
 
@@ -126,5 +121,17 @@ app.MapUploadsEndpoints();
 app.MapWebhookAdminEndpoints();
 
 app.Run();
+
+static string ResolveSlugSecret(IServiceProvider serviceProvider)
+{
+    var secret = Environment.GetEnvironmentVariable(SlugGenerator.SecretEnvironmentVariable)
+        ?? serviceProvider.GetRequiredService<IConfiguration>()[SlugGenerator.SecretConfigurationKey];
+
+    return string.IsNullOrEmpty(secret)
+        ? throw new InvalidOperationException(
+            $"No slug secret configured: set {SlugGenerator.SecretEnvironmentVariable} or "
+            + $"{SlugGenerator.SecretConfigurationKey}.")
+        : secret;
+}
 
 public partial class Program;
