@@ -97,6 +97,14 @@ public sealed class PicturesQueryService(CichlidsDbContext context, IObjectStore
         await context.Database.ExecuteSqlInterpolatedAsync(
             $"UPDATE post SET view_count = view_count + 1 WHERE id = {postId}", cancellationToken);
 
+        return await GetDetailAsync(postId.Value, cancellationToken);
+    }
+
+    /// <summary>
+    /// Returns the detail of an existing post by its id without counting a view.
+    /// </summary>
+    public async Task<PictureDetailDto> GetDetailAsync(long postId, CancellationToken cancellationToken)
+    {
         var post = await context.Posts
             .Where(p => p.Id == postId)
             .Select(p => new PostProjection(

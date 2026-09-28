@@ -9,9 +9,11 @@ using Cichlids.Api.Features.Pictures;
 using Cichlids.Api.Features.Profiles;
 using Cichlids.Api.Features.Species;
 using Cichlids.Api.Features.Tanks;
+using Cichlids.Api.Features.Uploads;
 using Cichlids.Api.Features.Webhooks;
 using Cichlids.Infrastructure.Outbox;
 using Cichlids.Infrastructure.Persistence;
+using Cichlids.Infrastructure.Slugs;
 using Cichlids.Infrastructure.Storage;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -75,6 +77,24 @@ builder.Services.AddScoped<CommentsWriteService>();
 builder.Services.AddScoped<CurrentProfileService>();
 builder.Services.AddScoped<CommunityQueryService>();
 builder.Services.AddScoped<LegacyRedirectsQueryService>();
+builder.Services.AddScoped<UploadsWriteService>();
+builder.Services.AddScoped<DraftsQueryService>();
+builder.Services.AddScoped<PostPublishService>();
+
+// Resolved on first use, so only the publish endpoint requires a slug secret. The environment
+// variable takes precedence over configuration, the same order the ETL uses, so migrated and
+// newly published posts derive their slugs from the same secret.
+builder.Services.AddSingleton(serviceProvider =>
+{
+    var secret = Environment.GetEnvironmentVariable(SlugGenerator.SecretEnvironmentVariable)
+        ?? serviceProvider.GetRequiredService<IConfiguration>()[SlugGenerator.SecretConfigurationKey];
+
+    return string.IsNullOrEmpty(secret)
+        ? throw new InvalidOperationException(
+            $"No slug secret configured: set {SlugGenerator.SecretEnvironmentVariable} or "
+            + $"{SlugGenerator.SecretConfigurationKey}.")
+        : new SlugGenerator(secret);
+});
 
 var app = builder.Build();
 
@@ -102,6 +122,7 @@ app.MapCommentsEndpoints();
 app.MapMeEndpoints();
 app.MapCommunityEndpoints();
 app.MapLegacyRedirectsEndpoints();
+app.MapUploadsEndpoints();
 app.MapWebhookAdminEndpoints();
 
 app.Run();
