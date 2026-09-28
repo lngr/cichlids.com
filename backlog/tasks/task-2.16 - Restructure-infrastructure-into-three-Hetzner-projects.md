@@ -1,11 +1,11 @@
 ---
 id: TASK-2.16
 title: Restructure infrastructure into three Hetzner projects
-status: In Progress
+status: Done
 assignee:
   - Claude
 created_date: '2026-06-08 13:14'
-updated_date: '2026-06-08 14:55'
+updated_date: '2026-06-09 20:42'
 labels:
   - infra
 milestone: m-0
@@ -14,7 +14,7 @@ dependencies:
 references:
   - infra/README.md
 parent_task_id: TASK-2
-ordinal: 18000
+ordinal: 26000
 ---
 
 ## Description
@@ -196,6 +196,12 @@ distinct key per tier.
 - No real `tofu apply` — the foundation/backup apply and the three-project bootstrap remain the
   operator's out-of-band step (the runbook). DoD #3 "all CI green" is confirmed after push.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Delivered the project separation that isolates the irreplaceable backups in a cloud-token-free project. TASK-2.22 refined the layout to two projects (the OpenTofu state folded into the cichlids and cichlids-backup projects; the separate cichlids-tfstate project removed), so the acceptance criteria above describe the superseded three-project arrangement. The surviving guarantee, the backups in a project no automation token can reach, is enforced by tools/check-project-separation.py and verified live in TASK-2.21 Layer 2.
+<!-- SECTION:FINAL_SUMMARY:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->

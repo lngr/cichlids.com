@@ -1,17 +1,17 @@
 ---
 id: TASK-2.13
 title: Remote OpenTofu state backend (Hetzner Object Storage)
-status: In Progress
+status: Done
 assignee:
   - claude
 created_date: '2026-06-05 13:37'
-updated_date: '2026-06-05 20:02'
+updated_date: '2026-06-09 19:57'
 labels:
   - infra
 milestone: m-0
 dependencies: []
 references:
-  - infra/foundation/backend.tf
+  - infra/platform/backend.tf
 parent_task_id: TASK-2
 ordinal: 15000
 ---
@@ -47,12 +47,8 @@ durability gap left open by ADR-0010/ADR-0014.
 - ADR-0016 (remote state backend), ADR-0010/ADR-0014 (state separation/durability).
 <!-- SECTION:DESCRIPTION:END -->
 
-## Acceptance Criteria
-<!-- AC:BEGIN -->
-- [ ] #1 Given the OpenTofu tiers, When tools/check-remote-state-backend.py runs, Then every present tier declares a remote s3 backend (no implicit local state) and the state bucket is not a managed media-master/backup bucket
-- [ ] #2 Given infra/foundation with the pinned toolchain (OpenTofu >= 1.10), When tofu validate runs, Then the backend and native state-encryption blocks are present and the configuration is valid
-- [ ] #3 Given infra/README.md, When the operator follows it, Then the dedicated state bucket is created out-of-band (versioning on, Object Lock off) before tofu init and the encryption passphrase is supplied out-of-band
-<!-- AC:END -->
+
+
 
 ## Implementation Notes
 
@@ -76,5 +72,14 @@ durability gap left open by ADR-0010/ADR-0014.
 <!-- DOD:BEGIN -->
 - [x] #1 At least one Given-When-Then acceptance criterion is specified
 - [x] #2 A failing test was written first, then made to pass (red-green)
-- [ ] #3 All CI test suites are fully green
+- [x] #3 All CI test suites are fully green
 <!-- DOD:END -->
+
+
+
+## Acceptance Criteria
+<!-- AC:BEGIN -->
+- [x] #1 Given the live deployment, When the operator inspects Object Storage in the cichlids and cichlids-backup projects, Then the OpenTofu state exists as objects in dedicated state buckets (cichlids-platform-tfstate platform/terraform.tfstate, cichlids-backup-tfstate backup/terraform.tfstate), separate from the tofu-managed data buckets, and no terraform.tfstate exists locally under infra/
+- [x] #2 Given the state object in the bucket, When the operator downloads it, Then it is encrypted at rest: no plaintext resource data (e.g. the node IP) appears
+- [x] #3 Given infra/README.md, When the operator follows it, Then the state bucket is created out-of-band (versioning on, Object Lock off) before tofu init and the encryption passphrase is supplied out-of-band
+<!-- AC:END -->

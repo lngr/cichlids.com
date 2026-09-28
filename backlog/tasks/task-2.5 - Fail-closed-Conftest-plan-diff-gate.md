@@ -1,10 +1,11 @@
 ---
 id: TASK-2.5
 title: Fail-closed Conftest plan-diff gate
-status: To Do
-assignee: []
+status: In Progress
+assignee:
+  - Claude
 created_date: '2026-06-03 16:01'
-updated_date: '2026-06-05 10:36'
+updated_date: '2026-06-08 18:37'
 labels:
   - infra
   - policy
@@ -14,7 +15,8 @@ milestone: m-0
 dependencies:
   - TASK-2.2
 references:
-  - policy/
+  - policy/destroy_gate.rego
+  - tools/destroy-protection-demo.sh
 parent_task_id: TASK-2
 priority: high
 ordinal: 7000
@@ -51,6 +53,68 @@ of a critical resource.
 <!-- AC:END -->
 
 
+
+
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+### Goal
+Implement ADR-0014 Layer 3: a Conftest/OPA (Rego) policy over `tofu plan -json` that fails the
+pipeline (default deny) on any delete or replace of a critical resource.
+
+### Approach (test-first)
+- `policy/destroy_gate_test.rego`: Conftest unit tests written first (deny undefined -> red).
+- `policy/destroy_gate.rego`: deny destructive (delete/replace) changes to critical resources
+  (critical = protected type OR label/tag `critical="true"`); fail-closed default deny for an
+  unclassified destroy; allow create/update/no-op.
+- `policy/fixtures/`: a full-destroy plan (denied) and a safe create/update/no-op plan (allowed).
+- CI job `infra-policy`: `conftest verify`, assert the safe plan passes and the destroy plan is
+  denied, and run the live `prevent_destroy` proof.
+
+### Companion (Layer 1, behavioural proof)
+- `tools/destroy-protection-demo.sh`: a real `tofu plan -destroy` against the actual foundation
+  and backup configs (synthetic offline state) is refused by `prevent_destroy`.
+
+### Open
+- AC #5 predates ADR-0017 ("both buckets" in one project) and asks Conftest to assert
+  prevent_destroy/Object-Lock at the config level. Post-ADR-0017 that is covered by the static
+  guardrails checks across both tiers; AC #5 wording may need an update — to confirm.
+<!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### Delivered (with live evidence)
+
+**Layer 3 — Conftest fail-closed plan-diff gate**
+- `policy/destroy_gate.rego` + `policy/destroy_gate_test.rego` (5 unit tests) + fixtures.
+- Red-green: `conftest verify` initially failed (deny undefined); after the rules: `5 tests, 5
+  passed`.
+- Gate on `policy/fixtures/destroy_all_plan.json` (node+volume+buckets+DNS+backups all deleted)
+  -> 6 DENY, `conftest test` exit 1 (build fails). On `safe_changes_plan.json` -> exit 0.
+- CI job `infra-policy` runs verify, asserts the destroy fixture is denied (else the job fails),
+  and asserts the safe fixture passes.
+
+**Layer 1 — prevent_destroy actually refuses a destroy (was never exercised before)**
+- `tools/destroy-protection-demo.sh`: real `tofu plan -destroy` against the actual configs,
+  offline. Output, verbatim:
+  `Resource instance hcloud_volume.database has prevent_destroy set, but the plan calls for it
+  to be destroyed.` — same for `aws_s3_bucket.media_master`, `aws_s3_bucket.database_backup`,
+  `aws_s3_bucket.media_master_backup`. Demo exits 0 (all data stores refused destruction).
+- Node and DNS zone carry the identical lifecycle block (asserted by the static guardrails
+  checks); they are schema-version-sensitive under synthetic state, so the deterministic
+  coverage for them is the Conftest gate.
+
+### Status of ACs
+- AC #1 (deny destroy of critical), #2 (allow safe), #3 (red-green deny test), #4 (default deny
+  unclassified): met and machine-verified.
+- AC #5: see Implementation Plan — wording predates ADR-0017; covered by the guardrails checks,
+  pending an AC-wording decision.
+
+### Not done here
+- DoD #3 (all CI green) is confirmed after the push runs the `infra-policy` job.
+<!-- SECTION:NOTES:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->

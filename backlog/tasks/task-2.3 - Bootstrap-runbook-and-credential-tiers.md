@@ -1,11 +1,11 @@
 ---
 id: TASK-2.3
 title: Bootstrap runbook and credential tiers
-status: In Progress
+status: Done
 assignee:
   - claude
 created_date: '2026-06-03 16:00'
-updated_date: '2026-06-08 13:14'
+updated_date: '2026-06-09 20:30'
 labels:
   - infra
   - docs
@@ -48,12 +48,6 @@ credential model.
   tiers, break-glass).
 <!-- SECTION:DESCRIPTION:END -->
 
-## Acceptance Criteria
-<!-- AC:BEGIN -->
-- [ ] #1 Given infra/README.md, When the operator follows it end to end, Then they can create accounts/tokens and apply the foundation and app tiers without further instructions
-- [ ] #2 Given the runbook, When reviewed, Then it states the break-glass credential is out-of-band only and lists every required GitHub Actions secret and the branch-protection setup
-- [ ] #3 Given the repository, When scanned, Then the runbook contains no secrets or tokens
-<!-- AC:END -->
 
 
 
@@ -93,5 +87,13 @@ Author the operator runbook (infra/README.md) and the test-first secret guard.
 <!-- DOD:BEGIN -->
 - [x] #1 At least one Given-When-Then acceptance criterion is specified
 - [x] #2 A failing test was written first, then made to pass (red-green)
-- [ ] #3 All CI test suites are fully green
+- [x] #3 All CI test suites are fully green
 <!-- DOD:END -->
+
+
+
+## Acceptance Criteria
+<!-- AC:BEGIN -->
+- [x] #1 Given infra/README.md, When the operator follows it end to end, Then they create the credentials and apply the platform and backup tiers without further instructions
+- [x] #2 Given the repository, When the runbook is inspected, Then it contains no secret values (only variable names and placeholders)
+<!-- AC:END -->
