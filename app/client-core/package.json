@@ -7,6 +7,7 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsc",
+    "prepare": "pnpm run build",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "generate": "node scripts/generate.mjs",

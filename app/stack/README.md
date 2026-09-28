@@ -145,6 +145,11 @@ The API listens on `http://localhost:5045` (see `Properties/launchSettings.json`
 cd app/mobile && pnpm install && pnpm exec expo start --web --port 8081
 ```
 
+The app imports `@cichlids/client-core` from its compiled `dist/`: an install that adds packages
+builds it through the package's `prepare` script, an install that finds nothing to do skips that
+script, so after a change to the client-core sources `pnpm --filter @cichlids/client-core build`
+rebuilds it.
+
 ## Smoke test
 
 The Playwright smoke script drives the Expo web build against a running API and asserts the
