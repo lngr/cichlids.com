@@ -50,8 +50,10 @@ docker start cichlids-legacy-db-1
 ## Bootstrap
 
 `bootstrap.sh` brings a clean checkout up to the full local stand: Docker services, legacy MySQL,
-ETL migration and seed, and the Keycloak realm import. It is idempotent: re-running it against an
-already-bootstrapped stack reports each step as already done and exits green.
+ETL migration and seed, the Keycloak realm import, and the legacy account import into Keycloak. It
+is idempotent: on an already-bootstrapped stack the service, legacy MySQL and realm steps report
+their work as done, the ETL, media and account import steps rerun without changing the result,
+and the script exits green.
 
 ```sh
 app/stack/bootstrap.sh
@@ -63,7 +65,35 @@ Environment variables (all optional):
 |-------------------------------|-----------------------------------------------------------|---------|
 | `CICHLIDS_LEGACY_STACK_DIR`   | `/workspaces/cichlids.com/workspace-legacy/legacy-stack`  | Where to find the legacy MySQL stack's `docker-compose.yml` if MySQL is not already reachable on 3306. |
 | `CICHLIDS_MEDIA_LIMIT`        | `3000`                                                     | How many media items the ETL media step seeds; `0` seeds the full legacy image set. |
+| `CICHLIDS_AUTH0_EXPORT`       | `/workspaces/legacy-data/auth0/auth0-cichlids.json`        | Auth0 export (newline-delimited JSON) for the Keycloak account import; the step is skipped when the file does not exist. |
 | `DOTNET`                      | `~/.dotnet/dotnet`                                         | Path to the `dotnet` executable. |
+
+To run the Keycloak account import on its own:
+
+```sh
+cd app/api && CICHLIDS_ETL_AUTH0_EXPORT=/path/to/auth0-export.json \
+  ~/.dotnet/dotnet run --project src/Cichlids.Etl -- keycloak-import
+```
+
+The command reads the Keycloak connection from the `Keycloak` section of
+`app/api/src/Cichlids.Etl/appsettings.json`, overridable with `CICHLIDS_KEYCLOAK_URL`,
+`CICHLIDS_KEYCLOAK_REALM`, `CICHLIDS_KEYCLOAK_ADMIN_USER` and `CICHLIDS_KEYCLOAK_ADMIN_PASSWORD`.
+Repeated runs create only missing users and missing profile links.
+
+Before it creates users, the import adds the `email_verified` mapper to the realm's `email`
+client scope when the scope lacks it, which covers an existing realm that `bootstrap.sh` skips.
+The API links a login to a migrated profile by email only when the token reports that email as
+verified. A realm without an Auth0 export gets the mapper with:
+
+```sh
+docker compose -f app/stack/compose.yaml exec -T keycloak sh -c '
+  /opt/keycloak/bin/kcadm.sh config credentials --server http://localhost:8080 --realm master --user admin --password admin &&
+  id=$(/opt/keycloak/bin/kcadm.sh get client-scopes -r cichlids --fields id,name --format csv --noquotes | grep ",email$" | cut -d, -f1) &&
+  /opt/keycloak/bin/kcadm.sh create "client-scopes/$id/protocol-mappers/models" -r cichlids \
+    -s "name=email verified" -s protocol=openid-connect -s protocolMapper=oidc-usermodel-property-mapper \
+    -s "config.\"user.attribute\"=emailVerified" -s "config.\"claim.name\"=email_verified" \
+    -s "config.\"jsonType.label\"=boolean" -s "config.\"access.token.claim\"=true" -s "config.\"id.token.claim\"=true"'
+```
 
 ## Start / stop the Docker services directly
 

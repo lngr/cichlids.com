@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 # Brings a clean checkout up to the full local MVP stand: Docker services, legacy MySQL
-# reachability, ETL migration and seed, and the Keycloak realm import. Every step checks its own
-# precondition first and reports "already there" instead of redoing work, so re-running this
-# script against an already-bootstrapped stack is a no-op that still ends by printing the next
-# steps (starting the API and the app).
+# reachability, ETL migration and seed, the Keycloak realm import, and the legacy account import
+# into Keycloak. Every step is safe to repeat: the service, legacy MySQL and realm steps skip
+# work that is done, and the ETL, media and account import steps rerun idempotently. A run
+# against an already-bootstrapped stack ends by printing the next steps (starting the API and
+# the app).
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -13,6 +14,7 @@ COMPOSE_FILE="$SCRIPT_DIR/compose.yaml"
 
 CICHLIDS_LEGACY_STACK_DIR="${CICHLIDS_LEGACY_STACK_DIR:-/workspaces/cichlids.com/workspace-legacy/legacy-stack}"
 CICHLIDS_MEDIA_LIMIT="${CICHLIDS_MEDIA_LIMIT:-3000}"
+CICHLIDS_AUTH0_EXPORT="${CICHLIDS_AUTH0_EXPORT:-/workspaces/legacy-data/auth0/auth0-cichlids.json}"
 DOTNET="${DOTNET:-$HOME/.dotnet/dotnet}"
 
 step() { printf '\n== %s ==\n' "$1"; }
@@ -118,7 +120,15 @@ else
     -f /opt/keycloak/data/import/cichlids-realm.json
 fi
 
-# 6. Next steps
+# 6. Keycloak account import (creates only missing users and missing profile links)
+step "Keycloak account import"
+if [ -f "$CICHLIDS_AUTH0_EXPORT" ]; then
+  CICHLIDS_ETL_AUTH0_EXPORT="$CICHLIDS_AUTH0_EXPORT" etl keycloak-import
+else
+  echo "No Auth0 export at $CICHLIDS_AUTH0_EXPORT, skipping."
+fi
+
+# 7. Next steps
 step "Stack ready"
 cat <<'EOF'
 Start the API:
