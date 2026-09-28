@@ -4,7 +4,7 @@ title: Pictures read API with legacy parity
 status: In Review
 assignee: []
 created_date: '2026-07-08 18:58'
-updated_date: '2026-07-09 01:25'
+updated_date: '2026-09-28 13:57'
 labels: []
 dependencies:
   - TASK-3.5
@@ -28,7 +28,13 @@ GET /pictures list with sort, type, user and paging semantics of the legacy API 
 ## Implementation Notes
 
 <!-- SECTION:NOTES:BEGIN -->
-Endpoints for picture lists (newest, views, bayesian rating), detail with alias resolution and atomic view increment, comments. Species filter deferred: the schema lacks a post to species link (follow-up in progress). Real-stack smoke verified.
+### Endpoints
+- Picture lists ordered by newest, views and bayesian rating.
+- Picture detail with alias resolution and atomic view increment, plus its comments.
+- Species filter: GET /api/pictures?species={idOrSlug} joins over post_species (legacy user_cichlids_species_pictures_mm, migrated by the ETL step species-links); GET /api/species/{idOrSlug} returns pictureCount.
+
+### Verification
+- Real-stack smoke against the seeded local stack.
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
