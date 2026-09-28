@@ -16,7 +16,7 @@ namespace Cichlids.Infrastructure.Tests;
 public sealed class RustFsFixture : IAsyncLifetime
 {
     private const string AccessKey = "cichlids";
-    private const string SecretKey = "cichlids-dev-secret";
+    private const string SecretKey = "cichlids-dev-secret"; // gitleaks:allow
     private const int Port = 9000;
 
     private readonly IContainer _container = new ContainerBuilder("rustfs/rustfs:1.0.0-beta.8")

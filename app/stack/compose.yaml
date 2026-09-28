@@ -19,7 +19,7 @@ services:
     image: rustfs/rustfs:1.0.0-beta.8
     environment:
       RUSTFS_ACCESS_KEY: cichlids
-      RUSTFS_SECRET_KEY: cichlids-dev-secret
+      RUSTFS_SECRET_KEY: cichlids-dev-secret # gitleaks:allow
     ports:
       - "9000:9000"
     volumes:

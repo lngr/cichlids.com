@@ -42,7 +42,7 @@ public class OutboxDispatchServiceTests(OutboxDispatchFixture fixture) : IAsyncL
         await using var listener = new TestWebhookListener();
         listener.Start();
 
-        const string secret = "matching-subscriber-secret";
+        const string secret = "matching-subscriber-secret"; // gitleaks:allow
         await CreateSubscriptionAsync(listener.Uri, secret, ["comment.created"]);
 
         var (postId, slug) = await CreatePublishedPictureAsync();

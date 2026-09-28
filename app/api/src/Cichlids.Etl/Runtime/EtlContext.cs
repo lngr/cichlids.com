@@ -21,7 +21,7 @@ public sealed class EtlContext : IAsyncDisposable
     /// that never touches a generated slug), so a real deployment secret is never silently
     /// guessed.
     /// </summary>
-    public const string DevDefaultSlugSecret = "cichlids-local-dev-slug-secret";
+    public const string DevDefaultSlugSecret = "cichlids-local-dev-slug-secret"; // gitleaks:allow
 
     private EtlContext(MySqlConnection legacy, CichlidsDbContext db, bool dryRun, SlugGenerator slugGenerator)
     {

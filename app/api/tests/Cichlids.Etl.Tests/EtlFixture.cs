@@ -69,7 +69,7 @@ public sealed class EtlFixture : IAsyncLifetime
     // Same image and credentials as the local stack (app/stack/compose.yaml), so
     // ForumMigrationStepTests exercises the real S3-compatible upload path, not a mock.
     private const string ObjectStoreAccessKey = "cichlids";
-    private const string ObjectStoreSecretKey = "cichlids-dev-secret";
+    private const string ObjectStoreSecretKey = "cichlids-dev-secret"; // gitleaks:allow
     private const string ObjectStoreBucket = "cichlids-media-test";
     private const int RustfsPort = 9000;
 

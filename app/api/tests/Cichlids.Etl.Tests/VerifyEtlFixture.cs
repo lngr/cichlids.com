@@ -35,7 +35,7 @@ public sealed class VerifyEtlFixture : IAsyncLifetime
         .Build();
 
     private const string ObjectStoreAccessKey = "cichlids";
-    private const string ObjectStoreSecretKey = "cichlids-dev-secret";
+    private const string ObjectStoreSecretKey = "cichlids-dev-secret"; // gitleaks:allow
     private const string ObjectStoreBucket = "cichlids-media-verify-test";
     private const int RustfsPort = 9000;
 
