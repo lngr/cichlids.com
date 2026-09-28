@@ -47,6 +47,14 @@ export default function TabsLayout() {
           tabBarIcon: ({ color, size }) => <MaterialCommunityIcons name="fish" color={color} size={size} />,
         }}
       />
+      <Tabs.Screen
+        name="me"
+        options={{
+          title: t("tabs.me"),
+          tabBarButtonTestID: "tab-me",
+          tabBarIcon: ({ color, size }) => <MaterialCommunityIcons name="account-circle" color={color} size={size} />,
+        }}
+      />
     </Tabs>
   );
 }

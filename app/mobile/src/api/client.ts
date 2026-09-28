@@ -9,5 +9,17 @@ const apiUrl =
   (Constants.expoConfig?.extra?.apiUrl as string | undefined) ??
   "http://localhost:5045";
 
-export const apiClient = createCichlidsClient({ baseUrl: apiUrl });
+type AccessTokenProvider = () => Promise<string | undefined>;
+
+let accessTokenProvider: AccessTokenProvider | null = null;
+
+/** Sets the source of the bearer token for API calls; with null every call is anonymous. */
+export function setAccessTokenProvider(provider: AccessTokenProvider | null): void {
+  accessTokenProvider = provider;
+}
+
+export const apiClient = createCichlidsClient({
+  baseUrl: apiUrl,
+  getAccessToken: () => accessTokenProvider?.(),
+});
 export const API_BASE_URL = apiUrl;
