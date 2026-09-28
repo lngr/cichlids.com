@@ -1,5 +1,6 @@
 using Amazon.Runtime;
 using Amazon.S3;
+using Cichlids.Etl.Identity;
 using Cichlids.Etl.Media;
 using Cichlids.Etl.Runtime;
 using Cichlids.Etl.Steps;
@@ -13,9 +14,10 @@ using Microsoft.Extensions.Options;
 if (args.Length == 0)
 {
     Console.Error.WriteLine(
-        "Usage: dotnet run -- <step|all|migrate|media|media-verify> [--dry-run] [--out <path>]\n"
-        + "  media:        [--limit N] [--workers P] [--force] [--missing-out <path>]\n"
-        + "  media-verify: [--out <path>]");
+        "Usage: dotnet run -- <step|all|migrate|media|media-verify|keycloak-import> [--dry-run] [--out <path>]\n"
+        + "  media:           [--limit N] [--workers P] [--force] [--missing-out <path>]\n"
+        + "  media-verify:    [--out <path>]\n"
+        + "  keycloak-import: imports the Auth0 export (Etl:Auth0ExportPath) into Keycloak (Keycloak:*)");
     return 1;
 }
 
@@ -95,6 +97,26 @@ if (string.Equals(command, "media-verify", StringComparison.OrdinalIgnoreCase))
 {
     var verifyObjectStore = await RequireObjectStoreAsync(configuration, cts.Token);
     return await MediaVerifyCommand.RunAsync(targetConnectionString, verifyObjectStore, verifyOutputPath, cts.Token);
+}
+
+if (string.Equals(command, "keycloak-import", StringComparison.OrdinalIgnoreCase))
+{
+    var auth0ExportPath =
+        Environment.GetEnvironmentVariable("CICHLIDS_ETL_AUTH0_EXPORT")
+        ?? configuration["Etl:Auth0ExportPath"]
+        ?? "/workspaces/legacy-data/auth0/auth0-cichlids.json";
+
+    var keycloakSettings = new KeycloakAdminSettings(
+        new Uri(
+            Environment.GetEnvironmentVariable("CICHLIDS_KEYCLOAK_URL")
+            ?? configuration["Keycloak:Url"]
+            ?? "http://localhost:8180"),
+        Environment.GetEnvironmentVariable("CICHLIDS_KEYCLOAK_REALM") ?? configuration["Keycloak:Realm"] ?? "cichlids",
+        Environment.GetEnvironmentVariable("CICHLIDS_KEYCLOAK_ADMIN_USER") ?? configuration["Keycloak:AdminUser"] ?? "admin",
+        Environment.GetEnvironmentVariable("CICHLIDS_KEYCLOAK_ADMIN_PASSWORD") ?? configuration["Keycloak:AdminPassword"] ?? "admin");
+
+    return await KeycloakAccountImportCommand.RunAsync(
+        legacyConnectionString, targetConnectionString, auth0ExportPath, keycloakSettings, cts.Token);
 }
 
 IReadOnlyList<IEtlStep> steps;
