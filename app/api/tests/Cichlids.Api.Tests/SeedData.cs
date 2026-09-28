@@ -42,6 +42,7 @@ public sealed record SeedData(
     DiscussionThread CommunityCichlidsThreadA,
     DiscussionThread CommunityCichlidsThreadB,
     DiscussionThread CommunityAfricanThreadA,
+    DiscussionThread CommunityMarketPlaceThreadWithNoPosts,
     DiscussionPost CommunityCichlidsThreadAMemberPost,
     DiscussionPost CommunityCichlidsThreadAGuestPost,
     long CommunityCichlidsThreadAGuestPostAttachmentMediaItemId,
@@ -330,7 +331,17 @@ public sealed record SeedData(
             Category = DiscussionCategory.African, Title = "Malawi vs Tanganyika biotope debate",
             State = DiscussionThreadState.Archived, CreatedAt = now.AddDays(-6), LastPostAt = now.AddDays(-6), PostCount = 1,
         };
-        context.DiscussionThreads.AddRange(communityCichlidsThreadA, communityCichlidsThreadB, communityAfricanThreadA);
+        // A thread with no posts and a null last-post-at, a shape the schema allows although
+        // ForumMigrationStep never produces it for a migrated Phorum root; created most recently of
+        // all four so a naive "most recent first" ordering would put it first, but it must sort
+        // after every thread that has a post.
+        var communityMarketPlaceThreadWithNoPosts = new DiscussionThread
+        {
+            Category = DiscussionCategory.MarketPlace, Title = "Empty thread with no posts",
+            State = DiscussionThreadState.Archived, CreatedAt = now.AddDays(-1), LastPostAt = null, PostCount = 0,
+        };
+        context.DiscussionThreads.AddRange(
+            communityCichlidsThreadA, communityCichlidsThreadB, communityAfricanThreadA, communityMarketPlaceThreadWithNoPosts);
         await context.SaveChangesAsync();
 
         var communityCichlidsThreadAMemberPost = new DiscussionPost
@@ -382,7 +393,7 @@ public sealed record SeedData(
             publishedTank, publishedTankWithExplicitMainImage, draftTank,
             tankCommentWithAuthor,
             cyphotilapiaFrontosa, neolamprologusBrichardiDaffodil,
-            communityCichlidsThreadA, communityCichlidsThreadB, communityAfricanThreadA,
+            communityCichlidsThreadA, communityCichlidsThreadB, communityAfricanThreadA, communityMarketPlaceThreadWithNoPosts,
             communityCichlidsThreadAMemberPost, communityCichlidsThreadAGuestPost, forumAttachmentMedia.Id,
             communityCichlidsThreadBPlaceholderPost, communityAfricanThreadAPost);
     }

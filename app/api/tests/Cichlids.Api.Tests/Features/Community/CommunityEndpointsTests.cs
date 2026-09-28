@@ -30,7 +30,7 @@ public class CommunityEndpointsTests(ApiFixture fixture)
         AssertCloseEnough(fixture.Seed.CommunityAfricanThreadA.LastPostAt, african.LastPostAt);
 
         var marketPlace = body.Single(c => c.Category == DiscussionCategory.MarketPlace);
-        Assert.Equal(0, marketPlace.ThreadCount);
+        Assert.Equal(1, marketPlace.ThreadCount);
         Assert.Equal(0, marketPlace.PostCount);
         Assert.Null(marketPlace.LastPostAt);
     }
@@ -48,6 +48,14 @@ public class CommunityEndpointsTests(ApiFixture fixture)
             fixture.Seed.CommunityCichlidsThreadA.Id,
         };
         Assert.Equal(expectedOrder, ids.Where(expectedOrder.Contains).ToList());
+    }
+
+    [Fact]
+    public async Task Threads_WithNoLastPostAtSortsLastDespiteBeingMostRecentlyCreated()
+    {
+        var body = await ListThreadsAsync("");
+
+        Assert.Equal(fixture.Seed.CommunityMarketPlaceThreadWithNoPosts.Id, body.Items[^1].Id);
     }
 
     [Fact]

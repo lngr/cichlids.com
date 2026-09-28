@@ -56,7 +56,7 @@ public sealed class CommunityQueryService(CichlidsDbContext context, IObjectStor
         var total = await filtered.CountAsync(cancellationToken);
 
         var page = await filtered
-            .OrderByDescending(t => t.LastPostAt).ThenByDescending(t => t.Id)
+            .OrderBy(t => t.LastPostAt == null).ThenByDescending(t => t.LastPostAt).ThenByDescending(t => t.Id)
             .Skip(offset).Take(limit)
             .Select(t => new ThreadProjection(t.Id, t.Title, t.Category, t.CreatedAt, t.LastPostAt, t.PostCount))
             .ToListAsync(cancellationToken);
