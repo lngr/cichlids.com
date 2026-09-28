@@ -28,6 +28,7 @@ public sealed class VerifyStepTests(VerifyEtlFixture fixture)
         AssertRow(report, "profiles_member", 2, 2);
         AssertInfoRow(report, "profiles_archived", 1);
         AssertInfoRow(report, "profiles_system", 1);
+        AssertInfoRow(report, "profiles_member_registered", 0);
         AssertRow(report, "identities_auth0", 1, 1);
         AssertRow(report, "identities_legacy_openid", 1, 1);
         AssertRow(report, "identities_email", 1, 1);
@@ -54,13 +55,15 @@ public sealed class VerifyStepTests(VerifyEtlFixture fixture)
         AssertRow(report, "comment_score_consistency", 0, 0);
         AssertRow(report, "discussion_thread_post_count_consistency", 0, 0);
 
-        // Inject a target-only member profile with no legacy counterpart, the same way a bug
-        // introducing an extra row (or a re-run losing track of one) would show up: a real
-        // discrepancy between what the source justifies and what the target holds.
+        // Inject a target-only member profile carrying a legacy id no source row justifies, the
+        // same way a bug introducing an extra migrated row (or a re-run losing track of one)
+        // would show up: a real discrepancy between what the source justifies and what the
+        // target holds.
         await using (var db = fixture.CreateTargetContext())
         {
             db.Profiles.Add(new Profile
             {
+                LegacyId = 999_001,
                 Username = "verify-fixture-rogue-member",
                 DisplayName = "Rogue Member",
                 Kind = ProfileKind.Member,
@@ -93,6 +96,50 @@ public sealed class VerifyStepTests(VerifyEtlFixture fixture)
         // The injected row is gone again, so a clean re-run passes exactly like the first one.
         await EtlRunner.RunAsync(new VerifyStep(), context, CancellationToken.None);
         Assert.True(context.VerificationReport!.Passed);
+    }
+
+    [Fact]
+    public async Task IgnoresAMemberProfileTheApiCreatedForAFirstLoginWhenCountingMigratedMembers()
+    {
+        await using var context = await EtlContext.CreateAsync(
+            fixture.LegacyConnectionString, fixture.TargetConnectionString, dryRun: false, CancellationToken.None, fixture.ObjectStore);
+
+        foreach (var step in EtlStepRegistry.All)
+        {
+            await EtlRunner.RunAsync(step, context, CancellationToken.None);
+        }
+
+        // CurrentProfileService creates a member profile with no legacy_id on a first login;
+        // verify must not count it against the migrated member total.
+        await using (var db = fixture.CreateTargetContext())
+        {
+            db.Profiles.Add(new Profile
+            {
+                Username = "verify-fixture-first-login-member",
+                DisplayName = "First Login Member",
+                Kind = ProfileKind.Member,
+                CreatedAt = DateTimeOffset.UtcNow,
+            });
+            await db.SaveChangesAsync();
+        }
+
+        try
+        {
+            await EtlRunner.RunAsync(new VerifyStep(), context, CancellationToken.None);
+            var report = context.VerificationReport;
+
+            Assert.NotNull(report);
+            Assert.True(report!.Passed, DescribeMismatches(report));
+            AssertRow(report, "profiles_member", 2, 2);
+            AssertInfoRow(report, "profiles_member_registered", 1);
+        }
+        finally
+        {
+            await using var db = fixture.CreateTargetContext();
+            var rogue = db.Profiles.Single(p => p.Username == "verify-fixture-first-login-member");
+            db.Profiles.Remove(rogue);
+            await db.SaveChangesAsync();
+        }
     }
 
     private static void AssertRow(VerificationReport report, string entity, long expected, long actual)

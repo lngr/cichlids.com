@@ -78,9 +78,11 @@ public sealed class VerifyStep : IEtlStep
     /// <summary>
     /// Recomputes ProfileMigrationStep's eligibility formula (a non-deleted, non-disabled legacy
     /// user who owns at least one row in the pictures, tanks or comments table, deleted or not)
-    /// and checks it against the target's member profile count, then checks each identity
-    /// provider's row count. Returns the eligible legacy user rows (with their openid/email
-    /// columns) for the identity checks and for any future check that needs the same set.
+    /// and checks it against the target's migrated member profile count (kind member and a
+    /// non-null legacy_id, which excludes profiles the API creates for a first login), then
+    /// checks each identity provider's row count. Returns the eligible legacy user rows (with
+    /// their openid/email columns) for the identity checks and for any future check that needs
+    /// the same set.
     /// </summary>
     private static async Task AddProfileAndIdentityRowsAsync(
         EtlContext context, VerificationReport report, CancellationToken cancellationToken)
@@ -121,11 +123,16 @@ public sealed class VerifyStep : IEtlStep
             }
         }
 
-        var actualMembers = await PgScalarAsync(context, "SELECT COUNT(*) FROM profile WHERE kind = 'member'", cancellationToken);
+        var actualMembers = await PgScalarAsync(
+            context, "SELECT COUNT(*) FROM profile WHERE kind = 'member' AND legacy_id IS NOT NULL", cancellationToken);
         report.Add(VerificationRow.Compare("profiles_member", eligibleUsers.Count, actualMembers));
 
         var actualArchived = await PgScalarAsync(context, "SELECT COUNT(*) FROM profile WHERE kind = 'archived'", cancellationToken);
         report.Add(VerificationRow.Info("profiles_archived", actualArchived));
+
+        var actualMembersRegistered = await PgScalarAsync(
+            context, "SELECT COUNT(*) FROM profile WHERE kind = 'member' AND legacy_id IS NULL", cancellationToken);
+        report.Add(VerificationRow.Info("profiles_member_registered", actualMembersRegistered));
 
         var actualSystem = await PgScalarAsync(context, "SELECT COUNT(*) FROM profile WHERE kind = 'system'", cancellationToken);
         report.Add(VerificationRow.Info("profiles_system", actualSystem));
