@@ -7,6 +7,7 @@ import { useAuth } from "../../../src/auth/AuthProvider";
 import { Button } from "../../../src/components/Button";
 import { ErrorView, LoadingView } from "../../../src/components/StatusView";
 import { useTheme } from "../../../src/theme";
+import { DraftsSection } from "../../../src/upload/DraftsSection";
 
 export default function MeScreen() {
   const { status } = useAuth();
@@ -91,6 +92,7 @@ function ProfileView() {
           <Text style={[theme.type.meta, { color: theme.colors.muted }]}>@{profile.username}</Text>
         </View>
       </View>
+      <DraftsSection />
       <Button testID="logout-button" variant="secondary" label={t("me.logout")} onPress={() => void logout()} />
     </ScrollView>
   );

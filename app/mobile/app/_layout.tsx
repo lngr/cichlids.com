@@ -24,6 +24,7 @@ export default function RootLayout() {
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="profile/[id]" options={{ title: t("profile.title") }} />
         <Stack.Screen name="auth" options={{ headerShown: false }} />
+        <Stack.Screen name="upload/index" options={{ title: t("upload.title") }} />
       </Stack>
     </AuthProvider>
   );

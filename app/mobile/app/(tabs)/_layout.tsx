@@ -23,6 +23,7 @@ export default function TabsLayout() {
         name="gallery"
         options={{
           title: t("tabs.gallery"),
+          tabBarButtonTestID: "tab-gallery",
           tabBarIcon: ({ color, size }) => <MaterialCommunityIcons name="image-multiple" color={color} size={size} />,
         }}
       />

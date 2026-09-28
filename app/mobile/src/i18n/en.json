@@ -36,6 +36,7 @@
     "empty": "No pictures found.",
     "untitled": "Untitled",
     "untitledAccessibility": "Picture without title",
+    "upload": "Upload",
     "speciesFilter": "Species: {{species}} ×",
     "views_one": "view",
     "views_other": "views",
@@ -164,6 +165,41 @@
     "anonymousText": "Log in to see your profile and upload photos.",
     "login": "Log in",
     "logout": "Log out",
-    "loginError": "Login failed. Please try again."
+    "loginError": "Login failed. Please try again.",
+    "drafts": {
+      "title": "Drafts",
+      "empty": "No unpublished drafts.",
+      "loading": "Loading drafts…",
+      "loadError": "The drafts could not be loaded.",
+      "label": "Draft",
+      "created": "Uploaded {{date}}",
+      "openLabel": "Continue the draft uploaded {{date}}",
+      "delete": "Delete draft",
+      "deleteConfirmTitle": "Delete draft?",
+      "deleteConfirmText": "The photo is deleted for good.",
+      "cancel": "Cancel",
+      "deleteError": "Deleting the draft failed. Please try again."
+    }
+  },
+  "upload": {
+    "title": "Upload photo",
+    "intro": "Choose a JPEG, PNG or WebP photo from your library. It is uploaded as a draft right away.",
+    "pick": "Choose photo",
+    "uploading": "Uploading…",
+    "previewLabel": "Preview of the uploaded photo",
+    "titleLabel": "Title",
+    "titlePlaceholder": "What does the photo show?",
+    "descriptionLabel": "Description (optional)",
+    "descriptionPlaceholder": "Species, tank, location…",
+    "topicLabel": "Topic",
+    "publish": "Publish",
+    "discard": "Discard",
+    "pickError": "The photo library could not be opened.",
+    "uploadError": "The upload failed. Please try again.",
+    "publishError": "Publishing failed. Please try again.",
+    "discardError": "Discarding the draft failed. Please try again.",
+    "loadingDraft": "Loading draft…",
+    "draftNotFound": "This draft was not found. It may have been published or deleted.",
+    "draftLoadError": "The draft could not be loaded. Please try again."
   }
 }

@@ -62,7 +62,7 @@ export default function PictureDetailScreen() {
             contentFit="cover"
           />
           <View style={styles.body}>
-            <Text style={[theme.type.h1, { color: theme.colors.fg }]}>{picture.title ?? t("gallery.untitled")}</Text>
+            <Text testID="picture-title" style={[theme.type.h1, { color: theme.colors.fg }]}>{picture.title ?? t("gallery.untitled")}</Text>
             <Pressable onPress={() => router.push(`/profile/${picture.author.id}`)}>
               <Text style={[theme.type.bodyStrong, { color: theme.colors.accent, marginTop: 4 }]}>
                 {picture.author.displayName ?? picture.author.username}
@@ -73,7 +73,9 @@ export default function PictureDetailScreen() {
               {picture.ratingAverage ? ` · ${"★".repeat(Math.round(Number(picture.ratingAverage)))} (${Number(picture.ratingCount)})` : ""}
             </Text>
             {picture.description ? (
-              <Text style={[theme.type.body, { color: theme.colors.fg, marginTop: 10 }]}>{picture.description}</Text>
+              <Text testID="picture-description" style={[theme.type.body, { color: theme.colors.fg, marginTop: 10 }]}>
+                {picture.description}
+              </Text>
             ) : null}
 
             <Text style={[theme.type.h2, { color: theme.colors.fg, marginTop: 20 }]}>

@@ -1,11 +1,24 @@
 import { Pressable, StyleSheet, Text } from "react-native";
 import { useTheme } from "../theme";
 
-export function Chip({ label, active, onPress }: { label: string; active: boolean; onPress: () => void }) {
+export function Chip({
+  label,
+  active,
+  onPress,
+  testID,
+}: {
+  label: string;
+  active: boolean;
+  onPress: () => void;
+  testID?: string;
+}) {
   const theme = useTheme();
   return (
     <Pressable
+      testID={testID}
       onPress={onPress}
+      // The chip is 36 high; the slop extends its touch area to the 48dp minimum.
+      hitSlop={{ top: 6, bottom: 6 }}
       style={[
         styles.chip,
         {

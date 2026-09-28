@@ -1,10 +1,13 @@
-import { useCallback, useEffect, useState } from "react";
-import { FlatList, StyleSheet, View } from "react-native";
-import { useLocalSearchParams, useRouter } from "expo-router";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { Stack, useFocusEffect, useLocalSearchParams, useRouter } from "expo-router";
 import { useTranslation } from "react-i18next";
 import { apiClient } from "../../../src/api/client";
-import { useTheme } from "../../../src/theme";
+import { useAuth } from "../../../src/auth/AuthProvider";
+import { minTouchTarget, useTheme } from "../../../src/theme";
 import { usePagedList } from "../../../src/hooks/usePagedList";
+import { publishSignal } from "../../../src/lib/publishSignal";
 import { Chip } from "../../../src/components/Chip";
 import { PictureCard } from "../../../src/components/PictureCard";
 import { EmptyView, ErrorView, LoadingView } from "../../../src/components/StatusView";
@@ -47,8 +50,33 @@ export default function GalleryScreen() {
 
   const { items, loading, loadingMore, error, loadMore, reload, total } = usePagedList<PictureListItem>(fetchPage, [sort, topic, species]);
 
+  // Returning to the list refetches it only when a picture was published since it loaded, so the
+  // new picture shows first; otherwise the loaded pages and the scroll position stay as they are.
+  const reloadRef = useRef(reload);
+  reloadRef.current = reload;
+  const seenPublishVersion = useRef(publishSignal.version());
+  // Blocks a second press of the upload button until the gallery regains focus.
+  const openingUpload = useRef(false);
+  useFocusEffect(
+    useCallback(() => {
+      openingUpload.current = false;
+      if (publishSignal.changedSince(seenPublishVersion.current)) {
+        seenPublishVersion.current = publishSignal.version();
+        reloadRef.current();
+      }
+    }, []),
+  );
+
+  const { status } = useAuth();
+  const openUpload = useCallback(() => {
+    if (openingUpload.current) return;
+    openingUpload.current = true;
+    router.push(status === "anonymous" ? "/me" : "/upload");
+  }, [router, status]);
+
   return (
     <View style={[styles.container, { backgroundColor: theme.colors.bg }]}>
+      <Stack.Screen options={{ headerRight: () => <UploadHeaderButton onPress={openUpload} /> }} />
       {species ? (
         <View style={styles.filterRow}>
           <Chip label={t("gallery.speciesFilter", { species })} active onPress={() => setSpecies(undefined)} />
@@ -95,7 +123,38 @@ export default function GalleryScreen() {
   );
 }
 
+/**
+ * The header entry to the upload screen. Anonymous users land on the Me tab instead, which
+ * explains that uploading needs a login and offers it.
+ */
+function UploadHeaderButton({ onPress }: { onPress: () => void }) {
+  const theme = useTheme();
+  const { t } = useTranslation();
+
+  return (
+    <Pressable
+      testID="upload-button"
+      onPress={onPress}
+      accessibilityRole="button"
+      accessibilityLabel={t("gallery.upload")}
+      style={({ pressed }) => [
+        styles.headerButton,
+        { gap: theme.space[1], paddingHorizontal: theme.space[3], opacity: pressed ? 0.85 : 1 },
+      ]}
+    >
+      <MaterialCommunityIcons name="camera-plus" size={22} color={theme.colors.accent} />
+      <Text style={[theme.type.bodyStrong, { color: theme.colors.accent }]}>{t("gallery.upload")}</Text>
+    </Pressable>
+  );
+}
+
 const styles = StyleSheet.create({
+  headerButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    minHeight: minTouchTarget,
+    minWidth: minTouchTarget,
+  },
   container: {
     flex: 1,
   },
