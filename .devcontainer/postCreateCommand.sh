@@ -62,6 +62,21 @@ if [ -f "tools/install-toolchain.sh" ]; then
     || echo "WARNING: toolchain install failed (network?). Re-run later: bash tools/install-toolchain.sh"
 fi
 
+# Provide the .NET SDK for the API, the ETL and the local stack bootstrap (app/).
+if [ -f "tools/install-dotnet.sh" ]; then
+  echo "=== Installing .NET SDK ==="
+  bash tools/install-dotnet.sh \
+    || echo "WARNING: .NET SDK install failed (network?). Re-run later: bash tools/install-dotnet.sh"
+fi
+
+# Provide the app workspace dependencies and the Chromium build the Playwright web smoke
+# (app/mobile/e2e/playwright) launches.
+if [ -f "app/pnpm-workspace.yaml" ] && command -v pnpm >/dev/null 2>&1; then
+  echo "=== Installing app dependencies and Playwright Chromium ==="
+  (cd app && pnpm install --frozen-lockfile && cd mobile && pnpm exec playwright install --with-deps chromium) \
+    || echo "WARNING: app dependency install failed (network?). Re-run later: cd app && pnpm install"
+fi
+
 # Activate the repo's committed Git hooks (e.g. the pre-push secret scan). Hooks are a
 # local early-warning; the CI secrets-scan job stays the enforced backstop.
 git config core.hooksPath .githooks 2>/dev/null || true
