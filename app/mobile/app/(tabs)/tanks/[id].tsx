@@ -6,11 +6,14 @@ import { useTranslation } from "react-i18next";
 import { apiClient } from "../../../src/api/client";
 import { useTheme } from "../../../src/theme";
 import { usePagedList } from "../../../src/hooks/usePagedList";
+import { CommentComposer } from "../../../src/components/CommentComposer";
 import { CommentItem } from "../../../src/components/CommentItem";
 import { DataRow } from "../../../src/components/DataRow";
 import { MediaStrip } from "../../../src/components/MediaStrip";
 import { EmptyView, ErrorView, LoadingView } from "../../../src/components/StatusView";
-import type { Comment, TankDetail } from "@cichlids/client-core";
+import type { Comment, CommentCreated, CreateCommentRequest, TankDetail } from "@cichlids/client-core";
+
+const commentKey = (comment: Comment) => comment.id;
 
 export default function TankDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -43,7 +46,16 @@ export default function TankDetailScreen() {
   }, [tankId, navigation, t]);
 
   const fetchComments = useCallback((offset: number, limit: number) => apiClient.tanks.listComments(tankId, { offset, limit }), [tankId]);
-  const comments = usePagedList<Comment>(fetchComments, [tankId]);
+  const comments = usePagedList<Comment>(fetchComments, [tankId], commentKey);
+
+  const submitComment = useCallback((request: CreateCommentRequest) => apiClient.tanks.createComment(tankId, request), [tankId]);
+  // The tank detail shows no rating or comment count, so a post only adds the comment to the list.
+  const onCommentPosted = useCallback(
+    (created: CommentCreated) => {
+      if (created.comment) comments.prepend(created.comment);
+    },
+    [comments.prepend],
+  );
 
   if (loading) return <LoadingView label={t("tanks.detail.loading")} />;
   if (error || !tank) return <ErrorView message={error ?? t("tanks.detail.notFound")} />;
@@ -99,6 +111,7 @@ export default function TankDetailScreen() {
             <MediaStrip title={t("tanks.detail.sectionTechnic")} items={tank.sections.technic} />
 
             <Text style={[theme.type.h2, { color: theme.colors.fg, marginTop: 20 }]}>{t("tanks.detail.comments")}</Text>
+            <CommentComposer submit={submitComment} onPosted={onCommentPosted} />
           </View>
         </View>
       }

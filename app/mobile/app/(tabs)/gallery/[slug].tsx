@@ -6,10 +6,13 @@ import { useTranslation } from "react-i18next";
 import { apiClient } from "../../../src/api/client";
 import { useTheme } from "../../../src/theme";
 import { usePagedList } from "../../../src/hooks/usePagedList";
+import { CommentComposer } from "../../../src/components/CommentComposer";
 import { CommentItem } from "../../../src/components/CommentItem";
 import { EmptyView, ErrorView, LoadingView } from "../../../src/components/StatusView";
 import { formatDate } from "../../../src/lib/format";
-import type { Comment, PictureDetail } from "@cichlids/client-core";
+import type { Comment, CommentCreated, CreateCommentRequest, PictureDetail } from "@cichlids/client-core";
+
+const commentKey = (comment: Comment) => comment.id;
 
 export default function PictureDetailScreen() {
   const { slug } = useLocalSearchParams<{ slug: string }>();
@@ -41,7 +44,21 @@ export default function PictureDetailScreen() {
   }, [slug, navigation, t]);
 
   const fetchComments = useCallback((offset: number, limit: number) => apiClient.pictures.listComments(slug, { offset, limit }), [slug]);
-  const comments = usePagedList<Comment>(fetchComments, [slug]);
+  const comments = usePagedList<Comment>(fetchComments, [slug], commentKey);
+
+  const submitComment = useCallback((request: CreateCommentRequest) => apiClient.pictures.createComment(slug, request), [slug]);
+  // A new rating changes the picture's average and count, a new comment its comment count. The
+  // refetch replaces the shown picture without the loading state; on failure the shown values stay.
+  const onCommentPosted = useCallback(
+    (created: CommentCreated) => {
+      if (created.comment) comments.prepend(created.comment);
+      apiClient.pictures
+        .get(slug)
+        .then(setPicture)
+        .catch(() => undefined);
+    },
+    [slug, comments.prepend],
+  );
 
   if (loading) return <LoadingView label={t("gallery.detail.loading")} />;
   if (error || !picture) return <ErrorView message={error ?? t("gallery.detail.notFound")} />;
@@ -68,7 +85,7 @@ export default function PictureDetailScreen() {
                 {picture.author.displayName ?? picture.author.username}
               </Text>
             </Pressable>
-            <Text style={[theme.type.meta, { color: theme.colors.muted, marginTop: 2 }]}>
+            <Text testID="picture-meta" style={[theme.type.meta, { color: theme.colors.muted, marginTop: 2 }]}>
               {formatDate(picture.publishedAt, i18n.language)} · {Number(picture.viewCount)} {t("gallery.views", { count: Number(picture.viewCount) })}
               {picture.ratingAverage ? ` · ${"★".repeat(Math.round(Number(picture.ratingAverage)))} (${Number(picture.ratingCount)})` : ""}
             </Text>
@@ -81,6 +98,7 @@ export default function PictureDetailScreen() {
             <Text style={[theme.type.h2, { color: theme.colors.fg, marginTop: 20 }]}>
               {t("gallery.detail.comments", { count: Number(picture.commentCount) })}
             </Text>
+            <CommentComposer submit={submitComment} onPosted={onCommentPosted} />
           </View>
         </View>
       }
