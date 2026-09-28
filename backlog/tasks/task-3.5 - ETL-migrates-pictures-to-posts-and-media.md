@@ -4,7 +4,7 @@ title: ETL migrates pictures to posts and media
 status: In Review
 assignee: []
 created_date: '2026-07-08 18:58'
-updated_date: '2026-07-08 22:49'
+updated_date: '2026-09-28 14:09'
 labels: []
 dependencies:
   - TASK-3.3
@@ -28,7 +28,7 @@ Pictures to posts plus media items: type mapping from legacy pid, species links,
 ## Implementation Notes
 
 <!-- SECTION:NOTES:BEGIN -->
-Real double run: 177944 media items (19 videos), 176555 posts (154190 published, 1776 draft, 20589 archived), 176629 slug aliases with exactly one canonical per post, tank media sections and profile image backfills done; 11627 deleted pictures skipped and counted. Set-based batching, 19 s runtime, byte-stable second run.
+Real double run: 177944 media items (177912 photos, 32 videos), 176555 posts (154190 published, 1776 draft, 20589 archived), 176629 slug aliases with exactly one canonical per post, tank media sections and profile image backfills done; 11627 deleted pictures skipped and counted. Set-based batching, 19 s runtime, byte-stable second run.
 <!-- SECTION:NOTES:END -->
 
 ## Definition of Done
