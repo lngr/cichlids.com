@@ -9,7 +9,7 @@ state would live inside a resource its own state creates.
 
 Parses the .tf sources directly (no cloud credentials, runs offline in CI). `--self-test`
 exercises the parser against fixtures so the guard cannot silently rot.
-Story: task-2.13, task-2.22
+Story: task-2.13, task-2.20, task-2.22
 """
 import glob
 import os
