@@ -130,37 +130,16 @@ public class MeEndpointTests(ApiFixture fixture)
         Assert.Equal(candidates[1], me.Profile.Username);
     }
 
-    [Fact]
-    public async Task Get_LinksMigratedProfileByVerifiedEmailInsteadOfCreatingANewOne()
-    {
-        var migratedProfileId = await SeedMigratedProfileAsync("migrated-legacy-user", "migrated@example.test");
-
-        var subject = Guid.NewGuid().ToString();
-        var token = TestTokens.Create(
-            subject, "some-new-keycloak-name", email: "Migrated@Example.test", emailVerified: true);
-
-        var me = await ReadMeAsync(await SendAsync(token));
-        Assert.Equal(migratedProfileId, me.Profile.Id);
-        Assert.Equal("migrated-legacy-user", me.Profile.Username);
-
-        await using (var db = fixture.CreateDbContext())
-        {
-            var oidcIdentity = await db.ProfileIdentities
-                .SingleAsync(i => i.Provider == "oidc" && i.Subject == subject);
-            Assert.Equal(migratedProfileId, oidcIdentity.ProfileId);
-            Assert.False(await db.Profiles.AnyAsync(p => p.Username == "some-new-keycloak-name"));
-        }
-    }
-
     [Theory]
+    [InlineData("verified-legacy-user", "verified@example.test", true)]
     [InlineData("unverified-legacy-user", "unverified@example.test", false)]
     [InlineData("unflagged-legacy-user", "unflagged@example.test", null)]
-    public async Task Get_CreatesAFreshProfileWhenTheEmailIsNotVerified(string legacyUsername, string email, bool? emailVerified)
+    public async Task Get_CreatesAFreshProfileEvenWhenTheEmailMatchesAMigratedProfile(string legacyUsername, string email, bool? emailVerified)
     {
         var migratedProfileId = await SeedMigratedProfileAsync(legacyUsername, email);
 
         var subject = Guid.NewGuid().ToString();
-        var token = TestTokens.Create(subject, $"{legacyUsername}-login", email: email, emailVerified: emailVerified);
+        var token = TestTokens.Create(subject, $"{legacyUsername}-login", email: email.ToUpperInvariant(), emailVerified: emailVerified);
 
         var me = await ReadMeAsync(await SendAsync(token));
         Assert.NotEqual(migratedProfileId, me.Profile.Id);
@@ -168,6 +147,28 @@ public class MeEndpointTests(ApiFixture fixture)
 
         await using var db = fixture.CreateDbContext();
         Assert.False(await db.ProfileIdentities.AnyAsync(i => i.ProfileId == migratedProfileId && i.Provider == "oidc"));
+        var oidcIdentity = await db.ProfileIdentities.SingleAsync(i => i.Provider == "oidc" && i.Subject == subject);
+        Assert.Equal(me.Profile.Id, oidcIdentity.ProfileId);
+    }
+
+    [Fact]
+    public async Task Get_ResolvesAMigratedProfileThroughTheOidcIdentityTheImportCreated()
+    {
+        var migratedProfileId = await SeedMigratedProfileAsync("imported-legacy-user", "imported@example.test");
+        var subject = Guid.NewGuid().ToString();
+        await using (var db = fixture.CreateDbContext())
+        {
+            db.ProfileIdentities.Add(new ProfileIdentity
+            {
+                ProfileId = migratedProfileId, Provider = "oidc", Subject = subject, CreatedAt = DateTimeOffset.UtcNow,
+            });
+            await db.SaveChangesAsync();
+        }
+
+        var me = await ReadMeAsync(await SendAsync(TestTokens.Create(subject, "user12345678")));
+
+        Assert.Equal(migratedProfileId, me.Profile.Id);
+        Assert.Equal("imported-legacy-user", me.Profile.Username);
     }
 
     [Fact]

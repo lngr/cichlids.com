@@ -8,58 +8,30 @@ using Microsoft.EntityFrameworkCore;
 namespace Cichlids.Api.Features.Auth;
 
 /// <summary>
-/// Resolves the authenticated principal to its profile. Resolution order: the token's subject
-/// against an existing oidc identity; then, only when the token's email_verified claim is true,
-/// the token's email against an email identity from the legacy user migration, which links the
-/// migrated profile to the new login by creating its oidc identity; and as a last resort a fresh
-/// member profile with an oidc identity, so the first authenticated call is all a new user needs
-/// to exist in the domain. An unverified email never reaches a migrated profile, because anyone
-/// can enter any address at registration. A fresh profile never shows an email address: its
-/// handle and display name come from the token only when they hold none.
+/// Resolves the authenticated principal to its profile through the token's subject, the account
+/// id, and an oidc identity binding it. A migrated member reaches the migrated profile through the
+/// oidc identity the legacy account import creates; the login method and the token's email play
+/// no part. Without such an identity the call creates a fresh member profile with an oidc identity,
+/// so the first authenticated call is all a new account needs to exist in the domain. A fresh
+/// profile never shows an email address: its handle and display name come from the token only
+/// when they hold none.
 /// </summary>
 public sealed class CurrentProfileService(CichlidsDbContext context, Lazy<GeneratedNames> generatedNames)
 {
     private const string OidcProvider = "oidc";
-    private const string EmailProvider = "email";
 
     public async Task<Profile> ResolveAsync(ClaimsPrincipal user, CancellationToken cancellationToken)
     {
         var subject = user.FindFirst("sub")?.Value
             ?? throw new InvalidOperationException("The authenticated principal has no sub claim.");
 
-        var bySubject = await FindByIdentityAsync(OidcProvider, subject, cancellationToken);
-        if (bySubject is not null)
-        {
-            return bySubject;
-        }
-
-        var email = user.FindFirst("email")?.Value?.Trim().ToLowerInvariant();
-        var emailVerified = bool.TryParse(user.FindFirst("email_verified")?.Value, out var verified) && verified;
-        if (emailVerified && !string.IsNullOrEmpty(email))
-        {
-            var byEmail = await FindByIdentityAsync(EmailProvider, email, cancellationToken);
-            if (byEmail is not null)
-            {
-                context.ProfileIdentities.Add(new ProfileIdentity
-                {
-                    ProfileId = byEmail.Id,
-                    Provider = OidcProvider,
-                    Subject = subject,
-                    CreatedAt = DateTimeOffset.UtcNow,
-                });
-                await context.SaveChangesAsync(cancellationToken);
-                return byEmail;
-            }
-        }
-
-        return await CreateProfileAsync(user, subject, cancellationToken);
-    }
-
-    private Task<Profile?> FindByIdentityAsync(string provider, string subject, CancellationToken cancellationToken) =>
-        context.ProfileIdentities
-            .Where(i => i.Provider == provider && i.Subject == subject)
+        var bySubject = await context.ProfileIdentities
+            .Where(i => i.Provider == OidcProvider && i.Subject == subject)
             .Join(context.Profiles, i => i.ProfileId, p => p.Id, (_, p) => p)
             .FirstOrDefaultAsync(cancellationToken);
+
+        return bySubject ?? await CreateProfileAsync(user, subject, cancellationToken);
+    }
 
     private async Task<Profile> CreateProfileAsync(
         ClaimsPrincipal user, string subject, CancellationToken cancellationToken)

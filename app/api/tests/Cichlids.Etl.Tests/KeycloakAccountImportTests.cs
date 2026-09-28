@@ -241,7 +241,7 @@ public sealed class KeycloakAccountImportTests(KeycloakAccountImportTests.Scenar
     }
 
     [Fact]
-    public async Task IssuesTheEmailVerifiedClaimTheApiLinksMigratedProfilesBy()
+    public async Task IssuesTheEmailVerifiedClaimOfTheEmailScope()
     {
         using var http = new HttpClient();
         using var response = await http.PostAsync(

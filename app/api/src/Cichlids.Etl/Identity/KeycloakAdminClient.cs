@@ -191,8 +191,8 @@ public sealed class KeycloakAdminClient : IDisposable
         await EnsureSuccessAsync(put, "enable the terms and conditions required action", cancellationToken);
     }
 
-    // The API links a login to a migrated profile by email only when the token says the email is
-    // verified, so the claim has to be in every token of the realm's email scope.
+    // email_verified is a standard claim of the email scope; a realm imported from an older realm
+    // file lacks its mapper.
     private async Task EnsureEmailVerifiedMapperAsync(CancellationToken cancellationToken)
     {
         string scopeId;

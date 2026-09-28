@@ -82,12 +82,14 @@ Repeated runs create only missing users and missing profile links. A member's lo
 the legacy username when Keycloak accepts it, it holds no email address and no other member keeps
 the same name; otherwise it is a generated `user<number>` derived with the slug secret
 (`CICHLIDS_SLUG_SECRET` or `Slugs:Secret`, with the ETL's development default). Members with an
-email address sign in with it as well.
+email address sign in with it as well. The API reaches a migrated profile only through the oidc
+identity the import creates for the member's Keycloak user, so the import has to run before an
+environment opens self-registration.
 
 Before it creates users, the import adds the `email_verified` mapper to the realm's `email`
-client scope when the scope lacks it, which covers an existing realm that `bootstrap.sh` skips.
-The API links a login to a migrated profile by email only when the token reports that email as
-verified. A realm without an Auth0 export gets the mapper with:
+client scope when the scope lacks it, which covers an existing realm that `bootstrap.sh` skips,
+so tokens carry the standard `email_verified` claim. A realm without an Auth0 export gets the
+mapper with:
 
 ```sh
 docker compose -f app/stack/compose.yaml exec -T keycloak sh -c '
