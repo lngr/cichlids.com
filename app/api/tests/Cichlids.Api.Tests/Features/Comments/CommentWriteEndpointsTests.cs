@@ -85,7 +85,53 @@ public class CommentWriteEndpointsTests(ApiFixture fixture)
         listResponse.EnsureSuccessStatusCode();
         var list = JsonSerializer.Deserialize<PagedResponse<CommentDto>>(
             await listResponse.Content.ReadAsStringAsync(), TestJson.Options)!;
-        Assert.Contains(list.Items, c => c.Id == created.Comment.Id && c.Body == "What a fish!");
+        Assert.Contains(list.Items, c => c.Id == created.Comment.Id && c.Body == "What a fish!" && c.Stars == 4);
+
+        await SoftDeleteWriteTargetsAsync(postId: postId);
+    }
+
+    [Fact]
+    public async Task ListPictureComments_ShowsOnlyTheStarsGivenTogetherWithTheComment()
+    {
+        var (postId, slug) = await CreatePublishedPictureAsync();
+        var token = TestTokens.Create(Guid.NewGuid().ToString(), $"stars-{Guid.NewGuid():N}"[..24]);
+
+        var textOnly = await PostCommentAsync(token, slug, "Text only");
+
+        var starsOnlyResponse = await SendPostAsync(token, $"/api/pictures/{slug}/comments", new CreateCommentRequest(null, 5));
+        Assert.Equal(HttpStatusCode.Created, starsOnlyResponse.StatusCode);
+
+        var ratedResponse = await SendPostAsync(token, $"/api/pictures/{slug}/comments", new CreateCommentRequest("Rated", 3));
+        Assert.Equal(HttpStatusCode.Created, ratedResponse.StatusCode);
+        var rated = JsonSerializer.Deserialize<CommentCreatedDto>(
+            await ratedResponse.Content.ReadAsStringAsync(), TestJson.Options)!;
+        Assert.Equal((short)3, rated.Comment!.Stars);
+
+        // A migrated anonymous comment and its rating share only the legacy comment id.
+        var legacyId = Random.Shared.Next(900_000_000, int.MaxValue);
+        var legacyCreatedAt = DateTimeOffset.UtcNow.AddDays(-2);
+        long legacyCommentId;
+        await using (var db = fixture.CreateDbContext())
+        {
+            var legacyComment = new Comment
+            {
+                LegacyId = legacyId, PostId = postId, PosterName = "Guest", Body = "Legacy rated", CreatedAt = legacyCreatedAt,
+            };
+            db.Comments.Add(legacyComment);
+            db.Ratings.Add(new Rating { LegacyCommentId = legacyId, PostId = postId, Stars = 2, CreatedAt = legacyCreatedAt });
+            await db.SaveChangesAsync();
+            legacyCommentId = legacyComment.Id;
+        }
+
+        var listResponse = await fixture.Client.GetAsync($"/api/pictures/{slug}/comments");
+        listResponse.EnsureSuccessStatusCode();
+        var list = JsonSerializer.Deserialize<PagedResponse<CommentDto>>(
+            await listResponse.Content.ReadAsStringAsync(), TestJson.Options)!;
+
+        Assert.Equal(3, list.Items.Count);
+        Assert.Null(list.Items.Single(c => c.Id == textOnly.Comment!.Id).Stars);
+        Assert.Equal((short)3, list.Items.Single(c => c.Id == rated.Comment!.Id).Stars);
+        Assert.Equal((short)2, list.Items.Single(c => c.Id == legacyCommentId).Stars);
 
         await SoftDeleteWriteTargetsAsync(postId: postId);
     }
@@ -175,7 +221,7 @@ public class CommentWriteEndpointsTests(ApiFixture fixture)
         listResponse.EnsureSuccessStatusCode();
         var list = JsonSerializer.Deserialize<PagedResponse<CommentDto>>(
             await listResponse.Content.ReadAsStringAsync(), TestJson.Options)!;
-        Assert.Contains(list.Items, c => c.Id == created.Comment!.Id);
+        Assert.Contains(list.Items, c => c.Id == created.Comment!.Id && c.Stars == 3);
 
         await SoftDeleteWriteTargetsAsync(tankId: tankId);
     }

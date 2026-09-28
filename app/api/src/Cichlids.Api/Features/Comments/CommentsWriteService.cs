@@ -22,6 +22,7 @@ public sealed class CommentsWriteService(CichlidsDbContext context, IObjectStore
         long? postId, long? tankId, Profile author, string? body, short? stars, CancellationToken cancellationToken)
     {
         var trimmedBody = string.IsNullOrWhiteSpace(body) ? null : body.Trim();
+        // Comment and rating share this timestamp; the comment list pairs a rating with its comment by it.
         var now = DateTimeOffset.UtcNow;
 
         await using var transaction = await context.Database.BeginTransactionAsync(cancellationToken);
@@ -101,7 +102,7 @@ public sealed class CommentsWriteService(CichlidsDbContext context, IObjectStore
         await transaction.CommitAsync(cancellationToken);
 
         return new CommentCreatedDto(
-            comment is not null ? await ToCommentDtoAsync(comment, cancellationToken) : null,
+            comment is not null ? await ToCommentDtoAsync(comment, rating?.Stars, cancellationToken) : null,
             rating is not null ? new CreatedRatingDto(rating.Id, rating.Stars) : null);
     }
 
@@ -142,7 +143,7 @@ public sealed class CommentsWriteService(CichlidsDbContext context, IObjectStore
         });
     }
 
-    private async Task<CommentDto> ToCommentDtoAsync(Comment comment, CancellationToken cancellationToken)
+    private async Task<CommentDto> ToCommentDtoAsync(Comment comment, short? stars, CancellationToken cancellationToken)
     {
         var authors = await AuthorBatchLoader.LoadAsync(context, [comment.AuthorProfileId!.Value], cancellationToken);
         return new CommentDto(
@@ -150,6 +151,7 @@ public sealed class CommentsWriteService(CichlidsDbContext context, IObjectStore
             comment.Body,
             comment.CreatedAt,
             comment.Score,
+            stars,
             authors[comment.AuthorProfileId.Value].ToDto(objectStore),
             PosterName: null);
     }
