@@ -108,6 +108,16 @@ export type DiscussionCategory = 'cichlids' | 'african' | 'market_place';
 
 export type DiscussionThreadState = 'archived' | 'open';
 
+export type DraftDto = {
+    id: number | string;
+    state: PostState;
+    topic: PostTopic;
+    createdAt: string;
+    image: ImageUrlsDto;
+};
+
+export type IFormFile = Blob | File;
+
 export type ImageUrlsDto = {
     thumb: null | string;
     small: null | string;
@@ -190,6 +200,8 @@ export type PictureListItemDto = {
     image: null | ImageUrlsDto;
 };
 
+export type PostState = 'draft' | 'published' | 'archived';
+
 export type PostTopic = 'cichlids' | 'tanks' | 'offtopic' | 'contest' | 'unknown';
 
 export type ProfileDetailDto = {
@@ -208,6 +220,12 @@ export type ProfileStatsDto = {
     pictureCount: number | string;
     tankCount: number | string;
     commentCount: number | string;
+};
+
+export type PublishPostRequest = {
+    title: null | string;
+    description: null | string;
+    topic: null | string;
 };
 
 export type SpeciesBreeding = 'unspecified' | 'mouthbreeder' | 'cave_breeder' | 'substrate_breeder';
@@ -520,6 +538,119 @@ export type LegacyWikiRedirectResponses = {
      */
     200: unknown;
 };
+
+export type UploadPhotoData = {
+    body: {
+        file?: IFormFile;
+    };
+    path?: never;
+    query?: never;
+    url: '/api/uploads';
+};
+
+export type UploadPhotoErrors = {
+    /**
+     * Bad Request
+     */
+    400: string;
+    /**
+     * Payload Too Large
+     */
+    413: unknown;
+};
+
+export type UploadPhotoError = UploadPhotoErrors[keyof UploadPhotoErrors];
+
+export type UploadPhotoResponses = {
+    /**
+     * Created
+     */
+    201: DraftDto;
+};
+
+export type UploadPhotoResponse = UploadPhotoResponses[keyof UploadPhotoResponses];
+
+export type ListMyDraftsData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/me/drafts';
+};
+
+export type ListMyDraftsResponses = {
+    /**
+     * OK
+     */
+    200: Array<DraftDto>;
+};
+
+export type ListMyDraftsResponse = ListMyDraftsResponses[keyof ListMyDraftsResponses];
+
+export type PublishPostData = {
+    body: PublishPostRequest;
+    path: {
+        id: number;
+    };
+    query?: never;
+    url: '/api/posts/{id}/publish';
+};
+
+export type PublishPostErrors = {
+    /**
+     * Bad Request
+     */
+    400: string;
+    /**
+     * Not Found
+     */
+    404: unknown;
+    /**
+     * Conflict
+     */
+    409: string;
+};
+
+export type PublishPostError = PublishPostErrors[keyof PublishPostErrors];
+
+export type PublishPostResponses = {
+    /**
+     * OK
+     */
+    200: PictureDetailDto;
+};
+
+export type PublishPostResponse = PublishPostResponses[keyof PublishPostResponses];
+
+export type DiscardPostData = {
+    body?: never;
+    path: {
+        id: number;
+    };
+    query?: never;
+    url: '/api/posts/{id}';
+};
+
+export type DiscardPostErrors = {
+    /**
+     * Not Found
+     */
+    404: unknown;
+    /**
+     * Conflict
+     */
+    409: string;
+};
+
+export type DiscardPostError = DiscardPostErrors[keyof DiscardPostErrors];
+
+export type DiscardPostResponses = {
+    /**
+     * No Content
+     */
+    204: void;
+};
+
+export type DiscardPostResponse = DiscardPostResponses[keyof DiscardPostResponses];
 
 export type ListSpeciesData = {
     body?: never;

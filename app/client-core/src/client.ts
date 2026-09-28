@@ -3,6 +3,7 @@ import type { Client } from "./generated/client/index.js";
 import {
   createPictureComment,
   createTankComment,
+  discardPost,
   getCommunityThread,
   getMe,
   getPicture,
@@ -11,6 +12,7 @@ import {
   getTank,
   listCommunityCategories,
   listCommunityThreads,
+  listMyDrafts,
   listPictureComments,
   listPictures,
   listProfilePictures,
@@ -18,6 +20,8 @@ import {
   listSpecies,
   listTankComments,
   listTanks,
+  publishPost,
+  uploadPhoto,
 } from "./generated/sdk.gen.js";
 import type {
   CommentCreatedDto,
@@ -29,11 +33,13 @@ import type {
   CommunityThreadListItemDto,
   CreateCommentRequest,
   DimensionsDto,
+  DraftDto,
   InhabitantDto,
   MeDto,
   PictureDetailDto,
   PictureListItemDto,
   ProfileDetailDto,
+  PublishPostRequest,
   SpeciesDetailDto,
   SpeciesLinkDto,
   SpeciesListItemDto,
@@ -62,9 +68,17 @@ export type CommunityAttachment = CommunityAttachmentDto;
 export type SpeciesLink = SpeciesLinkDto;
 export type Comment = CommentDto;
 export type CommentCreated = CommentCreatedDto;
-export type { CreateCommentRequest };
+export type { CreateCommentRequest, PublishPostRequest };
 export type Me = MeDto;
+export type Draft = DraftDto;
 export type PagedResponse<T> = { total: number; items: T[] };
+
+/**
+ * A file for uploads.create: a Blob or File on the web, or React Native's
+ * { uri, name, type } object, which its FormData implementation accepts
+ * directly as a multipart part.
+ */
+export type UploadFile = Blob | { uri: string; name: string; type: string };
 
 export interface CichlidsClientOptions {
   /** Base URL of the Cichlids.Api instance, e.g. http://localhost:5045 */
@@ -175,6 +189,14 @@ export interface CichlidsClient {
   };
   me: {
     get(): Promise<Me>;
+    drafts(): Promise<Draft[]>;
+  };
+  uploads: {
+    create(file: UploadFile): Promise<Draft>;
+  };
+  posts: {
+    publish(id: number, request: PublishPostRequest): Promise<PictureDetail>;
+    discard(id: number): Promise<void>;
   };
 }
 
@@ -280,6 +302,38 @@ export function createCichlidsClient(options: CichlidsClientOptions): CichlidsCl
       async get() {
         const result = await getMe({ client });
         return unwrap(result);
+      },
+      async drafts() {
+        const result = await listMyDrafts({ client });
+        return unwrap(result);
+      },
+    },
+    uploads: {
+      async create(file) {
+        const result = await uploadPhoto({
+          client,
+          body: { file: file as never },
+          bodySerializer: () => {
+            const formData = new FormData();
+            formData.append("file", file as never);
+            return formData;
+          },
+        });
+        return unwrap(result);
+      },
+    },
+    posts: {
+      async publish(id, request) {
+        const result = await publishPost({
+          client,
+          path: { id },
+          body: request,
+        });
+        return unwrap(result);
+      },
+      async discard(id) {
+        const result = await discardPost({ client, path: { id } });
+        unwrap(result);
       },
     },
   };

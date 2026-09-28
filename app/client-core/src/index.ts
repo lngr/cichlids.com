@@ -29,4 +29,7 @@ export type {
   CommentCreated,
   CreateCommentRequest,
   Me,
+  Draft,
+  UploadFile,
+  PublishPostRequest,
 } from "./client.js";

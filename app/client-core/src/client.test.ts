@@ -72,6 +72,72 @@ const server = setupServer(
       { status: 201 },
     );
   }),
+  http.post(`${baseUrl}/api/uploads`, async ({ request }) => {
+    const authorization = request.headers.get("Authorization");
+    if (authorization !== "Bearer test-token") {
+      return new HttpResponse(null, { status: 401 });
+    }
+    const formData = await request.formData();
+    const file = formData.get("file");
+    if (!(file instanceof Blob)) {
+      return new HttpResponse("no file part", { status: 400 });
+    }
+    if (file.type !== "image/jpeg") {
+      return new HttpResponse("not an image", { status: 400 });
+    }
+    return HttpResponse.json(
+      {
+        id: 42,
+        state: "draft",
+        topic: "cichlids",
+        createdAt: "2026-01-01T00:00:00Z",
+        image: { thumb: "t.jpg", small: "s.jpg", medium: "m.jpg", large: null, original: "o.jpg" },
+      },
+      { status: 201 },
+    );
+  }),
+  http.get(`${baseUrl}/api/me/drafts`, ({ request }) => {
+    const authorization = request.headers.get("Authorization");
+    if (authorization !== "Bearer test-token") {
+      return new HttpResponse(null, { status: 401 });
+    }
+    return HttpResponse.json([
+      {
+        id: 42,
+        state: "draft",
+        topic: "cichlids",
+        createdAt: "2026-01-01T00:00:00Z",
+        image: { thumb: "t.jpg", small: "s.jpg", medium: "m.jpg", large: null, original: "o.jpg" },
+      },
+    ]);
+  }),
+  http.post(`${baseUrl}/api/posts/:id/publish`, async ({ request, params }) => {
+    const body = (await request.json()) as { title: string | null; description: string | null; topic: string | null };
+    if (!body.title) {
+      return new HttpResponse("title is required", { status: 400 });
+    }
+    return HttpResponse.json({
+      id: Number(params.id),
+      slug: "abc123",
+      canonicalSlug: "abc123",
+      title: body.title,
+      description: body.description,
+      publishedAt: "2026-01-01T00:00:00Z",
+      viewCount: 0,
+      ratingAverage: null,
+      ratingCount: 0,
+      commentCount: 0,
+      topic: body.topic ?? "cichlids",
+      author: { id: 1, username: "me", displayName: "Me", avatarUrl: null },
+      image: { thumb: "t.jpg", small: "s.jpg", medium: "m.jpg", large: null, original: "o.jpg" },
+    });
+  }),
+  http.delete(`${baseUrl}/api/posts/:id`, ({ params }) => {
+    if (params.id === "999") {
+      return new HttpResponse("not a draft", { status: 409 });
+    }
+    return new HttpResponse(null, { status: 204 });
+  }),
 );
 
 beforeAll(() => server.listen({ onUnhandledRequest: "error" }));
@@ -113,5 +179,110 @@ describe("createCichlidsClient", () => {
     const client = createCichlidsClient({ baseUrl });
 
     await expect(client.pictures.createComment("RRKaG", { body: "Nice fish!", stars: 5 })).rejects.toThrow();
+  });
+
+  it("uploads a Blob as a multipart file part with the bearer token", async () => {
+    const client = createCichlidsClient({
+      baseUrl,
+      getAccessToken: () => "test-token",
+    });
+    const file = new Blob(["fake jpeg bytes"], { type: "image/jpeg" });
+
+    const draft = await client.uploads.create(file);
+
+    expect(draft.id).toBe(42);
+    expect(draft.state).toBe("draft");
+    expect(draft.image.thumb).toBe("t.jpg");
+  });
+
+  it("uploads a React Native { uri, name, type } object as the multipart file part", async () => {
+    let capturedFile: unknown;
+    server.use(
+      http.post(`${baseUrl}/api/uploads`, async ({ request }) => {
+        const formData = await request.formData();
+        capturedFile = formData.get("file");
+        return HttpResponse.json(
+          {
+            id: 43,
+            state: "draft",
+            topic: "cichlids",
+            createdAt: "2026-01-01T00:00:00Z",
+            image: { thumb: null, small: null, medium: null, large: null, original: "o.jpg" },
+          },
+          { status: 201 },
+        );
+      }),
+    );
+    const client = createCichlidsClient({
+      baseUrl,
+      getAccessToken: () => "test-token",
+    });
+
+    const draft = await client.uploads.create({ uri: "file:///photo.jpg", name: "photo.jpg", type: "image/jpeg" });
+
+    expect(draft.id).toBe(43);
+    expect(capturedFile).toBeDefined();
+  });
+
+  it("rejects an upload with an ApiError carrying the status and message on a 400", async () => {
+    const client = createCichlidsClient({
+      baseUrl,
+      getAccessToken: () => "test-token",
+    });
+    const file = new Blob(["not an image"], { type: "text/plain" });
+
+    await expect(client.uploads.create(file)).rejects.toMatchObject({
+      name: "ApiError",
+      status: 400,
+      message: "not an image",
+    });
+  });
+
+  it("lists the caller's drafts", async () => {
+    const client = createCichlidsClient({
+      baseUrl,
+      getAccessToken: () => "test-token",
+    });
+
+    const drafts = await client.me.drafts();
+
+    expect(drafts).toHaveLength(1);
+    expect(drafts[0].id).toBe(42);
+  });
+
+  it("publishes a draft with a JSON body and returns the picture detail", async () => {
+    const client = createCichlidsClient({
+      baseUrl,
+      getAccessToken: () => "test-token",
+    });
+
+    const detail = await client.posts.publish(42, { title: "My tank", description: null, topic: "tanks" });
+
+    expect(detail.id).toBe(42);
+    expect(detail.slug).toBe("abc123");
+    expect(detail.title).toBe("My tank");
+    expect(detail.topic).toBe("tanks");
+  });
+
+  it("discards a draft with DELETE", async () => {
+    const client = createCichlidsClient({
+      baseUrl,
+      getAccessToken: () => "test-token",
+    });
+
+    await expect(client.posts.discard(42)).resolves.toBeUndefined();
+  });
+
+  it("rejects a discard with an ApiError carrying the status and message on a 409", async () => {
+    const client = createCichlidsClient({
+      baseUrl,
+      getAccessToken: () => "test-token",
+    });
+
+    await expect(client.posts.discard(999)).rejects.toMatchObject({
+      name: "ApiError",
+      status: 409,
+      message: "not a draft",
+    });
   });
 });
