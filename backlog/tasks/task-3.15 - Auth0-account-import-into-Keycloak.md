@@ -1,14 +1,16 @@
 ---
 id: TASK-3.15
 title: Auth0 account import into Keycloak
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-07-08 18:58'
-updated_date: '2026-09-28 14:03'
+updated_date: '2026-09-28 14:38'
 labels: []
 dependencies:
   - TASK-3.13
   - TASK-3.3
+references:
+  - app/api/tests/Cichlids.Etl.Tests/KeycloakAccountImportTests.cs
 parent_task_id: TASK-3
 priority: medium
 ordinal: 35000
@@ -80,6 +82,29 @@ New ETL command `keycloak-import` in Cichlids.Etl. It builds one account per kno
 - Importing all emails blocks self registration with a legacy email (duplicate emails are rejected), which protects the email fallback in CurrentProfileService from takeover by an unverified registration.
 - AC wording mentions active accounts: all fe_users rows are deleted=0 and disable=0, so every account with a known email counts as active.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### Delivered
+- ETL command keycloak-import (app/api/src/Cichlids.Etl/Identity): Auth0ExportReader, LegacyAccountPlanner (merge rules), KeycloakAdminClient (realm prerequisites, user paging, partialImport), KeycloakUserIndex (matching existing users), KeycloakAccountImportCommand (orchestration, oidc profile links, summary).
+- Realm prerequisites ensured idempotently: TERMS_AND_CONDITIONS enabled, disabled google/facebook identity providers, email_verified mapper on the email client scope. Realm file carries the same (full default required-action list, because a listed set replaces the defaults).
+- Existing Keycloak users: matched by email only for email accounts; linked only with a verified email; a username-only collision is a conflict (username_taken), an unverified existing email is a conflict (existing_unverified).
+- API: CurrentProfileService links by email identity only when the token claim email_verified is true.
+- bootstrap.sh runs the import after the realm step when the Auth0 export exists (CICHLIDS_AUTH0_EXPORT). ADR-0022 records the principles.
+
+### Tests
+- LegacyAccountPlannerTests, Auth0ExportReaderTests (unit), KeycloakAccountImportTests (Testcontainers MySQL, Postgres, Keycloak 26.6.4; import twice; required actions, federated links, profile links, conflicts, password grant rejected with Account is not fully set up, email_verified claim).
+- Etl.Tests 60/60 green; Me tests green.
+
+### Not run against the dev stack
+The import was not executed against the local dev Keycloak and database. Ground-truth check on the real stack:
+- app/stack/bootstrap.sh (or: cd app/api && dotnet run --project src/Cichlids.Etl -c Release -- keycloak-import)
+- Expect in the summary: about 12,050 accounts planned (12,044 emails plus 6 email-less facebook accounts with profile), 20 dropped without contact and profile.
+- Keycloak admin console http://localhost:8180, realm cichlids, Users: search a legacy email; Required user actions show Update Password and Terms and Conditions.
+- SQL: select count(*) from profile_identity where provider = 'oidc'; roughly the number of member profiles plus logins.
+- Second run: planned equals existing, created 0.
+<!-- SECTION:NOTES:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
