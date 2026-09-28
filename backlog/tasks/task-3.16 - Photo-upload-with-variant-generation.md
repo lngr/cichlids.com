@@ -1,15 +1,17 @@
 ---
 id: TASK-3.16
 title: Photo upload with variant generation
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-07-08 18:58'
-updated_date: '2026-09-28 14:05'
+updated_date: '2026-09-28 14:46'
 labels: []
 dependencies:
   - TASK-3.10
   - TASK-3.13
   - TASK-3.9
+references:
+  - app/api/tests/Cichlids.Api.Tests/Features/Uploads/UploadPublishFlowTests.cs
 parent_task_id: TASK-3
 priority: high
 ordinal: 36000
@@ -61,6 +63,24 @@ Authenticated upload creates a draft post with one photo media item; variants ar
 - HEIC from iPhones is out of scope (Android first); the client sends JPEG.
 - Tank linking and species tagging at publish are out of scope for this story.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### Delivered
+- Image code shared in Cichlids.Infrastructure/Media (ImageProcessor, MediaVariantSpec, MediaStorageKeys); the ETL uses the same variant spec.
+- POST /api/uploads (multipart field file; JPEG, PNG, WebP by declared type, file signature and decoder; max 25 MiB, 413 above the endpoint body limit; max 100 megapixels): original under originals/uploads/{profileId}/, variants thumb/small/medium/large without upscaling, media_item, media_variant, draft post and post_media in one transaction; stored objects removed when the commit fails.
+- GET /api/me/drafts, POST /api/posts/{id}/publish (title 1..200, description up to 5000, topic cichlids/tanks/offtopic; conditional update, 404 foreign or missing, 409 not a draft; canonical generated slug; outbox post.published; returns the picture detail without counting a view), DELETE /api/posts/{id} (conditional delete of the caller's draft, objects removed after commit, 409 for published).
+- Publishing needs the slug secret (Slugs:Secret or CICHLIDS_SLUG_SECRET); upload and discard work without it.
+- client-core: uploads.create, me.drafts, posts.publish, posts.discard with types Draft, UploadFile, PublishPostRequest.
+
+### Tests
+- Api.Tests 178/178 incl. 38 upload tests against Postgres and RustFS containers; UploadPublishFlowTests is the story path (upload, publish, gallery first item, detail, every variant object in RustFS).
+- Infrastructure.Tests 72/72, client-core 11/11.
+
+### Ground-truth check on the real stack
+Uploads write data, so the check runs on the isolated write stack (app/mobile/e2e/write-stack.sh), never on the seeded dev database; the mobile flow of TASK-3.21 exercises the same path in the app.
+<!-- SECTION:NOTES:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
