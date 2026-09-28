@@ -143,3 +143,36 @@ It expects the app at `PLAYWRIGHT_BASE_URL` (default `http://localhost:8081`, ma
 start --web --port 8081` above) and the API reachable at the app's configured API URL (default
 `http://localhost:5045`, see `app/mobile/src/api/client.ts`). Screenshots are written to
 `app-screens/` at the repo root (override with `PLAYWRIGHT_OUT_DIR`).
+
+## Write E2E stack
+
+Write-path E2E specs (upload, comments, ...) must never write into the seeded dev database, the
+dev bucket or through the dev API, since those carry the migrated legacy data used for manual
+testing and demos. `app/mobile/e2e/write-stack.sh` gives them an isolated stand instead, reusing
+the already-running Postgres, RustFS and Keycloak containers above:
+
+- a dedicated database, `cichlids_e2e`, dropped and recreated on every `up` and migrated with the
+  ETL (`dotnet run --project src/Cichlids.Etl -- migrate`);
+- a dedicated bucket, `cichlids-e2e`, on the same RustFS instance, with the same public-read
+  policy as the dev bucket so the app can load uploaded images;
+- a second `Cichlids.Api` instance built in Release to a temp directory and run on
+  `http://localhost:5046`, pointed at that database and bucket, with the outbox dispatcher
+  disabled;
+- a static export of the Expo web app (`expo export --platform web`), built against that API and
+  served on `http://localhost:8082`; `@cichlids/client-core` is compiled first, since the app
+  imports its `dist/` output.
+
+```sh
+bash app/mobile/e2e/write-stack.sh up      # bring the write stack up
+bash app/mobile/e2e/write-stack.sh down    # tear it down (safe to rerun, and after a partial up)
+bash app/mobile/e2e/write-stack.sh run <command...>   # up, run command with its env exported, always down
+```
+
+`run` exports `E2E_API_URL`, `E2E_WEB_URL`, `E2E_KEYCLOAK_URL` and `E2E_DB` for the command it
+runs. `app/mobile`'s `pnpm run e2e:write` uses it to run every `*.write.mjs` Playwright spec under
+`app/mobile/e2e/playwright/` sequentially, since they share one write database and one bucket.
+
+The script only ever drops or empties the fixed names `cichlids_e2e` and `cichlids-e2e`; it never
+touches the seeded dev database (`cichlids`) or the dev bucket (`cichlids-media`). It expects the
+Postgres, RustFS and Keycloak containers from this directory's `compose.yaml` to already be
+running and fails fast with a clear message otherwise; it does not start or stop them.

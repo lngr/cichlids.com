@@ -35,7 +35,8 @@
     "typecheck": "tsc --noEmit",
     "test": "echo \"no unit tests in mobile yet\"",
     "tokens": "node scripts/tokens-to-theme.mjs",
-    "e2e:web": "node e2e/playwright/smoke.mjs"
+    "e2e:web": "node e2e/playwright/smoke.mjs",
+    "e2e:write": "bash e2e/write-stack.sh run node e2e/playwright/run-write.mjs"
   },
   "private": true
 }
