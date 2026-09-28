@@ -1,6 +1,6 @@
 # Copy to terraform.tfvars and adjust. Secrets are NOT placed here: supply tokens and
 # keys via environment variables so they never land in a file:
-#   export TF_VAR_hcloud_token=...        # primary project Read & Write; also authorises DNS
+#   export TF_VAR_hcloud_token=...        # cichlids project Read & Write
 #   export TF_VAR_s3_access_key=...
 #   export TF_VAR_s3_secret_key=...
 # The destroy-capable break-glass credential is never used here (ADR-0014, ADR-0017).

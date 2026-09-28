@@ -67,9 +67,8 @@ the domain. SOPS+age and Cloudflare R2 (see "Later") are not needed for these ap
 ### 3. Cloud API token (cichlids)
 
 1. In **`cichlids`** under **Security → API tokens**, create one **Read & Write** token.
-2. Record it as `CICHLIDS_HCLOUD_TOKEN`. It also authorises the project's DNS zone and later
-   becomes a GitHub Actions secret for the CI-driven apply. This is the only cloud token; none is
-   created for `cichlids-backup`.
+2. Record it as `CICHLIDS_HCLOUD_TOKEN`; it later becomes a GitHub Actions secret for the
+   CI-driven apply. This is the only cloud token; none is created for `cichlids-backup`.
 
 **Expected result:** one Read & Write token for `cichlids`.
 

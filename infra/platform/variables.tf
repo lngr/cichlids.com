@@ -5,7 +5,7 @@
 # break-glass is privileged console access held out-of-band (ADR-0017, ADR-0014 Layer 2).
 
 variable "hcloud_token" {
-  description = "Hetzner Cloud API token for the primary project (Read & Write). Authorises the compute resources and, since DNS is part of the project-scoped Cloud API, the DNS zone as well."
+  description = "Hetzner Cloud API token for the cichlids project (Read & Write)."
   type        = string
   sensitive   = true
 }

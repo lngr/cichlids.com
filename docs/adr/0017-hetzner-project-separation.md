@@ -29,8 +29,8 @@ or act on resources in another:
 
 - **`cichlids`** holds *all* live infrastructure for every environment: compute nodes, networks,
   firewalls, load balancers, the per-environment databases, the media stores (production originals
-  and the serving path), the DNS zone (project-scoped on the Cloud API, so the project token also
-  authorises it), and this project's own OpenTofu state. CI holds this project's *Read & Write*
+  and the serving path), the DNS zone (project-scoped on the Cloud API), and this project's own
+  OpenTofu state. CI holds this project's *Read & Write*
   token and manages everything here via OpenTofu under GitOps. Everything in `cichlids` is
   "cattle": rebuildable, with its data recoverable from the immutable backups, so automation
   manages it freely. Accidental destruction is guarded by `prevent_destroy` and delete-protection

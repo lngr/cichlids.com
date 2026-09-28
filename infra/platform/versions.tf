@@ -7,9 +7,8 @@ terraform {
   required_version = ">= 1.12.0"
 
   required_providers {
-    # The hcloud provider manages both the compute resources and the DNS zone: Hetzner DNS is
-    # part of the project-scoped Cloud API, so the project token also authorises DNS and no
-    # separate DNS provider or account-level token is needed (ADR-0017).
+    # The hcloud provider manages the compute resources and the DNS zone (Hetzner DNS is part of
+    # the project-scoped Cloud API).
     hcloud = {
       source  = "hetznercloud/hcloud"
       version = "~> 1.64"

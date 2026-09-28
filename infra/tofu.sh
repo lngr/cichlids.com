@@ -15,8 +15,7 @@
 #
 # Credential mapping (ADR-0016, ADR-0017):
 #   - platform uses the cichlids project's object-storage key (CICHLIDS_S3_PRIMARY_*) for both the
-#     provider and the state backend, plus the cloud token (which also authorises the DNS zone)
-#     and the SSH key;
+#     provider and the state backend, plus the cloud token and the SSH key;
 #   - backup uses the backup project's object-storage key (CICHLIDS_S3_BACKUP_*) for both the
 #     provider and the state backend, and NO cloud token.
 set -euo pipefail
@@ -65,8 +64,7 @@ case "$TIER" in
   platform)
     require CICHLIDS_HCLOUD_TOKEN \
       CICHLIDS_S3_PRIMARY_ACCESS_KEY CICHLIDS_S3_PRIMARY_SECRET_KEY CICHLIDS_SSH_PUBLIC_KEY
-    # The cloud token also authorises the project-scoped DNS zone (ADR-0017). The cichlids
-    # object-storage key serves both the provider (media-master) and the state backend.
+    # The cichlids object-storage key serves both the provider (media-master) and the state backend.
     export TF_VAR_hcloud_token="$CICHLIDS_HCLOUD_TOKEN"
     export TF_VAR_ssh_public_key="$CICHLIDS_SSH_PUBLIC_KEY"
     export TF_VAR_s3_access_key="$CICHLIDS_S3_PRIMARY_ACCESS_KEY"
