@@ -45,7 +45,7 @@ export default function ThreadDetailScreen() {
       data={thread.posts}
       keyExtractor={(item) => String(item.id)}
       renderItem={({ item }: { item: CommunityPostDto }) => (
-        <View style={[styles.post, { borderColor: theme.colors.border }]}>
+        <View testID="community-post" style={[styles.post, { borderColor: theme.colors.border }]}>
           <View style={styles.postHeader}>
             <Text style={[theme.type.bodyStrong, { color: theme.colors.fg }]}>
               {item.author.displayName ?? item.author.username ?? t("common.guest")}

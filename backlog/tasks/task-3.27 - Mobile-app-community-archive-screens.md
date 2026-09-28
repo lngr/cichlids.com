@@ -4,10 +4,12 @@ title: Mobile app community archive screens
 status: In Review
 assignee: []
 created_date: '2026-07-08 19:34'
-updated_date: '2026-07-09 03:34'
+updated_date: '2026-09-28 14:09'
 labels: []
 dependencies:
   - TASK-3.25
+references:
+  - app/mobile/e2e/maestro/community-thread.yaml
 parent_task_id: TASK-3
 priority: medium
 ordinal: 47000

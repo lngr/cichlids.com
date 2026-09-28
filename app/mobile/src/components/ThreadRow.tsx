@@ -11,7 +11,7 @@ export function ThreadRow({ thread, onPress }: { thread: CommunityThreadListItem
   const postCount = Number(thread.postCount);
 
   return (
-    <Pressable style={[styles.row, { borderColor: theme.colors.border }]} onPress={onPress} accessibilityRole="button">
+    <Pressable testID="thread-row" style={[styles.row, { borderColor: theme.colors.border }]} onPress={onPress} accessibilityRole="button">
       <View style={{ flex: 1 }}>
         <Text numberOfLines={1} style={[theme.type.bodyStrong, { color: theme.colors.fg }]}>{thread.title}</Text>
         <Text style={[theme.type.meta, { color: theme.colors.muted, marginTop: 2 }]}>

@@ -65,8 +65,15 @@ try {
 
   // Community tab: category/thread list, then a thread with real posts.
   await page.goto(`${BASE_URL}/community`, { waitUntil: "networkidle", timeout: 30000 });
-  await page.waitForTimeout(1000);
+  await page.waitForSelector('[data-testid="thread-row"]', { timeout: 20000 });
+  await page.waitForTimeout(500);
   await shot(page, "05-community-threads.png");
+  await page.locator('[data-testid="thread-row"]').first().click();
+  await page.waitForURL(/\/community\/thread\/\d+/, { timeout: 10000 });
+  await page.waitForSelector('[data-testid="community-post"]', { timeout: 15000 });
+  await page.waitForTimeout(500);
+  console.log(`Community thread reached: ${page.url()}`);
+  await shot(page, "06-community-thread.png");
 
   // i18n: fresh gallery load in English (default) and one forced to German
   // via the `?lang=de` dev override, each asserting real translated text.
