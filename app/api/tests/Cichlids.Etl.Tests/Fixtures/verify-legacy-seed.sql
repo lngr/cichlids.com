@@ -117,7 +117,8 @@ INSERT INTO user_cichlids_gallery_pictures_mm (uid_gallery, uid_picture, sorting
     (9501, 9102, 1);
 
 -- Forum: one thread (root plus a guest reply) in forum_id 1 (cichlids), with one attachment on
--- the root. The root's author matches alice-verify's e-mail identity.
+-- the root. The root's author matches alice-verify's e-mail identity. The guest is named by an
+-- email address, which migrates as a generated guest name.
 INSERT INTO cichlids_phorum5.phorum_users (user_id, email, display_name) VALUES
     (9401, 'alice@verify.example', 'Alice Verify Forum');
 
@@ -125,7 +126,7 @@ INSERT INTO cichlids_phorum5.phorum_messages
     (message_id, forum_id, thread, parent_id, author, subject, body, user_id, datestamp, status)
 VALUES
     (98001, 1, 98001, 0, '', 'Verify Root', 'Root body text.', 9401, 1700000600, 2),
-    (98002, 1, 98001, 98001, 'VerifyGuest', '', 'Reply body text.', 0, 1700000700, 2);
+    (98002, 1, 98001, 98001, 'verify.guest@verify.example', '', 'Reply body text.', 0, 1700000700, 2);
 
 INSERT INTO cichlids_phorum5.phorum_files (file_id, filename, file_data, message_id, link) VALUES
     -- Decodes to the ASCII string "VERIFY-ATTACHMENT-BYTES".

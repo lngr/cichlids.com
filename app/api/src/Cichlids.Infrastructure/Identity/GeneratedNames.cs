@@ -8,7 +8,8 @@ namespace Cichlids.Infrastructure.Identity;
 /// secret. The same input under the same secret always yields the same name, so a repeated run
 /// assigns every member the same name, and the name reveals nothing about its input to anyone
 /// without the secret. Inputs carry a domain prefix (handle: for public handles, login: for login
-/// usernames), so one member's handle and login username are unrelated values.
+/// usernames, guest: for guest names), so one member's handle and login username are unrelated
+/// values.
 /// </summary>
 public sealed class GeneratedNames
 {
@@ -37,11 +38,21 @@ public sealed class GeneratedNames
     public static string LoginInput(string key) => $"login:{key}";
 
     /// <summary>
+    /// Returns the input for a guest name keyed by the given stable key.
+    /// </summary>
+    public static string GuestInput(string key) => $"guest:{key}";
+
+    /// <summary>
+    /// Returns the HMAC-SHA256 of the UTF-8 encoded input, keyed with the secret.
+    /// </summary>
+    public byte[] Hash(string input) => HMACSHA256.HashData(_secretBytes, Encoding.UTF8.GetBytes(input));
+
+    /// <summary>
     /// Returns the name for the given input.
     /// </summary>
     public string Generate(string input)
     {
-        var hash = HMACSHA256.HashData(_secretBytes, Encoding.UTF8.GetBytes(input));
+        var hash = Hash(input);
 
         ulong numeric = 0;
         for (var i = 0; i < 8; i++)

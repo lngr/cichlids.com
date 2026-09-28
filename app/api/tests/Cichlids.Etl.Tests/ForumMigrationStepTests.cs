@@ -25,11 +25,11 @@ public sealed class ForumMigrationStepTests(EtlFixture fixture)
 
         var stats1 = await RunStepAsync();
 
-        // Read counts every row phorum_messages actually has: 11 in the fixture (90001-90008,
-        // 90010, 90020, 90030). One (90004) is hidden, one (90007) is a moved notice, and two
-        // (90008, 90020) have a thread column that resolves to no surviving root; the remaining 7
-        // are visible, forum-mapped posts.
-        Assert.Equal(11, stats1.Read);
+        // Read counts every row phorum_messages actually has: 12 in the fixture (90001-90008,
+        // 90010, 90020, 90030, 90040). One (90004) is hidden, one (90007) is a moved notice, and
+        // two (90008, 90020) have a thread column that resolves to no surviving root; the
+        // remaining 8 are visible, forum-mapped posts.
+        Assert.Equal(12, stats1.Read);
         Assert.Equal(1, stats1.SkipReasons.GetValueOrDefault("forum_message_hidden_status"));
         Assert.Equal(1, stats1.SkipReasons.GetValueOrDefault("forum_message_moved_notice"));
         Assert.Equal(2, stats1.SkipReasons.GetValueOrDefault("forum_post_thread_root_missing"));
@@ -84,6 +84,12 @@ public sealed class ForumMigrationStepTests(EtlFixture fixture)
             Assert.Equal("forum-member-904", addressNamedProfile.Username);
             Assert.Equal("Former member", addressNamedProfile.DisplayName);
 
+            // Thread D's root 90040 is by a guest named by an address that comment uid 5014 uses
+            // as well: both get the same generated guest name.
+            var addressGuestRoot = await db.DiscussionPosts.SingleAsync(p => p.LegacyId == 90040);
+            Assert.Null(addressGuestRoot.AuthorProfileId);
+            Assert.Equal(SeedGuestNames.Shared, addressGuestRoot.PosterName);
+
             // 90004 (hidden) never appears anywhere.
             Assert.DoesNotContain(postsInOrder, p => p.LegacyId == 90004);
             Assert.False(await db.DiscussionPosts.AnyAsync(p => p.LegacyId == 90004));
@@ -126,9 +132,16 @@ public sealed class ForumMigrationStepTests(EtlFixture fixture)
             Assert.False(await db.DiscussionPosts.AnyAsync(p => p.LegacyId == 90008));
         }
 
+        // A row holding a raw address gets its guest name on the rerun.
+        await using (var db = fixture.CreateTargetContext())
+        {
+            await db.Database.ExecuteSqlRawAsync(
+                "UPDATE discussion_post SET poster_name = 'shared.guest@example.com' WHERE legacy_id = 90040");
+        }
+
         var stats2 = await RunStepAsync();
 
-        Assert.Equal(11, stats2.Read);
+        Assert.Equal(12, stats2.Read);
         Assert.Equal(1, stats2.SkipReasons.GetValueOrDefault("forum_message_hidden_status"));
         Assert.Equal(1, stats2.SkipReasons.GetValueOrDefault("forum_message_moved_notice"));
         Assert.Equal(2, stats2.SkipReasons.GetValueOrDefault("forum_post_thread_root_missing"));
@@ -137,12 +150,15 @@ public sealed class ForumMigrationStepTests(EtlFixture fixture)
         await using (var db = fixture.CreateTargetContext())
         {
             Assert.Equal(2, await db.DiscussionThreads.CountAsync(t => t.LegacyId == 90001 || t.LegacyId == 90010));
-            Assert.Equal(7, await db.DiscussionPosts.CountAsync(p => p.LegacyId >= 90000 && p.LegacyId < 91000));
+            Assert.Equal(8, await db.DiscussionPosts.CountAsync(p => p.LegacyId >= 90000 && p.LegacyId < 91000));
             Assert.Equal(1, await db.MediaItems.CountAsync(m => m.StorageKey.StartsWith("forum_attachments/")));
             Assert.Equal(1, await db.DiscussionPostMedia.CountAsync());
 
             var threadA = await db.DiscussionThreads.SingleAsync(t => t.LegacyId == 90001);
             Assert.Equal(5, threadA.PostCount);
+
+            Assert.Equal(SeedGuestNames.Shared, (await db.DiscussionPosts.SingleAsync(p => p.LegacyId == 90040)).PosterName);
+            Assert.Equal("GuestPoster", (await db.DiscussionPosts.SingleAsync(p => p.LegacyId == 90002)).PosterName);
 
             var stored = await fixture.ObjectStore.GetAsync("forum_attachments/9001_attach.jpg");
             Assert.NotNull(stored);

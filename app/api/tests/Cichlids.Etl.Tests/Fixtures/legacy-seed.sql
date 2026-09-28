@@ -269,7 +269,12 @@ VALUES
     -- uid 1 (TankMigrationStepTests' soft-deleted stub row).
     (5012, 2, 1, 0, NULL, 'orphan tank comment', 400, 1700000120, 0, 0, 0, 0, NULL, NULL, 0),
     -- uid 5013: tank-side target_missing (mirrors uid 5005 on the picture side).
-    (5013, 2, 4999, 0, NULL, 'ghost tank', 400, 1700000130, 0, 0, 0, 0, NULL, NULL, 0);
+    (5013, 2, 4999, 0, NULL, 'ghost tank', 400, 1700000130, 0, 0, 0, 0, NULL, NULL, 0),
+    -- uid 5014: a guest named by an email address that forum message 90040 uses as well, in
+    -- other letter case: both get the same generated guest name.
+    (5014, 1, 4001, 0, 'Shared.Guest@Example.com', 'guest note with an address', 0, 1700000140, 0, 0, 0, 0, NULL, NULL, 0),
+    -- uid 5015: a guest name that contains a second address, on the tank.
+    (5015, 2, 4101, 0, 'Mail me: other.guest@example.org', 'second guest note', 0, 1700000150, 0, 0, 0, 0, NULL, NULL, 0);
 
 INSERT INTO user_cichlids_comments_rated (comment_uid, fe_user, rated, tstamp) VALUES
     -- Earliest of the two 5001/401 rows wins (+1), the later one is a counted duplicate.
@@ -352,7 +357,9 @@ VALUES
     -- message, but here parent_id 0 makes it look like a root under the naive rule.
     (90008, 1, 90098, 0, '', '', 'Reply whose real thread root no longer exists.', 901, 1700000500, 2, 0),
     -- Thread C (forum 3): root by 904, whose Phorum display name is an e-mail address.
-    (90030, 3, 90030, 0, '', 'Root Subject C', 'Root post by a member named by address.', 904, 1700003000, 2, 0);
+    (90030, 3, 90030, 0, '', 'Root Subject C', 'Root post by a member named by address.', 904, 1700003000, 2, 0),
+    -- Thread D (forum 3): root by a guest named by the same address as comment uid 5014.
+    (90040, 3, 90040, 0, ' shared.guest@example.com ', 'Root Subject D', 'Guest root post.', 0, 1700004000, 2, 0);
 
 INSERT INTO cichlids_phorum5.phorum_files (file_id, filename, file_data, message_id, link) VALUES
     -- Attached to 90010 (migrated): decodes to 61 bytes, sha256

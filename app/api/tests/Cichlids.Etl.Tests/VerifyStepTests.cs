@@ -2,6 +2,7 @@ using Cichlids.Domain.Entities;
 using Cichlids.Domain.Enums;
 using Cichlids.Etl.Runtime;
 using Cichlids.Etl.Steps;
+using Microsoft.EntityFrameworkCore;
 
 namespace Cichlids.Etl.Tests;
 
@@ -56,6 +57,9 @@ public sealed class VerifyStepTests(VerifyEtlFixture fixture)
         AssertRow(report, "discussion_thread_post_count_consistency", 0, 0);
         AssertRow(report, "profile_username_email_like", 0, 0);
         AssertRow(report, "profile_display_name_email_like", 0, 0);
+        AssertRow(report, "comment_poster_name_email_like", 0, 0);
+        AssertRow(report, "discussion_post_poster_name_email_like", 0, 0);
+        AssertInfoRow(report, "guest_names_generated", 1);
 
         // Inject a target-only member profile carrying a legacy id no source row justifies, the
         // same way a bug introducing an extra migrated row (or a re-run losing track of one)
@@ -183,6 +187,46 @@ public sealed class VerifyStepTests(VerifyEtlFixture fixture)
             await using var db = fixture.CreateTargetContext();
             db.Profiles.Remove(db.Profiles.Single(p => p.Username == "exposed@verify.example"));
             await db.SaveChangesAsync();
+        }
+    }
+
+    [Fact]
+    public async Task FlagsAGuestNameThatHoldsAnEmailAddress()
+    {
+        await using var context = await EtlContext.CreateAsync(
+            fixture.LegacyConnectionString, fixture.TargetConnectionString, dryRun: false, CancellationToken.None, fixture.ObjectStore);
+
+        foreach (var step in EtlStepRegistry.All)
+        {
+            await EtlRunner.RunAsync(step, context, CancellationToken.None);
+        }
+
+        await using (var db = fixture.CreateTargetContext())
+        {
+            Assert.Equal("guest_00001", db.DiscussionPosts.Single(p => p.LegacyId == 98002).PosterName);
+
+            await db.Database.ExecuteSqlRawAsync(
+                "UPDATE comment SET poster_name = 'Exposed <exposed@verify.example>' WHERE legacy_id = 9303");
+            await db.Database.ExecuteSqlRawAsync(
+                "UPDATE discussion_post SET poster_name = 'exposed@verify.example' WHERE legacy_id = 98002");
+        }
+
+        try
+        {
+            await EtlRunner.RunAsync(new VerifyStep(), context, CancellationToken.None);
+            var report = context.VerificationReport;
+
+            Assert.NotNull(report);
+            Assert.False(report!.Passed);
+            AssertMismatch(report, "comment_poster_name_email_like", 0, 1);
+            AssertMismatch(report, "discussion_post_poster_name_email_like", 0, 1);
+        }
+        finally
+        {
+            await using var db = fixture.CreateTargetContext();
+            await db.Database.ExecuteSqlRawAsync("UPDATE comment SET poster_name = NULL WHERE legacy_id = 9303");
+            await db.Database.ExecuteSqlRawAsync(
+                "UPDATE discussion_post SET poster_name = 'guest_00001' WHERE legacy_id = 98002");
         }
     }
 

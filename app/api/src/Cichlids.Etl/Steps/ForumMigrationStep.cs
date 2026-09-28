@@ -1,5 +1,6 @@
 using System.Security.Cryptography;
 using Cichlids.Domain.Enums;
+using Cichlids.Etl.Identity;
 using Cichlids.Etl.Persistence;
 using Cichlids.Etl.Runtime;
 using Cichlids.Infrastructure.Identity;
@@ -26,7 +27,7 @@ public sealed class ForumMigrationStep : IEtlStep
     // databases' text columns carry their own charset metadata (latin1 here), which MySqlConnector
     // decodes per column regardless of the connection's own charset, so no special handling is
     // needed to read this database's German-language content correctly.
-    private const string PhorumDatabase = "cichlids_phorum5";
+    internal const string PhorumDatabase = "cichlids_phorum5";
 
     private const int ThreadBatchSize = 2000;
     private const int PostBatchSize = 2000;
@@ -42,6 +43,11 @@ public sealed class ForumMigrationStep : IEtlStep
         [2] = DiscussionCategory.African,
         [3] = DiscussionCategory.MarketPlace,
     };
+
+    /// <summary>
+    /// The Phorum forum ids whose messages migrate.
+    /// </summary>
+    internal static IEnumerable<int> MigratedForumIds => CategoryByForumId.Keys;
 
     private static readonly ValueConverter<DiscussionCategory, string> CategoryConverter = new SnakeCaseEnumConverter<DiscussionCategory>();
     private static readonly ValueConverter<DiscussionThreadState, string> StateConverter = new SnakeCaseEnumConverter<DiscussionThreadState>();
@@ -65,13 +71,14 @@ public sealed class ForumMigrationStep : IEtlStep
         var emailToProfileId = await LoadProfileEmailIndexAsync(context, cancellationToken);
         var phorumUsers = await LoadPhorumUsersAsync(context, cancellationToken);
         var forumUserProfileCache = new Dictionary<int, long>();
+        var guestNames = await context.GetGuestNamesAsync(cancellationToken);
 
         var messages = await LoadVisibleMessagesAsync(context, stats, cancellationToken);
 
         var threadIdByLegacyId = await MigrateThreadsAsync(context, messages, stats, cancellationToken);
 
         var (postIdByLegacyId, authorProfileIdByLegacyId) = await MigratePostsAsync(
-            context, messages, threadIdByLegacyId, phorumUsers, emailToProfileId, forumUserProfileCache, stats, cancellationToken);
+            context, messages, threadIdByLegacyId, phorumUsers, emailToProfileId, forumUserProfileCache, guestNames, stats, cancellationToken);
 
         await RemoveStalePostsAsync(context, postIdByLegacyId.Keys, cancellationToken);
         await RemoveStaleThreadsAsync(context, threadIdByLegacyId.Keys, cancellationToken);
@@ -193,6 +200,7 @@ public sealed class ForumMigrationStep : IEtlStep
         Dictionary<int, PhorumUser> phorumUsers,
         Dictionary<string, long> emailToProfileId,
         Dictionary<int, long> forumUserProfileCache,
+        GuestNames guestNames,
         StepStatistics stats,
         CancellationToken cancellationToken)
     {
@@ -207,7 +215,7 @@ public sealed class ForumMigrationStep : IEtlStep
             }
 
             var (authorProfileId, posterName) = await ResolveAuthorAsync(
-                context, message.UserId, message.Author, phorumUsers, emailToProfileId, forumUserProfileCache, stats, cancellationToken);
+                context, message.UserId, message.Author, phorumUsers, emailToProfileId, forumUserProfileCache, guestNames, stats, cancellationToken);
 
             if (!postsByThread.TryGetValue(threadId, out var list))
             {
@@ -274,11 +282,12 @@ public sealed class ForumMigrationStep : IEtlStep
     }
 
     /// <summary>
-    /// Resolves a forum message's author: a guest (<c>user_id = 0</c>) keeps only its display
-    /// name, a registered forum user whose e-mail matches a migrated profile's identity is
-    /// attributed to that profile, and every other registered forum user gets a forum-specific
-    /// placeholder profile (ADR-0021), cached per phorum user id so repeat posts and the warning
-    /// about the missing match cost one resolution, not one per post.
+    /// Resolves a forum message's author: a guest (user_id 0) has no profile and only a public
+    /// poster name (its display name, or its generated guest name when the display name contains
+    /// an email address), a registered forum user whose e-mail matches a migrated profile's
+    /// identity is attributed to that profile, and every other registered forum user gets a
+    /// forum-specific placeholder profile (ADR-0021), cached per phorum user id so repeat posts and
+    /// the warning about the missing match cost one resolution, not one per post.
     /// </summary>
     private static async Task<(long? ProfileId, string? PosterName)> ResolveAuthorAsync(
         EtlContext context,
@@ -287,12 +296,13 @@ public sealed class ForumMigrationStep : IEtlStep
         Dictionary<int, PhorumUser> phorumUsers,
         Dictionary<string, long> emailToProfileId,
         Dictionary<int, long> forumUserProfileCache,
+        GuestNames guestNames,
         StepStatistics stats,
         CancellationToken cancellationToken)
     {
         if (userId == 0)
         {
-            return (null, TrimOrNull(author));
+            return (null, guestNames.Resolve(TrimOrNull(author)));
         }
 
         if (forumUserProfileCache.TryGetValue(userId, out var cachedProfileId))

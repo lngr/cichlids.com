@@ -1,3 +1,5 @@
+using System.Security.Cryptography;
+using System.Text;
 using Cichlids.Infrastructure.Identity;
 
 namespace Cichlids.Infrastructure.Tests.Identity;
@@ -35,6 +37,15 @@ public sealed class GeneratedNamesTests
     {
         Assert.Equal("handle:42", GeneratedNames.HandleInput("42"));
         Assert.Equal("login:google-oauth2|1", GeneratedNames.LoginInput("google-oauth2|1"));
+        Assert.Equal("guest:a@example.test", GeneratedNames.GuestInput("a@example.test"));
+    }
+
+    [Fact]
+    public void Hash_is_the_hmac_sha256_of_the_input_keyed_with_the_secret()
+    {
+        var expected = HMACSHA256.HashData(Encoding.UTF8.GetBytes("secret-a"), Encoding.UTF8.GetBytes("guest:a@example.test"));
+
+        Assert.Equal(expected, new GeneratedNames("secret-a").Hash("guest:a@example.test"));
     }
 
     [Fact]

@@ -1,6 +1,7 @@
 using System.Text.Json;
 using Cichlids.Domain.Archive;
 using Cichlids.Domain.Enums;
+using Cichlids.Etl.Identity;
 using Cichlids.Etl.Persistence;
 using Cichlids.Etl.Runtime;
 using Cichlids.Infrastructure.Persistence.Conversions;
@@ -46,6 +47,7 @@ public sealed class CommentMigrationStep : IEtlStep
         var allPictureUids = await LoadLegacyUidSetAsync(context, "user_cichlids_pictures", cancellationToken);
         var allTankUids = await LoadLegacyUidSetAsync(context, "user_cichlids_tanks", cancellationToken);
         var commentIdByLegacyId = new Dictionary<int, long>();
+        var guestNames = await context.GetGuestNamesAsync(cancellationToken);
 
         const string sql = """
             SELECT
@@ -96,7 +98,7 @@ public sealed class CommentMigrationStep : IEtlStep
                 {
                     await ProcessBatchAsync(
                         context, batch, profileByLegacyId, postIdByLegacyId, tankIdByLegacyId,
-                        allPictureUids, allTankUids, commentIdByLegacyId, stats, cancellationToken);
+                        allPictureUids, allTankUids, commentIdByLegacyId, guestNames, stats, cancellationToken);
                     batch.Clear();
                 }
             }
@@ -106,7 +108,7 @@ public sealed class CommentMigrationStep : IEtlStep
         {
             await ProcessBatchAsync(
                 context, batch, profileByLegacyId, postIdByLegacyId, tankIdByLegacyId,
-                allPictureUids, allTankUids, commentIdByLegacyId, stats, cancellationToken);
+                allPictureUids, allTankUids, commentIdByLegacyId, guestNames, stats, cancellationToken);
         }
 
         await MigrateCommentVotesAsync(context, profileByLegacyId, commentIdByLegacyId, stats, cancellationToken);
@@ -122,6 +124,7 @@ public sealed class CommentMigrationStep : IEtlStep
         HashSet<int> allPictureUids,
         HashSet<int> allTankUids,
         Dictionary<int, long> commentIdByLegacyId,
+        GuestNames guestNames,
         StepStatistics stats,
         CancellationToken cancellationToken)
     {
@@ -154,7 +157,7 @@ public sealed class CommentMigrationStep : IEtlStep
             }
 
             var (authorProfileId, posterName) = await ResolveAuthorAsync(
-                context, row.FeUser, row.Poster, profileByLegacyId, stats, cancellationToken);
+                context, row.FeUser, row.Poster, profileByLegacyId, guestNames, stats, cancellationToken);
 
             var moderated = row.Hidden || row.DeleteTstamp > 0;
 
@@ -328,22 +331,24 @@ public sealed class CommentMigrationStep : IEtlStep
     }
 
     /// <summary>
-    /// Resolves a comment or rating's author: an anonymous legacy row (<c>fe_user = 0</c>) has no
-    /// profile and keeps only its display name, a legacy user with no migrated profile gets a
-    /// placeholder (shared with every other step through <see cref="PlaceholderProfiles"/>), and
-    /// everyone else resolves to their real profile with no display name of their own.
+    /// Resolves a comment or rating's author: an anonymous legacy row (fe_user 0) has no profile
+    /// and only a public poster name (its display name, or its generated guest name when the
+    /// display name contains an email address), a legacy user with no migrated profile gets a
+    /// placeholder (shared with every other step through PlaceholderProfiles), and everyone else
+    /// resolves to their real profile with no display name of their own.
     /// </summary>
     private static async Task<(long? ProfileId, string? PosterName)> ResolveAuthorAsync(
         EtlContext context,
         int feUser,
         string? posterName,
         Dictionary<int, (long Id, ProfileKind Kind)> profileByLegacyId,
+        GuestNames guestNames,
         StepStatistics stats,
         CancellationToken cancellationToken)
     {
         if (feUser == 0)
         {
-            return (null, posterName);
+            return (null, guestNames.Resolve(posterName));
         }
 
         if (profileByLegacyId.TryGetValue(feUser, out var profile))

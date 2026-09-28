@@ -140,6 +140,7 @@ public sealed class VerifyStep : IEtlStep
         report.Add(VerificationRow.Info("profiles_system", actualSystem));
 
         await AddEmailLikeProfileRowsAsync(context, report, cancellationToken);
+        await AddEmailLikeGuestNameRowsAsync(context, report, cancellationToken);
 
         var eligibleIds = eligibleUsers.Select(u => u.Uid).ToHashSet();
         var expectedAuth0 = new HashSet<string>(StringComparer.Ordinal);
@@ -213,6 +214,34 @@ public sealed class VerifyStep : IEtlStep
 
         report.Add(VerificationRow.Compare("profile_username_email_like", 0, usernames));
         report.Add(VerificationRow.Compare("profile_display_name_email_like", 0, displayNames));
+    }
+
+    // A guest's poster name is public, so no comment or forum post may hold an address in it. The
+    // info row reports how many distinct addresses in legacy guest names got a generated guest name.
+    private static async Task AddEmailLikeGuestNameRowsAsync(
+        EtlContext context, VerificationReport report, CancellationToken cancellationToken)
+    {
+        foreach (var table in new[] { "comment", "discussion_post" })
+        {
+            long emailLike = 0;
+            await using (var command = new NpgsqlCommand(
+                $"SELECT poster_name FROM {table} WHERE poster_name IS NOT NULL", context.Target, context.Transaction))
+            await using (var reader = await command.ExecuteReaderAsync(cancellationToken))
+            {
+                while (await reader.ReadAsync(cancellationToken))
+                {
+                    if (EmailLike.Contains(reader.GetString(0)))
+                    {
+                        emailLike++;
+                    }
+                }
+            }
+
+            report.Add(VerificationRow.Compare($"{table}_poster_name_email_like", 0, emailLike));
+        }
+
+        var guestNames = await context.GetGuestNamesAsync(cancellationToken);
+        report.Add(VerificationRow.Info("guest_names_generated", guestNames.Count));
     }
 
     // === tanks ======================================================================================

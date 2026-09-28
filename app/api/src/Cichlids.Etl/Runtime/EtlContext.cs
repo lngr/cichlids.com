@@ -1,3 +1,4 @@
+using Cichlids.Etl.Identity;
 using Cichlids.Infrastructure.Identity;
 using Cichlids.Infrastructure.Persistence;
 using Cichlids.Infrastructure.Slugs;
@@ -56,6 +57,16 @@ public sealed class EtlContext : IAsyncDisposable
     /// secret as SlugGenerator.
     /// </summary>
     public GeneratedNames GeneratedNames { get; }
+
+    private GuestNames? _guestNames;
+
+    /// <summary>
+    /// Returns the public names for guest posters whose legacy name contains an email address,
+    /// built once per context from all legacy guest names, so every step assigns one address the
+    /// same guest name.
+    /// </summary>
+    public async Task<GuestNames> GetGuestNamesAsync(CancellationToken cancellationToken) =>
+        _guestNames ??= await GuestNames.LoadAsync(Legacy, GeneratedNames, cancellationToken);
 
     /// <summary>
     /// Object store for steps that export legacy binary content (for example forum attachments)

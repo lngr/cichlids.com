@@ -21,7 +21,7 @@ public sealed class CommentMigrationStepTests(EtlFixture fixture)
         // uid 1/2 are PictureMigrationStepTests'/TankMigrationStepTests' shared "give this legacy
         // user some content" rows: this step reads user_cichlids_comments unconditionally, and
         // their default type (0) lands them in the unknown_type vault path alongside uid 5006.
-        Assert.Equal(15, stats1.Read);
+        Assert.Equal(17, stats1.Read);
         Assert.Equal(1, stats1.SkipReasons.GetValueOrDefault("comment_deleted"));
         Assert.Equal(3, stats1.SkipReasons.GetValueOrDefault("comment_vaulted_unknown_type"));
         Assert.Equal(2, stats1.SkipReasons.GetValueOrDefault("comment_vaulted_target_deleted"));
@@ -30,8 +30,8 @@ public sealed class CommentMigrationStepTests(EtlFixture fixture)
         Assert.Equal(1, stats1.SkipReasons.GetValueOrDefault("comment_rating_from_hidden_comment"));
         Assert.Equal(1, stats1.SkipReasons.GetValueOrDefault("comment_vote_duplicate"));
         Assert.Equal(2, stats1.SkipReasons.GetValueOrDefault("comment_vote_target_not_migrated"));
-        // 7 vault rows + 5 comments + 4 ratings + 2 votes.
-        Assert.Equal(18, stats1.Inserted);
+        // 7 vault rows + 7 comments + 4 ratings + 2 votes.
+        Assert.Equal(20, stats1.Inserted);
         Assert.Equal(0, stats1.Updated);
         Assert.Contains(stats1.Warnings, w => w.Contains("legacy user 402"));
         Assert.Contains(stats1.Warnings, w => w.StartsWith("post rating_average recompute:", StringComparison.Ordinal));
@@ -73,6 +73,15 @@ public sealed class CommentMigrationStepTests(EtlFixture fixture)
             var anonymous = await db.Comments.SingleAsync(c => c.LegacyId == 5007);
             Assert.Null(anonymous.AuthorProfileId);
             Assert.Equal("Guest Visitor", anonymous.PosterName);
+
+            // uid 5014/5015: guest names holding an email address get their generated guest name;
+            // forum message 90040 shares the address of 5014 and gets the same one.
+            var sharedAddressGuest = await db.Comments.SingleAsync(c => c.LegacyId == 5014);
+            Assert.Null(sharedAddressGuest.AuthorProfileId);
+            Assert.Equal(SeedGuestNames.Shared, sharedAddressGuest.PosterName);
+            var secondAddressGuest = await db.Comments.SingleAsync(c => c.LegacyId == 5015);
+            Assert.Equal(tank4101.Id, secondAddressGuest.TankId);
+            Assert.Equal(SeedGuestNames.Second, secondAddressGuest.PosterName);
 
             // uid 5008: legacy user 402 has no migrated profile -- placeholder path.
             var placeholder402 = await db.Profiles.SingleAsync(p => p.LegacyId == 402);
@@ -143,9 +152,16 @@ public sealed class CommentMigrationStepTests(EtlFixture fixture)
             Assert.True(Math.Abs(post4001Reloaded.RatingAverage!.Value - (11.0 / 3.0)) < 0.001);
         }
 
+        // A row holding a raw address gets its guest name on the rerun.
+        await using (var db = fixture.CreateTargetContext())
+        {
+            await db.Database.ExecuteSqlRawAsync(
+                "UPDATE comment SET poster_name = 'Shared.Guest@Example.com' WHERE legacy_id = 5014");
+        }
+
         var stats2 = await RunStepAsync();
 
-        Assert.Equal(15, stats2.Read);
+        Assert.Equal(17, stats2.Read);
         Assert.Equal(1, stats2.SkipReasons.GetValueOrDefault("comment_deleted"));
         Assert.Equal(3, stats2.SkipReasons.GetValueOrDefault("comment_vaulted_unknown_type"));
         Assert.Equal(2, stats2.SkipReasons.GetValueOrDefault("comment_vaulted_target_deleted"));
@@ -155,10 +171,10 @@ public sealed class CommentMigrationStepTests(EtlFixture fixture)
         Assert.Equal(1, stats2.SkipReasons.GetValueOrDefault("comment_vote_duplicate"));
         Assert.Equal(2, stats2.SkipReasons.GetValueOrDefault("comment_vote_target_not_migrated"));
         // The vault is insert-only (ON CONFLICT DO NOTHING): none of its 7 rows count as inserted
-        // or updated on a rerun. The 5 comments and 4 ratings already exist, so they count as
+        // or updated on a rerun. The 7 comments and 4 ratings already exist, so they count as
         // updated; the 2 votes already exist too, so they add nothing at all.
         Assert.Equal(0, stats2.Inserted);
-        Assert.Equal(9, stats2.Updated);
+        Assert.Equal(11, stats2.Updated);
         // The placeholder profile already exists on the second run, so it is not created again.
         Assert.DoesNotContain(stats2.Warnings, w => w.Contains("legacy user 402"));
 
@@ -166,12 +182,16 @@ public sealed class CommentMigrationStepTests(EtlFixture fixture)
         {
             // Byte-stable: the vault, comments, ratings and votes this class owns are unchanged.
             Assert.Equal(7, await db.LegacyComments.CountAsync());
-            Assert.Equal(5, await db.Comments.CountAsync(c => c.LegacyId >= 5000 && c.LegacyId < 6000));
+            Assert.Equal(7, await db.Comments.CountAsync(c => c.LegacyId >= 5000 && c.LegacyId < 6000));
             Assert.Equal(4, await db.Ratings.CountAsync(r => r.LegacyCommentId >= 5000 && r.LegacyCommentId < 6000));
             Assert.Equal(2, await db.CommentVotes.CountAsync());
 
             var comment5001 = await db.Comments.SingleAsync(c => c.LegacyId == 5001);
             Assert.Equal(2, comment5001.Score);
+
+            Assert.Equal(SeedGuestNames.Shared, (await db.Comments.SingleAsync(c => c.LegacyId == 5014)).PosterName);
+            Assert.Equal(SeedGuestNames.Second, (await db.Comments.SingleAsync(c => c.LegacyId == 5015)).PosterName);
+            Assert.Equal("Guest Visitor", (await db.Comments.SingleAsync(c => c.LegacyId == 5007)).PosterName);
 
             var post4001 = await db.Posts.SingleAsync(p => p.LegacyId == 4001);
             Assert.Equal(3, post4001.RatingCount);
