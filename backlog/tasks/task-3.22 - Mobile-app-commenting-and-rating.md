@@ -1,14 +1,17 @@
 ---
 id: TASK-3.22
 title: Mobile app commenting and rating
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-07-08 18:58'
-updated_date: '2026-09-28 14:39'
+updated_date: '2026-09-28 15:45'
 labels: []
 dependencies:
   - TASK-3.19
   - TASK-3.14
+references:
+  - app/mobile/e2e/playwright/comment.write.mjs
+  - app/mobile/e2e/maestro/comment-rating.yaml
 parent_task_id: TASK-3
 priority: medium
 ordinal: 42000
@@ -52,6 +55,26 @@ A comment composer on the picture detail and the tank detail screens posts to th
 - The tank comment path shares the component; its E2E coverage is the component test because the isolated write stack has no tanks (fresh schema). A tank seed can be added to the write stack if needed.
 - The AC names a Maestro flow; green evidence is the Playwright web flow (see TASK-3.21 risk).
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### Delivered
+- CommentComposer on the picture detail and the tank detail: multiline text, five stars (tap sets, tapping the selected star clears), submit with busy state, inline error with retry, login prompt for anonymous users. The created comment is prepended; the picture detail refetches its rating summary.
+- API: the comment list DTO carries stars, the rating given together with the comment (paired through legacy_comment_id for migrated rows, through the shared target, author and creation timestamp for rows the API writes in one request). The comment list shows these stars; it showed the vote score as stars before this change.
+- usePagedList: next-page offset from the number of server items received; posted comments stay visible across a first-page load.
+
+### Tests
+- Unit: mobile 59 (composer state rules, paged list state), client-core 11; Api.Tests comment tests 21 incl. stars pairing.
+- Playwright on the write stack: comment.write.mjs (anonymous prompt, login, empty submit disabled, star toggle, injected 500 with retry, comment with 4 stars, rating summary, reload).
+
+### Follow-ups
+- DRAFT-3 stored link rating.comment_id; DRAFT-4 repeated ratings per member and target; DRAFT-5 view counting in the seeded dev database.
+- The tank path is covered by the shared component and unit tests only; the write stack has no tanks.
+
+### AC gap
+The AC names a Maestro flow. comment-rating.yaml is written for the native Android build and has not been executed (PROJECT-STATUS F13).
+<!-- SECTION:NOTES:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
