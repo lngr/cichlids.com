@@ -191,10 +191,11 @@ public sealed class VerifyStep : IEtlStep
     // === discussion (forum threads and posts) ======================================================
 
     /// <summary>
-    /// Recomputes ForumMigrationStep's thread and post eligibility (a visible, forum-mapped
-    /// message; a post additionally needs its thread column to point at a message that is itself a
-    /// visible, forum-mapped root) directly from the Phorum messages table, checks it against the
-    /// target, and returns the eligible post message ids for the forum-attachment media check.
+    /// Recomputes ForumMigrationStep's thread and post eligibility (a visible, forum-mapped, not
+    /// moved message whose own message id equals its thread column is a root; a post additionally
+    /// needs its thread column to point at such a root) directly from the Phorum messages table,
+    /// checks it against the target, and returns the eligible post message ids for the
+    /// forum-attachment media check.
     /// </summary>
     private static async Task<HashSet<int>> AddDiscussionRowsAsync(
         EtlContext context, VerificationReport report, CancellationToken cancellationToken)
@@ -202,10 +203,10 @@ public sealed class VerifyStep : IEtlStep
         // status = 2 is Phorum's visible status; forum_id 1/2/3 are the three forums
         // ForumMigrationStep's CategoryByForumId maps into a discussion category, the same set
         // this check mirrors independently.
-        var messages = new List<(int MessageId, int Thread, int ParentId)>();
+        var messages = new List<(int MessageId, int Thread, int ParentId, bool Moved)>();
         await using (var command = new MySqlCommand(
             """
-            SELECT message_id, thread, parent_id
+            SELECT message_id, thread, parent_id, moved
             FROM cichlids_phorum5.phorum_messages
             WHERE status = 2 AND forum_id IN (1, 2, 3)
             """,
@@ -214,12 +215,15 @@ public sealed class VerifyStep : IEtlStep
         {
             while (await reader.ReadAsync(cancellationToken))
             {
-                messages.Add((reader.GetInt32(0), reader.GetInt32(1), reader.GetInt32(2)));
+                messages.Add((reader.GetInt32(0), reader.GetInt32(1), reader.GetInt32(2), reader.GetBoolean(3)));
             }
         }
 
-        var rootIds = messages.Where(m => m.ParentId == 0).Select(m => m.MessageId).ToHashSet();
-        var eligiblePostIds = messages.Where(m => rootIds.Contains(m.Thread)).Select(m => m.MessageId).ToHashSet();
+        var rootIds = messages
+            .Where(m => !m.Moved && m.ParentId == 0 && m.MessageId == m.Thread)
+            .Select(m => m.MessageId)
+            .ToHashSet();
+        var eligiblePostIds = messages.Where(m => !m.Moved && rootIds.Contains(m.Thread)).Select(m => m.MessageId).ToHashSet();
 
         var actualThreads = await PgScalarAsync(context, "SELECT COUNT(*) FROM discussion_thread", cancellationToken);
         report.Add(VerificationRow.Compare("discussion_thread", rootIds.Count, actualThreads));

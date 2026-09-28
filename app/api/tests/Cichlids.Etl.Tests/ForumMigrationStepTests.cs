@@ -25,11 +25,14 @@ public sealed class ForumMigrationStepTests(EtlFixture fixture)
 
         var stats1 = await RunStepAsync();
 
-        // Read counts every row phorum_messages actually has: 8 in the fixture (90001-90006,
-        // 90010, 90020). One (90004) is hidden; the other 7 are visible and forum-mapped.
-        Assert.Equal(8, stats1.Read);
+        // Read counts every row phorum_messages actually has: 10 in the fixture (90001-90008,
+        // 90010, 90020). One (90004) is hidden, one (90007) is a moved notice, and two
+        // (90008, 90020) have a thread column that resolves to no surviving root; the remaining 6
+        // are visible, forum-mapped posts.
+        Assert.Equal(10, stats1.Read);
         Assert.Equal(1, stats1.SkipReasons.GetValueOrDefault("forum_message_hidden_status"));
-        Assert.Equal(1, stats1.SkipReasons.GetValueOrDefault("forum_post_thread_root_missing"));
+        Assert.Equal(1, stats1.SkipReasons.GetValueOrDefault("forum_message_moved_notice"));
+        Assert.Equal(2, stats1.SkipReasons.GetValueOrDefault("forum_post_thread_root_missing"));
         Assert.Equal(1, stats1.SkipReasons.GetValueOrDefault("attachment_post_not_migrated"));
 
         await using (var db = fixture.CreateTargetContext())
@@ -107,13 +110,22 @@ public sealed class ForumMigrationStepTests(EtlFixture fixture)
             // 90020 is a reply (parent_id 90015) whose thread column (90099) has no surviving
             // root anywhere in the fixture, so it was skipped rather than migrated.
             Assert.False(await db.DiscussionPosts.AnyAsync(p => p.LegacyId == 90020));
+
+            // 90007 (moved notice) neither became a thread nor a post of thread A.
+            Assert.False(await db.DiscussionThreads.AnyAsync(t => t.LegacyId == 90007));
+            Assert.False(await db.DiscussionPosts.AnyAsync(p => p.LegacyId == 90007));
+
+            // 90008 (parent_id 0, thread points at a hard-deleted root) is not a root either.
+            Assert.False(await db.DiscussionThreads.AnyAsync(t => t.LegacyId == 90008));
+            Assert.False(await db.DiscussionPosts.AnyAsync(p => p.LegacyId == 90008));
         }
 
         var stats2 = await RunStepAsync();
 
-        Assert.Equal(8, stats2.Read);
+        Assert.Equal(10, stats2.Read);
         Assert.Equal(1, stats2.SkipReasons.GetValueOrDefault("forum_message_hidden_status"));
-        Assert.Equal(1, stats2.SkipReasons.GetValueOrDefault("forum_post_thread_root_missing"));
+        Assert.Equal(1, stats2.SkipReasons.GetValueOrDefault("forum_message_moved_notice"));
+        Assert.Equal(2, stats2.SkipReasons.GetValueOrDefault("forum_post_thread_root_missing"));
         Assert.Equal(1, stats2.SkipReasons.GetValueOrDefault("attachment_post_not_migrated"));
 
         await using (var db = fixture.CreateTargetContext())
@@ -132,6 +144,93 @@ public sealed class ForumMigrationStepTests(EtlFixture fixture)
             await stored.CopyToAsync(buffer);
             Assert.Equal(AttachmentBytes, buffer.ToArray());
         }
+    }
+
+    // A target migrated under the naive root rule holds a discussion_thread row per parent_id-0
+    // message (legacy_id 90007 and 90008 here) and a discussion_post row for the moved notice
+    // (90007), attributed to thread A because its own thread column resolves there, with an
+    // attachment media item of its own. This seeds that state directly, then asserts that running
+    // the fixed step against it converges: the stale thread rows, the stale post, its
+    // discussion_post_media row and its now-unreferenced media_item all disappear, while the real
+    // threads, posts and thread A's own attachment survive the same cleanup pass.
+    [Fact]
+    public async Task ReRunRemovesStaleThreadsAndPosts()
+    {
+        await RunPrerequisiteStepsAsync();
+        await RunStepAsync();
+
+        long staleMediaItemId = 0;
+
+        await fixture.RunExclusiveAsync(async () =>
+        {
+            await using var db = fixture.CreateTargetContext();
+
+            foreach (var legacyId in new[] { 90007, 90008 })
+            {
+                if (await db.DiscussionThreads.AnyAsync(t => t.LegacyId == legacyId))
+                {
+                    continue;
+                }
+
+                db.DiscussionThreads.Add(new DiscussionThread
+                {
+                    LegacyId = legacyId,
+                    Category = DiscussionCategory.Cichlids,
+                    Title = $"Thread {legacyId}",
+                    State = DiscussionThreadState.Archived,
+                    CreatedAt = DateTimeOffset.FromUnixTimeSeconds(1700000000),
+                    PostCount = 0,
+                    LastPostAt = null,
+                });
+            }
+
+            await db.SaveChangesAsync();
+
+            if (!await db.DiscussionPosts.AnyAsync(p => p.LegacyId == 90007))
+            {
+                var threadA = await db.DiscussionThreads.SingleAsync(t => t.LegacyId == 90001);
+
+                var stalePost = new DiscussionPost
+                {
+                    ThreadId = threadA.Id,
+                    LegacyId = 90007,
+                    Body = "This message has been moved.",
+                    CreatedAt = DateTimeOffset.FromUnixTimeSeconds(1700000400),
+                    Sort = 99,
+                };
+                db.DiscussionPosts.Add(stalePost);
+                await db.SaveChangesAsync();
+
+                var staleMediaItem = new MediaItem
+                {
+                    Kind = MediaKind.Photo,
+                    StorageKey = "forum_attachments/9099_stale.jpg",
+                    ByteSize = 12,
+                    ChecksumSha256 = "0000000000000000000000000000000000000000000000000000000000000000",
+                    CreatedAt = DateTimeOffset.UtcNow,
+                };
+                db.MediaItems.Add(staleMediaItem);
+                await db.SaveChangesAsync();
+                staleMediaItemId = staleMediaItem.Id;
+
+                db.DiscussionPostMedia.Add(new DiscussionPostMedia { DiscussionPostId = stalePost.Id, MediaItemId = staleMediaItem.Id, Sort = 0 });
+                await db.SaveChangesAsync();
+            }
+        });
+
+        await RunStepAsync();
+
+        await using var readback = fixture.CreateTargetContext();
+        Assert.False(await readback.DiscussionThreads.AnyAsync(t => t.LegacyId == 90007));
+        Assert.False(await readback.DiscussionThreads.AnyAsync(t => t.LegacyId == 90008));
+        Assert.False(await readback.DiscussionPosts.AnyAsync(p => p.LegacyId == 90007));
+        Assert.False(await readback.DiscussionPostMedia.AnyAsync(m => m.MediaItemId == staleMediaItemId));
+        Assert.False(await readback.MediaItems.AnyAsync(m => m.Id == staleMediaItemId));
+
+        // Real roots, posts and thread A's own attachment survive the same cleanup pass.
+        Assert.True(await readback.DiscussionThreads.AnyAsync(t => t.LegacyId == 90001));
+        Assert.True(await readback.DiscussionThreads.AnyAsync(t => t.LegacyId == 90010));
+        Assert.True(await readback.MediaItems.AnyAsync(m => m.StorageKey == "forum_attachments/9001_attach.jpg"));
     }
 
     // Alice (901) is matched by e-mail: seeded directly, the same way the other steps' tests seed

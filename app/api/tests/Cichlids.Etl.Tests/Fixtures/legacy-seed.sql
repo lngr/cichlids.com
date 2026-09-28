@@ -311,25 +311,33 @@ INSERT INTO cichlids_phorum5.phorum_users (user_id, email, display_name) VALUES
     -- fall back from, exercising the "Former member" default.
 
 INSERT INTO cichlids_phorum5.phorum_messages
-    (message_id, forum_id, thread, parent_id, author, subject, body, user_id, datestamp, status)
+    (message_id, forum_id, thread, parent_id, author, subject, body, user_id, datestamp, status, moved)
 VALUES
     -- Thread A (forum 1 = cichlids): root by 901 (e-mail match).
-    (90001, 1, 90001, 0, '', 'Root Subject A', 'Root post body with umlaut: Größe.', 901, 1700000100, 2),
+    (90001, 1, 90001, 0, '', 'Root Subject A', 'Root post body with umlaut: Größe.', 901, 1700000100, 2, 0),
     -- Guest reply: no profile, poster_name carries the author field.
-    (90002, 1, 90001, 90001, 'GuestPoster', '', 'Guest reply body.', 0, 1700000200, 2),
+    (90002, 1, 90001, 90001, 'GuestPoster', '', 'Guest reply body.', 0, 1700000200, 2, 0),
     -- Reply by 902 (placeholder, Phorum display name carried over). Earlier datestamp than 90002
     -- despite the higher parent ordering, so sort must follow datestamp, not message_id.
-    (90003, 1, 90001, 90001, '', '', 'Placeholder reply body.', 902, 1700000150, 2),
+    (90003, 1, 90001, 90001, '', '', 'Placeholder reply body.', 902, 1700000150, 2, 0),
     -- Hidden (status -3): must not migrate as a post and must not count toward the thread.
-    (90004, 1, 90001, 90001, '', '', 'Hidden reply, must not migrate.', 901, 1700000300, -3),
+    (90004, 1, 90001, 90001, '', '', 'Hidden reply, must not migrate.', 901, 1700000300, -3, 0),
     -- Reply by 903 (no phorum_users row at all): placeholder path, "Former member" fallback.
-    (90005, 1, 90001, 90001, '', '', 'Reply from an unknown phorum user.', 903, 1700000250, 2),
+    (90005, 1, 90001, 90001, '', '', 'Reply from an unknown phorum user.', 903, 1700000250, 2, 0),
     -- Same datestamp as 90005: sort must tie-break on message_id (90005 before 90006).
-    (90006, 1, 90001, 90001, 'TieBreakGuest', '', 'Tie break body.', 0, 1700000250, 2),
+    (90006, 1, 90001, 90001, 'TieBreakGuest', '', 'Tie break body.', 0, 1700000250, 2, 0),
     -- Thread B (forum 2 = african): root with an attachment.
-    (90010, 2, 90010, 0, '', 'Attachment Thread', 'Post with an attachment.', 901, 1700001000, 2),
+    (90010, 2, 90010, 0, '', 'Attachment Thread', 'Post with an attachment.', 901, 1700001000, 2, 0),
     -- Reply whose thread column (90099) has no surviving root anywhere in this fixture.
-    (90020, 1, 90099, 90015, 'OrphanGuest', '', 'Orphan reply, thread root missing.', 0, 1700002000, 2);
+    (90020, 1, 90099, 90015, 'OrphanGuest', '', 'Orphan reply, thread root missing.', 0, 1700002000, 2, 0),
+    -- Phorum "thread moved" notice: parent_id 0 like a root, but its thread column points at
+    -- thread A's real root (90001) and moved is set. Must not become its own thread and must not
+    -- become a post of thread A either.
+    (90007, 1, 90001, 0, '', 'Moved', 'This message has been moved.', 901, 1700000400, 2, 1),
+    -- Parent_id 0 reply whose real root was hard-deleted: its thread column (90098) never
+    -- resolves to any surviving message, the same failure mode 90020 exercises for a non-root
+    -- message, but here parent_id 0 makes it look like a root under the naive rule.
+    (90008, 1, 90098, 0, '', '', 'Reply whose real thread root no longer exists.', 901, 1700000500, 2, 0);
 
 INSERT INTO cichlids_phorum5.phorum_files (file_id, filename, file_data, message_id, link) VALUES
     -- Attached to 90010 (migrated): decodes to 61 bytes, sha256

@@ -72,6 +72,9 @@ public sealed class ForumMigrationStep : IEtlStep
         var (postIdByLegacyId, authorProfileIdByLegacyId) = await MigratePostsAsync(
             context, messages, threadIdByLegacyId, phorumUsers, emailToProfileId, forumUserProfileCache, stats, cancellationToken);
 
+        await RemoveStalePostsAsync(context, postIdByLegacyId.Keys, cancellationToken);
+        await RemoveStaleThreadsAsync(context, threadIdByLegacyId.Keys, cancellationToken);
+
         await MigrateAttachmentsAsync(context, postIdByLegacyId, authorProfileIdByLegacyId, stats, cancellationToken);
 
         await RecomputeThreadAggregatesAsync(context, cancellationToken);
@@ -81,7 +84,7 @@ public sealed class ForumMigrationStep : IEtlStep
         EtlContext context, IReadOnlyList<RawMessage> messages, StepStatistics stats, CancellationToken cancellationToken)
     {
         var threadIdByLegacyId = new Dictionary<int, long>();
-        var roots = messages.Where(m => m.ParentId == 0).ToList();
+        var roots = messages.Where(m => m.ParentId == 0 && m.MessageId == m.Thread).ToList();
 
         foreach (var chunk in Chunk(roots, ThreadBatchSize))
         {
@@ -125,6 +128,54 @@ public sealed class ForumMigrationStep : IEtlStep
         }
 
         return threadIdByLegacyId;
+    }
+
+    /// <summary>
+    /// Deletes every discussion_post row whose legacy id is not among this run's migrated
+    /// messages, together with its discussion_post_media rows through the foreign key cascade, and
+    /// any forum-attachment media_item row left with no discussion_post_media referencing it.
+    /// </summary>
+    private static async Task RemoveStalePostsAsync(
+        EtlContext context, IReadOnlyCollection<int> currentPostLegacyIds, CancellationToken cancellationToken)
+    {
+        await using (var deletePosts = new NpgsqlCommand(
+            """
+            DELETE FROM discussion_post
+            WHERE legacy_id IS NOT NULL AND legacy_id <> ALL(@postLegacyIds)
+            """,
+            context.Target, context.Transaction))
+        {
+            deletePosts.Parameters.AddWithValue("postLegacyIds", currentPostLegacyIds.ToArray());
+            await deletePosts.ExecuteNonQueryAsync(cancellationToken);
+        }
+
+        await using var deleteOrphanedMedia = new NpgsqlCommand(
+            """
+            DELETE FROM media_item
+            WHERE storage_key LIKE 'forum_attachments/%'
+              AND NOT EXISTS (SELECT 1 FROM discussion_post_media WHERE discussion_post_media.media_item_id = media_item.id)
+            """,
+            context.Target, context.Transaction);
+        await deleteOrphanedMedia.ExecuteNonQueryAsync(cancellationToken);
+    }
+
+    /// <summary>
+    /// Deletes every discussion_thread row whose legacy id is not among this run's roots and that
+    /// carries no posts.
+    /// </summary>
+    private static async Task RemoveStaleThreadsAsync(
+        EtlContext context, IReadOnlyCollection<int> currentRootLegacyIds, CancellationToken cancellationToken)
+    {
+        await using var command = new NpgsqlCommand(
+            """
+            DELETE FROM discussion_thread
+            WHERE legacy_id IS NOT NULL
+              AND legacy_id <> ALL(@rootLegacyIds)
+              AND NOT EXISTS (SELECT 1 FROM discussion_post WHERE discussion_post.thread_id = discussion_thread.id)
+            """,
+            context.Target, context.Transaction);
+        command.Parameters.AddWithValue("rootLegacyIds", currentRootLegacyIds.ToArray());
+        await command.ExecuteNonQueryAsync(cancellationToken);
     }
 
     /// <summary>
@@ -495,7 +546,7 @@ public sealed class ForumMigrationStep : IEtlStep
         EtlContext context, StepStatistics stats, CancellationToken cancellationToken)
     {
         const string sql = $"""
-            SELECT message_id, forum_id, thread, parent_id, author, subject, body, user_id, datestamp, status
+            SELECT message_id, forum_id, thread, parent_id, author, subject, body, user_id, datestamp, status, moved
             FROM {PhorumDatabase}.phorum_messages
             ORDER BY message_id
             """;
@@ -512,6 +563,15 @@ public sealed class ForumMigrationStep : IEtlStep
             if (status != 2)
             {
                 stats.AddSkip("forum_message_hidden_status");
+                continue;
+            }
+
+            if (reader.GetBoolean("moved"))
+            {
+                // A Phorum "thread moved" notice: a stub message Phorum drops in the forum a
+                // thread moved out of, pointing at the real thread through its own thread column.
+                // It is neither a thread of its own nor a post of the thread it points at.
+                stats.AddSkip("forum_message_moved_notice");
                 continue;
             }
 
