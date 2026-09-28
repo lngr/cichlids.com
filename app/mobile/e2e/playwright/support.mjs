@@ -20,12 +20,11 @@ export function byTestId(page, testId) {
 }
 
 /**
- * Presses the Me tab's login button and submits the dev user's credentials on the Keycloak page.
- * On the web, expo-auth-session opens that page in a popup window and receives the redirect back
- * from it. Resolves with the name the Me tab shows once the login completed.
+ * Presses the given login button and submits the dev user's credentials on the Keycloak page. On
+ * the web, expo-auth-session opens that page in a popup window and receives the redirect back from
+ * it. Resolves once the credentials are submitted; the caller waits for its own logged-in state.
  */
-export async function logInThroughKeycloak(page) {
-  const loginButton = byTestId(page, "login-button");
+export async function submitKeycloakLogin(page, loginButton) {
   await loginButton.waitFor({ timeout: 20000 });
   const popupPromise = page.waitForEvent("popup", { timeout: 20000 });
   await loginButton.click();
@@ -34,6 +33,14 @@ export async function logInThroughKeycloak(page) {
   await popup.fill("#username", USERNAME);
   await popup.fill("#password", PASSWORD);
   await popup.click("#kc-login");
+}
+
+/**
+ * Logs in from the Me tab's login button. Resolves with the name the Me tab shows once the login
+ * completed.
+ */
+export async function logInThroughKeycloak(page) {
+  await submitKeycloakLogin(page, byTestId(page, "login-button"));
 
   const meName = byTestId(page, "me-name");
   await meName.waitFor({ timeout: 30000 });
