@@ -1,4 +1,5 @@
 using Cichlids.Etl.Runtime;
+using Cichlids.Infrastructure.Identity;
 using MySqlConnector;
 using Npgsql;
 
@@ -82,7 +83,8 @@ public sealed class VerifyStep : IEtlStep
     /// non-null legacy_id, which excludes profiles the API creates for a first login), then
     /// checks each identity provider's row count. Returns the eligible legacy user rows (with
     /// their openid/email columns) for the identity checks and for any future check that needs
-    /// the same set.
+    /// the same set. Also counts the profiles whose public handle or display name holds an email
+    /// address, which has to be zero for every profile, migrated or not.
     /// </summary>
     private static async Task AddProfileAndIdentityRowsAsync(
         EtlContext context, VerificationReport report, CancellationToken cancellationToken)
@@ -137,6 +139,8 @@ public sealed class VerifyStep : IEtlStep
         var actualSystem = await PgScalarAsync(context, "SELECT COUNT(*) FROM profile WHERE kind = 'system'", cancellationToken);
         report.Add(VerificationRow.Info("profiles_system", actualSystem));
 
+        await AddEmailLikeProfileRowsAsync(context, report, cancellationToken);
+
         var eligibleIds = eligibleUsers.Select(u => u.Uid).ToHashSet();
         var expectedAuth0 = new HashSet<string>(StringComparer.Ordinal);
         await using (var command = new MySqlCommand(
@@ -181,6 +185,35 @@ public sealed class VerifyStep : IEtlStep
     }
 
     private sealed record EligibleUser(int Uid, string? OpenId, string? Email);
+
+    // An email address is private, so no public profile field may hold one. The check reads every
+    // profile and applies the same address shape the migration avoids.
+    private static async Task AddEmailLikeProfileRowsAsync(
+        EtlContext context, VerificationReport report, CancellationToken cancellationToken)
+    {
+        long usernames = 0;
+        long displayNames = 0;
+        await using (var command = new NpgsqlCommand(
+            "SELECT username, display_name FROM profile", context.Target, context.Transaction))
+        await using (var reader = await command.ExecuteReaderAsync(cancellationToken))
+        {
+            while (await reader.ReadAsync(cancellationToken))
+            {
+                if (EmailLike.Contains(reader.GetString(0)))
+                {
+                    usernames++;
+                }
+
+                if (!reader.IsDBNull(1) && EmailLike.Contains(reader.GetString(1)))
+                {
+                    displayNames++;
+                }
+            }
+        }
+
+        report.Add(VerificationRow.Compare("profile_username_email_like", 0, usernames));
+        report.Add(VerificationRow.Compare("profile_display_name_email_like", 0, displayNames));
+    }
 
     // === tanks ======================================================================================
 

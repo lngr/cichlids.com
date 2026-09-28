@@ -236,7 +236,7 @@ public sealed class PictureMigrationStepTests(EtlFixture fixture)
     }
 
     // Owner legacy ids 300/301 and tank legacy id 300 are a range of their own, disjoint from the
-    // species/profile (1-16) and tank/profile (10-14/101/102/999) fixtures other step tests own.
+    // species/profile (1-20) and tank/profile (10-14/101/102/999) fixtures other step tests own.
     // Seeded directly (idempotent find-or-create) the same way TankMigrationStepTests seeds its
     // own prerequisite rows, instead of running ProfileMigrationStep/TankMigrationStep.
     private Task RunPrerequisiteStepsAsync() => fixture.RunExclusiveAsync(async () =>

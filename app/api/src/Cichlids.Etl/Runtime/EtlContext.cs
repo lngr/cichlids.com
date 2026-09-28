@@ -1,3 +1,4 @@
+using Cichlids.Infrastructure.Identity;
 using Cichlids.Infrastructure.Persistence;
 using Cichlids.Infrastructure.Slugs;
 using Cichlids.Infrastructure.Storage;
@@ -23,12 +24,14 @@ public sealed class EtlContext : IAsyncDisposable
     /// </summary>
     public const string DevDefaultSlugSecret = "cichlids-local-dev-slug-secret"; // gitleaks:allow
 
-    private EtlContext(MySqlConnection legacy, CichlidsDbContext db, bool dryRun, SlugGenerator slugGenerator)
+    private EtlContext(
+        MySqlConnection legacy, CichlidsDbContext db, bool dryRun, SlugGenerator slugGenerator, GeneratedNames generatedNames)
     {
         Legacy = legacy;
         Db = db;
         DryRun = dryRun;
         SlugGenerator = slugGenerator;
+        GeneratedNames = generatedNames;
     }
 
     public MySqlConnection Legacy { get; }
@@ -47,6 +50,12 @@ public sealed class EtlContext : IAsyncDisposable
     /// caller passes none.
     /// </summary>
     public SlugGenerator SlugGenerator { get; }
+
+    /// <summary>
+    /// Derives generated user names for members without a usable legacy handle, keyed on the same
+    /// secret as SlugGenerator.
+    /// </summary>
+    public GeneratedNames GeneratedNames { get; }
 
     /// <summary>
     /// Object store for steps that export legacy binary content (for example forum attachments)
@@ -93,8 +102,11 @@ public sealed class EtlContext : IAsyncDisposable
         var db = new CichlidsDbContext(optionsBuilder.Options);
         await db.Database.OpenConnectionAsync(cancellationToken);
 
-        var slugGenerator = new SlugGenerator(slugSecret ?? DevDefaultSlugSecret);
-        return new EtlContext(legacy, db, dryRun, slugGenerator) { ObjectStore = objectStore };
+        var secret = slugSecret ?? DevDefaultSlugSecret;
+        return new EtlContext(legacy, db, dryRun, new SlugGenerator(secret), new GeneratedNames(secret))
+        {
+            ObjectStore = objectStore,
+        };
     }
 
     public async ValueTask DisposeAsync()

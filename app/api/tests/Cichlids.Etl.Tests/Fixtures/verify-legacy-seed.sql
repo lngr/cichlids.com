@@ -29,7 +29,7 @@ INSERT INTO tx_realurl_uniqalias (uid, tablename, value_alias, value_id) VALUES
     (99001, 'user_cichlids_species', 'genusverifica-verifica', 9001);
 
 -- Members: alice (9010) has all three identity providers and owns pictures, bob (9011) owns a
--- tank and has no identities, noc (9012) has no content anywhere and must stay out of the target,
+-- tank, has no identities and an email address as username and name, noc (9012) has no content anywhere and must stay out of the target,
 -- del (9013) and dis (9014) are excluded by the source query itself (deleted/disable).
 INSERT INTO fe_users
     (uid, username, name, first_name, last_name, city, static_info_country,
@@ -38,7 +38,7 @@ INSERT INTO fe_users
 VALUES
     (9010, 'alice-verify', 'Alice Verify', 'Alice', 'Verify', '', '', NULL,
      1700000000, 0, 0, 'openid-alice-verify', 'alice@verify.example', 0, 0),
-    (9011, 'bob-verify', 'Bob Verify', 'Bob', 'Verify', '', '', NULL,
+    (9011, 'bob@verify.example', 'bob@verify.example', '', '', '', '', NULL,
      1700000000, 0, 0, NULL, NULL, 0, 0),
     (9012, 'noc-verify', 'No Content Verify', 'NoContent', 'Verify', '', '', NULL,
      1700000000, 0, 0, NULL, NULL, 0, 0),

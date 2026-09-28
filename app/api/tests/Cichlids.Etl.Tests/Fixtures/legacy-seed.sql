@@ -49,7 +49,9 @@ INSERT INTO tx_realurl_uniqalias (uid, tablename, value_alias, value_id) VALUES
 -- Members: alice has all three identity providers, bob has zero legacy timestamps and no
 -- identities, charlie has no content anywhere and must stay out of the target, the dup pair
 -- shares both a username and a legacy-openid value to exercise both collision paths at once,
--- and the last two have content but are excluded by deleted/disable.
+-- 15 and 16 have content but are excluded by deleted/disable, and 17 to 20 have an email address
+-- or nothing where a public handle or display name would come from: eve's username is an
+-- address, frank's name is one, gina has an empty username and hank has an address as both.
 INSERT INTO fe_users
     (uid, username, name, first_name, last_name, city, static_info_country,
      user_cichlids_auth0_image, crdate, tstamp, lastlogin, tx_dixeasylogin_openid, email,
@@ -62,7 +64,11 @@ VALUES
     (13, 'dupuser', 'Dup One', 'Dup', 'One', '', '', NULL, 1000000000, 0, 0, 'dup-openid', NULL, 0, 0),
     (14, 'dupuser', 'Dup Two', 'Dup', 'Two', '', '', NULL, 1000000000, 0, 0, 'dup-openid', NULL, 0, 0),
     (15, 'deleteduser', 'Deleted', 'Deleted', 'User', '', '', NULL, 1000000000, 0, 0, NULL, NULL, 1, 0),
-    (16, 'disableduser', 'Disabled', 'Disabled', 'User', '', '', NULL, 1000000000, 0, 0, NULL, NULL, 0, 1);
+    (16, 'disableduser', 'Disabled', 'Disabled', 'User', '', '', NULL, 1000000000, 0, 0, NULL, NULL, 0, 1),
+    (17, 'eve@example.com', '', '', '', '', '', NULL, 1000000000, 0, 0, NULL, NULL, 0, 0),
+    (18, 'frank', 'frank@example.com', 'Frank', 'F', '', '', NULL, 1000000000, 0, 0, NULL, NULL, 0, 0),
+    (19, '', 'Gina G', 'Gina', 'G', '', '', NULL, 1000000000, 0, 0, NULL, NULL, 0, 0),
+    (20, 'hank@example.com', 'Hank <hank@example.com>', '', '', '', '', NULL, 1000000000, 0, 0, NULL, NULL, 0, 0);
 
 INSERT INTO fe_users_auth0 (sub, user_id) VALUES
     ('auth0|alice', 10),
@@ -72,18 +78,22 @@ INSERT INTO fe_users_auth0 (sub, user_id) VALUES
 INSERT INTO user_cichlids_pictures (uid, fe_user) VALUES
     (1, 10),
     (2, 15);
--- uid 1 and 2 only exist to give bob and disableduser content for the profile eligibility check
--- above (that scan ignores deleted rows). They are soft-deleted here so the tank step itself,
--- which filters on deleted = 0, never reads them.
+-- uid 1 to 6 only exist to give bob, disableduser and members 17 to 20 content for the profile
+-- eligibility check above (that scan ignores deleted rows). They are soft-deleted here so the
+-- tank step itself, which filters on deleted = 0, never reads them.
 INSERT INTO user_cichlids_tanks (uid, fe_user, deleted) VALUES
     (1, 11, 1),
-    (2, 16, 1);
+    (2, 16, 1),
+    (3, 17, 1),
+    (4, 18, 1),
+    (5, 19, 1),
+    (6, 20, 1);
 
 -- Owner legacy ids 101/102 and species legacy id 101 below are a range of their own, disjoint
--- from the species (1-5) and profile (10-16) fixtures above: TankMigrationStepTests seeds its own
+-- from the species (1-5) and profile (10-20) fixtures above: TankMigrationStepTests seeds its own
 -- prerequisite profile/species rows directly (see that class for why) rather than running the
 -- species/profile steps, and those rows must never collide with the ones this file's other tests
--- upsert under the shared legacy ids 1-5/10-16.
+-- upsert under the shared legacy ids 1-5/10-20.
 --
 -- uid 10: a full published tank with a dirty fish/fish_count pairing -- a resolvable species, an
 -- explicit "0" placeholder, a leading double comma (empty token) with a count behind it, and a
@@ -116,7 +126,7 @@ INSERT INTO user_cichlids_comments (uid, fe_user) VALUES
     (2, 14);
 
 -- Picture step fixtures: owner legacy ids 300/301 and tank legacy id 300 are their own range,
--- disjoint from every id range above (species/profile 1-16, tank/profile 10-14/101/102/999).
+-- disjoint from every id range above (species/profile 1-20, tank/profile 10-14/101/102/999).
 -- PictureMigrationStepTests seeds the matching profile/tank rows directly in Postgres, the same
 -- way TankMigrationStepTests does, instead of running the profile/tank steps.
 --
@@ -306,7 +316,10 @@ INSERT INTO cichlids_phorum5.phorum_users (user_id, email, display_name) VALUES
     (901, 'alice.forum@example.com', 'Alice Forum'),
     -- 902: registered, but no migrated profile carries this e-mail -- placeholder path, with a
     -- Phorum display name to carry over.
-    (902, 'unmatched@example.com', 'Bob NoMatch');
+    (902, 'unmatched@example.com', 'Bob NoMatch'),
+    -- 904: placeholder path whose Phorum display name is an e-mail address, which never
+    -- becomes a public display name.
+    (904, 'mail904@example.com', 'mail904@example.com');
     -- 903 deliberately has no phorum_users row at all: placeholder path with no display name to
     -- fall back from, exercising the "Former member" default.
 
@@ -337,7 +350,9 @@ VALUES
     -- Parent_id 0 reply whose real root was hard-deleted: its thread column (90098) never
     -- resolves to any surviving message, the same failure mode 90020 exercises for a non-root
     -- message, but here parent_id 0 makes it look like a root under the naive rule.
-    (90008, 1, 90098, 0, '', '', 'Reply whose real thread root no longer exists.', 901, 1700000500, 2, 0);
+    (90008, 1, 90098, 0, '', '', 'Reply whose real thread root no longer exists.', 901, 1700000500, 2, 0),
+    -- Thread C (forum 3): root by 904, whose Phorum display name is an e-mail address.
+    (90030, 3, 90030, 0, '', 'Root Subject C', 'Root post by a member named by address.', 904, 1700003000, 2, 0);
 
 INSERT INTO cichlids_phorum5.phorum_files (file_id, filename, file_data, message_id, link) VALUES
     -- Attached to 90010 (migrated): decodes to 61 bytes, sha256

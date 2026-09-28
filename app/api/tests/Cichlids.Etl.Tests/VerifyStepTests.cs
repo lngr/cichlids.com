@@ -54,6 +54,8 @@ public sealed class VerifyStepTests(VerifyEtlFixture fixture)
         AssertRow(report, "post_rating_count_consistency", 0, 0);
         AssertRow(report, "comment_score_consistency", 0, 0);
         AssertRow(report, "discussion_thread_post_count_consistency", 0, 0);
+        AssertRow(report, "profile_username_email_like", 0, 0);
+        AssertRow(report, "profile_display_name_email_like", 0, 0);
 
         // Inject a target-only member profile carrying a legacy id no source row justifies, the
         // same way a bug introducing an extra migrated row (or a re-run losing track of one)
@@ -140,6 +142,56 @@ public sealed class VerifyStepTests(VerifyEtlFixture fixture)
             db.Profiles.Remove(rogue);
             await db.SaveChangesAsync();
         }
+    }
+
+    [Fact]
+    public async Task FlagsAProfileWhoseHandleOrDisplayNameHoldsAnEmailAddress()
+    {
+        await using var context = await EtlContext.CreateAsync(
+            fixture.LegacyConnectionString, fixture.TargetConnectionString, dryRun: false, CancellationToken.None, fixture.ObjectStore);
+
+        foreach (var step in EtlStepRegistry.All)
+        {
+            await EtlRunner.RunAsync(step, context, CancellationToken.None);
+        }
+
+        await using (var db = fixture.CreateTargetContext())
+        {
+            db.Profiles.Add(new Profile
+            {
+                Username = "exposed@verify.example",
+                DisplayName = "Exposed <exposed@verify.example>",
+                Kind = ProfileKind.Member,
+                CreatedAt = DateTimeOffset.UtcNow,
+            });
+            await db.SaveChangesAsync();
+        }
+
+        try
+        {
+            await EtlRunner.RunAsync(new VerifyStep(), context, CancellationToken.None);
+            var report = context.VerificationReport;
+
+            Assert.NotNull(report);
+            Assert.False(report!.Passed);
+            AssertMismatch(report, "profile_username_email_like", 0, 1);
+            AssertMismatch(report, "profile_display_name_email_like", 0, 1);
+            AssertRow(report, "profiles_member", 2, 2);
+        }
+        finally
+        {
+            await using var db = fixture.CreateTargetContext();
+            db.Profiles.Remove(db.Profiles.Single(p => p.Username == "exposed@verify.example"));
+            await db.SaveChangesAsync();
+        }
+    }
+
+    private static void AssertMismatch(VerificationReport report, string entity, long expected, long actual)
+    {
+        var row = Assert.Single(report.Rows, r => r.Entity == entity);
+        Assert.Equal(expected, row.Expected);
+        Assert.Equal(actual, row.Actual);
+        Assert.Equal(VerificationStatus.Mismatch, row.Status);
     }
 
     private static void AssertRow(VerificationReport report, string entity, long expected, long actual)

@@ -1,16 +1,22 @@
+using System.Globalization;
 using Cichlids.Domain.Enums;
 using Cichlids.Etl.Persistence;
 using Cichlids.Etl.Runtime;
+using Cichlids.Infrastructure.Identity;
 using Cichlids.Infrastructure.Persistence.Conversions;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MySqlConnector;
+using Npgsql;
 
 namespace Cichlids.Etl.Steps;
 
 /// <summary>
 /// Migrates legacy members with actual content (pictures, tanks or comments) into <c>profile</c>
 /// and their login identities into <c>profile_identity</c>. Members without content stay in the
-/// legacy database only; they never had anything for the new application to show.
+/// legacy database only; they never had anything for the new application to show. The public
+/// handle and the display name never contain an email address: a member whose legacy username is
+/// empty or holds an address gets a generated handle, and the display name falls back past any
+/// candidate holding an address to the handle.
 /// </summary>
 public sealed class ProfileMigrationStep : IEtlStep
 {
@@ -31,7 +37,8 @@ public sealed class ProfileMigrationStep : IEtlStep
         var stats = context.Statistics.ForStep(Name);
 
         var rows = await LoadEligibleUsersAsync(context, cancellationToken);
-        var usernames = ResolveUsernames(rows, stats);
+        var otherUsernames = await LoadOtherProfileUsernamesAsync(context, rows, cancellationToken);
+        var usernames = ResolveUsernames(rows, otherUsernames, context.GeneratedNames, stats);
         var auth0SubjectsByUserId = await LoadAuth0SubjectsAsync(context, cancellationToken);
         var seenIdentities = new HashSet<(string Provider, string Subject)>();
 
@@ -39,7 +46,8 @@ public sealed class ProfileMigrationStep : IEtlStep
         {
             stats.AddRead();
 
-            var displayName = FirstNonEmpty(row.Name, $"{row.FirstName} {row.LastName}".Trim(), row.Username);
+            var username = usernames[row.Uid];
+            var displayName = FirstUsableDisplayName(row.Name, $"{row.FirstName} {row.LastName}".Trim(), row.Username, username);
             var createdAt = row.Crdate != 0
                 ? DateTimeOffset.FromUnixTimeSeconds(row.Crdate)
                 : row.Tstamp != 0
@@ -50,7 +58,7 @@ public sealed class ProfileMigrationStep : IEtlStep
             var values = new (string, object?)[]
             {
                 ("legacy_id", row.Uid),
-                ("username", usernames[row.Uid]),
+                ("username", username),
                 ("display_name", displayName),
                 ("city", NullIfEmpty(row.City)),
                 ("country_code", NullIfEmpty(row.CountryCode)),
@@ -85,15 +93,23 @@ public sealed class ProfileMigrationStep : IEtlStep
         }
     }
 
-    private static Dictionary<int, string> ResolveUsernames(IReadOnlyList<LegacyUserRow> rows, StepStatistics stats)
+    /// <summary>
+    /// Resolves every row's handle. A usable legacy username is kept, suffixed with the legacy id
+    /// when an earlier row has the same one. A row without a usable legacy username gets a
+    /// generated handle keyed by its legacy id, unique against every handle of this run and the
+    /// usernames of profiles outside it.
+    /// </summary>
+    private static Dictionary<int, string> ResolveUsernames(
+        IReadOnlyList<LegacyUserRow> rows, IReadOnlySet<string> otherUsernames, GeneratedNames generatedNames, StepStatistics stats)
     {
-        var counts = rows
+        var usable = rows.Where(r => PublicHandle.IsUsable(r.Username)).ToList();
+        var counts = usable
             .GroupBy(r => r.Username, StringComparer.Ordinal)
             .ToDictionary(g => g.Key, g => g.Count(), StringComparer.Ordinal);
 
         var seen = new HashSet<string>(StringComparer.Ordinal);
         var result = new Dictionary<int, string>();
-        foreach (var row in rows)
+        foreach (var row in usable)
         {
             if (counts[row.Username] > 1 && !seen.Add(row.Username))
             {
@@ -106,6 +122,37 @@ public sealed class ProfileMigrationStep : IEtlStep
                 seen.Add(row.Username);
                 result[row.Uid] = row.Username;
             }
+        }
+
+        var taken = new HashSet<string>(result.Values, StringComparer.Ordinal);
+        taken.UnionWith(otherUsernames);
+        foreach (var row in rows.Where(r => !PublicHandle.IsUsable(r.Username)))
+        {
+            var generated = generatedNames.GenerateUnique(
+                GeneratedNames.HandleInput(row.Uid.ToString(CultureInfo.InvariantCulture)), taken.Contains);
+            taken.Add(generated);
+            result[row.Uid] = generated;
+        }
+
+        return result;
+    }
+
+    // The usernames of every profile this run does not write: profiles the API created on a
+    // first login, placeholder profiles and migrated profiles of members no longer eligible.
+    private static async Task<HashSet<string>> LoadOtherProfileUsernamesAsync(
+        EtlContext context, IReadOnlyList<LegacyUserRow> rows, CancellationToken cancellationToken)
+    {
+        await using var command = new NpgsqlCommand(
+            "SELECT username FROM profile WHERE legacy_id IS NULL OR NOT (legacy_id = ANY(@legacy_ids))",
+            context.Target,
+            context.Transaction);
+        command.Parameters.AddWithValue("legacy_ids", rows.Select(r => r.Uid).ToArray());
+
+        var result = new HashSet<string>(StringComparer.Ordinal);
+        await using var reader = await command.ExecuteReaderAsync(cancellationToken);
+        while (await reader.ReadAsync(cancellationToken))
+        {
+            result.Add(reader.GetString(0));
         }
 
         return result;
@@ -238,8 +285,9 @@ public sealed class ProfileMigrationStep : IEtlStep
 
     private static string? NullIfEmpty(string? value) => string.IsNullOrEmpty(value) ? null : value;
 
-    private static string FirstNonEmpty(params string[] candidates) =>
-        candidates.FirstOrDefault(c => !string.IsNullOrWhiteSpace(c)) ?? string.Empty;
+    // The last candidate is the handle, which is always usable.
+    private static string FirstUsableDisplayName(params string[] candidates) =>
+        candidates.First(PublicHandle.IsUsable);
 
     private sealed record LegacyUserRow(
         int Uid,

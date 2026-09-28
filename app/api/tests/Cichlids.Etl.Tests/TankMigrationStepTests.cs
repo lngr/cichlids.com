@@ -125,7 +125,7 @@ public sealed class TankMigrationStepTests(EtlFixture fixture)
     // target Postgres instance across the whole test collection, so running the real steps here
     // would make those counts depend on test execution order. The seeded legacy ids (101, 102 for
     // profiles; 101 for species) are their own range, disjoint from the species (1-5) and profile
-    // (10-16) fixtures the other step tests own. The seeding is idempotent (find or create) so it
+    // (10-20) fixtures the other step tests own. The seeding is idempotent (find or create) so it
     // does not care whether another test happened to create the same rows first.
     private Task RunPrerequisiteStepsAsync() => fixture.RunExclusiveAsync(async () =>
     {

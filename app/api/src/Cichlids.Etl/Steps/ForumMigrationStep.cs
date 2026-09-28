@@ -2,6 +2,7 @@ using System.Security.Cryptography;
 using Cichlids.Domain.Enums;
 using Cichlids.Etl.Persistence;
 using Cichlids.Etl.Runtime;
+using Cichlids.Infrastructure.Identity;
 using Cichlids.Infrastructure.Persistence.Conversions;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MySqlConnector;
@@ -323,7 +324,9 @@ public sealed class ForumMigrationStep : IEtlStep
     private static async Task<long> EnsureForumPlaceholderProfileAsync(
         EtlContext context, int phorumUserId, string? phorumDisplayName, CancellationToken cancellationToken)
     {
-        var displayName = TrimOrNull(phorumDisplayName) ?? "Former member";
+        // A display name is public, so an e-mail address never becomes one.
+        var trimmed = TrimOrNull(phorumDisplayName);
+        var displayName = PublicHandle.IsUsable(trimmed) ? trimmed! : "Former member";
 
         var values = new (string, object?)[]
         {
