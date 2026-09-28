@@ -117,6 +117,22 @@ Keycloak's `cichlids` realm has two seeded local users (password `dev-password` 
 
 These are local-development defaults only and are not used in any deployed environment.
 
+The app logs in through the public client `cichlids-app` (authorization code with PKCE). Its
+redirect URIs cover the web app on any localhost port and the native app scheme `cichlids://`;
+its web origins list the dev Expo web server (`http://localhost:8081`) and the write E2E stack
+(`http://localhost:8082`), since the web app calls the token endpoint cross-origin and Keycloak
+matches web origins exactly. `bootstrap.sh` skips an existing realm; an existing realm gets these
+client settings with:
+
+```sh
+docker compose -f app/stack/compose.yaml exec -T keycloak sh -c '
+  /opt/keycloak/bin/kcadm.sh config credentials --server http://localhost:8080 --realm master --user admin --password admin &&
+  id=$(/opt/keycloak/bin/kcadm.sh get clients -r cichlids -q clientId=cichlids-app --fields id --format csv --noquotes) &&
+  /opt/keycloak/bin/kcadm.sh update "clients/$id" -r cichlids \
+    -s "redirectUris=[\"http://localhost:*\",\"cichlids://*\"]" \
+    -s "webOrigins=[\"http://localhost:8081\",\"http://localhost:8082\",\"+\"]"'
+```
+
 ## Start the API and the app
 
 ```sh

@@ -211,8 +211,8 @@
       "standardFlowEnabled": true,
       "directAccessGrantsEnabled": true,
       "serviceAccountsEnabled": false,
-      "redirectUris": ["http://localhost:*"],
-      "webOrigins": ["http://localhost:*", "+"],
+      "redirectUris": ["http://localhost:*", "cichlids://*"],
+      "webOrigins": ["http://localhost:8081", "http://localhost:8082", "+"],
       "attributes": {
         "pkce.code.challenge.method": "S256"
       },
