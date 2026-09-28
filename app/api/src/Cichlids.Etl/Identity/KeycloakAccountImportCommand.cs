@@ -1,3 +1,4 @@
+using Cichlids.Infrastructure.Identity;
 using MySqlConnector;
 using Npgsql;
 
@@ -5,11 +6,13 @@ namespace Cichlids.Etl.Identity;
 
 /// <summary>
 /// The "keycloak-import" command: creates a Keycloak user for every legacy account from the
-/// Auth0 export that has a known email or a migrated profile, and links each account with a
-/// migrated profile to that profile through an oidc profile identity whose subject is the
-/// Keycloak user id. Existing Keycloak users are never changed. An account whose email belongs to
-/// an existing user with a verified email is linked to that user; an account whose email belongs
-/// to an existing user with an unverified email, or whose username another user holds, is
+/// Auth0 export that has a known email or a migrated profile, with the login username the
+/// planner assigns, and links each account with a migrated profile to that profile through an
+/// oidc profile identity whose subject is the Keycloak user id. Existing Keycloak users are never
+/// changed. An account whose email belongs to an existing user with a verified email is linked to
+/// that user. An email account whose login username another user holds is created with its
+/// generated username. An account whose email belongs to an existing user with an unverified
+/// email, whose email another user holds as username, or which has no free username left is
 /// neither created nor linked and is counted as a conflict. A repeated run over the same data
 /// creates no user and inserts no identity.
 /// </summary>
@@ -31,17 +34,24 @@ public static class KeycloakAccountImportCommand
         string targetConnectionString,
         string auth0ExportPath,
         KeycloakAdminSettings keycloak,
+        GeneratedNames generatedNames,
         CancellationToken cancellationToken)
     {
         Console.WriteLine($"Importing legacy accounts from {auth0ExportPath} into Keycloak realm '{keycloak.Realm}' at {keycloak.BaseUrl}...");
 
         var summary = await ImportAsync(
-            legacyConnectionString, targetConnectionString, auth0ExportPath, keycloak, cancellationToken);
+            legacyConnectionString, targetConnectionString, auth0ExportPath, keycloak, generatedNames, cancellationToken);
 
         Console.WriteLine($"Auth0 records read:        {summary.RecordsRead}");
         Console.WriteLine($"Accounts planned:          {summary.AccountsPlanned}");
+        foreach (var (source, count) in summary.LoginUsernamesBySource)
+        {
+            Console.WriteLine($"  login username ({source}): {count}");
+        }
+
         Console.WriteLine($"  created:                 {summary.Created}");
         Console.WriteLine($"  existing:                {summary.Existing}");
+        Console.WriteLine($"  generated for a taken username: {summary.GeneratedForTakenUsername}");
         foreach (var (reason, count) in summary.DroppedByReason)
         {
             Console.WriteLine($"Records dropped ({reason}): {count}");
@@ -66,21 +76,23 @@ public static class KeycloakAccountImportCommand
     }
 
     /// <summary>
-    /// Plans the accounts from the Auth0 export, the legacy user table and the migrated profile
-    /// identities, ensures the realm prerequisites, creates the missing Keycloak users and inserts
-    /// the missing oidc profile identities.
+    /// Plans the accounts from the Auth0 export, the legacy user table and the migrated profiles,
+    /// ensures the realm prerequisites, creates the missing Keycloak users and inserts the missing
+    /// oidc profile identities. Generated login usernames come from the given generator.
     /// </summary>
     public static Task<KeycloakImportSummary> ImportAsync(
         string legacyConnectionString,
         string targetConnectionString,
         string auth0ExportPath,
         KeycloakAdminSettings keycloak,
+        GeneratedNames generatedNames,
         CancellationToken cancellationToken) =>
         ImportAsync(
             legacyConnectionString,
             targetConnectionString,
             auth0ExportPath,
             keycloak,
+            generatedNames,
             KeycloakAdminClient.DefaultUserPageSize,
             KeycloakAdminClient.DefaultImportChunkSize,
             cancellationToken);
@@ -94,19 +106,25 @@ public static class KeycloakAccountImportCommand
         string targetConnectionString,
         string auth0ExportPath,
         KeycloakAdminSettings keycloak,
+        GeneratedNames generatedNames,
         int userPageSize,
         int importChunkSize,
         CancellationToken cancellationToken)
     {
         var records = Auth0ExportReader.ReadFile(auth0ExportPath);
-        var legacyEmailBySubject = await LoadLegacyEmailsAsync(legacyConnectionString, cancellationToken);
+        var (members, uidBySubject) = await LoadLegacyMembersAsync(legacyConnectionString, cancellationToken);
         var identities = await LoadProfileIdentitiesAsync(targetConnectionString, cancellationToken);
+        var legacyIdByProfileId = await LoadProfileLegacyIdsAsync(targetConnectionString, cancellationToken);
 
         var plan = LegacyAccountPlanner.Plan(
-            records,
-            legacyEmailBySubject,
-            identities.GetValueOrDefault(EmailProvider, []),
-            identities.GetValueOrDefault(Auth0Provider, []));
+            new LegacyAccountSources(
+                records,
+                members,
+                uidBySubject,
+                identities.GetValueOrDefault(EmailProvider, []),
+                identities.GetValueOrDefault(Auth0Provider, []),
+                legacyIdByProfileId),
+            generatedNames);
 
         using var client = new KeycloakAdminClient(keycloak, userPageSize, importChunkSize);
         await client.EnsureRealmPrerequisitesAsync(cancellationToken);
@@ -114,6 +132,8 @@ public static class KeycloakAccountImportCommand
         var before = await client.LoadUsersAsync(cancellationToken);
         var userIdByAccount = new Dictionary<PlannedAccount, string>(ReferenceEqualityComparer.Instance);
         var missing = new List<PlannedAccount>();
+        var toCreate = new List<PlannedAccount>();
+        var generatedForTakenUsername = 0;
         var accountConflicts = new Dictionary<string, int>(StringComparer.Ordinal)
         {
             [ExistingUnverifiedConflict] = 0,
@@ -130,6 +150,12 @@ public static class KeycloakAccountImportCommand
                     break;
                 case AccountMatchKind.Missing:
                     missing.Add(account);
+                    toCreate.Add(account with { Username = match.Username! });
+                    if (!string.Equals(match.Username, account.Username, StringComparison.Ordinal))
+                    {
+                        generatedForTakenUsername++;
+                    }
+
                     break;
                 case AccountMatchKind.ExistingUnverified:
                     accountConflicts[ExistingUnverifiedConflict]++;
@@ -141,7 +167,7 @@ public static class KeycloakAccountImportCommand
         }
 
         var existing = userIdByAccount.Count;
-        var created = missing.Count == 0 ? 0 : await client.CreateUsersAsync(missing, cancellationToken);
+        var created = toCreate.Count == 0 ? 0 : await client.CreateUsersAsync(toCreate, cancellationToken);
 
         // Every created user is read back, so a profile link only ever points at a user that
         // exists with the account's planned id.
@@ -198,8 +224,13 @@ public static class KeycloakAccountImportCommand
         return new KeycloakImportSummary(
             records.Count,
             plan.Accounts.Count,
+            plan.Accounts
+                .GroupBy(account => account.UsernameSource)
+                .OrderBy(group => group.Key)
+                .ToDictionary(group => SourceName(group.Key), group => group.Count(), StringComparer.Ordinal),
             created,
             existing,
+            generatedForTakenUsername,
             new Dictionary<string, int> { [DroppedNoContactNoProfile] = plan.DroppedNoContactNoProfile },
             accountConflicts,
             inserted,
@@ -208,27 +239,58 @@ public static class KeycloakAccountImportCommand
             unresolved);
     }
 
-    private static async Task<Dictionary<string, string>> LoadLegacyEmailsAsync(
+    // Every fe_users row with its username, last login and email, and the legacy id each
+    // fe_users_auth0 subject maps to.
+    private static async Task<(List<LegacyMember> Members, Dictionary<string, int> UidBySubject)> LoadLegacyMembersAsync(
         string legacyConnectionString, CancellationToken cancellationToken)
     {
-        var emailBySubject = new Dictionary<string, string>(StringComparer.Ordinal);
+        var members = new List<LegacyMember>();
+        var uidBySubject = new Dictionary<string, int>(StringComparer.Ordinal);
 
         await using var connection = new MySqlConnection(legacyConnectionString);
         await connection.OpenAsync(cancellationToken);
-        await using var command = new MySqlCommand(
-            "SELECT a.sub, u.email FROM fe_users_auth0 a JOIN fe_users u ON u.uid = a.user_id WHERE u.email <> ''",
-            connection);
-        await using var reader = await command.ExecuteReaderAsync(cancellationToken);
-        while (await reader.ReadAsync(cancellationToken))
+
+        await using (var command = new MySqlCommand("SELECT uid, username, lastlogin, email FROM fe_users", connection))
+        await using (var reader = await command.ExecuteReaderAsync(cancellationToken))
         {
-            var email = reader.GetString(1).Trim().ToLowerInvariant();
-            if (email.Length > 0)
+            while (await reader.ReadAsync(cancellationToken))
             {
-                emailBySubject[reader.GetString(0)] = email;
+                members.Add(new LegacyMember(
+                    reader.GetInt32(0),
+                    reader.GetString(1),
+                    reader.GetInt64(2),
+                    reader.IsDBNull(3) ? null : reader.GetString(3)));
             }
         }
 
-        return emailBySubject;
+        await using (var command = new MySqlCommand(
+            "SELECT sub, user_id FROM fe_users_auth0 WHERE user_id IS NOT NULL", connection))
+        await using (var reader = await command.ExecuteReaderAsync(cancellationToken))
+        {
+            while (await reader.ReadAsync(cancellationToken))
+            {
+                uidBySubject[reader.GetString(0)] = reader.GetInt32(1);
+            }
+        }
+
+        return (members, uidBySubject);
+    }
+
+    private static async Task<Dictionary<long, int>> LoadProfileLegacyIdsAsync(
+        string targetConnectionString, CancellationToken cancellationToken)
+    {
+        var legacyIdByProfileId = new Dictionary<long, int>();
+
+        await using var connection = new NpgsqlConnection(targetConnectionString);
+        await connection.OpenAsync(cancellationToken);
+        await using var command = new NpgsqlCommand("SELECT id, legacy_id FROM profile WHERE legacy_id IS NOT NULL", connection);
+        await using var reader = await command.ExecuteReaderAsync(cancellationToken);
+        while (await reader.ReadAsync(cancellationToken))
+        {
+            legacyIdByProfileId[reader.GetInt64(0)] = reader.GetInt32(1);
+        }
+
+        return legacyIdByProfileId;
     }
 
     // Profile id by subject, grouped by provider, for the providers the import reads.
@@ -258,6 +320,16 @@ public static class KeycloakAccountImportCommand
 
         return byProvider;
     }
+
+    private static string SourceName(LoginUsernameSource source) => source switch
+    {
+        LoginUsernameSource.Legacy => "legacy",
+        LoginUsernameSource.NoLegacyRow => "no_legacy_row",
+        LoginUsernameSource.EmailLike => "email_like",
+        LoginUsernameSource.RejectedByKeycloak => "rejected_by_keycloak",
+        LoginUsernameSource.Duplicate => "duplicate",
+        _ => throw new ArgumentOutOfRangeException(nameof(source), source, null),
+    };
 
     private static async Task<int> InsertOidcIdentitiesAsync(
         string targetConnectionString, IReadOnlyDictionary<string, long> profileIdBySubject, CancellationToken cancellationToken)
@@ -289,17 +361,22 @@ public static class KeycloakAccountImportCommand
 }
 
 /// <summary>
-/// The outcome of one Keycloak account import: Auth0 records read, accounts planned, how many of
-/// them Keycloak added and how many already existed, dropped records per reason, accounts
-/// skipped per conflict reason (existing_unverified, username_taken), the oidc
+/// The outcome of one Keycloak account import: Auth0 records read, accounts planned, the planned
+/// login usernames per source (legacy, no_legacy_row, email_like, rejected_by_keycloak,
+/// duplicate), how many accounts Keycloak added and how many already existed, how many were
+/// created with their generated username because another user holds their login username,
+/// dropped records per reason, accounts skipped per conflict reason (existing_unverified,
+/// username_taken), the oidc
 /// profile links inserted, already present, or left untouched because their subject belongs to
 /// another profile, and the accounts that could not be found in Keycloak after the import.
 /// </summary>
 public sealed record KeycloakImportSummary(
     int RecordsRead,
     int AccountsPlanned,
+    IReadOnlyDictionary<string, int> LoginUsernamesBySource,
     int Created,
     int Existing,
+    int GeneratedForTakenUsername,
     IReadOnlyDictionary<string, int> DroppedByReason,
     IReadOnlyDictionary<string, int> AccountConflictsByReason,
     int ProfileLinksInserted,

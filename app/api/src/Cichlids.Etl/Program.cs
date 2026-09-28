@@ -4,6 +4,7 @@ using Cichlids.Etl.Identity;
 using Cichlids.Etl.Media;
 using Cichlids.Etl.Runtime;
 using Cichlids.Etl.Steps;
+using Cichlids.Infrastructure.Identity;
 using Cichlids.Infrastructure.Persistence;
 using Cichlids.Infrastructure.Slugs;
 using Cichlids.Infrastructure.Storage;
@@ -116,7 +117,7 @@ if (string.Equals(command, "keycloak-import", StringComparison.OrdinalIgnoreCase
         Environment.GetEnvironmentVariable("CICHLIDS_KEYCLOAK_ADMIN_PASSWORD") ?? configuration["Keycloak:AdminPassword"] ?? "admin");
 
     return await KeycloakAccountImportCommand.RunAsync(
-        legacyConnectionString, targetConnectionString, auth0ExportPath, keycloakSettings, cts.Token);
+        legacyConnectionString, targetConnectionString, auth0ExportPath, keycloakSettings, new GeneratedNames(slugSecret), cts.Token);
 }
 
 IReadOnlyList<IEtlStep> steps;

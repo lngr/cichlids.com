@@ -1,9 +1,11 @@
+using Cichlids.Infrastructure.Identity;
+
 namespace Cichlids.Etl.Identity;
 
 /// <summary>
 /// Derives the Keycloak accounts to create from an Auth0 export, merging records that resolve to
-/// the same email and resolving migrated profile links. Pure computation: no database or HTTP
-/// call is made here.
+/// the same email, resolving migrated profile links and assigning login usernames. Pure
+/// computation: no database or HTTP call is made here.
 /// </summary>
 public static class LegacyAccountPlanner
 {
@@ -25,23 +27,24 @@ public static class LegacyAccountPlanner
         };
 
     /// <summary>
-    /// Plans the Keycloak accounts for the given Auth0 records.
+    /// Plans the Keycloak accounts for the given sources, deriving generated login usernames with
+    /// the given generator.
     /// </summary>
-    /// <param name="auth0Records">The Auth0 export.</param>
-    /// <param name="legacyEmailBySubject">The legacy email for an Auth0 subject, from fe_users_auth0 joined with fe_users, containing only subjects with a non-empty legacy email.</param>
-    /// <param name="profileIdByEmail">The migrated profile id for a lowercased email, from a profile_identity row with provider email.</param>
-    /// <param name="profileIdByAuth0Subject">The migrated profile id for an Auth0 subject, from a profile_identity row with provider auth0.</param>
-    public static AccountPlan Plan(
-        IReadOnlyList<Auth0ExportRecord> auth0Records,
-        IReadOnlyDictionary<string, string> legacyEmailBySubject,
-        IReadOnlyDictionary<string, long> profileIdByEmail,
-        IReadOnlyDictionary<string, long> profileIdByAuth0Subject)
+    public static AccountPlan Plan(LegacyAccountSources sources, GeneratedNames generatedNames)
     {
+        var membersByUid = sources.LegacyMembers.ToDictionary(member => member.Uid);
+        var membersByEmail = sources.LegacyMembers
+            .Where(member => NormalizeEmail(member.Email) is not null)
+            .ToLookup(member => NormalizeEmail(member.Email)!, StringComparer.Ordinal);
+        var legacyEmailBySubject = sources.LegacyUidBySubject
+            .Where(pair => membersByUid.TryGetValue(pair.Value, out var member) && NormalizeEmail(member.Email) is not null)
+            .ToDictionary(pair => pair.Key, pair => NormalizeEmail(membersByUid[pair.Value].Email)!, StringComparer.Ordinal);
+
         var groupOrder = new List<string>();
         var groups = new Dictionary<string, List<Auth0ExportRecord>>(StringComparer.Ordinal);
         var emailless = new List<Auth0ExportRecord>();
 
-        foreach (var record in auth0Records)
+        foreach (var record in sources.Auth0Records)
         {
             var key = ResolveEmailKey(record, legacyEmailBySubject);
             if (key is null)
@@ -60,18 +63,20 @@ public static class LegacyAccountPlanner
             group.Add(record);
         }
 
-        var accounts = new List<PlannedAccount>();
+        var drafts = new List<AccountDraft>();
         foreach (var key in groupOrder)
         {
-            accounts.Add(BuildEmailAccount(key, groups[key], profileIdByEmail, profileIdByAuth0Subject));
+            var draft = BuildEmailAccount(key, groups[key], sources.ProfileIdByEmail, sources.ProfileIdByAuth0Subject);
+            drafts.Add(new AccountDraft(key, draft, FindLegacyRow(draft, groups[key], membersByUid, membersByEmail, sources)));
         }
 
         var droppedNoContactNoProfile = 0;
         foreach (var record in emailless)
         {
-            if (profileIdByAuth0Subject.TryGetValue(record.Id, out var profileId))
+            if (sources.ProfileIdByAuth0Subject.TryGetValue(record.Id, out var profileId))
             {
-                accounts.Add(BuildEmaillessAccount(record, profileId));
+                var draft = BuildEmaillessAccount(record, profileId);
+                drafts.Add(new AccountDraft(record.Id, draft, FindLegacyRow(draft, [record], membersByUid, membersByEmail, sources)));
             }
             else
             {
@@ -79,8 +84,125 @@ public static class LegacyAccountPlanner
             }
         }
 
-        return new AccountPlan(accounts, droppedNoContactNoProfile);
+        return new AccountPlan(AssignUsernames(drafts, generatedNames), droppedNoContactNoProfile);
     }
+
+    /// <summary>
+    /// Gives every account its login username. An account keeps the legacy username of its row
+    /// when that holds no email address, Keycloak accepts it and no other account keeps the same
+    /// name in any letter case; among accounts sharing a name, the one with a migrated profile
+    /// wins, then the one whose row logged in last, then the one with the lowest legacy id. Every
+    /// account also gets a generated name keyed by its account key, unique against all kept and
+    /// generated names, which is its login username when it keeps no legacy name.
+    /// </summary>
+    private static List<PlannedAccount> AssignUsernames(List<AccountDraft> drafts, GeneratedNames generatedNames)
+    {
+        var sourceByDraft = new Dictionary<AccountDraft, LoginUsernameSource>(ReferenceEqualityComparer.Instance);
+        var candidates = new List<AccountDraft>();
+        foreach (var draft in drafts)
+        {
+            var username = draft.LegacyRow?.Username;
+            if (username is null)
+            {
+                sourceByDraft[draft] = LoginUsernameSource.NoLegacyRow;
+            }
+            else if (EmailLike.Contains(username))
+            {
+                sourceByDraft[draft] = LoginUsernameSource.EmailLike;
+            }
+            else if (!KeycloakUsernameRule.IsAccepted(username))
+            {
+                sourceByDraft[draft] = LoginUsernameSource.RejectedByKeycloak;
+            }
+            else
+            {
+                candidates.Add(draft);
+            }
+        }
+
+        var taken = new HashSet<string>(StringComparer.Ordinal);
+        foreach (var sameName in candidates.GroupBy(draft => KeycloakUsernameRule.Normalize(draft.LegacyRow!.Username), StringComparer.Ordinal))
+        {
+            var ranked = sameName
+                .OrderBy(draft => draft.Account.ProfileId is null ? 1 : 0)
+                .ThenByDescending(draft => draft.LegacyRow!.LastLogin)
+                .ThenBy(draft => draft.LegacyRow!.Uid)
+                .ThenBy(draft => draft.Key, StringComparer.Ordinal)
+                .ToList();
+
+            sourceByDraft[ranked[0]] = LoginUsernameSource.Legacy;
+            taken.Add(sameName.Key);
+            foreach (var loser in ranked.Skip(1))
+            {
+                sourceByDraft[loser] = LoginUsernameSource.Duplicate;
+            }
+        }
+
+        var generatedByDraft = new Dictionary<AccountDraft, string>(ReferenceEqualityComparer.Instance);
+        foreach (var draft in drafts.OrderBy(draft => draft.Key, StringComparer.Ordinal))
+        {
+            var generated = generatedNames.GenerateUnique(
+                GeneratedNames.LoginInput(draft.Key), name => taken.Contains(KeycloakUsernameRule.Normalize(name)));
+            taken.Add(KeycloakUsernameRule.Normalize(generated));
+            generatedByDraft[draft] = generated;
+        }
+
+        return drafts
+            .Select(draft =>
+            {
+                var source = sourceByDraft[draft];
+                var generated = generatedByDraft[draft];
+                return draft.Account with
+                {
+                    Username = source == LoginUsernameSource.Legacy ? draft.LegacyRow!.Username : generated,
+                    GeneratedUsername = generated,
+                    UsernameSource = source,
+                };
+            })
+            .ToList();
+    }
+
+    // The account's legacy rows are the rows sharing its email and the rows its Auth0 subjects map
+    // to. The row of its migrated profile comes first, then the row that logged in last, then the
+    // lowest legacy id.
+    private static LegacyMember? FindLegacyRow(
+        PlannedAccount account,
+        IReadOnlyList<Auth0ExportRecord> records,
+        IReadOnlyDictionary<int, LegacyMember> membersByUid,
+        ILookup<string, LegacyMember> membersByEmail,
+        LegacyAccountSources sources)
+    {
+        var rows = new Dictionary<int, LegacyMember>();
+        if (account.Email is not null)
+        {
+            foreach (var member in membersByEmail[account.Email])
+            {
+                rows[member.Uid] = member;
+            }
+        }
+
+        foreach (var record in records)
+        {
+            if (sources.LegacyUidBySubject.TryGetValue(record.Id, out var uid) && membersByUid.TryGetValue(uid, out var member))
+            {
+                rows[member.Uid] = member;
+            }
+        }
+
+        if (account.ProfileId is { } profileId
+            && sources.LegacyIdByProfileId.TryGetValue(profileId, out var profileUid)
+            && rows.TryGetValue(profileUid, out var profileRow))
+        {
+            return profileRow;
+        }
+
+        return rows.Values
+            .OrderByDescending(member => member.LastLogin)
+            .ThenBy(member => member.Uid)
+            .FirstOrDefault();
+    }
+
+    private sealed record AccountDraft(string Key, PlannedAccount Account, LegacyMember? LegacyRow);
 
     // An account's key is its own email if present, otherwise the legacy email reachable through
     // its Auth0 subject; a record with neither has no email key at all.
@@ -114,7 +236,9 @@ public static class LegacyAccountPlanner
 
         return new PlannedAccount(
             Uuidv5.Create(NamespaceId, key),
-            key,
+            string.Empty,
+            string.Empty,
+            LoginUsernameSource.NoLegacyRow,
             key,
             members.Any(member => member.EmailVerified),
             requiredActions.ToList(),
@@ -124,9 +248,6 @@ public static class LegacyAccountPlanner
 
     private static PlannedAccount BuildEmaillessAccount(Auth0ExportRecord record, long profileId)
     {
-        var (prefix, userId) = SplitSubject(record.Id);
-        var alias = FederatedProviderAliases.TryGetValue(prefix, out var mappedAlias) ? mappedAlias : prefix;
-
         var requiredActions = new SortedSet<string>(StringComparer.Ordinal) { TermsAndConditionsAction };
         if (string.Equals(record.Connection, PasswordConnection, StringComparison.Ordinal))
         {
@@ -135,7 +256,9 @@ public static class LegacyAccountPlanner
 
         return new PlannedAccount(
             Uuidv5.Create(NamespaceId, record.Id),
-            $"{alias}-{userId}",
+            string.Empty,
+            string.Empty,
+            LoginUsernameSource.NoLegacyRow,
             null,
             record.EmailVerified,
             requiredActions.ToList(),

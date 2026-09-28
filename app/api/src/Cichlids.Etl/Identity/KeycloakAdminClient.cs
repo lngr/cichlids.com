@@ -82,13 +82,14 @@ public sealed class KeycloakAdminClient : IDisposable
     }
 
     /// <summary>
-    /// Reads every user of the realm, page by page, into lookups by lowercased email and by
-    /// lowercased username.
+    /// Reads every user of the realm, page by page, into lookups by lowercased email, by
+    /// lowercased username and by lowercased id.
     /// </summary>
     public async Task<KeycloakUserIndex> LoadUsersAsync(CancellationToken cancellationToken)
     {
         var byEmail = new Dictionary<string, ExistingKeycloakUser>(StringComparer.Ordinal);
         var byUsername = new Dictionary<string, ExistingKeycloakUser>(StringComparer.Ordinal);
+        var byId = new Dictionary<string, ExistingKeycloakUser>(StringComparer.Ordinal);
 
         for (var first = 0; ; first += _userPageSize)
         {
@@ -106,11 +107,12 @@ public sealed class KeycloakAdminClient : IDisposable
                 }
 
                 byUsername.TryAdd(summary.Username.ToLowerInvariant(), user);
+                byId.TryAdd(summary.Id.ToLowerInvariant(), user);
             }
 
             if (page.Count < _userPageSize)
             {
-                return new KeycloakUserIndex(byEmail, byUsername);
+                return new KeycloakUserIndex(byEmail, byUsername, byId);
             }
         }
     }

@@ -21,10 +21,10 @@ public sealed class KeycloakAccountImportPagingTests(KeycloakAccountImportPaging
             Assert.True(matches.Count == 1, $"expected exactly one user with email {email}, found {matches.Count}");
         }
 
-        Assert.Single(await scenario.Admin.GetArrayAsync("users?username=facebook-fb-erin&exact=true"));
+        Assert.Single(await scenario.Admin.GetArrayAsync("users?username=erin&exact=true"));
 
         var all = await scenario.Admin.GetArrayAsync("users?briefRepresentation=true&first=0&max=100");
-        Assert.Equal(12, all.Count);
+        Assert.Equal(13, all.Count);
     }
 
     [Fact]
@@ -54,7 +54,7 @@ public sealed class KeycloakAccountImportPagingTests(KeycloakAccountImportPaging
             ["alice"] = await UserIdAsync("email=alice%40example.test"),
             ["carol"] = await UserIdAsync("email=carol%40example.test"),
             ["dave"] = await UserIdAsync("email=dave%40example.test"),
-            ["erin"] = await UserIdAsync("username=facebook-fb-erin"),
+            ["erin"] = await UserIdAsync("username=erin"),
             ["grace"] = scenario.PreexistingGraceId,
         };
 

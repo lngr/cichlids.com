@@ -78,7 +78,11 @@ cd app/api && CICHLIDS_ETL_AUTH0_EXPORT=/path/to/auth0-export.json \
 The command reads the Keycloak connection from the `Keycloak` section of
 `app/api/src/Cichlids.Etl/appsettings.json`, overridable with `CICHLIDS_KEYCLOAK_URL`,
 `CICHLIDS_KEYCLOAK_REALM`, `CICHLIDS_KEYCLOAK_ADMIN_USER` and `CICHLIDS_KEYCLOAK_ADMIN_PASSWORD`.
-Repeated runs create only missing users and missing profile links.
+Repeated runs create only missing users and missing profile links. A member's login username is
+the legacy username when Keycloak accepts it, it holds no email address and no other member keeps
+the same name; otherwise it is a generated `user<number>` derived with the slug secret
+(`CICHLIDS_SLUG_SECRET` or `Slugs:Secret`, with the ETL's development default). Members with an
+email address sign in with it as well.
 
 Before it creates users, the import adds the `email_verified` mapper to the realm's `email`
 client scope when the scope lacks it, which covers an existing realm that `bootstrap.sh` skips.

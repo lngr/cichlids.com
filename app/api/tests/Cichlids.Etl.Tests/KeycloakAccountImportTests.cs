@@ -6,6 +6,7 @@ using System.Text.Json;
 using Cichlids.Domain.Entities;
 using Cichlids.Domain.Enums;
 using Cichlids.Etl.Identity;
+using Cichlids.Infrastructure.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Cichlids.Etl.Tests;
@@ -30,10 +31,10 @@ public sealed class KeycloakAccountImportTests(KeycloakAccountImportTests.Scenar
             Assert.True(matches.Count == 1, $"expected exactly one user with email {email}, found {matches.Count}");
         }
 
-        // Five email accounts and the email-less facebook account created by the import, the four
+        // Five email accounts and the email-less facebook account created by the import, the five
         // pre-existing users and the realm's two seeded dev users.
         var all = await scenario.Admin.GetArrayAsync("users?briefRepresentation=true&first=0&max=100");
-        Assert.Equal(12, all.Count);
+        Assert.Equal(13, all.Count);
     }
 
     [Fact]
@@ -54,7 +55,7 @@ public sealed class KeycloakAccountImportTests(KeycloakAccountImportTests.Scenar
     public async Task DoesNotLinkAUserHoldingTheUsernameOfAnEmaillessAccount()
     {
         var squatter = await scenario.Admin.GetObjectAsync($"users/{scenario.PreexistingEmaillessSquatterId}");
-        Assert.Equal("facebook-fb-heidi", squatter.GetProperty("username").GetString());
+        Assert.Equal("heidi", squatter.GetProperty("username").GetString());
         Assert.Empty(squatter.GetProperty("requiredActions").EnumerateArray());
         Assert.Empty(await FederatedIdentitiesAsync(scenario.PreexistingEmaillessSquatterId));
 
@@ -100,13 +101,13 @@ public sealed class KeycloakAccountImportTests(KeycloakAccountImportTests.Scenar
         Assert.Empty(await FederatedIdentitiesAsync(await UserIdByEmailAsync("alice@example.test")));
         Assert.Equal([("google", "g-carol")], await FederatedIdentitiesAsync(await UserIdByEmailAsync("carol@example.test")));
         Assert.Equal([("facebook", "fb-dave")], await FederatedIdentitiesAsync(await UserIdByEmailAsync("dave@example.test")));
-        Assert.Equal([("facebook", "fb-erin")], await FederatedIdentitiesAsync(await UserIdByUsernameAsync("facebook-fb-erin")));
+        Assert.Equal([("facebook", "fb-erin")], await FederatedIdentitiesAsync(await UserIdByUsernameAsync("erin")));
     }
 
     [Fact]
     public async Task ImportsTheEmaillessAccountWithAProfileAndLeavesOutTheOneWithout()
     {
-        var erin = await scenario.Admin.GetArrayAsync("users?username=facebook-fb-erin&exact=true");
+        var erin = await scenario.Admin.GetArrayAsync("users?username=erin&exact=true");
         Assert.Single(erin);
 
         var frank = await scenario.Admin.GetArrayAsync("users?search=fb-frank");
@@ -118,7 +119,7 @@ public sealed class KeycloakAccountImportTests(KeycloakAccountImportTests.Scenar
     {
         var aliceId = await UserIdByEmailAsync("alice@example.test");
         var carolId = await UserIdByEmailAsync("carol@example.test");
-        var erinId = await UserIdByUsernameAsync("facebook-fb-erin");
+        var erinId = await UserIdByUsernameAsync("erin");
         var daveId = await UserIdByEmailAsync("dave@example.test");
 
         await using var db = scenario.Fixture.CreateTargetContext();
@@ -166,6 +167,10 @@ public sealed class KeycloakAccountImportTests(KeycloakAccountImportTests.Scenar
         Assert.Equal(6, first.Created);
         Assert.Equal(1, first.Existing);
         Assert.Equal(1, first.DroppedByReason["no_contact_no_profile"]);
+        Assert.Equal(
+            new Dictionary<string, int> { ["legacy"] = 4, ["email_like"] = 1, ["rejected_by_keycloak"] = 1, ["duplicate"] = 1, ["no_legacy_row"] = 3 },
+            first.LoginUsernamesBySource);
+        Assert.Equal(1, first.GeneratedForTakenUsername);
         Assert.Equal(1, first.AccountConflictsByReason["existing_unverified"]);
         Assert.Equal(2, first.AccountConflictsByReason["username_taken"]);
         Assert.Equal(5, first.ProfileLinksInserted);
@@ -175,6 +180,7 @@ public sealed class KeycloakAccountImportTests(KeycloakAccountImportTests.Scenar
 
         var second = scenario.SecondRun;
         Assert.Equal(10, second.AccountsPlanned);
+        Assert.Equal(0, second.GeneratedForTakenUsername);
         Assert.Equal(0, second.Created);
         Assert.Equal(7, second.Existing);
         Assert.Equal(1, second.AccountConflictsByReason["existing_unverified"]);
@@ -186,8 +192,28 @@ public sealed class KeycloakAccountImportTests(KeycloakAccountImportTests.Scenar
     }
 
     [Fact]
-    public async Task RejectsAPasswordGrantForAnImportedPasswordUserUntilTheAccountIsSetUp()
+    public async Task AssignsLegacyLoginUsernamesWhereUsableAndGeneratedOnesOtherwise()
     {
+        Assert.Equal("alice", await UsernameAsync(await UserIdByEmailAsync("alice@example.test")));
+        Assert.Equal(Generated("bob@example.test"), await UsernameAsync(await UserIdByEmailAsync("bob@example.test")));
+        Assert.Equal(Generated("carol@example.test"), await UsernameAsync(await UserIdByEmailAsync("carol@example.test")));
+        Assert.Equal(Generated("dave@example.test"), await UsernameAsync(await UserIdByEmailAsync("dave@example.test")));
+        Assert.Equal(Generated("ivy@example.test"), await UsernameAsync(await UserIdByEmailAsync("ivy@example.test")));
+        Assert.Equal("erin", await UsernameAsync(await UserIdByUsernameAsync("erin")));
+
+        var daveSquatter = await scenario.Admin.GetObjectAsync($"users/{scenario.PreexistingDaveNameHolderId}");
+        Assert.Equal("dave", daveSquatter.GetProperty("username").GetString());
+        Assert.Empty(daveSquatter.GetProperty("requiredActions").EnumerateArray());
+    }
+
+    // Ivy's password is set here, which also clears her UPDATE_PASSWORD action, so no other test
+    // reads her required actions.
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public async Task ResolvesBothTheLoginUsernameAndTheEmailToTheImportedAccount(bool byUsername)
+    {
+        var identifier = byUsername ? Generated("ivy@example.test") : "ivy@example.test";
         var ivyId = await UserIdByEmailAsync("ivy@example.test");
         using (var reset = await scenario.Admin.PutAsync(
                    $"users/{ivyId}/reset-password",
@@ -203,10 +229,12 @@ public sealed class KeycloakAccountImportTests(KeycloakAccountImportTests.Scenar
             {
                 ["grant_type"] = "password",
                 ["client_id"] = "cichlids-app",
-                ["username"] = "ivy@example.test",
+                ["username"] = identifier,
                 ["password"] = "Ivy-import-check-1",
             }));
 
+        // The required actions block the grant, and Keycloak reports them only after it resolved
+        // the identifier to the account and checked its password.
         var body = await response.Content.ReadFromJsonAsync<JsonElement>();
         Assert.Equal("invalid_grant", body.GetProperty("error").GetString());
         Assert.Contains("Account is not fully set up", body.GetProperty("error_description").GetString());
@@ -259,6 +287,12 @@ public sealed class KeycloakAccountImportTests(KeycloakAccountImportTests.Scenar
             .ToList();
     }
 
+    private static string Generated(string email) =>
+        new GeneratedNames(Scenario.GeneratedNamesSecret).Generate(GeneratedNames.LoginInput(email));
+
+    private async Task<string> UsernameAsync(string userId) =>
+        (await scenario.Admin.GetObjectAsync($"users/{userId}")).GetProperty("username").GetString()!;
+
     private async Task<string[]> RequiredActionsAsync(string email)
     {
         var user = await scenario.Admin.GetObjectAsync($"users/{await UserIdByEmailAsync(email)}");
@@ -291,6 +325,8 @@ public sealed class KeycloakAccountImportTests(KeycloakAccountImportTests.Scenar
     /// </summary>
     public class Scenario : IAsyncLifetime
     {
+        public const string GeneratedNamesSecret = "keycloak-import-test-secret"; // gitleaks:allow
+
         private readonly (int UserPageSize, int ImportChunkSize)? _sizes;
 
         public Scenario()
@@ -324,6 +360,12 @@ public sealed class KeycloakAccountImportTests(KeycloakAccountImportTests.Scenar
         /// </summary>
         public string PreexistingEmaillessSquatterId { get; private set; } = string.Empty;
 
+        /// <summary>
+        /// A self-registered user whose username is Dave's legacy username while its email
+        /// differs.
+        /// </summary>
+        public string PreexistingDaveNameHolderId { get; private set; } = string.Empty;
+
         public KeycloakImportSummary FirstRun { get; private set; } = null!;
 
         public KeycloakImportSummary SecondRun { get; private set; } = null!;
@@ -339,7 +381,8 @@ public sealed class KeycloakAccountImportTests(KeycloakAccountImportTests.Scenar
             PreexistingGraceId = await CreateUserAsync("grace-self", "grace@example.test", emailVerified: true);
             PreexistingUnverifiedJudyId = await CreateUserAsync("judy-self", "judy@example.test", emailVerified: false);
             PreexistingSquatterId = await CreateUserAsync("victor@example.test", "squatter@example.test", emailVerified: true);
-            PreexistingEmaillessSquatterId = await CreateUserAsync("facebook-fb-heidi", "heidi-squatter@example.test", emailVerified: true);
+            PreexistingEmaillessSquatterId = await CreateUserAsync("heidi", "heidi-squatter@example.test", emailVerified: true);
+            PreexistingDaveNameHolderId = await CreateUserAsync("dave", "dave-other@example.test", emailVerified: true);
 
             var settings = new KeycloakAdminSettings(
                 Fixture.KeycloakUrl, KeycloakImportFixture.Realm, KeycloakImportFixture.AdminUser, KeycloakImportFixture.AdminPassword);
@@ -357,9 +400,10 @@ public sealed class KeycloakAccountImportTests(KeycloakAccountImportTests.Scenar
         private Task<KeycloakImportSummary> ImportAsync(KeycloakAdminSettings settings) => _sizes is { } sizes
             ? KeycloakAccountImportCommand.ImportAsync(
                 Fixture.LegacyConnectionString, Fixture.TargetConnectionString, Fixture.Auth0ExportPath, settings,
-                sizes.UserPageSize, sizes.ImportChunkSize, CancellationToken.None)
+                new GeneratedNames(GeneratedNamesSecret), sizes.UserPageSize, sizes.ImportChunkSize, CancellationToken.None)
             : KeycloakAccountImportCommand.ImportAsync(
-                Fixture.LegacyConnectionString, Fixture.TargetConnectionString, Fixture.Auth0ExportPath, settings, CancellationToken.None);
+                Fixture.LegacyConnectionString, Fixture.TargetConnectionString, Fixture.Auth0ExportPath, settings,
+                new GeneratedNames(GeneratedNamesSecret), CancellationToken.None);
 
         // The realm file maps email_verified; removing the mapper leaves a realm like one imported
         // from an older realm file, which the import has to repair.
