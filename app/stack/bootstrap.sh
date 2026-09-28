@@ -125,7 +125,7 @@ Start the API:
   cd app/api/src/Cichlids.Api && ~/.dotnet/dotnet run
 
 Start the app (Expo web):
-  cd app/mobile && pnpm install && pnpm exec expo start --web
+  cd app/mobile && pnpm install && pnpm exec expo start --web --port 8081
 
 See app/stack/README.md for ports, credentials, and the smoke test.
 EOF

@@ -11,7 +11,7 @@
 // against real rendered text, not just the translation resource files.
 //
 // Prerequisites: `expo start --web` (or an export served statically) running
-// at PLAYWRIGHT_BASE_URL (default http://localhost:8098), a running
+// at PLAYWRIGHT_BASE_URL (default http://localhost:8081), a running
 // Cichlids.Api at the mobile app's configured API URL, and the Playwright
 // chromium browser installed (`pnpm exec playwright install chromium`).
 import { chromium } from "playwright";
@@ -19,7 +19,7 @@ import path from "node:path";
 import fs from "node:fs";
 import { fileURLToPath } from "node:url";
 
-const BASE_URL = process.env.PLAYWRIGHT_BASE_URL ?? "http://localhost:8098";
+const BASE_URL = process.env.PLAYWRIGHT_BASE_URL ?? "http://localhost:8081";
 const OUT_DIR = process.env.PLAYWRIGHT_OUT_DIR ?? path.join(fileURLToPath(new URL(".", import.meta.url)), "../../../../..", "app-screens");
 fs.mkdirSync(OUT_DIR, { recursive: true });
 

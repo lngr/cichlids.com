@@ -96,7 +96,7 @@ cd app/api/src/Cichlids.Api && ~/.dotnet/dotnet run
 The API listens on `http://localhost:5045` (see `Properties/launchSettings.json`).
 
 ```sh
-cd app/mobile && pnpm install && pnpm exec expo start --web --port 8098
+cd app/mobile && pnpm install && pnpm exec expo start --web --port 8081
 ```
 
 ## Smoke test
@@ -109,7 +109,7 @@ real seeded data:
 cd app/mobile && pnpm run e2e:web
 ```
 
-It expects the app at `PLAYWRIGHT_BASE_URL` (default `http://localhost:8098`, matching the `expo
-start --web --port 8098` above) and the API reachable at the app's configured API URL (default
+It expects the app at `PLAYWRIGHT_BASE_URL` (default `http://localhost:8081`, matching the `expo
+start --web --port 8081` above) and the API reachable at the app's configured API URL (default
 `http://localhost:5045`, see `app/mobile/src/api/client.ts`). Screenshots are written to
 `app-screens/` at the repo root (override with `PLAYWRIGHT_OUT_DIR`).
