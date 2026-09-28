@@ -13,6 +13,40 @@ storage), Keycloak.
   image originals available on disk (default `/workspaces/legacy-data/images/userpics`, see
   `app/api/src/Cichlids.Etl/appsettings.json`).
 
+## Legacy MySQL with the imported dump
+
+The ETL reads the legacy databases from the MySQL 5.7 stack in `workspace-legacy/legacy-stack`
+(root password `legacy`). `bootstrap.sh` starts that stack when port 3306 is closed, and it expects
+the dump to be imported into the stack's volume `cichlids-legacy_db_data` beforehand. The import
+runs once per fresh volume and takes a few hours:
+
+```sh
+docker compose -f workspace-legacy/legacy-stack/docker-compose.yml up -d
+zcat /workspaces/legacy-data/db-dump/frontosa-mysql-2023-09-20-06-00.sql.gz \
+  | awk '/^-- Current Database: `mysql`/ { skip = 1 }
+         /^\/\*!40103 SET TIME_ZONE=@OLD_TIME_ZONE/ { skip = 0 }
+         !skip' \
+  | docker exec -i cichlids-legacy-db-1 mysql -uroot -plegacy --default-character-set=utf8mb4
+```
+
+The `awk` filter leaves out the dump's `mysql` system schema. Importing it replaces the grant
+tables with those of the legacy host, and after the next MySQL restart `root`/`legacy` is rejected.
+
+To restore `root`/`legacy` on a volume that holds the legacy grant tables:
+
+```sh
+docker stop cichlids-legacy-db-1
+docker run -d --name legacy-grant-reset -v cichlids-legacy_db_data:/var/lib/mysql mysql:5.7 \
+  --skip-grant-tables --skip-networking
+docker exec legacy-grant-reset mysql -e "FLUSH PRIVILEGES;
+  ALTER USER 'root'@'localhost' IDENTIFIED BY 'legacy';
+  CREATE USER IF NOT EXISTS 'root'@'%' IDENTIFIED BY 'legacy';
+  ALTER USER 'root'@'%' IDENTIFIED BY 'legacy';
+  GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;"
+docker rm -f legacy-grant-reset
+docker start cichlids-legacy-db-1
+```
+
 ## Bootstrap
 
 `bootstrap.sh` brings a clean checkout up to the full local stand: Docker services, legacy MySQL,
