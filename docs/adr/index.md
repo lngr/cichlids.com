@@ -67,4 +67,5 @@ by hand. Run that script (or its `--check` mode in CI) after adding or changing 
 | [0020](0020-relational-domain-schema.md) | Relational Domain Schema | Accepted |
 | [0021](0021-community-discussion-archive.md) | Community Discussion Archive | Accepted |
 | [0022](0022-legacy-account-import-into-keycloak.md) | Legacy Account Import into Keycloak | Accepted |
+| [0023](0023-identity-model-user-logins-and-public-handle.md) | Identity Model: User, Logins and Public Handle | Accepted |
 <!-- END ADR LIST -->

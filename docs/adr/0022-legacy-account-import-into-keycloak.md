@@ -34,11 +34,18 @@ migrated profile, becomes a Keycloak user through a repeatable import.
   export carries no hashes.
 - **Deterministic ids.** A user's Keycloak id is a name-based UUID over its merge key,
   so repeated runs produce the same id for the same account.
+- **Login usernames.** A user's login username follows the identity model
+  ([ADR-0023](0023-identity-model-user-logins-and-public-handle.md)): the legacy username
+  when Keycloak accepts it, it contains no email address and no other imported account
+  keeps the same name, otherwise a generated name. A member with an email signs in with
+  the email as well.
 - **Existing users are never altered.** A Keycloak user the import did not create is
   left as it is. It receives the profile link only when its email equals the account's
   email and is verified. A user with that email but an unverified address, or a user
-  holding the account's username, blocks the account: it is neither created nor
-  linked, and the import reports it as a conflict.
+  holding the account's email as username, blocks the account: it is neither created nor
+  linked, and the import reports it as a conflict. When another user holds an account's
+  login username, an account with an email is created with its generated name, and an
+  account without one is blocked, because its member knows no other name.
 - **Social identities linked ahead of provider configuration.** Google and Facebook
   identities are stored as federated identity links. A record contributes its link
   when its email is verified or when it has no email of its own, since then its legacy
@@ -46,9 +53,10 @@ migrated profile, becomes a Keycloak user through a repeatable import.
   contributes no link, because its owner never confirmed that address. The realm has
   both identity providers, disabled until their client credentials exist.
 - **Profile link through the oidc identity.** An account with a migrated profile gets
-  an oidc identity on that profile whose subject is the Keycloak user id, so the first
-  authenticated call resolves the profile by subject. An oidc identity that already
-  binds the subject to another profile stays as it is.
+  an oidc identity on that profile whose subject is the Keycloak user id. This link is
+  the only way an account reaches a migrated profile, so the first authenticated call
+  resolves the profile by subject. An oidc identity that already binds the subject to
+  another profile stays as it is.
 
 ## Considered Options
 
@@ -66,9 +74,10 @@ migrated profile, becomes a Keycloak user through a repeatable import.
 ## Rationale
 
 Importing every known email keeps the email unique in the realm, so a later
-registration cannot claim a legacy address. An account registered before the import is
-linked only through a verified email, and the API links a login to a migrated profile
-by email only when the token reports that email as verified. A social login reaches an
+registration cannot claim a legacy address; for the same reason the import runs before
+an environment opens self-registration. An account registered before the import is
+linked only through a verified email, and the API reaches a migrated profile only
+through the oidc identity the import creates. A social login reaches an
 imported account only when its email was verified or its legacy subject belongs to the
 account. An imported password account opens only after a password reset, and the reset
 mail goes to the account's address, so signing in proves control of that mailbox. An
@@ -91,3 +100,4 @@ make the import safe to repeat on a live realm.
 
 - [ADR-0002: Technology Stack](0002-technology-stack.md)
 - [ADR-0020: Relational Domain Schema](0020-relational-domain-schema.md)
+- [ADR-0023: Identity Model: User, Logins and Public Handle](0023-identity-model-user-logins-and-public-handle.md)
