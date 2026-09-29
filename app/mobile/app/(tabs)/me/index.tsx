@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Image, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { useRouter } from "expo-router";
 import { useTranslation } from "react-i18next";
 import type { Me } from "@cichlids/client-core";
 import { apiClient } from "../../../src/api/client";
@@ -48,6 +49,7 @@ function ProfileView() {
   const theme = useTheme();
   const { t } = useTranslation();
   const { logout } = useAuth();
+  const router = useRouter();
   const [me, setMe] = useState<Me | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [attempt, setAttempt] = useState(0);
@@ -79,7 +81,13 @@ function ProfileView() {
   const { profile } = me;
   return (
     <ScrollView style={{ backgroundColor: theme.colors.bg }} contentContainerStyle={{ padding: theme.space[4], gap: theme.space[6] }}>
-      <View style={[styles.headerRow, { gap: theme.space[3] }]}>
+      <Pressable
+        testID="me-profile-link"
+        accessibilityRole="link"
+        accessibilityLabel={t("me.openProfile")}
+        onPress={() => router.push(`/profile/${profile.id}`)}
+        style={[styles.headerRow, { gap: theme.space[3] }]}
+      >
         {profile.avatarUrl ? (
           <Image source={{ uri: profile.avatarUrl }} style={[styles.avatar, { backgroundColor: theme.colors.placeholder }]} />
         ) : (
@@ -91,7 +99,8 @@ function ProfileView() {
           </Text>
           <Text style={[theme.type.meta, { color: theme.colors.muted }]}>@{profile.username}</Text>
         </View>
-      </View>
+      </Pressable>
+      <Button testID="me-profile-button" variant="secondary" label={t("me.openProfile")} onPress={() => router.push(`/profile/${profile.id}`)} />
       <DraftsSection />
       <Button testID="logout-button" variant="secondary" label={t("me.logout")} onPress={() => void logout()} />
     </ScrollView>
