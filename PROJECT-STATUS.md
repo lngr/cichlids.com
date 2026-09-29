@@ -552,8 +552,9 @@ Die IDs sind stabil, damit sich die Fäden einzeln abarbeiten und abhaken lassen
 - [ ] **F14** Über den Merge von `feat/legacy-mvp` nach `main` entscheiden (technisch konfliktfrei).
 - [x] **F15** Die MVP-Stories 3.15, 3.16, 3.21 und 3.22 sind umgesetzt und stehen in Review.
   DRAFT-1 (Mail-Kampagne) ist offen.
-- [ ] **F21** Den Auth0-Import (`etl keycloak-import` bzw. `bootstrap.sh`) gegen den Dev-Stack
-  laufen lassen und die ACs von 3.15 beobachten (ca. 12.050 Konten, zweiter Lauf legt nichts an).
+- [ ] **F21** Die ACs von 3.15 am Dev-Stack beobachten. Der Import lief am 2026-09-29: 12.050 Konten
+  angelegt, 6.447 Profil-Verknüpfungen, 20 Datensätze ohne Kontakt und Profil verworfen; der zweite
+  Lauf legte nichts an.
 - [ ] **F22** Die Interims-Entscheidungen der autonomen Umsetzung vom 2026-09-28 durchsehen
   (Journal `SCHLAFENSMODUS.md` im Worktree `/workspaces/cichlids-mvp`, untracked).
 - [ ] **F23** Über DRAFT-3 (gespeicherter Link Bewertung zu Kommentar), DRAFT-4 (wiederholte
