@@ -23,12 +23,18 @@ export function draftThumbnailUri(draft: Draft): string {
   return draft.image.thumb ?? draft.image.small ?? draft.image.medium ?? draft.image.original;
 }
 
+/** The draft's trimmed title, or null when it has none or only whitespace. */
+export function draftTitle(draft: Draft): string | null {
+  const title = draft.title?.trim();
+  return title ? title : null;
+}
+
 /**
- * The publish form for a resumed draft: empty title and description, and the draft's topic when
- * users can publish under it, otherwise the default topic.
+ * The publish form for a resumed draft: the draft's title and description (empty when it has
+ * none) and its topic when users can publish under it, otherwise the default topic.
  */
 export function formForDraft(draft: Draft): UploadFormState {
-  const form = initialUploadForm();
+  const form = { ...initialUploadForm(), title: draft.title ?? "", description: draft.description ?? "" };
   const topic = UPLOAD_TOPICS.find((candidate): candidate is UploadTopic => candidate === draft.topic);
   return topic ? { ...form, topic } : form;
 }

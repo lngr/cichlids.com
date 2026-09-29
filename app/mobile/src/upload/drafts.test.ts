@@ -1,12 +1,14 @@
 import { describe, expect, it } from "vitest";
 import type { Draft } from "@cichlids/client-core";
-import { draftParam, draftPreviewUri, draftThumbnailUri, findDraft, formForDraft } from "./drafts";
+import { draftParam, draftPreviewUri, draftThumbnailUri, draftTitle, findDraft, formForDraft } from "./drafts";
 
 function draft(overrides: Partial<Draft> = {}): Draft {
   return {
     id: 7,
     state: "draft",
     topic: "cichlids",
+    title: null,
+    description: null,
     createdAt: "2026-09-01T10:00:00Z",
     image: { thumb: "t.jpg", small: "s.jpg", medium: "m.jpg", large: "l.jpg", original: "o.jpg" },
     ...overrides,
@@ -66,12 +68,31 @@ describe("draftThumbnailUri", () => {
 });
 
 describe("formForDraft", () => {
-  it("starts an empty form with the draft's topic when it is publishable", () => {
-    expect(formForDraft(draft({ topic: "tanks" }))).toEqual({ title: "", description: "", topic: "tanks" });
+  it("prefills the draft's title, description and topic when the topic is publishable", () => {
+    expect(formForDraft(draft({ topic: "tanks", title: "Tropheus moorii", description: "Kaiser morph" }))).toEqual({
+      title: "Tropheus moorii",
+      description: "Kaiser morph",
+      topic: "tanks",
+    });
+  });
+
+  it("starts empty texts for a draft without title and description", () => {
+    expect(formForDraft(draft())).toEqual({ title: "", description: "", topic: "cichlids" });
   });
 
   it("uses the default topic for a topic users cannot publish under", () => {
     expect(formForDraft(draft({ topic: "unknown" })).topic).toBe("cichlids");
     expect(formForDraft(draft({ topic: "contest" })).topic).toBe("cichlids");
+  });
+});
+
+describe("draftTitle", () => {
+  it("is the trimmed title", () => {
+    expect(draftTitle(draft({ title: "  Tropheus moorii " }))).toBe("Tropheus moorii");
+  });
+
+  it("is null for a missing or blank title", () => {
+    expect(draftTitle(draft())).toBeNull();
+    expect(draftTitle(draft({ title: "   " }))).toBeNull();
   });
 });

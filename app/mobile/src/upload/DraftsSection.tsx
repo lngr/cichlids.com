@@ -8,7 +8,7 @@ import type { Draft } from "@cichlids/client-core";
 import { apiClient } from "../api/client";
 import { formatDate } from "../lib/format";
 import { minTouchTarget, useTheme } from "../theme";
-import { draftThumbnailUri } from "./drafts";
+import { draftThumbnailUri, draftTitle } from "./drafts";
 
 const THUMBNAIL_SIZE = 64;
 
@@ -144,7 +144,9 @@ export function DraftsSection() {
                   contentFit="cover"
                 />
                 <View style={styles.fill}>
-                  <Text style={[theme.type.bodyStrong, { color: theme.colors.fg }]}>{t("me.drafts.label")}</Text>
+                  <Text testID="draft-title" numberOfLines={2} style={[theme.type.bodyStrong, { color: theme.colors.fg }]}>
+                    {draftTitle(draft) ?? t("me.drafts.untitled")}
+                  </Text>
                   <Text style={[theme.type.meta, { color: theme.colors.muted }]}>{t("me.drafts.created", { date })}</Text>
                 </View>
               </Pressable>

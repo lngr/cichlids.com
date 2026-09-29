@@ -2,17 +2,41 @@
 // Logs in as the local dev user from the gallery's upload button, uploads photos and checks the
 // whole flow on the web: a file that is not an image shows the API's error message, a discarded
 // draft is deleted, and leaving the screen without publishing keeps the draft, which the Me tab
-// lists. A draft opened from that list resumes on the upload screen and publishes from there, and
-// deleting a draft from the list removes it. A published photo opens on its detail page with its
+// lists under the "Untitled" label. A draft opened from that list resumes on the upload screen and
+// publishes from there, and deleting a draft from the list removes it. A draft that has a title,
+// description and topic (set in the write database, as for a migrated legacy draft) is listed with
+// its title and opens with the title, description and topic prefilled. A published photo opens on its detail page with its
 // description and topic and shows first in the gallery. The gallery refetches its list on return
 // only after a publish.
 //
 // The JPEG is drawn on a canvas in the page. Runs on the isolated write stack only (see
 // e2e/write-stack.sh), since uploading and publishing write to the database and the bucket.
+import { execFileSync } from "node:child_process";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
 import { API_URL, WEB_URL, byTestId, logInThroughKeycloak } from "./support.mjs";
 
 const TOKEN_STORAGE_KEY = "cichlids.auth.tokens";
+const COMPOSE_FILE = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../../stack/compose.yaml");
+
+// Sets the title, description and topic of a draft directly in the write database, the way
+// migrated legacy drafts carry them; the API has no endpoint that saves them on a draft.
+function setDraftTexts(postId, title, description, topic) {
+  if (process.env.E2E_DB !== "cichlids_e2e") throw new Error("Refusing to write outside the cichlids_e2e database");
+  if (!/^\d+$/.test(postId) || !/^[a-z0-9 ]+$/i.test(title + description) || !/^[a-z_]+$/.test(topic)) {
+    throw new Error("Unexpected draft values");
+  }
+  execFileSync(
+    "docker",
+    [
+      "compose", "-f", COMPOSE_FILE, "exec", "-T", "postgres", "psql", "-U", "cichlids", "-d", "cichlids_e2e",
+      "-v", "ON_ERROR_STOP=1", "-c",
+      `UPDATE post SET title = '${title}', description = '${description}', topic = '${topic}' WHERE id = ${postId} AND state = 'draft'`,
+    ],
+    { stdio: "pipe" },
+  );
+}
 
 const browser = await chromium.launch();
 try {
@@ -146,9 +170,12 @@ try {
   console.log(`Leaving the upload screen keeps draft ${keptDraftId}, the Me tab lists it`);
 
   // Opening the draft from the Me tab resumes it on the upload screen, where it is published.
+  const untitledText = (await byTestId(page, "draft-title").first().textContent())?.trim();
+  if (untitledText !== "Untitled") throw new Error(`Expected the untitled draft to be listed as "Untitled", got "${untitledText}"`);
   await byTestId(page, "draft-open").first().click();
   await page.waitForURL(new RegExp(`/upload\\?draft=${keptDraftId}$`), { timeout: 10000 });
   await preview.waitFor({ timeout: 20000 });
+  if ((await byTestId(page, "upload-title").inputValue()) !== "") throw new Error("The resumed untitled draft has a prefilled title");
   const resumedTitle = `E2E resumed draft ${Date.now()}`;
   await byTestId(page, "upload-title").fill(resumedTitle);
   await publishButton.click();
@@ -164,6 +191,45 @@ try {
   await openMeTab();
   await expectDraftItems(0, "after publishing the resumed draft");
   console.log(`The resumed draft is published on /gallery/${resumedSlug} and leaves the Me tab's list`);
+
+  // A draft with a title, description and topic is listed with its title and opens prefilled.
+  const seededTitle = `E2E titled draft ${Date.now()}`;
+  const seededDescription = "Draft description from the write database";
+  const seededToken = await page.evaluate((key) => JSON.parse(sessionStorage.getItem(key) ?? "null")?.accessToken, TOKEN_STORAGE_KEY);
+  const form = new FormData();
+  form.append("file", new Blob([jpeg], { type: "image/jpeg" }), "seeded.jpg");
+  const created = await fetch(`${API_URL}/api/uploads`, { method: "POST", headers: { Authorization: `Bearer ${seededToken}` }, body: form });
+  if (created.status !== 201) throw new Error(`POST /api/uploads returned ${created.status}`);
+  const seededDraft = await created.json();
+  if (seededDraft.title !== null || seededDraft.description !== null) throw new Error("A fresh upload has a title or description");
+  setDraftTexts(String(seededDraft.id), seededTitle, seededDescription, "tanks");
+  await page.goto(`${WEB_URL}/me`, { waitUntil: "networkidle", timeout: 60000 });
+  await expectDraftItems(1, "with a titled draft");
+  const listedTitle = (await byTestId(page, "draft-title").first().textContent())?.trim();
+  if (listedTitle !== seededTitle) throw new Error(`Expected the draft list to show "${seededTitle}", got "${listedTitle}"`);
+  await byTestId(page, "draft-open").first().click();
+  await page.waitForURL(new RegExp(`/upload\\?draft=${seededDraft.id}$`), { timeout: 10000 });
+  await preview.waitFor({ timeout: 20000 });
+  const prefilledTitle = await byTestId(page, "upload-title").inputValue();
+  const prefilledDescription = await byTestId(page, "upload-description").inputValue();
+  if (prefilledTitle !== seededTitle) throw new Error(`Expected the prefilled title "${seededTitle}", got "${prefilledTitle}"`);
+  if (prefilledDescription !== seededDescription) {
+    throw new Error(`Expected the prefilled description "${seededDescription}", got "${prefilledDescription}"`);
+  }
+  if ((await publishButton.getAttribute("aria-disabled")) === "true") throw new Error("The prefilled draft cannot be published");
+  // Publishing without any edit sends the prefilled values; the topic shows in the detail response.
+  await publishButton.click();
+  await page.waitForURL(/\/gallery\/[^/]+$/, { timeout: 30000 });
+  const seededSlug = new URL(page.url()).pathname.split("/").pop();
+  const seededDetail = await (await fetch(`${API_URL}/api/pictures/${seededSlug}`)).json();
+  if (seededDetail.title !== seededTitle || seededDetail.description !== seededDescription || seededDetail.topic !== "tanks") {
+    throw new Error(`The published prefilled draft has title "${seededDetail.title}", description "${seededDetail.description}", topic "${seededDetail.topic}"`);
+  }
+  await expectNoDrafts("after publishing the titled draft");
+  // The page was reloaded to reach the Me tab, so its gallery stack is not the one the detail
+  // was pushed on; a reload of the gallery list gives the following steps a known start.
+  await page.goto(`${WEB_URL}/gallery`, { waitUntil: "networkidle", timeout: 60000 });
+  console.log(`A draft with title "${seededTitle}" is listed with it and opens prefilled`);
 
   // Upload, title and publish.
   const title = `E2E upload ${Date.now()}`;
