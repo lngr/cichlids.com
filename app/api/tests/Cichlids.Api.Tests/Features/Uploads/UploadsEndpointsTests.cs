@@ -135,6 +135,8 @@ public class UploadsEndpointsTests(UploadsFixture fixture)
         var draft = await ReadAsync<DraftDto>(response);
         Assert.Equal(PostState.Draft, draft.State);
         Assert.Equal(PostTopic.Cichlids, draft.Topic);
+        Assert.Null(draft.Title);
+        Assert.Null(draft.Description);
         Assert.NotNull(draft.Image.Thumb);
         Assert.NotNull(draft.Image.Small);
         Assert.NotNull(draft.Image.Medium);
@@ -244,6 +246,28 @@ public class UploadsEndpointsTests(UploadsFixture fixture)
         Assert.Equal([second.Id, first.Id], drafts.Select(d => d.Id));
         Assert.DoesNotContain(drafts, d => d.Id == foreign.Id);
         Assert.All(drafts, d => Assert.NotNull(d.Image.Thumb));
+    }
+
+    [Fact]
+    public async Task Drafts_ListsTheTitleAndDescriptionOfADraft()
+    {
+        var token = NewToken();
+        var draft = await UploadDraftAsync(fixture.Client, token, Jpeg(300, 200));
+        var untitled = await UploadDraftAsync(fixture.Client, token, Jpeg(300, 200));
+        await using (var db = fixture.CreateDbContext())
+        {
+            await db.Posts.Where(p => p.Id == draft.Id)
+                .ExecuteUpdateAsync(s => s.SetProperty(p => p.Title, "Tropheus moorii").SetProperty(p => p.Description, "Kaiser morph"));
+        }
+
+        var drafts = await ReadAsync<List<DraftDto>>(await ListDraftsAsync(fixture.Client, token));
+
+        var listed = Assert.Single(drafts, d => d.Id == draft.Id);
+        Assert.Equal("Tropheus moorii", listed.Title);
+        Assert.Equal("Kaiser morph", listed.Description);
+        var listedUntitled = Assert.Single(drafts, d => d.Id == untitled.Id);
+        Assert.Null(listedUntitled.Title);
+        Assert.Null(listedUntitled.Description);
     }
 
     [Fact]

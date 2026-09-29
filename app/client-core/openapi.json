@@ -1871,6 +1871,8 @@
           "id",
           "state",
           "topic",
+          "title",
+          "description",
           "createdAt",
           "image"
         ],
@@ -1889,6 +1891,18 @@
           },
           "topic": {
             "$ref": "#/components/schemas/PostTopic"
+          },
+          "title": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "description": {
+            "type": [
+              "null",
+              "string"
+            ]
           },
           "createdAt": {
             "type": "string",

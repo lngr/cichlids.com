@@ -20,7 +20,7 @@ public sealed class DraftsQueryService(CichlidsDbContext context, IObjectStore o
             .Where(p => p.AuthorProfileId == authorProfileId && p.State == PostState.Draft && p.DeletedAt == null)
             .OrderByDescending(p => p.CreatedAt)
             .ThenByDescending(p => p.Id)
-            .Select(p => new { p.Id, p.State, p.Topic, p.CreatedAt })
+            .Select(p => new { p.Id, p.State, p.Topic, p.Title, p.Description, p.CreatedAt })
             .ToListAsync(cancellationToken);
 
         var postIds = drafts.Select(d => d.Id).ToList();
@@ -54,7 +54,7 @@ public sealed class DraftsQueryService(CichlidsDbContext context, IObjectStore o
                 var mediaItemId = mediaItemIdByPost[d.Id];
                 var image = _mediaUrlBuilder.Build(
                     originalByMediaItem[mediaItemId], variantsByMediaItem.GetValueOrDefault(mediaItemId, NoVariants));
-                return new DraftDto(d.Id, d.State, d.Topic, d.CreatedAt, image);
+                return new DraftDto(d.Id, d.State, d.Topic, d.Title, d.Description, d.CreatedAt, image);
             })
             .ToList();
     }

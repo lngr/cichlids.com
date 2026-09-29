@@ -113,6 +113,8 @@ export type DraftDto = {
     id: number | string;
     state: PostState;
     topic: PostTopic;
+    title: null | string;
+    description: null | string;
     createdAt: string;
     image: ImageUrlsDto;
 };
