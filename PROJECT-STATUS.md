@@ -105,7 +105,7 @@ vom eigenen Host.
 | Branch | Worktree | Stand |
 |---|---|---|
 | `main` | `/workspaces/cichlids.com` | Mehrere Commits vor `origin/main`, Push durch den Operator ausstehend |
-| `feat/legacy-mvp` | `/workspaces/cichlids-mvp` | 145 Commits über der Merge-Base `c8ad766`; 63 davon (2026-09-28) lokal, Push durch den Operator ausstehend |
+| `feat/legacy-mvp` | `/workspaces/cichlids-mvp` | 127 Commits über der Merge-Base `c8ad766`; die obersten 45 (2026-09-28 und 29) lokal, Push durch den Operator ausstehend. Lokale Sicherung des Stands vor dem Aufräumen der History: Branch `backup/pre-fold-2026-09-29` (nicht pushen) |
 | `backup/pre-secret-scrub` | keiner | Historienstand vor dem Entfernen von AWS- und Auth0-Secrets. Er enthält vermutlich genau diese Secrets und wird nicht gepusht. |
 
 **Details zu den Commits:**
