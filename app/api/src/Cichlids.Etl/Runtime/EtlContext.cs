@@ -18,12 +18,11 @@ namespace Cichlids.Etl.Runtime;
 public sealed class EtlContext : IAsyncDisposable
 {
     /// <summary>
-    /// Secret the local dev stack's Slugs:Secret configuration also defaults to; used here only
-    /// when a caller creates a context without resolving its own secret (tests, and any command
-    /// that never touches a generated slug), so a real deployment secret is never silently
-    /// guessed.
+    /// The development default slug secret, used here only when a caller creates a context
+    /// without resolving its own secret (tests, and any command that never touches a generated
+    /// slug).
     /// </summary>
-    public const string DevDefaultSlugSecret = "cichlids-local-dev-slug-secret"; // gitleaks:allow
+    public const string DevDefaultSlugSecret = SlugSecretResolver.DevelopmentDefault;
 
     private EtlContext(
         MySqlConnection legacy, CichlidsDbContext db, bool dryRun, SlugGenerator slugGenerator, GeneratedNames generatedNames)

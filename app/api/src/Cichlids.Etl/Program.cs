@@ -45,10 +45,10 @@ var targetConnectionString =
     ?? throw new InvalidOperationException(
         "Missing target connection string (Etl:TargetConnection in appsettings.json or CICHLIDS_ETL_TARGET_CONNECTION).");
 
-var slugSecret =
-    Environment.GetEnvironmentVariable(SlugGenerator.SecretEnvironmentVariable)
-    ?? configuration[SlugGenerator.SecretConfigurationKey]
-    ?? EtlContext.DevDefaultSlugSecret;
+// DOTNET_ENVIRONMENT is the generic host's own environment variable; unset resolves to
+// Production, its documented default, since this entry point has no host builder to apply that
+// default for it.
+var environmentName = Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT") ?? "Production";
 
 using var cts = new CancellationTokenSource();
 Console.CancelKeyPress += (_, e) =>
@@ -116,8 +116,9 @@ if (string.Equals(command, "keycloak-import", StringComparison.OrdinalIgnoreCase
         Environment.GetEnvironmentVariable("CICHLIDS_KEYCLOAK_ADMIN_USER") ?? configuration["Keycloak:AdminUser"] ?? "admin",
         Environment.GetEnvironmentVariable("CICHLIDS_KEYCLOAK_ADMIN_PASSWORD") ?? configuration["Keycloak:AdminPassword"] ?? "admin");
 
+    var keycloakSlugSecret = SlugSecretResolver.Resolve(configuration, environmentName);
     return await KeycloakAccountImportCommand.RunAsync(
-        legacyConnectionString, targetConnectionString, auth0ExportPath, keycloakSettings, new GeneratedNames(slugSecret), cts.Token);
+        legacyConnectionString, targetConnectionString, auth0ExportPath, keycloakSettings, new GeneratedNames(keycloakSlugSecret), cts.Token);
 }
 
 IReadOnlyList<IEtlStep> steps;
@@ -139,6 +140,7 @@ else
 }
 
 var objectStore = await CreateObjectStoreAsync(configuration, cts.Token);
+var slugSecret = SlugSecretResolver.Resolve(configuration, environmentName);
 
 await using var context = await EtlContext.CreateAsync(
     legacyConnectionString, targetConnectionString, dryRun, cts.Token, objectStore, slugSecret);

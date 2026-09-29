@@ -141,6 +141,10 @@ docker compose -f app/stack/compose.yaml exec -T keycloak sh -c '
 
 ## Start the API and the app
 
+`dotnet run` here defaults to the Development environment, which accepts the ETL's development
+slug secret. Any other environment (`ASPNETCORE_ENVIRONMENT` for the API, `DOTNET_ENVIRONMENT` for
+the ETL) refuses to start without `CICHLIDS_SLUG_SECRET` set to a secret of its own.
+
 ```sh
 cd app/api/src/Cichlids.Api && ~/.dotnet/dotnet run
 ```

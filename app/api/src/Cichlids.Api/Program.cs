@@ -82,12 +82,12 @@ builder.Services.AddScoped<UploadsWriteService>();
 builder.Services.AddScoped<DraftsQueryService>();
 builder.Services.AddScoped<PostPublishService>();
 
-// Resolved on first use, so only the publish endpoint and a first login that needs a generated
-// handle require a slug secret. The environment variable takes precedence over configuration, the
-// same order the ETL uses, so migrated and new posts and profiles derive their generated values
-// from the same secret.
-builder.Services.AddSingleton(serviceProvider => new SlugGenerator(ResolveSlugSecret(serviceProvider)));
-builder.Services.AddSingleton(serviceProvider => new GeneratedNames(ResolveSlugSecret(serviceProvider)));
+// Resolved once at startup so a deployment outside Development with no slug secret, or with the
+// development default, fails immediately instead of on the first request that mints a slug,
+// handle, login username or guest name.
+var slugSecret = SlugSecretResolver.Resolve(builder.Configuration, builder.Environment.EnvironmentName);
+builder.Services.AddSingleton(new SlugGenerator(slugSecret));
+builder.Services.AddSingleton(new GeneratedNames(slugSecret));
 builder.Services.AddSingleton(serviceProvider =>
     new Lazy<GeneratedNames>(serviceProvider.GetRequiredService<GeneratedNames>));
 
@@ -121,17 +121,5 @@ app.MapUploadsEndpoints();
 app.MapWebhookAdminEndpoints();
 
 app.Run();
-
-static string ResolveSlugSecret(IServiceProvider serviceProvider)
-{
-    var secret = Environment.GetEnvironmentVariable(SlugGenerator.SecretEnvironmentVariable)
-        ?? serviceProvider.GetRequiredService<IConfiguration>()[SlugGenerator.SecretConfigurationKey];
-
-    return string.IsNullOrEmpty(secret)
-        ? throw new InvalidOperationException(
-            $"No slug secret configured: set {SlugGenerator.SecretEnvironmentVariable} or "
-            + $"{SlugGenerator.SecretConfigurationKey}.")
-        : secret;
-}
 
 public partial class Program;

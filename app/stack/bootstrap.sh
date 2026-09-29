@@ -45,7 +45,7 @@ wait_for_http() {
 }
 
 etl() {
-  (cd "$API_DIR" && "$DOTNET" run --project src/Cichlids.Etl -c Release -- "$@")
+  (cd "$API_DIR" && DOTNET_ENVIRONMENT=Development "$DOTNET" run --project src/Cichlids.Etl -c Release -- "$@")
 }
 
 # 1. Postgres, RustFS, Keycloak

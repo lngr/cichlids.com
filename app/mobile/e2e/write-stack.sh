@@ -101,7 +101,7 @@ drop_database() {
 
 run_migration() {
   log "Applying schema migration to $DB_NAME"
-  (cd "$API_DIR" && CICHLIDS_ETL_TARGET_CONNECTION="$DB_CONNECTION" \
+  (cd "$API_DIR" && DOTNET_ENVIRONMENT=Development CICHLIDS_ETL_TARGET_CONNECTION="$DB_CONNECTION" \
     "$DOTNET" run --project src/Cichlids.Etl -c Release -- migrate)
 }
 
