@@ -52,6 +52,8 @@ INSERT INTO tx_realurl_uniqalias (uid, tablename, value_alias, value_id) VALUES
 -- 15 and 16 have content but are excluded by deleted/disable, and 17 to 20 have an email address
 -- or nothing where a public handle or display name would come from: eve's username is an
 -- address, frank's name is one, gina has an empty username and hank has an address as both.
+-- eve and frank also carry a Gravatar avatar URL (https and http, on the s. and secure.
+-- subdomains), which is an email hash rather than an opaque image reference.
 INSERT INTO fe_users
     (uid, username, name, first_name, last_name, city, static_info_country,
      user_cichlids_auth0_image, crdate, tstamp, lastlogin, tx_dixeasylogin_openid, email,
@@ -65,8 +67,8 @@ VALUES
     (14, 'dupuser', 'Dup Two', 'Dup', 'Two', '', '', NULL, 1000000000, 0, 0, 'dup-openid', NULL, 0, 0),
     (15, 'deleteduser', 'Deleted', 'Deleted', 'User', '', '', NULL, 1000000000, 0, 0, NULL, NULL, 1, 0),
     (16, 'disableduser', 'Disabled', 'Disabled', 'User', '', '', NULL, 1000000000, 0, 0, NULL, NULL, 0, 1),
-    (17, 'eve@example.com', '', '', '', '', '', NULL, 1000000000, 0, 0, NULL, NULL, 0, 0),
-    (18, 'frank', 'frank@example.com', 'Frank', 'F', '', '', NULL, 1000000000, 0, 0, NULL, NULL, 0, 0),
+    (17, 'eve@example.com', '', '', '', '', '', 'https://s.gravatar.com/avatar/deadbeef?s=480', 1000000000, 0, 0, NULL, NULL, 0, 0),
+    (18, 'frank', 'frank@example.com', 'Frank', 'F', '', '', 'http://secure.gravatar.com/avatar/deadbeef', 1000000000, 0, 0, NULL, NULL, 0, 0),
     (19, '', 'Gina G', 'Gina', 'G', '', '', NULL, 1000000000, 0, 0, NULL, NULL, 0, 0),
     (20, 'hank@example.com', 'Hank <hank@example.com>', '', '', '', '', NULL, 1000000000, 0, 0, NULL, NULL, 0, 0);
 

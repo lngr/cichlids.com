@@ -57,6 +57,7 @@ public sealed class VerifyStepTests(VerifyEtlFixture fixture)
         AssertRow(report, "discussion_thread_post_count_consistency", 0, 0);
         AssertRow(report, "profile_username_email_like", 0, 0);
         AssertRow(report, "profile_display_name_email_like", 0, 0);
+        AssertRow(report, "profile_avatar_gravatar", 0, 0);
         AssertRow(report, "comment_poster_name_email_like", 0, 0);
         AssertRow(report, "discussion_post_poster_name_email_like", 0, 0);
         AssertInfoRow(report, "guest_names_generated", 1);
@@ -186,6 +187,47 @@ public sealed class VerifyStepTests(VerifyEtlFixture fixture)
         {
             await using var db = fixture.CreateTargetContext();
             db.Profiles.Remove(db.Profiles.Single(p => p.Username == "exposed@verify.example"));
+            await db.SaveChangesAsync();
+        }
+    }
+
+    [Fact]
+    public async Task FlagsAProfileWhoseExternalAvatarUrlIsAGravatarUrl()
+    {
+        await using var context = await EtlContext.CreateAsync(
+            fixture.LegacyConnectionString, fixture.TargetConnectionString, dryRun: false, CancellationToken.None, fixture.ObjectStore);
+
+        foreach (var step in EtlStepRegistry.All)
+        {
+            await EtlRunner.RunAsync(step, context, CancellationToken.None);
+        }
+
+        await using (var db = fixture.CreateTargetContext())
+        {
+            db.Profiles.Add(new Profile
+            {
+                Username = "verify-fixture-gravatar-avatar",
+                DisplayName = "Gravatar Avatar",
+                ExternalAvatarUrl = "http://gravatar.com/avatar/injected",
+                Kind = ProfileKind.Member,
+                CreatedAt = DateTimeOffset.UtcNow,
+            });
+            await db.SaveChangesAsync();
+        }
+
+        try
+        {
+            await EtlRunner.RunAsync(new VerifyStep(), context, CancellationToken.None);
+            var report = context.VerificationReport;
+
+            Assert.NotNull(report);
+            Assert.False(report!.Passed);
+            AssertMismatch(report, "profile_avatar_gravatar", 0, 1);
+        }
+        finally
+        {
+            await using var db = fixture.CreateTargetContext();
+            db.Profiles.Remove(db.Profiles.Single(p => p.Username == "verify-fixture-gravatar-avatar"));
             await db.SaveChangesAsync();
         }
     }

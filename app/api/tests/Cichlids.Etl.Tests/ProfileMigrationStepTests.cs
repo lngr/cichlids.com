@@ -65,19 +65,25 @@ public sealed class ProfileMigrationStepTests(EtlFixture fixture)
             var eve = await db.Profiles.SingleAsync(p => p.LegacyId == 17);
             Assert.Equal(eveHandle, eve.Username);
             Assert.Equal(eveHandle, eve.DisplayName);
+            Assert.Null(eve.ExternalAvatarUrl);
 
             var frank = await db.Profiles.SingleAsync(p => p.LegacyId == 18);
             Assert.Equal("frank", frank.Username);
             Assert.Equal("Frank F", frank.DisplayName);
+            Assert.Null(frank.ExternalAvatarUrl);
 
             // The first candidate of gina's handle belongs to a profile the API created.
             var gina = await db.Profiles.SingleAsync(p => p.LegacyId == 19);
             Assert.Equal(ginaCandidates[1], gina.Username);
             Assert.Equal("Gina G", gina.DisplayName);
 
+            // hank's pre-existing row held a Gravatar URL from before this rule existed; the run
+            // clears it because the legacy image column is empty, proving the upsert overwrites a
+            // stale stored Gravatar URL rather than leaving it in place.
             var hank = await db.Profiles.SingleAsync(p => p.LegacyId == 20);
             Assert.Equal(hankHandle, hank.Username);
             Assert.Equal(hankHandle, hank.DisplayName);
+            Assert.Null(hank.ExternalAvatarUrl);
 
             Assert.False(await db.Profiles.AnyAsync(p => p.LegacyId == 12));
             Assert.False(await db.Profiles.AnyAsync(p => p.LegacyId == 15));
@@ -122,6 +128,7 @@ public sealed class ProfileMigrationStepTests(EtlFixture fixture)
                 LegacyId = 20,
                 Username = "hank@example.com",
                 DisplayName = "hank@example.com",
+                ExternalAvatarUrl = "https://s.gravatar.com/avatar/stale?s=1",
                 Kind = ProfileKind.Member,
                 CreatedAt = DateTimeOffset.FromUnixTimeSeconds(1000000000),
             });

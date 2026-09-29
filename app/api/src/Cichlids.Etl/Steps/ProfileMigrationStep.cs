@@ -1,5 +1,6 @@
 using System.Globalization;
 using Cichlids.Domain.Enums;
+using Cichlids.Etl.Identity;
 using Cichlids.Etl.Persistence;
 using Cichlids.Etl.Runtime;
 using Cichlids.Infrastructure.Identity;
@@ -16,7 +17,9 @@ namespace Cichlids.Etl.Steps;
 /// legacy database only; they never had anything for the new application to show. The public
 /// handle and the display name never contain an email address: a member whose legacy username is
 /// empty or holds an address gets a generated handle, and the display name falls back past any
-/// candidate holding an address to the handle.
+/// candidate holding an address to the handle. A legacy avatar URL served from Gravatar is a
+/// reversible hash of the member's email address, so the profile's external avatar URL stays
+/// empty instead of storing it.
 /// </summary>
 public sealed class ProfileMigrationStep : IEtlStep
 {
@@ -62,7 +65,7 @@ public sealed class ProfileMigrationStep : IEtlStep
                 ("display_name", displayName),
                 ("city", NullIfEmpty(row.City)),
                 ("country_code", NullIfEmpty(row.CountryCode)),
-                ("external_avatar_url", NullIfEmpty(row.Auth0Image)),
+                ("external_avatar_url", ExternalAvatarUrl.IsGravatar(row.Auth0Image) ? null : NullIfEmpty(row.Auth0Image)),
                 ("kind", KindConverter.ConvertToProvider(ProfileKind.Member)),
                 ("created_at", createdAt),
                 ("last_login_at", lastLoginAt),

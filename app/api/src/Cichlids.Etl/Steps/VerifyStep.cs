@@ -1,3 +1,4 @@
+using Cichlids.Etl.Identity;
 using Cichlids.Etl.Runtime;
 using Cichlids.Infrastructure.Identity;
 using MySqlConnector;
@@ -84,7 +85,8 @@ public sealed class VerifyStep : IEtlStep
     /// checks each identity provider's row count. Returns the eligible legacy user rows (with
     /// their openid/email columns) for the identity checks and for any future check that needs
     /// the same set. Also counts the profiles whose public handle or display name holds an email
-    /// address, which has to be zero for every profile, migrated or not.
+    /// address, and the profiles whose external avatar URL is a Gravatar URL, both of which have
+    /// to be zero for every profile, migrated or not.
     /// </summary>
     private static async Task AddProfileAndIdentityRowsAsync(
         EtlContext context, VerificationReport report, CancellationToken cancellationToken)
@@ -140,6 +142,7 @@ public sealed class VerifyStep : IEtlStep
         report.Add(VerificationRow.Info("profiles_system", actualSystem));
 
         await AddEmailLikeProfileRowsAsync(context, report, cancellationToken);
+        await AddAvatarGravatarProfileRowsAsync(context, report, cancellationToken);
         await AddEmailLikeGuestNameRowsAsync(context, report, cancellationToken);
 
         var eligibleIds = eligibleUsers.Select(u => u.Uid).ToHashSet();
@@ -214,6 +217,29 @@ public sealed class VerifyStep : IEtlStep
 
         report.Add(VerificationRow.Compare("profile_username_email_like", 0, usernames));
         report.Add(VerificationRow.Compare("profile_display_name_email_like", 0, displayNames));
+    }
+
+    // A Gravatar avatar URL is a reversible hash of a member's email address, so no profile may
+    // hold one as its external avatar URL. The check reads every profile's external avatar URL
+    // and applies the same host rule the migration avoids.
+    private static async Task AddAvatarGravatarProfileRowsAsync(
+        EtlContext context, VerificationReport report, CancellationToken cancellationToken)
+    {
+        long gravatarAvatars = 0;
+        await using (var command = new NpgsqlCommand(
+            "SELECT external_avatar_url FROM profile WHERE external_avatar_url IS NOT NULL", context.Target, context.Transaction))
+        await using (var reader = await command.ExecuteReaderAsync(cancellationToken))
+        {
+            while (await reader.ReadAsync(cancellationToken))
+            {
+                if (ExternalAvatarUrl.IsGravatar(reader.GetString(0)))
+                {
+                    gravatarAvatars++;
+                }
+            }
+        }
+
+        report.Add(VerificationRow.Compare("profile_avatar_gravatar", 0, gravatarAvatars));
     }
 
     // A guest's poster name is public, so no comment or forum post may hold an address in it. The
