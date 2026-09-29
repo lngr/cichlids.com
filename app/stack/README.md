@@ -123,6 +123,21 @@ Keycloak's `cichlids` realm has two seeded local users (password `dev-password` 
 
 These are local-development defaults only and are not used in any deployed environment.
 
+### Test login as a migrated member
+
+Imported legacy accounts have no password (the Auth0 export carries none) and require a password
+reset by email on first login, which the local stack cannot send. For testing, the legacy account
+`alex` (profile `Alex`, legacy uid 1) gets the local dev password `alex-dev-password`. Setting a
+permanent password removes the update-password action; the terms action stays, so the first login
+shows the terms page and then lands in the migrated profile. The account import does not set this
+password, so after a fresh realm or a new import run, set it again:
+
+```sh
+docker compose -f app/stack/compose.yaml exec -T keycloak sh -c '
+  /opt/keycloak/bin/kcadm.sh config credentials --server http://localhost:8080 --realm master --user admin --password admin &&
+  /opt/keycloak/bin/kcadm.sh set-password -r cichlids --username alex --new-password alex-dev-password' # gitleaks:allow
+```
+
 The app logs in through the public client `cichlids-app` (authorization code with PKCE). Its
 redirect URIs cover the web app on any localhost port and the native app scheme `cichlids://`;
 its web origins list the dev Expo web server (`http://localhost:8081`) and the write E2E stack
