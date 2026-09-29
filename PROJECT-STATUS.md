@@ -555,20 +555,19 @@ Die IDs sind stabil, damit sich die Fäden einzeln abarbeiten und abhaken lassen
 - [ ] **F21** Die ACs von 3.15 am Dev-Stack beobachten. Der Import lief am 2026-09-29: 12.050 Konten
   angelegt, 6.447 Profil-Verknüpfungen, 20 Datensätze ohne Kontakt und Profil verworfen; der zweite
   Lauf legte nichts an.
-- [ ] **F22** Die Interims-Entscheidungen der autonomen Umsetzung vom 2026-09-28 durchsehen
-  (Journal `SCHLAFENSMODUS.md` im Worktree `/workspaces/cichlids-mvp`, untracked).
+- [x] **F22** Die Interims-Entscheidungen der autonomen Umsetzung sind am 2026-09-29 mit dem Projektinhaber
+  durchgesehen; die Ergebnisse stehen in ADR-0022, ADR-0023, den Task-Notizen und DRAFT-6 bis DRAFT-10.
 - [ ] **F23** Über DRAFT-3 (gespeicherter Link Bewertung zu Kommentar), DRAFT-4 (wiederholte
   Bewertungen) und DRAFT-5 (View-Zählung in der geseedeten Dev-DB) entscheiden.
-- [ ] **F24** Die Android-Package-ID `com.cichlids.app` in `app/mobile/app.json` bestätigen oder
-  ersetzen, bevor ein nativer Build veröffentlicht wird.
+- [x] **F24** Die Android-Package-ID `com.cichlids.app` ist bestätigt.
 - [ ] **F26** Slug-Secret für Staging und Produktion erzeugen, sicher verwahren (SOPS, TASK-2.6) und
   identisch für ETL und API setzen, bevor der Produktiv-Import läuft. Aus ihm entstehen Bild-Slugs,
   `user<zahl>`-Handles, Login-Usernames und `guest_<nummer>`-Gastnamen; ein anderer Schlüssel ergäbe andere
   Namen und Links. Außerhalb der Entwicklung verweigern ETL und API den Start ohne Secret oder mit dem
   Dev-Wert.
-- [ ] **F25** Die Unverifiziertheit der Registrierung klären: Der Realm erlaubt Selbstregistrierung
-  ohne E-Mail-Verifikation (kein SMTP im Stack). Die API verknüpft migrierte Profile nur bei
-  verifizierter E-Mail; für den Relaunch braucht Keycloak SMTP und `verifyEmail`.
+- [x] **F25** Registrierung und Altprofile: Ein Login erreicht ein migriertes Profil nur über die
+  Verknüpfung, die der Account-Import anlegt; der Import läuft, bevor die Selbstregistrierung in einer
+  Umgebung offen ist (ADR-0023). Die API verknüpft nie über die E-Mail.
 
 ### Doku-Korrekturen
 
