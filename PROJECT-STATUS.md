@@ -560,6 +560,11 @@ Die IDs sind stabil, damit sich die Fäden einzeln abarbeiten und abhaken lassen
   Bewertungen) und DRAFT-5 (View-Zählung in der geseedeten Dev-DB) entscheiden.
 - [ ] **F24** Die Android-Package-ID `com.cichlids.app` in `app/mobile/app.json` bestätigen oder
   ersetzen, bevor ein nativer Build veröffentlicht wird.
+- [ ] **F26** Slug-Secret für Staging und Produktion erzeugen, sicher verwahren (SOPS, TASK-2.6) und
+  identisch für ETL und API setzen, bevor der Produktiv-Import läuft. Aus ihm entstehen Bild-Slugs,
+  `user<zahl>`-Handles, Login-Usernames und `guest_<nummer>`-Gastnamen; ein anderer Schlüssel ergäbe andere
+  Namen und Links. Außerhalb der Entwicklung verweigern ETL und API den Start ohne Secret oder mit dem
+  Dev-Wert.
 - [ ] **F25** Die Unverifiziertheit der Registrierung klären: Der Realm erlaubt Selbstregistrierung
   ohne E-Mail-Verifikation (kein SMTP im Stack). Die API verknüpft migrierte Profile nur bei
   verifizierter E-Mail; für den Relaunch braucht Keycloak SMTP und `verifyEmail`.
