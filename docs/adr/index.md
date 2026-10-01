@@ -59,7 +59,7 @@ by hand. Run that script (or its `--check` mode in CI) after adding or changing 
 | [0012](0012-video-transcoding-and-adaptive-delivery.md) | Video Transcoding and Adaptive Delivery | Accepted |
 | [0013](0013-backup-and-disaster-recovery.md) | Backup and Disaster Recovery | Accepted |
 | [0014](0014-safeguards-against-destructive-infrastructure-changes.md) | Safeguards Against Destructive Infrastructure Changes | Accepted |
-| [0015](0015-user-story-and-spec-management.md) | User Story and Spec Management with Backlog.md | Proposed |
+| [0015](0015-user-story-and-spec-management.md) | User Story and Spec Management with Backlog.md | Accepted |
 | [0016](0016-remote-opentofu-state-backend.md) | Remote OpenTofu State Backend on Hetzner Object Storage | Accepted |
 | [0017](0017-hetzner-project-separation.md) | Hetzner Project Separation for Capability-Based Blast Radius | Accepted |
 | [0018](0018-environment-data-provisioning.md) | Environment Data Provisioning for Staging and Preview | Accepted |

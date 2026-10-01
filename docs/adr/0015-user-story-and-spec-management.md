@@ -1,6 +1,6 @@
 # ADR-0015: User Story and Spec Management with Backlog.md
 
-- **Status:** Proposed
+- **Status:** Accepted
 - **Date:** 2026-06-03
 - **Deciders:** Alexander Langer
 
