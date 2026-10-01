@@ -1,6 +1,6 @@
 # Projektstatus cichlids.com
 
-**Stand: 2026-09-28**
+**Stand: 2026-10-01**
 
 Dieses Dokument ist der Einstiegspunkt, um die Arbeit an cichlids.com ohne Vorwissen aufzunehmen. Es
 beschreibt, wo das Projekt steht, welche Arbeitsstränge es gibt und welche Fäden offen sind.
@@ -399,7 +399,7 @@ Kein Task ist Done, kein AC ist abgehakt (Stand 2026-09-28).
   `cichlids_e2e`, Bucket `cichlids-e2e`, API :5046, Web :8082), nie gegen die geseedete Dev-DB.
 - Die Maestro-Flows der ACs von 3.21 und 3.22 sind geschrieben, aber nicht ausführbar (F13).
 - Eine Vorprüfung aller 22 älteren In-Review-Tasks liegt als `PRECHECK-IN-REVIEW.md` (untracked) im
-  Worktree `/workspaces/cichlids-mvp`.
+  Haupt-Worktree `/workspaces/cichlids.com`.
 
 ### 6.6 Lokal starten
 
@@ -545,11 +545,12 @@ Die IDs sind stabil, damit sich die Fäden einzeln abarbeiten und abhaken lassen
 - [x] **F11** Docker-Volumes des MVP-Stacks geprüft und Stack gestartet: Daten vollständig,
   `bootstrap.sh` grün, `etl verify` 0 Abweichungen, Playwright-Web-Smoke grün. Das .NET-SDK
   installiert der Devcontainer über `tools/install-dotnet.sh`.
-- [ ] **F12** Die 26 Tasks in Review am laufenden System abnehmen, mit ACs in Ground-Truth-Form. Eine
-  Vorprüfung der 22 älteren Tasks liegt in `/workspaces/cichlids-mvp/PRECHECK-IN-REVIEW.md`
-  (untracked); die Notizen von 3.15, 3.16, 3.21 und 3.22 nennen die Prüfbefehle.
+- [ ] **F12** Die MVP-Stories in Review später abnehmen (bewusst zurückgestellt, siehe O2). Prüfbefehle je
+  Story: `/workspaces/cichlids.com/PRECHECK-IN-REVIEW.md` (untracked) und die Notizen von 3.15, 3.16, 3.21
+  und 3.22.
 - [ ] **F13** Den Maestro-Runner zum Laufen bringen oder den AC von 3.23 bewusst anpassen.
-- [ ] **F14** Über den Merge von `feat/legacy-mvp` nach `main` entscheiden (technisch konfliktfrei).
+- [ ] **F14** `feat/legacy-mvp` nach `main` mergen (macht der Operator; technisch konfliktfrei). Danach den
+  lokalen Sicherungs-Branch `backup/pre-fold-2026-09-29` löschen.
 - [x] **F15** Die MVP-Stories 3.15, 3.16, 3.21 und 3.22 sind umgesetzt und stehen in Review.
   DRAFT-1 (Mail-Kampagne) ist offen.
 - [ ] **F21** Die ACs von 3.15 am Dev-Stack beobachten. Der Import lief am 2026-09-29: 12.050 Konten
@@ -560,7 +561,7 @@ Die IDs sind stabil, damit sich die Fäden einzeln abarbeiten und abhaken lassen
 - [ ] **F23** Über DRAFT-3 (gespeicherter Link Bewertung zu Kommentar), DRAFT-4 (wiederholte
   Bewertungen) und DRAFT-5 (View-Zählung in der geseedeten Dev-DB) entscheiden.
 - [x] **F24** Die Android-Package-ID `com.cichlids.app` ist bestätigt.
-- [ ] **F26** Slug-Secret für Staging und Produktion erzeugen, sicher verwahren (SOPS, TASK-2.6) und
+- [ ] **F26** (TASK-2.23) Slug-Secret für Staging und Produktion erzeugen, sicher verwahren (SOPS, TASK-2.6) und
   identisch für ETL und API setzen, bevor der Produktiv-Import läuft. Aus ihm entstehen Bild-Slugs,
   `user<zahl>`-Handles, Login-Usernames und `guest_<nummer>`-Gastnamen; ein anderer Schlüssel ergäbe andere
   Namen und Links. Außerhalb der Entwicklung verweigern ETL und API den Start ohne Secret oder mit dem
@@ -583,9 +584,9 @@ Die IDs sind stabil, damit sich die Fäden einzeln abarbeiten und abhaken lassen
 - [x] **O1** Die Rolle des Legacy-Parity-MVP ist geklärt: Er liefert eine lauffähige Anwendung mit
   den echten Altdaten, beweist die Migration und ist die Relaunch-Basis für die Rückgewinnung der
   ca. 12k Bestandsmitglieder. Die Vision-Funktionen bauen später darauf auf.
-- [ ] **O2** Die Priorität festlegen: zuerst Deployment (Strang A) oder zuerst weitere
-  MVP-Funktionen (Strang B)?
-- [ ] **O3** ADR-0015 (Backlog.md) steht auf Proposed. Soll er angenommen werden?
+- [x] **O2** Priorität: zuerst das Deployment (Strang A). Der MVP wird nach `main` gemergt und dient als
+  Testobjekt für ein Staging-System; seine Stories bleiben bewusst unabgenommen (In Review).
+- [x] **O3** ADR-0015 (Backlog.md) ist angenommen.
 
 ---
 
