@@ -190,12 +190,13 @@ von Anfang an verbindlich, nicht nachgelagert.
 
 1. **Fundament & strict GitOps.** OpenTofu provisioniert Hetzner-Node + Hetzner-Object-Storage +
    DNS und **bootstrappt Single-Node-k3s + Argo CD**; ab da reconcilet Argo alles aus Git
-   (ADR-0010). Die Cloud-Ressourcen liegen über **drei getrennte Hetzner-Projekte** verteilt
-   (ADR-0017): das Projekt `cichlids` trägt alle live/wiederherstellbare Infrastruktur (Compute,
-   Netze, Firewalls, Load Balancer, DBs und Medien je Umgebung); `cichlids-backup` hält nur die
-   unveränderlichen Backups unter Object Lock; `cichlids-tfstate` nur den OpenTofu-State-Bucket.
-   CI besitzt ausschließlich das **Read&Write-Token des Projekts `cichlids`** und die S3-Keys für
-   den State-Bucket — keine Tokens für die Backup-/State-Projekte. CI mit Grün-Gate + ADR-Index-
+   (ADR-0010). Die Cloud-Ressourcen liegen in **zwei getrennten Hetzner-Projekten** (ADR-0017):
+   Das Projekt `cichlids` enthält alle live betriebene, wiederherstellbare Infrastruktur (Compute,
+   Netze, Firewalls, Load Balancer, DBs und Medien je Umgebung) samt eigenem OpenTofu-State-Bucket;
+   `cichlids-backup` enthält nur die unveränderlichen Backups unter Object Lock und seinen eigenen
+   State-Bucket. CI besitzt ausschließlich das **Read&Write-Token des Projekts `cichlids`** und
+   dessen S3-Keys; den S3-Key von `cichlids-backup` hat nur der Operator, und er wendet diesen Tier
+   außerhalb von CI an. CI mit Grün-Gate + ADR-Index-
    Check, OpenAPI-Pipeline + generierter TS-Client, leere App/API laufen E2E (ADR-0005, 0006).
    **Von Anfang an:** dünne Storage/CDN-Abstraktion (S3-API, Provider als Config — ADR-0009) und
    **Postgres-PITR via CloudNativePG + erster getesteter Restore** (ADR-0013). **Destruktiv-Schutz

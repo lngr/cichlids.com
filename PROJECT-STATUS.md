@@ -571,8 +571,7 @@ Die IDs sind stabil, damit sich die Fäden einzeln abarbeiten und abhaken lassen
 
 ### Doku-Korrekturen
 
-- [ ] **F16** `PLAN.md` Abschnitt 7 beschreibt drei Hetzner-Projekte. Er sollte die zwei Projekte
-  aus ADR-0017 beschreiben.
+- [x] **F16** `PLAN.md` Abschnitt 7 beschreibt die zwei Hetzner-Projekte aus ADR-0017.
 - [x] **F17** Die Notiz in TASK-3.10 beschreibt den umgesetzten Artenfilter.
 - [x] **F18** Der Expo-Web-Port ist überall 8081 (Devcontainer, README, bootstrap, Playwright,
   Maestro).
