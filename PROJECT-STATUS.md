@@ -526,7 +526,7 @@ Die IDs sind stabil, damit sich die Fäden einzeln abarbeiten und abhaken lassen
   Der Ersatz des Eigenbaus durch gitleaks steht als DRAFT-2 im Backlog (Parent TASK-2).
 - [ ] **F3** Den SSH-Zugriff auf GitHub aus dem Devcontainer reparieren (Host-Key-Prüfung), damit
   der Remote-Stand prüfbar ist.
-- [ ] **F4** `HANDOFF.md` löschen, sobald dieses Dokument sie abdeckt.
+- [x] **F4** `HANDOFF.md` gelöscht; dieses Dokument deckt ihren Inhalt ab.
 
 ### Strang A
 
@@ -561,6 +561,8 @@ Die IDs sind stabil, damit sich die Fäden einzeln abarbeiten und abhaken lassen
 - [ ] **F23** Über DRAFT-3 (gespeicherter Link Bewertung zu Kommentar), DRAFT-4 (wiederholte
   Bewertungen) und DRAFT-5 (View-Zählung in der geseedeten Dev-DB) entscheiden.
 - [x] **F24** Die Android-Package-ID `com.cichlids.app` ist bestätigt.
+- [ ] **F27** Die Befunde des Reviews des gemergten MVP (`REVIEW-MVP.md`, R1 bis R46) einzeln
+  besprechen, in der Reihenfolge ihrer IDs. Status und Entscheidung je Punkt stehen in der Datei.
 - [ ] **F26** (TASK-2.23) Slug-Secret für Staging und Produktion erzeugen, sicher verwahren (SOPS, TASK-2.6) und
   identisch für ETL und API setzen, bevor der Produktiv-Import läuft. Aus ihm entstehen Bild-Slugs,
   `user<zahl>`-Handles, Login-Usernames und `guest_<nummer>`-Gastnamen; ein anderer Schlüssel ergäbe andere
