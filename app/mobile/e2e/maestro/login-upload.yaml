@@ -1,0 +1,69 @@
+# Native Android flow: logs in as the local dev user through the Keycloak page, uploads a photo
+# from the device gallery and publishes it; the picture detail and the gallery show its title.
+# Publishing writes to the database, so it runs against a native build whose API URL points at
+# the write stack's API (app/mobile/e2e/write-stack.sh), never at the seeded dev API. The login
+# also needs Keycloak reachable from the emulator under the issuer the API accepts,
+# http://localhost:8180/realms/cichlids. With adb reverse tcp:8180 tcp:8180 and adb reverse
+# tcp:5046 tcp:5046 the localhost URLs work on the device, so the build uses
+# EXPO_PUBLIC_API_URL=http://localhost:5046 and the default Keycloak URL. The pick steps drive
+# the Android system photo picker, which lists the most recently added image first.
+appId: com.cichlids.app
+tags:
+  - TASK-3.21
+---
+- addMedia:
+    - "../fixtures/upload-photo.jpg"
+- launchApp:
+    clearState: true
+- evalScript: ${output.title = 'Maestro upload ' + Date.now()}
+
+# Anonymous, the upload button leads to the Me tab and its login.
+- tapOn:
+    id: "upload-button"
+- tapOn:
+    id: "login-button"
+- tapOn:
+    id: "username"
+- inputText: "dev-user"
+- tapOn:
+    id: "password"
+- inputText: "dev-password" # gitleaks:allow
+- tapOn:
+    id: "kc-login"
+- assertVisible:
+    id: "me-name"
+
+- tapOn:
+    id: "tab-gallery"
+- tapOn:
+    id: "upload-button"
+- tapOn:
+    id: "upload-pick"
+- tapOn:
+    id: "com.google.android.providers.media.module:id/icon_thumbnail"
+    index: 0
+- extendedWaitUntil:
+    visible:
+      id: "upload-preview"
+    timeout: 30000
+
+- tapOn:
+    id: "upload-title"
+- inputText: ${output.title}
+- hideKeyboard
+- tapOn:
+    id: "upload-publish"
+- extendedWaitUntil:
+    visible:
+      id: "picture-title"
+    timeout: 30000
+- assertVisible:
+    id: "picture-title"
+    text: ${output.title}
+
+- tapOn:
+    id: "tab-gallery"
+- assertVisible:
+    id: "picture-card"
+    index: 0
+    text: ".*${output.title}.*"

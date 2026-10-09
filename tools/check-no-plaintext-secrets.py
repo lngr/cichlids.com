@@ -10,7 +10,8 @@ keyword=value assignments that look like live tokens).
 Scope: every Git-tracked text file, except the curated legacy area under `workspace-legacy/`,
 which deliberately preserves the historical platform's plaintext credentials as recovered
 evidence (they are treated as compromised and are out of scope here). Lock files are skipped
-because their content hashes resemble tokens without being secrets.
+because their content hashes resemble tokens without being secrets. A line carrying the
+gitleaks allow marker is accepted deliberately; it marks local development and test values.
 
 Runs offline with no third-party dependencies. `--self-test` verifies the detector itself
 (catches planted secrets, passes placeholders) so the guard cannot silently rot.
@@ -51,11 +52,20 @@ PATTERNS = [
             r"""(?ix)
             (?:token|secret|password|passwd|api[_-]?key|access[_-]?key|secret[_-]?key|client[_-]?secret)
             \s* [:=] \s*
-            ['"]? (?P<val>[A-Za-z0-9/+_-]{16,}) ['"]?
+            (?P<quote>['"]?) (?P<val>[A-Za-z0-9/+_-]{16,}) ['"]?
             """,
         ),
     ),
 ]
+
+# An unquoted value made of letters and underscores only is a reference to another identifier
+# (CancellationToken = cancellationToken), never literal secret material: generated tokens
+# always mix in digits or punctuation.
+IDENTIFIER = re.compile(r"[A-Za-z_]+")
+
+# Inline marker that deliberately accepts a line, for instance a local development default.
+# The spelling follows gitleaks, so gitleaks honours the same markers.
+ALLOW_MARKER = "gitleaks" + ":allow"
 
 
 def tracked_files(root):
@@ -79,14 +89,19 @@ def scan_text(text):
     """Return a list of (line_number, label) for every secret-looking hit in text."""
     findings = []
     for lineno, line in enumerate(text.splitlines(), start=1):
+        if ALLOW_MARKER in line:
+            continue
         for label, pattern in PATTERNS:
             m = pattern.search(line)
             if not m:
                 continue
-            # The credential-assignment heuristic ignores obvious placeholders so that
-            # documenting "export TF_VAR_token=<...>" in the runbook stays allowed.
-            if label == "credential assignment" and PLACEHOLDER.search(m.group("val")):
-                continue
+            if label == "credential assignment":
+                # Obvious placeholders are allowed so that documenting
+                # "export TF_VAR_token=<...>" in the runbook passes.
+                if PLACEHOLDER.search(m.group("val")):
+                    continue
+                if not m.group("quote") and IDENTIFIER.fullmatch(m.group("val")):
+                    continue
             findings.append((lineno, label))
     return findings
 
@@ -118,17 +133,26 @@ def self_test():
     age = "AGE-SECRET-KEY-1" + "A" * 40
     pem = "-----BEGIN OPENSSH " + "PRIVATE KEY-----"
     token_line = "hcloud_token = " + '"' + "abcd1234efgh5678ijkl" + '"'
+    quoted_letters = "SecretKey = " + '"' + "cichlids-dev-secret" + '";'
+    unquoted_env = "GITHUB_TOKEN=" + "ghp_" + "abcd1234efgh5678ijkl"
+    allow_marker = "gitleaks" + ":allow"
     positives = [
         f"aws_key = {akia}",
         f"sops_key: {age}",
         pem,
         token_line,
+        quoted_letters,
+        unquoted_env,
     ]
     negatives = [
         "export TF_VAR_hcloud_token=<your-routine-token>",
         'ssh_public_key = "ssh-ed25519 AAAA... operator@host"',
         "the routine token has no delete rights",
         "password: changeme-example",
+        "CancellationToken = cancellationToken,",
+        "AccessKey = ObjectStoreAccessKey,",
+        f"{quoted_letters} // {allow_marker}",
+        f"{token_line}  # {allow_marker}",
     ]
     errors = []
     for s in positives:

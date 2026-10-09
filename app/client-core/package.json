@@ -1,0 +1,21 @@
+{
+  "name": "@cichlids/client-core",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "pnpm run build",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "generate": "node scripts/generate.mjs",
+    "smoke": "node scripts/smoke.mjs"
+  },
+  "devDependencies": {
+    "msw": "^2.15.0",
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.10"
+  }
+}

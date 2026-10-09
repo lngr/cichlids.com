@@ -1,0 +1,44 @@
+# Native Android flow: logs in as the local dev user and publishes a photo (login-upload.yaml),
+# opens it from the gallery and posts a comment with a 4-star rating; the comment renders in the
+# picture detail with its stars. Posting writes to the database, so it runs against a native
+# build whose API URL points at the write stack's API (app/mobile/e2e/write-stack.sh), never at
+# the seeded dev API. The login also needs Keycloak reachable from the emulator under the issuer
+# the API accepts, http://localhost:8180/realms/cichlids. With adb reverse tcp:8180 tcp:8180 and
+# adb reverse tcp:5046 tcp:5046 the localhost URLs work on the device, so the build uses
+# EXPO_PUBLIC_API_URL=http://localhost:5046 and the default Keycloak URL.
+appId: com.cichlids.app
+tags:
+  - TASK-3.22
+---
+- runFlow: login-upload.yaml
+- evalScript: ${output.comment = 'Maestro comment ' + Date.now()}
+
+- tapOn:
+    id: "picture-card"
+    index: 0
+- extendedWaitUntil:
+    visible:
+      id: "picture-title"
+    timeout: 30000
+- scrollUntilVisible:
+    element:
+      id: "comment-submit"
+    direction: DOWN
+
+- tapOn:
+    id: "comment-input"
+- inputText: ${output.comment}
+- hideKeyboard
+- tapOn:
+    id: "comment-star-4"
+- tapOn:
+    id: "comment-submit"
+
+- extendedWaitUntil:
+    visible:
+      id: "comment-item-body"
+      text: ${output.comment}
+    timeout: 30000
+- assertVisible:
+    id: "comment-item-stars"
+    text: "★★★★"
