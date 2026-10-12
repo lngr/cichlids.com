@@ -100,6 +100,9 @@ public static class MigrationRules
     public const string Collections =
         "Non-deleted legacy galleries with at least one picture become collections.";
 
+    public const string EmptyGalleries =
+        "A non-deleted legacy gallery that never got a picture is skipped.";
+
     public const string CollectionEntries =
         "A gallery picture that migrated as a post becomes an entry of its collection, once per gallery and picture.";
 }

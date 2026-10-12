@@ -688,6 +688,16 @@ public sealed class VerifyStep : IEtlStep
         var actualCollections = await PgScalarAsync(context, "SELECT COUNT(*) FROM collection", cancellationToken);
         report.Add(VerificationRow.Compare("collection", expectedCollections, actualCollections, MigrationRules.Collections));
 
+        var emptyGalleries = await MySqlScalarAsync(
+            context,
+            """
+            SELECT COUNT(*) FROM user_cichlids_gallery g
+            WHERE g.deleted = 0
+              AND NOT EXISTS (SELECT 1 FROM user_cichlids_gallery_pictures_mm mm WHERE mm.uid_gallery = g.uid)
+            """,
+            cancellationToken);
+        report.Add(VerificationRow.Info("collection_skipped_empty", emptyGalleries, MigrationRules.EmptyGalleries));
+
         var distinctEntries = new HashSet<(int Gallery, int Picture)>();
         await using (var command = new MySqlCommand(
             """

@@ -36,6 +36,7 @@ public sealed class VerifyStepTests(VerifyEtlFixture fixture)
         AssertRow(report, "comment_vote", 2, 2);
         AssertRow(report, "comment_vote_not_before_comment", 0, 0);
         AssertRow(report, "collection", 1, 1);
+        AssertInfoRow(report, "collection_skipped_empty", 1);
         AssertRow(report, "collection_entry", 2, 2);
         AssertRow(report, "post_without_media", 0, 0);
         AssertRow(report, "post_published_without_canonical_slug", 0, 0);

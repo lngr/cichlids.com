@@ -119,8 +119,10 @@ INSERT INTO user_cichlids_comments_rated (comment_uid, fe_user, rated, tstamp) V
     -- UTC it would precede the comment by almost five hours.
     (9303, 9010, 1, '2023-11-14 17:30:00');
 
+-- Gallery 9502 never got a picture, so it is skipped as an empty gallery.
 INSERT INTO user_cichlids_gallery (uid, tstamp, deleted, hidden, title, fe_user) VALUES
-    (9501, 1700000400, 0, 0, 'Verify Gallery', 9010);
+    (9501, 1700000400, 0, 0, 'Verify Gallery', 9010),
+    (9502, 1700000410, 0, 0, 'Verify Empty Gallery', 9010);
 
 INSERT INTO user_cichlids_gallery_pictures_mm (uid_gallery, uid_picture, sorting) VALUES
     (9501, 9101, 0),
