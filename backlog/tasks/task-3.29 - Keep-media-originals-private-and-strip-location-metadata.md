@@ -4,7 +4,7 @@ title: Keep media originals private and strip location metadata
 status: In Review
 assignee: []
 created_date: '2026-10-12 04:48'
-updated_date: '2026-10-12 16:43'
+updated_date: '2026-10-12 18:36'
 labels: []
 dependencies: []
 references:
@@ -26,8 +26,8 @@ Originals are never publicly readable; the bucket policy exposes variants and fo
 <!-- AC:BEGIN -->
 - [x] #1 Given an uploaded phone photo with GPS tags, When the operator requests its original object URL without credentials, Then the object store refuses the request
 - [x] #2 Given that photo, When the operator downloads the stored original with operator credentials and inspects it with exiftool, Then GPS, serial number and owner tags are absent while capture date, orientation and colour profile are present
-- [ ] #3 Given a migrated legacy original that had GPS tags in the backup, When the operator inspects the stored object after the seed, Then the GPS tags are absent
-- [ ] #4 Given a Display P3 photo, When the operator compares its medium variant with the original in a colour-managed viewer, Then the colours match and the variant carries no metadata
+- [x] #3 Given a migrated legacy original that had GPS tags in the backup, When the operator inspects the stored object after the seed, Then the GPS tags are absent
+- [x] #4 Given a Display P3 photo, When the operator compares its medium variant with the original in a colour-managed viewer, Then the colours match and the variant carries no metadata
 - [x] #5 Given an image file of a few kilobytes that declares 200000 x 200000 pixels, When it is uploaded or passed to the media seed, Then it is rejected and the process memory stays bounded
 - [x] #6 Given one of the undecodable legacy pictures, When the app shows it, Then the image loads from a public sanitized copy
 <!-- AC:END -->
@@ -310,7 +310,7 @@ Each step is one conventional commit: red test first, then the production change
 ### Acceptance criteria status
 
 - Checked by automated tests: #1 (UploadsEndpointsTests anonymous GET 403 on the original and 200 on the variant, S3ObjectStoreTests, media-privacy.write.mjs), #2 (UploadsEndpointsTests with MetadataExtractor as the independent reader), #5 (ImageProcessorTests pixel bomb within 1 s and 1 MiB libvips growth, UploadsEndpointsTests 400, MediaSeedCommandTests rejection with nothing uploaded for 200000 x 200000 and 1 x 50000000), #6 (media-privacy.write.mjs loads the copy-only picture from `/variants/copy/`).
-- Open: #3 needs the real legacy originals in the dev bucket, which the next dev seed produces after the merge (MediaSeedCommandTests covers the mechanism with a synthetic GPS JPEG); #4 needs the colour-managed viewer comparison.
+- Checked by the verification on an isolated stack below: #3 (all 3463 legacy originals with GPS) and #4 (158 Display P3 photos, measured, and visually checked by Alexander Langer on 2026-10-12). MediaSeedCommandTests covers the #3 mechanism with a synthetic GPS JPEG.
 
 ### Tests
 
@@ -324,6 +324,6 @@ Each step is one conventional commit: red test first, then the production change
 Full legacy import on a separate Docker stack (own compose project, ports and volumes) with all 179,340 media items seeded.
 
 - AC #3: 3463 legacy originals carry GPS coordinates. All 3463 stored objects were downloaded and read with exiftool: none holds a GPS tag, and none of the 6 serial number or owner tags of the legacy files is present. DateTimeOriginal, Orientation, the ICC profile and Make are present wherever the legacy file holds them in IFD0 or the Exif IFD. In the 20 files where such a value is absent after sanitizing, the legacy file holds it only in IFD1 (the IFD of the embedded thumbnail, which viewers ignore for the main image) or in a corrupt Exif IFD, which the sanitizer drops as a whole.
-- AC #4: 162 legacy originals carry a Display P3 profile. The 158 with a medium variant (the other 4 are narrower than 800 px) were compared with their colour-managed original, both reduced to 64 px with the same kernel: median CIEDE2000 0.62, worst 3.07. Against the original shown without colour conversion the median is 1.30. No variant carries EXIF, XMP, IPTC or ICC data. The comparison in a colour-managed viewer is open.
+- AC #4: 162 legacy originals carry a Display P3 profile. The 158 with a medium variant (the other 4 are narrower than 800 px) were compared with their colour-managed original, both reduced to 64 px with the same kernel: median CIEDE2000 0.62, worst 3.07. Against the original shown without colour conversion the median is 1.30. No variant carries EXIF, XMP, IPTC or ICC data. On 2026-10-12 Alexander Langer compared the sample in a colour-managed viewer: the colours of original and variant match. Alexander Langer checked #3 and #4 on the same day.
 - The only item the full seed rejects is `originals/user_pics/1417/01_fish.gif`, a 63-byte GIF of 588 x 1 pixels.
 <!-- SECTION:NOTES:END -->
