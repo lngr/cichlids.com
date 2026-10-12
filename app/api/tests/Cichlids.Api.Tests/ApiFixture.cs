@@ -2,6 +2,7 @@ using Cichlids.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Testcontainers.PostgreSql;
@@ -105,11 +106,18 @@ public sealed class ApiFixture : IAsyncLifetime
     /// </summary>
     public IServiceProvider Services => _factory.Services;
 
-    public CichlidsDbContext CreateDbContext()
+    public CichlidsDbContext CreateDbContext() => CreateDbContext([]);
+
+    /// <summary>
+    /// Creates a context against the fixture database with the given EF Core interceptors
+    /// attached, for tests that need to act at a precise point of a save.
+    /// </summary>
+    public CichlidsDbContext CreateDbContext(params IInterceptor[] interceptors)
     {
         var optionsBuilder = new DbContextOptionsBuilder<CichlidsDbContext>()
             .UseNpgsql(_postgres.GetConnectionString())
-            .UseSnakeCaseNamingConvention();
+            .UseSnakeCaseNamingConvention()
+            .AddInterceptors(interceptors);
 
         return new CichlidsDbContext(optionsBuilder.Options);
     }
