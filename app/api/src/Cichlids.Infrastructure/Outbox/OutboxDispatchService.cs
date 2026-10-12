@@ -176,6 +176,13 @@ public sealed class OutboxDispatchService(
         OutboxDispatcherOptions settings,
         CancellationToken cancellationToken)
     {
+        // The body is built only for an actual delivery, so an event nobody subscribes to is
+        // dispatched even when its payload cannot be read.
+        if (subscribers.Count == 0)
+        {
+            return new DeliveryOutcome([], []);
+        }
+
         var body = BuildDeliveryBody(outboxEvent);
         var httpClient = httpClientFactory.CreateClient(HttpClientName);
         var acknowledged = new List<long>();

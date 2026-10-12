@@ -401,6 +401,20 @@ public class OutboxDispatchServiceTests(OutboxDispatchFixture fixture) : IAsyncL
         Assert.NotNull((await db.OutboxEvents.AsNoTracking().SingleAsync(e => e.Id == good)).DispatchedAt);
     }
 
+    [Fact]
+    public async Task RunOnceAsync_CorruptPayloadWithoutMatchingSubscribersIsDispatched()
+    {
+        var corrupt = await InsertCorruptEventAsync(DateTimeOffset.UtcNow.AddSeconds(-1));
+
+        await fixture.CreateDispatchService().RunOnceAsync(CancellationToken.None);
+
+        await using var db = fixture.CreateDbContext();
+        var outboxEvent = await db.OutboxEvents.AsNoTracking().SingleAsync(e => e.Id == corrupt);
+        Assert.NotNull(outboxEvent.DispatchedAt);
+        Assert.Equal(0, outboxEvent.AttemptCount);
+        Assert.Null(outboxEvent.LastError);
+    }
+
     [Theory]
     [InlineData("ftp://127.0.0.1/hook")]
     [InlineData("http://169.254.169.254/latest")]
