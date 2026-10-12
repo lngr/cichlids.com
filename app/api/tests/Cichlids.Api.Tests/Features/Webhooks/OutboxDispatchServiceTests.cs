@@ -305,6 +305,49 @@ public class OutboxDispatchServiceTests(OutboxDispatchFixture fixture) : IAsyncL
     }
 
     [Fact]
+    public async Task RunOnceAsync_LateSuccessAfterAFailedTakeoverIsDiscarded()
+    {
+        await using var listener = new TestWebhookListener();
+        listener.SetDown(true);
+        listener.Start();
+        var subscriptionId = await CreateSubscriptionAsync(listener.Uri, "late-secret", ["test.event"]);
+
+        var options = new OutboxDispatcherOptions();
+        var t0 = DateTimeOffset.UtcNow;
+        var id = await InsertEventAsync(occurredAt: t0.AddSeconds(-1));
+
+        var slow = fixture.CreateDispatchService(options, new FakeTimeProvider(t0));
+        var reservedBySlow = await slow.ReserveDueAsync(CancellationToken.None);
+
+        var takeoverAt = t0 + options.ReservationLease + TimeSpan.FromSeconds(1);
+        var other = fixture.CreateDispatchService(options, new FakeTimeProvider(takeoverAt));
+        Assert.Equal(1, await other.RunOnceAsync(CancellationToken.None));
+
+        DateTimeOffset nextAttemptAfterTakeover;
+        await using (var db = fixture.CreateDbContext())
+        {
+            var afterTakeover = await db.OutboxEvents.AsNoTracking().SingleAsync(e => e.Id == id);
+            Assert.Null(afterTakeover.DispatchedAt);
+            Assert.Equal(1, afterTakeover.AttemptCount);
+            nextAttemptAfterTakeover = afterTakeover.NextAttemptAt;
+        }
+
+        listener.SetDown(false);
+        await slow.ProcessAsync(reservedBySlow, CancellationToken.None);
+
+        Assert.Single(listener.AcceptedRequests);
+        await using (var db = fixture.CreateDbContext())
+        {
+            var outboxEvent = await db.OutboxEvents.AsNoTracking().SingleAsync(e => e.Id == id);
+            Assert.Null(outboxEvent.DispatchedAt);
+            Assert.Empty(outboxEvent.AcknowledgedSubscriptionIds);
+            Assert.Equal(1, outboxEvent.AttemptCount);
+            Assert.Equal(nextAttemptAfterTakeover, outboxEvent.NextAttemptAt);
+            Assert.Equal($"subscription {subscriptionId} responded 503", outboxEvent.LastError);
+        }
+    }
+
+    [Fact]
     public async Task RunOnceAsync_ConcurrentDispatchersDeliverEachEventExactlyOnce()
     {
         await using var listener = new TestWebhookListener();
