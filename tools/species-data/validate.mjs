@@ -258,6 +258,16 @@ function semanticIssues(profile, { fileName, hybridGroupIds, waterbodies }, file
     }
   }
 
+  // Forum, archive and model knowledge carry very low weight: a value resting on them alone has
+  // confidence low.
+  for (const [name, feature] of Object.entries(features)) {
+    for (const [pointer, fact] of [[`/features/${name}`, feature], [`/features/${name}/tolerance`, feature?.tolerance]]) {
+      if (isObject(fact) && Array.isArray(fact.sources) && externalSourceCount(fact.sources) === 0 && fact.confidence !== "low") {
+        issues.push(error(`${pointer}/confidence`, "a value without a source of kind catalog-of-fishes, literature or database must have confidence low", file));
+      }
+    }
+  }
+
   for (const name of SOURCE_RULE_FEATURES) {
     const feature = features[name];
     if (!isObject(feature) || !isObject(feature.verification)) continue;

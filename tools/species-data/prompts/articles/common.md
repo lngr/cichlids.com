@@ -31,7 +31,9 @@ only the abstract was readable supports only what the abstract states; hobby sou
 recommends. `data/species/waterbodies.yaml` holds the curated lake values with their sources; use
 these numbers and cite the underlying studies. Files of this repository (tables, profiles,
 prompts) are never a source. The cichlids.com forum archive is searchable with
-`node tools/species-data/archive-search.mjs "<term>"`; cite it with the title and url the tool
+`node tools/species-data/archive-search.mjs "<term>"`; forum posts are community experience with
+very low weight that supplements literature and supports a statement on its own only when no
+other source exists, and the text then says that keepers report it; cite it with the title and url the tool
 prints, and never copy member names or handles. The Cichlid Room Companion serves for verification
 only (see `tools/species-data/prompts/common.md`).
 

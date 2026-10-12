@@ -107,14 +107,28 @@ function short(v) {
   return String(v);
 }
 
+// Forum and archive posts are community experience; they follow the literature and database
+// sources under their own heading.
+const COMMUNITY_KINDS = new Set(['forum', 'archive']);
+
+function communitySplit(list, kindOf) {
+  const items = list ?? [];
+  return [items.filter((x) => !COMMUNITY_KINDS.has(kindOf(x))), items.filter((x) => COMMUNITY_KINDS.has(kindOf(x)))];
+}
+
+function listWithCommunity(main, community, render) {
+  const first = main.map(render).join('');
+  const second = community.length ? `<li class="community">Aus der Community</li>${community.map(render).join('')}` : '';
+  return `<ul class="src">${first}${second}</ul>`;
+}
+
 function sources(list) {
-  return `<ul class="src">${(list ?? [])
-    .map((s) => {
-      const title = esc(s.title ?? s.kind);
-      const link = s.url ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${title}</a>` : title;
-      return `<li><span class="kind">${esc(s.kind)}</span> ${link}${s.note ? ` <span class="muted">(${esc(s.note)})</span>` : ''}</li>`;
-    })
-    .join('')}</ul>`;
+  const [main, community] = communitySplit(list, (s) => s.kind);
+  return listWithCommunity(main, community, (s) => {
+    const title = esc(s.title ?? s.kind);
+    const link = s.url ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${title}</a>` : title;
+    return `<li><span class="kind">${esc(s.kind)}</span> ${link}${s.note ? ` <span class="muted">(${esc(s.note)})</span>` : ''}</li>`;
+  });
 }
 
 function disagreementsFor(p, key) {
@@ -145,13 +159,12 @@ function verificationBadge(v) {
 
 function evidenceList(list) {
   if (!list?.length) return '';
-  return `<details><summary>Angaben der Quellen (${list.length})</summary><ul class="src">${list
-    .map((e) => {
-      const title = esc(e.source?.title ?? e.source?.kind);
-      const link = e.source?.url ? `<a href="${esc(e.source.url)}" target="_blank" rel="noopener">${title}</a>` : title;
-      return `<li>${link}: ${fmt(e.value)}${e.note ? ` <span class="muted">(${esc(e.note)})</span>` : ''}</li>`;
-    })
-    .join('')}</ul></details>`;
+  const [main, community] = communitySplit(list, (e) => e.source?.kind);
+  return `<details><summary>Angaben der Quellen (${list.length})</summary>${listWithCommunity(main, community, (e) => {
+    const title = esc(e.source?.title ?? e.source?.kind);
+    const link = e.source?.url ? `<a href="${esc(e.source.url)}" target="_blank" rel="noopener">${title}</a>` : title;
+    return `<li>${link}: ${fmt(e.value)}${e.note ? ` <span class="muted">(${esc(e.note)})</span>` : ''}</li>`;
+  })}</details>`;
 }
 
 function toleranceBlock(t) {
@@ -272,6 +285,7 @@ details{margin:6px 0}summary{cursor:pointer;color:var(--accent);font-size:14px}
 ul.src{font-size:13px;padding-left:18px;margin:4px 0}ul.src .kind{color:var(--muted);font-size:11px;text-transform:uppercase}
 a{color:var(--accent);overflow-wrap:anywhere}
 .article p,.article li{max-width:70ch}.summary{font-style:italic;color:var(--muted)}sup .cite{font-size:10px;text-decoration:none}
+.src li.community{list-style:none;margin:6px 0 2px -18px;font-size:11px;text-transform:uppercase;color:var(--muted)}
 .dis-wrap{margin-top:10px}.dis-title{font-size:13px;font-weight:600;color:var(--dis);margin-bottom:2px}
 .dis{border-left:3px solid var(--dis);padding:4px 10px;margin:8px 0;font-size:14px}.dis-field{font-family:ui-monospace,monospace;font-size:12px;color:var(--dis)}.dis ul{margin:4px 0;padding-left:18px}
 .partners{display:grid;grid-template-columns:1fr 1fr;gap:12px}.partners ul{padding-left:18px;font-size:14px}

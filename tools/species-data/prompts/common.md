@@ -76,6 +76,9 @@ search and one page per species are enough.
   `node tools/species-data/archive-search.mjs "<name>" [limit]`; it prints each matching thread with
   its legacy thread id, its URL and excerpts of the posts. Cite archive findings as kind `archive`
   with exactly the printed title `cichlids.com forum thread <legacy id>` and the printed `url`.
+  Archive and forum posts are community experience with very low weight: list them after the
+  literature and database sources, and let a value rest on them only when no source of kind
+  `catalog-of-fishes`, `literature` or `database` states it; such a value has confidence `low`.
   Never copy member names or handles into any file.
 - Record in `evidence` which source states which value: one entry per source with the value it
   states, converted to the unit and shape of the feature, and an optional short note in your own

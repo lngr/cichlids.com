@@ -112,7 +112,10 @@ node tools/species-data/validate-articles.mjs data/knowledge/articles/<id>.md
   Hobby empfiehlt; wo sie abweichen, nennt der Artikel, welche Quelle was angibt.
 - Die Seewerte stehen geprüft in `data/species/waterbodies.yaml`; zitiert werden die Studien
   dahinter. Interne Dateien des Projekts (Tabellen, Profile, Prompts) sind nie eine Quelle.
-- Das Forumsarchiv durchsucht `node tools/species-data/archive-search.mjs "<begriff>"`. Zitiert
+- Das Forumsarchiv durchsucht `node tools/species-data/archive-search.mjs "<begriff>"`. Forenbeiträge
+  sind Erfahrungen der Community mit sehr geringem Gewicht: Sie ergänzen Fachquellen und belegen
+  eine Aussage nur, wenn keine Fachquelle dazu existiert; der Text sagt dann, dass es sich um
+  Berichte von Haltern handelt. Zitiert
   wird mit der ausgegebenen Legacy-Thread-ID und URL; Namen von Mitgliedern erscheinen nie.
 - Cichlid Room Companion dient nur der Verifikation und läuft über
   `tools/species-data/crc.mjs` (gedrosselt, mit Cache).

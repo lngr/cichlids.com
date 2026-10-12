@@ -290,7 +290,9 @@ Halter wissen muss:
 
 Die Profile entstehen über Agenten, die drei Quellen zusammenführen: ihr eigenes Fachwissen,
 Forenbeiträge und Fachliteratur sowie die eigenen Archivinhalte von cichlids.com. Jede Angabe nennt
-ihre Herkunft. Fremde Texte dienen als Beleg für Fakten; die Profiltexte sind eigene
+ihre Herkunft. Beiträge aus dem Forumsarchiv erscheinen als Erfahrungen der Community nach den
+Fachquellen; einen Wert belegen sie nur, wenn keine Fachquelle ihn nennt, und dann mit niedriger
+Sicherheit. Fremde Texte dienen als Beleg für Fakten; die Profiltexte sind eigene
 Formulierungen, weil Datenbanken wie Seriously Fish oder Cichlid Room Companion und Forenbeiträge
 urheberrechtlich geschützt sind. Aus fremden Quellen übernehmen die Agenten ausschließlich Fakten und
 Zahlen mit ihrer Quelle. Zu jedem Wert speichert das Profil, welche Quelle welche Angabe macht, und die

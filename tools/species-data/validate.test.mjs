@@ -440,3 +440,14 @@ test("a tolerance on a non-water feature fails", () => {
   profile.features.predation.tolerance = profile.features.ph.tolerance;
   assert.ok(errors(validateProfile(profile, options)).some((i) => i.pointer === "/features/predation/tolerance"));
 });
+
+test("a value resting only on archive or forum sources must have confidence low", () => {
+  const profile = makeProfile();
+  profile.features.feedingSpeed = fact("hasty", {
+    sources: [{ kind: "archive", title: "cichlids.com forum thread 13697", url: "https://www.cichlids.com/disc/read.php?2,13697" }],
+  });
+  const found = errors(validateProfile(profile, options));
+  assert.ok(found.some((i) => i.pointer === "/features/feedingSpeed/confidence"), JSON.stringify(found));
+  profile.features.feedingSpeed.confidence = "low";
+  assert.deepEqual(errors(validateProfile(profile, options)), []);
+});
