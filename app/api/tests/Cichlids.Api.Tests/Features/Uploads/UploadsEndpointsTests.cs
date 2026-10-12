@@ -450,6 +450,7 @@ public class UploadsEndpointsTests(UploadsFixture fixture)
             Assert.Equal(draft.Id, payload.RootElement.GetProperty("postId").GetInt64());
             Assert.Equal(published.Slug, payload.RootElement.GetProperty("slug").GetString());
             Assert.Equal(profileId, payload.RootElement.GetProperty("authorProfileId").GetInt64());
+            Assert.Equal(outboxEvent.OccurredAt, outboxEvent.NextAttemptAt);
         }
 
         var gallery = await GetGalleryAsync();

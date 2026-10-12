@@ -2,7 +2,8 @@ namespace Cichlids.Domain.Entities;
 
 /// <summary>
 /// A domain event recorded in the same transaction as the change that raised it, for later
-/// dispatch to registered webhook subscribers.
+/// dispatch to registered webhook subscribers. The event is open until it is either dispatched or
+/// given up; an open event is attempted again once its next attempt time has come.
 /// </summary>
 public class OutboxEvent
 {
@@ -17,7 +18,62 @@ public class OutboxEvent
     public string AggregateType { get; set; } = string.Empty;
     public string AggregateId { get; set; } = string.Empty;
     public string Payload { get; set; } = string.Empty;
+
+    /// <summary>
+    /// When every matching subscriber had acknowledged the event; null while the event is open or
+    /// after it was given up.
+    /// </summary>
     public DateTimeOffset? DispatchedAt { get; set; }
+
+    /// <summary>
+    /// Failed delivery attempts since the event occurred or since its last redelivery.
+    /// </summary>
     public int AttemptCount { get; set; }
+
     public string? LastError { get; set; }
+
+    /// <summary>
+    /// The earliest time the event is attempted next. While a dispatcher instance holds the event,
+    /// this is the end of that instance's reservation.
+    /// </summary>
+    public DateTimeOffset NextAttemptAt { get; set; }
+
+    /// <summary>
+    /// When the last failed delivery attempt happened; null before the first failure.
+    /// </summary>
+    public DateTimeOffset? LastAttemptAt { get; set; }
+
+    /// <summary>
+    /// When the event was given up after failing for the whole delivery window; null while the
+    /// event is open or after it was dispatched.
+    /// </summary>
+    public DateTimeOffset? GivenUpAt { get; set; }
+
+    /// <summary>
+    /// When an administrator last triggered the redelivery of the event; null if never. A
+    /// redelivery starts a new delivery window.
+    /// </summary>
+    public DateTimeOffset? RedeliveredAt { get; set; }
+
+    /// <summary>
+    /// The webhook subscriptions that answered a delivery of this event with a success status.
+    /// </summary>
+    public List<long> AcknowledgedSubscriptionIds { get; set; } = [];
+
+    /// <summary>
+    /// Creates an open event with a new version 7 id that is due for delivery at the time it
+    /// occurred.
+    /// </summary>
+    public static OutboxEvent Create(
+        string eventType, string aggregateType, string aggregateId, string payload, DateTimeOffset occurredAt) =>
+        new()
+        {
+            Id = Guid.CreateVersion7(),
+            OccurredAt = occurredAt,
+            EventType = eventType,
+            AggregateType = aggregateType,
+            AggregateId = aggregateId,
+            Payload = payload,
+            NextAttemptAt = occurredAt,
+        };
 }

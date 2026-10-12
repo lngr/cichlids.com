@@ -132,15 +132,8 @@ public sealed class CommentsWriteService(CichlidsDbContext context, IObjectStore
     private void AddOutboxEvent(
         string eventType, string aggregateType, string aggregateId, DateTimeOffset occurredAt, object payload)
     {
-        context.OutboxEvents.Add(new OutboxEvent
-        {
-            Id = Guid.CreateVersion7(),
-            OccurredAt = occurredAt,
-            EventType = eventType,
-            AggregateType = aggregateType,
-            AggregateId = aggregateId,
-            Payload = JsonSerializer.Serialize(payload, PayloadOptions),
-        });
+        context.OutboxEvents.Add(OutboxEvent.Create(
+            eventType, aggregateType, aggregateId, JsonSerializer.Serialize(payload, PayloadOptions), occurredAt));
     }
 
     private async Task<CommentDto> ToCommentDtoAsync(Comment comment, short? stars, CancellationToken cancellationToken)

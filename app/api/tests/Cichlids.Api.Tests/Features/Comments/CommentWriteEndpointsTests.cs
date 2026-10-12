@@ -64,6 +64,7 @@ public class CommentWriteEndpointsTests(ApiFixture fixture)
             }
 
             Assert.Null(commentEvent.DispatchedAt);
+            Assert.Equal(commentEvent.OccurredAt, commentEvent.NextAttemptAt);
 
             var ratingEvent = await db.OutboxEvents.SingleAsync(
                 e => e.EventType == "rating.created" && e.AggregateType == "post" && e.AggregateId == postId.ToString());
