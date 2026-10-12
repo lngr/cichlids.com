@@ -4,6 +4,7 @@ title: Apply the ETL rule corrections from the MVP review
 status: To Do
 assignee: []
 created_date: '2026-10-12 04:48'
+updated_date: '2026-10-12 06:40'
 labels: []
 dependencies: []
 references:
@@ -36,3 +37,9 @@ Placeholder usernames are reserved for new accounts. Empty legacy galleries are 
 - [ ] #4 Authoritative domain logic is covered by unit/integration tests
 - [ ] #5 All CI test suites are fully green
 <!-- DOD:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+R19 (vote timestamps from America/New_York to UTC) moved to TASK-3.32. The R16 verify row (skipped empty galleries, legacy-derived) is in TASK-3.32; the R16 step counter and class comment stay here. R35 touches the same CommentMigrationStep methods, so this task follows TASK-3.32.
+<!-- SECTION:NOTES:END -->

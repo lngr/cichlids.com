@@ -4,6 +4,7 @@ title: One rating per member and target and no self-rating
 status: To Do
 assignee: []
 created_date: '2026-10-12 04:48'
+updated_date: '2026-10-12 06:40'
 labels: []
 dependencies: []
 references:
@@ -36,3 +37,9 @@ A member has exactly one rating per target; a new rating replaces the previous o
 - [ ] #4 Authoritative domain logic is covered by unit/integration tests
 - [ ] #5 All CI test suites are fully green
 <!-- DOD:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+The ETL part of R9 (newest legacy rating per member and target, self-rating drop, counters) and the import report of AC #3 are delivered by TASK-3.32. Anonymous ratings (fe_user = 0) migrate unchanged, so the unique index must allow several rows with a NULL profile_id.
+<!-- SECTION:NOTES:END -->

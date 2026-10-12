@@ -348,8 +348,11 @@ R22 ist verworfen. DRAFT-4 ist durch R9 entschieden und archiviert.
   - Mitglieder bewerten ihre eigenen Inhalte nicht. Die API lehnt solche Bewertungen ab, und die
     App bietet bei eigenen Inhalten keine Sterne an.
   - Der ETL übernimmt Legacy-Selbstbewertungen nicht als Bewertung; der Kommentartext bleibt
-    erhalten. Die Anzahl steht im Prüfbericht. Die Altdaten enthalten 23.626 Selbstbewertungen
-    eigener Bilder und 143 eigener Becken von 1.433 Mitgliedern.
+    erhalten. Die Anzahl steht im Prüfbericht. Die Altdaten enthalten 16.073 Selbstbewertungen
+    eigener Bilder von 1.432 Mitgliedern (14.809 davon auf übernommenen Bildern) und 143
+    Selbstbewertungen eigener Becken.
+  - Anonyme Bewertungen (ohne Mitglied) werden unverändert übernommen. Sie werden weder
+    zusammengefasst noch als Selbstbewertung gezählt.
   - Begründung: Durchschnitte und Bestenlisten zeigen das Urteil anderer Mitglieder.
 
 ### R10 SSRF über Webhook-URLs
