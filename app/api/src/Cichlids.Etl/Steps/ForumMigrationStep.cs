@@ -4,6 +4,7 @@ using Cichlids.Etl.Identity;
 using Cichlids.Etl.Persistence;
 using Cichlids.Etl.Runtime;
 using Cichlids.Infrastructure.Identity;
+using Cichlids.Infrastructure.Media;
 using Cichlids.Infrastructure.Persistence.Conversions;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MySqlConnector;
@@ -355,8 +356,9 @@ public sealed class ForumMigrationStep : IEtlStep
     /// <summary>
     /// Exports every migrated post's attachments (<c>phorum_files</c> rows linked to a message)
     /// into the object store as media items. Idempotent per file id through the deterministic
-    /// storage key: a second run with an unchanged decoded byte size skips the re-upload but still
-    /// keeps the media_item and discussion_post_media rows in sync.
+    /// storage key: an attachment whose stored object carries the checksum of the legacy bytes is
+    /// skipped by the upload, and the media_item and discussion_post_media rows are kept in sync with
+    /// the legacy data in every case.
     /// </summary>
     private static async Task MigrateAttachmentsAsync(
         EtlContext context,
@@ -365,8 +367,6 @@ public sealed class ForumMigrationStep : IEtlStep
         StepStatistics stats,
         CancellationToken cancellationToken)
     {
-        var existingByteSizeByStorageKey = await LoadExistingAttachmentByteSizesAsync(context, cancellationToken);
-
         const string sql = $"""
             SELECT file_id, filename, file_data, message_id
             FROM {PhorumDatabase}.phorum_files
@@ -378,7 +378,7 @@ public sealed class ForumMigrationStep : IEtlStep
         var attachments = new List<(string StorageKey, int PostLegacyId, int Sort)>();
         var nextSortByPostLegacyId = new Dictionary<int, int>();
         var uploaded = 0;
-        var uploadsSkippedUnchanged = 0;
+        var alreadyPresent = 0;
 
         await using (var command = new MySqlCommand(sql, context.Legacy))
         await using (var reader = await command.ExecuteReaderAsync(cancellationToken))
@@ -412,14 +412,20 @@ public sealed class ForumMigrationStep : IEtlStep
                 var checksum = Convert.ToHexStringLower(SHA256.HashData(bytes));
                 var ownerProfileId = authorProfileIdByLegacyId.GetValueOrDefault(messageId);
 
-                if (existingByteSizeByStorageKey.TryGetValue(storageKey, out var existingByteSize) && existingByteSize == bytes.LongLength)
+                var head = await context.ObjectStore!.HeadAsync(storageKey, cancellationToken);
+                if (MediaObjectMetadata.Decide(head, checksum, MediaObjectMetadata.OriginalPipelineVersion) == ObjectState.Current)
                 {
-                    uploadsSkippedUnchanged++;
+                    alreadyPresent++;
                 }
                 else
                 {
                     await using var content = new MemoryStream(bytes);
-                    await context.ObjectStore!.PutAsync(storageKey, content, ResolveContentType(filename), cancellationToken);
+                    await context.ObjectStore.PutAsync(
+                        storageKey,
+                        content,
+                        ResolveContentType(filename),
+                        MediaObjectMetadata.ForOriginal(checksum, checksum, photo: null),
+                        cancellationToken);
                     uploaded++;
                 }
 
@@ -440,7 +446,7 @@ public sealed class ForumMigrationStep : IEtlStep
             }
         }
 
-        stats.AddWarning($"forum attachments: {uploaded} uploaded, {uploadsSkippedUnchanged} skipped (unchanged size).");
+        stats.AddWarning($"forum attachments: {uploaded} uploaded, {alreadyPresent} already in the object store.");
 
         if (mediaRows.Count == 0)
         {
@@ -507,23 +513,6 @@ public sealed class ForumMigrationStep : IEtlStep
         }
 
         return results;
-    }
-
-    private static async Task<Dictionary<string, long?>> LoadExistingAttachmentByteSizesAsync(
-        EtlContext context, CancellationToken cancellationToken)
-    {
-        await using var command = new NpgsqlCommand(
-            "SELECT storage_key, byte_size FROM media_item WHERE storage_key LIKE 'forum_attachments/%'",
-            context.Target, context.Transaction);
-        await using var reader = await command.ExecuteReaderAsync(cancellationToken);
-
-        var result = new Dictionary<string, long?>();
-        while (await reader.ReadAsync(cancellationToken))
-        {
-            result[reader.GetString(0)] = reader.IsDBNull(1) ? null : reader.GetInt64(1);
-        }
-
-        return result;
     }
 
     private static async Task RecomputeThreadAggregatesAsync(EtlContext context, CancellationToken cancellationToken)

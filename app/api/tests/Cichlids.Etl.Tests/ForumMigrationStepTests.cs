@@ -4,6 +4,8 @@ using Cichlids.Domain.Entities;
 using Cichlids.Domain.Enums;
 using Cichlids.Etl.Runtime;
 using Cichlids.Etl.Steps;
+using Cichlids.Infrastructure.Media;
+using Cichlids.Infrastructure.Storage;
 using Microsoft.EntityFrameworkCore;
 
 namespace Cichlids.Etl.Tests;
@@ -168,6 +170,53 @@ public sealed class ForumMigrationStepTests(EtlFixture fixture)
         }
     }
 
+    private const string AttachmentKey = "forum_attachments/9001_attach.jpg";
+
+    [Fact]
+    public async Task UploadsNoPresentAttachmentAgainEvenWhenTheDatabaseRowsAreGone()
+    {
+        await RunPrerequisiteStepsAsync();
+        await RunStepAsync();
+
+        var recording = new RecordingObjectStore(fixture.ObjectStore);
+        await RunStepAsync(recording);
+        Assert.Empty(recording.PutKeys);
+
+        // After a database reset the media_item rows are gone while the object stays in the store.
+        await using (var db = fixture.CreateTargetContext())
+        {
+            await db.Database.ExecuteSqlRawAsync("DELETE FROM discussion_post_media");
+            await db.Database.ExecuteSqlRawAsync("DELETE FROM media_item WHERE storage_key LIKE 'forum_attachments/%'");
+        }
+
+        var afterReset = new RecordingObjectStore(fixture.ObjectStore);
+        var stats = await RunStepAsync(afterReset);
+
+        Assert.Empty(afterReset.PutKeys);
+        Assert.Contains(stats.Warnings, w => w.Contains("forum attachments: 0 uploaded"));
+        await using var readback = fixture.CreateTargetContext();
+        Assert.Equal(1, await readback.MediaItems.CountAsync(m => m.StorageKey == AttachmentKey));
+    }
+
+    [Fact]
+    public async Task UploadsADeletedAttachmentAgainWithItsChecksumMetadata()
+    {
+        await RunPrerequisiteStepsAsync();
+        await RunStepAsync();
+        await fixture.ObjectStore.DeleteAsync(AttachmentKey);
+
+        var recording = new RecordingObjectStore(fixture.ObjectStore);
+        await RunStepAsync(recording);
+
+        Assert.Equal([AttachmentKey], recording.PutKeys);
+        var head = await fixture.ObjectStore.HeadAsync(AttachmentKey);
+        Assert.NotNull(head);
+        var checksum = Convert.ToHexStringLower(SHA256.HashData(AttachmentBytes));
+        Assert.Equal(AttachmentBytes.LongLength, head!.Size);
+        Assert.Equal(checksum, head.Metadata[MediaObjectMetadata.Sha256Key]);
+        Assert.Equal(checksum, head.Metadata[MediaObjectMetadata.SourceSha256Key]);
+    }
+
     // A target migrated under the naive root rule holds a discussion_thread row per parent_id-0
     // message (legacy_id 90007 and 90008 here) and a discussion_post row for the moved notice
     // (90007), attributed to thread A because its own thread column resolves there, with an
@@ -284,10 +333,10 @@ public sealed class ForumMigrationStepTests(EtlFixture fixture)
         }
     });
 
-    private Task<StepStatistics> RunStepAsync() => fixture.RunExclusiveAsync(async () =>
+    private Task<StepStatistics> RunStepAsync(IObjectStore? objectStore = null) => fixture.RunExclusiveAsync(async () =>
     {
         await using var context = await EtlContext.CreateAsync(
-            fixture.LegacyConnectionString, fixture.TargetConnectionString, CancellationToken.None, fixture.ObjectStore);
+            fixture.LegacyConnectionString, fixture.TargetConnectionString, CancellationToken.None, objectStore ?? fixture.ObjectStore);
         await EtlRunner.RunAsync(new ForumMigrationStep(), context, CancellationToken.None);
         return context.Statistics.ForStep("forum");
     });
