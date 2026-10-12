@@ -71,4 +71,18 @@ public sealed class MediaStorageKeysTests
     {
         Assert.Equal(["variants/", "forum_attachments/"], MediaStorageKeys.PublicPrefixes);
     }
+
+    [Theory]
+    [InlineData("originals/user_pics/1550/foo.jpg", "variants/copy/originals/user_pics/1550/foo.jpg")]
+    [InlineData("forum_attachments/9001_attach.gif", "variants/copy/forum_attachments/9001_attach.gif")]
+    public void BuildsThePublicCopyKeyUnderTheVariantsPrefix(string originalKey, string expected)
+    {
+        Assert.Equal(expected, MediaStorageKeys.BuildPublicCopyKey(originalKey));
+    }
+
+    [Fact]
+    public void RefusesAPublicCopyKeyForAKeyThatIsNeitherAnOriginalNorAForumAttachment()
+    {
+        Assert.Throws<ArgumentException>(() => MediaStorageKeys.BuildPublicCopyKey("variants/thumb/x.jpg"));
+    }
 }

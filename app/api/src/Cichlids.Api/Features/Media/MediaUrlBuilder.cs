@@ -13,15 +13,28 @@ public sealed class MediaUrlBuilder(IObjectStore objectStore)
 {
     private static readonly string[] LabelsLargestFirst = ["large", "medium", "small", "thumb"];
 
-    public ImageUrlsDto Build(IReadOnlyDictionary<string, string> variantStorageKeysByLabel) =>
-        new(
+    /// <summary>
+    /// The URLs of the sized variants. A media item whose original cannot be decoded has a public
+    /// copy and no sized variant; every size resolves to that copy.
+    /// </summary>
+    public ImageUrlsDto Build(IReadOnlyDictionary<string, string> variantStorageKeysByLabel)
+    {
+        if (!LabelsLargestFirst.Any(variantStorageKeysByLabel.ContainsKey)
+            && FindUrl(variantStorageKeysByLabel, MediaVariantSpec.PublicCopyLabel) is { } copy)
+        {
+            return new ImageUrlsDto(copy, copy, copy, copy);
+        }
+
+        return new ImageUrlsDto(
             FindUrl(variantStorageKeysByLabel, "thumb"),
             FindUrl(variantStorageKeysByLabel, "small"),
             FindUrl(variantStorageKeysByLabel, "medium"),
             FindUrl(variantStorageKeysByLabel, "large"));
+    }
 
     /// <summary>
-    /// The URL of the largest variant present, or null when the media item has no variant.
+    /// The URL of the largest sized variant present, otherwise of the public copy, or null when
+    /// the media item has neither.
     /// </summary>
     public string? BuildBest(IReadOnlyDictionary<string, string> variantStorageKeysByLabel)
     {
@@ -33,7 +46,7 @@ public sealed class MediaUrlBuilder(IObjectStore objectStore)
             }
         }
 
-        return null;
+        return FindUrl(variantStorageKeysByLabel, MediaVariantSpec.PublicCopyLabel);
     }
 
     private string? FindUrl(IReadOnlyDictionary<string, string> variantStorageKeysByLabel, string label) =>

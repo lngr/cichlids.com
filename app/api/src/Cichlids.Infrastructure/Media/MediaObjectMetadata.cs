@@ -19,7 +19,8 @@ public enum ObjectState
 }
 
 /// <summary>
-/// Pixel size of a photo original, or the marker that the image could not be decoded.
+/// Pixel size of a photo original and whether it decodes. An undecodable photo has the size its
+/// header declares when it is in a format browsers render, otherwise no size.
 /// </summary>
 public sealed record PhotoInfo(int? Width, int? Height, bool Decodable)
 {
@@ -36,7 +37,7 @@ public sealed record PhotoInfo(int? Width, int? Height, bool Decodable)
 /// with the source an object would be produced from. The checksum of the stored bytes (sha256),
 /// the checksum of the source file (source-sha256) and the pipeline version identify an object's
 /// content without reading it; photo originals also record their width, height and whether the
-/// image decodes.
+/// image decodes, and the public copy of an undecodable original records its width and height.
 /// </summary>
 public static class MediaObjectMetadata
 {
@@ -109,20 +110,13 @@ public static class MediaObjectMetadata
             return null;
         }
 
+        var size = ReadSize(head);
         if (decodable != "true")
         {
-            return PhotoInfo.Undecodable;
+            return size is { } declared ? new PhotoInfo(declared.Width, declared.Height, false) : PhotoInfo.Undecodable;
         }
 
-        if (head.Metadata.TryGetValue(WidthKey, out var width)
-            && head.Metadata.TryGetValue(HeightKey, out var height)
-            && int.TryParse(width, NumberStyles.None, CultureInfo.InvariantCulture, out var w)
-            && int.TryParse(height, NumberStyles.None, CultureInfo.InvariantCulture, out var h))
-        {
-            return new PhotoInfo(w, h);
-        }
-
-        return null;
+        return size is { } measured ? new PhotoInfo(measured.Width, measured.Height) : null;
     }
 
     /// <summary>
@@ -146,4 +140,26 @@ public static class MediaObjectMetadata
 
         return matches ? ObjectState.Current : ObjectState.Differs;
     }
+
+    /// <summary>
+    /// Builds the metadata of the public copy of an undecodable original: the variant metadata
+    /// and the width and height its header declares, so the copy is recorded without reading it.
+    /// </summary>
+    public static IReadOnlyDictionary<string, string> ForPublicCopy(string sha256, string sourceSha256, int width, int height) =>
+        new Dictionary<string, string>(ForVariant(sha256, sourceSha256))
+        {
+            [WidthKey] = width.ToString(CultureInfo.InvariantCulture),
+            [HeightKey] = height.ToString(CultureInfo.InvariantCulture),
+        };
+
+    /// <summary>
+    /// Reads the width and height recorded on an object, or null when it carries none.
+    /// </summary>
+    public static (int Width, int Height)? ReadSize(ObjectHead head) =>
+        head.Metadata.TryGetValue(WidthKey, out var width)
+        && head.Metadata.TryGetValue(HeightKey, out var height)
+        && int.TryParse(width, NumberStyles.None, CultureInfo.InvariantCulture, out var w)
+        && int.TryParse(height, NumberStyles.None, CultureInfo.InvariantCulture, out var h)
+            ? (w, h)
+            : null;
 }

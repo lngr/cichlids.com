@@ -70,6 +70,35 @@ public class MediaUrlBuilderTests
             () => _builder.BuildBest(new Dictionary<string, string> { ["large"] = "originals/a.jpg" }));
     }
 
+    [Fact]
+    public void Build_resolves_every_size_to_the_public_copy_of_an_item_without_sized_variants()
+    {
+        var image = _builder.Build(new Dictionary<string, string> { ["copy"] = "variants/copy/originals/a.jpg" });
+
+        var copy = $"{BaseUrl}/variants/copy/originals/a.jpg";
+        Assert.Equal(new ImageUrlsDto(copy, copy, copy, copy), image);
+    }
+
+    [Fact]
+    public void Build_prefers_sized_variants_over_the_public_copy()
+    {
+        var image = _builder.Build(new Dictionary<string, string>
+        {
+            ["thumb"] = "variants/thumb/originals/a.jpg.jpg",
+            ["copy"] = "variants/copy/originals/a.jpg",
+        });
+
+        Assert.Equal(new ImageUrlsDto($"{BaseUrl}/variants/thumb/originals/a.jpg.jpg", null, null, null), image);
+    }
+
+    [Fact]
+    public void BuildBest_falls_back_to_the_public_copy()
+    {
+        Assert.Equal(
+            $"{BaseUrl}/variants/copy/originals/a.jpg",
+            _builder.BuildBest(new Dictionary<string, string> { ["copy"] = "variants/copy/originals/a.jpg" }));
+    }
+
     /// <summary>
     /// An object store that only builds public URLs; every storage operation fails, since URL
     /// building never reaches the store.

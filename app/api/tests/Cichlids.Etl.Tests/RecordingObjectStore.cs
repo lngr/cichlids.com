@@ -4,13 +4,14 @@ using Cichlids.Infrastructure.Storage;
 namespace Cichlids.Etl.Tests;
 
 /// <summary>
-/// Wraps an object store and records the keys that were uploaded and downloaded through it, so a
-/// test can assert that a run left the store untouched.
+/// Wraps an object store and records the keys that were uploaded, downloaded and looked up through
+/// it, so a test can assert that a run left the store untouched.
 /// </summary>
 internal sealed class RecordingObjectStore(IObjectStore inner) : IObjectStore
 {
     private readonly ConcurrentQueue<string> _puts = new();
     private readonly ConcurrentQueue<string> _gets = new();
+    private readonly ConcurrentQueue<string> _heads = new();
 
     /// <summary>
     /// Keys whose download returns null although a head call still finds them, as when an object
@@ -27,6 +28,8 @@ internal sealed class RecordingObjectStore(IObjectStore inner) : IObjectStore
     public IReadOnlyCollection<string> PutKeys => _puts;
 
     public IReadOnlyCollection<string> GetKeys => _gets;
+
+    public IReadOnlyCollection<string> HeadKeys => _heads;
 
     public Task PutAsync(string key, Stream content, string contentType, CancellationToken cancellationToken = default)
     {
@@ -45,8 +48,11 @@ internal sealed class RecordingObjectStore(IObjectStore inner) : IObjectStore
         return inner.PutAsync(key, content, contentType, metadata, cancellationToken);
     }
 
-    public Task<ObjectHead?> HeadAsync(string key, CancellationToken cancellationToken = default) =>
-        inner.HeadAsync(key, cancellationToken);
+    public Task<ObjectHead?> HeadAsync(string key, CancellationToken cancellationToken = default)
+    {
+        _heads.Enqueue(key);
+        return inner.HeadAsync(key, cancellationToken);
+    }
 
     public Task<Stream?> GetAsync(string key, CancellationToken cancellationToken = default)
     {

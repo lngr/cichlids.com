@@ -9,6 +9,12 @@ public static class MediaVariantSpec
 {
     public const int JpegQuality = 82;
 
+    /// <summary>
+    /// The label of the public copy of an original that cannot be decoded: the original's
+    /// sanitized bytes in a format browsers render, such as BMP.
+    /// </summary>
+    public const string PublicCopyLabel = "copy";
+
     private static readonly (string Label, int TargetWidth)[] Targets =
     [
         ("thumb", 200),

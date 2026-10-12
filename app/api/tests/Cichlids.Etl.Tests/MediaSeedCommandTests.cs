@@ -2,6 +2,7 @@ using System.Security.Cryptography;
 using System.Text.Json;
 using Cichlids.Etl.Media;
 using Cichlids.Infrastructure.Media;
+using Cichlids.Infrastructure.Storage;
 using Cichlids.Tests.Shared;
 using MetadataExtractor.Formats.Exif;
 using MetadataExtractor.Formats.Icc;
@@ -736,7 +737,10 @@ public sealed class MediaSeedCommandTests(MediaEtlFixture fixture)
                 var item = await db.MediaItems.SingleAsync();
                 Assert.Null(item.Width);
                 Assert.Null(item.Height);
-                Assert.Empty(await db.MediaVariants.ToListAsync());
+
+                // A truncated WebP is in a format browsers render, so it gets the public copy only.
+                var variant = await db.MediaVariants.SingleAsync();
+                Assert.Equal(MediaVariantSpec.PublicCopyLabel, variant.Label);
             }
 
             var head = await fixture.ObjectStore.HeadAsync($"originals/{path}");
@@ -880,7 +884,7 @@ public sealed class MediaSeedCommandTests(MediaEtlFixture fixture)
 
             Assert.Equal(1, summary.Broken);
             Assert.Equal(0, summary.VariantsUploaded);
-            Assert.Equal([key], recording.PutKeys);
+            Assert.Equivalent(new[] { key, MediaStorageKeys.BuildPublicCopyKey(key) }, recording.PutKeys);
             var head = await fixture.ObjectStore.HeadAsync(key);
             Assert.Equal("false", head!.Metadata[MediaObjectMetadata.DecodableKey]);
         }
@@ -1150,6 +1154,186 @@ public sealed class MediaSeedCommandTests(MediaEtlFixture fixture)
         }
     }
 
+    // === public copies of undecodable pictures ========================================================
+
+    [Fact]
+    public async Task GivesABmpNamedJpgAPublicCopyWithItsSniffedContentTypeAndUploadsNothingOnASecondRun()
+    {
+        var root = MediaTestSupport.CreateImagesRoot();
+        try
+        {
+            const int uid = 71240;
+            var bmp = SyntheticImages.Bmp(30, 20);
+            var path = MediaTestSupport.WriteFile(root, uid, "legacy.jpg", bmp);
+            await using (var legacy = await MediaTestSupport.OpenLegacyConnectionAsync(fixture))
+            {
+                await MediaTestSupport.InsertLegacyPictureAsync(legacy, uid, path);
+            }
+
+            var target = await fixture.CreateIsolatedTargetAsync();
+            var key = $"originals/{path}";
+            var mediaId = await MediaTestSupport.InsertMediaItemAsync(fixture, uid, key, targetConnectionString: target);
+
+            var reportPath = Path.Combine(root, "report.json");
+            var first = await MediaTestSupport.RunSeedAsync(fixture, root, missingOutPath: reportPath, targetConnectionString: target);
+
+            Assert.Equal(1, first.CopiesUploaded);
+            var copyKey = MediaStorageKeys.BuildPublicCopyKey(key);
+            Assert.Equal($"variants/copy/{key}", copyKey);
+            Assert.Equal(bmp, await MediaTestSupport.DownloadAsync(fixture, copyKey));
+
+            await ((S3ObjectStore)fixture.ObjectStore).EnsurePublicReadPolicyAsync(MediaStorageKeys.PublicPrefixes);
+            using var anonymous = new HttpClient();
+            using var response = await anonymous.GetAsync(fixture.ObjectStore.GetPublicUrl(copyKey));
+            Assert.Equal(System.Net.HttpStatusCode.OK, response.StatusCode);
+            Assert.Equal("image/bmp", response.Content.Headers.ContentType?.MediaType);
+
+            var originalHead = await fixture.ObjectStore.HeadAsync(key);
+            Assert.Equal("false", originalHead!.Metadata[MediaObjectMetadata.DecodableKey]);
+            Assert.Equal("30", originalHead.Metadata[MediaObjectMetadata.WidthKey]);
+            Assert.Equal("20", originalHead.Metadata[MediaObjectMetadata.HeightKey]);
+
+            await using (var db = fixture.CreateTargetContext(target))
+            {
+                var copy = await db.MediaVariants.SingleAsync(v => v.MediaItemId == mediaId);
+                Assert.Equal(MediaVariantSpec.PublicCopyLabel, copy.Label);
+                Assert.Equal(copyKey, copy.StorageKey);
+                Assert.Equal(30, copy.Width);
+                Assert.Equal(bmp.LongLength, copy.ByteSize);
+            }
+
+            var report = JsonSerializer.Deserialize<MissingReportDto>(await File.ReadAllTextAsync(reportPath), JsonOptions)!;
+            Assert.Equal([key], report.Broken);
+            var listed = Assert.Single(report.Copies);
+            Assert.Equal(mediaId, listed.MediaItemId);
+            Assert.Equal(key, listed.StorageKey);
+            Assert.Equal(copyKey, listed.CopyKey);
+
+            var secondTarget = await fixture.CreateIsolatedTargetAsync();
+            await MediaTestSupport.InsertMediaItemAsync(fixture, uid, key, targetConnectionString: secondTarget);
+            var recording = new RecordingObjectStore(fixture.ObjectStore);
+            var second = await MediaTestSupport.RunSeedAsync(fixture, root, targetConnectionString: secondTarget, objectStore: recording);
+
+            Assert.Empty(recording.PutKeys);
+            Assert.Equal(1, second.CopiesPresent);
+            await using var secondDb = fixture.CreateTargetContext(secondTarget);
+            var recorded = await secondDb.MediaVariants.SingleAsync();
+            Assert.Equal(copyKey, recorded.StorageKey);
+            Assert.Equal(30, recorded.Width);
+        }
+        finally
+        {
+            Directory.Delete(root, recursive: true);
+        }
+    }
+
+    [Fact]
+    public async Task GivesNoCopyToAnEmptyFileOrANonImageAndReportsThem()
+    {
+        var root = MediaTestSupport.CreateImagesRoot();
+        try
+        {
+            var emptyPath = MediaTestSupport.WriteFile(root, 71250, "empty.jpg", []);
+            var textPath = MediaTestSupport.WriteFile(root, 71251, "notes.jpg", "not an image at all"u8.ToArray());
+            await using (var legacy = await MediaTestSupport.OpenLegacyConnectionAsync(fixture))
+            {
+                await MediaTestSupport.InsertLegacyPictureAsync(legacy, 71250, emptyPath);
+                await MediaTestSupport.InsertLegacyPictureAsync(legacy, 71251, textPath);
+            }
+
+            var target = await fixture.CreateIsolatedTargetAsync();
+            await MediaTestSupport.InsertMediaItemAsync(fixture, 71250, $"originals/{emptyPath}", targetConnectionString: target);
+            await MediaTestSupport.InsertMediaItemAsync(fixture, 71251, $"originals/{textPath}", targetConnectionString: target);
+
+            var reportPath = Path.Combine(root, "report.json");
+            var summary = await MediaTestSupport.RunSeedAsync(fixture, root, missingOutPath: reportPath, targetConnectionString: target);
+
+            Assert.Equal(0, summary.CopiesUploaded);
+            Assert.Equal(2, summary.Broken);
+            var report = JsonSerializer.Deserialize<MissingReportDto>(await File.ReadAllTextAsync(reportPath), JsonOptions)!;
+            Assert.Empty(report.Copies);
+            Assert.Equivalent(new[] { $"originals/{emptyPath}", $"originals/{textPath}" }, report.Broken);
+            Assert.Null(await fixture.ObjectStore.HeadAsync(MediaStorageKeys.BuildPublicCopyKey($"originals/{emptyPath}")));
+            Assert.Null(await fixture.ObjectStore.HeadAsync(MediaStorageKeys.BuildPublicCopyKey($"originals/{textPath}")));
+            await using (var db = fixture.CreateTargetContext(target))
+            {
+                Assert.Empty(await db.MediaVariants.ToListAsync());
+            }
+
+            // The stored originals record that no browser renders them, so a second run looks up
+            // no copy and stores nothing.
+            var recording = new RecordingObjectStore(fixture.ObjectStore);
+            await MediaTestSupport.RunSeedAsync(fixture, root, targetConnectionString: target, objectStore: recording);
+            Assert.DoesNotContain(recording.HeadKeys, k => k.StartsWith("variants/copy/", StringComparison.Ordinal));
+            Assert.Empty(recording.PutKeys);
+        }
+        finally
+        {
+            Directory.Delete(root, recursive: true);
+        }
+    }
+
+    [Fact]
+    public async Task GivesNoCopyToAnUndecodableForumAttachment()
+    {
+        var root = MediaTestSupport.CreateImagesRoot();
+        try
+        {
+            var bmp = SyntheticImages.Bmp(30, 20);
+            var sha = Convert.ToHexStringLower(SHA256.HashData(bmp));
+            const string key = "forum_attachments/71270_scan.bmp";
+            await fixture.ObjectStore.PutAsync(key, new MemoryStream(bmp), "image/bmp", MediaObjectMetadata.ForOriginal(sha, sha, photo: null));
+
+            var target = await fixture.CreateIsolatedTargetAsync();
+            await MediaTestSupport.InsertMediaItemAsync(fixture, 71270, key, targetConnectionString: target);
+
+            var recording = new RecordingObjectStore(fixture.ObjectStore);
+            var summary = await MediaTestSupport.RunSeedAsync(fixture, root, targetConnectionString: target, objectStore: recording);
+
+            Assert.Equal(1, summary.Broken);
+            Assert.Equal(0, summary.CopiesUploaded);
+            Assert.Equal([key], recording.PutKeys);
+            Assert.Null(await fixture.ObjectStore.HeadAsync(MediaStorageKeys.BuildPublicCopyKey(key)));
+            await using var db = fixture.CreateTargetContext(target);
+            Assert.Empty(await db.MediaVariants.ToListAsync());
+        }
+        finally
+        {
+            Directory.Delete(root, recursive: true);
+        }
+    }
+
+    [Fact]
+    public async Task RejectsABmpDeclaringMoreThanThePixelLimitAndUploadsNothing()
+    {
+        var root = MediaTestSupport.CreateImagesRoot();
+        try
+        {
+            const int uid = 71260;
+            var bmp = SyntheticImages.Bmp(1, 1);
+            System.Buffers.Binary.BinaryPrimitives.WriteInt32LittleEndian(bmp.AsSpan(18), 200000);
+            System.Buffers.Binary.BinaryPrimitives.WriteInt32LittleEndian(bmp.AsSpan(22), 200000);
+            var path = MediaTestSupport.WriteFile(root, uid, "bomb.bmp", bmp);
+            await using (var legacy = await MediaTestSupport.OpenLegacyConnectionAsync(fixture))
+            {
+                await MediaTestSupport.InsertLegacyPictureAsync(legacy, uid, path);
+            }
+
+            var target = await fixture.CreateIsolatedTargetAsync();
+            await MediaTestSupport.InsertMediaItemAsync(fixture, uid, $"originals/{path}", targetConnectionString: target);
+
+            var recording = new RecordingObjectStore(fixture.ObjectStore);
+            var summary = await MediaTestSupport.RunSeedAsync(fixture, root, targetConnectionString: target, objectStore: recording);
+
+            Assert.Equal(1, summary.Rejected);
+            Assert.Empty(recording.PutKeys);
+        }
+        finally
+        {
+            Directory.Delete(root, recursive: true);
+        }
+    }
+
     // Mirrors the private MissingReportDto/MissingEntryDto shape MediaSeedCommand writes: a
     // separate, test-local copy since the production records are private to that class and the
     // JSON contract, not the CLR type, is what a consumer of --missing-out actually depends on.
@@ -1162,5 +1346,8 @@ public sealed class MediaSeedCommandTests(MediaEtlFixture fixture)
         int RejectedCount,
         List<MissingEntryDto> Missing,
         List<string> Broken,
-        List<MissingEntryDto> Rejected);
+        List<MissingEntryDto> Rejected,
+        List<CopyEntryDto> Copies);
+
+    private sealed record CopyEntryDto(long MediaItemId, string StorageKey, string CopyKey);
 }

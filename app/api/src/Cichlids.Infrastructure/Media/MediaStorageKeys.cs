@@ -2,7 +2,8 @@ namespace Cichlids.Infrastructure.Media;
 
 /// <summary>
 /// Storage key conventions the media pipeline derives from an original's own key: the variant
-/// prefix a label lives under, and the content type a key's extension implies.
+/// prefix a label lives under, the key of an undecodable original's public copy, and the content
+/// type a key's extension implies.
 /// </summary>
 public static class MediaStorageKeys
 {
@@ -25,13 +26,7 @@ public static class MediaStorageKeys
     /// </summary>
     public static string BuildVariantKey(string originalStorageKey, string label)
     {
-        if (!originalStorageKey.StartsWith(OriginalsPrefix, StringComparison.Ordinal)
-            && !originalStorageKey.StartsWith(ForumAttachmentsPrefix, StringComparison.Ordinal))
-        {
-            throw new ArgumentException(
-                $"Storage key '{originalStorageKey}' is neither an original nor a forum attachment.", nameof(originalStorageKey));
-        }
-
+        EnsureOriginalKey(originalStorageKey);
         return $"{VariantsPrefix}{label}/{originalStorageKey}.jpg";
     }
 
@@ -63,5 +58,26 @@ public static class MediaStorageKeys
             "3gp" or "3g2" => "video/3gpp",
             _ => "application/octet-stream",
         };
+    }
+
+    /// <summary>
+    /// Builds the storage key of the public copy of an original that cannot be decoded:
+    /// variants/copy/ followed by the original's own full storage key. The copy keeps the
+    /// original's format, so its key keeps the original's extension.
+    /// </summary>
+    public static string BuildPublicCopyKey(string originalStorageKey)
+    {
+        EnsureOriginalKey(originalStorageKey);
+        return $"{VariantsPrefix}{MediaVariantSpec.PublicCopyLabel}/{originalStorageKey}";
+    }
+
+    private static void EnsureOriginalKey(string originalStorageKey)
+    {
+        if (!originalStorageKey.StartsWith(OriginalsPrefix, StringComparison.Ordinal)
+            && !originalStorageKey.StartsWith(ForumAttachmentsPrefix, StringComparison.Ordinal))
+        {
+            throw new ArgumentException(
+                $"Storage key '{originalStorageKey}' is neither an original nor a forum attachment.", nameof(originalStorageKey));
+        }
     }
 }

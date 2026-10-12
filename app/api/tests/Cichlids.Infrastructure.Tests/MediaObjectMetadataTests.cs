@@ -51,6 +51,26 @@ public sealed class MediaObjectMetadataTests
     }
 
     [Fact]
+    public void ForPublicCopy_records_checksums_the_variant_pipeline_version_and_the_size()
+    {
+        var metadata = MediaObjectMetadata.ForPublicCopy("dddd", Source, 640, 480);
+
+        Assert.Equal("dddd", metadata[MediaObjectMetadata.Sha256Key]);
+        Assert.Equal(Source, metadata[MediaObjectMetadata.SourceSha256Key]);
+        Assert.Equal(MediaObjectMetadata.VariantPipelineVersion.ToString(), metadata[MediaObjectMetadata.PipelineKey]);
+        Assert.Equal("640", metadata[MediaObjectMetadata.WidthKey]);
+        Assert.Equal("480", metadata[MediaObjectMetadata.HeightKey]);
+        Assert.Equal(5, metadata.Count);
+    }
+
+    [Fact]
+    public void ReadSize_round_trips_through_the_metadata_of_a_public_copy()
+    {
+        Assert.Equal((640, 480), MediaObjectMetadata.ReadSize(new ObjectHead(10, MediaObjectMetadata.ForPublicCopy("d", Source, 640, 480))));
+        Assert.Null(MediaObjectMetadata.ReadSize(new ObjectHead(10, MediaObjectMetadata.ForVariant("d", Source))));
+    }
+
+    [Fact]
     public void ReadPhotoInfo_round_trips_through_the_metadata()
     {
         var head = new ObjectHead(10, MediaObjectMetadata.ForOriginal("b", Source, new PhotoInfo(640, 480)));
@@ -59,6 +79,14 @@ public sealed class MediaObjectMetadataTests
         Assert.Equal(new PhotoInfo(640, 480), MediaObjectMetadata.ReadPhotoInfo(head));
         Assert.Equal(PhotoInfo.Undecodable, MediaObjectMetadata.ReadPhotoInfo(broken));
         Assert.Null(MediaObjectMetadata.ReadPhotoInfo(new ObjectHead(10, new Dictionary<string, string>())));
+    }
+
+    [Fact]
+    public void ReadPhotoInfo_keeps_the_declared_size_of_an_undecodable_photo()
+    {
+        var head = new ObjectHead(10, MediaObjectMetadata.ForOriginal("b", Source, new PhotoInfo(30, 20, false)));
+
+        Assert.Equal(new PhotoInfo(30, 20, false), MediaObjectMetadata.ReadPhotoInfo(head));
     }
 
     [Fact]
