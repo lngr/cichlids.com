@@ -35,7 +35,7 @@ sources:
       Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery
       resources of Africa, Vol. 1, FAO CIFA Technical Paper 18/1, entry Lake Malawi/Nyasa (Jackson
       et al. 1963; Talling and Talling 1965).
-    url: https://www.fao.org/4/T0473E/T0473E06.htm
+    url: https://www.fao.org/4/t0473e/T0473E05.htm
     accessed: 2026-10-12
   vollmer-2005:
     kind: literature
