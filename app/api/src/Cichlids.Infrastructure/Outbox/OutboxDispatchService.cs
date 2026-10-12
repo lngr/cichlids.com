@@ -121,7 +121,9 @@ public sealed class OutboxDispatchService(
         outboxEvent.AttemptCount++;
         outboxEvent.LastError = error;
 
-        if (outboxEvent.AttemptCount >= settings.MaxAttempts)
+        var (_, givenUp) = OutboxRetrySchedule.AfterFailure(
+            outboxEvent.AttemptCount, DateTimeOffset.UtcNow, outboxEvent.OccurredAt, settings);
+        if (givenUp)
         {
             outboxEvent.DispatchedAt = DateTimeOffset.UtcNow;
             outboxEvent.LastError = "gave up";

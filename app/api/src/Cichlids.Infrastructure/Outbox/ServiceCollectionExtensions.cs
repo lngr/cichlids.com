@@ -14,7 +14,10 @@ public static class ServiceCollectionExtensions
     /// </summary>
     public static IServiceCollection AddOutboxDispatcher(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddOptions<OutboxDispatcherOptions>().Bind(configuration.GetSection(OutboxDispatcherOptions.SectionName));
+        services.AddOptions<OutboxDispatcherOptions>()
+            .Bind(configuration.GetSection(OutboxDispatcherOptions.SectionName))
+            .ValidateOnStart();
+        services.AddSingleton<IValidateOptions<OutboxDispatcherOptions>, OutboxDispatcherOptionsValidator>();
 
         services.AddOptions<WebhookTargetOptions>()
             .Bind(configuration.GetSection(WebhookTargetOptions.SectionName))
