@@ -1,0 +1,1569 @@
+schemaVersion: 1
+id: andinoacara-rivulatus
+legacyIds: [605]
+status: described
+
+taxonomy:
+  validName: Andinoacara rivulatus
+  genus: Andinoacara
+  species: rivulatus
+  author: (Günther, 1860)
+  source: &cof
+    kind: catalog-of-fishes
+    title: Eschmeyer's Catalog of Fishes, species list of the genus Andinoacara (entries rivulata, Chromis; stalsbergi; blombergi)
+    url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Andinoacara
+    accessed: 2026-10-12
+  synonyms:
+    - name: Chromis rivulata
+      note: Original combination, Günther 1860, Andes of western Ecuador.
+    - name: Aequidens rivulatus
+      note: Combination in use until the species was placed in Andinoacara (Musilová et al. 2009); common in the trade and in aquaculture papers.
+    - name: Acara aequinoctialis
+      note: Regan 1905, western Ecuador; objective junior synonym according to the Catalog of Fishes.
+    - name: Aequidens azurifer
+      note: Fowler 1911, affluent of the Río Chimbo near Bucay, Guayas Province, Ecuador; junior synonym.
+  legacyNames:
+    - Aequidens rivulatus
+  note: >-
+    The Catalog of Fishes lists Andinoacara rivulatus (Günther 1860) as valid, distributed on the
+    Pacific slope of Ecuador and Peru; the genus list of Aequidens holds no rivulatus entry. The
+    trade name green terror covers more than one species. A. rivulatus in the strict sense is the
+    gold saum (Goldsaum) fish with a broad orange to golden margin on dorsal and caudal fin, from
+    western Ecuador to the Tumbes and Zarumilla drainages of northernmost Peru. The silver saum
+    (Silbersaum) fish with a white fin margin and a reticulate scale pattern is Andinoacara
+    stalsbergi Musilová, Schindler & Staeck 2009 from the Peruvian coast, which part of the older
+    aquarium literature treated as the true rivulatus. Fish from the Esmeraldas basin of
+    north-western Ecuador belong to Andinoacara blombergi Wijkmark, Kullander & Barriga Salazar
+    2012, so range statements that start at the Río Esmeraldas include that species, and it may
+    also turn up under the trade name. This profile describes A. rivulatus in the strict sense;
+    photos and forum posts of the legacy entry 605 may show A. stalsbergi as well as A. rivulatus.
+
+names:
+  trade:
+    en: [Green terror, Gold saum, Gold saum green terror]
+    de: [Goldsaumbuntbarsch, Goldsaum-Buntbarsch]
+    es-419: [Vieja azul, Vieja]
+
+variants:
+  - name: Gold saum
+    kind: color-morph
+    note: >-
+      The wild-type colouring of this species with an orange to golden fin margin; it separates
+      A. rivulatus from the white-edged A. stalsbergi sold under the same trade name.
+  - name: Río Tumbes
+    kind: locality
+    note: Wild form from the southern end of the range in extreme northern Peru.
+  - name: Guayas basin (vieja azul)
+    kind: locality
+    note: Wild fish of the lowland rivers and wetlands of the Guayas basin, a local food fish.
+
+features:
+  origin:
+    value:
+      continent: South America
+      region: Pacific slope of western Ecuador and extreme northern Peru
+      waterbody: null
+      localities:
+        - Guayas basin (Daule, Babahoyo, Vinces, Quevedo and Chimbo rivers)
+        - Abras de Mantequilla wetland, Los Ríos
+        - Coastal rivers of Manabí and El Oro, Ecuador
+        - Río Santa Rosa basin, Ecuador
+        - Río Zarumilla and Río Tumbes basins, Ecuador and Peru
+    confidence: high
+    rationale: >-
+      All three runs agree on the Pacific slope of western Ecuador and extreme northern Peru. The
+      Catalog of Fishes gives the Pacific slope of Ecuador and Peru, Musilová et al. (2009) place the
+      species in Ecuador and the Tumbes and Zarumilla area of Peru, and Fishipedia names the Guayas,
+      Santa Rosa, Zarumilla and Tumbes basins. The Freshwater Fishes of Western Ecuador database and
+      FishBase still start the range at the Río Esmeraldas, an older concept that includes what is
+      A. blombergi; that northern part is left out. Field studies take wild fish in the Quevedo,
+      Mocache and Babahoyo areas and in the Abras de Mantequilla wetland of the Guayas basin. The
+      species is introduced in Guerrero and Morelos in Mexico (Catalog of Fishes) and in the Zamora
+      basin of Amazonian Ecuador (Western Ecuador database after Musilová et al. 2015).
+    sources:
+      - *cof
+      - &fwe
+        kind: database
+        title: Freshwater Fishes of Western Ecuador, Andinoacara rivulatus (Laaz, Aguirre and Nugra)
+        url: https://condor.depaul.edu/waguirre/fishwestec/andinoacara_rivulatus.html
+        accessed: 2026-10-12
+      - &musilova
+        kind: literature
+        title: >-
+          Musilová, Z., Schindler, I. and Staeck, W. (2009). Description of Andinoacara stalsbergi
+          sp. n. (Teleostei: Cichlidae: Cichlasomatini) from Pacific coastal rivers in Peru, and
+          annotations on the phylogeny of the genus. Vertebrate Zoology 59(2), 131-141.
+        url: https://doi.org/10.3897/vz.59.e30965
+        accessed: 2026-10-12
+      - &fb
+        kind: database
+        title: FishBase species summary, Andinoacara rivulatus
+        url: https://www.fishbase.se/summary/Andinoacara-rivulatus.html
+        accessed: 2026-10-12
+      - &fishipedia
+        kind: database
+        title: "Fishipedia: Terreur verte, Andinoacara rivulatus"
+        url: https://www.fishipedia.fr/fr/poissons/andinoacara-rivulatus/
+        accessed: 2026-10-12
+      - &ochoa
+        kind: literature
+        title: >-
+          Ochoa Ubilla, B. Y., Mendoza Nieto, K. X., Vivas Moreira, R., Urdánigo Zambrano, J. and
+          Ferrer-Sánchez, Y. (2017). Estructura de tallas de captura y relación longitud-peso de
+          peces nativos en el humedal Abras de Mantequilla, Ecuador. Ciencia y Tecnología 9(2),
+          19-27.
+        url: https://doi.org/10.18779/cyt.v9i2.191
+        accessed: 2026-10-12
+      - &mendez
+        kind: literature
+        title: >-
+          Méndez-Martínez, Y., Puente-Mendoza, M. M., Torres-Navarrete, Y. G., Zamora-Zambrano,
+          R. J., Botello León, A. and Ramírez, J. L. (2022). Comparative study of serum biochemical
+          and hematological parameters of Andinoacara rivulatus and Ichthyoelephas humeralis in Los
+          Ríos Province, Ecuador. Latin American Journal of Aquatic Research 50(2), 289-300.
+        url: https://doi.org/10.3856/vol50-issue2-fulltext-2795
+        accessed: 2026-10-12
+
+  temperatureC:
+    value: {min: 22, max: 25}
+    confidence: low
+    rationale: >-
+      The five votes did not settle on one range: generator 22 to 30 C, checker-a 20 to 28 C,
+      checker-b 20 to 25 C, tiebreaker-1 20 to 28 C and tiebreaker-2 22 to 30 C. No proposal found
+      four agreeing votes, so the vote count takes the conservative value, the intersection of all
+      proposals, 22 to 25 C. This range lies on the cool side of the measured habitat. Capture sites
+      of wild fish had 19.7 to 24.7 C in the Babahoyo River (Gonzalez et al. 2021) and single
+      readings of 19.2 C in the fast Quevedo River and 26.1 C in the Mocache River
+      (Gonzalez-Martinez et al. 2021). The lowland rivers of the Guayas basin below 250 m averaged
+      26.0 C with a range of 22.6 to 34 C at the end of the dry season, the extremes depending on
+      the time of day (Damanik-Ambarita et al. 2016), and the Carrizal River in Manabí had 25.9 to
+      27.9 C. Many habitat readings are therefore warmer than 25 C; the tolerance of 20 to 28 C
+      covers them. The 22.5 to 28.2 C of Musilová et al. (2009) belong to the sister species
+      A. stalsbergi in Peru, and the 22 to 30 C of the Santiago-Cayapas study come from a basin
+      north of the range whose rare A. rivulatus record may refer to another Andinoacara. The 20 to
+      24 C in FishBase come from an aquarium atlas and are no habitat value. No temperature series
+      from a documented locality over a full year was found, hence the low confidence.
+    sources:
+      - &limno
+        kind: literature
+        title: >-
+          Damanik-Ambarita, M. N., Lock, K., Boets, P. et al. (2016). Ecological water quality
+          analysis of the Guayas river basin (Ecuador) based on macroinvertebrates indices.
+          Limnologica 57, 27-59 (Tables 1 and A5 to A7).
+        url: https://doi.org/10.1016/j.limno.2016.01.001
+        accessed: 2026-10-12
+      - &water2016
+        kind: literature
+        title: >-
+          Damanik-Ambarita, M. N., Everaert, G., Forio, M. A. E. et al. (2016). Generalized linear
+          models to identify key hydromorphological and chemical variables determining the
+          occurrence of macroinvertebrates in the Guayas river basin (Ecuador). Water 8(7), 297.
+        url: https://doi.org/10.3390/w8070297
+        accessed: 2026-10-12
+      - &aveiga
+        kind: literature
+        title: >-
+          Aveiga Ortiz, A. M., Noles, P., De la Cruz, A., Peñarrieta, F. and Alcántara, F. (2019).
+          Variaciones físico-químicas de la calidad del agua del río Carrizal en Manabí. Enfoque UTE
+          10(3), 30-41.
+        url: https://doi.org/10.29019/enfoque.v10n3.423
+        accessed: 2026-10-12
+      - &brycon
+        kind: literature
+        title: >-
+          Gonzalez-Martinez, A., De-Pablos-Heredero, C., González, M., Rodriguez, J., Barba, C. and
+          García, A. (2021). Morphological variations of wild populations of Brycon dentex
+          (Characidae, Teleostei) in the Guayas hydrographic basin (Ecuador). Animals 11(7), 1901
+          (Table 1, water of the Pintado, Quevedo and Mocache rivers).
+        url: https://doi.org/10.3390/ani11071901
+        accessed: 2026-10-12
+      - &gonzalez
+        kind: literature
+        title: >-
+          Gonzalez, A., Angón, E., González, M., Rodriguez, J., Barba, C. and García, A. (2021).
+          Effect of rearing system and sex on the composition and fatty acid profile of Andinoacara
+          rivulatus meat from Ecuador. Revista de la Facultad de Ciencias Agrarias UNCuyo 53(2),
+          232-242.
+        url: https://doi.org/10.48162/rev.39.056
+        accessed: 2026-10-12
+      - *musilova
+      - &cayapas
+        kind: literature
+        title: >-
+          Rebolledo Monsalve, E., Jiménez Prado, P., Molinero Ortiz, J. and Toulkeridis, T. (2022).
+          Differences in fish abundance in rivers under the influence of open-pit gold mining in the
+          Santiago-Cayapas watershed, Esmeraldas, Ecuador. Water 14(19), 2992.
+        url: https://doi.org/10.3390/w14192992
+        accessed: 2026-10-12
+      - *fishipedia
+      - *fb
+    evidence:
+      - source: *gonzalez
+        value: {min: 19.7, max: 24.7}
+        note: Babahoyo River, capture site of the wild fish of the study
+      - source: *brycon
+        value: {min: 19.2, max: 26.1}
+        note: single readings in the Quevedo (19.2), Pintado (25.6) and Mocache (26.1) rivers; Quevedo and Mocache are fishing areas of the species
+      - source: *limno
+        value: {min: 22.6, max: 34}
+        note: Guayas basin rivers below 250 m at the end of the dry season, mean 26.0 C; the top value is a midday reading
+      - source: *water2016
+        value: {min: 19, max: 34}
+        note: all 120 sites of the Guayas basin including highland sites, median 26 C
+      - source: *aveiga
+        value: {min: 25.9, max: 27.9}
+        note: Carrizal River and reservoir in Manabí, August and October
+      - source: *musilova
+        value: {min: 22.5, max: 28.2}
+        note: collecting sites of the sister species A. stalsbergi in Peru, not of A. rivulatus
+      - source: *cayapas
+        value: {min: 22, max: 30}
+        note: rivers of the Santiago-Cayapas basin north of the range, 2011 to 2014
+      - source: *fishipedia
+        value: {min: 25, max: 28}
+        note: stated as natural habitat without a cited measurement
+      - source: *fb
+        value: {min: 20, max: 24}
+        note: taken from an aquarium atlas; an aquarium recommendation, not a habitat value
+    verification:
+      method: conservative
+      votes: {agree: 2, total: 5}
+    tolerance:
+      value: {min: 20, max: 28}
+      confidence: low
+      rationale: >-
+        The five votes did not settle on one tolerance: generator 20 to 30 C, checker-a, checker-b
+        and tiebreaker-1 20 to 28 C, tiebreaker-2 20 to 30 C. Three agreeing votes are one short of
+        a qualified majority, so the vote count takes the intersection of all proposals, 20 to 28 C,
+        which already contains the natural range of 22 to 25 C. FishBase, Seriously Fish and the
+        Maidenhead Aquatics data bank recommend 20 to 24 C, Fishipedia 25 to 28 C and an aquarium
+        guide 20 to 27 C. Husbandry studies keep the species warmer without reported problems:
+        broodstock at 26 C (Piesiewicz et al. 2025), farm and laboratory stocks at 27 to 28 C (Luo
+        et al. 2024) and breeding pairs at 29.5 C during a five-day trial (Hu et al. 2021). The warm
+        values beyond 28 C are short-term or farm conditions and do not widen the long-term range.
+      sources:
+        - &sf
+          kind: database
+          title: Seriously Fish, Andinoacara rivulatus
+          url: https://www.seriouslyfish.com/species/andinoacara-rivulatus/
+          accessed: 2026-10-12
+        - &fk
+          kind: database
+          title: Maidenhead Aquatics fish data bank, Gold Saum Green Terror (Andinoacara rivulatus)
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/green-terror
+          accessed: 2026-10-12
+        - *fb
+        - *fishipedia
+        - &piesiewicz
+          kind: literature
+          title: >-
+            Piesiewicz, R., Korzelecka-Orkisz, A. and Formicki, K. (2025). Effect of magnetic fields
+            on the development of the larvae of the jaguar cichlid (Parachromis managuensis) and the
+            green terror (Andinoacara rivulatus). Animals 15(13), 1824.
+          url: https://doi.org/10.3390/ani15131824
+          accessed: 2026-10-12
+        - &luo
+          kind: literature
+          title: >-
+            Luo, Z., Bai, X., Hao, S., Wang, M., Wu, Y. and Sun, H. (2024). Two genotypes of
+            Streptococcus iniae are the causative agents of diseased ornamental fish, green terror
+            cichlid (Aequidens rivulatus). Fishes 9(4), 140.
+          url: https://doi.org/10.3390/fishes9040140
+          accessed: 2026-10-12
+        - &hu
+          kind: literature
+          title: >-
+            Hu, Y., Cai, Q., Wang, R., Lu, H., Ma, Z. and Liu, Y. (2021). The behavioural pattern and
+            variation in parental care of Aequidens rivulatus. Aquaculture Research 53(4),
+            1404-1412.
+          url: https://doi.org/10.1111/are.15673
+          accessed: 2026-10-12
+        - *musilova
+        - &aqsource
+          kind: website
+          title: "Aquarium Source: Green Terror Cichlid care guide"
+          url: https://www.aquariumsource.com/green-terror-cichlid/
+          accessed: 2026-10-12
+      evidence:
+        - source: *sf
+          value: {min: 20, max: 24}
+          note: aquarium recommendation; 24 C for breeding
+        - source: *fk
+          value: {min: 20, max: 24}
+          note: aquarium recommendation; breeding at the upper end
+        - source: *fb
+          value: {min: 20, max: 24}
+          note: after an aquarium atlas
+        - source: *fishipedia
+          value: {min: 25, max: 28}
+        - source: *piesiewicz
+          value: {min: 26, max: 26}
+          note: broodstock water used for egg incubation
+        - source: *luo
+          value: {min: 27, max: 28}
+          note: farm and laboratory holding water in China
+        - source: *hu
+          value: {min: 29.5, max: 29.5}
+          note: breeding pairs in a recirculating system during a five-day trial
+        - source: *musilova
+          value: {min: 22.5, max: 28.2}
+          note: wild water of the sister species A. stalsbergi
+        - source: *aqsource
+          value: {min: 20, max: 27}
+          note: optimum given as 22 to 25 C
+      verification:
+        method: conservative
+        votes: {agree: 3, total: 5}
+
+  ph:
+    value: {min: 6.6, max: 8.2}
+    confidence: medium
+    rationale: >-
+      The three votes agree within 0.3 pH (generator 6.6 to 8.5, checker-a 6.6 to 8.2, checker-b
+      6.5 to 8.0); the vote count takes the median bounds, 6.6 to 8.2. The habitat is neutral to
+      slightly alkaline. Capture rivers of wild fish measured pH 7.0 to 7.3 in the Babahoyo River
+      and 7.11 to 8.23 in the Mocache, Pintado and Quevedo rivers. Guayas basin rivers below 250 m
+      ranged from 6.6 to 8.9 with a mean of 7.7; the readings above 8.2 come from algae-rich,
+      nearly stagnant lowland sites. The Carrizal River in Manabí averaged 7.8 to 7.9, and 28 Andean
+      Pacific rivers from northern Ecuador to southern Peru range from 6.6 to 7.8 (Moquet et al.
+      2018). Fishipedia's 6 to 7 for the habitat cites no measurement, and the 6.5 to 8.0 of
+      FishBase is an aquarium value. The confidence stays medium because no series from a
+      documented locality exists.
+    sources:
+      - *limno
+      - *water2016
+      - *aveiga
+      - &moquet
+        kind: literature
+        title: >-
+          Moquet, J.-S., Guyot, J.-L., Morera, S., Crave, A. et al. (2018). Temporal variability and
+          annual budget of inorganic dissolved matter in Andean Pacific rivers located along a
+          climate gradient from northern Ecuador to southern Peru. Comptes Rendus Géoscience
+          350(1-2), 76-87.
+        url: https://doi.org/10.1016/j.crte.2017.11.002
+        accessed: 2026-10-12
+      - *brycon
+      - *gonzalez
+      - *fb
+    evidence:
+      - source: *gonzalez
+        value: {min: 7.0, max: 7.3}
+        note: Babahoyo River, capture site of wild fish
+      - source: *brycon
+        value: {min: 7.11, max: 8.23}
+        note: Mocache, Pintado and Quevedo rivers
+      - source: *limno
+        value: {min: 6.6, max: 8.9}
+        note: Guayas basin rivers below 250 m, mean 7.7
+      - source: *water2016
+        value: {min: 6.6, max: 8.9}
+        note: all sites of the Guayas basin, median 7.6
+      - source: *aveiga
+        value: {min: 7.81, max: 7.88}
+        note: monthly means, Carrizal River, Manabí
+      - source: *moquet
+        value: {min: 6.6, max: 7.8}
+        note: main channels of 28 Pacific Andean rivers of Ecuador and Peru
+      - source: *fishipedia
+        value: {min: 6, max: 7}
+        note: stated as natural habitat without a cited measurement
+      - source: *fb
+        value: {min: 6.5, max: 8.0}
+        note: aquarium recommendation
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+    tolerance:
+      value: {min: 6.5, max: 8.5}
+      confidence: medium
+      rationale: >-
+        The three votes agree within 0.3 pH (generator 6.5 to 8.5, checker-a 6.5 to 8.2, checker-b
+        6.5 to 8.5); the vote count takes the median bounds, 6.5 to 8.5. FishBase, Seriously Fish,
+        the Maidenhead Aquatics data bank and an aquarium guide give 6.5 to 8.0 and describe the
+        species as adaptable; Seriously Fish prefers 6.5 to 7.0 for breeding. A Chinese farm stock
+        lived at pH 8.2 and laboratory fish at 7.6 to 7.8 (Luo et al. 2024), and the habitat reaches
+        8.2. Fishipedia recommends 6 to 7, which lies inside the range at its low end.
+      sources:
+        - *sf
+        - *fk
+        - *fb
+        - *luo
+        - *fishipedia
+        - *musilova
+        - *aqsource
+      evidence:
+        - source: *sf
+          value: {min: 6.5, max: 8.0}
+          note: 6.5 to 7.0 recommended for breeding
+        - source: *fk
+          value: {min: 6.5, max: 8.0}
+          note: described as adapting to a wide range of conditions
+        - source: *fb
+          value: {min: 6.5, max: 8.0}
+        - source: *luo
+          value: {min: 7.6, max: 8.2}
+          note: laboratory water 7.6 to 7.8, farm water 8.2 during a disease outbreak
+        - source: *fishipedia
+          value: {min: 6, max: 7}
+        - source: *musilova
+          value: {min: 7.7, max: 9.2}
+          note: wild water of the sister species A. stalsbergi
+        - source: *aqsource
+          value: {min: 6.5, max: 8.0}
+      verification:
+        method: unanimous
+        votes: {agree: 3, total: 3}
+
+  ghDgh:
+    value: {min: 4, max: 9}
+    confidence: low
+    rationale: >-
+      The five votes did not settle on one range: generator 2 to 12 dGH, checker-a 2 to 9 dGH,
+      checker-b 4 to 25 dGH, tiebreaker-1 1 to 14 dGH and tiebreaker-2 1 to 10 dGH. No proposal found
+      four agreeing votes, so the vote count takes the conservative value, the intersection of all
+      proposals, 4 to 9 dGH. No hardness titration from a documented collecting site exists. The
+      only measured total hardness within the range comes from the Carrizal River system in
+      Manabí, 1.3 to 13.6 dGH at single stations with monthly means near 6.7 dGH (Aveiga Ortiz et
+      al. 2019); foothill rivers and streams at La Maná in the upper Guayas basin had 6.3 to 9.2
+      dGH. Conductivities in the Guayas lowlands (mean 263 uS/cm) and at the Babahoyo capture site
+      (about 145 uS/cm) point to soft to moderately hard water of roughly 2 to 8 dGH, an estimate
+      and no measurement. The decided range sits in the middle of these values; the tolerance of 2
+      to 25 dGH covers softer and harder water. The very soft Santiago-Cayapas rivers lie north of
+      the range, the 15 to over 40 dGH of Peruvian waters belong to A. stalsbergi, and the 25 dGH
+      of FishBase is an aquarium figure.
+    sources:
+      - *aveiga
+      - &lamana
+        kind: literature
+        title: >-
+          Reascos, M., Ortega, B., Luna, R. and Salazar, A. (2025). Calidad del agua utilizada para
+          sistemas de riego en la zona alta de La Maná, Ecuador. Revista de investigación
+          Agropecuaria Science and Biotechnology 5(4), 11-24.
+        url: https://doi.org/10.25127/riagrop.20254.1128
+        accessed: 2026-10-12
+      - *limno
+      - *brycon
+      - *gonzalez
+      - *moquet
+      - *cayapas
+      - *fishipedia
+      - *fb
+    evidence:
+      - source: *aveiga
+        value: {min: 1.3, max: 13.6}
+        note: total hardness 23 to 242 mg/L CaCO3 at single stations, monthly means about 6.7 dGH
+      - source: *lamana
+        value: {min: 6.3, max: 9.2}
+        note: foothill rivers and streams of the upper Guayas basin
+      - source: *limno
+        value: {min: 2, max: 8}
+        note: estimated from conductivity of the lowland rivers; no titration
+      - source: *gonzalez
+        value: {min: 4, max: 4}
+        note: estimated from a conductivity of about 145 uS/cm at the Babahoyo River
+      - source: *cayapas
+        value: {min: 0.5, max: 4}
+        note: derived from conductivity and magnesium of rivers north of the range
+      - source: *fishipedia
+        value: {min: 5, max: 10}
+        note: stated as natural habitat without a cited measurement
+      - source: *fb
+        value: {max: 25}
+        note: aquarium figure without a lower limit
+    verification:
+      method: conservative
+      votes: {agree: 3, total: 5}
+    tolerance:
+      value: {min: 2, max: 25}
+      confidence: low
+      rationale: >-
+        Four of five votes agree (generator and checker-a 2 to 25 dGH, tiebreaker-1 and
+        tiebreaker-2 1 to 25 dGH); checker-b proposed 4 to 30 dGH. The vote count takes the median
+        bounds of the agreeing votes, 2 to 25 dGH. Seriously Fish gives 5 to 25 dGH, FishBase and the
+        Maidenhead Aquatics data bank up to 25 dGH, an aquarium guide 5 to 20 dGH and Fishipedia 5
+        to 10 dGH. The care sheets recommend soft water for breeding, and the measured habitat
+        reaches down to about 1 to 2 dGH, so the lower bound follows the habitat. That lower bound
+        rests on one river study and no husbandry source tests it, hence the low confidence.
+      sources:
+        - *sf
+        - *fk
+        - *fb
+        - *fishipedia
+        - *aveiga
+        - *musilova
+        - *aqsource
+      evidence:
+        - source: *sf
+          value: {min: 5, max: 25}
+          note: soft, slightly acidic water recommended for breeding
+        - source: *fk
+          value: {max: 25}
+          note: soft water recommended for breeding
+        - source: *fb
+          value: {max: 25}
+          note: lower limit not given
+        - source: *fishipedia
+          value: {min: 5, max: 10}
+        - source: *aqsource
+          value: {min: 5, max: 20}
+        - source: *aveiga
+          value: {min: 1.3, max: 13.6}
+          note: measured river water within the range
+        - source: *musilova
+          value: {min: 6.7, max: 40}
+          note: wild water of the sister species A. stalsbergi, more than 40 dGH in the Río Pisco
+      verification:
+        method: qualified-majority
+        votes: {agree: 4, total: 5}
+
+  khDkh:
+    value: {min: 3, max: 6}
+    confidence: low
+    rationale: >-
+      The five votes did not settle on one range: generator and checker-a 2 to 15 dKH, checker-b 2
+      to 8 dKH, tiebreaker-1 3 to 15 dKH and tiebreaker-2 1 to 6 dKH. No proposal found four
+      agreeing votes, so the vote count takes the conservative value, the intersection of all
+      proposals, 3 to 6 dKH. No carbonate hardness was measured at a documented collecting site.
+      Bicarbonate is the main anion of the Pacific Andean rivers (Moquet et al. 2018). The Guayas
+      lowland rivers and the Babahoyo capture site conduct little (about 145 to 263 uS/cm on
+      average), which suggests a few dKH; the decided range rests on these estimates. The only
+      measured alkalinity within the range, 14.7 to 14.9 dKH in the Carrizal River of the dry
+      Manabí coast, lies above it; that sodium-rich, partly impounded system is covered by the
+      tolerance of 2 to 15 dKH. The 4 to 15 dKH of Peruvian waters belong to A. stalsbergi.
+    sources:
+      - *aveiga
+      - *moquet
+      - *limno
+      - *brycon
+      - *gonzalez
+      - *musilova
+      - *cayapas
+    evidence:
+      - source: *aveiga
+        value: {min: 14.7, max: 14.9}
+        note: monthly means of total alkalinity, 262 to 266 mg/L CaCO3, Carrizal River
+      - source: *limno
+        value: {min: 2, max: 8}
+        note: estimated from conductivity of the Guayas lowland rivers; no titration
+      - source: *cayapas
+        value: {min: 1, max: 6}
+        note: inferred from conductivity and pH of rivers north of the range
+      - source: *musilova
+        value: {min: 4, max: 15}
+        note: temporary hardness at sites of the sister species A. stalsbergi
+    verification:
+      method: conservative
+      votes: {agree: 3, total: 5}
+    tolerance:
+      value: {min: 2, max: 15}
+      confidence: low
+      rationale: >-
+        The three votes agree on 2 to 15 dKH (generator, checker-a and checker-b), which the vote
+        count decides. No husbandry source states a carbonate hardness: Seriously Fish, FishBase
+        and the Maidenhead Aquatics data bank give only a general hardness of up to 25 degrees and
+        pH 6.5 to 8.0, which implies that low to fairly high buffering is tolerated. A farm stock
+        lived at pH 8.2, which needs buffered water (Luo et al. 2024), and the measured habitat
+        reaches about 15 dKH. A specific husbandry value is missing, hence the low confidence.
+      sources:
+        - *sf
+        - *fk
+        - *fb
+        - *luo
+        - *musilova
+      evidence:
+        - source: *sf
+          value: null
+          note: no carbonate hardness given; general hardness 5 to 25 dGH and pH 6.5 to 8.0
+        - source: *fk
+          value: null
+          note: no carbonate hardness given; hardness up to 25 degrees without a split
+        - source: *fb
+          value: null
+          note: no carbonate hardness given; hardness up to 25 dH and pH 6.5 to 8.0
+        - source: *musilova
+          value: {min: 4, max: 15}
+          note: temporary hardness in the wild water of the sister species A. stalsbergi
+      verification:
+        method: unanimous
+        votes: {agree: 3, total: 3}
+
+  maxSizeCm:
+    value: {male: 25, female: 18}
+    confidence: medium
+    rationale: >-
+      All runs agree on 25 cm for males: FishBase gives 20 cm TL, the Maidenhead Aquatics data bank
+      and Fishipedia 25 cm, and Seriously Fish and the Western Ecuador database 30 cm as a maximum
+      or record. Wild fish from the Abras de Mantequilla fishery and the Quevedo River measured up
+      to about 22 cm, and selected 200 to 400 g market fish averaged 24 cm. For females the runs
+      differ (15, 18 and 20 cm). No source gives a female maximum: the care sheets only state that
+      females stay substantially smaller, and a same-age farm cohort shows the gap (8-month-old
+      males 13.7 cm, females 8.2 cm body length). Wild catches with sexes pooled reach 22 cm, so
+      15 cm is too small for well-kept adult females, while 20 cm comes close to the male size that
+      all sources set clearly apart. 18 cm is the best estimate.
+    sources:
+      - *fb
+      - *fk
+      - *sf
+      - *fishipedia
+      - *fwe
+      - *ochoa
+      - *mendez
+      - &oldblue
+        kind: literature
+        title: >-
+          Medina Villacís, M. et al. (2025). Morphometric traits of Old Blue (Andinoacara
+          rivulatus) in their native habitat and aquaculture environments: a study of the Quevedo
+          region, Ecuador. Preprints.org, not peer reviewed.
+        url: https://doi.org/10.20944/preprints202509.0691.v1
+        accessed: 2026-10-12
+      - *hu
+    evidence:
+      - source: *fb
+        value: {male: 20}
+        note: total length, male or unsexed
+      - source: *fk
+        value: {male: 25}
+      - source: *fishipedia
+        value: {male: 25}
+        note: average size 25 cm, maximum 30 cm
+      - source: *sf
+        value: {male: 30}
+        note: standard length, likely a record; females substantially smaller
+      - source: *fwe
+        value: {male: 30}
+        note: maximum size record
+      - source: *ochoa
+        value: {male: 22}
+        note: largest wild fish in the catch, sexes pooled
+      - source: *mendez
+        value: {male: 21.8, female: 21.8}
+        note: wild Quevedo River fish 14.8 to 21.8 cm total length, sexes pooled
+      - source: *oldblue
+        value: {male: 24.4, female: 23.8}
+        note: mean total length of selected 200 to 400 g wild and farmed adults
+      - source: *hu
+        value: {male: 13.7, female: 8.2}
+        note: body length at eight months, not the adult maximum; shows the gap between the sexes
+
+  predation:
+    value: 2
+    confidence: medium
+    rationale: >-
+      All three votes agree on level 2. The Western Ecuador database describes the species as a
+      large omnivore that eats fish besides small invertebrates, and FishBase estimates a trophic
+      level of 3.3, while its food item list for the wild holds only insects, benthic crustaceans
+      and worms. Fish are therefore not a main food, which excludes level 3. Hobby guidance limits
+      tankmates to robust fish too large to swallow: Seriously Fish lists only large cichlids, big
+      catfish, silver sharks, tinfoil barbs and silver dollars, and aquarium guides warn that
+      smaller fish are eaten. For the related A. stalsbergi, Lüling suggested characins and
+      livebearers as important food (cited by Musilová et al. 2009). A 25 cm male takes any fish
+      that fits into its mouth, which is level 2.
+    sources:
+      - *fwe
+      - *fb
+      - *sf
+      - &fbfood
+        kind: database
+        title: "FishBase: Andinoacara rivulatus, food items"
+        url: https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=12535&genus=Andinoacara&species=rivulatus
+        accessed: 2026-10-12
+      - *fishipedia
+      - *musilova
+      - *aqsource
+      - &wiki
+        kind: website
+        title: "Wikipedia: Green terror"
+        url: https://en.wikipedia.org/wiki/Green_terror
+        accessed: 2026-10-12
+      - &t27359
+        kind: archive
+        title: cichlids.com forum thread 27359
+        url: https://www.cichlids.com/disc/read.php?1,27359
+    evidence:
+      - source: *fwe
+        value: 2
+        note: wild diet includes fishes besides small invertebrates
+      - source: *fb
+        value: 2
+        note: trophic level 3.3 from food items
+      - source: *sf
+        value: 2
+        note: only large, robust tankmates are recommended
+      - source: *fbfood
+        value: 1
+        note: wild food items are insects, benthic crustaceans and worms; no fish listed
+      - source: *fishipedia
+        value: 2
+        note: few suitable tankmates; eats invertebrates and small aquatic animals
+      - source: *musilova
+        value: 1
+        note: characins and livebearers suggested as food of the sister species, not quantified
+      - source: *aqsource
+        value: 2
+        note: smaller tank fish are eaten
+      - source: *wiki
+        value: 2
+        note: takes animals small enough to fit into its mouth
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+
+  diet:
+    value:
+      type: invertivore
+      bloatSensitive: true
+      foods:
+        - insects and insect larvae such as mosquito larvae
+        - crustaceans such as prawns, mysis and krill
+        - earthworms and mussel meat
+        - cichlid pellets or sticks
+        - some vegetable matter such as peas or spinach
+    confidence: low
+    rationale: >-
+      The five votes did not settle on one diet: generator and checker-a proposed an omnivore
+      without bloat sensitivity, checker-b an omnivore with bloat sensitivity, tiebreaker-1 and
+      tiebreaker-2 an invertivore without bloat sensitivity. No candidate found four votes, so the
+      vote count takes the conservative value: the strictest proposed type, invertivore, and the
+      bloat flag of any vote, here checker-b's true. The type fits the wild diet: FishBase lists
+      only insects, benthic crustaceans and worms, Gonzalez et al. (2021) describe the diet as
+      mainly insects and crustaceans, and Li et al. (2022) name worms, crustaceans and insects. The
+      omnivore label of the Western Ecuador database, of Méndez-Martínez et al. (2022) after an
+      Ecuadorian field guide, of Seriously Fish and of Fishipedia rests on plant food in aquarium
+      feeding and on fish in the wild diet. The bloat flag follows the Seriously Fish warning that
+      beef heart and other red meats harm the digestive system; no source reports bloat as such,
+      and research stocks are fed pellets with 32 to 44 percent protein without noted problems.
+    sources:
+      - *fwe
+      - *sf
+      - *fk
+      - &li
+        kind: literature
+        title: >-
+          Li, H., Wang, J., Zhang, X., Hu, Y., Cai, Q., Liu, Y. and Ma, Z. (2022). Sex differences in
+          mate choice preference characteristics of Aequidens rivulatus. Animals 12(9), 1205.
+        url: https://doi.org/10.3390/ani12091205
+        accessed: 2026-10-12
+      - *mendez
+      - *fishipedia
+      - *fbfood
+      - *fb
+      - &fbeco
+        kind: database
+        title: "FishBase: Ecology of Andinoacara rivulatus"
+        url: https://www.fishbase.se/Ecology/FishEcologySummary.php?StockCode=12535&GenusName=Andinoacara&SpeciesName=rivulatus
+        accessed: 2026-10-12
+      - *gonzalez
+      - *cayapas
+      - &wikide
+        kind: website
+        title: "Wikipedia (de): Goldsaumbuntbarsch"
+        url: https://de.wikipedia.org/wiki/Goldsaumbuntbarsch
+        accessed: 2026-10-12
+    evidence:
+      - source: *fbfood
+        value: {type: invertivore}
+        note: insects, benthic crustaceans and worms; no plant food listed
+      - source: *fbeco
+        value: {type: invertivore, bloatSensitive: false}
+        note: feeds mainly on animals, trophic level 3.26
+      - source: *gonzalez
+        value: {type: invertivore, bloatSensitive: false}
+        note: wild diet mainly insects and crustaceans; farm stock fed a 32 percent protein pellet
+      - source: *li
+        value: {type: invertivore, bloatSensitive: false}
+        note: worms, crustaceans and insects; laboratory stock fed pellets with at least 44 percent protein
+      - source: *cayapas
+        value: {type: invertivore}
+        note: listed among insect eaters in a basin north of the range
+      - source: *fwe
+        value: {type: omnivore, bloatSensitive: false}
+        note: fishes and small invertebrates in the wild
+      - source: *mendez
+        value: {type: omnivore}
+        note: label after an Ecuadorian field guide, no food items given
+      - source: *sf
+        value: {type: omnivore, bloatSensitive: true}
+        note: aquarium diet with vegetable matter; red meat harms the digestive system
+      - source: *fk
+        value: {type: omnivore, bloatSensitive: false}
+      - source: *fishipedia
+        value: {type: omnivore}
+      - source: *wikide
+        value: {type: omnivore}
+        note: called omnivorous, with insect larvae, crustaceans and molluscs as the largest share
+    verification:
+      method: conservative
+      votes: {agree: 2, total: 5}
+
+  aggressionConspecific:
+    value: 3
+    confidence: medium
+    rationale: >-
+      All three runs agree on level 3. Seriously Fish and the Maidenhead Aquatics data bank report
+      that a male put together with an unfamiliar or unready female often injures or kills her,
+      and both recommend raising a group of juveniles or using a divider. Fishipedia notes that
+      males do not tolerate each other. A pair that forms on its own lives together and shares
+      brood care, but the male may turn on the female when fry are removed early. Injuries follow
+      mainly from wrong introductions and too little space, which is level 3; keepers in the
+      archive report a wide individual range from calm to very aggressive fish.
+    sources:
+      - *sf
+      - *fk
+      - *fishipedia
+      - *li
+      - *wiki
+      - &t901
+        kind: archive
+        title: cichlids.com forum thread 901
+        url: https://www.cichlids.com/disc/read.php?1,901
+      - *t27359
+    evidence:
+      - source: *sf
+        value: 4
+        note: males often kill females that are simply added to the tank
+      - source: *fk
+        value: 3
+        note: incompatible partners get injured; a clear divider during introduction is advised
+      - source: *fishipedia
+        value: 3
+        note: males intolerant of each other; five or more juveniles to obtain a pair
+      - source: *li
+        value: 3
+        note: rejected partners meet chasing and biting during mate choice
+      - source: *t901
+        value: 2
+        note: little aggression in a group raised together
+
+  aggressionHeterospecific:
+    value: 3
+    confidence: medium
+    rationale: >-
+      All three runs agree on level 3. Seriously Fish, the Maidenhead Aquatics data bank and
+      Fishipedia describe an aggressive, territorial fish that can share a very large tank only
+      with robust, similar-sized cichlids, large catfish and sturdy schooling fish. A breeding pair
+      attacks and often kills tankmates in a tank of normal size, which approaches level 4. Keepers
+      in the archive report both adults that beat larger cichlids and gold saums calmer than their
+      reputation.
+    sources:
+      - *sf
+      - *fk
+      - *fishipedia
+      - *wiki
+      - *t27359
+      - &t29792
+        kind: archive
+        title: cichlids.com forum thread 29792
+        url: https://www.cichlids.com/disc/read.php?1,29792
+      - *t901
+    evidence:
+      - source: *sf
+        value: 3
+        note: tankmates only in 650 litres or more; a breeding pair kills tankmates
+      - source: *fk
+        value: 3
+        note: non-community fish; tankmates likely killed when a pair breeds
+      - source: *fishipedia
+        value: 3
+        note: rated very aggressive; other territorial species very risky
+      - source: *t27359
+        value: 4
+        note: adult fish beat a larger cichlid and killed plecos
+      - source: *t29792
+        value: 2
+        note: many gold saums described as calmer than their reputation
+
+  territory:
+    value: {size: large, breedingOnly: false}
+    confidence: medium
+    rationale: >-
+      All three runs agree. Seriously Fish calls the species territorial in general and advises
+      visual barriers to spread aggression; a breeding pair defends its site against every other
+      fish. FishBase notes that males defend the territory while females tend eggs and larvae. For
+      a fish of 20 to 25 cm in a 150 cm tank this is a substantial share of the tank, held outside
+      breeding as well.
+    sources:
+      - *sf
+      - *fk
+      - *fb
+      - *fishipedia
+      - *wiki
+    evidence:
+      - source: *sf
+        value: {size: large, breedingOnly: false}
+        note: aggressive and territorial in general
+      - source: *fb
+        value: {size: large, breedingOnly: false}
+        note: males defend the territory while females tend eggs and larvae
+
+  habitatZones:
+    value: [rock, sand, wood]
+    confidence: medium
+    rationale: >-
+      The runs agree on rock and sand and differ on wood and plants. Wild fish live in streams,
+      main channels and pools of coastal rivers and in floodplain wetlands, in slow, shallow water
+      near the banks over sand, gravel or mud, and spawn on large stones near the shore. Méndez-
+      Martínez et al. (2021) describe them feeding near rocks with vegetation. In the tank the
+      species needs sand for digging, flat stones as spawning sites and wood or rock as visual
+      barriers (Seriously Fish). Rooted plants are uprooted, so plants are no zone the species
+      needs; floating plants for shade remain a useful addition.
+    sources:
+      - *sf
+      - *fishipedia
+      - *fb
+      - &luz
+        kind: literature
+        title: >-
+          Méndez-Martínez, Y., Cevallos-Chevez, M., Torres-Navarrete, Y., Cortés-Jacinto, E. and
+          Ramírez-de la Ribera, J. (2021). Effect of habitat and sex on biological indicators and
+          blood biochemistry of Andinoacara rivulatus in the province Los Ríos, Ecuador. Revista de
+          la Facultad de Agronomía (LUZ) 39(1), e223910.
+        url: https://doi.org/10.47280/revfacagron(luz).v39.n1.10
+        accessed: 2026-10-12
+      - *piesiewicz
+      - &mcj
+        kind: literature
+        title: >-
+          Influence of floating aquatic macrophytes on the structure and diversity of the
+          ichthyofauna in the tropical lagoon of the La María campus (Ecuador) (2025).
+          Multidisciplinary Collaborative Journal 3(4).
+        url: https://doi.org/10.70881/mcj/v3/n4/97
+        accessed: 2026-10-12
+      - &crc
+        kind: database
+        title: Cichlid Room Companion, Andinoacara rivulatus (public summary, verification only)
+        url: https://cichlidae.com/species.php?id=7_-RYcCUIwiPnUtnxWJP-A
+        accessed: 2026-10-12
+    evidence:
+      - source: *piesiewicz
+        value: [rock]
+        note: shallow, slow rivers; spawns on large stones near the shore
+      - source: *luz
+        value: [rock, plants]
+        note: slow, shallow water near the banks, feeding near rocks with vegetation, muddy bottom in lower river courses
+      - source: *sf
+        value: [sand, wood, rock]
+        note: aquarium set-up with sand, driftwood and flat stones; rooted plants are dug out
+
+  social:
+    value: {structure: pair}
+    confidence: high
+    rationale: >-
+      All three runs agree. The species is monogamous with biparental care; Seriously Fish and the
+      Maidenhead Aquatics data bank recommend a single fish or a bonded pair, and Fishipedia
+      advises raising five or more juveniles to obtain a pair and then removing the others. A
+      laboratory study notes that pair bonds are not lifelong, which does not change the keeping
+      unit. The Cichlid Room Companion confirms the monogamous pairing.
+    sources:
+      - *sf
+      - *fk
+      - *fishipedia
+      - *li
+      - *musilova
+      - *crc
+    evidence:
+      - source: *sf
+        value: {structure: pair}
+        note: single fish or mated pair
+      - source: *fishipedia
+        value: {structure: pair}
+        note: pair from a group of juveniles, surplus fish removed
+      - source: *crc
+        value: {structure: pair}
+        note: listed as monogamous; used for verification only
+
+  speciesOnly:
+    value: false
+    confidence: high
+    rationale: >-
+      All three votes agree. Seriously Fish, the Maidenhead Aquatics data bank and Fishipedia name
+      suitable companions for large tanks: robust cichlids, big armoured catfish, silver dollars
+      and large barbs or silver sharks, from about 450 to 650 litres. A single fish or a pair is
+      the safer choice and a breeding pair needs its own tank, which the aggression levels cover;
+      no source recommends a species tank in the sense of Tropheus.
+    sources:
+      - *sf
+      - *fk
+      - *fishipedia
+      - *wiki
+      - *t29792
+    evidence:
+      - source: *sf
+        value: false
+        note: companions possible in tanks of 650 litres or more
+      - source: *fk
+        value: false
+        note: single fish can live with robust cichlids, armoured catfish and large characins
+      - source: *fishipedia
+        value: false
+        note: community possible in at least 450 litres with carefully chosen tankmates
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+
+  hybridGroup:
+    value: null
+    confidence: low
+    rationale: >-
+      Four of five votes (checker-a, checker-b, tiebreaker-1 and tiebreaker-2) found no hybrid
+      group; the generator proposed a new group of A. rivulatus and A. stalsbergi. The Catalog of
+      Fishes treats both as valid species with separate ranges, and Musilová et al. (2009), who
+      described A. stalsbergi, report that the two were long confused in the aquarium literature
+      but say nothing about crosses. FishBase and Seriously Fish mention no crosses of A. rivulatus;
+      Seriously Fish notes hybrids in aquarium stocks of A. pulcher with unnamed relatives. A hobby
+      article claims occasional crosses with the blue acara, but the paper it cites (Nirchio et
+      al. 2020) contains no such statement. The archive holds one gold saum and silver saum pair
+      preparing to spawn and an unconfirmed claim of a cross with a red devil. Crosses within the
+      genus are plausible, but none is documented, so no group applies and hybrid-groups.yaml is
+      unchanged. The partners section still advises against keeping look-alike Andinoacara
+      together.
+    sources:
+      - *cof
+      - *musilova
+      - *sf
+      - &sfpulcher
+        kind: database
+        title: Seriously Fish, Andinoacara pulcher
+        url: https://www.seriouslyfish.com/species/andinoacara-pulcher/
+        accessed: 2026-10-12
+      - *fb
+      - &nirchio
+        kind: literature
+        title: >-
+          Nirchio, M., Paim, F. G., Britzke, R., Rossi, A. R., Milana, V. and Oliveira, C. (2020).
+          Molecular analysis and chromosome mapping of repetitive DNAs in the green terror
+          Andinoacara rivulatus (Cichlidae: Cichlasomatini). Zebrafish 17(1), 38-47.
+        url: https://doi.org/10.1089/zeb.2019.1811
+        accessed: 2026-10-12
+      - *fk
+      - &aquahoy
+        kind: website
+        title: aquahoy, green terror article
+        url: https://aquahoy.com/?p=46820
+        accessed: 2026-10-12
+      - &t28910
+        kind: archive
+        title: cichlids.com forum thread 28910
+        url: https://www.cichlids.com/disc/read.php?1,28910
+      - &t2684
+        kind: archive
+        title: cichlids.com forum thread 2684
+        url: https://www.cichlids.com/disc/read.php?1,2684
+    evidence:
+      - source: *cof
+        value: null
+        note: A. rivulatus and A. stalsbergi are separate valid species with separate ranges
+      - source: *musilova
+        value: null
+        note: sister species long confused in the hobby; no crosses reported
+      - source: *sf
+        value: null
+        note: no cross reported
+      - source: *sfpulcher
+        value: null
+        note: hybrids in A. pulcher stocks with unnamed relatives; A. rivulatus not named
+      - source: *fb
+        value: null
+        note: no cross reported
+      - source: *fk
+        value: null
+        note: both species traded under the same common name; no cross reported
+      - source: *nirchio
+        value: null
+        note: cytogenetic study without any statement on crosses
+      - source: *aquahoy
+        value: andinoacara
+        note: claims occasional crosses with the blue acara, citing a paper that does not support it
+      - source: *t28910
+        value: andinoacara-rivulatus-group
+        note: gold saum female and silver saum male paired and preparing to spawn
+    verification:
+      method: qualified-majority
+      votes: {agree: 4, total: 5}
+
+  coloration:
+    value:
+      baseColors: [green, blue, orange]
+      pattern: mixed
+    confidence: high
+    rationale: >-
+      All three runs agree. Adults are metallic green to turquoise with wavy blue lines on the
+      cheeks and a broad orange to golden margin on dorsal and caudal fin. Dark scale centres form
+      rows of fine horizontal lines on the flanks, combined with a dark midlateral blotch and mood
+      dependent bars, so the pattern is mixed. A. stalsbergi differs by a white margin and a
+      reticulate scale pattern (Musilová et al. 2009).
+    sources:
+      - *musilova
+      - *fwe
+      - *fishipedia
+      - *sf
+    evidence:
+      - source: *musilova
+        value: {baseColors: [green, orange], pattern: stripes}
+        note: broad orange fin margin; dark scale centres forming horizontal lines
+      - source: *fwe
+        value: {baseColors: [green, blue], pattern: mixed}
+        note: metallic green coloration with some electric blue
+
+  feedingSpeed:
+    value: hasty
+    confidence: low
+    rationale: >-
+      No source rates the feeding pace directly. The generator and checker-a proposed hasty,
+      checker-b normal. Care sheets describe an unfussy, greedy eater, and a large, dominant cichlid
+      of this kind takes food quickly and outcompetes calm tankmates, so hasty is kept; the value
+      rests on general husbandry knowledge and needs confirmation.
+    sources:
+      - *sf
+      - *aqsource
+      - kind: model-knowledge
+        title: General husbandry knowledge of large neotropical cichlids
+
+  minTank:
+    value: {volumeL: 300, lengthCm: 150, depthCm: 45}
+    confidence: medium
+    rationale: >-
+      Seriously Fish requires a base of at least 150 by 45 cm, about 304 litres, for one fish or a
+      pair, and keepers in the archive name about 285 litres for a pair. Checker-a and checker-b
+      took this value; the generator raised it to 400 litres at 150 by 50 cm by its own reasoning
+      without a source. The stated minimum is kept. Community tanks need far more: 450 litres
+      according to Fishipedia and 650 litres according to Seriously Fish.
+    sources:
+      - *sf
+      - *fishipedia
+      - *fk
+      - *t901
+    evidence:
+      - source: *sf
+        value: {volumeL: 304, lengthCm: 150, depthCm: 45}
+        note: one fish or a mated pair
+      - source: *fishipedia
+        value: {volumeL: 450}
+        note: community tank
+      - source: *t901
+        value: {volumeL: 284}
+        note: about 75 US gallons for a pair
+
+  lifespanYears:
+    value: {min: 7, max: 10}
+    confidence: low
+    rationale: >-
+      The runs proposed 8 to 10, 7 to 10 and 8 to 12 years. Only an aquarium guide states a
+      lifespan, 7 to 10 years in captivity; the other proposals rest on general knowledge of
+      cichlids of this size, and FishBase gives only a population doubling time of 1.4 to 4.4
+      years. The stated value is kept and needs confirmation.
+    sources:
+      - *aqsource
+      - kind: model-knowledge
+        title: General knowledge of lifespans of medium-large neotropical cichlids in aquaria
+
+  breeding:
+    value: open-substrate-spawner
+    confidence: high
+    rationale: >-
+      All runs and sources agree on an open substrate spawner with biparental care: the pair cleans
+      a flat stone, a flowerpot or a pit, lays up to 400 to 600 eggs in rows, the female tends the
+      clutch while the male guards the area, and the larvae are moved into pits before they swim
+      free. The Cichlid Room Companion confirms open substrate breeding.
+    sources:
+      - *fb
+      - *sf
+      - *fk
+      - *hu
+      - *musilova
+      - *crc
+      - &glaser
+        kind: website
+        title: "Aquarium Glaser: Andinoacara rivulatus"
+        url: https://www.aquariumglaser.de/en/fish-archives/andinoacara-rivulatus/
+        accessed: 2026-10-12
+
+  beginnerSuitability:
+    value: moderate
+    confidence: medium
+    rationale: >-
+      All runs agree. The fish is hardy and undemanding about food and water chemistry, but it
+      needs a large tank, careful pairing and robust tankmates, and it reacts to poor water
+      quality. Seriously Fish rates it difficult mainly for space and compatibility, while
+      Fishipedia and the Cichlid Room Companion place it with intermediate keepers.
+    sources:
+      - *sf
+      - *fk
+      - *fishipedia
+      - *crc
+
+partners:
+  suitable:
+    - species: Pterygoplichthys gibbiceps
+      reason: Large armoured catfish that the green terror cannot swallow or seriously injure; it uses the bottom at night.
+      condition: Tank of at least 600 litres with caves for the catfish.
+    - species: Metynnis argenteus
+      reason: Fast, deep-bodied schooling characin that is too big to eat and acts as a dither fish.
+      condition: Group of six or more in a tank of at least 650 litres; risky while the pair breeds.
+    - species: Barbonymus schwanenfeldii
+      reason: Large, fast and robust barb that keeps out of the territory and is too big to eat.
+      condition: Very large tank, at least 200 cm long.
+  unsuitable:
+    - species: Andinoacara stalsbergi
+      reason: Sister species sold under the same name; fights like a conspecific, and a cross cannot be ruled out although none is documented.
+    - species: Andinoacara pulcher
+      reason: Smaller, similar-looking relative that is treated as a rival and bullied; crosses are claimed in the hobby but not documented.
+    - species: Paracheirodon innesi
+      reason: Small tetras fit easily into the mouth of an adult and are eaten.
+    - species: Symphysodon aequifasciatus
+      reason: Slow, shy feeder that needs warmer, softer water and is harassed and outcompeted.
+    - species: Lake Malawi mbuna
+      reason: They live in harder, more alkaline lake water and need a plant-based diet; the constant aggression on both sides causes stress and injuries.
+    - species: Parachromis dovii
+      reason: Much larger, highly aggressive piscivore that injures or kills the green terror.
+
+profile:
+  overview:
+    text: >-
+      The green terror is a large, colourful South American cichlid from the Pacific side of the
+      Andes in western Ecuador and the far north of Peru. Adults shine metallic green and
+      turquoise, carry blue lines on the cheeks and a broad orange to golden edge on the dorsal
+      and tail fins, which gives the species its German name Goldsaum. Mature males grow a fatty
+      hump on the forehead and become much larger than females. The trade name green terror is
+      also used for the Peruvian sister species Andinoacara stalsbergi, which has a white fin
+      edge, and fish from the Esmeraldas basin belong to a third species, A. blombergi; these
+      should not be mixed. Green terrors are hardy and intelligent, but they are territorial and
+      can be rough with tankmates and partners. They suit keepers who can offer a large tank and
+      are ready to plan pairing and companions with care. In Ecuador the species is also a valued
+      food fish called vieja azul.
+    sources:
+      - *cof
+      - *musilova
+      - *fwe
+      - *sf
+  habitat:
+    text: >-
+      The species lives in the coastal lowlands west of the Andes, from the Guayas basin and the
+      rivers of Manabí and El Oro in Ecuador to the Tumbes and Zarumilla rivers just across the
+      Peruvian border. It is common there in small streams, the main channels and pools of
+      larger rivers, and in floodplain wetlands such as Abras de Mantequilla, mostly in slow,
+      shallow water near the banks over sand, gravel or mud and near rocks. Spawning takes place
+      on large stones near the shore. Water measured in rivers where the fish are caught is
+      neutral to slightly alkaline (pH about 6.6 to 8.2) and soft to moderately hard. Its
+      temperature varies with altitude, season and time of day: cool foothill rivers stay near
+      20 C, while lowland rivers often reach 26 to 28 C. The natural range used for this species
+      is the cautious 22 to 25 C. Fish from the Esmeraldas basin in the north belong to a separate
+      species, A. blombergi. Escaped or released green terrors have settled in Mexico and in the
+      Amazonian part of Ecuador.
+    sources:
+      - *fwe
+      - *limno
+      - *brycon
+      - *gonzalez
+      - *ochoa
+      - *luz
+      - *piesiewicz
+      - *cof
+      - *crc
+  sizeAndGrowth:
+    text: >-
+      Males usually reach 20 to 25 cm in the aquarium; exceptional fish grow close to 30 cm.
+      Females stay clearly smaller at around 18 cm. In wild fisheries in Ecuador most fish caught
+      are 15 to 22 cm long. The size gap between the sexes opens early: in one farm cohort,
+      eight-month-old males were already about two thirds longer than their sisters. Fish become
+      sexually mature at about 10 to 15 cm, and the forehead hump of males becomes visible from
+      roughly 10 to 12 cm onwards. The large final size of males determines the tank size, so a
+      young pair of small fish in a medium tank will outgrow it within a couple of years.
+    sources:
+      - *fb
+      - *fk
+      - *sf
+      - *ochoa
+      - *mendez
+      - *hu
+  husbandry:
+    text: >-
+      A pair needs a tank of at least 150 cm length with a 45 cm wide base, about 300 litres; a
+      mixed tank should be considerably bigger. Use soft sand, because green terrors dig a lot,
+      and add flat stones as spawning sites plus wood and rock to create visual barriers. Rooted
+      plants are dug out, so use epiphytes such as Anubias or Java fern tied to decor and floating
+      plants for shade. Water chemistry is not critical: the species stays healthy over years at
+      20 to 28 C, pH 6.5 to 8.5 and a general hardness of about 2 to 25 dGH. Clean water matters
+      more, since the species is sensitive to deteriorating water quality. Strong biological
+      filtration and generous weekly water changes are the basis of good health. A sturdy lid and
+      secured heaters help, as large males can be boisterous when they rearrange the tank.
+    sources:
+      - *sf
+      - *fk
+      - *fb
+      - *fishipedia
+  socialBehavior:
+    text: >-
+      Green terrors live as pairs. Adults of the same species are rivals, and a male placed
+      together with a female that is not ready to spawn may chase her to death. The safest way to
+      get a pair is to raise five or six juveniles together and let two fish pair off, then move
+      the others out. With adult fish, a clear divider for several weeks lets them get used to
+      each other before contact. Within a bonded pair, both parents defend the brood; the male
+      patrols the border while the female stays close to eggs and young. Towards other species a
+      single fish holds a large territory and chases intruders, and a breeding pair can become
+      dangerous to anything in a normal-sized tank. Individual temperament varies widely, and some
+      gold saums are calmer than their reputation.
+    sources:
+      - *sf
+      - *fk
+      - *fishipedia
+      - *hu
+      - *t29792
+  diet:
+    text: >-
+      In the wild the green terror feeds mainly on invertebrates such as insects and their larvae,
+      worms and crustaceans, and it takes small fish when it can. In the aquarium it accepts
+      almost everything. A good cichlid pellet or stick makes a sound staple; add frozen foods
+      such as mysis, krill and mosquito larvae, chopped prawns, mussel meat and earthworms, and
+      some vegetable matter like blanched peas or spinach. Avoid beef heart and other red meat,
+      which harm the digestive system and pollute the water, and do not overfeed rich food: the
+      species is treated as sensitive to bloat, so tankmates that need a protein-heavy diet are a
+      poor match. Feed several small meals rather than one large one. Because green terrors eat
+      fast and greedily, slow tankmates may go short. Live feeder fish are unnecessary and bring a
+      risk of disease.
+    sources:
+      - *fbfood
+      - *gonzalez
+      - *li
+      - *fwe
+      - *sf
+      - *fk
+  breeding:
+    text: >-
+      Breeding is straightforward once a compatible pair exists. Condition the pair with plenty of
+      frozen food; a large water change with slightly cooler water often triggers spawning. The
+      pair cleans a flat stone, a flowerpot or a pit in the sand, and the female lays rows of eggs
+      that the male fertilises, several hundred per clutch. The female fans and guards the eggs
+      while the male defends the area. After three to four days the larvae hatch and are moved
+      into pits; roughly a week later they swim free and take Artemia nauplii and fine powdered
+      food. Leave the fry with the parents for four to six weeks. Removing them early can make the
+      male push for a new spawning and turn on an unready female. Remove other fish before
+      spawning, as parents attack them.
+    sources:
+      - *sf
+      - *fk
+      - *fb
+      - *hu
+      - *piesiewicz
+  sexing:
+    text: >-
+      Adult males are clearly larger than females and develop a fatty hump on the forehead, which
+      in aquarium fish is often permanent and very large. Males also grow longer, pointed tips on
+      the dorsal and anal fins, while those of females stay shorter and rounder. Colour is not a
+      reliable guide: females can be just as bright, and dominance and mood change the intensity
+      in both sexes. Juveniles are hard to sex. In a group of young fish the faster-growing
+      individuals are usually males, and the hump becomes visible from roughly 10 to 12 cm.
+      During spawning the short, blunt genital papilla of the female and the pointed one of the
+      male confirm the sex.
+    sources:
+      - *sf
+      - *fk
+      - *fwe
+      - *hu
+      - &t27742
+        kind: archive
+        title: cichlids.com forum thread 27742
+        url: https://www.cichlids.com/disc/read.php?1,27742
+  compatibility:
+    text: >-
+      Green terrors combine only with fish that are too large to eat and robust enough to take a
+      chase. In tanks of 650 litres or more, a single fish or a pair can live with other sturdy
+      cichlids of similar size, big armoured catfish, silver dollars or large barbs. Small tetras,
+      livebearers and dwarf cichlids are food or victims. Avoid slow, delicate species such as
+      discus, and keep Lake Malawi cichlids apart because they need different water and diet.
+      Do not mix green terrors with the white-edged Andinoacara stalsbergi or with blue acaras:
+      the look-alikes provoke fights, and crosses cannot be ruled out although none is documented.
+      Once a pair spawns, even suitable tankmates are at risk in a tank of normal size, so a
+      breeding pair is best kept alone.
+    sources:
+      - *sf
+      - *fk
+      - *musilova
+      - *sfpulcher
+      - *t27359
+  problems:
+    text: >-
+      The most common mistake is putting an adult male together with a strange female; he may
+      kill her. Raise a group together or use a divider. A second mistake is a tank that is too
+      small: a 25 cm male with tankmates in 200 litres leads to constant fighting. Breeding pairs
+      in community tanks attack everything around them. Water quality is the main health factor.
+      Farmed stocks kept crowded and with poor water suffer outbreaks of bacterial disease with
+      loss of appetite, loss of balance, skin ulcers and deaths. Torn fins and wounds after fights
+      are entry points for infections, so separate injured fish. Red meat such as beef heart
+      upsets digestion and fouls the water. Ask an aquatic vet for diagnosis and treatment of sick
+      fish.
+    sources:
+      - *sf
+      - *fk
+      - *luo
+
+provenance:
+  runs:
+    - role: generator
+      model: claude-opus-5-5
+      date: 2026-10-12
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-12
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-12
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-12
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-12
+    - role: adjudicator
+      model: claude-opus-5-5
+      date: 2026-10-12
+  disagreements:
+    - field: features.temperatureC
+      proposals:
+        - {by: generator, value: {min: 22, max: 30}}
+        - {by: checker-a, value: {min: 20, max: 28}}
+        - {by: checker-b, value: {min: 20, max: 25}}
+        - {by: tiebreaker-1, value: {min: 20, max: 28}}
+        - {by: tiebreaker-2, value: {min: 22, max: 30}}
+      decision: {min: 22, max: 25}
+      rationale: >-
+        Decided by the vote count with method conservative (2 of 5 agree): the intersection of all
+        proposals. Many habitat readings are warmer; the tolerance covers them.
+    - field: features.temperatureC.tolerance
+      proposals:
+        - {by: generator, value: {min: 20, max: 30}}
+        - {by: checker-a, value: {min: 20, max: 28}}
+        - {by: checker-b, value: {min: 20, max: 28}}
+        - {by: tiebreaker-1, value: {min: 20, max: 28}}
+        - {by: tiebreaker-2, value: {min: 20, max: 30}}
+      decision: {min: 20, max: 28}
+      rationale: >-
+        Decided by the vote count with method conservative (3 of 5 agree): the intersection of all
+        proposals, which contains the natural range.
+    - field: features.ghDgh
+      proposals:
+        - {by: generator, value: {min: 2, max: 12}}
+        - {by: checker-a, value: {min: 2, max: 9}}
+        - {by: checker-b, value: {min: 4, max: 25}}
+        - {by: tiebreaker-1, value: {min: 1, max: 14}}
+        - {by: tiebreaker-2, value: {min: 1, max: 10}}
+      decision: {min: 4, max: 9}
+      rationale: >-
+        Decided by the vote count with method conservative (3 of 5 agree): the intersection of all
+        proposals.
+    - field: features.ghDgh.tolerance
+      proposals:
+        - {by: generator, value: {min: 2, max: 25}}
+        - {by: checker-a, value: {min: 2, max: 25}}
+        - {by: checker-b, value: {min: 4, max: 30}}
+        - {by: tiebreaker-1, value: {min: 1, max: 25}}
+        - {by: tiebreaker-2, value: {min: 1, max: 25}}
+      decision: {min: 2, max: 25}
+      rationale: >-
+        Decided by the vote count with method qualified-majority (4 of 5 agree): median bounds of
+        the agreeing votes. Checker-b's upper bound of 30 rested on the hard water of A. stalsbergi.
+    - field: features.khDkh
+      proposals:
+        - {by: generator, value: {min: 2, max: 15}}
+        - {by: checker-a, value: {min: 2, max: 15}}
+        - {by: checker-b, value: {min: 2, max: 8}}
+        - {by: tiebreaker-1, value: {min: 3, max: 15}}
+        - {by: tiebreaker-2, value: {min: 1, max: 6}}
+      decision: {min: 3, max: 6}
+      rationale: >-
+        Decided by the vote count with method conservative (3 of 5 agree): the intersection of all
+        proposals. The measured Carrizal alkalinity lies above it and inside the tolerance.
+    - field: features.diet.value
+      proposals:
+        - {by: generator, value: {type: omnivore, bloatSensitive: false}}
+        - {by: checker-a, value: {type: omnivore, bloatSensitive: false}}
+        - {by: checker-b, value: {type: omnivore, bloatSensitive: true}}
+        - {by: tiebreaker-1, value: {type: invertivore, bloatSensitive: false}}
+        - {by: tiebreaker-2, value: {type: invertivore, bloatSensitive: false}}
+      decision: {type: invertivore, bloatSensitive: true}
+      rationale: >-
+        Decided by the vote count with method conservative (2 of 5 agree): the strictest proposed
+        type and the bloat flag of any vote apply. The food list is merged from the proposals and
+        follows the invertebrate-based wild diet; beef heart is left out.
+    - field: features.hybridGroup
+      proposals:
+        - {by: generator, value: andinoacara-rivulatus-group}
+        - {by: checker-a, value: null}
+        - {by: checker-b, value: null}
+        - {by: tiebreaker-1, value: null}
+        - {by: tiebreaker-2, value: null}
+      decision: null
+      rationale: >-
+        Decided by the vote count with method qualified-majority (4 of 5 agree). No source
+        documents a cross of A. rivulatus; hybrid-groups.yaml stays unchanged.
+    - field: features.maxSizeCm
+      proposals:
+        - {by: generator, value: {male: 25, female: 15}}
+        - {by: checker-a, value: {male: 25, female: 18}}
+        - {by: checker-b, value: {male: 25, female: 20}}
+      decision: {male: 25, female: 18}
+      rationale: >-
+        No source gives a female maximum. The generator's 15 cm extrapolates a juvenile size ratio
+        and lies below wild catches of up to 22 cm; checker-b's 20 cm rests on a female value that
+        Seriously Fish does not state. 18 cm keeps females clearly smaller than males, as all care
+        sheets describe.
+    - field: features.habitatZones
+      proposals:
+        - {by: generator, value: [rock, sand, wood]}
+        - {by: checker-a, value: [rock, sand]}
+        - {by: checker-b, value: [sand, rock, plants, wood]}
+      decision: [rock, sand, wood]
+      rationale: >-
+        Rock and sand are undisputed. Wood is used as visual barrier and recommended by Seriously
+        Fish (two of three runs). Plants are left out because the species uproots them; only
+        floating plants are recommended.
+    - field: features.feedingSpeed
+      proposals:
+        - {by: generator, value: hasty}
+        - {by: checker-a, value: hasty}
+        - {by: checker-b, value: normal}
+      decision: hasty
+      rationale: >-
+        Care sheets describe a greedy, unfussy eater; no source supports a normal pace. Confidence
+        stays low.
+    - field: features.minTank
+      proposals:
+        - {by: generator, value: {volumeL: 400, lengthCm: 150, depthCm: 50}}
+        - {by: checker-a, value: {volumeL: 300, lengthCm: 150, depthCm: 45}}
+        - {by: checker-b, value: {volumeL: 300, lengthCm: 150, depthCm: 45}}
+      decision: {volumeL: 300, lengthCm: 150, depthCm: 45}
+      rationale: >-
+        Seriously Fish states 150 by 45 cm (about 304 litres) for one fish or a pair; the
+        generator's increase has no source.
+    - field: features.lifespanYears
+      proposals:
+        - {by: generator, value: {min: 8, max: 10}}
+        - {by: checker-a, value: {min: 7, max: 10}}
+        - {by: checker-b, value: {min: 8, max: 12}}
+      decision: {min: 7, max: 10}
+      rationale: >-
+        The only stated value (an aquarium guide) is 7 to 10 years; the other proposals rest on
+        general knowledge.
+    - field: features.origin.value.localities
+      proposals:
+        - by: generator
+          value:
+            - Guayas basin (Daule, Babahoyo, Vinces and Quevedo rivers)
+            - Abras de Mantequilla wetland, Los Ríos
+            - Coastal rivers of Manabí and El Oro, Ecuador
+            - Río Tumbes and Río Zarumilla, Peru
+        - by: checker-a
+          value:
+            - Río Guayas basin (Quevedo, Vinces, Daule, Chimbo)
+            - Río Santa Rosa basin
+            - Río Zarumilla basin
+            - Río Tumbes basin
+        - by: checker-b
+          value: [Rio Guayas basin, Rio Babahoyo, Rio Tumbes]
+      decision:
+        - Guayas basin (Daule, Babahoyo, Vinces, Quevedo and Chimbo rivers)
+        - Abras de Mantequilla wetland, Los Ríos
+        - Coastal rivers of Manabí and El Oro, Ecuador
+        - Río Santa Rosa basin, Ecuador
+        - Río Zarumilla and Río Tumbes basins, Ecuador and Peru
+      rationale: >-
+        The lists do not contradict each other and are merged.
