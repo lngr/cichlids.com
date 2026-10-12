@@ -32,42 +32,13 @@ wait_for_tcp() {
   return 1
 }
 
-wait_for_http() {
-  local url="$1" label="$2" tries="${3:-90}"
-  for ((i = 0; i < tries; i++)); do
-    if curl -fsS -o /dev/null "$url" 2>/dev/null; then
-      return 0
-    fi
-    sleep 1
-  done
-  echo "Timed out waiting for $label at $url." >&2
-  return 1
-}
-
 etl() {
   (cd "$API_DIR" && DOTNET_ENVIRONMENT=Development "$DOTNET" run --project src/Cichlids.Etl -c Release -- "$@")
 }
 
 # 1. Postgres, RustFS, Keycloak
 step "Docker services (postgres, rustfs, keycloak)"
-docker compose -f "$COMPOSE_FILE" up -d postgres rustfs keycloak
-
-echo "Waiting for Postgres..."
-for ((i = 0; i < 60; i++)); do
-  if docker compose -f "$COMPOSE_FILE" exec -T postgres pg_isready -U cichlids -d cichlids >/dev/null 2>&1; then
-    break
-  fi
-  sleep 1
-done
-echo "Postgres is up."
-
-echo "Waiting for RustFS..."
-wait_for_tcp 127.0.0.1 9000 "RustFS"
-echo "RustFS is up."
-
-echo "Waiting for Keycloak..."
-wait_for_http "http://localhost:8180/realms/master" "Keycloak"
-echo "Keycloak is up."
+"$SCRIPT_DIR/services-up.sh"
 
 # 2. Legacy MySQL stack
 step "Legacy MySQL (port 3306)"

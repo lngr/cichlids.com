@@ -101,6 +101,17 @@ docker compose -f app/stack/compose.yaml exec -T keycloak sh -c '
     -s "config.\"jsonType.label\"=boolean" -s "config.\"access.token.claim\"=true" -s "config.\"id.token.claim\"=true"'
 ```
 
+## Services without legacy data
+
+`services-up.sh` starts Postgres, RustFS and Keycloak and waits until each answers. It needs no
+legacy MySQL and no legacy files, which makes it the entry point for the write E2E stack on a
+fresh host. `bootstrap.sh` runs it as its first step. The flag `--wait-realm` additionally waits
+for the imported `cichlids` realm.
+
+```sh
+app/stack/services-up.sh --wait-realm
+```
+
 ## Start / stop the Docker services directly
 
 ```sh
