@@ -1,11 +1,13 @@
 #:project ../../api/src/Cichlids.Infrastructure/Cichlids.Infrastructure.csproj
-// Creates or tears down a bucket on the local RustFS instance for write-stack.sh. The dev API
-// only ensures its own configured bucket exists at startup (see S3ObjectStore.EnsureBucketAsync
-// in app/api), so a second, test-only bucket needs a direct S3 client instead; the ETL project's
-// bucket setup is not reusable here because it reads "ObjectStorage" only from its own
-// appsettings.json, never from environment variables, so it cannot be pointed at a different
-// bucket without editing that file. This is a .NET 10 file-based app (no .csproj) that references
-// the infrastructure project for the bucket policy the ETL applies.
+// Creates or tears down a bucket on the local RustFS instance for write-stack.sh, and stores a
+// file in it for write specs that need objects the API never writes, such as the public copy the
+// media seed gives a legacy picture. Only the ETL creates the configured bucket (see
+// S3ObjectStore.EnsureBucketAsync in app/api); the API expects it to exist. A second, test-only
+// bucket therefore needs a direct S3 client; the ETL project's bucket setup is not reusable here
+// because it reads "ObjectStorage" only from its own appsettings.json, never from environment
+// variables, so it cannot be pointed at a different bucket without editing that file. This is a
+// .NET 10 file-based app (no .csproj) that references the infrastructure project for the bucket
+// policy the ETL applies.
 using Amazon.Runtime;
 using Amazon.S3;
 using Amazon.S3.Model;
@@ -13,9 +15,11 @@ using Amazon.S3.Util;
 using Cichlids.Infrastructure.Media;
 using Cichlids.Infrastructure.Storage;
 
-if (args.Length != 2 || args[0] is not ("ensure" or "delete"))
+if (!(args is ["ensure" or "delete", _] or ["put", _, _, _, _]))
 {
-    Console.Error.WriteLine("Usage: dotnet run bucket-tool.cs -- <ensure|delete> <bucket>");
+    Console.Error.WriteLine(
+        "Usage: dotnet run bucket-tool.cs -- <ensure|delete> <bucket>\n"
+        + "       dotnet run bucket-tool.cs -- put <bucket> <key> <file> <content-type>");
     return 2;
 }
 
@@ -44,6 +48,14 @@ var config = new AmazonS3Config
     AuthenticationRegion = "us-east-1",
 };
 var client = new AmazonS3Client(new BasicAWSCredentials(accessKey, secretKey), config);
+
+if (action == "put")
+{
+    var (key, file, contentType) = (args[2], args[3], args[4]);
+    await client.PutObjectAsync(new PutObjectRequest { BucketName = bucket, Key = key, FilePath = file, ContentType = contentType });
+    Console.WriteLine($"Stored '{file}' as '{key}' in bucket '{bucket}'.");
+    return 0;
+}
 
 if (action == "ensure")
 {
