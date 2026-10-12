@@ -563,8 +563,12 @@ Die IDs sind stabil, damit sich die Fäden einzeln abarbeiten und abhaken lassen
 - [x] **F24** Die Android-Package-ID `com.cichlids.app` ist bestätigt.
 - [x] **F27** Die Befunde des Reviews des gemergten MVP (`REVIEW-MVP.md`, R1 bis R46) sind einzeln
   besprochen und entschieden. Die Webhook-Entscheidung steht in ADR-0024.
-- [ ] **F28** Die Entscheidungen aus `REVIEW-MVP.md` in Backlog-Tasks überführen und umsetzen. Bereits
-  angelegt: TASK-2.24, TASK-2.25, TASK-2.26.
+- [ ] **F28** Die Entscheidungen aus `REVIEW-MVP.md` umsetzen. Sie stehen als Tasks im Backlog
+  (Zuordnung im Abschnitt "Umsetzung" von `REVIEW-MVP.md`); die neun Tasks mit Priorität hoch sind
+  als Abhängigkeiten von TASK-2.4 eingetragen. Reihenfolge (entschieden am 2026-10-12): zuerst die
+  für Staging wichtigen Fixes (Sicherheit, Datenintegrität des Imports, Stabilität der API,
+  CI-Gate), dann TASK-2.4, danach die übrigen Punkte, die dauerhafte Anmeldung (R8) und der
+  externe Webhook-Forwarder (ADR-0024).
 - [ ] **F26** (TASK-2.23) Slug-Secret für Staging und Produktion erzeugen, sicher verwahren (SOPS, TASK-2.6) und
   identisch für ETL und API setzen, bevor der Produktiv-Import läuft. Aus ihm entstehen Bild-Slugs,
   `user<zahl>`-Handles, Login-Usernames und `guest_<nummer>`-Gastnamen; ein anderer Schlüssel ergäbe andere

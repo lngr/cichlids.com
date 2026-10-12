@@ -84,6 +84,38 @@ verworfen, wird das hier vermerkt. Daraus entstehende Arbeitspakete gehen in den
 
 ---
 
+## Umsetzung
+
+Die Entscheidungen sind in Backlog-Tasks überführt. Die Tasks mit Priorität hoch sind
+Voraussetzung für TASK-2.4 (Staging-Deployment).
+
+| Task | Priorität | Punkte |
+|---|---|---|
+| TASK-3.29 Originale privat, Standortdaten entfernen | hoch | R1, R23, R24 |
+| TASK-3.30 ETL nur gegen leere Datenbank, Reset für Dev und Staging | hoch | R3, R18, R38 |
+| TASK-3.31 Medien-Seed anhand des Object Stores | hoch | R20 |
+| TASK-3.32 Verify nur aus Altdaten | hoch | R34 sowie Verify-Teile von R9, R16, R19 |
+| TASK-3.33 Konto-Import und Identitäten absichern | hoch | R2, R31 (Import), R36 |
+| TASK-2.27 Getrennte Keycloak-Konfiguration für Staging und Produktion | hoch | R7, R33 |
+| TASK-3.34 Zuverlässige Webhook-Zustellung mit Positivliste | hoch | R4, R5, R10, R14 |
+| TASK-3.35 Profil beim ersten Login atomar anlegen | hoch | R12, R31 (API) |
+| TASK-2.28 App-Tests in CI | hoch | R6 |
+| TASK-3.36 Eine Bewertung pro Mitglied und Ziel, keine Selbstbewertung | mittel | R9 |
+| TASK-3.37 Grenzen für Kommentare, Uploads und Entwürfe | mittel | R11, R13 |
+| TASK-3.38 Exakte Legacy-Weiterleitungen mit Sichtbarkeitsprüfung | mittel | R29, R30 |
+| TASK-3.39 Korrekturen der ETL-Regeln | mittel | R15, R16, R17, R19, R21, R35, R37 |
+| TASK-3.40 Konfiguration und Fehlerzustände der App | mittel | R25, R26, R27, R41 |
+| TASK-3.41 Dauerhafte Anmeldung pro Gerät | mittel | R8 |
+| TASK-3.42 Code- und Doku-Korrekturen | mittel | R32, R39, R40, R42, R43, R44, R45, R46 |
+| TASK-2.24 Playwright-Smoke mit anonymisierten Daten in CI | mittel | R6 (Teil) |
+| TASK-2.25 Maestro-Flows in CI | mittel | R6 (Teil), R42 (Maestro) |
+| TASK-2.26 gitleaks statt Eigenbau-Scanner | mittel | R28 |
+| TASK-2.29 Isolierter Webhook-Forwarder | niedrig | R10 (ADR-0024) |
+
+R22 ist verworfen. DRAFT-4 ist durch R9 entschieden und archiviert.
+
+---
+
 ## Hoch
 
 ### R1 Upload-Originale samt EXIF/GPS öffentlich lesbar (verifiziert)
