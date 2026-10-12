@@ -1,10 +1,10 @@
 ---
 id: TASK-3.29
 title: Keep media originals private and strip location metadata
-status: In Review
+status: Done
 assignee: []
 created_date: '2026-10-12 04:48'
-updated_date: '2026-10-12 18:36'
+updated_date: '2026-10-12 19:34'
 labels: []
 dependencies: []
 references:
@@ -34,11 +34,11 @@ Originals are never publicly readable; the bucket policy exposes variants and fo
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 At least one Given-When-Then acceptance criterion is specified
-- [ ] #2 A failing test was written first, then made to pass (red-green)
-- [ ] #3 An automated end-to-end test for the user path runs green
-- [ ] #4 Authoritative domain logic is covered by unit/integration tests
-- [ ] #5 All CI test suites are fully green
+- [x] #1 At least one Given-When-Then acceptance criterion is specified
+- [x] #2 A failing test was written first, then made to pass (red-green)
+- [x] #3 An automated end-to-end test for the user path runs green
+- [x] #4 Authoritative domain logic is covered by unit/integration tests
+- [x] #5 All CI test suites are fully green
 <!-- DOD:END -->
 
 ## Implementation Plan
