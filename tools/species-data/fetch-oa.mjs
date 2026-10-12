@@ -340,9 +340,10 @@ async function browserFetch(url, kind) {
 // Returns an empty text for a broken PDF, so that the caller moves on to the next route.
 async function pdfText(buffer) {
   const pdfjs = await import('pdfjs-dist/legacy/build/pdf.mjs');
+  const task = pdfjs.getDocument({ data: new Uint8Array(buffer), verbosity: 0, useSystemFonts: true });
   let doc;
   try {
-    doc = await pdfjs.getDocument({ data: new Uint8Array(buffer), verbosity: 0, useSystemFonts: true }).promise;
+    doc = await task.promise;
   } catch (e) {
     console.error(`fetch-oa: unreadable PDF (${e.name}), trying the next route`);
     return '';
@@ -358,7 +359,7 @@ async function pdfText(buffer) {
     }
     pages.push(line.replace(/[ \t]+\n/g, '\n').replace(/[ \t]{2,}/g, ' ').trim());
   }
-  await doc.destroy();
+  await task.destroy?.();
   return pages.join('\n\n');
 }
 
