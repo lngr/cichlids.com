@@ -4,10 +4,10 @@ using System.Diagnostics;
 namespace Cichlids.Etl.Tests;
 
 /// <summary>
-/// Starts the built ETL entry point as its own process. The command line is parsed before any
-/// configuration or connection is used, so these runs need no database; the connection settings
-/// point at a closed port so a run that got past parsing would fail without reaching a real
-/// database.
+/// Starts the built ETL entry point as its own process. The command line and the reset policy are
+/// checked before any connection is opened, so these runs need no database; the connection
+/// settings point at a closed port so a run that got past those checks would fail without reaching
+/// a real database or Keycloak.
 /// </summary>
 public sealed class EtlProcessTests
 {
@@ -32,8 +32,19 @@ public sealed class EtlProcessTests
         Assert.Contains("'Staging'", standardError);
     }
 
+    [Theory]
+    [InlineData("Production")]
+    [InlineData(null)]
+    public async Task RefusesTheResetOutsideDevelopmentAndStaging(string? environmentName)
+    {
+        var (exitCode, _, standardError) = await RunEtlAsync(environmentName, "reset");
+
+        Assert.Equal(1, exitCode);
+        Assert.Contains("The reset refuses to run in the environment 'Production'", standardError);
+    }
+
     private static async Task<(int ExitCode, string StandardOutput, string StandardError)> RunEtlAsync(
-        string environmentName, params string[] arguments)
+        string? environmentName, params string[] arguments)
     {
         var startInfo = new ProcessStartInfo(Environment.GetEnvironmentVariable("DOTNET_HOST_PATH") ?? "dotnet")
         {
@@ -47,7 +58,15 @@ public sealed class EtlProcessTests
             startInfo.ArgumentList.Add(argument);
         }
 
-        startInfo.Environment["DOTNET_ENVIRONMENT"] = environmentName;
+        if (environmentName is null)
+        {
+            startInfo.Environment.Remove("DOTNET_ENVIRONMENT");
+        }
+        else
+        {
+            startInfo.Environment["DOTNET_ENVIRONMENT"] = environmentName;
+        }
+
         startInfo.Environment["CICHLIDS_ETL_TARGET_CONNECTION"] = UnreachableTarget;
         startInfo.Environment["CICHLIDS_ETL_LEGACY_CONNECTION"] = UnreachableLegacy;
         startInfo.Environment["CICHLIDS_KEYCLOAK_URL"] = "http://127.0.0.1:1";
