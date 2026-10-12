@@ -42,6 +42,27 @@ public static class MediaSeedCommand
         string? missingOutPath,
         CancellationToken cancellationToken)
     {
+        var summary = await SeedAsync(
+            legacyConnectionString, targetConnectionString, objectStore, legacyImagesRoot, limit, workers, onlyMissing,
+            missingOutPath, cancellationToken);
+        PrintSummary(summary);
+        return 0;
+    }
+
+    /// <summary>
+    /// Seeds object storage and the media metadata and returns the counts of the run.
+    /// </summary>
+    public static async Task<MediaSeedSummary> SeedAsync(
+        string legacyConnectionString,
+        string targetConnectionString,
+        IObjectStore objectStore,
+        string legacyImagesRoot,
+        int? limit,
+        int workers,
+        bool onlyMissing,
+        string? missingOutPath,
+        CancellationToken cancellationToken)
+    {
         Console.WriteLine(
             $"Running media (limit={(limit is null ? "none" : limit.Value.ToString())}, workers={workers}, onlyMissing={onlyMissing})...");
 
@@ -65,7 +86,7 @@ public static class MediaSeedCommand
                 {
                     if (onlyMissing && IsComplete(candidate, variantLabelsByMediaId))
                     {
-                        stats.IncrementSkippedComplete();
+                        stats.IncrementOriginalPresent();
                     }
                     else
                     {
@@ -87,14 +108,14 @@ public static class MediaSeedCommand
             Console.WriteLine($"Interrupted after {stats.Processed} item(s); safe to re-run (idempotent).");
         }
 
-        PrintSummary(stats, stopwatch);
+        var summary = stats.ToSummary(stopwatch.Elapsed);
 
         if (missingOutPath is not null)
         {
             await WriteMissingReportAsync(missingOutPath, missingEntries, brokenKeys, cancellationToken);
         }
 
-        return 0;
+        return summary;
     }
 
     // === per-item processing ========================================================================
@@ -163,6 +184,11 @@ public static class MediaSeedCommand
             await objectStore.PutAsync(
                 candidate.StorageKey, new MemoryStream(sourceBytes), MediaStorageKeys.ResolveContentType(candidate.StorageKey), cancellationToken);
             stats.AddBytesTransferred(size);
+            stats.IncrementOriginalUploaded();
+        }
+        else
+        {
+            stats.IncrementOriginalPresent();
         }
 
         int? width = candidate.Width;
@@ -182,6 +208,7 @@ public static class MediaSeedCommand
                 {
                     if (onlyMissing && existingLabels.Contains(label))
                     {
+                        stats.IncrementVariantPresent();
                         continue;
                     }
 
@@ -189,6 +216,7 @@ public static class MediaSeedCommand
                     var variantKey = MediaStorageKeys.BuildVariantKey(candidate.StorageKey, label);
                     await objectStore.PutAsync(variantKey, new MemoryStream(variantBytes), "image/jpeg", cancellationToken);
                     stats.AddBytesTransferred(variantBytes.LongLength);
+                    stats.IncrementVariantUploaded();
                     variantsToRecord.Add((label, targetWidth, variantKey, variantBytes.LongLength));
                 }
             }
@@ -204,14 +232,12 @@ public static class MediaSeedCommand
         await using var connection = new NpgsqlConnection(targetConnectionString);
         await connection.OpenAsync(cancellationToken);
 
-        var wasComplete = candidate.ByteSize is not null && candidate.ChecksumSha256 is not null;
         await UpdateMediaItemMetadataAsync(connection, candidate.Id, size, checksum, width, height, cancellationToken);
-        stats.IncrementUpdatedMediaItem(wasComplete);
+        stats.IncrementMetadataRecorded();
 
         foreach (var (label, variantWidth, variantKey, variantByteSize) in variantsToRecord)
         {
-            var inserted = await UpsertMediaVariantAsync(connection, candidate.Id, label, variantWidth, variantKey, variantByteSize, cancellationToken);
-            stats.IncrementVariant(inserted);
+            await UpsertMediaVariantAsync(connection, candidate.Id, label, variantWidth, variantKey, variantByteSize, cancellationToken);
         }
     }
 
@@ -253,7 +279,7 @@ public static class MediaSeedCommand
         await command.ExecuteNonQueryAsync(cancellationToken);
     }
 
-    private static async Task<bool> UpsertMediaVariantAsync(
+    private static async Task UpsertMediaVariantAsync(
         NpgsqlConnection connection, long mediaItemId, string label, int width, string storageKey, long byteSize, CancellationToken cancellationToken)
     {
         await using var command = new NpgsqlCommand(
@@ -262,7 +288,6 @@ public static class MediaSeedCommand
             VALUES (@mediaItemId, @label, @width, @storageKey, @byteSize)
             ON CONFLICT (media_item_id, label) DO UPDATE SET
                 width = EXCLUDED.width, storage_key = EXCLUDED.storage_key, byte_size = EXCLUDED.byte_size
-            RETURNING (xmax = 0) AS inserted
             """,
             connection);
         command.Parameters.AddWithValue("mediaItemId", mediaItemId);
@@ -271,8 +296,7 @@ public static class MediaSeedCommand
         command.Parameters.AddWithValue("storageKey", storageKey);
         command.Parameters.AddWithValue("byteSize", byteSize);
 
-        var result = await command.ExecuteScalarAsync(cancellationToken);
-        return result is true;
+        await command.ExecuteNonQueryAsync(cancellationToken);
     }
 
     // === loading ======================================================================================
@@ -376,22 +400,22 @@ public static class MediaSeedCommand
             + $"missing={stats.Missing}, broken={stats.Broken})...");
     }
 
-    private static void PrintSummary(Statistics stats, Stopwatch stopwatch)
+    private static void PrintSummary(MediaSeedSummary summary)
     {
-        var elapsedSeconds = Math.Max(stopwatch.Elapsed.TotalSeconds, 0.001);
+        var elapsedSeconds = Math.Max(summary.Elapsed.TotalSeconds, 0.001);
         Console.WriteLine();
         Console.WriteLine("=== media summary ===");
-        Console.WriteLine($"  processed:           {stats.Processed}");
-        Console.WriteLine($"  skipped (complete):  {stats.SkippedComplete}");
-        Console.WriteLine($"  media_item inserted: {stats.MediaItemFirstCompleted}");
-        Console.WriteLine($"  media_item updated:  {stats.MediaItemRefreshed}");
-        Console.WriteLine($"  variant inserted:    {stats.VariantInserted}");
-        Console.WriteLine($"  variant updated:     {stats.VariantUpdated}");
-        Console.WriteLine($"  missing:             {stats.Missing}");
-        Console.WriteLine($"  broken:              {stats.Broken}");
-        Console.WriteLine($"  bytes transferred:   {stats.BytesTransferred:N0}");
-        Console.WriteLine($"  elapsed:             {stopwatch.Elapsed:c}");
-        Console.WriteLine($"  throughput:          {stats.Processed / elapsedSeconds:F1} items/s, {stats.BytesTransferred / 1024.0 / 1024.0 / elapsedSeconds:F2} MB/s");
+        Console.WriteLine($"  processed:           {summary.Processed}");
+        Console.WriteLine($"  originals uploaded:  {summary.OriginalsUploaded}");
+        Console.WriteLine($"  originals present:   {summary.OriginalsPresent}");
+        Console.WriteLine($"  variants uploaded:   {summary.VariantsUploaded}");
+        Console.WriteLine($"  variants present:    {summary.VariantsPresent}");
+        Console.WriteLine($"  metadata recorded:   {summary.MetadataRecorded}");
+        Console.WriteLine($"  missing:             {summary.Missing}");
+        Console.WriteLine($"  broken:              {summary.Broken}");
+        Console.WriteLine($"  bytes transferred:   {summary.BytesTransferred:N0}");
+        Console.WriteLine($"  elapsed:             {summary.Elapsed:c}");
+        Console.WriteLine($"  throughput:          {summary.Processed / elapsedSeconds:F1} items/s, {summary.BytesTransferred / 1024.0 / 1024.0 / elapsedSeconds:F2} MB/s");
         Console.WriteLine();
     }
 
@@ -442,62 +466,62 @@ public static class MediaSeedCommand
 
     /// <summary>
     /// Thread-safe run counters: every worker in the pool increments the same instance
-    /// concurrently, so every mutation goes through <see cref="Interlocked"/>.
+    /// concurrently, so every mutation goes through Interlocked.
     /// </summary>
     private sealed class Statistics
     {
         private int _processed;
-        private int _skippedComplete;
-        private int _mediaItemFirstCompleted;
-        private int _mediaItemRefreshed;
-        private int _variantInserted;
-        private int _variantUpdated;
+        private int _originalsUploaded;
+        private int _originalsPresent;
+        private int _variantsUploaded;
+        private int _variantsPresent;
+        private int _metadataRecorded;
         private int _missing;
         private int _broken;
         private long _bytesTransferred;
 
         public int Processed => _processed;
-        public int SkippedComplete => _skippedComplete;
-        public int MediaItemFirstCompleted => _mediaItemFirstCompleted;
-        public int MediaItemRefreshed => _mediaItemRefreshed;
-        public int VariantInserted => _variantInserted;
-        public int VariantUpdated => _variantUpdated;
         public int Missing => _missing;
         public int Broken => _broken;
         public long BytesTransferred => _bytesTransferred;
 
         public int IncrementProcessed() => Interlocked.Increment(ref _processed);
 
-        public void IncrementSkippedComplete() => Interlocked.Increment(ref _skippedComplete);
+        public void IncrementOriginalUploaded() => Interlocked.Increment(ref _originalsUploaded);
 
-        public void IncrementUpdatedMediaItem(bool wasAlreadyComplete)
-        {
-            if (wasAlreadyComplete)
-            {
-                Interlocked.Increment(ref _mediaItemRefreshed);
-            }
-            else
-            {
-                Interlocked.Increment(ref _mediaItemFirstCompleted);
-            }
-        }
+        public void IncrementOriginalPresent() => Interlocked.Increment(ref _originalsPresent);
 
-        public void IncrementVariant(bool inserted)
-        {
-            if (inserted)
-            {
-                Interlocked.Increment(ref _variantInserted);
-            }
-            else
-            {
-                Interlocked.Increment(ref _variantUpdated);
-            }
-        }
+        public void IncrementVariantUploaded() => Interlocked.Increment(ref _variantsUploaded);
+
+        public void IncrementVariantPresent() => Interlocked.Increment(ref _variantsPresent);
+
+        public void IncrementMetadataRecorded() => Interlocked.Increment(ref _metadataRecorded);
 
         public void IncrementMissing() => Interlocked.Increment(ref _missing);
 
         public void IncrementBroken() => Interlocked.Increment(ref _broken);
 
         public void AddBytesTransferred(long bytes) => Interlocked.Add(ref _bytesTransferred, bytes);
+
+        public MediaSeedSummary ToSummary(TimeSpan elapsed) =>
+            new(_processed, _originalsUploaded, _originalsPresent, _variantsUploaded, _variantsPresent, _metadataRecorded,
+                _missing, _broken, _bytesTransferred, elapsed);
     }
 }
+
+/// <summary>
+/// The counts of one media seed run: processed candidates, originals and variants uploaded or
+/// already present in the object store, media rows whose metadata was recorded, candidates whose
+/// source is missing, undecodable photos, the bytes uploaded and the elapsed time.
+/// </summary>
+public sealed record MediaSeedSummary(
+    int Processed,
+    int OriginalsUploaded,
+    int OriginalsPresent,
+    int VariantsUploaded,
+    int VariantsPresent,
+    int MetadataRecorded,
+    int Missing,
+    int Broken,
+    long BytesTransferred,
+    TimeSpan Elapsed);

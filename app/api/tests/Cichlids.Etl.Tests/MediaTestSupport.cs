@@ -85,9 +85,13 @@ internal static class MediaTestSupport
     }
 
     public static async Task<long> InsertMediaItemAsync(
-        MediaEtlFixture fixture, int legacyId, string storageKey, MediaKind kind = MediaKind.Photo)
+        MediaEtlFixture fixture,
+        int legacyId,
+        string storageKey,
+        MediaKind kind = MediaKind.Photo,
+        string? targetConnectionString = null)
     {
-        await using var db = fixture.CreateTargetContext();
+        await using var db = fixture.CreateTargetContext(targetConnectionString);
         var item = new MediaItem
         {
             LegacyId = legacyId,
@@ -100,11 +104,16 @@ internal static class MediaTestSupport
         return item.Id;
     }
 
-    public static Task<int> RunSeedAsync(
-        MediaEtlFixture fixture, string imagesRoot, bool onlyMissing = true, int? limit = null, string? missingOutPath = null) =>
-        MediaSeedCommand.RunAsync(
+    public static Task<MediaSeedSummary> RunSeedAsync(
+        MediaEtlFixture fixture,
+        string imagesRoot,
+        bool onlyMissing = true,
+        int? limit = null,
+        string? missingOutPath = null,
+        string? targetConnectionString = null) =>
+        MediaSeedCommand.SeedAsync(
             fixture.LegacyConnectionString,
-            fixture.TargetConnectionString,
+            targetConnectionString ?? fixture.TargetConnectionString,
             fixture.ObjectStore,
             imagesRoot,
             limit,

@@ -36,8 +36,7 @@ public sealed class MediaSeedCommandTests(MediaEtlFixture fixture)
             var midMediaId = await MediaTestSupport.InsertMediaItemAsync(fixture, midUid, $"originals/{midPath}");
             var wideMediaId = await MediaTestSupport.InsertMediaItemAsync(fixture, wideUid, $"originals/{widePath}");
 
-            var exitCode = await MediaTestSupport.RunSeedAsync(fixture, root);
-            Assert.Equal(0, exitCode);
+            await MediaTestSupport.RunSeedAsync(fixture, root);
 
             await using (var db = fixture.CreateTargetContext())
             {
@@ -69,8 +68,7 @@ public sealed class MediaSeedCommandTests(MediaEtlFixture fixture)
 
             // A second run with the default onlyMissing: true finds every item already
             // complete, so it skips them outright and leaves the recorded variants untouched.
-            var secondExitCode = await MediaTestSupport.RunSeedAsync(fixture, root);
-            Assert.Equal(0, secondExitCode);
+            await MediaTestSupport.RunSeedAsync(fixture, root);
 
             await using (var db = fixture.CreateTargetContext())
             {
@@ -78,6 +76,48 @@ public sealed class MediaSeedCommandTests(MediaEtlFixture fixture)
                 Assert.Equal(3, await db.MediaVariants.CountAsync(v => v.MediaItemId == midMediaId));
                 Assert.Equal(4, await db.MediaVariants.CountAsync(v => v.MediaItemId == wideMediaId));
             }
+        }
+        finally
+        {
+            Directory.Delete(root, recursive: true);
+        }
+    }
+
+    [Fact]
+    public async Task ReturnsASummaryWithTheExactCountsOfTheRun()
+    {
+        var root = MediaTestSupport.CreateImagesRoot();
+        try
+        {
+            const int photoUid = 71040;
+            const int missingUid = 71041;
+            const int brokenUid = 71042;
+
+            var photoPath = MediaTestSupport.WritePhoto(root, photoUid, "counted.jpg", 900, 600);
+            var brokenPath = MediaTestSupport.WriteCorruptFile(root, brokenUid, "counted-broken.jpg");
+
+            await using (var legacy = await MediaTestSupport.OpenLegacyConnectionAsync(fixture))
+            {
+                await MediaTestSupport.InsertLegacyPictureAsync(legacy, photoUid, photoPath);
+                await MediaTestSupport.InsertLegacyPictureAsync(legacy, missingUid, "user_pics/71041/absent.jpg");
+                await MediaTestSupport.InsertLegacyPictureAsync(legacy, brokenUid, brokenPath);
+            }
+
+            var target = await fixture.CreateIsolatedTargetAsync();
+            await MediaTestSupport.InsertMediaItemAsync(fixture, photoUid, $"originals/{photoPath}", targetConnectionString: target);
+            await MediaTestSupport.InsertMediaItemAsync(fixture, missingUid, "originals/user_pics/71041/absent.jpg", targetConnectionString: target);
+            await MediaTestSupport.InsertMediaItemAsync(fixture, brokenUid, $"originals/{brokenPath}", targetConnectionString: target);
+
+            var summary = await MediaTestSupport.RunSeedAsync(fixture, root, targetConnectionString: target);
+
+            Assert.Equal(3, summary.Processed);
+            Assert.Equal(2, summary.OriginalsUploaded);
+            Assert.Equal(3, summary.VariantsUploaded);
+            Assert.Equal(2, summary.MetadataRecorded);
+            Assert.Equal(1, summary.Missing);
+            Assert.Equal(1, summary.Broken);
+            Assert.True(summary.BytesTransferred > 0);
+            Assert.True(summary.Elapsed > TimeSpan.Zero);
         }
         finally
         {
@@ -104,8 +144,7 @@ public sealed class MediaSeedCommandTests(MediaEtlFixture fixture)
 
             var mediaId = await MediaTestSupport.InsertMediaItemAsync(fixture, uid, $"originals/{path}");
 
-            var exitCode = await MediaTestSupport.RunSeedAsync(fixture, root);
-            Assert.Equal(0, exitCode);
+            await MediaTestSupport.RunSeedAsync(fixture, root);
 
             await using var db = fixture.CreateTargetContext();
             var item = await db.MediaItems.SingleAsync(m => m.Id == mediaId);
@@ -150,8 +189,7 @@ public sealed class MediaSeedCommandTests(MediaEtlFixture fixture)
             var missingMediaId = await MediaTestSupport.InsertMediaItemAsync(fixture, missingUid, missingStorageKey);
 
             var reportPath = Path.Combine(root, "missing-report.json");
-            var exitCode = await MediaTestSupport.RunSeedAsync(fixture, root, missingOutPath: reportPath);
-            Assert.Equal(0, exitCode);
+            await MediaTestSupport.RunSeedAsync(fixture, root, missingOutPath: reportPath);
 
             await using (var db = fixture.CreateTargetContext())
             {
@@ -203,8 +241,7 @@ public sealed class MediaSeedCommandTests(MediaEtlFixture fixture)
             var brokenMediaId = await MediaTestSupport.InsertMediaItemAsync(fixture, brokenUid, brokenStorageKey);
 
             var reportPath = Path.Combine(root, "broken-report.json");
-            var exitCode = await MediaTestSupport.RunSeedAsync(fixture, root, missingOutPath: reportPath);
-            Assert.Equal(0, exitCode);
+            await MediaTestSupport.RunSeedAsync(fixture, root, missingOutPath: reportPath);
 
             await using (var db = fixture.CreateTargetContext())
             {

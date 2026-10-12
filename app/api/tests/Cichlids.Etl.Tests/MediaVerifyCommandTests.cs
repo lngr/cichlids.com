@@ -24,8 +24,7 @@ public sealed class MediaVerifyCommandTests(MediaEtlFixture fixture)
             }
 
             var mediaId = await MediaTestSupport.InsertMediaItemAsync(fixture, uid, $"originals/{imagePath}");
-            var seedExitCode = await MediaTestSupport.RunSeedAsync(fixture, root);
-            Assert.Equal(0, seedExitCode);
+            await MediaTestSupport.RunSeedAsync(fixture, root);
 
             string deletedVariantKey;
             await using (var db = fixture.CreateTargetContext())
@@ -68,8 +67,7 @@ public sealed class MediaVerifyCommandTests(MediaEtlFixture fixture)
             }
 
             var mediaId = await MediaTestSupport.InsertMediaItemAsync(fixture, uid, $"originals/{imagePath}");
-            var seedExitCode = await MediaTestSupport.RunSeedAsync(fixture, root);
-            Assert.Equal(0, seedExitCode);
+            await MediaTestSupport.RunSeedAsync(fixture, root);
 
             List<string> ownStorageKeys;
             await using (var db = fixture.CreateTargetContext())
