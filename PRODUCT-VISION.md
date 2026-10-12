@@ -70,8 +70,9 @@ Klebrigkeit.**
 und baut darauf eine **starke, eigenständige Marke** unter `cichlids.com`. Die **Architektur
 ist von Anfang an niche-agnostisch** (Tank, Species, Biotop, Tracking sind generisch); die
 Plattform ist als **Föderation von Nischen** gebaut, sodass weitere Stämme additiv
-hinzukommen. **Expansionspfad** — bewusst gestaffelt, erst wenn der Brückenkopf dicht ist:
-zuerst weitere **Süßwasser**-Stämme (Aquascaper/Planted), danach **Reef/Meerwasser**.
+hinzukommen. **Expansionspfad**, bewusst gestaffelt und erst, wenn der Brückenkopf dicht ist: als
+nächster Stamm **Garnelen** (Zucht von Caridina und Neocaridina), danach weitere
+**Süßwasser**-Stämme (Aquascaper/Planted), zuletzt **Reef/Meerwasser**.
 
 Kurz: **breite Architektur, schmaler Go-to-Market.** Das ist hier nicht Kompromiss, sondern
 die dominante Strategie — sie verschenkt nichts und schließt nichts aus.
@@ -113,12 +114,16 @@ die dominante Strategie — sie verschenkt nichts und schließt nichts aus.
    nur **zuerst für den Brückenkopf glänzen**. Tiefe schwächt die Breite nicht, sie schärft den
    Start.
 
-6. **Reef bewusst später.** Reef-/Meerwasser-Keeper sind am tracking-affinsten und
+6. **Garnelen als nächster Stamm.** Garnelenhalter messen regelmäßig (TDS, GH, KH, Temperatur),
+   und fast alle züchten. Becken-als-Projekt, Pflege-Tracking und Zuchtprotokoll passen deshalb
+   ohne Umbau. Die Szene ist Süßwasser und überschneidet sich mit Buntbarsch- und Planted-Haltern.
+
+7. **Reef bewusst später.** Reef-/Meerwasser-Keeper sind am tracking-affinsten und
    zahlungsbereitesten, haben aber eine **eigene Kultur** und **hardware-gekoppelte Incumbents
    mit Lock-in** (Neptune Apex/Apex Fusion, GHL). Adjazent von Cichliden sind erst andere
    Süßwasser-Stämme; Reef folgt deutlich später, nicht als Teil des Starts.
 
-7. **Marke als einziger echter Lock-in — und aufschiebbar.** `cichlids.com` ist **SEO-Gold**:
+8. **Marke als einziger echter Lock-in — und aufschiebbar.** `cichlids.com` ist **SEO-Gold**:
    Der Domainname *ist* die Kategorie → organische Akquise, die Foren stark macht. Ein Rebrand
    kostet Identität und SEO, deshalb wird die Marke nicht vorschnell breit gemacht. `cichlids.com`
    muss aber nie umbenannt werden: Es bleibt die **Cichlid-Heimat**; eine etwaige **Dachmarke**
@@ -383,9 +388,9 @@ dass sie sich additiv ergänzen lassen.
 - **Sensor-/API-Anbindung & Teststreifen-Foto.** Automatische Messwerte über Hardware
   (`source = sensor`) und Auslesen von Tröpfchentests/Teststreifen per Foto (`source = photo`) —
   beides reine Erweiterung von §8.2.
-- **Weitere Nischen / Stamm-Expansion.** Nach dem Cichlid-Brückenkopf (§3): zuerst weitere
-  Süßwasser-Stämme (Aquascaper/Planted), danach Reef/Meerwasser — als neue Stämme im
-  föderierten Modell, ggf. unter einer späteren Dachmarke.
+- **Weitere Nischen / Stamm-Expansion.** Nach dem Cichlid-Brückenkopf (§3): als nächster Stamm
+  Garnelen, danach weitere Süßwasser-Stämme (Aquascaper/Planted), zuletzt Reef/Meerwasser. Alle
+  kommen als neue Stämme im föderierten Modell hinzu, ggf. unter einer späteren Dachmarke.
 - **Verbrauchsmaterial & Affiliate.** Pflege-**Todos** wie „Wasseraufbereiter/Chemikalien
   nachkaufen" (§8.2, Epic 2) sind ein natürlicher Aufhänger für **Shop-/Affiliate-Links** zu
   Verbrauchsmaterial, Futter und Zubehör — Monetarisierung direkt aus dem Pflege-Flow.
