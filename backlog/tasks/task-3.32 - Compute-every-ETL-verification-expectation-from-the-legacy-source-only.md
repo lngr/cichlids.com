@@ -4,7 +4,7 @@ title: Compute every ETL verification expectation from the legacy source only
 status: In Progress
 assignee: []
 created_date: '2026-10-12 04:48'
-updated_date: '2026-10-12 08:36'
+updated_date: '2026-10-12 08:43'
 labels: []
 dependencies: []
 references:
@@ -103,7 +103,7 @@ The verify step derives all expectations from the legacy database, expects no AP
 - profiles_member counts every member profile. identities_oidc is an information row for the links the Keycloak account import writes.
 - Every VerificationRow has a mandatory, non-empty Rule (checked in the record itself). The console table prints a rule line under each row, the JSON has a rule field. The sentences live in Runtime/MigrationRules.cs.
 - Ratings (ETL): Steps/RatingSelection.cs drops self-ratings, then keeps the newest rating per member and target (tie: higher legacy uid); fe_user 0 ratings always migrate. CommentMigrationStep detects self-ratings by target profile ids (rater profile equals post author or tank owner) and reports the skip counters rating_collapsed_older and rating_self_dropped. The comment text of a dropped rating migrates.
-- Ratings (verify): an independent count from legacy owner fe_user maps, plus information rows rating_collapsed and rating_self_dropped.
+- Ratings (verify): an independent count from legacy owner fe_user maps, the check rating_not_newest (every migrated rating is an anonymous rating or the newest legacy rating of its member and target, expected 0), plus information rows rating_collapsed and rating_self_dropped.
 - Vote times: Runtime/LegacyLocalTime.cs reads the vote DATETIME as America/New_York (spring gap shifted one hour forward, ambiguous autumn hour read as standard time). Verify adds comment_vote_not_before_comment (expected 0).
 - Empty galleries: verify adds the legacy-derived information row collection_skipped_empty. The step counter and class comment of GalleryMigrationStep belong to TASK-3.39.
 - TASK-3 notes list the rating, anonymous-rating, vote-time and empty-gallery rules; app/stack/README.md states that verify expects a target holding only the import.
@@ -116,8 +116,9 @@ The verify step derives all expectations from the legacy database, expects no AP
 - AC 1: VerifyStepTests.FlagsADeletedPostWithoutAdjustingTheCommentExpectations (post 2 vs 1, comment 3 vs 1, vault 3 vs 3).
 - AC 2: VerifyStepTests.ReportsNoMismatchesAfterAFullPipelineRun (zero mismatches, all rows asserted) and EveryRowNamesItsRule; VerificationReportPrinterTests.
 - AC 3: LegacyLocalTimeTests (DST change days), CommentMigrationStepTests (converted vote time) and the verify invariant row with a seed vote that precedes its comment when read as UTC.
+- VerifyStepTests.FlagsAMigratedRatingThatIsNotTheNewestOfItsMember swaps a migrated rating to the collapsed legacy uid and expects a rating_not_newest mismatch.
 - RatingSelectionTests cover newest wins, tie by uid, anonymous ratings and self-ratings; CommentMigrationStepTests cover the collapsed and the self-rating counters.
-- Full backend suite green: Infrastructure 113, Api 219, Etl 299.
+- Full backend suite green: Infrastructure 113, Api 219, Etl 299; Cichlids.Etl.Tests 300 with the newest-rating check.
 
 ### Operator checks (dev stack, not automated)
 - AC 1: after reset and full run, delete one post with its dependents in psql (comment_vote of its comments, comment, rating, slug_alias, post_species, collection_entry, then post), run etl verify: post shows mismatch -1, comment shows a mismatch with the expected value of the clean run. Reset afterwards.
