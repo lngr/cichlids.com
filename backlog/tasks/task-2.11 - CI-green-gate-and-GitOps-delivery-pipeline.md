@@ -4,7 +4,7 @@ title: CI green gate and GitOps delivery pipeline
 status: To Do
 assignee: []
 created_date: '2026-06-03 16:02'
-updated_date: '2026-06-05 10:25'
+updated_date: '2026-10-12 04:49'
 labels:
   - infra
   - ci
@@ -73,3 +73,9 @@ Extend `.github/workflows/` with the required checks, alongside the existing `ad
 - [ ] #2 A failing test was written first, then made to pass (red-green)
 - [ ] #3 All CI test suites are fully green
 <!-- DOD:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+The backend, client-core and e2e checks listed above are delivered by TASK-2.28; this task wires them as required checks.
+<!-- SECTION:NOTES:END -->

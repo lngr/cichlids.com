@@ -4,7 +4,7 @@ title: OpenTofu app tier and k3s plus Argo CD bootstrap
 status: To Do
 assignee: []
 created_date: '2026-06-03 16:00'
-updated_date: '2026-06-05 10:25'
+updated_date: '2026-10-12 04:49'
 labels:
   - infra
   - opentofu
@@ -13,6 +13,15 @@ labels:
 milestone: m-0
 dependencies:
   - TASK-2.2
+  - TASK-2.27
+  - TASK-2.28
+  - TASK-3.29
+  - TASK-3.30
+  - TASK-3.31
+  - TASK-3.32
+  - TASK-3.33
+  - TASK-3.34
+  - TASK-3.35
 references:
   - infra/app/
 parent_task_id: TASK-2
