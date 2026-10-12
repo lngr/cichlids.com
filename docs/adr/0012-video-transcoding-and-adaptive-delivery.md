@@ -36,17 +36,16 @@ Specifically:
    plus a poster image; renditions are **immutable** and CDN-delivered. A post carrying video
    becomes "ready" only once its renditions exist.
 
-3. **Concrete video host/transcoder — open detail.** Two viable shapes, both keeping the
-   portability spirit of ADR-0009 (prefer S3-compatible storage / swappable provider):
-   - **A — self-hosted `ffmpeg` → HLS** into a separate S3-compatible bucket, fronted by a
-     video-appropriate CDN. Full control, no per-minute fees; cost is transcoding compute
-     (bursty, queue-driven).
-   - **B — a dedicated managed video provider** (e.g. Bunny Stream, Mux, Cloudflare Stream).
-     Simplest to operate and a natural fit now that video is separate; cost is per
-     stored/delivered minute and some lock-in.
+3. **Self-hosted transcoding and delivery on Hetzner.** Video is transcoded with `ffmpeg`
+   into HLS on the platform's own compute, stored in a separate S3-compatible bucket on Hetzner
+   Object Storage and delivered from Hetzner. The platform depends on no external video service.
+   A managed video provider (e.g. Bunny Stream, Mux) stays a later option: the app only knows HLS
+   URLs behind a thin interface, and the originals stay in the platform's own storage, so a
+   provider can take over by re-transcoding from them.
 
-The **separation** (point 1) and the **async-adaptive direction** (point 2) are decided; the
-concrete host/transcoder (point 3) is confirmed later.
+4. **Limits.** A video is at most 60 seconds long. The rendition ladder is 480p, 720p and
+   1080p; higher-resolution originals are scaled down to 1080p and not kept. Audio is kept and
+   can be removed at upload.
 
 ## Considered Options
 
@@ -61,6 +60,10 @@ concrete host/transcoder (point 3) is confirmed later.
   - *Con:* concentrates risk on one account and collides with the provider's
     disproportionate-non-HTML/video policy — a single enforcement action could take down image
     delivery too. Rejected for exactly this coupling.
+- **Managed video provider (Bunny Stream, Mux) from the start.**
+  - *Pro:* nothing to build or operate; low per-GB prices.
+  - *Con:* a dependency on an external service from day one, contrary to the platform's aim of
+    running on its own infrastructure with swappable providers. Kept as a later option.
 - **Store and serve the original file as-is, no transcoding.**
   - *Con:* no adaptive playback; large originals are slow/costly globally; incompatible
     codecs/orientations break playback on many devices.
@@ -87,9 +90,9 @@ well wherever they are served.
   post↔video references span two systems; a transcoding pipeline (or a managed provider's
   per-minute cost) to run; storage grows with the rendition ladder.
 - **To be decided later (detail):**
-  - the **concrete video host/transcoder** (Option A vs B),
-  - the **rendition ladder** (resolutions/bitrates) and poster/thumbnail strategy,
-  - **limits** (max length, max file size) and accepted input codecs,
+  - bitrates of the rendition ladder and the poster/thumbnail strategy,
+  - accepted input codecs and the maximum upload file size,
+  - caching close to the mostly US-based audience in front of the EU object storage,
   - whether **live** video is ever in scope (assumed VOD-only for now),
   - video-specific **moderation**.
 

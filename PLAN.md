@@ -141,9 +141,10 @@ Auslieferung und Cloudflare-Account vom Video-spezifischen ToS-/Ban-Risiko zu is
 - **Compute:** **eine kleine Hetzner-Node (Single-Node-k3s, US-Standort), später erweiterbar**
   (ADR-0010); Postgres **in-cluster via CloudNativePG** (kein managed Neon nötig), Keycloak als
   Workload. Grobkosten Anfangsphase **~€15–25/Mon** (Node + DB-Volume + Hetzner-S3-Master + R2).
-- **Video (separat, ADR-0012):** eigenes Hosting + eigene Auslieferung. Offene Wahl:
-  self-hosted ffmpeg→HLS auf separatem S3-Speicher + Video-CDN **oder** dedizierter
-  Video-Provider (z.B. Bunny Stream / Mux). Kostenfaktor: Transcoding-Compute bzw. Pro-Minute.
+- **Video (separat, ADR-0012):** eigenes Hosting + eigene Auslieferung: ffmpeg rechnet auf der
+  eigenen Compute in HLS um, die Renditions liegen in einem separaten Bucket auf Hetzner Object
+  Storage und werden von Hetzner ausgeliefert. Ein Video-Provider (z.B. Bunny Stream / Mux)
+  bleibt spätere Option. Kostenfaktor: Transcoding-Compute und Hetzner-Traffic.
 - **Provider entkapselt, nicht hart verdrahtet** (ADR-0009): Objektspeicher nur über **S3-API**,
   CDN nur über **Standard-HTTP-Caching**, Zugriff über dünne Abstraktion → Provider ist
   IaC/Config-Detail. **Backblaze B2** als Serving-Drop-in-Alternative; **Hetzner Object Storage**
