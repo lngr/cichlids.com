@@ -31,8 +31,8 @@ Die Design-Richtung steht und ist verbindliche Grundlage für jede UI-Umsetzung.
   Dashboard, Entdecken, Profil, Onboarding, „Becken anlegen"-Wizard mit Kompatibilitäts-Warnung,
   Becken-Einstellungen (Sichtbarkeits-Stufen). Hi-Fi-Ausarbeitung des Herzstücks:
   [`cichlids-tank-detail-hifi.html`](cichlids-tank-detail-hifi.html).
-- **Umsetzungsregeln:** mobile-first **Android zuerst** (iOS später), Light+Dark, Ziel **WCAG AA**,
-  Touch-Targets ≥ 48dp; ein Akzent (max. 2× pro Screen); Text auf Akzentflächen über `--on-accent`.
+- **Umsetzungsregeln:** mobile-first; Android, iOS und Web gleichwertig (Entwicklung zuerst gegen
+  Android), Light+Dark, Ziel **WCAG AA**, Touch-Targets ≥ 48dp; ein Akzent (max. 2× pro Screen); Text auf Akzentflächen über `--on-accent`.
   Eine `design-system/README.md` fasst Einstieg und Regeln zusammen.
 
 ## Konventionen

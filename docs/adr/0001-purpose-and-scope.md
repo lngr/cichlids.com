@@ -60,8 +60,10 @@ The entire application is geared toward making people's work on their tanks and 
   compliant with store review requirements. The app serves as a convenient interface for
   camera, capture, and the (also offline-capable) composing of posts; the backend remains
   authoritative server-side at all times.
-- **Web as an equivalent channel.** A web interface is available for login and for browsing
-  larger galleries on a big screen.
+- **Web as an equivalent channel.** The web interface offers the full feature set of the apps
+  and is released together with them; device-bound features (camera, push reminders) are
+  available as far as the browser allows. Large screens additionally suit browsing larger
+  galleries.
 
 ### Positioning and base requirements
 

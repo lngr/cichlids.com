@@ -31,7 +31,7 @@ other detail questions are **not** fixed here (see "Consequences").
 
 | Layer | Commitment |
 |---|---|
-| **Mobile / Frontend** | **React Native + Expo** (with Expo Router). Native apps for iOS and Android; web as a secondary channel via React Native Web or — if web requirements grow — a separate web application. |
+| **Mobile / Frontend** | **React Native + Expo** (with Expo Router). Native apps for iOS and Android; web as an equivalent channel via React Native Web, or a separate web application if the web requirements outgrow it. |
 | **Authoritative domain logic** | **Server-side in C#.** Reputation/rating computation, feed/ranking logic, moderation rules, and business validation are the **single authoritative source of truth** and live in the .NET backend. Clients display values delivered by the server. Offline, **raw data/drafts** are captured and processed server-side after sync — **no** second implementation of the authoritative logic in the client. |
 | **Client shared core** | A framework-agnostic **TypeScript core for client concerns only**: the API client generated from the OpenAPI document including types, offline sync/caching, presentation/UI logic, and pure UX validation. **No** authoritative domain logic. Shared by Mobile **and** Web. |
 | **Backend** | **ASP.NET Core (C#), .NET 10**, API-first (REST). The OpenAPI document is produced with the built-in `Microsoft.AspNetCore.OpenApi`; the interactive reference UI is provided by **`Scalar.AspNetCore`**. **No NSwag.** The typed TypeScript clients are generated from this OpenAPI document. |
@@ -67,9 +67,9 @@ other detail questions are **not** fixed here (see "Consequences").
 - **React Native + Expo (chosen).**
   - *Pro:* native apps → safe store approval; native push/offline/camera path (central to
     capturing and composing posts); OTA updates without re-review; very large coding-agent
-    corpus (React + TypeScript); web representable as a secondary channel.
-  - *Con:* the web channel via React Native Web is secondary and may later need a separate
-    web application.
+    corpus (React + TypeScript); the web channel shares the same codebase.
+  - *Con:* React Native Web may not cover every web requirement, so the web channel may need
+    a separate web application.
 - **Capacitor + React.**
   - *Pro:* one web codebase serves web and mobile.
   - *Con:* WebView-based → higher risk at store review; push/offline/camera only via
@@ -100,7 +100,7 @@ other detail questions are **not** fixed here (see "Consequences").
   contract for app, web, and external services.
 - **Negative / Trade-offs:** two language realms (C# backend, TypeScript client) instead of
   one; shared types arise only generated via OpenAPI, not through common source; the web
-  channel is initially secondary.
+  channel depends on how far React Native Web carries.
 - **To be decided later (own ADRs):**
   - **Data model & schema** — redesigned versus the legacy application, with a `legacy_id`
     bridge for migration.

@@ -493,7 +493,8 @@ Kampagne) Vorrang hat.
   - Dark-Modus: "Biotop/Naturstein" mit Pflanzengrün
 - Prototypen: `cichlids-tank-prototype.html` und `cichlids-tank-detail-hifi.html`. Sie zeigen das
   Becken-Detail aus der Produktvision, also die Signature-Screens der Pflege- und Stolz-Sicht.
-- Plattform: Android first, iOS später.
+- Plattformen: Android, iOS und Web gleichwertig und zum Launch gleichzeitig; entwickelt wird
+  zuerst gegen Android.
 - Die MVP-App in Strang B leitet ihr Theme aus diesen Tokens ab. Screenshots liegen in
   `/workspaces/app-screens/`.
 

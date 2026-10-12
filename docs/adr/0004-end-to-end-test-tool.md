@@ -10,17 +10,16 @@
 from the user's perspective the binding acceptance criterion ("done" = green E2E path). Which
 **tool** drives these E2E tests is deliberately left open there and is decided here.
 
-The choice is shaped by two commitments: the application is **mobile-first** — native apps
-for iOS and Android are the main product, a web channel is the second, initially subordinate
-channel. The flow that actually needs securing therefore happens in the **actually shipped
-native app**, not only in the browser. The frontend is React Native (with Expo). From this
+The choice is shaped by two commitments: the application is **mobile-first**, with native
+apps for iOS and Android and an equivalent web channel. The flow that actually needs securing
+therefore happens in the **actually shipped native app** as well as in the browser. The frontend is React Native (with Expo). From this
 follows the governing criterion: the E2E driver must be able to operate the **bundled native
 app** on simulator/emulator/device — a pure web driver is not sufficient.
 
 ## Decision
 
 **Maestro** is the **primary, binding E2E driver.** It checks the native iOS and Android apps
-and thereby covers the mobile-first main path.
+and the web channel with one suite and thereby covers the main path on every platform.
 
 **Playwright** remains foreseen as an **optional, subordinate driver for a dedicated web
 channel test** — to be used only once the web channel justifies its own richer test suite
@@ -61,7 +60,7 @@ Maestro does this without intervening in the app code, with a single cross-platf
 low maintenance load — the properties most important for agent-supported, mobile-first
 development. Detox buys lower flakiness with version coupling and covers no web; Appium is
 overdimensioned; Playwright fundamentally cannot operate the native main path and therefore
-stays limited to the subordinate web channel.
+stays an optional addition for the web channel.
 
 ## Consequences
 

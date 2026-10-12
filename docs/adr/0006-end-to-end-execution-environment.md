@@ -19,14 +19,13 @@ which artifact is the binding E2E path executed, without giving up the mobile-fi
 
 The binding E2E run is performed with **one** Maestro suite against a
 **hardware-accelerated Android emulator** that is available both in the containerized
-development environment and in CI. **The same** suite is additionally run against the web
-channel (browser) to validate the cross-platform one-suite idea.
+development environment and in CI. **The same** suite runs against the web channel
+(browser), which is binding as well, since web offers the full feature set of the apps.
 
-The **native iOS run** uses the **identical** suite as soon as a macOS-based execution
-environment is available. Until then, the absence of the iOS run is a **deliberate,
-documented platform boundary** (a native iOS build requires macOS), not a waiver of the
-mobile-first acceptance: the native main path is already checked on the real app artifact via
-Android.
+The **native iOS run** uses the **identical** suite on a self-hosted macOS machine that the
+pipeline drives remotely, since a native iOS build requires macOS. Android, iOS and web are
+released together, so the iOS run is part of the gate for every release. Day-to-day development
+checks the main path on the Android artifact and in the browser.
 
 ## Considered Options
 
@@ -44,30 +43,29 @@ Android.
   - *Pro:* real devices, both platforms, no own emulator maintenance.
   - *Con:* running costs, external dependency, and data flow to third parties; needlessly
     heavyweight for the current phase.
-- **Local macOS machine/runner for iOS now.**
-  - *Pro:* immediate native iOS coverage.
-  - *Con:* the main development/CI environment is Linux; a continuous macOS path is currently
-    disproportionate. Added later.
+- **Self-hosted macOS machine as remote runner for iOS (chosen for the iOS run).**
+  - *Pro:* native iOS coverage with the same suite; no running costs or third-party data flow.
+  - *Con:* the main development/CI environment is Linux; one more machine to maintain and keep
+    reachable.
 
 ## Rationale
 
 The Definition of Done requires an automated run on the actually traversed user path. A
 KVM-accelerated Android emulator delivers exactly that on Linux: reproducible, fast enough for
 the gate, and on the real native artifact. A pure web acceptance would miss the mobile-first
-claim; a device cloud or a continuous macOS path are disproportionate in this phase. iOS is
-picked up with the same suite as soon as a macOS environment is available — without
-maintaining the tests twice.
+claim; a device cloud is disproportionate. iOS runs the same suite on a self-hosted macOS
+machine, without maintaining the tests twice.
 
 ## Consequences
 
 - **Positive:** the mobile-first main path is checked automatically on the native Android
   artifact; a single suite serves Android and web; fully reproducible in development and CI.
-- **Negative / Trade-offs:** iOS coverage only with a later macOS environment; the emulator
+- **Negative / Trade-offs:** a self-hosted macOS machine to operate for the iOS run; the emulator
   needs hardware virtualization in the environment; UI-level observation requires maintenance
   against flakiness.
-- **To be decided later:** concrete macOS execution for iOS; whether a device cloud is added
-  for broader device coverage; parallelization and quarantine rules of the E2E run in the
-  gate.
+- **To be decided later:** whether the iOS run also gates every change or only releases;
+  whether a device cloud is added for broader device coverage; parallelization and quarantine
+  rules of the E2E run in the gate.
 
 ## References
 
