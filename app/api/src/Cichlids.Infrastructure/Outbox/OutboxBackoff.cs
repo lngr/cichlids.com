@@ -16,7 +16,8 @@ public static class OutboxBackoff
             return TimeSpan.Zero;
         }
 
-        var scaled = BaseDelay * Math.Pow(2, attemptCount - 1);
-        return scaled < maxBackoff ? scaled : maxBackoff;
+        // Compared as a double so attempt counts far beyond the ceiling never overflow a TimeSpan.
+        var scaledSeconds = BaseDelay.TotalSeconds * Math.Pow(2, attemptCount - 1);
+        return scaledSeconds < maxBackoff.TotalSeconds ? TimeSpan.FromSeconds(scaledSeconds) : maxBackoff;
     }
 }
