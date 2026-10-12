@@ -1,14 +1,20 @@
 ---
 id: TASK-2.27
 title: Separate the Keycloak realm configuration for staging and production
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-10-12 04:48'
-updated_date: '2026-10-12 06:41'
+updated_date: '2026-10-12 07:34'
 labels: []
 dependencies: []
 references:
   - REVIEW-MVP.md
+  - tools/check-keycloak-realm.py
+  - app/api/tests/Cichlids.Api.Tests/AuthenticationSettingsTests.cs
+  - app/api/tests/Cichlids.Api.Tests/StagingAuthenticationStartupTests.cs
+  - app/api/tests/Cichlids.Etl.Tests/DeployedRealmImportTests.cs
+  - app/api/tests/Cichlids.Etl.Tests/KeycloakAccountImportTests.cs
+  - app/api/tests/Cichlids.Etl.Tests/KeycloakRegistrationGuardTests.cs
 parent_task_id: TASK-2
 priority: high
 ordinal: 56000
@@ -24,9 +30,9 @@ The dev realm file stays and is marked as local only. Staging and production get
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Given the staging realm configuration, When the operator imports it into a fresh Keycloak, Then HTTPS is required, registration is closed, the public client has no password grant and no test account exists
+- [x] #1 Given the staging realm configuration, When the operator imports it into a fresh Keycloak, Then HTTPS is required, registration is closed, the public client has no password grant and no test account exists
 - [ ] #2 Given a commit that copies a dev setting into the staging configuration, When GitHub Actions runs, Then the check fails
-- [ ] #3 Given the API in the Staging environment without Authentication:Authority, When the operator starts it, Then it refuses to start and names the setting
+- [x] #3 Given the API in the Staging environment without Authentication:Authority, When the operator starts it, Then it refuses to start and names the setting
 <!-- AC:END -->
 
 ## Definition of Done
@@ -250,3 +256,32 @@ The dev realm file stays and is marked as local only. Staging and production get
 - TASK-2.28 should land first or in parallel so the .NET tests run in CI.
 - TASK-3.33 also touches `KeycloakAdminClient.cs` and ETL `Program.cs`; expect a small rebase.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### Implementation
+- API: `AuthenticationSettings.Resolve(configuration, environmentName)` (`app/api/src/Cichlids.Api/Features/Auth/AuthenticationSettings.cs`) runs in `Program.cs` before `AddAuthentication`. Outside Development it rejects a missing or blank `Authentication:Authority`, a non-HTTPS or relative authority, a blank `Authentication:Audience` and `Authentication:RequireHttpsMetadata=false`, and names the key in the message.
+- Realm files: `apps/keycloak/overlays/staging/cichlids-realm.json` and `apps/keycloak/overlays/prod/cichlids-realm.json`. `sslRequired` all, no `registrationAllowed`, no users, `verifyEmail` and `bruteForceProtected` on, `cichlids-app` without password grant and implicit flow, exact redirect URIs per environment (staging adds `https://staging.cichlids.com/auth` and the web origin `https://staging.cichlids.com`).
+- CI: `tools/check-keycloak-realm.py` (standard library only, `--self-test` with 35 cases) and the `keycloak-realm` job in `.github/workflows/ci.yml`. It also requires the dev realm display name to contain `local development only`.
+- Registration: `etl keycloak-import --open-registration` opens self-registration via `KeycloakAdminClient.OpenRegistrationAsync` only when no account is unresolved. The dev realm starts with registration closed; `bootstrap.sh` passes the option.
+- Docs: `apps/keycloak/README.md`, ADR-0025, section "Local only, never deploy" in `app/stack/README.md`.
+
+### Tests run
+- `AuthenticationSettingsTests`, `StagingAuthenticationStartupTests`, `ProductionSlugSecretTests` (serialized in one xunit collection because they set process environment variables).
+- `DeployedRealmImportTests` (fresh Keycloak 26.6.4 import of the staging file) and the extended `KeycloakAccountImportTests` scenario (registration closed after the first run, open after the second).
+- `python3 tools/check-keycloak-realm.py --self-test` and the check itself; `python3 tools/generate_adr_index.py --check`.
+- Full `dotnet test app/api/Cichlids.sln` green. `pnpm --dir app/mobile run e2e:write` green on a throwaway compose project with a fresh dev realm (closed registration).
+- AC #2 needs a GitHub Actions run and stays unchecked.
+
+### Operator checks
+- AC #1: run the commands in `apps/keycloak/README.md` section "Check a fresh import" against the staging file. Expect `sslRequired` all, registration false, no password grant, staging URIs, 0 users, "HTTPS required" over plain HTTP.
+- AC #2: open a throwaway PR that sets `sslRequired` to none in the staging file; the `keycloak-realm` job must fail naming the file and rule. Close the PR unmerged.
+- AC #3: in `app/api/src/Cichlids.Api` run `ASPNETCORE_ENVIRONMENT=Staging CICHLIDS_SLUG_SECRET=operator-check ~/.dotnet/dotnet run --no-launch-profile`; the API exits and names `Authentication:Authority`. With `Authentication__Authority=http://kc.example` the message names HTTPS.
+- Registration: on a reset dev stack, `bootstrap.sh` shows `registrationAllowed` true only after the account import step.
+- Existing dev volumes keep registration open until reset or the kcadm command in `app/stack/README.md`.
+
+### Constraints for the Keycloak deployment task
+- `KC_PROXY_HEADERS=xforwarded` and an https `KC_HOSTNAME`; SMTP from a SOPS secret; identity provider secrets per DRAFT-7; never add `registrationAllowed` to a realm file.
+- The explicit client scope list lacks built-in scopes such as `offline_access`; TASK-3.41 adds them.
+<!-- SECTION:NOTES:END -->
