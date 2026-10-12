@@ -4,7 +4,7 @@ title: Legacy parity MVP on local stack
 status: To Do
 assignee: []
 created_date: '2026-07-08 18:58'
-updated_date: '2026-07-08 19:26'
+updated_date: '2026-10-12 08:34'
 labels: []
 dependencies: []
 priority: high
@@ -60,4 +60,11 @@ Rebuild the complete legacy feature set on the new stack (ASP.NET Core 10 API, P
 
 ### Forum direction (pending detailed proposal)
 - The Phorum content (cichlids_phorum5) is a migration candidate for a community section on the new platform; forum-only authors cannot log in again and map to unlisted placeholder profiles, matched to migrated profiles by email where possible. Migrated members are meant to post in the community section.
+
+### Agreed ETL hygiene rules: ratings, vote times and empty galleries
+- Ratings: a member keeps one rating per post or tank. The newest legacy rating wins, a tie goes to the higher legacy uid, and the older ratings are counted as collapsed in the verification report.
+- Self-ratings: a legacy rating of a member on their own picture or tank does not migrate as a rating; the comment text migrates. The verification report counts the dropped self-ratings.
+- Anonymous ratings: legacy ratings without a member (fe_user 0) migrate unchanged; they are never collapsed and never count as self-ratings.
+- Vote times: legacy comment vote timestamps are America/New_York wall-clock times with daylight saving and migrate converted to UTC; no vote is older than its comment.
+- Empty galleries: a non-deleted legacy gallery that never got a picture is skipped and counted in the verification report.
 <!-- SECTION:NOTES:END -->
