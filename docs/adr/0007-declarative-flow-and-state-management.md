@@ -31,6 +31,20 @@ states). The authoritative domain logic — in particular reputation/ranking com
 moderation — stays server-side (ADR-0002); data fetches and sync operations are passed into
 the machines as exchangeable effects, so the machines stay network- and framework-free.
 
+**Navigation between views is part of the machines.** A top-level navigation machine
+describes from a bird's-eye view which view is shown and how the app moves between views. Each
+multi-step flow (such as onboarding, quick log or upload) is a child machine invoked by it.
+Every action that changes the view (tab tap, back button, home, opening an item) is an event
+with a declaratively defined transition. Expo Router only renders the view that belongs to the
+current state and never navigates on its own.
+
+The few navigation triggers that originate in the operating system or the browser (the iOS
+back swipe, the Android back key, the browser's back and forward buttons) reach the machine
+through one adapter as the same events, so no view change bypasses the machine. Deep links,
+taps on push notifications and URLs opened in the browser are translated centrally into one
+global event of the top-level machine. Every transition, the system-triggered ones included,
+is thereby testable without the app.
+
 ## Considered Options
 
 - **Declarative statecharts with XState (chosen).**
@@ -40,6 +54,11 @@ the machines as exchangeable effects, so the machines stay network- and framewor
     excluded; framework-agnostic and thus shareable between Mobile and Web; well suited to the
     state-rich capture/offline/upload flows.
   - *Con:* additional learning curve and dependency; overdimensioned for trivial states.
+- **Navigation owned by the router, machines for flows only.**
+  - *Pro:* close to the framework; the router handles the system back gestures by itself.
+  - *Con:* transitions between views hide in the components again; system-triggered
+    navigation and the flow state drift apart, which makes navigation inconsistent and
+    untestable in isolation.
 - **Imperative state management with local/hook state or a store.**
   - *Pro:* low entry barrier, very widespread, little ceremony.
   - *Con:* flow logic spreads across components and effects; hard to test in isolation;
@@ -66,7 +85,8 @@ from the authoritative server-side domain logic fixed in ADR-0002.
   with test-first and agent-supported development.
 - **Negative / Trade-offs:** additional dependency and learning curve; risk of over-modeling
   trivial states; discipline needed so that **no** authoritative domain logic migrates into
-  the machines.
+  the machines; the adapter for system-triggered navigation needs its own tests on every
+  platform.
 - **To be decided later:** conventions for the structure, persistence, and testing of the
   machines; the interplay with the offline/sync layer of the client core.
 
