@@ -64,7 +64,7 @@ if (command == EtlCommandLine.Migrate)
 if (command == EtlCommandLine.Reset)
 {
     return await ResetCommand.RunAsync(
-        targetConnectionString, KeycloakAdminSettings.Resolve(configuration, environmentName), environmentName, cts.Token);
+        targetConnectionString, () => KeycloakAdminSettings.Resolve(configuration, environmentName), environmentName, cts.Token);
 }
 
 if (command == EtlCommandLine.Media)
@@ -95,7 +95,17 @@ if (command == EtlCommandLine.KeycloakImport)
         ?? configuration["Etl:Auth0ExportPath"]
         ?? "/workspaces/legacy-data/auth0/auth0-cichlids.json";
 
-    var keycloakSettings = KeycloakAdminSettings.Resolve(configuration, environmentName);
+    KeycloakAdminSettings keycloakSettings;
+    try
+    {
+        keycloakSettings = KeycloakAdminSettings.Resolve(configuration, environmentName);
+    }
+    catch (InvalidOperationException ex)
+    {
+        Console.Error.WriteLine(ex.Message);
+        return 1;
+    }
+
     var keycloakSlugSecret = SlugSecretResolver.Resolve(configuration, environmentName);
     return await KeycloakAccountImportCommand.RunAsync(
         legacyConnectionString, targetConnectionString, auth0ExportPath, keycloakSettings, new GeneratedNames(keycloakSlugSecret), commandLine.OpenRegistration, cts.Token);

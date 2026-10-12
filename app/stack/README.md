@@ -94,13 +94,16 @@ Environment variables (all optional):
 To run the Keycloak account import on its own:
 
 ```sh
-cd app/api && CICHLIDS_ETL_AUTH0_EXPORT=/path/to/auth0-export.json \
+cd app/api && DOTNET_ENVIRONMENT=Development CICHLIDS_ETL_AUTH0_EXPORT=/path/to/auth0-export.json \
   ~/.dotnet/dotnet run --project src/Cichlids.Etl -- keycloak-import
 ```
 
 The command reads the Keycloak connection from the `Keycloak` section of
 `app/api/src/Cichlids.Etl/appsettings.json`, overridable with `CICHLIDS_KEYCLOAK_URL`,
 `CICHLIDS_KEYCLOAK_REALM`, `CICHLIDS_KEYCLOAK_ADMIN_USER` and `CICHLIDS_KEYCLOAK_ADMIN_PASSWORD`.
+The local `admin`/`admin` credentials apply in the Development environment only. In any other
+environment the command aborts unless both admin variables (or `Keycloak:AdminUser` and
+`Keycloak:AdminPassword`) hold other values.
 Repeated runs create only missing users and missing profile links. A member's login username is
 the legacy username when Keycloak accepts it, it holds no email address and no other member keeps
 the same name; otherwise it is a generated `user<number>` derived with the slug secret

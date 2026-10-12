@@ -43,6 +43,16 @@ public sealed class EtlProcessTests
         Assert.Contains("The reset refuses to run in the environment 'Production'", standardError);
     }
 
+    [Fact]
+    public async Task RefusesTheKeycloakImportOutsideDevelopmentWithoutAdminCredentials()
+    {
+        var (exitCode, _, standardError) = await RunEtlAsync("Staging", "keycloak-import");
+
+        Assert.Equal(1, exitCode);
+        Assert.Contains("CICHLIDS_KEYCLOAK_ADMIN_PASSWORD", standardError);
+        Assert.Contains("Keycloak:AdminPassword", standardError);
+    }
+
     private static async Task<(int ExitCode, string StandardOutput, string StandardError)> RunEtlAsync(
         string? environmentName, params string[] arguments)
     {
@@ -70,6 +80,8 @@ public sealed class EtlProcessTests
         startInfo.Environment["CICHLIDS_ETL_TARGET_CONNECTION"] = UnreachableTarget;
         startInfo.Environment["CICHLIDS_ETL_LEGACY_CONNECTION"] = UnreachableLegacy;
         startInfo.Environment["CICHLIDS_KEYCLOAK_URL"] = "http://127.0.0.1:1";
+        startInfo.Environment.Remove("CICHLIDS_KEYCLOAK_ADMIN_USER");
+        startInfo.Environment.Remove("CICHLIDS_KEYCLOAK_ADMIN_PASSWORD");
 
         using var process = Process.Start(startInfo)!;
         var standardOutput = process.StandardOutput.ReadToEndAsync();

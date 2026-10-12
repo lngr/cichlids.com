@@ -18,11 +18,22 @@ public static class ResetCommand
 
     /// <summary>
     /// Runs the reset and returns 0 on success and 1 when the environment is refused or the
-    /// Keycloak preflight fails.
+    /// Keycloak settings or preflight fail.
+    /// </summary>
+    public static Task<int> RunAsync(
+        string targetConnectionString,
+        KeycloakAdminSettings keycloak,
+        string? environmentName,
+        CancellationToken cancellationToken) =>
+        RunAsync(targetConnectionString, () => keycloak, environmentName, cancellationToken);
+
+    /// <summary>
+    /// Runs the reset like the overload with settings, resolving the Keycloak settings only after
+    /// the environment is allowed.
     /// </summary>
     public static async Task<int> RunAsync(
         string targetConnectionString,
-        KeycloakAdminSettings keycloak,
+        Func<KeycloakAdminSettings> resolveKeycloak,
         string? environmentName,
         CancellationToken cancellationToken)
     {
@@ -31,6 +42,17 @@ public static class ResetCommand
             ResetPolicy.EnsureAllowed(environmentName);
         }
         catch (ResetRefusedException ex)
+        {
+            Console.Error.WriteLine(ex.Message);
+            return 1;
+        }
+
+        KeycloakAdminSettings keycloak;
+        try
+        {
+            keycloak = resolveKeycloak();
+        }
+        catch (InvalidOperationException ex)
         {
             Console.Error.WriteLine(ex.Message);
             return 1;
