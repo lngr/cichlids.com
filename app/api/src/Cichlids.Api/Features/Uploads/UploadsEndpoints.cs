@@ -138,7 +138,11 @@ public static class UploadsEndpoints
                 owner, bytes, format, Path.GetFileName(file.FileName), cancellationToken);
             return TypedResults.Created((string?)null, draft);
         }
-        catch (ImageTooLargeException ex)
+        catch (ImageProcessor.ImageTooLargeException ex)
+        {
+            return TypedResults.BadRequest(ex.Message);
+        }
+        catch (ImageProcessor.UnsupportedImageFormatException ex)
         {
             return TypedResults.BadRequest(ex.Message);
         }

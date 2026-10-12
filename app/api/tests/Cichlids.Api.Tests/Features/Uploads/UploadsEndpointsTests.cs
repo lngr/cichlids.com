@@ -5,6 +5,7 @@ using Cichlids.Api.Features.Common;
 using Cichlids.Api.Features.Pictures;
 using Cichlids.Api.Features.Uploads;
 using Cichlids.Domain.Enums;
+using Cichlids.Tests.Shared;
 using Microsoft.EntityFrameworkCore;
 using static Cichlids.Api.Tests.Features.Uploads.UploadTestSupport;
 
@@ -113,6 +114,25 @@ public class UploadsEndpointsTests(UploadsFixture fixture)
         Assert.False(await db.MediaItems.AnyAsync(m => m.OwnerProfileId == profileId));
         Assert.Empty(await ListStoredKeysAsync($"originals/uploads/{profileId}/"));
         Assert.Empty(await ListStoredKeysAsync("variants/thumb/originals/uploads/" + profileId + "/"));
+    }
+
+    [Fact]
+    public async Task Upload_SmallPngDeclaring200000By200000PixelsReturnsBadRequestAndStoresNothing()
+    {
+        var (token, subject) = NewCaller();
+        (await ListDraftsAsync(fixture.Client, token)).EnsureSuccessStatusCode();
+
+        var response = await UploadAsync(fixture.Client, token, SyntheticImages.PngDeclaring(200_000, 200_000), "image/png", "bomb.png");
+
+        Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+        Assert.Contains("100 megapixels", await response.Content.ReadAsStringAsync());
+
+        var profileId = await ResolveProfileIdAsync(subject);
+        await using var db = fixture.CreateDbContext();
+        Assert.False(await db.MediaItems.AnyAsync(m => m.OwnerProfileId == profileId));
+        Assert.False(await db.Posts.AnyAsync(p => p.AuthorProfileId == profileId));
+        Assert.Empty(await ListStoredKeysAsync($"originals/uploads/{profileId}/"));
+        Assert.Empty(await ListStoredKeysAsync($"variants/thumb/originals/uploads/{profileId}/"));
     }
 
     [Fact]

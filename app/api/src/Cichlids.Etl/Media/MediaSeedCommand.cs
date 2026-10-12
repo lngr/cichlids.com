@@ -291,7 +291,9 @@ public static class MediaSeedCommand
                 var measured = ImageProcessor.Measure(bytes);
                 photo = new PhotoInfo(measured.Width, measured.Height);
             }
-            catch (ImageProcessor.BrokenImageException)
+            catch (Exception ex) when (ex is ImageProcessor.BrokenImageException
+                or ImageProcessor.UnsupportedImageFormatException
+                or ImageProcessor.ImageTooLargeException)
             {
                 photo = PhotoInfo.Undecodable;
             }

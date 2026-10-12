@@ -21,29 +21,19 @@ public sealed class UploadsWriteService(
     IObjectStore objectStore,
     ILogger<UploadsWriteService> logger)
 {
-    /// <summary>
-    /// Largest accepted photo in pixels (width times height), 100 megapixels. Checked against the
-    /// header dimensions before any full decode, since a small file of flat colour can declare
-    /// dimensions whose decode would take seconds of CPU and gigabytes of memory.
-    /// </summary>
-    public const long MaxPixels = 100_000_000;
-
     private readonly MediaUrlBuilder _mediaUrlBuilder = new(objectStore);
 
     /// <summary>
     /// Stores an uploaded photo and creates the owner's draft post for it. Throws
-    /// ImageTooLargeException when the photo has more than MaxPixels pixels and
-    /// ImageProcessor.BrokenImageException when the bytes cannot be decoded or resized, both
-    /// before anything is stored.
+    /// ImageProcessor.ImageTooLargeException when the photo has more pixels than
+    /// ImageProcessor.MaxPixels, ImageProcessor.UnsupportedImageFormatException for a format
+    /// outside the image allowlist and ImageProcessor.BrokenImageException when the bytes cannot
+    /// be decoded or resized, all before anything is stored.
     /// </summary>
     public async Task<DraftDto> CreateDraftAsync(
         Profile owner, byte[] bytes, UploadImageFormat format, string? originalFilename, CancellationToken cancellationToken)
     {
         var (width, height) = ImageProcessor.Measure(bytes);
-        if ((long)width * height > MaxPixels)
-        {
-            throw new ImageTooLargeException(width, height);
-        }
 
         var originalKey = $"originals/uploads/{owner.Id}/{Guid.CreateVersion7()}.{format.Extension}";
         var variants = MediaVariantSpec.Resolve(width)
@@ -174,9 +164,3 @@ public sealed class UploadsWriteService(
         }
     }
 }
-
-/// <summary>
-/// Thrown when an uploaded photo has more pixels than UploadsWriteService.MaxPixels allows.
-/// </summary>
-public sealed class ImageTooLargeException(int width, int height)
-    : Exception($"The image has {width}x{height} pixels, more than {UploadsWriteService.MaxPixels / 1_000_000} megapixels.");
