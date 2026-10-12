@@ -8,6 +8,13 @@ public static class MediaStorageKeys
 {
     private const string OriginalsPrefix = "originals/";
     private const string ForumAttachmentsPrefix = "forum_attachments/";
+    private const string VariantsPrefix = "variants/";
+
+    /// <summary>
+    /// The key prefixes whose objects anyone may read without credentials: the derived variants
+    /// and the forum attachments. Originals live outside these prefixes and stay private.
+    /// </summary>
+    public static IReadOnlyList<string> PublicPrefixes { get; } = [VariantsPrefix, ForumAttachmentsPrefix];
 
     /// <summary>
     /// Builds the storage key for one variant of an original: variants/, the label, then the
@@ -25,7 +32,7 @@ public static class MediaStorageKeys
                 $"Storage key '{originalStorageKey}' is neither an original nor a forum attachment.", nameof(originalStorageKey));
         }
 
-        return $"variants/{label}/{originalStorageKey}.jpg";
+        return $"{VariantsPrefix}{label}/{originalStorageKey}.jpg";
     }
 
     /// <summary>

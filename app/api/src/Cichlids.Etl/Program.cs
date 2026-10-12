@@ -5,6 +5,7 @@ using Cichlids.Etl.Media;
 using Cichlids.Etl.Runtime;
 using Cichlids.Etl.Steps;
 using Cichlids.Infrastructure.Identity;
+using Cichlids.Infrastructure.Media;
 using Cichlids.Infrastructure.Persistence;
 using Cichlids.Infrastructure.Slugs;
 using Cichlids.Infrastructure.Storage;
@@ -201,12 +202,12 @@ static async Task<IObjectStore?> CreateObjectStoreAsync(IConfiguration configura
 
     await store.EnsureBucketAsync(cancellationToken);
 
-    var policyApplied = await store.EnsurePublicReadPolicyAsync(cancellationToken);
+    var policyApplied = await store.EnsurePublicReadPolicyAsync(MediaStorageKeys.PublicPrefixes, cancellationToken);
     if (!policyApplied)
     {
         Console.Error.WriteLine(
             $"Warning: the object store provider does not support PutBucketPolicy; bucket '{options.Bucket}' "
-            + "was not configured for public read. Served media may return 403 until this is configured another way.");
+            + "was not configured for public read of variants and forum attachments. Served media may return 403 until this is configured another way.");
     }
 
     return store;

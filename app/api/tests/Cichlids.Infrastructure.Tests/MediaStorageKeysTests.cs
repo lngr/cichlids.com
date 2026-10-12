@@ -65,4 +65,10 @@ public sealed class MediaStorageKeysTests
     {
         Assert.Equal(expectedContentType, MediaStorageKeys.ResolveContentType(storageKey));
     }
+
+    [Fact]
+    public void ExposesVariantsAndForumAttachmentsAsThePublicPrefixes()
+    {
+        Assert.Equal(["variants/", "forum_attachments/"], MediaStorageKeys.PublicPrefixes);
+    }
 }

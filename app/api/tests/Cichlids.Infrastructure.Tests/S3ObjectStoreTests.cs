@@ -1,5 +1,6 @@
 using System.Net;
 using System.Text;
+using Cichlids.Infrastructure.Media;
 using Cichlids.Infrastructure.Storage;
 
 namespace Cichlids.Infrastructure.Tests;
@@ -168,32 +169,47 @@ public sealed class S3ObjectStoreTests
         Assert.Empty(listedKeys);
     }
 
+    [Theory]
+    [InlineData("variants/medium/originals/user_pics/1/x.jpg.jpg")]
+    [InlineData("forum_attachments/x.jpg")]
+    public async Task EnsurePublicReadPolicyAsync_makes_an_object_under_a_public_prefix_anonymously_readable(string key)
+    {
+        var store = _fixture.CreateStoreForNewBucket();
+        await store.PutAsync(key, new MemoryStream([1, 2, 3]), "image/jpeg");
+
+        var applied = await store.EnsurePublicReadPolicyAsync(MediaStorageKeys.PublicPrefixes);
+        Assert.True(applied);
+
+        Assert.Equal(HttpStatusCode.OK, await GetAnonymouslyAsync(store, key));
+    }
+
     [Fact]
-    public async Task EnsurePublicReadPolicyAsync_makes_an_existing_object_anonymously_readable()
+    public async Task EnsurePublicReadPolicyAsync_refuses_an_anonymous_read_of_an_original()
     {
         var store = _fixture.CreateStoreForNewBucket();
         await store.PutAsync("originals/public-read.jpg", new MemoryStream([1, 2, 3]), "image/jpeg");
 
-        var applied = await store.EnsurePublicReadPolicyAsync();
+        var applied = await store.EnsurePublicReadPolicyAsync(MediaStorageKeys.PublicPrefixes);
         Assert.True(applied);
 
-        using var anonymousClient = new HttpClient();
-        var response = await anonymousClient.GetAsync($"{_fixture.ServiceUrl}/{store.Bucket}/originals/public-read.jpg");
-
-        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        Assert.Equal(HttpStatusCode.Forbidden, await GetAnonymouslyAsync(store, "originals/public-read.jpg"));
     }
 
     [Fact]
-    public async Task EnsurePublicReadPolicyAsync_leaves_a_missing_key_reported_as_not_found()
+    public async Task EnsurePublicReadPolicyAsync_leaves_a_missing_variant_reported_as_not_found()
     {
         var store = _fixture.CreateStoreForNewBucket();
 
-        var applied = await store.EnsurePublicReadPolicyAsync();
+        var applied = await store.EnsurePublicReadPolicyAsync(MediaStorageKeys.PublicPrefixes);
         Assert.True(applied);
 
-        using var anonymousClient = new HttpClient();
-        var response = await anonymousClient.GetAsync($"{_fixture.ServiceUrl}/{store.Bucket}/originals/does-not-exist.jpg");
+        Assert.Equal(HttpStatusCode.NotFound, await GetAnonymouslyAsync(store, "variants/thumb/originals/does-not-exist.jpg.jpg"));
+    }
 
-        Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
+    private async Task<HttpStatusCode> GetAnonymouslyAsync(S3ObjectStore store, string key)
+    {
+        using var anonymousClient = new HttpClient();
+        using var response = await anonymousClient.GetAsync($"{_fixture.ServiceUrl}/{store.Bucket}/{key}");
+        return response.StatusCode;
     }
 }

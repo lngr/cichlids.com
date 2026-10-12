@@ -204,28 +204,15 @@ public sealed class S3ObjectStore : IObjectStore
     }
 
     /// <summary>
-    /// Applies a public-read bucket policy (anonymous <c>s3:GetObject</c> on every key) so served
-    /// media reaches a browser directly instead of through a signed or authenticated request.
-    /// Every media key is a content-addressed original or a derived variant, neither of which is
-    /// sensitive, so a bucket-wide allow is the whole policy. Returns false instead of throwing
-    /// when the provider does not implement <c>PutBucketPolicy</c> at all, so a caller can log a
-    /// warning and fall back to provider-specific configuration rather than fail the run.
+    /// Applies a bucket policy that grants anonymous s3:GetObject on every key under the given
+    /// prefixes, so served media reaches a browser directly through its public URL. Keys outside
+    /// these prefixes answer 403 to a request without credentials. Returns false when the provider
+    /// does not implement PutBucketPolicy, so a caller can log a warning and configure access in a
+    /// provider-specific way.
     /// </summary>
-    public async Task<bool> EnsurePublicReadPolicyAsync(CancellationToken cancellationToken = default)
+    public async Task<bool> EnsurePublicReadPolicyAsync(IReadOnlyCollection<string> publicPrefixes, CancellationToken cancellationToken = default)
     {
-        var policy = $$"""
-            {
-              "Version": "2012-10-17",
-              "Statement": [
-                {
-                  "Effect": "Allow",
-                  "Principal": "*",
-                  "Action": ["s3:GetObject"],
-                  "Resource": ["arn:aws:s3:::{{_options.Bucket}}/*"]
-                }
-              ]
-            }
-            """;
+        var policy = BuildPublicReadPolicy(_options.Bucket, publicPrefixes);
 
         try
         {
@@ -238,5 +225,27 @@ public sealed class S3ObjectStore : IObjectStore
         {
             return false;
         }
+    }
+
+    /// <summary>
+    /// Builds the bucket policy document that allows anonymous s3:GetObject on the keys under the
+    /// given prefixes of the bucket.
+    /// </summary>
+    public static string BuildPublicReadPolicy(string bucket, IReadOnlyCollection<string> publicPrefixes)
+    {
+        var resources = string.Join(", ", publicPrefixes.Select(prefix => $"\"arn:aws:s3:::{bucket}/{prefix}*\""));
+        return $$"""
+            {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Principal": "*",
+                  "Action": ["s3:GetObject"],
+                  "Resource": [{{resources}}]
+                }
+              ]
+            }
+            """;
     }
 }
