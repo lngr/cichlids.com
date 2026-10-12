@@ -1,5 +1,6 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 
 namespace Cichlids.Infrastructure.Outbox;
 
@@ -14,6 +15,13 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddOutboxDispatcher(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddOptions<OutboxDispatcherOptions>().Bind(configuration.GetSection(OutboxDispatcherOptions.SectionName));
+
+        services.AddOptions<WebhookTargetOptions>()
+            .Bind(configuration.GetSection(WebhookTargetOptions.SectionName))
+            .ValidateOnStart();
+        services.AddSingleton<IValidateOptions<WebhookTargetOptions>, WebhookTargetOptionsValidator>();
+        services.AddSingleton(serviceProvider => new WebhookTargetPolicy(
+            serviceProvider.GetRequiredService<IOptions<WebhookTargetOptions>>().Value.AllowedTargetHosts));
 
         services.AddHttpClient(OutboxDispatchService.HttpClientName, client => client.Timeout = TimeSpan.FromSeconds(10));
 
