@@ -24,21 +24,21 @@ public sealed class KeycloakAccountImportPagingTests(KeycloakAccountImportPaging
         Assert.Single(await scenario.Admin.GetArrayAsync("users?username=erin&exact=true"));
 
         var all = await scenario.Admin.GetArrayAsync("users?briefRepresentation=true&first=0&max=100");
-        Assert.Equal(13, all.Count);
+        Assert.Equal(15, all.Count);
     }
 
     [Fact]
     public void FindsEveryCreatedUserOnTheSecondRun()
     {
         var first = scenario.FirstRun;
-        Assert.Equal(6, first.Created);
+        Assert.Equal(8, first.Created);
         Assert.Equal(1, first.Existing);
         Assert.Equal(5, first.ProfileLinksInserted);
         Assert.Equal(0, first.Unresolved);
 
         var second = scenario.SecondRun;
         Assert.Equal(0, second.Created);
-        Assert.Equal(7, second.Existing);
+        Assert.Equal(9, second.Existing);
         Assert.Equal(2, second.AccountConflictsByReason["username_taken"]);
         Assert.Equal(1, second.AccountConflictsByReason["existing_unverified"]);
         Assert.Equal(0, second.ProfileLinksInserted);
