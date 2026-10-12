@@ -63,17 +63,8 @@ if (command == EtlCommandLine.Migrate)
 
 if (command == EtlCommandLine.Reset)
 {
-    try
-    {
-        await TargetDatabaseReset.ResetAsync(targetConnectionString, environmentName, cts.Token);
-    }
-    catch (ResetRefusedException ex)
-    {
-        Console.Error.WriteLine(ex.Message);
-        return 1;
-    }
-
-    return 0;
+    return await ResetCommand.RunAsync(
+        targetConnectionString, KeycloakAdminSettings.Resolve(configuration, environmentName), environmentName, cts.Token);
 }
 
 if (command == EtlCommandLine.Media)
@@ -104,15 +95,7 @@ if (command == EtlCommandLine.KeycloakImport)
         ?? configuration["Etl:Auth0ExportPath"]
         ?? "/workspaces/legacy-data/auth0/auth0-cichlids.json";
 
-    var keycloakSettings = new KeycloakAdminSettings(
-        new Uri(
-            Environment.GetEnvironmentVariable("CICHLIDS_KEYCLOAK_URL")
-            ?? configuration["Keycloak:Url"]
-            ?? "http://localhost:8180"),
-        Environment.GetEnvironmentVariable("CICHLIDS_KEYCLOAK_REALM") ?? configuration["Keycloak:Realm"] ?? "cichlids",
-        Environment.GetEnvironmentVariable("CICHLIDS_KEYCLOAK_ADMIN_USER") ?? configuration["Keycloak:AdminUser"] ?? "admin",
-        Environment.GetEnvironmentVariable("CICHLIDS_KEYCLOAK_ADMIN_PASSWORD") ?? configuration["Keycloak:AdminPassword"] ?? "admin");
-
+    var keycloakSettings = KeycloakAdminSettings.Resolve(configuration, environmentName);
     var keycloakSlugSecret = SlugSecretResolver.Resolve(configuration, environmentName);
     return await KeycloakAccountImportCommand.RunAsync(
         legacyConnectionString, targetConnectionString, auth0ExportPath, keycloakSettings, new GeneratedNames(keycloakSlugSecret), commandLine.OpenRegistration, cts.Token);
