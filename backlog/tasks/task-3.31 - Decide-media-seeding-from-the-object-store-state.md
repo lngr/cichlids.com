@@ -1,10 +1,10 @@
 ---
 id: TASK-3.31
 title: Decide media seeding from the object store state
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-10-12 04:48'
-updated_date: '2026-10-12 08:53'
+updated_date: '2026-10-12 09:01'
 labels: []
 dependencies: []
 references:
