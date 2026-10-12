@@ -1,0 +1,1265 @@
+schemaVersion: 1
+id: aulonocara-baenschi
+legacyIds: [218]
+status: described
+
+taxonomy:
+  validName: Aulonocara baenschi
+  genus: Aulonocara
+  species: baenschi
+  author: Meyer & Riehl, 1985
+  source: &cof
+    kind: catalog-of-fishes
+    title: Eschmeyer's Catalog of Fishes, species list of the genus Aulonocara (Aulonocara baenschi Meyer & Riehl 1985, current status valid)
+    url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Aulonocara
+    accessed: 2026-10-12
+  synonyms: []
+  legacyNames:
+    - Aulonocara baenschi
+  note: >-
+    The Catalog of Fishes lists Aulonocara baenschi Meyer & Riehl 1985 as valid, described in the
+    second volume of the Aquarien Atlas with Nkhomo, 8 km west of Benga, as type locality
+    (holotype SMF 20041). No other nominal species is its synonym, and the legacy name equals the
+    valid name. FishBase and the Cichlid Room Companion use the same name. The trade name sunshine
+    peacock is also applied to the Maleri population of Aulonocara stuartgranti, so fish sold under
+    that name need checking.
+
+names:
+  trade:
+    en:
+      - Yellow peacock
+      - New yellow regal peacock
+      - Yellow regal cichlid
+      - Nkhomo-benga peacock
+      - Benga peacock
+      - Sunshine peacock
+      - Baensch's peacock
+
+variants:
+  - name: Nkhomo Reef
+    kind: locality
+    note: Type locality on the central western shore, 8 km west of Benga.
+  - name: Benga
+    kind: locality
+    note: Listed by Seriously Fish as a separate site south of the Chia lagoon.
+  - name: Usisya
+    kind: locality
+    note: Northern western-shore site listed by FishBase and Seriously Fish.
+  - name: Maleri Islands
+    kind: locality
+    note: Listed by FishBase and Seriously Fish; trade fish of this name may be A. stuartgranti instead.
+  - name: Chipoka
+    kind: locality
+    note: Southern western-shore site listed by FishBase and Seriously Fish.
+  - name: Albino
+    kind: color-morph
+    note: Pale aquarium strain derived from a rare albino form of the species.
+  - name: Red-orange
+    kind: color-morph
+    note: Ornamental aquarium strain; such lines are often of mixed peacock ancestry.
+
+features:
+  origin:
+    value:
+      continent: Africa
+      region: Lake Malawi
+      waterbody: Lake Malawi
+      localities:
+        - Nkhomo Reef
+        - Benga
+        - Usisya
+        - Maleri Islands
+        - Chipoka
+    confidence: high
+    rationale: >-
+      Endemic to Lake Malawi. The Catalog of Fishes gives Nkhomo near Benga on the western shore as
+      type locality; FishBase adds Usisya, the Maleri Islands and Chipoka, and Seriously Fish lists
+      Benga as a fifth site, all on the Malawian west coast. The Red List assessment, as summarised
+      on Wikipedia and Fishipedia, confirms only Nkhomo Reef with certainty, so the other sites are
+      less secure.
+    sources:
+      - *cof
+      - &fb
+        kind: database
+        title: FishBase species summary, Aulonocara baenschi
+        url: https://www.fishbase.se/summary/Aulonocara-baenschi.html
+        accessed: 2026-10-12
+      - &sf
+        kind: database
+        title: Seriously Fish, Aulonocara baenschi (New Yellow Regal Peacock)
+        url: https://www.seriouslyfish.com/species/aulonocara-baenschi/
+        accessed: 2026-10-12
+      - &crc
+        kind: database
+        title: Cichlid Room Companion, Aulonocara baenschi (public summary, verification only)
+        url: https://cichlidae.com/species.php?id=w9iq01PJrhh2lUuw3glvSQ
+        accessed: 2026-10-12
+      - &wiki
+        kind: website
+        title: Wikipedia, Nkhomo-benga peacock
+        url: https://en.wikipedia.org/wiki/Nkhomo-benga_peacock
+        accessed: 2026-10-12
+    evidence:
+      - source: *cof
+        value: {continent: Africa, region: Lake Malawi, waterbody: Lake Malawi, localities: [Nkhomo]}
+        note: type locality 8 km west of Benga
+      - source: *fb
+        value: {continent: Africa, region: Lake Malawi, waterbody: Lake Malawi, localities: [Chipoka, Maleri Islands, Nkhomo, Usisya]}
+      - source: *sf
+        value: {continent: Africa, region: Lake Malawi, waterbody: Lake Malawi, localities: [Usisya, Nkhomo Reef, Benga, Maleri Islands, Chipoka]}
+      - source: *wiki
+        value: {continent: Africa, region: Lake Malawi, waterbody: Lake Malawi, localities: [Nkhomo Reef]}
+        note: after the Red List assessment; nearby sites only possible
+
+  temperatureC:
+    value: {min: 21, max: 29}
+    confidence: high
+    rationale: >-
+      Lake Malawi endemic, so the natural range is the measured range of the lake: inshore water
+      cools to about 21 C in the windy season (Eccles 1974), the winter surface layer holds 23.5 to
+      24 C and summer surface water about 28 C (Vollmer et al. 2005), and a 2013 campaign measured
+      24 to 29 C (Ngochera 2018). The species lives in 2 to 16 m of water, inside the mixed upper
+      layer these values describe.
+    sources: &lakesources
+      - &branchu
+        kind: literature
+        title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+        url: https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf
+        accessed: 2026-10-12
+      - &fao
+        kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+        url: https://www.fao.org/4/t0473e/T0473E05.htm
+        accessed: 2026-10-12
+      - &eccles
+        kind: literature
+        title: Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology and Oceanography 19(5), 730-742 (abstract).
+        url: https://doi.org/10.4319/lo.1974.19.5.0730
+        accessed: 2026-10-12
+      - &vollmer
+        kind: literature
+        title: Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M., Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and Oceanography 50(2), 727-732.
+        url: https://www.dora.lib4ri.ch/empa/dload/empa:1253/PDF/view
+        accessed: 2026-10-12
+      - kind: literature
+        title: "Vollmer, M. K., Weiss, R. F. and Bootsma, H. A. (1999). Lake Malawi/Nyasa deep water renewal. In: Bootsma, H. A. and Hecky, R. E. (eds.), Water Quality Report, SADC/GEF Lake Malawi/Nyasa Biodiversity Conservation Project, chapter 4."
+        url: https://sites.uwm.edu/hbootsma/files/2020/11/Ch4-Lake-Internal-Mixing.pdf
+        accessed: 2026-10-12
+      - &ngochera
+        kind: literature
+        title: Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. PhD dissertation, University of Wisconsin-Milwaukee.
+        url: https://minds.wisconsin.edu/handle/1793/91765
+        accessed: 2026-10-12
+    evidence:
+      - source: *eccles
+        value: {min: 21, max: 27}
+        note: inshore minimum in the cool season, upper 60 m by May
+      - source: *vollmer
+        value: {min: 23.5, max: 28}
+        note: winter surface layer to summer surface water
+      - source: *ngochera
+        value: {min: 24, max: 29}
+        note: 2013 campaign
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value: {min: 21, max: 29}
+      confidence: medium
+      rationale: >-
+        Husbandry sources for this species keep it between 22 and 29 C, each with a narrower band:
+        the describers' Aquarien Atlas via FishBase and Fishipedia 22 to 26 C, FishProfiles 23 to
+        27 C, a UK breeder 23 to 28 C, That Pet Place about 24 to 27 C, LiveAquaria about 24 to
+        28 C and Seriously Fish 25 to 29 C. No care sheet goes below 22 C, so the lower bound of
+        21 C rests on the lake, where the wild fish live through the cool season; it is a tolerated,
+        not a recommended, keeping temperature. A steady 24 to 27 C is the usual aquarium target.
+      sources:
+        - *fb
+        - *sf
+        - &fip
+          kind: database
+          title: Fishipedia, Aulonocara baenschi
+          url: https://www.fishipedia.fr/fr/poissons/aulonocara-baenschi
+          accessed: 2026-10-12
+        - &la
+          kind: database
+          title: LiveAquaria, Yellow Peacock Cichlid (Aulonocara baenschi)
+          url: https://www.liveaquaria.com/products/yellow-peacock-cichlid
+          accessed: 2026-10-12
+        - &tpp
+          kind: database
+          title: That Pet Place care sheet, Sunshine Peacock (Aulonocara baenschi)
+          url: https://www.thatpetplace.com/Aulonocara-baenschi-yellow-peacock-213028
+          accessed: 2026-10-12
+        - &fp
+          kind: website
+          title: FishProfiles.com, Aulonocara baenschi (user-submitted profile)
+          url: https://fishprofiles.com/profiles/freshwater/Cichlids/Aulonocara_baenschi
+          accessed: 2026-10-12
+        - &barn
+          kind: website
+          title: The Fish Barn, Aulonocara baenschi (Benga Peacock Cichlid)
+          url: https://thefishbarn.co.uk/product/aulonocara-baenschi/
+          accessed: 2026-10-12
+        - *eccles
+      evidence:
+        - source: *fb
+          value: {min: 22, max: 26}
+          note: aquarium values after Baensch and Riehl
+        - source: *sf
+          value: {min: 25, max: 29}
+          note: aquarium recommendation
+        - source: *fip
+          value: {min: 22, max: 26}
+          note: aquarium recommendation
+        - source: *la
+          value: {min: 24.4, max: 27.8}
+          note: converted from 76 to 82 F
+        - source: *tpp
+          value: {min: 24.4, max: 26.7}
+          note: converted from 76 to 80 F
+        - source: *fp
+          value: {min: 23, max: 27}
+        - source: *barn
+          value: {min: 23, max: 28}
+          note: breeder recommendation
+        - source: *eccles
+          value: {min: 21, max: 27}
+          note: lake temperatures the wild fish live in
+      verification:
+        method: unanimous
+        votes: {agree: 3, total: 3}
+
+  ph:
+    value: {min: 7.7, max: 8.6}
+    confidence: high
+    rationale: >-
+      Lake Malawi endemic; the surface water of the lake has a pH of 7.7 to 8.6 (Jackson et al.
+      1963 in the FAO source book). Branchu et al. measured 7.5 to 8.5 over the whole water column,
+      the lower values belonging to deep water far below the shallow habitat of the species.
+    sources: *lakesources
+    evidence:
+      - source: *fao
+        value: {min: 7.7, max: 8.6}
+        note: lake surface water
+      - source: *branchu
+        value: {min: 7.5, max: 8.5}
+        note: whole water column, lower values in deep water
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value: {min: 7.2, max: 9.0}
+      confidence: medium
+      rationale: >-
+        Care sheets for this species agree on alkaline water but differ in the limits. The lowest
+        lower limit is 7.2 in the describers' Aquarien Atlas via FishBase and in the Fishipedia
+        recommendation; FishProfiles and Seriously Fish start at 7.5, LiveAquaria, That Pet Place
+        and a UK breeder at 7.8. The upper limits lie between 8.0 and 8.6, except Seriously Fish
+        with 9.0. The tolerance spans the outer limits of the database sources and contains the
+        lake range of 7.7 to 8.6. Each end rests on few sources, the upper end beyond 8.6 on
+        Seriously Fish alone, hence medium confidence.
+      sources:
+        - *fb
+        - *sf
+        - *fip
+        - *la
+        - *tpp
+        - *fp
+        - *barn
+      evidence:
+        - source: *fb
+          value: {min: 7.2, max: 8.2}
+          note: aquarium values after Baensch and Riehl
+        - source: *sf
+          value: {min: 7.5, max: 9.0}
+          note: aquarium recommendation
+        - source: *fip
+          value: {min: 7.2, max: 8.0}
+          note: aquarium recommendation; the habitat block of the page gives 7.5 to 8.2
+        - source: *la
+          value: {min: 7.8, max: 8.6}
+          note: aquarium recommendation for captive-bred fish
+        - source: *tpp
+          value: {min: 7.8, max: 8.6}
+        - source: *fp
+          value: {min: 7.5, max: 8.5}
+        - source: *barn
+          value: {min: 7.8, max: 8.6}
+          note: breeder recommendation
+      verification:
+        method: qualified-majority
+        votes: {agree: 4, total: 5}
+
+  ghDgh:
+    value: {min: 3, max: 5}
+    confidence: high
+    rationale: >-
+      Lake Malawi endemic; the lake is soft water. Calcium and magnesium in the upper 50 m of the
+      north basin give 4.2 to 4.6 dGH (Branchu et al. 2010), and the titrations of the 1960s
+      compiled by the FAO give 3.2 to 4.9 dGH. Care sheets that call the lake hard confuse total
+      hardness with alkalinity.
+    sources: *lakesources
+    evidence:
+      - source: *branchu
+        value: {min: 4.2, max: 4.6}
+        note: north basin, upper 50 m
+      - source: *fao
+        value: {min: 3.2, max: 4.9}
+        note: titrations of the 1960s
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value: {min: 3, max: 25}
+      confidence: low
+      rationale: >-
+        Aquarium sources accept far harder water than the lake: Seriously Fish and a UK breeder give
+        10 to 25 dGH, while the Aquarien Atlas via FishBase, Fishipedia and FishProfiles give 10 to
+        30, probably all after the same atlas entry. The lower limit of 10 in these sheets reflects
+        the belief that Malawi water is hard and is no evidence that softer water harms the fish;
+        the wild population lives permanently at 3 to 5 dGH, so the tolerance starts at the lake
+        value. The votes split between an upper limit of 25 and one of 30 dGH, and neither reached
+        the four of five agreeing votes a qualified majority needs. The vote count therefore took
+        the conservative value, the intersection of all votes, which ends at 25 dGH: a narrower
+        tolerance makes the compatibility check warn earlier, which errs on the safe side for the
+        fish. No source tests the species in soft aquarium water with a high carbonate hardness,
+        so the range needs confirmation.
+      sources:
+        - *sf
+        - *fb
+        - *fip
+        - *fp
+        - *barn
+        - *branchu
+        - *fao
+      evidence:
+        - source: *sf
+          value: {min: 10, max: 25}
+          note: aquarium recommendation
+        - source: *fb
+          value: {min: 10, max: 30}
+          note: given as dH, read as total hardness
+        - source: *fip
+          value: {min: 10, max: 30}
+        - source: *fp
+          value: {min: 10, max: 30}
+          note: given as dH
+        - source: *barn
+          value: {min: 10, max: 25}
+          note: breeder recommendation
+        - source: *branchu
+          value: {min: 4.2, max: 4.6}
+          note: lake water, lower end of the tolerance
+        - source: *fao
+          value: {min: 3.2, max: 4.9}
+          note: hardness the wild fish live in
+      verification:
+        method: conservative
+        votes: {agree: 3, total: 5}
+
+  khDkh:
+    value: {min: 5, max: 8}
+    confidence: high
+    rationale: >-
+      Lake Malawi endemic; the alkalinity of 2.33 to 2.46 meq/L in the Branchu profiles and 2.00 to
+      2.59 meq/L in Jackson et al. (1963) gives 5 to 8 dKH. Carbonate hardness exceeds total
+      hardness because sodium balances part of the bicarbonate.
+    sources: *lakesources
+    evidence:
+      - source: *branchu
+        value: {min: 6.5, max: 6.9}
+        note: alkalinity 2.33 to 2.46 meq/L
+      - source: *fao
+        value: {min: 5.6, max: 7.3}
+        note: alkalinity 2.00 to 2.59 meq/L
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value: {min: 5, max: 15}
+      confidence: low
+      rationale: >-
+        Only LiveAquaria names a carbonate hardness for this species, 10 to 15 dKH for captive-bred
+        fish. FishBase, Seriously Fish and the other care sheets give pH and total hardness only;
+        their pH ranges up to 8.6 or 9.0 imply well buffered water but no exact figure. Tropical Fish
+        Hobbyist notes that peacocks adapt to a wide range of aquarium water while water close to
+        the lake brings out the best colours. The tolerance runs from the lake value of 5 dKH up to
+        the highest husbandry recommendation. With a single direct figure the range needs
+        confirmation.
+      sources:
+        - *la
+        - *sf
+        - *fb
+        - &tfh
+          kind: literature
+          title: Scott, B. M. Pretty Peacock Cichlids from Lake Malawi. Tropical Fish Hobbyist Magazine.
+          url: https://www.tfhmagazine.com/articles/freshwater/pretty-peacock-cichlids-from-lake-malawi
+          accessed: 2026-10-12
+        - *branchu
+        - *fao
+      evidence:
+        - source: *la
+          value: {min: 10, max: 15}
+          note: aquarium recommendation for captive-bred fish
+        - source: *sf
+          value: {min: 5, max: 15}
+          note: no dKH stated; inferred from pH 7.5 to 9.0 and 10 to 25 dGH
+        - source: *branchu
+          value: {min: 6.5, max: 6.9}
+          note: lake water, lower end of the tolerance
+        - source: *fao
+          value: {min: 5.6, max: 7.3}
+          note: carbonate hardness the wild fish live in
+      verification:
+        method: qualified-majority
+        votes: {agree: 4, total: 5}
+
+  maxSizeCm:
+    value: {male: 13, female: 10}
+    confidence: medium
+    rationale: >-
+      FishBase gives 13 cm total length for males or unsexed fish, LiveAquaria and That Pet Place
+      5 inches (12.7 cm) and Fishipedia 13 cm as maximum with 10 cm as average. Seriously Fish
+      gives 12 cm standard length for males and 9 cm for females, which is roughly 14 and 11 cm
+      total length. Typical well-kept males reach about 13 cm; females stay clearly smaller, about
+      10 cm, a figure that rests mainly on Seriously Fish.
+    sources:
+      - *fb
+      - *sf
+      - *fip
+      - *la
+      - *tpp
+      - *fp
+    evidence:
+      - source: *fb
+        value: {male: 13}
+        note: total length, male or unsexed
+      - source: *sf
+        value: {male: 14, female: 11}
+        note: 12 and 9 cm standard length, converted roughly to total length
+      - source: *fip
+        value: {male: 13}
+        note: average 10 cm, maximum 13 cm
+      - source: *la
+        value: {male: 12.7}
+        note: 5 inches, sex not given
+      - source: *tpp
+        value: {male: 12.7}
+        note: 5 inches, sex not given
+      - source: *fp
+        value: {male: 13, female: 13}
+
+  predation:
+    value: 1
+    confidence: low
+    rationale: >-
+      All sources agree that the species hunts small invertebrates: in the lake it feeds in and on
+      the sand between scattered rocks, hovering above the bottom and striking at prey it detects
+      with the enlarged sensory pores of its head (FishBase, Seriously Fish, Fishipedia, the lateral
+      line studies on the genus). No source lists fish as regular food, which excludes levels 2 and
+      3. The choice between 0 and 1 depends on whether adults take fry and very small fish when the
+      chance arises. The species-specific databases are silent on this. Genus-level sources point
+      to level 1: the Senckenberg ecology study of Aulonocara (Grant et al. 1987, read as a
+      summary) names insect larvae, molluscs, ostracods and perhaps small fishes as food, Tropical
+      Fish Hobbyist reports that peacocks take other food when the opportunity arises and advises
+      moving brooding females so the fry are not lost in the community tank, and a general care
+      page warns that adults eat their young. A movement-triggered bottom hunter of 13 cm fits the
+      rubric anchor of level 1, Labidochromis caeruleus, likewise an invertebrate feeder that takes
+      fry by chance. Four of five votes chose level 1; because no species-specific source states
+      fry predation, the confidence is low.
+    sources:
+      - *fb
+      - *sf
+      - *fip
+      - &schwalbe16
+        kind: literature
+        title: Schwalbe, M. A. B., Sevey, B. J. and Webb, J. F. (2016). Detection of artificial water flows by the lateral line system of a benthic feeding cichlid fish. Journal of Experimental Biology 219, 1050-1059.
+        url: https://doi.org/10.1242/jeb.136150
+        accessed: 2026-10-12
+      - &schwalbe12
+        kind: literature
+        title: "Schwalbe, M. A. B., Bassett, D. K. and Webb, J. F. (2012). Feeding in the dark: lateral-line-mediated prey detection in the peacock cichlid Aulonocara stuartgranti. Journal of Experimental Biology 215, 2060-2071 (abstract)."
+        url: https://doi.org/10.1242/jeb.065920
+        accessed: 2026-10-12
+      - &grant
+        kind: literature
+        title: Grant, S. M., Dieckhoff, H. W., Mayland, H. J. and Meyer, M. K. (1987). Ecology of Aulonocara Regan, 1922 in Lake Malawi. Courier Forschungsinstitut Senckenberg 94, 131-139 (summary on malawicichlids.com).
+        url: https://malawicichlids.com/_popup_abs_gdmm87.htm
+        accessed: 2026-10-12
+      - *tfh
+      - &fkw
+        kind: website
+        title: Fishkeeping World, Peacock Cichlid care guide
+        url: https://www.fishkeepingworld.com/peacock-cichlid/
+        accessed: 2026-10-12
+    evidence:
+      - source: *fb
+        value: 0
+        note: bottom-dwelling invertebrates; fish and fry not mentioned
+      - source: *sf
+        value: 0
+        note: sifts sand and hunts tiny prey; fry not addressed beyond advice to raise broods apart
+      - source: *fip
+        value: 0
+        note: worms and small crustaceans located in the sand; fish not mentioned
+      - source: *schwalbe16
+        value: 0
+        note: genus level; benthic invertebrate prey
+      - source: *schwalbe12
+        value: 0
+        note: congener; detects and eats small moving invertebrates on sand
+      - source: *grant
+        value: 1
+        note: genus level; insect larvae, molluscs, ostracods and perhaps small fishes
+      - source: *tfh
+        value: 1
+        note: genus level; opportunistic feeding, fry at risk in a community tank
+      - source: *fkw
+        value: 1
+        note: genus level; adults eat their own fry if left with them
+    verification:
+      method: qualified-majority
+      votes: {agree: 4, total: 5}
+
+  diet:
+    value:
+      type: invertivore
+      bloatSensitive: false
+      foods:
+        - fine sinking pellets and flakes
+        - frozen or live mosquito larvae, bloodworm and Artemia
+        - some food with plant content such as spirulina
+    confidence: medium
+    rationale: >-
+      FishBase, Seriously Fish and Fishipedia describe a diet of bottom-dwelling invertebrates such
+      as insect larvae, worms and small crustaceans, which the fish locates with the widened
+      lateral line canals of the head (Webb et al. 2014 show these canals in A. baenschi; Schwalbe
+      et al. 2016 link them to invertebrate prey detection in the genus). LiveAquaria and
+      FishProfiles call it an omnivore because it accepts mixed aquarium food, which describes the
+      tank rather than its natural diet. No source reports a tendency to bloat; Tropical Fish
+      Hobbyist and Seriously Fish advise some plant matter in prepared food for peacocks in general,
+      but this is a feeding recommendation, not a reported sensitivity, so the flag is off.
+    sources:
+      - *fb
+      - *sf
+      - *fip
+      - &webb2014
+        kind: literature
+        title: Webb, J. F., Bird, N. C., Carter, L. and Dickson, J. (2014). Comparative development and evolution of two lateral line phenotypes in Lake Malawi cichlids. Journal of Morphology 275 (abstract).
+        url: https://doi.org/10.1002/jmor.20247
+        accessed: 2026-10-12
+      - *schwalbe16
+      - *la
+      - *tfh
+      - *fp
+      - *wiki
+    evidence:
+      - source: *fb
+        value: {type: invertivore, bloatSensitive: false}
+        note: bottom-dwelling invertebrates
+      - source: *sf
+        value: {type: invertivore, bloatSensitive: false}
+        note: sifts sand and hunts small prey; some plant content in prepared food advised
+      - source: *fip
+        value: {type: invertivore}
+        note: worms and small crustaceans located in the sand
+      - source: *webb2014
+        value: {type: invertivore, bloatSensitive: false}
+        note: A. baenschi has the widened lateral line canals of a benthic prey detector
+      - source: *schwalbe16
+        value: {type: invertivore, bloatSensitive: false}
+        note: genus level, benthic invertebrate prey
+      - source: *la
+        value: {type: omnivore}
+        note: aquarium feeding category
+      - source: *fp
+        value: {type: omnivore}
+        note: aquarium feeding category
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+
+  aggressionConspecific:
+    value: 2
+    confidence: medium
+    rationale: >-
+      Males court females hard and spar with rival males (Seriously Fish, Fishipedia), so the
+      sources advise a single male with three to six females in tanks of normal size (Seriously
+      Fish, LiveAquaria). With that ratio and enough room the chasing stays within a hierarchy and
+      injuries are rare, which is level 2.
+    sources:
+      - *sf
+      - *la
+      - *fip
+      - *fp
+    evidence:
+      - source: *sf
+        value: 2
+        note: one male with four to six females outside very large tanks
+      - source: *la
+        value: 2
+        note: aggression mainly within the species; three to four females per male
+      - source: *fip
+        value: 2
+        note: displays and small sparring bouts between males
+      - source: *fp
+        value: 2
+        note: calm overall, keep several females per male
+
+  aggressionHeterospecific:
+    value: 2
+    confidence: medium
+    rationale: >-
+      Seriously Fish and Fishipedia call the species fairly peaceful, and it leaves calm fish of a
+      different colour alone. Beyond displaying, however, males attack fish with a similar colour
+      pattern (Seriously Fish), drive off fish that enter their territory (LiveAquaria), dislike
+      other territorial species close by and defend their spot vigorously when spawning
+      (Fishipedia). Chasing other species out of the territory without injuries in a suitable tank
+      is level 2; towards differently coloured, non-territorial tankmates the fish behaves closer
+      to level 1.
+    sources:
+      - *sf
+      - *la
+      - *fip
+      - *tpp
+      - *wiki
+    evidence:
+      - source: *sf
+        value: 2
+        note: relatively peaceful, but males attack similarly coloured fish
+      - source: *la
+        value: 2
+        note: aggressive towards other species only when its territory is invaded
+      - source: *fip
+        value: 2
+        note: peaceful towards non-territorial fish, defends its territory hard when spawning
+      - source: *tpp
+        value: 1
+        note: peacocks rated much less aggressive than mbuna
+      - source: *wiki
+        value: 1
+        note: generally peaceful, territorial mainly when spawning
+
+  territory:
+    value: {size: small, breedingOnly: false}
+    confidence: medium
+    rationale: >-
+      Males show breeding colour all year and hold a territory centred on a shelter they dig out
+      under or beside a rock, while females and young fish move about in small groups nearby (Red
+      List assessment as summarised on Wikipedia, Fishipedia). The site is held continuously, not
+      only during a brood. The defended area is a spot around a rock or a patch of sand, not a large
+      part of the tank (Seriously Fish, LiveAquaria, That Pet Place).
+    sources:
+      - *fip
+      - *wiki
+      - *sf
+      - *la
+      - *tpp
+    evidence:
+      - source: *fip
+        value: {size: small, breedingOnly: false}
+        note: dominant males keep territories among rocks or at the rock-sand boundary
+      - source: *wiki
+        value: {size: small, breedingOnly: false}
+        note: territory around a shelter excavated by the male, breeding colour all year
+      - source: *sf
+        value: {size: small}
+        note: male picks a flat rock or sand patch as spawning site
+      - source: *la
+        value: {size: small}
+        note: rockwork needed for territories
+      - source: *tpp
+        value: {size: small}
+        note: rocks needed to establish territories
+
+  habitatZones:
+    value: [rock, sand]
+    confidence: high
+    rationale: >-
+      The species lives in the intermediate zone where rocky shore meets sand with scattered rocks,
+      mostly at 4 to 6 m and down to about 16 m (FishBase, Seriously Fish, Fishipedia, Wikipedia).
+      It forages over the sand and uses the rocks for shelter and spawning sites, so the tank needs
+      fine sand and rock piles.
+    sources:
+      - *fb
+      - *sf
+      - *fip
+      - *crc
+      - *wiki
+    evidence:
+      - source: *fb
+        value: [rock, sand]
+        note: scattered rocks on sandy bottom
+      - source: *sf
+        value: [rock, sand]
+        note: intermediate zone, 4 to 6 m, recorded to 16 m
+      - source: *fip
+        value: [rock, sand]
+        note: rocky areas on sandy ground at 4 to 6 m
+      - source: *wiki
+        value: [rock, sand]
+        note: sandy areas with rocks, 2 to 6 m
+
+  social:
+    value: {structure: harem, ratio: 4}
+    confidence: medium
+    rationale: >-
+      All care sheets recommend one male with several females: Seriously Fish four to six,
+      LiveAquaria three to four, Fishipedia a group of at least four fish, That Pet Place and
+      FishProfiles several. The Cichlid Room Companion gives a polygynandrous mating system. Four
+      females per male lies in the middle of the figures and spreads the male's courtship enough.
+    sources:
+      - *sf
+      - *la
+      - *fip
+      - *tpp
+      - *crc
+      - *fp
+    evidence:
+      - source: *sf
+        value: {structure: harem, ratio: 4}
+        note: four to six females per male
+      - source: *la
+        value: {structure: harem, ratio: 3.5}
+        note: three to four females per male
+      - source: *fip
+        value: {structure: harem, ratio: 3}
+        note: minimum group of four fish
+      - source: *tpp
+        value: {structure: harem}
+        note: one male with several females, number not given
+      - source: *crc
+        value: {structure: harem}
+        note: polygynandrous mating system; verification only
+
+  speciesOnly:
+    value: false
+    confidence: high
+    rationale: >-
+      Seriously Fish names differently patterned Copadichromis, Placidochromis, Otopharynx
+      lithobates and the peaceful mbuna Labidochromis caeruleus as tankmates, Fishipedia
+      recommends calm fish of similar behaviour in a large tank, LiveAquaria reports aggression
+      mainly within the species, and That Pet Place rates it community safe with Malawi cichlids of
+      similar temperament. Only other peacocks and rough mbuna are discouraged; a species tank is
+      advised only to raise more fry. An archive member keeps it with Labidochromis caeruleus.
+    sources:
+      - *sf
+      - *fip
+      - *la
+      - *tpp
+      - &a13953
+        kind: archive
+        title: cichlids.com forum thread 13953
+        url: https://www.cichlids.com/disc/read.php?2,13953
+        accessed: 2026-10-12
+    evidence:
+      - source: *sf
+        value: false
+        note: names several suitable tankmates
+      - source: *fip
+        value: false
+        note: lives with calm fish of similar behaviour in a large tank
+      - source: *la
+        value: false
+        note: aggression mainly towards its own kind
+      - source: *tpp
+        value: false
+        note: community safe with Malawi fish of similar temperament
+      - source: *a13953
+        value: false
+        note: kept with Labidochromis caeruleus
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+
+  hybridGroup:
+    value: aulonocara
+    confidence: high
+    rationale: >-
+      The species is valid in Aulonocara (Catalog of Fishes) and a listed member of the curated
+      group aulonocara. Seriously Fish advises against other Aulonocara because most of them can
+      hybridise with it, Fishipedia warns against mixing species of one genus for the same reason,
+      and FishProfiles states that peacocks interbreed freely. The females of the genus are hard to
+      tell apart, which makes accidental crosses likely. An archive member also warns of crosses
+      with a blue haplochromine sold as ahli.
+    sources:
+      - *cof
+      - *sf
+      - *fip
+      - *fp
+      - &a14801
+        kind: archive
+        title: cichlids.com forum thread 14801
+        url: https://www.cichlids.com/disc/read.php?2,14801
+        accessed: 2026-10-12
+    evidence:
+      - source: *cof
+        value: aulonocara
+        note: valid in Aulonocara, so a member of the genus group
+      - source: *sf
+        value: aulonocara
+        note: most Aulonocara species can hybridise
+      - source: *fip
+        value: aulonocara
+        note: do not mix species of the same genus
+      - source: *fp
+        value: aulonocara
+        note: all peacocks interbreed freely
+      - source: *a14801
+        value: aulonocara
+        note: warns of crosses between baenschi and an ahli in the same tank
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+
+  coloration:
+    value:
+      baseColors: [yellow, blue]
+      pattern: plain
+    confidence: medium
+    rationale: >-
+      Adult males have a bright yellow body and fins and a blue face, which they show all year
+      (Lee and Lee 2020, LiveAquaria, FishProfiles). Their dominant look is this two-tone colouring
+      without a strong bar or stripe pattern; faint dark bars appear mainly in stressed or
+      subdominant fish (Fishipedia). Females are cream to grey with brown bars.
+    sources:
+      - &lee2020
+        kind: literature
+        title: Lee, S. Y. and Lee, H. J. (2020). Comprehensive RNA-seq analysis to evaluate the pigmentation-related genes involved in albinism of cichlid fish, Aulonocara baenschi. Frontiers in Marine Science 7, 723.
+        url: https://doi.org/10.3389/fmars.2020.00723
+        accessed: 2026-10-12
+      - *la
+      - *fip
+      - *sf
+      - *fp
+    evidence:
+      - source: *lee2020
+        value: {baseColors: [yellow, blue]}
+        note: blue face, bright yellow body; females cream with brown bars
+      - source: *la
+        value: {baseColors: [yellow, blue]}
+      - source: *fp
+        value: {baseColors: [yellow, blue], pattern: plain}
+        note: yellow body, blue lower head, no markings
+      - source: *fip
+        value: {pattern: plain}
+        note: dark bars only under stress
+
+  feedingSpeed:
+    value: normal
+    confidence: low
+    rationale: >-
+      No source states the feeding speed directly. The species searches the bottom and hovers over
+      the sand before striking, and Seriously Fish advises against most mbuna because they are too
+      boisterous and recommends three to four small meals a day. This points to a normal pace that
+      loses out against hasty mbuna.
+    sources:
+      - *sf
+      - kind: model-knowledge
+        title: General hobby knowledge of Aulonocara feeding behaviour
+    evidence:
+      - source: *sf
+        value: normal
+        note: indirect; browsing feeder, most mbuna too boisterous for it
+
+  minTank:
+    value: {volumeL: 240, lengthCm: 120, depthCm: 45}
+    confidence: medium
+    rationale: >-
+      Seriously Fish recommends a base of at least 120 by 45 cm (about 243 L) for one male with
+      four or more females, Fishipedia at least 250 L, That Pet Place about 65 US gallons (about
+      246 L) and LiveAquaria 50 to 55 US gallons (about 190 to 210 L). A tank of 120 cm length,
+      45 cm front-to-back depth and about 240 L is the lower limit; a longer tank allows more
+      females.
+    sources:
+      - *sf
+      - *fip
+      - *tpp
+      - *la
+    evidence:
+      - source: *sf
+        value: {volumeL: 243, lengthCm: 120, depthCm: 45}
+      - source: *fip
+        value: {volumeL: 250}
+      - source: *tpp
+        value: {volumeL: 246}
+        note: 65 US gallons
+      - source: *la
+        value: {volumeL: 189}
+        note: 50 US gallons in the data sheet, 55 in the text
+
+  lifespanYears:
+    value: {min: 8, max: 10}
+    confidence: low
+    rationale: >-
+      Fishipedia gives about 8 years and a care note on Wikipedia 10 years. Both are hobby figures
+      without data behind them; the range is a rough guide for well-kept fish.
+    sources:
+      - *fip
+      - *wiki
+    evidence:
+      - source: *fip
+        value: {min: 8, max: 8}
+      - source: *wiki
+        value: {min: 10, max: 10}
+
+  breeding:
+    value: maternal-mouthbrooder
+    confidence: high
+    rationale: >-
+      FishBase, Seriously Fish and LiveAquaria describe a maternal mouthbrooder; the female takes
+      the eggs into her mouth right after laying them and carries the brood for about three to
+      four weeks. The Cichlid Room Companion confirms maternal mouthbrooding.
+    sources:
+      - *fb
+      - *sf
+      - *la
+      - *crc
+    evidence:
+      - source: *fb
+        value: maternal-mouthbrooder
+      - source: *sf
+        value: maternal-mouthbrooder
+        note: up to four weeks of brooding
+      - source: *la
+        value: maternal-mouthbrooder
+        note: about three weeks of brooding
+      - source: *crc
+        value: maternal-mouthbrooder
+        note: verification only
+
+  beginnerSuitability:
+    value: moderate
+    confidence: medium
+    rationale: >-
+      The species is calm and easy to feed, and LiveAquaria, That Pet Place and Fishipedia rate it
+      easy. Seriously Fish rates it moderate because it needs a mature, stable tank and reacts badly
+      to deteriorating water. Choosing tankmates also needs care: no other peacocks, no rough mbuna
+      and no similarly coloured males. Overall it suits keepers with some experience of Malawi
+      cichlids.
+    sources:
+      - *sf
+      - *la
+      - *tpp
+      - *fip
+    evidence:
+      - source: *sf
+        value: moderate
+        note: needs a mature tank and stable water
+      - source: *la
+        value: easy
+      - source: *tpp
+        value: easy
+      - source: *fip
+        value: easy
+
+partners:
+  suitable:
+    - species: Placidochromis electra
+      reason: Calm sand-dwelling Malawi hap of similar size with a different, blue colour and no peacock ancestry.
+      condition: Tank of at least 150 cm length.
+    - species: Otopharynx lithobates
+      reason: Peaceful hap of similar size from the same lake with a distinct colour pattern.
+    - species: Copadichromis borleyi
+      reason: Open-water hap that uses another zone of the tank and differs in colour.
+      condition: Tank of at least 150 cm length.
+    - species: Labidochromis caeruleus
+      reason: One of the few peaceful mbuna; it does not crowd the peacock at feeding time.
+      condition: Enough rockwork; watch the male peacock for aggression against the yellow colour.
+    - species: Cyrtocara moorii
+      reason: Calm, slow sand-dwelling hap that keeps to the open sand and does not compete for caves.
+      condition: Tank of at least 150 cm length and 400 L.
+    - species: Synodontis njassae
+      reason: Lake Malawi catfish active at night that occupies the bottom without competing for territories.
+  unsuitable:
+    - species: Aulonocara stuartgranti
+      reason: Same hybrid group; the drab females are hard to tell apart and the species cross readily.
+    - species: Aulonocara jacobfreibergi
+      reason: Same hybrid group; crosses with A. baenschi and its males compete for the same sand-rock territories.
+    - species: Maylandia zebra
+      reason: Hasty, boisterous mbuna that outcompetes the peacock at feeding and harasses it constantly.
+    - species: Melanochromis auratus
+      reason: Very aggressive mbuna that injures calmer haps in all but very large tanks.
+    - species: Sciaenochromis fryeri
+      reason: Males share the blue head colour and provoke rival fights; its males court peacock females and crosses are reported in the hobby.
+    - species: Tropheus moorii
+      reason: Kept only with its own species, needs a plant-based diet and Lake Tanganyika water.
+
+profile:
+  overview:
+    text: >-
+      Aulonocara baenschi is a peacock cichlid from Lake Malawi, known to hobbyists as the yellow
+      peacock or new yellow regal. Adult males are among the brightest fish of the lake, with a
+      lemon yellow body and a blue face that they show all year. Females are much plainer. The
+      species is calm for a Malawi cichlid and fits well into a tank with other peaceful haps of
+      different colour. In the wild it is critically endangered: the IUCN lists it as such because
+      collecting for the aquarium trade has sharply reduced the small population at Nkhomo Reef.
+      Fish in the trade are mostly captive bred, and keepers can help by buying pure, correctly
+      labelled stock and by keeping it apart from other peacocks, so that the line does not become
+      mixed.
+    sources:
+      - *cof
+      - *fb
+      - *sf
+      - *lee2020
+      - *fip
+      - *la
+      - *wiki
+  habitat:
+    text: >-
+      The species is endemic to Lake Malawi. It is known for certain from Nkhomo Reef near Benga on
+      the central western shore, and further western-shore sites such as Usisya, the Maleri Islands
+      and Chipoka are listed in databases. It lives where rocky shores give way to sand with
+      scattered stones, mostly in 4 to 6 m of water and occasionally down to about 16 m. Males
+      claim a hollow under or beside a rock, while females and young fish move about in small groups
+      over the sand. The lake water is soft, with a total hardness of about 3 to 5 dGH, but well
+      buffered at 5 to 8 dKH, with a pH of 7.7 to 8.6 and temperatures between about 21 and 29 C
+      over the year.
+    sources:
+      - *cof
+      - *fb
+      - *sf
+      - *wiki
+      - *branchu
+      - *fao
+      - *eccles
+  sizeAndGrowth:
+    text: >-
+      Males usually reach about 13 cm total length in the aquarium; females stay smaller at around
+      10 cm. Young fish grow steadily on a varied diet offered in several small portions a day.
+      Males become distinguishable from females at about four months and then develop their yellow
+      colour step by step; full colour comes only with adult size. With good water care the species
+      can live for around eight to ten years, although reliable data on its life span are scarce.
+    sources:
+      - *fb
+      - *sf
+      - *fip
+      - *la
+      - *wiki
+  husbandry:
+    text: >-
+      For one male and four females a tank of at least 120 cm length, 45 cm front-to-back depth and
+      about 240 L is needed; more length allows a larger group. Use fine sand, because the fish sift
+      it for food and coarse gravel can harm the gills. Build several rock piles with caves, leaving
+      open sand between them. Plants that tolerate alkaline water, such as Vallisneria or Anubias,
+      are left alone. Water around 24 to 27 C with a pH near 8 and a moderate carbonate hardness
+      suits the species well; it copes with harder tap water, but stable values matter more than
+      exact figures. Peacocks react badly to rising nitrate and sudden changes, so the tank should
+      be mature before they move in, strongly filtered and given large weekly water changes.
+    sources:
+      - *sf
+      - *fip
+      - *la
+      - *tfh
+  socialBehavior:
+    text: >-
+      A dominant male holds a small territory around a cave or a stone and displays to every female
+      that passes. Rival males spar, so in tanks of normal size only one adult male should be kept,
+      together with four or more females that share his attention. Towards differently coloured,
+      calm species the yellow peacock is fairly tolerant. It does, however, chase fish that resemble
+      it, especially yellow or blue males, and drives other fish away from its spot, most of all
+      when spawning. Subdominant or stressed fish show dark bars and lose colour.
+    sources:
+      - *sf
+      - *la
+      - *fip
+      - *wiki
+  diet:
+    text: >-
+      In the lake the yellow peacock feeds on small invertebrates such as insect larvae, worms and
+      small crustaceans living in the sand. It hovers just above the bottom, picks up the tiny
+      movements of its prey with enlarged sensory canals on the head and then strikes, or it takes
+      mouthfuls of sand and filters out the food. In the aquarium it takes good sinking pellets and
+      flakes, frozen mosquito larvae, Artemia and similar food. Part of the prepared food should
+      contain plant matter such as spirulina. Several small meals a day suit its foraging style
+      better than one large one.
+    sources:
+      - *fb
+      - *sf
+      - *fip
+      - *webb2014
+      - *schwalbe16
+      - *tfh
+  breeding:
+    text: >-
+      The species is a maternal mouthbrooder and often spawns in a community tank. The male chooses
+      a flat stone or a patch of sand near his cave and courts with spread fins. The female lays a
+      few eggs at a time, takes them into her mouth and collects the sperm while nibbling at the
+      egg spots on the male's anal fin. She carries the brood for three to four weeks and normally
+      eats nothing during this time. Broods hold a few dozen young at most; a hobby profile names
+      20 to 40. To raise more fry, the female can be moved to a separate tank late in the brooding
+      period, but stress may make her spit or swallow the eggs. Fry take Artemia nauplii and crushed
+      flakes at once.
+    sources:
+      - *sf
+      - *la
+      - *tfh
+      - *crc
+      - *fp
+  sexing:
+    text: >-
+      Adult males are easy to recognise: they are larger, bright yellow with a blue face, and carry
+      egg spots on the anal fin. Females are cream to grey with brown vertical bars and sometimes a
+      light yellow tinge. Young fish all look female-like, so sexing is reliable only from about
+      four months. Females of different peacock species look very much alike, which is the main
+      reason why pure stock gets mixed in shops and tanks.
+    sources:
+      - *lee2020
+      - *sf
+      - *la
+  compatibility:
+    text: >-
+      Good tankmates are calm haps from Lake Malawi that differ in colour and do not belong to the
+      genus Aulonocara, for example Placidochromis electra, Otopharynx lithobates or Copadichromis
+      species, and a peaceful mbuna such as Labidochromis caeruleus. Other peacocks should be
+      avoided because the females cannot be told apart and the species cross. Rough mbuna such as
+      Maylandia or Melanochromis are too fast at feeding time and stress the peacock. Males with a
+      similar yellow or blue colour provoke fights. Fry and very small fish may be eaten, but fish
+      of more than a few centimetres are safe.
+    sources:
+      - *sf
+      - *fip
+      - *tpp
+      - *fp
+      - *a13953
+      - *a14801
+  problems:
+    text: >-
+      Most problems come from water quality and tank mates. Peacocks are sensitive to high nitrate
+      and to abrupt changes in pH or temperature; a young tank or neglected water changes lead to
+      faded colour, frayed fins and disease. Housed with aggressive mbuna, they hide, lose condition
+      and do not get enough food. Overfeeding with rich food strains the digestion and the water, so
+      several small meals of prepared food with some plant content are the better staple. Coarse
+      gravel can injure the gills while the fish sift the bottom. Another common mistake is mixing
+      several peacock species, which ruins pure lines through hybrids. Stressed brooding females may
+      eat or spit out their eggs.
+    sources:
+      - *sf
+      - *fip
+      - *la
+      - *tfh
+
+provenance:
+  runs:
+    - {role: generator, model: claude-opus-5-5, date: 2026-10-12}
+    - {role: checker, model: claude-opus-5-5, date: 2026-10-12}
+    - {role: checker, model: claude-sonnet-5-5, date: 2026-10-12}
+    - {role: checker, model: claude-opus-5-5, date: 2026-10-12}
+    - {role: checker, model: claude-sonnet-5-5, date: 2026-10-12}
+    - {role: adjudicator, model: claude-opus-5-5, date: 2026-10-12}
+  disagreements:
+    - field: features.origin.value.waterbody
+      proposals:
+        - {by: generator, value: Lake Malawi}
+        - {by: checker-a, value: Lake Malawi}
+        - {by: checker-b, value: lake-malawi}
+      decision: Lake Malawi
+      rationale: Both spellings name the same entry of the water body table; the name form is used, as in the other proposals.
+    - field: features.origin.value.localities
+      proposals:
+        - {by: generator, value: [Nkhomo Reef near Benga, Usisya, Maleri Islands, Chipoka]}
+        - {by: checker-a, value: [Nkhomo Reef, Benga, Usisya, Maleri Islands, Chipoka]}
+        - {by: checker-b, value: [Nkhomo, Benga, Usisya, Maleri Islands, Chipoka]}
+      decision: [Nkhomo Reef, Benga, Usisya, Maleri Islands, Chipoka]
+      rationale: >-
+        Seriously Fish lists Nkhomo Reef and Benga as two of five separate sites; the type locality
+        lies 8 km west of Benga. The list follows Seriously Fish and FishBase.
+    - field: features.ph.tolerance
+      proposals:
+        - {by: generator, value: {min: 7.5, max: 8.6}}
+        - {by: checker-a, value: {min: 7.2, max: 9.0}}
+        - {by: checker-b, value: {min: 7.2, max: 9.0}}
+        - {by: tiebreaker-1, value: {min: 7.2, max: 9.0}}
+        - {by: tiebreaker-2, value: {min: 7.2, max: 9.0}}
+      decision: {min: 7.2, max: 9.0}
+      rationale: >-
+        Decided by the vote count (qualified majority, 4 of 5). The generator cut the range to the
+        bounds most care sheets share; the other votes take the outer limits of the database
+        sources, 7.2 from the Aquarien Atlas via FishBase and 9.0 from Seriously Fish.
+    - field: features.ghDgh.tolerance
+      proposals:
+        - {by: generator, value: {min: 3, max: 25}}
+        - {by: checker-a, value: {min: 3, max: 30}}
+        - {by: checker-b, value: {min: 3, max: 25}}
+        - {by: tiebreaker-1, value: {min: 3, max: 30}}
+        - {by: tiebreaker-2, value: {min: 3, max: 25}}
+      decision: {min: 3, max: 25}
+      rationale: >-
+        Decided by the vote count with the conservative method: the upper limits of 25 and 30 dGH
+        lie more than 2 dGH apart, and the larger camp has only 3 of 5 votes. The intersection of
+        all votes, 3 to 25 dGH, is the most cautious range.
+    - field: features.khDkh.tolerance
+      proposals:
+        - {by: generator, value: {min: 5, max: 15}}
+        - {by: checker-a, value: {min: 5, max: 8}}
+        - {by: checker-b, value: {min: 5, max: 15}}
+        - {by: tiebreaker-1, value: {min: 5, max: 15}}
+        - {by: tiebreaker-2, value: {min: 5, max: 15}}
+      decision: {min: 5, max: 15}
+      rationale: >-
+        Decided by the vote count (qualified majority, 4 of 5). Checker-a found no carbonate figure
+        and kept the lake range; LiveAquaria gives 10 to 15 dKH for captive-bred fish.
+    - field: features.predation
+      proposals:
+        - {by: generator, value: 1}
+        - {by: checker-a, value: 1}
+        - {by: checker-b, value: 0}
+        - {by: tiebreaker-1, value: 1}
+        - {by: tiebreaker-2, value: 1}
+      decision: 1
+      rationale: >-
+        Decided by the vote count (qualified majority, 4 of 5). The species-specific databases
+        describe invertebrate food only and are silent on fry; genus-level sources report
+        opportunistic feeding, perhaps small fishes, and fry losses in community tanks, which is
+        level 1.
+    - field: features.diet.value.foods
+      proposals:
+        - {by: generator, value: [fine sinking pellets and flakes, "frozen or live mosquito larvae, bloodworm and Artemia", some food with plant content such as spirulina]}
+        - {by: checker-a, value: [benthic invertebrates sifted from sand, insect larvae, small crustaceans]}
+        - {by: checker-b, value: [chironomid larvae, Artemia, mosquito larvae, fine prepared food with some vegetable content]}
+      decision: [fine sinking pellets and flakes, "frozen or live mosquito larvae, bloodworm and Artemia", some food with plant content such as spirulina]
+      rationale: >-
+        Type and bloat sensitivity agree in all votes; the vote count takes the food list of the
+        first agreeing vote. The natural invertebrate prey named by checker-a is described in the
+        diet text.
+    - field: features.aggressionHeterospecific
+      proposals:
+        - {by: generator, value: 2}
+        - {by: checker-a, value: 1}
+        - {by: checker-b, value: 1}
+      decision: 2
+      rationale: >-
+        Level 1 covers display only. Seriously Fish reports attacks on similarly coloured fish,
+        LiveAquaria aggression against fish that invade the territory and Fishipedia intolerance of
+        territorial neighbours and vigorous defence when spawning; chasing other species from the
+        territory is level 2. The checkers read the general description as relatively peaceful,
+        which holds for differently coloured, calm tankmates and is stated in the rationale.
+    - field: features.coloration.value.pattern
+      proposals:
+        - {by: generator, value: bars}
+        - {by: checker-a, value: plain}
+        - {by: checker-b, value: mixed}
+      decision: plain
+      rationale: >-
+        The sources describe the adult male as yellow with a blue face and no markings; the dark
+        bars of the generator appear mainly in stressed or subdominant fish (Fishipedia) and on
+        females. Two colours on an unmarked body are no mixed pattern.
+    - field: features.minTank
+      proposals:
+        - {by: generator, value: {volumeL: 240, lengthCm: 120, depthCm: 45}}
+        - {by: checker-a, value: {volumeL: 240, lengthCm: 120, depthCm: 45}}
+        - {by: checker-b, value: {volumeL: 250, lengthCm: 120, depthCm: 45}}
+      decision: {volumeL: 240, lengthCm: 120, depthCm: 45}
+      rationale: >-
+        All proposals rest on the 120 by 45 cm base of Seriously Fish, about 243 L; 240 L is the
+        rounded volume of that base, while 250 L is the Fishipedia figure.
+    - field: features.lifespanYears
+      proposals:
+        - {by: generator, value: {min: 8, max: 10}}
+        - {by: checker-a, value: {min: 8, max: 10}}
+        - {by: checker-b, value: {min: 5, max: 8}}
+      decision: {min: 8, max: 10}
+      rationale: >-
+        Fishipedia gives 8 years and a care note on Wikipedia 10 years; the range of checker-b rests
+        only on general knowledge.
