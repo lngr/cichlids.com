@@ -1,0 +1,1552 @@
+schemaVersion: 1
+id: amatitlania-nigrofasciata
+legacyIds: [655, 701]
+status: described
+
+taxonomy:
+  validName: Amatitlania nigrofasciata
+  genus: Amatitlania
+  species: nigrofasciata
+  author: (Günther, 1867)
+  source: &cof
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes, species of the genus Amatitlania (online version of 21 Sep. 2026; also queried: Archocentrus, Cryptoheros, Cichlasoma, Heros)"
+    url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Amatitlania
+    accessed: 2026-10-12
+  synonyms:
+    - name: Heros nigrofasciatus
+      note: Original combination, Günther 1867; type locality Lake Amatitlán, Guatemala.
+    - name: Cichlasoma nigrofasciatum
+      note: Combination used until the late 1990s and in many aquarium books.
+    - name: Cichlosoma nigrofasciatum
+      note: Misspelt variant of the Cichlasoma combination listed by FishBase.
+    - name: Archocentrus nigrofasciatus
+      note: Combination used from Kullander and Hartel (1997) until the revision by Schmitter-Soto (2007).
+    - name: Cryptoheros nigrofasciatus
+      note: Combination of Allgayer (2001).
+  legacyNames:
+    - Archocentrus nigrofasciatus
+    - Cichlasoma nigrofasciatum
+  note: >-
+    The Catalog of Fishes lists Heros nigrofasciatus Günther 1867 (type locality Lake Amatitlán,
+    Guatemala) as valid in Amatitlania. Its lists for Archocentrus, Cryptoheros, Cichlasoma and
+    Heros hold no separate valid entry for the epithet, so the legacy entries 655 (Archocentrus
+    nigrofasciatus) and 701 (Cichlasoma nigrofasciatum) are one species. This profile follows the
+    narrow species concept of Schmitter-Soto (2007), which the Catalog and FishBase use: A.
+    nigrofasciata lives on the Pacific slope from the Río Sucio in El Salvador to the Río Suchiate
+    in Guatemala and on the Atlantic slope from the Río Patuca in Honduras to the Río Jutiapa in
+    Guatemala. Schmitter-Soto described the southern and lake populations as A. siquia (Atlantic
+    Honduras to Costa Rica), A. kanna (Atlantic Panama and Costa Rica) and A. coatepeque (Lake
+    Coatepeque, El Salvador); his morphological phylogeny places A. coatepeque as sister to the
+    other three and A. siquia next to A. kanna. The split is disputed. McMahan et al. (2014) found
+    A. coatepeque indistinguishable from A. nigrofasciata and treat it as a synonym, and Artigas
+    Azas (2021) treats both A. coatepeque and A. siquia as synonyms; the Cichlid Room Companion
+    follows this broad concept, and the distribution line of the Catalog entry (Costa Rica to
+    Panama) matches it. The Catalog itself lists all three as valid species, and so does this
+    profile. The aquarium convict cichlid descends from captive stock of unknown wild origin, so
+    trade fish cannot be assigned to one of these taxa with certainty.
+
+names:
+  trade:
+    en:
+      - Convict cichlid
+      - Zebra cichlid
+    de:
+      - Zebrabuntbarsch
+      - Grünflossenbuntbarsch
+    es-419:
+      - Mojarra convicto
+      - Burrita
+      - Congo
+      - Serica
+
+variants:
+  - name: Pink convict (white convict)
+    kind: color-morph
+    note: Leucistic aquarium form with a pale pink to white body and only faint bars; it breeds true and is as aggressive as the wild colour.
+  - name: Marbled convict
+    kind: color-morph
+    note: Aquarium form with irregular dark blotches in place of regular bars.
+  - name: Long-finned convict
+    kind: color-morph
+    note: Aquarium form with elongated fins, which tear easily in fights.
+
+features:
+  origin:
+    value:
+      continent: Central America
+      region: Pacific slope of El Salvador and Guatemala, Atlantic slope of Guatemala and Honduras
+      waterbody: null
+      localities:
+        - Lake Amatitlán, Guatemala (type locality)
+        - Río Acahuapa basin, Lempa drainage, El Salvador
+        - Río Cara Sucia, El Salvador
+    confidence: high
+    rationale: >-
+      The Catalog of Fishes gives Lake Amatitlán as the type locality. FishBase gives the range of
+      the narrow concept: Pacific slope from the Río Sucio in El Salvador to the Río Suchiate in
+      Guatemala, Atlantic slope from the Río Patuca in Honduras to the Río Jutiapa in Guatemala,
+      and expressly excludes Nicaragua, Costa Rica and Panama, whose populations belong to A.
+      siquia, A. kanna and A. coatepeque. Field studies record native populations in the Río
+      Acahuapa and the Río Cara Sucia in El Salvador. The distribution line of the Catalog entry
+      and Seriously Fish (Guatemala to Panama) describe the broad concept. Populations in Mexico,
+      the United States, Asia and Australia are introduced.
+    sources:
+      - *cof
+      - &fb
+        kind: database
+        title: "FishBase species summary: Amatitlania nigrofasciata"
+        url: https://www.fishbase.se/summary/Amatitlania-nigrofasciata.html
+        accessed: 2026-10-12
+      - &acahuapa
+        kind: literature
+        title: >-
+          Álvarez, F. S., Matamoros, W. A. and Chicas, F. A. (2017). The contribution of
+          environmental factors to fish assemblages in the Río Acahuapa, a small drainage in
+          Central America. Neotropical Ichthyology 15(3), e170023.
+        url: https://doi.org/10.1590/1982-0224-20170023
+        accessed: 2026-10-12
+      - &carasucia
+        kind: literature
+        title: >-
+          González Leiva, J. A., Segovia de González, J. V., Cornejo Hernández, G. A., Revelo
+          Vidaurre, J. C. and Morán Villatoro, J. M. (2021). Idoneidad del hábitat de Amatitlania
+          nigrofasciata y caudales ecológicos del río Cara Sucia, El Salvador. Realidad y Reflexión
+          54, 95-111.
+        url: https://doi.org/10.5377/ryr.v0i54.11537
+        accessed: 2026-10-12
+      - &sf
+        kind: database
+        title: "Seriously Fish: Amatitlania nigrofasciata (Convict Cichlid)"
+        url: https://www.seriouslyfish.com/species/amatitlania-nigrofasciata/
+        accessed: 2026-10-12
+      - &crc
+        kind: database
+        title: "Cichlid Room Companion: Amatitlania nigrofasciata (public summary, verification only)"
+        url: https://cichlidae.com/species.php?id=GGO_GYN0Kw5tADbWiSbWdw
+        accessed: 2026-10-12
+    evidence:
+      - source: *cof
+        value: {continent: Central America, region: "Costa Rica, El Salvador, Guatemala, Honduras, Nicaragua and Panama"}
+        note: distribution line of the broad concept; type locality Lake Amatitlán
+      - source: *fb
+        value: {continent: Central America, region: "Pacific slope El Salvador to Guatemala, Atlantic slope Honduras to Guatemala"}
+        note: narrow range after Schmitter-Soto 2007
+      - source: *acahuapa
+        value: {continent: Central America, region: "Río Acahuapa, San Vicente, El Salvador"}
+        note: middle and upper reaches, 185 to 519 m
+      - source: *carasucia
+        value: {continent: Central America, region: "Río Cara Sucia, western El Salvador"}
+        note: native population used as flow indicator
+      - source: *sf
+        value: {continent: Central America, region: "Guatemala to Panama"}
+        note: broad concept
+
+  temperatureC:
+    value: {min: 26, max: 29}
+    confidence: low
+    rationale: >-
+      The vote count decided this range with the method conservative (3 of 5 votes agree). The
+      proposals were generator 20 to 29 C, checker-a 22 to 31 C, checker-b 24 to 29 C, tiebreaker-1
+      21 to 30 C and tiebreaker-2 26 to 29 C; with fewer than four agreeing votes the count takes
+      the intersection of all proposals, 26 to 29 C. This matches the measured site means of the
+      middle and upper Río Acahuapa (26.1 to 28.5 C at 185 to 519 m), where the species belongs to
+      the fish assemblage, and the daily range of 26 to 29 C reported for four Costa Rican streams
+      of the broad concept. The measured habitat range of the sources is wider, about 20 to 31 C:
+      Lake Amatitlán, the type locality at about 1,190 m, had period means of 19.9 C (1910) to 25.0
+      C (2008 to 2013), monthly surface readings of 22.1 to 29.2 C in 2017 and 21 to 23 C in the
+      cool months of turnover, and the lowland sites of the Río Acahuapa reach 30 to 31 C. The
+      cooler lake values lie in the tolerance. FishBase lists 20 to 36 C after Costa Rican material
+      and feral populations in heated outflows; German Wikipedia gives 20 to 35 C without a
+      measurement. Neither describes the native habitat of the narrow species.
+    sources:
+      - &amdiv
+        kind: literature
+        title: >-
+          Jaime, S., Cervantes-Martínez, A., Gutiérrez-Aguirre, M. A., Suárez-Morales, E.,
+          Juárez-Pernillo, J. R., Reyes-Solares, E. M. and Delgado-Blas, V. H. (2021). Historical
+          zooplankton composition indicates eutrophication stages in a neotropical aquatic system:
+          the case of Lake Amatitlán, Central America. Diversity 13(9), 432.
+        url: https://doi.org/10.3390/d13090432
+        accessed: 2026-10-12
+      - *acahuapa
+      - *fb
+      - &rodas
+        kind: literature
+        title: >-
+          Rodas-Pernillo, E. and Vasquez-Moscoso, C. A. (2020). Evaluación anual del fitoplancton y
+          su respuesta a la calidad de agua en el lago de Amatitlán, Guatemala. Ciencia,
+          Tecnología y Salud 7(2), 170-188.
+        url: https://doi.org/10.36829/63cts.v7i2.708
+        accessed: 2026-10-12
+      - &fuentes
+        kind: literature
+        title: >-
+          Fuentes, E. (2013). Determinación de la ocurrencia de la inversión térmica anual en el
+          lago de Amatitlán. Agua, Saneamiento & Ambiente 8(1), 16-19.
+        url: https://doi.org/10.36829/08asa.v8i1.1478
+        accessed: 2026-10-12
+      - &wiki
+        kind: website
+        title: "Wikipedia: Convict cichlid (habitat data attributed to Wisenden 1995)"
+        url: https://en.wikipedia.org/wiki/Convict_cichlid
+        accessed: 2026-10-12
+      - &wikide
+        kind: website
+        title: "Wikipedia (de): Zebrabuntbarsch"
+        url: https://de.wikipedia.org/wiki/Zebrabuntbarsch
+        accessed: 2026-10-12
+    evidence:
+      - source: *acahuapa
+        value: {min: 26.1, max: 28.5}
+        note: site means of the middle and upper reaches where the species belongs to the assemblage; lowland sites 30.0 to 31.1
+      - source: *amdiv
+        value: {min: 20, max: 25}
+        note: Lake Amatitlán, period means 1910 to 2017; 24.2 to 25.0 in 2016 and 2017
+      - source: *rodas
+        value: {min: 22.1, max: 29.2}
+        note: Lake Amatitlán surface water, monthly readings in 2017
+      - source: *fuentes
+        value: {min: 21, max: 23}
+        note: Lake Amatitlán in the cool months at turnover, 2008 to 2011
+      - source: *fb
+        value: {min: 20, max: 36}
+        note: after Bussing 1998, Costa Rican material; includes heated outflows of feral populations
+      - source: *wiki
+        value: {min: 26, max: 29}
+        note: daily range at four Costa Rican streams of the broad concept, relayed from Wisenden 1995
+      - source: *wikide
+        value: {min: 20, max: 35}
+        note: habitat statement without measurement details
+    verification:
+      method: conservative
+      votes: {agree: 3, total: 5}
+    tolerance:
+      value: {min: 20, max: 30}
+      confidence: medium
+      rationale: >-
+        Four of five votes agree on this range (qualified majority): generator 20 to 29 C,
+        checker-a 20 to 31 C, tiebreaker-1 and tiebreaker-2 20 to 30 C; checker-b proposed 22 to 30
+        C. The vote count takes the median bounds, 20 to 30 C. Care sheets recommend 23 to 28 C
+        for long-term keeping (Seriously Fish, Fishkeeper, Aquarium-Ratgeber, Aquarium Guide) and
+        Aqua-Fish.net 20 to 27 C. Cooper et al. (2021) held convicts for weeks at a constant 20 C
+        and a constant 30 C, with a critical thermal maximum near 39 C, and hatcheries rear the
+        species at 21 to 27 C. The range contains the natural 26 to 29 C and the cooler water of
+        Lake Amatitlán. Warm water above 28 C raises aggression and oxygen demand, so the upper end
+        suits breeding and short spells better than everyday keeping.
+      sources:
+        - *sf
+        - &aqf
+          kind: database
+          title: "Aqua-Fish.net: Convict cichlid (Archocentrus nigrofasciatus) care sheet"
+          url: https://en.aqua-fish.net/fish/convict-cichlid
+          accessed: 2026-10-12
+        - &rg
+          kind: database
+          title: "Aquarium-Ratgeber: Zebrabuntbarsch (Amatitlania nigrofasciata) care sheet"
+          url: https://www.aquarium-ratgeber.com/fische/fischarten/buntbarsche-amerika/zebrabuntbarsch/
+          accessed: 2026-10-12
+        - &ag
+          kind: database
+          title: "Aquarium Guide: Zebrabuntbarsch, Amatitlania nigrofasciata"
+          url: https://www.aquarium-guide.de/zebrabuntbarsch.htm
+          accessed: 2026-10-12
+        - &fk
+          kind: database
+          title: "Fishkeeper (Maidenhead Aquatics): Convict Cichlid care sheet"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/convict-cichlid
+          accessed: 2026-10-12
+        - *fb
+        - &cooper
+          kind: literature
+          title: >-
+            Cooper, C. J., Kristan, W. B. and Eme, J. (2021). Thermal tolerance and routine oxygen
+            consumption of convict cichlid, Archocentrus nigrofasciatus, acclimated to constant
+            temperatures (20 C and 30 C) and a daily temperature cycle (20 C to 30 C). Journal of
+            Comparative Physiology B 191(3), 479-491 (abstract only).
+          url: https://doi.org/10.1007/s00360-021-01341-5
+          accessed: 2026-10-12
+        - &vlahos
+          kind: literature
+          title: >-
+            Vlahos, N., Vasilopoulos, M., Mente, E., Hotos, G., Katselis, G. and Vidalis, K.
+            (2015). Yolk-sac larval development of the substrate-brooding cichlid Archocentrus
+            nigrofasciatus in relation to temperature. Integrative Zoology 10(5), 497-504
+            (abstract only).
+          url: https://doi.org/10.1111/1749-4877.12152
+          accessed: 2026-10-12
+        - *acahuapa
+        - *amdiv
+        - &glaser
+          kind: website
+          title: "Aquarium Glaser: Amatitlania nigrofasciata (F. Schäfer, 2022)"
+          url: https://www.aquariumglaser.de/en/25-perchlike-fishes/amatitlania-nigrofasciata-2/
+          accessed: 2026-10-12
+      evidence:
+        - source: *sf
+          value: {min: 24, max: 28}
+          note: recommended for long-term care; tolerates a wider range
+        - source: *aqf
+          value: {min: 20, max: 27}
+          note: aquarium recommendation
+        - source: *rg
+          value: {min: 23, max: 28}
+          note: aquarium recommendation
+        - source: *ag
+          value: {min: 23, max: 27}
+          note: aquarium recommendation
+        - source: *fk
+          value: {min: 24, max: 28}
+          note: aquarium recommendation
+        - source: *fb
+          value: {min: 20, max: 36}
+          note: range of the species including warm habitats and heated outflows
+        - source: *cooper
+          value: {min: 20, max: 30}
+          note: acclimation temperatures; critical thermal maximum near 39 C
+        - source: *vlahos
+          value: {min: 21, max: 27}
+          note: hatchery rearing temperatures
+        - source: *glaser
+          value: {min: 22, max: 28}
+          note: 22 to 24 C for keeping, 26 to 28 C for breeding
+      verification:
+        method: qualified-majority
+        votes: {agree: 4, total: 5}
+
+  ph:
+    value: {min: 6.2, max: 8.0}
+    confidence: low
+    rationale: >-
+      The vote count decided this range with the method conservative (3 of 5 votes agree). The
+      proposals were generator 6.2 to 8.7, checker-a 6.2 to 8.5, checker-b 6.2 to 8.0, tiebreaker-1
+      6.2 to 9.0 and tiebreaker-2 6.2 to 8.0; the intersection of all proposals is 6.2 to 8.0. All
+      votes share the lower bound from the Río Acahuapa, whose middle and upper sites have mean pH
+      6.2 to 8.0, most of them slightly acidic between 6.2 and 6.8. Lake Amatitlán, the type
+      locality, had period means of 7.7 (1969) and 7.75 (1985 to 1995); with eutrophication the
+      means rose to 8.3 to 8.9, with single bloom readings from 7.2 to 9.5. The votes differed on
+      whether these lake values describe the natural habitat, and the intersection leaves them out;
+      the species lives in that alkaline water, which the tolerance up to 8.5 partly covers. Costa
+      Rican streams of the broad concept measured 6.6 to 7.8, and FishBase gives 7.0 to 8.0.
+    sources:
+      - *acahuapa
+      - *amdiv
+      - *fb
+      - *rodas
+      - *wiki
+    evidence:
+      - source: *acahuapa
+        value: {min: 6.2, max: 8.0}
+        note: site means of the middle and upper reaches; 6.2 to 8.5 over all sites
+      - source: *amdiv
+        value: {min: 7.7, max: 8.7}
+        note: Lake Amatitlán period means 1969 to 2017; 7.7 to 7.75 before eutrophication
+      - source: *rodas
+        value: {min: 7.2, max: 9.5}
+        note: hypertrophic lake surface with algal blooms, single readings in 2017; annual means 8.4 to 8.9
+      - source: *fb
+        value: {min: 7.0, max: 8.0}
+        note: environment field
+      - source: *wiki
+        value: {min: 6.6, max: 7.8}
+        note: four Costa Rican streams of the broad concept, relayed from Wisenden 1995
+    verification:
+      method: conservative
+      votes: {agree: 3, total: 5}
+    tolerance:
+      value: {min: 6.0, max: 8.5}
+      confidence: medium
+      rationale: >-
+        All three votes agree within 0.3 pH (unanimous): generator 6.0 to 8.7, checker-a 6.0 to 8.5,
+        checker-b 6.0 to 8.2; the vote count takes the median bounds, 6.0 to 8.5. Seriously Fish
+        and Aqua-Fish.net give 6.0 to 8.0 and Aquarium-Ratgeber 6.5 to 8.0; Seriously Fish
+        prefers the alkaline side of neutral, and FishBase and Fishkeeper give 7.0 to 8.0. The
+        upper bound of 8.5 reflects the species living for decades in eutrophic Lake Amatitlán with
+        mean pH above 8. The range contains the natural 6.2 to 8.0.
+      sources:
+        - *sf
+        - *aqf
+        - *rg
+        - *fb
+        - *fk
+        - *amdiv
+      evidence:
+        - source: *sf
+          value: {min: 6.0, max: 8.0}
+          note: alkaline side of neutral preferred
+        - source: *aqf
+          value: {min: 6.0, max: 8.0}
+          note: aquarium recommendation
+        - source: *rg
+          value: {min: 6.5, max: 8.0}
+          note: aquarium recommendation
+        - source: *fb
+          value: {min: 7.0, max: 8.0}
+        - source: *fk
+          value: {min: 7.0, max: 8.0}
+          note: aquarium recommendation
+        - source: *amdiv
+          value: {min: 7.7, max: 8.7}
+          note: natural lake water in which the species lives
+      verification:
+        method: unanimous
+        votes: {agree: 3, total: 3}
+
+  ghDgh:
+    value: {min: 9, max: 10}
+    confidence: low
+    rationale: >-
+      The vote count decided this range with the method conservative (3 of 5 votes agree). The
+      proposals were generator 4 to 20 dGH, checker-a 9 to 20, checker-b 4 to 10, tiebreaker-1 3 to
+      10 and tiebreaker-2 3 to 10; the intersection of all proposals is 9 to 10 dGH. This
+      intersection is much narrower than the measured and estimated range of the sources, which
+      spans about 3 to 20 dGH, and it rests on no measurement of its own. No source measured
+      general hardness in the range of the narrow species. The one measurement comes from four
+      Costa Rican streams of the broad concept (populations of A. siquia), with a total hardness
+      of 63 to 77 mg/L CaCO3, about 3.5 to 4.3 dGH, as read from the archived reprint of Wisenden
+      (1995). Estimates from conductivity give about 3 to 10 dGH for the Salvadoran rivers (180 to
+      484 uS/cm) and 13 to 17 dGH for Lake Amatitlán (656 to 830 uS/cm); Brezonik and Fox (1974)
+      describe the southern Guatemalan lakes as rich in sodium, so the lake estimate is probably
+      too high. FishBase gives 9 to 20 dH without a habitat source, likely an aquarium value. The
+      natural hardness of the species therefore lies somewhere between soft and moderately hard
+      water; the value needs a habitat measurement, and the tolerance of 4 to 25 dGH covers the
+      whole span.
+    sources:
+      - *fb
+      - *acahuapa
+      - *amdiv
+      - *rodas
+      - &brezonik
+        kind: literature
+        title: >-
+          Brezonik, P. L. and Fox, J. L. (1974). The limnology of selected Guatemalan lakes.
+          Hydrobiologia 45, 467-487 (abstract only).
+        url: https://doi.org/10.1007/BF00012032
+        accessed: 2026-10-12
+      - &wisenden
+        kind: literature
+        title: >-
+          Wisenden, B. D. (1995). Reproductive behaviour of free-ranging convict cichlids,
+          Cichlasoma nigrofasciatum. Environmental Biology of Fishes 43, 121-134 (author reprint,
+          archived copy).
+        url: https://web.archive.org/web/20161225044647/http://web.mnstate.edu/wisenden/reprint%20pdfs/1995%20Reprod%20Behaviour%20EBF.pdf
+        accessed: 2026-10-12
+      - &mkcond
+        kind: model-knowledge
+        title: Estimate from conductivity and the hardness to alkalinity ratio of a related habitat
+    evidence:
+      - source: *wisenden
+        value: {min: 3.5, max: 4.3}
+        note: total hardness of four Costa Rican streams, populations of A. siquia in the narrow concept
+      - source: *acahuapa
+        value: {min: 3, max: 10}
+        note: estimated from site conductivity of 180 to 484 uS/cm, no hardness measured
+      - source: *amdiv
+        value: {min: 13, max: 17}
+        note: estimated from lake conductivity of 656 to 830 uS/cm, no hardness measured; sodium-rich water
+      - source: *fb
+        value: {min: 9, max: 20}
+        note: environment field without stated habitat source
+      - source: *mkcond
+        value: {min: 3, max: 10}
+        note: estimate for the Salvadoran rivers and Lake Amatitlán
+    verification:
+      method: conservative
+      votes: {agree: 3, total: 5}
+    tolerance:
+      value: {min: 4, max: 25}
+      confidence: medium
+      rationale: >-
+        Four of five votes agree on this range (qualified majority): generator 4 to 25 dGH,
+        checker-a 5 to 25, tiebreaker-1 and tiebreaker-2 3 to 25; checker-b proposed 4 to 20. The
+        vote count takes the median bounds, 4 to 25 dGH. Care sheets cover soft to hard water:
+        Seriously Fish 5 to 25 dGH, FishBase and Aquarium Guide 9 to 20, Aquarium-Ratgeber 10 to 20,
+        Aqua-Fish.net 4 to 12 and Fishkeeper up to 20. Keepers breed the species in soft and in
+        hard tap water. The range contains the decided natural value and nearly all of the measured
+        and estimated habitat span.
+      sources:
+        - *sf
+        - *aqf
+        - *rg
+        - *ag
+        - *fb
+        - *fk
+      evidence:
+        - source: *sf
+          value: {min: 5, max: 25}
+          note: aquarium recommendation
+        - source: *aqf
+          value: {min: 4, max: 12}
+          note: aquarium recommendation
+        - source: *rg
+          value: {min: 10, max: 20}
+          note: aquarium recommendation
+        - source: *ag
+          value: {min: 9, max: 20}
+          note: aquarium recommendation
+        - source: *fb
+          value: {min: 9, max: 20}
+        - source: *fk
+          value: {min: 0, max: 20}
+          note: states only an upper limit
+      verification:
+        method: qualified-majority
+        votes: {agree: 4, total: 5}
+
+  khDkh:
+    value: {min: 4, max: 4}
+    confidence: low
+    rationale: >-
+      The vote count decided this value with the method conservative (3 of 5 votes agree). The
+      proposals were generator 3 to 12 dKH, checker-a 3 to 12, checker-b 3.5 to 4.3, tiebreaker-1
+      4 to 14 and tiebreaker-2 3.5 to 4.5; the intersection of all proposals is 4 to 4.3, rounded
+      to 4 dKH. This intersection is much narrower than the measured and estimated range of the
+      sources, which spans about 3 to 14 dKH. No alkalinity was measured in the range of the narrow
+      species. The only measurement comes from four Costa Rican streams of A. siquia (Wisenden
+      1995), and it is read in two ways: Wikipedia reports 63 to 77 mg/L CaCO3 (3.5 to 4.3 dKH) as
+      carbonate hardness, while the archived reprint, as read by one vote, gives that figure as
+      total hardness and an alkalinity of 107 to 127 mg/L CaCO3 (6.0 to 7.1 dKH). The full text
+      is not open access and could not be checked here. Estimates from pH and conductivity give
+      roughly 3 to 9 dKH for the Salvadoran rivers and 8 to 14 dKH for alkaline Lake Amatitlán.
+      The single value of 4 dKH is therefore an artefact of the vote rule; the tolerance of 3 to
+      15 dKH covers the soft river water and most of the lake estimate.
+    sources:
+      - *acahuapa
+      - *amdiv
+      - *wisenden
+      - *brezonik
+      - *rodas
+      - *wiki
+      - &mkvolc
+        kind: model-knowledge
+        title: General limnology of Central American volcanic catchments
+      - *mkcond
+    evidence:
+      - source: *wisenden
+        value: {min: 6.0, max: 7.1}
+        note: alkalinity of four Costa Rican streams of A. siquia, as read from the reprint
+      - source: *wiki
+        value: {min: 3.5, max: 4.3}
+        note: the same Costa Rican streams, figure reported as carbonate hardness
+      - source: *acahuapa
+        value: {min: 3, max: 8}
+        note: estimated from pH and conductivity, no alkalinity measured
+      - source: *amdiv
+        value: {min: 8, max: 12}
+        note: estimated from pH and conductivity, no alkalinity measured
+      - source: *mkcond
+        value: {min: 4, max: 14}
+        note: estimate for the Salvadoran rivers and Lake Amatitlán
+      - source: *mkvolc
+        value: {min: 3, max: 12}
+        note: estimate from pH and conductivity of volcanic catchments
+    verification:
+      method: conservative
+      votes: {agree: 3, total: 5}
+    tolerance:
+      value: {min: 3, max: 15}
+      confidence: low
+      rationale: >-
+        The vote count decided this range with the method conservative (3 of 5 votes agree). The
+        proposals were generator 3 to 20 dKH, checker-a 3 to 20, checker-b 2 to 15, tiebreaker-1 3
+        to 20 and tiebreaker-2 3 to 15; the intersection of all proposals is 3 to 15 dKH, which
+        contains the natural value of 4 dKH. Only Aquarium-Ratgeber states a carbonate hardness (10
+        to 20 dKH). The other care sheets give pH 6.0 to 8.0 and a total hardness of up to 20 to 25
+        dGH, which in tap water goes with a moderate to high carbonate hardness, and keepers hold
+        the species in soft as well as in hard, well buffered water. The upper bound of 15 dKH is
+        the conservative choice; well buffered water above it is probably tolerated, but no source
+        confirms that for long-term keeping.
+      sources:
+        - *rg
+        - *sf
+        - *fb
+        - *aqf
+        - *wiki
+        - &mkkh
+          kind: model-knowledge
+          title: Carbonate hardness derived from the pH and total hardness ranges of the care sources
+      evidence:
+        - source: *rg
+          value: {min: 10, max: 20}
+          note: aquarium recommendation, the only care sheet stating carbonate hardness
+        - source: *mkkh
+          value: {min: 3, max: 20}
+          note: derived from pH 6.0 to 8.0 and up to 25 dGH in the care sheets
+        - source: *wiki
+          value: {min: 3.5, max: 4.3}
+          note: natural water of the related A. siquia, in which the species thrives
+      verification:
+        method: conservative
+        votes: {agree: 3, total: 5}
+
+  maxSizeCm:
+    value: {male: 13, female: 9}
+    confidence: medium
+    rationale: >-
+      FishBase gives a maximum of 10 cm standard length for males (Kullander 2003), about 12.5 to
+      13 cm total length. Aquarium Guide gives 12 cm for males and 8 cm for females, Fishkeeper
+      about 12 cm, Aqua-Fish.net 13 to 15 cm; Seriously Fish (80 to 150 mm SL) and
+      Aquarium-Ratgeber list 15 cm, which are exceptional large males. Well-kept aquarium males
+      usually reach 12 to 13 cm and females stay at about two thirds of that, 8 to 10 cm.
+    sources:
+      - *fb
+      - *ag
+      - *fk
+      - *aqf
+      - *rg
+      - *sf
+      - *wikide
+    evidence:
+      - source: *fb
+        value: {male: 12.5, female: 9}
+        note: 10 cm SL converted to total length; female not stated separately
+      - source: *ag
+        value: {male: 12, female: 8}
+      - source: *fk
+        value: {male: 12, female: 8}
+        note: about 12 cm, males larger
+      - source: *aqf
+        value: {male: 15, female: 13}
+        note: 13 to 15 cm, sexes not separated
+      - source: *rg
+        value: {male: 15, female: 15}
+        note: maximum size, sexes not separated
+      - source: *sf
+        value: {male: 15, female: 15}
+        note: up to 150 mm SL, sexes not separated
+      - source: *wikide
+        value: {male: 15, female: 10}
+
+  predation:
+    value: 1
+    confidence: medium
+    rationale: >-
+      All three votes give level 1 (unanimous). FishBase lists fish among worms, crustaceans,
+      insects and plant matter in the natural diet, and stomach contents of 372 fish from an
+      introduced population in the Amacuzac River, Mexico, contained fish only as a minor item
+      among 26 food categories (Trujillo-Jiménez 1998). The convict is a small generalist with a
+      small mouth. Aquarium-Ratgeber reports that adult swordtails live with it while their young
+      are eaten, and Aqua-Fish.net warns that much smaller fish may be eaten; Seriously Fish
+      reports no piscivory. Fry and fish up to about 2 cm are at risk; very slender fish slightly
+      above that size, such as neon tetras, are at risk as well. Larger fish suffer from its
+      territorial attacks, which the aggression levels cover.
+    sources:
+      - *fb
+      - *rg
+      - *aqf
+      - *sf
+      - &trujillo
+        kind: literature
+        title: >-
+          Trujillo-Jiménez, P. (1998). Trophic spectrum of the cichlids Cichlasoma (Parapetenia)
+          istlanum and Cichlasoma (Arconcentrus) nigrofasciatum in the Amacuzac River, Morelos,
+          Mexico. Journal of Freshwater Ecology 13(4), 465-473.
+        url: https://doi.org/10.1080/02705060.1998.9663643
+        accessed: 2026-10-12
+      - *crc
+    evidence:
+      - source: *fb
+        value: 1
+        note: fish listed among food items of a generalist diet
+      - source: *rg
+        value: 1
+        note: fry of livebearers eaten, adults tolerated
+      - source: *aqf
+        value: 1
+        note: much smaller fish may be eaten
+      - source: *sf
+        value: 1
+        note: unfussy feeder, no piscivory reported
+      - source: *trujillo
+        value: 1
+        note: fish a minor food category in an introduced population
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+
+  diet:
+    value:
+      type: omnivore
+      bloatSensitive: false
+      foods:
+        - insect larvae (blackflies, mayflies)
+        - worms
+        - small crustaceans
+        - algae and plant matter
+        - detritus
+        - small fish and fry
+        - cichlid pellets and flakes
+    confidence: high
+    rationale: >-
+      All three votes give an omnivore without bloat sensitivity (unanimous). Trujillo-Jiménez
+      (1998) found 26 food categories in the stomachs of 372 fish, about two thirds of them animal
+      food, chiefly blackfly larvae and mayflies, plus plant debris and algae. FishBase lists
+      worms, crustaceans, insects, fish and plant matter; Seriously Fish and Aqua-Fish.net
+      describe an unfussy feeder that also grazes algae and detritus, and the Cichlid Room
+      Companion confirms the omnivorous feeding type. No source reports bloat on a protein-rich
+      diet; a varied diet with a plant share keeps the fish in good condition.
+    sources:
+      - *fb
+      - *sf
+      - *aqf
+      - *crc
+      - *trujillo
+    evidence:
+      - source: *trujillo
+        value: {type: omnivore, bloatSensitive: false}
+        note: about two thirds animal food, mainly aquatic insect larvae
+      - source: *fb
+        value: {type: omnivore, bloatSensitive: false}
+      - source: *sf
+        value: {type: omnivore, bloatSensitive: false}
+        note: accepts most foods, grazes algae and detritus
+      - source: *aqf
+        value: {type: omnivore, bloatSensitive: false}
+      - source: *crc
+        value: {type: omnivore, bloatSensitive: false}
+        note: verification
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+
+  aggressionConspecific:
+    value: 3
+    confidence: high
+    rationale: >-
+      All three files give level 3. A pair forms quickly and then drives all other adults of the
+      species away; Seriously Fish advises moving surplus fish once a pair has formed unless the
+      tank is large, Aquarium-Ratgeber reports strong aggression among males, and Fishkeeper
+      calls the species highly aggressive and advises one pair. In small tanks rivals are chased
+      persistently and injured or killed. Several pairs can coexist only in large tanks with
+      clear territory borders. Archive reports of newly added conspecifics being attacked agree.
+    sources:
+      - *sf
+      - *rg
+      - *fk
+      - *fb
+      - kind: archive
+        title: cichlids.com forum thread 8187
+        url: https://www.cichlids.com/disc/read.php?1,8187
+      - kind: archive
+        title: cichlids.com forum thread 19
+        url: https://www.cichlids.com/disc/read.php?1,19
+    evidence:
+      - source: *sf
+        value: 3
+        note: surplus fish must be moved after pairing
+      - source: *rg
+        value: 3
+        note: males very aggressive towards each other
+      - source: *fk
+        value: 3
+        note: one pair per tank
+      - source:
+          kind: archive
+          title: cichlids.com forum thread 8187
+          url: https://www.cichlids.com/disc/read.php?1,8187
+        value: 3
+        note: keeper report of a newly added conspecific being attacked
+
+  aggressionHeterospecific:
+    value: 3
+    confidence: high
+    rationale: >-
+      All three files give level 3. Seriously Fish calls it unsuitable for community tanks: it is
+      aggressive and territorial, violent while breeding and beats fish several times its own
+      size. Fishkeeper reports breeding pairs attacking any fish in the tank, and Aqua-Fish.net and
+      Aquarium-Ratgeber advise only sturdy tankmates of similar size. Because pairs breed almost
+      continuously in a tank, attacks reach well beyond the spawning cave. In small tanks the
+      behaviour approaches level 4.
+    sources:
+      - *sf
+      - *fk
+      - *aqf
+      - *rg
+      - kind: archive
+        title: cichlids.com forum thread 3283
+        url: https://www.cichlids.com/disc/read.php?1,3283
+      - kind: archive
+        title: cichlids.com forum thread 98
+        url: https://www.cichlids.com/disc/read.php?1,98
+    evidence:
+      - source: *sf
+        value: 3
+        note: beats much larger fish, violent when breeding
+      - source: *fk
+        value: 3
+        note: breeding pairs attack fish several times their size
+      - source: *aqf
+        value: 3
+        note: only sturdy tankmates of similar size
+      - source: *rg
+        value: 3
+        note: aggressive towards other species
+
+  territory:
+    value: {size: large, breedingOnly: false}
+    confidence: low
+    rationale: >-
+      All files agree on a large territory; they differ on whether it is claimed only while
+      breeding. Outside brood care a convict holds a cave and its surroundings. A breeding pair
+      defends a wide area against all fish (Seriously Fish, Fishkeeper), in tanks of about 120 cm
+      often the whole tank. In aquaria pairs spawn again within a few weeks and guard each brood
+      for four to six weeks (Wisenden 1995 via Wikipedia, Seriously Fish), so a settled pair is in
+      brood care most of the time and the large territory is the practical norm. The flag
+      breedingOnly is therefore false, which keeps the compatibility check on the cautious side.
+      One archive post rates the territory as modest compared with larger cichlids, so the
+      confidence is low.
+    sources:
+      - *sf
+      - *fk
+      - *fb
+      - *rg
+      - *wiki
+      - *wikide
+      - kind: archive
+        title: cichlids.com forum thread 50
+        url: https://www.cichlids.com/disc/read.php?1,50
+    evidence:
+      - source: *sf
+        value: {size: large, breedingOnly: true}
+        note: the male tolerates no other fish in the brood territory
+      - source: *fk
+        value: {size: large, breedingOnly: true}
+        note: breeding pairs defend the whole tank
+      - source: *wikide
+        value: {size: large, breedingOnly: false}
+        note: pairs spawn up to monthly
+      - source:
+          kind: archive
+          title: cichlids.com forum thread 50
+          url: https://www.cichlids.com/disc/read.php?1,50
+        value: {size: small, breedingOnly: false}
+
+  habitatZones:
+    value: [rock, wood, sand]
+    confidence: medium
+    rationale: >-
+      All files agree. FishBase describes rocky habitats with cracks and crevices, roots and
+      debris; in the Río Cara Sucia the species uses rocky beds, branches, leaf litter and some
+      vegetation, and in the Río Acahuapa its assemblage is linked to rock and log cover. The
+      Cichlid Room Companion lists sandy lake shores as well. In the tank it needs caves among
+      rocks or roots and a diggable sand or fine gravel bottom for the pits that hold the young;
+      plants are uprooted and are not required. The sources agree on rock and wood; sand rests on
+      the digging behaviour, so the confidence is medium.
+    sources:
+      - *fb
+      - *carasucia
+      - *acahuapa
+      - *sf
+      - *crc
+    evidence:
+      - source: *fb
+        value: [rock, wood]
+        note: rocky crevices, roots and debris
+      - source: *carasucia
+        value: [rock, wood, plants]
+        note: rocks, branches, leaf litter, vegetation
+      - source: *sf
+        value: [rock, wood, sand]
+        note: caves, roots and digging
+
+  social:
+    value: {structure: pair}
+    confidence: high
+    rationale: >-
+      All files agree. A monogamous species with biparental brood care: FishBase (after the German
+      minimum requirements report), Seriously Fish and Fishkeeper recommend keeping one pair, and
+      the Cichlid Room Companion lists the mating system as monogamous.
+    sources:
+      - *fb
+      - *sf
+      - *fk
+      - *crc
+    evidence:
+      - source: *fb
+        value: {structure: pair}
+      - source: *sf
+        value: {structure: pair}
+      - source: *crc
+        value: {structure: pair}
+        note: verification
+
+  speciesOnly:
+    value: true
+    confidence: low
+    rationale: >-
+      The vote count decided this value with the method conservative (3 of 5 votes agree). The
+      proposals were generator false, checker-a false, checker-b true, tiebreaker-1 false and
+      tiebreaker-2 true. Three votes for false fall one short of a qualified majority, and the
+      conservative rule sets the flag to true when any vote says so. The sources support both
+      readings. Seriously Fish summarises the species as best kept in a species tank and
+      Fishkeeper recommends a species tank as well; care literature cited by Wikipedia advises
+      keeping breeding pairs alone. Seriously Fish also names a very large tank with sturdy Central
+      American cichlids as workable, Aqua-Fish.net and Aquarium-Ratgeber list suitable tankmates,
+      and archive keepers report convicts in large mixed cichlid tanks. A species tank with one
+      pair is the safe recommendation; mixed tanks remain an exception for large aquaria and
+      experienced keepers.
+    sources:
+      - *sf
+      - *fk
+      - *aqf
+      - *rg
+      - *fb
+      - *wiki
+      - kind: archive
+        title: cichlids.com forum thread 98
+        url: https://www.cichlids.com/disc/read.php?1,98
+      - kind: archive
+        title: cichlids.com forum thread 27186
+        url: https://www.cichlids.com/disc/read.php?1,27186
+    evidence:
+      - source: *sf
+        value: true
+        note: best kept in a species tank; sturdy Central American cichlids possible in a very big tank
+      - source: *fk
+        value: true
+        note: species tank recommended
+      - source: *wiki
+        value: true
+        note: cites care literature saying breeding pairs are best kept alone
+      - source: *aqf
+        value: false
+        note: recommends similarly sized, sturdy tankmates
+      - source: *rg
+        value: false
+        note: sturdy livebearers possible
+      - source: *fb
+        value: false
+        note: keeping in pairs, no tankmate advice
+      - source:
+          kind: archive
+          title: cichlids.com forum thread 98
+          url: https://www.cichlids.com/disc/read.php?1,98
+        value: false
+        note: convicts kept and bred in large mixed cichlid tanks
+    verification:
+      method: conservative
+      votes: {agree: 3, total: 5}
+
+  hybridGroup:
+    value: amatitlania-nigrofasciata-complex
+    confidence: low
+    rationale: >-
+      The vote count decided this group with the method conservative (3 of 5 votes agree). The
+      proposals were generator amatitlania-nigrofasciata-complex, checker-a null, checker-b null,
+      tiebreaker-1 amatitlania-nigrofasciata-complex and tiebreaker-2 null. Three votes for null
+      fall one short of a qualified majority, and the conservative rule takes the most common
+      named group. The group holds A. nigrofasciata, A. siquia, A. kanna and A. coatepeque, which
+      formed one species until Schmitter-Soto (2007) described the southern and lake populations as
+      new species on subtle morphological characters. The Catalog of Fishes lists all four as
+      valid but records that McMahan et al. (2014) and Artigas Azas (2021) treat A. coatepeque, and
+      Artigas Azas (2021) also A. siquia, as synonyms of A. nigrofasciata; the Cichlid Room
+      Companion follows that view, and field studies of A. siquia call it the convict cichlid.
+      Practical Fishkeeping reported that the colour forms, such as the Honduran red point, reached
+      the hobby without locality data. No paper or species database read for this profile
+      documents a cross between these four species; the group rests on their close relationship and
+      the former single-species concept, and taxa without a known barrier to interbreeding are
+      expected to cross in a tank. The convict also crosses in captivity with more distant cichlids
+      such as the Texas cichlid and the blood parrot, which a curated group cannot cover.
+    sources:
+      - *cof
+      - &zt1603
+        kind: literature
+        title: >-
+          Schmitter-Soto, J. J. (2007). A systematic revision of the genus Archocentrus (Perciformes:
+          Cichlidae), with the description of two new genera and six new species. Zootaxa 1603, 1-78
+          (abstract only).
+        url: https://doi.org/10.11646/zootaxa.1603.1.1
+        accessed: 2026-10-12
+      - &pfk
+        kind: literature
+        title: >-
+          Practical Fishkeeping (2007). Convict and Jack Dempsey placed in new genera. News item on
+          Schmitter-Soto (2007), Zootaxa 1603 (archived copy).
+        url: https://web.archive.org/web/20071228234519/http://www.practicalfishkeeping.co.uk/pfk/pages/item.php?news=1399
+        accessed: 2026-10-12
+      - &alshaer
+        kind: literature
+        title: >-
+          Al-Shaer, L., Baumann, B. and Itzkowitz, M. (2025). Defense limitations of single parents
+          in the biparental convict cichlid fish: a field study. Hydrobiology 4(2), 14.
+        url: https://doi.org/10.3390/hydrobiology4020014
+        accessed: 2026-10-12
+      - *fb
+      - *crc
+      - *sf
+      - *wiki
+      - kind: website
+        title: "Clarke, M. (2007). The importance of using detailed names for cichlids. Practical Fishkeeping blog (archived copy)"
+        url: https://web.archive.org/web/20090416020611/http://www.practicalfishkeeping.co.uk/pfk/pages/blog.php?blogid=120
+        accessed: 2026-10-12
+      - kind: archive
+        title: cichlids.com forum thread 1356
+        url: https://www.cichlids.com/disc/read.php?1,1356
+      - kind: archive
+        title: cichlids.com forum thread 25556
+        url: https://www.cichlids.com/disc/read.php?1,25556
+    evidence:
+      - source: *cof
+        value: amatitlania-nigrofasciata-complex
+        note: all four valid; A. coatepeque and A. siquia treated as synonyms of A. nigrofasciata by some authors
+      - source: *zt1603
+        value: amatitlania-nigrofasciata-complex
+        note: describes the new species from populations formerly in A. nigrofasciata; no statement on crosses
+      - source: *pfk
+        value: amatitlania-nigrofasciata-complex
+        note: the convict split into four species; southern populations formerly A. nigrofasciata
+      - source: *alshaer
+        value: amatitlania-nigrofasciata-complex
+        note: A. siquia studied under the name convict cichlid
+      - source: *crc
+        value: amatitlania-nigrofasciata-complex
+        note: treats A. coatepeque and A. siquia as synonyms; verification
+      - source: *fb
+        value: null
+        note: separates A. kanna and A. siquia by subtle characters; no crosses reported
+      - source: *sf
+        value: null
+        note: no hybridisation mentioned
+    verification:
+      method: conservative
+      votes: {agree: 3, total: 5}
+
+  coloration:
+    value:
+      baseColors: [grey, black]
+      pattern: bars
+    confidence: high
+    rationale: >-
+      All files agree. The wild colour is grey to bluish grey with eight or nine broad black
+      vertical bars and a dark gill-cover spot (FishBase, Wikipedia); females show orange to pink
+      scales on the belly and a dark dorsal-fin spot. The pink aquarium form lacks most of the dark
+      pigment.
+    sources:
+      - *fb
+      - *sf
+      - *wiki
+    evidence:
+      - source: *sf
+        value: {baseColors: [grey, black], pattern: bars}
+        note: photographs and description of the sexual dichromatism
+      - source: *wiki
+        value: {baseColors: [grey, black], pattern: bars}
+
+  feedingSpeed:
+    value: hasty
+    confidence: low
+    rationale: >-
+      No source rates the feeding speed explicitly. Care sheets describe a greedy, unfussy feeder
+      that takes any food at once, and archive keepers report convicts competing hard for food,
+      although one report describes a convict losing food to a larger Jack Dempsey. Against slow
+      or calm tankmates it clears the food quickly, so hasty is the cautious value.
+    sources:
+      - *sf
+      - *aqf
+      - kind: archive
+        title: cichlids.com forum thread 19
+        url: https://www.cichlids.com/disc/read.php?1,19
+      - &mkhusb
+        kind: model-knowledge
+        title: "Model knowledge: general husbandry experience with the convict cichlid"
+    evidence:
+      - source: *sf
+        value: hasty
+        note: accepts most foods at once; speed not stated explicitly
+
+  minTank:
+    value: {volumeL: 120, lengthCm: 90, depthCm: 35}
+    confidence: medium
+    rationale: >-
+      For one adult pair Seriously Fish considers a base of 90 by 30 cm adequate, FishBase cites a
+      German minimum of 80 cm, Aqua-Fish.net names 30 US gallons (113 L), Aquarium-Ratgeber 100 cm
+      and 160 L and Fishkeeper 120 cm. Because the pair claims a large territory and breeds almost
+      continuously, a tank of 90 cm length, 35 cm depth and about 120 L is the minimum for a pair
+      alone; any tankmates need substantially more space.
+    sources:
+      - *sf
+      - *fb
+      - *aqf
+      - *rg
+      - *fk
+      - *ag
+    evidence:
+      - source: *sf
+        value: {volumeL: 100, lengthCm: 90, depthCm: 30}
+        note: base 90 x 30 cm for one pair; volume estimated
+      - source: *fb
+        value: {volumeL: 80, lengthCm: 80, depthCm: 30}
+        note: 80 cm minimum length; volume and depth not stated
+      - source: *aqf
+        value: {volumeL: 113, lengthCm: 76, depthCm: 30}
+        note: 30 US gallons for a pair; dimensions of a standard tank of that size
+      - source: *rg
+        value: {volumeL: 160, lengthCm: 100, depthCm: 40}
+        note: depth estimated
+      - source: *fk
+        value: {volumeL: 200, lengthCm: 120, depthCm: 40}
+        note: length stated, other dimensions assumed
+
+  lifespanYears:
+    value: {min: 8, max: 10}
+    confidence: medium
+    rationale: >-
+      Aqua-Fish.net gives up to 10 years or more, Aquarium Guide up to 11 years and Aquarium
+      Source 8 to 10 years. No age data from the wild were found. Eight to ten years is the typical
+      aquarium lifespan; single fish reach 11.
+    sources:
+      - *aqf
+      - *ag
+      - kind: website
+        title: "Aquarium Source: Convict Cichlid"
+        url: https://www.aquariumsource.com/convict-cichlid
+        accessed: 2026-10-12
+    evidence:
+      - source: *aqf
+        value: {min: 10, max: 10}
+        note: up to 10 years or more
+      - source: *ag
+        value: {min: 11, max: 11}
+        note: up to 11 years
+      - source:
+          kind: website
+          title: "Aquarium Source: Convict Cichlid"
+          url: https://www.aquariumsource.com/convict-cichlid
+          accessed: 2026-10-12
+        value: {min: 8, max: 10}
+
+  breeding:
+    value: cave-spawner
+    confidence: high
+    rationale: >-
+      All files agree. FishBase reports that eggs are laid on the cleaned surface of a stone,
+      preferably inside a dark cavity with one entrance; Seriously Fish describes spawning in caves
+      and flowerpots, Fishkeeper agrees and the Cichlid Room Companion lists substrate cave
+      breeding. Both parents guard eggs and young and move the larvae into dug pits.
+    sources:
+      - *fb
+      - *sf
+      - *fk
+      - *crc
+    evidence:
+      - source: *fb
+        value: cave-spawner
+        note: dark cavities preferred; eggs also on cleaned rocks
+      - source: *sf
+        value: cave-spawner
+      - source: *crc
+        value: cave-spawner
+        note: verification
+
+  beginnerSuitability:
+    value: easy
+    confidence: medium
+    rationale: >-
+      The species is hardy, undemanding about water and food and one of the easiest cichlids to
+      breed. Seriously Fish calls it a great beginner species in many ways and ideal for newcomers
+      to breeding, though its structured difficulty rating is moderate because of space,
+      temperament and tankmate choice; the Cichlid Room Companion classes it as a beginner species
+      and Aquarium-Ratgeber rates it easy in a species tank. Kept as a single pair in a species
+      tank, as this profile recommends, its care is easy; the beginner needs a plan for the many
+      young.
+    sources:
+      - *sf
+      - *crc
+      - *rg
+      - *fk
+      - kind: archive
+        title: cichlids.com forum thread 35073
+        url: https://www.cichlids.com/disc/read.php?1,35073
+    evidence:
+      - source: *sf
+        value: easy
+        note: great beginner species in many ways; structured difficulty rating moderate
+      - source: *crc
+        value: easy
+        note: verification
+      - source: *rg
+        value: easy
+        note: in a species tank
+
+partners:
+  suitable:
+    - species: Xiphophorus hellerii
+      reason: Fast, sturdy livebearer that stays in open water; adults are left alone, although their young are eaten.
+      condition: Exception to the recommended species tank; adult fish only, tank from 120 cm.
+    - species: Rocio octofasciata
+      reason: Sturdy Central American cichlid of similar temperament that holds its own against a breeding convict pair.
+      condition: Exception to the recommended species tank; at least 150 cm with separate cave zones.
+    - species: Hypsophrys nicaraguensis
+      reason: Sturdy Central American cichlid of comparable size that copes with the territorial pressure of convicts.
+      condition: Exception to the recommended species tank; at least 150 cm.
+    - species: Astyanax mexicanus
+      reason: Fast, tough characin of the upper water layers that serves as a dither fish for Central American cichlids.
+      condition: Exception to the recommended species tank; group of six or more adults, tank from 120 cm.
+  unsuitable:
+    - species: Amatitlania siquia
+      reason: Closest relative, formerly the same species and traded as the Honduran red point; crosses are expected and would mix both lines.
+    - species: Amatitlania kanna
+      reason: Close relative from Atlantic Panama and Costa Rica, formerly part of the convict cichlid; crosses are expected.
+    - species: Amatitlania coatepeque
+      reason: Lake form that some authors treat as the same species; crosses are expected.
+    - species: Paracheirodon innesi
+      reason: Small slender tetra that is harassed and eaten.
+    - species: Pterophyllum scalare
+      reason: Slow, tall-finned cichlid that is chased and nipped by a breeding pair.
+    - species: Symphysodon aequifasciatus
+      reason: Calm, slow feeder that needs soft, warm water and suffers under constant aggression.
+    - species: Parachromis managuensis
+      reason: Large piscivore that eats convicts.
+    - species: Ancistrus
+      reason: Bottom-dwelling catfish that compete for caves and are attacked by breeding convicts.
+
+profile:
+  overview:
+    text: >-
+      The convict cichlid is one of the best-known cichlids in the hobby and has been kept and bred
+      for generations. It is a small, deep-bodied fish from northern Central America with bold
+      black bars on a grey body. Behind the modest size lies a strong personality: pairs form
+      quickly, breed almost without pause and defend their young against fish many times their
+      size. That makes it a rewarding fish for anyone who wants to watch parental care up close in
+      a species tank, and a poor choice for a peaceful community tank. The valid name is
+      Amatitlania nigrofasciata; older books list it as Cichlasoma nigrofasciatum or Archocentrus
+      nigrofasciatus, and the legacy catalog of cichlids.com held both names as separate entries.
+    sources:
+      - *cof
+      - *sf
+      - *fb
+  habitat:
+    text: >-
+      In the narrow sense used here the species lives on the Pacific slope of El Salvador and
+      Guatemala and on the Atlantic slope of Guatemala and Honduras; the populations further south
+      belong to A. siquia and A. kanna, and the fish of Lake Coatepeque to A. coatepeque. The type
+      locality is Lake Amatitlán in the Guatemalan highlands, but most populations live in streams
+      and rivers. There the fish stay in shallow water with loose rocks, crevices, roots and fallen
+      branches, avoid open water and retreat into rock cover during floods. Field measurements in
+      El Salvador show warm water of about 26 to 28 C, a pH that is often slightly acidic and a
+      moderate mineral content, while Lake Amatitlán is cooler, harder and alkaline. The hardness
+      of the habitat waters has not been measured directly.
+    sources:
+      - *fb
+      - *carasucia
+      - *acahuapa
+      - *amdiv
+      - *rodas
+  sizeAndGrowth:
+    text: >-
+      Males usually reach 12 to 13 cm total length in the aquarium and females 8 to 10 cm;
+      exceptional males grow to about 15 cm. Juveniles grow fast and often become sexually mature
+      within a few months, while still well below full size. Older males develop longer, pointed
+      dorsal and anal fins and may form a small fatty bump on the forehead. Females stay noticeably
+      smaller and rounder. With good care the species lives about eight to ten years.
+    sources:
+      - *fb
+      - *sf
+      - *aqf
+      - *ag
+      - *wikide
+  husbandry:
+    text: >-
+      A single pair needs a tank of at least 90 cm length and about 120 litres, and a species tank
+      is the recommended setup. Build several caves from rocks, roots or clay pots laid on their
+      side, and use a sand or fine gravel bottom, because the fish dig pits to park their young.
+      Plants are often uprooted, so choose tough species attached to wood or rock. The species
+      adapts to most tap water: soft to hard (about 4 to 25 dGH), with a pH of 6.0 to 8.5 and 20 to
+      30 C; 24 to 27 C suits everyday keeping, the warmer end triggers breeding. Strong filtration
+      and regular large water changes keep the heavy feeders and their broods healthy.
+    sources:
+      - *sf
+      - *aqf
+      - *rg
+      - *fb
+      - *fk
+  socialBehavior:
+    text: >-
+      Convicts live in monogamous pairs. Once a pair has formed, both partners defend their cave
+      and the surrounding area against any other fish, and because they spawn so often this
+      defence is almost permanent. Other adults of the species are chased hard; in a small tank
+      the weaker fish are injured or killed, so surplus fish should be moved once a pair has
+      settled. Towards other species they are just as bold and attack fish far larger than
+      themselves. Only in large tanks with visual barriers do they share space with sturdy Central
+      American cichlids.
+    sources:
+      - *sf
+      - *rg
+      - *aqf
+      - *fk
+  diet:
+    text: >-
+      In the wild the species eats mostly aquatic insect larvae, along with worms, small
+      crustaceans, algae, plant debris and occasionally small fish. In the aquarium it accepts
+      practically everything: cichlid pellets and flakes, frozen foods such as mysis and brine
+      shrimp, and vegetable foods such as blanched peas or spinach. A varied diet with a plant
+      share keeps the fish in good condition, and one-sided feeding with red mosquito larvae alone
+      is best avoided. Fry are easy to raise on newly hatched brine shrimp and crushed flakes.
+    sources:
+      - *trujillo
+      - *fb
+      - *sf
+      - *aqf
+      - *rg
+  breeding:
+    text: >-
+      Breeding is easy and often happens without any help. A pair cleans the inside of a cave or a
+      stone, and the female attaches up to about 300 eggs, fewer in young fish. She tends the
+      clutch while the male guards the territory. The larvae hatch after three to four days and are
+      moved into pits in the substrate, then swim free after about another week. Both parents lead
+      the school of fry for several weeks and defend it fiercely. Plan ahead for the young: pairs
+      may spawn every month, and shops often refuse convict fry because supply far exceeds demand.
+    sources:
+      - *sf
+      - *fb
+      - *aqf
+      - *wikide
+  sexing:
+    text: >-
+      Adult males are larger, have a steeper forehead that may carry a fatty bump, and grow longer,
+      pointed dorsal and anal fins. Females remain smaller and show orange to pinkish scales on the
+      lower flank and belly, which brighten before spawning, as well as a dark spot in the dorsal
+      fin. In the pink form the orange belly patch of the female is visible as well. Unusually among
+      cichlids, the female is the more colourful sex.
+    sources:
+      - *sf
+      - *wiki
+      - *aqf
+  compatibility:
+    text: >-
+      This is no community fish, and the hobby recommends a species tank with one pair. As an
+      exception for experienced keepers, convicts can share tanks of 150 cm or more with other
+      sturdy Central American cichlids of similar or larger size and with fast, tough fish of the
+      upper water layers such as adult swordtails. Avoid small or slender fish that fit into the
+      mouth, slow and long-finned species such as angelfish, bottom-dwelling catfish that compete
+      for caves, and large predatory cichlids that would eat the convicts. Never keep them with
+      their closest relatives A. siquia (the Honduran red point), A. kanna or A. coatepeque: these
+      formed one species until 2007 and are expected to cross.
+    sources:
+      - *sf
+      - *fk
+      - *aqf
+      - *rg
+      - *cof
+      - *pfk
+  problems:
+    text: >-
+      The most common mistake is placing convicts in a community tank because they are sold small
+      and cheap; once a pair forms, tankmates are injured or killed. A second problem is the
+      endless stream of fry: unwanted young must never be released into the wild, where the species
+      has become invasive in many countries. Overcrowded tanks with constant breeding lead to poor
+      water quality and stress. Overfeeding fouls the water quickly, so feed moderately and include
+      plant matter. Fights between rivals cause torn fins and wounds that may become infected in
+      dirty water.
+    sources:
+      - *sf
+      - *fb
+      - *trujillo
+      - kind: archive
+        title: cichlids.com forum thread 942
+        url: https://www.cichlids.com/disc/read.php?1,942
+      - kind: archive
+        title: cichlids.com forum thread 8075
+        url: https://www.cichlids.com/disc/read.php?1,8075
+
+provenance:
+  runs:
+    - role: generator
+      model: claude-opus-5-5
+      date: 2026-10-12
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-12
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-12
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-12
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-12
+    - role: adjudicator
+      model: claude-opus-5-5
+      date: 2026-10-12
+  disagreements:
+    - field: taxonomy.synonyms
+      proposals:
+        - {by: generator, value: [Heros nigrofasciatus, Cichlasoma nigrofasciatum, Cichlosoma nigrofasciatum, Archocentrus nigrofasciatus, Cryptoheros nigrofasciatus]}
+        - {by: checker-a, value: [Heros nigrofasciatus, Cichlasoma nigrofasciatum, Archocentrus nigrofasciatus, Cryptoheros nigrofasciatus]}
+        - {by: checker-b, value: [Heros nigrofasciatus, Cichlasoma nigrofasciatum, Archocentrus nigrofasciatus, Cryptoheros nigrofasciatus, Amatitlania coatepeque, Amatitlania siquia]}
+      decision: [Heros nigrofasciatus, Cichlasoma nigrofasciatum, Cichlosoma nigrofasciatum, Archocentrus nigrofasciatus, Cryptoheros nigrofasciatus]
+      rationale: >-
+        Checker-b followed the broad species concept of Artigas Azas (2021) and listed A.
+        coatepeque and A. siquia as synonyms. The Catalog of Fishes lists both as valid species,
+        and the profile uses the narrow concept; the synonymy debate is explained in the taxonomy
+        note. The misspelt combination listed by FishBase is kept.
+    - field: features.origin.value.region
+      proposals:
+        - {by: generator, value: "Pacific slope of El Salvador and Guatemala, Atlantic slope of Guatemala and Honduras"}
+        - {by: checker-a, value: "Pacific slope of Guatemala and El Salvador, Atlantic slope of Guatemala and Honduras"}
+        - {by: checker-b, value: "Pacific and Atlantic slopes from Guatemala to Panama (broad concept), type locality Lake Amatitlán"}
+      decision: "Pacific slope of El Salvador and Guatemala, Atlantic slope of Guatemala and Honduras"
+      rationale: >-
+        The narrow concept of the Catalog of Fishes and FishBase restricts the range to northern
+        Central America; the Costa Rican locality of checker-b belongs to A. siquia.
+    - field: features.temperatureC
+      proposals:
+        - {by: generator, value: {min: 20, max: 29}}
+        - {by: checker-a, value: {min: 22, max: 31}}
+        - {by: checker-b, value: {min: 24, max: 29}}
+        - {by: tiebreaker-1, value: {min: 21, max: 30}}
+        - {by: tiebreaker-2, value: {min: 26, max: 29}}
+      decision: {min: 26, max: 29}
+      rationale: >-
+        Decided by the vote count with method conservative (3 of 5 agree): the intersection of all
+        proposals. The measured habitat range of the sources is about 20 to 31 C; the tolerance
+        covers the cooler lake water.
+    - field: features.temperatureC.tolerance
+      proposals:
+        - {by: generator, value: {min: 20, max: 29}}
+        - {by: checker-a, value: {min: 20, max: 31}}
+        - {by: checker-b, value: {min: 22, max: 30}}
+        - {by: tiebreaker-1, value: {min: 20, max: 30}}
+        - {by: tiebreaker-2, value: {min: 20, max: 30}}
+      decision: {min: 20, max: 30}
+      rationale: Decided by the vote count with method qualified-majority (4 of 5 agree), median of the agreeing bounds.
+    - field: features.ph
+      proposals:
+        - {by: generator, value: {min: 6.2, max: 8.7}}
+        - {by: checker-a, value: {min: 6.2, max: 8.5}}
+        - {by: checker-b, value: {min: 6.2, max: 8.0}}
+        - {by: tiebreaker-1, value: {min: 6.2, max: 9.0}}
+        - {by: tiebreaker-2, value: {min: 6.2, max: 8.0}}
+      decision: {min: 6.2, max: 8.0}
+      rationale: >-
+        Decided by the vote count with method conservative (3 of 5 agree): the intersection of all
+        proposals. The votes differed on whether the eutrophic Lake Amatitlán values above 8
+        describe the natural habitat.
+    - field: features.ghDgh
+      proposals:
+        - {by: generator, value: {min: 4, max: 20}}
+        - {by: checker-a, value: {min: 9, max: 20}}
+        - {by: checker-b, value: {min: 4, max: 10}}
+        - {by: tiebreaker-1, value: {min: 3, max: 10}}
+        - {by: tiebreaker-2, value: {min: 3, max: 10}}
+      decision: {min: 9, max: 10}
+      rationale: >-
+        Decided by the vote count with method conservative (3 of 5 agree): the intersection of all
+        proposals, which is much narrower than the measured and estimated range of the sources,
+        about 3 to 20 dGH.
+    - field: features.ghDgh.tolerance
+      proposals:
+        - {by: generator, value: {min: 4, max: 25}}
+        - {by: checker-a, value: {min: 5, max: 25}}
+        - {by: checker-b, value: {min: 4, max: 20}}
+        - {by: tiebreaker-1, value: {min: 3, max: 25}}
+        - {by: tiebreaker-2, value: {min: 3, max: 25}}
+      decision: {min: 4, max: 25}
+      rationale: Decided by the vote count with method qualified-majority (4 of 5 agree), median of the agreeing bounds.
+    - field: features.khDkh
+      proposals:
+        - {by: generator, value: {min: 3, max: 12}}
+        - {by: checker-a, value: {min: 3, max: 12}}
+        - {by: checker-b, value: {min: 3.5, max: 4.3}}
+        - {by: tiebreaker-1, value: {min: 4, max: 14}}
+        - {by: tiebreaker-2, value: {min: 3.5, max: 4.5}}
+      decision: {min: 4, max: 4}
+      rationale: >-
+        Decided by the vote count with method conservative (3 of 5 agree): the intersection of all
+        proposals, 4 to 4.3, rounded to 4 dKH. It is much narrower than the measured and estimated
+        range of the sources, about 3 to 14 dKH.
+    - field: features.khDkh.tolerance
+      proposals:
+        - {by: generator, value: {min: 3, max: 20}}
+        - {by: checker-a, value: {min: 3, max: 20}}
+        - {by: checker-b, value: {min: 2, max: 15}}
+        - {by: tiebreaker-1, value: {min: 3, max: 20}}
+        - {by: tiebreaker-2, value: {min: 3, max: 15}}
+      decision: {min: 3, max: 15}
+      rationale: >-
+        Decided by the vote count with method conservative (3 of 5 agree): the intersection of all
+        proposals, which contains the natural value.
+    - field: features.speciesOnly
+      proposals:
+        - {by: generator, value: false}
+        - {by: checker-a, value: false}
+        - {by: checker-b, value: true}
+        - {by: tiebreaker-1, value: false}
+        - {by: tiebreaker-2, value: true}
+      decision: true
+      rationale: >-
+        Decided by the vote count with method conservative (3 of 5 agree on false, one short of a
+        qualified majority): true because two votes say true. Seriously Fish and Fishkeeper
+        recommend a species tank.
+    - field: features.hybridGroup
+      proposals:
+        - {by: generator, value: amatitlania-nigrofasciata-complex}
+        - {by: checker-a, value: null}
+        - {by: checker-b, value: null}
+        - {by: tiebreaker-1, value: amatitlania-nigrofasciata-complex}
+        - {by: tiebreaker-2, value: null}
+      decision: amatitlania-nigrofasciata-complex
+      rationale: >-
+        Decided by the vote count with method conservative (3 of 5 agree on null, one short of a
+        qualified majority): the most common named group. The group is added to
+        hybrid-groups.yaml with A. nigrofasciata, A. siquia, A. kanna and A. coatepeque; it rests
+        on the close relationship and the former single-species concept, and no cross is
+        documented.
+    - field: features.maxSizeCm
+      proposals:
+        - {by: generator, value: {male: 13, female: 9}}
+        - {by: checker-a, value: {male: 13, female: 9}}
+        - {by: checker-b, value: {male: 12, female: 8}}
+      decision: {male: 13, female: 9}
+      rationale: >-
+        FishBase's 10 cm SL converts to about 12.5 to 13 cm total length, and several care sheets
+        give 13 cm or more for males; 12 cm is the lower end of typical adult males.
+    - field: features.territory
+      proposals:
+        - {by: generator, value: {size: large, breedingOnly: false}}
+        - {by: checker-a, value: {size: large, breedingOnly: true}}
+        - {by: checker-b, value: {size: large, breedingOnly: true}}
+      decision: {size: large, breedingOnly: false}
+      rationale: >-
+        Settled aquarium pairs spawn again within weeks and guard each brood for four to six weeks,
+        so they hold the large brood territory most of the time; outside brood care they still
+        defend a cave. Marking the large territory as breeding-only would understate the conflict
+        with tankmates.
+    - field: features.feedingSpeed
+      proposals:
+        - {by: generator, value: hasty}
+        - {by: checker-a, value: hasty}
+        - {by: checker-b, value: normal}
+      decision: hasty
+      rationale: >-
+        Care sheets and archive keepers describe a greedy feeder that takes food at once; no source
+        supports a normal pace, and hasty is the cautious value for slow tankmates.
+    - field: features.minTank
+      proposals:
+        - {by: generator, value: {volumeL: 120, lengthCm: 90, depthCm: 40}}
+        - {by: checker-a, value: {volumeL: 120, lengthCm: 90, depthCm: 35}}
+        - {by: checker-b, value: {volumeL: 120, lengthCm: 100, depthCm: 35}}
+      decision: {volumeL: 120, lengthCm: 90, depthCm: 35}
+      rationale: >-
+        Seriously Fish's 90 by 30 cm base and the German minimum of 80 cm support 90 cm for a pair
+        alone; 35 cm depth with about 120 L is the middle of the proposals. Tankmates need more.
+    - field: features.lifespanYears
+      proposals:
+        - {by: generator, value: {min: 8, max: 10}}
+        - {by: checker-a, value: {min: 8, max: 11}}
+        - {by: checker-b, value: {min: 8, max: 10}}
+      decision: {min: 8, max: 10}
+      rationale: >-
+        Most sources give up to about 10 years; the 11 years of Aquarium Guide is a single upper
+        value and is named in the rationale.
+    - field: features.beginnerSuitability
+      proposals:
+        - {by: generator, value: moderate}
+        - {by: checker-a, value: easy}
+        - {by: checker-b, value: easy}
+      decision: easy
+      rationale: >-
+        Seriously Fish praises it as a beginner species in many ways but rates it moderate for its
+        temperament; the Cichlid Room Companion and Aquarium-Ratgeber rate it easy. With the
+        species tank that the profile recommends, its care is easy.
