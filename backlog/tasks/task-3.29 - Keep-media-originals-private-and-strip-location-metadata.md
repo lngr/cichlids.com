@@ -4,7 +4,7 @@ title: Keep media originals private and strip location metadata
 status: To Do
 assignee: []
 created_date: '2026-10-12 04:48'
-updated_date: '2026-10-12 06:41'
+updated_date: '2026-10-12 07:07'
 labels: []
 dependencies: []
 references:
@@ -240,7 +240,7 @@ Each step is one conventional commit: red test first, then the production change
 - **AC2 (stored original has no GPS, serial or owner tags but keeps date, orientation, colour profile)**
   - Automated: steps 5 and 6.
   - Operator:
-    - docker run --rm --network host -e AWS_ACCESS_KEY_ID=cichlids -e AWS_SECRET_ACCESS_KEY=cichlids-dev-secret -v "$PWD:/w" amazon/aws-cli --endpoint-url http://127.0.0.1:9000 s3 cp s3://cichlids-media/KEY /w/original.jpg
+    - docker run --rm --network host -e AWS_ACCESS_KEY_ID="$RUSTFS_ACCESS" -e AWS_SECRET_ACCESS_KEY="$RUSTFS_SECRET" -v "$PWD:/w" amazon/aws-cli --endpoint-url http://127.0.0.1:9000 s3 cp s3://cichlids-media/KEY /w/original.jpg (RUSTFS_ACCESS and RUSTFS_SECRET hold the RustFS keys from app/stack/compose.yaml.)
     - exiftool -a -G1 -s original.jpg | grep -Ei 'gps|serial|owner' prints nothing.
     - exiftool -DateTimeOriginal -Orientation -ICC_Profile:ProfileDescription -Model original.jpg prints all four.
 - **AC3 (migrated legacy original loses its GPS tags)**

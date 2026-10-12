@@ -6,7 +6,7 @@ title: >-
 status: To Do
 assignee: []
 created_date: '2026-10-12 04:48'
-updated_date: '2026-10-12 06:41'
+updated_date: '2026-10-12 07:07'
 labels: []
 dependencies: []
 references:
@@ -153,7 +153,7 @@ Size: M/L, about 4 to 4.5 days in 7 commits, plus one operator session on the de
 - AC #2:
   - Automated: the atomic full run on an isolated database passes with 0 mismatches.
   - Dev stack: `app/stack/bootstrap.sh` exits 0. The import summary shows about 12,050 created and about 6,447 profile links. The final `etl verify` shows 0 mismatches.
-  - Media survives the reset: the object count from `docker run --rm --network host -e AWS_ACCESS_KEY_ID=cichlids -e AWS_SECRET_ACCESS_KEY=cichlids-dev-secret amazon/aws-cli --endpoint-url http://127.0.0.1:9000 s3 ls s3://cichlids-media --recursive --summarize` is the same before and after.
+  - Media survives the reset: the object count from `docker run --rm --network host -e AWS_ACCESS_KEY_ID="$RUSTFS_ACCESS" -e AWS_SECRET_ACCESS_KEY="$RUSTFS_SECRET" amazon/aws-cli --endpoint-url http://127.0.0.1:9000 s3 ls s3://cichlids-media --recursive --summarize` is the same before and after. (RUSTFS_ACCESS and RUSTFS_SECRET hold the RustFS keys from app/stack/compose.yaml.)
 - AC #3:
   - Automated: `ResetPolicyTests` and `ResetCommandTests` pass.
   - Dev stack: `DOTNET_ENVIRONMENT=Production ... -- reset` exits 1 with the refusal, and so does a run with the variable unset. Row counts and Keycloak user counts are unchanged.
