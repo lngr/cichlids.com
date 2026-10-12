@@ -30,6 +30,10 @@ public class OutboxEvent
     /// </summary>
     public int AttemptCount { get; set; }
 
+    /// <summary>
+    /// The errors of the last failed attempt; null before the first failure, once the event is
+    /// dispatched and after an administrator redelivery.
+    /// </summary>
     public string? LastError { get; set; }
 
     /// <summary>
@@ -39,7 +43,8 @@ public class OutboxEvent
     public DateTimeOffset NextAttemptAt { get; set; }
 
     /// <summary>
-    /// When the last failed delivery attempt happened; null before the first failure.
+    /// When the last delivery attempt happened, the successful one for a dispatched event; null
+    /// before the first attempt.
     /// </summary>
     public DateTimeOffset? LastAttemptAt { get; set; }
 

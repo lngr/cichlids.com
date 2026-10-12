@@ -257,6 +257,8 @@ public sealed class OutboxDispatchService(
             updated = await stillReserved.ExecuteUpdateAsync(
                 s => s
                     .SetProperty(e => e.DispatchedAt, now)
+                    .SetProperty(e => e.LastAttemptAt, now)
+                    .SetProperty(e => e.LastError, (string?)null)
                     .SetProperty(e => e.AcknowledgedSubscriptionIds, acknowledged),
                 cancellationToken);
         }

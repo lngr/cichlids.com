@@ -107,6 +107,8 @@ public class OutboxDispatchServiceTests(OutboxDispatchFixture fixture) : IAsyncL
                 e => e.EventType == "comment.created" && e.AggregateId == postId.ToString());
             Assert.NotNull(afterRetry.DispatchedAt);
             Assert.Equal(1, afterRetry.AttemptCount);
+            Assert.Null(afterRetry.LastError);
+            Assert.Equal(afterRetry.DispatchedAt, afterRetry.LastAttemptAt);
         }
 
         Assert.Equal(2, listener.Requests.Count);
