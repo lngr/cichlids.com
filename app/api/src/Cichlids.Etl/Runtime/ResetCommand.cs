@@ -4,8 +4,9 @@ namespace Cichlids.Etl.Runtime;
 
 /// <summary>
 /// The "reset" command: returns the target database and the Keycloak realm to the state a first
-/// run starts from. It empties and migrates the database, deletes every realm user without the
-/// realm role admin and disallows self-registration. Before it drops anything it gets a Keycloak
+/// run starts from. It empties and migrates the database, deletes every realm user who does not
+/// hold the realm role admin directly and disallows self-registration. A user who has admin only
+/// through a group or a composite role is deleted. Before it drops anything it gets a Keycloak
 /// admin token and reads the realm, so an unreachable Keycloak leaves the database as it is. A
 /// missing realm counts as a realm without users. The object store is out of its reach, so media
 /// objects stay. Runs only where the reset policy allows it.
@@ -66,9 +67,10 @@ public static class ResetCommand
         var toDelete = (await client.ListUserIdsAsync(cancellationToken)).Where(id => !kept.Contains(id)).ToList();
 
         Console.WriteLine($"Deleting {toDelete.Count} user(s) of realm '{keycloak.Realm}'; keeping {kept.Count} with the realm role {KeptRealmRole}...");
-        await client.DeleteUsersAsync(toDelete, DeleteParallelism, cancellationToken);
+        var removed = await client.DeleteUsersAsync(toDelete, DeleteParallelism, cancellationToken);
         await client.CloseRegistrationAsync(cancellationToken);
-        Console.WriteLine("Realm users deleted and self-registration closed.");
+        Console.WriteLine(
+            $"Removed {removed} realm user(s) (deleted, or already gone) and closed self-registration.");
 
         return 0;
     }
