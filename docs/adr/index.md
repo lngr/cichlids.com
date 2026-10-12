@@ -69,4 +69,5 @@ by hand. Run that script (or its `--check` mode in CI) after adding or changing 
 | [0022](0022-legacy-account-import-into-keycloak.md) | Legacy Account Import into Keycloak | Accepted |
 | [0023](0023-identity-model-user-logins-and-public-handle.md) | Identity Model: User, Logins and Public Handle | Accepted |
 | [0024](0024-webhook-delivery-boundary-and-redelivery.md) | Webhook Delivery Boundary and Redelivery | Accepted |
+| [0025](0025-keycloak-realm-configuration-per-environment.md) | Keycloak Realm Configuration per Environment | Accepted |
 <!-- END ADR LIST -->
