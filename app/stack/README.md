@@ -171,8 +171,9 @@ The app logs in through the public client `cichlids-app` (authorization code wit
 redirect URIs cover the web app on any localhost port and the native app scheme `cichlids://`;
 its web origins list the dev Expo web server (`http://localhost:8081`) and the write E2E stack
 (`http://localhost:8082`), since the web app calls the token endpoint cross-origin and Keycloak
-matches web origins exactly. `bootstrap.sh` skips an existing realm; an existing realm gets these
-client settings with:
+matches web origins exactly. `bootstrap.sh` imports the realm fresh from its file on every run. A
+realm kept outside `bootstrap.sh` (an older volume started with `docker compose up -d`, for
+instance) gets these client settings with:
 
 ```sh
 docker compose -f app/stack/compose.yaml exec -T keycloak sh -c '

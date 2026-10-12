@@ -74,6 +74,18 @@ jobs:
       - name: Check the staging and production realm files
         run: python3 tools/check-keycloak-realm.py
 
+  # Story: task-3.30
+  stack-bootstrap:
+    name: Local stack bootstrap script
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.x"
+      - name: Postgres wait and legacy stack default of bootstrap.sh
+        run: python3 app/stack/bootstrap_test.py
+
   infra-validate:
     name: OpenTofu tiers validate
     runs-on: ubuntu-latest

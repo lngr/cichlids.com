@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 # Starts Postgres, RustFS and Keycloak from compose.yaml and waits until each one answers. Needs
-# no legacy data. With --wait-realm it also waits for the imported cichlids realm, which Keycloak
-# serves a few seconds after the master realm.
+# no legacy data. CICHLIDS_POSTGRES_WAIT_SECONDS (default 60) bounds the wait for Postgres; the
+# script fails when Postgres is not ready by then. With --wait-realm it also waits for the
+# imported cichlids realm, which Keycloak serves a few seconds after the master realm.
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 COMPOSE_FILE="$SCRIPT_DIR/compose.yaml"
 KEYCLOAK_URL="${KEYCLOAK_URL:-http://localhost:8180}"
+CICHLIDS_POSTGRES_WAIT_SECONDS="${CICHLIDS_POSTGRES_WAIT_SECONDS:-60}"
 
 wait_realm=false
 case "${1:-}" in
@@ -47,7 +49,7 @@ docker compose -f "$COMPOSE_FILE" up -d postgres rustfs keycloak
 
 echo "Waiting for Postgres..."
 postgres_ready=false
-for ((i = 0; i < 60; i++)); do
+for ((i = 0; i < CICHLIDS_POSTGRES_WAIT_SECONDS; i++)); do
   if docker compose -f "$COMPOSE_FILE" exec -T postgres pg_isready -U cichlids -d cichlids >/dev/null 2>&1; then
     postgres_ready=true
     break
@@ -55,7 +57,7 @@ for ((i = 0; i < 60; i++)); do
   sleep 1
 done
 if [ "$postgres_ready" != true ]; then
-  echo "Timed out waiting for Postgres." >&2
+  echo "Postgres did not become ready within ${CICHLIDS_POSTGRES_WAIT_SECONDS} seconds." >&2
   exit 1
 fi
 echo "Postgres is up."
