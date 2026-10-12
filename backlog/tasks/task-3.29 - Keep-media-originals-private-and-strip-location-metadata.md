@@ -4,7 +4,7 @@ title: Keep media originals private and strip location metadata
 status: In Progress
 assignee: []
 created_date: '2026-10-12 04:48'
-updated_date: '2026-10-12 09:01'
+updated_date: '2026-10-12 12:01'
 labels: []
 dependencies: []
 references:
@@ -24,12 +24,12 @@ Originals are never publicly readable; the bucket policy exposes variants and fo
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Given an uploaded phone photo with GPS tags, When the operator requests its original object URL without credentials, Then the object store refuses the request
-- [ ] #2 Given that photo, When the operator downloads the stored original with operator credentials and inspects it with exiftool, Then GPS, serial number and owner tags are absent while capture date, orientation and colour profile are present
+- [x] #1 Given an uploaded phone photo with GPS tags, When the operator requests its original object URL without credentials, Then the object store refuses the request
+- [x] #2 Given that photo, When the operator downloads the stored original with operator credentials and inspects it with exiftool, Then GPS, serial number and owner tags are absent while capture date, orientation and colour profile are present
 - [ ] #3 Given a migrated legacy original that had GPS tags in the backup, When the operator inspects the stored object after the seed, Then the GPS tags are absent
 - [ ] #4 Given a Display P3 photo, When the operator compares its medium variant with the original in a colour-managed viewer, Then the colours match and the variant carries no metadata
-- [ ] #5 Given an image file of a few kilobytes that declares 200000 x 200000 pixels, When it is uploaded or passed to the media seed, Then it is rejected and the process memory stays bounded
-- [ ] #6 Given one of the undecodable legacy pictures, When the app shows it, Then the image loads from a public sanitized copy
+- [x] #5 Given an image file of a few kilobytes that declares 200000 x 200000 pixels, When it is uploaded or passed to the media seed, Then it is rejected and the process memory stays bounded
+- [x] #6 Given one of the undecodable legacy pictures, When the app shows it, Then the image loads from a public sanitized copy
 <!-- AC:END -->
 
 ## Definition of Done
@@ -272,3 +272,50 @@ Each step is one conventional commit: red test first, then the production change
 - **Video originals:** about 30 legacy videos are stored privately and not delivered; their location atoms stay untouched. Stripping video metadata belongs to the ADR-0012 pipeline.
 - **Breaking API change:** ImageUrlsDto.Original is removed. The only client use was the draft fallback, and the app is not released.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### What the task delivers
+
+- **Private originals:** the bucket policy lets anonymous clients read `variants/` and `forum_attachments/` only (`MediaStorageKeys.PublicPrefixes`). The ETL, the test fixtures and `app/mobile/e2e/bucket-tool.cs` apply the same policy. RustFS 1.0.0-beta.8 honours prefixed policy resources.
+- **No original URLs in the API:** `ImageUrlsDto` has `thumb`, `small`, `medium` and `large`. `MediaUrlBuilder` resolves only keys under the public prefixes and throws for any other key. The profile image resolves to its largest variant. An item that has only a public copy resolves all four sizes to the copy. Avatars resolve through the same builder to the avatar photo's thumbnail, otherwise its public copy, otherwise the external avatar. The OpenAPI document and the generated client are regenerated; the draft helpers return null without a variant and the app shows its placeholder.
+- **Streamed downloads:** `S3ObjectStore.GetAsync` streams the object and enforces `ObjectStorage:MaxDownloadBytes` (default 64 MiB) through Content-Length and a capped read stream.
+- **Image component:** `ImageProcessor.Process` accepts JPEG, PNG, WebP, GIF and TIFF (every other libvips loader is blocked process-wide), checks the declared size before any decode (100 megapixels, 65535 pixels per side, long side at most 100 times the short side), decodes once for all variants, converts to sRGB and writes variants without metadata. Very tall photos are fitted into four times the variant width.
+- **Sanitized originals:** `MediaMetadataSanitizer` filters JPEG, PNG, WebP and GIF containers losslessly and re-encodes TIFF with identical pixels. GPS, serial numbers, owner names, maker notes, XMP, IPTC, comments and data after the image end are removed; capture date, orientation, colour profile, make, model, artist and copyright stay. BMP and other bytes pass unchanged; a TIFF that does not decode is refused.
+- **Uploads** store the sanitized original with the object metadata contract (sha256 of the stored bytes, source-sha256, pipeline, width, height, decodable); `media_item.byte_size` and `checksum_sha256` describe the stored bytes.
+- **Forum step:** image attachments are sanitized before they are stored, other files are stored byte for byte, and an image whose metadata cannot be removed is not stored (an earlier copy is deleted, skip reason `attachment_unsanitizable`). The media seed keeps the legacy source checksum of a stored attachment and rewrites attachments with sanitized bytes only.
+- **Media seed:** every original is stored sanitized. A source over `MaxDownloadBytes`, beyond the image size limits (BMP headers included) or a TIFF whose metadata cannot be removed is rejected: nothing is uploaded, an original stored under its key by an earlier pipeline version is deleted, and the summary and the `--missing-out` report (`rejected`) list it.
+- **Public copies:** an undecodable legacy picture in a format browsers render (JPEG, PNG, GIF, WebP, BMP, recognised by `BrowserImageSniffer`) records the size its header declares on its original and gets `variants/copy/{originalKey}` with the sniffed content type, the variant pipeline metadata plus width and height, and a `media_variant` row with label `copy`. Empty files and non-images record no size and get no copy, so a repeated run does no copy work for them. Forum attachments are public themselves and get no copy. The report lists every undecodable original under `broken` and those with a public copy also under `copies`.
+- **Pipeline versions:** `MediaObjectMetadata.OriginalPipelineVersion` and `VariantPipelineVersion` are 2.
+- **Docs:** ADR-0009 (private originals, serving store contents), `app/stack/README.md` (policy, operator download, exiftool, report), PROJECT-STATUS.md (the 934 undecodable files), exiftool in the dev container.
+
+### Operator notes
+
+- The next normal dev seed (`etl media`) re-uploads every original sanitized and regenerates every variant, about the full seed time (about 94 minutes, 283 GB).
+- No seed may run against the Hetzner buckets before this task is merged: the versioned, Object Lock protected master would keep unsanitized originals as noncurrent versions.
+- Production copies only variants, forum attachments and public copies to the serving store (ADR-0009, TASK-2.4).
+
+### Operator checks
+
+`RUSTFS_ACCESS` and `RUSTFS_SECRET` hold the RustFS keys from `app/stack/compose.yaml`.
+
+- **AC1:** get the newest upload key with `docker compose -f app/stack/compose.yaml exec postgres psql -U cichlids -d cichlids -c "select storage_key from media_item where storage_key like 'originals/uploads/%' order by id desc limit 1"`. `curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:9000/cichlids-media/KEY` gives 403; `variants/medium/KEY.jpg` gives 200.
+- **AC2:** `docker run --rm --network host -e AWS_ACCESS_KEY_ID="$RUSTFS_ACCESS" -e AWS_SECRET_ACCESS_KEY="$RUSTFS_SECRET" -v "$PWD:/w" amazon/aws-cli --endpoint-url http://127.0.0.1:9000 s3 cp s3://cichlids-media/KEY /w/original.jpg`, then `exiftool -a -G1 -s original.jpg | grep -Ei 'gps|serial|owner'` prints nothing and `exiftool -DateTimeOriginal -Orientation -ICC_Profile:ProfileDescription -Model original.jpg` prints all four.
+- **AC3:** `exiftool -if '$GPSLatitude' -p '$Directory/$FileName' -r /workspaces/legacy-data/images/userpics/user_pics | head -1`, map the path to `media_item.storage_key` (`originals/` plus the normalised legacy path), and after a normal seed run download and inspect it as for AC2: no GPS.
+- **AC4:** upload a Display P3 phone photo and compare the original with the medium variant in a colour-managed viewer (Safari, macOS Preview, or Firefox with full colour management). `exiftool -a -G1` on the variant lists no EXIF, ICC or XMP groups.
+- **AC5:** `curl -F 'file=@bomb.png;type=image/png'` with a bearer token against `/api/uploads` returns 400 and the API RSS stays flat.
+- **AC6:** run the seed with `--missing-out report.json`, take an entry under `copies` (`mediaItemId`), open its picture in the app; the image loads from `/variants/copy/`.
+
+### Acceptance criteria status
+
+- Checked by automated tests: #1 (UploadsEndpointsTests anonymous GET 403 on the original and 200 on the variant, S3ObjectStoreTests, media-privacy.write.mjs), #2 (UploadsEndpointsTests with MetadataExtractor as the independent reader), #5 (ImageProcessorTests pixel bomb within 1 s and 1 MiB libvips growth, UploadsEndpointsTests 400, MediaSeedCommandTests rejection with nothing uploaded for 200000 x 200000 and 1 x 50000000), #6 (media-privacy.write.mjs loads the copy-only picture from `/variants/copy/`).
+- Open: #3 needs the real legacy originals in the dev bucket, which the next dev seed produces after the merge (MediaSeedCommandTests covers the mechanism with a synthetic GPS JPEG); #4 needs the colour-managed viewer comparison.
+
+### Tests
+
+- `app/api/tests/Cichlids.Infrastructure.Tests`: S3ObjectStoreTests.cs, CappedReadStreamTests.cs, ImageProcessorTests.cs, MediaMetadataSanitizerTests.cs, ExifScrubberRobustnessTests.cs, BrowserImageSnifferTests.cs, MediaStorageKeysTests.cs, MediaObjectMetadataTests.cs
+- `app/api/tests/Cichlids.Api.Tests`: Features/Uploads/UploadsEndpointsTests.cs, Features/Media/PublicResponsesExposeNoOriginalsTests.cs, Features/Media/MediaUrlBuilderTests.cs
+- `app/api/tests/Cichlids.Etl.Tests`: ForumMigrationStepTests.cs, MediaSeedCommandTests.cs
+- E2E: `app/mobile/e2e/playwright/media-privacy.write.mjs` through `pnpm --dir app/mobile run e2e:write`
+<!-- SECTION:NOTES:END -->
