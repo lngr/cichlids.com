@@ -1,10 +1,10 @@
 ---
 id: TASK-3.32
 title: Compute every ETL verification expectation from the legacy source only
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-10-12 04:48'
-updated_date: '2026-10-12 08:43'
+updated_date: '2026-10-12 08:44'
 labels: []
 dependencies: []
 references:
