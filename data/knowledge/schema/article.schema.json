@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cichlids.com/schema/article.schema.json",
+  "title": "Knowledge article frontmatter",
+  "description": "Frontmatter of a knowledge article under data/knowledge/articles. An article explains a topic beyond a single species; the body cites the sources with Markdown footnote references such as [^key]. Source and provenance shapes are those of data/species/schema/species-profile.schema.json, which must be registered with the validator under its $id.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "id",
+    "title",
+    "language",
+    "summary",
+    "topics",
+    "species",
+    "waterbodies",
+    "sources",
+    "provenance"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "id": {
+      "description": "Slug of the article; the file is named <id>.md.",
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "language": {
+      "const": "en"
+    },
+    "summary": {
+      "description": "One to three sentences.",
+      "type": "string",
+      "minLength": 1
+    },
+    "topics": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "species": {
+      "description": "Ids of the species profiles the article is about; may be empty.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+      },
+      "uniqueItems": true
+    },
+    "waterbodies": {
+      "description": "Ids of the entries of data/species/waterbodies.yaml the article is about; may be empty.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+      },
+      "uniqueItems": true
+    },
+    "sources": {
+      "description": "Sources by citation key; the body cites a key as [^key].",
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[a-z0-9-]+$"
+      },
+      "additionalProperties": {
+        "$ref": "https://cichlids.com/schema/species-profile.schema.json#/$defs/source"
+      }
+    },
+    "provenance": {
+      "$ref": "https://cichlids.com/schema/species-profile.schema.json#/$defs/provenance"
+    }
+  }
+}

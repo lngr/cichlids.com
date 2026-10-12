@@ -1,0 +1,1110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cichlids.com/schema/species-profile.schema.json",
+  "title": "Species profile",
+  "description": "One species of the catalog: taxonomy, compatibility features with source and confidence per value, and the written profile. Levels and values follow data/species/rubric.md.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "id",
+    "legacyIds",
+    "status",
+    "taxonomy",
+    "features",
+    "provenance"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "id": {
+      "description": "Slug of the valid name, such as tropheus-moorii.",
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "legacyIds": {
+      "description": "Ids of the legacy catalog entries that map to this species; several when the legacy catalog held synonyms as separate entries.",
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 1
+      },
+      "uniqueItems": true
+    },
+    "status": {
+      "description": "described: a valid species; undescribed: a trade name such as sp. 'Locality'; hybrid: a cross of species; domestic-form: a line bred in captivity such as Flowerhorn.",
+      "enum": [
+        "described",
+        "undescribed",
+        "hybrid",
+        "domestic-form"
+      ]
+    },
+    "taxonomy": {
+      "$ref": "#/$defs/taxonomy"
+    },
+    "names": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "trade": {
+          "description": "Trade and common names per language tag (en, de, es-419, pt-BR ...).",
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "variants": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "kind"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "locality",
+              "color-morph"
+            ]
+          },
+          "note": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "features": {
+      "$ref": "#/$defs/features"
+    },
+    "partners": {
+      "description": "Known good and bad tankmates with the reason; the bad ones also serve as domain test cases of the compatibility check.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "suitable": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/partner"
+          }
+        },
+        "unsuitable": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/partner"
+          }
+        }
+      }
+    },
+    "profile": {
+      "$ref": "#/$defs/profile"
+    },
+    "provenance": {
+      "$ref": "#/$defs/provenance"
+    }
+  },
+  "$defs": {
+    "confidence": {
+      "enum": [
+        "high",
+        "medium",
+        "low"
+      ]
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "title"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "catalog-of-fishes",
+            "literature",
+            "database",
+            "forum",
+            "archive",
+            "model-knowledge"
+          ]
+        },
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "accessed": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/source"
+      },
+      "minItems": 1
+    },
+    "evidence": {
+      "description": "What each source states about the value of a fact, converted to the unit and shape of the feature. The species page lists these per source when a value is uncertain.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "source",
+          "value"
+        ],
+        "properties": {
+          "source": {
+            "$ref": "#/$defs/source"
+          },
+          "value": {
+            "description": "The value this source states, in the unit and shape of the feature, such as {min: 24, max: 26} or a level."
+          },
+          "note": {
+            "description": "Short qualifier in own words, such as lake surface water or aquarium recommendation.",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "verification": {
+      "description": "How the value of a hard feature was verified automatically: unanimous or qualified agreement of independent agent votes, the most cautious value when the votes do not settle, or the measured values of a water body.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "method"
+      ],
+      "properties": {
+        "method": {
+          "enum": [
+            "unanimous",
+            "qualified-majority",
+            "conservative",
+            "waterbody"
+          ]
+        },
+        "votes": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "agree",
+            "total"
+          ],
+          "properties": {
+            "agree": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "total": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        },
+        "waterbody": {
+          "type": "string"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "method": {
+                "const": "waterbody"
+              }
+            },
+            "required": [
+              "method"
+            ]
+          },
+          "then": {
+            "required": [
+              "waterbody"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "method": {
+                "enum": [
+                  "unanimous",
+                  "qualified-majority",
+                  "conservative"
+                ]
+              }
+            },
+            "required": [
+              "method"
+            ]
+          },
+          "then": {
+            "required": [
+              "votes"
+            ]
+          }
+        }
+      ]
+    },
+    "fact": {
+      "type": "object",
+      "required": [
+        "value",
+        "confidence",
+        "rationale",
+        "sources"
+      ],
+      "properties": {
+        "value": true,
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sources": {
+          "$ref": "#/$defs/sources"
+        },
+        "evidence": {
+          "$ref": "#/$defs/evidence"
+        },
+        "verification": {
+          "$ref": "#/$defs/verification"
+        },
+        "tolerance": {
+          "$ref": "#/$defs/tolerance"
+        }
+      },
+      "additionalProperties": false
+    },
+    "tolerance": {
+      "description": "The range in which a species stays healthy long-term according to literature and husbandry experience, as opposed to the natural-habitat range in value. Only the water features temperatureC, ph, ghDgh and khDkh carry one.",
+      "type": "object",
+      "required": [
+        "value",
+        "confidence",
+        "rationale",
+        "sources"
+      ],
+      "properties": {
+        "value": {
+          "$ref": "#/$defs/range"
+        },
+        "confidence": {
+          "$ref": "#/$defs/confidence"
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sources": {
+          "$ref": "#/$defs/sources"
+        },
+        "evidence": {
+          "$ref": "#/$defs/evidence"
+        },
+        "verification": {
+          "$ref": "#/$defs/verification"
+        }
+      },
+      "additionalProperties": false
+    },
+    "hardFact": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/fact"
+        }
+      ]
+    },
+    "range": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "min",
+        "max"
+      ],
+      "properties": {
+        "min": {
+          "type": "number"
+        },
+        "max": {
+          "type": "number"
+        }
+      }
+    },
+    "level": {
+      "type": "integer"
+    },
+    "taxonomy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "validName",
+        "genus",
+        "source"
+      ],
+      "properties": {
+        "validName": {
+          "type": "string",
+          "description": "Full valid name, such as Rocio octofasciata or Aulonocara sp. 'Chitande Type North'."
+        },
+        "genus": {
+          "type": "string"
+        },
+        "species": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "author": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Author and year, such as (Regan, 1903)."
+        },
+        "source": {
+          "$ref": "#/$defs/source"
+        },
+        "synonyms": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "note": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "legacyNames": {
+          "description": "Names under which the legacy catalog listed this species.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "parents": {
+          "description": "For hybrids: the ids of the parent species where known.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "features": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "origin",
+        "temperatureC",
+        "ph",
+        "ghDgh",
+        "khDkh",
+        "maxSizeCm",
+        "predation",
+        "diet",
+        "aggressionConspecific",
+        "aggressionHeterospecific",
+        "territory",
+        "habitatZones",
+        "social",
+        "speciesOnly",
+        "hybridGroup",
+        "coloration",
+        "feedingSpeed",
+        "minTank",
+        "lifespanYears",
+        "breeding",
+        "beginnerSuitability"
+      ],
+      "properties": {
+        "origin": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/fact"
+            }
+          ],
+          "properties": {
+            "value": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "continent",
+                "region"
+              ],
+              "properties": {
+                "continent": {
+                  "enum": [
+                    "Africa",
+                    "Central America",
+                    "South America",
+                    "North America",
+                    "Asia",
+                    "captive-bred"
+                  ]
+                },
+                "region": {
+                  "type": "string",
+                  "description": "Lake, river system or region, such as Lake Tanganyika or Amazon basin."
+                },
+                "waterbody": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "localities": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "temperatureC": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/hardFact"
+            }
+          ],
+          "properties": {
+            "value": {
+              "$ref": "#/$defs/range"
+            }
+          }
+        },
+        "ph": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/hardFact"
+            }
+          ],
+          "properties": {
+            "value": {
+              "$ref": "#/$defs/range"
+            }
+          }
+        },
+        "ghDgh": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/hardFact"
+            }
+          ],
+          "properties": {
+            "value": {
+              "$ref": "#/$defs/range"
+            }
+          }
+        },
+        "khDkh": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/fact"
+            }
+          ],
+          "properties": {
+            "value": {
+              "$ref": "#/$defs/range"
+            }
+          }
+        },
+        "maxSizeCm": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/fact"
+            }
+          ],
+          "properties": {
+            "value": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "male",
+                "female"
+              ],
+              "properties": {
+                "male": {
+                  "type": "number",
+                  "exclusiveMinimum": 0
+                },
+                "female": {
+                  "type": "number",
+                  "exclusiveMinimum": 0
+                }
+              }
+            }
+          }
+        },
+        "predation": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/hardFact"
+            }
+          ],
+          "properties": {
+            "value": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 3
+            }
+          }
+        },
+        "diet": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/hardFact"
+            }
+          ],
+          "properties": {
+            "value": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "type",
+                "bloatSensitive"
+              ],
+              "properties": {
+                "type": {
+                  "enum": [
+                    "aufwuchs",
+                    "omnivore",
+                    "invertivore",
+                    "piscivore"
+                  ]
+                },
+                "bloatSensitive": {
+                  "type": "boolean"
+                },
+                "foods": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "aggressionConspecific": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/fact"
+            }
+          ],
+          "properties": {
+            "value": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          }
+        },
+        "aggressionHeterospecific": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/fact"
+            }
+          ],
+          "properties": {
+            "value": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          }
+        },
+        "territory": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/fact"
+            }
+          ],
+          "properties": {
+            "value": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "size",
+                "breedingOnly"
+              ],
+              "properties": {
+                "size": {
+                  "enum": [
+                    "none",
+                    "small",
+                    "large"
+                  ]
+                },
+                "breedingOnly": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        },
+        "habitatZones": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/fact"
+            }
+          ],
+          "properties": {
+            "value": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "enum": [
+                  "rock",
+                  "sand",
+                  "openWater",
+                  "shell",
+                  "plants",
+                  "wood"
+                ]
+              }
+            }
+          }
+        },
+        "social": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/fact"
+            }
+          ],
+          "properties": {
+            "value": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "structure"
+              ],
+              "properties": {
+                "structure": {
+                  "enum": [
+                    "pair",
+                    "harem",
+                    "group",
+                    "solitary"
+                  ]
+                },
+                "ratio": {
+                  "type": "number",
+                  "description": "Females per male for a harem."
+                },
+                "minGroup": {
+                  "type": "integer",
+                  "minimum": 2,
+                  "description": "Smallest group for a group species."
+                }
+              },
+              "allOf": [
+                {
+                  "if": {
+                    "properties": {
+                      "structure": {
+                        "const": "harem"
+                      }
+                    }
+                  },
+                  "then": {
+                    "required": [
+                      "ratio"
+                    ]
+                  }
+                },
+                {
+                  "if": {
+                    "properties": {
+                      "structure": {
+                        "const": "group"
+                      }
+                    }
+                  },
+                  "then": {
+                    "required": [
+                      "minGroup"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "speciesOnly": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/hardFact"
+            }
+          ],
+          "properties": {
+            "value": {
+              "type": "boolean"
+            }
+          }
+        },
+        "hybridGroup": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/hardFact"
+            }
+          ],
+          "properties": {
+            "value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "coloration": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/fact"
+            }
+          ],
+          "properties": {
+            "value": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "baseColors",
+                "pattern"
+              ],
+              "properties": {
+                "baseColors": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "enum": [
+                      "blue",
+                      "yellow",
+                      "red",
+                      "orange",
+                      "white",
+                      "black",
+                      "brown",
+                      "grey",
+                      "green",
+                      "silver"
+                    ]
+                  }
+                },
+                "pattern": {
+                  "enum": [
+                    "bars",
+                    "stripes",
+                    "spots",
+                    "plain",
+                    "mixed"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "feedingSpeed": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/fact"
+            }
+          ],
+          "properties": {
+            "value": {
+              "enum": [
+                "slow",
+                "normal",
+                "hasty"
+              ]
+            }
+          }
+        },
+        "minTank": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/fact"
+            }
+          ],
+          "properties": {
+            "value": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "volumeL",
+                "lengthCm",
+                "depthCm"
+              ],
+              "properties": {
+                "volumeL": {
+                  "type": "number",
+                  "exclusiveMinimum": 0
+                },
+                "lengthCm": {
+                  "type": "number",
+                  "exclusiveMinimum": 0
+                },
+                "depthCm": {
+                  "type": "number",
+                  "exclusiveMinimum": 0
+                }
+              }
+            }
+          }
+        },
+        "lifespanYears": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/fact"
+            }
+          ],
+          "properties": {
+            "value": {
+              "$ref": "#/$defs/range"
+            }
+          }
+        },
+        "breeding": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/fact"
+            }
+          ],
+          "properties": {
+            "value": {
+              "enum": [
+                "maternal-mouthbrooder",
+                "paternal-mouthbrooder",
+                "biparental-mouthbrooder",
+                "cave-spawner",
+                "open-substrate-spawner",
+                "shell-spawner"
+              ]
+            }
+          }
+        },
+        "beginnerSuitability": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/fact"
+            }
+          ],
+          "properties": {
+            "value": {
+              "enum": [
+                "easy",
+                "moderate",
+                "demanding"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "partner": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "species",
+        "reason"
+      ],
+      "properties": {
+        "species": {
+          "type": "string",
+          "description": "Valid name of the partner species or a group such as 'Lake Malawi mbuna'."
+        },
+        "reason": {
+          "type": "string"
+        },
+        "condition": {
+          "type": "string",
+          "description": "Condition under which the pairing works, such as a minimum tank length."
+        }
+      }
+    },
+    "section": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "text",
+        "sources"
+      ],
+      "properties": {
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sources": {
+          "$ref": "#/$defs/sources"
+        }
+      }
+    },
+    "profile": {
+      "description": "The written profile in English, in own words; facts from foreign texts serve as evidence only.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "overview",
+        "habitat",
+        "sizeAndGrowth",
+        "husbandry",
+        "socialBehavior",
+        "diet",
+        "breeding",
+        "sexing",
+        "compatibility",
+        "problems"
+      ],
+      "properties": {
+        "overview": {
+          "$ref": "#/$defs/section"
+        },
+        "habitat": {
+          "$ref": "#/$defs/section"
+        },
+        "sizeAndGrowth": {
+          "$ref": "#/$defs/section"
+        },
+        "husbandry": {
+          "$ref": "#/$defs/section"
+        },
+        "socialBehavior": {
+          "$ref": "#/$defs/section"
+        },
+        "diet": {
+          "$ref": "#/$defs/section"
+        },
+        "breeding": {
+          "$ref": "#/$defs/section"
+        },
+        "sexing": {
+          "$ref": "#/$defs/section"
+        },
+        "compatibility": {
+          "$ref": "#/$defs/section"
+        },
+        "problems": {
+          "$ref": "#/$defs/section"
+        }
+      }
+    },
+    "agentRun": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role",
+        "model",
+        "date"
+      ],
+      "properties": {
+        "role": {
+          "enum": [
+            "generator",
+            "checker",
+            "adjudicator"
+          ]
+        },
+        "model": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "runs"
+      ],
+      "properties": {
+        "runs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/agentRun"
+          }
+        },
+        "disagreements": {
+          "description": "Fields on which generator and checkers differed, with the adjudicator's decision.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "field",
+              "proposals",
+              "decision",
+              "rationale"
+            ],
+            "properties": {
+              "field": {
+                "type": "string"
+              },
+              "proposals": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "by",
+                    "value"
+                  ],
+                  "properties": {
+                    "by": {
+                      "description": "The agent run that proposed the value: generator, checker-a, checker-b or tiebreaker-<n>.",
+                      "type": "string",
+                      "pattern": "^(generator|checker-[a-z]|tiebreaker-[0-9]+)$"
+                    },
+                    "value": true
+                  }
+                }
+              },
+              "decision": true,
+              "rationale": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
