@@ -90,7 +90,7 @@ public static class ImageProcessor
 
     /// <summary>
     /// Reads the format and the orientation-corrected size of an image and produces every variant
-    /// MediaVariantSpec resolves for that width, reading the stream once. Throws
+    /// MediaVariantSpec resolves for that width and height, reading the stream once. Throws
     /// UnsupportedImageFormatException for a format outside the allowlist, ImageTooLargeException
     /// for more than MaxPixels pixels and BrokenImageException when the data does not decode.
     /// </summary>
@@ -109,7 +109,7 @@ public static class ImageProcessor
         try
         {
             var (width, height) = ReadOrientedSize(source);
-            var targets = MediaVariantSpec.Resolve(width);
+            var targets = MediaVariantSpec.Resolve(width, height);
             var largestWidth = targets.Max(t => t.Width);
 
             using var decoded = DecodeToSrgb(source, largestWidth);

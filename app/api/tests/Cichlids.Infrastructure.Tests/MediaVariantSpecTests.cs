@@ -18,7 +18,20 @@ public sealed class MediaVariantSpecTests
     [InlineData(2400, new[] { "thumb", "small", "medium", "large" }, new[] { 200, 400, 800, 1600 })]
     public void ResolvesTheExpectedLabelsAndWidths(int originalWidth, string[] expectedLabels, int[] expectedWidths)
     {
-        var resolved = MediaVariantSpec.Resolve(originalWidth);
+        var resolved = MediaVariantSpec.Resolve(originalWidth, originalWidth);
+
+        Assert.Equal(expectedLabels, resolved.Select(v => v.Label));
+        Assert.Equal(expectedWidths, resolved.Select(v => v.Width));
+    }
+
+    [Theory]
+    [InlineData(1000, 100_000, new[] { "thumb", "small", "medium" }, new[] { 8, 16, 32 })]
+    [InlineData(1700, 58_000, new[] { "thumb", "small", "medium", "large" }, new[] { 23, 46, 93, 187 })]
+    [InlineData(1000, 4_000, new[] { "thumb", "small", "medium" }, new[] { 200, 400, 800 })]
+    [InlineData(150, 1_200, new[] { "thumb" }, new[] { 75 })]
+    public void FitsAVeryTallPhotoIntoFourTimesTheTargetWidthInHeight(int width, int height, string[] expectedLabels, int[] expectedWidths)
+    {
+        var resolved = MediaVariantSpec.Resolve(width, height);
 
         Assert.Equal(expectedLabels, resolved.Select(v => v.Label));
         Assert.Equal(expectedWidths, resolved.Select(v => v.Width));

@@ -163,7 +163,8 @@ public static class MediaSeedCommand
             if (isPhoto && original.Photo is { Decodable: true } photo)
             {
                 var variants = await EnsureVariantsAsync(
-                    candidate.StorageKey, original.SourceSha256, photo.Width!.Value, source, processed, objectStore, stats, cancellationToken);
+                    candidate.StorageKey, original.SourceSha256, photo.Width!.Value, photo.Height!.Value, source, processed, objectStore, stats,
+                    cancellationToken);
                 if (variants is null)
                 {
                     // The stored original is recorded as decodable but its source does not decode.
@@ -293,6 +294,7 @@ public static class MediaSeedCommand
         string originalKey,
         string sourceSha256,
         int width,
+        int height,
         SourceFile source,
         ProcessedImage? processed,
         IObjectStore objectStore,
@@ -301,7 +303,7 @@ public static class MediaSeedCommand
     {
         var present = new List<RecordedVariant>();
         var needed = new List<(string Label, string StorageKey)>();
-        foreach (var (label, targetWidth) in MediaVariantSpec.Resolve(width))
+        foreach (var (label, targetWidth) in MediaVariantSpec.Resolve(width, height))
         {
             var variantKey = MediaStorageKeys.BuildVariantKey(originalKey, label);
             var variantHead = await objectStore.HeadAsync(variantKey, cancellationToken);

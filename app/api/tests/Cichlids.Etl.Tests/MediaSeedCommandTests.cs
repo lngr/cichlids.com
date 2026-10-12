@@ -200,7 +200,7 @@ public sealed class MediaSeedCommandTests(MediaEtlFixture fixture)
                 Assert.Equal(500, presentItem.Width);
                 Assert.Equal(400, presentItem.Height);
                 Assert.Equal(
-                    MediaVariantSpec.Resolve(500).Count,
+                    MediaVariantSpec.Resolve(500, 400).Count,
                     await db.MediaVariants.CountAsync(v => v.MediaItemId == presentMediaId));
 
                 var missingItem = await db.MediaItems.SingleAsync(m => m.Id == missingMediaId);

@@ -122,6 +122,26 @@ public sealed class ImageProcessorTests
     }
 
     [Fact]
+    public void Fits_the_variants_of_a_very_tall_photo_into_four_times_their_width_in_height()
+    {
+        using var image = (Image.Black(1000, 60_000) + new[] { 30, 90, 150 }).Cast(Enums.BandFormat.Uchar);
+        var bytes = image.WriteToBuffer(".jpg", new VOption { { "Q", 50 } });
+
+        var result = ImageProcessor.Process(bytes);
+
+        Assert.Equal((1000, 60_000), (result.Width, result.Height));
+        Assert.Equal(
+            MediaVariantSpec.Resolve(1000, 60_000).Select(v => (v.Label, v.Width)),
+            result.Variants.Select(v => (v.Label, v.Width)));
+        foreach (var (variant, targetWidth) in result.Variants.Zip([200, 400, 800]))
+        {
+            using var decoded = Image.NewFromBuffer(variant.Bytes);
+            Assert.Equal(variant.Width, decoded.Width);
+            Assert.InRange(decoded.Height, 1, (4 * targetWidth) + 1);
+        }
+    }
+
+    [Fact]
     public void Converts_a_display_p3_photo_to_srgb_before_removing_its_profile()
     {
         // An in-gamut colour encoded in Display P3 with the profile embedded.
