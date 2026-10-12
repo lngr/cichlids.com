@@ -1,10 +1,10 @@
 ---
 id: TASK-3.35
 title: Create the profile of a first login atomically
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-10-12 04:48'
-updated_date: '2026-10-12 07:17'
+updated_date: '2026-10-12 07:19'
 labels: []
 dependencies: []
 references:
