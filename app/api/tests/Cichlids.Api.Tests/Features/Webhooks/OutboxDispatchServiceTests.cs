@@ -523,6 +523,111 @@ public class OutboxDispatchServiceTests(OutboxDispatchFixture fixture) : IAsyncL
     }
 
     [Fact]
+    public async Task RunOnceAsync_EventWithMoreSubscribersThanTheLeaseAllowsMakesProgressAndDoesNotBlockOthers()
+    {
+        // A lease of three delivery timeouts leaves room for two deliveries per event in a pass.
+        var options = new OutboxDispatcherOptions
+        {
+            DeliveryTimeout = TimeSpan.FromSeconds(1),
+            ReservationLease = TimeSpan.FromSeconds(3),
+        };
+        var listeners = new List<TestWebhookListener>();
+        try
+        {
+            for (var i = 0; i < 4; i++)
+            {
+                var listener = new TestWebhookListener();
+                listener.Start();
+                listeners.Add(listener);
+                await CreateSubscriptionAsync(listener.Uri, $"wide-secret-{i}", ["test.event"]);
+            }
+
+            await using var other = new TestWebhookListener();
+            other.Start();
+            await CreateSubscriptionAsync(other.Uri, "other-secret", ["other.event"]);
+
+            var clock = new FakeTimeProvider(DateTimeOffset.UtcNow);
+            var wide = await InsertEventAsync(occurredAt: clock.GetUtcNow().AddSeconds(-2));
+            var coReserved = await InsertEventAsync(occurredAt: clock.GetUtcNow().AddSeconds(-1), eventType: "other.event");
+            var dispatcher = fixture.CreateDispatchService(options, clock);
+
+            await dispatcher.RunOnceAsync(CancellationToken.None);
+
+            Assert.Equal(2, listeners.Sum(l => l.AcceptedRequests.Count));
+            Assert.Equal([coReserved], other.AcceptedRequests.Select(r => r.EventId));
+            await using (var db = fixture.CreateDbContext())
+            {
+                var afterFirstPass = await db.OutboxEvents.AsNoTracking().SingleAsync(e => e.Id == wide);
+                Assert.Null(afterFirstPass.DispatchedAt);
+                Assert.Equal(1, afterFirstPass.AttemptCount);
+                Assert.Equal(2, afterFirstPass.AcknowledgedSubscriptionIds.Count);
+                Assert.Contains("not attempted", afterFirstPass.LastError);
+                Assert.NotNull((await db.OutboxEvents.AsNoTracking().SingleAsync(e => e.Id == coReserved)).DispatchedAt);
+            }
+
+            clock.Advance(TimeSpan.FromSeconds(5));
+            await dispatcher.RunOnceAsync(CancellationToken.None);
+
+            Assert.All(listeners, l => Assert.Equal([wide], l.AcceptedRequests.Select(r => r.EventId)));
+            await using (var db = fixture.CreateDbContext())
+            {
+                Assert.NotNull((await db.OutboxEvents.AsNoTracking().SingleAsync(e => e.Id == wide)).DispatchedAt);
+            }
+        }
+        finally
+        {
+            foreach (var listener in listeners)
+            {
+                await listener.DisposeAsync();
+            }
+        }
+    }
+
+    [Fact]
+    public async Task RunOnceAsync_SubscribersBeyondTheLeaseAreReachedOnLaterAttempts()
+    {
+        var options = new OutboxDispatcherOptions
+        {
+            DeliveryTimeout = TimeSpan.FromSeconds(1),
+            ReservationLease = TimeSpan.FromSeconds(3),
+        };
+        await using var firstDown = new TestWebhookListener();
+        firstDown.SetDown(true);
+        firstDown.Start();
+        await using var secondDown = new TestWebhookListener();
+        secondDown.SetDown(true);
+        secondDown.Start();
+        await using var healthy = new TestWebhookListener();
+        healthy.Start();
+        await CreateSubscriptionAsync(firstDown.Uri, "first-down-secret", ["test.event"]);
+        await CreateSubscriptionAsync(secondDown.Uri, "second-down-secret", ["test.event"]);
+        await CreateSubscriptionAsync(healthy.Uri, "healthy-last-secret", ["test.event"]);
+
+        var clock = new FakeTimeProvider(DateTimeOffset.UtcNow);
+        var id = await InsertEventAsync(occurredAt: clock.GetUtcNow().AddSeconds(-1));
+        var dispatcher = fixture.CreateDispatchService(options, clock);
+
+        await dispatcher.RunOnceAsync(CancellationToken.None);
+        clock.Advance(TimeSpan.FromSeconds(5));
+        await dispatcher.RunOnceAsync(CancellationToken.None);
+
+        Assert.Equal([id], healthy.AcceptedRequests.Select(r => r.EventId));
+    }
+
+    [Fact]
+    public async Task ReserveDueAsync_PutsEventsWithoutAnAttemptAndThenTheLongestUnattemptedFirst()
+    {
+        var now = DateTimeOffset.UtcNow;
+        var attemptedRecently = await InsertEventAsync(occurredAt: now.AddMinutes(-30), lastAttemptAt: now.AddSeconds(-10));
+        var attemptedLongAgo = await InsertEventAsync(occurredAt: now.AddMinutes(-10), lastAttemptAt: now.AddMinutes(-5));
+        var neverAttempted = await InsertEventAsync(occurredAt: now.AddMinutes(-1));
+
+        var reserved = await fixture.CreateDispatchService(timeProvider: new FakeTimeProvider(now)).ReserveDueAsync(CancellationToken.None);
+
+        Assert.Equal([neverAttempted, attemptedLongAgo, attemptedRecently], reserved.Select(e => e.Id));
+    }
+
+    [Fact]
     public async Task RunOnceAsync_WildcardSubscriptionReceivesEveryEventType()
     {
         await using var listener = new TestWebhookListener();
@@ -576,11 +681,16 @@ public class OutboxDispatchServiceTests(OutboxDispatchFixture fixture) : IAsyncL
     }
 
     private async Task<Guid> InsertEventAsync(
-        DateTimeOffset occurredAt, DateTimeOffset? nextAttemptAt = null, string eventType = "test.event")
+        DateTimeOffset occurredAt,
+        DateTimeOffset? nextAttemptAt = null,
+        string eventType = "test.event",
+        DateTimeOffset? lastAttemptAt = null)
     {
         await using var db = fixture.CreateDbContext();
         var outboxEvent = OutboxEvent.Create(eventType, "post", "1", """{"postId":1}""", occurredAt);
         outboxEvent.NextAttemptAt = nextAttemptAt ?? occurredAt;
+        outboxEvent.LastAttemptAt = lastAttemptAt;
+        outboxEvent.AttemptCount = lastAttemptAt is null ? 0 : 1;
         db.OutboxEvents.Add(outboxEvent);
         await db.SaveChangesAsync();
         return outboxEvent.Id;

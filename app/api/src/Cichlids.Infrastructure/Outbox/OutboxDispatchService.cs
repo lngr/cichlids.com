@@ -46,8 +46,8 @@ public sealed class OutboxDispatchService(
 
     /// <summary>
     /// Reserves up to one batch of open events whose next attempt time has come, oldest due first,
-    /// and returns them with the end of the reservation as their next attempt time. Rows another
-    /// instance is reserving at the same moment are skipped.
+    /// and returns them with the end of the reservation as their next attempt time, in the order a
+    /// pass handles them. Rows another instance is reserving at the same moment are skipped.
     /// </summary>
     public async Task<IReadOnlyList<OutboxEvent>> ReserveDueAsync(CancellationToken cancellationToken)
     {
@@ -70,13 +70,21 @@ public sealed class OutboxDispatchService(
             RETURNING e.*
             """).AsNoTracking().ToListAsync(cancellationToken);
 
-        return reserved.OrderBy(e => e.OccurredAt).ToList();
+        // Events without an earlier attempt, and then those attempted longest ago, come first, so an
+        // event left over when an earlier pass ran out of its reservation is handled before the
+        // events that pass attempted.
+        return reserved
+            .OrderBy(e => e.LastAttemptAt ?? DateTimeOffset.MinValue)
+            .ThenBy(e => e.OccurredAt)
+            .ToList();
     }
 
     /// <summary>
-    /// Delivers and records the given reserved events one after another. The pass stops before an
-    /// event whose remaining lease is too short for its deliveries; that event and the rest become
-    /// due again when their lease ends.
+    /// Delivers and records the given reserved events one after another. An event gets as many
+    /// deliveries as fit into the remaining reservation, keeping one delivery timeout for recording;
+    /// the first event always gets at least one. Subscribers left out count as failed for this
+    /// attempt and come first on a later attempt. The pass stops once no delivery fits any more;
+    /// the remaining events are due again when their reservation ends.
     /// </summary>
     public async Task ProcessAsync(IReadOnlyList<OutboxEvent> reserved, CancellationToken cancellationToken)
     {
@@ -87,31 +95,66 @@ public sealed class OutboxDispatchService(
             .OrderBy(s => s.Id)
             .ToListAsync(cancellationToken);
 
-        foreach (var outboxEvent in reserved)
+        for (var index = 0; index < reserved.Count; index++)
         {
-            var subscribers = activeSubscriptions
+            var outboxEvent = reserved[index];
+            var pending = activeSubscriptions
                 .Where(s => s.EventTypes.Contains(outboxEvent.EventType) || s.EventTypes.Contains("*"))
                 .Where(s => !outboxEvent.AcknowledgedSubscriptionIds.Contains(s.Id))
                 .ToList();
 
             var remainingLease = outboxEvent.NextAttemptAt - Now();
-            if (remainingLease < settings.DeliveryTimeout * Math.Max(1, subscribers.Count))
+            var capacity = (int)Math.Min(int.MaxValue, Math.Floor(remainingLease / settings.DeliveryTimeout) - 1);
+            if (index == 0)
             {
-                logger.LogInformation(
-                    "Outbox pass stops before event {EventId}: the remaining reservation of {RemainingLease} is too short",
-                    outboxEvent.Id, remainingLease);
+                capacity = Math.Max(capacity, 1);
+            }
+
+            if (pending.Count > 0 && capacity <= 0)
+            {
+                logger.LogWarning(
+                    "Outbox pass stops before event {EventId}: its reservation ends in {RemainingLease}; it and the "
+                    + "{Remaining} events after it are due again when their reservation ends",
+                    outboxEvent.Id, remainingLease, reserved.Count - index - 1);
                 return;
+            }
+
+            var attempted = pending;
+            var notAttempted = new List<WebhookSubscription>();
+            if (pending.Count > capacity)
+            {
+                // Rotating by the attempt count lets the subscribers left out this time come first
+                // on a later attempt.
+                var offset = (int)((long)outboxEvent.AttemptCount * capacity % pending.Count);
+                var rotated = pending.Skip(offset).Concat(pending.Take(offset)).ToList();
+                attempted = rotated.Take(capacity).ToList();
+                notAttempted = rotated.Skip(capacity).ToList();
+                logger.LogWarning(
+                    "Outbox event {EventId} has {Pending} pending subscribers, but its reservation allows {Capacity} deliveries",
+                    outboxEvent.Id, pending.Count, capacity);
             }
 
             DeliveryOutcome outcome;
             try
             {
-                outcome = await DeliverAsync(outboxEvent, subscribers, settings, cancellationToken);
+                outcome = await DeliverAsync(outboxEvent, attempted, settings, cancellationToken);
             }
             catch (Exception ex) when (!cancellationToken.IsCancellationRequested)
             {
                 logger.LogWarning(ex, "Delivering outbox event {EventId} failed", outboxEvent.Id);
                 outcome = DeliveryOutcome.Failed($"delivery failed: {ex.GetType().Name}");
+            }
+
+            if (notAttempted.Count > 0)
+            {
+                outcome = outcome with
+                {
+                    Errors =
+                    [
+                        .. outcome.Errors,
+                        .. notAttempted.Select(s => $"subscription {s.Id} not attempted: the reservation is too short"),
+                    ],
+                };
             }
 
             try
