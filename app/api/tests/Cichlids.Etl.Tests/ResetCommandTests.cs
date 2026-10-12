@@ -15,7 +15,7 @@ namespace Cichlids.Etl.Tests;
 
 /// <summary>
 /// The reset command against a Postgres and a Keycloak container of its own: in Development and
-/// Staging it empties the database and deletes every realm user without the realm role admin;
+/// Staging it empties the database and deletes every realm user without the realm role admin or tester;
 /// elsewhere, and when Keycloak cannot be reached, it changes nothing.
 /// </summary>
 public sealed class ResetCommandTests(ResetFixture fixture) : IClassFixture<ResetFixture>
@@ -23,7 +23,7 @@ public sealed class ResetCommandTests(ResetFixture fixture) : IClassFixture<Rese
     [Theory]
     [InlineData("Development")]
     [InlineData("Staging")]
-    public async Task EmptiesTheDatabaseAndKeepsOnlyTheRealmAdmins(string environmentName)
+    public async Task EmptiesTheDatabaseAndKeepsOnlyTheRealmAdminsAndTesters(string environmentName)
     {
         var connectionString = await fixture.CreateMigratedDatabaseAsync();
         await TargetDatabaseResetTests.SeedSpeciesAsync(connectionString);
@@ -31,17 +31,22 @@ public sealed class ResetCommandTests(ResetFixture fixture) : IClassFixture<Rese
         var plainUserId = await admin.CreateUserAsync($"plain-{Guid.NewGuid():N}");
         var adminUserId = await admin.CreateUserAsync($"admin-{Guid.NewGuid():N}");
         await admin.GrantRealmRoleAsync(adminUserId, "admin");
+        var testerUserId = await admin.CreateUserAsync($"tester-{Guid.NewGuid():N}");
+        await admin.GrantRealmRoleAsync(testerUserId, "tester");
         await admin.SetRegistrationAllowedAsync(true);
 
         var exitCode = await ResetCommand.RunAsync(connectionString, fixture.KeycloakSettings, environmentName, CancellationToken.None);
 
         Assert.Equal(0, exitCode);
         var remaining = await admin.ListUserIdsAsync();
-        var admins = await admin.ListRealmRoleUserIdsAsync("admin");
+        var kept = (await admin.ListRealmRoleUserIdsAsync("admin"))
+            .Concat(await admin.ListRealmRoleUserIdsAsync("tester"))
+            .ToList();
         Assert.DoesNotContain(plainUserId, remaining);
         Assert.Contains(adminUserId, remaining);
+        Assert.Contains(testerUserId, remaining);
         Assert.NotEmpty(remaining);
-        Assert.All(remaining, id => Assert.Contains(id, admins));
+        Assert.All(remaining, id => Assert.Contains(id, kept));
         Assert.False(await admin.GetRegistrationAllowedAsync());
 
         using var freshAdmin = await fixture.CreateAdminApiAsync();

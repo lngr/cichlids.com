@@ -66,6 +66,9 @@ kcadm.sh set-password -r cichlids --username <name> --new-password '<password>'
 kcadm.sh add-roles -r cichlids --uusername <name> --rolename admin
 ```
 
+Test accounts get the realm role `tester` instead (`--rolename tester`). The staging reset keeps
+every account with the realm role `admin` or `tester` and deletes all others.
+
 ## Registration
 
 Registration opens at runtime, after the account import.

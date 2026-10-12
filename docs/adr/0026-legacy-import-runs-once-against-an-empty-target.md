@@ -24,11 +24,11 @@ it often, to test the import and to rehearse the go-live under the same conditio
   stops with the reason otherwise. The check holds a database lock for the whole run, so two runs
   started together cannot both pass.
 - **The import is atomic.** All of its writes happen in one database transaction. A failed run
-  leaves the target empty and can start over. Verification against the legacy source runs after
-  the commit and fails the run on a mismatch without undoing it.
+  leaves the target database empty and can start over. Verification against the legacy source
+  runs after the commit and fails the run on a mismatch without undoing it.
 - **A reset exists for Development and Staging only.** It drops and rebuilds the application
-  schemas, deletes the identity realm's accounts except those with administrative rights, and
-  closes self-registration. Every other environment, an unnamed one included, is refused. The
+  schemas, deletes the identity realm's accounts except those with the realm role admin or
+  tester, and closes self-registration. Every other environment, an unnamed one included, is refused. The
   reset leaves the object store alone, so media objects stay across resets.
 - **Production runs the import exactly once.** Corrections after go-live are schema or data
   migrations ([ADR-0019](0019-persistence-and-migration-tooling.md)).
