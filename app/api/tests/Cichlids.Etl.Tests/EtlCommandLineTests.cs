@@ -77,13 +77,12 @@ public sealed class EtlCommandLineTests
     public void ParsesTheMediaOptions()
     {
         var result = EtlCommandLine.Parse(
-            ["media", "--limit", "25", "--workers", "4", "--force", "--missing-out", "missing.tsv"], "Development");
+            ["media", "--limit", "25", "--workers", "4", "--missing-out", "missing.tsv"], "Development");
 
         Assert.Null(result.Error);
         var commandLine = result.CommandLine!;
         Assert.Equal(25, commandLine.Limit);
         Assert.Equal(4, commandLine.Workers);
-        Assert.True(commandLine.Force);
         Assert.Equal("missing.tsv", commandLine.MissingOutPath);
     }
 
@@ -94,7 +93,6 @@ public sealed class EtlCommandLineTests
 
         Assert.Null(commandLine.Limit);
         Assert.Equal(EtlCommandLine.DefaultWorkers, commandLine.Workers);
-        Assert.False(commandLine.Force);
         Assert.Null(commandLine.MissingOutPath);
     }
 
@@ -134,7 +132,7 @@ public sealed class EtlCommandLineTests
     [Fact]
     public void RejectsAnOptionFollowedByAnotherOptionInPlaceOfItsValue()
     {
-        var result = EtlCommandLine.Parse(["media", "--missing-out", "--force"], "Development");
+        var result = EtlCommandLine.Parse(["media", "--missing-out", "--limit"], "Development");
 
         Assert.Contains("Option '--missing-out' needs a value", result.Error);
     }
@@ -154,6 +152,7 @@ public sealed class EtlCommandLineTests
     [Theory]
     [InlineData("reset", "--out")]
     [InlineData("migrate", "--force")]
+    [InlineData("media", "--force")]
     [InlineData("profiles", "--out")]
     [InlineData("all", "--open-registration")]
     public void RejectsAnOptionTheCommandDoesNotTake(string command, string option)

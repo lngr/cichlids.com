@@ -12,7 +12,7 @@ public sealed class MediaSeedCommandTests(MediaEtlFixture fixture)
     private static readonly JsonSerializerOptions JsonOptions = new() { PropertyNameCaseInsensitive = true };
 
     [Fact]
-    public async Task DerivesVariantsPerWidthAtTheNoUpscaleBoundaryAndSkipsThemOnASecondRun()
+    public async Task DerivesVariantsPerWidthAtTheNoUpscaleBoundaryAndUploadsNothingOnASecondRun()
     {
         var root = MediaTestSupport.CreateImagesRoot();
         try
@@ -66,9 +66,11 @@ public sealed class MediaSeedCommandTests(MediaEtlFixture fixture)
                 Assert.Equal(600, midItem.Height);
             }
 
-            // A second run with the default onlyMissing: true finds every item already
-            // complete, so it skips them outright and leaves the recorded variants untouched.
-            await MediaTestSupport.RunSeedAsync(fixture, root);
+            // A second run finds every original and variant in the store and uploads nothing.
+            var recording = new RecordingObjectStore(fixture.ObjectStore);
+            var second = await MediaTestSupport.RunSeedAsync(fixture, root, objectStore: recording);
+            Assert.Empty(recording.PutKeys);
+            Assert.Equal(0, second.OriginalsUploaded);
 
             await using (var db = fixture.CreateTargetContext())
             {
@@ -262,6 +264,432 @@ public sealed class MediaSeedCommandTests(MediaEtlFixture fixture)
             Assert.NotNull(report);
             Assert.True(report!.BrokenCount >= 1);
             Assert.Contains(report.Broken, key => key == brokenStorageKey);
+        }
+        finally
+        {
+            Directory.Delete(root, recursive: true);
+        }
+    }
+
+    // === decisions from the object store state ======================================================
+
+    private sealed record SeededPhoto(string LegacyPath, string StorageKey, string Sha256);
+
+    private async Task<SeededPhoto> AddPhotoAsync(string root, string target, int uid, int width, int height = 400)
+    {
+        var path = MediaTestSupport.WritePhoto(root, uid, $"p{uid}.jpg", width, height);
+        await using (var legacy = await MediaTestSupport.OpenLegacyConnectionAsync(fixture))
+        {
+            await MediaTestSupport.InsertLegacyPictureAsync(legacy, uid, path);
+        }
+
+        var key = $"originals/{path}";
+        await MediaTestSupport.InsertMediaItemAsync(fixture, uid, key, targetConnectionString: target);
+        return new SeededPhoto(path, key, MediaTestSupport.Sha256OfFile(root, path));
+    }
+
+    private async Task ResetDatabaseAsync(string newTarget, params (int Uid, string Key)[] items)
+    {
+        foreach (var (uid, key) in items)
+        {
+            await MediaTestSupport.InsertMediaItemAsync(fixture, uid, key, targetConnectionString: newTarget);
+        }
+    }
+
+    [Fact]
+    public async Task UploadsNothingAfterTheDatabaseWasResetAndRecordsTheSameMetadata()
+    {
+        var root = MediaTestSupport.CreateImagesRoot();
+        try
+        {
+            var firstTarget = await fixture.CreateIsolatedTargetAsync();
+            var wide = await AddPhotoAsync(root, firstTarget, 71100, 2400, 1600);
+            var narrow = await AddPhotoAsync(root, firstTarget, 71101, 150, 200);
+
+            var first = await MediaTestSupport.RunSeedAsync(fixture, root, targetConnectionString: firstTarget);
+            Assert.Equal(2, first.OriginalsUploaded);
+            Assert.Equal(5, first.VariantsUploaded);
+
+            var secondTarget = await fixture.CreateIsolatedTargetAsync();
+            await ResetDatabaseAsync(secondTarget, (71100, wide.StorageKey), (71101, narrow.StorageKey));
+
+            var recording = new RecordingObjectStore(fixture.ObjectStore);
+            var second = await MediaTestSupport.RunSeedAsync(
+                fixture, root, targetConnectionString: secondTarget, objectStore: recording);
+
+            Assert.Empty(recording.PutKeys);
+            Assert.Empty(recording.GetKeys);
+            Assert.Equal(0, second.OriginalsUploaded);
+            Assert.Equal(2, second.OriginalsPresent);
+            Assert.Equal(0, second.VariantsUploaded);
+            Assert.Equal(5, second.VariantsPresent);
+            Assert.Equal(2, second.MetadataRecorded);
+            Assert.Equal(0, second.BytesTransferred);
+
+            await using var before = fixture.CreateTargetContext(firstTarget);
+            await using var after = fixture.CreateTargetContext(secondTarget);
+            var itemsBefore = await before.MediaItems.OrderBy(m => m.StorageKey).ToListAsync();
+            var itemsAfter = await after.MediaItems.OrderBy(m => m.StorageKey).ToListAsync();
+            Assert.Equal(
+                itemsBefore.Select(m => (m.StorageKey, m.ByteSize, m.ChecksumSha256, m.Width, m.Height)),
+                itemsAfter.Select(m => (m.StorageKey, m.ByteSize, m.ChecksumSha256, m.Width, m.Height)));
+            Assert.All(itemsAfter, m => Assert.NotNull(m.ByteSize));
+
+            var variantsBefore = await before.MediaVariants.Select(v => new { v.StorageKey, v.Label, v.Width, v.ByteSize }).OrderBy(v => v.StorageKey).ToListAsync();
+            var variantsAfter = await after.MediaVariants.Select(v => new { v.StorageKey, v.Label, v.Width, v.ByteSize }).OrderBy(v => v.StorageKey).ToListAsync();
+            Assert.Equal(5, variantsAfter.Count);
+            Assert.Equal(variantsBefore, variantsAfter);
+        }
+        finally
+        {
+            Directory.Delete(root, recursive: true);
+        }
+    }
+
+    [Fact]
+    public async Task RestoresADeletedOriginalWithTheChecksumOfTheLegacyFile()
+    {
+        var root = MediaTestSupport.CreateImagesRoot();
+        try
+        {
+            var target = await fixture.CreateIsolatedTargetAsync();
+            var photo = await AddPhotoAsync(root, target, 71110, 900, 600);
+            await MediaTestSupport.RunSeedAsync(fixture, root, targetConnectionString: target);
+
+            await fixture.ObjectStore.DeleteAsync(photo.StorageKey);
+
+            var recording = new RecordingObjectStore(fixture.ObjectStore);
+            var summary = await MediaTestSupport.RunSeedAsync(
+                fixture, root, targetConnectionString: target, objectStore: recording);
+
+            Assert.Equal(1, summary.OriginalsUploaded);
+            Assert.Equal(0, summary.VariantsUploaded);
+            Assert.Equal([photo.StorageKey], recording.PutKeys);
+
+            var head = await fixture.ObjectStore.HeadAsync(photo.StorageKey);
+            Assert.NotNull(head);
+            Assert.Equal(photo.Sha256, head!.Metadata[MediaObjectMetadata.SourceSha256Key]);
+            Assert.Equal(photo.Sha256, head.Metadata[MediaObjectMetadata.Sha256Key]);
+            Assert.Equal(
+                await File.ReadAllBytesAsync(Path.Combine(root, photo.LegacyPath)),
+                await MediaTestSupport.DownloadAsync(fixture, photo.StorageKey));
+        }
+        finally
+        {
+            Directory.Delete(root, recursive: true);
+        }
+    }
+
+    [Fact]
+    public async Task UploadsAnOverwrittenOriginalAndAnOriginalWithoutMetadataAgain()
+    {
+        var root = MediaTestSupport.CreateImagesRoot();
+        try
+        {
+            var target = await fixture.CreateIsolatedTargetAsync();
+            var overwritten = await AddPhotoAsync(root, target, 71120, 500);
+            var bare = await AddPhotoAsync(root, target, 71121, 500);
+            await MediaTestSupport.RunSeedAsync(fixture, root, targetConnectionString: target);
+
+            await fixture.ObjectStore.PutAsync(
+                overwritten.StorageKey,
+                new MemoryStream([1, 2, 3]),
+                "image/jpeg",
+                new Dictionary<string, string>
+                {
+                    [MediaObjectMetadata.SourceSha256Key] = "0000",
+                    [MediaObjectMetadata.PipelineKey] = MediaObjectMetadata.OriginalPipelineVersion.ToString(),
+                });
+            await fixture.ObjectStore.PutAsync(bare.StorageKey, new MemoryStream([4, 5, 6]), "image/jpeg");
+
+            var recording = new RecordingObjectStore(fixture.ObjectStore);
+            var summary = await MediaTestSupport.RunSeedAsync(
+                fixture, root, targetConnectionString: target, objectStore: recording);
+
+            Assert.Equal(2, summary.OriginalsUploaded);
+            Assert.Equal(0, summary.VariantsUploaded);
+            foreach (var photo in new[] { overwritten, bare })
+            {
+                Assert.Equal(
+                    await File.ReadAllBytesAsync(Path.Combine(root, photo.LegacyPath)),
+                    await MediaTestSupport.DownloadAsync(fixture, photo.StorageKey));
+                var head = await fixture.ObjectStore.HeadAsync(photo.StorageKey);
+                Assert.Equal(photo.Sha256, head!.Metadata[MediaObjectMetadata.SourceSha256Key]);
+            }
+        }
+        finally
+        {
+            Directory.Delete(root, recursive: true);
+        }
+    }
+
+    [Fact]
+    public async Task RegeneratesADeletedVariantAndAVariantWithAnOlderPipeline()
+    {
+        var root = MediaTestSupport.CreateImagesRoot();
+        try
+        {
+            var target = await fixture.CreateIsolatedTargetAsync();
+            var photo = await AddPhotoAsync(root, target, 71130, 2400, 1600);
+            await MediaTestSupport.RunSeedAsync(fixture, root, targetConnectionString: target);
+
+            var deletedKey = MediaStorageKeys.BuildVariantKey(photo.StorageKey, "small");
+            var outdatedKey = MediaStorageKeys.BuildVariantKey(photo.StorageKey, "medium");
+            await fixture.ObjectStore.DeleteAsync(deletedKey);
+            await fixture.ObjectStore.PutAsync(
+                outdatedKey,
+                new MemoryStream([9, 9, 9]),
+                "image/jpeg",
+                new Dictionary<string, string>
+                {
+                    [MediaObjectMetadata.SourceSha256Key] = photo.Sha256,
+                    [MediaObjectMetadata.PipelineKey] = (MediaObjectMetadata.VariantPipelineVersion - 1).ToString(),
+                });
+
+            var recording = new RecordingObjectStore(fixture.ObjectStore);
+            var summary = await MediaTestSupport.RunSeedAsync(
+                fixture, root, targetConnectionString: target, objectStore: recording);
+
+            Assert.Equal(0, summary.OriginalsUploaded);
+            Assert.Equal(2, summary.VariantsUploaded);
+            Assert.Equal(2, summary.VariantsPresent);
+            Assert.Equivalent(new[] { deletedKey, outdatedKey }, recording.PutKeys);
+
+            var regenerated = await fixture.ObjectStore.HeadAsync(outdatedKey);
+            Assert.Equal(
+                MediaObjectMetadata.VariantPipelineVersion.ToString(),
+                regenerated!.Metadata[MediaObjectMetadata.PipelineKey]);
+            Assert.Equal(800, ImageProcessor.Measure(await MediaTestSupport.DownloadAsync(fixture, outdatedKey)).Width);
+
+            await using var db = fixture.CreateTargetContext(target);
+            var medium = await db.MediaVariants.SingleAsync(v => v.StorageKey == outdatedKey);
+            Assert.Equal(regenerated.Size, medium.ByteSize);
+        }
+        finally
+        {
+            Directory.Delete(root, recursive: true);
+        }
+    }
+
+    [Fact]
+    public async Task RecordsAPresentBrokenOriginalFromItsMetadataWithoutUploading()
+    {
+        var root = MediaTestSupport.CreateImagesRoot();
+        try
+        {
+            const int uid = 71140;
+            var path = MediaTestSupport.WriteCorruptFile(root, uid, "broken.jpg");
+            await using (var legacy = await MediaTestSupport.OpenLegacyConnectionAsync(fixture))
+            {
+                await MediaTestSupport.InsertLegacyPictureAsync(legacy, uid, path);
+            }
+
+            var firstTarget = await fixture.CreateIsolatedTargetAsync();
+            await MediaTestSupport.InsertMediaItemAsync(fixture, uid, $"originals/{path}", targetConnectionString: firstTarget);
+            await MediaTestSupport.RunSeedAsync(fixture, root, targetConnectionString: firstTarget);
+
+            var secondTarget = await fixture.CreateIsolatedTargetAsync();
+            await MediaTestSupport.InsertMediaItemAsync(fixture, uid, $"originals/{path}", targetConnectionString: secondTarget);
+            var recording = new RecordingObjectStore(fixture.ObjectStore);
+            var summary = await MediaTestSupport.RunSeedAsync(
+                fixture, root, targetConnectionString: secondTarget, objectStore: recording);
+
+            Assert.Empty(recording.PutKeys);
+            Assert.Equal(1, summary.Broken);
+            Assert.Equal(1, summary.OriginalsPresent);
+
+            await using var db = fixture.CreateTargetContext(secondTarget);
+            var item = await db.MediaItems.SingleAsync();
+            Assert.Equal(MediaTestSupport.Sha256OfFile(root, path), item.ChecksumSha256);
+            Assert.NotNull(item.ByteSize);
+            Assert.Null(item.Width);
+            Assert.Null(item.Height);
+        }
+        finally
+        {
+            Directory.Delete(root, recursive: true);
+        }
+    }
+
+    [Fact]
+    public async Task SeedsAForumAttachmentFromTheStoreAndDownloadsItOnlyOnce()
+    {
+        var root = MediaTestSupport.CreateImagesRoot();
+        try
+        {
+            var forumPhotoPath = MediaTestSupport.WritePhoto(root, 71150, "forum.jpg", 900, 600);
+            var bytes = await File.ReadAllBytesAsync(Path.Combine(root, forumPhotoPath));
+            var sha = Convert.ToHexStringLower(SHA256.HashData(bytes));
+            const string key = "forum_attachments/71150_forum.jpg";
+            await fixture.ObjectStore.PutAsync(
+                key,
+                new MemoryStream(bytes),
+                "image/jpeg",
+                MediaObjectMetadata.ForOriginal(sha, sha, photo: null));
+
+            var target = await fixture.CreateIsolatedTargetAsync();
+            await MediaTestSupport.InsertMediaItemAsync(fixture, 71150, key, targetConnectionString: target);
+
+            var firstRun = new RecordingObjectStore(fixture.ObjectStore);
+            var first = await MediaTestSupport.RunSeedAsync(
+                fixture, root, targetConnectionString: target, objectStore: firstRun);
+            Assert.Equal(3, first.VariantsUploaded);
+            Assert.Equal(0, first.Missing);
+            Assert.Equal([key], firstRun.GetKeys);
+
+            var recording = new RecordingObjectStore(fixture.ObjectStore);
+            var second = await MediaTestSupport.RunSeedAsync(
+                fixture, root, targetConnectionString: target, objectStore: recording);
+            Assert.Empty(recording.GetKeys);
+            Assert.Empty(recording.PutKeys);
+            Assert.Equal(3, second.VariantsPresent);
+
+            await using var db = fixture.CreateTargetContext(target);
+            var item = await db.MediaItems.SingleAsync();
+            Assert.Equal(bytes.LongLength, item.ByteSize);
+            Assert.Equal(sha, item.ChecksumSha256);
+            Assert.Equal(900, item.Width);
+            Assert.Equal(600, item.Height);
+        }
+        finally
+        {
+            Directory.Delete(root, recursive: true);
+        }
+    }
+
+    [Fact]
+    public async Task ReportsAForumAttachmentMissingFromTheStore()
+    {
+        var root = MediaTestSupport.CreateImagesRoot();
+        try
+        {
+            var target = await fixture.CreateIsolatedTargetAsync();
+            await MediaTestSupport.InsertMediaItemAsync(
+                fixture, 71160, "forum_attachments/71160_gone.jpg", targetConnectionString: target);
+
+            var summary = await MediaTestSupport.RunSeedAsync(fixture, root, targetConnectionString: target);
+
+            Assert.Equal(1, summary.Missing);
+            Assert.Equal(0, summary.MetadataRecorded);
+        }
+        finally
+        {
+            Directory.Delete(root, recursive: true);
+        }
+    }
+
+    [Fact]
+    public async Task RecordsTheChecksumOfTheStoredBytesAndReuploadsAnOriginalWithoutIt()
+    {
+        var root = MediaTestSupport.CreateImagesRoot();
+        try
+        {
+            var target = await fixture.CreateIsolatedTargetAsync();
+            var distinct = await AddPhotoAsync(root, target, 71170, 500, 400);
+            var withoutChecksum = await AddPhotoAsync(root, target, 71171, 500, 400);
+            await MediaTestSupport.RunSeedAsync(fixture, root, targetConnectionString: target);
+
+            IReadOnlyDictionary<string, string> Metadata(SeededPhoto photo, bool withSha) =>
+                new Dictionary<string, string>(MediaObjectMetadata.ForOriginal("feedbeef", photo.Sha256, new PhotoInfo(500, 400)))
+                    .Where(kv => withSha || kv.Key != MediaObjectMetadata.Sha256Key)
+                    .ToDictionary(kv => kv.Key, kv => kv.Value);
+
+            foreach (var (photo, withSha) in new[] { (distinct, true), (withoutChecksum, false) })
+            {
+                await fixture.ObjectStore.PutAsync(
+                    photo.StorageKey,
+                    new MemoryStream(await File.ReadAllBytesAsync(Path.Combine(root, photo.LegacyPath))),
+                    "image/jpeg",
+                    Metadata(photo, withSha));
+            }
+
+            var recording = new RecordingObjectStore(fixture.ObjectStore);
+            var summary = await MediaTestSupport.RunSeedAsync(
+                fixture, root, targetConnectionString: target, objectStore: recording);
+
+            Assert.Equal(1, summary.OriginalsUploaded);
+            Assert.Equal([withoutChecksum.StorageKey], recording.PutKeys.Where(k => k.StartsWith("originals/")));
+
+            await using var db = fixture.CreateTargetContext(target);
+            Assert.Equal("feedbeef", (await db.MediaItems.SingleAsync(m => m.StorageKey == distinct.StorageKey)).ChecksumSha256);
+            Assert.Equal(
+                withoutChecksum.Sha256,
+                (await db.MediaItems.SingleAsync(m => m.StorageKey == withoutChecksum.StorageKey)).ChecksumSha256);
+        }
+        finally
+        {
+            Directory.Delete(root, recursive: true);
+        }
+    }
+
+    [Fact]
+    public async Task RecordsATruncatedImageAsBrokenAndDoesNotUploadItAgain()
+    {
+        var root = MediaTestSupport.CreateImagesRoot();
+        try
+        {
+            const int uid = 71180;
+            var path = MediaTestSupport.WritePhoto(root, uid, "damaged.tif", 2400, 1600);
+            var fullPath = Path.Combine(root, path);
+            var all = await File.ReadAllBytesAsync(fullPath);
+
+            // Cutting the file inside its pixel data makes the image undecodable.
+            all = all[..(all.Length * 6 / 10)];
+
+            await File.WriteAllBytesAsync(fullPath, all);
+            await using (var legacy = await MediaTestSupport.OpenLegacyConnectionAsync(fixture))
+            {
+                await MediaTestSupport.InsertLegacyPictureAsync(legacy, uid, path);
+            }
+
+            var target = await fixture.CreateIsolatedTargetAsync();
+            await MediaTestSupport.InsertMediaItemAsync(fixture, uid, $"originals/{path}", targetConnectionString: target);
+
+            var first = await MediaTestSupport.RunSeedAsync(fixture, root, targetConnectionString: target);
+            Assert.Equal(1, first.Broken);
+
+            await using (var db = fixture.CreateTargetContext(target))
+            {
+                var item = await db.MediaItems.SingleAsync();
+                Assert.Null(item.Width);
+                Assert.Null(item.Height);
+                Assert.Empty(await db.MediaVariants.ToListAsync());
+            }
+
+            var head = await fixture.ObjectStore.HeadAsync($"originals/{path}");
+            Assert.Equal("false", head!.Metadata[MediaObjectMetadata.DecodableKey]);
+
+            var recording = new RecordingObjectStore(fixture.ObjectStore);
+            var second = await MediaTestSupport.RunSeedAsync(
+                fixture, root, targetConnectionString: target, objectStore: recording);
+            Assert.Empty(recording.PutKeys);
+            Assert.Equal(1, second.Broken);
+        }
+        finally
+        {
+            Directory.Delete(root, recursive: true);
+        }
+    }
+
+    [Fact]
+    public async Task CountsAForumAttachmentThatVanishesBetweenHeadAndDownloadAsMissing()
+    {
+        var root = MediaTestSupport.CreateImagesRoot();
+        try
+        {
+            const string key = "forum_attachments/71190_vanishing.jpg";
+            await fixture.ObjectStore.PutAsync(key, new MemoryStream([1, 2, 3]), "image/jpeg");
+            var target = await fixture.CreateIsolatedTargetAsync();
+            await MediaTestSupport.InsertMediaItemAsync(fixture, 71190, key, targetConnectionString: target);
+
+            var recording = new RecordingObjectStore(fixture.ObjectStore);
+            recording.VanishOnGet.Add(key);
+            var summary = await MediaTestSupport.RunSeedAsync(
+                fixture, root, targetConnectionString: target, objectStore: recording);
+
+            Assert.Equal(1, summary.Processed);
+            Assert.Equal(1, summary.Missing);
+            Assert.Equal(0, summary.MetadataRecorded);
         }
         finally
         {

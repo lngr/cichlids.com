@@ -28,7 +28,6 @@ public sealed record EtlCommandLine
     private const string OutOption = "--out";
     private const string LimitOption = "--limit";
     private const string WorkersOption = "--workers";
-    private const string ForceOption = "--force";
     private const string MissingOutOption = "--missing-out";
     private const string OpenRegistrationOption = "--open-registration";
 
@@ -42,7 +41,7 @@ public sealed record EtlCommandLine
         [Verify] = [OutOption],
         [Migrate] = [],
         [Reset] = [],
-        [Media] = [LimitOption, WorkersOption, ForceOption, MissingOutOption],
+        [Media] = [LimitOption, WorkersOption, MissingOutOption],
         [MediaVerify] = [OutOption],
         [KeycloakImport] = [OpenRegistrationOption],
     };
@@ -56,7 +55,7 @@ public sealed record EtlCommandLine
         + "  verify [--out <path>]     compares the target with the legacy source (read-only)\n"
         + "  migrate                   applies the schema migrations\n"
         + "  reset                     empties the target and the realm users (Development and Staging only)\n"
-        + "  media [--limit N] [--workers P] [--force] [--missing-out <path>]\n"
+        + "  media [--limit N] [--workers P] [--missing-out <path>]\n"
         + "  media-verify [--out <path>]\n"
         + "  keycloak-import [--open-registration]\n"
         + "                            imports the Auth0 export (Etl:Auth0ExportPath) into Keycloak (Keycloak:*);\n"
@@ -90,11 +89,6 @@ public sealed record EtlCommandLine
     /// The number of parallel media workers from "--workers".
     /// </summary>
     public int Workers { get; init; } = DefaultWorkers;
-
-    /// <summary>
-    /// True when "--force" is given.
-    /// </summary>
-    public bool Force { get; init; }
 
     /// <summary>
     /// The path for the list of missing media files from "--missing-out", or null when none is
@@ -201,7 +195,6 @@ public sealed record EtlCommandLine
                 OutPath = values.GetValueOrDefault(OutOption),
                 Limit = limit,
                 Workers = workers,
-                Force = values.ContainsKey(ForceOption),
                 MissingOutPath = values.GetValueOrDefault(MissingOutOption),
                 OpenRegistration = values.ContainsKey(OpenRegistrationOption),
             },

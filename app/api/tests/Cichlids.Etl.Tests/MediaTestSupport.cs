@@ -1,6 +1,8 @@
 using Cichlids.Domain.Entities;
 using Cichlids.Domain.Enums;
+using System.Security.Cryptography;
 using Cichlids.Etl.Media;
+using Cichlids.Infrastructure.Storage;
 using MySqlConnector;
 using NetVips;
 
@@ -107,20 +109,22 @@ internal static class MediaTestSupport
     public static Task<MediaSeedSummary> RunSeedAsync(
         MediaEtlFixture fixture,
         string imagesRoot,
-        bool onlyMissing = true,
         int? limit = null,
         string? missingOutPath = null,
-        string? targetConnectionString = null) =>
+        string? targetConnectionString = null,
+        IObjectStore? objectStore = null) =>
         MediaSeedCommand.SeedAsync(
             fixture.LegacyConnectionString,
             targetConnectionString ?? fixture.TargetConnectionString,
-            fixture.ObjectStore,
+            objectStore ?? fixture.ObjectStore,
             imagesRoot,
             limit,
             workers: 2,
-            onlyMissing,
             missingOutPath,
             CancellationToken.None);
+
+    public static string Sha256OfFile(string root, string legacyPath) =>
+        Convert.ToHexStringLower(SHA256.HashData(File.ReadAllBytes(Path.Combine(root, legacyPath))));
 
     public static async Task<byte[]> DownloadAsync(MediaEtlFixture fixture, string storageKey)
     {

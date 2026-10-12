@@ -79,7 +79,7 @@ if (command == EtlCommandLine.Media)
 
     return await MediaSeedCommand.RunAsync(
         legacyConnectionString, targetConnectionString, mediaObjectStore, legacyImagesRoot,
-        commandLine.Limit, commandLine.Workers, !commandLine.Force, commandLine.MissingOutPath, cts.Token);
+        commandLine.Limit, commandLine.Workers, commandLine.MissingOutPath, cts.Token);
 }
 
 if (command == EtlCommandLine.MediaVerify)
