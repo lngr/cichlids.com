@@ -12,14 +12,14 @@ public sealed class VerifyStepTests(VerifyEtlFixture fixture)
     [Fact]
     public async Task ReportsNoMismatchesAfterAFullPipelineRunAndFlagsAnInjectedDeviation()
     {
+        var targetConnectionString = await fixture.CreateEmptyTargetDatabaseAsync();
         await using var context = await EtlContext.CreateAsync(
-            fixture.LegacyConnectionString, fixture.TargetConnectionString, CancellationToken.None, fixture.ObjectStore);
+            fixture.LegacyConnectionString, targetConnectionString, CancellationToken.None, fixture.ObjectStore);
 
-        foreach (var step in EtlStepRegistry.All)
-        {
-            await EtlRunner.RunAsync(step, context, CancellationToken.None);
-        }
+        var exitCode = await EtlRunner.RunAllAsync(
+            context, EtlStepRegistry.WriteSteps, EtlStepRegistry.Verify, afterGuard: null, CancellationToken.None);
 
+        Assert.Equal(0, exitCode);
         var report = context.VerificationReport;
         Assert.NotNull(report);
         Assert.True(report!.Passed, DescribeMismatches(report));
@@ -66,7 +66,7 @@ public sealed class VerifyStepTests(VerifyEtlFixture fixture)
         // same way a bug introducing an extra migrated row (or a re-run losing track of one)
         // would show up: a real discrepancy between what the source justifies and what the
         // target holds.
-        await using (var db = fixture.CreateTargetContext())
+        await using (var db = VerifyEtlFixture.CreateTargetContext(targetConnectionString))
         {
             db.Profiles.Add(new Profile
             {
@@ -94,7 +94,7 @@ public sealed class VerifyStepTests(VerifyEtlFixture fixture)
         }
         finally
         {
-            await using var db = fixture.CreateTargetContext();
+            await using var db = VerifyEtlFixture.CreateTargetContext(targetConnectionString);
             var rogue = db.Profiles.Single(p => p.Username == "verify-fixture-rogue-member");
             db.Profiles.Remove(rogue);
             await db.SaveChangesAsync();

@@ -103,45 +103,47 @@ if (command == EtlCommandLine.KeycloakImport)
         legacyConnectionString, targetConnectionString, auth0ExportPath, keycloakSettings, new GeneratedNames(keycloakSlugSecret), commandLine.OpenRegistration, cts.Token);
 }
 
-IReadOnlyList<IEtlStep> steps = command == EtlCommandLine.All
-    ? EtlStepRegistry.All
-    : [EtlStepRegistry.Find(command)!];
-
-if (commandLine.IsSingleStep)
-{
-    Console.WriteLine(
-        $"Warning: the single step '{command}' runs without the empty-target guard and writes over the rows it finds.");
-}
-
 var slugSecret = SlugSecretResolver.Resolve(configuration, environmentName);
 
 await using var context = await EtlContext.CreateAsync(
     legacyConnectionString, targetConnectionString, cts.Token, slugSecret: slugSecret);
 context.VerifyOutputPath = commandLine.OutPath;
 
-// The guard runs before the object store is prepared, since preparing it writes the bucket and
-// its policy.
 if (command == EtlCommandLine.All)
 {
+    int exitCode;
     try
     {
-        await using var guardTransaction = await context.Db.Database.BeginTransactionAsync(cts.Token);
-        await EmptyTargetGuard.EnsureEmptyAsync(context.Db, cts.Token);
+        // The object store is prepared once the guard has passed, since preparing it writes the
+        // bucket and its policy.
+        exitCode = await EtlRunner.RunAllAsync(
+            context,
+            EtlStepRegistry.WriteSteps,
+            EtlStepRegistry.Verify,
+            async cancellationToken => context.ObjectStore = await CreateObjectStoreAsync(configuration, cancellationToken),
+            cts.Token);
     }
     catch (EmptyTargetException ex)
     {
         Console.Error.WriteLine(ex.Message);
         return 1;
     }
+
+    ConsoleReport.Print(context.Statistics);
+    return exitCode;
 }
 
-context.ObjectStore = await CreateObjectStoreAsync(configuration, cts.Token);
-
-foreach (var step in steps)
+// The verify command only reads; a single write step can need the object store.
+if (commandLine.IsSingleStep)
 {
-    Console.WriteLine($"Running step '{step.Name}'...");
-    await EtlRunner.RunAsync(step, context, cts.Token);
+    Console.WriteLine(
+        $"Warning: the single step '{command}' runs without the empty-target guard and writes over the rows it finds.");
+    context.ObjectStore = await CreateObjectStoreAsync(configuration, cts.Token);
 }
+
+var step = EtlStepRegistry.Find(command)!;
+Console.WriteLine($"Running step '{step.Name}'...");
+await EtlRunner.RunAsync(step, context, cts.Token);
 
 ConsoleReport.Print(context.Statistics);
 return context.VerificationReport is { Passed: false } ? 1 : 0;
