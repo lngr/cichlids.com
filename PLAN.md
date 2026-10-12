@@ -69,8 +69,8 @@ Profile ──< Tank ──< TankPost (Story | Single) ──< MediaItem (Foto |
   Video → adaptive HLS-Renditions im **separaten Video-Hosting** (ADR-0012); beide immutable.
 - **Reputation:** abgeleitete, serverseitig berechnete Größe aus Ratings/Views/Badges.
 - **Species:** Taxonomie (829 Arten vorhanden) für Besatz & Discovery.
-- **legacy_id-Brücke:** jede migrierte Entität trägt ihren Legacy-Schlüssel für idempotente,
-  wiederholbare ETL-Läufe und spätere Nachvollziehbarkeit.
+- **legacy_id-Brücke:** jede migrierte Entität speichert ihren Legacy-Schlüssel für die
+  Verifikation gegen die Quelle und spätere Nachvollziehbarkeit.
 
 Das neue Schema wird gegenüber Legacy neu entworfen (ADR-0002); `user_cichlids_*` ist die
 Quelle, nicht die Vorlage.
@@ -85,20 +85,26 @@ Kommentare 1,6 Mio., Tanks 6.729, User 11.948, Arten 829. Bild-Originale ~235 GB
 
 1. **Schema-Mapping** Legacy → neues Modell festschreiben (Tab „Migration" im HTML-Report als
    Referenz). Jede Zieltabelle bekommt `legacy_id`.
-2. **Idempotenter ETL** (wiederholbar; Upsert auf `legacy_id`): User → Profile, Tanks,
-   Pictures → MediaItem/TankPost, Comments, Ratings, Species + Verknüpfungen
+2. **ETL in eine leere Ziel-DB** (alle Schritte in einer Transaktion, ADR-0026): User →
+   Profile, Tanks, Pictures → MediaItem/TankPost, Comments, Ratings, Species + Verknüpfungen
    (`species_pictures_mm`). Hinweis: Der Legacy-Bestand ist **reine Fotos** — kein Video zu
    migrieren; Video ist eine reine Vorwärts-Funktion (ADR-0012).
 3. **Datenhygiene zuerst** (PROJECT-CONTEXT §12): Spam/Test-Accounts, gelöschte/discardete
    Inhalte, Moderationsstatus filtern.
-4. **Bild-Migration → R2:** Originale unter stabilem Key (`user_pics/<uid>/<datei>`), Unicode/
-   `%20`-Dateinamen normalisieren. Beim Ingest **feste Varianten** (thumb/medium/full) erzeugen,
-   immutable, langlebiger `Cache-Control` (ADR-0009). Verwaiste Dateien (v.a.
-   `api_uploads/chunks`) auslassen; 5 fehlende aktive Bilder protokollieren.
-5. **Verifikation:** Abgleich DB-Verweise ↔ R2-Objekte (Skript-Analog zu `verify_images.py`),
-   Abweichungsliste als Artefakt.
+4. **Bild-Migration:** Originale unter stabilem Key (`user_pics/<uid>/<datei>`) im privaten
+   Master-Store (Hetzner Object Storage), Unicode/`%20`-Dateinamen normalisieren. Vor dem
+   Speichern entfernt der Seed Ortsdaten, Kamera-Seriennummern und Besitzernamen (ADR-0009).
+   **Feste Varianten** (thumb/small/medium/large, sRGB, ohne Metadaten) sind immutable, haben
+   einen langlebigen `Cache-Control` und liegen im Serving-Store R2, zusammen mit den
+   öffentlichen Kopien nicht dekodierbarer Bilder. Der Seed entscheidet anhand der Objekte im
+   Store, was er hochlädt. Verwaiste Dateien (v.a. `api_uploads/chunks`) auslassen; fehlende
+   aktive Bilder protokollieren.
+5. **Verifikation:** Der Verify-Schritt berechnet jede Erwartung aus der Legacy-Quelle und
+   gleicht sie mit der Ziel-DB ab. Der Medien-Seed listet fehlende, defekte und abgelehnte
+   Dateien als Artefakt.
 
-**Cutover:** einmaliger ETL beim Deployment; bis dahin wiederholbar gegen eine Staging-DB.
+**Cutover:** einmaliger ETL beim Deployment in die leere Produktions-DB. Development und Staging
+setzen Ziel-DB und Keycloak-Konten vor jedem Lauf per Reset zurück (ADR-0026).
 
 ---
 
