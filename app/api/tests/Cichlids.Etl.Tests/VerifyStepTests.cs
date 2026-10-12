@@ -1,8 +1,4 @@
-using Cichlids.Domain.Entities;
-using Cichlids.Domain.Enums;
 using Cichlids.Etl.Runtime;
-using Cichlids.Etl.Steps;
-using Microsoft.EntityFrameworkCore;
 
 namespace Cichlids.Etl.Tests;
 
@@ -10,19 +6,11 @@ namespace Cichlids.Etl.Tests;
 public sealed class VerifyStepTests(VerifyEtlFixture fixture)
 {
     [Fact]
-    public async Task ReportsNoMismatchesAfterAFullPipelineRunAndFlagsAnInjectedDeviation()
+    public async Task ReportsNoMismatchesAfterAFullPipelineRun()
     {
-        var targetConnectionString = await fixture.CreateEmptyTargetDatabaseAsync();
-        await using var context = await EtlContext.CreateAsync(
-            fixture.LegacyConnectionString, targetConnectionString, CancellationToken.None, fixture.ObjectStore);
-
-        var exitCode = await EtlRunner.RunAllAsync(
-            context, EtlStepRegistry.WriteSteps, EtlStepRegistry.Verify, afterGuard: null, CancellationToken.None);
-
-        Assert.Equal(0, exitCode);
-        var report = context.VerificationReport;
-        Assert.NotNull(report);
-        Assert.True(report!.Passed, DescribeMismatches(report));
+        Assert.Equal(0, fixture.PipelineExitCode);
+        var report = fixture.PipelineReport;
+        Assert.True(report.Passed, DescribeMismatches(report));
         Assert.Equal(0, report.MismatchCount);
 
         AssertRow(report, "species", 2, 2);
@@ -61,230 +49,86 @@ public sealed class VerifyStepTests(VerifyEtlFixture fixture)
         AssertRow(report, "comment_poster_name_email_like", 0, 0);
         AssertRow(report, "discussion_post_poster_name_email_like", 0, 0);
         AssertInfoRow(report, "guest_names_generated", 1);
-
-        // Inject a target-only member profile carrying a legacy id no source row justifies, the
-        // same way a bug introducing an extra migrated row (or a re-run losing track of one)
-        // would show up: a real discrepancy between what the source justifies and what the
-        // target holds.
-        await using (var db = VerifyEtlFixture.CreateTargetContext(targetConnectionString))
-        {
-            db.Profiles.Add(new Profile
-            {
-                LegacyId = 999_001,
-                Username = "verify-fixture-rogue-member",
-                DisplayName = "Rogue Member",
-                Kind = ProfileKind.Member,
-                CreatedAt = DateTimeOffset.UtcNow,
-            });
-            await db.SaveChangesAsync();
-        }
-
-        try
-        {
-            await EtlRunner.RunAsync(new VerifyStep(), context, CancellationToken.None);
-            var deviatingReport = context.VerificationReport;
-
-            Assert.NotNull(deviatingReport);
-            Assert.False(deviatingReport!.Passed);
-            var mismatchRow = Assert.Single(deviatingReport.Rows, r => r.Entity == "profiles_member");
-            Assert.Equal(VerificationStatus.Mismatch, mismatchRow.Status);
-            Assert.Equal(2, mismatchRow.Expected);
-            Assert.Equal(3, mismatchRow.Actual);
-            Assert.Equal(1, mismatchRow.Delta);
-        }
-        finally
-        {
-            await using var db = VerifyEtlFixture.CreateTargetContext(targetConnectionString);
-            var rogue = db.Profiles.Single(p => p.Username == "verify-fixture-rogue-member");
-            db.Profiles.Remove(rogue);
-            await db.SaveChangesAsync();
-        }
-
-        // The injected row is gone again, so a clean re-run passes exactly like the first one.
-        await EtlRunner.RunAsync(new VerifyStep(), context, CancellationToken.None);
-        Assert.True(context.VerificationReport!.Passed);
     }
 
     [Fact]
-    public async Task EveryRowNamesItsRule()
+    public void EveryRowNamesItsRule()
     {
-        var targetConnectionString = await fixture.CreateEmptyTargetDatabaseAsync();
-        await using var context = await EtlContext.CreateAsync(
-            fixture.LegacyConnectionString, targetConnectionString, CancellationToken.None, fixture.ObjectStore);
+        Assert.All(fixture.PipelineReport.Rows, row => Assert.False(string.IsNullOrWhiteSpace(row.Rule), row.Entity));
+    }
 
-        await EtlRunner.RunAllAsync(
-            context, EtlStepRegistry.WriteSteps, EtlStepRegistry.Verify, afterGuard: null, CancellationToken.None);
+    [Fact]
+    public async Task FlagsAMemberProfileNoLegacyAccountJustifies()
+    {
+        var report = await fixture.VerifyInRolledBackTransactionAsync(context => VerifyEtlFixture.ExecuteAsync(
+            context,
+            "INSERT INTO profile (legacy_id, username, display_name, kind, created_at) "
+            + "VALUES (999001, 'verify-fixture-rogue-member', 'Rogue Member', 'member', now())"));
 
-        var report = context.VerificationReport;
-        Assert.NotNull(report);
-        Assert.All(report!.Rows, row => Assert.False(string.IsNullOrWhiteSpace(row.Rule), row.Entity));
+        Assert.False(report.Passed);
+        AssertMismatch(report, "profiles_member", 2, 3);
+
+        var cleanReport = await fixture.VerifyInRolledBackTransactionAsync();
+        Assert.True(cleanReport.Passed, DescribeMismatches(cleanReport));
     }
 
     [Fact]
     public async Task IgnoresAMemberProfileTheApiCreatedForAFirstLoginWhenCountingMigratedMembers()
     {
-        await using var context = await EtlContext.CreateAsync(
-            fixture.LegacyConnectionString, fixture.TargetConnectionString, CancellationToken.None, fixture.ObjectStore);
+        var report = await fixture.VerifyInRolledBackTransactionAsync(context => VerifyEtlFixture.ExecuteAsync(
+            context,
+            "INSERT INTO profile (username, display_name, kind, created_at) "
+            + "VALUES ('verify-fixture-first-login-member', 'First Login Member', 'member', now())"));
 
-        foreach (var step in EtlStepRegistry.All)
-        {
-            await EtlRunner.RunAsync(step, context, CancellationToken.None);
-        }
-
-        // CurrentProfileService creates a member profile with no legacy_id on a first login;
-        // verify must not count it against the migrated member total.
-        await using (var db = fixture.CreateTargetContext())
-        {
-            db.Profiles.Add(new Profile
-            {
-                Username = "verify-fixture-first-login-member",
-                DisplayName = "First Login Member",
-                Kind = ProfileKind.Member,
-                CreatedAt = DateTimeOffset.UtcNow,
-            });
-            await db.SaveChangesAsync();
-        }
-
-        try
-        {
-            await EtlRunner.RunAsync(new VerifyStep(), context, CancellationToken.None);
-            var report = context.VerificationReport;
-
-            Assert.NotNull(report);
-            Assert.True(report!.Passed, DescribeMismatches(report));
-            AssertRow(report, "profiles_member", 2, 2);
-            AssertInfoRow(report, "profiles_member_registered", 1);
-        }
-        finally
-        {
-            await using var db = fixture.CreateTargetContext();
-            var rogue = db.Profiles.Single(p => p.Username == "verify-fixture-first-login-member");
-            db.Profiles.Remove(rogue);
-            await db.SaveChangesAsync();
-        }
+        Assert.True(report.Passed, DescribeMismatches(report));
+        AssertRow(report, "profiles_member", 2, 2);
+        AssertInfoRow(report, "profiles_member_registered", 1);
     }
 
     [Fact]
     public async Task FlagsAProfileWhoseHandleOrDisplayNameHoldsAnEmailAddress()
     {
-        await using var context = await EtlContext.CreateAsync(
-            fixture.LegacyConnectionString, fixture.TargetConnectionString, CancellationToken.None, fixture.ObjectStore);
+        var report = await fixture.VerifyInRolledBackTransactionAsync(context => VerifyEtlFixture.ExecuteAsync(
+            context,
+            "INSERT INTO profile (legacy_id, username, display_name, kind, created_at) "
+            + "VALUES (999003, 'exposed@verify.example', 'Exposed <exposed@verify.example>', 'archived', now())"));
 
-        foreach (var step in EtlStepRegistry.All)
-        {
-            await EtlRunner.RunAsync(step, context, CancellationToken.None);
-        }
-
-        await using (var db = fixture.CreateTargetContext())
-        {
-            db.Profiles.Add(new Profile
-            {
-                Username = "exposed@verify.example",
-                DisplayName = "Exposed <exposed@verify.example>",
-                Kind = ProfileKind.Member,
-                CreatedAt = DateTimeOffset.UtcNow,
-            });
-            await db.SaveChangesAsync();
-        }
-
-        try
-        {
-            await EtlRunner.RunAsync(new VerifyStep(), context, CancellationToken.None);
-            var report = context.VerificationReport;
-
-            Assert.NotNull(report);
-            Assert.False(report!.Passed);
-            AssertMismatch(report, "profile_username_email_like", 0, 1);
-            AssertMismatch(report, "profile_display_name_email_like", 0, 1);
-            AssertRow(report, "profiles_member", 2, 2);
-        }
-        finally
-        {
-            await using var db = fixture.CreateTargetContext();
-            db.Profiles.Remove(db.Profiles.Single(p => p.Username == "exposed@verify.example"));
-            await db.SaveChangesAsync();
-        }
+        Assert.False(report.Passed);
+        AssertMismatch(report, "profile_username_email_like", 0, 1);
+        AssertMismatch(report, "profile_display_name_email_like", 0, 1);
+        AssertRow(report, "profiles_member", 2, 2);
     }
 
     [Fact]
     public async Task FlagsAProfileWhoseExternalAvatarUrlIsAGravatarUrl()
     {
-        await using var context = await EtlContext.CreateAsync(
-            fixture.LegacyConnectionString, fixture.TargetConnectionString, CancellationToken.None, fixture.ObjectStore);
+        var report = await fixture.VerifyInRolledBackTransactionAsync(context => VerifyEtlFixture.ExecuteAsync(
+            context,
+            "UPDATE profile SET external_avatar_url = 'http://gravatar.com/avatar/injected' WHERE legacy_id = 9011"));
 
-        foreach (var step in EtlStepRegistry.All)
-        {
-            await EtlRunner.RunAsync(step, context, CancellationToken.None);
-        }
-
-        await using (var db = fixture.CreateTargetContext())
-        {
-            db.Profiles.Add(new Profile
-            {
-                Username = "verify-fixture-gravatar-avatar",
-                DisplayName = "Gravatar Avatar",
-                ExternalAvatarUrl = "http://gravatar.com/avatar/injected",
-                Kind = ProfileKind.Member,
-                CreatedAt = DateTimeOffset.UtcNow,
-            });
-            await db.SaveChangesAsync();
-        }
-
-        try
-        {
-            await EtlRunner.RunAsync(new VerifyStep(), context, CancellationToken.None);
-            var report = context.VerificationReport;
-
-            Assert.NotNull(report);
-            Assert.False(report!.Passed);
-            AssertMismatch(report, "profile_avatar_gravatar", 0, 1);
-        }
-        finally
-        {
-            await using var db = fixture.CreateTargetContext();
-            db.Profiles.Remove(db.Profiles.Single(p => p.Username == "verify-fixture-gravatar-avatar"));
-            await db.SaveChangesAsync();
-        }
+        Assert.False(report.Passed);
+        AssertMismatch(report, "profile_avatar_gravatar", 0, 1);
     }
 
     [Fact]
     public async Task FlagsAGuestNameThatHoldsAnEmailAddress()
     {
-        await using var context = await EtlContext.CreateAsync(
-            fixture.LegacyConnectionString, fixture.TargetConnectionString, CancellationToken.None, fixture.ObjectStore);
-
-        foreach (var step in EtlStepRegistry.All)
-        {
-            await EtlRunner.RunAsync(step, context, CancellationToken.None);
-        }
-
-        await using (var db = fixture.CreateTargetContext())
+        await using (var db = VerifyEtlFixture.CreateTargetContext(fixture.PipelineConnectionString))
         {
             Assert.Equal("guest_00001", db.DiscussionPosts.Single(p => p.LegacyId == 98002).PosterName);
-
-            await db.Database.ExecuteSqlRawAsync(
-                "UPDATE comment SET poster_name = 'Exposed <exposed@verify.example>' WHERE legacy_id = 9303");
-            await db.Database.ExecuteSqlRawAsync(
-                "UPDATE discussion_post SET poster_name = 'exposed@verify.example' WHERE legacy_id = 98002");
         }
 
-        try
+        var report = await fixture.VerifyInRolledBackTransactionAsync(async context =>
         {
-            await EtlRunner.RunAsync(new VerifyStep(), context, CancellationToken.None);
-            var report = context.VerificationReport;
+            await VerifyEtlFixture.ExecuteAsync(
+                context, "UPDATE comment SET poster_name = 'Exposed <exposed@verify.example>' WHERE legacy_id = 9303");
+            await VerifyEtlFixture.ExecuteAsync(
+                context, "UPDATE discussion_post SET poster_name = 'exposed@verify.example' WHERE legacy_id = 98002");
+        });
 
-            Assert.NotNull(report);
-            Assert.False(report!.Passed);
-            AssertMismatch(report, "comment_poster_name_email_like", 0, 1);
-            AssertMismatch(report, "discussion_post_poster_name_email_like", 0, 1);
-        }
-        finally
-        {
-            await using var db = fixture.CreateTargetContext();
-            await db.Database.ExecuteSqlRawAsync("UPDATE comment SET poster_name = NULL WHERE legacy_id = 9303");
-            await db.Database.ExecuteSqlRawAsync(
-                "UPDATE discussion_post SET poster_name = 'guest_00001' WHERE legacy_id = 98002");
-        }
+        Assert.False(report.Passed);
+        AssertMismatch(report, "comment_poster_name_email_like", 0, 1);
+        AssertMismatch(report, "discussion_post_poster_name_email_like", 0, 1);
     }
 
     private static void AssertMismatch(VerificationReport report, string entity, long expected, long actual)
