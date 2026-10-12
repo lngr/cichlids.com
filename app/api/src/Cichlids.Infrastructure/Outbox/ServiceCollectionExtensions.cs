@@ -27,7 +27,17 @@ public static class ServiceCollectionExtensions
         services.AddSingleton(serviceProvider => new WebhookTargetPolicy(
             serviceProvider.GetRequiredService<IOptions<WebhookTargetOptions>>().Value.AllowedTargetHosts));
 
-        services.AddHttpClient(OutboxDispatchService.HttpClientName, client => client.Timeout = TimeSpan.FromSeconds(10));
+        // Redirects are never followed, so a listed target cannot forward a delivery to a host
+        // outside the allowlist.
+        services.AddHttpClient(OutboxDispatchService.HttpClientName)
+            .ConfigureHttpClient((serviceProvider, client) =>
+                client.Timeout = serviceProvider.GetRequiredService<IOptions<OutboxDispatcherOptions>>().Value.DeliveryTimeout)
+            .ConfigurePrimaryHttpMessageHandler(() => new SocketsHttpHandler
+            {
+                AllowAutoRedirect = false,
+                UseCookies = false,
+                PooledConnectionLifetime = TimeSpan.FromMinutes(2),
+            });
 
         services.TryAddSingleton(TimeProvider.System);
         services.AddScoped<OutboxDispatchService>();

@@ -94,8 +94,8 @@ public sealed class OutboxDispatchFixture : IAsyncLifetime
 
     /// <summary>
     /// Builds a dispatch service backed by its own database connection and the host's real HTTP
-    /// client factory, so delivery goes over an actual loopback HTTP request to a
-    /// TestWebhookListener. Each call returns an independent instance, so a test simulating
+    /// client factory and webhook target policy, so delivery goes over an actual loopback HTTP
+    /// request to a TestWebhookListener. Each call returns an independent instance, so a test simulating
     /// several dispatcher processes gets separate connections contending for the same rows, each
     /// with its own clock.
     /// </summary>
@@ -104,6 +104,7 @@ public sealed class OutboxDispatchFixture : IAsyncLifetime
         new(
             CreateDbContext(),
             _factory.Services.GetRequiredService<IHttpClientFactory>(),
+            _factory.Services.GetRequiredService<WebhookTargetPolicy>(),
             timeProvider ?? TimeProvider.System,
             Options.Create(options ?? new OutboxDispatcherOptions()),
             NullLogger<OutboxDispatchService>.Instance);

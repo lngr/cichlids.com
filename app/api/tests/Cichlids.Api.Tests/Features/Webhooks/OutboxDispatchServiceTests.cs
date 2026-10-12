@@ -334,6 +334,110 @@ public class OutboxDispatchServiceTests(OutboxDispatchFixture fixture) : IAsyncL
     }
 
     [Fact]
+    public async Task RunOnceAsync_CorruptPayloadIsAFailedAttemptAndOthersAreDelivered()
+    {
+        await using var listener = new TestWebhookListener();
+        listener.Start();
+        await CreateSubscriptionAsync(listener.Uri, "corrupt-secret", ["test.event"]);
+
+        var now = DateTimeOffset.UtcNow;
+        var corrupt = await InsertCorruptEventAsync(now.AddSeconds(-2));
+        var good = await InsertEventAsync(occurredAt: now.AddSeconds(-1));
+
+        await fixture.CreateDispatchService().RunOnceAsync(CancellationToken.None);
+
+        Assert.Equal([good], listener.AcceptedRequests.Select(r => r.EventId));
+
+        await using var db = fixture.CreateDbContext();
+        var corruptEvent = await db.OutboxEvents.AsNoTracking().SingleAsync(e => e.Id == corrupt);
+        Assert.Null(corruptEvent.DispatchedAt);
+        Assert.Equal(1, corruptEvent.AttemptCount);
+        Assert.NotNull(corruptEvent.LastError);
+        Assert.NotNull((await db.OutboxEvents.AsNoTracking().SingleAsync(e => e.Id == good)).DispatchedAt);
+    }
+
+    [Theory]
+    [InlineData("ftp://127.0.0.1/hook")]
+    [InlineData("http://169.254.169.254/latest")]
+    public async Task RunOnceAsync_SubscriptionOutsideTheAllowlistIsAFailedAttempt(string url)
+    {
+        var subscriptionId = await CreateSubscriptionAsync(new Uri(url), "stored-secret", ["test.event"]);
+        var id = await InsertEventAsync(occurredAt: DateTimeOffset.UtcNow.AddSeconds(-1));
+
+        await fixture.CreateDispatchService().RunOnceAsync(CancellationToken.None);
+
+        await using var db = fixture.CreateDbContext();
+        var outboxEvent = await db.OutboxEvents.AsNoTracking().SingleAsync(e => e.Id == id);
+        Assert.Null(outboxEvent.DispatchedAt);
+        Assert.Equal(1, outboxEvent.AttemptCount);
+        Assert.Equal($"subscription {subscriptionId} target is not allowed", outboxEvent.LastError);
+    }
+
+    [Fact]
+    public async Task RunOnceAsync_RedirectIsNotFollowed()
+    {
+        await using var target = new TestWebhookListener();
+        target.Start();
+        await using var redirecting = new TestWebhookListener();
+        redirecting.RespondWith(HttpStatusCode.Found, target.Uri);
+        redirecting.Start();
+        await CreateSubscriptionAsync(redirecting.Uri, "redirect-secret", ["test.event"]);
+
+        var id = await InsertEventAsync(occurredAt: DateTimeOffset.UtcNow.AddSeconds(-1));
+
+        await fixture.CreateDispatchService().RunOnceAsync(CancellationToken.None);
+
+        Assert.Single(redirecting.Requests);
+        Assert.Empty(target.Requests);
+
+        await using var db = fixture.CreateDbContext();
+        var outboxEvent = await db.OutboxEvents.AsNoTracking().SingleAsync(e => e.Id == id);
+        Assert.Null(outboxEvent.DispatchedAt);
+        Assert.Contains("302", outboxEvent.LastError);
+    }
+
+    [Fact]
+    public async Task RunOnceAsync_SlowSubscriberTimesOut()
+    {
+        await using var listener = new TestWebhookListener();
+        listener.HoldRequests();
+        listener.Start();
+        var subscriptionId = await CreateSubscriptionAsync(listener.Uri, "slow-secret", ["test.event"]);
+
+        var id = await InsertEventAsync(occurredAt: DateTimeOffset.UtcNow.AddSeconds(-1));
+        var options = new OutboxDispatcherOptions { DeliveryTimeout = TimeSpan.FromSeconds(1) };
+
+        var pass = fixture.CreateDispatchService(options).RunOnceAsync(CancellationToken.None);
+        var finished = await Task.WhenAny(pass, Task.Delay(TimeSpan.FromSeconds(8)));
+        listener.Release();
+
+        Assert.Same(pass, finished);
+        await using var db = fixture.CreateDbContext();
+        var outboxEvent = await db.OutboxEvents.AsNoTracking().SingleAsync(e => e.Id == id);
+        Assert.Null(outboxEvent.DispatchedAt);
+        Assert.Equal(1, outboxEvent.AttemptCount);
+        Assert.Equal($"subscription {subscriptionId} timed out", outboxEvent.LastError);
+    }
+
+    [Fact]
+    public async Task RunOnceAsync_LastErrorDoesNotContainTheUrl()
+    {
+        await using var listener = new TestWebhookListener();
+        listener.SetDown(true);
+        listener.Start();
+        var subscriptionId = await CreateSubscriptionAsync(listener.Uri, "url-secret", ["test.event"]);
+
+        var id = await InsertEventAsync(occurredAt: DateTimeOffset.UtcNow.AddSeconds(-1));
+
+        await fixture.CreateDispatchService().RunOnceAsync(CancellationToken.None);
+
+        await using var db = fixture.CreateDbContext();
+        var outboxEvent = await db.OutboxEvents.AsNoTracking().SingleAsync(e => e.Id == id);
+        Assert.Equal($"subscription {subscriptionId} responded 503", outboxEvent.LastError);
+        Assert.DoesNotContain(listener.Uri.Authority, outboxEvent.LastError);
+    }
+
+    [Fact]
     public async Task RunOnceAsync_WildcardSubscriptionReceivesEveryEventType()
     {
         await using var listener = new TestWebhookListener();
@@ -367,6 +471,23 @@ public class OutboxDispatchServiceTests(OutboxDispatchFixture fixture) : IAsyncL
         db.WebhookSubscriptions.Add(subscription);
         await db.SaveChangesAsync();
         return subscription.Id;
+    }
+
+    /// <summary>
+    /// Inserts an event whose payload is valid jsonb nested deeper than the envelope builder
+    /// accepts, so building its delivery body fails.
+    /// </summary>
+    private async Task<Guid> InsertCorruptEventAsync(DateTimeOffset occurredAt)
+    {
+        var id = Guid.CreateVersion7();
+        var payload = new string('[', 100) + new string(']', 100);
+        await using var db = fixture.CreateDbContext();
+        await db.Database.ExecuteSqlAsync(
+            $"""
+            INSERT INTO outbox_event (id, occurred_at, event_type, aggregate_type, aggregate_id, payload, next_attempt_at)
+            VALUES ({id}, {occurredAt}, 'test.event', 'post', '1', {payload}::jsonb, {occurredAt})
+            """);
+        return id;
     }
 
     private async Task<Guid> InsertEventAsync(

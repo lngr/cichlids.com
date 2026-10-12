@@ -20,12 +20,14 @@ namespace Cichlids.Infrastructure.Outbox;
 public sealed class OutboxDispatchService(
     CichlidsDbContext context,
     IHttpClientFactory httpClientFactory,
+    WebhookTargetPolicy targetPolicy,
     TimeProvider timeProvider,
     IOptions<OutboxDispatcherOptions> options,
     ILogger<OutboxDispatchService> logger)
 {
     public const string HttpClientName = "outbox-webhook-delivery";
     private const string SignatureHeaderName = "X-Cichlids-Signature";
+    private const int MaxErrorLength = 1000;
 
     /// <summary>
     /// Reserves and processes one batch of due events. Returns the number of events reserved, so a
@@ -100,41 +102,93 @@ public sealed class OutboxDispatchService(
                 return;
             }
 
-            var outcome = await DeliverAsync(outboxEvent, subscribers, cancellationToken);
-            await RecordAsync(outboxEvent, outcome, settings, cancellationToken);
+            DeliveryOutcome outcome;
+            try
+            {
+                outcome = await DeliverAsync(outboxEvent, subscribers, settings, cancellationToken);
+            }
+            catch (Exception ex) when (!cancellationToken.IsCancellationRequested)
+            {
+                logger.LogWarning(ex, "Delivering outbox event {EventId} failed", outboxEvent.Id);
+                outcome = DeliveryOutcome.Failed($"delivery failed: {ex.GetType().Name}");
+            }
+
+            try
+            {
+                await RecordAsync(outboxEvent, outcome, settings, cancellationToken);
+            }
+            catch (Exception ex) when (!cancellationToken.IsCancellationRequested)
+            {
+                logger.LogError(
+                    ex, "Recording the delivery result of outbox event {EventId} failed; it is due again when its reservation ends",
+                    outboxEvent.Id);
+            }
         }
     }
 
     private async Task<DeliveryOutcome> DeliverAsync(
-        OutboxEvent outboxEvent, IReadOnlyList<WebhookSubscription> subscribers, CancellationToken cancellationToken)
+        OutboxEvent outboxEvent,
+        IReadOnlyList<WebhookSubscription> subscribers,
+        OutboxDispatcherOptions settings,
+        CancellationToken cancellationToken)
     {
         var body = BuildDeliveryBody(outboxEvent);
         var httpClient = httpClientFactory.CreateClient(HttpClientName);
 
         foreach (var subscriber in subscribers)
         {
-            try
+            var error = await DeliverToAsync(httpClient, subscriber, body, settings, cancellationToken);
+            if (error is not null)
             {
-                using var request = new HttpRequestMessage(HttpMethod.Post, subscriber.Url)
-                {
-                    Content = new StringContent(body, Encoding.UTF8, "application/json"),
-                };
-                request.Headers.Add(SignatureHeaderName, Sign(body, subscriber.Secret));
-
-                using var response = await httpClient.SendAsync(
-                    request, HttpCompletionOption.ResponseHeadersRead, cancellationToken);
-                if (!response.IsSuccessStatusCode)
-                {
-                    return DeliveryOutcome.Failed($"{subscriber.Url} responded {(int)response.StatusCode}");
-                }
-            }
-            catch (Exception ex) when (ex is HttpRequestException or TaskCanceledException)
-            {
-                return DeliveryOutcome.Failed($"{subscriber.Url}: {ex.Message}");
+                return DeliveryOutcome.Failed(error);
             }
         }
 
         return DeliveryOutcome.Succeeded;
+    }
+
+    /// <summary>
+    /// Posts the body to one subscriber and returns null on a success status, otherwise an error
+    /// naming the subscription and the status or exception type. A subscriber whose target the
+    /// allowlist rejects is never contacted.
+    /// </summary>
+    private async Task<string?> DeliverToAsync(
+        HttpClient httpClient,
+        WebhookSubscription subscriber,
+        string body,
+        OutboxDispatcherOptions settings,
+        CancellationToken cancellationToken)
+    {
+        if (!targetPolicy.IsAllowed(subscriber.Url, out _))
+        {
+            return $"subscription {subscriber.Id} target is not allowed";
+        }
+
+        using var timeout = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+        timeout.CancelAfter(settings.DeliveryTimeout);
+
+        try
+        {
+            using var request = new HttpRequestMessage(HttpMethod.Post, subscriber.Url)
+            {
+                Content = new StringContent(body, Encoding.UTF8, "application/json"),
+            };
+            request.Headers.Add(SignatureHeaderName, Sign(body, subscriber.Secret));
+
+            using var response = await httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, timeout.Token);
+            return response.IsSuccessStatusCode
+                ? null
+                : $"subscription {subscriber.Id} responded {(int)response.StatusCode}";
+        }
+        catch (OperationCanceledException) when (!cancellationToken.IsCancellationRequested)
+        {
+            return $"subscription {subscriber.Id} timed out";
+        }
+        catch (Exception ex) when (!cancellationToken.IsCancellationRequested)
+        {
+            logger.LogInformation(ex, "Delivering to webhook subscription {SubscriptionId} failed", subscriber.Id);
+            return $"subscription {subscriber.Id} failed: {ex.GetType().Name}";
+        }
     }
 
     private async Task RecordAsync(
@@ -218,6 +272,7 @@ public sealed class OutboxDispatchService(
     {
         public static readonly DeliveryOutcome Succeeded = new((string?)null);
 
-        public static DeliveryOutcome Failed(string error) => new(error);
+        public static DeliveryOutcome Failed(string error) =>
+            new(error.Length <= MaxErrorLength ? error : error[..MaxErrorLength]);
     }
 }
