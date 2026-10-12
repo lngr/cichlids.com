@@ -697,6 +697,40 @@ public sealed class MediaSeedCommandTests(MediaEtlFixture fixture)
         }
     }
 
+    [Fact]
+    public async Task ReportsAForumAttachmentAboveTheDownloadCapAndSeedsTheOtherItems()
+    {
+        var root = MediaTestSupport.CreateImagesRoot();
+        try
+        {
+            const string oversizedKey = "forum_attachments/71191_oversized.jpg";
+            const string regularKey = "forum_attachments/71192_regular.jpg";
+            await fixture.ObjectStore.PutAsync(oversizedKey, new MemoryStream([1, 2, 3]), "image/jpeg");
+            await fixture.ObjectStore.PutAsync(regularKey, new MemoryStream([4, 5, 6]), "image/jpeg");
+            var target = await fixture.CreateIsolatedTargetAsync();
+            await MediaTestSupport.InsertMediaItemAsync(fixture, 71191, oversizedKey, targetConnectionString: target);
+            await MediaTestSupport.InsertMediaItemAsync(fixture, 71192, regularKey, targetConnectionString: target);
+            var reportPath = Path.Combine(root, "report.json");
+
+            var recording = new RecordingObjectStore(fixture.ObjectStore);
+            recording.TooLargeOnGet.Add(oversizedKey);
+            var summary = await MediaTestSupport.RunSeedAsync(
+                fixture, root, missingOutPath: reportPath, targetConnectionString: target, objectStore: recording);
+
+            Assert.Equal(2, summary.Processed);
+            Assert.Equal(1, summary.Missing);
+            Assert.Equal(1, summary.MetadataRecorded);
+            var report = JsonSerializer.Deserialize<MissingReportDto>(await File.ReadAllTextAsync(reportPath), JsonOptions)!;
+            var entry = Assert.Single(report.Missing);
+            Assert.Equal(oversizedKey, entry.StorageKey);
+            Assert.Contains("download limit", entry.Reason);
+        }
+        finally
+        {
+            Directory.Delete(root, recursive: true);
+        }
+    }
+
     // Mirrors the private MissingReportDto/MissingEntryDto shape MediaSeedCommand writes: a
     // separate, test-local copy since the production records are private to that class and the
     // JSON contract, not the CLR type, is what a consumer of --missing-out actually depends on.

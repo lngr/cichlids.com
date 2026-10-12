@@ -30,8 +30,10 @@ public interface IObjectStore
     Task<ObjectHead?> HeadAsync(string key, CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Downloads the object stored under the given key. Returns null when no object exists for
-    /// that key instead of throwing, so callers can treat a missing object as a normal outcome.
+    /// Opens a forward-only stream over the object stored under the given key; disposing the
+    /// stream releases the download. Returns null when no object exists for that key, so callers
+    /// can treat a missing object as a normal outcome. Throws ObjectTooLargeException when the
+    /// object is larger than the configured download cap.
     /// </summary>
     Task<Stream?> GetAsync(string key, CancellationToken cancellationToken = default);
 

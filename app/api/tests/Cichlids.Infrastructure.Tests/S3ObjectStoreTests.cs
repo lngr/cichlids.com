@@ -26,9 +26,37 @@ public sealed class S3ObjectStoreTests
 
         await using var result = await store.GetAsync("images/original.jpg");
         Assert.NotNull(result);
+        Assert.False(result!.CanSeek);
         using var buffer = new MemoryStream();
         await result!.CopyToAsync(buffer);
         Assert.Equal(content, buffer.ToArray());
+    }
+
+    [Fact]
+    public async Task GetAsync_reads_an_object_exactly_at_the_download_cap()
+    {
+        var store = _fixture.CreateStoreForNewBucket(maxDownloadBytes: 1024);
+        var content = new byte[1024];
+        Random.Shared.NextBytes(content);
+        await store.PutAsync("images/at-cap.bin", new MemoryStream(content), "application/octet-stream");
+
+        await using var result = await store.GetAsync("images/at-cap.bin");
+        using var buffer = new MemoryStream();
+        await result!.CopyToAsync(buffer);
+
+        Assert.Equal(content, buffer.ToArray());
+    }
+
+    [Fact]
+    public async Task GetAsync_refuses_an_object_one_byte_over_the_download_cap()
+    {
+        var store = _fixture.CreateStoreForNewBucket(maxDownloadBytes: 1024);
+        await store.PutAsync("images/over-cap.bin", new MemoryStream(new byte[1025]), "application/octet-stream");
+
+        var ex = await Assert.ThrowsAsync<ObjectTooLargeException>(() => store.GetAsync("images/over-cap.bin"));
+
+        Assert.Equal("images/over-cap.bin", ex.Key);
+        Assert.Equal(1024, ex.MaxBytes);
     }
 
     [Fact]

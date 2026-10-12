@@ -53,4 +53,11 @@ public sealed class S3ObjectStoreOptions
     /// Only relevant for tuning or for exercising pagination in tests.
     /// </summary>
     public int? ListPageSize { get; set; }
+
+    /// <summary>
+    /// Largest object in bytes a download returns, 64 MiB unless configured otherwise. A larger
+    /// object fails the download with ObjectTooLargeException.
+    /// </summary>
+    [Range(1, long.MaxValue)]
+    public long MaxDownloadBytes { get; set; } = 64L * 1024 * 1024;
 }

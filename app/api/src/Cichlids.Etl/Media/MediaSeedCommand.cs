@@ -165,6 +165,13 @@ public static class MediaSeedCommand
             missingEntries.Add(new MissingEntry(candidate.Id, candidate.StorageKey, "object missing from store"));
             return;
         }
+        catch (ObjectTooLargeException ex)
+        {
+            stats.IncrementMissing();
+            missingEntries.Add(new MissingEntry(
+                candidate.Id, candidate.StorageKey, $"object exceeds the download limit of {ex.MaxBytes} bytes"));
+            return;
+        }
 
         var variantsToRecord = new List<(string Label, int Width, string StorageKey, long ByteSize)>();
 

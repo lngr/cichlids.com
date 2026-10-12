@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using Amazon.Runtime;
 using Amazon.S3;
 using Cichlids.Etl.Identity;
@@ -179,16 +180,8 @@ static async Task<IObjectStore?> CreateObjectStoreAsync(IConfiguration configura
         return null;
     }
 
-    var options = new S3ObjectStoreOptions
-    {
-        ServiceUrl = section["ServiceUrl"] ?? string.Empty,
-        Region = section["Region"] ?? string.Empty,
-        Bucket = section["Bucket"] ?? string.Empty,
-        AccessKey = section["AccessKey"] ?? string.Empty,
-        SecretKey = section["SecretKey"] ?? string.Empty,
-        ForcePathStyle = bool.TryParse(section["ForcePathStyle"], out var forcePathStyle) && forcePathStyle,
-        PublicBaseUrl = section["PublicBaseUrl"] ?? string.Empty,
-    };
+    var options = section.Get<S3ObjectStoreOptions>() ?? new S3ObjectStoreOptions();
+    Validator.ValidateObject(options, new ValidationContext(options), validateAllProperties: true);
 
     var s3Config = new AmazonS3Config
     {

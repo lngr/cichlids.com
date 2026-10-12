@@ -18,6 +18,12 @@ internal sealed class RecordingObjectStore(IObjectStore inner) : IObjectStore
     /// </summary>
     public HashSet<string> VanishOnGet { get; } = [];
 
+    /// <summary>
+    /// Keys whose download fails with ObjectTooLargeException, as for an object above the
+    /// configured download cap.
+    /// </summary>
+    public HashSet<string> TooLargeOnGet { get; } = [];
+
     public IReadOnlyCollection<string> PutKeys => _puts;
 
     public IReadOnlyCollection<string> GetKeys => _gets;
@@ -45,6 +51,11 @@ internal sealed class RecordingObjectStore(IObjectStore inner) : IObjectStore
     public Task<Stream?> GetAsync(string key, CancellationToken cancellationToken = default)
     {
         _gets.Enqueue(key);
+        if (TooLargeOnGet.Contains(key))
+        {
+            throw new ObjectTooLargeException(key, 1);
+        }
+
         return VanishOnGet.Contains(key) ? Task.FromResult<Stream?>(null) : inner.GetAsync(key, cancellationToken);
     }
 

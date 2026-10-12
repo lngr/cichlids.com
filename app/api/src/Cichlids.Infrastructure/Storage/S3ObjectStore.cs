@@ -90,18 +90,25 @@ public sealed class S3ObjectStore : IObjectStore
             Key = key,
         };
 
+        GetObjectResponse response;
         try
         {
-            using var response = await _client.GetObjectAsync(request, cancellationToken).ConfigureAwait(false);
-            var buffer = new MemoryStream();
-            await response.ResponseStream.CopyToAsync(buffer, cancellationToken).ConfigureAwait(false);
-            buffer.Position = 0;
-            return buffer;
+            response = await _client.GetObjectAsync(request, cancellationToken).ConfigureAwait(false);
         }
         catch (AmazonS3Exception ex) when (ex.StatusCode == HttpStatusCode.NotFound)
         {
             return null;
         }
+
+        if (response.ContentLength > _options.MaxDownloadBytes)
+        {
+            response.Dispose();
+            throw new ObjectTooLargeException(key, _options.MaxDownloadBytes);
+        }
+
+        // The declared length passed the check; the capped stream also bounds what the body
+        // actually delivers.
+        return new CappedReadStream(response.ResponseStream, key, _options.MaxDownloadBytes, response);
     }
 
     public async Task<bool> ExistsAsync(string key, CancellationToken cancellationToken = default)
