@@ -207,6 +207,14 @@ export type PostState = 'draft' | 'published' | 'archived';
 
 export type PostTopic = 'cichlids' | 'tanks' | 'offtopic' | 'contest' | 'unknown';
 
+export type ProblemDetails = {
+    type?: null | string;
+    title?: null | string;
+    status?: null | number | string;
+    detail?: null | string;
+    instance?: null | string;
+};
+
 export type ProfileDetailDto = {
     id: number | string;
     username: string;
@@ -370,6 +378,10 @@ export type DeleteCommentErrors = {
      */
     400: string;
     /**
+     * Forbidden
+     */
+    403: ProblemDetails;
+    /**
      * Not Found
      */
     404: unknown;
@@ -392,6 +404,15 @@ export type GetMeData = {
     query?: never;
     url: '/api/me';
 };
+
+export type GetMeErrors = {
+    /**
+     * Forbidden
+     */
+    403: ProblemDetails;
+};
+
+export type GetMeError = GetMeErrors[keyof GetMeErrors];
 
 export type GetMeResponses = {
     /**
@@ -557,6 +578,10 @@ export type UploadPhotoErrors = {
      */
     400: string;
     /**
+     * Forbidden
+     */
+    403: ProblemDetails;
+    /**
      * Payload Too Large
      */
     413: unknown;
@@ -579,6 +604,15 @@ export type ListMyDraftsData = {
     query?: never;
     url: '/api/me/drafts';
 };
+
+export type ListMyDraftsErrors = {
+    /**
+     * Forbidden
+     */
+    403: ProblemDetails;
+};
+
+export type ListMyDraftsError = ListMyDraftsErrors[keyof ListMyDraftsErrors];
 
 export type ListMyDraftsResponses = {
     /**
@@ -603,6 +637,10 @@ export type PublishPostErrors = {
      * Bad Request
      */
     400: string;
+    /**
+     * Forbidden
+     */
+    403: ProblemDetails;
     /**
      * Not Found
      */
@@ -634,6 +672,10 @@ export type DiscardPostData = {
 };
 
 export type DiscardPostErrors = {
+    /**
+     * Forbidden
+     */
+    403: ProblemDetails;
     /**
      * Not Found
      */
@@ -800,6 +842,10 @@ export type CreatePictureCommentErrors = {
      */
     400: string;
     /**
+     * Forbidden
+     */
+    403: ProblemDetails;
+    /**
      * Not Found
      */
     404: unknown;
@@ -913,6 +959,10 @@ export type CreateTankCommentErrors = {
      * Bad Request
      */
     400: string;
+    /**
+     * Forbidden
+     */
+    403: ProblemDetails;
     /**
      * Not Found
      */
