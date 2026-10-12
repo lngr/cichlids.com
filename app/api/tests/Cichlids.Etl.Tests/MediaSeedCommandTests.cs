@@ -2,6 +2,7 @@ using System.Security.Cryptography;
 using System.Text.Json;
 using Cichlids.Etl.Media;
 using Cichlids.Infrastructure.Media;
+using Cichlids.Tests.Shared;
 using Microsoft.EntityFrameworkCore;
 
 namespace Cichlids.Etl.Tests;
@@ -550,6 +551,84 @@ public sealed class MediaSeedCommandTests(MediaEtlFixture fixture)
             Assert.Equal(sha, item.ChecksumSha256);
             Assert.Equal(900, item.Width);
             Assert.Equal(600, item.Height);
+        }
+        finally
+        {
+            Directory.Delete(root, recursive: true);
+        }
+    }
+
+    [Fact]
+    public async Task CompletesTheMetadataOfASanitizedForumAttachmentAndKeepsItsLegacySourceChecksum()
+    {
+        var root = MediaTestSupport.CreateImagesRoot();
+        try
+        {
+            var legacyBytes = PhotoFixtures.PhoneJpeg(900, 600);
+            var legacySha = Convert.ToHexStringLower(SHA256.HashData(legacyBytes));
+            var sanitized = MediaMetadataSanitizer.Sanitize(legacyBytes);
+            var sanitizedSha = Convert.ToHexStringLower(SHA256.HashData(sanitized));
+            const string key = "forum_attachments/71151_phone.jpg";
+            await fixture.ObjectStore.PutAsync(
+                key, new MemoryStream(sanitized), "image/jpeg", MediaObjectMetadata.ForOriginal(sanitizedSha, legacySha, photo: null));
+
+            var target = await fixture.CreateIsolatedTargetAsync();
+            await MediaTestSupport.InsertMediaItemAsync(fixture, 71151, key, targetConnectionString: target);
+
+            await MediaTestSupport.RunSeedAsync(fixture, root, targetConnectionString: target);
+
+            var head = await fixture.ObjectStore.HeadAsync(key);
+            Assert.Equal(legacySha, head!.Metadata[MediaObjectMetadata.SourceSha256Key]);
+            Assert.Equal(sanitizedSha, head.Metadata[MediaObjectMetadata.Sha256Key]);
+            Assert.Equal("900", head.Metadata[MediaObjectMetadata.WidthKey]);
+            Assert.Equal(sanitized, await MediaTestSupport.DownloadAsync(fixture, key));
+
+            var recording = new RecordingObjectStore(fixture.ObjectStore);
+            await MediaTestSupport.RunSeedAsync(fixture, root, targetConnectionString: target, objectStore: recording);
+            Assert.Empty(recording.PutKeys);
+
+            await using var db = fixture.CreateTargetContext(target);
+            var item = await db.MediaItems.SingleAsync();
+            Assert.Equal(sanitized.LongLength, item.ByteSize);
+            Assert.Equal(sanitizedSha, item.ChecksumSha256);
+        }
+        finally
+        {
+            Directory.Delete(root, recursive: true);
+        }
+    }
+
+    [Fact]
+    public async Task SanitizesAForumAttachmentStoredWithItsLocationDataByAnEarlierPipeline()
+    {
+        var root = MediaTestSupport.CreateImagesRoot();
+        try
+        {
+            var legacyBytes = PhotoFixtures.PhoneJpeg(900, 600);
+            var legacySha = Convert.ToHexStringLower(SHA256.HashData(legacyBytes));
+            const string key = "forum_attachments/71152_phone.jpg";
+            await fixture.ObjectStore.PutAsync(
+                key,
+                new MemoryStream(legacyBytes),
+                "image/jpeg",
+                new Dictionary<string, string>
+                {
+                    [MediaObjectMetadata.Sha256Key] = legacySha,
+                    [MediaObjectMetadata.SourceSha256Key] = legacySha,
+                    [MediaObjectMetadata.PipelineKey] = "1",
+                });
+
+            var target = await fixture.CreateIsolatedTargetAsync();
+            await MediaTestSupport.InsertMediaItemAsync(fixture, 71152, key, targetConnectionString: target);
+
+            await MediaTestSupport.RunSeedAsync(fixture, root, targetConnectionString: target);
+
+            var stored = await MediaTestSupport.DownloadAsync(fixture, key);
+            Assert.False(PhotoFixtures.ContainsSecret(stored), "A SECRET- value survived in the stored attachment.");
+            var head = await fixture.ObjectStore.HeadAsync(key);
+            Assert.Equal(legacySha, head!.Metadata[MediaObjectMetadata.SourceSha256Key]);
+            Assert.Equal(Convert.ToHexStringLower(SHA256.HashData(stored)), head.Metadata[MediaObjectMetadata.Sha256Key]);
+            Assert.Equal(MediaObjectMetadata.OriginalPipelineVersion.ToString(), head.Metadata[MediaObjectMetadata.PipelineKey]);
         }
         finally
         {

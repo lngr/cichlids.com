@@ -355,10 +355,13 @@ public sealed class ForumMigrationStep : IEtlStep
 
     /// <summary>
     /// Exports every migrated post's attachments (phorum_files rows linked to a message)
-    /// into the object store as media items. Idempotent per file id through the deterministic
-    /// storage key: an attachment whose stored object carries the checksum of the legacy bytes is
-    /// skipped by the upload, and the media_item and discussion_post_media rows are kept in sync with
-    /// the legacy data in every case.
+    /// into the object store as media items. Image attachments are stored with their location,
+    /// serial number and owner metadata removed by MediaMetadataSanitizer; any other file is
+    /// stored byte for byte. Idempotent per file id through the deterministic storage key: an
+    /// attachment whose stored object carries the checksum of the legacy bytes and the current
+    /// original pipeline version is skipped by the upload, and the media_item and
+    /// discussion_post_media rows are kept in sync with the legacy data in every case. Size and
+    /// checksum on media_item describe the stored bytes.
     /// </summary>
     private static async Task MigrateAttachmentsAsync(
         EtlContext context,
@@ -409,22 +412,39 @@ public sealed class ForumMigrationStep : IEtlStep
                 }
 
                 var storageKey = $"forum_attachments/{fileId}_{StorageKeyNormalizer.NormalizeFilename(filename)}";
-                var checksum = Convert.ToHexStringLower(SHA256.HashData(bytes));
+
+                byte[] stored;
+                try
+                {
+                    stored = MediaMetadataSanitizer.Sanitize(bytes);
+                }
+                catch (Exception ex) when (ex is MediaMetadataSanitizer.UnsanitizableImageException
+                    or ImageProcessor.ImageTooLargeException)
+                {
+                    // Forum attachments are publicly readable, so an image whose personal
+                    // metadata cannot be removed is not stored, and an earlier copy is deleted.
+                    await context.ObjectStore!.DeleteAsync(storageKey, cancellationToken);
+                    stats.AddSkip("attachment_unsanitizable");
+                    continue;
+                }
+
+                var sourceChecksum = Convert.ToHexStringLower(SHA256.HashData(bytes));
+                var storedChecksum = Convert.ToHexStringLower(SHA256.HashData(stored));
                 var ownerProfileId = authorProfileIdByLegacyId.GetValueOrDefault(messageId);
 
                 var head = await context.ObjectStore!.HeadAsync(storageKey, cancellationToken);
-                if (MediaObjectMetadata.Decide(head, checksum, MediaObjectMetadata.OriginalPipelineVersion) == ObjectState.Current)
+                if (MediaObjectMetadata.Decide(head, sourceChecksum, MediaObjectMetadata.OriginalPipelineVersion) == ObjectState.Current)
                 {
                     alreadyPresent++;
                 }
                 else
                 {
-                    await using var content = new MemoryStream(bytes);
+                    await using var content = new MemoryStream(stored);
                     await context.ObjectStore.PutAsync(
                         storageKey,
                         content,
                         ResolveContentType(filename),
-                        MediaObjectMetadata.ForOriginal(checksum, checksum, photo: null),
+                        MediaObjectMetadata.ForOriginal(storedChecksum, sourceChecksum, photo: null),
                         cancellationToken);
                     uploaded++;
                 }
@@ -435,8 +455,8 @@ public sealed class ForumMigrationStep : IEtlStep
                     MediaKindConverter.ConvertToProvider(MediaKind.Photo),
                     storageKey,
                     filename.Length == 0 ? null : filename,
-                    bytes.LongLength,
-                    checksum,
+                    stored.LongLength,
+                    storedChecksum,
                     DateTimeOffset.UtcNow,
                 });
 

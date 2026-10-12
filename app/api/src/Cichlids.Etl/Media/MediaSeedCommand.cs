@@ -220,7 +220,8 @@ public static class MediaSeedCommand
     /// Brings the original in the object store in line with its source and returns what the store
     /// holds afterwards, together with the processed image when the source had to be decoded.
     /// Legacy originals are uploaded when they are missing or differ; a stored forum attachment is
-    /// the source itself, so only its metadata is completed when it lacks the photo information.
+    /// the source itself, so only its metadata is completed when it lacks the photo information or
+    /// was stored by an earlier pipeline version, and it is rewritten with sanitized bytes.
     /// </summary>
     private static async Task<(StoredOriginal Original, ProcessedImage? Processed)> EnsureOriginalAsync(
         MediaCandidate candidate,
@@ -266,22 +267,24 @@ public static class MediaSeedCommand
             photo = processed is null ? PhotoInfo.Undecodable : new PhotoInfo(processed.Width, processed.Height);
         }
 
-        var uploadedSha256 = Convert.ToHexStringLower(SHA256.HashData(bytes));
-        await PutOriginalAsync(objectStore, candidate.StorageKey, bytes, uploadedSha256, sourceSha256, photo, cancellationToken);
+        // A forum attachment is publicly readable, so rewriting it stores sanitized bytes only.
+        var stored = source.IsStoredObject ? MediaMetadataSanitizer.Sanitize(bytes) : bytes;
+        var uploadedSha256 = Convert.ToHexStringLower(SHA256.HashData(stored));
+        await PutOriginalAsync(objectStore, candidate.StorageKey, stored, uploadedSha256, sourceSha256, photo, cancellationToken);
 
-        // A forum attachment is already in the store: completing its metadata rewrites the same
-        // bytes and is not an upload of new content.
+        // A forum attachment is already in the store: completing its metadata rewrites it and is
+        // not an upload of new content.
         if (source.IsStoredObject)
         {
             stats.IncrementOriginalPresent();
         }
         else
         {
-            stats.AddBytesTransferred(bytes.LongLength);
+            stats.AddBytesTransferred(stored.LongLength);
             stats.IncrementOriginalUploaded();
         }
 
-        return (new StoredOriginal(bytes.LongLength, uploadedSha256, sourceSha256, photo), processed);
+        return (new StoredOriginal(stored.LongLength, uploadedSha256, sourceSha256, photo), processed);
     }
 
     /// <summary>
@@ -544,7 +547,9 @@ public static class MediaSeedCommand
     /// <summary>
     /// The bytes an original and its variants are derived from: a legacy file on disk, or an
     /// object already in the store (forum attachments). Hashing streams the content; the bytes are
-    /// loaded once, only when an upload or a decode needs them.
+    /// loaded once, only when an upload or a decode needs them. A stored object's checksum is the
+    /// source checksum recorded on it, which identifies the legacy attachment the forum step
+    /// stored, so completing its metadata keeps that identity.
     /// </summary>
     private sealed class SourceFile
     {
@@ -586,9 +591,9 @@ public static class MediaSeedCommand
                 },
                 async token =>
                 {
-                    if (head.Metadata.TryGetValue(MediaObjectMetadata.Sha256Key, out var stored) && stored.Length > 0)
+                    if (head.Metadata.TryGetValue(MediaObjectMetadata.SourceSha256Key, out var source) && source.Length > 0)
                     {
-                        return stored;
+                        return source;
                     }
 
                     return Convert.ToHexStringLower(SHA256.HashData(await self!.ReadAllBytesAsync(token)));

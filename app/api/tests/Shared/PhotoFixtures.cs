@@ -1,3 +1,4 @@
+using System.Buffers.Binary;
 using System.Text;
 using NetVips;
 
@@ -140,6 +141,33 @@ internal static class PhotoFixtures
         return comment is null
             ? jpeg
             : MetadataContainers.InsertIntoJpeg(jpeg, [MetadataContainers.JpegSegment(0xFE, Encoding.ASCII.GetBytes(comment))]);
+    }
+
+    /// <summary>
+    /// A little-endian TIFF of 4 x 3 pixels with GPS and serial number tags whose compression
+    /// value is unknown, so its pixels do not decode.
+    /// </summary>
+    public static byte[] UndecodableTiffWithGps()
+    {
+        var builder = PhoneExif();
+        builder.Thumbnail = null;
+        builder.Exif.Clear();
+        builder.Interop.Clear();
+        var tiff = builder.BuildTiffImage(4, 3, new byte[4 * 3 * 3]);
+
+        const int firstIfd = 8;
+        var count = BinaryPrimitives.ReadUInt16LittleEndian(tiff.AsSpan(firstIfd));
+        for (var index = 0; index < count; index++)
+        {
+            var entry = firstIfd + 2 + (index * 12);
+            if (BinaryPrimitives.ReadUInt16LittleEndian(tiff.AsSpan(entry)) == 0x0103)
+            {
+                BinaryPrimitives.WriteUInt32LittleEndian(tiff.AsSpan(entry + 8), 0x7FFF);
+                return tiff;
+            }
+        }
+
+        throw new InvalidOperationException("The TIFF has no compression entry.");
     }
 
     /// <summary>
