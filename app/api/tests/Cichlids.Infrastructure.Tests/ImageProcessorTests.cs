@@ -10,6 +10,7 @@ using NetVips;
 
 namespace Cichlids.Infrastructure.Tests;
 
+[Collection(LibvipsCollection.Name)]
 public sealed class ImageProcessorTests
 {
     public static TheoryData<string, byte[]> UnsupportedFormats => new()

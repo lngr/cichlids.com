@@ -48,9 +48,10 @@ public static class MediaObjectMetadata
     public const string DecodableKey = "decodable";
 
     /// <summary>
-    /// Version of the derivation that turns a legacy source file into a stored original.
+    /// Version of the derivation that turns a source file into a stored original: the source with
+    /// its personal metadata removed by MediaMetadataSanitizer.
     /// </summary>
-    public const int OriginalPipelineVersion = 1;
+    public const int OriginalPipelineVersion = 2;
 
     /// <summary>
     /// Version of the derivation that turns an original into a stored variant: one decode, resized

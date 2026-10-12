@@ -47,6 +47,14 @@ public static class ImageProcessor
     }
 
     /// <summary>
+    /// Applies the process-wide libvips configuration (the loader allowlist and the disabled
+    /// operation cache) before other code calls libvips directly.
+    /// </summary>
+    public static void EnsureLibvipsConfigured()
+    {
+    }
+
+    /// <summary>
     /// Thrown when source bytes cannot be decoded as an image, for example because the data is
     /// truncated or corrupt.
     /// </summary>
