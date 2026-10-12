@@ -91,6 +91,7 @@ public sealed class OutboxDispatchService(
         {
             var subscribers = activeSubscriptions
                 .Where(s => s.EventTypes.Contains(outboxEvent.EventType) || s.EventTypes.Contains("*"))
+                .Where(s => !outboxEvent.AcknowledgedSubscriptionIds.Contains(s.Id))
                 .ToList();
 
             var remainingLease = outboxEvent.NextAttemptAt - Now();
@@ -134,17 +135,23 @@ public sealed class OutboxDispatchService(
     {
         var body = BuildDeliveryBody(outboxEvent);
         var httpClient = httpClientFactory.CreateClient(HttpClientName);
+        var acknowledged = new List<long>();
+        var errors = new List<string>();
 
         foreach (var subscriber in subscribers)
         {
             var error = await DeliverToAsync(httpClient, subscriber, body, settings, cancellationToken);
-            if (error is not null)
+            if (error is null)
             {
-                return DeliveryOutcome.Failed(error);
+                acknowledged.Add(subscriber.Id);
+            }
+            else
+            {
+                errors.Add(error);
             }
         }
 
-        return DeliveryOutcome.Succeeded;
+        return new DeliveryOutcome(acknowledged, errors);
     }
 
     /// <summary>
@@ -199,13 +206,25 @@ public sealed class OutboxDispatchService(
         var stillReserved = context.OutboxEvents.Where(e =>
             e.Id == reserved.Id && e.NextAttemptAt == reservedUntil && e.DispatchedAt == null && e.GivenUpAt == null);
 
+        var acknowledged = reserved.AcknowledgedSubscriptionIds.Union(outcome.Acknowledged).ToList();
+
         int updated;
-        if (outcome.Error is null)
+        if (outcome.Errors.Count == 0)
         {
-            updated = await stillReserved.ExecuteUpdateAsync(s => s.SetProperty(e => e.DispatchedAt, now), cancellationToken);
+            updated = await stillReserved.ExecuteUpdateAsync(
+                s => s
+                    .SetProperty(e => e.DispatchedAt, now)
+                    .SetProperty(e => e.AcknowledgedSubscriptionIds, acknowledged),
+                cancellationToken);
         }
         else
         {
+            var error = string.Join("; ", outcome.Errors);
+            if (error.Length > MaxErrorLength)
+            {
+                error = error[..MaxErrorLength];
+            }
+
             var attemptCount = reserved.AttemptCount + 1;
             var (nextAttemptAt, givenUp) = OutboxRetrySchedule.AfterFailure(
                 attemptCount, now, reserved.RedeliveredAt ?? reserved.OccurredAt, settings);
@@ -214,17 +233,18 @@ public sealed class OutboxDispatchService(
             updated = await stillReserved.ExecuteUpdateAsync(
                 s => s
                     .SetProperty(e => e.AttemptCount, attemptCount)
-                    .SetProperty(e => e.LastError, outcome.Error)
+                    .SetProperty(e => e.LastError, error)
                     .SetProperty(e => e.LastAttemptAt, now)
                     .SetProperty(e => e.NextAttemptAt, nextAttemptAt)
-                    .SetProperty(e => e.GivenUpAt, givenUpAt),
+                    .SetProperty(e => e.GivenUpAt, givenUpAt)
+                    .SetProperty(e => e.AcknowledgedSubscriptionIds, acknowledged),
                 cancellationToken);
 
             if (updated == 1 && givenUp)
             {
                 logger.LogWarning(
                     "Outbox event {EventId} ({EventType}) is given up after {AttemptCount} attempts. Last error: {Error}",
-                    reserved.Id, reserved.EventType, attemptCount, outcome.Error);
+                    reserved.Id, reserved.EventType, attemptCount, error);
             }
         }
 
@@ -268,11 +288,13 @@ public sealed class OutboxDispatchService(
         return envelope.ToJsonString();
     }
 
-    private sealed record DeliveryOutcome(string? Error)
+    /// <summary>
+    /// The subscriptions that acknowledged one delivery attempt of an event and the errors of
+    /// those that did not. An attempt without errors means every matching subscriber has
+    /// acknowledged the event.
+    /// </summary>
+    private sealed record DeliveryOutcome(IReadOnlyList<long> Acknowledged, IReadOnlyList<string> Errors)
     {
-        public static readonly DeliveryOutcome Succeeded = new((string?)null);
-
-        public static DeliveryOutcome Failed(string error) =>
-            new(error.Length <= MaxErrorLength ? error : error[..MaxErrorLength]);
+        public static DeliveryOutcome Failed(string error) => new([], [error]);
     }
 }

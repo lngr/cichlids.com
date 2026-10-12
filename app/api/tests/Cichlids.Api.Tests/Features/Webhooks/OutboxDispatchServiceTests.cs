@@ -438,6 +438,91 @@ public class OutboxDispatchServiceTests(OutboxDispatchFixture fixture) : IAsyncL
     }
 
     [Fact]
+    public async Task RunOnceAsync_AcknowledgedSubscriberIsNotCalledAgainWhileAnotherIsDown()
+    {
+        await using var healthy = new TestWebhookListener();
+        healthy.Start();
+        await using var down = new TestWebhookListener();
+        down.SetDown(true);
+        down.Start();
+        var healthyId = await CreateSubscriptionAsync(healthy.Uri, "healthy-secret", ["test.event"]);
+        var downId = await CreateSubscriptionAsync(down.Uri, "down-secret", ["test.event"]);
+
+        var clock = new FakeTimeProvider(DateTimeOffset.UtcNow);
+        var id = await InsertEventAsync(occurredAt: clock.GetUtcNow().AddSeconds(-1));
+        var dispatcher = fixture.CreateDispatchService(timeProvider: clock);
+
+        await dispatcher.RunOnceAsync(CancellationToken.None);
+        clock.Advance(TimeSpan.FromSeconds(5));
+        await dispatcher.RunOnceAsync(CancellationToken.None);
+
+        Assert.Single(healthy.Requests);
+        Assert.Equal(2, down.Requests.Count);
+
+        await using var db = fixture.CreateDbContext();
+        var outboxEvent = await db.OutboxEvents.AsNoTracking().SingleAsync(e => e.Id == id);
+        Assert.Null(outboxEvent.DispatchedAt);
+        Assert.Equal([healthyId], outboxEvent.AcknowledgedSubscriptionIds);
+        Assert.Equal(2, outboxEvent.AttemptCount);
+        Assert.Equal($"subscription {downId} responded 503", outboxEvent.LastError);
+    }
+
+    [Fact]
+    public async Task RunOnceAsync_OneFailingSubscriberDoesNotBlockAnother()
+    {
+        await using var down = new TestWebhookListener();
+        down.SetDown(true);
+        down.Start();
+        await using var healthy = new TestWebhookListener();
+        healthy.Start();
+        await CreateSubscriptionAsync(down.Uri, "down-first-secret", ["test.event"]);
+        await CreateSubscriptionAsync(healthy.Uri, "healthy-second-secret", ["test.event"]);
+
+        var id = await InsertEventAsync(occurredAt: DateTimeOffset.UtcNow.AddSeconds(-1));
+
+        await fixture.CreateDispatchService().RunOnceAsync(CancellationToken.None);
+
+        Assert.Single(down.Requests);
+        Assert.Equal([id], healthy.AcceptedRequests.Select(r => r.EventId));
+    }
+
+    [Fact]
+    public async Task RunOnceAsync_EventIsDispatchedOnceEveryMatchingSubscriberAcknowledged()
+    {
+        await using var first = new TestWebhookListener();
+        first.Start();
+        await using var second = new TestWebhookListener();
+        second.SetDown(true);
+        second.Start();
+        var firstId = await CreateSubscriptionAsync(first.Uri, "first-secret", ["test.event"]);
+        var secondId = await CreateSubscriptionAsync(second.Uri, "second-secret", ["*"]);
+
+        var clock = new FakeTimeProvider(DateTimeOffset.UtcNow);
+        var id = await InsertEventAsync(occurredAt: clock.GetUtcNow().AddSeconds(-1));
+        var dispatcher = fixture.CreateDispatchService(timeProvider: clock);
+
+        await dispatcher.RunOnceAsync(CancellationToken.None);
+        await using (var db = fixture.CreateDbContext())
+        {
+            Assert.Null((await db.OutboxEvents.AsNoTracking().SingleAsync(e => e.Id == id)).DispatchedAt);
+        }
+
+        second.SetDown(false);
+        clock.Advance(TimeSpan.FromSeconds(5));
+        await dispatcher.RunOnceAsync(CancellationToken.None);
+
+        await using (var db = fixture.CreateDbContext())
+        {
+            var outboxEvent = await db.OutboxEvents.AsNoTracking().SingleAsync(e => e.Id == id);
+            Assert.NotNull(outboxEvent.DispatchedAt);
+            Assert.Equal([firstId, secondId], outboxEvent.AcknowledgedSubscriptionIds.Order());
+        }
+
+        Assert.Single(first.AcceptedRequests);
+        Assert.Single(second.AcceptedRequests);
+    }
+
+    [Fact]
     public async Task RunOnceAsync_WildcardSubscriptionReceivesEveryEventType()
     {
         await using var listener = new TestWebhookListener();
