@@ -1,0 +1,1368 @@
+schemaVersion: 1
+id: sciaenochromis-fryeri
+legacyIds: [504]
+status: described
+
+taxonomy:
+  validName: Sciaenochromis fryeri
+  genus: Sciaenochromis
+  species: fryeri
+  author: Konings, 1993
+  source: &cof
+    kind: catalog-of-fishes
+    title: Eschmeyer's Catalog of Fishes, species list of the genus Sciaenochromis (Sciaenochromis fryeri Konings 1993, current status valid)
+    url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Sciaenochromis
+    accessed: 2026-10-12
+  synonyms: []
+  legacyNames:
+    - Sciaenochromis fryeri
+  note: >-
+    The Catalog of Fishes lists Sciaenochromis fryeri Konings 1993 as valid, with Mbenji Island in
+    Lake Malawi as type locality and holotype MRAC 92.146.P.4; Konings described it in
+    Sciaenochromis, so the author stands without parentheses. The catalog records no synonym for
+    it. For decades the trade sold this fish as "Haplochromis ahli" or "Sciaenochromis ahli", and
+    many hobby texts still do. That name belongs to a separate valid species of the same genus,
+    Sciaenochromis ahli (Trewavas 1935), a replacement name for Haplochromis serranoides Ahl 1926
+    and a legacy entry of its own (502). The trade name is a misidentification, not a synonym, and
+    is therefore not listed under synonyms. The genus holds four valid species: S. ahli,
+    S. benthicola, S. fryeri and S. psammophilus.
+
+names:
+  trade:
+    en:
+      - Electric Blue Hap
+      - Electric Blue Ahli
+      - Electric Blue Cichlid
+      - Iceberg Hap
+    de:
+      - Electric Blue Ahli
+    es-419:
+      - Haplochromis azul eléctrico
+
+variants:
+  - name: Mbenji Island
+    kind: locality
+    note: Type locality of the species.
+  - name: Chinyankwazi Island
+    kind: locality
+  - name: Chinyamwezi Island
+    kind: locality
+  - name: Taiwan Reef
+    kind: locality
+  - name: Iceberg
+    kind: color-morph
+    note: Aquarium-bred line selected for a broad white blaze from the snout along the back.
+  - name: OB (orange blotch)
+    kind: color-morph
+    note: Aquarium-bred blotched forms such as "Blueberry OB"; they do not occur in the lake and are widely suspected to carry genes of other species.
+
+features:
+  origin:
+    value:
+      continent: Africa
+      region: Lake Malawi
+      waterbody: Lake Malawi
+      localities:
+        - Mbenji Island
+        - Chinyankwazi Island
+        - Chinyamwezi Island
+        - Taiwan Reef
+    confidence: high
+    rationale: >-
+      Endemic to Lake Malawi. The Catalog of Fishes gives Mbenji Island as type locality, FishBase
+      reports the species from the whole lake and names Taiwan Reef and the Chinyankwazi and
+      Chinyamwezi islands, and Seriously Fish and Fishkeeper describe it as widespread but never
+      common. The Cichlid Room Companion confirms a lake species of the intermediate habitat in
+      Malawi, Mozambique and Tanzania.
+    sources:
+      - *cof
+      - &fb
+        kind: database
+        title: FishBase species summary, Sciaenochromis fryeri Konings, 1993
+        url: https://www.fishbase.se/summary/Sciaenochromis-fryeri.html
+        accessed: 2026-10-12
+      - &sf
+        kind: database
+        title: Seriously Fish, Sciaenochromis fryeri (Electric Blue Hap)
+        url: https://www.seriouslyfish.com/species/sciaenochromis-fryeri/
+        accessed: 2026-10-12
+      - &fk
+        kind: database
+        title: Fishkeeper (Maidenhead Aquatics) fish data bank, Electric Blue Hap, Sciaenochromis fryeri
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/electric-blue-hap
+        accessed: 2026-10-12
+      - &crc
+        kind: database
+        title: Cichlid Room Companion, Sciaenochromis fryeri (public summary, verification only)
+        url: https://cichlidae.com/species.php?id=TRby5SCF_e6Fm_NXP74Q8w
+        accessed: 2026-10-12
+    evidence:
+      - source: *cof
+        value: {continent: Africa, region: Lake Malawi, localities: [Mbenji Island]}
+        note: type locality
+      - source: *fb
+        value: {continent: Africa, region: Lake Malawi, localities: [Taiwan Reef, Chinyankwazi Island, Chinyamwezi Island]}
+        note: throughout the lake
+      - source: *sf
+        value: {continent: Africa, region: Lake Malawi}
+        note: widespread but not common
+      - source: *fk
+        value: {continent: Africa, region: Lake Malawi}
+        note: throughout the lake, not commonly met
+
+  temperatureC:
+    value: {min: 21, max: 29}
+    confidence: high
+    rationale: >-
+      Lake Malawi endemic, so the natural range is the measured lake range: inshore water cools to
+      about 21 C in the windy season (Eccles 1974), the winter surface layer holds 23.5 to 24 C and
+      summer surface water about 28 C (Vollmer et al. 2005), and a 2013 campaign measured 24 to
+      29 C (Ngochera 2018). The species lives at 10 to 40 m, inside the mixed upper layer that
+      these values describe.
+    sources: &lakesources
+      - &branchu
+        kind: literature
+        title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+        url: https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf
+        accessed: 2026-10-12
+      - &fao
+        kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+        url: https://www.fao.org/4/t0473e/T0473E05.htm
+        accessed: 2026-10-12
+      - &eccles
+        kind: literature
+        title: Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology and Oceanography 19(5), 730-742 (abstract).
+        url: https://doi.org/10.4319/lo.1974.19.5.0730
+        accessed: 2026-10-12
+      - &vollmer
+        kind: literature
+        title: Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M., Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and Oceanography 50(2), 727-732.
+        url: https://www.dora.lib4ri.ch/empa/dload/empa:1253/PDF/view
+        accessed: 2026-10-12
+      - kind: literature
+        title: "Vollmer, M. K., Weiss, R. F. and Bootsma, H. A. (1999). Lake Malawi/Nyasa deep water renewal. In: Bootsma, H. A. and Hecky, R. E. (eds.), Water Quality Report, SADC/GEF Lake Malawi/Nyasa Biodiversity Conservation Project, chapter 4."
+        url: https://sites.uwm.edu/hbootsma/files/2020/11/Ch4-Lake-Internal-Mixing.pdf
+        accessed: 2026-10-12
+      - &ngochera
+        kind: literature
+        title: Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. PhD dissertation, University of Wisconsin-Milwaukee.
+        url: https://minds.wisconsin.edu/handle/1793/91765
+        accessed: 2026-10-12
+    evidence:
+      - source: *eccles
+        value: {min: 21, max: 27}
+        note: inshore minimum in the cool season, upper 60 m by May
+      - source: *vollmer
+        value: {min: 23.5, max: 28}
+        note: winter surface layer to summer surface water
+      - source: *ngochera
+        value: {min: 24, max: 29}
+        note: 2013 campaign
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value: {min: 21, max: 29}
+      confidence: medium
+      rationale: >-
+        Husbandry sources keep the species between about 23 and 28 C: Seriously Fish 24 to 28,
+        Tropical Fish Hobbyist 23 to 28 with spawning at 24 to 28, LiveAquaria about 24 to 28 and
+        Fishkeeper 24 to 26; a growth trial held juveniles at 26.5 C for 12 weeks. Shop and blog
+        sheets name 22 to 29 C. No care sheet goes below 22 C, so the lower bound of 21 C rests on
+        the lake, where the fish live through the cool season; it marks a tolerated, not a
+        recommended, keeping temperature. A steady 24 to 27 C is the usual aquarium target.
+      sources:
+        - *sf
+        - &tfh
+          kind: literature
+          title: "Gibson, S. It's Electric: Sciaenochromis fryeri in the Home Aquarium. Tropical Fish Hobbyist Magazine."
+          url: https://www.tfhmagazine.com/articles/freshwater/its-electric-sciaenochromis-fryeri-in-the-home-aquarium-full-article
+          accessed: 2026-10-12
+        - &la
+          kind: database
+          title: LiveAquaria care sheet, Electric Blue Cichlid (Sciaenochromis fryeri)
+          url: https://www.liveaquaria.com/products/electric-blue-cichlid
+          accessed: 2026-10-12
+        - *fk
+        - &gueroy
+          kind: literature
+          title: Güroy, D., Celik, I., Gullu, K. and Tekinay, A. (2008). Optimal dietary protein levels in juvenile electric blue cichlid (Sciaenochromis fryeri). Israeli Journal of Aquaculture - Bamidgeh 60.
+          url: https://doi.org/10.46989/001c.20496
+          accessed: 2026-10-12
+        - *eccles
+        - &ecured
+          kind: website
+          title: EcuRed, Sciaenochromis fryeri
+          url: https://www.ecured.cu/Sciaenochromis_fryeri
+          accessed: 2026-10-12
+        - &fta
+          kind: website
+          title: Fish Tank Advisor, Sciaenochromis fryeri care
+          url: https://fishtankadvisor.com/sciaenochromis-fryeri-care/
+          accessed: 2026-10-12
+        - &rons
+          kind: website
+          title: Ron's Cichlids, Ghost Iceberg Fryeri German line bred (product page)
+          url: https://ronscichlids.com/products/iceberg-fryeri
+          accessed: 2026-10-12
+      evidence:
+        - source: *sf
+          value: {min: 24, max: 28}
+          note: aquarium recommendation
+        - source: *tfh
+          value: {min: 23, max: 28}
+          note: aquarium recommendation; spawning at 24 to 28 C
+        - source: *la
+          value: {min: 24.4, max: 27.8}
+          note: converted from 76 to 82 F
+        - source: *fk
+          value: {min: 24, max: 26}
+          note: aquarium recommendation
+        - source: *gueroy
+          value: {min: 25.7, max: 27.3}
+          note: 12-week growth trial at 26.5 plus or minus 0.8 C
+        - source: *eccles
+          value: {min: 21, max: 27}
+          note: lake temperatures the wild fish live in
+        - source: *ecured
+          value: {min: 24, max: 26}
+        - source: *fta
+          value: {min: 22, max: 27}
+        - source: *rons
+          value: {min: 23.3, max: 28.9}
+          note: 74 to 84 F, breeder recommendation
+      verification:
+        method: unanimous
+        votes: {agree: 3, total: 3}
+
+  ph:
+    value: {min: 7.7, max: 8.6}
+    confidence: high
+    rationale: >-
+      Lake Malawi endemic; the surface water of the lake has a pH of 7.7 to 8.6 (Jackson et al.
+      1963 in the FAO source book). Branchu et al. measured 7.5 to 8.5 over the whole water column,
+      the lower values belonging to deep water below the depths the species uses.
+    sources: *lakesources
+    evidence:
+      - source: *fao
+        value: {min: 7.7, max: 8.6}
+        note: lake surface water
+      - source: *branchu
+        value: {min: 7.5, max: 8.5}
+        note: whole water column, lower values in deep water
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value: {min: 7.5, max: 8.8}
+      confidence: medium
+      rationale: >-
+        Care sheets for this species agree on alkaline water: Seriously Fish 7.6 to 8.8 with 8.2 to
+        8.5 for breeding, Fishkeeper 7.5 to 8.5, Tropical Fish Hobbyist and LiveAquaria 7.8 to 8.6,
+        Practical Fishkeeping 8.0 or more. The range 7.5 to 8.8 spans these sheets and contains the
+        lake range. A 3-month trial on electric blue haps (sold as S. ahli, which in the trade means
+        this species) started at pH 8.7 and rose with zeolite without harming growth, which supports
+        the upper end. Lower values are documented only briefly: juveniles grew for 12 weeks at
+        pH 7 plus or minus 0.5 in a feeding trial, and an archive member keeps the species from 7.2
+        upward; neither shows health over years, so they do not lower the bound.
+      sources:
+        - *sf
+        - *fk
+        - *tfh
+        - *la
+        - &pfk
+          kind: literature
+          title: Clarke, M. (2004). Sciaenochromis fryeri 'Iceberg'. Practical Fishkeeping, November 2004.
+          url: https://www.practicalfishkeeping.co.uk/features/sciaenochromis-fryeri-iceberg/
+          accessed: 2026-10-12
+        - &oz
+          kind: literature
+          title: Öz, M., Şahin, D., Karslı, Z., Aral, O. and Bahtiyar, M. (2021). Investigation of the use of zeolite (clinoptilolite) as aquarium filtration material for electric blue hap (Sciaenochromis ahli). Marine Science and Technology Bulletin 10(2), 207-212.
+          url: https://doi.org/10.33714/masteb.895198
+          accessed: 2026-10-12
+        - *gueroy
+        - *fao
+        - &afp
+          kind: website
+          title: Aquarium Fish Paradise, Electric Blue Cichlid, Sciaenochromis fryeri
+          url: https://www.aquariumfishparadise.com.au/electric-blue-cichlid-sciaenochromis-fryeri/
+          accessed: 2026-10-12
+        - *ecured
+        - *fta
+        - &a14915
+          kind: archive
+          title: cichlids.com forum thread 14915
+          url: https://www.cichlids.com/disc/read.php?2,14915
+          accessed: 2026-10-12
+      evidence:
+        - source: *sf
+          value: {min: 7.6, max: 8.8}
+          note: aquarium recommendation; 8.2 to 8.5 for breeding
+        - source: *fk
+          value: {min: 7.5, max: 8.5}
+          note: aquarium recommendation
+        - source: *tfh
+          value: {min: 7.8, max: 8.6}
+          note: aquarium recommendation
+        - source: *la
+          value: {min: 7.8, max: 8.6}
+          note: aquarium recommendation
+        - source: *pfk
+          value: {min: 8.0}
+          note: pH 8.0 or more preferred; no upper limit stated
+        - source: *oz
+          value: {min: 8.7, max: 9.0}
+          note: 3-month trial starting at 8.7, rising with zeolite; normal growth
+        - source: *gueroy
+          value: {min: 6.5, max: 7.5}
+          note: 12-week juvenile trial at pH 7 plus or minus 0.5; not long-term keeping
+        - source: *fao
+          value: {min: 7.7, max: 8.6}
+          note: lake surface water the wild fish live in
+        - source: *afp
+          value: {min: 7.5, max: 8.5}
+        - source: *ecured
+          value: {min: 7.7, max: 8.6}
+        - source: *fta
+          value: {min: 7.0, max: 8.0}
+          note: generic blog range below the lake values
+        - source: *a14915
+          value: {min: 7.2, max: 8.4}
+          note: hobby experience, slow acclimation needed
+      verification:
+        method: qualified-majority
+        votes: {agree: 4, total: 5}
+
+  ghDgh:
+    value: {min: 3, max: 5}
+    confidence: high
+    rationale: >-
+      Lake Malawi endemic; the lake is soft water. Calcium and magnesium in the upper 50 m of the
+      north basin give 4.2 to 4.6 dGH (Branchu et al. 2010), and the titrations of the 1960s
+      compiled by the FAO give 3.2 to 4.9 dGH. The buffering of the lake comes mainly from
+      bicarbonate balanced by sodium, not from calcium and magnesium.
+    sources: *lakesources
+    evidence:
+      - source: *branchu
+        value: {min: 4.2, max: 4.6}
+        note: north basin, upper 50 m, October 1993
+      - source: *fao
+        value: {min: 3.2, max: 4.9}
+        note: titrations of the 1960s
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value: {min: 3, max: 25}
+      confidence: low
+      rationale: >-
+        Seriously Fish gives 10 to 25 dGH and Fishkeeper accepts up to 25 degrees, so the hobby
+        agrees on 25 dGH as the upper end; one general page names 14 dGH. The lower bounds of the
+        care sheets reflect the widespread belief that Malawi water is hard, which confuses hardness
+        with alkalinity. The wild fish live permanently at 3 to 5 dGH, so the tolerance starts at
+        the lake value. No source tests the species in soft aquarium water with a high carbonate
+        hardness, so the range needs confirmation.
+      sources:
+        - *sf
+        - *fk
+        - *branchu
+        - *fao
+        - *ecured
+      evidence:
+        - source: *sf
+          value: {min: 10, max: 25}
+          note: aquarium recommendation
+        - source: *fk
+          value: {max: 25}
+          note: states only an upper limit
+        - source: *branchu
+          value: {min: 4.2, max: 4.6}
+          note: lake water, lower end of the tolerance
+        - source: *fao
+          value: {min: 3.2, max: 4.9}
+          note: hardness the wild fish live in
+        - source: *ecured
+          value: {max: 14}
+          note: states only an upper limit
+      verification:
+        method: unanimous
+        votes: {agree: 3, total: 3}
+
+  khDkh:
+    value: {min: 5, max: 8}
+    confidence: high
+    rationale: >-
+      Lake Malawi endemic; the alkalinity of 2.33 to 2.46 meq/L in the Branchu profiles and 2.00 to
+      2.59 meq/L in Jackson et al. (1963) gives 5 to 8 dKH. Carbonate hardness exceeds total
+      hardness because sodium balances part of the bicarbonate.
+    sources: *lakesources
+    evidence:
+      - source: *branchu
+        value: {min: 6.5, max: 6.9}
+        note: alkalinity 2.33 to 2.46 meq/L
+      - source: *fao
+        value: {min: 5.6, max: 7.3}
+        note: alkalinity 2.00 to 2.59 meq/L
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value: {min: 5, max: 15}
+      confidence: low
+      rationale: >-
+        Only LiveAquaria names a carbonate hardness for this species, 10 to 15 dKH. Seriously Fish
+        and the zeolite trial give no dKH; their pH ranges of 7.6 to 8.8 and about 8.7 imply well
+        buffered water but no exact figure. The tolerance runs from the lake value of 5 dKH up to the
+        highest husbandry recommendation. With a single direct figure the range needs confirmation.
+      sources:
+        - *la
+        - *branchu
+        - *fao
+        - *sf
+        - *oz
+        - *ecured
+      evidence:
+        - source: *la
+          value: {min: 10, max: 15}
+          note: aquarium recommendation
+        - source: *branchu
+          value: {min: 6.5, max: 6.9}
+          note: lake water, lower end of the tolerance
+        - source: *fao
+          value: {min: 5.6, max: 7.3}
+          note: carbonate hardness the wild fish live in
+        - source: *sf
+          value: {min: 5, max: 15}
+          note: no dKH stated; inferred from pH 7.6 to 8.8 and 10 to 25 dGH
+        - source: *oz
+          value: {min: 5, max: 15}
+          note: no dKH stated; inferred from a stable pH of about 8.7
+        - source: *ecured
+          value: {max: 14}
+          note: carbonate hardness said to lie a little below 14 degrees
+      verification:
+        method: unanimous
+        votes: {agree: 3, total: 3}
+
+  maxSizeCm:
+    value: {male: 16, female: 13}
+    confidence: medium
+    rationale: >-
+      Wild type material measures up to 11.5 cm standard length (FishBase after Konings 1993),
+      roughly 14 cm total length. Aquarium males grow larger: Practical Fishkeeping gives 12 to
+      15 cm, Fishkeeper and Aquarium Glaser about 15 cm, Tropical Fish Hobbyist 17 to 20 cm for
+      males and 12 to 15 cm for females. The 20 cm of Seriously Fish and LiveAquaria sit at the top
+      and may include the larger true S. ahli. Typical well-kept adult males reach about 16 cm,
+      females stay about 3 cm smaller.
+    sources:
+      - *fb
+      - *pfk
+      - *tfh
+      - *fk
+      - *sf
+      - *la
+      - &glaser
+        kind: website
+        title: Schäfer, F. (2021). Sciaenochromis fryeri. Aquarium Glaser.
+        url: https://www.aquariumglaser.de/en/25-perchlike-fishes/sciaenochromis-fryeri-2/
+        accessed: 2026-10-12
+      - *afp
+      - *ecured
+      - *fta
+      - &a49459
+        kind: archive
+        title: cichlids.com forum thread 49459
+        url: https://www.cichlids.com/disc/read.php?2,49459
+        accessed: 2026-10-12
+      - &a14965
+        kind: archive
+        title: cichlids.com forum thread 14965
+        url: https://www.cichlids.com/disc/read.php?2,14965
+        accessed: 2026-10-12
+    evidence:
+      - source: *fb
+        value: {male: 14, female: 14}
+        note: 11.5 cm SL of wild type material, converted roughly to total length; sexes not separated
+      - source: *pfk
+        value: {male: 15, female: 13}
+        note: males 12 to 15 cm, females a little smaller
+      - source: *tfh
+        value: {male: 20, female: 15}
+        note: males 17 to 20 cm, females 12 to 15 cm
+      - source: *fk
+        value: {male: 15, female: 15}
+        note: one maximum for both sexes; males grow larger
+      - source: *sf
+        value: {male: 20, female: 20}
+        note: 20 cm SL, sexes not separated
+      - source: *la
+        value: {male: 20, female: 20}
+        note: 8 inches
+      - source: *glaser
+        value: {male: 15, female: 15}
+      - source: *afp
+        value: {male: 15, female: 15}
+      - source: *ecured
+        value: {male: 16, female: 13.5}
+        note: females 2 to 3 cm smaller
+      - source: *fta
+        value: {male: 16.5, female: 16.5}
+      - source: *a49459
+        value: {male: 18, female: 18}
+        note: forum estimate of 7 inches
+      - source: *a14965
+        value: {male: 15, female: 15}
+        note: member estimate
+
+  predation:
+    value: 3
+    confidence: medium
+    rationale: >-
+      Fish are the main food of this species in nature, which is level 3 of the rubric. FishBase
+      lists fish as its only recorded food after the original description and estimates a trophic
+      level of 4.2; Gerlai (2007) calls it a large piscivore; Seriously Fish, Practical Fishkeeping
+      and Tropical Fish Hobbyist describe a hunter of small fish and of the young of other cichlids
+      such as Copadichromis and Protomelas, and a feeding trial treats it as a carnivorous species.
+      The Cichlid Room Companion classes it as a predator. In the aquarium it lives well on pellets
+      and frozen food and leaves adult tankmates of similar size alone, but Fishkeeper, LiveAquaria
+      and Tropical Fish Hobbyist warn that clearly smaller fish are eaten, and Aquarium Glaser
+      describes it snapping up small fish and shrimp that digging cichlids stir up. Its prey are
+      mostly young fish rather than adults, and no stomach content study quantifies the share of
+      fish, which keeps the confidence at medium.
+    sources:
+      - *fb
+      - &fbfood
+        kind: database
+        title: FishBase food items, Sciaenochromis fryeri
+        url: https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=49795&genus=Sciaenochromis&species=fryeri
+        accessed: 2026-10-12
+      - &gerlai
+        kind: literature
+        title: Gerlai, R. (2007). Mate choice and hybridization in Lake Malawi cichlids, Sciaenochromis fryeri and Cynotilapia afra. Ethology 113(7), 673-685 (abstract).
+        url: https://doi.org/10.1111/j.1439-0310.2007.01372.x
+        accessed: 2026-10-12
+      - *sf
+      - *pfk
+      - *tfh
+      - *fk
+      - *la
+      - *gueroy
+      - *crc
+      - *glaser
+      - *ecured
+      - &a14864
+        kind: archive
+        title: cichlids.com forum thread 14864
+        url: https://www.cichlids.com/disc/read.php?2,14864
+        accessed: 2026-10-12
+    evidence:
+      - source: *fb
+        value: 3
+        note: feeds on fishes, trophic level 4.2
+      - source: *gerlai
+        value: 3
+        note: described as a large piscivore
+      - source: *sf
+        value: 3
+        note: highly piscivorous in nature, mainly on the young of other species
+      - source: *pfk
+        value: 3
+        note: hunts the fry and young of other cichlids in nature
+      - source: *tfh
+        value: 3
+        note: preys on small fish and fry in the wild; much smaller tankmates get eaten
+      - source: *gueroy
+        value: 3
+        note: treated as a carnivorous ornamental fish; no figure for the share of fish
+      - source: *crc
+        value: 3
+        note: feeding type predator; verification only
+      - source: *fk
+        value: 2
+        note: smaller tankmates will be eaten
+      - source: *la
+        value: 2
+        note: small fish among the meaty foods; rated aggressive
+      - source: *glaser
+        value: 2
+        note: takes small fish and shrimp flushed out by digging cichlids
+      - source: *ecured
+        value: 3
+        note: mainly small mbuna in the wild
+      - source: *a14864
+        value: 2
+        note: adults expected to eat small juvenile mbuna kept with them
+    verification:
+      method: qualified-majority
+      votes: {agree: 4, total: 5}
+
+  diet:
+    value:
+      type: piscivore
+      bloatSensitive: false
+      foods:
+        - small fish and cichlid fry (wild)
+        - insect larvae and crustaceans
+        - cichlid pellets and flakes
+        - frozen mysis, krill and brine shrimp
+    confidence: medium
+    rationale: >-
+      Small fish, above all the young of other cichlids, make up most of the natural diet
+      (FishBase, Gerlai 2007, Seriously Fish, Practical Fishkeeping, Tropical Fish Hobbyist), and
+      the Cichlid Room Companion confirms the predatory feeding type. In the aquarium the species
+      takes carnivore pellets, flakes and frozen crustaceans readily. A feeding trial found 39 to
+      40 percent dietary protein best for juveniles (Güroy et al. 2008), and no source reports the
+      bloat problems known from algae-grazing mbuna, so the species is not bloat-sensitive.
+      LiveAquaria files it as an omnivore, which describes what it accepts in the tank rather than
+      its natural food. Seriously Fish advises against mammal meat.
+    sources:
+      - *fb
+      - *gerlai
+      - *sf
+      - *pfk
+      - *tfh
+      - *fk
+      - *gueroy
+      - *la
+      - *crc
+      - *glaser
+    evidence:
+      - source: *fb
+        value: {type: piscivore, bloatSensitive: false}
+        note: feeds on fishes
+      - source: *gerlai
+        value: {type: piscivore, bloatSensitive: false}
+        note: large piscivore
+      - source: *sf
+        value: {type: piscivore, bloatSensitive: false}
+        note: predatory in nature, no vegetable matter needed, no mammal meat
+      - source: *pfk
+        value: {type: piscivore, bloatSensitive: false}
+        note: hunts fry of other cichlids, takes flakes and pellets in the tank
+      - source: *tfh
+        value: {type: piscivore, bloatSensitive: false}
+        note: carnivore in the wild, accepts pellets and flakes
+      - source: *fk
+        value: {type: piscivore, bloatSensitive: false}
+        note: meaty frozen foods recommended
+      - source: *gueroy
+        value: {type: piscivore, bloatSensitive: false}
+        note: juveniles grow best at 39 to 40 percent dietary protein
+      - source: *la
+        value: {type: omnivore, bloatSensitive: false}
+        note: aquarium feeding category
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+
+  aggressionConspecific:
+    value: 3
+    confidence: medium
+    rationale: >-
+      Males do not tolerate rivals in tanks of normal size: Tropical Fish Hobbyist reports the
+      dominant male turning on subdominant males unless several large territories exist, and
+      Seriously Fish advises a single male except in very large tanks. Males also court females
+      hard, so several females per male are needed to spread the pressure (Seriously Fish,
+      Practical Fishkeeping, Fishkeeper). Injuries follow from too little space or a wrong sex
+      ratio, which is level 3. Keepers in the archive find the species territorial but not
+      unusually aggressive in a properly stocked large tank.
+    sources:
+      - *sf
+      - *tfh
+      - *pfk
+      - *fk
+      - &a13937
+        kind: archive
+        title: cichlids.com forum thread 13937
+        url: https://www.cichlids.com/disc/read.php?2,13937
+        accessed: 2026-10-12
+      - &a14205
+        kind: archive
+        title: cichlids.com forum thread 14205
+        url: https://www.cichlids.com/disc/read.php?2,14205
+        accessed: 2026-10-12
+    evidence:
+      - source: *sf
+        value: 3
+        note: one male only unless the tank is very large; males harass females
+      - source: *tfh
+        value: 3
+        note: dominant male very aggressive towards other males
+      - source: *pfk
+        value: 3
+        note: a single female gets harassed, several males fight
+      - source: *fk
+        value: 3
+        note: one male with a harem
+      - source: *a13937
+        value: 3
+        note: resident male kept newcomers pressed into a corner
+      - source: *a14205
+        value: 2
+        note: member experience in a 325 litre tank
+
+  aggressionHeterospecific:
+    value: 2
+    confidence: medium
+    rationale: >-
+      Towards other species it is moderate: Seriously Fish calls it robust but not especially
+      aggressive, and Tropical Fish Hobbyist places it in the middle of the cichlid spectrum; both
+      name many Malawi haps as tankmates. It does target similarly coloured fish, and Fishkeeper
+      reports males that drive off or kill Aulonocara males to court their females. LiveAquaria
+      rates it aggressive, while keepers in the archive find it calm in mixed hap tanks. Chasing
+      from its spot without regular injuries in a suitable tank is level 2.
+    sources:
+      - *sf
+      - *tfh
+      - *fk
+      - *la
+      - *afp
+      - *a14205
+    evidence:
+      - source: *sf
+        value: 2
+        note: robust but not especially aggressive
+      - source: *tfh
+        value: 2
+        note: middle of the aggression spectrum
+      - source: *fk
+        value: 3
+        note: may eliminate Aulonocara males to reach their females
+      - source: *la
+        value: 3
+        note: rated aggressive
+      - source: *afp
+        value: 2
+        note: not overly aggressive
+      - source: *a14205
+        value: 1
+        note: kept with Aulonocara, Nimbochromis and Labidochromis without major problems
+
+  territory:
+    value: {size: small, breedingOnly: true}
+    confidence: medium
+    rationale: >-
+      A male claims a spawning site only when ready to breed: in the lake a cone of sand piled
+      against a rock with a crater on top, in the tank usually a sloping rock that he cleans and
+      defends (Seriously Fish, Fishkeeper, Tropical Fish Hobbyist). Fishkeeper describes the
+      species as solitary by nature; outside spawning it roams the rock-sand margin without a fixed
+      area. The defended spot around the spawning rock is small.
+    sources:
+      - *sf
+      - *fk
+      - *tfh
+      - *ecured
+      - *a14205
+    evidence:
+      - source: *sf
+        value: {size: small, breedingOnly: true}
+        note: male picks a sloping rock as spawning site
+      - source: *fk
+        value: {size: small, breedingOnly: true}
+        note: volcano-shaped mound in the wild, cleaned rock in the tank
+      - source: *tfh
+        value: {size: small, breedingOnly: true}
+        note: courtship at a sloping rock or cleared spot
+      - source: *ecured
+        value: {size: small, breedingOnly: true}
+
+  habitatZones:
+    value: [rock, sand]
+    confidence: high
+    rationale: >-
+      Lives in the intermediate zone where the rocky shore gives way to sand, at 10 to 40 m depth
+      (FishBase, Seriously Fish, Fishkeeper, Practical Fishkeeping); the Cichlid Room Companion
+      also gives an intermediate habitat. The tank needs rock piles with caves next to open sand
+      and swimming space.
+    sources:
+      - *fb
+      - *sf
+      - *fk
+      - *pfk
+      - *crc
+    evidence:
+      - source: *fb
+        value: [rock]
+        note: rocky coasts, 10 to 40 m
+      - source: *sf
+        value: [rock, sand]
+        note: rocky shores and the sandy zones beyond
+      - source: *fk
+        value: [rock, sand]
+        note: intermediate habitat
+      - source: *pfk
+        value: [rock, sand]
+        note: rock-sand boundary
+      - source: *crc
+        value: [rock, sand]
+        note: intermediate habitat; verification only
+
+  social:
+    value: {structure: harem, ratio: 3}
+    confidence: medium
+    rationale: >-
+      Kept as one male with several females. The minimum figures range from two (Practical
+      Fishkeeping) over three (Seriously Fish) to four females per male (Tropical Fish Hobbyist);
+      the ideal figures are higher, about six (Practical Fishkeeping), five to seven (LiveAquaria)
+      and eight or more (Tropical Fish Hobbyist). Three females per male is the middle of the
+      minimum figures; more females spread the courtship pressure better but are often hard to
+      obtain because the trade offers more males.
+    sources:
+      - *sf
+      - *pfk
+      - *tfh
+      - *la
+      - *fk
+    evidence:
+      - source: *sf
+        value: {structure: harem, ratio: 3}
+        note: at least three females per male for breeding
+      - source: *pfk
+        value: {structure: harem, ratio: 2}
+        note: trio as minimum, about six females ideal
+      - source: *tfh
+        value: {structure: harem, ratio: 4}
+        note: minimum, eight or more ideal
+      - source: *la
+        value: {structure: harem, ratio: 6}
+        note: five to seven females per male
+      - source: *fk
+        value: {structure: harem, ratio: 3}
+        note: several females per male, or a single fish
+
+  speciesOnly:
+    value: false
+    confidence: high
+    rationale: >-
+      A classic member of the mixed community of Malawi haps. Seriously Fish names Nimbochromis
+      venustus, Cyrtocara moorii, Protomelas and Copadichromis as good companions, Fishkeeper adds
+      Dimidiochromis, Fossorochromis and Synodontis, Practical Fishkeeping recommends other fish of
+      the rock-sand margin, and Tropical Fish Hobbyist calls the list of possible tankmates long.
+      A species tank is recommended only for breeding.
+    sources:
+      - *sf
+      - *fk
+      - *pfk
+      - *tfh
+    evidence:
+      - source: *sf
+        value: false
+        note: suits Nimbochromis venustus, Cyrtocara moorii, Protomelas, Copadichromis
+      - source: *fk
+        value: false
+        note: Malawi cichlid community
+      - source: *pfk
+        value: false
+        note: best with other fish of the sand-rock margin
+      - source: *tfh
+        value: false
+        note: many Malawi cichlids of similar size suit
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+
+  hybridGroup:
+    value: null
+    confidence: medium
+    rationale: >-
+      The genus holds four valid species (Catalog of Fishes), of which only S. fryeri is common in
+      the trade, and no curated group of close relatives covers it. Crosses with other genera are
+      documented: Gerlai (2007) obtained fertile offspring with Cynotilapia afra under
+      semi-natural conditions in captivity, and Seriously Fish and Fishkeeper report males that
+      spawn with Aulonocara females. These crosses span distant genera and do not make the species
+      a member of a hybrid group; the partner warnings and the similar blue coloration cover them.
+      Colour forms of S. fryeri interbreed and are not mixed either.
+    sources:
+      - *cof
+      - *gerlai
+      - *sf
+      - *fk
+    evidence:
+      - source: *cof
+        value: null
+        note: four valid Sciaenochromis species, none in a listed group
+      - source: *gerlai
+        value: null
+        note: fertile crosses with Cynotilapia afra in captivity
+      - source: *sf
+        value: null
+        note: males spawn with Aulonocara females; colour forms interbreed
+      - source: *fk
+        value: null
+        note: males court Aulonocara females
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+
+  coloration:
+    value:
+      baseColors: [blue]
+      pattern: plain
+    confidence: high
+    rationale: >-
+      Adult males are an even, intense metallic blue over the whole body (Seriously Fish, Tropical
+      Fish Hobbyist, Practical Fishkeeping, Fishkeeper). Many males carry a white blaze from the
+      snout along the back, which widens with age and is bred for in the Iceberg line, but it is
+      absent in northern populations and young males, so blue is the one dominant colour. The anal
+      fin shows yellow, orange or red accents depending on origin. No source describes bars on
+      adult males; faint bars belong to females and juveniles.
+    sources:
+      - *sf
+      - *tfh
+      - *pfk
+      - *fk
+      - *glaser
+      - *afp
+    evidence:
+      - source: *sf
+        value: {baseColors: [blue], pattern: plain}
+        note: males of all morphs blue, differing only in the fins
+      - source: *tfh
+        value: {baseColors: [blue], pattern: plain}
+        note: white dorsal stripe in many males, red or orange fin accents
+      - source: *pfk
+        value: {baseColors: [blue, white], pattern: plain}
+        note: older males with a white dorsal surface
+      - source: *fk
+        value: {baseColors: [blue, white], pattern: plain}
+        note: white blaze in southern populations only
+      - source: *afp
+        value: {baseColors: [blue], pattern: plain}
+        note: iridescent blue all over, coloured anal fin
+
+  feedingSpeed:
+    value: normal
+    confidence: medium
+    rationale: >-
+      A hunting hap that takes prepared food readily but does not rush it like mbuna: Aquarium
+      Glaser reports that fast mbuna outcompete it at feeding time and leave it underfed. Among
+      calm haps it takes its share at a normal pace.
+    sources:
+      - *glaser
+      - *tfh
+    evidence:
+      - source: *glaser
+        value: normal
+        note: loses food to fast mbuna
+      - source: *tfh
+        value: normal
+        note: not a picky eater
+
+  minTank:
+    value: {volumeL: 300, lengthCm: 150, depthCm: 50}
+    confidence: medium
+    rationale: >-
+      For one male with three or more females the sources ask for about 265 to 305 litres:
+      Seriously Fish gives a base of 150 by 45 cm (about 304 litres), Fishkeeper at least 150 cm
+      length, Tropical Fish Hobbyist at least 284 litres with 125 by 50 cm and 180 cm as ideal,
+      LiveAquaria 265 litres. The species swims strongly and males reach 16 cm, so 150 cm length,
+      50 cm front-to-back depth and about 300 litres are taken. Smaller figures of 60 to 250 litres
+      in shop sheets ignore the adult size and the harem.
+    sources:
+      - *sf
+      - *fk
+      - *tfh
+      - *la
+      - *ecured
+    evidence:
+      - source: *sf
+        value: {volumeL: 304, lengthCm: 150, depthCm: 45}
+      - source: *fk
+        value: {lengthCm: 150}
+        note: only the length of 5 ft stated
+      - source: *tfh
+        value: {volumeL: 284, lengthCm: 125, depthCm: 50}
+        note: minimum; 180 cm ideal
+      - source: *la
+        value: {volumeL: 265}
+        note: 70 US gallons
+      - source: *ecured
+        value: {volumeL: 250}
+        note: only the volume stated
+
+  lifespanYears:
+    value: {min: 8, max: 12}
+    confidence: low
+    rationale: >-
+      Only one shop care sheet gives a figure, 10 to 12 years; Malawi haps of this size commonly
+      live about 8 to 10 years in the aquarium. The range covers both and needs confirmation.
+    sources:
+      - *afp
+      - &mk
+        kind: model-knowledge
+        title: General knowledge of Lake Malawi haplochromine husbandry
+    evidence:
+      - source: *afp
+        value: {min: 10, max: 12}
+
+  breeding:
+    value: maternal-mouthbrooder
+    confidence: high
+    rationale: >-
+      All sources agree on a maternal mouthbrooder. The male courts at a sloping rock or sand cone,
+      fertilises each egg at its base, and the female takes the eggs into her mouth and carries
+      them for about three weeks (Seriously Fish, Practical Fishkeeping, Fishkeeper, Tropical Fish
+      Hobbyist); the Cichlid Room Companion confirms the maternal mouthbrooding.
+    sources:
+      - *sf
+      - *pfk
+      - *fk
+      - *tfh
+      - *crc
+    evidence:
+      - source: *sf
+        value: maternal-mouthbrooder
+      - source: *pfk
+        value: maternal-mouthbrooder
+        note: no nest built in the tank
+      - source: *fk
+        value: maternal-mouthbrooder
+      - source: *tfh
+        value: maternal-mouthbrooder
+      - source: *crc
+        value: maternal-mouthbrooder
+        note: verification only
+
+  beginnerSuitability:
+    value: moderate
+    confidence: medium
+    rationale: >-
+      Hardy, easy to feed and easy to breed, but it needs a large tank, a harem and tankmates chosen
+      with care because of its predation and its readiness to cross with other blue species.
+      Seriously Fish rates it moderate and the Cichlid Room Companion places it with intermediate
+      aquarists; LiveAquaria calls it easy, and Tropical Fish Hobbyist recommends it as a first
+      African cichlid given a large tank.
+    sources:
+      - *sf
+      - *crc
+      - *la
+      - *tfh
+    evidence:
+      - source: *sf
+        value: moderate
+      - source: *crc
+        value: moderate
+        note: intermediate aquarists; verification only
+      - source: *la
+        value: easy
+      - source: *tfh
+        value: easy
+        note: a good start into African cichlids in a large tank
+
+partners:
+  suitable:
+    - species: Cyrtocara moorii
+      reason: Calm hap of similar size from the sand zone; different colour pattern and too large to be prey.
+    - species: Nimbochromis venustus
+      reason: Robust hap of the same habitat that holds its own and does not resemble the blue males.
+      condition: Tank of at least 180 cm, as N. venustus grows larger.
+    - species: Protomelas taeniolatus
+      reason: Medium-sized hap of the rock-sand margin with a comparable temperament.
+    - species: Copadichromis borleyi
+      reason: Peaceful open-water hap of similar size; adults are too large to be prey.
+    - species: Dimidiochromis compressiceps
+      reason: Large, calm predatory hap that Fishkeeper names as a companion; neither species fits into the other's mouth as adults.
+      condition: Tank of at least 180 cm and no small fish in the community.
+    - species: Synodontis catfish
+      reason: Robust bottom-dwelling catfish that use other zones of the tank and are ignored by the haps.
+      condition: Species of similar adult size; the cuckoo catfish S. multipunctatus lays its eggs among the spawn of mouthbrooders and is better left out of a breeding tank.
+  unsuitable:
+    - species: Aulonocara
+      reason: Males court and spawn with peacock females and may kill the peacock males to reach them; the blue peacock males are also treated as rivals.
+    - species: Cynotilapia afra
+      reason: Crosses with this blue mbuna produced fertile offspring in captivity, and its hectic activity unsettles the hap.
+    - species: Sciaenochromis ahli
+      reason: Congener whose blue males look almost identical; the males fight as rivals, and the two cannot be told apart reliably in the trade.
+    - species: Pseudotropheus saulosi
+      reason: Small, hectic mbuna; juveniles and small adults are prey, and the busy mbuna keep the hap stressed.
+    - species: Lake Malawi mbuna
+      reason: Fast feeders that leave the hap underfed, constant aggression in the rockwork stresses it, and their fry are eaten.
+
+profile:
+  overview:
+    text: >-
+      The electric blue hap is one of the most popular Lake Malawi cichlids and has been sold for
+      decades under the wrong name "ahli". The true Sciaenochromis ahli is a different, rarely
+      seen species; the brilliant blue fish in shops is S. fryeri, described by Ad Konings in 1993
+      and named in honour of the British biologist Geoffrey Fryer. Mature males glow in a deep
+      metallic blue, often with a white blaze along the back, while females stay plain silver. In
+      the lake it is a stalking predator of small fish, yet in the aquarium it settles into a
+      mixed group of calm haps without much trouble. It needs a long tank, a harem of females and
+      tankmates that are neither prey nor blue look-alikes. Kept this way it is hardy, easy to
+      feed and breeds readily, which makes it a good choice for keepers with some experience of
+      Malawi cichlids.
+    sources:
+      - *cof
+      - *sf
+      - *pfk
+      - *fk
+      - kind: website
+        title: Wikipedia, Sciaenochromis fryeri (etymology after the ETYFish Project)
+        url: https://en.wikipedia.org/wiki/Sciaenochromis_fryeri
+        accessed: 2026-10-12
+  habitat:
+    text: >-
+      The species lives only in Lake Malawi, where it occurs along much of the shoreline but is
+      never common. Its home is the transition zone where boulders end and sand begins, usually
+      between 10 and 40 metres deep. Here it patrols just above the bottom and hunts the young of
+      other cichlids that hide between the rocks, and it follows larger digging cichlids to snap
+      up the small fish and shrimp they stir up. The lake water is warm (about 21 to 29 C), soft
+      with 3 to 5 dGH and moderately alkaline with a pH of 7.7 to 8.6, buffered by bicarbonate at
+      5 to 8 dKH. Known sites include Mbenji Island, where the type specimens come from, Taiwan
+      Reef and the Chinyankwazi and Chinyamwezi islands in the south.
+    sources:
+      - *fb
+      - *sf
+      - *fk
+      - *glaser
+      - *branchu
+      - *fao
+  sizeAndGrowth:
+    text: >-
+      Wild type specimens reach about 11.5 cm standard length, roughly 14 cm total length. In the
+      aquarium males usually grow to about 15 to 16 cm, and single large males are reported at up
+      to 20 cm; females stay around 12 to 13 cm. Shops mostly sell juveniles of 4 to 5 cm, which
+      grow quickly on a protein-rich diet. Young males show the first blue patches at about 5 to
+      7 cm, and the dark adult blue develops at around 10 cm. With age dominant males become
+      darker and their white blaze, where present, widens. Plan the tank for the adult size from
+      the start.
+    sources:
+      - *fb
+      - *pfk
+      - *tfh
+      - *fk
+      - *afp
+  husbandry:
+    text: >-
+      A group of one male and three or more females needs a tank of at least 150 cm length, 50 cm
+      depth and about 300 litres; 180 cm is better. Build stable rock piles with caves and a few
+      flat, sloping stones, and leave a wide area of open sand in front for swimming. Rocks must
+      sit directly on the glass so digging cannot topple them. Keep the water clean with strong
+      filtration and regular large water changes, at 24 to 27 C and a stable pH around 8. A stable,
+      well-buffered alkaline pH matters more than the exact total hardness, and moderately hard tap
+      water is tolerated well. A dark substrate brings out the colour of the males.
+    sources:
+      - *sf
+      - *fk
+      - *tfh
+      - *la
+  socialBehavior:
+    text: >-
+      Males cannot share a normal tank peacefully: the strongest takes over and drives the others
+      into hiding, and a male in breeding mood presses a single female hard. One male with three to
+      six females is the standard setup, and a second male only works in very large tanks with
+      several sight barriers. Towards other species it is fairly calm and mostly chases fish away
+      from its spawning rock. It does treat blue fish of similar shape as rivals and may court
+      females of other genera. Outside spawning it roams the rock-sand edge and claims no fixed
+      area.
+    sources:
+      - *sf
+      - *pfk
+      - *tfh
+      - *fk
+      - *a13937
+  diet:
+    text: >-
+      In the lake this hap feeds mostly on small fish, especially the young of other cichlids, and
+      adds insect larvae and small crustaceans. In the aquarium it accepts nearly any food. A good
+      cichlid pellet or flake for carnivores makes a sound staple, completed by frozen mysis,
+      krill and brine shrimp. Plant matter is not needed. Live feeder fish are unnecessary and can
+      bring disease into the tank, and mammal meat such as beef heart should be avoided. Fast
+      mbuna eat the food before it reaches the hap, which is one more reason to keep it with calm
+      haps. Feed adults once or twice a day in amounts they finish within a few minutes.
+    sources:
+      - *fb
+      - *sf
+      - *fk
+      - *glaser
+      - *gueroy
+  breeding:
+    text: >-
+      Breeding is easy in a harem tank. The male intensifies his colour and chooses a sloping
+      stone, or in the lake builds a cone of sand against a rock, and displays to the females
+      there. The female lays her eggs one by one on the slope; the male fertilises them at the
+      bottom of the stone before she picks them up. A brood holds about 30 to 70 eggs, rarely
+      more. The female carries them for about three weeks without eating and then releases
+      free-swimming young that take brine shrimp nauplii and fine powdered food at once. Move a
+      holding female only with care, as stress can make her spit or swallow the brood, and protect
+      the fry from the adults.
+    sources:
+      - *sf
+      - *pfk
+      - *fk
+      - *tfh
+  sexing:
+    text: >-
+      Adult fish are easy to sex. Males are a vivid metallic blue over the whole body, often with
+      a white stripe from the snout along the back and dorsal fin, and with a yellow, orange or red
+      anal fin depending on origin. Females are silver to grey with faint dark bars and at most a
+      light blue sheen when mature. Juveniles all look alike; young males show the first blue
+      patches at about 5 to 7 cm. Watching the group for a while also helps, as the future male
+      dominates early.
+    sources:
+      - *pfk
+      - *tfh
+      - *fk
+      - *afp
+  compatibility:
+    text: >-
+      The best tankmates are calm haps of similar size from the sand and rock margin, such as
+      Cyrtocara moorii, Protomelas, Copadichromis and, in a big tank, the larger Nimbochromis and
+      Dimidiochromis, plus robust Synodontis catfish. Small fish, juveniles and fry will be hunted.
+      Avoid mbuna, which outcompete the hap at feeding time and keep it stressed. Be careful with
+      blue species: males treat blue males as rivals and court foreign females, and crosses with
+      Aulonocara females and with Cynotilapia afra are documented, so peacocks and other blue
+      Malawi cichlids do not belong in its tank. Do not keep it with the look-alike S. ahli, and
+      never mix different colour forms of S. fryeri, as they interbreed.
+    sources:
+      - *sf
+      - *fk
+      - *pfk
+      - *tfh
+      - *glaser
+      - *gerlai
+  problems:
+    text: >-
+      The most common mistake is keeping it as a pair or with several males in a small tank, which
+      ends in exhausted females or beaten males. Mixing it with similarly blue species leads to
+      fights and hybrid offspring, which must never be passed on. Because fry and small fish are
+      prey, a community breeding tank loses most young. Like all Malawi cichlids it reacts to
+      nitrate build-up and falling pH with dull colours and a higher risk of infections, so large
+      regular water changes matter. Mammal meat is hard to digest and overfeeding strains the gut,
+      and feeder fish can carry parasites. Kept with fast mbuna it often goes hungry and loses
+      condition.
+    sources:
+      - *sf
+      - *pfk
+      - *fk
+      - *glaser
+      - *mk
+
+provenance:
+  runs:
+    - {role: generator, model: claude-opus-5-5, date: 2026-10-12}
+    - {role: checker, model: claude-opus-5-5, date: 2026-10-12}
+    - {role: checker, model: claude-sonnet-5-5, date: 2026-10-12}
+    - {role: checker, model: claude-opus-5-5, date: 2026-10-12}
+    - {role: checker, model: claude-sonnet-5-5, date: 2026-10-12}
+    - {role: adjudicator, model: claude-opus-5-5, date: 2026-10-12}
+  disagreements:
+    - field: taxonomy.legacyNames
+      proposals:
+        - {by: generator, value: [Sciaenochromis fryeri]}
+        - {by: checker-a, value: [Sciaenochromis fryeri]}
+        - {by: checker-b, value: [Sciaenochromis fryeri, Sciaenochromis ahli, Haplochromis ahli]}
+      decision: [Sciaenochromis fryeri]
+      rationale: >-
+        Legacy entry 504 lists only Sciaenochromis fryeri; Sciaenochromis ahli is a separate valid
+        species with its own legacy entry 502. The misapplied trade name is explained in the
+        taxonomy note.
+    - field: features.origin.value.waterbody
+      proposals:
+        - {by: generator, value: Lake Malawi}
+        - {by: checker-a, value: Lake Malawi}
+        - {by: checker-b, value: lake-malawi}
+      decision: Lake Malawi
+      rationale: Both spellings name the same entry of the water body table; the name form is used, as in the other proposals.
+    - field: features.origin.value.localities
+      proposals:
+        - {by: generator, value: [Mbenji Island, Chinyankwazi Island, Chinyamwezi Island, Taiwan Reef]}
+        - {by: checker-a, value: [Mbenji Island, Taiwan Reef, Chinyankwazi Island, Chinyamwezi Island]}
+        - {by: checker-b, value: [Mbenji Island]}
+      decision: [Mbenji Island, Chinyankwazi Island, Chinyamwezi Island, Taiwan Reef]
+      rationale: >-
+        The type locality comes from the Catalog of Fishes; FishBase names the three other sites,
+        and checker-b mentions them in its own rationale.
+    - field: features.ph.tolerance
+      proposals:
+        - {by: generator, value: {min: 7.5, max: 8.8}}
+        - {by: checker-a, value: {min: 7.5, max: 8.8}}
+        - {by: checker-b, value: {min: 7.0, max: 8.8}}
+        - {by: tiebreaker-1, value: {min: 7.6, max: 8.8}}
+        - {by: tiebreaker-2, value: {min: 7.2, max: 8.8}}
+      decision: {min: 7.5, max: 8.8}
+      rationale: >-
+        Decided by the vote count (qualified majority, 4 of 5 within 0.3 pH); the median of the
+        agreeing bounds is 7.5 to 8.8. The lower value of checker-b rests on short trials and a
+        blog range.
+    - field: features.maxSizeCm
+      proposals:
+        - {by: generator, value: {male: 16, female: 13}}
+        - {by: checker-a, value: {male: 16, female: 13}}
+        - {by: checker-b, value: {male: 17, female: 13}}
+      decision: {male: 16, female: 13}
+      rationale: >-
+        Practical Fishkeeping, Fishkeeper and Aquarium Glaser put aquarium males at about 15 cm and
+        only Tropical Fish Hobbyist goes to 17 to 20 cm; 20 cm figures are maximum records. 16 cm
+        is the typical well-kept male.
+    - field: features.predation
+      proposals:
+        - {by: generator, value: 3}
+        - {by: checker-a, value: 3}
+        - {by: checker-b, value: 2}
+        - {by: tiebreaker-1, value: 3}
+        - {by: tiebreaker-2, value: 3}
+      decision: 3
+      rationale: >-
+        Decided by the vote count (qualified majority, 4 of 5). The sources agree that fish are the
+        main natural food, which is the level 3 criterion; checker-b chose level 2 because the prey
+        are mostly young fish.
+    - field: features.diet.value.foods
+      proposals:
+        - {by: generator, value: [small fish and cichlid fry (wild), insect larvae and crustaceans, cichlid pellets and flakes, "frozen mysis, krill and brine shrimp"]}
+        - {by: checker-a, value: [pellets and flakes for carnivorous cichlids, "frozen mysis, krill and brine shrimp", small pieces of fish or shrimp]}
+        - {by: checker-b, value: [live fish fry, frozen mysis and krill, prawn, cichlid pellets]}
+      decision: [small fish and cichlid fry (wild), insect larvae and crustaceans, cichlid pellets and flakes, "frozen mysis, krill and brine shrimp"]
+      rationale: >-
+        Type and bloat sensitivity agree in all votes; the vote count takes the food list of the
+        first agreeing vote, which separates the natural diet from aquarium foods. Live fish fry
+        is not recommended as aquarium food.
+    - field: features.territory
+      proposals:
+        - {by: generator, value: {size: small, breedingOnly: true}}
+        - {by: checker-a, value: {size: small, breedingOnly: true}}
+        - {by: checker-b, value: {size: small, breedingOnly: false}}
+      decision: {size: small, breedingOnly: true}
+      rationale: >-
+        Seriously Fish, Fishkeeper and Tropical Fish Hobbyist tie the defended spot to spawning, and
+        Fishkeeper calls the species solitary; no source reports a territory held outside
+        breeding.
+    - field: features.social
+      proposals:
+        - {by: generator, value: {structure: harem, ratio: 3}}
+        - {by: checker-a, value: {structure: harem, ratio: 4}}
+        - {by: checker-b, value: {structure: harem, ratio: 3}}
+      decision: {structure: harem, ratio: 3}
+      rationale: >-
+        The minimum figures of the sources are two, three and four females per male; three is
+        their middle and the figure of Seriously Fish. The higher ideal figures are named in the
+        rationale and the text.
+    - field: features.coloration
+      proposals:
+        - {by: generator, value: {baseColors: [blue, white], pattern: bars}}
+        - {by: checker-a, value: {baseColors: [blue], pattern: plain}}
+        - {by: checker-b, value: {baseColors: [blue], pattern: plain}}
+      decision: {baseColors: [blue], pattern: plain}
+      rationale: >-
+        All sources describe an evenly blue male; the bars of the generator rest only on general
+        knowledge and belong to females and juveniles. The white blaze is missing in northern
+        populations and young males, so it is no dominant colour.
+    - field: features.minTank
+      proposals:
+        - {by: generator, value: {volumeL: 300, lengthCm: 150, depthCm: 50}}
+        - {by: checker-a, value: {volumeL: 300, lengthCm: 150, depthCm: 50}}
+        - {by: checker-b, value: {volumeL: 300, lengthCm: 150, depthCm: 45}}
+      decision: {volumeL: 300, lengthCm: 150, depthCm: 50}
+      rationale: >-
+        Seriously Fish gives 45 cm and Tropical Fish Hobbyist 50 cm as minimum depth; the deeper
+        value suits a strong swimmer of 16 cm and matches two of the three proposals.
+    - field: features.lifespanYears
+      proposals:
+        - {by: generator, value: {min: 8, max: 12}}
+        - {by: checker-a, value: {min: 8, max: 10}}
+        - {by: checker-b, value: {min: 8, max: 10}}
+      decision: {min: 8, max: 12}
+      rationale: >-
+        The checkers' range rests only on general knowledge; the one written figure (10 to 12 years,
+        Aquarium Fish Paradise) reaches higher, so the range covers both.
