@@ -1,10 +1,10 @@
 ---
 id: TASK-3.34
 title: Make outbox webhook delivery reliable and bounded to allowlisted targets
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-10-12 04:48'
-updated_date: '2026-10-12 12:42'
+updated_date: '2026-10-12 12:45'
 labels: []
 dependencies: []
 references:
