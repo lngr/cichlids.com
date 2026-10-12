@@ -56,9 +56,6 @@ public sealed class ApiFixture : IAsyncLifetime
                     ["ObjectStorage:SecretKey"] = "test",
                     ["ObjectStorage:ForcePathStyle"] = "true",
                     ["ObjectStorage:PublicBaseUrl"] = ObjectStorePublicBaseUrl,
-                    ["Authentication:Authority"] = TestTokens.Issuer,
-                    ["Authentication:Audience"] = TestTokens.Audience,
-                    ["Authentication:RequireHttpsMetadata"] = "false",
                     // The polling dispatcher would otherwise race read-endpoint assertions that
                     // check an outbox row's dispatched_at right after a write; tests that exercise
                     // dispatch drive it directly instead.

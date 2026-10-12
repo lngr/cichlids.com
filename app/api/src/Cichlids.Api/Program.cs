@@ -47,18 +47,20 @@ builder.Services.AddS3ObjectStore(builder.Configuration);
 builder.Services.AddOutboxDispatcher(builder.Configuration);
 builder.Services.AddHostedService<OutboxDispatcherHostedService>();
 
-var authenticationSection = builder.Configuration.GetSection("Authentication");
+// Resolved before the authentication handler is registered so a deployment outside Development
+// without an HTTPS authority or an audience refuses to start.
+var authenticationSettings = AuthenticationSettings.Resolve(builder.Configuration, builder.Environment.EnvironmentName);
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
-        options.Authority = authenticationSection["Authority"];
-        options.RequireHttpsMetadata = authenticationSection.GetValue("RequireHttpsMetadata", true);
+        options.Authority = authenticationSettings.Authority;
+        options.RequireHttpsMetadata = authenticationSettings.RequireHttpsMetadata;
         // Claims keep their OIDC names (sub, preferred_username) instead of the legacy SOAP-era
         // claim type URIs the handler would map them to by default.
         options.MapInboundClaims = false;
         options.TokenValidationParameters = new TokenValidationParameters
         {
-            ValidAudience = authenticationSection["Audience"],
+            ValidAudience = authenticationSettings.Audience,
             NameClaimType = "preferred_username",
         };
         options.Events = new JwtBearerEvents { OnTokenValidated = KeycloakRealmRoles.PromoteToRoleClaims };

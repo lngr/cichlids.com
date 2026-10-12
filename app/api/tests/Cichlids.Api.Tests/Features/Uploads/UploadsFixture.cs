@@ -74,9 +74,6 @@ public sealed class UploadsFixture : IAsyncLifetime
                     ["ObjectStorage:SecretKey"] = ObjectStoreSecretKey,
                     ["ObjectStorage:ForcePathStyle"] = "true",
                     ["ObjectStorage:PublicBaseUrl"] = $"{serviceUrl}/{ObjectStoreBucket}",
-                    ["Authentication:Authority"] = TestTokens.Issuer,
-                    ["Authentication:Audience"] = TestTokens.Audience,
-                    ["Authentication:RequireHttpsMetadata"] = "false",
                     ["OutboxDispatcher:Enabled"] = "false",
                 }));
 

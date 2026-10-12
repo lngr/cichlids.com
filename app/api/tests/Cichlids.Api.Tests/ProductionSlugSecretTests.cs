@@ -11,11 +11,13 @@ namespace Cichlids.Api.Tests;
 /// let a later deployment mint different values for the same legacy row. The host is expected to
 /// fail during startup rather than on the first request that needs a generated value.
 /// </summary>
+[Collection("Process environment variables")]
 public sealed class ProductionSlugSecretTests
 {
     [Fact]
     public void Host_fails_to_start_in_production_without_a_slug_secret()
     {
+        // A secret in the environment of the test process would be picked up, so it is cleared.
         var originalSecret = Environment.GetEnvironmentVariable(SlugGenerator.SecretEnvironmentVariable);
         Environment.SetEnvironmentVariable(SlugGenerator.SecretEnvironmentVariable, null);
         try
@@ -23,6 +25,9 @@ public sealed class ProductionSlugSecretTests
             using var factory = new WebApplicationFactory<Program>().WithWebHostBuilder(builder =>
             {
                 builder.UseEnvironment("Production");
+                // Host settings reach the configuration before the authentication settings are
+                // resolved, so the startup check passes and the slug secret check is reached.
+                builder.UseSetting("Authentication:Authority", "https://issuer.test");
                 builder.ConfigureAppConfiguration((_, configBuilder) =>
                     configBuilder.AddInMemoryCollection(new Dictionary<string, string?>
                     {
@@ -34,9 +39,6 @@ public sealed class ProductionSlugSecretTests
                         ["ObjectStorage:SecretKey"] = "test",
                         ["ObjectStorage:ForcePathStyle"] = "true",
                         ["ObjectStorage:PublicBaseUrl"] = "http://objects.test/cichlids-media",
-                        ["Authentication:Authority"] = "https://issuer.test",
-                        ["Authentication:Audience"] = "cichlids-api",
-                        ["Authentication:RequireHttpsMetadata"] = "false",
                         ["OutboxDispatcher:Enabled"] = "false",
                     }));
             });

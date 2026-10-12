@@ -47,9 +47,6 @@ public sealed class OutboxDispatchFixture : IAsyncLifetime
                     ["ObjectStorage:SecretKey"] = "test",
                     ["ObjectStorage:ForcePathStyle"] = "true",
                     ["ObjectStorage:PublicBaseUrl"] = "http://objects.test/cichlids-media",
-                    ["Authentication:Authority"] = TestTokens.Issuer,
-                    ["Authentication:Audience"] = TestTokens.Audience,
-                    ["Authentication:RequireHttpsMetadata"] = "false",
                     ["OutboxDispatcher:Enabled"] = "false",
                 }));
 
