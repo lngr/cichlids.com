@@ -9,9 +9,9 @@ using Microsoft.EntityFrameworkCore;
 namespace Cichlids.Api.Features.Webhooks;
 
 /// <summary>
-/// Minimal admin management for webhook subscriptions: registration and listing only. There is no
-/// update or delete endpoint; re-registering a corrected subscription is cheap at this scale and
-/// an operator UI does not exist yet to justify the extra surface.
+/// Admin management for webhook subscriptions: registration and listing. A registration is
+/// accepted only for a target the webhook target allowlist allows. Correcting a subscription means
+/// registering a new one, which is cheap at this scale.
 /// </summary>
 public static class WebhookAdminEndpoints
 {

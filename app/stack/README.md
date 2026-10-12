@@ -264,6 +264,38 @@ builds it through the package's `prepare` script, an install that finds nothing 
 script, so after a change to the client-core sources `pnpm --filter @cichlids/client-core build`
 rebuilds it.
 
+## Webhooks and the outbox
+
+The API delivers outbox events as signed webhooks only to hosts on the allowlist
+`Webhooks:AllowedTargetHosts`. It lives in Git: `appsettings.json` holds the empty production
+list, `appsettings.Development.json` allows `localhost` and `127.0.0.1`, and each deployment adds
+its own hosts in its configuration. An entry is a bare host name or IP address. The API logs the
+effective list at startup, and a registration for an `ftp://` URL or an unlisted host returns 400.
+
+A failing delivery is retried with a delay that doubles from 5 seconds up to one hour, counted
+from the previous attempt. An event is given up seven days after it occurred
+(`OutboxDispatcher:GiveUpAfter`). An admin lists given-up events and triggers their redelivery,
+which starts a new seven-day period; `dev-mod` has the admin role:
+
+```sh
+TOKEN=$(curl -s -d client_id=cichlids-app -d grant_type=password -d username=dev-mod \
+  -d password=dev-password http://localhost:8180/realms/cichlids/protocol/openid-connect/token | jq -r .access_token)  # gitleaks:allow
+curl -s -H "Authorization: Bearer $TOKEN" 'http://localhost:5045/api/admin/outbox/events?state=given-up'
+curl -s -X POST -H "Authorization: Bearer $TOKEN" "http://localhost:5045/api/admin/outbox/events/$EVENT_ID/redeliver"
+curl -s -X POST -H "Authorization: Bearer $TOKEN" http://localhost:5045/api/admin/outbox/given-up/redeliver
+```
+
+The open events with their schedule:
+
+```sh
+docker compose -f app/stack/compose.yaml exec postgres psql -U cichlids -d cichlids -c \
+  "select id, event_type, attempt_count, last_attempt_at, next_attempt_at, given_up_at, acknowledged_subscription_ids, last_error
+   from outbox_event where dispatched_at is null order by next_attempt_at"
+```
+
+While a dispatcher instance delivers an event, its `next_attempt_at` is the end of that
+instance's five-minute reservation.
+
 ## Smoke test
 
 The Playwright smoke script drives the Expo web build against a running API and asserts the
@@ -292,7 +324,7 @@ the already-running Postgres, RustFS and Keycloak containers above:
   policy as the dev bucket so the app can load uploaded images;
 - a second `Cichlids.Api` instance built in Release to a temp directory and run on
   `http://localhost:5046`, pointed at that database and bucket, with the outbox dispatcher
-  disabled;
+  polling every second and giving events up after fifteen seconds;
 - a static export of the Expo web app (`expo export --platform web`), built against that API and
   served on `http://localhost:8082`; `@cichlids/client-core` is compiled first, since the app
   imports its `dist/` output.
