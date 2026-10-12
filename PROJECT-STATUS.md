@@ -328,7 +328,7 @@ Anschließend den Status prüfen und `node tools/check-story-test-binding.mjs` l
 
 - **Scope:**
   - relationales Domänenschema mit `legacy_id`-Brücke
-  - idempotente ETL
+  - ETL in ein leeres Ziel, mit Reset für Dev und Staging
   - Medien-Pipeline
   - API mit voller Legacy-Parität
   - generierter TS-Client
@@ -349,7 +349,7 @@ Anschließend den Status prüfen und `node tools/check-story-test-binding.mjs` l
 | `Cichlids.Api` | ASP.NET Core Minimal API mit OpenAPI und Scalar. Endpunkte für Pictures (mit Artenfilter), Tanks und Profiles, Species, Comments und Ratings, Community-Archiv, Legacy-Redirects, Me, Auth (Keycloak-JWT) und die Webhook-Administration. Dazu der Outbox-Dispatcher. |
 | `Cichlids.Domain` | Entities ohne EF-Abhängigkeit |
 | `Cichlids.Infrastructure` | EF Core 10 mit Npgsql und snake_case, Migrationen, S3-Abstraktion (AWSSDK.S3), NetVips für Bildvarianten, `SlugGenerator` |
-| `Cichlids.Etl` | Konsolen-ETL (MySqlConnector) mit den Kommandos `migrate`, `all`, `verify` und `media` |
+| `Cichlids.Etl` | Konsolen-ETL (MySqlConnector) mit den Kommandos `migrate`, `reset`, `all`, `verify`, `media`, `media-verify` und `keycloak-import` |
 | Tests | `Api.Tests`, `Infrastructure.Tests` und `Etl.Tests`: xunit, Testcontainers (postgres:17, mysql:5.7) |
 | `app/client-core/` | Aus `openapi.json` generierter TypeScript-Client (openapi-typescript, openapi-fetch), vitest, msw |
 | `app/mobile/` | Expo ~57, expo-router, React Native 0.86, React 19. Screens für Galerie, Bilddetail, Becken, Profil, Community und Arten. i18n mit Englisch als Standard, Theme aus den Design-Tokens. E2E mit Maestro (`e2e/maestro`) und Playwright (`e2e/playwright`). |
@@ -407,11 +407,14 @@ Die Anleitung steht in `app/stack/README.md` im Worktree `/workspaces/cichlids-m
 
 1. Die Legacy-MySQL muss laufen und den importierten Dump enthalten. `bootstrap.sh` startet sie bei
    Bedarf, importiert den Dump aber nicht.
-2. `app/stack/bootstrap.sh` ausführen. Das Skript ist idempotent: Stack hoch, `etl migrate`,
-   `etl all`, `etl verify`, `etl media` (Standard `--limit 3000`), Realm-Import.
+2. API stoppen und `app/stack/bootstrap.sh` ausführen. Jeder Lauf beginnt mit dem Reset: Stack hoch,
+   `etl reset`, Realm löschen und aus der Datei importieren, `etl all`, `etl media` (Standard
+   `--limit 3000`), `etl keycloak-import --open-registration`, `etl verify`. Von Hand angelegte
+   Zeilen und Konten gehen dabei verloren, Medienobjekte im Bucket bleiben.
    - `CICHLIDS_MEDIA_LIMIT=0` lädt alle Medien.
-   - `CICHLIDS_LEGACY_STACK_DIR` zeigt standardmäßig auf
-     `/workspaces/cichlids.com/workspace-legacy/legacy-stack`.
+   - `CICHLIDS_LEGACY_STACK_DIR` zeigt standardmäßig auf `workspace-legacy/legacy-stack` im
+     Repository.
+   - Nur die Dienste starten: `docker compose -f app/stack/compose.yaml up -d`.
 3. API starten: `dotnet run` in `Cichlids.Api` (http://0.0.0.0:5045).
 4. App starten: `pnpm exec expo start --web --port 8081`. Web-Smoke: `pnpm run e2e:web`; schreibende
    E2E-Specs: `pnpm run e2e:write`.

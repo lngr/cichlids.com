@@ -70,4 +70,5 @@ by hand. Run that script (or its `--check` mode in CI) after adding or changing 
 | [0023](0023-identity-model-user-logins-and-public-handle.md) | Identity Model: User, Logins and Public Handle | Accepted |
 | [0024](0024-webhook-delivery-boundary-and-redelivery.md) | Webhook Delivery Boundary and Redelivery | Accepted |
 | [0025](0025-keycloak-realm-configuration-per-environment.md) | Keycloak Realm Configuration per Environment | Accepted |
+| [0026](0026-legacy-import-runs-once-against-an-empty-target.md) | Legacy Import Runs Once Against an Empty Target | Accepted |
 <!-- END ADR LIST -->

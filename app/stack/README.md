@@ -49,23 +49,46 @@ docker start cichlids-legacy-db-1
 
 ## Bootstrap
 
-`bootstrap.sh` brings a clean checkout up to the full local stand: Docker services, legacy MySQL,
-ETL migration and seed, the Keycloak realm import, and the legacy account import into Keycloak. It
-is idempotent: on an already-bootstrapped stack the service, legacy MySQL and realm steps report
-their work as done, the ETL, media and account import steps rerun without changing the result,
-and the script exits green.
+`bootstrap.sh` brings a checkout to the full local stand and starts every run from the state the
+production import starts from. It runs in this order:
+
+1. `services-up.sh` starts Postgres, RustFS and Keycloak and fails when Postgres is not ready
+   within `CICHLIDS_POSTGRES_WAIT_SECONDS`.
+2. The legacy MySQL stack is started when port 3306 is closed.
+3. `etl reset` drops and rebuilds the database schemas, deletes the realm users without the realm
+   role `admin` and closes self-registration.
+4. The `cichlids` realm is deleted and imported from `keycloak/cichlids-realm.json`, which holds
+   `dev-user` and `dev-mod`.
+5. `etl all` imports the legacy data into the empty database and verifies it.
+6. `etl media` seeds the media.
+7. `etl keycloak-import --open-registration` imports the legacy accounts and opens
+   self-registration once every account exists.
+8. `etl verify` checks the finished stand against the legacy source.
 
 ```sh
 app/stack/bootstrap.sh
 ```
 
+Every run resets the dev database and the realm, so rows and accounts created by hand are lost.
+Media objects in the bucket stay. Stop the API before running the script: a connection holding a
+lock makes the reset fail after ten seconds. Run the reset on the dev stack only through
+`bootstrap.sh`, because the realm import that follows it restores `dev-user`, which the write E2E
+stack signs in with. To only start the services, use `docker compose -f app/stack/compose.yaml up -d`
+or `services-up.sh`.
+
+The full run (`etl all`) writes only into an empty, fully migrated database and stops with the
+reason otherwise. The reset runs only with `DOTNET_ENVIRONMENT` set to `Development` or `Staging`;
+`bootstrap.sh` sets `Development`. Single write steps (`etl profiles`, `etl tanks`, ...) skip the
+empty-target check, write over existing rows and run only in `Development`.
+
 Environment variables (all optional):
 
 | Variable                     | Default                                                  | Purpose |
 |-------------------------------|-----------------------------------------------------------|---------|
-| `CICHLIDS_LEGACY_STACK_DIR`   | `/workspaces/cichlids.com/workspace-legacy/legacy-stack`  | Where to find the legacy MySQL stack's `docker-compose.yml` if MySQL is not already reachable on 3306. |
+| `CICHLIDS_LEGACY_STACK_DIR`   | `<repository>/workspace-legacy/legacy-stack`               | Where to find the legacy MySQL stack's `docker-compose.yml` if MySQL is not already reachable on 3306. |
 | `CICHLIDS_MEDIA_LIMIT`        | `3000`                                                     | How many media items the ETL media step seeds; `0` seeds the full legacy image set. |
 | `CICHLIDS_AUTH0_EXPORT`       | `/workspaces/legacy-data/auth0/auth0-cichlids.json`        | Auth0 export (newline-delimited JSON) for the Keycloak account import; the step is skipped when the file does not exist. |
+| `CICHLIDS_POSTGRES_WAIT_SECONDS` | `60`                                                    | How long to wait for Postgres before the script fails. |
 | `DOTNET`                      | `~/.dotnet/dotnet`                                         | Path to the `dotnet` executable. |
 
 To run the Keycloak account import on its own:
@@ -87,7 +110,7 @@ identity the import creates for the member's Keycloak user, so the import has to
 environment opens self-registration.
 
 Before it creates users, the import adds the `email_verified` mapper to the realm's `email`
-client scope when the scope lacks it, which covers an existing realm that `bootstrap.sh` skips,
+client scope when the scope lacks it, which covers a realm imported from a file without the mapper,
 so tokens carry the standard `email_verified` claim. A realm without an Auth0 export gets the
 mapper with:
 
@@ -144,7 +167,7 @@ their own files from `apps/keycloak/overlays/`, which a CI check keeps free of t
 The realm starts with self-registration closed. `bootstrap.sh` opens it with
 `etl keycloak-import --open-registration`, which does so only after the account import has
 created every legacy account. Without an Auth0 export the import is skipped and registration
-stays closed. A dev volume whose realm has registration open is closed with:
+stays closed. The reset closes registration as well. To close it by hand:
 
 ```sh
 docker compose -f app/stack/compose.yaml exec -T keycloak sh -c '

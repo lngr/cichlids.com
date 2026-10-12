@@ -224,7 +224,7 @@ Registry-Token (`.docker/config.json`), SSH-Keys. `workspace-legacy/.gitignore` 
 
 1. Datenqualität sichten (phpMyAdmin): Spam/Test-Accounts, gelöschte Inhalte, Moderation.
 2. Tech-Stack der neuen App festlegen (Backend/DB, Objektspeicher, IdP, Mobile-Framework).
-3. ETL Legacy-MySQL → neues Schema (idempotent, `legacy_id`-Brücke). Mapping im HTML-Report (Tab „Migration").
+3. ETL Legacy-MySQL → neues Schema (läuft einmal gegen ein leeres Ziel, siehe ADR-0026; `legacy_id` bleibt die Brücke zu den Legacy-IDs). Mapping im HTML-Report (Tab „Migration").
 4. Bild-Migration in Objektspeicher (Key `user_pics/<uid>/<datei>`) + Transform-Layer.
 5. Feature-Roadmap (Tab „Vision") priorisieren; PHP-Slim-API + Angular-Frontend als Referenz-Spezifikation.
 
