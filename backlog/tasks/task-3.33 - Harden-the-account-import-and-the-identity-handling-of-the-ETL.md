@@ -1,10 +1,10 @@
 ---
 id: TASK-3.33
 title: Harden the account import and the identity handling of the ETL
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-10-12 04:48'
-updated_date: '2026-10-12 08:12'
+updated_date: '2026-10-12 08:19'
 labels: []
 dependencies: []
 references:
@@ -26,7 +26,7 @@ The profile step replaces only identities of the legacy providers auth0 and lega
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [x] #1 Given an oidc identity on a migrated profile, When the profile step runs again on the dev stack, Then the oidc identity still exists
+- [ ] #1 Given an oidc identity on a migrated profile, When the profile step runs again on the dev stack, Then the oidc identity still exists
 - [x] #2 Given an archived placeholder profile with a legacy id, When the account import runs, Then no login is linked to it
 - [x] #3 Given a Keycloak error during the import, When the operator reads the error output, Then it contains no username and no email address
 - [x] #4 Given no admin credentials configured outside Development, When the operator starts the import, Then it aborts with a message naming the missing setting
