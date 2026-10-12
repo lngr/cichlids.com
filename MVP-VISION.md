@@ -253,6 +253,14 @@ Aufwand: Spike klein, Produktfunktion mittel, Vision-Modell klein.
 - **Artenseite als Gemeinschaftsseite** nach dem Ravelry-Prinzip: die besten Fotos (sortiert nach
   Aufrufen und Kommentaren), die Zahl der Becken mit dieser Art, Besatzpartner aus echten Becken,
   Fragen und Antworten aus dem Archiv, Halter mit Nachzucht.
+- **Artenkarte wie im Sammelkartenspiel:** Jede Art erscheint als Karte, deren Merkmale wie die
+  Werte einer Spielkarte dastehen: Wasserwerte, Größe, Raubverhalten, Aggression, Ernährung,
+  Sozialstruktur und die übrigen Merkmale der Artdatenbank. Hinter jedem Merkmal stehen
+  Kurzfassung und Begründung, natürlicher Bereich und Toleranz, die Sicherheit, die Angaben der
+  einzelnen Quellen und jede Quelle als Link. Diese Offenheit macht die Daten glaubwürdig und
+  zeigt, woher sie stammen. Wie die Agenten einen Wert entschieden haben (Stimmen, Tie-Breaker,
+  abweichende Vorschläge), sehen nur Administratoren; die öffentliche API liefert diese Angaben
+  nicht aus.
 - **Besatz-Planer mit Kompatibilitäts-Hinweisen** nach dem PCPartPicker-Prinzip. Jeder Hinweis hat
   eine Begründung und eine Quelle und blockiert nichts. Dieselben Hinweise erscheinen beim Anlegen
   eines Beckens im Onboarding, sobald der Besatz eine bekannte Unverträglichkeit enthält.
@@ -284,32 +292,62 @@ Die Profile entstehen über Agenten, die drei Quellen zusammenführen: ihr eigen
 Forenbeiträge und Fachliteratur sowie die eigenen Archivinhalte von cichlids.com. Jede Angabe nennt
 ihre Herkunft. Fremde Texte dienen als Beleg für Fakten; die Profiltexte sind eigene
 Formulierungen, weil Datenbanken wie Seriously Fish oder Cichlid Room Companion und Forenbeiträge
-urheberrechtlich geschützt sind. Die Merkmale der Verträglichkeitsprüfung liegen für alle Arten im
+urheberrechtlich geschützt sind. Aus fremden Quellen übernehmen die Agenten ausschließlich Fakten und
+Zahlen mit ihrer Quelle. Zu jedem Wert speichert das Profil, welche Quelle welche Angabe macht, und die
+Artenkarte zeigt diese Angaben nebeneinander, etwa "FishBase: 24 bis 26 °C, Seriously Fish: 23
+bis 27 °C". Die Merkmale der Verträglichkeitsprüfung liegen für alle Arten im
 Katalog vollständig vor. Zum Launch haben 80 % der Arten ein ausformuliertes Profil; die Reihenfolge
 folgt der Häufigkeit im Archiv.
 
 #### Prüfverfahren
 
 Das Fachwissen großer Sprachmodelle übertrifft das einzelner Halter, auch erfahrener. Die Prüfung
-der Profile liegt deshalb bei Agenten; ein Mensch gibt nur die harten Merkmale frei.
+der Profile liegt deshalb vollständig bei Agenten. Harte Merkmale brauchen mehr Belege und mehr
+Stimmen als die übrigen.
 
 1. **Erzeugung:** Ein Agent ermittelt je Art alle Merkmale mit Quelle und Begründung.
 2. **Unabhängige Gegenprüfung:** Mehrere Agenten mit unterschiedlichen Modellen oder Prompts
    bestimmen dieselben Werte, ohne die erste Fassung zu kennen.
-3. **Abgleich:** Übereinstimmende Werte gelten als belegt. Bei Abweichungen wägt ein schlichtender
-   Agent Begründungen und Quellen ab und entscheidet mit Begründung.
-4. **Plausibilitätsprüfungen:** Automatische Prüfungen markieren Ausreißer, etwa Wasserwerte, die
+3. **Abgleich:** Übereinstimmende Werte gelten als belegt. Bei Abweichungen in mittleren und weichen
+   Merkmalen wägt ein schlichtender Agent Begründungen und Quellen ab und entscheidet mit Begründung.
+4. **Tie-Breaker für harte Merkmale:** Raub, Ernährung, Kreuzungsgruppe und artreine Haltung brauchen
+   je Wert mindestens zwei unabhängige externe Quellen. Ein Wert ist gesichert, wenn Erzeugung und
+   beide Gegenprüfungen übereinstimmen. Weichen sie ab, bestimmen zwei weitere unabhängige Agenten
+   nur die strittigen Werte, und ein Wert mit mindestens vier von fünf Stimmen ist gesichert. Kommt
+   diese Mehrheit nicht zustande, gilt der vorsichtigste der vorgeschlagenen Werte mit niedriger
+   Sicherheit, also der Wert, der die strengeren Hinweise der Verträglichkeitsprüfung auslöst. Ein
+   Skript zählt die Stimmen, damit jede Entscheidung wiederholbar ist.
+5. **Wasserwerte aus dem Lebensraum:** Temperatur, pH, GH und KH folgen den Messungen am natürlichen
+   Fundort. Für die Arten des Malawi-, Tanganjika- und Victoriasees gelten die Messwerte des Sees.
+   Sie sind je See einmal recherchiert und gegengeprüft und stehen in einer eigenen Tabelle; der
+   Malawisee etwa hat weiches, alkalisches Wasser. Haltungsanleitungen zählen für Wasserwerte nicht
+   als Quelle, weil sie Härte und Alkalität oft gleichsetzen. Arten anderer Gewässer erhalten die
+   Messwerte ihres Fundorts aus der Fachliteratur, Hybriden und Zuchtformen die ihrer Elternarten.
+   Zusätzlich hat jeder Wasserwert einen Toleranzbereich: die Spanne, in der die Art nach
+   Fachliteratur und Haltungserfahrung dauerhaft gesund bleibt. Für ihn zählen Haltungsanleitungen
+   als Quelle. Er umfasst den natürlichen Bereich und wird wie die harten Merkmale abgestimmt.
+6. **Plausibilitätsprüfungen:** Automatische Prüfungen markieren Ausreißer, etwa Wasserwerte, die
    stark von nah verwandten Arten desselben Gewässers abweichen, oder eine Endgröße, die nicht zum
    Mindestbecken passt. Die fachlichen Unit-Tests der Verträglichkeitsprüfung laufen bei jeder
    Änderung mit.
-5. **Freigabe der harten Merkmale:** Die Agenten legen jeden harten Wert (Wasserwerte, Raub,
-   Kreuzungsgruppe, artreine Haltung, Ernährung) mit Begründung und Quellen in einer
-   Redaktionsoberfläche vor. Das Team hakt ihn ab oder kommentiert ihn; ein Kommentar geht zur
-   Überarbeitung an die Agenten zurück und erscheint danach erneut zur Freigabe. Bis zur Freigabe
-   führt ein harter Wert höchstens zur Stufe Achtung.
 
 Jede Angabe speichert Herkunft, Begründung und Version, damit spätere Korrekturen nachvollziehbar
 bleiben.
+
+Den Erstbestand erzeugen parallele Subagents in Claude Code. Die Profile liegen als versionierte
+Datendateien im Repository, je Art eine Datei mit Quelle je Angabe, und ein Import lädt sie in die
+Datenbank. Neue Arten nach dem Erstbestand pflegt das Team von Hand. Die Pipeline läuft in
+Abständen über den ganzen Bestand, damit neue Beiträge der Community und neue Literatur in die
+Profile einfließen; dabei gilt dasselbe Verfahren mit Gegenprüfung und Tie-Breakern.
+
+#### Fachartikel
+
+Fachartikel erklären Zusammenhänge, die über eine einzelne Art hinausgehen, etwa das Wasser des
+Malawisees und warum Haltungsanleitungen davon abweichen. Agenten schreiben sie mit Quellen je
+Aussage. Zwei unabhängige Agenten prüfen jede Aussage gegen ihre Quellen, ein schlichtender Agent
+entscheidet Abweichungen. Die Artikel liegen wie die Profile als versionierte Dateien im
+Repository und folgen denselben Regeln zum Urheberrecht. Artenseiten verlinken die passenden
+Artikel, und die KI-Erstantwort greift über die Wissensdatenbank auf sie zu.
 
 #### Taxonomie auf aktuellem Stand
 
@@ -371,7 +409,7 @@ Wert zwischen 0 und 1 liefert:
 
 | Merkmal | Konfliktfunktion |
 |---|---|
-| Wasserwerte (Temperatur, pH, GH) | Überlappung der Bereiche |
+| Wasserwerte (Temperatur, pH, GH) | Überlappung der natürlichen Bereiche und der Toleranzbereiche |
 | Ernährungstyp | Konfliktmatrix, etwa Aufwuchsfresser neben Fleischfresser |
 | Größe und Raubverhalten | einseitig: Passt der kleinere Fisch ins Maul des größeren? |
 | Aggression und Revierbedarf | Differenz, abgeschwächt durch Beckengröße und Lebensraumzone |
@@ -382,15 +420,15 @@ Es gibt drei Hinweisstufen, keine davon blockiert:
 
 - **Hinweis:** gut zu wissen, etwa "beide revierbildend, mit genug Versteckmöglichkeiten machbar".
 - **Achtung:** hängt von Bedingungen ab, etwa "geht ab 150 cm Beckenlänge".
-- **Warnung:** bekannt problematisch, etwa Wasserwerte ohne gemeinsamen Bereich.
+- **Warnung:** bekannt problematisch, etwa Wasserwerte, deren Toleranzbereiche sich nicht überlappen.
 
 Jedes Merkmal hat eine Härteklasse. Sie legt fest, bis zu welcher Stufe ein Konflikt in diesem
 Merkmal allein führen darf:
 
 | Härte | Allein höchstens | Merkmale |
 |---|---|---|
-| Hart | Warnung | Wasserwerte ohne gemeinsamen Bereich, Raub, Kreuzungsgruppe, "artrein empfohlen", Bloat-empfindlicher Aufwuchsfresser neben Fleischfresser |
-| Mittel | Achtung | Aggression gegen andere Arten, Revierbedarf, knapp überlappende Wasserwerte, Mindestbecken |
+| Hart | Warnung | Toleranzbereiche der Wasserwerte ohne gemeinsamen Bereich, Raub, Kreuzungsgruppe, "artrein empfohlen", Bloat-empfindlicher Aufwuchsfresser neben Fleischfresser |
+| Mittel | Achtung | Aggression gegen andere Arten, Revierbedarf, natürliche Bereiche der Wasserwerte ohne gemeinsamen Bereich, Mindestbecken |
 | Weich | keine Stufe, nur Beitrag zur Summe | Färbung, Herkunft, Fresstempo, Lebensraumzone |
 
 Harte Konflikte enden für die Fische meist schlecht, egal wie gut der Rest passt. Mittlere hängen
@@ -450,8 +488,9 @@ Aufwand: Fish Log und Artenseiten mittel, Artenprofile groß (überwiegend Daten
 - **"Hilfreich" nur für Menschen:** Nur Antworten von Mitgliedern lassen sich als hilfreich
   markieren. Eine KI-Antwort kann diese Markierung nicht erhalten, damit die Anerkennung bei den
   Mitgliedern landet, die geantwortet haben.
-- **Wissensdatenbank:** Sie enthält die Archiv-Fragen und -Threads, die Artenprofile und neue
-  Antworten von Mitgliedern, die als hilfreich markiert sind. Jeder Eintrag nennt seine Herkunft.
+- **Wissensdatenbank:** Sie enthält die Archiv-Fragen und -Threads, die Artenprofile, die
+  Fachartikel und neue Antworten von Mitgliedern, die als hilfreich markiert sind. Jeder Eintrag
+  nennt seine Herkunft.
 - **Archivfragen offen neu gestellt:** Fragen aus dem Archiv erscheinen im Feed mit Jahr und
   ursprünglichem Fragesteller ("2009 gefragt von ..."). Heutige Halter ergänzen eine aktuelle
   Antwort; der ursprüngliche Fragesteller erfährt davon, wenn er zurückkommt.
@@ -632,22 +671,22 @@ Design selbst ein Grund, die App zu öffnen.
   - Lokalisierung: Übersetzungen, Einheiten mit gespeicherter Eingabeeinheit, Standardbecken je Land
   - Automatische Übersetzung von Beiträgen mit Zwischenspeicher je Beitrag und Sprache
   - Artenprofile mit Quellenangaben je Angabe, Taxonomie mit Synonymen, Merkmalsvektoren und
-    Verträglichkeitsregeln
-  - Redaktionsoberfläche für die Freigabe harter Merkmale mit Kommentaren und Überarbeitung durch
-    Agenten
+    Verträglichkeitsregeln; Import der versionierten Profildateien, deren Provenienz (Läufe,
+    Stimmen, Abweichungen der Agenten) nur über Admin-Endpunkte abrufbar ist
   - Fisch-Profile mit eigener Timeline
 - **KI-Dienst (ADR-0011):** Embeddings, Scanner (Fotos und Videos), Suche nach Archiv-Antworten,
-  Anbindung des Vision-Modells mit Kontingenten und Gesamtbudget, Agenten-Pipeline für die
-  Artenprofile, Wissensdatenbank mit RAG für die KI-Erstantwort, Erfassung der Bewertungen als
-  Trainings- und Testdaten.
+  Anbindung des Vision-Modells mit Kontingenten und Gesamtbudget, Wissensdatenbank mit RAG für die
+  KI-Erstantwort, Erfassung der Bewertungen als Trainings- und Testdaten.
 - **Feature-Flags** für Funktionen, die erst ab einer gewissen Aktivität sinnvoll sind.
 - **Mobile:** neu aufgebaut nach dem Design-System; Komponenten, Auth und Upload-Logik des MVP sind
   wiederverwendbar.
-- **Plattformen:** Android, iOS und Web sind gleichwertig, mit vollem Funktionsumfang auf allen
-  drei, und erscheinen zum Launch gleichzeitig. Die Maestro-Suite läuft auf allen drei; die
-  iOS-Tests laufen auf einem eigenen MacBook als entferntem Runner (ADR-0006). Funktionen, die
-  vom Gerät abhängen (Kamera, Push-Erinnerungen), sind im Browser so weit verfügbar, wie der Browser
-  es zulässt.
+- **Plattformen:** Android und iOS sind gleichwertig, mit vollem Funktionsumfang, und erscheinen
+  zum Launch gleichzeitig. Die iOS-Tests laufen auf einem eigenen MacBook als entferntem Runner
+  (ADR-0006). Das Web erscheint zum Launch ebenfalls; sein Zuschnitt ist eine eigene Planung
+  (Abschnitt 9). Wie bei Instagram und Facebook liegt dort das meiste hinter Login und
+  Registrierung: Ohne Login sind Teaser zu sehen, für alles Weitere meldet sich der Besucher an.
+  Manche Bereiche haben im Web einen eigenen Wert für Suchmaschinen, etwa Artenprofile und
+  Fachartikel, andere passen als Web-App hinter dem Login.
 - **Vorgehen:** Stories mit Given-When-Then im Backlog, Red-Green, grüner E2E-Pfad je Story
   (ADR-0003).
 
@@ -667,8 +706,8 @@ Design selbst ein Grund, die App zu öffnen.
 
 Die Slices beginnen, sobald Staging mit dem MVP als erstem Workload läuft (O2 in
 `PROJECT-STATUS.md`). Schon parallel zum Deployment laufen der Scanner-Spike, die Zuordnung der
-Taxonomie und die Agenten-Pipeline für Merkmale und Artenprofile; die Redaktionsoberfläche folgt ab
-Slice 1. Die harten Merkmale aller Arten sind vor Slice 4 freigegeben.
+Taxonomie und die Agenten-Pipeline für Merkmale, Artenprofile und Fachartikel. Die harten Merkmale aller Arten
+sind vor Slice 4 gesichert.
 
 Der Launch folgt nach Slice 6, mit allen fünf Kernerlebnissen einschließlich Scanner. Überzeugt
 der Scanner bis dahin nicht, erscheint die App ohne ihn (Abschnitt 6.3).
@@ -681,6 +720,11 @@ der Scanner bis dahin nicht, erscheint die App ohne ihn (Abschnitt 6.3).
   Trainingsdaten.
 - Verträglichkeitsprüfung: Konfliktfunktionen im Detail, Startgewichte und Schwellen.
 - Anbieter, Kontingent je Mitglied und Gesamtbudget des Vision-Modells.
+- Zuschnitt des Webs: welche Teaser ohne Login sichtbar sind und wie viel davon Suchmaschinen
+  erfassen (etwa bei Artenprofilen, Fachartikeln und Archiv), wie die Startseite als Landingpage
+  zur Installation der App führt, welche Funktionen nur in der App erscheinen und welche als
+  Web-App hinter dem Login laufen.
+  Davon hängen die Aussagen zum Web in ADR-0001, ADR-0002, ADR-0004 und ADR-0006 ab.
 
 ---
 

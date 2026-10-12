@@ -31,8 +31,8 @@ Die Design-Richtung steht und ist verbindliche Grundlage für jede UI-Umsetzung.
   Dashboard, Entdecken, Profil, Onboarding, „Becken anlegen"-Wizard mit Kompatibilitäts-Warnung,
   Becken-Einstellungen (Sichtbarkeits-Stufen). Hi-Fi-Ausarbeitung des Herzstücks:
   [`cichlids-tank-detail-hifi.html`](cichlids-tank-detail-hifi.html).
-- **Umsetzungsregeln:** mobile-first; Android, iOS und Web gleichwertig (Entwicklung zuerst gegen
-  Android), Light+Dark, Ziel **WCAG AA**, Touch-Targets ≥ 48dp; ein Akzent (max. 2× pro Screen); Text auf Akzentflächen über `--on-accent`.
+- **Umsetzungsregeln:** mobile-first; Android und iOS gleichwertig (Entwicklung zuerst gegen
+  Android), das Web nach eigenem Zuschnitt (`MVP-VISION.md`, Abschnitt 9), Light+Dark, Ziel **WCAG AA**, Touch-Targets ≥ 48dp; ein Akzent (max. 2× pro Screen); Text auf Akzentflächen über `--on-accent`.
   Eine `design-system/README.md` fasst Einstieg und Regeln zusammen.
 
 ## Konventionen
@@ -60,6 +60,10 @@ Die konkreten Verfahren liegen als versionierte **Agent Skills** (offenes Format
   von User Stories und Tasks mit Backlog.md: spec-driven Loop, Story-Schnitt, Priorisierung,
   bidirektionale Verknüpfung zu Maestro-E2E-Tests, Datei- und CLI-Konventionen. Heranzuziehen
   bei jeder Arbeit an Stories, Tasks, Backlog oder Board.
+- **`knowledge-articles`** ([`skills/knowledge-articles/`](skills/knowledge-articles/)): Fachartikel
+  der Wissensdatenbank mit Autor, zwei unabhängigen Faktenprüfern und Schiedsrichter, Quelle je
+  Absatz und Regeln zum Urheberrecht. Heranzuziehen, sobald ein Fachartikel geschrieben, geprüft
+  oder aktualisiert wird.
 
 ## User Stories / Specs / Tasks (Backlog.md)
 
