@@ -32,7 +32,7 @@ public class ProfilesEndpointsTests(ApiFixture fixture)
     }
 
     [Fact]
-    public async Task GetById_FallsBackToExternalAvatarAndResolvesProfileImage()
+    public async Task GetById_FallsBackToExternalAvatarAndResolvesTheProfileImageToItsLargestVariant()
     {
         var response = await fixture.Client.GetAsync($"/api/profiles/{fixture.Seed.Bob.Id}");
         response.EnsureSuccessStatusCode();
@@ -40,8 +40,7 @@ public class ProfilesEndpointsTests(ApiFixture fixture)
         var detail = JsonSerializer.Deserialize<ProfileDetailDto>(await response.Content.ReadAsStringAsync(), TestJson.Options)!;
 
         Assert.Equal("https://example.test/avatars/bob.png", detail.AvatarUrl);
-        Assert.NotNull(detail.ProfileImageUrl);
-        Assert.Contains("bob-cover", detail.ProfileImageUrl);
+        Assert.Equal($"{ApiFixture.ExpectedPublicUrlPrefix}/variants/medium/profiles/bob-cover.jpg", detail.ProfileImageUrl);
     }
 
     [Fact]

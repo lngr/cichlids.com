@@ -91,7 +91,7 @@ const server = setupServer(
         state: "draft",
         topic: "cichlids",
         createdAt: "2026-01-01T00:00:00Z",
-        image: { thumb: "t.jpg", small: "s.jpg", medium: "m.jpg", large: null, original: "o.jpg" },
+        image: { thumb: "t.jpg", small: "s.jpg", medium: "m.jpg", large: null },
       },
       { status: 201 },
     );
@@ -107,7 +107,7 @@ const server = setupServer(
         state: "draft",
         topic: "cichlids",
         createdAt: "2026-01-01T00:00:00Z",
-        image: { thumb: "t.jpg", small: "s.jpg", medium: "m.jpg", large: null, original: "o.jpg" },
+        image: { thumb: "t.jpg", small: "s.jpg", medium: "m.jpg", large: null },
       },
     ]);
   }),
@@ -129,7 +129,7 @@ const server = setupServer(
       commentCount: 0,
       topic: body.topic ?? "cichlids",
       author: { id: 1, username: "me", displayName: "Me", avatarUrl: null },
-      image: { thumb: "t.jpg", small: "s.jpg", medium: "m.jpg", large: null, original: "o.jpg" },
+      image: { thumb: "t.jpg", small: "s.jpg", medium: "m.jpg", large: null },
     });
   }),
   http.delete(`${baseUrl}/api/posts/:id`, ({ params }) => {
@@ -207,7 +207,7 @@ describe("createCichlidsClient", () => {
             state: "draft",
             topic: "cichlids",
             createdAt: "2026-01-01T00:00:00Z",
-            image: { thumb: null, small: null, medium: null, large: null, original: "o.jpg" },
+            image: { thumb: null, small: null, medium: null, large: null },
           },
           { status: 201 },
         );

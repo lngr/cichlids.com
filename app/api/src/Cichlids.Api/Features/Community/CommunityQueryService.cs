@@ -194,10 +194,6 @@ public sealed class CommunityQueryService(CichlidsDbContext context, IObjectStor
 
         var mediaItemIds = mediaRows.Select(m => m.MediaItemId).Distinct().ToList();
 
-        var originalByMediaItem = await context.MediaItems
-            .Where(m => mediaItemIds.Contains(m.Id))
-            .ToDictionaryAsync(m => m.Id, m => m.StorageKey, cancellationToken);
-
         var variantsByMediaItem = (await context.MediaVariants
                 .Where(v => mediaItemIds.Contains(v.MediaItemId))
                 .Select(v => new { v.MediaItemId, v.Label, v.StorageKey })
@@ -211,7 +207,7 @@ public sealed class CommunityQueryService(CichlidsDbContext context, IObjectStor
                 g => g.Key,
                 g => g.Select(m => new CommunityAttachmentDto(
                     m.MediaItemId,
-                    _mediaUrlBuilder.Build(originalByMediaItem[m.MediaItemId], variantsByMediaItem.GetValueOrDefault(m.MediaItemId, NoVariants))))
+                    _mediaUrlBuilder.Build(variantsByMediaItem.GetValueOrDefault(m.MediaItemId, NoVariants))))
                     .ToList());
     }
 

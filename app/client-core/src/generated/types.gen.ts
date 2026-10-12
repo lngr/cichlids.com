@@ -126,7 +126,6 @@ export type ImageUrlsDto = {
     small: null | string;
     medium: null | string;
     large: null | string;
-    original: string;
 };
 
 export type InhabitantDto = {

@@ -1,3 +1,4 @@
+using Cichlids.Api.Features.Media;
 using Cichlids.Domain.Enums;
 using Cichlids.Infrastructure.Persistence;
 using Cichlids.Infrastructure.Storage;
@@ -7,8 +8,9 @@ namespace Cichlids.Api.Features.Profiles;
 
 /// <summary>
 /// Query logic behind the public profile endpoint: only browsable member profiles are visible,
-/// with the avatar resolved the same way as everywhere an author is shown and activity stats
-/// counted only over that profile's public content.
+/// with the avatar resolved the same way as everywhere an author is shown, the profile image
+/// resolved to its largest variant, and activity stats counted only over that profile's public
+/// content.
 /// </summary>
 public sealed class ProfilesQueryService(CichlidsDbContext context, IObjectStore objectStore)
 {
@@ -36,15 +38,11 @@ public sealed class ProfilesQueryService(CichlidsDbContext context, IObjectStore
         string? profileImageUrl = null;
         if (profile.ProfileImageMediaId is { } profileImageMediaId)
         {
-            var storageKey = await context.MediaItems
-                .Where(m => m.Id == profileImageMediaId)
-                .Select(m => m.StorageKey)
-                .FirstOrDefaultAsync(cancellationToken);
+            var variantStorageKeysByLabel = await context.MediaVariants
+                .Where(v => v.MediaItemId == profileImageMediaId)
+                .ToDictionaryAsync(v => v.Label, v => v.StorageKey, cancellationToken);
 
-            if (storageKey is not null)
-            {
-                profileImageUrl = objectStore.GetPublicUrl(storageKey);
-            }
+            profileImageUrl = new MediaUrlBuilder(objectStore).BuildBest(variantStorageKeysByLabel);
         }
 
         var pictureCount = await context.Posts

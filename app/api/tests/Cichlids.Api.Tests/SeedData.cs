@@ -81,10 +81,19 @@ public sealed record SeedData(
         context.MediaItems.AddRange(aliceAvatarMedia, bobProfileImageMedia);
         await context.SaveChangesAsync();
 
-        context.MediaVariants.Add(new MediaVariant
-        {
-            MediaItemId = aliceAvatarMedia.Id, Label = "thumb", Width = 200, StorageKey = "variants/thumb/avatars/alice.jpg",
-        });
+        context.MediaVariants.AddRange(
+            new MediaVariant
+            {
+                MediaItemId = aliceAvatarMedia.Id, Label = "thumb", Width = 200, StorageKey = "variants/thumb/avatars/alice.jpg",
+            },
+            new MediaVariant
+            {
+                MediaItemId = bobProfileImageMedia.Id, Label = "thumb", Width = 200, StorageKey = "variants/thumb/profiles/bob-cover.jpg",
+            },
+            new MediaVariant
+            {
+                MediaItemId = bobProfileImageMedia.Id, Label = "medium", Width = 800, StorageKey = "variants/medium/profiles/bob-cover.jpg",
+            });
         await context.SaveChangesAsync();
 
         alice.AvatarMediaId = aliceAvatarMedia.Id;

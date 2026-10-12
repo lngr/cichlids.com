@@ -13,14 +13,17 @@ export function findDraft(drafts: readonly Draft[], id: string): Draft | null {
   return drafts.find((draft) => String(draft.id) === id) ?? null;
 }
 
-/** The image for the upload screen's preview: the largest variant up to medium size. */
-export function draftPreviewUri(draft: Draft): string {
-  return draft.image.medium ?? draft.image.large ?? draft.image.small ?? draft.image.original;
+/**
+ * The image for the upload screen's preview: the medium variant, otherwise the large, small or
+ * thumbnail variant in that order, or null when the draft has no variant.
+ */
+export function draftPreviewUri(draft: Draft): string | null {
+  return draft.image.medium ?? draft.image.large ?? draft.image.small ?? draft.image.thumb;
 }
 
-/** The image for a draft list entry: the smallest variant available. */
-export function draftThumbnailUri(draft: Draft): string {
-  return draft.image.thumb ?? draft.image.small ?? draft.image.medium ?? draft.image.original;
+/** The image for a draft list entry: the smallest variant available, or null when there is none. */
+export function draftThumbnailUri(draft: Draft): string | null {
+  return draft.image.thumb ?? draft.image.small ?? draft.image.medium ?? draft.image.large;
 }
 
 /** The draft's trimmed title, or null when it has none or only whitespace. */

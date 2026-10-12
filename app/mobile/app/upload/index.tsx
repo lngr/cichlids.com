@@ -185,9 +185,11 @@ function UploadFlow({ draftId }: { draftId: string | null }) {
       contentContainerStyle={{ padding: theme.space[4], gap: theme.space[4] }}
       keyboardShouldPersistTaps="handled"
     >
-      {previewUri ? (
+      {draft ? (
         <View testID="upload-preview" style={[styles.preview, { backgroundColor: theme.colors.placeholder, borderRadius: theme.radius.md }]}>
-          <Image source={previewUri} style={styles.previewImage} contentFit="contain" accessibilityLabel={t("upload.previewLabel")} />
+          {previewUri ? (
+            <Image source={previewUri} style={styles.previewImage} contentFit="contain" accessibilityLabel={t("upload.previewLabel")} />
+          ) : null}
         </View>
       ) : draftId ? null : (
         <View style={{ gap: theme.space[3] }}>

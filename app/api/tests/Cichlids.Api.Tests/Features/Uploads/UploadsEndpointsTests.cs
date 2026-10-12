@@ -190,7 +190,6 @@ public class UploadsEndpointsTests(UploadsFixture fixture)
         Assert.NotNull(draft.Image.Small);
         Assert.NotNull(draft.Image.Medium);
         Assert.Null(draft.Image.Large);
-        Assert.EndsWith(".jpg", draft.Image.Original);
 
         var profileId = await ResolveProfileIdAsync(subject);
 

@@ -93,7 +93,7 @@ public sealed class ApiFixture : IAsyncLifetime
 
     /// <summary>
     /// The prefix every public media URL returned by the API is expected to start with, for tests
-    /// that assert a variant or original resolved to a URL instead of null.
+    /// that assert a variant resolved to a URL instead of null.
     /// </summary>
     public static string ExpectedPublicUrlPrefix => ObjectStorePublicBaseUrl;
 

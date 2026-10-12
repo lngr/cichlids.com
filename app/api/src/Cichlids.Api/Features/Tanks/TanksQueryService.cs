@@ -186,10 +186,6 @@ public sealed class TanksQueryService(CichlidsDbContext context, IObjectStore ob
             return [];
         }
 
-        var originalByMediaItem = await context.MediaItems
-            .Where(m => ids.Contains(m.Id))
-            .ToDictionaryAsync(m => m.Id, m => m.StorageKey, cancellationToken);
-
         var variantsByMediaItem = (await context.MediaVariants
                 .Where(v => ids.Contains(v.MediaItemId))
                 .Select(v => new { v.MediaItemId, v.Label, v.StorageKey })
@@ -199,7 +195,7 @@ public sealed class TanksQueryService(CichlidsDbContext context, IObjectStore ob
 
         return ids.ToDictionary(
             id => id,
-            id => _mediaUrlBuilder.Build(originalByMediaItem[id], variantsByMediaItem.GetValueOrDefault(id, NoVariants)));
+            id => _mediaUrlBuilder.Build(variantsByMediaItem.GetValueOrDefault(id, NoVariants)));
     }
 
     private async Task<List<InhabitantDto>> LoadInhabitantsAsync(long tankId, CancellationToken cancellationToken)

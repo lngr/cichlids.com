@@ -104,7 +104,7 @@ public sealed class UploadsWriteService(
             await context.SaveChangesAsync(cancellationToken);
             await transaction.CommitAsync(cancellationToken);
 
-            var image = _mediaUrlBuilder.Build(originalKey, variants.ToDictionary(v => v.Label, v => v.Key));
+            var image = _mediaUrlBuilder.Build(variants.ToDictionary(v => v.Label, v => v.Key));
             return new DraftDto(post.Id, post.State, post.Topic, post.Title, post.Description, post.CreatedAt, image);
         }
         catch
