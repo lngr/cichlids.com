@@ -5,8 +5,11 @@ using Cichlids.Infrastructure.Storage;
 using DotNet.Testcontainers.Builders;
 using DotNet.Testcontainers.Containers;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.Options;
 using MySqlConnector;
+using Npgsql;
 using Testcontainers.MySql;
 using Testcontainers.PostgreSql;
 
@@ -94,13 +97,45 @@ public sealed class VerifyEtlFixture : IAsyncLifetime
         return store;
     }
 
-    public CichlidsDbContext CreateTargetContext()
+    public CichlidsDbContext CreateTargetContext() => CreateTargetContext(TargetConnectionString);
+
+    public static CichlidsDbContext CreateTargetContext(string connectionString)
     {
         var optionsBuilder = new DbContextOptionsBuilder<CichlidsDbContext>()
-            .UseNpgsql(TargetConnectionString)
+            .UseNpgsql(connectionString)
             .UseSnakeCaseNamingConvention();
 
         return new CichlidsDbContext(optionsBuilder.Options);
+    }
+
+    /// <summary>
+    /// Creates a database of its own in the target container, applies the migrations up to and
+    /// including the given one (all of them when none is given), and returns its connection
+    /// string. Tests that need an empty target use it, since the fixture's own target database is
+    /// shared by every test of the collection.
+    /// </summary>
+    public async Task<string> CreateEmptyTargetDatabaseAsync(string? lastMigration = null)
+    {
+        var name = $"t_{Guid.NewGuid():N}";
+        await using (var connection = new NpgsqlConnection(TargetConnectionString))
+        {
+            await connection.OpenAsync();
+            await using var command = new NpgsqlCommand($"CREATE DATABASE \"{name}\"", connection);
+            await command.ExecuteNonQueryAsync();
+        }
+
+        var connectionString = new NpgsqlConnectionStringBuilder(TargetConnectionString) { Database = name }.ConnectionString;
+        await using var db = CreateTargetContext(connectionString);
+        if (lastMigration is null)
+        {
+            await db.Database.MigrateAsync();
+        }
+        else
+        {
+            await db.GetService<IMigrator>().MigrateAsync(lastMigration);
+        }
+
+        return connectionString;
     }
 
     private async Task SeedLegacyAsync()

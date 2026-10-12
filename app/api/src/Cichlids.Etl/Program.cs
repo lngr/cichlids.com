@@ -113,12 +113,29 @@ if (commandLine.IsSingleStep)
         $"Warning: the single step '{command}' runs without the empty-target guard and writes over the rows it finds.");
 }
 
-var objectStore = await CreateObjectStoreAsync(configuration, cts.Token);
 var slugSecret = SlugSecretResolver.Resolve(configuration, environmentName);
 
 await using var context = await EtlContext.CreateAsync(
-    legacyConnectionString, targetConnectionString, cts.Token, objectStore, slugSecret);
+    legacyConnectionString, targetConnectionString, cts.Token, slugSecret: slugSecret);
 context.VerifyOutputPath = commandLine.OutPath;
+
+// The guard runs before the object store is prepared, since preparing it writes the bucket and
+// its policy.
+if (command == EtlCommandLine.All)
+{
+    try
+    {
+        await using var guardTransaction = await context.Db.Database.BeginTransactionAsync(cts.Token);
+        await EmptyTargetGuard.EnsureEmptyAsync(context.Db, cts.Token);
+    }
+    catch (EmptyTargetException ex)
+    {
+        Console.Error.WriteLine(ex.Message);
+        return 1;
+    }
+}
+
+context.ObjectStore = await CreateObjectStoreAsync(configuration, cts.Token);
 
 foreach (var step in steps)
 {
