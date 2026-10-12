@@ -1,0 +1,1282 @@
+schemaVersion: 1
+id: cynotilapia-afra
+legacyIds: [283]
+status: described
+taxonomy:
+  validName: Cynotilapia afra
+  genus: Cynotilapia
+  species: afra
+  author: (Günther, 1894)
+  source: &cof
+    kind: catalog-of-fishes
+    title: Eschmeyer's Catalog of Fishes, species list of the genus Cynotilapia
+    url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Cynotilapia
+    accessed: 2026-10-12
+  synonyms:
+    - name: Hemichromis afer
+      note: >-
+        Original combination of Günther, published in the 1893 volume of the Proceedings of the
+        Zoological Society of London, which appeared in 1894; type locality Lake Malawi.
+    - name: Paratilapia afra
+      note: >-
+        Older combination found in hobby and secondary literature; the genus listing of the
+        Catalog of Fishes does not show it.
+  legacyNames:
+    - Cynotilapia afra
+  note: >-
+    This profile uses the narrow species concept of the Catalog of Fishes (online version of 21
+    September 2026). It lists five valid species in Cynotilapia: C. afra (Günther 1894), C.
+    axelrodi Burgess 1976, C. chilundu Li, Konings and Stauffer 2016, and the two species that
+    Tawil (2011) and Johnson (1975) placed in Microchromis, C. aurifrons and C. zebroides, which
+    Konings (2016) and Li et al. (2016) moved into Cynotilapia. These four are separate species
+    and do not belong to this profile. For decades the trade sold nearly every blue and black
+    barred dogtooth mbuna as "afra". Several of these forms are undescribed species with trade
+    names of their own, among them Cynotilapia sp. 'Lion' from Lion's Cove, sp. 'Hara', sp.
+    'Ndumbi', sp. 'Chinyankwazi' and sp. 'Mbamba', which the Cichlid Room Companion and M. K.
+    Oliver list apart from C. afra. Red-top fish are sold under both C. afra and C. zebroides, so
+    care sheets under the name C. afra partly describe related forms; their husbandry is very
+    similar.
+
+names:
+  trade:
+    en:
+      - Dogtooth cichlid
+      - Afra cichlid
+      - Afra
+
+variants:
+  - name: Jalo Reef
+    kind: locality
+    note: Blue barred males without yellow on the flanks and with a yellow dorsal fin; north-western Malawian coast.
+  - name: Mbenji Island
+    kind: locality
+    note: Males with a white dorsal fin; the fish feed on plankton above the rocks.
+  - name: Cobue
+    kind: locality
+    note: Mozambican coast (also spelled Kobwe or Cobwe); blue barred males with a yellow dorsal fin and forehead. Fish under this name are also sold as C. zebroides.
+  - name: Lupingu
+    kind: locality
+    note: Population of the Tanzanian coast that is common in the trade.
+  - name: Thumbi West
+    kind: locality
+    note: Introduced population in Lake Malawi National Park, partly crossed with Maylandia zebra; no natural form.
+
+features:
+  origin:
+    value:
+      continent: Africa
+      region: Lake Malawi
+      waterbody: Lake Malawi
+      localities:
+        - Malawian north-west coast south to Ngara
+        - Jalo Reef
+        - Mbenji Island
+        - Likoma Island
+        - Chizumulu Island
+        - Mozambican coast between Makanjila Point and Chuanga (Cobue)
+        - Tanzanian coast between Lumbaulo and Ikombe
+        - Thumbi West Island, Lake Malawi National Park (introduced)
+    confidence: high
+    rationale: >-
+      Endemic to Lake Malawi (Catalog of Fishes). FishBase places the native range in the central
+      and northern parts of the lake. Seriously Fish lists the north-western coast down to Ngara,
+      two stretches of the eastern coast (Makanjila Point to Chuanga, Lumbaulo to Ikombe) and the
+      islands Likoma and Chizumulu; the Cichlid Room Companion gives Malawi, Mozambique and
+      Tanzania and shows a male from Mbenji Island, and Gerlai (2007) studied fish of the Jalo
+      Reef population. In the early 1960s an exporter released fish
+      at Mitande Point on Thumbi West Island in the south, and by 2001 they had spread around the
+      whole island (Streelman et al. 2004); further introduced populations live elsewhere in Lake
+      Malawi National Park (Zidana et al. 2009).
+    sources:
+      - *cof
+      - &fb
+        kind: database
+        title: "FishBase: Cynotilapia afra, species summary"
+        url: https://www.fishbase.se/summary/Cynotilapia-afra.html
+        accessed: 2026-10-12
+      - &sf
+        kind: database
+        title: "Seriously Fish: Cynotilapia afra"
+        url: https://www.seriouslyfish.com/species/cynotilapia-afra/
+        accessed: 2026-10-12
+      - &streelman
+        kind: literature
+        title: >-
+          Streelman, J. T., Gmyrek, S. L., Kidd, M. R., Kidd, C., Robinson, R. L., Hert, E.,
+          Ambali, A. J. and Kocher, T. D. (2004). Hybridization and contemporary evolution in an
+          introduced cichlid fish from Lake Malawi National Park. Molecular Ecology 13(8),
+          2471-2479 (abstract).
+        url: https://doi.org/10.1111/j.1365-294x.2004.02240.x
+        accessed: 2026-10-12
+      - &zidana
+        kind: literature
+        title: >-
+          Zidana, H., Turner, G. F., Van Oosterhout, C. and Hänfling, B. (2009). Elevated mtDNA
+          diversity in introduced populations of Cynotilapia afra (Günther 1894) in Lake Malawi
+          National Park is evidence for multiple source populations and hybridization. Molecular
+          Ecology 18(21), 4380-4389 (abstract).
+        url: https://doi.org/10.1111/j.1365-294x.2009.04362.x
+        accessed: 2026-10-12
+      - &crc
+        kind: database
+        title: "Cichlid Room Companion: Cynotilapia afra (public summary, verification only)"
+        url: https://cichlidae.com/species.php?id=dest8atj1hE-ShyDA3tMcA
+        accessed: 2026-10-12
+      - &gerlai
+        kind: literature
+        title: Gerlai, R. (2007). Mate choice and hybridization in Lake Malawi cichlids, Sciaenochromis fryeri and Cynotilapia afra. Ethology 113(7), 673-685 (abstract).
+        url: https://doi.org/10.1111/j.1439-0310.2007.01372.x
+        accessed: 2026-10-12
+    evidence:
+      - source: *cof
+        value: {continent: Africa, region: Lake Malawi}
+      - source: *fb
+        value: {continent: Africa, region: Lake Malawi}
+        note: central and northern parts of the lake
+      - source: *sf
+        value: {continent: Africa, region: Lake Malawi, localities: [Malawian north-west coast south to Ngara, Likoma Island, Chizumulu Island]}
+        note: also two stretches of the eastern coast
+      - source: *streelman
+        value: {continent: Africa, region: Lake Malawi, localities: [Thumbi West Island, Lake Malawi National Park (introduced)]}
+        note: released in the early 1960s, around the whole island by 2001
+
+  temperatureC:
+    value: {min: 21, max: 29}
+    confidence: high
+    rationale: >-
+      Lake Malawi endemic, so the natural range is the measured range of the lake. Inshore water
+      cools to about 21 C in the windy season (Eccles 1974), the winter surface layer holds 23.5 to
+      24 C and summer surface water about 28 C (Vollmer et al. 2005), and a 2013 campaign measured
+      24 to 29 C (Ngochera 2018). The species lives on shallow rocky shores inside the mixed upper
+      layer that these values describe. FishBase gives 23 to 27 C, an aquarium figure inside this
+      range.
+    sources: &lakesources
+      - &branchu
+        kind: literature
+        title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+        url: https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf
+        accessed: 2026-10-12
+      - &fao
+        kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+        url: https://www.fao.org/4/t0473e/T0473E05.htm
+        accessed: 2026-10-12
+      - &eccles
+        kind: literature
+        title: Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology and Oceanography 19(5), 730-742 (abstract).
+        url: https://doi.org/10.4319/lo.1974.19.5.0730
+        accessed: 2026-10-12
+      - &vollmer
+        kind: literature
+        title: Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M., Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and Oceanography 50(2), 727-732.
+        url: https://www.dora.lib4ri.ch/empa/dload/empa:1253/PDF/view
+        accessed: 2026-10-12
+      - kind: literature
+        title: "Vollmer, M. K., Weiss, R. F. and Bootsma, H. A. (1999). Lake Malawi/Nyasa deep water renewal. In: Bootsma, H. A. and Hecky, R. E. (eds.), Water Quality Report, SADC/GEF Lake Malawi/Nyasa Biodiversity Conservation Project, chapter 4."
+        url: https://sites.uwm.edu/hbootsma/files/2020/11/Ch4-Lake-Internal-Mixing.pdf
+        accessed: 2026-10-12
+      - &ngochera
+        kind: literature
+        title: Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. PhD dissertation, University of Wisconsin-Milwaukee.
+        url: https://minds.wisconsin.edu/handle/1793/91765
+        accessed: 2026-10-12
+    evidence:
+      - source: *eccles
+        value: {min: 21, max: 27}
+        note: inshore minimum in the cool season, upper 60 m by May
+      - source: *vollmer
+        value: {min: 23.5, max: 28}
+        note: winter surface layer to summer surface water
+      - source: *ngochera
+        value: {min: 24, max: 29}
+        note: 2013 campaign
+      - source: *fao
+        value: {min: 23, max: 25}
+        note: lake surface water after Jackson et al. 1963
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value: {min: 21, max: 29}
+      confidence: medium
+      rationale: >-
+        Decided by the vote count (unanimous, 3 of 3). Care sheets keep the species between 22 and
+        29 C: Seriously Fish 25 to 29 (25 to 27 for breeding), FishProfiles 23 to 28, Aqualog 22 to
+        28, FishBase 23 to 27 and Fishkeeper 24 to 26. The tolerance has to contain the lake range,
+        whose cool-season minimum of 21 C lies one degree below the coolest care sheet; the fish
+        meet it in the wild every year. No source supports long periods above 29 C. A steady 24 to
+        27 C is the usual target in the tank.
+      sources:
+        - *sf
+        - &fprof
+          kind: database
+          title: "FishProfiles.com: Cynotilapia afra"
+          url: https://fishprofiles.com/profiles/freshwater/Cichlids/Cynotilapia_afra/
+          accessed: 2026-10-12
+        - &aqualog
+          kind: database
+          title: "Aqualog lexicon: Cynotilapia afra"
+          url: https://www.aqualog.de/en/lexikon/cynotilapia-afra-2/
+          accessed: 2026-10-12
+        - *fb
+        - &fk
+          kind: database
+          title: "Fishkeeper (Maidenhead Aquatics): Red-top Afra (Cynotilapia afra / C. zebroides)"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-top-afra
+          accessed: 2026-10-12
+        - *eccles
+      evidence:
+        - source: *sf
+          value: {min: 25, max: 29}
+          note: aquarium recommendation; 25 to 27 for breeding
+        - source: *fprof
+          value: {min: 23, max: 28}
+          note: aquarium recommendation
+        - source: *aqualog
+          value: {min: 22, max: 28}
+          note: aquarium recommendation
+        - source: *fb
+          value: {min: 23, max: 27}
+          note: aquarium figure quoted by FishBase
+        - source: *fk
+          value: {min: 24, max: 26}
+          note: red-top trade form, labelled C. zebroides on the sheet
+        - source: *eccles
+          value: {min: 21, max: 27}
+          note: lake water the species lives in
+      verification:
+        method: unanimous
+        votes: {agree: 3, total: 3}
+
+  ph:
+    value: {min: 7.7, max: 8.6}
+    confidence: high
+    rationale: >-
+      Lake Malawi endemic: the natural range is the measured surface pH of the lake, 7.7 to 8.6
+      after Jackson et al. (1963) in the FAO source book. Branchu et al. (2010) give 7.5 to 8.5 for
+      the whole water column, the lower values belonging to deep water that this shallow rock
+      dweller does not use. FishBase gives 8.0 to 8.5, inside the lake range.
+    sources: *lakesources
+    evidence:
+      - source: *fao
+        value: {min: 7.7, max: 8.6}
+        note: lake surface water after Jackson et al. 1963
+      - source: *branchu
+        value: {min: 7.5, max: 8.5}
+        note: whole water column, lower values in deep water
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value: {min: 7.5, max: 8.6}
+      confidence: medium
+      rationale: >-
+        Decided by the vote count (unanimous, 3 of 3). Care sheets agree on alkaline water:
+        Seriously Fish and Fishkeeper give 7.5 to 8.5, FishBase and FishProfiles 8.0 to 8.5 and
+        Guidarium 7.6 to 8.6; Seriously Fish names 8.0 to 8.5 as ideal for breeding and stresses a
+        steady pH. The upper limit is the lake maximum of 8.6, so that the tolerance contains the
+        natural range. Aqualog's 7.0 to 8.0 lies below the lake and below every other sheet and
+        is not followed.
+      sources:
+        - *sf
+        - *fk
+        - *fprof
+        - *fb
+        - *aqualog
+        - &guid
+          kind: website
+          title: "Guidarium: Afra Cichlid (Cynotilapia afra)"
+          url: https://guidarium.com/fishes/afra-cichlid
+          accessed: 2026-10-12
+      evidence:
+        - source: *sf
+          value: {min: 7.5, max: 8.5}
+          note: aquarium recommendation; 8.0 to 8.5 for breeding
+        - source: *fk
+          value: {min: 7.5, max: 8.5}
+          note: aquarium recommendation
+        - source: *fprof
+          value: {min: 8.0, max: 8.5}
+          note: aquarium recommendation
+        - source: *fb
+          value: {min: 8.0, max: 8.5}
+          note: aquarium figure quoted by FishBase
+        - source: *guid
+          value: {min: 7.6, max: 8.6}
+          note: aquarium recommendation
+        - source: *aqualog
+          value: {min: 7.0, max: 8.0}
+          note: generic range below the lake values
+      verification:
+        method: unanimous
+        votes: {agree: 3, total: 3}
+
+  ghDgh:
+    value: {min: 3, max: 5}
+    confidence: high
+    rationale: >-
+      Lake Malawi is soft water: calcium and magnesium are low and bicarbonate dominates. The
+      north-basin profiles of Branchu et al. (2010) convert to 4.2 to 4.6 dGH in the upper 50 m and
+      the 1960s titrations compiled by FAO to 3.2 to 4.9 dGH, so the natural range is 3 to 5 dGH.
+      The 15 dH that FishBase gives is an aquarium figure that confuses hardness with the
+      alkalinity of the lake.
+    sources: *lakesources
+    evidence:
+      - source: *branchu
+        value: {min: 4.2, max: 4.6}
+        note: upper 50 m of the north basin, computed from calcium and magnesium
+      - source: *fao
+        value: {min: 3.2, max: 4.9}
+        note: 1960s titrations, computed from calcium and magnesium
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value: {min: 3, max: 25}
+      confidence: medium
+      rationale: >-
+        Decided by the vote count (unanimous, 3 of 3). Care sheets ask for much harder water than
+        the lake: Seriously Fish 10 to 25 dGH, FishProfiles 10 to 20, Fishkeeper up to 25 and
+        FishBase at least 15. The species is kept for years in such water, so the upper end is
+        25 dGH; the lower end is the soft lake water of 3 to 5 dGH in which the fish live. Soft
+        water is safe only while carbonate hardness and pH stay in the alkaline range.
+      sources:
+        - *sf
+        - *fprof
+        - *fk
+        - *fb
+        - *branchu
+      evidence:
+        - source: *sf
+          value: {min: 10, max: 25}
+          note: aquarium recommendation
+        - source: *fprof
+          value: {min: 10, max: 20}
+          note: aquarium recommendation
+        - source: *fk
+          value: {min: 0, max: 25}
+          note: only the upper limit is stated
+        - source: *fb
+          value: {min: 15, max: 25}
+          note: only a lower limit of 15 dH is stated
+        - source: *branchu
+          value: {min: 4.2, max: 4.6}
+          note: lake water the species lives in
+      verification:
+        method: unanimous
+        votes: {agree: 3, total: 3}
+
+  khDkh:
+    value: {min: 5, max: 8}
+    confidence: high
+    rationale: >-
+      Lake Malawi endemic: bicarbonate dominates the ions of the lake. Alkalinity of 2.33 to 2.46
+      meq/L in the profiles of Branchu et al. (2010) gives 6.5 to 6.9 dKH, and 2.00 to 2.59 meq/L
+      after Jackson et al. (1963) gives 5.6 to 7.3 dKH, so the natural range is 5 to 8 dKH.
+      Sodium balances part of the bicarbonate, so carbonate hardness exceeds total hardness.
+    sources: *lakesources
+    evidence:
+      - source: *branchu
+        value: {min: 6.5, max: 6.9}
+        note: computed from alkalinity profiles
+      - source: *fao
+        value: {min: 5.6, max: 7.3}
+        note: computed from alkalinity after Jackson et al. 1963
+    tolerance:
+      value: {min: 5, max: 12}
+      confidence: low
+      rationale: >-
+        Decided by the vote count with the conservative method. The proposals were 5 to 25 dKH
+        (generator), 5 to 12 (checker-a) and 5 to 15 (checker-b, tiebreaker-1, tiebreaker-2). The
+        top candidate of 5 to 15 dKH reached 3 of 5 votes, short of a qualified majority, so the
+        tolerance is the intersection of all votes, 5 to 12 dKH, which already contains the
+        natural range. No species care sheet gives a carbonate hardness: Seriously Fish, FishBase
+        and Fishkeeper state only total hardness (10 to 25, at least 15, up to 25 dGH), which says
+        nothing about the buffer. General Lake Malawi advice names 10 to 14 dKH (Wittig), 10 to
+        12 and 10 to 15 dKH (Furrycritter) and 6 to 10 dKH (Gensou); the lake itself holds 5 to
+        8 dKH. The narrower upper limit of 12 dKH sits inside every general recommendation, and
+        the 25 dKH of the generator, which read total hardness figures as carbonate hardness, has
+        no support. Values above 12 dKH are not shown to harm the species; they are only not
+        covered by the votes.
+      sources:
+        - &wittig
+          kind: literature
+          title: Wittig, S. Practical Water Chemistry. Article, Cichlid-Forum (general recommendations for Rift Lake cichlids)
+          url: https://www.cichlid-forum.com/articles/water_chemistry.php
+          accessed: 2026-10-12
+        - *branchu
+        - *fao
+        - *sf
+        - *fb
+        - *fk
+        - &furryrift
+          kind: website
+          title: "Furrycritter: Rift lake water chemistry"
+          url: https://www.furrycritter.com/pages/articles/fish/rift_lake_chemistry.htm
+          accessed: 2026-10-12
+        - &furryafrican
+          kind: website
+          title: "Furrycritter: African cichlid water"
+          url: https://www.furrycritter.com/pages/articles/fish/african_cichlid_water.htm
+          accessed: 2026-10-12
+        - &gensou
+          kind: website
+          title: "Gensou: Cynotilapia afra care guide"
+          url: https://gensou.sg/cynotilapia-afra-care-guide/
+          accessed: 2026-10-12
+      evidence:
+        - source: *wittig
+          value: {min: 10, max: 14}
+          note: general recommendation for Rift Lake aquaria
+        - source: *furryrift
+          value: {min: 10, max: 12}
+          note: general advice for Lake Malawi cichlids
+        - source: *furryafrican
+          value: {min: 10, max: 15}
+          note: general advice for Lake Malawi cichlids
+        - source: *gensou
+          value: {min: 6, max: 10}
+          note: species care guide, values given for lake water
+        - source: *branchu
+          value: {min: 6.5, max: 6.9}
+          note: lake water the species lives in
+        - source: *fao
+          value: {min: 5.6, max: 7.3}
+          note: lake water the species lives in
+      verification:
+        method: conservative
+        votes: {agree: 3, total: 5}
+
+  maxSizeCm:
+    value: {male: 10, female: 8.5}
+    confidence: medium
+    rationale: >-
+      FishBase gives 10.1 cm standard length for males or unsexed fish and Seriously Fish 10 cm
+      standard length; Tawil (2011, cited by Mbizi et al. 2025) puts wild adults at 7 to 9 cm
+      standard length. Males grow larger than females, so a well-kept male reaches about 10 cm and
+      a female about 8.5 cm, as Guidarium also states. Aqualog gives 9 cm. Fishkeeper's 12.5 cm
+      refers to a red-top form that the sheet labels C. zebroides and is not used.
+    sources:
+      - *fb
+      - *sf
+      - &mbizi
+        kind: literature
+        title: >-
+          Mbizi, W., Mzilahowa, T., Njunga, G., Lackson, M., Chiumia, M. and Jere, W. W. L.
+          (2025). Larvivorous potential of Metriaclima callainos and Cynotilapia afra as
+          biological agents for mosquito control. Malaria Journal 24, 324.
+        url: https://doi.org/10.1186/s12936-025-05582-5
+        accessed: 2026-10-12
+      - *aqualog
+      - *guid
+    evidence:
+      - source: *fb
+        value: {male: 10.1, female: 10.1}
+        note: maximum standard length, male or unsexed
+      - source: *sf
+        value: {male: 10, female: 10}
+        note: standard length, sexes not separated
+      - source: *mbizi
+        value: {male: 9, female: 9}
+        note: wild adults 7 to 9 cm standard length after Tawil (2011)
+      - source: *aqualog
+        value: {male: 9, female: 9}
+      - source: *guid
+        value: {male: 10, female: 8.5}
+      - source: *fk
+        value: {male: 12.5, female: 12.5}
+        note: red-top form labelled C. zebroides
+
+  predation:
+    value: 1
+    confidence: low
+    rationale: >-
+      Decided by the vote count with the conservative method: generator, checker-a and
+      tiebreaker-1 proposed level 1, checker-b and tiebreaker-2 level 0. Three of five votes do not
+      reach a qualified majority, so the highest proposed level applies with confidence low. No
+      source reports fish in the diet. In the lake, territorial males graze the biocover near
+      their rocks and the other fish pick plankton (FishBase), and Zidana et al. (2009) and Genner
+      and Turner (2005) call the species a planktivore. Genner and Turner name fry among the foods
+      of mbuna in general, and in feeding trials wild-caught fish took mosquito larvae and pupae
+      of every stage in large numbers (Mbizi et al. 2025), which shows an active hunter of small,
+      moving prey of fry size. Guidarium tags it as a fry predator without detail. Seriously Fish
+      mentions fry loss only for stressed brooding females that eat their own brood. The level
+      rests on the feeding mode, not on observed fry predation.
+    sources:
+      - *fb
+      - &genner
+        kind: literature
+        title: Genner, M. J. and Turner, G. F. (2005). The mbuna cichlids of Lake Malawi, a model for rapid speciation and adaptive radiation. Fish and Fisheries 6(1), 1-34.
+        url: https://doi.org/10.1111/j.1467-2679.2005.00173.x
+        accessed: 2026-10-12
+      - *mbizi
+      - *zidana
+      - *gerlai
+      - *sf
+      - *guid
+    evidence:
+      - source: *genner
+        value: 1
+        note: Cynotilapia a planktivore; fry named among the foods of mbuna in general
+      - source: *mbizi
+        value: 1
+        note: eats mosquito larvae and pupae of every stage; no fish tested
+      - source: *guid
+        value: 1
+        note: tagged as fry predator without detail
+      - source: *fb
+        value: 0
+        note: biocover and plankton in the wild, no fish listed
+      - source: *gerlai
+        value: 0
+        note: small planktivore and biocover grazer
+      - source: *sf
+        value: 0
+        note: fry loss mentioned only for stressed females eating their own brood
+    verification:
+      method: conservative
+      votes: {agree: 3, total: 5}
+
+  diet:
+    value:
+      type: omnivore
+      bloatSensitive: true
+      foods:
+        - spirulina or other plant-based flakes and pellets
+        - blanched spinach and other soft vegetables
+        - small crustaceans such as mysis or brine shrimp as an occasional supplement
+    confidence: medium
+    rationale: >-
+      Decided by the vote count (unanimous, 3 of 3, on omnivore and bloat sensitivity). The wild
+      diet mixes plant and animal food: FishBase reports territorial males grazing the biocover
+      near their site and the gregarious fish feeding on plankton, Gerlai (2007) calls the
+      species a planktivore and biocover grazer, and Mbizi et al. (2025) name zooplankton and
+      phytoplankton. Zidana et al. (2009), Genner and Turner (2005) and the Cichlid Room Companion
+      call it plankton-feeding, which alone would point to invertivore; the documented biocover
+      share of the territorial males settles it as omnivore. Seriously Fish asks for a large
+      share of vegetable food, and Fishkeeper warns that much animal protein brings Malawi bloat,
+      so the species is bloat sensitive like other mbuna.
+    sources:
+      - *fb
+      - *gerlai
+      - *mbizi
+      - *zidana
+      - *genner
+      - *sf
+      - *fk
+      - *crc
+      - &arch23984
+        kind: archive
+        title: cichlids.com forum thread 23984
+        url: https://www.cichlids.com/disc/read.php?2,23984
+        accessed: 2026-10-12
+    evidence:
+      - source: *fb
+        value: {type: omnivore, bloatSensitive: false}
+        note: biocover for territorial males, plankton for the others; bloat not addressed
+      - source: *gerlai
+        value: {type: omnivore, bloatSensitive: false}
+        note: planktivore and biocover grazer; bloat not addressed
+      - source: *mbizi
+        value: {type: omnivore, bloatSensitive: false}
+        note: zooplankton and phytoplankton; bloat not addressed
+      - source: *zidana
+        value: {type: invertivore, bloatSensitive: false}
+        note: described as plankton-feeding; bloat not addressed
+      - source: *genner
+        value: {type: invertivore, bloatSensitive: false}
+        note: listed among the planktivores; bloat not addressed
+      - source: *crc
+        value: {type: invertivore, bloatSensitive: false}
+        note: planktivorous; bloat not addressed
+      - source: *sf
+        value: {type: omnivore, bloatSensitive: true}
+        note: accepts most foods, vegetable matter should dominate
+      - source: *fk
+        value: {type: aufwuchs, bloatSensitive: true}
+        note: mainly vegetable aquarium diet, animal protein risks bloat
+      - source: *arch23984
+        value: {type: omnivore, bloatSensitive: true}
+        note: keeper discussion of a suspected bloat case
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+
+  aggressionConspecific:
+    value: 3
+    confidence: medium
+    rationale: >-
+      Seriously Fish calls the species belligerent and very aggressive towards its own kind and
+      advises crowding, other mbuna as targets and several females per male. FishProfiles and
+      Guidarium describe it as aggressive and strongly territorial, and Fishkeeper warns that a
+      male with a single female harasses her, possibly to death. Males hold rock territories in
+      the lake (FishBase, Munthali 1996). Injuries follow mainly from too little rockwork or a
+      wrong ratio, which is level 3; no source reports routine killing in a suitable tank. Keepers
+      in the cichlids.com archive call the Lion's Cove fish extremely aggressive, but that form is
+      the undescribed Cynotilapia sp. 'Lion' and does not set the level of C. afra.
+    sources:
+      - *sf
+      - *fprof
+      - *fk
+      - *fb
+      - &munthali
+        kind: literature
+        title: Munthali, S. M. (1996). Territoriality and nutritional condition in Cynotilapia afra (Gunther) and Pseudotropheus zebra (Boulenger), Cichlidae in Lake Malawi National Park, Malawi. Journal of Applied Ichthyology 12(2), 131-134 (title only).
+        url: https://doi.org/10.1111/j.1439-0426.1996.tb00076.x
+        accessed: 2026-10-12
+      - *guid
+      - &arch17519
+        kind: archive
+        title: cichlids.com forum thread 17519
+        url: https://www.cichlids.com/disc/read.php?2,17519
+        accessed: 2026-10-12
+      - &arch23087
+        kind: archive
+        title: cichlids.com forum thread 23087
+        url: https://www.cichlids.com/disc/read.php?2,23087
+        accessed: 2026-10-12
+    evidence:
+      - source: *sf
+        value: 3
+        note: very aggressive towards its own species
+      - source: *fprof
+        value: 3
+        note: very territorial
+      - source: *fk
+        value: 3
+        note: single females harassed, possibly to death
+      - source: *guid
+        value: 3
+      - source: *arch23087
+        value: 2
+        note: young male chasing females from his site
+
+  aggressionHeterospecific:
+    value: 2
+    confidence: medium
+    rationale: >-
+      Males chase other fish away from their rock site and react most strongly to blue, barred
+      look-alikes (Fishkeeper). Seriously Fish recommends other mbuna as tankmates, which spread
+      the aggression, and advises against peaceful peacocks and utaka; Fishkeeper calls the
+      species moderately aggressive and suitable for a Malawi cichlid community. With robust,
+      rock-dwelling tankmates no source reports injuries, which is level 2. Keepers in the archive
+      count it among the moderate mbuna for a first community.
+    sources:
+      - *sf
+      - *fk
+      - &arch17324
+        kind: archive
+        title: cichlids.com forum thread 17324
+        url: https://www.cichlids.com/disc/read.php?2,17324
+        accessed: 2026-10-12
+    evidence:
+      - source: *sf
+        value: 2
+        note: fine with other mbuna, not with peacocks or utaka
+      - source: *fk
+        value: 2
+        note: moderately aggressive, strongest towards look-alikes
+      - source: *arch17324
+        value: 2
+        note: recommended among starter mbuna
+
+  territory:
+    value: {size: small, breedingOnly: false}
+    confidence: medium
+    rationale: >-
+      Territorial males feed close to their home site on the rocks (FishBase), and Munthali (1996)
+      studied territory holders in Lake Malawi National Park; German Wikipedia gives male
+      territories of about one square metre in the lake. In the tank a male claims a cave or a pit
+      under a stone as spawning site (Seriously Fish) and defends it all year. Females and
+      subordinate fish hold no territory.
+    sources:
+      - *fb
+      - *sf
+      - *munthali
+      - &wikide
+        kind: website
+        title: "Wikipedia (de): Cynotilapia afra"
+        url: https://de.wikipedia.org/wiki/Cynotilapia_afra
+        accessed: 2026-10-12
+    evidence:
+      - source: *fb
+        value: {size: small, breedingOnly: false}
+        note: territorial males feed near their home site
+      - source: *sf
+        value: {size: small, breedingOnly: false}
+        note: spawning site in the rockwork or under a large stone
+
+  habitatZones:
+    value: [rock, openWater]
+    confidence: high
+    rationale: >-
+      Lives in the upper, sediment-free part of the rocky zone at 3 to 30 m (FishBase) and often
+      gathers in large groups in the open water just off the rock walls (Seriously Fish), where it
+      takes plankton from the water column (Mbizi et al. 2025, Zidana et al. 2009). Sand serves
+      for digging in the tank and is no habitat zone of the species.
+    sources:
+      - *fb
+      - *sf
+      - *mbizi
+      - *zidana
+    evidence:
+      - source: *fb
+        value: [rock, openWater]
+        note: upper rocky zone, gregarious fish feed on plankton
+      - source: *sf
+        value: [rock, openWater]
+        note: groups in open water off the rocks
+      - source: *mbizi
+        value: [rock, openWater]
+      - source: *zidana
+        value: [rock]
+        note: rocky-shore plankton feeder
+
+  social:
+    value: {structure: harem, ratio: 3}
+    confidence: medium
+    rationale: >-
+      Males are territorial and polygynous, so the species is kept as a harem. Seriously Fish
+      recommends one male with three to six females, FishProfiles three, and keepers in the
+      archive two to four. Three females per male is the lowest number the external sources agree
+      on; more females spread the pressure of the male further.
+    sources:
+      - *sf
+      - *fprof
+      - *crc
+      - *guid
+      - *arch17324
+    evidence:
+      - source: *sf
+        value: {structure: harem, ratio: 3}
+        note: three to six females per male
+      - source: *fprof
+        value: {structure: harem, ratio: 3}
+      - source: *guid
+        value: {structure: harem, ratio: 3}
+      - source: *arch17324
+        value: {structure: harem, ratio: 2}
+        note: two to four females per male
+
+  speciesOnly:
+    value: false
+    confidence: high
+    rationale: >-
+      Decided by the vote count (unanimous, 3 of 3). Seriously Fish recommends keeping C. afra
+      with other mbuna, which even help to spread its aggression, and Fishkeeper places it in a
+      Malawi cichlid community. In the lake the introduced populations live side by side with
+      Pseudotropheus (Maylandia) zebra and other mbuna (Zidana et al. 2009). The restriction
+      concerns look-alike species and other Cynotilapia, which the hybrid group and the colour
+      comparison cover.
+    sources:
+      - *sf
+      - *fk
+      - *zidana
+      - &wikien
+        kind: website
+        title: "Wikipedia: Cynotilapia afra"
+        url: https://en.wikipedia.org/wiki/Cynotilapia_afra
+        accessed: 2026-10-12
+      - *arch17324
+    evidence:
+      - source: *sf
+        value: false
+        note: can be combined with other mbuna
+      - source: *fk
+        value: false
+        note: Malawi cichlid community
+      - source: *zidana
+        value: false
+        note: lives together with Pseudotropheus zebra after introduction
+      - source: *wikien
+        value: false
+      - source: *arch17324
+        value: false
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+
+  hybridGroup:
+    value: maylandia
+    confidence: low
+    rationale: >-
+      Decided by the vote count with the conservative method: generator, checker-a and
+      tiebreaker-1 proposed the group maylandia, checker-b and tiebreaker-2 no group. Three of five
+      votes do not reach a qualified majority, so the most common named group applies with
+      confidence low. All five runs cite the same field evidence; the null votes rest on the species
+      missing from the curated group and on the lack of documented crosses with its other
+      members. Stauffer et al. (1996) report hybridisation of C.
+      afra with Pseudotropheus (Maylandia) zebra after C. afra was moved within Lake Malawi to
+      Thumbi West Island. Streelman et al. (2004) found a high share of hybrids between the
+      introduced C. afra and native Metriaclima (Maylandia) zebra on the turbid southern coast of
+      that island, and Zidana et al. (2009) call the two species closely related and hybridising
+      and trace part of the genetic diversity of the introduced populations to introgression from
+      P. zebra. Genner and Turner (2005) review the case. The males of both species are blue with
+      dark bars, and Oliver stresses how closely several Cynotilapia forms resemble M. zebra; in a
+      tank with few females that similarity removes the visual mate choice that keeps the species
+      apart in clear water. Crosses with the other members of the group (M. estherae, M.
+      callainos, M. greshakei, M. lombardoi) are not documented. Gerlai (2007) obtained fertile
+      hybrids with Sciaenochromis fryeri in captivity, a species in no curated group, and
+      Seriously Fish warns that the colour forms of C. afra interbreed. The species is added to
+      the members of maylandia in hybrid-groups.yaml.
+    sources:
+      - &stauffer
+        kind: literature
+        title: >-
+          Stauffer, J. R., Bowers, N. J., Kocher, T. D. and McKaye, K. R. (1996). Evidence of
+          hybridization between Cynotilapia afra and Pseudotropheus zebra (Teleostei: Cichlidae)
+          following an intralacustrine translocation in Lake Malawi. Copeia 1996(1), 203-208
+          (title and bibliographic record).
+        url: https://doi.org/10.2307/1446959
+        accessed: 2026-10-12
+      - *streelman
+      - *zidana
+      - *genner
+      - *gerlai
+      - *sf
+      - &oliver
+        kind: website
+        title: "Oliver, M. K.: Gallery of Cynotilapia, malawicichlids.com (photos from Ribbink et al. 1983)"
+        url: https://www.malawicichlids.com/mw09006d.htm
+        accessed: 2026-10-12
+      - &arch15034
+        kind: archive
+        title: cichlids.com forum thread 15034
+        url: https://www.cichlids.com/disc/read.php?2,15034
+        accessed: 2026-10-12
+    evidence:
+      - source: *stauffer
+        value: maylandia
+        note: hybridisation with P. zebra after translocation within the lake
+      - source: *streelman
+        value: maylandia
+        note: high share of hybrids with M. zebra at turbid sites of Thumbi West
+      - source: *zidana
+        value: maylandia
+        note: introgression from P. zebra into introduced C. afra
+      - source: *genner
+        value: maylandia
+        note: review citing the Thumbi West hybrids
+      - source: *oliver
+        value: maylandia
+        note: close resemblance of Cynotilapia forms to M. zebra
+      - source: *gerlai
+        value: null
+        note: fertile captive hybrids with Sciaenochromis fryeri, which is in no curated group
+      - source: *sf
+        value: null
+        note: colour forms of C. afra interbreed; no other species named
+    verification:
+      method: conservative
+      votes: {agree: 3, total: 5}
+
+  coloration:
+    value:
+      baseColors: [blue, black]
+      pattern: bars
+    confidence: high
+    rationale: >-
+      Males are light to bright blue with black vertical bars that run up into the dorsal fin
+      (Seriously Fish). The dorsal fin and forehead are white, yellow, orange or black depending
+      on the population (Mbizi et al. 2025), so no single fin colour describes the species.
+      Females are light blue-brown without the bars. The blue barred pattern closely resembles
+      Maylandia zebra (Oliver).
+    sources:
+      - *sf
+      - *mbizi
+      - *oliver
+      - *wikien
+    evidence:
+      - source: *sf
+        value: {baseColors: [blue, black], pattern: bars}
+        note: bars continue into the dorsal fin
+      - source: *mbizi
+        value: {baseColors: [blue, black], pattern: bars}
+        note: dorsal fin and forehead colour vary by population
+
+  feedingSpeed:
+    value: hasty
+    confidence: low
+    rationale: >-
+      No source rates its feeding speed directly. It is an agile plankton picker that accepts
+      almost any food (Seriously Fish), Guidarium describes it as very active, and the rubric
+      names mbuna as the example of hasty feeders.
+    sources:
+      - *sf
+      - *guid
+      - kind: model-knowledge
+        title: General knowledge of mbuna feeding behaviour
+    evidence:
+      - source: *guid
+        value: hasty
+        note: very active, fast swimmer
+
+  minTank:
+    value: {volumeL: 200, lengthCm: 120, depthCm: 40}
+    confidence: medium
+    rationale: >-
+      Seriously Fish gives a base of 100 by 30 cm (about 90 L) as the minimum but recommends a
+      breeding tank of about 120 cm for one male with three to six females; Fishkeeper asks for at
+      least 120 cm, Aqualog 80 to 120 cm and Guidarium 200 L at 120 cm. The 90 L base is too
+      small for a harem of this aggressive species, whose females need room to escape. A depth of
+      40 cm leaves room for rock piles with caves and open water.
+    sources:
+      - *sf
+      - *fk
+      - *aqualog
+      - *guid
+    evidence:
+      - source: *sf
+        value: {volumeL: 90, lengthCm: 100, depthCm: 30}
+        note: stated minimum base; breeding tank of about 120 cm
+      - source: *fk
+        value: {volumeL: 200, lengthCm: 120, depthCm: 40}
+        note: only the length is stated
+      - source: *aqualog
+        value: {volumeL: 200, lengthCm: 120, depthCm: 40}
+        note: 80 to 120 cm length only
+      - source: *guid
+        value: {volumeL: 200, lengthCm: 120, depthCm: 40}
+        note: volume and length stated, depth not
+
+  lifespanYears:
+    value: {min: 6, max: 10}
+    confidence: low
+    rationale: >-
+      No source gives a lifespan for this species. Small mbuna of comparable size commonly live
+      six to ten years in well-kept aquaria; the range needs confirmation.
+    sources:
+      - kind: model-knowledge
+        title: Typical lifespan of small mbuna in the aquarium
+
+  breeding:
+    value: maternal-mouthbrooder
+    confidence: high
+    rationale: >-
+      The female lays her eggs at the male's site, takes them into her mouth at once and is
+      fertilised while she mouths the egg spots on his anal fin; she carries 15 to 30 eggs for up
+      to three weeks (Seriously Fish). FishBase and the Cichlid Room Companion list maternal
+      mouthbrooding, and FishBase gives sexual maturity at six to eight months.
+    sources:
+      - *fb
+      - *sf
+      - *crc
+    evidence:
+      - source: *fb
+        value: maternal-mouthbrooder
+      - source: *sf
+        value: maternal-mouthbrooder
+      - source: *crc
+        value: maternal-mouthbrooder
+
+  beginnerSuitability:
+    value: moderate
+    confidence: medium
+    rationale: >-
+      Seriously Fish counts it among the hardier mbuna and a good choice for newcomers to mbuna,
+      yet rates its overall difficulty as moderate because it needs space, a steady pH and a
+      harem. The Cichlid Room Companion lists it for intermediate aquarists. Keepers in the
+      archive recommend it as a starter mbuna. It suits a beginner who sets up a proper mbuna tank
+      and keeps it away from look-alike species.
+    sources:
+      - *sf
+      - *crc
+      - *arch17324
+    evidence:
+      - source: *sf
+        value: moderate
+        note: hardy, but moderate overall rating
+      - source: *crc
+        value: moderate
+        note: intermediate aquarists
+      - source: *arch17324
+        value: easy
+
+partners:
+  suitable:
+    - species: Labidochromis caeruleus
+      reason: Calm mbuna of similar size with yellow, unbarred males, so it is not taken for a rival; shares the plant-based diet and the water values.
+      condition: Rock structures across the whole tank and enough hiding places.
+    - species: Iodotropheus sprengerae
+      reason: Peaceful, rust-brown mbuna of similar size and diet that looks clearly different from C. afra.
+      condition: Tank of at least 120 cm with plenty of caves.
+    - species: Melanochromis johannii
+      reason: Mbuna of similar size and temperament with horizontal stripes instead of bars; robust enough to hold its own.
+      condition: Only in tanks of 150 cm or more with one male of each species.
+    - species: Synodontis njassae
+      reason: Lake Malawi catfish that lives near the bottom, ignores the cichlids and needs the same water.
+  unsuitable:
+    - species: Maylandia zebra
+      reason: Same hybrid group; closely related blue barred mbuna that crosses with C. afra in the lake, and males fight it as a rival.
+    - species: Maylandia callainos
+      reason: Same hybrid group; a blue mbuna that C. afra males treat as a rival.
+    - species: Cynotilapia zebroides
+      reason: Look-alike Cynotilapia sold under similar trade names; the two are easily confused in the trade and should not be mixed.
+    - species: Pseudotropheus saulosi
+      reason: Small mbuna with blue barred males that C. afra treats as rivals.
+    - species: Aulonocara stuartgranti
+      reason: Peaceful peacock that is harassed in a crowded mbuna tank and loses out at feeding.
+    - species: Copadichromis borleyi
+      reason: Calm utaka of open water that does not cope with the constant pressure of mbuna.
+
+profile:
+  overview:
+    text: >-
+      Cynotilapia afra, the dogtooth or afra cichlid, is a small mbuna from the rocky shores of
+      Lake Malawi. Its name refers to the pointed, single-tipped teeth that set the genus apart
+      from the similar-looking Maylandia, whose outer teeth have two tips. Males are blue with dark
+      vertical bars that continue into the dorsal fin, and each population has its own dorsal
+      colour, from white to yellow or orange. Many forms are traded under locality names such as
+      Jalo Reef or Cobue, and several fish sold as afra belong to related species, among them C.
+      zebroides and undescribed forms such as Cynotilapia sp. 'Lion' and sp. 'Hara'. It is a
+      hardy, lively fish for a dedicated mbuna tank, but males are quarrelsome and need several
+      females and plenty of rockwork.
+    sources:
+      - *cof
+      - *sf
+      - *crc
+      - *oliver
+  habitat:
+    text: >-
+      The species lives only in Lake Malawi, mainly along the north-western coast, on parts of the
+      Mozambican and Tanzanian shores and around the islands of Likoma, Chizumulu and Mbenji. It
+      keeps to the upper rocky zone where the stones are free of sediment, usually between about 3
+      and 30 m. Territorial males stay close to their rock and graze its cover of algae and tiny
+      animals, while females and young fish gather in the open water just off the rocks to pick
+      plankton. The lake water is warm (about 21 to 29 C), moderately alkaline (pH 7.7 to 8.6) and
+      soft, with 3 to 5 dGH and 5 to 8 dKH. Fish released at Thumbi West Island in the south of
+      the lake in the early 1960s have spread there and cross with the native Maylandia zebra.
+    sources:
+      - *fb
+      - *sf
+      - *branchu
+      - *fao
+      - *eccles
+      - *streelman
+  sizeAndGrowth:
+    text: >-
+      Adult males reach about 10 cm in the aquarium; females stay somewhat smaller at around 8 to
+      9 cm. Wild adults are often a little shorter. The body is slender and of medium depth. Young
+      fish grow steadily on a good diet and mature at six to eight months, when the males start to
+      show their full colours and the first disputes over territory begin. No published lifespan
+      exists; small mbuna of this size often live six to ten years in a well-kept tank.
+    sources:
+      - *fb
+      - *sf
+      - *mbizi
+  husbandry:
+    text: >-
+      Plan a tank of at least 120 cm length and about 200 L for one male with three or more
+      females. Build stable rock piles with many caves from the floor to near the surface and leave
+      some open sand between them, because the fish like to dig beneath stones; plants are usually
+      uprooted. Keep the water warm (24 to 27 C works well), clean and alkaline with a steady pH
+      around 8; a carbonate hardness of about 5 to 12 dKH buffers it. Good filtration and frequent
+      partial water changes matter more than a high total hardness. Mbuna tanks are usually
+      stocked fairly densely so that no single fish becomes the constant target of a male.
+    sources:
+      - *sf
+      - *fk
+      - *fprof
+      - *wittig
+  socialBehavior:
+    text: >-
+      Each adult male claims a cave or a spot under a rock and defends it against other males,
+      above all against fish with a similar blue, barred pattern. He courts females with vigorous
+      displays and can chase them hard, so keep at least three females per male. Several males are
+      possible only in large tanks with many separate rock piles. Towards other mbuna of different
+      appearance the species is territorial but rarely harmful. In the wild, males hold their sites
+      while the rest of the population forms loose groups in the water above. The undescribed
+      Cynotilapia sp. 'Lion', often sold as afra, has a reputation for being much more aggressive.
+    sources:
+      - *sf
+      - *fk
+      - *fb
+      - *arch17519
+  diet:
+    text: >-
+      In nature the fish eat plankton from the water column and graze the cover of algae and tiny
+      animals on the rocks. In the aquarium a plant-based staple works best: spirulina flakes or
+      pellets made for mbuna, plus blanched spinach or similar vegetables. Small crustaceans such
+      as mysis or brine shrimp can be offered now and then, but a diet rich in animal protein
+      raises the risk of bloat. Feed small amounts two or three times a day, since the fish eat
+      everything quickly. Free-swimming fry in the tank may be eaten as well.
+    sources:
+      - *fb
+      - *sf
+      - *fk
+      - *mbizi
+      - *genner
+  breeding:
+    text: >-
+      C. afra is a maternal mouthbrooder and breeds readily in a harem. The male prepares a site in
+      the rockwork or digs a pit below a stone and displays at its entrance. The female lays her
+      eggs there and takes them into her mouth at once; the egg spots on the male's anal fin guide
+      her to take up sperm. She carries 15 to 30 eggs for up to three weeks without eating and then
+      releases young that can take brine shrimp nauplii straight away. Stressed females may spit
+      or eat the brood early, so move them only with care, or keep the young in a separate tank.
+    sources:
+      - *sf
+      - *fprof
+      - *crc
+  sexing:
+    text: >-
+      Adult males are larger and much more colourful than females: bright blue with clear dark
+      bars and a coloured dorsal fin, plus egg spots on the anal fin. Females are light blue-brown
+      without the barring. Young fish of both sexes look alike, so buying a group of juveniles and
+      removing surplus males later is a common approach. Subordinate males can stay drab for a
+      long time and are easily mistaken for females.
+    sources:
+      - *sf
+      - *fprof
+      - *mbizi
+      - kind: archive
+        title: cichlids.com forum thread 17979
+        url: https://www.cichlids.com/disc/read.php?2,17979
+        accessed: 2026-10-12
+  compatibility:
+    text: >-
+      Keep C. afra with other mbuna of similar size and temperament that look different, for
+      example yellow Labidochromis caeruleus or rust-coloured Iodotropheus sprengerae. Maylandia
+      zebra and the other members of its hybrid group do not belong in the same tank: C. afra
+      crosses with M. zebra in the lake, and blue males on both sides fight as rivals. Other blue
+      barred mbuna such as Pseudotropheus saulosi provoke the same rivalry. Do not mix different
+      afra forms or other Cynotilapia either, since the colour forms interbreed and the species are
+      hard to tell apart. Peacocks, utaka and other calm haplochromines suffer in the hectic mbuna
+      setting and should not share the tank.
+    sources:
+      - *sf
+      - *fk
+      - *stauffer
+      - *streelman
+      - *zidana
+  problems:
+    text: >-
+      The most common mistake is keeping a male with only one or two females, which leads to
+      exhausted or injured females; too little rockwork has the same effect. Feeding much animal
+      protein, such as bloodworm or meaty pellets, can trigger Malawi bloat, a serious digestive
+      disease of plant-eating mbuna, so stick to a plant-based staple. Acidic or unstable water and
+      infrequent water changes weaken the fish. Mixing several afra forms or blue barred relatives
+      leads to hybrid offspring that cannot be passed on as pure fish. Quarantine new fish before
+      adding them to an established group.
+    sources:
+      - *fk
+      - *sf
+      - *arch23984
+
+provenance:
+  runs:
+    - {role: generator, model: claude-opus-5-5, date: 2026-10-12}
+    - {role: checker, model: claude-opus-5-5, date: 2026-10-12}
+    - {role: checker, model: claude-sonnet-5-5, date: 2026-10-12}
+    - {role: checker, model: claude-opus-5-5, date: 2026-10-12}
+    - {role: checker, model: claude-sonnet-5-5, date: 2026-10-12}
+    - {role: adjudicator, model: claude-opus-5-5, date: 2026-10-12}
+  disagreements:
+    - field: taxonomy.synonyms
+      proposals:
+        - {by: generator, value: [Hemichromis afer, Paratilapia afra]}
+        - {by: checker-a, value: [Hemichromis afer, Paratilapia afra]}
+        - {by: checker-b, value: [Hemichromis afer]}
+      decision: [Hemichromis afer, Paratilapia afra]
+      rationale: >-
+        The Catalog of Fishes lists only the original combination Hemichromis afer. Paratilapia
+        afra is kept because two runs found it in secondary literature and buyers may meet it; its
+        note says that the Catalog of Fishes does not list it.
+    - field: features.origin.value.waterbody
+      proposals:
+        - {by: generator, value: Lake Malawi}
+        - {by: checker-a, value: lake-malawi}
+        - {by: checker-b, value: lake-malawi}
+      decision: Lake Malawi
+      rationale: Both spellings name the same entry of the water body table; the name form is used.
+    - field: features.origin.value.localities
+      proposals:
+        - {by: generator, value: [Malawian north-west coast south to Ngara, Likoma Island, Chizumulu Island, Mbenji Island, Mozambican coast between Makanjila Point and Chuanga (Cobue), Tanzanian coast between Lumbaulo and Ikombe]}
+        - {by: checker-a, value: [Mbenji Island, Jalo Reef, northwestern Malawian coast, Thumbi West Island (introduced)]}
+        - {by: checker-b, value: [Chizumulu Island, Likoma Island, Ikombe, Makanjila Point, Chuanga]}
+      decision: [Malawian north-west coast south to Ngara, Jalo Reef, Mbenji Island, Likoma Island, Chizumulu Island, Mozambican coast between Makanjila Point and Chuanga (Cobue), Tanzanian coast between Lumbaulo and Ikombe, Thumbi West Island, Lake Malawi National Park (introduced)]
+      rationale: >-
+        The proposals do not contradict each other and differ only in detail. The coastal
+        stretches and the islands come from Seriously Fish, Mbenji Island from the Cichlid Room
+        Companion and Oliver, Jalo Reef from the population studied by Gerlai, and the introduced
+        Thumbi West population from Streelman et al. (2004), marked as introduced.
+    - field: features.maxSizeCm
+      proposals:
+        - {by: generator, value: {male: 10, female: 8.5}}
+        - {by: checker-a, value: {male: 10, female: 8}}
+        - {by: checker-b, value: {male: 10, female: 9}}
+      decision: {male: 10, female: 8.5}
+      rationale: >-
+        All runs agree on 10 cm for males and on smaller females. Wild adults reach 7 to 9 cm
+        standard length (Tawil 2011 via Mbizi et al. 2025) and Guidarium gives 8.5 cm for females,
+        the middle of the three proposals.
+    - field: features.predation
+      proposals:
+        - {by: generator, value: 1}
+        - {by: checker-a, value: 1}
+        - {by: checker-b, value: 0}
+        - {by: tiebreaker-1, value: 1}
+        - {by: tiebreaker-2, value: 0}
+      decision: 1
+      rationale: >-
+        Decided by the vote count with the conservative method: 3 of 5 votes do not reach a
+        qualified majority, so the highest proposed level applies with confidence low. No source
+        reports fish in the diet; the level rests on the active hunting of small larvae and on fry
+        being part of the mbuna diet in general.
+    - field: features.diet.value.foods
+      proposals:
+        - {by: generator, value: [spirulina or other plant-based flakes and pellets, blanched spinach and other soft vegetables, small crustaceans such as mysis or brine shrimp as an occasional supplement]}
+        - {by: checker-a, value: [zooplankton, phytoplankton, aufwuchs, insect larvae]}
+        - {by: checker-b, value: [spirulina flakes, blanched greens, live and frozen zooplankton foods, brine shrimp]}
+      decision: [spirulina or other plant-based flakes and pellets, blanched spinach and other soft vegetables, small crustaceans such as mysis or brine shrimp as an occasional supplement]
+      rationale: >-
+        Decided by the vote count (unanimous on omnivore and bloat sensitivity); the food list of
+        the top candidate is kept. It names aquarium foods and limits animal food to an occasional
+        supplement, which fits the bloat sensitivity; checker-a lists the wild diet instead.
+    - field: features.khDkh.tolerance
+      proposals:
+        - {by: generator, value: {min: 5, max: 25}}
+        - {by: checker-a, value: {min: 5, max: 12}}
+        - {by: checker-b, value: {min: 5, max: 15}}
+        - {by: tiebreaker-1, value: {min: 5, max: 15}}
+        - {by: tiebreaker-2, value: {min: 5, max: 15}}
+      decision: {min: 5, max: 12}
+      rationale: >-
+        Decided by the vote count with the conservative method: the top candidate of 5 to 15 dKH
+        reached 3 of 5 votes, short of a qualified majority, so the intersection of all votes, 5
+        to 12 dKH, applies with confidence low. The generator's 25 dKH rests on total hardness
+        figures read as carbonate hardness.
+    - field: features.hybridGroup
+      proposals:
+        - {by: generator, value: maylandia}
+        - {by: checker-a, value: maylandia}
+        - {by: checker-b, value: null}
+        - {by: tiebreaker-1, value: maylandia}
+        - {by: tiebreaker-2, value: null}
+      decision: maylandia
+      rationale: >-
+        Decided by the vote count with the conservative method: 3 of 5 votes do not reach a
+        qualified majority, so the most common named group applies with confidence low. The null
+        votes accept the field hybrids with Maylandia zebra and left the value open because the
+        curated group did not list the species and crosses with its other members are not
+        documented. Cynotilapia afra is added to the members of maylandia.
+    - field: features.social
+      proposals:
+        - {by: generator, value: {structure: harem, ratio: 3}}
+        - {by: checker-a, value: {structure: harem, ratio: 3}}
+        - {by: checker-b, value: {structure: harem, ratio: 4}}
+      decision: {structure: harem, ratio: 3}
+      rationale: >-
+        All runs agree on a harem. Seriously Fish advises three to six females per male and
+        FishProfiles three; three is the lowest number the external sources share, and checker-b's
+        four is the rounded middle of the Seriously Fish range.
+    - field: features.coloration
+      proposals:
+        - {by: generator, value: {baseColors: [blue, black], pattern: bars}}
+        - {by: checker-a, value: {baseColors: [blue, black], pattern: bars}}
+        - {by: checker-b, value: {baseColors: [blue, black, yellow], pattern: bars}}
+      decision: {baseColors: [blue, black], pattern: bars}
+      rationale: >-
+        Yellow appears only on the dorsal fin and forehead of some populations, while others show
+        white, orange or black there (Mbizi et al. 2025); blue body and black bars are the colours
+        shared by all males.

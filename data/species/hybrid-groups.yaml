@@ -4,13 +4,42 @@
 # listed, the adjudicator adds it with its members and the sources that report crosses.
 groups:
   - id: maylandia
-    description: Species of Maylandia (Metriaclima); they cross readily in tanks, also across colour forms.
+    description: Species of Maylandia (Metriaclima), which cross readily in tanks, also across colour forms, together with the look-alike Cynotilapia afra, whose blue barred males resemble Maylandia zebra and which forms hybrids with it in the wild where it was introduced to Thumbi West Island in Lake Malawi.
     members:
       - Maylandia zebra
       - Maylandia estherae
       - Maylandia callainos
       - Maylandia greshakei
       - Maylandia lombardoi
+      - Cynotilapia afra
+    sources:
+      - kind: literature
+        title: >-
+          Stauffer, J. R., Bowers, N. J., Kocher, T. D. and McKaye, K. R. (1996). Evidence of
+          hybridization between Cynotilapia afra and Pseudotropheus zebra (Teleostei: Cichlidae)
+          following an intralacustrine translocation in Lake Malawi. Copeia 1996(1), 203-208
+          (title and bibliographic record).
+        url: https://doi.org/10.2307/1446959
+        accessed: 2026-10-12
+        note: Reports hybridisation between C. afra and Pseudotropheus (Maylandia) zebra after C. afra was moved within Lake Malawi.
+      - kind: literature
+        title: >-
+          Streelman, J. T., Gmyrek, S. L., Kidd, M. R., Kidd, C., Robinson, R. L., Hert, E.,
+          Ambali, A. J. and Kocher, T. D. (2004). Hybridization and contemporary evolution in an
+          introduced cichlid fish from Lake Malawi National Park. Molecular Ecology 13(8),
+          2471-2479 (abstract).
+        url: https://doi.org/10.1111/j.1365-294x.2004.02240.x
+        accessed: 2026-10-12
+        note: Finds with microsatellites a high share of hybrids between introduced C. afra and native Metriaclima zebra on the turbid southern coast of Thumbi West Island.
+      - kind: literature
+        title: >-
+          Zidana, H., Turner, G. F., Van Oosterhout, C. and Hänfling, B. (2009). Elevated mtDNA
+          diversity in introduced populations of Cynotilapia afra (Günther 1894) in Lake Malawi
+          National Park is evidence for multiple source populations and hybridization. Molecular
+          Ecology 18(21), 4380-4389 (abstract).
+        url: https://doi.org/10.1111/j.1365-294x.2009.04362.x
+        accessed: 2026-10-12
+        note: Calls C. afra and Pseudotropheus zebra closely related and hybridising and traces part of the mtDNA diversity of introduced C. afra to introgression from P. zebra.
   - id: tropheus
     description: All Tropheus species and locality forms; locality forms are kept apart as well to preserve them.
     members:
