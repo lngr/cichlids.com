@@ -17,7 +17,7 @@ public sealed class VerifyStepTests(VerifyEtlFixture fixture)
         AssertRow(report, "profiles_member", 2, 2);
         AssertInfoRow(report, "profiles_archived", 1);
         AssertInfoRow(report, "profiles_system", 1);
-        AssertInfoRow(report, "profiles_member_registered", 0);
+        AssertInfoRow(report, "identities_oidc", 0);
         AssertRow(report, "identities_auth0", 1, 1);
         AssertRow(report, "identities_legacy_openid", 1, 1);
         AssertRow(report, "identities_email", 1, 1);
@@ -73,16 +73,50 @@ public sealed class VerifyStepTests(VerifyEtlFixture fixture)
     }
 
     [Fact]
-    public async Task IgnoresAMemberProfileTheApiCreatedForAFirstLoginWhenCountingMigratedMembers()
+    public async Task FlagsAMemberProfileTheApiCreatedForAFirstLogin()
     {
         var report = await fixture.VerifyInRolledBackTransactionAsync(context => VerifyEtlFixture.ExecuteAsync(
             context,
             "INSERT INTO profile (username, display_name, kind, created_at) "
             + "VALUES ('verify-fixture-first-login-member', 'First Login Member', 'member', now())"));
 
+        Assert.False(report.Passed);
+        AssertMismatch(report, "profiles_member", 2, 3);
+        Assert.DoesNotContain(report.Rows, row => row.Entity == "profiles_member_registered");
+    }
+
+    [Fact]
+    public async Task ReportsTheOidcIdentitiesOfTheAccountImportAsInformation()
+    {
+        var report = await fixture.VerifyInRolledBackTransactionAsync(context => VerifyEtlFixture.ExecuteAsync(
+            context,
+            "INSERT INTO profile_identity (profile_id, provider, subject, created_at) "
+            + "SELECT id, 'oidc', 'verify-fixture-subject', now() FROM profile WHERE legacy_id = 9010"));
+
         Assert.True(report.Passed, DescribeMismatches(report));
-        AssertRow(report, "profiles_member", 2, 2);
-        AssertInfoRow(report, "profiles_member_registered", 1);
+        AssertInfoRow(report, "identities_oidc", 1);
+    }
+
+    [Fact]
+    public async Task FlagsADeletedPostWithoutAdjustingTheCommentExpectations()
+    {
+        const string post = "(SELECT id FROM post WHERE legacy_id = 9101)";
+        var report = await fixture.VerifyInRolledBackTransactionAsync(async context =>
+        {
+            await VerifyEtlFixture.ExecuteAsync(
+                context, $"DELETE FROM comment_vote WHERE comment_id IN (SELECT id FROM comment WHERE post_id = {post})");
+            await VerifyEtlFixture.ExecuteAsync(context, $"DELETE FROM comment WHERE post_id = {post}");
+            await VerifyEtlFixture.ExecuteAsync(context, $"DELETE FROM rating WHERE post_id = {post}");
+            await VerifyEtlFixture.ExecuteAsync(context, $"DELETE FROM slug_alias WHERE post_id = {post}");
+            await VerifyEtlFixture.ExecuteAsync(context, $"DELETE FROM post_species WHERE post_id = {post}");
+            await VerifyEtlFixture.ExecuteAsync(context, $"DELETE FROM collection_entry WHERE post_id = {post}");
+            await VerifyEtlFixture.ExecuteAsync(context, "DELETE FROM post WHERE legacy_id = 9101");
+        });
+
+        Assert.False(report.Passed);
+        AssertMismatch(report, "post", 2, 1);
+        AssertMismatch(report, "comment", 3, 1);
+        AssertRow(report, "vault_legacy_comment", 3, 3);
     }
 
     [Fact]

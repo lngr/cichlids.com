@@ -19,14 +19,14 @@ public static class MigrationRules
     public const string ArchivedProfiles =
         "Content of a legacy owner without a member profile belongs to an unlisted archived placeholder profile.";
 
-    public const string RegisteredProfiles =
-        "Member profiles without a legacy id belong to accounts registered on the new platform.";
-
     public const string SystemProfiles =
         "Anonymous legacy content belongs to the community archive system profile.";
 
     public const string LegacyIdentities =
         "The Auth0, legacy OpenID and email logins of migrated members migrate as profile identities.";
+
+    public const string OidcIdentities =
+        "The account import links each imported Keycloak account to its member profile as an oidc identity.";
 
     public const string PrivateAddresses =
         "No public name of a profile, comment or forum post holds an email address.";
