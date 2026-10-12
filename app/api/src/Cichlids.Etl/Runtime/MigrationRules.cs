@@ -79,6 +79,9 @@ public static class MigrationRules
     public const string Ratings =
         "A member keeps one rating per post or tank: the newest legacy rating wins, a tie goes to the higher legacy uid, self-ratings are dropped and anonymous ratings migrate unchanged.";
 
+    public const string NewestRatings =
+        "Every migrated rating is an anonymous rating or the newest legacy rating of its member on its post or tank, a tie going to the higher legacy uid.";
+
     public const string CollapsedRatings =
         "An older legacy rating of a member on a post or tank collapses into the member's newest rating there.";
 

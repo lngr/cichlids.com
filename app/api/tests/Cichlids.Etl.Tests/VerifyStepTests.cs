@@ -30,6 +30,7 @@ public sealed class VerifyStepTests(VerifyEtlFixture fixture)
         AssertRow(report, "post_species", 3, 3);
         AssertRow(report, "comment", 3, 3);
         AssertRow(report, "rating", 2, 2);
+        AssertRow(report, "rating_not_newest", 0, 0);
         AssertInfoRow(report, "rating_collapsed", 1);
         AssertInfoRow(report, "rating_self_dropped", 2);
         AssertRow(report, "vault_legacy_comment", 3, 3);
@@ -121,6 +122,17 @@ public sealed class VerifyStepTests(VerifyEtlFixture fixture)
         AssertMismatch(report, "post", 2, 1);
         AssertMismatch(report, "comment", 3, 1);
         AssertRow(report, "vault_legacy_comment", 3, 3);
+    }
+
+    [Fact]
+    public async Task FlagsAMigratedRatingThatIsNotTheNewestOfItsMember()
+    {
+        var report = await fixture.VerifyInRolledBackTransactionAsync(context => VerifyEtlFixture.ExecuteAsync(
+            context, "UPDATE rating SET legacy_comment_id = 9310 WHERE legacy_comment_id = 9301"));
+
+        Assert.False(report.Passed);
+        AssertRow(report, "rating", 2, 2);
+        AssertMismatch(report, "rating_not_newest", 0, 1);
     }
 
     [Fact]
