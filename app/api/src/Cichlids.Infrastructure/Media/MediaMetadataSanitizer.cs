@@ -21,7 +21,7 @@ public static class MediaMetadataSanitizer
 
     /// <summary>
     /// Returns the sanitized bytes of an image file. Throws ImageProcessor.ImageTooLargeException
-    /// for a TIFF that declares more than ImageProcessor.MaxPixels pixels and
+    /// for a TIFF whose declared size ImageProcessor.CheckDeclaredSize rejects and
     /// UnsanitizableImageException for a TIFF that does not decode.
     /// </summary>
     public static byte[] Sanitize(byte[] source)
@@ -65,10 +65,7 @@ public static class MediaMetadataSanitizer
         try
         {
             using var image = Image.NewFromBuffer(source);
-            if ((long)image.Width * image.Height > ImageProcessor.MaxPixels)
-            {
-                throw new ImageProcessor.ImageTooLargeException(image.Width, image.Height);
-            }
+            ImageProcessor.CheckDeclaredSize(image.Width, image.Height);
 
             return image.WriteToBuffer(
                 ".tif",

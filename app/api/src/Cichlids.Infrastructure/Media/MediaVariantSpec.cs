@@ -20,7 +20,9 @@ public static class MediaVariantSpec
     /// <summary>
     /// The tallest a variant may be, as a multiple of its target width. A photo taller than that
     /// is fitted into its target width times this factor, so very tall images keep bounded
-    /// variant sizes and decode memory, far below the JPEG limit of 65535 pixels per side.
+    /// variant sizes and decode memory, far below the JPEG limit of 65535 pixels per side. The
+    /// image processor accepts a long side of at most 100 times the short side, so a fitted
+    /// variant is at least a few pixels wide.
     /// </summary>
     public const int MaxHeightToWidthRatio = 4;
 

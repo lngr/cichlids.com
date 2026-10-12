@@ -5,7 +5,8 @@ namespace Cichlids.Infrastructure.Media;
 /// <summary>
 /// Turns source image bytes into the JPEG variants the media pipeline serves, via libvips
 /// (NetVips). Only JPEG, PNG, WebP, GIF and TIFF are accepted, and an image whose header declares
-/// more than MaxPixels pixels is rejected before any pixel is decoded. The source is decoded once,
+/// more than MaxPixels pixels, a side longer than MaxSide or a long side more than MaxAspectRatio
+/// times the short side is rejected before any pixel is decoded. The source is decoded once,
 /// directly at the largest variant width, with its EXIF orientation applied and its colours
 /// converted to sRGB (an embedded ICC profile is honoured, untagged CMYK uses the built-in CMYK
 /// profile); the smaller variants are derived from that decoded image. Every variant is an
@@ -17,6 +18,19 @@ public static class ImageProcessor
     /// Largest accepted image in pixels (width times height), 100 megapixels.
     /// </summary>
     public const long MaxPixels = 100_000_000;
+
+    /// <summary>
+    /// Longest accepted side in pixels, 65535: the largest side a JPEG file can declare. PNG and
+    /// TIFF headers can declare longer sides, and such images are rejected like any other
+    /// image beyond the size limits.
+    /// </summary>
+    public const int MaxSide = 65_535;
+
+    /// <summary>
+    /// Largest accepted ratio of the long side to the short side, 100. A narrower strip would
+    /// give variants only a few pixels wide while its decode costs as much as a full photo.
+    /// </summary>
+    public const int MaxAspectRatio = 100;
 
     // libvips' largest image dimension; as the thumbnail height it leaves the width as the only
     // constraint.
@@ -66,10 +80,31 @@ public static class ImageProcessor
     }
 
     /// <summary>
-    /// Thrown when an image declares more pixels than MaxPixels allows.
+    /// Thrown when an image declares more pixels than MaxPixels, a side longer than MaxSide or a
+    /// long side more than MaxAspectRatio times its short side.
     /// </summary>
-    public sealed class ImageTooLargeException(int width, int height)
-        : Exception($"The image has {width}x{height} pixels, more than {MaxPixels / 1_000_000} megapixels.");
+    public sealed class ImageTooLargeException(int width, int height) : Exception(Describe(width, height))
+    {
+        private static string Describe(int width, int height) =>
+            (long)width * height > MaxPixels
+                ? $"The image has {width}x{height} pixels, more than {MaxPixels / 1_000_000} megapixels."
+                : $"The image has {width}x{height} pixels; a side may be at most {MaxSide} pixels long "
+                    + $"and at most {MaxAspectRatio} times as long as the other side.";
+    }
+
+    /// <summary>
+    /// Throws ImageTooLargeException when the declared size exceeds MaxPixels, MaxSide or
+    /// MaxAspectRatio.
+    /// </summary>
+    public static void CheckDeclaredSize(int width, int height)
+    {
+        var longSide = Math.Max(width, height);
+        var shortSide = Math.Max(1, Math.Min(width, height));
+        if ((long)width * height > MaxPixels || longSide > MaxSide || longSide > (long)MaxAspectRatio * shortSide)
+        {
+            throw new ImageTooLargeException(width, height);
+        }
+    }
 
     /// <summary>
     /// Thrown when source bytes are in a format outside the allowlist of JPEG, PNG, WebP, GIF and
@@ -92,7 +127,8 @@ public static class ImageProcessor
     /// Reads the format and the orientation-corrected size of an image and produces every variant
     /// MediaVariantSpec resolves for that width and height, reading the stream once. Throws
     /// UnsupportedImageFormatException for a format outside the allowlist, ImageTooLargeException
-    /// for more than MaxPixels pixels and BrokenImageException when the data does not decode.
+    /// for a declared size beyond MaxPixels, MaxSide or MaxAspectRatio and BrokenImageException
+    /// when the data does not decode.
     /// </summary>
     public static ProcessedImage Process(Stream source)
     {
@@ -152,10 +188,7 @@ public static class ImageProcessor
     private static (int Width, int Height) ReadOrientedSize(Source source)
     {
         using var header = Image.NewFromSource(source, access: Enums.Access.Sequential);
-        if ((long)header.Width * header.Height > MaxPixels)
-        {
-            throw new ImageTooLargeException(header.Width, header.Height);
-        }
+        CheckDeclaredSize(header.Width, header.Height);
 
         var orientation = header.GetTypeOf("orientation") != 0 ? (int)header.Get("orientation") : 1;
         return orientation is >= 5 and <= 8 ? (header.Height, header.Width) : (header.Width, header.Height);

@@ -141,6 +141,16 @@ public class UploadsEndpointsTests(UploadsFixture fixture)
     }
 
     [Fact]
+    public async Task Upload_PngStripOfOnePixelBy50MillionReturnsBadRequest()
+    {
+        var response = await UploadAsync(
+            fixture.Client, NewToken(), SyntheticImages.PngDeclaring(1, 50_000_000, rows: 1), "image/png", "strip.png");
+
+        Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+        Assert.Contains("1x50000000", await response.Content.ReadAsStringAsync());
+    }
+
+    [Fact]
     public async Task Upload_DocumentsTheRequestBodyLimitResponseInTheOpenApiDocument()
     {
         var response = await fixture.Client.GetAsync("/openapi/v1.json");

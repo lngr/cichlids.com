@@ -80,6 +80,39 @@ public sealed class ImageProcessorTests
         Assert.True(growth < 1024 * 1024, $"Rejecting raised the libvips high-water mark by {growth} bytes.");
     }
 
+    [Theory]
+    [InlineData(1, 50_000_000)]
+    [InlineData(70_000, 10)]
+    [InlineData(30_000, 100)]
+    [InlineData(100, 30_000)]
+    public void Rejects_a_side_above_65535_pixels_or_a_side_more_than_100_times_the_other_before_decoding(int width, int height)
+    {
+        var bytes = SyntheticImages.PngDeclaring(width, height, rows: 1);
+
+        var stopwatch = Stopwatch.StartNew();
+        var ex = Assert.Throws<ImageProcessor.ImageTooLargeException>(() => ImageProcessor.Process(bytes));
+        stopwatch.Stop();
+
+        Assert.Contains($"{width}x{height}", ex.Message);
+        Assert.True(stopwatch.Elapsed < TimeSpan.FromSeconds(1), $"Rejecting took {stopwatch.Elapsed}.");
+    }
+
+    [Fact]
+    public void Processes_a_strip_whose_long_side_is_exactly_100_times_the_short_side()
+    {
+        using var image = (Image.Black(100, 10_000) + new[] { 30, 90, 150 }).Cast(Enums.BandFormat.Uchar);
+
+        var result = ImageProcessor.Process(image.WriteToBuffer(".jpg"));
+
+        var thumb = Assert.Single(result.Variants);
+        using var decoded = Image.NewFromBuffer(thumb.Bytes);
+        Assert.Equal(thumb.Width, decoded.Width);
+
+        // At a width of a few pixels the shrink libvips rounds to can leave the height a few
+        // percent above the four-to-one box.
+        Assert.InRange(decoded.Height, 1, 4 * 100 * 11 / 10);
+    }
+
     [Fact]
     public void Blocks_libvips_loaders_outside_the_allowlist_for_the_whole_process()
     {

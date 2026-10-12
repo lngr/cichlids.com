@@ -353,8 +353,8 @@ public static class MediaSeedCommand
         return recorded;
     }
 
-    // An image outside the format allowlist, above the pixel limit or with undecodable data is
-    // recorded as an undecodable photo.
+    // An image outside the format allowlist, beyond the size limits (pixel count, side length or
+    // aspect ratio) or with undecodable data is recorded as an undecodable photo.
     private static ProcessedImage? TryProcess(byte[] bytes)
     {
         try

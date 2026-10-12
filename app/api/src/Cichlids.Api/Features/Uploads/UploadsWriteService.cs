@@ -25,10 +25,12 @@ public sealed class UploadsWriteService(
 
     /// <summary>
     /// Stores an uploaded photo and creates the owner's draft post for it. Throws
-    /// ImageProcessor.ImageTooLargeException when the photo has more pixels than
-    /// ImageProcessor.MaxPixels, ImageProcessor.UnsupportedImageFormatException for a format
-    /// outside the image allowlist and ImageProcessor.BrokenImageException when the bytes cannot
-    /// be decoded or resized, all before anything is stored.
+    /// ImageProcessor.ImageTooLargeException when the photo declares more pixels than
+    /// ImageProcessor.MaxPixels, a side longer than ImageProcessor.MaxSide or a long side more
+    /// than ImageProcessor.MaxAspectRatio times its short side,
+    /// ImageProcessor.UnsupportedImageFormatException for a format outside the image allowlist
+    /// and ImageProcessor.BrokenImageException when the bytes cannot be decoded or resized, all
+    /// before anything is stored.
     /// </summary>
     public async Task<DraftDto> CreateDraftAsync(
         Profile owner, byte[] bytes, UploadImageFormat format, string? originalFilename, CancellationToken cancellationToken)
