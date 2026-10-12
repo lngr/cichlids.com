@@ -1,10 +1,10 @@
 ---
 id: TASK-2.27
 title: Separate the Keycloak realm configuration for staging and production
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-10-12 04:48'
-updated_date: '2026-10-12 07:34'
+updated_date: '2026-10-12 07:36'
 labels: []
 dependencies: []
 references:
