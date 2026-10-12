@@ -3,10 +3,10 @@ id: TASK-3.30
 title: >-
   Run the ETL only against an empty target and reset dev and staging before each
   run
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-10-12 04:48'
-updated_date: '2026-10-12 07:56'
+updated_date: '2026-10-12 08:03'
 labels: []
 dependencies: []
 references:
