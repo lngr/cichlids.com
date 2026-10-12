@@ -18,11 +18,17 @@ ToolSearch (query `select:WebSearch,WebFetch`). `curl -sL <url>` through Bash wo
 often gets through where WebFetch is blocked. Fetch and read the pages you cite; a source you did
 not read is not a source.
 
-Literature search: `node tools/species-data/literature-search.mjs "<query>" [limit]` searches the
-open OpenAlex database and prints year, title, DOI, an open-access link and the abstract of each
-work. Use it first for scientific literature. WebSearch is shared by all agents of the session
+Literature search: `node tools/species-data/literature-search.mjs "<query>" [limit]` searches
+OpenAlex (with an API key), Europe PMC and Crossref and prints year, title, DOI, an open-access
+link and the abstract of each work. Use it first for scientific literature. WebSearch is shared by all agents of the session
 (200 searches, refilling at about 100 per hour); use it sparingly for what the literature search
 and direct page fetches cannot find.
+
+Respect access controls: do not bypass bot checks, logins, captchas or paywalls of any site with
+browsers, other user agents or similar tricks. The Cichlid Room Companion tool is the only
+sanctioned exception. When a page blocks automated access, use another source or an
+open-access copy (preprint, repository, Europe PMC) and say in the rationale what you could not
+read.
 
 Minimum research per species:
 
@@ -71,6 +77,10 @@ search and one page per species are enough.
 
 ## Sources
 
+- Source kinds: `literature` for papers, books, magazine articles and reports; `database` for
+  species databases (FishBase, Seriously Fish) and structured care sheets; `website` for Wikipedia,
+  blogs and other general pages. Only `catalog-of-fishes`, `literature` and `database` count as
+  external sources; `website`, `forum`, `archive` and `model-knowledge` carry low weight.
 - Every value needs at least one source. Peer-reviewed papers and monographs with a DOI are
   especially welcome: search for them deliberately (species descriptions, ecology, diet and
   limnology studies), read them and cite them with `https://doi.org/<doi>` as url; a paper of

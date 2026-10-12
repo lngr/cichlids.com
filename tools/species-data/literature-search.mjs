@@ -1,16 +1,68 @@
 #!/usr/bin/env node
-// Searches scientific literature for the research agents through the open OpenAlex API, without
-// the web search tool of the agent session. Prints per work the year, title, DOI, an open-access
-// link where one exists and the abstract, so an agent can decide what to read and cite.
+// Searches scientific literature for the research agents without the web search tool of the agent
+// session. Prints per work the year, title, DOI, an open-access link where one exists and the
+// abstract, so an agent can decide what to read and cite.
 //
 //   node tools/species-data/literature-search.mjs "<query>" [limit]
 //
-// Falls back to the Crossref API (title, year and DOI only) when OpenAlex does not answer.
+// OpenAlex answers when an API key is set (environment variable OPENALEX_API_KEY or the file
+// ~/.config/cichlids/openalex.key); requests without a key share a small daily budget per IP
+// address. Europe PMC answers without a key, Crossref is the last fallback. Calls of
+// all processes keep a minimum interval, and rate-limited requests (HTTP 429) are retried after a
+// pause, because many agents search in parallel.
+import { existsSync, mkdirSync, readFileSync, rmdirSync, statSync, writeFileSync } from 'node:fs';
+import { homedir, tmpdir } from 'node:os';
+import { join } from 'node:path';
+
 const [query, limitArg] = process.argv.slice(2);
 if (!query) {
   console.error('Usage: node tools/species-data/literature-search.mjs "<query>" [limit]');
   process.exit(2);
 }
+const LOCK_DIR = join(tmpdir(), 'cichlids-literature.lock');
+const LAST_CALL_FILE = join(tmpdir(), 'cichlids-literature.last');
+const MIN_INTERVAL_MS = 1500;
+const RETRY_PAUSES_MS = [10000, 30000, 60000];
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+// Waits for the shared lock and the minimum interval since the last call of any process.
+async function throttled(fn) {
+  for (;;) {
+    try {
+      mkdirSync(LOCK_DIR);
+      break;
+    } catch {
+      try {
+        if (Date.now() - statSync(LOCK_DIR).mtimeMs > 60000) rmdirSync(LOCK_DIR);
+      } catch {}
+      await sleep(200);
+    }
+  }
+  try {
+    const last = existsSync(LAST_CALL_FILE) ? Number(readFileSync(LAST_CALL_FILE, 'utf8')) : 0;
+    const wait = last + MIN_INTERVAL_MS - Date.now();
+    if (wait > 0) await sleep(wait);
+    writeFileSync(LAST_CALL_FILE, String(Date.now()));
+  } finally {
+    rmdirSync(LOCK_DIR);
+  }
+  return fn();
+}
+
+// Fetches JSON through the throttle and retries rate-limited requests.
+async function getJson(url, service) {
+  for (let attempt = 0; ; attempt++) {
+    const res = await throttled(() => fetch(url, { signal: AbortSignal.timeout(30000) }));
+    if (res.status === 429 && attempt < RETRY_PAUSES_MS.length) {
+      console.error(`literature-search: ${service} rate limit, retrying in ${RETRY_PAUSES_MS[attempt] / 1000} s`);
+      await sleep(RETRY_PAUSES_MS[attempt]);
+      continue;
+    }
+    if (!res.ok) throw new Error(`${service} answered HTTP ${res.status}`);
+    return res.json();
+  }
+}
+
 const limit = Math.min(Number.parseInt(limitArg ?? '8', 10) || 8, 25);
 
 // OpenAlex stores abstracts as an inverted index of word positions.
@@ -21,14 +73,21 @@ function abstractText(index) {
   return words.filter(Boolean).join(' ');
 }
 
+function openAlexKey() {
+  if (process.env.OPENALEX_API_KEY) return process.env.OPENALEX_API_KEY.trim();
+  const file = join(homedir(), '.config', 'cichlids', 'openalex.key');
+  return existsSync(file) ? readFileSync(file, 'utf8').trim() : null;
+}
+
 async function openAlex() {
+  const key = openAlexKey();
+  if (!key) throw new Error('no OpenAlex API key');
   const url = new URL('https://api.openalex.org/works');
+  url.searchParams.set('api_key', key);
   url.searchParams.set('search', query);
   url.searchParams.set('per-page', String(limit));
   url.searchParams.set('select', 'doi,title,publication_year,open_access,abstract_inverted_index,primary_location');
-  const res = await fetch(url, { signal: AbortSignal.timeout(30000) });
-  if (!res.ok) throw new Error(`OpenAlex answered HTTP ${res.status}`);
-  const data = await res.json();
+  const data = await getJson(url, 'OpenAlex');
   return data.results.map((w) => ({
     year: w.publication_year,
     title: w.title,
@@ -39,30 +98,58 @@ async function openAlex() {
   }));
 }
 
+// Turns entity-encoded markup of titles and abstracts into plain text.
+function plain(text) {
+  return String(text ?? '')
+    .replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&amp;/g, '&')
+    .replace(/<[^>]+>/g, '')
+    .trim();
+}
+
+async function europePmc() {
+  const url = new URL('https://www.ebi.ac.uk/europepmc/webservices/rest/search');
+  // Every word of the query must appear in title or abstract; a plain query also matches full texts
+  // that mention the words in passing.
+  const words = query.split(/\s+/).map((w) => w.replace(/[^\p{L}\p{N}-]/gu, '')).filter(Boolean);
+  url.searchParams.set('query', words.map((w) => `(TITLE:${w} OR ABSTRACT:${w})`).join(' AND '));
+  url.searchParams.set('format', 'json');
+  url.searchParams.set('resultType', 'core');
+  url.searchParams.set('pageSize', String(limit));
+  const data = await getJson(url, 'Europe PMC');
+  return (data.resultList?.result ?? []).map((w) => ({
+    year: w.pubYear ?? '',
+    title: plain(w.title),
+    venue: w.journalInfo?.journal?.title ?? w.bookOrReportDetails?.publisher ?? '',
+    doi: w.doi ? `https://doi.org/${w.doi}` : '',
+    openAccess: (w.fullTextUrlList?.fullTextUrl ?? []).find((u) => u.availabilityCode === 'OA')?.url ?? '',
+    abstract: plain(w.abstractText),
+  }));
+}
+
 async function crossref() {
   const url = new URL('https://api.crossref.org/works');
   url.searchParams.set('query', query);
   url.searchParams.set('rows', String(limit));
-  url.searchParams.set('select', 'DOI,title,issued,container-title');
-  const res = await fetch(url, { signal: AbortSignal.timeout(30000) });
-  if (!res.ok) throw new Error(`Crossref answered HTTP ${res.status}`);
-  const data = await res.json();
+  url.searchParams.set('select', 'DOI,title,issued,container-title,abstract');
+  const data = await getJson(url, 'Crossref');
   return data.message.items.map((w) => ({
     year: w.issued?.['date-parts']?.[0]?.[0] ?? '',
     title: w.title?.[0] ?? '',
     venue: w['container-title']?.[0] ?? '',
     doi: w.DOI ? `https://doi.org/${w.DOI}` : '',
     openAccess: '',
-    abstract: '',
+    abstract: plain(w.abstract),
   }));
 }
 
-let works;
-try {
-  works = await openAlex();
-} catch (e) {
-  console.error(`literature-search: ${e.message}, using Crossref`);
-  works = await crossref();
+let works = [];
+for (const [name, search] of [['OpenAlex', openAlex], ['Europe PMC', europePmc], ['Crossref', crossref]]) {
+  try {
+    works = await search();
+    if (works.length > 0) break;
+  } catch (e) {
+    if (name !== 'OpenAlex' || openAlexKey()) console.error(`literature-search: ${name}: ${e.message}`);
+  }
 }
 if (works.length === 0) console.log('No works found.');
 for (const w of works) {
