@@ -132,6 +132,55 @@ internal static class PhotoFixtures
     }
 
     /// <summary>
+    /// A JPEG of one flat colour encoded in Display P3 with the libvips built-in P3 profile
+    /// embedded, at quality 100 without chroma subsampling.
+    /// </summary>
+    public static byte[] DisplayP3Jpeg(int width, int height, byte[] p3)
+    {
+        using var flat = (Image.Black(width, height) + new[] { (int)p3[0], p3[1], p3[2] }).Cast(Enums.BandFormat.Uchar)
+            .Copy(interpretation: Enums.Interpretation.Srgb);
+        using var tagged = flat.Mutate(m => m.Set(GValue.BlobType, "icc-profile-data", IccProfile("p3")));
+        return tagged.WriteToBuffer(".jpg", new VOption { { "Q", 100 }, { "subsample_mode", Enums.ForeignSubsample.Off } });
+    }
+
+    /// <summary>
+    /// The sRGB value of a Display P3 colour. Display P3 and sRGB share the sRGB transfer curve
+    /// and the D65 white point, so the value is the P3 value linearised, taken through XYZ and
+    /// encoded again.
+    /// </summary>
+    public static double[] ExpectedSrgbFromDisplayP3(byte[] p3)
+    {
+        double[,] p3ToXyz =
+        {
+            { 0.4865709, 0.2656677, 0.1982173 },
+            { 0.2289746, 0.6917385, 0.0792869 },
+            { 0.0000000, 0.0451134, 1.0439444 },
+        };
+        double[,] xyzToSrgb =
+        {
+            { 3.2404542, -1.5371385, -0.4985314 },
+            { -0.9692660, 1.8760108, 0.0415560 },
+            { 0.0556434, -0.2040259, 1.0572252 },
+        };
+
+        var linear = p3.Select(v => ToLinear(v / 255.0)).ToArray();
+        var xyz = Multiply(p3ToXyz, linear);
+        var srgbLinear = Multiply(xyzToSrgb, xyz);
+        return srgbLinear.Select(v => Math.Round(FromLinear(Math.Clamp(v, 0, 1)) * 255)).ToArray();
+
+        static double ToLinear(double c) => c <= 0.04045 ? c / 12.92 : Math.Pow((c + 0.055) / 1.055, 2.4);
+
+        static double FromLinear(double c) => c <= 0.0031308 ? c * 12.92 : (1.055 * Math.Pow(c, 1 / 2.4)) - 0.055;
+
+        static double[] Multiply(double[,] m, double[] v) =>
+            [
+                (m[0, 0] * v[0]) + (m[0, 1] * v[1]) + (m[0, 2] * v[2]),
+                (m[1, 0] * v[0]) + (m[1, 1] * v[1]) + (m[1, 2] * v[2]),
+                (m[2, 0] * v[0]) + (m[2, 1] * v[1]) + (m[2, 2] * v[2]),
+            ];
+    }
+
+    /// <summary>
     /// A tiny JPEG, optionally with a comment segment.
     /// </summary>
     public static byte[] SmallJpeg(string? comment)

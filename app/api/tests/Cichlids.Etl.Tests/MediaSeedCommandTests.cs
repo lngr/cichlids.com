@@ -3,7 +3,11 @@ using System.Text.Json;
 using Cichlids.Etl.Media;
 using Cichlids.Infrastructure.Media;
 using Cichlids.Tests.Shared;
+using MetadataExtractor.Formats.Exif;
+using MetadataExtractor.Formats.Icc;
 using Microsoft.EntityFrameworkCore;
+using static MetadataExtractor.DirectoryExtensions;
+using ImageMetadataReader = MetadataExtractor.ImageMetadataReader;
 
 namespace Cichlids.Etl.Tests;
 
@@ -708,7 +712,7 @@ public sealed class MediaSeedCommandTests(MediaEtlFixture fixture)
         try
         {
             const int uid = 71180;
-            var path = MediaTestSupport.WritePhoto(root, uid, "damaged.tif", 2400, 1600);
+            var path = MediaTestSupport.WritePhoto(root, uid, "damaged.webp", 2400, 1600);
             var fullPath = Path.Combine(root, path);
             var all = await File.ReadAllBytesAsync(fullPath);
 
@@ -853,7 +857,7 @@ public sealed class MediaSeedCommandTests(MediaEtlFixture fixture)
         try
         {
             const int uid = 71195;
-            var path = MediaTestSupport.WritePhoto(root, uid, "late-broken.tif", 2400, 1600);
+            var path = MediaTestSupport.WritePhoto(root, uid, "late-broken.webp", 2400, 1600);
             var fullPath = Path.Combine(root, path);
             var all = await File.ReadAllBytesAsync(fullPath);
             all = all[..(all.Length * 6 / 10)];
@@ -866,7 +870,7 @@ public sealed class MediaSeedCommandTests(MediaEtlFixture fixture)
             var key = $"originals/{path}";
             var sha = Convert.ToHexStringLower(SHA256.HashData(all));
             await fixture.ObjectStore.PutAsync(
-                key, new MemoryStream(all), "image/tiff", MediaObjectMetadata.ForOriginal(sha, sha, new PhotoInfo(2400, 1600)));
+                key, new MemoryStream(all), "image/jpeg", MediaObjectMetadata.ForOriginal(sha, sha, new PhotoInfo(2400, 1600)));
             var target = await fixture.CreateIsolatedTargetAsync();
             await MediaTestSupport.InsertMediaItemAsync(fixture, uid, key, targetConnectionString: target);
 
@@ -886,11 +890,277 @@ public sealed class MediaSeedCommandTests(MediaEtlFixture fixture)
         }
     }
 
+    // === sanitized originals, sRGB variants and rejected sources =====================================
+
+    [Fact]
+    public async Task StoresALegacyOriginalWithoutLocationDataButWithItsDateOrientationAndColourProfile()
+    {
+        var root = MediaTestSupport.CreateImagesRoot();
+        try
+        {
+            const int uid = 71200;
+            var legacyBytes = PhotoFixtures.PhoneJpeg(900, 600, orientation: 6);
+            var path = MediaTestSupport.WriteFile(root, uid, "phone.jpg", legacyBytes);
+            await using (var legacy = await MediaTestSupport.OpenLegacyConnectionAsync(fixture))
+            {
+                await MediaTestSupport.InsertLegacyPictureAsync(legacy, uid, path);
+            }
+
+            var target = await fixture.CreateIsolatedTargetAsync();
+            var key = $"originals/{path}";
+            await MediaTestSupport.InsertMediaItemAsync(fixture, uid, key, targetConnectionString: target);
+
+            await MediaTestSupport.RunSeedAsync(fixture, root, targetConnectionString: target);
+
+            var stored = await MediaTestSupport.DownloadAsync(fixture, key);
+            Assert.False(PhotoFixtures.ContainsSecret(stored), "A SECRET- value survived in the stored original.");
+            var directories = ImageMetadataReader.ReadMetadata(new MemoryStream(stored));
+            Assert.Empty(directories.OfType<GpsDirectory>());
+            Assert.Equal(
+                PhotoFixtures.CaptureDate,
+                Assert.Single(directories.OfType<ExifSubIfdDirectory>()).GetString(ExifDirectoryBase.TagDateTimeOriginal));
+            Assert.Equal(6, Assert.Single(directories.OfType<ExifIfd0Directory>()).GetInt32(ExifDirectoryBase.TagOrientation));
+            Assert.NotEmpty(directories.OfType<IccDirectory>());
+
+            var storedSha = Convert.ToHexStringLower(SHA256.HashData(stored));
+            var head = await fixture.ObjectStore.HeadAsync(key);
+            Assert.Equal(storedSha, head!.Metadata[MediaObjectMetadata.Sha256Key]);
+            Assert.Equal(Convert.ToHexStringLower(SHA256.HashData(legacyBytes)), head.Metadata[MediaObjectMetadata.SourceSha256Key]);
+
+            await using var db = fixture.CreateTargetContext(target);
+            var item = await db.MediaItems.SingleAsync();
+            Assert.Equal(stored.LongLength, item.ByteSize);
+            Assert.Equal(storedSha, item.ChecksumSha256);
+            Assert.Equal(600, item.Width);
+            Assert.Equal(900, item.Height);
+        }
+        finally
+        {
+            Directory.Delete(root, recursive: true);
+        }
+    }
+
+    [Fact]
+    public async Task ReplacesAnOriginalAndVariantsStoredByEarlierPipelineVersions()
+    {
+        var root = MediaTestSupport.CreateImagesRoot();
+        try
+        {
+            const int uid = 71201;
+            var legacyBytes = PhotoFixtures.PhoneJpeg(2400, 1600);
+            var legacySha = Convert.ToHexStringLower(SHA256.HashData(legacyBytes));
+            var path = MediaTestSupport.WriteFile(root, uid, "phone.jpg", legacyBytes);
+            await using (var legacy = await MediaTestSupport.OpenLegacyConnectionAsync(fixture))
+            {
+                await MediaTestSupport.InsertLegacyPictureAsync(legacy, uid, path);
+            }
+
+            var target = await fixture.CreateIsolatedTargetAsync();
+            var key = $"originals/{path}";
+            await MediaTestSupport.InsertMediaItemAsync(fixture, uid, key, targetConnectionString: target);
+
+            // What an earlier pipeline stored: the legacy bytes as the original and variants of
+            // the previous derivation.
+            var earlierOriginal = new Dictionary<string, string>(MediaObjectMetadata.ForOriginal(legacySha, legacySha, new PhotoInfo(2400, 1600)))
+            {
+                [MediaObjectMetadata.PipelineKey] = (MediaObjectMetadata.OriginalPipelineVersion - 1).ToString(),
+            };
+            await fixture.ObjectStore.PutAsync(key, new MemoryStream(legacyBytes), "image/jpeg", earlierOriginal);
+            var variantKeys = new[] { "thumb", "small", "medium", "large" }.Select(l => MediaStorageKeys.BuildVariantKey(key, l)).ToList();
+            foreach (var variantKey in variantKeys)
+            {
+                await fixture.ObjectStore.PutAsync(
+                    variantKey,
+                    new MemoryStream([9, 9, 9]),
+                    "image/jpeg",
+                    new Dictionary<string, string>
+                    {
+                        [MediaObjectMetadata.Sha256Key] = "0000",
+                        [MediaObjectMetadata.SourceSha256Key] = legacySha,
+                        [MediaObjectMetadata.PipelineKey] = (MediaObjectMetadata.VariantPipelineVersion - 1).ToString(),
+                    });
+            }
+
+            var recording = new RecordingObjectStore(fixture.ObjectStore);
+            var summary = await MediaTestSupport.RunSeedAsync(fixture, root, targetConnectionString: target, objectStore: recording);
+
+            Assert.Equal(1, summary.OriginalsUploaded);
+            Assert.Equal(4, summary.VariantsUploaded);
+            Assert.Equivalent(variantKeys.Append(key), recording.PutKeys);
+            Assert.False(PhotoFixtures.ContainsSecret(await MediaTestSupport.DownloadAsync(fixture, key)), "A SECRET- value survived in the stored original.");
+            var head = await fixture.ObjectStore.HeadAsync(key);
+            Assert.Equal(MediaObjectMetadata.OriginalPipelineVersion.ToString(), head!.Metadata[MediaObjectMetadata.PipelineKey]);
+            foreach (var variantKey in variantKeys)
+            {
+                var variantHead = await fixture.ObjectStore.HeadAsync(variantKey);
+                Assert.Equal(MediaObjectMetadata.VariantPipelineVersion.ToString(), variantHead!.Metadata[MediaObjectMetadata.PipelineKey]);
+            }
+        }
+        finally
+        {
+            Directory.Delete(root, recursive: true);
+        }
+    }
+
+    [Fact]
+    public async Task RejectsPixelBombsAndAnUndecodableTiffAndUploadsNothingForThem()
+    {
+        var root = MediaTestSupport.CreateImagesRoot();
+        try
+        {
+            var sources = new (int Uid, string Filename, byte[] Bytes)[]
+            {
+                (71210, "bomb.png", SyntheticImages.PngDeclaring(200000, 200000)),
+                (71211, "strip.png", SyntheticImages.PngDeclaring(1, 50000000)),
+                (71212, "scan.tif", PhotoFixtures.UndecodableTiffWithGps()),
+            };
+
+            var target = await fixture.CreateIsolatedTargetAsync();
+            var keys = new List<string>();
+            foreach (var (uid, filename, bytes) in sources)
+            {
+                var path = MediaTestSupport.WriteFile(root, uid, filename, bytes);
+                await using (var legacy = await MediaTestSupport.OpenLegacyConnectionAsync(fixture))
+                {
+                    await MediaTestSupport.InsertLegacyPictureAsync(legacy, uid, path);
+                }
+
+                keys.Add($"originals/{path}");
+                await MediaTestSupport.InsertMediaItemAsync(fixture, uid, keys[^1], targetConnectionString: target);
+            }
+
+            // The TIFF as an earlier pipeline stored it, location data included.
+            var tiffSha = Convert.ToHexStringLower(SHA256.HashData(sources[2].Bytes));
+            await fixture.ObjectStore.PutAsync(
+                keys[2],
+                new MemoryStream(sources[2].Bytes),
+                "image/tiff",
+                new Dictionary<string, string>
+                {
+                    [MediaObjectMetadata.Sha256Key] = tiffSha,
+                    [MediaObjectMetadata.SourceSha256Key] = tiffSha,
+                    [MediaObjectMetadata.PipelineKey] = (MediaObjectMetadata.OriginalPipelineVersion - 1).ToString(),
+                    [MediaObjectMetadata.DecodableKey] = "false",
+                });
+
+            var reportPath = Path.Combine(root, "report.json");
+            var recording = new RecordingObjectStore(fixture.ObjectStore);
+            var stopwatch = System.Diagnostics.Stopwatch.StartNew();
+            var summary = await MediaTestSupport.RunSeedAsync(
+                fixture, root, missingOutPath: reportPath, targetConnectionString: target, objectStore: recording);
+
+            Assert.True(stopwatch.Elapsed < TimeSpan.FromSeconds(10), $"The seed took {stopwatch.Elapsed}.");
+            Assert.Equal(3, summary.Rejected);
+            Assert.Equal(0, summary.OriginalsUploaded);
+            Assert.Equal(0, summary.MetadataRecorded);
+            Assert.Empty(recording.PutKeys);
+            foreach (var key in keys)
+            {
+                Assert.Null(await fixture.ObjectStore.HeadAsync(key));
+            }
+
+            var report = JsonSerializer.Deserialize<MissingReportDto>(await File.ReadAllTextAsync(reportPath), JsonOptions)!;
+            Assert.Equal(3, report.RejectedCount);
+            Assert.Equivalent(keys, report.Rejected.Select(r => r.StorageKey));
+            Assert.Contains("200000x200000", report.Rejected.Single(r => r.StorageKey == keys[0]).Reason);
+            Assert.Contains("1x50000000", report.Rejected.Single(r => r.StorageKey == keys[1]).Reason);
+
+            await using var db = fixture.CreateTargetContext(target);
+            Assert.All(await db.MediaItems.ToListAsync(), item => Assert.Null(item.ByteSize));
+        }
+        finally
+        {
+            Directory.Delete(root, recursive: true);
+        }
+    }
+
+    [Fact]
+    public async Task RejectsALegacyFileOverTheSizeCapAndSeedsTheOtherItems()
+    {
+        var root = MediaTestSupport.CreateImagesRoot();
+        try
+        {
+            const int oversizedUid = 71220;
+            const int regularUid = 71221;
+            var oversizedPath = MediaTestSupport.WriteFile(root, oversizedUid, "oversized.jpg", PhotoFixtures.PhoneJpeg(900, 600));
+            var regularPath = MediaTestSupport.WritePhoto(root, regularUid, "regular.jpg", 300, 200);
+            var cap = new FileInfo(Path.Combine(root, oversizedPath)).Length - 1;
+            Assert.True(new FileInfo(Path.Combine(root, regularPath)).Length <= cap);
+            await using (var legacy = await MediaTestSupport.OpenLegacyConnectionAsync(fixture))
+            {
+                await MediaTestSupport.InsertLegacyPictureAsync(legacy, oversizedUid, oversizedPath);
+                await MediaTestSupport.InsertLegacyPictureAsync(legacy, regularUid, regularPath);
+            }
+
+            var target = await fixture.CreateIsolatedTargetAsync();
+            await MediaTestSupport.InsertMediaItemAsync(fixture, oversizedUid, $"originals/{oversizedPath}", targetConnectionString: target);
+            await MediaTestSupport.InsertMediaItemAsync(fixture, regularUid, $"originals/{regularPath}", targetConnectionString: target);
+
+            var reportPath = Path.Combine(root, "report.json");
+            var recording = new RecordingObjectStore(fixture.ObjectStore);
+            var summary = await MediaTestSupport.RunSeedAsync(
+                fixture, root, missingOutPath: reportPath, targetConnectionString: target, objectStore: recording, maxSourceBytes: cap);
+
+            Assert.Equal(1, summary.Rejected);
+            Assert.Equal(1, summary.OriginalsUploaded);
+            Assert.DoesNotContain(recording.PutKeys, k => k.Contains("oversized", StringComparison.Ordinal));
+            var report = JsonSerializer.Deserialize<MissingReportDto>(await File.ReadAllTextAsync(reportPath), JsonOptions)!;
+            var rejected = Assert.Single(report.Rejected);
+            Assert.Equal($"originals/{oversizedPath}", rejected.StorageKey);
+            Assert.Contains($"{cap} bytes", rejected.Reason);
+        }
+        finally
+        {
+            Directory.Delete(root, recursive: true);
+        }
+    }
+
+    [Fact]
+    public async Task DerivesSrgbVariantsWithoutMetadataFromADisplayP3LegacyPhoto()
+    {
+        var root = MediaTestSupport.CreateImagesRoot();
+        try
+        {
+            const int uid = 71230;
+            byte[] p3 = [200, 120, 80];
+            var path = MediaTestSupport.WriteFile(root, uid, "p3.jpg", PhotoFixtures.DisplayP3Jpeg(1000, 600, p3));
+            await using (var legacy = await MediaTestSupport.OpenLegacyConnectionAsync(fixture))
+            {
+                await MediaTestSupport.InsertLegacyPictureAsync(legacy, uid, path);
+            }
+
+            var target = await fixture.CreateIsolatedTargetAsync();
+            await MediaTestSupport.InsertMediaItemAsync(fixture, uid, $"originals/{path}", targetConnectionString: target);
+
+            await MediaTestSupport.RunSeedAsync(fixture, root, targetConnectionString: target);
+
+            var medium = await MediaTestSupport.DownloadAsync(fixture, MediaStorageKeys.BuildVariantKey($"originals/{path}", "medium"));
+            Assert.Empty(ImageMetadataReader.ReadMetadata(new MemoryStream(medium)).OfType<IccDirectory>());
+            using var decoded = NetVips.Image.NewFromBuffer(medium);
+            var pixel = decoded.Getpoint(decoded.Width / 2, decoded.Height / 2);
+            var expected = PhotoFixtures.ExpectedSrgbFromDisplayP3(p3);
+            for (var channel = 0; channel < 3; channel++)
+            {
+                Assert.InRange(pixel[channel], expected[channel] - 3, expected[channel] + 3);
+            }
+        }
+        finally
+        {
+            Directory.Delete(root, recursive: true);
+        }
+    }
+
     // Mirrors the private MissingReportDto/MissingEntryDto shape MediaSeedCommand writes: a
     // separate, test-local copy since the production records are private to that class and the
     // JSON contract, not the CLR type, is what a consumer of --missing-out actually depends on.
     private sealed record MissingEntryDto(long MediaItemId, string StorageKey, string Reason);
 
     private sealed record MissingReportDto(
-        DateTimeOffset GeneratedAt, int MissingCount, int BrokenCount, List<MissingEntryDto> Missing, List<string> Broken);
+        DateTimeOffset GeneratedAt,
+        int MissingCount,
+        int BrokenCount,
+        int RejectedCount,
+        List<MissingEntryDto> Missing,
+        List<string> Broken,
+        List<MissingEntryDto> Rejected);
 }

@@ -91,8 +91,8 @@ public sealed record EtlCommandLine
     public int Workers { get; init; } = DefaultWorkers;
 
     /// <summary>
-    /// The path for the list of missing media files from "--missing-out", or null when none is
-    /// given.
+    /// The path for the report of missing, broken and rejected media files from "--missing-out",
+    /// or null when none is given.
     /// </summary>
     public string? MissingOutPath { get; init; }
 

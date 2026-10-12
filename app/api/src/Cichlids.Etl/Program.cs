@@ -79,9 +79,12 @@ if (command == EtlCommandLine.Media)
 
     var mediaObjectStore = await RequireObjectStoreAsync(configuration, cts.Token);
 
+    // Legacy files are held to the same size limit as object downloads.
+    var maxSourceBytes = configuration.GetSection(S3ObjectStoreOptions.SectionName).Get<S3ObjectStoreOptions>()!.MaxDownloadBytes;
+
     return await MediaSeedCommand.RunAsync(
         legacyConnectionString, targetConnectionString, mediaObjectStore, legacyImagesRoot,
-        commandLine.Limit, commandLine.Workers, commandLine.MissingOutPath, cts.Token);
+        commandLine.Limit, commandLine.Workers, commandLine.MissingOutPath, maxSourceBytes, cts.Token);
 }
 
 if (command == EtlCommandLine.MediaVerify)

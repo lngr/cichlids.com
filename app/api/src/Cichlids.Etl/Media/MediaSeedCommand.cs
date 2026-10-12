@@ -1,5 +1,6 @@
 using System.Collections.Concurrent;
 using System.Diagnostics;
+using System.Globalization;
 using System.Security.Cryptography;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -23,6 +24,11 @@ namespace Cichlids.Etl.Media;
 /// whose source checksum or pipeline version differs, is uploaded; a present object is recorded
 /// in the database from its metadata without being read or decoded. A run against a freshly
 /// reset database therefore uploads nothing, and an object lost from the store is restored.
+///
+/// Every stored original has its location, serial number and owner metadata removed by
+/// MediaMetadataSanitizer; size and checksum on media_item describe the stored bytes. A source
+/// larger than the size limit, beyond the image size limits, or a TIFF whose metadata cannot be
+/// removed is rejected: nothing is uploaded for it, and the report lists it.
 /// </summary>
 public static class MediaSeedCommand
 {
@@ -36,11 +42,12 @@ public static class MediaSeedCommand
         int? limit,
         int workers,
         string? missingOutPath,
+        long maxSourceBytes,
         CancellationToken cancellationToken)
     {
         var summary = await SeedAsync(
             legacyConnectionString, targetConnectionString, objectStore, legacyImagesRoot, limit, workers,
-            missingOutPath, cancellationToken);
+            missingOutPath, maxSourceBytes, cancellationToken);
         PrintSummary(summary);
         return 0;
     }
@@ -56,6 +63,7 @@ public static class MediaSeedCommand
         int? limit,
         int workers,
         string? missingOutPath,
+        long maxSourceBytes,
         CancellationToken cancellationToken)
     {
         Console.WriteLine(
@@ -69,6 +77,7 @@ public static class MediaSeedCommand
         var stats = new Statistics();
         var missingEntries = new ConcurrentBag<MissingEntry>();
         var brokenKeys = new ConcurrentBag<string>();
+        var rejectedEntries = new ConcurrentBag<MissingEntry>();
         var stopwatch = Stopwatch.StartNew();
 
         try
@@ -80,7 +89,7 @@ public static class MediaSeedCommand
                 {
                     await ProcessOneAsync(
                         candidate, targetConnectionString, objectStore, legacyImagesRoot, legacyImageByLegacyId,
-                        stats, missingEntries, brokenKeys, itemCancellationToken);
+                        maxSourceBytes, stats, missingEntries, brokenKeys, rejectedEntries, itemCancellationToken);
 
                     var processed = stats.IncrementProcessed();
                     if (processed % ProgressInterval == 0)
@@ -99,7 +108,7 @@ public static class MediaSeedCommand
 
         if (missingOutPath is not null)
         {
-            await WriteMissingReportAsync(missingOutPath, missingEntries, brokenKeys, cancellationToken);
+            await WriteMissingReportAsync(missingOutPath, missingEntries, brokenKeys, rejectedEntries, cancellationToken);
         }
 
         return summary;
@@ -113,9 +122,11 @@ public static class MediaSeedCommand
         IObjectStore objectStore,
         string legacyImagesRoot,
         IReadOnlyDictionary<int, string> legacyImageByLegacyId,
+        long maxSourceBytes,
         Statistics stats,
         ConcurrentBag<MissingEntry> missingEntries,
         ConcurrentBag<string> brokenKeys,
+        ConcurrentBag<MissingEntry> rejectedEntries,
         CancellationToken cancellationToken)
     {
         var isPhoto = candidate.Kind == "photo";
@@ -151,6 +162,15 @@ public static class MediaSeedCommand
                 return;
             }
 
+            var length = new FileInfo(resolvedPath).Length;
+            if (length > maxSourceBytes)
+            {
+                await RejectAsync(
+                    candidate, $"the file has {length} bytes, more than the limit of {maxSourceBytes} bytes",
+                    objectStore, stats, rejectedEntries, cancellationToken);
+                return;
+            }
+
             source = SourceFile.FromLegacyFile(resolvedPath);
         }
 
@@ -169,10 +189,13 @@ public static class MediaSeedCommand
                 {
                     // The stored original is recorded as decodable but its source does not decode.
                     // It is recorded as undecodable, so later runs do not retry it.
-                    original = original with { Photo = PhotoInfo.Undecodable };
+                    var stored = SanitizeOrReject(await source.ReadAllBytesAsync(cancellationToken));
+                    original = new StoredOriginal(
+                        stored.LongLength, Convert.ToHexStringLower(SHA256.HashData(stored)), original.SourceSha256,
+                        PhotoInfo.Undecodable);
                     await PutOriginalAsync(
-                        objectStore, candidate.StorageKey, await source.ReadAllBytesAsync(cancellationToken),
-                        original.Sha256, original.SourceSha256, original.Photo, cancellationToken);
+                        objectStore, candidate.StorageKey, stored, original.Sha256, original.SourceSha256, original.Photo,
+                        cancellationToken);
                 }
                 else
                 {
@@ -191,6 +214,11 @@ public static class MediaSeedCommand
             stats.IncrementMissing();
             missingEntries.Add(new MissingEntry(
                 candidate.Id, candidate.StorageKey, $"object exceeds the download limit of {ex.MaxBytes} bytes"));
+            return;
+        }
+        catch (RejectedSourceException ex)
+        {
+            await RejectAsync(candidate, ex.Message, objectStore, stats, rejectedEntries, cancellationToken);
             return;
         }
 
@@ -219,9 +247,10 @@ public static class MediaSeedCommand
     /// <summary>
     /// Brings the original in the object store in line with its source and returns what the store
     /// holds afterwards, together with the processed image when the source had to be decoded.
-    /// Legacy originals are uploaded when they are missing or differ; a stored forum attachment is
-    /// the source itself, so only its metadata is completed when it lacks the photo information or
-    /// was stored by an earlier pipeline version, and it is rewritten with sanitized bytes.
+    /// Legacy originals are uploaded with sanitized bytes when they are missing or differ; a stored
+    /// forum attachment is the source itself, so only its metadata is completed when it lacks the
+    /// photo information or was stored by an earlier pipeline version, and it is rewritten with
+    /// sanitized bytes.
     /// </summary>
     private static async Task<(StoredOriginal Original, ProcessedImage? Processed)> EnsureOriginalAsync(
         MediaCandidate candidate,
@@ -267,8 +296,7 @@ public static class MediaSeedCommand
             photo = processed is null ? PhotoInfo.Undecodable : new PhotoInfo(processed.Width, processed.Height);
         }
 
-        // A forum attachment is publicly readable, so rewriting it stores sanitized bytes only.
-        var stored = source.IsStoredObject ? MediaMetadataSanitizer.Sanitize(bytes) : bytes;
+        var stored = SanitizeOrReject(bytes);
         var uploadedSha256 = Convert.ToHexStringLower(SHA256.HashData(stored));
         await PutOriginalAsync(objectStore, candidate.StorageKey, stored, uploadedSha256, sourceSha256, photo, cancellationToken);
 
@@ -356,8 +384,9 @@ public static class MediaSeedCommand
         return recorded;
     }
 
-    // An image outside the format allowlist, beyond the size limits (pixel count, side length or
-    // aspect ratio) or with undecodable data is recorded as an undecodable photo.
+    // An image outside the format allowlist or with undecodable data is recorded as an
+    // undecodable photo. An image beyond the size limits (pixel count, side length or aspect
+    // ratio) is rejected before any of it is decoded.
     private static ProcessedImage? TryProcess(byte[] bytes)
     {
         try
@@ -365,10 +394,51 @@ public static class MediaSeedCommand
             return ImageProcessor.Process(bytes);
         }
         catch (Exception ex) when (ex is ImageProcessor.BrokenImageException
-            or ImageProcessor.UnsupportedImageFormatException
-            or ImageProcessor.ImageTooLargeException)
+            or ImageProcessor.UnsupportedImageFormatException)
         {
             return null;
+        }
+        catch (ImageProcessor.ImageTooLargeException ex)
+        {
+            throw new RejectedSourceException(ex.Message);
+        }
+    }
+
+    // Every stored original has its location, serial number and owner metadata removed; an image
+    // whose metadata cannot be removed is rejected.
+    private static byte[] SanitizeOrReject(byte[] bytes)
+    {
+        try
+        {
+            return MediaMetadataSanitizer.Sanitize(bytes);
+        }
+        catch (Exception ex) when (ex is MediaMetadataSanitizer.UnsanitizableImageException
+            or ImageProcessor.ImageTooLargeException)
+        {
+            throw new RejectedSourceException(ex.Message);
+        }
+    }
+
+    // A rejected source stores nothing. An original stored under its key by an earlier pipeline
+    // version can hold personal metadata, so it is deleted; an original of the current pipeline
+    // is sanitized and stays.
+    private static async Task RejectAsync(
+        MediaCandidate candidate,
+        string reason,
+        IObjectStore objectStore,
+        Statistics stats,
+        ConcurrentBag<MissingEntry> rejectedEntries,
+        CancellationToken cancellationToken)
+    {
+        stats.IncrementRejected();
+        rejectedEntries.Add(new MissingEntry(candidate.Id, candidate.StorageKey, reason));
+
+        var head = await objectStore.HeadAsync(candidate.StorageKey, cancellationToken);
+        var currentPipeline = MediaObjectMetadata.OriginalPipelineVersion.ToString(CultureInfo.InvariantCulture);
+        if (head is not null
+            && !(head.Metadata.TryGetValue(MediaObjectMetadata.PipelineKey, out var pipeline) && pipeline == currentPipeline))
+        {
+            await objectStore.DeleteAsync(candidate.StorageKey, cancellationToken);
         }
     }
 
@@ -486,7 +556,7 @@ public static class MediaSeedCommand
         var megabytesPerSecond = stats.BytesTransferred / 1024.0 / 1024.0 / elapsedSeconds;
         Console.WriteLine(
             $"[media] processed {processed}/{total} ({itemsPerSecond:F1} items/s, {megabytesPerSecond:F2} MB/s, "
-            + $"missing={stats.Missing}, broken={stats.Broken})...");
+            + $"missing={stats.Missing}, broken={stats.Broken}, rejected={stats.Rejected})...");
     }
 
     private static void PrintSummary(MediaSeedSummary summary)
@@ -502,6 +572,7 @@ public static class MediaSeedCommand
         Console.WriteLine($"  metadata recorded:   {summary.MetadataRecorded}");
         Console.WriteLine($"  missing:             {summary.Missing}");
         Console.WriteLine($"  broken:              {summary.Broken}");
+        Console.WriteLine($"  rejected:            {summary.Rejected}");
         Console.WriteLine($"  bytes transferred:   {summary.BytesTransferred:N0}");
         Console.WriteLine($"  elapsed:             {summary.Elapsed:c}");
         Console.WriteLine($"  throughput:          {summary.Processed / elapsedSeconds:F1} items/s, {summary.BytesTransferred / 1024.0 / 1024.0 / elapsedSeconds:F2} MB/s");
@@ -509,17 +580,20 @@ public static class MediaSeedCommand
     }
 
     private static async Task WriteMissingReportAsync(
-        string path, ConcurrentBag<MissingEntry> missingEntries, ConcurrentBag<string> brokenKeys, CancellationToken cancellationToken)
+        string path,
+        ConcurrentBag<MissingEntry> missingEntries,
+        ConcurrentBag<string> brokenKeys,
+        ConcurrentBag<MissingEntry> rejectedEntries,
+        CancellationToken cancellationToken)
     {
         var document = new MissingReportDto(
             DateTimeOffset.UtcNow,
             missingEntries.Count,
             brokenKeys.Count,
-            missingEntries
-                .OrderBy(e => e.MediaItemId)
-                .Select(e => new MissingEntryDto(e.MediaItemId, e.StorageKey, e.Reason))
-                .ToList(),
-            brokenKeys.OrderBy(k => k, StringComparer.Ordinal).ToList());
+            rejectedEntries.Count,
+            ToDtos(missingEntries),
+            brokenKeys.OrderBy(k => k, StringComparer.Ordinal).ToList(),
+            ToDtos(rejectedEntries));
 
         var options = new JsonSerializerOptions { WriteIndented = true };
         var json = JsonSerializer.Serialize(document, options);
@@ -531,7 +605,13 @@ public static class MediaSeedCommand
         }
 
         await File.WriteAllTextAsync(path, json, cancellationToken);
-        Console.WriteLine($"Wrote missing/broken report to {path}.");
+        Console.WriteLine($"Wrote missing/broken/rejected report to {path}.");
+
+        static List<MissingEntryDto> ToDtos(ConcurrentBag<MissingEntry> entries) =>
+            entries
+                .OrderBy(e => e.MediaItemId)
+                .Select(e => new MissingEntryDto(e.MediaItemId, e.StorageKey, e.Reason))
+                .ToList();
     }
 
     // === types ========================================================================================
@@ -539,6 +619,8 @@ public static class MediaSeedCommand
     private sealed record MediaCandidate(long Id, string Kind, string StorageKey, int? LegacyId);
 
     private sealed class StoredObjectVanishedException : Exception;
+
+    private sealed class RejectedSourceException(string reason) : Exception(reason);
 
     private sealed record StoredOriginal(long Size, string Sha256, string SourceSha256, PhotoInfo? Photo);
 
@@ -618,8 +700,10 @@ public static class MediaSeedCommand
         [property: JsonPropertyName("generatedAt")] DateTimeOffset GeneratedAt,
         [property: JsonPropertyName("missingCount")] int MissingCount,
         [property: JsonPropertyName("brokenCount")] int BrokenCount,
+        [property: JsonPropertyName("rejectedCount")] int RejectedCount,
         [property: JsonPropertyName("missing")] IReadOnlyList<MissingEntryDto> Missing,
-        [property: JsonPropertyName("broken")] IReadOnlyList<string> Broken);
+        [property: JsonPropertyName("broken")] IReadOnlyList<string> Broken,
+        [property: JsonPropertyName("rejected")] IReadOnlyList<MissingEntryDto> Rejected);
 
     /// <summary>
     /// Thread-safe run counters: every worker in the pool increments the same instance
@@ -635,11 +719,13 @@ public static class MediaSeedCommand
         private int _metadataRecorded;
         private int _missing;
         private int _broken;
+        private int _rejected;
         private long _bytesTransferred;
 
         public int Processed => _processed;
         public int Missing => _missing;
         public int Broken => _broken;
+        public int Rejected => _rejected;
         public long BytesTransferred => _bytesTransferred;
 
         public int IncrementProcessed() => Interlocked.Increment(ref _processed);
@@ -658,18 +744,21 @@ public static class MediaSeedCommand
 
         public void IncrementBroken() => Interlocked.Increment(ref _broken);
 
+        public void IncrementRejected() => Interlocked.Increment(ref _rejected);
+
         public void AddBytesTransferred(long bytes) => Interlocked.Add(ref _bytesTransferred, bytes);
 
         public MediaSeedSummary ToSummary(TimeSpan elapsed) =>
             new(_processed, _originalsUploaded, _originalsPresent, _variantsUploaded, _variantsPresent, _metadataRecorded,
-                _missing, _broken, _bytesTransferred, elapsed);
+                _missing, _broken, _rejected, _bytesTransferred, elapsed);
     }
 }
 
 /// <summary>
 /// The counts of one media seed run: processed candidates, originals and variants uploaded or
 /// already present in the object store, media rows whose metadata was recorded, candidates whose
-/// source is missing, undecodable photos, the bytes uploaded and the elapsed time.
+/// source is missing, undecodable photos, rejected sources, the bytes uploaded and the elapsed
+/// time.
 /// </summary>
 public sealed record MediaSeedSummary(
     int Processed,
@@ -680,5 +769,6 @@ public sealed record MediaSeedSummary(
     int MetadataRecorded,
     int Missing,
     int Broken,
+    int Rejected,
     long BytesTransferred,
     TimeSpan Elapsed);

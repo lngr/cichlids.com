@@ -69,6 +69,19 @@ internal static class MediaTestSupport
         return $"user_pics/{uid}/{filename}";
     }
 
+    /// <summary>
+    /// Writes the given bytes under the same layout a photo would use and returns the legacy
+    /// path a user_cichlids_pictures.image column would hold for it.
+    /// </summary>
+    public static string WriteFile(string root, int uid, string filename, byte[] bytes)
+    {
+        var directory = Path.Combine(root, "user_pics", uid.ToString());
+        Directory.CreateDirectory(directory);
+        File.WriteAllBytes(Path.Combine(directory, filename), bytes);
+
+        return $"user_pics/{uid}/{filename}";
+    }
+
     public static async Task<MySqlConnection> OpenLegacyConnectionAsync(MediaEtlFixture fixture)
     {
         var connection = new MySqlConnection(fixture.LegacyConnectionString);
@@ -112,7 +125,8 @@ internal static class MediaTestSupport
         int? limit = null,
         string? missingOutPath = null,
         string? targetConnectionString = null,
-        IObjectStore? objectStore = null) =>
+        IObjectStore? objectStore = null,
+        long maxSourceBytes = 64L * 1024 * 1024) =>
         MediaSeedCommand.SeedAsync(
             fixture.LegacyConnectionString,
             targetConnectionString ?? fixture.TargetConnectionString,
@@ -121,6 +135,7 @@ internal static class MediaTestSupport
             limit,
             workers: 2,
             missingOutPath,
+            maxSourceBytes,
             CancellationToken.None);
 
     public static string Sha256OfFile(string root, string legacyPath) =>
