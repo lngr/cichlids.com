@@ -10,11 +10,11 @@ using Microsoft.EntityFrameworkCore;
 namespace Cichlids.Api.Features.Uploads;
 
 /// <summary>
-/// Write logic behind the photo upload flow. An upload stores the original and its variants in
-/// the object store and records the media item, its variants and a single-photo draft post in
-/// one transaction. Objects are written before the commit, so when the database write fails the
-/// stored keys are deleted (best effort, logged). Discarding removes a draft's rows and then its
-/// stored objects.
+/// Write logic behind the photo upload flow. An upload stores the original, with its personal
+/// metadata removed, and its variants in the object store, each with the media object metadata,
+/// and records the media item, its variants and a single-photo draft post in one transaction.
+/// Objects are written before the commit, so when the database write fails the stored keys are
+/// deleted (best effort, logged). Discarding removes a draft's rows and then its stored objects.
 /// </summary>
 public sealed class UploadsWriteService(
     CichlidsDbContext context,
@@ -35,6 +35,9 @@ public sealed class UploadsWriteService(
     {
         var processed = ImageProcessor.Process(bytes);
         var (width, height) = (processed.Width, processed.Height);
+        var original = MediaMetadataSanitizer.Sanitize(bytes);
+        var sourceSha256 = Convert.ToHexStringLower(SHA256.HashData(bytes));
+        var originalSha256 = Convert.ToHexStringLower(SHA256.HashData(original));
 
         var originalKey = $"originals/uploads/{owner.Id}/{Guid.CreateVersion7()}.{format.Extension}";
         var variants = processed.Variants
@@ -44,12 +47,22 @@ public sealed class UploadsWriteService(
         var writtenKeys = new List<string>();
         try
         {
-            await objectStore.PutAsync(originalKey, new MemoryStream(bytes), format.ContentType, cancellationToken);
+            await objectStore.PutAsync(
+                originalKey,
+                new MemoryStream(original),
+                format.ContentType,
+                MediaObjectMetadata.ForOriginal(originalSha256, sourceSha256, new PhotoInfo(width, height)),
+                cancellationToken);
             writtenKeys.Add(originalKey);
 
             foreach (var variant in variants)
             {
-                await objectStore.PutAsync(variant.Key, new MemoryStream(variant.Bytes), "image/jpeg", cancellationToken);
+                await objectStore.PutAsync(
+                    variant.Key,
+                    new MemoryStream(variant.Bytes),
+                    "image/jpeg",
+                    MediaObjectMetadata.ForVariant(Convert.ToHexStringLower(SHA256.HashData(variant.Bytes)), sourceSha256),
+                    cancellationToken);
                 writtenKeys.Add(variant.Key);
             }
 
@@ -63,10 +76,10 @@ public sealed class UploadsWriteService(
                 StorageKey = originalKey,
                 OriginalFilename = originalFilename,
                 ContentType = format.ContentType,
-                ByteSize = bytes.LongLength,
+                ByteSize = original.LongLength,
                 Width = width,
                 Height = height,
-                ChecksumSha256 = Convert.ToHexStringLower(SHA256.HashData(bytes)),
+                ChecksumSha256 = originalSha256,
                 CreatedAt = now,
                 Variants = variants
                     .Select(v => new MediaVariant { Label = v.Label, Width = v.Width, StorageKey = v.Key, ByteSize = v.Bytes.LongLength })
