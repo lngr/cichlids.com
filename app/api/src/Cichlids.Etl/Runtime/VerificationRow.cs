@@ -15,25 +15,30 @@ public enum VerificationStatus
 }
 
 /// <summary>
-/// One line of the verification report: a named check, its expected and actual counts, and the
-/// status that follows from comparing them.
+/// One line of the verification report: a named check, its expected and actual counts, the
+/// status that follows from comparing them, and the migration rule the expectation follows from.
+/// Every row names a non-empty rule.
 /// </summary>
 public sealed record VerificationRow(
-    string Entity, long Expected, long Actual, VerificationStatus Status, string? Note = null)
+    string Entity, long Expected, long Actual, VerificationStatus Status, string Rule, string? Note = null)
 {
+    public string Rule { get; } = string.IsNullOrWhiteSpace(Rule)
+        ? throw new ArgumentException($"The verification row '{Entity}' needs a rule.", nameof(Rule))
+        : Rule;
+
     public long Delta => Actual - Expected;
 
     /// <summary>
     /// Builds a row whose status follows from comparing expected against actual: ok when they
     /// match, mismatch otherwise.
     /// </summary>
-    public static VerificationRow Compare(string entity, long expected, long actual, string? note = null) =>
-        new(entity, expected, actual, expected == actual ? VerificationStatus.Ok : VerificationStatus.Mismatch, note);
+    public static VerificationRow Compare(string entity, long expected, long actual, string rule, string? note = null) =>
+        new(entity, expected, actual, expected == actual ? VerificationStatus.Ok : VerificationStatus.Mismatch, rule, note);
 
     /// <summary>
-    /// Builds an informative row that reports a target-side count with no independently computed
-    /// source expectation to check it against.
+    /// Builds an informative row that reports a count with no independently computed expectation
+    /// to check it against.
     /// </summary>
-    public static VerificationRow Info(string entity, long value, string? note = null) =>
-        new(entity, value, value, VerificationStatus.Info, note);
+    public static VerificationRow Info(string entity, long value, string rule, string? note = null) =>
+        new(entity, value, value, VerificationStatus.Info, rule, note);
 }

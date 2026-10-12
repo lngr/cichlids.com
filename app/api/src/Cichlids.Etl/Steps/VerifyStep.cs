@@ -68,11 +68,11 @@ public sealed class VerifyStep : IEtlStep
         var expected = await MySqlScalarAsync(
             context, "SELECT COUNT(*) FROM user_cichlids_species WHERE deleted = 0", cancellationToken);
         var actual = await PgScalarAsync(context, "SELECT COUNT(*) FROM species", cancellationToken);
-        report.Add(VerificationRow.Compare("species", expected, actual));
+        report.Add(VerificationRow.Compare("species", expected, actual, MigrationRules.Species));
 
         var slugCount = await PgScalarAsync(
             context, "SELECT COUNT(*) FROM species WHERE slug IS NOT NULL", cancellationToken);
-        report.Add(VerificationRow.Info("species_slug", slugCount));
+        report.Add(VerificationRow.Info("species_slug", slugCount, MigrationRules.SpeciesSlugs));
     }
 
     // === profiles and identities ===================================================================
@@ -129,17 +129,17 @@ public sealed class VerifyStep : IEtlStep
 
         var actualMembers = await PgScalarAsync(
             context, "SELECT COUNT(*) FROM profile WHERE kind = 'member' AND legacy_id IS NOT NULL", cancellationToken);
-        report.Add(VerificationRow.Compare("profiles_member", eligibleUsers.Count, actualMembers));
+        report.Add(VerificationRow.Compare("profiles_member", eligibleUsers.Count, actualMembers, MigrationRules.MemberProfiles));
 
         var actualArchived = await PgScalarAsync(context, "SELECT COUNT(*) FROM profile WHERE kind = 'archived'", cancellationToken);
-        report.Add(VerificationRow.Info("profiles_archived", actualArchived));
+        report.Add(VerificationRow.Info("profiles_archived", actualArchived, MigrationRules.ArchivedProfiles));
 
         var actualMembersRegistered = await PgScalarAsync(
             context, "SELECT COUNT(*) FROM profile WHERE kind = 'member' AND legacy_id IS NULL", cancellationToken);
-        report.Add(VerificationRow.Info("profiles_member_registered", actualMembersRegistered));
+        report.Add(VerificationRow.Info("profiles_member_registered", actualMembersRegistered, MigrationRules.RegisteredProfiles));
 
         var actualSystem = await PgScalarAsync(context, "SELECT COUNT(*) FROM profile WHERE kind = 'system'", cancellationToken);
-        report.Add(VerificationRow.Info("profiles_system", actualSystem));
+        report.Add(VerificationRow.Info("profiles_system", actualSystem, MigrationRules.SystemProfiles));
 
         await AddEmailLikeProfileRowsAsync(context, report, cancellationToken);
         await AddAvatarGravatarProfileRowsAsync(context, report, cancellationToken);
@@ -181,11 +181,11 @@ public sealed class VerifyStep : IEtlStep
         }
 
         report.Add(VerificationRow.Compare(
-            "identities_auth0", expectedAuth0.Count, actualByProvider.GetValueOrDefault("auth0")));
+            "identities_auth0", expectedAuth0.Count, actualByProvider.GetValueOrDefault("auth0"), MigrationRules.LegacyIdentities));
         report.Add(VerificationRow.Compare(
-            "identities_legacy_openid", expectedOpenId.Count, actualByProvider.GetValueOrDefault("legacy-openid")));
+            "identities_legacy_openid", expectedOpenId.Count, actualByProvider.GetValueOrDefault("legacy-openid"), MigrationRules.LegacyIdentities));
         report.Add(VerificationRow.Compare(
-            "identities_email", expectedEmail.Count, actualByProvider.GetValueOrDefault("email")));
+            "identities_email", expectedEmail.Count, actualByProvider.GetValueOrDefault("email"), MigrationRules.LegacyIdentities));
     }
 
     private sealed record EligibleUser(int Uid, string? OpenId, string? Email);
@@ -215,8 +215,8 @@ public sealed class VerifyStep : IEtlStep
             }
         }
 
-        report.Add(VerificationRow.Compare("profile_username_email_like", 0, usernames));
-        report.Add(VerificationRow.Compare("profile_display_name_email_like", 0, displayNames));
+        report.Add(VerificationRow.Compare("profile_username_email_like", 0, usernames, MigrationRules.PrivateAddresses));
+        report.Add(VerificationRow.Compare("profile_display_name_email_like", 0, displayNames, MigrationRules.PrivateAddresses));
     }
 
     // A Gravatar avatar URL is a reversible hash of a member's email address, so no profile may
@@ -239,7 +239,7 @@ public sealed class VerifyStep : IEtlStep
             }
         }
 
-        report.Add(VerificationRow.Compare("profile_avatar_gravatar", 0, gravatarAvatars));
+        report.Add(VerificationRow.Compare("profile_avatar_gravatar", 0, gravatarAvatars, MigrationRules.GravatarAvatars));
     }
 
     // A guest's poster name is public, so no comment or forum post may hold an address in it. The
@@ -263,11 +263,11 @@ public sealed class VerifyStep : IEtlStep
                 }
             }
 
-            report.Add(VerificationRow.Compare($"{table}_poster_name_email_like", 0, emailLike));
+            report.Add(VerificationRow.Compare($"{table}_poster_name_email_like", 0, emailLike, MigrationRules.PrivateAddresses));
         }
 
         var guestNames = await context.GetGuestNamesAsync(cancellationToken);
-        report.Add(VerificationRow.Info("guest_names_generated", guestNames.Count));
+        report.Add(VerificationRow.Info("guest_names_generated", guestNames.Count, MigrationRules.GuestNames));
     }
 
     // === tanks ======================================================================================
@@ -277,10 +277,10 @@ public sealed class VerifyStep : IEtlStep
         var expected = await MySqlScalarAsync(
             context, "SELECT COUNT(*) FROM user_cichlids_tanks WHERE deleted = 0", cancellationToken);
         var actual = await PgScalarAsync(context, "SELECT COUNT(*) FROM tank", cancellationToken);
-        report.Add(VerificationRow.Compare("tanks", expected, actual));
+        report.Add(VerificationRow.Compare("tanks", expected, actual, MigrationRules.Tanks));
 
         var inhabitants = await PgScalarAsync(context, "SELECT COUNT(*) FROM inhabitant", cancellationToken);
-        report.Add(VerificationRow.Info("tank_inhabitants", inhabitants));
+        report.Add(VerificationRow.Info("tank_inhabitants", inhabitants, MigrationRules.TankInhabitants));
     }
 
     // === discussion (forum threads and posts) ======================================================
@@ -321,10 +321,10 @@ public sealed class VerifyStep : IEtlStep
         var eligiblePostIds = messages.Where(m => !m.Moved && rootIds.Contains(m.Thread)).Select(m => m.MessageId).ToHashSet();
 
         var actualThreads = await PgScalarAsync(context, "SELECT COUNT(*) FROM discussion_thread", cancellationToken);
-        report.Add(VerificationRow.Compare("discussion_thread", rootIds.Count, actualThreads));
+        report.Add(VerificationRow.Compare("discussion_thread", rootIds.Count, actualThreads, MigrationRules.DiscussionThreads));
 
         var actualPosts = await PgScalarAsync(context, "SELECT COUNT(*) FROM discussion_post", cancellationToken);
-        report.Add(VerificationRow.Compare("discussion_post", eligiblePostIds.Count, actualPosts));
+        report.Add(VerificationRow.Compare("discussion_post", eligiblePostIds.Count, actualPosts, MigrationRules.DiscussionPosts));
 
         var postCountMismatches = await PgScalarAsync(
             context,
@@ -335,7 +335,7 @@ public sealed class VerifyStep : IEtlStep
             WHERE COALESCE(p.c, 0) <> t.post_count
             """,
             cancellationToken);
-        report.Add(VerificationRow.Compare("discussion_thread_post_count_consistency", 0, postCountMismatches));
+        report.Add(VerificationRow.Compare("discussion_thread_post_count_consistency", 0, postCountMismatches, MigrationRules.DiscussionPostCounts));
 
         return eligiblePostIds;
     }
@@ -351,7 +351,7 @@ public sealed class VerifyStep : IEtlStep
             cancellationToken);
         var actualOriginals = await PgScalarAsync(
             context, "SELECT COUNT(*) FROM media_item WHERE storage_key LIKE 'originals/%'", cancellationToken);
-        report.Add(VerificationRow.Compare("media_originals", expectedOriginals, actualOriginals));
+        report.Add(VerificationRow.Compare("media_originals", expectedOriginals, actualOriginals, MigrationRules.MediaOriginals));
 
         var expectedAttachments = 0L;
         await using (var command = new MySqlCommand(
@@ -370,7 +370,7 @@ public sealed class VerifyStep : IEtlStep
 
         var actualAttachments = await PgScalarAsync(
             context, "SELECT COUNT(*) FROM media_item WHERE storage_key LIKE 'forum_attachments/%'", cancellationToken);
-        report.Add(VerificationRow.Compare("media_forum_attachments", expectedAttachments, actualAttachments));
+        report.Add(VerificationRow.Compare("media_forum_attachments", expectedAttachments, actualAttachments, MigrationRules.ForumAttachments));
     }
 
     // === post (blog posts derived from pictures) ===================================================
@@ -387,7 +387,7 @@ public sealed class VerifyStep : IEtlStep
             """,
             cancellationToken);
         var actual = await PgScalarAsync(context, "SELECT COUNT(*) FROM post", cancellationToken);
-        report.Add(VerificationRow.Compare("post", expected, actual));
+        report.Add(VerificationRow.Compare("post", expected, actual, MigrationRules.Posts));
 
         await using var command = new NpgsqlCommand(
             "SELECT state, COUNT(*) FROM post GROUP BY state", context.Target, context.Transaction);
@@ -398,9 +398,9 @@ public sealed class VerifyStep : IEtlStep
             byState[reader.GetString(0)] = reader.GetInt64(1);
         }
 
-        report.Add(VerificationRow.Info("post_state_published", byState.GetValueOrDefault("published")));
-        report.Add(VerificationRow.Info("post_state_draft", byState.GetValueOrDefault("draft")));
-        report.Add(VerificationRow.Info("post_state_archived", byState.GetValueOrDefault("archived")));
+        report.Add(VerificationRow.Info("post_state_published", byState.GetValueOrDefault("published"), MigrationRules.PostStates));
+        report.Add(VerificationRow.Info("post_state_draft", byState.GetValueOrDefault("draft"), MigrationRules.PostStates));
+        report.Add(VerificationRow.Info("post_state_archived", byState.GetValueOrDefault("archived"), MigrationRules.PostStates));
     }
 
     // === post_species (picture-species links) =======================================================
@@ -436,7 +436,7 @@ public sealed class VerifyStep : IEtlStep
         }
 
         var actual = await PgScalarAsync(context, "SELECT COUNT(*) FROM post_species", cancellationToken);
-        report.Add(VerificationRow.Compare("post_species", distinctPairs.Count, actual));
+        report.Add(VerificationRow.Compare("post_species", distinctPairs.Count, actual, MigrationRules.PostSpecies));
     }
 
     // === slug_alias (target-side consistency only) =================================================
@@ -453,28 +453,28 @@ public sealed class VerifyStep : IEtlStep
             ) x
             """,
             cancellationToken);
-        report.Add(VerificationRow.Compare("slug_alias_one_canonical_per_post", 0, canonicalViolations));
+        report.Add(VerificationRow.Compare("slug_alias_one_canonical_per_post", 0, canonicalViolations, MigrationRules.SlugAliases));
 
         var total = await PgScalarAsync(context, "SELECT COUNT(*) FROM slug_alias", cancellationToken);
-        report.Add(VerificationRow.Info("slug_alias_total", total));
+        report.Add(VerificationRow.Info("slug_alias_total", total, MigrationRules.SlugAliases));
 
         var orphans = await PgScalarAsync(
             context,
             "SELECT COUNT(*) FROM slug_alias sa LEFT JOIN post p ON p.id = sa.post_id WHERE p.id IS NULL",
             cancellationToken);
-        report.Add(VerificationRow.Compare("slug_alias_orphans", 0, orphans));
+        report.Add(VerificationRow.Compare("slug_alias_orphans", 0, orphans, MigrationRules.SlugAliases));
 
         var uniqueViolations = await PgScalarAsync(
             context,
             "SELECT COUNT(*) FROM (SELECT value FROM slug_alias GROUP BY value HAVING COUNT(*) > 1) x",
             cancellationToken);
-        report.Add(VerificationRow.Compare("slug_alias_unique_value", 0, uniqueViolations));
+        report.Add(VerificationRow.Compare("slug_alias_unique_value", 0, uniqueViolations, MigrationRules.SlugAliases));
 
         var postsWithoutAlias = await PgScalarAsync(
             context,
             "SELECT COUNT(*) FROM post p LEFT JOIN slug_alias sa ON sa.post_id = p.id WHERE sa.id IS NULL",
             cancellationToken);
-        report.Add(VerificationRow.Compare("post_without_slug_alias", 0, postsWithoutAlias));
+        report.Add(VerificationRow.Compare("post_without_slug_alias", 0, postsWithoutAlias, MigrationRules.SlugAliases));
     }
 
     // === comment, rating and archive.legacy_comment (vault) =========================================
@@ -556,13 +556,13 @@ public sealed class VerifyStep : IEtlStep
         }
 
         var actualComments = await PgScalarAsync(context, "SELECT COUNT(*) FROM comment", cancellationToken);
-        report.Add(VerificationRow.Compare("comment", commentCount, actualComments));
+        report.Add(VerificationRow.Compare("comment", commentCount, actualComments, MigrationRules.Comments));
 
         var actualRatings = await PgScalarAsync(context, "SELECT COUNT(*) FROM rating", cancellationToken);
-        report.Add(VerificationRow.Compare("rating", ratingCount, actualRatings));
+        report.Add(VerificationRow.Compare("rating", ratingCount, actualRatings, MigrationRules.Ratings));
 
         var actualVault = await PgScalarAsync(context, "SELECT COUNT(*) FROM archive.legacy_comment", cancellationToken);
-        report.Add(VerificationRow.Compare("vault_legacy_comment", vaultCount, actualVault));
+        report.Add(VerificationRow.Compare("vault_legacy_comment", vaultCount, actualVault, MigrationRules.LegacyCommentVault));
 
         return migratedCommentLegacyIds;
     }
@@ -612,7 +612,7 @@ public sealed class VerifyStep : IEtlStep
         }
 
         var actual = await PgScalarAsync(context, "SELECT COUNT(*) FROM comment_vote", cancellationToken);
-        report.Add(VerificationRow.Compare("comment_vote", expectedVotes, actual));
+        report.Add(VerificationRow.Compare("comment_vote", expectedVotes, actual, MigrationRules.CommentVotes));
     }
 
     // === aggregate consistency (target only) ========================================================
@@ -628,7 +628,7 @@ public sealed class VerifyStep : IEtlStep
             WHERE COALESCE(r.c, 0) <> p.rating_count
             """,
             cancellationToken);
-        report.Add(VerificationRow.Compare("post_rating_count_consistency", 0, ratingCountMismatches));
+        report.Add(VerificationRow.Compare("post_rating_count_consistency", 0, ratingCountMismatches, MigrationRules.Aggregates));
 
         var scoreMismatches = await PgScalarAsync(
             context,
@@ -639,7 +639,7 @@ public sealed class VerifyStep : IEtlStep
             WHERE COALESCE(v.s, 0) <> c.score
             """,
             cancellationToken);
-        report.Add(VerificationRow.Compare("comment_score_consistency", 0, scoreMismatches));
+        report.Add(VerificationRow.Compare("comment_score_consistency", 0, scoreMismatches, MigrationRules.Aggregates));
     }
 
     // === collection and collection_entry (galleries) ================================================
@@ -656,7 +656,7 @@ public sealed class VerifyStep : IEtlStep
             """,
             cancellationToken);
         var actualCollections = await PgScalarAsync(context, "SELECT COUNT(*) FROM collection", cancellationToken);
-        report.Add(VerificationRow.Compare("collection", expectedCollections, actualCollections));
+        report.Add(VerificationRow.Compare("collection", expectedCollections, actualCollections, MigrationRules.Collections));
 
         var distinctEntries = new HashSet<(int Gallery, int Picture)>();
         await using (var command = new MySqlCommand(
@@ -679,7 +679,7 @@ public sealed class VerifyStep : IEtlStep
         }
 
         var actualEntries = await PgScalarAsync(context, "SELECT COUNT(*) FROM collection_entry", cancellationToken);
-        report.Add(VerificationRow.Compare("collection_entry", distinctEntries.Count, actualEntries));
+        report.Add(VerificationRow.Compare("collection_entry", distinctEntries.Count, actualEntries, MigrationRules.CollectionEntries));
     }
 
     // === reference and domain checks (target only) ==================================================
@@ -690,7 +690,7 @@ public sealed class VerifyStep : IEtlStep
             context,
             "SELECT COUNT(*) FROM post p LEFT JOIN post_media pm ON pm.post_id = p.id WHERE pm.id IS NULL",
             cancellationToken);
-        report.Add(VerificationRow.Compare("post_without_media", 0, postsWithoutMedia));
+        report.Add(VerificationRow.Compare("post_without_media", 0, postsWithoutMedia, MigrationRules.PostMedia));
 
         var publishedWithoutCanonicalSlug = await PgScalarAsync(
             context,
@@ -700,7 +700,7 @@ public sealed class VerifyStep : IEtlStep
               AND NOT EXISTS (SELECT 1 FROM slug_alias sa WHERE sa.post_id = p.id AND sa.is_canonical)
             """,
             cancellationToken);
-        report.Add(VerificationRow.Compare("post_published_without_canonical_slug", 0, publishedWithoutCanonicalSlug));
+        report.Add(VerificationRow.Compare("post_published_without_canonical_slug", 0, publishedWithoutCanonicalSlug, MigrationRules.SlugAliases));
 
         var archivedWithMemberAuthor = await PgScalarAsync(
             context,
@@ -710,7 +710,7 @@ public sealed class VerifyStep : IEtlStep
             WHERE p.state = 'archived' AND pr.kind = 'member'
             """,
             cancellationToken);
-        report.Add(VerificationRow.Info("post_archived_author_member", archivedWithMemberAuthor));
+        report.Add(VerificationRow.Info("post_archived_author_member", archivedWithMemberAuthor, MigrationRules.PostStates));
     }
 
     // === shared helpers ==============================================================================

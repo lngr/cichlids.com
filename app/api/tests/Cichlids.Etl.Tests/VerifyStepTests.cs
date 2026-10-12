@@ -106,6 +106,21 @@ public sealed class VerifyStepTests(VerifyEtlFixture fixture)
     }
 
     [Fact]
+    public async Task EveryRowNamesItsRule()
+    {
+        var targetConnectionString = await fixture.CreateEmptyTargetDatabaseAsync();
+        await using var context = await EtlContext.CreateAsync(
+            fixture.LegacyConnectionString, targetConnectionString, CancellationToken.None, fixture.ObjectStore);
+
+        await EtlRunner.RunAllAsync(
+            context, EtlStepRegistry.WriteSteps, EtlStepRegistry.Verify, afterGuard: null, CancellationToken.None);
+
+        var report = context.VerificationReport;
+        Assert.NotNull(report);
+        Assert.All(report!.Rows, row => Assert.False(string.IsNullOrWhiteSpace(row.Rule), row.Entity));
+    }
+
+    [Fact]
     public async Task IgnoresAMemberProfileTheApiCreatedForAFirstLoginWhenCountingMigratedMembers()
     {
         await using var context = await EtlContext.CreateAsync(
