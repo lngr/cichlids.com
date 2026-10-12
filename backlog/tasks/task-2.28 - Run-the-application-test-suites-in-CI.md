@@ -1,7 +1,7 @@
 ---
 id: TASK-2.28
 title: Run the application test suites in CI
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-10-12 04:48'
 updated_date: '2026-10-12 07:09'
