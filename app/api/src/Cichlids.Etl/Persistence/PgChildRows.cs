@@ -5,8 +5,8 @@ namespace Cichlids.Etl.Persistence;
 /// <summary>
 /// Replaces the child rows of one parent with a freshly computed set. Child tables (species
 /// common names and links, profile identities) have no legacy id of their own to upsert on, so
-/// each ETL run deletes what is currently under the parent and re-inserts the recomputed rows;
-/// this is idempotent because it always converges to the same set for the same source data.
+/// the helper deletes the rows under the parent and inserts the computed ones. For the same
+/// source data the parent ends with the same set, whether it had child rows before or not.
 /// </summary>
 public static class PgChildRows
 {

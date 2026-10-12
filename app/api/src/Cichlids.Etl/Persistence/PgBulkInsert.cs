@@ -3,10 +3,8 @@ using Npgsql;
 namespace Cichlids.Etl.Persistence;
 
 /// <summary>
-/// Chunked <c>INSERT ... ON CONFLICT DO NOTHING</c> over many rows at once, for tables the ETL
-/// treats as an append-only archive: a row already present under its conflict key is left exactly
-/// as it stands, unlike <see cref="PgBatchUpsert"/> which keeps a migrated row in sync with its
-/// legacy source on every run.
+/// Chunked INSERT ... ON CONFLICT DO NOTHING over many rows at once, for tables the ETL treats as
+/// an append-only archive: a row present under its conflict key is left exactly as it stands.
 /// </summary>
 public static class PgBulkInsert
 {

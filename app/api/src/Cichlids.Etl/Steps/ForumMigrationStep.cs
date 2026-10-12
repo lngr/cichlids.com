@@ -141,7 +141,9 @@ public sealed class ForumMigrationStep : IEtlStep
     /// <summary>
     /// Deletes every discussion_post row whose legacy id is not among this run's migrated
     /// messages, together with its discussion_post_media rows through the foreign key cascade, and
-    /// any forum-attachment media_item row left with no discussion_post_media referencing it.
+    /// any forum-attachment media_item row left with no discussion_post_media referencing it. In
+    /// the full run the table starts empty and nothing is deleted; a single step run in
+    /// Development or a step test over earlier rows ends with the migrated set.
     /// </summary>
     private static async Task RemoveStalePostsAsync(
         EtlContext context, IReadOnlyCollection<int> currentPostLegacyIds, CancellationToken cancellationToken)
@@ -169,7 +171,7 @@ public sealed class ForumMigrationStep : IEtlStep
 
     /// <summary>
     /// Deletes every discussion_thread row whose legacy id is not among this run's roots and that
-    /// carries no posts.
+    /// has no posts. In the full run the table starts empty and nothing is deleted.
     /// </summary>
     private static async Task RemoveStaleThreadsAsync(
         EtlContext context, IReadOnlyCollection<int> currentRootLegacyIds, CancellationToken cancellationToken)

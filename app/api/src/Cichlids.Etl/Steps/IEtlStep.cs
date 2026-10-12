@@ -3,9 +3,10 @@ using Cichlids.Etl.Runtime;
 namespace Cichlids.Etl.Steps;
 
 /// <summary>
-/// One unit of the legacy data migration: reads from the legacy database through
-/// <see cref="EtlContext.Legacy"/> and upserts into the target through <see cref="EtlContext.Db"/>,
-/// reporting every read, write and skip into <see cref="EtlContext.Statistics"/>.
+/// One unit of the legacy data migration: reads from the legacy database through the context's
+/// legacy connection and writes into the target through the context's current transaction,
+/// reporting every read, write and skip into the context's statistics. A step commits nothing
+/// itself, so its writes become part of whichever transaction it runs in.
 /// </summary>
 public interface IEtlStep
 {

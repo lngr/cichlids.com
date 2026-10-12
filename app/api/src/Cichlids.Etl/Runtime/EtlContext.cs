@@ -11,8 +11,9 @@ namespace Cichlids.Etl.Runtime;
 
 /// <summary>
 /// Shared state for one ETL invocation: the read-only legacy connection, the target database
-/// context (and the raw connection it holds, reused for the upsert and bulk-insert helpers so the
-/// writes of a step share one transaction) and the statistics collector every step reports into.
+/// context with the raw connection it holds (the upsert and bulk-insert helpers write through it,
+/// so their writes join the context's current transaction) and the statistics collector every
+/// step reports into.
 /// </summary>
 public sealed class EtlContext : IAsyncDisposable
 {
@@ -71,8 +72,8 @@ public sealed class EtlContext : IAsyncDisposable
     public IObjectStore? ObjectStore { get; set; }
 
     /// <summary>
-    /// The transaction the current step's reads and writes run in, set by <see cref="EtlRunner"/>
-    /// before invoking the step so steps never need to cast the ambient EF Core transaction back
+    /// The transaction the current step's reads and writes run in, set by EtlRunner before
+    /// invoking the step so steps never need to cast the ambient EF Core transaction back
     /// to the underlying ADO.NET type themselves.
     /// </summary>
     public NpgsqlTransaction Transaction { get; internal set; } = null!;

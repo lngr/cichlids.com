@@ -82,6 +82,8 @@ public sealed class SpeciesLinksStep : IEtlStep
             }
         }
 
+        // Empty in the full run; a single step run in Development or a step test replaces the
+        // rows of an earlier run.
         await using (var delete = new NpgsqlCommand("DELETE FROM post_species", context.Target, context.Transaction))
         {
             await delete.ExecuteNonQueryAsync(cancellationToken);

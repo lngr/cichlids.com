@@ -3,9 +3,11 @@ using Npgsql;
 namespace Cichlids.Etl.Persistence;
 
 /// <summary>
-/// Executes one <c>INSERT ... ON CONFLICT DO UPDATE</c> statement over many rows at once, the
-/// batched counterpart to <see cref="PgUpsert"/> for tables large enough (hundreds of thousands
-/// of legacy rows) that a round trip per row would dominate a step's run time.
+/// Executes one INSERT ... ON CONFLICT DO UPDATE statement over many rows at once, the batched
+/// counterpart to PgUpsert for tables large enough (hundreds of thousands of legacy rows) that a
+/// round trip per row would dominate a step's run time. A row that exists under the conflict key
+/// is updated in place, which a single step run in Development or a step test over the rows of an
+/// earlier run relies on.
 /// </summary>
 public static class PgBatchUpsert
 {
