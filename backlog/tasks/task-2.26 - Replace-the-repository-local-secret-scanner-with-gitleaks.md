@@ -1,12 +1,12 @@
 ---
-id: DRAFT-2
+id: TASK-2.26
 title: Replace the repository-local secret scanner with gitleaks
-status: Draft
+status: To Do
 assignee: []
 created_date: '2026-09-28 12:45'
 labels: []
 dependencies: []
-parent_task_id: task-2
+parent_task_id: TASK-2
 priority: medium
 ---
 
