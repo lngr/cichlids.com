@@ -1,10 +1,10 @@
 ---
 id: TASK-3.29
 title: Keep media originals private and strip location metadata
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-10-12 04:48'
-updated_date: '2026-10-12 07:07'
+updated_date: '2026-10-12 09:01'
 labels: []
 dependencies: []
 references:
