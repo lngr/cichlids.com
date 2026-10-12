@@ -1,14 +1,15 @@
 ---
 id: TASK-3.34
 title: Make outbox webhook delivery reliable and bounded to allowlisted targets
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-10-12 04:48'
-updated_date: '2026-10-12 06:40'
+updated_date: '2026-10-12 12:31'
 labels: []
 dependencies: []
 references:
   - REVIEW-MVP.md
+  - app/mobile/e2e/playwright/webhook.write.mjs
 parent_task_id: TASK-3
 priority: high
 ordinal: 57000
@@ -24,10 +25,10 @@ Webhook targets must be http or https on a host from the per-environment allowli
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Given a webhook registration for a host outside the allowlist or with an ftp URL, When the administrator submits it, Then the API rejects it
-- [ ] #2 Given a subscriber that is down for two hours, When it comes back, Then it receives the events published in the meantime
-- [ ] #3 Given a corrupt event payload in the outbox, When the dispatcher runs, Then the API keeps serving requests and other events are delivered
-- [ ] #4 Given a given-up event, When the administrator triggers redelivery, Then the subscriber receives it
+- [x] #1 Given a webhook registration for a host outside the allowlist or with an ftp URL, When the administrator submits it, Then the API rejects it
+- [x] #2 Given a subscriber that is down for two hours, When it comes back, Then it receives the events published in the meantime
+- [x] #3 Given a corrupt event payload in the outbox, When the dispatcher runs, Then the API keeps serving requests and other events are delivered
+- [x] #4 Given a given-up event, When the administrator triggers redelivery, Then the subscriber receives it
 <!-- AC:END -->
 
 ## Definition of Done
@@ -255,3 +256,47 @@ Each step is one commit: failing test first, then production change. New and cha
   - **TASK-2.28:** its CI jobs run these tests. If it moves the API into a container, the listener address in `webhook.write.mjs` and the e2e allowlist must change with it.
   - **TASK-2.29:** consumes the envelope and the `X-Cichlids-Signature` header unchanged.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### What the task delivers
+
+- **Target allowlist:** `WebhookTargetPolicy` accepts an absolute `http` or `https` URL without user information whose host (ASCII form, exact, case-insensitive) is listed in `Webhooks:AllowedTargetHosts`. `appsettings.json` has an empty list, `appsettings.Development.json` lists `localhost` and `127.0.0.1`. Entries that are not bare host names or IP addresses fail the startup. `POST /api/admin/webhooks` returns 400 for any other target, and the dispatcher never contacts a stored subscription outside the list (a failed attempt `subscription {id} target is not allowed`). The API logs the effective list at startup.
+- **HTTP:** the delivery client follows no redirects, keeps no cookies, recycles pooled connections after two minutes and reads only the response headers. Each request is bounded by `OutboxDispatcher:DeliveryTimeout` (10 s). Every non-2xx response, 3xx included, is a failed attempt.
+- **Schema:** migration `AddOutboxRedeliverySchedule` adds `next_attempt_at`, `last_attempt_at`, `given_up_at`, `redelivered_at` and `acknowledged_subscription_ids bigint[]` to `outbox_event`, plus the partial index `ix_outbox_event_due (next_attempt_at) WHERE dispatched_at IS NULL AND given_up_at IS NULL`. Open rows become due at once; rows marked dispatched with `last_error = 'gave up'` move to `given_up_at`. Producers create events through `OutboxEvent.Create`, which makes them due when they occur.
+- **Schedule:** `OutboxRetrySchedule` counts the delay from the failed attempt (5 s doubling, capped by `MaxBackoff`, 1 h). An event is given up once `GiveUpAfter` (7 d) has passed since `redelivered_at ?? occurred_at`, whatever the attempt count. `OutboxBackoff` returns its ceiling for any attempt count, also beyond about 60 attempts where the doubled delay exceeds a TimeSpan.
+- **Dispatcher:** one autocommit `UPDATE ... FROM (SELECT ... ORDER BY next_attempt_at LIMIT n FOR UPDATE SKIP LOCKED) ... RETURNING` reserves due events by moving `next_attempt_at` to the end of `ReservationLease` (5 min). Delivery runs without a transaction or lock. Each result is written by an `ExecuteUpdateAsync` fenced by the lease value, so a late result after another instance took over is discarded and logged. A pass stops before an event whose remaining lease is shorter than `DeliveryTimeout` times its pending subscribers. Time comes from an injected `TimeProvider` (application time in every comparison).
+- **Per-subscriber acknowledgement:** each attempt goes to the matching subscribers missing from `acknowledged_subscription_ids`; a 2xx adds the id; the event is dispatched once every matching subscriber has acknowledged it. The ids are written as the union under the same fence (equivalent to `array_append` under the fence).
+- **Fault isolation:** catch-alls per subscriber and per event (envelope build, delivery, recording); `last_error` names the subscription and the status or exception type (never the URL), truncated to 1000 characters. The hosted loop logs a failing pass and keeps polling, drains at once after a full batch and otherwise waits `PollInterval`.
+- **Admin redelivery:** `GET /api/admin/outbox/events?state=given-up&offset&limit`, `POST /api/admin/outbox/events/{id}/redeliver` (202, 404, 409) and `POST /api/admin/outbox/given-up/redeliver` (202 with `count`) under the `Admin` policy. A redelivery clears `given_up_at`, `attempt_count` and `last_error`, sets `next_attempt_at` and `redelivered_at` to now and keeps the acknowledged subscriptions; the envelope `id` stays the event id.
+- **Options:** `OutboxDispatcher` gains `GiveUpAfter`, `ReservationLease` and `DeliveryTimeout`; all durations and `BatchSize` are validated positive at startup.
+- **Write stack:** `write-stack.sh` runs the dispatcher with `PollInterval=00:00:01` and `GiveUpAfter=00:00:15`.
+- **Client and docs:** OpenAPI document and generated client regenerated (`listOutboxEvents`, `redeliverOutboxEvent`, `redeliverGivenUpOutboxEvents`); ADR-0024 states that a redelivery starts a new period; `app/stack/README.md` describes the allowlist, the admin redelivery and the SQL for open events.
+
+### Operator notes
+
+- The dev database `cichlids` needs the migration before the dev API is started on this code: `cd app/api && DOTNET_ENVIRONMENT=Development ~/.dotnet/dotnet run --project src/Cichlids.Etl -- migrate`.
+- The production allowlist is empty, so no webhook can be registered in staging or production until TASK-2.4 or TASK-2.29 add the hosts to the environment configuration in Git.
+
+### Operator checks
+
+`TOKEN` is an admin access token (password grant for `dev-mod`, see `app/stack/README.md`).
+
+- **AC1:** `curl -s -o /dev/null -w '%{http_code}' -H "Authorization: Bearer $TOKEN" -H 'Content-Type: application/json' -d '{"url":"ftp://127.0.0.1/x","secret":"s","eventTypes":["*"]}' http://localhost:5045/api/admin/webhooks` gives 400, as does `https://not-listed.test/hook`. The API startup log shows `Webhook target allowlist: localhost, 127.0.0.1`.
+- **AC2:** register a local listener, stop it, publish pictures; `select id, attempt_count, last_attempt_at, next_attempt_at, given_up_at, acknowledged_subscription_ids from outbox_event where dispatched_at is null;` shows gaps doubling up to one hour and `given_up_at` null; after the listener restarts the events arrive.
+- **AC3:** insert a deeply nested jsonb row into the dev database (`insert into outbox_event (id, occurred_at, event_type, aggregate_type, aggregate_id, payload, next_attempt_at) values (gen_random_uuid(), now(), 'test.event', 'post', '1', (repeat('[', 100) || repeat(']', 100))::jsonb, now())`); the API log shows a warning, `/healthz` stays 200 and the next comment event is delivered.
+- **AC4:** `curl -H "Authorization: Bearer $TOKEN" 'http://localhost:5045/api/admin/outbox/events?state=given-up'`, then `curl -X POST -H "Authorization: Bearer $TOKEN" http://localhost:5045/api/admin/outbox/events/ID/redeliver`; the subscriber log shows the same event id.
+- **Index:** `SET enable_seqscan = off; EXPLAIN SELECT id FROM outbox_event WHERE dispatched_at IS NULL AND given_up_at IS NULL AND next_attempt_at <= now() ORDER BY next_attempt_at LIMIT 20 FOR UPDATE SKIP LOCKED;` shows `Index Scan using ix_outbox_event_due`.
+
+### Acceptance criteria status
+
+- Checked by automated tests: #1 (WebhookTargetPolicyTests, WebhookAdminEndpointsTests, webhook.write.mjs), #2 (OutboxDispatchServiceTests.RunOnceAsync_SubscriberDownForTwoHoursReceivesEventsPublishedMeanwhile on a fake clock, compressed outage in webhook.write.mjs), #3 (OutboxDispatcherHostedServiceTests.ApiKeepsServingWhileTheLoopHitsACorruptEvent and DatabaseOutageIsLoggedAndPollingContinues, OutboxDispatchServiceTests.RunOnceAsync_CorruptPayloadIsAFailedAttemptAndOthersAreDelivered), #4 (OutboxAdminEndpointsTests, webhook.write.mjs).
+- The operator checks above repeat them on the dev stack.
+
+### Tests
+
+- `app/api/tests/Cichlids.Infrastructure.Tests`: Outbox/WebhookTargetPolicyTests.cs, Outbox/OutboxRetryScheduleTests.cs, Outbox/OutboxDispatcherOptionsValidatorTests.cs, Outbox/OutboxBackoffTests.cs, Persistence/SchemaMigrationTests.cs (partial index, array column, no pending model changes, backfill)
+- `app/api/tests/Cichlids.Api.Tests`: Features/Webhooks/OutboxDispatchServiceTests.cs, Features/Webhooks/OutboxAdminEndpointsTests.cs, Features/Webhooks/OutboxDispatcherHostedServiceTests.cs, Features/Webhooks/WebhookAdminEndpointsTests.cs, WebhookTargetAllowlistStartupTests.cs, OpenApiDocumentTests.cs
+- E2E: `app/mobile/e2e/playwright/webhook.write.mjs` through `pnpm --dir app/mobile run e2e:write`
+<!-- SECTION:NOTES:END -->
