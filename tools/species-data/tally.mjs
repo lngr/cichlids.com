@@ -20,7 +20,8 @@ const REPO_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const WATERBODIES_PATH = join(REPO_ROOT, "data", "species", "waterbodies.yaml");
 
 const WATERBODY_FEATURES = ["temperatureC", "ph", "ghDgh", "khDkh"];
-const VOTED_FEATURES = ["predation", "diet", "speciesOnly", "hybridGroup", "temperatureC", "ph", "ghDgh"];
+// khDkh is voted as well, so that a decided tolerance always contains the natural carbonate hardness.
+const VOTED_FEATURES = ["predation", "diet", "speciesOnly", "hybridGroup", "temperatureC", "ph", "ghDgh", "khDkh"];
 // Agreement thresholds and rounding of the water features; their tolerance entries use the same.
 const RANGE_TOLERANCE = { temperatureC: 1, ph: 0.3, ghDgh: 2, khDkh: 2 };
 const RANGE_DECIMALS = { temperatureC: 0, ph: 1, ghDgh: 0, khDkh: 0 };

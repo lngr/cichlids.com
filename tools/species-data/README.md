@@ -106,7 +106,7 @@ The script reads `generator.yaml`, `checker-a.yaml`, `checker-b.yaml` and every 
 Each file that contains a hard feature casts one vote with the feature's `value`. The vote order is generator, checker-a, checker-b, tiebreaker-1, tiebreaker-2, and so on.
 
 - Water body: the most common `features.origin.value.waterbody` over all files is looked up in the table. When it matches, temperatureC, ph, ghDgh and khDkh are the table's ranges with verification `{method: waterbody, waterbody: <id>}`, the table's sources and confidence high; they are not voted on.
-- Voted features are predation, diet, speciesOnly and hybridGroup, plus temperatureC, ph and ghDgh when no water body applies.
+- Voted features are predation, diet, speciesOnly and hybridGroup, plus temperatureC, ph, ghDgh and khDkh when no water body applies (khDkh is voted so that a decided tolerance always contains the natural carbonate hardness).
 - Agreement: predation, speciesOnly and hybridGroup by equality (null equals null); diet by `type` and `bloatSensitive`; ranges when both bounds differ by at most 1 (temperatureC), 0.3 (ph) or 2 (ghDgh).
 - The top candidate is the proposal with the most agreeing votes; on a tie the earlier file wins. The decided range is the median of the agreeing minima and the median of the agreeing maxima (one decimal for ph, integers otherwise).
 - External sources are the distinct sources (by url, else title) of kind catalog-of-fishes, literature or database among the agreeing votes.

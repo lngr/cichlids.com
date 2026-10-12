@@ -225,7 +225,7 @@ test("the most common waterbody decides and an unknown one falls back to votes",
   const other = [file(NAMES[0], { origin: origin("Lake Malawi") }), file(NAMES[1], { origin: origin("Other") }), file(NAMES[2], { origin: origin("Other") })];
   const result = tally(other, new Map([[LAKE.id, LAKE]]));
   assert.equal(result.waterbody, null);
-  assert.equal(result.features.khDkh, undefined);
+  assert.equal(result.features.khDkh.reason, "no-votes");
   assert.equal(result.features.ph.reason, "no-votes");
 });
 
