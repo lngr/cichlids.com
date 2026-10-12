@@ -354,7 +354,7 @@ public sealed class ForumMigrationStep : IEtlStep
     }
 
     /// <summary>
-    /// Exports every migrated post's attachments (<c>phorum_files</c> rows linked to a message)
+    /// Exports every migrated post's attachments (phorum_files rows linked to a message)
     /// into the object store as media items. Idempotent per file id through the deterministic
     /// storage key: an attachment whose stored object carries the checksum of the legacy bytes is
     /// skipped by the upload, and the media_item and discussion_post_media rows are kept in sync with
