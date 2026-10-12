@@ -112,6 +112,10 @@ node tools/species-data/validate-articles.mjs data/knowledge/articles/<id>.md
   Hobby empfiehlt; wo sie abweichen, nennt der Artikel, welche Quelle was angibt.
 - Die Seewerte stehen geprüft in `data/species/waterbodies.yaml`; zitiert werden die Studien
   dahinter. Interne Dateien des Projekts (Tabellen, Profile, Prompts) sind nie eine Quelle.
+- Fachliteratur sucht `node tools/species-data/literature-search.mjs "<suche>"` in der offenen
+  Datenbank OpenAlex (Jahr, Titel, DOI, frei zugängliche Fassung, Abstract). Die Websuche teilen
+  sich alle Agenten einer Session (200 Suchen, etwa 100 kommen je Stunde dazu); sie dient nur für
+  das, was Literatursuche und direkter Abruf nicht finden.
 - Das Forumsarchiv durchsucht `node tools/species-data/archive-search.mjs "<begriff>"`. Forenbeiträge
   sind Erfahrungen der Community mit sehr geringem Gewicht: Sie ergänzen Fachquellen und belegen
   eine Aussage nur, wenn keine Fachquelle dazu existiert; der Text sagt dann, dass es sich um

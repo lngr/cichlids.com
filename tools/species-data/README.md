@@ -4,6 +4,7 @@ Tooling around the species catalog in `data/species/`.
 
 ## Contents
 
+- `literature-search.mjs`: searches scientific literature through the open OpenAlex API (Crossref as fallback) and prints year, title, DOI, open-access link and abstract, so research agents need no web search for literature.
 - `crc.mjs`: reads the public part of the Cichlid Room Companion for the agents, which use it for verification only. The site blocks curl and headless browsers through a Cloudflare bot check, so the tool drives a headed Chromium on a virtual display.
 - `export-legacy-catalog.mjs`: exports the legacy species catalog with photo counts to `data/species/legacy-catalog.json`. It reads the restored legacy MySQL database read-only through its running container and holds catalog data only.
 - `prompts/`: prompts of the agent pipeline (generator, checker, tie-breaker, adjudicator and the shared rules) that produce species profiles.

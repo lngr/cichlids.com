@@ -24,6 +24,12 @@ the section "Knowledge articles" in `tools/species-data/README.md` first. Valida
 
 Web research is mandatory. WebSearch and WebFetch are deferred tools: load them with ToolSearch
 (query `select:WebSearch,WebFetch`); `curl -sL <url>` works as well. Read every page you cite.
+Literature search: `node tools/species-data/literature-search.mjs "<query>" [limit]` searches the
+open OpenAlex database and prints year, title, DOI, an open-access link and the abstract of each
+work. Use it first for scientific literature. WebSearch is shared by all agents of the session
+(200 searches, refilling at about 100 per hour); use it sparingly for what the literature search
+and direct page fetches cannot find.
+
 Prefer primary literature and limnological data. Peer-reviewed papers, monographs and research
 reports with a DOI are especially welcome: search for them deliberately, read them (open-access
 version, abstract or preprint) and cite them with `https://doi.org/<doi>` as url; a paper of which

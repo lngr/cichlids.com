@@ -18,6 +18,12 @@ ToolSearch (query `select:WebSearch,WebFetch`). `curl -sL <url>` through Bash wo
 often gets through where WebFetch is blocked. Fetch and read the pages you cite; a source you did
 not read is not a source.
 
+Literature search: `node tools/species-data/literature-search.mjs "<query>" [limit]` searches the
+open OpenAlex database and prints year, title, DOI, an open-access link and the abstract of each
+work. Use it first for scientific literature. WebSearch is shared by all agents of the session
+(200 searches, refilling at about 100 per hour); use it sparingly for what the literature search
+and direct page fetches cannot find.
+
 Minimum research per species:
 
 - the Catalog of Fishes entry (see Taxonomy),
