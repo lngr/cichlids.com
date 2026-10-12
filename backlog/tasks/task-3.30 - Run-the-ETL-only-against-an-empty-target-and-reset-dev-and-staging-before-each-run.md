@@ -3,14 +3,20 @@ id: TASK-3.30
 title: >-
   Run the ETL only against an empty target and reset dev and staging before each
   run
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-10-12 04:48'
-updated_date: '2026-10-12 07:07'
+updated_date: '2026-10-12 07:56'
 labels: []
 dependencies: []
 references:
   - REVIEW-MVP.md
+  - app/api/tests/Cichlids.Etl.Tests/EmptyTargetGuardTests.cs
+  - app/api/tests/Cichlids.Etl.Tests/FullRunTests.cs
+  - app/api/tests/Cichlids.Etl.Tests/ResetCommandTests.cs
+  - app/api/tests/Cichlids.Etl.Tests/EtlCommandLineTests.cs
+  - app/api/tests/Cichlids.Etl.Tests/EtlProcessTests.cs
+  - app/stack/bootstrap_test.py
 parent_task_id: TASK-3
 priority: high
 ordinal: 52000
@@ -26,10 +32,10 @@ The ETL writes only into an empty target database and aborts before its first wr
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Given a target database that holds any row, When the operator runs the full ETL, Then it aborts before writing and names the reason
+- [x] #1 Given a target database that holds any row, When the operator runs the full ETL, Then it aborts before writing and names the reason
 - [ ] #2 Given the dev stack, When the operator runs the reset and then the full ETL and the account import, Then both complete and the verify step reports no mismatch
-- [ ] #3 Given the Production environment setting, When the operator invokes the reset, Then it refuses to run
-- [ ] #4 Given the ETL command line, When the operator passes --dry-run, Then the option is rejected as unknown
+- [x] #3 Given the Production environment setting, When the operator invokes the reset, Then it refuses to run
+- [x] #4 Given the ETL command line, When the operator passes --dry-run, Then the option is rejected as unknown
 <!-- AC:END -->
 
 ## Definition of Done
@@ -175,3 +181,36 @@ Size: M/L, about 4 to 4.5 days in 7 commits, plus one operator session on the de
 - bootstrap resets on every run, so data created by hand in the dev database is lost. The write E2E stack uses its own database and is not affected.
 - Depends on TASK-2.27 (realm file and `--open-registration`). If it slips, step 6 must wait.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### Implemented
+
+- Strict command line (`Runtime/EtlCommandLine.cs`), parsed before any configuration is read. Unknown commands, options a command does not take, missing or malformed values and repeated options exit with 1. The dry-run mode is removed from the entry point, `EtlContext`, `EtlRunner` and `ConsoleReport`.
+- Commands per environment: `all`, `verify`, `migrate`, `reset`, `media`, `media-verify` and `keycloak-import` in every environment; the single write steps only in Development, with a warning that they skip the guard. `verify` prepares no object store.
+- Empty-target guard (`Runtime/EmptyTargetGuard.cs`): transaction-scoped advisory lock (`pg_try_advisory_xact_lock`), pending migrations, and every base table with a row in the schemas the EF model maps (`public`, `archive`; `__EFMigrationsHistory` excluded), named as `schema.table`.
+- Atomic full run (`EtlRunner.RunAllAsync`): guard, object store preparation and all write steps in one transaction; verify after the commit; a mismatch exits with 1 and keeps the rows. `EtlRunner.RunAsync` serves single steps, the standalone `verify` and the step tests.
+- Reset (`Runtime/ResetCommand.cs`, `ResetPolicy.cs`, `TargetDatabaseReset.cs`): only Development and Staging (case-insensitive; unset, empty and every other name refused). Keycloak preflight (token plus realm read) before anything is dropped; `SET LOCAL lock_timeout = '10s'`, drop `archive` and `public`, recreate `public` with the PostgreSQL defaults, `MigrateAsync`; delete every realm user without the realm role `admin` (8 requests in flight, 404 counts as done); `registrationAllowed=false`. A missing realm logs a warning and counts as having no users. The reset builds no object store.
+- `KeycloakAdminClient`: user id listing, realm role user listing, parallel user deletion, closing registration and a realm read, all through `SendAsync`; the token refresh is serialized for parallel requests. `KeycloakAdminSettings.Resolve(configuration, environmentName)` serves `keycloak-import` and `reset` with the existing development fallback.
+- `bootstrap.sh`: services (Postgres wait bounded by `CICHLIDS_POSTGRES_WAIT_SECONDS`, message "Postgres did not become ready", in `services-up.sh`), legacy MySQL, `etl reset`, realm delete and import from the file, `etl all`, `etl media`, `etl keycloak-import --open-registration`, `etl verify`. Legacy stack default `$REPO_ROOT/workspace-legacy/legacy-stack`.
+- ADR-0026 "Legacy Import Runs Once Against an Empty Target", pointer from ADR-0019, ADR index regenerated; `app/stack/README.md`, `PROJECT-STATUS.md` and the helper and step comments describe the current behavior.
+
+### Tests
+
+- AC #1: `EmptyTargetGuardTests`, `FullRunTests.WritesNothingWhenTheTargetHoldsARow`.
+- AC #2 (automated part): `VerifyStepTests.ReportsNoMismatchesAfterAFullPipelineRunAndFlagsAnInjectedDeviation` runs `RunAllAsync` on an isolated database with 0 mismatches; `FullRunTests` covers the rollback of a failing step and the mismatch exit code.
+- AC #3: `ResetPolicyTests`, `TargetDatabaseResetTests`, `ResetCommandTests` (Postgres and Keycloak containers), `EtlProcessTests` (built entry point in Production and without an environment).
+- AC #4: `EtlCommandLineTests`, `EtlProcessTests`.
+- R38: `app/stack/bootstrap_test.py` (fake docker and dotnet), CI job `stack-bootstrap`.
+- Full backend suite green: Infrastructure 113, Api 219, Etl 257.
+
+### Operator checks (dev stack, not run here)
+
+1. AC #1: on the seeded stack `cd app/api && DOTNET_ENVIRONMENT=Development ~/.dotnet/dotnet run --project src/Cichlids.Etl -c Release -- all` exits 1 and names the tables; `docker compose -f app/stack/compose.yaml exec -T postgres psql -U cichlids -d cichlids -c "select count(*) from profile"` shows the same count before and after.
+2. AC #2: stop the API, note the media object count (`docker run --rm --network host -e AWS_ACCESS_KEY_ID="$RUSTFS_ACCESS" -e AWS_SECRET_ACCESS_KEY="$RUSTFS_SECRET" amazon/aws-cli --endpoint-url http://127.0.0.1:9000 s3 ls s3://cichlids-media --recursive --summarize`), run `app/stack/bootstrap.sh`: exit 0, about 12,050 accounts created and about 6,447 profile links, final `etl verify` with 0 mismatches, same object count afterwards (RUSTFS_ACCESS and RUSTFS_SECRET hold the RustFS keys from app/stack/compose.yaml).
+3. AC #3: `DOTNET_ENVIRONMENT=Production ... -- reset` and a run without `DOTNET_ENVIRONMENT` exit 1 with the refusal; row and Keycloak user counts unchanged.
+4. AC #4: `... -- all --dry-run` prints "Unknown option '--dry-run'".
+5. `DOTNET_ENVIRONMENT=Staging ... -- profiles` is rejected naming the environment; `DOTNET_ENVIRONMENT=Development ... -- profiles` runs and prints the guard-skip warning.
+6. Realm: the id from `kcadm.sh get realms/cichlids --fields id` differs before and after `bootstrap.sh`; self-registration is open only after the account import step.
+<!-- SECTION:NOTES:END -->
