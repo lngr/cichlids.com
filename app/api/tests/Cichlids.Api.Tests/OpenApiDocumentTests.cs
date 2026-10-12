@@ -30,4 +30,24 @@ public class OpenApiDocumentTests(ApiFixture fixture)
 
         Assert.True(paths.TryGetProperty(path, out _), $"OpenAPI document is missing path '{path}'.");
     }
+
+    [Theory]
+    [InlineData("get", "/api/me")]
+    [InlineData("get", "/api/me/drafts")]
+    [InlineData("post", "/api/uploads")]
+    [InlineData("post", "/api/posts/{id}/publish")]
+    [InlineData("delete", "/api/posts/{id}")]
+    [InlineData("post", "/api/pictures/{slug}/comments")]
+    [InlineData("post", "/api/tanks/{id}/comments")]
+    [InlineData("delete", "/api/comments/{id}")]
+    public async Task Document_ListsForbiddenResponseForEveryEndpointThatResolvesTheProfile(string method, string path)
+    {
+        var response = await fixture.Client.GetAsync("/openapi/v1.json");
+        response.EnsureSuccessStatusCode();
+
+        using var document = JsonDocument.Parse(await response.Content.ReadAsStringAsync());
+        var responses = document.RootElement.GetProperty("paths").GetProperty(path).GetProperty(method).GetProperty("responses");
+
+        Assert.True(responses.TryGetProperty("403", out _), $"{method} {path} lists no 403 response.");
+    }
 }
