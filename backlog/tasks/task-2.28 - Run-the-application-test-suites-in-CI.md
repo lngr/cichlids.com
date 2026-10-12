@@ -1,14 +1,15 @@
 ---
 id: TASK-2.28
 title: Run the application test suites in CI
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-10-12 04:48'
-updated_date: '2026-10-12 06:40'
+updated_date: '2026-10-12 07:09'
 labels: []
 dependencies: []
 references:
   - REVIEW-MVP.md
+  - .github/workflows/ci.yml
 parent_task_id: TASK-2
 priority: high
 ordinal: 59000
@@ -159,3 +160,27 @@ CI gets three application jobs: backend (.NET build and all tests with Testconta
 - Hidden local dependencies: tests may pass locally only because the dev stack is running (HealthzTests, step 4). The first CI run is the real check.
 - Toolchain drift: pnpm was unpinned before step 1. The e2e job needs `~/.dotnet`, or `DOTNET` set explicitly.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### Done
+- Added the jobs `backend`, `client-core` and `e2e` to `.github/workflows/ci.yml` (no path filters, push to main and pull requests).
+- Pinned pnpm via `packageManager` in `app/package.json`; pnpm 12 added its own entry to `app/pnpm-lock.yaml`.
+- Bumped Testcontainers to 4.14.0 in the three test projects (pulls SSH.NET 2026.0.0, fixes NU1903). Added `app/api/Directory.Build.props` that turns NU1901 to NU1904 into errors.
+- Added `app/stack/services-up.sh` (optional `--wait-realm`), used by `bootstrap.sh` step 1 and by the e2e job.
+- HealthzTests passes without Postgres on 127.0.0.1:5432, so no change was made there.
+
+### Local proofs
+- client-core: type error in `uploadForm.ts` and a failing assertion in `client.test.ts` both exit non-zero; reverted.
+- NuGet audit: `dotnet build -warnaserror` failed with six NU1903 before the bump, builds clean after.
+- backend: without `MapLegacyRedirectsEndpoints` the LegacyRedirectsEndpointsTests fail; full suite green (113 + 189 + 185).
+- e2e: publish as no-op fails in upload.write.mjs at waitForURL (exit 1); unbroken run passes all 3 specs.
+- services-up.sh verified on a throwaway compose project (ci-probe), removed afterwards. bootstrap.sh was not rerun against the dev stack.
+
+### Operator steps still needed
+- AC #1: push main and confirm backend, client-core and e2e are green (`gh run list --workflow ci.yml --branch main`); record URL and durations.
+- AC #2: branch ci-proof/backend-red with only the `app.MapLegacyRedirectsEndpoints();` line removed from Program.cs, draft PR; expect backend red only.
+- AC #3: branch ci-proof/upload-red with `onPress={() => undefined}` at app/mobile/app/upload/index.tsx:278; expect e2e red only.
+- Record the run URLs here, then check the ACs.
+<!-- SECTION:NOTES:END -->
