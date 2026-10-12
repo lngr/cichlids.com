@@ -138,6 +138,8 @@ const BLOCK_PAGE_MARKERS = [
   /checking your browser/i,
   /unusual traffic/i,
   /pardon our interruption/i,
+  /making sure you.re not a bot/i,
+  /anubis/i,
 ];
 
 // True when a response is a refusal for plain clients: a status of 403, 429 or 503, a bot challenge
