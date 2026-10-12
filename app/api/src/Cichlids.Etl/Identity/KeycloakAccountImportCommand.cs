@@ -14,7 +14,9 @@ namespace Cichlids.Etl.Identity;
 /// generated username. An account whose email belongs to an existing user with an unverified
 /// email, whose email another user holds as username, or which has no free username left is
 /// neither created nor linked and is counted as a conflict. A repeated run over the same data
-/// creates no user and inserts no identity.
+/// creates no user and inserts no identity. On request, the run opens self-registration of the
+/// realm once no account is missing in Keycloak, so the realm accepts new registrations only after
+/// every legacy account exists.
 /// </summary>
 public static class KeycloakAccountImportCommand
 {
@@ -26,8 +28,9 @@ public static class KeycloakAccountImportCommand
     private const string UsernameTakenConflict = "username_taken";
 
     /// <summary>
-    /// Runs the import and prints its summary. Returns 0 on success and 1 when an account could
-    /// not be found in Keycloak after the import.
+    /// Runs the import and prints its summary. With openRegistration, the realm allows
+    /// self-registration afterwards unless an account could not be found in Keycloak. Returns 0
+    /// on success and 1 when an account could not be found in Keycloak after the import.
     /// </summary>
     public static async Task<int> RunAsync(
         string legacyConnectionString,
@@ -35,12 +38,13 @@ public static class KeycloakAccountImportCommand
         string auth0ExportPath,
         KeycloakAdminSettings keycloak,
         GeneratedNames generatedNames,
+        bool openRegistration,
         CancellationToken cancellationToken)
     {
         Console.WriteLine($"Importing legacy accounts from {auth0ExportPath} into Keycloak realm '{keycloak.Realm}' at {keycloak.BaseUrl}...");
 
         var summary = await ImportAsync(
-            legacyConnectionString, targetConnectionString, auth0ExportPath, keycloak, generatedNames, cancellationToken);
+            legacyConnectionString, targetConnectionString, auth0ExportPath, keycloak, generatedNames, openRegistration, cancellationToken);
 
         Console.WriteLine($"Auth0 records read:        {summary.RecordsRead}");
         Console.WriteLine($"Accounts planned:          {summary.AccountsPlanned}");
@@ -69,16 +73,25 @@ public static class KeycloakAccountImportCommand
         if (summary.Unresolved > 0)
         {
             Console.Error.WriteLine($"Accounts missing in Keycloak after the import: {summary.Unresolved}");
+            if (openRegistration)
+            {
+                Console.Error.WriteLine("Self-registration stays closed.");
+            }
+
             return 1;
         }
 
+        Console.WriteLine(openRegistration
+            ? "Self-registration is open."
+            : "Self-registration is unchanged; pass --open-registration to open it.");
         return 0;
     }
 
     /// <summary>
     /// Plans the accounts from the Auth0 export, the legacy user table and the migrated profiles,
     /// ensures the realm prerequisites, creates the missing Keycloak users and inserts the missing
-    /// oidc profile identities. Generated login usernames come from the given generator.
+    /// oidc profile identities. Generated login usernames come from the given generator. With
+    /// openRegistration, the realm allows self-registration once no account is missing in Keycloak.
     /// </summary>
     public static Task<KeycloakImportSummary> ImportAsync(
         string legacyConnectionString,
@@ -86,6 +99,7 @@ public static class KeycloakAccountImportCommand
         string auth0ExportPath,
         KeycloakAdminSettings keycloak,
         GeneratedNames generatedNames,
+        bool openRegistration,
         CancellationToken cancellationToken) =>
         ImportAsync(
             legacyConnectionString,
@@ -93,6 +107,7 @@ public static class KeycloakAccountImportCommand
             auth0ExportPath,
             keycloak,
             generatedNames,
+            openRegistration,
             KeycloakAdminClient.DefaultUserPageSize,
             KeycloakAdminClient.DefaultImportChunkSize,
             cancellationToken);
@@ -107,6 +122,7 @@ public static class KeycloakAccountImportCommand
         string auth0ExportPath,
         KeycloakAdminSettings keycloak,
         GeneratedNames generatedNames,
+        bool openRegistration,
         int userPageSize,
         int importChunkSize,
         CancellationToken cancellationToken)
@@ -220,6 +236,11 @@ public static class KeycloakAccountImportCommand
         }
 
         var inserted = await InsertOidcIdentitiesAsync(targetConnectionString, linksToInsert, cancellationToken);
+
+        if (openRegistration && unresolved == 0)
+        {
+            await client.OpenRegistrationAsync(cancellationToken);
+        }
 
         return new KeycloakImportSummary(
             records.Count,

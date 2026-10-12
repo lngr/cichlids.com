@@ -82,6 +82,16 @@ public sealed class KeycloakAdminClient : IDisposable
     }
 
     /// <summary>
+    /// Allows self-registration in the realm. Other realm settings are left as they are.
+    /// </summary>
+    public async Task OpenRegistrationAsync(CancellationToken cancellationToken)
+    {
+        using var response = await SendAsync(
+            HttpMethod.Put, string.Empty, new { registrationAllowed = true }, cancellationToken);
+        await EnsureSuccessAsync(response, "open self-registration", cancellationToken);
+    }
+
+    /// <summary>
     /// Reads every user of the realm, page by page, into lookups by lowercased email, by
     /// lowercased username and by lowercased id.
     /// </summary>

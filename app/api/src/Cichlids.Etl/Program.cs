@@ -18,7 +18,8 @@ if (args.Length == 0)
         "Usage: dotnet run -- <step|all|migrate|media|media-verify|keycloak-import> [--dry-run] [--out <path>]\n"
         + "  media:           [--limit N] [--workers P] [--force] [--missing-out <path>]\n"
         + "  media-verify:    [--out <path>]\n"
-        + "  keycloak-import: imports the Auth0 export (Etl:Auth0ExportPath) into Keycloak (Keycloak:*)");
+        + "  keycloak-import: imports the Auth0 export (Etl:Auth0ExportPath) into Keycloak (Keycloak:*)\n"
+        + "                   [--open-registration]: allows self-registration once every account exists");
     return 1;
 }
 
@@ -116,9 +117,10 @@ if (string.Equals(command, "keycloak-import", StringComparison.OrdinalIgnoreCase
         Environment.GetEnvironmentVariable("CICHLIDS_KEYCLOAK_ADMIN_USER") ?? configuration["Keycloak:AdminUser"] ?? "admin",
         Environment.GetEnvironmentVariable("CICHLIDS_KEYCLOAK_ADMIN_PASSWORD") ?? configuration["Keycloak:AdminPassword"] ?? "admin");
 
+    var openRegistration = args.Contains("--open-registration", StringComparer.OrdinalIgnoreCase);
     var keycloakSlugSecret = SlugSecretResolver.Resolve(configuration, environmentName);
     return await KeycloakAccountImportCommand.RunAsync(
-        legacyConnectionString, targetConnectionString, auth0ExportPath, keycloakSettings, new GeneratedNames(keycloakSlugSecret), cts.Token);
+        legacyConnectionString, targetConnectionString, auth0ExportPath, keycloakSettings, new GeneratedNames(keycloakSlugSecret), openRegistration, cts.Token);
 }
 
 IReadOnlyList<IEtlStep> steps;

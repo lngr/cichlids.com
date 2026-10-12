@@ -91,12 +91,13 @@ else
     -f /opt/keycloak/data/import/cichlids-realm.json
 fi
 
-# 6. Keycloak account import (creates only missing users and missing profile links)
+# 6. Keycloak account import (creates only missing users and missing profile links); the realm
+# opens self-registration only after this import has created every account
 step "Keycloak account import"
 if [ -f "$CICHLIDS_AUTH0_EXPORT" ]; then
-  CICHLIDS_ETL_AUTH0_EXPORT="$CICHLIDS_AUTH0_EXPORT" etl keycloak-import
+  CICHLIDS_ETL_AUTH0_EXPORT="$CICHLIDS_AUTH0_EXPORT" etl keycloak-import --open-registration
 else
-  echo "No Auth0 export at $CICHLIDS_AUTH0_EXPORT, skipping."
+  echo "No Auth0 export at $CICHLIDS_AUTH0_EXPORT, skipping; self-registration stays closed."
 fi
 
 # 7. Next steps

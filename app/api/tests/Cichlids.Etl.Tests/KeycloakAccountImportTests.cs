@@ -38,6 +38,13 @@ public sealed class KeycloakAccountImportTests(KeycloakAccountImportTests.Scenar
     }
 
     [Fact]
+    public void KeepsRegistrationClosedUntilTheRunThatOpensIt()
+    {
+        Assert.False(scenario.RegistrationAfterFirstRun);
+        Assert.True(scenario.RegistrationAfterSecondRun);
+    }
+
+    [Fact]
     public async Task NeitherCreatesNorLinksAnAccountWhoseEmailIsTakenAsAnotherUsersUsername()
     {
         Assert.Empty(await scenario.Admin.GetArrayAsync("users?email=victor%40example.test&exact=true"));
@@ -370,6 +377,18 @@ public sealed class KeycloakAccountImportTests(KeycloakAccountImportTests.Scenar
 
         public KeycloakImportSummary SecondRun { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether the realm allows self-registration after the first run, which imports without
+        /// the open-registration option.
+        /// </summary>
+        public bool RegistrationAfterFirstRun { get; private set; }
+
+        /// <summary>
+        /// Whether the realm allows self-registration after the second run, which imports with
+        /// the open-registration option.
+        /// </summary>
+        public bool RegistrationAfterSecondRun { get; private set; }
+
         public async Task InitializeAsync()
         {
             await Fixture.InitializeAsync();
@@ -387,8 +406,10 @@ public sealed class KeycloakAccountImportTests(KeycloakAccountImportTests.Scenar
             var settings = new KeycloakAdminSettings(
                 Fixture.KeycloakUrl, KeycloakImportFixture.Realm, KeycloakImportFixture.AdminUser, KeycloakImportFixture.AdminPassword);
 
-            FirstRun = await ImportAsync(settings);
-            SecondRun = await ImportAsync(settings);
+            FirstRun = await ImportAsync(settings, openRegistration: false);
+            RegistrationAfterFirstRun = await RegistrationAllowedAsync();
+            SecondRun = await ImportAsync(settings, openRegistration: true);
+            RegistrationAfterSecondRun = await RegistrationAllowedAsync();
         }
 
         public async Task DisposeAsync()
@@ -397,13 +418,19 @@ public sealed class KeycloakAccountImportTests(KeycloakAccountImportTests.Scenar
             await Fixture.DisposeAsync();
         }
 
-        private Task<KeycloakImportSummary> ImportAsync(KeycloakAdminSettings settings) => _sizes is { } sizes
+        private Task<KeycloakImportSummary> ImportAsync(KeycloakAdminSettings settings, bool openRegistration) => _sizes is { } sizes
             ? KeycloakAccountImportCommand.ImportAsync(
                 Fixture.LegacyConnectionString, Fixture.TargetConnectionString, Fixture.Auth0ExportPath, settings,
-                new GeneratedNames(GeneratedNamesSecret), sizes.UserPageSize, sizes.ImportChunkSize, CancellationToken.None)
+                new GeneratedNames(GeneratedNamesSecret), openRegistration, sizes.UserPageSize, sizes.ImportChunkSize, CancellationToken.None)
             : KeycloakAccountImportCommand.ImportAsync(
                 Fixture.LegacyConnectionString, Fixture.TargetConnectionString, Fixture.Auth0ExportPath, settings,
-                new GeneratedNames(GeneratedNamesSecret), CancellationToken.None);
+                new GeneratedNames(GeneratedNamesSecret), openRegistration, CancellationToken.None);
+
+        private async Task<bool> RegistrationAllowedAsync()
+        {
+            var realm = await Admin.GetObjectAsync(string.Empty);
+            return realm.GetProperty("registrationAllowed").GetBoolean();
+        }
 
         // The realm file maps email_verified; removing the mapper leaves a realm like one imported
         // from an older realm file, which the import has to repair.
