@@ -134,6 +134,24 @@ Keycloak's `cichlids` realm has two seeded local users (password `dev-password` 
 
 These are local-development defaults only and are not used in any deployed environment.
 
+### Local only, never deploy
+
+The realm file `app/stack/keycloak/cichlids-realm.json` is for this stack alone. Its display name
+says so on the login page. It requires no TLS, keeps the password grant on the public client,
+seeds two users in the realm, and accepts redirects to any localhost port. Staging and production import
+their own files from `apps/keycloak/overlays/`, which a CI check keeps free of these settings.
+
+The realm starts with self-registration closed. `bootstrap.sh` opens it with
+`etl keycloak-import --open-registration`, which does so only after the account import has
+created every legacy account. Without an Auth0 export the import is skipped and registration
+stays closed. A dev volume whose realm has registration open is closed with:
+
+```sh
+docker compose -f app/stack/compose.yaml exec -T keycloak sh -c '
+  /opt/keycloak/bin/kcadm.sh config credentials --server http://localhost:8080 --realm master --user admin --password admin &&
+  /opt/keycloak/bin/kcadm.sh update realms/cichlids -s registrationAllowed=false'
+```
+
 ### Test login as a migrated member
 
 Imported legacy accounts have no password (the Auth0 export carries none) and require a password
