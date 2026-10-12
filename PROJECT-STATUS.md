@@ -374,7 +374,12 @@ Anschließend den Status prüfen und `node tools/check-story-test-binding.mjs` l
     Pipeline-Version als Objekt-Metadaten) und lädt nur Fehlendes oder Abweichendes hoch. Nach einem
     Datenbank-Reset schreibt er die Metadaten ohne Uploads in die Datenbank, und verlorene Objekte werden
     wiederhergestellt.
-- **934 Altdateien** lassen sich nicht dekodieren. Sie werden nur als Original ausgeliefert.
+- **934 Altdateien** lassen sich nicht dekodieren, die meisten sind BMP-Dateien. Ist eine davon in
+  einem Format, das Browser darstellen, legt der Medien-Seed eine bereinigte öffentliche Kopie unter
+  `variants/copy/` an, und die App zeigt das Bild aus dieser Kopie. Leere Dateien und Nicht-Bilder
+  bekommen keine Kopie. Der Seed-Report (`--missing-out`) listet jedes nicht dekodierbare Original
+  unter `broken`, und die mit öffentlicher Kopie zusätzlich unter `copies`. Originale selbst sind
+  nicht öffentlich lesbar.
 - In der Besatzspalte der Altdaten ist jedes live geschaltete Becken leer. Die Becken haben also
   tatsächlich 0 Bewohner.
 - Die vereinbarten ETL-Regeln stehen in den Notizen von TASK-3:

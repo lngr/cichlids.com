@@ -27,7 +27,8 @@ compute/data components small and in a US region.
 | Building block | Commitment |
 |---|---|
 | **Scope** | This ADR covers the **image** path. **Video is hosted and delivered on a separate channel** ([ADR-0012](0012-video-transcoding-and-adaptive-delivery.md)) and is deliberately **not** served over the path below. |
-| **Serving store** | **Cloudflare R2** for the globally served images (variants and served originals), behind the CDN. R2 charges **no egress** (as of 2026-06-02); ~$0.015/GB-month; S3-compatible (migratable). |
+| **Serving store** | **Cloudflare R2** for the globally served images, behind the CDN: image variants, forum attachments and the public copies of originals that cannot be decoded. R2 charges **no egress** (as of 2026-06-02); ~$0.015/GB-month; S3-compatible (migratable). |
+| **Private originals** | Originals of member pictures are never publicly readable: they stay in the master store, the serving store holds none of them, and the API returns no original URL. Forum attachments are served as stored. Before an image original or an image attachment is stored, its location data, camera serial numbers and owner names are removed, while capture date, orientation, colour profile, camera make and model, artist and copyright stay. Files that are not images, and image bytes in a format without a metadata filter, are stored unchanged. A picture original that cannot be decoded but is in a format browsers render gets a public copy among the variants: its sanitized original bytes. Video originals are private as well and are not delivered; removing location metadata from video belongs to the video pipeline ([ADR-0012](0012-video-transcoding-and-adaptive-delivery.md)). |
 | **CDN** | **Cloudflare** in front of R2. Images are delivered worldwide from the nearest PoP. |
 | **Image variants** | A few fixed variants (e.g. thumb/medium/full) are produced **on upload** and delivered as **immutable**, content-addressed objects with a long-lived `Cache-Control`. **No** transform-per-request pipeline. |
 | **Provider portability** | The serving provider is **encapsulated, not hard-wired**: object storage is used **only via the S3-compatible API**, the CDN sits in front via **standard HTTP caching** (no proprietary transform/worker/stream dependency in the critical path), and the application reaches storage/CDN through a **thin abstraction** so the provider is an IaC/config detail ([ADR-0010](0010-gitops-and-infrastructure-as-code.md)). **Backblaze B2** (also S3-compatible) is a designed-in, drop-in alternative. |
@@ -84,6 +85,13 @@ dynamic resize per request. With R2 the zero egress is a product core (more robu
 cancelable B2 partnership), and the S3 compatibility keeps the storage layer migratable. The
 small JSON API belongs in the US region where most users are; multi-region and read-scaling
 replicas are justified only on demonstrated demand.
+
+Phone photos record the place they were taken, often a member's home, and camera serial
+numbers that link photos across sites. The public path therefore serves derived variants
+without metadata, plus forum attachments and public copies sanitized like every stored image
+original, which keep what is needed to display, date and credit the picture. Because the stored
+original itself is sanitized, that metadata stays out of every copy of the master store,
+including backups and a re-seeded serving store.
 
 Concentrating delivery on one provider is a deliberate but bounded bet: because object storage
 is reached only through the S3 API, the CDN only through standard HTTP, and an authoritative

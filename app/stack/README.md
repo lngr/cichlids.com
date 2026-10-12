@@ -215,6 +215,34 @@ docker compose -f app/stack/compose.yaml exec -T keycloak sh -c '
     -s "webOrigins=[\"http://localhost:8081\",\"http://localhost:8082\",\"+\"]"'
 ```
 
+## Media objects and their privacy
+
+The ETL gives the bucket a policy that lets anyone read the objects under `variants/` and
+`forum_attachments/`. Originals under `originals/` answer 403 without credentials, and the API
+returns variant URLs only. Every stored original has its GPS data, camera serial numbers and
+owner tags removed; capture date, orientation, colour profile and camera model stay. A legacy
+picture libvips cannot decode, mostly a BMP file, is shown from its sanitized public copy under
+`variants/copy/`.
+
+To inspect a stored original, download it with the RustFS keys through the AWS CLI container and
+read it with `exiftool` (installed in the dev container). `RUSTFS_ACCESS` and `RUSTFS_SECRET` hold
+the keys from `compose.yaml`; `KEY` is the original's storage key, for example the newest upload:
+
+```sh
+docker compose -f app/stack/compose.yaml exec postgres psql -U cichlids -d cichlids -c \
+  "select storage_key from media_item where storage_key like 'originals/uploads/%' order by id desc limit 1"
+curl -s -o /dev/null -w '%{http_code}\n' "http://127.0.0.1:9000/cichlids-media/$KEY"   # 403
+docker run --rm --network host -e AWS_ACCESS_KEY_ID="$RUSTFS_ACCESS" -e AWS_SECRET_ACCESS_KEY="$RUSTFS_SECRET" \
+  -v "$PWD:/w" amazon/aws-cli --endpoint-url http://127.0.0.1:9000 s3 cp "s3://cichlids-media/$KEY" /w/original.jpg
+exiftool -a -G1 -s original.jpg | grep -Ei 'gps|serial|owner'   # prints nothing
+exiftool -DateTimeOriginal -Orientation -ICC_Profile:ProfileDescription -Model original.jpg
+```
+
+`etl media --missing-out report.json` writes a report that lists missing sources, every
+undecodable original (`broken`), rejected sources with the reason (`rejected`: files over
+`ObjectStorage:MaxDownloadBytes`, images beyond the size limits and TIFF files whose metadata
+cannot be removed) and the undecodable originals that have a public copy (`copies`).
+
 ## Start the API and the app
 
 `dotnet run` here defaults to the Development environment, which accepts the ETL's development
