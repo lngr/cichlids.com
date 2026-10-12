@@ -143,6 +143,11 @@ public sealed class CommentMigrationStepTests(EtlFixture fixture)
             // Votes: 5 source rows -> 2 valid, 1 duplicate, 2 on rows that never became a comment.
             Assert.Equal(2, await db.CommentVotes.CountAsync());
 
+            // Vote timestamps are New York wall-clock times: 10:00 EST is 15:00 UTC.
+            var vote401 = await db.CommentVotes.SingleAsync(
+                v => v.CommentId == comment5001.Id && v.ProfileId == owner401.Id);
+            Assert.Equal(new DateTimeOffset(2024, 1, 1, 15, 0, 0, TimeSpan.Zero), vote401.CreatedAt);
+
             // Aggregate recompute: post4001's rating_average/rating_count now reflect the three
             // migrated ratings against it (4, 5, 2), not the stale legacy denorm value (1.0/1)
             // this fixture seeded on purpose.

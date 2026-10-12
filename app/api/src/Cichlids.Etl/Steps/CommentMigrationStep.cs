@@ -380,10 +380,10 @@ public sealed class CommentMigrationStep : IEtlStep
     }
 
     /// <summary>
-    /// Migrates up/down votes on comments (<c>user_cichlids_comments_rated</c>). Loaded and
-    /// deduplicated in memory (a low tens-of-thousands row table) rather than batched like the
-    /// main comment pass, since it only runs once the whole comment table has been processed and
-    /// <paramref name="commentIdByLegacyId"/> is complete.
+    /// Migrates up/down votes on comments (user_cichlids_comments_rated). The votes table holds a
+    /// few tens of thousands of rows, so it is loaded and deduplicated in memory once the whole
+    /// comment table has been processed and the comment id map is complete. The legacy timestamps
+    /// are America/New_York wall-clock times and migrate converted to UTC.
     /// </summary>
     private static async Task MigrateCommentVotesAsync(
         EtlContext context,
@@ -444,7 +444,7 @@ public sealed class CommentMigrationStep : IEtlStep
             }
 
             var profileId = await ResolveVoterProfileIdAsync(context, row.FeUser, profileByLegacyId, stats, cancellationToken);
-            var createdAt = new DateTimeOffset(DateTime.SpecifyKind(row.Tstamp, DateTimeKind.Utc));
+            var createdAt = LegacyLocalTime.ToUtc(row.Tstamp);
 
             voteRows.Add(new object?[] { commentId, profileId, (short)row.Rated, createdAt });
         }

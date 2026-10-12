@@ -108,7 +108,10 @@ INSERT INTO user_cichlids_comments_rated (comment_uid, fe_user, rated, tstamp) V
     -- An invalid rated value from a second voter: dropped.
     (9301, 9011, 2, '2024-01-01 11:00:00'),
     -- A vote on a rating-only row: it never became a comment, so this never migrates either.
-    (9302, 9010, 1, '2024-01-01 12:00:00');
+    (9302, 9010, 1, '2024-01-01 12:00:00'),
+    -- New York wall-clock time eight minutes after comment 9303 (2023-11-14 17:22 EST). Read as
+    -- UTC it would precede the comment by almost five hours.
+    (9303, 9010, 1, '2023-11-14 17:30:00');
 
 INSERT INTO user_cichlids_gallery (uid, tstamp, deleted, hidden, title, fe_user) VALUES
     (9501, 1700000400, 0, 0, 'Verify Gallery', 9010);

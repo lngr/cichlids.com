@@ -85,6 +85,9 @@ public static class MigrationRules
     public const string CommentVotes =
         "A comment vote of +1 or -1 on a migrated comment migrates once per comment and member, the earliest vote winning.";
 
+    public const string VoteTimes =
+        "Legacy vote timestamps are America/New_York wall-clock times converted to UTC, so no vote precedes its comment.";
+
     public const string Aggregates =
         "Post rating counts and comment scores are recomputed from the migrated ratings and votes.";
 

@@ -569,7 +569,8 @@ public sealed class VerifyStep : IEtlStep
     /// <summary>
     /// Recomputes MigrateCommentVotesAsync's dedupe (the earliest vote per comment/voter pair wins)
     /// and its two drop rules (an invalid value, or a comment that never migrated) from the legacy
-    /// votes table, and checks the result against comment_vote.
+    /// votes table, and checks the result against comment_vote. Also checks that no vote is older
+    /// than its comment.
     /// </summary>
     private static async Task AddCommentVoteRowAsync(
         EtlContext context, VerificationReport report, HashSet<int> migratedCommentLegacyIds, CancellationToken cancellationToken)
@@ -610,6 +611,13 @@ public sealed class VerifyStep : IEtlStep
 
         var actual = await PgScalarAsync(context, "SELECT COUNT(*) FROM comment_vote", cancellationToken);
         report.Add(VerificationRow.Compare("comment_vote", expectedVotes, actual, MigrationRules.CommentVotes));
+
+        var votesBeforeComment = await PgScalarAsync(
+            context,
+            "SELECT COUNT(*) FROM comment_vote v JOIN comment c ON c.id = v.comment_id WHERE v.created_at < c.created_at",
+            cancellationToken);
+        report.Add(VerificationRow.Compare(
+            "comment_vote_not_before_comment", 0, votesBeforeComment, MigrationRules.VoteTimes));
     }
 
     // === aggregate consistency (target only) ========================================================
