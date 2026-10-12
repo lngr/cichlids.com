@@ -9,10 +9,13 @@
 // ~/.config/cichlids/openalex.key); requests without a key share a small daily budget per IP
 // address. Europe PMC answers without a key, Crossref is the last fallback. Calls of
 // all processes keep a minimum interval, and rate-limited requests (HTTP 429) are retried after a
-// pause, because many agents search in parallel.
+// pause, because many agents search in parallel. Each printed result is cached for 30 days in
+// data/species/work/.literature/search/<sha1 of query and limit>.txt; a cached query needs no network.
+import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, rmdirSync, statSync, writeFileSync } from 'node:fs';
 import { homedir, tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const [query, limitArg] = process.argv.slice(2);
 if (!query) {
@@ -64,6 +67,14 @@ async function getJson(url, service) {
 }
 
 const limit = Math.min(Number.parseInt(limitArg ?? '8', 10) || 8, 25);
+
+const CACHE_DIR = join(dirname(fileURLToPath(import.meta.url)), '..', '..', 'data', 'species', 'work', '.literature', 'search');
+const CACHE_MAX_AGE_MS = 30 * 24 * 3600 * 1000;
+const cacheFile = join(CACHE_DIR, `${createHash('sha1').update(`${query}\n${limit}`).digest('hex')}.txt`);
+if (existsSync(cacheFile) && Date.now() - statSync(cacheFile).mtimeMs < CACHE_MAX_AGE_MS) {
+  process.stdout.write(readFileSync(cacheFile, 'utf8'));
+  process.exit(0);
+}
 
 // OpenAlex stores abstracts as an inverted index of word positions.
 function abstractText(index) {
@@ -152,9 +163,16 @@ for (const [name, search] of [['OpenAlex', openAlex], ['Europe PMC', europePmc],
   }
 }
 if (works.length === 0) console.log('No works found.');
+const lines = [];
 for (const w of works) {
-  console.log(`\n== ${w.year} ${w.title}${w.venue ? ` (${w.venue})` : ''}`);
-  if (w.doi) console.log(`   doi: ${w.doi}`);
-  if (w.openAccess) console.log(`   open access: ${w.openAccess}`);
-  if (w.abstract) console.log(`   abstract: ${w.abstract.length > 900 ? `${w.abstract.slice(0, 900)} ...` : w.abstract}`);
+  lines.push(`\n== ${w.year} ${w.title}${w.venue ? ` (${w.venue})` : ''}`);
+  if (w.doi) lines.push(`   doi: ${w.doi}`);
+  if (w.openAccess) lines.push(`   open access: ${w.openAccess}`);
+  if (w.abstract) lines.push(`   abstract: ${w.abstract.length > 900 ? `${w.abstract.slice(0, 900)} ...` : w.abstract}`);
+}
+if (lines.length > 0) {
+  const printed = `${lines.join('\n')}\n`;
+  process.stdout.write(printed);
+  mkdirSync(CACHE_DIR, { recursive: true });
+  writeFileSync(cacheFile, printed);
 }

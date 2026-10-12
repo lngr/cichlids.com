@@ -4,7 +4,8 @@ Tooling around the species catalog in `data/species/`.
 
 ## Contents
 
-- `literature-search.mjs`: searches scientific literature through OpenAlex (with an API key from `OPENALEX_API_KEY` or `~/.config/cichlids/openalex.key`), Europe PMC and Crossref, throttled across processes, and prints year, title, DOI, open-access link and abstract, so research agents need no web search for literature.
+- `literature-search.mjs`: searches scientific literature through OpenAlex (with an API key from `OPENALEX_API_KEY` or `~/.config/cichlids/openalex.key`), Europe PMC and Crossref, throttled across processes, and prints year, title, DOI, open-access link and abstract, so research agents need no web search for literature. Each printed result is cached for 30 days in `data/species/work/.literature/search/<sha1 of query and limit>.txt`; a cached query prints the cached text without network access.
+- `fetch-oa.mjs`: fetches the full text of open-access works by DOI into a local library (see Open-access full texts).
 - `crc.mjs`: reads the public part of the Cichlid Room Companion for the agents, which use it for verification only. The site blocks curl and headless browsers through a Cloudflare bot check, so the tool drives a headed Chromium on a virtual display.
 - `export-legacy-catalog.mjs`: exports the legacy species catalog with photo counts to `data/species/legacy-catalog.json`. It reads the restored legacy MySQL database read-only through its running container and holds catalog data only.
 - `prompts/`: prompts of the agent pipeline (generator, checker, tie-breaker, adjudicator and the shared rules) that produce species profiles.
@@ -21,7 +22,7 @@ cd tools/species-data
 npm ci
 ```
 
-The export script uses only Node built-ins. The validator needs the dependencies `ajv`, `ajv-formats` and `yaml`, which are pinned in `package.json`. `crc.mjs` needs `playwright-core`, a Chromium from the Playwright cache (`~/.cache/ms-playwright/chromium-*`, or the path in `CHROMIUM_PATH`) and `xvfb-run`.
+The export script uses only Node built-ins. The validator needs the dependencies `ajv`, `ajv-formats` and `yaml`, which are pinned in `package.json`. `fetch-oa.mjs` needs `pdfjs-dist` and, for its browser fallback, the same Chromium and `xvfb-run` as `crc.mjs`. `crc.mjs` needs `playwright-core`, a Chromium from the Playwright cache (`~/.cache/ms-playwright/chromium-*`, or the path in `CHROMIUM_PATH`) and `xvfb-run`.
 
 ## Export
 
@@ -37,6 +38,30 @@ xvfb-run -a node tools/species-data/crc.mjs page "https://cichlidae.com/species.
 ```
 
 `search` lists matching species, genus and article pages; `page` prints the readable text of one page and its subpage links. Every call starts its own browser, so parallel agents do not share state. All calls share a lock with a minimum interval of 15 seconds, retry twice after a rate limit (Cloudflare error 1015) and cache the printed text for 30 days in `data/species/work/.crc-cache/`.
+
+## Open-access full texts
+
+```
+xvfb-run -a node tools/species-data/fetch-oa.mjs 10.3390/fishes11020106
+xvfb-run -a node tools/species-data/fetch-oa.mjs https://doi.org/10.3390/fishes11020106
+```
+
+The tool gives research agents the text of open-access works. It prints a metadata summary (title, DOI, year, license, open-access status, route, source), the path of the text file and the first 1500 characters.
+
+Library: `data/species/work/.literature/` (ignored by git). Per work it holds `<key>.json` (metadata), the original as `<key>.xml`, `<key>.pdf` or `<key>.html`, and the plain text `<key>.txt`; the key is the lowercase DOI with every character outside `[a-z0-9._-]` replaced by `_`. A work with a text file is served from the library without network access, so each work is downloaded once.
+
+Open-access condition: OpenAlex (API key as for literature-search) must report `open_access.is_oa` as true. The routes are tried in this order, and the metadata field `route` names the one that delivered the text:
+
+1. `openalex-tei`: the TEI XML copy hosted by OpenAlex (`has_content.grobid_xml`); the text holds title, abstract, section heads and paragraphs of the body.
+2. `openalex-pdf`: the PDF copy hosted by OpenAlex (`has_content.pdf`), read with `pdfjs-dist`.
+3. `publisher-fetch`: the open-access addresses of the work (best location first, then the other open-access locations; PDF address before landing page) with a plain request and a browser user agent.
+4. `publisher-browser`: the same address in a headed Chromium on a virtual display when the plain request is blocked (HTTP 403, 429 or 503, a bot challenge page, or an HTML page where a PDF is expected). Browser sessions of all processes share a lock and keep 10 seconds between them.
+
+Each OpenAlex content download costs $0.01 of the free daily budget of the API key (about 100 downloads per day). On HTTP 429 or an "Insufficient budget" answer the tool prints a message and continues with the publisher routes. Without an API key the OpenAlex routes are skipped.
+
+Pages that ask for a login, a subscription, a purchase or a captcha are not fetched: a marker such as "sign in", "purchase", "subscribe", "access denied" or "captcha" in the title or the start of a short page, or an address on a login host, ends the run.
+
+Exit codes: 0 text available, 1 failure (unknown DOI, no route delivered usable text), 2 usage, 3 not open access (use the abstract from literature-search or another source), 4 blocked by login or paywall.
 
 ## Validate
 

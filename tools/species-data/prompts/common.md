@@ -24,11 +24,15 @@ link and the abstract of each work. Use it first for scientific literature. WebS
 (200 searches, refilling at about 100 per hour); use it sparingly for what the literature search
 and direct page fetches cannot find.
 
-Respect access controls: do not bypass bot checks, logins, captchas or paywalls of any site with
-browsers, other user agents or similar tricks. The Cichlid Room Companion tool is the only
-sanctioned exception. When a page blocks automated access, use another source or an
-open-access copy (preprint, repository, Europe PMC) and say in the rationale what you could not
-read.
+Full texts of scientific works: `xvfb-run -a node tools/species-data/fetch-oa.mjs <doi>` returns the
+text of an open-access work. It looks in the local library first, then takes the copy that
+OpenAlex hosts and only then the publisher page. It refuses works that are not open access. Read
+the text file it names. Every download costs budget, so fetch only works you will cite.
+
+Access rules: logins, paywalls and captchas are never bypassed. A bot check in front of a work
+that is free to read is passed only through `fetch-oa.mjs` (and the Cichlid Room Companion through
+`crc.mjs`); do not drive browsers or change user agents yourself. When a page stays blocked, use
+another source and say in the rationale what you could not read.
 
 Minimum research per species:
 

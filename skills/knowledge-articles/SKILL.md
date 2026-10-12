@@ -121,10 +121,12 @@ node tools/species-data/validate-articles.mjs data/knowledge/articles/<id>.md
   eine Aussage nur, wenn keine Fachquelle dazu existiert; der Text sagt dann, dass es sich um
   Berichte von Haltern handelt. Zitiert
   wird mit der ausgegebenen Legacy-Thread-ID und URL; Namen von Mitgliedern erscheinen nie.
-- Zugangssperren werden respektiert: Agenten umgehen keine Bot-Prüfung, keinen Login, kein Captcha
-  und keine Bezahlschranke, weder mit einem Browser noch mit anderen Kniffen. Einzige Ausnahme ist
-  das Werkzeug für Cichlid Room Companion. Ist eine Seite gesperrt, dient eine andere Quelle oder
-  eine frei zugängliche Fassung (Preprint, Repositorium, Europe PMC).
+- Volltexte frei zugänglicher Arbeiten holt `xvfb-run -a node tools/species-data/fetch-oa.mjs <doi>`:
+  zuerst aus der lokalen Ablage, dann aus der Kopie bei OpenAlex, erst dann von der Verlagsseite.
+  Arbeiten, die nicht frei zugänglich sind, lehnt das Werkzeug ab.
+- Logins, Bezahlschranken und Captchas werden nie umgangen. Eine Bot-Prüfung vor einer frei
+  lesbaren Arbeit passiert nur das Werkzeug `fetch-oa.mjs` (für Cichlid Room Companion `crc.mjs`);
+  Agenten steuern selbst keine Browser.
 - Cichlid Room Companion dient nur der Verifikation und läuft über
   `tools/species-data/crc.mjs` (gedrosselt, mit Cache).
 
