@@ -1,0 +1,1573 @@
+schemaVersion: 1
+id: cyphotilapia-frontosa
+legacyIds: [35]
+status: described
+
+taxonomy:
+  validName: Cyphotilapia frontosa
+  genus: Cyphotilapia
+  species: frontosa
+  author: (Boulenger, 1906)
+  source: &cof
+    kind: catalog-of-fishes
+    title: Eschmeyer's Catalog of Fishes, species list of the genus Cyphotilapia (online version of 21 Sep. 2026)
+    url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Cyphotilapia
+    accessed: 2026-10-12
+  synonyms:
+    - name: Paratilapia frontosa
+      note: Original combination, Boulenger 1906, type locality Kigoma, Tanzania.
+    - name: Pelmatochromis frontosus
+      note: Earlier combination listed by FishBase and Seriously Fish.
+    - name: Cyphotilapia frontosus
+      note: Spelling with a masculine ending, listed by FishBase.
+  legacyNames:
+    - Cyphotilapia frontosa
+  note: >-
+    The Catalog of Fishes lists two valid species in the genus. Cyphotilapia frontosa lives in the
+    northern half of Lake Tanganyika; C. gibberosa Takahashi and Nakaya 2003, described from the
+    southern half (holotype from Kasenga, Zambia), has three instead of two scale rows between the
+    upper and lower lateral line, a deeper body, a longer dorsal-fin base and longer pectoral fins.
+    Konings (2015, 2019) treats C. gibberosa as a synonym of C. frontosa; the catalog follows
+    Jackson et al. (2024), whose ddRAD data separate a northern and a southern species with a
+    narrow hybrid zone in the middle of the east coast. This profile covers the northern species:
+    the six-bar forms from Burundi and the Congo coast north of Cape Tembwe, the seven-bar Kigoma
+    form, Mwamgongo, Cape Kabogo, Karilani Island and Bulu Point. The blue southern forms belong to
+    C. gibberosa and need a profile of their own: all fish sold as 'Blue Zaire' (Moba, Kapampa,
+    Mikula), the Tanzanian forms Mpimbwe, Kipili, Ikola, Kantalamba and Wampembe, and the Zambian
+    forms. The placement of 'Kitumba' is unresolved. Legacy entry 35 predates the split, when the
+    genus counted as monotypic, so the legacy photos stored under it probably include forms of C.
+    gibberosa as well, above all the blue 'Zaire' and Zambian fish.
+
+names:
+  trade:
+    en: [Frontosa, Humphead cichlid, Front]
+    de: [Tanganjika-Beulenkopf, Frontosa, Beulenkopf]
+    es-419: [Frontosa]
+    pt-BR: [Frontosa]
+
+variants:
+  - name: Burundi
+    kind: locality
+    note: Six dark bars on a white body, blue-tinged fins; the most common northern form in the trade, often captive bred.
+  - name: Kigoma
+    kind: locality
+    note: Seven-bar form from the type locality region in Tanzania; the only form with seven body bars.
+  - name: Mwamgongo
+    kind: locality
+    note: North of Kigoma; fish show six or seven bars, some with different counts on each side.
+  - name: Bulu Point
+    kind: locality
+    note: Southern end of the range on the Tanzanian coast.
+  - name: Cape Kabogo
+    kind: locality
+    note: Central Tanzanian coast; carries some gibberosa ancestry from the hybrid zone.
+  - name: Kavala
+    kind: locality
+    note: Congo coast, sold as 'Zaire Kavalla'.
+  - name: Kitumba
+    kind: locality
+    note: Congo coast; whether it belongs to C. frontosa or C. gibberosa is unresolved.
+  - name: Red (Copperband)
+    kind: color-morph
+    note: Captive strain with reddish-brown instead of black bars.
+  - name: Black Widow
+    kind: color-morph
+    note: Captive strain in which the bars are broken into large blotches.
+
+features:
+  origin:
+    value:
+      continent: Africa
+      region: Lake Tanganyika
+      waterbody: Lake Tanganyika
+      localities:
+        - Burundi coast (Bujumbura, Magara, Nyanza)
+        - Kigoma (type locality)
+        - Mwamgongo
+        - Cape Kabogo
+        - Karilani Island
+        - Bulu Point
+        - Kavala
+        - Kabimba
+        - Ubwari
+        - Cape Tembwe
+    confidence: high
+    rationale: >-
+      Endemic to Lake Tanganyika. The Catalog of Fishes and FishBase restrict it to the northern
+      half of the lake, and the description of C. gibberosa places the southern populations in that
+      species. Seriously Fish names Cape Tembwe on the western and Bulu Point on the eastern shore
+      as the southern limits. Jackson et al. (2024) sampled the species from Burundi to Karilani
+      Island and Cape Kabogo, where the populations carry the most gibberosa ancestry, and found C.
+      gibberosa further south. It lives on sediment-covered rocky slopes, mostly at 15 to 50 m.
+    sources:
+      - *cof
+      - &fishbase
+        kind: database
+        title: FishBase species summary, Cyphotilapia frontosa (Boulenger, 1906)
+        url: https://www.fishbase.se/summary/Cyphotilapia-frontosa.html
+        accessed: 2026-10-12
+      - &sf
+        kind: database
+        title: Seriously Fish, Cyphotilapia frontosa (Humphead Cichlid)
+        url: https://www.seriouslyfish.com/species/cyphotilapia-frontosa/
+        accessed: 2026-10-12
+      - &jackson2024
+        kind: literature
+        title: >-
+          Jackson, G. D., Standish, T., Cetintas, O., Zinenko, O., Shechonge, A. H. and Yanchukov,
+          A. (2024). Population genetics and gene flow in Cyphotilapia frontosa and Cyphotilapia
+          gibberosa along the east coast of Lake Tanganyika. Fishes 9(12), 481.
+        url: https://doi.org/10.3390/fishes9120481
+        accessed: 2026-10-12
+      - &takahashi2003
+        kind: literature
+        title: >-
+          Takahashi, T. and Nakaya, K. (2003). New species of Cyphotilapia (Perciformes:
+          Cichlidae) from Lake Tanganyika, Africa. Copeia 2003(4), 824-832 (abstract).
+        url: https://doi.org/10.1643/IA03-148.1
+        accessed: 2026-10-12
+    evidence:
+      - source: *cof
+        value: {continent: Africa, region: Lake Tanganyika}
+        note: northern part of the lake, type locality Kigoma
+      - source: *fishbase
+        value: {continent: Africa, region: Lake Tanganyika}
+        note: northern half of the lake
+      - source: *sf
+        value: {continent: Africa, region: Lake Tanganyika}
+        note: Cape Tembwe to Bulu Point
+      - source: *jackson2024
+        value: {continent: Africa, region: Lake Tanganyika}
+        note: east coast from Burundi to Karilani Island and Cape Kabogo
+      - source: *takahashi2003
+        value: {continent: Africa, region: Lake Tanganyika}
+        note: northern half, C. gibberosa in the southern half
+
+  temperatureC:
+    value: {min: 23, max: 29}
+    confidence: high
+    rationale: >-
+      Lake endemic, so the natural temperature is the measured range of Lake Tanganyika. Hourly buoy
+      readings at Mpulungu span 23.85 to 29.01 C; the south of the lake is cooler and more variable
+      from June to September because of upwelling. This gives 23 to 29 C. The species lives mostly
+      at 15 to 50 m, below the warmest surface layer.
+    sources: &lakesources
+      - &plisnier1
+        kind: literature
+        title: >-
+          Plisnier, P.-D., Langenberg, V., Mwape, L., Chitamwembwa, D., Tshibangu, K. and Coenen,
+          E. (1996). Limnological sampling during an annual cycle at three stations on Lake
+          Tanganyika (1993-1994). FAO/FINNIDA Research for the Management of the Fisheries on Lake
+          Tanganyika, GCP/RAF/271/FIN-TD/46.
+        url: https://fao.org/fishery/static/LTR/FTP/TD46.PDF
+        accessed: 2026-10-12
+      - &plisnier2
+        kind: literature
+        title: >-
+          Plisnier, P.-D. (1996). Limnological sampling during a second annual cycle (1994-1995)
+          and some comparisons with year one on Lake Tanganyika. FAO/FINNIDA
+          GCP/RAF/271/FIN-TD/56.
+        url: https://fao.org/fishery/static/LTR/FTP/TD56.PDF
+        accessed: 2026-10-12
+      - &verburg
+        kind: literature
+        title: >-
+          Verburg, P., Huttula, T., Kakogozo, B., Kihakwi, A., Kotilainen, P., Makasa, L. and
+          Peltonen, A. (1997). Hydrodynamics of Lake Tanganyika and meteorological results.
+          FAO/FINNIDA GCP/RAF/271/FIN-TD/59.
+        url: https://fao.org/fishery/static/LTR/FTP/TD59.PDF
+        accessed: 2026-10-12
+      - &cohen
+        kind: literature
+        title: >-
+          Cohen, A. S., Talbot, M. R., Awramik, S. M., Dettman, D. L. and Abell, P. (1997). Lake
+          level and paleoenvironmental history of Lake Tanganyika, Africa, as inferred from late
+          Holocene and modern stromatolites. GSA Bulletin 109(4), 444-460 (Table 1, north basin
+          surface water chemistry).
+        url: https://awramik.faculty.geol.ucsb.edu/pubs/COHE9740.pdf
+        accessed: 2026-10-12
+      - &langenberg
+        kind: literature
+        title: Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. PhD thesis, Wageningen University.
+        url: https://edepot.wur.nl/121977
+        accessed: 2026-10-12
+      - &faosb
+        kind: literature
+        title: >-
+          Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery
+          resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Tanganyika: physical
+          and chemical data after Talling and Talling (1965).
+        url: https://www.fao.org/4/t0473e/T0473E10.htm
+        accessed: 2026-10-12
+    evidence:
+      - source: *verburg
+        value: {min: 23.85, max: 29.01}
+        note: hourly buoy values at Mpulungu, southern lake
+    verification:
+      method: waterbody
+      waterbody: lake-tanganyika
+    tolerance:
+      value: {min: 23, max: 29}
+      confidence: medium
+      rationale: >-
+        Care sources place the aquarium range between 23 and 27 C: Seriously Fish 23 to 27,
+        Fishkeeper 23 to 25, FishBase after the Aquarien Atlas, FishProfiles and Fishkeeping World
+        24 to 26, Fishstores 24 to 27 and TropicalFreshwaterFish 25 to 27 with 26 to 28 C for
+        breeding. Aqua-Fish gives 23 to 29 C. The tolerance contains the natural lake range, so it
+        runs to 29 C. The upper degrees are tolerated rather than recommended: as a deep-water fish
+        with a high oxygen demand the species does best at 24 to 27 C, and no care source advises
+        long periods near 29 C. All three votes agree.
+      sources:
+        - *sf
+        - &fk
+          kind: database
+          title: Fishkeeper (Maidenhead Aquatics) fish profile, Frontosa Cichlid
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/frontosa-cichlid
+          accessed: 2026-10-12
+        - &tfwf
+          kind: database
+          title: TropicalFreshwaterFish, Frontosa (Cyphotilapia frontosa)
+          url: https://tropicalfreshwaterfish.com/species/Cyphotilapia_frontosa.html
+          accessed: 2026-10-12
+        - &fp
+          kind: database
+          title: FishProfiles.com, Cyphotilapia frontosa
+          url: https://fishprofiles.com/profiles/freshwater/Cichlids/Cyphotilapia_frontosa
+          accessed: 2026-10-12
+        - *fishbase
+        - &aquafish
+          kind: database
+          title: Aqua-Fish.net, Frontosa Cichlid (Cyphotilapia frontosa) care
+          url: https://en.aqua-fish.net/fish/frontosa-cichlid
+          accessed: 2026-10-12
+        - &fstores
+          kind: database
+          title: Fishstores, Frontosa cichlid care
+          url: https://www.fishstores.org/species/frontosa-cichlid
+          accessed: 2026-10-12
+        - &fkw
+          kind: website
+          title: Fishkeeping World, Frontosa Cichlid Care Guide and Species Profile
+          url: https://www.fishkeepingworld.com/frontosa-cichlid/
+          accessed: 2026-10-12
+        - &bya
+          kind: website
+          title: Build Your Aquarium, Frontosa cichlid care
+          url: https://buildyouraquarium.com/frontosa-cichlid-care
+          accessed: 2026-10-12
+      evidence:
+        - source: *sf
+          value: {min: 23, max: 27}
+          note: aquarium recommendation
+        - source: *fk
+          value: {min: 23, max: 25}
+          note: aquarium recommendation
+        - source: *tfwf
+          value: {min: 25, max: 27}
+          note: aquarium recommendation; 26 to 28 C for breeding
+        - source: *fp
+          value: {min: 24, max: 26}
+          note: aquarium recommendation
+        - source: *fishbase
+          value: {min: 24, max: 26}
+          note: aquarium values after Riehl and Baensch
+        - source: *aquafish
+          value: {min: 23, max: 29}
+          note: aquarium recommendation
+        - source: *fstores
+          value: {min: 24, max: 27}
+          note: aquarium recommendation
+        - source: *fkw
+          value: {min: 24, max: 26}
+          note: facts table; the text names 22 to 28
+        - source: *bya
+          value: {min: 23.3, max: 26.7}
+          note: converted from 74 to 80 F
+      verification:
+        method: unanimous
+        votes: {agree: 3, total: 3}
+
+  ph:
+    value: {min: 8.4, max: 9.4}
+    confidence: high
+    rationale: >-
+      Lake endemic, so the natural pH is the measured range of Lake Tanganyika. Over an annual cycle
+      at Bujumbura, Kigoma and Mpulungu the surface water has pH 8.8 to 9.2 and the water at 40 m
+      8.47 to 9.40, which gives 8.4 to 9.4. An older compilation of pH 7.3 to 7.8 contradicts the
+      high alkalinity and all modern measurements and is not used.
+    sources: *lakesources
+    evidence:
+      - source: *plisnier1
+        value: {min: 8.47, max: 9.4}
+        note: 40 m depth over one year; surface water 8.8 to 9.2
+    verification:
+      method: waterbody
+      waterbody: lake-tanganyika
+    tolerance:
+      value: {min: 8.0, max: 9.4}
+      confidence: medium
+      rationale: >-
+        Seriously Fish, Fishkeeper and Fishkeeping World give pH 8.0 to 9.0, and FishBase after the
+        Aquarien Atlas gives 8.0 without an upper limit. A minority goes lower: FishProfiles and
+        Fishstores 7.8, TropicalFreshwaterFish 7.5 with an optimum of 8.2, Aqua-Fish 7.0. The lower
+        limit follows the most frequent value of 8.0; the upper limit is the lake maximum of 9.4,
+        because the tolerance contains the natural range. A stable pH matters more than the exact
+        figure. The votes agree within 0.3 pH (8.0, 8.0 and 7.8 as lower bounds); the median is 8.0
+        to 9.4.
+      sources:
+        - *sf
+        - *fk
+        - *tfwf
+        - *fp
+        - *fishbase
+        - *aquafish
+        - *fstores
+        - *fkw
+      evidence:
+        - source: *sf
+          value: {min: 8.0, max: 9.0}
+          note: aquarium recommendation
+        - source: *fk
+          value: {min: 8.0, max: 9.0}
+          note: aquarium recommendation
+        - source: *tfwf
+          value: {min: 7.5, max: 9.0}
+          note: aquarium recommendation, optimum 8.2
+        - source: *fp
+          value: {min: 7.8, max: 9.5}
+          note: aquarium recommendation
+        - source: *fishbase
+          value: {min: 8.0}
+          note: aquarium value after Riehl and Baensch; no upper limit given
+        - source: *aquafish
+          value: {min: 7.0, max: 9.0}
+          note: outlier at the lower end
+        - source: *fstores
+          value: {min: 7.8, max: 9.0}
+          note: aquarium recommendation
+        - source: *fkw
+          value: {min: 8.0, max: 9.0}
+          note: aquarium recommendation
+      verification:
+        method: unanimous
+        votes: {agree: 3, total: 3}
+
+  ghDgh:
+    value: {min: 10, max: 13}
+    confidence: high
+    rationale: >-
+      Lake endemic, so the natural total hardness is the measured range of Lake Tanganyika,
+      magnesium-rich water in which magnesium far exceeds calcium. With dGH = Ca/7.14 + Mg/4.34, the
+      surface means of the FAO/FINNIDA programme at Bujumbura, Kigoma and Mpulungu give 11.1 to 11.5
+      dGH, the north basin data of Cohen et al. 12.2 to 12.3 dGH and the values of Talling and
+      Talling 11.3 dGH. This gives 10 to 13 dGH.
+    sources: *lakesources
+    evidence:
+      - source: *plisnier1
+        value: {min: 11.1, max: 11.5}
+        note: surface means at Bujumbura, Kigoma and Mpulungu, computed from Ca and Mg
+      - source: *cohen
+        value: {min: 12.2, max: 12.3}
+        note: north basin surface water, computed from Ca 12.2 to 12.4 and Mg 45.4 to 45.7 mg/L
+      - source: *faosb
+        value: {min: 11.3, max: 11.3}
+        note: Ca 9.8 and Mg 43.3 mg/L after Talling and Talling (1965), computed
+    verification:
+      method: waterbody
+      waterbody: lake-tanganyika
+    tolerance:
+      value: {min: 10, max: 22}
+      confidence: low
+      rationale: >-
+        The care sources ask for hard water but differ widely in the band: FishBase after the
+        Aquarien Atlas 8 to 12 dGH, TropicalFreshwaterFish 8 to 22 with 12 preferred, Seriously
+        Fish 10 to 25, Fishkeeper 15 to 25, Fishstores 12 to 20, Guidarium 12 to 25 and Fishkeeping
+        World 12 to 14; Aqua-Fish gives 12 to 30 without saying which hardness it means, and the
+        Flowgrow database 7 to 14 together with a pH that contradicts all other sources. Accordingly
+        the five votes split: three proposed 8 to 25, one 8 to 22 and one 10 to 22, so no proposal
+        reached the four agreeing votes a qualified majority needs. The value is therefore the
+        conservative one, the intersection of all votes: 10 dGH, the lower bound of Seriously Fish
+        and of the natural lake range, to 22 dGH, the upper bound of TropicalFreshwaterFish. The
+        narrower range makes the compatibility check warn earlier, and it still contains the
+        natural 10 to 13 dGH. Fish are kept in softer water down to about 8 dGH and in harder water
+        up to 25 dGH according to some care sheets, so the limits are cautious rather than
+        measured. Stable water matters more than the exact figure; carbonate hardness and pH
+        are the decisive values for this species.
+      sources:
+        - *sf
+        - *fk
+        - *tfwf
+        - *fishbase
+        - *fstores
+        - &guidarium
+          kind: database
+          title: Guidarium, Frontosa
+          url: https://guidarium.com/fishes/frontosa
+          accessed: 2026-10-12
+        - &flowgrow
+          kind: database
+          title: Flowgrow database, Cyphotilapia frontosa
+          url: https://www.flowgrow.de/db/fish/cyphotilapia-frontosa
+          accessed: 2026-10-12
+        - *aquafish
+        - *fkw
+        - *bya
+        - *plisnier1
+      evidence:
+        - source: *sf
+          value: {min: 10, max: 25}
+          note: aquarium recommendation
+        - source: *fk
+          value: {min: 15, max: 25}
+          note: aquarium recommendation, given as dH
+        - source: *tfwf
+          value: {min: 8, max: 22}
+          note: aquarium recommendation, given as dH, 12 preferred
+        - source: *fishbase
+          value: {min: 8, max: 12}
+          note: aquarium value after Riehl and Baensch
+        - source: *fstores
+          value: {min: 12, max: 20}
+          note: aquarium recommendation
+        - source: *guidarium
+          value: {min: 12, max: 25}
+          note: aquarium recommendation
+        - source: *flowgrow
+          value: {min: 7, max: 14}
+          note: low weight; its pH of 7 to 8 contradicts the lake and the other sources
+        - source: *aquafish
+          value: {min: 12, max: 30}
+          note: German degrees without saying whether total or carbonate hardness
+        - source: *fkw
+          value: {min: 12, max: 14}
+          note: aquarium recommendation
+        - source: *bya
+          value: {min: 10, max: 20}
+          note: aquarium recommendation
+        - source: *plisnier1
+          value: {min: 11.1, max: 11.5}
+          note: natural lake water
+      verification:
+        method: conservative
+        votes: {agree: 3, total: 5}
+
+  khDkh:
+    value: {min: 15, max: 20}
+    confidence: high
+    rationale: >-
+      Lake endemic, so the natural carbonate hardness is the measured range of Lake Tanganyika,
+      strongly buffered bicarbonate water. With dKH = meq/L x 2.8, the alkalinity of 6.5 to 6.6
+      meq/L (Cohen et al.), 6.71 meq/L (Talling and Talling) and 6.7 to 6.9 meq/L (Edmond et al.
+      1993 as cited by Langenberg) gives 18.2 to 19.3 dKH; the bicarbonate and carbonate titrations
+      of the FAO/FINNIDA programme reach down to about 15.4 dKH. This gives 15 to 20 dKH. Sodium and
+      potassium bicarbonate make the carbonate hardness exceed the total hardness.
+    sources: *lakesources
+    evidence:
+      - source: *cohen
+        value: {min: 18.2, max: 18.5}
+        note: alkalinity 6.5 to 6.6 meq/L, north basin
+      - source: *faosb
+        value: {min: 18.8, max: 18.8}
+        note: alkalinity 6.71 meq/L after Talling and Talling (1965)
+      - source: *langenberg
+        value: {min: 18.8, max: 19.3}
+        note: alkalinity 6.7 to 6.9 meq/L after Edmond et al. (1993)
+    verification:
+      method: waterbody
+      waterbody: lake-tanganyika
+    tolerance:
+      value: {min: 10, max: 20}
+      confidence: low
+      rationale: >-
+        Few care sources give a carbonate hardness for this species. Fishstores names 12 to 20 dKH;
+        Aqua-Fish gives 12 to 30 German degrees without saying whether this is total or carbonate
+        hardness. Seriously Fish and the other care sheets ask for hard, alkaline and stable water
+        and warn that untreated soft tap water is unsuitable. A pH of 8 or more, the floor of the
+        pH tolerance, needs a strong carbonate buffer in the aquarium; about 10 dKH as the lower
+        limit comes from general Tanganyika husbandry knowledge, not from a figure for this
+        species. The upper limit is the natural maximum. The votes agree within 2 dKH (10, 10 and
+        12 as lower bounds); the median is 10 to 20. Needs confirmation.
+      sources:
+        - *fstores
+        - *aquafish
+        - *sf
+        - *cohen
+        - kind: model-knowledge
+          title: General husbandry knowledge on buffering Lake Tanganyika aquaria
+      evidence:
+        - source: *fstores
+          value: {min: 12, max: 20}
+          note: aquarium recommendation, not below 12
+        - source: *aquafish
+          value: {min: 12, max: 30}
+          note: German degrees, type of hardness not stated
+        - source: *cohen
+          value: {min: 18.2, max: 18.5}
+          note: natural lake water, north basin
+        - source:
+            kind: model-knowledge
+            title: General husbandry knowledge on buffering Lake Tanganyika aquaria
+          value: {min: 10, max: 20}
+          note: estimate of the buffer needed to hold pH 8 or more
+      verification:
+        method: unanimous
+        votes: {agree: 3, total: 3}
+
+  maxSizeCm:
+    value: {male: 33, female: 25}
+    confidence: medium
+    rationale: >-
+      FishBase gives 33 cm total length for males and unsexed fish; Seriously Fish gives 25.5 cm
+      standard length, about 32 cm total length. TropicalFreshwaterFish separates the sexes at 35
+      and 25 cm, Tanganyika.si and Animal Diversity Web give 35 cm or more for males, and Fishstores
+      30 to 38 cm for males and 20 to 25 cm for females. Aqua-Fish gives 25 to 30 cm in the tank,
+      FishProfiles 40 and 30.5 cm, which are record values. Well-kept males typically reach about
+      33 cm, the median of the sources; females stay clearly smaller at about 25 cm.
+    sources:
+      - *fishbase
+      - *sf
+      - *tfwf
+      - &tsi
+        kind: database
+        title: Tanganyika.si, Cyphotilapia frontosa 'Kigoma'
+        url: https://tanganyika.si/TanganjikaByLocations/Kigoma/slides/Cyphotilapia%20frontosa%20%27Kigoma%27.html
+        accessed: 2026-10-12
+      - &adw
+        kind: database
+        title: Animal Diversity Web, Cyphotilapia frontosa (after Brichard 1989 and Axelrod 1993)
+        url: https://animaldiversity.org/accounts/Cyphotilapia_frontosa/
+        accessed: 2026-10-12
+      - *fstores
+      - *aquafish
+      - *fp
+      - *fk
+      - *fkw
+    evidence:
+      - source: *fishbase
+        value: {male: 33}
+        note: maximum total length, male or unsexed
+      - source: *sf
+        value: {male: 32}
+        note: 25.5 cm standard length converted to total length
+      - source: *tfwf
+        value: {male: 35, female: 25}
+      - source: *tsi
+        value: {male: 35}
+        note: 35 cm or more, larger in aquaria
+      - source: *adw
+        value: {male: 35}
+      - source: *fstores
+        value: {male: 34, female: 25}
+        note: males 30 to 38, females 20 to 25
+      - source: *aquafish
+        value: {male: 30, female: 25}
+        note: aquarium range of 25 to 30 cm, not split by sex
+      - source: *fp
+        value: {male: 40, female: 30.5}
+        note: upper values
+      - source: *fkw
+        value: {male: 35, female: 30}
+
+  predation:
+    value: 2
+    confidence: high
+    rationale: >-
+      All three votes agree on level 2, which the rubric illustrates with this very species. Fish
+      are a regular prey: FishBase lists fish next to snails and mussels, Seriously Fish describes a
+      generalised predator that takes much smaller fishes, Tanganyika.si calls adults primarily
+      piscivorous and reports tankmates up to nearly half the frontosa's length being eaten, and
+      Jackson et al. (2026) summarise field reports of adults hunting Cyprichromis and
+      Paracyprichromis and find fish dominant in the isotope signal at the Burundi site. In the
+      tank it hunts slowly, mostly at dusk and at night, and swallows resting fish that fit into its
+      mouth; keepers in the cichlids.com archive report small Malawi cichlids disappearing this
+      way. Molluscs, crustaceans and jellyfish make up a large share of the wild diet at many
+      sites, so fish are not the main food everywhere and level 3 does not fit.
+    sources:
+      - *fishbase
+      - *sf
+      - &jackson2026
+        kind: literature
+        title: >-
+          Jackson, G. D., Jackson, C. H. and Shechonge, A. H. (2026). Trophic niche differentiation
+          and mercury levels in Cyphotilapia frontosa and C. gibberosa along the east coast of Lake
+          Tanganyika. Fishes 11(2), 106.
+        url: https://doi.org/10.3390/fishes11020106
+        accessed: 2026-10-12
+      - *tfwf
+      - *tsi
+      - *adw
+      - *fstores
+      - &archive1229
+        kind: archive
+        title: cichlids.com forum thread 1229
+        url: https://www.cichlids.com/disc/read.php?1,1229
+        accessed: 2026-10-12
+      - &archive50827
+        kind: archive
+        title: cichlids.com forum thread 50827
+        url: https://www.cichlids.com/disc/read.php?2,50827
+        accessed: 2026-10-12
+      - kind: archive
+        title: cichlids.com forum thread 17790
+        url: https://www.cichlids.com/disc/read.php?2,17790
+        accessed: 2026-10-12
+    evidence:
+      - source: *fishbase
+        value: 2
+        note: feeds on snails, mussels and fish
+      - source: *sf
+        value: 2
+        note: generalised predator that may eat much smaller fishes
+      - source: *jackson2026
+        value: 2
+        note: fish one of three main prey groups, dominant at Burundi
+      - source: *tfwf
+        value: 2
+        note: stalks small resting fish
+      - source: *tsi
+        value: 2
+        note: adults primarily piscivorous; eat tankmates up to nearly half their own size
+      - source: *adw
+        value: 2
+        note: mainly shellfish and smaller fish
+      - source: *fstores
+        value: 2
+        note: eats any fish that fits into its mouth
+      - source: *archive1229
+        value: 2
+        note: warning that it outgrows and may eat small Malawi cichlids
+      - source: *archive50827
+        value: 2
+        note: frontosa eating tankmates that fit into the mouth
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+
+  diet:
+    value:
+      type: piscivore
+      bloatSensitive: false
+      foods:
+        - fish
+        - mussels and snails
+        - shrimps and other crustaceans
+        - jellyfish (Limnocnida)
+        - zooplankton and insect larvae
+        - sinking pellets and sticks for large carnivorous cichlids
+        - frozen krill, Mysis, shrimp and mussel meat
+        - pieces of marine fish
+    confidence: low
+    rationale: >-
+      The diet is carnivorous throughout; plant matter plays no real role. The sources split on
+      whether fish or invertebrates dominate, and so did the five votes: three chose piscivore and
+      two invertivore. For piscivore speak the metagenomic gut content study of Huyghe et al.
+      (2025), which places wild C. frontosa from the Kigoma area in the fish-eating cluster of
+      Tanganyikan cichlids while C. gibberosa falls among the invertebrate feeders, field reports
+      of adults hunting small cichlids, Tanganyika.si and the summary line of the Cichlid Room
+      Companion. For invertivore speak the isotope mixing model of Jackson et al. (2026), which
+      gives mussels, jellyfish and fish similar shares and fish the main share only at Burundi,
+      based on juveniles and small adults; Seriously Fish describes a generalised predator of fish,
+      macro-invertebrates and molluscs, and Animal Diversity Web names shellfish first. FishBase
+      and Fishkeeper call the species omnivorous with shellfish and fish. With no four-vote majority
+      the vote count takes the conservative value, the strictest diet type proposed: piscivore,
+      with low confidence. The compatibility check thus treats the species as a fish eater on a
+      high-protein diet, which is the cautious reading for tankmates. Invertebrates remain a large
+      part of the natural diet, especially in young fish. All votes agree that the species is not
+      bloat-sensitive: no source reports bloat, and the only feeding warning concerns fatty meat of
+      mammals and birds.
+    sources:
+      - &huyghe2025
+        kind: literature
+        title: >-
+          Huyghe, C. E., Fages, A., Ronco, F., Indermaur, A., Schedel, F. D., Kimirei, I., Makasa,
+          L., Tschopp, P. and Salzburger, W. (2025). Metagenomic insights into the dietary
+          diversity of the adaptive radiation of cichlid fishes in Lake Tanganyika. Molecular
+          Ecology 34, e17743.
+        url: https://doi.org/10.1111/mec.17743
+        accessed: 2026-10-12
+      - *jackson2026
+      - *fishbase
+      - &fbfood
+        kind: database
+        title: FishBase food items, Cyphotilapia frontosa
+        url: https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=8887&genus=Cyphotilapia&species=frontosa
+        accessed: 2026-10-12
+      - *sf
+      - *tsi
+      - &crc
+        kind: database
+        title: Cichlid Room Companion, Cyphotilapia frontosa (public summary)
+        url: https://cichlidae.com/species.php?id=1ejYWGbHvs6dWXIYCtFk0w
+        accessed: 2026-10-12
+      - *adw
+      - *fk
+      - *fkw
+      - *archive1229
+    evidence:
+      - source: *huyghe2025
+        value: {type: piscivore, bloatSensitive: false}
+        note: wild fish from the Kigoma area; mainly fish reads plus many copepod and other arthropod reads
+      - source: *jackson2026
+        value: {type: invertivore, bloatSensitive: false}
+        note: isotope model of juveniles and small adults; mussels, jellyfish and fish similar overall, fish dominant only at Burundi
+      - source: *sf
+        value: {type: invertivore, bloatSensitive: false}
+        note: generalised predator of smaller fish, macro-invertebrates and molluscs without ranking them; warns against fatty meat
+      - source: *adw
+        value: {type: invertivore, bloatSensitive: false}
+        note: mainly shellfish and smaller fish
+      - source: *fishbase
+        value: {type: omnivore, bloatSensitive: false}
+        note: called omnivorous; snails, mussels and fish
+      - source: *fk
+        value: {type: omnivore, bloatSensitive: false}
+        note: omnivorous with a preference for meaty foods
+      - source: *tsi
+        value: {type: piscivore, bloatSensitive: false}
+        note: adults primarily piscivorous; stomachs also held mussels, insect larvae, shrimps and snails
+      - source: *crc
+        value: {type: piscivore, bloatSensitive: false}
+        note: summary line, verification only
+      - source: *fkw
+        value: {type: piscivore, bloatSensitive: false}
+        note: carnivore fed with krill, shrimp, mussel and fish
+      - source: *archive1229
+        value: {type: piscivore, bloatSensitive: false}
+        note: keeper experience that grown fish eat smaller tankmates
+    verification:
+      method: conservative
+      votes: {agree: 3, total: 5}
+
+  aggressionConspecific:
+    value: 2
+    confidence: medium
+    rationale: >-
+      Groups form a clear dominance hierarchy with one or more alpha males; rival males display and
+      chase, but serious injuries are uncommon in a large tank with several females per male.
+      Seriously Fish and Aqua-Fish recommend groups of at least five so that the pressure is spread,
+      and Fishstores advises removing surplus males as the hierarchy forms. Keepers in the
+      cichlids.com archive describe the species as calm and best kept in colonies. Too few fish or a
+      too small tank concentrate the aggression of the dominant male.
+    sources:
+      - *sf
+      - *fk
+      - *aquafish
+      - *tsi
+      - *fstores
+      - *fkw
+      - &archive13172
+        kind: archive
+        title: cichlids.com forum thread 13172
+        url: https://www.cichlids.com/disc/read.php?1,13172
+        accessed: 2026-10-12
+      - kind: archive
+        title: cichlids.com forum thread 12449
+        url: https://www.cichlids.com/disc/read.php?1,12449
+        accessed: 2026-10-12
+    evidence:
+      - source: *sf
+        value: 2
+        note: dominance hierarchy in groups of five or more, males without distinct territories
+      - source: *fk
+        value: 2
+        note: not overly aggressive, social hierarchy in the group
+      - source: *aquafish
+        value: 1
+        note: peaceful towards its own species in a group of 5 to 7
+      - source: *tsi
+        value: 2
+        note: moderate aggression within the group
+      - source: *fstores
+        value: 2
+        note: remove surplus males as the hierarchy forms
+      - source: *fkw
+        value: 2
+      - source: *archive13172
+        value: 1
+        note: described as not very aggressive, best kept in colonies
+
+  aggressionHeterospecific:
+    value: 1
+    confidence: medium
+    rationale: >-
+      Apart from eating fish that fit into its mouth, which the predation level covers, the species
+      is calm towards other fish of similar size; a breeding male defends his cave mainly by
+      displaying. Several sources call it gentle or laid-back, and it is more often the victim of
+      boisterous tankmates such as Tropheus than the aggressor. Fishkeeping World and Build Your
+      Aquarium mention short chases around its shelter and at feeding.
+    sources:
+      - *sf
+      - *fk
+      - *tfwf
+      - *fp
+      - *aquafish
+      - *fstores
+      - *tsi
+      - *fkw
+      - *bya
+      - &archive605
+        kind: archive
+        title: cichlids.com forum thread 605
+        url: https://www.cichlids.com/disc/read.php?1,605
+        accessed: 2026-10-12
+    evidence:
+      - source: *sf
+        value: 1
+        note: suitable for a well-chosen Tanganyika community
+      - source: *fk
+        value: 1
+        note: fits a Tanganyikan community of similar size
+      - source: *tfwf
+        value: 1
+        note: peaceful, stressed by Tropheus
+      - source: *fp
+        value: 0
+        note: gentle and shy
+      - source: *aquafish
+        value: 1
+        note: aggressive only towards smaller fish, which is predation
+      - source: *fstores
+        value: 1
+        note: calm, less aggressive than mbuna
+      - source: *tsi
+        value: 1
+        note: dominant because of its size
+      - source: *fkw
+        value: 2
+        note: chases competitors for space or food
+      - source: *bya
+        value: 2
+        note: chases intruders from its territory
+      - source: *archive605
+        value: 0
+        note: kept as a calm, non-aggressive fish
+
+  territory:
+    value: {size: small, breedingOnly: false}
+    confidence: medium
+    rationale: >-
+      Males do not hold large territories or dig nests. The dominant male claims a particular cave
+      or sheltered spot, which Seriously Fish does not tie to spawning; brooding females retreat into caves as
+      well, while the rest of the group shares the open water. Some sources describe only loosely
+      defended spawning sites, but the cave of the alpha male is a lasting claim, so the territory
+      is not limited to breeding.
+    sources:
+      - *sf
+      - *fk
+      - *tsi
+      - *tfwf
+      - *fkw
+      - *bya
+    evidence:
+      - source: *sf
+        value: {size: small, breedingOnly: false}
+        note: alpha males choose a particular cave; no distinct territories otherwise
+      - source: *fk
+        value: {size: small, breedingOnly: true}
+        note: male defends a site weakly when spawning
+      - source: *tsi
+        value: {size: small, breedingOnly: true}
+        note: loosely defended spawning sites
+      - source: *tfwf
+        value: {size: small, breedingOnly: false}
+        note: peaceful but territorial
+      - source: *fkw
+        value: {size: small, breedingOnly: false}
+      - source: *bya
+        value: {size: small, breedingOnly: false}
+        note: chases intruders from its territory
+
+  habitatZones:
+    value: [rock, sand, openWater]
+    confidence: medium
+    rationale: >-
+      Lives over sediment-rich rocky slopes with boulders and sand or mud patches, mostly at 15 to
+      50 m, and forages over soft substrate as well. Groups hover in the water column above the
+      rocks; FishBase calls the species benthopelagic. The tank needs a few large caves, a sandy
+      bottom and plenty of open swimming space.
+    sources:
+      - *sf
+      - *fishbase
+      - *adw
+      - *jackson2026
+      - &sfgib
+        kind: database
+        title: Seriously Fish, Cyphotilapia gibberosa
+        url: https://seriouslyfish.com/species/cyphotilapia-gibberosa
+        accessed: 2026-10-12
+      - *tsi
+    evidence:
+      - source: *sf
+        value: [rock, sand, openWater]
+        note: boulders with open substrate patches, large aggregations
+      - source: *fishbase
+        value: [rock, openWater]
+        note: rock-dwellers in aggregations, benthopelagic
+      - source: *adw
+        value: [rock, openWater]
+        note: schools along rocks at 30 to 50 m
+      - source: *jackson2026
+        value: [rock, sand]
+        note: foraging over soft substrate at several sites
+      - source: *sfgib
+        value: [rock, sand]
+        note: page of the sister species; boulders with open sediment at 15 to 70 m
+      - source: *tsi
+        value: [rock]
+        note: deep rocky habitat
+
+  social:
+    value: {structure: group, minGroup: 5}
+    confidence: medium
+    rationale: >-
+      A gregarious colony fish that forms large aggregations in the wild. Seriously Fish recommends
+      at least five fish, ideally ten or more, Fishkeeper seven to ten and Aqua-Fish five to seven.
+      Males are polygynous: Seriously Fish advises three to four females per male, FishBase several
+      females per male, and other care sheets four to seven. A group of at least five with a female
+      surplus is the recommended unit.
+    sources:
+      - *sf
+      - *fk
+      - *aquafish
+      - *fishbase
+      - *fp
+      - *fstores
+      - *bya
+      - *fkw
+    evidence:
+      - source: *sf
+        value: {structure: group, minGroup: 5}
+        note: ideally ten or more, three to four females per male
+      - source: *fk
+        value: {structure: group, minGroup: 5}
+        note: seven to ten preferred
+      - source: *aquafish
+        value: {structure: group, minGroup: 5}
+      - source: *fp
+        value: {structure: group, minGroup: 5}
+      - source: *fishbase
+        value: {structure: harem, ratio: 3}
+        note: several females per male; the number three is an interpretation
+      - source: *fstores
+        value: {structure: harem, ratio: 6}
+        note: five to seven females
+      - source: *bya
+        value: {structure: harem, ratio: 5}
+        note: four to six females
+
+  speciesOnly:
+    value: false
+    confidence: medium
+    rationale: >-
+      All three votes agree. Seriously Fish, Fishkeeper, TropicalFreshwaterFish and Fishstores keep
+      the species in a Lake Tanganyika community with calm tankmates too large to be eaten, such as
+      Altolamprologus, featherfin cichlids and large Synodontis. Many keepers prefer a species tank,
+      and Tanganyika.si names it as the ideal, but no source requires it in the way the hobby does
+      for Tropheus. The restrictions are the predation risk to small fish and stress from hasty
+      feeders.
+    sources:
+      - *sf
+      - *fk
+      - *tfwf
+      - *aquafish
+      - *tsi
+      - *fstores
+      - *fkw
+    evidence:
+      - source: *sf
+        value: false
+        note: part of a well-chosen Tanganyikan community in a large tank
+      - source: *fk
+        value: false
+        note: community with similar-sized, calm Tanganyikans
+      - source: *tfwf
+        value: false
+        note: lists large open-water Tanganyikans and Synodontis as companions; Tropheus unsuitable
+      - source: *aquafish
+        value: false
+      - source: *tsi
+        value: false
+        note: ideally species-only or with large tankmates
+      - source: *fstores
+        value: false
+        note: lists Altolamprologus and Synodontis as tankmates
+      - source: *fkw
+        value: false
+        note: lists suitable large tankmates
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+
+  hybridGroup:
+    value: cyphotilapia
+    confidence: medium
+    rationale: >-
+      All three votes agree on the group cyphotilapia with the members Cyphotilapia frontosa and
+      Cyphotilapia gibberosa. The two sister species differ only in scale counts and body
+      proportions (Takahashi and Nakaya 2003), and the Catalog of Fishes records both the
+      synonymisation by Konings and the revalidation. Jackson et al. (2024) found a hybrid zone in
+      the middle of the east coast with introgression in both directions, and Tanganyika.si reports
+      that the intermediate central populations may be of hybrid origin, so the two cross under
+      natural conditions. In the trade the blue southern forms are often sold as frontosa, and
+      Seriously Fish stresses that populations are labelled by locality to keep pure lines. Keeping
+      both species, or different locality forms, in one tank produces crosses that cannot be told
+      apart from either parent.
+    sources:
+      - *jackson2024
+      - *sf
+      - *takahashi2003
+      - *cof
+      - *tsi
+      - *sfgib
+    evidence:
+      - source: *jackson2024
+        value: cyphotilapia
+        note: hybrid zone and introgression between the two species
+      - source: *sf
+        value: cyphotilapia
+        note: the 'Blue Zaire' forms belong to C. gibberosa; locality labels keep pure lines
+      - source: *cof
+        value: cyphotilapia
+        note: two valid species in the genus; synonymisation by Konings recorded
+      - source: *tsi
+        value: cyphotilapia
+        note: central lake populations possibly of hybrid origin
+      - source: *sfgib
+        value: cyphotilapia
+        note: separated only by meristic characters
+      - source: *takahashi2003
+        value: cyphotilapia
+        note: C. gibberosa separated by scale rows and body proportions
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+
+  coloration:
+    value:
+      baseColors: [white, black, blue]
+      pattern: bars
+    confidence: high
+    rationale: >-
+      Six broad black to blue-black vertical bars (seven in the Kigoma form), the first through the
+      eye, on a white to pale bluish body; the fins and the face of adults have a blue sheen. Old
+      males become darker. C. gibberosa looks very similar but is bluer.
+    sources:
+      - *sf
+      - *jackson2024
+      - *tfwf
+      - &dewiki
+        kind: website
+        title: Wikipedia (de), Tanganjika-Beulenkopf
+        url: https://de.wikipedia.org/wiki/Tanganjika-Beulenkopf
+        accessed: 2026-10-12
+      - kind: archive
+        title: cichlids.com forum thread 8984
+        url: https://www.cichlids.com/disc/read.php?1,8984
+        accessed: 2026-10-12
+      - kind: archive
+        title: cichlids.com forum thread 281
+        url: https://www.cichlids.com/disc/read.php?1,281
+        accessed: 2026-10-12
+    evidence:
+      - source: *sf
+        value: {baseColors: [white, black, blue], pattern: bars}
+        note: six bars, seven in the Kigoma form
+      - source: *jackson2024
+        value: {baseColors: [white, black], pattern: bars}
+        note: northern forms predominantly black and white
+      - source: *tfwf
+        value: {baseColors: [white, black, blue], pattern: bars}
+        note: white to violet-blue fins
+      - source: *dewiki
+        value: {baseColors: [white, black, blue], pattern: bars}
+        note: whitish to pale blue body with blackish to deep blue bars
+
+  feedingSpeed:
+    value: slow
+    confidence: medium
+    rationale: >-
+      A deliberate, calm feeder. Build Your Aquarium calls it a slow feeder, TropicalFreshwaterFish
+      describes a laid-back, semi-nocturnal stalker that Tropheus stress, and keepers in the
+      cichlids.com archive report that it takes food only after faster Malawi tankmates have eaten.
+      Hasty, greedy fish can starve it of its share.
+    sources:
+      - *tfwf
+      - *bya
+      - *sf
+      - kind: archive
+        title: cichlids.com forum thread 38378
+        url: https://www.cichlids.com/disc/read.php?2,38378
+        accessed: 2026-10-12
+    evidence:
+      - source: *tfwf
+        value: slow
+        note: laid-back, semi-nocturnal fish stressed by Tropheus
+      - source: *bya
+        value: slow
+        note: slow feeder
+      - source:
+          kind: archive
+          title: cichlids.com forum thread 38378
+          url: https://www.cichlids.com/disc/read.php?2,38378
+          accessed: 2026-10-12
+        value: slow
+        note: feeds after the Malawi tankmates
+
+  minTank:
+    value: {volumeL: 860, lengthCm: 240, depthCm: 60}
+    confidence: medium
+    rationale: >-
+      For a group of five or more adults. Seriously Fish gives 240 x 60 x 60 cm, about 860 litres,
+      as the minimum for long-term keeping and recommends more depth; Fishkeeper names about 8 x 2 x
+      2 ft for fish older than a few years, FishBase more than 200 cm and Tanganyika.si 1000 litres.
+      Smaller figures (Aqua-Fish 500 litres, Build Your Aquarium about 570 litres, Fishkeeping World
+      about 470 litres for three adults) cover fewer or younger fish than the recommended group.
+      Juveniles can start in a smaller tank but stunt if they are not moved on.
+    sources:
+      - *sf
+      - *fk
+      - *fishbase
+      - *tsi
+      - *aquafish
+      - *bya
+      - *fkw
+    evidence:
+      - source: *sf
+        value: {volumeL: 864, lengthCm: 240, depthCm: 60}
+      - source: *fk
+        value: {volumeL: 900, lengthCm: 244, depthCm: 61}
+        note: 8 x 2 x 2 ft
+      - source: *fishbase
+        value: {lengthCm: 200}
+        note: length above 200 cm
+      - source: *tsi
+        value: {volumeL: 1000}
+      - source: *aquafish
+        value: {volumeL: 500}
+        note: small group
+      - source: *bya
+        value: {volumeL: 570}
+        note: 125 to 150 US gallons for four to six fish
+      - source: *fkw
+        value: {volumeL: 473}
+        note: 125 US gallons for three or more adults
+
+  lifespanYears:
+    value: {min: 15, max: 25}
+    confidence: medium
+    rationale: >-
+      A slow-growing, late-maturing fish that lives long in good conditions. Fishstores and
+      Fishkeeping World give 15 to 25 years, Fishkeeper calls 25 years not unusual and Aqua-Fish
+      reports more than 25 years in captivity. There are no field data on longevity.
+    sources:
+      - *fstores
+      - *fk
+      - *aquafish
+      - *fkw
+      - *bya
+    evidence:
+      - source: *fstores
+        value: {min: 15, max: 25}
+      - source: *fk
+        value: {max: 25}
+        note: up to 25 years not unusual
+      - source: *aquafish
+        value: {min: 25}
+        note: over 25 years
+      - source: *fkw
+        value: {min: 15, max: 25}
+
+  breeding:
+    value: maternal-mouthbrooder
+    confidence: high
+    rationale: >-
+      The female collects the few large eggs (usually 10 to 50) and broods them for five to seven
+      weeks, feeding the young inside her mouth with food she takes in; males dig no nests and
+      court several females. Spawning often takes place in or near a cave. The Cichlid Room
+      Companion summary line confirms a maternal mouthbrooder.
+    sources:
+      - *fishbase
+      - *sf
+      - *fk
+      - *tsi
+      - *tfwf
+      - *crc
+    evidence:
+      - source: *fishbase
+        value: maternal-mouthbrooder
+        note: food intake of brooding females nourishes the young
+      - source: *sf
+        value: maternal-mouthbrooder
+        note: brooding for 35 to 50 days or more
+      - source: *tsi
+        value: maternal-mouthbrooder
+      - source: *tfwf
+        value: maternal-mouthbrooder
+      - source: *crc
+        value: maternal-mouthbrooder
+
+  beginnerSuitability:
+    value: demanding
+    confidence: medium
+    rationale: >-
+      Peaceful and hardy in stable water, but it needs a tank of about 2.4 m, hard alkaline water
+      of excellent quality, a group with several females, careful choice of tankmates and years of
+      patience until maturity. Seriously Fish rates it difficult, TropicalFreshwaterFish delicate
+      with a care difficulty of 7 of 10, and Tanganyika.si asks for 1000 litres; Fishkeeping World
+      rates it moderate.
+    sources:
+      - *sf
+      - *tfwf
+      - *tsi
+      - *fkw
+    evidence:
+      - source: *sf
+        value: demanding
+        note: rated difficult, needs an established tank of at least 2 m
+      - source: *tfwf
+        value: demanding
+        note: delicate, care difficulty 7 of 10, breeding difficult
+      - source: *tsi
+        value: demanding
+        note: 1000 litres minimum
+      - source: *fkw
+        value: moderate
+
+partners:
+  suitable:
+    - species: Cyathopharynx furcifer
+      reason: Large, calm open-water Tanganyikan of similar temperament and the same water.
+      condition: Tank of at least 240 cm; add the featherfins as adults.
+    - species: Ophthalmotilapia ventralis
+      reason: Peaceful Tanganyikan that uses the open water and is too large to be eaten as an adult.
+      condition: Only fully grown fish of 12 cm or more.
+    - species: Altolamprologus calvus
+      reason: Slow, armoured cave dweller that ignores the frontosa and is ignored in return.
+      condition: Add as adults of at least 12 cm, never as juveniles.
+    - species: Synodontis multipunctatus
+      reason: Robust Tanganyikan catfish that uses the bottom and is too spiny and large to be eaten.
+      condition: Brood parasite of mouthbrooders; can disturb frontosa broods, so not in a breeding tank.
+  unsuitable:
+    - species: Tropheus moorii
+      reason: Hasty, quarrelsome aufwuchs feeder that stresses the calm frontosa and needs a low-protein diet the frontosa does not share.
+    - species: Cyprichromis leptosoma
+      reason: Small open-water fish that the frontosa hunts at night.
+    - species: Neolamprologus multifasciatus
+      reason: Shell dweller small enough to be swallowed whole.
+    - species: Cyphotilapia gibberosa
+      reason: Sister species from the south of the lake in the same hybrid group; both cross and the offspring cannot be identified.
+    - species: Maylandia zebra
+      reason: Hasty, aggressive Malawi mbuna with a plant-based diet; it outcompetes the frontosa at feeding.
+    - species: Amphilophus citrinellus
+      reason: Aggressive Central American cichlid that attacks the slow frontosa and needs different water.
+
+profile:
+  overview:
+    text: >-
+      Cyphotilapia frontosa is one of the classic large cichlids of Lake Tanganyika. Its broad black
+      bars on a white body, the blue fins and the growing forehead hump of adult males make it a
+      showpiece for big tanks. Despite its size it is a calm colony fish that moves slowly and lives
+      for many years. In 2003 the southern populations were described as a species of their own,
+      Cyphotilapia gibberosa, and genetic data support the split; this includes all blue 'Zaire'
+      forms such as Moba, as well as Mpimbwe, Kipili and the Zambian forms. This profile covers only
+      the northern species: Burundi, the seven-bar Kigoma form and the other northern localities.
+      Buy fish with a clear locality name and keep forms apart, because the two species and their
+      forms cross readily.
+    sources:
+      - *cof
+      - *sf
+      - *takahashi2003
+      - *jackson2024
+  habitat:
+    text: >-
+      The species lives only in the northern half of Lake Tanganyika, from Burundi south to Bulu
+      Point on the Tanzanian coast and Cape Tembwe on the Congo coast. It prefers rocky slopes covered
+      with sediment, with boulders and sand between them, mostly at 15 to 50 metres and occasionally
+      much deeper. Large fish stay deeper than young ones. In the wild the fish form loose schools of
+      dozens to hundreds above the rocks. The lake water is warm, very stable, hard and strongly
+      alkaline, with a pH near 9 and a high carbonate hardness. Because it lives so deep, wild fish
+      have to be brought up slowly over days, which made wild imports expensive.
+    sources:
+      - *fishbase
+      - *sf
+      - *adw
+      - *plisnier1
+      - *cohen
+  sizeAndGrowth:
+    text: >-
+      Males usually reach about 33 cm in the aquarium, rarely more; females stay at about 25 cm.
+      Growth is slow: young fish of 3 to 5 cm need several years to reach adult size, and sexual
+      maturity comes after about two to three years. The hump on the forehead only develops with age
+      and is much larger in males. Fish kept too long in small tanks remain stunted and do not reach
+      their full size or colour, so plan the final tank from the start.
+    sources:
+      - *fishbase
+      - *fk
+      - *tfwf
+      - *sf
+  husbandry:
+    text: >-
+      A group needs a tank of at least 240 x 60 x 60 cm, about 860 litres, and more depth is
+      welcome. Use sand and a few large, stable rock structures with caves big enough for the largest
+      male, but leave most of the tank open for swimming. Avoid sharp edges because the fish startle
+      easily. The water should be hard and alkaline, pH about 8 to 9, at 24 to 26 C; soft tap water
+      needs buffering to a carbonate hardness of about 10 dKH or more. Frontosa react badly to
+      nitrate build-up and to an immature filter, so install strong filtration with gentle flow and
+      change 30 to 50 percent of the water every week. Subdued light suits these deep-water fish.
+    sources:
+      - *sf
+      - *fk
+      - *tfwf
+      - *fstores
+  socialBehavior:
+    text: >-
+      Frontosa live in groups with a clear ranking. One dominant male, sometimes two in large tanks,
+      claims the best cave and displays to rivals, while the other fish share the open water. Keep at
+      least five fish, ideally one male with three or more females, so that courtship and aggression
+      are spread out. Fights rarely cause injuries if the tank is large enough. Towards other species
+      the frontosa is calm and even shy, but it is a predator: fish small enough to fit into its mouth
+      are eaten, mostly at night or at dawn while they rest.
+    sources:
+      - *sf
+      - *fk
+      - *tfwf
+      - *archive13172
+  diet:
+    text: >-
+      In the wild the frontosa eats fish, mussels, snails, shrimps and even jellyfish; larger adults
+      take more fish. Studies disagree on whether fish or invertebrates make up the larger share, so
+      the catalog treats it as a fish eater when it checks tankmates. In the aquarium a quality
+      sinking pellet for large carnivorous cichlids works well as the staple, completed with frozen
+      krill, Mysis, shrimp, mussel or cockle meat and pieces of marine fish. A food with some
+      spirulina adds variety. Do not feed beef heart, chicken or other mammal and bird meat, because
+      the fish cannot digest these fats well. Live feeder fish are not needed and bring a risk of
+      disease. Feed adults once a day, enough to be eaten within a few minutes, and make sure that
+      faster tankmates do not take all the food.
+    sources:
+      - *jackson2026
+      - *huyghe2025
+      - *sf
+      - *fk
+  breeding:
+    text: >-
+      The frontosa is a maternal mouthbrooder. A mature male cleans a spot, often in or near a cave,
+      and courts one female after another. Each female lays only 10 to 50 large eggs, which she takes
+      into her mouth one by one. She carries the brood for five to seven weeks and feeds the young
+      inside her mouth with small food particles, so they leave as well-developed fry of about 1.5 cm.
+      Feed brooding females small food such as Artemia, as they keep eating. Fry accept Artemia
+      nauplii and crushed flakes at once and grow slowly. Breeding needs patience: fish rarely spawn
+      before they are three years old.
+    sources:
+      - *sf
+      - *fk
+      - *fishbase
+      - *tfwf
+  sexing:
+    text: >-
+      Juveniles cannot be sexed. Adult males grow much larger than females, develop a bigger forehead
+      hump and longer fins, especially the ventral and dorsal fins. Females stay smaller with a lower
+      hump and shorter fins. In a group the largest fish with the biggest hump is usually the
+      dominant male, but slow growth means that the sexes only become clear after two to three years.
+      Venting by an experienced keeper is the only reliable method for younger fish.
+    sources:
+      - *sf
+      - *fk
+  compatibility:
+    text: >-
+      The best companions are calm Lake Tanganyika fish that are too large to be eaten and do not
+      outcompete the frontosa at feeding. Featherfin cichlids such as Cyathopharynx and
+      Ophthalmotilapia, adult Altolamprologus calvus and robust Synodontis catfish are proven choices.
+      Small species such as Cyprichromis, shell dwellers and juvenile fish of any kind end up as food.
+      Hasty and pushy fish like Tropheus or Malawi mbuna stress the frontosa and take its food, and
+      aggressive Central American cichlids do not belong with it. Never mix it with Cyphotilapia
+      gibberosa or keep different locality forms together, because they cross.
+    sources:
+      - *tfwf
+      - *fk
+      - *sf
+      - *jackson2024
+  problems:
+    text: >-
+      The most common mistake is a tank that is too small: the fish then stunt, grow nervous and the
+      dominant male harasses the others. Rapid changes in hardness or pH, high nitrate and a new,
+      immature filter are poorly tolerated; signs are clamped fins, fast breathing and fish gasping
+      at the surface. Fatty meat from mammals or birds leads to fat deposits and organ damage over the
+      years. Feeder fish can introduce parasites. Frontosa startle easily, so sudden light or
+      movement can make them crash into rocks or the glass. Stripping females of their brood too early
+      weakens them. If a fish lies apart and stops eating, check the water values first and consult a
+      fish veterinarian.
+    sources:
+      - *sf
+      - *fk
+      - kind: archive
+        title: cichlids.com forum thread 999
+        url: https://www.cichlids.com/disc/read.php?1,999
+        accessed: 2026-10-12
+
+provenance:
+  runs:
+    - {role: generator, model: claude-opus-5-5, date: 2026-10-12}
+    - {role: checker, model: claude-opus-5-5, date: 2026-10-12}
+    - {role: checker, model: claude-sonnet-5-5, date: 2026-10-12}
+    - {role: checker, model: claude-opus-5-5, date: 2026-10-12}
+    - {role: checker, model: claude-sonnet-5-5, date: 2026-10-12}
+    - {role: adjudicator, model: claude-opus-5-5, date: 2026-10-12}
+  disagreements:
+    - field: taxonomy.synonyms
+      proposals:
+        - by: generator
+          value: [Paratilapia frontosa, Pelmatochromis frontosus, Cyphotilapia frontosus]
+        - by: checker-a
+          value: [Paratilapia frontosa, Pelmatochromis frontosus, Cyphotilapia frontosus]
+        - by: checker-b
+          value: [Paratilapia frontosa]
+      decision: [Paratilapia frontosa, Pelmatochromis frontosus, Cyphotilapia frontosus]
+      rationale: >-
+        FishBase lists the Pelmatochromis combination and the masculine spelling next to the
+        original combination; both occur in older literature and the trade and help to find the
+        species, so all three are kept with notes.
+    - field: features.origin.value.waterbody
+      proposals:
+        - by: generator
+          value: Lake Tanganyika
+        - by: checker-a
+          value: Lake Tanganyika
+        - by: checker-b
+          value: lake-tanganyika
+      decision: Lake Tanganyika
+      rationale: Both spellings name the same entry of the water body table; the name form is used, as in the other proposals.
+    - field: features.origin.value.localities
+      proposals:
+        - by: generator
+          value: [Burundi coast (Bujumbura, Magara, Nyanza), Kigoma, Mwamgongo, Cape Kabogo, Karilani Island, Bulu Point, Kavala, Kabimba, Ubwari, Cape Tembwe]
+        - by: checker-a
+          value: [Kigoma (type locality), Bujumbura, Magara, Nyanza, Bulu Point, Kabimba, Kavala, Ubwari, Tembwe]
+        - by: checker-b
+          value: [Kigoma, Burundi]
+      decision: [Burundi coast (Bujumbura, Magara, Nyanza), Kigoma (type locality), Mwamgongo, Cape Kabogo, Karilani Island, Bulu Point, Kavala, Kabimba, Ubwari, Cape Tembwe]
+      rationale: >-
+        The lists do not contradict each other; the generator's list is the most complete and
+        includes the southernmost populations sampled by Jackson et al. (2024). The type locality
+        is marked as in checker-a.
+    - field: features.ph.tolerance
+      proposals:
+        - by: generator
+          value: {min: 8.0, max: 9.4}
+        - by: checker-a
+          value: {min: 8.0, max: 9.4}
+        - by: checker-b
+          value: {min: 7.8, max: 9.4}
+      decision: {min: 8.0, max: 9.4}
+      rationale: Decided by the vote count (unanimous, 3 of 3 within 0.3 pH); the median of the agreeing bounds is 8.0 to 9.4.
+    - field: features.ghDgh.tolerance
+      proposals:
+        - by: generator
+          value: {min: 8, max: 25}
+        - by: checker-a
+          value: {min: 8, max: 25}
+        - by: checker-b
+          value: {min: 8, max: 22}
+        - by: tiebreaker-1
+          value: {min: 8, max: 25}
+        - by: tiebreaker-2
+          value: {min: 10, max: 22}
+      decision: {min: 10, max: 22}
+      rationale: >-
+        Decided by the vote count (conservative, 3 of 5): the top proposal of 8 to 25 dGH has only
+        three agreeing votes, fewer than the four a qualified majority needs, so the tolerance is
+        the intersection of all votes, 10 to 22 dGH, which contains the natural 10 to 13 dGH.
+        Confidence is low.
+    - field: features.khDkh.tolerance
+      proposals:
+        - by: generator
+          value: {min: 10, max: 20}
+        - by: checker-a
+          value: {min: 10, max: 20}
+        - by: checker-b
+          value: {min: 12, max: 20}
+      decision: {min: 10, max: 20}
+      rationale: Decided by the vote count (unanimous, 3 of 3 within 2 dKH); the median of the agreeing bounds is 10 to 20.
+    - field: features.maxSizeCm
+      proposals:
+        - by: generator
+          value: {male: 33, female: 25}
+        - by: checker-a
+          value: {male: 30, female: 25}
+        - by: checker-b
+          value: {male: 35, female: 25}
+      decision: {male: 33, female: 25}
+      rationale: >-
+        All agree on 25 cm for females. For males FishBase gives 33 cm total length and Seriously
+        Fish about 32 cm total length, while TropicalFreshwaterFish, Tanganyika.si and Animal
+        Diversity Web give 35 cm and Aqua-Fish 25 to 30 cm in the tank. 33 cm is the median
+        proposal and matches the two most reliable databases.
+    - field: features.diet
+      proposals:
+        - by: generator
+          value: {type: piscivore, bloatSensitive: false, foods: [sinking cichlid pellets and sticks, krill and Mysis, shrimp and prawn, mussel and cockle meat, whole marine fish pieces, some spirulina-based food]}
+        - by: checker-a
+          value: {type: piscivore, bloatSensitive: false, foods: [small fish, mussels, snails, shrimps and other crustaceans, jellyfish (Limnocnida), zooplankton, insect larvae]}
+        - by: checker-b
+          value: {type: invertivore, bloatSensitive: false, foods: [mussels, snails, crustaceans, fish, zooplankton]}
+        - by: tiebreaker-1
+          value: {type: piscivore, bloatSensitive: false, foods: [fish, molluscs, crustaceans, insect larvae, zooplankton]}
+        - by: tiebreaker-2
+          value: {type: invertivore, bloatSensitive: false, foods: [molluscs, macro-invertebrates, small fish]}
+      decision: {type: piscivore, bloatSensitive: false}
+      rationale: >-
+        Decided by the vote count (conservative, 3 of 5): piscivore has three votes and
+        invertivore two, so no proposal reached a qualified majority and the strictest proposed
+        type, piscivore, applies with low confidence; bloatSensitive is false in every vote. The
+        food list merges the wild prey named by the checkers and tie-breakers with the aquarium
+        foods of the generator.
+    - field: features.territory
+      proposals:
+        - by: generator
+          value: {size: small, breedingOnly: false}
+        - by: checker-a
+          value: {size: small, breedingOnly: false}
+        - by: checker-b
+          value: {size: small, breedingOnly: true}
+      decision: {size: small, breedingOnly: false}
+      rationale: >-
+        Seriously Fish describes the alpha male selecting a particular cave without tying it to spawning;
+        only some sources mention loosely defended spawning sites. A lasting claim on a cave is the
+        better description and the more cautious value for the compatibility check.
+    - field: features.habitatZones
+      proposals:
+        - by: generator
+          value: [rock, sand, openWater]
+        - by: checker-a
+          value: [rock, sand, openWater]
+        - by: checker-b
+          value: [rock, sand]
+      decision: [rock, sand, openWater]
+      rationale: >-
+        The species is benthopelagic and schools in the water column above the rocks (Seriously
+        Fish, FishBase, Animal Diversity Web), and the tank needs plenty of open swimming space, so
+        open water is part of its habitat even though it does not live in the pelagic zone.
+    - field: features.social
+      proposals:
+        - by: generator
+          value: {structure: group, minGroup: 5}
+        - by: checker-a
+          value: {structure: group, minGroup: 5}
+        - by: checker-b
+          value: {structure: harem, ratio: 4}
+      decision: {structure: group, minGroup: 5}
+      rationale: >-
+        The species lives in large aggregations and the care sources name a minimum group of five
+        rather than a fixed harem; the recommended female surplus is described in the rationale.
+    - field: features.minTank
+      proposals:
+        - by: generator
+          value: {volumeL: 860, lengthCm: 240, depthCm: 60}
+        - by: checker-a
+          value: {volumeL: 860, lengthCm: 240, depthCm: 60}
+        - by: checker-b
+          value: {volumeL: 600, lengthCm: 200, depthCm: 50}
+      decision: {volumeL: 860, lengthCm: 240, depthCm: 60}
+      rationale: >-
+        Seriously Fish, Fishkeeper and Tanganyika.si agree on about 860 to 1000 litres and 240 cm
+        for a group of adults; the smaller figures of 470 to 600 litres refer to three adults or
+        to young fish and fall short of the minimum group of five.
