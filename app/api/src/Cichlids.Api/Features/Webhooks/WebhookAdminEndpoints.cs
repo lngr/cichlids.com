@@ -1,5 +1,6 @@
 using Cichlids.Api.Features.Auth;
 using Cichlids.Domain.Entities;
+using Cichlids.Infrastructure.Outbox;
 using Cichlids.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
@@ -27,7 +28,10 @@ public static class WebhookAdminEndpoints
     }
 
     private static async Task<Results<Created<WebhookDto>, BadRequest<string>>> CreateAsync(
-        CichlidsDbContext context, [FromBody] CreateWebhookRequest request, CancellationToken cancellationToken)
+        CichlidsDbContext context,
+        WebhookTargetPolicy targetPolicy,
+        [FromBody] CreateWebhookRequest request,
+        CancellationToken cancellationToken)
     {
         var url = request.Url?.Trim();
         var secret = request.Secret?.Trim();
@@ -36,9 +40,9 @@ public static class WebhookAdminEndpoints
             .Select(t => t.Trim())
             .ToList() ?? [];
 
-        if (string.IsNullOrEmpty(url) || !Uri.TryCreate(url, UriKind.Absolute, out _))
+        if (!targetPolicy.IsAllowed(url, out var rejection))
         {
-            return TypedResults.BadRequest("A valid absolute url is required.");
+            return TypedResults.BadRequest(rejection);
         }
 
         if (string.IsNullOrEmpty(secret))

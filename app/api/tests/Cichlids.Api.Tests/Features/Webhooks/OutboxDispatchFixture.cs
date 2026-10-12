@@ -48,6 +48,10 @@ public sealed class OutboxDispatchFixture : IAsyncLifetime
                     ["ObjectStorage:ForcePathStyle"] = "true",
                     ["ObjectStorage:PublicBaseUrl"] = "http://objects.test/cichlids-media",
                     ["OutboxDispatcher:Enabled"] = "false",
+                    // In-memory configuration overrides the Development allowlist index by index,
+                    // so every index of that list is set here.
+                    ["Webhooks:AllowedTargetHosts:0"] = "127.0.0.1",
+                    ["Webhooks:AllowedTargetHosts:1"] = "localhost",
                 }));
 
             builder.ConfigureServices(services =>

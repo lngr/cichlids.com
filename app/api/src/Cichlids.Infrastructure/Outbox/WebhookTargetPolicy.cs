@@ -33,7 +33,7 @@ public sealed class WebhookTargetPolicy
     /// Returns true when the URL is an allowed webhook target. Otherwise returns false with a
     /// reason that is safe to show to the administrator who submitted the URL.
     /// </summary>
-    public bool IsAllowed(string? url, [NotNullWhen(false)] out string? reason)
+    public bool IsAllowed([NotNullWhen(true)] string? url, [NotNullWhen(false)] out string? reason)
     {
         if (string.IsNullOrWhiteSpace(url) || !Uri.TryCreate(url.Trim(), UriKind.Absolute, out var uri))
         {

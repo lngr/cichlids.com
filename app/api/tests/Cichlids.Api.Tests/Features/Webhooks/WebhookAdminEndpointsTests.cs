@@ -92,6 +92,26 @@ public class WebhookAdminEndpointsTests(ApiFixture fixture)
         Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
     }
 
+    [Theory]
+    [InlineData("ftp://example.test/hook")]
+    [InlineData("file:///etc/passwd")]
+    [InlineData("http://169.254.169.254/latest")]
+    [InlineData("https://not-listed.test/hook")]
+    [InlineData("https://user:pass@example.test/hook")]
+    public async Task PostWebhook_TargetOutsideTheAllowlistReturnsBadRequest(string url)
+    {
+        var token = TestTokens.Create(
+            Guid.NewGuid().ToString(), $"admin-{Guid.NewGuid():N}"[..24], roles: ["admin"]);
+
+        var response = await SendPostAsync(token, new CreateWebhookRequest(url, "s3cret", ["comment.created"]));
+
+        Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+        Assert.Contains("webhook url", await response.Content.ReadAsStringAsync());
+
+        await using var db = fixture.CreateDbContext();
+        Assert.False(await db.WebhookSubscriptions.AnyAsync(w => w.Url == url));
+    }
+
     [Fact]
     public async Task GetWebhooks_AsAdminListsCreatedSubscriptions()
     {

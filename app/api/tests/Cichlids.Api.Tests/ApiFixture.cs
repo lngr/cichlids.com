@@ -60,6 +60,10 @@ public sealed class ApiFixture : IAsyncLifetime
                     // check an outbox row's dispatched_at right after a write; tests that exercise
                     // dispatch drive it directly instead.
                     ["OutboxDispatcher:Enabled"] = "false",
+                    // In-memory configuration overrides the Development allowlist index by index,
+                    // so every index of that list is set here.
+                    ["Webhooks:AllowedTargetHosts:0"] = "example.test",
+                    ["Webhooks:AllowedTargetHosts:1"] = "localhost",
                 }));
 
             // Tokens are validated against the test signing key directly instead of an identity
