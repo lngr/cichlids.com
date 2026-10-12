@@ -2,6 +2,7 @@ using System.Net;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using System.Text.Json.Serialization;
 
 namespace Cichlids.Etl.Identity;
@@ -12,9 +13,11 @@ namespace Cichlids.Etl.Identity;
 /// creates missing users in chunks, deletes users and opens or closes self-registration.
 /// Authenticates as the master realm admin through admin-cli and fetches
 /// a fresh token shortly before the current one expires, so runs over many thousand users keep
-/// working with short token lifetimes.
+/// working with short token lifetimes. Requests answered with 429 or a 5xx status are repeated up
+/// to five attempts with a growing delay (the Retry-After header, capped, when present). Errors
+/// carry the operation, the HTTP status and a short error code, never the response body.
 /// </summary>
-public sealed class KeycloakAdminClient : IDisposable
+public sealed partial class KeycloakAdminClient : IDisposable
 {
     /// <summary>
     /// The default number of users read in one user list page.
@@ -31,6 +34,10 @@ public sealed class KeycloakAdminClient : IDisposable
     private const string EmailClientScope = "email";
     private const string EmailVerifiedClaim = "email_verified";
 
+    private const int MaxAttempts = 5;
+
+    private static readonly TimeSpan MaxRetryDelay = TimeSpan.FromSeconds(30);
+
     // A token is replaced this long before its reported expiry, so a request never starts with a
     // token that runs out while Keycloak processes it.
     private static readonly TimeSpan TokenRefreshMargin = TimeSpan.FromSeconds(20);
@@ -46,6 +53,7 @@ public sealed class KeycloakAdminClient : IDisposable
     private readonly string _serverUrl;
     private readonly int _userPageSize;
     private readonly int _importChunkSize;
+    private readonly Func<TimeSpan, CancellationToken, Task> _delay;
     private string? _accessToken;
     private DateTimeOffset _accessTokenExpiresAt;
 
@@ -55,6 +63,16 @@ public sealed class KeycloakAdminClient : IDisposable
     }
 
     internal KeycloakAdminClient(KeycloakAdminSettings settings, int userPageSize, int importChunkSize)
+        : this(settings, userPageSize, importChunkSize, new HttpClientHandler(), Task.Delay)
+    {
+    }
+
+    internal KeycloakAdminClient(
+        KeycloakAdminSettings settings,
+        int userPageSize,
+        int importChunkSize,
+        HttpMessageHandler handler,
+        Func<TimeSpan, CancellationToken, Task> delay)
     {
         ArgumentOutOfRangeException.ThrowIfLessThan(userPageSize, 1);
         ArgumentOutOfRangeException.ThrowIfLessThan(importChunkSize, 1);
@@ -65,7 +83,8 @@ public sealed class KeycloakAdminClient : IDisposable
         _serverUrl = settings.BaseUrl.ToString().TrimEnd('/');
 
         // A partial import of a full chunk takes a while on a busy server.
-        _http = new HttpClient { Timeout = TimeSpan.FromMinutes(5) };
+        _delay = delay;
+        _http = new HttpClient(handler) { Timeout = TimeSpan.FromMinutes(5) };
     }
 
     /// <summary>
@@ -403,18 +422,70 @@ public sealed class KeycloakAdminClient : IDisposable
         return await SendOnceAsync(method, realmPath, body, cancellationToken);
     }
 
-    private async Task<HttpResponseMessage> SendOnceAsync(
-        HttpMethod method, string realmPath, object? body, CancellationToken cancellationToken)
+    private Task<HttpResponseMessage> SendOnceAsync(
+        HttpMethod method, string realmPath, object? body, CancellationToken cancellationToken) =>
+        SendWithRetryAsync(
+            async () =>
+            {
+                var request = new HttpRequestMessage(
+                    method, $"{_serverUrl}/admin/realms/{Uri.EscapeDataString(_settings.Realm)}/{realmPath}");
+                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", await GetAccessTokenAsync(cancellationToken));
+                if (body is not null)
+                {
+                    request.Content = JsonContent.Create(body, body.GetType(), options: JsonOptions);
+                }
+
+                return request;
+            },
+            cancellationToken);
+
+    // A request message cannot be sent twice, so every attempt builds its own from the factory.
+    // 429 and 5xx answers are repeated with a delay that doubles per attempt starting at one
+    // second, or the Retry-After value when the answer has one; both are capped.
+    private async Task<HttpResponseMessage> SendWithRetryAsync(
+        Func<Task<HttpRequestMessage>> createRequest, CancellationToken cancellationToken)
     {
-        using var request = new HttpRequestMessage(
-            method, $"{_serverUrl}/admin/realms/{Uri.EscapeDataString(_settings.Realm)}/{realmPath}");
-        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", await GetAccessTokenAsync(cancellationToken));
-        if (body is not null)
+        for (var attempt = 1; ; attempt++)
         {
-            request.Content = JsonContent.Create(body, body.GetType(), options: JsonOptions);
+            using var request = await createRequest();
+            var response = await _http.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken);
+            if (attempt >= MaxAttempts || !IsRetryable(response.StatusCode))
+            {
+                return response;
+            }
+
+            var delay = RetryDelay(response, attempt);
+            response.Dispose();
+            await _delay(delay, cancellationToken);
+        }
+    }
+
+    private static bool IsRetryable(HttpStatusCode status) =>
+        status == HttpStatusCode.TooManyRequests || (int)status >= 500;
+
+    private static TimeSpan RetryDelay(HttpResponseMessage response, int attempt)
+    {
+        var retryAfter = response.Headers.RetryAfter;
+        TimeSpan delay;
+        if (retryAfter?.Delta is { } delta)
+        {
+            delay = delta;
+        }
+        else if (retryAfter?.Date is { } date)
+        {
+            delay = date - DateTimeOffset.UtcNow;
+        }
+        else
+        {
+            delay = TimeSpan.FromSeconds(Math.Pow(2, attempt - 1));
         }
 
-        return await _http.SendAsync(request, cancellationToken);
+        if (delay < TimeSpan.Zero)
+        {
+            delay = TimeSpan.Zero;
+        }
+
+        return delay > MaxRetryDelay ? MaxRetryDelay : delay;
     }
 
     // Parallel requests share one token; the lock makes only one of them fetch a fresh token.
@@ -439,14 +510,16 @@ public sealed class KeycloakAdminClient : IDisposable
     private async Task<string> FetchAccessTokenAsync(CancellationToken cancellationToken)
     {
         var requestedAt = DateTimeOffset.UtcNow;
-        using var response = await _http.PostAsync(
-            $"{_serverUrl}/realms/master/protocol/openid-connect/token",
-            new FormUrlEncodedContent(new Dictionary<string, string>
+        using var response = await SendWithRetryAsync(
+            () => Task.FromResult(new HttpRequestMessage(HttpMethod.Post, $"{_serverUrl}/realms/master/protocol/openid-connect/token")
             {
-                ["grant_type"] = "password",
-                ["client_id"] = "admin-cli",
-                ["username"] = _settings.AdminUser,
-                ["password"] = _settings.AdminPassword,
+                Content = new FormUrlEncodedContent(new Dictionary<string, string>
+                {
+                    ["grant_type"] = "password",
+                    ["client_id"] = "admin-cli",
+                    ["username"] = _settings.AdminUser,
+                    ["password"] = _settings.AdminPassword,
+                }),
             }),
             cancellationToken);
         await EnsureSuccessAsync(response, "obtain an admin token", cancellationToken);
@@ -466,10 +539,36 @@ public sealed class KeycloakAdminClient : IDisposable
             return;
         }
 
-        var content = await response.Content.ReadAsStringAsync(cancellationToken);
-        throw new InvalidOperationException(
-            $"Keycloak request to {operation} failed with {(int)response.StatusCode} {response.StatusCode}: {content}");
+        throw new KeycloakAdminException(
+            operation, response.StatusCode, await ReadErrorCodeAsync(response, cancellationToken));
     }
+
+    // Only the error field of the answer is read, and only when it is a short identifier such as
+    // invalid_grant. Free-text fields can contain usernames and email addresses.
+    private static async Task<string?> ReadErrorCodeAsync(HttpResponseMessage response, CancellationToken cancellationToken)
+    {
+        try
+        {
+            var content = await response.Content.ReadAsStringAsync(cancellationToken);
+            using var document = JsonDocument.Parse(content);
+            if (document.RootElement.ValueKind == JsonValueKind.Object
+                && document.RootElement.TryGetProperty("error", out var error)
+                && error.ValueKind == JsonValueKind.String
+                && error.GetString() is { } code
+                && ErrorCodePattern().IsMatch(code))
+            {
+                return code;
+            }
+        }
+        catch (Exception ex) when (ex is JsonException or HttpRequestException or IOException)
+        {
+        }
+
+        return null;
+    }
+
+    [GeneratedRegex("^[A-Za-z0-9_.-]{1,64}$")]
+    private static partial Regex ErrorCodePattern();
 
     private sealed record TokenResponse(
         [property: JsonPropertyName("access_token")] string AccessToken,
