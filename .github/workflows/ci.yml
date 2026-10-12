@@ -93,10 +93,126 @@ jobs:
       - name: Destroy-gate policy unit tests (ADR-0014 Layer 3)
         run: conftest verify -p policy/destroy_gate.rego -p policy/destroy_gate_test.rego
 
-  # Further required jobs land with the application code and complete the green gate
-  # from ADR-0003 / ADR-0005. Each verifies its own toolchain scope
-  # (tools/verify-toolchain.sh backend or e2e) as part of the job:
-  #   - backend:     unit + integration tests (.NET, ADR-0002); scope backend
-  #   - client-core: typecheck + lint + unit (TypeScript)
-  #   - e2e:         Maestro against the fully started stack (ADR-0004, ADR-0006),
-  #                  the same suite for the native app and the web channel; scope e2e
+  # Story: task-2.28
+  # Not covered by CI: the seeded Playwright smoke (TASK-2.24), the Maestro flows (TASK-2.25) and a
+  # lint step (no lint script exists). The e2e job runs the web write specs and verifies the
+  # backend toolchain scope, not the Android scope.
+  backend:
+    name: Backend build and tests (.NET, Testcontainers)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      DOTNET_CLI_TELEMETRY_OPTOUT: "1"
+    steps:
+      - uses: actions/checkout@v5
+      - name: Install the pinned .NET SDK
+        run: |
+          bash tools/install-dotnet.sh
+          echo "$HOME/.dotnet" >> "$GITHUB_PATH"
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+          echo "DOTNET_ROOT=$HOME/.dotnet" >> "$GITHUB_ENV"
+      - name: Verify backend toolchain
+        run: ./tools/verify-toolchain.sh backend
+      - uses: actions/cache@v6
+        with:
+          path: ~/.nuget/packages
+          key: nuget-${{ runner.os }}-${{ hashFiles('app/api/**/*.csproj', 'app/api/Directory.Build.props') }}
+          restore-keys: nuget-${{ runner.os }}-
+      - name: Build
+        run: dotnet build app/api/Cichlids.sln -c Release
+      - name: Test
+        run: >
+          dotnet test app/api/Cichlids.sln -c Release --no-build
+          --logger trx --logger "console;verbosity=normal"
+          --results-directory TestResults --blame-hang-timeout 10m
+      - name: Upload test results
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: backend-test-results
+          path: TestResults
+
+  client-core:
+    name: Frontend typecheck and unit tests (client-core, mobile)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v6
+        with:
+          package_json_file: app/package.json
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "24"
+          cache: pnpm
+          cache-dependency-path: app/pnpm-lock.yaml
+      - name: Install dependencies
+        working-directory: app
+        run: pnpm install --frozen-lockfile
+      - name: Build client-core
+        working-directory: app
+        run: pnpm --filter @cichlids/client-core build
+      - name: Typecheck
+        working-directory: app
+        run: pnpm -r typecheck
+      - name: Unit tests
+        working-directory: app
+        run: pnpm -r test
+
+  e2e:
+    name: Playwright write tests (compose stack)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      DOTNET_CLI_TELEMETRY_OPTOUT: "1"
+      EXPO_NO_TELEMETRY: "1"
+    steps:
+      - uses: actions/checkout@v5
+      - name: Start Postgres, RustFS and Keycloak
+        run: app/stack/services-up.sh
+      - name: Install the pinned .NET SDK
+        run: |
+          bash tools/install-dotnet.sh
+          echo "$HOME/.dotnet" >> "$GITHUB_PATH"
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+          echo "DOTNET_ROOT=$HOME/.dotnet" >> "$GITHUB_ENV"
+      - name: Verify backend toolchain
+        run: ./tools/verify-toolchain.sh backend
+      - uses: actions/cache@v6
+        with:
+          path: ~/.nuget/packages
+          key: nuget-${{ runner.os }}-${{ hashFiles('app/api/**/*.csproj', 'app/api/Directory.Build.props') }}
+          restore-keys: nuget-${{ runner.os }}-
+      - uses: pnpm/action-setup@v6
+        with:
+          package_json_file: app/package.json
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "24"
+          cache: pnpm
+          cache-dependency-path: app/pnpm-lock.yaml
+      - name: Install dependencies
+        working-directory: app
+        run: pnpm install --frozen-lockfile
+      - name: Install Playwright Chromium
+        working-directory: app/mobile
+        run: pnpm exec playwright install --with-deps chromium
+      - name: Wait for the cichlids realm
+        run: app/stack/services-up.sh --wait-realm
+      - name: Run the write E2E specs
+        run: pnpm --dir app/mobile run e2e:write
+      - name: Collect logs
+        if: failure()
+        run: |
+          mkdir -p e2e-logs
+          cp /tmp/cichlids-write-stack/api.log /tmp/cichlids-write-stack/web.log e2e-logs/ || true
+          docker compose -f app/stack/compose.yaml logs > e2e-logs/compose.log 2>&1 || true
+      - name: Upload logs
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: e2e-logs
+          path: e2e-logs
+      - name: Stop the compose stack
+        if: always()
+        run: docker compose -f app/stack/compose.yaml down -v
