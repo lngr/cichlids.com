@@ -1,0 +1,1458 @@
+schemaVersion: 1
+id: labidochromis-caeruleus
+legacyIds: [322]
+status: described
+
+taxonomy:
+  validName: Labidochromis caeruleus
+  genus: Labidochromis
+  species: caeruleus
+  author: Fryer, 1956
+  source: &cof
+    kind: catalog-of-fishes
+    title: Eschmeyer's Catalog of Fishes, species list of the genus Labidochromis (Labidochromis caeruleus Fryer 1956, current status valid)
+    url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Labidochromis
+    accessed: 2026-10-12
+  synonyms: []
+  legacyNames:
+    - Labidochromis caeruleus
+  note: >-
+    The Catalog of Fishes lists the species as valid, described by Fryer in 1956 from Nkhata Bay
+    (spelled Nkata Bay in the original), and records no synonym; the author stands without
+    parentheses because the species was described in Labidochromis. The first aquarium imports
+    were sold as "Labidochromis tanganyicae", a trade label without nomenclatural standing. The
+    legacy entry refers to the yellow aquarium form; the fish of the type locality are white with
+    a faint blue sheen. Whether the yellow fish are a colour form of L. caeruleus or a separate
+    species has not been tested; current usage keeps all colour forms in L. caeruleus.
+
+names:
+  trade:
+    en:
+      - Electric Yellow
+      - Yellow Lab
+      - Lemon Yellow Lab
+      - Blue Streak Hap
+      - Yellow Prince
+    de:
+      - Gelber Labidochromis
+      - Goldener Labidochromis
+      - Labidochromis Yellow
+
+variants:
+  - name: Yellow (Lion's Cove, Charo to Mbowe Island)
+    kind: color-morph
+    note: >-
+      Bright yellow with a black band in the dorsal fin and black pelvic and anal fin edges; known
+      from a short stretch of the north-western shore and by far the most common form in the
+      hobby, almost exclusively tank-bred.
+  - name: Nkhata Bay
+    kind: locality
+    note: Population of the type locality; nearly white fish with a faint blue sheen and a black band in the dorsal fin.
+  - name: Lundo Island
+    kind: locality
+    note: Blue fish with clear dark bars, Tanzanian coast.
+  - name: Cape Kaiser
+    kind: locality
+    note: Almost pure white fish without obvious black markings, Tanzanian coast.
+
+features:
+  origin:
+    value:
+      continent: Africa
+      region: Lake Malawi
+      waterbody: Lake Malawi
+      localities:
+        - Nkhata Bay
+        - Lion's Cove
+        - Charo
+        - Mbowe Island
+        - Lundo Island
+        - Cape Kaiser
+    confidence: high
+    rationale: >-
+      Endemic to Lake Malawi; the type locality is Nkhata Bay. The species lives along the northern
+      part of the lake on the Malawian, Tanzanian and Mozambican coasts (Seriously Fish names one
+      stretch from Cape Kaiser to Lundo and another that ends at Charo), and the yellow form is
+      known only between Charo and Lion's Cove. Oliver shows Konings' field photos of colour forms
+      at Mbowe Island, Cape Kaiser and Lundo Island. Introduced populations in Israel and Hong Kong
+      are not part of the native range.
+    sources:
+      - *cof
+      - &fishbase
+        kind: database
+        title: "FishBase species summary: Labidochromis caeruleus"
+        url: https://www.fishbase.se/summary/Labidochromis-caeruleus.html
+        accessed: 2026-10-12
+      - &sf
+        kind: database
+        title: "Seriously Fish: Labidochromis caeruleus"
+        url: https://www.seriouslyfish.com/species/labidochromis-caeruleus/
+        accessed: 2026-10-12
+      - &oliver
+        kind: literature
+        title: "Oliver, M. K. The Cichlid Fishes of Lake Malawi: Labidochromis caeruleus (with colour notes of Lewis 1982 and field photos of Konings)"
+        url: https://www.malawicichlids.com/mw09001j.htm
+        accessed: 2026-10-12
+      - &crc
+        kind: database
+        title: "Cichlid Room Companion: Labidochromis caeruleus (public summary, verification only)"
+        url: https://cichlidae.com/species.php?id=AF6NihWV1hLFnqnWAg935A
+        accessed: 2026-10-12
+    evidence:
+      - source: *cof
+        value: {continent: Africa, region: Lake Malawi, localities: [Nkhata Bay]}
+        note: type locality; introduced in Israel and Hong Kong
+      - source: *fishbase
+        value: {continent: Africa, region: Lake Malawi}
+        note: north-western coast only
+      - source: *sf
+        value: {continent: Africa, region: Lake Malawi, localities: [Cape Kaiser, Lundo Island, Charo, Lion's Cove]}
+      - source: *oliver
+        value: {continent: Africa, region: Lake Malawi, localities: [Nkhata Bay, Mbowe Island, Cape Kaiser, Lundo Island]}
+        note: field photos of several colour forms
+
+  temperatureC:
+    value: {min: 21, max: 29}
+    confidence: high
+    rationale: >-
+      Lake Malawi endemic, so the natural range is the measured temperature range of the lake.
+      Eccles (1974) reports 27 C in the upper 60 m by May and 21 C inshore in the cool, windy
+      season; Vollmer et al. (2005) give winter epilimnion values of about 23.5 C and summer surface
+      water of about 28 C; a 2013 campaign (Ngochera 2018) measured 24 to 29 C. FishBase gives 23
+      to 26 C, but that figure comes from an aquarium atlas and is no habitat measurement.
+    sources:
+      - &branchu
+        kind: literature
+        title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+        url: https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf
+        accessed: 2026-10-12
+      - &fao5
+        kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+        url: https://www.fao.org/4/t0473e/T0473E05.htm
+        accessed: 2026-10-12
+      - &fao6
+        kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of Africa, Vol. 1, FAO CIFA Technical Paper 18/1, entry Lake Malawi/Nyasa (Jackson et al. 1963; Talling and Talling 1965)."
+        url: https://www.fao.org/4/T0473E/T0473E06.htm
+        accessed: 2026-10-12
+      - &eccles
+        kind: literature
+        title: "Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology and Oceanography 19(5), 730-742 (abstract)."
+        url: https://doi.org/10.4319/lo.1974.19.5.0730
+        accessed: 2026-10-12
+      - &vollmer05
+        kind: literature
+        title: "Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M., Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and Oceanography 50(2), 727-732."
+        url: https://www.dora.lib4ri.ch/empa/dload/empa:1253/PDF/view
+        accessed: 2026-10-12
+      - &vollmer99
+        kind: literature
+        title: "Vollmer, M. K., Weiss, R. F. and Bootsma, H. A. (1999). Lake Malawi/Nyasa deep water renewal. In: Bootsma, H. A. and Hecky, R. E. (eds.), Water Quality Report, SADC/GEF Lake Malawi/Nyasa Biodiversity Conservation Project, chapter 4."
+        url: https://sites.uwm.edu/hbootsma/files/2020/11/Ch4-Lake-Internal-Mixing.pdf
+        accessed: 2026-10-12
+      - &ngochera
+        kind: literature
+        title: Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. PhD dissertation, University of Wisconsin-Milwaukee.
+        url: https://minds.wisconsin.edu/handle/1793/91765
+        accessed: 2026-10-12
+    evidence:
+      - source: *eccles
+        value: {min: 21, max: 27}
+        note: inshore minimum in the cool season, upper 60 m by May
+      - source: *vollmer05
+        value: {min: 23.5, max: 28}
+        note: winter epilimnion to summer surface water
+      - source: *ngochera
+        value: {min: 24, max: 29}
+        note: 2013 campaign
+    verification: {method: waterbody, waterbody: lake-malawi}
+    tolerance:
+      value: {min: 21, max: 29}
+      confidence: medium
+      rationale: >-
+        Care sheets cluster between 22 and 28 C: Seriously Fish 24 to 28, Aquarium Glaser,
+        TropicalFreshwaterFish, LiveAquaria and Aqualog 22 to 28, FishProfiles and The Tropical
+        Tank 23 to 28, Aquadiction and FishBase 23 to 26, Aquarium-Guide 24 to 26. The tolerance has
+        to contain the natural lake range of 21 to 29 C, which the fish meet in the wild every year,
+        so the lake range is the tolerance; the usual aquarium set point lies at 24 to 26 C.
+        Decided unanimously by the vote count (3 of 3).
+      sources:
+        - *sf
+        - &glaser
+          kind: database
+          title: "Aquarium Glaser fish archive (F. Schaefer): Labidochromis caeruleus Yellow"
+          url: https://www.aquariumglaser.de/en/fisharchive/labidochromis-caeruleus-yellow-2/
+          accessed: 2026-10-12
+        - &tff
+          kind: database
+          title: "TropicalFreshwaterFish: Yellow Labid, Labidochromis caeruleus"
+          url: https://tropicalfreshwaterfish.com/species/Labidochromis_caeruleus.html
+          accessed: 2026-10-12
+        - &fishprofiles
+          kind: database
+          title: "FishProfiles.com: Labidochromis caeruleus"
+          url: https://fishprofiles.com/profiles/freshwater/Cichlids/Labidochromis_caeruleus/
+          accessed: 2026-10-12
+        - &liveaquaria
+          kind: database
+          title: "LiveAquaria care sheet: Electric Yellow Cichlid (Labidochromis caeruleus)"
+          url: https://www.liveaquaria.com/products/electric-yellow-cichlid
+          accessed: 2026-10-12
+        - &tt
+          kind: database
+          title: The Tropical Tank, Labidochromis caeruleus (Wayback Machine copy)
+          url: https://web.archive.org/web/2024/https://www.thetropicaltank.co.uk/Fishindx/caeruleu.htm
+          accessed: 2026-10-12
+        - &aqd
+          kind: database
+          title: Aquadiction species spotlight Electric Yellow Cichlid, Labidochromis caeruleus
+          url: https://aquadiction.world/species-spotlight/electric-yellow-cichlid/
+          accessed: 2026-10-12
+        - &ag
+          kind: database
+          title: Aquarium-Guide.de, Goldener Labidochromis (Labidochromis caeruleus)
+          url: https://www.aquarium-guide.de/labidochromis_caeruleus.htm
+          accessed: 2026-10-12
+        - &aqualog
+          kind: database
+          title: Aqualog lexicon profile Labidochromis caeruleus
+          url: https://www.aqualog.de/?p=1128130
+          accessed: 2026-10-12
+        - *fishbase
+        - &enwiki
+          kind: website
+          title: "Wikipedia (en): Labidochromis caeruleus"
+          url: https://en.wikipedia.org/wiki/Labidochromis_caeruleus
+          accessed: 2026-10-12
+      evidence:
+        - source: *sf
+          value: {min: 24, max: 28}
+          note: aquarium recommendation
+        - source: *glaser
+          value: {min: 22, max: 28}
+        - source: *tff
+          value: {min: 22, max: 28}
+        - source: *fishprofiles
+          value: {min: 23, max: 28}
+        - source: *liveaquaria
+          value: {min: 22, max: 28}
+          note: converted from 72 to 82 F
+        - source: *tt
+          value: {min: 23, max: 28}
+        - source: *aqualog
+          value: {min: 22, max: 28}
+        - source: *aqd
+          value: {min: 23, max: 26}
+        - source: *ag
+          value: {min: 24, max: 26}
+        - source: *fishbase
+          value: {min: 23, max: 26}
+          note: aquarium figure after an aquarium atlas
+        - source: *enwiki
+          value: {min: 23, max: 26}
+      verification:
+        method: unanimous
+        votes: {agree: 3, total: 3}
+
+  ph:
+    value: {min: 7.7, max: 8.6}
+    confidence: high
+    rationale: >-
+      Lake Malawi endemic, so the natural range is the measured pH of the lake. Surface water has
+      pH 7.7 to 8.6 (Jackson et al. 1963 in the FAO source book); Branchu et al. (2010) report 7.5
+      to 8.5 over the whole water column, the lower values from deep water that this rock dweller
+      does not use.
+    sources:
+      - *branchu
+      - *fao5
+      - *fao6
+      - *eccles
+      - *vollmer05
+      - *vollmer99
+      - *ngochera
+    evidence:
+      - source: *fao5
+        value: {min: 7.7, max: 8.6}
+        note: lake surface water, Jackson et al. 1963
+      - source: *branchu
+        value: {min: 7.5, max: 8.5}
+        note: whole water column, lower values in deep water
+    verification: {method: waterbody, waterbody: lake-malawi}
+    tolerance:
+      value: {min: 7.2, max: 8.8}
+      confidence: medium
+      rationale: >-
+        Care sheets give lower limits between 7.0 and 7.8 and upper limits between 8.5 and 8.6
+        (Seriously Fish 7.7 to 8.6, FishProfiles 7.5 to 8.6, The Tropical Tank 7.6 to 8.6,
+        Aquarium-Guide and Aquadiction 7.5 to 8.5, LiveAquaria 7.8 to 8.5); TropicalFreshwaterFish
+        and a retailer sheet go down to 7.0, Aqualog gives 7 to 8 and the English Wikipedia up to
+        8.9. Aquarium Glaser names no figures and only warns against soft, acidic water. The fish do
+        well for years in mildly to clearly alkaline water, while acidic or drifting pH is the
+        common failure. Decided unanimously by the vote count (3 of 3 within 0.3 pH) as the median
+        of the bounds, 7.2 to 8.8, which contains the lake range.
+      sources:
+        - *sf
+        - *fishprofiles
+        - *tt
+        - *ag
+        - *aqd
+        - *liveaquaria
+        - *tff
+        - &afp
+          kind: database
+          title: Aquarium Fish Paradise, Electric Yellow - Labidochromis caeruleus (retailer care sheet)
+          url: https://www.aquariumfishparadise.com.au/electric-yellow-labidochromis-caeruleus/
+          accessed: 2026-10-12
+        - *aqualog
+        - *glaser
+        - *enwiki
+        - &t1103
+          kind: archive
+          title: cichlids.com forum thread 1103
+          url: https://www.cichlids.com/disc/read.php?1,1103
+        - &t11229
+          kind: archive
+          title: cichlids.com forum thread 11229
+          url: https://www.cichlids.com/disc/read.php?1,11229
+      evidence:
+        - source: *sf
+          value: {min: 7.7, max: 8.6}
+        - source: *fishprofiles
+          value: {min: 7.5, max: 8.6}
+        - source: *tt
+          value: {min: 7.6, max: 8.6}
+        - source: *ag
+          value: {min: 7.5, max: 8.5}
+        - source: *aqd
+          value: {min: 7.5, max: 8.5}
+        - source: *liveaquaria
+          value: {min: 7.8, max: 8.5}
+        - source: *tff
+          value: {min: 7, max: 8.5}
+        - source: *afp
+          value: {min: 7, max: 8.5}
+          note: retailer sheet
+        - source: *aqualog
+          value: {min: 7, max: 8}
+        - source: *enwiki
+          value: {min: 7.8, max: 8.9}
+        - source: *t1103
+          value: {min: 7.8, max: 8}
+          note: keeper worried about a Malawi tank drifting to pH 6.8
+      verification:
+        method: unanimous
+        votes: {agree: 3, total: 3}
+
+  ghDgh:
+    value: {min: 3, max: 5}
+    confidence: high
+    rationale: >-
+      Lake Malawi endemic, so the natural range is the measured total hardness of the lake: 4.2
+      to 4.6 dGH in the north basin computed from calcium and magnesium (Branchu et al. 2010) and
+      3.2 to 4.9 dGH from the 1960s titrations in the FAO source book. The lake is soft; care
+      sheets that call Malawi water hard confuse hardness with alkalinity.
+    sources:
+      - *branchu
+      - *fao5
+      - *fao6
+      - *eccles
+      - *vollmer05
+      - *vollmer99
+      - *ngochera
+    evidence:
+      - source: *branchu
+        value: {min: 4.2, max: 4.6}
+        note: north basin, upper 50 m, computed from calcium and magnesium
+      - source: *fao5
+        value: {min: 3.2, max: 4.9}
+        note: Jackson et al. 1963 and Talling and Talling 1965
+    verification: {method: waterbody, waterbody: lake-malawi}
+    tolerance:
+      value: {min: 3, max: 25}
+      confidence: medium
+      rationale: >-
+        In the aquarium the species is kept almost always in moderately hard to hard tap water and
+        lives long in it. Care sheets give 10 to 25 dGH (Seriously Fish), 10 to 30 dGH
+        (TropicalFreshwaterFish, aqua-fish.net), 9 to 16 dGH (FishProfiles), 5 to 19 dGH
+        (Aquarium-Guide) and 10 to 15 dGH (Aquadiction); Fishkeeper names 25 dGH as upper limit and
+        The Tropical Tank only a minimum of 7 dGH. Aquarium Glaser calls hardness unimportant as
+        long as the water is not soft and acidic, and an archive keeper ran a Malawi tank at 13 dGH
+        without losses. The lower bound is the natural lake hardness, which the fish tolerate when
+        carbonate hardness and pH stay in range; no care sheet reports harm from soft water with a
+        high pH. The upper bound follows the most reliable care sheets. Decided by qualified
+        majority of the vote count (4 of 5; one vote put the upper bound at 20 dGH).
+      sources:
+        - *sf
+        - *tff
+        - &aquafish
+          kind: database
+          title: aqua-fish.net, Electric yellow cichlid (Labidochromis caeruleus)
+          url: https://en.aqua-fish.net/fish/electric-yellow-cichlid
+          accessed: 2026-10-12
+        - *fishprofiles
+        - *ag
+        - *aqd
+        - &fishkeeper
+          kind: database
+          title: Fishkeeper (Maidenhead Aquatics), Yellow Labidochromis
+          url: https://fishkeeper.co.uk/fish/freshwater/cichlids/yellow-labidochromis
+          accessed: 2026-10-12
+        - *tt
+        - *glaser
+        - *branchu
+        - &aqsource
+          kind: website
+          title: Aquarium Source, yellow lab cichlid
+          url: https://www.aquariumsource.com/yellow-lab-cichlid
+          accessed: 2026-10-12
+        - &aquariadise
+          kind: website
+          title: Aquariadise, how to take care of a yellow lab cichlid
+          url: https://www.aquariadise.com/yellow-lab-cichlid/
+          accessed: 2026-10-12
+        - &t9341
+          kind: archive
+          title: cichlids.com forum thread 9341
+          url: https://www.cichlids.com/disc/read.php?1,9341
+      evidence:
+        - source: *sf
+          value: {min: 10, max: 25}
+          note: aquarium recommendation
+        - source: *tff
+          value: {min: 10, max: 30}
+          note: given as dH
+        - source: *aquafish
+          value: {min: 10, max: 30}
+        - source: *fishprofiles
+          value: {min: 9, max: 16}
+          note: given as dH
+        - source: *ag
+          value: {min: 5, max: 19}
+        - source: *aqd
+          value: {min: 10, max: 15}
+        - source: *branchu
+          value: {min: 4.2, max: 4.6}
+          note: natural lake water in which the species lives
+        - source: *aqsource
+          value: {min: 10, max: 20}
+        - source: *aquariadise
+          value: {min: 10, max: 20}
+        - source: *t9341
+          value: {min: 13, max: 13}
+          note: Malawi community tank without losses
+      verification:
+        method: qualified-majority
+        votes: {agree: 4, total: 5}
+
+  khDkh:
+    value: {min: 5, max: 8}
+    confidence: high
+    rationale: >-
+      Lake Malawi endemic, so the natural range is the measured alkalinity of the lake: 2.33 to
+      2.46 meq/L in the Branchu et al. (2010) profiles (6.5 to 6.9 dKH) and 2.00 to 2.59 meq/L in
+      Jackson et al. (1963) in the FAO source book (5.6 to 7.3 dKH), with dKH = meq/L x 2.8.
+    sources:
+      - *branchu
+      - *fao5
+      - *fao6
+      - *eccles
+      - *vollmer05
+      - *vollmer99
+      - *ngochera
+    evidence:
+      - source: *branchu
+        value: {min: 6.5, max: 6.9}
+        note: alkalinity profiles, north basin
+      - source: *fao5
+        value: {min: 5.6, max: 7.3}
+        note: Jackson et al. 1963
+    tolerance:
+      value: {min: 5, max: 12}
+      confidence: low
+      rationale: >-
+        Few care sheets give a carbonate hardness for this species. The Tropical Tank recommends
+        10 to 12 dKH and names 5 to 6 dKH as the lowest acceptable value; LiveAquaria gives 10 to
+        15 dKH; a shop guide gives 8 to 12 dKH and a product maker asks for more than 4 dKH for
+        Malawi cichlids in general. The lake itself holds 5 to 8 dKH, which sets the lower bound,
+        and an archive keeper held the fish at 9 dKH and pH 8.0 without losses. The upper bound of
+        12 dKH is the highest value that more than one sheet supports; only LiveAquaria goes
+        beyond it. Decided by qualified majority of the vote count (4 of 5; one vote put the upper
+        bound at 15 dKH). The confidence stays low because the bounds rest on few care sheets.
+      sources:
+        - *tt
+        - *liveaquaria
+        - *branchu
+        - *fao5
+        - &gensou
+          kind: website
+          title: Gensou, Labidochromis caeruleus yellow lab deep dive
+          url: https://gensou.sg/labidochromis-caeruleus-yellow-lab-deep-dive/
+          accessed: 2026-10-12
+        - &ntlabs
+          kind: website
+          title: NT Labs, Fish of the week, electric yellow cichlid
+          url: https://nt-labs.com/knowledge-hub/fish-of-the-week-electric-yellow-cichlid/
+          accessed: 2026-10-12
+        - *glaser
+        - *t9341
+      evidence:
+        - source: *tt
+          value: {min: 5, max: 12}
+          note: ideal 10 to 12, lowest acceptable 5 to 6
+        - source: *liveaquaria
+          value: {min: 10, max: 15}
+        - source: *branchu
+          value: {min: 6.5, max: 6.9}
+          note: natural lake water in which the species lives
+        - source: *fao5
+          value: {min: 5.6, max: 7.3}
+          note: natural lake water, Jackson et al. 1963
+        - source: *gensou
+          value: {min: 8, max: 12}
+          note: shop recommendation
+        - source: *t9341
+          value: {min: 9, max: 9}
+          note: Malawi community tank without losses
+      verification:
+        method: qualified-majority
+        votes: {agree: 4, total: 5}
+
+  maxSizeCm:
+    value: {male: 10, female: 8}
+    confidence: medium
+    rationale: >-
+      Wild museum specimens reach 8.1 cm standard length (FishBase). Aquarium fish usually grow to
+      about 8 to 10 cm total length: Aquarium Glaser names about 8 cm as the usual size,
+      Aquarium-Guide and Aqualog 8 to 10 cm, The Tropical Tank 10 cm, Seriously Fish 10 cm standard
+      length. Only very old males in large tanks reach 12 to 13 cm (Aquarium Glaser), and single
+      claims of 15 cm count as records. Males grow somewhat larger than females (Seriously Fish,
+      Aquarium Glaser).
+    sources:
+      - *fishbase
+      - *sf
+      - *glaser
+      - *ag
+      - *aqualog
+      - *tt
+      - *tff
+      - &dewiki
+        kind: website
+        title: "Wikipedia (de): Labidochromis caeruleus"
+        url: https://de.wikipedia.org/wiki/Labidochromis_caeruleus
+        accessed: 2026-10-12
+      - *enwiki
+    evidence:
+      - source: *fishbase
+        value: {male: 8.1, female: 8.1}
+        note: maximum standard length of wild specimens, sexes not separated
+      - source: *sf
+        value: {male: 10, female: 10}
+        note: standard length, sexes not separated; males somewhat larger
+      - source: *glaser
+        value: {male: 8, female: 8}
+        note: usual size; very old males up to 13 cm
+      - source: *ag
+        value: {male: 10, female: 8}
+        note: range 8 to 10 cm
+      - source: *aqualog
+        value: {male: 10, female: 8}
+        note: range 8 to 10 cm
+      - source: *tt
+        value: {male: 10, female: 10}
+      - source: *dewiki
+        value: {male: 12, female: 10}
+        note: aquarium 8 to 12 cm, exceptionally 15 cm
+      - source: *enwiki
+        value: {male: 15, female: 10}
+        note: upper claim for large males
+
+  predation:
+    value: 1
+    confidence: high
+    rationale: >-
+      A small-mouthed picker of invertebrates (insect larvae, small crustaceans, snails) that
+      takes fry and very small fish when the chance arises. FishBase lists unidentified bony fish
+      next to benthic invertebrates among its food items, Aquadiction warns that it endangers
+      shrimps, snails and small fish, and Seriously Fish notes that stressed brooding females may
+      eat their own brood; the archive reports adults eating fry in community tanks. The Israeli
+      checklist names only invertebrates as wild food, which rules out regular piscivory. The
+      rubric uses this species as its example of level 1. Decided unanimously by the vote count
+      (3 of 3).
+    sources:
+      - &cicek
+        kind: literature
+        title: "Cicek, E., Fricke, R., Sungur, S., Capar, O. B. and Golani, D. (2023). Freshwater fishes of Israel; a revised and updated annotated checklist 2023. Zootaxa 5369(4), 451-484, treatment of Labidochromis caeruleus (via Plazi)."
+        url: https://treatment.plazi.org/id/03EC8B3A8F00607595F1D076FE5FB8BD
+        accessed: 2026-10-12
+      - *sf
+      - *fishbase
+      - *aqd
+      - &fbmaculicauda
+        kind: database
+        title: FishBase species summary Labidochromis maculicauda
+        url: https://www.fishbase.se/summary/Labidochromis-maculicauda.html
+        accessed: 2026-10-12
+      - &t13578
+        kind: archive
+        title: cichlids.com forum thread 13578
+        url: https://www.cichlids.com/disc/read.php?2,13578
+    evidence:
+      - source: *fishbase
+        value: 1
+        note: food items include unidentified bony fish beside benthic invertebrates
+      - source: *aqd
+        value: 1
+        note: threat to shrimps, snails and small fish
+      - source: *sf
+        value: 1
+        note: stressed brooding females may eat their brood
+      - source: *cicek
+        value: 0
+        note: names only invertebrates, small crustaceans and snails as wild food
+      - source: *fbmaculicauda
+        value: 1
+        note: congener feeds on insect larvae, no fish
+      - source: *t13578
+        value: 1
+        note: adults eat fry in a community tank
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+
+  diet:
+    value:
+      type: invertivore
+      bloatSensitive: true
+      foods:
+        - insect larvae
+        - small crustaceans
+        - small snails
+        - zooplankton
+        - spirulina-based flakes and pellets
+        - frozen crustaceans such as Mysis or brine shrimp
+    confidence: medium
+    rationale: >-
+      In the lake the species picks small invertebrates from rocks, sediment and plant leaves: the
+      Israeli checklist names invertebrates, small crustaceans and small snails, FishBase lists
+      benthic invertebrates among the food items, Aquarium Glaser calls it a plankton feeder, The
+      Tropical Tank names small crustaceans and insect larvae, and a QTL study describes it as a
+      nonterritorial fish that searches the rocks for invertebrate prey. The Cichlid Room Companion
+      classes it as insectivorous (verification only). Care sheets that call it an omnivore
+      describe what it accepts in the tank, not its natural diet. Seriously Fish still asks for a
+      large share of vegetable food, Aquarium Glaser warns that overfed fish turn fat and sickly,
+      and keepers advise against worm foods, so the species is treated as bloat sensitive like
+      other mbuna, though it is less prone than strict aufwuchs grazers. Decided unanimously by the
+      vote count (3 of 3).
+    sources:
+      - *cicek
+      - *fishbase
+      - *glaser
+      - *sf
+      - *tt
+      - &delorenzo
+        kind: literature
+        title: "DeLorenzo, L. et al. (2021). Genetic basis of body shape variation along the benthic-pelagic axis in cichlid fishes. bioRxiv preprint, published 2023 in Molecular Ecology 32(14)."
+        url: https://doi.org/10.1101/2021.10.02.462884
+        accessed: 2026-10-12
+      - &lewis
+        kind: literature
+        title: "Lewis, D. S. C. (1982). A revision of the genus Labidochromis from Lake Malawi. Zoological Journal of the Linnean Society 75, 189-265 (abstract only)."
+        url: https://www.malawicichlids.com/_popup_abs_l82.htm
+        accessed: 2026-10-12
+      - *fbmaculicauda
+      - &fbvellicans
+        kind: database
+        title: FishBase species summary Labidochromis vellicans
+        url: https://www.fishbase.se/summary/Labidochromis-vellicans.html
+        accessed: 2026-10-12
+      - *aqd
+      - *crc
+      - &t10873
+        kind: archive
+        title: cichlids.com forum thread 10873
+        url: https://www.cichlids.com/disc/read.php?1,10873
+    evidence:
+      - source: *cicek
+        value: {type: invertivore, bloatSensitive: false}
+        note: wild diet of invertebrates, small crustaceans and small snails; bloat not addressed
+      - source: *fishbase
+        value: {type: invertivore, bloatSensitive: false}
+        note: food items benthic invertebrates and bony fish; bloat not addressed
+      - source: *glaser
+        value: {type: invertivore, bloatSensitive: true}
+        note: plankton feeder in nature; overfed fish become fat and prone to disease
+      - source: *tt
+        value: {type: invertivore, bloatSensitive: false}
+        note: small crustaceans and insect larvae, vegetable share advised
+      - source: *delorenzo
+        value: {type: invertivore, bloatSensitive: false}
+        note: searches rocks for invertebrate prey
+      - source: *sf
+        value: {type: omnivore, bloatSensitive: true}
+        note: aquarium diet with a large vegetable share
+      - source: *aqd
+        value: {type: omnivore, bloatSensitive: false}
+        note: aquarium diet
+      - source: *fbmaculicauda
+        value: {type: invertivore, bloatSensitive: false}
+        note: congener, chironomid and caddisfly larvae
+      - source: *fbvellicans
+        value: {type: aufwuchs, bloatSensitive: false}
+        note: congener, mainly filamentous algae
+      - source: *crc
+        value: {type: invertivore, bloatSensitive: false}
+        note: insectivorous; verification only
+      - source: *t10873
+        value: {type: omnivore, bloatSensitive: true}
+        note: spirulina-based diet, no worms
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+
+  aggressionConspecific:
+    value: 2
+    confidence: medium
+    rationale: >-
+      One of the most tolerant mbuna: several males can share a tank, and the group forms a rank
+      order rather than fixed territories (Aquarium Glaser, archive). Spawning males still court
+      and chase females hard, which is why Seriously Fish recommends several females per male; with
+      that ratio and enough rockwork injuries are rare.
+    sources:
+      - *sf
+      - *glaser
+      - *t10873
+      - &t1348
+        kind: archive
+        title: cichlids.com forum thread 1348
+        url: https://www.cichlids.com/disc/read.php?1,1348
+    evidence:
+      - source: *sf
+        value: 2
+        note: vigorous pursuit of females, several females per male
+      - source: *glaser
+        value: 1
+        note: group with rank order, hardly any male dominance
+      - source: *t10873
+        value: 1
+        note: males tolerate each other
+      - source: *t1348
+        value: 2
+        note: males territorial when breeding; keep more females
+
+  aggressionHeterospecific:
+    value: 1
+    confidence: medium
+    rationale: >-
+      Because it defends no feeding territory it largely ignores other species (Aquarium Glaser);
+      Seriously Fish calls it relatively peaceful and combines it with peaceful haps, other mbuna
+      and hard-water rainbowfish, and The Tropical Tank calls it not overly aggressive. A spawning
+      male guards his site mostly by display. Fish of similar shape and colour are confronted more
+      often, which explains LiveAquaria's rating of semi-aggressive and the aggressive tag in
+      Aqualog. In mixed mbuna tanks it is more often the target than the aggressor.
+    sources:
+      - *sf
+      - *glaser
+      - *tt
+      - *tff
+      - *liveaquaria
+      - *aqualog
+      - *enwiki
+      - &t1265
+        kind: archive
+        title: cichlids.com forum thread 1265
+        url: https://www.cichlids.com/disc/read.php?1,1265
+    evidence:
+      - source: *sf
+        value: 1
+        note: relatively peaceful; territorial only when spawning
+      - source: *glaser
+        value: 0
+        note: among the most peaceful Malawi cichlids
+      - source: *tt
+        value: 1
+        note: not overly aggressive
+      - source: *tff
+        value: 1
+        note: least aggressive mbuna; harassed by others
+      - source: *liveaquaria
+        value: 2
+        note: semi-aggressive towards fish of similar shape and colour
+      - source: *aqualog
+        value: 3
+        note: listed as aggressive
+      - source: *enwiki
+        value: 2
+        note: peaceful for the group but may nip fins
+      - source: *t1265
+        value: 1
+        note: very peaceful mbuna in relative terms
+
+  territory:
+    value: {size: small, breedingOnly: true}
+    confidence: medium
+    rationale: >-
+      Outside breeding it claims no area and defends no feeding territory (Aquarium Glaser). A ripe
+      male cleans a flat stone or a small pit in the sand and defends a short radius around it
+      (Seriously Fish, Wikipedia).
+    sources:
+      - *sf
+      - *glaser
+      - *enwiki
+      - *dewiki
+    evidence:
+      - source: *sf
+        value: {size: small, breedingOnly: true}
+        note: territorial when spawning
+      - source: *glaser
+        value: {size: none, breedingOnly: false}
+        note: no feeding territory
+      - source: *enwiki
+        value: {size: small, breedingOnly: true}
+        note: male digs a spawning pit in his territory
+
+  habitatZones:
+    value: [rock, sand, plants]
+    confidence: medium
+    rationale: >-
+      Lives along rocky shores covered with fine sediment, mostly between 10 and 40 m, and also in
+      dense Vallisneria beds (Seriously Fish names both biotopes); spawning takes place on flat
+      stones or in shallow pits in open sand. In the tank it needs rockwork with caves over a sandy
+      floor; plants are optional but match the second wild biotope.
+    sources:
+      - *sf
+      - *crc
+      - *cicek
+      - *dewiki
+      - *enwiki
+    evidence:
+      - source: *sf
+        value: [rock, plants]
+        note: rocky areas and Vallisneria beds
+      - source: *crc
+        value: [rock, sand]
+        note: sediment-rich rocky habitat; verification only
+      - source: *cicek
+        value: [rock]
+        note: mean depth about 25 m, rarely shallower than 10 m
+      - source: *dewiki
+        value: [rock, sand]
+        note: 10 to 40 m
+
+  social:
+    value: {structure: harem, ratio: 3}
+    confidence: medium
+    rationale: >-
+      Seriously Fish recommends one male with at least three females, FishBase many females per
+      male and Aquarium-Guide a small group with more females than males. Males tolerate each other
+      better than in most mbuna (Aquarium Glaser, archive), so a larger mixed-sex group also works in
+      a roomy tank.
+    sources:
+      - *sf
+      - *fishbase
+      - *ag
+      - *glaser
+      - *t10873
+    evidence:
+      - source: *sf
+        value: {structure: harem, ratio: 3}
+      - source: *fishbase
+        value: {structure: harem}
+        note: many females for one male
+      - source: *ag
+        value: {structure: harem}
+        note: small group with more females than males
+      - source: *glaser
+        value: {structure: group}
+        note: group fish with a rank order
+
+  speciesOnly:
+    value: false
+    confidence: high
+    rationale: >-
+      Every source recommends it for mixed Malawi tanks: Seriously Fish names peaceful haps, other
+      mbuna and hard-water rainbowfish, TropicalFreshwaterFish other mbuna and Synodontis, Aquarium
+      Glaser calls it one of the most peaceful Lake Malawi cichlids, and the archive reports it
+      with peacocks and other mbuna. Only congeners and other colour forms are discouraged, which
+      the hybrid group covers. Decided unanimously by the vote count (3 of 3).
+    sources:
+      - *sf
+      - *tff
+      - *glaser
+      - *aqd
+      - *fishbase
+      - *t13578
+    evidence:
+      - source: *sf
+        value: false
+        note: combines with peaceful haps and other mbuna
+      - source: *tff
+        value: false
+        note: suggests other mbuna and Synodontis
+      - source: *glaser
+        value: false
+      - source: *aqd
+        value: false
+      - source: *fishbase
+        value: false
+        note: no species-only recommendation
+      - source: *t13578
+        value: false
+        note: did well with peacocks
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+
+  hybridGroup:
+    value: labidochromis
+    confidence: low
+    rationale: >-
+      A conservative decision: three of five votes chose a new group for the look-alike
+      Labidochromis species, two voted for no group, so the vote count took the most common named
+      group with confidence low. The sources warn, but no source documents an actual tank cross
+      between L. caeruleus and another described Labidochromis. Seriously Fish advises against
+      keeping its colour forms or other Labidochromis species together because they may hybridise,
+      and Tawil (2019, abstract only) calls L. chisumulae its closest relative and stresses
+      avoiding hybrids with similar species in captivity; the Wikipedia genus page (low weight)
+      says that the congeners cross easily. The species also crosses with far less related mbuna:
+      DeLorenzo et al. raised 447 F2 hybrids of a L. caeruleus female and a Labeotropheus
+      trewavasae male, the Israeli checklist reports hybrids with other cichlids in a feral
+      population, and archive threads describe tank hybrids with Maylandia estherae and
+      Dimidiochromis compressiceps. If it crosses outside its genus, crosses with congeners whose
+      females look alike are likely, so the group follows the precautionary scheme used for
+      Maylandia and Aulonocara. The members are the described Labidochromis species that FishBase
+      lists as traded for aquaria and that resemble L. caeruleus in shape and female colour. Crosses
+      with species outside the genus are not covered by the group and appear in the compatibility
+      notes instead.
+    sources:
+      - *sf
+      - &tawil
+        kind: literature
+        title: "Tawil, P. (2019). Labidochromis chisumulae, the striped relative of Labidochromis caeruleus. Cichlid News Magazine 28(2), 6-10 (abstract only)."
+        url: https://cichlidae.com/reference.php?id=9305
+        accessed: 2026-10-12
+      - *cicek
+      - *delorenzo
+      - *fishbase
+      - &wikigenus
+        kind: website
+        title: "Wikipedia (en): Labidochromis"
+        url: https://en.wikipedia.org/wiki/Labidochromis
+        accessed: 2026-10-12
+      - &t49138
+        kind: archive
+        title: cichlids.com forum thread 49138
+        url: https://www.cichlids.com/disc/read.php?2,49138
+      - &t37908
+        kind: archive
+        title: cichlids.com forum thread 37908
+        url: https://www.cichlids.com/disc/read.php?1,37908
+      - &t52881
+        kind: archive
+        title: cichlids.com forum thread 52881
+        url: https://www.cichlids.com/disc/read.php?2,52881
+    evidence:
+      - source: *sf
+        value: labidochromis
+        note: warns that colour forms and other Labidochromis may hybridise; no case named
+      - source: *tawil
+        value: labidochromis
+        note: closest relative L. chisumulae; avoid hybrids with similar species in captivity
+      - source: *wikigenus
+        value: labidochromis
+        note: congeners hybridise easily; one species of the genus per tank
+      - source: *delorenzo
+        value: null
+        note: laboratory cross with Labeotropheus trewavasae, outside any genus group
+      - source: *t49138
+        value: null
+        note: hobby hybrids with Maylandia estherae, outside any genus group
+    verification:
+      method: conservative
+      votes: {agree: 3, total: 5}
+
+  coloration:
+    value: {baseColors: [yellow, black], pattern: plain}
+    confidence: high
+    rationale: >-
+      The legacy entry is the yellow form: a plain lemon yellow body with a black band in the
+      dorsal fin and black pelvic and anal fin edges; dominant males are brighter and can show a
+      brownish patch between eye and mouth. Wild fish at the type locality are white to pale blue
+      with the same black fin markings, and some Tanzanian populations are blue with dark bars.
+    sources:
+      - *oliver
+      - *sf
+      - *glaser
+      - *tt
+      - *aqd
+      - *dewiki
+    evidence:
+      - source: *glaser
+        value: {baseColors: [yellow, black], pattern: plain}
+      - source: *dewiki
+        value: {baseColors: [yellow, black], pattern: plain}
+      - source: *sf
+        value: {baseColors: [yellow, black], pattern: plain}
+        note: yellow morph, mostly tank-bred; wild form blue and white
+      - source: *oliver
+        value: {baseColors: [white, blue, black], pattern: plain}
+        note: type-locality fish
+
+  feedingSpeed:
+    value: normal
+    confidence: low
+    rationale: >-
+      No source rates its feeding speed directly. It feeds eagerly and grows fat when overfed
+      (Aquarium Glaser), but it is a picker rather than a rushing aufwuchs grazer of the Maylandia
+      type, and in tanks with pushy mbuna it is often harassed and can miss out on food
+      (TropicalFreshwaterFish).
+    sources:
+      - *tff
+      - *glaser
+      - kind: model-knowledge
+        title: General husbandry knowledge of Lake Malawi mbuna
+    evidence:
+      - source: *tff
+        value: normal
+        note: harassed by more conspicuous or aggressive species
+
+  minTank:
+    value: {volumeL: 154, lengthCm: 90, depthCm: 45}
+    confidence: medium
+    rationale: >-
+      For one male with three females Seriously Fish gives a base of 90 x 45 cm (about 154 L),
+      FishBase a minimum length of 80 cm and the archive at least 90 cm; Aqualog and Aquarium-Guide
+      ask for more (100 cm, 250 L). Seriously Fish suggests 120 cm for a breeding harem, and mixed
+      mbuna communities need clearly more room.
+    sources:
+      - *sf
+      - *fishbase
+      - *tff
+      - *aqualog
+      - *ag
+      - *t10873
+    evidence:
+      - source: *sf
+        value: {volumeL: 154, lengthCm: 90, depthCm: 45}
+      - source: *fishbase
+        value: {lengthCm: 80}
+        note: minimum length only
+      - source: *tff
+        value: {volumeL: 132, lengthCm: 90}
+      - source: *aqualog
+        value: {lengthCm: 100}
+        note: 100 to 200 cm listed
+      - source: *ag
+        value: {volumeL: 250}
+      - source: *t10873
+        value: {lengthCm: 90}
+
+  lifespanYears:
+    value: {min: 6, max: 10}
+    confidence: medium
+    rationale: >-
+      Aquarium-Guide gives an age of up to 10 years and Aquadiction up to 8 years; well-kept fish
+      usually live in this span.
+    sources:
+      - *ag
+      - *aqd
+    evidence:
+      - source: *ag
+        value: {min: 10, max: 10}
+        note: up to 10 years
+      - source: *aqd
+        value: {min: 8, max: 8}
+        note: up to 8 years
+
+  breeding:
+    value: maternal-mouthbrooder
+    confidence: high
+    rationale: >-
+      The female alone carries the 5 to 30 eggs and larvae in her mouth for three to four weeks
+      without eating and then releases free-swimming fry; spawning follows the egg-spot method
+      typical of haplochromine cichlids.
+    sources:
+      - *sf
+      - *fishbase
+      - *glaser
+      - &genner
+        kind: literature
+        title: "Genner, M. J. and Turner, G. F. (2005). The mbuna cichlids of Lake Malawi: a model for rapid speciation and adaptive radiation. Fish and Fisheries 6, 1-34 (abstract)."
+        url: https://doi.org/10.1111/j.1467-2679.2005.00173.x
+        accessed: 2026-10-12
+      - *crc
+      - *enwiki
+    evidence:
+      - source: *sf
+        value: maternal-mouthbrooder
+        note: female does not eat while brooding
+      - source: *fishbase
+        value: maternal-mouthbrooder
+        note: listed as mouthbrooder
+      - source: *glaser
+        value: maternal-mouthbrooder
+        note: the female alone cares for the brood
+      - source: *genner
+        value: maternal-mouthbrooder
+        note: all mbuna are maternal mouthbrooders
+      - source: *crc
+        value: maternal-mouthbrooder
+        note: verification only
+
+  beginnerSuitability:
+    value: easy
+    confidence: medium
+    rationale: >-
+      Seriously Fish rates it easy and the ideal first mbuna, LiveAquaria calls the care level
+      easy, and Aquadiction rates it for beginners to intermediate keepers. Aquarium-Guide rates
+      it normal, the Cichlid Room Companion lists it for intermediate aquarists, and
+      TropicalFreshwaterFish finds it more sensitive to poor water than other mbuna. Its mild
+      temperament and easy breeding outweigh the need for a Malawi setup with alkaline,
+      well-buffered water and a plant-rich diet.
+    sources:
+      - *sf
+      - *liveaquaria
+      - *aqd
+      - *ag
+      - *fishprofiles
+      - *tff
+      - *crc
+    evidence:
+      - source: *sf
+        value: easy
+        note: ideal first mbuna
+      - source: *liveaquaria
+        value: easy
+      - source: *aqd
+        value: easy
+        note: beginner to intermediate
+      - source: *ag
+        value: moderate
+        note: normal difficulty
+      - source: *crc
+        value: moderate
+        note: intermediate aquarists; verification only
+      - source: *tff
+        value: moderate
+        note: more sensitive to water pollution than other mbuna
+
+partners:
+  suitable:
+    - species: Iodotropheus sprengerae
+      reason: Small, mild mbuna of similar size with a different colour; same water and plant-rich diet.
+    - species: Sciaenochromis fryeri
+      reason: Blue hap that leaves mbuna alone and differs too much in colour to be taken as a rival; a common pairing in hobby tanks.
+      condition: Tank of at least 150 cm; feed the hap's protein share sparingly so the labidos do not overeat.
+    - species: Aulonocara stuartgranti
+      reason: Peaceful peacock that shares the water values; the two species ignore each other in practice.
+      condition: Tank of at least 150 cm with open sand areas for the peacocks.
+    - species: Synodontis multipunctatus
+      reason: Bottom-dwelling catfish from the African rift lakes that tolerates the same water and is left alone.
+  unsuitable:
+    - species: Labidochromis chisumulae
+      reason: Closest relative with similar females; the two may hybridise (hybrid group labidochromis).
+    - species: Labidochromis mbenjii
+      reason: Congener with look-alike females; mixing Labidochromis species risks hybrids (hybrid group labidochromis).
+    - species: Melanochromis auratus
+      reason: Far more aggressive mbuna with yellow females; labidos are harassed and lose condition.
+    - species: Chindongo demasoni
+      reason: Highly aggressive dwarf mbuna that persecutes calmer species in all but very crowded large tanks.
+    - species: Pterophyllum scalare
+      reason: Soft, acidic water species from South America; water needs and diet do not match, and the labidos nip slow, long-finned fish.
+    - species: Paracheirodon innesi
+      reason: Small soft-water tetra that needs acidic water and is at risk from adult mbuna.
+
+profile:
+  overview:
+    text: >-
+      Labidochromis caeruleus is a small rock-dwelling cichlid (mbuna) from the north of Lake
+      Malawi and one of the most widely kept African cichlids. The hobby knows it mainly as the
+      bright yellow form with jet-black fin markings, often sold as Electric Yellow or Yellow Lab;
+      the fish at the type locality in Nkhata Bay are white with a faint blue sheen. Compared with
+      most mbuna it is calm: it holds no feeding territory, tolerates other males fairly well and
+      rarely damages tankmates. That makes it a good first species for a Malawi tank and a
+      colourful, peaceful element in mixed communities. Almost all fish in the trade are bred in
+      captivity and adapt easily to aquarium life.
+    sources:
+      - *sf
+      - *glaser
+      - *oliver
+      - *cof
+  habitat:
+    text: >-
+      The species is endemic to Lake Malawi, where it lives along the northern coasts of Malawi,
+      Tanzania and Mozambique. The yellow form occurs only on a short stretch of the Malawian shore
+      between Charo and Lion's Cove. Unlike many mbuna it stays mostly in deeper water, typically
+      between about 10 and 40 m, over rocks covered with fine sediment, and it also enters dense
+      beds of Vallisneria. The lake water there is soft but clearly alkaline: about 3 to 5 dGH, 5 to
+      8 dKH and pH 7.7 to 8.6, with temperatures between 21 and 29 C over the year. The aquarium
+      should copy the rocky part of this habitat over a sand floor.
+    sources:
+      - *sf
+      - *cicek
+      - *dewiki
+      - *branchu
+      - *fao5
+      - *eccles
+  sizeAndGrowth:
+    text: >-
+      Wild specimens are small; museum fish reach a little over 8 cm standard length. In the
+      aquarium males usually end up at about 10 cm total length and females at about 8 cm; only
+      very old males in large tanks reach 12 to 13 cm. Growth is quick in the first year.
+      Overfeeding makes the fish grow faster but also fat, which shortens their life; a lean diet
+      gives slower growth and better long-term health. With good care a lifespan of six to ten
+      years is realistic.
+    sources:
+      - *fishbase
+      - *sf
+      - *glaser
+      - *ag
+      - *aqd
+  husbandry:
+    text: >-
+      For one male and three females a tank of about 90 cm length and 150 L is the minimum; a
+      breeding harem does better in 120 cm, and mixed mbuna groups need 120 to 150 cm or more. Build
+      stacks of stone with many caves and gaps over a sandy floor, and leave a few open patches of
+      sand and some flat stones as spawning sites. Keep the water alkaline and well buffered,
+      around pH 7.5 to 8.5, at 24 to 27 C. Hard tap water is fine; soft, acidic or unstable water
+      is not. Mbuna produce a lot of waste for their size, so strong filtration and large weekly
+      water changes keep nitrate low and colours bright.
+    sources:
+      - *sf
+      - *tff
+      - *glaser
+      - *fishbase
+      - *tt
+  socialBehavior:
+    text: >-
+      This is one of the mildest mbuna. It lives in loose groups with a pecking order instead of
+      rigid territories, and several males can usually share a tank. A male that is ready to spawn
+      cleans a small site and courts females with displays and persistent chasing, so one male with
+      at least three females keeps the pressure spread. Towards other species it is mostly
+      indifferent; it confronts fish of similar shape or colour now and then but seldom injures
+      them. Its calm nature means it is more often the victim than the aggressor when combined with
+      robust mbuna.
+    sources:
+      - *sf
+      - *glaser
+      - *liveaquaria
+      - *t10873
+  diet:
+    text: >-
+      In the lake it picks insect larvae, small crustaceans and tiny snails from rock surfaces,
+      sediment and plant leaves, and it takes plankton as well. In the aquarium it eats any
+      suitable food, but the staple should be a quality flake or pellet with a high share of plant
+      matter such as spirulina. Frozen crustaceans like Mysis or brine shrimp make good supplements
+      a few times a week. Avoid bloodworms, tubifex and other worms, and feed small portions once
+      or twice a day; overfed fish turn fat and become prone to bloat and other disease.
+    sources:
+      - *cicek
+      - *glaser
+      - *sf
+      - *tt
+      - *t10873
+  breeding:
+    text: >-
+      Breeding is easy and often happens without any effort in a community tank. The male cleans a
+      flat stone or digs a shallow pit in the sand, shows his most intense colours and leads ripe
+      females there. The female lays a few eggs at a time, takes them into her mouth and has them
+      fertilised while she nips at the egg-like spots on the male's anal fin. A brood holds about 5
+      to 30 eggs, depending on the female's size. She carries the young for three to four weeks
+      without eating and then releases fully formed fry that take brine shrimp nauplii at once. In
+      a mixed tank most fry are eaten, so many keepers move the brooding female to a separate tank
+      shortly before release; a female moved too early or chased may spit or swallow the brood,
+      and one kept away too long can lose her rank in the group.
+    sources:
+      - *sf
+      - *enwiki
+      - *dewiki
+      - *tff
+  sexing:
+    text: >-
+      Sexing is not easy, because both sexes share the yellow colour and black fin markings.
+      Adult males grow somewhat larger, become brighter when they spawn and usually show more black
+      in the fins, especially the pelvic fins; dominant males may also develop a brownish patch
+      between eye and mouth. The black of the pelvic fins appears earlier in young males, so a
+      group of fish around 4 to 5 cm gives the best first hints. Older females increasingly take on
+      male colours, which makes size and behaviour more reliable than colour in adults.
+    sources:
+      - *glaser
+      - *sf
+      - *tt
+  compatibility:
+    text: >-
+      Good tankmates are other calm Malawi species with different colours and the same water needs,
+      such as Iodotropheus sprengerae, peacocks like Aulonocara stuartgranti, mild haps such as
+      Sciaenochromis fryeri in larger tanks, and rift-lake Synodontis catfish. Do not keep it with
+      other Labidochromis species such as L. chisumulae, L. mbenjii or the undescribed L. sp.
+      'Hongi', or with other colour forms of its own species, since the hobby warns that they
+      cross. A single Electric Yellow without conspecifics may even spawn with mbuna of other
+      genera; hobby reports name red zebras (Maylandia estherae) and Dimidiochromis, so keep it in a
+      proper group. Very aggressive mbuna such as Melanochromis auratus or Chindongo demasoni stress
+      and harass it. Soft-water fish from South America or Asia need different water and are
+      either too slow or too small to live safely with mbuna; fry and very small fish are eaten.
+    sources:
+      - *sf
+      - *tawil
+      - *tff
+      - *liveaquaria
+      - *t49138
+      - *t37908
+      - *t13578
+      - *t1348
+  problems:
+    text: >-
+      The most frequent keeping mistake is a protein-rich diet: worms and heavy feeding can lead to
+      the swelling and loss of appetite known as Malawi bloat, which is often fatal if not caught
+      early. A plant-based staple and small portions prevent most cases. Another common error is
+      wrong water: in soft or acidic water, or with falling pH from missed water changes, the fish
+      lose colour and become prone to infections. Mixing them with much more aggressive mbuna leads
+      to chronic stress, hiding and poor feeding. Females carrying eggs that are moved or chased may
+      spit or swallow the brood, and isolated females can lose rank when they return. Tank hybrids
+      with yellow congeners or with red zebras are sold as yellow labs, so buying from breeders who
+      keep the line pure avoids passing hybrids on.
+    sources:
+      - *sf
+      - *glaser
+      - *t10873
+      - *t1103
+      - *t49138
+
+provenance:
+  runs:
+    - {role: generator, model: claude-opus-5-5, date: 2026-10-12}
+    - {role: checker, model: claude-opus-5-5, date: 2026-10-12}
+    - {role: checker, model: claude-sonnet-5-5, date: 2026-10-12}
+    - {role: checker, model: claude-opus-5-5, date: 2026-10-12}
+    - {role: checker, model: claude-sonnet-5-5, date: 2026-10-12}
+    - {role: adjudicator, model: claude-opus-5-5, date: 2026-10-12}
+  disagreements:
+    - field: features.origin.value.waterbody
+      proposals:
+        - {by: generator, value: Lake Malawi}
+        - {by: checker-a, value: Lake Malawi}
+        - {by: checker-b, value: lake-malawi}
+      decision: Lake Malawi
+      rationale: Both spellings name the same entry of the water body table; the name form is used, as in the other proposals.
+    - field: features.origin.value.localities
+      proposals:
+        - {by: generator, value: [Nkhata Bay, Lion's Cove, Charo, Mbowe Island, Lundo Island, Cape Kaiser]}
+        - {by: checker-a, value: [Nkhata Bay (type locality), Lion's Cove, Charo, Cape Kaiser to Lundo]}
+        - {by: checker-b, value: [Nkhata Bay, northern and north-western coast]}
+      decision: [Nkhata Bay, Lion's Cove, Charo, Mbowe Island, Lundo Island, Cape Kaiser]
+      rationale: >-
+        The proposals describe the same range. Named places are kept as single localities, each
+        backed by Seriously Fish, Oliver or the Catalog of Fishes; the type locality and the coastal
+        stretches are explained in the rationale.
+    - field: features.ph.tolerance
+      proposals:
+        - {by: generator, value: {min: 7.2, max: 8.8}}
+        - {by: checker-a, value: {min: 7.5, max: 8.6}}
+        - {by: checker-b, value: {min: 7, max: 8.9}}
+      decision: {min: 7.2, max: 8.8}
+      rationale: Decided by the vote count (unanimous, 3 of 3 within 0.3 pH); the median of the agreeing bounds is 7.2 to 8.8.
+    - field: features.ghDgh.tolerance
+      proposals:
+        - {by: generator, value: {min: 3, max: 25}}
+        - {by: checker-a, value: {min: 3, max: 20}}
+        - {by: checker-b, value: {min: 3, max: 25}}
+        - {by: tiebreaker-1, value: {min: 3, max: 25}}
+        - {by: tiebreaker-2, value: {min: 3, max: 25}}
+      decision: {min: 3, max: 25}
+      rationale: Decided by the vote count (qualified majority, 4 of 5); checker-a's upper bound of 20 dGH differs by more than 2 dGH.
+    - field: features.khDkh.tolerance
+      proposals:
+        - {by: generator, value: {min: 5, max: 15}}
+        - {by: checker-a, value: {min: 5, max: 12}}
+        - {by: checker-b, value: {min: 5, max: 12}}
+        - {by: tiebreaker-1, value: {min: 5, max: 12}}
+        - {by: tiebreaker-2, value: {min: 5, max: 12}}
+      decision: {min: 5, max: 12}
+      rationale: Decided by the vote count (qualified majority, 4 of 5, confidence low); the generator's upper bound of 15 dKH rests on LiveAquaria alone.
+    - field: features.diet.value.foods
+      proposals:
+        - {by: generator, value: [insect larvae, small crustaceans, small snails, zooplankton, spirulina-based flakes and pellets, frozen crustaceans such as Mysis or brine shrimp]}
+        - {by: checker-a, value: [insect larvae and other small benthic invertebrates, zooplankton, spirulina-based flakes and pellets in the aquarium]}
+        - {by: checker-b, value: [small invertebrates, insect larvae, algae, spirulina, vegetable matter]}
+      decision: [insect larvae, small crustaceans, small snails, zooplankton, spirulina-based flakes and pellets, frozen crustaceans such as Mysis or brine shrimp]
+      rationale: >-
+        The diet is decided by the vote count (unanimous on type invertivore and bloatSensitive
+        true), which takes the food list of the top candidate. It covers the wild foods named by
+        the Israeli checklist and Aquarium Glaser and the aquarium staples; algae as a wild food is
+        documented only for the congener L. vellicans.
+    - field: features.hybridGroup.value
+      proposals:
+        - {by: generator, value: labidochromis}
+        - {by: checker-a, value: labidochromis}
+        - {by: checker-b, value: null}
+        - {by: tiebreaker-1, value: labidochromis}
+        - {by: tiebreaker-2, value: null}
+      decision: labidochromis
+      rationale: >-
+        Decided by the vote count as the conservative value (3 of 5, no qualified majority, confidence
+        low): the most common named group. The null votes rightly note that no tank cross between
+        described Labidochromis species is documented; the group rests on the warnings of Seriously
+        Fish and Tawil and on the species' proven readiness to cross with other mbuna. The group is
+        added to the curated list with the look-alike congeners common in the trade.
+    - field: features.maxSizeCm.value
+      proposals:
+        - {by: generator, value: {male: 12, female: 10}}
+        - {by: checker-a, value: {male: 10, female: 8}}
+        - {by: checker-b, value: {male: 10, female: 8}}
+      decision: {male: 10, female: 8}
+      rationale: >-
+        The feature is the typical maximum of well-kept aquarium fish, not a record. Aquarium
+        Glaser, Aquarium-Guide, Aqualog and The Tropical Tank give 8 to 10 cm; 12 to 15 cm are reached
+        only by very old males, so the generator's 12 cm describes the upper tail rather than the
+        typical adult.
+    - field: features.aggressionHeterospecific.value
+      proposals:
+        - {by: generator, value: 1}
+        - {by: checker-a, value: 1}
+        - {by: checker-b, value: 2}
+      decision: 1
+      rationale: >-
+        Seriously Fish, Aquarium Glaser, The Tropical Tank and TropicalFreshwaterFish describe a fish
+        that ignores other species outside spawning and is often the target in mixed tanks. The
+        aggressive tag of Aqualog and the semi-aggressive rating of LiveAquaria concern look-alike
+        fish, which the hybrid group and coloration already cover.
+    - field: features.habitatZones.value
+      proposals:
+        - {by: generator, value: [rock, plants, sand]}
+        - {by: checker-a, value: [rock, sand, plants]}
+        - {by: checker-b, value: [rock, sand]}
+      decision: [rock, sand, plants]
+      rationale: >-
+        Seriously Fish names Vallisneria beds as one of two wild biotopes, so plants belong to the
+        zones the species uses in the wild; sand serves as spawning ground and covers the rocks
+        with sediment.
+    - field: features.feedingSpeed.value
+      proposals:
+        - {by: generator, value: normal}
+        - {by: checker-a, value: normal}
+        - {by: checker-b, value: hasty}
+      decision: normal
+      rationale: >-
+        No source grades the feeding speed. TropicalFreshwaterFish reports that it is harassed by
+        more aggressive mbuna, and it picks food rather than rushing it like the Maylandia grazers
+        that the rubric names as hasty; checker-b's value rested on model knowledge alone.
+    - field: features.minTank.value
+      proposals:
+        - {by: generator, value: {volumeL: 150, lengthCm: 90, depthCm: 45}}
+        - {by: checker-a, value: {volumeL: 200, lengthCm: 100, depthCm: 40}}
+        - {by: checker-b, value: {volumeL: 154, lengthCm: 90, depthCm: 45}}
+      decision: {volumeL: 154, lengthCm: 90, depthCm: 45}
+      rationale: >-
+        Seriously Fish gives 90 x 45 cm and about 154 L for the harem, FishBase 80 cm and the archive
+        90 cm; the larger figures of Aqualog and Aquarium-Guide are general recommendations. The
+        value takes the Seriously Fish figures, which the generator rounded to 150 L.
+    - field: features.lifespanYears.confidence
+      proposals:
+        - {by: generator, value: low}
+        - {by: checker-a, value: medium}
+        - {by: checker-b, value: low}
+      decision: medium
+      rationale: >-
+        All runs propose 6 to 10 years; checker-a found Aquarium-Guide (up to 10 years) and
+        Aquadiction (up to 8 years), which the adjudicator confirmed, so the value no longer rests
+        on model knowledge.
