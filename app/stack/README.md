@@ -81,6 +81,11 @@ reason otherwise. The reset runs only with `DOTNET_ENVIRONMENT` set to `Developm
 `bootstrap.sh` sets `Development`. Single write steps (`etl profiles`, `etl tanks`, ...) skip the
 empty-target check, write over existing rows and run only in `Development`.
 
+`etl verify` computes every expected count from the legacy source and compares it with whole
+target tables, so it expects a target that holds the import and nothing else: a row created
+through the API or by hand shows up as a mismatch. Every report row names the migration rule its
+expectation follows from. The oidc identities of the account import appear as an information row.
+
 Environment variables (all optional):
 
 | Variable                     | Default                                                  | Purpose |
