@@ -370,7 +370,10 @@ Anschließend den Status prüfen und `node tools/check-story-test-binding.mjs` l
   - 179.337 von 179.340 Medien im Object Store (3 Quelldateien fehlen)
   - 623.220 Varianten (200/400/800/1600 px, ohne Hochskalieren)
   - 283 GB in 94 Minuten übertragen
-  - Neustarts sind idempotent
+  - Jeder Lauf prüft Originale und Varianten gegen den Object Store (SHA-256 der Quelldatei und
+    Pipeline-Version als Objekt-Metadaten) und lädt nur Fehlendes oder Abweichendes hoch. Nach einem
+    Datenbank-Reset schreibt er die Metadaten ohne Uploads in die Datenbank, und verlorene Objekte werden
+    wiederhergestellt.
 - **934 Altdateien** lassen sich nicht dekodieren. Sie werden nur als Original ausgeliefert.
 - In der Besatzspalte der Altdaten ist jedes live geschaltete Becken leer. Die Becken haben also
   tatsächlich 0 Bewohner.

@@ -91,7 +91,7 @@ Environment variables (all optional):
 | Variable                     | Default                                                  | Purpose |
 |-------------------------------|-----------------------------------------------------------|---------|
 | `CICHLIDS_LEGACY_STACK_DIR`   | `<repository>/workspace-legacy/legacy-stack`               | Where to find the legacy MySQL stack's `docker-compose.yml` if MySQL is not already reachable on 3306. |
-| `CICHLIDS_MEDIA_LIMIT`        | `3000`                                                     | How many media items the ETL media step seeds; `0` seeds the full legacy image set. |
+| `CICHLIDS_MEDIA_LIMIT`        | `3000`                                                     | How many media items the ETL media step processes; `0` processes the full legacy image set. The ETL uploads only objects that are missing from the bucket or whose metadata differs. |
 | `CICHLIDS_AUTH0_EXPORT`       | `/workspaces/legacy-data/auth0/auth0-cichlids.json`        | Auth0 export (newline-delimited JSON) for the Keycloak account import; the step is skipped when the file does not exist. |
 | `CICHLIDS_POSTGRES_WAIT_SECONDS` | `60`                                                    | How long to wait for Postgres before the script fails. |
 | `DOTNET`                      | `~/.dotnet/dotnet`                                         | Path to the `dotnet` executable. |
