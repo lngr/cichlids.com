@@ -146,6 +146,23 @@ export type MeDto = {
     roles: Array<string>;
 };
 
+export type OutboxEventDto = {
+    id: string;
+    eventType: string;
+    aggregateType: string;
+    aggregateId: string;
+    occurredAt: string;
+    attemptCount: number | string;
+    lastError: null | string;
+    lastAttemptAt: null | string;
+    givenUpAt: null | string;
+    redeliveredAt: null | string;
+};
+
+export type OutboxRedeliveryDto = {
+    count: number | string;
+};
+
 export type PagedResponseOfCommentDto = {
     total: number | string;
     items: Array<CommentDto>;
@@ -154,6 +171,11 @@ export type PagedResponseOfCommentDto = {
 export type PagedResponseOfCommunityThreadListItemDto = {
     total: number | string;
     items: Array<CommunityThreadListItemDto>;
+};
+
+export type PagedResponseOfOutboxEventDto = {
+    total: number | string;
+    items: Array<OutboxEventDto>;
 };
 
 export type PagedResponseOfPictureListItemDto = {
@@ -1158,3 +1180,77 @@ export type CreateWebhookSubscriptionResponses = {
 };
 
 export type CreateWebhookSubscriptionResponse = CreateWebhookSubscriptionResponses[keyof CreateWebhookSubscriptionResponses];
+
+export type ListOutboxEventsData = {
+    body?: never;
+    path?: never;
+    query?: {
+        state?: string;
+        offset?: number | string;
+        limit?: number | string;
+    };
+    url: '/api/admin/outbox/events';
+};
+
+export type ListOutboxEventsErrors = {
+    /**
+     * Bad Request
+     */
+    400: string;
+};
+
+export type ListOutboxEventsError = ListOutboxEventsErrors[keyof ListOutboxEventsErrors];
+
+export type ListOutboxEventsResponses = {
+    /**
+     * OK
+     */
+    200: PagedResponseOfOutboxEventDto;
+};
+
+export type ListOutboxEventsResponse = ListOutboxEventsResponses[keyof ListOutboxEventsResponses];
+
+export type RedeliverOutboxEventData = {
+    body?: never;
+    path: {
+        id: string;
+    };
+    query?: never;
+    url: '/api/admin/outbox/events/{id}/redeliver';
+};
+
+export type RedeliverOutboxEventErrors = {
+    /**
+     * Not Found
+     */
+    404: unknown;
+    /**
+     * Conflict
+     */
+    409: string;
+};
+
+export type RedeliverOutboxEventError = RedeliverOutboxEventErrors[keyof RedeliverOutboxEventErrors];
+
+export type RedeliverOutboxEventResponses = {
+    /**
+     * Accepted
+     */
+    202: unknown;
+};
+
+export type RedeliverGivenUpOutboxEventsData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/admin/outbox/given-up/redeliver';
+};
+
+export type RedeliverGivenUpOutboxEventsResponses = {
+    /**
+     * Accepted
+     */
+    202: OutboxRedeliveryDto;
+};
+
+export type RedeliverGivenUpOutboxEventsResponse = RedeliverGivenUpOutboxEventsResponses[keyof RedeliverGivenUpOutboxEventsResponses];
