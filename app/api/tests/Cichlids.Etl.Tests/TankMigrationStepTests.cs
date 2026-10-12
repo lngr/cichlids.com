@@ -173,7 +173,7 @@ public sealed class TankMigrationStepTests(EtlFixture fixture)
     private Task<StepStatistics> RunStepAsync() => fixture.RunExclusiveAsync(async () =>
     {
         await using var context = await EtlContext.CreateAsync(
-            fixture.LegacyConnectionString, fixture.TargetConnectionString, dryRun: false, CancellationToken.None);
+            fixture.LegacyConnectionString, fixture.TargetConnectionString, CancellationToken.None);
         await EtlRunner.RunAsync(new TankMigrationStep(), context, CancellationToken.None);
         return context.Statistics.ForStep("tanks");
     });

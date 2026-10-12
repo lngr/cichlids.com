@@ -93,7 +93,7 @@ public sealed class SpeciesCatalogStepTests(EtlFixture fixture)
     private Task<StepStatistics> RunStepAsync() => fixture.RunExclusiveAsync(async () =>
     {
         await using var context = await EtlContext.CreateAsync(
-            fixture.LegacyConnectionString, fixture.TargetConnectionString, dryRun: false, CancellationToken.None);
+            fixture.LegacyConnectionString, fixture.TargetConnectionString, CancellationToken.None);
         await EtlRunner.RunAsync(new SpeciesCatalogStep(), context, CancellationToken.None);
         return context.Statistics.ForStep("species");
     });

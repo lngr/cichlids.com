@@ -287,7 +287,7 @@ public sealed class ForumMigrationStepTests(EtlFixture fixture)
     private Task<StepStatistics> RunStepAsync() => fixture.RunExclusiveAsync(async () =>
     {
         await using var context = await EtlContext.CreateAsync(
-            fixture.LegacyConnectionString, fixture.TargetConnectionString, dryRun: false, CancellationToken.None, fixture.ObjectStore);
+            fixture.LegacyConnectionString, fixture.TargetConnectionString, CancellationToken.None, fixture.ObjectStore);
         await EtlRunner.RunAsync(new ForumMigrationStep(), context, CancellationToken.None);
         return context.Statistics.ForStep("forum");
     });

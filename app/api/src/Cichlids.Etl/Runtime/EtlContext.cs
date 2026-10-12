@@ -11,9 +11,8 @@ namespace Cichlids.Etl.Runtime;
 
 /// <summary>
 /// Shared state for one ETL invocation: the read-only legacy connection, the target database
-/// context (and the raw connection it holds, reused for the upsert and bulk-insert helpers so a
-/// step's writes and the migration-history check share one transaction), the dry-run flag and the
-/// statistics collector every step reports into.
+/// context (and the raw connection it holds, reused for the upsert and bulk-insert helpers so the
+/// writes of a step share one transaction) and the statistics collector every step reports into.
 /// </summary>
 public sealed class EtlContext : IAsyncDisposable
 {
@@ -25,11 +24,10 @@ public sealed class EtlContext : IAsyncDisposable
     public const string DevDefaultSlugSecret = SlugSecretResolver.DevelopmentDefault;
 
     private EtlContext(
-        MySqlConnection legacy, CichlidsDbContext db, bool dryRun, SlugGenerator slugGenerator, GeneratedNames generatedNames)
+        MySqlConnection legacy, CichlidsDbContext db, SlugGenerator slugGenerator, GeneratedNames generatedNames)
     {
         Legacy = legacy;
         Db = db;
-        DryRun = dryRun;
         SlugGenerator = slugGenerator;
         GeneratedNames = generatedNames;
     }
@@ -39,8 +37,6 @@ public sealed class EtlContext : IAsyncDisposable
     public CichlidsDbContext Db { get; }
 
     public NpgsqlConnection Target => (NpgsqlConnection)Db.Database.GetDbConnection();
-
-    public bool DryRun { get; }
 
     public EtlStatistics Statistics { get; } = new();
 
@@ -98,7 +94,6 @@ public sealed class EtlContext : IAsyncDisposable
     public static async Task<EtlContext> CreateAsync(
         string legacyConnectionString,
         string targetConnectionString,
-        bool dryRun,
         CancellationToken cancellationToken,
         IObjectStore? objectStore = null,
         string? slugSecret = null)
@@ -113,7 +108,7 @@ public sealed class EtlContext : IAsyncDisposable
         await db.Database.OpenConnectionAsync(cancellationToken);
 
         var secret = slugSecret ?? DevDefaultSlugSecret;
-        return new EtlContext(legacy, db, dryRun, new SlugGenerator(secret), new GeneratedNames(secret))
+        return new EtlContext(legacy, db, new SlugGenerator(secret), new GeneratedNames(secret))
         {
             ObjectStore = objectStore,
         };

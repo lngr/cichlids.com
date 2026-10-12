@@ -13,7 +13,7 @@ public sealed class VerifyStepTests(VerifyEtlFixture fixture)
     public async Task ReportsNoMismatchesAfterAFullPipelineRunAndFlagsAnInjectedDeviation()
     {
         await using var context = await EtlContext.CreateAsync(
-            fixture.LegacyConnectionString, fixture.TargetConnectionString, dryRun: false, CancellationToken.None, fixture.ObjectStore);
+            fixture.LegacyConnectionString, fixture.TargetConnectionString, CancellationToken.None, fixture.ObjectStore);
 
         foreach (var step in EtlStepRegistry.All)
         {
@@ -109,7 +109,7 @@ public sealed class VerifyStepTests(VerifyEtlFixture fixture)
     public async Task IgnoresAMemberProfileTheApiCreatedForAFirstLoginWhenCountingMigratedMembers()
     {
         await using var context = await EtlContext.CreateAsync(
-            fixture.LegacyConnectionString, fixture.TargetConnectionString, dryRun: false, CancellationToken.None, fixture.ObjectStore);
+            fixture.LegacyConnectionString, fixture.TargetConnectionString, CancellationToken.None, fixture.ObjectStore);
 
         foreach (var step in EtlStepRegistry.All)
         {
@@ -153,7 +153,7 @@ public sealed class VerifyStepTests(VerifyEtlFixture fixture)
     public async Task FlagsAProfileWhoseHandleOrDisplayNameHoldsAnEmailAddress()
     {
         await using var context = await EtlContext.CreateAsync(
-            fixture.LegacyConnectionString, fixture.TargetConnectionString, dryRun: false, CancellationToken.None, fixture.ObjectStore);
+            fixture.LegacyConnectionString, fixture.TargetConnectionString, CancellationToken.None, fixture.ObjectStore);
 
         foreach (var step in EtlStepRegistry.All)
         {
@@ -195,7 +195,7 @@ public sealed class VerifyStepTests(VerifyEtlFixture fixture)
     public async Task FlagsAProfileWhoseExternalAvatarUrlIsAGravatarUrl()
     {
         await using var context = await EtlContext.CreateAsync(
-            fixture.LegacyConnectionString, fixture.TargetConnectionString, dryRun: false, CancellationToken.None, fixture.ObjectStore);
+            fixture.LegacyConnectionString, fixture.TargetConnectionString, CancellationToken.None, fixture.ObjectStore);
 
         foreach (var step in EtlStepRegistry.All)
         {
@@ -236,7 +236,7 @@ public sealed class VerifyStepTests(VerifyEtlFixture fixture)
     public async Task FlagsAGuestNameThatHoldsAnEmailAddress()
     {
         await using var context = await EtlContext.CreateAsync(
-            fixture.LegacyConnectionString, fixture.TargetConnectionString, dryRun: false, CancellationToken.None, fixture.ObjectStore);
+            fixture.LegacyConnectionString, fixture.TargetConnectionString, CancellationToken.None, fixture.ObjectStore);
 
         foreach (var step in EtlStepRegistry.All)
         {

@@ -4,9 +4,8 @@ using Microsoft.EntityFrameworkCore;
 namespace Cichlids.Etl.Runtime;
 
 /// <summary>
-/// Runs one step inside its own database transaction so a dry run can execute every read and
-/// write exactly as a real run would, then roll back instead of committing: statistics reflect
-/// the real outcome without leaving any row behind.
+/// Runs one step inside its own database transaction and commits it when the step completes, so
+/// a failing step leaves none of its writes behind.
 /// </summary>
 public static class EtlRunner
 {
@@ -18,13 +17,6 @@ public static class EtlRunner
 
         await step.RunAsync(context, cancellationToken);
 
-        if (context.DryRun)
-        {
-            await transaction.RollbackAsync(cancellationToken);
-        }
-        else
-        {
-            await transaction.CommitAsync(cancellationToken);
-        }
+        await transaction.CommitAsync(cancellationToken);
     }
 }

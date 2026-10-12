@@ -12,22 +12,19 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 
-if (args.Length == 0)
+// DOTNET_ENVIRONMENT is the generic host's own environment variable; unset resolves to
+// Production, its documented default, since this entry point has no host builder to apply that
+// default for it.
+var environmentName = Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT") ?? "Production";
+
+var parsed = EtlCommandLine.Parse(args, environmentName);
+if (parsed.CommandLine is not { } commandLine)
 {
-    Console.Error.WriteLine(
-        "Usage: dotnet run -- <step|all|migrate|media|media-verify|keycloak-import> [--dry-run] [--out <path>]\n"
-        + "  media:           [--limit N] [--workers P] [--force] [--missing-out <path>]\n"
-        + "  media-verify:    [--out <path>]\n"
-        + "  keycloak-import: imports the Auth0 export (Etl:Auth0ExportPath) into Keycloak (Keycloak:*)\n"
-        + "                   [--open-registration]: allows self-registration once every account exists");
+    Console.Error.WriteLine(parsed.Error);
     return 1;
 }
 
-var command = args[0];
-var dryRun = args.Contains("--dry-run", StringComparer.OrdinalIgnoreCase);
-
-var outArgIndex = Array.IndexOf(args, "--out");
-var verifyOutputPath = outArgIndex >= 0 && outArgIndex + 1 < args.Length ? args[outArgIndex + 1] : null;
+var command = commandLine.Command;
 
 var configuration = new ConfigurationBuilder()
     .SetBasePath(AppContext.BaseDirectory)
@@ -46,11 +43,6 @@ var targetConnectionString =
     ?? throw new InvalidOperationException(
         "Missing target connection string (Etl:TargetConnection in appsettings.json or CICHLIDS_ETL_TARGET_CONNECTION).");
 
-// DOTNET_ENVIRONMENT is the generic host's own environment variable; unset resolves to
-// Production, its documented default, since this entry point has no host builder to apply that
-// default for it.
-var environmentName = Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT") ?? "Production";
-
 using var cts = new CancellationTokenSource();
 Console.CancelKeyPress += (_, e) =>
 {
@@ -58,7 +50,7 @@ Console.CancelKeyPress += (_, e) =>
     cts.Cancel();
 };
 
-if (string.Equals(command, "migrate", StringComparison.OrdinalIgnoreCase))
+if (command == EtlCommandLine.Migrate)
 {
     var optionsBuilder = new DbContextOptionsBuilder<CichlidsDbContext>()
         .UseNpgsql(targetConnectionString)
@@ -69,7 +61,7 @@ if (string.Equals(command, "migrate", StringComparison.OrdinalIgnoreCase))
     return 0;
 }
 
-if (string.Equals(command, "media", StringComparison.OrdinalIgnoreCase))
+if (command == EtlCommandLine.Media)
 {
     var legacyImagesRoot =
         Environment.GetEnvironmentVariable("CICHLIDS_ETL_LEGACY_IMAGES_ROOT")
@@ -79,29 +71,18 @@ if (string.Equals(command, "media", StringComparison.OrdinalIgnoreCase))
 
     var mediaObjectStore = await RequireObjectStoreAsync(configuration, cts.Token);
 
-    var limitArgIndex = Array.IndexOf(args, "--limit");
-    var limit = limitArgIndex >= 0 && limitArgIndex + 1 < args.Length ? int.Parse(args[limitArgIndex + 1]) : (int?)null;
-
-    var workersArgIndex = Array.IndexOf(args, "--workers");
-    var workers = workersArgIndex >= 0 && workersArgIndex + 1 < args.Length ? int.Parse(args[workersArgIndex + 1]) : 8;
-
-    var onlyMissing = !args.Contains("--force", StringComparer.OrdinalIgnoreCase);
-
-    var missingOutArgIndex = Array.IndexOf(args, "--missing-out");
-    var missingOutPath = missingOutArgIndex >= 0 && missingOutArgIndex + 1 < args.Length ? args[missingOutArgIndex + 1] : null;
-
     return await MediaSeedCommand.RunAsync(
         legacyConnectionString, targetConnectionString, mediaObjectStore, legacyImagesRoot,
-        limit, workers, onlyMissing, missingOutPath, cts.Token);
+        commandLine.Limit, commandLine.Workers, !commandLine.Force, commandLine.MissingOutPath, cts.Token);
 }
 
-if (string.Equals(command, "media-verify", StringComparison.OrdinalIgnoreCase))
+if (command == EtlCommandLine.MediaVerify)
 {
     var verifyObjectStore = await RequireObjectStoreAsync(configuration, cts.Token);
-    return await MediaVerifyCommand.RunAsync(targetConnectionString, verifyObjectStore, verifyOutputPath, cts.Token);
+    return await MediaVerifyCommand.RunAsync(targetConnectionString, verifyObjectStore, commandLine.OutPath, cts.Token);
 }
 
-if (string.Equals(command, "keycloak-import", StringComparison.OrdinalIgnoreCase))
+if (command == EtlCommandLine.KeycloakImport)
 {
     var auth0ExportPath =
         Environment.GetEnvironmentVariable("CICHLIDS_ETL_AUTH0_EXPORT")
@@ -117,44 +98,35 @@ if (string.Equals(command, "keycloak-import", StringComparison.OrdinalIgnoreCase
         Environment.GetEnvironmentVariable("CICHLIDS_KEYCLOAK_ADMIN_USER") ?? configuration["Keycloak:AdminUser"] ?? "admin",
         Environment.GetEnvironmentVariable("CICHLIDS_KEYCLOAK_ADMIN_PASSWORD") ?? configuration["Keycloak:AdminPassword"] ?? "admin");
 
-    var openRegistration = args.Contains("--open-registration", StringComparer.OrdinalIgnoreCase);
     var keycloakSlugSecret = SlugSecretResolver.Resolve(configuration, environmentName);
     return await KeycloakAccountImportCommand.RunAsync(
-        legacyConnectionString, targetConnectionString, auth0ExportPath, keycloakSettings, new GeneratedNames(keycloakSlugSecret), openRegistration, cts.Token);
+        legacyConnectionString, targetConnectionString, auth0ExportPath, keycloakSettings, new GeneratedNames(keycloakSlugSecret), commandLine.OpenRegistration, cts.Token);
 }
 
-IReadOnlyList<IEtlStep> steps;
-if (string.Equals(command, "all", StringComparison.OrdinalIgnoreCase))
-{
-    steps = EtlStepRegistry.All;
-}
-else
-{
-    var step = EtlStepRegistry.Find(command);
-    if (step is null)
-    {
-        Console.Error.WriteLine(
-            $"Unknown step '{command}'. Known steps: {string.Join(", ", EtlStepRegistry.All.Select(s => s.Name))}, all, migrate.");
-        return 1;
-    }
+IReadOnlyList<IEtlStep> steps = command == EtlCommandLine.All
+    ? EtlStepRegistry.All
+    : [EtlStepRegistry.Find(command)!];
 
-    steps = [step];
+if (commandLine.IsSingleStep)
+{
+    Console.WriteLine(
+        $"Warning: the single step '{command}' runs without the empty-target guard and writes over the rows it finds.");
 }
 
 var objectStore = await CreateObjectStoreAsync(configuration, cts.Token);
 var slugSecret = SlugSecretResolver.Resolve(configuration, environmentName);
 
 await using var context = await EtlContext.CreateAsync(
-    legacyConnectionString, targetConnectionString, dryRun, cts.Token, objectStore, slugSecret);
-context.VerifyOutputPath = verifyOutputPath;
+    legacyConnectionString, targetConnectionString, cts.Token, objectStore, slugSecret);
+context.VerifyOutputPath = commandLine.OutPath;
 
 foreach (var step in steps)
 {
-    Console.WriteLine($"Running step '{step.Name}'{(dryRun ? " (dry run)" : string.Empty)}...");
+    Console.WriteLine($"Running step '{step.Name}'...");
     await EtlRunner.RunAsync(step, context, cts.Token);
 }
 
-ConsoleReport.Print(context.Statistics, dryRun);
+ConsoleReport.Print(context.Statistics);
 return context.VerificationReport is { Passed: false } ? 1 : 0;
 
 // The media and media-verify commands always need an object store to work at all, unlike the
