@@ -155,9 +155,29 @@ public static class MediaSeedCommand
         }
 
         StoredOriginal original;
+        IReadOnlyList<RecordedVariant> variantsToRecord = [];
         try
         {
-            original = await EnsureOriginalAsync(candidate, isPhoto, source, objectStore, stats, cancellationToken);
+            (original, var processed) = await EnsureOriginalAsync(candidate, isPhoto, source, objectStore, stats, cancellationToken);
+
+            if (isPhoto && original.Photo is { Decodable: true } photo)
+            {
+                var variants = await EnsureVariantsAsync(
+                    candidate.StorageKey, original.SourceSha256, photo.Width!.Value, source, processed, objectStore, stats, cancellationToken);
+                if (variants is null)
+                {
+                    // The stored original is recorded as decodable but its source does not decode.
+                    // It is recorded as undecodable, so later runs do not retry it.
+                    original = original with { Photo = PhotoInfo.Undecodable };
+                    await PutOriginalAsync(
+                        objectStore, candidate.StorageKey, await source.ReadAllBytesAsync(cancellationToken),
+                        original.Sha256, original.SourceSha256, original.Photo, cancellationToken);
+                }
+                else
+                {
+                    variantsToRecord = variants;
+                }
+            }
         }
         catch (StoredObjectVanishedException)
         {
@@ -173,57 +193,10 @@ public static class MediaSeedCommand
             return;
         }
 
-        var variantsToRecord = new List<(string Label, int Width, string StorageKey, long ByteSize)>();
-
-        if (isPhoto)
+        if (isPhoto && original.Photo is not { Decodable: true })
         {
-            if (original.Photo is { Decodable: false } or null)
-            {
-                stats.IncrementBroken();
-                brokenKeys.Add(candidate.StorageKey);
-            }
-            else
-            {
-                try
-                {
-                    foreach (var (label, targetWidth) in MediaVariantSpec.Resolve(original.Photo.Width!.Value))
-                    {
-                        var variantKey = MediaStorageKeys.BuildVariantKey(candidate.StorageKey, label);
-                        var variantHead = await objectStore.HeadAsync(variantKey, cancellationToken);
-                        if (MediaObjectMetadata.Decide(variantHead, original.SourceSha256, MediaObjectMetadata.VariantPipelineVersion)
-                            == ObjectState.Current)
-                        {
-                            stats.IncrementVariantPresent();
-                            variantsToRecord.Add((label, targetWidth, variantKey, variantHead!.Size));
-                            continue;
-                        }
-
-                        var variantBytes = ImageProcessor.GenerateVariant(await source.ReadAllBytesAsync(cancellationToken), targetWidth);
-                        var variantChecksum = Convert.ToHexStringLower(SHA256.HashData(variantBytes));
-                        await objectStore.PutAsync(
-                            variantKey,
-                            new MemoryStream(variantBytes),
-                            "image/jpeg",
-                            MediaObjectMetadata.ForVariant(variantChecksum, original.SourceSha256),
-                            cancellationToken);
-                        stats.AddBytesTransferred(variantBytes.LongLength);
-                        stats.IncrementVariantUploaded();
-                        variantsToRecord.Add((label, targetWidth, variantKey, variantBytes.LongLength));
-                    }
-                }
-                catch (ImageProcessor.BrokenImageException)
-                {
-                    // The header measured fine but the pixel data does not decode. The original
-                    // is recorded as undecodable, so later runs do not retry it.
-                    variantsToRecord.Clear();
-                    original = original with { Photo = PhotoInfo.Undecodable };
-                    await PutOriginalAsync(
-                        objectStore, candidate.StorageKey, await source.ReadAllBytesAsync(cancellationToken),
-                        original.Sha256, original.SourceSha256, original.Photo, cancellationToken);
-                    stats.IncrementBroken();
-                    brokenKeys.Add(candidate.StorageKey);
-                }
-            }
+            stats.IncrementBroken();
+            brokenKeys.Add(candidate.StorageKey);
         }
 
         await using var connection = new NpgsqlConnection(targetConnectionString);
@@ -235,19 +208,20 @@ public static class MediaSeedCommand
             decodable ? original.Photo!.Width : null, decodable ? original.Photo!.Height : null, cancellationToken);
         stats.IncrementMetadataRecorded();
 
-        foreach (var (label, variantWidth, variantKey, variantByteSize) in variantsToRecord)
+        foreach (var variant in variantsToRecord)
         {
-            await UpsertMediaVariantAsync(connection, candidate.Id, label, variantWidth, variantKey, variantByteSize, cancellationToken);
+            await UpsertMediaVariantAsync(
+                connection, candidate.Id, variant.Label, variant.Width, variant.StorageKey, variant.ByteSize, cancellationToken);
         }
     }
 
     /// <summary>
     /// Brings the original in the object store in line with its source and returns what the store
-    /// holds afterwards.
+    /// holds afterwards, together with the processed image when the source had to be decoded.
     /// Legacy originals are uploaded when they are missing or differ; a stored forum attachment is
     /// the source itself, so only its metadata is completed when it lacks the photo information.
     /// </summary>
-    private static async Task<StoredOriginal> EnsureOriginalAsync(
+    private static async Task<(StoredOriginal Original, ProcessedImage? Processed)> EnsureOriginalAsync(
         MediaCandidate candidate,
         bool isPhoto,
         SourceFile source,
@@ -280,23 +254,15 @@ public static class MediaSeedCommand
         if (state == ObjectState.Current)
         {
             stats.IncrementOriginalPresent();
-            return new StoredOriginal(head!.Size, storedSha256!, sourceSha256, photo);
+            return (new StoredOriginal(head!.Size, storedSha256!, sourceSha256, photo), null);
         }
 
         var bytes = await source.ReadAllBytesAsync(cancellationToken);
+        ProcessedImage? processed = null;
         if (isPhoto)
         {
-            try
-            {
-                var measured = ImageProcessor.Measure(bytes);
-                photo = new PhotoInfo(measured.Width, measured.Height);
-            }
-            catch (Exception ex) when (ex is ImageProcessor.BrokenImageException
-                or ImageProcessor.UnsupportedImageFormatException
-                or ImageProcessor.ImageTooLargeException)
-            {
-                photo = PhotoInfo.Undecodable;
-            }
+            processed = TryProcess(bytes);
+            photo = processed is null ? PhotoInfo.Undecodable : new PhotoInfo(processed.Width, processed.Height);
         }
 
         var uploadedSha256 = Convert.ToHexStringLower(SHA256.HashData(bytes));
@@ -314,7 +280,91 @@ public static class MediaSeedCommand
             stats.IncrementOriginalUploaded();
         }
 
-        return new StoredOriginal(bytes.LongLength, uploadedSha256, sourceSha256, photo);
+        return (new StoredOriginal(bytes.LongLength, uploadedSha256, sourceSha256, photo), processed);
+    }
+
+    /// <summary>
+    /// Brings the variants of a decodable photo in line with its source and returns them for the
+    /// database, or null when the source does not decode. The source is decoded at most once, and
+    /// only when a variant is missing or differs; no variant is uploaded unless that decode
+    /// succeeded.
+    /// </summary>
+    private static async Task<IReadOnlyList<RecordedVariant>?> EnsureVariantsAsync(
+        string originalKey,
+        string sourceSha256,
+        int width,
+        SourceFile source,
+        ProcessedImage? processed,
+        IObjectStore objectStore,
+        Statistics stats,
+        CancellationToken cancellationToken)
+    {
+        var present = new List<RecordedVariant>();
+        var needed = new List<(string Label, string StorageKey)>();
+        foreach (var (label, targetWidth) in MediaVariantSpec.Resolve(width))
+        {
+            var variantKey = MediaStorageKeys.BuildVariantKey(originalKey, label);
+            var variantHead = await objectStore.HeadAsync(variantKey, cancellationToken);
+            if (MediaObjectMetadata.Decide(variantHead, sourceSha256, MediaObjectMetadata.VariantPipelineVersion) == ObjectState.Current)
+            {
+                present.Add(new RecordedVariant(label, targetWidth, variantKey, variantHead!.Size));
+            }
+            else
+            {
+                needed.Add((label, variantKey));
+            }
+        }
+
+        if (needed.Count > 0)
+        {
+            processed ??= TryProcess(await source.ReadAllBytesAsync(cancellationToken));
+            if (processed is null)
+            {
+                return null;
+            }
+        }
+
+        var recorded = new List<RecordedVariant>(present);
+        stats.AddVariantsPresent(present.Count);
+
+        foreach (var (label, variantKey) in needed)
+        {
+            var variant = processed!.Variants.SingleOrDefault(v => v.Label == label);
+            if (variant is null)
+            {
+                // The recorded width allows a variant the decoded image is too narrow for.
+                continue;
+            }
+
+            var variantChecksum = Convert.ToHexStringLower(SHA256.HashData(variant.Bytes));
+            await objectStore.PutAsync(
+                variantKey,
+                new MemoryStream(variant.Bytes),
+                "image/jpeg",
+                MediaObjectMetadata.ForVariant(variantChecksum, sourceSha256),
+                cancellationToken);
+            stats.AddBytesTransferred(variant.Bytes.LongLength);
+            stats.IncrementVariantUploaded();
+            recorded.Add(new RecordedVariant(label, variant.Width, variantKey, variant.Bytes.LongLength));
+        }
+
+        return recorded;
+    }
+
+    // An image outside the format allowlist, above the pixel limit or with undecodable data is
+    // recorded as an undecodable photo.
+    private static ProcessedImage? TryProcess(byte[] bytes)
+    {
+        try
+        {
+            return ImageProcessor.Process(bytes);
+        }
+        catch (Exception ex) when (ex is ImageProcessor.BrokenImageException
+            or ImageProcessor.UnsupportedImageFormatException
+            or ImageProcessor.ImageTooLargeException)
+        {
+            return null;
+        }
     }
 
     private static Task PutOriginalAsync(
@@ -487,6 +537,8 @@ public static class MediaSeedCommand
 
     private sealed record StoredOriginal(long Size, string Sha256, string SourceSha256, PhotoInfo? Photo);
 
+    private sealed record RecordedVariant(string Label, int Width, string StorageKey, long ByteSize);
+
     /// <summary>
     /// The bytes an original and its variants are derived from: a legacy file on disk, or an
     /// object already in the store (forum attachments). Hashing streams the content; the bytes are
@@ -591,7 +643,7 @@ public static class MediaSeedCommand
 
         public void IncrementVariantUploaded() => Interlocked.Increment(ref _variantsUploaded);
 
-        public void IncrementVariantPresent() => Interlocked.Increment(ref _variantsPresent);
+        public void AddVariantsPresent(int count) => Interlocked.Add(ref _variantsPresent, count);
 
         public void IncrementMetadataRecorded() => Interlocked.Increment(ref _metadataRecorded);
 

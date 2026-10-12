@@ -53,9 +53,10 @@ public static class MediaObjectMetadata
     public const int OriginalPipelineVersion = 1;
 
     /// <summary>
-    /// Version of the derivation that turns an original into a stored variant.
+    /// Version of the derivation that turns an original into a stored variant: one decode, resized
+    /// to the variant width, converted to sRGB and encoded as JPEG without metadata.
     /// </summary>
-    public const int VariantPipelineVersion = 1;
+    public const int VariantPipelineVersion = 2;
 
     /// <summary>
     /// Builds the metadata of an original. Photo information is added for photo originals only.

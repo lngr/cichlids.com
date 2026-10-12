@@ -126,6 +126,16 @@ internal static class MediaTestSupport
     public static string Sha256OfFile(string root, string legacyPath) =>
         Convert.ToHexStringLower(SHA256.HashData(File.ReadAllBytes(Path.Combine(root, legacyPath))));
 
+    /// <summary>
+    /// Reads the pixel size of a variant. Variants have their orientation baked in, so the stored
+    /// size is the displayed size.
+    /// </summary>
+    public static (int Width, int Height) MeasureVariant(byte[] variantBytes)
+    {
+        using var image = Image.NewFromBuffer(variantBytes);
+        return (image.Width, image.Height);
+    }
+
     public static async Task<byte[]> DownloadAsync(MediaEtlFixture fixture, string storageKey)
     {
         await using var stream = await fixture.ObjectStore.GetAsync(storageKey);

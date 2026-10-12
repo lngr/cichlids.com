@@ -33,15 +33,12 @@ public sealed class UploadsWriteService(
     public async Task<DraftDto> CreateDraftAsync(
         Profile owner, byte[] bytes, UploadImageFormat format, string? originalFilename, CancellationToken cancellationToken)
     {
-        var (width, height) = ImageProcessor.Measure(bytes);
+        var processed = ImageProcessor.Process(bytes);
+        var (width, height) = (processed.Width, processed.Height);
 
         var originalKey = $"originals/uploads/{owner.Id}/{Guid.CreateVersion7()}.{format.Extension}";
-        var variants = MediaVariantSpec.Resolve(width)
-            .Select(v => (
-                v.Label,
-                v.Width,
-                Key: MediaStorageKeys.BuildVariantKey(originalKey, v.Label),
-                Bytes: ImageProcessor.GenerateVariant(bytes, v.Width)))
+        var variants = processed.Variants
+            .Select(v => (v.Label, v.Width, Key: MediaStorageKeys.BuildVariantKey(originalKey, v.Label), v.Bytes))
             .ToList();
 
         var writtenKeys = new List<string>();

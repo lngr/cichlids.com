@@ -48,7 +48,7 @@ public sealed class MediaSeedCommandTests(MediaEtlFixture fixture)
                 // Round-trip at least one variant through the store and re-measure it, so the
                 // assertion covers the actual uploaded bytes, not just the recorded row.
                 var narrowVariantBytes = await MediaTestSupport.DownloadAsync(fixture, narrowVariant.StorageKey);
-                Assert.Equal(150, ImageProcessor.Measure(narrowVariantBytes).Width);
+                Assert.Equal(150, MediaTestSupport.MeasureVariant(narrowVariantBytes).Width);
 
                 var midVariants = await db.MediaVariants.Where(v => v.MediaItemId == midMediaId).ToListAsync();
                 Assert.Equal(
@@ -155,7 +155,7 @@ public sealed class MediaSeedCommandTests(MediaEtlFixture fixture)
 
             var thumb = await db.MediaVariants.SingleAsync(v => v.MediaItemId == mediaId && v.Label == "thumb");
             var thumbBytes = await MediaTestSupport.DownloadAsync(fixture, thumb.StorageKey);
-            var remeasured = ImageProcessor.Measure(thumbBytes);
+            var remeasured = MediaTestSupport.MeasureVariant(thumbBytes);
 
             // A residual orientation tag on the generated variant would rotate it a second time
             // when re-read, flipping it back to a landscape aspect ratio. Staying portrait
@@ -459,7 +459,7 @@ public sealed class MediaSeedCommandTests(MediaEtlFixture fixture)
             Assert.Equal(
                 MediaObjectMetadata.VariantPipelineVersion.ToString(),
                 regenerated!.Metadata[MediaObjectMetadata.PipelineKey]);
-            Assert.Equal(800, ImageProcessor.Measure(await MediaTestSupport.DownloadAsync(fixture, outdatedKey)).Width);
+            Assert.Equal(800, MediaTestSupport.MeasureVariant(await MediaTestSupport.DownloadAsync(fixture, outdatedKey)).Width);
 
             await using var db = fixture.CreateTargetContext(target);
             var medium = await db.MediaVariants.SingleAsync(v => v.StorageKey == outdatedKey);
@@ -724,6 +724,82 @@ public sealed class MediaSeedCommandTests(MediaEtlFixture fixture)
             var entry = Assert.Single(report.Missing);
             Assert.Equal(oversizedKey, entry.StorageKey);
             Assert.Contains("download limit", entry.Reason);
+        }
+        finally
+        {
+            Directory.Delete(root, recursive: true);
+        }
+    }
+
+    [Fact]
+    public async Task CountsAForumAttachmentThatVanishesBeforeItsMissingVariantsAreGeneratedAsMissing()
+    {
+        var root = MediaTestSupport.CreateImagesRoot();
+        try
+        {
+            var photoPath = MediaTestSupport.WritePhoto(root, 71193, "forum.jpg", 900, 600);
+            var bytes = await File.ReadAllBytesAsync(Path.Combine(root, photoPath));
+            var sha = Convert.ToHexStringLower(SHA256.HashData(bytes));
+            const string vanishingKey = "forum_attachments/71193_vanishing.jpg";
+            await fixture.ObjectStore.PutAsync(
+                vanishingKey, new MemoryStream(bytes), "image/jpeg", MediaObjectMetadata.ForOriginal(sha, sha, new PhotoInfo(900, 600)));
+            const string regularKey = "forum_attachments/71194_regular.jpg";
+            await fixture.ObjectStore.PutAsync(
+                regularKey, new MemoryStream(bytes), "image/jpeg", MediaObjectMetadata.ForOriginal(sha, sha, new PhotoInfo(900, 600)));
+            var target = await fixture.CreateIsolatedTargetAsync();
+            await MediaTestSupport.InsertMediaItemAsync(fixture, 71193, vanishingKey, targetConnectionString: target);
+            await MediaTestSupport.InsertMediaItemAsync(fixture, 71194, regularKey, targetConnectionString: target);
+
+            var recording = new RecordingObjectStore(fixture.ObjectStore);
+            recording.VanishOnGet.Add(vanishingKey);
+            var summary = await MediaTestSupport.RunSeedAsync(
+                fixture, root, targetConnectionString: target, objectStore: recording);
+
+            Assert.Equal(2, summary.Processed);
+            Assert.Equal(1, summary.Missing);
+            Assert.Equal(1, summary.MetadataRecorded);
+            Assert.Equal(3, summary.VariantsUploaded);
+            Assert.DoesNotContain(recording.PutKeys, k => k.Contains(vanishingKey, StringComparison.Ordinal));
+        }
+        finally
+        {
+            Directory.Delete(root, recursive: true);
+        }
+    }
+
+    [Fact]
+    public async Task UploadsNoVariantWhenAStoredDecodableOriginalTurnsOutNotToDecode()
+    {
+        var root = MediaTestSupport.CreateImagesRoot();
+        try
+        {
+            const int uid = 71195;
+            var path = MediaTestSupport.WritePhoto(root, uid, "late-broken.tif", 2400, 1600);
+            var fullPath = Path.Combine(root, path);
+            var all = await File.ReadAllBytesAsync(fullPath);
+            all = all[..(all.Length * 6 / 10)];
+            await File.WriteAllBytesAsync(fullPath, all);
+            await using (var legacy = await MediaTestSupport.OpenLegacyConnectionAsync(fixture))
+            {
+                await MediaTestSupport.InsertLegacyPictureAsync(legacy, uid, path);
+            }
+
+            var key = $"originals/{path}";
+            var sha = Convert.ToHexStringLower(SHA256.HashData(all));
+            await fixture.ObjectStore.PutAsync(
+                key, new MemoryStream(all), "image/tiff", MediaObjectMetadata.ForOriginal(sha, sha, new PhotoInfo(2400, 1600)));
+            var target = await fixture.CreateIsolatedTargetAsync();
+            await MediaTestSupport.InsertMediaItemAsync(fixture, uid, key, targetConnectionString: target);
+
+            var recording = new RecordingObjectStore(fixture.ObjectStore);
+            var summary = await MediaTestSupport.RunSeedAsync(
+                fixture, root, targetConnectionString: target, objectStore: recording);
+
+            Assert.Equal(1, summary.Broken);
+            Assert.Equal(0, summary.VariantsUploaded);
+            Assert.Equal([key], recording.PutKeys);
+            var head = await fixture.ObjectStore.HeadAsync(key);
+            Assert.Equal("false", head!.Metadata[MediaObjectMetadata.DecodableKey]);
         }
         finally
         {

@@ -3,24 +3,34 @@ using NetVips;
 namespace Cichlids.Infrastructure.Media;
 
 /// <summary>
-/// Decodes source image bytes and derives JPEG variants from them via libvips (NetVips). Only
-/// JPEG, PNG, WebP, GIF and TIFF are accepted, and an image whose header declares more than
-/// MaxPixels pixels is rejected before any pixel is decoded. Every entry point applies the
-/// source's EXIF orientation before reading dimensions or resizing, so a rotated original's
-/// "width" is the width a viewer actually sees, and every produced variant has that same
-/// corrected orientation baked into its pixels with the EXIF tag stripped.
+/// Turns source image bytes into the JPEG variants the media pipeline serves, via libvips
+/// (NetVips). Only JPEG, PNG, WebP, GIF and TIFF are accepted, and an image whose header declares
+/// more than MaxPixels pixels is rejected before any pixel is decoded. The source is decoded once,
+/// directly at the largest variant width, with its EXIF orientation applied and its colours
+/// converted to sRGB (an embedded ICC profile is honoured, untagged CMYK uses the built-in CMYK
+/// profile); the smaller variants are derived from that decoded image. Every variant is an
+/// untagged sRGB JPEG without EXIF, XMP, IPTC or ICC data.
 /// </summary>
 public static class ImageProcessor
 {
+    /// <summary>
+    /// Largest accepted image in pixels (width times height), 100 megapixels.
+    /// </summary>
+    public const long MaxPixels = 100_000_000;
+
+    // libvips' largest image dimension; as the thumbnail height it leaves the width as the only
+    // constraint.
+    private const int UnconstrainedHeight = 10_000_000;
+
     // libvips class names of the loaders the allowlist admits; every subclass (file, buffer and
     // source variants) is admitted with its class.
-    private static readonly string[] AllowedLoaders =
+    private static readonly (string Loader, ImageFormat Format)[] AllowedLoaders =
     [
-        "VipsForeignLoadJpeg",
-        "VipsForeignLoadPng",
-        "VipsForeignLoadWebp",
-        "VipsForeignLoadNsgif",
-        "VipsForeignLoadTiff",
+        ("VipsForeignLoadJpeg", ImageFormat.Jpeg),
+        ("VipsForeignLoadPng", ImageFormat.Png),
+        ("VipsForeignLoadWebp", ImageFormat.Webp),
+        ("VipsForeignLoadNsgif", ImageFormat.Gif),
+        ("VipsForeignLoadTiff", ImageFormat.Tiff),
     ];
 
     // Blocking applies to the whole process, so no code path can reach an SVG, PDF, HEIF or other
@@ -30,15 +40,15 @@ public static class ImageProcessor
     {
         Cache.Max = 0;
         Operation.Block("VipsForeignLoad", true);
-        foreach (var loader in AllowedLoaders)
+        foreach (var (loader, _) in AllowedLoaders)
         {
             Operation.Block(loader, false);
         }
     }
 
     /// <summary>
-    /// Thrown when source bytes cannot be decoded as an image, either because the format is not
-    /// recognized at all or because the data is truncated partway through.
+    /// Thrown when source bytes cannot be decoded as an image, for example because the data is
+    /// truncated or corrupt.
     /// </summary>
     public sealed class BrokenImageException : Exception
     {
@@ -61,66 +71,129 @@ public static class ImageProcessor
         : Exception("The image format is not supported; accepted formats are JPEG, PNG, WebP, GIF and TIFF.");
 
     /// <summary>
-    /// Largest accepted image in pixels (width times height), 100 megapixels.
+    /// Processes an image held in memory. See the stream overload for the result and the
+    /// exceptions.
     /// </summary>
-    public const long MaxPixels = 100_000_000;
-
-    /// <summary>
-    /// Reads the orientation-corrected dimensions of a source image without producing any output
-    /// file.
-    /// </summary>
-    public static (int Width, int Height) Measure(byte[] sourceBytes)
+    public static ProcessedImage Process(byte[] sourceBytes)
     {
-        using var oriented = LoadOriented(sourceBytes);
-        return (oriented.Width, oriented.Height);
+        using var source = Source.NewFromMemory(sourceBytes);
+        return Process(source);
     }
 
     /// <summary>
-    /// Produces one JPEG-encoded variant at the target width: never upscales, so a target width
-    /// at or above the source's own width leaves the image at its original size. Callers are
-    /// expected to have already resolved the target width through MediaVariantSpec.Resolve, which
-    /// guarantees that invariant.
+    /// Reads the format and the orientation-corrected size of an image and produces every variant
+    /// MediaVariantSpec resolves for that width, reading the stream once. Throws
+    /// UnsupportedImageFormatException for a format outside the allowlist, ImageTooLargeException
+    /// for more than MaxPixels pixels and BrokenImageException when the data does not decode.
     /// </summary>
-    public static byte[] GenerateVariant(byte[] sourceBytes, int targetWidth)
+    public static ProcessedImage Process(Stream source)
     {
-        using var oriented = LoadOriented(sourceBytes);
-
-        try
-        {
-            using var sized = oriented.Width > targetWidth ? oriented.ThumbnailImage(targetWidth) : oriented;
-            return sized.WriteToBuffer(".jpg", new VOption { { "Q", MediaVariantSpec.JpegQuality }, { "strip", true } });
-        }
-        catch (VipsException ex)
-        {
-            throw new BrokenImageException("Image data could not be resized or encoded.", ex);
-        }
+        using var custom = new SourceCustom();
+        custom.OnRead += (buffer, length) => source.Read(buffer, 0, length);
+        custom.OnSeek += (offset, origin) => source.CanSeek ? source.Seek(offset, origin) : -1;
+        return Process(custom);
     }
 
-    // Checks the format and the declared size before any pixel is decoded, then loads and
-    // auto-rotates. Auto-rotating is the operation that forces libvips to touch pixel data (a bare
-    // NewFromBuffer only reads the header, lazily), so this is where a truncated or otherwise
-    // undecodable file surfaces as an exception.
-    private static Image LoadOriented(byte[] sourceBytes)
+    private static ProcessedImage Process(Source source)
     {
-        var loader = Image.FindLoadBuffer(sourceBytes);
-        if (loader is null || !AllowedLoaders.Any(allowed => loader.StartsWith(allowed, StringComparison.Ordinal)))
-        {
-            throw new UnsupportedImageFormatException();
-        }
+        var format = DetectFormat(source);
 
         try
         {
-            using var loaded = Image.NewFromBuffer(sourceBytes, access: Enums.Access.Sequential);
-            if ((long)loaded.Width * loaded.Height > MaxPixels)
+            var (width, height) = ReadOrientedSize(source);
+            var targets = MediaVariantSpec.Resolve(width);
+            var largestWidth = targets.Max(t => t.Width);
+
+            using var decoded = DecodeToSrgb(source, largestWidth);
+            var variants = new List<ImageVariant>(targets.Count);
+            foreach (var (label, targetWidth) in targets)
             {
-                throw new ImageTooLargeException(loaded.Width, loaded.Height);
+                if (targetWidth >= decoded.Width)
+                {
+                    variants.Add(new ImageVariant(label, targetWidth, Encode(decoded)));
+                    continue;
+                }
+
+                using var resized = decoded.ThumbnailImage(targetWidth, height: UnconstrainedHeight, size: Enums.Size.Down);
+                variants.Add(new ImageVariant(label, targetWidth, Encode(resized)));
             }
 
-            return loaded.Autorot();
+            return new ProcessedImage(format, width, height, variants);
         }
         catch (VipsException ex)
         {
             throw new BrokenImageException("Image data could not be decoded.", ex);
         }
     }
+
+    private static ImageFormat DetectFormat(Source source)
+    {
+        var loader = Image.FindLoadSource(source);
+        foreach (var (allowed, format) in AllowedLoaders)
+        {
+            if (loader is not null && loader.StartsWith(allowed, StringComparison.Ordinal))
+            {
+                return format;
+            }
+        }
+
+        throw new UnsupportedImageFormatException();
+    }
+
+    // Reads the header only; the declared size is checked here, before any pixel is decoded.
+    private static (int Width, int Height) ReadOrientedSize(Source source)
+    {
+        using var header = Image.NewFromSource(source, access: Enums.Access.Sequential);
+        if ((long)header.Width * header.Height > MaxPixels)
+        {
+            throw new ImageTooLargeException(header.Width, header.Height);
+        }
+
+        var orientation = header.GetTypeOf("orientation") != 0 ? (int)header.Get("orientation") : 1;
+        return orientation is >= 5 and <= 8 ? (header.Height, header.Width) : (header.Width, header.Height);
+    }
+
+    // The thumbnail operation shrinks during decode where the format allows it, applies the EXIF
+    // orientation and converts to sRGB. Copying to memory decodes the whole source once, so the
+    // smaller variants resize from memory.
+    private static Image DecodeToSrgb(Source source, int width)
+    {
+        using var thumbnail = (Image)Operation.Call(
+            "thumbnail_source",
+            new VOption
+            {
+                { "height", UnconstrainedHeight },
+                { "size", Enums.Size.Down },
+                { "export_profile", "srgb" },
+            },
+            source,
+            width);
+        return thumbnail.CopyMemory();
+    }
+
+    private static byte[] Encode(Image image) =>
+        image.WriteToBuffer(".jpg", new VOption { { "Q", MediaVariantSpec.JpegQuality }, { "keep", Enums.ForeignKeep.None } });
 }
+
+/// <summary>
+/// An image format the image processor accepts.
+/// </summary>
+public enum ImageFormat
+{
+    Jpeg,
+    Png,
+    Webp,
+    Gif,
+    Tiff,
+}
+
+/// <summary>
+/// One JPEG variant: its label, its target width in pixels and its encoded bytes.
+/// </summary>
+public sealed record ImageVariant(string Label, int Width, byte[] Bytes);
+
+/// <summary>
+/// The format and the orientation-corrected width and height of a processed image, and its
+/// variants from the smallest to the largest.
+/// </summary>
+public sealed record ProcessedImage(ImageFormat Format, int Width, int Height, IReadOnlyList<ImageVariant> Variants);

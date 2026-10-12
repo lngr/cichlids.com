@@ -2,8 +2,8 @@ namespace Cichlids.Infrastructure.Media;
 
 /// <summary>
 /// The fixed set of photo renditions the media pipeline derives from every original: four target
-/// widths, each with its own label, encoded as JPEG at a fixed quality with orientation baked in
-/// and metadata stripped. Videos have no variants; only their original is stored.
+/// widths, each with its own label, encoded as sRGB JPEG at a fixed quality with orientation baked
+/// in and metadata stripped. Videos have no variants; only their original is stored.
 /// </summary>
 public static class MediaVariantSpec
 {
