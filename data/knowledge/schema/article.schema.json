@@ -75,6 +75,13 @@
     },
     "provenance": {
       "$ref": "https://cichlids.com/schema/species-profile.schema.json#/$defs/provenance"
+    },
+    "kind": {
+      "description": "background (default) explains facts about fish and water, every paragraph cites a source; methodology describes a procedure of cichlids.com, where paragraphs about that procedure may go without citation while facts about fish still cite sources.",
+      "enum": [
+        "background",
+        "methodology"
+      ]
     }
   }
 }

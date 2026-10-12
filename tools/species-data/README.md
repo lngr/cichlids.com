@@ -138,7 +138,7 @@ The validator reports:
 
 - frontmatter errors against the schema, a summary of other than 1 to 3 sentences, and a file name that differs from `<id>.md`;
 - citations: the body cites sources as footnote references `[^key]`; every key exists in `sources` and every source is cited at least once;
-- every body paragraph and every list item has at least one citation; headings, tables, code blocks and lines holding only a list marker are exempt;
+- every body paragraph and every list item has at least one citation (in an article of `kind: methodology`, which describes a procedure of cichlids.com, a missing citation is a warning); headings, tables, code blocks and lines holding only a list marker are exempt;
 - `waterbodies` ids that are not in `data/species/waterbodies.yaml` are errors (the check is skipped with a warning when the table file is missing); `species` ids without a file in `data/species/profiles/` are warnings;
 - archive sources follow the title and url rule of the profile validator;
 - em or en dashes in the body are warnings.

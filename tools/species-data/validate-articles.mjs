@@ -133,7 +133,10 @@ export function validateArticle(text, options = {}) {
   for (const block of blocks) {
     const keys = [...block.text.matchAll(CITATION)].map((m) => m[1]);
     if (keys.length === 0) {
-      issues.push(error(`line ${block.line}`, "paragraph or list item has no citation [^key]", file));
+      // A methodology article describes the procedure of cichlids.com itself; its paragraphs about
+      // that procedure have no external source, so a missing citation is a warning there.
+      const report = meta.kind === "methodology" ? warning : error;
+      issues.push(report(`line ${block.line}`, "paragraph or list item has no citation [^key]", file));
     }
     for (const key of keys) cited.add(key);
   }

@@ -140,3 +140,9 @@ test("em and en dashes in the body warn", () => {
   assert.equal(errors(issues).length, 0);
   assert.equal(warnings(issues).length, 1);
 });
+
+test("a methodology article reports an uncited paragraph as a warning", () => {
+  const issues = check(article(`${FRONT}kind: methodology\n`, `${BODY}\nThe planner compares every pair of species.\n`));
+  assert.deepEqual(errors(issues), []);
+  assert.ok(warnings(issues).some((i) => /no citation/.test(i.message)), JSON.stringify(issues));
+});
