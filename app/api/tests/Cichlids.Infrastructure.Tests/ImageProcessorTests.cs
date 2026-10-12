@@ -62,8 +62,13 @@ public sealed class ImageProcessorTests
         var bytes = SyntheticImages.PngDeclaring(200_000, 200_000);
         Assert.True(bytes.Length < 16 * 1024, $"The test file has {bytes.Length} bytes.");
 
-        // libvips tracks one process-wide high-water mark, which other tests raise as well, so the
-        // check is that rejecting this file raises it by less than 64 MB.
+        // libvips tracks one process-wide high-water mark without a reset, and earlier tests in
+        // this process raise it (thread-pool buffers of a normal decode reach tens of megabytes),
+        // so an absolute bound would depend on test order. All libvips test classes share one
+        // collection and never run in parallel, so the growth during this call is attributable to
+        // it: a header-only rejection allocates a few kilobytes, a decode of the declared size
+        // would allocate gigabytes. A spike below the earlier mark stays invisible here; the time
+        // limit covers that case, since such a decode takes seconds.
         var highWaterBefore = NetVips.Stats.MemHighwater;
         var stopwatch = Stopwatch.StartNew();
         var ex = Assert.Throws<ImageProcessor.ImageTooLargeException>(() => ImageProcessor.Process(bytes));
@@ -72,7 +77,7 @@ public sealed class ImageProcessorTests
         Assert.Contains("100 megapixels", ex.Message);
         Assert.True(stopwatch.Elapsed < TimeSpan.FromSeconds(1), $"Rejecting took {stopwatch.Elapsed}.");
         var growth = NetVips.Stats.MemHighwater - highWaterBefore;
-        Assert.True(growth < 64L * 1024 * 1024, $"Rejecting raised the libvips high-water mark by {growth} bytes.");
+        Assert.True(growth < 1024 * 1024, $"Rejecting raised the libvips high-water mark by {growth} bytes.");
     }
 
     [Fact]
