@@ -17,6 +17,7 @@ using Cichlids.Infrastructure.Persistence;
 using Cichlids.Infrastructure.Slugs;
 using Cichlids.Infrastructure.Storage;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.IdentityModel.Tokens;
 using Scalar.AspNetCore;
 
@@ -96,7 +97,13 @@ builder.Services.AddSingleton(serviceProvider =>
 
 var app = builder.Build();
 
-app.UseExceptionHandler();
+// Request errors raised by the host (oversized or malformed bodies) keep their own status code.
+app.UseExceptionHandler(new ExceptionHandlerOptions
+{
+    StatusCodeSelector = exception => exception is BadHttpRequestException badRequest
+        ? badRequest.StatusCode
+        : StatusCodes.Status500InternalServerError,
+});
 
 app.MapOpenApi();
 app.MapScalarApiReference();

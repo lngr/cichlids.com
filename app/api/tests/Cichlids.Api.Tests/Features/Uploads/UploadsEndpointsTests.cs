@@ -21,6 +21,20 @@ public class UploadsEndpointsTests(UploadsFixture fixture)
         Assert.Equal(HttpStatusCode.Unauthorized, response.StatusCode);
     }
 
+    [Fact]
+    public async Task Publish_MalformedJsonBodyKeepsItsBadRequestStatus()
+    {
+        using var request = new HttpRequestMessage(HttpMethod.Post, "/api/posts/1/publish")
+        {
+            Content = new StringContent("{ not json", System.Text.Encoding.UTF8, "application/json"),
+        };
+        request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", NewToken());
+
+        var response = await fixture.Client.SendAsync(request);
+
+        Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+    }
+
     [Theory]
     [InlineData("image/gif")]
     [InlineData("application/pdf")]
