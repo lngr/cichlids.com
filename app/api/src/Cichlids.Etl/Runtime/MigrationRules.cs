@@ -77,7 +77,13 @@ public static class MigrationRules
         "A non-deleted legacy comment with text on a migrated post or tank becomes a comment.";
 
     public const string Ratings =
-        "A non-deleted legacy comment with stars on a migrated post or tank becomes a rating.";
+        "A member keeps one rating per post or tank: the newest legacy rating wins, a tie goes to the higher legacy uid, self-ratings are dropped and anonymous ratings migrate unchanged.";
+
+    public const string CollapsedRatings =
+        "An older legacy rating of a member on a post or tank collapses into the member's newest rating there.";
+
+    public const string SelfRatings =
+        "A legacy rating of a member on their own picture or tank is dropped, while its comment text migrates.";
 
     public const string LegacyCommentVault =
         "A non-deleted legacy comment whose target is missing, not migrated or of an unknown type goes to the archive vault.";

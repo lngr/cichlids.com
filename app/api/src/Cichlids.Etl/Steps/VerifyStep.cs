@@ -479,10 +479,13 @@ public sealed class VerifyStep : IEtlStep
     /// <summary>
     /// Recomputes CommentMigrationStep's per-row classification (a target outside the eligible
     /// posts and tanks vaults the row; an eligible target with no text and no rating is dropped;
-    /// otherwise a non-empty note becomes a comment and a positive rating becomes a rating,
-    /// independently of each other) by streaming the whole legacy comments table, and checks the
-    /// resulting counts against comment, rating and archive.legacy_comment. Returns the legacy ids
-    /// of comments that migrated, for the vote check.
+    /// otherwise a non-empty note becomes a comment and a positive rating becomes a rating
+    /// candidate, independently of each other) by streaming the whole legacy comments table, and
+    /// checks the resulting counts against comment, rating and archive.legacy_comment. A rating
+    /// candidate counts once per member and target; a member rating the picture or tank they own
+    /// in the legacy source is a self-rating and an anonymous rating always counts. Reports the
+    /// collapsed and the self-ratings as information. Returns the legacy ids of comments that
+    /// migrated, for the vote check.
     /// </summary>
     private static async Task<HashSet<int>> AddCommentRatingVaultRowsAsync(
         EtlContext context,
@@ -493,11 +496,14 @@ public sealed class VerifyStep : IEtlStep
     {
         var vaultCount = 0L;
         var commentCount = 0L;
-        var ratingCount = 0L;
+        var anonymousRatings = 0L;
+        var memberRatings = 0L;
+        var selfRatings = 0L;
+        var ratedTargetsByMember = new HashSet<(int FeUser, int Type, int Item)>();
         var migratedCommentLegacyIds = new HashSet<int>();
 
         await using (var command = new MySqlCommand(
-            "SELECT uid, type, item, rating, note, deleted FROM user_cichlids_comments",
+            "SELECT uid, type, item, rating, note, deleted, fe_user FROM user_cichlids_comments",
             context.Legacy))
         await using (var reader = await command.ExecuteReaderAsync(cancellationToken))
         {
@@ -518,14 +524,14 @@ public sealed class VerifyStep : IEtlStep
                     note = null;
                 }
 
-                var validTarget = type switch
+                var owners = type switch
                 {
-                    1 => postOwnerByPictureUid.ContainsKey(item),
-                    2 => tankOwnerByTankUid.ContainsKey(item),
-                    _ => false,
+                    1 => postOwnerByPictureUid,
+                    2 => tankOwnerByTankUid,
+                    _ => null,
                 };
 
-                if (!validTarget)
+                if (owners is null || !owners.TryGetValue(item, out var ownerFeUser))
                 {
                     // Every row without an eligible target lands in the vault, whatever the reason
                     // (a deleted target, a target id that never existed, or an unrecognized type).
@@ -545,9 +551,24 @@ public sealed class VerifyStep : IEtlStep
                     migratedCommentLegacyIds.Add(legacyId);
                 }
 
-                if (hasRating)
+                if (!hasRating)
                 {
-                    ratingCount++;
+                    continue;
+                }
+
+                var feUser = reader.GetInt32(6);
+                if (feUser == 0)
+                {
+                    anonymousRatings++;
+                }
+                else if (feUser == ownerFeUser)
+                {
+                    selfRatings++;
+                }
+                else
+                {
+                    memberRatings++;
+                    ratedTargetsByMember.Add((feUser, type, item));
                 }
             }
         }
@@ -556,7 +577,11 @@ public sealed class VerifyStep : IEtlStep
         report.Add(VerificationRow.Compare("comment", commentCount, actualComments, MigrationRules.Comments));
 
         var actualRatings = await PgScalarAsync(context, "SELECT COUNT(*) FROM rating", cancellationToken);
-        report.Add(VerificationRow.Compare("rating", ratingCount, actualRatings, MigrationRules.Ratings));
+        report.Add(VerificationRow.Compare(
+            "rating", anonymousRatings + ratedTargetsByMember.Count, actualRatings, MigrationRules.Ratings));
+        report.Add(VerificationRow.Info(
+            "rating_collapsed", memberRatings - ratedTargetsByMember.Count, MigrationRules.CollapsedRatings));
+        report.Add(VerificationRow.Info("rating_self_dropped", selfRatings, MigrationRules.SelfRatings));
 
         var actualVault = await PgScalarAsync(context, "SELECT COUNT(*) FROM archive.legacy_comment", cancellationToken);
         report.Add(VerificationRow.Compare("vault_legacy_comment", vaultCount, actualVault, MigrationRules.LegacyCommentVault));

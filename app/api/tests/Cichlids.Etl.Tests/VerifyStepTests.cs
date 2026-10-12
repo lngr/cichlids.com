@@ -30,6 +30,8 @@ public sealed class VerifyStepTests(VerifyEtlFixture fixture)
         AssertRow(report, "post_species", 3, 3);
         AssertRow(report, "comment", 3, 3);
         AssertRow(report, "rating", 2, 2);
+        AssertInfoRow(report, "rating_collapsed", 1);
+        AssertInfoRow(report, "rating_self_dropped", 2);
         AssertRow(report, "vault_legacy_comment", 3, 3);
         AssertRow(report, "comment_vote", 2, 2);
         AssertRow(report, "comment_vote_not_before_comment", 0, 0);

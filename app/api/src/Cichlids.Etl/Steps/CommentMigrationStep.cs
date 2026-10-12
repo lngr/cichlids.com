@@ -12,13 +12,14 @@ using Npgsql;
 namespace Cichlids.Etl.Steps;
 
 /// <summary>
-/// Migrates legacy comments and star ratings (<c>user_cichlids_comments</c>) into the separate
-/// <c>comment</c> and <c>rating</c> entities (ADR-0020), their up/down votes
-/// (<c>user_cichlids_comments_rated</c>) into <c>comment_vote</c>, and recomputes the denormalized
-/// aggregates the two feed (<c>post.rating_average</c>/<c>rating_count</c>, <c>comment.score</c>)
-/// from those base tables at the end of the run. A legacy row whose target post or tank never
+/// Migrates legacy comments and star ratings (user_cichlids_comments) into the separate comment
+/// and rating entities (ADR-0020), their up/down votes (user_cichlids_comments_rated) into
+/// comment_vote, and recomputes the denormalized aggregates the two feed (post.rating_average,
+/// post.rating_count and comment.score) from those base tables at the end of the run. A member
+/// keeps one rating per post or tank, the newest legacy one, and a rating of the member's own post
+/// or tank stays out while its comment text migrates. A legacy row whose target post or tank never
 /// migrated, or whose type is neither 1 (picture) nor 2 (tank), is preserved in
-/// <c>archive.legacy_comment</c> instead of being dropped.
+/// archive.legacy_comment.
 /// </summary>
 public sealed class CommentMigrationStep : IEtlStep
 {
@@ -42,12 +43,25 @@ public sealed class CommentMigrationStep : IEtlStep
         var stats = context.Statistics.ForStep(Name);
 
         var profileByLegacyId = await LoadProfilesAsync(context, cancellationToken);
-        var postIdByLegacyId = await LoadLegacyIdMapAsync(context, "post", cancellationToken);
-        var tankIdByLegacyId = await LoadLegacyIdMapAsync(context, "tank", cancellationToken);
+        var postIdByLegacyId = await LoadLegacyIdMapAsync(
+            context, "SELECT legacy_id, id FROM post WHERE legacy_id IS NOT NULL", cancellationToken);
+        var tankIdByLegacyId = await LoadLegacyIdMapAsync(
+            context, "SELECT legacy_id, id FROM tank WHERE legacy_id IS NOT NULL", cancellationToken);
         var allPictureUids = await LoadLegacyUidSetAsync(context, "user_cichlids_pictures", cancellationToken);
         var allTankUids = await LoadLegacyUidSetAsync(context, "user_cichlids_tanks", cancellationToken);
         var commentIdByLegacyId = new Dictionary<int, long>();
         var guestNames = await context.GetGuestNamesAsync(cancellationToken);
+
+        var ratingSelection = await SelectRatingsAsync(context, profileByLegacyId, cancellationToken);
+        if (ratingSelection.Collapsed > 0)
+        {
+            stats.AddSkip("rating_collapsed_older", ratingSelection.Collapsed);
+        }
+
+        if (ratingSelection.SelfDropped > 0)
+        {
+            stats.AddSkip("rating_self_dropped", ratingSelection.SelfDropped);
+        }
 
         const string sql = """
             SELECT
@@ -98,7 +112,8 @@ public sealed class CommentMigrationStep : IEtlStep
                 {
                     await ProcessBatchAsync(
                         context, batch, profileByLegacyId, postIdByLegacyId, tankIdByLegacyId,
-                        allPictureUids, allTankUids, commentIdByLegacyId, guestNames, stats, cancellationToken);
+                        allPictureUids, allTankUids, commentIdByLegacyId, ratingSelection.Winners, guestNames, stats,
+                        cancellationToken);
                     batch.Clear();
                 }
             }
@@ -108,7 +123,8 @@ public sealed class CommentMigrationStep : IEtlStep
         {
             await ProcessBatchAsync(
                 context, batch, profileByLegacyId, postIdByLegacyId, tankIdByLegacyId,
-                allPictureUids, allTankUids, commentIdByLegacyId, guestNames, stats, cancellationToken);
+                allPictureUids, allTankUids, commentIdByLegacyId, ratingSelection.Winners, guestNames, stats,
+                cancellationToken);
         }
 
         await MigrateCommentVotesAsync(context, profileByLegacyId, commentIdByLegacyId, stats, cancellationToken);
@@ -124,6 +140,7 @@ public sealed class CommentMigrationStep : IEtlStep
         HashSet<int> allPictureUids,
         HashSet<int> allTankUids,
         Dictionary<int, long> commentIdByLegacyId,
+        IReadOnlySet<int> ratingWinners,
         GuestNames guestNames,
         StepStatistics stats,
         CancellationToken cancellationToken)
@@ -156,6 +173,13 @@ public sealed class CommentMigrationStep : IEtlStep
                 continue;
             }
 
+            // The rating selection counts every rating it leaves out as collapsed or self-rated.
+            var migratesRating = hasRating && ratingWinners.Contains(row.LegacyId);
+            if (noteEmpty && !migratesRating)
+            {
+                continue;
+            }
+
             var (authorProfileId, posterName) = await ResolveAuthorAsync(
                 context, row.FeUser, row.Poster, profileByLegacyId, guestNames, stats, cancellationToken);
 
@@ -181,7 +205,7 @@ public sealed class CommentMigrationStep : IEtlStep
                 });
             }
 
-            if (hasRating)
+            if (migratesRating)
             {
                 var stars = (short)Math.Min(5, Math.Max(1, row.Rating));
                 ratingRows.Add(new object?[] { row.LegacyId, postId, tankId, authorProfileId, stars, createdAt });
@@ -263,6 +287,58 @@ public sealed class CommentMigrationStep : IEtlStep
                 }
             }
         }
+    }
+
+    /// <summary>
+    /// Reads every non-deleted legacy rating on a migrated post or tank and selects the ones that
+    /// migrate with RatingSelection. A rating is a self-rating when the rater's profile is the
+    /// author profile of the rated post or the owner profile of the rated tank. Anonymous ratings
+    /// have no rater profile.
+    /// </summary>
+    private static async Task<RatingSelectionResult> SelectRatingsAsync(
+        EtlContext context,
+        Dictionary<int, (long Id, ProfileKind Kind)> profileByLegacyId,
+        CancellationToken cancellationToken)
+    {
+        var postAuthorByLegacyId = await LoadLegacyIdMapAsync(
+            context, "SELECT legacy_id, author_profile_id FROM post WHERE legacy_id IS NOT NULL", cancellationToken);
+        var tankOwnerByLegacyId = await LoadLegacyIdMapAsync(
+            context, "SELECT legacy_id, profile_id FROM tank WHERE legacy_id IS NOT NULL", cancellationToken);
+
+        var candidates = new List<RatingCandidate>();
+        await using (var command = new MySqlCommand(
+            "SELECT uid, type, item, fe_user, crdate, tstamp FROM user_cichlids_comments WHERE deleted = 0 AND rating > 0",
+            context.Legacy))
+        await using (var reader = await command.ExecuteReaderAsync(cancellationToken))
+        {
+            while (await reader.ReadAsync(cancellationToken))
+            {
+                var type = reader.GetInt32("type");
+                var item = reader.GetNullableInt32("item") ?? 0;
+                var owners = type switch
+                {
+                    1 => postAuthorByLegacyId,
+                    2 => tankOwnerByLegacyId,
+                    _ => null,
+                };
+
+                if (owners is null || !owners.TryGetValue(item, out var ownerProfileId))
+                {
+                    continue;
+                }
+
+                var feUser = reader.GetInt32("fe_user");
+                var isSelf = feUser != 0
+                    && profileByLegacyId.TryGetValue(feUser, out var rater)
+                    && rater.Id == ownerProfileId;
+                var crdate = reader.GetInt64("crdate");
+
+                candidates.Add(new RatingCandidate(
+                    reader.GetInt32("uid"), feUser, type, item, crdate > 0 ? crdate : reader.GetInt64("tstamp"), isSelf));
+            }
+        }
+
+        return RatingSelection.Select(candidates);
     }
 
     /// <summary>
@@ -589,11 +665,13 @@ public sealed class CommentMigrationStep : IEtlStep
         return result;
     }
 
+    /// <summary>
+    /// Reads a target query returning a legacy id and a row or profile id per row into a map.
+    /// </summary>
     private static async Task<Dictionary<int, long>> LoadLegacyIdMapAsync(
-        EtlContext context, string table, CancellationToken cancellationToken)
+        EtlContext context, string sql, CancellationToken cancellationToken)
     {
-        await using var command = new NpgsqlCommand(
-            $"SELECT legacy_id, id FROM {table} WHERE legacy_id IS NOT NULL", context.Target, context.Transaction);
+        await using var command = new NpgsqlCommand(sql, context.Target, context.Transaction);
         await using var reader = await command.ExecuteReaderAsync(cancellationToken);
 
         var result = new Dictionary<int, long>();
