@@ -13,10 +13,10 @@ namespace Cichlids.Api.Tests.Features.Webhooks;
 
 /// <summary>
 /// A dedicated Postgres container and API host for outbox dispatch tests, separate from the
-/// shared <see cref="ApiFixture"/> collection so a test can freely create webhook subscriptions
-/// and drive dispatch passes without disturbing the shared read-endpoint seed. The hosted polling
-/// dispatcher is disabled here too; every test drives <see cref="OutboxDispatchService.RunOnceAsync"/>
-/// directly for deterministic assertions.
+/// shared ApiFixture collection so a test can freely create webhook subscriptions and run
+/// dispatch passes without disturbing the shared read-endpoint seed. The hosted polling
+/// dispatcher is disabled here; every test calls the dispatch service directly for deterministic
+/// assertions.
 /// </summary>
 public sealed class OutboxDispatchFixture : IAsyncLifetime
 {
@@ -85,18 +85,39 @@ public sealed class OutboxDispatchFixture : IAsyncLifetime
     }
 
     /// <summary>
-    /// Builds a dispatch service backed by its own database connection and the host's real
-    /// HTTP client factory (so delivery goes over an actual loopback HTTP request to a
-    /// <see cref="TestWebhookListener"/>), for a test to call <c>RunOnceAsync</c> on directly.
-    /// Each call returns an independent instance so a test simulating two concurrent dispatcher
-    /// processes gets two separate connections contending for the same rows.
+    /// The host's service provider, for tests that resolve the configured webhook target policy or
+    /// HTTP client factory.
     /// </summary>
-    public OutboxDispatchService CreateDispatchService(OutboxDispatcherOptions? options = null) =>
+    public IServiceProvider Services => _factory.Services;
+
+    public string ConnectionString => _postgres.GetConnectionString();
+
+    /// <summary>
+    /// Builds a dispatch service backed by its own database connection and the host's real HTTP
+    /// client factory, so delivery goes over an actual loopback HTTP request to a
+    /// TestWebhookListener. Each call returns an independent instance, so a test simulating
+    /// several dispatcher processes gets separate connections contending for the same rows, each
+    /// with its own clock.
+    /// </summary>
+    public OutboxDispatchService CreateDispatchService(
+        OutboxDispatcherOptions? options = null, TimeProvider? timeProvider = null) =>
         new(
             CreateDbContext(),
             _factory.Services.GetRequiredService<IHttpClientFactory>(),
+            timeProvider ?? TimeProvider.System,
             Options.Create(options ?? new OutboxDispatcherOptions()),
             NullLogger<OutboxDispatchService>.Instance);
+
+    /// <summary>
+    /// Deletes every outbox event and webhook subscription, so a test starts without open events or
+    /// subscribers left behind by an earlier test in the shared database.
+    /// </summary>
+    public async Task ResetOutboxAsync()
+    {
+        await using var context = CreateDbContext();
+        await context.OutboxEvents.ExecuteDeleteAsync();
+        await context.WebhookSubscriptions.ExecuteDeleteAsync();
+    }
 }
 
 [CollectionDefinition(Name)]

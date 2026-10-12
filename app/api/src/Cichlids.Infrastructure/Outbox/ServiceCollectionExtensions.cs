@@ -1,5 +1,6 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
 
 namespace Cichlids.Infrastructure.Outbox;
@@ -28,6 +29,7 @@ public static class ServiceCollectionExtensions
 
         services.AddHttpClient(OutboxDispatchService.HttpClientName, client => client.Timeout = TimeSpan.FromSeconds(10));
 
+        services.TryAddSingleton(TimeProvider.System);
         services.AddScoped<OutboxDispatchService>();
 
         return services;
