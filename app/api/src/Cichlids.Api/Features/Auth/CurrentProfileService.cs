@@ -16,10 +16,14 @@ namespace Cichlids.Api.Features.Auth;
 /// oidc identity in a single save, so a profile never exists without its identity. When a
 /// parallel first call wins the race for the same subject, the call returns the profile that won;
 /// when another account takes the chosen username first, the call retries with a fresh
-/// candidate. A fresh profile never shows an email address: its handle and display name come from
+/// candidate. A subject bound to a profile of another kind than member is refused with a
+/// NonMemberLoginException. A fresh profile never shows an email address: its handle and display name come from
 /// the token only when they hold none.
 /// </summary>
-public sealed class CurrentProfileService(CichlidsDbContext context, Lazy<GeneratedNames> generatedNames)
+public sealed class CurrentProfileService(
+    CichlidsDbContext context,
+    Lazy<GeneratedNames> generatedNames,
+    ILogger<CurrentProfileService> logger)
 {
     private const string OidcProvider = "oidc";
     private const int MaxCreateAttempts = 3;
@@ -34,7 +38,7 @@ public sealed class CurrentProfileService(CichlidsDbContext context, Lazy<Genera
             var existing = await FindBySubjectAsync(subject, cancellationToken);
             if (existing is not null)
             {
-                return existing;
+                return RequireMember(existing, subject);
             }
 
             var created = await TryCreateProfileAsync(user, subject, cancellationToken);
@@ -46,6 +50,19 @@ public sealed class CurrentProfileService(CichlidsDbContext context, Lazy<Genera
 
         throw new InvalidOperationException(
             $"The profile for a first login could not be created after {MaxCreateAttempts} attempts.");
+    }
+
+    private Profile RequireMember(Profile profile, string subject)
+    {
+        if (profile.Kind == ProfileKind.Member)
+        {
+            return profile;
+        }
+
+        logger.LogWarning(
+            "Login refused: subject {Subject} is bound to profile {ProfileId} of kind {ProfileKind}.",
+            subject, profile.Id, profile.Kind);
+        throw new NonMemberLoginException(profile.Id, profile.Kind);
     }
 
     private Task<Profile?> FindBySubjectAsync(string subject, CancellationToken cancellationToken) =>

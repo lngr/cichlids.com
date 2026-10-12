@@ -107,8 +107,53 @@ public class FirstLoginTests(ApiFixture fixture)
         Assert.Equal(identity.ProfileId, document.RootElement.GetProperty("profile").GetProperty("id").GetInt64());
     }
 
-    private CurrentProfileService NewService(CichlidsDbContext context) =>
-        new(context, fixture.Services.GetRequiredService<Lazy<GeneratedNames>>());
+    [Theory]
+    [InlineData(ProfileKind.Archived)]
+    [InlineData(ProfileKind.System)]
+    public async Task LoginBoundToNonMemberProfileIsRefusedOnEveryEndpoint(ProfileKind kind)
+    {
+        var subject = Guid.NewGuid().ToString();
+        var profileId = await CommitProfileAsync($"nonmember-{Guid.NewGuid():N}", subject, kind, legacyId: Random.Shared.Next(1_000_000, int.MaxValue));
+        var token = TestTokens.Create(subject, "nonmember-login");
+
+        foreach (var path in new[] { "/api/me", "/api/me/drafts" })
+        {
+            var response = await GetAsync(path, token);
+            Assert.Equal(HttpStatusCode.Forbidden, response.StatusCode);
+            Assert.Equal("application/problem+json", response.Content.Headers.ContentType?.MediaType);
+            using var document = JsonDocument.Parse(await response.Content.ReadAsStringAsync());
+            Assert.Equal("non_member_profile", document.RootElement.GetProperty("code").GetString());
+        }
+
+        await using var db = fixture.CreateDbContext();
+        Assert.Equal(1, await db.ProfileIdentities.CountAsync(i => i.Subject == subject));
+        Assert.Equal(profileId, (await db.ProfileIdentities.SingleAsync(i => i.Subject == subject)).ProfileId);
+        Assert.False(await db.Profiles.AnyAsync(p => p.Username == "nonmember-login"));
+    }
+
+    [Theory]
+    [InlineData(ProfileKind.Archived)]
+    [InlineData(ProfileKind.System)]
+    public async Task ResolveThrowsAndLogsAWarningForNonMemberProfile(ProfileKind kind)
+    {
+        var subject = Guid.NewGuid().ToString();
+        var profileId = await CommitProfileAsync($"logged-{Guid.NewGuid():N}", subject, kind, legacyId: Random.Shared.Next(1_000_000, int.MaxValue));
+        var logger = new RecordingLogger<CurrentProfileService>();
+
+        await using var context = fixture.CreateDbContext();
+        var exception = await Assert.ThrowsAsync<NonMemberLoginException>(() =>
+            NewService(context, logger).ResolveAsync(Principal(subject, "someone"), CancellationToken.None));
+
+        Assert.Equal(profileId, exception.ProfileId);
+        Assert.Equal(kind, exception.Kind);
+        var entry = Assert.Single(logger.Entries);
+        Assert.Equal(LogLevel.Warning, entry.Level);
+        Assert.Contains(profileId.ToString(), entry.Message);
+        Assert.Contains(kind.ToString(), entry.Message);
+    }
+
+    private CurrentProfileService NewService(CichlidsDbContext context, ILogger<CurrentProfileService>? logger = null) =>
+        new(context, fixture.Services.GetRequiredService<Lazy<GeneratedNames>>(), logger ?? new RecordingLogger<CurrentProfileService>());
 
     private static ClaimsPrincipal Principal(string subject, string username) =>
         new(new ClaimsIdentity(

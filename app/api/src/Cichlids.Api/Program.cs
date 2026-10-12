@@ -69,6 +69,9 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy(AuthorizationPolicies.Admin, policy => policy.RequireRole("admin"));
 });
 
+builder.Services.AddProblemDetails();
+builder.Services.AddExceptionHandler<NonMemberLoginExceptionHandler>();
+
 builder.Services.AddScoped<SpeciesQueryService>();
 builder.Services.AddScoped<PicturesQueryService>();
 builder.Services.AddScoped<TanksQueryService>();
@@ -92,6 +95,8 @@ builder.Services.AddSingleton(serviceProvider =>
     new Lazy<GeneratedNames>(serviceProvider.GetRequiredService<GeneratedNames>));
 
 var app = builder.Build();
+
+app.UseExceptionHandler();
 
 app.MapOpenApi();
 app.MapScalarApiReference();
