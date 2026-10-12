@@ -33,11 +33,12 @@ and direct page fetches cannot find.
 Full texts of scientific works: `xvfb-run -a node tools/species-data/fetch-oa.mjs <doi>` returns the
 text of an open-access work. It looks in the local library first, then takes the copy that
 OpenAlex hosts and only then the publisher page. It refuses works that are not open access. Read
-the text file it names. Every download costs budget, so fetch only works you will cite.
+the text file it names; the shared library `data/species/work/.literature/` is open to every role. Every download costs budget, so fetch only works you will cite.
 
 Access rules: logins, paywalls and captchas are never bypassed. A bot check in front of a work
 that is free to read is passed only through `fetch-oa.mjs` (and the Cichlid Room Companion through
-`crc.mjs`); do not drive browsers or change user agents yourself. When a page stays blocked, use
+`crc.mjs`); do not drive browsers yourself and do not set browser user agents or other client
+headers (for example `curl -A`). When a page stays blocked, use
 another source and say in the rationale what you could not read.
 
 Prefer primary literature and limnological data. Peer-reviewed papers, monographs and research
