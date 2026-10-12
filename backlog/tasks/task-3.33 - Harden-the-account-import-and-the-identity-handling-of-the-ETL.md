@@ -1,14 +1,16 @@
 ---
 id: TASK-3.33
 title: Harden the account import and the identity handling of the ETL
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-10-12 04:48'
-updated_date: '2026-10-12 06:40'
+updated_date: '2026-10-12 08:12'
 labels: []
 dependencies: []
 references:
   - REVIEW-MVP.md
+  - app/api/tests/Cichlids.Etl.Tests/KeycloakAdminClientTests.cs
+  - app/api/tests/Cichlids.Etl.Tests/KeycloakAdminSettingsTests.cs
 parent_task_id: TASK-3
 priority: high
 ordinal: 55000
@@ -24,10 +26,10 @@ The profile step replaces only identities of the legacy providers auth0 and lega
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Given an oidc identity on a migrated profile, When the profile step runs again on the dev stack, Then the oidc identity still exists
-- [ ] #2 Given an archived placeholder profile with a legacy id, When the account import runs, Then no login is linked to it
-- [ ] #3 Given a Keycloak error during the import, When the operator reads the error output, Then it contains no username and no email address
-- [ ] #4 Given no admin credentials configured outside Development, When the operator starts the import, Then it aborts with a message naming the missing setting
+- [x] #1 Given an oidc identity on a migrated profile, When the profile step runs again on the dev stack, Then the oidc identity still exists
+- [x] #2 Given an archived placeholder profile with a legacy id, When the account import runs, Then no login is linked to it
+- [x] #3 Given a Keycloak error during the import, When the operator reads the error output, Then it contains no username and no email address
+- [x] #4 Given no admin credentials configured outside Development, When the operator starts the import, Then it aborts with a message naming the missing setting
 <!-- AC:END -->
 
 ## Definition of Done
@@ -77,3 +79,30 @@ The profile step replaces only identities of the legacy providers auth0 and lega
 - Keycloak container tests are slow; the new client tests use a stub only.
 - Size M, 5 commits, 1 to 1.5 days.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+##### Summary
+- The profile step replaces only identities of auth0, legacy-openid and email (PgChildRows scope); oidc identities survive a rerun.
+- The account import links logins to member profiles only (profile join in the identity and legacy-id loads and in the oidc insert); the summary reports ProfileLinksSkippedNotMember.
+- KeycloakAdminException carries operation, HTTP status and a short error code, never a response body. 429 and 5xx answers are retried (5 attempts, 1/2/4/8 s, Retry-After honoured, cap 30 s) for admin calls and the token request.
+- KeycloakAdminSettings.Resolve accepts the admin/admin fallback in Development only; keycloak-import and reset print the message and exit with 1 otherwise.
+
+##### Tests
+- app/api/tests/Cichlids.Etl.Tests/KeycloakAdminClientTests.cs
+- app/api/tests/Cichlids.Etl.Tests/KeycloakAdminSettingsTests.cs
+- app/api/tests/Cichlids.Etl.Tests/ProfileMigrationStepTests.cs (oidc survives a rerun)
+- app/api/tests/Cichlids.Etl.Tests/KeycloakAccountImportTests.cs (archived profile kim, no link)
+- app/api/tests/Cichlids.Etl.Tests/EtlProcessTests.cs (Staging without credentials)
+
+##### Operator checks (not automated)
+- AC #1: on the dev stack after reset, full run and keycloak-import, note SELECT COUNT(*) FROM profile_identity WHERE provider = 'oidc'; run etl profiles in Development; the count is unchanged.
+- AC #2: SELECT COUNT(*) FROM profile_identity i JOIN profile p ON p.id = i.profile_id WHERE i.provider = 'oidc' AND p.kind <> 'member'; returns 0.
+- AC #3: CICHLIDS_KEYCLOAK_ADMIN_PASSWORD=wrong etl keycloak-import prints status and error code, no username, no address.
+- AC #4: DOTNET_ENVIRONMENT=Staging CICHLIDS_SLUG_SECRET=x etl keycloak-import aborts and names the missing setting.
+
+##### Notes
+- ResetCommand takes a settings factory so the environment refusal comes before the credential check.
+- A POST retried after a 5xx that Keycloak had committed can answer 409; rerunning is idempotent.
+<!-- SECTION:NOTES:END -->
