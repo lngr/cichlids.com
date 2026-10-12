@@ -32,6 +32,24 @@ public class OpenApiDocumentTests(ApiFixture fixture)
     }
 
     [Theory]
+    [InlineData("post", "/api/admin/webhooks")]
+    [InlineData("get", "/api/admin/outbox/events")]
+    [InlineData("post", "/api/admin/outbox/events/{id}/redeliver")]
+    [InlineData("post", "/api/admin/outbox/given-up/redeliver")]
+    public async Task Document_ListsEveryAdminEndpoint(string method, string path)
+    {
+        var response = await fixture.Client.GetAsync("/openapi/v1.json");
+        response.EnsureSuccessStatusCode();
+
+        using var document = JsonDocument.Parse(await response.Content.ReadAsStringAsync());
+        var paths = document.RootElement.GetProperty("paths");
+
+        Assert.True(
+            paths.TryGetProperty(path, out var item) && item.TryGetProperty(method, out _),
+            $"OpenAPI document is missing {method} {path}.");
+    }
+
+    [Theory]
     [InlineData("get", "/api/me")]
     [InlineData("get", "/api/me/drafts")]
     [InlineData("post", "/api/uploads")]

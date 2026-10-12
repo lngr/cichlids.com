@@ -256,15 +256,7 @@ public sealed class OutboxDispatchService(
         }
     }
 
-    /// <summary>
-    /// The current time at the microsecond precision Postgres stores, so a reservation value read
-    /// back from the database equals the value this instance computed.
-    /// </summary>
-    private DateTimeOffset Now()
-    {
-        var now = timeProvider.GetUtcNow();
-        return new DateTimeOffset(now.UtcTicks - now.UtcTicks % 10, TimeSpan.Zero);
-    }
+    private DateTimeOffset Now() => OutboxTime.UtcNow(timeProvider);
 
     private static string Sign(string body, string secret) =>
         Convert.ToHexStringLower(HMACSHA256.HashData(Encoding.UTF8.GetBytes(secret), Encoding.UTF8.GetBytes(body)));

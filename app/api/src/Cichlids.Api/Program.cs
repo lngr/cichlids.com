@@ -133,6 +133,7 @@ app.MapCommunityEndpoints();
 app.MapLegacyRedirectsEndpoints();
 app.MapUploadsEndpoints();
 app.MapWebhookAdminEndpoints();
+app.MapOutboxAdminEndpoints();
 
 app.Run();
 

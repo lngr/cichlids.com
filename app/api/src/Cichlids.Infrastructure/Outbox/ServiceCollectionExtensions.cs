@@ -41,6 +41,7 @@ public static class ServiceCollectionExtensions
 
         services.TryAddSingleton(TimeProvider.System);
         services.AddScoped<OutboxDispatchService>();
+        services.AddScoped<OutboxRedelivery>();
 
         return services;
     }
