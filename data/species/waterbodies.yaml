@@ -1,0 +1,262 @@
+# Measured water values of the large African lakes. They are the water values of every
+# cichlid endemic to the lake. The values come from limnological measurements; each
+# range is the union of the ranges found in the cited studies, so it covers the habitats
+# the endemic cichlids use.
+waterbodies:
+  - id: lake-malawi
+    name: Lake Malawi
+    aliases: [Lake Nyasa, Lake Niassa]
+    temperatureC: {min: 21, max: 29}
+    ph: {min: 7.7, max: 8.6}
+    ghDgh: {min: 3, max: 5}
+    khDkh: {min: 5, max: 8}
+    conductivityUScm: {min: 240, max: 260}
+    rationale: >-
+      Lake Malawi is soft, moderately alkaline water in which bicarbonate dominates
+      and calcium and magnesium are low. Hardness: in the north basin in October 1993
+      (Branchu et al. 2010) the upper 50 m hold 450 to 508 umol/L calcium (18.0 to
+      20.4 mg/L) and 294 to 322 umol/L magnesium (7.1 to 7.8 mg/L). With dGH =
+      Ca/7.14 + Mg/4.34 this gives 4.2 to 4.6 dGH. The 1960s titrations compiled by
+      FAO (Jackson et al. 1963: Ca 15.1 to 20.2 mg/L, Mg 6 to 9 mg/L; Talling and
+      Talling 1965: Ca 19.8, Mg 4.7 mg/L) span 3.2 to 4.9 dGH, so the range is 3 to
+      5 dGH. Carbonate hardness: alkalinity is 2.33 to 2.46 meq/L in the Branchu
+      profiles (6.5 to 6.9 dKH with dKH = meq/L x 2.8) and 2.00 to 2.59 meq/L in
+      Jackson et al. (5.6 to 7.3 dKH), so the range is 5 to 8 dKH. Sodium balances
+      part of the bicarbonate, so carbonate hardness exceeds total hardness. Surface pH is 7.7 to 8.6 (Jackson et al. 1963); Branchu et al.
+      give 7.5 to 8.5 for the whole column, the lower values belonging to deep water.
+      Conductivity at 25 C is 248.5 to 257.6 uS/cm in the 0 to 80 m layer across
+      campaigns from 1976 to 1997, and about 242 uS/cm in Jackson et al., so the
+      range is 240 to 260 uS/cm. Major ions differ little between basins or seasons, temperature
+      does: Eccles (1974) reports 27 C in the upper 60 m by May and 21.0
+      C inshore in the south-east arm in the cool, windy season. Summer surface water
+      reaches about 28 C, winter epilimnion values are 23.5 to below 24 C (Vollmer
+      et al. 2005), and a 2013 campaign found 24 to 29 C. The range is 21 to 29 C.
+    sources:
+      - kind: literature
+        title: >-
+          Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M.,
+          Pons-Branchu, E. et al. (2010). Hydrochemistry (major and trace elements)
+          of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global
+          considerations. Hydrology and Earth System Sciences Discussions 7,
+          4371-4409.
+        url: https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf
+        accessed: 2026-10-12
+      - kind: literature
+        title: >-
+          Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the
+          inland fishery resources of Africa, Vol. 1, CIFA Technical Paper 18/1,
+          FAO. Lake Malawi/Nyasa: physical and chemical data after Jackson et al.
+          (1963) and Talling and Talling (1965).
+        url: https://www.fao.org/4/t0473e/T0473E05.htm
+        accessed: 2026-10-12
+      - kind: literature
+        title: >-
+          Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the
+          inland fishery resources of Africa, Vol. 1, FAO CIFA Technical Paper
+          18/1, entry Lake Malawi/Nyasa (Jackson et al. 1963; Talling and Talling
+          1965).
+        url: https://www.fao.org/4/T0473E/T0473E06.htm
+        accessed: 2026-10-12
+      - kind: literature
+        title: >-
+          Eccles, D. H. (1974). An outline of the physical limnology of Lake
+          Malawi (Lake Nyasa). Limnology and Oceanography 19(5), 730-742
+          (abstract).
+        url: https://doi.org/10.4319/lo.1974.19.5.0730
+        accessed: 2026-10-12
+      - kind: literature
+        title: >-
+          Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman,
+          J. D., Edmond, J. M., Eccles, D. H. and Weiss, R. F. (2005). Deep-water
+          warming trend in Lake Malawi, East Africa. Limnology and Oceanography
+          50(2), 727-732.
+        url: https://www.dora.lib4ri.ch/empa/dload/empa:1253/PDF/view
+        accessed: 2026-10-12
+      - kind: literature
+        title: >-
+          Vollmer, M. K., Weiss, R. F. and Bootsma, H. A. (1999). Lake
+          Malawi/Nyasa deep water renewal. In: Bootsma, H. A. and Hecky, R. E.
+          (eds.), Water Quality Report, SADC/GEF Lake Malawi/Nyasa Biodiversity
+          Conservation Project, chapter 4.
+        url: https://sites.uwm.edu/hbootsma/files/2020/11/Ch4-Lake-Internal-Mixing.pdf
+        accessed: 2026-10-12
+      - kind: literature
+        title: >-
+          Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. PhD
+          dissertation, University of Wisconsin-Milwaukee.
+        url: https://minds.wisconsin.edu/handle/1793/91765
+        accessed: 2026-10-12
+
+  - id: lake-tanganyika
+    name: Lake Tanganyika
+    temperatureC: {min: 23, max: 29}
+    ph: {min: 8.4, max: 9.4}
+    ghDgh: {min: 10, max: 13}
+    khDkh: {min: 15, max: 20}
+    conductivityUScm: {min: 520, max: 730}
+    rationale: >-
+      Lake Tanganyika is hard, strongly buffered magnesium, sodium and potassium
+      bicarbonate water with about 2.5 times the conductivity of Lake Malawi.
+      Magnesium far exceeds calcium. Hardness: surface means of the FAO/FINNIDA
+      programme (1993 to 1995) are Ca 10.9 to 11.6 mg/L and Mg 41.2 to 43.2 mg/L at
+      Bujumbura, Kigoma and Mpulungu (11.1 to 11.5 dGH with dGH = Ca/7.14 + Mg/4.34).
+      Cohen et al. (1997) give Ca 12.2 to 12.4 and Mg 45.4 to 45.7 mg/L for the north
+      basin (12.2 dGH) and Talling and Talling (1965) Ca 9.8 and Mg 43.3 mg/L: 10 to 13 dGH. Carbonate hardness: alkalinity is 6.5 to 6.6 meq/L
+      (Cohen et al.), 6.71 meq/L (Talling and Talling) and 6.7 to 6.9 meq/L (Edmond
+      et al. 1993, cited by Langenberg 2008), which is 18.2 to 19.3 dKH with dKH =
+      meq/L x 2.8. The programme titrated 5.6 to 6.2 meq/L bicarbonate plus 0.06 to
+      1.02 meq/L carbonate (down to about 15.4 dKH): 15 to 20 dKH. Single readings
+      of 4 to 5 meq/L near the Ruzizi inflow are excluded.
+      Conductivity at 25 C has station means of 653 to 662 uS/cm and extremes of 520
+      and 728 uS/cm in the 0 to 100 m column, the minimum at the northern end and the
+      maximum when deep water surges upward: 520 to 730 uS/cm. The pH is 8.8 to 9.2
+      at the surface and 8.47 to 9.40 at 40 m over a year: 8.4 to 9.4. A pH of 7.3
+      to 7.8 listed in the FAO source book contradicts the alkalinity and all modern
+      measurements and is excluded.
+      Temperature: hourly buoy values at Mpulungu span 23.85 to 29.01 C (Verburg et
+      al. 1997); the south is cooler and more variable from June to September
+      because of upwelling: 23 to 29 C.
+    sources:
+      - kind: literature
+        title: >-
+          Plisnier, P.-D., Langenberg, V., Mwape, L., Chitamwembwa, D., Tshibangu,
+          K. and Coenen, E. (1996). Limnological sampling during an annual cycle
+          at three stations on Lake Tanganyika (1993-1994). FAO/FINNIDA Research
+          for the Management of the Fisheries on Lake Tanganyika,
+          GCP/RAF/271/FIN-TD/46.
+        url: https://fao.org/fishery/static/LTR/FTP/TD46.PDF
+        accessed: 2026-10-12
+      - kind: literature
+        title: >-
+          Plisnier, P.-D. (1996). Limnological sampling during a second annual
+          cycle (1994-1995) and some comparisons with year one on Lake
+          Tanganyika. FAO/FINNIDA GCP/RAF/271/FIN-TD/56.
+        url: https://fao.org/fishery/static/LTR/FTP/TD56.PDF
+        accessed: 2026-10-12
+      - kind: literature
+        title: >-
+          Verburg, P., Huttula, T., Kakogozo, B., Kihakwi, A., Kotilainen, P.,
+          Makasa, L. and Peltonen, A. (1997). Hydrodynamics of Lake Tanganyika
+          and meteorological results. FAO/FINNIDA GCP/RAF/271/FIN-TD/59.
+        url: https://fao.org/fishery/static/LTR/FTP/TD59.PDF
+        accessed: 2026-10-12
+      - kind: literature
+        title: >-
+          Cohen, A. S., Talbot, M. R., Awramik, S. M., Dettman, D. L. and Abell,
+          P. (1997). Lake level and paleoenvironmental history of Lake
+          Tanganyika, Africa, as inferred from late Holocene and modern
+          stromatolites. GSA Bulletin 109(4), 444-460 (Table 1, north basin
+          surface water chemistry).
+        url: https://awramik.faculty.geol.ucsb.edu/pubs/COHE9740.pdf
+        accessed: 2026-10-12
+      - kind: literature
+        title: >-
+          Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. PhD
+          thesis, Wageningen University.
+        url: https://edepot.wur.nl/121977
+        accessed: 2026-10-12
+      - kind: literature
+        title: >-
+          Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the
+          inland fishery resources of Africa, Vol. 1, CIFA Technical Paper 18/1,
+          FAO. Lake Tanganyika: physical and chemical data after Talling and
+          Talling (1965).
+        url: https://www.fao.org/4/t0473e/T0473E10.htm
+        accessed: 2026-10-12
+
+  - id: lake-victoria
+    name: Lake Victoria
+    aliases: [Nalubaale, Ukerewe]
+    temperatureC: {min: 22, max: 30}
+    ph: {min: 6.8, max: 9.4}
+    ghDgh: {min: 1, max: 3}
+    khDkh: {min: 2, max: 6}
+    conductivityUScm: {min: 80, max: 180}
+    rationale: >-
+      Lake Victoria is very soft, dilute, weakly buffered water. Shallow bays and the Nyanza (Winam,
+      Kavirondo) Gulf are warmer, vary more in pH and conduct up to twice as much as
+      the open lake. Hardness: the main lake has Ca
+      5.0 to 7.0 and Mg 2.3 to 3.5 mg/L (EAFRO 1952) and Ca 5.6 and Mg 2.6 mg/L
+      (Talling and Talling 1965), 1.2 to 1.8 dGH with dGH = Ca/7.14 + Mg/4.34. The
+      Nyanza Gulf in 1973 has Ca 8.2 to 11.4 and Mg 2.1 to 3.2 mg/L (Burgis et al.
+      1987), up to 2.4 dGH, so the range is 1 to 3 dGH. Carbonate hardness: the main
+      lake has 0.9 to 1.1 meq/L alkalinity (2.5 to 3.1 dKH with dKH = meq/L x 2.8);
+      the Nyanza Gulf has 0.80 to 1.44 meq/L in 1984 and 1.57 to 1.86 meq/L
+      bicarbonate in 1973 (2.2 to 5.2 dKH): 2 to 6 dKH. Conductivity at 25 C is
+      about 85 to 111 uS/cm in the open lake (Tanzanian bays 94.2 to 110.5 in 2002;
+      Rusinga and Bridge Island 85 to 88 in 2023), 138 to 146 uS/cm in the Winam Gulf
+      in 2022 to 2023 and 160 to 179 uS/cm in the Nyanza Gulf: 80 to 180 uS/cm, the
+      upper half only in enclosed gulfs and bays. Photosynthesis drives pH: 8.0 to 8.5 in the open lake, 6.8 to 9.2 in the Nyanza Gulf in
+      1984, 7.4 to 9.4 in Kenyan waters in 1984 to 1986 and 7.1 to 9.0 in the Winam
+      Gulf in 2022 to 2023. Kisumu harbour at 6.7 and the Tanzanian monitoring
+      extremes of 6.3 and 10.5 are excluded as outliers: 6.8 to 9.4. Temperature is
+      22.3 to 29.5 C across littoral and gulf stations and up to 29.7 C near river
+      mouths: 22 to 30 C.
+    sources:
+      - kind: literature
+        title: >-
+          Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the
+          inland fishery resources of Africa, Vol. 1, CIFA Technical Paper 18/1,
+          FAO. Lake Victoria: physical and chemical data after EAFRO (1952,
+          1954), Graham (1929) and Talling and Talling (1965).
+        url: https://www.fao.org/4/t0473e/T0473E12.htm
+        accessed: 2026-10-12
+      - kind: literature
+        title: >-
+          Burgis, M. J., Mavuti, K. M., Moreau, J. and Moreau, I. (1987). The
+          Central Plateau. In: Burgis, M. J. and Symoens, J. J. (eds.), African
+          wetlands and shallow water bodies, ORSTOM, Paris, section 6.3
+          (6.3.a Nyanza Gulf).
+        url: https://horizon.documentation.ird.fr/exl-doc/pleins_textes/divers14-08/25359.pdf
+        accessed: 2026-10-12
+      - kind: literature
+        title: >-
+          Deirmendjian, L., Descy, J.-P., Morana, C., Okello, W.,
+          Stoyneva-Gaertner, M. P., Bouillon, S. and Borges, A. V. (2021).
+          Limnological changes in Lake Victoria since the mid-20th century.
+          Freshwater Biology 66, 1630-1647.
+        url: https://orbi.uliege.be/bitstream/2268/255437/1/fwb.13780.pdf
+        accessed: 2026-10-12
+      - kind: literature
+        title: >-
+          Mbonde, A. S., Sitoki, L. and Kurmayer, R. (2015). Phytoplankton
+          composition and microcystin concentrations in open and closed bays of
+          Lake Victoria, Tanzania. Aquatic Ecosystem Health and Management
+          (Table 1).
+        url: https://pmc.ncbi.nlm.nih.gov/articles/PMC5221727/
+        accessed: 2026-10-12
+      - kind: literature
+        title: >-
+          Orina, P. S., Onyango, D. M., Lungayia, H., Oduor, A., Sifuna, A. W.,
+          Otuya, P., Owigar, R. A., Kowenje, C. B. and Hinzano, S. M. (2020).
+          Water quality of selected fishing beaches of Lake Victoria Kenyan Gulf.
+          Open Journal of Ecology 10, 22-35.
+        url: https://doi.org/10.4236/oje.2020.101002
+        accessed: 2026-10-12
+      - kind: literature
+        title: >-
+          Makaka et al. (2021). Spatial and Temporal Variation of Selected Water
+          Quality Parameters in the Tanzanian Side of Lake Victoria. Tanzania
+          Journal of Engineering and Technology 40(2), 1-23.
+        url: https://tjet.udsm.ac.tz/index.php/tjet/article/view/729
+        accessed: 2026-10-12
+      - kind: database
+        title: >-
+          BCO-DMO dataset 931936, Metagenomic Time Series of Winam Gulf, Lake
+          Victoria from 2022-2023 (pH, temperature, conductivity).
+        url: https://erddap.bco-dmo.org/erddap/tabledap/bcodmo_dataset_931936_v1
+        accessed: 2026-10-12
+      - kind: literature
+        title: >-
+          Kishe (2004). Physical and chemical characteristics of water in
+          selected locations in Lake Victoria, Tanzania. Tanzania Journal of
+          Science 30(2), 65-72.
+        url: https://tjs.udsm.ac.tz/index.php/tjs/article/view/448
+        accessed: 2026-10-12
+      - kind: literature
+        title: >-
+          Ochumba (1987). Periodic massive fish kills in the Kenyan portion of
+          Lake Victoria. FAO Fisheries Report, CIFA sub-committee for Lake
+          Victoria, 4th session, Appendix E.
+        url: https://www.fao.org/4/ad858e/AD858E06.htm
+        accessed: 2026-10-12

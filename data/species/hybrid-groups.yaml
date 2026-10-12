@@ -1,0 +1,37 @@
+# Curated hybrid groups: closely related species that cross in tanks. Two species of the same group
+# in one tank are a hard conflict of the compatibility check. Members are valid names; a species
+# belongs to at most one group. Agents propose new groups and members in a profile's hybridGroup
+# rationale; this file records the curated result.
+groups:
+  - id: maylandia
+    description: Species of Maylandia (Metriaclima); they cross readily in tanks, also across colour forms.
+    members:
+      - Maylandia zebra
+      - Maylandia estherae
+      - Maylandia callainos
+      - Maylandia greshakei
+      - Maylandia lombardoi
+  - id: tropheus
+    description: All Tropheus species and locality forms; locality forms are kept apart as well to preserve them.
+    members:
+      - Tropheus moorii
+      - Tropheus duboisi
+      - Tropheus brichardi
+      - Tropheus annectens
+  - id: aulonocara
+    description: Peacock cichlids of the genus Aulonocara; females look alike and cross easily.
+    members:
+      - Aulonocara stuartgranti
+      - Aulonocara jacobfreibergi
+      - Aulonocara baenschi
+  - id: amphilophus-citrinellus-complex
+    description: Midas and red devil cichlids of the Amphilophus citrinellus complex.
+    members:
+      - Amphilophus citrinellus
+      - Amphilophus labiatus
+  - id: symphysodon
+    description: All discus species and their aquarium strains.
+    members:
+      - Symphysodon aequifasciatus
+      - Symphysodon discus
+      - Symphysodon haraldi

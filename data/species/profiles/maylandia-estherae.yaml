@@ -1,0 +1,1448 @@
+schemaVersion: 1
+id: maylandia-estherae
+legacyIds:
+  - 384
+  - 472
+status: described
+taxonomy:
+  validName: Maylandia estherae
+  genus: Maylandia
+  species: estherae
+  author: (Konings, 1995)
+  source: &a1
+    kind: catalog-of-fishes
+    title: Eschmeyer's Catalog of Fishes, species list of the genus Maylandia (entry estherae, Pseudotropheus)
+    url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Maylandia
+    accessed: 2026-10-12
+  synonyms:
+    - name: Pseudotropheus estherae Konings, 1995
+      note: Original combination; type locality Minos Reef, Miluluka, Mozambique.
+    - name: Metriaclima estherae (Konings, 1995)
+      note: Combination used by Stauffer et al. (1997), Konings and Stauffer (2006) and much of the aquarium literature; the Catalog of Fishes treats Metriaclima as Maylandia.
+  legacyNames:
+    - Metriaclima estherae
+    - Pseudotropheus estherae
+  note: The Catalog of Fishes lists the current status as valid as Maylandia estherae (Konings 1995) and files the genus names Metriaclima and Pseudotropheus (for this species) under Maylandia. The legacy catalog held the species twice, under Metriaclima and Pseudotropheus; both entries map to this profile. The Cichlid Room Companion uses Metriaclima estherae, Seriously Fish files it under Pseudotropheus, which reflects older placements.
+names:
+  trade:
+    en:
+      - Red Zebra
+      - Red Zebra Cichlid
+      - Red Zebra Mbuna
+      - Esther Grant's Zebra
+    de:
+      - Red Zebra
+      - Roter Zebrabuntbarsch
+      - Roter Malawibuntbarsch
+    es-419:
+      - Cíclido cebra rojo
+    pt-BR:
+      - Mbuna-vermelha
+variants:
+  - name: Wild type (B male, brown-beige female)
+    kind: color-morph
+    note: Light blue unbarred males and brown-beige females; the normal colour of wild fish.
+  - name: O morph (orange)
+    kind: color-morph
+    note: Plain orange-red fish; about 80 percent of the wild females at Minos Reef and Chilucha Reef. O males are rare in the wild and look creamy pink; aquarium lines with orange males (Red/Red) are bred in captivity.
+  - name: OB morph (orange blotch, Marmalade Cat)
+    kind: color-morph
+    note: Orange or pink fish with dark blotches; mostly females, pied males are traded as Marmalade Cat.
+  - name: Minos Reef
+    kind: locality
+    note: Type locality off Meluluca, Mozambique; males carry yellow spots in the soft dorsal fin.
+  - name: Chilucha Reef
+    kind: locality
+    note: Deep reef off Metangula, Mozambique; northernmost known population.
+features:
+  origin:
+    value: &a41
+      continent: Africa
+      region: Lake Malawi
+      waterbody: lake-malawi
+      localities:
+        - Chilucha Reef (Metangula, Mozambique)
+        - Minos Reef (Meluluca, Mozambique), type locality
+        - Offshore reefs near Meluluca (Mozambique)
+        - North of Masinje (Malawi)
+        - Gome
+    confidence: high
+    rationale: Endemic to the eastern coast of Lake Malawi, mainly in Mozambican waters. The original description names Minos Reef off Meluluca as the type locality, Chilucha Reef near Metangula as the northernmost and the area north of Masinje at the Malawi border as the southernmost population; Seriously Fish gives the range as Metangula and Minos Reef to Gome. FishBase lists Mozambique, the Catalog of Fishes Lake Malawi.
+    sources:
+      - &a2
+        kind: literature
+        title: Konings, A. (1995). Description of Pseudotropheus estherae sp. nov., the well-known red zebra cichlid from Lake Malawi. Tropical Fish Hobbyist 43(9), 206-210.
+        url: https://malawicichlids.com/konings_1995_description_of_pseudotropheus_estherae_sp._nov.,_the_well-known_red_zebra_cichlid_from_lake_malawi.pdf
+        accessed: 2026-10-12
+      - *a1
+      - &a25
+        kind: database
+        title: FishBase species summary, Maylandia estherae (Red zebra)
+        url: https://www.fishbase.se/summary/Maylandia-estherae.html
+        accessed: 2026-10-12
+      - &a4
+        kind: database
+        title: Seriously Fish, Pseudotropheus estherae (Red Zebra)
+        url: https://www.seriouslyfish.com/species/pseudotropheus-estherae/
+        accessed: 2026-10-12
+      - &a3
+        kind: literature
+        title: Oliver, M. K., The Malawi Cichlid Homepage, Maylandia estherae photo page
+        url: https://malawicichlids.com/mw09008g.htm
+        accessed: 2026-10-12
+    evidence:
+      - source: *a2
+        value:
+          continent: Africa
+          region: Lake Malawi
+          localities:
+            - Minos Reef
+            - Chilucha Reef
+            - north of Masinje
+        note: original description
+      - source: *a3
+        value:
+          continent: Africa
+          region: Lake Malawi
+          localities:
+            - Minos Reef
+            - Chilucha Reef at Metangula
+      - source: *a4
+        value:
+          continent: Africa
+          region: Lake Malawi
+          localities:
+            - Metangula and Minos Reef to Gome
+  temperatureC:
+    value:
+      min: 21
+      max: 29
+    confidence: high
+    rationale: Lake endemic; the value is the measured Lake Malawi range of the waterbody table (entry lake-malawi), from 21 C inshore in the cool, windy season to about 29 C in summer surface water.
+    sources: &a19
+      - &a21
+        kind: literature
+        title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+        url: https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf
+        accessed: 2026-10-12
+      - &a20
+        kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+        url: https://www.fao.org/4/t0473e/T0473E05.htm
+        accessed: 2026-10-12
+      - &a7
+        kind: literature
+        title: Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of Africa, Vol. 1, FAO CIFA Technical Paper 18/1, entry Lake Malawi/Nyasa (Jackson et al. 1963; Talling and Talling 1965).
+        url: https://www.fao.org/4/T0473E/T0473E06.htm
+        accessed: 2026-10-12
+      - &a5
+        kind: literature
+        title: Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology and Oceanography 19(5), 730-742 (abstract).
+        url: https://doi.org/10.4319/lo.1974.19.5.0730
+        accessed: 2026-10-12
+      - &a6
+        kind: literature
+        title: Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M., Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and Oceanography 50(2), 727-732.
+        url: https://www.dora.lib4ri.ch/empa/dload/empa:1253/PDF/view
+        accessed: 2026-10-12
+      - kind: literature
+        title: "Vollmer, M. K., Weiss, R. F. and Bootsma, H. A. (1999). Lake Malawi/Nyasa deep water renewal. In: Bootsma, H. A. and Hecky, R. E. (eds.), Water Quality Report, SADC/GEF Lake Malawi/Nyasa Biodiversity Conservation Project, chapter 4."
+        url: https://sites.uwm.edu/hbootsma/files/2020/11/Ch4-Lake-Internal-Mixing.pdf
+        accessed: 2026-10-12
+      - kind: literature
+        title: Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. PhD dissertation, University of Wisconsin-Milwaukee.
+        url: https://minds.wisconsin.edu/handle/1793/91765
+        accessed: 2026-10-12
+    evidence:
+      - source: *a5
+        value:
+          min: 21
+          max: 27
+        note: inshore cool season 21 C, upper 60 m 27 C by May
+      - source: *a6
+        value:
+          min: 23.5
+          max: 28
+        note: winter epilimnion to summer surface water
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value:
+        min: 21
+        max: 29
+      confidence: medium
+      rationale: Care sheets for this species place the aquarium range between 22 and 28 C, most often 24 to 28 C (Seriously Fish, FishProfiles, The Tropical Tank, Riverpark Aquatics, LiveAquaria, Garnelio, ICAR-NBFGR), with 24 to 26 C as the narrowest recommendation (FishKeeper). The tolerance contains the natural lake range of 21 to 29 C, which the species lives through over the year, so the lake bounds form the tolerance and all aquarium recommendations lie inside it. Long-term keeping at 21 or 29 C is not documented in the aquarium; these bounds come from the habitat. An archive tank with the species ran at 26 C.
+      sources:
+        - *a4
+        - &a8
+          kind: database
+          title: ICAR-NBFGR Ganga Aquarium, red zebra (Maylandia estherae)
+          url: https://www.nbfgr.res.in/Ganga_Aquarium/67.html
+          accessed: 2026-10-12
+        - &a9
+          kind: database
+          title: FishProfiles.com, Metriaclima estherae
+          url: https://fishprofiles.com/profiles/freshwater/Cichlids/Metriaclima_estherae_
+          accessed: 2026-10-12
+        - &a10
+          kind: database
+          title: The Tropical Tank, Maylandia estherae / Metriaclima estherae (red zebra)
+          url: http://thetropicaltank.co.uk/Fishindx/estherae.htm
+          accessed: 2026-10-12
+        - &a11
+          kind: database
+          title: Maidenhead Aquatics FishKeeper, Red/Blue Zebra (Maylandia estherae)
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-blue-zebra
+          accessed: 2026-10-12
+        - &a12
+          kind: database
+          title: Maidenhead Aquatics FishKeeper, Red Red Zebra (Maylandia estherae)
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-red-zebra
+          accessed: 2026-10-12
+        - &a13
+          kind: database
+          title: LiveAquaria, Red Zebra Cichlid
+          url: https://www.liveaquaria.com/products/red-zebra-cichlid
+          accessed: 2026-10-12
+        - &a14
+          kind: database
+          title: Riverpark Aquatics, Our Guide To Keeping Orange Blotched Zebra Cichlid Fish
+          url: https://riverparkaquatics.co.uk/orange-blotched-zebra-cichlid-metriaclima-estherae/
+          accessed: 2026-10-12
+        - &a15
+          kind: database
+          title: Garnelio, Red Zebra Cichlid Pseudotropheus estherae red-red
+          url: https://www.garnelio.de/en/red-zebra-cichlid-pseudotropheus-estherae-red-red
+          accessed: 2026-10-12
+        - &a16
+          kind: database
+          title: AquariumSource, Red Zebra Cichlid care guide
+          url: https://www.aquariumsource.com/red-zebra-cichlid/
+          accessed: 2026-10-12
+        - &a17
+          kind: literature
+          title: Wikipedia, Maylandia estherae
+          url: https://en.wikipedia.org/wiki/Maylandia_estherae
+          accessed: 2026-10-12
+        - *a5
+        - *a6
+        - *a7
+        - &a18
+          kind: archive
+          title: cichlids.com forum thread 13949
+          url: https://www.cichlids.com/disc/read.php?2,13949
+          accessed: 2026-10-12
+      evidence:
+        - source: *a4
+          value:
+            min: 24
+            max: 28
+          note: aquarium recommendation
+        - source: *a8
+          value:
+            min: 22
+            max: 28
+          note: aquarium recommendation
+        - source: *a9
+          value:
+            min: 22
+            max: 28
+          note: aquarium recommendation
+        - source: *a10
+          value:
+            min: 23
+            max: 28
+          note: aquarium recommendation
+        - source: *a11
+          value:
+            min: 24
+            max: 26
+          note: aquarium recommendation
+        - source: *a12
+          value:
+            min: 24
+            max: 26
+          note: aquarium recommendation
+        - source: *a13
+          value:
+            min: 24.4
+            max: 27.8
+          note: aquarium recommendation, converted from 76 to 82 F
+        - source: *a14
+          value:
+            min: 23
+            max: 28
+          note: aquarium recommendation
+        - source: *a15
+          value:
+            min: 24
+            max: 27
+          note: breeder recommendation
+        - source: *a16
+          value:
+            min: 22
+            max: 28
+          note: aquarium recommendation, converted from 72 to 82 F
+        - source: *a17
+          value:
+            min: 22
+            max: 26
+        - source: *a5
+          value:
+            min: 21
+            max: 27
+          note: lake water
+        - source: *a6
+          value:
+            min: 23.5
+            max: 28
+          note: lake water
+        - source: *a7
+          value:
+            min: 23
+            max: 25
+          note: lake surface water, single survey
+        - source: *a18
+          value:
+            min: 26
+            max: 26
+          note: mbuna tank with the species, 79 F
+      verification:
+        method: unanimous
+        votes:
+          agree: 3
+          total: 3
+  ph:
+    value:
+      min: 7.7
+      max: 8.6
+    confidence: high
+    rationale: Lake endemic; the value is the Lake Malawi surface pH of the waterbody table (entry lake-malawi). The whole water column reaches down to 7.5 in deep water.
+    sources: *a19
+    evidence:
+      - source: *a20
+        value:
+          min: 7.7
+          max: 8.6
+        note: lake surface water
+      - source: *a21
+        value:
+          min: 7.5
+          max: 8.5
+        note: whole water column, lower values in deep water
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value:
+        min: 7.5
+        max: 8.8
+      confidence: medium
+      rationale: "Species care sheets agree closely: their lower limits lie between 7.5 and 7.8 and their upper limits between 8.5 and 8.8, most of them near 7.5 to 8.6, which matches the lake surface range of 7.7 to 8.6. The tolerance is the span of these recommendations, 7.5 to 8.8; the upper bound rests on Seriously Fish alone. Archive tanks in which the species was kept and bred ran at pH 8.2 to 8.3, and general mbuna guidance asks for at least 7.5."
+      sources:
+        - *a4
+        - *a11
+        - *a12
+        - *a10
+        - *a8
+        - *a9
+        - *a13
+        - *a15
+        - &a22
+          kind: database
+          title: Gensou, Red Zebra Cichlid Care Guide (Metriaclima estherae)
+          url: https://gensou.sg/?p=22910
+          accessed: 2026-10-12
+        - *a16
+        - &a24
+          kind: literature
+          title: Gay, J. The mbuna keeper's survival guide. Practical Fishkeeping
+          url: https://www.practicalfishkeeping.co.uk/features/the-mbuna-keepers-survival-guide/
+          accessed: 2026-10-12
+        - *a7
+        - *a18
+        - &a23
+          kind: archive
+          title: cichlids.com forum thread 27084
+          url: https://www.cichlids.com/disc/read.php?2,27084
+          accessed: 2026-10-12
+      evidence:
+        - source: *a4
+          value:
+            min: 7.6
+            max: 8.8
+          note: aquarium recommendation; 8.2 to 8.5 for breeding
+        - source: *a11
+          value:
+            min: 7.5
+            max: 8.5
+          note: aquarium recommendation
+        - source: *a12
+          value:
+            min: 7.5
+            max: 8.5
+          note: aquarium recommendation
+        - source: *a10
+          value:
+            min: 7.6
+            max: 8.6
+          note: aquarium recommendation
+        - source: *a8
+          value:
+            min: 7.8
+            max: 8.6
+          note: aquarium recommendation
+        - source: *a9
+          value:
+            min: 7.8
+            max: 8.5
+          note: aquarium recommendation
+        - source: *a13
+          value:
+            min: 7.8
+            max: 8.6
+          note: aquarium recommendation
+        - source: *a15
+          value:
+            min: 7.5
+            max: 8.5
+          note: breeder recommendation
+        - source: *a22
+          value:
+            min: 7.8
+            max: 8.5
+          note: aquarium recommendation
+        - source: *a16
+          value:
+            min: 7.5
+            max: 8.5
+          note: aquarium recommendation
+        - source: *a7
+          value:
+            min: 7.7
+            max: 8.6
+          note: lake surface water
+        - source: *a18
+          value:
+            min: 8.2
+            max: 8.2
+          note: mixed mbuna tank with the species
+        - source: *a23
+          value:
+            min: 8.3
+            max: 8.3
+          note: tank in which the species bred
+      verification:
+        method: unanimous
+        votes:
+          agree: 3
+          total: 3
+  ghDgh:
+    value:
+      min: 3
+      max: 5
+    confidence: high
+    rationale: Lake endemic; the value is the Lake Malawi total hardness of the waterbody table (entry lake-malawi), computed from measured calcium and magnesium. Lake Malawi is soft water; the 10 to 25 dGH of care sheets confuse hardness with alkalinity and are no habitat value.
+    sources: *a19
+    evidence:
+      - source: *a21
+        value:
+          min: 4.2
+          max: 4.6
+        note: north basin, upper 50 m, from Ca and Mg
+      - source: *a20
+        value:
+          min: 3.2
+          max: 4.9
+        note: 1960s titrations, from Ca and Mg
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value:
+        min: 3
+        max: 25
+      confidence: medium
+      rationale: "The lake water is soft, 3 to 5 dGH, while care sheets recommend about 10 to 25 dGH; Seriously Fish, Garnelio and FishKeeper name 25 dGH as the upper limit. The high values reflect that hobby sources confuse hardness with alkalinity: the fish need a stable high pH and carbonate buffer, not much calcium and magnesium. The tolerance therefore spans the lake values up to the highest recommended aquarium hardness. A breeder gives 5 dGH as the lower limit and an archive tank with the species ran at 5 dGH, which supports the soft end. A single Garnelio page with up to 30 dGH is left out."
+      sources:
+        - *a4
+        - *a11
+        - *a12
+        - *a8
+        - *a9
+        - *a10
+        - *a15
+        - *a22
+        - *a16
+        - *a21
+        - *a7
+        - *a18
+      evidence:
+        - source: *a4
+          value:
+            min: 10
+            max: 25
+          note: aquarium recommendation
+        - source: *a8
+          value:
+            min: 10
+            max: 14
+          note: aquarium recommendation
+        - source: *a9
+          value:
+            min: 10
+            max: 20
+          note: aquarium recommendation, given as dH
+        - source: *a15
+          value:
+            min: 5
+            max: 25
+          note: breeder recommendation
+        - source: *a22
+          value:
+            min: 8
+            max: 15
+          note: aquarium recommendation
+        - source: *a11
+          value:
+            min: 3
+            max: 25
+          note: states only an upper value of 25 dH; lower bound taken from the lake
+        - source: *a16
+          value:
+            min: 3
+            max: 25
+          note: states only an upper value; lower bound taken from the lake
+        - source: *a21
+          value:
+            min: 4.2
+            max: 4.6
+          note: lake water, from Ca and Mg
+        - source: *a7
+          value:
+            min: 3.5
+            max: 4.9
+          note: lake water, computed from calcium and magnesium
+        - source: *a18
+          value:
+            min: 5
+            max: 5
+          note: mbuna tank with the species
+      verification:
+        method: unanimous
+        votes:
+          agree: 3
+          total: 3
+  khDkh:
+    value:
+      min: 5
+      max: 8
+    confidence: high
+    rationale: Lake endemic; the value is the Lake Malawi carbonate hardness of the waterbody table (entry lake-malawi), converted from measured alkalinity of 2.0 to 2.6 meq/L.
+    sources: *a19
+    evidence:
+      - source: *a21
+        value:
+          min: 6.5
+          max: 6.9
+        note: alkalinity 2.33 to 2.46 meq/L
+      - source: *a20
+        value:
+          min: 5.6
+          max: 7.3
+        note: alkalinity 2.00 to 2.59 meq/L
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value:
+        min: 5
+        max: 15
+      confidence: medium
+      rationale: "Few care sheets give carbonate hardness separately: The Tropical Tank asks for 10 to 12 dKH ideally and at least 5 to 6 dKH, Gensou gives 6 to 10, Garnelio 6 to 12 and LiveAquaria 10 to 15 dKH; other sheets only ask for well-buffered alkaline water. The lake has 5 to 8 dKH, which the tolerance contains. Breeders in the archive kept and bred the species at 8 and at 10 to 11 dKH. The upper bound of 15 dKH rests on LiveAquaria; a single Garnelio page with up to 30 dKH is left out."
+      sources:
+        - *a10
+        - *a13
+        - *a15
+        - *a22
+        - *a4
+        - *a24
+        - *a21
+        - *a7
+        - *a18
+        - *a23
+      evidence:
+        - source: *a10
+          value:
+            min: 5
+            max: 12
+          note: 10 to 12 ideal, at least 5 to 6
+        - source: *a13
+          value:
+            min: 10
+            max: 15
+          note: aquarium recommendation
+        - source: *a15
+          value:
+            min: 6
+            max: 12
+          note: breeder recommendation
+        - source: *a22
+          value:
+            min: 6
+            max: 10
+          note: aquarium recommendation
+        - source: *a21
+          value:
+            min: 6.5
+            max: 6.9
+          note: lake water, from alkalinity
+        - source: *a7
+          value:
+            min: 5.6
+            max: 7.3
+          note: lake water, from 2.00 to 2.59 meq/L alkalinity
+        - source: *a18
+          value:
+            min: 8
+            max: 8
+          note: mbuna tank with the species
+        - source: *a23
+          value:
+            min: 10
+            max: 11
+          note: tank in which the species bred
+      verification:
+        method: unanimous
+        votes:
+          agree: 3
+          total: 3
+  maxSizeCm:
+    value:
+      male: 12
+      female: 10
+    confidence: medium
+    rationale: "Wild fish stay small: the largest male of the type series measures 79 mm SL (about 9.8 cm total length), the female holotype 63 mm SL (about 7.9 cm), as in FishBase. Aquarium fish grow larger. Hobby sources give males 11.4 to 14 cm, with 13.5 to 14 cm describing exceptional males, so a well-kept male typically reaches about 12 cm. For females they agree on about 10 cm (Seriously Fish, Wikipedia, ICAR-NBFGR, GCCA)."
+    sources:
+      - *a2
+      - *a25
+      - *a4
+      - *a17
+      - *a8
+      - &a26
+        kind: literature
+        title: Aquarium Glaser fish archive, Maylandia estherae Red/Red
+        url: https://www.aquariumglaser.de/en/fish-archives/maylandia-estherae-red-red-2
+        accessed: 2026-10-12
+      - *a11
+      - &a27
+        kind: database
+        title: Greater Chicago Cichlid Association, Metriaclima estherae
+        url: https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/70-metriaclima-estherae
+        accessed: 2026-10-12
+    evidence:
+      - source: *a2
+        value:
+          male: 9.8
+          female: 7.9
+        note: largest wild type specimens, total length
+      - source: *a25
+        value:
+          male: 7.9
+          female: 6.3
+        note: standard length of wild fish
+      - source: *a4
+        value:
+          male: 13.5
+          female: 10
+        note: aquarium maximum
+      - source: *a17
+        value:
+          male: 12.7
+          female: 10
+      - source: *a8
+        value:
+          male: 14
+          female: 10
+      - source: *a26
+        value:
+          male: 14
+          female: 12
+        note: aquarium size 12 to 14 cm without sex distinction
+      - source: *a11
+        value:
+          male: 12.5
+        note: unsexed maximum
+      - source: *a27
+        value:
+          male: 11.4
+          female: 10
+        note: keeper report in the aquarium
+  predation:
+    value: 1
+    confidence: low
+    rationale: "A conservative decision: the votes split three to three between level 0 and level 1, and the vote count takes the higher level. The sources split along the same line. Field data put the species at level 0: the original description and Konings and Stauffer (2006) describe the zebra-complex feeding mode of combing loose material from the algae on the rocks, FishBase gives algae as food and a trophic level of 2.0, the Cichlid Room Companion classes it as an algae comber, and studies of the close relative M. zebra (stomach contents mainly diatoms, stable isotopes showing much plankton, a trophic overview listing aufwuchs, zooplankton and invertebrates) contain no fish. Aquarium reports point to level 1: Seriously Fish warns of fry predation when a holding female is moved, Gensou notes that mbuna tankmates eat released juveniles, and the cichlids.com archive reports that released fry survive only where rockwork keeps the adults away and that a female ate her own brood. No source reports hunting of fish larger than fry, so levels 2 and 3 are excluded, and fish above about 2 cm are not at risk."
+    sources:
+      - *a2
+      - *a25
+      - *a4
+      - &a28
+        kind: literature
+        title: "Konings, A. F. and Stauffer, J. R. (2006). Revised diagnosis of Metriaclima with description of a new species (Teleostei: Cichlidae) from Lake Malawi National Park, Africa. Ichthyological Exploration of Freshwaters 17(3), 233-246."
+        url: https://ecosystems.psu.edu/research/labs/stauffer/publications/2000s/koningsstauffer2006.pdf
+        accessed: 2026-10-12
+      - &a29
+        kind: database
+        title: Cichlid Room Companion, Metriaclima estherae (public summary)
+        url: https://cichlidae.com/species.php?id=lXW-7VIVgy5asyALMxyFGw
+        accessed: 2026-10-12
+      - *a10
+      - *a24
+      - &a30
+        kind: literature
+        title: Reinthal, P. N. (1987). Morphology, ecology, and behavior of a group of the rock-dwelling cichlid fishes from Lake Malawi, Africa. PhD dissertation, Duke University (abstract).
+        url: https://www.malawicichlids.com/_popup_phd_reinthal.htm
+        accessed: 2026-10-12
+      - &a31
+        kind: literature
+        title: Bootsma, H. A., Hecky, R. E., Hesslein, R. H. and Turner, G. F. (1996). Food partitioning among Lake Malawi nearshore fishes as revealed by stable isotope analyses. Ecology 77(4), 1286-1290 (abstract).
+        url: https://www.malawicichlids.com/_popup_abs_bhht96.htm
+        accessed: 2026-10-12
+      - &a32
+        kind: literature
+        title: "Oliver, M. K. The Cichlid Fishes of Lake Malawi: Trophic Adaptations (entry Pseudotropheus (Maylandia) zebra after Fryer and Iles 1972 and Holzberg 1978)."
+        url: https://malawicichlids.com/mw01100.htm
+        accessed: 2026-10-12
+      - *a22
+      - *a11
+      - *a1
+      - &a33
+        kind: archive
+        title: cichlids.com forum thread 13033
+        url: https://www.cichlids.com/disc/read.php?1,13033
+        accessed: 2026-10-12
+      - &a34
+        kind: archive
+        title: cichlids.com forum thread 29508
+        url: https://www.cichlids.com/disc/read.php?2,29508
+        accessed: 2026-10-12
+    evidence:
+      - source: *a2
+        value: 0
+        note: combs algae from rocks, no fish in the wild diet
+      - source: *a28
+        value: 0
+        note: genus combs loose material from attached algae
+      - source: *a25
+        value: 0
+        note: feeds on algae, trophic level 2.0
+      - source: *a29
+        value: 0
+        note: classified as algae comber
+      - source: *a30
+        value: 0
+        note: stomach contents of P. zebra mainly diatoms
+      - source: *a31
+        value: 0
+        note: isotopes show a strong plankton preference in P. zebra
+      - source: *a32
+        value: 0
+        note: loose aufwuchs, zooplankton and benthic invertebrates; fry hunters are listed separately
+      - source: *a11
+        value: 0
+        note: primarily vegetarian diet, animal protein risks bloat, no fish eating mentioned
+      - source: *a4
+        value: 1
+        note: aquarium; warns of fry predation when a holding female is moved
+      - source: *a22
+        value: 1
+        note: aquarium; mbuna tankmates eat released juveniles
+      - source: *a10
+        value: 1
+        note: omnivore feeding on aufwuchs and plankton; no fish predation, level inferred
+      - source: *a24
+        value: 1
+        note: mbuna in general; lists fry among the foods some mbuna specialise on
+      - source: *a33
+        value: 1
+        note: released fry survive only where rock piles keep adults away
+      - source: *a34
+        value: 1
+        note: a red zebra female ate her own brood
+    verification:
+      method: conservative
+      votes:
+        agree: 3
+        total: 6
+  diet:
+    value:
+      type: aufwuchs
+      bloatSensitive: true
+      foods: &a40
+        - spirulina flakes
+        - vegetable-based mbuna pellets
+        - blanched spinach
+        - nori
+        - small crustaceans in moderation
+    confidence: high
+    rationale: In the wild it combs loose aufwuchs from algae-covered rocks at a right angle to the substrate, the feeding mode of the zebra complex (original description, Konings and Stauffer 2006); FishBase gives algae as food and the Cichlid Room Companion classes it as an algae comber. Care sources agree that the aquarium diet must be mainly plant-based and that meat and protein-rich food lead to obesity and Malawi bloat (Seriously Fish, FishKeeper, Wikipedia).
+    sources:
+      - *a2
+      - *a28
+      - *a25
+      - *a29
+      - *a4
+      - *a11
+      - *a17
+    evidence:
+      - source: *a2
+        value:
+          type: aufwuchs
+        note: combs algae from rocks
+      - source: *a28
+        value:
+          type: aufwuchs
+        note: feeding mode of the genus
+      - source: *a25
+        value:
+          type: aufwuchs
+        note: feeds on algae
+      - source: *a29
+        value:
+          type: aufwuchs
+        note: algae comber
+      - source: *a4
+        value:
+          type: aufwuchs
+          bloatSensitive: true
+        note: vegetable matter as the main diet, no animal meat, prone to obesity
+      - source: *a11
+        value:
+          type: aufwuchs
+          bloatSensitive: true
+        note: animal protein risks Malawi bloat
+      - source: *a17
+        value:
+          type: aufwuchs
+          bloatSensitive: true
+        note: algae in the wild; bloat risk from live food
+    verification:
+      method: unanimous
+      votes:
+        agree: 3
+        total: 3
+  aggressionConspecific:
+    value: 3
+    confidence: medium
+    rationale: Males hold permanent territories and court females hard; one male with a single female leads to constant harassment and can kill her, and a second male is tolerated only in very large tanks. Seriously Fish calls the species comparatively mild for a mbuna, but the need for a harem and for crowding to spread aggression matches level 3 rather than 2.
+    sources:
+      - *a4
+      - *a11
+      - *a2
+      - *a26
+      - *a17
+      - *a16
+      - &a35
+        kind: forum
+        title: Cichlid Fish Forum profile, Metriaclima estherae (O)
+        url: https://www.cichlid-forum.com/threads/metriaclima-estherae-o.457246/
+        accessed: 2026-10-12
+      - &a36
+        kind: archive
+        title: cichlids.com forum thread 18548
+        url: https://www.cichlids.com/disc/read.php?2,18548
+        accessed: 2026-10-12
+    evidence:
+      - source: *a4
+        value: 2
+        note: not especially aggressive for a mbuna, yet one male per tank and several females
+      - source: *a11
+        value: 3
+        note: single female harassed, possibly to death
+      - source: *a26
+        value: 3
+        note: quite aggressive like many mbuna
+      - source: *a17
+        value: 3
+        note: dominant male picks on subordinate males
+      - source: *a16
+        value: 2
+        note: moderately aggressive, mainly territorial
+  aggressionHeterospecific:
+    value: 3
+    confidence: medium
+    rationale: Robust towards other mbuna of its size but unsuitable for peaceful Malawi cichlids such as peacocks and utaka, which it harasses beyond its own cave; tankmates need comparable size and robustness, which is level 3. Males react most strongly to look-alike species. FishKeeper and AquariumSource call it moderately aggressive and Seriously Fish not especially aggressive for a mbuna, so 2 is the milder alternative.
+    sources:
+      - *a4
+      - *a11
+      - *a16
+      - *a27
+      - *a35
+      - *a36
+    evidence:
+      - source: *a4
+        value: 3
+        note: keep away from peacocks and utaka, combine with similar mbuna
+      - source: *a11
+        value: 2
+        note: moderately aggressive, worst towards look-alikes
+      - source: *a16
+        value: 2
+        note: moderately aggressive; small slow fish get bullied
+      - source: *a27
+        value: 2
+        note: kept with more aggressive Malawi cichlids without trouble
+  territory:
+    value:
+      size: small
+      breedingOnly: false
+    confidence: medium
+    rationale: Males are permanently territorial; in the wild they defend an area of about 1 m diameter around a rock site, and non-territorial males were not seen. In a crowded mbuna tank the male holds a cave or rock pile with its surroundings, which matches small. Females and subordinate males hold no territory.
+    sources:
+      - *a2
+      - *a25
+      - *a17
+      - *a4
+    evidence:
+      - source: *a2
+        value:
+          size: small
+          breedingOnly: false
+        note: wild territory about 1 m across
+      - source: *a25
+        value:
+          breedingOnly: false
+        note: males territorial
+      - source: *a17
+        value:
+          size: small
+          breedingOnly: false
+        note: dominant male claims a shelter and rearranges substrate around it
+  habitatZones:
+    value:
+      - rock
+    confidence: high
+    rationale: Lives on sediment-free rocky reefs and shores, densest in water shallower than 10 m. In the tank it needs stacked rock with caves; a sand floor serves as spawning ground but is not its habitat.
+    sources:
+      - *a2
+      - *a25
+      - *a29
+      - *a4
+    evidence:
+      - source: *a2
+        value:
+          - rock
+        note: sediment-free rocky habitat
+      - source: *a25
+        value:
+          - rock
+      - source: *a29
+        value:
+          - rock
+        note: sediment-free rocky
+      - source: *a4
+        value:
+          - rock
+        note: rocky coastlines and reefs
+  social:
+    value:
+      structure: harem
+      ratio: 3
+    confidence: high
+    rationale: Polygynous maternal mouthbrooder; care sources recommend one male with at least three females so that his courtship spreads over several fish, and FishBase recommends many females per male.
+    sources:
+      - *a4
+      - *a25
+      - *a11
+      - *a16
+      - *a29
+    evidence:
+      - source: *a4
+        value:
+          structure: harem
+          ratio: 3
+      - source: *a25
+        value:
+          structure: harem
+        note: many females per male
+      - source: *a11
+        value:
+          structure: harem
+        note: one male with several females
+      - source: *a16
+        value:
+          structure: harem
+          ratio: 3
+  speciesOnly:
+    value: false
+    confidence: high
+    rationale: All sources keep the red zebra in mbuna community tanks with robust species of similar size and different appearance (Seriously Fish, FishKeeper, Wikipedia, AquariumSource, GCCA); none restricts it to a species tank. The restrictions concern peaceful Malawi cichlids and other Maylandia, which the aggression levels and the hybrid group cover; a species tank is advised only for planned breeding.
+    sources:
+      - *a4
+      - *a11
+      - *a17
+      - *a16
+      - *a27
+    evidence:
+      - source: *a4
+        value: false
+        note: can be combined with similarly sized mbuna
+      - source: *a11
+        value: false
+        note: kept alongside outgoing mbuna
+      - source: *a17
+        value: false
+        note: kept with other African cichlids
+      - source: *a16
+        value: false
+        note: lists several mbuna and catfish tankmates
+      - source: *a27
+        value: false
+        note: kept with more aggressive Malawi cichlids without trouble
+    verification:
+      method: unanimous
+      votes:
+        agree: 3
+        total: 3
+  hybridGroup:
+    value: maylandia
+    confidence: high
+    rationale: A member of Maylandia (Metriaclima), the former Pseudotropheus zebra complex; it was long treated as a colour morph of M. zebra and is very close to M. callainos. Seriously Fish and FishKeeper warn that it crosses with related species and that its colour forms must not be mixed, Aquarium Glaser reports that trade fish sold as M. estherae are partly M. callainos x M. zebra hybrids, laboratory crosses even yield viable hybrids with the distant Astatotilapia calliptera, and the archive reports a cross with Maylandia aurora. The curated group maylandia lists the species.
+    sources:
+      - *a1
+      - *a2
+      - *a4
+      - *a11
+      - &a37
+        kind: literature
+        title: Schäfer, F., Aquarium Glaser, Bright blue Maylandia from Thailand (tag Maylandia)
+        url: https://www.aquariumglaser.de/en/tag/maylandia-en/
+        accessed: 2026-10-12
+      - &a38
+        kind: literature
+        title: Stelkens, R. B., Schmid, C., Selz, O. and Seehausen, O. (2009). Phenotypic novelty in experimental hybrids is predicted by the genetic distance between species of cichlid fish. BMC Evolutionary Biology 9, 283.
+        url: https://pmc.ncbi.nlm.nih.gov/articles/PMC2796671/
+        accessed: 2026-10-12
+      - &a39
+        kind: archive
+        title: cichlids.com forum thread 1443
+        url: https://www.cichlids.com/disc/read.php?1,1443
+        accessed: 2026-10-12
+    evidence:
+      - source: *a1
+        value: maylandia
+        note: valid in Maylandia
+      - source: *a2
+        value: maylandia
+        note: member of the zebra complex, close to callainos
+      - source: *a4
+        value: maylandia
+        note: formerly a morph of M. zebra, colour forms hybridise
+      - source: *a11
+        value: maylandia
+        note: cross-breeding with related species
+      - source: *a37
+        value: maylandia
+        note: Maylandia species interbreed easily in tanks; estherae-labelled trade fish are callainos x zebra hybrids
+      - source: *a38
+        value: maylandia
+        note: viable laboratory hybrids of M. estherae with A. calliptera
+      - source: *a39
+        value: maylandia
+        note: forum report of a red zebra crossing with a Maylandia aurora
+    verification:
+      method: unanimous
+      votes:
+        agree: 3
+        total: 3
+  coloration:
+    value:
+      baseColors:
+        - blue
+        - orange
+      pattern: plain
+    confidence: medium
+    rationale: Wild males are plain light blue without the dark bars of M. zebra (original description, FishBase, Malawi Cichlid Homepage). Captive lines with orange males (Red/Red) dominate the trade, and pied OB males exist. Females are orange-red, brown-beige or blotched. The body is unbarred, so the pattern is plain.
+    sources:
+      - *a2
+      - *a25
+      - *a3
+      - *a26
+      - *a17
+      - *a4
+    evidence:
+      - source: *a2
+        value:
+          baseColors:
+            - blue
+          pattern: plain
+        note: wild males light blue, no broad bars
+      - source: *a25
+        value:
+          baseColors:
+            - blue
+          pattern: plain
+        note: males light blue, lacking broad bars
+      - source: *a3
+        value:
+          baseColors:
+            - blue
+          pattern: plain
+        note: wild male at Minos Reef, no distinct bars
+      - source: *a26
+        value:
+          baseColors:
+            - orange
+          pattern: plain
+        note: captive Red/Red males
+      - source: *a17
+        value:
+          baseColors:
+            - blue
+            - orange
+          pattern: plain
+        note: orange-red males in aquarium strains
+  feedingSpeed:
+    value: hasty
+    confidence: medium
+    rationale: Takes food greedily like other Maylandia, the rubric example of hasty feeders, and tends to overeat; Seriously Fish warns that it is particularly prone to obesity, so prepared food must be rationed.
+    sources:
+      - *a4
+      - kind: model-knowledge
+        title: Rubric example for hasty feeders (mbuna such as Maylandia) and general mbuna husbandry
+    evidence:
+      - source: *a4
+        value: hasty
+        note: prone to overeating and obesity
+  minTank:
+    value:
+      volumeL: 200
+      lengthCm: 120
+      depthCm: 40
+    confidence: medium
+    rationale: For one male with three females plus the rockwork they need, sources agree on at least 120 cm length; Seriously Fish gives a 120 x 38 cm base with about 137 litres, AquariumSource about 208 litres. The larger volume leaves room for the rock piles that spread aggression.
+    sources:
+      - *a4
+      - *a25
+      - *a11
+      - *a16
+    evidence:
+      - source: *a4
+        value:
+          volumeL: 137
+          lengthCm: 120
+          depthCm: 38
+      - source: *a25
+        value:
+          lengthCm: 120
+      - source: *a11
+        value:
+          lengthCm: 122
+      - source: *a16
+        value:
+          volumeL: 208
+          lengthCm: 122
+  lifespanYears:
+    value:
+      min: 5
+      max: 10
+    confidence: low
+    rationale: Only one care guide states a lifespan; the range fits general experience with mbuna of this size but lacks independent confirmation.
+    sources:
+      - *a16
+      - kind: model-knowledge
+        title: General lifespan of Maylandia species in aquaria
+    evidence:
+      - source: *a16
+        value:
+          min: 5
+          max: 10
+  breeding:
+    value: maternal-mouthbrooder
+    confidence: high
+    rationale: The female picks up the eggs after spawning and broods eggs and fry for about three to four weeks without feeding; the male only courts and defends his site.
+    sources:
+      - *a4
+      - *a11
+      - *a17
+      - *a8
+      - *a29
+    evidence:
+      - source: *a4
+        value: maternal-mouthbrooder
+        note: female broods 3 to 4 weeks
+      - source: *a8
+        value: maternal-mouthbrooder
+      - source: *a29
+        value: maternal-mouthbrooder
+  beginnerSuitability:
+    value: moderate
+    confidence: medium
+    rationale: Hardy, undemanding about water within Malawi conditions and easy to breed, so the Cichlid Room Companion, GCCA and several care guides call it a beginner species. The keeper still needs a 120 cm tank, a harem with one male, a plant-based diet against bloat and must avoid other Maylandia because of hybridisation; Seriously Fish rates it moderate for these reasons, and the stocking pitfalls decide.
+    sources:
+      - *a4
+      - *a29
+      - *a27
+      - *a16
+      - *a8
+    evidence:
+      - source: *a4
+        value: moderate
+      - source: *a29
+        value: easy
+        note: beginner species
+      - source: *a27
+        value: easy
+      - source: *a16
+        value: easy
+      - source: *a8
+        value: easy
+partners:
+  suitable:
+    - species: Melanochromis cyaneorhabdos
+      reason: Similar-sized mbuna with a black and blue striped pattern, so males do not treat it as a rival, and a compatible plant-rich diet.
+      condition: Tank of at least 150 cm with a harem of each species.
+    - species: Pseudotropheus sp. 'Acei'
+      reason: Robust but fairly calm mbuna of similar size that lives higher in the water, with a vegetarian diet and a different look.
+      condition: Group of at least five Acei in a tank of 150 cm or more.
+    - species: Labeotropheus trewavasae
+      reason: Robust aufwuchs grazer of similar size with a different body shape; it holds its own against Maylandia males.
+      condition: Avoid if OB females of both species are kept, since they look alike; 150 cm tank.
+    - species: Synodontis multipunctatus
+      reason: Tough bottom-dwelling catfish from Lake Tanganyika that tolerates the same alkaline, well-buffered tank water and is ignored by mbuna.
+      condition: Group of several; it may eat mbuna eggs and slip its own eggs into holding females.
+  unsuitable:
+    - species: Maylandia zebra
+      reason: Same hybrid group; the species cross readily and the barred males provoke rival fights.
+    - species: Maylandia callainos
+      reason: Same hybrid group and nearly identical shape and colour; hybrids are common in the trade.
+    - species: Maylandia lombardoi
+      reason: Same hybrid group and a more aggressive species of the same size.
+    - species: Aulonocara stuartgranti
+      reason: Peaceful peacock cichlid that is harassed by mbuna and needs a protein-rich diet that causes bloat in the red zebra.
+    - species: Copadichromis borleyi
+      reason: Peaceful open-water utaka that suffers from the constant aggression of mbuna.
+    - species: Symphysodon aequifasciatus
+      reason: Soft acidic water, very different temperament and slow feeding; it would be stressed and starved.
+profile:
+  overview:
+    text: The red zebra is a small rock-dwelling cichlid, a mbuna, from the Mozambican shore of Lake Malawi. It was exported for decades as a colour form of the zebra cichlid before Ad Konings described it as a species in 1995 and named it after Esther Grant, wife of the exporter Stuart Grant. Its valid name is Maylandia estherae; aquarium books also call it Metriaclima or Pseudotropheus estherae. Wild males are plain light blue, while most females are bright orange, and captive breeding has produced fully orange males that now dominate the trade. The species is hardy, colourful and active, and suits a crowded mbuna tank with plenty of rock, a mainly vegetable diet and one male per group of females. It crosses easily with related Maylandia, so it should not share a tank with them.
+    sources:
+      - *a1
+      - *a2
+      - *a25
+      - *a4
+      - *a3
+  habitat:
+    text: "The species lives only along a short stretch of the eastern coast of Lake Malawi, mostly in Mozambique. Known populations sit on Chilucha Reef off Metangula, on several reefs about 7 km offshore near Meluluca, including the type locality Minos Reef, and further south towards the border with Malawi. These reefs are piles of rock free of sediment, and the fish are most numerous shallower than 10 m, although rocks at Chilucha Reef reach far deeper. The lake water is soft but alkaline: total hardness of about 3 to 5 dGH, carbonate hardness of 5 to 8 dKH, pH 7.7 to 8.6 and temperatures between 21 and 29 C over the year. In the aquarium the species stays healthy over a wider span of about 3 to 25 dGH, 5 to 15 dKH and pH 7.5 to 8.8, as long as the water stays stable, alkaline and clean."
+    sources:
+      - *a2
+      - *a25
+      - *a4
+      - *a20
+      - *a21
+      - *a5
+      - *a10
+      - *a13
+  sizeAndGrowth:
+    text: "Wild red zebras are small: the largest male of the type series measured just under 10 cm total length and the female holotype about 8 cm. In the aquarium they grow larger, and a well-fed male typically reaches about 12 cm while females stay at about 10 cm. Occasional males reach 13 to 14 cm. Growth is quick, and young fish show their sex by colour early: in the wild-type form blue juveniles become males and orange ones females, and in mixed broods differences become visible at around 5 cm. Overfeeding speeds up growth but shortens life, so a lean diet is better than a rich one."
+    sources:
+      - *a2
+      - *a25
+      - *a4
+      - *a17
+      - *a8
+      - *a27
+  husbandry:
+    text: A harem of one male and three or more females needs a tank of at least 120 cm length and about 200 litres; a mixed mbuna community needs 150 cm or more. Build stable stacks of rock from the floor upwards with many caves and crevices, place them on the glass before adding sand so that digging cannot topple them, and leave a few open sandy patches for spawning pits. Red zebras rearrange gravel and small decorations constantly, so choose smooth rock and skip delicate plants. Algae on the rocks are welcome grazing. Strong filtration and a weekly water change of a third keep nitrate low, which matters for herbivorous mbuna. Most keepers hold the temperature between 24 and 28 C and the pH between 7.5 and 8.5.
+    sources:
+      - *a4
+      - *a11
+      - *a17
+      - *a16
+  socialBehavior:
+    text: Males are territorial all year and defend a rock site against other males; in the wild their area is about a metre across. In the aquarium the dominant male drives rivals away and courts females persistently, so a lone female can be worn down and killed. Spread his attention over at least three females and keep only one male unless the tank is very large. Many keepers stock mbuna tanks densely so that no fish can claim a large area. Among mbuna it counts as comparatively mild, yet males chase other fish well beyond their cave, especially fish of similar colour or shape, so tankmates must be robust mbuna of similar size.
+    sources:
+      - *a2
+      - *a4
+      - *a11
+      - *a36
+  diet:
+    text: In the lake the red zebra combs loose material from the algae carpet on the rocks, holding its body at a right angle to the surface. This algae-rich food is low in protein and high in fibre, and the gut is adapted to it. In the aquarium give a spirulina flake or a pellet made for herbivorous mbuna as the staple and add blanched spinach, nori or peas. Small crustaceans such as Cyclops or Mysis are a treat once a week at most. Red meat, beef heart, worms and high-protein cichlid food cause obesity and bloat. Feed small portions once or twice a day and add a fasting day each week.
+    sources:
+      - *a2
+      - *a28
+      - *a25
+      - *a4
+      - *a11
+      - *a26
+  breeding:
+    text: Breeding is easy in a harem. The male intensifies his colour, cleans a flat rock or digs a shallow pit and leads ripe females there. The pair circles head to tail; the female lays a few eggs at a time and takes them into her mouth at once, and the eggs are fertilised when she nips at the egg spots on the anal fin of the male. She then carries the brood for about three to four weeks and does not eat. Stressed females may spit or swallow the eggs. The released fry are large enough for brine shrimp nauplii and crushed flakes, but in a community tank the adults eat them unless dense rockwork gives them cover. Many breeders move the holding female to a separate tank, but long absences can cost her rank in the group.
+    sources:
+      - *a4
+      - *a11
+      - *a17
+      - *a33
+  sexing:
+    text: "In the natural colour form, males are light blue and females brown-beige or orange, so sex is easy to tell. In captive lines with orange males both sexes look alike, and other signs are needed: males grow larger, have longer pointed dorsal and anal fins and show more and larger egg spots on the anal fin. Wild males from Minos Reef also carry yellow spots in the soft part of the dorsal fin. Orange-blotched fish are mostly females. A female kept without a male may take on male colours and court other females without being able to fertilise eggs, which can mislead the keeper."
+    sources:
+      - *a2
+      - *a3
+      - *a4
+      - *a11
+      - *a16
+  compatibility:
+    text: The red zebra belongs in a Lake Malawi mbuna tank with species of similar size, robustness and diet that look different. Good partners are striped or yellow mbuna such as Melanochromis cyaneorhabdos, Pseudotropheus sp. 'Acei' or Labeotropheus, and robust catfish such as Synodontis multipunctatus. Do not combine it with other Maylandia such as M. zebra, M. callainos, M. lombardoi or M. aurora, because they cross readily, and do not mix its own colour forms if you want to keep pure lines. Peaceful Malawi cichlids such as peacocks and utaka suffer from its constant activity and need a richer diet. Fry and fish under about 2 cm are eaten. Fish from soft, acidic water are unsuitable as well.
+    sources:
+      - *a4
+      - *a11
+      - *a39
+      - *a22
+  problems:
+    text: "The most common fatal mistake is a protein-rich diet: meaty foods and generous feeding lead to obesity and Malawi bloat, which shows as a swollen belly, loss of appetite and white stringy faeces. Poor water quality with high nitrate adds to the risk. A second frequent problem is stocking: too few females, two males in a small tank or look-alike species lead to injuries and deaths. Mixing with related Maylandia produces hybrids that should not be passed on. Fish sold as deep red at small sizes may be colour-fed or treated with hormones and fade later, so buying from a known breeder is safer. Watch for fin damage from fights and isolate injured fish early."
+    sources:
+      - *a4
+      - *a11
+      - *a17
+      - kind: archive
+        title: cichlids.com forum thread 14970
+        url: https://www.cichlids.com/disc/read.php?2,14970
+        accessed: 2026-10-12
+provenance:
+  runs:
+    - role: generator
+      model: claude-opus-5-5
+      date: 2026-10-12
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-12
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-12
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-12
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-12
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-12
+    - role: adjudicator
+      model: claude-opus-5-5
+      date: 2026-10-12
+  disagreements:
+    - field: features.predation.value
+      proposals:
+        - value: 1
+          by: generator
+        - value: 0
+          by: checker-a
+        - value: 0
+          by: checker-b
+        - value: 1
+          by: tiebreaker-1
+        - value: 1
+          by: tiebreaker-2
+        - value: 0
+          by: tiebreaker-3
+      decision: 1
+      rationale: "Decided by the vote count: 3 of 6 votes, method conservative (highest level), confidence low. Field data support level 0, aquarium reports of fry being eaten support level 1. Seriously Fish, read again, does warn of fry predation, so its evidence entry is 1."
+    - field: features.diet.value.foods
+      proposals:
+        - value:
+            - spirulina flakes
+            - vegetable-based mbuna pellets
+            - blanched spinach
+            - nori
+            - small crustaceans in moderation
+          by: generator
+        - value:
+            - algae
+            - spirulina-based flakes and pellets
+            - blanched vegetables
+            - small crustaceans in moderation
+          by: checker-a
+        - value:
+            - algae and biofilm
+            - spirulina flakes
+            - blanched greens
+          by: checker-b
+      decision: *a40
+      rationale: The vote count decided diet unanimously; the food list of the decided value is kept. All lists name the same kinds of food.
+    - field: features.origin.value
+      proposals:
+        - value:
+            waterbody: lake-malawi
+            localities:
+              - Chilucha Reef (Metangula, Mozambique)
+              - Minos Reef (Meluluca, Mozambique)
+              - Offshore reefs near Meluluca (Mozambique)
+              - North of Masinje (Malawi)
+          by: generator
+        - value:
+            waterbody: Lake Malawi
+            localities:
+              - Minos Reef (type locality, near Meluluca, Mozambique)
+              - Chilucha Reef (Metangula, Mozambique)
+              - Metangula to Gome along the eastern (Mozambique) coast
+          by: checker-a
+        - value:
+            waterbody: lake-malawi
+            localities:
+              - Minos Reef
+              - Chilucha Reef
+              - Narungu
+              - Gome Rock
+          by: checker-b
+      decision: *a41
+      rationale: The waterbody names denote the same table entry; the id is used. Localities are merged where a source states them (original description, Seriously Fish for Gome). Narungu has no cited source and is left out.
+    - field: features.maxSizeCm.value
+      proposals:
+        - value:
+            male: 12
+            female: 9
+          by: generator
+        - value:
+            male: 13
+            female: 10
+          by: checker-a
+        - value:
+            male: 12
+            female: 10
+          by: checker-b
+      decision:
+        male: 12
+        female: 10
+      rationale: 13.5 to 14 cm males are exceptional, so 12 cm is the typical male maximum. Four hobby sources agree on 10 cm for females; the 9 cm proposal has no source.
+    - field: features.aggressionHeterospecific.value
+      proposals:
+        - value: 3
+          by: generator
+        - value: 3
+          by: checker-a
+        - value: 2
+          by: checker-b
+      decision: 3
+      rationale: Seriously Fish rules out peaceful Malawi cichlids and asks for similarly sized, robust mbuna, which is level 3 of the rubric. The milder ratings of FishKeeper, AquariumSource and GCCA describe it relative to other mbuna.
+    - field: features.coloration.value.pattern
+      proposals:
+        - value: plain
+          by: generator
+        - value: plain
+          by: checker-a
+        - value: bars
+          by: checker-b
+      decision: plain
+      rationale: The original description, FishBase and the Malawi Cichlid Homepage describe wild males as light blue without the dark bars of M. zebra; the barred proposal has no source.
+    - field: features.beginnerSuitability.value
+      proposals:
+        - value: moderate
+          by: generator
+        - value: moderate
+          by: checker-a
+        - value: easy
+          by: checker-b
+      decision: moderate
+      rationale: The fish are hardy, but the tank size, the harem, the bloat risk and the many hybridisation pitfalls in stocking make moderate the safer rating; Seriously Fish rates it moderate.

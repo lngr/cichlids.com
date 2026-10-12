@@ -1,0 +1,2686 @@
+schemaVersion: 1
+id: aulonocara-hybrid
+legacyIds:
+  - 228
+status: hybrid
+taxonomy:
+  validName: Aulonocara hybrid
+  genus: Aulonocara
+  species: null
+  author: null
+  source:
+    kind: catalog-of-fishes
+    title: Eschmeyer's Catalog of Fishes, species list of the genus Aulonocara
+    url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Aulonocara
+    accessed: 2026-10-12
+  legacyNames:
+    - Aulonocara hybrids
+  note: "Collective entry for the man-made peacock hybrids of the trade: OB (orange blotch) and Calico peacocks, Dragon Blood, Strawberry, Red or Tangerine peacocks, Fire Fish and similar lines, including albino forms. They are no taxon, have no valid scientific name and no wild population. The Catalog of Fishes lists only the described Aulonocara species, all endemic to Lake Malawi. Trade accounts name A. stuartgranti, A. baenschi and A. jacobfreibergi as the usual Aulonocara parents and a blotched mbuna, possibly with a haplochromine, for the OB lines, but no line has a documented pedigree, so no parent ids are given."
+names:
+  trade:
+    en:
+      - Hybrid peacock
+      - OB peacock
+      - Calico peacock
+      - Dragon Blood peacock
+      - Strawberry peacock
+      - Red peacock
+      - Fire Fish
+    de:
+      - Aulonocara-Hybride
+      - OB-Aulonocara
+      - Dragon Blood
+variants:
+  - name: OB peacock (orange blotch)
+    kind: color-morph
+    note: Blotched or marbled pattern on an orange, yellow, blue or pinkish ground; females also blotched.
+  - name: Calico peacock
+    kind: color-morph
+    note: Trade name for heavily blotched OB lines.
+  - name: Dragon Blood
+    kind: color-morph
+    note: Salmon-coloured juveniles; adult males red with blue freckle-like markings and blue fin edges.
+  - name: Strawberry peacock
+    kind: color-morph
+    note: Pink to red line, often albino with red eyes.
+  - name: Red peacock (also sold as Ruby Red, Tangerine)
+    kind: color-morph
+    note: Orange to red lines without blotches.
+  - name: Fire Fish
+    kind: color-morph
+    note: Red to orange line traded under this name by importers.
+features:
+  origin:
+    value:
+      continent: captive-bred
+      region: Lake Malawi (parent species); captive-bred lines without a wild population
+      waterbody: Lake Malawi
+    confidence: high
+    rationale: All sources describe these fish as crosses made in captivity. The Aulonocara parents and the mbuna or haplochromine parents named for the OB lines are all endemic to Lake Malawi, so the habitat values of the lake apply.
+    sources:
+      - kind: literature
+        title: Schäfer, F. (2021). Aulonocara 'Dragon Blood'. Aquarium Glaser fish archive
+        url: https://aquariumglaser.de/en/fish-archives/aulonocara-dragon-blood-2
+        accessed: 2026-10-12
+      - kind: database
+        title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+        accessed: 2026-10-12
+      - kind: literature
+        title: Elieson, M. The OB Peacock. Cichlid-Forum.com article library (archived copy)
+        url: https://web.archive.org/web/20160308032736/http://www.cichlid-forum.com/articles/ob_peacock.php
+        accessed: 2026-10-12
+      - kind: literature
+        title: LiveAquaria, Dragon Blood Peacock Cichlid care information
+        url: https://www.liveaquaria.com/products/dragon-blood-peacock-cichlid
+        accessed: 2026-10-12
+      - kind: catalog-of-fishes
+        title: Eschmeyer's Catalog of Fishes, species list of the genus Aulonocara
+        url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Aulonocara
+        accessed: 2026-10-12
+    evidence:
+      - source:
+          kind: literature
+          title: Schäfer, F. (2021). Aulonocara 'Dragon Blood'. Aquarium Glaser fish archive
+          url: https://aquariumglaser.de/en/fish-archives/aulonocara-dragon-blood-2
+          accessed: 2026-10-12
+        value:
+          continent: captive-bred
+          region: Lake Malawi
+        note: artificial crosses of peacocks with each other and with mbuna
+      - source:
+          kind: database
+          title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+          accessed: 2026-10-12
+        value:
+          continent: captive-bred
+          region: Lake Malawi
+        note: tank-bred strain; wild Aulonocara come from Lake Malawi
+      - source:
+          kind: literature
+          title: Elieson, M. The OB Peacock. Cichlid-Forum.com article library (archived copy)
+          url: https://web.archive.org/web/20160308032736/http://www.cichlid-forum.com/articles/ob_peacock.php
+          accessed: 2026-10-12
+        value:
+          continent: captive-bred
+          region: Lake Malawi
+        note: man-made; Aulonocara male crossed with an OB mbuna female
+      - source:
+          kind: literature
+          title: LiveAquaria, Dragon Blood Peacock Cichlid care information
+          url: https://www.liveaquaria.com/products/dragon-blood-peacock-cichlid
+          accessed: 2026-10-12
+        value:
+          continent: captive-bred
+        note: captive-bred hybrid
+  temperatureC:
+    value:
+      min: 21
+      max: 29
+    confidence: high
+    rationale: "Hybrids take the habitat values of their parent species. The Aulonocara parents and, in the OB lines, the mbuna parents are endemic to Lake Malawi, so the value is the measured lake range: about 21 C in cool-season inshore water (Eccles 1974), 23.5 C in the winter epilimnion and up to 28 to 29 C in summer surface water (Vollmer et al. 2005 and later campaigns)."
+    sources:
+      - kind: literature
+        title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+        url: https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf
+        accessed: 2026-10-12
+      - kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+        url: https://www.fao.org/4/t0473e/T0473E05.htm
+        accessed: 2026-10-12
+      - kind: literature
+        title: Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of Africa, Vol. 1, FAO CIFA Technical Paper 18/1, entry Lake Malawi/Nyasa (Jackson et al. 1963; Talling and Talling 1965).
+        url: https://www.fao.org/4/T0473E/T0473E06.htm
+        accessed: 2026-10-12
+      - kind: literature
+        title: Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology and Oceanography 19(5), 730-742 (abstract).
+        url: https://doi.org/10.4319/lo.1974.19.5.0730
+        accessed: 2026-10-12
+      - kind: literature
+        title: Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M., Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and Oceanography 50(2), 727-732.
+        url: https://www.dora.lib4ri.ch/empa/dload/empa:1253/PDF/view
+        accessed: 2026-10-12
+      - kind: literature
+        title: "Vollmer, M. K., Weiss, R. F. and Bootsma, H. A. (1999). Lake Malawi/Nyasa deep water renewal. In: Bootsma, H. A. and Hecky, R. E. (eds.), Water Quality Report, SADC/GEF Lake Malawi/Nyasa Biodiversity Conservation Project, chapter 4."
+        url: https://sites.uwm.edu/hbootsma/files/2020/11/Ch4-Lake-Internal-Mixing.pdf
+        accessed: 2026-10-12
+      - kind: literature
+        title: Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. PhD dissertation, University of Wisconsin-Milwaukee.
+        url: https://minds.wisconsin.edu/handle/1793/91765
+        accessed: 2026-10-12
+    evidence:
+      - source:
+          kind: literature
+          title: Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology and Oceanography 19(5), 730-742 (abstract).
+          url: https://doi.org/10.4319/lo.1974.19.5.0730
+          accessed: 2026-10-12
+        value:
+          min: 21
+          max: 27
+        note: cool-season inshore water to the warm upper layer in May
+      - source:
+          kind: literature
+          title: Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M., Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and Oceanography 50(2), 727-732.
+          url: https://www.dora.lib4ri.ch/empa/dload/empa:1253/PDF/view
+          accessed: 2026-10-12
+        value:
+          min: 23.5
+          max: 28
+        note: winter epilimnion to summer surface water
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value:
+        min: 21
+        max: 29
+      confidence: medium
+      rationale: Aquarium ranges for the parent species and the hybrid lines lie between 22 and 29 C. FishBase gives 22 to 26 C for A. stuartgranti and A. baenschi, 23 to 27 C for A. hansbaenschi and 24 to 26 C for A. jacobfreibergi; Seriously Fish gives 23 to 29 C for A. stuartgranti and 25 to 29 C for A. jacobfreibergi and A. baenschi. For the hybrids themselves Fishkeeper gives 22 to 26 C and LiveAquaria about 23 to 28 C; OATA gives 23 to 27 C for Malawi cichlids in general. The tolerance has to contain the natural lake range of 21 to 29 C. The lower bound rests on cool-season lake water only, since no aquarium source goes below 22 C, and no source supports keeping the fish above 29 C for years. Confidence is medium because the sources agree only roughly and none studies the hybrids over years.
+      sources:
+        - kind: database
+          title: Seriously Fish, Aulonocara stuartgranti (Grant's Peacock)
+          url: https://www.seriouslyfish.com/species/aulonocara-stuartgranti/
+          accessed: 2026-10-12
+        - kind: database
+          title: Seriously Fish, Aulonocara jacobfreibergi
+          url: https://www.seriouslyfish.com/species/aulonocara-jacobfreibergi/
+          accessed: 2026-10-12
+        - kind: database
+          title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+          accessed: 2026-10-12
+        - kind: literature
+          title: OATA (Ornamental Aquatic Trade Association). How to care for African Malawi cichlids. Care sheet, September 2022
+          url: https://ornamentalfish.org/wp-content/uploads/African-Malawi-cichlids-Sept-2022.pdf
+          accessed: 2026-10-12
+        - kind: database
+          title: FishBase species summary, Aulonocara jacobfreibergi
+          url: https://www.fishbase.se/summary/Aulonocara-jacobfreibergi.html
+          accessed: 2026-10-12
+        - kind: database
+          title: FishBase species summary, Aulonocara stuartgranti
+          url: https://www.fishbase.se/summary/Aulonocara-stuartgranti.html
+          accessed: 2026-10-12
+        - kind: database
+          title: FishBase species summary, Aulonocara hansbaenschi
+          url: https://www.fishbase.se/summary/Aulonocara-hansbaenschi.html
+          accessed: 2026-10-12
+        - kind: literature
+          title: LiveAquaria, Dragon Blood Peacock Cichlid care information
+          url: https://www.liveaquaria.com/products/dragon-blood-peacock-cichlid
+          accessed: 2026-10-12
+        - kind: database
+          title: Seriously Fish, Aulonocara baenschi
+          url: https://www.seriouslyfish.com/species/aulonocara-baenschi/
+          accessed: 2026-10-12
+        - kind: database
+          title: FishBase species summary, Aulonocara baenschi
+          url: https://www.fishbase.se/summary/Aulonocara-baenschi.html
+          accessed: 2026-10-12
+        - kind: literature
+          title: "Tropical Freshwater Fish: Peacock Cichlids"
+          url: https://tropicalfreshwaterfish.com/peacock_cichlids.htm
+          accessed: 2026-10-12
+        - kind: literature
+          title: "Guidarium: Peacock Cichlid (Aulonocara)"
+          url: https://guidarium.com/fishes/peacock-cichlid-aulonocara
+          accessed: 2026-10-12
+        - kind: archive
+          title: cichlids.com forum thread 14483
+          url: https://www.cichlids.com/disc/read.php?2,14483
+          accessed: 2026-10-12
+      evidence:
+        - source:
+            kind: database
+            title: Seriously Fish, Aulonocara stuartgranti (Grant's Peacock)
+            url: https://www.seriouslyfish.com/species/aulonocara-stuartgranti/
+            accessed: 2026-10-12
+          value:
+            min: 23
+            max: 29
+          note: parent species, aquarium range
+        - source:
+            kind: database
+            title: Seriously Fish, Aulonocara jacobfreibergi
+            url: https://www.seriouslyfish.com/species/aulonocara-jacobfreibergi/
+            accessed: 2026-10-12
+          value:
+            min: 25
+            max: 29
+          note: parent species, aquarium range
+        - source:
+            kind: database
+            title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+            url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+            accessed: 2026-10-12
+          value:
+            min: 22
+            max: 26
+          note: hybrid peacock, aquarium range
+        - source:
+            kind: literature
+            title: OATA (Ornamental Aquatic Trade Association). How to care for African Malawi cichlids. Care sheet, September 2022
+            url: https://ornamentalfish.org/wp-content/uploads/African-Malawi-cichlids-Sept-2022.pdf
+            accessed: 2026-10-12
+          value:
+            min: 23
+            max: 27
+          note: Malawi cichlids in general
+        - source:
+            kind: database
+            title: FishBase species summary, Aulonocara jacobfreibergi
+            url: https://www.fishbase.se/summary/Aulonocara-jacobfreibergi.html
+            accessed: 2026-10-12
+          value:
+            min: 24
+            max: 26
+          note: parent species
+        - source:
+            kind: database
+            title: FishBase species summary, Aulonocara stuartgranti
+            url: https://www.fishbase.se/summary/Aulonocara-stuartgranti.html
+            accessed: 2026-10-12
+          value:
+            min: 22
+            max: 26
+          note: parent species; same range listed for A. baenschi and A. maylandi
+        - source:
+            kind: database
+            title: FishBase species summary, Aulonocara hansbaenschi
+            url: https://www.fishbase.se/summary/Aulonocara-hansbaenschi.html
+            accessed: 2026-10-12
+          value:
+            min: 23
+            max: 27
+          note: parent species
+        - source:
+            kind: literature
+            title: LiveAquaria, Dragon Blood Peacock Cichlid care information
+            url: https://www.liveaquaria.com/products/dragon-blood-peacock-cichlid
+            accessed: 2026-10-12
+          value:
+            min: 23.3
+            max: 27.8
+          note: hybrid line, converted from 74 to 82 F
+        - source:
+            kind: archive
+            title: cichlids.com forum thread 14483
+            url: https://www.cichlids.com/disc/read.php?2,14483
+            accessed: 2026-10-12
+          value:
+            min: 26.7
+            max: 26.7
+          note: keeper reports a peacock community at 80 F
+        - source:
+            kind: database
+            title: Seriously Fish, Aulonocara baenschi
+            url: https://www.seriouslyfish.com/species/aulonocara-baenschi/
+            accessed: 2026-10-12
+          value:
+            min: 25
+            max: 29
+        - source:
+            kind: database
+            title: FishBase species summary, Aulonocara baenschi
+            url: https://www.fishbase.se/summary/Aulonocara-baenschi.html
+            accessed: 2026-10-12
+          value:
+            min: 22
+            max: 26
+        - source:
+            kind: literature
+            title: "Tropical Freshwater Fish: Peacock Cichlids"
+            url: https://tropicalfreshwaterfish.com/peacock_cichlids.htm
+            accessed: 2026-10-12
+          value:
+            min: 24
+            max: 27
+          note: general peacock care; 25 to 29 C for the baenschi group
+        - source:
+            kind: literature
+            title: "Guidarium: Peacock Cichlid (Aulonocara)"
+            url: https://guidarium.com/fishes/peacock-cichlid-aulonocara
+            accessed: 2026-10-12
+          value:
+            min: 24
+            max: 28
+      verification:
+        method: unanimous
+        votes:
+          agree: 3
+          total: 3
+  ph:
+    value:
+      min: 7.7
+      max: 8.6
+    confidence: high
+    rationale: Hybrids take the habitat values of their Lake Malawi parent species. Surface water of the lake has pH 7.7 to 8.6 (Jackson et al. 1963, compiled by FAO); Branchu et al. (2010) give 7.5 to 8.5 for the whole water column, the lower values belonging to deep water that the fish do not use.
+    sources:
+      - kind: literature
+        title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+        url: https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf
+        accessed: 2026-10-12
+      - kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+        url: https://www.fao.org/4/t0473e/T0473E05.htm
+        accessed: 2026-10-12
+      - kind: literature
+        title: Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of Africa, Vol. 1, FAO CIFA Technical Paper 18/1, entry Lake Malawi/Nyasa (Jackson et al. 1963; Talling and Talling 1965).
+        url: https://www.fao.org/4/T0473E/T0473E06.htm
+        accessed: 2026-10-12
+      - kind: literature
+        title: Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology and Oceanography 19(5), 730-742 (abstract).
+        url: https://doi.org/10.4319/lo.1974.19.5.0730
+        accessed: 2026-10-12
+      - kind: literature
+        title: Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M., Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and Oceanography 50(2), 727-732.
+        url: https://www.dora.lib4ri.ch/empa/dload/empa:1253/PDF/view
+        accessed: 2026-10-12
+      - kind: literature
+        title: "Vollmer, M. K., Weiss, R. F. and Bootsma, H. A. (1999). Lake Malawi/Nyasa deep water renewal. In: Bootsma, H. A. and Hecky, R. E. (eds.), Water Quality Report, SADC/GEF Lake Malawi/Nyasa Biodiversity Conservation Project, chapter 4."
+        url: https://sites.uwm.edu/hbootsma/files/2020/11/Ch4-Lake-Internal-Mixing.pdf
+        accessed: 2026-10-12
+      - kind: literature
+        title: Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. PhD dissertation, University of Wisconsin-Milwaukee.
+        url: https://minds.wisconsin.edu/handle/1793/91765
+        accessed: 2026-10-12
+    evidence:
+      - source:
+          kind: literature
+          title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+          url: https://www.fao.org/4/t0473e/T0473E05.htm
+          accessed: 2026-10-12
+        value:
+          min: 7.7
+          max: 8.6
+        note: surface water, Jackson et al. 1963
+      - source:
+          kind: literature
+          title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+          url: https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf
+          accessed: 2026-10-12
+        value:
+          min: 7.5
+          max: 8.5
+        note: whole water column, lower values in deep water
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value:
+        min: 7.5
+        max: 8.6
+      confidence: medium
+      rationale: The most frequent lower bound is pH 7.5 (Seriously Fish for the parent species, FishBase for A. jacobfreibergi, A. hansbaenschi and A. maylandi, Fishkeeper and LiveAquaria for the hybrids, Fishipedia); 7.0 to 7.4 appear in single sources only (FishBase for A. baenschi, a German retailer sheet for a red line, a breeder sheet for an OB line). The upper bounds lie between 8.0 and 8.6 in almost all sources, 8.6 in OATA and in UK retailer sheets for OB hybrids, which is also the natural maximum of the lake; only Seriously Fish and one general peacock guide allow 9.0. The range 7.5 to 8.6 contains the natural range of 7.7 to 8.6. Archive tanks with OB and other peacocks ran at pH 7.8 to 8.2. No breeder report with measured values over several years exists, so the confidence is medium.
+      sources:
+        - kind: database
+          title: Seriously Fish, Aulonocara stuartgranti (Grant's Peacock)
+          url: https://www.seriouslyfish.com/species/aulonocara-stuartgranti/
+          accessed: 2026-10-12
+        - kind: database
+          title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+          accessed: 2026-10-12
+        - kind: literature
+          title: OATA (Ornamental Aquatic Trade Association). How to care for African Malawi cichlids. Care sheet, September 2022
+          url: https://ornamentalfish.org/wp-content/uploads/African-Malawi-cichlids-Sept-2022.pdf
+          accessed: 2026-10-12
+        - kind: database
+          title: FishBase species summary, Aulonocara jacobfreibergi
+          url: https://www.fishbase.se/summary/Aulonocara-jacobfreibergi.html
+          accessed: 2026-10-12
+        - kind: database
+          title: FishBase species summary, Aulonocara baenschi
+          url: https://www.fishbase.se/summary/Aulonocara-baenschi.html
+          accessed: 2026-10-12
+        - kind: database
+          title: FishBase species summary, Aulonocara hansbaenschi
+          url: https://www.fishbase.se/summary/Aulonocara-hansbaenschi.html
+          accessed: 2026-10-12
+        - kind: literature
+          title: LiveAquaria, Dragon Blood Peacock Cichlid care information
+          url: https://www.liveaquaria.com/products/dragon-blood-peacock-cichlid
+          accessed: 2026-10-12
+        - kind: database
+          title: Seriously Fish, Aulonocara jacobfreibergi
+          url: https://www.seriouslyfish.com/species/aulonocara-jacobfreibergi/
+          accessed: 2026-10-12
+        - kind: database
+          title: Seriously Fish, Aulonocara baenschi
+          url: https://www.seriouslyfish.com/species/aulonocara-baenschi/
+          accessed: 2026-10-12
+        - kind: database
+          title: FishBase species summary, Aulonocara maylandi
+          url: https://www.fishbase.se/summary/Aulonocara-maylandi.html
+          accessed: 2026-10-12
+        - kind: literature
+          title: Sims Tropical Fish, care notes on the Yellow OB Peacock (hybrid)
+          url: https://simstropicalfish.co.uk/product/aulonocara-yellow-orange-blotch-peacock-malawi-african-cichlid/
+          accessed: 2026-10-12
+        - kind: literature
+          title: Garnelio, care notes on Aulonocara sp. 'Fire Fish Albino' (hybrid)
+          url: https://www.garnelio.de/en/emperor-cichlid-red-albino-aulonocara-sp.-fire-fish-albino
+          accessed: 2026-10-12
+        - kind: database
+          title: Fishipedia, Aulonocara stuartgranti
+          url: https://www.fishipedia.fr/poissons/aulonocara-stuartgranti
+          accessed: 2026-10-12
+        - kind: literature
+          title: Ron's Cichlids, OB Red White Blue Peacock (care notes)
+          url: https://ronscichlids.com/products/ob-red-white-blue-peacock
+          accessed: 2026-10-12
+        - kind: literature
+          title: Riverpark Aquatics, Albino OB Peacock, Aulonocara sp. (care notes)
+          url: https://riverparkaquatics.co.uk/albino-ob-peacock-aulonocara-sp-6-7cm/
+          accessed: 2026-10-12
+        - kind: archive
+          title: cichlids.com forum thread 14483
+          url: https://www.cichlids.com/disc/read.php?2,14483
+          accessed: 2026-10-12
+        - kind: archive
+          title: cichlids.com forum thread 14610
+          url: https://www.cichlids.com/disc/read.php?2,14610
+          accessed: 2026-10-12
+        - kind: archive
+          title: cichlids.com forum thread 9592
+          url: https://www.cichlids.com/disc/read.php?1,9592
+          accessed: 2026-10-12
+      evidence:
+        - source:
+            kind: database
+            title: Seriously Fish, Aulonocara stuartgranti (Grant's Peacock)
+            url: https://www.seriouslyfish.com/species/aulonocara-stuartgranti/
+            accessed: 2026-10-12
+          value:
+            min: 7.5
+            max: 9
+          note: parent species, aquarium range
+        - source:
+            kind: database
+            title: Seriously Fish, Aulonocara jacobfreibergi
+            url: https://www.seriouslyfish.com/species/aulonocara-jacobfreibergi/
+            accessed: 2026-10-12
+          value:
+            min: 7.5
+            max: 9
+          note: parent species, aquarium range
+        - source:
+            kind: database
+            title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+            url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+            accessed: 2026-10-12
+          value:
+            min: 7.5
+            max: 8.5
+          note: hybrid peacock
+        - source:
+            kind: literature
+            title: OATA (Ornamental Aquatic Trade Association). How to care for African Malawi cichlids. Care sheet, September 2022
+            url: https://ornamentalfish.org/wp-content/uploads/African-Malawi-cichlids-Sept-2022.pdf
+            accessed: 2026-10-12
+          value:
+            min: 8
+            max: 8.6
+          note: Malawi cichlids in general
+        - source:
+            kind: database
+            title: FishBase species summary, Aulonocara jacobfreibergi
+            url: https://www.fishbase.se/summary/Aulonocara-jacobfreibergi.html
+            accessed: 2026-10-12
+          value:
+            min: 7.5
+            max: 8
+          note: parent species
+        - source:
+            kind: database
+            title: FishBase species summary, Aulonocara baenschi
+            url: https://www.fishbase.se/summary/Aulonocara-baenschi.html
+            accessed: 2026-10-12
+          value:
+            min: 7.2
+            max: 8.2
+          note: parent species
+        - source:
+            kind: database
+            title: FishBase species summary, Aulonocara hansbaenschi
+            url: https://www.fishbase.se/summary/Aulonocara-hansbaenschi.html
+            accessed: 2026-10-12
+          value:
+            min: 7.5
+            max: 8.5
+          note: parent species; same range listed for A. maylandi
+        - source:
+            kind: literature
+            title: LiveAquaria, Dragon Blood Peacock Cichlid care information
+            url: https://www.liveaquaria.com/products/dragon-blood-peacock-cichlid
+            accessed: 2026-10-12
+          value:
+            min: 7.5
+            max: 8.5
+          note: hybrid line
+        - source:
+            kind: archive
+            title: cichlids.com forum thread 14483
+            url: https://www.cichlids.com/disc/read.php?2,14483
+            accessed: 2026-10-12
+          value:
+            min: 8
+            max: 8
+          note: keeper reports a peacock community at pH 8.0
+        - source:
+            kind: archive
+            title: cichlids.com forum thread 14610
+            url: https://www.cichlids.com/disc/read.php?2,14610
+            accessed: 2026-10-12
+          value:
+            min: 8.2
+            max: 8.2
+          note: mixed Malawi tank with A. jacobfreibergi at pH 8.2
+        - source:
+            kind: database
+            title: Seriously Fish, Aulonocara baenschi
+            url: https://www.seriouslyfish.com/species/aulonocara-baenschi/
+            accessed: 2026-10-12
+          value:
+            min: 7.5
+            max: 9
+        - source:
+            kind: literature
+            title: "Tropical Freshwater Fish: Peacock Cichlids"
+            url: https://tropicalfreshwaterfish.com/peacock_cichlids.htm
+            accessed: 2026-10-12
+          value:
+            min: 7.5
+            max: 9
+          note: general; optimum 8.2 for the baenschi group
+        - source:
+            kind: literature
+            title: LiveAquaria, Peacock Cichlid, Orange Blotched care information
+            url: https://www.liveaquaria.com/products/peacock-cichlid-orange-blotched
+            accessed: 2026-10-12
+          value:
+            min: 7.8
+            max: 8.6
+        - source:
+            kind: literature
+            title: "Guidarium: Peacock Cichlid (Aulonocara)"
+            url: https://guidarium.com/fishes/peacock-cichlid-aulonocara
+            accessed: 2026-10-12
+          value:
+            min: 7.8
+            max: 8.6
+        - source:
+            kind: database
+            title: FishBase species summary, Aulonocara maylandi
+            url: https://www.fishbase.se/summary/Aulonocara-maylandi.html
+            accessed: 2026-10-12
+          value:
+            min: 7.5
+            max: 8.5
+          note: aquarium data; A. hansbaenschi has the same range
+        - source:
+            kind: literature
+            title: Sims Tropical Fish, care notes on the Yellow OB Peacock (hybrid)
+            url: https://simstropicalfish.co.uk/product/aulonocara-yellow-orange-blotch-peacock-malawi-african-cichlid/
+            accessed: 2026-10-12
+          value:
+            min: 7.8
+            max: 8.6
+          note: retailer care sheet for an OB hybrid
+        - source:
+            kind: literature
+            title: Garnelio, care notes on Aulonocara sp. 'Fire Fish Albino' (hybrid)
+            url: https://www.garnelio.de/en/emperor-cichlid-red-albino-aulonocara-sp.-fire-fish-albino
+            accessed: 2026-10-12
+          value:
+            min: 7
+            max: 8.5
+          note: retailer care sheet for a red hybrid line
+        - source:
+            kind: database
+            title: Fishipedia, Aulonocara stuartgranti
+            url: https://www.fishipedia.fr/poissons/aulonocara-stuartgranti
+            accessed: 2026-10-12
+          value:
+            min: 7.5
+            max: 8.5
+        - source:
+            kind: literature
+            title: Ron's Cichlids, OB Red White Blue Peacock (care notes)
+            url: https://ronscichlids.com/products/ob-red-white-blue-peacock
+            accessed: 2026-10-12
+          value:
+            min: 7.4
+            max: 8.4
+          note: breeder sheet for an OB hybrid line
+        - source:
+            kind: literature
+            title: Riverpark Aquatics, Albino OB Peacock, Aulonocara sp. (care notes)
+            url: https://riverparkaquatics.co.uk/albino-ob-peacock-aulonocara-sp-6-7cm/
+            accessed: 2026-10-12
+          value:
+            min: 7.8
+            max: 8.6
+          note: retailer sheet for an OB hybrid
+        - source:
+            kind: archive
+            title: cichlids.com forum thread 9592
+            url: https://www.cichlids.com/disc/read.php?1,9592
+            accessed: 2026-10-12
+          value:
+            min: 7.8
+            max: 7.8
+          note: tank with OB peacocks, single reading
+      verification:
+        method: qualified-majority
+        votes:
+          agree: 4
+          total: 5
+  ghDgh:
+    value:
+      min: 3
+      max: 5
+    confidence: high
+    rationale: "Hybrids take the habitat values of their Lake Malawi parent species. The lake is soft water: calcium and magnesium give 4.2 to 4.6 dGH in the upper 50 m of the north basin (Branchu et al. 2010) and 3.2 to 4.9 dGH in the titrations of the 1960s (Jackson et al. 1963, Talling and Talling 1965, compiled by FAO). Care sheets that call for 10 to 25 dGH describe aquarium practice and confuse hardness with alkalinity; they are no source for habitat values."
+    sources:
+      - kind: literature
+        title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+        url: https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf
+        accessed: 2026-10-12
+      - kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+        url: https://www.fao.org/4/t0473e/T0473E05.htm
+        accessed: 2026-10-12
+      - kind: literature
+        title: Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of Africa, Vol. 1, FAO CIFA Technical Paper 18/1, entry Lake Malawi/Nyasa (Jackson et al. 1963; Talling and Talling 1965).
+        url: https://www.fao.org/4/T0473E/T0473E06.htm
+        accessed: 2026-10-12
+      - kind: literature
+        title: Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology and Oceanography 19(5), 730-742 (abstract).
+        url: https://doi.org/10.4319/lo.1974.19.5.0730
+        accessed: 2026-10-12
+      - kind: literature
+        title: Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M., Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and Oceanography 50(2), 727-732.
+        url: https://www.dora.lib4ri.ch/empa/dload/empa:1253/PDF/view
+        accessed: 2026-10-12
+      - kind: literature
+        title: "Vollmer, M. K., Weiss, R. F. and Bootsma, H. A. (1999). Lake Malawi/Nyasa deep water renewal. In: Bootsma, H. A. and Hecky, R. E. (eds.), Water Quality Report, SADC/GEF Lake Malawi/Nyasa Biodiversity Conservation Project, chapter 4."
+        url: https://sites.uwm.edu/hbootsma/files/2020/11/Ch4-Lake-Internal-Mixing.pdf
+        accessed: 2026-10-12
+      - kind: literature
+        title: Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. PhD dissertation, University of Wisconsin-Milwaukee.
+        url: https://minds.wisconsin.edu/handle/1793/91765
+        accessed: 2026-10-12
+    evidence:
+      - source:
+          kind: literature
+          title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+          url: https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf
+          accessed: 2026-10-12
+        value:
+          min: 4.2
+          max: 4.6
+        note: calculated from calcium and magnesium, upper 50 m
+      - source:
+          kind: literature
+          title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+          url: https://www.fao.org/4/t0473e/T0473E05.htm
+          accessed: 2026-10-12
+        value:
+          min: 3.2
+          max: 4.9
+        note: calculated from 1960s calcium and magnesium titrations
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value:
+        min: 3
+        max: 20
+      confidence: low
+      rationale: "All votes set the lower bound at the natural minimum of 3 dGH, which the tolerance has to contain; the care sheet lower bounds of 6 to 12 dGH follow the common confusion of hardness with alkalinity, since the wild ancestors live at 3 to 5 dGH. The votes split on the upper bound. Three set 25 dGH after Seriously Fish (10 to 25 dGH for the parent species) and the hybrid entry of Fishkeeper (up to 25). Two set 20 dGH, the median of the upper limits in the care sources: 15 in FishBase for A. hansbaenschi, in Fishipedia and in one OB retailer sheet, 18 in OATA, 19 in FishBase for A. jacobfreibergi, 20 in retailer sheets for OB hybrids, 25 in Seriously Fish and Fishkeeper, 30 in FishBase for A. baenschi and A. maylandi and in one retailer sheet for a red line. The two upper limits differ by more than 2 dGH, so neither reached a qualified majority, and the most cautious value applies: the intersection of all votes, 3 to 20 dGH. The narrower range makes the compatibility check warn earlier against tankmates kept in very hard water. Long-term keeping at 20 to 25 dGH is plausible from the sources that allow it but not documented, hence the low confidence. An archive tank with peacocks ran at 13 dGH."
+      sources:
+        - kind: database
+          title: Seriously Fish, Aulonocara stuartgranti (Grant's Peacock)
+          url: https://www.seriouslyfish.com/species/aulonocara-stuartgranti/
+          accessed: 2026-10-12
+        - kind: database
+          title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+          accessed: 2026-10-12
+        - kind: literature
+          title: OATA (Ornamental Aquatic Trade Association). How to care for African Malawi cichlids. Care sheet, September 2022
+          url: https://ornamentalfish.org/wp-content/uploads/African-Malawi-cichlids-Sept-2022.pdf
+          accessed: 2026-10-12
+        - kind: database
+          title: FishBase species summary, Aulonocara jacobfreibergi
+          url: https://www.fishbase.se/summary/Aulonocara-jacobfreibergi.html
+          accessed: 2026-10-12
+        - kind: database
+          title: FishBase species summary, Aulonocara baenschi
+          url: https://www.fishbase.se/summary/Aulonocara-baenschi.html
+          accessed: 2026-10-12
+        - kind: database
+          title: FishBase species summary, Aulonocara hansbaenschi
+          url: https://www.fishbase.se/summary/Aulonocara-hansbaenschi.html
+          accessed: 2026-10-12
+        - kind: database
+          title: Seriously Fish, Aulonocara baenschi
+          url: https://www.seriouslyfish.com/species/aulonocara-baenschi/
+          accessed: 2026-10-12
+        - kind: literature
+          title: "Tropical Freshwater Fish: Peacock Cichlids"
+          url: https://tropicalfreshwaterfish.com/peacock_cichlids.htm
+          accessed: 2026-10-12
+        - kind: literature
+          title: "Guidarium: Peacock Cichlid (Aulonocara)"
+          url: https://guidarium.com/fishes/peacock-cichlid-aulonocara
+          accessed: 2026-10-12
+        - kind: literature
+          title: "Gensou: Peacock Cichlid Care Guide"
+          url: https://gensou.sg/peacock-cichlid-care-guide/
+          accessed: 2026-10-12
+        - kind: literature
+          title: "Modestfish: peacock cichlid care"
+          url: https://modestfish.com/?p=5344
+          accessed: 2026-10-12
+        - kind: database
+          title: Seriously Fish, Aulonocara jacobfreibergi
+          url: https://www.seriouslyfish.com/species/aulonocara-jacobfreibergi/
+          accessed: 2026-10-12
+        - kind: literature
+          title: Sims Tropical Fish, care notes on the Yellow OB Peacock (hybrid)
+          url: https://simstropicalfish.co.uk/product/aulonocara-yellow-orange-blotch-peacock-malawi-african-cichlid/
+          accessed: 2026-10-12
+        - kind: literature
+          title: Garnelio, care notes on Aulonocara sp. 'Fire Fish Albino' (hybrid)
+          url: https://www.garnelio.de/en/emperor-cichlid-red-albino-aulonocara-sp.-fire-fish-albino
+          accessed: 2026-10-12
+        - kind: database
+          title: FishBase species summary, Aulonocara maylandi
+          url: https://www.fishbase.se/summary/Aulonocara-maylandi.html
+          accessed: 2026-10-12
+        - kind: database
+          title: Fishipedia, Aulonocara stuartgranti
+          url: https://www.fishipedia.fr/poissons/aulonocara-stuartgranti
+          accessed: 2026-10-12
+        - kind: literature
+          title: Riverpark Aquatics, Albino OB Peacock, Aulonocara sp. (care notes)
+          url: https://riverparkaquatics.co.uk/albino-ob-peacock-aulonocara-sp-6-7cm/
+          accessed: 2026-10-12
+        - kind: archive
+          title: cichlids.com forum thread 9341
+          url: https://www.cichlids.com/disc/read.php?1,9341
+          accessed: 2026-10-12
+      evidence:
+        - source:
+            kind: database
+            title: Seriously Fish, Aulonocara stuartgranti (Grant's Peacock)
+            url: https://www.seriouslyfish.com/species/aulonocara-stuartgranti/
+            accessed: 2026-10-12
+          value:
+            min: 10
+            max: 25
+          note: parent species, aquarium range
+        - source:
+            kind: database
+            title: Seriously Fish, Aulonocara jacobfreibergi
+            url: https://www.seriouslyfish.com/species/aulonocara-jacobfreibergi/
+            accessed: 2026-10-12
+          value:
+            min: 10
+            max: 25
+          note: parent species, aquarium range
+        - source:
+            kind: database
+            title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+            url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+            accessed: 2026-10-12
+          value:
+            min: 0
+            max: 25
+          note: hybrid peacock, given as up to 25 dH
+        - source:
+            kind: literature
+            title: OATA (Ornamental Aquatic Trade Association). How to care for African Malawi cichlids. Care sheet, September 2022
+            url: https://ornamentalfish.org/wp-content/uploads/African-Malawi-cichlids-Sept-2022.pdf
+            accessed: 2026-10-12
+          value:
+            min: 12
+            max: 18
+          note: Malawi cichlids in general
+        - source:
+            kind: database
+            title: FishBase species summary, Aulonocara jacobfreibergi
+            url: https://www.fishbase.se/summary/Aulonocara-jacobfreibergi.html
+            accessed: 2026-10-12
+          value:
+            min: 9
+            max: 19
+          note: parent species
+        - source:
+            kind: database
+            title: FishBase species summary, Aulonocara baenschi
+            url: https://www.fishbase.se/summary/Aulonocara-baenschi.html
+            accessed: 2026-10-12
+          value:
+            min: 10
+            max: 30
+          note: parent species, aquarium value; same range listed for A. maylandi
+        - source:
+            kind: database
+            title: FishBase species summary, Aulonocara hansbaenschi
+            url: https://www.fishbase.se/summary/Aulonocara-hansbaenschi.html
+            accessed: 2026-10-12
+          value:
+            min: 10
+            max: 15
+          note: parent species, aquarium value
+        - source:
+            kind: database
+            title: Seriously Fish, Aulonocara baenschi
+            url: https://www.seriouslyfish.com/species/aulonocara-baenschi/
+            accessed: 2026-10-12
+          value:
+            min: 10
+            max: 25
+        - source:
+            kind: literature
+            title: "Tropical Freshwater Fish: Peacock Cichlids"
+            url: https://tropicalfreshwaterfish.com/peacock_cichlids.htm
+            accessed: 2026-10-12
+          value:
+            min: 10
+            max: 25
+          note: listed as dH; ideal 15
+        - source:
+            kind: literature
+            title: "Guidarium: Peacock Cichlid (Aulonocara)"
+            url: https://guidarium.com/fishes/peacock-cichlid-aulonocara
+            accessed: 2026-10-12
+          value:
+            min: 10
+            max: 25
+        - source:
+            kind: literature
+            title: "Gensou: Peacock Cichlid Care Guide"
+            url: https://gensou.sg/peacock-cichlid-care-guide/
+            accessed: 2026-10-12
+          value:
+            min: 10
+            max: 18
+        - source:
+            kind: literature
+            title: "Modestfish: peacock cichlid care"
+            url: https://modestfish.com/?p=5344
+            accessed: 2026-10-12
+          value:
+            min: 4
+            max: 6
+          note: listed as hardness in dH
+        - source:
+            kind: literature
+            title: Sims Tropical Fish, care notes on the Yellow OB Peacock (hybrid)
+            url: https://simstropicalfish.co.uk/product/aulonocara-yellow-orange-blotch-peacock-malawi-african-cichlid/
+            accessed: 2026-10-12
+          value:
+            min: 10
+            max: 20
+          note: retailer care sheet for an OB hybrid
+        - source:
+            kind: literature
+            title: Garnelio, care notes on Aulonocara sp. 'Fire Fish Albino' (hybrid)
+            url: https://www.garnelio.de/en/emperor-cichlid-red-albino-aulonocara-sp.-fire-fish-albino
+            accessed: 2026-10-12
+          value:
+            min: 10
+            max: 30
+          note: retailer care sheet for a red hybrid line
+        - source:
+            kind: database
+            title: FishBase species summary, Aulonocara maylandi
+            url: https://www.fishbase.se/summary/Aulonocara-maylandi.html
+            accessed: 2026-10-12
+          value:
+            min: 10
+            max: 30
+          note: aquarium data; baenschi identical
+        - source:
+            kind: database
+            title: Fishipedia, Aulonocara stuartgranti
+            url: https://www.fishipedia.fr/poissons/aulonocara-stuartgranti
+            accessed: 2026-10-12
+          value:
+            min: 8
+            max: 15
+        - source:
+            kind: literature
+            title: Riverpark Aquatics, Albino OB Peacock, Aulonocara sp. (care notes)
+            url: https://riverparkaquatics.co.uk/albino-ob-peacock-aulonocara-sp-6-7cm/
+            accessed: 2026-10-12
+          value:
+            min: 6
+            max: 15
+          note: retailer sheet for an OB hybrid
+        - source:
+            kind: archive
+            title: cichlids.com forum thread 9341
+            url: https://www.cichlids.com/disc/read.php?1,9341
+            accessed: 2026-10-12
+          value:
+            min: 13
+            max: 13
+          note: community tank with peacocks, single reading
+      verification:
+        method: conservative
+        votes:
+          agree: 3
+          total: 5
+  khDkh:
+    value:
+      min: 5
+      max: 8
+    confidence: high
+    rationale: Hybrids take the habitat values of their Lake Malawi parent species. Alkalinity of 2.33 to 2.46 meq/L (Branchu et al. 2010) and 2.00 to 2.59 meq/L (Jackson et al. 1963, compiled by FAO) corresponds to 5.6 to 7.3 dKH, so the lake range is 5 to 8 dKH. Carbonate hardness exceeds total hardness because sodium balances part of the bicarbonate.
+    sources:
+      - kind: literature
+        title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+        url: https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf
+        accessed: 2026-10-12
+      - kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+        url: https://www.fao.org/4/t0473e/T0473E05.htm
+        accessed: 2026-10-12
+      - kind: literature
+        title: Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of Africa, Vol. 1, FAO CIFA Technical Paper 18/1, entry Lake Malawi/Nyasa (Jackson et al. 1963; Talling and Talling 1965).
+        url: https://www.fao.org/4/T0473E/T0473E06.htm
+        accessed: 2026-10-12
+      - kind: literature
+        title: Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology and Oceanography 19(5), 730-742 (abstract).
+        url: https://doi.org/10.4319/lo.1974.19.5.0730
+        accessed: 2026-10-12
+      - kind: literature
+        title: Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M., Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and Oceanography 50(2), 727-732.
+        url: https://www.dora.lib4ri.ch/empa/dload/empa:1253/PDF/view
+        accessed: 2026-10-12
+      - kind: literature
+        title: "Vollmer, M. K., Weiss, R. F. and Bootsma, H. A. (1999). Lake Malawi/Nyasa deep water renewal. In: Bootsma, H. A. and Hecky, R. E. (eds.), Water Quality Report, SADC/GEF Lake Malawi/Nyasa Biodiversity Conservation Project, chapter 4."
+        url: https://sites.uwm.edu/hbootsma/files/2020/11/Ch4-Lake-Internal-Mixing.pdf
+        accessed: 2026-10-12
+      - kind: literature
+        title: Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. PhD dissertation, University of Wisconsin-Milwaukee.
+        url: https://minds.wisconsin.edu/handle/1793/91765
+        accessed: 2026-10-12
+    evidence:
+      - source:
+          kind: literature
+          title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+          url: https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf
+          accessed: 2026-10-12
+        value:
+          min: 6.5
+          max: 6.9
+        note: from alkalinity of 2.33 to 2.46 meq/L
+      - source:
+          kind: literature
+          title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+          url: https://www.fao.org/4/t0473e/T0473E05.htm
+          accessed: 2026-10-12
+        value:
+          min: 5.6
+          max: 7.3
+        note: from alkalinity of 2.00 to 2.59 meq/L
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value:
+        min: 5
+        max: 15
+      confidence: low
+      rationale: Few sources state a carbonate hardness; Seriously Fish, FishBase and Fishkeeper give none. OATA recommends 10 to 15 dKH for Malawi cichlids, LiveAquaria 10 to 15 dKH for the OB peacock and 10 to 20 dKH for Dragon Blood, a German retailer 6 to 30 dKH for a red line, and two peacock care guides 4 to 6 dKH. The lower bound is the natural 5 dKH, which the tolerance has to contain; below that the pH of a stocked tank becomes unstable, so the single figure of 4 is not adopted. The upper bound of 15 dKH follows OATA and the OB care sheet; the higher figures come from single retailers. An archive tank with peacocks ran at 9 dKH. Confidence is low because only a handful of sources give numbers and they differ widely.
+      sources:
+        - kind: literature
+          title: OATA (Ornamental Aquatic Trade Association). How to care for African Malawi cichlids. Care sheet, September 2022
+          url: https://ornamentalfish.org/wp-content/uploads/African-Malawi-cichlids-Sept-2022.pdf
+          accessed: 2026-10-12
+        - kind: literature
+          title: FurryCritter Network. Rift Lake Chemistry (fish article, 2026)
+          url: https://furrycritter.com/pages/articles/fish/rift_lake_chemistry.htm
+          accessed: 2026-10-12
+        - kind: literature
+          title: LiveAquaria, Dragon Blood Peacock Cichlid care information
+          url: https://www.liveaquaria.com/products/dragon-blood-peacock-cichlid
+          accessed: 2026-10-12
+        - kind: literature
+          title: Garnelio, care notes on Aulonocara sp. 'Fire Fish Albino' (hybrid)
+          url: https://www.garnelio.de/en/emperor-cichlid-red-albino-aulonocara-sp.-fire-fish-albino
+          accessed: 2026-10-12
+        - kind: literature
+          title: AquariumStoreDepot, Peacock Cichlid complete care guide
+          url: https://aquariumstoredepot.com/blogs/news/peacock-cichlid
+          accessed: 2026-10-12
+        - kind: literature
+          title: AquariumSource, Peacock Cichlid care guide
+          url: https://www.aquariumsource.com/peacock-cichlid/
+          accessed: 2026-10-12
+        - kind: archive
+          title: cichlids.com forum thread 9341
+          url: https://www.cichlids.com/disc/read.php?1,9341
+          accessed: 2026-10-12
+      evidence:
+        - source:
+            kind: literature
+            title: OATA (Ornamental Aquatic Trade Association). How to care for African Malawi cichlids. Care sheet, September 2022
+            url: https://ornamentalfish.org/wp-content/uploads/African-Malawi-cichlids-Sept-2022.pdf
+            accessed: 2026-10-12
+          value:
+            min: 10
+            max: 15
+          note: Malawi cichlids in general
+        - source:
+            kind: literature
+            title: FurryCritter Network. Rift Lake Chemistry (fish article, 2026)
+            url: https://furrycritter.com/pages/articles/fish/rift_lake_chemistry.htm
+            accessed: 2026-10-12
+          value:
+            min: 10
+            max: 12
+          note: Malawi cichlids in general
+        - source:
+            kind: literature
+            title: LiveAquaria, Dragon Blood Peacock Cichlid care information
+            url: https://www.liveaquaria.com/products/dragon-blood-peacock-cichlid
+            accessed: 2026-10-12
+          value:
+            min: 10
+            max: 20
+          note: hybrid line, retailer care data
+        - source:
+            kind: literature
+            title: LiveAquaria, Peacock Cichlid, Orange Blotched care information
+            url: https://www.liveaquaria.com/products/peacock-cichlid-orange-blotched
+            accessed: 2026-10-12
+          value:
+            min: 10
+            max: 15
+        - source:
+            kind: literature
+            title: Garnelio, care notes on Aulonocara sp. 'Fire Fish Albino' (hybrid)
+            url: https://www.garnelio.de/en/emperor-cichlid-red-albino-aulonocara-sp.-fire-fish-albino
+            accessed: 2026-10-12
+          value:
+            min: 6
+            max: 30
+          note: retailer care sheet for a red hybrid line
+        - source:
+            kind: literature
+            title: AquariumStoreDepot, Peacock Cichlid complete care guide
+            url: https://aquariumstoredepot.com/blogs/news/peacock-cichlid
+            accessed: 2026-10-12
+          value:
+            min: 4
+            max: 6
+          note: table value; the text of the same guide asks for more than 6 dKH
+        - source:
+            kind: literature
+            title: AquariumSource, Peacock Cichlid care guide
+            url: https://www.aquariumsource.com/peacock-cichlid/
+            accessed: 2026-10-12
+          value:
+            min: 4
+            max: 6
+          note: peacock care guide
+        - source:
+            kind: archive
+            title: cichlids.com forum thread 9341
+            url: https://www.cichlids.com/disc/read.php?1,9341
+            accessed: 2026-10-12
+          value:
+            min: 9
+            max: 9
+          note: community tank with peacocks, single reading
+      verification:
+        method: qualified-majority
+        votes:
+          agree: 4
+          total: 5
+  maxSizeCm:
+    value:
+      male: 14
+      female: 10
+    confidence: medium
+    rationale: Sources for the hybrid lines give 12 cm (Fishkeeper), 12.5 cm for an OB line and 15 cm for Dragon Blood (LiveAquaria) and 10 to 15 cm (Aquarium Glaser); a peacock care guide gives about 15 cm for males and 10 cm for females. The parent species reach 11.8 cm (A. stuartgranti) to 15 cm (A. jacobfreibergi) total length; Seriously Fish gives 12 cm for males and 9 cm standard length for females of A. baenschi. Lines differ in size, so the typical well-kept male is set at 14 cm, between the common 12 to 13 cm and the 15 cm of the larger lines, and the female at 10 cm.
+    sources:
+      - kind: database
+        title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+        accessed: 2026-10-12
+      - kind: literature
+        title: Schäfer, F. (2021). Aulonocara 'Dragon Blood'. Aquarium Glaser fish archive
+        url: https://aquariumglaser.de/en/fish-archives/aulonocara-dragon-blood-2
+        accessed: 2026-10-12
+      - kind: literature
+        title: LiveAquaria, Dragon Blood Peacock Cichlid care information
+        url: https://www.liveaquaria.com/products/dragon-blood-peacock-cichlid
+        accessed: 2026-10-12
+      - kind: literature
+        title: LiveAquaria, Peacock Cichlid, Orange Blotched care information
+        url: https://www.liveaquaria.com/products/peacock-cichlid-orange-blotched
+        accessed: 2026-10-12
+      - kind: literature
+        title: AquariumSource, Peacock Cichlid care guide
+        url: https://www.aquariumsource.com/peacock-cichlid/
+        accessed: 2026-10-12
+      - kind: database
+        title: FishBase species summary, Aulonocara stuartgranti
+        url: https://www.fishbase.se/summary/Aulonocara-stuartgranti.html
+        accessed: 2026-10-12
+      - kind: database
+        title: FishBase species summary, Aulonocara jacobfreibergi
+        url: https://www.fishbase.se/summary/Aulonocara-jacobfreibergi.html
+        accessed: 2026-10-12
+      - kind: database
+        title: Seriously Fish, Aulonocara baenschi
+        url: https://www.seriouslyfish.com/species/aulonocara-baenschi/
+        accessed: 2026-10-12
+    evidence:
+      - source:
+          kind: database
+          title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+          accessed: 2026-10-12
+        value:
+          male: 12
+          female: 12
+        note: single value without sex
+      - source:
+          kind: literature
+          title: Schäfer, F. (2021). Aulonocara 'Dragon Blood'. Aquarium Glaser fish archive
+          url: https://aquariumglaser.de/en/fish-archives/aulonocara-dragon-blood-2
+          accessed: 2026-10-12
+        value:
+          male: 15
+          female: 10
+        note: range of 10 to 15 cm without sex
+      - source:
+          kind: literature
+          title: LiveAquaria, Dragon Blood Peacock Cichlid care information
+          url: https://www.liveaquaria.com/products/dragon-blood-peacock-cichlid
+          accessed: 2026-10-12
+        value:
+          male: 15
+          female: 15
+        note: Dragon Blood line, 6 inches without sex
+      - source:
+          kind: literature
+          title: LiveAquaria, Peacock Cichlid, Orange Blotched care information
+          url: https://www.liveaquaria.com/products/peacock-cichlid-orange-blotched
+          accessed: 2026-10-12
+        value:
+          male: 12.5
+          female: 12.5
+        note: OB line, 5 inches without sex
+      - source:
+          kind: literature
+          title: AquariumSource, Peacock Cichlid care guide
+          url: https://www.aquariumsource.com/peacock-cichlid/
+          accessed: 2026-10-12
+        value:
+          male: 15
+          female: 10
+        note: peacocks in general, about 6 and 4 inches
+      - source:
+          kind: database
+          title: FishBase species summary, Aulonocara stuartgranti
+          url: https://www.fishbase.se/summary/Aulonocara-stuartgranti.html
+          accessed: 2026-10-12
+        value:
+          male: 11.8
+          female: 11.8
+        note: parent species, maximum total length
+      - source:
+          kind: database
+          title: FishBase species summary, Aulonocara jacobfreibergi
+          url: https://www.fishbase.se/summary/Aulonocara-jacobfreibergi.html
+          accessed: 2026-10-12
+        value:
+          male: 15
+          female: 15
+        note: parent species, maximum total length
+      - source:
+          kind: database
+          title: Seriously Fish, Aulonocara baenschi
+          url: https://www.seriouslyfish.com/species/aulonocara-baenschi/
+          accessed: 2026-10-12
+        value:
+          male: 12
+          female: 9
+        note: parent species
+  predation:
+    value: 1
+    confidence: medium
+    rationale: The parent Aulonocara are benthic micropredators that detect insect larvae, crustaceans and molluscs in the sand, and the field study of the genus adds that small fish may be taken as well (Grant et al. 1987). The hybrids keep this way of feeding (Aquarium Glaser, Fishkeeper). FishBase lists only invertebrates for A. stuartgranti and A. baenschi, which on its own would mean level 0, but adults take fry and very small fish when they get the chance, which is why breeders raise peacock fry apart from the adults (archive). No source reports hunting of larger fish, so level 1 applies. Lines with more haplochromine or mbuna ancestry may behave differently; no source documents this.
+    sources:
+      - kind: literature
+        title: Schäfer, F. (2021). Aulonocara 'Dragon Blood'. Aquarium Glaser fish archive
+        url: https://aquariumglaser.de/en/fish-archives/aulonocara-dragon-blood-2
+        accessed: 2026-10-12
+      - kind: database
+        title: FishBase species summary, Aulonocara stuartgranti
+        url: https://www.fishbase.se/summary/Aulonocara-stuartgranti.html
+        accessed: 2026-10-12
+      - kind: database
+        title: Seriously Fish, Aulonocara stuartgranti (Grant's Peacock)
+        url: https://www.seriouslyfish.com/species/aulonocara-stuartgranti/
+        accessed: 2026-10-12
+      - kind: database
+        title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+        accessed: 2026-10-12
+      - kind: database
+        title: FishBase species summary, Aulonocara baenschi
+        url: https://www.fishbase.se/summary/Aulonocara-baenschi.html
+        accessed: 2026-10-12
+      - kind: literature
+        title: Grant, S. M., Dieckhoff, H. W., Mayland, H. J. and Meyer, M. K. (1987). Ecology of Aulonocara Regan, 1922 in Lake Malawi. Courier Forschungsinstitut Senckenberg 94, 131-139 (abstract)
+        url: https://malawicichlids.com/_popup_abs_gdmm87.htm
+        accessed: 2026-10-12
+      - kind: archive
+        title: cichlids.com forum thread 26895
+        url: https://www.cichlids.com/disc/read.php?2,26895
+        accessed: 2026-10-12
+    evidence:
+      - source:
+          kind: literature
+          title: Schäfer, F. (2021). Aulonocara 'Dragon Blood'. Aquarium Glaser fish archive
+          url: https://aquariumglaser.de/en/fish-archives/aulonocara-dragon-blood-2
+          accessed: 2026-10-12
+        value: 1
+        note: small-animal eaters; hybrids resemble Aulonocara in feeding
+      - source:
+          kind: database
+          title: Seriously Fish, Aulonocara stuartgranti (Grant's Peacock)
+          url: https://www.seriouslyfish.com/species/aulonocara-stuartgranti/
+          accessed: 2026-10-12
+        value: 1
+        note: parent genus is a benthic micropredator
+      - source:
+          kind: database
+          title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+          accessed: 2026-10-12
+        value: 1
+        note: small frozen foods; kept with mid-sized haps and Labidochromis
+      - source:
+          kind: database
+          title: FishBase species summary, Aulonocara stuartgranti
+          url: https://www.fishbase.se/summary/Aulonocara-stuartgranti.html
+          accessed: 2026-10-12
+        value: 0
+        note: feeds on sand-dwelling invertebrates, no fish mentioned
+      - source:
+          kind: database
+          title: FishBase species summary, Aulonocara baenschi
+          url: https://www.fishbase.se/summary/Aulonocara-baenschi.html
+          accessed: 2026-10-12
+        value: 0
+        note: feeds on bottom-dwelling invertebrates, no fish mentioned
+      - source:
+          kind: archive
+          title: cichlids.com forum thread 26895
+          url: https://www.cichlids.com/disc/read.php?2,26895
+          accessed: 2026-10-12
+        value: 1
+        note: peacock fry raised in a separate tank
+      - source:
+          kind: literature
+          title: Grant, S. M., Dieckhoff, H. W., Mayland, H. J. and Meyer, M. K. (1987). Ecology of Aulonocara Regan, 1922 in Lake Malawi. Courier Forschungsinstitut Senckenberg 94, 131-139 (abstract)
+          url: https://malawicichlids.com/_popup_abs_gdmm87.htm
+          accessed: 2026-10-12
+        value: 1
+        note: may also take small fishes
+    verification:
+      method: unanimous
+      votes:
+        agree: 3
+        total: 3
+  diet:
+    value:
+      type: invertivore
+      bloatSensitive: false
+      foods:
+        - fine sinking pellets and granules
+        - flake food with Spirulina
+        - frozen Mysis, Artemia and mosquito larvae
+        - some vegetable matter
+    confidence: medium
+    rationale: The parent species sift the sand for small invertebrates (FishBase, Seriously Fish, Grant et al. 1987), and the hybrids feed the same way (Aquarium Glaser), so the type is invertivore. Fishkeeper, LiveAquaria and AquariumSource call peacocks omnivores because they accept mixed prepared food; that describes the aquarium menu, not the feeding type. AquariumSource warns of Malawi bloat from excess meaty food, but no reliable source describes peacocks as prone to bloat the way aufwuchs grazers are, so the flag is not set. Moderate feeding with some plant-based food stays advisable, above all for OB lines with mbuna ancestry.
+    sources:
+      - kind: literature
+        title: Schäfer, F. (2021). Aulonocara 'Dragon Blood'. Aquarium Glaser fish archive
+        url: https://aquariumglaser.de/en/fish-archives/aulonocara-dragon-blood-2
+        accessed: 2026-10-12
+      - kind: database
+        title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+        accessed: 2026-10-12
+      - kind: database
+        title: FishBase species summary, Aulonocara stuartgranti
+        url: https://www.fishbase.se/summary/Aulonocara-stuartgranti.html
+        accessed: 2026-10-12
+      - kind: database
+        title: Seriously Fish, Aulonocara stuartgranti (Grant's Peacock)
+        url: https://www.seriouslyfish.com/species/aulonocara-stuartgranti/
+        accessed: 2026-10-12
+      - kind: database
+        title: FishBase species summary, Aulonocara baenschi
+        url: https://www.fishbase.se/summary/Aulonocara-baenschi.html
+        accessed: 2026-10-12
+      - kind: database
+        title: Seriously Fish, Aulonocara jacobfreibergi
+        url: https://www.seriouslyfish.com/species/aulonocara-jacobfreibergi/
+        accessed: 2026-10-12
+      - kind: literature
+        title: AquariumSource, Peacock Cichlid care guide
+        url: https://www.aquariumsource.com/peacock-cichlid/
+        accessed: 2026-10-12
+      - kind: literature
+        title: Grant, S. M., Dieckhoff, H. W., Mayland, H. J. and Meyer, M. K. (1987). Ecology of Aulonocara Regan, 1922 in Lake Malawi. Courier Forschungsinstitut Senckenberg 94, 131-139 (abstract)
+        url: https://malawicichlids.com/_popup_abs_gdmm87.htm
+        accessed: 2026-10-12
+    evidence:
+      - source:
+          kind: literature
+          title: Schäfer, F. (2021). Aulonocara 'Dragon Blood'. Aquarium Glaser fish archive
+          url: https://aquariumglaser.de/en/fish-archives/aulonocara-dragon-blood-2
+          accessed: 2026-10-12
+        value:
+          type: invertivore
+          bloatSensitive: false
+        note: small-animal eaters
+      - source:
+          kind: database
+          title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+          accessed: 2026-10-12
+        value:
+          type: omnivore
+          bloatSensitive: false
+        note: called omnivorous; feeding list is mainly small meaty foods plus vegetables
+      - source:
+          kind: database
+          title: FishBase species summary, Aulonocara stuartgranti
+          url: https://www.fishbase.se/summary/Aulonocara-stuartgranti.html
+          accessed: 2026-10-12
+        value:
+          type: invertivore
+          bloatSensitive: false
+        note: parent species, sand-dwelling invertebrates
+      - source:
+          kind: database
+          title: Seriously Fish, Aulonocara stuartgranti (Grant's Peacock)
+          url: https://www.seriouslyfish.com/species/aulonocara-stuartgranti/
+          accessed: 2026-10-12
+        value:
+          type: invertivore
+          bloatSensitive: false
+        note: parent species; meaty foods plus some Spirulina-based food
+      - source:
+          kind: database
+          title: FishBase species summary, Aulonocara baenschi
+          url: https://www.fishbase.se/summary/Aulonocara-baenschi.html
+          accessed: 2026-10-12
+        value:
+          type: invertivore
+          bloatSensitive: false
+        note: bottom-dwelling invertebrates
+      - source:
+          kind: literature
+          title: LiveAquaria, Dragon Blood Peacock Cichlid care information
+          url: https://www.liveaquaria.com/products/dragon-blood-peacock-cichlid
+          accessed: 2026-10-12
+        value:
+          type: omnivore
+          bloatSensitive: false
+        note: aquarium menu
+      - source:
+          kind: literature
+          title: AquariumSource, Peacock Cichlid care guide
+          url: https://www.aquariumsource.com/peacock-cichlid/
+          accessed: 2026-10-12
+        value:
+          type: omnivore
+          bloatSensitive: true
+        note: warns of Malawi bloat from excess meaty food
+      - source:
+          kind: literature
+          title: Grant, S. M., Dieckhoff, H. W., Mayland, H. J. and Meyer, M. K. (1987). Ecology of Aulonocara Regan, 1922 in Lake Malawi. Courier Forschungsinstitut Senckenberg 94, 131-139 (abstract)
+          url: https://malawicichlids.com/_popup_abs_gdmm87.htm
+          accessed: 2026-10-12
+        value:
+          type: invertivore
+          bloatSensitive: false
+    verification:
+      method: unanimous
+      votes:
+        agree: 3
+        total: 3
+  aggressionConspecific:
+    value: 2
+    confidence: medium
+    rationale: Males form a clear hierarchy, chase rival males and press females, and the dominant male suppresses the colour of the others. With one male and four or more females in a large tank injuries are rare (Seriously Fish for the parent species, Fishkeeper, LiveAquaria for the OB line), which is level 2. The hybrid lines are livelier than pure peacocks, which Fishkeeper attributes to mbuna genes, and individual males reach level 3, especially with too many males or too few females (Aquarium Glaser, LiveAquaria for Dragon Blood, archive).
+    sources:
+      - kind: database
+        title: Seriously Fish, Aulonocara stuartgranti (Grant's Peacock)
+        url: https://www.seriouslyfish.com/species/aulonocara-stuartgranti/
+        accessed: 2026-10-12
+      - kind: database
+        title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+        accessed: 2026-10-12
+      - kind: literature
+        title: Schäfer, F. (2021). Aulonocara 'Dragon Blood'. Aquarium Glaser fish archive
+        url: https://aquariumglaser.de/en/fish-archives/aulonocara-dragon-blood-2
+        accessed: 2026-10-12
+      - kind: literature
+        title: LiveAquaria, Dragon Blood Peacock Cichlid care information
+        url: https://www.liveaquaria.com/products/dragon-blood-peacock-cichlid
+        accessed: 2026-10-12
+      - kind: literature
+        title: LiveAquaria, Peacock Cichlid, Orange Blotched care information
+        url: https://www.liveaquaria.com/products/peacock-cichlid-orange-blotched
+        accessed: 2026-10-12
+      - kind: archive
+        title: cichlids.com forum thread 15785
+        url: https://www.cichlids.com/disc/read.php?2,15785
+        accessed: 2026-10-12
+      - kind: archive
+        title: cichlids.com forum thread 46147
+        url: https://www.cichlids.com/disc/read.php?2,46147
+        accessed: 2026-10-12
+    evidence:
+      - source:
+          kind: database
+          title: Seriously Fish, Aulonocara stuartgranti (Grant's Peacock)
+          url: https://www.seriouslyfish.com/species/aulonocara-stuartgranti/
+          accessed: 2026-10-12
+        value: 2
+        note: parent species; one male with four or more females
+      - source:
+          kind: database
+          title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+          accessed: 2026-10-12
+        value: 2
+        note: more aggressive than pure Aulonocara through mbuna genes; disputes with too many males
+      - source:
+          kind: literature
+          title: LiveAquaria, Peacock Cichlid, Orange Blotched care information
+          url: https://www.liveaquaria.com/products/peacock-cichlid-orange-blotched
+          accessed: 2026-10-12
+        value: 2
+        note: males mainly target their own species
+      - source:
+          kind: literature
+          title: Schäfer, F. (2021). Aulonocara 'Dragon Blood'. Aquarium Glaser fish archive
+          url: https://aquariumglaser.de/en/fish-archives/aulonocara-dragon-blood-2
+          accessed: 2026-10-12
+        value: 3
+        note: spirited despite the modest size, needs a large tank
+      - source:
+          kind: literature
+          title: LiveAquaria, Dragon Blood Peacock Cichlid care information
+          url: https://www.liveaquaria.com/products/dragon-blood-peacock-cichlid
+          accessed: 2026-10-12
+        value: 3
+        note: territorial and aggressive towards conspecifics
+      - source:
+          kind: archive
+          title: cichlids.com forum thread 46147
+          url: https://www.cichlids.com/disc/read.php?2,46147
+          accessed: 2026-10-12
+        value: 3
+        note: a Strawberry peacock harassing a larger OB peacock
+  aggressionHeterospecific:
+    value: 2
+    confidence: medium
+    rationale: "Males drive other fish from their spawning site and react most strongly to fish of similar colour and shape, above all other peacocks. Care sheets call the hybrids relatively peaceful for Malawi cichlids, and calm mbuna and mid-water haplochromines of similar size live with them without injuries in a suitable tank. Archive reports show the spread caused by the mixed ancestry: some OB males dominate Labidochromis and Maylandia, others bully smaller haplochromines."
+    sources:
+      - kind: database
+        title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+        accessed: 2026-10-12
+      - kind: literature
+        title: LiveAquaria, Peacock Cichlid, Orange Blotched care information
+        url: https://www.liveaquaria.com/products/peacock-cichlid-orange-blotched
+        accessed: 2026-10-12
+      - kind: database
+        title: Seriously Fish, Aulonocara stuartgranti (Grant's Peacock)
+        url: https://www.seriouslyfish.com/species/aulonocara-stuartgranti/
+        accessed: 2026-10-12
+      - kind: archive
+        title: cichlids.com forum thread 15785
+        url: https://www.cichlids.com/disc/read.php?2,15785
+        accessed: 2026-10-12
+      - kind: archive
+        title: cichlids.com forum thread 52518
+        url: https://www.cichlids.com/disc/read.php?2,52518
+        accessed: 2026-10-12
+    evidence:
+      - source:
+          kind: database
+          title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+          accessed: 2026-10-12
+        value: 1
+        note: relatively peaceful for a Malawi cichlid
+      - source:
+          kind: literature
+          title: LiveAquaria, Peacock Cichlid, Orange Blotched care information
+          url: https://www.liveaquaria.com/products/peacock-cichlid-orange-blotched
+          accessed: 2026-10-12
+        value: 2
+        note: semi-aggressive, defends its territory
+      - source:
+          kind: database
+          title: Seriously Fish, Aulonocara stuartgranti (Grant's Peacock)
+          url: https://www.seriouslyfish.com/species/aulonocara-stuartgranti/
+          accessed: 2026-10-12
+        value: 2
+        note: parent species, attacks fish of similar colour
+      - source:
+          kind: archive
+          title: cichlids.com forum thread 15785
+          url: https://www.cichlids.com/disc/read.php?2,15785
+          accessed: 2026-10-12
+        value: 3
+        note: an OB male dominating Labidochromis and Maylandia
+      - source:
+          kind: archive
+          title: cichlids.com forum thread 52518
+          url: https://www.cichlids.com/disc/read.php?2,52518
+          accessed: 2026-10-12
+        value: 3
+        note: OB and Strawberry males bullying smaller haplochromines
+  territory:
+    value:
+      size: small
+      breedingOnly: false
+    confidence: high
+    rationale: A dominant male holds a spawning site, a cave, a flat rock or a pit in the sand, and defends the area around it. The claim is strongest during courtship but persists in the aquarium as long as females are present; the rest of the tank is shared.
+    sources:
+      - kind: database
+        title: Seriously Fish, Aulonocara stuartgranti (Grant's Peacock)
+        url: https://www.seriouslyfish.com/species/aulonocara-stuartgranti/
+        accessed: 2026-10-12
+      - kind: database
+        title: Seriously Fish, Aulonocara jacobfreibergi
+        url: https://www.seriouslyfish.com/species/aulonocara-jacobfreibergi/
+        accessed: 2026-10-12
+      - kind: database
+        title: Seriously Fish, Aulonocara baenschi
+        url: https://www.seriouslyfish.com/species/aulonocara-baenschi/
+        accessed: 2026-10-12
+      - kind: database
+        title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+        accessed: 2026-10-12
+      - kind: database
+        title: FishBase species summary, Aulonocara jacobfreibergi
+        url: https://www.fishbase.se/summary/Aulonocara-jacobfreibergi.html
+        accessed: 2026-10-12
+      - kind: literature
+        title: LiveAquaria, Dragon Blood Peacock Cichlid care information
+        url: https://www.liveaquaria.com/products/dragon-blood-peacock-cichlid
+        accessed: 2026-10-12
+    evidence:
+      - source:
+          kind: database
+          title: Seriously Fish, Aulonocara stuartgranti (Grant's Peacock)
+          url: https://www.seriouslyfish.com/species/aulonocara-stuartgranti/
+          accessed: 2026-10-12
+        value:
+          size: small
+          breedingOnly: false
+        note: male selects a spawning site among flat rocks
+      - source:
+          kind: database
+          title: Seriously Fish, Aulonocara jacobfreibergi
+          url: https://www.seriouslyfish.com/species/aulonocara-jacobfreibergi/
+          accessed: 2026-10-12
+        value:
+          size: small
+          breedingOnly: false
+        note: several males may hold territories in larger caves
+      - source:
+          kind: database
+          title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+          accessed: 2026-10-12
+        value:
+          size: small
+          breedingOnly: false
+        note: male chooses a spawning site and digs a depression
+      - source:
+          kind: database
+          title: FishBase species summary, Aulonocara jacobfreibergi
+          url: https://www.fishbase.se/summary/Aulonocara-jacobfreibergi.html
+          accessed: 2026-10-12
+        value:
+          size: small
+          breedingOnly: false
+        note: parent species, males occupy small caves
+      - source:
+          kind: literature
+          title: LiveAquaria, Dragon Blood Peacock Cichlid care information
+          url: https://www.liveaquaria.com/products/dragon-blood-peacock-cichlid
+          accessed: 2026-10-12
+        value:
+          size: small
+          breedingOnly: false
+        note: territorial; caves reduce aggression
+  habitatZones:
+    value:
+      - rock
+      - sand
+    confidence: high
+    rationale: The parent Aulonocara live in the intermediate zone where rocky shores meet sand with scattered rocks and forage by sifting the sand. The tank needs open fine sand for feeding and spawning and rock structures for territories and cover.
+    sources:
+      - kind: database
+        title: Seriously Fish, Aulonocara stuartgranti (Grant's Peacock)
+        url: https://www.seriouslyfish.com/species/aulonocara-stuartgranti/
+        accessed: 2026-10-12
+      - kind: database
+        title: FishBase species summary, Aulonocara baenschi
+        url: https://www.fishbase.se/summary/Aulonocara-baenschi.html
+        accessed: 2026-10-12
+      - kind: literature
+        title: Grant, S. M., Dieckhoff, H. W., Mayland, H. J. and Meyer, M. K. (1987). Ecology of Aulonocara Regan, 1922 in Lake Malawi. Courier Forschungsinstitut Senckenberg 94, 131-139 (abstract)
+        url: https://malawicichlids.com/_popup_abs_gdmm87.htm
+        accessed: 2026-10-12
+      - kind: database
+        title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+        accessed: 2026-10-12
+    evidence:
+      - source:
+          kind: database
+          title: Seriously Fish, Aulonocara stuartgranti (Grant's Peacock)
+          url: https://www.seriouslyfish.com/species/aulonocara-stuartgranti/
+          accessed: 2026-10-12
+        value:
+          - rock
+          - sand
+        note: parent species, intermediate habitat; fine sand for feeding
+      - source:
+          kind: database
+          title: FishBase species summary, Aulonocara baenschi
+          url: https://www.fishbase.se/summary/Aulonocara-baenschi.html
+          accessed: 2026-10-12
+        value:
+          - rock
+          - sand
+        note: parent species, scattered rocks on sand
+      - source:
+          kind: database
+          title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+          accessed: 2026-10-12
+        value:
+          - rock
+          - sand
+        note: open sand areas with stable rock structures
+  social:
+    value:
+      structure: harem
+      ratio: 4
+    confidence: high
+    rationale: All sources recommend one male with several females, three to six per male depending on the source, with four as the common figure. Larger tanks can hold several males with a bigger group of females.
+    sources:
+      - kind: database
+        title: Seriously Fish, Aulonocara stuartgranti (Grant's Peacock)
+        url: https://www.seriouslyfish.com/species/aulonocara-stuartgranti/
+        accessed: 2026-10-12
+      - kind: database
+        title: Seriously Fish, Aulonocara jacobfreibergi
+        url: https://www.seriouslyfish.com/species/aulonocara-jacobfreibergi/
+        accessed: 2026-10-12
+      - kind: database
+        title: Seriously Fish, Aulonocara baenschi
+        url: https://www.seriouslyfish.com/species/aulonocara-baenschi/
+        accessed: 2026-10-12
+      - kind: database
+        title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+        accessed: 2026-10-12
+      - kind: literature
+        title: LiveAquaria, Dragon Blood Peacock Cichlid care information
+        url: https://www.liveaquaria.com/products/dragon-blood-peacock-cichlid
+        accessed: 2026-10-12
+      - kind: literature
+        title: LiveAquaria, Peacock Cichlid, Orange Blotched care information
+        url: https://www.liveaquaria.com/products/peacock-cichlid-orange-blotched
+        accessed: 2026-10-12
+    evidence:
+      - source:
+          kind: database
+          title: Seriously Fish, Aulonocara stuartgranti (Grant's Peacock)
+          url: https://www.seriouslyfish.com/species/aulonocara-stuartgranti/
+          accessed: 2026-10-12
+        value:
+          structure: harem
+          ratio: 4
+        note: parent species, four to six females
+      - source:
+          kind: database
+          title: Seriously Fish, Aulonocara jacobfreibergi
+          url: https://www.seriouslyfish.com/species/aulonocara-jacobfreibergi/
+          accessed: 2026-10-12
+        value:
+          structure: harem
+          ratio: 4
+        note: parent species, single male with four to six females
+      - source:
+          kind: database
+          title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+          accessed: 2026-10-12
+        value:
+          structure: harem
+          ratio: 5
+        note: one or three males with five or more females
+      - source:
+          kind: literature
+          title: LiveAquaria, Dragon Blood Peacock Cichlid care information
+          url: https://www.liveaquaria.com/products/dragon-blood-peacock-cichlid
+          accessed: 2026-10-12
+        value:
+          structure: harem
+          ratio: 4
+        note: one male in a group of four to six
+      - source:
+          kind: literature
+          title: LiveAquaria, Peacock Cichlid, Orange Blotched care information
+          url: https://www.liveaquaria.com/products/peacock-cichlid-orange-blotched
+          accessed: 2026-10-12
+        value:
+          structure: harem
+          ratio: 3.5
+        note: three to four females per male
+  speciesOnly:
+    value: false
+    confidence: high
+    rationale: The hybrids live in mixed Lake Malawi communities with mid-water haplochromines and calm mbuna (Fishkeeper; Seriously Fish for the parent species). No source asks for a single-species tank. The advice against other peacocks comes from crossing and is covered by the hybrid group.
+    sources:
+      - kind: database
+        title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+        accessed: 2026-10-12
+      - kind: database
+        title: Seriously Fish, Aulonocara stuartgranti (Grant's Peacock)
+        url: https://www.seriouslyfish.com/species/aulonocara-stuartgranti/
+        accessed: 2026-10-12
+      - kind: database
+        title: Seriously Fish, Aulonocara jacobfreibergi
+        url: https://www.seriouslyfish.com/species/aulonocara-jacobfreibergi/
+        accessed: 2026-10-12
+      - kind: database
+        title: Seriously Fish, Aulonocara baenschi
+        url: https://www.seriouslyfish.com/species/aulonocara-baenschi/
+        accessed: 2026-10-12
+      - kind: archive
+        title: cichlids.com forum thread 51840
+        url: https://www.cichlids.com/disc/read.php?2,51840
+        accessed: 2026-10-12
+      - kind: archive
+        title: cichlids.com forum thread 15785
+        url: https://www.cichlids.com/disc/read.php?2,15785
+        accessed: 2026-10-12
+    evidence:
+      - source:
+          kind: database
+          title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+          accessed: 2026-10-12
+        value: false
+        note: suitable with Copadichromis, Cyrtocara, Placidochromis, Labidochromis
+      - source:
+          kind: database
+          title: Seriously Fish, Aulonocara stuartgranti (Grant's Peacock)
+          url: https://www.seriouslyfish.com/species/aulonocara-stuartgranti/
+          accessed: 2026-10-12
+        value: false
+        note: parent species in community tanks with suitable tankmates
+      - source:
+          kind: database
+          title: Seriously Fish, Aulonocara jacobfreibergi
+          url: https://www.seriouslyfish.com/species/aulonocara-jacobfreibergi/
+          accessed: 2026-10-12
+        value: false
+        note: parent species with differently patterned fish and quieter mbuna
+      - source:
+          kind: database
+          title: Seriously Fish, Aulonocara baenschi
+          url: https://www.seriouslyfish.com/species/aulonocara-baenschi/
+          accessed: 2026-10-12
+        value: false
+    verification:
+      method: unanimous
+      votes:
+        agree: 3
+        total: 3
+  hybridGroup:
+    value: aulonocara
+    confidence: high
+    rationale: "The lines descend from Aulonocara, and their females look like peacock females: any peacock male courts them and hybrid males fertilise pure females (Seriously Fish: most Aulonocara species cross with each other; Aquarium Glaser; Fishkeeper; archive). Kept together with described Aulonocara they carry hybrid genes into pure lines, so they belong to the group aulonocara. OB lines also carry mbuna genes, since the orange blotch pattern comes from a blotched mbuna, and could cross with mbuna as well (Elieson: the hybrids cross with other cichlids kept with them; archive thread 49231). A profile belongs to one group only, so the peacock group, the certain and most frequent crossing partner, is the value; the mbuna risk appears in the compatibility text. Proposal for hybrid-groups.yaml: add Aulonocara hybrid as a member of the group aulonocara."
+    sources:
+      - kind: literature
+        title: Schäfer, F. (2021). Aulonocara 'Dragon Blood'. Aquarium Glaser fish archive
+        url: https://aquariumglaser.de/en/fish-archives/aulonocara-dragon-blood-2
+        accessed: 2026-10-12
+      - kind: database
+        title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+        accessed: 2026-10-12
+      - kind: database
+        title: Seriously Fish, Aulonocara stuartgranti (Grant's Peacock)
+        url: https://www.seriouslyfish.com/species/aulonocara-stuartgranti/
+        accessed: 2026-10-12
+      - kind: literature
+        title: Elieson, M. The OB Peacock. Cichlid-Forum.com article library (archived copy)
+        url: https://web.archive.org/web/20160308032736/http://www.cichlid-forum.com/articles/ob_peacock.php
+        accessed: 2026-10-12
+      - kind: database
+        title: Seriously Fish, Aulonocara jacobfreibergi
+        url: https://www.seriouslyfish.com/species/aulonocara-jacobfreibergi/
+        accessed: 2026-10-12
+      - kind: catalog-of-fishes
+        title: Eschmeyer's Catalog of Fishes, species list of the genus Aulonocara
+        url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Aulonocara
+        accessed: 2026-10-12
+      - kind: database
+        title: Seriously Fish, Aulonocara baenschi
+        url: https://www.seriouslyfish.com/species/aulonocara-baenschi/
+        accessed: 2026-10-12
+      - kind: archive
+        title: cichlids.com forum thread 51840
+        url: https://www.cichlids.com/disc/read.php?2,51840
+        accessed: 2026-10-12
+      - kind: archive
+        title: cichlids.com forum thread 49231
+        url: https://www.cichlids.com/disc/read.php?2,49231
+        accessed: 2026-10-12
+    evidence:
+      - source:
+          kind: literature
+          title: Schäfer, F. (2021). Aulonocara 'Dragon Blood'. Aquarium Glaser fish archive
+          url: https://aquariumglaser.de/en/fish-archives/aulonocara-dragon-blood-2
+          accessed: 2026-10-12
+        value: aulonocara
+        note: crosses of peacocks with mbuna, resembling Aulonocara
+      - source:
+          kind: database
+          title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+          accessed: 2026-10-12
+        value: aulonocara
+        note: Aulonocara-derived hybrid line
+      - source:
+          kind: database
+          title: Seriously Fish, Aulonocara stuartgranti (Grant's Peacock)
+          url: https://www.seriouslyfish.com/species/aulonocara-stuartgranti/
+          accessed: 2026-10-12
+        value: aulonocara
+        note: most Aulonocara species hybridise with each other
+      - source:
+          kind: literature
+          title: Elieson, M. The OB Peacock. Cichlid-Forum.com article library (archived copy)
+          url: https://web.archive.org/web/20160308032736/http://www.cichlid-forum.com/articles/ob_peacock.php
+          accessed: 2026-10-12
+        value: aulonocara
+        note: hybrids cross with other cichlids kept with them
+      - source:
+          kind: archive
+          title: cichlids.com forum thread 51840
+          url: https://www.cichlids.com/disc/read.php?2,51840
+          accessed: 2026-10-12
+        value: aulonocara
+        note: all female peacocks interbreed with the dominant male
+      - source:
+          kind: database
+          title: Seriously Fish, Aulonocara jacobfreibergi
+          url: https://www.seriouslyfish.com/species/aulonocara-jacobfreibergi/
+          accessed: 2026-10-12
+        value: aulonocara
+        note: most Aulonocara hybridise with each other
+      - source:
+          kind: archive
+          title: cichlids.com forum thread 49231
+          url: https://www.cichlids.com/disc/read.php?2,49231
+          accessed: 2026-10-12
+        value: aulonocara
+        note: OB peacocks are mbuna-peacock hybrids
+      - source:
+          kind: database
+          title: Seriously Fish, Aulonocara baenschi
+          url: https://www.seriouslyfish.com/species/aulonocara-baenschi/
+          accessed: 2026-10-12
+        value: aulonocara
+        note: same statement
+    verification:
+      method: unanimous
+      votes:
+        agree: 3
+        total: 3
+  coloration:
+    value:
+      baseColors:
+        - orange
+        - red
+        - blue
+        - yellow
+      pattern: mixed
+    confidence: medium
+    rationale: Colour depends on the line. OB males are orange, yellow or blue with dark and blue blotches; Dragon Blood males are red with blue freckle-like markings; Strawberry lines are pink to red, often albino; Red, Tangerine and Fire Fish lines are orange to red. The entry covers all these lines, so the colour set includes yellow besides orange, red and blue, and the pattern ranges from plain to blotched and speckled. Every line shows the peacock body shape, which triggers rivalry with true peacocks.
+    sources:
+      - kind: database
+        title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+        accessed: 2026-10-12
+      - kind: literature
+        title: Schäfer, F. (2021). Aulonocara 'Dragon Blood'. Aquarium Glaser fish archive
+        url: https://aquariumglaser.de/en/fish-archives/aulonocara-dragon-blood-2
+        accessed: 2026-10-12
+      - kind: literature
+        title: LiveAquaria, Dragon Blood Peacock Cichlid care information
+        url: https://www.liveaquaria.com/products/dragon-blood-peacock-cichlid
+        accessed: 2026-10-12
+      - kind: literature
+        title: AquariumSource, Peacock Cichlid care guide
+        url: https://www.aquariumsource.com/peacock-cichlid/
+        accessed: 2026-10-12
+      - kind: archive
+        title: cichlids.com forum thread 46231
+        url: https://www.cichlids.com/disc/read.php?1,46231
+        accessed: 2026-10-12
+      - kind: archive
+        title: cichlids.com forum thread 53413
+        url: https://www.cichlids.com/disc/read.php?2,53413
+        accessed: 2026-10-12
+      - kind: archive
+        title: cichlids.com forum thread 52206
+        url: https://www.cichlids.com/disc/read.php?2,52206
+        accessed: 2026-10-12
+    evidence:
+      - source:
+          kind: database
+          title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+          accessed: 2026-10-12
+        value:
+          baseColors:
+            - orange
+            - red
+            - blue
+          pattern: mixed
+        note: OB, Strawberry and Red peacock lines
+      - source:
+          kind: literature
+          title: Schäfer, F. (2021). Aulonocara 'Dragon Blood'. Aquarium Glaser fish archive
+          url: https://aquariumglaser.de/en/fish-archives/aulonocara-dragon-blood-2
+          accessed: 2026-10-12
+        value:
+          baseColors:
+            - red
+            - orange
+          pattern: mixed
+        note: extremely colourful; hardly two fish alike
+      - source:
+          kind: literature
+          title: LiveAquaria, Dragon Blood Peacock Cichlid care information
+          url: https://www.liveaquaria.com/products/dragon-blood-peacock-cichlid
+          accessed: 2026-10-12
+        value:
+          baseColors:
+            - red
+            - blue
+            - yellow
+          pattern: spots
+        note: Dragon Blood males red with blue freckles; listed colours blue and yellow
+      - source:
+          kind: literature
+          title: AquariumSource, Peacock Cichlid care guide
+          url: https://www.aquariumsource.com/peacock-cichlid/
+          accessed: 2026-10-12
+        value:
+          baseColors:
+            - red
+            - blue
+          pattern: mixed
+        note: OB red with dark blue patches; Strawberry reddish pink
+  feedingSpeed:
+    value: normal
+    confidence: medium
+    rationale: Peacocks hover over the bottom and pick or sift food at a normal pace; they lose out against hasty mbuna but are not slow feeders. The hybrids feed like Aulonocara according to the importer. Single keepers report hesitation with flake food.
+    sources:
+      - kind: literature
+        title: Schäfer, F. (2021). Aulonocara 'Dragon Blood'. Aquarium Glaser fish archive
+        url: https://aquariumglaser.de/en/fish-archives/aulonocara-dragon-blood-2
+        accessed: 2026-10-12
+      - kind: database
+        title: Seriously Fish, Aulonocara stuartgranti (Grant's Peacock)
+        url: https://www.seriouslyfish.com/species/aulonocara-stuartgranti/
+        accessed: 2026-10-12
+      - kind: database
+        title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+        accessed: 2026-10-12
+      - kind: archive
+        title: cichlids.com forum thread 17445
+        url: https://www.cichlids.com/disc/read.php?2,17445
+        accessed: 2026-10-12
+    evidence:
+      - source:
+          kind: literature
+          title: Schäfer, F. (2021). Aulonocara 'Dragon Blood'. Aquarium Glaser fish archive
+          url: https://aquariumglaser.de/en/fish-archives/aulonocara-dragon-blood-2
+          accessed: 2026-10-12
+        value: normal
+        note: feeds like Aulonocara, selective intake of small food
+      - source:
+          kind: database
+          title: Seriously Fish, Aulonocara stuartgranti (Grant's Peacock)
+          url: https://www.seriouslyfish.com/species/aulonocara-stuartgranti/
+          accessed: 2026-10-12
+        value: normal
+        note: parent species browses the bottom; several small meals advised
+      - source:
+          kind: archive
+          title: cichlids.com forum thread 17445
+          url: https://www.cichlids.com/disc/read.php?2,17445
+          accessed: 2026-10-12
+        value: slow
+        note: an OB took flake hesitantly
+  minTank:
+    value:
+      volumeL: 240
+      lengthCm: 120
+      depthCm: 45
+    confidence: medium
+    rationale: One male with four females of 10 to 14 cm needs a tank of at least 120 cm with a 45 cm base depth, about 240 litres. This matches the 120 by 45 cm base recommended for the parent A. stuartgranti; hybrid care sheets ask for at least 120 cm or about 200 litres, and the larger figure suits the livelier temperament of the hybrids.
+    sources:
+      - kind: database
+        title: Seriously Fish, Aulonocara stuartgranti (Grant's Peacock)
+        url: https://www.seriouslyfish.com/species/aulonocara-stuartgranti/
+        accessed: 2026-10-12
+      - kind: database
+        title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+        accessed: 2026-10-12
+      - kind: literature
+        title: LiveAquaria, Dragon Blood Peacock Cichlid care information
+        url: https://www.liveaquaria.com/products/dragon-blood-peacock-cichlid
+        accessed: 2026-10-12
+    evidence:
+      - source:
+          kind: database
+          title: Seriously Fish, Aulonocara stuartgranti (Grant's Peacock)
+          url: https://www.seriouslyfish.com/species/aulonocara-stuartgranti/
+          accessed: 2026-10-12
+        value:
+          volumeL: 243
+          lengthCm: 120
+          depthCm: 45
+        note: parent species
+      - source:
+          kind: database
+          title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+          accessed: 2026-10-12
+        value:
+          volumeL: 200
+          lengthCm: 120
+          depthCm: 40
+        note: 4 ft length; volume and depth not given
+      - source:
+          kind: literature
+          title: LiveAquaria, Dragon Blood Peacock Cichlid care information
+          url: https://www.liveaquaria.com/products/dragon-blood-peacock-cichlid
+          accessed: 2026-10-12
+        value:
+          volumeL: 208
+          lengthCm: 122
+          depthCm: 33
+        note: 55 US gallons
+  lifespanYears:
+    value:
+      min: 6
+      max: 10
+    confidence: low
+    rationale: No reliable source gives a lifespan for the hybrids. A peacock care guide gives 6 to 8 years with good care and occasional fish of 10 years or more, which matches general experience with peacocks of this size.
+    sources:
+      - kind: literature
+        title: AquariumSource, Peacock Cichlid care guide
+        url: https://www.aquariumsource.com/peacock-cichlid/
+        accessed: 2026-10-12
+      - kind: model-knowledge
+        title: General knowledge of Aulonocara husbandry
+    evidence:
+      - source:
+          kind: literature
+          title: AquariumSource, Peacock Cichlid care guide
+          url: https://www.aquariumsource.com/peacock-cichlid/
+          accessed: 2026-10-12
+        value:
+          min: 6
+          max: 8
+        note: occasionally 10 years or more
+  breeding:
+    value: maternal-mouthbrooder
+    confidence: high
+    rationale: Like all Aulonocara, the hybrids are maternal mouthbrooders. The male digs a pit or cleans a flat stone, the female takes the eggs into her mouth right after laying and they are fertilised there while she nibbles at the egg spots on the male's anal fin; she carries the brood for about three to four weeks. The hybrids are fertile and breed readily, also with other peacocks.
+    sources:
+      - kind: database
+        title: Seriously Fish, Aulonocara stuartgranti (Grant's Peacock)
+        url: https://www.seriouslyfish.com/species/aulonocara-stuartgranti/
+        accessed: 2026-10-12
+      - kind: database
+        title: FishBase species summary, Aulonocara baenschi
+        url: https://www.fishbase.se/summary/Aulonocara-baenschi.html
+        accessed: 2026-10-12
+      - kind: database
+        title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+        accessed: 2026-10-12
+      - kind: archive
+        title: cichlids.com forum thread 29565
+        url: https://www.cichlids.com/disc/read.php?2,29565
+        accessed: 2026-10-12
+      - kind: archive
+        title: cichlids.com forum thread 46231
+        url: https://www.cichlids.com/disc/read.php?1,46231
+        accessed: 2026-10-12
+    evidence:
+      - source:
+          kind: database
+          title: Seriously Fish, Aulonocara stuartgranti (Grant's Peacock)
+          url: https://www.seriouslyfish.com/species/aulonocara-stuartgranti/
+          accessed: 2026-10-12
+        value: maternal-mouthbrooder
+        note: parent species
+      - source:
+          kind: database
+          title: FishBase species summary, Aulonocara baenschi
+          url: https://www.fishbase.se/summary/Aulonocara-baenschi.html
+          accessed: 2026-10-12
+        value: maternal-mouthbrooder
+        note: parent species
+      - source:
+          kind: database
+          title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+          accessed: 2026-10-12
+        value: maternal-mouthbrooder
+        note: hybrid peacock
+      - source:
+          kind: archive
+          title: cichlids.com forum thread 29565
+          url: https://www.cichlids.com/disc/read.php?2,29565
+          accessed: 2026-10-12
+        value: maternal-mouthbrooder
+        note: line-bred red peacocks spawned within a day
+  beginnerSuitability:
+    value: moderate
+    confidence: medium
+    rationale: "The hybrids are hardy, captive-bred and eat readily, but they need a large tank, a harem ratio, stable water and careful stocking: they cross with any peacock and some males are aggressive. LiveAquaria and Seriously Fish (for the parent species) rate them moderate."
+    sources:
+      - kind: literature
+        title: LiveAquaria, Dragon Blood Peacock Cichlid care information
+        url: https://www.liveaquaria.com/products/dragon-blood-peacock-cichlid
+        accessed: 2026-10-12
+      - kind: database
+        title: Seriously Fish, Aulonocara stuartgranti (Grant's Peacock)
+        url: https://www.seriouslyfish.com/species/aulonocara-stuartgranti/
+        accessed: 2026-10-12
+      - kind: literature
+        title: Schäfer, F. (2021). Aulonocara 'Dragon Blood'. Aquarium Glaser fish archive
+        url: https://aquariumglaser.de/en/fish-archives/aulonocara-dragon-blood-2
+        accessed: 2026-10-12
+      - kind: database
+        title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+        accessed: 2026-10-12
+      - kind: archive
+        title: cichlids.com forum thread 46147
+        url: https://www.cichlids.com/disc/read.php?2,46147
+        accessed: 2026-10-12
+    evidence:
+      - source:
+          kind: literature
+          title: LiveAquaria, Dragon Blood Peacock Cichlid care information
+          url: https://www.liveaquaria.com/products/dragon-blood-peacock-cichlid
+          accessed: 2026-10-12
+        value: moderate
+        note: care level moderate
+      - source:
+          kind: database
+          title: Seriously Fish, Aulonocara stuartgranti (Grant's Peacock)
+          url: https://www.seriouslyfish.com/species/aulonocara-stuartgranti/
+          accessed: 2026-10-12
+        value: moderate
+        note: parent species, needs a mature, stable tank
+      - source:
+          kind: literature
+          title: Schäfer, F. (2021). Aulonocara 'Dragon Blood'. Aquarium Glaser fish archive
+          url: https://aquariumglaser.de/en/fish-archives/aulonocara-dragon-blood-2
+          accessed: 2026-10-12
+        value: moderate
+        note: temperament requires a large tank
+partners:
+  suitable:
+    - species: Labidochromis caeruleus
+      reason: Calm mbuna of similar size with a different colour pattern; does not provoke the peacock males.
+      condition: Tank of at least 120 cm; OB lines carry mbuna genes, so watch for crosses and remove doubtful fry.
+    - species: Copadichromis borleyi
+      reason: Mid-water planktivore that uses another tank zone and has a different body shape.
+      condition: Tank of at least 150 cm.
+    - species: Cyrtocara moorii
+      reason: Peaceful sand-dwelling haplochromine of moderate temperament with the same water needs.
+      condition: Tank of at least 150 cm.
+    - species: Placidochromis electra
+      reason: Calm, sand-oriented Malawi haplochromine that tolerates peacock males.
+      condition: Tank of at least 150 cm.
+  unsuitable:
+    - species: Aulonocara stuartgranti
+      reason: Crosses with the hybrids; the pure line is lost and males fight as rivals.
+    - species: Aulonocara jacobfreibergi
+      reason: Crosses with the hybrids; females of both are hard to tell apart.
+    - species: Aulonocara baenschi
+      reason: Crosses with the hybrids; the pure line is lost.
+    - species: Melanochromis auratus
+      reason: Very aggressive mbuna that harasses the calmer peacocks.
+    - species: Tropheus moorii
+      reason: Lake Tanganyika aufwuchs feeder with different water needs; it needs a species tank and a low-protein diet.
+profile:
+  overview:
+    text: This entry covers the colourful peacock hybrids sold in the trade under names such as OB peacock, Calico, Dragon Blood, Strawberry, Red peacock or Fire Fish. None of them occurs in nature. They were created in captivity by crossing Aulonocara with each other and with other Lake Malawi cichlids, most likely blotched mbuna and possibly haplochromines, followed by years of line breeding. As a result, the lines differ in colour and temperament, and two fish of the same batch can look quite different. In shape and feeding they resemble true peacocks. They are hardy and bright, but they must never be kept with described Aulonocara species, because they cross with them and spoil pure lines. Their offspring cannot be passed on as a pure species.
+    sources:
+      - kind: literature
+        title: Schäfer, F. (2021). Aulonocara 'Dragon Blood'. Aquarium Glaser fish archive
+        url: https://aquariumglaser.de/en/fish-archives/aulonocara-dragon-blood-2
+        accessed: 2026-10-12
+      - kind: database
+        title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+        accessed: 2026-10-12
+      - kind: literature
+        title: Elieson, M. The OB Peacock. Cichlid-Forum.com article library (archived copy)
+        url: https://web.archive.org/web/20160308032736/http://www.cichlid-forum.com/articles/ob_peacock.php
+        accessed: 2026-10-12
+  habitat:
+    text: The hybrids have no natural range; they are bred on fish farms and by hobbyists. Their ancestors live in Lake Malawi, mainly in the transition zone between rocky shores and open sand, where peacocks hover above the bottom in search of small invertebrates. The lake water is warm, clear and moderately alkaline, with a pH of about 7.7 to 8.6, a low total hardness of 3 to 5 dGH and a somewhat higher carbonate hardness of 5 to 8 dKH. Temperatures range from 21 to 29 C. These are the reference values for the hybrids as well.
+    sources:
+      - kind: literature
+        title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+        url: https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf
+        accessed: 2026-10-12
+      - kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+        url: https://www.fao.org/4/t0473e/T0473E05.htm
+        accessed: 2026-10-12
+      - kind: literature
+        title: Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology and Oceanography 19(5), 730-742 (abstract).
+        url: https://doi.org/10.4319/lo.1974.19.5.0730
+        accessed: 2026-10-12
+      - kind: literature
+        title: Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M., Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and Oceanography 50(2), 727-732.
+        url: https://www.dora.lib4ri.ch/empa/dload/empa:1253/PDF/view
+        accessed: 2026-10-12
+      - kind: database
+        title: Seriously Fish, Aulonocara stuartgranti (Grant's Peacock)
+        url: https://www.seriouslyfish.com/species/aulonocara-stuartgranti/
+        accessed: 2026-10-12
+      - kind: database
+        title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+        accessed: 2026-10-12
+  sizeAndGrowth:
+    text: Adult males of most lines reach about 12 to 14 cm and females stay at about 10 cm, which matches the medium-sized Aulonocara species. Some lines remain smaller, others grow to 15 cm. The fish grow quickly when fed well, and males start to show colour at a few centimetres. Full colour, however, takes a year or more and is strongest in the dominant male. Juveniles of many lines look plain grey or pinkish, and blotched lines show their pattern early.
+    sources:
+      - kind: database
+        title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+        accessed: 2026-10-12
+      - kind: literature
+        title: Schäfer, F. (2021). Aulonocara 'Dragon Blood'. Aquarium Glaser fish archive
+        url: https://aquariumglaser.de/en/fish-archives/aulonocara-dragon-blood-2
+        accessed: 2026-10-12
+      - kind: literature
+        title: LiveAquaria, Dragon Blood Peacock Cichlid care information
+        url: https://www.liveaquaria.com/products/dragon-blood-peacock-cichlid
+        accessed: 2026-10-12
+      - kind: database
+        title: FishBase species summary, Aulonocara stuartgranti
+        url: https://www.fishbase.se/summary/Aulonocara-stuartgranti.html
+        accessed: 2026-10-12
+  husbandry:
+    text: A tank of 120 cm length with a base depth of at least 45 cm suits one male with four or more females; groups with several males need a larger tank. Use fine sand, since peacocks sift the bottom for food, and build stable rock piles that leave open sand between them. Good filtration and regular water changes keep nitrate low. The fish do well at 24 to 28 C and pH 7.5 to 8.6; a carbonate hardness of 5 to 15 dKH keeps the pH stable, and the total hardness does not need to exceed 20 dGH, so moderately hard tap water usually works well. Dark substrate and some shade bring out the colours better than bright white sand.
+    sources:
+      - kind: database
+        title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+        accessed: 2026-10-12
+      - kind: database
+        title: Seriously Fish, Aulonocara stuartgranti (Grant's Peacock)
+        url: https://www.seriouslyfish.com/species/aulonocara-stuartgranti/
+        accessed: 2026-10-12
+      - kind: literature
+        title: OATA (Ornamental Aquatic Trade Association). How to care for African Malawi cichlids. Care sheet, September 2022
+        url: https://ornamentalfish.org/wp-content/uploads/African-Malawi-cichlids-Sept-2022.pdf
+        accessed: 2026-10-12
+  socialBehavior:
+    text: Males are territorial and claim a spawning site, from which they drive away rivals and fish of similar shape and colour. Females live in a loose group. With one male and several females in a large enough tank, chasing remains mostly harmless. Too many males, or too few females, lead to constant fighting and stressed fish. Because some lines carry mbuna ancestry, individuals can be noticeably more aggressive than pure peacocks, and the temperament of a given batch is hard to predict.
+    sources:
+      - kind: database
+        title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+        accessed: 2026-10-12
+      - kind: literature
+        title: Schäfer, F. (2021). Aulonocara 'Dragon Blood'. Aquarium Glaser fish archive
+        url: https://aquariumglaser.de/en/fish-archives/aulonocara-dragon-blood-2
+        accessed: 2026-10-12
+      - kind: archive
+        title: cichlids.com forum thread 15785
+        url: https://www.cichlids.com/disc/read.php?2,15785
+        accessed: 2026-10-12
+  diet:
+    text: In nature their ancestors pick small invertebrates from the sand. In the aquarium these hybrids take almost any food. A good base is a quality sinking pellet or granule for Malawi cichlids, complemented by flake food containing Spirulina. Frozen Mysis, Artemia or mosquito larvae add variety. Feed small portions once or twice a day rather than large meals, because overfeeding protein-rich food can cause digestive problems. Some vegetable matter in the diet helps keep the fish in good condition.
+    sources:
+      - kind: database
+        title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+        accessed: 2026-10-12
+      - kind: database
+        title: Seriously Fish, Aulonocara stuartgranti (Grant's Peacock)
+        url: https://www.seriouslyfish.com/species/aulonocara-stuartgranti/
+        accessed: 2026-10-12
+      - kind: literature
+        title: Schäfer, F. (2021). Aulonocara 'Dragon Blood'. Aquarium Glaser fish archive
+        url: https://aquariumglaser.de/en/fish-archives/aulonocara-dragon-blood-2
+        accessed: 2026-10-12
+      - kind: literature
+        title: Grant, S. M., Dieckhoff, H. W., Mayland, H. J. and Meyer, M. K. (1987). Ecology of Aulonocara Regan, 1922 in Lake Malawi. Courier Forschungsinstitut Senckenberg 94, 131-139 (abstract)
+        url: https://malawicichlids.com/_popup_abs_gdmm87.htm
+        accessed: 2026-10-12
+  breeding:
+    text: Breeding works like in pure peacocks. The male digs a shallow pit or cleans a flat stone and displays to the females. A willing female circles with him, lays a few eggs at a time and picks them up at once; the eggs are fertilised in her mouth while she nibbles at the egg spots on the male's anal fin. She carries the brood for about three to four weeks without eating much. Moving her to a separate tank before release raises the number of surviving fry. The offspring are hybrids and should be sold as such.
+    sources:
+      - kind: database
+        title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+        accessed: 2026-10-12
+      - kind: database
+        title: Seriously Fish, Aulonocara stuartgranti (Grant's Peacock)
+        url: https://www.seriouslyfish.com/species/aulonocara-stuartgranti/
+        accessed: 2026-10-12
+  sexing:
+    text: Adult males are larger, brighter and show longer, pointed dorsal and anal fins with egg spots on the anal fin. Females are smaller with rounded fins. In blotched lines both sexes can show the blotch pattern, and in albino lines such as Strawberry or Dragon Blood the females may show pinkish or reddish tones, which makes sexing harder than in pure peacocks. Venting is the most reliable method.
+    sources:
+      - kind: database
+        title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+        accessed: 2026-10-12
+      - kind: archive
+        title: cichlids.com forum thread 46231
+        url: https://www.cichlids.com/disc/read.php?1,46231
+        accessed: 2026-10-12
+  compatibility:
+    text: "Good tankmates are calm Malawi cichlids of similar size with different colours and body shapes, such as Labidochromis caeruleus, Cyrtocara moorii, Copadichromis borleyi or Placidochromis electra. Never combine them with described Aulonocara species: the females look alike, the fish cross readily and the pure lines are lost. OB lines carry mbuna genes and can cross with mbuna as well, so mbuna tankmates should differ clearly in pattern and doubtful fry should not be passed on. Very aggressive mbuna such as Melanochromis auratus harass them. Cichlids from other lakes, such as Tropheus, need different water and food."
+    sources:
+      - kind: database
+        title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+        accessed: 2026-10-12
+      - kind: database
+        title: Seriously Fish, Aulonocara stuartgranti (Grant's Peacock)
+        url: https://www.seriouslyfish.com/species/aulonocara-stuartgranti/
+        accessed: 2026-10-12
+      - kind: literature
+        title: Elieson, M. The OB Peacock. Cichlid-Forum.com article library (archived copy)
+        url: https://web.archive.org/web/20160308032736/http://www.cichlid-forum.com/articles/ob_peacock.php
+        accessed: 2026-10-12
+      - kind: archive
+        title: cichlids.com forum thread 51840
+        url: https://www.cichlids.com/disc/read.php?2,51840
+        accessed: 2026-10-12
+      - kind: archive
+        title: cichlids.com forum thread 49231
+        url: https://www.cichlids.com/disc/read.php?2,49231
+        accessed: 2026-10-12
+  problems:
+    text: "The main risk lies in keeping them with pure peacocks: the resulting offspring are hybrids that often end up in shops without being labelled. A frequent keeping mistake is a tank with many males and few females, which leads to fighting. Overfeeding, especially with rich food, together with poor water quality, can trigger bloat, which shows as a swollen belly, loss of appetite and white stringy faeces; frequent water changes and moderate feeding help prevent it. Hybrids of uncertain background vary in temperament, so a new batch should be watched closely."
+    sources:
+      - kind: database
+        title: Fishkeeper (Maidenhead Aquatics) fish databank, Hybrid Peacock (Aulonocara sp.)
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+        accessed: 2026-10-12
+      - kind: literature
+        title: Elieson, M. The OB Peacock. Cichlid-Forum.com article library (archived copy)
+        url: https://web.archive.org/web/20160308032736/http://www.cichlid-forum.com/articles/ob_peacock.php
+        accessed: 2026-10-12
+      - kind: archive
+        title: cichlids.com forum thread 51840
+        url: https://www.cichlids.com/disc/read.php?2,51840
+        accessed: 2026-10-12
+provenance:
+  runs:
+    - role: generator
+      model: claude-opus-5-5
+      date: 2026-10-12
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-12
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-12
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-12
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-12
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-12
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-12
+    - role: adjudicator
+      model: claude-opus-5-5
+      date: 2026-10-12
+  disagreements:
+    - field: taxonomy.parents
+      proposals:
+        - value: none
+          by: generator
+        - value: none
+          by: checker-a
+        - value:
+            - aulonocara-stuartgranti
+            - aulonocara-baenschi
+            - aulonocara-jacobfreibergi
+          by: checker-b
+      decision: none
+      rationale: No line has a documented pedigree, and the OB lines also descend from an unnamed mbuna, so a parent list would claim more than the sources show. The usually named Aulonocara parents are mentioned in the taxonomy note instead.
+    - field: features.maxSizeCm
+      proposals:
+        - value:
+            male: 13
+            female: 10
+          by: generator
+        - value:
+            male: 15
+            female: 11
+          by: checker-a
+        - value:
+            male: 14
+            female: 10
+          by: checker-b
+      decision:
+        male: 14
+        female: 10
+      rationale: Hybrid sources give 12 to 15 cm without sex; 15 cm is the upper end of the ranges and 12 to 13 cm the common size, so 14 cm is the typical well-kept male. Two of three proposals and two sources with sexed values give 10 cm for females.
+    - field: features.aggressionConspecific
+      proposals:
+        - value: 2
+          by: generator
+        - value: 3
+          by: checker-a
+        - value: 2
+          by: checker-b
+      decision: 2
+      rationale: The rubric level describes fish kept with the recommended ratio and space; with one male and four or more females injuries are rare (Seriously Fish, Fishkeeper, LiveAquaria for the OB line). Level 3 reports concern single lines, single males or wrong ratios and are named in the rationale.
+    - field: features.coloration.value.baseColors
+      proposals:
+        - value:
+            - orange
+            - red
+            - blue
+            - white
+            - yellow
+          by: generator
+        - value:
+            - red
+            - orange
+            - blue
+          by: checker-a
+        - value:
+            - orange
+            - red
+            - blue
+          by: checker-b
+      decision:
+        - orange
+        - red
+        - blue
+        - yellow
+      rationale: "The entry covers all trade lines, including yellow OB peacocks, and LiveAquaria lists blue and yellow for Dragon Blood; leaving out yellow would hide the likeness to yellow fish in the compatibility check. White is not kept: LiveAquaria describes Dragon Blood males as red with blue freckles, not as pale or white fish."
+    - field: features.beginnerSuitability
+      proposals:
+        - value: moderate
+          by: generator
+        - value: moderate
+          by: checker-a
+        - value: easy
+          by: checker-b
+      decision: moderate
+      rationale: The fish are hardy, but the large tank, the harem ratio, the crossing risk with any peacock and the aggressive individuals require planning; LiveAquaria and Seriously Fish rate them moderate.
+    - field: features.diet.value.foods
+      proposals:
+        - value:
+            - fine sinking pellets and granules
+            - flake food with Spirulina
+            - frozen Mysis, Artemia and mosquito larvae
+            - some vegetable matter
+          by: generator
+        - value:
+            - fine sinking pellets
+            - flake
+            - frozen Artemia
+            - Mysis
+            - chironomid larvae
+            - spirulina-based food
+          by: checker-a
+        - value:
+            - fine pellets with vegetable content
+            - bloodworm
+            - brine shrimp
+            - mysis
+            - daphnia
+          by: checker-b
+      decision:
+        - fine sinking pellets and granules
+        - flake food with Spirulina
+        - frozen Mysis, Artemia and mosquito larvae
+        - some vegetable matter
+      rationale: Hard feature decided by the vote count (unanimous, 3 of 3) on type invertivore and bloatSensitive false; the food list of the decided value is kept as the vote count gives it. The lists differ in wording only.
+    - field: features.ph.tolerance
+      proposals:
+        - value:
+            min: 7.5
+            max: 8.6
+          by: generator
+        - value:
+            min: 7.5
+            max: 8.6
+          by: tiebreaker-1
+        - value:
+            min: 7.2
+            max: 9
+          by: tiebreaker-2
+        - value:
+            min: 7.5
+            max: 8.6
+          by: tiebreaker-3
+        - value:
+            min: 7.5
+            max: 8.6
+          by: tiebreaker-4
+      decision:
+        min: 7.5
+        max: 8.6
+      rationale: Decided by the vote count as qualified majority (4 of 5 votes agree on 7.5 to 8.6). The deviating vote spans the extremes of single sources (7.2 in FishBase for A. baenschi, 9.0 in Seriously Fish).
+    - field: features.ghDgh.tolerance
+      proposals:
+        - value:
+            min: 3
+            max: 20
+          by: generator
+        - value:
+            min: 3
+            max: 25
+          by: tiebreaker-1
+        - value:
+            min: 3
+            max: 25
+          by: tiebreaker-2
+        - value:
+            min: 3
+            max: 25
+          by: tiebreaker-3
+        - value:
+            min: 3
+            max: 20
+          by: tiebreaker-4
+      decision:
+        min: 3
+        max: 20
+      rationale: "Decided by the vote count as the most cautious value (conservative): the upper limits of 20 and 25 dGH differ by more than 2 dGH, the top proposal has 3 of 5 votes, so the intersection of all votes, 3 to 20 dGH, applies with low confidence."
+    - field: features.khDkh.tolerance
+      proposals:
+        - value:
+            min: 5
+            max: 15
+          by: generator
+        - value:
+            min: 5
+            max: 15
+          by: tiebreaker-1
+        - value:
+            min: 5
+            max: 18
+          by: tiebreaker-2
+        - value:
+            min: 5
+            max: 15
+          by: tiebreaker-3
+        - value:
+            min: 5
+            max: 15
+          by: tiebreaker-4
+      decision:
+        min: 5
+        max: 15
+      rationale: Decided by the vote count as qualified majority (4 of 5 votes agree on 5 to 15). The deviating vote of 18 dKH has no source that states this upper limit.

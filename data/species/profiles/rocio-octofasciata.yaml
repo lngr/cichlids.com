@@ -1,0 +1,1390 @@
+schemaVersion: 1
+id: rocio-octofasciata
+legacyIds: [ 702 ]
+status: described
+
+taxonomy:
+  validName: Rocio octofasciata
+  genus: Rocio
+  species: octofasciata
+  author: (Regan, 1903)
+  source: &cof
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes: species of the genus Rocio"
+    url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Rocio
+    accessed: 2026-10-12
+  synonyms:
+    - name: Heros octofasciatus Regan, 1903
+      note: original combination; type locality Río de Sarabia, Coatzacoalcos drainage, Veracruz, Mexico
+    - name: Cichlasoma octofasciatum
+      note: long-standing combination in the hobby literature
+    - name: Nandopsis octofasciata
+    - name: Archocentrus octofasciatus
+    - name: Cichlosoma biocellatum Regan, 1909
+      note: junior synonym with an erroneous type locality at Manaus, Brazil; widely used in older aquarium literature
+    - name: Cichlasoma hedricki Meek, 1904
+      note: junior synonym
+  legacyNames:
+    - Cichlasoma octofasciatum
+  note: >-
+    The Catalog of Fishes lists the species as valid in Rocio (Schmitter-Soto 2007) with a distribution in southern Mexico, Belize, Guatemala and Honduras, and files all former combinations under the epithet in the current genus. Rocio gemmata from cenotes of northern Quintana Roo is valid in the Catalog of Fishes but treated as a synonym of R. octofasciata by Artigas Azas (2018), a view the Cichlid Room Companion follows; this profile follows the Catalog of Fishes and does not list it as a synonym.
+
+names:
+  trade:
+    en: [ Jack Dempsey, Jack Dempsey cichlid ]
+    de: [ Achtbindenbuntbarsch, Jack Dempsey ]
+    es-419: [ Mojarra castarrica, Riquiraqui, Jack Dempsey ]
+    pt-BR: [ Jack Dempsey ]
+
+variants:
+  - name: Electric Blue Jack Dempsey
+    kind: color-morph
+    note: Bright blue aquarium strain not known from the wild; it stays smaller than the wild type and is reported as less aggressive. Its origin is debated, a fixed mutation according to some sources and a hybrid according to others.
+  - name: Gold Jack Dempsey
+    kind: color-morph
+    note: Yellowish aquarium strain with the body shape and behaviour of the wild form.
+
+features:
+  origin:
+    value:
+      continent: Central America
+      region: Atlantic slope from Veracruz (Mexico) through the Grijalva-Usumacinta basin, the Yucatán Peninsula, Belize and Guatemala to the Ulúa basin in Honduras
+      waterbody: null
+      localities:
+        - Río de Sarabia, Coatzacoalcos drainage, Veracruz (type locality)
+        - Río Papaloapan drainage, Veracruz
+        - Grijalva drainage near Teapa, Tabasco
+        - Lacantún basin and the Nahá and Metzabok lakes, Chiapas (Usumacinta basin)
+        - Laguna Caobas, Laguna Bacalar and the Sian Ka'an wetlands, Quintana Roo
+        - Petenes wetlands, Campeche
+        - Lago Petén Itzá, Lake Yaxhá and Río de la Pasión, Petén
+        - Belize River
+        - Lago de Izabal and the Río Dulce basin, Izabal
+        - Río Motagua, Río Chamelecón and Río Ulúa, Honduras
+    confidence: high
+    rationale: >-
+      The Catalog of Fishes, FishBase, Seriously Fish and the revision by Schmitter-Soto (2007) agree on a native range along the Atlantic slope from southern Mexico to the Ulúa in Honduras; Seriously Fish extends it slightly north to the Río Actopan, where part of the populations may be introduced. Museum records in GBIF confirm the species in Lago Petén Itzá (Santa Elena), Laguna Bacalar, Lago Nahá and above Lago de Izabal, and field surveys collected it in Laguna Caobas, the Lacantún basin, Lake Yaxhá and the wetlands of Sian Ka'an and the Petenes. It lives in rivers, lagoons, swamps, lakes and sinkholes rather than in one lake, so no water body applies. Mexico is geographically North America, but the range belongs to the Central American cichlid fauna. Feral populations outside the native range are not part of the origin.
+    sources:
+      - *cof
+      - &fishbase
+        kind: database
+        title: "FishBase: Rocio octofasciata species summary"
+        url: https://www.fishbase.se/summary/Rocio-octofasciata.html
+        accessed: 2026-10-12
+      - &sf
+        kind: database
+        title: "Seriously Fish: Rocio octofasciata (Jack Dempsey Cichlid)"
+        url: https://www.seriouslyfish.com/species/rocio-octofasciata/
+        accessed: 2026-10-12
+      - &schmitter07
+        kind: literature
+        title: "Schmitter-Soto (2007): Rocio octofasciata n. comb., treatment in Zootaxa 1603"
+        url: https://zenodo.org/records/6248797
+        accessed: 2026-10-12
+      - &gbif_gt
+        kind: database
+        title: "GBIF occurrence records of Rocio octofasciata in Guatemala (museum lots UMMZ, UF, FMNH)"
+        url: https://api.gbif.org/v1/occurrence/search?scientificName=Rocio%20octofasciata&country=GT
+        accessed: 2026-10-12
+      - &gbif
+        kind: database
+        title: "GBIF occurrence records of Rocio octofasciata (taxon key 2369703), localities and museum field notes"
+        url: https://api.gbif.org/v1/occurrence/search?taxonKey=2369703
+        accessed: 2026-10-12
+      - &larre
+        kind: literature
+        title: "Larre-Campuzano et al. (2023): Variation in patterns of fish assemblage and their environmental correlates in a tropical river basin from the Gulf of Mexico slope. Neotropical Ichthyology 21(2): e220098"
+        url: https://www.ni.bio.br/content/v21n2/1982-0224-2022-0098/1982-0224-ni-21-02-e220098.xml
+        accessed: 2026-10-12
+      - &yaxha
+        kind: literature
+        title: "Barrientos, Elías & Quintana (2015): Fishes from Lake Yaxhá, Mayan Biosphere Reserve, Petén, Guatemala. Check List 11(5): 1751"
+        url: https://checklist.pensoft.net/article/19350/download/pdf/
+        accessed: 2026-10-12
+
+  temperatureC:
+    value: { min: 24, max: 30 }
+    confidence: medium
+    verification:
+      method: unanimous
+      votes: { agree: 3, total: 3 }
+    rationale: >-
+      The natural range rests on habitat measurements from Lago Petén Itzá, the Usumacinta basin, Quintana Roo and Lake Izabal. Laguna Caobas (Quintana Roo), where the species was collected, measured 25.1 to 29.3 °C over the dry and rainy season; the zone and season means of southern Quintana Roo lie between 24.7 and 30 °C. Lago Petén Itzá, with museum records of the species, measured 25.4 to 30 °C above the thermocline. The Lacantún sites of the Usumacinta basin lay between 23.6 and 29.6 °C, with 23.8 °C at the stream where the species was caught. Lake Izabal and its swamps and rivers typically read 25 to 31 °C, with extremes of 23 to 33 °C. All three votes agree (25 to 30, 24 to 30 and 24 to 30 °C), and the decided range is their median, 24 to 30 °C. FishBase gives 22 to 30 °C from an aquarium book (Conkel 1993), which is no habitat measurement. Northern populations in Veracruz probably see cooler winter water, but no measurement was found.
+    sources:
+      - &valtierra
+        kind: literature
+        title: "Valtierra-Vega & Schmitter-Soto (2000): Hábitos alimentarios de las mojarras (Perciformes: Cichlidae) de la laguna Caobas, Quintana Roo, México. Revista de Biología Tropical 48(2-3): 503-508"
+        url: https://tropicalstudies.org/rbt/attachments/volumes/vol48-2/22_Valtierra_Mojarras.pdf
+        accessed: 2026-10-12
+      - &perez
+        kind: literature
+        title: "Pérez et al. (2010): Distribution, diversity and ecology of modern freshwater ostracodes, and hydrochemical characteristics of Lago Petén Itzá, Guatemala. Journal of Limnology 69(1): 146-159"
+        url: https://www.jlimnol.it/jlimnol/article/view/jlimnol.2010.146
+        accessed: 2026-10-12
+      - &schmitter96
+        kind: literature
+        title: "Schmitter-Soto & Gamboa-Pérez (1996): Composición y distribución de peces continentales en el sur de Quintana Roo, Península de Yucatán, México. Revista de Biología Tropical 44(1): 199-212"
+        url: https://tropicalstudies.org/rbt/attachments/volumes/vol44-1/21_Schmitter_Peces_Mexico.pdf
+        accessed: 2026-10-12
+      - *larre
+      - &brinson
+        kind: literature
+        title: "Brinson (1973): Organic matter budget and energy flow of a tropical lowland aquatic ecosystem. PhD dissertation, University of Florida (Lake Izabal, Table 6)"
+        url: https://archive.org/details/organicmatterbud00brin
+        accessed: 2026-10-12
+      - *gbif_gt
+      - *fishbase
+    evidence:
+      - source: *valtierra
+        value: { min: 25.1, max: 29.3 }
+        note: Laguna Caobas, bottom water at collecting sites, February to July 1995
+      - source: *perez
+        value: { min: 25.4, max: 30 }
+        note: Lago Petén Itzá water column above the thermocline, August, November and February profiles
+      - source: *schmitter96
+        value: { min: 24.7, max: 30 }
+        note: southern Quintana Roo, zone and season means; minimum in the western freshwater zone in the dry season
+      - source: *larre
+        value: { min: 23.6, max: 29.6 }
+        note: Lacantún basin sites, 2017 to 2019; 23.8 at the stream with the species
+      - source: *brinson
+        value: { min: 25, max: 31 }
+        note: typical values of lake, swamp, river and distributary stations; extremes 23 to 33
+      - source: *fishbase
+        value: { min: 22, max: 30 }
+        note: taken from an aquarium book, not a habitat measurement
+    tolerance:
+      value: { min: 22, max: 30 }
+      confidence: low
+      verification:
+        method: conservative
+        votes: { agree: 3, total: 5 }
+      rationale: >-
+        Five votes were cast: two proposed 20 to 31 °C (the lower bound of Seriously Fish and an upper bound raised to the warm-season lake temperatures of up to 31.3 °C at Laguna Bacalar and 31.4 °C at Lake Izabal), three proposed 22 to 30 °C. Without a qualified majority the tolerance is the intersection of all votes, 22 to 30 °C, which contains the natural range of 24 to 30 °C. Most care sources share these bounds: FishBase (after an aquarium book), FishProfiles, Fishkeeping World, Aquarium Source and Wikipedia give 22 to 30 °C, Fishkeeper and Aquarium Guide 22 to 28 °C, Seriously Fish 20 to 30 °C, and narrower comfort bands of 24 to 28 °C appear in several guides. Physiological limits lie far outside: a mean lower lethal temperature of 8 °C, acclimation between 10 and 35 °C and loss of equilibrium from about 34 °C, which are short-term limits and not years of healthy keeping.
+      sources:
+        - *sf
+        - *fishbase
+        - &fishprofiles
+          kind: database
+          title: "FishProfiles.com: Rocio octofasciatum"
+          url: https://fishprofiles.com/profiles/freshwater/Cichlids/Rocio_octofasciatum
+          accessed: 2026-10-12
+        - &fishkeeper
+          kind: literature
+          title: "Fishkeeper (Maidenhead Aquatics): Jack Dempsey"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jack-dempsey
+          accessed: 2026-10-12
+        - &pfk
+          kind: literature
+          title: "Practical Fishkeeping: Blue Jack Dempsey, Rocio octofasciata (Matt Clarke)"
+          url: https://www.practicalfishkeeping.co.uk/features/blue-jack-dempsey-rocio-octofasciata/
+          accessed: 2026-10-12
+        - &schaefer
+          kind: literature
+          title: "Schaefer: Jack Dempsey (abridged from Aqualog NEWS 105), my-fish.org"
+          url: https://www.my-fish.org/jack-dempsey/
+          accessed: 2026-10-12
+        - &aquaticarts
+          kind: literature
+          title: "Aquatic Arts: Jack Dempsey Cichlid (Rocio octofasciata), tank bred, care notes"
+          url: https://aquaticarts.com/products/jack-dempsey-cichlid-rocio-octofasciata-tank-bred
+          accessed: 2026-10-12
+        - &aqguide
+          kind: database
+          title: "Aquarium Guide: Rocio octofasciata"
+          url: https://www.aquarium-guide.de/rocio_octofasciata.htm
+          accessed: 2026-10-12
+        - &fishlore
+          kind: literature
+          title: "FishLore: Jack Dempsey fish profile"
+          url: https://www.fishlore.com/profile-jackdempsey.htm
+          accessed: 2026-10-12
+        - &fkworld
+          kind: literature
+          title: "Fishkeeping World: Jack Dempsey Fish Care and Overview"
+          url: https://www.fishkeepingworld.com/jack-dempsey/
+          accessed: 2026-10-12
+        - &wikipedia
+          kind: literature
+          title: "Wikipedia: Jack Dempsey (fish)"
+          url: https://en.wikipedia.org/wiki/Jack_Dempsey_(fish)
+          accessed: 2026-10-12
+        - &aqsource
+          kind: literature
+          title: "AquariumSource: Jack Dempsey Fish care guide"
+          url: https://www.aquariumsource.com/jack-dempsey-fish
+          accessed: 2026-10-12
+        - &hepper
+          kind: literature
+          title: "Hepper: Jack Dempsey care guide"
+          url: https://articles.hepper.com/jack-dempsey/
+          accessed: 2026-10-12
+        - &gomez
+          kind: literature
+          title: "Gómez & Volpedo (2017): Tolerancia térmica de dos cíclidos neotropicales Rocio octofasciata (Regan, 1903) y Australoheros facetus (Jenyns, 1842). Biología Acuática 32: 24-31"
+          url: https://revistas.unlp.edu.ar/bacuatica/article/download/6591/6420/21009
+          accessed: 2026-10-12
+        - &shafland
+          kind: literature
+          title: "Shafland & Pestrak (1982): Lower lethal temperatures for fourteen non-native fishes in Florida. Environmental Biology of Fishes 7(2): 149-156 (abstract)"
+          url: https://agris.fao.org/search/en/providers/122514/records/647124623c73b155c8498162
+          accessed: 2026-10-12
+        - &matzuk
+          kind: literature
+          title: "Matzuk (2020): Water chemistry and lake dynamics of Laguna Bacalar, Quintana Roo, Mexico. MSc thesis, University of Wisconsin-Milwaukee"
+          url: https://dc.uwm.edu/etd/2562
+          accessed: 2026-10-12
+        - *perez
+        - *gbif
+      evidence:
+        - source: *sf
+          value: { min: 20, max: 30 }
+          note: aquarium recommendation
+        - source: *fishbase
+          value: { min: 22, max: 30 }
+          note: after an aquarium book (Conkel 1993)
+        - source: *fishprofiles
+          value: { min: 22, max: 30 }
+          note: aquarium recommendation
+        - source: *fishkeeper
+          value: { min: 22, max: 28 }
+          note: aquarium recommendation
+        - source: *aqguide
+          value: { min: 22, max: 28 }
+          note: aquarium recommendation
+        - source: *fkworld
+          value: { min: 22, max: 30 }
+          note: aquarium recommendation
+        - source: *wikipedia
+          value: { min: 22, max: 30 }
+          note: preferred range; mentions short-term survival down to 8 to 10 °C
+        - source: *aqsource
+          value: { min: 22, max: 30 }
+          note: care guide
+        - source: *pfk
+          value: { min: 25, max: 28 }
+          note: aquarium recommendation for the blue form
+        - source: *aquaticarts
+          value: { min: 25, max: 28 }
+          note: retailer care sheet
+        - source: *schaefer
+          value: { min: 22, max: 26 }
+          note: routine care temperature
+        - source: *fishlore
+          value: { min: 24, max: 27 }
+          note: narrow comfort band
+        - source: *hepper
+          value: { min: 24, max: 28 }
+          note: recommended band; warns against water below 22 °C
+        - source:
+            kind: database
+            title: "Aqua-Fish.net: Jack Dempsey Cichlid care guide"
+            url: https://www.aqua-fish.net/show.php?h=jackdempsey
+          value: { min: 25, max: 28 }
+          note: narrow aquarium recommendation
+        - source: *matzuk
+          value: { min: 25.8, max: 31.3 }
+          note: monthly lake means February to November 2015, natural habitat
+        - source: *gomez
+          value: { min: 10, max: 35 }
+          note: laboratory acclimation range, a short-term physiological limit
+
+  ph:
+    value: { min: 7.0, max: 8.0 }
+    confidence: low
+    verification:
+      method: conservative
+      votes: { agree: 2, total: 6 }
+    rationale: >-
+      The natural range rests on habitat measurements from Lago Petén Itzá, the Grijalva and Usumacinta basins, Quintana Roo and Lake Izabal, and these waters differ. Lago Petén Itzá surface water reads 8.2 to 8.5. The Grijalva near Teapa measured 7.7 to 8.5 in the channel and 6.8 to 7.2 in a spring; the lower Usumacinta 7.5 to 8.9 at three bridge sites and its floodplain lagoons 6.9 to 7.4; the Lacantún sites 7.3 to 8.1. In Quintana Roo Laguna Caobas ranged from 6.55 to 8.23 (mean 6.99), the zone and season means of the south lie between 6.6 and 7.7, the Bacalar waters between 6.5 and 7.8, and the Sian Ka'an pools, where the species is abundant, reach seasonal means of 7.2 to 9.0. Lago de Izabal averages 7.8 at the surface, while a 1970s survey read mostly 6.0 to 7.0 with a meter accurate only to 0.5 units. The six votes proposed 6.5 to 8.5 (twice), 7.0 to 8.0, 6.0 to 8.0, 6.5 to 9.0 and 7.0 to 8.5; no proposal reached a qualified majority, so the value is the most cautious one, the intersection of all votes, 7.0 to 8.0. It is the core that every vote contains; many habitats of the species are somewhat more alkaline or slightly acidic. FishBase gives 7.0 to 8.0 from a trait database, not from field measurements.
+    sources:
+      - *perez
+      - &musalem
+        kind: literature
+        title: "Musalem-Castillejos et al. (2018): Water quality of the Grijalva river on the Chiapas-Tabasco border. Ecosistemas y Recursos Agropecuarios 5(13): 55-64"
+        url: https://era.ujat.mx/index.php/rera/article/download/1334/947/9459
+        accessed: 2026-10-12
+      - &palma
+        kind: literature
+        title: "Palma-López et al. (2017): Calidad de agua para riego en dos zonas de Tabasco, México, con potencial para cultivar palma de aceite. Agroproductividad 10(12): 64-70"
+        url: https://mail.revista-agroproductividad.org/index.php/agroproductividad/article/download/39/32/57
+        accessed: 2026-10-12
+      - &salcedo
+        kind: literature
+        title: "Salcedo-Garduño et al.: Physicochemical and microbiological quality of the lower Usumacinta River. Agroproductividad 15(8)"
+        url: https://revista-agroproductividad.org/index.php/agroproductividad/article/view/2205
+        accessed: 2026-10-12
+      - *larre
+      - &vallejo
+        kind: literature
+        title: "Vallejo, Rodiles-Hernández et al. (2011): Inventario de los peces del sistema lacustre del Área de Protección de Flora y Fauna Metzabok, Selva Lacandona, Chiapas, México. ECOSUR report"
+        url: https://agua.org.mx/wp-content/uploads/2017/06/Inventario-de-los-peces-del-sistema-lacustre-del-%C3%81rea-de-Protecci%C3%B3n-de-Flora-y-Fauna-Metzabok-selva-lacandona-Chiapas-M%C3%A9xico.pdf
+        accessed: 2026-10-12
+      - *valtierra
+      - *schmitter96
+      - *matzuk
+      - &escalera
+        kind: literature
+        title: "Escalera-Vázquez & Zambrano (2010): The effect of seasonal variation in abiotic factors on fish community structure in temporary and permanent pools in a tropical wetland. Freshwater Biology 55: 2557-2569"
+        url: https://ru.dgb.unam.mx/bitstream/20.500.14330/TES01000671722/3/0671722_A1.pdf
+        accessed: 2026-10-12
+      - &machorro
+        kind: literature
+        title: "Machorro Sagastume (1996): Water quality at Lago de Izabal, Guatemala: geochemical characterization and assessment of trophic status. PhD dissertation, University of Texas at El Paso (abstract)"
+        url: https://scholarworks.utep.edu/dissertations/AAI9718114
+        accessed: 2026-10-12
+      - *brinson
+      - &gbif_peten
+        kind: database
+        title: "GBIF occurrence 624091856, UF 39387, Lago Petén Itzá, Santa Elena (1980)"
+        url: https://www.gbif.org/occurrence/624091856
+        accessed: 2026-10-12
+      - &gbif_bacalar
+        kind: database
+        title: "GBIF occurrence 2250875471, ECOSUR ECOCH5476, Bacalar lagoon, Rancho Pantoja (2005)"
+        url: https://www.gbif.org/occurrence/2250875471
+        accessed: 2026-10-12
+      - &gbif_izabal
+        kind: database
+        title: "GBIF occurrence 1024513559, AUM 19421, Río Los Limones above Lago de Izabal (1979)"
+        url: https://www.gbif.org/occurrence/1024513559
+        accessed: 2026-10-12
+      - &gbif_naha
+        kind: database
+        title: "GBIF occurrence 2630135391, ECOSUR 6989, Lago Nahá, Chiapas (2011)"
+        url: https://www.gbif.org/occurrence/2630135391
+        accessed: 2026-10-12
+      - *gbif
+      - *fishbase
+    evidence:
+      - source: *perez
+        value: { min: 8.2, max: 8.5 }
+        note: Lago Petén Itzá surface water, November 2005 and February 2008
+      - source: *musalem
+        value: { min: 6.8, max: 8.5 }
+        note: Grijalva channel 7.7 to 8.5, spring 6.8 to 7.2
+      - source: *salcedo
+        value: { min: 7.5, max: 8.9 }
+        note: lower Usumacinta, surface water at three bridge sites, rainy and dry season
+      - source: *palma
+        value: { min: 6.9, max: 7.7 }
+        note: Usumacinta river and floodplain lagoons, January 2008
+      - source: *larre
+        value: { min: 7.3, max: 8.1 }
+        note: Lacantún basin sites
+      - source: *vallejo
+        value: { min: 7.7, max: 8.4 }
+        note: Nahá and Metzabok lakes and streams, 12 sites in 2011
+      - source: *valtierra
+        value: { min: 6.55, max: 8.23 }
+        note: Laguna Caobas, February to July 1995, mean 6.99
+      - source: *schmitter96
+        value: { min: 6.9, max: 7.7 }
+        note: seasonal means of southern Quintana Roo waters
+      - source: *schmitter96
+        value: { min: 6.6, max: 7.7 }
+        note: zone and season means of 69 localities, not single readings
+      - source: *matzuk
+        value: { min: 6.5, max: 7.8 }
+        note: Laguna Bacalar lake water 6.8 to 7.8, springs down to 6.5
+      - source: *matzuk
+        value: { min: 6.6, max: 7.7 }
+        note: waters of the Bacalar region
+      - source: *escalera
+        value: { min: 7.2, max: 9.0 }
+        note: Sian Ka'an wetland pools, seasonal means 2007 to 2009; species abundant in permanent pools
+      - source: *machorro
+        value: { min: 7.0, max: 8.0 }
+        note: Lago de Izabal, annual mean 7.8 at the surface, about 7 in stratified bottom water
+      - source: *brinson
+        value: { min: 5.5, max: 7.0 }
+        note: typical values of swamp, river and lake stations of the Izabal basin
+      - source: *brinson
+        value: { min: 5.6, max: 8.25 }
+        note: 1972 extremes in the lake; meter accuracy 0.5 units
+      - source: *gbif
+        value: { min: 6.0, max: 6.0 }
+        note: one 1948 field note, Tonalá floodplain lagoon, recorded as pH 6.0 or less
+      - source: *fishbase
+        value: { min: 7.0, max: 8.0 }
+        note: environment field from a trait database, no field measurement
+    tolerance:
+      value: { min: 6.5, max: 8.0 }
+      confidence: low
+      verification:
+        method: conservative
+        votes: { agree: 2, total: 5 }
+      rationale: >-
+        Five votes were cast: 6.5 to 9.0 (care range extended to the alkaline Sian Ka'an and Petén Itzá waters), 6.0 to 8.5 twice (lower bound from care sources that accept pH 6, upper bound raised to the habitat values of up to 8.5) and 6.5 to 8.0 twice (the bounds shared by Seriously Fish and most care sheets). Without a qualified majority the tolerance is the intersection of all votes, 6.5 to 8.0, which contains the natural range of 7.0 to 8.0. Seriously Fish gives 6.5 to 8.0; FishBase, Fishkeeper, FishProfiles and Practical Fishkeeping 7.0 to 8.0; AquariumSource, FishLore and the Aqualog text 6 to 8; Aqua-Fish.net reaches 8.5. Guides that recommend 6.0 to 7.0 contradict the habitat data. Wild fish live permanently at pH 8.2 to 8.5 in Lago Petén Itzá, so the upper bound is a cautious care limit rather than a physiological one.
+      sources:
+        - *sf
+        - *fishbase
+        - *fishkeeper
+        - *fishprofiles
+        - *pfk
+        - *schaefer
+        - *aqsource
+        - *aquaticarts
+        - *fishlore
+        - *aqguide
+        - &aquafish
+          kind: database
+          title: "Aqua-Fish.net: Jack Dempsey Cichlid care guide"
+          url: https://www.aqua-fish.net/show.php?h=jackdempsey
+          accessed: 2026-10-12
+        - *hepper
+        - *perez
+        - *escalera
+      evidence:
+        - source: *sf
+          value: { min: 6.5, max: 8.0 }
+          note: aquarium recommendation
+        - source: *fishbase
+          value: { min: 7.0, max: 8.0 }
+        - source: *fishkeeper
+          value: { min: 7.0, max: 8.0 }
+          note: aquarium recommendation, described as adaptable
+        - source: *fishprofiles
+          value: { min: 7.0, max: 8.0 }
+          note: aquarium recommendation
+        - source: *pfk
+          value: { min: 7.0, max: 8.0 }
+          note: aquarium recommendation for the blue form
+        - source: *aqsource
+          value: { min: 6.0, max: 8.0 }
+          note: care guide
+        - source: *schaefer
+          value: { min: 6.0, max: 8.0 }
+          note: breeder experience, water values of minor importance
+        - source: *fishlore
+          value: { min: 6.0, max: 8.0 }
+          note: aquarium recommendation
+        - source: *aquaticarts
+          value: { min: 6.5, max: 7.5 }
+          note: retailer care sheet
+        - source: *aqguide
+          value: { min: 6.5, max: 7.5 }
+          note: aquarium recommendation
+        - source: *aquafish
+          value: { min: 7.0, max: 8.5 }
+          note: aquarium recommendation
+        - source:
+            kind: literature
+            title: "Aquainfo: Rocio octofasciata"
+            url: https://aquainfo.nl/en/article/rocio-octofasciata-jack-dempsey/
+          value: { min: 6.5, max: 7.0 }
+        - source: *fkworld
+          value: { min: 6.0, max: 7.0 }
+          note: aquarium recommendation, below the habitat values
+        - source: *wikipedia
+          value: { min: 6.0, max: 7.0 }
+          note: preferred range, below the habitat values
+        - source: *hepper
+          value: { min: 6.0, max: 7.0 }
+          note: care guide favouring acidic water
+        - source: *escalera
+          value: { min: 7.2, max: 9.0 }
+          note: wild population in the Sian Ka'an pools
+
+  ghDgh:
+    value: { min: 9, max: 17 }
+    confidence: low
+    verification:
+      method: qualified-majority
+      votes: { agree: 4, total: 6 }
+    rationale: >-
+      The natural range rests on habitat measurements from Lago Petén Itzá, the Grijalva and Usumacinta basins, Quintana Roo and Lake Izabal. Lago Petén Itzá surface water holds 2.9 to 4.3 meq/L calcium and 1.5 to 2.1 meq/L magnesium, about 12 to 18 dGH. The Grijalva and its tributaries near Teapa have 9.7 to 16.5 dGH, converted from mg/L CaCO3, and the Usumacinta channel 12.2 to 13.4 dGH from measured calcium and magnesium. For Quintana Roo and Lake Izabal no hardness was measured: the conductivity of Laguna Caobas points to roughly 7 to 9 dGH, alkalinity and conductivity in the Izabal basin to roughly 3 to 8 dGH, both estimates. Four of six votes agree (8 to 18, 8 to 16, 9 to 17 and 10 to 17 dGH) and the decided range is their median, 9 to 17 dGH; the two other votes (4 to 20 and 5 to 20 dGH) gave the soft Izabal estimates more weight. The species also lives in the gypsum-rich karst water of Laguna Bacalar, with a museum record of the species and about 74 to 107 dGH from measured calcium and magnesium, far harder than this range; the range leaves it out as an exceptional habitat. Floodplain lagoons of the Usumacinta lowlands (1.0 to 5.4 dGH) are not tied to a record of the species, and the hardness of 1 to 5 dGH reported for the Nahá and Metzabok lakes does not fit their conductivity. FishBase gives 9 to 20 dGH from a trait database.
+    sources:
+      - *perez
+      - *musalem
+      - *palma
+      - *valtierra
+      - *schmitter96
+      - *larre
+      - *matzuk
+      - *gbif
+      - *fishbase
+    evidence:
+      - source: *perez
+        value: { min: 12, max: 18 }
+        note: Lago Petén Itzá surface water, converted from measured calcium and magnesium (1 meq/L = 2.8 dGH)
+      - source: *perez
+        value: { min: 12.3, max: 12.3 }
+        note: Lago Petén Itzá, single surface value from calcium and magnesium
+      - source: *musalem
+        value: { min: 9.7, max: 16.5 }
+        note: Grijalva channel, tributaries and a spring, converted from mg/L CaCO3
+      - source: *palma
+        value: { min: 12.2, max: 13.4 }
+        note: Usumacinta river channel; nearby floodplain lagoons 1.0 to 5.4 dGH
+      - source: *valtierra
+        value: { min: 7, max: 9 }
+        note: Laguna Caobas, rough estimate from conductivity of 280 to 288 µS/cm; hardness not measured
+      - source: *larre
+        value: { min: 7, max: 13 }
+        note: estimate from conductivity of the Lacantún basin streams; hardness not measured
+      - source: *brinson
+        value: { min: 3, max: 8 }
+        note: Izabal basin, estimate from total alkalinity and conductivity; hardness not measured
+      - source: *vallejo
+        value: { min: 1, max: 5 }
+        note: hardness as CaCO3, inconsistent with the measured conductivity
+      - source: *matzuk
+        value: { min: 74, max: 107 }
+        note: gypsum-saturated water of Laguna Bacalar 2017 and 2018, from calcium and magnesium; exceptional habitat
+      - source: *fishbase
+        value: { min: 9, max: 20 }
+        note: environment field; origin of the values not stated
+    tolerance:
+      value: { min: 5, max: 20 }
+      confidence: medium
+      verification:
+        method: unanimous
+        votes: { agree: 3, total: 3 }
+      rationale: >-
+        All three votes proposed 5 to 20 dGH, and the range contains the natural 9 to 17 dGH. Seriously Fish recommends 5 to 20 dGH; FishBase and AquariumSource give 9 to 20, Practical Fishkeeping and FishProfiles 10 to 20, Tankflare 4 to 18 and FishLore 5 to 15. The Aqualog text, written from breeding experience, accepts 5 to 30 dGH, and wild fish in the gypsum water of Laguna Bacalar show that much harder water is survived, but no other husbandry source supports values above 20. Guides that recommend 8 to 12 dGH describe a preference, not a limit.
+      sources:
+        - *sf
+        - *fishbase
+        - *fishprofiles
+        - *fishkeeper
+        - &tankflare
+          kind: database
+          title: "Tankflare: Jack Dempsey Cichlid"
+          url: https://www.tankflare.com/species/jack_dempsey_cichlid
+          accessed: 2026-10-12
+        - *pfk
+        - *schaefer
+        - *aqsource
+        - *fishlore
+      evidence:
+        - source: *sf
+          value: { min: 5, max: 20 }
+          note: aquarium recommendation
+        - source: *fishbase
+          value: { min: 9, max: 20 }
+        - source: *fishprofiles
+          value: { min: 10, max: 20 }
+          note: aquarium recommendation, stated as dH
+        - source: *pfk
+          value: { min: 10, max: 20 }
+          note: aquarium recommendation for the blue form
+        - source: *aqsource
+          value: { min: 9, max: 20 }
+          note: care guide
+        - source: *tankflare
+          value: { min: 4, max: 18 }
+          note: hobby species profile
+        - source: *fishlore
+          value: { min: 5, max: 15 }
+        - source: *schaefer
+          value: { min: 5, max: 30 }
+          note: breeder experience
+        - source:
+            kind: literature
+            title: "Aquariadise: Jack Dempsey Fish care guide"
+            url: https://aquariadise.com/jack-dempsey-fish/
+          value: { min: 8, max: 12 }
+          note: blog recommendation, narrower than the habitat data
+        - source:
+            kind: literature
+            title: "Aquainfo: Rocio octofasciata"
+            url: https://aquainfo.nl/en/article/rocio-octofasciata-jack-dempsey/
+          value: { min: 8, max: 12 }
+
+  khDkh:
+    value: { min: 3, max: 10 }
+    confidence: low
+    rationale: >-
+      Carbonate hardness is known from three water bodies or basins with records of the species, each converted with 1 meq/L = 2.8 dKH. Lago Petén Itzá carries 1.9 to 2.2 meq/L bicarbonate, about 5.3 to 6.2 dKH, beside a large sulfate share. The Lake Izabal basin showed a typical total alkalinity of 1.0 to 2.75 meq/L in lake, swamps and small rivers, about 2.8 to 7.7 dKH. The Usumacinta channel carries 2.86 meq/L bicarbonate plus 0.51 meq/L carbonate, about 9.4 dKH, and its floodplain lagoons mostly 3.3 to 10.4 dKH. The range 3 to 10 dKH covers these values. No carbonate measurement from Quintana Roo was found, and the gypsum water of Laguna Bacalar is left out as for total hardness. The proposals were 5 to 8 (Petén Itzá only), 5 to 12 (upper bound from general knowledge of karst water) and 3 to 10 dKH (Izabal data). The upper bound of 12 lacks a measurement, and the Izabal and Usumacinta data extend the range beyond 5 to 8, so 3 to 10 dKH is used. The values are converted from single studies and not measured at the collecting sites, hence the low confidence.
+    sources:
+      - *perez
+      - *brinson
+      - *palma
+    evidence:
+      - source: *perez
+        value: { min: 5.3, max: 6.2 }
+        note: Lago Petén Itzá surface water, converted from bicarbonate
+      - source: *brinson
+        value: { min: 2.8, max: 7.7 }
+        note: Izabal basin, typical total alkalinity of lake, swamps and small rivers
+      - source: *palma
+        value: { min: 9.4, max: 9.4 }
+        note: Usumacinta river channel, bicarbonate plus carbonate
+    tolerance:
+      value: { min: 3, max: 12 }
+      confidence: low
+      verification:
+        method: unanimous
+        votes: { agree: 3, total: 3 }
+      rationale: >-
+        All three votes agree (3 to 12, 4 to 10 and 3 to 12 dKH); the decided range is their median, 3 to 12 dKH, which contains the natural 3 to 10 dKH. Carbonate hardness is rarely stated for this species: Tankflare gives 3 to 12 dKH, Aquatic Arts 4 to 10 dKH and Modest Fish 72 to 107 ppm (4 to 6 dKH, mislabelled as general hardness). The habitats with data are moderately buffered, from about 3 dKH in the Izabal basin to about 9 dKH in the Usumacinta. All husbandry sources are hobby or retail pages, hence the low confidence.
+      sources:
+        - *tankflare
+        - *aquaticarts
+        - &modestfish
+          kind: literature
+          title: "Modest Fish: Jack Dempsey Fish care guide"
+          url: https://modestfish.com/jack-dempsey-fish/
+          accessed: 2026-10-12
+        - *perez
+        - *brinson
+        - *palma
+      evidence:
+        - source: *tankflare
+          value: { min: 3, max: 12 }
+          note: hobby species profile
+        - source: *aquaticarts
+          value: { min: 4, max: 10 }
+          note: retailer care notes
+        - source: *modestfish
+          value: { min: 4, max: 6 }
+          note: given as 72 to 107 ppm
+        - source: *perez
+          value: { min: 5.3, max: 6.2 }
+          note: wild habitat, Lago Petén Itzá bicarbonate
+        - source: *brinson
+          value: { min: 2.8, max: 7.7 }
+          note: wild habitat, typical total alkalinity of lake, swamps and small rivers
+        - source: *palma
+          value: { min: 9.4, max: 9.4 }
+          note: wild habitat, Usumacinta river channel
+
+  maxSizeCm:
+    value: { male: 22, female: 16 }
+    confidence: medium
+    rationale: >-
+      Practical Fishkeeping names 20 cm as a good size for an adult male in the aquarium and 15 cm for a female. Seriously Fish gives 20 cm standard length, which is about 24 cm total length, and FishBase and Fishkeeper quote 25 cm total length; the largest specimen examined in the revision measured 21.7 cm standard length. Well-kept males thus typically reach 20 to 25 cm total length, and 22 cm is used. Females stay clearly smaller, at about three quarters of the male length, hence 16 cm. Keepers in the cichlids.com archive report adults of 15 to 20 cm. The Electric Blue strain stays smaller.
+    sources:
+      - *pfk
+      - *sf
+      - *fishbase
+      - *fishkeeper
+      - *schmitter07
+      - &a605
+        kind: archive
+        title: cichlids.com forum thread 605
+        url: https://www.cichlids.com/disc/read.php?1,605
+    evidence:
+      - source: *pfk
+        value: { male: 20, female: 15 }
+        note: typical aquarium sizes; up to 25 cm stated as maximum
+      - source: *sf
+        value: { male: 20, female: 20 }
+        note: 20 cm standard length, sex not separated
+      - source: *fishbase
+        value: { male: 25, female: 25 }
+        note: maximum total length, unsexed
+      - source: *schmitter07
+        value: { male: 21.7, female: 21.7 }
+        note: largest examined specimen, 217 mm standard length, sex not given
+      - source: *a605
+        value: { male: 20, female: 15 }
+        note: keepers report 15 to 20 cm adults
+
+  predation:
+    value: 2
+    confidence: medium
+    verification:
+      method: unanimous
+      votes: { agree: 3, total: 3 }
+    rationale: >-
+      All three votes give level 2. FishBase lists fish among the natural food items, and the US Fish and Wildlife Service risk screening states that the species eats smaller fish opportunistically and was predominantly predatory in a Florida creek. Wikipedia summarises that it eats almost anything smaller than itself, including fish. Wild fish in the Yucatán wetlands and in Laguna Caobas, however, fed mainly on detritus and invertebrates, so fish are not a main food and level 3 does not apply. Seriously Fish and Fishkeeper advise tankmates too large to be seen as prey. Archive keepers report that some adults ignore feeder fish, but small tetras and livebearers are lost in practice, which matches level 2.
+    sources:
+      - *fishbase
+      - &fws
+        kind: literature
+        title: "U.S. Fish and Wildlife Service (2026): Jack Dempsey (Rocio octofasciata) Ecological Risk Screening Summary"
+        url: https://www.fws.gov/sites/default/files/documents/2026-04/ecological-risk-screening-summary-jack-dempsey-mar-2026.pdf
+        accessed: 2026-10-12
+      - &hinojosa
+        kind: literature
+        title: "Hinojosa-Garro et al. (2013): Fish diet composition in permanent and semi-permanent pools in tropical wetlands of the Yucatan Peninsula. Neotropical Ichthyology 11(4): 881-890"
+        url: https://www.scielo.br/j/ni/a/Kz54tQYpH8wwkTjsPzBpQMF/
+        accessed: 2026-10-12
+      - *sf
+      - *fishkeeper
+      - *wikipedia
+      - &a575
+        kind: archive
+        title: cichlids.com forum thread 575
+        url: https://www.cichlids.com/disc/read.php?1,575
+      - &a33534
+        kind: archive
+        title: cichlids.com forum thread 33534
+        url: https://www.cichlids.com/disc/read.php?1,33534
+    evidence:
+      - source: *fishbase
+        value: 2
+        note: natural food includes worms, crustaceans, insects and fish
+      - source: *fws
+        value: 2
+        note: consumes smaller fishes opportunistically; predominantly predatory in a Florida creek population
+      - source: *hinojosa
+        value: 1
+        note: wild diet dominated by detritus and invertebrates; fish remains not prominent for this species
+      - source: *sf
+        value: 2
+        note: tankmates must be too large to be viewed as prey
+      - source: *fishkeeper
+        value: 2
+        note: tankmates must be too large to be taken as a snack
+      - source: *wikipedia
+        value: 2
+        note: eats almost anything smaller than itself, including fish
+      - source: *a575
+        value: 1
+        note: a keeper reports that a pair mostly ignored feeder fish outside breeding
+      - source: *a33534
+        value: 2
+        note: keeper reports feeding live fish
+
+  diet:
+    value:
+      type: omnivore
+      bloatSensitive: false
+      foods: [ insect larvae, crustaceans, worms, detritus, plant matter, small fish ]
+    confidence: medium
+    verification:
+      method: unanimous
+      votes: { agree: 3, total: 3 }
+    rationale: >-
+      All three votes give an omnivore without bloat sensitivity. Stomach analyses of wild juveniles in Laguna Caobas classified the species as omnivorous with the richest diet of seven cichlids (mites, chironomid larvae, cladocerans and filamentous algae); in the Yucatán wetlands it fed on detritus and dipterans in permanent pools and on terrestrial insects and arachnids in seasonal pools. The US Fish and Wildlife Service screening lists insects, worms, crayfish, molluscs, small fish and filamentous algae. FishBase lists only animal food (worms, crustaceans, insects and fish), which would point to an invertivore, but the documented plant and detritus share supports omnivore. Seriously Fish and Fishkeeper describe an omnivore that takes all common foods, and the Cichlid Room Companion summary confirms omnivorous feeding. No source reports bloat on protein-rich food.
+    sources:
+      - *valtierra
+      - *hinojosa
+      - *fws
+      - *fishbase
+      - *sf
+      - *fishkeeper
+      - &crc
+        kind: database
+        title: "Cichlid Room Companion: Rocio octofasciata (public summary, verification only)"
+        url: https://cichlidae.com/species.php?id=gXnz3HLFHRFIEnG641VN-A
+        accessed: 2026-10-12
+    evidence:
+      - source: *valtierra
+        value: { type: omnivore, bloatSensitive: false }
+        note: gut contents of wild juveniles under 41 mm in Laguna Caobas
+      - source: *hinojosa
+        value: { type: omnivore, bloatSensitive: false }
+        note: detritivorous in permanent pools, omnivorous in seasonal pools
+      - source: *fws
+        value: { type: omnivore }
+        note: insects, worms, crayfish, molluscs, small fish, filamentous algae
+      - source: *fishbase
+        value: { type: invertivore, bloatSensitive: false }
+        note: lists only animal food items, including fish
+      - source: *sf
+        value: { type: omnivore, bloatSensitive: false }
+        note: likely omnivorous with a preference for aquatic invertebrates
+      - source: *fishkeeper
+        value: { type: omnivore, bloatSensitive: false }
+      - source: *crc
+        value: { type: omnivore, bloatSensitive: false }
+        note: verification of the feeding type
+
+  aggressionConspecific:
+    value: 3
+    confidence: medium
+    rationale: >-
+      Seriously Fish and Fishkeeper report that juveniles live together but turn on each other at maturity, and that a pair is hostile to any other conspecific; a male also harasses a female that is not ready to spawn. Keepers in the archive describe courtship as a real fight and report killed or mauled partners when an unready pair is forced together. With a pair formed from a group and enough space the partners get along, so persistent chasing with injuries in tanks that are too small (level 3) fits better than level 4.
+    sources:
+      - *sf
+      - *fishkeeper
+      - *pfk
+      - *fishlore
+      - *a605
+      - &a314
+        kind: archive
+        title: cichlids.com forum thread 314
+        url: https://www.cichlids.com/disc/read.php?1,314
+      - &a510
+        kind: archive
+        title: cichlids.com forum thread 510
+        url: https://www.cichlids.com/disc/read.php?1,510
+    evidence:
+      - source: *sf
+        value: 3
+        note: aggressive towards each other at maturity; a pair attacks other conspecifics
+      - source: *a605
+        value: 4
+        note: keeper quotes reports of killed prospective mates
+      - source: *fishlore
+        value: 4
+        note: a keeper reports a male killing another conspecific
+
+  aggressionHeterospecific:
+    value: 3
+    confidence: medium
+    rationale: >-
+      Fishkeeper and Seriously Fish report hostility towards similar-shaped fish and advise only robust tankmates of similar size, with large tanks and visual barriers; Fishkeeper warns that other fish may need rehoming once a pair forms unless the tank is very large. Archive keepers rate it below convicts and Salvini in aggression outside breeding, but describe a breeding pair that destroyed all dither fish. Tankmates must be comparable in size and robustness, which is level 3; the Cichlid Room Companion rating as a beginner species argues against level 4.
+    sources:
+      - *sf
+      - *fishkeeper
+      - *pfk
+      - *wikipedia
+      - *a575
+      - &a359
+        kind: archive
+        title: cichlids.com forum thread 359
+        url: https://www.cichlids.com/disc/read.php?1,359
+      - *a510
+    evidence:
+      - source: *fishkeeper
+        value: 3
+        note: other fish may need rehoming once a pair forms unless the tank is very large
+      - source: *a575
+        value: 4
+        note: a breeding pair killed the dither fish
+      - source: *a359
+        value: 2
+        note: keepers rate it milder than many Central American cichlids outside breeding
+
+  territory:
+    value: { size: large, breedingOnly: false }
+    confidence: medium
+    rationale: >-
+      Adults hold a home area with a cave or root and defend it all year, and a breeding pair claims a large part of the tank around the spawning site and the fry pits; territoriality grows in sparsely stocked tanks. Seriously Fish, Fishkeeper, Wikipedia and archive keepers describe this behaviour for mature fish in general, not only while breeding. No source gives a measured territory size.
+    sources:
+      - *sf
+      - *fishkeeper
+      - *wikipedia
+      - *a575
+      - &a93
+        kind: archive
+        title: cichlids.com forum thread 93
+        url: https://www.cichlids.com/disc/read.php?1,93
+
+  habitatZones:
+    value: [ sand, plants, wood, rock ]
+    confidence: medium
+    rationale: >-
+      FishBase describes weedy, mud- and sand-bottomed canals, ditches and slow lower river reaches; Seriously Fish adds lakes, ponds and sinkholes, and the Yucatán wetland study describes sandy-muddy pools with sawgrass, cattail and water lilies. In the tank the species digs in the sand, uses roots, wood and rock caves for shelter and spawns on flat stones.
+    sources:
+      - *fishbase
+      - *sf
+      - *fishkeeper
+      - *hinojosa
+
+  social:
+    value: { structure: pair }
+    confidence: high
+    rationale: >-
+      Biparental, monogamous substrate spawner; Seriously Fish, Practical Fishkeeping and the Cichlid Room Companion all describe pair formation, and pairs are best raised from a group of juveniles. Other adult conspecifics are rivals of the pair.
+    sources:
+      - *sf
+      - *pfk
+      - *crc
+      - *a93
+
+  speciesOnly:
+    value: false
+    confidence: high
+    verification:
+      method: unanimous
+      votes: { agree: 3, total: 3 }
+    rationale: >-
+      All three votes say no. No source recommends a species tank. Seriously Fish allows a well-chosen community of fish too large to be prey, Practical Fishkeeping keeps it with other Central American cichlids in larger tanks, and Fishkeeper names large armoured catfish and silver dollars as tankmates. Hobby sources advise against general community tanks, which the predation and aggression levels cover; the species is not a species-only fish in the sense of Tropheus.
+    sources:
+      - *sf
+      - *pfk
+      - *fishkeeper
+      - *fishbase
+      - &a25828
+        kind: archive
+        title: cichlids.com forum thread 25828
+        url: https://www.cichlids.com/disc/read.php?1,25828
+    evidence:
+      - source: *sf
+        value: false
+        note: community possible with large tankmates
+      - source: *pfk
+        value: false
+        note: with other Central American cichlids in larger tanks
+      - source: *fishkeeper
+        value: false
+        note: with robust large tankmates in spacious tanks
+
+  hybridGroup:
+    value: null
+    confidence: medium
+    verification:
+      method: unanimous
+      votes: { agree: 3, total: 3 }
+    rationale: >-
+      All three votes give no group. Rocio holds four valid species in the Catalog of Fishes; R. ocotal and R. gemmata are endemic to a single lake or a few cenotes and R. spinosissima to the Izabal basin, and none of them is common in the hobby. No curated group in hybrid-groups.yaml contains the genus, and no source documents crossings between Rocio species in tanks. The origin of the Electric Blue strain is debated: Seriously Fish considers it a fixed mutation, while Practical Fishkeeping reports claims of hybrid origin. A group for Rocio could be proposed if the congeners enter the trade.
+    sources:
+      - *cof
+      - *sf
+      - *pfk
+    evidence:
+      - source: *cof
+        value: null
+        note: no close relative of the genus is common in the trade
+      - source: *sf
+        value: null
+        note: congeners restricted to Laguna Ocotal and cenotes of Quintana Roo
+      - source: *pfk
+        value: null
+        note: origin of the blue strain disputed, possibly hybrid
+
+  coloration:
+    value: { baseColors: [ brown, black, blue ], pattern: mixed }
+    confidence: medium
+    rationale: >-
+      Adults are dark brown to almost black with many iridescent blue to blue-green spangles on the head, body and fins, a black blotch mid-body, an ocellus at the tail base and a red-edged dorsal fin. The spangles are the dominant visible colour of the male. The eight dark bars that give the name show with mood and in young fish, so the pattern is a mix of spots and bars.
+    sources:
+      - *sf
+      - *fishbase
+      - *fishkeeper
+      - *schmitter07
+      - &a39473
+        kind: archive
+        title: cichlids.com forum thread 39473
+        url: https://www.cichlids.com/disc/read.php?1,39473
+
+  feedingSpeed:
+    value: hasty
+    confidence: low
+    rationale: >-
+      Keepers describe an eager, voracious feeder that rises to the surface and takes the bulk of the food before tankmates; an archive keeper reports that a Jack Dempsey ate nearly everything while a convict went hungry. No database or literature rates feeding speed.
+    sources:
+      - &a19
+        kind: archive
+        title: cichlids.com forum thread 19
+        url: https://www.cichlids.com/disc/read.php?1,19
+      - *fishlore
+      - &aquainfo
+        kind: literature
+        title: "Aquainfo: Rocio octofasciata"
+        url: https://aquainfo.nl/en/article/rocio-octofasciata-jack-dempsey/
+        accessed: 2026-10-12
+
+  minTank:
+    value: { volumeL: 240, lengthCm: 120, depthCm: 45 }
+    confidence: medium
+    rationale: >-
+      Seriously Fish recommends a base of at least 120 x 45 cm for one adult pair, about 240 litres at 45 cm water depth. Fishkeeper asks for at least 150 cm. Practical Fishkeeping accepts 90 x 35 cm for a pair of the smaller blue strain, which is too small for wild-type fish and leaves the female little room to escape a 22 cm male. The value follows the Seriously Fish base for one pair; tankmates need a considerably larger tank.
+    sources:
+      - *sf
+      - *fishkeeper
+      - *pfk
+
+  lifespanYears:
+    value: { min: 10, max: 15 }
+    confidence: low
+    rationale: >-
+      FishLore gives 10 to 15 years or longer, and keepers there report fish of 19 years; Wikipedia states that the species can live more than ten years. No scientific source on lifespan was found.
+    sources:
+      - *fishlore
+      - *wikipedia
+
+  breeding:
+    value: open-substrate-spawner
+    confidence: high
+    rationale: >-
+      Seriously Fish, FishBase, the US Fish and Wildlife Service screening and Fishkeeper describe a biparental substrate spawner that lays several hundred eggs on a cleaned stone and moves the larvae into pits; the Cichlid Room Companion summary confirms open substrate breeding and monogamy.
+    sources:
+      - *sf
+      - *fishbase
+      - *fws
+      - *fishkeeper
+      - *crc
+      - *a93
+
+  beginnerSuitability:
+    value: moderate
+    confidence: medium
+    rationale: >-
+      The species is hardy and adaptable in water chemistry, but it grows to over 20 cm, digs, needs a large tank and robust tankmates, reacts badly to poor water, and pairing adults can end in injuries. Seriously Fish rates it moderate; the Cichlid Room Companion lists it as a beginner species, which ignores the space and pairing demands.
+    sources:
+      - *sf
+      - *crc
+      - *fishkeeper
+      - *fws
+
+partners:
+  suitable:
+    - species: Thorichthys meeki
+      reason: Robust Central American cichlid from the same region and water; holds its own against a Jack Dempsey.
+      condition: tank of at least 150 cm with caves for both species
+    - species: Andinoacara rivulatus
+      reason: Comparable size and temperament; a common pairing in the archive.
+      condition: tank of at least 150 cm; only one pair of each species
+    - species: Pterygoplichthys gibbiceps
+      reason: Large armoured catfish that uses the bottom and is too big and well protected to be attacked.
+    - species: Metynnis argenteus
+      reason: Silver dollars are deep-bodied, fast and too large to be eaten; they act as dither fish.
+      condition: group of five or more in a long tank
+    - species: Amatitlania nigrofasciata
+      reason: Hardy cichlid from the same habitat type; keepers report that adult convicts manage alongside a Jack Dempsey.
+      condition: a single convict or same-sex group, otherwise breeding convicts start fights
+
+  unsuitable:
+    - species: Paracheirodon innesi
+      reason: Small tetras fall well under the prey size of a 22 cm Jack Dempsey and are eaten.
+    - species: Poecilia reticulata
+      reason: Guppies and other small livebearers are eaten.
+    - species: Pterophyllum scalare
+      reason: Slow, peaceful angelfish get harassed and lose their fins.
+    - species: Symphysodon aequifasciatus
+      reason: Discus need soft, warmer water, eat slowly and suffer from the aggression of a Jack Dempsey.
+    - species: Lake Malawi mbuna
+      reason: Different diet needs and constant fighting between two aggressive groups; archive keepers advise against mixing.
+    - species: Amphilophus citrinellus
+      reason: Midas and red devil cichlids are larger and more aggressive and can kill a Jack Dempsey.
+    - species: Parachromis dovii
+      reason: Pronounced piscivore of up to 60 cm that treats a Jack Dempsey as prey or rival.
+
+profile:
+  overview:
+    text: >-
+      The Jack Dempsey is one of the classic Central American cichlids and has been kept since the early twentieth century. Its trade name refers to the boxer Jack Dempsey and to its bulky head and fighting spirit. Adults are dark, almost black fish covered with shining blue to blue-green spangles, and they show a lot of personality towards their keeper. The species is hardy and tolerates a wide range of water, but males grow to more than 20 cm, the fish dig constantly and become territorial when mature. It suits keepers who can offer a large tank and robust tankmates, or who want to keep a single pair. A blue aquarium strain and a gold strain are sold as well.
+    sources:
+      - *sf
+      - *pfk
+      - *fishkeeper
+  habitat:
+    text: >-
+      The species lives on the Atlantic side of Central America, from Veracruz in Mexico through the Grijalva-Usumacinta basin and the Yucatán Peninsula, Belize and Guatemala to the Ulúa in Honduras. It prefers slow water: the lower reaches of rivers, swamps, lagoons, canals and drainage ditches, often with mud or sand, dense plants and murky water. It also lives in lakes such as Lago Petén Itzá and Lago de Izabal and in karst lagoons and cenotes. The water is warm all year, about 24 to 30 °C, around neutral to alkaline (the core range is pH 7 to 8) and moderately hard to hard, because much of the range lies on limestone. Some habitats are exceptional, such as the gypsum-rich, very hard water of Laguna Bacalar. The species tolerates low oxygen well and moves between permanent ponds and flooded seasonal pools during the rainy season.
+    sources:
+      - *fishbase
+      - *sf
+      - *valtierra
+      - *perez
+      - *musalem
+      - *matzuk
+      - *escalera
+      - *fws
+  sizeAndGrowth:
+    text: >-
+      Males usually reach 20 to 22 cm and females about 15 to 16 cm; exceptional fish grow to 25 cm. Juveniles grow quickly and can spawn at less than a year and only 7 to 8 cm length. Growth slows after the first year, and fish kept in small tanks often stay stunted and live shorter lives. Males develop longer, pointed dorsal and anal fins and a heavier head with age. The Electric Blue strain stays smaller. The species is long-lived for a cichlid: ten to fifteen years are common with good care, and some keepers report fish close to twenty years old.
+    sources:
+      - *pfk
+      - *sf
+      - *fishbase
+      - *fishlore
+      - *fws
+  husbandry:
+    text: >-
+      A pair needs a tank of at least 120 cm length and about 240 litres; a community with other cichlids needs considerably more. Use sand or fine gravel, because the fish dig pits and move the substrate around. Provide caves from stones, roots or flowerpots, and place a few flat stones as spawning sites. Rooted plants are usually dug up, so floating plants or plants tied to wood work best. The species is sensitive to rising nitrate and poor water, so use strong filtration and change a large share of the water every week. Keep the water between 22 and 30 °C, at pH 6.5 to 8.0 and 5 to 20 dGH, with a carbonate hardness of about 3 to 12 dKH. Cover the tank well, since startled fish can jump.
+    sources:
+      - *sf
+      - *pfk
+      - *fishkeeper
+      - *fishlore
+      - *fishbase
+      - *tankflare
+  socialBehavior:
+    text: >-
+      Young Jack Dempseys can be raised together, but they become intolerant of each other as they mature. Adults form monogamous pairs, and the safest way to get a pair is to raise five or six juveniles and let them choose partners. Forcing two adults together is risky: courtship involves jaw locking and chasing, and the weaker fish may be badly hurt. Once a pair has formed, the partners usually get along but attack other conspecifics and similar-looking fish. Outside breeding many individuals are relatively calm; while guarding eggs or fry a pair can clear a large part of the tank of other fish.
+    sources:
+      - *sf
+      - *fishkeeper
+      - *a605
+      - *a575
+  diet:
+    text: >-
+      In the wild the Jack Dempsey eats what is available: insect larvae, crustaceans, worms, terrestrial insects, detritus with algae, and occasionally small fish. In the aquarium it accepts all common foods. A good base is a quality cichlid pellet or stick, supplemented with frozen foods such as mosquito larvae, bloodworm, Mysis, krill or chopped prawns, plus some vegetable matter or spirulina. Earthworms are a good conditioning food before breeding. Live feeder fish are not needed and can carry disease. Feed adults once or twice a day in amounts they finish quickly, since leftovers pollute the water.
+    sources:
+      - *valtierra
+      - *hinojosa
+      - *sf
+      - *fishkeeper
+  breeding:
+    text: >-
+      The Jack Dempsey is a biparental open substrate spawner and breeds readily in the aquarium. The pair cleans a flat stone or digs down to a hard surface, and the female lays several hundred, sometimes up to 800, eggs. The female mostly fans the eggs, while the male guards the area. At about 27 °C the eggs hatch after about three days, and the parents move the larvae into pits in the substrate. The fry swim freely after a few more days and take newly hatched brine shrimp and fine powdered food. Both parents guard them for several weeks. Young pairs often eat their first spawns. Plan where the many young will go before the pair breeds.
+    sources:
+      - *fws
+      - *fishkeeper
+      - *sf
+      - *a93
+  sexing:
+    text: >-
+      Adult males are larger, with longer, pointed dorsal and anal fins and often a heavier forehead. Females stay smaller and rounder and usually show blue-green spangles on the lower gill cover and cheek, while males of the same age often show fewer markings there. This difference is not fully reliable, because subdominant males can look like females. Venting the genital papilla is the most certain method in adult fish. Keepers in the cichlids.com archive confirm the difference in cheek marking but also note exceptions.
+    sources:
+      - *fishkeeper
+      - *a39473
+      - *a314
+  compatibility:
+    text: >-
+      Choose tankmates that are too large to be eaten and robust enough to withstand a cichlid that defends its space. Good choices are other medium to large Central American cichlids such as firemouths, as well as green terrors, large armoured catfish and silver dollars, in a tank of 150 cm or more with several caves and visual barriers. Avoid small tetras, livebearers and other fish below about 7 cm, slow and peaceful fish such as angelfish and discus, and very aggressive giants such as Midas cichlids and dovii. Do not mix with Malawi mbuna, whose needs and behaviour differ. Watch carefully when a pair starts to breed.
+    sources:
+      - *sf
+      - *fishkeeper
+      - *pfk
+      - &a226
+        kind: archive
+        title: cichlids.com forum thread 226
+        url: https://www.cichlids.com/disc/read.php?1,226
+      - &a32378
+        kind: archive
+        title: cichlids.com forum thread 32378
+        url: https://www.cichlids.com/disc/read.php?1,32378
+  problems:
+    text: >-
+      The most common mistake is a tank that is too small: a Jack Dempsey bought at 5 cm outgrows a 100 litre tank within a year and becomes stressed and aggressive. A second mistake is mixing it with small community fish, which it eats or harasses. Forcing adults into a pair often ends in injuries. The species reacts badly to accumulated waste and high nitrate; poor water favours hole-in-the-head disease, fin rot and bacterial infections. Diets made only of meaty food such as raw meat or feeder fish carry a risk of digestive problems and parasites. Large adults can also jump or injure themselves when startled.
+    sources:
+      - *sf
+      - *fishkeeper
+      - *fishlore
+      - *fws
+
+provenance:
+  runs:
+    - role: generator
+      model: claude-opus-5-5
+      date: 2026-10-12
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-12
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-12
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-12
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-12
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-12
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-12
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-12
+    - role: adjudicator
+      model: claude-opus-5-5
+      date: 2026-10-12
+  disagreements:
+    - field: taxonomy.synonyms (Rocio gemmata)
+      proposals:
+        - by: generator
+          value:
+            - Heros octofasciatus Regan, 1903
+            - Cichlasoma octofasciatum
+            - Archocentrus octofasciatus
+            - Nandopsis octofasciata
+            - Cichlosoma biocellatum Regan, 1909
+            - Cichlasoma hedricki Meek, 1904
+        - by: checker-a
+          value:
+            - Heros octofasciatus Regan, 1903
+            - Cichlasoma octofasciatum
+            - Nandopsis octofasciata
+            - Archocentrus octofasciatus
+            - Cichlasoma hedricki Meek, 1904
+            - Cichlosoma biocellatum Regan, 1909
+        - by: checker-b
+          value:
+            - Heros octofasciatus Regan, 1903
+            - Cichlasoma octofasciatum
+            - Nandopsis octofasciata
+            - Archocentrus octofasciatus
+            - Cichlosoma biocellatum Regan, 1909
+            - Cichlasoma hedricki Meek, 1904
+            - Rocio gemmata Contreras-Balderas & Schmitter-Soto, 2007
+      decision: not listed as a synonym; mentioned in the note
+      rationale: >-
+        The Catalog of Fishes, the authority for valid names, lists Rocio gemmata as valid with several recent references; the synonymy by Artigas Azas (2018) is a minority view.
+    - field: features.origin.value.localities (Lago Petén Itzá)
+      proposals:
+        - by: generator
+          value:
+            - Río Papaloapan and Río Coatzacoalcos drainages, Veracruz
+            - Grijalva-Usumacinta basin
+            - Yucatán Peninsula (Laguna Caobas, Petenes wetlands)
+            - Lago Petén Itzá and Río de la Pasión, Petén
+            - Belize River
+            - Río Motagua, Río Chamelecón and Río Ulúa, Honduras
+        - by: checker-a
+          value:
+            - Rio de Sarabia, Coatzacoalcos drainage, Veracruz (type locality)
+            - Laguna Caobas, Quintana Roo
+            - Lacantun River basin, Chiapas
+            - Lake Yaxha, Peten
+        - by: checker-b
+          value:
+            - Rio de Sarabia (Coatzacoalcos drainage, type locality)
+            - Rio Dulce basin, Izabal (Guatemala)
+            - Rio Ulua (Honduras)
+      decision: Lago Petén Itzá is a documented locality
+      rationale: >-
+        GBIF holds museum records of the species from the lake at Santa Elena (UF 39387), so its hydrochemistry counts as habitat data.
+    - field: features.temperatureC.tolerance
+      proposals:
+        - by: tiebreaker-1
+          value:
+            min: 20
+            max: 31
+        - by: tiebreaker-2
+          value:
+            min: 20
+            max: 31
+        - by: tiebreaker-3
+          value:
+            min: 22
+            max: 30
+        - by: tiebreaker-4
+          value:
+            min: 22
+            max: 30
+        - by: tiebreaker-5
+          value:
+            min: 22
+            max: 30
+      decision: { min: 22, max: 30 }
+      rationale: >-
+        Tally method conservative (3 of 5 votes for the top candidate, below a qualified majority): intersection of all votes, which contains the natural range of 24 to 30 °C.
+    - field: features.ph
+      proposals:
+        - by: generator
+          value:
+            min: 6.5
+            max: 8.5
+        - by: checker-a
+          value:
+            min: 7
+            max: 8
+        - by: checker-b
+          value:
+            min: 6
+            max: 8
+        - by: tiebreaker-1
+          value:
+            min: 6.5
+            max: 9
+        - by: tiebreaker-2
+          value:
+            min: 6.5
+            max: 8.5
+        - by: tiebreaker-3
+          value:
+            min: 7
+            max: 8.5
+      decision: { min: 7.0, max: 8.0 }
+      rationale: >-
+        Tally method conservative (2 of 6 votes for the top candidate): intersection of all votes. Measured habitat values reach from about 6.5 to 8.5 and higher; the decided range is the core common to all votes.
+    - field: features.ph.tolerance
+      proposals:
+        - by: tiebreaker-1
+          value:
+            min: 6.5
+            max: 9
+        - by: tiebreaker-2
+          value:
+            min: 6
+            max: 8.5
+        - by: tiebreaker-3
+          value:
+            min: 6
+            max: 8.5
+        - by: tiebreaker-4
+          value:
+            min: 6.5
+            max: 8
+        - by: tiebreaker-5
+          value:
+            min: 6.5
+            max: 8
+      decision: { min: 6.5, max: 8.0 }
+      rationale: >-
+        Tally method conservative (2 of 5 votes for the top candidate): intersection of all votes, which contains the natural range of 7.0 to 8.0.
+    - field: features.ghDgh
+      proposals:
+        - by: generator
+          value:
+            min: 8
+            max: 18
+        - by: checker-a
+          value:
+            min: 8
+            max: 16
+        - by: checker-b
+          value:
+            min: 4
+            max: 20
+        - by: tiebreaker-1
+          value:
+            min: 5
+            max: 20
+        - by: tiebreaker-2
+          value:
+            min: 9
+            max: 17
+        - by: tiebreaker-3
+          value:
+            min: 10
+            max: 17
+      decision: { min: 9, max: 17 }
+      rationale: >-
+        Tally method qualified-majority (4 of 6 votes): median of the agreeing votes of generator, checker-a, tiebreaker-2 and tiebreaker-3. The softer proposals rest on hardness estimates for the Izabal basin; the gypsum water of Laguna Bacalar is left out as an exceptional habitat.
+    - field: features.khDkh
+      proposals:
+        - by: generator
+          value:
+            min: 5
+            max: 8
+        - by: checker-a
+          value:
+            min: 5
+            max: 12
+        - by: checker-b
+          value:
+            min: 3
+            max: 10
+      decision: { min: 3, max: 10 }
+      rationale: >-
+        Measured alkalinity of Lago Petén Itzá (5.3 to 6.2 dKH), the Izabal basin (2.8 to 7.7 dKH) and the Usumacinta (about 9.4 dKH) spans 3 to 10 dKH; the upper bound of 12 rests on general knowledge only. The range lies within the tolerance of 3 to 12 dKH.
+    - field: features.maxSizeCm
+      proposals:
+        - by: generator
+          value:
+            male: 20
+            female: 15
+        - by: checker-a
+          value:
+            male: 22
+            female: 16
+        - by: checker-b
+          value:
+            male: 22
+            female: 17
+      decision: { male: 22, female: 16 }
+      rationale: >-
+        Seriously Fish gives 20 cm standard length (about 24 cm total length), FishBase 25 cm total length and Practical Fishkeeping 20 cm for an aquarium male, so well-kept males typically reach 20 to 25 cm; 22 cm is the middle. Females reach about three quarters of the male length (Practical Fishkeeping 15 of 20 cm), which gives 16 cm; 17 cm has no source.
+    - field: features.coloration.value.baseColors
+      proposals:
+        - by: generator
+          value:
+            - brown
+            - black
+            - blue
+            - green
+        - by: checker-a
+          value:
+            - brown
+            - black
+            - blue
+        - by: checker-b
+          value:
+            - grey
+            - blue
+      decision: [ brown, black, blue ]
+      rationale: >-
+        All sources describe a dark brown to almost black body; grey fits only faded or stressed fish. The spangles are blue to blue-green, and blue is their dominant shade, so green is not listed as a separate base colour.
+    - field: features.minTank.value.volumeL
+      proposals:
+        - by: generator
+          value: 240
+        - by: checker-a
+          value: 240
+        - by: checker-b
+          value: 250
+      decision: 240
+      rationale: >-
+        All three follow the Seriously Fish base of 120 x 45 cm for one pair, which holds about 240 litres at 45 cm water depth.
