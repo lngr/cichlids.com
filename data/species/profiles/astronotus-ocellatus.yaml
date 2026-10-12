@@ -1,0 +1,1506 @@
+schemaVersion: 1
+id: astronotus-ocellatus
+legacyIds: [661]
+status: described
+
+taxonomy:
+  validName: Astronotus ocellatus
+  genus: Astronotus
+  species: ocellatus
+  author: (Agassiz, 1831)
+  source: &cof
+    kind: catalog-of-fishes
+    title: Eschmeyer's Catalog of Fishes, species of the genus Astronotus (online version updated 21 Sep. 2026)
+    url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Astronotus
+    accessed: 2026-10-12
+  synonyms:
+    - name: Lobotes ocellatus
+      note: Original combination of Agassiz in Spix and Agassiz (1831).
+    - name: Acara compressus
+      note: Cope 1872, Rio Ambyiacu, Peru; synonym according to the Catalog of Fishes.
+    - name: Acara hyposticta
+      note: Cope 1878, Peru; synonym according to the Catalog of Fishes.
+    - name: Astronotus orbiculatus
+      note: Haseman 1911, Santarem; synonym according to the Catalog of Fishes.
+    - name: Astronotus ocellatus var. zebra
+      note: Pellegrin 1904, Santarem; synonym according to the Catalog of Fishes.
+    - name: Cychla rubroocellata
+      note: >-
+        Jardine 1843, Rio Negro and tributaries. Kullander (2003) treats it as a synonym; the Catalog
+        of Fishes gives its status as uncertain because Lozano et al. (2022) consider it possibly
+        valid as Astronotus rubroocellatus.
+  legacyNames:
+    - Astronotus ocellatus
+  note: >-
+    The Catalog of Fishes treats Astronotus ocellatus as valid in a narrow sense, restricted to the
+    Amazon basin of Brazil, Bolivia, Colombia, French Guiana and Peru. Astronotus crassipinnis
+    (Paraguay and Guapore drainages) and Astronotus mikoljii (lower Orinoco and Gulf of Paria
+    basins, described by Lozano et al. 2022) are separate valid species. The Rio Negro form, named
+    Cychla rubroocellata by Jardine, has uncertain status and may be a species of its own; DNA
+    barcodes also split the remaining Amazonian populations into several deep lineages (Colatreli et
+    al. 2012). This profile uses the narrow concept for habitat data. The aquarium oscar is a line
+    bred for decades by commercial farms, mainly in Eastern Europe and East Asia, whose wild origin is
+    not documented; Seriously Fish and the USGS point out that trade oscars may belong to another
+    Astronotus species than A. ocellatus in the strict sense.
+
+names:
+  trade:
+    en: [Oscar, Tiger oscar, Red oscar, Velvet cichlid, Marble cichlid]
+    de: [Oskar, Pfauenaugenbuntbarsch]
+    es-419: [Oscar, Acarahuazu, Carahuazu, Vieja]
+    pt-BR: [Oscar, Apaiari, Acara-acu, Cara-acu]
+
+variants:
+  - name: Wild type
+    kind: color-morph
+    note: Olive to dark brown body with orange blotches and a large ringed spot on the tail base.
+  - name: Tiger oscar / Red tiger oscar
+    kind: color-morph
+    note: Bred line with irregular red to orange marbling on a dark body.
+  - name: Red oscar
+    kind: color-morph
+    note: Bred line in which red covers most of the flanks.
+  - name: Albino oscar
+    kind: color-morph
+    note: White body, often with red or orange marbling (albino tiger, albino red).
+  - name: Lemon oscar
+    kind: color-morph
+    note: Xanthistic line with yellow instead of red markings.
+  - name: Long-finned oscar
+    kind: color-morph
+    note: Bred line with elongated fins; less able to compete for food than standard forms.
+  - name: Colombia
+    kind: locality
+    note: Wild-caught juveniles occasionally imported from the Colombian Amazon.
+
+features:
+  origin:
+    value:
+      continent: South America
+      region: Amazon basin
+      waterbody: null
+      localities:
+        - Rio Solimoes floodplain lakes (Mamiraua, Janauaca)
+        - Rio Ucayali, Peru
+        - Lower Rio Madeira
+        - Rio Tapajos
+        - Rio Tocantins
+        - Lower Amazon near Santarem
+        - French Guiana (Approuague, Oyapock)
+    confidence: high
+    rationale: >-
+      The Catalog of Fishes gives the Amazon basin of Brazil, Bolivia, Colombia, French Guiana and
+      Peru as the range of the species in its narrow sense; Seriously Fish and FishBase agree on the
+      Amazon. The localities combine the river systems Seriously Fish lists with the floodplain lakes
+      where field studies sampled the species (Mamiraua, Janauaca). Records from the Orinoco belong to
+      A. mikoljii and those from the Paraguay system to A. crassipinnis. The Rio Negro is left out
+      because the oscars there may be the uncertain A. rubroocellatus, and the upper Madeira in
+      Bolivia holds a lineage that Colatreli et al. (2012) assign to A. crassipinnis. The species is
+      not endemic to a water body of the table, so no lake values apply.
+    sources:
+      - *cof
+      - &sf
+        kind: database
+        title: Seriously Fish, Astronotus ocellatus (Oscar)
+        url: https://www.seriouslyfish.com/species/astronotus-ocellatus/
+        accessed: 2026-10-12
+      - &fishbase
+        kind: database
+        title: FishBase, Astronotus ocellatus (Agassiz, 1831), Oscar, species summary
+        url: https://www.fishbase.se/summary/Astronotus-ocellatus.html
+        accessed: 2026-10-12
+      - &lozano
+        kind: literature
+        title: >-
+          Lozano, A. P., Lasso-Alcala, O. M., Bittencourt, P. S., Taphorn, D. C., Perez, N. and
+          Farias, I. P. (2022). A new species of Astronotus (Teleostei, Cichlidae) from the Orinoco
+          River and Gulf of Paria basins, northern South America. ZooKeys 1113, 111-152 (abstract
+          only).
+        url: https://doi.org/10.3897/zookeys.1113.81240
+        accessed: 2026-10-12
+      - &colatreli
+        kind: literature
+        title: >-
+          Colatreli, O. P., Meliciano, N. V., Toffoli, D., Farias, I. P. and Hrbek, T. (2012). Deep
+          phylogenetic divergence and lack of taxonomic concordance in species of Astronotus
+          (Cichlidae). International Journal of Evolutionary Biology 2012, 915265.
+        url: https://doi.org/10.1155/2012/915265
+        accessed: 2026-10-12
+      - &uakari
+        kind: literature
+        title: >-
+          Trindade, M. E. J. and Queiroz, H. L. (2012). Feeding ecology and morphometry of the
+          digestive tract of Astronotus ocellatus (Cichlidae) in varzea environments of the Middle
+          Solimoes Region, Central Amazon, Brazil. Uakari 8(1), 45-57 (abstract only).
+        url: https://doi.org/10.31420/uakari.v8i1.109
+        accessed: 2026-10-12
+      - &janauaca
+        kind: literature
+        title: >-
+          Duncan, W. P. et al. (2020). Interspecific differences in the metabolic rate, gill
+          dimension and hematology of fish in an Amazonian floodplain lake. Aquatic Science and
+          Technology 8(1).
+        url: https://doi.org/10.5296/ast.v8i1.15981
+        accessed: 2026-10-12
+    evidence:
+      - source: *cof
+        value: {continent: South America, region: Amazon basin}
+        note: Amazon basin of Brazil, Bolivia, Colombia, French Guiana and Peru.
+      - source: *fishbase
+        value: {continent: South America, region: western Amazon and Orinoco basins}
+        note: older broad concept that still includes the Orinoco, home of A. mikoljii
+      - source: *sf
+        value: {continent: South America, region: Amazon basin}
+        note: lists many Amazon tributaries plus Orinoco and Paraguay records of the broad concept
+
+  temperatureC:
+    value: {min: 27, max: 31}
+    confidence: low
+    rationale: >-
+      The five votes did not settle on one range: generator 24 to 32 C, checker-a 24 to 32 C,
+      checker-b 27 to 31 C, tiebreaker-1 26 to 32 C and tiebreaker-2 26 to 31 C. The vote count
+      therefore takes the conservative value, the intersection of all proposals, 27 to 31 C. It
+      covers the sustained temperature of the white-water floodplain where the species lives: the
+      water at the Lake Janauaca collection site of wild oscars measured 27.5 plus or minus 0.8 C
+      (Duncan et al. 2020), the Solimoes main channel 28.9 to 30.1 C (Queiroz et al. 2009), Lake
+      Catalao 27.8 to 32.0 C in diel profiles (Caraballo et al. 2014), and reviews give 28 to 31 or
+      28 to 32 C for Amazonian waters (Val et al. 2022; the UBC thesis). The wider proposals rested on
+      short events: a cold-air friagem cooled Lake Catalao to 24.5 C for a few days (Brito et al.
+      2014), and sun-heated shallows of Mamiraua lakes and a Colombian oxbow lake reached 34 to 37 C
+      at low water (Mamiraua study 2015; Correa 2008). The FishBase entry of 22 to 25 C comes from an
+      aquarium atlas and is no habitat value. No temperature series from an oscar locality over a full
+      flood cycle was found, hence the low confidence.
+    sources:
+      - *janauaca
+      - &queiroz
+        kind: literature
+        title: >-
+          Queiroz, M. M. A., Horbe, A. M. C., Seyler, P. and Moura, C. A. V. (2009). Hidroquimica do
+          rio Solimoes na regiao entre Manacapuru e Alvaraes: Amazonas, Brasil. Acta Amazonica
+          39(4), 943-952.
+        url: https://doi.org/10.1590/S0044-59672009000400022
+        accessed: 2026-10-12
+      - &friagem
+        kind: literature
+        title: >-
+          Caraballo, P., Forsberg, B. R., Almeida, F. F. and Leite, R. G. (2014). Diel patterns of
+          temperature, conductivity and dissolved oxygen in an Amazon floodplain lake: description
+          of a friagem phenomenon. Acta Limnologica Brasiliensia 26(3), 318-331.
+        url: https://doi.org/10.1590/s2179-975x2014000300011
+        accessed: 2026-10-12
+      - &catalao
+        kind: literature
+        title: >-
+          Brito, J. G., Alves, L. F. and Espirito Santo, H. M. V. (2014). Seasonal and spatial
+          variations in limnological conditions of a floodplain lake (lake Catalao) connected to
+          both the Solimoes and Negro Rivers, Central Amazonia. Acta Amazonica 44(1), 121-133.
+        url: https://doi.org/10.1590/s0044-59672014000100012
+        accessed: 2026-10-12
+      - &val
+        kind: literature
+        title: >-
+          Val, A. L. et al. (2022). Global change and physiological challenges for fish of the Amazon
+          today and in the near future. Journal of Experimental Biology 225.
+        url: https://doi.org/10.1242/jeb.216440
+        accessed: 2026-10-12
+      - &thesis
+        kind: literature
+        title: >-
+          The relationship between thermal tolerance and hypoxia tolerance in Amazonian fishes.
+          Master's thesis, University of British Columbia (2018).
+        url: https://doi.org/10.14288/1.0364578
+        accessed: 2026-10-12
+      - &mamiraua
+        kind: literature
+        title: >-
+          Abiotic variability among different aquatic systems of the central Amazon floodplain
+          during drought and flood events. Brazilian Journal of Biology (2015).
+        url: https://doi.org/10.1590/1519-6984.04214
+        accessed: 2026-10-12
+      - &correa
+        kind: literature
+        title: >-
+          Correa, S. B. (2008). Fish assemblage structure is consistent through an annual
+          hydrological cycle in habitats of a floodplain-lake in the Colombian Amazon. Neotropical
+          Ichthyology 6(2).
+        url: https://doi.org/10.1590/s1679-62252008000200014
+        accessed: 2026-10-12
+      - &yilmaz
+        kind: literature
+        title: >-
+          Yilmaz, A. and Arslan, D. (2013). Oscar (Astronotus ocellatus Agassiz, 1831) Uretimi
+          (Production of the oscar). Turk Bilimsel Derlemeler Dergisi 6(2): 51-55.
+        url: https://derleme.gen.tr/index.php/derleme/article/download/207/205
+        accessed: 2026-10-12
+      - &fishipedia
+        kind: database
+        title: Fishipedia, Astronotus ocellatus (oscar)
+        url: https://www.fishipedia.fr/fr/poissons/astronotus-ocellatus
+        accessed: 2026-10-12
+      - *fishbase
+    evidence:
+      - source: *janauaca
+        value: {min: 26.7, max: 28.3}
+        note: water from the collection site of wild oscars, 27.5 plus or minus 0.8 C, October
+      - source: *queiroz
+        value: {min: 28.9, max: 30.1}
+        note: Rio Solimoes main channel, daytime sampling in November
+      - source: *friagem
+        value: {min: 27.8, max: 32}
+        note: Lake Catalao diel profiles; the minimum is the mixed column during a friagem
+      - source: *catalao
+        value: {min: 24.5, max: 32.2}
+        note: Lake Catalao surface water over a flood cycle; 24.5 C only during a friagem cold spell
+      - source: *val
+        value: {min: 28, max: 32}
+        note: Amazonian waters in general
+      - source: *thesis
+        value: {min: 28, max: 31}
+        note: annual range of the Amazon river as cited by the thesis
+      - source: *mamiraua
+        value: {min: 26.5, max: 34.1}
+        note: surface water of Mamiraua lakes and channels; above 30 C only in shallow lakes at low water
+      - source: *correa
+        value: {min: 24.4, max: 37.1}
+        note: Colombian oxbow lake with oscars; the top value is a noon reading over sun-heated shallows
+      - source: *yilmaz
+        value: {min: 23, max: 34}
+        note: rivers and pools with oscars, after Lowe-McConnell (1987)
+      - source: *fishipedia
+        value: {min: 22, max: 32}
+        note: natural range without a cited measurement
+      - source: *fishbase
+        value: {min: 22, max: 25}
+        note: taken from an aquarium atlas; aquarium recommendation, not habitat
+    verification:
+      method: conservative
+      votes: {agree: 3, total: 5}
+    tolerance:
+      value: {min: 22, max: 31}
+      confidence: low
+      rationale: >-
+        The five votes did not settle on one tolerance: generator, checker-a and tiebreaker-1
+        proposed 22 to 32 C, checker-b 20 to 31 C and tiebreaker-2 20 to 30 C. The vote count takes
+        the intersection of all proposals, 22 to 30 C, and widens it to contain the natural range,
+        which gives 22 to 31 C. The lower bound is the value most care sources share (FishBase,
+        Animal Diversity Web, Aqualog, Fishipedia; Seriously Fish goes down to 20 C), and the cold
+        side is the real risk: the lower lethal limit lies near 12 C (USGS), and feral Florida stocks
+        collapse after cold winters. Care sheets stop at 25 to 28 C, but wild oscars live for months
+        in water of 28 to 31 C, so the tolerance follows the habitat on the warm side. Short-term
+        survival from 9 to 41 C in experiments (Gutierre et al. 2016) says nothing about keeping fish
+        for years and does not widen the range. Most keepers hold oscars at 25 to 28 C.
+      sources:
+        - *sf
+        - *fishbase
+        - &adw
+          kind: database
+          title: Animal Diversity Web, Astronotus ocellatus (Marble cichlid)
+          url: https://animaldiversity.org/accounts/Astronotus_ocellatus/
+          accessed: 2026-10-12
+        - &usgs
+          kind: database
+          title: USGS Nonindigenous Aquatic Species, Astronotus ocellatus fact sheet
+          url: https://nas.er.usgs.gov/queries/FactSheet.aspx?speciesID=436
+          accessed: 2026-10-12
+        - &aqualog
+          kind: database
+          title: Aqualog.de lexicon, Astronotus ocellatus Red
+          url: https://www.aqualog.de/en/lexikon/astronotus-ocellatus-red-2/
+          accessed: 2026-10-12
+        - *fishipedia
+        - &flowgrow
+          kind: database
+          title: Flowgrow fish database, Astronotus ocellatus
+          url: https://www.flowgrow.de/db/fish/astronotus-ocellatus
+          accessed: 2026-10-12
+        - &aquafish
+          kind: database
+          title: "aqua-fish.net: Oscar fish"
+          url: https://www.aqua-fish.net/show.php?h=oscar
+          accessed: 2026-10-12
+        - &gutierre
+          kind: literature
+          title: >-
+            Gutierre, S. M. M., Schofield, P. J. and Prodocimo, V. (2016). Salinity and temperature
+            tolerance of an emergent alien species, the Amazon fish Astronotus ocellatus.
+            Hydrobiologia 777, 21-31 (abstract only).
+          url: https://doi.org/10.1007/s10750-016-2740-8
+          accessed: 2026-10-12
+        - *queiroz
+        - *mamiraua
+        - &aqguide
+          kind: website
+          title: aquarium-guide.de, Oskar (Astronotus ocellatus)
+          url: https://www.aquarium-guide.de/astronotus_ocellatus.htm
+          accessed: 2026-10-12
+        - &fkw
+          kind: website
+          title: Fishkeeping World, Oscar Fish care guide
+          url: https://www.fishkeepingworld.com/oscar-fish/
+          accessed: 2026-10-12
+        - &arch8224
+          kind: archive
+          title: cichlids.com forum thread 8224
+          url: https://www.cichlids.com/disc/read.php?1,8224
+          accessed: 2026-10-12
+      evidence:
+        - source: *sf
+          value: {min: 20, max: 28}
+          note: aquarium recommendation
+        - source: *fishbase
+          value: {min: 22, max: 25}
+          note: environment field taken from an aquarium atlas
+        - source: *adw
+          value: {min: 22, max: 25}
+          note: general temperature statement
+        - source: *aqualog
+          value: {min: 22, max: 28}
+          note: aquarium recommendation for a captive strain
+        - source: *fishipedia
+          value: {min: 22, max: 32}
+          note: aquarium recommendation
+        - source: *flowgrow
+          value: {min: 21, max: 26}
+          note: aquarium recommendation
+        - source: *aquafish
+          value: {min: 24, max: 30}
+          note: aquarium recommendation
+        - source: *usgs
+          value: {min: 12, max: 12}
+          note: lower lethal temperature only
+        - source: *gutierre
+          value: {min: 9, max: 41}
+          note: short-term survival limits in experiments, not a long-term range
+        - source: *aqguide
+          value: {min: 22, max: 27}
+          note: aquarium recommendation
+        - source: *fkw
+          value: {min: 23, max: 27}
+          note: aquarium recommendation
+        - source: *arch8224
+          value: {min: 26.7, max: 27.8}
+          note: one keeper's pair kept at 80 to 82 F
+      verification:
+        method: conservative
+        votes: {agree: 3, total: 5}
+
+  ph:
+    value: {min: 6, max: 7}
+    confidence: low
+    rationale: >-
+      The five votes did not settle on one range: generator 5.9 to 7.5, checker-a 5.8 to 7.6,
+      checker-b 6.0 to 7.0, tiebreaker-1 6.0 to 7.5 and tiebreaker-2 5.4 to 7.0. The vote count takes
+      the conservative value, the intersection of all proposals, pH 6.0 to 7.0. It is the
+      circumneutral range of the silt-laden white water the species favours: water from the Lake
+      Janauaca collection site had pH 6.6 plus or minus 0.4 (Duncan et al. 2020), the Solimoes main
+      channel 6.5 to 7.0 (Queiroz et al. 2009), and reviews give about 6 to 7.2 for white-water
+      rivers (Val et al. 2022; the Frontiers review of Amazon water types). Mixed-water Lake Catalao
+      ranged from 5.86 to 7.47 over a year (Brito et al. 2014), Andean-influenced tributaries reach
+      7.6 (Rocha da Silva et al. 2019), and isolated Mamiraua lakes rise to 8.5 at low water through
+      algal photosynthesis; these margins lie outside the decided range. The acid record of 5.3 to
+      5.7 from a Colombian blackwater oxbow (Correa 2008) carried the lowest proposal; black-water
+      oscars may belong to the uncertain A. rubroocellatus. FishBase gives 6 to 8 without saying
+      whether it is a habitat value, and Seriously Fish 6.0 to 7.5 for aquarium fish.
+    sources:
+      - *janauaca
+      - *queiroz
+      - *val
+      - &watertypes
+        kind: literature
+        title: >-
+          A review on fish sensory systems and Amazon water types with implications to
+          biodiversity. Frontiers in Ecology and Evolution 8 (2021): 589760.
+        url: https://doi.org/10.3389/fevo.2020.589760
+        accessed: 2026-10-12
+      - *catalao
+      - &rocha
+        kind: literature
+        title: >-
+          Rocha da Silva, M. S., Rios-Villamizar, E. A., Brandao da Cunha, H. et al. (2019). A
+          contribution to the hydrochemistry and water typology of the Amazon River and its
+          tributaries. Caminhos de Geografia 20(72), 360-374.
+        url: https://doi.org/10.14393/rcg207246295
+        accessed: 2026-10-12
+      - *mamiraua
+      - *correa
+      - *fishipedia
+      - *fishbase
+      - *sf
+    evidence:
+      - source: *janauaca
+        value: {min: 6.2, max: 7}
+        note: water from the collection site, 6.6 plus or minus 0.4; the Solimoes channel described as pH 6 to 7
+      - source: *queiroz
+        value: {min: 6.5, max: 7}
+        note: Rio Solimoes main channel
+      - source: *val
+        value: {min: 6, max: 7}
+        note: white water
+      - source: *watertypes
+        value: {min: 6.2, max: 7.2}
+        note: white-water rivers in general
+      - source: *catalao
+        value: {min: 5.86, max: 7.47}
+        note: mixed white and black water floodplain lake over a full year
+      - source: *rocha
+        value: {min: 6.5, max: 7.6}
+        note: Amazon main stem and Andean-influenced white-water tributaries
+      - source: *mamiraua
+        value: {min: 6.21, max: 8.52}
+        note: Mamiraua lakes; 6.76 to 6.96 at high water, the spread comes from low water
+      - source: *correa
+        value: {min: 5.3, max: 5.7}
+        note: blackwater oxbow lake with oscars in the catch
+      - source: *fishipedia
+        value: {min: 4.5, max: 7.5}
+        note: natural range including black water, no measurement cited
+      - source: *fishbase
+        value: {min: 6, max: 8}
+        note: no statement whether habitat or aquarium value
+      - source: *sf
+        value: {min: 6, max: 7.5}
+        note: aquarium recommendation, not a habitat value
+    verification:
+      method: conservative
+      votes: {agree: 3, total: 5}
+    tolerance:
+      value: {min: 5.9, max: 8}
+      confidence: medium
+      rationale: >-
+        The three votes agree (generator 5.9 to 8.0, checker-a 5.8 to 8.0, checker-b 6.0 to 8.0); the
+        median of their bounds is 5.9 to 8.0. FishBase, Animal Diversity Web, Aqualog and Yilmaz and
+        Arslan give pH 6 to 8 for keeping, Seriously Fish and Flowgrow 6.0 to 7.5. Captive-bred
+        oscars cope with this span as long as the water is clean; the lower bound reaches slightly
+        below 6 because the habitat does.
+      sources:
+        - *sf
+        - *fishbase
+        - *adw
+        - *yilmaz
+        - *aqualog
+        - *flowgrow
+        - *fishipedia
+      evidence:
+        - source: *sf
+          value: {min: 6, max: 7.5}
+          note: aquarium recommendation for captive-bred fish
+        - source: *fishbase
+          value: {min: 6, max: 8}
+        - source: *adw
+          value: {min: 6, max: 8}
+        - source: *yilmaz
+          value: {min: 6, max: 8}
+          note: preferred range; the review adds that the species avoids acid black water
+        - source: *aqualog
+          value: {min: 6, max: 8}
+        - source: *flowgrow
+          value: {min: 6, max: 7.5}
+        - source: *fishipedia
+          value: {min: 6, max: 6.8}
+          note: aquarium recommendation
+      verification:
+        method: unanimous
+        votes: {agree: 3, total: 3}
+
+  ghDgh:
+    value: {min: 0, max: 2}
+    confidence: medium
+    rationale: >-
+      The three votes agree (generator 0.4 to 2, checker-a 0.3 to 2, checker-b 0.5 to 2.5); the
+      median of their bounds is 0.4 to 2 dGH, which the vote count rounds to whole degrees, 0 to 2
+      dGH. Amazonian white water is very soft. With dGH = Ca/7.14 + Mg/4.34, the calcium and
+      magnesium of Lake Catalao give 0.3 to 1.1 dGH as seasonal means (Brito et al. 2014) and 0.8 to
+      1.7 dGH over ten years of sampling (Aprile and Darwich 2013); the Solimoes main channel gives
+      1.4 to 2.3 dGH (Queiroz et al. 2009); calcium in the water of the Lake Janauaca collection site
+      alone gives about 1 dGH (Duncan et al. 2020). Val et al. (2022) state calcium below 10 mg/L for
+      virtually all Amazon waters. Magnesium was not measured everywhere, so the upper bound is
+      partly an estimate.
+    sources:
+      - *catalao
+      - &aprile
+        kind: literature
+        title: >-
+          Aprile, F. and Darwich, A. J. (2013). Nutrients and water-forest interactions in an Amazon
+          floodplain lake: an ecological approach. Acta Limnologica Brasiliensia 25(2), 169-182.
+        url: https://doi.org/10.1590/s2179-975x2013000200008
+        accessed: 2026-10-12
+      - *queiroz
+      - *janauaca
+      - *val
+    evidence:
+      - source: *catalao
+        value: {min: 0.3, max: 1.1}
+        note: computed from seasonal surface calcium and magnesium means
+      - source: *aprile
+        value: {min: 0.8, max: 1.7}
+        note: computed from calcium and magnesium ranges across flood phases
+      - source: *queiroz
+        value: {min: 1.4, max: 2.3}
+        note: computed from calcium and magnesium of the Rio Solimoes
+      - source: *janauaca
+        value: {min: 0.9, max: 1.1}
+        note: calcium share only (176 plus or minus 22 umol/L); magnesium not reported
+      - source: *val
+        value: {min: 0, max: 1.4}
+        note: calcium below 10 mg/L stated for virtually all Amazon waters
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+    tolerance:
+      value: {min: 0, max: 20}
+      confidence: low
+      rationale: >-
+        The three votes agree (generator 0.4 to 20, checker-a 0.3 to 20, checker-b 1 to 20); the
+        median of their bounds, rounded to whole degrees, is 0 to 20 dGH. Seriously Fish gives 5 to
+        20 dGH and FishBase 5 to 19 dGH for keeping, and captive lines live for years in ordinary
+        tap water of moderate to high hardness. The lower part follows the very soft habitat water,
+        which no care source documents for long-term keeping; in such soft water the pH needs some
+        buffering to stay stable. Hence the low confidence.
+      sources:
+        - *sf
+        - *fishbase
+        - *queiroz
+      evidence:
+        - source: *sf
+          value: {min: 5, max: 20}
+          note: aquarium recommendation
+        - source: *fishbase
+          value: {min: 5, max: 19}
+          note: hardness range of the environment field
+      verification:
+        method: unanimous
+        votes: {agree: 3, total: 3}
+
+  khDkh:
+    value: {min: 1, max: 2}
+    confidence: medium
+    rationale: >-
+      The three votes agree (generator 0.7 to 2.4, checker-a 0.7 to 2.5, checker-b 0.5 to 2); the
+      median of their bounds, rounded to whole degrees, is 1 to 2 dKH. Bicarbonate is the main anion
+      of white water, but there is little of it: Lake Catalao carries 15.3 mg/L at rising water to
+      52.8 mg/L at low water, 0.7 to 2.4 dKH with dKH = mg/L HCO3 / 21.8 (Brito et al. 2014); the
+      Solimoes, which floods the lakes, carries 0.5 to 0.6 meq/L, 1.4 to 1.7 dKH (Caraballo et al.
+      2014), and 19 to 37 mg/L, 0.9 to 1.7 dKH, in the stretch above Manaus (Queiroz et al. 2009).
+      Val et al. (2022) and Aprile and Darwich (2013) describe these waters as poorly buffered.
+    sources:
+      - *catalao
+      - *friagem
+      - *queiroz
+      - *aprile
+      - *val
+    evidence:
+      - source: *catalao
+        value: {min: 0.7, max: 2.4}
+        note: floodplain lake over a year
+      - source: *friagem
+        value: {min: 1.4, max: 1.7}
+        note: Solimoes water that floods the lakes
+      - source: *queiroz
+        value: {min: 0.9, max: 1.7}
+        note: computed from bicarbonate of the Rio Solimoes
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+    tolerance:
+      value: {min: 1, max: 12}
+      confidence: low
+      rationale: >-
+        The five votes did not settle: generator 0.7 to 15, checker-a 0.7 to 20, checker-b 0.5 to
+        12, tiebreaker-1 0.5 to 12 and tiebreaker-2 1 to 15 dKH; at most two of them agree. The vote
+        count takes the intersection of all proposals, 1 to 12 dKH, which contains the natural
+        range. No care source read for this profile states a carbonate hardness for oscars: Seriously
+        Fish and FishBase give only general hardness (5 to 20 dGH), Flowgrow fills its field with a
+        very wide 0 to 30, and Fishkeeping World labels the same 5 to 20 as dKH in one place and dGH
+        in another. Tap water within the accepted general hardness and a pH up to 8 typically carries
+        up to about 10 to 12 dKH, in which captive oscars are widely kept; the upper bound is
+        inferred from this, the lower bound from the habitat. The evidence is thin, hence the low
+        confidence.
+      sources:
+        - *catalao
+        - *friagem
+        - *sf
+        - *fishbase
+        - *flowgrow
+        - *fkw
+        - kind: model-knowledge
+          title: Relation of carbonate hardness to general hardness and pH in typical tap water
+      evidence:
+        - source: *catalao
+          value: {min: 0.7, max: 2.4}
+          note: habitat value, lower end of the tolerance
+        - source: *friagem
+          value: {min: 1.4, max: 1.7}
+          note: habitat value of the Solimoes
+        - source: *flowgrow
+          value: {min: 0, max: 30}
+          note: carbonate hardness field of the database
+        - source: *fkw
+          value: {min: 5, max: 20}
+          note: hobby page; the same range appears as dGH elsewhere on the page
+      verification:
+        method: conservative
+        votes: {agree: 2, total: 5}
+
+  maxSizeCm:
+    value: {male: 35, female: 30}
+    confidence: medium
+    rationale: >-
+      Seriously Fish gives 35 cm SL as the maximum, FishBase a record of 45.7 cm TL with a common
+      length of 24 cm, Fishipedia an average of 25 cm and a maximum of 41 cm, and Animal Diversity
+      Web 30 to 40 cm. Yilmaz and Arslan note that most fish stay at 20 to 28 cm. Well-kept aquarium
+      males usually reach about 35 cm total length; males grow somewhat faster and end slightly
+      larger than females, so the female value is set lower.
+    sources:
+      - *sf
+      - *fishbase
+      - *fishipedia
+      - *adw
+      - *yilmaz
+    evidence:
+      - source: *sf
+        value: {male: 35, female: 35}
+        note: standard length, sexes not separated
+      - source: *fishbase
+        value: {male: 45.7, female: 45.7}
+        note: record total length; common length 24 cm
+      - source: *fishipedia
+        value: {male: 41, female: 41}
+        note: maximum; average 25 cm
+      - source: *adw
+        value: {male: 40, female: 30}
+        note: range 30 to 40 cm; males said to grow faster
+      - source: *yilmaz
+        value: {male: 28, female: 28}
+        note: usual size of most fish
+
+  predation:
+    value: 2
+    confidence: high
+    rationale: >-
+      All three votes give level 2. Fish are a regular but not the dominant food: in 182 stomachs from
+      the Mamiraua varzea insects and fish were the most important items (Trindade and Queiroz 2012),
+      wild oscars of an Amazon tributary feed on fish, crustaceans, snails and insect larvae
+      (Tavares-Dias and Neves 2017), and in the congener A. crassipinnis fish make up 36 to 41
+      percent of the adult stomach contents. FishBase lists small fish next to crayfish, worms and
+      insect larvae, and the Cichlid Room Companion confirms a piscivorous component. In the tank
+      even small juveniles take guppies (Aquarium Glaser), and Seriously Fish warns against much
+      smaller tankmates. Any fish that fits into the large mouth is at risk; fish are not the main
+      food, so level 3 does not apply.
+    sources:
+      - *uakari
+      - &tavares
+        kind: literature
+        title: >-
+          Tavares-Dias, M. and Neves, L. R. (2017). Diversity of parasites in wild Astronotus
+          ocellatus (Perciformes, Cichlidae), an ornamental and food fish in Brazil. Anais da
+          Academia Brasileira de Ciencias 89(3).
+        url: https://doi.org/10.1590/0001-3765201720160700
+        accessed: 2026-10-12
+      - &crassipinnis
+        kind: literature
+        title: >-
+          Feeding strategy of the introduced Astronotus crassipinnis (Cichlidae) in upper Parana
+          river floodplain. Iheringia, Serie Zoologia (2022).
+        url: https://doi.org/10.1590/1678-4766e2022001
+        accessed: 2026-10-12
+      - *fishbase
+      - *sf
+      - &glaser
+        kind: database
+        title: Aquarium Glaser fish archive, Astronotus ocellatus Colombia
+        url: https://www.aquarium-glaser.de/en/fish-archives/astronotus-ocellatus/
+        accessed: 2026-10-12
+      - *usgs
+      - *fishipedia
+      - &crc
+        kind: database
+        title: Cichlid Room Companion, Astronotus ocellatus (public summary, used for verification)
+        url: https://cichlidae.com/species.php?id=etv9un2tObsbU7cfNTUDwA
+        accessed: 2026-10-12
+      - &arch59
+        kind: archive
+        title: cichlids.com forum thread 59
+        url: https://www.cichlids.com/disc/read.php?1,59
+        accessed: 2026-10-12
+    evidence:
+      - source: *uakari
+        value: 2
+        note: insects and fish are the most important food items
+      - source: *tavares
+        value: 2
+        note: diet rich in fish, crustaceans, snails and insect larvae; ambush hunter
+      - source: *crassipinnis
+        value: 2
+        note: congener, adult stomachs 36 to 41 percent fish
+      - source: *fishbase
+        value: 2
+        note: feeds on small fish, crayfish, worms and insect larvae
+      - source: *sf
+        value: 2
+        note: predatory; must not be kept with much smaller fish
+      - source: *glaser
+        value: 2
+        note: small juveniles already eat guppies
+      - source: *fishipedia
+        value: 2
+        note: eats small fish; ambush hunter
+      - source: *crc
+        value: 2
+        note: piscivorous, crustacean and insect eater
+      - source: *arch59
+        value: 2
+        note: keeper reports the oscar eating live fish, including a small cichlid
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+
+  diet:
+    value:
+      type: invertivore
+      bloatSensitive: false
+      foods: [insects, insect larvae, crustaceans, snails, worms, small fish, fruit]
+    confidence: medium
+    rationale: >-
+      All three votes give invertivore without bloat sensitivity. The only quantitative study of
+      native fish (182 stomachs, Middle Solimoes) classes the oscar as a carnivore with insects first
+      and fish second (Trindade and Queiroz 2012); an introduced population in the Rio Paraguacu fed
+      almost entirely on mayfly larvae (Biotemas 2014); FishBase and Fishipedia list small fish,
+      crayfish, worms and insect larvae. Seriously Fish, Tavares-Dias and Neves and Yilmaz and Arslan
+      call it omnivorous with a strong preference for animal food, and half-grown A. crassipinnis
+      take fruit and seeds; plant matter is a minor, seasonal share. Invertebrates make up the
+      largest part, so invertivore fits better than omnivore or piscivore. No source describes a
+      bloat-prone gut; the species does need vitamin C in its food.
+    sources:
+      - *uakari
+      - &biotemas
+        kind: literature
+        title: >-
+          Dieta de duas especies de peixes da familia Cichlidae (Astronotus ocellatus e Cichla
+          pinima) introduzidos no rio Paraguacu, Bahia. Biotemas 27(4) (2014), abstract.
+        url: https://doi.org/10.5007/2175-7925.2014v27n4p83
+        accessed: 2026-10-12
+      - *tavares
+      - *crassipinnis
+      - *fishbase
+      - *fishipedia
+      - *sf
+      - *yilmaz
+    evidence:
+      - source: *uakari
+        value: {type: invertivore, bloatSensitive: false}
+        note: carnivore; insects and fish the most important items
+      - source: *biotemas
+        value: {type: invertivore}
+        note: introduced population, mayfly larvae dominate
+      - source: *fishbase
+        value: {type: invertivore, bloatSensitive: false}
+        note: small fish, crayfish, worms, insect larvae; trophic level 2.8
+      - source: *fishipedia
+        value: {type: invertivore, bloatSensitive: false}
+        note: rated carnivore; fish, crayfish, worms and insects
+      - source: *tavares
+        value: {type: omnivore, bloatSensitive: false}
+        note: called omnivorous, but mainly fish, crustaceans, snails and insect larvae
+      - source: *sf
+        value: {type: omnivore, bloatSensitive: false}
+        note: generalist with a strong preference for animal food
+      - source: *yilmaz
+        value: {type: omnivore, bloatSensitive: false}
+        note: omnivorous but predominantly carnivorous; needs vitamin C
+      - source: *crassipinnis
+        value: {type: omnivore}
+        note: congener; juveniles omnivorous, adults molluscs and fish
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+
+  aggressionConspecific:
+    value: 3
+    confidence: medium
+    rationale: >-
+      Juveniles live in loose groups with a pecking order that can wear down subordinate fish
+      (Fishipedia). Adults form pairs and treat other adults as rivals; disputes run through
+      displays, colour changes and jaw-locking (Animal Diversity Web, Beeching 1995). Once a pair has
+      formed, Seriously Fish advises removing the other fish, because in a normal tank the pair
+      chases them persistently and injures them. That matches level 3 rather than level 2.
+    sources:
+      - *sf
+      - *adw
+      - *fishipedia
+      - &beeching
+        kind: literature
+        title: >-
+          Beeching, S. C. (1995). Colour pattern and inhibition of aggression in the cichlid fish
+          Astronotus ocellatus. Journal of Fish Biology 47 (abstract only).
+        url: https://doi.org/10.1006/jfbi.1995.0110
+        accessed: 2026-10-12
+      - *fkw
+      - *arch8224
+    evidence:
+      - source: *sf
+        value: 3
+        note: group of juveniles pairs off; the other fish then have to be removed
+      - source: *adw
+        value: 3
+        note: males lock jaws over females and territory
+      - source: *beeching
+        value: 3
+        note: defeated fish turn dark and barred, a signal that limits further attacks
+      - source: *fishipedia
+        value: 2
+        note: hierarchy among juveniles; hiding places needed for subordinate fish
+
+  aggressionHeterospecific:
+    value: 2
+    confidence: medium
+    rationale: >-
+      For a cichlid of its size the oscar is fairly calm towards other species (Seriously Fish,
+      Aquarium Glaser); Fishipedia rates it as slightly aggressive towards neighbours with a vigorous
+      defence of the spawning site, and Aqualog calls it aggressive. It chases fish out of its area
+      and is rougher while breeding, but fish of similar size and robustness are rarely injured in a
+      large tank; robust Central American cichlids often bully oscars rather than the reverse. Small
+      fish are a matter of predation, not of aggression.
+    sources:
+      - *sf
+      - *glaser
+      - *fishipedia
+      - *aqualog
+      - &wiki
+        kind: website
+        title: Wikipedia, Oscar (fish)
+        url: https://en.wikipedia.org/wiki/Oscar_(fish)
+        accessed: 2026-10-12
+      - &arch60
+        kind: archive
+        title: cichlids.com forum thread 60
+        url: https://www.cichlids.com/disc/read.php?1,60
+        accessed: 2026-10-12
+      - &arch824
+        kind: archive
+        title: cichlids.com forum thread 824
+        url: https://www.cichlids.com/disc/read.php?1,824
+        accessed: 2026-10-12
+    evidence:
+      - source: *sf
+        value: 2
+        note: not especially aggressive for its size
+      - source: *glaser
+        value: 1
+        note: rather peaceful among large cichlids when tankmates are too big to eat
+      - source: *fishipedia
+        value: 2
+        note: slightly aggressive towards neighbours, defends the spawning site
+      - source: *wiki
+        value: 2
+        note: claims an area and chases intruders
+      - source: *arch824
+        value: 3
+        note: called aggressive; tankmates of equal size recommended
+
+  territory:
+    value: {size: large, breedingOnly: false}
+    confidence: low
+    rationale: >-
+      Oscars claim a part of the tank that grows with the fish, seldom leave it and defend it by
+      chasing; a breeding pair claims considerably more (Fishipedia, Yilmaz and Arslan). For a fish
+      of 30 to 35 cm this is a substantial share even of a 180 cm tank. No source gives a measured
+      territory size, so the value follows from size and pair behaviour.
+    sources:
+      - *fishipedia
+      - *sf
+      - *yilmaz
+      - *wiki
+    evidence:
+      - source: *yilmaz
+        value: {size: large, breedingOnly: false}
+        note: territorial; pairs become aggressive around spawning
+      - source: *wiki
+        value: {size: large, breedingOnly: false}
+        note: territory size depends on fish size and temperament
+
+  habitatZones:
+    value: [wood, plants, sand]
+    confidence: medium
+    rationale: >-
+      Oscars live in shallow, slow or still water of floodplain lakes, side channels and flooded
+      forest with mud or sand bottoms, sheltering under submerged branches, roots and marginal
+      vegetation. In the tank they need a soft substrate to dig in and large roots for cover; plants
+      are uprooted, so sturdy or floating plants work best.
+    sources:
+      - *sf
+      - *fishbase
+      - *fishipedia
+      - *tavares
+      - *crc
+    evidence:
+      - source: *fishbase
+        value: [sand]
+        note: quiet shallow water with mud or sand bottoms
+      - source: *sf
+        value: [wood, plants]
+        note: submerged roots and marginal vegetation in white water
+      - source: *fishipedia
+        value: [wood, sand]
+        note: flooded forest, soft bottoms with roots and branches
+      - source: *tavares
+        value: [wood]
+        note: still water, shelter under submerged branches and trunks
+      - source: *crc
+        value: [sand]
+        note: lakes with muddy ground
+
+  social:
+    value: {structure: pair}
+    confidence: high
+    rationale: >-
+      Oscars are monogamous, form lasting pairs and guard eggs and fry together. The usual way to get
+      a pair is to raise six or more juveniles and keep the first pair that forms; a single oscar
+      also lives well alone.
+    sources:
+      - *sf
+      - *fishbase
+      - *adw
+      - *aqualog
+      - *crc
+    evidence:
+      - source: *sf
+        value: {structure: pair}
+        note: long pair bonds; pair from a group of juveniles
+      - source: *adw
+        value: {structure: pair}
+        note: monogamous
+      - source: *aqualog
+        value: {structure: pair}
+        note: keeping in pairs advised
+      - source: *crc
+        value: {structure: pair}
+        note: monogamous
+
+  speciesOnly:
+    value: false
+    confidence: high
+    rationale: >-
+      All three votes give false. The hobby does not limit oscars to a species tank: Seriously Fish
+      names characins, anostomids, other cichlids and large loricariid or doradid catfish as
+      tankmates, Flowgrow marks a species tank as not required, Fishipedia recommends larger
+      peaceful species, and Aquarium Glaser describes community keeping with fish too large to be
+      eaten. The restriction is size, which the predation level covers.
+    sources:
+      - *sf
+      - *flowgrow
+      - *fishipedia
+      - *glaser
+      - *fishbase
+      - *fkw
+      - *arch60
+      - &arch8776
+        kind: archive
+        title: cichlids.com forum thread 8776
+        url: https://www.cichlids.com/disc/read.php?1,8776
+        accessed: 2026-10-12
+    evidence:
+      - source: *sf
+        value: false
+        note: names characins, headstanders, other cichlids and large catfish as tankmates
+      - source: *flowgrow
+        value: false
+        note: species tank marked as not required
+      - source: *fishipedia
+        value: false
+        note: community keeping with larger peaceful species
+      - source: *glaser
+        value: false
+        note: community possible with tankmates too large to be eaten
+      - source: *fkw
+        value: false
+        note: recommends a single fish but lists large tankmates
+      - source: *arch60
+        value: false
+        note: members keep oscars with other large cichlids
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+
+  hybridGroup:
+    value: null
+    confidence: medium
+    rationale: >-
+      All three votes give no group. The genus holds only A. ocellatus, A. crassipinnis, A. mikoljii
+      and the uncertain A. rubroocellatus (Catalog of Fishes); the congeners hardly appear in the
+      trade, Lozano et al. (2022) find the lineages genetically distinct, and no source reports
+      crosses with them or with other cichlid genera. hybrid-groups.yaml lists no Astronotus group.
+      Because the trade oscar is of undocumented origin, wild Astronotus of other species should
+      still not be bred with it.
+    sources:
+      - *cof
+      - *sf
+      - *lozano
+      - *fishbase
+    evidence:
+      - source: *cof
+        value: null
+        note: genus holds A. ocellatus, A. crassipinnis, A. mikoljii and the uncertain A. rubroocellatus
+      - source: *sf
+        value: null
+        note: mentions only A. crassipinnis as a look-alike, no crosses
+      - source: *lozano
+        value: null
+        note: lineages are genetically distinct; no hybridisation reported
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+
+  coloration:
+    value:
+      baseColors: [brown, black, orange]
+      pattern: mixed
+    confidence: medium
+    rationale: >-
+      Wild-type adults are olive brown to almost black with irregular orange to red blotches on the
+      lower flanks and gill cover and a black, orange-ringed spot on the tail base, often with
+      smaller ringed spots along the dorsal fin. The pattern is irregular marbling rather than bars
+      or stripes. Bred lines add red, white (albino) and yellow forms.
+    sources:
+      - *fishbase
+      - *sf
+      - *fishipedia
+      - *wiki
+    evidence:
+      - source: *fishbase
+        value: {baseColors: [black, orange], pattern: mixed}
+        note: dark body, orange gill cover margin and lower flanks, ringed tail spot
+      - source: *sf
+        value: {baseColors: [brown, black, orange], pattern: mixed}
+        note: irregular blotches and stripes; juveniles dark with pale bands
+
+  feedingSpeed:
+    value: hasty
+    confidence: medium
+    rationale: >-
+      Oscars are notoriously greedy, learn to beg and rush every food offering, so slower tankmates
+      lose out unless food is spread out (Seriously Fish). Long-finned lines compete somewhat less
+      well.
+    sources:
+      - *sf
+      - *arch59
+    evidence:
+      - source: *sf
+        value: hasty
+        note: notoriously greedy, begs for food
+
+  minTank:
+    value: {volumeL: 650, lengthCm: 180, depthCm: 60}
+    confidence: medium
+    rationale: >-
+      The recommended social unit is one adult pair. Seriously Fish considers a base of 150 x 60 cm
+      (about 540 L) just enough for one adult and asks for more room for a pair; Flowgrow gives 160
+      to 180 cm, Fishipedia at least 600 L and Aqualog 200 cm or more. A pair therefore needs about
+      180 x 60 cm, which with a usual height of 60 cm holds about 650 L.
+    sources:
+      - *sf
+      - *flowgrow
+      - *fishipedia
+      - *aqualog
+      - *yilmaz
+      - *fkw
+    evidence:
+      - source: *sf
+        value: {volumeL: 540, lengthCm: 150, depthCm: 60}
+        note: for a single adult; a pair needs more
+      - source: *fishipedia
+        value: {volumeL: 600, lengthCm: 180, depthCm: 60}
+        note: minimum volume; dimensions not given
+      - source: *fkw
+        value: {volumeL: 322, lengthCm: 120, depthCm: 45}
+        note: 55 US gallons for one fish plus 30 for each further fish
+
+  lifespanYears:
+    value: {min: 10, max: 20}
+    confidence: medium
+    rationale: >-
+      Seriously Fish gives a typical life of 10 to 20 years, Fishipedia 12 years and Fishkeeping
+      World 8 to 15 years in captivity. Oscars mature at about one year and stay reproductive for 9
+      to 10 years (Yilmaz and Arslan, Animal Diversity Web); well-kept fish often live beyond 15.
+    sources:
+      - *sf
+      - *fishipedia
+      - *yilmaz
+      - *adw
+      - *fkw
+    evidence:
+      - source: *sf
+        value: {min: 10, max: 20}
+      - source: *fishipedia
+        value: {min: 12, max: 12}
+      - source: *yilmaz
+        value: {min: 10, max: 11}
+        note: reproductive span of 9 to 10 years after maturity at one year
+      - source: *fkw
+        value: {min: 8, max: 15}
+        note: in captivity
+
+  breeding:
+    value: open-substrate-spawner
+    confidence: high
+    rationale: >-
+      Both parents clean a flat stone or similar hard surface, spawn up to about two thousand
+      adhesive eggs on it, guard them and move the larvae into pits in the sand.
+    sources:
+      - *fishbase
+      - *sf
+      - *adw
+      - *fishipedia
+      - *flowgrow
+      - *crc
+    evidence:
+      - source: *fishbase
+        value: open-substrate-spawner
+      - source: *sf
+        value: open-substrate-spawner
+      - source: *adw
+        value: open-substrate-spawner
+      - source: *fishipedia
+        value: open-substrate-spawner
+      - source: *crc
+        value: open-substrate-spawner
+        note: open substrate
+
+  beginnerSuitability:
+    value: moderate
+    confidence: medium
+    rationale: >-
+      Oscars are hardy and undemanding about water chemistry, but they grow fast to 30 cm and more,
+      live long, need a very large tank with strong filtration and frequent water changes,
+      rearrange the decoration and eat small tankmates. Seriously Fish and Fishipedia rate them as
+      moderate, the Cichlid Room Companion as fish for intermediate aquarists.
+    sources:
+      - *sf
+      - *fishipedia
+      - *crc
+      - *fishbase
+      - *fkw
+    evidence:
+      - source: *sf
+        value: moderate
+        note: difficulty 5 of 8, needs a very large tank
+      - source: *fishipedia
+        value: moderate
+      - source: *crc
+        value: moderate
+        note: intermediate aquarists
+      - source: *fkw
+        value: moderate
+        note: moderate care level, not for beginners
+
+partners:
+  suitable:
+    - species: Heros severus
+      reason: Large, sturdy South American cichlid from soft Amazonian water, too big to be eaten.
+      condition: Tank of at least 200 cm; add both while young.
+    - species: Pterygoplichthys gibbiceps
+      reason: Heavily armoured bottom dweller that grows as large as the oscar and is left alone.
+    - species: Metynnis argenteus
+      reason: Deep-bodied schooling characin from the same waters; adults are too tall to swallow.
+      condition: Only adult fish of 12 cm or more, kept as a group.
+    - species: Platydoras armatulus
+      reason: Armoured, nocturnal catfish that the oscar cannot eat or harm.
+    - species: Geophagus altifrons
+      reason: Large, peaceful eartheater of the Amazon that tolerates the oscar's presence.
+      condition: Very large tank with open sand; keep the eartheaters as a group.
+  unsuitable:
+    - species: Paracheirodon innesi
+      reason: Small tetras are prey.
+    - species: Pterophyllum scalare
+      reason: Young and medium angelfish are eaten; adults are harassed and outcompeted at feeding.
+    - species: Symphysodon aequifasciatus
+      reason: Slow, shy feeders that starve next to a greedy oscar and suffer from its waste load.
+    - species: Tropheus moorii
+      reason: Aufwuchs grazer from hard alkaline water that bloats on the oscar's protein-rich food.
+    - species: Maylandia zebra
+      reason: Mbuna need hard alkaline water and a herbivorous diet; small adults are eaten.
+    - species: Parachromis dovii
+      reason: Much more aggressive predator that injures or kills oscars.
+
+profile:
+  overview:
+    text: >-
+      The oscar is one of the best-known large cichlids and has been bred in huge numbers for
+      decades. Wild fish are olive brown with orange blotches and a large ringed spot on the tail
+      base; the trade mostly offers bred lines such as tiger, red, albino and long-finned oscars.
+      Oscars recognise their keeper, beg for food and often rearrange their tank, which makes them
+      popular pets. They are not community fish for ordinary tanks, though: they reach 30 to 35 cm,
+      live 10 to 20 years, eat any fish that fits into their mouth and need a tank of several
+      hundred litres with powerful filtration. The genus holds several species, and the name
+      Astronotus ocellatus belongs in the strict sense to the Amazon basin populations; the aquarium
+      oscar is a farm-bred line of undocumented wild origin sold under this name. Many oscars end up
+      abandoned once they outgrow their tank, so buyers should plan for the adult size from the
+      start.
+    sources: [*cof, *sf, *fishbase, *usgs, *wiki]
+  habitat:
+    text: >-
+      In the wild the oscar lives in the Amazon basin of Brazil, Peru, Colombia, Bolivia and French
+      Guiana. It prefers calm, shallow water of floodplain lakes, oxbows and side channels, mostly in
+      muddy white-water areas where it hides under submerged branches, roots and floating vegetation
+      over mud or sand. The water is warm, mostly 27 to 31 C, with brief drops to about 25 C during
+      cold-air spells and higher readings only in sun-heated shallows. It is very soft (below 2 dGH,
+      1 to 2 dKH) and slightly acidic to neutral, about pH 6 to 7. Oxygen is often low, and the oscar
+      copes with long phases of hypoxia better than most fishes. Spawning starts with the rising
+      water of the rainy season, when the forest floods. The Orinoco and Paraguay populations belong
+      to separate species, and introduced oscars live in Florida, Hawaii, Puerto Rico and other warm
+      regions.
+    sources: [*cof, *sf, *janauaca, *queiroz, *catalao, *friagem, *tavares, *usgs]
+  sizeAndGrowth:
+    text: >-
+      Oscars grow fast and mature at about 12 to 25 cm, at an age of roughly one to two years. Adult
+      males in the aquarium usually reach about 35 cm in total length, females a little less.
+      Records of about 45 cm and 1.6 kg come from wild fish, while many aquarium fish stop at 25 to
+      30 cm, especially when kept in tanks that are too small. Growth slows after the second year,
+      but a healthy oscar keeps gaining weight for several years. With good care they live 10 to 20
+      years.
+    sources: [*sf, *fishbase, *yilmaz, *adw, *tavares]
+  husbandry:
+    text: >-
+      A pair of adult oscars needs a tank of at least 180 x 60 cm and about 650 L; a single fish can
+      manage with 150 cm. Use a soft sand substrate, a few large roots and smooth stones, and fix all
+      decoration firmly because oscars dig and move objects. Plants are often uprooted; floating
+      plants or epiphytes on wood last longest. Oscars produce a lot of waste, so filter capacity
+      should be generous and 30 to 50 percent of the water should be changed every week. Heaters
+      are best placed outside the tank or behind a guard, since large oscars can break them.
+      Captive-bred oscars accept a wide range of water: 22 to 31 C (most keepers use 25 to 28 C), pH
+      about 6 to 8, and soft to fairly hard water up to about 20 dGH and 12 dKH, as long as nitrate
+      stays low. Temperatures below 22 C are a real risk for this warm-water fish.
+    sources: [*sf, *yilmaz, *fishbase, *adw, *usgs]
+  socialBehavior:
+    text: >-
+      Young oscars live in loose groups and are fairly tolerant of each other. As they mature they
+      pair off, and a pair then claims a large part of the tank and drives the other oscars away.
+      Rivals display with spread fins and changing colours and wrestle mouth to mouth; a defeated
+      fish turns dark with pale bars, which signals submission. In a tank of normal size only one
+      pair or a single fish should remain. Towards other species the oscar is calmer than many
+      large cichlids, but it chases fish out of its space and becomes rough while breeding. It
+      prefers dim light and gets nervous in bright, open tanks.
+    sources: [*sf, *adw, *beeching, *glaser, *yilmaz]
+  diet:
+    text: >-
+      In nature oscars eat mainly insects and their larvae, shrimp, crayfish and snails, plus small
+      fish, mostly slow bottom-dwelling catfish; fruit and seeds that drop into the water are taken
+      in season. In the aquarium a high-quality pellet for large cichlids makes a good staple,
+      supplemented with earthworms, shrimp, mussels, insects such as crickets and occasional
+      vegetable matter or fruit. Oscars need vitamin C in their food. Avoid beef heart and poultry,
+      which fatten the liver, and do not use feeder goldfish or livebearers, which bring in disease
+      and contain little nutrition. Oscars are greedy and learn to beg, so feed small portions and
+      remove leftovers to protect the water quality.
+    sources: [*uakari, *tavares, *fishbase, *sf, *yilmaz]
+  breeding:
+    text: >-
+      The easiest way to obtain a pair is to raise six or more young oscars together and remove the
+      others once two fish have paired. Before spawning, both partners show short breeding tubes and
+      clean a flat stone or similar surface for days. The female then lays rows of eggs, from a few
+      hundred in young fish to about two thousand in large ones, and the male fertilises them. Both
+      parents guard and fan the eggs, which hatch after two to four days. The larvae are moved into
+      pits in the sand and swim free after about a week. Because one spawn can produce more young
+      than the hobby can absorb, breeding should be planned.
+    sources: [*sf, *adw, *fishbase, *wiki]
+  sexing:
+    text: >-
+      Oscars are very hard to sex from outside. In wild populations males are sometimes a little
+      larger and more colourful, and some keepers report dark spots at the base of the male's dorsal
+      fin, but these traits are unreliable, especially in bred lines. The only clear sign appears
+      shortly before spawning: the female's breeding tube is short and broad with a blunt tip, while
+      the male's is narrower and pointed. Because of this, keepers usually let pairs form on their
+      own in a group of young fish instead of trying to choose a male and a female.
+    sources: [*sf, *adw, *wiki]
+  compatibility:
+    text: >-
+      Oscars can share a large tank with fish that are too big to be swallowed and robust enough to
+      stand their size and occasional chases. Good choices are severums, large eartheaters, adult
+      silver dollars and other deep-bodied characins, and armoured catfish such as large plecos or
+      Raphael catfish. Any fish shorter than about a third of the oscar's length will sooner or
+      later be eaten, so tetras, small livebearers and dwarf cichlids are out. Slow or shy feeders
+      such as discus and angelfish do poorly. Very aggressive Central American predators can injure
+      or kill oscars. African lake cichlids need hard alkaline water and, in the case of mbuna and
+      Tropheus, a plant-based diet, so they do not fit either.
+    sources: [*sf, *glaser, *fkw, *arch60]
+  problems:
+    text: >-
+      The most common mistake is a tank that is too small: oscars grow quickly, and cramped fish
+      suffer from poor water, stunted growth and stress. High nitrate and organic waste are linked
+      to head and lateral line erosion (hole in the head), which also occurs with diets lacking
+      vitamins. A one-sided diet of feeder fish or mammal meat can lead to nutritional deficiencies
+      and fatty liver, and feeder fish bring in parasites. Wild and imported fish frequently carry
+      gill flukes and other parasites, so quarantine is advisable. Oscars are sensitive to cold, so
+      a failing heater in a cool room is dangerous.
+    sources: [*sf, *yilmaz, *tavares, *usgs, *arch59, *fkw]
+
+provenance:
+  runs:
+    - {role: generator, model: claude-opus-5-5, date: 2026-10-12}
+    - {role: checker, model: claude-opus-5-5, date: 2026-10-12}
+    - {role: checker, model: claude-sonnet-5-5, date: 2026-10-12}
+    - {role: checker, model: claude-opus-5-5, date: 2026-10-12}
+    - {role: checker, model: claude-sonnet-5-5, date: 2026-10-12}
+    - {role: adjudicator, model: claude-opus-5-5, date: 2026-10-12}
+  disagreements:
+    - field: taxonomy.synonyms
+      proposals:
+        - by: generator
+          value: [Lobotes ocellatus, Acara compressus, Acara hyposticta, Astronotus orbiculatus, Astronotus ocellatus var. zebra, Cychla rubroocellata]
+        - by: checker-a
+          value: ["Lobotes ocellatus Agassiz, 1831", "Acara compressus Cope, 1872", "Acara hyposticta Cope, 1878", "Astronotus orbiculatus Haseman, 1911", "Astronotus ocellatus var. zebra Pellegrin, 1904", "Cychla rubroocellata Jardine, 1843"]
+        - by: checker-b
+          value: [Lobotes ocellatus, Acara hyposticta, Astronotus orbiculatus, Astronotus ocellatus var. zebra, Cychla rubroocellata, Acara compressus]
+      decision: [Lobotes ocellatus, Acara compressus, Acara hyposticta, Astronotus orbiculatus, Astronotus ocellatus var. zebra, Cychla rubroocellata]
+      rationale: >-
+        All three list the same six names and differ only in form; the names stay without author,
+        which goes into the note. Cychla rubroocellata stays in the list with a note, because the
+        Catalog of Fishes gives it as uncertain rather than as a valid species.
+    - field: features.origin.value.localities
+      proposals:
+        - by: generator
+          value: ["Solimoes-Amazon floodplain lakes, Brazil", "Ucayali and Peruvian Amazon", "Lower Amazon near Santarem, Brazil", "Amazon tributaries in Amapa, Brazil", "French Guiana (Approuague, Oyapock)"]
+        - by: checker-a
+          value: [Rio Solimoes and Amazonas floodplains, Rio Ucayali, Rio Madeira, Rio Tapajos, Rio Tocantins]
+        - by: checker-b
+          value: [Rio Solimoes varzea (Mamiraua), Lake Janauaca, Rio Negro drainage]
+      decision: ["Rio Solimoes floodplain lakes (Mamiraua, Janauaca)", "Rio Ucayali, Peru", Lower Rio Madeira, Rio Tapajos, Rio Tocantins, Lower Amazon near Santarem, "French Guiana (Approuague, Oyapock)"]
+      rationale: >-
+        The proposals describe the same Amazonian range and are merged with the river systems
+        Seriously Fish names and the sampled floodplain lakes. The Rio Negro is left out because its
+        oscars may be the uncertain A. rubroocellatus, the upper Madeira because its lineage is
+        assigned to A. crassipinnis (Colatreli et al. 2012), and Amapa because no source read
+        names a locality there beyond the Oyapock.
+    - field: features.temperatureC
+      proposals:
+        - {by: generator, value: {min: 24, max: 32}}
+        - {by: checker-a, value: {min: 24, max: 32}}
+        - {by: checker-b, value: {min: 27, max: 31}}
+        - {by: tiebreaker-1, value: {min: 26, max: 32}}
+        - {by: tiebreaker-2, value: {min: 26, max: 31}}
+      decision: {min: 27, max: 31}
+      rationale: >-
+        Decided by the vote count: conservative, 3 of 5 votes for the top candidate, no qualified
+        majority; the intersection of all proposals is 27 to 31 C.
+    - field: features.temperatureC.tolerance
+      proposals:
+        - {by: generator, value: {min: 22, max: 32}}
+        - {by: checker-a, value: {min: 22, max: 32}}
+        - {by: checker-b, value: {min: 20, max: 31}}
+        - {by: tiebreaker-1, value: {min: 22, max: 32}}
+        - {by: tiebreaker-2, value: {min: 20, max: 30}}
+      decision: {min: 22, max: 31}
+      rationale: >-
+        Decided by the vote count: conservative, 3 of 5 votes for the top candidate; the
+        intersection 22 to 30 C is widened to contain the natural range up to 31 C.
+    - field: features.ph
+      proposals:
+        - {by: generator, value: {min: 5.9, max: 7.5}}
+        - {by: checker-a, value: {min: 5.8, max: 7.6}}
+        - {by: checker-b, value: {min: 6, max: 7}}
+        - {by: tiebreaker-1, value: {min: 6, max: 7.5}}
+        - {by: tiebreaker-2, value: {min: 5.4, max: 7}}
+      decision: {min: 6, max: 7}
+      rationale: >-
+        Decided by the vote count: conservative, 3 of 5 votes for the top candidate, no qualified
+        majority; the intersection of all proposals is pH 6.0 to 7.0.
+    - field: features.ph.tolerance
+      proposals:
+        - {by: generator, value: {min: 5.9, max: 8}}
+        - {by: checker-a, value: {min: 5.8, max: 8}}
+        - {by: checker-b, value: {min: 6, max: 8}}
+      decision: {min: 5.9, max: 8}
+      rationale: Decided by the vote count (unanimous, 3 of 3 within 0.3 pH); the median of the bounds is 5.9 to 8.0.
+    - field: features.ghDgh
+      proposals:
+        - {by: generator, value: {min: 0.4, max: 2}}
+        - {by: checker-a, value: {min: 0.3, max: 2}}
+        - {by: checker-b, value: {min: 0.5, max: 2.5}}
+      decision: {min: 0, max: 2}
+      rationale: Decided by the vote count (unanimous, 3 of 3 within 2 dGH); the median of the bounds, rounded to whole degrees, is 0 to 2 dGH.
+    - field: features.ghDgh.tolerance
+      proposals:
+        - {by: generator, value: {min: 0.4, max: 20}}
+        - {by: checker-a, value: {min: 0.3, max: 20}}
+        - {by: checker-b, value: {min: 1, max: 20}}
+      decision: {min: 0, max: 20}
+      rationale: Decided by the vote count (unanimous, 3 of 3 within 2 dGH); the median of the bounds, rounded to whole degrees, is 0 to 20 dGH.
+    - field: features.khDkh
+      proposals:
+        - {by: generator, value: {min: 0.7, max: 2.4}}
+        - {by: checker-a, value: {min: 0.7, max: 2.5}}
+        - {by: checker-b, value: {min: 0.5, max: 2}}
+      decision: {min: 1, max: 2}
+      rationale: Decided by the vote count (unanimous, 3 of 3); the median of the bounds, rounded to whole degrees, is 1 to 2 dKH.
+    - field: features.khDkh.tolerance
+      proposals:
+        - {by: generator, value: {min: 0.7, max: 15}}
+        - {by: checker-a, value: {min: 0.7, max: 20}}
+        - {by: checker-b, value: {min: 0.5, max: 12}}
+        - {by: tiebreaker-1, value: {min: 0.5, max: 12}}
+        - {by: tiebreaker-2, value: {min: 1, max: 15}}
+      decision: {min: 1, max: 12}
+      rationale: >-
+        Decided by the vote count: conservative, at most 2 of 5 votes agree; the intersection of all
+        proposals is 1 to 12 dKH, which contains the natural range.
+    - field: features.diet.value.foods
+      proposals:
+        - by: generator
+          value: [insects, insect larvae, crustaceans, snails, worms, small fish, fruit]
+        - by: checker-a
+          value: [insects, crustaceans, worms, small fish]
+        - by: checker-b
+          value: [insect larvae, molluscs, crustaceans, fish, fruit]
+      decision: [insects, insect larvae, crustaceans, snails, worms, small fish, fruit]
+      rationale: >-
+        Type and bloat sensitivity are unanimous (invertivore, not bloat-sensitive); the vote count
+        carries the food list of the first agreeing vote, which contains the items of the other two
+        lists.
+    - field: features.maxSizeCm
+      proposals:
+        - {by: generator, value: {male: 35, female: 30}}
+        - {by: checker-a, value: {male: 33, female: 30}}
+        - {by: checker-b, value: {male: 35, female: 30}}
+      decision: {male: 35, female: 30}
+      rationale: >-
+        Two of three proposals and the 35 cm of Seriously Fish support 35 cm for well-kept males;
+        checker-a set 33 cm within its own range of 30 to 35 cm. The female value is unanimous.
+    - field: features.aggressionConspecific
+      proposals:
+        - {by: generator, value: 3}
+        - {by: checker-a, value: 2}
+        - {by: checker-b, value: 3}
+      decision: 3
+      rationale: >-
+        Once a pair forms, the other adults are chased persistently and have to be removed
+        (Seriously Fish), and rivals fight by jaw-locking (Animal Diversity Web). That is the
+        persistent chasing with injuries in too little space of level 3; checker-a itself noted a
+        tendency to 3 during breeding, which is the normal state of an adult pair.
+    - field: features.aggressionHeterospecific
+      proposals:
+        - {by: generator, value: 2}
+        - {by: checker-a, value: 2}
+        - {by: checker-b, value: 3}
+      decision: 2
+      rationale: >-
+        Seriously Fish, Aquarium Glaser and Fishipedia describe the oscar as fairly calm towards
+        other species for its size; checker-b chose 3 cautiously on the strength of a forum post
+        and said itself that the sources disagree. Attacks on fish of similar size beyond the own
+        territory, as level 3 requires, are not documented.
+    - field: features.minTank
+      proposals:
+        - {by: generator, value: {volumeL: 650, lengthCm: 180, depthCm: 60}}
+        - {by: checker-a, value: {volumeL: 600, lengthCm: 180, depthCm: 60}}
+        - {by: checker-b, value: {volumeL: 660, lengthCm: 200, depthCm: 55}}
+      decision: {volumeL: 650, lengthCm: 180, depthCm: 60}
+      rationale: >-
+        Two proposals agree on 180 x 60 cm for a pair, in line with Flowgrow (160 to 180 cm) and
+        the single-fish base of Seriously Fish; 180 x 60 x 60 cm holds about 650 L, close to the
+        600 L minimum of Fishipedia. Checker-b's 200 cm was an extrapolation without a source.
+    - field: features.lifespanYears
+      proposals:
+        - {by: generator, value: {min: 10, max: 15}}
+        - {by: checker-a, value: {min: 10, max: 20}}
+        - {by: checker-b, value: {min: 10, max: 20}}
+      decision: {min: 10, max: 20}
+      rationale: >-
+        Seriously Fish gives 10 to 20 years, and the generator's own prose mentions oscars reaching
+        20; the narrower 10 to 15 years was the overlap with a general hobby page.
