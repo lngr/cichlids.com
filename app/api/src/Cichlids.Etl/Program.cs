@@ -61,6 +61,21 @@ if (command == EtlCommandLine.Migrate)
     return 0;
 }
 
+if (command == EtlCommandLine.Reset)
+{
+    try
+    {
+        await TargetDatabaseReset.ResetAsync(targetConnectionString, environmentName, cts.Token);
+    }
+    catch (ResetRefusedException ex)
+    {
+        Console.Error.WriteLine(ex.Message);
+        return 1;
+    }
+
+    return 0;
+}
+
 if (command == EtlCommandLine.Media)
 {
     var legacyImagesRoot =
