@@ -6,7 +6,7 @@ title: >-
 status: In Review
 assignee: []
 created_date: '2026-10-12 04:48'
-updated_date: '2026-10-12 08:03'
+updated_date: '2026-10-12 16:43'
 labels: []
 dependencies: []
 references:
@@ -213,4 +213,8 @@ Size: M/L, about 4 to 4.5 days in 7 commits, plus one operator session on the de
 4. AC #4: `... -- all --dry-run` prints "Unknown option '--dry-run'".
 5. `DOTNET_ENVIRONMENT=Staging ... -- profiles` is rejected naming the environment; `DOTNET_ENVIRONMENT=Development ... -- profiles` runs and prints the guard-skip warning.
 6. Realm: the id from `kcadm.sh get realms/cichlids --fields id` differs before and after `bootstrap.sh`; self-registration is open only after the account import step.
+
+### Verification on an isolated stack (2026-10-12)
+
+- AC #2: on a separate Docker stack (own compose project, ports and volumes) `etl reset`, `etl all`, `etl media --limit 3000`, `etl keycloak-import --open-registration` (12,050 accounts created) and `etl verify` exit 0, and verify reports "ok (no mismatches)". Two further runs of reset plus `etl all` report the same. The steps ran one by one in the order of bootstrap.sh, because bootstrap.sh uses the compose file and ports of app/stack.
 <!-- SECTION:NOTES:END -->

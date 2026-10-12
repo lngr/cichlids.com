@@ -4,7 +4,7 @@ title: Harden the account import and the identity handling of the ETL
 status: In Review
 assignee: []
 created_date: '2026-10-12 04:48'
-updated_date: '2026-10-12 08:19'
+updated_date: '2026-10-12 16:43'
 labels: []
 dependencies: []
 references:
@@ -105,4 +105,7 @@ The profile step replaces only identities of the legacy providers auth0 and lega
 ##### Notes
 - ResetCommand takes a settings factory so the environment refusal comes before the credential check.
 - A POST retried after a 5xx that Keycloak had committed can answer 409; rerunning is idempotent.
+
+##### Verification on an isolated stack (2026-10-12)
+- AC #1: after `etl reset` and `etl all` an oidc identity was inserted for the migrated member profile 1 (row 7254, subject verify-oidc-subject-1). `etl profiles` in Development exits 0, and row 7254 exists unchanged afterwards.
 <!-- SECTION:NOTES:END -->

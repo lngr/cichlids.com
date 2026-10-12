@@ -4,7 +4,7 @@ title: Decide media seeding from the object store state
 status: In Review
 assignee: []
 created_date: '2026-10-12 04:48'
-updated_date: '2026-10-12 09:01'
+updated_date: '2026-10-12 16:43'
 labels: []
 dependencies: []
 references:
@@ -154,7 +154,11 @@ Implemented as planned: the media seed decides from the object store state.
 - AC #2 is proven by `RestoresADeletedOriginalWithTheChecksumOfTheLegacyFile`. AC #1 needs the operator run below and stays unchecked.
 
 ##### Operator checks
-1. Run one full seed with `CICHLIDS_MEDIA_LIMIT=0 app/stack/bootstrap.sh` (about 94 minutes; writes the metadata).
+1. Run one full seed with `CICHLIDS_MEDIA_LIMIT=0 app/stack/bootstrap.sh` (about one hour; writes the metadata).
 2. Run it again; the media summary must show `originals uploaded: 0` and an elapsed time under 15 minutes (AC #1). Tune `--workers` if HEAD requests are the bottleneck.
 3. Delete one original with `amazon/aws-cli ... s3 rm`, run `etl media` without `--limit`, and compare `source-sha256` from `s3api head-object` with `sha256sum` of the legacy file.
+
+##### Verification on an isolated stack (2026-10-12)
+- AC #1: with all 179,340 media items in the object store, `etl reset` and `etl all` followed by `etl media` report originals uploaded 0, variants uploaded 0, originals present 179,336 (3 missing, 908 broken, 1 rejected), bytes transferred 0 and an elapsed time of 4 min 39 s. With `--limit 3000` the same check takes 2.2 s.
+- The first full seed uploads about 283 GB at 67 to 113 items/s (about 75 MB/s) and takes about one hour.
 <!-- SECTION:NOTES:END -->

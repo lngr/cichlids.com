@@ -4,7 +4,7 @@ title: Keep media originals private and strip location metadata
 status: In Review
 assignee: []
 created_date: '2026-10-12 04:48'
-updated_date: '2026-10-12 12:05'
+updated_date: '2026-10-12 16:43'
 labels: []
 dependencies: []
 references:
@@ -292,7 +292,7 @@ Each step is one conventional commit: red test first, then the production change
 
 ### Operator notes
 
-- The next normal dev seed (`etl media`) re-uploads every original sanitized and regenerates every variant, about the full seed time (about 94 minutes, 283 GB).
+- The next normal dev seed (`etl media`) re-uploads every original sanitized and regenerates every variant, about one hour for 283 GB.
 - No seed may run against the Hetzner buckets before this task is merged: the versioned, Object Lock protected master would keep unsanitized originals as noncurrent versions.
 - Production copies only variants, forum attachments and public copies to the serving store (ADR-0009, TASK-2.4).
 
@@ -318,4 +318,12 @@ Each step is one conventional commit: red test first, then the production change
 - `app/api/tests/Cichlids.Api.Tests`: Features/Uploads/UploadsEndpointsTests.cs, Features/Media/PublicResponsesExposeNoOriginalsTests.cs, Features/Media/MediaUrlBuilderTests.cs
 - `app/api/tests/Cichlids.Etl.Tests`: ForumMigrationStepTests.cs, MediaSeedCommandTests.cs
 - E2E: `app/mobile/e2e/playwright/media-privacy.write.mjs` through `pnpm --dir app/mobile run e2e:write`
+
+### Verification on an isolated stack (2026-10-12)
+
+Full legacy import on a separate Docker stack (own compose project, ports and volumes) with all 179,340 media items seeded.
+
+- AC #3: 3463 legacy originals carry GPS coordinates. All 3463 stored objects were downloaded and read with exiftool: none holds a GPS tag, and none of the 6 serial number or owner tags of the legacy files is present. DateTimeOriginal, Orientation, the ICC profile and Make are present wherever the legacy file holds them in IFD0 or the Exif IFD. In the 20 files where such a value is absent after sanitizing, the legacy file holds it only in IFD1 (the IFD of the embedded thumbnail, which viewers ignore for the main image) or in a corrupt Exif IFD, which the sanitizer drops as a whole.
+- AC #4: 162 legacy originals carry a Display P3 profile. The 158 with a medium variant (the other 4 are narrower than 800 px) were compared with their colour-managed original, both reduced to 64 px with the same kernel: median CIEDE2000 0.62, worst 3.07. Against the original shown without colour conversion the median is 1.30. No variant carries EXIF, XMP, IPTC or ICC data. The comparison in a colour-managed viewer is open.
+- The only item the full seed rejects is `originals/user_pics/1417/01_fish.gif`, a 63-byte GIF of 588 x 1 pixels.
 <!-- SECTION:NOTES:END -->
