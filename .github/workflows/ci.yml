@@ -61,6 +61,19 @@ jobs:
           python3 tools/check-git-hooks.py --self-test
           python3 tools/check-git-hooks.py
 
+  keycloak-realm:
+    name: Keycloak realm files carry no dev setting
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.x"
+      - name: Self-test of the realm check
+        run: python3 tools/check-keycloak-realm.py --self-test
+      - name: Check the staging and production realm files
+        run: python3 tools/check-keycloak-realm.py
+
   infra-validate:
     name: OpenTofu tiers validate
     runs-on: ubuntu-latest
