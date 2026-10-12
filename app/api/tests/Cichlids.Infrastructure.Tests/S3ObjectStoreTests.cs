@@ -76,6 +76,51 @@ public sealed class S3ObjectStoreTests
     }
 
     [Fact]
+    public async Task PutAsync_with_metadata_is_read_back_by_HeadAsync_with_the_size_and_unprefixed_keys()
+    {
+        var store = _fixture.CreateStoreForNewBucket();
+        var content = Encoding.UTF8.GetBytes("cichlids swim in schools");
+        var metadata = new Dictionary<string, string>
+        {
+            ["sha256"] = "abc123",
+            ["source-sha256"] = "def456",
+            ["pipeline"] = "7",
+        };
+
+        await store.PutAsync("images/tagged.jpg", new MemoryStream(content), "image/jpeg", metadata);
+
+        var head = await store.HeadAsync("images/tagged.jpg");
+
+        Assert.NotNull(head);
+        Assert.Equal(content.LongLength, head!.Size);
+        Assert.Equal("abc123", head.Metadata["sha256"]);
+        Assert.Equal("def456", head.Metadata["source-sha256"]);
+        Assert.Equal("7", head.Metadata["pipeline"]);
+        Assert.DoesNotContain(head.Metadata.Keys, k => k.StartsWith("x-amz-meta-", StringComparison.OrdinalIgnoreCase));
+    }
+
+    [Fact]
+    public async Task HeadAsync_returns_empty_metadata_for_an_object_put_without_metadata()
+    {
+        var store = _fixture.CreateStoreForNewBucket();
+        await store.PutAsync("images/plain.jpg", new MemoryStream([1, 2, 3]), "image/jpeg");
+
+        var head = await store.HeadAsync("images/plain.jpg");
+
+        Assert.NotNull(head);
+        Assert.Equal(3, head!.Size);
+        Assert.Empty(head.Metadata);
+    }
+
+    [Fact]
+    public async Task HeadAsync_returns_null_for_a_missing_key()
+    {
+        var store = _fixture.CreateStoreForNewBucket();
+
+        Assert.Null(await store.HeadAsync("does/not/exist.jpg"));
+    }
+
+    [Fact]
     public async Task DeleteAsync_removes_the_object()
     {
         var store = _fixture.CreateStoreForNewBucket();

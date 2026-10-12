@@ -24,7 +24,15 @@ public sealed class S3ObjectStore : IObjectStore
 
     public string Bucket => _options.Bucket;
 
-    public async Task PutAsync(string key, Stream content, string contentType, CancellationToken cancellationToken = default)
+    public Task PutAsync(string key, Stream content, string contentType, CancellationToken cancellationToken = default) =>
+        PutAsync(key, content, contentType, new Dictionary<string, string>(), cancellationToken);
+
+    public async Task PutAsync(
+        string key,
+        Stream content,
+        string contentType,
+        IReadOnlyDictionary<string, string> metadata,
+        CancellationToken cancellationToken = default)
     {
         if (content.CanSeek)
         {
@@ -40,7 +48,38 @@ public sealed class S3ObjectStore : IObjectStore
             AutoCloseStream = false,
         };
 
+        foreach (var (name, value) in metadata)
+        {
+            request.Metadata[name] = value;
+        }
+
         await _client.PutObjectAsync(request, cancellationToken).ConfigureAwait(false);
+    }
+
+    public async Task<ObjectHead?> HeadAsync(string key, CancellationToken cancellationToken = default)
+    {
+        var request = new GetObjectMetadataRequest
+        {
+            BucketName = _options.Bucket,
+            Key = key,
+        };
+
+        try
+        {
+            var response = await _client.GetObjectMetadataAsync(request, cancellationToken).ConfigureAwait(false);
+            var metadata = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            foreach (var name in response.Metadata.Keys)
+            {
+                var plainName = name.StartsWith("x-amz-meta-", StringComparison.OrdinalIgnoreCase) ? name["x-amz-meta-".Length..] : name;
+                metadata[plainName] = response.Metadata[name];
+            }
+
+            return new ObjectHead(response.ContentLength, metadata);
+        }
+        catch (AmazonS3Exception ex) when (ex.StatusCode == HttpStatusCode.NotFound)
+        {
+            return null;
+        }
     }
 
     public async Task<Stream?> GetAsync(string key, CancellationToken cancellationToken = default)
