@@ -80,6 +80,26 @@ public class FirstLoginTests(ApiFixture fixture)
     }
 
     [Fact]
+    public async Task SameSubjectWinnerOnTheLastAttemptIsResolvedInsteadOfFailing()
+    {
+        var subject = Guid.NewGuid().ToString();
+        var otherSubject = Guid.NewGuid().ToString();
+        var username = $"last-{Guid.NewGuid():N}";
+        var winnerId = 0L;
+        var interceptor = new SequenceInterceptor(
+            async () => await CommitProfileAsync(username, otherSubject),
+            async () => await CommitProfileAsync($"{username}-2", Guid.NewGuid().ToString()),
+            async () => winnerId = await CommitProfileAsync($"{username}-winner", subject));
+
+        await using var context = fixture.CreateDbContext(interceptor);
+        var resolved = await NewService(context).ResolveAsync(Principal(subject, username), CancellationToken.None);
+
+        Assert.Equal(winnerId, resolved.Id);
+        await using var check = fixture.CreateDbContext();
+        Assert.Equal(1, await check.ProfileIdentities.CountAsync(i => i.Subject == subject));
+    }
+
+    [Fact]
     public async Task ConcurrentFirstRequestsAllSucceedAndCreateOneProfile()
     {
         var subject = Guid.NewGuid().ToString();
@@ -202,6 +222,26 @@ public class FirstLoginTests(ApiFixture fixture)
             {
                 _fired = true;
                 await action();
+            }
+
+            return result;
+        }
+    }
+
+    /// <summary>
+    /// Runs one action before each save that inserts a profile, in order, so a test can make
+    /// consecutive create attempts lose to competing commits.
+    /// </summary>
+    private sealed class SequenceInterceptor(params Func<Task>[] actions) : SaveChangesInterceptor
+    {
+        private int _next;
+
+        public override async ValueTask<InterceptionResult<int>> SavingChangesAsync(
+            DbContextEventData eventData, InterceptionResult<int> result, CancellationToken cancellationToken = default)
+        {
+            if (_next < actions.Length && eventData.Context!.ChangeTracker.Entries<Profile>().Any(e => e.State == EntityState.Added))
+            {
+                await actions[_next++]();
             }
 
             return result;

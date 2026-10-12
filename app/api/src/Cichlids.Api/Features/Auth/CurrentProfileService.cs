@@ -48,6 +48,12 @@ public sealed class CurrentProfileService(
             }
         }
 
+        var winner = await FindBySubjectAsync(subject, cancellationToken);
+        if (winner is not null)
+        {
+            return RequireMember(winner, subject);
+        }
+
         throw new InvalidOperationException(
             $"The profile for a first login could not be created after {MaxCreateAttempts} attempts.");
     }
