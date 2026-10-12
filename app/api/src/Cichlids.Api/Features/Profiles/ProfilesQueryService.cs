@@ -1,5 +1,7 @@
+using Cichlids.Api.Features.Common;
 using Cichlids.Api.Features.Media;
 using Cichlids.Domain.Enums;
+using Cichlids.Infrastructure.Media;
 using Cichlids.Infrastructure.Persistence;
 using Cichlids.Infrastructure.Storage;
 using Microsoft.EntityFrameworkCore;
@@ -24,16 +26,17 @@ public sealed class ProfilesQueryService(CichlidsDbContext context, IObjectStore
             return null;
         }
 
-        var avatarThumbStorageKey = profile.AvatarMediaId is { } avatarMediaId
+        var avatarKeysByLabel = profile.AvatarMediaId is { } avatarMediaId
             ? await context.MediaVariants
-                .Where(v => v.MediaItemId == avatarMediaId && v.Label == "thumb")
-                .Select(v => v.StorageKey)
-                .FirstOrDefaultAsync(cancellationToken)
-            : null;
+                .Where(v => v.MediaItemId == avatarMediaId && (v.Label == "thumb" || v.Label == MediaVariantSpec.PublicCopyLabel))
+                .ToDictionaryAsync(v => v.Label, v => v.StorageKey, cancellationToken)
+            : [];
 
-        var avatarUrl = avatarThumbStorageKey is not null
-            ? objectStore.GetPublicUrl(avatarThumbStorageKey)
-            : profile.ExternalAvatarUrl;
+        var avatarUrl = AuthorRow.ResolveAvatarUrl(
+            objectStore,
+            avatarKeysByLabel.GetValueOrDefault("thumb"),
+            avatarKeysByLabel.GetValueOrDefault(MediaVariantSpec.PublicCopyLabel),
+            profile.ExternalAvatarUrl);
 
         string? profileImageUrl = null;
         if (profile.ProfileImageMediaId is { } profileImageMediaId)

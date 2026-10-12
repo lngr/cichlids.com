@@ -1,6 +1,7 @@
 using Cichlids.Api.Features.Common;
 using Cichlids.Api.Features.Media;
 using Cichlids.Domain.Enums;
+using Cichlids.Infrastructure.Media;
 using Cichlids.Infrastructure.Persistence;
 using Cichlids.Infrastructure.Storage;
 using Microsoft.EntityFrameworkCore;
@@ -148,6 +149,12 @@ public sealed class CommunityQueryService(CichlidsDbContext context, IObjectStor
                         .Select(v => v.StorageKey)
                         .FirstOrDefault()
                     : null,
+                p.AvatarMediaId != null
+                    ? context.MediaVariants
+                        .Where(v => v.MediaItemId == p.AvatarMediaId && v.Label == MediaVariantSpec.PublicCopyLabel)
+                        .Select(v => v.StorageKey)
+                        .FirstOrDefault()
+                    : null,
                 p.ExternalAvatarUrl))
             .ToDictionaryAsync(p => p.Id, cancellationToken);
 
@@ -166,9 +173,8 @@ public sealed class CommunityQueryService(CichlidsDbContext context, IObjectStor
 
             if (row.Kind == ProfileKind.Member)
             {
-                var avatarUrl = row.AvatarThumbStorageKey is not null
-                    ? objectStore.GetPublicUrl(row.AvatarThumbStorageKey)
-                    : row.ExternalAvatarUrl;
+                var avatarUrl = AuthorRow.ResolveAvatarUrl(
+                    objectStore, row.AvatarThumbStorageKey, row.AvatarCopyStorageKey, row.ExternalAvatarUrl);
                 return new ResolvedAuthor(row.Id, row.Username, displayName, avatarUrl, IsMember: true);
             }
 
@@ -221,7 +227,8 @@ public sealed class CommunityQueryService(CichlidsDbContext context, IObjectStor
     private sealed record PostProjection(long Id, string Body, DateTimeOffset CreatedAt, long? AuthorProfileId, string? PosterName);
 
     private sealed record ProfileAuthorRow(
-        long Id, string Username, string? DisplayName, ProfileKind Kind, string? AvatarThumbStorageKey, string? ExternalAvatarUrl);
+        long Id, string Username, string? DisplayName, ProfileKind Kind, string? AvatarThumbStorageKey,
+        string? AvatarCopyStorageKey, string? ExternalAvatarUrl);
 
     /// <summary>
     /// A post's author resolved once, then rendered into whichever of the two shapes the caller

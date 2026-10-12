@@ -49,6 +49,14 @@ public sealed class MediaUrlBuilder(IObjectStore objectStore)
         return FindUrl(variantStorageKeysByLabel, MediaVariantSpec.PublicCopyLabel);
     }
 
+    /// <summary>
+    /// The URL of the thumbnail, otherwise of the public copy, or null when neither key is given.
+    /// </summary>
+    public string? BuildThumbnail(string? thumbStorageKey, string? copyStorageKey) =>
+        thumbStorageKey is not null ? PublicUrl(thumbStorageKey)
+        : copyStorageKey is not null ? PublicUrl(copyStorageKey)
+        : null;
+
     private string? FindUrl(IReadOnlyDictionary<string, string> variantStorageKeysByLabel, string label) =>
         variantStorageKeysByLabel.TryGetValue(label, out var storageKey)
             ? PublicUrl(storageKey)

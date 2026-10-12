@@ -1,5 +1,4 @@
 using Cichlids.Api.Features.Media;
-using Cichlids.Infrastructure.Storage;
 
 namespace Cichlids.Api.Tests.Features.Media;
 
@@ -7,7 +6,7 @@ public class MediaUrlBuilderTests
 {
     private const string BaseUrl = "https://media.test";
 
-    private readonly MediaUrlBuilder _builder = new(new UrlOnlyObjectStore());
+    private readonly MediaUrlBuilder _builder = new(new UrlOnlyObjectStore(BaseUrl));
 
     [Fact]
     public void Build_resolves_each_variant_label_and_leaves_missing_ones_null()
@@ -99,38 +98,18 @@ public class MediaUrlBuilderTests
             _builder.BuildBest(new Dictionary<string, string> { ["copy"] = "variants/copy/originals/a.jpg" }));
     }
 
-    /// <summary>
-    /// An object store that only builds public URLs; every storage operation fails, since URL
-    /// building never reaches the store.
-    /// </summary>
-    private sealed class UrlOnlyObjectStore : IObjectStore
+    [Fact]
+    public void BuildThumbnail_prefers_the_thumbnail_and_falls_back_to_the_public_copy()
     {
-        public string GetPublicUrl(string key) => $"{BaseUrl}/{key}";
+        Assert.Equal($"{BaseUrl}/variants/thumb/originals/a.jpg.jpg", _builder.BuildThumbnail("variants/thumb/originals/a.jpg.jpg", "variants/copy/originals/a.jpg"));
+        Assert.Equal($"{BaseUrl}/variants/copy/originals/a.jpg", _builder.BuildThumbnail(null, "variants/copy/originals/a.jpg"));
+        Assert.Null(_builder.BuildThumbnail(null, null));
+    }
 
-        public Task PutAsync(string key, Stream content, string contentType, CancellationToken cancellationToken = default) =>
-            throw new NotSupportedException();
-
-        public Task PutAsync(
-            string key, Stream content, string contentType, IReadOnlyDictionary<string, string> metadata,
-            CancellationToken cancellationToken = default) =>
-            throw new NotSupportedException();
-
-        public Task<ObjectHead?> HeadAsync(string key, CancellationToken cancellationToken = default) =>
-            throw new NotSupportedException();
-
-        public Task<Stream?> GetAsync(string key, CancellationToken cancellationToken = default) =>
-            throw new NotSupportedException();
-
-        public Task<bool> ExistsAsync(string key, CancellationToken cancellationToken = default) =>
-            throw new NotSupportedException();
-
-        public Task<long?> GetSizeAsync(string key, CancellationToken cancellationToken = default) =>
-            throw new NotSupportedException();
-
-        public Task DeleteAsync(string key, CancellationToken cancellationToken = default) =>
-            throw new NotSupportedException();
-
-        public IAsyncEnumerable<string> ListKeysAsync(string prefix, CancellationToken cancellationToken = default) =>
-            throw new NotSupportedException();
+    [Fact]
+    public void BuildThumbnail_refuses_a_key_outside_the_public_prefixes()
+    {
+        Assert.Throws<InvalidOperationException>(() => _builder.BuildThumbnail("originals/a.jpg", null));
+        Assert.Throws<InvalidOperationException>(() => _builder.BuildThumbnail(null, "originals/a.jpg"));
     }
 }
