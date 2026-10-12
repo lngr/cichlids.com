@@ -12,7 +12,8 @@ public static class CommentsEndpoints
         app.MapDelete("/api/comments/{id:long}", DeleteAsync)
             .WithName("DeleteComment")
             .WithTags("Comments")
-            .RequireAuthorization(AuthorizationPolicies.Moderator);
+            .RequireAuthorization(AuthorizationPolicies.Moderator)
+            .ProducesProblem(StatusCodes.Status403Forbidden);
 
         return app;
     }

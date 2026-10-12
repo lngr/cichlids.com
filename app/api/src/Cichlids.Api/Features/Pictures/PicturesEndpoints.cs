@@ -18,7 +18,9 @@ public static class PicturesEndpoints
         group.MapGet("/", ListAsync).WithName("ListPictures");
         group.MapGet("/{slug}", GetBySlugAsync).WithName("GetPicture");
         group.MapGet("/{slug}/comments", ListCommentsAsync).WithName("ListPictureComments");
-        group.MapPost("/{slug}/comments", CreateCommentAsync).WithName("CreatePictureComment").RequireAuthorization();
+        group.MapPost("/{slug}/comments", CreateCommentAsync).WithName("CreatePictureComment")
+            .RequireAuthorization()
+            .ProducesProblem(StatusCodes.Status403Forbidden);
 
         return app;
     }

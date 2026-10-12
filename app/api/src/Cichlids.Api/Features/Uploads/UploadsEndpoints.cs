@@ -36,22 +36,26 @@ public static class UploadsEndpoints
             .DisableAntiforgery()
             .WithMetadata(new RequestSizeLimitAttribute(MaxRequestBytes))
             .WithFormOptions(multipartBodyLengthLimit: MaxRequestBytes)
-            .Produces(StatusCodes.Status413PayloadTooLarge);
+            .Produces(StatusCodes.Status413PayloadTooLarge)
+            .ProducesProblem(StatusCodes.Status403Forbidden);
 
         app.MapGet("/api/me/drafts", ListDraftsAsync)
             .WithName("ListMyDrafts")
             .WithTags("Me")
-            .RequireAuthorization();
+            .RequireAuthorization()
+            .ProducesProblem(StatusCodes.Status403Forbidden);
 
         app.MapPost("/api/posts/{id:long}/publish", PublishAsync)
             .WithName("PublishPost")
             .WithTags("Posts")
-            .RequireAuthorization();
+            .RequireAuthorization()
+            .ProducesProblem(StatusCodes.Status403Forbidden);
 
         app.MapDelete("/api/posts/{id:long}", DiscardAsync)
             .WithName("DiscardPost")
             .WithTags("Posts")
-            .RequireAuthorization();
+            .RequireAuthorization()
+            .ProducesProblem(StatusCodes.Status403Forbidden);
 
         return app;
     }
