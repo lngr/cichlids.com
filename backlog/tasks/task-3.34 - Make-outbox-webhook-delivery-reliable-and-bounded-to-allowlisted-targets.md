@@ -4,7 +4,7 @@ title: Make outbox webhook delivery reliable and bounded to allowlisted targets
 status: In Review
 assignee: []
 created_date: '2026-10-12 04:48'
-updated_date: '2026-10-12 12:45'
+updated_date: '2026-10-12 12:58'
 labels: []
 dependencies: []
 references:
@@ -299,4 +299,9 @@ Each step is one commit: failing test first, then production change. New and cha
 - `app/api/tests/Cichlids.Infrastructure.Tests`: Outbox/WebhookTargetPolicyTests.cs, Outbox/OutboxRetryScheduleTests.cs, Outbox/OutboxDispatcherOptionsValidatorTests.cs, Outbox/OutboxBackoffTests.cs, Persistence/SchemaMigrationTests.cs (partial index, array column, no pending model changes, backfill)
 - `app/api/tests/Cichlids.Api.Tests`: Features/Webhooks/OutboxDispatchServiceTests.cs, Features/Webhooks/OutboxAdminEndpointsTests.cs, Features/Webhooks/OutboxDispatcherHostedServiceTests.cs, Features/Webhooks/WebhookAdminEndpointsTests.cs, WebhookTargetAllowlistStartupTests.cs, OpenApiDocumentTests.cs
 - E2E: `app/mobile/e2e/playwright/webhook.write.mjs` through `pnpm --dir app/mobile run e2e:write`
+
+### Known limits
+
+- Under sustained overload, events that were attempted wait behind events that were never attempted.
+- The reservation capacity assumes a full DeliveryTimeout per delivery. An event with more than about 28 matching subscribers is split over several attempts, and each attempt records a failed attempt.
 <!-- SECTION:NOTES:END -->
