@@ -1,0 +1,3038 @@
+schemaVersion: 1
+id: andinoacara-pulcher
+legacyIds:
+  - 604
+status: described
+taxonomy:
+  validName: Andinoacara pulcher
+  genus: Andinoacara
+  species: pulcher
+  author: "(Gill, 1858)"
+  source:
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes: Andinoacara species list, updated 21 September 2026"
+    url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=An\
+      dinoacara"
+    accessed: 2026-10-13
+  synonyms:
+    - name: Cychlasoma pulchrum
+      note: Original combination in Gill 1858.
+    - name: Aequidens pulcher
+      note: Former generic combination and legacy catalogue name.
+    - name: Aequidens pulchrus
+      note: Historical combination recorded by the Catalog of Fishes.
+  legacyNames:
+    - Aequidens pulcher
+  note: "The current Catalog accepts Andinoacara pulcher (Gill, 1858) and Andinoacara latifrons (Steindachner,
+    1878) as separate species. Both Andinoacara and the legacy Aequidens genus lists were read on 2026-10-13;
+    the legacy query is
+    https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Aequ\
+    idens. The Catalog places pulcher in Trinidad and Tobago and adjacent Venezuela, and latifrons in
+    Colombian Magdalena, Atrato, Sinu and San Juan basins. Colombian blue-acara records need specimen-level
+    reassessment rather than automatic synonymy or reassignment. The 2009 phylogeny also identifies unresolved
+    mainland blue-acara lineages. CRC independently confirms the combination and original description; its
+    public page provides no usable diet, breeding or habitat details. FishBase .se timed out during
+    adjudication and the .us and .org mirrors returned bot checks, so no inaccessible FishBase text was used
+    as fresh evidence."
+names:
+  trade:
+    en:
+      - Blue acara
+      - Blue coscarob
+    de:
+      - Blaupunktbuntbarsch
+    es-419:
+      - Acara azul
+      - Cocoroba
+      - Mojarra azul
+    pt-BR:
+      - Acará-azul
+variants:
+  - name: Trinidad
+    kind: locality
+    note: Type-region stock is the best geographic anchor for the described species. Keep traceable locality lines
+      separate from unidentified mainland blue acaras.
+  - name: Electric blue
+    kind: color-morph
+    note: A widely traded captive colour form associated with pulcher. Pedigrees and claims of hybrid ancestry are
+      not independently established for every strain; this profile does not assert a confirmed cross with a
+      ram cichlid.
+features:
+  origin:
+    value:
+      continent: South America
+      region: Trinidad and Tobago and adjacent Venezuela; historical Colombian blue-acara records require taxonomic
+        reassessment
+      waterbody: null
+      localities:
+        - Trinidad
+        - "Trinidad: Arima River"
+        - "Trinidad: Lower Aripo River"
+        - "Trinidad: Guanapo River"
+        - "Trinidad: Eastern Highway collection locality"
+        - "Tobago and adjacent Venezuela: Catalog distribution"
+    confidence: high
+    rationale: "All roles anchor the species to Trinidad and adjacent Venezuela, but differ in the localities and
+      regional wording. The current Catalog determines the accepted distribution, while Trinidad field
+      observations support the listed river localities. Apure and Colombian records are not adopted without
+      reliable identification because the 2009 revision finds multiple mainland lineages and the 2020 study
+      identifies Colombian latifrons populations. The regional statement does not assert that every historical
+      Colombian pulcher record is latifrons."
+    sources:
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: Andinoacara species list, updated 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=An\
+          dinoacara"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Zanghi et al. (2024). Multiple environmental stressors affect predation pressure in a tropical
+          freshwater system
+        url: "https://doi.org/10.1038/s42003-024-06364-6"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Zanghi et al. (2024): original Trinidad field observations, Trini_22.csv"
+        url: "https://github.com/CosZan/Zanghi-et-al-2024-CommsBio/blob/main/Trini_22.csv"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Elvidge and Brown (2012). Visual and Chemical Prey Cues as Complementary Predator Attractants in a
+          Tropical Stream Fish Assemblage
+        url: "https://doi.org/10.1155/2012/510920"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Nordiska Ciklidsallskapet: Eastern Highway collecting locality, measurements on 29 September 1998"
+        url: "https://www.ciklid.org/artregister/art_fangstplats.php?ID=442"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Musilova, Schindler and Staeck (2009). Description of Andinoacara stalsbergi and annotations on the
+          phylogeny of the genus"
+        url: "https://doi.org/10.3897/vz.59.e30965"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "De la Ossa-Guerra, Santos and Artoni (2020). Genetic Diversity of the Cichlid Andinoacara latifrons as
+          a Conservation Strategy in Different Colombian Basins"
+        url: "https://doi.org/10.3389/fgene.2020.00815"
+        accessed: 2026-10-13
+  temperatureC:
+    value:
+      min: 24
+      max: 30
+    confidence: low
+    rationale: "The tally uses median, with low confidence and 3 of 6 votes in its leading agreement cluster.
+      generator proposed {\"min\":23.97,\"max\":29.58}; checker-a proposed {\"min\":24,\"max\":28}; checker-b
+      proposed {\"min\":25,\"max\":30}; checker-c proposed {\"min\":24.9,\"max\":25.7}; tiebreaker-1 proposed
+      {\"min\":23.97,\"max\":29.58}; tiebreaker-2 proposed {\"min\":23.97,\"max\":29.58}. The median endpoints
+      are 23.985 and 29.58 C before integer rounding to 24 and 30 C. The directly checked Zanghi data contain
+      134 species-positive events spanning 23.97 to 29.58 C, including both extremes in the Arima River. The
+      final lower bound is therefore 0.03 C narrower than that measured range and the upper bound is rounded
+      upward, not a new observation. Sandkam gives 24.9 to 25.7 C for three lower Aripo samples; Stalsberg and
+      the Nordic collecting record give 25 C and likely describe one event. These limited seasonal
+      observations have more relevance than air temperatures, laboratory settings for Saxatilia or uncertain
+      Orinoco identifications in the other proposals. The median is binding despite the stronger
+      locality-linked support for the wider Zanghi envelope; it is not a complete annual or geographical
+      limit."
+    sources:
+      - kind: literature
+        title: Zanghi et al. (2024). Multiple environmental stressors affect predation pressure in a tropical
+          freshwater system
+        url: "https://doi.org/10.1038/s42003-024-06364-6"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Zanghi et al. (2024): original Trinidad field observations, Trini_22.csv"
+        url: "https://github.com/CosZan/Zanghi-et-al-2024-CommsBio/blob/main/Trini_22.csv"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Sandkam, Young and Breden (2014): Trinidad environmental measurements, Aripo high-predation rows"
+        url: "https://doi.org/10.5061/dryad.sk6d5"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Stalsberg, A.: Andinoacara collecting account, Trinidad section"
+        url: "https://www.lem.net/alf/andinoacara-eng.htm"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Nordiska Ciklidsallskapet: Eastern Highway collecting locality, measurements on 29 September 1998"
+        url: "https://www.ciklid.org/artregister/art_fangstplats.php?ID=442"
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: literature
+          title: Zanghi et al. (2024). Multiple environmental stressors affect predation pressure in a tropical
+            freshwater system
+          url: "https://doi.org/10.1038/s42003-024-06364-6"
+          accessed: 2026-10-13
+        value:
+          min: 23.97
+          max: 29.58
+        note: "Calculated from its raw dataset with AP > 0; 134 events, April to May 2022. The article and dataset are
+          one study."
+      - source:
+          kind: database
+          title: "Zanghi et al. (2024): original Trinidad field observations, Trini_22.csv"
+          url: "https://github.com/CosZan/Zanghi-et-al-2024-CommsBio/blob/main/Trini_22.csv"
+          accessed: 2026-10-13
+        value:
+          min: 23.97
+          max: 29.58
+        note: AP > 0 and recorded Temp_mean_C; se092 and se223 provide the extremes. Same evidence as the article.
+      - source:
+          kind: literature
+          title: "Sandkam, Young and Breden (2014): Trinidad environmental measurements, Aripo high-predation rows"
+          url: "https://doi.org/10.5061/dryad.sk6d5"
+          accessed: 2026-10-13
+        value:
+          min: 24.9
+          max: 25.7
+        note: "Aripo AHP rows only; acara occurrence is associated using independent Lower Aripo literature, not
+          recorded per chemistry sample."
+      - source:
+          kind: literature
+          title: "Stalsberg, A.: Andinoacara collecting account, Trinidad section"
+          url: "https://www.lem.net/alf/andinoacara-eng.htm"
+          accessed: 2026-10-13
+        value:
+          min: 25
+          max: 25
+        note: One collecting-site reading; the printed coordinates conflict with the Trinidad narrative.
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet: Eastern Highway collecting locality, measurements on 29 September 1998"
+          url: "https://www.ciklid.org/artregister/art_fangstplats.php?ID=442"
+          accessed: 2026-10-13
+        value:
+          min: 25
+          max: 25
+        note: "Dated 29 September 1998; probably the same collecting event as Stalsberg, not an independent
+          replicate."
+    verification:
+      method: median
+      votes:
+        agree: 3
+        total: 6
+    tolerance:
+      value:
+        min: 22
+        max: 30
+      confidence: medium
+      rationale: "The tally retains 22 to 30 C by qualified-majority, 4 of 6 votes, at medium confidence. generator
+        proposed {\"min\":22,\"max\":30}; checker-a proposed {\"min\":20,\"max\":29}; checker-b proposed
+        {\"min\":22,\"max\":30}; checker-c proposed {\"min\":22,\"max\":28}; tiebreaker-1 proposed
+        {\"min\":22,\"max\":30}; tiebreaker-2 proposed {\"min\":22,\"max\":30}. Fishkeeping gives 22 to 30 C;
+        Fish Laboratory and Aquatic Community give the same wider interval but are general hobby websites.
+        Seriously Fish and Akvaforum give 22 to 28 C, Fishkeeper 22 to 27 C, FishProfiles 20 to 26 C,
+        Andinoacara.com 22 to 25 C and the Nordic register 26 to 28 C. The selected range contains the decided
+        natural 24 to 30 C interval. The cooler 20 C proposal is not retained; the published 18 to 23 C
+        society care interval does not outweigh the species-linked warm field data. Long-term evidence at 30 C
+        is weaker than in the overlapping central band, so natural exposure and care recommendations are not
+        described as endpoint survival trials."
+      sources:
+        - kind: database
+          title: "Seriously Fish: Andinoacara pulcher"
+          url: "https://www.seriouslyfish.com/species/andinoacara-pulcher/"
+          accessed: 2026-10-13
+        - kind: database
+          title: "Fishkeeping.co.uk: Blue Acara care sheet 113"
+          url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=113"
+          accessed: 2026-10-13
+        - kind: database
+          title: "Akvaforum: Aequidens pulcher species and aquarium record"
+          url: "https://akvaforum.no/lex/fish.cfm/1050"
+          accessed: 2026-10-13
+        - kind: database
+          title: "Nordiska Ciklidsallskapet: Andinoacara pulcher species register"
+          url: "https://www.ciklid.org/artregister/art.php?ID=181"
+          accessed: 2026-10-13
+        - kind: database
+          title: "FishProfiles.com: Aequidens pulcher"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Aequidens_pulcher/"
+          accessed: 2026-10-13
+        - kind: database
+          title: "Andinoacara.com: Andinoacara pulcher species and husbandry account"
+          url: "https://andinoacara.com/species/pulcher/"
+          accessed: 2026-10-13
+        - kind: database
+          title: "Victorian Cichlid Society: Andinoacara pulcher species profile"
+          url: "https://www.cichlidpower.org.au/VCS_3/PRF/HTM/Andinoacara%20pulcher.html"
+          accessed: 2026-10-13
+        - kind: website
+          title: "Maidenhead Aquatics Fishkeeper: Blue Acara"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/blue-acara"
+          accessed: 2026-10-13
+        - kind: website
+          title: "Fish Laboratory: Blue Acara care guide"
+          url: "https://www.fishlaboratory.com/fish/blue-acara/"
+          accessed: 2026-10-13
+        - kind: website
+          title: "Aquatic Community: Blue Acara, Aequidens pulcher"
+          url: "https://www.aquaticcommunity.com/cichlid/blue-acara.php"
+          accessed: 2026-10-13
+      evidence:
+        - source:
+            kind: database
+            title: "Seriously Fish: Andinoacara pulcher"
+            url: "https://www.seriouslyfish.com/species/andinoacara-pulcher/"
+            accessed: 2026-10-13
+          value:
+            min: 22
+            max: 28
+        - source:
+            kind: database
+            title: "Fishkeeping.co.uk: Blue Acara care sheet 113"
+            url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=113"
+            accessed: 2026-10-13
+          value:
+            min: 22
+            max: 30
+        - source:
+            kind: database
+            title: "Akvaforum: Aequidens pulcher species and aquarium record"
+            url: "https://akvaforum.no/lex/fish.cfm/1050"
+            accessed: 2026-10-13
+          value:
+            min: 22
+            max: 28
+        - source:
+            kind: database
+            title: "Nordiska Ciklidsallskapet: Andinoacara pulcher species register"
+            url: "https://www.ciklid.org/artregister/art.php?ID=181"
+            accessed: 2026-10-13
+          value:
+            min: 26
+            max: 28
+        - source:
+            kind: database
+            title: "FishProfiles.com: Aequidens pulcher"
+            url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Aequidens_pulcher/"
+            accessed: 2026-10-13
+          value:
+            min: 20
+            max: 26
+        - source:
+            kind: database
+            title: "Andinoacara.com: Andinoacara pulcher species and husbandry account"
+            url: "https://andinoacara.com/species/pulcher/"
+            accessed: 2026-10-13
+          value:
+            min: 22
+            max: 25
+        - source:
+            kind: database
+            title: "Victorian Cichlid Society: Andinoacara pulcher species profile"
+            url: "https://www.cichlidpower.org.au/VCS_3/PRF/HTM/Andinoacara%20pulcher.html"
+            accessed: 2026-10-13
+          value:
+            min: 18
+            max: 23
+          note: "Aquarium care interval, not a measured native water range."
+        - source:
+            kind: website
+            title: "Maidenhead Aquatics Fishkeeper: Blue Acara"
+            url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/blue-acara"
+            accessed: 2026-10-13
+          value:
+            min: 22
+            max: 27
+        - source:
+            kind: website
+            title: "Fish Laboratory: Blue Acara care guide"
+            url: "https://www.fishlaboratory.com/fish/blue-acara/"
+            accessed: 2026-10-13
+          value:
+            min: 22
+            max: 30
+        - source:
+            kind: website
+            title: "Aquatic Community: Blue Acara, Aequidens pulcher"
+            url: "https://www.aquaticcommunity.com/cichlid/blue-acara.php"
+            accessed: 2026-10-13
+          value:
+            min: 22
+            max: 30
+      verification:
+        method: qualified-majority
+        votes:
+          agree: 4
+          total: 6
+  ph:
+    value:
+      min: 7.5
+      max: 8.1
+    confidence: low
+    rationale: "The tally uses median, with low confidence and 2 of 6 votes in its leading agreement cluster.
+      generator proposed {\"min\":7.5,\"max\":7.5}; checker-a proposed {\"min\":6.5,\"max\":8.2}; checker-b
+      proposed {\"min\":6.8,\"max\":8.5}; checker-c proposed {\"min\":7.5,\"max\":8.08}; tiebreaker-1 proposed
+      {\"min\":7.5,\"max\":8.08}; tiebreaker-2 proposed {\"min\":7.5,\"max\":7.5}. Median bounds of 7.5 and
+      8.08 are rounded to 7.5 and 8.1. Stalsberg and the dated Eastern Highway record both give 7.5 and
+      probably represent one collecting event. The independently checked Sandkam dataset gives 7.84 to 8.08 in
+      lower Aripo AHP rows; association with pulcher is inferred from the Lower Aripo occurrence study rather
+      than a fish inventory at each chemistry reading. The final interval is narrower than checker-b's
+      regional 6.8 to 8.5 proposal and checker-a's 6.5 to 8.2 proposal; those combine drainage proxies or
+      aquarium data with taxonomically uncertain Colombian records. The Grant report was not retrieved through
+      the permitted full-text route in adjudication, and the accessible Banerjee text lacks readable numeric
+      station endpoints, so neither supplies new quantitative evidence here. A regional exposure envelope is
+      not a species-wide physiological limit."
+    sources:
+      - kind: literature
+        title: "Stalsberg, A.: Andinoacara collecting account, Trinidad section"
+        url: "https://www.lem.net/alf/andinoacara-eng.htm"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Nordiska Ciklidsallskapet: Eastern Highway collecting locality, measurements on 29 September 1998"
+        url: "https://www.ciklid.org/artregister/art_fangstplats.php?ID=442"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Sandkam, Young and Breden (2014): Trinidad environmental measurements, Aripo high-predation rows"
+        url: "https://doi.org/10.5061/dryad.sk6d5"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Elvidge and Brown (2012). Visual and Chemical Prey Cues as Complementary Predator Attractants in a
+          Tropical Stream Fish Assemblage
+        url: "https://doi.org/10.1155/2012/510920"
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: literature
+          title: "Stalsberg, A.: Andinoacara collecting account, Trinidad section"
+          url: "https://www.lem.net/alf/andinoacara-eng.htm"
+          accessed: 2026-10-13
+        value:
+          min: 7.5
+          max: 7.5
+        note: Collection-site pH with conflicting printed coordinates.
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet: Eastern Highway collecting locality, measurements on 29 September 1998"
+          url: "https://www.ciklid.org/artregister/art_fangstplats.php?ID=442"
+          accessed: 2026-10-13
+        value:
+          min: 7.5
+          max: 7.5
+        note: Trinidad collection dated 29 September 1998; likely the same event as Stalsberg.
+      - source:
+          kind: literature
+          title: "Sandkam, Young and Breden (2014): Trinidad environmental measurements, Aripo high-predation rows"
+          url: "https://doi.org/10.5061/dryad.sk6d5"
+          accessed: 2026-10-13
+        value:
+          min: 7.84
+          max: 8.08
+        note: "Three AHP readings of 7.87, 8.08 and 7.84; Lower Aripo occurrence is supported separately."
+    verification:
+      method: median
+      votes:
+        agree: 2
+        total: 6
+    tolerance:
+      value:
+        min: 6.5
+        max: 8.1
+      confidence: medium
+      rationale: "The tally retains 6.5 to 8.1 by qualified-majority, 5 of 6 votes, at medium confidence. generator
+        proposed {\"min\":6.5,\"max\":8}; checker-a proposed {\"min\":6.5,\"max\":8}; checker-b proposed
+        {\"min\":6.5,\"max\":8.5}; checker-c proposed {\"min\":6.5,\"max\":8.08}; tiebreaker-1 proposed
+        {\"min\":6.5,\"max\":8.08}; tiebreaker-2 proposed {\"min\":6.5,\"max\":8}. The agreeing proposals
+        mostly end at 8.0, with two at 8.08; the tally extends their rounded interval to contain its natural
+        maximum of 8.1. Seriously Fish, Fishkeeping, FishProfiles and Aquatic Community give 6.5 to 8.0;
+        Fishkeeper ends at 7.8. The Nordic register gives a wider 6.0 to 8.0 source interval, whose lower
+        endpoint is not adopted. Checker-b proposed a wider 6.5 to 8.5 interval solely to include its drainage
+        proxy, not from verified long-term aquarium evidence. The 8.0 to 8.1 extension is containment of the
+        decided natural value, not an independently tested lifetime endpoint."
+      sources:
+        - kind: database
+          title: "Seriously Fish: Andinoacara pulcher"
+          url: "https://www.seriouslyfish.com/species/andinoacara-pulcher/"
+          accessed: 2026-10-13
+        - kind: database
+          title: "Fishkeeping.co.uk: Blue Acara care sheet 113"
+          url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=113"
+          accessed: 2026-10-13
+        - kind: database
+          title: "FishProfiles.com: Aequidens pulcher"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Aequidens_pulcher/"
+          accessed: 2026-10-13
+        - kind: database
+          title: "Nordiska Ciklidsallskapet: Andinoacara pulcher species register"
+          url: "https://www.ciklid.org/artregister/art.php?ID=181"
+          accessed: 2026-10-13
+        - kind: literature
+          title: "Sandkam, Young and Breden (2014): Trinidad environmental measurements, Aripo high-predation rows"
+          url: "https://doi.org/10.5061/dryad.sk6d5"
+          accessed: 2026-10-13
+        - kind: website
+          title: "Maidenhead Aquatics Fishkeeper: Blue Acara"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/blue-acara"
+          accessed: 2026-10-13
+        - kind: website
+          title: "Aquatic Community: Blue Acara, Aequidens pulcher"
+          url: "https://www.aquaticcommunity.com/cichlid/blue-acara.php"
+          accessed: 2026-10-13
+      evidence:
+        - source:
+            kind: database
+            title: "Seriously Fish: Andinoacara pulcher"
+            url: "https://www.seriouslyfish.com/species/andinoacara-pulcher/"
+            accessed: 2026-10-13
+          value:
+            min: 6.5
+            max: 8
+        - source:
+            kind: database
+            title: "Fishkeeping.co.uk: Blue Acara care sheet 113"
+            url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=113"
+            accessed: 2026-10-13
+          value:
+            min: 6.5
+            max: 8
+        - source:
+            kind: database
+            title: "FishProfiles.com: Aequidens pulcher"
+            url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Aequidens_pulcher/"
+            accessed: 2026-10-13
+          value:
+            min: 6.5
+            max: 8
+        - source:
+            kind: database
+            title: "Nordiska Ciklidsallskapet: Andinoacara pulcher species register"
+            url: "https://www.ciklid.org/artregister/art.php?ID=181"
+            accessed: 2026-10-13
+          value:
+            min: 6
+            max: 8
+          note: Wider lower endpoint than the adopted aquarium interval.
+        - source:
+            kind: website
+            title: "Maidenhead Aquatics Fishkeeper: Blue Acara"
+            url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/blue-acara"
+            accessed: 2026-10-13
+          value:
+            min: 6.5
+            max: 7.8
+        - source:
+            kind: website
+            title: "Aquatic Community: Blue Acara, Aequidens pulcher"
+            url: "https://www.aquaticcommunity.com/cichlid/blue-acara.php"
+            accessed: 2026-10-13
+          value:
+            min: 6.5
+            max: 8
+        - source:
+            kind: literature
+            title: "Sandkam, Young and Breden (2014): Trinidad environmental measurements, Aripo high-predation rows"
+            url: "https://doi.org/10.5061/dryad.sk6d5"
+            accessed: 2026-10-13
+          value:
+            min: 7.84
+            max: 8.08
+          note: Native exposure only; not an aquarium tolerance experiment.
+      verification:
+        method: qualified-majority
+        votes:
+          agree: 5
+          total: 6
+  ghDgh:
+    value:
+      min: 4
+      max: 4
+    confidence: low
+    rationale: "The tally retains the point interval 4 to 4 dGH by qualified-majority, 5 of 6 votes, at low
+      confidence. generator proposed {\"min\":4,\"max\":4}; checker-a proposed {\"min\":5,\"max\":12};
+      checker-b proposed {\"min\":5.83,\"max\":5.83}; checker-c proposed {\"min\":4,\"max\":4}; tiebreaker-1
+      proposed {\"min\":4,\"max\":4}; tiebreaker-2 proposed {\"min\":4,\"max\":4}. Checker-b's 5.83 point lies
+      within the 2 dGH agreement threshold and therefore joins the leading cluster, whose median remains 4.
+      Stalsberg and the Nordic record separately publish 4 dH from what is probably one Trinidad collection;
+      two pages do not constitute independent measurements. The Nordic locality metadata support the Trinidad
+      narrative while Stalsberg's printed coordinates conflict, and the pages disagree on conductivity.
+      Checker-a's wider 5 to 12 estimate and broad care-sheet intervals are not substituted for measured
+      native GH. The reported Tumpuna proxy behind checker-b and excluded Orinoco chemistry do not establish
+      species-linked station measurements. The chosen point is a provisional sampling anchor rather than
+      constant hardness throughout the native range; conductivity is not converted to GH."
+    sources:
+      - kind: literature
+        title: "Stalsberg, A.: Andinoacara collecting account, Trinidad section"
+        url: "https://www.lem.net/alf/andinoacara-eng.htm"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Nordiska Ciklidsallskapet: Eastern Highway collecting locality, measurements on 29 September 1998"
+        url: "https://www.ciklid.org/artregister/art_fangstplats.php?ID=442"
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: literature
+          title: "Stalsberg, A.: Andinoacara collecting account, Trinidad section"
+          url: "https://www.lem.net/alf/andinoacara-eng.htm"
+          accessed: 2026-10-13
+        value:
+          min: 4
+          max: 4
+        note: dH interpreted as general hardness because kH is reported separately; single collection.
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet: Eastern Highway collecting locality, measurements on 29 September 1998"
+          url: "https://www.ciklid.org/artregister/art_fangstplats.php?ID=442"
+          accessed: 2026-10-13
+        value:
+          min: 4
+          max: 4
+        note: "Species-linked reading dated 29 September 1998; probably the same event, not independent field
+          replication."
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 5
+        total: 6
+    tolerance:
+      value:
+        min: 4
+        max: 25
+      confidence: medium
+      rationale: "The tally retains 4 to 25 dGH by qualified-majority, 5 of 6 votes, at medium confidence. generator
+        proposed {\"min\":4,\"max\":25}; checker-a proposed {\"min\":5,\"max\":25}; checker-b proposed
+        {\"min\":5,\"max\":25}; checker-c proposed {\"min\":1,\"max\":25}; tiebreaker-1 proposed
+        {\"min\":4,\"max\":25}; tiebreaker-2 proposed {\"min\":4,\"max\":25}. Seriously Fish and Fishkeeping
+        recommend 5 to 25 dGH; the lower endpoint is extended to contain the decided natural 4 dGH. Fishkeeper
+        states only an upper limit of 25, not zero as a measured lower endpoint. Akvaforum gives the wider 1
+        to 25 dGH source interval, which checker-c adopted; 1 to 4 is not included in the final tolerance.
+        Andinoacara.com instead recommends 1 to 5 dGH and warns about sustained harder conditions, while
+        FishProfiles gives 10 to 20 and the retailer 5 to 15. This conflict and possible mixed trade identity
+        limit the interpretation of the upper bound, particularly for wild Trinidad fish and egg development.
+        The broad captive-stock recommendation is not a replicated multi-year tolerance experiment."
+      sources:
+        - kind: database
+          title: "Seriously Fish: Andinoacara pulcher"
+          url: "https://www.seriouslyfish.com/species/andinoacara-pulcher/"
+          accessed: 2026-10-13
+        - kind: database
+          title: "Fishkeeping.co.uk: Blue Acara care sheet 113"
+          url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=113"
+          accessed: 2026-10-13
+        - kind: database
+          title: "Akvaforum: Aequidens pulcher species and aquarium record"
+          url: "https://akvaforum.no/lex/fish.cfm/1050"
+          accessed: 2026-10-13
+        - kind: database
+          title: "Andinoacara.com: Andinoacara pulcher species and husbandry account"
+          url: "https://andinoacara.com/species/pulcher/"
+          accessed: 2026-10-13
+        - kind: database
+          title: "FishProfiles.com: Aequidens pulcher"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Aequidens_pulcher/"
+          accessed: 2026-10-13
+        - kind: database
+          title: "Nordiska Ciklidsallskapet: Eastern Highway collecting locality, measurements on 29 September 1998"
+          url: "https://www.ciklid.org/artregister/art_fangstplats.php?ID=442"
+          accessed: 2026-10-13
+        - kind: website
+          title: "Maidenhead Aquatics Fishkeeper: Blue Acara"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/blue-acara"
+          accessed: 2026-10-13
+        - kind: website
+          title: "GarnelenTv: Blaupunktbuntbarsch retailer care page"
+          url: "https://garnelentv-shop.de/products/blaupunktbuntbarsch"
+          accessed: 2026-10-13
+      evidence:
+        - source:
+            kind: database
+            title: "Seriously Fish: Andinoacara pulcher"
+            url: "https://www.seriouslyfish.com/species/andinoacara-pulcher/"
+            accessed: 2026-10-13
+          value:
+            min: 5
+            max: 25
+        - source:
+            kind: database
+            title: "Fishkeeping.co.uk: Blue Acara care sheet 113"
+            url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=113"
+            accessed: 2026-10-13
+          value:
+            min: 5
+            max: 25
+        - source:
+            kind: database
+            title: "Akvaforum: Aequidens pulcher species and aquarium record"
+            url: "https://akvaforum.no/lex/fish.cfm/1050"
+            accessed: 2026-10-13
+          value:
+            min: 1
+            max: 25
+          note: Wider lower endpoint; the account also incorrectly lists latifrons as another name.
+        - source:
+            kind: database
+            title: "Andinoacara.com: Andinoacara pulcher species and husbandry account"
+            url: "https://andinoacara.com/species/pulcher/"
+            accessed: 2026-10-13
+          value:
+            min: 1
+            max: 5
+          note: Conflicting soft-water recommendation; its prose allows moderate hardness but questions chronic harder
+            conditions.
+        - source:
+            kind: database
+            title: "FishProfiles.com: Aequidens pulcher"
+            url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Aequidens_pulcher/"
+            accessed: 2026-10-13
+          value:
+            min: 10
+            max: 20
+        - source:
+            kind: database
+            title: "Nordiska Ciklidsallskapet: Eastern Highway collecting locality, measurements on 29 September 1998"
+            url: "https://www.ciklid.org/artregister/art_fangstplats.php?ID=442"
+            accessed: 2026-10-13
+          value:
+            min: 4
+            max: 4
+          note: Natural point used only for containment of the chosen tolerance.
+        - source:
+            kind: website
+            title: "Maidenhead Aquatics Fishkeeper: Blue Acara"
+            url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/blue-acara"
+            accessed: 2026-10-13
+          value:
+            max: 25
+          note: No lower numeric boundary is supplied.
+        - source:
+            kind: website
+            title: "GarnelenTv: Blaupunktbuntbarsch retailer care page"
+            url: "https://garnelentv-shop.de/products/blaupunktbuntbarsch"
+            accessed: 2026-10-13
+          value:
+            min: 5
+            max: 15
+          note: Retailer advice with low evidential weight.
+      verification:
+        method: qualified-majority
+        votes:
+          agree: 5
+          total: 6
+  khDkh:
+    value:
+      min: 7
+      max: 7
+    confidence: low
+    rationale: "The tally retains the point interval 7 to 7 dKH by qualified-majority, 5 of 6 votes, at low
+      confidence. generator proposed {\"min\":7,\"max\":7}; checker-a proposed {\"min\":3,\"max\":8};
+      checker-b proposed {\"min\":6.47,\"max\":6.47}; checker-c proposed {\"min\":7,\"max\":7}; tiebreaker-1
+      proposed {\"min\":7,\"max\":7}; tiebreaker-2 proposed {\"min\":7,\"max\":7}. The 6.47 dKH proxy of
+      checker-b falls within the 2 dKH agreement threshold, but the leading cluster median remains 7. The same
+      probable Trinidad collecting event is reported by Stalsberg and the Nordic record as kH 7, separately
+      from dH 4. Their locality and conductivity inconsistencies prevent treating the two pages as replicated
+      field measurements. Checker-a's wider 3 to 8 interval was inferred from other chemistry and does not
+      supply an observed native range. The Tumpuna alkalinity proxy and excluded Orinoco comparison in
+      checker-b lack fish confirmation at their stations. This point records provisional field evidence rather
+      than a fixed natural requirement. GH, pH and conductivity are not substitutes for KH."
+    sources:
+      - kind: literature
+        title: "Stalsberg, A.: Andinoacara collecting account, Trinidad section"
+        url: "https://www.lem.net/alf/andinoacara-eng.htm"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Nordiska Ciklidsallskapet: Eastern Highway collecting locality, measurements on 29 September 1998"
+        url: "https://www.ciklid.org/artregister/art_fangstplats.php?ID=442"
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: literature
+          title: "Stalsberg, A.: Andinoacara collecting account, Trinidad section"
+          url: "https://www.lem.net/alf/andinoacara-eng.htm"
+          accessed: 2026-10-13
+        value:
+          min: 7
+          max: 7
+        note: "Directly reported kH, not inferred from dH; single collection with contradictory coordinates."
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet: Eastern Highway collecting locality, measurements on 29 September 1998"
+          url: "https://www.ciklid.org/artregister/art_fangstplats.php?ID=442"
+          accessed: 2026-10-13
+        value:
+          min: 7
+          max: 7
+        note: Species-linked collection dated 29 September 1998; likely the same event as Stalsberg.
+    tolerance:
+      value:
+        min: 3
+        max: 8
+      confidence: low
+      rationale: "The tally retains 3 to 8 dKH by qualified-majority, 4 of 6 votes, at low confidence. generator
+        proposed {\"min\":3,\"max\":8}; checker-a proposed {\"min\":2,\"max\":15}; checker-b proposed
+        {\"min\":3,\"max\":12}; checker-c proposed {\"min\":3,\"max\":8}; tiebreaker-1 proposed
+        {\"min\":3,\"max\":8}; tiebreaker-2 proposed {\"min\":3,\"max\":8}. AquaExperience publishes 2 to 8 in
+        its summary table but 2 to 6 in its prose; Aqua-Pedia publishes the wider 3 to 12 source interval and
+        discloses generated, manually reviewed data. The retailer independently gives 3 to 8, while the
+        general Turkish hobby page gives 2 to 8 but unreliable stocking advice. These conflicting lower-weight
+        accounts support a provisional 3 to 8 interval that contains the decided native 7 dKH, rather than
+        checker-b's wider 3 to 12. Checker-a's 2 to 15 was inferred from GH and pH and is not an explicit
+        Seriously Fish KH recommendation. No major reference retrieved here establishes years of health at the
+        endpoints, and neither habitat containment nor GH can prove a KH tolerance."
+      sources:
+        - kind: database
+          title: "AquaExperience: Andinoacara pulcher species care profile"
+          url: "https://aquaexperience.it/andinoacara-pulcher-it.html"
+          accessed: 2026-10-13
+        - kind: database
+          title: "Aqua-Pedia: Blue acara structured care record"
+          url: "https://www.aqua-pedia.com/en/species/andinoacara-pulcher-blue-acara"
+          accessed: 2026-10-13
+        - kind: literature
+          title: "Stalsberg, A.: Andinoacara collecting account, Trinidad section"
+          url: "https://www.lem.net/alf/andinoacara-eng.htm"
+          accessed: 2026-10-13
+        - kind: website
+          title: "GarnelenTv: Blaupunktbuntbarsch retailer care page"
+          url: "https://garnelentv-shop.de/products/blaupunktbuntbarsch"
+          accessed: 2026-10-13
+        - kind: website
+          title: "Turkiye Akvarist: Blue Acara hobby care page"
+          url: "https://www.turkiyeakvarist.com/blue-acara/"
+          accessed: 2026-10-13
+      evidence:
+        - source:
+            kind: database
+            title: "AquaExperience: Andinoacara pulcher species care profile"
+            url: "https://aquaexperience.it/andinoacara-pulcher-it.html"
+            accessed: 2026-10-13
+          value:
+            min: 2
+            max: 8
+          note: Summary table; the prose gives 2 to 6 dKH.
+        - source:
+            kind: database
+            title: "Aqua-Pedia: Blue acara structured care record"
+            url: "https://www.aqua-pedia.com/en/species/andinoacara-pulcher-blue-acara"
+            accessed: 2026-10-13
+          value:
+            min: 3
+            max: 12
+          note: Wider generated and reviewed care interval; reduced evidential weight.
+        - source:
+            kind: literature
+            title: "Stalsberg, A.: Andinoacara collecting account, Trinidad section"
+            url: "https://www.lem.net/alf/andinoacara-eng.htm"
+            accessed: 2026-10-13
+          value:
+            min: 7
+            max: 7
+          note: "Native reading for containment only, not a captive survival trial."
+        - source:
+            kind: website
+            title: "GarnelenTv: Blaupunktbuntbarsch retailer care page"
+            url: "https://garnelentv-shop.de/products/blaupunktbuntbarsch"
+            accessed: 2026-10-13
+          value:
+            min: 3
+            max: 8
+          note: "Retailer table; website, not an independent scientific trial."
+        - source:
+            kind: website
+            title: "Turkiye Akvarist: Blue Acara hobby care page"
+            url: "https://www.turkiyeakvarist.com/blue-acara/"
+            accessed: 2026-10-13
+          value:
+            min: 2
+            max: 8
+          note: Explicit hobby KH interval; unreliable other husbandry guidance reduces weight.
+      verification:
+        method: qualified-majority
+        votes:
+          agree: 4
+          total: 6
+  maxSizeCm:
+    value:
+      male: 16
+      female: 15
+    confidence: low
+    rationale: "Generator and checker-a proposed 16 cm males and 13 cm females; checker-b proposed 16 and 12;
+      checker-c proposed 15 for both sexes. FishProfiles explicitly gives 15 cm for each sex, while the
+      retailer Fishkeeper and the society record give an unsexed 16 cm maximum. Retain 16 for the male
+      planning maximum and 15 for the female rather than lowering females to unsupported 12 or 13 cm
+      estimates. This synthesis concerns typical upper adult aquarium size, not a record: the collector trade
+      account expects about 15 cm, and the 20 cm Akvaforum entry is not adopted. Seriously Fish gives 15 cm
+      standard length, which cannot be equated directly to total length. Reliable measured sex-specific maxima
+      remain scarce."
+    sources:
+      - kind: database
+        title: "FishProfiles.com: Aequidens pulcher"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Aequidens_pulcher/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeping.co.uk: Blue Acara care sheet 113"
+        url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=113"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Victorian Cichlid Society: Andinoacara pulcher species profile"
+        url: "https://www.cichlidpower.org.au/VCS_3/PRF/HTM/Andinoacara%20pulcher.html"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Seriously Fish: Andinoacara pulcher"
+        url: "https://www.seriouslyfish.com/species/andinoacara-pulcher/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Akvaforum: Aequidens pulcher species and aquarium record"
+        url: "https://akvaforum.no/lex/fish.cfm/1050"
+        accessed: 2026-10-13
+      - kind: website
+        title: "Maidenhead Aquatics Fishkeeper: Blue Acara"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/blue-acara"
+        accessed: 2026-10-13
+      - kind: website
+        title: "Schafer (2025): Andinoacara pulcher, Aquarium Glaser fish archive"
+        url: "https://www.aquariumglaser.de/en/fisharchive/andinoacara-pulcher-formerly-aequidens-pulcher/"
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "FishProfiles.com: Aequidens pulcher"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Aequidens_pulcher/"
+          accessed: 2026-10-13
+        value:
+          male: 15
+          female: 15
+        note: Explicit sex-labelled aquarium maxima.
+      - source:
+          kind: database
+          title: "Fishkeeping.co.uk: Blue Acara care sheet 113"
+          url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=113"
+          accessed: 2026-10-13
+        value: 15
+        note: "Unsexed aquarium maximum, in cm."
+      - source:
+          kind: database
+          title: "Victorian Cichlid Society: Andinoacara pulcher species profile"
+          url: "https://www.cichlidpower.org.au/VCS_3/PRF/HTM/Andinoacara%20pulcher.html"
+          accessed: 2026-10-13
+        value: 16
+        note: "Unsexed species maximum, in cm."
+      - source:
+          kind: website
+          title: "Maidenhead Aquatics Fishkeeper: Blue Acara"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/blue-acara"
+          accessed: 2026-10-13
+        value: 16
+        note: Unsexed maximum; no female-specific measurement.
+      - source:
+          kind: website
+          title: "Schafer (2025): Andinoacara pulcher, Aquarium Glaser fish archive"
+          url: "https://www.aquariumglaser.de/en/fisharchive/andinoacara-pulcher-formerly-aequidens-pulcher/"
+          accessed: 2026-10-13
+        value: 15
+        note: Typical aquarium expectation; higher literature claims are questioned.
+      - source:
+          kind: database
+          title: "Seriously Fish: Andinoacara pulcher"
+          url: "https://www.seriouslyfish.com/species/andinoacara-pulcher/"
+          accessed: 2026-10-13
+        value: 15
+        note: "Standard length, not total length; not silently converted."
+      - source:
+          kind: database
+          title: "Akvaforum: Aequidens pulcher species and aquarium record"
+          url: "https://akvaforum.no/lex/fish.cfm/1050"
+          accessed: 2026-10-13
+        value: 20
+        note: "Wider possible size, excluded from the typical planning maximum."
+  predation:
+    value: 2
+    confidence: medium
+    rationale: "Qualified-majority selects level 2, with 5 of 6 votes and medium confidence. Generator, checker-b,
+      checker-c and both tiebreakers proposed 2; checker-a proposed 1. Seriously Fish, Fishkeeping,
+      FishProfiles and the genus specialist warn about fish that can be swallowed, so a fry-only 2 cm planning
+      ceiling is insufficient for adults. The Trinidad field study records attacks on guppies averaging 2.45
+      cm through a protective cylinder; it does not demonstrate ingestion or quantify routine fish
+      consumption. The Lower Aripo account describes opportunistic piscivory within predominantly benthic
+      feeding. Level 2 is therefore the decided gape-based aquarium warning, not evidence that fish dominate
+      the diet."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Andinoacara pulcher"
+        url: "https://www.seriouslyfish.com/species/andinoacara-pulcher/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeping.co.uk: Blue Acara care sheet 113"
+        url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=113"
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishProfiles.com: Aequidens pulcher"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Aequidens_pulcher/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Andinoacara.com: Andinoacara pulcher species and husbandry account"
+        url: "https://andinoacara.com/species/pulcher/"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Zanghi et al. (2024). Multiple environmental stressors affect predation pressure in a tropical
+          freshwater system
+        url: "https://doi.org/10.1038/s42003-024-06364-6"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Elvidge and Brown (2012). Visual and Chemical Prey Cues as Complementary Predator Attractants in a
+          Tropical Stream Fish Assemblage
+        url: "https://doi.org/10.1155/2012/510920"
+        accessed: 2026-10-13
+      - kind: website
+        title: "Maidenhead Aquatics Fishkeeper: Blue Acara"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/blue-acara"
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Andinoacara pulcher"
+          url: "https://www.seriouslyfish.com/species/andinoacara-pulcher/"
+          accessed: 2026-10-13
+        value: 2
+        note: Rubric mapping from a swallowing-based restriction on companions.
+      - source:
+          kind: database
+          title: "Fishkeeping.co.uk: Blue Acara care sheet 113"
+          url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=113"
+          accessed: 2026-10-13
+        value: 2
+        note: Small fish identified as prey.
+      - source:
+          kind: database
+          title: "FishProfiles.com: Aequidens pulcher"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Aequidens_pulcher/"
+          accessed: 2026-10-13
+        value: 2
+        note: Guppy predation and swallowing-size risk.
+      - source:
+          kind: database
+          title: "Andinoacara.com: Andinoacara pulcher species and husbandry account"
+          url: "https://andinoacara.com/species/pulcher/"
+          accessed: 2026-10-13
+        value: 2
+        note: Adults can consume mouth-sized fish.
+      - source:
+          kind: literature
+          title: Zanghi et al. (2024). Multiple environmental stressors affect predation pressure in a tropical
+            freshwater system
+          url: "https://doi.org/10.1038/s42003-024-06364-6"
+          accessed: 2026-10-13
+        value: 2
+        note: Attacks on 2.45 cm mean-length guppies behind a barrier; no confirmed ingestion.
+      - source:
+          kind: literature
+          title: Elvidge and Brown (2012). Visual and Chemical Prey Cues as Complementary Predator Attractants in a
+            Tropical Stream Fish Assemblage
+          url: "https://doi.org/10.1155/2012/510920"
+          accessed: 2026-10-13
+        value: 1
+        note: Opportunistic fish predation; no measured 2 cm prey ceiling. Mapping is approximate.
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 5
+        total: 6
+  diet:
+    value:
+      type: invertivore
+      bloatSensitive: false
+    confidence: low
+    rationale: "Conservative is the binding method at low confidence, with 3 of 6 votes for invertivore. Generator
+      and checker-b proposed invertivore with animal-food lists, and tiebreaker-2 proposed invertivore;
+      checker-a and checker-c proposed omnivore with mixed-food lists, and tiebreaker-1 proposed omnivore.
+      Every proposal set bloatSensitive to false. The full food-list proposals are preserved in provenance. No
+      class reaches four votes, so the tally chooses invertivore as the stricter of the proposed feeding
+      types. Lower Aripo literature emphasizes benthic invertebrates and the Nordic register identifies insect
+      larvae as the main natural food. Conversely, the 2024 paper classifies pulcher as omnivorous and care
+      accounts support plant-containing foods. The Lorica stomach-content study used Sinu fish of uncertain
+      pulcher versus latifrons identity and is not decisive for Trinidad pulcher. Invertivore is a cautious
+      animal-dominated planning category, not proof that plant or detrital food is absent. False
+      bloatSensitive reflects the lack of an established specialist protein-related restriction, not immunity
+      to digestive disease."
+    sources:
+      - kind: literature
+        title: Elvidge and Brown (2012). Visual and Chemical Prey Cues as Complementary Predator Attractants in a
+          Tropical Stream Fish Assemblage
+        url: "https://doi.org/10.1155/2012/510920"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Nordiska Ciklidsallskapet: Andinoacara pulcher species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=181"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Zanghi et al. (2024). Multiple environmental stressors affect predation pressure in a tropical
+          freshwater system
+        url: "https://doi.org/10.1038/s42003-024-06364-6"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Seriously Fish: Andinoacara pulcher"
+        url: "https://www.seriouslyfish.com/species/andinoacara-pulcher/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishProfiles.com: Aequidens pulcher"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Aequidens_pulcher/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Andinoacara.com: Andinoacara pulcher species and husbandry account"
+        url: "https://andinoacara.com/species/pulcher/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Aqua-Pedia: Blue acara structured care record"
+        url: "https://www.aqua-pedia.com/en/species/andinoacara-pulcher-blue-acara"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Victorian Cichlid Society: Andinoacara pulcher species profile"
+        url: "https://www.cichlidpower.org.au/VCS_3/PRF/HTM/Andinoacara%20pulcher.html"
+        accessed: 2026-10-13
+      - kind: website
+        title: "Maidenhead Aquatics Fishkeeper: Blue Acara"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/blue-acara"
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: literature
+          title: Elvidge and Brown (2012). Visual and Chemical Prey Cues as Complementary Predator Attractants in a
+            Tropical Stream Fish Assemblage
+          url: "https://doi.org/10.1155/2012/510920"
+          accessed: 2026-10-13
+        value:
+          type: invertivore
+          bloatSensitive: false
+        note: "Invertebrate-dominated benthic feeding; bloat flag is a husbandry inference, not assessed by the
+          study."
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet: Andinoacara pulcher species register"
+          url: "https://www.ciklid.org/artregister/art.php?ID=181"
+          accessed: 2026-10-13
+        value:
+          type: invertivore
+          bloatSensitive: false
+        note: Natural feeding emphasizes insect larvae; no special bloat restriction is given.
+      - source:
+          kind: database
+          title: "Seriously Fish: Andinoacara pulcher"
+          url: "https://www.seriouslyfish.com/species/andinoacara-pulcher/"
+          accessed: 2026-10-13
+        value:
+          type: invertivore
+          bloatSensitive: false
+        note: Animal-food recommendation mapped to the rubric; not a natural stomach-content study.
+      - source:
+          kind: literature
+          title: Zanghi et al. (2024). Multiple environmental stressors affect predation pressure in a tropical
+            freshwater system
+          url: "https://doi.org/10.1038/s42003-024-06364-6"
+          accessed: 2026-10-13
+        value:
+          type: omnivore
+          bloatSensitive: false
+        note: The study assigns omnivory; bloat susceptibility was not tested.
+      - source:
+          kind: database
+          title: "FishProfiles.com: Aequidens pulcher"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Aequidens_pulcher/"
+          accessed: 2026-10-13
+        value:
+          type: omnivore
+          bloatSensitive: false
+        note: Broader mixed feeding category with an animal-food emphasis.
+      - source:
+          kind: database
+          title: "Andinoacara.com: Andinoacara pulcher species and husbandry account"
+          url: "https://andinoacara.com/species/pulcher/"
+          accessed: 2026-10-13
+        value:
+          type: omnivore
+          bloatSensitive: false
+        note: Animal and plant supplements recommended.
+      - source:
+          kind: database
+          title: "Aqua-Pedia: Blue acara structured care record"
+          url: "https://www.aqua-pedia.com/en/species/andinoacara-pulcher-blue-acara"
+          accessed: 2026-10-13
+        value:
+          type: omnivore
+          bloatSensitive: false
+        note: "Generated and reviewed care classification, reduced weight."
+      - source:
+          kind: database
+          title: "Victorian Cichlid Society: Andinoacara pulcher species profile"
+          url: "https://www.cichlidpower.org.au/VCS_3/PRF/HTM/Andinoacara%20pulcher.html"
+          accessed: 2026-10-13
+        value:
+          type: omnivore
+          bloatSensitive: false
+        note: Mixed feeding label with an animal-food preference.
+    verification:
+      method: conservative
+      votes:
+        agree: 3
+        total: 6
+  aggressionConspecific:
+    value: 2
+    confidence: medium
+    rationale: "All four profiles propose level 2 for adults in a suitable compatible-pair setup. Pair formation
+      leads to exclusion of extra adults, supporting recurrent chasing rather than stable group peace.
+      FishProfiles describes stronger disputes during breeding, but does not demonstrate routine injury within
+      an established pair in the recommended tank. These context-specific level 3 reports limit confidence
+      rather than changing the agreed planning grade."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Andinoacara pulcher"
+        url: "https://www.seriouslyfish.com/species/andinoacara-pulcher/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeping.co.uk: Blue Acara care sheet 113"
+        url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=113"
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishProfiles.com: Aequidens pulcher"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Aequidens_pulcher/"
+        accessed: 2026-10-13
+      - kind: website
+        title: "Maidenhead Aquatics Fishkeeper: Blue Acara"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/blue-acara"
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Andinoacara pulcher"
+          url: "https://www.seriouslyfish.com/species/andinoacara-pulcher/"
+          accessed: 2026-10-13
+        value: 2
+        note: Rubric mapping from removal of surplus adults after pair formation.
+      - source:
+          kind: database
+          title: "Fishkeeping.co.uk: Blue Acara care sheet 113"
+          url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=113"
+          accessed: 2026-10-13
+        value: 2
+        note: Pairs recommended; groups require much more room.
+      - source:
+          kind: database
+          title: "FishProfiles.com: Aequidens pulcher"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Aequidens_pulcher/"
+          accessed: 2026-10-13
+        value: 3
+        note: Stronger breeding conflict in variable stocking circumstances.
+  aggressionHeterospecific:
+    value: 2
+    confidence: medium
+    rationale: "All four profiles propose level 2. Breeding parents displace neighbours from their brood area,
+      while ordinary nonbreeding interactions are milder. Reports of bites or damage concern unsuitable
+      companions or reproductive circumstances and do not establish routine tank-wide attacks in the
+      recommended spacious setup. Small bottom fish remain poor companions even though mixed housing is
+      possible."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Andinoacara pulcher"
+        url: "https://www.seriouslyfish.com/species/andinoacara-pulcher/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeping.co.uk: Blue Acara care sheet 113"
+        url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=113"
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishProfiles.com: Aequidens pulcher"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Aequidens_pulcher/"
+        accessed: 2026-10-13
+      - kind: website
+        title: "Maidenhead Aquatics Fishkeeper: Blue Acara"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/blue-acara"
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Andinoacara pulcher"
+          url: "https://www.seriouslyfish.com/species/andinoacara-pulcher/"
+          accessed: 2026-10-13
+        value: 1
+        note: Approximate nonbreeding rubric mapping from relatively tolerant community behaviour.
+      - source:
+          kind: database
+          title: "Fishkeeping.co.uk: Blue Acara care sheet 113"
+          url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=113"
+          accessed: 2026-10-13
+        value: 2
+        note: Territorial displacement during breeding.
+      - source:
+          kind: database
+          title: "FishProfiles.com: Aequidens pulcher"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Aequidens_pulcher/"
+          accessed: 2026-10-13
+        value: 3
+        note: Possible injuries to vulnerable companions in breeding contexts.
+      - source:
+          kind: website
+          title: "Maidenhead Aquatics Fishkeeper: Blue Acara"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/blue-acara"
+          accessed: 2026-10-13
+        value: 2
+        note: Particular concern for bottom fish entering the brood territory.
+  territory:
+    value:
+      size: large
+      breedingOnly: true
+    confidence: low
+    rationale: "Generator, checker-b and checker-c proposed a large breeding territory; checker-a proposed small.
+      Both parents defend a brood and mobile young, and community accounts require extra floor space and
+      retreat routes. Select large as a cautious planning inference for a substantial portion of a 120 cm pair
+      tank. No retrieved source measures the rubric's approximate 50 cm territory extent, so the spatial grade
+      remains low confidence. Strong defence chiefly accompanies reproduction, consistent with breedingOnly
+      true."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Andinoacara pulcher"
+        url: "https://www.seriouslyfish.com/species/andinoacara-pulcher/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeping.co.uk: Blue Acara care sheet 113"
+        url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=113"
+        accessed: 2026-10-13
+      - kind: website
+        title: "Maidenhead Aquatics Fishkeeper: Blue Acara"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/blue-acara"
+        accessed: 2026-10-13
+      - kind: website
+        title: "Aquatic Community: Blue Acara, Aequidens pulcher"
+        url: "https://www.aquaticcommunity.com/cichlid/blue-acara.php"
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: website
+          title: "Maidenhead Aquatics Fishkeeper: Blue Acara"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/blue-acara"
+          accessed: 2026-10-13
+        value:
+          size: large
+          breedingOnly: true
+        note: Rubric inference from substantial spacing needed for cichlid territories; no measured radius.
+      - source:
+          kind: website
+          title: "Aquatic Community: Blue Acara, Aequidens pulcher"
+          url: "https://www.aquaticcommunity.com/cichlid/blue-acara.php"
+          accessed: 2026-10-13
+        value:
+          size: large
+          breedingOnly: true
+        note: "Reports that a pair may use about 200 L as territory, but volume does not measure floor diameter."
+  habitatZones:
+    value:
+      - sand
+      - rock
+      - wood
+      - plants
+    confidence: high
+    rationale: "All profiles name the same four zones despite list-order differences. Trinidad observations
+      establish bottom-associated feeding and mixed substrates; independent aquarium accounts recommend sand
+      for digging, wood and vegetation for cover, and solid spawning surfaces. The set combines habitat use
+      with aquarium requirements; it does not assert quantitative use of every zone at every locality."
+    sources:
+      - kind: literature
+        title: Zanghi et al. (2024). Multiple environmental stressors affect predation pressure in a tropical
+          freshwater system
+        url: "https://doi.org/10.1038/s42003-024-06364-6"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Elvidge and Brown (2012). Visual and Chemical Prey Cues as Complementary Predator Attractants in a
+          Tropical Stream Fish Assemblage
+        url: "https://doi.org/10.1155/2012/510920"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Seriously Fish: Andinoacara pulcher"
+        url: "https://www.seriouslyfish.com/species/andinoacara-pulcher/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeping.co.uk: Blue Acara care sheet 113"
+        url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=113"
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishProfiles.com: Aequidens pulcher"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Aequidens_pulcher/"
+        accessed: 2026-10-13
+      - kind: website
+        title: "Maidenhead Aquatics Fishkeeper: Blue Acara"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/blue-acara"
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Andinoacara pulcher"
+          url: "https://www.seriouslyfish.com/species/andinoacara-pulcher/"
+          accessed: 2026-10-13
+        value:
+          - sand
+          - wood
+          - plants
+          - rock
+        note: "Aquarium substrate, shelter and potential spawning surfaces."
+      - source:
+          kind: database
+          title: "Fishkeeping.co.uk: Blue Acara care sheet 113"
+          url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=113"
+          accessed: 2026-10-13
+        value:
+          - sand
+          - wood
+          - plants
+        note: "Substrate, roots and plant cover."
+      - source:
+          kind: database
+          title: "FishProfiles.com: Aequidens pulcher"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Aequidens_pulcher/"
+          accessed: 2026-10-13
+        value:
+          - sand
+          - rock
+          - plants
+          - wood
+        note: Potential digging and spawning structures.
+  social:
+    value:
+      structure: pair
+    confidence: high
+    rationale: "All profiles agree on one compatible adult pair, supported independently by biparental spawning
+      accounts and pair-oriented aquarium guidance. A juvenile group can allow partner selection but is not
+      the adult social unit. Solitary foraging in the Lower Aripo field study does not contradict breeding
+      pairs."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Andinoacara pulcher"
+        url: "https://www.seriouslyfish.com/species/andinoacara-pulcher/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeping.co.uk: Blue Acara care sheet 113"
+        url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=113"
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishProfiles.com: Aequidens pulcher"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Aequidens_pulcher/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Nordiska Ciklidsallskapet: Andinoacara pulcher species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=181"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Elvidge and Brown (2012). Visual and Chemical Prey Cues as Complementary Predator Attractants in a
+          Tropical Stream Fish Assemblage
+        url: "https://doi.org/10.1155/2012/510920"
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Andinoacara pulcher"
+          url: "https://www.seriouslyfish.com/species/andinoacara-pulcher/"
+          accessed: 2026-10-13
+        value:
+          structure: pair
+      - source:
+          kind: database
+          title: "Fishkeeping.co.uk: Blue Acara care sheet 113"
+          url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=113"
+          accessed: 2026-10-13
+        value:
+          structure: pair
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet: Andinoacara pulcher species register"
+          url: "https://www.ciklid.org/artregister/art.php?ID=181"
+          accessed: 2026-10-13
+        value:
+          structure: pair
+  speciesOnly:
+    value: false
+    confidence: high
+    rationale: "All four votes that include this feature agree on false, giving unanimous verification and high
+      confidence. Seriously Fish, Fishkeeping and FishProfiles allow communities with suitably large
+      companions and enough space. A separate spawning aquarium can be useful without making species-only
+      husbandry mandatory. The forum archive offers supplemental community suggestions, but they neither
+      define safe adult sizes nor override the database evidence."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Andinoacara pulcher"
+        url: "https://www.seriouslyfish.com/species/andinoacara-pulcher/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeping.co.uk: Blue Acara care sheet 113"
+        url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=113"
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishProfiles.com: Aequidens pulcher"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Aequidens_pulcher/"
+        accessed: 2026-10-13
+      - kind: website
+        title: "Maidenhead Aquatics Fishkeeper: Blue Acara"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/blue-acara"
+        accessed: 2026-10-13
+      - kind: archive
+        title: cichlids.com forum thread 824
+        url: "https://www.cichlids.com/disc/read.php?1,824"
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Andinoacara pulcher"
+          url: "https://www.seriouslyfish.com/species/andinoacara-pulcher/"
+          accessed: 2026-10-13
+        value: false
+        note: Medium-sized characins and catfish are discussed as companions.
+      - source:
+          kind: database
+          title: "Fishkeeping.co.uk: Blue Acara care sheet 113"
+          url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=113"
+          accessed: 2026-10-13
+        value: false
+        note: "Larger peaceful community fish allowed, with brood-territory safeguards."
+      - source:
+          kind: database
+          title: "FishProfiles.com: Aequidens pulcher"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Aequidens_pulcher/"
+          accessed: 2026-10-13
+        value: false
+        note: Community housing possible with careful stocking.
+      - source:
+          kind: website
+          title: "Maidenhead Aquatics Fishkeeper: Blue Acara"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/blue-acara"
+          accessed: 2026-10-13
+        value: false
+        note: Specialist community recommendation; retailer source.
+      - source:
+          kind: archive
+          title: cichlids.com forum thread 824
+          url: "https://www.cichlids.com/disc/read.php?1,824"
+          accessed: 2026-10-13
+        value: false
+        note: Low-weight community suggestion only; not a verified controlled stocking result.
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  hybridGroups:
+    value:
+      - andinoacara-pulcher-latifrons
+      - andinoacara-pulcher-rivulatus
+    confidence: low
+    rationale: "Qualified-majority selects two pairwise groups, with 4 of 6 votes and low confidence. generator
+      proposed [\"andinoacara-pulcher-latifrons\",\"andinoacara-pulcher-rivulatus\"]; checker-a proposed
+      [\"andinoacara\"]; checker-b proposed
+      [\"andinoacara-pulcher-latifrons\",\"andinoacara-pulcher-rivulatus\"]; checker-c proposed
+      [\"andinoacara-pulcher-rivulatus\"]; tiebreaker-1 proposed
+      [\"andinoacara-pulcher-latifrons\",\"andinoacara-pulcher-rivulatus\"]; tiebreaker-2 proposed
+      [\"andinoacara-pulcher-latifrons\",\"andinoacara-pulcher-rivulatus\"]. Both new groups have basis
+      presumed. For pulcher-latifrons, the 2009 phylogeny and 2020 genetic discussion support close
+      relationship, and AquaInfo raises possible natural crossing without documented hybrid offspring. For
+      pulcher-rivulatus, the specialist record attributes apparently fertile aquarium hybrids to rivulatus and
+      pulcher or cf. pulcher, leaving blue-parent identification and access to same-species mates unverified.
+      Seriously Fish warns about mixed ancestry in trade stock without naming parents. The selected pairwise
+      groups do not establish a genus-wide all-pairs group or a latifrons-rivulatus cross. Captive
+      electric-blue origin claims do not justify a ram-cichlid group."
+    sources:
+      - kind: literature
+        title: "Musilova, Schindler and Staeck (2009). Description of Andinoacara stalsbergi and annotations on the
+          phylogeny of the genus"
+        url: "https://doi.org/10.3897/vz.59.e30965"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "De la Ossa-Guerra, Santos and Artoni (2020). Genetic Diversity of the Cichlid Andinoacara latifrons as
+          a Conservation Strategy in Different Colombian Basins"
+        url: "https://doi.org/10.3389/fgene.2020.00815"
+        accessed: 2026-10-13
+      - kind: database
+        title: "AquaInfo: Andinoacara latifrons, Platinum Acara"
+        url: "https://aquainfo.nl/en/article/andinoacara-latifrons-platinum-acara/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Andinoacara.com: Andinoacara latifrons species record"
+        url: "https://andinoacara.com/species/latifrons/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Andinoacara.com: Andinoacara cf. pulcher x Andinoacara rivulatus hybrid record"
+        url: "https://andinoacara.com/species/pulchertype_x_rivulatus/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Seriously Fish: Andinoacara pulcher"
+        url: "https://www.seriouslyfish.com/species/andinoacara-pulcher/"
+        accessed: 2026-10-13
+      - kind: website
+        title: "Maidenhead Aquatics Fishkeeper: Blue Acara"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/blue-acara"
+        accessed: 2026-10-13
+      - kind: website
+        title: "Fish Laboratory: Blue Acara care guide"
+        url: "https://www.fishlaboratory.com/fish/blue-acara/"
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: literature
+          title: "Musilova, Schindler and Staeck (2009). Description of Andinoacara stalsbergi and annotations on the
+            phylogeny of the genus"
+          url: "https://doi.org/10.3897/vz.59.e30965"
+          accessed: 2026-10-13
+        value:
+          - andinoacara-pulcher-latifrons
+        note: Relationship-based inference from the northern blue-acara lineage; no cross reported.
+      - source:
+          kind: literature
+          title: "De la Ossa-Guerra, Santos and Artoni (2020). Genetic Diversity of the Cichlid Andinoacara latifrons as
+            a Conservation Strategy in Different Colombian Basins"
+          url: "https://doi.org/10.3389/fgene.2020.00815"
+          accessed: 2026-10-13
+        value:
+          - andinoacara-pulcher-latifrons
+        note: Historical divergence discussed; not a pulcher-latifrons crossing experiment.
+      - source:
+          kind: database
+          title: "AquaInfo: Andinoacara latifrons, Platinum Acara"
+          url: "https://aquainfo.nl/en/article/andinoacara-latifrons-platinum-acara/"
+          accessed: 2026-10-13
+        value:
+          - andinoacara-pulcher-latifrons
+        note: "Raises possible natural crossing, without demonstrating offspring."
+      - source:
+          kind: database
+          title: "Andinoacara.com: Andinoacara cf. pulcher x Andinoacara rivulatus hybrid record"
+          url: "https://andinoacara.com/species/pulchertype_x_rivulatus/"
+          accessed: 2026-10-13
+        value:
+          - andinoacara-pulcher-rivulatus
+        note: "Named captive hybrid account; cf. pulcher identification, fertility and free partner choice not
+          genetically verified."
+      - source:
+          kind: database
+          title: "Seriously Fish: Andinoacara pulcher"
+          url: "https://www.seriouslyfish.com/species/andinoacara-pulcher/"
+          accessed: 2026-10-13
+        value: []
+        note: Generic trade-hybrid warning identifies no crossing partner; does not directly establish either group.
+      - source:
+          kind: website
+          title: "Maidenhead Aquatics Fishkeeper: Blue Acara"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/blue-acara"
+          accessed: 2026-10-13
+        value:
+          - andinoacara-pulcher-rivulatus
+        note: "Trade appearance suggests mixed ancestry; named-pair assignment is an inference, not a verified
+          pedigree."
+      - source:
+          kind: website
+          title: "Fish Laboratory: Blue Acara care guide"
+          url: "https://www.fishlaboratory.com/fish/blue-acara/"
+          accessed: 2026-10-13
+        value:
+          - andinoacara-pulcher-rivulatus
+        note: General hobby warning about this pairing; weak support.
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 4
+        total: 6
+  coloration:
+    value:
+      baseColors:
+        - blue
+        - green
+        - grey
+        - brown
+        - black
+      pattern: mixed
+    confidence: medium
+    rationale: "Generator proposed blue, green, grey and brown with mixed pattern; checker-a blue and green with
+      bars; checker-b blue, green, brown and black with mixed pattern; checker-c blue, green, grey and black
+      with mixed pattern. Combine the subdued grey-to-brown ground, blue-green markings and dark bars or
+      blotches into the listed colours and mixed pattern. Fishkeeping and FishProfiles describe both stripes
+      and spotting, so bars alone is incomplete. This describes ordinary adult stock, not the altered
+      electric-blue captive phenotype, and differences in individual or breeding colour limit exact palette
+      confidence."
+    sources:
+      - kind: database
+        title: "Fishkeeping.co.uk: Blue Acara care sheet 113"
+        url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=113"
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishProfiles.com: Aequidens pulcher"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Aequidens_pulcher/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Aqua-Pedia: Blue acara structured care record"
+        url: "https://www.aqua-pedia.com/en/species/andinoacara-pulcher-blue-acara"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Stalsberg, A.: Andinoacara collecting account, Trinidad section"
+        url: "https://www.lem.net/alf/andinoacara-eng.htm"
+        accessed: 2026-10-13
+      - kind: website
+        title: "Maidenhead Aquatics Fishkeeper: Blue Acara"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/blue-acara"
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "Fishkeeping.co.uk: Blue Acara care sheet 113"
+          url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=113"
+          accessed: 2026-10-13
+        value:
+          baseColors:
+            - blue
+            - black
+          pattern: mixed
+        note: Vertical dark markings and iridescent spots across regional forms.
+      - source:
+          kind: database
+          title: "FishProfiles.com: Aequidens pulcher"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Aequidens_pulcher/"
+          accessed: 2026-10-13
+        value:
+          baseColors:
+            - black
+            - blue
+          pattern: mixed
+        note: Both striped and spotted markings.
+      - source:
+          kind: database
+          title: "Aqua-Pedia: Blue acara structured care record"
+          url: "https://www.aqua-pedia.com/en/species/andinoacara-pulcher-blue-acara"
+          accessed: 2026-10-13
+        value:
+          baseColors:
+            - grey
+            - blue
+            - green
+          pattern: mixed
+        note: Care-record morphology with blue-green spots and facial markings; generated data receive reduced weight.
+  feedingSpeed:
+    value: normal
+    confidence: low
+    rationale: "All profiles propose normal. Bottom-associated foraging and ready acceptance of prepared food
+      support a provisional ordinary feeding classification, but no timed comparison with tankmates was
+      retrieved. The retailer describes greedy intake; that alone does not establish the hasty rubric
+      category."
+    sources:
+      - kind: literature
+        title: Elvidge and Brown (2012). Visual and Chemical Prey Cues as Complementary Predator Attractants in a
+          Tropical Stream Fish Assemblage
+        url: "https://doi.org/10.1155/2012/510920"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Seriously Fish: Andinoacara pulcher"
+        url: "https://www.seriouslyfish.com/species/andinoacara-pulcher/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishProfiles.com: Aequidens pulcher"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Aequidens_pulcher/"
+        accessed: 2026-10-13
+      - kind: website
+        title: "GarnelenTv: Blaupunktbuntbarsch retailer care page"
+        url: "https://garnelentv-shop.de/products/blaupunktbuntbarsch"
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "FishProfiles.com: Aequidens pulcher"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Aequidens_pulcher/"
+          accessed: 2026-10-13
+        value: normal
+        note: "Inferred from broad food acceptance, not a timed feeding test."
+      - source:
+          kind: website
+          title: "GarnelenTv: Blaupunktbuntbarsch retailer care page"
+          url: "https://garnelentv-shop.de/products/blaupunktbuntbarsch"
+          accessed: 2026-10-13
+        value: hasty
+        note: Inferred from greedy intake in retailer advice; low weight.
+  minTank:
+    value:
+      volumeL: 200
+      lengthCm: 120
+      depthCm: 40
+    confidence: medium
+    rationale: "All profiles propose 200 L and a 120 by 40 cm base for one compatible adult pair. Seriously Fish
+      describes 120 by 30 cm as marginal, while Fishkeeper recommends four feet, approximately 122 cm.
+      Fishkeeping permits a smaller 140 L tank with a roughly 122 by 38 cm base, and the retailer lists 200 L
+      for a pair. Use the agreed more spacious planning minimum to provide cover and retreats rather than the
+      narrower 30 cm base. Volume and 40 cm depth are husbandry design allowances, not measured biological
+      thresholds. A substantial community or another cichlid pair needs additional space; Andinoacara.com's 60
+      cm adult-pair suggestion is not adopted."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Andinoacara pulcher"
+        url: "https://www.seriouslyfish.com/species/andinoacara-pulcher/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeping.co.uk: Blue Acara care sheet 113"
+        url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=113"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Andinoacara.com: Andinoacara pulcher species and husbandry account"
+        url: "https://andinoacara.com/species/pulcher/"
+        accessed: 2026-10-13
+      - kind: website
+        title: "Maidenhead Aquatics Fishkeeper: Blue Acara"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/blue-acara"
+        accessed: 2026-10-13
+      - kind: website
+        title: "GarnelenTv: Blaupunktbuntbarsch retailer care page"
+        url: "https://garnelentv-shop.de/products/blaupunktbuntbarsch"
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Andinoacara pulcher"
+          url: "https://www.seriouslyfish.com/species/andinoacara-pulcher/"
+          accessed: 2026-10-13
+        value:
+          lengthCm: 120
+          depthCm: 30
+        note: Pair footprint described as marginal; volume unspecified.
+      - source:
+          kind: database
+          title: "Fishkeeping.co.uk: Blue Acara care sheet 113"
+          url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=113"
+          accessed: 2026-10-13
+        value:
+          volumeL: 140
+          lengthCm: 121.92
+          depthCm: 38.1
+        note: 48 by 15 inch base converted to cm; smaller source minimum not selected.
+      - source:
+          kind: database
+          title: "Andinoacara.com: Andinoacara pulcher species and husbandry account"
+          url: "https://andinoacara.com/species/pulcher/"
+          accessed: 2026-10-13
+        value:
+          lengthCm: 60
+          depthCm: 38
+        note: Smaller adult-pair suggestion not adopted.
+      - source:
+          kind: website
+          title: "Maidenhead Aquatics Fishkeeper: Blue Acara"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/blue-acara"
+          accessed: 2026-10-13
+        value:
+          lengthCm: 121.92
+        note: Four-foot pair tank; remaining dimensions unspecified.
+      - source:
+          kind: website
+          title: "GarnelenTv: Blaupunktbuntbarsch retailer care page"
+          url: "https://garnelentv-shop.de/products/blaupunktbuntbarsch"
+          accessed: 2026-10-13
+        value:
+          volumeL: 200
+        note: Retailer pair recommendation; prose suggests more room.
+  lifespanYears:
+    value:
+      min: 7
+      max: 10
+    confidence: low
+    rationale: "Generator proposed 7 to 10 years; all three checkers proposed 8 to 10. Fish Laboratory reports 7
+      to 10 and the retailer 8 to 10, while Akvaforum supports only an upper age around 10. Retain the wider 7
+      to 10 reported care horizon rather than implying a measured 8-year lower limit. These are husbandry
+      expectations with no retrieved longitudinal survival study, so the confidence is low."
+    sources:
+      - kind: database
+        title: "Akvaforum: Aequidens pulcher species and aquarium record"
+        url: "https://akvaforum.no/lex/fish.cfm/1050"
+        accessed: 2026-10-13
+      - kind: website
+        title: "Fish Laboratory: Blue Acara care guide"
+        url: "https://www.fishlaboratory.com/fish/blue-acara/"
+        accessed: 2026-10-13
+      - kind: website
+        title: "GarnelenTv: Blaupunktbuntbarsch retailer care page"
+        url: "https://garnelentv-shop.de/products/blaupunktbuntbarsch"
+        accessed: 2026-10-13
+      - kind: website
+        title: "Aquatic Community: Blue Acara, Aequidens pulcher"
+        url: "https://www.aquaticcommunity.com/cichlid/blue-acara.php"
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "Akvaforum: Aequidens pulcher species and aquarium record"
+          url: "https://akvaforum.no/lex/fish.cfm/1050"
+          accessed: 2026-10-13
+        value:
+          max: 10
+        note: Only an upper lifespan is reported.
+      - source:
+          kind: website
+          title: "Fish Laboratory: Blue Acara care guide"
+          url: "https://www.fishlaboratory.com/fish/blue-acara/"
+          accessed: 2026-10-13
+        value:
+          min: 7
+          max: 10
+        note: General hobby estimate.
+      - source:
+          kind: website
+          title: "GarnelenTv: Blaupunktbuntbarsch retailer care page"
+          url: "https://garnelentv-shop.de/products/blaupunktbuntbarsch"
+          accessed: 2026-10-13
+        value:
+          min: 8
+          max: 10
+        note: Retailer estimate.
+      - source:
+          kind: website
+          title: "Aquatic Community: Blue Acara, Aequidens pulcher"
+          url: "https://www.aquaticcommunity.com/cichlid/blue-acara.php"
+          accessed: 2026-10-13
+        value:
+          max: 10
+        note: General hobby expectation of about a decade.
+  breeding:
+    value: open-substrate-spawner
+    confidence: high
+    rationale: All profiles agree on exposed-substrate spawning with shared parental care. Eggs are deposited on a
+      prepared surface and the pair guards eggs and young. Temporary retrieval or movement of fry in the mouth
+      does not change the primary breeding mode into mouthbrooding.
+    sources:
+      - kind: database
+        title: "Seriously Fish: Andinoacara pulcher"
+        url: "https://www.seriouslyfish.com/species/andinoacara-pulcher/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeping.co.uk: Blue Acara care sheet 113"
+        url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=113"
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishProfiles.com: Aequidens pulcher"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Aequidens_pulcher/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Nordiska Ciklidsallskapet: Andinoacara pulcher species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=181"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Victorian Cichlid Society: Andinoacara pulcher species profile"
+        url: "https://www.cichlidpower.org.au/VCS_3/PRF/HTM/Andinoacara%20pulcher.html"
+        accessed: 2026-10-13
+      - kind: website
+        title: "Maidenhead Aquatics Fishkeeper: Blue Acara"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/blue-acara"
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Andinoacara pulcher"
+          url: "https://www.seriouslyfish.com/species/andinoacara-pulcher/"
+          accessed: 2026-10-13
+        value: open-substrate-spawner
+      - source:
+          kind: database
+          title: "FishProfiles.com: Aequidens pulcher"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Aequidens_pulcher/"
+          accessed: 2026-10-13
+        value: open-substrate-spawner
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet: Andinoacara pulcher species register"
+          url: "https://www.ciklid.org/artregister/art.php?ID=181"
+          accessed: 2026-10-13
+        value: open-substrate-spawner
+  beginnerSuitability:
+    value: moderate
+    confidence: medium
+    rationale: "Generator and checker-b proposed moderate; checker-a and checker-c proposed easy. Seriously Fish
+      contains both a narrative beginner recommendation and a moderate current difficulty rating, while
+      FishProfiles and the Nordic register are beginner-friendly. Select moderate because the recommended
+      adult pair needs a substantial mature tank, reliable water care, careful prey-size selection and
+      management during breeding. This qualification reconciles straightforward feeding and reproduction with
+      meaningful adult stocking demands."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Andinoacara pulcher"
+        url: "https://www.seriouslyfish.com/species/andinoacara-pulcher/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishProfiles.com: Aequidens pulcher"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Aequidens_pulcher/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Nordiska Ciklidsallskapet: Andinoacara pulcher species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=181"
+        accessed: 2026-10-13
+      - kind: website
+        title: "Maidenhead Aquatics Fishkeeper: Blue Acara"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/blue-acara"
+        accessed: 2026-10-13
+      - kind: website
+        title: "GarnelenTv: Blaupunktbuntbarsch retailer care page"
+        url: "https://garnelentv-shop.de/products/blaupunktbuntbarsch"
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Andinoacara pulcher"
+          url: "https://www.seriouslyfish.com/species/andinoacara-pulcher/"
+          accessed: 2026-10-13
+        value: moderate
+        note: Current rating; the same page's narrative is beginner-friendly.
+      - source:
+          kind: database
+          title: "FishProfiles.com: Aequidens pulcher"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Aequidens_pulcher/"
+          accessed: 2026-10-13
+        value: easy
+        note: Introductory-cichlid recommendation.
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet: Andinoacara pulcher species register"
+          url: "https://www.ciklid.org/artregister/art.php?ID=181"
+          accessed: 2026-10-13
+        value: easy
+        note: Beginner-friendly society rating.
+      - source:
+          kind: website
+          title: "GarnelenTv: Blaupunktbuntbarsch retailer care page"
+          url: "https://garnelentv-shop.de/products/blaupunktbuntbarsch"
+          accessed: 2026-10-13
+        value: moderate
+        note: "Retailer classification, lower weight."
+partners:
+  suitable:
+    - species: Moenkhausia sanctaefilomenae
+      reason: "Conditional example inferred from care guidance for robust, sufficiently large midwater characins."
+      condition: "Use full-sized adults in a tank larger than the 200 L pair minimum, with overlapping water
+        tolerances and room outside the brood territory; small juveniles remain vulnerable."
+    - species: Phenacogrammus interruptus
+      reason: "Conditional example inferred from care guidance for robust, sufficiently large midwater characins."
+      condition: "Use full-sized adults in a tank larger than the 200 L pair minimum, with overlapping water
+        tolerances and room outside the brood territory; small juveniles remain vulnerable."
+    - species: Ancistrus cirrhosus
+      reason: "Conditional example inferred from care guidance for robust, sufficiently large loricariid catfish."
+      condition: "Use full-sized adults in a tank larger than the 200 L pair minimum, with overlapping water
+        tolerances and room outside the brood territory; small juveniles remain vulnerable."
+  unsuitable:
+    - species: Paracheirodon innesi
+      reason: "A small, slender adult remains within the prey-size range of a mature blue acara."
+    - species: Corydoras pygmaeus
+      reason: Very small bottom dwellers face both predation and repeated displacement from the brood territory.
+    - species: Andinoacara rivulatus
+      reason: "Larger, more aggressive cichlid, with an uncertain named aquarium crossing risk included in a
+        presumed pairwise group."
+    - species: Andinoacara latifrons
+      reason: Separate valid blue-acara species with a presumed pairwise crossing risk inferred from relationship
+        and unconfirmed reports.
+profile:
+  overview:
+    text: "Blue acaras form breeding pairs and show blue-green markings against a subdued body. The accepted name
+      is Andinoacara pulcher, with Aequidens pulcher retained as the legacy name. The current Catalog anchors
+      its range to Trinidad and Tobago and adjacent Venezuela. Andinoacara latifrons is a separate Colombian
+      species, and mainland fish sold as blue acaras may include other unresolved lineages. A known locality
+      helps interpret the identity of breeding stock. This profile describes ordinary pulcher; electric-blue
+      fish are a captive colour form with strain-dependent and incompletely documented ancestry."
+    sources:
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: Andinoacara species list, updated 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=An\
+          dinoacara"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Musilova, Schindler and Staeck (2009). Description of Andinoacara stalsbergi and annotations on the
+          phylogeny of the genus"
+        url: "https://doi.org/10.3897/vz.59.e30965"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "De la Ossa-Guerra, Santos and Artoni (2020). Genetic Diversity of the Cichlid Andinoacara latifrons as
+          a Conservation Strategy in Different Colombian Basins"
+        url: "https://doi.org/10.3389/fgene.2020.00815"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Seriously Fish: Andinoacara pulcher"
+        url: "https://www.seriouslyfish.com/species/andinoacara-pulcher/"
+        accessed: 2026-10-13
+      - kind: website
+        title: "Maidenhead Aquatics Fishkeeper: Blue Acara"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/blue-acara"
+        accessed: 2026-10-13
+  habitat:
+    text: "The species uses flowing streams and quieter waters, searching near the bottom and using cover.
+      Trinidad field observations provide the strongest locality-linked environmental evidence. The profile
+      stores 24 to 30 C and pH 7.5 to 8.1 as low-confidence median decisions across conflicting proposals, not
+      the exact endpoints of one survey. The directly checked 2022 data span 23.97 to 29.58 C at 134
+      observations with the species present. GH 4 dGH and KH 7 dKH are provisional point values from a
+      collecting event apparently repeated on two pages. The conflicting location metadata and limited
+      seasonal coverage mean these figures cannot describe every native population."
+    sources:
+      - kind: literature
+        title: Zanghi et al. (2024). Multiple environmental stressors affect predation pressure in a tropical
+          freshwater system
+        url: "https://doi.org/10.1038/s42003-024-06364-6"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Zanghi et al. (2024): original Trinidad field observations, Trini_22.csv"
+        url: "https://github.com/CosZan/Zanghi-et-al-2024-CommsBio/blob/main/Trini_22.csv"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Sandkam, Young and Breden (2014): Trinidad environmental measurements, Aripo high-predation rows"
+        url: "https://doi.org/10.5061/dryad.sk6d5"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Nordiska Ciklidsallskapet: Eastern Highway collecting locality, measurements on 29 September 1998"
+        url: "https://www.ciklid.org/artregister/art_fangstplats.php?ID=442"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Stalsberg, A.: Andinoacara collecting account, Trinidad section"
+        url: "https://www.lem.net/alf/andinoacara-eng.htm"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Elvidge and Brown (2012). Visual and Chemical Prey Cues as Complementary Predator Attractants in a
+          Tropical Stream Fish Assemblage
+        url: "https://doi.org/10.1155/2012/510920"
+        accessed: 2026-10-13
+  sizeAndGrowth:
+    text: "Allow for a broad-bodied adult rather than the small fish sold in shops. The planning maxima are 16 cm
+      for males and 15 cm for females, both with low confidence because sex-specific measured aquarium maxima
+      are scarce. Some accounts estimate smaller females, but an explicit 15 cm female entry is preferable to
+      assuming they always stop at 12 or 13 cm. Most routine aquarium expectations are near 13 to 16 cm;
+      larger reported sizes are not the typical planning target. Standard length excludes the tail and must
+      not be compared directly with total length. A growing pair needs clear escape routes and feeding access
+      as well as swimming space."
+    sources:
+      - kind: database
+        title: "FishProfiles.com: Aequidens pulcher"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Aequidens_pulcher/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeping.co.uk: Blue Acara care sheet 113"
+        url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=113"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Andinoacara.com: Andinoacara pulcher species and husbandry account"
+        url: "https://andinoacara.com/species/pulcher/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Victorian Cichlid Society: Andinoacara pulcher species profile"
+        url: "https://www.cichlidpower.org.au/VCS_3/PRF/HTM/Andinoacara%20pulcher.html"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Seriously Fish: Andinoacara pulcher"
+        url: "https://www.seriouslyfish.com/species/andinoacara-pulcher/"
+        accessed: 2026-10-13
+      - kind: website
+        title: "Maidenhead Aquatics Fishkeeper: Blue Acara"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/blue-acara"
+        accessed: 2026-10-13
+      - kind: website
+        title: "Schafer (2025): Andinoacara pulcher, Aquarium Glaser fish archive"
+        url: "https://www.aquariumglaser.de/en/fisharchive/andinoacara-pulcher-formerly-aequidens-pulcher/"
+        accessed: 2026-10-13
+  husbandry:
+    text: "Provide one compatible adult pair with at least 200 L and a base about 120 by 40 cm. Place shelter so
+      either fish can withdraw from view without entering a dead end. Sand allows digging, and wood with
+      securely attached plants supplies cover; flat stones offer spawning surfaces. Use a mature biological
+      filter and regular partial water changes. The decided aquarium tolerances are 22 to 30 C, pH 6.5 to 8.1,
+      GH 4 to 25 dGH and KH 3 to 8 dKH. These broad care envelopes have uneven endpoint evidence, especially
+      for constant high temperature, harder water and KH. An overlapping central temperature around 24 to 27 C
+      is a practical starting point. Avoid abrupt chemical changes and allow extra floor space for a
+      community."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Andinoacara pulcher"
+        url: "https://www.seriouslyfish.com/species/andinoacara-pulcher/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeping.co.uk: Blue Acara care sheet 113"
+        url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=113"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Andinoacara.com: Andinoacara pulcher species and husbandry account"
+        url: "https://andinoacara.com/species/pulcher/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "AquaExperience: Andinoacara pulcher species care profile"
+        url: "https://aquaexperience.it/andinoacara-pulcher-it.html"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Aqua-Pedia: Blue acara structured care record"
+        url: "https://www.aqua-pedia.com/en/species/andinoacara-pulcher-blue-acara"
+        accessed: 2026-10-13
+      - kind: website
+        title: "Maidenhead Aquatics Fishkeeper: Blue Acara"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/blue-acara"
+        accessed: 2026-10-13
+      - kind: website
+        title: "GarnelenTv: Blaupunktbuntbarsch retailer care page"
+        url: "https://garnelentv-shop.de/products/blaupunktbuntbarsch"
+        accessed: 2026-10-13
+  socialBehavior:
+    text: "One established adult pair is the recommended social unit. Young fish can grow together until partners
+      form, but surplus adults need separate accommodation once the pair excludes them. Buying one male and
+      one female does not ensure compatibility. During spawning, parents defend a sizeable area and can
+      displace bottom fish repeatedly. Observe whether both partners can rest and eat, and whether companions
+      can remain outside the brood territory. Persistent pursuit, injury or a fish trapped in hiding calls for
+      separation. The level 2 aggression grades assume adequate space and a compatible pair; individual fish
+      or unsuitable setups can be more troublesome."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Andinoacara pulcher"
+        url: "https://www.seriouslyfish.com/species/andinoacara-pulcher/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeping.co.uk: Blue Acara care sheet 113"
+        url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=113"
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishProfiles.com: Aequidens pulcher"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Aequidens_pulcher/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Nordiska Ciklidsallskapet: Andinoacara pulcher species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=181"
+        accessed: 2026-10-13
+      - kind: website
+        title: "Maidenhead Aquatics Fishkeeper: Blue Acara"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/blue-acara"
+        accessed: 2026-10-13
+  diet:
+    text: "The tally conservatively classifies pulcher as an invertivore, with low confidence, because votes split
+      evenly between that category and omnivore. Field accounts emphasize bottom-associated invertebrates and
+      the Nordic register identifies insect larvae as principal food, while other literature and care records
+      describe mixed feeding. Use a complete cichlid food and vary it with appropriate aquatic invertebrate
+      foods such as insect larvae, Artemia or small crustaceans. Plant-containing prepared foods remain
+      compatible with this animal-biased classification. Adult fish can eat small tankmates that fit their
+      mouths, so routine feeding does not remove the predation risk. No established specialist high-protein
+      bloat restriction was found, but overfeeding and poor water quality can still harm health."
+    sources:
+      - kind: literature
+        title: Elvidge and Brown (2012). Visual and Chemical Prey Cues as Complementary Predator Attractants in a
+          Tropical Stream Fish Assemblage
+        url: "https://doi.org/10.1155/2012/510920"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Nordiska Ciklidsallskapet: Andinoacara pulcher species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=181"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Zanghi et al. (2024). Multiple environmental stressors affect predation pressure in a tropical
+          freshwater system
+        url: "https://doi.org/10.1038/s42003-024-06364-6"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Seriously Fish: Andinoacara pulcher"
+        url: "https://www.seriouslyfish.com/species/andinoacara-pulcher/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishProfiles.com: Aequidens pulcher"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Aequidens_pulcher/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Andinoacara.com: Andinoacara pulcher species and husbandry account"
+        url: "https://andinoacara.com/species/pulcher/"
+        accessed: 2026-10-13
+  breeding:
+    text: "Pairs deposit eggs on an exposed prepared surface and share care of the brood. Several stable flat
+      surfaces give them options without forcing one nesting site. Slightly soft, mildly acidic water and
+      temperatures near 25 to 28 C are common breeding recommendations, rather than evidence for the limits of
+      long-term tolerance. Both parents guard the developing eggs and mobile young, with roles that can vary
+      between pairs. Prepare suitably small first foods and protect filter intakes before the young swim
+      freely. Brood defence can disrupt an otherwise workable community, so spare housing remains useful.
+      Picking up a stray young fish is parental transport, not a mouthbrooding reproductive strategy."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Andinoacara pulcher"
+        url: "https://www.seriouslyfish.com/species/andinoacara-pulcher/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishProfiles.com: Aequidens pulcher"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Aequidens_pulcher/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeping.co.uk: Blue Acara care sheet 113"
+        url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=113"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Nordiska Ciklidsallskapet: Andinoacara pulcher species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=181"
+        accessed: 2026-10-13
+      - kind: website
+        title: "Maidenhead Aquatics Fishkeeper: Blue Acara"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/blue-acara"
+        accessed: 2026-10-13
+  sexing:
+    text: "Males often develop longer or more pointed dorsal and anal fin tips, and females may have a rounder
+      outline. Males also tend to become larger, but these are variable tendencies rather than reliable tests
+      for every fish. Juveniles and selected colour strains are especially difficult to identify by
+      appearance. The profile's cautious 15 cm female planning maximum does not imply that every female
+      reaches that length or that both sexes grow identically. Partner formation and reproductive behaviour
+      add information, but a display or a defended patch alone does not prove sex. Arrange separate
+      accommodation for surplus adults before encouraging a juvenile group to form pairs."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Andinoacara pulcher"
+        url: "https://www.seriouslyfish.com/species/andinoacara-pulcher/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeping.co.uk: Blue Acara care sheet 113"
+        url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=113"
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishProfiles.com: Aequidens pulcher"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Aequidens_pulcher/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Nordiska Ciklidsallskapet: Andinoacara pulcher species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=181"
+        accessed: 2026-10-13
+      - kind: website
+        title: "Maidenhead Aquatics Fishkeeper: Blue Acara"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/blue-acara"
+        accessed: 2026-10-13
+      - kind: website
+        title: "Schafer (2025): Andinoacara pulcher, Aquarium Glaser fish archive"
+        url: "https://www.aquariumglaser.de/en/fisharchive/andinoacara-pulcher-formerly-aequidens-pulcher/"
+        accessed: 2026-10-13
+  compatibility:
+    text: "Mixed housing is possible with robust companions that are too large to swallow and have room to avoid
+      the brood. Full-sized red-eye tetras, Congo tetras and bristlenose catfish are conditional examples
+      inferred from the larger-characin and loricariid recommendations; their juveniles can remain vulnerable.
+      Tiny tetras and dwarf bottom fish face predation or repeated displacement. Green terrors add a size and
+      aggression mismatch, as well as a presumed crossing concern. The two pairwise hybrid groups concern
+      pulcher with latifrons and pulcher with rivulatus, both with weak evidence and neither with verified
+      free partner choice. They do not establish that every Andinoacara species crosses with every other one.
+      Similar water tolerances alone cannot ensure a safe community."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Andinoacara pulcher"
+        url: "https://www.seriouslyfish.com/species/andinoacara-pulcher/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeping.co.uk: Blue Acara care sheet 113"
+        url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=113"
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishProfiles.com: Aequidens pulcher"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Aequidens_pulcher/"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Musilova, Schindler and Staeck (2009). Description of Andinoacara stalsbergi and annotations on the
+          phylogeny of the genus"
+        url: "https://doi.org/10.3897/vz.59.e30965"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "De la Ossa-Guerra, Santos and Artoni (2020). Genetic Diversity of the Cichlid Andinoacara latifrons as
+          a Conservation Strategy in Different Colombian Basins"
+        url: "https://doi.org/10.3389/fgene.2020.00815"
+        accessed: 2026-10-13
+      - kind: database
+        title: "AquaInfo: Andinoacara latifrons, Platinum Acara"
+        url: "https://aquainfo.nl/en/article/andinoacara-latifrons-platinum-acara/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Andinoacara.com: Andinoacara cf. pulcher x Andinoacara rivulatus hybrid record"
+        url: "https://andinoacara.com/species/pulchertype_x_rivulatus/"
+        accessed: 2026-10-13
+      - kind: website
+        title: "Maidenhead Aquatics Fishkeeper: Blue Acara"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/blue-acara"
+        accessed: 2026-10-13
+  problems:
+    text: "Crowding, incompatible partners, tiny companions and accumulated waste are common practical failures.
+      Digging may uproot plants or move loose decor, so use stable structures with usable retreat paths. Check
+      water quality and social pressure when a fish hides persistently, stops eating, breathes rapidly or
+      develops damaged fins. Quarantine new stock and seek qualified help for unresolved illness rather than
+      assigning a diagnosis from one sign. Trade identification is another concern: similar blue acaras, young
+      green terrors and fish with mixed ancestry may have different adult needs. Broad tolerance values should
+      not encourage repeated adjustments or permanent use of poorly supported endpoints."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Andinoacara pulcher"
+        url: "https://www.seriouslyfish.com/species/andinoacara-pulcher/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeping.co.uk: Blue Acara care sheet 113"
+        url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=113"
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishProfiles.com: Aequidens pulcher"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Aequidens_pulcher/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Andinoacara.com: Andinoacara pulcher species and husbandry account"
+        url: "https://andinoacara.com/species/pulcher/"
+        accessed: 2026-10-13
+      - kind: website
+        title: "Maidenhead Aquatics Fishkeeper: Blue Acara"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/blue-acara"
+        accessed: 2026-10-13
+      - kind: website
+        title: "Schafer (2025): Andinoacara pulcher, Aquarium Glaser fish archive"
+        url: "https://www.aquariumglaser.de/en/fisharchive/andinoacara-pulcher-formerly-aequidens-pulcher/"
+        accessed: 2026-10-13
+provenance:
+  runs:
+    - role: generator
+      model: gpt-6.1-sol
+      date: 2026-10-13
+    - role: checker
+      model: gpt-6.1-sol
+      date: 2026-10-13
+    - role: checker
+      model: gpt-6.1-sol
+      date: 2026-10-13
+    - role: checker
+      model: gpt-6.1-sol
+      date: 2026-10-13
+    - role: checker
+      model: gpt-6.1-sol
+      date: 2026-10-13
+    - role: checker
+      model: gpt-6.1-sol
+      date: 2026-10-13
+    - role: adjudicator
+      model: gpt-6.1-sol
+      date: 2026-10-13
+  disagreements:
+    - field: features.predation
+      proposals:
+        - by: generator
+          value: 2
+        - by: checker-a
+          value: 1
+        - by: checker-b
+          value: 2
+        - by: checker-c
+          value: 2
+        - by: tiebreaker-1
+          value: 2
+        - by: tiebreaker-2
+          value: 2
+      decision: 2
+      rationale: "Qualified-majority selects level 2, with 5 of 6 votes and medium confidence. Generator, checker-b,
+        checker-c and both tiebreakers proposed 2; checker-a proposed 1. Seriously Fish, Fishkeeping,
+        FishProfiles and the genus specialist warn about fish that can be swallowed, so a fry-only 2 cm
+        planning ceiling is insufficient for adults. The Trinidad field study records attacks on guppies
+        averaging 2.45 cm through a protective cylinder; it does not demonstrate ingestion or quantify routine
+        fish consumption. The Lower Aripo account describes opportunistic piscivory within predominantly
+        benthic feeding. Level 2 is therefore the decided gape-based aquarium warning, not evidence that fish
+        dominate the diet."
+    - field: features.diet
+      proposals:
+        - by: generator
+          value:
+            type: invertivore
+            bloatSensitive: false
+            foods:
+              - Balanced cichlid pellets
+              - Insect larvae
+              - Artemia
+              - Mysis
+              - Small earthworms
+              - Chopped aquatic crustaceans
+        - by: checker-a
+          value:
+            type: omnivore
+            bloatSensitive: false
+            foods:
+              - insects
+              - crustaceans
+              - worms
+              - plant matter
+              - small fish
+        - by: checker-b
+          value:
+            type: invertivore
+            bloatSensitive: false
+            foods:
+              - Aquatic insect larvae
+              - Small crustaceans
+              - Worms
+              - Suitable sinking cichlid pellets
+              - Occasional small mollusc portions
+        - by: checker-c
+          value:
+            type: omnivore
+            bloatSensitive: false
+            foods:
+              - Quality cichlid pellets
+              - Aquatic insect larvae
+              - Artemia
+              - Small crustaceans
+              - Earthworms
+              - Plant matter
+        - by: tiebreaker-1
+          value:
+            type: omnivore
+            bloatSensitive: false
+        - by: tiebreaker-2
+          value:
+            type: invertivore
+            bloatSensitive: false
+      decision:
+        type: invertivore
+        bloatSensitive: false
+      rationale: "Conservative is the binding method at low confidence, with 3 of 6 votes for invertivore. Generator
+        and checker-b proposed invertivore with animal-food lists, and tiebreaker-2 proposed invertivore;
+        checker-a and checker-c proposed omnivore with mixed-food lists, and tiebreaker-1 proposed omnivore.
+        Every proposal set bloatSensitive to false. The full food-list proposals are preserved in provenance.
+        No class reaches four votes, so the tally chooses invertivore as the stricter of the proposed feeding
+        types. Lower Aripo literature emphasizes benthic invertebrates and the Nordic register identifies
+        insect larvae as the main natural food. Conversely, the 2024 paper classifies pulcher as omnivorous
+        and care accounts support plant-containing foods. The Lorica stomach-content study used Sinu fish of
+        uncertain pulcher versus latifrons identity and is not decisive for Trinidad pulcher. Invertivore is a
+        cautious animal-dominated planning category, not proof that plant or detrital food is absent. False
+        bloatSensitive reflects the lack of an established specialist protein-related restriction, not
+        immunity to digestive disease."
+    - field: features.hybridGroups
+      proposals:
+        - by: generator
+          value:
+            - andinoacara-pulcher-latifrons
+            - andinoacara-pulcher-rivulatus
+        - by: checker-a
+          value:
+            - andinoacara
+        - by: checker-b
+          value:
+            - andinoacara-pulcher-latifrons
+            - andinoacara-pulcher-rivulatus
+        - by: checker-c
+          value:
+            - andinoacara-pulcher-rivulatus
+        - by: tiebreaker-1
+          value:
+            - andinoacara-pulcher-latifrons
+            - andinoacara-pulcher-rivulatus
+        - by: tiebreaker-2
+          value:
+            - andinoacara-pulcher-latifrons
+            - andinoacara-pulcher-rivulatus
+      decision:
+        - andinoacara-pulcher-latifrons
+        - andinoacara-pulcher-rivulatus
+      rationale: "Qualified-majority selects two pairwise groups, with 4 of 6 votes and low confidence. generator
+        proposed [\"andinoacara-pulcher-latifrons\",\"andinoacara-pulcher-rivulatus\"]; checker-a proposed
+        [\"andinoacara\"]; checker-b proposed
+        [\"andinoacara-pulcher-latifrons\",\"andinoacara-pulcher-rivulatus\"]; checker-c proposed
+        [\"andinoacara-pulcher-rivulatus\"]; tiebreaker-1 proposed
+        [\"andinoacara-pulcher-latifrons\",\"andinoacara-pulcher-rivulatus\"]; tiebreaker-2 proposed
+        [\"andinoacara-pulcher-latifrons\",\"andinoacara-pulcher-rivulatus\"]. Both new groups have basis
+        presumed. For pulcher-latifrons, the 2009 phylogeny and 2020 genetic discussion support close
+        relationship, and AquaInfo raises possible natural crossing without documented hybrid offspring. For
+        pulcher-rivulatus, the specialist record attributes apparently fertile aquarium hybrids to rivulatus
+        and pulcher or cf. pulcher, leaving blue-parent identification and access to same-species mates
+        unverified. Seriously Fish warns about mixed ancestry in trade stock without naming parents. The
+        selected pairwise groups do not establish a genus-wide all-pairs group or a latifrons-rivulatus cross.
+        Captive electric-blue origin claims do not justify a ram-cichlid group."
+    - field: features.temperatureC
+      proposals:
+        - by: generator
+          value:
+            min: 23.97
+            max: 29.58
+        - by: checker-a
+          value:
+            min: 24
+            max: 28
+        - by: checker-b
+          value:
+            min: 25
+            max: 30
+        - by: checker-c
+          value:
+            min: 24.9
+            max: 25.7
+        - by: tiebreaker-1
+          value:
+            min: 23.97
+            max: 29.58
+        - by: tiebreaker-2
+          value:
+            min: 23.97
+            max: 29.58
+      decision:
+        min: 24
+        max: 30
+      rationale: "The tally uses median, with low confidence and 3 of 6 votes in its leading agreement cluster.
+        generator proposed {\"min\":23.97,\"max\":29.58}; checker-a proposed {\"min\":24,\"max\":28};
+        checker-b proposed {\"min\":25,\"max\":30}; checker-c proposed {\"min\":24.9,\"max\":25.7};
+        tiebreaker-1 proposed {\"min\":23.97,\"max\":29.58}; tiebreaker-2 proposed
+        {\"min\":23.97,\"max\":29.58}. The median endpoints are 23.985 and 29.58 C before integer rounding to
+        24 and 30 C. The directly checked Zanghi data contain 134 species-positive events spanning 23.97 to
+        29.58 C, including both extremes in the Arima River. The final lower bound is therefore 0.03 C
+        narrower than that measured range and the upper bound is rounded upward, not a new observation.
+        Sandkam gives 24.9 to 25.7 C for three lower Aripo samples; Stalsberg and the Nordic collecting record
+        give 25 C and likely describe one event. These limited seasonal observations have more relevance than
+        air temperatures, laboratory settings for Saxatilia or uncertain Orinoco identifications in the other
+        proposals. The median is binding despite the stronger locality-linked support for the wider Zanghi
+        envelope; it is not a complete annual or geographical limit."
+    - field: features.ph
+      proposals:
+        - by: generator
+          value:
+            min: 7.5
+            max: 7.5
+        - by: checker-a
+          value:
+            min: 6.5
+            max: 8.2
+        - by: checker-b
+          value:
+            min: 6.8
+            max: 8.5
+        - by: checker-c
+          value:
+            min: 7.5
+            max: 8.08
+        - by: tiebreaker-1
+          value:
+            min: 7.5
+            max: 8.08
+        - by: tiebreaker-2
+          value:
+            min: 7.5
+            max: 7.5
+      decision:
+        min: 7.5
+        max: 8.1
+      rationale: "The tally uses median, with low confidence and 2 of 6 votes in its leading agreement cluster.
+        generator proposed {\"min\":7.5,\"max\":7.5}; checker-a proposed {\"min\":6.5,\"max\":8.2}; checker-b
+        proposed {\"min\":6.8,\"max\":8.5}; checker-c proposed {\"min\":7.5,\"max\":8.08}; tiebreaker-1
+        proposed {\"min\":7.5,\"max\":8.08}; tiebreaker-2 proposed {\"min\":7.5,\"max\":7.5}. Median bounds of
+        7.5 and 8.08 are rounded to 7.5 and 8.1. Stalsberg and the dated Eastern Highway record both give 7.5
+        and probably represent one collecting event. The independently checked Sandkam dataset gives 7.84 to
+        8.08 in lower Aripo AHP rows; association with pulcher is inferred from the Lower Aripo occurrence
+        study rather than a fish inventory at each chemistry reading. The final interval is narrower than
+        checker-b's regional 6.8 to 8.5 proposal and checker-a's 6.5 to 8.2 proposal; those combine drainage
+        proxies or aquarium data with taxonomically uncertain Colombian records. The Grant report was not
+        retrieved through the permitted full-text route in adjudication, and the accessible Banerjee text
+        lacks readable numeric station endpoints, so neither supplies new quantitative evidence here. A
+        regional exposure envelope is not a species-wide physiological limit."
+    - field: features.ghDgh
+      proposals:
+        - by: generator
+          value:
+            min: 4
+            max: 4
+        - by: checker-a
+          value:
+            min: 5
+            max: 12
+        - by: checker-b
+          value:
+            min: 5.83
+            max: 5.83
+        - by: checker-c
+          value:
+            min: 4
+            max: 4
+        - by: tiebreaker-1
+          value:
+            min: 4
+            max: 4
+        - by: tiebreaker-2
+          value:
+            min: 4
+            max: 4
+      decision:
+        min: 4
+        max: 4
+      rationale: "The tally retains the point interval 4 to 4 dGH by qualified-majority, 5 of 6 votes, at low
+        confidence. generator proposed {\"min\":4,\"max\":4}; checker-a proposed {\"min\":5,\"max\":12};
+        checker-b proposed {\"min\":5.83,\"max\":5.83}; checker-c proposed {\"min\":4,\"max\":4}; tiebreaker-1
+        proposed {\"min\":4,\"max\":4}; tiebreaker-2 proposed {\"min\":4,\"max\":4}. Checker-b's 5.83 point
+        lies within the 2 dGH agreement threshold and therefore joins the leading cluster, whose median
+        remains 4. Stalsberg and the Nordic record separately publish 4 dH from what is probably one Trinidad
+        collection; two pages do not constitute independent measurements. The Nordic locality metadata support
+        the Trinidad narrative while Stalsberg's printed coordinates conflict, and the pages disagree on
+        conductivity. Checker-a's wider 5 to 12 estimate and broad care-sheet intervals are not substituted
+        for measured native GH. The reported Tumpuna proxy behind checker-b and excluded Orinoco chemistry do
+        not establish species-linked station measurements. The chosen point is a provisional sampling anchor
+        rather than constant hardness throughout the native range; conductivity is not converted to GH."
+    - field: features.khDkh
+      proposals:
+        - by: generator
+          value:
+            min: 7
+            max: 7
+        - by: checker-a
+          value:
+            min: 3
+            max: 8
+        - by: checker-b
+          value:
+            min: 6.47
+            max: 6.47
+        - by: checker-c
+          value:
+            min: 7
+            max: 7
+        - by: tiebreaker-1
+          value:
+            min: 7
+            max: 7
+        - by: tiebreaker-2
+          value:
+            min: 7
+            max: 7
+      decision:
+        min: 7
+        max: 7
+      rationale: "The tally retains the point interval 7 to 7 dKH by qualified-majority, 5 of 6 votes, at low
+        confidence. generator proposed {\"min\":7,\"max\":7}; checker-a proposed {\"min\":3,\"max\":8};
+        checker-b proposed {\"min\":6.47,\"max\":6.47}; checker-c proposed {\"min\":7,\"max\":7}; tiebreaker-1
+        proposed {\"min\":7,\"max\":7}; tiebreaker-2 proposed {\"min\":7,\"max\":7}. The 6.47 dKH proxy of
+        checker-b falls within the 2 dKH agreement threshold, but the leading cluster median remains 7. The
+        same probable Trinidad collecting event is reported by Stalsberg and the Nordic record as kH 7,
+        separately from dH 4. Their locality and conductivity inconsistencies prevent treating the two pages
+        as replicated field measurements. Checker-a's wider 3 to 8 interval was inferred from other chemistry
+        and does not supply an observed native range. The Tumpuna alkalinity proxy and excluded Orinoco
+        comparison in checker-b lack fish confirmation at their stations. This point records provisional field
+        evidence rather than a fixed natural requirement. GH, pH and conductivity are not substitutes for KH;
+        no verification object is attached to this natural non-hard feature."
+    - field: features.temperatureC.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 22
+            max: 30
+        - by: checker-a
+          value:
+            min: 20
+            max: 29
+        - by: checker-b
+          value:
+            min: 22
+            max: 30
+        - by: checker-c
+          value:
+            min: 22
+            max: 28
+        - by: tiebreaker-1
+          value:
+            min: 22
+            max: 30
+        - by: tiebreaker-2
+          value:
+            min: 22
+            max: 30
+      decision:
+        min: 22
+        max: 30
+      rationale: "The tally retains 22 to 30 C by qualified-majority, 4 of 6 votes, at medium confidence. generator
+        proposed {\"min\":22,\"max\":30}; checker-a proposed {\"min\":20,\"max\":29}; checker-b proposed
+        {\"min\":22,\"max\":30}; checker-c proposed {\"min\":22,\"max\":28}; tiebreaker-1 proposed
+        {\"min\":22,\"max\":30}; tiebreaker-2 proposed {\"min\":22,\"max\":30}. Fishkeeping gives 22 to 30 C;
+        Fish Laboratory and Aquatic Community give the same wider interval but are general hobby websites.
+        Seriously Fish and Akvaforum give 22 to 28 C, Fishkeeper 22 to 27 C, FishProfiles 20 to 26 C,
+        Andinoacara.com 22 to 25 C and the Nordic register 26 to 28 C. The selected range contains the decided
+        natural 24 to 30 C interval. The cooler 20 C proposal is not retained; the published 18 to 23 C
+        society care interval does not outweigh the species-linked warm field data. Long-term evidence at 30 C
+        is weaker than in the overlapping central band, so natural exposure and care recommendations are not
+        described as endpoint survival trials."
+    - field: features.ph.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 6.5
+            max: 8
+        - by: checker-a
+          value:
+            min: 6.5
+            max: 8
+        - by: checker-b
+          value:
+            min: 6.5
+            max: 8.5
+        - by: checker-c
+          value:
+            min: 6.5
+            max: 8.08
+        - by: tiebreaker-1
+          value:
+            min: 6.5
+            max: 8.08
+        - by: tiebreaker-2
+          value:
+            min: 6.5
+            max: 8
+      decision:
+        min: 6.5
+        max: 8.1
+      rationale: "The tally retains 6.5 to 8.1 by qualified-majority, 5 of 6 votes, at medium confidence. generator
+        proposed {\"min\":6.5,\"max\":8}; checker-a proposed {\"min\":6.5,\"max\":8}; checker-b proposed
+        {\"min\":6.5,\"max\":8.5}; checker-c proposed {\"min\":6.5,\"max\":8.08}; tiebreaker-1 proposed
+        {\"min\":6.5,\"max\":8.08}; tiebreaker-2 proposed {\"min\":6.5,\"max\":8}. The agreeing proposals
+        mostly end at 8.0, with two at 8.08; the tally extends their rounded interval to contain its natural
+        maximum of 8.1. Seriously Fish, Fishkeeping, FishProfiles and Aquatic Community give 6.5 to 8.0;
+        Fishkeeper ends at 7.8. The Nordic register gives a wider 6.0 to 8.0 source interval, whose lower
+        endpoint is not adopted. Checker-b proposed a wider 6.5 to 8.5 interval solely to include its drainage
+        proxy, not from verified long-term aquarium evidence. The 8.0 to 8.1 extension is containment of the
+        decided natural value, not an independently tested lifetime endpoint."
+    - field: features.ghDgh.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 4
+            max: 25
+        - by: checker-a
+          value:
+            min: 5
+            max: 25
+        - by: checker-b
+          value:
+            min: 5
+            max: 25
+        - by: checker-c
+          value:
+            min: 1
+            max: 25
+        - by: tiebreaker-1
+          value:
+            min: 4
+            max: 25
+        - by: tiebreaker-2
+          value:
+            min: 4
+            max: 25
+      decision:
+        min: 4
+        max: 25
+      rationale: "The tally retains 4 to 25 dGH by qualified-majority, 5 of 6 votes, at medium confidence. generator
+        proposed {\"min\":4,\"max\":25}; checker-a proposed {\"min\":5,\"max\":25}; checker-b proposed
+        {\"min\":5,\"max\":25}; checker-c proposed {\"min\":1,\"max\":25}; tiebreaker-1 proposed
+        {\"min\":4,\"max\":25}; tiebreaker-2 proposed {\"min\":4,\"max\":25}. Seriously Fish and Fishkeeping
+        recommend 5 to 25 dGH; the lower endpoint is extended to contain the decided natural 4 dGH. Fishkeeper
+        states only an upper limit of 25, not zero as a measured lower endpoint. Akvaforum gives the wider 1
+        to 25 dGH source interval, which checker-c adopted; 1 to 4 is not included in the final tolerance.
+        Andinoacara.com instead recommends 1 to 5 dGH and warns about sustained harder conditions, while
+        FishProfiles gives 10 to 20 and the retailer 5 to 15. This conflict and possible mixed trade identity
+        limit the interpretation of the upper bound, particularly for wild Trinidad fish and egg development.
+        The broad captive-stock recommendation is not a replicated multi-year tolerance experiment."
+    - field: features.khDkh.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 3
+            max: 8
+        - by: checker-a
+          value:
+            min: 2
+            max: 15
+        - by: checker-b
+          value:
+            min: 3
+            max: 12
+        - by: checker-c
+          value:
+            min: 3
+            max: 8
+        - by: tiebreaker-1
+          value:
+            min: 3
+            max: 8
+        - by: tiebreaker-2
+          value:
+            min: 3
+            max: 8
+      decision:
+        min: 3
+        max: 8
+      rationale: "The tally retains 3 to 8 dKH by qualified-majority, 4 of 6 votes, at low confidence. generator
+        proposed {\"min\":3,\"max\":8}; checker-a proposed {\"min\":2,\"max\":15}; checker-b proposed
+        {\"min\":3,\"max\":12}; checker-c proposed {\"min\":3,\"max\":8}; tiebreaker-1 proposed
+        {\"min\":3,\"max\":8}; tiebreaker-2 proposed {\"min\":3,\"max\":8}. AquaExperience publishes 2 to 8 in
+        its summary table but 2 to 6 in its prose; Aqua-Pedia publishes the wider 3 to 12 source interval and
+        discloses generated, manually reviewed data. The retailer independently gives 3 to 8, while the
+        general Turkish hobby page gives 2 to 8 but unreliable stocking advice. These conflicting lower-weight
+        accounts support a provisional 3 to 8 interval that contains the decided native 7 dKH, rather than
+        checker-b's wider 3 to 12. Checker-a's 2 to 15 was inferred from GH and pH and is not an explicit
+        Seriously Fish KH recommendation. No major reference retrieved here establishes years of health at the
+        endpoints, and neither habitat containment nor GH can prove a KH tolerance."
+    - field: features.origin
+      proposals:
+        - by: generator
+          value:
+            continent: South America
+            region: Trinidad and Tobago and adjacent Venezuela; Colombian pulcher-like populations require taxonomic
+              caution
+            waterbody: null
+            localities:
+              - "Trinidad: Arima River"
+              - "Trinidad: Aripo River"
+              - "Trinidad: Guanapo River"
+              - "Trinidad: Northern Range streams"
+              - Adjacent Venezuela
+        - by: checker-a
+          value:
+            continent: South America
+            region: Trinidad and Tobago and adjacent northern Venezuela
+            waterbody: null
+            localities:
+              - Trinidad
+              - Tobago
+              - Nariva Swamp
+              - Apure
+        - by: checker-b
+          value:
+            continent: South America
+            region: Trinidad and Tobago and adjacent Venezuela; Caroni drainage is the best verified ecological anchor
+            waterbody: null
+            localities:
+              - Trinidad type locality
+              - "Lower Aripo River, Trinidad"
+              - "Guanapo River drainage, Trinidad"
+        - by: checker-c
+          value:
+            continent: South America
+            region: Trinidad and Tobago and adjacent Venezuela
+            waterbody: null
+            localities:
+              - Trinidad
+              - Tobago
+              - Adjacent Venezuelan drainages
+      decision:
+        continent: South America
+        region: Trinidad and Tobago and adjacent Venezuela; historical Colombian blue-acara records require taxonomic
+          reassessment
+        waterbody: null
+        localities:
+          - Trinidad
+          - "Trinidad: Arima River"
+          - "Trinidad: Lower Aripo River"
+          - "Trinidad: Guanapo River"
+          - "Trinidad: Eastern Highway collection locality"
+          - "Tobago and adjacent Venezuela: Catalog distribution"
+      rationale: "All roles anchor the species to Trinidad and adjacent Venezuela, but differ in the localities and
+        regional wording. The current Catalog determines the accepted distribution, while Trinidad field
+        observations support the listed river localities. Apure and Colombian records are not adopted without
+        reliable identification because the 2009 revision finds multiple mainland lineages and the 2020 study
+        identifies Colombian latifrons populations. The regional statement does not assert that every
+        historical Colombian pulcher record is latifrons."
+    - field: features.maxSizeCm
+      proposals:
+        - by: generator
+          value:
+            male: 16
+            female: 13
+        - by: checker-a
+          value:
+            male: 16
+            female: 13
+        - by: checker-b
+          value:
+            male: 16
+            female: 12
+        - by: checker-c
+          value:
+            male: 15
+            female: 15
+      decision:
+        male: 16
+        female: 15
+      rationale: "Generator and checker-a proposed 16 cm males and 13 cm females; checker-b proposed 16 and 12;
+        checker-c proposed 15 for both sexes. FishProfiles explicitly gives 15 cm for each sex, while the
+        retailer Fishkeeper and the society record give an unsexed 16 cm maximum. Retain 16 for the male
+        planning maximum and 15 for the female rather than lowering females to unsupported 12 or 13 cm
+        estimates. This synthesis concerns typical upper adult aquarium size, not a record: the collector
+        trade account expects about 15 cm, and the 20 cm Akvaforum entry is not adopted. Seriously Fish gives
+        15 cm standard length, which cannot be equated directly to total length. Reliable measured
+        sex-specific maxima remain scarce."
+    - field: features.territory
+      proposals:
+        - by: generator
+          value:
+            size: large
+            breedingOnly: true
+        - by: checker-a
+          value:
+            size: small
+            breedingOnly: true
+        - by: checker-b
+          value:
+            size: large
+            breedingOnly: true
+        - by: checker-c
+          value:
+            size: large
+            breedingOnly: true
+      decision:
+        size: large
+        breedingOnly: true
+      rationale: "Generator, checker-b and checker-c proposed a large breeding territory; checker-a proposed small.
+        Both parents defend a brood and mobile young, and community accounts require extra floor space and
+        retreat routes. Select large as a cautious planning inference for a substantial portion of a 120 cm
+        pair tank. No retrieved source measures the rubric's approximate 50 cm territory extent, so the
+        spatial grade remains low confidence. Strong defence chiefly accompanies reproduction, consistent with
+        breedingOnly true."
+    - field: features.coloration
+      proposals:
+        - by: generator
+          value:
+            baseColors:
+              - blue
+              - green
+              - grey
+              - brown
+            pattern: mixed
+        - by: checker-a
+          value:
+            baseColors:
+              - blue
+              - green
+            pattern: bars
+        - by: checker-b
+          value:
+            baseColors:
+              - blue
+              - green
+              - brown
+              - black
+            pattern: mixed
+        - by: checker-c
+          value:
+            baseColors:
+              - blue
+              - green
+              - grey
+              - black
+            pattern: mixed
+      decision:
+        baseColors:
+          - blue
+          - green
+          - grey
+          - brown
+          - black
+        pattern: mixed
+      rationale: "Generator proposed blue, green, grey and brown with mixed pattern; checker-a blue and green with
+        bars; checker-b blue, green, brown and black with mixed pattern; checker-c blue, green, grey and black
+        with mixed pattern. Combine the subdued grey-to-brown ground, blue-green markings and dark bars or
+        blotches into the listed colours and mixed pattern. Fishkeeping and FishProfiles describe both stripes
+        and spotting, so bars alone is incomplete. This describes ordinary adult stock, not the altered
+        electric-blue captive phenotype, and differences in individual or breeding colour limit exact palette
+        confidence."
+    - field: features.lifespanYears
+      proposals:
+        - by: generator
+          value:
+            min: 7
+            max: 10
+        - by: checker-a
+          value:
+            min: 8
+            max: 10
+        - by: checker-b
+          value:
+            min: 8
+            max: 10
+        - by: checker-c
+          value:
+            min: 8
+            max: 10
+      decision:
+        min: 7
+        max: 10
+      rationale: "Generator proposed 7 to 10 years; all three checkers proposed 8 to 10. Fish Laboratory reports 7
+        to 10 and the retailer 8 to 10, while Akvaforum supports only an upper age around 10. Retain the wider
+        7 to 10 reported care horizon rather than implying a measured 8-year lower limit. These are husbandry
+        expectations with no retrieved longitudinal survival study, so the confidence is low."
+    - field: features.beginnerSuitability
+      proposals:
+        - by: generator
+          value: moderate
+        - by: checker-a
+          value: easy
+        - by: checker-b
+          value: moderate
+        - by: checker-c
+          value: easy
+      decision: moderate
+      rationale: "Generator and checker-b proposed moderate; checker-a and checker-c proposed easy. Seriously Fish
+        contains both a narrative beginner recommendation and a moderate current difficulty rating, while
+        FishProfiles and the Nordic register are beginner-friendly. Select moderate because the recommended
+        adult pair needs a substantial mature tank, reliable water care, careful prey-size selection and
+        management during breeding. This qualification reconciles straightforward feeding and reproduction
+        with meaningful adult stocking demands."
