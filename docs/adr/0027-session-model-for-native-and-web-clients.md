@@ -37,6 +37,9 @@ how the web app and the API share a session without exposing tokens to scripts.
   any realistic pause. Every account holds the `offline_access` role through the realm's default
   role, imported accounts included ([ADR-0022](0022-legacy-account-import-into-keycloak.md)).
 - The access token stays short-lived; the refresh token renews it.
+- Signing out revokes the device's offline session at Keycloak. Every login asks for credentials,
+  because Keycloak's own sign-in in the browser can outlive the sign-out of the app, and the next
+  person on a shared device must not inherit it.
 
 **Refresh outcomes.**
 
@@ -91,7 +94,7 @@ after the next sign-in of the same account.
   - *Pro:* A stolen device or token loses its value quickly.
   - *Con:* Members sign in again every few days or weeks, which works against participation for
     a platform without critical data.
-- **Long regular SSO sessions instead of offline sessions.**
+- **Long regular SSO sessions.**
   - *Pro:* No role is needed on the account.
   - *Con:* The device session depends on the browser SSO session and its limits; offline sessions
     are Keycloak's mechanism for long-lived device sessions and survive the end of the SSO

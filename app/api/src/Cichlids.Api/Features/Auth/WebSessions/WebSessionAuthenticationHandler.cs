@@ -13,7 +13,7 @@ namespace Cichlids.Api.Features.Auth.WebSessions;
 /// must send the session's CSRF token in the X-CSRF-Token header, and its Origin, when present,
 /// must be an allowed web app origin. A challenge answers 403 with the code csrf_rejected for a
 /// failed CSRF check, 503 with the code identity_provider_unavailable when the access token could
-/// not be renewed, and 401 otherwise; a session that no longer exists also clears its cookie.
+/// not be renewed, and 401 otherwise; for a missing or ended session it also clears the cookie.
 /// </summary>
 public sealed class WebSessionAuthenticationHandler(
     IOptionsMonitor<AuthenticationSchemeOptions> options,

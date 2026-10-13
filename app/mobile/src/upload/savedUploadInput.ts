@@ -122,7 +122,7 @@ export const savedUploadInput = {
       return saved?.accountId === accountId ? saved : null;
     });
   },
-  /** Keeps the input typed for an uploaded draft; the draft's photo is no longer pending. */
+  /** Keeps the input typed for an uploaded draft and drops the pending photo, which the draft holds. */
   rememberDraft(accountId: string, draftId: string, form: UploadFormState): Promise<void> {
     return update(accountId, (input) => {
       const drafts = [...input.drafts.filter((entry) => entry.draftId !== draftId), { draftId, form }];

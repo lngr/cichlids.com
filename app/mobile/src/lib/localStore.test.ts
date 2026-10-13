@@ -28,7 +28,7 @@ describe("localStore on native", () => {
     }
   });
 
-  it("removes the chunks a shorter value no longer needs", async () => {
+  it("removes the chunks beyond a shorter value", async () => {
     await localStore.setItem("draft", "x".repeat(2000));
     await localStore.setItem("draft", "short");
 
