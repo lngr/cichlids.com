@@ -1662,7 +1662,7 @@ features:
         agree: 4
         total: 4
   hybridGroups:
-    value: [amphilophus-citrinellus-complex, amphilophus-trimaculatus-midas]
+    value: [amphilophus-citrinellus-complex, amphilophus-trimaculatus-midas, parachromis-dovii-amphilophus-labiatus]
     confidence: high
     rationale: >-
       The red devil is a member of the documented Midas complex through wild introgression with A.
@@ -1670,6 +1670,7 @@ features:
       barriers among Midas cichlids (Kautt et al. 2016). Its cross with A. trimaculatus is one of
       the documented origins of the flowerhorn (Tarkhani et al. 2016, Sari et al. 2023), which makes
       it a member of the group amphilophus-trimaculatus-midas.
+      The curated hybrid-groups.yaml file defines parachromis-dovii-amphilophus-labiatus as a presumed pairwise crossing group based on hobby photographs labelled as captive offspring, without verified parentage or documented access to conspecific mates.
     sources:
       - kind: literature
         title: "Barlow, G. W. and Munsey, J. W. (1976). The red devil-Midas-arrow cichlid species complex in
@@ -1741,6 +1742,10 @@ features:
           COI gene marker. Journal of Tropical Biodiversity and Biotechnology 8(2), 78459
           (abstract and reference list).
         url: https://doi.org/10.22146/jtbb.78459
+        accessed: 2026-10-13
+      - kind: website
+        title: "Binns Hybrid Encyclopedia: Dovii cross examples, an unverified hobby compilation"
+        url: https://www.binnspedia.com/parachromis/dovii-parachromis-dovii
         accessed: 2026-10-13
     evidence:
       - source:
@@ -1821,6 +1826,15 @@ features:
       - source: *hyb29
         value: amphilophus-trimaculatus-midas
         note: "names A. citrinellus, A. labiatus, V. melanurus and A. trimaculatus as the species crossed to make the flowerhorn"
+      - source:
+          kind: website
+          title: "Binns Hybrid Encyclopedia: Dovii cross examples, an unverified hobby compilation"
+          url: https://www.binnspedia.com/parachromis/dovii-parachromis-dovii
+          accessed: 2026-10-13
+        value:
+          - parachromis-dovii-amphilophus-labiatus
+        note: Hobby photographs label captive crosses; parentage and access to conspecific mates are
+          unverified.
     verification:
       method: unanimous
       votes:

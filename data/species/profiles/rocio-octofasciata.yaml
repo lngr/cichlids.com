@@ -910,7 +910,7 @@ features:
         note: with robust large tankmates in spacious tanks
 
   hybridGroups:
-    value: []
+    value: [vieja-melanurus-rocio-octofasciata]
     confidence: medium
     verification:
       method: unanimous
@@ -919,10 +919,19 @@ features:
       No source documents a cross of the Jack Dempsey with another species, and its congeners are
       rare in the trade. The origin of the Electric Blue strain is disputed and not documented as a
       cross, so no group applies.
+      The curated hybrid-groups.yaml file defines vieja-melanurus-rocio-octofasciata as a presumed pairwise crossing group based on unverified hobby photographs of captive offspring labelled with the melanurus or synspilum name, with catalog taxonomy supporting the name rather than the cross.
     sources:
       - *cof
       - *sf
       - *pfk
+      - kind: website
+        title: "Binns Hybrid Encyclopedia: Synspilum cross examples"
+        url: https://www.binnspedia.com/vieja/synspilum
+        accessed: 2026-10-13
+      - kind: catalog-of-fishes
+        title: Eschmeyer's Catalog of Fishes, species of the genus Vieja
+        url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Vieja
+        accessed: 2026-10-13
     evidence:
       - source: *cof
         value: null
@@ -933,6 +942,24 @@ features:
       - source: *pfk
         value: null
         note: origin of the blue strain disputed, possibly hybrid
+      - source:
+          kind: website
+          title: "Binns Hybrid Encyclopedia: Synspilum cross examples"
+          url: https://www.binnspedia.com/vieja/synspilum
+          accessed: 2026-10-13
+        value:
+          - vieja-melanurus-rocio-octofasciata
+        note: Hobby photographs label captive crosses; parentage and access to conspecific mates are
+          unverified.
+      - source:
+          kind: catalog-of-fishes
+          title: Eschmeyer's Catalog of Fishes, species of the genus Vieja
+          url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Vieja
+          accessed: 2026-10-13
+        value:
+          - vieja-melanurus-rocio-octofasciata
+        note: Catalog taxonomy identifies Vieja melanurus and its synspilum name; it does not verify
+          crossing.
 
   coloration:
     value: { baseColors: [ brown, black, blue ], pattern: mixed }

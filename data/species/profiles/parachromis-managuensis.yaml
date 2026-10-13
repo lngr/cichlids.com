@@ -831,7 +831,7 @@ features:
         note: recommends a single fish, not a species tank
 
   hybridGroups:
-    value: []
+    value: [parachromis-dovii-managuensis]
     verification:
       method: unanimous
       votes: {agree: 3, total: 3}
@@ -840,6 +840,7 @@ features:
       No cross of the jaguar cichlid with another catalog species is documented in the literature or
       species databases read; a forum report of a cross with a Texas cichlid gives no group, so no
       group applies.
+      The curated hybrid-groups.yaml file defines parachromis-dovii-managuensis as a presumed pairwise crossing group based on aquarium spawning reports, labelled hobby photographs and a published morphological ancestry hypothesis, without genetic parentage confirmation or demonstrated free conspecific mate choice.
     sources:
       - *cof
       - *fb
@@ -848,6 +849,23 @@ features:
         kind: archive
         title: cichlids.com forum thread 134
         url: https://www.cichlids.com/disc/read.php?1,134
+      - kind: literature
+        title: Growth of two invasive cichlids in a natural thermal water habitat of temperate Central
+          Europe (Lake Heviz, Hungary). Biologia Futura (2024).
+        url: https://doi.org/10.1007/s42977-024-00208-4
+        accessed: 2026-10-13
+      - kind: website
+        title: "Binns Hybrid Encyclopedia: Dovii cross examples, an unverified hobby compilation"
+        url: https://www.binnspedia.com/parachromis/dovii-parachromis-dovii
+        accessed: 2026-10-13
+      - kind: forum
+        title: "AquariaCentral: My Big Dovii and Jaguar, aquarium spawning report (2013)"
+        url: https://www.aquariacentral.com/forums/threads/my-big-dovii-jaguar.272317/
+        accessed: 2026-10-13
+      - kind: forum
+        title: "AquariaCentral: My Big Dovii and Jaguar, captive spawning report from 2013"
+        url: https://www.aquariacentral.com/forums/threads/my-big-dovii-jaguar.272317/page-2
+        accessed: 2026-10-13
     evidence:
       - source: *cof
         value: null
@@ -858,6 +876,42 @@ features:
       - source: *arch134
         value: null
         note: aquarium cross with a Texas cichlid, no species group
+      - source:
+          kind: literature
+          title: Growth of two invasive cichlids in a natural thermal water habitat of temperate Central
+            Europe (Lake Heviz, Hungary). Biologia Futura (2024).
+          url: https://doi.org/10.1007/s42977-024-00208-4
+          accessed: 2026-10-13
+        value:
+          - parachromis-dovii-managuensis
+        note: Morphology suggests dovii ancestry in Hungarian jaguars; genetic parentage is unconfirmed.
+      - source:
+          kind: website
+          title: "Binns Hybrid Encyclopedia: Dovii cross examples, an unverified hobby compilation"
+          url: https://www.binnspedia.com/parachromis/dovii-parachromis-dovii
+          accessed: 2026-10-13
+        value:
+          - parachromis-dovii-managuensis
+        note: Hobby photographs label captive crosses; parentage and access to conspecific mates are
+          unverified.
+      - source:
+          kind: forum
+          title: "AquariaCentral: My Big Dovii and Jaguar, aquarium spawning report (2013)"
+          url: https://www.aquariacentral.com/forums/threads/my-big-dovii-jaguar.272317/
+          accessed: 2026-10-13
+        value:
+          - parachromis-dovii-managuensis
+        note: Captive spawning and developing offspring reported without a female dovii available;
+          parentage is unverified.
+      - source:
+          kind: forum
+          title: "AquariaCentral: My Big Dovii and Jaguar, captive spawning report from 2013"
+          url: https://www.aquariacentral.com/forums/threads/my-big-dovii-jaguar.272317/page-2
+          accessed: 2026-10-13
+        value:
+          - parachromis-dovii-managuensis
+        note: Captive spawning and developing offspring reported without a female dovii available;
+          parentage is unverified.
 
   coloration:
     value: {baseColors: [silver, yellow, black], pattern: spots}

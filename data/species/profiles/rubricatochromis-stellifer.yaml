@@ -1781,7 +1781,7 @@ features:
           accessed: 2026-10-13
         value: false
   hybridGroups:
-    value: []
+    value: [rubricatochromis]
     confidence: medium
     verification:
       method: qualified-majority
@@ -1798,7 +1798,8 @@ features:
       wholesaler Aquarium Glaser reports that part of the fish sold as lifalili descend from crosses
       of several jewel species. Neither names parent species, and a group built on genus membership
       alone is not covered by the hybrid group definition. Look-alike jewel cichlids should still
-      not share a tank with this species (see partners)."
+      not share a tank with this species (see partners).
+      The curated hybrid-groups.yaml file defines rubricatochromis as a presumed genus-wide aquarium crossing group based on general hobby warnings, suspected mixed domestic ancestry and close taxonomic relationship, without verified crosses for every species pair."
     sources:
       - kind: catalog-of-fishes
         title: "Eschmeyer's Catalog of Fishes, species of the genus Rubricatochromis (entries stellifer,
@@ -1830,6 +1831,14 @@ features:
           2022 (Cichliformes, Cichlidae): Taxonomic Revision with Description of Four New Species
           and Revalidation of R. fugax. Fishes 11(9), 531 (abstract)."
         url: https://doi.org/10.3390/fishes11090531
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishProfiles.com: Hemichromis bimaculatus"
+        url: https://fishprofiles.com/profiles/freshwater/Cichlids/Hemichromis_bimaculatus/
+        accessed: 2026-10-13
+      - kind: literature
+        title: Horvath. The stunning cichlid of Lake Turkana. Practical Fishkeeping.
+        url: https://www.practicalfishkeeping.co.uk/features/the-stunning-cichlid-of-lake-turkana/
         accessed: 2026-10-13
     evidence:
       - source:
@@ -1885,6 +1894,24 @@ features:
           accessed: 2026-10-13
         value: null
         note: trade lifalili partly bred from crosses of several jewel species, none named
+      - source:
+          kind: database
+          title: "FishProfiles.com: Hemichromis bimaculatus"
+          url: https://fishprofiles.com/profiles/freshwater/Cichlids/Hemichromis_bimaculatus/
+          accessed: 2026-10-13
+        value:
+          - rubricatochromis
+        note: General red jewel aquarium crossing warning; no verified species pair or free mate choice
+          is described.
+      - source:
+          kind: literature
+          title: Horvath. The stunning cichlid of Lake Turkana. Practical Fishkeeping.
+          url: https://www.practicalfishkeeping.co.uk/features/the-stunning-cichlid-of-lake-turkana/
+          accessed: 2026-10-13
+        value:
+          - rubricatochromis
+        note: General red jewel aquarium crossing warning; no verified species pair or free mate choice
+          is described.
   coloration:
     value:
       baseColors:

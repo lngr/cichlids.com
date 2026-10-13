@@ -1001,7 +1001,7 @@ features:
         value: false
 
   hybridGroups:
-    value: [amphilophus-citrinellus-complex, amphilophus-trimaculatus-midas, vieja-melanurus-midas]
+    value: [amphilophus-citrinellus-complex, amphilophus-trimaculatus-midas, parachromis-dovii-flowerhorn, vieja-melanurus-midas]
     confidence: medium
     verification:
       method: unanimous
@@ -1013,6 +1013,7 @@ features:
       trimaculatus, A. citrinellus and A. labiatus, and vieja-melanurus-midas with V. melanurus and
       A. citrinellus. The line is fertile and has spread on its own in Lake Matano (Herder et al.
       2012).
+      The curated hybrid-groups.yaml file defines parachromis-dovii-flowerhorn as a presumed pairwise crossing group based on hobby photographs labelled as captive offspring, without a verified domestic pedigree or documented access to conspecific mates.
     sources:
       - &tarkhani
         kind: literature
@@ -1045,6 +1046,10 @@ features:
           521-535 (abstract)."
         url: https://doi.org/10.3391/ai.2012.7.4.009
         accessed: 2026-10-13
+      - kind: website
+        title: "Binns Hybrid Encyclopedia: Dovii cross examples, an unverified hobby compilation"
+        url: https://www.binnspedia.com/parachromis/dovii-parachromis-dovii
+        accessed: 2026-10-13
     evidence:
       - source: *tarkhani
         value: amphilophus-trimaculatus-midas
@@ -1071,6 +1076,15 @@ features:
       - source: *hyb30
         value: amphilophus-trimaculatus-midas
         note: "flowerhorn spread on its own around Lake Matano, so the hybrid line reproduces"
+      - source:
+          kind: website
+          title: "Binns Hybrid Encyclopedia: Dovii cross examples, an unverified hobby compilation"
+          url: https://www.binnspedia.com/parachromis/dovii-parachromis-dovii
+          accessed: 2026-10-13
+        value:
+          - parachromis-dovii-flowerhorn
+        note: Hobby photographs label captive crosses; parentage and access to conspecific mates are
+          unverified.
   coloration:
     value:
       baseColors: [red, silver, black]

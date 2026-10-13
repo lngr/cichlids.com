@@ -908,16 +908,30 @@ features:
         note: compatibility depends on tank size
 
   hybridGroups:
-    value: []
+    value: [parachromis-dovii-mesoheros-festae, vieja-melanurus-mesoheros-festae]
     confidence: medium
     verification: {method: unanimous, votes: {agree: 3, total: 3}}
     rationale: >-
       No cross with its congeners or with the look-alike Mayaheros urophthalmus is documented, and
       the congeners are not in the trade, so no group applies.
+      The curated hybrid-groups.yaml file defines parachromis-dovii-mesoheros-festae as a presumed pairwise crossing group based on hobby photographs labelled as captive offspring, without verified parentage or documented access to conspecific mates.
+      The curated hybrid-groups.yaml file defines vieja-melanurus-mesoheros-festae as a presumed pairwise crossing group based on unverified hobby photographs of captive offspring labelled with the melanurus or synspilum name, with catalog taxonomy supporting the name rather than the cross.
     sources:
       - *cof
       - *fishbase
       - *fp
+      - kind: website
+        title: "Binns Hybrid Encyclopedia: Dovii cross examples, an unverified hobby compilation"
+        url: https://www.binnspedia.com/parachromis/dovii-parachromis-dovii
+        accessed: 2026-10-13
+      - kind: website
+        title: "Binns Hybrid Encyclopedia: Synspilum cross examples"
+        url: https://www.binnspedia.com/vieja/synspilum
+        accessed: 2026-10-13
+      - kind: catalog-of-fishes
+        title: Eschmeyer's Catalog of Fishes, species of the genus Vieja
+        url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Vieja
+        accessed: 2026-10-13
     evidence:
       - source: *cof
         value: null
@@ -925,6 +939,33 @@ features:
       - source: *fishbase
         value: null
         note: no hybrids reported
+      - source:
+          kind: website
+          title: "Binns Hybrid Encyclopedia: Dovii cross examples, an unverified hobby compilation"
+          url: https://www.binnspedia.com/parachromis/dovii-parachromis-dovii
+          accessed: 2026-10-13
+        value:
+          - parachromis-dovii-mesoheros-festae
+        note: Hobby photographs label captive crosses; parentage and access to conspecific mates are
+          unverified.
+      - source:
+          kind: website
+          title: "Binns Hybrid Encyclopedia: Synspilum cross examples"
+          url: https://www.binnspedia.com/vieja/synspilum
+          accessed: 2026-10-13
+        value:
+          - vieja-melanurus-mesoheros-festae
+        note: Hobby photographs label captive crosses; parentage and access to conspecific mates are
+          unverified.
+      - source:
+          kind: catalog-of-fishes
+          title: Eschmeyer's Catalog of Fishes, species of the genus Vieja
+          url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Vieja
+          accessed: 2026-10-13
+        value:
+          - vieja-melanurus-mesoheros-festae
+        note: Catalog taxonomy identifies Vieja melanurus and its synspilum name; it does not verify
+          crossing.
 
   coloration:
     value:
@@ -1073,7 +1114,7 @@ partners:
       condition: At least 1000 litres and many visual barriers; both introduced at the same size; separate when a pair spawns.
     - species: Vieja melanurus
       reason: Large, robust Central American cichlid of comparable size that feeds largely on plant matter and competes less for the same food.
-      condition: At least 1000 litres; works better with a single red terror than with a breeding pair.
+      condition: At least 1000 litres; works better with a single red terror than with a breeding pair. Keep separate for breeding because of the presumed hybrid risk.
     - species: Andinoacara rivulatus
       reason: Lives in the same rivers of western Ecuador and is a robust, assertive cichlid that tolerates similar water.
       condition: Only in very large tanks with adult green terrors of 25 cm or more; remove when the red terrors breed.
@@ -1229,7 +1270,8 @@ profile:
     text: >-
       Many keepers maintain red terrors alone or as a single pair. If tankmates are wanted, they
       must be equally large and robust, such as big Central American cichlids like Parachromis
-      managuensis or Vieja melanurus, or large armoured catfish. This only works in tanks of 1000
+      managuensis or Vieja melanurus, or large armoured catfish. Keep Vieja melanurus separate for
+      breeding because of the presumed hybrid risk. This only works in tanks of 1000
       litres or more with plenty of visual barriers, and every tankmate may need to be moved out once
       a pair breeds. Any fish that fits into the mouth will be eaten, which at full size means fish
       of around 15 cm. Avoid Mayaheros urophthalmus and other barred look-alikes, which trigger
