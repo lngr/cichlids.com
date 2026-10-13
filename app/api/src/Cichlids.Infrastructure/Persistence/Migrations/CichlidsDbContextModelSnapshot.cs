@@ -351,7 +351,10 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                     b.HasIndex("ThreadId")
                         .HasDatabaseName("ix_discussion_post_thread_id");
 
-                    b.ToTable("discussion_post", "public");
+                    b.ToTable("discussion_post", "public", t =>
+                        {
+                            t.HasCheckConstraint("ck_discussion_post_author_or_poster_name", "author_profile_id IS NULL OR poster_name IS NULL");
+                        });
                 });
 
             modelBuilder.Entity("Cichlids.Domain.Entities.DiscussionPostMedia", b =>

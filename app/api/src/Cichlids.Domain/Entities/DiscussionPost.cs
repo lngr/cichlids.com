@@ -1,9 +1,9 @@
 namespace Cichlids.Domain.Entities;
 
 /// <summary>
-/// One post within a discussion thread, ordered by <see cref="Sort"/>. A guest post has no
-/// <see cref="AuthorProfileId"/> and keeps only its display name (ADR-0021); every other post is
-/// attributed to a profile and carries no <see cref="PosterName"/> of its own.
+/// One post within a discussion thread, ordered by Sort. A guest post has no AuthorProfileId and
+/// keeps only its display name (ADR-0021); every other post is attributed to a profile and
+/// carries no PosterName of its own. A check constraint in the database rejects a post with both.
 /// </summary>
 public class DiscussionPost
 {

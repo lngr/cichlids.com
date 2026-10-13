@@ -8,7 +8,9 @@ public class DiscussionPostConfiguration : IEntityTypeConfiguration<DiscussionPo
 {
     public void Configure(EntityTypeBuilder<DiscussionPost> builder)
     {
-        builder.ToTable("discussion_post");
+        builder.ToTable("discussion_post", tb => tb.HasCheckConstraint(
+            "ck_discussion_post_author_or_poster_name",
+            "author_profile_id IS NULL OR poster_name IS NULL"));
 
         builder.HasKey(x => x.Id);
 
