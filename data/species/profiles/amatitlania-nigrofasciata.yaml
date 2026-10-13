@@ -938,7 +938,7 @@ features:
 
   hybridGroups:
     value: [amatitlania-nigrofasciata-complex, amatitlania-nigrofasciata-hypsophrys-nicaraguensis,
-      amatitlania-nigrofasciata-thorichthys-meeki]
+      amatitlania-nigrofasciata-thorichthys-meeki, cryptoheros-spilurus-amatitlania-nigrofasciata]
     confidence: low
     rationale: >-
       The convict cichlid is a member of the presumed group of the four Amatitlania species
@@ -950,6 +950,11 @@ features:
       meeki: an aquarist reported that a firemouth female kept without a male of her own species
       spawned with a convict male and raised young, and a 1982 paper describes hybrids of the two
       species, though only its title could be read.
+      The curated data/species/hybrid-groups.yaml file defines
+      cryptoheros-spilurus-amatitlania-nigrofasciata as presumed, based on a specialist article
+      citing older reports of fertile offspring and a forum archive thread repeating a crossing
+      claim, both without known parental origin or partner choice. The historical spilurus label
+      may refer to C. chetumalensis or C. cutteri, leaving the parental identity uncertain.
     sources:
       - *cof
       - &zt1603
@@ -1013,6 +1018,21 @@ features:
         title: "Eschmeyer's Catalog of Fishes, species of the genus Thorichthys"
         url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Thorichthys
         accessed: 2026-10-13
+      - &hyb36
+        kind: literature
+        title: "Nederlandse Vereniging van Cichlidenliefhebbers: Cryptoheros spilurus (Gunther 1862), species article"
+        url: https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/cryptoheros-spilurus-g%C3%BCnther-1862
+        accessed: 2026-10-13
+      - &hyb37
+        kind: archive
+        title: cichlids.com forum thread 802
+        url: https://www.cichlids.com/disc/read.php?1,802
+        accessed: 2026-10-13
+      - &hyb38
+        kind: forum
+        title: "MonsterFishKeepers: Blue Eyed Cichlid (2012), species-specific crossing warning."
+        url: https://www.monsterfishkeepers.com/forums/threads/blue-eyed-cichlid.471669/
+        accessed: 2026-10-13
     evidence:
       - source: *cof
         value: amatitlania-nigrofasciata-complex
@@ -1050,6 +1070,15 @@ features:
       - source: *hyb35
         value: amatitlania-nigrofasciata-thorichthys-meeki
         note: "lists Cichlasoma meeki as a former combination of Thorichthys meeki; states nothing about crosses"
+      - source: *hyb36
+        value: [cryptoheros-spilurus-amatitlania-nigrofasciata]
+        note: Reports literature accounts of fertile convict offspring under historical names, without parental origin or mating circumstances.
+      - source: *hyb37
+        value: [cryptoheros-spilurus-amatitlania-nigrofasciata]
+        note: Repeats a crossing claim under the historical spilurum label, without verified parentage or partner choice.
+      - source: *hyb38
+        value: [cryptoheros-spilurus-amatitlania-nigrofasciata]
+        note: Keeper warning about crossing with convicts, without a described or verified spawning event.
     verification:
       method: conservative
       votes: {agree: 3, total: 5}
