@@ -1,0 +1,1396 @@
+schemaVersion: 1
+id: otopharynx-lithobates
+legacyIds:
+  - 426
+status: described
+taxonomy:
+  validName: Otopharynx lithobates
+  genus: Otopharynx
+  species: lithobates
+  author: Oliver, 1989
+  source: &cof
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes, species of Otopharynx (entries lithobates and walteri)"
+    url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Otopharynx
+    accessed: 2026-10-13
+  synonyms:
+    - name: Otopharynx walteri Konings, 1990
+      note: >-
+        Described from Nakantenga Island in the Maleri Islands. Cleaver et al. (2009) placed it in
+        the synonymy of O. lithobates because its measurements and counts lie entirely within the
+        range of O. lithobates; the Catalog of Fishes follows them and notes that Konings (2016)
+        treats the Maleri population as a subspecies.
+  legacyNames:
+    - Otopharynx lithobates
+  note: >-
+    Valid as Otopharynx lithobates Oliver 1989 in the Catalog of Fishes; described by Oliver in
+    Eccles and Trewavas (1989) from Thumbi Island West. The trade names "red top Aristochromis" and
+    "Aristochromis lombardoi" are misleading: the species is only distantly related to Aristochromis
+    christyi. Ribbink et al. (1983) called it "Cyrtocara red dorsal". These are informal names, not
+    nomenclatural synonyms.
+names:
+  trade:
+    en:
+      - Sulphur-headed Hap
+      - Red Top Aristochromis
+      - Lithobates
+      - Zimbabwe Rock Lithobates (Z-Rock)
+      - Aristochromis lombardoi (misapplied trade name)
+variants:
+  - name: Zimbawe Rock
+    kind: locality
+    note: Sulphur-yellow blaze on head and dorsal fin; the most sought-after form, usually traded as
+      'Zimbabwe Rock' or 'Z-Rock'.
+  - name: Domwe Island
+    kind: locality
+    note: Males with an orange-red dorsal fin and blaze.
+  - name: Mumbo Island
+    kind: locality
+    note: Males with a white dorsal fin and blaze.
+  - name: Maleri Islands (Nakantenga)
+    kind: locality
+    note: White-blazed population described as Otopharynx walteri, a synonym.
+  - name: Thumbi West Island
+    kind: locality
+    note: Type locality.
+  - name: Chinyamwezi Island
+    kind: locality
+    note: Males with white and yellow in the dorsal fin and a faint blaze.
+features:
+  origin:
+    value:
+      continent: Africa
+      region: Lake Malawi
+      waterbody: Lake Malawi
+      localities:
+        - Thumbi West Island
+        - Thumbi East Island
+        - Mumbo Island
+        - Domwe Island
+        - Zimbawe Rock
+        - Maleri Islands (Nakantenga Island)
+        - Chinyamwezi Island
+        - Chinyankwazi Island
+        - Monkey Bay
+    confidence: high
+    rationale: >-
+      Endemic to the south of Lake Malawi. Cleaver et al. (2009) examined populations from
+      Chinyamwezi, Domwe, Mumbo, Thumbi West, Zimbawe Rock and Nakantenga (Maleri Islands) and give
+      the islands around the Nankumba Peninsula plus Chinyankwazi and Chinyamwezi as the range.
+      The describer adds Monkey Bay from his own collections and reports, after Konings, that all
+      populations lie within Lake Malawi National Park. The Catalog of Fishes, FishBase and Seriously
+      Fish agree on Lake Malawi and the southern part of the lake.
+    sources:
+      - *cof
+      - &cleaver
+        kind: literature
+        title: >-
+          Cleaver, R. M., Konings, A. F. and Stauffer, J. R. Jr. (2009). Two new cave-dwelling
+          cichlids of Lake Malawi, Africa. Ichthyological Exploration of Freshwaters 20(2),
+          163-178.
+        url: https://ecosystems.psu.edu/research/labs/stauffer/publications/2000s/cleaver_etal_2009.pdf
+        accessed: 2026-10-13
+      - &fishbase
+        kind: database
+        title: "FishBase species summary: Otopharynx lithobates"
+        url: https://www.fishbase.se/summary/Otopharynx-lithobates.html
+        accessed: 2026-10-13
+      - &sf
+        kind: database
+        title: "Seriously Fish: Otopharynx lithobates (Sulphur-headed Hap)"
+        url: https://www.seriouslyfish.com/species/otopharynx-lithobates/
+        accessed: 2026-10-13
+      - &oliver
+        kind: website
+        title: >-
+          Oliver, M. K.: Otopharynx lithobates Oliver, 1989. Species page on malawicichlids.com,
+          the describer's website, with data from his 1984 dissertation (last update 2009)
+        url: https://www.malawicichlids.com/mw08076.htm
+        accessed: 2026-10-13
+    evidence:
+      - source: *cof
+        value: {continent: Africa, region: Lake Malawi, waterbody: Lake Malawi, localities: [Thumbi West Island]}
+        note: type locality; distribution Lake Malawi
+      - source: *cleaver
+        value: {continent: Africa, region: Lake Malawi, waterbody: Lake Malawi, localities: [Chinyamwezi Island, Domwe Island, Mumbo Island, Thumbi West Island, Zimbawe Rock, Maleri Islands (Nakantenga Island), Chinyankwazi Island]}
+        note: populations examined and range map
+      - source: *fishbase
+        value: {continent: Africa, region: Lake Malawi, waterbody: Lake Malawi}
+        note: southern part of the lake
+      - source: *sf
+        value: {continent: Africa, region: Lake Malawi, waterbody: Lake Malawi, localities: [Domwe Island, Monkey Bay, Thumbi West Island, Thumbi East Island, Mumbo Island, Chinyamwezi Island, Zimbawe Rock]}
+
+  temperatureC:
+    value: {min: 21, max: 29}
+    confidence: high
+    rationale: >-
+      Lake Malawi endemic, so the natural range is the measured lake range: about 21 C in inshore
+      water during the cool, windy season and 27 C in the upper 60 m by May (Eccles 1974), 23.5 to
+      24 C in the winter surface layer and about 28 C in summer surface water (Vollmer et al. 2005),
+      and 24 to 29 C in a 2013 campaign (Ngochera 2018). The species lives in the littoral from just
+      below the surface to at least 20 m, inside this water.
+    sources: &lakesources
+      - &branchu
+        kind: literature
+        title: >-
+          Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E.
+          et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian
+          Northern Basin: local versus global considerations. Hydrology and Earth System Sciences
+          Discussions 7, 4371-4409.
+        url: https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf
+        accessed: 2026-10-12
+      - &fao
+        kind: literature
+        title: >-
+          Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery
+          resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical
+          and chemical data after Jackson et al. (1963) and Talling and Talling (1965).
+        url: https://www.fao.org/4/t0473e/T0473E05.htm
+        accessed: 2026-10-12
+      - &eccles
+        kind: literature
+        title: >-
+          Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa).
+          Limnology and Oceanography 19(5), 730-742 (abstract).
+        url: https://doi.org/10.4319/lo.1974.19.5.0730
+        accessed: 2026-10-12
+      - &vollmer05
+        kind: literature
+        title: >-
+          Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M.,
+          Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East
+          Africa. Limnology and Oceanography 50(2), 727-732.
+        url: https://www.dora.lib4ri.ch/empa/dload/empa:1253/PDF/view
+        accessed: 2026-10-12
+      - kind: literature
+        title: >-
+          Vollmer, M. K., Weiss, R. F. and Bootsma, H. A. (1999). Lake Malawi/Nyasa deep water
+          renewal. In: Bootsma, H. A. and Hecky, R. E. (eds.), Water Quality Report, SADC/GEF Lake
+          Malawi/Nyasa Biodiversity Conservation Project, chapter 4.
+        url: https://sites.uwm.edu/hbootsma/files/2020/11/Ch4-Lake-Internal-Mixing.pdf
+        accessed: 2026-10-12
+      - &ngochera
+        kind: literature
+        title: >-
+          Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. PhD dissertation, University of
+          Wisconsin-Milwaukee.
+        url: https://minds.wisconsin.edu/handle/1793/91765
+        accessed: 2026-10-12
+    evidence:
+      - source: *eccles
+        value: {min: 21, max: 27}
+        note: inshore minimum in the cool season, upper 60 m by May
+      - source: *vollmer05
+        value: {min: 23.5, max: 28}
+        note: winter surface layer to summer surface water
+      - source: *ngochera
+        value: {min: 24, max: 29}
+        note: 2013 campaign
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value: {min: 21, max: 29}
+      confidence: medium
+      rationale: >-
+        Care sheets give 24 to 28 C (Seriously Fish), 23 to 28 C (Fishipedia), 24 to 27 C (FishBase
+        after Baensch and Riehl, and FishProfiles), 24 to 26 C (Fishkeeper) and 23 to 27 C (OATA sheet
+        for Malawi cichlids as a group). All lie inside the lake range, and the tolerance has to
+        contain the natural range, so it spans 21 to 29 C. The lower end rests on the lake, where the
+        species lives through the cool season; a steady 24 to 27 C is the usual aquarium target.
+        Decided unanimously by the vote count (3 of 3).
+      sources:
+        - *sf
+        - *fishbase
+        - &oata
+          kind: database
+          title: "OATA care sheet: How to look after African Malawi cichlids (care sheet for the group)"
+          url: https://ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-freshwater-fish/how-to-look-after-african-malawi-cichlids/
+          accessed: 2026-10-13
+        - &oatapdf
+          kind: database
+          title: "OATA care sheet: How to care for African Malawi cichlids (2022, PDF)"
+          url: https://ornamentalfish.org/wp-content/uploads/African-Malawi-cichlids-Sept-2022.pdf
+          accessed: 2026-10-13
+        - &fishipedia
+          kind: database
+          title: "Fishipedia: Otopharynx lithobates (species sheet)"
+          url: https://www.fishipedia.fr/fr/poissons/otopharynx-lithobates
+          accessed: 2026-10-13
+        - &fishprofiles
+          kind: database
+          title: "FishProfiles.com: Otopharynx lithobates"
+          url: https://fishprofiles.com/profiles/freshwater/Cichlids/Otopharynx_lithobates
+          accessed: 2026-10-13
+        - &fk
+          kind: website
+          title: >-
+            Fishkeeper (Maidenhead Aquatics retail site): Red-top Aristochromis, Otopharynx
+            lithobates, species profile
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-top-aristochromis
+          accessed: 2026-10-13
+      evidence:
+        - source: *sf
+          value: {min: 24, max: 28}
+          note: aquarium recommendation
+        - source: *fishipedia
+          value: {min: 23, max: 28}
+          note: aquarium recommendation
+        - source: *fishbase
+          value: {min: 24, max: 27}
+          note: aquarium value after Baensch and Riehl
+        - source: *fishprofiles
+          value: {min: 24, max: 27}
+          note: aquarium recommendation
+        - source: *oata
+          value: {min: 23, max: 27}
+          note: Malawi cichlids as a group, not species-specific
+        - source: *oatapdf
+          value: {min: 23, max: 27}
+          note: Malawi cichlids as a group, not species-specific
+        - source: *fk
+          value: {min: 24, max: 26}
+          note: aquarium recommendation
+      verification:
+        method: unanimous
+        votes: {agree: 3, total: 3}
+
+  ph:
+    value: {min: 7.7, max: 8.6}
+    confidence: high
+    rationale: >-
+      Lake Malawi endemic; the surface water of the lake has a pH of 7.7 to 8.6 (Jackson et al.
+      1963 in the FAO source book). Branchu et al. (2010) measured 7.5 to 8.5 over the whole water
+      column, the lower values belonging to deep water the species does not use.
+    sources: *lakesources
+    evidence:
+      - source: *fao
+        value: {min: 7.7, max: 8.6}
+        note: lake surface water
+      - source: *branchu
+        value: {min: 7.5, max: 8.5}
+        note: whole water column, lower values in deep water
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value: {min: 7.5, max: 8.8}
+      confidence: medium
+      rationale: >-
+        Seriously Fish gives 7.6 to 8.8 and 8.2 to 8.5 for breeding, Fishkeeper 7.5 to 8.5 and the
+        OATA sheet for Malawi cichlids 8.0 to 8.6; Aquarium Glaser warns against a pH below 8 for long
+        periods. Fishipedia's aquarium value of 7.2 to 8.0 contradicts its own habitat value of 7.5
+        to 8.5 and is not followed. The consistent care sheets together span 7.5 to 8.8, which
+        contains the lake range. Decided unanimously by the vote count (3 of 3 within 0.3 pH; median
+        of the agreeing bounds).
+      sources:
+        - *sf
+        - *oata
+        - *oatapdf
+        - *fishipedia
+        - *fk
+        - &glaser
+          kind: website
+          title: "Aquarium Glaser (wholesaler): Otopharynx lithobates (Frank Schaefer, 2017)"
+          url: https://www.aquariumglaser.de/en/tag/lithobates-en/
+          accessed: 2026-10-13
+      evidence:
+        - source: *sf
+          value: {min: 7.6, max: 8.8}
+          note: aquarium recommendation, 8.2 to 8.5 for breeding
+        - source: *oata
+          value: {min: 8.0, max: 8.6}
+          note: Malawi cichlids as a group, not species-specific
+        - source: *oatapdf
+          value: {min: 8.0, max: 8.6}
+          note: Malawi cichlids as a group, not species-specific
+        - source: *fishipedia
+          value: {min: 7.2, max: 8.0}
+          note: aquarium value; the same sheet gives 7.5 to 8.5 for the habitat
+        - source: *fk
+          value: {min: 7.5, max: 8.5}
+          note: aquarium recommendation
+      verification:
+        method: unanimous
+        votes: {agree: 3, total: 3}
+
+  ghDgh:
+    value: {min: 3, max: 5}
+    confidence: high
+    rationale: >-
+      Lake Malawi endemic; the calcium and magnesium of the lake correspond to 3.2 to 4.9 dGH in the
+      1960s titrations (Jackson et al. 1963, Talling and Talling 1965) and 4.2 to 4.6 dGH in the
+      upper 50 m of the north basin (Branchu et al. 2010). Care sheets that call the lake water
+      hard confuse hardness with alkalinity.
+    sources: *lakesources
+    evidence:
+      - source: *fao
+        value: {min: 3.2, max: 4.9}
+        note: calculated from lake calcium and magnesium
+      - source: *branchu
+        value: {min: 4.2, max: 4.6}
+        note: north basin, upper 50 m
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value: {min: 3, max: 25}
+      confidence: medium
+      rationale: >-
+        Care sheets ask for harder water than the lake: Seriously Fish 10 to 25 dGH, Fishkeeper up
+        to 25, Guidarium 10 to 25, FishProfiles 9 to 15, Fishipedia 8 to 15 and the OATA group sheet
+        12 to 18 dGH, while Seachem recommends 4 to 8 dGH for Malawi tanks. Their lower limits of 8
+        to 12 dGH follow the hobby habit of hardening Malawi water; the fish lives permanently in the
+        lake at 3 to 5 dGH, so the tolerance starts at the natural minimum. The upper bound is the
+        25 dGH that two care sheets accept, as long as carbonate hardness keeps the pH alkaline.
+        Decided by qualified majority: four votes (generator, checker-a, tiebreaker-1,
+        tiebreaker-2) proposed 3 to 25 dGH and checker-b proposed 3 to 20 dGH.
+      sources:
+        - *sf
+        - *oata
+        - *oatapdf
+        - *fishipedia
+        - *fishprofiles
+        - *branchu
+        - *fao
+        - *fk
+        - &guidarium
+          kind: website
+          title: "Guidarium: Sulphur Crest Lithobates (Otopharynx lithobates)"
+          url: https://guidarium.com/fishes/sulphur-crest-lithobates
+          accessed: 2026-10-13
+        - &seachem
+          kind: website
+          title: "Seachem Laboratories: Cichlid Lake Salt (product page with recommended GH per lake)"
+          url: https://www.seachem.com/cichlid-lake-salt.php
+          accessed: 2026-10-13
+      evidence:
+        - source: *sf
+          value: {min: 10, max: 25}
+          note: aquarium recommendation, unit given as degrees of hardness
+        - source: *oata
+          value: {min: 12, max: 18}
+          note: Malawi cichlids as a group, not species-specific
+        - source: *oatapdf
+          value: {min: 12, max: 18}
+          note: Malawi cichlids as a group, not species-specific
+        - source: *fishipedia
+          value: {min: 8, max: 15}
+          note: aquarium recommendation
+        - source: *fishprofiles
+          value: {min: 9, max: 15}
+          note: aquarium recommendation
+        - source: *branchu
+          value: {min: 4.2, max: 4.6}
+          note: lake water in which the species lives permanently
+        - source: *fao
+          value: {min: 3.2, max: 4.9}
+          note: lake water in which the species lives permanently
+        - source: *fk
+          value: {max: 25}
+          note: upper limit only
+        - source: *guidarium
+          value: {min: 10, max: 25}
+          note: aquarium recommendation
+        - source: *seachem
+          value: {min: 4, max: 8}
+          note: manufacturer recommendation for Malawi tanks
+      verification:
+        method: qualified-majority
+        votes: {agree: 4, total: 5}
+
+  khDkh:
+    value: {min: 5, max: 8}
+    confidence: high
+    rationale: >-
+      Lake Malawi endemic; the alkalinity of 2.33 to 2.46 meq/L in the north basin profiles
+      (Branchu et al. 2010) and 2.00 to 2.59 meq/L after Jackson et al. (1963) corresponds to 5.6 to
+      7.3 dKH. Sodium balances part of the bicarbonate, so carbonate hardness exceeds total
+      hardness in this lake.
+    sources: *lakesources
+    evidence:
+      - source: *branchu
+        value: {min: 6.5, max: 6.9}
+        note: converted from alkalinity, north basin
+      - source: *fao
+        value: {min: 5.6, max: 7.3}
+        note: converted from alkalinity after Jackson et al. (1963)
+    tolerance:
+      value: {min: 5, max: 15}
+      confidence: low
+      rationale: >-
+        No species-specific source states a carbonate hardness. The OATA sheet for Malawi cichlids as
+        a group recommends 10 to 15 dKH; the lower bound is the lake minimum of 5 dKH, at which the
+        species lives. In the aquarium a buffer in the upper part of the range keeps the pH from
+        falling between water changes. The upper value rests on a group recommendation only, hence
+        the low confidence. Decided unanimously by the vote count (3 of 3 within 2 dKH).
+      sources:
+        - *oata
+        - *oatapdf
+        - *branchu
+        - *fao
+      evidence:
+        - source: *oata
+          value: {min: 10, max: 15}
+          note: Malawi cichlids as a group, not species-specific
+        - source: *oatapdf
+          value: {min: 10, max: 15}
+          note: Malawi cichlids as a group, not species-specific
+        - source: *branchu
+          value: {min: 6.5, max: 6.9}
+          note: lake water in which the species lives permanently
+        - source: *fao
+          value: {min: 5.6, max: 7.3}
+          note: lake water in which the species lives permanently
+      verification:
+        method: unanimous
+        votes: {agree: 3, total: 3}
+
+  maxSizeCm:
+    value: {male: 16, female: 10}
+    confidence: medium
+    rationale: >-
+      FishBase gives 16 cm total length for males and 10 cm for females. Seriously Fish,
+      Fishipedia, FishProfiles and Fishkeeper also name 16 cm, Fishipedia for dominant males with
+      about 10 cm as the average size, and Practical Fishkeeping gives 15 cm with smaller females.
+      Wild fish are smaller: the largest of 99 specimens measured by Cleaver et al. (2009) had 10.7 cm
+      standard length, roughly 13.5 cm total length. Well-grown aquarium males reach the 16 cm that
+      most sources state; females stay near 10 cm.
+    sources:
+      - *fishbase
+      - *sf
+      - *fishipedia
+      - *fishprofiles
+      - &pfk
+        kind: literature
+        title: "Clarke, M.: Otopharynx lithobates Tanzania. Practical Fishkeeping (magazine feature)"
+        url: https://www.practicalfishkeeping.co.uk/features/otopharynx-lithobates-tanzania/
+        accessed: 2026-10-13
+      - *cleaver
+      - *fk
+    evidence:
+      - source: *fishbase
+        value: {male: 16, female: 10}
+        note: total length
+      - source: *sf
+        value: {male: 16}
+        note: given as standard length, sex not stated
+      - source: *fishipedia
+        value: {male: 16}
+        note: dominant males; average size about 10 cm
+      - source: *fishprofiles
+        value: {male: 16, female: 16}
+        note: same size given for both sexes
+      - source: *pfk
+        value: {male: 15}
+        note: females slightly smaller
+      - source: *cleaver
+        value: {male: 13.5}
+        note: largest wild specimen 10.7 cm SL, converted roughly to total length; sex not stated
+      - source: *fk
+        value: {male: 16}
+        note: sex not stated
+
+  predation:
+    value: 1
+    confidence: medium
+    rationale: >-
+      Decided unanimously by the vote count (3 of 3). In the lake the species does not hunt fish:
+      the describer found stomachs filled almost entirely with planktonic crustaceans, and Cleaver
+      et al. (2009) and FishBase describe a picker of particles and droppings on the rock surface,
+      which Cleaver et al. contrast explicitly with the piscivorous cave dweller Stigmatochromis
+      modestus. Konings, as reported by the describer, saw the Maleri population stalk small mbuna,
+      and Seriously Fish warns that small fish are eaten in the aquarium. Fry and fish up to about
+      2 cm are therefore at risk when the chance arises, while larger fish are not hunted: level 1.
+    sources:
+      - *cleaver
+      - *fishbase
+      - *sf
+      - *oliver
+      - *fk
+      - *guidarium
+    evidence:
+      - source: *cleaver
+        value: 0
+        note: feeds on morsels and droppings, unlike the fish-eating Stigmatochromis modestus
+      - source: *fishbase
+        value: 0
+        note: droppings and edible morsels from the substrate; no fish named in the biology
+      - source: *sf
+        value: 1
+        note: small fish are eaten in the aquarium
+      - source: *oliver
+        value: 1
+        note: reports Konings' observation of the Maleri population stalking small mbuna; own stomach data show plankton
+      - source: *fk
+        value: 0
+        note: peaceful community fish; no mention of eating fish
+      - source: *guidarium
+        value: 1
+        note: flagged as fry predator
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+
+  diet:
+    value:
+      type: invertivore
+      bloatSensitive: false
+      foods:
+        - zooplankton (copepods, cladocerans)
+        - particles, detritus and fish droppings picked from rock
+        - small invertebrates
+        - flake and small pellets
+        - frozen brine shrimp, mysis, krill and mosquito larvae
+    confidence: low
+    rationale: >-
+      The five votes split 3 to 2: the generator, checker-b and tiebreaker-1 proposed omnivore,
+      checker-a and tiebreaker-2 proposed invertivore, all with bloatSensitive false. With no
+      qualified majority, the conservative rule of the vote count applies and takes the stricter
+      of the proposed types, which is invertivore; hence the low confidence. The field data support
+      both readings. After Oliver (1984, on the describer's website) the stomachs of wild fish held
+      almost only whole planktonic crustaceans, mainly diaptomid copepods with the cladoceran
+      Diaphanosoma, and the fish picked single plankters from the water. Konings (1990, via FishBase),
+      Cleaver et al. (2009) and FishBase describe it as a scavenger of morsels, detritus and
+      droppings of mainly herbivorous fish and of the cave catfish Bagrus meridionalis, picked from
+      the rock surface; Practical Fishkeeping calls it a detritus feeder and the FishBase food items
+      list detritus, small benthic invertebrates and fish. The Cichlid Room Companion summary
+      (detritivorous and planktivorous) confirms both components. In the aquarium it takes flake
+      and small pellets as well as the live and frozen animal food that Seriously Fish recommends
+      as the bulk of the diet. No source links the species to bloat, so it is not marked
+      bloat-sensitive.
+    sources:
+      - *oliver
+      - *cleaver
+      - *fishbase
+      - &fbfood
+        kind: database
+        title: "FishBase food items: Otopharynx lithobates"
+        url: https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=2401&genus=Otopharynx&species=lithobates
+        accessed: 2026-10-13
+      - *pfk
+      - *sf
+      - *fishipedia
+      - *fishprofiles
+      - &crc
+        kind: database
+        title: "Cichlid Room Companion: Otopharynx lithobates, public summary (verification only)"
+        url: https://cichlidae.com/species.php?id=uiYH-ApXpzK7H4RkbSXASA
+        accessed: 2026-10-13
+      - *fk
+      - *glaser
+    evidence:
+      - source: *oliver
+        value: {type: invertivore}
+        note: stomachs of wild fish almost entirely planktonic crustaceans, copepods dominant
+      - source: *cleaver
+        value: {type: omnivore}
+        note: scavenges morsels and droppings of other fish from rock
+      - source: *fishbase
+        value: {type: omnivore}
+        note: droppings of mainly herbivorous fish, substrate morsels and catfish waste
+      - source: *fbfood
+        value: {type: omnivore}
+        note: detritus, small benthic invertebrates and fish listed
+      - source: *pfk
+        value: {type: omnivore}
+        note: substrate feeder living mainly on detritus including cichlid faeces
+      - source: *sf
+        value: {type: invertivore, bloatSensitive: false}
+        note: aquarium advice, live and frozen food as the bulk; no bloat warning
+      - source: *fishipedia
+        value: {type: omnivore}
+        note: omnivore with a carnivorous tendency
+      - source: *fishprofiles
+        value: {type: omnivore}
+      - source: *fk
+        value: {type: omnivore}
+        note: aquarium advice, meaty frozen food plus flake and pellets
+      - source: *glaser
+        value: {type: invertivore}
+        note: plankton feeder in the wild
+    verification:
+      method: conservative
+      votes: {agree: 3, total: 5}
+
+  aggressionConspecific:
+    value: 2
+    confidence: medium
+    rationale: >-
+      Males court females vigorously and one dominant male suppresses the others, which is why
+      Seriously Fish, Fishipedia and Fishkeeper recommend one male with several females; several
+      males work only in large tanks with visual barriers. Fishipedia reports that rival dominant
+      males do not tolerate each other, and a user-submitted FishProfiles entry reports females
+      killed by hard-driving males, but most sources describe a relatively peaceful species that
+      lives in a harem without lasting damage. With enough space, cover and the recommended ratio
+      injuries are rare: level 2.
+    sources:
+      - *sf
+      - *fishipedia
+      - *fishprofiles
+      - *fk
+      - *glaser
+    evidence:
+      - source: *sf
+        value: 2
+        note: one male dominates; vigorous pursuit of females, harem advised
+      - source: *fishipedia
+        value: 3
+        note: rival dominant males do not tolerate each other
+      - source: *fishprofiles
+        value: 4
+        note: user-submitted report of females killed during breeding
+      - source: *fk
+        value: 2
+        note: several males possible in large tanks with enough hiding places
+
+  aggressionHeterospecific:
+    value: 1
+    confidence: medium
+    rationale: >-
+      The describer calls it relatively nonbelligerent, Seriously Fish and Fishkeeper relatively
+      peaceful, Fishipedia of low aggression and Practical Fishkeeping not particularly aggressive.
+      Seriously Fish even combines it with hard-water rainbowfish. Aggression towards other species
+      rises only around spawning, when a male guards his cave or spawning stone; keepers in the
+      archive report the same. It is the weaker party next to boisterous mbuna. Level 1 fits; the
+      breeding territory is covered by the territory feature.
+    sources:
+      - *sf
+      - *fishipedia
+      - *pfk
+      - *fishprofiles
+      - *oliver
+      - *fk
+      - &thread13953
+        kind: archive
+        title: cichlids.com forum thread 13953
+        url: https://www.cichlids.com/disc/read.php?2,13953
+        accessed: 2026-10-13
+    evidence:
+      - source: *sf
+        value: 1
+        note: relatively peaceful; territorial when spawning
+      - source: *fishipedia
+        value: 1
+        note: low aggression
+      - source: *pfk
+        value: 1
+        note: not particularly aggressive, suits tanks with peaceful mbuna
+      - source: *fishprofiles
+        value: 2
+        note: labelled aggressive, though milder than most rift lake cichlids
+      - source: *oliver
+        value: 1
+        note: relatively nonbelligerent
+      - source: *fk
+        value: 1
+        note: relatively peaceful, more aggressive before spawning
+      - source: *thread13953
+        value: 1
+        note: gets along with tankmates except at spawning time
+
+  territory:
+    value:
+      size: small
+      breedingOnly: true
+    confidence: medium
+    rationale: >-
+      Spawning takes place in caves in the wild (Kasembe 2006, quoted by the US Fish and Wildlife
+      Service) and on a flat stone in a sheltered spot in the aquarium. A male claims this cave or
+      stone when breeding and is otherwise sociable (Seriously Fish, Fishkeeper, Aquarium Glaser);
+      the defended area is a single cave or stone.
+    sources:
+      - *sf
+      - &fws
+        kind: literature
+        title: >-
+          U.S. Fish and Wildlife Service (2018, web version 2020). Otopharynx lithobates, Ecological
+          Risk Screening Summary (quotes Kasembe 2006, IUCN, and FishBase after Konings 1990)
+        url: https://www.fws.gov/sites/default/files/documents/Ecological-Risk-Screening-Summary-Otopharynx-lithobates-cichlid.pdf
+        accessed: 2026-10-13
+      - *fk
+      - *glaser
+    evidence:
+      - source: *sf
+        value: {size: small, breedingOnly: true}
+        note: territorial when spawning, flat rock as spawning site
+      - source: *fws
+        value: {size: small, breedingOnly: true}
+        note: spawning inside caves
+      - source: *glaser
+        value: {size: small, breedingOnly: true}
+        note: courting males occupy caves
+
+  habitatZones:
+    value: [rock, sand]
+    confidence: medium
+    rationale: >-
+      A rock dweller of caves and crevices from just below the surface to at least 20 m (Cleaver et
+      al. 2009, the describer, Seriously Fish, FishBase); it is hardly ever seen in open water.
+      Fishkeeper names rocky and intermediate shores, and the care sheets ask for rock piles with
+      caves over a sandy bottom.
+    sources:
+      - *cleaver
+      - *sf
+      - *fishbase
+      - *crc
+      - *oliver
+      - *fk
+    evidence:
+      - source: *cleaver
+        value: [rock]
+        note: caves as primary shelter and foraging site
+      - source: *sf
+        value: [rock, sand]
+        note: caves and crevices in the wild; rock piles over sand in the tank
+      - source: *fishbase
+        value: [rock]
+        note: inhabits caves in rocky habitats
+      - source: *crc
+        value: [rock]
+        note: rocky habitats; verification only
+      - source: *fk
+        value: [rock, sand]
+        note: rocky and intermediate habitats
+
+  social:
+    value:
+      structure: harem
+      ratio: 3
+    confidence: high
+    rationale: >-
+      All husbandry sources recommend one male with several females: at least three (Seriously
+      Fish), about three (Fishipedia), two or three (the describer), three or four (Gensou) and
+      several (Fishkeeper). Larger tanks can hold more than one male, each with his own females.
+    sources:
+      - *sf
+      - *fishipedia
+      - *oliver
+      - *fk
+      - &gensou
+        kind: website
+        title: "Gensou (aquarium shop): Otopharynx lithobates care guide"
+        url: https://gensou.sg/otopharynx-lithobates-care-guide/
+        accessed: 2026-10-13
+    evidence:
+      - source: *sf
+        value: {structure: harem, ratio: 3}
+        note: at least three females per male
+      - source: *fishipedia
+        value: {structure: harem, ratio: 3}
+      - source: *oliver
+        value: {structure: harem, ratio: 2.5}
+        note: two or three females per male
+      - source: *fk
+        value: {structure: harem}
+        note: several females per male
+
+  speciesOnly:
+    value: false
+    confidence: high
+    rationale: >-
+      Decided unanimously by the vote count (3 of 3). No source restricts the species to a species
+      tank for ordinary keeping: Seriously Fish recommends a Malawi community with peaceful haps and
+      advises a species tank only for planned breeding, Practical Fishkeeping and FishProfiles place
+      it in communities including mild mbuna such as Labidochromis, Fishkeeper lists peaceful rift
+      lake fish, and the describer names Iodotropheus sprengerae and Labidochromis caeruleus as
+      tankmates. Forum keepers report long-term communities with Aulonocara and Cyrtocara moorii.
+    sources:
+      - *sf
+      - *pfk
+      - *fishprofiles
+      - *fk
+      - *oliver
+      - &thread14109
+        kind: archive
+        title: cichlids.com forum thread 14109
+        url: https://www.cichlids.com/disc/read.php?2,14109
+        accessed: 2026-10-13
+    evidence:
+      - source: *sf
+        value: false
+        note: community with peaceful haps; species tank only for breeding
+      - source: *pfk
+        value: false
+        note: suits tanks with peaceful mbuna such as Labidochromis
+      - source: *fishprofiles
+        value: false
+        note: kept in community aquariums
+      - source: *fk
+        value: false
+        note: Malawi cichlid community
+      - source: *oliver
+        value: false
+        note: community with smallish, fairly peaceful species
+      - source: *thread14109
+        value: false
+        note: kept with Aulonocara, Cyrtocara moorii and others
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+
+  hybridGroup:
+    value: null
+    confidence: medium
+    rationale: >-
+      Decided unanimously by the vote count (3 of 3). No source reports a cross with another
+      species. The Catalog of Fishes lists O. walteri as its only synonym, so the locality forms
+      are one species. Its closest relative, O. spelaeotes, lives allopatrically farther north
+      (Cleaver et al. 2009) and is hardly traded. FishBase and Seriously Fish mention no
+      hybridisation, and none of the curated hybrid groups contains an Otopharynx. General advice
+      not to mix species of one genus (Fishipedia, a shop guide) is a precaution, not a documented
+      cross. Locality forms are kept apart to keep them pure.
+    sources:
+      - *cleaver
+      - *cof
+      - *sf
+      - *fishbase
+    evidence:
+      - source: *cleaver
+        value: null
+        note: closest relative O. spelaeotes is allopatric; walteri is a synonym
+      - source: *cof
+        value: null
+        note: only walteri listed as a synonym
+      - source: *fishbase
+        value: null
+        note: no hybridisation reported
+      - source: *sf
+        value: null
+        note: no warning about crossing with related species
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+
+  coloration:
+    value:
+      baseColors: [blue, yellow]
+      pattern: mixed
+    confidence: medium
+    rationale: >-
+      Breeding males are blue, with the three flank spots masked, and carry a blaze over the
+      forehead and along the dorsal fin that is sulphur yellow at Zimbawe Rock, orange-red at Domwe
+      Island and white at Mumbo Island and the Maleri Islands (the describer, Cleaver et al. 2009).
+      Seriously Fish describes the common trade form as blue with a yellow-orange head and dorsal.
+      Blue and yellow dominate the traded fish; the orange and white blazes belong to single
+      locality forms. Females are greyish brown with three dark spots. A blue body with a
+      contrasting blaze and residual spots is coded as mixed.
+    sources:
+      - *sf
+      - *oliver
+      - *cleaver
+      - *fishprofiles
+    evidence:
+      - source: *sf
+        value: {baseColors: [blue, yellow, orange], pattern: mixed}
+        note: neon blue with yellow-orange head and dorsal
+      - source: *oliver
+        value: {baseColors: [blue, yellow, white, orange], pattern: mixed}
+        note: blaze colour varies by locality
+      - source: *fishprofiles
+        value: {baseColors: [blue, yellow, white]}
+        note: white or golden dorsal and forehead depending on locality
+
+  feedingSpeed:
+    value: normal
+    confidence: low
+    rationale: >-
+      No source rates its feeding pace. It takes flake and pellets readily and holds its own among
+      peaceful haps and Aulonocara, while Seriously Fish advises against boisterous mbuna, which
+      would outcompete it. A normal pace fits.
+    sources:
+      - *sf
+      - *oliver
+      - kind: model-knowledge
+        title: General knowledge of feeding behaviour of rock-dwelling Malawi haps
+
+  minTank:
+    value:
+      volumeL: 240
+      lengthCm: 120
+      depthCm: 45
+    confidence: medium
+    rationale: >-
+      Recommendations range widely: 95 to 150 litres for a male with two or three females (the
+      describer), a 90 by 45 cm base of about 154 litres with 120 cm for a breeding harem (Seriously
+      Fish), 120 cm or more (Practical Fishkeeping), 300 litres and 120 cm (Gensou), at least 150 cm
+      (Fishkeeper) and 400 litres at 140 cm (Fishipedia). For a male of up to 16 cm with three
+      females, caves and escape room, 120 cm length and 45 cm front-to-back depth are taken; at the
+      usual height of a tank this size that holds about 240 litres.
+    sources:
+      - *sf
+      - *pfk
+      - *fishipedia
+      - *oliver
+      - *fk
+      - *gensou
+    evidence:
+      - source: *sf
+        value: {volumeL: 154, lengthCm: 90, depthCm: 45}
+        note: base size; 120 cm suggested for a breeding harem
+      - source: *pfk
+        value: {lengthCm: 120}
+      - source: *fishipedia
+        value: {volumeL: 400, lengthCm: 140}
+        note: group of at least five
+      - source: *oliver
+        value: {volumeL: 150}
+        note: 95 to 150 litres for a male with two or three females
+      - source: *fk
+        value: {lengthCm: 150}
+      - source: *gensou
+        value: {volumeL: 300, lengthCm: 120}
+        note: one male with three or four females
+
+  lifespanYears:
+    value: {min: 8, max: 10}
+    confidence: low
+    rationale: >-
+      Fishipedia gives 8 years and a shop care guide 8 to 10 years; no scientific source states a
+      lifespan. The range follows these two sources and fits other Malawi haps of this size.
+    sources:
+      - *fishipedia
+      - *gensou
+    evidence:
+      - source: *fishipedia
+        value: {min: 8, max: 8}
+      - source: *gensou
+        value: {min: 8, max: 10}
+
+  breeding:
+    value: maternal-mouthbrooder
+    confidence: high
+    rationale: >-
+      Female mouthbrooder: the female takes the eggs into her mouth while circling with the male
+      and carries a brood of 25 to 50 eggs for three to four weeks (Seriously Fish, Fishkeeper,
+      Practical Fishkeeping). In the wild spawning takes place in caves (Kasembe 2006 via the US
+      Fish and Wildlife Service). The Cichlid Room Companion summary agrees.
+    sources:
+      - *sf
+      - *pfk
+      - *fws
+      - *fishipedia
+      - *crc
+      - *fk
+    evidence:
+      - source: *sf
+        value: maternal-mouthbrooder
+      - source: *pfk
+        value: maternal-mouthbrooder
+      - source: *crc
+        value: maternal-mouthbrooder
+        note: verification only
+      - source: *fk
+        value: maternal-mouthbrooder
+
+  beginnerSuitability:
+    value: easy
+    confidence: medium
+    rationale: >-
+      The describer calls it one of the best choices for newcomers to Malawi cichlids because it is
+      hardy, easy to feed and relatively peaceful; Seriously Fish and Fishipedia rate it easy and
+      Aquarium Glaser undemanding. The Cichlid Room Companion places it at the intermediate level.
+      It needs Malawi water, a tank of about 120 cm and a harem, but no special diet or care, so
+      easy applies within Malawi cichlid keeping.
+    sources:
+      - *oliver
+      - *sf
+      - *fishipedia
+      - *crc
+      - *glaser
+    evidence:
+      - source: *oliver
+        value: easy
+        note: good choice for beginners with Malawi cichlids
+      - source: *sf
+        value: easy
+        note: difficulty band easy
+      - source: *fishipedia
+        value: easy
+      - source: *crc
+        value: moderate
+        note: intermediate aquarists; verification only
+partners:
+  suitable:
+    - species: Cyrtocara moorii
+      reason: Peaceful hap of similar habits; keepers report long-term success with both together.
+      condition: Tank of at least 150 cm because C. moorii grows larger.
+    - species: Labidochromis caeruleus
+      reason: Calm mbuna that eats a similar mix of animal food, flake and pellets; the describer names
+        it as a suitable companion.
+    - species: Iodotropheus sprengerae
+      reason: Small, fairly peaceful mbuna that the describer recommends as a tankmate.
+    - species: Aulonocara stuartgranti
+      reason: Peaceful peacock cichlid that uses the sand and open water near the rocks; Fishkeeper lists
+        Aulonocara as suitable.
+    - species: Copadichromis borleyi
+      reason: Peaceful plankton-feeding hap of similar size that swims in open water rather than in the
+        caves.
+    - species: Synodontis njassae
+      reason: Robust Lake Malawi catfish of the same water; Fishkeeper names Synodontis as tankmates.
+  unsuitable:
+    - species: Melanochromis auratus
+      reason: Aggressive mbuna that harasses calmer haps; sources advise against boisterous mbuna.
+    - species: Maylandia zebra
+      reason: Boisterous, territorial mbuna that competes for the same caves and stresses this calmer hap.
+    - species: Chindongo demasoni
+      reason: Very aggressive small mbuna that defends caves fiercely and suits only mbuna-only tanks.
+    - species: Tropheus moorii
+      reason: Tanganyika aufwuchs grazer with a low-protein diet that is best kept alone; different water
+        and food.
+    - species: Paracheirodon innesi
+      reason: Small soft-water tetra that would be eaten and needs quite different water.
+    - species: Otopharynx spelaeotes
+      reason: Closest relative, morphologically almost indistinguishable from O. lithobates; no cross is
+        documented, but mixing them invites mix-ups of the females.
+profile:
+  overview:
+    text: Otopharynx lithobates is a medium-sized haplochromine from the rocky southern shores of Lake
+      Malawi and one of the few haps that live among boulders and caves rather than over open sand.
+      The species name refers to its life among stones. Breeding males are blue and carry a bright
+      blaze on the forehead and along the dorsal fin, which is sulphur yellow, orange-red or white
+      depending on the population. The best-known trade form comes from Zimbawe Rock, usually
+      spelled 'Zimbabwe Rock', and older dealers sold the fish as 'Red Top Aristochromis' although
+      it is only distantly related to Aristochromis. Females and young fish are silvery grey with
+      the three dark spots typical of the genus. It counts among the calmer Malawi haps, accepts
+      ordinary aquarium food and breeds readily, which makes it a good first hap. It needs company
+      of similar temperament rather than boisterous mbuna.
+    sources:
+      - *oliver
+      - *sf
+      - *fk
+      - *cleaver
+  habitat:
+    text: "The species is known only from a small part of the southern lake: the islands around the
+      Nankumba Peninsula such as Thumbi West, Thumbi East, Mumbo and Domwe, the reef Zimbawe Rock,
+      Monkey Bay, the Maleri Islands and the islands Chinyamwezi and Chinyankwazi. Most or all
+      populations lie inside Lake Malawi National Park. It lives over rocky and mixed rock-sand
+      shores and uses caves and crevices as shelter, feeding ground and spawning site, from just
+      below the surface to at least 20 m. The lake water is soft but alkaline and well buffered:
+      about 3 to 5 dGH, 5 to 8 dKH and pH 7.7 to 8.6, with temperatures between 21 and 29 C over the
+      year. In the aquarium the fish does well in harder water as long as pH and carbonate hardness
+      stay high and stable."
+    sources:
+      - *cleaver
+      - *oliver
+      - *sf
+      - *fk
+      - *branchu
+      - *fao
+  sizeAndGrowth:
+    text: Males grow clearly larger than females. Well-grown aquarium males reach about 16 cm total
+      length, while females stay around 10 cm. Wild fish are smaller; the largest specimens measured
+      for the 2009 revision had about 10.7 cm standard length, roughly 13 to 14 cm including the
+      tail. Females become sexually mature at only about 5 cm, so a young group may start to breed
+      long before the fish are fully grown. Only the dominant male develops full breeding colour;
+      subordinate males stay greyish and can look like females until they get the chance to take
+      over a territory.
+    sources:
+      - *fishbase
+      - *sf
+      - *fishipedia
+      - *cleaver
+      - *oliver
+  husbandry:
+    text: A tank of about 120 cm length and 240 litres suits one male with three females; larger tanks
+      allow more females or a second male. Build stable rock piles from the bottom up with many
+      caves and crevices, and leave open sand and swimming space between them. Make sure the rocks
+      rest on the glass so that digging cannot topple them. Plants are optional; hardy species such
+      as Anubias and Vallisneria are left alone. Aim for pH 7.8 to 8.5 and 24 to 27 C, buffer soft
+      tap water with suitable salts or a carbonate substrate, and keep hardness within about 3 to 25
+      dGH. Good filtration and a partial water change of about 20 to 30 percent every week keep
+      nitrate low and the pH stable.
+    sources:
+      - *sf
+      - *pfk
+      - *oliver
+      - *oata
+      - *fk
+      - *seachem
+  socialBehavior:
+    text: This is a harem species. One male with at least three females spreads his courtship over
+      several fish, so no single female is chased too much. When several males share a tank, one
+      becomes dominant, colours up fully and does most of the spawning; a second male works only in
+      a large tank with plenty of visual barriers. Outside spawning the fish are calm and spend much
+      time close to the rocks, often inside or near caves. A breeding male claims a cave or flat
+      stone and keeps other fish away from it, but he rarely pursues them through the whole tank.
+      Towards other species of similar size the fish is tolerant, which makes it a good member of a
+      peaceful Malawi community.
+    sources:
+      - *sf
+      - *fishipedia
+      - *oliver
+      - *fk
+      - *thread13953
+  diet:
+    text: In the lake the species feeds in two ways. It picks single zooplankton animals, mainly
+      copepods and small water fleas, from the water near the rocks, and it scavenges particles from
+      the rock surface, often the droppings of plant-eating fish and of the large catfish Bagrus
+      meridionalis. Because the sources weigh these two parts differently, the catalog classes it
+      cautiously as an invertebrate feeder. In the aquarium it is easy to feed. A quality flake or
+      small pellet for omnivorous cichlids works well as staple food, supplemented with frozen brine
+      shrimp, mysis, mosquito larvae or krill for larger fish. Feed small portions once or twice a
+      day rather than one large meal.
+    sources:
+      - *oliver
+      - *cleaver
+      - *fishbase
+      - *pfk
+      - *sf
+      - *fk
+  breeding:
+    text: O. lithobates is a female mouthbrooder and breeds readily in the aquarium. The male cleans a
+      flat stone in a sheltered spot or a cave floor and displays in full colour to lure females. A
+      ready female lays a few eggs at a time; the pair circles and she takes the eggs into her
+      mouth, where they are fertilised. A brood holds about 25 to 50 eggs. The female carries them
+      for three to four weeks without eating and then releases free-swimming fry that take newly
+      hatched brine shrimp at once. Stressed females may spit or swallow the brood, so move a
+      holding female only if she is harassed. Some breeders strip the fry after two to three weeks
+      for a higher yield.
+    sources:
+      - *sf
+      - *fk
+      - *fws
+  sexing:
+    text: Adult males are larger and, when dominant, show the blue body and the bright blaze on head and
+      dorsal fin. Adult males lack the egg spots on the anal fin that many other Malawi haps show,
+      so these are no help for sexing. Females remain grey to silvery with three dark blotches on
+      the flank and stay noticeably smaller. Young fish and suppressed males look like females, and
+      reliable sexing of juveniles is difficult. Venting by an experienced keeper or waiting until
+      the first males colour up is the safest way to set up a harem.
+    sources:
+      - *oliver
+      - *cleaver
+      - *sf
+      - *fk
+  compatibility:
+    text: "Choose calm Lake Malawi fish of similar size: peaceful haps such as Cyrtocara moorii or
+      Copadichromis borleyi, Aulonocara peacocks, mild mbuna such as Labidochromis caeruleus or
+      Iodotropheus sprengerae, and Synodontis catfish. Aggressive mbuna such as Melanochromis or
+      Maylandia species compete for the same caves and keep this hap stressed and pale. Fish below
+      about 2 cm and fry of tankmates may be eaten. Keep only one locality form per tank so that the
+      colour forms stay pure, and do not combine it with its close relative O. spelaeotes, whose
+      females look the same. Tanganyika grazers such as Tropheus need their own tank."
+    sources:
+      - *sf
+      - *pfk
+      - *oliver
+      - *cleaver
+      - *fk
+      - kind: archive
+        title: cichlids.com forum thread 10457
+        url: https://www.cichlids.com/disc/read.php?1,10457
+        accessed: 2026-10-13
+      - *thread14109
+      - kind: archive
+        title: cichlids.com forum thread 15767
+        url: https://www.cichlids.com/disc/read.php?2,15767
+        accessed: 2026-10-13
+  problems:
+    text: The most frequent mistake is mixing this calm hap with aggressive mbuna, which leads to
+      constant hiding, faded colours and injured females. Keeping one male with only one female has
+      a similar effect, because the female takes all of his courtship. Soft tap water without
+      buffering lets the pH drop over time, and heavy feeding with rare water changes raises
+      nitrate; both stress Malawi cichlids and make them prone to disease. No source links this
+      species to bloat, but overfeeding with rich frozen food strains the digestion of any Malawi
+      cichlid, so keep portions small and varied. Holding females spit their brood when chased or
+      moved roughly. Crossing locality forms produces fish of unclear origin that should not be
+      sold under a locality name.
+    sources:
+      - *sf
+      - *oliver
+      - *oata
+      - *fk
+provenance:
+  runs:
+    - role: generator
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-13
+    - role: adjudicator
+      model: claude-opus-5-5
+      date: 2026-10-13
+  disagreements:
+    - field: features.origin.value.waterbody
+      proposals:
+        - by: generator
+          value: Lake Malawi
+        - by: checker-a
+          value: Lake Malawi
+        - by: checker-b
+          value: lake-malawi
+      decision: Lake Malawi
+      rationale: Both spellings name the same entry of the water body table; the name form is used, as in the other proposals.
+    - field: features.origin.value.localities
+      proposals:
+        - by: generator
+          value: [Thumbi West Island, Thumbi East Island, Mumbo Island, Domwe Island, Zimbawe Rock, Maleri Islands (Nakantenga), Chinyamwezi Island, Chinyankwazi Island, Monkey Bay]
+        - by: checker-a
+          value: [Thumbi Island West, Thumbi Island East, Monkey Bay, Domwe Island, Zimbawe Rock, Mumbo Island, Maleri Islands (Nakantenga Island), Chinyamwezi Island]
+        - by: checker-b
+          value: [Thumbi West Island, Thumbi East Island, Mumbo Island, Domwe Island, Chinyamwezi Island, Chinyankwazi Island, Maleri Islands (Nakantenga Island), Zimbawe Rock]
+      decision: [Thumbi West Island, Thumbi East Island, Mumbo Island, Domwe Island, Zimbawe Rock, Maleri Islands (Nakantenga Island), Chinyamwezi Island, Chinyankwazi Island, Monkey Bay]
+      rationale: >-
+        The lists differ only in spelling and in two sites. Chinyankwazi is in the range of Cleaver
+        et al. (2009), and Monkey Bay rests on the describer's collections and Seriously Fish, so
+        the union of all three lists is kept.
+    - field: features.ph.tolerance
+      proposals:
+        - by: generator
+          value: {min: 7.5, max: 8.8}
+        - by: checker-a
+          value: {min: 7.5, max: 8.8}
+        - by: checker-b
+          value: {min: 7.6, max: 8.8}
+      decision: {min: 7.5, max: 8.8}
+      rationale: Decided by the vote count (unanimous, 3 of 3 within 0.3 pH); the median of the agreeing bounds is 7.5 to 8.8.
+    - field: features.ghDgh.tolerance
+      proposals:
+        - by: generator
+          value: {min: 3, max: 25}
+        - by: checker-a
+          value: {min: 3, max: 25}
+        - by: checker-b
+          value: {min: 3, max: 20}
+        - by: tiebreaker-1
+          value: {min: 3, max: 25}
+        - by: tiebreaker-2
+          value: {min: 3, max: 25}
+      decision: {min: 3, max: 25}
+      rationale: >-
+        Decided by the vote count (qualified majority, 4 of 5). Checker-b's upper bound of 20 dGH
+        rested on model knowledge, while two care sheets of the database kind accept 25 dGH.
+    - field: features.khDkh.tolerance
+      proposals:
+        - by: generator
+          value: {min: 5, max: 15}
+        - by: checker-a
+          value: {min: 5, max: 15}
+        - by: checker-b
+          value: {min: 4, max: 15}
+      decision: {min: 5, max: 15}
+      rationale: Decided by the vote count (unanimous, 3 of 3 within 2 dKH); the median of the agreeing bounds is 5 to 15.
+    - field: features.maxSizeCm
+      proposals:
+        - by: generator
+          value: {male: 15, female: 10}
+        - by: checker-a
+          value: {male: 16, female: 10}
+        - by: checker-b
+          value: {male: 16, female: 10}
+      decision: {male: 16, female: 10}
+      rationale: >-
+        FishBase, Seriously Fish, Fishipedia, FishProfiles and Fishkeeper all name 16 cm for males,
+        and Fishipedia ties it to dominant males of the aquarium. The generator's 15 cm rests on
+        reading 16 cm as an upper value and on Practical Fishkeeping; with five sources on 16 cm
+        that figure is the typical size of well-grown males, not a record.
+    - field: features.diet
+      proposals:
+        - by: generator
+          value: {type: omnivore, bloatSensitive: false}
+        - by: checker-a
+          value: {type: invertivore, bloatSensitive: false}
+        - by: checker-b
+          value: {type: omnivore, bloatSensitive: false}
+        - by: tiebreaker-1
+          value: {type: omnivore, bloatSensitive: false}
+        - by: tiebreaker-2
+          value: {type: invertivore, bloatSensitive: false}
+      decision: {type: invertivore, bloatSensitive: false}
+      rationale: >-
+        Decided by the vote count (conservative). The votes split 3 to 2 between omnivore and
+        invertivore, so no qualified majority exists; the conservative rule takes the stricter type,
+        invertivore. Oliver found plankton in the stomachs, while Konings, Cleaver et al. (2009) and
+        FishBase report droppings and detritus picked from rock.
+    - field: features.diet.value.foods
+      proposals:
+        - by: generator
+          value: [zooplankton (copepods, cladocerans), particles and fish droppings picked from rock, small invertebrates, flake and small pellets, "frozen brine shrimp, mysis and mosquito larvae"]
+        - by: checker-a
+          value: [zooplankton (copepods, cladocerans), small invertebrates, detritus and fish faeces, cichlid pellets and flakes, "frozen brine shrimp, mysis and mosquito larvae"]
+        - by: checker-b
+          value: [frozen mysis, krill, brine shrimp, mosquito larvae, live foods]
+        - by: tiebreaker-1
+          value: [faeces of herbivorous cichlids and other detritus, small benthic invertebrates, zooplankton, fry and small fish]
+        - by: tiebreaker-2
+          value: [zooplankton, copepods, frozen foods, live foods, cichlid pellets]
+      decision: [zooplankton (copepods, cladocerans), "particles, detritus and fish droppings picked from rock", small invertebrates, flake and small pellets, "frozen brine shrimp, mysis, krill and mosquito larvae"]
+      rationale: >-
+        The lists describe the same natural and aquarium foods in different detail; they are
+        merged. Fry and small fish are left out of the food list because they are an occasional
+        catch, covered by the predation level.
+    - field: features.aggressionHeterospecific
+      proposals:
+        - by: generator
+          value: 2
+        - by: checker-a
+          value: 1
+        - by: checker-b
+          value: 1
+      decision: 1
+      rationale: >-
+        The describer, Seriously Fish, Fishkeeper, Fishipedia and Practical Fishkeeping all call it
+        relatively peaceful or not aggressive, and Seriously Fish keeps it even with rainbowfish.
+        The chasing the generator weighed happens only around the spawning site, which the
+        territory feature (small, breeding only) already covers.
+    - field: features.coloration
+      proposals:
+        - by: generator
+          value: {baseColors: [blue, yellow], pattern: mixed}
+        - by: checker-a
+          value: {baseColors: [blue, yellow], pattern: mixed}
+        - by: checker-b
+          value: {baseColors: [blue, yellow, orange], pattern: mixed}
+      decision: {baseColors: [blue, yellow], pattern: mixed}
+      rationale: >-
+        Blue and sulphur yellow dominate the common trade form; orange-red belongs to the Domwe
+        Island form and white to the Mumbo and Maleri forms, which the variants record.
+    - field: features.minTank
+      proposals:
+        - by: generator
+          value: {volumeL: 200, lengthCm: 120, depthCm: 45}
+        - by: checker-a
+          value: {volumeL: 240, lengthCm: 120, depthCm: 45}
+        - by: checker-b
+          value: {volumeL: 216, lengthCm: 120, depthCm: 45}
+      decision: {volumeL: 240, lengthCm: 120, depthCm: 45}
+      rationale: >-
+        All agree on 120 by 45 cm. The volume depends only on the assumed height; about 240 litres
+        matches a usual tank of this footprint and lies in the middle of the recommendations, which
+        range from 150 to 400 litres.
+    - field: features.lifespanYears
+      proposals:
+        - by: generator
+          value: {min: 6, max: 10}
+        - by: checker-a
+          value: {min: 8, max: 10}
+        - by: checker-b
+          value: {min: 6, max: 10}
+      decision: {min: 8, max: 10}
+      rationale: >-
+        The only sources that state a lifespan give 8 years (Fishipedia) and 8 to 10 years (a shop
+        care guide); the lower bound of 6 years rested on model knowledge alone.
+    - field: features.beginnerSuitability
+      proposals:
+        - by: generator
+          value: easy
+        - by: checker-a
+          value: easy
+        - by: checker-b
+          value: moderate
+      decision: easy
+      rationale: >-
+        The describer names it one of the best choices for beginners with Malawi cichlids, and
+        Seriously Fish and Fishipedia rate it easy. Only the Cichlid Room Companion, which serves
+        for verification, places it at the intermediate level.
