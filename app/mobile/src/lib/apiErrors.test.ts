@@ -23,6 +23,21 @@ describe("apiErrorKey", () => {
   });
 });
 
+describe("apiErrorKey for connection failures", () => {
+  it("maps a call that got no answer to the connection message", () => {
+    expect(apiErrorKey(new ApiError("Network error", 0))).toBe("errors.connection");
+  });
+
+  it("maps an unreachable identity provider behind the API to the connection message", () => {
+    expect(apiErrorKey(new ApiError("Service Unavailable", 503, "identity_provider_unavailable"))).toBe("errors.connection");
+  });
+
+  it("leaves answered calls without a known code alone", () => {
+    expect(apiErrorKey(new ApiError("Unauthorized", 401))).toBeNull();
+    expect(apiErrorKey(new ApiError("Bad Gateway", 502))).toBeNull();
+  });
+});
+
 describe("translateApiError", () => {
   const t = (key: string) => `translated:${key}`;
 
@@ -50,5 +65,6 @@ describe("API error translations", () => {
     for (const code of API_ERROR_CODES) {
       expect(errors[code], code).toBeTruthy();
     }
+    expect(errors.connection, "connection").toBeTruthy();
   });
 });

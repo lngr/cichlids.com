@@ -1,5 +1,13 @@
 import { describe, expect, it } from "vitest";
-import { needsRefresh, parseStoredTokenSet, REFRESH_MARGIN_MS, resolveRefreshOutcome, toTokenSet, type TokenSet } from "./tokenLogic";
+import {
+  classifyRefreshResponse,
+  needsRefresh,
+  parseStoredTokenSet,
+  REFRESH_MARGIN_MS,
+  resolveRefreshOutcome,
+  toTokenSet,
+  type TokenSet,
+} from "./tokenLogic";
 
 const now = Date.UTC(2026, 8, 28, 12, 0, 0);
 
@@ -70,20 +78,66 @@ describe("resolveRefreshOutcome", () => {
   const refreshed = tokenSet({ accessToken: "refreshed", expiresAt: now + 600_000 });
 
   it("applies the refreshed set while the session is the one the refresh started from", () => {
-    expect(resolveRefreshOutcome(startedFrom, startedFrom, refreshed)).toEqual({ apply: true, tokens: refreshed });
+    expect(resolveRefreshOutcome(startedFrom, startedFrom, { kind: "refreshed", tokens: refreshed })).toEqual({
+      apply: true,
+      tokens: refreshed,
+    });
   });
 
-  it("applies a failed refresh as a logout while the session is unchanged", () => {
-    expect(resolveRefreshOutcome(startedFrom, startedFrom, null)).toEqual({ apply: true, tokens: null });
+  it("applies a refused refresh as a sign-out while the session is unchanged", () => {
+    expect(resolveRefreshOutcome(startedFrom, startedFrom, { kind: "refused" })).toEqual({ apply: true, tokens: null });
+  });
+
+  it("keeps the tokens when the identity provider could not be reached", () => {
+    expect(resolveRefreshOutcome(startedFrom, startedFrom, { kind: "unavailable" })).toEqual({ apply: false, tokens: startedFrom });
   });
 
   it("keeps a logout that happened during the refresh", () => {
-    expect(resolveRefreshOutcome(null, startedFrom, refreshed)).toEqual({ apply: false, tokens: null });
+    expect(resolveRefreshOutcome(null, startedFrom, { kind: "refreshed", tokens: refreshed })).toEqual({ apply: false, tokens: null });
   });
 
-  it("keeps a new login that happened during the refresh, also when the refresh failed", () => {
+  it("keeps a new login that happened during the refresh, also when the refresh was refused", () => {
     const newLogin = tokenSet({ accessToken: "new-login" });
-    expect(resolveRefreshOutcome(newLogin, startedFrom, refreshed)).toEqual({ apply: false, tokens: newLogin });
-    expect(resolveRefreshOutcome(newLogin, startedFrom, null)).toEqual({ apply: false, tokens: newLogin });
+    expect(resolveRefreshOutcome(newLogin, startedFrom, { kind: "refreshed", tokens: refreshed })).toEqual({ apply: false, tokens: newLogin });
+    expect(resolveRefreshOutcome(newLogin, startedFrom, { kind: "refused" })).toEqual({ apply: false, tokens: newLogin });
+  });
+});
+
+describe("classifyRefreshResponse", () => {
+  const previous = tokenSet();
+
+  it("turns a successful answer into the refreshed token set", () => {
+    const outcome = classifyRefreshResponse(
+      200,
+      { access_token: "a2", refresh_token: "r2", id_token: "i2", expires_in: 300 },
+      now,
+      previous,
+    );
+    expect(outcome).toEqual({ kind: "refreshed", tokens: { accessToken: "a2", refreshToken: "r2", idToken: "i2", expiresAt: now + 300_000 } });
+  });
+
+  it("keeps the previous refresh and id token when the answer omits them", () => {
+    const outcome = classifyRefreshResponse(200, { access_token: "a2", expires_in: 60 }, now, previous);
+    expect(outcome).toEqual({ kind: "refreshed", tokens: { accessToken: "a2", refreshToken: "refresh", idToken: "id", expiresAt: now + 60_000 } });
+  });
+
+  it.each([
+    [400, { error: "invalid_grant", error_description: "User disabled" }],
+    [400, { error: "invalid_grant", error_description: "Offline user session not found" }],
+    [401, { error: "invalid_client" }],
+    [400, "not json"],
+  ])("treats HTTP %s as refused by the identity provider", (status, body) => {
+    expect(classifyRefreshResponse(status, body, now, previous)).toEqual({ kind: "refused" });
+  });
+
+  it.each([
+    [500, "<html>Internal Server Error</html>"],
+    [502, null],
+    [503, { error: "temporarily_unavailable" }],
+    [429, null],
+    [200, { error: "no token" }],
+    [200, "not json"],
+  ])("treats HTTP %s with an unusable answer as unavailable", (status, body) => {
+    expect(classifyRefreshResponse(status, body, now, previous)).toEqual({ kind: "unavailable" });
   });
 });

@@ -1,11 +1,11 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { AppState } from "react-native";
 import * as Crypto from "expo-crypto";
 import * as WebBrowser from "expo-web-browser";
 import {
   exchangeCodeAsync,
   fetchDiscoveryAsync,
   makeRedirectUri,
-  refreshAsync,
   ResponseType,
   useAuthRequest,
   useAutoDiscovery,
@@ -14,7 +14,9 @@ import {
 import { setAccessTokenProvider } from "../api/client";
 import { authConfig } from "./config";
 import { ensureDiscovery } from "./discovery";
-import { needsRefresh, resolveRefreshOutcome, toTokenSet, type TokenSet } from "./tokenLogic";
+import { toTokenSet } from "./tokenLogic";
+import { requestTokenRefresh } from "./tokenRefresh";
+import { createTokenSession } from "./tokenSession";
 import { tokenStorage } from "./tokenStorage";
 
 // On the web the Keycloak redirect lands in the login popup, which loads the app; this hands the
@@ -25,7 +27,6 @@ export type AuthStatus = "loading" | "anonymous" | "authenticated";
 
 export interface AuthContextValue {
   status: AuthStatus;
-  accessToken: string | null;
   /**
    * Opens the Keycloak login; resolves false when the user cancels it or when the login only
    * became ready (the discovery document was loaded by this call, a further call opens the login),
@@ -33,7 +34,11 @@ export interface AuthContextValue {
    */
   login(): Promise<boolean>;
   logout(): Promise<void>;
-  /** The current access token, refreshed first when it is about to expire; undefined when anonymous. */
+  /**
+   * The current access token, refreshed first when it is about to expire; undefined when
+   * anonymous. Rejects with SessionUnavailableError when the refresh got no usable answer; the
+   * member stays signed in.
+   */
   getAccessToken(): Promise<string | undefined>;
 }
 
@@ -43,7 +48,14 @@ function loadDiscovery(): Promise<DiscoveryDocument> {
   return fetchDiscoveryAsync(authConfig.issuer);
 }
 
-/** Holds the Keycloak session of the app user and supplies its access token to the API client. */
+// Returning to the foreground renews the session at most this often.
+const FOREGROUND_RENEW_INTERVAL_MS = 5 * 60 * 1000;
+
+/**
+ * Holds the Keycloak offline session of the app user and supplies its access token to the API
+ * client. The session lasts until the member signs out or Keycloak refuses to renew it; opening
+ * the app renews it once, so a suspended or deleted account is signed out on the next start.
+ */
 export function AuthProvider({ children }: { children: ReactNode }) {
   const autoDiscovery = useAutoDiscovery(authConfig.issuer);
   // The document a login tap loaded after the automatic discovery at start failed.
@@ -69,39 +81,43 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     discovery,
   );
 
-  const [state, setState] = useState<{ status: AuthStatus; accessToken: string | null }>({
-    status: "loading",
-    accessToken: null,
-  });
-  const tokensRef = useRef<TokenSet | null>(null);
-  const refreshRef = useRef<{ from: TokenSet; promise: Promise<TokenSet | null> } | null>(null);
+  const [status, setStatus] = useState<AuthStatus>("loading");
   const discoveryRef = useRef(discovery);
   discoveryRef.current = discovery;
 
-  const applyTokens = useCallback(async (tokens: TokenSet | null) => {
-    tokensRef.current = tokens;
-    setState(tokens ? { status: "authenticated", accessToken: tokens.accessToken } : { status: "anonymous", accessToken: null });
-    if (tokens) {
-      await tokenStorage.set(tokens);
-    } else {
-      await tokenStorage.clear();
-    }
-  }, []);
+  const session = useMemo(
+    () =>
+      createTokenSession({
+        storage: tokenStorage,
+        refresh: (tokens) =>
+          requestTokenRefresh(tokens, {
+            tokenEndpoint: async () => {
+              const { tokenEndpoint } = await ensureDiscovery(discoveryRef.current, loadDiscovery);
+              if (!tokenEndpoint) throw new Error("The discovery document names no token endpoint.");
+              return tokenEndpoint;
+            },
+            clientId: authConfig.clientId,
+            fetch: (input, init) => fetch(input, init),
+            now: Date.now,
+          }),
+        now: Date.now,
+        onChange: (tokens) => setStatus(tokens ? "authenticated" : "anonymous"),
+      }),
+    [],
+  );
 
   useEffect(() => {
-    let cancelled = false;
-    tokenStorage
-      .get()
-      .catch(() => null)
-      .then((tokens) => {
-        if (cancelled) return;
-        tokensRef.current = tokens;
-        setState(tokens ? { status: "authenticated", accessToken: tokens.accessToken } : { status: "anonymous", accessToken: null });
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, []);
+    let lastRenewal = Date.now();
+    void session.restore().then((tokens) => {
+      if (tokens) void session.renew();
+    });
+    const subscription = AppState.addEventListener("change", (next) => {
+      if (next !== "active" || Date.now() - lastRenewal < FOREGROUND_RENEW_INTERVAL_MS) return;
+      lastRenewal = Date.now();
+      void session.renew();
+    });
+    return () => subscription.remove();
+  }, [session]);
 
   const login = useCallback(async () => {
     if (!discovery) {
@@ -133,17 +149,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       },
       discovery,
     );
-    await applyTokens(toTokenSet(response, Date.now()));
+    await session.signIn(toTokenSet(response, Date.now()));
     return true;
-  }, [request, requestState, discovery, promptAsync, redirectUri, applyTokens]);
+  }, [request, requestState, discovery, promptAsync, redirectUri, session]);
 
   const logout = useCallback(async () => {
-    const tokens = tokensRef.current;
-    await applyTokens(null);
+    const tokens = await session.signOut();
     if (!tokens?.idToken && !tokens?.refreshToken) return;
-    // Ends the Keycloak session as well, so the next login asks for credentials. Keycloak finds the
-    // session from the id token hint or the refresh token. Best effort: the local session is gone
-    // either way.
+    // Ends the Keycloak sessions as well, so the next login asks for credentials and the offline
+    // token is revoked. Keycloak finds them from the id token hint and the refresh token. Best
+    // effort: the local session is gone either way.
     const params = new URLSearchParams({ client_id: authConfig.clientId });
     if (tokens.idToken) params.set("id_token_hint", tokens.idToken);
     if (tokens.refreshToken) params.set("refresh_token", tokens.refreshToken);
@@ -156,45 +171,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         body: params.toString(),
       });
     } catch {
-      // Keycloak unreachable: its session expires on its own.
+      // Keycloak unreachable: its sessions stay until their idle timeout, and the device keeps no token for them.
     }
-  }, [applyTokens]);
+  }, [session]);
 
-  const refresh = useCallback(
-    async (tokens: TokenSet): Promise<TokenSet | null> => {
-      let outcome: TokenSet | null;
-      try {
-        if (!tokens.refreshToken) throw new Error("No refresh token.");
-        const response = await refreshAsync(
-          { clientId: authConfig.clientId, refreshToken: tokens.refreshToken, scopes: [...authConfig.scopes] },
-          await ensureDiscovery(discoveryRef.current, loadDiscovery),
-        );
-        outcome = toTokenSet(response, Date.now(), tokens);
-      } catch {
-        outcome = null;
-      }
-      const resolved = resolveRefreshOutcome(tokensRef.current, tokens, outcome);
-      if (resolved.apply) await applyTokens(resolved.tokens);
-      return resolved.tokens;
-    },
-    [applyTokens],
-  );
-
-  const getAccessToken = useCallback(async () => {
-    const tokens = tokensRef.current;
-    if (!tokens) return undefined;
-    if (!needsRefresh(tokens, Date.now())) return tokens.accessToken;
-    // Concurrent API calls share one refresh of the same token set, since Keycloak may rotate the
-    // refresh token.
-    if (refreshRef.current?.from !== tokens) {
-      const pending = { from: tokens, promise: refresh(tokens) };
-      refreshRef.current = pending;
-      void pending.promise.finally(() => {
-        if (refreshRef.current === pending) refreshRef.current = null;
-      });
-    }
-    return (await refreshRef.current.promise)?.accessToken;
-  }, [refresh]);
+  const getAccessToken = useCallback(() => session.getAccessToken(), [session]);
 
   useEffect(() => {
     setAccessTokenProvider(getAccessToken);
@@ -202,14 +183,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, [getAccessToken]);
 
   const value = useMemo<AuthContextValue>(
-    () => ({
-      status: state.status,
-      accessToken: state.accessToken,
-      login,
-      logout,
-      getAccessToken,
-    }),
-    [state, login, logout, getAccessToken],
+    () => ({ status, login, logout, getAccessToken }),
+    [status, login, logout, getAccessToken],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

@@ -17,7 +17,8 @@ export const authConfig = {
   realm,
   issuer: `${keycloakUrl}/realms/${realm}`,
   clientId: "cichlids-app",
-  scopes: ["openid", "profile", "email"],
+  // offline_access makes the session an offline session that lasts until the member signs out.
+  scopes: ["openid", "profile", "email", "offline_access"],
   redirectScheme: "cichlids",
   redirectPath: "auth",
 } as const;

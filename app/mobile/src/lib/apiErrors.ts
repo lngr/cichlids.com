@@ -1,3 +1,5 @@
+import { ApiError } from "@cichlids/client-core";
+
 /** The error codes the API returns in the code field of its problem details. */
 export const API_ERROR_CODES = [
   "self_rating",
@@ -10,13 +12,20 @@ export const API_ERROR_CODES = [
 
 export type ApiErrorCode = (typeof API_ERROR_CODES)[number];
 
+/** The problem code of a 503 answer when the API cannot reach the identity provider to renew a web session. */
+const IDENTITY_PROVIDER_UNAVAILABLE = "identity_provider_unavailable";
+
 /**
- * The translation key for the API error code an error carries, or null when the error has no
- * code or a code the app does not know.
+ * The translation key for an error: the connection message for a call that got no answer (an
+ * ApiError with status 0, from a network failure or a session that could not be renewed) or that
+ * the API could not serve because the identity provider was unreachable; otherwise the key of the
+ * API error code the error carries, or null when the error has no code or a code the app does not
+ * know.
  */
-export function apiErrorKey(error: unknown): `errors.${ApiErrorCode}` | null {
+export function apiErrorKey(error: unknown): `errors.${ApiErrorCode}` | "errors.connection" | null {
   if (typeof error !== "object" || error === null) return null;
   const code = (error as { code?: unknown }).code;
+  if ((error instanceof ApiError && error.status === 0) || code === IDENTITY_PROVIDER_UNAVAILABLE) return "errors.connection";
   if (typeof code !== "string") return null;
   return (API_ERROR_CODES as readonly string[]).includes(code) ? (`errors.${code}` as `errors.${ApiErrorCode}`) : null;
 }
