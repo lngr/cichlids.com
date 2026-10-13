@@ -96,15 +96,16 @@ System. Details in `PROJECT-STATUS.md`, Abschnitt 9.
 
 ## 3. Artenprofile
 
-Stand: 48 Profile in `data/species/profiles/`, alle validiert. Verfahren in
+Stand: 50 Profile in `data/species/profiles/`, alle validiert. Verfahren in
 `tools/species-data/README.md`. Je Art stimmen Generator, Prüfer A (Opus), Prüfer B (Sonnet) und
 Prüfer C (Codex, gpt-6.1-sol) ab.
 
 ### 3.1 Weitere Profile
 
-- [ ] Nächste Arten nach Fotoanzahl: 83 Neolamprologus brichardi, 758 Microgeophagus ramirezi,
-  321 Labidochromis sp. 'Hongi', 190 Tropheus duboisi, 789 Thorichthys meeki, 466 Pseudotropheus
-  crabro, 236 Aulonocara ngara, 814 Aulonocara maleri; danach weiter nach Fotoanzahl, Synonym-Paare gemeinsam (etwa 739 Herichthys cyanoguttatus mit
+- [ ] Nächste Arten nach Fotoanzahl: 321 Labidochromis sp. 'Hongi', 190 Tropheus duboisi,
+  789 Thorichthys meeki (in Arbeit), 466 Pseudotropheus crabro, 236 Aulonocara ngara,
+  814 Aulonocara maleri, 819 Geophagus altifrons, 406 Nimbochromis livingstoni; danach weiter nach
+  Fotoanzahl, Synonym-Paare gemeinsam (etwa 739 Herichthys cyanoguttatus mit
   685 Cichlasoma cyanoguttatum)
 - [ ] Die harten Merkmale aller Arten sind vor Slice 4 gesichert
 - [ ] Das OpenAlex-Tagesbudget (1 USD, Reset 02:00 Uhr MESZ) reicht für etwa 12 Arten. Danach
