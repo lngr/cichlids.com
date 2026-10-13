@@ -1,5 +1,6 @@
 using System.Net;
 using System.Net.Http.Headers;
+using System.Net.Http.Json;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
@@ -11,7 +12,8 @@ namespace Cichlids.Api.Tests.Features.Auth;
 
 /// <summary>
 /// The web app's session through the API (backend for frontend): the login runs the
-/// authorization code flow with PKCE on the server, the browser receives only an opaque httpOnly
+/// authorization code flow with PKCE on the server (the web app fetches the Keycloak address and
+/// navigates there), the browser receives only an opaque httpOnly
 /// cookie, cookie-authenticated writes need the CSRF token, and the server renews the stored
 /// tokens: a refusal ends the session, an unreachable Keycloak keeps it.
 /// </summary>
@@ -23,12 +25,12 @@ public sealed class WebSessionTests(WebSessionFixture fixture)
     private const string LoginCookie = "__Host-cichlids-login";
 
     [Fact]
-    public async Task Login_redirects_to_Keycloak_with_PKCE_and_the_offline_scope()
+    public async Task Login_answers_the_Keycloak_address_with_PKCE_and_the_offline_scope()
     {
-        using var response = await fixture.Client.GetAsync("/api/auth/login?returnUrl=%2Fme");
+        using var response = await PostLoginAsync("/me");
 
-        Assert.Equal(HttpStatusCode.Redirect, response.StatusCode);
-        var location = response.Headers.Location!;
+        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        var location = await AuthorizationUrlAsync(response);
         Assert.StartsWith(FakeKeycloak.AuthorizationEndpoint + "?", location.AbsoluteUri);
         var query = QueryHelpers.ParseQuery(location.Query);
         Assert.Equal("cichlids-app", query["client_id"].ToString());
@@ -272,9 +274,9 @@ public sealed class WebSessionTests(WebSessionFixture fixture)
     [InlineData("javascript:alert(1)")]
     public async Task Login_refuses_a_return_address_outside_the_web_app(string returnUrl)
     {
-        using var response = await fixture.Client.GetAsync($"/api/auth/login?returnUrl={Uri.EscapeDataString(returnUrl)}");
+        using var response = await PostLoginAsync(returnUrl);
 
-        Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+        await AssertProblemAsync(response, HttpStatusCode.BadRequest, "invalid_return_url");
     }
 
     [Fact]
@@ -328,11 +330,20 @@ public sealed class WebSessionTests(WebSessionFixture fixture)
         public string CookieHeader => $"{Cookie.Name}={Cookie.Value}";
     }
 
+    private Task<HttpResponseMessage> PostLoginAsync(string returnUrl) =>
+        fixture.Client.PostAsync("/api/auth/login", JsonContent.Create(new { returnUrl }));
+
+    private static async Task<Uri> AuthorizationUrlAsync(HttpResponseMessage response)
+    {
+        using var json = JsonDocument.Parse(await response.Content.ReadAsStringAsync());
+        return new Uri(json.RootElement.GetProperty("authorizationUrl").GetString()!);
+    }
+
     private async Task<LoginStart> StartLoginAsync(string returnUrl)
     {
-        using var response = await fixture.Client.GetAsync($"/api/auth/login?returnUrl={Uri.EscapeDataString(returnUrl)}");
-        Assert.Equal(HttpStatusCode.Redirect, response.StatusCode);
-        var query = QueryHelpers.ParseQuery(response.Headers.Location!.Query);
+        using var response = await PostLoginAsync(returnUrl);
+        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        var query = QueryHelpers.ParseQuery((await AuthorizationUrlAsync(response)).Query);
         var cookie = SetCookie(response, LoginCookie);
         return new LoginStart(query["state"].ToString(), query["code_challenge"].ToString(), $"{cookie.Name}={cookie.Value}");
     }

@@ -13,11 +13,17 @@ namespace Cichlids.Api.Features.Auth.WebSessions;
 /// </summary>
 public sealed record WebSessionDto(bool Authenticated, string? CsrfToken);
 
+/// <summary>A web login to start; ReturnUrl is the web app address to come back to, the root when null.</summary>
+public sealed record WebLoginRequest(string? ReturnUrl);
+
+/// <summary>The Keycloak address the web app navigates to for the login.</summary>
+public sealed record WebLoginDto(string AuthorizationUrl);
+
 /// <summary>
 /// The web app's sign-in through the API (backend for frontend): login start and callback of the
 /// authorization code flow with PKCE, the session state and the logout. Tokens stay on the server;
-/// the browser holds only the session cookie. The endpoints serve browser navigations and the web
-/// app itself, so they are not part of the API description.
+/// the browser holds only the session cookie. The endpoints serve the web app and the browser
+/// navigation back from Keycloak, so they are not part of the API description.
 /// </summary>
 public static class WebSessionEndpoints
 {
@@ -26,7 +32,7 @@ public static class WebSessionEndpoints
     public static IEndpointRouteBuilder MapWebSessionEndpoints(this IEndpointRouteBuilder app)
     {
         var group = app.MapGroup("/api/auth").ExcludeFromDescription();
-        group.MapGet("/login", LoginAsync);
+        group.MapPost("/login", LoginAsync);
         group.MapGet("/callback", CallbackAsync);
         group.MapGet("/session", SessionAsync);
         group.MapPost("/logout", LogoutAsync)
@@ -34,9 +40,13 @@ public static class WebSessionEndpoints
         return app;
     }
 
-    /// <summary>Starts a login: remembers state, PKCE verifier and return address in the login cookie and redirects to Keycloak.</summary>
+    /// <summary>
+    /// Starts a login: remembers state, PKCE verifier and return address in the login cookie and
+    /// answers the Keycloak address to navigate to. An unreachable Keycloak answers 503, so the web
+    /// app can report it without leaving the page.
+    /// </summary>
     private static async Task<IResult> LoginAsync(
-        string? returnUrl,
+        WebLoginRequest request,
         HttpResponse response,
         WebSessionSettings settings,
         KeycloakOidcClient keycloak,
@@ -47,7 +57,7 @@ public static class WebSessionEndpoints
             return ApiProblems.WithCode(StatusCodes.Status404NotFound, "Web sign-in unavailable", "This API offers no web sign-in.", "web_sign_in_disabled");
         }
 
-        var target = string.IsNullOrEmpty(returnUrl) ? "/" : returnUrl;
+        var target = string.IsNullOrEmpty(request.ReturnUrl) ? "/" : request.ReturnUrl;
         if (!ReturnUrls.IsAllowed(target, settings))
         {
             return ApiProblems.WithCode(StatusCodes.Status400BadRequest, "Invalid return address", "The login can only return to the web app.", "invalid_return_url");
@@ -80,7 +90,7 @@ public static class WebSessionEndpoints
             ["code_challenge"] = challenge,
             ["code_challenge_method"] = "S256",
         });
-        return TypedResults.Redirect(location);
+        return TypedResults.Ok(new WebLoginDto(location));
     }
 
     /// <summary>
