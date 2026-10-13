@@ -1,0 +1,3034 @@
+schemaVersion: 1
+id: mayaheros-urophthalmus
+legacyIds:
+  - 719
+status: described
+taxonomy:
+  validName: Mayaheros urophthalmus
+  genus: Mayaheros
+  species: urophthalmus
+  author: "(Günther, 1862)"
+  source:
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes: species of Mayaheros, updated 21 September 2026"
+    url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Ma\
+      yaheros"
+    accessed: 2026-10-13
+  synonyms:
+    - name: Heros urophthalmus
+      note: Original combination.
+    - name: Cichlasoma urophthalmus
+      note: Legacy combination.
+    - name: Cichlasoma urophthalmum
+      note: Historical spelling; the current Catalog treats the epithet as a noun.
+    - name: Nandopsis urophthalmus
+      note: Former generic placement.
+    - name: Heros troschelii
+      note: Junior synonym in the current Catalog.
+    - name: Cichlasoma urophthalmus alborum
+      note: Historical subspecific name currently treated as a synonym.
+    - name: Cichlasoma urophthalmus cienagae
+      note: Historical subspecific name currently treated as a synonym.
+    - name: Cichlasoma urophthalmus conchitae
+      note: Historical subspecific name currently treated as a synonym.
+    - name: Cichlasoma urophthalmus mayorum
+      note: Historical subspecific name currently treated as a synonym.
+    - name: Cichlasoma urophthalmus stenozonum
+      note: Historical subspecific name currently treated as a synonym.
+    - name: Cichlasoma urophthalmus zebra
+      note: Historical subspecific name currently treated as a synonym.
+    - name: Mayaheros alborus
+      note: Former species-level combination currently treated as a synonym.
+    - name: Mayaheros cienagae
+      note: Former species-level combination currently treated as a synonym.
+    - name: Mayaheros conchitae
+      note: Former species-level combination currently treated as a synonym.
+    - name: Mayaheros mayorum
+      note: Former species-level combination currently treated as a synonym.
+    - name: Mayaheros stenozonus
+      note: Former species-level combination currently treated as a synonym.
+    - name: Mayaheros zebra
+      note: Former species-level combination currently treated as a synonym.
+  legacyNames:
+    - Cichlasoma urophthalmus
+  note: "The current Mayaheros entry establishes the valid name and the Lake Peten Itza type locality. The
+    legacy Cichlasoma query does not retain this transferred species. The Catalog supersedes the older CRC
+    subspecies treatment: aguadae, amarus, ericymba and trispilus remain separate valid Mayaheros species,
+    whereas the synonymized Hubbs names listed here do not. The conchitae synonym omitted by some inputs is
+    retained."
+names:
+  trade:
+    en:
+      - Mayan cichlid
+      - Mexican mojarra
+      - False red terror
+      - Orange tiger
+    de:
+      - Schwanzfleckbuntbarsch
+    es-419:
+      - Mojarra del sureste
+      - Castarrica
+      - Mojarra del México
+variants:
+  - name: Lake Peten Itza
+    kind: locality
+    note: Type-locality population. A locality label records collection provenance; it does not establish a fixed
+      captive color strain.
+  - name: Laguna Bacalar
+    kind: locality
+    note: "Native lake population historically associated with the stenozonum name, now treated as a synonym. Keep
+      documented locality information rather than assigning fish from color alone."
+features:
+  origin:
+    value:
+      continent: Central America
+      region: Atlantic lowlands from southern Mexico and the Yucatan Peninsula through Belize and Guatemala to
+        Honduras and Nicaragua
+      waterbody: null
+      localities:
+        - Yucatan Peninsula
+        - "Lake Peten Itza, Guatemala"
+        - "Laguna Bacalar, Mexico"
+        - "Chile Verde Lagoon, Mexico"
+        - Usumacinta and Grijalva basins
+        - Belize mangrove lagoons
+    confidence: high
+    rationale: The Catalog and FishBase establish the Atlantic Mesoamerican native range. Field work confirms the
+      lagoon and mangrove habitats; ECOSUR specifically records the species in Bacalar. Florida and the
+      Alvarado lagoon population in Veracruz are introduced and do not define the natural-water reference.
+      Locality lists across inputs describe parts of the same range.
+    sources:
+      - &a1
+        kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: species of Mayaheros, updated 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Ma\
+          yaheros"
+        accessed: 2026-10-13
+      - &a2
+        kind: database
+        title: "FishBase species summary: Mayaheros urophthalmus"
+        url: "https://www.fishbase.se/summary/Mayaheros-urophthalmus.html"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Vaslet et al. (2012). Dietary habits of juveniles of the Mayan cichlid in mangrove ponds of an
+          offshore islet in Belize, Central America"
+        url: "https://doi.org/10.1590/S1679-62252012000300021"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Fernandez-Perez: La Mojarra Castarrica, Mayaheros urophthalmus: especie nativa mesoamericana con alto
+          potencial acuicola"
+        url: "https://doi.org/10.19136/ta.a2n1.5736"
+        accessed: 2026-10-13
+      - &a3
+        kind: literature
+        title: "Uh-Navarrete et al. (2023). Discovering the fish fauna of a lagoon from the southeast of the Yucatan
+          Peninsula, Mexico, using DNA barcodes"
+        accessed: 2026-10-13
+        url: "https://doi.org/10.7717/peerj.16285"
+      - kind: literature
+        title: Harrison et al. (2014). Genetic Evidence for Multiple Sources of the Non-Native Fish Cichlasoma
+          urophthalmus in Southern Florida
+        url: "https://doi.org/10.1371/journal.pone.0104173"
+        accessed: 2026-10-13
+      - &a4
+        kind: website
+        title: Schmitter-Soto and Herrera Pavon (2024). Los peces de Bacalar. ECOSUR
+        url: "https://www.ecosur.mx/lagunabacalar/270/"
+        accessed: 2026-10-13
+    evidence:
+      - source: *a1
+        value:
+          continent: Central America
+          region: "Atlantic watersheds of Mexico, Belize, Guatemala, Honduras and Nicaragua"
+      - source: *a2
+        value:
+          continent: Central America
+          region: Atlantic Mexico to Nicaragua
+      - source: *a3
+        value:
+          localities:
+            - Chile Verde Lagoon
+        note: Specimens were identified using morphology and DNA barcodes.
+      - source: *a4
+        value:
+          localities:
+            - Laguna Bacalar
+        note: Local occurrence documented by ECOSUR researchers.
+  temperatureC:
+    value:
+      min: 24
+      max: 30
+    confidence: medium
+    rationale: "Tally unanimous, 4 of 4 under the 1 C agreement threshold. Generator proposed 24 to 29 C;
+      checker-a, checker-b and checker-c proposed 24 to 30 C. The median agreeing endpoints give 24 to 30 C
+      after integer rounding. Native collection sites measured 24 to 28 C, Chile Verde monthly means span
+      24.05 to 28.90 C, and Peten Itza epilimnetic observations reach 30 C. Fernandez-Perez reports a wider
+      distribution-level 18 to 34 C envelope; FishBase gives 20 to 39 C. The decided range represents selected
+      shallow-water measurements rather than every season or physiological extreme. Regional cenote studies
+      provide context without demonstrating occurrence at every sampling site."
+    sources:
+      - &a5
+        kind: literature
+        title: Fernandez-Perez et al. (2025). Captive reproductive performance of Mayaheros urophthalmus from four
+          different regions of Southeastern Mexico
+        url: "https://doi.org/10.19136/era.a12n3.4547"
+        accessed: 2026-10-13
+      - &a7
+        kind: literature
+        title: "Perez et al. (2010). Distribution, diversity and ecology of modern freshwater ostracodes and
+          hydrochemical characteristics of Lago Peten Itza, Guatemala. Tables and water-column measurements"
+        url: "https://doi.org/10.4081/jlimnol.2010.146"
+        accessed: 2026-10-13
+      - &a9
+        kind: literature
+        title: "Valdespino-Castillo et al. (2018). Exploring Biogeochemistry and Microbial Diversity of Extant
+          Microbialites in Mexico and Cuba. Table 1, ambient water chemistry"
+        url: "https://doi.org/10.3389/fmicb.2018.00510"
+        accessed: 2026-10-13
+      - &a10
+        kind: literature
+        title: "Larre-Campuzano et al.: Variation in patterns of fish assemblage and their environmental correlates in
+          a tropical river basin from the Gulf of Mexico slope"
+        url: "https://doi.org/10.1590/1982-0224-2022-0098"
+        accessed: 2026-10-13
+      - &a11
+        kind: literature
+        title: The Effect of the Seasonal Variations on the Structure of the Fish Community in Karstic Wetlands
+        url: "https://doi.org/10.1007/s13157-025-01909-9"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Use of Microbiological and Chemical Data to Evaluate the Effects of Tourism on Water Quality in
+          Karstic Cenotes in Yucatan, Mexico"
+        url: "https://doi.org/10.1007/s00128-023-03761-1"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Tropical freshwater ostracodes as environmental indicators across an altitude gradient in Guatemala and
+          Mexico (lake water chemistry of El Peten)
+        url: "https://doi.org/10.15517/rbt.v67i4.33278"
+        accessed: 2026-10-13
+      - &a12
+        kind: literature
+        title: "Fernandez-Perez: La Mojarra Castarrica, Mayaheros urophthalmus: especie nativa mesoamericana con alto
+          potencial acuicola"
+        url: "https://doi.org/10.19136/ta.a2n1.5736"
+        accessed: 2026-10-13
+      - &a6
+        kind: literature
+        title: "Uh-Navarrete et al. (2023). Discovering the fish fauna of a lagoon from the southeast of the Yucatan
+          Peninsula, Mexico, using DNA barcodes"
+        accessed: 2026-10-13
+        url: "https://doi.org/10.7717/peerj.16285"
+      - &a8
+        kind: literature
+        title: "Vaslet et al. (2012). Dietary habits of juveniles of the Mayan cichlid in mangrove ponds of an
+          offshore islet in Belize, Central America"
+        url: "https://doi.org/10.1590/S1679-62252012000300021"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Bleher: Lago Lacanja collecting observations, April 2016. Biotope Aquarium Project"
+        url: "https://biotopeaquariumproject.com/bin/chiapas-laguna-lacanja-bleher/"
+        accessed: 2026-10-13
+      - &a13
+        kind: database
+        title: "FishBase species summary: Mayaheros urophthalmus"
+        url: "https://www.fishbase.se/summary/Mayaheros-urophthalmus.html"
+        accessed: 2026-10-13
+    evidence:
+      - source: *a5
+        value:
+          min: 24
+          max: 28
+        note: Native collection-site measurements; one site was brackish at 24 ppt.
+      - source: *a6
+        value:
+          min: 24.05
+          max: 28.9
+        note: "Monthly means in occupied Chile Verde Lagoon, not individual extrema."
+      - source: *a7
+        value:
+          min: 27.2
+          max: 30
+        note: Shallow observations and the summer epilimnion profile discussed by the authors.
+      - source: *a8
+        value:
+          min: 25
+          max: 30
+        note: Seasonal local surface-water averages reported for Twin Cays.
+      - source: *a9
+        value:
+          min: 29
+          max: 29
+        note: Bacalar ambient-water compilation.
+      - source: *a10
+        value:
+          min: 23.6
+          max: 29.6
+        note: Means across 13 regional sites; only the occupied wetland reading is directly linked to this fish.
+      - source: *a11
+        value:
+          min: 24.99
+          max: 26.64
+        note: "Seasonal peten means, not annual extremes for individual fish."
+      - source: *a12
+        value:
+          min: 18
+          max: 34
+        note: "Broad distribution-level account, not a paired fish and water sampling series."
+      - source: *a13
+        value:
+          min: 20
+          max: 39
+        note: Environmental compilation rather than measured native habitat endpoints.
+    tolerance:
+      value:
+        min: 20
+        max: 30
+      confidence: medium
+      rationale: "Tally unanimous, 4 of 4 retain 20 to 30 C. Seriously Fish gives 20 to 30, Fishkeeper 22 to 30 and
+        Aqua-Fish 20 to 27. The one-year captive reproduction study maintained adults at 27.91 to 29.70. The
+        broader 15 to 39 C ultimate lethal envelope in Stauffer and Boltz is an acute survival result, not
+        evidence for healthy long-term keeping. Stable conditions within the husbandry band are supported more
+        directly than physiological extremes."
+      sources:
+        - &a14
+          kind: database
+          title: "Seriously Fish: Cichlasoma urophthalmus"
+          url: "https://www.seriouslyfish.com/species/cichlasoma-urophthalmus/"
+          accessed: 2026-10-13
+        - &a15
+          kind: website
+          title: "Fishkeeper, Maidenhead Aquatics: Mayan Cichlid"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/mayan-cichlid"
+          accessed: 2026-10-13
+        - &a16
+          kind: database
+          title: "Aqua-Fish: Mayan cichlid care profile"
+          url: "https://en.aqua-fish.net/fish/mayan-cichlid"
+          accessed: 2026-10-13
+        - &a18
+          kind: literature
+          title: Effect of Salinity on the Temperature Preference and Tolerance of Age-0 Mayan Cichlids (abstract only)
+          url: "https://doi.org/10.1577/1548-8659(1994)123%3C0101:eosott%3E2.3.co;2"
+          accessed: 2026-10-13
+        - &a17
+          kind: literature
+          title: Fernandez-Perez et al. (2025). Captive reproductive performance of Mayaheros urophthalmus from four
+            different regions of Southeastern Mexico
+          url: "https://doi.org/10.19136/era.a12n3.4547"
+          accessed: 2026-10-13
+      evidence:
+        - source: *a14
+          value:
+            min: 20
+            max: 30
+          note: Aquarium recommendation.
+        - source: *a15
+          value:
+            min: 22
+            max: 30
+          note: Retailer care recommendation.
+        - source: *a16
+          value:
+            min: 20
+            max: 27
+          note: Narrower aquarium recommendation.
+        - source: *a17
+          value:
+            min: 27.91
+            max: 29.7
+          note: One-year adult reproduction study.
+        - source: *a18
+          value:
+            min: 15
+            max: 39
+          note: Ultimate lethal freshwater limits from the readable abstract; not aquarium tolerance.
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  ph:
+    value:
+      min: 7.4
+      max: 8.5
+    confidence: medium
+    rationale: "Tally qualified-majority, 5 of 6: generator, checker-b and both tie-breakers proposed 7.4 to 8.5;
+      checker-c proposed 7.4 to 8.6 and agrees within 0.3 pH; checker-a proposed 6.8 to 8.5. Median agreeing
+      endpoints retain 7.4 to 8.5. Bacalar Table 1 gives 7.4 and 7.6 despite a narrower generalized sentence
+      in the paper; Peten Itza surface waters give 8.2 to 8.5. The narrower decision does not erase lower
+      peten seasonal means of 6.88 to 7.36 or the 8.55 Lacanja observation. These remain evidence of
+      geographic variation beyond the selected envelope; means, deep-lake readings and cenotes without matched
+      species records are not pooled as complete habitat extremes. The tourism cenote study cited by checker-a
+      gives approximately 6.7 to 7.5, a wider lower-pH context without confirmed species occurrence at those
+      sampling points."
+    sources:
+      - &a20
+        kind: literature
+        title: "Perez et al. (2010). Distribution, diversity and ecology of modern freshwater ostracodes and
+          hydrochemical characteristics of Lago Peten Itza, Guatemala. Tables and water-column measurements"
+        url: "https://doi.org/10.4081/jlimnol.2010.146"
+        accessed: 2026-10-13
+      - &a21
+        kind: literature
+        title: "Valdespino-Castillo et al. (2018). Exploring Biogeochemistry and Microbial Diversity of Extant
+          Microbialites in Mexico and Cuba. Table 1, ambient water chemistry"
+        url: "https://doi.org/10.3389/fmicb.2018.00510"
+        accessed: 2026-10-13
+      - &a19
+        kind: literature
+        title: "Karst-environments of the southeastern Yucatan Peninsula: Hotspots for modern freshwater microbialites
+          (2025). Tables 1 and 2"
+        url: "https://doi.org/10.1371/journal.pone.0322625"
+        accessed: 2026-10-13
+      - &a22
+        kind: literature
+        title: "Uh-Navarrete et al. (2023). Discovering the fish fauna of a lagoon from the southeast of the Yucatan
+          Peninsula, Mexico, using DNA barcodes"
+        accessed: 2026-10-13
+        url: "https://doi.org/10.7717/peerj.16285"
+      - &a23
+        kind: literature
+        title: "Bleher: Lago Lacanja collecting observations, April 2016. Biotope Aquarium Project"
+        url: "https://biotopeaquariumproject.com/bin/chiapas-laguna-lacanja-bleher/"
+        accessed: 2026-10-13
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: species of Mayaheros, updated 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Ma\
+          yaheros"
+        accessed: 2026-10-13
+      - &a25
+        kind: literature
+        title: "Larre-Campuzano et al.: Variation in patterns of fish assemblage and their environmental correlates in
+          a tropical river basin from the Gulf of Mexico slope"
+        url: "https://doi.org/10.1590/1982-0224-2022-0098"
+        accessed: 2026-10-13
+      - &a24
+        kind: literature
+        title: The Effect of the Seasonal Variations on the Structure of the Fish Community in Karstic Wetlands
+        url: "https://doi.org/10.1007/s13157-025-01909-9"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Use of Microbiological and Chemical Data to Evaluate the Effects of Tourism on Water Quality in
+          Karstic Cenotes in Yucatan, Mexico"
+        url: "https://doi.org/10.1007/s00128-023-03761-1"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Tropical freshwater ostracodes as environmental indicators across an altitude gradient in Guatemala and
+          Mexico (lake water chemistry of El Peten)
+        url: "https://doi.org/10.15517/rbt.v67i4.33278"
+        accessed: 2026-10-13
+      - kind: website
+        title: Schmitter-Soto and Herrera Pavon (2024). Los peces de Bacalar. ECOSUR
+        url: "https://www.ecosur.mx/lagunabacalar/270/"
+        accessed: 2026-10-13
+    evidence:
+      - source: *a19
+        value:
+          min: 7.4
+          max: 7.6
+        note: Paired Bacalar sites in Table 1.
+      - source: *a20
+        value:
+          min: 8.2
+          max: 8.5
+        note: Surface water; the 7.5 reading at about 150 m is excluded.
+      - source: *a21
+        value:
+          min: 7.8
+          max: 7.8
+        note: Earlier Bacalar ambient-water compilation.
+      - source: *a22
+        value:
+          min: 8.3
+          max: 8.3
+        note: "Lagoon-wide mean with SD 0.58, not measured endpoints."
+      - source: *a23
+        value:
+          min: 8.55
+          max: 8.55
+        note: "Native collecting observation at Lacanja, slightly above the decided maximum."
+      - source: *a24
+        value:
+          min: 6.88
+          max: 7.36
+        note: Wider regional context from seasonal peten means; not individual extrema.
+      - source: *a25
+        value:
+          min: 7.3
+          max: 8.1
+        note: Regional site means; occurrence is not established at every site.
+    tolerance:
+      value:
+        min: 6.7
+        max: 8.5
+      confidence: low
+      rationale: "Tally unanimous within 0.3 pH, 4 of 4. Generator and checker-b proposed 6.7 to 8.5, checker-a 6.5
+        to 8.5, and checker-c 6.7 to 8.6; median endpoints give 6.7 to 8.5. Aqua-Fish recommends 6.7 to 8.0,
+        while Seriously Fish and Fishkeeper recommend 7.0 to 8.0. The upper extension contains the decided
+        natural pH but is not established by two long-term aquarium studies. Aquario gives a wider 7.0 to 9.5
+        recommendation and Guidarium 6.5 to 8.5; these do not justify adopting less corroborated extremes. The
+        Lacanja observation of 8.55 also remains wider than the decided maximum. Confidence stays low."
+      sources:
+        - &a26
+          kind: database
+          title: "Aqua-Fish: Mayan cichlid care profile"
+          url: "https://en.aqua-fish.net/fish/mayan-cichlid"
+          accessed: 2026-10-13
+        - &a28
+          kind: website
+          title: "Fishkeeper, Maidenhead Aquatics: Mayan Cichlid"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/mayan-cichlid"
+          accessed: 2026-10-13
+        - &a27
+          kind: database
+          title: "Seriously Fish: Cichlasoma urophthalmus"
+          url: "https://www.seriouslyfish.com/species/cichlasoma-urophthalmus/"
+          accessed: 2026-10-13
+        - &a29
+          kind: literature
+          title: "Perez et al. (2010). Distribution, diversity and ecology of modern freshwater ostracodes and
+            hydrochemical characteristics of Lago Peten Itza, Guatemala. Tables and water-column measurements"
+          url: "https://doi.org/10.4081/jlimnol.2010.146"
+          accessed: 2026-10-13
+        - &a30
+          kind: database
+          title: "Aquario: Mojarra care sheet"
+          url: "https://aquario.me/fish/mojarra"
+          accessed: 2026-10-13
+        - &a32
+          kind: literature
+          title: "Bleher: Lago Lacanja collecting observations, April 2016. Biotope Aquarium Project"
+          url: "https://biotopeaquariumproject.com/bin/chiapas-laguna-lacanja-bleher/"
+          accessed: 2026-10-13
+        - &a31
+          kind: website
+          title: "Guidarium: Mayan Cichlid care guide"
+          url: "https://guidarium.com/fishes/mayan-cichlid"
+          accessed: 2026-10-13
+      evidence:
+        - source: *a26
+          value:
+            min: 6.7
+            max: 8
+          note: Aquarium recommendation.
+        - source: *a27
+          value:
+            min: 7
+            max: 8
+          note: Aquarium recommendation.
+        - source: *a28
+          value:
+            min: 7
+            max: 8
+          note: Retailer care recommendation.
+        - source: *a29
+          value:
+            min: 8.2
+            max: 8.5
+          note: "Natural surface-water context, not a multi-year aquarium trial."
+        - source: *a30
+          value:
+            min: 7
+            max: 9.5
+          note: Wider care recommendation with limited corroboration.
+        - source: *a31
+          value:
+            min: 6.5
+            max: 8.5
+          note: Low-weight general hobby guide.
+        - source: *a32
+          value:
+            min: 8.55
+            max: 8.55
+          note: Natural collecting observation above the selected tolerance maximum.
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 5
+        total: 6
+  ghDgh:
+    value:
+      min: 12
+      max: 91
+    confidence: medium
+    rationale: "Tally qualified-majority, 5 of 6 retain 12 to 91 dGH; checker-a proposed 6 to 20. Peten Itza
+      surface Ca 2.9 and Mg 1.5 meq/L yield about 12.3 dGH using summed equivalents times 2.804. Paired
+      Bacalar Ca/Mg measurements of 370.69/94 and 358.05/173.85 mg/L yield 73.6 and 90.2 dGH using Ca/7.14
+      plus Mg/4.34. Outward rounding gives the decided envelope. The older Bacalar compilation gives 62.8 dGH.
+      Sulfate-rich native freshwater explains high GH without comparably high KH. Regional conductivity and
+      care-sheet hardness do not replace measured divalent ions. Fish occurrence and chemistry were not
+      measured simultaneously, and population differences and seasonal coverage limit generalization.
+      Checker-a also cites a wider regional lower bound of about 4 dGH in a 4 to 20 dGH lake survey; the
+      selected 12 to 91 range is not an exhaustive geographic envelope and does not absorb unconfirmed
+      fish-to-site assignments."
+    sources:
+      - &a33
+        kind: literature
+        title: "Perez et al. (2010). Distribution, diversity and ecology of modern freshwater ostracodes and
+          hydrochemical characteristics of Lago Peten Itza, Guatemala. Tables and water-column measurements"
+        url: "https://doi.org/10.4081/jlimnol.2010.146"
+        accessed: 2026-10-13
+      - &a35
+        kind: literature
+        title: "Valdespino-Castillo et al. (2018). Exploring Biogeochemistry and Microbial Diversity of Extant
+          Microbialites in Mexico and Cuba. Table 1, ambient water chemistry"
+        url: "https://doi.org/10.3389/fmicb.2018.00510"
+        accessed: 2026-10-13
+      - &a34
+        kind: literature
+        title: "Karst-environments of the southeastern Yucatan Peninsula: Hotspots for modern freshwater microbialites
+          (2025). Tables 1 and 2"
+        url: "https://doi.org/10.1371/journal.pone.0322625"
+        accessed: 2026-10-13
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: species of Mayaheros, updated 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Ma\
+          yaheros"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Barrientos-Villalobos et al. (2018). Several Subspecies or Phenotypic Plasticity? A Geometric
+          Morphometric and Molecular Analysis of Variability of the Mayan Cichlid Mayaheros urophthalmus in
+          the Yucatan
+        url: "https://doi.org/10.1643/CI-17-657"
+        accessed: 2026-10-13
+      - &a36
+        kind: literature
+        title: Tropical freshwater ostracodes as environmental indicators across an altitude gradient in Guatemala and
+          Mexico (lake water chemistry of El Peten)
+        url: "https://doi.org/10.15517/rbt.v67i4.33278"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Larre-Campuzano et al.: Variation in patterns of fish assemblage and their environmental correlates in
+          a tropical river basin from the Gulf of Mexico slope"
+        url: "https://doi.org/10.1590/1982-0224-2022-0098"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Use of Microbiological and Chemical Data to Evaluate the Effects of Tourism on Water Quality in
+          Karstic Cenotes in Yucatan, Mexico"
+        url: "https://doi.org/10.1007/s00128-023-03761-1"
+        accessed: 2026-10-13
+      - kind: website
+        title: Schmitter-Soto and Herrera Pavon (2024). Los peces de Bacalar. ECOSUR
+        url: "https://www.ecosur.mx/lagunabacalar/270/"
+        accessed: 2026-10-13
+    evidence:
+      - source: *a33
+        value:
+          min: 12.34
+          max: 12.34
+        note: Surface-water ions; whole-column cation maxima are not a paired shallow-water sample.
+      - source: *a34
+        value:
+          min: 73.58
+          max: 90.21
+        note: Calculated from paired dissolved Ca and Mg in Bacalar Table 2.
+      - source: *a35
+        value:
+          min: 62.8
+          max: 62.8
+        note: Earlier Bacalar ambient-water cation compilation.
+      - source: *a36
+        value:
+          min: 16
+          max: 16
+        note: Alternative Peten Itza survey calculation reported by checker-a; no replacement of the more explicit
+          selected chemistry.
+    tolerance:
+      value:
+        min: 8
+        max: 91
+      confidence: low
+      rationale: "Tally qualified-majority, 5 of 6 retain 8 to 91 dGH; checker-a proposed 4 to 20. Aqua-Fish states
+        8 to 18 and Seriously Fish and Fishkeeper provide an upper recommendation of 20. Their displayed or
+        inferred zero is not a proven lower aquarium limit. Aquario states 12 to 35; the Aquarium Wiki gives a
+        wider low-weight 4 to 30. A ten-day larval trial used about 7.7 to 9.1 dGH. The 91 upper bound is a
+        required extension to contain the decided Bacalar natural range, not evidence of years of aquarium
+        health at that hardness. Ordinary care recommendations near 8 to 20 are substantially better
+        supported. Confidence remains low despite agreement on the composite envelope."
+      sources:
+        - &a37
+          kind: database
+          title: "Aqua-Fish: Mayan cichlid care profile"
+          url: "https://en.aqua-fish.net/fish/mayan-cichlid"
+          accessed: 2026-10-13
+        - &a39
+          kind: website
+          title: "Fishkeeper, Maidenhead Aquatics: Mayan Cichlid"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/mayan-cichlid"
+          accessed: 2026-10-13
+        - &a38
+          kind: database
+          title: "Seriously Fish: Cichlasoma urophthalmus"
+          url: "https://www.seriouslyfish.com/species/cichlasoma-urophthalmus/"
+          accessed: 2026-10-13
+        - kind: literature
+          title: "Valdespino-Castillo et al. (2018). Exploring Biogeochemistry and Microbial Diversity of Extant
+            Microbialites in Mexico and Cuba. Table 1, ambient water chemistry"
+          url: "https://doi.org/10.3389/fmicb.2018.00510"
+          accessed: 2026-10-13
+        - &a42
+          kind: literature
+          title: "Karst-environments of the southeastern Yucatan Peninsula: Hotspots for modern freshwater microbialites
+            (2025). Tables 1 and 2"
+          url: "https://doi.org/10.1371/journal.pone.0322625"
+          accessed: 2026-10-13
+        - &a40
+          kind: database
+          title: "Aquario: Mojarra care sheet"
+          url: "https://aquario.me/fish/mojarra"
+          accessed: 2026-10-13
+        - &a43
+          kind: literature
+          title: "Perez et al. (2010). Distribution, diversity and ecology of modern freshwater ostracodes and
+            hydrochemical characteristics of Lago Peten Itza, Guatemala. Tables and water-column measurements"
+          url: "https://doi.org/10.4081/jlimnol.2010.146"
+          accessed: 2026-10-13
+        - &a41
+          kind: literature
+          title: Farhadian et al. (2012). Culture experiments with Ceriodaphnia quadrangula as suitable live food for
+            Mayan cichlid larvae
+          url: "https://doi.org/10.14210/bjast.v16n2.p1-11"
+          accessed: 2026-10-13
+        - kind: model-knowledge
+          title: Generator inference from field measurements and husbandry advice; numerical limits not independently
+            established
+          accessed: 2026-10-13
+        - &a44
+          kind: website
+          title: "The Aquarium Wiki: Mayan Cichlid"
+          url: "https://www.theaquariumwiki.com/wiki/Cichlasoma_urophthalmus"
+          accessed: 2026-10-13
+      evidence:
+        - source: *a37
+          value:
+            min: 8
+            max: 18
+          note: Direct aquarium recommendation.
+        - source: *a38
+          value:
+            min: 0
+            max: 20
+          note: "Displayed range; prose states only up to 20, so zero is not an established minimum."
+        - source: *a39
+          value:
+            max: 20
+          note: Retailer supplies no numerical lower bound.
+        - source: *a40
+          value:
+            min: 12
+            max: 35
+          note: Wider aquarium recommendation without comparative long-term data.
+        - source: *a41
+          value:
+            min: 7.7
+            max: 9.1
+          note: 150 plus or minus 12 mg/L total hardness converted assuming CaCO3 equivalents; ten-day larval trial.
+        - source: *a42
+          value:
+            min: 73.58
+            max: 90.21
+          note: "Native cation chemistry justifies containment, not the long-term aquarium endpoint."
+        - source: *a43
+          value:
+            min: 12.34
+            max: 12.34
+          note: Native surface-water context.
+        - source: *a44
+          value:
+            min: 4
+            max: 30
+          note: Low-weight editable hobby encyclopedia.
+      verification:
+        method: qualified-majority
+        votes:
+          agree: 5
+          total: 6
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 5
+        total: 6
+  khDkh:
+    value:
+      min: 5
+      max: 9
+    confidence: medium
+    rationale: "Tally qualified-majority, 5 of 6 retain 5 to 9 dKH. Generator, checker-b, checker-c and
+      tiebreaker-1 proposed 5 to 9; tiebreaker-2 proposed 5 to 10 and agrees within 2 dKH; checker-a proposed
+      5 to 15. Median agreeing endpoints give 5 to 9. Peten Itza bicarbonate 1.9 to 2.2 meq/L gives 5.3 to 6.2
+      dKH; Bacalar 125.49 to 177.39 mg/L gives 5.76 to 8.14 using bicarbonate/21.78. The 2018 Bacalar
+      compilation gives 7.85. Cenote Azul in the 2025 study extends the wider measured source range to 9.9
+      dKH, and regional lakes cited by checker-a extend to 15; the tally retains a narrower sampled reference
+      and does not claim to encompass all occupied waters. This is bicarbonate alkalinity expressed as dKH,
+      separate from GH and salinity."
+    sources:
+      - &a45
+        kind: literature
+        title: "Perez et al. (2010). Distribution, diversity and ecology of modern freshwater ostracodes and
+          hydrochemical characteristics of Lago Peten Itza, Guatemala. Tables and water-column measurements"
+        url: "https://doi.org/10.4081/jlimnol.2010.146"
+        accessed: 2026-10-13
+      - &a47
+        kind: literature
+        title: "Valdespino-Castillo et al. (2018). Exploring Biogeochemistry and Microbial Diversity of Extant
+          Microbialites in Mexico and Cuba. Table 1, ambient water chemistry"
+        url: "https://doi.org/10.3389/fmicb.2018.00510"
+        accessed: 2026-10-13
+      - &a46
+        kind: literature
+        title: "Karst-environments of the southeastern Yucatan Peninsula: Hotspots for modern freshwater microbialites
+          (2025). Tables 1 and 2"
+        url: "https://doi.org/10.1371/journal.pone.0322625"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Barrientos-Villalobos et al. (2018). Several Subspecies or Phenotypic Plasticity? A Geometric
+          Morphometric and Molecular Analysis of Variability of the Mayan Cichlid Mayaheros urophthalmus in
+          the Yucatan
+        url: "https://doi.org/10.1643/CI-17-657"
+        accessed: 2026-10-13
+      - &a48
+        kind: literature
+        title: Tropical freshwater ostracodes as environmental indicators across an altitude gradient in Guatemala and
+          Mexico (lake water chemistry of El Peten)
+        url: "https://doi.org/10.15517/rbt.v67i4.33278"
+        accessed: 2026-10-13
+      - kind: website
+        title: Schmitter-Soto and Herrera Pavon (2024). Los peces de Bacalar. ECOSUR
+        url: "https://www.ecosur.mx/lagunabacalar/270/"
+        accessed: 2026-10-13
+    evidence:
+      - source: *a45
+        value:
+          min: 5.33
+          max: 6.17
+        note: Bicarbonate 1.9 to 2.2 meq/L converted with 2.804 dKH per meq/L.
+      - source: *a46
+        value:
+          min: 5.76
+          max: 9.9
+        note: Bacalar north and south plus Cenote Azul; the wider source maximum exceeds the tally decision.
+      - source: *a47
+        value:
+          min: 7.85
+          max: 7.85
+        note: Bacalar bicarbonate 171 mg/L in the ambient-water compilation.
+      - source: *a48
+        value:
+          min: 5.3
+          max: 15
+        note: "Checker-a calculation for Peten Itza and other regional lakes, with incomplete species-to-site
+          linkage."
+    tolerance:
+      value:
+        min: 5
+        max: 9
+      confidence: low
+      rationale: "Tally conservative, 3 of 6 in the leading agreement cluster; no qualified majority. All proposals
+        are generator 4 to 10, checker-a 3 to 20, checker-b 5 to 15, checker-c 5 to 9, tiebreaker-1 5 to 15
+        and tiebreaker-2 5 to 10 dKH. The nonempty intersection is 5 to 9 and already contains the decided
+        natural range, so no widening is needed. The decision deliberately narrows the wider culture
+        conditions of approximately 11.8 to 14.8 dKH: Hernandez and colleagues reported alkalinity 238 plus or
+        minus 27 mg/L during a 21-week trial, not experimental tolerance boundaries or years of adult health.
+        Flowgrow lists an even wider 0 to 30 carbonate-hardness field with an inconsistent dGH unit label.
+        Cenote Azul extends natural bicarbonate evidence to 9.9. Neither wider dataset overrides the required
+        tally decision. Species-specific long-term numerical KH bounds remain unverified; Fishkeeper warns
+        about low KH without stating a threshold. Confidence stays low and the intersection must not be read
+        as a physiological ceiling."
+      sources:
+        - &a54
+          kind: website
+          title: "Fishkeeper, Maidenhead Aquatics: Central American Cichlids"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/central-american-cichlids"
+          accessed: 2026-10-13
+        - &a55
+          kind: database
+          title: "Aqua-Fish: Mayan cichlid care profile"
+          url: "https://en.aqua-fish.net/fish/mayan-cichlid"
+          accessed: 2026-10-13
+        - &a49
+          kind: literature
+          title: "Perez et al. (2010). Distribution, diversity and ecology of modern freshwater ostracodes and
+            hydrochemical characteristics of Lago Peten Itza, Guatemala. Tables and water-column measurements"
+          url: "https://doi.org/10.4081/jlimnol.2010.146"
+          accessed: 2026-10-13
+        - kind: literature
+          title: "Valdespino-Castillo et al. (2018). Exploring Biogeochemistry and Microbial Diversity of Extant
+            Microbialites in Mexico and Cuba. Table 1, ambient water chemistry"
+          url: "https://doi.org/10.3389/fmicb.2018.00510"
+          accessed: 2026-10-13
+        - &a56
+          kind: database
+          title: "Seriously Fish: Cichlasoma urophthalmus"
+          url: "https://www.seriouslyfish.com/species/cichlasoma-urophthalmus/"
+          accessed: 2026-10-13
+        - kind: website
+          title: "Fishkeeper, Maidenhead Aquatics: Mayan Cichlid"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/mayan-cichlid"
+          accessed: 2026-10-13
+        - &a51
+          kind: literature
+          title: "Hernandez, Gasca-Leyva and Milstein (2014). Polyculture of mixed-sex and male populations of Nile
+            tilapia (Oreochromis niloticus) with the Mayan cichlid (Cichlasoma urophthalmus), abstract read
+            through AGRIS"
+          accessed: 2026-10-13
+          url: "https://doi.org/10.1016/j.aquaculture.2013.09.035"
+        - &a52
+          kind: database
+          title: "Flowgrow: Cichlasoma urophthalmus fish database"
+          accessed: 2026-10-13
+          url: "https://www.flowgrow.de/db/fish/cichlasoma-urophthalmus"
+        - &a50
+          kind: literature
+          title: "Karst-environments of the southeastern Yucatan Peninsula: Hotspots for modern freshwater microbialites
+            (2025). Tables 1 and 2"
+          url: "https://doi.org/10.1371/journal.pone.0322625"
+          accessed: 2026-10-13
+        - &a53
+          kind: website
+          title: "Maidenhead Aquatics Fishkeeper: What's in Store, January 2020"
+          url: "https://www.fishkeeper.co.uk/stories/whats-in-store-january-2020"
+          accessed: 2026-10-13
+        - kind: model-knowledge
+          title: Generator inference from field measurements and husbandry advice; numerical limits not independently
+            established
+          accessed: 2026-10-13
+      evidence:
+        - source: *a49
+          value:
+            min: 5.33
+            max: 6.17
+          note: "Native alkalinity context, not an aquarium boundary test."
+        - source: *a50
+          value:
+            min: 5.76
+            max: 9.9
+          note: Native Bacalar and Cenote Azul range is wider than the conservative tolerance.
+        - source: *a51
+          value:
+            min: 11.8
+            max: 14.8
+          note: Abstract-only 21-week culture conditions; conversion assumes CaCO3-equivalent alkalinity and variation
+            is not tested limits.
+        - source: *a52
+          value:
+            min: 0
+            max: 30
+          note: Carbonate-hardness field has an inconsistent dGH label; low-weight provisional interpretation.
+        - source: *a53
+          value: null
+          note: Species-specific retailer warning about low KH without a number.
+        - source: *a54
+          value: null
+          note: General buffering advice without a numerical species-specific limit.
+        - source: *a55
+          value: null
+          note: Stable-water advice without numerical KH endpoints.
+        - source: *a56
+          value: null
+          note: No numerical KH limit supplied.
+      verification:
+        method: conservative
+        votes:
+          agree: 3
+          total: 6
+  maxSizeCm:
+    value:
+      male: 30
+      female: 25
+    confidence: low
+    rationale: "Retain 30 cm male and 25 cm female from generator and checker-b rather than checker-a 32/25 or
+      checker-c 27/22. Aqua-Fish gives usual unsexed aquarium adults of 20 to 27 cm, and multiple sources
+      describe larger males. The selected sex split is a cautious planning estimate, not a measured cohort
+      maximum. FishBase reports 39.4 cm TL and both major care sheets list about 40 cm, which is a wider
+      headline maximum rather than typical well-kept aquarium size per sex. Exact sex-specific maxima remain
+      low confidence."
+    sources:
+      - &a57
+        kind: database
+        title: "Aqua-Fish: Mayan cichlid care profile"
+        url: "https://en.aqua-fish.net/fish/mayan-cichlid"
+        accessed: 2026-10-13
+      - &a60
+        kind: website
+        title: "Fishkeeper, Maidenhead Aquatics: Mayan Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/mayan-cichlid"
+        accessed: 2026-10-13
+      - &a58
+        kind: database
+        title: "FishBase species summary: Mayaheros urophthalmus"
+        url: "https://www.fishbase.se/summary/Mayaheros-urophthalmus.html"
+        accessed: 2026-10-13
+      - &a61
+        kind: model-knowledge
+        title: Generator inference from field measurements and husbandry advice; numerical limits not independently
+          established
+        accessed: 2026-10-13
+      - &a59
+        kind: database
+        title: "Seriously Fish: Cichlasoma urophthalmus"
+        url: "https://www.seriouslyfish.com/species/cichlasoma-urophthalmus/"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Analyzing Invasion Success of the Mayan Cichlid (Cichlasoma urophthalmus) in Southern Florida
+          (dissertation)
+        url: "https://doi.org/10.25148/etd.fi14040819"
+        accessed: 2026-10-13
+    evidence:
+      - source: *a57
+        value:
+          unsexed:
+            min: 20
+            max: 27
+        note: Usual aquarium size without sex-specific endpoints.
+      - source: *a58
+        value:
+          unsexed: 39.4
+        note: "Published total-length maximum, not typical aquarium size per sex."
+      - source: *a59
+        value:
+          unsexed: 40
+        note: "Headline standard-length maximum, not a typical per-sex aquarium value."
+      - source: *a60
+        value:
+          unsexed: 40
+        note: Headline maximum; males described as larger.
+      - source: *a61
+        value:
+          male: 30
+          female: 25
+        note: "Uncertain planning allocation, not directly observed sex-specific maxima."
+  predation:
+    value: 2
+    confidence: medium
+    rationale: "Tally unanimous, 4 of 4 retain level 2 with medium confidence. FishBase identifies small fish as
+      adult prey, and aquarium guidance excludes fish that adults can swallow. Florida feeding work and the
+      polyculture abstract show variable piscivory, including larval predation; the sampled estuarine and
+      Belize populations often ate mainly invertebrates. This variation does not remove the mouth-size
+      conflict in an aquarium. Level 3 would imply a consistently fish-dominated specialist diet, which the
+      evidence does not establish."
+    sources:
+      - &a62
+        kind: database
+        title: "FishBase species summary: Mayaheros urophthalmus"
+        url: "https://www.fishbase.se/summary/Mayaheros-urophthalmus.html"
+        accessed: 2026-10-13
+      - &a68
+        kind: literature
+        title: "Vaslet et al. (2012). Dietary habits of juveniles of the Mayan cichlid in mangrove ponds of an
+          offshore islet in Belize, Central America"
+        url: "https://doi.org/10.1590/S1679-62252012000300021"
+        accessed: 2026-10-13
+      - &a63
+        kind: database
+        title: "Aqua-Fish: Mayan cichlid care profile"
+        url: "https://en.aqua-fish.net/fish/mayan-cichlid"
+        accessed: 2026-10-13
+      - &a65
+        kind: website
+        title: "Fishkeeper, Maidenhead Aquatics: Mayan Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/mayan-cichlid"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Analyzing Invasion Success of the Mayan Cichlid (Cichlasoma urophthalmus) in Southern Florida
+          (dissertation)
+        url: "https://doi.org/10.25148/etd.fi14040819"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Bergmann and Motta: Diet and morphology through ontogeny of the nonindigenous Mayan cichlid in
+          southern Florida (abstract only)"
+        url: "https://doi.org/10.1007/s10641-004-1480-1"
+        accessed: 2026-10-13
+      - &a66
+        kind: literature
+        title: "Feeding Habits of the Non-Native Mayan Cichlid, Mayaheros urophthalmus, in Estuarine Tributaries of
+          Southwest Florida"
+        url: "https://doi.org/10.18785/gcr.3201.08"
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishBase: food items of Mayaheros urophthalmus"
+        accessed: 2026-10-13
+        url: "https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=5027&genus=Mayaheros&species=urophthalm\
+          us"
+      - &a67
+        kind: literature
+        title: "Hernandez, Gasca-Leyva and Milstein (2014). Polyculture of mixed-sex and male populations of Nile
+          tilapia (Oreochromis niloticus) with the Mayan cichlid (Cichlasoma urophthalmus), abstract read
+          through AGRIS"
+        accessed: 2026-10-13
+        url: "https://doi.org/10.1016/j.aquaculture.2013.09.035"
+      - kind: literature
+        title: "Chavez-Lopez et al. (2005). Ecology of the Mayan Cichlid, Cichlasoma urophthalmus Gunther, in the
+          Alvarado Lagoonal System, Veracruz, Mexico"
+        accessed: 2026-10-13
+        url: "https://doi.org/10.18785/gcr.1701.13"
+      - &a64
+        kind: database
+        title: "Aquario: Mojarra care sheet"
+        url: "https://aquario.me/fish/mojarra"
+        accessed: 2026-10-13
+    evidence:
+      - source: *a62
+        value: 2
+        note: Small fishes recorded as prey; level is a rubric mapping.
+      - source: *a63
+        value: 2
+        note: Small aquarium companions face predation.
+      - source: *a64
+        value: 2
+        note: Explicit mouth-sized fish risk.
+      - source: *a65
+        value: 2
+        note: Retailer excludes small fish.
+      - source: *a66
+        value: 2
+        note: Fish consumption varies among populations; sampled estuarine adults mainly ate shelled invertebrates.
+      - source: *a67
+        value: 1
+        note: "Tilapia-larva predation supports at least level 1, not level 2 by itself."
+      - source: *a68
+        value: 2
+        note: Review of population differences supports piscivory; the sampled Belize juveniles mainly ate
+          crustaceans.
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  diet:
+    value:
+      type: omnivore
+      bloatSensitive: false
+      foods:
+        - balanced cichlid pellets
+        - aquatic crustaceans
+        - molluscs
+        - insect larvae
+        - vegetable matter
+        - algae-based foods
+    confidence: medium
+    rationale: "Tally qualified-majority, 5 of 6 retain omnivore and bloatSensitive false. Generator, checker-a,
+      checker-b and both tie-breakers proposed omnivore; checker-c proposed invertivore. Invertebrates
+      dominate the Celestun abstract and Belize juveniles, and plants may sometimes enter incidentally.
+      Alvarado stomach contents were plant-rich, Campeche fish were classified as detritivorous and
+      omnivorous, and nutritional reviews support use of both animal and plant ingredients. The species-wide
+      husbandry classification therefore remains omnivore with a substantial animal component. Successful
+      protein-rich culture supports no mandatory low-protein restriction, but no cited study directly tests
+      bloat susceptibility. False records absence of an established specialist conflict, not immunity to
+      digestive illness. Foods are retained exactly from the tally."
+    sources:
+      - &a71
+        kind: literature
+        title: "Vaslet et al. (2012). Dietary habits of juveniles of the Mayan cichlid in mangrove ponds of an
+          offshore islet in Belize, Central America"
+        url: "https://doi.org/10.1590/S1679-62252012000300021"
+        accessed: 2026-10-13
+      - &a69
+        kind: literature
+        title: "Chavez-Lopez et al. (2005). Ecology of the Mayan Cichlid, Cichlasoma urophthalmus Gunther, in the
+          Alvarado Lagoonal System, Veracruz, Mexico"
+        accessed: 2026-10-13
+        url: "https://doi.org/10.18785/gcr.1701.13"
+      - &a75
+        kind: website
+        title: "Fishkeeper, Maidenhead Aquatics: Mayan Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/mayan-cichlid"
+        accessed: 2026-10-13
+      - &a78
+        kind: database
+        title: "Seriously Fish: Cichlasoma urophthalmus"
+        url: "https://www.seriouslyfish.com/species/cichlasoma-urophthalmus/"
+        accessed: 2026-10-13
+      - &a73
+        kind: literature
+        title: "Feeding Habits of the Non-Native Mayan Cichlid, Mayaheros urophthalmus, in Estuarine Tributaries of
+          Southwest Florida"
+        url: "https://doi.org/10.18785/gcr.3201.08"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Fernandez-Perez: La Mojarra Castarrica, Mayaheros urophthalmus: especie nativa mesoamericana con alto
+          potencial acuicola"
+        url: "https://doi.org/10.19136/ta.a2n1.5736"
+        accessed: 2026-10-13
+      - &a74
+        kind: literature
+        title: Feeding habits and nutritional requirements of native cichlids with aquaculture potential from Mexico
+          and Central America. A review
+        url: "https://doi.org/10.3856/vol53-issue3-fulltext-3369"
+        accessed: 2026-10-13
+      - &a72
+        kind: literature
+        title: "Martinez-Palacios and Ross (1988). The feeding ecology of the Central American cichlid Cichlasoma
+          urophthalmus (Gunther), abstract only"
+        accessed: 2026-10-13
+        url: "https://doi.org/10.1111/j.1095-8649.1988.tb05512.x"
+      - kind: database
+        title: "FishBase: ecology of Mayaheros urophthalmus"
+        accessed: 2026-10-13
+        url: "https://www.fishbase.se/Ecology/FishEcologySummary.php?StockCode=5027&GenusName=Mayaheros&SpeciesName=u\
+          rophthalmus"
+      - kind: database
+        title: "FishBase: diet composition of Mayaheros urophthalmus"
+        accessed: 2026-10-13
+        url: "https://www.fishbase.se/TrophicEco/DietCompoList.php?ID=4798&GenusName=Mayaheros&SpeciesName=urophthalm\
+          us&fc=349&StockCode=5027"
+      - &a76
+        kind: database
+        title: "Aqua-Fish: Mayan cichlid care profile"
+        url: "https://en.aqua-fish.net/fish/mayan-cichlid"
+        accessed: 2026-10-13
+      - &a70
+        kind: literature
+        title: Hinojosa-Garro et al. (2013). Fish diet composition in permanent and semi-permanent pools in tropical
+          wetlands of the Yucatan Peninsula
+        url: "https://doi.org/10.1590/S1679-62252013000400016"
+        accessed: 2026-10-13
+      - &a77
+        kind: database
+        title: "Zoopet: Mayaheros urophthalmus species care sheet"
+        url: "https://www.zoopet.com/fiskar/fisk.php?NR=1930"
+        accessed: 2026-10-13
+      - &a79
+        kind: literature
+        title: "Hernandez, Gasca-Leyva and Milstein (2014). Polyculture of mixed-sex and male populations of Nile
+          tilapia (Oreochromis niloticus) with the Mayan cichlid (Cichlasoma urophthalmus), abstract read
+          through AGRIS"
+        accessed: 2026-10-13
+        url: "https://doi.org/10.1016/j.aquaculture.2013.09.035"
+      - kind: literature
+        title: Fernandez-Perez et al. (2025). Captive reproductive performance of Mayaheros urophthalmus from four
+          different regions of Southeastern Mexico
+        url: "https://doi.org/10.19136/era.a12n3.4547"
+        accessed: 2026-10-13
+    evidence:
+      - source: *a69
+        value:
+          type: omnivore
+        note: Seasonal plant-rich stomach contents with molluscs and other animal items; bloat not tested.
+      - source: *a70
+        value:
+          type: omnivore
+        note: Campeche permanent-pool fish classified as detritivorous and omnivorous.
+      - source: *a71
+        value:
+          type: invertivore
+        note: Belize juvenile sample mainly ate crustaceans; wider population differences are reviewed.
+      - source: *a72
+        value:
+          type: invertivore
+        note: Readable abstract only; plant digestion is questioned.
+      - source: *a73
+        value:
+          type: invertivore
+        note: Estuarine hard-shelled prey dominate animal feeding; plant assimilation remains unresolved.
+      - source: *a74
+        value:
+          type: omnivore
+          bloatSensitive: false
+        note: Flexible nutritional ingredients and protein-rich culture support the feeding classification; bloat flag
+          is inference.
+      - source: *a75
+        value:
+          type: omnivore
+        note: Animal foods plus vegetables recommended by the retailer.
+      - source: *a76
+        value:
+          type: omnivore
+        note: Pellets and animal foods with occasional vegetable material.
+      - source: *a77
+        value:
+          type: omnivore
+        note: Structured diet categories and feeding guidance.
+      - source: *a78
+        value:
+          type: invertivore
+        note: Natural aquatic invertebrates prioritized; mixed captive foods accepted.
+      - source: *a79
+        value:
+          bloatSensitive: false
+        note: "Indirect inference from high survival on protein-rich feeds; abstract-only study, no bloat test."
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 5
+        total: 6
+  aggressionConspecific:
+    value: 3
+    confidence: medium
+    rationale: All four full profiles retain level 3. Persistent rival and partner pressure requires an
+      established pair and room to escape. Fishkeeper describes intolerance of additional adults and
+      separation of juvenile groups; Aqua-Fish is milder about females and Aquario uses a calmer label. These
+      descriptions do not establish safe grouping of unrelated adults. Evidence of routine killing within the
+      recommended compatible pair is insufficient for level 4.
+    sources:
+      - &a80
+        kind: website
+        title: "Fishkeeper, Maidenhead Aquatics: Mayan Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/mayan-cichlid"
+        accessed: 2026-10-13
+      - &a81
+        kind: database
+        title: "Seriously Fish: Cichlasoma urophthalmus"
+        url: "https://www.seriouslyfish.com/species/cichlasoma-urophthalmus/"
+        accessed: 2026-10-13
+      - &a83
+        kind: database
+        title: "Aqua-Fish: Mayan cichlid care profile"
+        url: "https://en.aqua-fish.net/fish/mayan-cichlid"
+        accessed: 2026-10-13
+      - &a82
+        kind: literature
+        title: "Fernandez-Perez: La Mojarra Castarrica, Mayaheros urophthalmus: especie nativa mesoamericana con alto
+          potencial acuicola"
+        url: "https://doi.org/10.19136/ta.a2n1.5736"
+        accessed: 2026-10-13
+      - &a84
+        kind: database
+        title: "Aquario: Mojarra care sheet"
+        url: "https://aquario.me/fish/mojarra"
+        accessed: 2026-10-13
+      - kind: archive
+        title: cichlids.com forum thread 1431
+        url: "https://www.cichlids.com/disc/read.php?1,1431"
+        accessed: 2026-10-13
+    evidence:
+      - source: *a80
+        value: 3
+        note: Adult groups require separation into compatible pairs.
+      - source: *a81
+        value: 3
+        note: territorial and fairly aggressive
+      - source: *a82
+        value: 3
+        note: aggression of breeders causes mortality in captivity
+      - source: *a83
+        value: 2
+        note: More favorable description of behavior toward females; still recommends a proven pair.
+      - source: *a84
+        value: 2
+        note: "Calmer characterization, with territorial behavior and pair keeping; lower aggression estimate than
+          Fishkeeper."
+  aggressionHeterospecific:
+    value: 3
+    confidence: medium
+    rationale: All four full profiles retain level 3. Seriously Fish and Fishkeeper restrict companions to robust
+      fish of comparable size and warn of substantial breeding defense; Aquario is less severe outside
+      spawning. The classification reflects the need for robust companions and possible separation without
+      claiming that similarly sized fish are routinely killed in adequate space.
+    sources:
+      - &a85
+        kind: website
+        title: "Fishkeeper, Maidenhead Aquatics: Mayan Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/mayan-cichlid"
+        accessed: 2026-10-13
+      - &a86
+        kind: database
+        title: "Seriously Fish: Cichlasoma urophthalmus"
+        url: "https://www.seriouslyfish.com/species/cichlasoma-urophthalmus/"
+        accessed: 2026-10-13
+      - &a88
+        kind: database
+        title: "Aqua-Fish: Mayan cichlid care profile"
+        url: "https://en.aqua-fish.net/fish/mayan-cichlid"
+        accessed: 2026-10-13
+      - &a89
+        kind: database
+        title: "Aquario: Mojarra care sheet"
+        url: "https://aquario.me/fish/mojarra"
+        accessed: 2026-10-13
+      - &a87
+        kind: website
+        title: "Guidarium: Mayan Cichlid care guide"
+        url: "https://guidarium.com/fishes/mayan-cichlid"
+        accessed: 2026-10-13
+    evidence:
+      - source: *a85
+        value: 3
+        note: Robust large tankmates and possible separation during breeding.
+      - source: *a86
+        value: 3
+        note: Robust community possible but success is uncertain.
+      - source: *a87
+        value: 3
+        note: rated aggressive
+      - source: *a88
+        value: 3
+        note: "Large robust tankmates, territory divisions and intensified breeding aggression."
+      - source: *a89
+        value: 2
+        note: Pair defends offspring and conflicts especially with other bottom users.
+  territory:
+    value:
+      size: large
+      breedingOnly: false
+    confidence: medium
+    rationale: "All full profiles retain a large territory that is not limited to breeding. Adult territorial
+      behavior and the care-sheet footprints support substantial defended space; reproduction increases its
+      intensity. The rubric category is inferred from housing and conflict observations, not a measured
+      aquarium territory diameter."
+    sources:
+      - &a91
+        kind: website
+        title: "Fishkeeper, Maidenhead Aquatics: Mayan Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/mayan-cichlid"
+        accessed: 2026-10-13
+      - &a90
+        kind: database
+        title: "Seriously Fish: Cichlasoma urophthalmus"
+        url: "https://www.seriouslyfish.com/species/cichlasoma-urophthalmus/"
+        accessed: 2026-10-13
+      - &a92
+        kind: database
+        title: "Aqua-Fish: Mayan cichlid care profile"
+        url: "https://en.aqua-fish.net/fish/mayan-cichlid"
+        accessed: 2026-10-13
+    evidence:
+      - source: *a90
+        value:
+          size: large
+          breedingOnly: false
+        note: Territorial community advice with individual territories.
+      - source: *a91
+        value:
+          size: large
+          breedingOnly: false
+        note: "Rubric inference from intolerance, adult pair management and breeding separation."
+      - source: *a92
+        value:
+          size: large
+          breedingOnly: false
+        note: Rubric inference from permanent territorial behavior and space requirements.
+  habitatZones:
+    value:
+      - sand
+      - rock
+      - wood
+      - plants
+    confidence: high
+    rationale: "All full profiles name the same four zones in different orders. Native mangrove roots and
+      vegetated margins provide shelter and food, while sand, rock and wood match both collecting observations
+      and aquarium layouts. Plants may be damaged; listing plants as habitat does not require intact planted
+      displays."
+    sources:
+      - &a94
+        kind: literature
+        title: "Vaslet et al. (2012). Dietary habits of juveniles of the Mayan cichlid in mangrove ponds of an
+          offshore islet in Belize, Central America"
+        url: "https://doi.org/10.1590/S1679-62252012000300021"
+        accessed: 2026-10-13
+      - &a98
+        kind: literature
+        title: "Chavez-Lopez et al. (2005). Ecology of the Mayan Cichlid, Cichlasoma urophthalmus Gunther, in the
+          Alvarado Lagoonal System, Veracruz, Mexico"
+        accessed: 2026-10-13
+        url: "https://doi.org/10.18785/gcr.1701.13"
+      - &a93
+        kind: website
+        title: "Fishkeeper, Maidenhead Aquatics: Mayan Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/mayan-cichlid"
+        accessed: 2026-10-13
+      - &a95
+        kind: database
+        title: "FishBase species summary: Mayaheros urophthalmus"
+        url: "https://www.fishbase.se/summary/Mayaheros-urophthalmus.html"
+        accessed: 2026-10-13
+      - &a96
+        kind: database
+        title: "Seriously Fish: Cichlasoma urophthalmus"
+        url: "https://www.seriouslyfish.com/species/cichlasoma-urophthalmus/"
+        accessed: 2026-10-13
+      - &a97
+        kind: literature
+        title: "Fernandez-Perez: La Mojarra Castarrica, Mayaheros urophthalmus: especie nativa mesoamericana con alto
+          potencial acuicola"
+        url: "https://doi.org/10.19136/ta.a2n1.5736"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Uh-Navarrete et al. (2023). Discovering the fish fauna of a lagoon from the southeast of the Yucatan
+          Peninsula, Mexico, using DNA barcodes"
+        accessed: 2026-10-13
+        url: "https://doi.org/10.7717/peerj.16285"
+      - &a99
+        kind: literature
+        title: "Bleher: Lago Lacanja collecting observations, April 2016. Biotope Aquarium Project"
+        url: "https://biotopeaquariumproject.com/bin/chiapas-laguna-lacanja-bleher/"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Feeding Habits of the Non-Native Mayan Cichlid, Mayaheros urophthalmus, in Estuarine Tributaries of
+          Southwest Florida"
+        url: "https://doi.org/10.18785/gcr.3201.08"
+        accessed: 2026-10-13
+    evidence:
+      - source: *a93
+        value:
+          - sand
+          - wood
+          - rock
+          - plants
+        note: Substrate and shelter layout for captive adults.
+      - source: *a94
+        value:
+          - plants
+          - wood
+        note: Fish collected along native mangrove roots and fed on associated prey.
+      - source: *a95
+        value:
+          - plants
+          - wood
+        note: freshwater marshes and mangrove swamps
+      - source: *a96
+        value:
+          - wood
+          - rock
+          - plants
+        note: Cover recommendations and mangrove habitat.
+      - source: *a97
+        value:
+          - sand
+          - rock
+          - plants
+        note: "mud, gravel, rock and vegetation"
+      - source: *a98
+        value:
+          - plants
+        note: Aquatic vegetation associated with field captures.
+      - source: *a99
+        value:
+          - sand
+          - rock
+          - plants
+          - wood
+        note: "Structured native habitat observations list sandy, stony and vegetated margins."
+  social:
+    value:
+      structure: pair
+    confidence: high
+    rationale: "All full profiles retain an established male-female pair as the adult social unit. Seriously Fish
+      and Aqua-Fish originate the recommendation; Fishkeeper and Aquario agree. Captive reproduction observes
+      substrate spawning and pair defense, and the public CRC monogamy summary confirms the classification.
+      Juvenile group tolerance is not evidence for an adult group."
+    sources:
+      - &a100
+        kind: website
+        title: "Fishkeeper, Maidenhead Aquatics: Mayan Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/mayan-cichlid"
+        accessed: 2026-10-13
+      - &a101
+        kind: database
+        title: "Seriously Fish: Cichlasoma urophthalmus"
+        url: "https://www.seriouslyfish.com/species/cichlasoma-urophthalmus/"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Fernandez-Perez et al. (2025). Captive reproductive performance of Mayaheros urophthalmus from four
+          different regions of Southeastern Mexico
+        url: "https://doi.org/10.19136/era.a12n3.4547"
+        accessed: 2026-10-13
+      - &a103
+        kind: database
+        title: "Cichlid Room Companion: Mayaheros urophthalmus, public summary used for verification only"
+        url: "https://cichlidae.com/species.php?id=QEnQs9Lx5sFjcqa2t9mtaQ"
+        accessed: 2026-10-13
+      - &a102
+        kind: literature
+        title: "Fernandez-Perez: La Mojarra Castarrica, Mayaheros urophthalmus: especie nativa mesoamericana con alto
+          potencial acuicola"
+        url: "https://doi.org/10.19136/ta.a2n1.5736"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Aqua-Fish: Mayan cichlid care profile"
+        url: "https://en.aqua-fish.net/fish/mayan-cichlid"
+        accessed: 2026-10-13
+      - &a104
+        kind: database
+        title: "Aquario: Mojarra care sheet"
+        url: "https://aquario.me/fish/mojarra"
+        accessed: 2026-10-13
+    evidence:
+      - source: *a100
+        value:
+          structure: pair
+        note: Established adult pair recommendation.
+      - source: *a101
+        value:
+          structure: pair
+      - source: *a102
+        value: pair
+        note: biparental brood care with one male per female
+      - source: *a103
+        value:
+          structure: pair
+        note: "Verification only: monogamous mating in the public summary."
+      - source: *a104
+        value:
+          structure: pair
+        note: Pair maintenance and stable male-female bond.
+  speciesOnly:
+    value: false
+    confidence: high
+    rationale: "Tally unanimous, 4 of 4 retain false with high confidence. Seriously Fish, Aqua-Fish and Aquario
+      allow selected substantial companions; Fishkeeper also allows similarly sized robust cichlids despite
+      its non-community summary label. Checker-a mapped that label to true in one evidence row while voting
+      false; the detailed care text resolves the inconsistency. A dedicated pair aquarium is often easier, but
+      the general recommendation does not require exclusive conspecific keeping. Small, timid or repeatedly
+      attacked fish remain unsuitable."
+    sources:
+      - &a108
+        kind: website
+        title: "Fishkeeper, Maidenhead Aquatics: Mayan Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/mayan-cichlid"
+        accessed: 2026-10-13
+      - &a105
+        kind: database
+        title: "Seriously Fish: Cichlasoma urophthalmus"
+        url: "https://www.seriouslyfish.com/species/cichlasoma-urophthalmus/"
+        accessed: 2026-10-13
+      - &a106
+        kind: database
+        title: "Aqua-Fish: Mayan cichlid care profile"
+        url: "https://en.aqua-fish.net/fish/mayan-cichlid"
+        accessed: 2026-10-13
+      - &a107
+        kind: database
+        title: "Aquario: Mojarra care sheet"
+        url: "https://aquario.me/fish/mojarra"
+        accessed: 2026-10-13
+    evidence:
+      - source: *a105
+        value: false
+        note: Medium-to-large mixed community conditionally allowed.
+      - source: *a106
+        value: false
+        note: Robust similarly sized companions conditionally allowed.
+      - source: *a107
+        value: false
+        note: Comparable fish allowed with attention to territory and swimming zone.
+      - source: *a108
+        value: false
+        note: Detailed retailer care text permits robust companions despite the summary label.
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  hybridGroups:
+    value:
+      - mayaheros-urophthalmus-blood-parrot
+      - vieja-melanurus-mayaheros-urophthalmus
+    confidence: medium
+    rationale: "Tally qualified-majority, 4 of 6 retain mayaheros-urophthalmus-blood-parrot and
+      vieja-melanurus-mayaheros-urophthalmus. Generator, checker-b and both tie-breakers proposed both ids;
+      checker-a omitted the blood-parrot pair; checker-c proposed the same biological pair under
+      blood-parrot-mayaheros-urophthalmus, which is not an additional crossing group. Fisher and colleagues
+      produced Vieja eggs fertilized with Mayan sperm and separately reported viable young from stripped
+      female blood-parrot eggs fertilized with Mayan sperm. Both groups have presumed basis because
+      fertilization was artificial. The Mendeley dataset supports the Vieja experiment but shares its
+      investigators and is not independent replication. The curated registry, Catalog names and general
+      retailer crossing warning do not independently confirm either named cross. No crosses with species in
+      blood-parrot ancestry are inferred."
+    sources:
+      - &a109
+        kind: literature
+        title: Fisher et al. (2025). Response to salinity challenge in hybrid blood parrot cichlids. Methods and
+          preliminary fertility observations
+        url: "https://doi.org/10.1007/s10641-025-01694-8"
+        accessed: 2026-10-13
+      - &a111
+        kind: website
+        title: "Fishkeeper, Maidenhead Aquatics: Central American Cichlids"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/central-american-cichlids"
+        accessed: 2026-10-13
+      - kind: database
+        title: "cichlids.com curated hybrid-group table: data/species/hybrid-groups.yaml"
+        accessed: 2026-10-13
+      - &a110
+        kind: database
+        title: "Fisher et al. (2024). Hybrid Cichlid salinity trials data, version 1. Mendeley Data"
+        url: "https://doi.org/10.17632/z997fw7m7z.1"
+        accessed: 2026-10-13
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: species of Mayaheros, updated 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Ma\
+          yaheros"
+        accessed: 2026-10-13
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: species of Vieja, updated 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Vi\
+          eja"
+        accessed: 2026-10-13
+      - kind: database
+        title: "cichlids.com curated hybrid groups, data/species/hybrid-groups.yaml"
+        accessed: 2026-10-13
+      - kind: database
+        title: "cichlids.com curated hybrid-groups.yaml: vieja-melanurus-mayaheros-urophthalmus"
+        accessed: 2026-10-13
+    evidence:
+      - source: *a109
+        value:
+          - mayaheros-urophthalmus-blood-parrot
+          - vieja-melanurus-mayaheros-urophthalmus
+        note: Both artificial pairings produced viable young; the blood-parrot result is preliminary and free partner
+          choice was absent.
+      - source: *a110
+        value:
+          - vieja-melanurus-mayaheros-urophthalmus
+        note: Supporting dataset from the same research program; no independent blood-parrot pairing experiment.
+      - source: *a111
+        value: null
+        note: "General retailer crossing warning, not confirmation of a named pair."
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 4
+        total: 6
+  coloration:
+    value:
+      baseColors:
+        - brown
+        - orange
+        - red
+        - black
+      pattern: mixed
+    confidence: medium
+    rationale: "Generator proposed brown/orange/red/black with mixed pattern; checker-a grey/orange/red/black with
+      bars; checker-b brown/orange/red/black/blue with bars; checker-c brown/yellow/red/black with mixed.
+      Retain brown, orange, red and black as the general adult palette and mixed because both repeated
+      vertical bars and the prominent caudal eyespot are diagnostic. Grey and yellow describe variable ground
+      tones rather than fixed additional dominant colors; blue edging is a small accent. Exact intensity
+      changes with locality and reproductive condition, so this is not a sexing key."
+    sources:
+      - &a113
+        kind: database
+        title: "Aqua-Fish: Mayan cichlid care profile"
+        url: "https://en.aqua-fish.net/fish/mayan-cichlid"
+        accessed: 2026-10-13
+      - kind: archive
+        title: cichlids.com forum thread 643
+        url: "https://www.cichlids.com/disc/read.php?1,643"
+        accessed: 2026-10-13
+      - kind: model-knowledge
+        title: Generator inference from field measurements and husbandry advice; numerical limits not independently
+          established
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishBase species summary: Mayaheros urophthalmus"
+        url: "https://www.fishbase.se/summary/Mayaheros-urophthalmus.html"
+        accessed: 2026-10-13
+      - &a112
+        kind: database
+        title: "Aquario: Mojarra care sheet"
+        url: "https://aquario.me/fish/mojarra"
+        accessed: 2026-10-13
+      - &a114
+        kind: literature
+        title: Farhadian et al. (2012). Culture experiments with Ceriodaphnia quadrangula as suitable live food for
+          Mayan cichlid larvae
+        url: "https://doi.org/10.14210/bjast.v16n2.p1-11"
+        accessed: 2026-10-13
+    evidence:
+      - source: *a112
+        value:
+          baseColors:
+            - brown
+            - yellow
+            - grey
+            - red
+            - black
+          pattern: mixed
+        note: Variable body tones with vertical bars and a caudal spot; mapping to rubric.
+      - source: *a113
+        value:
+          baseColors:
+            - red
+            - black
+          pattern: mixed
+        note: Breeding color and adult-pattern description; no quantitative color assessment.
+      - source: *a114
+        value:
+          pattern: mixed
+        note: Introduction describes dark bars and a large caudal ocellus.
+  feedingSpeed:
+    value: hasty
+    confidence: medium
+    rationale: "All full profiles retain hasty. Fishkeeper describes eager intake and Aqua-Fish describes active
+      foraging. This is a feeding-competition interpretation for a robust opportunistic adult, not a measured
+      comparative rate or proof that every individual monopolizes food."
+    sources:
+      - &a115
+        kind: website
+        title: "Fishkeeper, Maidenhead Aquatics: Mayan Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/mayan-cichlid"
+        accessed: 2026-10-13
+      - &a118
+        kind: database
+        title: "Aqua-Fish: Mayan cichlid care profile"
+        url: "https://en.aqua-fish.net/fish/mayan-cichlid"
+        accessed: 2026-10-13
+      - &a116
+        kind: database
+        title: "Seriously Fish: Cichlasoma urophthalmus"
+        url: "https://www.seriouslyfish.com/species/cichlasoma-urophthalmus/"
+        accessed: 2026-10-13
+      - &a117
+        kind: website
+        title: "Guidarium: Mayan Cichlid care guide"
+        url: "https://guidarium.com/fishes/mayan-cichlid"
+        accessed: 2026-10-13
+      - kind: model-knowledge
+        title: Independent checker inference from the cited observations
+        accessed: 2026-10-13
+    evidence:
+      - source: *a115
+        value: hasty
+        note: "Rubric inference from eager feeding, not a measured feeding-speed category."
+      - source: *a116
+        value: hasty
+        note: not a fussy eater
+      - source: *a117
+        value: hasty
+        note: "opportunistic, eats anything that fits in its mouth"
+      - source: *a118
+        value: hasty
+        note: Darting feeding behavior; inference rather than a feeding-speed experiment.
+  minTank:
+    value:
+      volumeL: 750
+      lengthCm: 210
+      depthCm: 60
+    confidence: medium
+    rationale: "Retain generator and checker-b 750 L with a 210 by 60 cm footprint for an established adult pair.
+      Checker-a proposed 650 L at 180 by 60 and checker-c 680 L at 180 by 60. Seriously Fish gives 210 by 60
+      by 60 cm, approximately 756 L; rounding to 750 L preserves that footprint. Fishkeeper gives 6 by 2 by 2
+      feet, approximately 680 L at 183 by 61 cm. Aqua-Fish gives 120 by 50 cm and Aquario 350 to 400 L. The
+      larger credible footprint better accommodates adult size uncertainty and separate territories; mixed
+      communities need additional room. Checker-a's 650 L conversion understates the nominal six-foot
+      dimensions."
+    sources:
+      - &a119
+        kind: database
+        title: "Seriously Fish: Cichlasoma urophthalmus"
+        url: "https://www.seriouslyfish.com/species/cichlasoma-urophthalmus/"
+        accessed: 2026-10-13
+      - &a120
+        kind: website
+        title: "Fishkeeper, Maidenhead Aquatics: Mayan Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/mayan-cichlid"
+        accessed: 2026-10-13
+      - &a121
+        kind: database
+        title: "Aqua-Fish: Mayan cichlid care profile"
+        url: "https://en.aqua-fish.net/fish/mayan-cichlid"
+        accessed: 2026-10-13
+      - &a122
+        kind: database
+        title: "Aquario: Mojarra care sheet"
+        url: "https://aquario.me/fish/mojarra"
+        accessed: 2026-10-13
+    evidence:
+      - source: *a119
+        value:
+          volumeL: 756
+          lengthCm: 210
+          depthCm: 60
+        note: 210 by 60 by 60 cm care recommendation.
+      - source: *a120
+        value:
+          volumeL: 679.6
+          lengthCm: 182.88
+          depthCm: 60.96
+        note: Six by two by two feet converted to metric.
+      - source: *a121
+        value:
+          lengthCm: 120
+          depthCm: 50
+        note: Only footprint supplied.
+      - source: *a122
+        value:
+          volumeL:
+            min: 350
+            max: 400
+        note: Pair-volume advice without a footprint.
+  lifespanYears:
+    value:
+      min: 8
+      max: 11
+    confidence: medium
+    rationale: "Generator, checker-b and checker-c retain 8 to 11 years; checker-a proposed 5 to 10 from wild
+      ageing. Aqua-Fish directly estimates 8 to 11 in aquaria and Aquario gives approximately 11. Wild fish
+      aged to seven years do not establish a captive lifespan ceiling. Retain the husbandry estimate with
+      medium confidence because controlled lifetime records were not found."
+    sources:
+      - &a123
+        kind: database
+        title: "Aqua-Fish: Mayan cichlid care profile"
+        url: "https://en.aqua-fish.net/fish/mayan-cichlid"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Age, growth, and mortality of the Mayan cichlid (Cichlasoma urophthalmus) from the southeastern
+          Everglades (abstract only)"
+        url: "http://hdl.handle.net/1834/31041"
+        accessed: 2026-10-13
+      - &a124
+        kind: database
+        title: "Aquario: Mojarra care sheet"
+        url: "https://aquario.me/fish/mojarra"
+        accessed: 2026-10-13
+    evidence:
+      - source: *a123
+        value:
+          min: 8
+          max: 11
+        note: Aquarium care estimate.
+      - source: *a124
+        value:
+          min: 11
+          max: 11
+        note: Approximate aquarium lifespan.
+  breeding:
+    value: open-substrate-spawner
+    confidence: high
+    rationale: All full profiles retain open-substrate-spawner. FishBase records bottom spawning; Aqua-Fish and
+      Fishkeeper describe a cleaned surface or substrate depression with biparental guarding. The captive
+      reproduction study directly observed adhesive eggs on tank surfaces and nest-bound hatchlings. A
+      contradictory introductory mouthbrooding label in that paper is outweighed by its direct methods and
+      observations.
+    sources:
+      - &a125
+        kind: website
+        title: "Fishkeeper, Maidenhead Aquatics: Mayan Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/mayan-cichlid"
+        accessed: 2026-10-13
+      - &a126
+        kind: literature
+        title: Fernandez-Perez et al. (2025). Captive reproductive performance of Mayaheros urophthalmus from four
+          different regions of Southeastern Mexico
+        url: "https://doi.org/10.19136/era.a12n3.4547"
+        accessed: 2026-10-13
+      - &a127
+        kind: database
+        title: "FishBase species summary: Mayaheros urophthalmus"
+        url: "https://www.fishbase.se/summary/Mayaheros-urophthalmus.html"
+        accessed: 2026-10-13
+      - &a128
+        kind: literature
+        title: "Fernandez-Perez: La Mojarra Castarrica, Mayaheros urophthalmus: especie nativa mesoamericana con alto
+          potencial acuicola"
+        url: "https://doi.org/10.19136/ta.a2n1.5736"
+        accessed: 2026-10-13
+      - &a129
+        kind: literature
+        title: "Chavez-Lopez et al. (2005). Ecology of the Mayan Cichlid, Cichlasoma urophthalmus Gunther, in the
+          Alvarado Lagoonal System, Veracruz, Mexico"
+        accessed: 2026-10-13
+        url: "https://doi.org/10.18785/gcr.1701.13"
+      - &a130
+        kind: database
+        title: "Aqua-Fish: Mayan cichlid care profile"
+        url: "https://en.aqua-fish.net/fish/mayan-cichlid"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Cichlid Room Companion: Mayaheros urophthalmus, public summary used for verification only"
+        url: "https://cichlidae.com/species.php?id=QEnQs9Lx5sFjcqa2t9mtaQ"
+        accessed: 2026-10-13
+    evidence:
+      - source: *a125
+        value: open-substrate-spawner
+        note: "Exposed hard substrate or a pit, with biparental care."
+      - source: *a126
+        value: open-substrate-spawner
+        note: Adhesive eggs on tank surfaces and natural spawning in the year-long trial.
+      - source: *a127
+        value: open-substrate-spawner
+        note: Bottom spawning in fresh and brackish water.
+      - source: *a128
+        value: open-substrate-spawner
+        note: substrate spawner with biparental care
+      - source: *a129
+        value: open-substrate-spawner
+        note: nest building and parental care
+      - source: *a130
+        value: open-substrate-spawner
+        note: Biparental substrate spawning.
+  beginnerSuitability:
+    value: demanding
+    confidence: medium
+    rationale: "Retain demanding from generator, checker-b and checker-c rather than checker-a moderate. Hardiness
+      and flexible feeding reduce chemical difficulty but do not remove the large adult footprint,
+      compatible-pair selection and potentially dangerous territorial conflicts. Aqua-Fish explicitly favors
+      experienced keepers and Seriously Fish rates the space demand difficult. This is a practical husbandry
+      judgment rather than a physiological sensitivity score."
+    sources:
+      - &a132
+        kind: database
+        title: "Seriously Fish: Cichlasoma urophthalmus"
+        url: "https://www.seriouslyfish.com/species/cichlasoma-urophthalmus/"
+        accessed: 2026-10-13
+      - &a133
+        kind: website
+        title: "Fishkeeper, Maidenhead Aquatics: Mayan Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/mayan-cichlid"
+        accessed: 2026-10-13
+      - &a131
+        kind: database
+        title: "Aqua-Fish: Mayan cichlid care profile"
+        url: "https://en.aqua-fish.net/fish/mayan-cichlid"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Aquario: Mojarra care sheet"
+        url: "https://aquario.me/fish/mojarra"
+        accessed: 2026-10-13
+    evidence:
+      - source: *a131
+        value: demanding
+        note: Explicit emphasis on experienced keepers and spacious predator housing.
+      - source: *a132
+        value: demanding
+        note: Large footprint and difficult profile rating.
+      - source: *a133
+        value: demanding
+        note: "Rubric inference from adult size, frequent water changes and possible physical separation."
+partners:
+  suitable:
+    - species: Large robust Central American cichlids
+      reason: The care sources allow this category conditionally; adults must be too large to swallow.
+      condition: "A tank larger than the pair minimum, separate territories and prompt removal if sustained attacks
+        develop."
+    - species: Large armored catfish
+      reason: Seriously Fish and Fishkeeper allow substantial catfish; Aquario cautions about conflicts with bottom
+        users.
+      condition: "Full-grown robust individuals, protected retreats and enough extra floor space; breeding defense
+        may require separation."
+  unsuitable:
+    - species: Paracheirodon innesi
+      reason: Prey-sized adult fish face a level-2 mouth-size predation conflict.
+    - species: Mikrogeophagus ramirezi
+      reason: Small delicate adults face predation and sustained territorial attacks.
+    - species: Vieja melanurus
+      reason: "Presumed pairwise crossing conflict from artificial fertilization, plus substantial territorial and
+        space demands."
+    - species: blood parrot cichlid
+      reason: Presumed crossing conflict from viable progeny after blood-parrot eggs were artificially fertilized
+        with Mayan sperm; natural mate choice is untested.
+profile:
+  overview:
+    text: Mayaheros urophthalmus is a substantial Atlantic Central American cichlid with dark flank bars and a
+      conspicuous tail-base eyespot. Older aquarium literature calls it Cichlasoma urophthalmus. Its natural
+      range extends from southern Mexico through Belize and Guatemala to Honduras and Nicaragua; Florida
+      populations are introduced. The false-red-terror trade name can cause confusion with Mesoheros festae.
+      An established pair rewards close observation but needs substantial space and experienced management.
+    sources:
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: species of Mayaheros, updated 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Ma\
+          yaheros"
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishBase species summary: Mayaheros urophthalmus"
+        url: "https://www.fishbase.se/summary/Mayaheros-urophthalmus.html"
+        accessed: 2026-10-13
+      - kind: archive
+        title: cichlids.com forum thread 643
+        url: "https://www.cichlids.com/disc/read.php?1,643"
+        accessed: 2026-10-13
+  habitat:
+    text: "Shallow lakeshores, slow river margins, vegetated wetlands and mangrove lagoons provide shelter and
+      feeding sites. Brackish-water tolerance is well supported, including a native collection at 24 ppt, but
+      freshwater aquarium maintenance is suitable. The decided water ranges summarize selected native surveys
+      rather than every occupied locality. Sulfate-rich Bacalar has exceptionally high GH while its
+      bicarbonate alkalinity remains much lower. GH, KH and salinity describe different properties."
+    sources:
+      - kind: literature
+        title: Fernandez-Perez et al. (2025). Captive reproductive performance of Mayaheros urophthalmus from four
+          different regions of Southeastern Mexico
+        url: "https://doi.org/10.19136/era.a12n3.4547"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Vaslet et al. (2012). Dietary habits of juveniles of the Mayan cichlid in mangrove ponds of an
+          offshore islet in Belize, Central America"
+        url: "https://doi.org/10.1590/S1679-62252012000300021"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Perez et al. (2010). Distribution, diversity and ecology of modern freshwater ostracodes and
+          hydrochemical characteristics of Lago Peten Itza, Guatemala. Tables and water-column measurements"
+        url: "https://doi.org/10.4081/jlimnol.2010.146"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Karst-environments of the southeastern Yucatan Peninsula: Hotspots for modern freshwater microbialites
+          (2025). Tables 1 and 2"
+        url: "https://doi.org/10.1371/journal.pone.0322625"
+        accessed: 2026-10-13
+      - kind: website
+        title: Schmitter-Soto and Herrera Pavon (2024). Los peces de Bacalar. ECOSUR
+        url: "https://www.ecosur.mx/lagunabacalar/270/"
+        accessed: 2026-10-13
+  sizeAndGrowth:
+    text: "Plan for approximately 30 cm males and 25 cm females, with low confidence in the exact sex-specific
+      maxima. Aquarium guidance gives usual unsexed lengths of 20 to 27 cm, whereas the published record
+      reaches 39.4 cm total length. These record and aquarium measures are not interchangeable. Allow room for
+      full adult development; small juveniles do not predict mature territorial pressure. Lifespan guidance
+      suggests roughly 8 to 11 years."
+    sources:
+      - kind: database
+        title: "Aqua-Fish: Mayan cichlid care profile"
+        url: "https://en.aqua-fish.net/fish/mayan-cichlid"
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishBase species summary: Mayaheros urophthalmus"
+        url: "https://www.fishbase.se/summary/Mayaheros-urophthalmus.html"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Aquario: Mojarra care sheet"
+        url: "https://aquario.me/fish/mojarra"
+        accessed: 2026-10-13
+  husbandry:
+    text: "For a compatible adult pair, allow about 750 L and a 210 by 60 cm footprint, with more room for
+      companions. Use secure heavy decor, sheltered retreats and open escape routes around a diggable
+      substrate. Reliable filtration and regular water changes must match adult waste production. Routine
+      freshwater care near 24 to 28 C and pH 7 to 8 is supported. GH tolerance above ordinary 8 to 20 dGH
+      advice is a habitat-derived provisional extension; the conservative 5 to 9 dKH tolerance also lacks
+      established long-term numerical boundaries."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Cichlasoma urophthalmus"
+        url: "https://www.seriouslyfish.com/species/cichlasoma-urophthalmus/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Aqua-Fish: Mayan cichlid care profile"
+        url: "https://en.aqua-fish.net/fish/mayan-cichlid"
+        accessed: 2026-10-13
+      - kind: website
+        title: "Fishkeeper, Maidenhead Aquatics: Mayan Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/mayan-cichlid"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Perez et al. (2010). Distribution, diversity and ecology of modern freshwater ostracodes and
+          hydrochemical characteristics of Lago Peten Itza, Guatemala. Tables and water-column measurements"
+        url: "https://doi.org/10.4081/jlimnol.2010.146"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Karst-environments of the southeastern Yucatan Peninsula: Hotspots for modern freshwater microbialites
+          (2025). Tables 1 and 2"
+        url: "https://doi.org/10.1371/journal.pone.0322625"
+        accessed: 2026-10-13
+  socialBehavior:
+    text: "Adults are best managed as an established pair. Unrelated adults and incompatible partners may suffer
+      sustained chasing; groups of juveniles commonly need separation as they mature. Both aggression scores
+      are level 3 and the territory remains substantial outside breeding. Provide visual cover and a practical
+      way to separate fish if one stops feeding, hides persistently or develops injuries. Brood defense can
+      rapidly disrupt a previously workable mixed aquarium."
+    sources:
+      - kind: website
+        title: "Fishkeeper, Maidenhead Aquatics: Mayan Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/mayan-cichlid"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Aqua-Fish: Mayan cichlid care profile"
+        url: "https://en.aqua-fish.net/fish/mayan-cichlid"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Aquario: Mojarra care sheet"
+        url: "https://aquario.me/fish/mojarra"
+        accessed: 2026-10-13
+  diet:
+    text: "Provide complete cichlid pellets with aquatic invertebrates and a vegetable component. The decided diet
+      is omnivorous, although some populations feed mainly on crustaceans or other invertebrates and the value
+      of ingested detritus remains debated. Mouth-sized fish are prey risks rather than safe companions. No
+      specialist protein-triggered bloat conflict is established, so bloatSensitive remains false; this does
+      not imply immunity to digestive illness. Keep portions appropriate to body condition and water quality."
+    sources:
+      - kind: literature
+        title: Hinojosa-Garro et al. (2013). Fish diet composition in permanent and semi-permanent pools in tropical
+          wetlands of the Yucatan Peninsula
+        url: "https://doi.org/10.1590/S1679-62252013000400016"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Vaslet et al. (2012). Dietary habits of juveniles of the Mayan cichlid in mangrove ponds of an
+          offshore islet in Belize, Central America"
+        url: "https://doi.org/10.1590/S1679-62252012000300021"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Chavez-Lopez et al. (2005). Ecology of the Mayan Cichlid, Cichlasoma urophthalmus Gunther, in the
+          Alvarado Lagoonal System, Veracruz, Mexico"
+        accessed: 2026-10-13
+        url: "https://doi.org/10.18785/gcr.1701.13"
+      - kind: literature
+        title: Feeding habits and nutritional requirements of native cichlids with aquaculture potential from Mexico
+          and Central America. A review
+        url: "https://doi.org/10.3856/vol53-issue3-fulltext-3369"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Aqua-Fish: Mayan cichlid care profile"
+        url: "https://en.aqua-fish.net/fish/mayan-cichlid"
+        accessed: 2026-10-13
+  breeding:
+    text: "A compatible pair deposits adhesive eggs on a prepared surface or in a shallow substrate depression,
+      and both parents defend the brood. It is an open substrate spawner. Protection can make companions
+      unsafe and requires a separation option. Offspring numbers vary greatly and may reach thousands, so
+      breeding needs capacity and homes for the young. Once fry swim freely, appropriately small foods such as
+      Artemia nauplii and fine prepared food are suitable."
+    sources:
+      - kind: literature
+        title: Fernandez-Perez et al. (2025). Captive reproductive performance of Mayaheros urophthalmus from four
+          different regions of Southeastern Mexico
+        url: "https://doi.org/10.19136/era.a12n3.4547"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Aqua-Fish: Mayan cichlid care profile"
+        url: "https://en.aqua-fish.net/fish/mayan-cichlid"
+        accessed: 2026-10-13
+      - kind: website
+        title: "Fishkeeper, Maidenhead Aquatics: Mayan Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/mayan-cichlid"
+        accessed: 2026-10-13
+  sexing:
+    text: "Mature males tend to grow larger and may have stronger coloration and more extended dorsal and anal
+      fins. These tendencies are unreliable for juveniles or a single photograph. Females also change color
+      around reproduction. The tail eyespot is not a sex marker, and two fish sold as opposite sexes are not
+      necessarily compatible. An established breeding pair provides stronger evidence than appearance alone."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Cichlasoma urophthalmus"
+        url: "https://www.seriouslyfish.com/species/cichlasoma-urophthalmus/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Aqua-Fish: Mayan cichlid care profile"
+        url: "https://en.aqua-fish.net/fish/mayan-cichlid"
+        accessed: 2026-10-13
+      - kind: website
+        title: "Fishkeeper, Maidenhead Aquatics: Mayan Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/mayan-cichlid"
+        accessed: 2026-10-13
+  compatibility:
+    text: "Species-only keeping is not mandatory, but companions must be substantial and robust, with extra space
+      and separate retreats. Category-level candidates are listed because no reliable species-specific success
+      record supports the generator's named pairings. Small schooling fish and delicate dwarf cichlids face
+      predation or territorial attacks. Two presumed crossing conflicts apply: Vieja melanurus and the blood
+      parrot cichlid. Both derive from artificial fertilization experiments, not demonstrated routine spawning
+      with free partner choice."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Cichlasoma urophthalmus"
+        url: "https://www.seriouslyfish.com/species/cichlasoma-urophthalmus/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Aqua-Fish: Mayan cichlid care profile"
+        url: "https://en.aqua-fish.net/fish/mayan-cichlid"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Aquario: Mojarra care sheet"
+        url: "https://aquario.me/fish/mojarra"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Fisher et al. (2025). Response to salinity challenge in hybrid blood parrot cichlids. Methods and
+          preliminary fertility observations
+        url: "https://doi.org/10.1007/s10641-025-01694-8"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fisher et al. (2024). Hybrid Cichlid salinity trials data, version 1. Mendeley Data"
+        url: "https://doi.org/10.17632/z997fw7m7z.1"
+        accessed: 2026-10-13
+  problems:
+    text: "Adult space shortages, incompatible pairs and prey-sized companions are major avoidable failures.
+      Digging can undermine rocks, uproot plants and expose equipment. Large appetites and body mass increase
+      filtration and maintenance demands. Monitor injuries and loss of access to food before social pressure
+      becomes severe. Chemical survival extremes do not define aquarium targets, and neither the very high GH
+      extension nor the narrow conservative KH band is a proven long-term physiological boundary."
+    sources:
+      - kind: database
+        title: "Aqua-Fish: Mayan cichlid care profile"
+        url: "https://en.aqua-fish.net/fish/mayan-cichlid"
+        accessed: 2026-10-13
+      - kind: website
+        title: "Fishkeeper, Maidenhead Aquatics: Mayan Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/mayan-cichlid"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Fernandez-Perez et al. (2025). Captive reproductive performance of Mayaheros urophthalmus from four
+          different regions of Southeastern Mexico
+        url: "https://doi.org/10.19136/era.a12n3.4547"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Karst-environments of the southeastern Yucatan Peninsula: Hotspots for modern freshwater microbialites
+          (2025). Tables 1 and 2"
+        url: "https://doi.org/10.1371/journal.pone.0322625"
+        accessed: 2026-10-13
+provenance:
+  runs:
+    - role: generator
+      model: gpt-6.1-sol
+      date: 2026-10-13
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-13
+    - role: checker
+      model: gpt-6.1-sol
+      date: 2026-10-13
+    - role: checker
+      model: gpt-6.1-sol
+      date: 2026-10-13
+    - role: checker
+      model: gpt-6.1-sol
+      date: 2026-10-13
+    - role: checker
+      model: gpt-6.1-sol
+      date: 2026-10-13
+    - role: adjudicator
+      model: gpt-6.1-sol
+      date: 2026-10-13
+  disagreements:
+    - field: features.diet
+      proposals:
+        - by: generator
+          value:
+            type: omnivore
+            bloatSensitive: false
+            foods:
+              - balanced cichlid pellets
+              - aquatic crustaceans
+              - molluscs
+              - insect larvae
+              - vegetable matter
+              - algae-based foods
+        - by: checker-a
+          value:
+            type: omnivore
+            bloatSensitive: false
+            foods:
+              - detritus and plant matter
+              - snails and bivalves
+              - crustaceans
+              - insects
+              - small fish
+              - cichlid pellets
+              - prawn and mussel
+        - by: checker-b
+          value:
+            type: omnivore
+            bloatSensitive: false
+            foods:
+              - cichlid pellets
+              - aquatic crustaceans
+              - molluscs
+              - insect larvae
+              - small fish
+              - vegetable matter
+        - by: checker-c
+          value:
+            type: invertivore
+            bloatSensitive: false
+            foods:
+              - Complete cichlid pellets with a substantial animal-protein component
+              - Crustaceans
+              - Molluscs
+              - Aquatic insect larvae
+              - Occasional vegetable ingredients
+        - by: tiebreaker-1
+          value:
+            type: omnivore
+            bloatSensitive: false
+        - by: tiebreaker-2
+          value:
+            type: omnivore
+            bloatSensitive: false
+      decision:
+        type: omnivore
+        bloatSensitive: false
+        foods:
+          - balanced cichlid pellets
+          - aquatic crustaceans
+          - molluscs
+          - insect larvae
+          - vegetable matter
+          - algae-based foods
+      rationale: "Tally qualified-majority, 5 of 6 retain omnivore and bloatSensitive false. Generator, checker-a,
+        checker-b and both tie-breakers proposed omnivore; checker-c proposed invertivore. Invertebrates
+        dominate the Celestun abstract and Belize juveniles, and plants may sometimes enter incidentally.
+        Alvarado stomach contents were plant-rich, Campeche fish were classified as detritivorous and
+        omnivorous, and nutritional reviews support use of both animal and plant ingredients. The species-wide
+        husbandry classification therefore remains omnivore with a substantial animal component. Successful
+        protein-rich culture supports no mandatory low-protein restriction, but no cited study directly tests
+        bloat susceptibility. False records absence of an established specialist conflict, not immunity to
+        digestive illness. Foods are retained exactly from the tally."
+    - field: features.hybridGroups
+      proposals:
+        - by: generator
+          value:
+            - vieja-melanurus-mayaheros-urophthalmus
+            - mayaheros-urophthalmus-blood-parrot
+        - by: checker-a
+          value:
+            - vieja-melanurus-mayaheros-urophthalmus
+        - by: checker-b
+          value:
+            - vieja-melanurus-mayaheros-urophthalmus
+            - mayaheros-urophthalmus-blood-parrot
+        - by: checker-c
+          value:
+            - vieja-melanurus-mayaheros-urophthalmus
+            - blood-parrot-mayaheros-urophthalmus
+        - by: tiebreaker-1
+          value:
+            - vieja-melanurus-mayaheros-urophthalmus
+            - mayaheros-urophthalmus-blood-parrot
+        - by: tiebreaker-2
+          value:
+            - vieja-melanurus-mayaheros-urophthalmus
+            - mayaheros-urophthalmus-blood-parrot
+      decision:
+        - mayaheros-urophthalmus-blood-parrot
+        - vieja-melanurus-mayaheros-urophthalmus
+      rationale: "Tally qualified-majority, 4 of 6 retain mayaheros-urophthalmus-blood-parrot and
+        vieja-melanurus-mayaheros-urophthalmus. Generator, checker-b and both tie-breakers proposed both ids;
+        checker-a omitted the blood-parrot pair; checker-c proposed the same biological pair under
+        blood-parrot-mayaheros-urophthalmus, which is not an additional crossing group. Fisher and colleagues
+        produced Vieja eggs fertilized with Mayan sperm and separately reported viable young from stripped
+        female blood-parrot eggs fertilized with Mayan sperm. Both groups have presumed basis because
+        fertilization was artificial. The Mendeley dataset supports the Vieja experiment but shares its
+        investigators and is not independent replication. The curated registry, Catalog names and general
+        retailer crossing warning do not independently confirm either named cross. No crosses with species in
+        blood-parrot ancestry are inferred."
+    - field: features.temperatureC
+      proposals:
+        - by: generator
+          value:
+            min: 24
+            max: 29
+        - by: checker-a
+          value:
+            min: 24
+            max: 30
+        - by: checker-b
+          value:
+            min: 24
+            max: 30
+        - by: checker-c
+          value:
+            min: 24
+            max: 30
+      decision:
+        min: 24
+        max: 30
+      rationale: "Tally unanimous, 4 of 4 under the 1 C agreement threshold. Generator proposed 24 to 29 C;
+        checker-a, checker-b and checker-c proposed 24 to 30 C. The median agreeing endpoints give 24 to 30 C
+        after integer rounding. Native collection sites measured 24 to 28 C, Chile Verde monthly means span
+        24.05 to 28.90 C, and Peten Itza epilimnetic observations reach 30 C. Fernandez-Perez reports a wider
+        distribution-level 18 to 34 C envelope; FishBase gives 20 to 39 C. The decided range represents
+        selected shallow-water measurements rather than every season or physiological extreme. Regional cenote
+        studies provide context without demonstrating occurrence at every sampling site."
+    - field: features.ph
+      proposals:
+        - by: generator
+          value:
+            min: 7.4
+            max: 8.5
+        - by: checker-a
+          value:
+            min: 6.8
+            max: 8.5
+        - by: checker-b
+          value:
+            min: 7.4
+            max: 8.5
+        - by: checker-c
+          value:
+            min: 7.4
+            max: 8.6
+        - by: tiebreaker-1
+          value:
+            min: 7.4
+            max: 8.5
+        - by: tiebreaker-2
+          value:
+            min: 7.4
+            max: 8.5
+      decision:
+        min: 7.4
+        max: 8.5
+      rationale: "Tally qualified-majority, 5 of 6: generator, checker-b and both tie-breakers proposed 7.4 to 8.5;
+        checker-c proposed 7.4 to 8.6 and agrees within 0.3 pH; checker-a proposed 6.8 to 8.5. Median agreeing
+        endpoints retain 7.4 to 8.5. Bacalar Table 1 gives 7.4 and 7.6 despite a narrower generalized sentence
+        in the paper; Peten Itza surface waters give 8.2 to 8.5. The narrower decision does not erase lower
+        peten seasonal means of 6.88 to 7.36 or the 8.55 Lacanja observation. These remain evidence of
+        geographic variation beyond the selected envelope; means, deep-lake readings and cenotes without
+        matched species records are not pooled as complete habitat extremes. The tourism cenote study cited by
+        checker-a gives approximately 6.7 to 7.5, a wider lower-pH context without confirmed species
+        occurrence at those sampling points."
+    - field: features.ghDgh
+      proposals:
+        - by: generator
+          value:
+            min: 12
+            max: 91
+        - by: checker-a
+          value:
+            min: 6
+            max: 20
+        - by: checker-b
+          value:
+            min: 12
+            max: 91
+        - by: checker-c
+          value:
+            min: 12
+            max: 91
+        - by: tiebreaker-1
+          value:
+            min: 12
+            max: 91
+        - by: tiebreaker-2
+          value:
+            min: 12
+            max: 91
+      decision:
+        min: 12
+        max: 91
+      rationale: "Tally qualified-majority, 5 of 6 retain 12 to 91 dGH; checker-a proposed 6 to 20. Peten Itza
+        surface Ca 2.9 and Mg 1.5 meq/L yield about 12.3 dGH using summed equivalents times 2.804. Paired
+        Bacalar Ca/Mg measurements of 370.69/94 and 358.05/173.85 mg/L yield 73.6 and 90.2 dGH using Ca/7.14
+        plus Mg/4.34. Outward rounding gives the decided envelope. The older Bacalar compilation gives 62.8
+        dGH. Sulfate-rich native freshwater explains high GH without comparably high KH. Regional conductivity
+        and care-sheet hardness do not replace measured divalent ions. Fish occurrence and chemistry were not
+        measured simultaneously, and population differences and seasonal coverage limit generalization.
+        Checker-a also cites a wider regional lower bound of about 4 dGH in a 4 to 20 dGH lake survey; the
+        selected 12 to 91 range is not an exhaustive geographic envelope and does not absorb unconfirmed
+        fish-to-site assignments."
+    - field: features.khDkh
+      proposals:
+        - by: generator
+          value:
+            min: 5
+            max: 9
+        - by: checker-a
+          value:
+            min: 5
+            max: 15
+        - by: checker-b
+          value:
+            min: 5
+            max: 9
+        - by: checker-c
+          value:
+            min: 5
+            max: 9
+        - by: tiebreaker-1
+          value:
+            min: 5
+            max: 9
+        - by: tiebreaker-2
+          value:
+            min: 5
+            max: 10
+      decision:
+        min: 5
+        max: 9
+      rationale: "Tally qualified-majority, 5 of 6 retain 5 to 9 dKH. Generator, checker-b, checker-c and
+        tiebreaker-1 proposed 5 to 9; tiebreaker-2 proposed 5 to 10 and agrees within 2 dKH; checker-a
+        proposed 5 to 15. Median agreeing endpoints give 5 to 9. Peten Itza bicarbonate 1.9 to 2.2 meq/L gives
+        5.3 to 6.2 dKH; Bacalar 125.49 to 177.39 mg/L gives 5.76 to 8.14 using bicarbonate/21.78. The 2018
+        Bacalar compilation gives 7.85. Cenote Azul in the 2025 study extends the wider measured source range
+        to 9.9 dKH, and regional lakes cited by checker-a extend to 15; the tally retains a narrower sampled
+        reference and does not claim to encompass all occupied waters. This is bicarbonate alkalinity
+        expressed as dKH, separate from GH and salinity."
+    - field: features.ph.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 6.7
+            max: 8.5
+        - by: checker-a
+          value:
+            min: 6.5
+            max: 8.5
+        - by: checker-b
+          value:
+            min: 6.7
+            max: 8.5
+        - by: checker-c
+          value:
+            min: 6.7
+            max: 8.6
+      decision:
+        min: 6.7
+        max: 8.5
+      rationale: "Tally unanimous within 0.3 pH, 4 of 4. Generator and checker-b proposed 6.7 to 8.5, checker-a 6.5
+        to 8.5, and checker-c 6.7 to 8.6; median endpoints give 6.7 to 8.5. Aqua-Fish recommends 6.7 to 8.0,
+        while Seriously Fish and Fishkeeper recommend 7.0 to 8.0. The upper extension contains the decided
+        natural pH but is not established by two long-term aquarium studies. Aquario gives a wider 7.0 to 9.5
+        recommendation and Guidarium 6.5 to 8.5; these do not justify adopting less corroborated extremes. The
+        Lacanja observation of 8.55 also remains wider than the decided maximum. Confidence stays low."
+    - field: features.ghDgh.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 8
+            max: 91
+        - by: checker-a
+          value:
+            min: 4
+            max: 20
+        - by: checker-b
+          value:
+            min: 8
+            max: 91
+        - by: checker-c
+          value:
+            min: 8
+            max: 91
+        - by: tiebreaker-1
+          value:
+            min: 8
+            max: 91
+        - by: tiebreaker-2
+          value:
+            min: 8
+            max: 91
+      decision:
+        min: 8
+        max: 91
+      rationale: "Tally qualified-majority, 5 of 6 retain 8 to 91 dGH; checker-a proposed 4 to 20. Aqua-Fish states
+        8 to 18 and Seriously Fish and Fishkeeper provide an upper recommendation of 20. Their displayed or
+        inferred zero is not a proven lower aquarium limit. Aquario states 12 to 35; the Aquarium Wiki gives a
+        wider low-weight 4 to 30. A ten-day larval trial used about 7.7 to 9.1 dGH. The 91 upper bound is a
+        required extension to contain the decided Bacalar natural range, not evidence of years of aquarium
+        health at that hardness. Ordinary care recommendations near 8 to 20 are substantially better
+        supported. Confidence remains low despite agreement on the composite envelope."
+    - field: features.khDkh.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 4
+            max: 10
+        - by: checker-a
+          value:
+            min: 3
+            max: 20
+        - by: checker-b
+          value:
+            min: 5
+            max: 15
+        - by: checker-c
+          value:
+            min: 5
+            max: 9
+        - by: tiebreaker-1
+          value:
+            min: 5
+            max: 15
+        - by: tiebreaker-2
+          value:
+            min: 5
+            max: 10
+      decision:
+        min: 5
+        max: 9
+      rationale: "Tally conservative, 3 of 6 in the leading agreement cluster; no qualified majority. All proposals
+        are generator 4 to 10, checker-a 3 to 20, checker-b 5 to 15, checker-c 5 to 9, tiebreaker-1 5 to 15
+        and tiebreaker-2 5 to 10 dKH. The nonempty intersection is 5 to 9 and already contains the decided
+        natural range, so no widening is needed. The decision deliberately narrows the wider culture
+        conditions of approximately 11.8 to 14.8 dKH: Hernandez and colleagues reported alkalinity 238 plus or
+        minus 27 mg/L during a 21-week trial, not experimental tolerance boundaries or years of adult health.
+        Flowgrow lists an even wider 0 to 30 carbonate-hardness field with an inconsistent dGH unit label.
+        Cenote Azul extends natural bicarbonate evidence to 9.9. Neither wider dataset overrides the required
+        tally decision. Species-specific long-term numerical KH bounds remain unverified; Fishkeeper warns
+        about low KH without stating a threshold. Confidence stays low and the intersection must not be read
+        as a physiological ceiling."
+    - field: features.origin
+      proposals:
+        - by: generator
+          value:
+            continent: Central America
+            region: Atlantic lowlands from southern Mexico through Belize and Guatemala to Honduras and Nicaragua
+            waterbody: null
+            localities:
+              - Yucatan Peninsula
+              - "Lake Peten Itza, Guatemala"
+              - "Laguna Bacalar, Mexico"
+              - Usumacinta basin
+              - Coastal mangroves of Belize
+        - by: checker-a
+          value:
+            continent: Central America
+            region: "Atlantic slope from the Coatzacoalcos basin through the Yucatan Peninsula, Belize and Guatemala to
+              Honduras and Nicaragua"
+            waterbody: null
+            localities:
+              - Lake Peten Itza (type locality)
+              - Yucatan cenotes and coastal lagoons
+              - Usumacinta and Grijalva basins
+        - by: checker-b
+          value:
+            continent: Central America
+            region: Atlantic drainages from southern Mexico and the Yucatan Peninsula through Belize and Guatemala to
+              Honduras and Nicaragua
+            waterbody: null
+            localities:
+              - Lake Peten Itza
+              - Laguna Bacalar
+              - Chile Verde Lagoon
+              - Celestun Lagoon
+        - by: checker-c
+          value:
+            continent: Central America
+            region: Atlantic drainages from southern Mexico through Belize and Guatemala to Honduras and Nicaragua
+            waterbody: null
+            localities:
+              - Yucatan Peninsula
+              - Lake Peten Itza
+              - Lake Bacalar
+              - Usumacinta basin
+              - Belize mangrove lagoons
+      decision:
+        continent: Central America
+        region: Atlantic lowlands from southern Mexico and the Yucatan Peninsula through Belize and Guatemala to
+          Honduras and Nicaragua
+        waterbody: null
+        localities:
+          - Yucatan Peninsula
+          - "Lake Peten Itza, Guatemala"
+          - "Laguna Bacalar, Mexico"
+          - "Chile Verde Lagoon, Mexico"
+          - Usumacinta and Grijalva basins
+          - Belize mangrove lagoons
+      rationale: The Catalog and FishBase establish the Atlantic Mesoamerican native range. Field work confirms the
+        lagoon and mangrove habitats; ECOSUR specifically records the species in Bacalar. Florida and the
+        Alvarado lagoon population in Veracruz are introduced and do not define the natural-water reference.
+        Locality lists across inputs describe parts of the same range.
+    - field: features.maxSizeCm
+      proposals:
+        - by: generator
+          value:
+            male: 30
+            female: 25
+        - by: checker-a
+          value:
+            male: 32
+            female: 25
+        - by: checker-b
+          value:
+            male: 30
+            female: 25
+        - by: checker-c
+          value:
+            male: 27
+            female: 22
+      decision:
+        male: 30
+        female: 25
+      rationale: "Retain 30 cm male and 25 cm female from generator and checker-b rather than checker-a 32/25 or
+        checker-c 27/22. Aqua-Fish gives usual unsexed aquarium adults of 20 to 27 cm, and multiple sources
+        describe larger males. The selected sex split is a cautious planning estimate, not a measured cohort
+        maximum. FishBase reports 39.4 cm TL and both major care sheets list about 40 cm, which is a wider
+        headline maximum rather than typical well-kept aquarium size per sex. Exact sex-specific maxima remain
+        low confidence."
+    - field: features.coloration
+      proposals:
+        - by: generator
+          value:
+            baseColors:
+              - brown
+              - orange
+              - red
+              - black
+            pattern: mixed
+        - by: checker-a
+          value:
+            baseColors:
+              - grey
+              - orange
+              - red
+              - black
+            pattern: bars
+        - by: checker-b
+          value:
+            baseColors:
+              - brown
+              - orange
+              - red
+              - black
+              - blue
+            pattern: bars
+        - by: checker-c
+          value:
+            baseColors:
+              - brown
+              - yellow
+              - red
+              - black
+            pattern: mixed
+      decision:
+        baseColors:
+          - brown
+          - orange
+          - red
+          - black
+        pattern: mixed
+      rationale: "Generator proposed brown/orange/red/black with mixed pattern; checker-a grey/orange/red/black with
+        bars; checker-b brown/orange/red/black/blue with bars; checker-c brown/yellow/red/black with mixed.
+        Retain brown, orange, red and black as the general adult palette and mixed because both repeated
+        vertical bars and the prominent caudal eyespot are diagnostic. Grey and yellow describe variable
+        ground tones rather than fixed additional dominant colors; blue edging is a small accent. Exact
+        intensity changes with locality and reproductive condition, so this is not a sexing key."
+    - field: features.minTank
+      proposals:
+        - by: generator
+          value:
+            volumeL: 750
+            lengthCm: 210
+            depthCm: 60
+        - by: checker-a
+          value:
+            volumeL: 650
+            lengthCm: 180
+            depthCm: 60
+        - by: checker-b
+          value:
+            volumeL: 750
+            lengthCm: 210
+            depthCm: 60
+        - by: checker-c
+          value:
+            volumeL: 680
+            lengthCm: 180
+            depthCm: 60
+      decision:
+        volumeL: 750
+        lengthCm: 210
+        depthCm: 60
+      rationale: "Retain generator and checker-b 750 L with a 210 by 60 cm footprint for an established adult pair.
+        Checker-a proposed 650 L at 180 by 60 and checker-c 680 L at 180 by 60. Seriously Fish gives 210 by 60
+        by 60 cm, approximately 756 L; rounding to 750 L preserves that footprint. Fishkeeper gives 6 by 2 by
+        2 feet, approximately 680 L at 183 by 61 cm. Aqua-Fish gives 120 by 50 cm and Aquario 350 to 400 L.
+        The larger credible footprint better accommodates adult size uncertainty and separate territories;
+        mixed communities need additional room. Checker-a's 650 L conversion understates the nominal six-foot
+        dimensions."
+    - field: features.lifespanYears
+      proposals:
+        - by: generator
+          value:
+            min: 8
+            max: 11
+        - by: checker-a
+          value:
+            min: 5
+            max: 10
+        - by: checker-b
+          value:
+            min: 8
+            max: 11
+        - by: checker-c
+          value:
+            min: 8
+            max: 11
+      decision:
+        min: 8
+        max: 11
+      rationale: "Generator, checker-b and checker-c retain 8 to 11 years; checker-a proposed 5 to 10 from wild
+        ageing. Aqua-Fish directly estimates 8 to 11 in aquaria and Aquario gives approximately 11. Wild fish
+        aged to seven years do not establish a captive lifespan ceiling. Retain the husbandry estimate with
+        medium confidence because controlled lifetime records were not found."
+    - field: features.beginnerSuitability
+      proposals:
+        - by: generator
+          value: demanding
+        - by: checker-a
+          value: moderate
+        - by: checker-b
+          value: demanding
+        - by: checker-c
+          value: demanding
+      decision: demanding
+      rationale: "Retain demanding from generator, checker-b and checker-c rather than checker-a moderate. Hardiness
+        and flexible feeding reduce chemical difficulty but do not remove the large adult footprint,
+        compatible-pair selection and potentially dangerous territorial conflicts. Aqua-Fish explicitly favors
+        experienced keepers and Seriously Fish rates the space demand difficult. This is a practical husbandry
+        judgment rather than a physiological sensitivity score."
+    - field: taxonomy.synonyms
+      proposals:
+        - by: generator
+          value:
+            - name: Heros urophthalmus
+              note: Original combination.
+            - name: Cichlasoma urophthalmus
+              note: Historical combination and legacy catalog name.
+            - name: Nandopsis urophthalmus
+              note: Historical generic placement.
+            - name: Cichlasoma urophthalmum
+              note: Historical spelling; the Catalog treats the epithet as a noun.
+            - name: Heros troschelii
+              note: Junior synonym in the current Catalog.
+            - name: Mayaheros alborus
+              note: Listed as a synonym of M. urophthalmus in the current Catalog.
+            - name: Mayaheros cienagae
+              note: Listed as a synonym in the current Catalog.
+            - name: Mayaheros mayorum
+              note: Listed as a synonym in the current Catalog.
+            - name: Mayaheros stenozonus
+              note: Listed as a synonym in the current Catalog.
+            - name: Mayaheros zebra
+              note: Listed as a synonym in the current Catalog.
+        - by: checker-a
+          value:
+            - name: Heros urophthalmus
+              note: original combination
+            - name: Cichlasoma urophthalmus
+            - name: Nandopsis urophthalmus
+            - name: Heros troschelii
+            - name: Cichlasoma stenozonum
+            - name: Cichlasoma alborum
+            - name: Cichlasoma cienagae
+            - name: Cichlasoma conchitae
+            - name: Cichlasoma mayorum
+            - name: Cichlasoma zebra
+        - by: checker-b
+          value:
+            - name: Heros urophthalmus
+              note: Original combination.
+            - name: Cichlasoma urophthalmus
+              note: Legacy genus combination.
+            - name: Nandopsis urophthalmus
+              note: Former generic placement.
+            - name: Heros troschelii
+              note: Catalog synonym of Mayaheros urophthalmus.
+            - name: Cichlasoma urophthalmus stenozonum
+              note: Catalog synonym; likely Bacalar type locality.
+        - by: checker-c
+          value:
+            - name: Cichlasoma urophthalmus
+            - name: Nandopsis urophthalmus
+            - name: Heros urophthalmus
+              note: Original generic combination.
+            - name: Heros troschelii
+            - name: Mayaheros alborus
+            - name: Mayaheros cienagae
+            - name: Mayaheros conchitae
+            - name: Mayaheros mayorum
+            - name: Mayaheros stenozonus
+            - name: Mayaheros zebra
+      decision:
+        - name: Heros urophthalmus
+          note: Original combination.
+        - name: Cichlasoma urophthalmus
+          note: Legacy combination.
+        - name: Cichlasoma urophthalmum
+          note: Historical spelling; the current Catalog treats the epithet as a noun.
+        - name: Nandopsis urophthalmus
+          note: Former generic placement.
+        - name: Heros troschelii
+          note: Junior synonym in the current Catalog.
+        - name: Cichlasoma urophthalmus alborum
+          note: Historical subspecific name currently treated as a synonym.
+        - name: Cichlasoma urophthalmus cienagae
+          note: Historical subspecific name currently treated as a synonym.
+        - name: Cichlasoma urophthalmus conchitae
+          note: Historical subspecific name currently treated as a synonym.
+        - name: Cichlasoma urophthalmus mayorum
+          note: Historical subspecific name currently treated as a synonym.
+        - name: Cichlasoma urophthalmus stenozonum
+          note: Historical subspecific name currently treated as a synonym.
+        - name: Cichlasoma urophthalmus zebra
+          note: Historical subspecific name currently treated as a synonym.
+        - name: Mayaheros alborus
+          note: Former species-level combination currently treated as a synonym.
+        - name: Mayaheros cienagae
+          note: Former species-level combination currently treated as a synonym.
+        - name: Mayaheros conchitae
+          note: Former species-level combination currently treated as a synonym.
+        - name: Mayaheros mayorum
+          note: Former species-level combination currently treated as a synonym.
+        - name: Mayaheros stenozonus
+          note: Former species-level combination currently treated as a synonym.
+        - name: Mayaheros zebra
+          note: Former species-level combination currently treated as a synonym.
+      rationale: "The current Mayaheros entry establishes the valid name and the Lake Peten Itza type locality. The
+        legacy Cichlasoma query does not retain this transferred species. The Catalog supersedes the older CRC
+        subspecies treatment: aguadae, amarus, ericymba and trispilus remain separate valid Mayaheros species,
+        whereas the synonymized Hubbs names listed here do not. The conchitae synonym omitted by some inputs
+        is retained."
+    - field: taxonomy.author
+      proposals:
+        - by: generator
+          value: "(Günther, 1862)"
+        - by: checker-a
+          value: "(Gunther, 1862)"
+        - by: checker-b
+          value: "(Günther, 1862)"
+        - by: checker-c
+          value: "(Günther, 1862)"
+      decision: "(Günther, 1862)"
+      rationale: The current Catalog supplies Günther with the umlaut. The unaccented checker-a spelling refers to
+        the same author and is normalized.
+    - field: features.habitatZones
+      proposals:
+        - by: generator
+          value:
+            - sand
+            - rock
+            - wood
+            - plants
+        - by: checker-a
+          value:
+            - sand
+            - rock
+            - plants
+            - wood
+        - by: checker-b
+          value:
+            - sand
+            - plants
+            - wood
+            - rock
+        - by: checker-c
+          value:
+            - sand
+            - rock
+            - plants
+            - wood
+      decision:
+        - sand
+        - rock
+        - wood
+        - plants
+      rationale: "All full profiles name the same four zones in different orders. Native mangrove roots and
+        vegetated margins provide shelter and food, while sand, rock and wood match both collecting
+        observations and aquarium layouts. Plants may be damaged; listing plants as habitat does not require
+        intact planted displays."
+    - field: partners.suitable
+      proposals:
+        - by: generator
+          value:
+            - species: Rocio octofasciata
+              reason: A similarly substantial territorial cichlid can be a candidate where neither adult can be swallowed;
+                compatibility is inferred from the care sources' robust-cichlid category.
+              condition: "Experienced keeper, full-sized adults, separate territories in an aquarium larger than the pair
+                minimum, and immediate separation if breeding defense or persistent attacks develop."
+            - species: Herichthys carpintis
+              reason: "Adult size and robustness make it a conditional candidate, with overlapping ordinary freshwater
+                husbandry; no species-specific successful pairing was verified."
+              condition: Very large freshwater aquarium with substantial sight barriers; avoid a second breeding pair and
+                maintain a removal plan.
+            - species: Pterygoplichthys gibbiceps
+              reason: A full-grown armored catfish belongs to the large-catfish category recommended in husbandry sources;
+                juveniles are vulnerable and adult space and waste load are considerable.
+              condition: "A much larger aquarium than the minimum for the Mayan pair, a separate retreat, adequate food
+                reaching the catfish, and monitoring for injuries."
+      decision:
+        - species: Large robust Central American cichlids
+          reason: The care sources allow this category conditionally; adults must be too large to swallow.
+          condition: "A tank larger than the pair minimum, separate territories and prompt removal if sustained attacks
+            develop."
+        - species: Large armored catfish
+          reason: Seriously Fish and Fishkeeper allow substantial catfish; Aquario cautions about conflicts with bottom
+            users.
+          condition: "Full-grown robust individuals, protected retreats and enough extra floor space; breeding defense
+            may require separation."
+      rationale: "The named candidates were explicitly inferred from broad categories and lack verified
+        species-specific coexistence reports. Keep only the categories supported by the sources, with
+        conditions consistent with predation level 2 and aggression level 3."
