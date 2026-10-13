@@ -1,0 +1,3172 @@
+schemaVersion: 1
+id: haplochromis-latifasciatus
+legacyIds:
+  - 533
+status: described
+taxonomy:
+  validName: Haplochromis latifasciatus
+  genus: Haplochromis
+  species: latifasciatus
+  author: "Regan, 1929"
+  source:
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes: species of Haplochromis"
+    url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Haplochromis"
+    accessed: "2026-10-13"
+  synonyms:
+    - name: Astatotilapia latifasciata
+      note: Alternative generic combination widely used in aquarium accounts and the legacy catalog.
+    - name: Haplochromis latifasciata
+      note: "Incorrect gender ending encountered in trade usage, not a separate species."
+  legacyNames:
+    - Astatotilapia latifasciata
+  note: "The Catalog of Fishes retains the original Haplochromis combination, so authorship has no parentheses.\
+    \ The Astatotilapia genus list at https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Astatotilapia\
+    \ was also read on 2026-10-13 and has no matching epithet. FishBase agrees. The public CRC account verifies\
+    \ Haplochromis but puts the author in parentheses; the catalog takes precedence. Its ecological profile\
+    \ requires a subscription and was not read. The trade label zebra obliquidens is not a synonym of the separate\
+    \ Haplochromis obliquidens."
+names:
+  trade:
+    en:
+      - Zebra obliquidens
+      - Haplochromis sp. 'zebra obliquidens'
+variants:
+  - name: Albino
+    kind: color-morph
+    note: An occasional captive colour form reported by Seriously Fish; no separate locality or compatibility
+      traits are established.
+features:
+  origin:
+    value:
+      continent: Africa
+      region: Lake Kyoga system in Uganda
+      waterbody: null
+      localities:
+        - Lake Kyoga
+        - Lake Nawampasa
+    confidence: high
+    rationale: "The catalog establishes Kyoga as the type locality, while Seriously Fish and the Nordic species\
+      \ register independently add Nawampasa. Neither lake has a waterbody-table entry, so no Victoria lake\
+      \ chemistry is substituted. A CRC photograph caption and a retailer also mention Bisina, but a photograph\
+      \ caption alone does not establish a documented locality series for this profile."
+    sources:
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: species of Haplochromis"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Haplochromis"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "FishBase species summary: Haplochromis latifasciatus"
+        url: "https://www.fishbase.se/summary/Haplochromis-latifasciatus.html"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Seriously Fish: Haplochromis latifasciatus"
+        url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Nordiska Ciklidsallskapet: Astatotilapia latifasciata species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=301"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: catalog-of-fishes
+          title: "Eschmeyer's Catalog of Fishes: species of Haplochromis"
+          url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Haplochromis"
+          accessed: "2026-10-13"
+        value:
+          continent: Africa
+          region: Lake Kyoga in Uganda
+        note: Type locality and distribution.
+      - source:
+          kind: database
+          title: "Seriously Fish: Haplochromis latifasciatus"
+          url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+          accessed: "2026-10-13"
+        value:
+          continent: Africa
+          region: Lake Kyoga and Lake Nawampasa
+        note: Species distribution account.
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet: Astatotilapia latifasciata species register"
+          url: "https://www.ciklid.org/artregister/art.php?ID=301"
+          accessed: "2026-10-13"
+        value:
+          continent: Africa
+          region: Lake Kyoga and Lake Nawampasa
+        note: Independent specialist species register.
+  temperatureC:
+    value:
+      min: 25
+      max: 30
+    confidence: medium
+    rationale: "The qualified-majority tally fixes 25 to 30 C with four of six agreeing votes. Ongom measured\
+      \ 24.5 to 27 C; Obubu et al. reported 25.6 to 30.4 C in eastern Kyoga; the independent 2023 fish-habitat\
+      \ study reported 25.9 to 29.4 C. The selected four proposals each span 24.5 to 30.4 C, and integer rounding\
+      \ makes the decision narrower than that measured union. The wider 24.5 to 30.4 C remains in evidence\
+      \ and is not denied by the rounded value. These are basin observations with incomplete Nawampasa coverage,\
+      \ not species-specific physiological limits. The Naigaga repository abstract was read but its input temperature\
+      \ figure was not independently verified from a full text. generator proposed {\"min\": 24.5, \"max\"\
+      : 29}; checker-a proposed {\"min\": 25.6, \"max\": 29.4}; checker-b proposed {\"min\": 24.5, \"max\"\
+      : 30.4}; checker-c proposed {\"min\": 24.5, \"max\": 30.4}; tiebreaker-1 proposed {\"min\": 24.5, \"\
+      max\": 30.4}; tiebreaker-2 proposed {\"min\": 24.5, \"max\": 30.4}."
+    sources:
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: species of Haplochromis."
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Haplochromis"
+        accessed: "2026-10-13"
+      - kind: literature
+        title: "Ongom, Andama and Lukubye (2017). Physico-Chemical Quality of Lake Kyoga at Selected Landing\
+          \ Sites and Anthropogenic Activities."
+        url: "https://doi.org/10.4236/jwarp.2017.911080"
+        accessed: "2026-10-13"
+      - kind: literature
+        title: "Obubu et al. (2022). Determination of the Connectedness of Land Use, Land Cover Change to Water\
+          \ Quality Status of a Shallow Lake: A Case of Lake Kyoga Basin, Uganda."
+        url: "https://doi.org/10.3390/su14010372"
+        accessed: "2026-10-13"
+      - kind: literature
+        title: Obubu et al. (2023). Identification and characterization of fish breeding habitats on Lake Kyoga
+          as an approach to sustainable fisheries management.
+        url: "https://doi.org/10.47853/fas.2023.e24"
+        accessed: "2026-10-13"
+      - kind: literature
+        title: "Naigaga et al. (2013). Water, Water Quality, and Pond Bottom Soil Management in Ugandan Aquaculture.\
+          \ Repository abstract only."
+        url: "https://nru.uncst.go.ug/handle/123456789/8669"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "ILEC World Lake Database: Lake Kyoga, World Lake Data Book"
+        url: "https://wldb.ilec.or.jp/Display/html/3596"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: literature
+          title: "Ongom, Andama and Lukubye (2017). Physico-Chemical Quality of Lake Kyoga at Selected Landing\
+            \ Sites and Anthropogenic Activities. Table 1."
+          url: "https://doi.org/10.4236/jwarp.2017.911080"
+          accessed: "2026-10-13"
+        value:
+          min: 24.5
+          max: 27
+        note: Field extrema in Table 1.
+      - source:
+          kind: literature
+          title: "Obubu et al. (2022). Determination of the Connectedness of Land Use, Land Cover Change to\
+            \ Water Quality Status of a Shallow Lake: A Case of Lake Kyoga Basin, Uganda."
+          url: "https://doi.org/10.3390/su14010372"
+          accessed: "2026-10-13"
+        value:
+          min: 25.6
+          max: 30.4
+        note: "Eastern Kyoga temperature range in Table 8, including the hot 2020 maximum."
+      - source:
+          kind: literature
+          title: Obubu et al. (2023). Identification and characterization of fish breeding habitats on Lake
+            Kyoga as an approach to sustainable fisheries management.
+          url: "https://doi.org/10.47853/fas.2023.e24"
+          accessed: "2026-10-13"
+        value:
+          min: 25.9
+          max: 29.4
+        note: Shallow fish habitats sampled in April 2021 and 2022.
+      - source:
+          kind: database
+          title: "ILEC World Lake Database: Lake Kyoga, Bugondo water-column measurements"
+          url: "https://wldb.ilec.or.jp/Display/html/3596"
+          accessed: "2026-10-13"
+        value:
+          min: 25.6
+          max: 28
+        note: Bugondo June profile from the surface to 2.4 m.
+      - source:
+          kind: literature
+          title: "Naigaga et al. (2013). Water, Water Quality, and Pond Bottom Soil Management in Ugandan Aquaculture.\
+            \ Repository abstract only."
+          url: "https://nru.uncst.go.ug/handle/123456789/8669"
+          accessed: "2026-10-13"
+        value: null
+        note: Only the repository abstract was read; the input mean of 28.1 C could not be verified.
+    tolerance:
+      value:
+        min: 23
+        max: 30
+      confidence: low
+      rationale: "The tally treats the four original tolerance votes as unanimous under the 1 C agreement rule\
+        \ and fixes 23 to 30 C; the two tie-breakers did not vote on this tolerance. Seriously Fish recommends\
+        \ 23 to 28 C and the Nordic register 22 to 28 C. Fanie's retail page reaches 24 to 30 C, but it does\
+        \ not document multiyear outcomes. The original 22 to 30.4 C proposals and the wider natural 24.5 to\
+        \ 30.4 C measurements are not fully retained because the tally rounds the selected median endpoints\
+        \ to integers. This envelope contains the decided natural range, while healthy years at 30 C remain\
+        \ unproven. Use the better supported middle temperatures as ordinary set points. generator proposed\
+        \ {\"min\": 23, \"max\": 30}; checker-a proposed {\"min\": 23, \"max\": 29.4}; checker-b proposed {\"\
+        min\": 22, \"max\": 30.4}; checker-c proposed {\"min\": 22, \"max\": 30.4}."
+      sources:
+        - kind: literature
+          title: "Obubu et al. (2022). Determination of the Connectedness of Land Use, Land Cover Change to\
+            \ Water Quality Status of a Shallow Lake: A Case of Lake Kyoga Basin, Uganda."
+          url: "https://doi.org/10.3390/su14010372"
+          accessed: "2026-10-13"
+        - kind: database
+          title: "Seriously Fish: Haplochromis latifasciatus"
+          url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+          accessed: "2026-10-13"
+        - kind: database
+          title: "Guidarium: Zebra Obliquidens"
+          url: "https://guidarium.com/fishes/zebra-obliquidens"
+          accessed: "2026-10-13"
+        - kind: database
+          title: "Nordiska Ciklidsallskapet: Astatotilapia latifasciata species register"
+          url: "https://www.ciklid.org/artregister/art.php?ID=301"
+          accessed: "2026-10-13"
+        - kind: website
+          title: "Fanie's Fishroom structured care sheet: Astatotilapia latifasciata"
+          url: "https://www.faniesfishroom.com/catalogue/astatotilapia-latifasciata"
+          accessed: "2026-10-13"
+        - kind: website
+          title: "Imperial Tropicals breeder care sheet: Zebra Obliquidens"
+          url: "https://imperialtropicals.com/products/zebra-obliquidens-dominate-male-3"
+          accessed: "2026-10-13"
+        - kind: website
+          title: "Fishkeeper: Zebra Obliquidens"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/zebra-obliquidens"
+          accessed: "2026-10-13"
+      evidence:
+        - source:
+            kind: database
+            title: "Seriously Fish: Haplochromis latifasciatus"
+            url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+            accessed: "2026-10-13"
+          value:
+            min: 23
+            max: 28
+          note: Species-specific aquarium recommendation.
+        - source:
+            kind: database
+            title: "Nordiska Ciklidsallskapet: Astatotilapia latifasciata species register"
+            url: "https://www.ciklid.org/artregister/art.php?ID=301"
+            accessed: "2026-10-13"
+          value:
+            min: 22
+            max: 28
+          note: Independent specialist aquarium recommendation.
+        - source:
+            kind: database
+            title: "Guidarium: Zebra Obliquidens"
+            url: "https://guidarium.com/fishes/zebra-obliquidens"
+            accessed: "2026-10-13"
+          value:
+            min: 24
+            max: 28
+          note: Structured aquarium recommendation.
+        - source:
+            kind: website
+            title: "Fishkeeper: Zebra Obliquidens"
+            url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/zebra-obliquidens"
+            accessed: "2026-10-13"
+          value:
+            min: 24
+            max: 26
+          note: Retail aquarium recommendation.
+        - source:
+            kind: website
+            title: "Imperial Tropicals breeder care sheet: Zebra Obliquidens"
+            url: "https://imperialtropicals.com/products/zebra-obliquidens-dominate-male-3"
+            accessed: "2026-10-13"
+          value:
+            min: 22.2
+            max: 25.6
+          note: Breeder recommendation converted from 72 to 78 F.
+        - source:
+            kind: website
+            title: "Fanie's Fishroom structured care sheet: Astatotilapia latifasciata"
+            url: "https://www.faniesfishroom.com/catalogue/astatotilapia-latifasciata"
+            accessed: "2026-10-13"
+          value:
+            min: 24
+            max: 30
+          note: Retail aquarium recommendation without duration data.
+        - source:
+            kind: literature
+            title: "Obubu et al. (2022). Determination of the Connectedness of Land Use, Land Cover Change\
+              \ to Water Quality Status of a Shallow Lake: A Case of Lake Kyoga Basin, Uganda."
+            url: "https://doi.org/10.3390/su14010372"
+            accessed: "2026-10-13"
+          value:
+            min: 25.6
+            max: 30.4
+          note: "Habitat observation used for containment, not a chronic tolerance test."
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 4
+        total: 6
+  ph:
+    value:
+      min: 6.8
+      max: 9.6
+    confidence: medium
+    rationale: "The qualified-majority decision is 6.8 to 9.6, with four of six votes agreeing within the pH\
+      \ threshold. Fishing areas in Ongom reach 6.8 to 7.5, the 2023 shallow fish-habitat survey reaches 7.0\
+      \ to 9.6, and Newman reports about 7.0 to 7.5 in Nawampasa. Obubu's eastern-arm series has a wider union\
+      \ of 6.5 to 9.9; it documents lake variation but not this species occupying every extreme. Waste-associated\
+      \ readings down to 5.7 are also outside the selected envelope. The tally favors the fish-habitat interpretation\
+      \ over both the 9.0 ceiling and the broader 6.5 to 9.9 proposal. Seasonal photosynthesis can produce\
+      \ transient high pH. The Naigaga abstract contains no confirmable numeric pH range. generator proposed\
+      \ {\"min\": 6.8, \"max\": 9}; checker-a proposed {\"min\": 7, \"max\": 9.6}; checker-b proposed {\"min\"\
+      : 6.8, \"max\": 9}; checker-c proposed {\"min\": 6.8, \"max\": 9.6}; tiebreaker-1 proposed {\"min\":\
+      \ 6.5, \"max\": 9.9}; tiebreaker-2 proposed {\"min\": 6.8, \"max\": 9.6}."
+    sources:
+      - kind: literature
+        title: Obubu et al. (2023). Identification and characterization of fish breeding habitats on Lake Kyoga
+          as an approach to sustainable fisheries management.
+        url: "https://doi.org/10.47853/fas.2023.e24"
+        accessed: "2026-10-13"
+      - kind: literature
+        title: "Naigaga et al. (2013). Water, Water Quality, and Pond Bottom Soil Management in Ugandan Aquaculture.\
+          \ Repository abstract only."
+        url: "https://nru.uncst.go.ug/handle/123456789/8669"
+        accessed: "2026-10-13"
+      - kind: literature
+        title: Newman (1997). Cichlid Conservation in Uganda. Collecting report republished by AquaInfo.
+        url: "https://aquainfo.nl/en/cichlid-conservation-in-uganda/"
+        accessed: "2026-10-13"
+      - kind: literature
+        title: "Ongom, Andama and Lukubye (2017). Physico-Chemical Quality of Lake Kyoga at Selected Landing\
+          \ Sites and Anthropogenic Activities."
+        url: "https://doi.org/10.4236/jwarp.2017.911080"
+        accessed: "2026-10-13"
+      - kind: literature
+        title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa.\
+          \ Volume 1. Uganda: Kyoga Lakes Complex."
+        url: "https://www.fao.org/4/t0473e/T0473E11.htm"
+        accessed: "2026-10-13"
+      - kind: literature
+        title: "Obubu et al. (2022). Determination of the Connectedness of Land Use, Land Cover Change to Water\
+          \ Quality Status of a Shallow Lake: A Case of Lake Kyoga Basin, Uganda."
+        url: "https://doi.org/10.3390/su14010372"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "World Lake Database (ILEC): Lake Kyoga"
+        url: "https://wldb.ilec.or.jp/Display/html/3596"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: literature
+          title: "Ongom, Andama and Lukubye (2017). Physico-Chemical Quality of Lake Kyoga at Selected Landing\
+            \ Sites and Anthropogenic Activities. Table 1."
+          url: "https://doi.org/10.4236/jwarp.2017.911080"
+          accessed: "2026-10-13"
+        value:
+          min: 6.8
+          max: 7.5
+        note: Fishing-area subset; waste-area measurements extend lower.
+      - source:
+          kind: literature
+          title: Obubu et al. (2023). Identification and characterization of fish breeding habitats on Lake
+            Kyoga as an approach to sustainable fisheries management.
+          url: "https://doi.org/10.47853/fas.2023.e24"
+          accessed: "2026-10-13"
+        value:
+          min: 7
+          max: 9.6
+        note: "Measured shallow fish-habitat interval, without species-specific occupancy."
+      - source:
+          kind: literature
+          title: Newman (1997). Cichlid Conservation in Uganda. Field account republished by AquaInfo.
+          url: "https://aquainfo.nl/en/cichlid-conservation-in-uganda/"
+          accessed: "2026-10-13"
+        value:
+          min: 7
+          max: 7.5
+        note: Nawampasa field-kit interval; the separator is missing in the online typography.
+      - source:
+          kind: literature
+          title: "Obubu et al. (2022). Determination of the Connectedness of Land Use, Land Cover Change to\
+            \ Water Quality Status of a Shallow Lake: A Case of Lake Kyoga Basin, Uganda."
+          url: "https://doi.org/10.3390/su14010372"
+          accessed: "2026-10-13"
+        value:
+          min: 6.5
+          max: 9.9
+        note: Union of the eastern-arm monitoring ranges; the printed 2010 maximum of 85 is interpreted as
+          8.5 in context.
+      - source:
+          kind: literature
+          title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa,\
+            \ Vol. 1. Uganda: Kyoga Lakes Complex water chemistry compilation."
+          url: "https://www.fao.org/4/t0473e/T0473E11.htm"
+          accessed: "2026-10-13"
+        value:
+          min: 7.6
+          max: 9
+        note: Historical Kyoga summary.
+      - source:
+          kind: database
+          title: "ILEC World Lake Database: Lake Kyoga, Bugondo water-column measurements"
+          url: "https://wldb.ilec.or.jp/Display/html/3596"
+          accessed: "2026-10-13"
+        value:
+          min: 7.1
+          max: 7.6
+        note: June water-column profile at Bugondo.
+      - source:
+          kind: literature
+          title: "Naigaga et al. (2013). Water, Water Quality, and Pond Bottom Soil Management in Ugandan Aquaculture.\
+            \ Repository abstract only."
+          url: "https://nru.uncst.go.ug/handle/123456789/8669"
+          accessed: "2026-10-13"
+        value: null
+        note: Numeric input pH values cannot be verified from the repository abstract.
+    tolerance:
+      value:
+        min: 6.8
+        max: 9.6
+      confidence: low
+      rationale: "The qualified-majority tally fixes 6.8 to 9.6 with four of six agreeing votes, then contains\
+        \ the decided natural interval. Seriously Fish recommends 7.2 to 8.2 and the Nordic register 7.5 to\
+        \ 8.0; other aquarium accounts extend toward 8.5 or 9.0. The endpoints of the selected envelope come\
+        \ from habitat coverage, not controlled multiyear aquarium outcomes. The wider 6.5 to 9.9 eastern-arm\
+        \ source range and tiebreaker-1 proposal are recorded but excluded by the tally. Stable central conditions\
+        \ have stronger husbandry support than continuous exposure to either outer endpoint. generator proposed\
+        \ {\"min\": 6.8, \"max\": 9}; checker-a proposed {\"min\": 7, \"max\": 9.6}; checker-b proposed {\"\
+        min\": 6.8, \"max\": 9}; checker-c proposed {\"min\": 6.8, \"max\": 9.6}; tiebreaker-1 proposed {\"\
+        min\": 6.5, \"max\": 9.9}; tiebreaker-2 proposed {\"min\": 6.8, \"max\": 9.6}."
+      sources:
+        - kind: literature
+          title: Newman (1997). Cichlid Conservation in Uganda. Collecting report republished by AquaInfo.
+          url: "https://aquainfo.nl/en/cichlid-conservation-in-uganda/"
+          accessed: "2026-10-13"
+        - kind: literature
+          title: Obubu et al. (2023). Identification and characterization of fish breeding habitats on Lake
+            Kyoga as an approach to sustainable fisheries management.
+          url: "https://doi.org/10.47853/fas.2023.e24"
+          accessed: "2026-10-13"
+        - kind: literature
+          title: "Obubu et al. (2022). Determination of the Connectedness of Land Use, Land Cover Change to\
+            \ Water Quality Status of a Shallow Lake: A Case of Lake Kyoga Basin, Uganda."
+          url: "https://doi.org/10.3390/su14010372"
+          accessed: "2026-10-13"
+        - kind: literature
+          title: "Ongom, Andama and Lukubye (2017). Physico-Chemical Quality of Lake Kyoga at Selected Landing\
+            \ Sites and Anthropogenic Activities. Table 1."
+          url: "https://doi.org/10.4236/jwarp.2017.911080"
+          accessed: "2026-10-13"
+        - kind: literature
+          title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa,\
+            \ Vol. 1. Uganda: Kyoga Lakes Complex water chemistry compilation."
+          url: "https://www.fao.org/4/t0473e/T0473E11.htm"
+          accessed: "2026-10-13"
+        - kind: database
+          title: "Seriously Fish: Haplochromis latifasciatus"
+          url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+          accessed: "2026-10-13"
+        - kind: database
+          title: "Guidarium: Zebra Obliquidens"
+          url: "https://guidarium.com/fishes/zebra-obliquidens"
+          accessed: "2026-10-13"
+        - kind: database
+          title: "Einrichtungsbeispiele: Haplochromis latifasciatus husbandry profile."
+          url: "https://www.einrichtungsbeispiele.de/zierfische/afrika/haplochromis-latifasciatus-slnk.html"
+          accessed: "2026-10-13"
+        - kind: database
+          title: "Nordiska Ciklidsallskapet: Astatotilapia latifasciata species register"
+          url: "https://www.ciklid.org/artregister/art.php?ID=301"
+          accessed: "2026-10-13"
+        - kind: website
+          title: "Fishkeeper: Zebra Obliquidens"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/zebra-obliquidens"
+          accessed: "2026-10-13"
+        - kind: website
+          title: "Imperial Tropicals breeding and care sheet: Zebra Obliquidens"
+          url: "https://imperialtropicals.com/products/zebra-obliquidens-dominate-male-3"
+          accessed: "2026-10-13"
+        - kind: website
+          title: "Bay Bridge Aquarium care sheet: Zebra Obliquidens"
+          url: "https://www.baybridgeaquarium.com/products/zebra-obliquidens"
+          accessed: "2026-10-13"
+        - kind: website
+          title: "AquariumDomain: Zebra Obliquidens (Astatotilapia latifasciata), structured care profile"
+          url: "https://www.aquariumdomain.com/SpeciesProfiles/AfricanCichlids/ZebraObliquidens.shtml"
+          accessed: "2026-10-13"
+        - kind: website
+          title: "LiveAquaria structured care sheet: Zebra Obliquidens"
+          url: "https://www.liveaquaria.com/products/zebra-obliquidens"
+          accessed: "2026-10-13"
+      evidence:
+        - source:
+            kind: database
+            title: "Seriously Fish: Haplochromis latifasciatus"
+            url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+            accessed: "2026-10-13"
+          value:
+            min: 7.2
+            max: 8.2
+          note: Species-specific aquarium recommendation.
+        - source:
+            kind: database
+            title: "Nordiska Ciklidsallskapet: Astatotilapia latifasciata species register"
+            url: "https://www.ciklid.org/artregister/art.php?ID=301"
+            accessed: "2026-10-13"
+          value:
+            min: 7.5
+            max: 8
+          note: Specialist aquarium recommendation.
+        - source:
+            kind: database
+            title: "Einrichtungsbeispiele: Haplochromis latifasciatus husbandry profile."
+            url: "https://www.einrichtungsbeispiele.de/zierfische/afrika/haplochromis-latifasciatus-slnk.html"
+            accessed: "2026-10-13"
+          value:
+            min: 7.5
+            max: 8.5
+          note: Structured aquarium recommendation.
+        - source:
+            kind: database
+            title: "Guidarium: Zebra Obliquidens"
+            url: "https://guidarium.com/fishes/zebra-obliquidens"
+            accessed: "2026-10-13"
+          value:
+            min: 7.5
+            max: 8.6
+          note: Structured aquarium recommendation.
+        - source:
+            kind: website
+            title: "Imperial Tropicals breeder care sheet: Zebra Obliquidens"
+            url: "https://imperialtropicals.com/products/zebra-obliquidens-dominate-male-3"
+            accessed: "2026-10-13"
+          value:
+            min: 7.5
+            max: 8.5
+          note: Breeder aquarium recommendation.
+        - source:
+            kind: website
+            title: "Fishkeeper: Zebra Obliquidens"
+            url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/zebra-obliquidens"
+            accessed: "2026-10-13"
+          value:
+            min: 7.5
+            max: 8.5
+          note: Retail aquarium recommendation.
+        - source:
+            kind: website
+            title: "LiveAquaria structured care sheet: Zebra Obliquidens"
+            url: "https://www.liveaquaria.com/products/zebra-obliquidens"
+            accessed: "2026-10-13"
+          value:
+            min: 7.8
+            max: 8.6
+          note: Retail aquarium recommendation.
+        - source:
+            kind: website
+            title: "Bay Bridge Aquarium: Zebra Obliquidens care sheet"
+            url: "https://www.baybridgeaquarium.com/products/zebra-obliquidens"
+            accessed: "2026-10-13"
+          value:
+            min: 7.8
+            max: 9
+          note: Retail recommendation without chronic outcomes.
+        - source:
+            kind: website
+            title: "AquariumDomain species profile: Zebra Obliquidens"
+            url: "https://www.aquariumdomain.com/SpeciesProfiles/AfricanCichlids/ZebraObliquidens.shtml"
+            accessed: "2026-10-13"
+          value:
+            min: 7
+            max: 8.5
+          note: Hobby aquarium recommendation on a page with a wrong lake label.
+        - source:
+            kind: literature
+            title: "Ongom, Andama and Lukubye (2017). Physico-Chemical Quality of Lake Kyoga at Selected Landing\
+              \ Sites and Anthropogenic Activities. Table 1."
+            url: "https://doi.org/10.4236/jwarp.2017.911080"
+            accessed: "2026-10-13"
+          value:
+            min: 6.8
+            max: 7.5
+          note: "Natural fishing-area observation, not a tolerance experiment."
+        - source:
+            kind: literature
+            title: Obubu et al. (2023). Identification and characterization of fish breeding habitats on Lake
+              Kyoga as an approach to sustainable fisheries management.
+            url: "https://doi.org/10.47853/fas.2023.e24"
+            accessed: "2026-10-13"
+          value:
+            min: 7
+            max: 9.6
+          note: Natural fish-habitat observation used for containment.
+        - source:
+            kind: literature
+            title: Newman (1997). Cichlid Conservation in Uganda. Field account republished by AquaInfo.
+            url: "https://aquainfo.nl/en/cichlid-conservation-in-uganda/"
+            accessed: "2026-10-13"
+          value:
+            min: 7
+            max: 7.5
+          note: "Natural Nawampasa observation, not a captive endurance test."
+        - source:
+            kind: literature
+            title: "Obubu et al. (2022). Determination of the Connectedness of Land Use, Land Cover Change\
+              \ to Water Quality Status of a Shallow Lake: A Case of Lake Kyoga Basin, Uganda."
+            url: "https://doi.org/10.3390/su14010372"
+            accessed: "2026-10-13"
+          value:
+            min: 6.5
+            max: 9.9
+          note: Wider lake observations; the tally does not retain both endpoints.
+      verification:
+        method: qualified-majority
+        votes:
+          agree: 4
+          total: 6
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 4
+        total: 6
+  ghDgh:
+    value:
+      min: 4
+      max: 6
+    confidence: low
+    rationale: "The qualified-majority tally fixes 4 to 6 dGH with four of six agreeing votes. FAO reproduces\
+      \ Kyoga calcium and magnesium of 14.1 and 7.5 mg/L from HYDROMET and 21.7 and 13.8 mg/L from EAFRO. Using\
+      \ dGH = Ca/7.14 + Mg/4.34 gives 3.70 and 6.22 dGH, a wider interval than the rounded decision. Welcomme\
+      \ repeats EAFRO, so the two compilations are not two independent surveys. Similar ion figures recur elsewhere\
+      \ in the FAO inventory, leaving attribution uncertain. Mungoma's readable abstract gives regional mean\
+      \ hardness equivalents of 1.7 to 2.8 dGH, which support the softer alternative but are means rather than\
+      \ extrema. The Naigaga proposal of roughly 1.6 dGH could not be verified from its repository abstract;\
+      \ the permitted Livingstone extraction did not expose the claimed Kyoga table, so no calcium-only figure\
+      \ is presented as total GH. No Nawampasa GH series was read. generator proposed {\"min\": 3.5, \"max\"\
+      : 6.5}; checker-a proposed {\"min\": 1, \"max\": 2}; checker-b proposed {\"min\": 3.7, \"max\": 3.7};\
+      \ checker-c proposed {\"min\": 3.7, \"max\": 6.3}; tiebreaker-1 proposed {\"min\": 3.7, \"max\": 6.3};\
+      \ tiebreaker-2 proposed {\"min\": 1.7, \"max\": 6.3}."
+    sources:
+      - kind: literature
+        title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa,\
+          \ Vol. 1. Uganda: Kyoga Lakes Complex water chemistry compilation."
+        url: "https://www.fao.org/4/t0473e/T0473E11.htm"
+        accessed: "2026-10-13"
+      - kind: literature
+        title: "Welcomme (1972). The inland waters of Africa. CIFA Technical Paper 1. Kyoga System: EAFRO 1954\
+          \ chemistry compilation."
+        url: "https://www.fao.org/4/d0780b/D0780B03.htm"
+        accessed: "2026-10-13"
+      - kind: literature
+        title: "Mungoma (1988). Horizontal differentiation in the limnology of a tropical river-lake (Lake\
+          \ Kyoga, Uganda). Abstract only."
+        url: "https://doi.org/10.1007/bf00014336"
+        accessed: "2026-10-13"
+      - kind: literature
+        title: "Naigaga et al. (2013). Water, Water Quality, and Pond Bottom Soil Management in Ugandan Aquaculture.\
+          \ Repository abstract only."
+        url: "https://nru.uncst.go.ug/handle/123456789/8669"
+        accessed: "2026-10-13"
+      - kind: literature
+        title: Obubu et al. (2023). Identification and characterization of fish breeding habitats on Lake Kyoga
+          as an approach to sustainable fisheries management.
+        url: "https://doi.org/10.47853/fas.2023.e24"
+        accessed: "2026-10-13"
+      - kind: literature
+        title: "Magezi 2000: Physical and chemical characteristics of major aquatic ecosystems in the Victoria\
+          \ and Kyoga lake basins (NaFIRRI, AquaDocs)"
+        url: "http://hdl.handle.net/1834/34469"
+        accessed: "2026-10-13"
+      - kind: literature
+        title: "Livingstone (1963). Chemical composition of rivers and lakes. USGS Professional Paper 440-G,\
+          \ page G32, Table 58, analysis R."
+        url: "https://doi.org/10.3133/pp440g"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: literature
+          title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa,\
+            \ Vol. 1. Uganda: Kyoga Lakes Complex water chemistry compilation."
+          url: "https://www.fao.org/4/t0473e/T0473E11.htm"
+          accessed: "2026-10-13"
+        value:
+          min: 3.7
+          max: 6.22
+        note: Calculated from the two paired calcium and magnesium analyses in the Kyoga table.
+      - source:
+          kind: literature
+          title: "Welcomme (1972). The inland waters of Africa. CIFA Technical Paper 1. Kyoga System: EAFRO\
+            \ 1954 chemistry compilation."
+          url: "https://www.fao.org/4/d0780b/D0780B03.htm"
+          accessed: "2026-10-13"
+        value:
+          min: 6.22
+          max: 6.22
+        note: Converted EAFRO ion concentrations; repeated by the later FAO compilation.
+      - source:
+          kind: literature
+          title: "Mungoma (1988). Horizontal differentiation in the limnology of a tropical river-lake (Lake\
+            \ Kyoga, Uganda). Abstract only."
+          url: "https://doi.org/10.1007/bf00014336"
+          accessed: "2026-10-13"
+        value:
+          min: 1.7
+          max: 2.8
+        note: "Regional mean hardness in the readable abstract, converted from 0.6 and 1.0 meq/L; these are\
+          \ not extrema."
+      - source:
+          kind: literature
+          title: "Naigaga et al. (2013). Water, Water Quality, and Pond Bottom Soil Management in Ugandan Aquaculture.\
+            \ Repository abstract only."
+          url: "https://nru.uncst.go.ug/handle/123456789/8669"
+          accessed: "2026-10-13"
+        value: null
+        note: "Checker-a uses a table-level hardness figure, which the accessible abstract does not expose."
+      - source:
+          kind: literature
+          title: "Livingstone (1963). Chemical composition of rivers and lakes. USGS Professional Paper 440-G,\
+            \ page G32, Table 58, analysis R."
+          url: "https://doi.org/10.3133/pp440g"
+          accessed: "2026-10-13"
+        value: null
+        note: The permitted OA text extraction did not expose the input calcium table; incomplete calcium alone
+          would not establish total GH.
+    tolerance:
+      value:
+        min: 4
+        max: 15
+      confidence: low
+      rationale: "The qualified-majority tally fixes 4 to 15 dGH with five of six votes agreeing within the\
+        \ 2 dGH threshold. Seriously Fish recommends 8 to 15 dGH and Fischlexikon 5 to 15 dGH. The lower bound\
+        \ is a rounded extension toward the decided natural interval, not demonstrated chronic soft-water maintenance.\
+        \ The wider 5 to 20 dGH recommendation in Einrichtungsbeispiele and 10 to 20 in Guidarium are not retained\
+        \ at the upper end; the 16 to 24 retail claim is especially weak because that page confuses species\
+        \ elsewhere. Mungoma's natural regional means are softer still, around 1.7 to 2.8 dGH. The 1 to 20\
+        \ proposal does not override the tally. Confidence remains low because chronic endpoint data are absent.\
+        \ generator proposed {\"min\": 3.5, \"max\": 15}; checker-a proposed {\"min\": 1, \"max\": 20}; checker-b\
+        \ proposed {\"min\": 3.7, \"max\": 15}; checker-c proposed {\"min\": 3.7, \"max\": 15}; tiebreaker-1\
+        \ proposed {\"min\": 3.7, \"max\": 15}; tiebreaker-2 proposed {\"min\": 1.7, \"max\": 15}."
+      sources:
+        - kind: literature
+          title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa,\
+            \ Vol. 1. Uganda: Kyoga Lakes Complex water chemistry compilation."
+          url: "https://www.fao.org/4/t0473e/T0473E11.htm"
+          accessed: "2026-10-13"
+        - kind: literature
+          title: "Mungoma (1988). Horizontal differentiation in the limnology of a tropical river-lake (Lake\
+            \ Kyoga, Uganda). Abstract only."
+          url: "https://doi.org/10.1007/bf00014336"
+          accessed: "2026-10-13"
+        - kind: database
+          title: "Seriously Fish: Haplochromis latifasciatus"
+          url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+          accessed: "2026-10-13"
+        - kind: database
+          title: "Fischlexikon: Haplochromis latifasciatus"
+          url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000001446"
+          accessed: "2026-10-13"
+        - kind: database
+          title: "Einrichtungsbeispiele: Haplochromis latifasciatus husbandry profile."
+          url: "https://www.einrichtungsbeispiele.de/zierfische/afrika/haplochromis-latifasciatus-slnk.html"
+          accessed: "2026-10-13"
+        - kind: database
+          title: "Guidarium: Zebra Obliquidens"
+          url: "https://guidarium.com/fishes/zebra-obliquidens"
+          accessed: "2026-10-13"
+        - kind: website
+          title: "Quinn's Fins: Zebra Obliquidens care sheet"
+          url: "https://quinnsfins.com/product/zebra-obliquidens-astatotilapia-latifasciata-small/"
+          accessed: "2026-10-13"
+        - kind: website
+          title: "Modern Aquatic Design Aquariums: Astatotilapia latifasciata Crimson Tide care sheet"
+          url: "https://madaquariums.com.au/products/12525005"
+          accessed: "2026-10-13"
+        - kind: website
+          title: "The Aquarium Wiki structured species sheet: Haplochromis latifasciatus"
+          url: "https://www.theaquariumwiki.com/wiki/Haplochromis_latifasciatus"
+          accessed: "2026-10-13"
+        - kind: website
+          title: "Fishkeeper: Zebra Obliquidens"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/zebra-obliquidens"
+          accessed: "2026-10-13"
+      evidence:
+        - source:
+            kind: database
+            title: "Seriously Fish: Haplochromis latifasciatus"
+            url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+            accessed: "2026-10-13"
+          value:
+            min: 8
+            max: 15
+          note: Aquarium GH recommendation.
+        - source:
+            kind: database
+            title: "Fischlexikon: Haplochromis latifasciatus"
+            url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000001446"
+            accessed: "2026-10-13"
+          value:
+            min: 5
+            max: 15
+          note: Aquarium GH recommendation.
+        - source:
+            kind: database
+            title: "Einrichtungsbeispiele: Haplochromis latifasciatus husbandry profile."
+            url: "https://www.einrichtungsbeispiele.de/zierfische/afrika/haplochromis-latifasciatus-slnk.html"
+            accessed: "2026-10-13"
+          value:
+            min: 5
+            max: 20
+          note: Broader aquarium GH recommendation.
+        - source:
+            kind: database
+            title: "Guidarium: Zebra Obliquidens"
+            url: "https://guidarium.com/fishes/zebra-obliquidens"
+            accessed: "2026-10-13"
+          value:
+            min: 10
+            max: 20
+          note: Broader aquarium GH recommendation.
+        - source:
+            kind: website
+            title: "Fishkeeper: Zebra Obliquidens"
+            url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/zebra-obliquidens"
+            accessed: "2026-10-13"
+          value:
+            max: 25
+          note: Only an upper dH limit is stated; no lower endpoint can be attributed to the source.
+        - source:
+            kind: website
+            title: "Quinn's Fins: Zebra Obliquidens care sheet"
+            url: "https://quinnsfins.com/product/zebra-obliquidens-astatotilapia-latifasciata-small/"
+            accessed: "2026-10-13"
+          value:
+            min: 7
+            max: 15
+          note: Retail GH recommendation; its breeding account is incorrect.
+        - source:
+            kind: website
+            title: "Modern Aquatic Design Aquariums: Astatotilapia latifasciata Crimson Tide care sheet"
+            url: "https://madaquariums.com.au/products/12525005"
+            accessed: "2026-10-13"
+          value:
+            min: 16
+            max: 24
+          note: Weak retail recommendation with unrelated-species text elsewhere.
+        - source:
+            kind: website
+            title: "The Aquarium Wiki structured species sheet: Haplochromis latifasciatus"
+            url: "https://www.theaquariumwiki.com/wiki/Haplochromis_latifasciatus"
+            accessed: "2026-10-13"
+          value:
+            min: 8
+            max: 12
+          note: Community wiki recommendation; no underlying experiment is cited.
+        - source:
+            kind: literature
+            title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa,\
+              \ Vol. 1. Uganda: Kyoga Lakes Complex water chemistry compilation."
+            url: "https://www.fao.org/4/t0473e/T0473E11.htm"
+            accessed: "2026-10-13"
+          value:
+            min: 3.7
+            max: 6.22
+          note: "Converted natural Kyoga ion measurements, not chronic aquarium evidence."
+        - source:
+            kind: literature
+            title: "Mungoma (1988). Horizontal differentiation in the limnology of a tropical river-lake (Lake\
+              \ Kyoga, Uganda). Abstract only."
+            url: "https://doi.org/10.1007/bf00014336"
+            accessed: "2026-10-13"
+          value:
+            min: 1.7
+            max: 2.8
+          note: "Natural regional mean GH equivalents, outside the tally envelope at the lower end."
+      verification:
+        method: qualified-majority
+        votes:
+          agree: 5
+          total: 6
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 4
+        total: 6
+  khDkh:
+    value:
+      min: 6
+      max: 11
+    confidence: low
+    rationale: "No qualified majority settled natural KH. The tally uses the median of all six proposed lower\
+      \ and upper endpoints, rounded to 6 to 11 dKH with low confidence. Welcomme explicitly gives Kyoga alkalinity\
+      \ of 2.18 meq/L, equivalent to 6.10 dKH, while Newman directly tested Nawampasa at 11 dKH. The later\
+      \ FAO combined bicarbonate and carbonate mass gives a similar approximate Kyoga result but has an uncertain\
+      \ anion convention. Mungoma's abstract gives regional mean equivalents of 3.4 to 5.5 dKH, demonstrating\
+      \ that the decided interval is narrower than all native-system observations together, approximately 3.4\
+      \ to 11 dKH. The 2 to 3 proposal rests on a Naigaga table that could not be checked through its repository\
+      \ abstract. This is an administrative median of sparse evidence, not a measured seasonal envelope. GH\
+      \ and KH are separate quantities. generator proposed {\"min\": 6, \"max\": 11}; checker-a proposed {\"\
+      min\": 2, \"max\": 3}; checker-b proposed {\"min\": 11, \"max\": 11}; checker-c proposed {\"min\": 6.1,\
+      \ \"max\": 11}; tiebreaker-1 proposed {\"min\": 6.1, \"max\": 11}; tiebreaker-2 proposed {\"min\": 3.4,\
+      \ \"max\": 6.2}."
+    sources:
+      - kind: literature
+        title: "Welcomme (1972). The inland waters of Africa. CIFA Technical Paper 1. Kyoga System: EAFRO 1954\
+          \ chemistry compilation."
+        url: "https://www.fao.org/4/d0780b/D0780B03.htm"
+        accessed: "2026-10-13"
+      - kind: literature
+        title: Newman (1997). Cichlid Conservation in Uganda. Field account republished by AquaInfo.
+        url: "https://aquainfo.nl/en/cichlid-conservation-in-uganda/"
+        accessed: "2026-10-13"
+      - kind: literature
+        title: "Naigaga et al. (2013). Water, Water Quality, and Pond Bottom Soil Management in Ugandan Aquaculture.\
+          \ Repository abstract only."
+        url: "https://nru.uncst.go.ug/handle/123456789/8669"
+        accessed: "2026-10-13"
+      - kind: literature
+        title: Obubu et al. (2023). Identification and characterization of fish breeding habitats on Lake Kyoga
+          as an approach to sustainable fisheries management.
+        url: "https://doi.org/10.47853/fas.2023.e24"
+        accessed: "2026-10-13"
+      - kind: literature
+        title: Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa.
+          Uganda and the Kyoga lakes complex.
+        url: "https://www.fao.org/4/t0473e/T0473E11.htm"
+        accessed: "2026-10-13"
+      - kind: literature
+        title: "Mungoma (1988). Horizontal differentiation in the limnology of a tropical river-lake (Lake\
+          \ Kyoga, Uganda). Abstract only."
+        url: "https://doi.org/10.1007/bf00014336"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: literature
+          title: "Welcomme (1972). The inland waters of Africa. CIFA Technical Paper 1. Kyoga System: EAFRO\
+            \ 1954 chemistry compilation."
+          url: "https://www.fao.org/4/d0780b/D0780B03.htm"
+          accessed: "2026-10-13"
+        value:
+          min: 6.104
+          max: 6.104
+        note: Kyoga alkalinity of 2.18 meq/L multiplied by 2.8.
+      - source:
+          kind: literature
+          title: Newman (1997). Cichlid Conservation in Uganda. Field account republished by AquaInfo.
+          url: "https://aquainfo.nl/en/cichlid-conservation-in-uganda/"
+          accessed: "2026-10-13"
+        value:
+          min: 11
+          max: 11
+        note: Direct Nawampasa KH field test; no seasonal series or analytical precision given.
+      - source:
+          kind: literature
+          title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa,\
+            \ Vol. 1. Uganda: Kyoga Lakes Complex water chemistry compilation."
+          url: "https://www.fao.org/4/t0473e/T0473E11.htm"
+          accessed: "2026-10-13"
+        value:
+          min: 6.1
+          max: 6.1
+        note: Approximate conversion of 133 mg/L combined anions as bicarbonate; carbonate partition unspecified.
+      - source:
+          kind: literature
+          title: "Mungoma (1988). Horizontal differentiation in the limnology of a tropical river-lake (Lake\
+            \ Kyoga, Uganda). Abstract only."
+          url: "https://doi.org/10.1007/bf00014336"
+          accessed: "2026-10-13"
+        value:
+          min: 3.4
+          max: 5.5
+        note: Regional mean alkalinities of 1.23 and 1.96 meq/L converted to aquarium KH equivalents.
+      - source:
+          kind: literature
+          title: "Naigaga et al. (2013). Water, Water Quality, and Pond Bottom Soil Management in Ugandan Aquaculture.\
+            \ Repository abstract only."
+          url: "https://nru.uncst.go.ug/handle/123456789/8669"
+          accessed: "2026-10-13"
+        value: null
+        note: The proposed low KH figure comes from a table not verified through the repository abstract.
+      - source:
+          kind: literature
+          title: Obubu et al. (2023). Identification and characterization of fish breeding habitats on Lake
+            Kyoga as an approach to sustainable fisheries management.
+          url: "https://doi.org/10.47853/fas.2023.e24"
+          accessed: "2026-10-13"
+        value: null
+        note: "This study gives pH and conductivity, not GH or carbonate hardness."
+    tolerance:
+      value:
+        min: 6
+        max: 12
+      confidence: low
+      rationale: "The tally conservatively intersects the six proposed tolerance ranges at 10 to 12 dKH, then\
+        \ widens the lower endpoint to 6 to contain the decided natural KH. The result is 6 to 12 dKH with\
+        \ low confidence and two of six counted agreeing votes. LiveAquaria states 10 to 15, AquariumDomain\
+        \ 10 to 25, and Bay Bridge Aquarium 10 to 20 dKH; all are wider than the selected upper interval and\
+        \ none establishes years of healthy exposure at the endpoints. Checker-a's upper endpoint of 12 was\
+        \ inferred from GH and pH, which cannot establish KH and is not presented as a direct source statement.\
+        \ It nevertheless constrains the mandatory conservative tally decision. Natural measurements near 6.1\
+        \ and 11 dKH explain containment but do not validate chronic aquarium limits. The 6 to 12 envelope\
+        \ is therefore a precautionary pipeline decision with an especially uncertain upper endpoint. generator\
+        \ proposed {\"min\": 6, \"max\": 15}; checker-a proposed {\"min\": 2, \"max\": 12}; checker-b proposed\
+        \ {\"min\": 10, \"max\": 15}; checker-c proposed {\"min\": 6.1, \"max\": 20}; tiebreaker-1 proposed\
+        \ {\"min\": 6.1, \"max\": 20}; tiebreaker-2 proposed {\"min\": 3.4, \"max\": 20}."
+      sources:
+        - kind: literature
+          title: "Welcomme (1972). The inland waters of Africa. CIFA Technical Paper 1. Kyoga System: EAFRO\
+            \ 1954 chemistry compilation."
+          url: "https://www.fao.org/4/d0780b/D0780B03.htm"
+          accessed: "2026-10-13"
+        - kind: literature
+          title: Newman (1997). Cichlid Conservation in Uganda. Field account republished by AquaInfo.
+          url: "https://aquainfo.nl/en/cichlid-conservation-in-uganda/"
+          accessed: "2026-10-13"
+        - kind: literature
+          title: "HYDROMET (1974) Lake Kyoga ionic measurements, reproduced in Vanden Bossche and Bernacsek\
+            \ (1990)."
+          url: "https://www.fao.org/4/t0473e/T0473E11.htm"
+          accessed: "2026-10-13"
+        - kind: literature
+          title: "Mungoma (1988). Horizontal differentiation in the limnology of a tropical river-lake (Lake\
+            \ Kyoga, Uganda). Abstract only."
+          url: "https://doi.org/10.1007/bf00014336"
+          accessed: "2026-10-13"
+        - kind: database
+          title: "Seriously Fish: Haplochromis latifasciatus"
+          url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+          accessed: "2026-10-13"
+        - kind: database
+          title: "Guidarium: Zebra Obliquidens"
+          url: "https://guidarium.com/fishes/zebra-obliquidens"
+          accessed: "2026-10-13"
+        - kind: website
+          title: "LiveAquaria structured care sheet: Zebra Obliquidens"
+          url: "https://www.liveaquaria.com/products/zebra-obliquidens"
+          accessed: "2026-10-13"
+        - kind: website
+          title: "AquariumDomain species profile: Zebra Obliquidens"
+          url: "https://www.aquariumdomain.com/SpeciesProfiles/AfricanCichlids/ZebraObliquidens.shtml"
+          accessed: "2026-10-13"
+        - kind: website
+          title: "Bay Bridge Aquarium care sheet: Zebra Obliquidens"
+          url: "https://www.baybridgeaquarium.com/products/zebra-obliquidens"
+          accessed: "2026-10-13"
+      evidence:
+        - source:
+            kind: website
+            title: "LiveAquaria structured care sheet: Zebra Obliquidens"
+            url: "https://www.liveaquaria.com/products/zebra-obliquidens"
+            accessed: "2026-10-13"
+          value:
+            min: 10
+            max: 15
+          note: Explicit aquarium dKH recommendation.
+        - source:
+            kind: website
+            title: "AquariumDomain species profile: Zebra Obliquidens"
+            url: "https://www.aquariumdomain.com/SpeciesProfiles/AfricanCichlids/ZebraObliquidens.shtml"
+            accessed: "2026-10-13"
+          value:
+            min: 10
+            max: 25
+          note: KH-labelled recommendation with no maintenance duration.
+        - source:
+            kind: website
+            title: "Bay Bridge Aquarium: Zebra Obliquidens care sheet"
+            url: "https://www.baybridgeaquarium.com/products/zebra-obliquidens"
+            accessed: "2026-10-13"
+          value:
+            min: 10
+            max: 20
+          note: KH-labelled retail recommendation with no chronic outcomes.
+        - source:
+            kind: database
+            title: "Seriously Fish: Haplochromis latifasciatus"
+            url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+            accessed: "2026-10-13"
+          value: null
+          note: No KH is stated; the input inference from GH is not a published KH value.
+        - source:
+            kind: database
+            title: "Guidarium: Zebra Obliquidens"
+            url: "https://guidarium.com/fishes/zebra-obliquidens"
+            accessed: "2026-10-13"
+          value: null
+          note: No KH is stated; its GH recommendation cannot define KH.
+        - source:
+            kind: literature
+            title: "Welcomme (1972). The inland waters of Africa. CIFA Technical Paper 1. Kyoga System: EAFRO\
+              \ 1954 chemistry compilation."
+            url: "https://www.fao.org/4/d0780b/D0780B03.htm"
+            accessed: "2026-10-13"
+          value:
+            min: 6.104
+            max: 6.104
+          note: "Natural Kyoga alkalinity equivalent, used to explain containment."
+        - source:
+            kind: literature
+            title: Newman (1997). Cichlid Conservation in Uganda. Field account republished by AquaInfo.
+            url: "https://aquainfo.nl/en/cichlid-conservation-in-uganda/"
+            accessed: "2026-10-13"
+          value:
+            min: 11
+            max: 11
+          note: "Natural Nawampasa KH observation, without chronic aquarium evidence."
+        - source:
+            kind: literature
+            title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa,\
+              \ Vol. 1. Uganda: Kyoga Lakes Complex water chemistry compilation."
+            url: "https://www.fao.org/4/t0473e/T0473E11.htm"
+            accessed: "2026-10-13"
+          value:
+            min: 6.1
+            max: 6.1
+          note: Approximate natural buffering equivalent.
+        - source:
+            kind: literature
+            title: "Mungoma (1988). Horizontal differentiation in the limnology of a tropical river-lake (Lake\
+              \ Kyoga, Uganda). Abstract only."
+            url: "https://doi.org/10.1007/bf00014336"
+            accessed: "2026-10-13"
+          value:
+            min: 3.4
+            max: 5.5
+          note: "Natural regional mean buffering equivalents, not a chronic tolerance experiment."
+      verification:
+        method: conservative
+        votes:
+          agree: 2
+          total: 6
+  maxSizeCm:
+    value:
+      male: 13
+      female: 10
+    confidence: medium
+    rationale: "Generator proposed 13 cm male and 12 cm female; checker-a 12 and 11; checker-b and checker-c\
+      \ both 13 and 10. AquariumDomain's sex-specific aquarium lengths are approximately 12.7 and 10.2 cm,\
+      \ supporting 13 and 10 as planning estimates. Seriously Fish gives 12.5 cm standard length, FishBase\
+      \ 11 cm total length without a female split, and the Nordic register 15 cm unsexed. Laboratory females\
+      \ around 12 cm standard length in Liang et al. show that larger individuals exist, but three laboratory\
+      \ specimens do not establish typical aquarium female maxima. Different length definitions and weak sex-specific\
+      \ corroboration limit precision."
+    sources:
+      - kind: literature
+        title: Liang et al. (2020). Developmental and Cellular Basis of Vertical Bar Color Patterns in the
+          East African Cichlid Fish Haplochromis latifasciatus.
+        url: "https://doi.org/10.3389/fcell.2020.00062"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Seriously Fish: Haplochromis latifasciatus"
+        url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "FishBase species summary: Haplochromis latifasciatus"
+        url: "https://www.fishbase.se/summary/Haplochromis-latifasciatus.html"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Nordiska Ciklidsallskapet: Astatotilapia latifasciata species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=301"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "AquariumDomain species profile: Zebra Obliquidens"
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/AfricanCichlids/ZebraObliquidens.shtml"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "Imperial Tropicals breeder care sheet: Zebra Obliquidens"
+        url: "https://imperialtropicals.com/products/zebra-obliquidens-dominate-male-3"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: website
+          title: "AquariumDomain species profile: Zebra Obliquidens"
+          url: "https://www.aquariumdomain.com/SpeciesProfiles/AfricanCichlids/ZebraObliquidens.shtml"
+          accessed: "2026-10-13"
+        value:
+          male: 12.7
+          female: 10.2
+        note: Aquarium adult lengths converted from five and four inches.
+      - source:
+          kind: database
+          title: "Seriously Fish: Haplochromis latifasciatus"
+          url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+          accessed: "2026-10-13"
+        value:
+          male: 12.5
+        note: Unsexed maximum in standard length; no numeric female maximum.
+      - source:
+          kind: database
+          title: "FishBase species summary: Haplochromis latifasciatus"
+          url: "https://www.fishbase.se/summary/Haplochromis-latifasciatus.html"
+          accessed: "2026-10-13"
+        value:
+          male: 11
+        note: Male or unsexed total length; no sex-specific aquarium series.
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet: Astatotilapia latifasciata species register"
+          url: "https://www.ciklid.org/artregister/art.php?ID=301"
+          accessed: "2026-10-13"
+        value:
+          male: 15
+        note: Unsexed maximum without a stated sex split.
+      - source:
+          kind: literature
+          title: Liang et al. (2020). Developmental and Cellular Basis of Vertical Bar Color Patterns in the
+            East African Cichlid Fish Haplochromis latifasciatus.
+          url: "https://doi.org/10.3389/fcell.2020.00062"
+          accessed: "2026-10-13"
+        value:
+          female: 12
+        note: "Three adult laboratory females, approximately 12 cm standard length; not a typical aquarium\
+          \ maximum."
+  predation:
+    value: 1
+    confidence: low
+    rationale: "All four votes select level 1 with low confidence. Seriously Fish reports potential brood consumption,\
+      \ and Guidarium identifies fry predation. The Nordic register and Fischlexikon emphasize insects, which\
+      \ argues against specialized piscivory but does not guarantee fry safety. Level 1 therefore represents\
+      \ opportunistic fry and very small fish consumption; the 2 cm threshold belongs to the rubric and has\
+      \ not been measured for this species. The commercial small-fish food claim has little weight because\
+      \ the same page misstates the lake of origin."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Haplochromis latifasciatus"
+        url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Fischlexikon: Haplochromis latifasciatus"
+        url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000001446"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "FishBase: Haplochromis latifasciatus"
+        url: "https://www.fishbase.se/summary/Haplochromis-latifasciatus.html"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Nordiska Ciklidsallskapet: Astatotilapia latifasciata species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=301"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Guidarium: Zebra Obliquidens"
+        url: "https://guidarium.com/fishes/zebra-obliquidens"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "AquariumDomain species profile: Zebra Obliquidens"
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/AfricanCichlids/ZebraObliquidens.shtml"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "Aquarium Fish Online: Zebra Obliquidens Cichlid"
+        url: "https://aquariumfishonline.com/products/zebra-obliquidens-cichlid"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Haplochromis latifasciatus"
+          url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+          accessed: "2026-10-13"
+        value: 1
+        note: Rubric mapping of possible brood consumption; no prey-size trial.
+      - source:
+          kind: database
+          title: "Guidarium: Zebra Obliquidens"
+          url: "https://guidarium.com/fishes/zebra-obliquidens"
+          accessed: "2026-10-13"
+        value: 1
+        note: Explicit fry-predator trait mapped to level 1; no measured 2 cm threshold.
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet: Astatotilapia latifasciata species register"
+          url: "https://www.ciklid.org/artregister/art.php?ID=301"
+          accessed: "2026-10-13"
+        value: null
+        note: Insect-dominated diet; no measured fish-prey frequency.
+      - source:
+          kind: database
+          title: "Fischlexikon: Haplochromis latifasciatus"
+          url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000001446"
+          accessed: "2026-10-13"
+        value: null
+        note: "Aquatic insect larvae are emphasized, without a fish-prey size limit."
+      - source:
+          kind: database
+          title: "FishBase species summary: Haplochromis latifasciatus"
+          url: "https://www.fishbase.se/summary/Haplochromis-latifasciatus.html"
+          accessed: "2026-10-13"
+        value: null
+        note: Trophic level is estimated from relatives and is not a direct predation study.
+      - source:
+          kind: website
+          title: "Aquarium Fish Online: Zebra Obliquidens Cichlid"
+          url: "https://aquariumfishonline.com/products/zebra-obliquidens-cichlid"
+          accessed: "2026-10-13"
+        value: 1
+        note: Low-weight rubric interpretation of a small-fish food claim on a page with geographic errors.
+      - source:
+          kind: website
+          title: "AquariumDomain species profile: Zebra Obliquidens"
+          url: "https://www.aquariumdomain.com/SpeciesProfiles/AfricanCichlids/ZebraObliquidens.shtml"
+          accessed: "2026-10-13"
+        value: null
+        note: "Insect-focused feeding, without a direct fish-predation threshold."
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  diet:
+    value:
+      type: invertivore
+      bloatSensitive: false
+      foods:
+        - quality cichlid pellets with animal ingredients
+        - Daphnia
+        - Artemia
+        - small aquatic insect larvae
+        - occasional spirulina-containing food
+    confidence: medium
+    rationale: "All four votes agree on invertivore and bloatSensitive false; the tally retains the generator's\
+      \ food list. The Nordic register describes insects as the main wild food, Fischlexikon specifies aquatic\
+      \ insect larvae, and Seriously Fish prioritizes live and frozen animal foods. Commercial omnivore labels\
+      \ and the AquariumDomain insect-feeding description accommodate a varied captive menu rather than establish\
+      \ an algae-specialist diet. No source directly tests a high-protein bloat response, so false denotes\
+      \ absence of established special sensitivity and does not imply immunity to digestive disease."
+    sources:
+      - kind: database
+        title: "Fischlexikon: Haplochromis latifasciatus"
+        url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000001446"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Seriously Fish: Haplochromis latifasciatus"
+        url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "FishBase: Haplochromis latifasciatus"
+        url: "https://www.fishbase.se/summary/Haplochromis-latifasciatus.html"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Nordiska Ciklidsallskapet: Astatotilapia latifasciata species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=301"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "Imperial Tropicals breeder care sheet: Zebra Obliquidens"
+        url: "https://imperialtropicals.com/products/zebra-obliquidens-dominate-male-3"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "LiveAquaria structured care sheet: Zebra Obliquidens"
+        url: "https://www.liveaquaria.com/products/zebra-obliquidens"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "AquariumDomain species profile: Zebra Obliquidens"
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/AfricanCichlids/ZebraObliquidens.shtml"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "Fishkeeper: Zebra Obliquidens"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/zebra-obliquidens"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet: Astatotilapia latifasciata species register"
+          url: "https://www.ciklid.org/artregister/art.php?ID=301"
+          accessed: "2026-10-13"
+        value:
+          type: invertivore
+        note: Main natural food is insects; no bloat flag is evaluated.
+      - source:
+          kind: database
+          title: "Fischlexikon: Haplochromis latifasciatus"
+          url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000001446"
+          accessed: "2026-10-13"
+        value:
+          type: invertivore
+        note: Aquatic insect larvae dominate the described natural food.
+      - source:
+          kind: database
+          title: "Seriously Fish: Haplochromis latifasciatus"
+          url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+          accessed: "2026-10-13"
+        value:
+          type: invertivore
+        note: Rubric interpretation of the animal-food husbandry emphasis.
+      - source:
+          kind: website
+          title: "AquariumDomain species profile: Zebra Obliquidens"
+          url: "https://www.aquariumdomain.com/SpeciesProfiles/AfricanCichlids/ZebraObliquidens.shtml"
+          accessed: "2026-10-13"
+        value:
+          type: invertivore
+        note: Insect-oriented feeding despite the broad omnivore heading.
+      - source:
+          kind: website
+          title: "LiveAquaria structured care sheet: Zebra Obliquidens"
+          url: "https://www.liveaquaria.com/products/zebra-obliquidens"
+          accessed: "2026-10-13"
+        value:
+          type: omnivore
+        note: Mixed aquarium menu; does not test species-specific bloat sensitivity.
+      - source:
+          kind: website
+          title: "Fishkeeper: Zebra Obliquidens"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/zebra-obliquidens"
+          accessed: "2026-10-13"
+        value:
+          type: omnivore
+        note: Rubric mapping of the mixed prepared and frozen menu.
+      - source:
+          kind: website
+          title: "Imperial Tropicals breeder care sheet: Zebra Obliquidens"
+          url: "https://imperialtropicals.com/products/zebra-obliquidens-dominate-male-3"
+          accessed: "2026-10-13"
+        value:
+          type: invertivore
+        note: Carnivore label interpreted with the independent insect-feeding accounts.
+      - source:
+          kind: database
+          title: "FishBase species summary: Haplochromis latifasciatus"
+          url: "https://www.fishbase.se/summary/Haplochromis-latifasciatus.html"
+          accessed: "2026-10-13"
+        value: null
+        note: "Relative-based trophic estimate, with no directly measured species diet composition."
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  aggressionConspecific:
+    value: 3
+    confidence: medium
+    rationale: All four profiles choose level 3. Seriously Fish describes strong male mate pursuit and the
+      Nordic register describes pronounced conspecific aggression. Persistent chasing fits this grade under
+      the recommended harem; routine killing despite suitable housing is not established. The less severe breeder
+      description does not eliminate individual injury risk.
+    sources:
+      - kind: database
+        title: "Seriously Fish: Haplochromis latifasciatus"
+        url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Fischlexikon: Haplochromis latifasciatus"
+        url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000001446"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Guidarium: Zebra Obliquidens"
+        url: "https://guidarium.com/fishes/zebra-obliquidens"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Nordiska Ciklidsallskapet: Astatotilapia latifasciata species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=301"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "Imperial Tropicals breeder care sheet: Zebra Obliquidens"
+        url: "https://imperialtropicals.com/products/zebra-obliquidens-dominate-male-3"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "Fishkeeper: Zebra Obliquidens"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/zebra-obliquidens"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Haplochromis latifasciatus"
+          url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+          accessed: "2026-10-13"
+        value: 3
+        note: Rubric mapping of strong mate pursuit.
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet: Astatotilapia latifasciata species register"
+          url: "https://www.ciklid.org/artregister/art.php?ID=301"
+          accessed: "2026-10-13"
+        value: 3
+        note: Rubric mapping of substantial conspecific aggression.
+      - source:
+          kind: website
+          title: "Imperial Tropicals breeder care sheet: Zebra Obliquidens"
+          url: "https://imperialtropicals.com/products/zebra-obliquidens-dominate-male-3"
+          accessed: "2026-10-13"
+        value: 2
+        note: "Less severe breeder characterization, with individual male exceptions."
+  aggressionHeterospecific:
+    value: 2
+    confidence: medium
+    rationale: "All four profiles choose level 2. Suitable adult companions are permitted by Seriously Fish,\
+      \ and the Nordic register generally finds less aggression toward other species than toward conspecifics.\
+      \ Exceptionally aggressive males are reported, but do not establish attacks throughout the aquarium as\
+      \ the usual behavior of a correctly housed fish."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Haplochromis latifasciatus"
+        url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Nordiska Ciklidsallskapet: Astatotilapia latifasciata species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=301"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "Imperial Tropicals breeder care sheet: Zebra Obliquidens"
+        url: "https://imperialtropicals.com/products/zebra-obliquidens-dominate-male-3"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "AquariumDomain species profile: Zebra Obliquidens"
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/AfricanCichlids/ZebraObliquidens.shtml"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "Fishkeeper: Zebra Obliquidens"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/zebra-obliquidens"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Haplochromis latifasciatus"
+          url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+          accessed: "2026-10-13"
+        value: 2
+        note: Rubric mapping of territorial behavior with adult companions allowed.
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet: Astatotilapia latifasciata species register"
+          url: "https://www.ciklid.org/artregister/art.php?ID=301"
+          accessed: "2026-10-13"
+        value: 2
+        note: Baseline rubric interpretation; exceptional males can be more severe.
+      - source:
+          kind: website
+          title: "AquariumDomain species profile: Zebra Obliquidens"
+          url: "https://www.aquariumdomain.com/SpeciesProfiles/AfricanCichlids/ZebraObliquidens.shtml"
+          accessed: "2026-10-13"
+        value: 1
+        note: More permissive hobby description than the specialist accounts.
+  territory:
+    value:
+      size: small
+      breedingOnly: true
+    confidence: low
+    rationale: "Generator, checker-a and checker-b proposed a small breeding-only territory; checker-c proposed\
+      \ small with breedingOnly false. Seriously Fish explicitly links territoriality to spawning, whereas\
+      \ the breeder's general territory description does not demonstrate persistent defense outside reproductive\
+      \ activity. Retain breedingOnly true from the more explicit account. Small is a rubric interpretation\
+      \ of a localized spawning site; no radius was measured."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Haplochromis latifasciatus"
+        url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "Imperial Tropicals breeder care sheet: Zebra Obliquidens"
+        url: "https://imperialtropicals.com/products/zebra-obliquidens-dominate-male-3"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "Fishkeeper: Zebra Obliquidens"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/zebra-obliquidens"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "Quinn's Fins: Zebra Obliquidens care sheet"
+        url: "https://quinnsfins.com/product/zebra-obliquidens-astatotilapia-latifasciata-small/"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Haplochromis latifasciatus"
+          url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+          accessed: "2026-10-13"
+        value:
+          size: small
+          breedingOnly: true
+        note: Localized spawning-site defense; size is interpreted rather than measured.
+      - source:
+          kind: website
+          title: "Imperial Tropicals breeder care sheet: Zebra Obliquidens"
+          url: "https://imperialtropicals.com/products/zebra-obliquidens-dominate-male-3"
+          accessed: "2026-10-13"
+        value:
+          size: small
+          breedingOnly: false
+        note: Input interpretation of general territory language; activity outside spawning is not demonstrated.
+  habitatZones:
+    value:
+      - plants
+      - sand
+      - rock
+    confidence: medium
+    rationale: "Generator proposed plants and sand; checker-a, checker-b and checker-c also included rock.\
+      \ Vegetated margins are the strongest native-habitat evidence, while Newman describes a muddy bottom\
+      \ with plant debris in Nawampasa. Sand is a practical soft-substrate substitute and spawning surface.\
+      \ Seriously Fish and the Nordic register recommend stones for retreats, so rock is retained as an aquarium\
+      \ shelter need rather than a claim of rocky-shore specialization."
+    sources:
+      - kind: literature
+        title: Newman (1997). Cichlid Conservation in Uganda. Field account republished by AquaInfo.
+        url: "https://aquainfo.nl/en/cichlid-conservation-in-uganda/"
+        accessed: "2026-10-13"
+      - kind: literature
+        title: Obubu et al. (2023). Identification and characterization of fish breeding habitats on Lake Kyoga
+          as an approach to sustainable fisheries management.
+        url: "https://doi.org/10.47853/fas.2023.e24"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Seriously Fish: Haplochromis latifasciatus"
+        url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Fischlexikon: Haplochromis latifasciatus"
+        url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000001446"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Nordiska Ciklidsallskapet: Astatotilapia latifasciata species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=301"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet: Astatotilapia latifasciata species register"
+          url: "https://www.ciklid.org/artregister/art.php?ID=301"
+          accessed: "2026-10-13"
+        value:
+          - plants
+          - rock
+        note: Vegetated shores and stones recommended for the aquarium.
+      - source:
+          kind: database
+          title: "Seriously Fish: Haplochromis latifasciatus"
+          url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+          accessed: "2026-10-13"
+        value:
+          - plants
+          - sand
+          - rock
+        note: Vegetated habitat plus sandy substrate and rock retreats in husbandry.
+      - source:
+          kind: literature
+          title: Newman (1997). Cichlid Conservation in Uganda. Field account republished by AquaInfo.
+          url: "https://aquainfo.nl/en/cichlid-conservation-in-uganda/"
+          accessed: "2026-10-13"
+        value:
+          - plants
+        note: Direct native-lake vegetation account; mud and plant debris are not coded as a separate zone.
+  social:
+    value:
+      structure: harem
+      ratio: 3
+    confidence: high
+    rationale: "All four profiles choose one male with three females. Seriously Fish specifies this breeding\
+      \ unit and Imperial Tropicals independently recommends at least three females per male. The Nordic register\
+      \ prefers groups of five or more, ideally ten or more, in a different management arrangement; the archive\
+      \ reports one male with four females. These alternatives need suitable additional space and do not justify\
+      \ another male in the minimum tank."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Haplochromis latifasciatus"
+        url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Fischlexikon: Haplochromis latifasciatus"
+        url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000001446"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Guidarium: Zebra Obliquidens"
+        url: "https://guidarium.com/fishes/zebra-obliquidens"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Nordiska Ciklidsallskapet: Astatotilapia latifasciata species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=301"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "Imperial Tropicals breeder care sheet: Zebra Obliquidens"
+        url: "https://imperialtropicals.com/products/zebra-obliquidens-dominate-male-3"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "Fishkeeper: Zebra Obliquidens"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/zebra-obliquidens"
+        accessed: "2026-10-13"
+      - kind: archive
+        title: cichlids.com forum thread 17421
+        url: "https://www.cichlids.com/disc/read.php?2,17421"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Haplochromis latifasciatus"
+          url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+          accessed: "2026-10-13"
+        value:
+          structure: harem
+          ratio: 3
+        note: Recommended breeding unit.
+      - source:
+          kind: website
+          title: "Imperial Tropicals breeder care sheet: Zebra Obliquidens"
+          url: "https://imperialtropicals.com/products/zebra-obliquidens-dominate-male-3"
+          accessed: "2026-10-13"
+        value:
+          structure: harem
+          ratio: 3
+        note: Three or more females per male.
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet: Astatotilapia latifasciata species register"
+          url: "https://www.ciklid.org/artregister/art.php?ID=301"
+          accessed: "2026-10-13"
+        value:
+          structure: group
+          minGroup: 5
+        note: "Five or more, ideally ten or more, as another husbandry approach."
+      - source:
+          kind: archive
+          title: cichlids.com forum thread 17421
+          url: "https://www.cichlids.com/disc/read.php?2,17421"
+          accessed: "2026-10-13"
+        value:
+          structure: harem
+          ratio: 4
+        note: Low-weight community account of a breeding group.
+  speciesOnly:
+    value: false
+    confidence: high
+    rationale: "All four votes reject an obligatory species-only setup. Seriously Fish explicitly permits suitably\
+      \ sized cichlid companions, while the Nordic register describes aggression toward other species as usually\
+      \ lower than toward conspecifics, with exceptional males. Commercial husbandry accounts corroborate mixed\
+      \ setups but carry less weight. A dedicated breeding tank protects lineage identity and broods; that\
+      \ recommendation is distinct from a universal requirement for everyday maintenance."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Haplochromis latifasciatus"
+        url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Nordiska Ciklidsallskapet: Astatotilapia latifasciata species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=301"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "Imperial Tropicals breeder care sheet: Zebra Obliquidens"
+        url: "https://imperialtropicals.com/products/zebra-obliquidens-dominate-male-3"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "AquariumDomain species profile: Zebra Obliquidens"
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/AfricanCichlids/ZebraObliquidens.shtml"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "Fishkeeper: Zebra Obliquidens"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/zebra-obliquidens"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "LiveAquaria: Zebra Obliquidens care sheet"
+        url: "https://www.liveaquaria.com/products/zebra-obliquidens"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Haplochromis latifasciatus"
+          url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+          accessed: "2026-10-13"
+        value: false
+        note: Explicitly allows suitably sized cichlid companions.
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet: Astatotilapia latifasciata species register"
+          url: "https://www.ciklid.org/artregister/art.php?ID=301"
+          accessed: "2026-10-13"
+        value: false
+        note: "Rubric interpretation of lower aggression toward other species, with some severe male exceptions."
+      - source:
+          kind: website
+          title: "AquariumDomain species profile: Zebra Obliquidens"
+          url: "https://www.aquariumdomain.com/SpeciesProfiles/AfricanCichlids/ZebraObliquidens.shtml"
+          accessed: "2026-10-13"
+        value: false
+        note: Mixed African cichlid maintenance is described.
+      - source:
+          kind: website
+          title: "Imperial Tropicals breeder care sheet: Zebra Obliquidens"
+          url: "https://imperialtropicals.com/products/zebra-obliquidens-dominate-male-3"
+          accessed: "2026-10-13"
+        value: false
+        note: Male hap and peacock communities are described.
+      - source:
+          kind: website
+          title: "Fishkeeper: Zebra Obliquidens"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/zebra-obliquidens"
+          accessed: "2026-10-13"
+        value: false
+        note: Specialist community husbandry is described.
+      - source:
+          kind: website
+          title: "LiveAquaria structured care sheet: Zebra Obliquidens"
+          url: "https://www.liveaquaria.com/products/zebra-obliquidens"
+          accessed: "2026-10-13"
+        value: false
+        note: Sheltered community-style maintenance is described.
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  hybridGroups:
+    value: []
+    confidence: low
+    rationale: "All four votes assign an empty curated list with low confidence. Seriously Fish and Imperial\
+      \ Tropicals give broad warnings about related Victoria-basin haplochromines, but neither supplies a named\
+      \ crossing pair or an all-pairs member set. FishBase and the Nordic account add no assignable crossing\
+      \ group; absence of a report is weak evidence, and the catalog establishes identity rather than reproductive\
+      \ isolation. No group includes this species under either combination. Empty membership records unresolved\
+      \ group curation, while mixed-sex related haplochromines remain poor choices for maintaining a pure breeding\
+      \ line."
+    sources:
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: Haplochromis species list, updated 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Haplochromis"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Seriously Fish: Haplochromis latifasciatus"
+        url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "FishBase: Haplochromis latifasciatus"
+        url: "https://www.fishbase.se/summary/Haplochromis-latifasciatus.html"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Nordiska Ciklidsallskapet: Astatotilapia latifasciata species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=301"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "Imperial Tropicals breeder care sheet: Zebra Obliquidens"
+        url: "https://imperialtropicals.com/products/zebra-obliquidens-dominate-male-3"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Haplochromis latifasciatus"
+          url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+          accessed: "2026-10-13"
+        value: []
+        note: "General crossing caution, with no named parental pair or curated member set."
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet: Astatotilapia latifasciata species register"
+          url: "https://www.ciklid.org/artregister/art.php?ID=301"
+          accessed: "2026-10-13"
+        value: []
+        note: No named crossing pair in this species account; absence is weak evidence.
+      - source:
+          kind: database
+          title: "FishBase species summary: Haplochromis latifasciatus"
+          url: "https://www.fishbase.se/summary/Haplochromis-latifasciatus.html"
+          accessed: "2026-10-13"
+        value: []
+        note: Species summary supplies no crossing group; not a reproductive-isolation test.
+      - source:
+          kind: website
+          title: "Imperial Tropicals breeder care sheet: Zebra Obliquidens"
+          url: "https://imperialtropicals.com/products/zebra-obliquidens-dominate-male-3"
+          accessed: "2026-10-13"
+        value: []
+        note: "General Astatotilapia and Haplochromis mixing caution, without named parents."
+      - source:
+          kind: catalog-of-fishes
+          title: "Eschmeyer's Catalog of Fishes: species of Haplochromis"
+          url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Haplochromis"
+          accessed: "2026-10-13"
+        value: []
+        note: Nomenclature only; the catalog is not a hybridization study.
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  coloration:
+    value:
+      baseColors:
+        - silver
+        - yellow
+        - red
+        - black
+      pattern: bars
+    confidence: high
+    rationale: "Generator, checker-b and checker-c include silver with yellow, red and black; checker-a lists\
+      \ yellow, black and red without silver. The illustrated accounts show a pale or silver background with\
+      \ colored male display areas and dark vertical bars. Liang et al. independently studied dark bars and\
+      \ yellow interbars. Color order is not significant; the silver background is retained. Four or five bars\
+      \ can occur, so their count does not determine sex."
+    sources:
+      - kind: literature
+        title: Liang et al. (2020). Developmental and Cellular Basis of Vertical Bar Color Patterns in the
+          East African Cichlid Fish Haplochromis latifasciatus.
+        url: "https://doi.org/10.3389/fcell.2020.00062"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Fischlexikon: Haplochromis latifasciatus"
+        url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000001446"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Astatotilapia latifasciata"
+        url: "https://www.ciklid.org/artregister/art.php?ID=301"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "AquariumDomain species profile: Zebra Obliquidens"
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/AfricanCichlids/ZebraObliquidens.shtml"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "LiveAquaria: Zebra Obliquidens care sheet"
+        url: "https://www.liveaquaria.com/products/zebra-obliquidens"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: literature
+          title: Liang et al. (2020). Developmental and Cellular Basis of Vertical Bar Color Patterns in the
+            East African Cichlid Fish Haplochromis latifasciatus.
+          url: "https://doi.org/10.3389/fcell.2020.00062"
+          accessed: "2026-10-13"
+        value:
+          baseColors:
+            - black
+            - yellow
+          pattern: bars
+        note: Direct bar and interbar pigment study.
+      - source:
+          kind: database
+          title: "Fischlexikon: Haplochromis latifasciatus"
+          url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000001446"
+          accessed: "2026-10-13"
+        value:
+          baseColors:
+            - silver
+            - yellow
+            - red
+            - black
+          pattern: bars
+        note: Species morphology account.
+      - source:
+          kind: website
+          title: "AquariumDomain species profile: Zebra Obliquidens"
+          url: "https://www.aquariumdomain.com/SpeciesProfiles/AfricanCichlids/ZebraObliquidens.shtml"
+          accessed: "2026-10-13"
+        value:
+          baseColors:
+            - silver
+            - yellow
+            - red
+            - black
+          pattern: bars
+        note: Illustrated adult male description.
+  feedingSpeed:
+    value: normal
+    confidence: low
+    rationale: "All four profiles propose normal. Food acceptance is documented, but comparative feeding speed\
+      \ and persistent food monopolization are not. Normal remains a provisional rubric assignment, with observation\
+      \ needed to ensure subordinate fish obtain food."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Haplochromis latifasciatus"
+        url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "AquariumDomain species profile: Zebra Obliquidens"
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/AfricanCichlids/ZebraObliquidens.shtml"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Haplochromis latifasciatus"
+          url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+          accessed: "2026-10-13"
+        value: normal
+        note: "Provisional rubric inference from food acceptance, not a comparative measurement."
+      - source:
+          kind: website
+          title: "AquariumDomain species profile: Zebra Obliquidens"
+          url: "https://www.aquariumdomain.com/SpeciesProfiles/AfricanCichlids/ZebraObliquidens.shtml"
+          accessed: "2026-10-13"
+        value: normal
+        note: Food acceptance alone does not establish the hasty category.
+  minTank:
+    value:
+      volumeL: 200
+      lengthCm: 120
+      depthCm: 40
+    confidence: medium
+    rationale: "Generator proposed 240 L with a 120 by 40 cm footprint; checker-a, checker-b and checker-c\
+      \ proposed 200 L with the same footprint. Retain 200 L for one adult male and three females, following\
+      \ the Nordic register and Fischlexikon, while retaining Seriously Fish's 120 cm length and a cautiously\
+      \ enlarged 40 cm depth for retreats. Seriously Fish's smaller 108 L and 120 by 30 cm example is not adopted;\
+      \ Imperial Tropicals recommends about 208 L, and Einrichtungsbeispiele recommends 300 L without defining\
+      \ this exact social unit. The 40 cm depth is a layout inference. Mixed communities and additional males\
+      \ need more space."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Haplochromis latifasciatus"
+        url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Fischlexikon: Haplochromis latifasciatus"
+        url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000001446"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Guidarium: Zebra Obliquidens"
+        url: "https://guidarium.com/fishes/zebra-obliquidens"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Nordiska Ciklidsallskapet: Astatotilapia latifasciata species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=301"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Einrichtungsbeispiele: Haplochromis latifasciatus husbandry profile."
+        url: "https://www.einrichtungsbeispiele.de/zierfische/afrika/haplochromis-latifasciatus-slnk.html"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "Imperial Tropicals breeder care sheet: Zebra Obliquidens"
+        url: "https://imperialtropicals.com/products/zebra-obliquidens-dominate-male-3"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "LiveAquaria: Zebra Obliquidens care sheet"
+        url: "https://www.liveaquaria.com/products/zebra-obliquidens"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet: Astatotilapia latifasciata species register"
+          url: "https://www.ciklid.org/artregister/art.php?ID=301"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 200
+          lengthCm: 100
+        note: Published volume and length; no depth stated.
+      - source:
+          kind: database
+          title: "Seriously Fish: Haplochromis latifasciatus"
+          url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 108
+          lengthCm: 120
+          depthCm: 30
+        note: Smaller published example than the selected adult-harem tank.
+      - source:
+          kind: database
+          title: "Fischlexikon: Haplochromis latifasciatus"
+          url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000001446"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 200
+        note: Published minimum volume without footprint.
+      - source:
+          kind: website
+          title: "Imperial Tropicals breeder care sheet: Zebra Obliquidens"
+          url: "https://imperialtropicals.com/products/zebra-obliquidens-dominate-male-3"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 208.2
+        note: 55 US gallons converted to litres.
+      - source:
+          kind: database
+          title: "Einrichtungsbeispiele: Haplochromis latifasciatus husbandry profile."
+          url: "https://www.einrichtungsbeispiele.de/zierfische/afrika/haplochromis-latifasciatus-slnk.html"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 300
+        note: Larger published recommendation without a specified male-to-female unit.
+  lifespanYears:
+    value:
+      min: 8
+      max: 10
+    confidence: low
+    rationale: "Generator and checker-a proposed 5 to 8 years, checker-b 5 to 7, and checker-c 8 to 10. The\
+      \ Aquarium Wiki explicitly gives 8 to 10 years and Tri-County gives 10, whereas the lower five-year endpoints\
+      \ in the other proposals are generic planning estimates. Select the species-labelled 8 to 10 expectation\
+      \ with low confidence because neither account provides observed ages or a survival cohort. Aquarium Fish\
+      \ Online gives up to 7 years but misstates the origin; the Modern Aquatic Design longevity sentence names\
+      \ another species and is excluded. This is a tentative estimate rather than a guaranteed lifespan."
+    sources:
+      - kind: website
+        title: "Aquarium Fish Online: Zebra Obliquidens Cichlid"
+        url: "https://aquariumfishonline.com/products/zebra-obliquidens-cichlid"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "The Aquarium Wiki structured species sheet: Haplochromis latifasciatus"
+        url: "https://www.theaquariumwiki.com/wiki/Haplochromis_latifasciatus"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "Tri-County Tropicals care sheet: African Cichlid Obiquidens"
+        url: "https://www.tricountytropicals.com/products/obiquidens"
+        accessed: "2026-10-13"
+      - kind: model-knowledge
+        title: Conservative husbandry inference where direct species-specific endpoint data are absent
+      - kind: model-knowledge
+        title: General knowledge of haplochromine cichlids
+      - kind: model-knowledge
+        title: General longevity estimate for comparable medium-sized haplochromine cichlids
+    evidence:
+      - source:
+          kind: website
+          title: "The Aquarium Wiki structured species sheet: Haplochromis latifasciatus"
+          url: "https://www.theaquariumwiki.com/wiki/Haplochromis_latifasciatus"
+          accessed: "2026-10-13"
+        value:
+          min: 8
+          max: 10
+        note: Species-labelled expectation without a documented age series.
+      - source:
+          kind: website
+          title: "Tri-County Tropicals care sheet: African Cichlid Obiquidens"
+          url: "https://www.tricountytropicals.com/products/obiquidens"
+          accessed: "2026-10-13"
+        value:
+          min: 10
+          max: 10
+        note: Commercial ten-year expectation without observed ages.
+      - source:
+          kind: website
+          title: "Aquarium Fish Online: Zebra Obliquidens Cichlid"
+          url: "https://aquariumfishonline.com/products/zebra-obliquidens-cichlid"
+          accessed: "2026-10-13"
+        value:
+          max: 7
+        note: Shorter commercial upper expectation; source also misidentifies the origin.
+  breeding:
+    value: maternal-mouthbrooder
+    confidence: high
+    rationale: "All four profiles agree. FishBase, Seriously Fish and the Nordic species account independently\
+      \ identify oral incubation by the female. A retailer's claim of shared substrate guarding is rejected\
+      \ because it contradicts these species-specific accounts."
+    sources:
+      - kind: database
+        title: "FishBase species summary: Haplochromis latifasciatus"
+        url: "https://www.fishbase.se/summary/Haplochromis-latifasciatus.html"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Seriously Fish: Haplochromis latifasciatus"
+        url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Fischlexikon: Haplochromis latifasciatus"
+        url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000001446"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "Fishkeeper: Zebra Obliquidens"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/zebra-obliquidens"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "LiveAquaria: Zebra Obliquidens care sheet"
+        url: "https://www.liveaquaria.com/products/zebra-obliquidens"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "Imperial Tropicals breeding and care sheet: Zebra Obliquidens"
+        url: "https://imperialtropicals.com/products/zebra-obliquidens-dominate-male-3"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: database
+          title: "FishBase species summary: Haplochromis latifasciatus"
+          url: "https://www.fishbase.se/summary/Haplochromis-latifasciatus.html"
+          accessed: "2026-10-13"
+        value: maternal-mouthbrooder
+        note: Female oral incubation.
+      - source:
+          kind: database
+          title: "Seriously Fish: Haplochromis latifasciatus"
+          url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+          accessed: "2026-10-13"
+        value: maternal-mouthbrooder
+        note: Female incubates eggs and young.
+      - source:
+          kind: database
+          title: "Fischlexikon: Haplochromis latifasciatus"
+          url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000001446"
+          accessed: "2026-10-13"
+        value: maternal-mouthbrooder
+        note: Female oral incubation described in the species breeding account.
+  beginnerSuitability:
+    value: moderate
+    confidence: medium
+    rationale: "All four profiles choose moderate. Seriously Fish and the Nordic register support this assessment.\
+      \ Commercial easy-care labels concern an adaptable feeder, while harem management, refuges and prevention\
+      \ of mixed breeding require more attention than a general beginner community setup."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Haplochromis latifasciatus"
+        url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Nordiska Ciklidsallskapet: Astatotilapia latifasciata species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=301"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "Imperial Tropicals breeder care sheet: Zebra Obliquidens"
+        url: "https://imperialtropicals.com/products/zebra-obliquidens-dominate-male-3"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "LiveAquaria structured care sheet: Zebra Obliquidens"
+        url: "https://www.liveaquaria.com/products/zebra-obliquidens"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "Fishkeeper: Zebra Obliquidens"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/zebra-obliquidens"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Haplochromis latifasciatus"
+          url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+          accessed: "2026-10-13"
+        value: moderate
+        note: Species husbandry difficulty.
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet: Astatotilapia latifasciata species register"
+          url: "https://www.ciklid.org/artregister/art.php?ID=301"
+          accessed: "2026-10-13"
+        value: moderate
+        note: Specialist difficulty level mapped to the rubric.
+      - source:
+          kind: website
+          title: "Imperial Tropicals breeder care sheet: Zebra Obliquidens"
+          url: "https://imperialtropicals.com/products/zebra-obliquidens-dominate-male-3"
+          accessed: "2026-10-13"
+        value: easy
+        note: Commercial beginner label given less weight.
+partners:
+  suitable:
+    - species: Lake Malawi mbuna
+      reason: Seriously Fish permits adults of similar size and manageable temperament.
+      condition: "An enlarged aquarium with distinct retreats, overlapping water tolerances and careful selection\
+        \ of restrained species."
+    - species: Aulonocara
+      reason: "The species account allows similarly sized peacocks, and the breeder describes male display\
+        \ communities."
+      condition: Prefer an adult male display setup with ample cover and feeding access; additional fish require
+        more space than the 200 L harem minimum.
+  unsuitable:
+    - species: Victoria-basin haplochromines
+      reason: "Mixed breeding groups are discouraged by species-specific crossing warnings, even though no\
+        \ named pair establishes a curated hybrid group."
+    - species: Fish and fry around 2 cm or smaller
+      reason: Opportunistic predation is classified at level 1; the rubric uses a 2 cm screening threshold.
+    - species: Strongly aggressive mbuna
+      reason: "Persistent harassment can overwhelm females and brooding fish, so these are poor default companions."
+profile:
+  overview:
+    text: "The zebra obliquidens sold as Astatotilapia latifasciata is listed by the Catalog of Fishes as Haplochromis\
+      \ latifasciatus. It is a Uganda endemic associated with Kyoga and Nawampasa, rather than a Lake Victoria\
+      \ endemic. Its dark body bars remain visible in both sexes, while displaying males develop stronger yellow\
+      \ and red areas. The separate species H. obliquidens is not this fish. FishBase still reports a critically\
+      \ endangered assessment dated 1996, which should not be mistaken for a recent population census."
+    sources:
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: species of Haplochromis"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Haplochromis"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "FishBase species summary: Haplochromis latifasciatus"
+        url: "https://www.fishbase.se/summary/Haplochromis-latifasciatus.html"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Seriously Fish: Haplochromis latifasciatus"
+        url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Nordiska Ciklidsallskapet: Astatotilapia latifasciata species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=301"
+        accessed: "2026-10-13"
+  habitat:
+    text: "Vegetated shores and shallow water are central to its native setting. Newman's Nawampasa field account\
+      \ describes dense submerged plants above mud and accumulated plant material. The two lakes have their\
+      \ own chemistry; Victoria-basin membership does not justify substituting Lake Victoria measurements.\
+      \ The natural values retained here are rounded decisions from incomplete Kyoga and Nawampasa evidence.\
+      \ Wider field readings include 24.5 to 30.4 C, pH 6.5 to 9.9, and substantially softer regional mean\
+      \ hardness than the chosen GH interval. These lake observations do not identify the conditions occupied\
+      \ by every wild individual."
+    sources:
+      - kind: literature
+        title: Newman (1997). Cichlid Conservation in Uganda. Field account republished by AquaInfo.
+        url: "https://aquainfo.nl/en/cichlid-conservation-in-uganda/"
+        accessed: "2026-10-13"
+      - kind: literature
+        title: "Ongom, Andama and Lukubye (2017). Physico-Chemical Quality of Lake Kyoga at Selected Landing\
+          \ Sites and Anthropogenic Activities. Table 1."
+        url: "https://doi.org/10.4236/jwarp.2017.911080"
+        accessed: "2026-10-13"
+      - kind: literature
+        title: "Obubu et al. (2022). Determination of the Connectedness of Land Use, Land Cover Change to Water\
+          \ Quality Status of a Shallow Lake: A Case of Lake Kyoga Basin, Uganda."
+        url: "https://doi.org/10.3390/su14010372"
+        accessed: "2026-10-13"
+      - kind: literature
+        title: Obubu et al. (2023). Identification and characterization of fish breeding habitats on Lake Kyoga
+          as an approach to sustainable fisheries management.
+        url: "https://doi.org/10.47853/fas.2023.e24"
+        accessed: "2026-10-13"
+      - kind: literature
+        title: "Mungoma (1988). Horizontal differentiation in the limnology of a tropical river-lake (Lake\
+          \ Kyoga, Uganda). Abstract only."
+        url: "https://doi.org/10.1007/bf00014336"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Seriously Fish: Haplochromis latifasciatus"
+        url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Nordiska Ciklidsallskapet: Astatotilapia latifasciata species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=301"
+        accessed: "2026-10-13"
+  sizeAndGrowth:
+    text: "Allow for typical aquarium adults around 13 cm in males and 10 cm in females. These are approximate\
+      \ sex-specific planning values, not absolute growth limits. Standard length excludes the tail, so the\
+      \ 12.5 cm standard-length figure in Seriously Fish cannot be compared directly with total length. A pigment\
+      \ study examined laboratory females around 12 cm standard length, illustrating the existence of larger\
+      \ specimens. Reports of rapid juvenile growth in the archive are individual experiences and do not establish\
+      \ a growth timetable. A tentative lifespan expectation is 8 to 10 years, with little direct age evidence."
+    sources:
+      - kind: literature
+        title: Liang et al. (2020). Developmental and Cellular Basis of Vertical Bar Color Patterns in the
+          East African Cichlid Fish Haplochromis latifasciatus.
+        url: "https://doi.org/10.3389/fcell.2020.00062"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Seriously Fish: Haplochromis latifasciatus"
+        url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "FishBase species summary: Haplochromis latifasciatus"
+        url: "https://www.fishbase.se/summary/Haplochromis-latifasciatus.html"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Nordiska Ciklidsallskapet: Astatotilapia latifasciata species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=301"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "AquariumDomain species profile: Zebra Obliquidens"
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/AfricanCichlids/ZebraObliquidens.shtml"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "The Aquarium Wiki structured species sheet: Haplochromis latifasciatus"
+        url: "https://www.theaquariumwiki.com/wiki/Haplochromis_latifasciatus"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "Tri-County Tropicals care sheet: African Cichlid Obiquidens"
+        url: "https://www.tricountytropicals.com/products/obiquidens"
+        accessed: "2026-10-13"
+      - kind: archive
+        title: cichlids.com forum thread 17421
+        url: "https://www.cichlids.com/disc/read.php?2,17421"
+        accessed: "2026-10-13"
+  husbandry:
+    text: "For one male and three females, use at least 200 litres with a base of 120 by 40 cm. Build separated\
+      \ retreats and visual barriers with securely placed stones, retain swimming space, and use a soft sandy\
+      \ substrate. Plants can provide additional cover. Mixed communities need a larger aquarium than this\
+      \ minimum. Maintain filtration and water movement, and measure GH and KH separately. Temperatures around\
+      \ 25 to 27 C and stable pH around 7.5 to 8.0 fall within the better supported husbandry recommendations.\
+      \ The broader tolerance envelopes, especially their extreme pH and KH endpoints, are provisional and\
+      \ do not define preferred set points."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Haplochromis latifasciatus"
+        url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Nordiska Ciklidsallskapet: Astatotilapia latifasciata species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=301"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Fischlexikon: Haplochromis latifasciatus"
+        url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000001446"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Einrichtungsbeispiele: Haplochromis latifasciatus husbandry profile."
+        url: "https://www.einrichtungsbeispiele.de/zierfische/afrika/haplochromis-latifasciatus-slnk.html"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "Imperial Tropicals breeder care sheet: Zebra Obliquidens"
+        url: "https://imperialtropicals.com/products/zebra-obliquidens-dominate-male-3"
+        accessed: "2026-10-13"
+  socialBehavior:
+    text: "A male can pursue females repeatedly and exclude rivals from a spawning patch. Several females distribute\
+      \ attention, but each still needs a retreat that remains accessible when the male is displaying. The\
+      \ selected harem is a husbandry arrangement for a polygamous fish, not a permanent pair bond. Adding\
+      \ another male to the minimum aquarium increases competition. Most territorial defense is associated\
+      \ with reproduction, although unusually aggressive individuals may be difficult even with suitable cover.\
+      \ Persistent hiding, missed food and damaged fins are useful signs that the arrangement needs adjustment."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Haplochromis latifasciatus"
+        url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Nordiska Ciklidsallskapet: Astatotilapia latifasciata species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=301"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "Imperial Tropicals breeder care sheet: Zebra Obliquidens"
+        url: "https://imperialtropicals.com/products/zebra-obliquidens-dominate-male-3"
+        accessed: "2026-10-13"
+  diet:
+    text: "Feed as an invertebrate eater. The strongest species accounts emphasize insects and aquatic insect\
+      \ larvae; varied aquarium foods do not turn it into an algae specialist. Use balanced cichlid pellets\
+      \ with animal ingredients and rotate small invertebrate foods such as Daphnia, Artemia and insect larvae.\
+      \ Some spirulina-containing food can be part of that rotation. Modest servings and access for subordinate\
+      \ females matter more than maximizing appetite. Special high-protein bloat sensitivity is not established,\
+      \ but digestive problems can still occur."
+    sources:
+      - kind: database
+        title: "Nordiska Ciklidsallskapet: Astatotilapia latifasciata species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=301"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Fischlexikon: Haplochromis latifasciatus"
+        url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000001446"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Seriously Fish: Haplochromis latifasciatus"
+        url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "AquariumDomain species profile: Zebra Obliquidens"
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/AfricanCichlids/ZebraObliquidens.shtml"
+        accessed: "2026-10-13"
+  breeding:
+    text: "Only the female incubates the eggs and young in her mouth. Spawning usually centers on a selected\
+      \ substrate patch or flat surface, with the male displaying to several females. Incubation commonly lasts\
+      \ about three weeks, during which feeding may stop. Disturbance or harassment can lead to brood loss,\
+      \ and moving a female can complicate her later return to the group. Released fry can take suitably small\
+      \ foods such as Artemia nauplii. Separate rearing improves protection when brood survival matters. Clearly\
+      \ identified breeding fish should be kept away from other related mixed-sex haplochromine groups."
+    sources:
+      - kind: database
+        title: "FishBase species summary: Haplochromis latifasciatus"
+        url: "https://www.fishbase.se/summary/Haplochromis-latifasciatus.html"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Seriously Fish: Haplochromis latifasciatus"
+        url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Fischlexikon: Haplochromis latifasciatus"
+        url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000001446"
+        accessed: "2026-10-13"
+  sexing:
+    text: "Mature males usually show stronger yellow and red coloration and are larger than females. Females\
+      \ retain dark bars over a less intensely colored body, so bars alone do not identify sex. Young fish\
+      \ and suppressed males can resemble females. Egg spots may contribute to a broader assessment but are\
+      \ not a reliable sole test. Liang and colleagues found bar-number variation between stocks, so counting\
+      \ bars is also unsuitable for sexing."
+    sources:
+      - kind: literature
+        title: Liang et al. (2020). Developmental and Cellular Basis of Vertical Bar Color Patterns in the
+          East African Cichlid Fish Haplochromis latifasciatus.
+        url: "https://doi.org/10.3389/fcell.2020.00062"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Seriously Fish: Haplochromis latifasciatus"
+        url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Nordiska Ciklidsallskapet: Astatotilapia latifasciata species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=301"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Fischlexikon: Haplochromis latifasciatus"
+        url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000001446"
+        accessed: "2026-10-13"
+  compatibility:
+    text: "Everyday maintenance can include suitably sized adult cichlids, provided temperament, water conditions\
+      \ and retreat space overlap. Restrained mbuna and carefully selected male peacocks are possibilities\
+      \ in an enlarged setup. Very small fish and fry can be eaten, and aggressive companions can prevent females\
+      \ from feeding or resting. Related Victoria-basin haplochromines are poor partners for a breeding line\
+      \ because the species accounts warn of crossing. The empty curated hybrid-group list means that no supported\
+      \ named member set was established, not that hybridisation is impossible."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Haplochromis latifasciatus"
+        url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Nordiska Ciklidsallskapet: Astatotilapia latifasciata species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=301"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "Imperial Tropicals breeder care sheet: Zebra Obliquidens"
+        url: "https://imperialtropicals.com/products/zebra-obliquidens-dominate-male-3"
+        accessed: "2026-10-13"
+  problems:
+    text: "Uneven male pressure is a common practical concern. A fish that stays hidden or repeatedly loses\
+      \ access to food needs attention even before injuries appear. Preserve water quality and oxygenation,\
+      \ particularly in warm conditions. Appetite loss during mouthbrooding can be normal, but persistent deterioration\
+      \ requires checking the fish and its surroundings. Avoid abrupt changes in pH or minerals. The adopted\
+      \ KH tolerance of 6 to 12 dKH is particularly uncertain because its upper endpoint derives from the conservative\
+      \ vote calculation rather than a direct maintenance study. Watch behavior and health instead of treating\
+      \ an endpoint as a goal."
+    sources:
+      - kind: literature
+        title: Newman (1997). Cichlid Conservation in Uganda. Field account republished by AquaInfo.
+        url: "https://aquainfo.nl/en/cichlid-conservation-in-uganda/"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Seriously Fish: Haplochromis latifasciatus"
+        url: "https://www.seriouslyfish.com/species/haplochromis-latifasciatus/"
+        accessed: "2026-10-13"
+      - kind: database
+        title: "Nordiska Ciklidsallskapet: Astatotilapia latifasciata species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=301"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "Imperial Tropicals breeder care sheet: Zebra Obliquidens"
+        url: "https://imperialtropicals.com/products/zebra-obliquidens-dominate-male-3"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "LiveAquaria structured care sheet: Zebra Obliquidens"
+        url: "https://www.liveaquaria.com/products/zebra-obliquidens"
+        accessed: "2026-10-13"
+      - kind: website
+        title: "AquariumDomain species profile: Zebra Obliquidens"
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/AfricanCichlids/ZebraObliquidens.shtml"
+        accessed: "2026-10-13"
+provenance:
+  runs:
+    - role: generator
+      model: gpt-6.1-sol
+      date: "2026-10-13"
+    - role: checker
+      model: claude-sonnet-5-5
+      date: "2026-10-13"
+    - role: checker
+      model: gpt-6.1-sol
+      date: "2026-10-13"
+    - role: checker
+      model: gpt-6.1-sol
+      date: "2026-10-13"
+    - role: checker
+      model: gpt-6.1-sol
+      date: "2026-10-13"
+    - role: checker
+      model: gpt-6.1-sol
+      date: "2026-10-13"
+    - role: adjudicator
+      model: gpt-6.1-sol
+      date: "2026-10-13"
+  disagreements:
+    - field: features.diet
+      proposals:
+        - by: generator
+          value:
+            type: invertivore
+            bloatSensitive: false
+            foods:
+              - quality cichlid pellets with animal ingredients
+              - Daphnia
+              - Artemia
+              - small aquatic insect larvae
+              - occasional spirulina-containing food
+        - by: checker-a
+          value:
+            type: invertivore
+            bloatSensitive: false
+            foods:
+              - live food
+              - frozen food
+              - cichlid pellets
+              - flake
+        - by: checker-b
+          value:
+            type: invertivore
+            bloatSensitive: false
+            foods:
+              - aquatic insects
+              - insect larvae
+              - small crustaceans
+              - zooplankton
+              - quality cichlid pellets
+        - by: checker-c
+          value:
+            type: invertivore
+            bloatSensitive: false
+            foods:
+              - insect larvae
+              - small crustaceans
+              - daphnia
+              - brine shrimp
+              - balanced cichlid pellets
+      decision:
+        type: invertivore
+        bloatSensitive: false
+        foods:
+          - quality cichlid pellets with animal ingredients
+          - Daphnia
+          - Artemia
+          - small aquatic insect larvae
+          - occasional spirulina-containing food
+      rationale: "Tally method unanimous; agree 4 of 4. All four votes agree on invertivore and bloatSensitive\
+        \ false; the tally retains the generator's food list. The Nordic register describes insects as the\
+        \ main wild food, Fischlexikon specifies aquatic insect larvae, and Seriously Fish prioritizes live\
+        \ and frozen animal foods. Commercial omnivore labels and the AquariumDomain insect-feeding description\
+        \ accommodate a varied captive menu rather than establish an algae-specialist diet. No source directly\
+        \ tests a high-protein bloat response, so false denotes absence of established special sensitivity\
+        \ and does not imply immunity to digestive disease."
+    - field: features.temperatureC
+      proposals:
+        - by: generator
+          value:
+            min: 24.5
+            max: 29
+        - by: checker-a
+          value:
+            min: 25.6
+            max: 29.4
+        - by: checker-b
+          value:
+            min: 24.5
+            max: 30.4
+        - by: checker-c
+          value:
+            min: 24.5
+            max: 30.4
+        - by: tiebreaker-1
+          value:
+            min: 24.5
+            max: 30.4
+        - by: tiebreaker-2
+          value:
+            min: 24.5
+            max: 30.4
+      decision:
+        min: 25
+        max: 30
+      rationale: "Tally method qualified-majority; agree 4 of 6. The qualified-majority tally fixes 25 to 30\
+        \ C with four of six agreeing votes. Ongom measured 24.5 to 27 C; Obubu et al. reported 25.6 to 30.4\
+        \ C in eastern Kyoga; the independent 2023 fish-habitat study reported 25.9 to 29.4 C. The selected\
+        \ four proposals each span 24.5 to 30.4 C, and integer rounding makes the decision narrower than that\
+        \ measured union. The wider 24.5 to 30.4 C remains in evidence and is not denied by the rounded value.\
+        \ These are basin observations with incomplete Nawampasa coverage, not species-specific physiological\
+        \ limits. The Naigaga repository abstract was read but its input temperature figure was not independently\
+        \ verified from a full text. generator proposed {\"min\": 24.5, \"max\": 29}; checker-a proposed {\"\
+        min\": 25.6, \"max\": 29.4}; checker-b proposed {\"min\": 24.5, \"max\": 30.4}; checker-c proposed\
+        \ {\"min\": 24.5, \"max\": 30.4}; tiebreaker-1 proposed {\"min\": 24.5, \"max\": 30.4}; tiebreaker-2\
+        \ proposed {\"min\": 24.5, \"max\": 30.4}."
+    - field: features.ph
+      proposals:
+        - by: generator
+          value:
+            min: 6.8
+            max: 9
+        - by: checker-a
+          value:
+            min: 7
+            max: 9.6
+        - by: checker-b
+          value:
+            min: 6.8
+            max: 9
+        - by: checker-c
+          value:
+            min: 6.8
+            max: 9.6
+        - by: tiebreaker-1
+          value:
+            min: 6.5
+            max: 9.9
+        - by: tiebreaker-2
+          value:
+            min: 6.8
+            max: 9.6
+      decision:
+        min: 6.8
+        max: 9.6
+      rationale: "Tally method qualified-majority; agree 4 of 6. The qualified-majority decision is 6.8 to\
+        \ 9.6, with four of six votes agreeing within the pH threshold. Fishing areas in Ongom reach 6.8 to\
+        \ 7.5, the 2023 shallow fish-habitat survey reaches 7.0 to 9.6, and Newman reports about 7.0 to 7.5\
+        \ in Nawampasa. Obubu's eastern-arm series has a wider union of 6.5 to 9.9; it documents lake variation\
+        \ but not this species occupying every extreme. Waste-associated readings down to 5.7 are also outside\
+        \ the selected envelope. The tally favors the fish-habitat interpretation over both the 9.0 ceiling\
+        \ and the broader 6.5 to 9.9 proposal. Seasonal photosynthesis can produce transient high pH. The Naigaga\
+        \ abstract contains no confirmable numeric pH range. generator proposed {\"min\": 6.8, \"max\": 9};\
+        \ checker-a proposed {\"min\": 7, \"max\": 9.6}; checker-b proposed {\"min\": 6.8, \"max\": 9}; checker-c\
+        \ proposed {\"min\": 6.8, \"max\": 9.6}; tiebreaker-1 proposed {\"min\": 6.5, \"max\": 9.9}; tiebreaker-2\
+        \ proposed {\"min\": 6.8, \"max\": 9.6}."
+    - field: features.ghDgh
+      proposals:
+        - by: generator
+          value:
+            min: 3.5
+            max: 6.5
+        - by: checker-a
+          value:
+            min: 1
+            max: 2
+        - by: checker-b
+          value:
+            min: 3.7
+            max: 3.7
+        - by: checker-c
+          value:
+            min: 3.7
+            max: 6.3
+        - by: tiebreaker-1
+          value:
+            min: 3.7
+            max: 6.3
+        - by: tiebreaker-2
+          value:
+            min: 1.7
+            max: 6.3
+      decision:
+        min: 4
+        max: 6
+      rationale: "Tally method qualified-majority; agree 4 of 6. The qualified-majority tally fixes 4 to 6\
+        \ dGH with four of six agreeing votes. FAO reproduces Kyoga calcium and magnesium of 14.1 and 7.5 mg/L\
+        \ from HYDROMET and 21.7 and 13.8 mg/L from EAFRO. Using dGH = Ca/7.14 + Mg/4.34 gives 3.70 and 6.22\
+        \ dGH, a wider interval than the rounded decision. Welcomme repeats EAFRO, so the two compilations\
+        \ are not two independent surveys. Similar ion figures recur elsewhere in the FAO inventory, leaving\
+        \ attribution uncertain. Mungoma's readable abstract gives regional mean hardness equivalents of 1.7\
+        \ to 2.8 dGH, which support the softer alternative but are means rather than extrema. The Naigaga proposal\
+        \ of roughly 1.6 dGH could not be verified from its repository abstract; the permitted Livingstone\
+        \ extraction did not expose the claimed Kyoga table, so no calcium-only figure is presented as total\
+        \ GH. No Nawampasa GH series was read. generator proposed {\"min\": 3.5, \"max\": 6.5}; checker-a proposed\
+        \ {\"min\": 1, \"max\": 2}; checker-b proposed {\"min\": 3.7, \"max\": 3.7}; checker-c proposed {\"\
+        min\": 3.7, \"max\": 6.3}; tiebreaker-1 proposed {\"min\": 3.7, \"max\": 6.3}; tiebreaker-2 proposed\
+        \ {\"min\": 1.7, \"max\": 6.3}."
+    - field: features.khDkh
+      proposals:
+        - by: generator
+          value:
+            min: 6
+            max: 11
+        - by: checker-a
+          value:
+            min: 2
+            max: 3
+        - by: checker-b
+          value:
+            min: 11
+            max: 11
+        - by: checker-c
+          value:
+            min: 6.1
+            max: 11
+        - by: tiebreaker-1
+          value:
+            min: 6.1
+            max: 11
+        - by: tiebreaker-2
+          value:
+            min: 3.4
+            max: 6.2
+      decision:
+        min: 6
+        max: 11
+      rationale: "Tally method median; agree 3 of 6. No qualified majority settled natural KH. The tally uses\
+        \ the median of all six proposed lower and upper endpoints, rounded to 6 to 11 dKH with low confidence.\
+        \ Welcomme explicitly gives Kyoga alkalinity of 2.18 meq/L, equivalent to 6.10 dKH, while Newman directly\
+        \ tested Nawampasa at 11 dKH. The later FAO combined bicarbonate and carbonate mass gives a similar\
+        \ approximate Kyoga result but has an uncertain anion convention. Mungoma's abstract gives regional\
+        \ mean equivalents of 3.4 to 5.5 dKH, demonstrating that the decided interval is narrower than all\
+        \ native-system observations together, approximately 3.4 to 11 dKH. The 2 to 3 proposal rests on a\
+        \ Naigaga table that could not be checked through its repository abstract. This is an administrative\
+        \ median of sparse evidence, not a measured seasonal envelope. GH and KH are separate quantities. generator\
+        \ proposed {\"min\": 6, \"max\": 11}; checker-a proposed {\"min\": 2, \"max\": 3}; checker-b proposed\
+        \ {\"min\": 11, \"max\": 11}; checker-c proposed {\"min\": 6.1, \"max\": 11}; tiebreaker-1 proposed\
+        \ {\"min\": 6.1, \"max\": 11}; tiebreaker-2 proposed {\"min\": 3.4, \"max\": 6.2}."
+    - field: features.temperatureC.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 23
+            max: 30
+        - by: checker-a
+          value:
+            min: 23
+            max: 29.4
+        - by: checker-b
+          value:
+            min: 22
+            max: 30.4
+        - by: checker-c
+          value:
+            min: 22
+            max: 30.4
+      decision:
+        min: 23
+        max: 30
+      rationale: "Tally method unanimous; agree 4 of 4. The tally treats the four original tolerance votes\
+        \ as unanimous under the 1 C agreement rule and fixes 23 to 30 C; the two tie-breakers did not vote\
+        \ on this tolerance. Seriously Fish recommends 23 to 28 C and the Nordic register 22 to 28 C. Fanie's\
+        \ retail page reaches 24 to 30 C, but it does not document multiyear outcomes. The original 22 to 30.4\
+        \ C proposals and the wider natural 24.5 to 30.4 C measurements are not fully retained because the\
+        \ tally rounds the selected median endpoints to integers. This envelope contains the decided natural\
+        \ range, while healthy years at 30 C remain unproven. Use the better supported middle temperatures\
+        \ as ordinary set points. generator proposed {\"min\": 23, \"max\": 30}; checker-a proposed {\"min\"\
+        : 23, \"max\": 29.4}; checker-b proposed {\"min\": 22, \"max\": 30.4}; checker-c proposed {\"min\"\
+        : 22, \"max\": 30.4}."
+    - field: features.ph.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 6.8
+            max: 9
+        - by: checker-a
+          value:
+            min: 7
+            max: 9.6
+        - by: checker-b
+          value:
+            min: 6.8
+            max: 9
+        - by: checker-c
+          value:
+            min: 6.8
+            max: 9.6
+        - by: tiebreaker-1
+          value:
+            min: 6.5
+            max: 9.9
+        - by: tiebreaker-2
+          value:
+            min: 6.8
+            max: 9.6
+      decision:
+        min: 6.8
+        max: 9.6
+      rationale: "Tally method qualified-majority; agree 4 of 6. The qualified-majority tally fixes 6.8 to\
+        \ 9.6 with four of six agreeing votes, then contains the decided natural interval. Seriously Fish recommends\
+        \ 7.2 to 8.2 and the Nordic register 7.5 to 8.0; other aquarium accounts extend toward 8.5 or 9.0.\
+        \ The endpoints of the selected envelope come from habitat coverage, not controlled multiyear aquarium\
+        \ outcomes. The wider 6.5 to 9.9 eastern-arm source range and tiebreaker-1 proposal are recorded but\
+        \ excluded by the tally. Stable central conditions have stronger husbandry support than continuous\
+        \ exposure to either outer endpoint. generator proposed {\"min\": 6.8, \"max\": 9}; checker-a proposed\
+        \ {\"min\": 7, \"max\": 9.6}; checker-b proposed {\"min\": 6.8, \"max\": 9}; checker-c proposed {\"\
+        min\": 6.8, \"max\": 9.6}; tiebreaker-1 proposed {\"min\": 6.5, \"max\": 9.9}; tiebreaker-2 proposed\
+        \ {\"min\": 6.8, \"max\": 9.6}."
+    - field: features.ghDgh.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 3.5
+            max: 15
+        - by: checker-a
+          value:
+            min: 1
+            max: 20
+        - by: checker-b
+          value:
+            min: 3.7
+            max: 15
+        - by: checker-c
+          value:
+            min: 3.7
+            max: 15
+        - by: tiebreaker-1
+          value:
+            min: 3.7
+            max: 15
+        - by: tiebreaker-2
+          value:
+            min: 1.7
+            max: 15
+      decision:
+        min: 4
+        max: 15
+      rationale: "Tally method qualified-majority; agree 5 of 6. The qualified-majority tally fixes 4 to 15\
+        \ dGH with five of six votes agreeing within the 2 dGH threshold. Seriously Fish recommends 8 to 15\
+        \ dGH and Fischlexikon 5 to 15 dGH. The lower bound is a rounded extension toward the decided natural\
+        \ interval, not demonstrated chronic soft-water maintenance. The wider 5 to 20 dGH recommendation in\
+        \ Einrichtungsbeispiele and 10 to 20 in Guidarium are not retained at the upper end; the 16 to 24 retail\
+        \ claim is especially weak because that page confuses species elsewhere. Mungoma's natural regional\
+        \ means are softer still, around 1.7 to 2.8 dGH. The 1 to 20 proposal does not override the tally.\
+        \ Confidence remains low because chronic endpoint data are absent. generator proposed {\"min\": 3.5,\
+        \ \"max\": 15}; checker-a proposed {\"min\": 1, \"max\": 20}; checker-b proposed {\"min\": 3.7, \"\
+        max\": 15}; checker-c proposed {\"min\": 3.7, \"max\": 15}; tiebreaker-1 proposed {\"min\": 3.7, \"\
+        max\": 15}; tiebreaker-2 proposed {\"min\": 1.7, \"max\": 15}."
+    - field: features.khDkh.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 6
+            max: 15
+        - by: checker-a
+          value:
+            min: 2
+            max: 12
+        - by: checker-b
+          value:
+            min: 10
+            max: 15
+        - by: checker-c
+          value:
+            min: 6.1
+            max: 20
+        - by: tiebreaker-1
+          value:
+            min: 6.1
+            max: 20
+        - by: tiebreaker-2
+          value:
+            min: 3.4
+            max: 20
+      decision:
+        min: 6
+        max: 12
+      rationale: "Tally method conservative; agree 2 of 6. The tally conservatively intersects the six proposed\
+        \ tolerance ranges at 10 to 12 dKH, then widens the lower endpoint to 6 to contain the decided natural\
+        \ KH. The result is 6 to 12 dKH with low confidence and two of six counted agreeing votes. LiveAquaria\
+        \ states 10 to 15, AquariumDomain 10 to 25, and Bay Bridge Aquarium 10 to 20 dKH; all are wider than\
+        \ the selected upper interval and none establishes years of healthy exposure at the endpoints. Checker-a's\
+        \ upper endpoint of 12 was inferred from GH and pH, which cannot establish KH and is not presented\
+        \ as a direct source statement. It nevertheless constrains the mandatory conservative tally decision.\
+        \ Natural measurements near 6.1 and 11 dKH explain containment but do not validate chronic aquarium\
+        \ limits. The 6 to 12 envelope is therefore a precautionary pipeline decision with an especially uncertain\
+        \ upper endpoint. generator proposed {\"min\": 6, \"max\": 15}; checker-a proposed {\"min\": 2, \"\
+        max\": 12}; checker-b proposed {\"min\": 10, \"max\": 15}; checker-c proposed {\"min\": 6.1, \"max\"\
+        : 20}; tiebreaker-1 proposed {\"min\": 6.1, \"max\": 20}; tiebreaker-2 proposed {\"min\": 3.4, \"max\"\
+        : 20}."
+    - field: features.origin
+      proposals:
+        - by: generator
+          value:
+            continent: Africa
+            region: Lake Kyoga system in Uganda
+            waterbody: Lake Kyoga
+            localities:
+              - Lake Kyoga
+              - Lake Nawampasa
+        - by: checker-a
+          value:
+            continent: Africa
+            region: "Lake Kyoga basin, Uganda"
+            waterbody: null
+            localities:
+              - Lake Kyoga
+              - Lake Nawampasa
+        - by: checker-b
+          value:
+            continent: Africa
+            region: Lake Kyoga basin in Uganda
+            waterbody: null
+            localities:
+              - Lake Kyoga
+              - Lake Nawampasa
+        - by: checker-c
+          value:
+            continent: Africa
+            region: Lake Kyoga system in Uganda
+            waterbody: null
+            localities:
+              - Lake Kyoga
+              - Lake Nawampasa
+      decision:
+        continent: Africa
+        region: Lake Kyoga system in Uganda
+        waterbody: null
+        localities:
+          - Lake Kyoga
+          - Lake Nawampasa
+      rationale: "The catalog establishes Kyoga as the type locality, while Seriously Fish and the Nordic species\
+        \ register independently add Nawampasa. Neither lake has a waterbody-table entry, so no Victoria lake\
+        \ chemistry is substituted. A CRC photograph caption and a retailer also mention Bisina, but a photograph\
+        \ caption alone does not establish a documented locality series for this profile."
+    - field: features.maxSizeCm
+      proposals:
+        - by: generator
+          value:
+            male: 13
+            female: 12
+        - by: checker-a
+          value:
+            male: 12
+            female: 11
+        - by: checker-b
+          value:
+            male: 13
+            female: 10
+        - by: checker-c
+          value:
+            male: 13
+            female: 10
+      decision:
+        male: 13
+        female: 10
+      rationale: "Generator proposed 13 cm male and 12 cm female; checker-a 12 and 11; checker-b and checker-c\
+        \ both 13 and 10. AquariumDomain's sex-specific aquarium lengths are approximately 12.7 and 10.2 cm,\
+        \ supporting 13 and 10 as planning estimates. Seriously Fish gives 12.5 cm standard length, FishBase\
+        \ 11 cm total length without a female split, and the Nordic register 15 cm unsexed. Laboratory females\
+        \ around 12 cm standard length in Liang et al. show that larger individuals exist, but three laboratory\
+        \ specimens do not establish typical aquarium female maxima. Different length definitions and weak\
+        \ sex-specific corroboration limit precision."
+    - field: features.territory
+      proposals:
+        - by: generator
+          value:
+            size: small
+            breedingOnly: true
+        - by: checker-a
+          value:
+            size: small
+            breedingOnly: true
+        - by: checker-b
+          value:
+            size: small
+            breedingOnly: true
+        - by: checker-c
+          value:
+            size: small
+            breedingOnly: false
+      decision:
+        size: small
+        breedingOnly: true
+      rationale: "Generator, checker-a and checker-b proposed a small breeding-only territory; checker-c proposed\
+        \ small with breedingOnly false. Seriously Fish explicitly links territoriality to spawning, whereas\
+        \ the breeder's general territory description does not demonstrate persistent defense outside reproductive\
+        \ activity. Retain breedingOnly true from the more explicit account. Small is a rubric interpretation\
+        \ of a localized spawning site; no radius was measured."
+    - field: features.habitatZones
+      proposals:
+        - by: generator
+          value:
+            - plants
+            - sand
+        - by: checker-a
+          value:
+            - rock
+            - sand
+            - plants
+        - by: checker-b
+          value:
+            - plants
+            - sand
+            - rock
+        - by: checker-c
+          value:
+            - plants
+            - sand
+            - rock
+      decision:
+        - plants
+        - sand
+        - rock
+      rationale: "Generator proposed plants and sand; checker-a, checker-b and checker-c also included rock.\
+        \ Vegetated margins are the strongest native-habitat evidence, while Newman describes a muddy bottom\
+        \ with plant debris in Nawampasa. Sand is a practical soft-substrate substitute and spawning surface.\
+        \ Seriously Fish and the Nordic register recommend stones for retreats, so rock is retained as an aquarium\
+        \ shelter need rather than a claim of rocky-shore specialization."
+    - field: features.coloration
+      proposals:
+        - by: generator
+          value:
+            baseColors:
+              - black
+              - yellow
+              - red
+              - silver
+            pattern: bars
+        - by: checker-a
+          value:
+            baseColors:
+              - yellow
+              - black
+              - red
+            pattern: bars
+        - by: checker-b
+          value:
+            baseColors:
+              - silver
+              - yellow
+              - red
+              - black
+            pattern: bars
+        - by: checker-c
+          value:
+            baseColors:
+              - yellow
+              - red
+              - black
+              - silver
+            pattern: bars
+      decision:
+        baseColors:
+          - silver
+          - yellow
+          - red
+          - black
+        pattern: bars
+      rationale: "Generator, checker-b and checker-c include silver with yellow, red and black; checker-a lists\
+        \ yellow, black and red without silver. The illustrated accounts show a pale or silver background with\
+        \ colored male display areas and dark vertical bars. Liang et al. independently studied dark bars and\
+        \ yellow interbars. Color order is not significant; the silver background is retained. Four or five\
+        \ bars can occur, so their count does not determine sex."
+    - field: features.minTank
+      proposals:
+        - by: generator
+          value:
+            volumeL: 240
+            lengthCm: 120
+            depthCm: 40
+        - by: checker-a
+          value:
+            volumeL: 200
+            lengthCm: 120
+            depthCm: 40
+        - by: checker-b
+          value:
+            volumeL: 200
+            lengthCm: 120
+            depthCm: 40
+        - by: checker-c
+          value:
+            volumeL: 200
+            lengthCm: 120
+            depthCm: 40
+      decision:
+        volumeL: 200
+        lengthCm: 120
+        depthCm: 40
+      rationale: "Generator proposed 240 L with a 120 by 40 cm footprint; checker-a, checker-b and checker-c\
+        \ proposed 200 L with the same footprint. Retain 200 L for one adult male and three females, following\
+        \ the Nordic register and Fischlexikon, while retaining Seriously Fish's 120 cm length and a cautiously\
+        \ enlarged 40 cm depth for retreats. Seriously Fish's smaller 108 L and 120 by 30 cm example is not\
+        \ adopted; Imperial Tropicals recommends about 208 L, and Einrichtungsbeispiele recommends 300 L without\
+        \ defining this exact social unit. The 40 cm depth is a layout inference. Mixed communities and additional\
+        \ males need more space."
+    - field: features.lifespanYears
+      proposals:
+        - by: generator
+          value:
+            min: 5
+            max: 8
+        - by: checker-a
+          value:
+            min: 5
+            max: 8
+        - by: checker-b
+          value:
+            min: 5
+            max: 7
+        - by: checker-c
+          value:
+            min: 8
+            max: 10
+      decision:
+        min: 8
+        max: 10
+      rationale: "Generator and checker-a proposed 5 to 8 years, checker-b 5 to 7, and checker-c 8 to 10. The\
+        \ Aquarium Wiki explicitly gives 8 to 10 years and Tri-County gives 10, whereas the lower five-year\
+        \ endpoints in the other proposals are generic planning estimates. Select the species-labelled 8 to\
+        \ 10 expectation with low confidence because neither account provides observed ages or a survival cohort.\
+        \ Aquarium Fish Online gives up to 7 years but misstates the origin; the Modern Aquatic Design longevity\
+        \ sentence names another species and is excluded. This is a tentative estimate rather than a guaranteed\
+        \ lifespan."
+    - field: taxonomy.synonyms
+      proposals:
+        - by: generator
+          value:
+            - Astatotilapia latifasciata
+        - by: checker-a
+          value:
+            - Astatotilapia latifasciata
+            - Haplochromis sp. 'zebra obliquidens'
+        - by: checker-b
+          value:
+            - Astatotilapia latifasciata
+            - Haplochromis latifasciata
+        - by: checker-c
+          value:
+            - Astatotilapia latifasciata
+      decision:
+        - Astatotilapia latifasciata
+        - Haplochromis latifasciata
+      rationale: "Keep the alternative Astatotilapia combination and identify the incorrect Haplochromis gender\
+        \ ending as trade usage. Checker-a also proposed Haplochromis sp. zebra obliquidens, which is a trade\
+        \ designation placed under names rather than a taxonomic synonym. All four complete profiles agree\
+        \ on Haplochromis latifasciatus Regan, 1929 as the valid name."
