@@ -196,7 +196,9 @@ file. A config difference, version mismatch or service flag disabling Traefik
 runs the pinned installer with `INSTALL_K3S_EXEC=server` and
 `INSTALL_K3S_SKIP_START=true`, then restarts k3s. This reconciles service arguments
 and applies config changes even at the pinned version. Matching config and
-version require no restart. OpenTofu trigger hashes cover every uploaded script,
+version require no restart. A `config.yaml.restart-required` marker requests
+a retry when installation or restart fails; a successful restart clears it.
+OpenTofu trigger hashes cover every uploaded script,
 the root Application and all bootstrap Argo CD YAML files.
 
 k3s runs bundled Traefik and ServiceLB. Argo CD owns the Traefik

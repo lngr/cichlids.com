@@ -24,9 +24,10 @@ class Bootstrap(unittest.TestCase):
             mocks = {
                 'k3s': f'echo k3s version $(cat {version})',
                 'kubectl': 'echo node Ready',
-                'systemctl': f'echo systemctl "$*" >> {log}',
+                'systemctl': f'echo systemctl "$*" >> {log}\n[ "${{FAIL_RESTART:-false}}" != true ]',
                 'curl': f'''cat <<'INSTALL'
 echo installer "$INSTALL_K3S_EXEC" "$INSTALL_K3S_SKIP_START" >> {log}
+[ "${{FAIL_INSTALL:-false}}" != true ] || exit 42
 echo "$INSTALL_K3S_VERSION" > {version}
 echo 'ExecStart=/usr/local/bin/k3s server' > {service}
 INSTALL''',
@@ -42,10 +43,13 @@ INSTALL''',
                               .replace('/etc/rancher/k3s/k3s.yaml', str(root / 'kubeconfig')))
             env = {**os.environ, 'PATH': str(binary) + ':' + os.environ['PATH']}
 
-            def run():
-                result = subprocess.run(['bash', str(script), 'v1.36.5+k3s1'], env=env,
+            def run(extra_env=None, success=True):
+                result = subprocess.run(['bash', str(script), 'v1.36.5+k3s1'], env={**env, **(extra_env or {})},
                                         capture_output=True, text=True)
-                self.assertEqual(result.returncode, 0, result.stderr)
+                if success:
+                    self.assertEqual(result.returncode, 0, result.stderr)
+                else:
+                    self.assertNotEqual(result.returncode, 0)
 
             run()
             self.assertTrue(config.exists(), 'desired k3s config exists on a pinned node')
@@ -70,6 +74,17 @@ INSTALL''',
             run()
             self.assertIn('installer server true', log.read_text())
             self.assertNotIn('--disable', service.read_text())
+
+            pending = Path(str(config) + '.restart-required')
+            for failure in ['FAIL_INSTALL', 'FAIL_RESTART']:
+                log.write_text('')
+                config.write_text('write-kubeconfig-mode: "0644"\n')
+                run({failure: 'true'}, success=False)
+                self.assertTrue(pending.exists(), 'incomplete config application requires retry')
+                log.write_text('')
+                run()
+                self.assertIn('systemctl restart k3s', log.read_text())
+                self.assertFalse(pending.exists())
 
 
 if __name__ == '__main__':

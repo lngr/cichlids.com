@@ -11,12 +11,14 @@ export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
 CONFIG=/etc/rancher/k3s/config.yaml
 SERVICE=/etc/systemd/system/k3s.service
+PENDING="${CONFIG}.restart-required"
 mkdir -p "$(dirname "$CONFIG")"
 DESIRED=$(mktemp)
 trap 'rm -f "$DESIRED"' EXIT
 printf 'write-kubeconfig-mode: "0600"\n' > "$DESIRED"
 CONFIG_CHANGED=false
 if ! cmp -s "$DESIRED" "$CONFIG"; then
+  install -m 600 /dev/null "$PENDING"
   install -m 600 "$DESIRED" "$CONFIG"
   CONFIG_CHANGED=true
 fi
@@ -31,7 +33,8 @@ if tr -d "'\\\"\\\\\n" < "$SERVICE" 2>/dev/null | grep -qE -- '--disable[=[:spac
   LEGACY_FLAGS=true
 fi
 
-if ! "$VERSION_MATCHES" || "$CONFIG_CHANGED" || "$LEGACY_FLAGS"; then
+if ! "$VERSION_MATCHES" || "$CONFIG_CHANGED" || "$LEGACY_FLAGS" || [[ -f "$PENDING" ]]; then
+  install -m 600 /dev/null "$PENDING"
   # The installer reconciles the systemd unit; server settings come from CONFIG.
   curl -sfL "https://raw.githubusercontent.com/k3s-io/k3s/${VERSION//+/%2B}/install.sh" |
     INSTALL_K3S_VERSION="$VERSION" \
@@ -39,6 +42,7 @@ if ! "$VERSION_MATCHES" || "$CONFIG_CHANGED" || "$LEGACY_FLAGS"; then
       INSTALL_K3S_SKIP_START=true \
       sh -s -
   systemctl restart k3s
+  rm -f "$PENDING"
 else
   echo "k3s $VERSION config and service are current"
 fi
