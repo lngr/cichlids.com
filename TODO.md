@@ -141,21 +141,13 @@ Zu jeder Frage ist eine vorläufige Umsetzung in Gebrauch; sie wird bestätigt o
 - [ ] **Vorsichtsregel beim Raub:** Bei 3:2 für Stufe 0 entscheidet die Regel Stufe 1
   (Pseudotropheus sp. 'acei', Maylandia greshakei). Belegt ist dort nur, dass Mbuna Jungfische
   gelegentlich mitfressen. Bestätigen oder ändern.
-- [ ] **Belege für Kreuzungsgruppen:** Entschieden: Jede Gruppe hat eine Beleglage (`basis`).
-  `documented` (Kreuzung benannter Mitglieder im Freiland oder im Aquarium mit freier Partnerwahl)
-  ergibt eine Warnung, `presumed` (nur pauschale Hobby-Warnungen oder sehr nahe Verwandtschaft)
-  ein Achtung. Erzwungene Laborkreuzungen zählen nicht. Offen: alle Gruppen danach kuratieren,
-  etwa Cynotilapia afra nur mit Maylandia zebra (Feldhybriden), `copadichromis` und
-  `melanochromis` als presumed.
-- [ ] **Mehrfachmitgliedschaft in Kreuzungsgruppen:** Entschieden: `hybridGroups` ist eine Liste,
-  eine Gruppe heißt "alle Mitglieder kreuzen sich untereinander", eine belegte Einzelkreuzung ist
-  eine Zweiergruppe. Offen: die Gruppen danach kuratieren (Cynotilapia afra nur mit Maylandia
-  zebra, Pterophyllum leopoldi ohne belegte Kreuzung, Zuchtformen in den Gruppen ihrer
-  Ausgangsarten). Vorläufige Vorsichtsregel ohne Mehrheit: alle Gruppen, die mindestens zwei
-  Stimmen nennen, sonst die zuerst genannte. Bestätigen oder ändern.
-- [ ] **Zuchtformen ohne Kreuzungsgruppe:** Aulonocara 'German Red' und 'Rubescens' sind keine
-  Mitglieder einer Kreuzungsgruppe. Klären, ob Zuchtformen in die Gruppe ihrer Ausgangsarten
-  gehören.
+- [ ] **Kreuzungsgruppen nachpflegen:** Die Gruppen sind nach Beleglage kuratiert (28 Gruppen,
+  Zuchtformen in den Gruppen ihrer Ausgangsarten). Offen: `provenance`-Texte einiger Profile
+  nennen `maylandia` als entschiedene Gruppe, obwohl die Art dort kein Mitglied ist (etwa
+  Cynotilapia afra); die Vorsichtsregel
+  für Gruppenlisten ohne Mehrheit (alle Gruppen mit mindestens zwei Stimmen, sonst die zuerst
+  genannte) bestätigen; eine Forumsmeldung Parachromis managuensis mal Texas-Buntbarsch ergibt
+  wegen der Forumsgewichtung keine Gruppe.
 - [ ] **Einzelentscheide mit niedriger Sicherheit:** Maylandia zebra Raub 1 bei 3:2 für 0;
   Labeotropheus trewavasae Aggression gegen andere Arten 3 gegen eine 2:1-Mehrheit.
 - [ ] **Reihenfolge und Synonyme:** Profile entstehen nach Fotoanzahl, offensichtliche
