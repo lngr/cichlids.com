@@ -1038,7 +1038,7 @@ features:
         note: keepers plan Tanganyika community tanks with this species
 
   hybridGroups:
-    value: [neolamprologus-brichardi-complex, neolamprologus-brichardi-pulcher]
+    value: [neolamprologus-brichardi-complex, neolamprologus-brichardi-leleupi, neolamprologus-brichardi-pulcher]
     confidence: low
     verification:
       method: conservative
@@ -1066,6 +1066,10 @@ features:
       text is not open access and whose abstract names no species pair. This is a report whose
       circumstances are unclear, so the pair is a presumed group; given the very close relationship
       the risk of crosses is high nonetheless.
+      The curated file data/species/hybrid-groups.yaml defines neolamprologus-brichardi-leleupi
+      with basis presumed: two forum archive reports describe offspring identified as brichardi x
+      leleupi, but parentage and partner choice are unverified, while another keeper reports no
+      crosses during 15 years of keeping the species together.
     sources:
       - *sf
       - *sfpulcher
@@ -1108,6 +1112,16 @@ features:
         title: "Aquarium Glaser (wholesaler): Neolamprologus pulcher (= N. brichardi)"
         url: https://www.aquariumglaser.de/en/25-perchlike-fishes/neolamprologus-pulcher-n-brichardi-2/
         accessed: 2026-10-13
+      - &arch15153
+        kind: archive
+        title: cichlids.com forum thread 15153
+        url: https://www.cichlids.com/disc/read.php?2,15153
+        accessed: 2026-10-13
+      - &arch15247
+        kind: archive
+        title: cichlids.com forum thread 15247
+        url: https://www.cichlids.com/disc/read.php?2,15247
+        accessed: 2026-10-13
     evidence:
       - source: *sf
         value: [neolamprologus-brichardi-complex, neolamprologus-brichardi-pulcher]
@@ -1133,6 +1147,12 @@ features:
       - source: *glaser
         value: [neolamprologus-brichardi-complex]
         note: exporter treats brichardi and several pulcher forms as one species
+      - source: *arch15153
+        value: [neolamprologus-brichardi-leleupi]
+        note: offspring identified as brichardi x leleupi; parentage and partner choice unverified
+      - source: *arch15247
+        value: [neolamprologus-brichardi-leleupi]
+        note: labelled shop offspring with unverified parentage and partner choice; another keeper reports 15 years without crosses
 
   coloration:
     value:
