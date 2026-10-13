@@ -29,12 +29,12 @@ public sealed class SlugGeneratorTests
     [InlineData("post:42")]
     [InlineData("post:999999")]
     [InlineData("")]
-    public void Generate_returns_ten_lowercase_base36_characters(string input)
+    public void Generate_returns_eight_lowercase_base36_characters(string input)
     {
         var slug = new SlugGenerator("secret-a").Generate(input);
 
-        Assert.Equal(10, slug.Length);
-        Assert.Matches("^[0-9a-z]{10}$", slug);
+        Assert.Equal(8, slug.Length);
+        Assert.Matches("^[0-9a-z]{8}$", slug);
     }
 
     [Fact]

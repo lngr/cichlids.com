@@ -429,7 +429,7 @@ public class UploadsEndpointsTests(UploadsFixture fixture)
         Assert.Equal("Kaiser morph", published.Description);
         Assert.Equal(PostTopic.Tanks, published.Topic);
         Assert.NotNull(published.PublishedAt);
-        Assert.Matches("^[0-9a-z]{10}$", published.Slug);
+        Assert.Matches("^[0-9a-z]{8}$", published.Slug);
         Assert.Equal(published.Slug, published.CanonicalSlug);
         Assert.NotNull(published.Image?.Medium);
 
