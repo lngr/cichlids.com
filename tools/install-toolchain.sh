@@ -21,10 +21,11 @@ AGE_VERSION="${AGE_VERSION:-1.3.1}"
 CONFTEST_VERSION="${CONFTEST_VERSION:-0.68.2}"
 KIND_VERSION="${KIND_VERSION:-0.32.0}"
 KUBECONFORM_VERSION="${KUBECONFORM_VERSION:-0.8.0}"
+GITLEAKS_VERSION="${GITLEAKS_VERSION:-8.30.1}"
 
 case "$(uname -m)" in
-x86_64) ARCH=amd64; ARCH_X=x86_64 ;;
-aarch64 | arm64) ARCH=arm64; ARCH_X=arm64 ;;
+x86_64) ARCH=amd64; ARCH_X=x86_64; ARCH_GL=x64 ;;
+aarch64 | arm64) ARCH=arm64; ARCH_X=arm64; ARCH_GL=arm64 ;;
 *)
   echo "unsupported architecture: $(uname -m)" >&2
   exit 1
@@ -90,6 +91,16 @@ fi
 if have_version kubeconform "v$KUBECONFORM_VERSION" -v; then echo "  kubeconform $KUBECONFORM_VERSION present"; else
   curl -fsSL -o kubeconform.tgz "https://github.com/yannh/kubeconform/releases/download/v${KUBECONFORM_VERSION}/kubeconform-linux-${ARCH}.tar.gz"
   tar -xzf kubeconform.tgz kubeconform && install_bin kubeconform kubeconform
+fi
+
+# gitleaks publishes a checksums file per release; the archive is verified against it.
+if have_version gitleaks "$GITLEAKS_VERSION" version; then echo "  gitleaks $GITLEAKS_VERSION present"; else
+  gl_archive="gitleaks_${GITLEAKS_VERSION}_linux_${ARCH_GL}.tar.gz"
+  gl_base="https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}"
+  curl -fsSL -o "$gl_archive" "$gl_base/$gl_archive"
+  curl -fsSL -o gitleaks_checksums.txt "$gl_base/gitleaks_${GITLEAKS_VERSION}_checksums.txt"
+  grep " ${gl_archive}\$" gitleaks_checksums.txt | sha256sum -c -
+  tar -xzf "$gl_archive" gitleaks && install_bin gitleaks gitleaks
 fi
 
 echo "Core toolchain installation complete."

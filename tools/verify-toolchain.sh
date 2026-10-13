@@ -78,6 +78,7 @@ check_core() {
   check conftest "$CONFTEST_MIN" conftest --version
   check kind "$KIND_MIN" kind --version
   check kubeconform "$KUBECONFORM_MIN" kubeconform -v
+  check gitleaks "$GITLEAKS_MIN" gitleaks version
   check node "$NODE_MIN" node --version
 }
 

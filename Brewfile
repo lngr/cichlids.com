@@ -19,4 +19,5 @@ brew "age"
 brew "conftest"
 brew "kind"
 brew "kubeconform"
+brew "gitleaks"       # secret scan for the pre-push hook and CI (pinned at GITLEAKS_MIN)
 brew "node"           # must be >= 24 (NODE_MIN); the current formula satisfies this
