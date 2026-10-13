@@ -66,6 +66,73 @@ public sealed class ConstraintEnforcementTests
     }
 
     [Fact]
+    public async Task A_second_rating_of_the_same_member_on_the_same_post_is_rejected()
+    {
+        await using var context = _fixture.CreateContext();
+        var profile = await TestDataBuilder.CreateProfileAsync(context);
+        var post = await TestDataBuilder.CreatePostAsync(context, profile.Id);
+        var rater = await TestDataBuilder.CreateProfileAsync(context);
+
+        context.Ratings.Add(new Rating { PostId = post.Id, ProfileId = rater.Id, Stars = 3, CreatedAt = DateTimeOffset.UtcNow });
+        await context.SaveChangesAsync();
+
+        context.Ratings.Add(new Rating { PostId = post.Id, ProfileId = rater.Id, Stars = 5, CreatedAt = DateTimeOffset.UtcNow });
+
+        await Assert.ThrowsAsync<DbUpdateException>(() => context.SaveChangesAsync());
+    }
+
+    [Fact]
+    public async Task A_second_rating_of_the_same_member_on_the_same_tank_is_rejected()
+    {
+        await using var context = _fixture.CreateContext();
+        var owner = await TestDataBuilder.CreateProfileAsync(context);
+        var tank = await TestDataBuilder.CreateTankAsync(context, owner.Id);
+        var rater = await TestDataBuilder.CreateProfileAsync(context);
+
+        context.Ratings.Add(new Rating { TankId = tank.Id, ProfileId = rater.Id, Stars = 2, CreatedAt = DateTimeOffset.UtcNow });
+        await context.SaveChangesAsync();
+
+        context.Ratings.Add(new Rating { TankId = tank.Id, ProfileId = rater.Id, Stars = 4, CreatedAt = DateTimeOffset.UtcNow });
+
+        await Assert.ThrowsAsync<DbUpdateException>(() => context.SaveChangesAsync());
+    }
+
+    [Fact]
+    public async Task Anonymous_ratings_on_the_same_post_and_tank_are_accepted_in_any_number()
+    {
+        await using var context = _fixture.CreateContext();
+        var owner = await TestDataBuilder.CreateProfileAsync(context);
+        var post = await TestDataBuilder.CreatePostAsync(context, owner.Id);
+        var tank = await TestDataBuilder.CreateTankAsync(context, owner.Id);
+
+        context.Ratings.AddRange(
+            new Rating { PostId = post.Id, Stars = 1, CreatedAt = DateTimeOffset.UtcNow },
+            new Rating { PostId = post.Id, Stars = 2, CreatedAt = DateTimeOffset.UtcNow },
+            new Rating { TankId = tank.Id, Stars = 3, CreatedAt = DateTimeOffset.UtcNow },
+            new Rating { TankId = tank.Id, Stars = 4, CreatedAt = DateTimeOffset.UtcNow });
+
+        await context.SaveChangesAsync();
+    }
+
+    [Fact]
+    public async Task One_member_can_rate_different_posts_and_a_post_and_a_tank()
+    {
+        await using var context = _fixture.CreateContext();
+        var owner = await TestDataBuilder.CreateProfileAsync(context);
+        var firstPost = await TestDataBuilder.CreatePostAsync(context, owner.Id);
+        var secondPost = await TestDataBuilder.CreatePostAsync(context, owner.Id);
+        var tank = await TestDataBuilder.CreateTankAsync(context, owner.Id);
+        var rater = await TestDataBuilder.CreateProfileAsync(context);
+
+        context.Ratings.AddRange(
+            new Rating { PostId = firstPost.Id, ProfileId = rater.Id, Stars = 1, CreatedAt = DateTimeOffset.UtcNow },
+            new Rating { PostId = secondPost.Id, ProfileId = rater.Id, Stars = 2, CreatedAt = DateTimeOffset.UtcNow },
+            new Rating { TankId = tank.Id, ProfileId = rater.Id, Stars = 3, CreatedAt = DateTimeOffset.UtcNow });
+
+        await context.SaveChangesAsync();
+    }
+
+    [Fact]
     public async Task A_second_canonical_slug_alias_for_the_same_post_is_rejected()
     {
         await using var context = _fixture.CreateContext();
