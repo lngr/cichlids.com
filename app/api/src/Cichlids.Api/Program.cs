@@ -39,7 +39,10 @@ if (builder.Environment.IsDevelopment())
 {
     builder.Services.AddCors(options =>
         options.AddPolicy(localWebDevCorsPolicy, policy =>
-            policy.SetIsOriginAllowed(origin => new Uri(origin).Host is "localhost" or "127.0.0.1")
+            policy.SetIsOriginAllowed(origin =>
+                Uri.TryCreate(origin, UriKind.Absolute, out var uri)
+                && uri.Scheme is "http" or "https"
+                && uri.Host is "localhost" or "127.0.0.1")
                 .AllowAnyHeader()
                 .AllowAnyMethod()
                 .AllowCredentials()));
