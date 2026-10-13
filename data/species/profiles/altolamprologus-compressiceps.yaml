@@ -1,0 +1,1415 @@
+schemaVersion: 1
+id: altolamprologus-compressiceps
+legacyIds: [4]
+status: described
+
+taxonomy:
+  validName: Altolamprologus compressiceps
+  genus: Altolamprologus
+  species: compressiceps
+  author: (Boulenger, 1898)
+  source: &cof
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes, species of the genus Altolamprologus"
+    url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Altolamprologus
+    accessed: 2026-10-13
+  synonyms:
+    - name: Lamprologus compressiceps
+      note: Original combination of Boulenger (1898), type locality Kinyamkolo (Mpulungu), Lake Tanganyika.
+    - name: Neolamprologus compressiceps
+      note: Combination listed as a synonym by FishBase and used in older hobby literature.
+  legacyNames:
+    - Altolamprologus compressiceps
+  note: >-
+    The Catalog of Fishes lists the species as valid in Altolamprologus, a genus of three valid
+    species together with A. calvus and A. fasciatus (the latter placed in Altolamprologus by
+    Konings 2019). A query of the original genus Lamprologus returns no separate entry. The small
+    shell-dwelling trade form Altolamprologus sp. 'compressiceps shell' (Sumbu, Cameron Bay,
+    Chimba) is an undescribed form or dwarf ecotype and not part of this profile.
+
+names:
+  trade:
+    en:
+      - Compressed cichlid
+      - Compressiceps
+    de:
+      - Nanderbuntbarsch
+
+variants:
+  - name: "'Burundi red fin'"
+    kind: locality
+    note: Northeastern end of the lake, Burundi; reddish fins.
+  - name: "'Kigoma red fin'"
+    kind: locality
+    note: Kigoma area, Tanzania; also traded as 'Kigoma orange top'.
+  - name: "'Black cheek'"
+    kind: locality
+    note: Cape Kagobo, Tanzania.
+  - name: "'Gold head'"
+    kind: locality
+    note: Southeastern coast from Malasa (Tanzania) to Chituta (Zambia), including Kasanga; yellow head.
+  - name: "'Fire fin'"
+    kind: locality
+    note: Mutondwe Island near Mpulungu, Zambia; bright orange-red fins.
+  - name: "'Nangu black'"
+    kind: locality
+    note: Nangu, Zambia; dark, nearly anthracite body.
+  - name: "'Congo black'"
+    kind: locality
+    note: Congolese coast from Kanoni to Kavalla; dark forms also sold as 'black pearl'.
+  - name: "'Chaitika gold'"
+    kind: locality
+    note: Zambian coast; golden yellow form, also spelled 'Chatika gold'.
+
+features:
+  origin:
+    value:
+      continent: Africa
+      region: Lake Tanganyika
+      waterbody: Lake Tanganyika
+      localities:
+        - Kinyamkolo (Mpulungu), Zambia (type locality)
+        - Kasakalawe, Zambia
+        - Mutondwe Island, Zambia
+        - Nangu, Zambia
+        - Chituta, Zambia
+        - Nkamba Bay, Zambia
+        - Kasanga, Tanzania
+        - Nkondwe Island, Tanzania
+        - Cape Kagobo, Tanzania
+        - Kigoma, Tanzania
+        - Bujumbura, Burundi
+        - Kiku, Democratic Republic of the Congo
+        - Kavalla, Democratic Republic of the Congo
+    confidence: high
+    rationale: >-
+      Endemic to Lake Tanganyika, where it occurs all around the lake on rocky shores; the type
+      locality Kinyamkolo lies near Mpulungu at the southern end. The Catalog of Fishes, FishBase
+      and the population genetic studies of the genus agree. A. calvus shares only the
+      southwestern part of the range. The localities merge the sampling sites and trade-form
+      origins named by all runs.
+    sources:
+      - *cof
+      - &fishbase
+        kind: database
+        title: "FishBase species summary: Altolamprologus compressiceps"
+        url: https://www.fishbase.se/summary/Altolamprologus-compressiceps.html
+        accessed: 2026-10-13
+      - &koblmueller
+        kind: literature
+        title: "Koblmüller, S., Nevado, B., Makasa, L., Van Steenberge, M., Vanhove, M. P. M., Verheyen, E., Sturmbauer, C. and Sefc, K. M. (2017, online 2016). Phylogeny and phylogeography of Altolamprologus: ancient introgression and recent divergence in a rock-dwelling Lake Tanganyika cichlid genus. Hydrobiologia 791, 35-50."
+        url: https://doi.org/10.1007/s10750-016-2896-2
+        accessed: 2026-10-13
+      - &spreitzer
+        kind: literature
+        title: "Spreitzer, M. L., Mautner, S., Makasa, L. and Sturmbauer, C. (2012, online 2011). Genetic and morphological population differentiation in the rock-dwelling and specialized shrimp-feeding cichlid fish species Altolamprologus compressiceps from Lake Tanganyika, East Africa. Hydrobiologia 682, 143-154."
+        url: https://doi.org/10.1007/s10750-011-0698-0
+        accessed: 2026-10-13
+      - &sf
+        kind: database
+        title: "Seriously Fish: Altolamprologus compressiceps (Compressed Cichlid)"
+        url: https://www.seriouslyfish.com/species/altolamprologus-compressiceps/
+        accessed: 2026-10-13
+    evidence:
+      - source: *cof
+        value: {continent: Africa, region: Lake Tanganyika}
+        note: Distribution Lake Tanganyika, type locality Kinyamkolo.
+      - source: *fishbase
+        value: {continent: Africa, region: Lake Tanganyika}
+        note: Endemic and widespread in the lake.
+      - source: *koblmueller
+        value: {continent: Africa, region: Lake Tanganyika}
+        note: Lake-wide sampling at many rocky sites.
+
+  temperatureC:
+    value: {min: 23, max: 29}
+    confidence: high
+    verification:
+      method: waterbody
+      waterbody: lake-tanganyika
+    rationale: >-
+      The species is a Lake Tanganyika endemic, so the natural range is the measured lake range.
+      Hourly buoy readings off Mpulungu in the south run from just under 24 to 29 C, with the
+      cooler values during the upwelling season from June to September. The species lives in the
+      rocky littoral down to about 30 to 40 m, inside this range. All three runs proposed this
+      range. The 23 to 25 C in FishBase goes back to an aquarium handbook and does not describe
+      the habitat.
+    sources:
+      - &verburg1997
+        kind: literature
+        title: "Verburg, P., Huttula, T., Kakogozo, B., Kihakwi, A., Kotilainen, P., Makasa, L. and Peltonen, A. (1997). Hydrodynamics of Lake Tanganyika and meteorological results. FAO/FINNIDA GCP/RAF/271/FIN-TD/59."
+        url: https://fao.org/fishery/static/LTR/FTP/TD59.PDF
+        accessed: 2026-10-12
+      - &plisnier1996a
+        kind: literature
+        title: "Plisnier, P.-D., Langenberg, V., Mwape, L., Chitamwembwa, D., Tshibangu, K. and Coenen, E. (1996). Limnological sampling during an annual cycle at three stations on Lake Tanganyika (1993-1994). FAO/FINNIDA Research for the Management of the Fisheries on Lake Tanganyika, GCP/RAF/271/FIN-TD/46."
+        url: https://fao.org/fishery/static/LTR/FTP/TD46.PDF
+        accessed: 2026-10-12
+      - &langenberg2008
+        kind: literature
+        title: Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. PhD thesis, Wageningen University.
+        url: https://edepot.wur.nl/121977
+        accessed: 2026-10-12
+    evidence:
+      - source: *verburg1997
+        value: {min: 23.85, max: 29.01}
+        note: Hourly buoy readings at Mpulungu over the measuring period.
+    tolerance:
+      value: {min: 23, max: 29}
+      confidence: medium
+      verification:
+        method: unanimous
+        votes: {agree: 3, total: 3}
+      rationale: >-
+        Care sheets mostly name 24 to 28 C (Seriously Fish, Tropical Freshwater Fish) or 24 to
+        27 C (The Tropical Tank). The tolerance has to contain the natural range, so it spans the
+        lake range of 23 to 29 C; its upper end lies 1 C above the warmest care-sheet value, and
+        long periods at 29 C are not documented in aquaria. Aqualog and the retailer LiveAquaria
+        go down to 22 C, a wider lower end that no specialist source confirms. The generator and
+        checker-a proposed 23 to 29 C, checker-b 22 to 29 C; these agree within 1 C.
+      sources:
+        - *sf
+        - &tff
+          kind: database
+          title: "Tropical Freshwater Fish: Compressiceps, Altolamprologus compressiceps"
+          url: https://tropicalfreshwaterfish.com/species/Altolamprologus_compressiceps.html
+          accessed: 2026-10-13
+        - &ttt
+          kind: database
+          title: "The Tropical Tank: Altolamprologus compressiceps (archived copy of 9 Dec 2021)"
+          url: http://web.archive.org/web/20211209045720/https://thetropicaltank.co.uk/Fishindx/altolamp-comp.htm
+          accessed: 2026-10-13
+        - &aqualog
+          kind: database
+          title: "Aqualog lexicon: Altolamprologus compressiceps"
+          url: https://www.aqualog.de/?p=1127089
+          accessed: 2026-10-13
+        - &liveaquaria
+          kind: website
+          title: "LiveAquaria (retailer): Gold Head Compressicep Cichlid, Altolamprologus compressiceps"
+          url: https://www.liveaquaria.com/products/gold-head-compressicep-cichlid
+          accessed: 2026-10-13
+      evidence:
+        - source: *sf
+          value: {min: 24, max: 28}
+          note: Aquarium recommendation.
+        - source: *tff
+          value: {min: 24, max: 28}
+          note: Aquarium recommendation.
+        - source: *ttt
+          value: {min: 24, max: 27}
+          note: Aquarium recommendation.
+        - source: *aqualog
+          value: {min: 22, max: 28}
+          note: Lexicon value for aquaria.
+        - source: *liveaquaria
+          value: {min: 22, max: 28}
+          note: Retailer care note, given in Fahrenheit.
+        - source: *fishbase
+          value: {min: 23, max: 25}
+          note: Aquarium handbook figure.
+
+  ph:
+    value: {min: 8.4, max: 9.4}
+    confidence: high
+    verification:
+      method: waterbody
+      waterbody: lake-tanganyika
+    rationale: >-
+      Measured lake value: over an annual cycle of the FAO/FINNIDA programme the pH lay at about
+      8.8 to 9.2 at the surface and between 8.47 and 9.40 at 40 m, which gives 8.4 to 9.4. All
+      three runs proposed this range. Aquarium figures such as 6.5 to 7.5 in FishBase or 7.0 to
+      8.0 at Aqualog do not describe the habitat, and the 7.3 to 7.8 of an older FAO compilation
+      contradicts the high alkalinity of the lake.
+    sources:
+      - *plisnier1996a
+      - &plisnier1996b
+        kind: literature
+        title: "Plisnier, P.-D. (1996). Limnological sampling during a second annual cycle (1994-1995) and some comparisons with year one on Lake Tanganyika. FAO/FINNIDA GCP/RAF/271/FIN-TD/56."
+        url: https://fao.org/fishery/static/LTR/FTP/TD56.PDF
+        accessed: 2026-10-12
+    evidence:
+      - source: *plisnier1996a
+        value: {min: 8.47, max: 9.4}
+        note: Surface 8.8 to 9.2 and 40 m 8.47 to 9.40 over an annual cycle.
+      - source: *plisnier1996b
+        value: {min: 8.4, max: 9.4}
+        note: Second annual cycle at the same stations.
+    tolerance:
+      value: {min: 7.8, max: 9.4}
+      confidence: medium
+      verification:
+        method: qualified-majority
+        votes: {agree: 4, total: 5}
+      rationale: >-
+        Specialist care sheets ask for alkaline water ending at pH 9.0: The Tropical Tank 7.8 to
+        9.0 and Seriously Fish 8.0 to 9.0, matched by the retailer and aggregator pages of
+        LiveAquaria, Riverpark Aquatics and Guidarium at 7.8 to 9.0. The lower bound of 7.8 is the
+        lowest value most species-specific sources support. Lower figures come from generic
+        entries: Tropical Freshwater Fish allows 7.2, Aqualog gives 7.0 to 8.0 and FishBase 6.5 to
+        7.5, and the last two do not even contain the lake values. The upper bound is raised to
+        the lake maximum of 9.4 because the tolerance must contain the natural range; a breeder in
+        the cichlids.com archive kept and bred the species at about pH 9.0. The generator,
+        checker-a and both tie-breakers proposed 7.8 to 9.4; checker-b proposed 7.0 to 9.4 after
+        the Aqualog value.
+      sources:
+        - *sf
+        - *ttt
+        - *tff
+        - *aqualog
+        - *fishbase
+        - *liveaquaria
+        - &riverpark
+          kind: website
+          title: "Riverpark Aquatics (retailer): Gold head compressed cichlid, Altolamprologus compressiceps"
+          url: https://riverparkaquatics.co.uk/gold-head-compressed-cichlid-altolamprologus-compressiceps/
+          accessed: 2026-10-13
+        - &guidarium
+          kind: website
+          title: "Guidarium (aggregator): Altolamprologus compressiceps"
+          url: https://guidarium.com/fishes/altolamprologus-compressiceps
+          accessed: 2026-10-13
+        - &archive13731
+          kind: archive
+          title: cichlids.com forum thread 13731
+          url: https://www.cichlids.com/disc/read.php?2,13731
+      evidence:
+        - source: *sf
+          value: {min: 8.0, max: 9.0}
+          note: Aquarium recommendation.
+        - source: *ttt
+          value: {min: 7.8, max: 9.0}
+          note: Aquarium recommendation.
+        - source: *tff
+          value: {min: 7.2, max: 9.0}
+          note: Aquarium range; the lower end is generic.
+        - source: *aqualog
+          value: {min: 7.0, max: 8.0}
+          note: Generic lexicon value that excludes most of the lake range.
+        - source: *fishbase
+          value: {min: 6.5, max: 7.5}
+          note: Aquarium handbook figure that excludes the lake range.
+        - source: *liveaquaria
+          value: {min: 7.8, max: 9.0}
+          note: Retailer care note.
+        - source: *riverpark
+          value: {min: 7.8, max: 9.0}
+          note: Retailer care note.
+        - source: *guidarium
+          value: {min: 7.8, max: 9.0}
+          note: Aggregated care guide.
+        - source: *archive13731
+          value: {min: 9.0, max: 9.0}
+          note: Breeding group kept and spawning at about pH 9.0.
+
+  ghDgh:
+    value: {min: 10, max: 13}
+    confidence: high
+    verification:
+      method: waterbody
+      waterbody: lake-tanganyika
+    rationale: >-
+      Measured lake value. Magnesium far exceeds calcium in Lake Tanganyika; the surface means of
+      the FAO/FINNIDA programme at Bujumbura, Kigoma and Mpulungu correspond to 11.1 to 11.5 dGH,
+      the north-basin chemistry of Cohen et al. (1997) to about 12.2 dGH and the values of Talling
+      and Talling (1965) to about 11.4 dGH, which gives 10 to 13 dGH. All three runs proposed this
+      range.
+    sources:
+      - *plisnier1996a
+      - &cohen1997
+        kind: literature
+        title: "Cohen, A. S., Talbot, M. R., Awramik, S. M., Dettman, D. L. and Abell, P. (1997). Lake level and paleoenvironmental history of Lake Tanganyika, Africa, as inferred from late Holocene and modern stromatolites. GSA Bulletin 109(4), 444-460 (Table 1, north basin surface water chemistry)."
+        url: https://awramik.faculty.geol.ucsb.edu/pubs/COHE9740.pdf
+        accessed: 2026-10-12
+      - &bossche1990
+        kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Tanganyika: physical and chemical data after Talling and Talling (1965)."
+        url: https://www.fao.org/4/t0473e/T0473E10.htm
+        accessed: 2026-10-12
+    evidence:
+      - source: *plisnier1996a
+        value: {min: 11.1, max: 11.5}
+        note: Surface means at three stations, computed from calcium and magnesium.
+      - source: *cohen1997
+        value: {min: 12.2, max: 12.2}
+        note: North basin surface water.
+      - source: *bossche1990
+        value: {min: 11.4, max: 11.4}
+        note: Computed from calcium and magnesium after Talling and Talling (1965).
+    tolerance:
+      value: {min: 8, max: 20}
+      confidence: low
+      verification:
+        method: conservative
+        votes: {agree: 3, total: 5}
+      rationale: >-
+        Care sheets agree on hard water but differ in width: Seriously Fish 7 to 25 dGH, Tropical
+        Freshwater Fish 7 to 18, The Tropical Tank 12 to 20, FishBase 8 to 12 after aquarium
+        literature, and Seriously Fish 8 to 20 for the congener A. calvus. The proposals were
+        8 to 20 (generator), 7 to 20 (checker-a and tiebreaker-1) and 7 to 25 (checker-b and
+        tiebreaker-2). No range reached four agreeing votes, so the vote count applied the
+        conservative rule and took the intersection of all proposals, 8 to 20 dGH, which contains
+        the lake range of 10 to 13 dGH. The sources reach wider, from 7 dGH (Seriously Fish,
+        Tropical Freshwater Fish) up to 25 dGH (Seriously Fish); the narrower range makes the app
+        warn earlier and is kept at low confidence.
+      sources:
+        - *sf
+        - *tff
+        - *ttt
+        - *fishbase
+        - &sfcalvus
+          kind: database
+          title: "Seriously Fish: Altolamprologus calvus (Calvus Cichlid)"
+          url: https://www.seriouslyfish.com/species/altolamprologus-calvus/
+          accessed: 2026-10-13
+        - *guidarium
+      evidence:
+        - source: *sf
+          value: {min: 7, max: 25}
+          note: Aquarium recommendation.
+        - source: *tff
+          value: {min: 7, max: 18}
+          note: Given as dH without naming total or carbonate hardness; read as total hardness.
+        - source: *ttt
+          value: {min: 12, max: 20}
+          note: Aquarium recommendation.
+        - source: *fishbase
+          value: {min: 8, max: 12}
+          note: Aquarium literature figure, given as dH.
+        - source: *sfcalvus
+          value: {min: 8, max: 20}
+          note: Value for the congener A. calvus.
+        - source: *guidarium
+          value: {min: 10, max: 25}
+          note: Aggregated care guide.
+
+  khDkh:
+    value: {min: 15, max: 20}
+    confidence: high
+    rationale: >-
+      Measured lake value. Alkalinity of 6.5 to 6.9 meq/L in several studies corresponds to about
+      18 to 19 dKH, and the titrations of the FAO/FINNIDA programme reach down to about 15.4 dKH,
+      which gives 15 to 20 dKH. The lake is strongly buffered, so its carbonate hardness exceeds
+      its total hardness. All three runs proposed this range.
+    sources:
+      - *cohen1997
+      - *langenberg2008
+      - *bossche1990
+      - *plisnier1996a
+    evidence:
+      - source: *cohen1997
+        value: {min: 18.2, max: 18.5}
+        note: Alkalinity 6.5 to 6.6 meq/L in the north basin.
+      - source: *langenberg2008
+        value: {min: 18.8, max: 19.3}
+        note: Alkalinity 6.7 to 6.9 meq/L after Edmond et al. (1993).
+      - source: *bossche1990
+        value: {min: 18.8, max: 18.8}
+        note: Alkalinity 6.71 meq/L after Talling and Talling (1965).
+      - source: *plisnier1996a
+        value: {min: 15.4, max: 20}
+        note: Bicarbonate plus carbonate titrations of the programme.
+    tolerance:
+      value: {min: 10, max: 20}
+      confidence: low
+      verification:
+        method: qualified-majority
+        votes: {agree: 4, total: 5}
+      rationale: >-
+        Few care sheets state a carbonate hardness. LiveAquaria gives 10 to 20 dKH and The
+        Tropical Tank 14 to 20 dKH; both end at the upper lake value. The lower bound of 10 dKH
+        fits the lower pH bound of 7.8 shared by the specialist sheets, since well-aerated water
+        of 10 dKH stays at about pH 8. The upper bound of 20 dKH is the lake maximum, and the lake
+        studies show that the species lives permanently at 15 to 20 dKH. The generator and both
+        tie-breakers proposed 10 to 20 dKH and checker-b 10 to 22 dKH, which agrees within 2 dKH;
+        checker-a proposed the stricter 14 to 20 dKH of The Tropical Tank. The evidence is thin
+        and one of the two care sheets is a retailer page, hence low confidence.
+      sources:
+        - *ttt
+        - *liveaquaria
+        - *cohen1997
+        - *plisnier1996a
+        - *sf
+      evidence:
+        - source: *ttt
+          value: {min: 14, max: 20}
+          note: Aquarium recommendation.
+        - source: *liveaquaria
+          value: {min: 10, max: 20}
+          note: Retailer care note.
+        - source: *cohen1997
+          value: {min: 18.2, max: 18.5}
+          note: Natural lake water in which the species lives permanently.
+        - source: *plisnier1996a
+          value: {min: 15.4, max: 20}
+          note: Natural lake water in which the species lives permanently.
+
+  maxSizeCm:
+    value: {male: 15, female: 10}
+    confidence: medium
+    rationale: >-
+      Males grow clearly larger than females. Cichlid-Forum and The Tropical Tank give about 15 cm
+      for males and 10 cm for females, tanganyika.si 12 to 15 cm for males and about 9 cm for
+      females, and Tropical Freshwater Fish 15 cm. Seriously Fish gives up to 12.5 cm for males
+      and 9 to 10 cm for females, apparently as standard length, which fits a male of about 15 cm
+      total length. FishBase lists 12.3 cm total length for wild males or unsexed fish, which lies
+      below well-grown aquarium males. The values are typical well-kept adults, not record fish.
+    sources:
+      - &cf
+        kind: database
+        title: "Cichlid-Forum: Altolamprologus compressiceps (species article by M. Elieson)"
+        url: https://www.cichlid-forum.com/posts/3152838
+        accessed: 2026-10-13
+      - *ttt
+      - &tsibulu
+        kind: database
+        title: "Tanganyika.si: Altolamprologus compressiceps 'Bulu Point'"
+        url: https://www.tanganyika.si/Tanganjika/Altolamprologus/Altolamprologus%20compressiceps/slides/Altolamprologus%20compressiceps%20%27Bulu%20Point%27.html
+        accessed: 2026-10-13
+      - *tff
+      - *sf
+      - *fishbase
+      - *guidarium
+    evidence:
+      - source: *cf
+        value: {male: 15, female: 10}
+        note: Six and four inches converted.
+      - source: *ttt
+        value: {male: 15, female: 10}
+      - source: *tsibulu
+        value: {male: 15, female: 9}
+        note: Males 12 to 15 cm, females up to about 9 cm.
+      - source: *tff
+        value: {male: 15, female: 15}
+        note: Single value for the species, not split by sex.
+      - source: *sf
+        value: {male: 12.5, female: 10}
+        note: Males 10 to 12.5 cm and females 9 to 10 cm, apparently standard length.
+      - source: *fishbase
+        value: {male: 12.3, female: 12.3}
+        note: Maximum of wild males or unsexed fish; no female value.
+      - source: *guidarium
+        value: {male: 13, female: 8.5}
+
+  predation:
+    value: 2
+    confidence: medium
+    verification:
+      method: qualified-majority
+      votes: {agree: 4, total: 5}
+    rationale: >-
+      In the lake the species is a stalking specialist on atyid shrimp in rock crevices; diet
+      records give zoobenthos, mainly shrimp, as almost all of its food, and fish fry appear only
+      as a minor item. Fish are therefore not a main food, which excludes level 3. Its deep,
+      compressed body and long protrusible mouth let it take prey well beyond 2 cm, and the
+      husbandry sources treat it as a hunter of small fish: Seriously Fish counts smaller fishes
+      among its natural prey and advises against any tankmate small enough to be eaten, Tropical
+      Freshwater Fish warns against fish below about 8 cm, Cichlid-Forum names juveniles and adult
+      shell-dwellers of 4 to 5 cm as prey, the wholesaler Aquarium Glaser calls clearly smaller
+      tankmates prey, and a keeper in the cichlids.com archive lost all zebra danios kept as
+      dither fish. These warnings fit level 2, with a mouth threshold of about 5 cm for a 15 cm
+      male. The Tropical Tank and tanganyika.si mention only fry and very small fish, which
+      would be level 1. The generator, checker-a and both tie-breakers voted 2; checker-b voted
+      1 because field data do not show fish as regular prey.
+    sources:
+      - *sf
+      - *tff
+      - *cf
+      - *ttt
+      - *tsibulu
+      - &tsiudachi
+        kind: database
+        title: "Tanganyika.si: Altolamprologus compressiceps 'Udachi'"
+        url: https://tanganyika.si/TanganjikaByLocations/Udachi/slides/Altolamprologus%20compressiceps%20'Udachi'.html
+        accessed: 2026-10-13
+      - &fbdiet
+        kind: database
+        title: "FishBase: Altolamprologus compressiceps, diet composition and food items"
+        url: https://www.fishbase.se/TrophicEco/DietCompoList.php?ID=8135&GenusName=Altolamprologus&SpeciesName=compressiceps&fc=349&StockCode=8446
+        accessed: 2026-10-13
+      - *koblmueller
+      - *spreitzer
+      - &yuma1994
+        kind: literature
+        title: "Yuma, M. (1994). Food habits and foraging behaviour of benthivorous cichlid fishes in Lake Tanganyika. Environmental Biology of Fishes 39, 173-182 (abstract)."
+        url: https://doi.org/10.1007/BF00004935
+        accessed: 2026-10-13
+      - &glaser
+        kind: website
+        title: "Aquarium Glaser fish archive (wholesaler): Altolamprologus compressiceps"
+        url: https://www.aquariumglaser.de/en/fish-archives/altolamprologus_compressiceps_en/
+        accessed: 2026-10-13
+      - *archive13731
+    evidence:
+      - source: *sf
+        value: 2
+        note: Smaller fishes in the natural diet; no tankmate small enough to be food.
+      - source: *tff
+        value: 2
+        note: Fish below about 8 cm likely to be eaten.
+      - source: *cf
+        value: 2
+        note: Hunts young cichlids; shell-dwellers at risk, fish over about 2.5 cm usually safe.
+      - source: *ttt
+        value: 1
+        note: Very small fish and fry only; adult Tanganyikan cichlids safe.
+      - source: *tsibulu
+        value: 1
+        note: Crustaceans, other invertebrates and cichlid fry; may steal eggs.
+      - source: *tsiudachi
+        value: 1
+        note: Eats any fry it catches.
+      - source: *fbdiet
+        value: 1
+        note: Wild diet almost entirely zoobenthos, mainly shrimp.
+      - source: *koblmueller
+        value: 1
+        note: Wild diet mainly atyid shrimp, also other arthropods and fish fry.
+      - source: *spreitzer
+        value: 1
+        note: Specialised shrimp feeder; fish not named as prey.
+      - source: *yuma1994
+        value: 1
+        note: Shrimp eater in the wild; fish not mentioned in the abstract.
+      - source: *glaser
+        value: 2
+        note: Stalking hunter; clearly smaller tankmates are prey.
+      - source: *archive13731
+        value: 2
+        note: Zebra danios kept as dither fish disappeared.
+
+  diet:
+    value:
+      type: invertivore
+      bloatSensitive: false
+      foods:
+        - frozen shrimp and mysis
+        - frozen bloodworm
+        - brine shrimp
+        - krill
+        - carnivore pellets and granules
+    confidence: high
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+    rationale: >-
+      A specialised shrimp eater: the compressed body and protrusible jaws let it pick atyid
+      shrimp from narrow crevices, field studies of the rocky shore count it among the
+      shrimp-eating foragers, and Seriously Fish reports more than 80 percent shrimp in the
+      stomachs of wild fish. FishBase lists shrimp as its food item, and the Cichlid Room
+      Companion summary confirms a crustacean eater. In the aquarium it takes meaty frozen and
+      dry foods such as mysis, krill, chopped shrimp, bloodworm, brine shrimp, earthworms and
+      carnivore pellets. No source reports bloat in this species; the hobby warns instead that
+      its protein-rich food harms herbivorous tankmates such as Tropheus. All three runs voted
+      invertivore without bloat sensitivity.
+    sources:
+      - *spreitzer
+      - *yuma1994
+      - &mushagalusa2019
+        kind: literature
+        title: "Mushagalusa, D., Awata, S., Satoh, S., Ota, K., Hori, M., Nshombo, M. and Kohda, M. (2019). Do scales of the cichlid Altolamprologus compressiceps in Lake Tanganyika function as a morphological defense against scale-eating? Zoological Science 36(2), 147 (abstract)."
+        url: https://doi.org/10.2108/zs180130
+        accessed: 2026-10-13
+      - &fbfood
+        kind: database
+        title: "FishBase: food items reported for Altolamprologus compressiceps"
+        url: https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=8446&genus=Altolamprologus&species=compressiceps
+        accessed: 2026-10-13
+      - *sf
+      - *tsibulu
+      - *cf
+      - &crc
+        kind: website
+        title: "Cichlid Room Companion: Altolamprologus compressiceps (public summary)"
+        url: https://cichlidae.com/species.php?id=p9JKdsJdiNd5wr8OLDxRvw
+        accessed: 2026-10-13
+    evidence:
+      - source: *spreitzer
+        value: {type: invertivore, bloatSensitive: false}
+        note: Highly specialised shrimp feeder.
+      - source: *yuma1994
+        value: {type: invertivore, bloatSensitive: false}
+        note: One of the shrimp-eating foragers of the rocky shore.
+      - source: *mushagalusa2019
+        value: {type: invertivore, bloatSensitive: false}
+        note: Shrimp eater that waits motionless while aiming at prey.
+      - source: *fbfood
+        value: {type: invertivore, bloatSensitive: false}
+        note: Single food record, shrimp of the zoobenthos.
+      - source: *sf
+        value: {type: invertivore, bloatSensitive: false}
+        note: Over 80 percent shrimp in wild stomachs; poor companion for low-protein feeders.
+      - source: *tsibulu
+        value: {type: invertivore, bloatSensitive: false}
+        note: Crustaceans, other invertebrates and fry.
+      - source: *crc
+        value: {type: invertivore, bloatSensitive: false}
+        note: Crustacean eater.
+
+  aggressionConspecific:
+    value: 2
+    confidence: medium
+    rationale: >-
+      Males tolerate each other poorly and chase rivals, but injuries are rarely reported when
+      the tank offers enough rock cover, and outside spawning the sexes live mostly apart. The
+      hobby keeps it as a pair or, in larger tanks, as a group of seven or more. A keeper in the
+      cichlids.com archive describes the fish as calm and only slightly territorial towards each
+      other. All three runs gave level 2.
+    sources:
+      - *tsiudachi
+      - *sf
+      - *cf
+      - *guidarium
+      - &archive605
+        kind: archive
+        title: cichlids.com forum thread 605
+        url: https://www.cichlids.com/disc/read.php?1,605
+        accessed: 2026-10-13
+    evidence:
+      - source: *tsiudachi
+        value: 2
+        note: Males may fight; single pair or a group of seven or more.
+      - source: *sf
+        value: 2
+        note: Best as a pair; groups only in larger tanks.
+      - source: *guidarium
+        value: 3
+        note: Aggressive towards its own species and look-alikes; one male per tank.
+      - source: *archive605
+        value: 1
+        note: Calm fish, slightly territorial towards each other.
+
+  aggressionHeterospecific:
+    value: 1
+    confidence: medium
+    rationale: >-
+      Generally calm towards fish it cannot eat: it defends the surroundings of its cave and
+      relies on its thick scales rather than chasing other species through the tank (Seriously
+      Fish, tanganyika.si, Cichlid-Forum, Tropical Freshwater Fish). Aqualog and Guidarium label
+      it aggressive or semi-aggressive without detail, which does not match the specialist
+      descriptions. Smaller fish are a matter of predation, not aggression. All three runs gave
+      level 1.
+    sources:
+      - *sf
+      - *tsibulu
+      - *cf
+      - *tff
+      - *glaser
+      - *aqualog
+      - *guidarium
+    evidence:
+      - source: *sf
+        value: 1
+        note: Not particularly territorial; suits a well-chosen Tanganyika community.
+      - source: *tsibulu
+        value: 1
+        note: Generally peaceful towards other species.
+      - source: *cf
+        value: 0
+        note: Not aggressive towards cichlids of similar size.
+      - source: *tff
+        value: 1
+        note: Timid; somewhat territorial towards fish entering its territory.
+      - source: *glaser
+        value: 1
+        note: Low aggression towards tankmates.
+      - source: *aqualog
+        value: 3
+        note: Label aggressive without detail.
+      - source: *guidarium
+        value: 2
+        note: Label semi-aggressive.
+
+  territory:
+    value: {size: small, breedingOnly: true}
+    confidence: medium
+    rationale: >-
+      Outside spawning the fish roam singly through the rocks and hold no marked territory;
+      Cichlid-Forum calls the species not territorial and Seriously Fish not particularly
+      territorial. For breeding the female occupies a narrow crevice or cave and the male guards
+      its surroundings for a while (tanganyika.si). Tropical Freshwater Fish and Guidarium
+      describe a defended area without tying it to breeding, which led checker-b to a permanent
+      small territory; the specialist sources support the breeding-only reading.
+    sources:
+      - *tsibulu
+      - *sf
+      - *cf
+      - *tff
+    evidence:
+      - source: *tsibulu
+        value: {size: small, breedingOnly: true}
+        note: Male solitary outside breeding; guards the area near the breeding cave.
+      - source: *sf
+        value: {size: small, breedingOnly: true}
+        note: Not particularly territorial; spawns in rock crevices.
+      - source: *cf
+        value: {size: small, breedingOnly: true}
+        note: Not territorial outside breeding.
+      - source: *tff
+        value: {size: small, breedingOnly: false}
+        note: Somewhat territorial towards intruders.
+
+  habitatZones:
+    value: [rock]
+    confidence: high
+    rationale: >-
+      A stenotopic dweller of rocky coasts and rubble with many crevices, from the shallows down
+      to 30 to 40 m; wide sandy stretches act as barriers between populations. Gastropod shell
+      beds are used only locally as corridors between rock patches, and the Cichlid Room
+      Companion summary confirms sediment-free rocky habitat. Sand serves only as the base of the
+      rockwork in the tank and is not a zone the species uses, so the set holds rock alone.
+    sources:
+      - *koblmueller
+      - *spreitzer
+      - *sf
+      - *tsiudachi
+      - *crc
+    evidence:
+      - source: *koblmueller
+        value: [rock]
+        note: Shallow rocky habitat down to 30 to 40 m.
+      - source: *spreitzer
+        value: [rock, shell]
+        note: Rock or cobble habitats, locally gastropod shell beds.
+      - source: *sf
+        value: [rock]
+        note: Rocky rubble in the wild; sand with piled rock in the tank.
+      - source: *tsiudachi
+        value: [rock]
+        note: Narrow rock crevices and caves.
+      - source: *crc
+        value: [rock]
+        note: Sediment-free rocky habitat.
+
+  social:
+    value: {structure: pair}
+    confidence: medium
+    rationale: >-
+      Hobby sources recommend a single pair, or a larger group only in a big tank (Seriously Fish,
+      tanganyika.si, Cichlid-Forum, Aqualog). In the wild the species is listed among the harem
+      breeders with little paternal care (Sefc 2011), and an archive breeder recommends one male
+      with two females, so a trio works in roomier tanks. The pair is the safe recommended unit.
+      All three runs chose pair.
+    sources:
+      - *sf
+      - *tsiudachi
+      - *cf
+      - *aqualog
+      - &sefc2011
+        kind: literature
+        title: "Sefc, K. M. (2011). Mating and parental care in Lake Tanganyika's cichlids. International Journal of Evolutionary Biology 2011, 470875."
+        url: https://doi.org/10.4061/2011/470875
+        accessed: 2026-10-13
+      - *archive13731
+    evidence:
+      - source: *sf
+        value: {structure: pair}
+        note: Best as a single pair; groups in larger aquaria.
+      - source: *tsiudachi
+        value: {structure: pair}
+        note: Single pair, or at least seven fish in a large tank.
+      - source: *aqualog
+        value: {structure: pair}
+      - source: *sefc2011
+        value: {structure: harem, ratio: 2}
+        note: Harem breeder in the wild; no ratio stated, 2 is the smallest harem.
+      - source: *archive13731
+        value: {structure: harem, ratio: 2}
+        note: Trio of one male and two females recommended.
+
+  speciesOnly:
+    value: false
+    confidence: high
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+    rationale: >-
+      The hobby counts it as a good member of a Tanganyika community of similar-sized, not overly
+      boisterous species such as Cyprichromis, Julidochromis, larger Neolamprologus and Synodontis
+      catfish (Seriously Fish, tanganyika.si, The Tropical Tank, Tropical Freshwater Fish,
+      Cichlid-Forum). The warnings concern small fish that it can eat and fast herbivores that
+      outcompete it, not all other species. All three runs voted false.
+    sources:
+      - *sf
+      - *tsibulu
+      - *tsiudachi
+      - *ttt
+      - *tff
+      - *cf
+      - *guidarium
+    evidence:
+      - source: *sf
+        value: false
+        note: Good addition to a well-chosen Tanganyika community.
+      - source: *tsibulu
+        value: false
+        note: Names Cyprichromis, Neolamprologus and Julidochromis as tankmates.
+      - source: *tsiudachi
+        value: false
+        note: Names suitable Tanganyika tankmates.
+      - source: *ttt
+        value: false
+        note: With similar-sized, not overly aggressive Tanganyikan cichlids.
+      - source: *tff
+        value: false
+        note: Suggests Tanganyika cichlids and Synodontis as companions.
+      - source: *cf
+        value: false
+        note: Fits most Tanganyika communities without shell-dwellers.
+      - source: *guidarium
+        value: false
+        note: No advice to keep it only with its own species.
+
+  hybridGroup:
+    value: null
+    confidence: medium
+    verification:
+      method: qualified-majority
+      votes: {agree: 4, total: 5}
+    rationale: >-
+      The only close relative is A. calvus. The two species split only 67,000 to 142,000 years
+      ago and share some mitochondrial haplotypes, but they live side by side in the southwest of
+      the lake as stable, distinct forms, and the divergence ran with little if any gene flow
+      (Koblmüller et al.); Spreitzer et al. take their stable coexistence as reproductive
+      isolation while not excluding rare gene exchange. The introgression found in northern
+      populations is ancient and comes from another lineage. No study, species database or care
+      sheet reports a cross between A. calvus and A. compressiceps, and Seriously Fish warns only
+      against mixing locality forms within each species. A. fasciatus, the third valid species
+      of the genus, has no reported crosses either. In the cichlids.com archive one keeper claims
+      that the two species interbreed, while another keeps a pair of each in one tank without
+      crosses; a single unconfirmed claim does not justify a hard group. The generator, checker-a
+      and both tie-breakers voted null; checker-b proposed a new group altolamprologus from the
+      recent split and the locality-form warning. The young split leaves aquarium crosses
+      possible, hence medium confidence.
+    sources:
+      - *koblmueller
+      - *spreitzer
+      - *cof
+      - *sf
+      - *sfcalvus
+      - *archive605
+      - &archive13809
+        kind: archive
+        title: cichlids.com forum thread 13809
+        url: https://www.cichlids.com/disc/read.php?2,13809
+    evidence:
+      - source: *koblmueller
+        value: null
+        note: Recent split from A. calvus with little if any gene flow; no crosses reported.
+      - source: *spreitzer
+        value: null
+        note: Stable coexistence with A. calvus taken as reproductive isolation; rare gene exchange not excluded.
+      - source: *sf
+        value: null
+        note: Hybridisation warning only between locality forms of the species.
+      - source: *sfcalvus
+        value: null
+        note: Warns only against mixing colour forms of A. calvus.
+      - source: *archive605
+        value: null
+        note: One pair of each Altolamprologus species kept together without reported crosses.
+      - source: *archive13809
+        value: altolamprologus
+        note: One keeper states that A. calvus and A. compressiceps interbreed; unconfirmed.
+
+  coloration:
+    value:
+      baseColors: [brown, yellow, black]
+      pattern: bars
+    confidence: medium
+    rationale: >-
+      Most forms have a beige to brown body with six or seven dark vertical bars that are
+      strongest in young fish, and light spots on the rear flanks. Locality forms add golden
+      yellow heads or bodies, and several forms ('Congo black', 'Nangu black') are almost black.
+      Red and orange appear mainly in the fins of the red-fin forms rather than as a dominant body
+      colour, and the bars stay the defining pattern despite the variation between forms.
+    sources:
+      - *cf
+      - *sf
+      - *tsibulu
+      - &dewiki
+        kind: website
+        title: "Wikipedia (German): Altolamprologus compressiceps"
+        url: https://de.wikipedia.org/wiki/Altolamprologus_compressiceps
+        accessed: 2026-10-13
+    evidence:
+      - source: *dewiki
+        value: {baseColors: [brown, yellow], pattern: bars}
+        note: Brown-beige, olive or yellowish with six or seven dark bars.
+      - source: *tsibulu
+        value: {baseColors: [brown, yellow], pattern: bars}
+        note: More distinct bars and fewer spots than A. calvus.
+      - source: *sf
+        value: {baseColors: [brown, yellow, black], pattern: bars}
+        note: Many locality forms from gold to black.
+
+  feedingSpeed:
+    value: slow
+    confidence: medium
+    rationale: >-
+      A stalking hunter that approaches food slowly, pauses before striking and is shy in busy
+      tanks. Specialist sources advise against robust, competitive feeders such as Tropheus,
+      Petrochromis and mbuna because they take its food (tanganyika.si, The Tropical Tank), and
+      Aquarium Glaser and Cichlid-Forum describe its slow approach. Checker-b chose normal because
+      no source states food losses in numbers; the repeated advice against fast feeders supports
+      slow.
+    sources:
+      - *tsibulu
+      - *ttt
+      - *cf
+      - *sf
+      - *glaser
+      - *guidarium
+    evidence:
+      - source: *tsibulu
+        value: slow
+        note: Avoid robust, highly competitive species such as Tropheus or Petrochromis.
+      - source: *ttt
+        value: slow
+        note: Not with boisterous Tropheus or mbuna.
+      - source: *glaser
+        value: slow
+        note: Approaches prey in slow motion.
+      - source: *guidarium
+        value: slow
+        note: Shy and slow moving.
+
+  minTank:
+    value: {volumeL: 200, lengthCm: 120, depthCm: 45}
+    confidence: medium
+    rationale: >-
+      For one adult pair Seriously Fish asks for a base of 120 by 45 cm (about 240 litres at full
+      height), Tropical Freshwater Fish for 122 cm and about 210 litres, tanganyika.si for
+      200 litres and LiveAquaria for about 190 litres. Three of four sources cluster around 200
+      litres with a length of 120 cm, which is the recommended minimum; groups need considerably
+      more space. Guidarium's 150 litres and 90 cm are too small for males of 15 cm.
+    sources:
+      - *sf
+      - *tff
+      - *tsiudachi
+      - *liveaquaria
+      - *guidarium
+    evidence:
+      - source: *sf
+        value: {volumeL: 243, lengthCm: 120, depthCm: 45}
+      - source: *tff
+        value: {volumeL: 209, lengthCm: 122, depthCm: 45}
+        note: Volume and length only; depth assumed.
+      - source: *tsiudachi
+        value: {volumeL: 200, lengthCm: 120, depthCm: 45}
+        note: Volume only; length and depth assumed.
+      - source: *liveaquaria
+        value: {volumeL: 190, lengthCm: 120, depthCm: 45}
+        note: 50 US gallons; length and depth assumed.
+      - source: *guidarium
+        value: {volumeL: 150, lengthCm: 90, depthCm: 45}
+        note: Depth assumed.
+
+  lifespanYears:
+    value: {min: 8, max: 12}
+    confidence: low
+    rationale: >-
+      No reliable source states a lifespan. A retailer names 5 to 8 years, while the very slow
+      growth, with maturity only after a year or more, suggests that well-kept fish often live
+      longer. The range is the median of the three estimates of the runs (6 to 10, 10 to 15 and
+      8 to 12 years) and needs confirmation.
+    sources:
+      - *riverpark
+      - &model
+        kind: model-knowledge
+        title: Model knowledge of lifespans of slow-growing lamprologine cichlids in aquaria
+    evidence:
+      - source: *riverpark
+        value: {min: 5, max: 8}
+        note: Retailer care note.
+
+  breeding:
+    value: cave-spawner
+    confidence: high
+    rationale: >-
+      The female chooses a crevice, cave or shell so narrow that only she fits inside and lays
+      roughly 50 to 200 eggs there; the male fertilises them from the entrance. The female guards
+      eggs and larvae, and the male stays near the cave for a while and often leaves before the
+      fry swim free. The Cichlid Room Companion summary confirms breeding in a substrate cave.
+      All three runs chose cave-spawner.
+    sources:
+      - *sf
+      - *tsibulu
+      - *ttt
+      - *cf
+      - *sefc2011
+      - *crc
+    evidence:
+      - source: *sf
+        value: cave-spawner
+        note: Eggs in small rock crevices that only the female can enter.
+      - source: *tsibulu
+        value: cave-spawner
+      - source: *ttt
+        value: cave-spawner
+      - source: *crc
+        value: cave-spawner
+        note: Substrate cave.
+
+  beginnerSuitability:
+    value: moderate
+    confidence: medium
+    rationale: >-
+      Hardy in stable, clean, hard and alkaline water and not aggressive, but it reacts badly to
+      poor water quality, grows very slowly, eats small tankmates and needs calm companions.
+      Seriously Fish rates it moderate and the Cichlid Room Companion summary names intermediate
+      aquarists; Tropical Freshwater Fish calls it fairly difficult. All three runs chose
+      moderate.
+    sources:
+      - *sf
+      - *tff
+      - *crc
+      - *glaser
+    evidence:
+      - source: *sf
+        value: moderate
+      - source: *tff
+        value: demanding
+        note: Rated fairly difficult; sensitive to pollutants.
+      - source: *crc
+        value: moderate
+        note: For intermediate aquarists.
+
+partners:
+  suitable:
+    - species: Cyprichromis leptosoma
+      reason: Peaceful open-water planktivore that is too large to be eaten as an adult and serves as dither fish; same water needs.
+      condition: Add adult Cyprichromis; their fry will be eaten.
+    - species: Julidochromis marlieri
+      reason: Rock-dwelling Tanganyikan of similar size that uses different crevices and is robust enough as an adult.
+      condition: Only adults; small juveniles fit into the mouth of a grown Altolamprologus.
+    - species: Neolamprologus pulcher
+      reason: Mid-sized lamprologine of the same rock habitat; adults are not prey and both take meaty foods.
+      condition: Enough rockwork for two breeding territories.
+    - species: Synodontis multipunctatus
+      reason: Tanganyika catfish that occupies the bottom and is ignored by this calm cichlid.
+  unsuitable:
+    - species: Tropheus moorii
+      reason: Boisterous, fast-feeding aufwuchs eater that needs a low-protein diet and stresses the slow, shy Altolamprologus.
+    - species: Neolamprologus multifasciatus
+      reason: Adults of 2.5 to 4.5 cm are small enough to be eaten, and the shell-dweller colony loses its fry.
+    - species: Maylandia zebra
+      reason: Hyperactive Lake Malawi mbuna that outcompetes it at feeding time; softer lake water and an aufwuchs diet do not match.
+    - species: Altolamprologus calvus
+      reason: Closest relative of very similar shape and habits, so the two compete for the same narrow crevices; no cross is documented, but the split is young and a single hobby report claims crosses.
+      condition: Possible in very large tanks with plenty of crevices; not for breeding tanks.
+
+profile:
+  overview:
+    text: >-
+      Altolamprologus compressiceps is one of the oddest-looking cichlids of Lake Tanganyika. Its
+      body is tall and extremely flat, the dorsal fin starts high above the small head, and the
+      snout ends in a mouth that can be shot forward to suck prey from cracks in the rock. Many
+      locality forms reach the trade, from golden yellow to almost black, often with bright red or
+      orange fins. The species is slow-growing, long-lived for its size and calm in a suitable
+      tank, which makes it a classic of the Tanganyika community aquarium. It is, however, a
+      predator of small fish and fry, it is outcompeted by fast, rough feeders, and it needs hard,
+      alkaline, very clean water. Hobbyists who want to keep it should plan the stocking around it
+      rather than adding it to an existing mixed tank.
+    sources:
+      - *cof
+      - *sf
+      - *tsibulu
+  habitat:
+    text: >-
+      The species lives all around Lake Tanganyika, but only where rocks or rubble provide many
+      narrow gaps. Adults are found mostly between a few metres and about 15 m, single fish
+      down to 30 or 40 m; juveniles stay in shallower water. Wide sandy beaches act as barriers,
+      so populations on separate rocky stretches developed their own colours. The lake water is
+      warm (about 23 to 29 C), hard and strongly buffered, with a pH of 8.4 to 9.4. There the fish
+      move slowly along rock faces, hang motionless in front of a crevice and strike at shrimp
+      hidden inside. In the southwest it shares the coast with its close relative A. calvus.
+    sources:
+      - *koblmueller
+      - *spreitzer
+      - *sf
+      - *tsibulu
+      - *plisnier1996a
+  sizeAndGrowth:
+    text: >-
+      Males usually reach 12 to 15 cm total length in the aquarium, females stay clearly smaller at
+      about 8 to 10 cm. The size difference is the most reliable way to tell the sexes apart in
+      adult fish. Growth is very slow: young fish bought at 3 cm need well over a year to reach
+      sexual maturity, and males keep growing for several years. Patience is part of keeping this
+      species, and fast growth through heavy feeding is neither possible nor healthy. Because of the
+      small head and narrow body, the fish look smaller from the front than their length suggests,
+      but even a medium-sized specimen can swallow surprisingly large prey.
+    sources:
+      - *fishbase
+      - *sf
+      - *cf
+      - *tsibulu
+      - *ttt
+  husbandry:
+    text: >-
+      A pair needs a tank of at least 120 cm length and about 200 litres. Build tall rock piles
+      with many crevices, some so narrow that only a female can squeeze in, and place the rocks
+      directly on the glass before adding sand. Keep the water hard and alkaline, roughly pH 8 to
+      9, 24 to 28 C and a total hardness well above 8 dGH, with strong carbonate buffering; a
+      crushed coral or aragonite substrate helps. The species reacts badly to rising nitrate and
+      other waste, so strong filtration and generous weekly water changes are essential. Avoid
+      sudden changes in water chemistry when moving new fish. A tight cover is advisable because
+      startled fish can jump.
+    sources:
+      - *sf
+      - *tsibulu
+      - *ttt
+      - *liveaquaria
+      - *glaser
+  socialBehavior:
+    text: >-
+      Towards other species this cichlid is calm and somewhat shy; it rarely chases anything that
+      it cannot eat. Males tolerate each other poorly, so a single pair is the simplest setup. In a
+      large tank a male with two females or a bigger group can work if there are enough crevices.
+      In the wild the fish live mostly alone and meet only for spawning, and in the aquarium the
+      male also stays near the female only during breeding. Lively, peaceful dither fish such as
+      Cyprichromis reduce shyness and bring the fish into the open.
+    sources:
+      - *sf
+      - *tsibulu
+      - *sefc2011
+      - *archive13731
+  diet:
+    text: >-
+      In nature the diet consists mainly of small atyid shrimp picked from rock crevices, with
+      other small arthropods, eggs and fry as additions. In the tank offer frozen mysis, krill,
+      chopped shrimp, bloodworm and brine shrimp, alongside quality carnivore pellets or granules
+      that sink slowly. Feed small portions once or twice a day and make sure the fish actually
+      gets its share, since it eats slowly. Live feeder fish are unnecessary and bring a risk of
+      disease. Plant-based foods are accepted but do not need to make up a large part of the diet.
+    sources:
+      - *spreitzer
+      - *mushagalusa2019
+      - *fbfood
+      - *koblmueller
+      - *sf
+      - *tsibulu
+  breeding:
+    text: >-
+      Breeding is done in a narrow cave or crack whose entrance admits the female but not the
+      larger male; small flowerpots, slate stacks or a large snail shell also work. The female lays
+      about 50 to 200 eggs inside, and the male fertilises them by releasing milt at the entrance.
+      The larvae hatch after three to five days and swim free about a week later, when they accept
+      newly hatched brine shrimp. The female guards the brood, while the male patrols outside for a
+      short time. In a community tank most fry are eaten, so raising them usually requires removing
+      them or setting up a separate tank.
+    sources:
+      - *tsibulu
+      - *sf
+      - *ttt
+  sexing:
+    text: >-
+      Adult males are much larger than females, often by a third or more, and develop a deeper body
+      and somewhat longer fin tips. Colour differences between the sexes are minor. Juveniles cannot
+      be sexed reliably, so most keepers buy a group of five or six young fish and let a pair form
+      as they grow. A breeding female is easy to recognise by her behaviour, since she is the one
+      disappearing into the narrow spawning crevice while the male waits outside.
+    sources:
+      - *sf
+      - *cf
+      - *tsibulu
+      - *ttt
+  compatibility:
+    text: >-
+      Good tankmates are calm Tanganyikan cichlids too big to be swallowed, such as adult
+      Cyprichromis, Julidochromis, mid-sized Neolamprologus and Synodontis catfish. Avoid any fish
+      small enough to fit into its mouth, roughly anything under 5 cm, which includes small
+      shell-dwellers and fry. Fast, rough feeders such as Tropheus, Petrochromis or Lake Malawi
+      mbuna push it away from food and keep it hidden; Tropheus also needs a low-protein diet. Keep
+      only one locality form in a tank. A. calvus competes for the same crevices; no cross between
+      the two species is documented, but because they split only recently and one hobby report
+      claims crosses, they are best not bred side by side. Lake Malawi and soft-water species need
+      different water.
+    sources:
+      - *sf
+      - *tsibulu
+      - *ttt
+      - *tff
+      - *koblmueller
+      - *archive13809
+  problems:
+    text: >-
+      Typical mistakes are stocking it with small fish, which disappear one by one, and with
+      boisterous species that steal its food until it becomes thin and hides. Poor water quality,
+      high nitrate and swings in pH show up as clamped fins, loss of appetite and infections, so
+      stable hard water and regular water changes matter more than with many other cichlids. Live
+      feeder fish can bring in parasites. Overfeeding fatty food to try to speed up growth leads to
+      fatty organs rather than larger fish. Mixing locality forms in one tank produces offspring
+      that cannot be traced to a population and blurs the distinct wild forms.
+    sources:
+      - *sf
+      - *glaser
+      - *tff
+      - *ttt
+
+provenance:
+  runs:
+    - role: generator
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-13
+    - role: adjudicator
+      model: claude-opus-5-5
+      date: 2026-10-13
+  disagreements:
+    - field: taxonomy.synonyms
+      proposals:
+        - {by: generator, value: [Lamprologus compressiceps, Neolamprologus compressiceps]}
+        - {by: checker-a, value: [Lamprologus compressiceps]}
+        - {by: checker-b, value: [Lamprologus compressiceps]}
+      decision: [Lamprologus compressiceps, Neolamprologus compressiceps]
+      rationale: >-
+        The FishBase synonym list includes Neolamprologus compressiceps, a combination used in
+        older hobby literature, so it is listed as a synonym for search. The Catalog of Fishes
+        lists only the original combination, which all runs give.
+    - field: features.origin.value.localities
+      proposals:
+        - {by: generator, value: [Kinyamkolo (Mpulungu), Burundi coast, Kigoma, Cape Kagobo, Kasanga, Chituta, Mutondwe Island, Nangu, Kavalla]}
+        - {by: checker-a, value: [Kinyamkolo (Mpulungu), Kigoma, Nkondwe Island, Mutondwe Island, Kasakalawe]}
+        - {by: checker-b, value: [Mpulungu (Kinyamkolo), Kasakalawe, Nkamba Bay, Kigoma, Bujumbura, Kiku, Mutondwe Island]}
+      decision: merged list of all named localities
+      rationale: >-
+        The lists do not contradict each other; they name different sampling sites and trade-form
+        origins of a lake-wide species, so they are merged.
+    - field: features.maxSizeCm
+      proposals:
+        - {by: generator, value: {male: 14, female: 9}}
+        - {by: checker-a, value: {male: 15, female: 10}}
+        - {by: checker-b, value: {male: 13, female: 9}}
+      decision: {male: 15, female: 10}
+      rationale: >-
+        Cichlid-Forum and The Tropical Tank give 15 and 10 cm, tanganyika.si up to 15 and about
+        9 cm, and Seriously Fish gives up to 12.5 cm for males, apparently standard length, and
+        9 to 10 cm for females. The lower FishBase value describes wild museum material, not
+        well-grown aquarium adults.
+    - field: features.predation
+      proposals:
+        - {by: generator, value: 2}
+        - {by: checker-a, value: 2}
+        - {by: checker-b, value: 1}
+        - {by: tiebreaker-1, value: 2}
+        - {by: tiebreaker-2, value: 2}
+      decision: 2
+      rationale: >-
+        Decided by the vote count as a qualified majority of 4 of 5 votes. The husbandry sources
+        warn against small adult fish of several centimetres, which exceeds level 1.
+    - field: features.hybridGroup
+      proposals:
+        - {by: generator, value: null}
+        - {by: checker-a, value: null}
+        - {by: checker-b, value: altolamprologus}
+        - {by: tiebreaker-1, value: null}
+        - {by: tiebreaker-2, value: null}
+      decision: null
+      rationale: >-
+        Decided by the vote count as a qualified majority of 4 of 5 votes. No documented cross
+        with A. calvus exists, the genetic studies find little if any gene flow, and the
+        hybridisation warning of Seriously Fish concerns locality forms within the species.
+    - field: features.ph.tolerance
+      proposals:
+        - {by: generator, value: {min: 7.8, max: 9.4}}
+        - {by: checker-a, value: {min: 7.8, max: 9.4}}
+        - {by: checker-b, value: {min: 7.0, max: 9.4}}
+        - {by: tiebreaker-1, value: {min: 7.8, max: 9.4}}
+        - {by: tiebreaker-2, value: {min: 7.8, max: 9.4}}
+      decision: {min: 7.8, max: 9.4}
+      rationale: >-
+        Decided by the vote count as a qualified majority of 4 of 5 votes. The lower bound of 7.0
+        rests on a generic lexicon value that excludes most of the lake range.
+    - field: features.ghDgh.tolerance
+      proposals:
+        - {by: generator, value: {min: 8, max: 20}}
+        - {by: checker-a, value: {min: 7, max: 20}}
+        - {by: checker-b, value: {min: 7, max: 25}}
+        - {by: tiebreaker-1, value: {min: 7, max: 20}}
+        - {by: tiebreaker-2, value: {min: 7, max: 25}}
+      decision: {min: 8, max: 20}
+      rationale: >-
+        Decided by the vote count with the conservative method (3 of 5 agreeing votes, no
+        qualified majority): the intersection of all proposals, 8 to 20 dGH, which contains the
+        lake range. The sources reach from 7 to 25 dGH.
+    - field: features.khDkh.tolerance
+      proposals:
+        - {by: generator, value: {min: 10, max: 20}}
+        - {by: checker-a, value: {min: 14, max: 20}}
+        - {by: checker-b, value: {min: 10, max: 22}}
+        - {by: tiebreaker-1, value: {min: 10, max: 20}}
+        - {by: tiebreaker-2, value: {min: 10, max: 20}}
+      decision: {min: 10, max: 20}
+      rationale: >-
+        Decided by the vote count as a qualified majority of 4 of 5 votes; checker-b's 10 to 22
+        agrees within 2 dKH. Checker-a followed the stricter 14 dKH of The Tropical Tank alone.
+    - field: features.territory
+      proposals:
+        - {by: generator, value: {size: small, breedingOnly: true}}
+        - {by: checker-a, value: {size: small, breedingOnly: true}}
+        - {by: checker-b, value: {size: small, breedingOnly: false}}
+      decision: {size: small, breedingOnly: true}
+      rationale: >-
+        Seriously Fish, Cichlid-Forum and tanganyika.si describe a fish without a marked
+        territory outside spawning that guards only the breeding cave; the permanent territory
+        of checker-b rests on less specific care sheets.
+    - field: features.habitatZones
+      proposals:
+        - {by: generator, value: [rock]}
+        - {by: checker-a, value: [rock]}
+        - {by: checker-b, value: [rock, sand]}
+      decision: [rock]
+      rationale: >-
+        The species is bound to rock and rubble and does not use open sand; sand is only the base
+        of the rockwork in the tank, and the Cichlid Room Companion confirms sediment-free rocky
+        habitat.
+    - field: features.coloration
+      proposals:
+        - {by: generator, value: {baseColors: [brown, yellow], pattern: bars}}
+        - {by: checker-a, value: {baseColors: [brown, yellow, black], pattern: bars}}
+        - {by: checker-b, value: {baseColors: [brown, yellow, orange], pattern: mixed}}
+      decision: {baseColors: [brown, yellow, black], pattern: bars}
+      rationale: >-
+        The dark vertical bars are present in all forms and named by every description. Brown and
+        yellow are the common body colours and several traded forms are almost black; orange and
+        red occur mainly in the fins.
+    - field: features.feedingSpeed
+      proposals:
+        - {by: generator, value: slow}
+        - {by: checker-a, value: slow}
+        - {by: checker-b, value: normal}
+      decision: slow
+      rationale: >-
+        Specialist sources describe a slow stalker and advise against fast, competitive feeders
+        because they take its food; no source supports a normal pace.
+    - field: features.minTank
+      proposals:
+        - {by: generator, value: {volumeL: 200, lengthCm: 120, depthCm: 45}}
+        - {by: checker-a, value: {volumeL: 200, lengthCm: 120, depthCm: 45}}
+        - {by: checker-b, value: {volumeL: 240, lengthCm: 120, depthCm: 45}}
+      decision: {volumeL: 200, lengthCm: 120, depthCm: 45}
+      rationale: >-
+        Tropical Freshwater Fish, tanganyika.si and LiveAquaria cluster around 200 litres for a
+        pair at 120 cm length; only Seriously Fish implies about 240 litres through its base area
+        at full height.
+    - field: features.lifespanYears
+      proposals:
+        - {by: generator, value: {min: 6, max: 10}}
+        - {by: checker-a, value: {min: 10, max: 15}}
+        - {by: checker-b, value: {min: 8, max: 12}}
+      decision: {min: 8, max: 12}
+      rationale: >-
+        No reliable source gives a lifespan; all three values are estimates. The median of the
+        estimates is taken at low confidence.
