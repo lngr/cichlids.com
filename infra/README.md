@@ -11,9 +11,10 @@ the credential file below (or, for in-cluster secrets, SOPS+age) and is never co
 Two cloud projects (rationale: ADR-0017); a credential in one project cannot act on another:
 
 - **`cichlids`**: all live infrastructure (the node, the database volume, the media-master bucket,
-  the DNS zone, and later the app tier) plus its own OpenTofu state bucket. Managed by CI/GitOps
+  the DNS zone, and the app tier) plus its own OpenTofu state bucket. Managed by CI/GitOps
   via tofu, guarded against accidents by `prevent_destroy` and `delete_protection`. Holds the only
-  cloud token. OpenTofu code in `platform/` (node, volume, media-master, DNS) and later `app/`.
+  cloud token. OpenTofu code in `platform/` (node, volume, media-master, DNS) and `app/` (k3s and Argo CD on
+  the node, applied over SSH).
 - **`cichlids-backup`**: only the immutable backups (Object Lock Compliance) plus its own OpenTofu
   state bucket. No cloud token; its object-storage key is operator-only and never a CI secret.
   Code in `backup/`, applied out-of-band by the operator.
@@ -149,9 +150,45 @@ for step 10.
 
 ### App (ephemeral) tier
 
-When `infra/app/` exists, apply it the same way (its own state key in `cichlids-platform-tfstate`,
-the cichlids cloud token). It installs single-node k3s via cloud-init and bootstraps Argo CD, then
-reconciles from Git, referencing no data resources directly (ADR-0010).
+Installs k3s on the node and bootstraps Argo CD over SSH. Needs the node from step 9 and no cloud
+token. Steps in order, each with its expected result.
+
+1. Generate a dedicated CI key pair:
+   `ssh-keygen -t ed25519 -N "" -C cichlids-ci-app -f ~/.config/cichlids/ci-app`.
+   **Expected result:** `ci-app` (private) and `ci-app.pub` exist; the private key is used by nothing else.
+2. Authorise the public key on the node:
+   `ssh root@<ip> 'cat >> ~/.ssh/authorized_keys' < ~/.config/cichlids/ci-app.pub`.
+   **Expected result:** `ssh -i ~/.config/cichlids/ci-app root@<ip> true` succeeds.
+3. Read the node host key with `ssh-keyscan -t ed25519 <ip>` and compare its fingerprint
+   (`ssh-keyscan -t ed25519 <ip> | ssh-keygen -lf -`) with the one in the Hetzner console or a
+   login you already trust. Keep the key line without the leading host name (`ssh-ed25519 AAAA...`).
+   **Expected result:** the fingerprints are identical.
+4. Choose an app state passphrase (at least 16 characters) and store it out-of-band.
+   **Expected result:** a passphrase distinct from the platform one.
+5. Set the GitHub secrets `CICHLIDS_APP_SSH_PRIVATE_KEY` (content of `ci-app`),
+   `CICHLIDS_APP_STATE_PASSPHRASE`, `CICHLIDS_S3_PRIMARY_ACCESS_KEY` and
+   `CICHLIDS_S3_PRIMARY_SECRET_KEY`, and the GitHub variables `CICHLIDS_NODE_IPV4` and
+   `CICHLIDS_NODE_HOST_KEY` (the full `ssh-ed25519 AAAA...` line from step 3).
+   **Expected result:** four secrets and two variables in the repository settings.
+6. For a local apply, add `CICHLIDS_APP_STATE_PASSPHRASE`, `CICHLIDS_NODE_IPV4`,
+   `CICHLIDS_NODE_HOST_KEY` and `CICHLIDS_APP_SSH_PRIVATE_KEY_FILE` (path of `ci-app`) to the
+   credential file, then run:
+
+   ```sh
+   infra/tofu.sh app init
+   infra/tofu.sh app plan
+   infra/tofu.sh app apply
+   ```
+
+   Alternatively run the `infra-app` workflow on `main` via workflow dispatch.
+   **Expected result:** state under `app/terraform.tfstate` in `cichlids-platform-tfstate`; the plan
+   shows two `terraform_data` resources and the apply finishes without error.
+7. Check the cluster over SSH (`ssh root@<ip>`):
+   - `kubectl get nodes` lists one node in status `Ready`.
+   - `kubectl -n argocd get pods` lists all pods `Running` and ready.
+   - `kubectl -n argocd get application root` shows the application `Synced` and `Healthy`.
+
+   **Expected result:** all three checks pass.
 
 ### SOPS age key
 
@@ -169,9 +206,11 @@ stays on Hetzner; R2 is the serving cache, ADR-0009). Wired in with the serving 
 
 For the CI-driven apply, preview environments and the DNS-01 solver:
 
-- Cloud token (step 3): the apply, previews, and cert-manager DNS-01 for `*.dev`.
+- Cloud token (step 3): previews and cert-manager DNS-01 for `*.dev`. The app tier apply does not use it.
 - cichlids object-storage S3 key (step 4): media operations and the platform/app state backend.
-- State-encryption passphrase (step 7): so CI can read/write the state.
+- State-encryption passphrase (step 7): so CI can read/write the platform state.
+- App tier: `CICHLIDS_APP_SSH_PRIVATE_KEY` and `CICHLIDS_APP_STATE_PASSPHRASE` as secrets,
+  `CICHLIDS_NODE_IPV4` and `CICHLIDS_NODE_HOST_KEY` as variables (see "App (ephemeral) tier").
 - Cloudflare R2 S3 key: media serving, when deployed.
 
 Never added as CI secrets: the backup-project key (`cichlids-backup`, step 5), the age private key
