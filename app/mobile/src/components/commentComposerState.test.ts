@@ -4,6 +4,7 @@ import {
   STAR_VALUES,
   canSubmit,
   emptyCommentDraft,
+  offersStars,
   starsOf,
   toCreateCommentRequest,
   toggleStar,
@@ -88,5 +89,25 @@ describe("starsOf", () => {
     expect(starsOf({ stars: 9 })).toBe(5);
     expect(starsOf({ stars: -1 })).toBe(0);
     expect(starsOf({ stars: "x" })).toBe(0);
+  });
+});
+
+describe("offersStars", () => {
+  it("offers stars on content of another member", () => {
+    expect(offersStars(7, 9)).toBe(true);
+  });
+
+  it("offers no stars on own content", () => {
+    expect(offersStars(7, 7)).toBe(false);
+  });
+
+  it("compares ids that arrive as numbers or as strings", () => {
+    expect(offersStars("7", 7)).toBe(false);
+    expect(offersStars(7, "7")).toBe(false);
+    expect(offersStars("7", "9")).toBe(true);
+  });
+
+  it("offers stars while the signed-in profile is unknown", () => {
+    expect(offersStars(7, null)).toBe(true);
   });
 });
