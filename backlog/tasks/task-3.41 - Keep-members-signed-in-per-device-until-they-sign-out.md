@@ -1,21 +1,15 @@
 ---
 id: TASK-3.41
 title: Keep members signed in per device until they sign out
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-10-12 04:48'
-updated_date: '2026-10-13 11:53'
+updated_date: '2026-10-13 13:06'
 labels: []
 dependencies: []
 references:
-  - app/mobile/e2e/playwright/session.write.mjs
-  - app/api/tests/Cichlids.Api.Tests/Features/Auth/WebSessionTests.cs
-  - app/api/tests/Cichlids.Api.Tests/Features/Auth/KeycloakOidcClientTests.cs
-  - app/api/tests/Cichlids.Etl.Tests/KeycloakAccountImportTests.cs
-  - app/mobile/src/auth/tokenRefresh.test.ts
-  - app/mobile/src/auth/webSession.test.ts
-  - app/mobile/src/upload/savedUploadInput.test.ts
-  - docs/adr/0027-session-model-for-native-and-web-clients.md
+  - app/api/tests/Cichlids.Api.Tests/Features/Auth/KeyRingSettingsTests.cs
+  - app/api/tests/Cichlids.Etl.Tests/DeployedRealmImportTests.cs
 parent_task_id: TASK-3
 priority: medium
 ordinal: 65000
@@ -137,4 +131,30 @@ A member signs in once per device and stays signed in until signing out; no sign
   locally); PKCE stays on; the native app keeps the public client.
 - Signing out on the web also ends the Keycloak browser session (RP-initiated logout through the
   end session endpoint and back to the app); `prompt=login` stays.
+
+### Decisions implemented
+- Encrypted tokens: Data Protection key ring from `DataProtection:KeyRingPath` (required outside
+  Development, read only, no new keys created; keys from
+  `dotnet run tools/create-data-protection-key.cs -- <dir> [years]`, default 5 years; a new key
+  must be added before the newest expires). Columns `encrypted_*`; the migration
+  `EncryptWebSessionTokens` deletes existing rows; an undecryptable session counts as missing
+  (row deleted, 401 or `authenticated: false`), which also covers a changed key ring.
+- Confidential client `cichlids-web-bff` (PKCE S256, standard flow) in the three realm files;
+  staging and production files carry no secret, the operator sets it from SOPS after each realm
+  import (`kcadm` merge, as for the identity provider secrets); local dev secret in the dev realm
+  only, the realm check forbids it in deployed files. `invalid_client` or `unauthorized_client`
+  from Keycloak keeps the sessions (a wrong secret must not delete all web sessions). The API
+  callback and web origin of staging moved from `cichlids-app` to the BFF client.
+- RP-initiated logout: the sign-out answers the Keycloak end session address (`id_token_hint`,
+  `post_logout_redirect_uri` = `WebSession:PostLogoutRedirectUrl`, required with web sign-in,
+  HTTPS outside Development, on an allowed origin); the app follows it.
+- Configuration: `WebSession:ClientId` (default `cichlids-web-bff`), `WebSession:ClientSecret`
+  (required with a callback URL), `WebSession:PostLogoutRedirectUrl`, `DataProtection:KeyRingPath`.
+
+### Verified by the agent
+- `dotnet test`: Infrastructure 310, Api 420, Etl 342; client-core 13, mobile 178; realm check
+  (69 cases); ADR index; gitleaks over tracked files; `pnpm run e2e:write` 11 of 11 (tokens stored
+  encrypted, sign-out through the end session endpoint, a new login asks for credentials).
+- Not verified: an expired `id_token_hint` at Keycloak; deployment (the API has no overlays yet,
+  key ring and secret mounts follow with them); native app on a device.
 <!-- SECTION:NOTES:END -->
