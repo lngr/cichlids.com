@@ -4,12 +4,13 @@ title: Keep members signed in per device until they sign out
 status: In Review
 assignee: []
 created_date: '2026-10-12 04:48'
-updated_date: '2026-10-13 13:06'
+updated_date: '2026-10-13 15:01'
 labels: []
 dependencies: []
 references:
   - app/api/tests/Cichlids.Api.Tests/Features/Auth/KeyRingSettingsTests.cs
   - app/api/tests/Cichlids.Etl.Tests/DeployedRealmImportTests.cs
+  - REVIEW-MVP.md
 parent_task_id: TASK-3
 priority: medium
 ordinal: 65000

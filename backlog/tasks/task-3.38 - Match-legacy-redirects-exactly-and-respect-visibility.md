@@ -4,7 +4,7 @@ title: Match legacy redirects exactly and respect visibility
 status: In Review
 assignee: []
 created_date: '2026-10-12 04:48'
-updated_date: '2026-10-13 07:24'
+updated_date: '2026-10-13 15:01'
 labels: []
 dependencies: []
 references:
@@ -14,6 +14,7 @@ references:
   - >-
     app/api/tests/Cichlids.Api.Tests/Features/Community/CommunityEndpointsTests.cs
   - app/mobile/e2e/playwright/legacy-redirects.write.mjs
+  - REVIEW-MVP.md
 parent_task_id: TASK-3
 priority: medium
 ordinal: 62000

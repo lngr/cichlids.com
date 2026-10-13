@@ -4,7 +4,7 @@ title: One rating per member and target and no self-rating
 status: In Review
 assignee: []
 created_date: '2026-10-12 04:48'
-updated_date: '2026-10-13 08:15'
+updated_date: '2026-10-13 15:01'
 labels: []
 dependencies: []
 references:
@@ -16,6 +16,7 @@ references:
   - >-
     app/api/tests/Cichlids.Infrastructure.Tests/Persistence/SchemaMigrationTests.cs
   - app/mobile/src/components/commentComposerState.test.ts
+  - REVIEW-MVP.md
 parent_task_id: TASK-3
 priority: medium
 ordinal: 60000

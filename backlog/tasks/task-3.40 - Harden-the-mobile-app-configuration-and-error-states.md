@@ -4,7 +4,7 @@ title: Harden the mobile app configuration and error states
 status: In Review
 assignee: []
 created_date: '2026-10-12 04:48'
-updated_date: '2026-10-13 08:31'
+updated_date: '2026-10-13 15:01'
 labels: []
 dependencies: []
 references:
@@ -14,6 +14,7 @@ references:
   - app/mobile/src/hooks/pagedListState.test.ts
   - app/mobile/src/lib/apiErrors.test.ts
   - app/client-core/src/client.test.ts
+  - REVIEW-MVP.md
 parent_task_id: TASK-3
 priority: medium
 ordinal: 64000

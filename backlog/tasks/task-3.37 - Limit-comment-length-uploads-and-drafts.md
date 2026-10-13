@@ -4,7 +4,7 @@ title: 'Limit comment length, uploads and drafts'
 status: In Review
 assignee: []
 created_date: '2026-10-12 04:48'
-updated_date: '2026-10-13 10:03'
+updated_date: '2026-10-13 15:01'
 labels: []
 dependencies: []
 references:
@@ -15,6 +15,7 @@ references:
     app/api/tests/Cichlids.Api.Tests/Features/Common/JsonRequestSizeLimitTests.cs
   - app/api/tests/Cichlids.Api.Tests/Features/Uploads/UploadLimitsTests.cs
   - app/mobile/src/components/commentComposerState.test.ts
+  - REVIEW-MVP.md
 parent_task_id: TASK-3
 priority: medium
 ordinal: 61000

@@ -4,7 +4,7 @@ title: Apply the ETL rule corrections from the MVP review
 status: In Review
 assignee: []
 created_date: '2026-10-12 04:48'
-updated_date: '2026-10-13 08:38'
+updated_date: '2026-10-13 15:01'
 labels: []
 dependencies: []
 references:
@@ -17,6 +17,7 @@ references:
     app/api/tests/Cichlids.Infrastructure.Tests/Persistence/ConstraintEnforcementTests.cs
   - >-
     app/api/tests/Cichlids.Infrastructure.Tests/Identity/ReservedUsernamesTests.cs
+  - REVIEW-MVP.md
 parent_task_id: TASK-3
 priority: medium
 ordinal: 63000
