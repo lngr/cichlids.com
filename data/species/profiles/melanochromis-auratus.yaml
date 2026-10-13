@@ -1,0 +1,1571 @@
+schemaVersion: 1
+id: melanochromis-auratus
+legacyIds: [366]
+status: described
+
+taxonomy:
+  validName: Melanochromis auratus
+  genus: Melanochromis
+  species: auratus
+  author: (Boulenger, 1897)
+  source: &cof
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes, species of the genus Melanochromis"
+    url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Melanochromis
+    accessed: 2026-10-13
+  synonyms:
+    - name: Chromis auratus
+      note: Original combination of Boulenger (1897); type locality Monkey Bay on the west coast of Lake Malawi. The Cichlid Room Companion spells it Chromis aurata.
+    - name: Tilapia aurea
+      note: Combination used by Goren (1974) according to the Catalog of Fishes.
+    - name: Pseudotropheus auratus
+      note: Combination of older aquarium literature; the Catalog of Fishes keeps no separate entry for it.
+  legacyNames:
+    - Melanochromis auratus
+  note: >-
+    The Catalog of Fishes lists Melanochromis auratus (Boulenger 1897) as valid, so the legacy name
+    is the valid name; the Cichlid Room Companion agrees. Several striped mbuna once placed in
+    Melanochromis (johannii, cyaneorhabdos, interruptus, perileucos and others) are valid in
+    Pseudotropheus according to the same catalog. Introduced populations exist in Morelos
+    (Mexico), Sulawesi (Indonesia) and Hong Kong.
+
+names:
+  trade:
+    en: [Golden mbuna, Auratus cichlid, Golden cichlid, Malawi golden cichlid, Turquoise-gold cichlid]
+    de: [Türkisgoldbarsch]
+    es-419: [Mbuna dorado, Cíclido caramelo]
+
+variants:
+  - name: Amelanistic morph
+    kind: color-morph
+    note: >-
+      Aquarium-bred form without the dark stripes and markings, caused by a recessive loss of the
+      second exon of the pigment gene oca2 (Kratochwil et al. 2019).
+  - name: Dominant male colouration with yellow or turquoise stripes
+    kind: color-morph
+    note: Hobby profiles report that the light stripes of dominant males vary between pale yellow, white and turquoise blue.
+
+features:
+  origin:
+    value:
+      continent: Africa
+      region: Lake Malawi
+      waterbody: Lake Malawi
+      localities:
+        - Monkey Bay (type locality)
+        - Jalo Reef southward along the western coast to Crocodile Rocks
+        - Southern end of the lake
+        - South-eastern coast north to Nkhomo Reef
+    confidence: high
+    rationale: >-
+      Endemic to Lake Malawi (Catalog of Fishes, FishBase). The Catalog of Fishes gives Monkey Bay on
+      the west coast as type locality; Seriously Fish describes a range along the western shore from
+      Jalo Reef to Crocodile Rocks, around the southern end and up the lower east coast to Nkhomo
+      Reef. Markert et al. sampled nine rock populations along 42 km of the southern shore.
+      Populations in Mexico, Indonesia and Hong Kong go back to released aquarium fish and do not
+      change the origin.
+    sources:
+      - *cof
+      - &fb
+        kind: database
+        title: "FishBase species summary: Melanochromis auratus"
+        url: https://www.fishbase.se/summary/Melanochromis-auratus.html
+        accessed: 2026-10-13
+      - &sf
+        kind: database
+        title: "Seriously Fish: Melanochromis auratus (Golden Mbuna)"
+        url: https://www.seriouslyfish.com/species/melanochromis-auratus/
+        accessed: 2026-10-13
+      - &ks
+        kind: literature
+        title: >-
+          Konings, A. F. and Stauffer, J. R. (2012). Review of the Lake Malawi genus Melanochromis
+          (Teleostei: Cichlidae) with a description of a new species. Zootaxa 3258, 1-37.
+        url: https://doi.org/10.11646/zootaxa.3258.1.1
+        accessed: 2026-10-13
+      - &markert
+        kind: literature
+        title: >-
+          Markert, J. A., Arnegard, M. E., Danley, P. D. and Kocher, T. D. (1999). Biogeography and
+          population genetics of the Lake Malawi cichlid Melanochromis auratus: habitat transience,
+          philopatry and speciation. Molecular Ecology 8, 1013-1026 (abstract).
+        url: https://doi.org/10.1046/j.1365-294x.1999.00658.x
+        accessed: 2026-10-13
+      - &crc
+        kind: database
+        title: "Cichlid Room Companion: Melanochromis auratus (public summary, verification only)"
+        url: https://cichlidae.com/species.php?id=ttxp-FP0ZJlvLCOftVZFXQ
+        accessed: 2026-10-13
+    evidence:
+      - source: *cof
+        value: {continent: Africa, region: Lake Malawi, waterbody: Lake Malawi, localities: [Monkey Bay]}
+        note: type locality; introduced elsewhere
+      - source: *sf
+        value: {continent: Africa, region: Lake Malawi, waterbody: Lake Malawi, localities: [Jalo Reef, Crocodile Rocks, Nkhomo Reef]}
+        note: western coast, southern end and lower eastern coast
+
+  temperatureC:
+    value: {min: 21, max: 29}
+    confidence: high
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    rationale: >-
+      Lake Malawi endemic, so the natural range is the measured range of the lake. Eccles (1974)
+      reports 21 C inshore in the south-east arm during the cool, windy season and about 27 C in the
+      upper 60 m by May; Vollmer et al. (2005) give winter epilimnion values near 23.5 C and summer
+      surface water of about 28 C; a 2013 campaign (Ngochera 2018) measured 24 to 29 C. Together
+      these span 21 to 29 C. All four votes proposed this range.
+    sources:
+      - &eccles
+        kind: literature
+        title: >-
+          Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa).
+          Limnology and Oceanography 19(5), 730-742 (abstract).
+        url: https://doi.org/10.4319/lo.1974.19.5.0730
+        accessed: 2026-10-12
+      - &vollmer05
+        kind: literature
+        title: >-
+          Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M.,
+          Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East
+          Africa. Limnology and Oceanography 50(2), 727-732.
+        url: https://www.dora.lib4ri.ch/empa/dload/empa:1253/PDF/view
+        accessed: 2026-10-12
+      - &vollmer99
+        kind: literature
+        title: >-
+          Vollmer, M. K., Weiss, R. F. and Bootsma, H. A. (1999). Lake Malawi/Nyasa deep water
+          renewal. In: Bootsma, H. A. and Hecky, R. E. (eds.), Water Quality Report, SADC/GEF Lake
+          Malawi/Nyasa Biodiversity Conservation Project, chapter 4.
+        url: https://sites.uwm.edu/hbootsma/files/2020/11/Ch4-Lake-Internal-Mixing.pdf
+        accessed: 2026-10-12
+      - &ngochera
+        kind: literature
+        title: >-
+          Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. PhD dissertation, University of
+          Wisconsin-Milwaukee.
+        url: https://minds.wisconsin.edu/handle/1793/91765
+        accessed: 2026-10-12
+      - &fao
+        kind: literature
+        title: >-
+          Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery
+          resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical
+          and chemical data after Jackson et al. (1963) and Talling and Talling (1965).
+        url: https://www.fao.org/4/t0473e/T0473E05.htm
+        accessed: 2026-10-12
+      - &branchu
+        kind: literature
+        title: >-
+          Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E.
+          et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian
+          Northern Basin: local versus global considerations. Hydrology and Earth System Sciences
+          Discussions 7, 4371-4409.
+        url: https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf
+        accessed: 2026-10-12
+    evidence:
+      - source: *eccles
+        value: {min: 21, max: 27}
+        note: inshore minimum in the cool season, upper 60 m by May
+      - source: *vollmer05
+        value: {min: 23.5, max: 28}
+        note: winter epilimnion to summer surface water
+      - source: *ngochera
+        value: {min: 24, max: 29}
+        note: lake water during a 2013 campaign
+      - source: *fao
+        value: {min: 23, max: 25}
+        note: surface temperature after Jackson et al. (1963)
+    tolerance:
+      value: {min: 21, max: 29}
+      confidence: medium
+      verification:
+        method: unanimous
+        votes: {agree: 4, total: 4}
+      rationale: >-
+        All four votes proposed 21 to 29 C. Care sheets recommend ranges between 22 and 28 C
+        (Seriously Fish 24 to 28, The Tropical Tank 23 to 28, Tropical Freshwater Fish 22 to 27,
+        FishBase 22 to 26, Fishkeeper 24 to 26, AquaInfo 22 to 26). None of them names a range
+        outside the lake values, and the species meets 21 C and 29 C seasonally in the wild, so the
+        tolerance equals the natural range. The care sheets give no long-term data for the end
+        points; 24 to 27 C is the usual middle for routine keeping.
+      sources:
+        - *sf
+        - *fb
+        - &tt
+          kind: database
+          title: "The Tropical Tank: Melanochromis auratus (Malawi golden cichlid), fish index profile"
+          url: http://www.thetropicaltank.co.uk/Fishindx/mel_auratus.htm
+          accessed: 2026-10-13
+        - &fk
+          kind: database
+          title: "Fishkeeper (Maidenhead Aquatics): Auratus, Melanochromis auratus, species profile"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/auratus
+          accessed: 2026-10-13
+        - &tff
+          kind: database
+          title: "Tropical Freshwater Fish: Auratus, Melanochromis auratus, species profile"
+          url: https://tropicalfreshwaterfish.com/species/Melanochromis_auratus.html
+          accessed: 2026-10-13
+        - &aquainfo
+          kind: database
+          title: "AquaInfo: Melanochromis auratus, Golden Mbuna"
+          url: https://aquainfo.nl/en/article/melanochromis-auratus-golden-mbuna/
+          accessed: 2026-10-13
+        - &garnelio
+          kind: website
+          title: "Garnelio (retailer): 2x Turquoise goldfish, Melanochromis auratus, pair, product profile"
+          url: https://www.garnelio.de/en/2x-turquoise-goldfish-melanochromis-auratus-pair
+          accessed: 2026-10-13
+        - &paulista
+          kind: website
+          title: "Aquarismo Paulista: Auratus (Melanochromis auratus)"
+          url: https://www.aquarismopaulista.com/auratus-melanochromis-auratus/
+          accessed: 2026-10-13
+      evidence:
+        - source: *sf
+          value: {min: 24, max: 28}
+          note: aquarium recommendation
+        - source: *tt
+          value: {min: 23, max: 28}
+          note: aquarium recommendation
+        - source: *tff
+          value: {min: 22, max: 27}
+          note: aquarium recommendation, 26 to 27 C for spawning
+        - source: *fb
+          value: {min: 22, max: 26}
+          note: aquarium data quoted by FishBase
+        - source: *fk
+          value: {min: 24, max: 26}
+          note: aquarium recommendation
+        - source: *aquainfo
+          value: {min: 22, max: 26}
+          note: aquarium recommendation
+        - source: *garnelio
+          value: {min: 22, max: 27}
+          note: retailer care sheet
+        - source: *paulista
+          value: {min: 22, max: 28}
+          note: hobby care sheet
+
+  ph:
+    value: {min: 7.7, max: 8.6}
+    confidence: high
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    rationale: >-
+      Lake Malawi endemic; the natural range is the surface pH of the lake, 7.7 to 8.6 after
+      Jackson et al. (1963) in the FAO source book. Branchu et al. (2010) report 7.5 to 8.5 for the
+      whole water column, the lower values coming from deep water that the species does not use.
+      All four votes proposed this range.
+    sources:
+      - *fao
+      - *branchu
+    evidence:
+      - source: *fao
+        value: {min: 7.7, max: 8.6}
+        note: lake surface water
+      - source: *branchu
+        value: {min: 7.5, max: 8.5}
+        note: whole water column, lower values in deep water
+    tolerance:
+      value: {min: 7.5, max: 8.8}
+      confidence: medium
+      verification:
+        method: unanimous
+        votes: {agree: 4, total: 4}
+      rationale: >-
+        All four votes proposed 7.5 to 8.8. The care sheets agree on alkaline water with lower
+        limits of 7.5 to 7.6 (Fishkeeper, Tropical Freshwater Fish, AquaInfo, The Tropical Tank,
+        Seriously Fish) and upper limits between 8.5 and 9.0, Seriously Fish giving 8.8. FishBase
+        quotes 7.0 to 8.5 from general aquarium data and Aquarium Ratgeber a wide 7.2 to 9.5; both
+        lower limits stand alone and are not followed. The tolerance contains the natural range and
+        the bulk of the husbandry figures.
+      sources:
+        - *sf
+        - *fk
+        - *tt
+        - *tff
+        - *aquainfo
+        - *fb
+        - &ratgeber
+          kind: database
+          title: "Aquarium Ratgeber: Türkisgoldbuntbarsch (Melanochromis auratus)"
+          url: https://www.aquarium-ratgeber.com/fische/fischarten/malawi-buntbarsche/tuerkisgoldbuntbarsch/
+          accessed: 2026-10-13
+        - *garnelio
+      evidence:
+        - source: *sf
+          value: {min: 7.6, max: 8.8}
+          note: aquarium recommendation
+        - source: *fk
+          value: {min: 7.5, max: 8.5}
+          note: aquarium recommendation
+        - source: *tt
+          value: {min: 7.6, max: 8.6}
+          note: aquarium recommendation
+        - source: *tff
+          value: {min: 7.5, max: 9.0}
+          note: aquarium recommendation, 8.0 named as ideal
+        - source: *aquainfo
+          value: {min: 7.5, max: 8.5}
+          note: aquarium recommendation
+        - source: *fb
+          value: {min: 7.0, max: 8.5}
+          note: aquarium data quoted by FishBase
+        - source: *ratgeber
+          value: {min: 7.2, max: 9.5}
+          note: wide care-sheet range, not corroborated
+        - source: *garnelio
+          value: {min: 7.5, max: 8.5}
+          note: retailer care sheet
+
+  ghDgh:
+    value: {min: 3, max: 5}
+    confidence: high
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    rationale: >-
+      Lake Malawi endemic; the natural range is the total hardness of the lake water. Calcium and
+      magnesium measured in the upper 50 m of the north basin (Branchu et al. 2010) give 4.2 to 4.6
+      dGH, and the titrations of the 1960s compiled by FAO give 3.2 to 4.9 dGH, so the range is 3
+      to 5 dGH. Care sheets that ask for 10 dGH or more describe aquarium practice, not the
+      habitat. All four votes proposed this range.
+    sources:
+      - *branchu
+      - *fao
+    evidence:
+      - source: *branchu
+        value: {min: 4.2, max: 4.6}
+        note: computed from calcium and magnesium of the upper 50 m
+      - source: *fao
+        value: {min: 3.2, max: 4.9}
+        note: computed from 1960s titrations
+    tolerance:
+      value: {min: 3, max: 25}
+      confidence: medium
+      verification:
+        method: qualified-majority
+        votes: {agree: 4, total: 5}
+      rationale: >-
+        Four of five votes proposed 3 to 25 dGH; checker-b proposed 3 to 15 dGH. The lower bound is
+        the hardness of the lake, in which the species lives all its life; Garnelio and Aquarium
+        Ratgeber also start at 3 dGH. For the upper bound Seriously Fish, Tropical Freshwater Fish
+        and AquaInfo give 10 to 25 dGH and Fishkeeper allows up to 25; FishProfiles stops at 20,
+        MadPeces and FishBase at 15 and Aquarium Ratgeber at 12. Many of these sheets treat Lake
+        Malawi as hard water and so confuse hardness with alkalinity, but none reports harm in hard
+        tap water up to 25 dGH, which mbuna keepers widely use. The care sheets give ranges without
+        long-term data, so the confidence is medium.
+      sources:
+        - *sf
+        - *fk
+        - *tff
+        - *aquainfo
+        - *fb
+        - &fp
+          kind: database
+          title: "FishProfiles.com: Melanochromis auratus"
+          url: https://fishprofiles.com/profiles/freshwater/Cichlids/Melanochromis_auratus
+          accessed: 2026-10-13
+        - *ratgeber
+        - *branchu
+        - *fao
+        - &madpeces
+          kind: website
+          title: "MadPeces (retailer): Melanochromis auratus, product page with husbandry sheet"
+          url: https://madpeces.com/es/ciclidos-africanos/265-melanochromis-auratus.html
+          accessed: 2026-10-13
+        - *garnelio
+      evidence:
+        - source: *sf
+          value: {min: 10, max: 25}
+          note: aquarium recommendation
+        - source: *tff
+          value: {min: 10, max: 25}
+          note: aquarium recommendation, 20 named as ideal
+        - source: *aquainfo
+          value: {min: 10, max: 25}
+          note: aquarium recommendation
+        - source: *fk
+          value: {max: 25}
+          note: aquarium recommendation, upper limit only
+        - source: *fp
+          value: {min: 10, max: 20}
+          note: aquarium recommendation
+        - source: *fb
+          value: {min: 10, max: 15}
+          note: aquarium data quoted by FishBase
+        - source: *ratgeber
+          value: {min: 3, max: 12}
+          note: aquarium recommendation
+        - source: *madpeces
+          value: {min: 8, max: 15}
+          note: retailer care sheet
+        - source: *garnelio
+          value: {min: 3, max: 15}
+          note: retailer care sheet
+        - source: *branchu
+          value: {min: 4.2, max: 4.6}
+          note: lake water in which the species lives permanently
+        - source: *fao
+          value: {min: 3.2, max: 4.9}
+          note: lake water in which the species lives permanently
+
+  khDkh:
+    value: {min: 5, max: 8}
+    confidence: high
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    rationale: >-
+      Lake Malawi endemic; the natural range is the carbonate hardness of the lake. Alkalinity of
+      2.33 to 2.46 meq/L in the Branchu et al. (2010) profiles and 2.00 to 2.59 meq/L after Jackson
+      et al. (1963) convert to 6.5 to 6.9 and 5.6 to 7.3 dKH, so the range is 5 to 8 dKH. Sodium
+      balances part of the bicarbonate, which is why carbonate hardness exceeds total hardness in
+      this lake. All four votes proposed this range.
+    sources:
+      - *branchu
+      - *fao
+    evidence:
+      - source: *branchu
+        value: {min: 6.5, max: 6.9}
+        note: computed from alkalinity profiles
+      - source: *fao
+        value: {min: 5.6, max: 7.3}
+        note: computed from 1960s alkalinity data
+    tolerance:
+      value: {min: 5, max: 12}
+      confidence: low
+      verification:
+        method: unanimous
+        votes: {agree: 4, total: 4}
+      rationale: >-
+        The four votes proposed 5 to 12 (generator, checker-a), 5 to 14 (checker-b) and 5 to 10 dKH
+        (checker-c); their bounds lie within 2 dKH of 5 to 12, so they count as agreeing. Few
+        husbandry sources give a carbonate hardness for this species: The Tropical Tank asks for at
+        least 6 and ideally 10 to 12 dKH, MadPeces for 6 to 10 dKH, and Aquarium Ratgeber prints 3
+        to 12 in a row labelled KH but with a GH unit. A retailer sheet gives 0 to 8 dKH, which
+        contradicts its own pH advice and is not followed. The tolerance spans the lake minimum to
+        the upper care-sheet value; the thin evidence keeps the confidence low.
+      sources:
+        - *tt
+        - *ratgeber
+        - *branchu
+        - *fao
+        - *madpeces
+        - *garnelio
+      evidence:
+        - source: *tt
+          value: {min: 6, max: 12}
+          note: aquarium recommendation, 10 to 12 as ideal
+        - source: *madpeces
+          value: {min: 6, max: 10}
+          note: retailer care sheet
+        - source: *ratgeber
+          value: {min: 3, max: 12}
+          note: KH row printed with a GH unit, read as dKH
+        - source: *garnelio
+          value: {min: 0, max: 8}
+          note: retailer care sheet, internally inconsistent
+        - source: *branchu
+          value: {min: 6.5, max: 6.9}
+          note: lake water in which the species lives permanently
+        - source: *fao
+          value: {min: 5.6, max: 7.3}
+          note: lake water in which the species lives permanently
+
+  maxSizeCm:
+    value: {male: 12, female: 10}
+    confidence: medium
+    rationale: >-
+      FishBase gives 11 cm total length for males or unsexed fish, Seriously Fish 11 cm standard
+      length (about 13 cm total length), Fishkeeper 11 cm and TFH Magazine 13 cm total length.
+      Tropical Freshwater Fish and AquaInfo separate the sexes at 12 cm for males and 10 cm for
+      females; Malawi.si, Garnelio and the German Wikipedia give about 11 and 9 cm. Males are larger
+      than females in every source that compares them. 12 and 10 cm fit well-kept adult aquarium
+      fish; 13 cm is an exceptional size.
+    sources:
+      - *fb
+      - *sf
+      - *fk
+      - *tff
+      - *aquainfo
+      - &tfh
+        kind: literature
+        title: "Tropical Fish Hobbyist Magazine: Golden Cichlid (Melanochromis auratus), species profile"
+        url: https://www.tfhmagazine.com/articles/freshwater/melanochromis-auratus
+        accessed: 2026-10-13
+      - &malawisi
+        kind: database
+        title: "Malawi.si: Melanochromis auratus 'Chipoka'"
+        url: https://www.malawi.si/MalawiByLocations/Chipoka/slides/Melanochromis%20auratus%20%27Chipoka%27.html
+        accessed: 2026-10-13
+      - *garnelio
+      - &wde
+        kind: website
+        title: "Wikipedia (de): Türkisgoldbarsch"
+        url: https://de.wikipedia.org/wiki/T%C3%BCrkisgoldbarsch
+        accessed: 2026-10-13
+    evidence:
+      - source: *fb
+        value: {male: 11, female: 11}
+        note: total length, sexes not separated
+      - source: *sf
+        value: {male: 11, female: 11}
+        note: standard length, sexes not separated
+      - source: *fk
+        value: {male: 11, female: 11}
+        note: sexes not separated
+      - source: *tff
+        value: {male: 12, female: 10}
+      - source: *aquainfo
+        value: {male: 12, female: 10}
+      - source: *tfh
+        value: {male: 13, female: 13}
+        note: total length, sexes not separated
+      - source: *malawisi
+        value: {male: 11, female: 9}
+      - source: *garnelio
+        value: {male: 11, female: 9}
+      - source: *wde
+        value: {male: 11, female: 9}
+
+  predation:
+    value: 1
+    confidence: medium
+    verification:
+      method: qualified-majority
+      votes: {agree: 4, total: 5}
+    rationale: >-
+      Four of five votes chose level 1; checker-b chose level 0. The species is mainly a grazer of
+      the rock biocover (FishBase, Konings and Stauffer 2012) with a mouth built for algae, unlike
+      the fry-hunting congeners (Seriously Fish on M. chipokae). Genner and Turner describe it as a
+      roaming opportunist that forages in the territories of other mbuna and list fry among the
+      foods of mbuna. Herder et al. (2022) found fish remains, fish eggs and larvae among a broad
+      range of items in the stomachs of golden cichlids introduced to Lake Poso, and hobby sheets
+      (FishProfiles, Aquarismo Paulista) note that small fish and newborn fry are eaten when met.
+      Konings and Stauffer report cichlid fry in stomachs of the biocover-feeding congener M.
+      loriae. A tank study shows it hunts mosquito larvae almost as eagerly as a betta, which
+      underlines its readiness to take small live prey. No source reports that it hunts fish of
+      any size, so level 2 is excluded; it takes fry and very small fish when the chance arises.
+    sources:
+      - &gt
+        kind: literature
+        title: >-
+          Genner, M. J. and Turner, G. F. (2005). The mbuna cichlids of Lake Malawi: a model for
+          rapid speciation and adaptive radiation. Fish and Fisheries 6(1), 1-34.
+        url: https://doi.org/10.1111/j.1467-2679.2005.00173.x
+        accessed: 2026-10-13
+      - &herder
+        kind: literature
+        title: >-
+          Herder, F. et al. (2022). More non-native fish species than natives, and an invasion of
+          Malawi cichlids, in ancient Lake Poso, Sulawesi, Indonesia. Aquatic Invasions 17(1)
+          (abstract).
+        url: https://doi.org/10.3391/ai.2022.17.1.05
+        accessed: 2026-10-13
+      - *ks
+      - *fb
+      - *sf
+      - &sfc
+        kind: database
+        title: "Seriously Fish: Melanochromis chipokae"
+        url: https://www.seriouslyfish.com/species/melanochromis-chipokae/
+        accessed: 2026-10-13
+      - *fp
+      - *tt
+      - &hd
+        kind: literature
+        title: >-
+          Prasetiyanti, N., Ningrum, P. and Pujiati, R. (2026). Comparative predation efficiency of
+          betta fish (Betta splendens) and golden cichlid (Melanochromis auratus) against Aedes
+          aegypti larvae. Health Dynamics 3(2), 74-79 (abstract).
+        url: https://doi.org/10.33846/hd30205
+        accessed: 2026-10-13
+      - *paulista
+    evidence:
+      - source: *gt
+        value: 1
+        note: roaming opportunist; fry named among mbuna foods in general, not for this species
+      - source: *herder
+        value: 1
+        note: fish remains, eggs and larvae in stomachs of introduced fish; frequency and prey size not given
+      - source: *ks
+        value: 0
+        note: places M. auratus among the herbivorous species; cichlid fry reported only for M. loriae
+      - source: *fb
+        value: 0
+        note: feeds by nibbling algae from the rock cover
+      - source: *sf
+        value: 0
+        note: vegetable food plus live and frozen invertebrates, no fish named
+      - source: *sfc
+        value: 0
+        note: contrasts the algae-feeding mouth of M. auratus with fry-eating congeners
+      - source: *fp
+        value: 1
+        note: lists small fish among accepted foods
+      - source: *tt
+        value: 0
+        note: algae and the organisms in it
+      - source: *paulista
+        value: 1
+        note: newborn fish eaten when encountered
+
+  diet:
+    value:
+      type: aufwuchs
+      bloatSensitive: true
+      foods: [algae and biofilm, spirulina flakes, vegetable-based pellets, blanched spinach, small invertebrates]
+    confidence: medium
+    verification:
+      method: qualified-majority
+      votes: {agree: 4, total: 5}
+    rationale: >-
+      Four of five votes chose aufwuchs with bloat sensitivity; checker-a chose omnivore, also bloat
+      sensitive. In the lake the species nibbles and picks algae from the rock biocover (FishBase,
+      trophic level 2.0), and the stomach-content study of Reinthal (1990), as summarised by
+      FishBase, records plant material as its main food. Konings and Stauffer (2012) place it in
+      the herbivorous group of the genus, and TFH Magazine and The Tropical Tank describe an algae
+      grazer that takes the small animals living in the algal mat. Genner and Turner call it a
+      roaming opportunist, and Seriously Fish and Fishkeeper accept animal food as a supplement,
+      which explains the omnivore view; no source makes animal food a main part of its diet. As a
+      biocover grazer it is treated as bloat sensitive: Practical Fishkeeping links rich diets to
+      bloat in mbuna and Aquarismo Paulista warns against excess animal protein. A 16-week feeding
+      trial (Karadal et al. 2018) found good growth on high-protein pellets but says nothing about
+      long-term bloat risk.
+    sources:
+      - *fb
+      - &fbdiet
+        kind: database
+        title: "FishBase diet composition: Melanochromis auratus (after Reinthal 1990)"
+        url: https://www.fishbase.se/TrophicEco/DietCompoList.php?ID=2343&GenusName=Melanochromis&SpeciesName=auratus&fc=349&StockCode=2537
+        accessed: 2026-10-13
+      - &reinthal
+        kind: literature
+        title: >-
+          Reinthal, P. N. (1990). The feeding habits of a group of herbivorous rock-dwelling cichlid
+          fishes (Cichlidae: Perciformes) from Lake Malawi, Africa. Environmental Biology of Fishes
+          27(3), 215-233 (abstract; species data via FishBase).
+        url: https://doi.org/10.1007/BF00001674
+        accessed: 2026-10-13
+      - *ks
+      - *tfh
+      - *sf
+      - *sfc
+      - *tt
+      - *gt
+      - *fk
+      - &pfk
+        kind: literature
+        title: "Gay, J.: The mbuna keeper's survival guide. Practical Fishkeeping (online feature)"
+        url: https://www.practicalfishkeeping.co.uk/features/the-mbuna-keepers-survival-guide/
+        accessed: 2026-10-13
+      - &karadal
+        kind: literature
+        title: >-
+          Karadal, O., Güroy, D. and Türkmen, G. (2018). Effects of feed type and feeding frequency
+          on growth performance, reproductive efficiency and skin coloration of auratus cichlids
+          (Melanochromis auratus). Aquaculture Studies 18(2).
+        url: https://doi.org/10.4194/2618-6381-v18_2_07
+        accessed: 2026-10-13
+      - *herder
+      - *paulista
+      - &cfa
+        kind: website
+        title: "Cichlid-Forum: Melanochromis auratus (species article)"
+        url: https://www.cichlid-forum.com/articles/m_auratus.php
+        accessed: 2026-10-13
+      - &houston
+        kind: website
+        title: "Houston Fishbox: Auratus cichlid, Melanochromis auratus, member profile"
+        url: https://www.houstonfishbox.com/articles/freshwater-profiles/952031-auratus-cichlid-melanochromis-auratus
+        accessed: 2026-10-13
+    evidence:
+      - source: *fb
+        value: {type: aufwuchs}
+        note: nibbles algae from the rock cover, trophic level 2.0
+      - source: *fbdiet
+        value: {type: aufwuchs}
+        note: plant material as main food of wild juveniles and adults
+      - source: *ks
+        value: {type: aufwuchs}
+        note: herbivorous group of the genus
+      - source: *tfh
+        value: {type: aufwuchs}
+        note: algae and aufwuchs grazer
+      - source: *tt
+        value: {type: aufwuchs, bloatSensitive: true}
+        note: algae and the organisms within it; vegetable food needed
+      - source: *sf
+        value: {type: omnivore, bloatSensitive: true}
+        note: accepts most foods, vegetable matter should form a large part
+      - source: *fk
+        value: {type: omnivore, bloatSensitive: true}
+        note: regular vegetable food, animal food as an occasional extra
+      - source: *gt
+        value: {type: omnivore}
+        note: roaming opportunist; bloat not addressed
+      - source: *pfk
+        value: {type: aufwuchs, bloatSensitive: true}
+        note: mbuna in general; rich diets among the causes of bloat
+      - source: *paulista
+        value: {type: aufwuchs, bloatSensitive: true}
+        note: plant-based staple, caution against excess animal protein
+      - source: *herder
+        value: {type: omnivore}
+        note: broad plant and animal diet of introduced fish in Lake Poso
+      - source: *cfa
+        value: {type: aufwuchs}
+        note: aufwuchs feeder, invertebrates secondary
+      - source: *houston
+        value: {type: omnivore, bloatSensitive: true}
+        note: lists Malawi bloat as a common disease
+
+  aggressionConspecific:
+    value: 4
+    confidence: high
+    rationale: >-
+      All sources rank it among the most aggressive mbuna towards its own kind, and all four votes
+      chose level 4. A dominant male usually kills rival males once they colour up and may kill
+      females that are not ready to spawn when they cannot escape; Seriously Fish expects
+      subdominant males to die even in large tanks (also Oliver, TFH Magazine, Fishkeeper,
+      Malawi.si). Females form a strict hierarchy of their own (Nelissen 1985) and can turn
+      aggressive and take on male colours. Keeping it needs a harem, many caves and experience.
+    sources:
+      - *sf
+      - *tfh
+      - &oliver
+        kind: database
+        title: "Oliver, M. K.: Melanochromis auratus. The Cichlid Fishes of Lake Malawi, Africa (malawicichlids.com)"
+        url: https://www.malawicichlids.com/mw09002a.htm
+        accessed: 2026-10-13
+      - *fk
+      - *malawisi
+      - *fb
+      - &nelissen
+        kind: literature
+        title: >-
+          Nelissen, M. H. J. (1985). Structure of the dominance hierarchy and dominance determining
+          "group factors" in Melanochromis auratus (Pisces, Cichlidae). Behaviour 94(1-2), 85-107
+          (abstract).
+        url: https://doi.org/10.1163/156853985x00280
+        accessed: 2026-10-13
+      - &a1925
+        kind: archive
+        title: cichlids.com forum thread 1925
+        url: https://www.cichlids.com/disc/read.php?1,1925
+        accessed: 2026-10-13
+    evidence:
+      - source: *sf
+        value: 4
+        note: subdominant males likely killed even in large tanks
+      - source: *tfh
+        value: 4
+        note: dominant male kills other males and some females
+      - source: *oliver
+        value: 4
+        note: dominant male tries to kill other males and unready females
+      - source: *fk
+        value: 4
+        note: a single female with a male is harassed to death
+      - source: *malawisi
+        value: 4
+        note: only one male per tank because of strong aggression
+      - source: *fb
+        value: 3
+        note: aggressive towards conspecifics, no detail
+      - source: *nelissen
+        value: 2
+        note: linear dominance hierarchy in laboratory groups
+
+  aggressionHeterospecific:
+    value: 3
+    confidence: medium
+    rationale: >-
+      Three of four votes chose level 3; checker-c chose level 4. The male attacks other fish well
+      beyond a spawning site and can stop other species from breeding, so tankmates must be robust
+      mbuna of similar size; peaceful haplochromines such as peacocks and utaka are unsuitable
+      (Seriously Fish, Fishkeeper). TFH Magazine describes males that attack any tankmate, even much
+      larger fish, and prefers a species tank, which points towards level 4. Seriously Fish,
+      Fishkeeper, AquaInfo, The Tropical Tank and Malawi.si, however, keep it in mixed communities
+      of robust, differently coloured mbuna, and Malawi.si finds it less hostile to other species
+      than to its own. Level 3 reflects this established mixed-mbuna practice; the compatibility
+      check already demands comparable size and robustness from tankmates at this level.
+    sources:
+      - *sf
+      - *tfh
+      - *fk
+      - *aquainfo
+      - *tt
+      - *malawisi
+      - &a1092
+        kind: archive
+        title: cichlids.com forum thread 1092
+        url: https://www.cichlids.com/disc/read.php?1,1092
+        accessed: 2026-10-13
+      - &a1136
+        kind: archive
+        title: cichlids.com forum thread 1136
+        url: https://www.cichlids.com/disc/read.php?1,1136
+        accessed: 2026-10-13
+      - *a1925
+    evidence:
+      - source: *sf
+        value: 3
+        note: only with robust mbuna of a different pattern, never with peaceful species
+      - source: *fk
+        value: 3
+        note: with outgoing mbuna that hold their own
+      - source: *tt
+        value: 3
+        note: combine with larger mbuna
+      - source: *tfh
+        value: 4
+        note: attacks any tankmate, even much larger fish
+      - source: *malawisi
+        value: 2
+        note: less aggressive towards other species than towards its own
+      - source: *a1092
+        value: 3
+        note: very aggressive towards small Central and South American cichlids
+      - source: *a1925
+        value: 3
+        note: one fish had to be separated after attacking other mbuna
+
+  territory:
+    value: {size: large, breedingOnly: false}
+    confidence: medium
+    rationale: >-
+      All four votes agree. Males hold territories among the rocks all year, as mbuna males do in
+      the lake (Genner and Turner). TFH Magazine reports that a male in the wild defends an area
+      larger than most home aquaria, and in tanks of ordinary size the dominant male claims most of
+      the rockwork and treats newcomers as intruders (Seriously Fish, Fishkeeper, Malawi.si). No
+      source gives an area, so the size class rests on these descriptions.
+    sources:
+      - *tfh
+      - *sf
+      - *fk
+      - *malawisi
+      - *gt
+    evidence:
+      - source: *tfh
+        value: {size: large, breedingOnly: false}
+        note: wild territory larger than typical aquaria
+      - source: *sf
+        value: {size: large, breedingOnly: false}
+        note: one of the most territorial mbuna
+      - source: *fk
+        value: {size: large, breedingOnly: false}
+        note: established male defends the tank against newcomers
+      - source: *malawisi
+        value: {size: large, breedingOnly: false}
+        note: territorial in the tank almost all the time
+
+  habitatZones:
+    value: [rock]
+    confidence: high
+    rationale: >-
+      All four votes agree. It lives on rocky shores, reefs and around islands, including rocks with
+      a layer of sediment, and in the tank needs piled rocks with many caves (FishBase, Seriously
+      Fish, Fishkeeper, Malawi.si; confirmed by the Cichlid Room Companion). Its populations are tied
+      to rock patches separated by sand or deep water (Markert et al.). Sand is a suitable tank
+      floor between the rocks but not a zone the species uses.
+    sources:
+      - *fb
+      - *sf
+      - *fk
+      - *malawisi
+      - *markert
+      - *crc
+    evidence:
+      - source: *fb
+        value: [rock]
+      - source: *sf
+        value: [rock]
+      - source: *fk
+        value: [rock]
+        note: sediment-rich rocky habitat
+      - source: *malawisi
+        value: [rock]
+
+  social:
+    value: {structure: harem, ratio: 4}
+    confidence: high
+    rationale: >-
+      All four votes agree. Every source recommends one male with several females: at least three
+      (Seriously Fish, The Tropical Tank), three to four (Malawi.si), at least three and better four
+      or five (Oliver), at least four (Tropical Freshwater Fish) or five for breeding (Fishkeeper);
+      FishBase names many females per male, and a breeding trial used one male to four females
+      (Karadal et al. 2018). Four females per male is the middle of these figures.
+    sources:
+      - *sf
+      - *tt
+      - *malawisi
+      - *oliver
+      - *tff
+      - *fk
+      - *fb
+      - *karadal
+    evidence:
+      - source: *sf
+        value: {structure: harem, ratio: 3}
+      - source: *tt
+        value: {structure: harem, ratio: 3}
+      - source: *malawisi
+        value: {structure: harem, ratio: 4}
+        note: three to four females per male
+      - source: *oliver
+        value: {structure: harem, ratio: 4}
+        note: at least three, four or five preferred
+      - source: *tff
+        value: {structure: harem, ratio: 4}
+      - source: *fk
+        value: {structure: harem, ratio: 5}
+        note: breeding recommendation
+      - source: *karadal
+        value: {structure: harem, ratio: 4}
+        note: ratio of the breeding groups in the trial
+
+  speciesOnly:
+    value: false
+    confidence: medium
+    verification:
+      method: unanimous
+      votes: {agree: 4, total: 4}
+    rationale: >-
+      All four votes chose false. Seriously Fish, Fishkeeper, The Tropical Tank, AquaInfo and
+      Malawi.si keep it with robust mbuna that look different, Tropical Freshwater Fish suggests
+      mbuna and Synodontis as companions and Oliver recommends dither fish to distract the male.
+      TFH Magazine and a retailer prefer a species tank because of its aggression and the risk of
+      crosses, but the hobby does not restrict it to its own species as it does Tropheus. The real
+      restrictions are covered by its aggression levels and the Melanochromis hybrid group.
+    sources:
+      - *sf
+      - *fk
+      - *tt
+      - *tff
+      - *aquainfo
+      - *malawisi
+      - *oliver
+      - *tfh
+      - *garnelio
+    evidence:
+      - source: *sf
+        value: false
+        note: possible with mbuna that look different
+      - source: *fk
+        value: false
+        note: Malawi cichlid community
+      - source: *tt
+        value: false
+        note: combine with larger mbuna
+      - source: *tff
+        value: false
+        note: suggests small haplochromines, mbuna and Synodontis
+      - source: *aquainfo
+        value: false
+        note: other mbuna genera allowed, other Melanochromis excluded
+      - source: *malawisi
+        value: false
+      - source: *oliver
+        value: false
+        note: dither fish recommended
+      - source: *tfh
+        value: true
+        note: single-species tank recommended
+      - source: *garnelio
+        value: true
+        note: species tank recommended
+
+  hybridGroup:
+    value: melanochromis
+    confidence: medium
+    verification:
+      method: qualified-majority
+      votes: {agree: 4, total: 5}
+    rationale: >-
+      Four of five votes chose the new group melanochromis; checker-b proposed no group because it
+      found only one crossing warning. Five independent references warn that M. auratus crosses
+      with other Melanochromis and must not share a tank with them: Seriously Fish on its pages for
+      M. auratus and M. chipokae, TFH Magazine (which adds that a dominant male may spawn with
+      females of other genera too), the species pages of the ichthyologist M. K. Oliver and
+      AquaInfo; a cichlids.com forum thread reports the same concern for M. chipokae. Every warning
+      names the genus as a whole and none singles out particular species, so the group covers all
+      15 species that the Catalog of Fishes lists as valid in Melanochromis. Striped species that
+      the catalog places in Pseudotropheus today (P. johannii, P. cyaneorhabdos, P. interruptus, P.
+      perileucos) are not members, because no source names them as crossing partners. No published
+      cross between M. auratus and a named congener was found, and Konings and Stauffer (2012) saw
+      no hybrids where M. loriae was introduced among M. heterochromis in the lake, so the group
+      rests on consistent hobby warnings and the close relationship within the genus.
+    sources:
+      - *sf
+      - *sfc
+      - *tfh
+      - *oliver
+      - *aquainfo
+      - *cof
+      - &cofp
+        kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes, species of the genus Pseudotropheus"
+        url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Pseudotropheus
+        accessed: 2026-10-13
+      - *ks
+      - &a14875
+        kind: archive
+        title: cichlids.com forum thread 14875
+        url: https://www.cichlids.com/disc/read.php?2,14875
+        accessed: 2026-10-13
+    evidence:
+      - source: *sf
+        value: melanochromis
+        note: other Melanochromis may hybridise with it
+      - source: *sfc
+        value: melanochromis
+        note: Melanochromis species must never be mixed because they may hybridise
+      - source: *tfh
+        value: melanochromis
+        note: expects crosses with any Melanochromis, perhaps also other genera
+      - source: *oliver
+        value: melanochromis
+        note: other Melanochromis in the same tank are apt to hybridise
+      - source: *aquainfo
+        value: melanochromis
+        note: excludes other Melanochromis because of crossing risk
+      - source: *ks
+        value: null
+        note: no hybrids between introduced M. loriae and native M. heterochromis in the lake; says nothing on aquaria
+      - source: *a14875
+        value: melanochromis
+        note: crossing risk with M. chipokae
+
+  coloration:
+    value: {baseColors: [black, blue], pattern: stripes}
+    confidence: high
+    rationale: >-
+      Dominant adult males are black to dark purplish brown with two light horizontal stripes that
+      range from bluish white to turquoise or pale yellow (Seriously Fish, TFH Magazine,
+      Fishkeeper, AquaInfo). Three of four votes listed black and blue; checker-a added white for
+      the pale stripes, which the blue entry already covers. Juveniles, females and subdominant
+      males are golden yellow with black, white-edged stripes, so the yellow form also resembles
+      other yellow striped mbuna.
+    sources:
+      - *sf
+      - *tfh
+      - *fk
+      - *aquainfo
+      - *oliver
+      - *tff
+      - *wde
+      - &a2497
+        kind: archive
+        title: cichlids.com forum thread 2497
+        url: https://www.cichlids.com/disc/read.php?1,2497
+        accessed: 2026-10-13
+    evidence:
+      - source: *tfh
+        value: {baseColors: [black, blue, white], pattern: stripes}
+        note: purplish black male with bluish white stripes
+      - source: *aquainfo
+        value: {baseColors: [black, blue], pattern: stripes}
+      - source: *oliver
+        value: {baseColors: [black, white], pattern: stripes}
+      - source: *fk
+        value: {baseColors: [black, white], pattern: stripes}
+
+  feedingSpeed:
+    value: hasty
+    confidence: low
+    rationale: >-
+      All four votes chose hasty. It takes any food quickly and competes hard at feeding time like
+      other mbuna, which the rubric names as hasty feeders, and it forages opportunistically in the
+      lake (Genner and Turner). No source rates its feeding speed directly, so the value rests on
+      general mbuna experience.
+    sources:
+      - *sf
+      - *gt
+      - kind: model-knowledge
+        title: General mbuna feeding behaviour as described in the rubric
+
+  minTank:
+    value: {volumeL: 240, lengthCm: 120, depthCm: 45}
+    confidence: medium
+    rationale: >-
+      For one male with four females Seriously Fish gives a base of 120 x 45 cm and about 205 litres
+      as an absolute minimum, Fishkeeper a 120 cm tank, Oliver and TFH Magazine 55 US gallons (about
+      210 litres) and a retailer 250 litres or more; FishBase and Tropical Freshwater Fish name 80 to
+      100 cm, which is too small for this aggression. AquaInfo and Malawi.si recommend about 400
+      litres and AquaInfo 150 cm. The proposals were 240 litres (generator), 200 (checker-a), 205
+      (checker-b), all on a 120 x 45 cm base, and 400 litres on 150 x 50 cm (checker-c). A 120 x 45
+      cm tank of about 240 litres gross volume meets the minimum figures of most sources with some
+      margin; a mixed mbuna community needs the larger 150 cm and 400 litre tanks.
+    sources:
+      - *sf
+      - *fk
+      - *oliver
+      - *tfh
+      - *aquainfo
+      - *malawisi
+      - *fb
+      - *tff
+      - *garnelio
+    evidence:
+      - source: *sf
+        value: {volumeL: 205, lengthCm: 120, depthCm: 45}
+        note: absolute minimum
+      - source: *tfh
+        value: {volumeL: 208}
+        note: 55 US gallons, larger preferred
+      - source: *oliver
+        value: {volumeL: 208}
+        note: 55 US gallons
+      - source: *aquainfo
+        value: {volumeL: 400, lengthCm: 150}
+      - source: *malawisi
+        value: {volumeL: 400}
+      - source: *fb
+        value: {lengthCm: 100}
+      - source: *garnelio
+        value: {volumeL: 250}
+        note: for a group
+
+  lifespanYears:
+    value: {min: 5, max: 10}
+    confidence: low
+    rationale: >-
+      Only hobby and retail pages give a lifespan: five years or more (Aquarismo Paulista), about
+      five years (Houston Fishbox, The iFISH Store), seven to nine years with good care (Garnelio) and up
+      to ten years in a well-kept tank (AquaInfo). The proposals were 7 to 9 (generator), 5 to 9
+      (checker-a, checker-b) and 5 to 10 years (checker-c); the range 5 to 10 covers all stated
+      values. No scientific or database source gives a value.
+    sources:
+      - *aquainfo
+      - *paulista
+      - *garnelio
+      - *houston
+      - &ifish
+        kind: website
+        title: "The iFISH Store (retailer): African Cichlid, Auratus Cichlid"
+        url: https://theifishstore.com/collections/all/products/african-cichlid-auratus-cichlid
+        accessed: 2026-10-13
+    evidence:
+      - source: *aquainfo
+        value: {min: 10, max: 10}
+        note: upper estimate for a well-kept aquarium
+      - source: *paulista
+        value: {min: 5, max: 5}
+        note: five years or more
+      - source: *garnelio
+        value: {min: 7, max: 9}
+      - source: *houston
+        value: {min: 5, max: 5}
+
+  breeding:
+    value: maternal-mouthbrooder
+    confidence: high
+    rationale: >-
+      All four votes agree. The female lays a small clutch of up to about 40 eggs at a site cleaned
+      by the male, takes them into her mouth and broods them for about three weeks, then guards the
+      free-swimming fry for some days. FishBase, Seriously Fish, Fishkeeper, TFH Magazine and the
+      Cichlid Room Companion agree, and all mbuna are maternal mouthbrooders (Genner and Turner).
+    sources:
+      - *fb
+      - *sf
+      - *fk
+      - *tfh
+      - *gt
+      - *crc
+    evidence:
+      - source: *fb
+        value: maternal-mouthbrooder
+      - source: *tfh
+        value: maternal-mouthbrooder
+      - source: *crc
+        value: maternal-mouthbrooder
+        note: public summary, used to confirm
+
+  beginnerSuitability:
+    value: demanding
+    confidence: medium
+    rationale: >-
+      The votes split evenly between moderate (generator, checker-b) and demanding (checker-a,
+      checker-c). The fish is hardy, cheap and easy to feed, but Seriously Fish, TFH Magazine and
+      Oliver all advise beginners against it because its aggression is very hard to manage and often
+      costs the lives of tankmates. Its conspecific aggression level 4 by definition requires
+      experience. Only a retailer calls it a beginner fish. The explicit warnings of the reliable
+      sources decide for demanding.
+    sources:
+      - *sf
+      - *tfh
+      - *oliver
+      - *garnelio
+    evidence:
+      - source: *sf
+        value: demanding
+        note: not recommended for the beginner
+      - source: *tfh
+        value: demanding
+        note: not a species for the novice
+      - source: *oliver
+        value: demanding
+        note: not a good choice for the novice
+      - source: *garnelio
+        value: easy
+
+partners:
+  suitable:
+    - species: Labeotropheus fuelleborni
+      reason: Robust, larger rock-dwelling mbuna with the same grazing diet and water needs; its shape and colours differ from M. auratus.
+      condition: Tank of at least 150 cm with many caves; only one male of each species.
+    - species: Maylandia estherae
+      reason: Sturdy, similarly sized mbuna that holds its own against M. auratus, eats the same plant-based food and lacks the striped pattern.
+      condition: Do not combine with other Maylandia, which cross with it; tank of at least 150 cm.
+    - species: Maylandia callainos
+      reason: Plain blue robust mbuna of similar size and diet that does not resemble M. auratus.
+      condition: Do not combine with other Maylandia; tank of at least 150 cm.
+    - species: Synodontis multipunctatus
+      reason: Bottom-dwelling catfish that lives below the rock zone and is ignored by most mbuna; accepts hard alkaline water.
+      condition: Keep in a group with enough hiding places.
+  unsuitable:
+    - species: Melanochromis chipokae
+      reason: Closely related look-alike of the same hybrid group that may cross with M. auratus; both are extremely aggressive and fight to the death.
+    - species: Other Melanochromis species
+      reason: All valid Melanochromis belong to the same hybrid group, and the hobby warns that they cross with M. auratus.
+    - species: Pseudotropheus johannii
+      reason: Males are dark with light horizontal stripes like M. auratus males and are attacked as rivals.
+    - species: Aulonocara
+      reason: Peaceful peacock cichlids are harassed and cannot breed; they also need more protein-rich food.
+    - species: Copadichromis
+      reason: Peaceful open-water utaka are chased constantly and stressed.
+    - species: Labidochromis caeruleus
+      reason: Yellow, more peaceful mbuna that resembles the golden females and is a frequent target.
+    - species: Mikrogeophagus ramirezi
+      reason: Small, peaceful South American cichlid for soft water; it would be injured and the water needs differ.
+
+profile:
+  overview:
+    text: >-
+      The golden mbuna is one of the best-known rock cichlids from Lake Malawi and has been a
+      staple of the trade for decades. Juveniles and females are bright golden yellow with black,
+      white-edged horizontal stripes, while a dominant male turns almost into the photographic
+      negative: dark brown to black with pale blue, whitish or yellowish stripes. It stays fairly
+      small at about 10 to 12 cm, is hardy and cheap, and that combination tempts many beginners.
+      The catch is its temper. Males are among the most intolerant mbuna and often kill rival
+      males and unwilling females in tanks that are too small or too open, which makes it a fish
+      for experienced keepers. With a large tank full of caves, a harem of females and robust,
+      differently coloured mbuna as company, it can be a lively and rewarding fish for keepers who
+      plan around its aggression.
+    sources:
+      - *sf
+      - *tfh
+      - *fb
+      - *oliver
+  habitat:
+    text: >-
+      Melanochromis auratus is endemic to Lake Malawi. It occurs along much of the western shore
+      from Jalo Reef down to Crocodile Rocks, around the southern end of the lake and a short way
+      up the south-eastern coast to Nkhomo Reef; the type specimen came from Monkey Bay. It lives
+      on rocky shores, reefs and around islands, including rock areas with a layer of sediment.
+      Its populations are strongly tied to these rock patches, and stretches of sand or deep water
+      between them limit exchange between neighbouring populations. The lake water is warm (about
+      21 to 29 C), moderately alkaline (pH 7.7 to 8.6) and rather soft, with 3 to 5 dGH and 5 to 8
+      dKH. Fish sold today are almost always aquarium bred, and released fish have established
+      populations in Mexico, Indonesia and Hong Kong.
+    sources:
+      - *cof
+      - *sf
+      - *markert
+      - *fao
+      - *branchu
+  sizeAndGrowth:
+    text: >-
+      Adult males usually reach about 11 to 12 cm in the aquarium, females stay smaller at around 9
+      to 10 cm. Reports of larger fish exist, but they are exceptional. Young males can start to
+      change into the dark male colours at around 5 cm, depending on their rank. A dominant male
+      can lose his dark colours and return to yellow when he is stressed or loses his position,
+      and old females may darken and resemble males. Hobby sources give a lifespan of about five to
+      ten years in good care; scientific data are lacking.
+    sources:
+      - *fb
+      - *sf
+      - *tff
+      - *aquainfo
+      - *wde
+      - *paulista
+  husbandry:
+    text: >-
+      Plan a tank of at least 120 x 45 cm and about 240 litres for one male and four females, and
+      150 cm or more if other mbuna join them. Build stable rock piles from the floor to near the
+      surface with many caves and broken sight lines, set directly on the tank bottom so digging
+      fish cannot topple them, and use sand as substrate. Strong filtration and frequent partial
+      water changes keep nitrate low. The fish tolerates a fairly wide range of water: 21 to 29 C,
+      pH 7.5 to 8.8, 3 to 25 dGH and 5 to 12 dKH are survivable long term, with a pH around 8 and 24
+      to 27 C as a comfortable middle. Many keepers stock mbuna tanks densely so that aggression is
+      spread over many fish, which only works with very good filtration.
+    sources:
+      - *sf
+      - *fk
+      - *tt
+      - *tfh
+      - *aquainfo
+  socialBehavior:
+    text: >-
+      This mbuna lives in a strict hierarchy. One male dominates and shows the dark colours, while
+      subordinate males stay yellow and are chased relentlessly; in most home tanks only one male
+      survives. Keep a single male with at least three, better four or more, females so that his
+      courtship is spread over several fish. Females are quarrelsome as well, form their own pecking
+      order and may turn dark and take over the male role when no male is present. The male claims
+      most of the rockwork and attacks other fish far beyond a single cave, especially fish that
+      look like rivals. Dense rockwork, many hiding places and a well-stocked community of robust
+      mbuna help to keep injuries rare.
+    sources:
+      - *sf
+      - *tfh
+      - *nelissen
+      - *fk
+      - *oliver
+  diet:
+    text: >-
+      In the lake the golden mbuna grazes the algal film on rocks and eats the small animals that
+      live in it, and it also feeds opportunistically in the territories of other fish. In the
+      aquarium the main food should be plant based: spirulina flakes or pellets for mbuna, and
+      blanched vegetables such as spinach or cucumber. Small amounts of frozen or live food, for
+      example mysis or mosquito larvae, are a welcome extra, especially to condition females, but
+      should not dominate the diet. Feed small portions once or twice a day so that every fish gets
+      a share without leftovers. Fatty, protein-heavy food such as beef heart or large amounts of
+      bloodworm is best avoided because of the risk of bloat.
+    sources:
+      - *fb
+      - *fbdiet
+      - *tfh
+      - *sf
+      - *fk
+      - *gt
+      - *pfk
+  breeding:
+    text: >-
+      Breeding is easy in principle but risky because of the male's aggression. Use a species tank
+      with one male and several females and plenty of caves, flat stones and patches of sand. The
+      male cleans a spawning site and drives ripe females there; the female lays her eggs in small
+      batches, picks them up at once and collects sperm from the male. She carries the brood in her
+      mouth for about three weeks without eating, then releases fully formed young, which she still
+      takes back into her mouth for some days when danger threatens. Clutches are small, up to about
+      40 eggs. Brooding females should not be moved too early, because stress can make them spit or
+      eat the brood. The fry take newly hatched brine shrimp and fine flakes from the start.
+    sources:
+      - *sf
+      - *fk
+      - *fb
+      - *wde
+  sexing:
+    text: >-
+      Adult males are easy to tell apart once they have reached dominance: their body turns dark
+      brown to black with light bluish, white or yellowish stripes, while females keep the golden
+      base colour with black stripes. The colour change can happen within days when a young male
+      rises in rank. Males also grow larger. Subordinate males, however, may keep the yellow
+      juvenile colours for a long time, so a group bought as yellow fish often contains several
+      males. Old females sometimes darken and look like males, and a female kept without a male may
+      take on male colours. Venting is the only reliable method for young fish.
+    sources:
+      - *sf
+      - *fk
+      - *tfh
+      - *wde
+  compatibility:
+    text: >-
+      Combine the golden mbuna only with robust rock-dwelling mbuna of similar or larger size that
+      look different, for example Labeotropheus or plain blue or orange Maylandia. Avoid all other
+      Melanochromis, because they may cross with it and fight fiercely, and avoid species whose
+      males are dark with light horizontal stripes, such as Pseudotropheus johannii. Yellow mbuna
+      like Labidochromis caeruleus are frequent targets because they resemble the golden females.
+      Peaceful Malawi haplochromines such as peacocks and utaka, and small or slow cichlids from
+      other regions, suffer badly in its presence. The fish eats fry and very small fish when it
+      can, but it is no hunter of larger fish. Its plant-based diet also fits other grazing mbuna
+      better than protein-hungry species.
+    sources:
+      - *sf
+      - *sfc
+      - *tt
+      - *tfh
+      - *oliver
+      - *aquainfo
+  problems:
+    text: >-
+      The most common mistake is buying a group of yellow juveniles for a small community tank.
+      As they mature, the dominant male kills rival males and harasses females to death, and
+      peaceful tankmates stop eating or breeding. Too few females, too few caves and open tanks make
+      this worse. Feeding too much protein-rich food can trigger bloat, an often fatal intestinal
+      problem of grazing mbuna that shows as a swollen belly, loss of appetite and white, stringy
+      faeces; a plant-based diet and moderate portions help to prevent it. Poor water quality from
+      dense stocking without enough filtration and water changes is another frequent cause of
+      losses. Mixing with other Melanochromis leads to hybrids that should not be passed on.
+    sources:
+      - *sf
+      - *tfh
+      - *fk
+      - *pfk
+      - &a15726
+        kind: archive
+        title: cichlids.com forum thread 15726
+        url: https://www.cichlids.com/disc/read.php?2,15726
+        accessed: 2026-10-13
+
+provenance:
+  runs:
+    - role: generator
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-13
+    - role: checker
+      model: gpt-6.1-sol
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: adjudicator
+      model: claude-opus-5-5
+      date: 2026-10-13
+  disagreements:
+    - field: features.predation
+      proposals:
+        - {by: generator, value: 1}
+        - {by: checker-a, value: 1}
+        - {by: checker-b, value: 0}
+        - {by: checker-c, value: 1}
+        - {by: tiebreaker-1, value: 1}
+      decision: 1
+      rationale: >-
+        Decided by the vote count, qualified majority of 4 of 5. Fish remains, eggs and larvae in
+        the stomachs of introduced fish (Herder et al. 2022), fry in a biocover-feeding congener and
+        hobby reports of eaten fry support level 1; no source reports hunting of larger fish.
+    - field: features.diet
+      proposals:
+        - {by: generator, value: {type: aufwuchs, bloatSensitive: true}}
+        - {by: checker-a, value: {type: omnivore, bloatSensitive: true}}
+        - {by: checker-b, value: {type: aufwuchs, bloatSensitive: true}}
+        - {by: checker-c, value: {type: aufwuchs, bloatSensitive: true}}
+        - {by: tiebreaker-1, value: {type: aufwuchs, bloatSensitive: true}}
+      decision: {type: aufwuchs, bloatSensitive: true}
+      rationale: >-
+        Decided by the vote count, qualified majority of 4 of 5. Wild stomach contents and the genus
+        review show a biocover grazer; animal food is only a supplement.
+    - field: features.hybridGroup
+      proposals:
+        - {by: generator, value: melanochromis}
+        - {by: checker-a, value: melanochromis}
+        - {by: checker-b, value: null}
+        - {by: checker-c, value: melanochromis}
+        - {by: tiebreaker-1, value: melanochromis}
+      decision: melanochromis
+      rationale: >-
+        Decided by the vote count, qualified majority of 4 of 5. The proposals also differed on the
+        scope of the new group: the generator named M. auratus, M. chipokae and M. loriae, checker-a
+        added the striped species now in Pseudotropheus by hobby usage, checker-c asked for current
+        valid names only, and tiebreaker-1 proposed all valid Melanochromis. Because every warning
+        is phrased for the genus and none names a single species, the group takes all 15 valid
+        Melanochromis species and no Pseudotropheus species.
+    - field: features.ghDgh.tolerance
+      proposals:
+        - {by: generator, value: {min: 3, max: 25}}
+        - {by: checker-a, value: {min: 3, max: 25}}
+        - {by: checker-b, value: {min: 3, max: 15}}
+        - {by: checker-c, value: {min: 3, max: 25}}
+        - {by: tiebreaker-1, value: {min: 3, max: 25}}
+      decision: {min: 3, max: 25}
+      rationale: >-
+        Decided by the vote count, qualified majority of 4 of 5. Most care sheets allow up to 25
+        dGH; the lower FishBase limit of 15 stands alone.
+    - field: features.khDkh.tolerance
+      proposals:
+        - {by: generator, value: {min: 5, max: 12}}
+        - {by: checker-a, value: {min: 5, max: 12}}
+        - {by: checker-b, value: {min: 5, max: 14}}
+        - {by: checker-c, value: {min: 5, max: 10}}
+      decision: {min: 5, max: 12}
+      rationale: >-
+        Decided by the vote count as unanimous, 4 of 4, because all bounds lie within 2 dKH of the
+        decided range; the upper bound follows The Tropical Tank.
+    - field: features.origin.value
+      proposals:
+        - {by: generator, value: {region: Lake Malawi, localities: [Monkey Bay, Jalo Reef to Crocodile Rocks, southern end, south-eastern coast to Nkhomo Reef, Thumbi East Island]}}
+        - {by: checker-a, value: {region: Lake Malawi, localities: [Monkey Bay, Jalo Reef to Crocodile Rocks, southern end, south-eastern coast to Nkhomo Reef, Domwe Island]}}
+        - {by: checker-b, value: {region: Lake Malawi, localities: [Nkhomo Reef, Crocodile Rocks, Jalo Reef, Monkey Bay, southwestern shore]}}
+        - {by: checker-c, value: {region: Southern and western Lake Malawi, localities: [Monkey Bay, Jalo Reef, Crocodile Rocks, Nkhomo Reef]}}
+      decision: {region: Lake Malawi, localities: [Monkey Bay (type locality), Jalo Reef southward along the western coast to Crocodile Rocks, Southern end of the lake, South-eastern coast north to Nkhomo Reef]}
+      rationale: >-
+        The region names the lake as the schema asks. The localities follow the Catalog of Fishes
+        and Seriously Fish; the single island names of the generator and checker-a are not stated
+        in any source read, the Markert et al. abstract naming only a 42 km stretch of the southern
+        shore, so they are left out.
+    - field: features.maxSizeCm
+      proposals:
+        - {by: generator, value: {male: 12, female: 10}}
+        - {by: checker-a, value: {male: 11, female: 9}}
+        - {by: checker-b, value: {male: 12, female: 10}}
+        - {by: checker-c, value: {male: 12, female: 10}}
+      decision: {male: 12, female: 10}
+      rationale: >-
+        Three votes and two care sheets that separate the sexes give 12 and 10 cm; the 11 cm
+        standard length of Seriously Fish corresponds to about 13 cm total length, so 11 and 9 cm
+        understate well-kept aquarium fish.
+    - field: features.aggressionHeterospecific
+      proposals:
+        - {by: generator, value: 3}
+        - {by: checker-a, value: 3}
+        - {by: checker-b, value: 3}
+        - {by: checker-c, value: 4}
+      decision: 3
+      rationale: >-
+        Most care sheets keep it successfully with robust, differently coloured mbuna, which is
+        level 3; only TFH Magazine describes attacks on any tankmate, which checker-c followed.
+    - field: features.coloration.value.baseColors
+      proposals:
+        - {by: generator, value: [black, blue]}
+        - {by: checker-a, value: [black, blue, white]}
+        - {by: checker-b, value: [black, blue]}
+        - {by: checker-c, value: [black, blue]}
+      decision: [black, blue]
+      rationale: >-
+        The pale stripes of the male range from bluish white to turquoise; blue covers them, and
+        black and blue dominate the adult male.
+    - field: features.minTank
+      proposals:
+        - {by: generator, value: {volumeL: 240, lengthCm: 120, depthCm: 45}}
+        - {by: checker-a, value: {volumeL: 200, lengthCm: 120, depthCm: 45}}
+        - {by: checker-b, value: {volumeL: 205, lengthCm: 120, depthCm: 45}}
+        - {by: checker-c, value: {volumeL: 400, lengthCm: 150, depthCm: 50}}
+      decision: {volumeL: 240, lengthCm: 120, depthCm: 45}
+      rationale: >-
+        Three votes and most sources agree on a 120 x 45 cm base for the harem; 240 litres adds a
+        margin over the absolute minimum of about 205 litres. The 400 litre and 150 cm figures of
+        AquaInfo and Malawi.si apply to mixed communities and appear in the husbandry text and the
+        partner conditions.
+    - field: features.lifespanYears
+      proposals:
+        - {by: generator, value: {min: 7, max: 9}}
+        - {by: checker-a, value: {min: 5, max: 9}}
+        - {by: checker-b, value: {min: 5, max: 9}}
+        - {by: checker-c, value: {min: 5, max: 10}}
+      decision: {min: 5, max: 10}
+      rationale: >-
+        The range covers all stated values of the hobby and retail sources, from about five years
+        to the ten years of AquaInfo; confidence stays low.
+    - field: features.beginnerSuitability
+      proposals:
+        - {by: generator, value: moderate}
+        - {by: checker-a, value: demanding}
+        - {by: checker-b, value: moderate}
+        - {by: checker-c, value: demanding}
+      decision: demanding
+      rationale: >-
+        Seriously Fish, TFH Magazine and Oliver explicitly advise beginners against the species,
+        and conspecific aggression level 4 requires experience by definition; only a retailer calls
+        it a beginner fish.
