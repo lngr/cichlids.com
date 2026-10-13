@@ -1,9 +1,10 @@
 ---
 id: TASK-3.41
 title: Keep members signed in per device until they sign out
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-10-12 04:48'
+updated_date: '2026-10-13 08:41'
 labels: []
 dependencies: []
 references:
@@ -37,3 +38,35 @@ A member signs in once per device and stays signed in until signing out; no sign
 - [ ] #4 Authoritative domain logic is covered by unit/integration tests
 - [ ] #5 All CI test suites are fully green
 <!-- DOD:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+### Approach (test-first)
+- Red first at each layer: mobile unit tests for the token store and refresh outcomes, Api.Tests
+  for the session endpoints, CSRF and cookie flags, then Playwright write specs.
+
+### Native app
+- Login requests the `offline_access` scope; Keycloak realm files (dev, staging, production) give
+  offline sessions no practical expiry and keep the CI realm check green.
+- Tokens live in SecureStore; a refresh that fails with network or server errors keeps the tokens
+  and the call fails with a clear connection message; only `invalid_grant` (revoked, suspended or
+  deleted account) signs the member out.
+- The upload form input (photo, title, description) is stored locally and survives a sign-out.
+
+### Web app (backend for frontend)
+- The API manages the web session: login start and callback (authorization code with PKCE on the
+  server), logout and a session endpoint; tokens stay on the server, the browser holds only an
+  httpOnly, Secure, SameSite cookie; a CSRF token protects state-changing requests; the API
+  accepts either the bearer token (native) or the session cookie (web).
+- Same-site deployment of web app and API is the default; development works on localhost.
+- An ADR records the session model (native offline tokens, web BFF cookie, CSRF, revocation by
+  suspension).
+
+### Tests and references
+- Unit tests for refresh outcomes and storage; Api.Tests for the BFF flow, cookie flags and CSRF;
+  Playwright write specs tagged TASK-3.41: the web storage holds no token (AC #3), a suspended
+  account is signed out (AC #4), and an offline refresh keeps the session (AC #2 via network
+  interception). AC #1 (three months) is covered by the realm settings and a unit test of the
+  refresh path.
+<!-- SECTION:PLAN:END -->
