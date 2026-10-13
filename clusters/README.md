@@ -162,3 +162,18 @@ introduces another kind extends this list and commits its schema. Upstream
 references: [Git files generator](https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Generators-Git/),
 [PR generator](https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Generators-Pull-Request/)
 and [sync options](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/).
+
+## Encrypted Secrets
+
+Follow [the SOPS operator instructions](../infra/README.md#sops-age-key) to
+configure the recipient and provision `argocd/sops-age`. Add encrypted
+`*.sops.yaml` or `*.sops.yml` Secret manifests through a KSOPS generator in
+the relevant Kustomize overlay. See
+[`ksops-generator.yaml`](../tools/fixtures/secrets/ksops-generator.yaml) and
+its adjacent `kustomization.yaml` for the generator syntax.
+
+Run `python3 tools/check-secret-manifests.py` to check tracked YAML and JSON
+for plaintext Secret payloads. The `secrets-scan` job runs this guard and a
+SOPS age round-trip through KSOPS alongside gitleaks. Run
+`python3 tools/test-sops-roundtrip.py` with the pinned plugin installed to
+verify the dedicated public test fixture.

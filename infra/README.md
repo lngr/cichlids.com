@@ -192,10 +192,109 @@ token. Steps in order, each with its expected result.
 
 ### SOPS age key
 
-1. `age-keygen -o keys.txt` (prints the `age1...` public key).
-2. Put the public key into `.sops.yaml` as the recipient (safe to commit).
-3. Keep the private key out-of-band and provision it into the cluster for Argo CD's KSOPS plugin
-   (ADR-0010). Never commit it.
+1. Generate the operator key outside the repository:
+
+   ```sh
+   mkdir -p ~/.config/cichlids/age
+   chmod 700 ~/.config/cichlids/age
+   umask 077
+   age-keygen -o ~/.config/cichlids/age/keys.txt
+   chmod 600 ~/.config/cichlids/age/keys.txt
+   age-keygen -y ~/.config/cichlids/age/keys.txt
+   ```
+
+2. Store `keys.txt` in the password manager. The complete `age1...` line from
+   `age-keygen -y` is the public recipient. Append these entries to
+   `creation_rules` in the repository root `.sops.yaml`, after the test-only
+   entry. Replace each `OPERATOR_PUBLIC_KEY` with that public line:
+
+   ```yaml
+   - path_regex: ^(apps|clusters)/.*\.sops\.ya?ml$
+     encrypted_regex: ^(data|stringData)$
+     age: OPERATOR_PUBLIC_KEY
+   - path_regex: ^infra/.*\.sops\.(yaml|yml|json)$
+     age: OPERATOR_PUBLIC_KEY
+   ```
+
+   Commit the public recipient configuration. Use the first rule for Kubernetes
+   Secret manifests and the second for IaC credential documents. The repository
+   configuration contains only the dedicated CI fixture rule until these
+   operator entries are present.
+
+3. On the operator machine, select the intended cluster context and provision
+   the private key after the Argo CD namespace exists:
+
+   ```sh
+   kubectl config current-context
+   kubectl -n argocd create secret generic sops-age \
+     --from-file=keys.txt="$HOME/.config/cichlids/age/keys.txt" \
+     --dry-run=client -o yaml | kubectl apply -f -
+   kubectl -n argocd rollout restart deployment/argocd-repo-server
+   kubectl -n argocd rollout status deployment/argocd-repo-server --timeout=300s
+   ```
+
+   Keep this command output out of log files. Run these commands directly on
+   the operator machine. The private key belongs in the password manager and
+   the cluster Secret, outside Git and CI secrets.
+
+4. Set the local decryption key and edit an encrypted manifest at an existing
+   service overlay path:
+
+   ```sh
+   export SOPS_AGE_KEY_FILE="$HOME/.config/cichlids/age/keys.txt"
+   sops edit apps/example/overlays/staging/credentials.sops.yaml
+   ```
+
+   Set `apiVersion: v1`, `kind: Secret`, its `metadata`, and the intended
+   `data` or `stringData`. Save through SOPS. Refer to the manifest in a KSOPS
+   generator and list that generator under `generators` in the overlay's
+   `kustomization.yaml`. Use the generator shape in
+   `tools/fixtures/secrets/ksops-generator.yaml` with your manifest path.
+   Install the local plugin with `bash tools/install-ksops.sh` and verify:
+
+   ```sh
+   kustomize build --enable-alpha-plugins --enable-exec apps/example/overlays/staging >/dev/null
+   python3 tools/check-secret-manifests.py
+   ```
+
+   Review and commit the encrypted manifest and generator. Refresh its Argo CD
+   Application and check that it is `Synced` and `Healthy`. Check the Secret
+   name using `kubectl -n <namespace> get secret <name>`. These cluster checks
+   verify in-cluster decryption with the operator key.
+
+5. Rotate with both private keys available. Generate another key outside Git,
+   add its public recipient to the applicable `.sops.yaml` entries, and deploy
+   a `keys.txt` containing both private keys through the command in step 3.
+   For each encrypted file, run `sops updatekeys <file>` and
+   `sops rotate --in-place <file>` with the operator keys available. Commit the
+   encrypted files and verify reconciliation. Remove the old public recipient,
+   run `sops updatekeys <file>` for each file, and verify reconciliation again.
+   Provision a `keys.txt` containing only the new private key. Retain recovery
+   keys for historical ciphertext in the password manager according to the
+   backup retention policy.
+
+To check the public CI fixture locally:
+
+```sh
+bash tools/install-ksops.sh
+python3 tools/check-secret-manifests.test.py
+python3 tools/check-secret-manifests.py
+python3 tools/test-sops-roundtrip.py
+python3 infra/app/ksops_test.py
+```
+
+The fixture key at `tools/fixtures/secrets/age-test-key.txt` is public and test
+only. Use the operator recipient for every real secret. The bootstrap mounts
+`sops-age` optionally at `/var/run/sops-age`, with `SOPS_AGE_KEY_FILE` pointing
+at `keys.txt`. Argo CD starts when that Secret is absent; encrypted manifest
+rendering requires the key.
+
+The KSOPS init container uses `viaductoss/ksops:v4.5.1` pinned to its image index
+digest. `tools/install-ksops.sh` verifies Linux release archives against
+`tools/ksops-checksums.txt`. Upstream installation instructions:
+[KSOPS Argo CD integration](https://github.com/viaduct-ai/kustomize-sops#argo-cd-integration-).
+Release artifacts:
+[KSOPS v4.5.1](https://github.com/viaduct-ai/kustomize-sops/releases/tag/v4.5.1).
 
 ### Cloudflare account, R2, and S3 token (serving layer)
 
