@@ -31,6 +31,24 @@ jobs:
       - name: Enforce story-to-test binding (ADR-0015)
         run: node tools/check-story-test-binding.mjs
 
+  manifests:
+    name: Cluster manifests and environment safeguards
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.x"
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "24"
+      - name: Install YAML parser
+        run: python3 -m pip install PyYAML==6.0.3
+      - name: Install pinned core toolchain
+        run: bash tools/install-toolchain.sh
+      - name: Render and validate manifests offline
+        run: ./tools/check-cluster-manifests.sh
+
   toolchain:
     name: Toolchain pinned and present
     runs-on: ubuntu-latest
