@@ -1,0 +1,2703 @@
+schemaVersion: 1
+id: julidochromis-marlieri
+legacyIds:
+  - 55
+status: described
+taxonomy:
+  validName: Julidochromis marlieri
+  genus: Julidochromis
+  species: marlieri
+  author: "Poll, 1956"
+  source:
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes: Julidochromis, updated 21 September 2026"
+    url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Julidochromis"
+    accessed: '2026-10-13'
+  synonyms: []
+  legacyNames:
+    - Julidochromis marlieri
+  note: The Catalog retains the original combination as valid and lists no synonym for this species. Southern
+    dwarf populations have competing identifications in specialist literature; locality labels and intermediate
+    coloration alone do not establish species identity or hybrid ancestry.
+names:
+  trade:
+    en:
+      - Marlier's Julie
+      - Chequered Julie
+      - Checkerboard Julie
+variants:
+  - name: Magara
+    kind: locality
+    note: Locality stock listed in the Nordic register and Tanganyika.si; the latter uses cf. marlieri
+      to express identification uncertainty.
+  - name: Halembe
+    kind: locality
+    note: Locality label in the Nordic register; Konings discusses a small form whose identification against
+      transcriptus has been debated.
+  - name: Katili
+    kind: locality
+    note: Tanzanian locality label in the Nordic register; a label is not evidence of a separate taxon.
+  - name: Isanga
+    kind: locality
+    note: Locality label in the Nordic register and Konings locality account; preserve origin information
+      for breeding stock.
+features:
+  origin:
+    value:
+      continent: Africa
+      region: Lake Tanganyika
+      waterbody: lake-tanganyika
+      localities:
+        - "Gitaza, Burundi"
+        - "Bemba, Democratic Republic of the Congo"
+        - "Magara, Burundi"
+        - "Halembe, Tanzania"
+        - "Isanga, Zambia"
+    confidence: high
+    rationale: "All four full-profile runs agree on Lake Tanganyika. The generator lists Makabola, Magara,\
+      \ Halembe and Isanga; checker-a lists Gitaza and Bemba; checker-b uses the same two field sites\
+      \ with country labels; checker-c supplies no locality list. Retain the field sites described by\
+      \ Sunobe and the independently described Magara, Halembe and Isanga populations. Makabola is a historical\
+      \ type-locality label in the Nordic register, not a newly verified occurrence. Geographic labels\
+      \ do not resolve debated species limits."
+    sources:
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: Julidochromis, updated 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Julidochromis"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Sunobe (2000). Social structure, nest guarding and interspecific relationships of Julidochromis\
+          \ marlieri in Lake Tanganyika"
+        url: "https://doi.org/10.14989/68192"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Julidochromis marlieri"
+        url: "https://www.ciklid.org/artregister/art.php?ID=847"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Konings, A. Julidochromis: Three way lovers. Practical Fishkeeping"
+        url: "https://www.practicalfishkeeping.co.uk/features/julidochromis-three-way-lovers/"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: catalog-of-fishes
+          title: "Eschmeyer's Catalog of Fishes: Julidochromis, updated 21 September 2026"
+          url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Julidochromis"
+          accessed: '2026-10-13'
+        value:
+          continent: Africa
+          region: Lake Tanganyika
+      - source:
+          kind: literature
+          title: "Sunobe (2000). Social structure, nest guarding and interspecific relationships of Julidochromis\
+            \ marlieri in Lake Tanganyika"
+          url: "https://doi.org/10.14989/68192"
+          accessed: '2026-10-13'
+        value:
+          localities:
+            - "Gitaza, Burundi"
+            - "Bemba, Democratic Republic of the Congo"
+        note: Gitaza observations at 3 to 9 m; Bemba is discussed through earlier field work.
+      - source:
+          kind: literature
+          title: "Konings, A. Julidochromis: Three way lovers. Practical Fishkeeping"
+          url: "https://www.practicalfishkeeping.co.uk/features/julidochromis-three-way-lovers/"
+          accessed: '2026-10-13'
+        value:
+          localities:
+            - "Magara, Burundi"
+            - "Halembe, Tanzania"
+            - "Isanga, Zambia"
+        note: "Specialist account of shoreline populations, with disputed dwarf-form identification."
+  temperatureC:
+    value:
+      min: 23
+      max: 29
+    confidence: high
+    rationale: "The fixed lake decision is 23 to 29 C, with high confidence and waterbody verification.\
+      \ Verburg et al. (1997) underpin the wider seasonal envelope in the lake compilation. Langenberg\
+      \ reports southern surface seasonal means of 24.4 to 27.2 C, a narrower local series that cannot\
+      \ replace the lake envelope. These are habitat variations, not proven constant aquarium limits.\
+      \ The original TD46, TD56 and TD59 reports were not independently retrieved with the DOI-only full-text\
+      \ tool; the available Langenberg synthesis is cited directly. Chale reports 25.7 to 27.3 C at the\
+      \ surface near Kigoma, another narrower annual series."
+    sources:
+      - kind: literature
+        title: "Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. Chapters 2 and 8"
+        url: "https://doi.org/10.18174/121977"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa,\
+          \ Vol. 1. Lake Tanganyika measurements after Talling and Talling (1965)"
+        url: "https://www.fao.org/4/t0473e/T0473E10.htm"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Chale (2006, DOI record 2009). Limnological studies of the pelagic zone of Lake Tanganyika\
+          \ at Kigoma, Tanzania. Abstract only"
+        url: "https://doi.org/10.4314/tjs.v32i2.18437"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: "Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. Chapters 2 and 8"
+          url: "https://doi.org/10.18174/121977"
+          accessed: '2026-10-13'
+        value:
+          min: 24.4
+          max: 27.2
+        note: "Southern surface seasonal means, not the lake-wide extrema."
+      - source:
+          kind: literature
+          title: "Chale (2006, DOI record 2009). Limnological studies of the pelagic zone of Lake Tanganyika\
+            \ at Kigoma, Tanzania. Abstract only"
+          url: "https://doi.org/10.4314/tjs.v32i2.18437"
+          accessed: '2026-10-13'
+        value:
+          min: 25.7
+          max: 27.3
+        note: "Surface values in a 12-month Kigoma study; local measurements, not the full lake envelope."
+    verification:
+      method: waterbody
+      waterbody: lake-tanganyika
+    tolerance:
+      value:
+        min: 23
+        max: 29
+      confidence: low
+      rationale: "The unanimous tally treats the 23 to 29 C proposals from generator, checker-b and checker-c\
+        \ and the 22 to 29 C proposal from checker-a as agreeing within the 1 C rule; the median minimum\
+        \ is 23 C. FishBase gives the wider lower reach of 22 to 25 C, while Seriously Fish gives 23 to\
+        \ 27 C, the Nordic prose 24 to 28 C and TropicalFreshwaterFish 24 to 28 C. The 22 C endpoint is\
+        \ not retained. Dennis maintained a colony at 27.7 to 28.3 C. The ceiling is widened to 29 C to\
+        \ contain natural water; multi-year constant exposure at 29 C was not established, so the decided\
+        \ confidence remains low."
+      sources:
+        - kind: database
+          title: "Seriously Fish: Julidochromis marlieri (Marlier's Julie)"
+          url: "https://www.seriouslyfish.com/species/julidochromis-marlieri/"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "Nordiska Ciklidsallskapet species register: Julidochromis marlieri"
+          url: "https://www.ciklid.org/artregister/art.php?ID=847"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "FishBase species summary: Julidochromis marlieri"
+          url: "https://www.fishbase.se/summary/Julidochromis-marlieri.html"
+          accessed: '2026-10-13'
+        - kind: literature
+          title: "Dennis et al. (2025). Plasticity of sex-biased aggression in response to the sex of\
+            \ territory intruders in an African cichlid fish, Julidochromis marlieri"
+          url: "https://doi.org/10.17912/micropub.biology.001795"
+          accessed: '2026-10-13'
+        - kind: website
+          title: "TropicalFreshwaterFish: Checkerboard Julie, Julidochromis marlieri"
+          url: "https://tropicalfreshwaterfish.com/species/Julidochromis_marlieri.html"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "Aqua-Fish: Marlieri cichlid care guide"
+          url: "https://en.aqua-fish.net/fish/marlieri-cichlid"
+          accessed: '2026-10-13'
+      evidence:
+        - source:
+            kind: database
+            title: "Seriously Fish: Julidochromis marlieri (Marlier's Julie)"
+            url: "https://www.seriouslyfish.com/species/julidochromis-marlieri/"
+            accessed: '2026-10-13'
+          value:
+            min: 23
+            max: 27
+        - source:
+            kind: database
+            title: "Nordiska Ciklidsallskapet species register: Julidochromis marlieri"
+            url: "https://www.ciklid.org/artregister/art.php?ID=847"
+            accessed: '2026-10-13'
+          value:
+            min: 24
+            max: 28
+          note: Narrative recommendation; summary instead gives 24 to 27.5 C.
+        - source:
+            kind: database
+            title: "FishBase species summary: Julidochromis marlieri"
+            url: "https://www.fishbase.se/summary/Julidochromis-marlieri.html"
+            accessed: '2026-10-13'
+          value:
+            min: 22
+            max: 25
+          note: "Database environmental interval, not a lifetime aquarium trial."
+        - source:
+            kind: literature
+            title: "Dennis et al. (2025). Plasticity of sex-biased aggression in response to the sex of\
+              \ territory intruders in an African cichlid fish, Julidochromis marlieri"
+            url: "https://doi.org/10.17912/micropub.biology.001795"
+            accessed: '2026-10-13'
+          value:
+            min: 27.7
+            max: 28.3
+          note: "Colony maintenance, not a tolerance experiment."
+        - source:
+            kind: website
+            title: "TropicalFreshwaterFish: Checkerboard Julie, Julidochromis marlieri"
+            url: "https://tropicalfreshwaterfish.com/species/Julidochromis_marlieri.html"
+            accessed: '2026-10-13'
+          value:
+            min: 24
+            max: 28
+        - source:
+            kind: database
+            title: "Aqua-Fish: Marlieri cichlid care guide"
+            url: "https://en.aqua-fish.net/fish/marlieri-cichlid"
+            accessed: '2026-10-13'
+          value:
+            min: 24
+            max: 27
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+  ph:
+    value:
+      min: 8.4
+      max: 9.4
+    confidence: high
+    rationale: "The fixed lake decision is pH 8.4 to 9.4. Langenberg chapter 2 reports 8.47 to 9.40 at\
+      \ 40 m in the northern annual series, consistent with the rounded adopted envelope. The older FAO\
+      \ source book gives 7.3 to 7.8, which conflicts with the modern series and strong alkalinity; it\
+      \ is not adopted as the natural range."
+    sources:
+      - kind: literature
+        title: "Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. Chapters 2 and 8"
+        url: "https://doi.org/10.18174/121977"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa,\
+          \ Vol. 1. Lake Tanganyika measurements after Talling and Talling (1965)"
+        url: "https://www.fao.org/4/t0473e/T0473E10.htm"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: "Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. Chapters 2 and 8"
+          url: "https://doi.org/10.18174/121977"
+          accessed: '2026-10-13'
+        value:
+          min: 8.47
+          max: 9.4
+        note: Northern annual measurements at 40 m.
+      - source:
+          kind: literature
+          title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of\
+            \ Africa, Vol. 1. Lake Tanganyika measurements after Talling and Talling (1965)"
+          url: "https://www.fao.org/4/t0473e/T0473E10.htm"
+          accessed: '2026-10-13'
+        value:
+          min: 7.3
+          max: 7.8
+        note: "Historical conflicting pH entry, excluded from the adopted lake range."
+    verification:
+      method: waterbody
+      waterbody: lake-tanganyika
+    tolerance:
+      value:
+        min: 7.5
+        max: 9.5
+      confidence: medium
+      rationale: "All four full-profile runs propose 7.5 to 9.5, producing the unanimous tally decision\
+        \ with medium confidence. Seriously Fish states this full care range; the Nordic prose and FishBase\
+        \ give 7.5 to 9.0, Fishkeeper 8.0 to 9.0, Aqua-Fish 7.8 to 8.9 and Dennis colony conditions pH\
+        \ 8.3. The narrower recommendations corroborate the central alkaline range rather than every endpoint.\
+        \ The decided tolerance contains the natural pH range and describes stable conditions, not rapid\
+        \ swings."
+      sources:
+        - kind: database
+          title: "Seriously Fish: Julidochromis marlieri (Marlier's Julie)"
+          url: "https://www.seriouslyfish.com/species/julidochromis-marlieri/"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "Nordiska Ciklidsallskapet species register: Julidochromis marlieri"
+          url: "https://www.ciklid.org/artregister/art.php?ID=847"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "FishBase species summary: Julidochromis marlieri"
+          url: "https://www.fishbase.se/summary/Julidochromis-marlieri.html"
+          accessed: '2026-10-13'
+        - kind: website
+          title: "Maidenhead Aquatics retailer care page: Marlier's Julie"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/marliers-julie"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "Aqua-Fish: Marlieri cichlid care guide"
+          url: "https://en.aqua-fish.net/fish/marlieri-cichlid"
+          accessed: '2026-10-13'
+        - kind: literature
+          title: "Dennis et al. (2025). Plasticity of sex-biased aggression in response to the sex of\
+            \ territory intruders in an African cichlid fish, Julidochromis marlieri"
+          url: "https://doi.org/10.17912/micropub.biology.001795"
+          accessed: '2026-10-13'
+        - kind: literature
+          title: "Bijker, W. H. Cichlidioot: Julidochromis marlieri. Nederlandse Bond Aqua Terra breeding\
+            \ account"
+          url: "https://nbat.nl/cichlidioot-julidochromis-marlieri/"
+          accessed: '2026-10-13'
+      evidence:
+        - source:
+            kind: database
+            title: "Seriously Fish: Julidochromis marlieri (Marlier's Julie)"
+            url: "https://www.seriouslyfish.com/species/julidochromis-marlieri/"
+            accessed: '2026-10-13'
+          value:
+            min: 7.5
+            max: 9.5
+        - source:
+            kind: database
+            title: "Nordiska Ciklidsallskapet species register: Julidochromis marlieri"
+            url: "https://www.ciklid.org/artregister/art.php?ID=847"
+            accessed: '2026-10-13'
+          value:
+            min: 7.5
+            max: 9
+          note: Narrative interval differs from the summary widget.
+        - source:
+            kind: database
+            title: "FishBase species summary: Julidochromis marlieri"
+            url: "https://www.fishbase.se/summary/Julidochromis-marlieri.html"
+            accessed: '2026-10-13'
+          value:
+            min: 7.5
+            max: 9
+        - source:
+            kind: website
+            title: "Maidenhead Aquatics retailer care page: Marlier's Julie"
+            url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/marliers-julie"
+            accessed: '2026-10-13'
+          value:
+            min: 8
+            max: 9
+        - source:
+            kind: database
+            title: "Aqua-Fish: Marlieri cichlid care guide"
+            url: "https://en.aqua-fish.net/fish/marlieri-cichlid"
+            accessed: '2026-10-13'
+          value:
+            min: 7.8
+            max: 8.9
+        - source:
+            kind: literature
+            title: "Dennis et al. (2025). Plasticity of sex-biased aggression in response to the sex of\
+              \ territory intruders in an African cichlid fish, Julidochromis marlieri"
+            url: "https://doi.org/10.17912/micropub.biology.001795"
+            accessed: '2026-10-13'
+          value:
+            min: 8.3
+            max: 8.3
+          note: "Colony conditions, not lifetime limits."
+        - source:
+            kind: literature
+            title: "Bijker, W. H. Cichlidioot: Julidochromis marlieri. Nederlandse Bond Aqua Terra breeding\
+              \ account"
+            url: "https://nbat.nl/cichlidioot-julidochromis-marlieri/"
+            accessed: '2026-10-13'
+          value:
+            min: 8
+            max: 8
+          note: Approximate breeding-tank pH; disputed Katoto stock.
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+  ghDgh:
+    value:
+      min: 10
+      max: 13
+    confidence: high
+    rationale: "The fixed lake decision is 10 to 13 dGH. Lake calcium and magnesium measurements underpin\
+      \ total hardness rather than alkalinity. The FAO compilation gives Ca 9.8 and Mg 43.3 mg/L, equivalent\
+      \ to about 11.35 dGH using Ca/7.14 + Mg/4.34. This measured value lies inside the decided envelope;\
+      \ aquarium hardness recommendations do not determine it. The Cohen (1997) full text was refused\
+      \ as not open access by fetch-oa; no unread Cohen table is presented as independently verified evidence.\
+      \ Branchu and Bergonzini Table 2 independently gives about 10.56 dGH in surface water, also within\
+      \ the adopted envelope."
+    sources:
+      - kind: literature
+        title: "Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. Chapters 2 and 8"
+        url: "https://doi.org/10.18174/121977"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa,\
+          \ Vol. 1. Lake Tanganyika measurements after Talling and Talling (1965)"
+        url: "https://www.fao.org/4/t0473e/T0473E10.htm"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Branchu and Bergonzini (2004). Chloride concentrations in Lake Tanganyika: an indicator\
+          \ of the hydrological budget?"
+        url: "https://doi.org/10.5194/hess-8-256-2004"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of\
+            \ Africa, Vol. 1. Lake Tanganyika measurements after Talling and Talling (1965)"
+          url: "https://www.fao.org/4/t0473e/T0473E10.htm"
+          accessed: '2026-10-13'
+        value:
+          min: 11.35
+          max: 11.35
+        note: Converted from calcium 9.8 and magnesium 43.3 mg/L; one compiled lake measurement.
+      - source:
+          kind: literature
+          title: "Branchu and Bergonzini (2004). Chloride concentrations in Lake Tanganyika: an indicator\
+            \ of the hydrological budget?"
+          url: "https://doi.org/10.5194/hess-8-256-2004"
+          accessed: '2026-10-13'
+        value:
+          min: 10.56
+          max: 10.56
+        note: "Branchu and Bergonzini Table 2: Ca 0.273 and Mg 1.611 mmol/L in surface 0 to 70 m water,\
+          \ converted to dGH."
+    verification:
+      method: waterbody
+      waterbody: lake-tanganyika
+    tolerance:
+      value:
+        min: 8
+        max: 25
+      confidence: medium
+      rationale: "Generator, checker-b, checker-c and tiebreaker-2 propose 8 to 25 dGH; tiebreaker-1 proposes\
+        \ 10 to 25, agreeing within the 2 dGH rule; checker-a proposes 8 to 20. The qualified majority\
+        \ is 5 of 6, with median endpoints 8 and 25. Seriously Fish gives 10 to 25 and TropicalFreshwaterFish\
+        \ 8 to 20; AquaInfo gives 7 to 11, while the wider Aqua-Fish recommendation is 18 to 30 dGH. The\
+        \ isolated 7 and 30 endpoints are not adopted. NBAT records breeding at GH 8 in Katoto fish whose\
+        \ current identification is disputed, and tiebreaker-1 therefore preferred 10. The tally retains\
+        \ 8, supported also by the older care page, with medium confidence rather than a demonstrated\
+        \ physiological threshold."
+      sources:
+        - kind: database
+          title: "Seriously Fish: Julidochromis marlieri (Marlier's Julie)"
+          url: "https://www.seriouslyfish.com/species/julidochromis-marlieri/"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "Nordiska Ciklidsallskapet species register: Julidochromis marlieri"
+          url: "https://www.ciklid.org/artregister/art.php?ID=847"
+          accessed: '2026-10-13'
+        - kind: website
+          title: "TropicalFreshwaterFish: Checkerboard Julie, Julidochromis marlieri"
+          url: "https://tropicalfreshwaterfish.com/species/Julidochromis_marlieri.html"
+          accessed: '2026-10-13'
+        - kind: literature
+          title: "Bijker, W. H. Cichlidioot: Julidochromis marlieri. Nederlandse Bond Aqua Terra breeding\
+            \ account"
+          url: "https://nbat.nl/cichlidioot-julidochromis-marlieri/"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "AquaInfo: Julidochromis marlieri, by Margie van der Heijden"
+          url: "https://aquainfo.nl/en/article/julidochromis-marlieri/"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "Aqua-Fish: Marlieri cichlid care guide"
+          url: "https://en.aqua-fish.net/fish/marlieri-cichlid"
+          accessed: '2026-10-13'
+        - kind: website
+          title: "Maidenhead Aquatics retailer care page: Marlier's Julie"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/marliers-julie"
+          accessed: '2026-10-13'
+        - kind: literature
+          title: "Tawil, P. (2013). Julidochromis ornatus and its dwarf relatives. Cichlid News"
+          url: "https://www.cichlidnews.com/issues/2013jul/Xornatus.html"
+          accessed: '2026-10-13'
+      evidence:
+        - source:
+            kind: database
+            title: "Seriously Fish: Julidochromis marlieri (Marlier's Julie)"
+            url: "https://www.seriouslyfish.com/species/julidochromis-marlieri/"
+            accessed: '2026-10-13'
+          value:
+            min: 10
+            max: 25
+        - source:
+            kind: website
+            title: "TropicalFreshwaterFish: Checkerboard Julie, Julidochromis marlieri"
+            url: "https://tropicalfreshwaterfish.com/species/Julidochromis_marlieri.html"
+            accessed: '2026-10-13'
+          value:
+            min: 8
+            max: 20
+        - source:
+            kind: literature
+            title: "Bijker, W. H. Cichlidioot: Julidochromis marlieri. Nederlandse Bond Aqua Terra breeding\
+              \ account"
+            url: "https://nbat.nl/cichlidioot-julidochromis-marlieri/"
+            accessed: '2026-10-13'
+          value:
+            min: 8
+            max: 8
+          note: "Breeding observation in disputed Katoto stock, not securely identified endpoint testing."
+        - source:
+            kind: database
+            title: "AquaInfo: Julidochromis marlieri, by Margie van der Heijden"
+            url: "https://aquainfo.nl/en/article/julidochromis-marlieri/"
+            accessed: '2026-10-13'
+          value:
+            min: 7
+            max: 11
+        - source:
+            kind: database
+            title: "Aqua-Fish: Marlieri cichlid care guide"
+            url: "https://en.aqua-fish.net/fish/marlieri-cichlid"
+            accessed: '2026-10-13'
+          value:
+            min: 18
+            max: 30
+          note: 321.43 to 535.71 ppm CaCO3 converted to German hardness.
+        - source:
+            kind: website
+            title: "Maidenhead Aquatics retailer care page: Marlier's Julie"
+            url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/marliers-julie"
+            accessed: '2026-10-13'
+          value:
+            min: 15
+            max: 25
+        - source:
+            kind: database
+            title: "Nordiska Ciklidsallskapet species register: Julidochromis marlieri"
+            url: "https://www.ciklid.org/artregister/art.php?ID=847"
+            accessed: '2026-10-13'
+          value:
+            min: 10
+          note: Prefers GH above about 10; no upper bound.
+      verification:
+        method: qualified-majority
+        votes:
+          agree: 5
+          total: 6
+  khDkh:
+    value:
+      min: 15
+      max: 20
+    confidence: high
+    rationale: "The fixed lake decision is 15 to 20 dKH with high confidence. Langenberg cites alkalinity\
+      \ of 6.7 to 6.9 meq/L, or 18.76 to 19.32 dKH after multiplication by 2.8; the older FAO compilation\
+      \ gives 6.71 meq/L, or 18.79 dKH. Sodium and magnesium chemistry permits alkalinity to exceed total\
+      \ hardness. The natural khDkh is a plain fact without verification."
+    sources:
+      - kind: literature
+        title: "Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. Chapters 2 and 8"
+        url: "https://doi.org/10.18174/121977"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa,\
+          \ Vol. 1. Lake Tanganyika measurements after Talling and Talling (1965)"
+        url: "https://www.fao.org/4/t0473e/T0473E10.htm"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Branchu and Bergonzini (2004). Chloride concentrations in Lake Tanganyika: an indicator\
+          \ of the hydrological budget?"
+        url: "https://doi.org/10.5194/hess-8-256-2004"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: "Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. Chapters 2 and 8"
+          url: "https://doi.org/10.18174/121977"
+          accessed: '2026-10-13'
+        value:
+          min: 18.76
+          max: 19.32
+        note: "Chapter 8 cites Edmond et al. alkalinity 6.7 to 6.9 meq/L, converted to dKH."
+      - source:
+          kind: literature
+          title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of\
+            \ Africa, Vol. 1. Lake Tanganyika measurements after Talling and Talling (1965)"
+          url: "https://www.fao.org/4/t0473e/T0473E10.htm"
+          accessed: '2026-10-13'
+        value:
+          min: 18.79
+          max: 18.79
+        note: "Compiled alkalinity of 6.71 meq/L, converted to dKH."
+      - source:
+          kind: literature
+          title: "Branchu and Bergonzini (2004). Chloride concentrations in Lake Tanganyika: an indicator\
+            \ of the hydrological budget?"
+          url: "https://doi.org/10.5194/hess-8-256-2004"
+          accessed: '2026-10-13'
+        value:
+          min: 18.37
+          max: 18.37
+        note: "Branchu and Bergonzini Table 2: HCO3 6 and CO3 0.28 mmol/L gives 6.56 meq/L alkalinity,\
+          \ or 18.37 dKH."
+    tolerance:
+      value:
+        min: 8
+        max: 20
+      confidence: medium
+      rationale: "All four full-profile runs propose 8 to 20 dKH, yielding the unanimous tally with medium\
+        \ confidence. The Nordic register advises a minimum near 7 to 8; the chosen floor is 8. NBAT reports\
+        \ KH 8 in breeding Katoto fish, but their species identity is disputed. Cichlidy.cz gives 8 to\
+        \ 18; the ceiling is extended to the decided natural 20 dKH rather than treated as an aquarium\
+        \ endpoint experiment. Thai Hoa and Guidarium are retailer guidance with low weight; no inference\
+        \ of KH is made from laboratory conductivity or pH alone."
+      sources:
+        - kind: database
+          title: "Nordiska Ciklidsallskapet species register: Julidochromis marlieri"
+          url: "https://www.ciklid.org/artregister/art.php?ID=847"
+          accessed: '2026-10-13'
+        - kind: literature
+          title: "Bijker, W. H. Cichlidioot: Julidochromis marlieri. Nederlandse Bond Aqua Terra breeding\
+            \ account"
+          url: "https://nbat.nl/cichlidioot-julidochromis-marlieri/"
+          accessed: '2026-10-13'
+        - kind: website
+          title: "Cichlidy.cz breeder and retailer: Julidochromis marlieri"
+          url: "https://www.cichlidy.cz/inpage/julidochromis-marlieri-918/"
+          accessed: '2026-10-13'
+        - kind: literature
+          title: "Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. Chapters 2 and 8"
+          url: "https://doi.org/10.18174/121977"
+          accessed: '2026-10-13'
+      evidence:
+        - source:
+            kind: database
+            title: "Nordiska Ciklidsallskapet species register: Julidochromis marlieri"
+            url: "https://www.ciklid.org/artregister/art.php?ID=847"
+            accessed: '2026-10-13'
+          value:
+            min: 8
+          note: Conservative endpoint of the stated 7 to 8 dKH minimum; no maximum supplied.
+        - source:
+            kind: literature
+            title: "Bijker, W. H. Cichlidioot: Julidochromis marlieri. Nederlandse Bond Aqua Terra breeding\
+              \ account"
+            url: "https://nbat.nl/cichlidioot-julidochromis-marlieri/"
+            accessed: '2026-10-13'
+          value:
+            min: 8
+            max: 8
+          note: Measured breeding-tank value in disputed Katoto stock.
+        - source:
+            kind: website
+            title: "Cichlidy.cz breeder and retailer: Julidochromis marlieri"
+            url: "https://www.cichlidy.cz/inpage/julidochromis-marlieri-918/"
+            accessed: '2026-10-13'
+          value:
+            min: 8
+            max: 18
+          note: "Retailer care interval, low weight."
+        - source:
+            kind: literature
+            title: "Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. Chapters 2 and 8"
+            url: "https://doi.org/10.18174/121977"
+            accessed: '2026-10-13'
+          value:
+            min: 18.76
+            max: 19.32
+          note: "Natural alkalinity supports inclusion of the lake range, not an aquarium trial."
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+  maxSizeCm:
+    value:
+      male: 10
+      female: 13
+    confidence: medium
+    rationale: "Generator and checker-b propose 10 cm males and 13 cm females; checker-a proposes 11 and\
+      \ 13, and checker-c 13 and 15. AquaInfo gives the direct sex-specific 10 and 13 figures, corroborated\
+      \ by Tanganyika.si intervals of 7 to 10 for males and 10 to 13 for females. FishBase gives an unsexed\
+      \ 13 cm TL maximum and Seriously Fish 15 cm SL; neither supplies typical aquarium maxima per sex.\
+      \ Sunobe observed wild adults up to 13 cm TL but did not determine their sexes. Retain the sex-specific\
+      \ aquarium figures, acknowledging locality and identification variation."
+    sources:
+      - kind: database
+        title: "AquaInfo: Julidochromis marlieri, by Margie van der Heijden"
+        url: "https://aquainfo.nl/en/article/julidochromis-marlieri/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Tanganyika.si: Julidochromis cf. marlieri 'Magara'"
+        url: "https://www.tanganyika.si/Tanganjika/Julidochromis/Julidochromis%20marlieri/slides/Julidochromis%20cf.%20marlieri%20%27Magara%27.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase species summary: Julidochromis marlieri"
+        url: "https://www.fishbase.se/summary/Julidochromis-marlieri.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Julidochromis marlieri (Marlier's Julie)"
+        url: "https://www.seriouslyfish.com/species/julidochromis-marlieri/"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Sunobe (2000). Social structure, nest guarding and interspecific relationships of Julidochromis\
+          \ marlieri in Lake Tanganyika"
+        url: "https://doi.org/10.14989/68192"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Julidochromis marlieri"
+        url: "https://www.ciklid.org/artregister/art.php?ID=847"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Maidenhead Aquatics retailer care page: Marlier's Julie"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/marliers-julie"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "TropicalFreshwaterFish: Checkerboard Julie, Julidochromis marlieri"
+        url: "https://tropicalfreshwaterfish.com/species/Julidochromis_marlieri.html"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: database
+          title: "AquaInfo: Julidochromis marlieri, by Margie van der Heijden"
+          url: "https://aquainfo.nl/en/article/julidochromis-marlieri/"
+          accessed: '2026-10-13'
+        value:
+          male: 10
+          female: 13
+      - source:
+          kind: database
+          title: "Tanganyika.si: Julidochromis cf. marlieri 'Magara'"
+          url: "https://www.tanganyika.si/Tanganjika/Julidochromis/Julidochromis%20marlieri/slides/Julidochromis%20cf.%20marlieri%20%27Magara%27.html"
+          accessed: '2026-10-13'
+        value:
+          male: 10
+          female: 13
+        note: Upper ends of sex-specific total-length intervals in a cf. marlieri locality sheet.
+      - source:
+          kind: database
+          title: "FishBase species summary: Julidochromis marlieri"
+          url: "https://www.fishbase.se/summary/Julidochromis-marlieri.html"
+          accessed: '2026-10-13'
+        value:
+          unsexed: 13
+        note: "Male or unsexed TL, not a female measurement."
+      - source:
+          kind: database
+          title: "Seriously Fish: Julidochromis marlieri (Marlier's Julie)"
+          url: "https://www.seriouslyfish.com/species/julidochromis-marlieri/"
+          accessed: '2026-10-13'
+        value:
+          unsexed: 15
+          lengthType: SL
+        note: Standard length is not equivalent to the aquarium total-length estimates.
+      - source:
+          kind: literature
+          title: "Sunobe (2000). Social structure, nest guarding and interspecific relationships of Julidochromis\
+            \ marlieri in Lake Tanganyika"
+          url: "https://doi.org/10.14989/68192"
+          accessed: '2026-10-13'
+        value:
+          unsexed: 13
+        note: Largest visually estimated wild individual; sex not determined.
+  predation:
+    value: 0
+    confidence: medium
+    rationale: "The qualified majority is 5 of 6: checker-a, checker-b, checker-c and both tiebreakers\
+      \ choose 0; generator chooses 1 from a weak fry-predator flag. FishBase describes microfeeding,\
+      \ Sunobe observed rock-surface pecking, and FishBase food records list algae and sponges without\
+      \ fish prey. Konings reports sponge-dominated stomach contents through an earlier study. These support\
+      \ level 0, which still allows incidental fry capture. They do not measure a prey-size threshold\
+      \ or prove that no individual ever eats fry."
+    sources:
+      - kind: database
+        title: "FishBase species summary: Julidochromis marlieri"
+        url: "https://www.fishbase.se/summary/Julidochromis-marlieri.html"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Sunobe (2000). Social structure, nest guarding and interspecific relationships of Julidochromis\
+          \ marlieri in Lake Tanganyika"
+        url: "https://doi.org/10.14989/68192"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Julidochromis marlieri (Marlier's Julie)"
+        url: "https://www.seriouslyfish.com/species/julidochromis-marlieri/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase food items: Julidochromis marlieri"
+        url: "https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=8923&genus=Julidochromis&species=marlieri"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Julidochromis marlieri"
+        url: "https://www.ciklid.org/artregister/art.php?ID=847"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Fish: Marlieri cichlid care guide"
+        url: "https://en.aqua-fish.net/fish/marlieri-cichlid"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Maidenhead Aquatics retailer care page: Marlier's Julie"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/marliers-julie"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Konings, A. Julidochromis: Three way lovers. Practical Fishkeeping"
+        url: "https://www.practicalfishkeeping.co.uk/features/julidochromis-three-way-lovers/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "AquaInfo: Julidochromis marlieri, by Margie van der Heijden"
+        url: "https://aquainfo.nl/en/article/julidochromis-marlieri/"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: database
+          title: "FishBase species summary: Julidochromis marlieri"
+          url: "https://www.fishbase.se/summary/Julidochromis-marlieri.html"
+          accessed: '2026-10-13'
+        value: 0
+        note: "Rubric inference from microfeeding ecology, not a prey-size trial."
+      - source:
+          kind: literature
+          title: "Sunobe (2000). Social structure, nest guarding and interspecific relationships of Julidochromis\
+            \ marlieri in Lake Tanganyika"
+          url: "https://doi.org/10.14989/68192"
+          accessed: '2026-10-13'
+        value: 0
+        note: Rock-surface feeding and omnivore classification; fish hunting was not reported.
+      - source:
+          kind: database
+          title: "FishBase food items: Julidochromis marlieri"
+          url: "https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=8923&genus=Julidochromis&species=marlieri"
+          accessed: '2026-10-13'
+        value: 0
+        note: "Recorded algae and sponges, with incomplete evidence about absent prey."
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet species register: Julidochromis marlieri"
+          url: "https://www.ciklid.org/artregister/art.php?ID=847"
+          accessed: '2026-10-13'
+        value: 0
+        note: Small animals and algae; level inferred.
+      - source:
+          kind: database
+          title: "Aqua-Fish: Marlieri cichlid care guide"
+          url: "https://en.aqua-fish.net/fish/marlieri-cichlid"
+          accessed: '2026-10-13'
+        value: 0
+        note: Small-invertebrate feeding account does not report fish prey.
+      - source:
+          kind: literature
+          title: "Konings, A. Julidochromis: Three way lovers. Practical Fishkeeping"
+          url: "https://www.practicalfishkeeping.co.uk/features/julidochromis-three-way-lovers/"
+          accessed: '2026-10-13'
+        value: 0
+        note: Secondary stomach-content account dominated by sponges; no reported fish prey.
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 5
+        total: 6
+  diet:
+    value:
+      type: omnivore
+      bloatSensitive: false
+      foods:
+        - frozen small crustaceans
+        - live small invertebrates
+        - quality flake
+        - blanched vegetable matter
+    confidence: medium
+    rationale: "Checker-a, checker-b, checker-c and tiebreaker-1 choose omnivore with bloatSensitive false;\
+      \ generator and tiebreaker-2 choose invertivore with the same flag. The qualified majority is 4\
+      \ of 6, and the food list is exactly the tally selection from checker-a. FishBase records algae\
+      \ and sponges, Sunobe classifies the fish as an omnivore, and the Nordic register describes animal\
+      \ and algal intake. Konings reports more than 80 percent sponge content in 18 fish through Kohda\
+      \ and colleagues; this supports animal-dominated feeding in that sample but does not erase plant\
+      \ intake. CRC verifies sponge feeding only. No species-specific high-protein bloat sensitivity was\
+      \ established; false is an inferred absence of a specialist dietary conflict, not immunity to digestive\
+      \ illness."
+    sources:
+      - kind: literature
+        title: "Sunobe (2000). Social structure, nest guarding and interspecific relationships of Julidochromis\
+          \ marlieri in Lake Tanganyika"
+        url: "https://doi.org/10.14989/68192"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase species summary: Julidochromis marlieri"
+        url: "https://www.fishbase.se/summary/Julidochromis-marlieri.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Julidochromis marlieri (Marlier's Julie)"
+        url: "https://www.seriouslyfish.com/species/julidochromis-marlieri/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase food items: Julidochromis marlieri"
+        url: "https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=8923&genus=Julidochromis&species=marlieri"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Julidochromis marlieri"
+        url: "https://www.ciklid.org/artregister/art.php?ID=847"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Bijker, W. H. Cichlidioot: Julidochromis marlieri. Nederlandse Bond Aqua Terra breeding\
+          \ account"
+        url: "https://nbat.nl/cichlidioot-julidochromis-marlieri/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Fish: Marlieri cichlid care guide"
+        url: "https://en.aqua-fish.net/fish/marlieri-cichlid"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Cichlid Room Companion: Julidochromis marlieri, public verification only"
+        url: "https://cichlidae.com/species.php?id=rGOn1NWl5RBi4N8PbmqlpA"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Maidenhead Aquatics retailer care page: Marlier's Julie"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/marliers-julie"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "AquaInfo: Julidochromis marlieri, by Margie van der Heijden"
+        url: "https://aquainfo.nl/en/article/julidochromis-marlieri/"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Konings, A. Julidochromis: Three way lovers. Practical Fishkeeping"
+        url: "https://www.practicalfishkeeping.co.uk/features/julidochromis-three-way-lovers/"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: "Sunobe (2000). Social structure, nest guarding and interspecific relationships of Julidochromis\
+            \ marlieri in Lake Tanganyika"
+          url: "https://doi.org/10.14989/68192"
+          accessed: '2026-10-13'
+        value:
+          type: omnivore
+        note: Food-habit category after Hori et al.; not a new diet trial.
+      - source:
+          kind: database
+          title: "FishBase food items: Julidochromis marlieri"
+          url: "https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=8923&genus=Julidochromis&species=marlieri"
+          accessed: '2026-10-13'
+        value:
+          type: omnivore
+        note: Wild juveniles and adults have recorded algae and sponges.
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet species register: Julidochromis marlieri"
+          url: "https://www.ciklid.org/artregister/art.php?ID=847"
+          accessed: '2026-10-13'
+        value:
+          type: omnivore
+        note: Small animals plus algae.
+      - source:
+          kind: database
+          title: "Seriously Fish: Julidochromis marlieri (Marlier's Julie)"
+          url: "https://www.seriouslyfish.com/species/julidochromis-marlieri/"
+          accessed: '2026-10-13'
+        value:
+          type: omnivore
+        note: "Animal foods and vegetable supplementation, mapped to the rubric."
+      - source:
+          kind: database
+          title: "AquaInfo: Julidochromis marlieri, by Margie van der Heijden"
+          url: "https://aquainfo.nl/en/article/julidochromis-marlieri/"
+          accessed: '2026-10-13'
+        value:
+          type: omnivore
+        note: Own care classification; natural foods mainly small invertebrates with algae.
+      - source:
+          kind: database
+          title: "Aqua-Fish: Marlieri cichlid care guide"
+          url: "https://en.aqua-fish.net/fish/marlieri-cichlid"
+          accessed: '2026-10-13'
+        value:
+          type: invertivore
+        note: "Animal-focused description, mapped to the rubric."
+      - source:
+          kind: literature
+          title: "Konings, A. Julidochromis: Three way lovers. Practical Fishkeeping"
+          url: "https://www.practicalfishkeeping.co.uk/features/julidochromis-three-way-lovers/"
+          accessed: '2026-10-13'
+        value:
+          type: invertivore
+        note: "Animal-dominated stomach sample reported secondhand, supporting the minority interpretation."
+      - source:
+          kind: database
+          title: "Cichlid Room Companion: Julidochromis marlieri, public verification only"
+          url: "https://cichlidae.com/species.php?id=rGOn1NWl5RBi4N8PbmqlpA"
+          accessed: '2026-10-13'
+        value:
+          type: invertivore
+        note: "Verification only: sponge feeding; no bloat test."
+      - source:
+          kind: website
+          title: "Maidenhead Aquatics retailer care page: Marlier's Julie"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/marliers-julie"
+          accessed: '2026-10-13'
+        value:
+          type: omnivore
+        note: Retailer feeding category; bloat not tested.
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 4
+        total: 6
+  aggressionConspecific:
+    value: 4
+    confidence: high
+    rationale: "Generator, checker-b and checker-c propose level 4; checker-a proposes 3. Seriously Fish\
+      \ describes fatal harassment after unsuitable adult pairing, and Bijker describes potentially lethal\
+      \ disruption of a pair. These meet the rubric level 4 exception-management requirement rather than\
+      \ ordinary persistent chasing alone. The breeder stock has disputed identity, but the species-specific\
+      \ Seriously Fish warning independently supports the severe pairing risk. A stable pair is the recommended\
+      \ social unit; arbitrary adults are not equivalent to that unit."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Julidochromis marlieri (Marlier's Julie)"
+        url: "https://www.seriouslyfish.com/species/julidochromis-marlieri/"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Bijker, W. H. Cichlidioot: Julidochromis marlieri. Nederlandse Bond Aqua Terra breeding\
+          \ account"
+        url: "https://nbat.nl/cichlidioot-julidochromis-marlieri/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "AquaInfo: Julidochromis marlieri, by Margie van der Heijden"
+        url: "https://aquainfo.nl/en/article/julidochromis-marlieri/"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Dennis et al. (2025). Plasticity of sex-biased aggression in response to the sex of territory\
+          \ intruders in an African cichlid fish, Julidochromis marlieri"
+        url: "https://doi.org/10.17912/micropub.biology.001795"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Maidenhead Aquatics retailer care page: Marlier's Julie"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/marliers-julie"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Sunobe (2000). Social structure, nest guarding and interspecific relationships of Julidochromis\
+          \ marlieri in Lake Tanganyika"
+        url: "https://doi.org/10.14989/68192"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Fish: Marlieri cichlid care guide"
+        url: "https://en.aqua-fish.net/fish/marlieri-cichlid"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Julidochromis marlieri (Marlier's Julie)"
+          url: "https://www.seriouslyfish.com/species/julidochromis-marlieri/"
+          accessed: '2026-10-13'
+        value: 4
+        note: Fatal adult-pairing harassment reported.
+      - source:
+          kind: literature
+          title: "Bijker, W. H. Cichlidioot: Julidochromis marlieri. Nederlandse Bond Aqua Terra breeding\
+            \ account"
+          url: "https://nbat.nl/cichlidioot-julidochromis-marlieri/"
+          accessed: '2026-10-13'
+        value: 4
+        note: Potentially lethal partner conflict after major changes; disputed Katoto stock.
+      - source:
+          kind: database
+          title: "AquaInfo: Julidochromis marlieri, by Margie van der Heijden"
+          url: "https://aquainfo.nl/en/article/julidochromis-marlieri/"
+          accessed: '2026-10-13'
+        value: 3
+        note: Adults excluded from the paired territory.
+      - source:
+          kind: literature
+          title: "Dennis et al. (2025). Plasticity of sex-biased aggression in response to the sex of\
+            \ territory intruders in an African cichlid fish, Julidochromis marlieri"
+          url: "https://doi.org/10.17912/micropub.biology.001795"
+          accessed: '2026-10-13'
+        value: 3
+        note: "Aggressive responses to conspecific intruders, not a mortality experiment."
+  aggressionHeterospecific:
+    value: 2
+    confidence: medium
+    rationale: "All four runs propose 2. Sunobe observed nest defence against approaching fishes, and\
+      \ care sources allow structured communities. Bijker lost small shell dwellers in a 70 cm breeding\
+      \ tank; that unsuitable arrangement does not establish level 4 against similarly sized fish in the\
+      \ rubric conditions. Territorial exclusion is expected even though sustained attacks beyond a suitable\
+      \ territory are not established."
+    sources:
+      - kind: literature
+        title: "Sunobe (2000). Social structure, nest guarding and interspecific relationships of Julidochromis\
+          \ marlieri in Lake Tanganyika"
+        url: "https://doi.org/10.14989/68192"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Julidochromis marlieri (Marlier's Julie)"
+        url: "https://www.seriouslyfish.com/species/julidochromis-marlieri/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Julidochromis marlieri"
+        url: "https://www.ciklid.org/artregister/art.php?ID=847"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Fish: Marlieri cichlid care guide"
+        url: "https://en.aqua-fish.net/fish/marlieri-cichlid"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Bijker, W. H. Cichlidioot: Julidochromis marlieri. Nederlandse Bond Aqua Terra breeding\
+          \ account"
+        url: "https://nbat.nl/cichlidioot-julidochromis-marlieri/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase species summary: Julidochromis marlieri"
+        url: "https://www.fishbase.se/summary/Julidochromis-marlieri.html"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Maidenhead Aquatics retailer care page: Marlier's Julie"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/marliers-julie"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: "Sunobe (2000). Social structure, nest guarding and interspecific relationships of Julidochromis\
+            \ marlieri in Lake Tanganyika"
+          url: "https://doi.org/10.14989/68192"
+          accessed: '2026-10-13'
+        value: 2
+        note: "Local attacks around nests, particularly against juvenile predators."
+      - source:
+          kind: database
+          title: "Seriously Fish: Julidochromis marlieri (Marlier's Julie)"
+          url: "https://www.seriouslyfish.com/species/julidochromis-marlieri/"
+          accessed: '2026-10-13'
+        value: 2
+        note: Territorial communities with appropriately sized lake cichlids.
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet species register: Julidochromis marlieri"
+          url: "https://www.ciklid.org/artregister/art.php?ID=847"
+          accessed: '2026-10-13'
+        value: 2
+        note: Brood defence with conditional community compatibility.
+      - source:
+          kind: literature
+          title: "Bijker, W. H. Cichlidioot: Julidochromis marlieri. Nederlandse Bond Aqua Terra breeding\
+            \ account"
+          url: "https://nbat.nl/cichlidioot-julidochromis-marlieri/"
+          accessed: '2026-10-13'
+        value: 4
+        note: Small shell-dweller deaths in a 70 cm breeding aquarium; contextual rather than normal-condition
+          evidence.
+  territory:
+    value:
+      size: small
+      breedingOnly: false
+    confidence: medium
+    rationale: "All four runs propose a small permanent rock-centred territory. Sunobe measured smaller\
+      \ adults using nest-centred areas 30 to 50 cm in diameter and found no defence of distant overlapping\
+      \ feeding ranges; those journeys do not justify large territory. Field nest defence was associated\
+      \ with offspring, while recurring aquarium attachment to a cave supports breedingOnly false. The\
+      \ exact defended aquarium radius is inferred rather than measured."
+    sources:
+      - kind: literature
+        title: "Sunobe (2000). Social structure, nest guarding and interspecific relationships of Julidochromis\
+          \ marlieri in Lake Tanganyika"
+        url: "https://doi.org/10.14989/68192"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Julidochromis marlieri (Marlier's Julie)"
+        url: "https://www.seriouslyfish.com/species/julidochromis-marlieri/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "AquaInfo: Julidochromis marlieri, by Margie van der Heijden"
+        url: "https://aquainfo.nl/en/article/julidochromis-marlieri/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Fish: Marlieri cichlid care guide"
+        url: "https://en.aqua-fish.net/fish/marlieri-cichlid"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Maidenhead Aquatics retailer care page: Marlier's Julie"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/marliers-julie"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Tanganyika.si: Julidochromis cf. marlieri 'Magara'"
+        url: "https://www.tanganyika.si/Tanganjika/Julidochromis/Julidochromis%20marlieri/slides/Julidochromis%20cf.%20marlieri%20%27Magara%27.html"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: "Sunobe (2000). Social structure, nest guarding and interspecific relationships of Julidochromis\
+            \ marlieri in Lake Tanganyika"
+          url: "https://doi.org/10.14989/68192"
+          accessed: '2026-10-13'
+        value:
+          size: small
+          breedingOnly: true
+        note: Nest-centred brood defence; remote feeding ranges overlap.
+      - source:
+          kind: database
+          title: "Seriously Fish: Julidochromis marlieri (Marlier's Julie)"
+          url: "https://www.seriouslyfish.com/species/julidochromis-marlieri/"
+          accessed: '2026-10-13'
+        value:
+          size: small
+          breedingOnly: false
+        note: "Cave-based territorial husbandry, spatial category inferred."
+      - source:
+          kind: database
+          title: "Aqua-Fish: Marlieri cichlid care guide"
+          url: "https://en.aqua-fish.net/fish/marlieri-cichlid"
+          accessed: '2026-10-13'
+        value:
+          size: small
+          breedingOnly: false
+        note: "Rock-refuge defence strengthened during breeding, mapped to rubric."
+  habitatZones:
+    value:
+      - rock
+    confidence: high
+    rationale: "All four runs agree on rock. Field nests and feeding occur on boulder slopes; aquarium\
+      \ sand is a surrounding substrate rather than a distinct sand-zone specialization. CRC public wording\
+      \ includes intermediate lake habitat and rocky settings, which does not contradict the rock requirement."
+    sources:
+      - kind: literature
+        title: "Sunobe (2000). Social structure, nest guarding and interspecific relationships of Julidochromis\
+          \ marlieri in Lake Tanganyika"
+        url: "https://doi.org/10.14989/68192"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase species summary: Julidochromis marlieri"
+        url: "https://www.fishbase.se/summary/Julidochromis-marlieri.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Julidochromis marlieri"
+        url: "https://www.ciklid.org/artregister/art.php?ID=847"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Julidochromis marlieri (Marlier's Julie)"
+        url: "https://www.seriouslyfish.com/species/julidochromis-marlieri/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Fish: Marlieri cichlid care guide"
+        url: "https://en.aqua-fish.net/fish/marlieri-cichlid"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Maidenhead Aquatics retailer care page: Marlier's Julie"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/marliers-julie"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Tanganyika.si: Julidochromis cf. marlieri 'Magara'"
+        url: "https://www.tanganyika.si/Tanganjika/Julidochromis/Julidochromis%20marlieri/slides/Julidochromis%20cf.%20marlieri%20%27Magara%27.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Cichlid Room Companion: Julidochromis marlieri, public verification only"
+        url: "https://cichlidae.com/species.php?id=rGOn1NWl5RBi4N8PbmqlpA"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: "Sunobe (2000). Social structure, nest guarding and interspecific relationships of Julidochromis\
+            \ marlieri in Lake Tanganyika"
+          url: "https://doi.org/10.14989/68192"
+          accessed: '2026-10-13'
+        value:
+          - rock
+        note: Boulder slope at 3 to 9 m.
+      - source:
+          kind: database
+          title: "FishBase species summary: Julidochromis marlieri"
+          url: "https://www.fishbase.se/summary/Julidochromis-marlieri.html"
+          accessed: '2026-10-13'
+        value:
+          - rock
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet species register: Julidochromis marlieri"
+          url: "https://www.ciklid.org/artregister/art.php?ID=847"
+          accessed: '2026-10-13'
+        value:
+          - rock
+      - source:
+          kind: database
+          title: "Cichlid Room Companion: Julidochromis marlieri, public verification only"
+          url: "https://cichlidae.com/species.php?id=rGOn1NWl5RBi4N8PbmqlpA"
+          accessed: '2026-10-13'
+        value:
+          - rock
+        note: Verification only; public habitat wording is broader than a single zone.
+  social:
+    value:
+      structure: pair
+    confidence: high
+    rationale: All four runs select pair as the recommended adult aquarium unit. The pair must be compatible
+      and preferably self-selected. Sunobe observed helpers and a female potentially sharing two nests;
+      FishBase and CRC also report polyandry. These qualify universal monogamy claims without establishing
+      that unrelated adults can safely form a group in the minimum aquarium.
+    sources:
+      - kind: database
+        title: "Seriously Fish: Julidochromis marlieri (Marlier's Julie)"
+        url: "https://www.seriouslyfish.com/species/julidochromis-marlieri/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Julidochromis marlieri"
+        url: "https://www.ciklid.org/artregister/art.php?ID=847"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase species summary: Julidochromis marlieri"
+        url: "https://www.fishbase.se/summary/Julidochromis-marlieri.html"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Sunobe (2000). Social structure, nest guarding and interspecific relationships of Julidochromis\
+          \ marlieri in Lake Tanganyika"
+        url: "https://doi.org/10.14989/68192"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Konings, A. Julidochromis: Three way lovers. Practical Fishkeeping"
+        url: "https://www.practicalfishkeeping.co.uk/features/julidochromis-three-way-lovers/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Cichlid Room Companion: Julidochromis marlieri, public verification only"
+        url: "https://cichlidae.com/species.php?id=rGOn1NWl5RBi4N8PbmqlpA"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Dennis et al. (2025). Plasticity of sex-biased aggression in response to the sex of territory\
+          \ intruders in an African cichlid fish, Julidochromis marlieri"
+        url: "https://doi.org/10.17912/micropub.biology.001795"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Maidenhead Aquatics retailer care page: Marlier's Julie"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/marliers-julie"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Fish: Marlieri cichlid care guide"
+        url: "https://en.aqua-fish.net/fish/marlieri-cichlid"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Julidochromis marlieri (Marlier's Julie)"
+          url: "https://www.seriouslyfish.com/species/julidochromis-marlieri/"
+          accessed: '2026-10-13'
+        value:
+          structure: pair
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet species register: Julidochromis marlieri"
+          url: "https://www.ciklid.org/artregister/art.php?ID=847"
+          accessed: '2026-10-13'
+        value:
+          structure: pair
+      - source:
+          kind: database
+          title: "FishBase species summary: Julidochromis marlieri"
+          url: "https://www.fishbase.se/summary/Julidochromis-marlieri.html"
+          accessed: '2026-10-13'
+        value:
+          structure: pair
+        note: "Pairs common, with polyandry also described."
+      - source:
+          kind: literature
+          title: "Sunobe (2000). Social structure, nest guarding and interspecific relationships of Julidochromis\
+            \ marlieri in Lake Tanganyika"
+          url: "https://doi.org/10.14989/68192"
+          accessed: '2026-10-13'
+        value:
+          structure: group
+        note: Wild social units can include helpers or two nests; not an aquarium group recommendation.
+      - source:
+          kind: database
+          title: "Cichlid Room Companion: Julidochromis marlieri, public verification only"
+          url: "https://cichlidae.com/species.php?id=rGOn1NWl5RBi4N8PbmqlpA"
+          accessed: '2026-10-13'
+        value:
+          structure: group
+          minGroup: 3
+        note: "Verification only: polyandry is natural-history context, not a stocking minimum."
+  speciesOnly:
+    value: false
+    confidence: high
+    rationale: "All four full-profile runs agree, producing unanimous 4 of 4 verification. Seriously Fish,\
+      \ the Nordic register and Aqua-Fish allow suitable Tanganyikan communities with distinct territories.\
+      \ The archive provides low-weight corroboration of mixed keeping. A dedicated pair aquarium remains\
+      \ practical; community compatibility is conditional on space, temperament and habitat use."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Julidochromis marlieri (Marlier's Julie)"
+        url: "https://www.seriouslyfish.com/species/julidochromis-marlieri/"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Maidenhead Aquatics retailer care page: Marlier's Julie"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/marliers-julie"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Fish: Marlieri cichlid care guide"
+        url: "https://en.aqua-fish.net/fish/marlieri-cichlid"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase species summary: Julidochromis marlieri"
+        url: "https://www.fishbase.se/summary/Julidochromis-marlieri.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Julidochromis marlieri"
+        url: "https://www.ciklid.org/artregister/art.php?ID=847"
+        accessed: '2026-10-13'
+      - kind: archive
+        title: cichlids.com forum thread 13909
+        url: "https://www.cichlids.com/disc/read.php?2,13909"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Julidochromis marlieri (Marlier's Julie)"
+          url: "https://www.seriouslyfish.com/species/julidochromis-marlieri/"
+          accessed: '2026-10-13'
+        value: false
+        note: Allows appropriate similarly sized lake cichlids.
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet species register: Julidochromis marlieri"
+          url: "https://www.ciklid.org/artregister/art.php?ID=847"
+          accessed: '2026-10-13'
+        value: false
+        note: "Describes mixed keeping, including open-water lake fish."
+      - source:
+          kind: database
+          title: "Aqua-Fish: Marlieri cichlid care guide"
+          url: "https://en.aqua-fish.net/fish/marlieri-cichlid"
+          accessed: '2026-10-13'
+        value: false
+        note: Allows larger Tanganyikan communities.
+      - source:
+          kind: database
+          title: "FishBase species summary: Julidochromis marlieri"
+          url: "https://www.fishbase.se/summary/Julidochromis-marlieri.html"
+          accessed: '2026-10-13'
+        value: false
+        note: "General peacefulness toward other species is supportive, not a complete stocking prescription."
+      - source:
+          kind: archive
+          title: cichlids.com forum thread 13909
+          url: "https://www.cichlids.com/disc/read.php?2,13909"
+          accessed: '2026-10-13'
+        value: false
+        note: Mixed-tank experience without controlled stocking or duration evidence.
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  hybridGroups:
+    value:
+      - julidochromis
+      - julidochromis-marlieri-ornatus
+      - julidochromis-marlieri-regani
+      - julidochromis-marlieri-transcriptus
+    confidence: low
+    rationale: "The tally uses a conservative union because no complete group list reaches a qualified\
+      \ majority. Generator and tiebreaker-2 propose the regani, transcriptus and ornatus pairs; checker-a\
+      \ proposes julidochromis; checker-b and checker-c propose the regani and transcriptus pairs; tiebreaker-1\
+      \ proposes julidochromis plus the regani pair. Each retained id appears in at least two proposals.\
+      \ Preserve all four ids with conservative verification of 2 of 6 and low confidence. The broad julidochromis\
+      \ group is presumed for the six traditional julie species covered by the warning, not automatically\
+      \ extended to the newly transferred former Chalinochromis species. The regani pair is documented\
+      \ under the rubric because Sturmbauer and colleagues report putative wild affinis hybrids near Rumonge\
+      \ and Ubwari after Brichard (1978), though parentage is not genetically confirmed. The ornatus pair\
+      \ is presumed from an old captive-cross report without mate-choice evidence. The transcriptus pair\
+      \ is presumed: Tawil discusses southern intermediate phenotypes with disputed identities, while\
+      \ Anderson reports unsuccessful crossing attempts. Konings (2019) was readable only as a public\
+      \ abstract, and Pam Chin interview access remained bot-blocked; neither supplies verified named\
+      \ parents here. The 2010 phylogeny supports relationships and historical hypotheses, not modern\
+      \ named offspring. No crosses are inferred transitively."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Julidochromis marlieri (Marlier's Julie)"
+        url: "https://www.seriouslyfish.com/species/julidochromis-marlieri/"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "TropicalFreshwaterFish: Checkerboard Julie, Julidochromis marlieri"
+        url: "https://tropicalfreshwaterfish.com/species/Julidochromis_marlieri.html"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Sturmbauer et al. (2010). Evolutionary history of the Lake Tanganyika cichlid tribe Lamprologini
+          derived from mitochondrial and nuclear DNA data
+        url: "https://doi.org/10.1016/j.ympev.2010.06.018"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Konings, A. (2019). Julidochromis marlieri or Julidochromis transcriptus or something\
+          \ else? Cichlid News 28(3), 24-28. Public abstract only"
+        url: "https://cichlidae.com/reference.php?id=9379"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Sturmbauer et al. (2017, online 2016). A separate lowstand lake at the northern edge of\
+          \ Lake Tanganyika? Evidence from phylogeographic patterns in the cichlid genus Tropheus"
+        url: "https://doi.org/10.1007/s10750-016-2939-8"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Tawil, P. (2013). Julidochromis ornatus and its dwarf relatives. Cichlid News"
+        url: "https://www.cichlidnews.com/issues/2013jul/Xornatus.html"
+        accessed: '2026-10-13'
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: Julidochromis, updated 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Julidochromis"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Andrew Anderson: projects, unsuccessful marlieri and transcriptus crossing attempts"
+        url: "https://www.andersonevolve.com/projects"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Julidochromis marlieri (Marlier's Julie)"
+          url: "https://www.seriouslyfish.com/species/julidochromis-marlieri/"
+          accessed: '2026-10-13'
+        value:
+          - julidochromis
+        note: General julie crossing warning; not verified crossability of each pair.
+      - source:
+          kind: website
+          title: "TropicalFreshwaterFish: Checkerboard Julie, Julidochromis marlieri"
+          url: "https://tropicalfreshwaterfish.com/species/Julidochromis_marlieri.html"
+          accessed: '2026-10-13'
+        value:
+          - julidochromis-marlieri-regani
+          - julidochromis-marlieri-ornatus
+        note: "Named captive reports, including claimed sterile ornatus offspring; mate choice and original\
+          \ records unspecified."
+      - source:
+          kind: literature
+          title: "Sturmbauer et al. (2017, online 2016). A separate lowstand lake at the northern edge\
+            \ of Lake Tanganyika? Evidence from phylogeographic patterns in the cichlid genus Tropheus"
+          url: "https://doi.org/10.1007/s10750-016-2939-8"
+          accessed: '2026-10-13'
+        value:
+          - julidochromis-marlieri-regani
+        note: "Putative wild affinis hybrids after Brichard, secondary morphological report without genetic\
+          \ parentage tests."
+      - source:
+          kind: literature
+          title: "Tawil, P. (2013). Julidochromis ornatus and its dwarf relatives. Cichlid News"
+          url: "https://www.cichlidnews.com/issues/2013jul/Xornatus.html"
+          accessed: '2026-10-13'
+        value:
+          - julidochromis
+          - julidochromis-marlieri-transcriptus
+        note: Broad natural-mixing discussion and Kasanga phenotypes; the current identity of southern
+          transcriptus-like fish is unresolved.
+      - source:
+          kind: literature
+          title: "Konings, A. (2019). Julidochromis marlieri or Julidochromis transcriptus or something\
+            \ else? Cichlid News 28(3), 24-28. Public abstract only"
+          url: "https://cichlidae.com/reference.php?id=9379"
+          accessed: '2026-10-13'
+        value:
+          - julidochromis
+        note: Abstract discusses possible mixing and uncertain southern taxa; no verified parental pair.
+      - source:
+          kind: literature
+          title: Sturmbauer et al. (2010). Evolutionary history of the Lake Tanganyika cichlid tribe Lamprologini
+            derived from mitochondrial and nuclear DNA data
+          url: "https://doi.org/10.1016/j.ympev.2010.06.018"
+          accessed: '2026-10-13'
+        value:
+          - julidochromis-marlieri-regani
+        note: Relationship context only; not an observed contemporary cross.
+      - source:
+          kind: website
+          title: "Andrew Anderson: projects, unsuccessful marlieri and transcriptus crossing attempts"
+          url: "https://www.andersonevolve.com/projects"
+          accessed: '2026-10-13'
+        value: []
+        note: Unsuccessful attempted marlieri-transcriptus crosses; limited negative evidence does not
+          establish impossibility.
+    verification:
+      method: conservative
+      votes:
+        agree: 2
+        total: 6
+  coloration:
+    value:
+      baseColors:
+        - white
+        - yellow
+        - black
+        - brown
+      pattern: mixed
+    confidence: high
+    rationale: "Generator, checker-b and checker-c propose white, yellow, black and brown with a mixed\
+      \ pattern; checker-a proposes yellow and brown with the same pattern. Cream to yellow backgrounds\
+      \ and dark intersecting horizontal and vertical markings justify retaining the broader palette.\
+      \ Locality contrast and body proportions vary; blue fin edging is secondary and is not a dominant\
+      \ body color."
+    sources:
+      - kind: website
+        title: "TropicalFreshwaterFish: Checkerboard Julie, Julidochromis marlieri"
+        url: "https://tropicalfreshwaterfish.com/species/Julidochromis_marlieri.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "AquaInfo: Julidochromis marlieri, by Margie van der Heijden"
+        url: "https://aquainfo.nl/en/article/julidochromis-marlieri/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Tanganyika.si: Julidochromis cf. marlieri 'Magara'"
+        url: "https://www.tanganyika.si/Tanganjika/Julidochromis/Julidochromis%20marlieri/slides/Julidochromis%20cf.%20marlieri%20%27Magara%27.html"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Bijker, W. H. Cichlidioot: Julidochromis marlieri. Nederlandse Bond Aqua Terra breeding\
+          \ account"
+        url: "https://nbat.nl/cichlidioot-julidochromis-marlieri/"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Tawil, P. (2013). Julidochromis ornatus and its dwarf relatives. Cichlid News"
+        url: "https://www.cichlidnews.com/issues/2013jul/Xornatus.html"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: website
+          title: "TropicalFreshwaterFish: Checkerboard Julie, Julidochromis marlieri"
+          url: "https://tropicalfreshwaterfish.com/species/Julidochromis_marlieri.html"
+          accessed: '2026-10-13'
+        value:
+          baseColors:
+            - yellow
+            - black
+            - brown
+          pattern: mixed
+        note: Intersecting lengthwise and transverse markings.
+      - source:
+          kind: database
+          title: "AquaInfo: Julidochromis marlieri, by Margie van der Heijden"
+          url: "https://aquainfo.nl/en/article/julidochromis-marlieri/"
+          accessed: '2026-10-13'
+        value:
+          baseColors:
+            - yellow
+            - brown
+          pattern: mixed
+      - source:
+          kind: literature
+          title: "Tawil, P. (2013). Julidochromis ornatus and its dwarf relatives. Cichlid News"
+          url: "https://www.cichlidnews.com/issues/2013jul/Xornatus.html"
+          accessed: '2026-10-13'
+        value:
+          baseColors:
+            - white
+            - black
+          pattern: mixed
+        note: Cream-white background with dark reticulation; southern identifications remain debated.
+  feedingSpeed:
+    value: normal
+    confidence: medium
+    rationale: "All four runs propose normal. Bijker describes prey inspection alternating with brief\
+      \ captures and Sunobe describes rock-surface pecking. These support a normal rubric interpretation,\
+      \ but feeding competition was not measured. The Bijker stock identification is uncertain, so its\
+      \ observations corroborate rather than define a precisely measured species-wide speed."
+    sources:
+      - kind: literature
+        title: "Bijker, W. H. Cichlidioot: Julidochromis marlieri. Nederlandse Bond Aqua Terra breeding\
+          \ account"
+        url: "https://nbat.nl/cichlidioot-julidochromis-marlieri/"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Sunobe (2000). Social structure, nest guarding and interspecific relationships of Julidochromis\
+          \ marlieri in Lake Tanganyika"
+        url: "https://doi.org/10.14989/68192"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Julidochromis marlieri (Marlier's Julie)"
+        url: "https://www.seriouslyfish.com/species/julidochromis-marlieri/"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Maidenhead Aquatics retailer care page: Marlier's Julie"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/marliers-julie"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: "Bijker, W. H. Cichlidioot: Julidochromis marlieri. Nederlandse Bond Aqua Terra breeding\
+            \ account"
+          url: "https://nbat.nl/cichlidioot-julidochromis-marlieri/"
+          accessed: '2026-10-13'
+        value: normal
+        note: Inferred from alternating deliberate inspection and brief feeding movements.
+      - source:
+          kind: literature
+          title: "Sunobe (2000). Social structure, nest guarding and interspecific relationships of Julidochromis\
+            \ marlieri in Lake Tanganyika"
+          url: "https://doi.org/10.14989/68192"
+          accessed: '2026-10-13'
+        value: normal
+        note: Repeated substrate feeding; no comparison with competitors.
+  minTank:
+    value:
+      volumeL: 110
+      lengthCm: 120
+      depthCm: 30
+    confidence: medium
+    rationale: "Checker-a, checker-b and checker-c propose 110 L with a 120 by 30 cm footprint; generator\
+      \ proposes the same footprint with 120 L. Retain the explicit Seriously Fish recommendation of roughly\
+      \ 110 L and 120 by 30 by 30 cm for one established pair. Tanganyika.si instead recommends 120 L,\
+      \ Fishkeeper at least 4 ft length, the Nordic register 75 to 100 L and AquaInfo 100 L as sole inhabitants\
+      \ or about 200 L for communities. Nominal dimensions and stated rounded volume are approximate;\
+      \ usable water is reduced by rockwork. Larger groups and communities require additional room."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Julidochromis marlieri (Marlier's Julie)"
+        url: "https://www.seriouslyfish.com/species/julidochromis-marlieri/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Julidochromis marlieri"
+        url: "https://www.ciklid.org/artregister/art.php?ID=847"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "AquaInfo: Julidochromis marlieri, by Margie van der Heijden"
+        url: "https://aquainfo.nl/en/article/julidochromis-marlieri/"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Maidenhead Aquatics retailer care page: Marlier's Julie"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/marliers-julie"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Tanganyika.si: Julidochromis cf. marlieri 'Magara'"
+        url: "https://www.tanganyika.si/Tanganjika/Julidochromis/Julidochromis%20marlieri/slides/Julidochromis%20cf.%20marlieri%20%27Magara%27.html"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "TropicalFreshwaterFish: Checkerboard Julie, Julidochromis marlieri"
+        url: "https://tropicalfreshwaterfish.com/species/Julidochromis_marlieri.html"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Julidochromis marlieri (Marlier's Julie)"
+          url: "https://www.seriouslyfish.com/species/julidochromis-marlieri/"
+          accessed: '2026-10-13'
+        value:
+          volumeL: 110
+          lengthCm: 120
+          depthCm: 30
+        note: "Explicit nominal pair recommendation, volume rounded by the source."
+      - source:
+          kind: database
+          title: "Tanganyika.si: Julidochromis cf. marlieri 'Magara'"
+          url: "https://www.tanganyika.si/Tanganjika/Julidochromis/Julidochromis%20marlieri/slides/Julidochromis%20cf.%20marlieri%20%27Magara%27.html"
+          accessed: '2026-10-13'
+        value:
+          volumeL: 120
+        note: Pair volume without footprint.
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet species register: Julidochromis marlieri"
+          url: "https://www.ciklid.org/artregister/art.php?ID=847"
+          accessed: '2026-10-13'
+        value:
+          volumeL: 100
+        note: Upper end of 75 to 100 L pair advice; no footprint.
+      - source:
+          kind: database
+          title: "AquaInfo: Julidochromis marlieri, by Margie van der Heijden"
+          url: "https://aquainfo.nl/en/article/julidochromis-marlieri/"
+          accessed: '2026-10-13'
+        value:
+          volumeL: 100
+        note: "Pair as sole inhabitants, with about 200 L for mixed tanks."
+      - source:
+          kind: website
+          title: "Maidenhead Aquatics retailer care page: Marlier's Julie"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/marliers-julie"
+          accessed: '2026-10-13'
+        value:
+          lengthCm: 121.92
+        note: 4 ft minimum; no depth or volume.
+      - source:
+          kind: website
+          title: "TropicalFreshwaterFish: Checkerboard Julie, Julidochromis marlieri"
+          url: "https://tropicalfreshwaterfish.com/species/Julidochromis_marlieri.html"
+          accessed: '2026-10-13'
+        value:
+          volumeL: 114
+          lengthCm: 80
+        note: "Older care recommendation; no depth stated, so none is invented."
+  lifespanYears:
+    value:
+      min: 5
+      max: 8
+    confidence: medium
+    rationale: "Checker-b and checker-c propose 5 to 8 years, checker-a a model-derived 5 to 10, and generator\
+      \ 5 to 12. Aqua-Fish supplies the direct typical-care estimate of 5 to 8. The wider Cichlidy.cz\
+      \ retailer claim is 8 to 12 with exceptional 15-year fish, without longitudinal evidence; it is\
+      \ not used to widen the expected range. Retain the database estimate with medium confidence because\
+      \ only one independent database gives the selected interval."
+    sources:
+      - kind: database
+        title: "Aqua-Fish: Marlieri cichlid care guide"
+        url: "https://en.aqua-fish.net/fish/marlieri-cichlid"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Cichlidy.cz breeder and retailer: Julidochromis marlieri"
+        url: "https://www.cichlidy.cz/inpage/julidochromis-marlieri-918/"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: database
+          title: "Aqua-Fish: Marlieri cichlid care guide"
+          url: "https://en.aqua-fish.net/fish/marlieri-cichlid"
+          accessed: '2026-10-13'
+        value:
+          min: 5
+          max: 8
+        note: "Typical captive estimate, not a survival study."
+      - source:
+          kind: website
+          title: "Cichlidy.cz breeder and retailer: Julidochromis marlieri"
+          url: "https://www.cichlidy.cz/inpage/julidochromis-marlieri-918/"
+          accessed: '2026-10-13'
+        value:
+          min: 8
+          max: 12
+        note: Retailer usual-life claim; exceptional 15 years is outside this interval.
+  breeding:
+    value: cave-spawner
+    confidence: high
+    rationale: "All four runs agree. Field nests lie under rocks and care sources describe egg deposition\
+      \ on internal cave surfaces. Both adults contribute to defence, and helpers or multiple juvenile\
+      \ cohorts can occur. Care roles vary with relative size, so they are not assigned rigidly by sex."
+    sources:
+      - kind: literature
+        title: "Sunobe (2000). Social structure, nest guarding and interspecific relationships of Julidochromis\
+          \ marlieri in Lake Tanganyika"
+        url: "https://doi.org/10.14989/68192"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Julidochromis marlieri (Marlier's Julie)"
+        url: "https://www.seriouslyfish.com/species/julidochromis-marlieri/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase species summary: Julidochromis marlieri"
+        url: "https://www.fishbase.se/summary/Julidochromis-marlieri.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Julidochromis marlieri"
+        url: "https://www.ciklid.org/artregister/art.php?ID=847"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Bijker, W. H. Cichlidioot: Julidochromis marlieri. Nederlandse Bond Aqua Terra breeding\
+          \ account"
+        url: "https://nbat.nl/cichlidioot-julidochromis-marlieri/"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Dennis et al. (2025). Plasticity of sex-biased aggression in response to the sex of territory\
+          \ intruders in an African cichlid fish, Julidochromis marlieri"
+        url: "https://doi.org/10.17912/micropub.biology.001795"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Schumer, Krishnakant and Renn (2011). Comparative gene expression profiles for highly\
+          \ similar aggressive phenotypes in male and female cichlid fishes (Julidochromis)"
+        url: "https://doi.org/10.1242/jeb.055467"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Maidenhead Aquatics retailer care page: Marlier's Julie"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/marliers-julie"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Fish: Marlieri cichlid care guide"
+        url: "https://en.aqua-fish.net/fish/marlieri-cichlid"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: "Sunobe (2000). Social structure, nest guarding and interspecific relationships of Julidochromis\
+            \ marlieri in Lake Tanganyika"
+          url: "https://doi.org/10.14989/68192"
+          accessed: '2026-10-13'
+        value: cave-spawner
+        note: Nests beneath boulders with guarded juveniles.
+      - source:
+          kind: database
+          title: "Seriously Fish: Julidochromis marlieri (Marlier's Julie)"
+          url: "https://www.seriouslyfish.com/species/julidochromis-marlieri/"
+          accessed: '2026-10-13'
+        value: cave-spawner
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet species register: Julidochromis marlieri"
+          url: "https://www.ciklid.org/artregister/art.php?ID=847"
+          accessed: '2026-10-13'
+        value: cave-spawner
+      - source:
+          kind: literature
+          title: "Schumer, Krishnakant and Renn (2011). Comparative gene expression profiles for highly\
+            \ similar aggressive phenotypes in male and female cichlid fishes (Julidochromis)"
+          url: "https://doi.org/10.1242/jeb.055467"
+          accessed: '2026-10-13'
+        value: cave-spawner
+        note: Breeding in experimental shelter cavities.
+  beginnerSuitability:
+    value: moderate
+    confidence: high
+    rationale: "All four runs select moderate. The Nordic register and Seriously Fish independently use\
+      \ intermediate or moderate ratings. Maintaining a stable alkaline aquarium and varied feeding is\
+      \ manageable, but selecting a compatible pair and responding to aggression require observation and\
+      \ a separation option. Easy retailer labels do not resolve these pairing risks."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Julidochromis marlieri (Marlier's Julie)"
+        url: "https://www.seriouslyfish.com/species/julidochromis-marlieri/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Julidochromis marlieri"
+        url: "https://www.ciklid.org/artregister/art.php?ID=847"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Maidenhead Aquatics retailer care page: Marlier's Julie"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/marliers-julie"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "TropicalFreshwaterFish: Checkerboard Julie, Julidochromis marlieri"
+        url: "https://tropicalfreshwaterfish.com/species/Julidochromis_marlieri.html"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Julidochromis marlieri (Marlier's Julie)"
+          url: "https://www.seriouslyfish.com/species/julidochromis-marlieri/"
+          accessed: '2026-10-13'
+        value: moderate
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet species register: Julidochromis marlieri"
+          url: "https://www.ciklid.org/artregister/art.php?ID=847"
+          accessed: '2026-10-13'
+        value: moderate
+partners:
+  suitable:
+    - species: Cyprichromis leptosoma
+      reason: Open-water use can reduce competition with the rock-centred pair. This is an example inferred
+        from the care sources genus-level recommendation.
+      condition: "A larger community tank meeting the schooling species requirements, with open swimming\
+        \ room and a separate Julie territory."
+    - species: Altolamprologus calvus
+      reason: A similarly sized Tanganyikan example of the Altolamprologus genus recommended in care sources.
+        Separate cave areas can reduce conflict.
+      condition: A spacious community aquarium with distinct rock areas and visual barriers; small offspring
+        may be eaten by tankmates.
+    - species: Altolamprologus compressiceps
+      reason: "Comparable size and lake-water requirements allow a conditional combination, inferred from\
+        \ care guidance for its genus."
+      condition: "Substantially more room than the pair minimum, with separate caves and close monitoring\
+        \ of territorial disputes."
+  unsuitable:
+    - species: Julidochromis regani
+      reason: "Shared rock habitat creates territorial competition, and a putative wild marlieri-regani\
+        \ hybrid population is reported, giving a documented group under the rubric despite unconfirmed\
+        \ genetic parentage."
+    - species: Julidochromis transcriptus
+      reason: "Rock-territory overlap and presumed crossing risk. Southern intermediate fish have disputed\
+        \ identity, and failed laboratory attempts limit the strength of a named-cross claim."
+    - species: Julidochromis ornatus
+      reason: "Shared nesting habitat and a captive crossing report with claimed sterile offspring; partner\
+        \ choice and original parentage checks are unspecified, so the group is presumed."
+    - species: Lamprologus ocellatus
+      reason: "Small shell dwellers can suffer territorial attacks when their shell area overlaps the\
+        \ Julie nest, as reported in a cramped breeding tank."
+      condition: Unsuitable in the minimum pair aquarium or an adjacent shell field; this is an aggression
+        concern rather than established predation.
+profile:
+  overview:
+    text: "An established pair can occupy a rock aquarium for years, with successive young appearing near\
+      \ a hidden nest. Julidochromis marlieri is a Lake Tanganyika cichlid described by Poll in 1956.\
+      \ Adults have pale and dark intersecting markings, with typical aquarium allowances of about 10\
+      \ cm for males and 13 cm for females. The main challenge is the relationship between the adults:\
+      \ a pair is a social bond, not simply two fish of opposite sex. Serious partner aggression makes\
+      \ the species a moderate-care choice."
+    sources:
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: Julidochromis, updated 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Julidochromis"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "AquaInfo: Julidochromis marlieri, by Margie van der Heijden"
+        url: "https://aquainfo.nl/en/article/julidochromis-marlieri/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Julidochromis marlieri (Marlier's Julie)"
+        url: "https://www.seriouslyfish.com/species/julidochromis-marlieri/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Julidochromis marlieri"
+        url: "https://www.ciklid.org/artregister/art.php?ID=847"
+        accessed: '2026-10-13'
+  habitat:
+    text: "Shelter and feeding surfaces are closely connected for this species. Sunobe studied boulder\
+      \ slopes at Gitaza, Burundi, at depths of 3 to 9 m; other accounts discuss Bemba and populations\
+      \ along additional shores. The fish search rock surfaces and use narrow cavities for nests. Regional\
+      \ identifications, particularly of small southern forms, differ between specialists. The adopted\
+      \ natural lake envelope is 23 to 29 C, pH 8.4 to 9.4, GH 10 to 13 dGH and KH 15 to 20 dKH. Lake\
+      \ alkalinity and general hardness describe different aspects of the water."
+    sources:
+      - kind: literature
+        title: "Sunobe (2000). Social structure, nest guarding and interspecific relationships of Julidochromis\
+          \ marlieri in Lake Tanganyika"
+        url: "https://doi.org/10.14989/68192"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Konings, A. Julidochromis: Three way lovers. Practical Fishkeeping"
+        url: "https://www.practicalfishkeeping.co.uk/features/julidochromis-three-way-lovers/"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Tawil, P. (2013). Julidochromis ornatus and its dwarf relatives. Cichlid News"
+        url: "https://www.cichlidnews.com/issues/2013jul/Xornatus.html"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. Chapters 2 and 8"
+        url: "https://doi.org/10.18174/121977"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa,\
+          \ Vol. 1. Lake Tanganyika measurements after Talling and Talling (1965)"
+        url: "https://www.fao.org/4/t0473e/T0473E10.htm"
+        accessed: '2026-10-13'
+  sizeAndGrowth:
+    text: "Use adult space requirements when selecting a tank, even for a juvenile purchase. AquaInfo\
+      \ gives about 10 cm for males and 13 cm for females, with similar sex-specific intervals in a specialist\
+      \ locality sheet. Larger unsexed or standard-length maxima in other references are not equivalent\
+      \ to typical aquarium measurements for each sex. Offspring need increasing room as they mature and\
+      \ parental tolerance eventually ends. A care database estimates five to eight years of life; the\
+      \ longer retailer estimates lack stronger evidence."
+    sources:
+      - kind: database
+        title: "AquaInfo: Julidochromis marlieri, by Margie van der Heijden"
+        url: "https://aquainfo.nl/en/article/julidochromis-marlieri/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Tanganyika.si: Julidochromis cf. marlieri 'Magara'"
+        url: "https://www.tanganyika.si/Tanganjika/Julidochromis/Julidochromis%20marlieri/slides/Julidochromis%20cf.%20marlieri%20%27Magara%27.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase species summary: Julidochromis marlieri"
+        url: "https://www.fishbase.se/summary/Julidochromis-marlieri.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Julidochromis marlieri (Marlier's Julie)"
+        url: "https://www.seriouslyfish.com/species/julidochromis-marlieri/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Fish: Marlieri cichlid care guide"
+        url: "https://en.aqua-fish.net/fish/marlieri-cichlid"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Cichlidy.cz breeder and retailer: Julidochromis marlieri"
+        url: "https://www.cichlidy.cz/inpage/julidochromis-marlieri-918/"
+        accessed: '2026-10-13'
+  husbandry:
+    text: "For one established pair, provide approximately 110 litres with at least a 120 cm length and\
+      \ 30 cm front-to-back footprint. This pair minimum does not cover additional adult pairs or community\
+      \ fish. Seat rockwork securely and create several protected retreats with broken sight lines. Maintain\
+      \ filtration, oxygenation and routine waste removal. Aquarium recommendations are strongest near\
+      \ 24 to 26 C; the full decided tolerance includes 29 C to contain natural conditions, although constant\
+      \ multi-year exposure at that endpoint is unproven. Stable chemistry and water changes matched to\
+      \ the aquarium help avoid abrupt disruption."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Julidochromis marlieri (Marlier's Julie)"
+        url: "https://www.seriouslyfish.com/species/julidochromis-marlieri/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Julidochromis marlieri"
+        url: "https://www.ciklid.org/artregister/art.php?ID=847"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Maidenhead Aquatics retailer care page: Marlier's Julie"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/marliers-julie"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Dennis et al. (2025). Plasticity of sex-biased aggression in response to the sex of territory\
+          \ intruders in an African cichlid fish, Julidochromis marlieri"
+        url: "https://doi.org/10.17912/micropub.biology.001795"
+        accessed: '2026-10-13'
+  socialBehavior:
+    text: "Observe access to food and shelter, especially after a move or layout change. An adult repeatedly\
+      \ driven into a corner or behind equipment may be unable to remain safely with its partner. Bond\
+      \ failure and unsuitable introductions can cause severe injury or death. One compatible pair is\
+      \ the standard aquarium unit, with a practical separation option available. Wild social groups can\
+      \ include helpers or a female associated with two males; this does not make unrelated adults suitable\
+      \ additions to the minimum pair tank."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Julidochromis marlieri (Marlier's Julie)"
+        url: "https://www.seriouslyfish.com/species/julidochromis-marlieri/"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Bijker, W. H. Cichlidioot: Julidochromis marlieri. Nederlandse Bond Aqua Terra breeding\
+          \ account"
+        url: "https://nbat.nl/cichlidioot-julidochromis-marlieri/"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Sunobe (2000). Social structure, nest guarding and interspecific relationships of Julidochromis\
+          \ marlieri in Lake Tanganyika"
+        url: "https://doi.org/10.14989/68192"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase species summary: Julidochromis marlieri"
+        url: "https://www.fishbase.se/summary/Julidochromis-marlieri.html"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Dennis et al. (2025). Plasticity of sex-biased aggression in response to the sex of territory\
+          \ intruders in an African cichlid fish, Julidochromis marlieri"
+        url: "https://doi.org/10.17912/micropub.biology.001795"
+        accessed: '2026-10-13'
+  diet:
+    text: "The decided feeding category is omnivore. Wild records include both algae and sponges, while\
+      \ small crustaceans and insect larvae are also described. A specialist magazine reports an animal-dominated\
+      \ stomach sample, so the classification does not imply equal plant and animal proportions in every\
+      \ population. Offer small animal foods together with suitable prepared food and a modest vegetable\
+      \ component. The selected food list includes frozen small crustaceans, live small invertebrates,\
+      \ quality flake and blanched vegetable matter. Special protein-induced bloat sensitivity was not\
+      \ established; avoid letting uneaten food accumulate."
+    sources:
+      - kind: database
+        title: "FishBase food items: Julidochromis marlieri"
+        url: "https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=8923&genus=Julidochromis&species=marlieri"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Sunobe (2000). Social structure, nest guarding and interspecific relationships of Julidochromis\
+          \ marlieri in Lake Tanganyika"
+        url: "https://doi.org/10.14989/68192"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Julidochromis marlieri"
+        url: "https://www.ciklid.org/artregister/art.php?ID=847"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Julidochromis marlieri (Marlier's Julie)"
+        url: "https://www.seriouslyfish.com/species/julidochromis-marlieri/"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Konings, A. Julidochromis: Three way lovers. Practical Fishkeeping"
+        url: "https://www.practicalfishkeeping.co.uk/features/julidochromis-three-way-lovers/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "AquaInfo: Julidochromis marlieri, by Margie van der Heijden"
+        url: "https://aquainfo.nl/en/article/julidochromis-marlieri/"
+        accessed: '2026-10-13'
+  breeding:
+    text: "Before repeated spawning fills the tank, arrange a destination for growing offspring. Eggs\
+      \ are deposited inside a protected cavity and the young remain near the nest. Both adults contribute\
+      \ to protection, with the smaller partner often spending more time close to the brood. Older offspring\
+      \ or helpers may participate, and several ages can coexist temporarily. Supply food small enough\
+      \ for the fry, such as newly hatched Artemia or finely divided prepared foods, and monitor when\
+      \ older young lose access to shelter."
+    sources:
+      - kind: literature
+        title: "Sunobe (2000). Social structure, nest guarding and interspecific relationships of Julidochromis\
+          \ marlieri in Lake Tanganyika"
+        url: "https://doi.org/10.14989/68192"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Julidochromis marlieri (Marlier's Julie)"
+        url: "https://www.seriouslyfish.com/species/julidochromis-marlieri/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Julidochromis marlieri"
+        url: "https://www.ciklid.org/artregister/art.php?ID=847"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Schumer, Krishnakant and Renn (2011). Comparative gene expression profiles for highly\
+          \ similar aggressive phenotypes in male and female cichlid fishes (Julidochromis)"
+        url: "https://doi.org/10.1242/jeb.055467"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Dennis et al. (2025). Plasticity of sex-biased aggression in response to the sex of territory\
+          \ intruders in an African cichlid fish, Julidochromis marlieri"
+        url: "https://doi.org/10.17912/micropub.biology.001795"
+        accessed: '2026-10-13'
+  sexing:
+    text: "Size is useful within an established mature pair but is an unreliable sole guide for unfamiliar\
+      \ stock. Females are often larger and fuller-bodied, although variation and differently sized locality\
+      \ forms can confuse this comparison. Both sexes have similar markings. The genital papilla can provide\
+      \ an additional distinction when visible, with a more pointed male structure. A confirmed compatible\
+      \ pair or young fish allowed to select partners is more useful than assuming that two purchased\
+      \ adults will bond."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Julidochromis marlieri (Marlier's Julie)"
+        url: "https://www.seriouslyfish.com/species/julidochromis-marlieri/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Julidochromis marlieri"
+        url: "https://www.ciklid.org/artregister/art.php?ID=847"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "AquaInfo: Julidochromis marlieri, by Margie van der Heijden"
+        url: "https://aquainfo.nl/en/article/julidochromis-marlieri/"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Maidenhead Aquatics retailer care page: Marlier's Julie"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/marliers-julie"
+        accessed: '2026-10-13'
+  compatibility:
+    text: "Predation level 0 describes the available microfeeding evidence; it still permits occasional\
+      \ incidental fry capture and does not make all small tankmates safe from aggression. In a larger\
+      \ suitable Tanganyikan aquarium, open-water Cyprichromis can avoid the main rock territory, and\
+      \ similarly sized Altolamprologus may work where cave areas are separate. Other Julidochromis carry\
+      \ territorial and hybridization concerns. The regani group rests on a reported putative wild hybrid\
+      \ population, while the broader julie group and the transcriptus and ornatus pairs remain presumed.\
+      \ Southern intermediate appearance does not securely identify hybrid parents."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Julidochromis marlieri (Marlier's Julie)"
+        url: "https://www.seriouslyfish.com/species/julidochromis-marlieri/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Julidochromis marlieri"
+        url: "https://www.ciklid.org/artregister/art.php?ID=847"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Maidenhead Aquatics retailer care page: Marlier's Julie"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/marliers-julie"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase species summary: Julidochromis marlieri"
+        url: "https://www.fishbase.se/summary/Julidochromis-marlieri.html"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Sturmbauer et al. (2017, online 2016). A separate lowstand lake at the northern edge of\
+          \ Lake Tanganyika? Evidence from phylogeographic patterns in the cichlid genus Tropheus"
+        url: "https://doi.org/10.1007/s10750-016-2939-8"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Tawil, P. (2013). Julidochromis ornatus and its dwarf relatives. Cichlid News"
+        url: "https://www.cichlidnews.com/issues/2013jul/Xornatus.html"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "TropicalFreshwaterFish: Checkerboard Julie, Julidochromis marlieri"
+        url: "https://tropicalfreshwaterfish.com/species/Julidochromis_marlieri.html"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Andrew Anderson: projects, unsuccessful marlieri and transcriptus crossing attempts"
+        url: "https://www.andersonevolve.com/projects"
+        accessed: '2026-10-13'
+  problems:
+    text: "A fish that cannot feed or leave its refuge needs prompt attention to the social arrangement.\
+      \ Pair disruption, retained rival adults and growing juveniles can all turn adequate shelter into\
+      \ insufficient space. Bijker reported shell-dweller losses in a small breeding tank, illustrating\
+      \ the danger of overlapping territories even when the species itself is not a fish hunter. Check\
+      \ water quality and oxygenation alongside behaviour when appetite or breathing changes. Stable maintenance\
+      \ and an available separation tank reduce the chance that a developing conflict becomes an emergency."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Julidochromis marlieri (Marlier's Julie)"
+        url: "https://www.seriouslyfish.com/species/julidochromis-marlieri/"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Bijker, W. H. Cichlidioot: Julidochromis marlieri. Nederlandse Bond Aqua Terra breeding\
+          \ account"
+        url: "https://nbat.nl/cichlidioot-julidochromis-marlieri/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Julidochromis marlieri"
+        url: "https://www.ciklid.org/artregister/art.php?ID=847"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Maidenhead Aquatics retailer care page: Marlier's Julie"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/marliers-julie"
+        accessed: '2026-10-13'
+provenance:
+  runs:
+    - role: generator
+      model: gpt-6.1-sol
+      date: '2026-10-13'
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-13
+    - role: checker
+      model: gpt-6.1-sol
+      date: '2026-10-13'
+    - role: checker
+      model: gpt-6.1-sol
+      date: '2026-10-13'
+    - role: checker
+      model: gpt-6.1-sol
+      date: '2026-10-13'
+    - role: checker
+      model: gpt-6.1-sol
+      date: '2026-10-13'
+    - role: adjudicator
+      model: gpt-6.1-sol
+      date: '2026-10-13'
+  disagreements:
+    - field: features.predation
+      proposals:
+        - by: generator
+          value: 1
+        - by: checker-a
+          value: 0
+        - by: checker-b
+          value: 0
+        - by: checker-c
+          value: 0
+        - by: tiebreaker-1
+          value: 0
+        - by: tiebreaker-2
+          value: 0
+      decision: 0
+      rationale: "The qualified majority is 5 of 6: checker-a, checker-b, checker-c and both tiebreakers\
+        \ choose 0; generator chooses 1 from a weak fry-predator flag. FishBase describes microfeeding,\
+        \ Sunobe observed rock-surface pecking, and FishBase food records list algae and sponges without\
+        \ fish prey. Konings reports sponge-dominated stomach contents through an earlier study. These\
+        \ support level 0, which still allows incidental fry capture. They do not measure a prey-size\
+        \ threshold or prove that no individual ever eats fry."
+    - field: features.diet
+      proposals:
+        - by: generator
+          value:
+            type: invertivore
+            bloatSensitive: false
+            foods:
+              - Small sinking pellets
+              - Daphnia
+              - Artemia
+              - Mysis
+              - Cyclops
+              - Spirulina-containing food
+        - by: checker-a
+          value:
+            type: omnivore
+            bloatSensitive: false
+            foods:
+              - frozen small crustaceans
+              - live small invertebrates
+              - quality flake
+              - blanched vegetable matter
+        - by: checker-b
+          value:
+            type: omnivore
+            bloatSensitive: false
+            foods:
+              - rock-associated algae
+              - sponges
+              - small crustaceans
+              - insect larvae
+              - balanced prepared foods
+        - by: checker-c
+          value:
+            type: omnivore
+            bloatSensitive: false
+            foods:
+              - small crustaceans
+              - other small benthic invertebrates
+              - algae
+              - balanced prepared foods
+        - by: tiebreaker-1
+          value:
+            type: omnivore
+            bloatSensitive: false
+        - by: tiebreaker-2
+          value:
+            type: invertivore
+            bloatSensitive: false
+      decision:
+        type: omnivore
+        bloatSensitive: false
+        foods:
+          - frozen small crustaceans
+          - live small invertebrates
+          - quality flake
+          - blanched vegetable matter
+      rationale: "Checker-a, checker-b, checker-c and tiebreaker-1 choose omnivore with bloatSensitive\
+        \ false; generator and tiebreaker-2 choose invertivore with the same flag. The qualified majority\
+        \ is 4 of 6, and the food list is exactly the tally selection from checker-a. FishBase records\
+        \ algae and sponges, Sunobe classifies the fish as an omnivore, and the Nordic register describes\
+        \ animal and algal intake. Konings reports more than 80 percent sponge content in 18 fish through\
+        \ Kohda and colleagues; this supports animal-dominated feeding in that sample but does not erase\
+        \ plant intake. CRC verifies sponge feeding only. No species-specific high-protein bloat sensitivity\
+        \ was established; false is an inferred absence of a specialist dietary conflict, not immunity\
+        \ to digestive illness."
+    - field: features.hybridGroups
+      proposals:
+        - by: generator
+          value:
+            - julidochromis-marlieri-regani
+            - julidochromis-marlieri-transcriptus
+            - julidochromis-marlieri-ornatus
+        - by: checker-a
+          value:
+            - julidochromis
+        - by: checker-b
+          value:
+            - julidochromis-marlieri-transcriptus
+            - julidochromis-marlieri-regani
+        - by: checker-c
+          value:
+            - julidochromis-marlieri-regani
+            - julidochromis-marlieri-transcriptus
+        - by: tiebreaker-1
+          value:
+            - julidochromis
+            - julidochromis-marlieri-regani
+        - by: tiebreaker-2
+          value:
+            - julidochromis-marlieri-regani
+            - julidochromis-marlieri-transcriptus
+            - julidochromis-marlieri-ornatus
+      decision:
+        - julidochromis
+        - julidochromis-marlieri-ornatus
+        - julidochromis-marlieri-regani
+        - julidochromis-marlieri-transcriptus
+      rationale: "The tally uses a conservative union because no complete group list reaches a qualified\
+        \ majority. Generator and tiebreaker-2 propose the regani, transcriptus and ornatus pairs; checker-a\
+        \ proposes julidochromis; checker-b and checker-c propose the regani and transcriptus pairs; tiebreaker-1\
+        \ proposes julidochromis plus the regani pair. Each retained id appears in at least two proposals.\
+        \ Preserve all four ids with conservative verification of 2 of 6 and low confidence. The broad\
+        \ julidochromis group is presumed for the six traditional julie species covered by the warning,\
+        \ not automatically extended to the newly transferred former Chalinochromis species. The regani\
+        \ pair is documented under the rubric because Sturmbauer and colleagues report putative wild affinis\
+        \ hybrids near Rumonge and Ubwari after Brichard (1978), though parentage is not genetically confirmed.\
+        \ The ornatus pair is presumed from an old captive-cross report without mate-choice evidence.\
+        \ The transcriptus pair is presumed: Tawil discusses southern intermediate phenotypes with disputed\
+        \ identities, while Anderson reports unsuccessful crossing attempts. Konings (2019) was readable\
+        \ only as a public abstract, and Pam Chin interview access remained bot-blocked; neither supplies\
+        \ verified named parents here. The 2010 phylogeny supports relationships and historical hypotheses,\
+        \ not modern named offspring. No crosses are inferred transitively."
+    - field: features.temperatureC.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 23
+            max: 29
+        - by: checker-a
+          value:
+            min: 22
+            max: 29
+        - by: checker-b
+          value:
+            min: 23
+            max: 29
+        - by: checker-c
+          value:
+            min: 23
+            max: 29
+      decision:
+        min: 23
+        max: 29
+      rationale: "The unanimous tally treats the 23 to 29 C proposals from generator, checker-b and checker-c\
+        \ and the 22 to 29 C proposal from checker-a as agreeing within the 1 C rule; the median minimum\
+        \ is 23 C. FishBase gives the wider lower reach of 22 to 25 C, while Seriously Fish gives 23 to\
+        \ 27 C, the Nordic prose 24 to 28 C and TropicalFreshwaterFish 24 to 28 C. The 22 C endpoint is\
+        \ not retained. Dennis maintained a colony at 27.7 to 28.3 C. The ceiling is widened to 29 C to\
+        \ contain natural water; multi-year constant exposure at 29 C was not established, so the decided\
+        \ confidence remains low."
+    - field: features.ghDgh.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 8
+            max: 25
+        - by: checker-a
+          value:
+            min: 8
+            max: 20
+        - by: checker-b
+          value:
+            min: 8
+            max: 25
+        - by: checker-c
+          value:
+            min: 8
+            max: 25
+        - by: tiebreaker-1
+          value:
+            min: 10
+            max: 25
+        - by: tiebreaker-2
+          value:
+            min: 8
+            max: 25
+      decision:
+        min: 8
+        max: 25
+      rationale: "Generator, checker-b, checker-c and tiebreaker-2 propose 8 to 25 dGH; tiebreaker-1 proposes\
+        \ 10 to 25, agreeing within the 2 dGH rule; checker-a proposes 8 to 20. The qualified majority\
+        \ is 5 of 6, with median endpoints 8 and 25. Seriously Fish gives 10 to 25 and TropicalFreshwaterFish\
+        \ 8 to 20; AquaInfo gives 7 to 11, while the wider Aqua-Fish recommendation is 18 to 30 dGH. The\
+        \ isolated 7 and 30 endpoints are not adopted. NBAT records breeding at GH 8 in Katoto fish whose\
+        \ current identification is disputed, and tiebreaker-1 therefore preferred 10. The tally retains\
+        \ 8, supported also by the older care page, with medium confidence rather than a demonstrated\
+        \ physiological threshold."
+    - field: features.origin
+      proposals:
+        - by: generator
+          value:
+            continent: Africa
+            region: Lake Tanganyika
+            waterbody: lake-tanganyika
+            localities:
+              - Makabola
+              - Magara
+              - Halembe
+              - Isanga
+        - by: checker-a
+          value:
+            continent: Africa
+            region: Lake Tanganyika
+            waterbody: lake-tanganyika
+            localities:
+              - Gitaza (Burundi)
+              - Bemba (Democratic Republic of the Congo)
+        - by: checker-b
+          value:
+            continent: Africa
+            region: Lake Tanganyika
+            waterbody: lake-tanganyika
+            localities:
+              - "Gitaza, Burundi"
+              - "Bemba, Democratic Republic of the Congo"
+        - by: checker-c
+          value:
+            continent: Africa
+            region: Lake Tanganyika
+            waterbody: lake-tanganyika
+      decision:
+        continent: Africa
+        region: Lake Tanganyika
+        waterbody: lake-tanganyika
+        localities:
+          - "Gitaza, Burundi"
+          - "Bemba, Democratic Republic of the Congo"
+          - "Magara, Burundi"
+          - "Halembe, Tanzania"
+          - "Isanga, Zambia"
+      rationale: "All four full-profile runs agree on Lake Tanganyika. The generator lists Makabola, Magara,\
+        \ Halembe and Isanga; checker-a lists Gitaza and Bemba; checker-b uses the same two field sites\
+        \ with country labels; checker-c supplies no locality list. Retain the field sites described by\
+        \ Sunobe and the independently described Magara, Halembe and Isanga populations. Makabola is a\
+        \ historical type-locality label in the Nordic register, not a newly verified occurrence. Geographic\
+        \ labels do not resolve debated species limits."
+    - field: features.maxSizeCm
+      proposals:
+        - by: generator
+          value:
+            male: 10
+            female: 13
+        - by: checker-a
+          value:
+            male: 11
+            female: 13
+        - by: checker-b
+          value:
+            male: 10
+            female: 13
+        - by: checker-c
+          value:
+            male: 13
+            female: 15
+      decision:
+        male: 10
+        female: 13
+      rationale: "Generator and checker-b propose 10 cm males and 13 cm females; checker-a proposes 11\
+        \ and 13, and checker-c 13 and 15. AquaInfo gives the direct sex-specific 10 and 13 figures, corroborated\
+        \ by Tanganyika.si intervals of 7 to 10 for males and 10 to 13 for females. FishBase gives an\
+        \ unsexed 13 cm TL maximum and Seriously Fish 15 cm SL; neither supplies typical aquarium maxima\
+        \ per sex. Sunobe observed wild adults up to 13 cm TL but did not determine their sexes. Retain\
+        \ the sex-specific aquarium figures, acknowledging locality and identification variation."
+    - field: features.aggressionConspecific
+      proposals:
+        - by: generator
+          value: 4
+        - by: checker-a
+          value: 3
+        - by: checker-b
+          value: 4
+        - by: checker-c
+          value: 4
+      decision: 4
+      rationale: "Generator, checker-b and checker-c propose level 4; checker-a proposes 3. Seriously\
+        \ Fish describes fatal harassment after unsuitable adult pairing, and Bijker describes potentially\
+        \ lethal disruption of a pair. These meet the rubric level 4 exception-management requirement\
+        \ rather than ordinary persistent chasing alone. The breeder stock has disputed identity, but\
+        \ the species-specific Seriously Fish warning independently supports the severe pairing risk.\
+        \ A stable pair is the recommended social unit; arbitrary adults are not equivalent to that unit."
+    - field: features.coloration
+      proposals:
+        - by: generator
+          value:
+            baseColors:
+              - white
+              - yellow
+              - black
+              - brown
+            pattern: mixed
+        - by: checker-a
+          value:
+            baseColors:
+              - yellow
+              - brown
+            pattern: mixed
+        - by: checker-b
+          value:
+            baseColors:
+              - white
+              - yellow
+              - black
+              - brown
+            pattern: mixed
+        - by: checker-c
+          value:
+            baseColors:
+              - white
+              - yellow
+              - black
+              - brown
+            pattern: mixed
+      decision:
+        baseColors:
+          - white
+          - yellow
+          - black
+          - brown
+        pattern: mixed
+      rationale: "Generator, checker-b and checker-c propose white, yellow, black and brown with a mixed\
+        \ pattern; checker-a proposes yellow and brown with the same pattern. Cream to yellow backgrounds\
+        \ and dark intersecting horizontal and vertical markings justify retaining the broader palette.\
+        \ Locality contrast and body proportions vary; blue fin edging is secondary and is not a dominant\
+        \ body color."
+    - field: features.minTank
+      proposals:
+        - by: generator
+          value:
+            volumeL: 120
+            lengthCm: 120
+            depthCm: 30
+        - by: checker-a
+          value:
+            volumeL: 110
+            lengthCm: 120
+            depthCm: 30
+        - by: checker-b
+          value:
+            volumeL: 110
+            lengthCm: 120
+            depthCm: 30
+        - by: checker-c
+          value:
+            volumeL: 110
+            lengthCm: 120
+            depthCm: 30
+      decision:
+        volumeL: 110
+        lengthCm: 120
+        depthCm: 30
+      rationale: "Checker-a, checker-b and checker-c propose 110 L with a 120 by 30 cm footprint; generator\
+        \ proposes the same footprint with 120 L. Retain the explicit Seriously Fish recommendation of\
+        \ roughly 110 L and 120 by 30 by 30 cm for one established pair. Tanganyika.si instead recommends\
+        \ 120 L, Fishkeeper at least 4 ft length, the Nordic register 75 to 100 L and AquaInfo 100 L as\
+        \ sole inhabitants or about 200 L for communities. Nominal dimensions and stated rounded volume\
+        \ are approximate; usable water is reduced by rockwork. Larger groups and communities require\
+        \ additional room."
+    - field: features.lifespanYears
+      proposals:
+        - by: generator
+          value:
+            min: 5
+            max: 12
+        - by: checker-a
+          value:
+            min: 5
+            max: 10
+        - by: checker-b
+          value:
+            min: 5
+            max: 8
+        - by: checker-c
+          value:
+            min: 5
+            max: 8
+      decision:
+        min: 5
+        max: 8
+      rationale: "Checker-b and checker-c propose 5 to 8 years, checker-a a model-derived 5 to 10, and\
+        \ generator 5 to 12. Aqua-Fish supplies the direct typical-care estimate of 5 to 8. The wider\
+        \ Cichlidy.cz retailer claim is 8 to 12 with exceptional 15-year fish, without longitudinal evidence;\
+        \ it is not used to widen the expected range. Retain the database estimate with medium confidence\
+        \ because only one independent database gives the selected interval."
