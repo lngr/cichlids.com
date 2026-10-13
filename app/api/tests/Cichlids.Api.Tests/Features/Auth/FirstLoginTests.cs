@@ -172,6 +172,38 @@ public class FirstLoginTests(ApiFixture fixture)
         Assert.Contains(kind.ToString(), entry.Message);
     }
 
+    [Theory]
+    [InlineData("community-archive")]
+    [InlineData("Community-Archive")]
+    [InlineData("former-member-12")]
+    [InlineData("forum-member-34")]
+    public async Task FirstLoginWithAReservedUsernameGetsAGeneratedHandle(string reserved)
+    {
+        var subject = Guid.NewGuid().ToString();
+
+        await using var context = fixture.CreateDbContext();
+        var resolved = await NewService(context).ResolveAsync(Principal(subject, reserved), CancellationToken.None);
+
+        Assert.False(ReservedUsernames.IsReserved(resolved.Username));
+        Assert.NotEqual(reserved, resolved.Username);
+        Assert.Equal(resolved.Username, resolved.DisplayName);
+        Assert.Equal(ProfileKind.Member, resolved.Kind);
+        await using var check = fixture.CreateDbContext();
+        Assert.Equal(1, await check.ProfileIdentities.CountAsync(i => i.Subject == subject));
+    }
+
+    [Fact]
+    public async Task FirstLoginWithAnUnreservedUsernameKeepsItAsHandle()
+    {
+        var subject = Guid.NewGuid().ToString();
+        var username = $"community-archive-{Guid.NewGuid():N}";
+
+        await using var context = fixture.CreateDbContext();
+        var resolved = await NewService(context).ResolveAsync(Principal(subject, username), CancellationToken.None);
+
+        Assert.Equal(username, resolved.Username);
+    }
+
     private CurrentProfileService NewService(CichlidsDbContext context, ILogger<CurrentProfileService>? logger = null) =>
         new(context, fixture.Services.GetRequiredService<Lazy<GeneratedNames>>(), logger ?? new RecordingLogger<CurrentProfileService>());
 
