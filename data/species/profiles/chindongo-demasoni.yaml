@@ -1,0 +1,1514 @@
+schemaVersion: 1
+id: chindongo-demasoni
+legacyIds: [469]
+status: described
+
+taxonomy:
+  validName: Chindongo demasoni
+  genus: Chindongo
+  species: demasoni
+  author: (Konings, 1994)
+  source: &cof
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes, species of the genus Chindongo"
+    url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Chindongo
+    accessed: 2026-10-13
+  synonyms:
+    - name: Pseudotropheus demasoni Konings, 1994
+      note: Original combination; Konings (2016) and Stauffer et al. (2016) keep it, and most of the aquarium trade uses it.
+  legacyNames:
+    - Pseudotropheus demasoni
+  note: >-
+    The Catalog of Fishes gives the current status as valid in Chindongo, following the revision
+    of the former Pseudotropheus elongatus species group by Li, Konings and Stauffer (2016); the
+    Pseudotropheus list holds no separate entry for the species. Type locality Pombo Rocks on the
+    Tanzanian coast of Lake Malawi, holotype MRAC 94-12-P-1. The catalog also records an
+    introduced population in Romania.
+
+names:
+  trade:
+    en: [Demasoni, Demasoni cichlid, "Demason's cichlid"]
+    de: [Demasoni, Demasons Maulbrüter]
+
+variants:
+  - name: Pombo Rocks
+    kind: locality
+    note: Type locality; the trade stock descends mainly from fish of this reef.
+  - name: Ndumbi
+    kind: locality
+    note: Reef near Ndumbi Point close to Pombo Rocks, the only other site named for the species; the fish look the same.
+
+features:
+  origin:
+    value:
+      continent: Africa
+      region: Lake Malawi
+      waterbody: lake-malawi
+      localities: [Pombo Rocks, Ndumbi Point]
+    confidence: high
+    rationale: >-
+      Endemic to Lake Malawi with a very small range on the Tanzanian east coast. The Catalog of
+      Fishes gives Pombo Rocks as type locality and FishBase restricts the species to the
+      Tanzanian part of the lake. Malawi-Guru, German Wikipedia and a biotope model of the reef
+      add the neighbouring reef at Ndumbi Point, south of the Ruhuhu mouth. The public summary of
+      the Cichlid Room Companion confirms a rocky lake habitat. The population in Romania is
+      introduced and does not count as natural range.
+    sources:
+      - *cof
+      - &fishbase
+        kind: database
+        title: "FishBase species summary: Chindongo demasoni"
+        url: https://www.fishbase.se/summary/Chindongo-demasoni.html
+        accessed: 2026-10-13
+      - &sf
+        kind: database
+        title: "Seriously Fish: Pseudotropheus demasoni"
+        url: https://www.seriouslyfish.com/species/pseudotropheus-demasoni/
+        accessed: 2026-10-13
+      - &malawiguru
+        kind: database
+        title: "Malawi-Guru: Chindongo demasoni"
+        url: https://malawi-guru.de/fischverzeichnis-chindongo-demasoni-mbuna-arten/
+        accessed: 2026-10-13
+      - &crc
+        kind: database
+        title: "Cichlid Room Companion: Chindongo demasoni (public summary)"
+        url: https://cichlidae.com/species.php?id=isZ10VH0GBspMkhmXfpjXw
+        accessed: 2026-10-13
+      - &wikide
+        kind: website
+        title: "Wikipedia (German): Chindongo demasoni"
+        url: https://de.wikipedia.org/wiki/Pseudotropheus_demasoni
+        accessed: 2026-10-13
+      - &bap
+        kind: website
+        title: "Biotope Aquarium Project: Pombo Rocks, Lake Malawi, Tanzania"
+        url: https://biotopeaquariumproject.com/bam/pombo-rocks-lake-malawi-tanzania-liu-tianhao/
+        accessed: 2026-10-13
+    evidence:
+      - source: *cof
+        value: {continent: Africa, region: Lake Malawi, localities: [Pombo Rocks]}
+        note: type locality on the Tanzanian coast; introduced in Romania
+      - source: *fishbase
+        value: {continent: Africa, region: Lake Malawi}
+        note: Tanzanian part of the lake only
+      - source: *sf
+        value: {continent: Africa, region: Lake Malawi, localities: [Pombo Rocks]}
+      - source: *malawiguru
+        value: {continent: Africa, region: Lake Malawi, localities: [Pombo Rocks, Ndumbi Point]}
+        note: restricted Tanzanian range
+      - source: *wikide
+        value: {continent: Africa, region: Lake Malawi, localities: [Pombo Rocks, Ndumbi Point]}
+        note: rocky reefs south of the Ruhuhu mouth
+
+  temperatureC:
+    value: {min: 21, max: 29}
+    confidence: high
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    rationale: >-
+      The species lives only in Lake Malawi, so the natural range is the measured temperature
+      range of the lake. Eccles (1974) reports about 27 °C in the upper water column by May and
+      21 °C inshore in the cool, windy season; Vollmer et al. (2005) give summer surface water of
+      about 28 °C and winter surface-layer values of 23.5 to 24 °C, and a later survey campaign
+      reached 29 °C. No measurement from Pombo Rocks itself was found; a biotope model of the reef
+      states 25 °C, inside the range.
+    sources: &malawiStudies
+      - &branchu
+        kind: literature
+        title: >-
+          Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu,
+          E. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa),
+          Tanzanian Northern Basin: local versus global considerations. Hydrology and Earth System
+          Sciences Discussions 7, 4371-4409.
+        url: https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf
+        accessed: 2026-10-12
+      - &fao
+        kind: literature
+        title: >-
+          Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery
+          resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical
+          and chemical data after Jackson et al. (1963) and Talling and Talling (1965).
+        url: https://www.fao.org/4/t0473e/T0473E05.htm
+        accessed: 2026-10-12
+      - &eccles
+        kind: literature
+        title: >-
+          Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa).
+          Limnology and Oceanography 19(5), 730-742 (abstract).
+        url: https://doi.org/10.4319/lo.1974.19.5.0730
+        accessed: 2026-10-12
+      - &vollmer2005
+        kind: literature
+        title: >-
+          Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J.
+          M., Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East
+          Africa. Limnology and Oceanography 50(2), 727-732.
+        url: https://www.dora.lib4ri.ch/empa/dload/empa:1253/PDF/view
+        accessed: 2026-10-12
+      - &vollmer1999
+        kind: literature
+        title: >-
+          Vollmer, M. K., Weiss, R. F. and Bootsma, H. A. (1999). Lake Malawi/Nyasa deep water
+          renewal. In: Bootsma, H. A. and Hecky, R. E. (eds.), Water Quality Report, SADC/GEF Lake
+          Malawi/Nyasa Biodiversity Conservation Project, chapter 4.
+        url: https://sites.uwm.edu/hbootsma/files/2020/11/Ch4-Lake-Internal-Mixing.pdf
+        accessed: 2026-10-12
+      - &ngochera
+        kind: literature
+        title: Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. PhD dissertation, University of Wisconsin-Milwaukee.
+        url: https://minds.wisconsin.edu/handle/1793/91765
+        accessed: 2026-10-12
+    evidence:
+      - source: *eccles
+        value: {min: 21, max: 27}
+        note: cool-season inshore minimum and warm upper water column
+      - source: *vollmer2005
+        value: {min: 23.5, max: 28}
+        note: winter surface layer to summer surface water
+      - source: *bap
+        value: {min: 25, max: 25}
+        note: single habitat reading given for the reef
+    tolerance:
+      value: {min: 21, max: 29}
+      confidence: low
+      verification:
+        method: unanimous
+        votes: {agree: 4, total: 4}
+      rationale: >-
+        All four votes agree on 21 to 29 °C. The care sheets cluster at 24 to 28 °C (Seriously
+        Fish, Guidarium, the retailer pages of LiveAquaria, Garnelio and Riverpark Aquatics),
+        Fishkeeper names a narrower 24 to 26 °C and FishProfiles.com 26 to 28 °C, and a
+        behavioural study held the fish at 25 °C for two months. The tolerance has to contain the
+        natural range, so its edges of 21 and 29 °C rest on the lake measurements, which the fish
+        meet only seasonally. No husbandry source supports keeping it permanently near those edges;
+        24 to 28 °C is the band for long-term care, which is why the confidence is low.
+      sources:
+        - *sf
+        - &fishkeeper
+          kind: database
+          title: "Fishkeeper (Maidenhead Aquatics): Demasoni, Chindongo demasoni, species profile"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/demasoni
+          accessed: 2026-10-13
+        - &fishprofiles
+          kind: database
+          title: "FishProfiles.com: Pseudotropheus demasoni"
+          url: https://fishprofiles.com/profiles/freshwater/Cichlids/Pseudotropheus_demasoni
+          accessed: 2026-10-13
+        - &guidarium
+          kind: database
+          title: "Guidarium: Demasoni Cichlid (Mbuna) care guide"
+          url: https://guidarium.com/fishes/demasoni-cichlid-mbuna
+          accessed: 2026-10-13
+        - &animals2024
+          kind: literature
+          title: >-
+            Li, W., Li, J. and Fu, S. (2024). Effects of starve and shelter availability on the
+            group behavior of two freshwater fish species (Chindongo demasoni and Spinibarbus
+            sinensis). Animals 14(16), 2429.
+          url: https://doi.org/10.3390/ani14162429
+          accessed: 2026-10-13
+        - *eccles
+        - *vollmer2005
+        - &liveaquaria
+          kind: website
+          title: "LiveAquaria (retailer): Demasoni Cichlid (Pseudotropheus demasoni), care details"
+          url: https://www.liveaquaria.com/products/demasoni-cichlid
+          accessed: 2026-10-13
+        - &garnelio
+          kind: website
+          title: "Garnelio (retailer): Demason's mouthbrooder (Chindongo demasoni), species profile of the shop offer"
+          url: https://www.garnelio.de/en/3x-demasons-mouthbrooder-chindongo-demasoni-1-trio-2w/1m
+          accessed: 2026-10-13
+        - &riverpark
+          kind: website
+          title: "Riverpark Aquatics (retailer): Demanson's Cichlid care guide"
+          url: https://riverparkaquatics.co.uk/demansons-cichlid-chindongo-demasoni/
+          accessed: 2026-10-13
+        - *bap
+      evidence:
+        - source: *sf
+          value: {min: 24, max: 28}
+          note: aquarium recommendation; 25 to 26.5 for breeding
+        - source: *fishkeeper
+          value: {min: 24, max: 26}
+          note: aquarium recommendation
+        - source: *fishprofiles
+          value: {min: 26, max: 28}
+          note: aquarium recommendation
+        - source: *guidarium
+          value: {min: 24, max: 28}
+          note: aquarium recommendation
+        - source: *animals2024
+          value: {min: 25, max: 25}
+          note: laboratory holding temperature over two months of acclimation
+        - source: *eccles
+          value: {min: 21, max: 27}
+          note: natural lake range, which the tolerance contains
+        - source: *vollmer2005
+          value: {min: 23.5, max: 28}
+          note: natural lake range, which the tolerance contains
+        - source: *liveaquaria
+          value: {min: 24.4, max: 27.8}
+          note: 76 to 82 °F converted; retailer page
+        - source: *garnelio
+          value: {min: 24, max: 28}
+          note: retailer page; just under 28 °C for breeding
+        - source: *riverpark
+          value: {min: 24, max: 28}
+          note: retailer page
+        - source: *bap
+          value: {min: 22, max: 27}
+          note: range of one hobbyist's biotope aquarium
+
+  ph:
+    value: {min: 7.7, max: 8.6}
+    confidence: high
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    rationale: >-
+      The species lives only in Lake Malawi, so the natural range is the measured surface pH of
+      the lake: 7.7 to 8.6 in the survey of Jackson et al. as compiled by FAO. Branchu et al.
+      (2010) give 7.5 to 8.5 for the whole water column of the northern basin, the lower values
+      belonging to deep water that the species does not reach. A biotope model of Pombo Rocks
+      states pH 7.8, inside the range.
+    sources: *malawiStudies
+    evidence:
+      - source: *fao
+        value: {min: 7.7, max: 8.6}
+        note: lake surface water
+      - source: *branchu
+        value: {min: 7.5, max: 8.5}
+        note: whole water column of the northern basin; the low values come from deep water
+      - source: *bap
+        value: {min: 7.8, max: 7.8}
+        note: single habitat reading given for the reef
+    tolerance:
+      value: {min: 7.5, max: 8.8}
+      confidence: medium
+      verification:
+        method: unanimous
+        votes: {agree: 4, total: 4}
+      rationale: >-
+        The four votes agree within the threshold: three proposed 7.5 to 8.8, checker-c 7.6 to
+        8.6, and the tally keeps 7.5 to 8.8. The husbandry sources cluster in this band: Seriously
+        Fish 7.6 to 8.8, Fishkeeper 7.5 to 8.5, FishProfiles.com, Guidarium and the GCCA keeper
+        profile 7.6 to 8.6, and the retailer pages of LiveAquaria and Riverpark Aquatics 7.8 to
+        8.6 and 7.5 to 8.5. A German retailer goes down to pH 7.0; the species databases do not
+        support neutral water for mbuna, so this lower value is not adopted. The range contains
+        the lake range of 7.7 to 8.6.
+      sources:
+        - *sf
+        - *fishkeeper
+        - *fishprofiles
+        - *guidarium
+        - &gcca
+          kind: literature
+          title: Borstein, R. (2002). Pseudotropheus demasoni. Greater Chicago Cichlid Association, species profile.
+          url: https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/87-pseudotropheus-demasoni.html
+          accessed: 2026-10-13
+        - *liveaquaria
+        - *riverpark
+        - *garnelio
+      evidence:
+        - source: *sf
+          value: {min: 7.6, max: 8.8}
+          note: aquarium recommendation; 8.2 to 8.5 for breeding
+        - source: *fishkeeper
+          value: {min: 7.5, max: 8.5}
+          note: aquarium recommendation
+        - source: *fishprofiles
+          value: {min: 7.6, max: 8.6}
+          note: aquarium recommendation
+        - source: *guidarium
+          value: {min: 7.6, max: 8.6}
+          note: aquarium recommendation
+        - source: *gcca
+          value: {min: 7.6, max: 8.6}
+          note: keeper profile, not a controlled trial
+        - source: *liveaquaria
+          value: {min: 7.8, max: 8.6}
+          note: retailer page
+        - source: *riverpark
+          value: {min: 7.5, max: 8.5}
+          note: retailer page
+        - source: *garnelio
+          value: {min: 7.0, max: 8.5}
+          note: retailer page; lower bound below the species databases
+
+  ghDgh:
+    value: {min: 3, max: 5}
+    confidence: high
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    rationale: >-
+      The species lives only in Lake Malawi, so the natural range is the total hardness of the
+      lake, computed from measured calcium and magnesium: 4.2 to 4.6 dGH in the upper 50 m of the
+      northern basin (Branchu et al. 2010) and 3.2 to 4.9 dGH in the 1960s titrations compiled by
+      FAO, which gives 3 to 5 dGH. The lake is soft water whose carbonate hardness exceeds its
+      total hardness; the hard-water advice of care sheets concerns the tank, not the habitat.
+    sources: *malawiStudies
+    evidence:
+      - source: *branchu
+        value: {min: 4.2, max: 4.6}
+        note: upper 50 m of the northern basin, computed from calcium and magnesium
+      - source: *fao
+        value: {min: 3.2, max: 4.9}
+        note: 1960s titrations, computed from calcium and magnesium
+    tolerance:
+      value: {min: 3, max: 25}
+      confidence: medium
+      verification:
+        method: qualified-majority
+        votes: {agree: 4, total: 5}
+      rationale: >-
+        Four of five votes (generator, checker-a, checker-b and tiebreaker-1) set 3 to 25 dGH;
+        checker-c proposed 3 to 20 dGH. The lower bound is the natural lake value, since the fish
+        live at 3 to 5 dGH in the wild. The upper bound of 25 dGH rests on Seriously Fish (10 to
+        25 dGH), Fishkeeper (up to 25 degrees) and Guidarium (10 to 25 dGH); TankMatcher and a
+        German retailer stop at 20 dGH, and no source reports harm between 20 and 25 dGH. The
+        lower limits of 9 or 10 dGH in the care sheets reflect the habit of hardening water for
+        Malawi cichlids and contradict the lake measurements, so they do not narrow the range.
+        Care sheets often confuse total hardness with alkalinity, which keeps the confidence at
+        medium.
+      sources:
+        - *sf
+        - *fishkeeper
+        - *guidarium
+        - *branchu
+        - *fao
+        - *garnelio
+        - &tankmatcher
+          kind: website
+          title: "TankMatcher: Demasoni Cichlid water parameters and overlap"
+          url: https://tankmatcher.com/water-parameters/demasoni-cichlid/
+          accessed: 2026-10-13
+      evidence:
+        - source: *sf
+          value: {min: 10, max: 25}
+          note: aquarium recommendation
+        - source: *fishkeeper
+          value: {max: 25}
+          note: upper limit only; no lower bound stated
+        - source: *guidarium
+          value: {min: 10, max: 25}
+          note: aquarium recommendation
+        - source: *branchu
+          value: {min: 4.2, max: 4.6}
+          note: natural lake value, which the tolerance contains
+        - source: *fao
+          value: {min: 3.2, max: 4.9}
+          note: natural lake value, which the tolerance contains
+        - source: *garnelio
+          value: {min: 5, max: 20}
+          note: retailer page; its running text names 9 to 20
+        - source: *tankmatcher
+          value: {min: 10, max: 20}
+          note: aggregated care band with little primary documentation
+
+  khDkh:
+    value: {min: 5, max: 8}
+    confidence: high
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    rationale: >-
+      The species lives only in Lake Malawi, so the natural range is the carbonate hardness of
+      the lake, converted from measured alkalinity: 2.33 to 2.46 meq/L in the profiles of Branchu
+      et al. (2010), about 6.5 to 6.9 dKH, and 2.00 to 2.59 meq/L after Jackson et al. as
+      compiled by FAO, about 5.6 to 7.3 dKH, which gives 5 to 8 dKH.
+    sources: *malawiStudies
+    evidence:
+      - source: *branchu
+        value: {min: 6.5, max: 6.9}
+        note: alkalinity profiles of the northern basin, converted
+      - source: *fao
+        value: {min: 5.6, max: 7.3}
+        note: alkalinity after Jackson et al. (1963), converted
+    tolerance:
+      value: {min: 5, max: 15}
+      confidence: low
+      verification:
+        method: unanimous
+        votes: {agree: 4, total: 4}
+      rationale: >-
+        The four votes agree within the threshold: three proposed 5 to 15 dKH, checker-c 5 to 14
+        dKH. Few sources state a carbonate hardness for this species, and none of them is a
+        species database: the retailer page of LiveAquaria names 10 to 15 dKH, TankMatcher 6 to 14
+        and AquariumHQ 8 to 18, while a German retailer gives 2 to 8 dKH. Seriously Fish and
+        Fishkeeper ask for hard, alkaline water without a dKH value, and their pH ranges reaching
+        8.5 to 8.8 need good buffering. The lower bound is the lake minimum of 5 dKH measured by
+        Branchu et al. and FAO, because weaker buffering lets the pH sag in a crowded mbuna tank;
+        the low 2 dKH of the retailer is not adopted. The upper bound of 15 dKH rests only on
+        retailer and aggregator pages, so the confidence is low.
+      sources:
+        - *branchu
+        - *fao
+        - *sf
+        - *fishkeeper
+        - *liveaquaria
+        - *tankmatcher
+        - &aquariumhq
+          kind: website
+          title: "AquariumHQ: Demasoni cichlid husbandry record"
+          url: https://aquariumhq.app/fish/demasoni-cichlid
+          accessed: 2026-10-13
+        - *garnelio
+      evidence:
+        - source: *branchu
+          value: {min: 6.5, max: 6.9}
+          note: natural lake value, which the tolerance contains
+        - source: *fao
+          value: {min: 5.6, max: 7.3}
+          note: natural lake value, which the tolerance contains
+        - source: *liveaquaria
+          value: {min: 10, max: 15}
+          note: retailer page; aragonite substrate advised
+        - source: *tankmatcher
+          value: {min: 6, max: 14}
+          note: aggregated care band
+        - source: *aquariumhq
+          value: {min: 8, max: 18}
+          note: editorial husbandry summary, not a measured tolerance
+        - source: *garnelio
+          value: {min: 2, max: 8}
+          note: retailer page; calcareous decor advised to keep the water alkaline
+
+  maxSizeCm:
+    value: {male: 8, female: 7}
+    confidence: medium
+    rationale: >-
+      A dwarf mbuna. FishBase gives 6.3 cm standard length for wild fish from the revision of Li
+      et al. (2016), Seriously Fish 7.5 cm standard length, Fishkeeper and Guidarium about 8 cm,
+      and the GCCA keeper profile about 7.6 cm for males and 6.4 cm for females. Males grow
+      slightly larger than females. Well-kept aquarium males reach about 8 cm total length,
+      females about 7 cm. The 10 cm of English Wikipedia and some shops stands alone and is not
+      adopted.
+    sources:
+      - *fishbase
+      - *sf
+      - *fishkeeper
+      - *guidarium
+      - *gcca
+      - &wikien
+        kind: website
+        title: "Wikipedia: Chindongo demasoni"
+        url: https://en.wikipedia.org/wiki/Chindongo_demasoni
+        accessed: 2026-10-13
+    evidence:
+      - source: *fishbase
+        value: {male: 6.3}
+        note: standard length of wild fish, male or unsexed
+      - source: *sf
+        value: {male: 7.5, female: 7.5}
+        note: standard length; males slightly larger
+      - source: *fishkeeper
+        value: {male: 8, female: 8}
+        note: unsexed maximum
+      - source: *guidarium
+        value: {male: 8, female: 8}
+        note: unsexed maximum
+      - source: *gcca
+        value: {male: 7.6, female: 6.4}
+        note: about 3 and 2.5 inches for aquarium males and females
+      - source: *wikien
+        value: {male: 10, female: 10}
+        note: potential maximum, standard length; outlier
+
+  predation:
+    value: 0
+    confidence: medium
+    verification:
+      method: unanimous
+      votes: {agree: 4, total: 4}
+    rationale: >-
+      All four votes give level 0. The genus diagnosis of Chindongo (Li et al. 2016) describes a
+      small mouth with bicuspid front teeth, a grazing dentition, and Seriously Fish describes
+      scraping teeth and a mainly vegetable diet. Fishkeeper, Malawi-Guru and Practical
+      Fishkeeping describe algae and the tiny animals in them as the food, FishBase estimates a
+      low trophic level of 2.6 from relatives, and Genner and Turner (2005) place the mbuna as a
+      group on algae, plankton and small invertebrates. No source reports that the species hunts
+      fish; at about 8 cm it can at most take a fry by chance. The GCCA keeper saw fry survive in
+      a breeding colony, which does not prove that none were eaten.
+    sources:
+      - &li2016
+        kind: literature
+        title: >-
+          Li, S., Konings, A. F. and Stauffer, J. R. (2016). A revision of the Pseudotropheus
+          elongatus species group (Teleostei: Cichlidae) with description of a new genus and seven
+          new species. Zootaxa 4168(2), 353-381 (abstract).
+        url: https://doi.org/10.11646/zootaxa.4168.2.9
+        accessed: 2026-10-13
+      - *sf
+      - *fishkeeper
+      - *fishbase
+      - &genner2005
+        kind: literature
+        title: "Genner, M. J. and Turner, G. F. (2005). The mbuna cichlids of Lake Malawi: a model for rapid speciation and adaptive radiation. Fish and Fisheries 6, 1-34."
+        url: https://doi.org/10.1111/j.1467-2679.2005.00173.x
+        accessed: 2026-10-13
+      - *malawiguru
+      - &pfk
+        kind: literature
+        title: "Gay, J. Malawi must-have: Pseudotropheus demasoni. Practical Fishkeeping (online feature)."
+        url: https://www.practicalfishkeeping.co.uk/features/articles/malawi-must-have-pseudotropheus-demasoni
+        accessed: 2026-10-13
+      - *gcca
+      - *liveaquaria
+    evidence:
+      - source: *li2016
+        value: 0
+        note: genus diagnosis with bicuspid front teeth and a small mouth, a grazing dentition
+      - source: *sf
+        value: 0
+        note: scraping teeth for algae; mainly vegetable food
+      - source: *fishkeeper
+        value: 0
+        note: primarily vegetarian diet, no fish in the diet
+      - source: *fishbase
+        value: 0
+        note: trophic level 2.6, estimated from relatives
+      - source: *genner2005
+        value: 0
+        note: mbuna as a group feed on algae, plankton and tiny invertebrates
+      - source: *malawiguru
+        value: 0
+        note: natural diet of aufwuchs; no fish eating stated
+      - source: *pfk
+        value: 0
+        note: biofilm and tiny invertebrates as natural food
+      - source: *gcca
+        value: 0
+        note: fry persisted in the breeding colony
+      - source: *liveaquaria
+        value: 0
+        note: listed as herbivore; retailer page
+
+  diet:
+    value:
+      type: aufwuchs
+      bloatSensitive: true
+      foods:
+        - spirulina flakes and small vegetable-based pellets
+        - algae growth and nori
+        - blanched spinach, cucumber and other vegetables
+        - small crustaceans such as Mysis or Artemia as a rare treat
+    confidence: high
+    verification:
+      method: unanimous
+      votes: {agree: 4, total: 4}
+    rationale: >-
+      All four votes give an aufwuchs grazer that is sensitive to bloat. The genus has bicuspid
+      scraping teeth (Li et al. 2016), and the species grazes the algal layer on the rocks with
+      the small animals living in it (Malawi-Guru, Practical Fishkeeping; Genner and Turner 2005
+      for mbuna in general). Seriously Fish asks for a mainly vegetable diet and warns that red
+      meat upsets digestion; Fishkeeper and Guidarium link protein-rich food with Malawi bloat,
+      which can be fatal, and Malawi-Guru and German Wikipedia warn of intestinal disease on
+      animal food. Members of the cichlids.com forum report losses to bloat. The Cichlid Room
+      Companion confirms the feeding type as algae grazer. One retailer guide calls the species
+      an omnivore, which reflects feeding practice in the hobby rather than the natural diet.
+    sources:
+      - *sf
+      - *fishkeeper
+      - *li2016
+      - *malawiguru
+      - *pfk
+      - *guidarium
+      - *genner2005
+      - *crc
+      - *fishbase
+      - *gcca
+      - *liveaquaria
+      - *wikide
+      - *riverpark
+      - &a14115
+        kind: archive
+        title: cichlids.com forum thread 14115
+        url: https://www.cichlids.com/disc/read.php?2,14115
+        accessed: 2026-10-13
+      - &a14787
+        kind: archive
+        title: cichlids.com forum thread 14787
+        url: https://www.cichlids.com/disc/read.php?2,14787
+        accessed: 2026-10-13
+    evidence:
+      - source: *sf
+        value: {type: aufwuchs, bloatSensitive: true}
+        note: mostly vegetable food; red meat disturbs digestion
+      - source: *fishkeeper
+        value: {type: aufwuchs, bloatSensitive: true}
+        note: primarily vegetarian; animal protein may cause fatal Malawi bloat
+      - source: *malawiguru
+        value: {type: aufwuchs, bloatSensitive: true}
+        note: natural grazing plus a warning of intestinal problems
+      - source: *pfk
+        value: {type: aufwuchs, bloatSensitive: true}
+        note: aufwuchs diet; plant-rich feeding recommended
+      - source: *guidarium
+        value: {type: aufwuchs, bloatSensitive: true}
+        note: strict herbivore, prone to bloat
+      - source: *genner2005
+        value: {type: aufwuchs}
+        note: mbuna as a group graze algae and associated organisms; not species-specific
+      - source: *crc
+        value: {type: aufwuchs}
+        note: algae grazer; the public summary does not cover bloat
+      - source: *liveaquaria
+        value: {type: aufwuchs}
+        note: listed as herbivore; retailer page
+      - source: *wikide
+        value: {type: aufwuchs, bloatSensitive: true}
+        note: aufwuchs feeder; intestinal disease on animal food
+      - source: *riverpark
+        value: {type: omnivore}
+        note: retailer guide; hobby feeding practice
+      - source: *a14115
+        value: {bloatSensitive: true}
+        note: keepers report several losses to bloat; low weight
+
+  aggressionConspecific:
+    value: 4
+    confidence: high
+    rationale: >-
+      One of the most aggressive mbuna towards its own kind. Seriously Fish reports that
+      subdominant males may be killed even in crowded tanks and that females are intolerant as
+      well; Fishkeeper reports that a male kept with a single female harasses her to death and
+      that males kill unreceptive females. Guidarium and the Cichlid-Forum article state that
+      groups of fewer than about twelve end with the dominant male killing the others, and the
+      GCCA keeper lost four of five fish within a week. Keeping it needs a large crowded group,
+      many caves and experience. Four independent sources and all four votes agree.
+    sources:
+      - *sf
+      - *fishkeeper
+      - *guidarium
+      - *gcca
+      - *malawiguru
+      - &cichlidforum
+        kind: website
+        title: "Elieson, M. Pseudotropheus demasoni. Species article, Cichlid-Forum.com"
+        url: https://www.cichlid-forum.com/articles/p_demasoni.php
+        accessed: 2026-10-13
+      - &a14041
+        kind: archive
+        title: cichlids.com forum thread 14041
+        url: https://www.cichlids.com/disc/read.php?2,14041
+        accessed: 2026-10-13
+    evidence:
+      - source: *sf
+        value: 4
+        note: subdominant males may be eliminated even in crowded tanks
+      - source: *fishkeeper
+        value: 4
+        note: a lone female is harassed to death; unreceptive females may be killed
+      - source: *guidarium
+        value: 4
+        note: groups below about twelve end with the dominant male killing others
+      - source: *gcca
+        value: 4
+        note: four losses in a starting group of five within a week
+      - source: *cichlidforum
+        value: 4
+        note: small groups end with one surviving male
+      - source: *a14041
+        value: 3
+        note: forum warning that a small group shrinks through fights
+
+  aggressionHeterospecific:
+    value: 3
+    confidence: medium
+    rationale: >-
+      Despite its small size the male attacks fish several times larger that come near its rocks
+      (Seriously Fish), and Fishkeeper warns that an established male can kill much larger
+      newcomers, so demasoni should be added last. Tankmates must be robust mbuna of comparable
+      temperament that do not share its blue barred pattern; peaceful haplochromines such as
+      peacocks and utaka are unsuitable. Seriously Fish and Fishkeeper both describe working mixed
+      mbuna tanks of 120 cm, which fits level 3 rather than level 4, whose rubric meaning is a
+      fish suitable only alone or with very robust tankmates in very large tanks. The kills
+      reported by the GCCA keeper and one forum member concern newcomers or unsuitable tankmates.
+    sources:
+      - *sf
+      - *fishkeeper
+      - *gcca
+      - *cichlidforum
+      - &a11472
+        kind: archive
+        title: cichlids.com forum thread 11472
+        url: https://www.cichlids.com/disc/read.php?1,11472
+        accessed: 2026-10-13
+    evidence:
+      - source: *sf
+        value: 3
+        note: attacks much larger fish; works with robust mbuna, not with peaceful haps
+      - source: *fishkeeper
+        value: 3
+        note: add last; an established male may kill larger newcomers
+      - source: *gcca
+        value: 4
+        note: tankmates need comparable assertiveness to avoid deaths
+      - source: *a11472
+        value: 4
+        note: a single keeper reports two larger tankmates killed; low weight
+
+  territory:
+    value: {size: small, breedingOnly: false}
+    confidence: medium
+    rationale: >-
+      Males hold a cave, a flat rock or a dug pit and defend it at all times, not only while
+      spawning (Seriously Fish, Fishkeeper, German Wikipedia). In a tank with dense rockwork the
+      defended area stays compact, in line with the size of the fish, although it is held
+      fiercely. Malawi-Guru describes feeding territories of about 2 m across on the reef and
+      aquarium males that treat much of the tank as theirs; this argues for the upper end of the
+      small level, and the high heterospecific aggression level covers the risk to tankmates.
+    sources:
+      - *sf
+      - *fishkeeper
+      - *malawiguru
+      - *wikide
+      - &sartab
+        kind: literature
+        title: >-
+          Lancaster, T. J., Leatherbury, K. N., Shilova, K., Streelman, J. T. and McGrath, P. T.
+          (2024). SARTAB, a scalable system for automated real-time behavior detection based on
+          animal tracking and Region Of Interest analysis: validation on fish courtship behavior.
+          Frontiers in Behavioral Neuroscience 18, 1509369.
+        url: https://doi.org/10.3389/fnbeh.2024.1509369
+        accessed: 2026-10-13
+    evidence:
+      - source: *sf
+        value: {size: small, breedingOnly: false}
+        note: male holds a rock or a pit; territorial at all times
+      - source: *fishkeeper
+        value: {size: small, breedingOnly: false}
+        note: strongly territorial, especially the dominant male
+      - source: *malawiguru
+        value: {size: large, breedingOnly: false}
+        note: wild feeding territories of about 2 m and wide defence in the tank
+      - source: *sartab
+        value: {breedingOnly: true}
+        note: cave-centred courtship territory in a laboratory set-up; area not measured
+
+  habitatZones:
+    value: [rock]
+    confidence: high
+    rationale: >-
+      Lives on rocky reefs free of sediment, mostly near the rock tops in shallow water, and is
+      rarely seen in open water (Seriously Fish, Malawi-Guru, Fishkeeper; the Cichlid Room
+      Companion confirms a rocky habitat). Courtship in the laboratory centres on rock crevices
+      and caves. Lower on the reef the rock grades into rock and sand, and a sand floor in the tank
+      serves as substrate and spawning ground, but the species does not depend on open sand.
+    sources:
+      - *sf
+      - *malawiguru
+      - *fishkeeper
+      - *crc
+      - *sartab
+      - *bap
+    evidence:
+      - source: *sf
+        value: [rock]
+        note: shallow rock tops; rarely in open water
+      - source: *malawiguru
+        value: [rock]
+        note: sediment-free reef, typically 0 to 4 m deep
+      - source: *fishkeeper
+        value: [rock, sand]
+        note: rock reef with crevices; sand substrate
+      - source: *crc
+        value: [rock]
+        note: rocky lake habitat
+      - source: *bap
+        value: [rock, sand]
+        note: wave-exposed rock grading into rock and sand at 3 to 7 m
+
+  social:
+    value: {structure: group, minGroup: 12}
+    confidence: medium
+    rationale: >-
+      The aggression spreads only in a crowded group. Guidarium and the Cichlid-Forum article
+      call for at least twelve fish and report that smaller groups fail; Malawi-Guru recommends at
+      least three males with nine females and prefers about eighteen; the GCCA keeper succeeded
+      with twenty after a group of five failed. Seriously Fish advises overcrowding with several
+      females per male, and Fishkeeper prefers one male with many females, at least five for
+      breeding. Since the sexes look alike, a group of twelve or more is the practical unit.
+    sources:
+      - *guidarium
+      - *malawiguru
+      - *sf
+      - *fishkeeper
+      - *gcca
+      - *cichlidforum
+    evidence:
+      - source: *guidarium
+        value: {structure: group, minGroup: 12}
+      - source: *malawiguru
+        value: {structure: group, minGroup: 12}
+        note: at least three males with nine females; eighteen preferred
+      - source: *gcca
+        value: {structure: group, minGroup: 20}
+        note: successful stocking of one keeper, not a tested minimum
+      - source: *sf
+        value: {structure: group, minGroup: 8}
+        note: overcrowding advised; six to eight young fish as a start
+      - source: *fishkeeper
+        value: {structure: harem, ratio: 5}
+        note: one male with at least five females for breeding
+      - source: *cichlidforum
+        value: {structure: group, minGroup: 12}
+        note: sex ratio unimportant in groups of this size
+
+  speciesOnly:
+    value: false
+    confidence: medium
+    verification:
+      method: unanimous
+      votes: {agree: 4, total: 4}
+    rationale: >-
+      All four votes say false. Seriously Fish and Fishkeeper both describe keeping it with other
+      robust mbuna that do not share its blue barred pattern, and Seriously Fish notes that such
+      tankmates help to spread the aggression among the demasoni themselves; Practical Fishkeeping
+      describes mixed mbuna communities as well. Breeding works best in a species tank, which is a
+      recommendation for breeding, not a requirement for keeping. Malawi-Guru prefers a species
+      tank and allows mixed keeping only for experienced keepers in very large tanks, which is why
+      the confidence stays at medium.
+    sources:
+      - *sf
+      - *fishkeeper
+      - *pfk
+      - *malawiguru
+      - *garnelio
+      - *riverpark
+      - &afp
+        kind: website
+        title: "Aquarium Fish Paradise (retailer): Demasoni Cichlid, Pseudotropheus demasoni"
+        url: https://www.aquariumfishparadise.com.au/demasoni-cichlid-pseudotropheus-demasoni/
+        accessed: 2026-10-13
+    evidence:
+      - source: *sf
+        value: false
+        note: other robust mbuna help to spread conspecific aggression
+      - source: *fishkeeper
+        value: false
+        note: suited to a Malawi mbuna community; species tank only for breeding
+      - source: *pfk
+        value: false
+        note: describes mixed mbuna communities
+      - source: *malawiguru
+        value: true
+        note: species tank as the default; mixed keeping as an exception for experts from about 800 L
+      - source: *garnelio
+        value: false
+        note: retailer page; can live with other rock cichlids
+      - source: *riverpark
+        value: false
+        note: retailer page; other Malawi cichlids possible
+      - source: *afp
+        value: false
+        note: retailer page
+
+  hybridGroup:
+    value: null
+    confidence: medium
+    verification:
+      method: qualified-majority
+      votes: {agree: 4, total: 5}
+    rationale: >-
+      Four of five votes give no group; checker-c proposed a new group demasoni-cyaneorhabdos.
+      The only documented cross is the laboratory cross with Pseudotropheus cyaneorhabdos that
+      Kratochwil et al. (2018) and Gerwin et al. (2021) used to map the genes behind bars and
+      stripes: six demasoni females were kept with one cyaneorhabdos male and no male of their own
+      species, and the fertile F1 gave an F2 generation. Both papers describe this one forced
+      cross, and Gerwin et al. note that fertile crosses can be made among many Lake Malawi
+      haplochromines, so it shows the absence of intrinsic barriers rather than a crossing risk
+      in mixed tanks. The two species stand in different genera (Catalog of Fishes), and Seriously
+      Fish places the crossing risk of P. cyaneorhabdos with Melanochromis such as M. johanni, not
+      with demasoni. Seriously Fish, Fishkeeper and Practical Fishkeeping warn against look-alike
+      blue barred mbuna because of rivalry, not crossing, and the revision of Li et al. (2016)
+      reports no crosses within Chindongo. One forum reply mentions a possible crossing risk with
+      Maylandia lombardoi without reporting a cross. Keepers should still avoid P. cyaneorhabdos
+      and other look-alikes, which the coloration and aggression levels cover.
+    sources:
+      - *cof
+      - &gerwin2021
+        kind: literature
+        title: >-
+          Gerwin, J., Urban, S., Meyer, A. and Kratochwil, C. F. (2021). Of bars and stripes: a
+          Malawi cichlid hybrid cross provides insights into genetic modularity and evolution of
+          modifier loci underlying colour pattern diversification. Molecular Ecology 30(19),
+          4789-4803.
+        url: https://doi.org/10.1111/mec.16097
+        accessed: 2026-10-13
+      - &kratochwil2018
+        kind: literature
+        title: >-
+          Kratochwil, C. F., Liang, Y., Gerwin, J., Woltering, J. M., Urban, S., Henning, F.,
+          Machado-Schiaffino, G., Hulsey, C. D. and Meyer, A. (2018). Agouti-related peptide 2
+          facilitates convergent evolution of stripe patterns across cichlid fish radiations.
+          Science 362(6413), 457-460.
+        url: https://doi.org/10.1126/science.aao6809
+        accessed: 2026-10-13
+      - *li2016
+      - *sf
+      - &sfcyan
+        kind: database
+        title: "Seriously Fish: Melanochromis cyaneorhabdos"
+        url: https://www.seriouslyfish.com/species/melanochromis-cyaneorhabdos/
+        accessed: 2026-10-13
+      - *fishkeeper
+      - *pfk
+      - &a15382
+        kind: archive
+        title: cichlids.com forum thread 15382
+        url: https://www.cichlids.com/disc/read.php?2,15382
+        accessed: 2026-10-13
+    evidence:
+      - source: *cof
+        value: null
+        note: distinct valid species; P. cyaneorhabdos valid in another genus
+      - source: *gerwin2021
+        value: null
+        note: forced laboratory cross of six demasoni females with one P. cyaneorhabdos male; fertile F1 and F2; no report from mixed tanks
+      - source: *kratochwil2018
+        value: null
+        note: same experimental cross, F2 genotyped for the stripe gene; no crossing warning
+      - source: *li2016
+        value: null
+        note: placed in Chindongo; abstract reports no crosses
+      - source: *sf
+        value: null
+        note: look-alikes to avoid for aggression; no crossing warning
+      - source: *sfcyan
+        value: null
+        note: crossing risk of P. cyaneorhabdos named for M. johanni, not for demasoni
+      - source: *fishkeeper
+        value: null
+        note: similar colour patterns to avoid; no crossing warning
+      - source: *pfk
+        value: null
+        note: look-alikes to avoid for their appearance; no crosses mentioned
+      - source: *a15382
+        value: null
+        note: a reply names a possible crossing risk with Maylandia lombardoi without reporting a cross
+
+  coloration:
+    value: {baseColors: [blue, black], pattern: bars}
+    confidence: high
+    rationale: >-
+      Both sexes show the same pattern of six or seven dark blue to black vertical bars
+      alternating with light blue bars, with bars also across the forehead and dark fins edged in
+      light blue; juveniles already wear the adult colours. Gerwin et al. (2021) count the bars
+      of the parental species, and Seriously Fish confirms that the sexes look alike.
+    sources:
+      - *sf
+      - *gerwin2021
+      - *fishkeeper
+      - *pfk
+      - *wikide
+    evidence:
+      - source: *gerwin2021
+        value: {baseColors: [blue, black], pattern: bars}
+        note: usually six or seven complete vertical bars
+      - source: *sf
+        value: {baseColors: [blue, black], pattern: bars}
+        note: sexes identical in colour and pattern
+      - source: *fishkeeper
+        value: {baseColors: [blue, black], pattern: bars}
+        note: sexes alike
+      - source: *pfk
+        value: {baseColors: [blue, black], pattern: bars}
+      - source: *wikide
+        value: {baseColors: [blue, black], pattern: bars}
+        note: light blue and blue-black bars in both sexes
+
+  feedingSpeed:
+    value: hasty
+    confidence: low
+    rationale: >-
+      Like other mbuna it rushes food and takes all it can get, which together with its
+      sensitivity to protein-rich food makes overfeeding a common cause of bloat. No species
+      source states the feeding speed; the value follows the rubric example of mbuna and keeper
+      reports in the cichlids.com forum about overfeeding.
+    sources:
+      - kind: model-knowledge
+        title: General behaviour of mbuna at feeding time
+      - *a14115
+
+  minTank:
+    value: {volumeL: 240, lengthCm: 120, depthCm: 45}
+    confidence: medium
+    rationale: >-
+      The recommended unit is a crowded group of at least twelve adults with dense rockwork.
+      Seriously Fish calls a 120 by 45 cm tank of about 205 litres the absolute minimum because
+      of the aggression, Guidarium asks for at least 200 litres and 120 cm, Fishkeeper for at
+      least 120 cm, and the retailer LiveAquaria for about 190 litres; the GCCA keeper ran a
+      colony of twenty in about 208 litres. Since the stones displace much of the water and the
+      published figures mark the lower edge, the common 120 cm tank of about 240 litres is taken
+      as the minimum for the group. Malawi-Guru, a specialist source, recommends 400 litres and
+      130 cm for a species tank, so a larger tank is better; the 90 cm of the Cichlid-Forum
+      article is too small for a group of this size.
+    sources:
+      - *sf
+      - *guidarium
+      - *fishkeeper
+      - *malawiguru
+      - *gcca
+      - *liveaquaria
+      - *cichlidforum
+    evidence:
+      - source: *sf
+        value: {volumeL: 205, lengthCm: 120, depthCm: 45}
+        note: absolute minimum
+      - source: *guidarium
+        value: {volumeL: 200, lengthCm: 120}
+        note: group of twelve or more
+      - source: *fishkeeper
+        value: {lengthCm: 120}
+        note: at least four feet
+      - source: *malawiguru
+        value: {volumeL: 400, lengthCm: 130}
+        note: species tank; no depth stated
+      - source: *gcca
+        value: {volumeL: 208}
+        note: colony of twenty in 55 US gallons
+      - source: *liveaquaria
+        value: {volumeL: 189}
+        note: 50 US gallons converted; retailer page
+      - source: *cichlidforum
+        value: {lengthCm: 91}
+        note: 36 inches for a group of at least twelve
+
+  lifespanYears:
+    value: {min: 5, max: 10}
+    confidence: low
+    rationale: >-
+      Only retailer and aggregator pages give a life span: 4 to 6 years (Garnelio), about 5
+      years (The iFISH Store), 6 to 10 years (AquariumHQ) and 8 to 10 years (Aquarium Fish
+      Paradise). A small mbuna in good conditions typically lives 5 to 10 years; no database or
+      study confirms this for the species.
+    sources:
+      - *garnelio
+      - &ifish
+        kind: website
+        title: "The iFISH Store (retailer): Demasoni, African cichlid"
+        url: https://theifishstore.com/products/demasoni
+        accessed: 2026-10-13
+      - *aquariumhq
+      - *afp
+    evidence:
+      - source: *garnelio
+        value: {min: 4, max: 6}
+      - source: *aquariumhq
+        value: {min: 6, max: 10}
+        note: editorial estimate
+      - source: *afp
+        value: {min: 8, max: 10}
+
+  breeding:
+    value: maternal-mouthbrooder
+    confidence: high
+    rationale: >-
+      The female lays the eggs on a flat stone or in a pit at the male's site, takes them into
+      her mouth, where they are fertilised, and carries the brood for about three weeks without
+      eating. Seriously Fish, Fishkeeper and the GCCA keeper agree; in the laboratory cross of
+      Gerwin et al. (2021) a demasoni female carried the brood until release, and the Cichlid Room
+      Companion confirms maternal mouthbrooding.
+    sources:
+      - *sf
+      - *fishkeeper
+      - *gcca
+      - *gerwin2021
+      - *crc
+      - &a14053
+        kind: archive
+        title: cichlids.com forum thread 14053
+        url: https://www.cichlids.com/disc/read.php?2,14053
+        accessed: 2026-10-13
+    evidence:
+      - source: *sf
+        value: maternal-mouthbrooder
+      - source: *fishkeeper
+        value: maternal-mouthbrooder
+      - source: *gcca
+        value: maternal-mouthbrooder
+        note: observed aquarium breeding
+      - source: *gerwin2021
+        value: maternal-mouthbrooder
+        note: female carried and released the brood
+      - source: *crc
+        value: maternal-mouthbrooder
+      - source: *a14053
+        value: maternal-mouthbrooder
+        note: a keeper stripped brooding females repeatedly
+
+  beginnerSuitability:
+    value: demanding
+    confidence: medium
+    rationale: >-
+      Seriously Fish rates the care as moderate overall but advises against it for beginners and
+      recommends it for advanced keepers; Fishkeeper and Malawi-Guru stress the need for a
+      carefully planned set-up. Its deadly aggression in small groups, the need for a crowded
+      group of twelve or more, the near-impossible sexing and its sensitivity to bloat make it a
+      fish for experienced mbuna keepers. The Cichlid Room Companion rates it for intermediate
+      aquarists and the retailer LiveAquaria as easy, which concerns water and food only; these
+      ratings keep the confidence at medium.
+    sources:
+      - *sf
+      - *fishkeeper
+      - *malawiguru
+      - *guidarium
+      - *crc
+      - *liveaquaria
+    evidence:
+      - source: *sf
+        value: demanding
+        note: not for beginners; overall rating moderate
+      - source: *fishkeeper
+        value: demanding
+        note: fatal aggression requires carefully managed stocking
+      - source: *guidarium
+        value: demanding
+        note: for keepers who plan the tank around it
+      - source: *crc
+        value: moderate
+        note: intermediate aquarists
+      - source: *liveaquaria
+        value: easy
+        note: retailer rating of the care level
+
+partners:
+  suitable:
+    - species: Labidochromis caeruleus
+      reason: Yellow, calm mbuna of similar size that does not share the blue barred pattern and eats a similar plant-rich diet.
+      condition: Crowded mbuna tank of at least 120 cm with many caves; demasoni added last.
+    - species: Iodotropheus sprengerae
+      reason: Small, brownish mbuna of the same size class and diet that holds its own without looking like a rival.
+      condition: Tank of at least 120 cm with dense rockwork.
+    - species: Maylandia estherae
+      reason: Robust mbuna that shares the water and plant-based diet and is not intimidated by demasoni.
+      condition: Tank of at least 150 cm, since M. estherae grows larger and is aggressive itself; choose orange fish, not bluish males.
+    - species: Synodontis multipunctatus
+      reason: Lake Tanganyika catfish that tolerates the same water, stays near the bottom and is too robust to be harmed by demasoni.
+      condition: Keep several; it may eat demasoni eggs and fry.
+  unsuitable:
+    - species: Cynotilapia afra
+      reason: Blue barred look-alike; demasoni treats it as a rival of its own kind and fights it relentlessly.
+    - species: Maylandia lombardoi
+      reason: Females and young males are blue with dark bars and trigger the same rivalry; the species is also larger and aggressive.
+    - species: Chindongo saulosi
+      reason: Close relative whose males are blue with dark bars; keepers avoid the combination because of the rivalry it triggers.
+    - species: Pseudotropheus cyaneorhabdos
+      reason: Blue and black look-alike that draws heavy aggression; a laboratory cross with demasoni females that lacked males of their own species produced fertile hybrids.
+    - species: Aulonocara stuartgranti
+      reason: Peaceful peacock cichlid that needs more protein in its diet and suffers under the constant attacks of demasoni.
+    - species: Copadichromis borleyi
+      reason: Calm open-water hap that is harassed by demasoni and is fed a more protein-rich diet.
+
+profile:
+  overview:
+    text: >-
+      The demasoni is a dwarf mbuna from a tiny stretch of rocky coast in the Tanzanian part of
+      Lake Malawi. Hobbyists know it best under its old name Pseudotropheus demasoni; since 2016
+      the Catalog of Fishes places it in the genus Chindongo. Both sexes wear the same striking
+      pattern of dark blue and light blue vertical bars, so a group looks uniform and bright.
+      Behind the small size hides one of the most quarrelsome cichlids of the lake. A male in a
+      small group often kills his rivals one after another, and an established fish will chase
+      tankmates many times its size. The species is popular, widely bred in captivity and cheap to
+      buy, but it rewards only keepers who plan the tank around its temper: a large, crowded group,
+      many caves, robust tankmates of other colours and a plant-based diet. Kept that way it is
+      lively, curious and fun to watch, often swimming upside down along the rock faces.
+    sources:
+      - *cof
+      - *sf
+      - *fishkeeper
+  habitat:
+    text: >-
+      The species is known only from Pombo Rocks and the nearby reef at Ndumbi Point on the
+      Tanzanian east coast of Lake Malawi, south of the Ruhuhu River mouth. These are rocky reefs
+      free of sediment, where the fish stay close to the rocks, often in shallow water near the
+      tops, and seldom enter open water. Lower down the rock grades into a mix of stones and sand.
+      Lake Malawi water is warm, clear and moderately alkaline: about 21 to 29 °C, pH 7.7 to 8.6,
+      soft with 3 to 5 dGH but buffered with 5 to 8 dKH. Because the whole world population lives
+      on a few small reefs, the IUCN lists the species as Vulnerable; the fish in the trade are
+      almost all bred in captivity. An introduced population is also recorded from Romania.
+    sources:
+      - *cof
+      - *fishbase
+      - *sf
+      - *malawiguru
+      - *branchu
+      - *fao
+      - *eccles
+      - *wikide
+  sizeAndGrowth:
+    text: >-
+      This is one of the smallest mbuna. Wild fish measured for the scientific revision reach a
+      little over 6 cm standard length; in the aquarium males grow to about 8 cm total length and
+      females stay slightly smaller at around 7 cm. Figures of 10 cm found on some pages are
+      exaggerated. Young fish already show the full adult pattern, so even juveniles in the shop
+      look like small copies of their parents. Growth is moderate, and a group often starts to
+      breed well before it is fully grown. With good care the fish live for several years;
+      retailers give between about four and ten years.
+    sources:
+      - *fishbase
+      - *sf
+      - *fishkeeper
+      - *guidarium
+      - *gcca
+  husbandry:
+    text: >-
+      Plan a tank of at least 120 cm length, about 45 cm front to back and some 240 litres for a
+      group; larger is better. Most of the space should be rockwork: stack stones from the floor
+      almost to the surface and leave many caves, gaps and passages, so that no fish can see the
+      whole tank at once. Set the rocks on the glass or on the sand bed so that digging cannot
+      topple them. A sand floor and a few flat stones give spawning sites. The water should be
+      alkaline and well buffered: keep the pH between about 7.5 and 8.8, the carbonate hardness
+      above 5 dKH and the temperature between 24 and 28 °C. A crushed coral or aragonite filter
+      bag helps to hold the pH. Because the tank will be crowded, filtration must be generous and
+      partial water changes frequent. Introduce demasoni as the last fish of a community, since an
+      established group defends its rocks against newcomers.
+    sources:
+      - *sf
+      - *fishkeeper
+      - *guidarium
+      - *malawiguru
+      - *liveaquaria
+  socialBehavior:
+    text: >-
+      On the reef demasoni live in large numbers, but in a tank their aggression towards their own
+      kind is extreme. In a small group the dominant male usually picks off rivals and even females
+      one by one until few or none are left. The working answer is a crowded group of at least
+      twelve fish, where attacks spread over many targets and weaker fish can vanish in the crowd;
+      since the sexes look alike, the ratio sorts itself out in such a group. Other robust mbuna in
+      the tank help to dilute the pressure further. Males defend a compact territory around a cave
+      or flat stone at all times and attack any fish that enters, regardless of size. A typical
+      and charming habit is how closely they hug the rock surfaces, turning sideways or upside
+      down to follow the stone.
+    sources:
+      - *sf
+      - *fishkeeper
+      - *guidarium
+      - *malawiguru
+      - *cichlidforum
+  diet:
+    text: >-
+      In the lake demasoni graze the algal layer on the rocks together with the tiny animals living
+      in it, using small mouths with rows of two-pointed teeth. In the tank the staple should be a
+      spirulina or other vegetable-based flake or small pellet made for mbuna, supplemented with
+      blanched spinach, nori, cucumber or courgette. Animal food is only an occasional small treat,
+      such as mysis or brine shrimp; red meat, beef heart and bloodworms are best avoided entirely,
+      because this species digests protein-rich food poorly and easily develops bloat. Feed small
+      portions once or twice a day and stop while the fish are still eager; a slightly lean
+      demasoni is healthier than a round one. Natural algae growth on the rocks gives them
+      something to graze between meals.
+    sources:
+      - *sf
+      - *fishkeeper
+      - *li2016
+      - *malawiguru
+      - *a14115
+  breeding:
+    text: >-
+      Demasoni are maternal mouthbrooders and breed readily once a group settles. A ripe male
+      darkens, cleans a flat stone or digs a shallow pit near his cave and courts passing females
+      in front of it. The pair circles head to tail; the female lays a few eggs at a time, picks
+      them up at once and collects the sperm while nibbling at the egg spots on the male's anal
+      fin. She then holds the brood for about three weeks without feeding and releases a small
+      number of fairly large fry, which take brine shrimp nauplii and crushed flake from the
+      start. Breeding works best in a species tank with many females per male; a holding female
+      can be moved carefully to a separate tank shortly before release, but stress may make her
+      spit out the brood. The young start fighting among themselves early, so rearing tanks need
+      cover and space.
+    sources:
+      - *sf
+      - *fishkeeper
+      - *gcca
+      - *cichlidforum
+  sexing:
+    text: >-
+      Sexing is notoriously hard because males and females share the same colours and bars.
+      Adult males tend to be a little larger and above all behave differently: they hold
+      territories, display with intensified colours and chase other fish, while females and
+      subordinate males stay more in the background. The only reliable method is to compare the
+      genital papillae of adult fish, which needs practice and careful handling. For this reason
+      most keepers start with a large group of young fish and let the sexes reveal themselves over
+      time.
+    sources:
+      - *sf
+      - *fishkeeper
+      - *wikide
+  compatibility:
+    text: >-
+      Demasoni belong in a crowded Lake Malawi mbuna tank with tankmates that are robust, about the
+      same size or larger, plant-eating and clearly different in colour. Yellow Labidochromis
+      caeruleus, Iodotropheus sprengerae and, in larger tanks, orange Maylandia work well. Avoid
+      every fish with blue and dark bars or stripes, such as Cynotilapia afra, Maylandia
+      lombardoi, Chindongo saulosi or Pseudotropheus cyaneorhabdos: demasoni treat them as rivals
+      of their own kind. The last of these has also produced hybrids with demasoni in a laboratory
+      cross, although no crossing in mixed tanks is reported. Peaceful peacocks, utaka and other
+      haps are a poor match, both because they get bullied and because they need more protein
+      than demasoni tolerate. Soft-water fish from South America or Asia do not fit the water.
+      Add demasoni last to an existing community.
+    sources:
+      - *sf
+      - *fishkeeper
+      - *pfk
+      - *gerwin2021
+      - *cichlidforum
+  problems:
+    text: >-
+      The most frequent loss is Malawi bloat after protein-rich or excessive feeding; bloodworms,
+      beef heart and generous portions of frozen food are typical triggers, and the condition is
+      often fatal once the belly swells and the fish stops eating. Keep the diet mainly vegetable
+      and the portions small, and ask a fish vet early if a fish swells or produces white, stringy
+      faeces. The second classic mistake is too small a group or too small a tank: with three to
+      six fish, a dominant male usually kills the others. Too few caves, a single female per male
+      or adding new fish to an established demasoni tank lead to the same result. Poor water
+      quality in a crowded mbuna tank raises stress and disease risk, so filtration and regular
+      water changes matter. Stressed holding females may spit or eat their brood.
+    sources:
+      - *fishkeeper
+      - *sf
+      - *guidarium
+      - &a14153
+        kind: archive
+        title: cichlids.com forum thread 14153
+        url: https://www.cichlids.com/disc/read.php?2,14153
+        accessed: 2026-10-13
+      - *a14787
+
+provenance:
+  runs:
+    - role: generator
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-13
+    - role: checker
+      model: gpt-6.1-sol
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: adjudicator
+      model: claude-opus-5-5
+      date: 2026-10-13
+  disagreements:
+    - field: features.hybridGroup
+      proposals:
+        - {by: generator, value: null}
+        - {by: checker-a, value: null}
+        - {by: checker-b, value: null}
+        - {by: checker-c, value: demasoni-cyaneorhabdos}
+        - {by: tiebreaker-1, value: null}
+      decision: null
+      rationale: >-
+        Decided by the tally as qualified majority with 4 of 5 votes. The proposed group rests on
+        one forced laboratory cross with P. cyaneorhabdos, studied in two papers, in which the
+        females had no male of their own species; no source reports crosses in mixed tanks, and
+        Seriously Fish links the crossing risk of P. cyaneorhabdos to Melanochromis, not to
+        demasoni. hybrid-groups.yaml stays unchanged.
+    - field: features.ghDgh.tolerance
+      proposals:
+        - {by: generator, value: {min: 3, max: 25}}
+        - {by: checker-a, value: {min: 3, max: 25}}
+        - {by: checker-b, value: {min: 3, max: 25}}
+        - {by: checker-c, value: {min: 3, max: 20}}
+        - {by: tiebreaker-1, value: {min: 3, max: 25}}
+      decision: {min: 3, max: 25}
+      rationale: >-
+        Decided by the tally as qualified majority with 4 of 5 votes. The upper bound of 25 dGH
+        rests on Seriously Fish, Fishkeeper and Guidarium; the 20 dGH of checker-c follows
+        TankMatcher and a retailer, and no source reports harm between 20 and 25 dGH.
+    - field: features.origin.value.localities
+      proposals:
+        - {by: generator, value: [Pombo Rocks, Ndumbi Point]}
+        - {by: checker-a, value: [Pombo Rocks]}
+        - {by: checker-b, value: [Pombo Rocks, Ndumbi Point region]}
+        - {by: checker-c, value: [Pombo Rocks, Ndumbi Point]}
+      decision: [Pombo Rocks, Ndumbi Point]
+      rationale: >-
+        Pombo Rocks is the type locality; Malawi-Guru, German Wikipedia and the biotope model add
+        the neighbouring reef at Ndumbi Point, and no source contradicts it. The region of
+        checker-c, Lake Malawi, Tanzania, is shortened to Lake Malawi, the region name of the
+        other runs; the Tanzanian range is stated in the rationale.
+    - field: features.maxSizeCm
+      proposals:
+        - {by: generator, value: {male: 8, female: 7}}
+        - {by: checker-a, value: {male: 8, female: 7}}
+        - {by: checker-b, value: {male: 8, female: 7}}
+        - {by: checker-c, value: {male: 7.6, female: 6.4}}
+      decision: {male: 8, female: 7}
+      rationale: >-
+        Checker-c converted the sizes of a single keeper profile (GCCA). Seriously Fish gives 7.5
+        cm standard length, which is about 8 cm or more in total length, and Fishkeeper and
+        Guidarium give about 8 cm; females stay slightly smaller. The majority value fits these
+        sources better.
+    - field: features.aggressionHeterospecific
+      proposals:
+        - {by: generator, value: 3}
+        - {by: checker-a, value: 3}
+        - {by: checker-b, value: 3}
+        - {by: checker-c, value: 4}
+      decision: 3
+      rationale: >-
+        Seriously Fish and Fishkeeper describe working mixed mbuna tanks of 120 cm with robust
+        tankmates of other colours, which is rubric level 3; level 4 means a fish suitable only
+        alone or with very robust tankmates in very large tanks. The kills reported by Fishkeeper,
+        the GCCA keeper and one forum member concern newcomers to an established tank or unsuitable
+        tankmates, which the profile warns about.
+    - field: features.territory
+      proposals:
+        - {by: generator, value: {size: small, breedingOnly: false}}
+        - {by: checker-a, value: {size: small, breedingOnly: false}}
+        - {by: checker-b, value: {size: small, breedingOnly: false}}
+        - {by: checker-c, value: {size: large, breedingOnly: false}}
+      decision: {size: small, breedingOnly: false}
+      rationale: >-
+        Seriously Fish and Fishkeeper describe a male territory around a cave, rock or pit, which
+        stays compact in a tank with dense rockwork. The feeding territories of about 2 m that
+        Malawi-Guru describes on the reef support checker-c, but in the tank the species is kept
+        crowded among many caves; the high heterospecific aggression level covers the risk to
+        tankmates.
+    - field: features.habitatZones
+      proposals:
+        - {by: generator, value: [rock]}
+        - {by: checker-a, value: [rock]}
+        - {by: checker-b, value: [rock, sand]}
+        - {by: checker-c, value: [rock]}
+      decision: [rock]
+      rationale: >-
+        The species lives on sediment-free rocky reefs and rarely leaves the rock surface. The
+        mixed rock and sand zone lower on the reef and the sand floor of the tank serve as
+        substrate and spawning ground, which does not make sand a zone the species depends on.
+    - field: features.minTank
+      proposals:
+        - {by: generator, value: {volumeL: 200, lengthCm: 120, depthCm: 45}}
+        - {by: checker-a, value: {volumeL: 200, lengthCm: 120, depthCm: 45}}
+        - {by: checker-b, value: {volumeL: 240, lengthCm: 120, depthCm: 45}}
+        - {by: checker-c, value: {volumeL: 400, lengthCm: 130, depthCm: 50}}
+      decision: {volumeL: 240, lengthCm: 120, depthCm: 45}
+      rationale: >-
+        All runs agree on a 120 cm tank with about 45 cm depth as the floor, except checker-c,
+        which follows the 400 litres and 130 cm of Malawi-Guru for a species tank. Seriously Fish
+        calls about 205 litres an absolute minimum, and the recommended unit is a crowded group of
+        at least twelve with rockwork that displaces much water, so the common 120 cm tank of about
+        240 litres is taken. The larger specialist figure is named in the rationale as the better
+        choice.
+    - field: features.lifespanYears
+      proposals:
+        - {by: generator, value: {min: 5, max: 10}}
+        - {by: checker-a, value: {min: 8, max: 10}}
+        - {by: checker-b, value: {min: 8, max: 10}}
+        - {by: checker-c, value: {min: 6, max: 10}}
+      decision: {min: 5, max: 10}
+      rationale: >-
+        Only retailer and aggregator pages give a life span, ranging from 4 to 6 years (Garnelio)
+        and about 5 years (The iFISH Store) to 6 to 10 (AquariumHQ) and 8 to 10 years (Aquarium
+        Fish Paradise). A range of 5 to 10 years covers these reports; checker-b gave no source for
+        its value. The confidence stays low.
