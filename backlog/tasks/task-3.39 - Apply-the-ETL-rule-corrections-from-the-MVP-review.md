@@ -1,10 +1,10 @@
 ---
 id: TASK-3.39
 title: Apply the ETL rule corrections from the MVP review
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-10-12 04:48'
-updated_date: '2026-10-12 06:40'
+updated_date: '2026-10-13 08:22'
 labels: []
 dependencies: []
 references:
@@ -37,6 +37,34 @@ Placeholder usernames are reserved for new accounts. Empty legacy galleries are 
 - [ ] #4 Authoritative domain logic is covered by unit/integration tests
 - [ ] #5 All CI test suites are fully green
 <!-- DOD:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+### Approach (test-first)
+- Red first per rule: ETL and API tests (Etl.Tests, Api.Tests, Infrastructure.Tests with
+  Testcontainers) before each change. First check what TASK-3.32 already delivered (vote times in
+  America/New_York, skipped empty galleries in the report) and only add what is missing.
+
+### Rules
+- R15: the usernames `community-archive`, `former-member-<id>` and `forum-member-<id>` are
+  reserved for new accounts (Keycloak registration and the API profile creation refuse them).
+- R16: empty legacy galleries are skipped by rule, counted in the report, class comment and
+  verify step follow the documented rule (check the TASK-3.32 state).
+- R17: generated slugs have eight characters; tests assert 8.
+- R19: vote timestamps from America/New_York to UTC with daylight saving days covered (check the
+  TASK-3.32 state).
+- R21: `LegacyImageLocator` reports paths outside the image root as missing and matches bare
+  filenames exactly, without wildcard semantics.
+- R35: the archive profile is resolved once per run; anonymous records give one report line per
+  kind instead of one warning per row.
+- R37: a check constraint enforces the discussion post author invariant (guest post without
+  author profile, otherwise without poster name), with migration and test.
+
+### End-to-end
+- AC #1 on the write stack (registration or profile creation with `community-archive` is
+  refused), tagged TASK-3.39; AC #2 and #3 through the ETL tests and the report of `etl verify`.
+<!-- SECTION:PLAN:END -->
 
 ## Implementation Notes
 

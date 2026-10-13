@@ -1,10 +1,10 @@
 ---
 id: TASK-3.40
 title: Harden the mobile app configuration and error states
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-10-12 04:48'
-updated_date: '2026-10-12 12:58'
+updated_date: '2026-10-13 08:22'
 labels: []
 dependencies: []
 references:
@@ -37,6 +37,37 @@ Builds outside development fail when the API or Keycloak address is missing; app
 - [ ] #4 Authoritative domain logic is covered by unit/integration tests
 - [ ] #5 All CI test suites are fully green
 <!-- DOD:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+### Approach (test-first)
+- Red first: unit tests (vitest) for config validation, the paged list race, the login retry and
+  the error translation; then the change.
+
+### Configuration (R25)
+- `localhost` defaults only in development. Outside development the app config (`app.config.ts`
+  or a prebuild check) fails the build and names a missing `EXPO_PUBLIC_API_URL` or
+  `EXPO_PUBLIC_KEYCLOAK_URL`. `app.json` holds no localhost values. `eas.json` defines the profiles
+  development, staging and production with their addresses (placeholders where the domain is not
+  decided yet, clearly marked).
+
+### Login (R26)
+- The login button stays usable; a missing discovery document is loaded on tap; a failure shows a
+  clear message with retry and logs the error.
+
+### Paged lists (R27)
+- A new load resets the load-more state in `usePagedList`; a test reproduces load-more overtaken
+  by a filter change.
+
+### Errors and accessibility (R41)
+- Comment load errors show an error with retry instead of "no comments"; the busy button has an
+  accessibility label; API error codes are translated in English and German.
+
+### End-to-end
+- Playwright web spec tagged TASK-3.40: gallery sort change during load-more still loads further
+  pages; login with unreachable Keycloak shows the message with retry.
+<!-- SECTION:PLAN:END -->
 
 ## Implementation Notes
 
