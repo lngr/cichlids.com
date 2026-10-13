@@ -4,9 +4,12 @@ import copy
 import importlib.util
 from pathlib import Path
 import tempfile
+import sys
 import unittest
 
 import yaml
+
+sys.dont_write_bytecode = True
 
 spec = importlib.util.spec_from_file_location('manifests', Path(__file__).with_name('check-cluster-manifests.py'))
 check = importlib.util.module_from_spec(spec)
