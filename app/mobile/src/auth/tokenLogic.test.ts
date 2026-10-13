@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  accountIdOf,
   classifyRefreshResponse,
   needsRefresh,
   parseStoredTokenSet,
@@ -56,6 +57,21 @@ describe("toTokenSet", () => {
 
   it("rejects a response without an access token", () => {
     expect(() => toTokenSet({ accessToken: "", expiresIn: 60 }, now)).toThrow();
+  });
+});
+
+describe("accountIdOf", () => {
+  const encode = (value: unknown) => Buffer.from(JSON.stringify(value)).toString("base64url");
+
+  it("reads the subject of an access token", () => {
+    const token = `${encode({ alg: "RS256" })}.${encode({ sub: "8f1c2a4e-account", name: "Jürgen" })}.signature`;
+    expect(accountIdOf(token)).toBe("8f1c2a4e-account");
+  });
+
+  it("returns null for a token without a subject or that is no JWT", () => {
+    expect(accountIdOf(`${encode({})}.${encode({ name: "x" })}.s`)).toBeNull();
+    expect(accountIdOf("opaque-token")).toBeNull();
+    expect(accountIdOf("a.%%%.c")).toBeNull();
   });
 });
 

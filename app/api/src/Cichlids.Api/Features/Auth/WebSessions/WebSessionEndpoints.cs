@@ -9,9 +9,10 @@ namespace Cichlids.Api.Features.Auth.WebSessions;
 
 /// <summary>
 /// The state of the web app's session; CsrfToken is the token that state-changing requests send
-/// in the X-CSRF-Token header, null when there is no session.
+/// in the X-CSRF-Token header, and AccountId the Keycloak account id of the member; both are null
+/// when there is no session.
 /// </summary>
-public sealed record WebSessionDto(bool Authenticated, string? CsrfToken);
+public sealed record WebSessionDto(bool Authenticated, string? CsrfToken, string? AccountId);
 
 /// <summary>A web login to start; ReturnUrl is the web app address to come back to, the root when null.</summary>
 public sealed record WebLoginRequest(string? ReturnUrl);
@@ -172,19 +173,19 @@ public static class WebSessionEndpoints
         var sessionId = WebSessionCookies.ReadSession(request, settings);
         if (sessionId is null)
         {
-            return TypedResults.Ok(new WebSessionDto(false, null));
+            return TypedResults.Ok(new WebSessionDto(false, null, null));
         }
 
         var lookup = await sessions.FindAsync(sessionId, renew: true, cancellationToken);
         if (lookup.Session is null)
         {
             WebSessionCookies.ClearSession(response, settings);
-            return TypedResults.Ok(new WebSessionDto(false, null));
+            return TypedResults.Ok(new WebSessionDto(false, null, null));
         }
 
         await sessions.TouchAsync(lookup.Session, cancellationToken);
         WebSessionCookies.WriteSession(response, settings, sessionId);
-        return TypedResults.Ok(new WebSessionDto(true, lookup.Session.CsrfToken));
+        return TypedResults.Ok(new WebSessionDto(true, lookup.Session.CsrfToken, lookup.Session.Subject));
     }
 
     /// <summary>Ends the session, revokes its offline token at Keycloak and clears the cookie.</summary>

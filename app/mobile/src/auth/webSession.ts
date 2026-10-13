@@ -1,9 +1,10 @@
 import { DiscoveryUnavailableError } from "./discovery";
 
-/** The web session as the API reports it; csrfToken is null without a session. */
+/** The web session as the API reports it; csrfToken and accountId are null without a session. */
 export interface WebSessionInfo {
   authenticated: boolean;
   csrfToken: string | null;
+  accountId: string | null;
 }
 
 /**
@@ -16,9 +17,13 @@ export async function readWebSession(apiUrl: string, fetchImpl: typeof fetch): P
     headers: { Accept: "application/json" },
   });
   if (!response.ok) throw new Error(`The session endpoint answered ${response.status}.`);
-  const body = (await response.json()) as { authenticated?: unknown; csrfToken?: unknown };
+  const body = (await response.json()) as { authenticated?: unknown; csrfToken?: unknown; accountId?: unknown };
   const authenticated = body.authenticated === true;
-  return { authenticated, csrfToken: authenticated && typeof body.csrfToken === "string" ? body.csrfToken : null };
+  return {
+    authenticated,
+    csrfToken: authenticated && typeof body.csrfToken === "string" ? body.csrfToken : null,
+    accountId: authenticated && typeof body.accountId === "string" ? body.accountId : null,
+  };
 }
 
 /**

@@ -39,6 +39,19 @@ export function toTokenSet(response: TokenEndpointResponse, nowMs: number, previ
   };
 }
 
+/** The Keycloak account id (the sub claim) of an access token, or null when it has none or is no JWT. */
+export function accountIdOf(accessToken: string): string | null {
+  const payload = accessToken.split(".")[1];
+  if (!payload) return null;
+  try {
+    const base64 = payload.replace(/-/g, "+").replace(/_/g, "/").padEnd(Math.ceil(payload.length / 4) * 4, "=");
+    const claims = JSON.parse(atob(base64)) as { sub?: unknown };
+    return typeof claims.sub === "string" && claims.sub !== "" ? claims.sub : null;
+  } catch {
+    return null;
+  }
+}
+
 /** Reads a serialized token set; anything missing, malformed or incomplete yields null. */
 export function parseStoredTokenSet(raw: string | null): TokenSet | null {
   if (!raw) return null;

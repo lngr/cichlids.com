@@ -19,6 +19,7 @@ const browserFetch: typeof fetch = (input, init) => fetch(input, init);
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [status, setStatus] = useState<AuthStatus>("loading");
   const [csrfToken, setCsrfToken] = useState<string | null>(null);
+  const [accountId, setAccountId] = useState<string | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -29,6 +30,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           if (cancelled) return;
           setWebSessionCsrfToken(session.csrfToken);
           setCsrfToken(session.csrfToken);
+          setAccountId(session.accountId);
           setStatus(session.authenticated ? "authenticated" : "anonymous");
         })
         .catch(() => {
@@ -39,6 +41,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setWebSessionEndedListener(() => {
       setWebSessionCsrfToken(null);
       setCsrfToken(null);
+      setAccountId(null);
       setStatus("anonymous");
     });
     return () => {
@@ -59,6 +62,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const logout = useCallback(async () => {
     setWebSessionCsrfToken(null);
     setCsrfToken(null);
+    setAccountId(null);
     setStatus("anonymous");
     try {
       await endWebSession(API_BASE_URL, csrfToken, browserFetch);
@@ -70,8 +74,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const getAccessToken = useCallback(async () => undefined, []);
 
   const value = useMemo<AuthContextValue>(
-    () => ({ status, login, logout, getAccessToken }),
-    [status, login, logout, getAccessToken],
+    () => ({ status, accountId, login, logout, getAccessToken }),
+    [status, accountId, login, logout, getAccessToken],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

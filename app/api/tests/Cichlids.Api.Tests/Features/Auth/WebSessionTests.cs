@@ -90,6 +90,7 @@ public sealed class WebSessionTests(WebSessionFixture fixture)
         using var json = JsonDocument.Parse(body);
         Assert.True(json.RootElement.GetProperty("authenticated").GetBoolean());
         Assert.False(string.IsNullOrEmpty(json.RootElement.GetProperty("csrfToken").GetString()));
+        Assert.Equal(login.Subject, json.RootElement.GetProperty("accountId").GetString());
         Assert.DoesNotContain(login.AccessToken, body);
         Assert.DoesNotContain(login.RefreshToken, body);
         Assert.True(SetCookie(response, SessionCookie).MaxAge >= TimeSpan.FromDays(300), "the session cookie is renewed");

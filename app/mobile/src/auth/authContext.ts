@@ -4,6 +4,8 @@ export type AuthStatus = "loading" | "anonymous" | "authenticated";
 
 export interface AuthContextValue {
   status: AuthStatus;
+  /** The Keycloak account id of the signed-in member; null while loading and when anonymous. */
+  accountId: string | null;
   /**
    * Opens the Keycloak login; resolves false when the user cancels it or when the login only
    * became ready (the discovery document was loaded by this call, a further call opens the login),

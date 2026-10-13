@@ -15,7 +15,7 @@ import { setAccessTokenProvider } from "../api/client";
 import { AuthContext, type AuthContextValue, type AuthStatus } from "./authContext";
 import { authConfig } from "./config";
 import { ensureDiscovery } from "./discovery";
-import { toTokenSet } from "./tokenLogic";
+import { accountIdOf, toTokenSet } from "./tokenLogic";
 import { requestTokenRefresh } from "./tokenRefresh";
 import { createTokenSession } from "./tokenSession";
 import { tokenStorage } from "./tokenStorage";
@@ -62,6 +62,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   );
 
   const [status, setStatus] = useState<AuthStatus>("loading");
+  const [accountId, setAccountId] = useState<string | null>(null);
   const discoveryRef = useRef(discovery);
   discoveryRef.current = discovery;
 
@@ -81,7 +82,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             now: Date.now,
           }),
         now: Date.now,
-        onChange: (tokens) => setStatus(tokens ? "authenticated" : "anonymous"),
+        onChange: (tokens) => {
+          setStatus(tokens ? "authenticated" : "anonymous");
+          setAccountId(tokens ? accountIdOf(tokens.accessToken) : null);
+        },
       }),
     [],
   );
@@ -163,8 +167,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, [getAccessToken]);
 
   const value = useMemo<AuthContextValue>(
-    () => ({ status, login, logout, getAccessToken }),
-    [status, login, logout, getAccessToken],
+    () => ({ status, accountId, login, logout, getAccessToken }),
+    [status, accountId, login, logout, getAccessToken],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

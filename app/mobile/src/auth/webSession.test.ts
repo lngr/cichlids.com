@@ -11,17 +11,25 @@ function json(status: number, body: unknown) {
 
 describe("readWebSession", () => {
   it("reads the session state with the cookie and keeps the CSRF token", async () => {
-    const fetchImpl = vi.fn(async () => json(200, { authenticated: true, csrfToken: "csrf" }));
+    const fetchImpl = vi.fn(async () => json(200, { authenticated: true, csrfToken: "csrf", accountId: "account" }));
 
-    expect(await readWebSession(apiUrl, fetchImpl as unknown as typeof fetch)).toEqual({ authenticated: true, csrfToken: "csrf" });
+    expect(await readWebSession(apiUrl, fetchImpl as unknown as typeof fetch)).toEqual({
+      authenticated: true,
+      csrfToken: "csrf",
+      accountId: "account",
+    });
     const [url, init] = fetchImpl.mock.calls[0] as unknown as [string, RequestInit];
     expect(url).toBe(`${apiUrl}/api/auth/session`);
     expect(init.credentials).toBe("include");
   });
 
   it("reports no session", async () => {
-    const fetchImpl = vi.fn(async () => json(200, { authenticated: false, csrfToken: null }));
-    expect(await readWebSession(apiUrl, fetchImpl as unknown as typeof fetch)).toEqual({ authenticated: false, csrfToken: null });
+    const fetchImpl = vi.fn(async () => json(200, { authenticated: false, csrfToken: null, accountId: null }));
+    expect(await readWebSession(apiUrl, fetchImpl as unknown as typeof fetch)).toEqual({
+      authenticated: false,
+      csrfToken: null,
+      accountId: null,
+    });
   });
 
   it("rejects when the API gives no usable answer", async () => {
