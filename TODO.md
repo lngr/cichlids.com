@@ -141,12 +141,12 @@ Zu jeder Frage ist eine vorläufige Umsetzung in Gebrauch; sie wird bestätigt o
 - [ ] **Vorsichtsregel beim Raub:** Bei 3:2 für Stufe 0 entscheidet die Regel Stufe 1
   (Pseudotropheus sp. 'acei', Maylandia greshakei). Belegt ist dort nur, dass Mbuna Jungfische
   gelegentlich mitfressen. Bestätigen oder ändern.
-- [ ] **Cynotilapia afra in der Kreuzungsgruppe maylandia:** Belegt sind Feldhybriden nur mit
-  M. zebra; jede Maylandia neben C. afra ergibt trotzdem eine Warnung.
-- [ ] **Gattungsweite Kreuzungsgruppe copadichromis:** Sie umfasst alle 25 gültigen Arten und
-  beruht auf der pauschalen Warnung von Seriously Fish und alter Introgression im See
-  (Anseeuw et al. 2012); eine Aquarienkreuzung zweier benannter Arten ist nicht dokumentiert.
-  Zusammen mit Cynotilapia afra klären, welche Belege eine Kreuzungsgruppe braucht.
+- [ ] **Belege für Kreuzungsgruppen:** Entschieden: Jede Gruppe hat eine Beleglage (`basis`).
+  `documented` (Kreuzung benannter Mitglieder im Freiland oder im Aquarium mit freier Partnerwahl)
+  ergibt eine Warnung, `presumed` (nur pauschale Hobby-Warnungen oder sehr nahe Verwandtschaft)
+  ein Achtung. Erzwungene Laborkreuzungen zählen nicht. Offen: alle Gruppen danach kuratieren,
+  etwa Cynotilapia afra nur mit Maylandia zebra (Feldhybriden), `copadichromis` und
+  `melanochromis` als presumed.
 - [ ] **Mehrfachmitgliedschaft in Kreuzungsgruppen:** Entschieden: `hybridGroups` ist eine Liste,
   eine Gruppe heißt "alle Mitglieder kreuzen sich untereinander", eine belegte Einzelkreuzung ist
   eine Zweiergruppe. Offen: die Gruppen danach kuratieren (Cynotilapia afra nur mit Maylandia
@@ -218,6 +218,10 @@ Zu jeder Frage ist eine vorläufige Umsetzung in Gebrauch; sie wird bestätigt o
   Warnung). Schwellen für Achtung und Warnung festlegen; `MVP-VISION.md` (Konfliktfunktion
   Wasserwerte) und den Fachartikel zum Besatz-Planer, die den Wasserkonflikt als reine
   Überlappung beschreiben, entsprechend anpassen
+- [ ] Kreuzungsgruppen im Besatz-Planer: Ein Paar mit gemeinsamer Gruppe der Beleglage
+  `documented` ergibt eine Warnung, nur `presumed` ein Achtung (`data/species/hybrid-groups.yaml`,
+  Feld `basis`; `hybridGroups` je Art ist eine Liste). `MVP-VISION.md` führt die Kreuzungsgruppe
+  als harten Konflikt; anpassen
 - [ ] Vision-Modell: Anbieter, Kontingent je Mitglied, Gesamtbudget
 - [ ] Gemini-Vergleich im Scanner-Spike ausführen; braucht einen Gemini-API-Schlüssel
   (`tools/scanner-spike/RESULTS.md`)
