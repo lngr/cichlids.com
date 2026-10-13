@@ -101,9 +101,9 @@ Each water feature (temperatureC, ph, ghDgh, khDkh) keeps the natural-habitat ra
 node tools/species-data/tally.mjs data/species/work/<dir>
 ```
 
-The script reads `generator.yaml`, `checker-a.yaml`, `checker-b.yaml` and every `tiebreaker-N.yaml` of the work directory and writes `tally.yaml` next to them. Tie-breaker files hold only `features` (a subset of the hard features) and optionally `provenance`; they are read without schema validation. Exit code 2 means an input file is missing or the waterbody table is invalid; otherwise the exit code is 0.
+The script reads `generator.yaml`, `checker-a.yaml`, `checker-b.yaml`, the optional `checker-c.yaml` (an independent checker of another model family) and every `tiebreaker-N.yaml` of the work directory and writes `tally.yaml` next to them. Tie-breaker files hold only `features` (a subset of the hard features) and optionally `provenance`; they are read without schema validation. Exit code 2 means a required input file is missing or the waterbody table is invalid; otherwise the exit code is 0.
 
-Each file that contains a hard feature casts one vote with the feature's `value`. The vote order is generator, checker-a, checker-b, tiebreaker-1, tiebreaker-2, and so on.
+Each file that contains a hard feature casts one vote with the feature's `value`. The vote order is generator, checker-a, checker-b, checker-c, tiebreaker-1, tiebreaker-2, and so on.
 
 - Water body: the most common `features.origin.value.waterbody` over all files is looked up in the table. When it matches, temperatureC, ph, ghDgh and khDkh are the table's ranges with verification `{method: waterbody, waterbody: <id>}`, the table's sources and confidence high; they are not voted on.
 - Voted features are predation, diet, speciesOnly and hybridGroup, plus temperatureC, ph, ghDgh and khDkh when no water body applies (khDkh is voted so that a decided tolerance always contains the natural carbonate hardness).

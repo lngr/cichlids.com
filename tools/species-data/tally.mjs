@@ -3,8 +3,9 @@
 // that the votes settle. Features that stay open are listed for tie-breaker agents.
 //
 // Usage: node tools/species-data/tally.mjs <workdir>
-// Reads generator.yaml, checker-a.yaml, checker-b.yaml and every tiebreaker-N.yaml in the work
-// directory and writes tally.yaml next to them. Exit code 2 when an input file is missing.
+// Reads generator.yaml, checker-a.yaml, checker-b.yaml, the optional checker-c.yaml and every
+// tiebreaker-N.yaml in the work directory and writes tally.yaml next to them. Exit code 2 when a
+// required input file is missing.
 //
 // Every file that contains a hard feature casts one vote. Water values of a species from a lake
 // of data/species/waterbodies.yaml are taken from that table and are not voted on.
@@ -39,13 +40,14 @@ const EPSILON = 1e-9;
 const baseName = (name) => name.replace(/\.tolerance$/, "");
 const isRange = (name) => baseName(name) in RANGE_TOLERANCE;
 
-/** Position of a file in the vote order: generator, checker-a, checker-b, tiebreaker-1, ... */
+/** Position of a file in the vote order: generator, checker-a, checker-b, checker-c, tiebreaker-1, ... */
 function rank(name) {
   if (name === "generator.yaml") return 0;
   if (name === "checker-a.yaml") return 1;
   if (name === "checker-b.yaml") return 2;
+  if (name === "checker-c.yaml") return 3;
   const m = /^tiebreaker-(\d+)\.yaml$/.exec(name);
-  return m ? 2 + Number(m[1]) : Number.MAX_SAFE_INTEGER;
+  return m ? 3 + Number(m[1]) : Number.MAX_SAFE_INTEGER;
 }
 
 function agrees(name, a, b) {
@@ -235,7 +237,7 @@ function chooseWaterbody(files, waterbodies) {
 
 /**
  * Tallies the votes. files: [{ name, data }] with the parsed content of generator.yaml,
- * checker-a.yaml, checker-b.yaml and tiebreaker-N.yaml (any order); waterbodies: Map from
+ * checker-a.yaml, checker-b.yaml, checker-c.yaml and tiebreaker-N.yaml (any order); waterbodies: Map from
  * loadWaterbodies. Returns the content of tally.yaml.
  */
 export function tally(files, waterbodies = new Map()) {
@@ -286,8 +288,9 @@ function readWorkdir(dir) {
   const names = ["generator.yaml", "checker-a.yaml", "checker-b.yaml"];
   const missing = names.filter((n) => !existsSync(join(dir, n)));
   if (missing.length > 0) throw new Error(`missing input file(s) in ${dir}: ${missing.join(", ")}`);
+  const optional = existsSync(join(dir, "checker-c.yaml")) ? ["checker-c.yaml"] : [];
   const tiebreakers = readdirSync(dir).filter((n) => /^tiebreaker-\d+\.yaml$/.test(n));
-  return [...names, ...tiebreakers].map((name) => ({
+  return [...names, ...optional, ...tiebreakers].map((name) => ({
     name,
     data: parse(readFileSync(join(dir, name), "utf8"), { maxAliasCount: -1 }),
   }));

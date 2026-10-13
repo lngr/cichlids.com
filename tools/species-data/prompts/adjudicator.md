@@ -23,7 +23,7 @@ file:
 4. Where they differ, weigh the rationales and sources (verify them with web search where useful)
    and decide. Record every difference in `provenance.disagreements` with the field, all
    proposals, your decision and the reason. Each proposal is `{by: <run>, value: <value>}`, where
-   the run is `generator`, `checker-a`, `checker-b` or `tiebreaker-<n>`. Record the disagreements of hard features as well,
+   the run is `generator`, `checker-a`, `checker-b`, `checker-c` or `tiebreaker-<n>`. Record the disagreements of hard features as well,
    with the decision and method from `tally.yaml`.
 5. Make the profile prose, `partners` and the final features consistent with each other; rewrite
    prose that contradicts a decided value.

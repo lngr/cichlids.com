@@ -192,6 +192,27 @@ test("files are ordered generator, checkers, then tie-breakers by number", () =>
   assert.deepEqual(result.features.predation.proposals.map((p) => p.file), NAMES);
 });
 
+test("checker-c votes after checker-b and before the tie-breakers", () => {
+  const order = ["generator.yaml", "checker-a.yaml", "checker-b.yaml", "checker-c.yaml", "tiebreaker-1.yaml"];
+  const files = [...order].reverse().map((name) => file(name, { predation: [1, TWO] }));
+  assert.deepEqual(tally(files).files, order);
+});
+
+test("four agreeing votes with checker-c are unanimous", () => {
+  const names = ["generator.yaml", "checker-a.yaml", "checker-b.yaml", "checker-c.yaml"];
+  const f = tally(names.map((name) => file(name, { predation: [1, TWO] }))).features.predation;
+  assert.deepEqual(f.verification, { method: "unanimous", votes: { agree: 4, total: 4 } });
+});
+
+test("with checker-c one tie-breaker reaches a qualified majority", () => {
+  const votes = { "generator.yaml": 1, "checker-a.yaml": 1, "checker-b.yaml": 2, "checker-c.yaml": 1 };
+  const files = Object.entries(votes).map(([name, v]) => file(name, { predation: [v, TWO] }));
+  assert.equal(tally(files).features.predation.needsTiebreaker, true);
+  const f = tally([...files, file("tiebreaker-1.yaml", { predation: [1, TWO] })]).features.predation;
+  assert.deepEqual(f.verification, { method: "qualified-majority", votes: { agree: 4, total: 5 } });
+  assert.deepEqual(f.proposals.map((p) => p.file), [...Object.keys(votes), "tiebreaker-1.yaml"]);
+});
+
 test("a tie-breaker file with a subset of features votes only on those", () => {
   const files = [
     ...voteFiles("predation", [1, 1, 2]),
