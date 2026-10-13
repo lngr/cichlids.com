@@ -1,10 +1,10 @@
 ---
 id: TASK-3.37
 title: 'Limit comment length, uploads and drafts'
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-10-12 04:48'
-updated_date: '2026-10-13 08:52'
+updated_date: '2026-10-13 10:03'
 labels: []
 dependencies: []
 references:
@@ -105,4 +105,12 @@ Comments have at most 10000 characters and deletion reasons at most 500; JSON re
 - `client-core/openapi.json` and the generated client are not regenerated for the new problem
   responses.
 - The chunked 413 path is tested with a fake body-size feature only.
+
+### Resolved open points
+- Drafts age from `post.updated_at` (migration `AddPostUpdatedAt`, backfilled from `created_at`,
+  set on upload and publish); the cleanup keeps a draft created 40 days ago and changed 2 days
+  ago and removes one untouched for 31 days (`UploadLimitsTests`). Red observed.
+- `client-core/openapi.json` lists the 409 and 429 problem responses of the upload and the 400
+  problem response of the comment deletion.
+- Still open: the chunked 413 path is tested with a fake body-size feature only.
 <!-- SECTION:NOTES:END -->

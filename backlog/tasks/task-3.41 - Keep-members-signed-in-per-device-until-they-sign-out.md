@@ -1,10 +1,10 @@
 ---
 id: TASK-3.41
 title: Keep members signed in per device until they sign out
-status: In Review
+status: In Progress
 assignee: []
 created_date: '2026-10-12 04:48'
-updated_date: '2026-10-13 09:29'
+updated_date: '2026-10-13 10:03'
 labels: []
 dependencies: []
 references:
@@ -117,4 +117,18 @@ A member signs in once per device and stays signed in until signing out; no sign
 ### Follow-ups
 - Cleanup of orphaned `web_session` rows and Keycloak offline sessions.
 - A failed web login (refused or code exchange failed) returns without a message.
+
+### Follow-ups done
+- `WebSessionCleanupService` deletes `web_session` rows unused for longer than the retention
+  (`WebSessionCleanup`: Enabled true, Interval 1 day, Retention 400 days, BatchSize 100) after
+  revoking the Keycloak offline session; without an answer from Keycloak the row stays for the next
+  pass. `last_seen_at` is renewed with the cookie.
+- A failed web login returns with `sign_in=failed`; the app shows "Login failed. Please try again."
+  with "Try again" (English and German); `session.write.mjs` asserts it.
+- Known gap: a logout while Keycloak is unreachable leaves the offline session in Keycloak without
+  a row to retry it.
+
+### Decided by the project owner
+- The tokens in `web_session` are stored encrypted (ASP.NET Data Protection, key ring outside the
+  database as a SOPS-managed cluster secret, a development key locally). To implement.
 <!-- SECTION:NOTES:END -->
