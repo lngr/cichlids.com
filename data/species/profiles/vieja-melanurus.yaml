@@ -2527,6 +2527,9 @@ features:
     value:
       - "geophagus-brasiliensis-vieja-melanurus"
       - "parachromis-dovii-vieja-melanurus"
+      - "vieja"
+      - "vieja-bifasciata-melanurus"
+      - "vieja-maculicauda-melanurus"
       - "vieja-melanurus-blood-parrot"
       - "vieja-melanurus-cincelichthys-bocourti"
       - "vieja-melanurus-mayaheros-urophthalmus"
@@ -2569,7 +2572,16 @@ features:
       us\",\"vieja-melanurus-mayaheros-urophthalmus\",\"vieja-melanurus-blood-parrot\",\"vieja-melanurus-cinc\
       elichthys-bocourti\",\"parachromis-managuensis-vieja-melanurus\",\"vieja-melanurus-rocio-octofasciata\",\
       \"vieja-melanurus-mesoheros-festae\",\"vieja-melanurus-vieja-fenestrata\",\"parachromis-motaguensis-vie\
-      ja-melanurus\",\"vieja-melanurus-red-mammon\"]."
+      ja-melanurus\",\"vieja-melanurus-red-mammon\"].
+      The curated data/species/hybrid-groups.yaml file defines vieja with basis presumed from
+      specialist and husbandry-database congener crossing warnings, with catalog taxonomy and a
+      systematic revision supporting the related lineage rather than verified crosses between every
+      pair. The curated data/species/hybrid-groups.yaml file defines vieja-maculicauda-melanurus
+      with basis presumed from a named aquarium spawning report and specialist warnings, with
+      taxonomy and sister-species research providing context but no independent parentage
+      verification or evidence of conspecific mate availability. The curated data/species/hybrid-groups.yaml file defines vieja-bifasciata-melanurus with basis presumed from specialist
+      reports of pairing risk and mixed-trait wild fish alongside labelled captive-offspring
+      photographs, without verified genetic parentage or documented conspecific mate availability."
     sources:
       - kind: "literature"
         title: "Fisher et al.: Response to salinity challenge in hybrid blood parrot cichlids (Vieja melanura x
@@ -2641,6 +2653,34 @@ features:
         title: "MonsterFishKeepers: synspilum X geophagus brasiliensis check it out, 2007"
         url: "https://www.monsterfishkeepers.com/forums/threads/synspilum-x-geophagus-brasiliensis-check-it-out.10620\
           4/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Beerlink, R. Vieja maculicauda. Nederlandse Cichliden Vereniging article published by AquaInfo"
+        url: "https://aquainfo.nl/en/article/vieja-maculicauda/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "McMahan, Matamoros, Piller and Chakrabarty (2015). Taxonomy and systematics of the herichthyins, with the description of eight new Middle American Genera"
+        url: "https://doi.org/10.11646/zootaxa.3999.2.3"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aquarist Atlas: Vieja maculicauda species and husbandry record"
+        url: "https://www.cichlidatlas.com/species/vieja-maculicauda/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "McMahan et al. (2017). Pleistocene to holocene expansion of the black-belt cichlid in Central America"
+        url: "https://doi.org/10.1371/journal.pone.0178439"
+        accessed: "2026-10-13"
+      - kind: "forum"
+        title: "MonsterFishKeepers: Vieja Synspilum X Vieja Maculicauda Just Spawned (2010)"
+        url: "https://www.monsterfishkeepers.com/forums/threads/vieja-synspilum-x-vieja-maculicauda-just-spawned.307635/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Beerlink, R. Vieja bifasciata. Nederlandse Vereniging van Cichlidenliefhebbers article reproduced by AquaInfo"
+        url: "https://aquainfo.nl/en/article/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Binns Hybrid Encyclopedia: Bifasciata cross examples"
+        url: "https://www.binnspedia.com/vieja/bifasciata"
         accessed: "2026-10-13"
     evidence:
       - source:
@@ -2795,6 +2835,77 @@ features:
         value:
           - "geophagus-brasiliensis-vieja-melanurus"
         note: "Retells the indexed historical event; not an independent experiment."
+      - source:
+          kind: "catalog-of-fishes"
+          title: "Eschmeyer's Catalog of Fishes: species of Vieja, checked 13 October 2026"
+          url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Vieja"
+          accessed: "2026-10-13"
+        value: [vieja]
+        note: "Establishes valid names and synonym mapping, not crossing evidence."
+      - source:
+          kind: "literature"
+          title: "Beerlink, R. Vieja maculicauda. Nederlandse Cichliden Vereniging article published by AquaInfo"
+          url: "https://aquainfo.nl/en/article/vieja-maculicauda/"
+          accessed: "2026-10-13"
+        value: [vieja]
+        note: "General congener crossing warning, without verified parentage or free mate choice."
+      - source:
+          kind: "literature"
+          title: "McMahan, Matamoros, Piller and Chakrabarty (2015). Taxonomy and systematics of the herichthyins, with the description of eight new Middle American Genera"
+          url: "https://doi.org/10.11646/zootaxa.3999.2.3"
+          accessed: "2026-10-13"
+        value: [vieja]
+        note: "Establishes the related Vieja lineage without testing crosses."
+      - source:
+          kind: "database"
+          title: "Aquarist Atlas: Vieja maculicauda species and husbandry record"
+          url: "https://www.cichlidatlas.com/species/vieja-maculicauda/"
+          accessed: "2026-10-13"
+        value: [vieja]
+        note: "General congener crossing caution, without verified crosses for every pair."
+      - source:
+          kind: "catalog-of-fishes"
+          title: "Eschmeyer's Catalog of Fishes: species of Vieja, checked 13 October 2026"
+          url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Vieja"
+          accessed: "2026-10-13"
+        value: [vieja-maculicauda-melanurus]
+        note: "Establishes valid names and synonym mapping, not crossing evidence."
+      - source:
+          kind: "literature"
+          title: "Beerlink, R. Vieja maculicauda. Nederlandse Cichliden Vereniging article published by AquaInfo"
+          url: "https://aquainfo.nl/en/article/vieja-maculicauda/"
+          accessed: "2026-10-13"
+        value: [vieja-maculicauda-melanurus]
+        note: "General congener crossing warning, without verified parentage or free mate choice."
+      - source:
+          kind: "literature"
+          title: "McMahan et al. (2017). Pleistocene to holocene expansion of the black-belt cichlid in Central America"
+          url: "https://doi.org/10.1371/journal.pone.0178439"
+          accessed: "2026-10-13"
+        value: [vieja-maculicauda-melanurus]
+        note: "Supports the sister-species relationship without reporting a cross."
+      - source:
+          kind: "forum"
+          title: "MonsterFishKeepers: Vieja Synspilum X Vieja Maculicauda Just Spawned (2010)"
+          url: "https://www.monsterfishkeepers.com/forums/threads/vieja-synspilum-x-vieja-maculicauda-just-spawned.307635/"
+          accessed: "2026-10-13"
+        value: [vieja-maculicauda-melanurus]
+        note: "Named captive spawning report; parentage and conspecific mate availability are unverified."
+      - source:
+          kind: "literature"
+          title: "Beerlink, R. Vieja bifasciata. Nederlandse Vereniging van Cichlidenliefhebbers article reproduced by AquaInfo"
+          url: "https://aquainfo.nl/en/article/vieja-bifasciata/"
+          accessed: "2026-10-13"
+        value: [vieja-bifasciata-melanurus]
+        note: "Specialist pairing warning and mixed-trait wild-fish reports; genetic parentage is unverified."
+      - source:
+          kind: "website"
+          title: "Binns Hybrid Encyclopedia: Bifasciata cross examples"
+          url: "https://www.binnspedia.com/vieja/bifasciata"
+          accessed: "2026-10-13"
+        value: [vieja-bifasciata-melanurus]
+        note: "Labels captive offspring; pedigrees and conspecific mate availability are unverified."
+
     verification:
       method: "conservative"
       votes:

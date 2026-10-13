@@ -1791,6 +1791,7 @@ features:
     value:
     - "rocio-octofasciata-vieja-maculicauda"
     - "vieja"
+    - "vieja-bifasciata-maculicauda"
     - "vieja-maculicauda-melanurus"
     confidence: "low"
     rationale: "The tally uses the conservative union of group ids supported by at least two votes, with verification\
@@ -1806,7 +1807,10 @@ features:
       \ Binns labels a Jack Dempsey and blackbelt cross without independently checked parentage. All three groups\
       \ have presumed basis because no named cross demonstrates free access to same-species mates. Prior curated\
       \ membership and nomenclature sources provide context, not independent crossing confirmation; crossings are\
-      \ not inferred transitively."
+      \ not inferred transitively.
+      The curated data/species/hybrid-groups.yaml file defines vieja-bifasciata-maculicauda with
+      basis presumed from labelled captive-offspring photographs and a specialist congener warning,
+      without independent pedigree checks or documented access to conspecific mates."
     sources:
     - kind: "catalog-of-fishes"
       title: "Eschmeyer's Catalog of Fishes: species of Rocio"
@@ -1856,6 +1860,14 @@ features:
     - kind: "forum"
       title: "MonsterFishKeepers: reported blackbelt and redhead spawning (2010)"
       url: "https://www.monsterfishkeepers.com/forums/threads/vieja-synspilum-x-vieja-maculicauda-just-spawned.307635/"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Beerlink, R. Vieja bifasciata. Nederlandse Vereniging van Cichlidenliefhebbers article reproduced by AquaInfo"
+      url: "https://aquainfo.nl/en/article/vieja-bifasciata/"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "Binns Hybrid Encyclopedia: Bifasciata cross examples"
+      url: "https://www.binnspedia.com/vieja/bifasciata"
       accessed: "2026-10-13"
     evidence:
     - source:
@@ -1919,6 +1931,21 @@ features:
       - "vieja-maculicauda-amphilophus-citrinellus"
       - "vieja-maculicauda-flowerhorn"
       note: "Unverified gallery labels; the three single-vote outgroup ids were not selected by the tally."
+    - source:
+        kind: "literature"
+        title: "Beerlink, R. Vieja bifasciata. Nederlandse Vereniging van Cichlidenliefhebbers article reproduced by AquaInfo"
+        url: "https://aquainfo.nl/en/article/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      value: [vieja-bifasciata-maculicauda]
+      note: "General congener crossing warning, without verified parentage or free mate choice."
+    - source:
+        kind: "website"
+        title: "Binns Hybrid Encyclopedia: Bifasciata cross examples"
+        url: "https://www.binnspedia.com/vieja/bifasciata"
+        accessed: "2026-10-13"
+      value: [vieja-bifasciata-maculicauda]
+      note: "Labels captive offspring; pedigrees and conspecific mate availability are unverified."
+
     verification:
       method: "conservative"
       votes:

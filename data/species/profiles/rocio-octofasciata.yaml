@@ -910,7 +910,7 @@ features:
         note: with robust large tankmates in spacious tanks
 
   hybridGroups:
-    value: [nandopsis-tetracanthus-rocio-octofasciata, vieja-melanurus-rocio-octofasciata]
+    value: [nandopsis-tetracanthus-rocio-octofasciata, rocio-octofasciata-vieja-maculicauda, vieja-melanurus-rocio-octofasciata]
     confidence: medium
     verification:
       method: unanimous
@@ -925,6 +925,9 @@ features:
       labelled hobby photographs and an independent aquarium account of adult Cuban cichlid
       and Jack Dempsey offspring, without verified parentage or documented access to
       conspecific mates.
+      The curated data/species/hybrid-groups.yaml file defines rocio-octofasciata-vieja-maculicauda
+      with basis presumed from captive-offspring photograph labels in two galleries of one hobby
+      compilation, without verified parentage or evidence of access to conspecific mates.
     sources:
       - *cof
       - *sf
@@ -947,6 +950,14 @@ features:
         title: "Fishopolis: Cuban x Jack Dempsey All Grown Up (2011)"
         url: https://fishopolis.wordpress.com/tag/cuban-jack-dempsey-nandopsis-tetracanthus-rocio-octofasciatus-hybrid-cichlid/
         accessed: 2026-10-13
+      - kind: "website"
+        title: "Binns Hybrid Encyclopedia: Black Belt (Maculicauda) cross examples"
+        url: "https://www.binnspedia.com/vieja/black-belt-maculicauda"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Binns Hybrid Encyclopedia: Jack Dempsey crossing labels"
+        url: "https://www.binnspedia.com/jack-dempsey"
+        accessed: "2026-10-13"
     evidence:
       - source: *cof
         value: null
@@ -981,6 +992,20 @@ features:
       - source: *cubanJackDempsey
         value: [nandopsis-tetracanthus-rocio-octofasciata]
         note: Independent aquarium account of adult offspring; parentage and access to conspecific mates are unverified.
+      - source:
+          kind: "website"
+          title: "Binns Hybrid Encyclopedia: Black Belt (Maculicauda) cross examples"
+          url: "https://www.binnspedia.com/vieja/black-belt-maculicauda"
+          accessed: "2026-10-13"
+        value: [rocio-octofasciata-vieja-maculicauda]
+        note: "Labels captive offspring; pedigrees and conspecific mate availability are unverified."
+      - source:
+          kind: "website"
+          title: "Binns Hybrid Encyclopedia: Jack Dempsey crossing labels"
+          url: "https://www.binnspedia.com/jack-dempsey"
+          accessed: "2026-10-13"
+        value: [rocio-octofasciata-vieja-maculicauda]
+        note: "Labels captive offspring; pedigrees and conspecific mate availability are unverified."
 
   coloration:
     value: { baseColors: [ brown, black, blue ], pattern: mixed }

@@ -1829,6 +1829,7 @@ features:
         total: 4
   hybridGroups:
     value:
+      - "vieja"
       - "vieja-bifasciata-breidohri"
       - "vieja-bifasciata-fenestrata"
       - "vieja-bifasciata-hartwegi"
@@ -1861,7 +1862,11 @@ features:
       table also names this species in the broad group vieja, which the supplied tally does not decide. Exact
       tally values are preserved, that unrelated existing group is left unchanged, and the validator reports
       the missing reciprocal membership as a warning. The supplementary Cichlidamerique page did not expose
-      readable crossing evidence in this fetch, so its inherited crossing claim is not cited."
+      readable crossing evidence in this fetch, so its inherited crossing claim is not cited.
+      The curated data/species/hybrid-groups.yaml file defines vieja with basis presumed from
+      specialist and husbandry-database congener crossing warnings, with catalog taxonomy and a
+      systematic revision supporting the related lineage rather than verified crosses between every
+      pair."
     sources:
       - kind: "literature"
         title: "Beerlink. Vieja bifasciata. Nederlandse Cichliden Vereniging article reprinted by AquaInfo"
@@ -1900,6 +1905,18 @@ features:
       - kind: "archive"
         title: "cichlids.com forum thread 2272"
         url: "https://www.cichlids.com/disc/read.php?1,2272"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Beerlink, R. Vieja maculicauda. Nederlandse Cichliden Vereniging article published by AquaInfo"
+        url: "https://aquainfo.nl/en/article/vieja-maculicauda/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "McMahan, Matamoros, Piller and Chakrabarty (2015). Taxonomy and systematics of the herichthyins, with the description of eight new Middle American Genera"
+        url: "https://doi.org/10.11646/zootaxa.3999.2.3"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aquarist Atlas: Vieja maculicauda species and husbandry record"
+        url: "https://www.cichlidatlas.com/species/vieja-maculicauda/"
         accessed: "2026-10-13"
     evidence:
       - source:
@@ -1980,6 +1997,35 @@ features:
           - "vieja-bifasciata-hartwegi"
         note: "Relationship-based presumed assignments inferred from very small genetic differences. The paper does
           not report crossing."
+      - source:
+          kind: "catalog-of-fishes"
+          title: "Eschmeyer's Catalog of Fishes: species of Vieja, checked 13 October 2026"
+          url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Vieja"
+          accessed: "2026-10-13"
+        value: [vieja]
+        note: "Establishes valid names and synonym mapping, not crossing evidence."
+      - source:
+          kind: "literature"
+          title: "Beerlink, R. Vieja maculicauda. Nederlandse Cichliden Vereniging article published by AquaInfo"
+          url: "https://aquainfo.nl/en/article/vieja-maculicauda/"
+          accessed: "2026-10-13"
+        value: [vieja]
+        note: "General congener crossing warning, without verified parentage or free mate choice."
+      - source:
+          kind: "literature"
+          title: "McMahan, Matamoros, Piller and Chakrabarty (2015). Taxonomy and systematics of the herichthyins, with the description of eight new Middle American Genera"
+          url: "https://doi.org/10.11646/zootaxa.3999.2.3"
+          accessed: "2026-10-13"
+        value: [vieja]
+        note: "Establishes the related Vieja lineage without testing crosses."
+      - source:
+          kind: "database"
+          title: "Aquarist Atlas: Vieja maculicauda species and husbandry record"
+          url: "https://www.cichlidatlas.com/species/vieja-maculicauda/"
+          accessed: "2026-10-13"
+        value: [vieja]
+        note: "General congener crossing caution, without verified crosses for every pair."
+
     verification:
       method: "conservative"
       votes:
