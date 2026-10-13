@@ -10,16 +10,21 @@ contains a setting that only the local stack may have:
   - registrationAllowed is present (registration is opened at runtime after the account import);
   - users, credentials or federated identities are present;
   - a client allows the password grant or the implicit flow, or a public client lacks PKCE S256;
+  - a client carries a secret (the operator sets client secrets in Keycloak);
+  - the confidential client of the web backend is missing, is public, authenticates with anything
+    but a client secret, lacks PKCE S256 or the standard flow, or has a service account or the
+    device grant;
   - a redirect URI, post logout redirect URI, web origin, root, base or admin URL of a client, or
     the frontend URL of the realm is a wildcard, a local address or not an exact https value;
   - e-mail verification or brute force protection is off, or duplicate e-mails are allowed;
   - a local address, a test domain or a development credential name appears anywhere;
-  - the two deployed files differ in more than the display name and the redirect URIs and web
-    origins of the app client.
+  - the two deployed files differ in more than the display name, the redirect URIs and web
+    origins of the app client and the web backend client, and the post logout redirect URIs of
+    the web backend client.
 
 It also fails when the offline sessions of a deployed realm expire: a maximum lifespan is
-enabled, the idle timeout is shorter than ten years, or the app client cannot request the
-offline_access scope. And it asserts that the local realm file announces itself as local
+enabled, the idle timeout is shorter than ten years, or the app client or the web backend client
+cannot request the offline_access scope. And it asserts that the local realm file announces itself as local
 development only.
 Python standard library only. `--self-test` exercises every rule against fixtures so the guard
 cannot silently rot.
@@ -40,6 +45,7 @@ DEPLOYED_REALMS = {
 }
 
 APP_CLIENT = "cichlids-app"
+BFF_CLIENT = "cichlids-web-bff"
 LOCAL_ONLY_MARKER = "local development only"
 FORBIDDEN_TEXT = (
     (re.compile(r"localhost", re.I), "localhost"),
@@ -48,6 +54,7 @@ FORBIDDEN_TEXT = (
     (re.compile(r"dev-password", re.I), "dev-password"),
     (re.compile(r"dev-user", re.I), "dev-user"),
     (re.compile(r"dev-mod", re.I), "dev-mod"),
+    (re.compile(r"dev-secret", re.I), "dev-secret"),
     (re.compile(r"exp://", re.I), "exp://"),
     (re.compile(re.escape(LOCAL_ONLY_MARKER), re.I), LOCAL_ONLY_MARKER),
 )
@@ -140,14 +147,43 @@ def check_deployed_realm(text, label):
         for origin in client.get("webOrigins") or []:
             if not HTTPS_ORIGIN.match(origin):
                 failures.append(f"{label}: client {name} web origin {origin!r} must be an exact https://host value")
-        if name == APP_CLIENT:
+        if "secret" in client:
+            failures.append(f"{label}: client {name} must not carry a secret; the operator sets client "
+                            "secrets in Keycloak from the secret store")
+        if name in (APP_CLIENT, BFF_CLIENT):
             scopes = (client.get("optionalClientScopes") or []) + (client.get("defaultClientScopes") or [])
             if OFFLINE_SCOPE not in scopes:
                 failures.append(f"{label}: client {name} must offer the {OFFLINE_SCOPE} client scope")
+        if name == BFF_CLIENT:
+            failures += check_bff_client(label, client)
+
+    if not any(client.get("clientId") == BFF_CLIENT for client in realm.get("clients") or []):
+        failures.append(f"{label}: the confidential client {BFF_CLIENT} of the web backend is missing")
 
     for pattern, description in FORBIDDEN_TEXT:
         if pattern.search(text):
             failures.append(f"{label}: contains {description}, a local development setting")
+    return failures
+
+
+def check_bff_client(label, client):
+    """Return the violations of the client through which the API signs in web members."""
+    failures = []
+    attributes = client.get("attributes") or {}
+    if client.get("publicClient") is not False:
+        failures.append(f"{label}: client {BFF_CLIENT} must be confidential (publicClient false)")
+    if client.get("bearerOnly") is True:
+        failures.append(f"{label}: client {BFF_CLIENT} must not be bearer-only")
+    if client.get("clientAuthenticatorType") != "client-secret":
+        failures.append(f"{label}: client {BFF_CLIENT} must authenticate with a client secret")
+    if attributes.get("pkce.code.challenge.method") != "S256":
+        failures.append(f"{label}: client {BFF_CLIENT} must require PKCE S256")
+    if client.get("standardFlowEnabled") is not True:
+        failures.append(f"{label}: client {BFF_CLIENT} must enable the standard flow")
+    if client.get("serviceAccountsEnabled") is not False:
+        failures.append(f"{label}: client {BFF_CLIENT} must set serviceAccountsEnabled to false")
+    if attributes.get("oauth2.device.authorization.grant.enabled") == "true":
+        failures.append(f"{label}: client {BFF_CLIENT} must not enable the device grant")
     return failures
 
 
@@ -156,17 +192,19 @@ def comparable(text):
     realm = json.loads(text)
     realm.pop("displayName", None)
     for client in realm.get("clients") or []:
-        if client.get("clientId") == APP_CLIENT:
+        if client.get("clientId") in (APP_CLIENT, BFF_CLIENT):
             client.pop("redirectUris", None)
             client.pop("webOrigins", None)
+        if client.get("clientId") == BFF_CLIENT:
+            (client.get("attributes") or {}).pop("post.logout.redirect.uris", None)
     return realm
 
 
 def check_parity(staging_text, prod_text):
     try:
         if comparable(staging_text) != comparable(prod_text):
-            return ["staging and prod differ in more than displayName and the redirectUris/webOrigins "
-                    f"of {APP_CLIENT}"]
+            return ["staging and prod differ in more than displayName, the redirectUris/webOrigins "
+                    f"of {APP_CLIENT} and {BFF_CLIENT} and the post logout redirect URIs of {BFF_CLIENT}"]
     except ValueError:
         return []
     return []
@@ -234,8 +272,21 @@ def good_realm():
              "webOrigins": ["https://staging.cichlids.com"],
              "attributes": {"pkce.code.challenge.method": "S256"},
              "optionalClientScopes": [OFFLINE_SCOPE]},
+            {"clientId": BFF_CLIENT, "publicClient": False, "bearerOnly": False,
+             "clientAuthenticatorType": "client-secret", "standardFlowEnabled": True,
+             "directAccessGrantsEnabled": False, "implicitFlowEnabled": False,
+             "serviceAccountsEnabled": False,
+             "redirectUris": ["https://staging.cichlids.com/api/auth/callback"],
+             "webOrigins": [],
+             "attributes": {"pkce.code.challenge.method": "S256",
+                            "post.logout.redirect.uris": "https://staging.cichlids.com/me"},
+             "optionalClientScopes": [OFFLINE_SCOPE]},
         ],
     }
+
+
+def bff_client(realm):
+    return next(c for c in realm["clients"] if c["clientId"] == BFF_CLIENT)
 
 
 def app_client(realm):
@@ -265,6 +316,13 @@ def self_test():
     drop_grant_flag = lambda r: app_client(r).pop("directAccessGrantsEnabled")
     drop_pkce = lambda r: app_client(r).__setitem__("attributes", {})
 
+    def set_bff(key, value):
+        return lambda r: bff_client(r).__setitem__(key, value)
+
+    set_bff_attribute = lambda key, value: (lambda r: bff_client(r).__setitem__(
+        "attributes", {**bff_client(r)["attributes"], key: value}))
+    drop_bff = lambda r: r.__setitem__("clients", [c for c in r["clients"] if c["clientId"] != BFF_CLIENT])
+
     set_attribute = lambda key, value: (lambda r: app_client(r).__setitem__(
         "attributes", {**app_client(r)["attributes"], key: value}))
     set_realm_attribute = lambda key, value: (lambda r: r.__setitem__("attributes", {key: value}))
@@ -277,7 +335,7 @@ def self_test():
                            set_realm_attribute("frontendUrl", "https://auth.staging.cichlids.com")(r))), 0),
         ("null redirect and origin lists", mutate(lambda r: (set_app("redirectUris", None)(r),
                                                               set_app("webOrigins", None)(r))), 0),
-        ("null client list", mutate(set_key("clients", None)), 0),
+        ("null client list, so no web backend client", mutate(set_key("clients", None)), 1),
         ("http root URL", mutate(set_app("rootUrl", "http://staging.cichlids.com")), 1),
         ("localhost base URL", mutate(set_app("baseUrl", "http://localhost:8081")), 1),
         ("wildcard admin URL", mutate(set_app("adminUrl", "https://*.cichlids.com")), 1),
@@ -321,6 +379,23 @@ def self_test():
         ("expo redirect", mutate(set_app("redirectUris", ["exp://192.168.0.2:8081"])), 1),
         ("local-only marker", mutate(set_key("displayName", "cichlids (local development only)")), 1),
         ("not JSON", None, 1),
+        ("web BFF client missing", mutate(drop_bff), 1),
+        ("web BFF client public", mutate(set_bff("publicClient", True)), 1),
+        ("web BFF client without the public flag", mutate(lambda r: bff_client(r).pop("publicClient")), 1),
+        ("web BFF client bearer only", mutate(set_bff("bearerOnly", True)), 1),
+        ("web BFF client signed JWT authentication", mutate(set_bff("clientAuthenticatorType", "client-jwt")), 1),
+        ("web BFF client with a committed secret", mutate(set_bff("secret", "s3cr3t-value")), 1),
+        ("app client with a committed secret", mutate(set_app("secret", "s3cr3t-value")), 1),
+        ("web BFF client without PKCE", mutate(set_bff("attributes", {})), 1),
+        ("web BFF client with plain PKCE", mutate(set_bff_attribute("pkce.code.challenge.method", "plain")), 1),
+        ("web BFF client without the standard flow", mutate(set_bff("standardFlowEnabled", False)), 1),
+        ("web BFF client with a service account", mutate(set_bff("serviceAccountsEnabled", True)), 1),
+        ("web BFF client with the device grant",
+         mutate(set_bff_attribute("oauth2.device.authorization.grant.enabled", "true")), 1),
+        ("web BFF client without the offline scope", mutate(set_bff("optionalClientScopes", [])), 1),
+        ("web BFF client with a localhost logout redirect",
+         mutate(set_bff_attribute("post.logout.redirect.uris", "http://localhost:8081/me")), 1),
+        ("development secret", mutate(set_key("description", "cichlids-web-bff-dev-secret")), 1),
     ]
     failed = 0
     for name, realm, expected in cases:
@@ -337,12 +412,17 @@ def self_test():
     app_client(prod)["webOrigins"] = []
     drifted = copy.deepcopy(prod)
     drifted["verifyEmail"] = False
+    bff_client(prod)["redirectUris"] = []
+    bff_client(prod)["attributes"].pop("post.logout.redirect.uris")
     drifted_client = copy.deepcopy(prod)
     app_client(drifted_client)["standardFlowEnabled"] = False
+    drifted_bff = copy.deepcopy(prod)
+    bff_client(drifted_bff)["serviceAccountsEnabled"] = True
     parity_cases = [
         ("parity of staging and prod", prod, False),
         ("parity with a drifted realm setting", drifted, True),
         ("parity with a drifted client setting", drifted_client, True),
+        ("parity with a drifted web BFF client setting", drifted_bff, True),
     ]
     for name, other, expect_failure in parity_cases:
         got = bool(check_parity(dumps(staging), dumps(other)))

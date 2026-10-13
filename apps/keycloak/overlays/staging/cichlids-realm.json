@@ -228,10 +228,39 @@
       "directAccessGrantsEnabled": false,
       "implicitFlowEnabled": false,
       "serviceAccountsEnabled": false,
-      "redirectUris": ["cichlids://auth", "https://staging.cichlids.com/api/auth/callback"],
-      "webOrigins": ["https://staging.cichlids.com"],
+      "redirectUris": ["cichlids://auth"],
+      "webOrigins": [],
       "attributes": {
         "pkce.code.challenge.method": "S256"
+      },
+      "defaultClientScopes": [
+        "basic",
+        "web-origins",
+        "profile",
+        "roles",
+        "email",
+        "cichlids-api-audience"
+      ],
+      "optionalClientScopes": ["offline_access"]
+    },
+    {
+      "clientId": "cichlids-web-bff",
+      "name": "Cichlids Web BFF",
+      "description": "Confidential client through which the API signs in members of the web app (backend for frontend).",
+      "protocol": "openid-connect",
+      "enabled": true,
+      "publicClient": false,
+      "bearerOnly": false,
+      "clientAuthenticatorType": "client-secret",
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": false,
+      "implicitFlowEnabled": false,
+      "serviceAccountsEnabled": false,
+      "redirectUris": ["https://staging.cichlids.com/api/auth/callback"],
+      "webOrigins": [],
+      "attributes": {
+        "pkce.code.challenge.method": "S256",
+        "post.logout.redirect.uris": "https://staging.cichlids.com/me"
       },
       "defaultClientScopes": [
         "basic",

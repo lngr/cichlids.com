@@ -10,7 +10,8 @@ namespace Cichlids.Etl.Tests;
 /// Imports the staging realm file into a fresh Keycloak and reads the result back through the
 /// admin API. The realm file is what an operator imports into a deployed Keycloak, so the
 /// running server has to show the settings that protect a deployment: transport security, closed
-/// registration, no password grant on the public client and no accounts.
+/// registration, no password grant on the public client, a confidential client of the web backend
+/// and no accounts.
 /// </summary>
 [Trait("Story", "task-2.27")]
 public sealed class DeployedRealmImportTests(DeployedRealmImportTests.StagingKeycloakFixture keycloak)
@@ -31,7 +32,7 @@ public sealed class DeployedRealmImportTests(DeployedRealmImportTests.StagingKey
     }
 
     [Fact]
-    public async Task Public_client_has_no_password_grant_and_only_the_staging_redirects()
+    public async Task Public_client_has_no_password_grant_and_only_the_app_redirect()
     {
         var clients = await keycloak.GetAsync($"admin/realms/{Realm}/clients?clientId=cichlids-app");
         var app = Assert.Single(clients.EnumerateArray().ToList());
@@ -39,10 +40,33 @@ public sealed class DeployedRealmImportTests(DeployedRealmImportTests.StagingKey
         Assert.True(app.GetProperty("publicClient").GetBoolean());
         Assert.False(app.GetProperty("directAccessGrantsEnabled").GetBoolean());
         Assert.False(app.GetProperty("implicitFlowEnabled").GetBoolean());
-        Assert.Equal(
-            ["cichlids://auth", "https://staging.cichlids.com/api/auth/callback"],
-            Strings(app.GetProperty("redirectUris")));
-        Assert.Equal(["https://staging.cichlids.com"], Strings(app.GetProperty("webOrigins")));
+        Assert.Equal(["cichlids://auth"], Strings(app.GetProperty("redirectUris")));
+        Assert.Empty(Strings(app.GetProperty("webOrigins")));
+    }
+
+    [Fact]
+    [Trait("Story", "task-3.41")]
+    public async Task Web_backend_client_is_confidential_with_PKCE_the_staging_callback_and_a_generated_secret()
+    {
+        var clients = await keycloak.GetAsync($"admin/realms/{Realm}/clients?clientId=cichlids-web-bff");
+        var bff = Assert.Single(clients.EnumerateArray().ToList());
+
+        Assert.False(bff.GetProperty("publicClient").GetBoolean());
+        Assert.False(bff.GetProperty("bearerOnly").GetBoolean());
+        Assert.Equal("client-secret", bff.GetProperty("clientAuthenticatorType").GetString());
+        Assert.True(bff.GetProperty("standardFlowEnabled").GetBoolean());
+        Assert.False(bff.GetProperty("directAccessGrantsEnabled").GetBoolean());
+        Assert.False(bff.GetProperty("implicitFlowEnabled").GetBoolean());
+        Assert.False(bff.GetProperty("serviceAccountsEnabled").GetBoolean());
+        Assert.Equal(["https://staging.cichlids.com/api/auth/callback"], Strings(bff.GetProperty("redirectUris")));
+        var attributes = bff.GetProperty("attributes");
+        Assert.Equal("S256", attributes.GetProperty("pkce.code.challenge.method").GetString());
+        Assert.Equal("https://staging.cichlids.com/me", attributes.GetProperty("post.logout.redirect.uris").GetString());
+        Assert.Contains("offline_access", Strings(bff.GetProperty("optionalClientScopes")));
+
+        // The file carries no secret, so Keycloak generates one on import.
+        var secret = await keycloak.GetAsync($"admin/realms/{Realm}/clients/{bff.GetProperty("id").GetString()}/client-secret");
+        Assert.True(secret.GetProperty("value").GetString()!.Length >= 32);
     }
 
     [Fact]

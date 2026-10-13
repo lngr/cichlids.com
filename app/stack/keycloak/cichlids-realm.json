@@ -239,6 +239,36 @@
         "cichlids-api-audience"
       ],
       "optionalClientScopes": ["offline_access"]
+    },
+    {
+      "clientId": "cichlids-web-bff",
+      "name": "Cichlids Web BFF",
+      "description": "Confidential client through which the API signs in members of the web app (backend for frontend). The secret is for local development only.",
+      "protocol": "openid-connect",
+      "enabled": true,
+      "publicClient": false,
+      "bearerOnly": false,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "cichlids-web-bff-dev-secret",
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": false,
+      "implicitFlowEnabled": false,
+      "serviceAccountsEnabled": false,
+      "redirectUris": ["http://localhost:5045/api/auth/callback", "http://localhost:5046/api/auth/callback"],
+      "webOrigins": [],
+      "attributes": {
+        "pkce.code.challenge.method": "S256",
+        "post.logout.redirect.uris": "http://localhost:8081/me##http://localhost:8082/me"
+      },
+      "defaultClientScopes": [
+        "basic",
+        "web-origins",
+        "profile",
+        "roles",
+        "email",
+        "cichlids-api-audience"
+      ],
+      "optionalClientScopes": ["offline_access"]
     }
   ],
   "users": [
