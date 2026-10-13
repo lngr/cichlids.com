@@ -103,9 +103,19 @@ def generate(appset, tree, prs, temp):
 
 def check_application(app):
     spec = app['spec']
-    require(spec['project'] == 'cichlids', 'Generated apps use constrained project')
     require(spec['source']['repoURL'] == REPO, 'Application repository')
     require(spec['destination']['server'] == 'https://kubernetes.default.svc', 'Local cluster only')
+    if spec['project'] == 'cichlids-addons':
+        require(spec['source']['path'] in {'apps/ingress-nginx/overlays/cluster',
+                                          'apps/cert-manager/overlays/cluster'}, 'Add-on source restriction')
+        require(spec['destination']['namespace'] in {'ingress-nginx', 'cert-manager'},
+                'Add-on namespace restriction')
+        require(spec['syncPolicy']['automated']['prune'] is False, 'Add-ons require deliberate pruning')
+        require('Prune=false' in spec['syncPolicy']['syncOptions'], 'Add-ons have Prune=false')
+        require('ServerSideApply=true' in spec['syncPolicy']['syncOptions'], 'CRDs use server-side apply')
+        require(FINALIZER not in app['metadata'].get('finalizers', []), 'Add-on deletion preserves resources')
+        return
+    require(spec['project'] == 'cichlids', 'Generated apps use constrained project')
     if app['metadata'].get('labels', {}).get('cichlids.com/stateful') == 'true':
         require('Prune=false' in spec['syncPolicy']['syncOptions'], 'Stateful app has Prune=false')
         require(spec['syncPolicy']['automated']['prune'] is False, 'Stateful automated pruning disabled')
@@ -145,7 +155,8 @@ def main():
         topology = load(run('kustomize', 'build', 'clusters/cichlids/apps'))
         sets = {d['metadata']['name']: d for d in topology if d['kind'] == 'ApplicationSet'}
         require(set(sets) == EXPECTED, f'Expected ApplicationSets {sorted(EXPECTED)}, found {sorted(sets)}')
-        project = next(d for d in topology if d['kind'] == 'AppProject')
+        project = next(d for d in topology if d['kind'] == 'AppProject' and
+                       d['metadata']['name'] == 'cichlids')
         require(project['spec']['sourceRepos'] == [REPO], 'Project source restriction')
         require({d['namespace'] for d in project['spec']['destinations']} ==
                 {'cichlids-staging', 'cichlids-prod', 'pr-*'}, 'Project namespace restriction')
@@ -156,7 +167,12 @@ def main():
                {'number': 19, 'sha': 'c' * 40, 'state': 'open', 'labels': ['preview']}]
         for name, appset in sets.items():
             current = generate(appset, ROOT, [], chart)
-            require(not current, f'{name}: repository generates zero applications without deployable services/PRs')
+            require(len(current) == (1 if name in {'staging', 'prod'} else 0),
+                    f'{name}: repository discovers one persistent placeholder and no unrequested previews')
+            for app in current:
+                check_application(app)
+                require(app['metadata']['name'] == f'placeholder-{name}', 'Only placeholder joins environment discovery')
+                rendered.append(app)
             fixture = generate(appset, ROOT / 'tools/fixtures/cluster-manifests', prs, chart)
             require(len(fixture) == (2 if name in {'staging', 'prod'} else 1), f'{name}: fixture count')
             for app in fixture:
@@ -225,4 +241,6 @@ if __name__ == '__main__':
     try:
         main()
     except (AssertionError, subprocess.CalledProcessError) as error:
+        if isinstance(error, subprocess.CalledProcessError) and error.output:
+            print(error.output, end='')
         raise SystemExit(f'FAIL: {error}')

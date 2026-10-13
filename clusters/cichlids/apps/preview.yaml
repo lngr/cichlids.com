@@ -41,6 +41,17 @@ spec:
         path: '{{ .path.path }}'
         kustomize:
           namespace: pr-{{ .number }}
+          patches:
+          - target:
+              kind: Ingress
+              name: placeholder
+            patch: |
+              - op: replace
+                path: /spec/rules/0/host
+                value: pr-{{ .number }}.dev.cichlids.com
+              - op: replace
+                path: /spec/tls/0/hosts/0
+                value: pr-{{ .number }}.dev.cichlids.com
       destination:
         server: https://kubernetes.default.svc
         namespace: pr-{{ .number }}
