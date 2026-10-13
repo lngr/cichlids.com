@@ -12,7 +12,8 @@ import { LoadingView } from "../../src/components/StatusView";
 import { publishSignal } from "../../src/lib/publishSignal";
 import { minTouchTarget, useTheme } from "../../src/theme";
 import { PhotoPickButton } from "../../src/upload/PhotoPickButton";
-import { draftParam, draftPreviewUri, findDraft, formForDraft } from "../../src/upload/drafts";
+import { draftParam, draftPreviewUri, findDraft } from "../../src/upload/drafts";
+import { formForResumedDraft, savedUploadInput, toSavedPhoto, type SavedUploadInput } from "../../src/upload/savedUploadInput";
 import {
   TITLE_MAX_LENGTH,
   UPLOAD_TOPICS,
@@ -24,12 +25,12 @@ import {
 } from "../../src/upload/uploadForm";
 
 export default function UploadScreen() {
-  const { status } = useAuth();
+  const { status, accountId } = useAuth();
   const params = useLocalSearchParams<{ draft?: string | string[] }>();
 
   if (status === "loading") return <LoadingView />;
   if (status === "anonymous") return <Redirect href="/me" />;
-  return <UploadFlow draftId={draftParam(params.draft)} />;
+  return <UploadFlow draftId={draftParam(params.draft)} accountId={accountId} />;
 }
 
 type Phase = "loading" | "picking" | "uploading" | "editing" | "publishing" | "discarding";
@@ -40,9 +41,12 @@ type FailedAction = "load" | "missing" | "pick" | "upload" | "publish" | "discar
  * topic, or discard the draft. With a draft id the screen opens that unpublished draft from the
  * caller's drafts, ready to publish. A failed step shows its error with a retry of that step. The
  * draft stays on the server until it is published or discarded, also when the screen closes, so
- * the Me tab can list it.
+ * the Me tab can list it. The typed input of a draft, and a picked photo whose upload has not
+ * finished, stay on the device for the member until the draft is published or discarded, also
+ * across a sign-out: an opened draft shows its typed input again, and the pending photo is
+ * uploaded when the screen opens.
  */
-function UploadFlow({ draftId }: { draftId: string | null }) {
+function UploadFlow({ draftId, accountId }: { draftId: string | null; accountId: string | null }) {
   const theme = useTheme();
   const router = useRouter();
   const { t } = useTranslation();
@@ -53,6 +57,9 @@ function UploadFlow({ draftId }: { draftId: string | null }) {
   const [form, setForm] = useState<UploadFormState>(initialUploadForm);
   const [error, setError] = useState<{ message: string; action: FailedAction } | null>(null);
   const [loadAttempt, setLoadAttempt] = useState(0);
+  // The input kept on the device is read once when the screen opens; until then nothing is saved.
+  const [restored, setRestored] = useState(false);
+  const savedRef = useRef<SavedUploadInput | null>(null);
 
   const mountedRef = useRef(true);
   // The draft until it is published or discarded, readable synchronously by the press handlers.
@@ -69,7 +76,7 @@ function UploadFlow({ draftId }: { draftId: string | null }) {
 
   useEffect(() => {
     // A loaded draft keeps its form; the effect loads only while the draft is missing.
-    if (!draftId || draftRef.current) return;
+    if (!restored || !draftId || draftRef.current) return;
     let cancelled = false;
     setError(null);
     setPhase("loading");
@@ -84,7 +91,7 @@ function UploadFlow({ draftId }: { draftId: string | null }) {
         }
         draftRef.current = found;
         setDraft(found);
-        setForm(formForDraft(found));
+        setForm(formForResumedDraft(found, savedRef.current));
         setPhase("editing");
       })
       .catch((err) => {
@@ -94,7 +101,7 @@ function UploadFlow({ draftId }: { draftId: string | null }) {
     return () => {
       cancelled = true;
     };
-  }, [draftId, loadAttempt, t]);
+  }, [restored, draftId, loadAttempt, t]);
 
   const upload = async (picked: UploadFile) => {
     setFile(picked);
@@ -113,6 +120,33 @@ function UploadFlow({ draftId }: { draftId: string | null }) {
     }
   };
 
+  useEffect(() => {
+    let cancelled = false;
+    void savedUploadInput.load(accountId).then((saved) => {
+      if (cancelled) return;
+      savedRef.current = saved;
+      if (!draftId && saved?.photo) {
+        setForm(saved.photo.form);
+        void upload(saved.photo.file);
+      }
+      setRestored(true);
+    });
+    return () => {
+      cancelled = true;
+    };
+    // Runs once when the screen opens; later input comes from the screen itself.
+  }, []);
+
+  useEffect(() => {
+    if (!restored || !accountId) return;
+    if (draft) {
+      void savedUploadInput.rememberDraft(accountId, String(draft.id), form);
+      return;
+    }
+    const photo = toSavedPhoto(file);
+    if (photo) void savedUploadInput.rememberPhoto(accountId, photo, form);
+  }, [restored, accountId, draft, file, form]);
+
   const publish = async () => {
     const current = draftRef.current;
     if (!current || actionRef.current || !canPublish(form)) return;
@@ -122,6 +156,7 @@ function UploadFlow({ draftId }: { draftId: string | null }) {
     try {
       const picture = await apiClient.posts.publish(Number(current.id), toPublishRequest(form));
       draftRef.current = null;
+      if (accountId) void savedUploadInput.forgetDraft(accountId, String(current.id));
       publishSignal.notifyPublished();
       // dismissTo closes the upload screen and opens the picture inside the existing tabs; a
       // replace would put a second tab navigator on the root stack.
@@ -144,6 +179,7 @@ function UploadFlow({ draftId }: { draftId: string | null }) {
     try {
       await apiClient.posts.discard(Number(current.id));
       draftRef.current = null;
+      if (accountId) void savedUploadInput.forgetDraft(accountId, String(current.id));
       if (!mountedRef.current) return;
       if (router.canGoBack()) router.back();
       else router.replace("/gallery");

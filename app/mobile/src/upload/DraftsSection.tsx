@@ -6,21 +6,24 @@ import { useFocusEffect, useRouter } from "expo-router";
 import { useTranslation } from "react-i18next";
 import type { Draft } from "@cichlids/client-core";
 import { apiClient } from "../api/client";
+import { useAuth } from "../auth/AuthProvider";
 import { formatDate } from "../lib/format";
 import { minTouchTarget, useTheme } from "../theme";
 import { draftThumbnailUri, draftTitle } from "./drafts";
+import { savedUploadInput } from "./savedUploadInput";
 
 const THUMBNAIL_SIZE = 64;
 
 /**
  * The signed-in user's unpublished drafts, reloaded whenever the screen gains focus. Opening a
  * draft resumes it on the upload screen; deleting one discards it on the server, after a
- * confirmation on native platforms.
+ * confirmation on native platforms, together with the input the device kept for it.
  */
 export function DraftsSection() {
   const theme = useTheme();
   const router = useRouter();
   const { t, i18n } = useTranslation();
+  const { accountId } = useAuth();
 
   const [drafts, setDrafts] = useState<Draft[] | null>(null);
   const [loadFailed, setLoadFailed] = useState(false);
@@ -61,6 +64,7 @@ export function DraftsSection() {
     setDeleting((current) => new Set(current).add(id));
     try {
       await apiClient.posts.discard(Number(draft.id));
+      if (accountId) void savedUploadInput.forgetDraft(accountId, id);
       setDrafts((current) => current?.filter((candidate) => String(candidate.id) !== id) ?? current);
     } catch {
       setDeleteFailed(true);
