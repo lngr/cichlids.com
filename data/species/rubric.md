@@ -102,8 +102,8 @@ The list of identifiers of the curated groups of species that cross in tanks, su
 every member may cross with every other member. A documented cross of two species without a wider
 group is a group of two members. Crossability is not transitive (A crosses with B and B with C, but
 A not with C), so a species belongs to every group whose crosses concern it. The groups and their
-members are listed in `hybrid-groups.yaml`. Two species that share at least one group are in hybrid
-conflict in one tank.
+members are listed in `hybrid-groups.yaml`. Two members that share at least one group are in hybrid
+conflict in one tank, and the stocking planner tells the user that the fish may cross.
 
 Every group has a `basis` that states the strength of its evidence and sets the level of the conflict
 in the stocking planner:
@@ -116,6 +116,11 @@ in the stocking planner:
 A forced laboratory cross, such as females kept without a male of their own species, does not make a
 group `documented`. A report of a cross between two specific species where free choice of partners is
 not shown gives a group of those two species with the basis `presumed`.
+
+A member is a valid species name or the trade name of a domestic hybrid line, such as Flowerhorn or
+the blood parrot cichlid. Keepers put such lines into community tanks as well, and the risk of an
+unwanted cross is the same. A domestic line is a member when a cross between it and a species is
+reported; the group then names the line itself and leaves the species in its unknown ancestry out.
 
 Every group has a `userNote`: one or two plain-English sentences for hobbyists, shown next to the
 caution or warning. The note explains the background of the group and gives no instructions. It

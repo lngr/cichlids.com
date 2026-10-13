@@ -223,7 +223,8 @@ Zu jeder Frage ist eine vorläufige Umsetzung in Gebrauch; sie wird bestätigt o
 - [ ] Kreuzungsgruppen im Besatz-Planer: Ein Paar mit gemeinsamer Gruppe der Beleglage
   `documented` ergibt eine Warnung, nur `presumed` ein Achtung (`data/species/hybrid-groups.yaml`,
   Feld `basis`; `hybridGroups` je Art ist eine Liste). `MVP-VISION.md` führt die Kreuzungsgruppe
-  als harten Konflikt; anpassen
+  als harten Konflikt; anpassen. Gruppenmitglieder können auch Zuchtlinien wie der Flowerhorn sein;
+  der Planer braucht dafür eigene Einträge für Zuchtlinien, die sich in einen Besatz aufnehmen lassen
 - [ ] Vision-Modell: Anbieter, Kontingent je Mitglied, Gesamtbudget
 - [ ] Gemini-Vergleich im Scanner-Spike ausführen; braucht einen Gemini-API-Schlüssel
   (`tools/scanner-spike/RESULTS.md`)
