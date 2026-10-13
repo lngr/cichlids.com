@@ -96,15 +96,15 @@ System. Details in `PROJECT-STATUS.md`, Abschnitt 9.
 
 ## 3. Artenprofile
 
-Stand: 114 Profile in `data/species/profiles/`, alle validiert. Verfahren in
+Stand: 116 Profile in `data/species/profiles/`, alle validiert. Verfahren in
 `tools/species-data/README.md`. Solange die Claude-Credits knapp sind, ist je Art nur Prüfer A ein
 Claude-Agent (Sonnet); Generator, Prüfer B und C, Tie-Breaker und Schiedsrichter laufen über Codex
 (gpt-6.1-sol). Die Codex-Stimmen fallen dabei öfter zusammen, etwa beim größten Mindestbecken.
 
 ### 3.1 Weitere Profile
 
-- [ ] Nächste Arten nach Fotoanzahl: 703 Cichlasoma pearsei, 520 Tramitichromis intermedius,
-  633 Apistogramma cacatuoides; danach weiter nach Fotoanzahl. 748 Heros appendiculatum wartet
+- [ ] Nächste Arten nach Fotoanzahl: 633 Apistogramma cacatuoides; danach weiter nach
+  Fotoanzahl. 748 Heros appendiculatum wartet
   auf die Heros-Entscheidung. Legacy-Einträge unter älteren Namen einer Art mit
   Profil werden dem Profil zugeordnet (Abgleich über Namen und Synonyme)
 - [ ] Legacy 589 „Tilapia aurea" (0 Fotos, Kategorie African) ist vermutlich Oreochromis aureus;
