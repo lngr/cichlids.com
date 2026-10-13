@@ -1,14 +1,19 @@
 ---
 id: TASK-3.40
 title: Harden the mobile app configuration and error states
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-10-12 04:48'
-updated_date: '2026-10-13 08:22'
+updated_date: '2026-10-13 08:31'
 labels: []
 dependencies: []
 references:
-  - REVIEW-MVP.md
+  - app/mobile/e2e/playwright/config-errors.write.mjs
+  - app/mobile/src/config/appConfig.test.ts
+  - app/mobile/src/auth/discovery.test.ts
+  - app/mobile/src/hooks/pagedListState.test.ts
+  - app/mobile/src/lib/apiErrors.test.ts
+  - app/client-core/src/client.test.ts
 parent_task_id: TASK-3
 priority: medium
 ordinal: 64000
@@ -73,4 +78,33 @@ Builds outside development fail when the API or Keycloak address is missing; app
 
 <!-- SECTION:NOTES:BEGIN -->
 The API problem details carry a stable `code` extension field (for example `non_member_profile`) that the generated client type does not declare yet.
+
+### Implemented
+- R25: `app.config.ts` with `src/config/appConfig.ts`: the variant comes from `APP_VARIANT`, then
+  `EAS_BUILD_PROFILE`, else development; only development falls back to localhost, every other
+  variant needs `EXPO_PUBLIC_API_URL` and `EXPO_PUBLIC_KEYCLOAK_URL` and fails naming the missing
+  ones. `app.json` has no `extra`; `client.ts` and `auth/config.ts` hold no localhost literals.
+  `eas.json` defines development, staging and production with the hosts from
+  `apps/keycloak/README.md` and pins Node 24 (the config imports `.ts` through type stripping).
+- R26: the login button is always usable; a tap without discovery document loads it, logs a
+  failure and shows a message with "Try again"; on the web the first successful tap only loads
+  discovery (a popup after an async fetch is blocked), the next tap opens the login.
+- R27: a first-page load clears the load-more state (`pagedListState.ts`, unit tested).
+- R41: comment load errors show an error with retry; the retry has a 48dp target; `Button` always
+  sets `accessibilityLabel`; `ApiError` in client-core exposes the problem details `code` and the
+  app translates known codes (`self_rating`, `non_member_profile`) in English and German, other
+  errors show a translated fallback. Upload keeps the API message for a 400, as the upload spec
+  asserts.
+
+### Verified by the agents
+- Mobile 108 tests and typecheck; client-core 13 tests and typecheck.
+- `APP_VARIANT=staging npx expo config --type public` without the addresses fails and names both
+  variables; with one set it names only the other.
+- `pnpm run e2e:write`: 8 of 8 including `config-errors.write.mjs` (sort change during load-more,
+  login with unreachable Keycloak and retry); red with the load-more fix reverted.
+
+### Operator checks
+- `APP_VARIANT=staging npx expo config --type public` in `app/mobile` without the variables fails
+  and names them (AC #1).
+- `pnpm run e2e:write` in `app/mobile` passes `config-errors.write.mjs` (AC #2 and #3).
 <!-- SECTION:NOTES:END -->
