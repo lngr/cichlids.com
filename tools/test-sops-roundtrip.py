@@ -34,6 +34,8 @@ def main():
         env.update(SOPS_AGE_KEY_FILE=str(KEY), XDG_CONFIG_HOME=directory, GNUPGHOME=directory)
         plaintext = run('sops', '--decrypt', str(FIXTURE), env=env)
         expected = validate(plaintext)
+        assert validate(run('kustomize', 'build', '--enable-alpha-plugins', '--enable-exec',
+                            str(FIXTURE.parent), env=env)) == expected
         plain = Path(directory) / 'plain.yaml'
         plain.write_text(plaintext)
         encrypted = run('sops', '--encrypt', '--filename-override', str(FIXTURE),
@@ -41,10 +43,14 @@ def main():
         cipher = Path(directory) / 'secret.sops.yaml'
         cipher.write_text(encrypted)
         assert validate(run('sops', '--decrypt', str(cipher), env=env)) == expected
+        prod = subprocess.run(['sops', '--encrypt', '--filename-override',
+                               'clusters/cichlids/production.sops.yaml', str(plain)],
+                              env=env, capture_output=True)
+        assert prod.returncode != 0, 'Test recipient matches a production path'
         if subprocess.run(['sops', '--decrypt', str(FIXTURE)], env={**env, 'SOPS_AGE_KEY_FILE':
                           str(Path(directory) / 'missing-key.txt')}, capture_output=True).returncode == 0:
             raise AssertionError('Decryption succeeds without the test key')
-    print('SOPS age round-trip OK (test-only fixture; missing key rejected)')
+    print('SOPS age round-trip and KSOPS render OK (test-only fixture; missing key rejected)')
 
 
 if __name__ == '__main__':
