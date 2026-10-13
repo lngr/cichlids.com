@@ -1,0 +1,3743 @@
+schemaVersion: 1
+id: "rubricatochromis-bimaculatus"
+legacyIds:
+  - 557
+status: "described"
+taxonomy:
+  validName: "Rubricatochromis bimaculatus"
+  genus: "Rubricatochromis"
+  species: "bimaculatus"
+  author: "(Gill, 1862)"
+  source:
+    kind: "catalog-of-fishes"
+    title: "Eschmeyer's Catalog of Fishes: species of Rubricatochromis, update of 21 September 2026"
+    url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Ru\
+      bricatochromis"
+    accessed: "2026-10-13"
+  synonyms:
+    - name: "Hemichromis bimaculatus"
+      note: "Original combination of the valid species."
+  legacyNames:
+    - "Hemichromis bimaculatus"
+  note: "The Catalog of Fishes lists Rubricatochromis bimaculatus (Gill, 1862) as valid and confines its current
+    distribution to inland Liberia. The genus was erected in 2022; the 2026 revision retained this combination
+    and separated Sierra Leone fish as R. fugax. Both the Hemichromis and Rubricatochromis Catalog lists were
+    consulted. R. fugax, R. cristatus, R. guttatus and R. stellifer are distinct species rather than current
+    synonyms of bimaculatus. Many trade fish and historical biological records bearing the legacy name concern
+    other red jewels. This profile represents the described Liberian species; the legacy entry is not
+    reclassified as a hybrid."
+names:
+  trade:
+    en:
+      - "Jewel cichlid"
+      - "Jewelfish"
+      - "Red jewel cichlid"
+      - "Two-spotted jewel cichlid"
+    de:
+      - "Roter Buntbarsch"
+      - "Juwelenbuntbarsch"
+    es:
+      - "Cíclido joya"
+      - "Pez joya"
+    pt-BR:
+      - "Ciclídeo joia"
+      - "Peixe joia"
+variants: []
+features:
+  origin:
+    value:
+      continent: "Africa"
+      region: "Forested inland waters of Liberia"
+      waterbody: null
+      localities:
+        - "Bong County: Joe Town, Yanokala and Sanoyah"
+        - "Sinoe County"
+    confidence: "high"
+    rationale: "All four full profiles agree on Liberia. The generator supplies named Bong County sites and
+      Geebo-Dugbe creeks; checker-a names only Bong County, while checker-b and checker-c include Sinoe
+      County. The 2026 revision directly lists preserved material from Joe Town, Yanokala and Sanoyah in Bong
+      County and multiple Sinoe County sites. These verified counties and named Bong sites are retained.
+      Geebo-Dugbe drainage labels are omitted because the revision treatment does not attach them explicitly
+      to the specimens. Older broader country lists are superseded by the revision and current Catalog."
+    sources:
+      - kind: "catalog-of-fishes"
+        title: "Eschmeyer's Catalog of Fishes: species of Rubricatochromis, update of 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Ru\
+          bricatochromis"
+        accessed: "2026-10-13"
+      - kind: "catalog-of-fishes"
+        title: "Eschmeyer's Catalog of Fishes: species of Hemichromis"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=He\
+          michromis"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Lamboj, A. and Koblmüller, S. (2026). Who Is Who in Rubricatochromis Lamboj & Koblmüller, 2022
+          (Cichliformes, Cichlidae): Taxonomic Revision with Description of Four New Species and Revalidation
+          of R. fugax. Fishes 11(9), 531."
+        url: "https://doi.org/10.3390/fishes11090531"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Rubricatochromis bimaculatus, species summary under the legacy URL"
+        url: "https://www.fishbase.se/summary/Hemichromis-bimaculatus.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Cichlid Room Companion: Rubricatochromis bimaculatus, public summary updated 4 October 2026"
+        url: "https://cichlidae.com/species.php?id=kTVJaPvvp1Fc--pR4ajbhg"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "catalog-of-fishes"
+          title: "Eschmeyer's Catalog of Fishes: species of Rubricatochromis, update of 21 September 2026"
+          url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Ru\
+            bricatochromis"
+          accessed: "2026-10-13"
+        value:
+          continent: "Africa"
+          region: "Inland waters of Liberia"
+      - source:
+          kind: "literature"
+          title: "Lamboj, A. and Koblmüller, S. (2026). Who Is Who in Rubricatochromis Lamboj & Koblmüller, 2022
+            (Cichliformes, Cichlidae): Taxonomic Revision with Description of Four New Species and
+            Revalidation of R. fugax. Fishes 11(9), 531."
+          url: "https://doi.org/10.3390/fishes11090531"
+          accessed: "2026-10-13"
+        value:
+          continent: "Africa"
+          region: "Liberia"
+          localities:
+            - "Bong County: Joe Town, Yanokala and Sanoyah"
+            - "Sinoe County"
+        note: "Examined museum specimens establish these localities; the species account suggests a forest
+          association."
+  temperatureC:
+    value:
+      min: 23
+      max: 28
+    confidence: "low"
+    rationale: "generator proposed {\"min\":22.5,\"max\":26.4}; checker-a proposed {\"min\":24,\"max\":27};
+      checker-b proposed {\"min\":25,\"max\":29}; checker-c proposed {\"min\":23,\"max\":28.3}; tiebreaker-1
+      proposed {\"min\":23,\"max\":28}; tiebreaker-2 proposed {\"min\":23,\"max\":28}. The tally uses
+      qualified-majority agreement, 4 of 6 votes, and the median bounds of that agreeing set to retain 23 to
+      28 C. Gasior reports 23 to 24 C in shaded Juarzon and Greenville streams; the LIBCOF database records 25
+      C at Wayla and 28 C at Karmoh. These are regional killifish localities without confirmed R. bimaculatus.
+      Wider regional readings include LIBCOF flowing waters at 25 to 29 C and a drying pool at 32.1 C; Tengbeh
+      et al. compile 23.00 to 28.23 C across mixed sampling settings. Neither warmer extremes nor the Ivorian
+      Banco and Cavally station means establish this species' endpoints. Cheke et al. also report cooler Bong
+      Hills streams at 22.5 to 24.5 C. Thus the decided range is a representative regional proxy, not the
+      complete measured habitat range. FishBase's 21 to 23 C is traced to aquarium literature and cannot
+      supply natural bounds. No occupied-locality seasonal series was found; low confidence is retained."
+    sources:
+      - kind: "literature"
+        title: "Fish diversity and structure in the Banco stream (Banco National Park, Ivory Coast)"
+        url: "https://doi.org/10.57890/5nb8q914"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Tengbeh et al. (2026). Heavy Metals and Polycyclic Aromatic Hydrocarbons Levels in Selected
+          Occupational and Environmental Settings in Liberia: A Systematic Review."
+        url: "https://doi.org/10.1177/11786302261429781"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Djiriéoulou et al. (2021). Evaluation of the Degradation Level of a Fluvial Basin in the Western Area
+          of Côte d'Ivoire: Case of the Cavally River."
+        url: "https://doi.org/10.11648/j.ajep.20211005.12"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Gasior, J. Aphyosemion (Roloffia) schmitti. American Killifish Association public library."
+        url: "https://aka.org/aka-public-library/library-species/aphyosemion-roloffia-schmitti/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Lamboj, A. and Koblmüller, S. (2026). Who Is Who in Rubricatochromis Lamboj & Koblmüller, 2022
+          (Cichliformes, Cichlidae): Taxonomic Revision with Description of Four New Species and Revalidation
+          of R. fugax. Fishes 11(9), 531."
+        url: "https://doi.org/10.3390/fishes11090531"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Cheke, R. A. et al. (2015). Potential effects of warmer worms and vectors on onchocerciasis
+          transmission in West Africa. Philosophical Transactions of the Royal Society B 370, 20130559,
+          section 2(f)."
+        url: "https://doi.org/10.1098/rstb.2013.0559"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Wright, S. P. (2010). Environmental and Social Impact Assessment: Rehabilitation of 30 kW Yandohun
+          Micro-Hydro Power Plant, Lofa County, Liberia. RREA and World Bank, Table 5 and section 5.3.4."
+        url: "https://documents1.worldbank.org/curated/en/209341468271564479/pdf/E25170REVISION101public10BOX353761B.\
+          pdf"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Earthtime (2009). Water quality analysis for the Monrovia master plan. Appendix 10: pp. 14, 21, 23-24,
+          44-48 and 99-104."
+        url: "https://openjicareport.jica.go.jp/pdf/11965860_12.pdf"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Rubricatochromis bimaculatus, species summary under the legacy URL"
+        url: "https://www.fishbase.se/summary/Hemichromis-bimaculatus.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "American Killifish Association: Liberia LIBCOF 2021 collection locality database"
+        url: "https://aka.org/wak/Code_Library/LIBCOF21.htm"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Cheke, R. A. et al. (2015). Potential effects of warmer worms and vectors on onchocerciasis
+            transmission in West Africa. Philosophical Transactions of the Royal Society B 370, 20130559,
+            section 2(f)."
+          url: "https://doi.org/10.1098/rstb.2013.0559"
+          accessed: "2026-10-13"
+        value:
+          min: 22.5
+          max: 24.5
+        note: "Small forest streams in Bong Hills; temperature measurements originally reported by Garms, not fish
+          collection data."
+      - source:
+          kind: "literature"
+          title: "Wright, S. P. (2010). Environmental and Social Impact Assessment: Rehabilitation of 30 kW Yandohun
+            Micro-Hydro Power Plant, Lofa County, Liberia. RREA and World Bank, Table 5 and section 5.3.4."
+          url: "https://documents1.worldbank.org/curated/en/209341468271564479/pdf/E25170REVISION101public10BOX353761B.\
+            pdf"
+          accessed: "2026-10-13"
+        value:
+          min: 26.2
+          max: 26.4
+        note: "Two Yando River surface-water samples in 2010; a Liberian regional proxy."
+      - source:
+          kind: "literature"
+          title: "Fish diversity and structure in the Banco stream (Banco National Park, Ivory Coast)"
+          url: "https://doi.org/10.57890/5nb8q914"
+          accessed: "2026-10-13"
+        value:
+          min: 25.6
+          max: 26.4
+        note: "station means of a lowland rain forest stream, species there is Hemichromis fasciatus"
+      - source:
+          kind: "literature"
+          title: "Earthtime (2009). Water quality analysis for the Monrovia master plan. Appendix 10: pp. 14, 21, 23-24,
+            44-48 and 99-104."
+          url: "https://openjicareport.jica.go.jp/pdf/11965860_12.pdf"
+          accessed: "2026-10-13"
+        value:
+          min: 25.4
+          max: 27.1
+        note: "Raw river and untreated intake water only; wells and treated water excluded. Indexed report excerpts
+          only; no verified species occurrence."
+      - source:
+          kind: "literature"
+          title: "Tengbeh et al. (2026). Heavy Metals and Polycyclic Aromatic Hydrocarbons Levels in Selected
+            Occupational and Environmental Settings in Liberia: A Systematic Review."
+          url: "https://doi.org/10.1177/11786302261429781"
+          accessed: "2026-10-13"
+        value:
+          min: 23
+          max: 28.23
+        note: "Compiled regional measurements with mixed sampling settings."
+      - source:
+          kind: "literature"
+          title: "Djiriéoulou et al. (2021). Evaluation of the Degradation Level of a Fluvial Basin in the Western Area
+            of Côte d'Ivoire: Case of the Cavally River."
+          url: "https://doi.org/10.11648/j.ajep.20211005.12"
+          accessed: "2026-10-13"
+        value:
+          min: 23.53
+          max: 25.55
+        note: "Range of station medians from seasonal field sampling in a shared basin. Not instantaneous extrema or a
+          fish collecting record."
+      - source:
+          kind: "literature"
+          title: "Gasior, J. Aphyosemion (Roloffia) schmitti. American Killifish Association public library."
+          url: "https://aka.org/aka-public-library/library-species/aphyosemion-roloffia-schmitti/"
+          accessed: "2026-10-13"
+        value:
+          min: 23
+          max: 24
+        note: "Reported natural forest-stream temperatures near Juarzon and Greenville; measured for a killifish
+          habitat, not at a confirmed R. bimaculatus capture."
+      - source:
+          kind: "database"
+          title: "FishBase: Rubricatochromis bimaculatus, species summary under the legacy URL"
+          url: "https://www.fishbase.se/summary/Hemichromis-bimaculatus.html"
+          accessed: "2026-10-13"
+        value:
+          min: 21
+          max: 23
+        note: "uncited environment field"
+      - source:
+          kind: "database"
+          title: "American Killifish Association: Liberia LIBCOF 2021 collection locality database"
+          url: "https://aka.org/wak/Code_Library/LIBCOF21.htm"
+          accessed: "2026-10-13"
+        value:
+          min: 25
+          max: 29
+        note: "Flowing Liberian stream and river stations; the 32.1 C drying hole is excluded. Species co-occurrence
+          is unconfirmed."
+      - source:
+          kind: "database"
+          title: "American Killifish Association: Liberia LIBCOF 2021 collection locality database"
+          url: "https://aka.org/wak/Code_Library/LIBCOF21.htm"
+          accessed: "2026-10-13"
+        value:
+          min: 25
+          max: 28
+        note: "Wayla site 12 and Karmoh town site 7 in December 2021; comparable forest streams, with no R.
+          bimaculatus reported."
+    tolerance:
+      value:
+        min: 22
+        max: 28
+      confidence: "low"
+      verification:
+        method: "unanimous"
+        votes:
+          agree: 4
+          total: 4
+      sources:
+        - kind: "database"
+          title: "Seriously Fish: Hemichromis bimaculatus, Jewel Cichlid"
+          url: "https://www.seriouslyfish.com/species/hemichromis-bimaculatus/"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Fishkeeping.co.uk: Jewel Cichlid, Hemichromis bimaculatus, caresheet 189"
+          url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=189"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "FishProfiles.com: Hemichromis bimaculatus"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Hemichromis_bimaculatus/"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "FishBase: Rubricatochromis bimaculatus, species summary under the legacy URL"
+          url: "https://www.fishbase.se/summary/Hemichromis-bimaculatus.html"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Aqua-Fish: Jewel cichlid, Hemichromis bimaculatus, care guide"
+          url: "https://en.aqua-fish.net/fish/jewel-cichlid"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "AquaExperience: Hemichromis bimaculatus"
+          url: "https://aquaexperience.it/hemichromis-bimaculatus-it.html"
+          accessed: "2026-10-13"
+      evidence:
+        - source:
+            kind: "database"
+            title: "Seriously Fish: Hemichromis bimaculatus, Jewel Cichlid"
+            url: "https://www.seriouslyfish.com/species/hemichromis-bimaculatus/"
+            accessed: "2026-10-13"
+          value:
+            min: 22
+            max: 28
+          note: "Aquarium recommendation under the legacy name."
+        - source:
+            kind: "database"
+            title: "Fishkeeping.co.uk: Jewel Cichlid, Hemichromis bimaculatus, caresheet 189"
+            url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=189"
+            accessed: "2026-10-13"
+          value:
+            min: 22
+            max: 28
+          note: "Aquarium recommendation under the legacy name."
+        - source:
+            kind: "database"
+            title: "FishProfiles.com: Hemichromis bimaculatus"
+            url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Hemichromis_bimaculatus/"
+            accessed: "2026-10-13"
+          value:
+            min: 21
+            max: 25
+          note: "Cooler maintenance recommendation; its breeding guidance uses 27 C."
+        - source:
+            kind: "database"
+            title: "FishBase: Rubricatochromis bimaculatus, species summary under the legacy URL"
+            url: "https://www.fishbase.se/summary/Hemichromis-bimaculatus.html"
+            accessed: "2026-10-13"
+          value:
+            min: 21
+            max: 23
+        - source:
+            kind: "database"
+            title: "Aqua-Fish: Jewel cichlid, Hemichromis bimaculatus, care guide"
+            url: "https://en.aqua-fish.net/fish/jewel-cichlid"
+            accessed: "2026-10-13"
+          value:
+            min: 22
+            max: 28
+        - source:
+            kind: "database"
+            title: "AquaExperience: Hemichromis bimaculatus"
+            url: "https://aquaexperience.it/hemichromis-bimaculatus-it.html"
+            accessed: "2026-10-13"
+          value:
+            min: 22
+            max: 30
+          note: "Summary table; the setup paragraph instead gives 24 to 28 C."
+      rationale: "generator proposed {\"min\":22,\"max\":28}; checker-a proposed {\"min\":21,\"max\":28}; checker-b
+        proposed {\"min\":22,\"max\":29}; checker-c proposed {\"min\":21,\"max\":28.3}. The tally treats the
+        four proposals as unanimous within the 1 C bound tolerance and takes median bounds of 22 to 28 C.
+        Seriously Fish, Fishkeeping and Aqua-Fish give this same aquarium interval. Broader published guidance
+        is retained explicitly: AquaExperience's summary lists 22 to 30 C although its setup text gives 24 to
+        28 C; FishProfiles gives 21 to 25 C and breeding at 27 C. The final interval does not claim that the
+        omitted extremes are lethal. It contains the decided natural proxy but lacks multi-year health records
+        for securely identified Liberian fish, so confidence remains low."
+    verification:
+      method: "qualified-majority"
+      votes:
+        agree: 4
+        total: 6
+  ph:
+    value:
+      min: 5.9
+      max: 6.9
+    confidence: "low"
+    rationale: "generator proposed {\"min\":5.9,\"max\":7.8}; checker-a proposed {\"min\":6,\"max\":7.2};
+      checker-b proposed {\"min\":5.8,\"max\":6.8}; checker-c proposed {\"min\":5,\"max\":6.9}; tiebreaker-1
+      proposed {\"min\":6,\"max\":6.9}; tiebreaker-2 proposed {\"min\":5,\"max\":6.9}. No candidate reached
+      the required qualified majority, so the tally takes the median of all six lower bounds and all six upper
+      bounds, rounded to one decimal, giving pH 5.9 to 6.9 with low confidence. The 3 of 6 agreement count
+      describes the leading cluster, not a majority for the final range. This avoids intersecting disparate
+      proxies into an artificially small interval. Gasior gives 6.0 to 6.5 and LIBCOF includes Wayla at 6.86.
+      Wider field observations remain visible: Marvoe Creek spans 5.0 to 6.4, selected LIBCOF sites 5.0 to
+      6.86, other LIBCOF forest microhabitats reach 4.3, and RETRAP surface samples span 7.08 to 7.79. Yando's
+      table gives 5.9 and 6.1 while its narrative gives 6.2 to 6.9. None supplies identified fish at the
+      measured sites. The Nero River result is an abundance-weighted optimum for an older Ivorian
+      identification, not a measured Liberian range. These competing regional settings do not establish
+      physiological endpoints; reports without a DOI were checked only through accessible indexed excerpts,
+      not full-text retrieval."
+    sources:
+      - kind: "literature"
+        title: "Wright, S. P. (2010). Environmental and Social Impact Assessment: Rehabilitation of 30 kW Yandohun
+          Micro-Hydro Power Plant, Lofa County, Liberia. RREA and World Bank, Table 5 and section 5.3.4."
+        url: "https://documents1.worldbank.org/curated/en/209341468271564479/pdf/E25170REVISION101public10BOX353761B.\
+          pdf"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Earthtime (2021, public file updated 2025). RETRAP: Tappita to Toe Town Road Environmental and Social
+          Impact Assessment. Liberia Ministry of Public Works, Table 6-2, surface-water samples SW01 to SW06."
+        url: "https://mpw.gov.lr/sites/default/files/documents/RETRAP%20Final%20updated%20ESIA%20%2040km%20%20Sept%20\
+          29%202025.pdf"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Lamboj, A. and Koblmüller, S. (2026). Who Is Who in Rubricatochromis Lamboj & Koblmüller, 2022
+          (Cichliformes, Cichlidae): Taxonomic Revision with Description of Four New Species and Revalidation
+          of R. fugax. Fishes 11(9), 531."
+        url: "https://doi.org/10.3390/fishes11090531"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Update of ichthyofauna diversity and ecological status of a coastal River Nero (Côte d'Ivoire, West
+          Africa)"
+        url: "https://doi.org/10.1016/j.sjbs.2014.11.007"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Earthtime (2009). Water quality analysis for the Monrovia master plan. Appendix 10: pp. 14, 21, 23-24,
+          44-48 and 99-104."
+        url: "https://openjicareport.jica.go.jp/pdf/11965860_12.pdf"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Bea Mountain Mining Corporation (2024). Matambo Open Pit Mine ESIA. Surface water measurements:
+          section 5.5.2 and Table 5-21, pp. 5-33 to 5-35."
+        url: "https://www.leiti.org.lr/sites/default/files/documents/123-007_Matambo%20Open%20Pit%20ESIA_Full%20Final\
+          %20Report-BMMC.pdf"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Golder Associates (2012). New Liberty Gold Mine Surface Water Hydrology. Report 10612898-11406-2.
+          Tables 35 and 36. Indexed table excerpts only."
+        url: "https://www.scribd.com/document/368650858/Section-B"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Gasior, J. Aphyosemion (Roloffia) schmitti. American Killifish Association public library."
+        url: "https://aka.org/aka-public-library/library-species/aphyosemion-roloffia-schmitti/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Rubricatochromis bimaculatus, species summary under the legacy URL"
+        url: "https://www.fishbase.se/summary/Hemichromis-bimaculatus.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "American Killifish Association: Liberia LIBCOF 2021 collection locality database"
+        url: "https://aka.org/wak/Code_Library/LIBCOF21.htm"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Wright, S. P. (2010). Environmental and Social Impact Assessment: Rehabilitation of 30 kW Yandohun
+            Micro-Hydro Power Plant, Lofa County, Liberia. RREA and World Bank, Table 5 and section 5.3.4."
+          url: "https://documents1.worldbank.org/curated/en/209341468271564479/pdf/E25170REVISION101public10BOX353761B.\
+            pdf"
+          accessed: "2026-10-13"
+        value:
+          min: 5.9
+          max: 6.9
+        note: "Table and narrative differ; the two actual tabulated readings are 5.9 and 6.1."
+      - source:
+          kind: "literature"
+          title: "Earthtime (2021, public file updated 2025). RETRAP: Tappita to Toe Town Road Environmental and Social
+            Impact Assessment. Liberia Ministry of Public Works, Table 6-2, surface-water samples SW01 to
+            SW06."
+          url: "https://mpw.gov.lr/sites/default/files/documents/RETRAP%20Final%20updated%20ESIA%20%2040km%20%20Sept%20\
+            29%202025.pdf"
+          accessed: "2026-10-13"
+        value:
+          min: 7.08
+          max: 7.79
+        note: "Six river and creek surface-water samples in February 2021; regional proxy, not collecting-site
+          chemistry."
+      - source:
+          kind: "literature"
+          title: "Update of ichthyofauna diversity and ecological status of a coastal River Nero (Côte d'Ivoire, West
+            Africa)"
+          url: "https://doi.org/10.1016/j.sjbs.2014.11.007"
+          accessed: "2026-10-13"
+        value:
+          min: 6.87
+          max: 6.87
+        note: "Abundance-weighted pH optimum of an older Ivorian identification; the second statistic 6.89 is not a
+          habitat range endpoint."
+      - source:
+          kind: "literature"
+          title: "Earthtime (2009). Water quality analysis for the Monrovia master plan. Appendix 10: pp. 14, 21, 23-24,
+            44-48 and 99-104."
+          url: "https://openjicareport.jica.go.jp/pdf/11965860_12.pdf"
+          accessed: "2026-10-13"
+        value:
+          min: 5.86
+          max: 6.32
+        note: "Raw surface water sampled in January and July 2009. Indexed report excerpts only; no verified species
+          occurrence."
+      - source:
+          kind: "literature"
+          title: "Bea Mountain Mining Corporation (2024). Matambo Open Pit Mine ESIA. Surface water measurements:
+            section 5.5.2 and Table 5-21, pp. 5-33 to 5-35."
+          url: "https://www.leiti.org.lr/sites/default/files/documents/123-007_Matambo%20Open%20Pit%20ESIA_Full%20Final\
+            %20Report-BMMC.pdf"
+          accessed: "2026-10-13"
+        value:
+          min: 6.29
+          max: 6.71
+        note: "Surface sites sampled in November and December 2023; human influences are discussed by the report.
+          Indexed Table 5-21 only; no verified species occurrence."
+      - source:
+          kind: "literature"
+          title: "Golder Associates (2012). New Liberty Gold Mine Surface Water Hydrology. Report 10612898-11406-2.
+            Tables 35 and 36. Indexed table excerpts only."
+          url: "https://www.scribd.com/document/368650858/Section-B"
+          accessed: "2026-10-13"
+        value:
+          min: 5
+          max: 6.4
+        note: "Marvoe Creek site 2. September 2011 to March 2012. Indexed table 36 excerpt."
+      - source:
+          kind: "literature"
+          title: "Wright, S. P. (2010). Environmental and Social Impact Assessment: Rehabilitation of 30 kW Yandohun
+            Micro-Hydro Power Plant, Lofa County, Liberia. RREA and World Bank, Table 5 and section 5.3.4."
+          url: "https://documents1.worldbank.org/curated/en/209341468271564479/pdf/E25170REVISION101public10BOX353761B.\
+            pdf"
+          accessed: "2026-10-13"
+        value:
+          min: 6.2
+          max: 6.9
+        note: "Surface water measurements in a Liberian road assessment. Indexed results excerpt."
+      - source:
+          kind: "literature"
+          title: "Gasior, J. Aphyosemion (Roloffia) schmitti. American Killifish Association public library."
+          url: "https://aka.org/aka-public-library/library-species/aphyosemion-roloffia-schmitti/"
+          accessed: "2026-10-13"
+        value:
+          min: 6
+          max: 6.5
+        note: "Natural shallow forest streams near Juarzon and Greenville; regional habitat proxy without a R.
+          bimaculatus occurrence at the exact sites."
+      - source:
+          kind: "database"
+          title: "FishBase: Rubricatochromis bimaculatus, species summary under the legacy URL"
+          url: "https://www.fishbase.se/summary/Hemichromis-bimaculatus.html"
+          accessed: "2026-10-13"
+        value:
+          min: 6.5
+          max: 7.5
+      - source:
+          kind: "database"
+          title: "American Killifish Association: Liberia LIBCOF 2021 collection locality database"
+          url: "https://aka.org/wak/Code_Library/LIBCOF21.htm"
+          accessed: "2026-10-13"
+        value:
+          min: 6.86
+          max: 6.86
+        note: "Wayla site 12 in December 2021; forest stream in the native country, not a confirmed species collecting
+          site."
+      - source:
+          kind: "database"
+          title: "American Killifish Association: Liberia LIBCOF 2021 collection locality database"
+          url: "https://aka.org/wak/Code_Library/LIBCOF21.htm"
+          accessed: "2026-10-13"
+        value:
+          min: 5
+          max: 6.86
+        note: "Selected field measurements at Leleya Creek and Wayla. The database also contains lower readings at
+          other sites without identified R. bimaculatus."
+    tolerance:
+      value:
+        min: 5.9
+        max: 7.8
+      confidence: "low"
+      verification:
+        method: "qualified-majority"
+        votes:
+          agree: 4
+          total: 6
+      sources:
+        - kind: "literature"
+          title: "Wright, S. P. (2010). Environmental and Social Impact Assessment: Rehabilitation of 30 kW Yandohun
+            Micro-Hydro Power Plant, Lofa County, Liberia. RREA and World Bank, Table 5 and section 5.3.4."
+          url: "https://documents1.worldbank.org/curated/en/209341468271564479/pdf/E25170REVISION101public10BOX353761B.\
+            pdf"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Earthtime (2009). Water quality analysis for the Monrovia master plan. Appendix 10: pp. 14, 21, 23-24,
+            44-48 and 99-104."
+          url: "https://openjicareport.jica.go.jp/pdf/11965860_12.pdf"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Lamboj, A. and Koblmüller, S. (2026). Who Is Who in Rubricatochromis Lamboj & Koblmüller, 2022
+            (Cichliformes, Cichlidae): Taxonomic Revision with Description of Four New Species and
+            Revalidation of R. fugax. Fishes 11(9), 531."
+          url: "https://doi.org/10.3390/fishes11090531"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Gasior, J. Aphyosemion (Roloffia) schmitti. American Killifish Association public library."
+          url: "https://aka.org/aka-public-library/library-species/aphyosemion-roloffia-schmitti/"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Seriously Fish: Hemichromis bimaculatus, Jewel Cichlid"
+          url: "https://www.seriouslyfish.com/species/hemichromis-bimaculatus/"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Fishkeeping.co.uk: Jewel Cichlid, Hemichromis bimaculatus, caresheet 189"
+          url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=189"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "FishProfiles.com: Hemichromis bimaculatus"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Hemichromis_bimaculatus/"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "FishBase: Rubricatochromis bimaculatus, species summary under the legacy URL"
+          url: "https://www.fishbase.se/summary/Hemichromis-bimaculatus.html"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Aqua-Fish: Jewel cichlid, Hemichromis bimaculatus, care guide"
+          url: "https://en.aqua-fish.net/fish/jewel-cichlid"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "American Killifish Association: Liberia LIBCOF 2021 collection locality database"
+          url: "https://aka.org/wak/Code_Library/LIBCOF21.htm"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Fishkeeper species profile: Jewel Cichlid"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jewel-cichlid"
+          accessed: "2026-10-13"
+      evidence:
+        - source:
+            kind: "literature"
+            title: "Earthtime (2009). Water quality analysis for the Monrovia master plan. Appendix 10: pp. 14, 21, 23-24,
+              44-48 and 99-104."
+            url: "https://openjicareport.jica.go.jp/pdf/11965860_12.pdf"
+            accessed: "2026-10-13"
+          value:
+            min: 5.86
+            max: 6.32
+          note: "Habitat proxy, not a long-term husbandry test. Indexed report excerpts only; no verified species
+            occurrence."
+        - source:
+            kind: "database"
+            title: "Seriously Fish: Hemichromis bimaculatus, Jewel Cichlid"
+            url: "https://www.seriouslyfish.com/species/hemichromis-bimaculatus/"
+            accessed: "2026-10-13"
+          value:
+            min: 6
+            max: 7.8
+          note: "Aquarium recommendation; does not demonstrate health at pH 5.9."
+        - source:
+            kind: "database"
+            title: "Fishkeeping.co.uk: Jewel Cichlid, Hemichromis bimaculatus, caresheet 189"
+            url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=189"
+            accessed: "2026-10-13"
+          value:
+            min: 6
+            max: 7.6
+          note: "Aquarium recommendation."
+        - source:
+            kind: "database"
+            title: "FishProfiles.com: Hemichromis bimaculatus"
+            url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Hemichromis_bimaculatus/"
+            accessed: "2026-10-13"
+          value:
+            min: 6.5
+            max: 7.5
+          note: "Narrower aquarium recommendation."
+        - source:
+            kind: "database"
+            title: "FishBase: Rubricatochromis bimaculatus, species summary under the legacy URL"
+            url: "https://www.fishbase.se/summary/Hemichromis-bimaculatus.html"
+            accessed: "2026-10-13"
+          value:
+            min: 6.5
+            max: 7.5
+        - source:
+            kind: "database"
+            title: "Aqua-Fish: Jewel cichlid, Hemichromis bimaculatus, care guide"
+            url: "https://en.aqua-fish.net/fish/jewel-cichlid"
+            accessed: "2026-10-13"
+          value:
+            min: 6
+            max: 7.8
+        - source:
+            kind: "website"
+            title: "Fishkeeper species profile: Jewel Cichlid"
+            url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jewel-cichlid"
+            accessed: "2026-10-13"
+          value:
+            min: 6.5
+            max: 7.5
+          note: "Aquarium recommendation. The current page identifies R. guttatus; transfer to bimaculatus is untested."
+      rationale: "generator proposed {\"min\":5.9,\"max\":7.8}; checker-a proposed {\"min\":6,\"max\":7.8};
+        checker-b proposed {\"min\":5.8,\"max\":7.8}; checker-c proposed {\"min\":5,\"max\":7.8}; tiebreaker-1
+        proposed {\"min\":6,\"max\":7.8}; tiebreaker-2 proposed {\"min\":5,\"max\":7.8}. Qualified-majority
+        agreement of 4 of 6 gives pH 5.9 to 7.8. Seriously Fish and Aqua-Fish recommend 6.0 to 7.8;
+        Fishkeeping gives 6.0 to 7.6 and FishProfiles 6.5 to 7.5. The lower edge below 6.0 is a small inferred
+        extension, not a demonstrated long-term captive limit. Checker-c and tiebreaker-2 propose the wider
+        5.0 to 7.8 by incorporating acidic regional field water; the other proposals begin at 5.8, 5.9 or 6.0.
+        The tally retains the near-6.0 cluster and the exact median/rounding outcome. Regional water
+        measurements, including LIBCOF's lower readings, do not demonstrate years of aquarium health there.
+        The range contains the decided natural pH proxy, and low confidence is retained for the unresolved
+        trade identities."
+    verification:
+      method: "median"
+      votes:
+        agree: 3
+        total: 6
+  ghDgh:
+    value:
+      min: 0
+      max: 1
+    confidence: "low"
+    rationale: "generator proposed {\"min\":0.1,\"max\":1}; checker-a proposed {\"min\":1,\"max\":4}; checker-b
+      proposed {\"min\":0.3,\"max\":1}; checker-c proposed {\"min\":0.1,\"max\":1}; tiebreaker-1 proposed
+      {\"min\":0.6,\"max\":1.2}; tiebreaker-2 proposed {\"min\":0,\"max\":2}. The tally classifies all six
+      proposals as agreeing under the 2 dGH bound tolerance and uses their median bounds rounded to integers,
+      resulting in 0 to 1 dGH with qualified-majority verification and low confidence. The permissive
+      comparison accepts checker-a's much higher 1 to 4 dGH estimate; agreement therefore does not mean six
+      identical measurements. Liberian raw surface-water hardness reported by Earthtime is about 0.50 to 0.90
+      dGH, and paired Matambo calcium and magnesium give about 0.37 to 0.54 dGH. Marvoe monitoring gives an
+      estimated 0.14 to 0.81 dGH subject to detection limits, and the Whein creek table reports about 0.56
+      dGH. Gasior's 20 ppm hardness converts conditionally to 1.12 dGH, above the decided upper bound, while
+      the AKA bertholdi record gives GH 0.6 without a pinpointed locality. Zero is a rounding outcome, not a
+      proven zero-hardness habitat. Conductivity and TDS cannot uniquely determine GH; checker-a's conversion
+      is rejected, and RETRAP magnesium without calcium gives only a partial contribution. FishBase's much
+      wider 4 to 16 dH is husbandry-derived. These regional proxies are not species collection measurements;
+      report evidence is restricted to the indexed passages available, and the generator's 2015 Marvoe
+      calculation could not be independently retrieved."
+    sources:
+      - kind: "literature"
+        title: "SRK Consulting (2015). New Liberty Gold Mine NI 43-101 Technical Report, Table 17-2, raw Marvoe Creek
+          water analysis."
+        url: "https://minedocs.com/12/New_Liberty_2015.pdf"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Earthtime (2021, public file updated 2025). RETRAP: Tappita to Toe Town Road Environmental and Social
+          Impact Assessment. Liberia Ministry of Public Works, Table 6-2, surface-water samples SW01 to SW06."
+        url: "https://mpw.gov.lr/sites/default/files/documents/RETRAP%20Final%20updated%20ESIA%20%2040km%20%20Sept%20\
+          29%202025.pdf"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Wright, S. P. (2010). Environmental and Social Impact Assessment: Rehabilitation of 30 kW Yandohun
+          Micro-Hydro Power Plant, Lofa County, Liberia. RREA and World Bank, Table 5 and section 5.3.4."
+        url: "https://documents1.worldbank.org/curated/en/209341468271564479/pdf/E25170REVISION101public10BOX353761B.\
+          pdf"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Lamboj, A. and Koblmüller, S. (2026). Who Is Who in Rubricatochromis Lamboj & Koblmüller, 2022
+          (Cichliformes, Cichlidae): Taxonomic Revision with Description of Four New Species and Revalidation
+          of R. fugax. Fishes 11(9), 531."
+        url: "https://doi.org/10.3390/fishes11090531"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Update of ichthyofauna diversity and ecological status of a coastal River Nero (Côte d'Ivoire, West
+          Africa)"
+        url: "https://doi.org/10.1016/j.sjbs.2014.11.007"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Earthtime (2009). Water quality analysis for the Monrovia master plan. Appendix 10: pp. 14, 21, 23-24,
+          44-48 and 99-104."
+        url: "https://openjicareport.jica.go.jp/pdf/11965860_12.pdf"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Bea Mountain Mining Corporation (2024). Matambo Open Pit Mine ESIA. Surface water measurements:
+          section 5.5.2 and Table 5-21, pp. 5-33 to 5-35."
+        url: "https://www.leiti.org.lr/sites/default/files/documents/123-007_Matambo%20Open%20Pit%20ESIA_Full%20Final\
+          %20Report-BMMC.pdf"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Golder Associates (2012). New Liberty Gold Mine Surface Water Hydrology. Report 10612898-11406-2.
+          Tables 35 and 36. Indexed table excerpts only."
+        url: "https://www.scribd.com/document/368650858/Section-B"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Poyry Environmental. Whein Town Landfill environmental management and operating manual. Baseline creek
+          analysis of 10 April 2008. Indexed table excerpt only."
+        url: "https://documents.worldbank.org/curated/en/682861468272720480/pdf/E21350V50P1156102B01PUBLIC10AFR1EMP.p\
+          df"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Gasior, J. Aphyosemion (Roloffia) schmitti. American Killifish Association public library."
+        url: "https://aka.org/aka-public-library/library-species/aphyosemion-roloffia-schmitti/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Rubricatochromis bimaculatus, species summary under the legacy URL"
+        url: "https://www.fishbase.se/summary/Hemichromis-bimaculatus.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "American Killifish Association reference library: Scriptaphyosemion bertholdi, habitat measurements
+          attributed to Roloff"
+        url: "https://aka.org/wak/Ref_Library/Scriptaphyosemion/S.bertholdi.htm"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "American Killifish Association: Liberia LIBCOF 2021 collection locality database"
+        url: "https://aka.org/wak/Code_Library/LIBCOF21.htm"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "SRK Consulting (2015). New Liberty Gold Mine NI 43-101 Technical Report, Table 17-2, raw Marvoe Creek
+            water analysis."
+          url: "https://minedocs.com/12/New_Liberty_2015.pdf"
+          accessed: "2026-10-13"
+        value:
+          min: 0.14
+          max: 0.255
+        note: "Calculation inherited from the generator using Ca 1.00 mg/L and Mg below 0.5 mg/L. The DOI-less
+          original could not be independently retrieved; not used to establish the decided bounds."
+      - source:
+          kind: "literature"
+          title: "Earthtime (2021, public file updated 2025). RETRAP: Tappita to Toe Town Road Environmental and Social
+            Impact Assessment. Liberia Ministry of Public Works, Table 6-2, surface-water samples SW01 to
+            SW06."
+          url: "https://mpw.gov.lr/sites/default/files/documents/RETRAP%20Final%20updated%20ESIA%20%2040km%20%20Sept%20\
+            29%202025.pdf"
+          accessed: "2026-10-13"
+        value:
+          min: 0.251
+          max: null
+        note: "Mg contribution alone ranges from 0.251 to 0.468 dGH; Ca is missing, so total GH and its upper bound
+          are unknown."
+      - source:
+          kind: "literature"
+          title: "Wright, S. P. (2010). Environmental and Social Impact Assessment: Rehabilitation of 30 kW Yandohun
+            Micro-Hydro Power Plant, Lofa County, Liberia. RREA and World Bank, Table 5 and section 5.3.4."
+          url: "https://documents1.worldbank.org/curated/en/209341468271564479/pdf/E25170REVISION101public10BOX353761B.\
+            pdf"
+          accessed: "2026-10-13"
+        value:
+          min: null
+          max: null
+        note: "Qualitatively very soft; the stated numeric units are not reliable enough for conversion."
+      - source:
+          kind: "literature"
+          title: "Update of ichthyofauna diversity and ecological status of a coastal River Nero (Côte d'Ivoire, West
+            Africa)"
+          url: "https://doi.org/10.1016/j.sjbs.2014.11.007"
+          accessed: "2026-10-13"
+        value:
+          min: null
+          max: null
+        note: "No GH or alkalinity assay is stated; checker-a inferred a range from conductivity/TDS or pH, which is
+          rejected because those variables do not determine hardness."
+      - source:
+          kind: "literature"
+          title: "Earthtime (2009). Water quality analysis for the Monrovia master plan. Appendix 10: pp. 14, 21, 23-24,
+            44-48 and 99-104."
+          url: "https://openjicareport.jica.go.jp/pdf/11965860_12.pdf"
+          accessed: "2026-10-13"
+        value:
+          min: 0.5
+          max: 0.9
+        note: "EDTA total-hardness titration; untreated surface samples only. Indexed report excerpts only; no
+          verified species occurrence."
+      - source:
+          kind: "literature"
+          title: "Bea Mountain Mining Corporation (2024). Matambo Open Pit Mine ESIA. Surface water measurements:
+            section 5.5.2 and Table 5-21, pp. 5-33 to 5-35."
+          url: "https://www.leiti.org.lr/sites/default/files/documents/123-007_Matambo%20Open%20Pit%20ESIA_Full%20Final\
+            %20Report-BMMC.pdf"
+          accessed: "2026-10-13"
+        value:
+          min: 0.37
+          max: 0.54
+        note: "Calculated separately from the six paired Ca and Mg surface-water measurements in Table 5-21. Indexed
+          Table 5-21 only; no verified species occurrence."
+      - source:
+          kind: "literature"
+          title: "Golder Associates (2012). New Liberty Gold Mine Surface Water Hydrology. Report 10612898-11406-2.
+            Tables 35 and 36. Indexed table excerpts only."
+          url: "https://www.scribd.com/document/368650858/Section-B"
+          accessed: "2026-10-13"
+        value:
+          min: 0.14
+          max: 0.81
+        note: "Calculated from paired calcium and magnesium results at site 2. Detection limits constrain the lower
+          values."
+      - source:
+          kind: "literature"
+          title: "Poyry Environmental. Whein Town Landfill environmental management and operating manual. Baseline creek
+            analysis of 10 April 2008. Indexed table excerpt only."
+          url: "https://documents.worldbank.org/curated/en/682861468272720480/pdf/E21350V50P1156102B01PUBLIC10AFR1EMP.p\
+            df"
+          accessed: "2026-10-13"
+        value:
+          min: 0.56
+          max: 0.56
+        note: "April 2008 surface creek total hardness 10 mg/L as CaCO3 divided by 17.848."
+      - source:
+          kind: "literature"
+          title: "Gasior, J. Aphyosemion (Roloffia) schmitti. American Killifish Association public library."
+          url: "https://aka.org/aka-public-library/library-species/aphyosemion-roloffia-schmitti/"
+          accessed: "2026-10-13"
+        value:
+          min: 1.12
+          max: 1.12
+        note: "About 20 ppm natural hardness converted assuming mg/L CaCO3; neighbouring Sinoe forest-stream habitat,
+          not a confirmed species site."
+      - source:
+          kind: "database"
+          title: "FishBase: Rubricatochromis bimaculatus, species summary under the legacy URL"
+          url: "https://www.fishbase.se/summary/Hemichromis-bimaculatus.html"
+          accessed: "2026-10-13"
+        value:
+          min: 4
+          max: 16
+        note: "probably an aquarium range"
+      - source:
+          kind: "database"
+          title: "American Killifish Association reference library: Scriptaphyosemion bertholdi, habitat measurements
+            attributed to Roloff"
+          url: "https://aka.org/wak/Ref_Library/Scriptaphyosemion/S.bertholdi.htm"
+          accessed: "2026-10-13"
+        value:
+          min: 0.6
+          max: 0.6
+        note: "Reported natural GH attributed to Roloff; the record covers Liberia and Sierra Leone without
+          pinpointing the hardness locality, so support is indirect."
+    tolerance:
+      value:
+        min: 0
+        max: 18
+      confidence: "low"
+      verification:
+        method: "unanimous"
+        votes:
+          agree: 4
+          total: 4
+      sources:
+        - kind: "literature"
+          title: "SRK Consulting (2015). New Liberty Gold Mine NI 43-101 Technical Report, Table 17-2, raw Marvoe Creek
+            water analysis."
+          url: "https://minedocs.com/12/New_Liberty_2015.pdf"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Earthtime (2009). Water quality analysis for the Monrovia master plan. Appendix 10: pp. 14, 21, 23-24,
+            44-48 and 99-104."
+          url: "https://openjicareport.jica.go.jp/pdf/11965860_12.pdf"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Bea Mountain Mining Corporation (2024). Matambo Open Pit Mine ESIA. Surface water measurements:
+            section 5.5.2 and Table 5-21, pp. 5-33 to 5-35."
+          url: "https://www.leiti.org.lr/sites/default/files/documents/123-007_Matambo%20Open%20Pit%20ESIA_Full%20Final\
+            %20Report-BMMC.pdf"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "FishProfiles.com: Hemichromis bimaculatus"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Hemichromis_bimaculatus/"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Seriously Fish: Hemichromis bimaculatus, Jewel Cichlid"
+          url: "https://www.seriouslyfish.com/species/hemichromis-bimaculatus/"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Fischlexikon: Roter Buntbarsch, Rubricatochromis bimaculatus"
+          url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000000377"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "FishBase: Rubricatochromis bimaculatus, species summary under the legacy URL"
+          url: "https://www.fishbase.se/summary/Hemichromis-bimaculatus.html"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Aqua-Fish: Jewel cichlid, Hemichromis bimaculatus, care guide"
+          url: "https://en.aqua-fish.net/fish/jewel-cichlid"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Fishkeeping.co.uk: Jewel Cichlid, Hemichromis bimaculatus, caresheet 189"
+          url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=189"
+          accessed: "2026-10-13"
+      evidence:
+        - source:
+            kind: "literature"
+            title: "Earthtime (2009). Water quality analysis for the Monrovia master plan. Appendix 10: pp. 14, 21, 23-24,
+              44-48 and 99-104."
+            url: "https://openjicareport.jica.go.jp/pdf/11965860_12.pdf"
+            accessed: "2026-10-13"
+          value:
+            min: 0.5
+            max: 0.9
+          note: "Field proxy only; supplies no aquarium tolerance experiment. Indexed report excerpts only; no verified
+            species occurrence."
+        - source:
+            kind: "literature"
+            title: "Bea Mountain Mining Corporation (2024). Matambo Open Pit Mine ESIA. Surface water measurements:
+              section 5.5.2 and Table 5-21, pp. 5-33 to 5-35."
+            url: "https://www.leiti.org.lr/sites/default/files/documents/123-007_Matambo%20Open%20Pit%20ESIA_Full%20Final\
+              %20Report-BMMC.pdf"
+            accessed: "2026-10-13"
+          value:
+            min: 0.37
+            max: 0.54
+          note: "Field proxy only. Indexed Table 5-21 only; no verified species occurrence."
+        - source:
+            kind: "database"
+            title: "FishProfiles.com: Hemichromis bimaculatus"
+            url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Hemichromis_bimaculatus/"
+            accessed: "2026-10-13"
+          value:
+            min: 4
+            max: 16
+          note: "Aquarium recommendation."
+        - source:
+            kind: "database"
+            title: "Seriously Fish: Hemichromis bimaculatus, Jewel Cichlid"
+            url: "https://www.seriouslyfish.com/species/hemichromis-bimaculatus/"
+            accessed: "2026-10-13"
+          value:
+            min: 4
+            max: 18
+          note: "Aquarium recommendation; broader upper limit."
+        - source:
+            kind: "database"
+            title: "Fischlexikon: Roter Buntbarsch, Rubricatochromis bimaculatus"
+            url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000000377"
+            accessed: "2026-10-13"
+          value:
+            min: 4
+            max: 12
+          note: "Aquarium recommendation; no species-specific support for the inferred lower edge."
+        - source:
+            kind: "database"
+            title: "FishBase: Rubricatochromis bimaculatus, species summary under the legacy URL"
+            url: "https://www.fishbase.se/summary/Hemichromis-bimaculatus.html"
+            accessed: "2026-10-13"
+          value:
+            min: 4
+            max: 16
+        - source:
+            kind: "database"
+            title: "Aqua-Fish: Jewel cichlid, Hemichromis bimaculatus, care guide"
+            url: "https://en.aqua-fish.net/fish/jewel-cichlid"
+            accessed: "2026-10-13"
+          value:
+            min: 4
+            max: 18
+        - source:
+            kind: "database"
+            title: "Fishkeeping.co.uk: Jewel Cichlid, Hemichromis bimaculatus, caresheet 189"
+            url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=189"
+            accessed: "2026-10-13"
+          value:
+            min: 5
+            max: 15
+          note: "Aquarium recommendation."
+      rationale: "generator proposed {\"min\":0.1,\"max\":16}; checker-a proposed {\"min\":1,\"max\":18}; checker-b
+        proposed {\"min\":0.3,\"max\":18}; checker-c proposed {\"min\":0.1,\"max\":18}. The tally considers
+        all four proposals unanimous within 2 dGH and uses median bounds, rounded to integers, giving 0 to 18
+        dGH. Seriously Fish and Aqua-Fish recommend 4 to 18 dGH; FishProfiles and FishBase give 4 to 16,
+        Fischlexikon 4 to 12 and Fishkeeping 5 to 15. The upper bound follows the broader established care
+        interval instead of the generator's narrower 16 dGH choice. The lower bound is rounded from small
+        positive proposals and extended to include the decided very-soft natural proxy; it is not a tested
+        zero-mineral husbandry condition. Field proxies do not establish long-term tolerance. Different trade
+        species may underlie the care sheets, so the entire containing range remains low confidence."
+    verification:
+      method: "qualified-majority"
+      votes:
+        agree: 6
+        total: 6
+  khDkh:
+    value:
+      min: 0
+      max: 2
+    confidence: "low"
+    rationale: "generator proposed {\"min\":1.1,\"max\":2.3}; checker-a proposed {\"min\":0.5,\"max\":2};
+      checker-b proposed {\"min\":0.3,\"max\":1.5}; checker-c proposed {\"min\":0,\"max\":1.2}. All four
+      proposals agree within the tally's 2 dKH bound tolerance; their median bounds rounded to integers give 0
+      to 2 dKH at low confidence. The natural khDkh fact intentionally carries no verification object. This is
+      an alkalinity-equivalent habitat proxy, not a carbonate-speciation measurement. Yando alkalinity of 20
+      to 40 mg/L conditionally converts to 1.12 to 2.24 dKH, which extends above the decided upper bound;
+      RETRAP explicitly reports CaCO3-equivalent alkalinity corresponding to 1.126 to 1.826 dKH. Other
+      regional excerpts support lower buffering: Earthtime gives roughly 0.80 to 1.41 dKH, Matambo 0.38 to
+      0.51, Marvoe 0.17 to 1.12 and Whein creek a reported zero test result of unspecified precision. Organic
+      buffering may contribute to total alkalinity. The Nero conductivity/pH inference is rejected. No study
+      confirms this species at its measurement stations, and the DOI-less reports were available only as
+      indexed excerpts."
+    sources:
+      - kind: "literature"
+        title: "Wright, S. P. (2010). Environmental and Social Impact Assessment: Rehabilitation of 30 kW Yandohun
+          Micro-Hydro Power Plant, Lofa County, Liberia. RREA and World Bank, Table 5 and section 5.3.4."
+        url: "https://documents1.worldbank.org/curated/en/209341468271564479/pdf/E25170REVISION101public10BOX353761B.\
+          pdf"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Earthtime (2021, public file updated 2025). RETRAP: Tappita to Toe Town Road Environmental and Social
+          Impact Assessment. Liberia Ministry of Public Works, Table 6-2, surface-water samples SW01 to SW06."
+        url: "https://mpw.gov.lr/sites/default/files/documents/RETRAP%20Final%20updated%20ESIA%20%2040km%20%20Sept%20\
+          29%202025.pdf"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Lamboj, A. and Koblmüller, S. (2026). Who Is Who in Rubricatochromis Lamboj & Koblmüller, 2022
+          (Cichliformes, Cichlidae): Taxonomic Revision with Description of Four New Species and Revalidation
+          of R. fugax. Fishes 11(9), 531."
+        url: "https://doi.org/10.3390/fishes11090531"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Update of ichthyofauna diversity and ecological status of a coastal River Nero (Côte d'Ivoire, West
+          Africa)"
+        url: "https://doi.org/10.1016/j.sjbs.2014.11.007"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Earthtime (2009). Water quality analysis for the Monrovia master plan. Appendix 10: pp. 14, 21, 23-24,
+          44-48 and 99-104."
+        url: "https://openjicareport.jica.go.jp/pdf/11965860_12.pdf"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Bea Mountain Mining Corporation (2024). Matambo Open Pit Mine ESIA. Surface water measurements:
+          section 5.5.2 and Table 5-21, pp. 5-33 to 5-35."
+        url: "https://www.leiti.org.lr/sites/default/files/documents/123-007_Matambo%20Open%20Pit%20ESIA_Full%20Final\
+          %20Report-BMMC.pdf"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Golder Associates (2012). New Liberty Gold Mine Surface Water Hydrology. Report 10612898-11406-2.
+          Tables 35 and 36. Indexed table excerpts only."
+        url: "https://www.scribd.com/document/368650858/Section-B"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Poyry Environmental. Whein Town Landfill environmental management and operating manual. Baseline creek
+          analysis of 10 April 2008. Indexed table excerpt only."
+        url: "https://documents.worldbank.org/curated/en/682861468272720480/pdf/E21350V50P1156102B01PUBLIC10AFR1EMP.p\
+          df"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Wright, S. P. (2010). Environmental and Social Impact Assessment: Rehabilitation of 30 kW Yandohun
+            Micro-Hydro Power Plant, Lofa County, Liberia. RREA and World Bank, Table 5 and section 5.3.4."
+          url: "https://documents1.worldbank.org/curated/en/209341468271564479/pdf/E25170REVISION101public10BOX353761B.\
+            pdf"
+          accessed: "2026-10-13"
+        value:
+          min: 1.12
+          max: 2.24
+        note: "From alkalinity 20 to 40 mg/L assuming CaCO3-equivalent units."
+      - source:
+          kind: "literature"
+          title: "Earthtime (2021, public file updated 2025). RETRAP: Tappita to Toe Town Road Environmental and Social
+            Impact Assessment. Liberia Ministry of Public Works, Table 6-2, surface-water samples SW01 to
+            SW06."
+          url: "https://mpw.gov.lr/sites/default/files/documents/RETRAP%20Final%20updated%20ESIA%20%2040km%20%20Sept%20\
+            29%202025.pdf"
+          accessed: "2026-10-13"
+        value:
+          min: 1.126
+          max: 1.826
+        note: "From explicitly reported total alkalinity as CaCO3, 20.1 to 32.6 mg/L."
+      - source:
+          kind: "literature"
+          title: "Update of ichthyofauna diversity and ecological status of a coastal River Nero (Côte d'Ivoire, West
+            Africa)"
+          url: "https://doi.org/10.1016/j.sjbs.2014.11.007"
+          accessed: "2026-10-13"
+        value:
+          min: null
+          max: null
+        note: "No GH or alkalinity assay is stated; checker-a inferred a range from conductivity/TDS or pH, which is
+          rejected because those variables do not determine hardness."
+      - source:
+          kind: "literature"
+          title: "Earthtime (2009). Water quality analysis for the Monrovia master plan. Appendix 10: pp. 14, 21, 23-24,
+            44-48 and 99-104."
+          url: "https://openjicareport.jica.go.jp/pdf/11965860_12.pdf"
+          accessed: "2026-10-13"
+        value:
+          min: 0.8
+          max: 1.41
+        note: "Bicarbonate alkalinity; reported carbonate and hydroxide alkalinity are zero. Indexed report excerpts
+          only; no verified species occurrence."
+      - source:
+          kind: "literature"
+          title: "Bea Mountain Mining Corporation (2024). Matambo Open Pit Mine ESIA. Surface water measurements:
+            section 5.5.2 and Table 5-21, pp. 5-33 to 5-35."
+          url: "https://www.leiti.org.lr/sites/default/files/documents/123-007_Matambo%20Open%20Pit%20ESIA_Full%20Final\
+            %20Report-BMMC.pdf"
+          accessed: "2026-10-13"
+        value:
+          min: 0.38
+          max: 0.51
+        note: "Total titratable alkalinity proxy; conflicting bicarbonate column excluded. Indexed Table 5-21 only; no
+          verified species occurrence."
+      - source:
+          kind: "literature"
+          title: "Golder Associates (2012). New Liberty Gold Mine Surface Water Hydrology. Report 10612898-11406-2.
+            Tables 35 and 36. Indexed table excerpts only."
+          url: "https://www.scribd.com/document/368650858/Section-B"
+          accessed: "2026-10-13"
+        value:
+          min: 0.17
+          max: 1.12
+        note: "Site 2 alkalinity 3 to 20 mg/L as CaCO3 divided by 17.848."
+      - source:
+          kind: "literature"
+          title: "Poyry Environmental. Whein Town Landfill environmental management and operating manual. Baseline creek
+            analysis of 10 April 2008. Indexed table excerpt only."
+          url: "https://documents.worldbank.org/curated/en/682861468272720480/pdf/E21350V50P1156102B01PUBLIC10AFR1EMP.p\
+            df"
+          accessed: "2026-10-13"
+        value:
+          min: 0
+          max: 0
+        note: "April 2008 creek alkalinity reported as zero. Analytical precision unspecified."
+    tolerance:
+      value:
+        min: 0
+        max: 8
+      confidence: "low"
+      verification:
+        method: "unanimous"
+        votes:
+          agree: 4
+          total: 4
+      sources:
+        - kind: "literature"
+          title: "Wright, S. P. (2010). Environmental and Social Impact Assessment: Rehabilitation of 30 kW Yandohun
+            Micro-Hydro Power Plant, Lofa County, Liberia. RREA and World Bank, Table 5 and section 5.3.4."
+          url: "https://documents1.worldbank.org/curated/en/209341468271564479/pdf/E25170REVISION101public10BOX353761B.\
+            pdf"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Earthtime (2021, public file updated 2025). RETRAP: Tappita to Toe Town Road Environmental and Social
+            Impact Assessment. Liberia Ministry of Public Works, Table 6-2, surface-water samples SW01 to
+            SW06."
+          url: "https://mpw.gov.lr/sites/default/files/documents/RETRAP%20Final%20updated%20ESIA%20%2040km%20%20Sept%20\
+            29%202025.pdf"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Earthtime (2009). Water quality analysis for the Monrovia master plan. Appendix 10: pp. 14, 21, 23-24,
+            44-48 and 99-104."
+          url: "https://openjicareport.jica.go.jp/pdf/11965860_12.pdf"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Bea Mountain Mining Corporation (2024). Matambo Open Pit Mine ESIA. Surface water measurements:
+            section 5.5.2 and Table 5-21, pp. 5-33 to 5-35."
+          url: "https://www.leiti.org.lr/sites/default/files/documents/123-007_Matambo%20Open%20Pit%20ESIA_Full%20Final\
+            %20Report-BMMC.pdf"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Seriously Fish: Hemichromis bimaculatus, Jewel Cichlid"
+          url: "https://www.seriouslyfish.com/species/hemichromis-bimaculatus/"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "FishBase: Rubricatochromis bimaculatus, species summary under the legacy URL"
+          url: "https://www.fishbase.se/summary/Hemichromis-bimaculatus.html"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "AquaExperience: Hemichromis bimaculatus"
+          url: "https://aquaexperience.it/hemichromis-bimaculatus-it.html"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Garnelio: red jewel care sheet with Hemichromis bimaculatus in the scientific-name field and lifalili
+            in the product title"
+          url: "https://www.garnelio.de/2x-roter-buntbarsch-hemichromis-lifalili-dnz"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "AquariumStoreDepot: Jewel Cichlid, structured care table and husbandry guide"
+          url: "https://aquariumstoredepot.com/blogs/news/jewel-cichlid"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Garnelio: Red cichlid care sheet (conflicting bimaculatus and lifalili labels)"
+          url: "https://www.garnelio.de/en/2x-red-cichlid-hemichromis-lifalili-dnz"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Türkiye Akvarist structured care sheet: Hemichromis bimaculatus. Reliability concerns."
+          url: "https://www.turkiyeakvarist.com/jewel-cichlid/"
+          accessed: "2026-10-13"
+      evidence:
+        - source:
+            kind: "literature"
+            title: "Bea Mountain Mining Corporation (2024). Matambo Open Pit Mine ESIA. Surface water measurements:
+              section 5.5.2 and Table 5-21, pp. 5-33 to 5-35."
+            url: "https://www.leiti.org.lr/sites/default/files/documents/123-007_Matambo%20Open%20Pit%20ESIA_Full%20Final\
+              %20Report-BMMC.pdf"
+            accessed: "2026-10-13"
+          value:
+            min: 0.38
+            max: 0.51
+          note: "Habitat proxy only. Indexed Table 5-21 only; no verified species occurrence."
+        - source:
+            kind: "literature"
+            title: "Poyry Environmental. Whein Town Landfill environmental management and operating manual. Baseline creek
+              analysis of 10 April 2008. Indexed table excerpt only."
+            url: "https://documents.worldbank.org/curated/en/682861468272720480/pdf/E21350V50P1156102B01PUBLIC10AFR1EMP.p\
+              df"
+            accessed: "2026-10-13"
+          value:
+            min: 0
+            max: 0
+          note: "Indexed April 2008 nearby-creek alkalinity test reports zero with unspecified detection precision;
+            field context only, not a husbandry tolerance trial."
+        - source:
+            kind: "database"
+            title: "AquaExperience: Hemichromis bimaculatus"
+            url: "https://aquaexperience.it/hemichromis-bimaculatus-it.html"
+            accessed: "2026-10-13"
+          value:
+            min: 1
+            max: 8
+          note: "Setup recommendation; summary table instead gives 1 to 10."
+        - source:
+            kind: "website"
+            title: "Garnelio: red jewel care sheet with Hemichromis bimaculatus in the scientific-name field and lifalili
+              in the product title"
+            url: "https://www.garnelio.de/2x-roter-buntbarsch-hemichromis-lifalili-dnz"
+            accessed: "2026-10-13"
+          value:
+            min: 4
+            max: 8
+          note: "The product title says lifalili while the scientific-name field says bimaculatus; weak transfer
+            evidence."
+        - source:
+            kind: "website"
+            title: "AquariumStoreDepot: Jewel Cichlid, structured care table and husbandry guide"
+            url: "https://aquariumstoredepot.com/blogs/news/jewel-cichlid"
+            accessed: "2026-10-13"
+          value:
+            min: null
+            max: 12
+          note: "Only a ceiling below 12 dKH is stated; the lower endpoint is not specified."
+        - source:
+            kind: "website"
+            title: "Garnelio: Red cichlid care sheet (conflicting bimaculatus and lifalili labels)"
+            url: "https://www.garnelio.de/en/2x-red-cichlid-hemichromis-lifalili-dnz"
+            accessed: "2026-10-13"
+          value:
+            min: 4
+            max: 8
+          note: "Structured care sheet whose heading and scientific-name field disagree."
+        - source:
+            kind: "website"
+            title: "Türkiye Akvarist structured care sheet: Hemichromis bimaculatus. Reliability concerns."
+            url: "https://www.turkiyeakvarist.com/jewel-cichlid/"
+            accessed: "2026-10-13"
+          value:
+            min: 2
+            max: 8
+          note: "Care-sheet recommendation with major unrelated husbandry errors."
+      rationale: "generator proposed {\"min\":1.1,\"max\":8}; checker-a proposed {\"min\":1,\"max\":10}; checker-b
+        proposed {\"min\":0.3,\"max\":8}; checker-c proposed {\"min\":0,\"max\":8}. Unanimous agreement within
+        2 dKH of the four proposals gives a median-based upper bound of 8 dKH; the rounded lower bound is
+        widened to zero to contain the decided natural proxy. The generator proposes 1.1 to 8, checker-a 1 to
+        10, checker-b 0.3 to 8 and checker-c 0 to 8. AquaExperience gives 1 to 8 in its setup text but a wider
+        1 to 10 in the summary. Garnelio gives 4 to 8 while mixing bimaculatus and lifalili labels;
+        AquariumStoreDepot gives only a ceiling below 12 with no lower bound. Türkiye Akvarist gives 2 to 8
+        alongside implausible social advice. The retail/blog pages are websites, and no second reliable
+        numerical husbandry source confirms the full interval. The literature evidence below is field
+        alkalinity, not an aquarium health trial. Eight is a cautious practical ceiling relative to the wider
+        10 and below-12 guidance; zero follows habitat inclusion rather than demonstrated long-term care.
+        Tally confidence remains low."
+  maxSizeCm:
+    value:
+      male: 13
+      female: 13
+    confidence: "low"
+    rationale: "The generator proposes 13 cm for both sexes; checker-a, checker-b and checker-c propose 12 cm
+      males and 10 cm females. FishProfiles explicitly gives 13 cm for each sex, FishBase reports an unsexed
+      captive maximum of 12 cm, and Aqua-Fish gives a combined 10 to 13 cm aquarium interval with larger
+      males. Retain 13 cm for both sexes as a cautious adult space estimate rather than inventing a measured
+      10 cm female ceiling. The wider 15 cm SL in Seriously Fish and 15 cm maximum in Fishkeeping are
+      historical maxima with uncertain identity and length conventions; SL must not be silently equated with
+      total length. No typical adult size series for sexed, identified Liberian fish was found."
+    sources:
+      - kind: "database"
+        title: "FishProfiles.com: Hemichromis bimaculatus"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Hemichromis_bimaculatus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Rubricatochromis bimaculatus, species summary under the legacy URL"
+        url: "https://www.fishbase.se/summary/Hemichromis-bimaculatus.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "B-Aqua: Hemichromis bimaculatus"
+        url: "https://www.b-aqua.com/pages/fiche.aspx?id=1880"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Hemichromis bimaculatus, Jewel Cichlid"
+        url: "https://www.seriouslyfish.com/species/hemichromis-bimaculatus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aqua-Fish: Jewel cichlid, Hemichromis bimaculatus, care guide"
+        url: "https://en.aqua-fish.net/fish/jewel-cichlid"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Fishkeeper species profile: Jewel Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jewel-cichlid"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "FishProfiles.com: Hemichromis bimaculatus"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Hemichromis_bimaculatus/"
+          accessed: "2026-10-13"
+        value:
+          male: 13
+          female: 13
+        note: "Aquarium sizes, under the old name."
+      - source:
+          kind: "database"
+          title: "FishBase: Rubricatochromis bimaculatus, species summary under the legacy URL"
+          url: "https://www.fishbase.se/summary/Hemichromis-bimaculatus.html"
+          accessed: "2026-10-13"
+        value:
+          male: 12
+          female: null
+        note: "12 cm maximum in captivity without a documented sex split."
+      - source:
+          kind: "database"
+          title: "FishBase: Rubricatochromis bimaculatus, species summary under the legacy URL"
+          url: "https://www.fishbase.se/summary/Hemichromis-bimaculatus.html"
+          accessed: "2026-10-13"
+        value:
+          male: 12
+          female: 12
+        note: "captive maximum 12 cm, wild maximum 13.6 cm SL"
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Hemichromis bimaculatus, Jewel Cichlid"
+          url: "https://www.seriouslyfish.com/species/hemichromis-bimaculatus/"
+          accessed: "2026-10-13"
+        value:
+          male: 15
+          female: 15
+        note: "maximum standard length without sexes"
+      - source:
+          kind: "database"
+          title: "FishBase: Rubricatochromis bimaculatus, species summary under the legacy URL"
+          url: "https://www.fishbase.se/summary/Hemichromis-bimaculatus.html"
+          accessed: "2026-10-13"
+        value:
+          male: 12
+        note: "Captive maximum reported without a sex split; no female maximum stated and no male-only measurement
+          implied."
+      - source:
+          kind: "database"
+          title: "Aqua-Fish: Jewel cichlid, Hemichromis bimaculatus, care guide"
+          url: "https://en.aqua-fish.net/fish/jewel-cichlid"
+          accessed: "2026-10-13"
+        value:
+          min: 10
+          max: 13
+        note: "Combined aquarium size range; males described as larger."
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Hemichromis bimaculatus, Jewel Cichlid"
+          url: "https://www.seriouslyfish.com/species/hemichromis-bimaculatus/"
+          accessed: "2026-10-13"
+        value:
+          male: 15
+        note: "Unsexed maximum of 15 cm standard length. Female maximum not supplied. Species identity and
+          comparability uncertain."
+  predation:
+    value: 2
+    confidence: "low"
+    rationale: "generator proposed 2; checker-a proposed 1; checker-b proposed 2; checker-c proposed 2;
+      tiebreaker-1 proposed 2; tiebreaker-2 proposed 2. Five of six votes support level 2, so
+      qualified-majority verification is retained. AquaExperience warns about vulnerable small tankmates;
+      Aquarist Atlas describes animal feeding that includes tiny fish; FishBase prey records and historical
+      care pages also include fish. These accounts support a cautious mouth-sized-prey risk, but none measures
+      regular whole-fish consumption or a prey-size limit in verified Liberian specimens. Checker-a's level 1
+      is plausible for occasional fry consumption, but the tally selects level 2 to cover larger swallowable
+      companions. Ghanaian FishBase records fall outside the revised native range. Territorial injury is not
+      evidence of feeding, and no source establishes fish as the main diet needed for level 3. Retailer and
+      general hobby claims receive website weight. Confidence remains low."
+    sources:
+      - kind: "catalog-of-fishes"
+        title: "Eschmeyer's Catalog of Fishes: species of Rubricatochromis, update of 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Ru\
+          bricatochromis"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Lamboj, A. and Koblmüller, S. (2026). Who Is Who in Rubricatochromis Lamboj & Koblmüller, 2022
+          (Cichliformes, Cichlidae): Taxonomic Revision with Description of Four New Species and Revalidation
+          of R. fugax. Fishes 11(9), 531."
+        url: "https://doi.org/10.3390/fishes11090531"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aquarist Atlas: Rubricatochromis bimaculatus"
+        url: "https://www.cichlidatlas.com/species/rubricatochromis-bimaculatus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Food items reported for Rubricatochromis bimaculatus"
+        url: "https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=2583&genus=Rubricatochromis&species=bim\
+          aculatus"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Ecology of Rubricatochromis bimaculatus"
+        url: "https://www.fishbase.se/Ecology/FishEcologySummary.php?StockCode=2583&GenusName=Rubricatochromis&Specie\
+          sName=bimaculatus"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "AquaExperience: Hemichromis bimaculatus"
+        url: "https://aquaexperience.it/hemichromis-bimaculatus-it.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Cichlid Room Companion: Rubricatochromis bimaculatus, public summary updated 4 October 2026"
+        url: "https://cichlidae.com/species.php?id=kTVJaPvvp1Fc--pR4ajbhg"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Hemichromis bimaculatus, Jewel Cichlid"
+        url: "https://www.seriouslyfish.com/species/hemichromis-bimaculatus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishProfiles.com: Hemichromis bimaculatus"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Hemichromis_bimaculatus/"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Garnelio: red jewel care sheet with Hemichromis bimaculatus in the scientific-name field and lifalili
+          in the product title"
+        url: "https://www.garnelio.de/2x-roter-buntbarsch-hemichromis-lifalili-dnz"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Tropical Freshwater Fish, Hemichromis bimaculatus"
+        url: "https://tropicalfreshwaterfish.com/species/Hemichromis_bimaculatus.html"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Aquariadise: Jewel Cichlid care sheet"
+        url: "https://www.aquariadise.com/jewel-cichlid/"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Fishstores.org structured care guide: Jewel Cichlid, Hemichromis bimaculatus"
+        url: "https://www.fishstores.org/species/jewel-cichlid"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Aquarist Atlas: Rubricatochromis bimaculatus"
+          url: "https://www.cichlidatlas.com/species/rubricatochromis-bimaculatus/"
+          accessed: "2026-10-13"
+        value: 1
+        note: "Small fishes are supplementary prey; an opportunistic interpretation of its qualitative account. The
+          cichlidatlas and aquaristatlas addresses serve the same account and are not independent sources."
+      - source:
+          kind: "database"
+          title: "FishProfiles.com: Hemichromis bimaculatus"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Hemichromis_bimaculatus/"
+          accessed: "2026-10-13"
+        value: null
+        note: "Describes dangerous biting during fights; this does not establish consumption of fish and is excluded
+          as predation evidence."
+      - source:
+          kind: "database"
+          title: "FishBase: Food items reported for Rubricatochromis bimaculatus"
+          url: "https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=2583&genus=Rubricatochromis&species=bim\
+            aculatus"
+          accessed: "2026-10-13"
+        value: 1
+        note: "Fish material in Ghana records; prey sizes and whole-fish consumption are not specified."
+      - source:
+          kind: "database"
+          title: "AquaExperience: Hemichromis bimaculatus"
+          url: "https://aquaexperience.it/hemichromis-bimaculatus-it.html"
+          accessed: "2026-10-13"
+        value: 2
+        note: "Small-fish predation warning interpreted against the rubric; no mouth-size experiment."
+      - source:
+          kind: "database"
+          title: "FishBase: Food items reported for Rubricatochromis bimaculatus"
+          url: "https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=2583&genus=Rubricatochromis&species=bim\
+            aculatus"
+          accessed: "2026-10-13"
+        value: 2
+        note: "Provisional rubric mapping of fish in the prey list. Ghana records do not securely represent modern R.
+          bimaculatus, and consumption frequency is unspecified."
+      - source:
+          kind: "website"
+          title: "Garnelio: red jewel care sheet with Hemichromis bimaculatus in the scientific-name field and lifalili
+            in the product title"
+          url: "https://www.garnelio.de/2x-roter-buntbarsch-hemichromis-lifalili-dnz"
+          accessed: "2026-10-13"
+        value: 2
+        note: "Mouth-sized prey warning for mixed-name red jewel stock; transferred with low confidence."
+      - source:
+          kind: "website"
+          title: "Tropical Freshwater Fish, Hemichromis bimaculatus"
+          url: "https://tropicalfreshwaterfish.com/species/Hemichromis_bimaculatus.html"
+          accessed: "2026-10-13"
+        value: 1
+        note: "small fish listed among live foods"
+      - source:
+          kind: "website"
+          title: "Tropical Freshwater Fish, Hemichromis bimaculatus"
+          url: "https://tropicalfreshwaterfish.com/species/Hemichromis_bimaculatus.html"
+          accessed: "2026-10-13"
+        value: 2
+        note: "Small fish included among accepted live foods. Mouth-fit risk inferred; the source supplies no
+          numerical rubric level."
+      - source:
+          kind: "website"
+          title: "Aquariadise: Jewel Cichlid care sheet"
+          url: "https://www.aquariadise.com/jewel-cichlid/"
+          accessed: "2026-10-13"
+        value: 2
+        note: "Reports small fish in the diet and warns of consumption of small tankmates. Level 2 is an
+          interpretation without measured prey sizes."
+      - source:
+          kind: "website"
+          title: "Fishstores.org structured care guide: Jewel Cichlid, Hemichromis bimaculatus"
+          url: "https://www.fishstores.org/species/jewel-cichlid"
+          accessed: "2026-10-13"
+        value: 2
+        note: "Rubric conversion of its statement that moving prey within mouth capacity is taken; generic trade-jewel
+          account, not a verified Liberian population."
+    verification:
+      method: "qualified-majority"
+      votes:
+        agree: 5
+        total: 6
+  diet:
+    value:
+      type: "invertivore"
+      bloatSensitive: false
+      foods:
+        - "Complete insect or aquatic-animal based cichlid pellets"
+        - "Daphnia and Artemia"
+        - "Aquatic insect larvae"
+        - "Small crustaceans"
+        - "Occasional vegetable-containing prepared food"
+    confidence: "low"
+    rationale: "generator proposed {\"type\":\"invertivore\",\"bloatSensitive\":false,\"foods\":[\"Complete insect
+      or aquatic-animal based cichlid pellets\",\"Daphnia and Artemia\",\"Aquatic insect larvae\",\"Small
+      crustaceans\",\"Occasional vegetable-containing prepared food\"]}; checker-a proposed
+      {\"type\":\"omnivore\",\"bloatSensitive\":false,\"foods\":[\"insects\",\"crustaceans\",\"small
+      fish\",\"worms\",\"vegetable matter\",\"flakes\",\"pellets\"]}; checker-b proposed
+      {\"type\":\"invertivore\",\"bloatSensitive\":false,\"foods\":[\"Insect larvae\",\"Small
+      crustaceans\",\"Balanced cichlid pellets\",\"Frozen invertebrates\"]}; checker-c proposed
+      {\"type\":\"omnivore\",\"bloatSensitive\":false,\"foods\":[\"aquatic insect larvae\",\"small
+      crustaceans\",\"worms\",\"small fish\",\"balanced cichlid pellets\",\"supplementary vegetable food\"]};
+      tiebreaker-1 proposed {\"type\":\"invertivore\",\"bloatSensitive\":false}; tiebreaker-2 proposed
+      {\"type\":\"invertivore\",\"bloatSensitive\":false}. Four of six votes agree on invertivore with
+      bloatSensitive false, which is the tally's qualified-majority decision. Fischlexikon and Aquarist Atlas
+      emphasize insects and small crustaceans as natural foods. Checker-a and checker-c instead propose
+      omnivore from mixed aquarium diets in FishProfiles, Seriously Fish and Fishkeeping. Acceptance of
+      vegetable supplements does not establish that plants are a major wild resource, so it does not displace
+      the invertebrate-led classification. The decided food list is retained exactly. No verified Liberian
+      stomach-content series was found, and the Ghanaian FishBase record and old Hemichromis genus account are
+      indirect. False for bloatSensitive records the absence of an established protein-related predisposition
+      in the reviewed guidance; it does not promise immunity to digestive illness. Low confidence is required
+      by the tally."
+    sources:
+      - kind: "literature"
+        title: "Lamboj, A. and Koblmüller, S. (2026). Who Is Who in Rubricatochromis Lamboj & Koblmüller, 2022
+          (Cichliformes, Cichlidae): Taxonomic Revision with Description of Four New Species and Revalidation
+          of R. fugax. Fishes 11(9), 531."
+        url: "https://doi.org/10.3390/fishes11090531"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Fischlexikon: Roter Buntbarsch, Rubricatochromis bimaculatus"
+        url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000000377"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aquarist Atlas: Rubricatochromis bimaculatus"
+        url: "https://www.cichlidatlas.com/species/rubricatochromis-bimaculatus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Hemichromis bimaculatus, Jewel Cichlid"
+        url: "https://www.seriouslyfish.com/species/hemichromis-bimaculatus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishProfiles.com: Hemichromis bimaculatus"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Hemichromis_bimaculatus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Ecology of Rubricatochromis bimaculatus"
+        url: "https://www.fishbase.se/Ecology/FishEcologySummary.php?StockCode=2583&GenusName=Rubricatochromis&Specie\
+          sName=bimaculatus"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Food items reported for Rubricatochromis bimaculatus"
+        url: "https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=2583&genus=Rubricatochromis&species=bim\
+          aculatus"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsallskapet: Hemichromis genus register"
+        url: "https://www.ciklid.org/artregister/art_slakte.php?ID=Hemichromis"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aqua-Fish: Jewel cichlid, Hemichromis bimaculatus, care guide"
+        url: "https://en.aqua-fish.net/fish/jewel-cichlid"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Fishkeeping.co.uk: Jewel Cichlid, Hemichromis bimaculatus, caresheet 189"
+        url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=189"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Tropical Freshwater Fish, Hemichromis bimaculatus"
+        url: "https://tropicalfreshwaterfish.com/species/Hemichromis_bimaculatus.html"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Fishkeeper species profile: Jewel Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jewel-cichlid"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Fischlexikon: Roter Buntbarsch, Rubricatochromis bimaculatus"
+          url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000000377"
+          accessed: "2026-10-13"
+        value:
+          type: "invertivore"
+          bloatSensitive: false
+        note: "Natural food account emphasizes aquatic insects and small crustaceans; no protein-sensitive syndrome is
+          stated."
+      - source:
+          kind: "database"
+          title: "Aquarist Atlas: Rubricatochromis bimaculatus"
+          url: "https://www.cichlidatlas.com/species/rubricatochromis-bimaculatus/"
+          accessed: "2026-10-13"
+        value:
+          type: "invertivore"
+          bloatSensitive: false
+        note: "Natural food account emphasizes invertebrates; no protein-sensitive syndrome is stated. The
+          cichlidatlas and aquaristatlas addresses serve the same account and are not independent sources."
+      - source:
+          kind: "database"
+          title: "FishProfiles.com: Hemichromis bimaculatus"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Hemichromis_bimaculatus/"
+          accessed: "2026-10-13"
+        value:
+          type: "omnivore"
+          bloatSensitive: false
+        note: "Aquarium feeding category; plant and animal prepared foods are accepted."
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Hemichromis bimaculatus, Jewel Cichlid"
+          url: "https://www.seriouslyfish.com/species/hemichromis-bimaculatus/"
+          accessed: "2026-10-13"
+        value:
+          type: "omnivore"
+      - source:
+          kind: "database"
+          title: "FishProfiles.com: Hemichromis bimaculatus"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Hemichromis_bimaculatus/"
+          accessed: "2026-10-13"
+        value:
+          type: "omnivore"
+      - source:
+          kind: "database"
+          title: "FishBase: Ecology of Rubricatochromis bimaculatus"
+          url: "https://www.fishbase.se/Ecology/FishEcologySummary.php?StockCode=2583&GenusName=Rubricatochromis&Specie\
+            sName=bimaculatus"
+          accessed: "2026-10-13"
+        value:
+          type: "invertivore"
+        note: "Animal feeding with insects and fish scales; historical identity is uncertain."
+      - source:
+          kind: "database"
+          title: "Nordiska Ciklidsallskapet: Hemichromis genus register"
+          url: "https://www.ciklid.org/artregister/art_slakte.php?ID=Hemichromis"
+          accessed: "2026-10-13"
+        value:
+          type: "invertivore"
+        note: "Small-invertebrate diet is given at legacy genus level, not tested on confirmed Liberian fish."
+      - source:
+          kind: "database"
+          title: "Aqua-Fish: Jewel cichlid, Hemichromis bimaculatus, care guide"
+          url: "https://en.aqua-fish.net/fish/jewel-cichlid"
+          accessed: "2026-10-13"
+        value:
+          type: "omnivore"
+          bloatSensitive: false
+        note: "Mixed captive ration; the bloat flag is inferred, not explicitly measured."
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Hemichromis bimaculatus, Jewel Cichlid"
+          url: "https://www.seriouslyfish.com/species/hemichromis-bimaculatus/"
+          accessed: "2026-10-13"
+        value:
+          type: "omnivore"
+          bloatSensitive: false
+        note: "Animal foods and vegetable supplementation. Bloat flag inferred from the supported diet, not explicitly
+          assessed."
+      - source:
+          kind: "database"
+          title: "Fishkeeping.co.uk: Jewel Cichlid, Hemichromis bimaculatus, caresheet 189"
+          url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=189"
+          accessed: "2026-10-13"
+        value:
+          type: "omnivore"
+          bloatSensitive: false
+        note: "Mixed prepared foods and animal prey with vegetable supplementation. Bloat flag not explicitly
+          assessed."
+      - source:
+          kind: "website"
+          title: "Tropical Freshwater Fish, Hemichromis bimaculatus"
+          url: "https://tropicalfreshwaterfish.com/species/Hemichromis_bimaculatus.html"
+          accessed: "2026-10-13"
+        value:
+          type: "invertivore"
+          bloatSensitive: false
+        note: "Diet classification inferred from its animal-prey recommendations, including small fish; no dietary
+          proportions or bloat study."
+    verification:
+      method: "qualified-majority"
+      votes:
+        agree: 4
+        total: 6
+  aggressionConspecific:
+    value: 4
+    confidence: "medium"
+    rationale: "All four profiles propose level 4. Seriously Fish describes potentially fatal failed pairings,
+      attacks on an unreceptive partner and deaths of surplus adults after pairing. Fishkeeping independently
+      recommends a self-selected pair and removal of the remaining fish. These recurring separation
+      requirements support level 4 even when a bonded pair can coexist. Repeated care accounts increase
+      confidence over an inference alone, but their unresolved trade identities prevent high confidence for
+      the revised species."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Hemichromis bimaculatus, Jewel Cichlid"
+        url: "https://www.seriouslyfish.com/species/hemichromis-bimaculatus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishProfiles.com: Hemichromis bimaculatus"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Hemichromis_bimaculatus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Fishkeeping.co.uk: Jewel Cichlid, Hemichromis bimaculatus, caresheet 189"
+        url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=189"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aqua-Fish: Jewel cichlid, Hemichromis bimaculatus, care guide"
+        url: "https://en.aqua-fish.net/fish/jewel-cichlid"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Tropical Freshwater Fish, Hemichromis bimaculatus"
+        url: "https://tropicalfreshwaterfish.com/species/Hemichromis_bimaculatus.html"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Fishkeeper species profile: Jewel Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jewel-cichlid"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Aquariadise: Jewel Cichlid care sheet"
+        url: "https://www.aquariadise.com/jewel-cichlid/"
+        accessed: "2026-10-13"
+      - kind: "archive"
+        title: "cichlids.com forum thread 24546"
+        url: "https://www.cichlids.com/disc/read.php?2,24546"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Hemichromis bimaculatus, Jewel Cichlid"
+          url: "https://www.seriouslyfish.com/species/hemichromis-bimaculatus/"
+          accessed: "2026-10-13"
+        value: 4
+        note: "Forced adult pairing and surplus fish can result in deaths."
+      - source:
+          kind: "database"
+          title: "Fishkeeping.co.uk: Jewel Cichlid, Hemichromis bimaculatus, caresheet 189"
+          url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=189"
+          accessed: "2026-10-13"
+        value: 3
+        note: "Aggression toward the same species and difficulties with forced pairing."
+      - source:
+          kind: "database"
+          title: "Aqua-Fish: Jewel cichlid, Hemichromis bimaculatus, care guide"
+          url: "https://en.aqua-fish.net/fish/jewel-cichlid"
+          accessed: "2026-10-13"
+        value: 3
+        note: "Territorial behavior and stronger aggression during reproduction."
+      - source:
+          kind: "website"
+          title: "Fishkeeper species profile: Jewel Cichlid"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jewel-cichlid"
+          accessed: "2026-10-13"
+        value: 4
+        note: "Warns that an incompatible stronger fish can kill the other fish. The current page identifies R.
+          guttatus; transfer to bimaculatus is untested."
+      - source:
+          kind: "archive"
+          title: "cichlids.com forum thread 24546"
+          url: "https://www.cichlids.com/disc/read.php?2,24546"
+          accessed: "2026-10-13"
+        value: 0
+        note: "Keeper reports calm trade jewels of uncertain identity; historical geography in the thread is
+          unreliable. Does not override paired adult care literature."
+  aggressionHeterospecific:
+    value: 4
+    confidence: "medium"
+    rationale: "The generator, checker-b and checker-c propose level 4; checker-a proposes level 3 from
+      conditional robust tankmate recommendations and milder behavior outside spawning. Seriously Fish
+      explicitly warns that brood defense may kill remaining tankmates, while Fishkeeping requires their
+      removal at spawning. Level 4 captures this recurring danger to companions under the recommended paired
+      social unit. It is not an assertion of constant attacks. Historical trade identity and limited reports
+      of authenticated Liberian fish cap confidence at medium."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Hemichromis bimaculatus, Jewel Cichlid"
+        url: "https://www.seriouslyfish.com/species/hemichromis-bimaculatus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishProfiles.com: Hemichromis bimaculatus"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Hemichromis_bimaculatus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Fishkeeping.co.uk: Jewel Cichlid, Hemichromis bimaculatus, caresheet 189"
+        url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=189"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aqua-Fish: Jewel cichlid, Hemichromis bimaculatus, care guide"
+        url: "https://en.aqua-fish.net/fish/jewel-cichlid"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Aquariadise: Jewel Cichlid care sheet"
+        url: "https://www.aquariadise.com/jewel-cichlid/"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Hemichromis bimaculatus, Jewel Cichlid"
+          url: "https://www.seriouslyfish.com/species/hemichromis-bimaculatus/"
+          accessed: "2026-10-13"
+        value: 4
+        note: "Breeding fish can kill other occupants."
+      - source:
+          kind: "database"
+          title: "FishProfiles.com: Hemichromis bimaculatus"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Hemichromis_bimaculatus/"
+          accessed: "2026-10-13"
+        value: 4
+        note: "Territorial biting can cause severe and fatal injuries."
+      - source:
+          kind: "database"
+          title: "Fishkeeping.co.uk: Jewel Cichlid, Hemichromis bimaculatus, caresheet 189"
+          url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=189"
+          accessed: "2026-10-13"
+        value: 3
+        note: "Community keeping is conditional, with removal of companions during spawning."
+      - source:
+          kind: "database"
+          title: "Aqua-Fish: Jewel cichlid, Hemichromis bimaculatus, care guide"
+          url: "https://en.aqua-fish.net/fish/jewel-cichlid"
+          accessed: "2026-10-13"
+        value: 3
+        note: "Robust similarly sized companions are conditional options."
+      - source:
+          kind: "website"
+          title: "Aquariadise: Jewel Cichlid care sheet"
+          url: "https://www.aquariadise.com/jewel-cichlid/"
+          accessed: "2026-10-13"
+        value: 4
+        note: "Describes injury or death of other occupants during breeding."
+  territory:
+    value:
+      size: "large"
+      breedingOnly: false
+    confidence: "medium"
+    rationale: "All four profiles propose a large territory that is not restricted to breeding. General
+      territoriality and the much stronger brood-care response are repeatedly described in Seriously Fish and
+      FishProfiles. Large is a spatial interpretation of the extensive area a pair can defend, not a measured
+      wild diameter. The independent behavioral accounts support medium confidence despite missing territory
+      measurements for identified fish."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Hemichromis bimaculatus, Jewel Cichlid"
+        url: "https://www.seriouslyfish.com/species/hemichromis-bimaculatus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Fischlexikon: Roter Buntbarsch, Rubricatochromis bimaculatus"
+        url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000000377"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishProfiles.com: Hemichromis bimaculatus"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Hemichromis_bimaculatus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aqua-Fish: Jewel cichlid, Hemichromis bimaculatus, care guide"
+        url: "https://en.aqua-fish.net/fish/jewel-cichlid"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Fishkeeper species profile: Jewel Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jewel-cichlid"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Hemichromis bimaculatus, Jewel Cichlid"
+          url: "https://www.seriouslyfish.com/species/hemichromis-bimaculatus/"
+          accessed: "2026-10-13"
+        value:
+          size: "large"
+          breedingOnly: false
+        note: "Qualitative territorial behavior and strong breeding defense; no numerical area measured."
+      - source:
+          kind: "website"
+          title: "Fishkeeper species profile: Jewel Cichlid"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jewel-cichlid"
+          accessed: "2026-10-13"
+        value:
+          size: "large"
+          breedingOnly: false
+        note: "Spatial category inferred from strong territorial behavior and minimum four-foot tank. The current page
+          identifies R. guttatus; transfer to bimaculatus is untested."
+  habitatZones:
+    value:
+      - "sand"
+      - "plants"
+      - "wood"
+      - "rock"
+    confidence: "medium"
+    rationale: "All four profiles agree on sand, plants, wood and rock. The revision places identified fish in
+      forest-associated Liberian waters; FishBase adds sediment-bottomed inland channels, and care databases
+      specify vegetation, woody shelter and firm egg-laying surfaces. These aquarium functions support the
+      set. Rock denotes cover and spawning surfaces rather than a Rift Lake grazing specialization. Older
+      microhabitat accounts can include other jewels, so confidence is medium."
+    sources:
+      - kind: "literature"
+        title: "Lamboj, A. and Koblmüller, S. (2026). Who Is Who in Rubricatochromis Lamboj & Koblmüller, 2022
+          (Cichliformes, Cichlidae): Taxonomic Revision with Description of Four New Species and Revalidation
+          of R. fugax. Fishes 11(9), 531."
+        url: "https://doi.org/10.3390/fishes11090531"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Rubricatochromis bimaculatus, species summary under the legacy URL"
+        url: "https://www.fishbase.se/summary/Hemichromis-bimaculatus.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Hemichromis bimaculatus, Jewel Cichlid"
+        url: "https://www.seriouslyfish.com/species/hemichromis-bimaculatus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aqua-Fish: Jewel cichlid, Hemichromis bimaculatus, care guide"
+        url: "https://en.aqua-fish.net/fish/jewel-cichlid"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Fishkeeper species profile: Jewel Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jewel-cichlid"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "FishBase: Rubricatochromis bimaculatus, species summary under the legacy URL"
+          url: "https://www.fishbase.se/summary/Hemichromis-bimaculatus.html"
+          accessed: "2026-10-13"
+        value:
+          - "sand"
+          - "plants"
+        note: "Sandy and muddy channels in forested habitat."
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Hemichromis bimaculatus, Jewel Cichlid"
+          url: "https://www.seriouslyfish.com/species/hemichromis-bimaculatus/"
+          accessed: "2026-10-13"
+        value:
+          - "plants"
+          - "wood"
+          - "rock"
+        note: "Aquarium shelter and spawning structures."
+      - source:
+          kind: "database"
+          title: "FishBase: Rubricatochromis bimaculatus, species summary under the legacy URL"
+          url: "https://www.fishbase.se/summary/Hemichromis-bimaculatus.html"
+          accessed: "2026-10-13"
+        value:
+          - "sand"
+        note: "Canal substrates include sand and mud."
+      - source:
+          kind: "website"
+          title: "Fishkeeper species profile: Jewel Cichlid"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jewel-cichlid"
+          accessed: "2026-10-13"
+        value:
+          - "sand"
+          - "plants"
+          - "wood"
+          - "rock"
+        note: "Substrate and cover specified in the aquarium account. The current page identifies R. guttatus;
+          transfer to bimaculatus is untested."
+  social:
+    value:
+      structure: "pair"
+    confidence: "medium"
+    rationale: "All four profiles agree on a compatible adult pair. FishBase and independent care databases
+      recommend pair keeping, with surplus adults removed after a pair forms. A temporary juvenile selection
+      group is not the adult stocking unit. Repeated independent advice supports medium confidence; it does
+      not guarantee that any purchased male and female will accept each other."
+    sources:
+      - kind: "database"
+        title: "FishBase: Rubricatochromis bimaculatus, species summary under the legacy URL"
+        url: "https://www.fishbase.se/summary/Hemichromis-bimaculatus.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Hemichromis bimaculatus, Jewel Cichlid"
+        url: "https://www.seriouslyfish.com/species/hemichromis-bimaculatus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Fishkeeping.co.uk: Jewel Cichlid, Hemichromis bimaculatus, caresheet 189"
+        url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=189"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Cichlid Room Companion: Rubricatochromis bimaculatus, public summary updated 4 October 2026"
+        url: "https://cichlidae.com/species.php?id=kTVJaPvvp1Fc--pR4ajbhg"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aqua-Fish: Jewel cichlid, Hemichromis bimaculatus, care guide"
+        url: "https://en.aqua-fish.net/fish/jewel-cichlid"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Tropical Freshwater Fish, Hemichromis bimaculatus"
+        url: "https://tropicalfreshwaterfish.com/species/Hemichromis_bimaculatus.html"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Fishkeeper species profile: Jewel Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jewel-cichlid"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "FishBase: Rubricatochromis bimaculatus, species summary under the legacy URL"
+          url: "https://www.fishbase.se/summary/Hemichromis-bimaculatus.html"
+          accessed: "2026-10-13"
+        value:
+          structure: "pair"
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Hemichromis bimaculatus, Jewel Cichlid"
+          url: "https://www.seriouslyfish.com/species/hemichromis-bimaculatus/"
+          accessed: "2026-10-13"
+        value:
+          structure: "pair"
+      - source:
+          kind: "database"
+          title: "Aqua-Fish: Jewel cichlid, Hemichromis bimaculatus, care guide"
+          url: "https://en.aqua-fish.net/fish/jewel-cichlid"
+          accessed: "2026-10-13"
+        value:
+          structure: "pair"
+      - source:
+          kind: "website"
+          title: "Fishkeeper species profile: Jewel Cichlid"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jewel-cichlid"
+          accessed: "2026-10-13"
+        value:
+          structure: "pair"
+        note: "Compatible adult pair with surplus youngsters rehomed. The current page identifies R. guttatus;
+          transfer to bimaculatus is untested."
+  speciesOnly:
+    value: false
+    confidence: "low"
+    rationale: "generator proposed false; checker-a proposed false; checker-b proposed false; checker-c proposed
+      false. All four full profiles propose false; the tally records unanimous 4 of 4 verification with low
+      confidence. Seriously Fish and Fishkeeping permit large tetras and catfish under restrictive conditions,
+      so the rubric's general own-species-only flag is false. Their brood-care advice can still require
+      removal of every companion. A dedicated compatible-pair aquarium is the preferred arrangement at the
+      minimum size. These older reports mostly involve unverified trade jewels, and the Fishkeeper page now
+      explicitly describes R. guttatus; its advice is related-species corroboration only."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Hemichromis bimaculatus, Jewel Cichlid"
+        url: "https://www.seriouslyfish.com/species/hemichromis-bimaculatus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Fishkeeping.co.uk: Jewel Cichlid, Hemichromis bimaculatus, caresheet 189"
+        url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=189"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishProfiles.com: Hemichromis bimaculatus"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Hemichromis_bimaculatus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aqua-Fish: Jewel cichlid, Hemichromis bimaculatus, care guide"
+        url: "https://en.aqua-fish.net/fish/jewel-cichlid"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "AquaExperience: Hemichromis bimaculatus"
+        url: "https://aquaexperience.it/hemichromis-bimaculatus-it.html"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Fishkeeper species profile: Jewel Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jewel-cichlid"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Hemichromis bimaculatus, Jewel Cichlid"
+          url: "https://www.seriouslyfish.com/species/hemichromis-bimaculatus/"
+          accessed: "2026-10-13"
+        value: false
+        note: "Conditional mixed-tank options are given, with removal during breeding."
+      - source:
+          kind: "database"
+          title: "Fishkeeping.co.uk: Jewel Cichlid, Hemichromis bimaculatus, caresheet 189"
+          url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=189"
+          accessed: "2026-10-13"
+        value: false
+        note: "Conditional Congo tetra and catfish options are given, with removal during breeding."
+      - source:
+          kind: "database"
+          title: "Aqua-Fish: Jewel cichlid, Hemichromis bimaculatus, care guide"
+          url: "https://en.aqua-fish.net/fish/jewel-cichlid"
+          accessed: "2026-10-13"
+        value: false
+        note: "Allows robust companions; also recommends dedicated tanks."
+      - source:
+          kind: "database"
+          title: "AquaExperience: Hemichromis bimaculatus"
+          url: "https://aquaexperience.it/hemichromis-bimaculatus-it.html"
+          accessed: "2026-10-13"
+        value: false
+        note: "Allows robust companions in large tanks while preferring a dedicated pair."
+      - source:
+          kind: "website"
+          title: "Fishkeeper species profile: Jewel Cichlid"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jewel-cichlid"
+          accessed: "2026-10-13"
+        value: false
+        note: "Permits carefully selected tankmates but expects removal at spawning. The current page identifies R.
+          guttatus; transfer to bimaculatus is untested."
+    verification:
+      method: "unanimous"
+      votes:
+        agree: 4
+        total: 4
+  hybridGroups:
+    value:
+      - "rubricatochromis"
+    confidence: "low"
+    rationale: "generator proposed [\"rubricatochromis\"]; checker-a proposed []; checker-b proposed []; checker-c
+      proposed [\"rubricatochromis\"]; tiebreaker-1 proposed [\"rubricatochromis\"]; tiebreaker-2 proposed
+      [\"rubricatochromis\"]. The generator, checker-c and both tie-breakers propose rubricatochromis;
+      checker-a and checker-b propose an empty list because no identified bimaculatus cross was found. The
+      tally decides [rubricatochromis] by qualified majority, 4 of 6, at low confidence. Under the rubric,
+      general crossing warnings and close relationship can justify a presumed group without a documented named
+      cross. FishProfiles warns about mixing jewel species, Horvath in Practical Fishkeeping independently
+      describes aquarium crossing among red jewels, and Woodland in Tropical Fish Hobbyist discusses possible
+      mixed ancestry of domestic stock. The Catalog and 2026 revision define the ten valid members but do not
+      prove crossability. Aquarist Atlas contributes a general genus precaution rather than an independent
+      named case. No freely chosen cross involving verified Liberian bimaculatus is established, so the added
+      group has basis presumed and excludes the five-spotted Hemichromis species."
+    sources:
+      - kind: "catalog-of-fishes"
+        title: "Eschmeyer's Catalog of Fishes: species of Rubricatochromis, update of 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Ru\
+          bricatochromis"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Lamboj, A. and Koblmüller, S. (2026). Who Is Who in Rubricatochromis Lamboj & Koblmüller, 2022
+          (Cichliformes, Cichlidae): Taxonomic Revision with Description of Four New Species and Revalidation
+          of R. fugax. Fishes 11(9), 531."
+        url: "https://doi.org/10.3390/fishes11090531"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Horvath. The stunning cichlid of Lake Turkana. Practical Fishkeeping."
+        url: "https://www.practicalfishkeeping.co.uk/features/the-stunning-cichlid-of-lake-turkana/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Woodland: Breeding Hemichromis lifalili. Tropical Fish Hobbyist."
+        url: "https://www.tfhmagazine.com/articles/freshwater/breeding-hemichromis-lifalili"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishProfiles.com: Hemichromis bimaculatus"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Hemichromis_bimaculatus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aquarist Atlas: Rubricatochromis bimaculatus"
+        url: "https://www.cichlidatlas.com/species/rubricatochromis-bimaculatus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Hemichromis bimaculatus, Jewel Cichlid"
+        url: "https://www.seriouslyfish.com/species/hemichromis-bimaculatus/"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "catalog-of-fishes"
+          title: "Eschmeyer's Catalog of Fishes: species of Rubricatochromis, update of 21 September 2026"
+          url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Ru\
+            bricatochromis"
+          accessed: "2026-10-13"
+        value: []
+        note: "Defines valid species identity; supplies no crossing claim."
+      - source:
+          kind: "catalog-of-fishes"
+          title: "Eschmeyer's Catalog of Fishes: species of Rubricatochromis, update of 21 September 2026"
+          url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Ru\
+            bricatochromis"
+          accessed: "2026-10-13"
+        value:
+          - "rubricatochromis"
+        note: "Defines the ten currently valid members only. Does not state crossability."
+      - source:
+          kind: "literature"
+          title: "Lamboj, A. and Koblmüller, S. (2026). Who Is Who in Rubricatochromis Lamboj & Koblmüller, 2022
+            (Cichliformes, Cichlidae): Taxonomic Revision with Description of Four New Species and
+            Revalidation of R. fugax. Fishes 11(9), 531."
+          url: "https://doi.org/10.3390/fishes11090531"
+          accessed: "2026-10-13"
+        value: []
+        note: "No confirmed cross involving the revised Liberian species reported."
+      - source:
+          kind: "literature"
+          title: "Woodland: Breeding Hemichromis lifalili. Tropical Fish Hobbyist."
+          url: "https://www.tfhmagazine.com/articles/freshwater/breeding-hemichromis-lifalili"
+          accessed: "2026-10-13"
+        value: []
+        note: "General suspected domestic-stock admixture without verified named parents."
+      - source:
+          kind: "literature"
+          title: "Horvath. The stunning cichlid of Lake Turkana. Practical Fishkeeping."
+          url: "https://www.practicalfishkeeping.co.uk/features/the-stunning-cichlid-of-lake-turkana/"
+          accessed: "2026-10-13"
+        value:
+          - "rubricatochromis"
+        note: "Independent genus-wide aquarium crossing warning. No individual bimaculatus cross described."
+      - source:
+          kind: "literature"
+          title: "Woodland: Breeding Hemichromis lifalili. Tropical Fish Hobbyist."
+          url: "https://www.tfhmagazine.com/articles/freshwater/breeding-hemichromis-lifalili"
+          accessed: "2026-10-13"
+        value:
+          - "rubricatochromis"
+        note: "Possible mixed ancestry in domesticated red jewel stocks, not a documented cross under free partner
+          choice."
+      - source:
+          kind: "literature"
+          title: "Lamboj, A. and Koblmüller, S. (2026). Who Is Who in Rubricatochromis Lamboj & Koblmüller, 2022
+            (Cichliformes, Cichlidae): Taxonomic Revision with Description of Four New Species and
+            Revalidation of R. fugax. Fishes 11(9), 531."
+          url: "https://doi.org/10.3390/fishes11090531"
+          accessed: "2026-10-13"
+        value:
+          - "rubricatochromis"
+        note: "Inference of presumed membership from the related red jewel genus. This source does not report a
+          bimaculatus cross."
+      - source:
+          kind: "database"
+          title: "FishProfiles.com: Hemichromis bimaculatus"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Hemichromis_bimaculatus/"
+          accessed: "2026-10-13"
+        value:
+          - "rubricatochromis"
+        note: "General crossing warning, interpreted as a proposed presumed group; no named breeding event."
+      - source:
+          kind: "database"
+          title: "Aquarist Atlas: Rubricatochromis bimaculatus"
+          url: "https://www.cichlidatlas.com/species/rubricatochromis-bimaculatus/"
+          accessed: "2026-10-13"
+        value:
+          - "rubricatochromis"
+        note: "General genus-level crossing precaution, not proof of a particular cross. The cichlidatlas and
+          aquaristatlas addresses serve the same account and are not independent sources."
+    verification:
+      method: "qualified-majority"
+      votes:
+        agree: 4
+        total: 6
+  coloration:
+    value:
+      baseColors:
+        - "brown"
+        - "red"
+        - "black"
+      pattern: "spots"
+    confidence: "high"
+    rationale: "The generator, checker-b and checker-c propose brown, red and black with spots; checker-a omits
+      black from the dominant colors. The 2026 revision directly describes a brown resting ground color that
+      becomes red during territorial or reproductive activity, together with black flank and caudal marks.
+      FishBase independently records dark lateral blotches, so black is retained. Iridescent head/body dots
+      are scarce or absent in true bimaculatus, although some male fins carry a few. Dense turquoise spangling
+      in old trade accounts is not the identification template. Mark visibility changes with state; spot count
+      alone is inadequate."
+    sources:
+      - kind: "catalog-of-fishes"
+        title: "Eschmeyer's Catalog of Fishes: species of Rubricatochromis, update of 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Ru\
+          bricatochromis"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Lamboj, A. and Koblmüller, S. (2026). Who Is Who in Rubricatochromis Lamboj & Koblmüller, 2022
+          (Cichliformes, Cichlidae): Taxonomic Revision with Description of Four New Species and Revalidation
+          of R. fugax. Fishes 11(9), 531."
+        url: "https://doi.org/10.3390/fishes11090531"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Hemichromis bimaculatus, Jewel Cichlid"
+        url: "https://www.seriouslyfish.com/species/hemichromis-bimaculatus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Rubricatochromis bimaculatus, species summary under the legacy URL"
+        url: "https://www.fishbase.se/summary/Hemichromis-bimaculatus.html"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Lamboj, A. and Koblmüller, S. (2026). Who Is Who in Rubricatochromis Lamboj & Koblmüller, 2022
+            (Cichliformes, Cichlidae): Taxonomic Revision with Description of Four New Species and
+            Revalidation of R. fugax. Fishes 11(9), 531."
+          url: "https://doi.org/10.3390/fishes11090531"
+          accessed: "2026-10-13"
+        value:
+          baseColors:
+            - "brown"
+            - "red"
+            - "black"
+          pattern: "spots"
+        note: "Description of live Liberian fish; reflected fin dots may occur but are not dominant body colors."
+      - source:
+          kind: "database"
+          title: "FishBase: Rubricatochromis bimaculatus, species summary under the legacy URL"
+          url: "https://www.fishbase.se/summary/Hemichromis-bimaculatus.html"
+          accessed: "2026-10-13"
+        value:
+          baseColors:
+            - "black"
+          pattern: "spots"
+        note: "Reports the diagnostic dark blotches; not the full live coloration."
+  feedingSpeed:
+    value: "normal"
+    confidence: "low"
+    rationale: "The generator, checker-b and checker-c propose normal; checker-a proposes hasty solely from model
+      knowledge. FishProfiles describes ordinary food acceptance and occasional guarding but does not
+      establish indiscriminate rushing until all food is gone. Normal is retained as the least speculative
+      working category. Neither competitive feeding speed nor feeding time has been measured for identified
+      Liberian pairs, so confidence remains low."
+    sources:
+      - kind: "database"
+        title: "FishProfiles.com: Hemichromis bimaculatus"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Hemichromis_bimaculatus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Hemichromis bimaculatus, Jewel Cichlid"
+        url: "https://www.seriouslyfish.com/species/hemichromis-bimaculatus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aqua-Fish: Jewel cichlid, Hemichromis bimaculatus, care guide"
+        url: "https://en.aqua-fish.net/fish/jewel-cichlid"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Aquariadise: Jewel Cichlid care sheet"
+        url: "https://www.aquariadise.com/jewel-cichlid/"
+        accessed: "2026-10-13"
+      - kind: "model-knowledge"
+        title: "Husbandry experience with jewel cichlids"
+        accessed: "2026-10-13"
+      - kind: "model-knowledge"
+        title: "Checker inference where species-specific measurements are unavailable"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "FishProfiles.com: Hemichromis bimaculatus"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Hemichromis_bimaculatus/"
+          accessed: "2026-10-13"
+        value: "normal"
+        note: "Inferred from ordinary feeding and occasional food guarding, not a timed comparison."
+      - source:
+          kind: "database"
+          title: "Aqua-Fish: Jewel cichlid, Hemichromis bimaculatus, care guide"
+          url: "https://en.aqua-fish.net/fish/jewel-cichlid"
+          accessed: "2026-10-13"
+        value: "normal"
+        note: "Inference from food acceptance, not a timed comparison."
+      - source:
+          kind: "website"
+          title: "Aquariadise: Jewel Cichlid care sheet"
+          url: "https://www.aquariadise.com/jewel-cichlid/"
+          accessed: "2026-10-13"
+        value: "normal"
+        note: "Broad acceptance of offered foods. Speed category inferred rather than stated."
+  minTank:
+    value:
+      volumeL: 200
+      lengthCm: 120
+      depthCm: 40
+    confidence: "low"
+    rationale: "For one established adult pair, the generator proposes 200 L with a 120 by 40 cm base; checker-a
+      proposes 150 L and 100 by 40 cm; checker-b and checker-c propose 180 L and 120 by 40 cm. Fischlexikon
+      gives at least 200 L for a pair, Seriously Fish gives 120 by 30 cm and about 108 L, and AquaExperience
+      recommends 180 to 240 L with a 100 to 120 cm long side. TropicalFreshwaterFish recommends about 190 L
+      and 122 cm for larger adults. Retain the generator's 200 L and 120 by 40 cm base as a cautious planning
+      minimum that allows shelter and escape routes. The 40 cm depth is an adjudicated design margin, not a
+      published physiological threshold. Companions need substantially greater space, and even the minimum
+      cannot make an incompatible pair safe."
+    sources:
+      - kind: "database"
+        title: "Fischlexikon: Roter Buntbarsch, Rubricatochromis bimaculatus"
+        url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000000377"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Hemichromis bimaculatus, Jewel Cichlid"
+        url: "https://www.seriouslyfish.com/species/hemichromis-bimaculatus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Fishkeeping.co.uk: Jewel Cichlid, Hemichromis bimaculatus, caresheet 189"
+        url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=189"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Rubricatochromis bimaculatus, species summary under the legacy URL"
+        url: "https://www.fishbase.se/summary/Hemichromis-bimaculatus.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "AquaExperience: Hemichromis bimaculatus"
+        url: "https://aquaexperience.it/hemichromis-bimaculatus-it.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aqua-Fish: Jewel cichlid, Hemichromis bimaculatus, care guide"
+        url: "https://en.aqua-fish.net/fish/jewel-cichlid"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Fishkeeper species profile: Jewel Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jewel-cichlid"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Tropical Freshwater Fish, Hemichromis bimaculatus"
+        url: "https://tropicalfreshwaterfish.com/species/Hemichromis_bimaculatus.html"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Fischlexikon: Roter Buntbarsch, Rubricatochromis bimaculatus"
+          url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000000377"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 200
+          lengthCm: null
+          depthCm: null
+        note: "Minimum volume for a pair; footprint not specified."
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Hemichromis bimaculatus, Jewel Cichlid"
+          url: "https://www.seriouslyfish.com/species/hemichromis-bimaculatus/"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 108
+          lengthCm: 120
+          depthCm: 30
+        note: "Legacy pair and breeding recommendation; depth is increased in the selected value."
+      - source:
+          kind: "database"
+          title: "AquaExperience: Hemichromis bimaculatus"
+          url: "https://aquaexperience.it/hemichromis-bimaculatus-it.html"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 180
+          lengthCm: 120
+        note: "Recommended volume is 180 to 240 L and length 100 to 120 cm; 40 cm depth is checker inference."
+      - source:
+          kind: "database"
+          title: "Aqua-Fish: Jewel cichlid, Hemichromis bimaculatus, care guide"
+          url: "https://en.aqua-fish.net/fish/jewel-cichlid"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 115
+        note: "Pair-only minimum; 200 L or more with companions."
+      - source:
+          kind: "database"
+          title: "Fishkeeping.co.uk: Jewel Cichlid, Hemichromis bimaculatus, caresheet 189"
+          url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=189"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 120
+          lengthCm: 121.9
+          depthCm: 30.5
+        note: "Care sheet states 120 L and a 48 by 12 inch base."
+      - source:
+          kind: "website"
+          title: "Tropical Freshwater Fish, Hemichromis bimaculatus"
+          url: "https://tropicalfreshwaterfish.com/species/Hemichromis_bimaculatus.html"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 190
+          lengthCm: 122
+        note: "Adult recommendation is 50 US gallons and 48 inches long. Depth not supplied by this source."
+  lifespanYears:
+    value:
+      min: 5
+      max: 10
+    confidence: "low"
+    rationale: "The generator proposes 5 to 10 years, checker-a 5 to 8 from model knowledge, checker-b 4 to 6 and
+      checker-c 8 to 10. Aqua-Fish estimates about five years and Fishkeeping eight to ten; these independent
+      structured accounts support a broad five-to-ten-year planning horizon. Garnelio's wider lower extension
+      to four years concerns mixed-label retail stock and has less weight. AquaExperience gives five to eight.
+      No identified Liberian cohort or survival series was found; the decided interval is an approximate
+      aquarium estimate rather than a guaranteed minimum or species longevity limit."
+    sources:
+      - kind: "database"
+        title: "Aqua-Fish: Jewel cichlid, Hemichromis bimaculatus, care guide"
+        url: "https://en.aqua-fish.net/fish/jewel-cichlid"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Fishkeeping.co.uk: Jewel Cichlid, Hemichromis bimaculatus, caresheet 189"
+        url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=189"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Garnelio: Red cichlid care sheet (conflicting bimaculatus and lifalili labels)"
+        url: "https://www.garnelio.de/en/2x-red-cichlid-hemichromis-lifalili-dnz"
+        accessed: "2026-10-13"
+      - kind: "model-knowledge"
+        title: "General knowledge of jewel cichlid longevity"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Aqua-Fish: Jewel cichlid, Hemichromis bimaculatus, care guide"
+          url: "https://en.aqua-fish.net/fish/jewel-cichlid"
+          accessed: "2026-10-13"
+        value:
+          min: 5
+          max: 5
+        note: "Typical longevity stated as about five years."
+      - source:
+          kind: "database"
+          title: "Fishkeeping.co.uk: Jewel Cichlid, Hemichromis bimaculatus, caresheet 189"
+          url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=189"
+          accessed: "2026-10-13"
+        value:
+          min: 8
+          max: 10
+        note: "Longer hobby estimate."
+      - source:
+          kind: "website"
+          title: "Garnelio: Red cichlid care sheet (conflicting bimaculatus and lifalili labels)"
+          url: "https://www.garnelio.de/en/2x-red-cichlid-hemichromis-lifalili-dnz"
+          accessed: "2026-10-13"
+        value:
+          min: 4
+          max: 6
+  breeding:
+    value: "open-substrate-spawner"
+    confidence: "high"
+    rationale: "All four profiles agree on open-substrate spawning. Seriously Fish, Fishkeeping and FishProfiles
+      independently describe eggs attached to exposed firm surfaces, transfer of larvae to shallow pits and
+      care by both parents. The public Cichlid Room Companion summary verifies this breeding mode for the
+      current species. These independent accounts and current verification support high confidence in the
+      mode; exact clutch sizes and development times from older trade accounts are not assumed to be
+      species-specific."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Hemichromis bimaculatus, Jewel Cichlid"
+        url: "https://www.seriouslyfish.com/species/hemichromis-bimaculatus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Fishkeeping.co.uk: Jewel Cichlid, Hemichromis bimaculatus, caresheet 189"
+        url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=189"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Cichlid Room Companion: Rubricatochromis bimaculatus, public summary updated 4 October 2026"
+        url: "https://cichlidae.com/species.php?id=kTVJaPvvp1Fc--pR4ajbhg"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aqua-Fish: Jewel cichlid, Hemichromis bimaculatus, care guide"
+        url: "https://en.aqua-fish.net/fish/jewel-cichlid"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Fishkeeper species profile: Jewel Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jewel-cichlid"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Hemichromis bimaculatus, Jewel Cichlid"
+          url: "https://www.seriouslyfish.com/species/hemichromis-bimaculatus/"
+          accessed: "2026-10-13"
+        value: "open-substrate-spawner"
+      - source:
+          kind: "database"
+          title: "Fishkeeping.co.uk: Jewel Cichlid, Hemichromis bimaculatus, caresheet 189"
+          url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=189"
+          accessed: "2026-10-13"
+        value: "open-substrate-spawner"
+      - source:
+          kind: "database"
+          title: "Cichlid Room Companion: Rubricatochromis bimaculatus, public summary updated 4 October 2026"
+          url: "https://cichlidae.com/species.php?id=kTVJaPvvp1Fc--pR4ajbhg"
+          accessed: "2026-10-13"
+        value: "open-substrate-spawner"
+        note: "Public summary used only to verify an independently sourced value; subscriber content was not
+          accessed."
+      - source:
+          kind: "database"
+          title: "Aqua-Fish: Jewel cichlid, Hemichromis bimaculatus, care guide"
+          url: "https://en.aqua-fish.net/fish/jewel-cichlid"
+          accessed: "2026-10-13"
+        value: "open-substrate-spawner"
+      - source:
+          kind: "website"
+          title: "Fishkeeper species profile: Jewel Cichlid"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jewel-cichlid"
+          accessed: "2026-10-13"
+        value: "open-substrate-spawner"
+        note: "Pair-bonded spawning on flat rocks with biparental care. The current page identifies R. guttatus;
+          transfer to bimaculatus is untested."
+  beginnerSuitability:
+    value: "demanding"
+    confidence: "low"
+    rationale: "The generator proposes demanding; checker-a, checker-b and checker-c propose moderate, consistent
+      with the public Cichlid Room Companion intermediate rating. Seriously Fish advises against beginners and
+      describes lethal pairing failures. Retain demanding as a cautious recommendation because a keeper must
+      recognize incompatible pairs and separate them promptly; ordinary food and water requirements alone do
+      not remove this risk. The moderate proposals and the current intermediate rating remain credible
+      alternatives. This decision concerns practical aggression management and uncertain identification, not
+      demonstrated chemical fragility, and confidence stays low."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Hemichromis bimaculatus, Jewel Cichlid"
+        url: "https://www.seriouslyfish.com/species/hemichromis-bimaculatus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Cichlid Room Companion: Rubricatochromis bimaculatus, public summary updated 4 October 2026"
+        url: "https://cichlidae.com/species.php?id=kTVJaPvvp1Fc--pR4ajbhg"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishProfiles.com: Hemichromis bimaculatus"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Hemichromis_bimaculatus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aqua-Fish: Jewel cichlid, Hemichromis bimaculatus, care guide"
+        url: "https://en.aqua-fish.net/fish/jewel-cichlid"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Tropical Freshwater Fish, Hemichromis bimaculatus"
+        url: "https://tropicalfreshwaterfish.com/species/Hemichromis_bimaculatus.html"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Fishkeeper species profile: Jewel Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jewel-cichlid"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Hemichromis bimaculatus, Jewel Cichlid"
+          url: "https://www.seriouslyfish.com/species/hemichromis-bimaculatus/"
+          accessed: "2026-10-13"
+        value: "demanding"
+        note: "Discourages beginners because of aggression."
+      - source:
+          kind: "database"
+          title: "Cichlid Room Companion: Rubricatochromis bimaculatus, public summary updated 4 October 2026"
+          url: "https://cichlidae.com/species.php?id=kTVJaPvvp1Fc--pR4ajbhg"
+          accessed: "2026-10-13"
+        value: "moderate"
+        note: "Public summary used only to verify an independently sourced value; subscriber content was not
+          accessed."
+      - source:
+          kind: "database"
+          title: "Aqua-Fish: Jewel cichlid, Hemichromis bimaculatus, care guide"
+          url: "https://en.aqua-fish.net/fish/jewel-cichlid"
+          accessed: "2026-10-13"
+        value: "moderate"
+        note: "Care requires experience with territorial pairs."
+partners:
+  suitable:
+    - species: "Phenacogrammus interruptus"
+      reason: "Adult Congo tetras are a conditional option named in legacy jewel care accounts. This combination is
+        not verified for the revised Liberian species."
+      condition: "A substantially larger aquarium than the 200 L pair minimum with separate swimming space and
+        refuge areas; companions may need removal immediately when brood defense begins."
+    - species: "Synodontis species of suitable adult size"
+      reason: "Legacy care databases allow robust catfish, but this is a genus-level option rather than a proven
+        species-specific pairing."
+      condition: "A substantially larger aquarium with catfish refuges outside the pair territory and separate
+        feeding opportunities; reassess at spawning."
+  unsuitable:
+    - species: "Paracheirodon innesi"
+      reason: "Small adult size creates mouth-sized-prey risk and provides little resistance to brood-care attacks."
+    - species: "Mikrogeophagus ramirezi"
+      reason: "A small and comparatively vulnerable territorial cichlid can be injured or excluded from food and
+        shelter by the jewel pair."
+    - species: "Rubricatochromis guttatus"
+      reason: "A similar red jewel creates rivalry and belongs to the same presumed hybrid group; trade labels do
+        not reliably establish species identity."
+    - species: "Neolamprologus multifasciatus"
+      reason: "Small adults face predation and territorial injury. Its specialized shell habitat and strongly
+        alkaline natural-water preferences also differ from the intended creek aquarium."
+profile:
+  overview:
+    text: "Rubricatochromis bimaculatus is the valid name of the Liberian jewel cichlid catalogued historically as
+      Hemichromis bimaculatus. Rubricatochromis was established in 2022; the 2026 revision clarified the
+      restricted Liberian species and restored R. fugax for the Sierra Leone form. True bimaculatus is
+      relatively slender and usually lacks the dense reflective body dots familiar from shop jewels. A common
+      name or red coloration cannot identify it reliably. This profile follows the described species while
+      treating older trade-name husbandry as provisional evidence."
+    sources:
+      - kind: "catalog-of-fishes"
+        title: "Eschmeyer's Catalog of Fishes: species of Rubricatochromis, update of 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Ru\
+          bricatochromis"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Lamboj, A. and Koblmüller, S. (2026). Who Is Who in Rubricatochromis Lamboj & Koblmüller, 2022
+          (Cichliformes, Cichlidae): Taxonomic Revision with Description of Four New Species and Revalidation
+          of R. fugax. Fishes 11(9), 531."
+        url: "https://doi.org/10.3390/fishes11090531"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aquarist Atlas: Rubricatochromis bimaculatus"
+        url: "https://www.cichlidatlas.com/species/rubricatochromis-bimaculatus/"
+        accessed: "2026-10-13"
+  habitat:
+    text: "Identified museum material comes from Bong and Sinoe counties in Liberia. Forest association is
+      supported by the revision, with sediment-bottomed channels and vegetated shelter described in older
+      ecological accounts. The natural working ranges are 23 to 28 C, pH 5.9 to 6.9, GH 0 to 1 dGH and
+      alkalinity equivalent to KH 0 to 2 dKH. They are assembled from regional water observations, not a
+      survey of water collected alongside identified fish. Rounded zeros and excluded regional extremes should
+      not be interpreted as precise habitat limits. Shade, fine substrate and sheltered areas among wood and
+      planting suit the intended aquarium."
+    sources:
+      - kind: "literature"
+        title: "Lamboj, A. and Koblmüller, S. (2026). Who Is Who in Rubricatochromis Lamboj & Koblmüller, 2022
+          (Cichliformes, Cichlidae): Taxonomic Revision with Description of Four New Species and Revalidation
+          of R. fugax. Fishes 11(9), 531."
+        url: "https://doi.org/10.3390/fishes11090531"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Gasior, J. Aphyosemion (Roloffia) schmitti. American Killifish Association public library."
+        url: "https://aka.org/aka-public-library/library-species/aphyosemion-roloffia-schmitti/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Bea Mountain Mining Corporation (2024). Matambo Open Pit Mine ESIA. Surface water measurements:
+          section 5.5.2 and Table 5-21, pp. 5-33 to 5-35."
+        url: "https://www.leiti.org.lr/sites/default/files/documents/123-007_Matambo%20Open%20Pit%20ESIA_Full%20Final\
+          %20Report-BMMC.pdf"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Rubricatochromis bimaculatus, species summary under the legacy URL"
+        url: "https://www.fishbase.se/summary/Hemichromis-bimaculatus.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "American Killifish Association: Liberia LIBCOF 2021 collection locality database"
+        url: "https://aka.org/wak/Code_Library/LIBCOF21.htm"
+        accessed: "2026-10-13"
+  sizeAndGrowth:
+    text: "Plan space for adults approaching 13 cm. The same allowance is used for males and females because the
+      published separate sizes are inconsistent and a verified Liberian sex-specific growth series is
+      unavailable. FishBase gives an unsexed captive maximum of 12 cm, whereas FishProfiles lists 13 cm for
+      each sex. Historical standard-length maxima are not directly interchangeable with total aquarium
+      lengths. Five to ten years is a rough planning horizon drawn from conflicting care-sheet estimates, not
+      a measured lifespan distribution."
+    sources:
+      - kind: "database"
+        title: "FishBase: Rubricatochromis bimaculatus, species summary under the legacy URL"
+        url: "https://www.fishbase.se/summary/Hemichromis-bimaculatus.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishProfiles.com: Hemichromis bimaculatus"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Hemichromis_bimaculatus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aqua-Fish: Jewel cichlid, Hemichromis bimaculatus, care guide"
+        url: "https://en.aqua-fish.net/fish/jewel-cichlid"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Fishkeeping.co.uk: Jewel Cichlid, Hemichromis bimaculatus, caresheet 189"
+        url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=189"
+        accessed: "2026-10-13"
+  husbandry:
+    text: "One compatible adult pair should have at least 200 litres with a base about 120 cm long and 40 cm deep.
+      This is a cautious space recommendation rather than an experimentally tested threshold. Arrange stable
+      wood and stones to interrupt sight lines and provide multiple escape routes. Firm egg-laying surfaces
+      and robust or attached plants can share the layout with fine substrate for digging. Maintain clean,
+      well-oxygenated water and shelter from excessive current. Care sheets support an aquarium interval of 22
+      to 28 C, pH 5.9 to 7.8 and GH 0 to 18 dGH, with KH 0 to 8 dKH much less securely supported. The very
+      soft lower extensions are habitat-based estimates rather than proven long-term captive limits. Keep a
+      spare aquarium or divider ready and avoid using uncertain endpoints as routine targets."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Hemichromis bimaculatus, Jewel Cichlid"
+        url: "https://www.seriouslyfish.com/species/hemichromis-bimaculatus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Fishkeeping.co.uk: Jewel Cichlid, Hemichromis bimaculatus, caresheet 189"
+        url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=189"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishProfiles.com: Hemichromis bimaculatus"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Hemichromis_bimaculatus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Fischlexikon: Roter Buntbarsch, Rubricatochromis bimaculatus"
+        url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000000377"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "AquaExperience: Hemichromis bimaculatus"
+        url: "https://aquaexperience.it/hemichromis-bimaculatus-it.html"
+        accessed: "2026-10-13"
+  socialBehavior:
+    text: "A compatible pair is the adult social unit. A juvenile group can be used temporarily to let a pair
+      form, provided the remaining fish can then be moved. Combining two adult strangers can leave the weaker
+      fish seriously injured or dead. Readiness to reproduce may differ between partners, so even an
+      established pair needs observation. Both adults should be able to feed and leave cover; persistent
+      confinement or damage requires separation. Large territorial defenses recur during brood care and can
+      make a formerly workable arrangement unsafe."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Hemichromis bimaculatus, Jewel Cichlid"
+        url: "https://www.seriouslyfish.com/species/hemichromis-bimaculatus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Fishkeeping.co.uk: Jewel Cichlid, Hemichromis bimaculatus, caresheet 189"
+        url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=189"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishProfiles.com: Hemichromis bimaculatus"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Hemichromis_bimaculatus/"
+        accessed: "2026-10-13"
+  diet:
+    text: "The decided diet category is invertivore because the available natural-food accounts chiefly describe
+      insects and small crustaceans. Acceptance of vegetable supplements and mixed prepared foods explains why
+      several aquarium accounts instead call these jewels omnivores. Offer a complete suitable cichlid food
+      with varied invertebrate foods such as Artemia, Daphnia and aquatic insect larvae. Small fish are
+      potential prey, so the compatibility profile uses predation level 2; this does not mean that fish
+      dominate the natural diet. No distinctive sensitivity to a protein-related bloat syndrome is
+      established, and the false flag does not imply protection from ordinary digestive disease."
+    sources:
+      - kind: "database"
+        title: "Fischlexikon: Roter Buntbarsch, Rubricatochromis bimaculatus"
+        url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000000377"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aquarist Atlas: Rubricatochromis bimaculatus"
+        url: "https://www.cichlidatlas.com/species/rubricatochromis-bimaculatus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Hemichromis bimaculatus, Jewel Cichlid"
+        url: "https://www.seriouslyfish.com/species/hemichromis-bimaculatus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishProfiles.com: Hemichromis bimaculatus"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Hemichromis_bimaculatus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "AquaExperience: Hemichromis bimaculatus"
+        url: "https://aquaexperience.it/hemichromis-bimaculatus-it.html"
+        accessed: "2026-10-13"
+  breeding:
+    text: "Pairs attach eggs to an exposed firm surface and guard the brood together. Larvae may be moved into
+      shallow substrate pits before swimming freely. Cover and multiple spawning surfaces provide options, but
+      they do not eliminate partner aggression. Remove threatened companions promptly as defense escalates.
+      Historical accounts give several hundred eggs and short hatch times, but those precise figures are not
+      established for authenticated Liberian bimaculatus. Small fry foods can include newly hatched Artemia
+      when the young are ready to feed."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Hemichromis bimaculatus, Jewel Cichlid"
+        url: "https://www.seriouslyfish.com/species/hemichromis-bimaculatus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Fishkeeping.co.uk: Jewel Cichlid, Hemichromis bimaculatus, caresheet 189"
+        url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=189"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishProfiles.com: Hemichromis bimaculatus"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Hemichromis_bimaculatus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Cichlid Room Companion: Rubricatochromis bimaculatus, public summary updated 4 October 2026"
+        url: "https://cichlidae.com/species.php?id=kTVJaPvvp1Fc--pR4ajbhg"
+        accessed: "2026-10-13"
+  sexing:
+    text: "Species identification comes before sexing. The revision distinguishes true bimaculatus using a
+      combination of body proportions and marking details, including a solidly dark flank blotch and sparse
+      reflective body dots. Marks can fade, so counting spots alone is unreliable. Older aquarium accounts
+      associate males with somewhat longer fin tips and females with a fuller body when carrying eggs; these
+      tendencies do not securely sex every juvenile or red jewel species. A compatible self-selected pair is
+      more useful for husbandry than an unsupported sex assignment based on color."
+    sources:
+      - kind: "literature"
+        title: "Lamboj, A. and Koblmüller, S. (2026). Who Is Who in Rubricatochromis Lamboj & Koblmüller, 2022
+          (Cichliformes, Cichlidae): Taxonomic Revision with Description of Four New Species and Revalidation
+          of R. fugax. Fishes 11(9), 531."
+        url: "https://doi.org/10.3390/fishes11090531"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Hemichromis bimaculatus, Jewel Cichlid"
+        url: "https://www.seriouslyfish.com/species/hemichromis-bimaculatus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishProfiles.com: Hemichromis bimaculatus"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Hemichromis_bimaculatus/"
+        accessed: "2026-10-13"
+  compatibility:
+    text: "The speciesOnly flag is false because established care databases allow some mixed-tank options. At the
+      minimum aquarium size, keep the compatible pair as the planned adult unit. Adult Congo tetras or
+      suitably robust catfish are conditional candidates in a substantially larger aquarium, with refuge space
+      and the ability to remove them at spawning. Small schooling fish and delicate territorial cichlids face
+      predation or serious attack. Other Rubricatochromis add rivalry and presumed crossing risk. The curated
+      genus group rests on general aquarium warnings, not a confirmed free-choice cross of the restricted
+      Liberian species."
+    sources:
+      - kind: "literature"
+        title: "Horvath. The stunning cichlid of Lake Turkana. Practical Fishkeeping."
+        url: "https://www.practicalfishkeeping.co.uk/features/the-stunning-cichlid-of-lake-turkana/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Woodland: Breeding Hemichromis lifalili. Tropical Fish Hobbyist."
+        url: "https://www.tfhmagazine.com/articles/freshwater/breeding-hemichromis-lifalili"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Lamboj, A. and Koblmüller, S. (2026). Who Is Who in Rubricatochromis Lamboj & Koblmüller, 2022
+          (Cichliformes, Cichlidae): Taxonomic Revision with Description of Four New Species and Revalidation
+          of R. fugax. Fishes 11(9), 531."
+        url: "https://doi.org/10.3390/fishes11090531"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Hemichromis bimaculatus, Jewel Cichlid"
+        url: "https://www.seriouslyfish.com/species/hemichromis-bimaculatus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Fishkeeping.co.uk: Jewel Cichlid, Hemichromis bimaculatus, caresheet 189"
+        url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=189"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishProfiles.com: Hemichromis bimaculatus"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Hemichromis_bimaculatus/"
+        accessed: "2026-10-13"
+  problems:
+    text: "Pair incompatibility and sudden reproductive aggression are the main practical concerns described in
+      care literature. Watch for a fish losing access to food or shelter, persistent pursuit and fresh wounds.
+      Clear sight lines and insufficient cover can leave no usable escape route despite adequate nominal
+      volume. Digging can displace plants and undermine unsecured structures. Water quality, oxygenation and
+      social pressure should be checked when activity or feeding changes. At very low buffering, pH stability
+      deserves close monitoring. Uncertain trade identity and provisional tolerance endpoints are reasons to
+      follow the fish's established conditions and response carefully."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Hemichromis bimaculatus, Jewel Cichlid"
+        url: "https://www.seriouslyfish.com/species/hemichromis-bimaculatus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Fishkeeping.co.uk: Jewel Cichlid, Hemichromis bimaculatus, caresheet 189"
+        url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=189"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishProfiles.com: Hemichromis bimaculatus"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Hemichromis_bimaculatus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "AquaExperience: Hemichromis bimaculatus"
+        url: "https://aquaexperience.it/hemichromis-bimaculatus-it.html"
+        accessed: "2026-10-13"
+provenance:
+  runs:
+    - role: "generator"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+    - role: "checker"
+      model: "claude-sonnet-5-5"
+      date: "2026-10-13"
+    - role: "checker"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+    - role: "checker"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+    - role: "checker"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+    - role: "checker"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+    - role: "adjudicator"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+  disagreements:
+    - field: "features.predation"
+      proposals:
+        - by: "generator"
+          value: 2
+        - by: "checker-a"
+          value: 1
+        - by: "checker-b"
+          value: 2
+        - by: "checker-c"
+          value: 2
+        - by: "tiebreaker-1"
+          value: 2
+        - by: "tiebreaker-2"
+          value: 2
+      decision: 2
+      rationale: "Tally method qualified-majority, 5 of 6 agreeing under its comparison rule. generator proposed 2;
+        checker-a proposed 1; checker-b proposed 2; checker-c proposed 2; tiebreaker-1 proposed 2;
+        tiebreaker-2 proposed 2. Five of six votes support level 2, so qualified-majority verification is
+        retained. AquaExperience warns about vulnerable small tankmates; Aquarist Atlas describes animal
+        feeding that includes tiny fish; FishBase prey records and historical care pages also include fish.
+        These accounts support a cautious mouth-sized-prey risk, but none measures regular whole-fish
+        consumption or a prey-size limit in verified Liberian specimens. Checker-a's level 1 is plausible for
+        occasional fry consumption, but the tally selects level 2 to cover larger swallowable companions.
+        Ghanaian FishBase records fall outside the revised native range. Territorial injury is not evidence of
+        feeding, and no source establishes fish as the main diet needed for level 3. Retailer and general
+        hobby claims receive website weight. Confidence remains low."
+    - field: "features.diet"
+      proposals:
+        - by: "generator"
+          value:
+            type: "invertivore"
+            bloatSensitive: false
+            foods:
+              - "Complete insect or aquatic-animal based cichlid pellets"
+              - "Daphnia and Artemia"
+              - "Aquatic insect larvae"
+              - "Small crustaceans"
+              - "Occasional vegetable-containing prepared food"
+        - by: "checker-a"
+          value:
+            type: "omnivore"
+            bloatSensitive: false
+            foods:
+              - "insects"
+              - "crustaceans"
+              - "small fish"
+              - "worms"
+              - "vegetable matter"
+              - "flakes"
+              - "pellets"
+        - by: "checker-b"
+          value:
+            type: "invertivore"
+            bloatSensitive: false
+            foods:
+              - "Insect larvae"
+              - "Small crustaceans"
+              - "Balanced cichlid pellets"
+              - "Frozen invertebrates"
+        - by: "checker-c"
+          value:
+            type: "omnivore"
+            bloatSensitive: false
+            foods:
+              - "aquatic insect larvae"
+              - "small crustaceans"
+              - "worms"
+              - "small fish"
+              - "balanced cichlid pellets"
+              - "supplementary vegetable food"
+        - by: "tiebreaker-1"
+          value:
+            type: "invertivore"
+            bloatSensitive: false
+        - by: "tiebreaker-2"
+          value:
+            type: "invertivore"
+            bloatSensitive: false
+      decision:
+        type: "invertivore"
+        bloatSensitive: false
+        foods:
+          - "Complete insect or aquatic-animal based cichlid pellets"
+          - "Daphnia and Artemia"
+          - "Aquatic insect larvae"
+          - "Small crustaceans"
+          - "Occasional vegetable-containing prepared food"
+      rationale: "Tally method qualified-majority, 4 of 6 agreeing under its comparison rule. generator proposed
+        {\"type\":\"invertivore\",\"bloatSensitive\":false,\"foods\":[\"Complete insect or aquatic-animal
+        based cichlid pellets\",\"Daphnia and Artemia\",\"Aquatic insect larvae\",\"Small
+        crustaceans\",\"Occasional vegetable-containing prepared food\"]}; checker-a proposed
+        {\"type\":\"omnivore\",\"bloatSensitive\":false,\"foods\":[\"insects\",\"crustaceans\",\"small
+        fish\",\"worms\",\"vegetable matter\",\"flakes\",\"pellets\"]}; checker-b proposed
+        {\"type\":\"invertivore\",\"bloatSensitive\":false,\"foods\":[\"Insect larvae\",\"Small
+        crustaceans\",\"Balanced cichlid pellets\",\"Frozen invertebrates\"]}; checker-c proposed
+        {\"type\":\"omnivore\",\"bloatSensitive\":false,\"foods\":[\"aquatic insect larvae\",\"small
+        crustaceans\",\"worms\",\"small fish\",\"balanced cichlid pellets\",\"supplementary vegetable
+        food\"]}; tiebreaker-1 proposed {\"type\":\"invertivore\",\"bloatSensitive\":false}; tiebreaker-2
+        proposed {\"type\":\"invertivore\",\"bloatSensitive\":false}. Four of six votes agree on invertivore
+        with bloatSensitive false, which is the tally's qualified-majority decision. Fischlexikon and Aquarist
+        Atlas emphasize insects and small crustaceans as natural foods. Checker-a and checker-c instead
+        propose omnivore from mixed aquarium diets in FishProfiles, Seriously Fish and Fishkeeping. Acceptance
+        of vegetable supplements does not establish that plants are a major wild resource, so it does not
+        displace the invertebrate-led classification. The decided food list is retained exactly. No verified
+        Liberian stomach-content series was found, and the Ghanaian FishBase record and old Hemichromis genus
+        account are indirect. False for bloatSensitive records the absence of an established protein-related
+        predisposition in the reviewed guidance; it does not promise immunity to digestive illness. Low
+        confidence is required by the tally."
+    - field: "features.hybridGroups"
+      proposals:
+        - by: "generator"
+          value:
+            - "rubricatochromis"
+        - by: "checker-a"
+          value: []
+        - by: "checker-b"
+          value: []
+        - by: "checker-c"
+          value:
+            - "rubricatochromis"
+        - by: "tiebreaker-1"
+          value:
+            - "rubricatochromis"
+        - by: "tiebreaker-2"
+          value:
+            - "rubricatochromis"
+      decision:
+        - "rubricatochromis"
+      rationale: "Tally method qualified-majority, 4 of 6 agreeing under its comparison rule. generator proposed
+        [\"rubricatochromis\"]; checker-a proposed []; checker-b proposed []; checker-c proposed
+        [\"rubricatochromis\"]; tiebreaker-1 proposed [\"rubricatochromis\"]; tiebreaker-2 proposed
+        [\"rubricatochromis\"]. The generator, checker-c and both tie-breakers propose rubricatochromis;
+        checker-a and checker-b propose an empty list because no identified bimaculatus cross was found. The
+        tally decides [rubricatochromis] by qualified majority, 4 of 6, at low confidence. Under the rubric,
+        general crossing warnings and close relationship can justify a presumed group without a documented
+        named cross. FishProfiles warns about mixing jewel species, Horvath in Practical Fishkeeping
+        independently describes aquarium crossing among red jewels, and Woodland in Tropical Fish Hobbyist
+        discusses possible mixed ancestry of domestic stock. The Catalog and 2026 revision define the ten
+        valid members but do not prove crossability. Aquarist Atlas contributes a general genus precaution
+        rather than an independent named case. No freely chosen cross involving verified Liberian bimaculatus
+        is established, so the added group has basis presumed and excludes the five-spotted Hemichromis
+        species."
+    - field: "features.temperatureC"
+      proposals:
+        - by: "generator"
+          value:
+            min: 22.5
+            max: 26.4
+        - by: "checker-a"
+          value:
+            min: 24
+            max: 27
+        - by: "checker-b"
+          value:
+            min: 25
+            max: 29
+        - by: "checker-c"
+          value:
+            min: 23
+            max: 28.3
+        - by: "tiebreaker-1"
+          value:
+            min: 23
+            max: 28
+        - by: "tiebreaker-2"
+          value:
+            min: 23
+            max: 28
+      decision:
+        min: 23
+        max: 28
+      rationale: "Tally method qualified-majority, 4 of 6 agreeing under its comparison rule. generator proposed
+        {\"min\":22.5,\"max\":26.4}; checker-a proposed {\"min\":24,\"max\":27}; checker-b proposed
+        {\"min\":25,\"max\":29}; checker-c proposed {\"min\":23,\"max\":28.3}; tiebreaker-1 proposed
+        {\"min\":23,\"max\":28}; tiebreaker-2 proposed {\"min\":23,\"max\":28}. The tally uses
+        qualified-majority agreement, 4 of 6 votes, and the median bounds of that agreeing set to retain 23 to
+        28 C. Gasior reports 23 to 24 C in shaded Juarzon and Greenville streams; the LIBCOF database records
+        25 C at Wayla and 28 C at Karmoh. These are regional killifish localities without confirmed R.
+        bimaculatus. Wider regional readings include LIBCOF flowing waters at 25 to 29 C and a drying pool at
+        32.1 C; Tengbeh et al. compile 23.00 to 28.23 C across mixed sampling settings. Neither warmer
+        extremes nor the Ivorian Banco and Cavally station means establish this species' endpoints. Cheke et
+        al. also report cooler Bong Hills streams at 22.5 to 24.5 C. Thus the decided range is a
+        representative regional proxy, not the complete measured habitat range. FishBase's 21 to 23 C is
+        traced to aquarium literature and cannot supply natural bounds. No occupied-locality seasonal series
+        was found; low confidence is retained."
+    - field: "features.ph"
+      proposals:
+        - by: "generator"
+          value:
+            min: 5.9
+            max: 7.8
+        - by: "checker-a"
+          value:
+            min: 6
+            max: 7.2
+        - by: "checker-b"
+          value:
+            min: 5.8
+            max: 6.8
+        - by: "checker-c"
+          value:
+            min: 5
+            max: 6.9
+        - by: "tiebreaker-1"
+          value:
+            min: 6
+            max: 6.9
+        - by: "tiebreaker-2"
+          value:
+            min: 5
+            max: 6.9
+      decision:
+        min: 5.9
+        max: 6.9
+      rationale: "Tally method median, 3 of 6 agreeing under its comparison rule. generator proposed
+        {\"min\":5.9,\"max\":7.8}; checker-a proposed {\"min\":6,\"max\":7.2}; checker-b proposed
+        {\"min\":5.8,\"max\":6.8}; checker-c proposed {\"min\":5,\"max\":6.9}; tiebreaker-1 proposed
+        {\"min\":6,\"max\":6.9}; tiebreaker-2 proposed {\"min\":5,\"max\":6.9}. No candidate reached the
+        required qualified majority, so the tally takes the median of all six lower bounds and all six upper
+        bounds, rounded to one decimal, giving pH 5.9 to 6.9 with low confidence. The 3 of 6 agreement count
+        describes the leading cluster, not a majority for the final range. This avoids intersecting disparate
+        proxies into an artificially small interval. Gasior gives 6.0 to 6.5 and LIBCOF includes Wayla at
+        6.86. Wider field observations remain visible: Marvoe Creek spans 5.0 to 6.4, selected LIBCOF sites
+        5.0 to 6.86, other LIBCOF forest microhabitats reach 4.3, and RETRAP surface samples span 7.08 to
+        7.79. Yando's table gives 5.9 and 6.1 while its narrative gives 6.2 to 6.9. None supplies identified
+        fish at the measured sites. The Nero River result is an abundance-weighted optimum for an older
+        Ivorian identification, not a measured Liberian range. These competing regional settings do not
+        establish physiological endpoints; reports without a DOI were checked only through accessible indexed
+        excerpts, not full-text retrieval."
+    - field: "features.ghDgh"
+      proposals:
+        - by: "generator"
+          value:
+            min: 0.1
+            max: 1
+        - by: "checker-a"
+          value:
+            min: 1
+            max: 4
+        - by: "checker-b"
+          value:
+            min: 0.3
+            max: 1
+        - by: "checker-c"
+          value:
+            min: 0.1
+            max: 1
+        - by: "tiebreaker-1"
+          value:
+            min: 0.6
+            max: 1.2
+        - by: "tiebreaker-2"
+          value:
+            min: 0
+            max: 2
+      decision:
+        min: 0
+        max: 1
+      rationale: "Tally method qualified-majority, 6 of 6 agreeing under its comparison rule. generator proposed
+        {\"min\":0.1,\"max\":1}; checker-a proposed {\"min\":1,\"max\":4}; checker-b proposed
+        {\"min\":0.3,\"max\":1}; checker-c proposed {\"min\":0.1,\"max\":1}; tiebreaker-1 proposed
+        {\"min\":0.6,\"max\":1.2}; tiebreaker-2 proposed {\"min\":0,\"max\":2}. The tally classifies all six
+        proposals as agreeing under the 2 dGH bound tolerance and uses their median bounds rounded to
+        integers, resulting in 0 to 1 dGH with qualified-majority verification and low confidence. The
+        permissive comparison accepts checker-a's much higher 1 to 4 dGH estimate; agreement therefore does
+        not mean six identical measurements. Liberian raw surface-water hardness reported by Earthtime is
+        about 0.50 to 0.90 dGH, and paired Matambo calcium and magnesium give about 0.37 to 0.54 dGH. Marvoe
+        monitoring gives an estimated 0.14 to 0.81 dGH subject to detection limits, and the Whein creek table
+        reports about 0.56 dGH. Gasior's 20 ppm hardness converts conditionally to 1.12 dGH, above the decided
+        upper bound, while the AKA bertholdi record gives GH 0.6 without a pinpointed locality. Zero is a
+        rounding outcome, not a proven zero-hardness habitat. Conductivity and TDS cannot uniquely determine
+        GH; checker-a's conversion is rejected, and RETRAP magnesium without calcium gives only a partial
+        contribution. FishBase's much wider 4 to 16 dH is husbandry-derived. These regional proxies are not
+        species collection measurements; report evidence is restricted to the indexed passages available, and
+        the generator's 2015 Marvoe calculation could not be independently retrieved."
+    - field: "features.khDkh"
+      proposals:
+        - by: "generator"
+          value:
+            min: 1.1
+            max: 2.3
+        - by: "checker-a"
+          value:
+            min: 0.5
+            max: 2
+        - by: "checker-b"
+          value:
+            min: 0.3
+            max: 1.5
+        - by: "checker-c"
+          value:
+            min: 0
+            max: 1.2
+      decision:
+        min: 0
+        max: 2
+      rationale: "Tally method unanimous, 4 of 4 agreeing under its comparison rule. generator proposed
+        {\"min\":1.1,\"max\":2.3}; checker-a proposed {\"min\":0.5,\"max\":2}; checker-b proposed
+        {\"min\":0.3,\"max\":1.5}; checker-c proposed {\"min\":0,\"max\":1.2}. All four proposals agree within
+        the tally's 2 dKH bound tolerance; their median bounds rounded to integers give 0 to 2 dKH at low
+        confidence. The natural khDkh fact intentionally carries no verification object. This is an
+        alkalinity-equivalent habitat proxy, not a carbonate-speciation measurement. Yando alkalinity of 20 to
+        40 mg/L conditionally converts to 1.12 to 2.24 dKH, which extends above the decided upper bound;
+        RETRAP explicitly reports CaCO3-equivalent alkalinity corresponding to 1.126 to 1.826 dKH. Other
+        regional excerpts support lower buffering: Earthtime gives roughly 0.80 to 1.41 dKH, Matambo 0.38 to
+        0.51, Marvoe 0.17 to 1.12 and Whein creek a reported zero test result of unspecified precision.
+        Organic buffering may contribute to total alkalinity. The Nero conductivity/pH inference is rejected.
+        No study confirms this species at its measurement stations, and the DOI-less reports were available
+        only as indexed excerpts."
+    - field: "features.temperatureC.tolerance"
+      proposals:
+        - by: "generator"
+          value:
+            min: 22
+            max: 28
+        - by: "checker-a"
+          value:
+            min: 21
+            max: 28
+        - by: "checker-b"
+          value:
+            min: 22
+            max: 29
+        - by: "checker-c"
+          value:
+            min: 21
+            max: 28.3
+      decision:
+        min: 22
+        max: 28
+      rationale: "Tally method unanimous, 4 of 4 agreeing under its comparison rule. generator proposed
+        {\"min\":22,\"max\":28}; checker-a proposed {\"min\":21,\"max\":28}; checker-b proposed
+        {\"min\":22,\"max\":29}; checker-c proposed {\"min\":21,\"max\":28.3}. The tally treats the four
+        proposals as unanimous within the 1 C bound tolerance and takes median bounds of 22 to 28 C. Seriously
+        Fish, Fishkeeping and Aqua-Fish give this same aquarium interval. Broader published guidance is
+        retained explicitly: AquaExperience's summary lists 22 to 30 C although its setup text gives 24 to 28
+        C; FishProfiles gives 21 to 25 C and breeding at 27 C. The final interval does not claim that the
+        omitted extremes are lethal. It contains the decided natural proxy but lacks multi-year health records
+        for securely identified Liberian fish, so confidence remains low."
+    - field: "features.ph.tolerance"
+      proposals:
+        - by: "generator"
+          value:
+            min: 5.9
+            max: 7.8
+        - by: "checker-a"
+          value:
+            min: 6
+            max: 7.8
+        - by: "checker-b"
+          value:
+            min: 5.8
+            max: 7.8
+        - by: "checker-c"
+          value:
+            min: 5
+            max: 7.8
+        - by: "tiebreaker-1"
+          value:
+            min: 6
+            max: 7.8
+        - by: "tiebreaker-2"
+          value:
+            min: 5
+            max: 7.8
+      decision:
+        min: 5.9
+        max: 7.8
+      rationale: "Tally method qualified-majority, 4 of 6 agreeing under its comparison rule. generator proposed
+        {\"min\":5.9,\"max\":7.8}; checker-a proposed {\"min\":6,\"max\":7.8}; checker-b proposed
+        {\"min\":5.8,\"max\":7.8}; checker-c proposed {\"min\":5,\"max\":7.8}; tiebreaker-1 proposed
+        {\"min\":6,\"max\":7.8}; tiebreaker-2 proposed {\"min\":5,\"max\":7.8}. Qualified-majority agreement
+        of 4 of 6 gives pH 5.9 to 7.8. Seriously Fish and Aqua-Fish recommend 6.0 to 7.8; Fishkeeping gives
+        6.0 to 7.6 and FishProfiles 6.5 to 7.5. The lower edge below 6.0 is a small inferred extension, not a
+        demonstrated long-term captive limit. Checker-c and tiebreaker-2 propose the wider 5.0 to 7.8 by
+        incorporating acidic regional field water; the other proposals begin at 5.8, 5.9 or 6.0. The tally
+        retains the near-6.0 cluster and the exact median/rounding outcome. Regional water measurements,
+        including LIBCOF's lower readings, do not demonstrate years of aquarium health there. The range
+        contains the decided natural pH proxy, and low confidence is retained for the unresolved trade
+        identities."
+    - field: "features.ghDgh.tolerance"
+      proposals:
+        - by: "generator"
+          value:
+            min: 0.1
+            max: 16
+        - by: "checker-a"
+          value:
+            min: 1
+            max: 18
+        - by: "checker-b"
+          value:
+            min: 0.3
+            max: 18
+        - by: "checker-c"
+          value:
+            min: 0.1
+            max: 18
+      decision:
+        min: 0
+        max: 18
+      rationale: "Tally method unanimous, 4 of 4 agreeing under its comparison rule. generator proposed
+        {\"min\":0.1,\"max\":16}; checker-a proposed {\"min\":1,\"max\":18}; checker-b proposed
+        {\"min\":0.3,\"max\":18}; checker-c proposed {\"min\":0.1,\"max\":18}. The tally considers all four
+        proposals unanimous within 2 dGH and uses median bounds, rounded to integers, giving 0 to 18 dGH.
+        Seriously Fish and Aqua-Fish recommend 4 to 18 dGH; FishProfiles and FishBase give 4 to 16,
+        Fischlexikon 4 to 12 and Fishkeeping 5 to 15. The upper bound follows the broader established care
+        interval instead of the generator's narrower 16 dGH choice. The lower bound is rounded from small
+        positive proposals and extended to include the decided very-soft natural proxy; it is not a tested
+        zero-mineral husbandry condition. Field proxies do not establish long-term tolerance. Different trade
+        species may underlie the care sheets, so the entire containing range remains low confidence."
+    - field: "features.khDkh.tolerance"
+      proposals:
+        - by: "generator"
+          value:
+            min: 1.1
+            max: 8
+        - by: "checker-a"
+          value:
+            min: 1
+            max: 10
+        - by: "checker-b"
+          value:
+            min: 0.3
+            max: 8
+        - by: "checker-c"
+          value:
+            min: 0
+            max: 8
+      decision:
+        min: 0
+        max: 8
+      rationale: "Tally method unanimous, 4 of 4 agreeing under its comparison rule. generator proposed
+        {\"min\":1.1,\"max\":8}; checker-a proposed {\"min\":1,\"max\":10}; checker-b proposed
+        {\"min\":0.3,\"max\":8}; checker-c proposed {\"min\":0,\"max\":8}. Unanimous agreement within 2 dKH of
+        the four proposals gives a median-based upper bound of 8 dKH; the rounded lower bound is widened to
+        zero to contain the decided natural proxy. The generator proposes 1.1 to 8, checker-a 1 to 10,
+        checker-b 0.3 to 8 and checker-c 0 to 8. AquaExperience gives 1 to 8 in its setup text but a wider 1
+        to 10 in the summary. Garnelio gives 4 to 8 while mixing bimaculatus and lifalili labels;
+        AquariumStoreDepot gives only a ceiling below 12 with no lower bound. Türkiye Akvarist gives 2 to 8
+        alongside implausible social advice. The retail/blog pages are websites, and no second reliable
+        numerical husbandry source confirms the full interval. The literature evidence below is field
+        alkalinity, not an aquarium health trial. Eight is a cautious practical ceiling relative to the wider
+        10 and below-12 guidance; zero follows habitat inclusion rather than demonstrated long-term care.
+        Tally confidence remains low."
+    - field: "features.origin"
+      proposals:
+        - by: "generator"
+          value:
+            continent: "Africa"
+            region: "Forested inland waters of Liberia"
+            waterbody: null
+            localities:
+              - "Bong County: Joe Town, Yanokala and Sanoyah"
+              - "Sinoe County: Geebo and Dugbe tributary creeks"
+        - by: "checker-a"
+          value:
+            continent: "Africa"
+            region: "Liberia, West Africa (coastal rivers and creeks)"
+            waterbody: null
+            localities:
+              - "Bong County (Liberia)"
+        - by: "checker-b"
+          value:
+            continent: "Africa"
+            region: "Forested inland drainages of Liberia"
+            waterbody: null
+            localities:
+              - "Bong County"
+              - "Sinoe County"
+              - "Geebo and Dugbe tributaries"
+        - by: "checker-c"
+          value:
+            continent: "Africa"
+            region: "Forested inland drainages of Liberia"
+            waterbody: null
+            localities:
+              - "Sinoe County"
+              - "Bong County"
+      decision:
+        continent: "Africa"
+        region: "Forested inland waters of Liberia"
+        waterbody: null
+        localities:
+          - "Bong County: Joe Town, Yanokala and Sanoyah"
+          - "Sinoe County"
+      rationale: "All four full profiles agree on Liberia. The generator supplies named Bong County sites and
+        Geebo-Dugbe creeks; checker-a names only Bong County, while checker-b and checker-c include Sinoe
+        County. The 2026 revision directly lists preserved material from Joe Town, Yanokala and Sanoyah in
+        Bong County and multiple Sinoe County sites. These verified counties and named Bong sites are
+        retained. Geebo-Dugbe drainage labels are omitted because the revision treatment does not attach them
+        explicitly to the specimens. Older broader country lists are superseded by the revision and current
+        Catalog."
+    - field: "features.maxSizeCm"
+      proposals:
+        - by: "generator"
+          value:
+            male: 13
+            female: 13
+        - by: "checker-a"
+          value:
+            male: 12
+            female: 10
+        - by: "checker-b"
+          value:
+            male: 12
+            female: 10
+        - by: "checker-c"
+          value:
+            male: 12
+            female: 10
+      decision:
+        male: 13
+        female: 13
+      rationale: "The generator proposes 13 cm for both sexes; checker-a, checker-b and checker-c propose 12 cm
+        males and 10 cm females. FishProfiles explicitly gives 13 cm for each sex, FishBase reports an unsexed
+        captive maximum of 12 cm, and Aqua-Fish gives a combined 10 to 13 cm aquarium interval with larger
+        males. Retain 13 cm for both sexes as a cautious adult space estimate rather than inventing a measured
+        10 cm female ceiling. The wider 15 cm SL in Seriously Fish and 15 cm maximum in Fishkeeping are
+        historical maxima with uncertain identity and length conventions; SL must not be silently equated with
+        total length. No typical adult size series for sexed, identified Liberian fish was found."
+    - field: "features.aggressionHeterospecific"
+      proposals:
+        - by: "generator"
+          value: 4
+        - by: "checker-a"
+          value: 3
+        - by: "checker-b"
+          value: 4
+        - by: "checker-c"
+          value: 4
+      decision: 4
+      rationale: "The generator, checker-b and checker-c propose level 4; checker-a proposes level 3 from
+        conditional robust tankmate recommendations and milder behavior outside spawning. Seriously Fish
+        explicitly warns that brood defense may kill remaining tankmates, while Fishkeeping requires their
+        removal at spawning. Level 4 captures this recurring danger to companions under the recommended paired
+        social unit. It is not an assertion of constant attacks. Historical trade identity and limited reports
+        of authenticated Liberian fish cap confidence at medium."
+    - field: "features.coloration"
+      proposals:
+        - by: "generator"
+          value:
+            baseColors:
+              - "brown"
+              - "red"
+              - "black"
+            pattern: "spots"
+        - by: "checker-a"
+          value:
+            baseColors:
+              - "brown"
+              - "red"
+            pattern: "spots"
+        - by: "checker-b"
+          value:
+            baseColors:
+              - "brown"
+              - "red"
+              - "black"
+            pattern: "spots"
+        - by: "checker-c"
+          value:
+            baseColors:
+              - "brown"
+              - "red"
+              - "black"
+            pattern: "spots"
+      decision:
+        baseColors:
+          - "brown"
+          - "red"
+          - "black"
+        pattern: "spots"
+      rationale: "The generator, checker-b and checker-c propose brown, red and black with spots; checker-a omits
+        black from the dominant colors. The 2026 revision directly describes a brown resting ground color that
+        becomes red during territorial or reproductive activity, together with black flank and caudal marks.
+        FishBase independently records dark lateral blotches, so black is retained. Iridescent head/body dots
+        are scarce or absent in true bimaculatus, although some male fins carry a few. Dense turquoise
+        spangling in old trade accounts is not the identification template. Mark visibility changes with
+        state; spot count alone is inadequate."
+    - field: "features.feedingSpeed"
+      proposals:
+        - by: "generator"
+          value: "normal"
+        - by: "checker-a"
+          value: "hasty"
+        - by: "checker-b"
+          value: "normal"
+        - by: "checker-c"
+          value: "normal"
+      decision: "normal"
+      rationale: "The generator, checker-b and checker-c propose normal; checker-a proposes hasty solely from model
+        knowledge. FishProfiles describes ordinary food acceptance and occasional guarding but does not
+        establish indiscriminate rushing until all food is gone. Normal is retained as the least speculative
+        working category. Neither competitive feeding speed nor feeding time has been measured for identified
+        Liberian pairs, so confidence remains low."
+    - field: "features.minTank"
+      proposals:
+        - by: "generator"
+          value:
+            volumeL: 200
+            lengthCm: 120
+            depthCm: 40
+        - by: "checker-a"
+          value:
+            volumeL: 150
+            lengthCm: 100
+            depthCm: 40
+        - by: "checker-b"
+          value:
+            volumeL: 180
+            lengthCm: 120
+            depthCm: 40
+        - by: "checker-c"
+          value:
+            volumeL: 180
+            lengthCm: 120
+            depthCm: 40
+      decision:
+        volumeL: 200
+        lengthCm: 120
+        depthCm: 40
+      rationale: "For one established adult pair, the generator proposes 200 L with a 120 by 40 cm base; checker-a
+        proposes 150 L and 100 by 40 cm; checker-b and checker-c propose 180 L and 120 by 40 cm. Fischlexikon
+        gives at least 200 L for a pair, Seriously Fish gives 120 by 30 cm and about 108 L, and AquaExperience
+        recommends 180 to 240 L with a 100 to 120 cm long side. TropicalFreshwaterFish recommends about 190 L
+        and 122 cm for larger adults. Retain the generator's 200 L and 120 by 40 cm base as a cautious
+        planning minimum that allows shelter and escape routes. The 40 cm depth is an adjudicated design
+        margin, not a published physiological threshold. Companions need substantially greater space, and even
+        the minimum cannot make an incompatible pair safe."
+    - field: "features.lifespanYears"
+      proposals:
+        - by: "generator"
+          value:
+            min: 5
+            max: 10
+        - by: "checker-a"
+          value:
+            min: 5
+            max: 8
+        - by: "checker-b"
+          value:
+            min: 4
+            max: 6
+        - by: "checker-c"
+          value:
+            min: 8
+            max: 10
+      decision:
+        min: 5
+        max: 10
+      rationale: "The generator proposes 5 to 10 years, checker-a 5 to 8 from model knowledge, checker-b 4 to 6 and
+        checker-c 8 to 10. Aqua-Fish estimates about five years and Fishkeeping eight to ten; these
+        independent structured accounts support a broad five-to-ten-year planning horizon. Garnelio's wider
+        lower extension to four years concerns mixed-label retail stock and has less weight. AquaExperience
+        gives five to eight. No identified Liberian cohort or survival series was found; the decided interval
+        is an approximate aquarium estimate rather than a guaranteed minimum or species longevity limit."
+    - field: "features.beginnerSuitability"
+      proposals:
+        - by: "generator"
+          value: "demanding"
+        - by: "checker-a"
+          value: "moderate"
+        - by: "checker-b"
+          value: "moderate"
+        - by: "checker-c"
+          value: "moderate"
+      decision: "demanding"
+      rationale: "The generator proposes demanding; checker-a, checker-b and checker-c propose moderate, consistent
+        with the public Cichlid Room Companion intermediate rating. Seriously Fish advises against beginners
+        and describes lethal pairing failures. Retain demanding as a cautious recommendation because a keeper
+        must recognize incompatible pairs and separate them promptly; ordinary food and water requirements
+        alone do not remove this risk. The moderate proposals and the current intermediate rating remain
+        credible alternatives. This decision concerns practical aggression management and uncertain
+        identification, not demonstrated chemical fragility, and confidence stays low."
+    - field: "features.ghDgh.evidence"
+      proposals:
+        - by: "checker-a"
+          value: "GH inferred from conductivity and total dissolved solids"
+        - by: "checker-b"
+          value: "GH measured by titration or calculated from paired Ca and Mg"
+        - by: "checker-c"
+          value: "GH calculated from Ca and Mg with detection-limit qualifications"
+      decision: "Retain measured/ion-based regional evidence and label the conductivity-derived claim as rejected;
+        preserve the tally decision exactly."
+      rationale: "Conductivity and total dissolved solids do not uniquely specify calcium and magnesium hardness.
+        Regional evidence is not a collecting-site measurement for verified Liberian bimaculatus."
