@@ -18,12 +18,16 @@ public sealed class GalleryMigrationStepTests(EtlFixture fixture)
 
         // uid 6004 (never had a picture) is skipped by rule and counted; uid 6005 (deleted) is
         // outside the migration scope. Only uid 6001-6003 are read.
-        Assert.Equal(3, stats1.Read);
-        Assert.Equal(3, stats1.Inserted);
+        Assert.Equal(4, stats1.Read);
+        Assert.Equal(4, stats1.Inserted);
         Assert.Equal(0, stats1.Updated);
         Assert.Equal(2, stats1.SkipReasons.GetValueOrDefault("gallery_entry_picture_not_migrated"));
         Assert.Equal(1, stats1.SkipReasons.GetValueOrDefault("gallery_empty_after_filter"));
         Assert.Equal(1, stats1.SkipReasons.GetValueOrDefault("gallery_without_pictures"));
+
+        Assert.Equal(
+            "anonymous galleries (fe_user 0): 1 attributed to the community archive profile.",
+            Assert.Single(stats1.Warnings, w => w.StartsWith("anonymous galleries", StringComparison.Ordinal)));
 
         await using (var db = fixture.CreateTargetContext())
         {
@@ -62,6 +66,11 @@ public sealed class GalleryMigrationStepTests(EtlFixture fixture)
                 .SingleAsync(c => c.LegacyId == 6003);
             Assert.Empty(collection6003.Entries);
 
+            // uid 6006: no owner, attributed to the community archive profile.
+            var communityArchive = await db.Profiles.SingleAsync(p => p.Username == "community-archive");
+            var collection6006 = await db.Collections.SingleAsync(c => c.LegacyId == 6006);
+            Assert.Equal(communityArchive.Id, collection6006.ProfileId);
+
             // uid 6004/6005 never migrate at all.
             Assert.False(await db.Collections.AnyAsync(c => c.LegacyId == 6004));
             Assert.False(await db.Collections.AnyAsync(c => c.LegacyId == 6005));
@@ -69,16 +78,16 @@ public sealed class GalleryMigrationStepTests(EtlFixture fixture)
 
         var stats2 = await RunStepAsync();
 
-        Assert.Equal(3, stats2.Read);
+        Assert.Equal(4, stats2.Read);
         Assert.Equal(0, stats2.Inserted);
-        Assert.Equal(3, stats2.Updated);
+        Assert.Equal(4, stats2.Updated);
         Assert.Equal(2, stats2.SkipReasons.GetValueOrDefault("gallery_entry_picture_not_migrated"));
         Assert.Equal(1, stats2.SkipReasons.GetValueOrDefault("gallery_empty_after_filter"));
         Assert.Equal(1, stats2.SkipReasons.GetValueOrDefault("gallery_without_pictures"));
 
         await using (var db = fixture.CreateTargetContext())
         {
-            Assert.Equal(3, await db.Collections.CountAsync(c => c.LegacyId >= 6000 && c.LegacyId < 7000));
+            Assert.Equal(4, await db.Collections.CountAsync(c => c.LegacyId >= 6000 && c.LegacyId < 7000));
 
             var collection6001 = await db.Collections
                 .Include(c => c.Entries)

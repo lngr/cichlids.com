@@ -293,7 +293,9 @@ INSERT INTO user_cichlids_comments_rated (comment_uid, fe_user, rated, tstamp) V
     (5001, 400, 1, '2024-01-01 11:00:00'),
     -- A vote on a rating-only row and one on a vaulted row: neither ever became a comment.
     (5002, 400, 1, '2024-01-01 12:00:00'),
-    (5004, 400, 1, '2024-01-01 13:00:00');
+    (5004, 400, 1, '2024-01-01 13:00:00'),
+    -- An anonymous vote (fe_user 0) is attributed to the community archive profile.
+    (5001, 0, 1, '2024-01-01 14:00:00');
 
 -- Gallery step fixtures (GalleryMigrationStepTests): owner legacy id 450 and post legacy ids
 -- 4501/4502 are their own range, disjoint from every id range above including the comment step's
@@ -311,7 +313,9 @@ INSERT INTO user_cichlids_gallery (uid, tstamp, deleted, hidden, title, fe_user)
     -- uid 6004: no mm rows at all -- excluded by the source query's EXISTS filter, never read.
     (6004, 1700000200, 0, 0, 'No Entries At All', 450),
     -- uid 6005: soft-deleted, with mm rows -- excluded by the source query's deleted filter.
-    (6005, 1700000300, 1, 0, 'Deleted Gallery', 450);
+    (6005, 1700000300, 1, 0, 'Deleted Gallery', 450),
+    -- uid 6006: fe_user 0 (anonymous), attributed to the community archive profile.
+    (6006, 1700000400, 0, 0, 'Anonymous Gallery', 0);
 
 INSERT INTO user_cichlids_gallery_pictures_mm (uid_gallery, uid_picture, sorting) VALUES
     (6001, 4501, 0),
@@ -319,7 +323,8 @@ INSERT INTO user_cichlids_gallery_pictures_mm (uid_gallery, uid_picture, sorting
     (6002, 4501, 0),
     (6002, 9999, 1),
     (6003, 9998, 0),
-    (6005, 4501, 0);
+    (6005, 4501, 0),
+    (6006, 4502, 0);
 
 -- Forum step fixtures (ForumMigrationStepTests): phorum ids (message/user/file) are their own
 -- range in the separate cichlids_phorum5 database, disjoint from every TYPO3-side range above.

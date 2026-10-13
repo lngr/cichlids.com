@@ -32,11 +32,15 @@ public sealed class CommentMigrationStepTests(EtlFixture fixture)
         Assert.Equal(2, stats1.SkipReasons.GetValueOrDefault("comment_vote_target_not_migrated"));
         Assert.Equal(1, stats1.SkipReasons.GetValueOrDefault("rating_collapsed_older"));
         Assert.Equal(1, stats1.SkipReasons.GetValueOrDefault("rating_self_dropped"));
-        // 7 vault rows + 8 comments + 4 ratings + 2 votes.
-        Assert.Equal(21, stats1.Inserted);
+        // 7 vault rows + 8 comments + 4 ratings + 3 votes.
+        Assert.Equal(22, stats1.Inserted);
         Assert.Equal(0, stats1.Updated);
         Assert.Contains(stats1.Warnings, w => w.Contains("legacy user 402"));
         Assert.Contains(stats1.Warnings, w => w.StartsWith("post rating_average recompute:", StringComparison.Ordinal));
+        Assert.Equal(
+            "anonymous comment votes (fe_user 0): 1 attributed to the community archive profile.",
+            Assert.Single(stats1.Warnings, w => w.StartsWith("anonymous comment votes", StringComparison.Ordinal)));
+        Assert.DoesNotContain(stats1.Warnings, w => w.Contains("comment vote fe_user"));
 
         await using (var db = fixture.CreateTargetContext())
         {
@@ -55,7 +59,7 @@ public sealed class CommentMigrationStepTests(EtlFixture fixture)
             Assert.Null(comment5001.DeletedAt);
             // The legacy score (7) is immediately superseded by this run's own vote-based
             // recompute: two +1 votes (one of them the winner of a duplicate pair) sum to 2.
-            Assert.Equal(2, comment5001.Score);
+            Assert.Equal(3, comment5001.Score);
 
             var rating5001 = await db.Ratings.SingleAsync(r => r.LegacyCommentId == 5001);
             Assert.Equal(post4001.Id, rating5001.PostId);
@@ -152,8 +156,8 @@ public sealed class CommentMigrationStepTests(EtlFixture fixture)
             Assert.Equal(LegacyTargetType.Tank, vaultTankMissing.LegacyTargetType);
             Assert.Equal("target_missing", vaultTankMissing.VaultReason);
 
-            // Votes: 5 source rows -> 2 valid, 1 duplicate, 2 on rows that never became a comment.
-            Assert.Equal(2, await db.CommentVotes.CountAsync());
+            // Votes: 6 source rows -> 3 valid, 1 duplicate, 2 on rows that never became a comment.
+            Assert.Equal(3, await db.CommentVotes.CountAsync());
 
             // Vote timestamps are New York wall-clock times: 10:00 EST is 15:00 UTC.
             var vote401 = await db.CommentVotes.SingleAsync(
@@ -191,7 +195,7 @@ public sealed class CommentMigrationStepTests(EtlFixture fixture)
         Assert.Equal(1, stats2.SkipReasons.GetValueOrDefault("rating_self_dropped"));
         // The vault is insert-only (ON CONFLICT DO NOTHING): none of its 7 rows count as inserted
         // or updated on a rerun. The 8 comments and 4 ratings already exist, so they count as
-        // updated; the 2 votes already exist too, so they add nothing at all.
+        // updated; the 3 votes already exist too, so they add nothing at all.
         Assert.Equal(0, stats2.Inserted);
         Assert.Equal(12, stats2.Updated);
         // The placeholder profile already exists on the second run, so it is not created again.
@@ -203,10 +207,10 @@ public sealed class CommentMigrationStepTests(EtlFixture fixture)
             Assert.Equal(7, await db.LegacyComments.CountAsync());
             Assert.Equal(8, await db.Comments.CountAsync(c => c.LegacyId >= 5000 && c.LegacyId < 6000));
             Assert.Equal(4, await db.Ratings.CountAsync(r => r.LegacyCommentId >= 5000 && r.LegacyCommentId < 6000));
-            Assert.Equal(2, await db.CommentVotes.CountAsync());
+            Assert.Equal(3, await db.CommentVotes.CountAsync());
 
             var comment5001 = await db.Comments.SingleAsync(c => c.LegacyId == 5001);
-            Assert.Equal(2, comment5001.Score);
+            Assert.Equal(3, comment5001.Score);
 
             Assert.Equal(SeedGuestNames.Shared, (await db.Comments.SingleAsync(c => c.LegacyId == 5014)).PosterName);
             Assert.Equal(SeedGuestNames.Second, (await db.Comments.SingleAsync(c => c.LegacyId == 5015)).PosterName);

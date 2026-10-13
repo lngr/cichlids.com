@@ -29,7 +29,10 @@ public sealed class TankMigrationStepTests(EtlFixture fixture)
         Assert.Equal(1, stats1.SkipReasons.GetValueOrDefault("tank_category_unmapped_99"));
         Assert.Equal(3, stats1.SkipReasons.GetValueOrDefault("tank_inhabitant_species_missing"));
         Assert.Contains(stats1.Warnings, w => w.Contains("legacy user 999"));
-        Assert.Contains(stats1.Warnings, w => w.Contains("fe_user is 0"));
+        Assert.Equal(
+            "anonymous tanks (fe_user 0): 1 attributed to the community archive profile.",
+            Assert.Single(stats1.Warnings, w => w.StartsWith("anonymous tanks", StringComparison.Ordinal)));
+        Assert.DoesNotContain(stats1.Warnings, w => w.Contains("tank owner fe_user"));
 
         await using (var db = fixture.CreateTargetContext())
         {
@@ -102,9 +105,9 @@ public sealed class TankMigrationStepTests(EtlFixture fixture)
         Assert.Equal(1, stats2.SkipReasons.GetValueOrDefault("tank_category_unmapped_99"));
         Assert.Equal(3, stats2.SkipReasons.GetValueOrDefault("tank_inhabitant_species_missing"));
         // The placeholder profile already exists on the second run, so no new one is created and
-        // that warning does not fire again; the anonymous-owner warning is unconditional and does.
+        // that warning does not fire again; the anonymous summary line appears in every run.
         Assert.DoesNotContain(stats2.Warnings, w => w.Contains("legacy user 999"));
-        Assert.Contains(stats2.Warnings, w => w.Contains("fe_user is 0"));
+        Assert.Single(stats2.Warnings, w => w.StartsWith("anonymous tanks", StringComparison.Ordinal));
 
         await using (var db = fixture.CreateTargetContext())
         {

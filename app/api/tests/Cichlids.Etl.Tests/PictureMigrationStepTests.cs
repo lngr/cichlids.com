@@ -36,6 +36,11 @@ public sealed class PictureMigrationStepTests(EtlFixture fixture)
         Assert.Equal(2, stats1.SkipReasons.GetValueOrDefault("media_storage_key_collision"));
         Assert.Equal(1, stats1.SkipReasons.GetValueOrDefault("picture_alias_value_collision"));
         Assert.Equal(1, stats1.SkipReasons.GetValueOrDefault("tank_media_reference_missing"));
+        // uid 2004 is the only active picture without an owner: one summary line, no line per row.
+        Assert.Equal(
+            "anonymous pictures (fe_user 0): 1 attributed to the community archive profile.",
+            Assert.Single(stats1.Warnings, w => w.StartsWith("anonymous pictures", StringComparison.Ordinal)));
+        Assert.DoesNotContain(stats1.Warnings, w => w.Contains("picture owner fe_user"));
 
         await using (var db = fixture.CreateTargetContext())
         {
