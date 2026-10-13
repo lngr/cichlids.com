@@ -42,7 +42,9 @@ def main():
         mount = next(m for m in container['volumeMounts'] if m['name'] == 'sops-age')
         assert mount == {'name': 'sops-age', 'mountPath': '/var/run/sops-age', 'readOnly': True}
         volume = next(v for v in pod['volumes'] if v['name'] == 'sops-age')
-        assert volume['secret'] == {'secretName': 'sops-age', 'optional': True,
+        assert pod['securityContext']['fsGroup'] == 999
+        assert init['securityContext']['runAsUser'] == 999
+        assert volume['secret'] == {'secretName': 'sops-age', 'optional': True, 'defaultMode': 0o440,
                                     'items': [{'key': 'keys.txt', 'path': 'keys.txt'}]}
         assert any(m['mountPath'] == '/usr/local/bin/ksops' and m['subPath'] == 'ksops'
                    for m in container['volumeMounts'])

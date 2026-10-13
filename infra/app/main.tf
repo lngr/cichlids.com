@@ -44,6 +44,7 @@ resource "terraform_data" "argocd" {
     var.argocd_version,
     filesha256("${path.module}/scripts/install-argocd.sh"),
     filesha256("${path.module}/../../clusters/cichlids/root.yaml"),
+    sha256(join("", [for file in sort(tolist(fileset("${path.module}/argocd", "*.yaml"))) : "${file}:${filesha256("${path.module}/argocd/${file}")}"])),
   ]
 
   connection {
@@ -56,7 +57,7 @@ resource "terraform_data" "argocd" {
   }
 
   provisioner "remote-exec" {
-    inline = ["mkdir -p ${local.remote_dir}"]
+    inline = ["mkdir -p ${local.remote_dir}/argocd"]
   }
 
   provisioner "file" {
@@ -69,7 +70,12 @@ resource "terraform_data" "argocd" {
     destination = "${local.remote_dir}/root.yaml"
   }
 
+  provisioner "file" {
+    source      = "${path.module}/argocd/"
+    destination = "${local.remote_dir}/argocd"
+  }
+
   provisioner "remote-exec" {
-    inline = ["bash ${local.remote_dir}/install-argocd.sh '${var.argocd_version}' ${local.remote_dir}/root.yaml"]
+    inline = ["bash ${local.remote_dir}/install-argocd.sh '${var.argocd_version}' ${local.remote_dir}/root.yaml ${local.remote_dir}/argocd"]
   }
 }
