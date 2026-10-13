@@ -39,6 +39,7 @@ const EPSILON = 1e-9;
 
 const baseName = (name) => name.replace(/\.tolerance$/, "");
 const isRange = (name) => baseName(name) in RANGE_TOLERANCE;
+const isNaturalRange = (name) => name in RANGE_TOLERANCE;
 
 /** Position of a file in the vote order: generator, checker-a, checker-b, checker-c, tiebreaker-1, ... */
 function rank(name) {
@@ -204,6 +205,18 @@ function decideVoted(name, votes, natural) {
     };
   }
   if (agree >= QUALIFIED_AGREE && sources.length >= MIN_EXTERNAL_SOURCES) return decided("qualified-majority", strength);
+  // The intersection of many natural ranges is narrower than any measurement, so the votes without
+  // a majority are summarised by their median range.
+  if (isNaturalRange(name)) {
+    return {
+      decision: medianRange(name, votes.map((v) => v.value)),
+      verification: { method: "median", votes: { agree, total } },
+      confidence: "low",
+      proposals,
+      sources: externalSources(votes),
+      evidence,
+    };
+  }
   return {
     decision: conservativeValue(name, votes, natural),
     verification: { method: "conservative", votes: { agree, total } },

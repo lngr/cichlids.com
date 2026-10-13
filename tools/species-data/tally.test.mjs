@@ -139,16 +139,27 @@ test("diet votes agree on type and bloat sensitivity only", () => {
   assert.equal(g.reason, "disagreement");
 });
 
-test("conservative ranges are the intersection of all votes", () => {
-  const f = decide("ghDgh", [{ min: 1, max: 40 }, { min: 4, max: 36 }, { min: 7, max: 32 }, { min: 10, max: 28 }, { min: 13, max: 24 }]);
-  assert.equal(f.verification.method, "conservative");
-  assert.deepEqual(f.decision, { min: 13, max: 24 });
+test("a natural range without a qualified majority is the median range of all votes", () => {
+  const f = decide("temperatureC", [{ min: 23, max: 30 }, { min: 24, max: 30 }, { min: 19.5, max: 32.4 }, { min: 23, max: 36 }, { min: 23, max: 36 }]);
+  assert.deepEqual(f.verification, { method: "median", votes: { agree: 2, total: 5 } });
+  assert.equal(f.confidence, "low");
+  assert.deepEqual(f.decision, { min: 23, max: 32 });
 });
 
-test("conservative ranges fall back to the median range for an empty intersection", () => {
-  const f = decide("ghDgh", [{ min: 3, max: 4 }, { min: 10, max: 12 }, { min: 20, max: 24 }, { min: 30, max: 32 }, { min: 40, max: 44 }]);
-  assert.equal(f.verification.method, "conservative");
-  assert.deepEqual(f.decision, { min: 20, max: 24 });
+test("the median range of six votes is rounded to the feature precision", () => {
+  const votes = [{ min: 23, max: 30 }, { min: 24, max: 30 }, { min: 19.5, max: 32.4 }, { min: 23, max: 36 }, { min: 23, max: 36 }, { min: 28.5, max: 32.4 }];
+  const f = decide("temperatureC", votes);
+  assert.equal(f.verification.method, "median");
+  assert.deepEqual(f.decision, { min: 23, max: 32 });
+  const g = decide("ph", [{ min: 6.5, max: 7.5 }, { min: 7, max: 8 }, { min: 7.5, max: 9 }, { min: 8, max: 9.5 }, { min: 6, max: 7 }]);
+  assert.equal(g.verification.method, "median");
+  assert.deepEqual(g.decision, { min: 7, max: 8 });
+});
+
+test("a natural range with a qualified majority is decided by that majority", () => {
+  const f = decide("ghDgh", [{ min: 3, max: 5 }, { min: 4, max: 6 }, { min: 3, max: 5 }, { min: 4, max: 6 }, { min: 20, max: 30 }]);
+  assert.equal(f.verification.method, "qualified-majority");
+  assert.deepEqual(f.decision, { min: 4, max: 6 });
 });
 
 test("ranges within the tolerance agree and the decision is the median", () => {

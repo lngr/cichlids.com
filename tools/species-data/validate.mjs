@@ -36,6 +36,8 @@ const EXTERNAL_SOURCE_KINDS = ["catalog-of-fishes", "literature", "database"];
 const MIN_EXTERNAL_SOURCES = 2;
 // Water features carry a tolerance next to the natural-habitat value.
 const TOLERANCE_FEATURES = ["temperatureC", "ph", "ghDgh", "khDkh"];
+// Natural water values may be decided by the median of the votes; no other fact may be.
+const MEDIAN_FEATURES = ["temperatureC", "ph", "ghDgh", "khDkh"];
 const TOLERANCE_METHODS = ["unanimous", "qualified-majority", "conservative"];
 const RANGE_FEATURES = ["temperatureC", "ph", "ghDgh", "khDkh", "lifespanYears"];
 const MAX_PLAUSIBLE_SIZE_CM = 150;
@@ -90,12 +92,34 @@ function externalEvidenceCount(evidence) {
   return externalSourceCount(evidence.map((e) => (isObject(e) ? e.source : undefined)));
 }
 
+// A median value exists because the votes did not settle; like a conservative value it has
+// confidence low and needs at least one evidence entry of any kind.
+function medianIssues(features, file) {
+  const issues = [];
+  for (const [name, feature] of Object.entries(features)) {
+    if (!isObject(feature) || feature.verification?.method !== "median") continue;
+    if (!MEDIAN_FEATURES.includes(name)) {
+      issues.push(error(`/features/${name}/verification/method`, `method median applies only to ${MEDIAN_FEATURES.join(", ")}`, file));
+      continue;
+    }
+    if (feature.confidence !== "low") {
+      issues.push(error(`/features/${name}/confidence`, `median value of "${name}" must have confidence low`, file));
+    }
+    if (!Array.isArray(feature.evidence) || feature.evidence.length === 0) {
+      issues.push(error(`/features/${name}/evidence`, `median value of "${name}" needs at least one evidence entry`, file));
+    }
+  }
+  return issues;
+}
+
 function evidenceIssues(features, file) {
   const issues = [];
   for (const name of [...SOURCE_RULE_FEATURES, ...WATERBODY_VERIFIED_FEATURES]) {
     const feature = features[name];
     if (!isObject(feature)) continue;
     if (WATERBODY_VERIFIED_FEATURES.includes(name) && feature.verification?.method === "waterbody") continue;
+    // The evidence of a median value is checked in medianIssues.
+    if (feature.verification?.method === "median") continue;
     // A conservative value exists because the sources are too few or disagree; its evidence shows
     // what the sources state, so it needs at least one entry of any kind.
     if (feature.verification?.method === "conservative") {
@@ -283,6 +307,7 @@ function semanticIssues(profile, { fileName, hybridGroupIds, waterbodies }, file
   }
 
   issues.push(...evidenceIssues(features, file));
+  issues.push(...medianIssues(features, file));
   issues.push(...toleranceIssues(features, file));
   if (waterbodies) issues.push(...waterbodyIssues(features, waterbodies, file));
 

@@ -71,6 +71,7 @@ const METHOD = {
   unanimous: 'einstimmig',
   'qualified-majority': 'qualifizierte Mehrheit',
   conservative: 'vorsichtigster Wert',
+  median: 'Median der Stimmen',
 };
 const CONF = { high: 'hoch', medium: 'mittel', low: 'niedrig' };
 
@@ -296,7 +297,7 @@ th{position:sticky;top:0;background:var(--card)}td:first-child,th:first-child{po
 th.hard{color:var(--hard)}.ov td{white-space:nowrap}.ov a{overflow-wrap:normal}td a{text-decoration:none}
 .dot{display:inline-block;width:8px;height:8px;border-radius:50%}.dot.high{background:var(--high)}.dot.medium{background:var(--medium)}.dot.low{background:var(--low)}
 .dis-mark{color:var(--dis);font-weight:700}.legend{font-size:12px;color:var(--muted)}
-.tol{margin:2px 0 6px;font-size:14px}.verif{margin:2px 0 6px;font-size:13px}.tag.ver{background:var(--high);color:#fff}.tag.ver.conservative{background:var(--low)}.tag.ver.qualified-majority{background:var(--medium)}.tag.ver.waterbody{background:var(--accent);color:var(--bg)}
+.tol{margin:2px 0 6px;font-size:14px}.verif{margin:2px 0 6px;font-size:13px}.tag.ver{background:var(--high);color:#fff}.tag.ver.conservative{background:var(--low)}.tag.ver.median,.tag.ver.qualified-majority{background:var(--medium)}.tag.ver.waterbody{background:var(--accent);color:var(--bg)}
 .runs{font-size:12px;margin-top:20px}
 `;
 

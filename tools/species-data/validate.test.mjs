@@ -365,6 +365,49 @@ test("a conservative value needs one evidence entry of any kind", () => {
   assert.ok(found.some((i) => i.pointer === "/features/predation/evidence"), JSON.stringify(found));
 });
 
+const MEDIAN = { method: "median", votes: { agree: 2, total: 5 } };
+
+test("a median water value passes at confidence low with one evidence entry of any kind", () => {
+  for (const name of ["temperatureC", "ph", "ghDgh", "khDkh"]) {
+    const profile = makeProfile();
+    const value = profile.features[name].value;
+    profile.features[name] = hard(value, {
+      confidence: "low",
+      verification: MEDIAN,
+      evidence: [{ source: { kind: "forum", title: "A forum post" }, value }],
+      tolerance: profile.features[name].tolerance,
+    });
+    assert.deepEqual(errors(validateProfile(profile, options)), [], name);
+    profile.features[name].evidence = [];
+    const found = errors(validateProfile(profile, options));
+    assert.ok(found.some((i) => i.pointer === `/features/${name}/evidence`), `${name}: ${JSON.stringify(found)}`);
+  }
+});
+
+test("a median water value above confidence low fails", () => {
+  const profile = makeProfile();
+  profile.features.ph.verification = MEDIAN;
+  const found = errors(validateProfile(profile, options));
+  assert.ok(found.some((i) => i.pointer === "/features/ph/confidence"), JSON.stringify(found));
+});
+
+test("method median is rejected on predation, diet, speciesOnly and hybridGroup", () => {
+  for (const name of ["predation", "diet", "speciesOnly", "hybridGroup"]) {
+    const profile = makeProfile();
+    profile.features[name].confidence = "low";
+    profile.features[name].verification = MEDIAN;
+    const found = errors(validateProfile(profile, options));
+    assert.ok(found.some((i) => i.pointer === `/features/${name}/verification/method`), `${name}: ${JSON.stringify(found)}`);
+  }
+});
+
+test("method median is rejected on a tolerance", () => {
+  const profile = makeProfile();
+  Object.assign(profile.features.ph.tolerance, { confidence: "low", verification: MEDIAN });
+  const found = errors(validateProfile(profile, options));
+  assert.ok(found.some((i) => i.pointer === "/features/ph/tolerance/verification/method"), JSON.stringify(found));
+});
+
 const WATER = ["temperatureC", "ph", "ghDgh", "khDkh"];
 
 test("a water feature without tolerance fails", () => {
