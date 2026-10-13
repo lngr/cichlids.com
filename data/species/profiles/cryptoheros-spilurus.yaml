@@ -1,0 +1,3581 @@
+schemaVersion: 1
+id: cryptoheros-spilurus
+legacyIds:
+  - 659
+status: described
+taxonomy:
+  validName: Cryptoheros spilurus
+  genus: Cryptoheros
+  species: spilurus
+  author: "(Günther, 1862)"
+  source:
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes: Cryptoheros, online version updated 21 September 2026"
+    url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Cryptoheros"
+    accessed: '2026-10-13'
+  synonyms:
+    - name: Heros spilurus
+      note: Original combination.
+    - name: Archocentrus spilurus
+      note: Former combination and legacy catalog name.
+    - name: Cichlasoma spilurus
+      note: Former combination; often printed as Cichlasoma spilurum.
+    - name: Cichlasoma spilurum
+      note: Historical ending; the Catalog treats spilurus as an indeclinable noun.
+    - name: Cichlasoma spinosissimum var. immaculata
+      note: Synonym accepted by the Catalog of Fishes.
+    - name: Astronotus spilurus
+      note: Historical combination reported by NVC and the Nordic species register; it is not a separate current
+        species.
+  legacyNames:
+    - Archocentrus spilurus
+  note: "The Catalog of Fishes accepts Cryptoheros spilurus and separately accepts C. chetumalensis and C.\
+    \ cutteri. The legacy genus query lists only Archocentrus centrarchus: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Archocentrus,\
+    \ accessed 2026-10-13. The 2007 split described chetumalensis and restored cutteri; Mexican and northern\
+    \ Belize records under the old spilurus concept require reassessment. The Catalog and FishBase retain a\
+    \ broad Belize-to-Nicaragua distribution, while post-split specialist accounts identify the Izabal drainage\
+    \ as the secure core. The revision and morphological phylogeny were read as abstracts only; the latter\
+    \ fetch-oa result was a restricted metadata page. Fishipedia remained blocked, and the Holloway report\
+    \ has no usable DOI for the authorized full-text tool, so these input citations supply no independently\
+    \ reviewed evidence here. The CRC public summary was consulted for verification only."
+names:
+  trade:
+    en:
+      - Blue-eye cichlid
+      - Jade-eye cichlid
+    de:
+      - Schwarzfleckenbuntbarsch
+variants:
+  - name: Lake Izabal
+    kind: locality
+    note: "The securely assigned Guatemalan core used here. C. chetumalensis and C. cutteri are separate species,\
+      \ not color morphs."
+features:
+  origin:
+    value:
+      continent: Central America
+      region: "Lake Izabal, Rio Polochic and Rio Dulce drainage in eastern Guatemala"
+      waterbody: null
+      localities:
+        - Lake Izabal
+        - Rio Polochic
+        - Rio Dulce
+        - Rio Tunico
+    confidence: medium
+    rationale: "Generator includes the southern Belize border drainage, checker-a proposes Belize, Guatemala\
+      \ and Honduras, checker-b names Izabal, Polochic, Dulce and Tunico, and checker-c names Izabal, Polochic\
+      \ and Dulce. Adopt the geographically explicit Izabal core, with Tunico supported by a locality report.\
+      \ Broad catalog distribution remains evidence rather than a confirmed post-split locality list; northern\
+      \ Belize and Mexican records may be chetumalensis, and Honduran records may be cutteri. No curated waterbody\
+      \ matches the tally, so waterbody is null."
+    sources:
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: Cryptoheros, online version updated 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Cryptoheros"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Nederlandse Vereniging van Cichlidenliefhebbers: Cryptoheros spilurus (Gunther 1862), species\
+          \ article"
+        url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/cryptoheros-spilurus-g%C3%BCnther-1862"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Life-history divergence and reproductive strategies in two closely related Neotropical cichlids\
+          \ (Cryptoheros spilurus and C. cutteri), Hydrobiologia 2026"
+        url: "https://doi.org/10.1007/s10750-026-06274-0"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Cryptoheros spilurus"
+        url: "https://ciklid.org/artregister/art.php?ID=379"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase species summary: Cryptoheros spilurus"
+        url: "https://www.fishbase.se/summary/Cryptoheros-spilurus.html"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Biotope Aquarium Design Contest 2019: Tunico River in summer, Izabal, Guatemala"
+        url: "http://biotope-aquarium.info/aquariums/tunico-river-in-the-summer-izabal-guatemala-192-l/"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: catalog-of-fishes
+          title: "Eschmeyer's Catalog of Fishes: Cryptoheros, online version updated 21 September 2026"
+          url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Cryptoheros"
+          accessed: '2026-10-13'
+        value:
+          continent: Central America
+          region: Atlantic slope from Belize to Nicaragua; rivers entering Lake Izabal
+        note: Broad catalog distribution despite separate recognition of the split species.
+      - source:
+          kind: literature
+          title: "Nederlandse Vereniging van Cichlidenliefhebbers: Cryptoheros spilurus (Gunther 1862), species\
+            \ article"
+          url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/cryptoheros-spilurus-g%C3%BCnther-1862"
+          accessed: '2026-10-13'
+        value:
+          continent: Central America
+          region: Lake Izabal and its tributaries
+        note: Account explicitly restricted to the post-split Izabal fish.
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet species register: Cryptoheros spilurus"
+          url: "https://ciklid.org/artregister/art.php?ID=379"
+          accessed: '2026-10-13'
+        value:
+          continent: Central America
+          region: Lake Izabal and Rio Polochic
+      - source:
+          kind: literature
+          title: "Life-history divergence and reproductive strategies in two closely related Neotropical cichlids\
+            \ (Cryptoheros spilurus and C. cutteri), Hydrobiologia 2026"
+          url: "https://doi.org/10.1007/s10750-026-06274-0"
+          accessed: '2026-10-13'
+        value:
+          continent: Central America
+          region: Lake Izabal
+        note: Experimental spilurus were first-generation descendants of fish from this lake.
+      - source:
+          kind: website
+          title: "Biotope Aquarium Design Contest 2019: Tunico River in summer, Izabal, Guatemala"
+          url: "http://biotope-aquarium.info/aquariums/tunico-river-in-the-summer-izabal-guatemala-192-l/"
+          accessed: '2026-10-13'
+        value:
+          continent: Central America
+          region: "Rio Tunico, Izabal"
+        note: Aquarist locality account; lower evidential weight.
+  temperatureC:
+    value:
+      min: 26
+      max: 31
+    confidence: low
+    rationale: "Proposals were generator: 23 to 31.4; checker-a: 25 to 29; checker-b: 26 to 31; checker-c:\
+      \ 26.4 to 27.6; tiebreaker-1: 26 to 31; tiebreaker-2: 26.4 to 31.6. The tally takes the rounded median\
+      \ of all six lower and upper bounds because only three votes form the largest agreeing cluster. The resulting\
+      \ 26 to 31 C has low confidence and is a consensus summary, not complete field extrema. It is narrower\
+      \ than the generator-reported Brinson lake and Polochic envelope of 23 to 31.4 C, FishBase's historical\
+      \ 22 to 32 C, and the independently reread 2024 lake measurements reaching 31.6 C. Perez and Pailles\
+      \ reuse one campaign rather than independent measurements. Holloway's input citation was not independently\
+      \ retrieved and contributes no evidence here."
+    sources:
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: Cryptoheros, online version updated 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Cryptoheros"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Brinson (1973). The organic matter budget and energy flow of a tropical lowland aquatic ecosystem.
+          University of Florida dissertation.
+        url: "https://doi.org/10.5962/bhl.title.16504"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Perez et al. (2013). Bioindicators of climate and trophic state in lowland and highland aquatic\
+          \ ecosystems of the Northern Neotropics. Revista de Biologia Tropical 61(2), 603-644. Table 1A."
+        url: "https://doi.org/10.15517/rbt.v61i2.11164"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Habitos alimentarios de las mojarras de la laguna Caobas, Quintana Roo, Rev. Biol. Trop."
+        url: "https://doi.org/10.15517/rbt.v48i2-3.18819"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Choc et al. (2020). Contracaecum multipapillatum in continental fishes of Guanacaste and Izabal,\
+          \ field water measurements in Table 4"
+        url: "https://doi.org/10.24188/recia.v12.n2.2020.767"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Pailles et al. (2020). New fossil genus and new extant species of diatoms from Pleistocene sediments
+          in Guatemala. Table 1.
+        url: "https://doi.org/10.5852/ejt.2020.726.1169"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Life-history divergence and reproductive strategies in two closely related Neotropical cichlids\
+          \ (Cryptoheros spilurus and C. cutteri), Hydrobiologia 2026"
+        url: "https://doi.org/10.1007/s10750-026-06274-0"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase species summary: Cryptoheros spilurus"
+        url: "https://www.fishbase.se/summary/Cryptoheros-spilurus.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "INE / INSIVUMEH: Base Calidad del Agua 2023, Mariscos and Castillo San Felipe monitoring records."
+        url: "https://datos.ine.gob.gt/api/3/action/datastore_search?resource_id=45008b75-b34d-4e12-9f13-482873eda5fb&limit=10000"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "INE / INSIVUMEH: Base de monitoreo del Agua 2024, Mariscos and Castillo San Felipe monitoring\
+          \ records."
+        url: "https://datos.ine.gob.gt/api/3/action/datastore_search?resource_id=d08589e5-e264-41cc-b67d-4867ff11d3bc&limit=10000"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Biotope Aquarium Design Contest 2019: Tunico River in summer, Izabal, Guatemala"
+        url: "http://biotope-aquarium.info/aquariums/tunico-river-in-the-summer-izabal-guatemala-192-l/"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: "Perez et al. (2013). Bioindicators of climate and trophic state in lowland and highland aquatic\
+            \ ecosystems of the Northern Neotropics. Revista de Biologia Tropical 61(2), 603-644. Table 1A."
+          url: "https://doi.org/10.15517/rbt.v61i2.11164"
+          accessed: '2026-10-13'
+        value:
+          min: 26.4
+          max: 27.6
+        note: "Surface readings at Izabal and Rio Dulce; site snapshots, not annual endpoints."
+      - source:
+          kind: literature
+          title: Pailles et al. (2020). New fossil genus and new extant species of diatoms from Pleistocene
+            sediments in Guatemala. Table 1.
+          url: "https://doi.org/10.5852/ejt.2020.726.1169"
+          accessed: '2026-10-13'
+        value:
+          min: 26.4
+          max: 26.4
+        note: Izabal entry repeats the Perez campaign.
+      - source:
+          kind: literature
+          title: Brinson (1973). The organic matter budget and energy flow of a tropical lowland aquatic ecosystem.
+            University of Florida dissertation.
+          url: "https://doi.org/10.5962/bhl.title.16504"
+          accessed: '2026-10-13'
+        value: null
+        note: Annual lake and tributary sampling is readable; exact table extrema were not recoverable in the
+          available extraction.
+      - source:
+          kind: database
+          title: "INE / INSIVUMEH: Base Calidad del Agua 2023, Mariscos and Castillo San Felipe monitoring\
+            \ records."
+          url: "https://datos.ine.gob.gt/api/3/action/datastore_search?resource_id=45008b75-b34d-4e12-9f13-482873eda5fb&limit=10000"
+          accessed: '2026-10-13'
+        value:
+          min: 26.8
+          max: 28.8
+        note: Lake water at Mariscos and Castillo San Felipe; excludes ambient air.
+      - source:
+          kind: database
+          title: "INE / INSIVUMEH: Base de monitoreo del Agua 2024, Mariscos and Castillo San Felipe monitoring\
+            \ records."
+          url: "https://datos.ine.gob.gt/api/3/action/datastore_search?resource_id=d08589e5-e264-41cc-b67d-4867ff11d3bc&limit=10000"
+          accessed: '2026-10-13'
+        value:
+          min: 30.8
+          max: 31.6
+        note: Same two lake stations in the 2024 monitoring dataset.
+      - source:
+          kind: database
+          title: "FishBase species summary: Cryptoheros spilurus"
+          url: "https://www.fishbase.se/summary/Cryptoheros-spilurus.html"
+          accessed: '2026-10-13'
+        value:
+          min: 22
+          max: 32
+        note: Historical environment compilation under the broader species concept.
+      - source:
+          kind: literature
+          title: "Life-history divergence and reproductive strategies in two closely related Neotropical cichlids\
+            \ (Cryptoheros spilurus and C. cutteri), Hydrobiologia 2026"
+          url: "https://doi.org/10.1007/s10750-026-06274-0"
+          accessed: '2026-10-13'
+        value:
+          min: 20
+          max: 28
+        note: "Secondary habitat discussion, not a new field series."
+      - source:
+          kind: website
+          title: "Biotope Aquarium Design Contest 2019: Tunico River in summer, Izabal, Guatemala"
+          url: "http://biotope-aquarium.info/aquariums/tunico-river-in-the-summer-izabal-guatemala-192-l/"
+          accessed: '2026-10-13'
+        value:
+          min: 26
+          max: 30
+        note: Aquarist summer-pool measurements; lower weight.
+      - source:
+          kind: literature
+          title: "Habitos alimentarios de las mojarras de la laguna Caobas, Quintana Roo, Rev. Biol. Trop."
+          url: "https://doi.org/10.15517/rbt.v48i2-3.18819"
+          accessed: '2026-10-13'
+        value:
+          min: 25.1
+          max: 29.3
+        note: "Mexican pre-split population; retained as disputed context, not direct spilurus habitat evidence."
+      - source:
+          kind: literature
+          title: "Choc et al. (2020). Contracaecum multipapillatum in continental fishes of Guanacaste and\
+            \ Izabal, field water measurements in Table 4"
+          url: "https://doi.org/10.24188/recia.v12.n2.2020.767"
+          accessed: '2026-10-13'
+        value:
+          min: 30.2
+          max: 31
+        note: "Izabal-Dulce sampling of other fish genera, not confirmed spilurus at every station."
+    tolerance:
+      value:
+        min: 21
+        max: 32
+      verification:
+        method: qualified-majority
+        votes:
+          agree: 5
+          total: 6
+      confidence: low
+      rationale: "Proposals were generator: 21 to 32; checker-a: 22 to 30; checker-b: 21 to 31; checker-c:\
+        \ 22 to 29; tiebreaker-1: 20 to 32; tiebreaker-2: 21 to 32. The tally qualified majority has five of\
+        \ six agreeing proposals and selects 21 to 32 C. The envelope contains the decided natural 26 to 31\
+        \ C. It is narrower at the cool edge than the union of care-source ranges, 20 to 32 C; NCS supplies\
+        \ 20 to 29, Aqua-Fish 21 to 25, and AquaInfo 22 to 32. AquaInfo explicitly treats 32 C as wild variation\
+        \ and prefers about 26 C in tanks. The 2025 and 2026 laboratory papers support multi-year breeding\
+        \ at 27 to 29 C but overlap in stock and methods. Years of health at 21 or 32 C are unproven, so the\
+        \ tally confidence remains low and the outer edges are provisional."
+      sources:
+        - kind: literature
+          title: "The Early Development of the Blue-Eye Cichlid, Cryptoheros spilurus, Evolution & Development\
+            \ 2025"
+          url: "https://doi.org/10.1111/ede.70019"
+          accessed: '2026-10-13'
+        - kind: literature
+          title: "Life-history divergence and reproductive strategies in two closely related Neotropical cichlids\
+            \ (Cryptoheros spilurus and C. cutteri), Hydrobiologia 2026"
+          url: "https://doi.org/10.1007/s10750-026-06274-0"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "Aqua-Fish: Blue-eye cichlid, Cryptoheros spilurus"
+          url: "https://en.aqua-fish.net/fish/blue-eye-cichlid"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "Nordiska Ciklidsallskapet species register: Cryptoheros spilurus"
+          url: "https://ciklid.org/artregister/art.php?ID=379"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "AquaInfo: Cryptoheros spilurus"
+          url: "https://aquainfo.nl/artikel/cryptoheros-spilurus/"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "FishBase species summary: Cryptoheros spilurus"
+          url: "https://www.fishbase.se/summary/Cryptoheros-spilurus.html"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "Rybicky.net fish atlas: Cryptoheros spilurus"
+          url: "https://rybicky.net/atlasryb/kancik_hrbohlavy"
+          accessed: '2026-10-13'
+        - kind: website
+          title: "Fishkeeper, Jade-eye Cichlid"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jade-eye-cichlid-"
+          accessed: '2026-10-13'
+        - kind: website
+          title: "The Aquarium Wiki: Blue-Eye Cichlid, common names"
+          url: "https://www.theaquariumwiki.com/wiki/Cryptoheros_spilurus"
+          accessed: '2026-10-13'
+      evidence:
+        - source:
+            kind: database
+            title: "Aqua-Fish: Blue-eye cichlid, Cryptoheros spilurus"
+            url: "https://en.aqua-fish.net/fish/blue-eye-cichlid"
+            accessed: '2026-10-13'
+          value:
+            min: 21
+            max: 25
+          note: Aquarium recommendation.
+        - source:
+            kind: database
+            title: "Nordiska Ciklidsallskapet species register: Cryptoheros spilurus"
+            url: "https://ciklid.org/artregister/art.php?ID=379"
+            accessed: '2026-10-13'
+          value:
+            min: 20
+            max: 29
+          note: Species-register care range.
+        - source:
+            kind: database
+            title: "AquaInfo: Cryptoheros spilurus"
+            url: "https://aquainfo.nl/artikel/cryptoheros-spilurus/"
+            accessed: '2026-10-13'
+          value:
+            min: 22
+            max: 32
+          note: Published broad interval includes wild variation; aquarium preference about 26 C.
+        - source:
+            kind: literature
+            title: "The Early Development of the Blue-Eye Cichlid, Cryptoheros spilurus, Evolution & Development\
+              \ 2025"
+            url: "https://doi.org/10.1111/ede.70019"
+            accessed: '2026-10-13'
+          value:
+            min: 27
+            max: 29
+          note: Adults maintained for at least two years.
+        - source:
+            kind: literature
+            title: "Life-history divergence and reproductive strategies in two closely related Neotropical\
+              \ cichlids (Cryptoheros spilurus and C. cutteri), Hydrobiologia 2026"
+            url: "https://doi.org/10.1007/s10750-026-06274-0"
+            accessed: '2026-10-13'
+          value:
+            min: 27
+            max: 29
+          note: Izabal-origin fish monitored breeding during 2022 to 2025; overlaps the earlier laboratory
+            work.
+        - source:
+            kind: database
+            title: "Rybicky.net fish atlas: Cryptoheros spilurus"
+            url: "https://rybicky.net/atlasryb/kancik_hrbohlavy"
+            accessed: '2026-10-13'
+          value:
+            min: 22
+            max: 29
+          note: Atlas still merges cutteri; identity uncertainty.
+        - source:
+            kind: website
+            title: "Fishkeeper, Jade-eye Cichlid"
+            url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jade-eye-cichlid-"
+            accessed: '2026-10-13'
+          value:
+            min: 24
+            max: 27
+          note: Retailer guidance; website kind and low weight.
+        - source:
+            kind: website
+            title: "The Aquarium Wiki: Blue-Eye Cichlid, common names"
+            url: "https://www.theaquariumwiki.com/wiki/Cryptoheros_spilurus"
+            accessed: '2026-10-13'
+          value:
+            min: 24
+            max: 30
+          note: General hobby encyclopedia; website kind.
+    verification:
+      method: median
+      votes:
+        agree: 3
+        total: 6
+  ph:
+    value:
+      min: 7.2
+      max: 8.3
+    confidence: low
+    rationale: "Proposals were generator: 5.2 to 8.3; checker-a: 6.8 to 8.3; checker-b: 7.6 to 8.8; checker-c:\
+      \ 7.6 to 8.3; tiebreaker-1: 6.8 to 8.3; tiebreaker-2: 7.8 to 8.3. The tally takes the median of all lower\
+      \ bounds, 7.2, and upper bounds, 8.3, because the largest agreeing cluster has two of six votes. This\
+      \ low-confidence summary is narrower than the generator-reported historical Brinson envelope of 5.2 to\
+      \ 8.25 and the 7.9 to 10.5 basin range reported by Choc, whose sampled fish were other genera. The later\
+      \ monitoring records are near pH 8; Machorro supplies a surface mean of 7.8 rather than an endpoint.\
+      \ In the Izabal row of Perez and Pailles, 7.6 is dissolved oxygen and 8.3 is pH; those columns are not\
+      \ interchangeable. Rio Dulce is a separate site. The selected 7.2 lower edge is the vote median rather\
+      \ than a newly measured station value. Caobas measurements belong to the former species complex and are\
+      \ excluded from direct habitat support."
+    sources:
+      - kind: literature
+        title: Brinson (1973). The organic matter budget and energy flow of a tropical lowland aquatic ecosystem.
+          University of Florida dissertation.
+        url: "https://doi.org/10.5962/bhl.title.16504"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Perez et al. (2013). Bioindicators of climate and trophic state in lowland and highland aquatic\
+          \ ecosystems of the Northern Neotropics. Revista de Biologia Tropical 61(2), 603-644. Table 1A."
+        url: "https://doi.org/10.15517/rbt.v61i2.11164"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Habitos alimentarios de las mojarras de la laguna Caobas, Quintana Roo, Rev. Biol. Trop."
+        url: "https://doi.org/10.15517/rbt.v48i2-3.18819"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Choc et al. (2020). Contracaecum multipapillatum in continental fishes of Guanacaste and Izabal,\
+          \ field water measurements in Table 4"
+        url: "https://doi.org/10.24188/recia.v12.n2.2020.767"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Pailles et al. (2020). New fossil genus and new extant species of diatoms from Pleistocene sediments
+          in Guatemala. Table 1.
+        url: "https://doi.org/10.5852/ejt.2020.726.1169"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Life-history divergence and reproductive strategies in two closely related Neotropical cichlids\
+          \ (Cryptoheros spilurus and C. cutteri), Hydrobiologia 2026"
+        url: "https://doi.org/10.1007/s10750-026-06274-0"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Machorro Sagastume (1996). Water quality at Lago de Izabal, Guatemala. Dissertation abstract."
+        url: "https://scholarworks.utep.edu/dissertations/AAI9718114/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "INE / INSIVUMEH: Base Calidad del Agua 2023, Mariscos and Castillo San Felipe monitoring records."
+        url: "https://datos.ine.gob.gt/api/3/action/datastore_search?resource_id=45008b75-b34d-4e12-9f13-482873eda5fb&limit=10000"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "INE / INSIVUMEH: Base de monitoreo del Agua 2024, Mariscos and Castillo San Felipe monitoring\
+          \ records."
+        url: "https://datos.ine.gob.gt/api/3/action/datastore_search?resource_id=d08589e5-e264-41cc-b67d-4867ff11d3bc&limit=10000"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Biotope Aquarium Design Contest 2019: Tunico River in summer, Izabal, Guatemala"
+        url: "http://biotope-aquarium.info/aquariums/tunico-river-in-the-summer-izabal-guatemala-192-l/"
+        accessed: '2026-10-13'
+      - kind: model-knowledge
+        title: Inference by tiebreaker-1; no direct species-specific endpoint measurement
+    evidence:
+      - source:
+          kind: literature
+          title: "Perez et al. (2013). Bioindicators of climate and trophic state in lowland and highland aquatic\
+            \ ecosystems of the Northern Neotropics. Revista de Biologia Tropical 61(2), 603-644. Table 1A."
+          url: "https://doi.org/10.15517/rbt.v61i2.11164"
+          accessed: '2026-10-13'
+        value:
+          min: 7.6
+          max: 8.3
+        note: Dulce and Izabal are separate rows; Izabal pH is 8.3 and its dissolved oxygen is 7.6 mg/L.
+      - source:
+          kind: literature
+          title: Pailles et al. (2020). New fossil genus and new extant species of diatoms from Pleistocene
+            sediments in Guatemala. Table 1.
+          url: "https://doi.org/10.5852/ejt.2020.726.1169"
+          accessed: '2026-10-13'
+        value:
+          min: 8.3
+          max: 8.3
+        note: Izabal pH from the reused campaign.
+      - source:
+          kind: literature
+          title: Brinson (1973). The organic matter budget and energy flow of a tropical lowland aquatic ecosystem.
+            University of Florida dissertation.
+          url: "https://doi.org/10.5962/bhl.title.16504"
+          accessed: '2026-10-13'
+        value: null
+        note: Seasonal main-lake pH described below 7 and above 8; exact tabulated extrema not recoverable
+          here.
+      - source:
+          kind: literature
+          title: "Machorro Sagastume (1996). Water quality at Lago de Izabal, Guatemala. Dissertation abstract."
+          url: "https://scholarworks.utep.edu/dissertations/AAI9718114/"
+          accessed: '2026-10-13'
+        value:
+          min: 7.8
+          max: 7.8
+        note: "Annual lake-surface mean from the dissertation abstract, not a minimum or maximum."
+      - source:
+          kind: database
+          title: "INE / INSIVUMEH: Base Calidad del Agua 2023, Mariscos and Castillo San Felipe monitoring\
+            \ records."
+          url: "https://datos.ine.gob.gt/api/3/action/datastore_search?resource_id=45008b75-b34d-4e12-9f13-482873eda5fb&limit=10000"
+          accessed: '2026-10-13'
+        value:
+          min: 8.02
+          max: 8.1
+        note: Mariscos and Castillo San Felipe.
+      - source:
+          kind: database
+          title: "INE / INSIVUMEH: Base de monitoreo del Agua 2024, Mariscos and Castillo San Felipe monitoring\
+            \ records."
+          url: "https://datos.ine.gob.gt/api/3/action/datastore_search?resource_id=d08589e5-e264-41cc-b67d-4867ff11d3bc&limit=10000"
+          accessed: '2026-10-13'
+        value:
+          min: 8.04
+          max: 8.06
+        note: "Same monitoring stations, later year."
+      - source:
+          kind: literature
+          title: "Choc et al. (2020). Contracaecum multipapillatum in continental fishes of Guanacaste and\
+            \ Izabal, field water measurements in Table 4"
+          url: "https://doi.org/10.24188/recia.v12.n2.2020.767"
+          accessed: '2026-10-13'
+        value:
+          min: 7.9
+          max: 10.5
+        note: Full basin range includes isolated El Estor 10.5; sampled fish were other genera.
+      - source:
+          kind: literature
+          title: "Habitos alimentarios de las mojarras de la laguna Caobas, Quintana Roo, Rev. Biol. Trop."
+          url: "https://doi.org/10.15517/rbt.v48i2-3.18819"
+          accessed: '2026-10-13'
+        value:
+          min: 6.55
+          max: 8.23
+        note: Pre-split Mexican population; not direct evidence for true spilurus.
+      - source:
+          kind: literature
+          title: "Life-history divergence and reproductive strategies in two closely related Neotropical cichlids\
+            \ (Cryptoheros spilurus and C. cutteri), Hydrobiologia 2026"
+          url: "https://doi.org/10.1007/s10750-026-06274-0"
+          accessed: '2026-10-13'
+        value:
+          min: 8
+          max: 8
+        note: Secondary habitat summary.
+      - source:
+          kind: website
+          title: "Biotope Aquarium Design Contest 2019: Tunico River in summer, Izabal, Guatemala"
+          url: "http://biotope-aquarium.info/aquariums/tunico-river-in-the-summer-izabal-guatemala-192-l/"
+          accessed: '2026-10-13'
+        value:
+          min: 8.3
+          max: 8.3
+        note: Aquarist pool average.
+    tolerance:
+      value:
+        min: 6.5
+        max: 8.5
+      verification:
+        method: qualified-majority
+        votes:
+          agree: 4
+          total: 6
+      confidence: medium
+      rationale: "Proposals were generator: 5.2 to 8.3; checker-a: 6 to 8.5; checker-b: 6.5 to 8.8; checker-c:\
+        \ 6.7 to 8.5; tiebreaker-1: 6.5 to 8.5; tiebreaker-2: 6.5 to 8.5. The tally qualified majority has\
+        \ four of six agreeing proposals and selects 6.5 to 8.5. NCS recommends 6.5 to 8, while the overlapping\
+        \ laboratory studies maintained pH 7.5 to 8.5 over multiple years. The decision is narrower than the\
+        \ retailer range extending to 6.0 and checker-b's 8.8 upper extension, which relied on field observations\
+        \ rather than long-term aquarium success. Aqua-Fish recommends 6.7 to 7.6 and AquaInfo 7 to 7.5. Retain\
+        \ medium confidence exactly as tallied; these are husbandry observations and recommendations rather\
+        \ than experimentally tested failure thresholds."
+      sources:
+        - kind: literature
+          title: "The Early Development of the Blue-Eye Cichlid, Cryptoheros spilurus, Evolution & Development\
+            \ 2025"
+          url: "https://doi.org/10.1111/ede.70019"
+          accessed: '2026-10-13'
+        - kind: literature
+          title: "Life-history divergence and reproductive strategies in two closely related Neotropical cichlids\
+            \ (Cryptoheros spilurus and C. cutteri), Hydrobiologia 2026"
+          url: "https://doi.org/10.1007/s10750-026-06274-0"
+          accessed: '2026-10-13'
+        - kind: literature
+          title: Brinson (1973). The organic matter budget and energy flow of a tropical lowland aquatic ecosystem.
+            University of Florida dissertation.
+          url: "https://doi.org/10.5962/bhl.title.16504"
+          accessed: '2026-10-13'
+        - kind: literature
+          title: "Perez et al. (2013). Bioindicators of climate and trophic state in lowland and highland aquatic\
+            \ ecosystems of the Northern Neotropics. Revista de Biologia Tropical 61(2), 603-644. Table 1A."
+          url: "https://doi.org/10.15517/rbt.v61i2.11164"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "Nordiska Ciklidsallskapet species register: Cryptoheros spilurus"
+          url: "https://ciklid.org/artregister/art.php?ID=379"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "Aqua-Fish: Blue-eye cichlid, Cryptoheros spilurus"
+          url: "https://en.aqua-fish.net/fish/blue-eye-cichlid"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "AquaInfo: Cryptoheros spilurus"
+          url: "https://aquainfo.nl/artikel/cryptoheros-spilurus/"
+          accessed: '2026-10-13'
+        - kind: website
+          title: "The Aquarium Wiki: Blue-Eye Cichlid, common names"
+          url: "https://www.theaquariumwiki.com/wiki/Cryptoheros_spilurus"
+          accessed: '2026-10-13'
+        - kind: website
+          title: "Fishkeeper, Jade-eye Cichlid"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jade-eye-cichlid-"
+          accessed: '2026-10-13'
+      evidence:
+        - source:
+            kind: database
+            title: "Nordiska Ciklidsallskapet species register: Cryptoheros spilurus"
+            url: "https://ciklid.org/artregister/art.php?ID=379"
+            accessed: '2026-10-13'
+          value:
+            min: 6.5
+            max: 8
+          note: Care recommendation.
+        - source:
+            kind: database
+            title: "Aqua-Fish: Blue-eye cichlid, Cryptoheros spilurus"
+            url: "https://en.aqua-fish.net/fish/blue-eye-cichlid"
+            accessed: '2026-10-13'
+          value:
+            min: 6.7
+            max: 7.6
+          note: Care recommendation.
+        - source:
+            kind: database
+            title: "AquaInfo: Cryptoheros spilurus"
+            url: "https://aquainfo.nl/artikel/cryptoheros-spilurus/"
+            accessed: '2026-10-13'
+          value:
+            min: 7
+            max: 7.5
+          note: Taxonomically broad care entry.
+        - source:
+            kind: literature
+            title: "The Early Development of the Blue-Eye Cichlid, Cryptoheros spilurus, Evolution & Development\
+              \ 2025"
+            url: "https://doi.org/10.1111/ede.70019"
+            accessed: '2026-10-13'
+          value:
+            min: 7.5
+            max: 8.5
+          note: At least two years of adult maintenance.
+        - source:
+            kind: literature
+            title: "Life-history divergence and reproductive strategies in two closely related Neotropical\
+              \ cichlids (Cryptoheros spilurus and C. cutteri), Hydrobiologia 2026"
+            url: "https://doi.org/10.1007/s10750-026-06274-0"
+            accessed: '2026-10-13'
+          value:
+            min: 7.5
+            max: 8.5
+          note: Three-year reproductive monitoring; overlapping laboratory evidence.
+        - source:
+            kind: website
+            title: "Fishkeeper, Jade-eye Cichlid"
+            url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jade-eye-cichlid-"
+            accessed: '2026-10-13'
+          value:
+            min: 6
+            max: 7.2
+          note: Retailer recommendation; weaker support for acidic edge.
+        - source:
+            kind: website
+            title: "The Aquarium Wiki: Blue-Eye Cichlid, common names"
+            url: "https://www.theaquariumwiki.com/wiki/Cryptoheros_spilurus"
+            accessed: '2026-10-13'
+          value:
+            min: 6
+            max: 7.5
+          note: Unreferenced general hobby recommendation.
+    verification:
+      method: median
+      votes:
+        agree: 2
+        total: 6
+  ghDgh:
+    value:
+      min: 5
+      max: 6
+    confidence: low
+    rationale: "Proposals were generator: 4.6 to 6.7; checker-a: 5 to 10; checker-b: 5 to 6; checker-c: 5 to\
+      \ 6; tiebreaker-1: 5 to 6; tiebreaker-2: 5.6 to 7.6. The tally qualified majority is five of six under\
+      \ its 2 dGH agreement threshold; its agreeing-bound medians give 5 to 6 dGH. This low-confidence rounded\
+      \ range contains the Pailles ion-derived 5.31 dGH snapshot but is narrower than the generator-reported\
+      \ 4.6 to 6.7 dGH from Brinson and the modern lake observations of about 5.60 to 7.54 dGH, proposed as\
+      \ 5.6 to 7.6 by tiebreaker-2. Ca 25.9 mg/L divided by 7.14 plus Mg 7.3 mg/L divided by 4.34 gives 5.31\
+      \ dGH. Monitoring total hardness uses the conventional CaCO3 basis and division by 17.848. Conductivity-derived\
+      \ estimates and KH relabelled as GH are rejected as numerical evidence. Perez and Pailles represent one\
+      \ underlying field campaign; the two monitoring years share one agency."
+    sources:
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: Cryptoheros, online version updated 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Cryptoheros"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Brinson (1973). The organic matter budget and energy flow of a tropical lowland aquatic ecosystem.
+          University of Florida dissertation.
+        url: "https://doi.org/10.5962/bhl.title.16504"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Perez et al. (2013). Bioindicators of climate and trophic state in lowland and highland aquatic\
+          \ ecosystems of the Northern Neotropics. Revista de Biologia Tropical 61(2), 603-644. Table 1A."
+        url: "https://doi.org/10.15517/rbt.v61i2.11164"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Pailles et al. (2020). New fossil genus and new extant species of diatoms from Pleistocene sediments
+          in Guatemala. Table 1.
+        url: "https://doi.org/10.5852/ejt.2020.726.1169"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Habitos alimentarios de las mojarras de la laguna Caobas, Quintana Roo, Rev. Biol. Trop."
+        url: "https://doi.org/10.15517/rbt.v48i2-3.18819"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Life-history divergence and reproductive strategies in two closely related Neotropical cichlids\
+          \ (Cryptoheros spilurus and C. cutteri), Hydrobiologia 2026"
+        url: "https://doi.org/10.1007/s10750-026-06274-0"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "INE / INSIVUMEH: Base Calidad del Agua 2023, Mariscos and Castillo San Felipe monitoring records."
+        url: "https://datos.ine.gob.gt/api/3/action/datastore_search?resource_id=45008b75-b34d-4e12-9f13-482873eda5fb&limit=10000"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "INE / INSIVUMEH: Base de monitoreo del Agua 2024, Mariscos and Castillo San Felipe monitoring\
+          \ records."
+        url: "https://datos.ine.gob.gt/api/3/action/datastore_search?resource_id=d08589e5-e264-41cc-b67d-4867ff11d3bc&limit=10000"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: Pailles et al. (2020). New fossil genus and new extant species of diatoms from Pleistocene
+            sediments in Guatemala. Table 1.
+          url: "https://doi.org/10.5852/ejt.2020.726.1169"
+          accessed: '2026-10-13'
+        value:
+          min: 5.31
+          max: 5.31
+        note: Calculated from measured Ca 25.9 and Mg 7.3 mg/L in Lake Izabal.
+      - source:
+          kind: literature
+          title: "Perez et al. (2013). Bioindicators of climate and trophic state in lowland and highland aquatic\
+            \ ecosystems of the Northern Neotropics. Revista de Biologia Tropical 61(2), 603-644. Table 1A."
+          url: "https://doi.org/10.15517/rbt.v61i2.11164"
+          accessed: '2026-10-13'
+        value: null
+        note: "Underlying field campaign, not an independent replication of the ion values republished by Pailles."
+      - source:
+          kind: literature
+          title: Brinson (1973). The organic matter budget and energy flow of a tropical lowland aquatic ecosystem.
+            University of Florida dissertation.
+          url: "https://doi.org/10.5962/bhl.title.16504"
+          accessed: '2026-10-13'
+        value: null
+        note: Mineral analyses are described but the necessary ion table was not readable enough to reproduce
+          the generator calculation.
+      - source:
+          kind: database
+          title: "INE / INSIVUMEH: Base Calidad del Agua 2023, Mariscos and Castillo San Felipe monitoring\
+            \ records."
+          url: "https://datos.ine.gob.gt/api/3/action/datastore_search?resource_id=45008b75-b34d-4e12-9f13-482873eda5fb&limit=10000"
+          accessed: '2026-10-13'
+        value:
+          min: 5.6006
+          max: 5.6006
+        note: "99.96 mg/L total hardness at both stations divided by 17.848, assuming the conventional CaCO3\
+          \ equivalent."
+      - source:
+          kind: database
+          title: "INE / INSIVUMEH: Base de monitoreo del Agua 2024, Mariscos and Castillo San Felipe monitoring\
+            \ records."
+          url: "https://datos.ine.gob.gt/api/3/action/datastore_search?resource_id=d08589e5-e264-41cc-b67d-4867ff11d3bc&limit=10000"
+          accessed: '2026-10-13'
+        value:
+          min: 6.1183
+          max: 7.5415
+        note: 109.2 and 134.6 mg/L converted on the same basis.
+      - source:
+          kind: catalog-of-fishes
+          title: "Eschmeyer's Catalog of Fishes: Cryptoheros, online version updated 21 September 2026"
+          url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Cryptoheros"
+          accessed: '2026-10-13'
+        value: null
+        note: Confirms native lake drainage only; no numerical hardness.
+    tolerance:
+      value:
+        min: 4
+        max: 21
+      verification:
+        method: qualified-majority
+        votes:
+          agree: 5
+          total: 6
+      confidence: low
+      rationale: "Proposals were generator: 4 to 21; checker-a: 2 to 12; checker-b: 5 to 21; checker-c: 4 to\
+        \ 21; tiebreaker-1: 4 to 21; tiebreaker-2: 5 to 21. The tally qualified majority has five of six agreeing\
+        \ proposals and selects 4 to 21 dGH with low confidence. Aqua-Fish gives 7 to 21 and AquaInfo 8 to\
+        \ 12; a weaker genus sheet gives 4 to 12 and includes spilurus under outdated taxonomy. The decided\
+        \ lower endpoint is narrower than the retailer's 2 to 12 dH account and rests on genus-level guidance\
+        \ plus native occurrence, not a species-specific long-term trial. The upper endpoint rests chiefly\
+        \ on one care sheet. All numerical GH evidence is kept separate from KH."
+      sources:
+        - kind: literature
+          title: Brinson (1973). The organic matter budget and energy flow of a tropical lowland aquatic ecosystem.
+            University of Florida dissertation.
+          url: "https://doi.org/10.5962/bhl.title.16504"
+          accessed: '2026-10-13'
+        - kind: literature
+          title: Pailles et al. (2020). New fossil genus and new extant species of diatoms from Pleistocene
+            sediments in Guatemala. Table 1.
+          url: "https://doi.org/10.5852/ejt.2020.726.1169"
+          accessed: '2026-10-13'
+        - kind: literature
+          title: "Life-history divergence and reproductive strategies in two closely related Neotropical cichlids\
+            \ (Cryptoheros spilurus and C. cutteri), Hydrobiologia 2026"
+          url: "https://doi.org/10.1007/s10750-026-06274-0"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "Aqua-Fish: Blue-eye cichlid, Cryptoheros spilurus"
+          url: "https://en.aqua-fish.net/fish/blue-eye-cichlid"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "AquaInfo: Cryptoheros spilurus"
+          url: "https://aquainfo.nl/artikel/cryptoheros-spilurus/"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "ilMioAcquario: Cryptoheros spp. care sheet"
+          url: "https://www.ilmioacquario.it/acqua-dolce/pesci/cichlidae/cryptoheros/"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "INE / INSIVUMEH: Base Calidad del Agua 2023, Mariscos and Castillo San Felipe monitoring\
+            \ records."
+          url: "https://datos.ine.gob.gt/api/3/action/datastore_search?resource_id=45008b75-b34d-4e12-9f13-482873eda5fb&limit=10000"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "INE / INSIVUMEH: Base de monitoreo del Agua 2024, Mariscos and Castillo San Felipe monitoring\
+            \ records."
+          url: "https://datos.ine.gob.gt/api/3/action/datastore_search?resource_id=d08589e5-e264-41cc-b67d-4867ff11d3bc&limit=10000"
+          accessed: '2026-10-13'
+        - kind: website
+          title: "The Aquarium Wiki: Blue-Eye Cichlid, common names"
+          url: "https://www.theaquariumwiki.com/wiki/Cryptoheros_spilurus"
+          accessed: '2026-10-13'
+        - kind: website
+          title: "Fishkeeper, Jade-eye Cichlid"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jade-eye-cichlid-"
+          accessed: '2026-10-13'
+        - kind: website
+          title: "Einrichtungsbeispiele: aquarium 6221, keeper water measurements"
+          url: "https://www.einrichtungsbeispiele.de/becken-beispiele/amerika/aquarium-von-michael-paulisch_6221.html"
+          accessed: '2026-10-13'
+      evidence:
+        - source:
+            kind: database
+            title: "Aqua-Fish: Blue-eye cichlid, Cryptoheros spilurus"
+            url: "https://en.aqua-fish.net/fish/blue-eye-cichlid"
+            accessed: '2026-10-13'
+          value:
+            min: 7
+            max: 21
+          note: "Care hardness, also expressed as 125 to 375 ppm CaCO3 equivalent."
+        - source:
+            kind: database
+            title: "AquaInfo: Cryptoheros spilurus"
+            url: "https://aquainfo.nl/artikel/cryptoheros-spilurus/"
+            accessed: '2026-10-13'
+          value:
+            min: 8
+            max: 12
+          note: Care entry still conflates cutteri and spilurus.
+        - source:
+            kind: database
+            title: "ilMioAcquario: Cryptoheros spp. care sheet"
+            url: "https://www.ilmioacquario.it/acqua-dolce/pesci/cichlidae/cryptoheros/"
+            accessed: '2026-10-13'
+          value:
+            min: 4
+            max: 12
+          note: Genus-level care; inaccurate historical genus membership.
+        - source:
+            kind: website
+            title: "Fishkeeper, Jade-eye Cichlid"
+            url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jade-eye-cichlid-"
+            accessed: '2026-10-13'
+          value:
+            min: 2
+            max: 12
+          note: Retailer description of soft-medium water; not a controlled trial.
+        - source:
+            kind: website
+            title: "The Aquarium Wiki: Blue-Eye Cichlid, common names"
+            url: "https://www.theaquariumwiki.com/wiki/Cryptoheros_spilurus"
+            accessed: '2026-10-13'
+          value:
+            min: 5
+            max: 10
+          note: Unreferenced hobby range interpreted as GH.
+        - source:
+            kind: website
+            title: "Einrichtungsbeispiele: aquarium 6221, keeper water measurements"
+            url: "https://www.einrichtungsbeispiele.de/becken-beispiele/amerika/aquarium-von-michael-paulisch_6221.html"
+            accessed: '2026-10-13'
+          value:
+            min: 5
+            max: 5
+          note: Single keeper setup; duration and post-split identity unverified.
+        - source:
+            kind: literature
+            title: Pailles et al. (2020). New fossil genus and new extant species of diatoms from Pleistocene
+              sediments in Guatemala. Table 1.
+            url: "https://doi.org/10.5852/ejt.2020.726.1169"
+            accessed: '2026-10-13'
+          value:
+            min: 5.31
+            max: 5.31
+          note: Native hardness context only; no aquarium tolerance test.
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 5
+        total: 6
+  khDkh:
+    value:
+      min: 5
+      max: 6
+    confidence: low
+    rationale: "Proposals were generator: 4.2 to 6.2; checker-a: 4 to 10; checker-b: 5 to 6; checker-c: 5 to\
+      \ 6; tiebreaker-1: 5 to 6; tiebreaker-2: 4.9 to 5.3. The tally qualified majority has five of six votes\
+      \ within its 2 dKH threshold and gives agreeing-bound medians of 5 to 6 dKH, retained with low confidence\
+      \ and without a natural verification object. Pailles bicarbonate of 119.6 mg/L gives approximately 5.49\
+      \ dKH; this is alkalinity rather than Ca-Mg hardness. The decision is narrower than the generator-reported\
+      \ historical 4.2 to 6.2 dKH and the secondary 4 to 10 dKH habitat range in the 2026 paper. Monitoring\
+      \ yields approximately 4.97 to 5.22 dKH if alkalinity is mg/L as CaCO3, but identical bicarbonate numbers\
+      \ and missing mass-basis metadata leave an alternative of approximately 4.1 to 4.3 dKH. Neither conversion\
+      \ becomes a tested annual limit. Holloway's historical alkalinity citation was not independently retrieved."
+    sources:
+      - kind: literature
+        title: Brinson (1973). The organic matter budget and energy flow of a tropical lowland aquatic ecosystem.
+          University of Florida dissertation.
+        url: "https://doi.org/10.5962/bhl.title.16504"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Pailles et al. (2020). New fossil genus and new extant species of diatoms from Pleistocene sediments
+          in Guatemala. Table 1.
+        url: "https://doi.org/10.5852/ejt.2020.726.1169"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Life-history divergence and reproductive strategies in two closely related Neotropical cichlids\
+          \ (Cryptoheros spilurus and C. cutteri), Hydrobiologia 2026"
+        url: "https://doi.org/10.1007/s10750-026-06274-0"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Perez et al. (2013). Bioindicators of climate and trophic state in lowland and highland aquatic\
+          \ ecosystems of the Northern Neotropics. Revista de Biologia Tropical 61(2), 603-644. Table 1A."
+        url: "https://doi.org/10.15517/rbt.v61i2.11164"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "INE / INSIVUMEH: Base Calidad del Agua 2023, Mariscos and Castillo San Felipe monitoring records."
+        url: "https://datos.ine.gob.gt/api/3/action/datastore_search?resource_id=45008b75-b34d-4e12-9f13-482873eda5fb&limit=10000"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "INE / INSIVUMEH: Base de monitoreo del Agua 2024, Mariscos and Castillo San Felipe monitoring\
+          \ records."
+        url: "https://datos.ine.gob.gt/api/3/action/datastore_search?resource_id=d08589e5-e264-41cc-b67d-4867ff11d3bc&limit=10000"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: Pailles et al. (2020). New fossil genus and new extant species of diatoms from Pleistocene
+            sediments in Guatemala. Table 1.
+          url: "https://doi.org/10.5852/ejt.2020.726.1169"
+          accessed: '2026-10-13'
+        value:
+          min: 5.49
+          max: 5.49
+        note: HCO3 119.6 mg/L converted as bicarbonate alkalinity; not total hardness.
+      - source:
+          kind: literature
+          title: "Perez et al. (2013). Bioindicators of climate and trophic state in lowland and highland aquatic\
+            \ ecosystems of the Northern Neotropics. Revista de Biologia Tropical 61(2), 603-644. Table 1A."
+          url: "https://doi.org/10.15517/rbt.v61i2.11164"
+          accessed: '2026-10-13'
+        value: null
+        note: "Original campaign behind Pailles, not an additional measurement."
+      - source:
+          kind: literature
+          title: Brinson (1973). The organic matter budget and energy flow of a tropical lowland aquatic ecosystem.
+            University of Florida dissertation.
+          url: "https://doi.org/10.5962/bhl.title.16504"
+          accessed: '2026-10-13'
+        value: null
+        note: Seasonal alkalinity sampling is described; historical endpoint claims were not independently
+          recoverable.
+      - source:
+          kind: database
+          title: "INE / INSIVUMEH: Base Calidad del Agua 2023, Mariscos and Castillo San Felipe monitoring\
+            \ records."
+          url: "https://datos.ine.gob.gt/api/3/action/datastore_search?resource_id=45008b75-b34d-4e12-9f13-482873eda5fb&limit=10000"
+          accessed: '2026-10-13'
+        value:
+          min: 4.9721
+          max: 4.9831
+        note: Assumes alkalinity mass as CaCO3; equal bicarbonate entries leave the mass basis uncertain.
+      - source:
+          kind: database
+          title: "INE / INSIVUMEH: Base de monitoreo del Agua 2024, Mariscos and Castillo San Felipe monitoring\
+            \ records."
+          url: "https://datos.ine.gob.gt/api/3/action/datastore_search?resource_id=d08589e5-e264-41cc-b67d-4867ff11d3bc&limit=10000"
+          accessed: '2026-10-13'
+        value:
+          min: 5.2086
+          max: 5.2195
+        note: Same provisional unit interpretation; two years of one monitoring program.
+      - source:
+          kind: literature
+          title: "Life-history divergence and reproductive strategies in two closely related Neotropical cichlids\
+            \ (Cryptoheros spilurus and C. cutteri), Hydrobiologia 2026"
+          url: "https://doi.org/10.1007/s10750-026-06274-0"
+          accessed: '2026-10-13'
+        value:
+          min: 4
+          max: 10
+        note: Secondary habitat account attributed to Artigas-Azas; no new titrations.
+    tolerance:
+      value:
+        min: 2
+        max: 8
+      verification:
+        method: qualified-majority
+        votes:
+          agree: 6
+          total: 6
+      confidence: low
+      rationale: "Proposals were generator: 2 to 8; checker-a: 2 to 12; checker-b: 2 to 8; checker-c: 2 to\
+        \ 8; tiebreaker-1: 2 to 8; tiebreaker-2: 4 to 10. The tally qualified majority counts all six proposals\
+        \ within its agreement procedure and selects median bounds of 2 to 8 dKH with low confidence. This\
+        \ is narrower than checker-a's 2 to 12 and tiebreaker-2's 4 to 10; the latter is also the wider secondary\
+        \ habitat range in the 2026 paper. Only ilMioAcquario supplies the explicit aquarium interval of 2\
+        \ to 8, at genus level with outdated taxonomy. NVC and Hellweg offer qualitative mineralized-water\
+        \ support, while the laboratory papers omit KH. Thus two independent species-specific numerical husbandry\
+        \ sources do not establish these endpoints. Natural alkalinity and alkaline-pH breeding are context,\
+        \ not proof of long-term tolerance, and GH is not substituted for KH."
+      sources:
+        - kind: literature
+          title: "Nederlandse Vereniging van Cichlidenliefhebbers: Cryptoheros spilurus (Gunther 1862), species\
+            \ article"
+          url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/cryptoheros-spilurus-g%C3%BCnther-1862"
+          accessed: '2026-10-13'
+        - kind: literature
+          title: Brinson (1973). The organic matter budget and energy flow of a tropical lowland aquatic ecosystem.
+            University of Florida dissertation.
+          url: "https://doi.org/10.5962/bhl.title.16504"
+          accessed: '2026-10-13'
+        - kind: literature
+          title: "Life-history divergence and reproductive strategies in two closely related Neotropical cichlids\
+            \ (Cryptoheros spilurus and C. cutteri), Hydrobiologia 2026"
+          url: "https://doi.org/10.1007/s10750-026-06274-0"
+          accessed: '2026-10-13'
+        - kind: literature
+          title: Pailles et al. (2020). New fossil genus and new extant species of diatoms from Pleistocene
+            sediments in Guatemala. Table 1.
+          url: "https://doi.org/10.5852/ejt.2020.726.1169"
+          accessed: '2026-10-13'
+        - kind: literature
+          title: Hellweg. Twelve Types of Dwarf Cichlids from Central America. Tropical Fish Hobbyist.
+          url: "https://www.tfhmagazine.com/articles/freshwater/twelve-types-of-dwarf-cichlids-from-central-america"
+          accessed: '2026-10-13'
+        - kind: literature
+          title: "The Early Development of the Blue-Eye Cichlid, Cryptoheros spilurus, Evolution & Development\
+            \ 2025"
+          url: "https://doi.org/10.1111/ede.70019"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "ilMioAcquario: Cryptoheros spp. care sheet"
+          url: "https://www.ilmioacquario.it/acqua-dolce/pesci/cichlidae/cryptoheros/"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "INE / INSIVUMEH: Base Calidad del Agua 2023, Mariscos and Castillo San Felipe monitoring\
+            \ records."
+          url: "https://datos.ine.gob.gt/api/3/action/datastore_search?resource_id=45008b75-b34d-4e12-9f13-482873eda5fb&limit=10000"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "INE / INSIVUMEH: Base de monitoreo del Agua 2024, Mariscos and Castillo San Felipe monitoring\
+            \ records."
+          url: "https://datos.ine.gob.gt/api/3/action/datastore_search?resource_id=d08589e5-e264-41cc-b67d-4867ff11d3bc&limit=10000"
+          accessed: '2026-10-13'
+        - kind: website
+          title: "Fishkeeper, Jade-eye Cichlid"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jade-eye-cichlid-"
+          accessed: '2026-10-13'
+        - kind: website
+          title: "Einrichtungsbeispiele: aquarium 6221, keeper water measurements"
+          url: "https://www.einrichtungsbeispiele.de/becken-beispiele/amerika/aquarium-von-michael-paulisch_6221.html"
+          accessed: '2026-10-13'
+        - kind: model-knowledge
+          title: Conservative biological interpretation of limited species-specific observations
+      evidence:
+        - source:
+            kind: database
+            title: "ilMioAcquario: Cryptoheros spp. care sheet"
+            url: "https://www.ilmioacquario.it/acqua-dolce/pesci/cichlidae/cryptoheros/"
+            accessed: '2026-10-13'
+          value:
+            min: 2
+            max: 8
+          note: Only explicit numeric aquarium KH recommendation; genus-level and taxonomically weak.
+        - source:
+            kind: literature
+            title: "Nederlandse Vereniging van Cichlidenliefhebbers: Cryptoheros spilurus (Gunther 1862), species\
+              \ article"
+            url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/cryptoheros-spilurus-g%C3%BCnther-1862"
+            accessed: '2026-10-13'
+          value: null
+          note: Mineralized-water care advice gives no numeric KH.
+        - source:
+            kind: literature
+            title: Hellweg. Twelve Types of Dwarf Cichlids from Central America. Tropical Fish Hobbyist.
+            url: "https://www.tfhmagazine.com/articles/freshwater/twelve-types-of-dwarf-cichlids-from-central-america"
+            accessed: '2026-10-13'
+          value: null
+          note: Group-level slightly hard alkaline tap-water advice gives no numeric KH.
+        - source:
+            kind: literature
+            title: "Life-history divergence and reproductive strategies in two closely related Neotropical\
+              \ cichlids (Cryptoheros spilurus and C. cutteri), Hydrobiologia 2026"
+            url: "https://doi.org/10.1007/s10750-026-06274-0"
+            accessed: '2026-10-13'
+          value:
+            min: 4
+            max: 10
+          note: Secondary habitat range only; does not measure tank KH or establish tolerance endpoints.
+        - source:
+            kind: literature
+            title: "The Early Development of the Blue-Eye Cichlid, Cryptoheros spilurus, Evolution & Development\
+              \ 2025"
+            url: "https://doi.org/10.1111/ede.70019"
+            accessed: '2026-10-13'
+          value: null
+          note: Multi-year alkaline-pH reproduction without reported aquarium KH.
+        - source:
+            kind: website
+            title: "Einrichtungsbeispiele: aquarium 6221, keeper water measurements"
+            url: "https://www.einrichtungsbeispiele.de/becken-beispiele/amerika/aquarium-von-michael-paulisch_6221.html"
+            accessed: '2026-10-13'
+          value:
+            min: 5
+            max: 5
+          note: Single reported aquarium condition; not an endpoint test.
+        - source:
+            kind: literature
+            title: Pailles et al. (2020). New fossil genus and new extant species of diatoms from Pleistocene
+              sediments in Guatemala. Table 1.
+            url: "https://doi.org/10.5852/ejt.2020.726.1169"
+            accessed: '2026-10-13'
+          value:
+            min: 5.49
+            max: 5.49
+          note: Natural alkalinity context only.
+  maxSizeCm:
+    value:
+      male: 12
+      female: 9
+    confidence: medium
+    rationale: "Generator, checker-b and checker-c propose male 12 and female 9 cm; checker-a proposes 12 and\
+      \ 8. Prefer the explicit Izabal aquarium treatment at 12 and 9, while retaining FishBase's 12 and 8 cm\
+      \ TL as separate evidence. GCCA's approximately 15.24 and 11.43 cm concern stock without secure post-split\
+      \ locality and are not typical planning maxima."
+    sources:
+      - kind: literature
+        title: "Nederlandse Vereniging van Cichlidenliefhebbers: Cryptoheros spilurus (Gunther 1862), species\
+          \ article"
+        url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/cryptoheros-spilurus-g%C3%BCnther-1862"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Borstein (2008). Cryptoheros spilurus. Greater Chicago Cichlid Association breeding report.
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/central-american-cichlids/129-cryptoheros-spilurus.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase species summary: Cryptoheros spilurus"
+        url: "https://www.fishbase.se/summary/Cryptoheros-spilurus.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Cryptoheros spilurus"
+        url: "https://ciklid.org/artregister/art.php?ID=379"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Fishkeeper, Jade-eye Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jade-eye-cichlid-"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: "Nederlandse Vereniging van Cichlidenliefhebbers: Cryptoheros spilurus (Gunther 1862), species\
+            \ article"
+          url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/cryptoheros-spilurus-g%C3%BCnther-1862"
+          accessed: '2026-10-13'
+        value:
+          male: 12
+          female: 9
+      - source:
+          kind: database
+          title: "FishBase species summary: Cryptoheros spilurus"
+          url: "https://www.fishbase.se/summary/Cryptoheros-spilurus.html"
+          accessed: '2026-10-13'
+        value:
+          male: 12
+          female: 8
+      - source:
+          kind: literature
+          title: Borstein (2008). Cryptoheros spilurus. Greater Chicago Cichlid Association breeding report.
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/central-american-cichlids/129-cryptoheros-spilurus.html"
+          accessed: '2026-10-13'
+        value:
+          male: 15.24
+          female: 11.43
+        note: Converted from six and four-and-a-half inches; stock identity uncertain.
+      - source:
+          kind: website
+          title: "Fishkeeper, Jade-eye Cichlid"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jade-eye-cichlid-"
+          accessed: '2026-10-13'
+        value:
+          male: 12
+          female: 12
+        note: one maximum for both sexes
+  predation:
+    value: 1
+    confidence: medium
+    rationale: "Proposals were generator: 1; checker-a: 0; checker-b: 1; checker-c: 1; tiebreaker-1: 1; tiebreaker-2:\
+      \ 1. The tally selects level 1 by qualified majority, five of six, with medium confidence. The Czech\
+      \ atlas explicitly includes fry among foods and Aqua-Fish excludes bite-sized tankmates. Hellweg provides\
+      \ corroborating group-level occasional fish feeding, not a measured species-specific prey limit. NCS\
+      \ and the laboratory papers emphasize plants and invertebrates; lack of fish prey in those accounts does\
+      \ not exclude fry consumption. The 2 cm boundary is the rubric convention, not a measured gape. The Mexican\
+      \ Caobas sample is not secure post-split evidence, and CRC insectivory is verification only."
+    sources:
+      - kind: literature
+        title: "The Early Development of the Blue-Eye Cichlid, Cryptoheros spilurus, Evolution & Development\
+          \ 2025"
+        url: "https://doi.org/10.1111/ede.70019"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Life-history divergence and reproductive strategies in two closely related Neotropical cichlids\
+          \ (Cryptoheros spilurus and C. cutteri), Hydrobiologia 2026"
+        url: "https://doi.org/10.1007/s10750-026-06274-0"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Hellweg. Twelve Types of Dwarf Cichlids from Central America. Tropical Fish Hobbyist.
+        url: "https://www.tfhmagazine.com/articles/freshwater/twelve-types-of-dwarf-cichlids-from-central-america"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Habitos alimentarios de las mojarras de la laguna Caobas, Quintana Roo, Rev. Biol. Trop."
+        url: "https://doi.org/10.15517/rbt.v48i2-3.18819"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Fish: Blue-eye cichlid, Cryptoheros spilurus"
+        url: "https://en.aqua-fish.net/fish/blue-eye-cichlid"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Cryptoheros spilurus"
+        url: "https://ciklid.org/artregister/art.php?ID=379"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Rybicky.net fish atlas: Cryptoheros spilurus"
+        url: "https://rybicky.net/atlasryb/kancik_hrbohlavy"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Cichlid Room Companion: Cryptoheros spilurus, public summary used only for verification"
+        url: "https://cichlidae.com/species.php?id=nnYVNGs0bV8ToHXwyP4p0w"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Fishkeeper, Jade-eye Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jade-eye-cichlid-"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: database
+          title: "Aqua-Fish: Blue-eye cichlid, Cryptoheros spilurus"
+          url: "https://en.aqua-fish.net/fish/blue-eye-cichlid"
+          accessed: '2026-10-13'
+        value: 1
+        note: Rubric inference from excluding bite-sized fish.
+      - source:
+          kind: database
+          title: "Rybicky.net fish atlas: Cryptoheros spilurus"
+          url: "https://rybicky.net/atlasryb/kancik_hrbohlavy"
+          accessed: '2026-10-13'
+        value: 1
+        note: Fry included among foods; source still merges cutteri.
+      - source:
+          kind: literature
+          title: Hellweg. Twelve Types of Dwarf Cichlids from Central America. Tropical Fish Hobbyist.
+          url: "https://www.tfhmagazine.com/articles/freshwater/twelve-types-of-dwarf-cichlids-from-central-america"
+          accessed: '2026-10-13'
+        value: 1
+        note: "Occasional small-fish feeding discussed for the article species collectively, including spilurus."
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet species register: Cryptoheros spilurus"
+          url: "https://ciklid.org/artregister/art.php?ID=379"
+          accessed: '2026-10-13'
+        value: 0
+        note: Plant and insect foraging; this account documents no fish prey.
+      - source:
+          kind: literature
+          title: "The Early Development of the Blue-Eye Cichlid, Cryptoheros spilurus, Evolution & Development\
+            \ 2025"
+          url: "https://doi.org/10.1111/ede.70019"
+          accessed: '2026-10-13'
+        value: null
+        note: Plant-heavy omnivory; no fish-prey size or frequency measurement.
+      - source:
+          kind: literature
+          title: "Life-history divergence and reproductive strategies in two closely related Neotropical cichlids\
+            \ (Cryptoheros spilurus and C. cutteri), Hydrobiologia 2026"
+          url: "https://doi.org/10.1007/s10750-026-06274-0"
+          accessed: '2026-10-13'
+        value: null
+        note: Small subterminal mouth and plant-oriented dentition; no predation trial.
+      - source:
+          kind: database
+          title: "Cichlid Room Companion: Cryptoheros spilurus, public summary used only for verification"
+          url: "https://cichlidae.com/species.php?id=nnYVNGs0bV8ToHXwyP4p0w"
+          accessed: '2026-10-13'
+        value: null
+        note: Verification-only insect-feeding label does not establish predation frequency.
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 5
+        total: 6
+  diet:
+    value:
+      type: omnivore
+      bloatSensitive: false
+      foods:
+        - Balanced sinking omnivore pellets
+        - Small aquatic invertebrates
+        - Algae and vegetable-containing prepared foods
+        - Occasional Artemia or mysis
+    confidence: medium
+    rationale: "All four full-profile runs propose omnivore with bloatSensitive false; their food lists differ.\
+      \ The tally retains the generator food list with unanimous verification, four of four, and medium confidence.\
+      \ NVC and Aqua-Fish support plant and animal foods, and Izabal laboratory fish reproduced on a 32 percent\
+      \ protein omnivore feed. The two laboratory publications overlap. FishBase herbivory and the Caobas juvenile\
+      \ stomach study use Mexican pre-split records, while CRC labels insect feeding; neither displaces mixed\
+      \ feeding for the secure Izabal account. False means no established special protein-related bloat predisposition,\
+      \ not immunity to digestive illness."
+    sources:
+      - kind: literature
+        title: "Nederlandse Vereniging van Cichlidenliefhebbers: Cryptoheros spilurus (Gunther 1862), species\
+          \ article"
+        url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/cryptoheros-spilurus-g%C3%BCnther-1862"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Habitos alimentarios de las mojarras de la laguna Caobas, Quintana Roo, Rev. Biol. Trop."
+        url: "https://doi.org/10.15517/rbt.v48i2-3.18819"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Life-history divergence and reproductive strategies in two closely related Neotropical cichlids\
+          \ (Cryptoheros spilurus and C. cutteri), Hydrobiologia 2026"
+        url: "https://doi.org/10.1007/s10750-026-06274-0"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "The Early Development of the Blue-Eye Cichlid, Cryptoheros spilurus, Evolution & Development\
+          \ 2025"
+        url: "https://doi.org/10.1111/ede.70019"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Cryptoheros spilurus"
+        url: "https://ciklid.org/artregister/art.php?ID=379"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Fish: Blue-eye cichlid, Cryptoheros spilurus"
+        url: "https://en.aqua-fish.net/fish/blue-eye-cichlid"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Cichlid Room Companion: Cryptoheros spilurus, public summary used only for verification"
+        url: "https://cichlidae.com/species.php?id=nnYVNGs0bV8ToHXwyP4p0w"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase: ecology of Cryptoheros spilurus"
+        url: "https://www.fishbase.se/Ecology/FishEcologySummary.php?StockCode=8085&GenusName=Cryptoheros&SpeciesName=spilurus"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase: food items reported for Cryptoheros spilurus"
+        url: "https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=8085&genus=Cryptoheros&species=spilurus"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Fishkeeper, Jade-eye Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jade-eye-cichlid-"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: "Nederlandse Vereniging van Cichlidenliefhebbers: Cryptoheros spilurus (Gunther 1862), species\
+            \ article"
+          url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/cryptoheros-spilurus-g%C3%BCnther-1862"
+          accessed: '2026-10-13'
+        value:
+          type: omnivore
+          bloatSensitive: false
+        note: Plant and animal food; bloat flag interpreted from absence of a special restriction.
+      - source:
+          kind: database
+          title: "Aqua-Fish: Blue-eye cichlid, Cryptoheros spilurus"
+          url: "https://en.aqua-fish.net/fish/blue-eye-cichlid"
+          accessed: '2026-10-13'
+        value:
+          type: omnivore
+          bloatSensitive: false
+        note: "Mixed prepared, plant and invertebrate foods."
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet species register: Cryptoheros spilurus"
+          url: "https://ciklid.org/artregister/art.php?ID=379"
+          accessed: '2026-10-13'
+        value:
+          type: omnivore
+          bloatSensitive: false
+        note: Insects and algae; Caobas stomach data separated by locality.
+      - source:
+          kind: literature
+          title: "The Early Development of the Blue-Eye Cichlid, Cryptoheros spilurus, Evolution & Development\
+            \ 2025"
+          url: "https://doi.org/10.1111/ede.70019"
+          accessed: '2026-10-13'
+        value:
+          type: omnivore
+          bloatSensitive: false
+        note: Reproduction on 32 percent protein feed; no bloat challenge experiment.
+      - source:
+          kind: literature
+          title: "Life-history divergence and reproductive strategies in two closely related Neotropical cichlids\
+            \ (Cryptoheros spilurus and C. cutteri), Hydrobiologia 2026"
+          url: "https://doi.org/10.1007/s10750-026-06274-0"
+          accessed: '2026-10-13'
+        value:
+          type: omnivore
+          bloatSensitive: false
+        note: Long-term breeding of Izabal stock on the same kind of feed.
+      - source:
+          kind: literature
+          title: "Habitos alimentarios de las mojarras de la laguna Caobas, Quintana Roo, Rev. Biol. Trop."
+          url: "https://doi.org/10.15517/rbt.v48i2-3.18819"
+          accessed: '2026-10-13'
+        value:
+          type: omnivore
+          bloatSensitive: false
+        note: Algae and small invertebrates in juveniles labelled spilurus before the split; excluded as direct
+          Izabal dietary evidence.
+      - source:
+          kind: database
+          title: "FishBase: ecology of Cryptoheros spilurus"
+          url: "https://www.fishbase.se/Ecology/FishEcologySummary.php?StockCode=8085&GenusName=Cryptoheros&SpeciesName=spilurus"
+          accessed: '2026-10-13'
+        value:
+          type: aufwuchs
+          bloatSensitive: false
+        note: "Plant-feeding classification from the Mexican study; project category inferred, with no bloat\
+          \ statement."
+      - source:
+          kind: database
+          title: "Cichlid Room Companion: Cryptoheros spilurus, public summary used only for verification"
+          url: "https://cichlidae.com/species.php?id=nnYVNGs0bV8ToHXwyP4p0w"
+          accessed: '2026-10-13'
+        value:
+          type: invertivore
+        note: Verification only; public summary emphasizes insects.
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  aggressionConspecific:
+    value: 3
+    confidence: medium
+    rationale: "Generator and checker-a and checker-b propose 2; checker-c proposes 3. Select 3 because the\
+      \ atlas reports male attacks on partners, NVC describes suppressed male rivals, and the Izabal-stock\
+      \ study replaced females after mortality or aggressive interactions. Experimental group density does\
+      \ not prove every bonded pair injures one another, and NCS reports mild pairs. The higher category reflects\
+      \ the consequence of incompatible pairing or inadequate retreat space."
+    sources:
+      - kind: literature
+        title: "Nederlandse Vereniging van Cichlidenliefhebbers: Cryptoheros spilurus (Gunther 1862), species\
+          \ article"
+        url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/cryptoheros-spilurus-g%C3%BCnther-1862"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Borstein (2008). Cryptoheros spilurus. Greater Chicago Cichlid Association breeding report.
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/central-american-cichlids/129-cryptoheros-spilurus.html"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Life-history divergence and reproductive strategies in two closely related Neotropical cichlids\
+          \ (Cryptoheros spilurus and C. cutteri), Hydrobiologia 2026"
+        url: "https://doi.org/10.1007/s10750-026-06274-0"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Cryptoheros spilurus"
+        url: "https://ciklid.org/artregister/art.php?ID=379"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Fish: Blue-eye cichlid, Cryptoheros spilurus"
+        url: "https://en.aqua-fish.net/fish/blue-eye-cichlid"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Rybicky.net fish atlas: Cryptoheros spilurus"
+        url: "https://rybicky.net/atlasryb/kancik_hrbohlavy"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Fishkeeper, Jade-eye Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jade-eye-cichlid-"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: "Nederlandse Vereniging van Cichlidenliefhebbers: Cryptoheros spilurus (Gunther 1862), species\
+            \ article"
+          url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/cryptoheros-spilurus-g%C3%BCnther-1862"
+          accessed: '2026-10-13'
+        value: 2
+        note: Rubric inference from male dominance; injury frequency is not quantified.
+      - source:
+          kind: database
+          title: "Rybicky.net fish atlas: Cryptoheros spilurus"
+          url: "https://rybicky.net/atlasryb/kancik_hrbohlavy"
+          accessed: '2026-10-13'
+        value: 3
+        note: Male attacks on the female around a nest; historical stock identity uncertain.
+      - source:
+          kind: literature
+          title: Borstein (2008). Cryptoheros spilurus. Greater Chicago Cichlid Association breeding report.
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/central-american-cichlids/129-cryptoheros-spilurus.html"
+          accessed: '2026-10-13'
+        value: 3
+        note: Partner pressure before spawning; no verified locality.
+      - source:
+          kind: literature
+          title: "Life-history divergence and reproductive strategies in two closely related Neotropical cichlids\
+            \ (Cryptoheros spilurus and C. cutteri), Hydrobiologia 2026"
+          url: "https://doi.org/10.1007/s10750-026-06274-0"
+          accessed: '2026-10-13'
+        value: 3
+        note: Rubric inference from females replaced after aggressive interactions; group density is a confounder.
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet species register: Cryptoheros spilurus"
+          url: "https://ciklid.org/artregister/art.php?ID=379"
+          accessed: '2026-10-13'
+        value: 1
+        note: "Relatively mild pair behavior, contrasting account."
+  aggressionHeterospecific:
+    value: 2
+    confidence: medium
+    rationale: "All four full-profile runs propose 2. NVC, NCS and the atlas permit mixed housing with space,\
+      \ while describing displacement during brood defense. Level 2 fits territory-based chasing by a properly\
+      \ housed pair. Stronger generalized website descriptions do not establish routine injury of equal-sized\
+      \ tankmates."
+    sources:
+      - kind: literature
+        title: "Nederlandse Vereniging van Cichlidenliefhebbers: Cryptoheros spilurus (Gunther 1862), species\
+          \ article"
+        url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/cryptoheros-spilurus-g%C3%BCnther-1862"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Borstein (2008). Cryptoheros spilurus. Greater Chicago Cichlid Association breeding report.
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/central-american-cichlids/129-cryptoheros-spilurus.html"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Life-history divergence and reproductive strategies in two closely related Neotropical cichlids\
+          \ (Cryptoheros spilurus and C. cutteri), Hydrobiologia 2026"
+        url: "https://doi.org/10.1007/s10750-026-06274-0"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Cryptoheros spilurus"
+        url: "https://ciklid.org/artregister/art.php?ID=379"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Fish: Blue-eye cichlid, Cryptoheros spilurus"
+        url: "https://en.aqua-fish.net/fish/blue-eye-cichlid"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "AquaInfo: Cryptoheros spilurus"
+        url: "https://aquainfo.nl/artikel/cryptoheros-spilurus/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Rybicky.net fish atlas: Cryptoheros spilurus"
+        url: "https://rybicky.net/atlasryb/kancik_hrbohlavy"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Fishkeeper, Jade-eye Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jade-eye-cichlid-"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "The Aquarium Wiki: Blue-Eye Cichlid, common names"
+        url: "https://www.theaquariumwiki.com/wiki/Cryptoheros_spilurus"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: "Nederlandse Vereniging van Cichlidenliefhebbers: Cryptoheros spilurus (Gunther 1862), species\
+            \ article"
+          url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/cryptoheros-spilurus-g%C3%BCnther-1862"
+          accessed: '2026-10-13'
+        value: 2
+        note: Territorial spawning pair with compatible larger companions outside its immediate breeding area.
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet species register: Cryptoheros spilurus"
+          url: "https://ciklid.org/artregister/art.php?ID=379"
+          accessed: '2026-10-13'
+        value: 1
+        note: Care account presents the fish as relatively mild even during spawning; rubric inference.
+      - source:
+          kind: website
+          title: "Fishkeeper, Jade-eye Cichlid"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jade-eye-cichlid-"
+          accessed: '2026-10-13'
+        value: 2
+        note: "territorial, pairs may harass other fish when spawning"
+      - source:
+          kind: literature
+          title: "Life-history divergence and reproductive strategies in two closely related Neotropical cichlids\
+            \ (Cryptoheros spilurus and C. cutteri), Hydrobiologia 2026"
+          url: "https://doi.org/10.1007/s10750-026-06274-0"
+          accessed: '2026-10-13'
+        value: 2
+        note: mixed tank of two species with separate territories and no injuries reported
+      - source:
+          kind: website
+          title: "The Aquarium Wiki: Blue-Eye Cichlid, common names"
+          url: "https://www.theaquariumwiki.com/wiki/Cryptoheros_spilurus"
+          accessed: '2026-10-13'
+        value: 3
+        note: Robust tankmates recommended; low-weight account with unresolved species scope.
+      - source:
+          kind: database
+          title: "Rybicky.net fish atlas: Cryptoheros spilurus"
+          url: "https://rybicky.net/atlasryb/kancik_hrbohlavy"
+          accessed: '2026-10-13'
+        value: 2
+        note: "Chases intruders while guarding young, usually without injury"
+  territory:
+    value:
+      size: small
+      breedingOnly: true
+    confidence: low
+    rationale: "Generator proposes large with breedingOnly true; checker-a proposes small with breedingOnly\
+      \ false; checker-b and checker-c propose small with breedingOnly true. Prefer localized nest and brood\
+      \ defense with the strongest expansion during breeding. No measured territorial radius supports the generator's\
+      \ large category; the small rubric footprint is also an inference. Male rivalry outside spawning remains\
+      \ represented by conspecific aggression, and mobile fry may temporarily widen the defended area."
+    sources:
+      - kind: literature
+        title: "Nederlandse Vereniging van Cichlidenliefhebbers: Cryptoheros spilurus (Gunther 1862), species\
+          \ article"
+        url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/cryptoheros-spilurus-g%C3%BCnther-1862"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Borstein (2008). Cryptoheros spilurus. Greater Chicago Cichlid Association breeding report.
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/central-american-cichlids/129-cryptoheros-spilurus.html"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Life-history divergence and reproductive strategies in two closely related Neotropical cichlids\
+          \ (Cryptoheros spilurus and C. cutteri), Hydrobiologia 2026"
+        url: "https://doi.org/10.1007/s10750-026-06274-0"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Cryptoheros spilurus"
+        url: "https://ciklid.org/artregister/art.php?ID=379"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Rybicky.net fish atlas: Cryptoheros spilurus"
+        url: "https://rybicky.net/atlasryb/kancik_hrbohlavy"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Fishkeeper, Jade-eye Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jade-eye-cichlid-"
+        accessed: '2026-10-13'
+      - kind: model-knowledge
+        title: Conservative biological interpretation of limited species-specific observations
+    evidence:
+      - source:
+          kind: literature
+          title: "Nederlandse Vereniging van Cichlidenliefhebbers: Cryptoheros spilurus (Gunther 1862), species\
+            \ article"
+          url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/cryptoheros-spilurus-g%C3%BCnther-1862"
+          accessed: '2026-10-13'
+        value:
+          size: small
+          breedingOnly: true
+        note: Rubric interpretation of localized brood defense; no measured radius.
+      - source:
+          kind: literature
+          title: "Life-history divergence and reproductive strategies in two closely related Neotropical cichlids\
+            \ (Cryptoheros spilurus and C. cutteri), Hydrobiologia 2026"
+          url: "https://doi.org/10.1007/s10750-026-06274-0"
+          accessed: '2026-10-13'
+        value:
+          size: small
+          breedingOnly: true
+        note: Nesting territories observed; exact area was not measured.
+      - source:
+          kind: website
+          title: "Fishkeeper, Jade-eye Cichlid"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jade-eye-cichlid-"
+          accessed: '2026-10-13'
+        value:
+          size: small
+          breedingOnly: false
+        note: "Retailer depicts persistent site ownership; rubric inference, not mapped territory."
+  habitatZones:
+    value:
+      - rock
+      - sand
+      - wood
+    confidence: high
+    rationale: "Generator includes rock, sand, wood and plants; checker-a and checker-b include rock, sand\
+      \ and wood; checker-c gives the same set in a different order. Adopt the shared three-zone set from FishBase,\
+      \ NCS and the locality account. Shoreline vegetation does not establish dependence on live plants; optional\
+      \ protected plants can remain in the aquarium."
+    sources:
+      - kind: literature
+        title: "Life-history divergence and reproductive strategies in two closely related Neotropical cichlids\
+          \ (Cryptoheros spilurus and C. cutteri), Hydrobiologia 2026"
+        url: "https://doi.org/10.1007/s10750-026-06274-0"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Nederlandse Vereniging van Cichlidenliefhebbers: Cryptoheros spilurus (Gunther 1862), species\
+          \ article"
+        url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/cryptoheros-spilurus-g%C3%BCnther-1862"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase species summary: Cryptoheros spilurus"
+        url: "https://www.fishbase.se/summary/Cryptoheros-spilurus.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Cryptoheros spilurus"
+        url: "https://ciklid.org/artregister/art.php?ID=379"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Biotope Aquarium Design Contest 2019: Tunico River in summer, Izabal, Guatemala"
+        url: "http://biotope-aquarium.info/aquariums/tunico-river-in-the-summer-izabal-guatemala-192-l/"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: database
+          title: "FishBase species summary: Cryptoheros spilurus"
+          url: "https://www.fishbase.se/summary/Cryptoheros-spilurus.html"
+          accessed: '2026-10-13'
+        value:
+          - sand
+          - rock
+        note: Shallow littoral bottoms; mud also described.
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet species register: Cryptoheros spilurus"
+          url: "https://ciklid.org/artregister/art.php?ID=379"
+          accessed: '2026-10-13'
+        value:
+          - sand
+          - rock
+          - wood
+        note: Submerged branches and roots among natural cover.
+      - source:
+          kind: literature
+          title: "Nederlandse Vereniging van Cichlidenliefhebbers: Cryptoheros spilurus (Gunther 1862), species\
+            \ article"
+          url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/cryptoheros-spilurus-g%C3%BCnther-1862"
+          accessed: '2026-10-13'
+        value:
+          - sand
+          - rock
+        note: Izabal littoral substrate description.
+      - source:
+          kind: website
+          title: "Biotope Aquarium Design Contest 2019: Tunico River in summer, Izabal, Guatemala"
+          url: "http://biotope-aquarium.info/aquariums/tunico-river-in-the-summer-izabal-guatemala-192-l/"
+          accessed: '2026-10-13'
+        value:
+          - sand
+          - rock
+          - wood
+        note: Field-informed aquarium reconstruction; lower-weight corroboration.
+  social:
+    value:
+      structure: pair
+    confidence: high
+    rationale: All four full-profile runs propose pair. Independent aquarium accounts and the Izabal laboratory
+      work document pairing and care by both parents. A compatible pair is the adult unit; experimental multi-pair
+      tanks do not imply that a group is required.
+    sources:
+      - kind: literature
+        title: "Nederlandse Vereniging van Cichlidenliefhebbers: Cryptoheros spilurus (Gunther 1862), species\
+          \ article"
+        url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/cryptoheros-spilurus-g%C3%BCnther-1862"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Borstein (2008). Cryptoheros spilurus. Greater Chicago Cichlid Association breeding report.
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/central-american-cichlids/129-cryptoheros-spilurus.html"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Life-history divergence and reproductive strategies in two closely related Neotropical cichlids\
+          \ (Cryptoheros spilurus and C. cutteri), Hydrobiologia 2026"
+        url: "https://doi.org/10.1007/s10750-026-06274-0"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Cryptoheros spilurus"
+        url: "https://ciklid.org/artregister/art.php?ID=379"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Fish: Blue-eye cichlid, Cryptoheros spilurus"
+        url: "https://en.aqua-fish.net/fish/blue-eye-cichlid"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Fishkeeper, Jade-eye Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jade-eye-cichlid-"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet species register: Cryptoheros spilurus"
+          url: "https://ciklid.org/artregister/art.php?ID=379"
+          accessed: '2026-10-13'
+        value:
+          structure: pair
+      - source:
+          kind: literature
+          title: "Nederlandse Vereniging van Cichlidenliefhebbers: Cryptoheros spilurus (Gunther 1862), species\
+            \ article"
+          url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/cryptoheros-spilurus-g%C3%BCnther-1862"
+          accessed: '2026-10-13'
+        value:
+          structure: pair
+      - source:
+          kind: literature
+          title: Borstein (2008). Cryptoheros spilurus. Greater Chicago Cichlid Association breeding report.
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/central-american-cichlids/129-cryptoheros-spilurus.html"
+          accessed: '2026-10-13'
+        value:
+          structure: pair
+      - source:
+          kind: website
+          title: "Fishkeeper, Jade-eye Cichlid"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jade-eye-cichlid-"
+          accessed: '2026-10-13'
+        value:
+          structure: pair
+      - source:
+          kind: literature
+          title: "Life-history divergence and reproductive strategies in two closely related Neotropical cichlids\
+            \ (Cryptoheros spilurus and C. cutteri), Hydrobiologia 2026"
+          url: "https://doi.org/10.1007/s10750-026-06274-0"
+          accessed: '2026-10-13'
+        value:
+          structure: pair
+        note: strong biparental care
+  speciesOnly:
+    value: false
+    confidence: high
+    rationale: "Generator and checker-a, checker-b and checker-c all propose false. The tally is unanimous,\
+      \ four of four, with high confidence. NCS explicitly allows community keeping and NVC names other cichlids\
+      \ and non-cichlids when sufficient space is available. An aquarium restricted to a pair is an option\
+      \ for brood management, not a universal species-only requirement. Hybrid cautions still apply to the\
+      \ named related species."
+    sources:
+      - kind: literature
+        title: "Nederlandse Vereniging van Cichlidenliefhebbers: Cryptoheros spilurus (Gunther 1862), species\
+          \ article"
+        url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/cryptoheros-spilurus-g%C3%BCnther-1862"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Life-history divergence and reproductive strategies in two closely related Neotropical cichlids\
+          \ (Cryptoheros spilurus and C. cutteri), Hydrobiologia 2026"
+        url: "https://doi.org/10.1007/s10750-026-06274-0"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Cryptoheros spilurus"
+        url: "https://ciklid.org/artregister/art.php?ID=379"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Fish: Blue-eye cichlid, Cryptoheros spilurus"
+        url: "https://en.aqua-fish.net/fish/blue-eye-cichlid"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "AquaInfo: Cryptoheros spilurus"
+        url: "https://aquainfo.nl/artikel/cryptoheros-spilurus/"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Fishkeeper, Jade-eye Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jade-eye-cichlid-"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet species register: Cryptoheros spilurus"
+          url: "https://ciklid.org/artregister/art.php?ID=379"
+          accessed: '2026-10-13'
+        value: false
+        note: Community housing is allowed.
+      - source:
+          kind: literature
+          title: "Nederlandse Vereniging van Cichlidenliefhebbers: Cryptoheros spilurus (Gunther 1862), species\
+            \ article"
+          url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/cryptoheros-spilurus-g%C3%BCnther-1862"
+          accessed: '2026-10-13'
+        value: false
+        note: Allows other cichlids and non-cichlids with sufficient room.
+      - source:
+          kind: database
+          title: "Aqua-Fish: Blue-eye cichlid, Cryptoheros spilurus"
+          url: "https://en.aqua-fish.net/fish/blue-eye-cichlid"
+          accessed: '2026-10-13'
+        value: false
+        note: Robust companions possible with space and territorial management.
+      - source:
+          kind: database
+          title: "AquaInfo: Cryptoheros spilurus"
+          url: "https://aquainfo.nl/artikel/cryptoheros-spilurus/"
+          accessed: '2026-10-13'
+        value: false
+        note: Mixed Central American housing allowed; species concept is outdated.
+      - source:
+          kind: literature
+          title: "Life-history divergence and reproductive strategies in two closely related Neotropical cichlids\
+            \ (Cryptoheros spilurus and C. cutteri), Hydrobiologia 2026"
+          url: "https://doi.org/10.1007/s10750-026-06274-0"
+          accessed: '2026-10-13'
+        value: false
+        note: Mixed-species experimental aquarium; does not remove hybrid cautions.
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  hybridGroups:
+    value:
+      - cryptoheros
+      - cryptoheros-spilurus-amatitlania-nigrofasciata
+    confidence: low
+    rationale: "Proposals were generator: cryptoheros, cryptoheros-spilurus-amatitlania-nigrofasciata; checker-a:\
+      \ no groups; checker-b: cryptoheros-spilurus-complex, cryptoheros-spilurus-amatitlania-nigrofasciata;\
+      \ checker-c: cryptoheros, cryptoheros-spilurus-amatitlania-nigrofasciata; tiebreaker-1: cryptoheros,\
+      \ cryptoheros-spilurus-amatitlania-nigrofasciata; tiebreaker-2: cryptoheros, cryptoheros-spilurus-amatitlania-nigrofasciata.\
+      \ The tally qualified majority selects the two listed ids, four of six, with low confidence. The cryptoheros\
+      \ id covers exactly spilurus, chetumalensis and cutteri, the same members as checker-b's alternative\
+      \ id. Both groups have basis presumed. NVC gives a general congener warning and a secondary fertile-convict\
+      \ report; Hulsey and the 2007 abstracts support relatedness rather than observed crossing. The 2026 mixed\
+      \ tank supplied conspecific mates yet produced no interspecific courtship or spawning between spilurus\
+      \ and cutteri. The convict claim is independently repeated in archive thread 802 and a forum warning,\
+      \ but parent identity and mate availability remain unverified; old spilurus labels may concern chetumalensis\
+      \ or cutteri. No direct free-choice cross is established, and the convict pair is not extended to other\
+      \ genus members. Fishipedia remained blocked and supplies no independently reviewed corroboration."
+    sources:
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: Cryptoheros, online version updated 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Cryptoheros"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Nederlandse Vereniging van Cichlidenliefhebbers: Cryptoheros spilurus (Gunther 1862), species\
+          \ article"
+        url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/cryptoheros-spilurus-g%C3%BCnther-1862"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Schmitter-Soto (2007). A systematic revision of Archocentrus. Abstract only.
+        url: "https://doi.org/10.11646/zootaxa.1603.1.1"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Life-history divergence and reproductive strategies in two closely related Neotropical cichlids\
+          \ (Cryptoheros spilurus and C. cutteri), Hydrobiologia 2026"
+        url: "https://doi.org/10.1007/s10750-026-06274-0"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Hulsey et al. (2010). Temporal diversification of Central American cichlids.
+        url: "https://doi.org/10.1186/1471-2148-10-279"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Schmitter-Soto (2007). Phylogeny of species formerly assigned to Archocentrus. Abstract only.
+        url: "https://doi.org/10.11646/zootaxa.1618.1.1"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Fishkeeper, Jade-eye Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jade-eye-cichlid-"
+        accessed: '2026-10-13'
+      - kind: forum
+        title: "MonsterFishKeepers: Blue Eyed Cichlid (2012), species-specific crossing warning."
+        url: "https://www.monsterfishkeepers.com/forums/threads/blue-eyed-cichlid.471669/"
+        accessed: '2026-10-13'
+      - kind: archive
+        title: cichlids.com forum thread 802
+        url: "https://www.cichlids.com/disc/read.php?1,802"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: "Nederlandse Vereniging van Cichlidenliefhebbers: Cryptoheros spilurus (Gunther 1862), species\
+            \ article"
+          url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/cryptoheros-spilurus-g%C3%BCnther-1862"
+          accessed: '2026-10-13'
+        value:
+          - cryptoheros
+          - cryptoheros-spilurus-amatitlania-nigrofasciata
+        note: General genus warning and secondary fertile-convict report; presumed risk only.
+      - source:
+          kind: literature
+          title: Schmitter-Soto (2007). A systematic revision of Archocentrus. Abstract only.
+          url: "https://doi.org/10.11646/zootaxa.1603.1.1"
+          accessed: '2026-10-13'
+        value:
+          - cryptoheros
+        note: Abstract defines the split complex; relatedness and membership only.
+      - source:
+          kind: literature
+          title: Schmitter-Soto (2007). Phylogeny of species formerly assigned to Archocentrus. Abstract only.
+          url: "https://doi.org/10.11646/zootaxa.1618.1.1"
+          accessed: '2026-10-13'
+        value:
+          - cryptoheros
+        note: "Abstract supports a close three-species clade, without a reported cross."
+      - source:
+          kind: literature
+          title: Hulsey et al. (2010). Temporal diversification of Central American cichlids.
+          url: "https://doi.org/10.1186/1471-2148-10-279"
+          accessed: '2026-10-13'
+        value:
+          - cryptoheros
+        note: Molecular closeness supports presumed risk; no observed hybrids.
+      - source:
+          kind: catalog-of-fishes
+          title: "Eschmeyer's Catalog of Fishes: Cryptoheros, online version updated 21 September 2026"
+          url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Cryptoheros"
+          accessed: '2026-10-13'
+        value: null
+        note: Defines the three valid names only.
+      - source:
+          kind: literature
+          title: "Life-history divergence and reproductive strategies in two closely related Neotropical cichlids\
+            \ (Cryptoheros spilurus and C. cutteri), Hydrobiologia 2026"
+          url: "https://doi.org/10.1007/s10750-026-06274-0"
+          accessed: '2026-10-13'
+        value: []
+        note: No spilurus-cutteri crosses in one aquarium with conspecific mate availability; limited negative
+          evidence.
+      - source:
+          kind: forum
+          title: "MonsterFishKeepers: Blue Eyed Cichlid (2012), species-specific crossing warning."
+          url: "https://www.monsterfishkeepers.com/forums/threads/blue-eyed-cichlid.471669/"
+          accessed: '2026-10-13'
+        value:
+          - cryptoheros-spilurus-amatitlania-nigrofasciata
+        note: Unverified keeper warning; no named observed spawning circumstances.
+      - source:
+          kind: archive
+          title: cichlids.com forum thread 802
+          url: "https://www.cichlids.com/disc/read.php?1,802"
+          accessed: '2026-10-13'
+        value:
+          - cryptoheros-spilurus-amatitlania-nigrofasciata
+        note: Old-name community cross claim; no parentage or locality checks.
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 4
+        total: 6
+  coloration:
+    value:
+      baseColors:
+        - grey
+        - blue
+        - black
+      pattern: bars
+    confidence: medium
+    rationale: "Generator proposes grey, blue, yellow and black; checker-a blue alone; checker-b grey, yellow,\
+      \ red and black; checker-c grey, blue and black. Select checker-c's subdued grey and blue appearance\
+      \ with dark bars, supported by AquaInfo and the hobby encyclopedia. Yellow or red accents described by\
+      \ NVC are retained in prose but are not consistently dominant adult-male colors. Bright northern trade\
+      \ colors require identity checks."
+    sources:
+      - kind: literature
+        title: "Nederlandse Vereniging van Cichlidenliefhebbers: Cryptoheros spilurus (Gunther 1862), species\
+          \ article"
+        url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/cryptoheros-spilurus-g%C3%BCnther-1862"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Cryptoheros spilurus"
+        url: "https://ciklid.org/artregister/art.php?ID=379"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "AquaInfo: Cryptoheros spilurus"
+        url: "https://aquainfo.nl/artikel/cryptoheros-spilurus/"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "The Aquarium Wiki: Blue-Eye Cichlid, common names"
+        url: "https://www.theaquariumwiki.com/wiki/Cryptoheros_spilurus"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: database
+          title: "AquaInfo: Cryptoheros spilurus"
+          url: "https://aquainfo.nl/artikel/cryptoheros-spilurus/"
+          accessed: '2026-10-13'
+        value:
+          baseColors:
+            - grey
+            - blue
+            - black
+          pattern: bars
+        note: Grey body with blue eye area and dark markings; source retains the former species concept.
+      - source:
+          kind: literature
+          title: "Nederlandse Vereniging van Cichlidenliefhebbers: Cryptoheros spilurus (Gunther 1862), species\
+            \ article"
+          url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/cryptoheros-spilurus-g%C3%BCnther-1862"
+          accessed: '2026-10-13'
+        value:
+          baseColors:
+            - yellow
+            - red
+            - black
+          pattern: bars
+        note: Subdued yellow and red accents with dark vertical bars; not all colors are dominant.
+      - source:
+          kind: website
+          title: "The Aquarium Wiki: Blue-Eye Cichlid, common names"
+          url: "https://www.theaquariumwiki.com/wiki/Cryptoheros_spilurus"
+          accessed: '2026-10-13'
+        value:
+          baseColors:
+            - blue
+            - black
+          pattern: bars
+        note: Low-weight hobby description of blue-purple ground color and vertical markings.
+  feedingSpeed:
+    value: normal
+    confidence: low
+    rationale: "All four full-profile runs propose normal. Aqua-Fish describes deliberate foraging and NCS\
+      \ rapid picking of exposed insects without food monopolization. No comparative speed trial establishes\
+      \ the category, so keep low confidence despite repeated votes."
+    sources:
+      - kind: literature
+        title: "Nederlandse Vereniging van Cichlidenliefhebbers: Cryptoheros spilurus (Gunther 1862), species\
+          \ article"
+        url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/cryptoheros-spilurus-g%C3%BCnther-1862"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Fish: Blue-eye cichlid, Cryptoheros spilurus"
+        url: "https://en.aqua-fish.net/fish/blue-eye-cichlid"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Cryptoheros spilurus"
+        url: "https://ciklid.org/artregister/art.php?ID=379"
+        accessed: '2026-10-13'
+      - kind: model-knowledge
+        title: Assessment from diet and behaviour data of the cited sources
+    evidence:
+      - source:
+          kind: database
+          title: "Aqua-Fish: Blue-eye cichlid, Cryptoheros spilurus"
+          url: "https://en.aqua-fish.net/fish/blue-eye-cichlid"
+          accessed: '2026-10-13'
+        value: normal
+        note: "Behavioral interpretation of deliberate foraging, not a timed feeding trial."
+  minTank:
+    value:
+      volumeL: 200
+      lengthCm: 120
+      depthCm: 40
+    confidence: medium
+    rationale: "Generator, checker-b and checker-c propose 200 L with 120 by 40 cm; checker-a proposes 100\
+      \ L with 90 by 35 cm. Keep the more forgiving pair setup. AquaInfo explicitly gives 120 cm, NVC about\
+      \ 100 cm, NCS 80 cm and 120 L, and retailer guidance 90 cm for a pair alone. The 200 L and 40 cm depth\
+      \ are planning inferences for refuges and partner safety, not dimensions all sources state. Additional\
+      \ adult territories need a larger aquarium."
+    sources:
+      - kind: literature
+        title: "Nederlandse Vereniging van Cichlidenliefhebbers: Cryptoheros spilurus (Gunther 1862), species\
+          \ article"
+        url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/cryptoheros-spilurus-g%C3%BCnther-1862"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "AquaInfo: Cryptoheros spilurus"
+        url: "https://aquainfo.nl/artikel/cryptoheros-spilurus/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Cryptoheros spilurus"
+        url: "https://ciklid.org/artregister/art.php?ID=379"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Fish: Blue-eye cichlid, Cryptoheros spilurus"
+        url: "https://en.aqua-fish.net/fish/blue-eye-cichlid"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Fishkeeper, Jade-eye Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jade-eye-cichlid-"
+        accessed: '2026-10-13'
+      - kind: archive
+        title: cichlids.com forum thread 27499
+        url: "https://www.cichlids.com/disc/read.php?1,27499"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: database
+          title: "AquaInfo: Cryptoheros spilurus"
+          url: "https://aquainfo.nl/artikel/cryptoheros-spilurus/"
+          accessed: '2026-10-13'
+        value:
+          lengthCm: 120
+        note: Published minimum length; no complete footprint and volume given.
+      - source:
+          kind: literature
+          title: "Nederlandse Vereniging van Cichlidenliefhebbers: Cryptoheros spilurus (Gunther 1862), species\
+            \ article"
+          url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/cryptoheros-spilurus-g%C3%BCnther-1862"
+          accessed: '2026-10-13'
+        value:
+          lengthCm: 100
+        note: One pair at about one metre; multiple pairs only in longer tanks.
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet species register: Cryptoheros spilurus"
+          url: "https://ciklid.org/artregister/art.php?ID=379"
+          accessed: '2026-10-13'
+        value:
+          volumeL: 120
+          lengthCm: 80
+        note: Smaller published minimum; not the adopted conservative pair setup.
+      - source:
+          kind: website
+          title: "Fishkeeper, Jade-eye Cichlid"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jade-eye-cichlid-"
+          accessed: '2026-10-13'
+        value:
+          volumeL: 100
+          lengthCm: 90
+          depthCm: 35
+        note: at least 3 feet for a single pair
+      - source:
+          kind: database
+          title: "Aqua-Fish: Blue-eye cichlid, Cryptoheros spilurus"
+          url: "https://en.aqua-fish.net/fish/blue-eye-cichlid"
+          accessed: '2026-10-13'
+        value:
+          lengthCm: 90
+        note: Suggested pair or single-fish length begins at 90 cm
+      - source:
+          kind: archive
+          title: cichlids.com forum thread 27499
+          url: "https://www.cichlids.com/disc/read.php?1,27499"
+          accessed: '2026-10-13'
+        value:
+          volumeL: 75.7
+        note: Low-weight older recommendation of a pair in 20 US gallons; not adopted
+  lifespanYears:
+    value:
+      min: 6
+      max: 10
+    confidence: low
+    rationale: "Generator, checker-b and checker-c propose 6 to 10 years; checker-a proposes 5 to 8. Aqua-Fish\
+      \ gives 6 to 10 and the Czech atlas about 10; the general hobby encyclopedia gives 5 to 8. Prefer the\
+      \ species care estimate without claiming a tracked survival distribution or guaranteed lifespan; historical\
+      \ stock identity is imperfect."
+    sources:
+      - kind: database
+        title: "Aqua-Fish: Blue-eye cichlid, Cryptoheros spilurus"
+        url: "https://en.aqua-fish.net/fish/blue-eye-cichlid"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Rybicky.net fish atlas: Cryptoheros spilurus"
+        url: "https://rybicky.net/atlasryb/kancik_hrbohlavy"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "The Aquarium Wiki: Blue-Eye Cichlid, common names"
+        url: "https://www.theaquariumwiki.com/wiki/Cryptoheros_spilurus"
+        accessed: '2026-10-13'
+      - kind: model-knowledge
+        title: Estimate for small Central American cichlids
+    evidence:
+      - source:
+          kind: database
+          title: "Aqua-Fish: Blue-eye cichlid, Cryptoheros spilurus"
+          url: "https://en.aqua-fish.net/fish/blue-eye-cichlid"
+          accessed: '2026-10-13'
+        value:
+          min: 6
+          max: 10
+        note: Unreferenced practical aquarium estimate.
+      - source:
+          kind: website
+          title: "The Aquarium Wiki: Blue-Eye Cichlid, common names"
+          url: "https://www.theaquariumwiki.com/wiki/Cryptoheros_spilurus"
+          accessed: '2026-10-13'
+        value:
+          min: 5
+          max: 8
+        note: Low-weight hobby estimate.
+      - source:
+          kind: database
+          title: "Rybicky.net fish atlas: Cryptoheros spilurus"
+          url: "https://rybicky.net/atlasryb/kancik_hrbohlavy"
+          accessed: '2026-10-13'
+        value:
+          min: 10
+          max: 10
+        note: Approximate aquarium lifespan
+  breeding:
+    value: open-substrate-spawner
+    confidence: high
+    rationale: "Generator, checker-b and checker-c propose open-substrate-spawner; checker-a proposes cave-spawner.\
+      \ The direct Izabal-stock study records a preference for more exposed surfaces, and NVC explicitly rejects\
+      \ obligate cave spawning. Hellweg describes spawning outside caves when no cave is present. Use open-substrate-spawner\
+      \ for facultative sheltered surface spawning; caves are still valid sites. CRC verification labels cave\
+      \ spawning and indicates a different emphasis, not absence of exposed-surface spawning."
+    sources:
+      - kind: literature
+        title: "Nederlandse Vereniging van Cichlidenliefhebbers: Cryptoheros spilurus (Gunther 1862), species\
+          \ article"
+        url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/cryptoheros-spilurus-g%C3%BCnther-1862"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Life-history divergence and reproductive strategies in two closely related Neotropical cichlids\
+          \ (Cryptoheros spilurus and C. cutteri), Hydrobiologia 2026"
+        url: "https://doi.org/10.1007/s10750-026-06274-0"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "The Early Development of the Blue-Eye Cichlid, Cryptoheros spilurus, Evolution & Development\
+          \ 2025"
+        url: "https://doi.org/10.1111/ede.70019"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Hellweg. Twelve Types of Dwarf Cichlids from Central America. Tropical Fish Hobbyist.
+        url: "https://www.tfhmagazine.com/articles/freshwater/twelve-types-of-dwarf-cichlids-from-central-america"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase species summary: Cryptoheros spilurus"
+        url: "https://www.fishbase.se/summary/Cryptoheros-spilurus.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Cryptoheros spilurus"
+        url: "https://ciklid.org/artregister/art.php?ID=379"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Cichlid Room Companion: Cryptoheros spilurus, public summary used only for verification"
+        url: "https://cichlidae.com/species.php?id=nnYVNGs0bV8ToHXwyP4p0w"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Fishkeeper, Jade-eye Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jade-eye-cichlid-"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: "Life-history divergence and reproductive strategies in two closely related Neotropical cichlids\
+            \ (Cryptoheros spilurus and C. cutteri), Hydrobiologia 2026"
+          url: "https://doi.org/10.1007/s10750-026-06274-0"
+          accessed: '2026-10-13'
+        value: open-substrate-spawner
+        note: Izabal-derived fish preferred more exposed spawning surfaces.
+      - source:
+          kind: literature
+          title: "Nederlandse Vereniging van Cichlidenliefhebbers: Cryptoheros spilurus (Gunther 1862), species\
+            \ article"
+          url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/cryptoheros-spilurus-g%C3%BCnther-1862"
+          accessed: '2026-10-13'
+        value: open-substrate-spawner
+        note: Sheltered surfaces and sand pits; not an obligatory cave breeder.
+      - source:
+          kind: literature
+          title: "The Early Development of the Blue-Eye Cichlid, Cryptoheros spilurus, Evolution & Development\
+            \ 2025"
+          url: "https://doi.org/10.1111/ede.70019"
+          accessed: '2026-10-13'
+        value: open-substrate-spawner
+        note: Eggs laid on flagstone or in clay pots.
+      - source:
+          kind: literature
+          title: Hellweg. Twelve Types of Dwarf Cichlids from Central America. Tropical Fish Hobbyist.
+          url: "https://www.tfhmagazine.com/articles/freshwater/twelve-types-of-dwarf-cichlids-from-central-america"
+          accessed: '2026-10-13'
+        value: open-substrate-spawner
+        note: Spawning on exposed surfaces reported when no cave is available.
+      - source:
+          kind: database
+          title: "FishBase species summary: Cryptoheros spilurus"
+          url: "https://www.fishbase.se/summary/Cryptoheros-spilurus.html"
+          accessed: '2026-10-13'
+        value: open-substrate-spawner
+        note: Sand-depression spawning account.
+      - source:
+          kind: database
+          title: "Cichlid Room Companion: Cryptoheros spilurus, public summary used only for verification"
+          url: "https://cichlidae.com/species.php?id=nnYVNGs0bV8ToHXwyP4p0w"
+          accessed: '2026-10-13'
+        value: cave-spawner
+        note: Verification-only public category differs in emphasis.
+  beginnerSuitability:
+    value: moderate
+    confidence: medium
+    rationale: "Generator, checker-a and checker-c propose moderate; checker-b proposes easy. NCS and CRC rate\
+      \ basic maintenance easy, but partner attacks, brood defense and confused trade identities require preparation.\
+      \ Moderate reflects social management rather than unusually difficult water or feeding requirements."
+    sources:
+      - kind: literature
+        title: Borstein (2008). Cryptoheros spilurus. Greater Chicago Cichlid Association breeding report.
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/central-american-cichlids/129-cryptoheros-spilurus.html"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Nederlandse Vereniging van Cichlidenliefhebbers: Cryptoheros spilurus (Gunther 1862), species\
+          \ article"
+        url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/cryptoheros-spilurus-g%C3%BCnther-1862"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "The Early Development of the Blue-Eye Cichlid, Cryptoheros spilurus, Evolution & Development\
+          \ 2025"
+        url: "https://doi.org/10.1111/ede.70019"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Cryptoheros spilurus"
+        url: "https://ciklid.org/artregister/art.php?ID=379"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Cichlid Room Companion: Cryptoheros spilurus, public summary used only for verification"
+        url: "https://cichlidae.com/species.php?id=nnYVNGs0bV8ToHXwyP4p0w"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Rybicky.net fish atlas: Cryptoheros spilurus"
+        url: "https://rybicky.net/atlasryb/kancik_hrbohlavy"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Fishkeeper, Jade-eye Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jade-eye-cichlid-"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet species register: Cryptoheros spilurus"
+          url: "https://ciklid.org/artregister/art.php?ID=379"
+          accessed: '2026-10-13'
+        value: easy
+      - source:
+          kind: literature
+          title: "The Early Development of the Blue-Eye Cichlid, Cryptoheros spilurus, Evolution & Development\
+            \ 2025"
+          url: "https://doi.org/10.1111/ede.70019"
+          accessed: '2026-10-13'
+        value: easy
+        note: Successful repeated captive reproduction and ease of maintenance.
+      - source:
+          kind: database
+          title: "Rybicky.net fish atlas: Cryptoheros spilurus"
+          url: "https://rybicky.net/atlasryb/kancik_hrbohlavy"
+          accessed: '2026-10-13'
+        value: easy
+        note: Easy maintenance label alongside warnings about partner attacks
+partners:
+  suitable:
+    - species: Xiphophorus hellerii
+      reason: Robust adults can occupy upper water away from a nesting pair; fry can be eaten.
+      condition: "A larger community aquarium with broken sight lines, matching water requirements and separate\
+        \ refuge space."
+    - species: Poecilia mexicana
+      reason: "Robust adult livebearers are potential upper-water companions, also listed in the Tunico locality\
+        \ account."
+      condition: Adequate additional swimming space and overlapping measured water requirements; brood defense
+        and fry predation still apply.
+    - species: Thorichthys aureus
+      reason: NVC names this cichlid as a possible companion when there is room for separate territories.
+      condition: "A substantially larger footprint than the pair minimum, with visual barriers and the ability\
+        \ to separate incompatible pairs."
+  unsuitable:
+    - species: Cryptoheros chetumalensis
+      reason: Close resemblance and the presumed cryptoheros hybrid caution conflict with maintaining clearly
+        identified breeding stock.
+    - species: Cryptoheros cutteri
+      reason: Covered by the presumed congener crossing caution and potential territorial rivalry; one laboratory
+        tank without crosses does not remove the caution.
+    - species: Amatitlania nigrofasciata
+      reason: A presumed pairwise hybrid caution rests on old-name captive reports with unresolved parent identity
+        and mate availability.
+    - species: Large predatory Central American cichlids
+      reason: The small adult size and retreat requirements of spilurus create a severe size and predation
+        imbalance.
+    - species: Very small community fish and fry
+      reason: "Level 1 allows occasional consumption of fry and fish around 2 cm, while brood defense can also\
+        \ exclude delicate companions."
+profile:
+  overview:
+    text: "A pair of Cryptoheros spilurus offers close views of parental behavior without the adult bulk of\
+      \ many Central American cichlids. Its blue eye region and dark body markings become especially conspicuous\
+      \ around spawning. The valid name replaces the legacy Archocentrus spilurus. This account centers on\
+      \ securely identified Izabal fish; chetumalensis and cutteri are separate species, and old trade labels\
+      \ can obscure that distinction."
+    sources:
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: Cryptoheros, online version updated 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Cryptoheros"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Nederlandse Vereniging van Cichlidenliefhebbers: Cryptoheros spilurus (Gunther 1862), species\
+          \ article"
+        url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/cryptoheros-spilurus-g%C3%BCnther-1862"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Cryptoheros spilurus"
+        url: "https://ciklid.org/artregister/art.php?ID=379"
+        accessed: '2026-10-13'
+  habitat:
+    text: "The secure core is the Izabal drainage in eastern Guatemala, including shallow lake margins and\
+      \ adjoining rivers. Sand, stones and submerged wood provide feeding surfaces and shelter. The recorded\
+      \ consensus ranges are 26 to 31 C, pH 7.2 to 8.3, GH 5 to 6 dGH and KH 5 to 6 dKH. They summarize the\
+      \ adjudicated evidence and are narrower than some basin measurements, including a modern lake reading\
+      \ of 31.6 C and hardness above 7 dGH. They are not exhaustive annual limits. Measurements from Mexican\
+      \ populations cannot be assigned directly after the species split."
+    sources:
+      - kind: literature
+        title: "Perez et al. (2013). Bioindicators of climate and trophic state in lowland and highland aquatic\
+          \ ecosystems of the Northern Neotropics. Revista de Biologia Tropical 61(2), 603-644. Table 1A."
+        url: "https://doi.org/10.15517/rbt.v61i2.11164"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Pailles et al. (2020). New fossil genus and new extant species of diatoms from Pleistocene sediments
+          in Guatemala. Table 1.
+        url: "https://doi.org/10.5852/ejt.2020.726.1169"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "INE / INSIVUMEH: Base Calidad del Agua 2023, Mariscos and Castillo San Felipe monitoring records."
+        url: "https://datos.ine.gob.gt/api/3/action/datastore_search?resource_id=45008b75-b34d-4e12-9f13-482873eda5fb&limit=10000"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "INE / INSIVUMEH: Base de monitoreo del Agua 2024, Mariscos and Castillo San Felipe monitoring\
+          \ records."
+        url: "https://datos.ine.gob.gt/api/3/action/datastore_search?resource_id=d08589e5-e264-41cc-b67d-4867ff11d3bc&limit=10000"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Cryptoheros spilurus"
+        url: "https://ciklid.org/artregister/art.php?ID=379"
+        accessed: '2026-10-13'
+  sizeAndGrowth:
+    text: "Plan for an adult male around 12 cm and a female around 9 cm in total length. FishBase gives the\
+      \ smaller female maximum of 8 cm, while larger legacy-stock reports lack secure locality. Social suppression\
+      \ can delay the growth and appearance of subordinate males. The estimated aquarium lifespan is 6 to 10\
+      \ years, with lower hobby estimates also published; no survival series establishes a guarantee."
+    sources:
+      - kind: database
+        title: "FishBase species summary: Cryptoheros spilurus"
+        url: "https://www.fishbase.se/summary/Cryptoheros-spilurus.html"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Borstein (2008). Cryptoheros spilurus. Greater Chicago Cichlid Association breeding report.
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/central-american-cichlids/129-cryptoheros-spilurus.html"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Nederlandse Vereniging van Cichlidenliefhebbers: Cryptoheros spilurus (Gunther 1862), species\
+          \ article"
+        url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/cryptoheros-spilurus-g%C3%BCnther-1862"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Fish: Blue-eye cichlid, Cryptoheros spilurus"
+        url: "https://en.aqua-fish.net/fish/blue-eye-cichlid"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Rybicky.net fish atlas: Cryptoheros spilurus"
+        url: "https://rybicky.net/atlasryb/kancik_hrbohlavy"
+        accessed: '2026-10-13'
+  husbandry:
+    text: "Allow one compatible pair about 200 L and a footprint of 120 by 40 cm, with secure rocks and wood\
+      \ forming several retreats. Additional fish need more room. Filter reliably and change water regularly,\
+      \ keeping both partners able to feed and rest. The tolerance envelopes are 21 to 32 C, pH 6.5 to 8.5,\
+      \ GH 4 to 21 dGH and KH 2 to 8 dKH. Their outer limits are estimates with uneven support; routine temperatures\
+      \ near 26 to 28 C are better supported than continuous maintenance at 32 C. Measure GH and KH separately."
+    sources:
+      - kind: database
+        title: "AquaInfo: Cryptoheros spilurus"
+        url: "https://aquainfo.nl/artikel/cryptoheros-spilurus/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Fish: Blue-eye cichlid, Cryptoheros spilurus"
+        url: "https://en.aqua-fish.net/fish/blue-eye-cichlid"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Cryptoheros spilurus"
+        url: "https://ciklid.org/artregister/art.php?ID=379"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "The Early Development of the Blue-Eye Cichlid, Cryptoheros spilurus, Evolution & Development\
+          \ 2025"
+        url: "https://doi.org/10.1111/ede.70019"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Life-history divergence and reproductive strategies in two closely related Neotropical cichlids\
+          \ (Cryptoheros spilurus and C. cutteri), Hydrobiologia 2026"
+        url: "https://doi.org/10.1007/s10750-026-06274-0"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "ilMioAcquario: Cryptoheros spp. care sheet"
+        url: "https://www.ilmioacquario.it/acqua-dolce/pesci/cichlidae/cryptoheros/"
+        accessed: '2026-10-13'
+  socialBehavior:
+    text: "Use a settled male-female pair as the basic adult unit. Pair selection matters because a male can\
+      \ pressure or attack an unwilling partner, and rival males may remain subordinate even outside spawning.\
+      \ Conspecific aggression is graded 3 to account for that risk; aggression toward other species is graded\
+      \ 2 for territorial displacement in suitable housing. The immediate nesting area is the usual territory,\
+      \ with stronger defense while caring for eggs and fry. Provide a divider or separate accommodation if\
+      \ either partner cannot retreat."
+    sources:
+      - kind: database
+        title: "Rybicky.net fish atlas: Cryptoheros spilurus"
+        url: "https://rybicky.net/atlasryb/kancik_hrbohlavy"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Borstein (2008). Cryptoheros spilurus. Greater Chicago Cichlid Association breeding report.
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/central-american-cichlids/129-cryptoheros-spilurus.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Cryptoheros spilurus"
+        url: "https://ciklid.org/artregister/art.php?ID=379"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Life-history divergence and reproductive strategies in two closely related Neotropical cichlids\
+          \ (Cryptoheros spilurus and C. cutteri), Hydrobiologia 2026"
+        url: "https://doi.org/10.1007/s10750-026-06274-0"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Nederlandse Vereniging van Cichlidenliefhebbers: Cryptoheros spilurus (Gunther 1862), species\
+          \ article"
+        url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/cryptoheros-spilurus-g%C3%BCnther-1862"
+        accessed: '2026-10-13'
+  diet:
+    text: "Feed balanced sinking omnivore pellets with plant ingredients and varied small invertebrate foods.\
+      \ Algae and plant material belong in the diet alongside animal foods. Live feeder fish are unnecessary,\
+      \ but fry and very small fish can be taken opportunistically. The special bloat-sensitive flag is false\
+      \ because no characteristic syndrome is established; this does not rule out ordinary digestive disease\
+      \ or problems from overfeeding."
+    sources:
+      - kind: database
+        title: "Aqua-Fish: Blue-eye cichlid, Cryptoheros spilurus"
+        url: "https://en.aqua-fish.net/fish/blue-eye-cichlid"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Cryptoheros spilurus"
+        url: "https://ciklid.org/artregister/art.php?ID=379"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "The Early Development of the Blue-Eye Cichlid, Cryptoheros spilurus, Evolution & Development\
+          \ 2025"
+        url: "https://doi.org/10.1111/ede.70019"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Life-history divergence and reproductive strategies in two closely related Neotropical cichlids\
+          \ (Cryptoheros spilurus and C. cutteri), Hydrobiologia 2026"
+        url: "https://doi.org/10.1007/s10750-026-06274-0"
+        accessed: '2026-10-13'
+  breeding:
+    text: "Both parents care for the brood. Offer sheltered flat surfaces as well as caves: Izabal-derived\
+      \ fish have spawned on more exposed surfaces, so the selected mode is open substrate spawning with flexible\
+      \ site choice. Hundreds of eggs can be produced, and repeated breeding creates a need for offspring accommodation.\
+      \ Laboratory eggs hatched after roughly two days; the timing of later development depends on temperature.\
+      \ Small Artemia and fine prepared foods can feed the young."
+    sources:
+      - kind: literature
+        title: "Life-history divergence and reproductive strategies in two closely related Neotropical cichlids\
+          \ (Cryptoheros spilurus and C. cutteri), Hydrobiologia 2026"
+        url: "https://doi.org/10.1007/s10750-026-06274-0"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "The Early Development of the Blue-Eye Cichlid, Cryptoheros spilurus, Evolution & Development\
+          \ 2025"
+        url: "https://doi.org/10.1111/ede.70019"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Hellweg. Twelve Types of Dwarf Cichlids from Central America. Tropical Fish Hobbyist.
+        url: "https://www.tfhmagazine.com/articles/freshwater/twelve-types-of-dwarf-cichlids-from-central-america"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Cryptoheros spilurus"
+        url: "https://ciklid.org/artregister/art.php?ID=379"
+        accessed: '2026-10-13'
+  sexing:
+    text: "Mature males usually grow larger and may develop a steeper forehead and longer fin extensions. Females\
+      \ can show a dark dorsal mark and a fuller abdomen before spawning. Breeding changes the intensity of\
+      \ body markings, while a socially suppressed male may remain small. Evaluate several traits and observed\
+      \ pairing rather than relying on the blue eyes or one photograph to determine sex or species identity."
+    sources:
+      - kind: literature
+        title: "Nederlandse Vereniging van Cichlidenliefhebbers: Cryptoheros spilurus (Gunther 1862), species\
+          \ article"
+        url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/cryptoheros-spilurus-g%C3%BCnther-1862"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Cryptoheros spilurus"
+        url: "https://ciklid.org/artregister/art.php?ID=379"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Borstein (2008). Cryptoheros spilurus. Greater Chicago Cichlid Association breeding report.
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/central-american-cichlids/129-cryptoheros-spilurus.html"
+        accessed: '2026-10-13'
+  compatibility:
+    text: "Mixed housing is possible when adult companions have suitable size, robustness and overlapping water\
+      \ needs. Upper-water livebearers are conditional options, and another cichlid pair needs separate territory\
+      \ in a larger tank. Tiny companions and fry face opportunistic predation. The presumed cryptoheros group\
+      \ covers spilurus, chetumalensis and cutteri; a second presumed group concerns only spilurus and the\
+      \ convict cichlid. The congener caution comes from close relationship and general warnings, while the\
+      \ convict reports lack verified stock identity or mate-choice circumstances."
+    sources:
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Cryptoheros spilurus"
+        url: "https://ciklid.org/artregister/art.php?ID=379"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Fish: Blue-eye cichlid, Cryptoheros spilurus"
+        url: "https://en.aqua-fish.net/fish/blue-eye-cichlid"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Nederlandse Vereniging van Cichlidenliefhebbers: Cryptoheros spilurus (Gunther 1862), species\
+          \ article"
+        url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/cryptoheros-spilurus-g%C3%BCnther-1862"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Biotope Aquarium Design Contest 2019: Tunico River in summer, Izabal, Guatemala"
+        url: "http://biotope-aquarium.info/aquariums/tunico-river-in-the-summer-izabal-guatemala-192-l/"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Hulsey et al. (2010). Temporal diversification of Central American cichlids.
+        url: "https://doi.org/10.1186/1471-2148-10-279"
+        accessed: '2026-10-13'
+      - kind: archive
+        title: cichlids.com forum thread 802
+        url: "https://www.cichlids.com/disc/read.php?1,802"
+        accessed: '2026-10-13'
+  problems:
+    text: "Watch for sustained hiding, missed meals, damaged fins or a partner controlling every refuge. Social\
+      \ conflict can persist despite acceptable water tests, especially during repeated breeding. Tank size,\
+      \ visual barriers and pair compatibility deserve review when problems appear. Clear stock locality is\
+      \ also important because legacy spilurus names have included related species. The broad temperature and\
+      \ hardness envelopes should not be treated as targets for pushing maintenance to their uncertain edges."
+    sources:
+      - kind: literature
+        title: Borstein (2008). Cryptoheros spilurus. Greater Chicago Cichlid Association breeding report.
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/central-american-cichlids/129-cryptoheros-spilurus.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Rybicky.net fish atlas: Cryptoheros spilurus"
+        url: "https://rybicky.net/atlasryb/kancik_hrbohlavy"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Life-history divergence and reproductive strategies in two closely related Neotropical cichlids\
+          \ (Cryptoheros spilurus and C. cutteri), Hydrobiologia 2026"
+        url: "https://doi.org/10.1007/s10750-026-06274-0"
+        accessed: '2026-10-13'
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: Cryptoheros, online version updated 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Cryptoheros"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Fish: Blue-eye cichlid, Cryptoheros spilurus"
+        url: "https://en.aqua-fish.net/fish/blue-eye-cichlid"
+        accessed: '2026-10-13'
+provenance:
+  runs:
+    - role: generator
+      model: gpt-6.1-sol
+      date: '2026-10-13'
+    - role: checker
+      model: claude-sonnet-5-5
+      date: '2026-10-13'
+    - role: checker
+      model: gpt-6.1-sol
+      date: '2026-10-13'
+    - role: checker
+      model: gpt-6.1-sol
+      date: '2026-10-13'
+    - role: checker
+      model: gpt-6.1-sol
+      date: '2026-10-13'
+    - role: checker
+      model: gpt-6.1-sol
+      date: '2026-10-13'
+    - role: adjudicator
+      model: gpt-6.1-sol
+      date: '2026-10-13'
+  disagreements:
+    - field: taxonomy.synonyms
+      proposals:
+        - by: generator
+          value:
+            - Heros spilurus
+            - Archocentrus spilurus
+            - Cichlasoma spilurus
+            - Cichlasoma spilurum
+            - Cichlasoma spinosissimum var. immaculata
+        - by: checker-a
+          value:
+            - "Heros spilurus Günther, 1862"
+            - Cichlasoma spilurum
+            - Archocentrus spilurus
+            - "Cichlasoma spinosissimum var. immaculata Pellegrin, 1904"
+        - by: checker-b
+          value:
+            - Heros spilurus
+            - Archocentrus spilurus
+            - Cichlasoma spilurus
+            - Cichlasoma spilurum
+            - Astronotus spilurus
+            - Cichlasoma spinosissimum var. immaculata
+        - by: checker-c
+          value:
+            - Heros spilurus
+            - Cichlasoma spilurus
+            - Cichlasoma spilurum
+            - Archocentrus spilurus
+            - Cichlasoma spinosissimum var. immaculata
+      decision:
+        - Heros spilurus
+        - Archocentrus spilurus
+        - Cichlasoma spilurus
+        - Cichlasoma spilurum
+        - Cichlasoma spinosissimum var. immaculata
+        - Astronotus spilurus
+      rationale: "All runs agree on the valid name and separate species status of chetumalensis and cutteri.\
+        \ Differences concern authority-bearing spellings and checker-b's additional Astronotus combination,\
+        \ verified in NVC and NCS. Retain the union of supported historical combinations with the indeclinable\
+        \ spilurus spelling and the accepted immaculata synonym."
+    - field: features.origin
+      proposals:
+        - by: generator
+          value:
+            continent: Central America
+            region: "Lake Izabal and lower Polochic drainage in Guatemala, with southern Belize border records\
+              \ requiring locality checks"
+            waterbody: Lake Izabal
+            localities:
+              - Lake Izabal
+              - Lower Rio Polochic
+              - Rio Dulce freshwater reaches
+              - Rio Sarstoon / Sarstun border drainage
+        - by: checker-a
+          value:
+            continent: Central America
+            region: "Caribbean slope of Belize, Guatemala and Honduras"
+            waterbody: Lake Izabal
+            localities:
+              - "Lake Izabal and tributaries, Guatemala (type locality)"
+        - by: checker-b
+          value:
+            continent: Central America
+            region: "Lake Izabal, Rio Polochic and Rio Dulce drainage, Guatemala"
+            waterbody: null
+            localities:
+              - Lake Izabal
+              - Rio Polochic
+              - Rio Dulce
+              - Rio Tunico
+        - by: checker-c
+          value:
+            continent: Central America
+            region: Lake Izabal and the Rio Dulce drainage of eastern Guatemala
+            waterbody: null
+            localities:
+              - Lake Izabal
+              - Rio Polochic
+              - Rio Dulce
+      decision:
+        continent: Central America
+        region: "Lake Izabal, Rio Polochic and Rio Dulce drainage in eastern Guatemala"
+        waterbody: null
+        localities:
+          - Lake Izabal
+          - Rio Polochic
+          - Rio Dulce
+          - Rio Tunico
+      rationale: "Generator includes the southern Belize border drainage, checker-a proposes Belize, Guatemala\
+        \ and Honduras, checker-b names Izabal, Polochic, Dulce and Tunico, and checker-c names Izabal, Polochic\
+        \ and Dulce. Adopt the geographically explicit Izabal core, with Tunico supported by a locality report.\
+        \ Broad catalog distribution remains evidence rather than a confirmed post-split locality list; northern\
+        \ Belize and Mexican records may be chetumalensis, and Honduran records may be cutteri. No curated\
+        \ waterbody matches the tally, so waterbody is null."
+    - field: features.temperatureC
+      proposals:
+        - by: generator
+          value:
+            min: 23
+            max: 31.4
+        - by: checker-a
+          value:
+            min: 25
+            max: 29
+        - by: checker-b
+          value:
+            min: 26
+            max: 31
+        - by: checker-c
+          value:
+            min: 26.4
+            max: 27.6
+        - by: tiebreaker-1
+          value:
+            min: 26
+            max: 31
+        - by: tiebreaker-2
+          value:
+            min: 26.4
+            max: 31.6
+      decision:
+        min: 26
+        max: 31
+      rationale: "Proposals were generator: 23 to 31.4; checker-a: 25 to 29; checker-b: 26 to 31; checker-c:\
+        \ 26.4 to 27.6; tiebreaker-1: 26 to 31; tiebreaker-2: 26.4 to 31.6. The tally takes the rounded median\
+        \ of all six lower and upper bounds because only three votes form the largest agreeing cluster. The\
+        \ resulting 26 to 31 C has low confidence and is a consensus summary, not complete field extrema. It\
+        \ is narrower than the generator-reported Brinson lake and Polochic envelope of 23 to 31.4 C, FishBase's\
+        \ historical 22 to 32 C, and the independently reread 2024 lake measurements reaching 31.6 C. Perez\
+        \ and Pailles reuse one campaign rather than independent measurements. Holloway's input citation was\
+        \ not independently retrieved and contributes no evidence here."
+    - field: features.temperatureC.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 21
+            max: 32
+        - by: checker-a
+          value:
+            min: 22
+            max: 30
+        - by: checker-b
+          value:
+            min: 21
+            max: 31
+        - by: checker-c
+          value:
+            min: 22
+            max: 29
+        - by: tiebreaker-1
+          value:
+            min: 20
+            max: 32
+        - by: tiebreaker-2
+          value:
+            min: 21
+            max: 32
+      decision:
+        min: 21
+        max: 32
+      rationale: "Proposals were generator: 21 to 32; checker-a: 22 to 30; checker-b: 21 to 31; checker-c:\
+        \ 22 to 29; tiebreaker-1: 20 to 32; tiebreaker-2: 21 to 32. The tally qualified majority has five of\
+        \ six agreeing proposals and selects 21 to 32 C. The envelope contains the decided natural 26 to 31\
+        \ C. It is narrower at the cool edge than the union of care-source ranges, 20 to 32 C; NCS supplies\
+        \ 20 to 29, Aqua-Fish 21 to 25, and AquaInfo 22 to 32. AquaInfo explicitly treats 32 C as wild variation\
+        \ and prefers about 26 C in tanks. The 2025 and 2026 laboratory papers support multi-year breeding\
+        \ at 27 to 29 C but overlap in stock and methods. Years of health at 21 or 32 C are unproven, so the\
+        \ tally confidence remains low and the outer edges are provisional."
+    - field: features.ph
+      proposals:
+        - by: generator
+          value:
+            min: 5.2
+            max: 8.3
+        - by: checker-a
+          value:
+            min: 6.8
+            max: 8.3
+        - by: checker-b
+          value:
+            min: 7.6
+            max: 8.8
+        - by: checker-c
+          value:
+            min: 7.6
+            max: 8.3
+        - by: tiebreaker-1
+          value:
+            min: 6.8
+            max: 8.3
+        - by: tiebreaker-2
+          value:
+            min: 7.8
+            max: 8.3
+      decision:
+        min: 7.2
+        max: 8.3
+      rationale: "Proposals were generator: 5.2 to 8.3; checker-a: 6.8 to 8.3; checker-b: 7.6 to 8.8; checker-c:\
+        \ 7.6 to 8.3; tiebreaker-1: 6.8 to 8.3; tiebreaker-2: 7.8 to 8.3. The tally takes the median of all\
+        \ lower bounds, 7.2, and upper bounds, 8.3, because the largest agreeing cluster has two of six votes.\
+        \ This low-confidence summary is narrower than the generator-reported historical Brinson envelope of\
+        \ 5.2 to 8.25 and the 7.9 to 10.5 basin range reported by Choc, whose sampled fish were other genera.\
+        \ The later monitoring records are near pH 8; Machorro supplies a surface mean of 7.8 rather than an\
+        \ endpoint. In the Izabal row of Perez and Pailles, 7.6 is dissolved oxygen and 8.3 is pH; those columns\
+        \ are not interchangeable. Rio Dulce is a separate site. The selected 7.2 lower edge is the vote median\
+        \ rather than a newly measured station value. Caobas measurements belong to the former species complex\
+        \ and are excluded from direct habitat support."
+    - field: features.ph.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 5.2
+            max: 8.3
+        - by: checker-a
+          value:
+            min: 6
+            max: 8.5
+        - by: checker-b
+          value:
+            min: 6.5
+            max: 8.8
+        - by: checker-c
+          value:
+            min: 6.7
+            max: 8.5
+        - by: tiebreaker-1
+          value:
+            min: 6.5
+            max: 8.5
+        - by: tiebreaker-2
+          value:
+            min: 6.5
+            max: 8.5
+      decision:
+        min: 6.5
+        max: 8.5
+      rationale: "Proposals were generator: 5.2 to 8.3; checker-a: 6 to 8.5; checker-b: 6.5 to 8.8; checker-c:\
+        \ 6.7 to 8.5; tiebreaker-1: 6.5 to 8.5; tiebreaker-2: 6.5 to 8.5. The tally qualified majority has\
+        \ four of six agreeing proposals and selects 6.5 to 8.5. NCS recommends 6.5 to 8, while the overlapping\
+        \ laboratory studies maintained pH 7.5 to 8.5 over multiple years. The decision is narrower than the\
+        \ retailer range extending to 6.0 and checker-b's 8.8 upper extension, which relied on field observations\
+        \ rather than long-term aquarium success. Aqua-Fish recommends 6.7 to 7.6 and AquaInfo 7 to 7.5. Retain\
+        \ medium confidence exactly as tallied; these are husbandry observations and recommendations rather\
+        \ than experimentally tested failure thresholds."
+    - field: features.ghDgh
+      proposals:
+        - by: generator
+          value:
+            min: 4.6
+            max: 6.7
+        - by: checker-a
+          value:
+            min: 5
+            max: 10
+        - by: checker-b
+          value:
+            min: 5
+            max: 6
+        - by: checker-c
+          value:
+            min: 5
+            max: 6
+        - by: tiebreaker-1
+          value:
+            min: 5
+            max: 6
+        - by: tiebreaker-2
+          value:
+            min: 5.6
+            max: 7.6
+      decision:
+        min: 5
+        max: 6
+      rationale: "Proposals were generator: 4.6 to 6.7; checker-a: 5 to 10; checker-b: 5 to 6; checker-c: 5\
+        \ to 6; tiebreaker-1: 5 to 6; tiebreaker-2: 5.6 to 7.6. The tally qualified majority is five of six\
+        \ under its 2 dGH agreement threshold; its agreeing-bound medians give 5 to 6 dGH. This low-confidence\
+        \ rounded range contains the Pailles ion-derived 5.31 dGH snapshot but is narrower than the generator-reported\
+        \ 4.6 to 6.7 dGH from Brinson and the modern lake observations of about 5.60 to 7.54 dGH, proposed\
+        \ as 5.6 to 7.6 by tiebreaker-2. Ca 25.9 mg/L divided by 7.14 plus Mg 7.3 mg/L divided by 4.34 gives\
+        \ 5.31 dGH. Monitoring total hardness uses the conventional CaCO3 basis and division by 17.848. Conductivity-derived\
+        \ estimates and KH relabelled as GH are rejected as numerical evidence. Perez and Pailles represent\
+        \ one underlying field campaign; the two monitoring years share one agency."
+    - field: features.ghDgh.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 4
+            max: 21
+        - by: checker-a
+          value:
+            min: 2
+            max: 12
+        - by: checker-b
+          value:
+            min: 5
+            max: 21
+        - by: checker-c
+          value:
+            min: 4
+            max: 21
+        - by: tiebreaker-1
+          value:
+            min: 4
+            max: 21
+        - by: tiebreaker-2
+          value:
+            min: 5
+            max: 21
+      decision:
+        min: 4
+        max: 21
+      rationale: "Proposals were generator: 4 to 21; checker-a: 2 to 12; checker-b: 5 to 21; checker-c: 4 to\
+        \ 21; tiebreaker-1: 4 to 21; tiebreaker-2: 5 to 21. The tally qualified majority has five of six agreeing\
+        \ proposals and selects 4 to 21 dGH with low confidence. Aqua-Fish gives 7 to 21 and AquaInfo 8 to\
+        \ 12; a weaker genus sheet gives 4 to 12 and includes spilurus under outdated taxonomy. The decided\
+        \ lower endpoint is narrower than the retailer's 2 to 12 dH account and rests on genus-level guidance\
+        \ plus native occurrence, not a species-specific long-term trial. The upper endpoint rests chiefly\
+        \ on one care sheet. All numerical GH evidence is kept separate from KH."
+    - field: features.khDkh
+      proposals:
+        - by: generator
+          value:
+            min: 4.2
+            max: 6.2
+        - by: checker-a
+          value:
+            min: 4
+            max: 10
+        - by: checker-b
+          value:
+            min: 5
+            max: 6
+        - by: checker-c
+          value:
+            min: 5
+            max: 6
+        - by: tiebreaker-1
+          value:
+            min: 5
+            max: 6
+        - by: tiebreaker-2
+          value:
+            min: 4.9
+            max: 5.3
+      decision:
+        min: 5
+        max: 6
+      rationale: "Proposals were generator: 4.2 to 6.2; checker-a: 4 to 10; checker-b: 5 to 6; checker-c: 5\
+        \ to 6; tiebreaker-1: 5 to 6; tiebreaker-2: 4.9 to 5.3. The tally qualified majority has five of six\
+        \ votes within its 2 dKH threshold and gives agreeing-bound medians of 5 to 6 dKH, retained with low\
+        \ confidence and without a natural verification object. Pailles bicarbonate of 119.6 mg/L gives approximately\
+        \ 5.49 dKH; this is alkalinity rather than Ca-Mg hardness. The decision is narrower than the generator-reported\
+        \ historical 4.2 to 6.2 dKH and the secondary 4 to 10 dKH habitat range in the 2026 paper. Monitoring\
+        \ yields approximately 4.97 to 5.22 dKH if alkalinity is mg/L as CaCO3, but identical bicarbonate numbers\
+        \ and missing mass-basis metadata leave an alternative of approximately 4.1 to 4.3 dKH. Neither conversion\
+        \ becomes a tested annual limit. Holloway's historical alkalinity citation was not independently retrieved."
+    - field: features.khDkh.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 2
+            max: 8
+        - by: checker-a
+          value:
+            min: 2
+            max: 12
+        - by: checker-b
+          value:
+            min: 2
+            max: 8
+        - by: checker-c
+          value:
+            min: 2
+            max: 8
+        - by: tiebreaker-1
+          value:
+            min: 2
+            max: 8
+        - by: tiebreaker-2
+          value:
+            min: 4
+            max: 10
+      decision:
+        min: 2
+        max: 8
+      rationale: "Proposals were generator: 2 to 8; checker-a: 2 to 12; checker-b: 2 to 8; checker-c: 2 to\
+        \ 8; tiebreaker-1: 2 to 8; tiebreaker-2: 4 to 10. The tally qualified majority counts all six proposals\
+        \ within its agreement procedure and selects median bounds of 2 to 8 dKH with low confidence. This\
+        \ is narrower than checker-a's 2 to 12 and tiebreaker-2's 4 to 10; the latter is also the wider secondary\
+        \ habitat range in the 2026 paper. Only ilMioAcquario supplies the explicit aquarium interval of 2\
+        \ to 8, at genus level with outdated taxonomy. NVC and Hellweg offer qualitative mineralized-water\
+        \ support, while the laboratory papers omit KH. Thus two independent species-specific numerical husbandry\
+        \ sources do not establish these endpoints. Natural alkalinity and alkaline-pH breeding are context,\
+        \ not proof of long-term tolerance, and GH is not substituted for KH."
+    - field: features.maxSizeCm
+      proposals:
+        - by: generator
+          value:
+            male: 12
+            female: 9
+        - by: checker-a
+          value:
+            male: 12
+            female: 8
+        - by: checker-b
+          value:
+            male: 12
+            female: 9
+        - by: checker-c
+          value:
+            male: 12
+            female: 9
+      decision:
+        male: 12
+        female: 9
+      rationale: "Generator, checker-b and checker-c propose male 12 and female 9 cm; checker-a proposes 12\
+        \ and 8. Prefer the explicit Izabal aquarium treatment at 12 and 9, while retaining FishBase's 12 and\
+        \ 8 cm TL as separate evidence. GCCA's approximately 15.24 and 11.43 cm concern stock without secure\
+        \ post-split locality and are not typical planning maxima."
+    - field: features.predation
+      proposals:
+        - by: generator
+          value: 1
+        - by: checker-a
+          value: 0
+        - by: checker-b
+          value: 1
+        - by: checker-c
+          value: 1
+        - by: tiebreaker-1
+          value: 1
+        - by: tiebreaker-2
+          value: 1
+      decision: 1
+      rationale: "Proposals were generator: 1; checker-a: 0; checker-b: 1; checker-c: 1; tiebreaker-1: 1; tiebreaker-2:\
+        \ 1. The tally selects level 1 by qualified majority, five of six, with medium confidence. The Czech\
+        \ atlas explicitly includes fry among foods and Aqua-Fish excludes bite-sized tankmates. Hellweg provides\
+        \ corroborating group-level occasional fish feeding, not a measured species-specific prey limit. NCS\
+        \ and the laboratory papers emphasize plants and invertebrates; lack of fish prey in those accounts\
+        \ does not exclude fry consumption. The 2 cm boundary is the rubric convention, not a measured gape.\
+        \ The Mexican Caobas sample is not secure post-split evidence, and CRC insectivory is verification\
+        \ only."
+    - field: features.diet
+      proposals:
+        - by: generator
+          value:
+            type: omnivore
+            bloatSensitive: false
+            foods:
+              - Balanced sinking omnivore pellets
+              - Small aquatic invertebrates
+              - Algae and vegetable-containing prepared foods
+              - Occasional Artemia or mysis
+        - by: checker-a
+          value:
+            type: omnivore
+            bloatSensitive: false
+            foods:
+              - algae and biofilm
+              - small crustaceans
+              - mites
+              - insect larvae
+              - flakes
+              - pellets
+              - frozen foods
+        - by: checker-b
+          value:
+            type: omnivore
+            bloatSensitive: false
+            foods:
+              - Algae and other plant material
+              - Small aquatic insects
+              - Crustaceans
+              - Balanced sinking pellets with vegetable ingredients
+        - by: checker-c
+          value:
+            type: omnivore
+            bloatSensitive: false
+            foods:
+              - algae
+              - plant material
+              - small aquatic invertebrates
+              - balanced sinking pellets
+      decision:
+        type: omnivore
+        bloatSensitive: false
+        foods:
+          - Balanced sinking omnivore pellets
+          - Small aquatic invertebrates
+          - Algae and vegetable-containing prepared foods
+          - Occasional Artemia or mysis
+      rationale: "All four full-profile runs propose omnivore with bloatSensitive false; their food lists differ.\
+        \ The tally retains the generator food list with unanimous verification, four of four, and medium confidence.\
+        \ NVC and Aqua-Fish support plant and animal foods, and Izabal laboratory fish reproduced on a 32 percent\
+        \ protein omnivore feed. The two laboratory publications overlap. FishBase herbivory and the Caobas\
+        \ juvenile stomach study use Mexican pre-split records, while CRC labels insect feeding; neither displaces\
+        \ mixed feeding for the secure Izabal account. False means no established special protein-related bloat\
+        \ predisposition, not immunity to digestive illness."
+    - field: features.aggressionConspecific
+      proposals:
+        - by: generator
+          value: 2
+        - by: checker-a
+          value: 2
+        - by: checker-b
+          value: 2
+        - by: checker-c
+          value: 3
+      decision: 3
+      rationale: "Generator and checker-a and checker-b propose 2; checker-c proposes 3. Select 3 because the\
+        \ atlas reports male attacks on partners, NVC describes suppressed male rivals, and the Izabal-stock\
+        \ study replaced females after mortality or aggressive interactions. Experimental group density does\
+        \ not prove every bonded pair injures one another, and NCS reports mild pairs. The higher category\
+        \ reflects the consequence of incompatible pairing or inadequate retreat space."
+    - field: features.territory
+      proposals:
+        - by: generator
+          value:
+            size: large
+            breedingOnly: true
+        - by: checker-a
+          value:
+            size: small
+            breedingOnly: false
+        - by: checker-b
+          value:
+            size: small
+            breedingOnly: true
+        - by: checker-c
+          value:
+            size: small
+            breedingOnly: true
+      decision:
+        size: small
+        breedingOnly: true
+      rationale: "Generator proposes large with breedingOnly true; checker-a proposes small with breedingOnly\
+        \ false; checker-b and checker-c propose small with breedingOnly true. Prefer localized nest and brood\
+        \ defense with the strongest expansion during breeding. No measured territorial radius supports the\
+        \ generator's large category; the small rubric footprint is also an inference. Male rivalry outside\
+        \ spawning remains represented by conspecific aggression, and mobile fry may temporarily widen the\
+        \ defended area."
+    - field: features.habitatZones
+      proposals:
+        - by: generator
+          value:
+            - rock
+            - sand
+            - wood
+            - plants
+        - by: checker-a
+          value:
+            - rock
+            - sand
+            - wood
+        - by: checker-b
+          value:
+            - rock
+            - sand
+            - wood
+        - by: checker-c
+          value:
+            - sand
+            - rock
+            - wood
+      decision:
+        - rock
+        - sand
+        - wood
+      rationale: "Generator includes rock, sand, wood and plants; checker-a and checker-b include rock, sand\
+        \ and wood; checker-c gives the same set in a different order. Adopt the shared three-zone set from\
+        \ FishBase, NCS and the locality account. Shoreline vegetation does not establish dependence on live\
+        \ plants; optional protected plants can remain in the aquarium."
+    - field: features.hybridGroups
+      proposals:
+        - by: generator
+          value:
+            - cryptoheros
+            - cryptoheros-spilurus-amatitlania-nigrofasciata
+        - by: checker-a
+          value: []
+        - by: checker-b
+          value:
+            - cryptoheros-spilurus-complex
+            - cryptoheros-spilurus-amatitlania-nigrofasciata
+        - by: checker-c
+          value:
+            - cryptoheros
+            - cryptoheros-spilurus-amatitlania-nigrofasciata
+        - by: tiebreaker-1
+          value:
+            - cryptoheros
+            - cryptoheros-spilurus-amatitlania-nigrofasciata
+        - by: tiebreaker-2
+          value:
+            - cryptoheros
+            - cryptoheros-spilurus-amatitlania-nigrofasciata
+      decision:
+        - cryptoheros
+        - cryptoheros-spilurus-amatitlania-nigrofasciata
+      rationale: "Proposals were generator: cryptoheros, cryptoheros-spilurus-amatitlania-nigrofasciata; checker-a:\
+        \ no groups; checker-b: cryptoheros-spilurus-complex, cryptoheros-spilurus-amatitlania-nigrofasciata;\
+        \ checker-c: cryptoheros, cryptoheros-spilurus-amatitlania-nigrofasciata; tiebreaker-1: cryptoheros,\
+        \ cryptoheros-spilurus-amatitlania-nigrofasciata; tiebreaker-2: cryptoheros, cryptoheros-spilurus-amatitlania-nigrofasciata.\
+        \ The tally qualified majority selects the two listed ids, four of six, with low confidence. The cryptoheros\
+        \ id covers exactly spilurus, chetumalensis and cutteri, the same members as checker-b's alternative\
+        \ id. Both groups have basis presumed. NVC gives a general congener warning and a secondary fertile-convict\
+        \ report; Hulsey and the 2007 abstracts support relatedness rather than observed crossing. The 2026\
+        \ mixed tank supplied conspecific mates yet produced no interspecific courtship or spawning between\
+        \ spilurus and cutteri. The convict claim is independently repeated in archive thread 802 and a forum\
+        \ warning, but parent identity and mate availability remain unverified; old spilurus labels may concern\
+        \ chetumalensis or cutteri. No direct free-choice cross is established, and the convict pair is not\
+        \ extended to other genus members. Fishipedia remained blocked and supplies no independently reviewed\
+        \ corroboration."
+    - field: features.coloration
+      proposals:
+        - by: generator
+          value:
+            baseColors:
+              - grey
+              - blue
+              - yellow
+              - black
+            pattern: bars
+        - by: checker-a
+          value:
+            baseColors:
+              - blue
+            pattern: bars
+        - by: checker-b
+          value:
+            baseColors:
+              - grey
+              - yellow
+              - red
+              - black
+            pattern: bars
+        - by: checker-c
+          value:
+            baseColors:
+              - grey
+              - blue
+              - black
+            pattern: bars
+      decision:
+        baseColors:
+          - grey
+          - blue
+          - black
+        pattern: bars
+      rationale: "Generator proposes grey, blue, yellow and black; checker-a blue alone; checker-b grey, yellow,\
+        \ red and black; checker-c grey, blue and black. Select checker-c's subdued grey and blue appearance\
+        \ with dark bars, supported by AquaInfo and the hobby encyclopedia. Yellow or red accents described\
+        \ by NVC are retained in prose but are not consistently dominant adult-male colors. Bright northern\
+        \ trade colors require identity checks."
+    - field: features.minTank
+      proposals:
+        - by: generator
+          value:
+            volumeL: 200
+            lengthCm: 120
+            depthCm: 40
+        - by: checker-a
+          value:
+            volumeL: 100
+            lengthCm: 90
+            depthCm: 35
+        - by: checker-b
+          value:
+            volumeL: 200
+            lengthCm: 120
+            depthCm: 40
+        - by: checker-c
+          value:
+            volumeL: 200
+            lengthCm: 120
+            depthCm: 40
+      decision:
+        volumeL: 200
+        lengthCm: 120
+        depthCm: 40
+      rationale: "Generator, checker-b and checker-c propose 200 L with 120 by 40 cm; checker-a proposes 100\
+        \ L with 90 by 35 cm. Keep the more forgiving pair setup. AquaInfo explicitly gives 120 cm, NVC about\
+        \ 100 cm, NCS 80 cm and 120 L, and retailer guidance 90 cm for a pair alone. The 200 L and 40 cm depth\
+        \ are planning inferences for refuges and partner safety, not dimensions all sources state. Additional\
+        \ adult territories need a larger aquarium."
+    - field: features.lifespanYears
+      proposals:
+        - by: generator
+          value:
+            min: 6
+            max: 10
+        - by: checker-a
+          value:
+            min: 5
+            max: 8
+        - by: checker-b
+          value:
+            min: 6
+            max: 10
+        - by: checker-c
+          value:
+            min: 6
+            max: 10
+      decision:
+        min: 6
+        max: 10
+      rationale: "Generator, checker-b and checker-c propose 6 to 10 years; checker-a proposes 5 to 8. Aqua-Fish\
+        \ gives 6 to 10 and the Czech atlas about 10; the general hobby encyclopedia gives 5 to 8. Prefer the\
+        \ species care estimate without claiming a tracked survival distribution or guaranteed lifespan; historical\
+        \ stock identity is imperfect."
+    - field: features.breeding
+      proposals:
+        - by: generator
+          value: open-substrate-spawner
+        - by: checker-a
+          value: cave-spawner
+        - by: checker-b
+          value: open-substrate-spawner
+        - by: checker-c
+          value: open-substrate-spawner
+      decision: open-substrate-spawner
+      rationale: "Generator, checker-b and checker-c propose open-substrate-spawner; checker-a proposes cave-spawner.\
+        \ The direct Izabal-stock study records a preference for more exposed surfaces, and NVC explicitly\
+        \ rejects obligate cave spawning. Hellweg describes spawning outside caves when no cave is present.\
+        \ Use open-substrate-spawner for facultative sheltered surface spawning; caves are still valid sites.\
+        \ CRC verification labels cave spawning and indicates a different emphasis, not absence of exposed-surface\
+        \ spawning."
+    - field: features.beginnerSuitability
+      proposals:
+        - by: generator
+          value: moderate
+        - by: checker-a
+          value: moderate
+        - by: checker-b
+          value: easy
+        - by: checker-c
+          value: moderate
+      decision: moderate
+      rationale: "Generator, checker-a and checker-c propose moderate; checker-b proposes easy. NCS and CRC\
+        \ rate basic maintenance easy, but partner attacks, brood defense and confused trade identities require\
+        \ preparation. Moderate reflects social management rather than unusually difficult water or feeding\
+        \ requirements."
