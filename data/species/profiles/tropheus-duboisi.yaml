@@ -1,0 +1,1599 @@
+schemaVersion: 1
+id: tropheus-duboisi
+legacyIds: [190]
+status: described
+taxonomy:
+  validName: Tropheus duboisi
+  genus: Tropheus
+  species: duboisi
+  author: Marlier, 1959
+  source: &cof
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes, species of the genus Tropheus (online version updated 21 Sep. 2026)"
+    url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Tropheus
+    accessed: 2026-10-13
+  synonyms: []
+  legacyNames:
+    - Tropheus duboisi
+  note: >-
+    The Catalog of Fishes lists Tropheus duboisi Marlier 1959 as valid, with the type locality Memba
+    (Bemba) on the Congolese shore of Lake Tanganyika, and records no junior synonym. The legacy
+    catalog used the valid name. Genetic studies place the species as the earliest branch of the
+    genus, the sister lineage of all other Tropheus.
+names:
+  trade:
+    en:
+      - White-spotted cichlid
+      - Duboisi
+      - Duboisi cichlid
+    de:
+      - Weißpunkt-Buntbarsch
+      - Weißpunkt-Brabantbuntbarsch
+variants:
+  - name: Maswa
+    kind: locality
+    note: Central Tanzanian coast (Maswa, Cape Kabogo, Segunga, Halembe); the widest flank bar, mostly yellow above and white below; the most common form in the trade, wild stocks reduced by heavy collecting.
+  - name: Kigoma
+    kind: locality
+    note: Kigoma area, Cape Bangwe and Gombe; a pure white, often incomplete bar.
+  - name: Bemba
+    kind: locality
+    note: The only Congolese population and the type locality; a narrow white to pale yellow bar, often broken.
+  - name: Karilani
+    kind: locality
+    note: Karilani Island, Bulu Point, Katumbi Point and nearby sites south of Kigoma; a narrow white bar that may shrink to one or two spots.
+  - name: Muguruka
+    kind: locality
+    note: Burundi; reported as entirely dark without a light bar.
+features:
+  origin:
+    value:
+      continent: Africa
+      region: Lake Tanganyika
+      waterbody: Lake Tanganyika
+      localities:
+        - Bemba (DR Congo, type locality)
+        - Muguruka (Burundi)
+        - Kigoma to Gombe National Park (Tanzania)
+        - Cape Bangwe (Tanzania)
+        - Karilani Island, Bulu Point, Katumbi Point, Miyako Point and Luagala Point (Tanzania)
+        - Maswa, Cape Kabogo, Mkuyu, Segunga and Halembe (Tanzania)
+        - Lufungu Bay (Tanzania)
+    confidence: high
+    rationale: >-
+      Endemic to Lake Tanganyika with a patchy range in the northern half of the lake: a single site
+      on the Congolese northwest coast (Bemba), one in Burundi (Muguruka) and several stretches of the
+      Tanzanian east coast from Gombe south towards the Mahale Mountains. The Catalog of Fishes,
+      FishBase, a phylogeographic study and the Tanganyika.si species pages agree; the locality list
+      merges the sites named by these sources.
+    sources:
+      - *cof
+      - &fishbase
+        kind: database
+        title: "FishBase species summary: Tropheus duboisi Marlier, 1959"
+        url: https://www.fishbase.se/summary/Tropheus-duboisi.html
+        accessed: 2026-10-13
+      - &tsi
+        kind: database
+        title: "Tanganyika.si: Tropheus duboisi 'Bemba' (species page with all variants)"
+        url: https://www.tanganyika.si/TanganjikaByLocations/Bemba/slides/Tropheus%20duboisi%20%27Bemba%27.html
+        accessed: 2026-10-13
+      - &tsiifala
+        kind: database
+        title: "Tanganyika.si: Tropheus duboisi 'Ifala'"
+        url: https://tanganyika.si/TanganjikaByLocations/Ifala/slides/Tropheus%20duboisi%20%27Ifala%27.html
+        accessed: 2026-10-13
+      - &sturmbauer
+        kind: literature
+        title: "Sturmbauer, C., Börger, C., Van Steenberge, M. and Koblmüller, S. (2017). A separate lowstand lake at the northern edge of Lake Tanganyika? Evidence from phylogeographic patterns in the cichlid genus Tropheus. Hydrobiologia 791, 51-68."
+        url: https://doi.org/10.1007/s10750-016-2939-8
+        accessed: 2026-10-13
+    evidence:
+      - source: *cof
+        value: {continent: Africa, region: Lake Tanganyika}
+        note: Type locality Memba (Bemba); distribution Lake Tanganyika.
+      - source: *fishbase
+        value: {continent: Africa, region: Lake Tanganyika}
+        note: Endemic, patchy in the northern part of the lake between 3 and 6 degrees south.
+      - source: *sturmbauer
+        value: {continent: Africa, region: Lake Tanganyika}
+        note: East coast from the Mahale Mountains to Muguruka and a short stretch near Bemba in the northwest.
+      - source: *tsi
+        value: {continent: Africa, region: Lake Tanganyika}
+        note: Lists the known populations along the Congolese, Burundian and Tanzanian shores.
+  temperatureC:
+    value: {min: 23, max: 29}
+    confidence: high
+    verification:
+      method: waterbody
+      waterbody: lake-tanganyika
+    rationale: >-
+      The species is endemic to Lake Tanganyika, so the natural range is the measured lake water, and
+      all four runs proposed it. Hourly buoy readings at Mpulungu ran from about 23.9 to 29.0 C, and
+      the south of the lake cools during the upwelling season from June to September, which gives 23
+      to 29 C. FishBase gives 24 to 26 C for the species; that figure comes from an aquarium atlas
+      and lies inside the lake range.
+    sources:
+      - &verburg
+        kind: literature
+        title: "Verburg, P., Huttula, T., Kakogozo, B., Kihakwi, A., Kotilainen, P., Makasa, L. and Peltonen, A. (1997). Hydrodynamics of Lake Tanganyika and meteorological results. FAO/FINNIDA GCP/RAF/271/FIN-TD/59."
+        url: https://fao.org/fishery/static/LTR/FTP/TD59.PDF
+        accessed: 2026-10-12
+      - &plisnier1
+        kind: literature
+        title: "Plisnier, P.-D., Langenberg, V., Mwape, L., Chitamwembwa, D., Tshibangu, K. and Coenen, E. (1996). Limnological sampling during an annual cycle at three stations on Lake Tanganyika (1993-1994). FAO/FINNIDA Research for the Management of the Fisheries on Lake Tanganyika, GCP/RAF/271/FIN-TD/46."
+        url: https://fao.org/fishery/static/LTR/FTP/TD46.PDF
+        accessed: 2026-10-12
+      - &plisnier2
+        kind: literature
+        title: "Plisnier, P.-D. (1996). Limnological sampling during a second annual cycle (1994-1995) and some comparisons with year one on Lake Tanganyika. FAO/FINNIDA GCP/RAF/271/FIN-TD/56."
+        url: https://fao.org/fishery/static/LTR/FTP/TD56.PDF
+        accessed: 2026-10-12
+      - &langenberg
+        kind: literature
+        title: "Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. PhD thesis, Wageningen University."
+        url: https://edepot.wur.nl/121977
+        accessed: 2026-10-12
+      - *fishbase
+    evidence:
+      - source: *verburg
+        value: {min: 23.9, max: 29.0}
+        note: Hourly lake surface values from the buoy at Mpulungu.
+      - source: *fishbase
+        value: {min: 24, max: 26}
+        note: Species environment line taken from an aquarium atlas, not a habitat measurement.
+    tolerance:
+      value: {min: 23, max: 29}
+      confidence: medium
+      verification:
+        method: unanimous
+        votes: {agree: 4, total: 4}
+      rationale: >-
+        All four runs proposed 23 to 29 C. Care sheets put the long-term range at about 23 or 24 to 27
+        or 28 C (Seriously Fish and FishProfiles 23 to 27, Fishkeeper 24 to 28, Fishipedia 23 to 28,
+        Aquarium Guide 24 to 27, a club profile about 24 to 28). Tanganyika.si asks for a steady 24 to
+        27 C and names 29 C as a limit that must never be passed, because warm water holds less
+        oxygen, and a laboratory study found normal growth at 26 and 29 C but only half the growth at
+        32 C. The sources span 22 to 29 C in all; two US care sheets go down to 22 C, one degree below
+        the decided lower bound, which follows the lake range. A steady 24 to 27 C is the safe target,
+        and long periods near 29 C are a risk.
+      sources:
+        - &sf
+          kind: database
+          title: "Seriously Fish: Tropheus duboisi (White-Spotted Cichlid)"
+          url: https://www.seriouslyfish.com/species/tropheus-duboisi/
+          accessed: 2026-10-13
+        - &fk
+          kind: database
+          title: "Fishkeeper (Maidenhead Aquatics) data bank: Tropheus duboisi"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/tropheus-duboisi
+          accessed: 2026-10-13
+        - *tsi
+        - *tsiifala
+        - &fishipedia
+          kind: database
+          title: "Fishipedia: Tropheus duboisi"
+          url: https://www.fishipedia.fr/fr/poissons/tropheus-duboisi
+          accessed: 2026-10-13
+        - &aqguide
+          kind: database
+          title: "Aquarium Guide: Tropheus duboisi (Weißpunkt-Brabantbuntbarsch)"
+          url: https://www.aquarium-guide.de/tropheus_duboisi.htm
+          accessed: 2026-10-13
+        - &fprof
+          kind: database
+          title: "FishProfiles.com: Tropheus duboisi"
+          url: https://fishprofiles.com/profiles/freshwater/Cichlids/Tropheus_duboisi_
+          accessed: 2026-10-13
+        - &tfk
+          kind: database
+          title: "Tropical Fish Keeping: Duboisi Cichlid (Tropheus duboisii) care sheet"
+          url: https://tropical-fish-keeping.com/duboisi-cichlid-tropheus-duboisii.html
+          accessed: 2026-10-13
+        - &stigliano
+          kind: literature
+          title: "Stigliano (1999). Tropheus duboisi. Greater Chicago Cichlid Association, species profile."
+          url: https://www.gcca.net/art-pics/cichlid-profiles-list/tanganyikan-cichlids/117-tropheus-duboisi.html
+          accessed: 2026-10-13
+        - &thesis
+          kind: literature
+          title: "Effect of increased temperature and decreased food quality on metabolism and growth of an algivorous cichlid, Tropheus duboisi (2014). Thesis, Wright State University (abstract)."
+          url: https://corescholar.libraries.wright.edu/cgi/viewcontent.cgi?article=4206&context=etd_all
+          accessed: 2026-10-13
+        - &liveaq
+          kind: website
+          title: "LiveAquaria: Duboisi Cichlid (Tropheus duboisii) care sheet"
+          url: https://www.liveaquaria.com/products/duboisi-cichlid
+          accessed: 2026-10-13
+        - &arch15304
+          kind: archive
+          title: cichlids.com forum thread 15304
+          url: https://www.cichlids.com/disc/read.php?2,15304
+      evidence:
+        - source: *sf
+          value: {min: 23, max: 27}
+          note: Aquarium recommendation.
+        - source: *fk
+          value: {min: 24, max: 28}
+        - source: *tsi
+          value: {min: 24, max: 29}
+          note: Keep steadily at 24 to 27 C; 29 C is the limit that must never be passed.
+        - source: *tsiifala
+          value: {min: 24, max: 27}
+          note: Same limit of 29 C.
+        - source: *fishipedia
+          value: {min: 23, max: 28}
+        - source: *aqguide
+          value: {min: 24, max: 27}
+        - source: *fprof
+          value: {min: 23, max: 27}
+          note: Community care sheet.
+        - source: *tfk
+          value: {min: 22, max: 28}
+          note: Given as 72 to 82 F.
+        - source: *stigliano
+          value: {min: 24.4, max: 27.8}
+          note: Given as 76 to 82 F; the author reports that the fish also tolerate somewhat more.
+        - source: *thesis
+          value: {min: 26, max: 29}
+          note: Good growth at 26 and 29 C in the laboratory, growth halved at 32 C.
+        - source: *fishbase
+          value: {min: 24, max: 26}
+          note: Environment line after an aquarium atlas.
+        - source: *liveaq
+          value: {min: 22, max: 28}
+          note: Retailer care sheet, given as 72 to 82 F.
+  ph:
+    value: {min: 8.4, max: 9.4}
+    confidence: high
+    verification:
+      method: waterbody
+      waterbody: lake-tanganyika
+    rationale: >-
+      Lake Tanganyika endemic, so the natural range is the measured lake water, and all four runs
+      proposed it. Over a year the FAO/FINNIDA programme measured pH 8.8 to 9.2 at the surface and
+      8.47 to 9.40 at 40 m, which gives 8.4 to 9.4. FishBase gives 8.5 to 9.0 for the species, inside
+      this range. An older source book figure of pH 7.3 to 7.8 contradicts the high alkalinity and
+      all modern measurements of the lake.
+    sources:
+      - *plisnier1
+      - *plisnier2
+      - &vandenbossche
+        kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Tanganyika: physical and chemical data after Talling and Talling (1965)."
+        url: https://www.fao.org/4/t0473e/T0473E10.htm
+        accessed: 2026-10-12
+      - *fishbase
+    evidence:
+      - source: *plisnier1
+        value: {min: 8.4, max: 9.4}
+        note: Lake water from the surface to 40 m over one annual cycle.
+      - source: *fishbase
+        value: {min: 8.5, max: 9.0}
+        note: Species environment line taken from an aquarium atlas.
+    tolerance:
+      value: {min: 7.9, max: 9.5}
+      confidence: medium
+      verification:
+        method: unanimous
+        votes: {agree: 4, total: 4}
+      rationale: >-
+        The runs proposed lower bounds of 8.0 (generator and checker-c), 7.8 (checker-a) and 7.5
+        (checker-b) and all four an upper bound of 9.5; the proposals agree within 0.3 of the
+        checker-a range, and the decided range is the median of the lower bounds, 7.9, with the
+        shared upper bound of 9.5. The species care sheets agree on 8.0 to 9.5 (Seriously Fish) or
+        8.0 to 9.0 (Fishkeeper); Tanganyika.si only requires a pH above 7.5 and names 8.0 to 9.5 as the
+        aquarium range for Tanganyika cichlids. The sources span pH 7.5 to 9.5 in all: Tanganyika.si,
+        FishProfiles, Tropical Fish Keeping and Aquarium Guide accept 7.5, which lies below the
+        decided lower bound. Stable pH matters more than an exact value.
+      sources:
+        - *sf
+        - *fk
+        - *tsi
+        - *tsiifala
+        - &tsiwater
+          kind: database
+          title: "Tanganyika.si: Lake Tanganyika Water (lake values and recommended aquarium values)"
+          url: https://tanganyika.si/slides/Lake%20Tanganyika%20Water.html
+          accessed: 2026-10-13
+        - *fishipedia
+        - *aqguide
+        - *fprof
+        - *tfk
+        - &gay
+          kind: literature
+          title: "Gay. Quick guide to Tanganyikan cichlids. Practical Fishkeeping."
+          url: https://www.practicalfishkeeping.co.uk/features/quick-guide-to-tanganyikan-cichlids/
+          accessed: 2026-10-13
+        - *liveaq
+      evidence:
+        - source: *sf
+          value: {min: 8.0, max: 9.5}
+        - source: *fk
+          value: {min: 8.0, max: 9.0}
+        - source: *tsi
+          value: {min: 7.5, max: 9.5}
+          note: The pH must stay above 7.5.
+        - source: *tsiifala
+          value: {min: 7.5, max: 9.5}
+        - source: *tsiwater
+          value: {min: 8.0, max: 9.5}
+          note: Aquarium range for Tanganyika cichlids in general.
+        - source: *fishipedia
+          value: {min: 7.8, max: 8.8}
+        - source: *aqguide
+          value: {min: 7.5, max: 8.5}
+        - source: *fprof
+          value: {min: 7.5, max: 9.5}
+        - source: *tfk
+          value: {min: 7.5, max: 9.0}
+        - source: *gay
+          value: {min: 7.8, max: 9.0}
+          note: General guidance for Tanganyika cichlids including Tropheus.
+        - source: *fishbase
+          value: {min: 8.5, max: 9.0}
+          note: Environment line after an aquarium atlas.
+        - source: *liveaq
+          value: {min: 7.8, max: 9.0}
+          note: Retailer care sheet.
+  ghDgh:
+    value: {min: 10, max: 13}
+    confidence: high
+    verification:
+      method: waterbody
+      waterbody: lake-tanganyika
+    rationale: >-
+      Lake Tanganyika endemic, so the natural range is the measured lake water, and all four runs
+      proposed it. The lake is magnesium-rich water of moderate total hardness: calcium and magnesium
+      measured by the FAO/FINNIDA programme at three stations give 11.1 to 11.5 dGH, the north basin
+      data of Cohen et al. 12.2 dGH, the older data of Talling and Talling about 11.3 dGH and an
+      independent ion study 10.6 dGH, so 10 to 13 dGH. FishBase gives 10 to 12 for the species.
+    sources:
+      - *plisnier1
+      - *plisnier2
+      - &cohen
+        kind: literature
+        title: "Cohen, A. S., Talbot, M. R., Awramik, S. M., Dettman, D. L. and Abell, P. (1997). Lake level and paleoenvironmental history of Lake Tanganyika, Africa, as inferred from late Holocene and modern stromatolites. GSA Bulletin 109(4), 444-460 (Table 1, north basin surface water chemistry)."
+        url: https://awramik.faculty.geol.ucsb.edu/pubs/COHE9740.pdf
+        accessed: 2026-10-12
+      - *vandenbossche
+      - &branchu
+        kind: literature
+        title: "Branchu, P. and Bergonzini, L. (2004). Chloride concentrations in Lake Tanganyika: an indicator of the hydrological budget? Hydrology and Earth System Sciences 8, 256-265."
+        url: https://doi.org/10.5194/hess-8-256-2004
+        accessed: 2026-10-13
+      - *fishbase
+    evidence:
+      - source: *plisnier1
+        value: {min: 11.1, max: 11.5}
+        note: Surface means at Bujumbura, Kigoma and Mpulungu, converted from calcium and magnesium.
+      - source: *cohen
+        value: {min: 12.2, max: 12.2}
+        note: North basin surface water, converted from calcium and magnesium.
+      - source: *vandenbossche
+        value: {min: 11.3, max: 11.3}
+        note: Calcium and magnesium after Talling and Talling, converted.
+      - source: *branchu
+        value: {min: 10.6, max: 10.6}
+        note: Surface means of calcium and magnesium, converted.
+      - source: *fishbase
+        value: {min: 10, max: 12}
+        note: Species environment line taken from an aquarium atlas.
+    tolerance:
+      value: {min: 8, max: 25}
+      confidence: medium
+      verification:
+        method: unanimous
+        votes: {agree: 4, total: 4}
+      rationale: >-
+        All four runs proposed 8 to 25 dGH. The care sources agree that the water must be hard but
+        give wide ranges: Seriously Fish 8 to 25 dGH, Fishkeeper and Fishipedia 15 to 25 (without
+        naming the kind of hardness), FishProfiles 12 to 20, Aquarium Guide 10 to 20, and Tanganyika.si
+        and a magazine guide 8 or 10 to 20 for Tanganyika cichlids in general; a breeder keeps the
+        species at 18 dGH. The tolerance spans the widest database range, which contains the lake
+        value; no source supports water softer than 8 dGH.
+      sources:
+        - *sf
+        - *fk
+        - *fishipedia
+        - *fprof
+        - *aqguide
+        - *tsiwater
+        - *gay
+        - &hill
+          kind: literature
+          title: "Hill. Your fish houses: Mike Bonnick. Practical Fishkeeping."
+          url: https://www.practicalfishkeeping.co.uk/features/your-fish-houses-mike-bonnick/
+          accessed: 2026-10-13
+        - *fishbase
+      evidence:
+        - source: *sf
+          value: {min: 8, max: 25}
+        - source: *fk
+          value: {min: 15, max: 25}
+          note: Given as dH without naming general or carbonate hardness.
+        - source: *fishipedia
+          value: {min: 15, max: 25}
+          note: Hardness without a unit.
+        - source: *fprof
+          value: {min: 12, max: 20}
+          note: Given as dH.
+        - source: *aqguide
+          value: {min: 10, max: 20}
+        - source: *tsiwater
+          value: {min: 8, max: 20}
+          note: Aquarium range for Tanganyika cichlids in general.
+        - source: *gay
+          value: {min: 10, max: 20}
+          note: General guidance for Tanganyika cichlids.
+        - source: *hill
+          value: {min: 18, max: 18}
+          note: Water of a fish house that keeps T. duboisi Kigoma; a kept value, not a tested limit.
+        - source: *fishbase
+          value: {min: 10, max: 12}
+          note: Environment line after an aquarium atlas.
+  khDkh:
+    value: {min: 15, max: 20}
+    confidence: high
+    rationale: >-
+      Lake Tanganyika endemic, so the natural range is the measured lake water, and all four runs
+      proposed it. The lake is strongly buffered: alkalinity of 6.5 to 6.9 meq/L in several studies
+      equals about 18 to 19 dKH, and the FAO/FINNIDA titrations of bicarbonate plus carbonate reach
+      down to about 15.4 dKH, so 15 to 20 dKH. The carbonate hardness therefore exceeds the total
+      hardness.
+    sources:
+      - *cohen
+      - *langenberg
+      - *plisnier1
+      - *vandenbossche
+      - *branchu
+    evidence:
+      - source: *cohen
+        value: {min: 18.2, max: 18.5}
+        note: Alkalinity 6.5 to 6.6 meq/L, converted.
+      - source: *langenberg
+        value: {min: 18.8, max: 19.3}
+        note: Alkalinity 6.7 to 6.9 meq/L after Edmond et al., converted.
+      - source: *plisnier1
+        value: {min: 15.4, max: 20}
+        note: Bicarbonate plus carbonate titrations of the FAO/FINNIDA programme.
+      - source: *vandenbossche
+        value: {min: 18.8, max: 18.8}
+        note: Alkalinity 6.71 meq/L after Talling and Talling, converted.
+      - source: *branchu
+        value: {min: 18.4, max: 18.4}
+        note: Bicarbonate plus carbonate surface means, converted.
+    tolerance:
+      value: {min: 10, max: 20}
+      confidence: low
+      verification:
+        method: unanimous
+        votes: {agree: 4, total: 4}
+      rationale: >-
+        The runs proposed 11 to 22 dKH (generator) and 10 to 20 dKH (checker-a, checker-b and
+        checker-c); the proposals agree within 2 dKH, and the decided range is the median of the
+        bounds, 10 to 20 dKH. Few sources give a number: two US care sheets state 10 to 20 dKH for
+        the species, Tanganyika.si recommends 11 to 22 dKH for Tanganyika cichlids in general, a
+        magazine guide 8 to 18, a breeder keeps the species at 12 dKH and a retailer guide gives 10 to
+        14. The sources span 8 to 22 dKH in all, wider than the decided range at both ends. Fishkeeper
+        only stresses that buffering is needed to hold the high pH. The value rests mainly on general
+        guidance and two care sheets, hence the low confidence.
+      sources:
+        - *tfk
+        - *tsiwater
+        - *gay
+        - *hill
+        - *fk
+        - *liveaq
+        - &gensou
+          kind: website
+          title: "Gensou: Tropheus duboisi care guide"
+          url: https://gensou.sg/tropheus-duboisi-care-guide/
+          accessed: 2026-10-13
+        - *cohen
+      evidence:
+        - source: *tfk
+          value: {min: 10, max: 20}
+        - source: *tsiwater
+          value: {min: 11, max: 22}
+          note: Aquarium range for Tanganyika cichlids in general.
+        - source: *gay
+          value: {min: 8, max: 18}
+          note: General care range for Tanganyika cichlids, below the lake value.
+        - source: *hill
+          value: {min: 12, max: 12}
+          note: Water of a fish house that keeps T. duboisi Kigoma.
+        - source: *liveaq
+          value: {min: 10, max: 20}
+          note: Retailer care sheet.
+        - source: *gensou
+          value: {min: 10, max: 14}
+          note: Retailer care guide.
+        - source: *cohen
+          value: {min: 18.2, max: 18.5}
+          note: Natural lake water in which the species lives, not an aquarium figure.
+  maxSizeCm:
+    value: {male: 13, female: 12}
+    confidence: medium
+    rationale: >-
+      The runs proposed 12 and 11 cm (generator), 13 and 12 cm (checker-a), 14 and 13 cm (checker-b)
+      and 12 cm for both sexes (checker-c). FishBase, Fishkeeper and Fishipedia give 12 cm total
+      length and a club profile 4 to 5 inches, FishProfiles 13 cm, Seriously Fish 12 cm standard
+      length (roughly 14 cm in total), and Tanganyika.si reports imported adults of about 14 cm with
+      females slightly smaller and single tank fish above 15 cm. The decision takes the middle of the
+      proposals: well-kept males typically reach about 13 cm and females about 12 cm, while 14 cm
+      and more are large individuals rather than the norm.
+    sources:
+      - *fishbase
+      - *fk
+      - *sf
+      - *tsi
+      - *fishipedia
+      - *fprof
+      - *stigliano
+    evidence:
+      - source: *fishbase
+        value: {male: 12, female: 12}
+        note: Total length, male or unsexed.
+      - source: *fk
+        value: {male: 12, female: 12}
+      - source: *sf
+        value: {male: 12, female: 12}
+        note: Standard length; the total length is larger.
+      - source: *tsi
+        value: {male: 14, female: 13}
+        note: Imported adults; females slightly smaller.
+      - source: *fishipedia
+        value: {male: 12, female: 12}
+        note: Mean size 11 cm, maximum 12 cm.
+      - source: *fprof
+        value: {male: 13, female: 13}
+      - source: *stigliano
+        value: {male: 12.7, female: 12.7}
+        note: Both sexes given as 4 to 5 inches.
+  predation:
+    value: 0
+    confidence: high
+    verification:
+      method: unanimous
+      votes: {agree: 4, total: 4}
+    rationale: >-
+      All four runs voted 0. The species is an algae browser that plucks filamentous algae and
+      biofilm from rocks; field studies call it herbivorous with feeding territories, a comparative
+      morphometric study classes it as an algae browser, and every care source builds the diet on
+      plant matter. No source reports it eating fish; breeders leave released fry with the adults,
+      and small crustaceans are taken only incidentally while grazing. Fry may be lost by chance.
+    sources:
+      - *fishbase
+      - &yanagisawa93
+        kind: literature
+        title: "Yanagisawa, Y. (1993). Long-term territory maintenance by female Tropheus duboisi (Cichlidae) involving foraging during the mouth-brooding period. Ecology of Freshwater Fish 2, 1-7 (abstract)."
+        url: https://doi.org/10.1111/j.1600-0633.1993.tb00010.x
+        accessed: 2026-10-13
+      - &kohda92
+        kind: literature
+        title: "Kohda, M. and Yanagisawa, Y. (1992). Vertical distributions of two herbivorous cichlid fishes of the genus Tropheus in Lake Tanganyika, Africa. Ecology of Freshwater Fish 1, 99-103 (abstract)."
+        url: https://doi.org/10.1111/j.1600-0633.1992.tb00078.x
+        accessed: 2026-10-13
+      - &zsc
+        kind: literature
+        title: "Form, function and phylogeny: comparative morphometrics of Lake Tanganyika's cichlid tribe Tropheini. Zoologica Scripta (2015)."
+        url: https://doi.org/10.1111/zsc.12110
+        accessed: 2026-10-13
+      - *sf
+      - *tsi
+      - *tsiifala
+      - *stigliano
+      - &aquainfo
+        kind: database
+        title: "AquaInfo: Tropheus duboisi 'Maswa'"
+        url: https://aquainfo.nl/artikel/tropheus-duboisi-maswa/
+        accessed: 2026-10-13
+    evidence:
+      - source: *fishbase
+        value: 0
+        note: Feeds on algae attached to rocks.
+      - source: *yanagisawa93
+        value: 0
+        note: Herbivorous cichlid holding feeding territories.
+      - source: *kohda92
+        value: 0
+        note: Herbivorous.
+      - source: *zsc
+        value: 0
+        note: Classified as an algae browser.
+      - source: *sf
+        value: 0
+        note: Plant-based diet; no meat.
+      - source: *tsi
+        value: 0
+        note: Herbivorous algae feeder.
+      - source: *tsiifala
+        value: 0
+        note: Filamentous algae of the aufwuchs, small crustaceans only incidentally.
+      - source: *stigliano
+        value: 0
+        note: Adults usually leave their young alive.
+      - source: *aquainfo
+        value: 0
+        note: A breeder left released fry with the adults successfully.
+  diet:
+    value:
+      type: aufwuchs
+      bloatSensitive: true
+      foods:
+        - spirulina flakes and pellets
+        - algae grown on the decor
+        - blanched vegetables and nori
+        - occasional Cyclops, Daphnia or Mysis
+    confidence: high
+    verification:
+      method: unanimous
+      votes: {agree: 4, total: 4}
+    rationale: >-
+      All four runs voted aufwuchs with bloat sensitivity. In the lake it grazes filamentous algae and
+      biofilm from rock surfaces, and both sexes defend feeding territories for this food, as FishBase,
+      two field studies and a morphometric study state. Seriously Fish, Fishkeeper, Tanganyika.si, a
+      club profile and Konings for the genus ask for a plant-based staple with only small amounts of
+      crustaceans and warn that rich or meaty foods cause bloat, which is often fatal; the Cichlid
+      Room Companion classes it as an algae puller, which agrees. Forum keepers report losing whole
+      groups to bloat after feeding brine shrimp or other rich food.
+    sources:
+      - *fishbase
+      - *yanagisawa93
+      - *kohda92
+      - *zsc
+      - &konings
+        kind: literature
+        title: "Konings, A. (2009). Tropheus - home is where the rocks are. Practical Fishkeeping, October 2009."
+        url: https://www.practicalfishkeeping.co.uk/features/tropheus-home-is-where-the-rocks-are/
+        accessed: 2026-10-13
+      - *sf
+      - *fk
+      - *tsi
+      - *tsiifala
+      - *stigliano
+      - &crc
+        kind: database
+        title: "Cichlid Room Companion: Tropheus duboisi (public summary; verification only)"
+        url: https://cichlidae.com/species.php?id=vMPZlZ6h9ThuzyD-sKLQAQ
+        accessed: 2026-10-13
+      - &arch14229
+        kind: archive
+        title: cichlids.com forum thread 14229
+        url: https://www.cichlids.com/disc/read.php?2,14229
+      - &arch17767
+        kind: archive
+        title: cichlids.com forum thread 17767
+        url: https://www.cichlids.com/disc/read.php?2,17767
+      - &arch16401
+        kind: archive
+        title: cichlids.com forum thread 16401
+        url: https://www.cichlids.com/disc/read.php?2,16401
+    evidence:
+      - source: *fishbase
+        value: {type: aufwuchs}
+        note: Feeds on algae on rocks; says nothing about bloat.
+      - source: *kohda92
+        value: {type: aufwuchs}
+        note: Herbivorous; says nothing about bloat.
+      - source: *zsc
+        value: {type: aufwuchs}
+        note: Algae browser.
+      - source: *konings
+        value: {type: aufwuchs, bloatSensitive: true}
+        note: Genus article; soft protein-rich foods can be lethal to these algae browsers.
+      - source: *sf
+        value: {type: aufwuchs, bloatSensitive: true}
+        note: Vegetable staple, very susceptible to bloat.
+      - source: *fk
+        value: {type: aufwuchs, bloatSensitive: true}
+        note: High-fibre diet, prone to bloat from rich food.
+      - source: *tsi
+        value: {type: aufwuchs, bloatSensitive: true}
+      - source: *tsiifala
+        value: {type: aufwuchs, bloatSensitive: true}
+        note: High-protein food can be lethal.
+      - source: *stigliano
+        value: {type: aufwuchs, bloatSensitive: true}
+        note: Plant-heavy diet and bloat risk.
+      - source: *crc
+        value: {type: aufwuchs}
+        note: Algae puller; bloat is not covered in the public part.
+      - source: *arch14229
+        value: {type: aufwuchs, bloatSensitive: true}
+        note: Keepers lost fish to bloat after feeding brine shrimp.
+      - source: *arch17767
+        value: {type: aufwuchs, bloatSensitive: true}
+        note: A keeper lost a whole group to bloat.
+  aggressionConspecific:
+    value: 4
+    confidence: medium
+    rationale: >-
+      The runs proposed 4 (generator, checker-a and checker-c) and 3 (checker-b). Seriously Fish
+      reports that groups of five or six may fight to the death, Fishkeeper notes a tendency to kill
+      one another that only large groups control, Fishipedia reports fatal fights between males, and
+      new fish added to a settled group are attacked; that is level 4, which needs a large group in a
+      large tank and experience. Fishkeeper, Tanganyika.si and the wholesaler Glaser call T. duboisi
+      milder than other Tropheus, which argues for 3, and Konings describes relentless chasing in the
+      genus; the repeated reports of deaths in small groups decide for 4.
+    sources:
+      - *sf
+      - *fk
+      - *fishipedia
+      - *tsi
+      - *konings
+      - *stigliano
+      - *yanagisawa93
+      - &glaser
+        kind: website
+        title: "Schäfer, F. (2019). Tropheus duboisi. Aquarium Glaser fish archive (wholesaler)."
+        url: https://www.aquariumglaser.de/en/25-perchlike-fishes/tropheus-duboisi-2/
+        accessed: 2026-10-13
+      - *liveaq
+    evidence:
+      - source: *sf
+        value: 4
+        note: Groups of five or six may fight to the death; 15 to 20 fish advised.
+      - source: *fk
+        value: 4
+        note: Tendency to kill one another unless kept in large groups; milder than its congeners.
+      - source: *fishipedia
+        value: 4
+        note: Fights between dominant males can end with the death of one fish.
+      - source: *stigliano
+        value: 4
+        note: Disturbing an established colony can cause deaths.
+      - source: *tsi
+        value: 3
+        note: Aggression strongest towards its own kind, lower than in other Tropheus.
+      - source: *konings
+        value: 3
+        note: Genus article; relentless chasing of rival males.
+      - source: *yanagisawa93
+        value: 3
+        note: Wild fish defend feeding territories against rivals of the same sex.
+      - source: *glaser
+        value: 2
+        note: Calmer and much less aggressive than other Tropheus.
+      - source: *liveaq
+        value: 4
+        note: Extremely aggressive towards its own kind.
+  aggressionHeterospecific:
+    value: 2
+    confidence: medium
+    rationale: >-
+      The runs split between 2 (generator and checker-a) and 1 (checker-b and checker-c). Seriously
+      Fish calls it relatively peaceful towards other species, and Tanganyika.si notes that it
+      tolerates other species better than its own kind, which points to 1. However, Tanganyika.si
+      also reports that the dominant male chases other cichlids out of his territory, field
+      observations show it holding feeding territories against another Tropheus species, and a forum
+      keeper saw a juvenile chase a newly added mbuna into submission. Active chasing out of the
+      territory without reported injuries is level 2, which is also the more cautious choice for
+      the compatibility check.
+    sources:
+      - *sf
+      - *tsi
+      - *kohda92
+      - *fk
+      - &arch1925
+        kind: archive
+        title: cichlids.com forum thread 1925
+        url: https://www.cichlids.com/disc/read.php?1,1925
+    evidence:
+      - source: *sf
+        value: 1
+        note: Relatively peaceful towards other species, but very active.
+      - source: *tsi
+        value: 2
+        note: The dominant male chases other cichlids from his territory.
+      - source: *kohda92
+        value: 2
+        note: Holds feeding territories against another Tropheus species where their depth ranges overlap.
+      - source: *fk
+        value: 1
+        note: No killing of other species described; tankmates must share the diet.
+      - source: *arch1925
+        value: 2
+        note: A juvenile chased a newly added mbuna into submission.
+  territory:
+    value: {size: large, breedingOnly: false}
+    confidence: high
+    rationale: >-
+      All runs agree. In the lake both sexes hold feeding territories all year, and male ranges are
+      about three times as large as those of females; Konings reports male feeding territories in the
+      genus of more than 1.8 m across. In the tank the dominant male claims most of the space
+      according to Tanganyika.si, and Seriously Fish allows about 60 cm and a rock pile per male,
+      which is more than a third of a 150 cm tank. Territoriality is not limited to breeding.
+    sources:
+      - *yanagisawa93
+      - *kohda92
+      - *konings
+      - *tsi
+      - *sf
+    evidence:
+      - source: *yanagisawa93
+        value: {size: large, breedingOnly: false}
+        note: Feeding territories held for months; male ranges overlap those of two to five females.
+      - source: *konings
+        value: {size: large, breedingOnly: false}
+        note: Genus article; male feeding territories sometimes more than 1.8 m across.
+      - source: *tsi
+        value: {size: large, breedingOnly: false}
+        note: The male territory often covers most of the tank.
+      - source: *sf
+        value: {size: large, breedingOnly: false}
+        note: About 60 cm and a rock pile per male.
+  habitatZones:
+    value: [rock]
+    confidence: high
+    rationale: >-
+      All runs agree. It lives over rocky slopes, also over rock with more sediment and in deeper
+      water than its congeners, mostly at 6 to 10 m and down to about 30 m. It needs rockwork with
+      hiding places; sand serves only as substrate in the tank.
+    sources:
+      - *fishbase
+      - *kohda92
+      - *tsi
+      - &vansteenberge
+        kind: literature
+        title: "Van Steenberge, M. et al. (2018). Delineating species along shifting shorelines: Tropheus (Teleostei, Cichlidae) from the southern subbasin of Lake Tanganyika. Frontiers in Zoology 15, 42."
+        url: https://doi.org/10.1186/s12983-018-0287-4
+        accessed: 2026-10-13
+      - *crc
+    evidence:
+      - source: *fishbase
+        value: [rock]
+        note: Upper rocky habitat, down to 30 m.
+      - source: *kohda92
+        value: [rock]
+        note: Rocky slope at 5 to 30 m.
+      - source: *tsi
+        value: [rock]
+        note: Rocky shores, most common at 6 to 10 m, also in rocky zones rich in sediment.
+      - source: *vansteenberge
+        value: [rock]
+        note: Rocky shores down to about 30 m.
+      - source: *crc
+        value: [rock]
+        note: Public habitat line; verification only.
+  social:
+    value: {structure: group, minGroup: 15}
+    confidence: medium
+    rationale: >-
+      The runs proposed a group of at least 15 (generator, checker-b and checker-c) and of at least
+      10 (checker-a). The fish do not school in the wild, but in the tank only a colony with clearly
+      more females than males spreads the aggression, and small groups shrink as weaker fish are
+      bullied to death. The species sources agree on about 15 or more (Seriously Fish 15 to 20,
+      Fishkeeper 15 or more, Tanganyika.si 15 to 25 with three to four females per male, AquaInfo 15),
+      a club profile suggests 12 to 18, while Konings for the genus, a US care sheet and forum keepers
+      name 10 as the minimum. The decision follows the species-specific sources and the majority of
+      the runs.
+    sources:
+      - *sf
+      - *fk
+      - *tsi
+      - *aquainfo
+      - *stigliano
+      - *konings
+      - *tfk
+      - &arch13172
+        kind: archive
+        title: cichlids.com forum thread 13172
+        url: https://www.cichlids.com/disc/read.php?1,13172
+    evidence:
+      - source: *sf
+        value: {structure: group, minGroup: 15}
+        note: Buy 15 to 20 fish; groups of five or six do not settle.
+      - source: *fk
+        value: {structure: group, minGroup: 15}
+      - source: *tsi
+        value: {structure: group, minGroup: 15}
+        note: 15 to 25 fish, at least three to four females per male.
+      - source: *aquainfo
+        value: {structure: group, minGroup: 15}
+      - source: *stigliano
+        value: {structure: group, minGroup: 12}
+        note: Suggested minimum between 12 and 18 fish.
+      - source: *konings
+        value: {structure: group, minGroup: 10}
+        note: Genus article.
+      - source: *tfk
+        value: {structure: group, minGroup: 10}
+        note: Colony of ten or more.
+      - source: *arch13172
+        value: {structure: group, minGroup: 10}
+  speciesOnly:
+    value: true
+    confidence: medium
+    verification:
+      method: unanimous
+      votes: {agree: 4, total: 4}
+    rationale: >-
+      All four runs voted true. Like all Tropheus it is best kept as a large group of its own kind,
+      and the rubric names Tropheus as the example of species-only fish. Tanganyika.si calls a tank
+      for T. duboisi alone the better choice, partly because it is milder than other Tropheus;
+      Fishkeeper wants groups of their own kind with tankmates only on the same lean diet, and a club
+      profile and a magazine guide favour single-species colonies. Seriously Fish and Tropical Fish
+      Keeping do name possible companions (goby cichlids, Julidochromis and small semi-aggressive
+      Tanganyika cichlids), so a few peaceful, herbivorous Tanganyika species are tolerated in large
+      tanks, but the hobby default is a species tank.
+    sources:
+      - *tsi
+      - *tsiifala
+      - *fk
+      - *gay
+      - *stigliano
+      - *sf
+      - *tfk
+      - *liveaq
+      - &arch8016
+        kind: archive
+        title: cichlids.com forum thread 8016
+        url: https://www.cichlids.com/disc/read.php?1,8016
+      - &arch18970
+        kind: archive
+        title: cichlids.com forum thread 18970
+        url: https://www.cichlids.com/disc/read.php?2,18970
+      - &arch16351
+        kind: archive
+        title: cichlids.com forum thread 16351
+        url: https://www.cichlids.com/disc/read.php?1,16351
+    evidence:
+      - source: *tsi
+        value: true
+        note: A tank for T. duboisi alone is often the better choice.
+      - source: *tsiifala
+        value: true
+        note: A species-only tank is often better.
+      - source: *fk
+        value: true
+        note: Keep in groups of their own kind; tankmates limited to fish on the same diet.
+      - source: *gay
+        value: true
+        note: Genus-wide recommendation for dedicated single-species colonies.
+      - source: *stigliano
+        value: true
+        note: Discourages community keeping.
+      - source: *sf
+        value: false
+        note: Names Julidochromis, Eretmodus and Tanganicodus as possible companions with a similar diet.
+      - source: *tfk
+        value: false
+        note: Suggests smaller semi-aggressive Tanganyika cichlids as tankmates.
+      - source: *liveaq
+        value: true
+        note: Does best in a species tank.
+      - source: *arch8016
+        value: true
+        note: Most breeders keep the species in species tanks.
+      - source: *arch18970
+        value: true
+      - source: *arch16351
+        value: true
+        note: Tropheus cause problems in mixed tanks.
+  hybridGroups:
+    value: [tropheus]
+    confidence: medium
+    verification:
+      method: unanimous
+      votes: {agree: 4, total: 4}
+    rationale: >-
+      All four runs voted for the group tropheus. T. duboisi is the oldest, genetically distinct
+      lineage of the genus, and no cross of it with another named Tropheus species is documented; in
+      the lake it lives beside T. sp. 'black' at Bemba and T. brichardi without reported hybrids,
+      and Tanganyika.si allows different Tropheus species together. It therefore belongs only to the
+      genus group with the basis presumed, which rests on the close relationship, the gene flow
+      found between other Tropheus species and the general hobby warning that Tropheus forms kept
+      together interbreed. Its own geographic variants cross freely and must not be mixed, which
+      concerns no group of species.
+    sources:
+      - *konings
+      - *sturmbauer
+      - &egger
+        kind: literature
+        title: "Egger, B., Koblmüller, S., Sturmbauer, C. and Sefc, K. M. (2007). Nuclear and mitochondrial data reveal different evolutionary processes in the Lake Tanganyika cichlid genus Tropheus. BMC Evolutionary Biology 7, 137."
+        url: https://doi.org/10.1186/1471-2148-7-137
+        accessed: 2026-10-13
+      - *sf
+      - *tsi
+      - &arch24654
+        kind: archive
+        title: cichlids.com forum thread 24654
+        url: https://www.cichlids.com/disc/read.php?2,24654
+      - &arch16721
+        kind: archive
+        title: cichlids.com forum thread 16721
+        url: https://www.cichlids.com/disc/read.php?2,16721
+    evidence:
+      - source: *konings
+        value: [tropheus]
+        note: At least eight closely related species; races kept together often hybridise.
+      - source: *sturmbauer
+        value: [tropheus]
+        note: Considerable gene flow among Tropheus species; T. duboisi lives beside T. sp. 'black' and T. brichardi with no hybrid reported.
+      - source: *egger
+        value: []
+        note: Introgression among the other Tropheus; T. duboisi forms a distinct lineage with no hybrid shown.
+      - source: *sf
+        value: []
+        note: Warns only against mixing the geographic morphs of T. duboisi.
+      - source: *tsi
+        value: []
+        note: Allows different Tropheus species together; warns only against mixing variants of one species.
+      - source: *arch24654
+        value: [tropheus]
+        note: A keeper mixes T. duboisi with a differently coloured Tropheus in large groups to avoid crosses.
+      - source: *arch16721
+        value: []
+        note: A keeper holds it with T. sp. 'black' Bemba without problems.
+  coloration:
+    value:
+      baseColors: [black, blue, yellow, white]
+      pattern: bars
+    confidence: high
+    rationale: >-
+      All runs agree. Adults have a blue to blue-grey head and a dark blue-black body with one broad
+      or narrow vertical bar behind the pectoral fin, white, cream or yellow depending on the
+      locality. Juveniles are black with rows of white to pale blue spots, which fade as they mature.
+    sources:
+      - *sf
+      - *tsi
+      - *fk
+      - *fprof
+      - *aquainfo
+      - &dewp
+        kind: website
+        title: "Wikipedia (German): Tropheus duboisi"
+        url: https://de.wikipedia.org/wiki/Tropheus_duboisi
+        accessed: 2026-10-13
+    evidence:
+      - source: *sf
+        value: {baseColors: [black, blue, yellow, white], pattern: bars}
+      - source: *tsi
+        value: {baseColors: [black, blue, yellow, white], pattern: bars}
+      - source: *fprof
+        value: {baseColors: [black, yellow, blue], pattern: bars}
+      - source: *aquainfo
+        value: {baseColors: [black, blue, yellow], pattern: bars}
+        note: Maswa form.
+  feedingSpeed:
+    value: hasty
+    confidence: medium
+    rationale: >-
+      The runs proposed hasty (generator, checker-a and checker-c) and normal (checker-b). Konings
+      notes that Tropheus take in more nutrients from aquarium food within two minutes than from a
+      whole day of grazing in the lake, the care sources limit rations to what the group eats within
+      about two minutes, AquaInfo describes vigorous feeding, and Seriously Fish calls the fish very
+      active and unsuitable for tanks with shy species. Checker-b argued from the steady grazing in
+      the wild, which says little about how the fish compete for food in a tank, so hasty is decided.
+    sources:
+      - *konings
+      - *tsi
+      - *sf
+      - *aquainfo
+    evidence:
+      - source: *konings
+        value: hasty
+        note: Genus article; a day's nutrients eaten within two minutes.
+      - source: *tsi
+        value: hasty
+        note: Feed only what is eaten within two minutes.
+      - source: *sf
+        value: hasty
+        note: Very active, not for tanks with shy species.
+      - source: *aquainfo
+        value: hasty
+        note: Vigorous feeding observed by a breeder.
+  minTank:
+    value: {volumeL: 400, lengthCm: 150, depthCm: 50}
+    confidence: medium
+    rationale: >-
+      The runs proposed 400 L at 150 x 50 cm (generator and checker-a), 500 L at 150 x 60 cm
+      (checker-b) and 350 L at 150 x 50 cm (checker-c). All agree on a length of 150 cm for a colony
+      of about 15 adults: Seriously Fish gives 152 x 46 x 46 cm (about 320 L), FishBase, Fishkeeper and
+      AquaInfo 1.5 m or more, Tanganyika.si 500 L at 150 cm, and a US care sheet about 280 L for ten
+      fish. 400 L with 50 cm front-to-back depth is the middle of these recommendations and leaves room
+      for several separate rock piles.
+    sources:
+      - *sf
+      - *fk
+      - *tsi
+      - *fishbase
+      - *aquainfo
+      - *tfk
+      - *aqguide
+    evidence:
+      - source: *sf
+        value: {volumeL: 320, lengthCm: 152, depthCm: 46}
+        note: 60 x 18 x 18 inches for a group.
+      - source: *fk
+        value: {lengthCm: 150}
+        note: At least 1.5 m for 15 or more fish.
+      - source: *tsi
+        value: {volumeL: 500, lengthCm: 150}
+      - source: *fishbase
+        value: {lengthCm: 150}
+        note: Minimum length for a group with several females per male.
+      - source: *aquainfo
+        value: {lengthCm: 150}
+        note: At least 1.5 m for 15 fish; 200 x 60 x 60 cm preferred for 25 to 30.
+      - source: *tfk
+        value: {volumeL: 284}
+        note: 75 gallons for a colony of ten.
+      - source: *aqguide
+        value: {volumeL: 400}
+  lifespanYears:
+    value: {min: 8, max: 12}
+    confidence: low
+    rationale: >-
+      The runs proposed 8 to 12 years (generator, checker-b and checker-c) and 10 to 15 years
+      (checker-a). Fishipedia and Tropical Fish Keeping give about 12 years and Acquariofilia
+      Consapevole 8 to 12 years; no study reports ages of the species. The decision follows the only
+      source that gives a range and the majority of the runs; the confidence stays low because all
+      figures are unsupported husbandry estimates.
+    sources:
+      - &acqcons
+        kind: database
+        title: "Acquariofilia Consapevole: Tropheus duboisi"
+        url: https://www.acquariofiliaconsapevole.it/pesci_tropheus_duboisi
+        accessed: 2026-10-13
+      - *fishipedia
+      - *tfk
+      - kind: model-knowledge
+        title: General hobby experience with the lifespan of Tropheus in aquaria
+    evidence:
+      - source: *acqcons
+        value: {min: 8, max: 12}
+        note: Estimate without a named age study.
+      - source: *fishipedia
+        value: {min: 12, max: 12}
+      - source: *tfk
+        value: {min: 12, max: 12}
+  breeding:
+    value: maternal-mouthbrooder
+    confidence: high
+    rationale: >-
+      All runs agree. The female takes the few large eggs into her mouth, broods them for about three
+      to four weeks while she keeps grazing on her territory, and guards the released fry for a few
+      days. FishBase, Seriously Fish, Tanganyika.si, a field study, a review of parental care in
+      Tanganyika cichlids and the Cichlid Room Companion all name a maternal mouthbrooder.
+    sources:
+      - *fishbase
+      - *sf
+      - *tsi
+      - *yanagisawa93
+      - &sefc2011
+        kind: literature
+        title: "Mating and Parental Care in Lake Tanganyika's Cichlids. International Journal of Evolutionary Biology (2011)."
+        url: https://doi.org/10.4061/2011/470875
+        accessed: 2026-10-13
+      - *fk
+      - *crc
+    evidence:
+      - source: *fishbase
+        value: maternal-mouthbrooder
+      - source: *sf
+        value: maternal-mouthbrooder
+        note: Broods of 5 to 15 eggs carried for about four weeks.
+      - source: *tsi
+        value: maternal-mouthbrooder
+        note: 6 to 16 eggs, released after 24 to 26 days.
+      - source: *yanagisawa93
+        value: maternal-mouthbrooder
+        note: Females keep foraging on their territory while brooding.
+      - source: *sefc2011
+        value: maternal-mouthbrooder
+      - source: *fk
+        value: maternal-mouthbrooder
+      - source: *crc
+        value: maternal-mouthbrooder
+        note: Public breeding line; verification only.
+  beginnerSuitability:
+    value: demanding
+    confidence: medium
+    rationale: >-
+      The runs proposed demanding (generator, checker-b and checker-c) and moderate (checker-a). The
+      rating scales of the sources differ: Seriously Fish rates the care as moderate but calls the
+      species unsuitable for beginners, Fishipedia and LiveAquaria rate it moderate, the Cichlid Room
+      Companion recommends it for intermediate keepers, and Fishkeeper presents it as the easier entry
+      into a challenging genus. Every source, however, requires a colony of about 15 bought at once, a
+      tank of 150 cm or more, very clean, well-oxygenated hard water and a strict lean diet, and losses
+      from bloat and fighting are common. For a newcomer to cichlids this combination is demanding,
+      so the decision follows the majority of the runs.
+    sources:
+      - *sf
+      - *fk
+      - *tsi
+      - *fishipedia
+      - *stigliano
+      - *crc
+      - *liveaq
+    evidence:
+      - source: *sf
+        value: moderate
+        note: Moderate difficulty, yet not a species for beginners.
+      - source: *fk
+        value: demanding
+        note: Challenging genus with fatal bullying and digestive sensitivity; suggested as a first Tropheus.
+      - source: *tsi
+        value: demanding
+        note: High demands on water quality.
+      - source: *fishipedia
+        value: moderate
+      - source: *stigliano
+        value: moderate
+        note: Success is possible once its unusual needs are understood.
+      - source: *crc
+        value: moderate
+        note: Intermediate aquarists; verification only.
+      - source: *liveaq
+        value: moderate
+partners:
+  suitable:
+    - species: Eretmodus cyanostictus
+      reason: A goby cichlid of the rocky surf zone that also grazes algae, stays near the bottom and copes with the same lean diet.
+      condition: Tank of at least 150 cm with several separate rock piles.
+    - species: Tanganicodus irsacae
+      reason: A small goby cichlid that hugs the bottom among the rocks, keeps out of the colony's way and does well on the same light rations with small crustaceans as a supplement.
+      condition: Plenty of rock cover near the bottom.
+    - species: Spathodus erethrodon
+      reason: Another goby cichlid of the shallow rocky zone that picks at the rock surfaces and shares the water and food needs of the Tropheus.
+    - species: Julidochromis regani
+      reason: A cave-dwelling lamprologine that holds a small rock territory and is robust enough for an active Tropheus group.
+      condition: Large tank with deep rock crevices; feed the Julidochromis without rich foods that the Tropheus could take.
+  unsuitable:
+    - species: Tropheus moorii
+      reason: Shares the presumed Tropheus hybrid group, and the colonies of two Tropheus fight over the same feeding areas.
+    - species: "Tropheus duboisi (another locality)"
+      reason: Different localities such as Maswa and Kigoma interbreed freely and lose their identity.
+    - species: Cyphotilapia frontosa
+      reason: Needs a protein-rich diet that causes bloat in Tropheus and grows large enough to swallow young fish.
+    - species: Maylandia zebra
+      reason: An aggressive Lake Malawi mbuna that competes for the same rock and algae niche, and the two lakes differ in water chemistry.
+profile:
+  overview:
+    text: >-
+      Tropheus duboisi is a stocky algae grazer from the rocky shores of Lake Tanganyika and the
+      oldest lineage of its genus. Juveniles are among the most striking fish of the lake: jet black
+      with rows of white to light blue dots. Adults lose the dots and turn into dark fish with a blue
+      head and one vertical white or yellow bar, whose width depends on the locality. The species is
+      considered the mildest member of the genus and the usual entry point for keepers who want
+      Tropheus, yet it is still a demanding fish: it needs a colony of about fifteen, a long tank, very
+      clean hard water and a lean plant-based diet. Heavy collecting has thinned some wild
+      populations, and the IUCN Red List assesses the species as Endangered, so captive-bred fish are
+      the better choice.
+    sources:
+      - *fishbase
+      - *sf
+      - *tsi
+      - *sturmbauer
+  habitat:
+    text: >-
+      The species is endemic to Lake Tanganyika and occurs in scattered populations in the northern
+      half of the lake: at Bemba in the Congo, at Muguruka in Burundi and along several stretches of
+      the Tanzanian coast between Gombe and the Mahale region. It lives over rocky slopes, often deeper
+      and over more silted rock than other Tropheus, mostly at 6 to 10 m and down to about 30 m. Where
+      it meets other Tropheus or the large Petrochromis grazers in shallow water, they push it into
+      the deeper zone. The lake water is warm, about 23 to 29 C, and strongly alkaline, with pH around
+      8.4 to 9.4 and a carbonate hardness higher than its total hardness, and it is clear and rich in
+      oxygen in the upper layers.
+    sources:
+      - *cof
+      - *fishbase
+      - *tsi
+      - *kohda92
+      - *plisnier1
+      - *verburg
+  sizeAndGrowth:
+    text: >-
+      Well-kept males usually reach about 13 cm and females about 12 cm. Imported wild fish are
+      sometimes a little bigger, and single aquarium fish may exceed 14 cm. Young fish in the trade,
+      often 3 to 5 cm long, still show the dotted pattern. The dots fade gradually as the fish mature
+      and the light flank bar develops in their place; females often keep traces of the dots longer
+      than males. Sexual maturity is usually reached at around one year, although some fish start
+      later. With good care the species can live for about a decade.
+    sources:
+      - *fishbase
+      - *sf
+      - *tsi
+      - *fk
+      - *fishipedia
+      - *fprof
+  husbandry:
+    text: >-
+      Plan a tank of at least 150 cm length and about 400 L for a group. Sand serves as substrate, and
+      several separate rock piles with caves break the lines of sight so that subordinate fish can
+      escape the dominant male. Bright light lets algae grow on the stones, which the fish graze all
+      day. Tropheus react badly to ammonia, nitrite and rising nitrate, so filtration must be strong
+      and mature, and large weekly water changes are routine. Keep the water hard and alkaline, around
+      pH 8 to 9.5, and the temperature steady at 24 to 27 C; warmer water holds less oxygen, so strong
+      surface movement helps. Buy the whole group at once as young fish and never add newcomers to an
+      established colony, because they will be attacked.
+    sources:
+      - *sf
+      - *fk
+      - *tsi
+      - *tsiwater
+      - *konings
+  socialBehavior:
+    text: >-
+      In the lake both sexes hold feeding territories for months; a male range overlaps those of
+      several females and is about three times their size. In the tank, one male usually takes over
+      most of the space and chases other males and unready females constantly. To spread this
+      pressure the species is kept as a colony of about fifteen or more, with clearly more females
+      than males. In small groups weaker fish are bullied until they die, and a female removed for
+      brooding may lose her rank and be attacked on her return. T. duboisi is considered less
+      aggressive than other Tropheus. Towards other species it is more tolerant, although the
+      dominant male drives other fish out of the area he claims.
+    sources:
+      - *yanagisawa93
+      - *sf
+      - *fk
+      - *tsi
+  diet:
+    text: >-
+      In the wild it plucks filamentous algae and the small organisms living in them from the rocks.
+      Like other algae grazers it has a long gut suited to this low-protein food. In the aquarium a
+      good spirulina flake or pellet is the safest staple, together with algae grown on the decor and
+      occasionally blanched vegetables or nori. Coarse crustaceans such as Cyclops, Daphnia or Mysis
+      are acceptable as a small supplement. Soft, rich foods like red mosquito larvae, brine shrimp in
+      quantity or meat are dangerous. Feed once a day, or in several small portions, and give only as
+      much as the group finishes within about two minutes. Overfeeding is the most common cause of
+      losses.
+    sources:
+      - *konings
+      - *tsi
+      - *sf
+      - *fk
+      - *fishbase
+  breeding:
+    text: >-
+      The species is a maternal mouthbrooder that breeds readily in a well-run colony. The dominant
+      male courts a ripe female over a calm patch of his territory; she lays her large eggs one by one
+      and takes them into her mouth, where they are fertilised. Clutches are small, usually about five
+      to sixteen eggs. The female carries the brood for roughly three to four weeks and keeps grazing
+      during this time. She then releases the fry and guards them for a few days. Moving a brooding
+      female is risky because she may lose her place in the group; if it is necessary, catch her in
+      darkness. The fry take fine dry food and newly hatched brine shrimp from the start.
+    sources:
+      - *sf
+      - *tsi
+      - *fk
+      - *yanagisawa93
+      - *fishbase
+  sexing:
+    text: >-
+      Males and females wear the same colours, so sexing by eye is difficult. Males usually grow a
+      little larger and differ slightly in body shape and growth rate. Females often retain the
+      juvenile dots somewhat longer while young. The reliable method is to compare the genital
+      papillae: pointed in males, rounder and broader in females. Checking them requires netting the
+      fish and some practice. Because the sexes are so hard to tell apart early, most keepers buy a
+      larger group of young fish and remove surplus males as they become obvious.
+    sources:
+      - *sf
+      - *fk
+      - *tsi
+      - *konings
+  compatibility:
+    text: >-
+      The safest setup is a tank for this species alone. In a large tank a few peaceful Tanganyika
+      fish that also live on a lean diet are possible, such as the goby cichlids Eretmodus,
+      Tanganicodus and Spathodus or a pair of Julidochromis. Any companion must thrive without the
+      protein-rich food that would make the Tropheus ill. Avoid other Tropheus, which compete for the
+      same space and belong to the same presumed hybrid group, and never mix two localities of T.
+      duboisi, because they interbreed freely. Large carnivorous cichlids such as Cyphotilapia
+      frontosa need rich food and may eat young fish, and Lake Malawi mbuna are too aggressive and
+      need different water.
+    sources:
+      - *sf
+      - *tsi
+      - *fk
+      - *konings
+      - *arch8016
+  problems:
+    text: >-
+      Bloat is the main risk. It typically starts with a fish refusing food and developing a swollen
+      belly, and it can kill within days or affect several fish of a group. Protein-rich or soft
+      foods, overfeeding and poor water quality are the usual triggers, and several keepers lost whole
+      groups after feeding brine shrimp or meaty foods. Prevention means a lean staple diet, small
+      rations and regular large water changes. The second common problem is aggression: groups that
+      are too small, too few hiding places or newcomers added to an existing colony lead to injuries
+      and deaths. A fish that hides constantly or looks sick should be checked early and a vet or an
+      experienced keeper consulted.
+    sources:
+      - *tsi
+      - *sf
+      - *fk
+      - *arch14229
+      - *arch17767
+provenance:
+  runs:
+    - role: generator
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-13
+    - role: checker
+      model: gpt-6.1-sol
+      date: 2026-10-13
+    - role: adjudicator
+      model: claude-opus-5-5
+      date: 2026-10-13
+  disagreements:
+    - field: features.origin.value
+      proposals:
+        - by: generator
+          value: {waterbody: Lake Tanganyika, localities: [Bemba (DR Congo), Muguruka (Burundi), Gombe National Park, Kigoma, Cape Bangwe, Karilani Island, Bulu Point, Maswa, Cape Kabogo, Halembe, Lufungu Bay]}
+        - by: checker-a
+          value: {waterbody: Lake Tanganyika, localities: ["Bemba (DR Congo, type area)", Muguruka (Burundi), Kigoma to Gombe National Park (Tanzania), Cape Bangwe (Tanzania), "Maswa, Cape Kabogo, Mkuyu, Segunga and Halembe (Tanzania)", "Katumbi Point, Bulu Point, Karilani Island, Miyako Point and Luagala Point (Tanzania)"]}
+        - by: checker-b
+          value: {waterbody: lake-tanganyika, localities: [Bemba (DR Congo), Muguruka (Burundi), Kigoma to Gombe (Tanzania), Halembe to Kiti Point (Tanzania), Lufungu Bay to Katumbi Point (Tanzania)]}
+        - by: checker-c
+          value: {waterbody: lake-tanganyika}
+      decision: {waterbody: Lake Tanganyika, localities: merged list of all named sites}
+      rationale: >-
+        All runs name Lake Tanganyika; the spellings of the water body differ only in form, and the
+        locality lists complement each other, so they are merged.
+    - field: features.diet.value.foods
+      proposals:
+        - by: generator
+          value: [spirulina flakes and pellets, algae grown on the decor, blanched vegetables and nori, "occasional Cyclops, Daphnia or Mysis"]
+        - by: checker-a
+          value: [filamentous algae and aufwuchs, spirulina-based flakes or pellets, blanched spinach and nori, small crustaceans such as Cyclops and Mysis in small amounts]
+        - by: checker-b
+          value: [spirulina flakes, nori, blanched spinach, "occasional daphnia, cyclops or mysis"]
+        - by: checker-c
+          value: [algae and biofilm, spirulina-based flakes, vegetable-based pellets]
+      decision: [spirulina flakes and pellets, algae grown on the decor, blanched vegetables and nori, "occasional Cyclops, Daphnia or Mysis"]
+      rationale: >-
+        The tally decides diet by type and bloat sensitivity (unanimous 4 of 4) and takes the foods
+        of the first agreeing vote; the lists differ only in wording and detail.
+    - field: features.ph.tolerance
+      proposals:
+        - by: generator
+          value: {min: 8.0, max: 9.5}
+        - by: checker-a
+          value: {min: 7.8, max: 9.5}
+        - by: checker-b
+          value: {min: 7.5, max: 9.5}
+        - by: checker-c
+          value: {min: 8.0, max: 9.5}
+      decision: {min: 7.9, max: 9.5}
+      rationale: >-
+        Decided by the tally as unanimous (4 of 4): all proposals lie within 0.3 of the checker-a
+        range, and the decision is the median of the bounds. The sources span pH 7.5 to 9.5.
+    - field: features.khDkh.tolerance
+      proposals:
+        - by: generator
+          value: {min: 11, max: 22}
+        - by: checker-a
+          value: {min: 10, max: 20}
+        - by: checker-b
+          value: {min: 10, max: 20}
+        - by: checker-c
+          value: {min: 10, max: 20}
+      decision: {min: 10, max: 20}
+      rationale: >-
+        Decided by the tally as unanimous (4 of 4): all proposals lie within 2 dKH of each other, and
+        the decision is the median of the bounds. The sources span 8 to 22 dKH.
+    - field: features.maxSizeCm
+      proposals:
+        - by: generator
+          value: {male: 12, female: 11}
+        - by: checker-a
+          value: {male: 13, female: 12}
+        - by: checker-b
+          value: {male: 14, female: 13}
+        - by: checker-c
+          value: {male: 12, female: 12}
+      decision: {male: 13, female: 12}
+      rationale: >-
+        Most databases give 12 cm total length, while Seriously Fish gives 12 cm standard length,
+        FishProfiles 13 cm and Tanganyika.si about 14 cm for imported adults, with males slightly
+        larger than females. The middle of the proposals fits the typical size of well-kept fish.
+    - field: features.aggressionConspecific
+      proposals:
+        - by: generator
+          value: 4
+        - by: checker-a
+          value: 4
+        - by: checker-b
+          value: 3
+        - by: checker-c
+          value: 4
+      decision: 4
+      rationale: >-
+        Several care sources report fights to the death in small groups and attacks on newcomers,
+        which is level 4; the milder temper compared with other Tropheus does not prevent these
+        losses.
+    - field: features.aggressionHeterospecific
+      proposals:
+        - by: generator
+          value: 2
+        - by: checker-a
+          value: 2
+        - by: checker-b
+          value: 1
+        - by: checker-c
+          value: 1
+      decision: 2
+      rationale: >-
+        Tanganyika.si and field observations report that the fish chase other species out of their
+        territory, which is level 2; the descriptions as relatively peaceful exclude higher levels
+        but not the chasing.
+    - field: features.social
+      proposals:
+        - by: generator
+          value: {structure: group, minGroup: 15}
+        - by: checker-a
+          value: {structure: group, minGroup: 10}
+        - by: checker-b
+          value: {structure: group, minGroup: 15}
+        - by: checker-c
+          value: {structure: group, minGroup: 15}
+      decision: {structure: group, minGroup: 15}
+      rationale: >-
+        The species-specific sources agree on about 15 fish or more; ten is a genus-wide or care
+        sheet minimum.
+    - field: features.feedingSpeed
+      proposals:
+        - by: generator
+          value: hasty
+        - by: checker-a
+          value: hasty
+        - by: checker-b
+          value: normal
+        - by: checker-c
+          value: hasty
+      decision: hasty
+      rationale: >-
+        Several sources describe rapid intake of aquarium food and very active fish; the steady
+        grazing in the wild says little about competition for food in the tank.
+    - field: features.minTank
+      proposals:
+        - by: generator
+          value: {volumeL: 400, lengthCm: 150, depthCm: 50}
+        - by: checker-a
+          value: {volumeL: 400, lengthCm: 150, depthCm: 50}
+        - by: checker-b
+          value: {volumeL: 500, lengthCm: 150, depthCm: 60}
+        - by: checker-c
+          value: {volumeL: 350, lengthCm: 150, depthCm: 50}
+      decision: {volumeL: 400, lengthCm: 150, depthCm: 50}
+      rationale: >-
+        All agree on 150 cm; the volume recommendations of the sources range from about 280 to 500 L,
+        and 400 L at 50 cm depth is their middle.
+    - field: features.lifespanYears
+      proposals:
+        - by: generator
+          value: {min: 8, max: 12}
+        - by: checker-a
+          value: {min: 10, max: 15}
+        - by: checker-b
+          value: {min: 8, max: 12}
+        - by: checker-c
+          value: {min: 8, max: 12}
+      decision: {min: 8, max: 12}
+      rationale: >-
+        The only source with a range gives 8 to 12 years and two care sheets about 12; no source
+        supports 15 years.
+    - field: features.beginnerSuitability
+      proposals:
+        - by: generator
+          value: demanding
+        - by: checker-a
+          value: moderate
+        - by: checker-b
+          value: demanding
+        - by: checker-c
+          value: demanding
+      decision: demanding
+      rationale: >-
+        Several sources rate the care moderate on their own scales, but all require a large colony, a
+        long tank, excellent water and a strict diet, and Seriously Fish calls it unsuitable for
+        beginners; the majority of the runs and the risk of losses decide for demanding.
