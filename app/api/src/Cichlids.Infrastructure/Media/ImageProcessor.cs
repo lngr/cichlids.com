@@ -196,7 +196,8 @@ public static class ImageProcessor
 
     // The thumbnail operation shrinks during decode where the format allows it, applies the EXIF
     // orientation and converts to sRGB. Copying to memory decodes the whole source once, so the
-    // smaller variants resize from memory.
+    // smaller variants resize from memory. The loader option makes a source cut off before its
+    // last pixels fail the decode; the thumbnail operation ignores a fail_on parameter of its own.
     private static Image DecodeToSrgb(Source source, int width)
     {
         using var thumbnail = (Image)Operation.Call(
@@ -206,6 +207,7 @@ public static class ImageProcessor
                 { "height", UnconstrainedHeight },
                 { "size", Enums.Size.Down },
                 { "export_profile", "srgb" },
+                { "option_string", "fail_on=truncated" },
             },
             source,
             width);
