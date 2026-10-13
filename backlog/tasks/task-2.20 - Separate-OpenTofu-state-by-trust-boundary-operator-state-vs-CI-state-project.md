@@ -2,10 +2,9 @@
 id: TASK-2.20
 title: 'Separate OpenTofu state by trust boundary: operator-state vs CI-state project'
 status: Done
-assignee:
-  - '@claude'
+assignee: []
 created_date: '2026-06-09 09:12'
-updated_date: '2026-06-09 20:42'
+updated_date: '2026-10-13 08:15'
 labels:
   - infra
   - opentofu

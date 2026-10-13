@@ -4,10 +4,9 @@ title: >-
   Migrate DNS to project-scoped Hetzner Cloud DNS and refresh OpenTofu provider
   pins
 status: In Progress
-assignee:
-  - '@claude'
+assignee: []
 created_date: '2026-06-09 06:15'
-updated_date: '2026-06-10 05:33'
+updated_date: '2026-10-13 08:15'
 labels:
   - infra
   - opentofu

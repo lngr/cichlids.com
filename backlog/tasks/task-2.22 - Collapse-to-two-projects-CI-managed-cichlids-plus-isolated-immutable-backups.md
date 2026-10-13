@@ -2,10 +2,9 @@
 id: TASK-2.22
 title: 'Collapse to two projects: CI-managed cichlids plus isolated immutable backups'
 status: In Progress
-assignee:
-  - '@claude'
+assignee: []
 created_date: '2026-06-09 15:01'
-updated_date: '2026-06-09 19:33'
+updated_date: '2026-10-13 08:15'
 labels:
   - infra
   - opentofu

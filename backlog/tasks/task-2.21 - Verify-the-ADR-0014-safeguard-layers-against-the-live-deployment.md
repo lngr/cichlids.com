@@ -2,10 +2,9 @@
 id: TASK-2.21
 title: Verify the ADR-0014 safeguard layers against the live deployment
 status: In Progress
-assignee:
-  - '@claude'
+assignee: []
 created_date: '2026-06-09 11:57'
-updated_date: '2026-06-09 19:03'
+updated_date: '2026-10-13 08:15'
 labels:
   - infra
   - safeguards
