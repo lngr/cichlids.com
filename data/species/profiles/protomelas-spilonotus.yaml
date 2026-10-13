@@ -1,0 +1,2802 @@
+schemaVersion: 1
+id: "protomelas-spilonotus"
+legacyIds:
+  - 457
+status: "described"
+taxonomy:
+  validName: "Protomelas spilonotus"
+  genus: "Protomelas"
+  species: "spilonotus"
+  author: "(Trewavas, 1935)"
+  source:
+    kind: "catalog-of-fishes"
+    title: "Eschmeyer's Catalog of Fishes: Protomelas, update of 21 September 2026"
+    url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Protomelas"
+    accessed: "2026-10-13"
+  synonyms:
+    - name: "Haplochromis spilonotus"
+      note: "Original combination confirmed by the Catalog of Fishes."
+    - name: "Cyrtocara spilonotus"
+      note: "Historical combination reported by the AquaInfo species database."
+  legacyNames:
+    - "Protomelas spilonotus"
+  note: "Legacy entry 457 retains the described Protomelas spilonotus (Trewavas, 1935), whose original combination is Haplochromis spilonotus and whose type locality is Chilumba. The Catalog of Fishes separately validates P. similis (Regan, 1922). Nordic and Malawi specialist databases treat Tanzania or Liuli stock as the undescribed P. sp. 'spilonotus tanzania', with separate Mozambique and Likoma relatives; these informal names are not synonyms or locality variants of the described species. Retail use of Insignis and a retailer URL containing similis do not establish synonymy. FishBase associates P. similis with vegetation and plant feeding rather than the rocky-shore invertivory described here. No specimen identity is supplied to justify reassigning the legacy entry. CRC verifies the names and maternal mouthbrooding, but its detailed subscriber profile could not be read."
+names:
+  trade:
+    en:
+      - "Spilonotus"
+      - "Sulfur Head Hap"
+      - "Sulphur Head Hap"
+    de:
+      - "Schwefelkopf"
+variants:
+  - name: "Chilumba"
+    kind: "locality"
+    note: "Type locality of the described species."
+  - name: "Ruarwe"
+    kind: "locality"
+    note: "Locality assigned to the described species by Malawi-Guru."
+  - name: "Mbenji Island"
+    kind: "locality"
+    note: "Locality assigned to the described species by Malawi-Guru."
+  - name: "Nakantenga Island"
+    kind: "locality"
+    note: "Described-species locality in the Malawi.si database."
+  - name: "Magunga Reef"
+    kind: "locality"
+    note: "A Tanzanian locality of the described species; it does not identify the separate Tanzania trade taxon."
+  - name: "Lumessi"
+    kind: "locality"
+    note: "Assigned to the described species by Malawi-Guru; distinct from its undescribed Mozambique relative."
+  - name: "Chimwalani Reef"
+    kind: "locality"
+    note: "Described-species locality supported by AquaInfo and independently verified in the public CRC record."
+features:
+  origin:
+    value:
+      continent: "Africa"
+      region: "Lake Malawi"
+      waterbody: "lake-malawi"
+      localities:
+        - "Chilumba"
+        - "Ruarwe"
+        - "Mbenji Island"
+        - "Nakantenga Island"
+        - "Magunga Reef"
+        - "Lumessi"
+        - "Chimwalani Reef"
+    confidence: "high"
+    rationale: "All four full runs agree on Lake Malawi. The generator proposed Chilumba, Ruarwe, Mbenji Island, Magunga Reef and Lumessi; checker-a proposed Chilumba, Chimwalani Reef and Mara Rocks; checker-b proposed Chilumba, Ruarwe, Mbenji Island, Nakantenga Island, Magunga Reef and Chimwalani Reef; checker-c supplied no locality list. Retain the seven localities supported by the named-species databases. Mara Rocks remains excluded from the locality variants because the historical keeper account's stock identity is unclear. Liuli belongs to the separate Tanzania trade taxon."
+    sources:
+      - kind: "catalog-of-fishes"
+        title: "Eschmeyer's Catalog of Fishes: Protomelas, update of 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Protomelas"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Protomelas spilonotus species summary"
+        url: "https://www.fishbase.se/summary/Protomelas-spilonotus.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Bandhauer and Hoernlimann: Protomelas spilonotus, Malawi-Guru species directory"
+        url: "https://malawi-guru.de/protomelas-spilonotus-buntbarsch-verzeichnis/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Malawi.si: Protomelas spilonotus 'Nakantenga Island'"
+        url: "https://malawi.si/MalawiByLocations/Nakantenga%20Island/slides/Protomelas%20spilonotus%20%27Nakantenga%20Island%27.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsallskapet: Protomelas sp. 'spilonotus tanzania'"
+        url: "https://www.ciklid.org/artregister/art.php?ID=1588"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Cichlid Room Companion: Protomelas spilonotus, public classification and breeding verification"
+        url: "https://cichlidae.com/species.php?id=WJIMM4X67ftNWaDVe34ITA"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "catalog-of-fishes"
+          title: "Eschmeyer's Catalog of Fishes: Protomelas, update of 21 September 2026"
+          url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Protomelas"
+          accessed: "2026-10-13"
+        value:
+          continent: "Africa"
+          region: "Lake Malawi"
+          localities:
+            - "Chilumba"
+        note: "Type locality of the described species."
+      - source:
+          kind: "database"
+          title: "Bandhauer and Hoernlimann: Protomelas spilonotus, Malawi-Guru species directory"
+          url: "https://malawi-guru.de/protomelas-spilonotus-buntbarsch-verzeichnis/"
+          accessed: "2026-10-13"
+        value:
+          localities:
+            - "Chilumba"
+            - "Ruarwe"
+            - "Mbenji Island"
+            - "Magunga Reef"
+            - "Lumessi"
+        note: "Named-species locality records."
+      - source:
+          kind: "database"
+          title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+          url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+          accessed: "2026-10-13"
+        value:
+          localities:
+            - "Nakantenga Island"
+            - "Chimwalani Reef"
+        note: "Additional named-species localities; locality identity is not established by country alone."
+      - source:
+          kind: "database"
+          title: "Cichlid Room Companion: Protomelas spilonotus, public classification and breeding verification"
+          url: "https://cichlidae.com/species.php?id=WJIMM4X67ftNWaDVe34ITA"
+          accessed: "2026-10-13"
+        value:
+          localities:
+            - "Chimwalani Reef"
+        note: "Verification only of a locality already reported by AquaInfo."
+  temperatureC:
+    value:
+      min: 21
+      max: 29
+    confidence: "high"
+    rationale: "All four proposals were 21 to 29 C; retain the mandatory Lake Malawi seasonal envelope. Eccles's accessible abstract reports a 21 C inshore minimum and an approximately 27 C warm upper layer; Vollmer describes summer surface temperatures around 28 C and cooler winters. Branchu measured 25.4 C at the surface and 22.8 C at 240 m during one campaign. These narrower observations are not substituted for the full lake envelope. Ngochera's repository abstract gives no numerical upper temperature, and its full dissertation and the 1999 internal-mixing report were not read through the permitted OA route, so the prescribed 29 C endpoint is not independently reconfirmed here."
+    sources:
+      - kind: "literature"
+        title: "Branchu et al. (2010). Hydrochemistry of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. HESS Discussions 7, 4371-4409."
+        url: "https://doi.org/10.5194/hessd-7-4371-2010"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa, Vol. 1. FAO CIFA Technical Paper 18/1. Lake Malawi chemistry compiled from Jackson et al. (1963) and Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Eccles (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology and Oceanography 19, 730-742. Abstract only."
+        url: "https://doi.org/10.4319/lo.1974.19.5.0730"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Vollmer et al. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and Oceanography 50, 727-732."
+        url: "https://doi.org/10.4319/lo.2005.50.2.0727"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. University of Wisconsin-Milwaukee dissertation. Repository abstract only."
+        url: "https://minds.wisconsin.edu/handle/1793/91765"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Eccles (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology and Oceanography 19, 730-742. Abstract only."
+          url: "https://doi.org/10.4319/lo.1974.19.5.0730"
+          accessed: "2026-10-13"
+        value:
+          min: 21
+          max: 27
+        note: "Abstract: cool inshore minimum and approximately warm upper-layer temperature; not a whole-lake maximum."
+      - source:
+          kind: "literature"
+          title: "Vollmer et al. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and Oceanography 50, 727-732."
+          url: "https://doi.org/10.4319/lo.2005.50.2.0727"
+          accessed: "2026-10-13"
+        value:
+          min: 23.5
+          max: 28
+        note: "Approximate seasonal epilimnetic span; winter values can fall below 24 C."
+      - source:
+          kind: "literature"
+          title: "Branchu et al. (2010). Hydrochemistry of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. HESS Discussions 7, 4371-4409."
+          url: "https://doi.org/10.5194/hessd-7-4371-2010"
+          accessed: "2026-10-13"
+        value:
+          min: 22.8
+          max: 25.4
+        note: "Single sampled vertical profile down to 240 m; its deepest values are context, not the normal fish habitat."
+      - source:
+          kind: "literature"
+          title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa, Vol. 1. FAO CIFA Technical Paper 18/1. Lake Malawi chemistry compiled from Jackson et al. (1963) and Talling and Talling (1965)."
+          url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+          accessed: "2026-10-13"
+        value:
+          min: 23
+          max: 25
+        note: "Historical surface observations compiled from Jackson et al.; limited sampling."
+    tolerance:
+      value:
+        min: 21
+        max: 29
+      confidence: "low"
+      rationale: "Generator, checker-a, checker-b and checker-c all proposed 21 to 29 C, yielding unanimous verification with 4 of 4 votes. This envelope includes the natural seasonal range as required. AquaInfo gives 22 to 26 C, FishBase 24 to 26 C, OATA 23 to 27 C and Malawi.si 23 to 28 C; the approximately 26.7 C GCCA setpoint concerns uncertain Mara Rocks stock. These sources mainly support the interior. Constant multi-year exposure at 21 or 29 C is unproven, so confidence remains low and 24 to 26 C is the better-supported routine target."
+      sources:
+        - kind: "literature"
+          title: "Stigliano (2001, updated 2011). Protomelas spilonotus Mara Rocks. Greater Chicago Cichlid Association husbandry report."
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/83-protomelas-spilonotus-mara-rocks"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "OATA: How to look after African Malawi Cichlids, general care sheet"
+          url: "https://ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-freshwater-fish/how-to-look-after-african-malawi-cichlids/"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Eccles (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology and Oceanography 19, 730-742. Abstract only."
+          url: "https://doi.org/10.4319/lo.1974.19.5.0730"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Vollmer et al. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and Oceanography 50, 727-732."
+          url: "https://doi.org/10.4319/lo.2005.50.2.0727"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Branchu et al. (2010). Hydrochemistry of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. HESS Discussions 7, 4371-4409."
+          url: "https://doi.org/10.5194/hessd-7-4371-2010"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa, Vol. 1. FAO CIFA Technical Paper 18/1. Lake Malawi chemistry compiled from Jackson et al. (1963) and Talling and Talling (1965)."
+          url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+          url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "FishBase: Protomelas spilonotus species summary"
+          url: "https://www.fishbase.se/summary/Protomelas-spilonotus.html"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Malawi.si: Lake Malawi Aquarium Setup, general hobby guidance"
+          url: "https://www.malawi.si/slides/Lake%20Malawi%20Aquarium%20Setup.html"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Zierfische-Direkt: Protomelas Schwefelkopf, retailer care page"
+          url: "https://www.zierfische-direkt.de/protomelas-schwefelkopf-protomelas-haplochromis-spilonotus/"
+          accessed: "2026-10-13"
+      evidence:
+        - source:
+            kind: "literature"
+            title: "Stigliano (2001, updated 2011). Protomelas spilonotus Mara Rocks. Greater Chicago Cichlid Association husbandry report."
+            url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/83-protomelas-spilonotus-mara-rocks"
+            accessed: "2026-10-13"
+          value:
+            min: 26.7
+            max: 26.7
+          note: "Keeper's approximate setpoint, converted from 80 F; Mara Rocks identity is uncertain."
+        - source:
+            kind: "literature"
+            title: "OATA: How to look after African Malawi Cichlids, general care sheet"
+            url: "https://ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-freshwater-fish/how-to-look-after-african-malawi-cichlids/"
+            accessed: "2026-10-13"
+          value:
+            min: 23
+            max: 27
+          note: "General Malawi care sheet."
+        - source:
+            kind: "literature"
+            title: "Eccles (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology and Oceanography 19, 730-742. Abstract only."
+            url: "https://doi.org/10.4319/lo.1974.19.5.0730"
+            accessed: "2026-10-13"
+          value:
+            min: 21
+            max: 27
+          note: "Natural-habitat observation included within the envelope; not a long-term aquarium exposure test. Abstract: cool inshore minimum and approximately warm upper-layer temperature; not a whole-lake maximum."
+        - source:
+            kind: "literature"
+            title: "Vollmer et al. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and Oceanography 50, 727-732."
+            url: "https://doi.org/10.4319/lo.2005.50.2.0727"
+            accessed: "2026-10-13"
+          value:
+            min: 23.5
+            max: 28
+          note: "Natural-habitat observation included within the envelope; not a long-term aquarium exposure test. Approximate seasonal epilimnetic span; winter values can fall below 24 C."
+        - source:
+            kind: "literature"
+            title: "Branchu et al. (2010). Hydrochemistry of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. HESS Discussions 7, 4371-4409."
+            url: "https://doi.org/10.5194/hessd-7-4371-2010"
+            accessed: "2026-10-13"
+          value:
+            min: 22.8
+            max: 25.4
+          note: "Natural-habitat observation included within the envelope; not a long-term aquarium exposure test. Single sampled vertical profile down to 240 m; its deepest values are context, not the normal fish habitat."
+        - source:
+            kind: "literature"
+            title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa, Vol. 1. FAO CIFA Technical Paper 18/1. Lake Malawi chemistry compiled from Jackson et al. (1963) and Talling and Talling (1965)."
+            url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+            accessed: "2026-10-13"
+          value:
+            min: 23
+            max: 25
+          note: "Natural-habitat observation included within the envelope; not a long-term aquarium exposure test. Historical surface observations compiled from Jackson et al.; limited sampling."
+        - source:
+            kind: "database"
+            title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+            url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+            accessed: "2026-10-13"
+          value:
+            min: 22
+            max: 26
+          note: "Species care recommendation."
+        - source:
+            kind: "database"
+            title: "FishBase: Protomelas spilonotus species summary"
+            url: "https://www.fishbase.se/summary/Protomelas-spilonotus.html"
+            accessed: "2026-10-13"
+          value:
+            min: 24
+            max: 26
+          note: "temperature listed in the species summary"
+        - source:
+            kind: "website"
+            title: "Malawi.si: Lake Malawi Aquarium Setup, general hobby guidance"
+            url: "https://www.malawi.si/slides/Lake%20Malawi%20Aquarium%20Setup.html"
+            accessed: "2026-10-13"
+          value:
+            min: 23
+            max: 28
+          note: "General Malawi aquarium recommendation."
+        - source:
+            kind: "website"
+            title: "Riverpark Aquatics: Protomelas spilonotus Tanzania, retailer care page"
+            url: "https://riverparkaquatics.co.uk/protomelas-spilonotus-tanzania-5cm/"
+            accessed: "2026-10-13"
+          value:
+            min: 24
+            max: 28
+        - source:
+            kind: "website"
+            title: "Zierfische-Direkt: Protomelas Schwefelkopf, retailer care page"
+            url: "https://www.zierfische-direkt.de/protomelas-schwefelkopf-protomelas-haplochromis-spilonotus/"
+            accessed: "2026-10-13"
+          value:
+            min: 24
+            max: 27
+          note: "Species-specific aquarium recommendation."
+      verification:
+        method: "unanimous"
+        votes:
+          agree: 4
+          total: 4
+    verification:
+      method: "waterbody"
+      waterbody: "lake-malawi"
+  ph:
+    value:
+      min: 7.7
+      max: 8.6
+    confidence: "high"
+    rationale: "All four runs proposed 7.7 to 8.6, retained as the measured shallow-lake range. Jackson et al.'s surface measurements compiled by FAO supply these endpoints. Branchu discusses the wider whole-column pH span of 7.5 to 8.5, which includes deeper water and is not a reason to lower the prescribed shallow-habitat minimum."
+    sources:
+      - kind: "literature"
+        title: "Branchu et al. (2010). Hydrochemistry of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. HESS Discussions 7, 4371-4409."
+        url: "https://doi.org/10.5194/hessd-7-4371-2010"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa, Vol. 1. FAO CIFA Technical Paper 18/1. Lake Malawi chemistry compiled from Jackson et al. (1963) and Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Eccles (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology and Oceanography 19, 730-742. Abstract only."
+        url: "https://doi.org/10.4319/lo.1974.19.5.0730"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Vollmer et al. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and Oceanography 50, 727-732."
+        url: "https://doi.org/10.4319/lo.2005.50.2.0727"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. University of Wisconsin-Milwaukee dissertation. Repository abstract only."
+        url: "https://minds.wisconsin.edu/handle/1793/91765"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa, Vol. 1. FAO CIFA Technical Paper 18/1. Lake Malawi chemistry compiled from Jackson et al. (1963) and Talling and Talling (1965)."
+          url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+          accessed: "2026-10-13"
+        value:
+          min: 7.7
+          max: 8.6
+        note: "Surface-water compilation from Jackson et al. (1963)."
+      - source:
+          kind: "literature"
+          title: "Branchu et al. (2010). Hydrochemistry of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. HESS Discussions 7, 4371-4409."
+          url: "https://doi.org/10.5194/hessd-7-4371-2010"
+          accessed: "2026-10-13"
+        value:
+          min: 7.5
+          max: 8.5
+        note: "Discussion of lake-column pH, including deeper layers."
+    tolerance:
+      value:
+        min: 7.5
+        max: 8.7
+      confidence: "medium"
+      rationale: "The proposals were 7.5 to 8.7 from the generator, 7.4 to 8.6 from checker-a, 7.5 to 8.8 from checker-b and 7.5 to 8.7 from checker-c. They agree within the 0.3 pH threshold; the tally selects the median bounds of 7.5 and 8.7 with unanimous verification, 4 of 4, and medium confidence. AquaInfo gives 7.5 to 8.5 and Malawi.si 7.6 to 8.7. The adopted range is narrower than Zierfische-Direkt's 7.5 to 8.8 and excludes the 8.8 upper end also shown by Aquarist Atlas. Ron's 7.4 to 8.4 concerns Tanzania trade stock. This is a stable-water husbandry synthesis rather than a physiological limit study."
+      sources:
+        - kind: "literature"
+          title: "OATA: How to look after African Malawi Cichlids, general care sheet"
+          url: "https://ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-freshwater-fish/how-to-look-after-african-malawi-cichlids/"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa, Vol. 1. FAO CIFA Technical Paper 18/1. Lake Malawi chemistry compiled from Jackson et al. (1963) and Talling and Talling (1965)."
+          url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Branchu et al. (2010). Hydrochemistry of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. HESS Discussions 7, 4371-4409."
+          url: "https://doi.org/10.5194/hessd-7-4371-2010"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+          url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Aquarist Atlas: Protomelas spilonotus"
+          url: "https://www.aquaristatlas.com/species/protomelas-spilonotus/"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Malawi.si: Lake Malawi Aquarium Setup, general hobby guidance"
+          url: "https://www.malawi.si/slides/Lake%20Malawi%20Aquarium%20Setup.html"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Malawi-Guru: Einrichtungsfuehrer Malawisee Aquarien, general hobby guidance"
+          url: "https://malawi-guru.de/einrichtungsfuehrer-malawisee-aquarien-buntbarsche/"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Zierfische-Direkt: Protomelas Schwefelkopf, retailer care page"
+          url: "https://www.zierfische-direkt.de/protomelas-schwefelkopf-protomelas-haplochromis-spilonotus/"
+          accessed: "2026-10-13"
+      evidence:
+        - source:
+            kind: "literature"
+            title: "OATA: How to look after African Malawi Cichlids, general care sheet"
+            url: "https://ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-freshwater-fish/how-to-look-after-african-malawi-cichlids/"
+            accessed: "2026-10-13"
+          value:
+            min: 8
+            max: 8.6
+        - source:
+            kind: "literature"
+            title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa, Vol. 1. FAO CIFA Technical Paper 18/1. Lake Malawi chemistry compiled from Jackson et al. (1963) and Talling and Talling (1965)."
+            url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+            accessed: "2026-10-13"
+          value:
+            min: 7.7
+            max: 8.6
+          note: "Natural-habitat observation included within the envelope; not a long-term aquarium exposure test. Surface-water compilation from Jackson et al. (1963)."
+        - source:
+            kind: "literature"
+            title: "Branchu et al. (2010). Hydrochemistry of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. HESS Discussions 7, 4371-4409."
+            url: "https://doi.org/10.5194/hessd-7-4371-2010"
+            accessed: "2026-10-13"
+          value:
+            min: 7.5
+            max: 8.5
+          note: "Natural-habitat observation included within the envelope; not a long-term aquarium exposure test. Discussion of lake-column pH, including deeper layers."
+        - source:
+            kind: "database"
+            title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+            url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+            accessed: "2026-10-13"
+          value:
+            min: 7.5
+            max: 8.5
+          note: "Species aquarium recommendation."
+        - source:
+            kind: "database"
+            title: "Aquarist Atlas: Protomelas spilonotus"
+            url: "https://www.aquaristatlas.com/species/protomelas-spilonotus/"
+            accessed: "2026-10-13"
+          value:
+            min: 7.7
+            max: 8.8
+          note: "Aquarium target values, not its separate waterbody measurements."
+        - source:
+            kind: "website"
+            title: "Malawi.si: Lake Malawi Aquarium Setup, general hobby guidance"
+            url: "https://www.malawi.si/slides/Lake%20Malawi%20Aquarium%20Setup.html"
+            accessed: "2026-10-13"
+          value:
+            min: 7.6
+            max: 8.7
+          note: "General Malawi aquarium recommendation."
+        - source:
+            kind: "website"
+            title: "Malawi-Guru: Einrichtungsfuehrer Malawisee Aquarien, general hobby guidance"
+            url: "https://malawi-guru.de/einrichtungsfuehrer-malawisee-aquarien-buntbarsche/"
+            accessed: "2026-10-13"
+          value:
+            min: 7.5
+            max: 8.5
+          note: "General Malawi care limits."
+        - source:
+            kind: "website"
+            title: "Riverpark Aquatics: Protomelas spilonotus Tanzania, retailer care page"
+            url: "https://riverparkaquatics.co.uk/protomelas-spilonotus-tanzania-5cm/"
+            accessed: "2026-10-13"
+          value:
+            min: 7.8
+            max: 8.6
+        - source:
+            kind: "website"
+            title: "Ron's Cichlids: Spilonotus Tanzania AKA Insignis, Liuli trade listing"
+            url: "https://ronscichlids.com/products/insignis"
+            accessed: "2026-10-13"
+          value:
+            min: 7.4
+            max: 8.4
+        - source:
+            kind: "website"
+            title: "Zierfische-Direkt: Protomelas Schwefelkopf, retailer care page"
+            url: "https://www.zierfische-direkt.de/protomelas-schwefelkopf-protomelas-haplochromis-spilonotus/"
+            accessed: "2026-10-13"
+          value:
+            min: 7.5
+            max: 8.8
+      verification:
+        method: "unanimous"
+        votes:
+          agree: 4
+          total: 4
+    verification:
+      method: "waterbody"
+      waterbody: "lake-malawi"
+  ghDgh:
+    value:
+      min: 3
+      max: 5
+    confidence: "high"
+    rationale: "All four proposals were 3 to 5 dGH. Retain the rounded lake envelope: upper-50 m calcium and magnesium in Branchu yield approximately 4.2 to 4.6 dGH, and older ion measurements compiled by FAO span approximately 3.2 to 4.9 dGH. GH is calculated as calcium mg/L divided by 7.14 plus magnesium mg/L divided by 4.34. Harder aquarium recommendations do not describe the natural lake."
+    sources:
+      - kind: "literature"
+        title: "Branchu et al. (2010). Hydrochemistry of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. HESS Discussions 7, 4371-4409."
+        url: "https://doi.org/10.5194/hessd-7-4371-2010"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa, Vol. 1. FAO CIFA Technical Paper 18/1. Lake Malawi chemistry compiled from Jackson et al. (1963) and Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Eccles (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology and Oceanography 19, 730-742. Abstract only."
+        url: "https://doi.org/10.4319/lo.1974.19.5.0730"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Vollmer et al. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and Oceanography 50, 727-732."
+        url: "https://doi.org/10.4319/lo.2005.50.2.0727"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. University of Wisconsin-Milwaukee dissertation. Repository abstract only."
+        url: "https://minds.wisconsin.edu/handle/1793/91765"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Branchu et al. (2010). Hydrochemistry of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. HESS Discussions 7, 4371-4409."
+          url: "https://doi.org/10.5194/hessd-7-4371-2010"
+          accessed: "2026-10-13"
+        value:
+          min: 4.2
+          max: 4.6
+        note: "Calculated from upper-50 m calcium and magnesium, rounded to one decimal."
+      - source:
+          kind: "literature"
+          title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa, Vol. 1. FAO CIFA Technical Paper 18/1. Lake Malawi chemistry compiled from Jackson et al. (1963) and Talling and Talling (1965)."
+          url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+          accessed: "2026-10-13"
+        value:
+          min: 3.2
+          max: 4.9
+        note: "Calculated from the historical calcium and magnesium data compiled from Jackson et al. and Talling and Talling."
+    tolerance:
+      value:
+        min: 3
+        max: 16
+      confidence: "medium"
+      rationale: "The generator and tiebreaker-2 proposed 3 to 15 dGH; checker-a proposed 3 to 20; checker-b, checker-c and tiebreaker-1 proposed 3 to 16. Five of six agree within the 2 dGH threshold, and the tally's median of their upper bounds is 16, giving qualified-majority verification and medium confidence. The lower end contains natural 3 to 5 dGH. AquaInfo gives 10 to 16 in care prose, 12 to 16 in metadata and 10 to 15 for breeding; Einrichtungsbeispiele gives 5 to 15 and Malawi.si 3 to 15. The adopted envelope is narrower than the retailer's 7 to 20, Malawi-Guru's general 4 to 20 and OATA's general 12 to 18 recommendations. These wider upper limits are not adopted; the evidence does not show that 17 dGH is harmful."
+      sources:
+        - kind: "literature"
+          title: "OATA: How to look after African Malawi Cichlids, general care sheet"
+          url: "https://ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-freshwater-fish/how-to-look-after-african-malawi-cichlids/"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Branchu et al. (2010). Hydrochemistry of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. HESS Discussions 7, 4371-4409."
+          url: "https://doi.org/10.5194/hessd-7-4371-2010"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa, Vol. 1. FAO CIFA Technical Paper 18/1. Lake Malawi chemistry compiled from Jackson et al. (1963) and Talling and Talling (1965)."
+          url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+          url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Einrichtungsbeispiele: Protomelas spilonotus species care sheet"
+          url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/protomelas-spilonotus-slnk.html"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Malawi.si: Lake Malawi Aquarium Setup, general hobby guidance"
+          url: "https://www.malawi.si/slides/Lake%20Malawi%20Aquarium%20Setup.html"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Malawi-Guru: Einrichtungsfuehrer Malawisee Aquarien, general hobby guidance"
+          url: "https://malawi-guru.de/einrichtungsfuehrer-malawisee-aquarien-buntbarsche/"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Zierfische-Direkt: Protomelas Schwefelkopf, retailer care page"
+          url: "https://www.zierfische-direkt.de/protomelas-schwefelkopf-protomelas-haplochromis-spilonotus/"
+          accessed: "2026-10-13"
+      evidence:
+        - source:
+            kind: "literature"
+            title: "OATA: How to look after African Malawi Cichlids, general care sheet"
+            url: "https://ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-freshwater-fish/how-to-look-after-african-malawi-cichlids/"
+            accessed: "2026-10-13"
+          value:
+            min: 12
+            max: 18
+          note: "Generic hard-water recommendation; upper bound not adopted."
+        - source:
+            kind: "literature"
+            title: "Branchu et al. (2010). Hydrochemistry of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. HESS Discussions 7, 4371-4409."
+            url: "https://doi.org/10.5194/hessd-7-4371-2010"
+            accessed: "2026-10-13"
+          value:
+            min: 4.2
+            max: 4.6
+          note: "Natural-habitat observation included within the envelope; not a long-term aquarium exposure test. Calculated from upper-50 m calcium and magnesium, rounded to one decimal."
+        - source:
+            kind: "literature"
+            title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa, Vol. 1. FAO CIFA Technical Paper 18/1. Lake Malawi chemistry compiled from Jackson et al. (1963) and Talling and Talling (1965)."
+            url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+            accessed: "2026-10-13"
+          value:
+            min: 3.2
+            max: 4.9
+          note: "Natural-habitat observation included within the envelope; not a long-term aquarium exposure test. Calculated from the historical calcium and magnesium data compiled from Jackson et al. and Talling and Talling."
+        - source:
+            kind: "database"
+            title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+            url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+            accessed: "2026-10-13"
+          value:
+            min: 10
+            max: 16
+          note: "Species care prose; its structured table instead starts at 12 dGH."
+        - source:
+            kind: "database"
+            title: "Einrichtungsbeispiele: Protomelas spilonotus species care sheet"
+            url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/protomelas-spilonotus-slnk.html"
+            accessed: "2026-10-13"
+          value:
+            min: 5
+            max: 15
+          note: "Species-specific aquarium recommendation."
+        - source:
+            kind: "website"
+            title: "Malawi.si: Lake Malawi Aquarium Setup, general hobby guidance"
+            url: "https://www.malawi.si/slides/Lake%20Malawi%20Aquarium%20Setup.html"
+            accessed: "2026-10-13"
+          value:
+            min: 3
+            max: 15
+          note: "Explicit general Malawi aquarium tolerance."
+        - source:
+            kind: "website"
+            title: "Malawi-Guru: Einrichtungsfuehrer Malawisee Aquarien, general hobby guidance"
+            url: "https://malawi-guru.de/einrichtungsfuehrer-malawisee-aquarien-buntbarsche/"
+            accessed: "2026-10-13"
+          value:
+            min: 4
+            max: 20
+          note: "Broader general Malawi recommendation; upper extreme not adopted."
+        - source:
+            kind: "website"
+            title: "Riverpark Aquatics: Protomelas spilonotus Tanzania, retailer care page"
+            url: "https://riverparkaquatics.co.uk/protomelas-spilonotus-tanzania-5cm/"
+            accessed: "2026-10-13"
+          value:
+            min: 10
+            max: 20
+        - source:
+            kind: "website"
+            title: "Zierfische-Direkt: Protomelas Schwefelkopf, retailer care page"
+            url: "https://www.zierfische-direkt.de/protomelas-schwefelkopf-protomelas-haplochromis-spilonotus/"
+            accessed: "2026-10-13"
+          value:
+            min: 7
+            max: 20
+          note: "Broader commercial care range, weighed below the specialist regional guidance."
+      verification:
+        method: "qualified-majority"
+        votes:
+          agree: 5
+          total: 6
+    verification:
+      method: "waterbody"
+      waterbody: "lake-malawi"
+  khDkh:
+    value:
+      min: 5
+      max: 8
+    confidence: "high"
+    rationale: "All four proposals were 5 to 8 dKH. Retain this rounded natural alkalinity envelope without a verification object. Branchu's 2.3339 to 2.4613 meq/L converts to about 6.5 to 6.9 dKH; Jackson et al.'s 2.00 to 2.59 meq/L compiled by FAO converts to 5.6 to 7.3 dKH. Sodium-associated bicarbonate explains how alkalinity expressed as KH can exceed calcium-magnesium GH."
+    sources:
+      - kind: "literature"
+        title: "Branchu et al. (2010). Hydrochemistry of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. HESS Discussions 7, 4371-4409."
+        url: "https://doi.org/10.5194/hessd-7-4371-2010"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa, Vol. 1. FAO CIFA Technical Paper 18/1. Lake Malawi chemistry compiled from Jackson et al. (1963) and Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Eccles (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology and Oceanography 19, 730-742. Abstract only."
+        url: "https://doi.org/10.4319/lo.1974.19.5.0730"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Vollmer et al. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and Oceanography 50, 727-732."
+        url: "https://doi.org/10.4319/lo.2005.50.2.0727"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. University of Wisconsin-Milwaukee dissertation. Repository abstract only."
+        url: "https://minds.wisconsin.edu/handle/1793/91765"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Branchu et al. (2010). Hydrochemistry of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. HESS Discussions 7, 4371-4409."
+          url: "https://doi.org/10.5194/hessd-7-4371-2010"
+          accessed: "2026-10-13"
+        value:
+          min: 6.5
+          max: 6.9
+        note: "Alkalinity multiplied by 2.8; sampled lake water, not aquarium tolerance."
+      - source:
+          kind: "literature"
+          title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa, Vol. 1. FAO CIFA Technical Paper 18/1. Lake Malawi chemistry compiled from Jackson et al. (1963) and Talling and Talling (1965)."
+          url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+          accessed: "2026-10-13"
+        value:
+          min: 5.6
+          max: 7.3
+        note: "Jackson et al. alkalinity multiplied by 2.8; historical lake observations."
+    tolerance:
+      value:
+        min: 5
+        max: 15
+      confidence: "low"
+      rationale: "The generator and checker-c proposed 5 to 12 dKH; checker-a, checker-b, tiebreaker-1 and tiebreaker-2 proposed 5 to 15. The latter receives qualified-majority verification, 4 of 6, with low confidence. Zierfische-Direkt explicitly supplies 5 to 15 and OATA supplies 10 to 15 for Malawi cichlids generally; the natural lake observations support the soft end, not a captive upper limit. Malawi.si and Malawi Cichlids instead recommend 6 to 12. The selected 5 to 15 is narrower than Malawi-Guru's general 6 to 20 allowance and includes the mandatory natural 5 to 8 range. Only one species-labelled numerical KH page was found, and it is a retailer website; independent aquarium evidence is regional rather than species-specific, without a multi-year trial. Ron's hard-water wording does not supply a numerical KH range and its inferred 5 to 15 entry is excluded."
+      sources:
+        - kind: "literature"
+          title: "OATA: How to look after African Malawi Cichlids, general care sheet"
+          url: "https://ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-freshwater-fish/how-to-look-after-african-malawi-cichlids/"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Branchu et al. (2010). Hydrochemistry of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. HESS Discussions 7, 4371-4409."
+          url: "https://doi.org/10.5194/hessd-7-4371-2010"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa, Vol. 1. FAO CIFA Technical Paper 18/1. Lake Malawi chemistry compiled from Jackson et al. (1963) and Talling and Talling (1965)."
+          url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+          url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Malawi Cichlids: Lake Malawi aquarium water targets"
+          url: "https://www.malawicichlids.co.uk/the-african-great-lakes/lake-malawi/"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Zierfische-Direkt: Protomelas Schwefelkopf, retailer care page"
+          url: "https://www.zierfische-direkt.de/protomelas-schwefelkopf-protomelas-haplochromis-spilonotus/"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Malawi.si: Lake Malawi Aquarium Setup, general hobby guidance"
+          url: "https://www.malawi.si/slides/Lake%20Malawi%20Aquarium%20Setup.html"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Malawi-Guru: Einrichtungsfuehrer Malawisee Aquarien, general hobby guidance"
+          url: "https://malawi-guru.de/einrichtungsfuehrer-malawisee-aquarien-buntbarsche/"
+          accessed: "2026-10-13"
+      evidence:
+        - source:
+            kind: "literature"
+            title: "OATA: How to look after African Malawi Cichlids, general care sheet"
+            url: "https://ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-freshwater-fish/how-to-look-after-african-malawi-cichlids/"
+            accessed: "2026-10-13"
+          value:
+            min: 10
+            max: 15
+          note: "General Malawi care recommendation, not natural lake chemistry."
+        - source:
+            kind: "literature"
+            title: "Branchu et al. (2010). Hydrochemistry of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. HESS Discussions 7, 4371-4409."
+            url: "https://doi.org/10.5194/hessd-7-4371-2010"
+            accessed: "2026-10-13"
+          value:
+            min: 6.5
+            max: 6.9
+          note: "Natural-habitat observation included within the envelope; not a long-term aquarium exposure test. Alkalinity multiplied by 2.8; sampled lake water, not aquarium tolerance."
+        - source:
+            kind: "literature"
+            title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa, Vol. 1. FAO CIFA Technical Paper 18/1. Lake Malawi chemistry compiled from Jackson et al. (1963) and Talling and Talling (1965)."
+            url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+            accessed: "2026-10-13"
+          value:
+            min: 5.6
+            max: 7.3
+          note: "Natural-habitat observation included within the envelope; not a long-term aquarium exposure test. Jackson et al. alkalinity multiplied by 2.8; historical lake observations."
+        - source:
+            kind: "database"
+            title: "Malawi Cichlids: Lake Malawi aquarium water targets"
+            url: "https://www.malawicichlids.co.uk/the-african-great-lakes/lake-malawi/"
+            accessed: "2026-10-13"
+          value:
+            min: 6
+            max: 12
+          note: "Preferred aquarium target rather than a demonstrated maximum tolerance."
+        - source:
+            kind: "website"
+            title: "Malawi.si: Lake Malawi Aquarium Setup, general hobby guidance"
+            url: "https://www.malawi.si/slides/Lake%20Malawi%20Aquarium%20Setup.html"
+            accessed: "2026-10-13"
+          value:
+            min: 6
+            max: 12
+          note: "General Malawi aquarium recommendation, not a species trial."
+        - source:
+            kind: "website"
+            title: "Malawi-Guru: Einrichtungsfuehrer Malawisee Aquarien, general hobby guidance"
+            url: "https://malawi-guru.de/einrichtungsfuehrer-malawisee-aquarien-buntbarsche/"
+            accessed: "2026-10-13"
+          value:
+            min: 6
+            max: 20
+          note: "General Malawi aquarium limits; unusually high upper end excluded."
+        - source:
+            kind: "website"
+            title: "Zierfische-Direkt: Protomelas Schwefelkopf, retailer care page"
+            url: "https://www.zierfische-direkt.de/protomelas-schwefelkopf-protomelas-haplochromis-spilonotus/"
+            accessed: "2026-10-13"
+          value:
+            min: 5
+            max: 15
+          note: "Species-specific commercial husbandry range."
+      verification:
+        method: "qualified-majority"
+        votes:
+          agree: 4
+          total: 6
+  maxSizeCm:
+    value:
+      male: 25
+      female: 19
+    confidence: "low"
+    rationale: "The generator, checker-b and checker-c proposed 25 cm males and 19 cm females; checker-a proposed 20 and 16. Retain AquaInfo's explicit aquarium sex-specific maxima, which are more appropriate to the rubric than unsexed wild or checklist lengths. Malawi.si gives typical adults of 20 and 16, FishBase 16.7 cm TL unsexed, and Malawi Mayhem an unsexed 17.8 to 22.9 cm range. Stigliano reports males exceeding 30.5 cm from uncertain Mara Rocks stock. The disagreement and sparse independent sex-specific data prevent confidence above low; these are planning maxima, not record lengths."
+    sources:
+      - kind: "literature"
+        title: "Stigliano (2001, updated 2011). Protomelas spilonotus Mara Rocks. Greater Chicago Cichlid Association husbandry report."
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/83-protomelas-spilonotus-mara-rocks"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+        url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Protomelas spilonotus species summary"
+        url: "https://www.fishbase.se/summary/Protomelas-spilonotus.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Bandhauer and Hoernlimann: Protomelas spilonotus, Malawi-Guru species directory"
+        url: "https://malawi-guru.de/protomelas-spilonotus-buntbarsch-verzeichnis/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Malawi Mayhem species profile of Protomelas spilonotus"
+        url: "https://www.malawimayhem.com/protomelas-spilonotus"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Malawi.si: Protomelas spilonotus 'Nakantenga Island'"
+        url: "https://malawi.si/MalawiByLocations/Nakantenga%20Island/slides/Protomelas%20spilonotus%20%27Nakantenga%20Island%27.html"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Zierfische-Direkt: Protomelas Schwefelkopf, retailer care page"
+        url: "https://www.zierfische-direkt.de/protomelas-schwefelkopf-protomelas-haplochromis-spilonotus/"
+        accessed: "2026-10-13"
+      - kind: "archive"
+        title: "cichlids.com forum thread 22229"
+        url: "https://www.cichlids.com/disc/read.php?2,22229"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+          url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+          accessed: "2026-10-13"
+        value:
+          male: 25
+          female: 19
+        note: "Explicit captive size figures; other sections of the same page give smaller sizes."
+      - source:
+          kind: "database"
+          title: "Malawi.si: Protomelas spilonotus 'Nakantenga Island'"
+          url: "https://malawi.si/MalawiByLocations/Nakantenga%20Island/slides/Protomelas%20spilonotus%20%27Nakantenga%20Island%27.html"
+          accessed: "2026-10-13"
+        value:
+          male: 20
+          female: 16
+        note: "Typical adult size, not explicitly a captive maximum."
+      - source:
+          kind: "database"
+          title: "FishBase: Protomelas spilonotus species summary"
+          url: "https://www.fishbase.se/summary/Protomelas-spilonotus.html"
+          accessed: "2026-10-13"
+        value:
+          male: 16.7
+        note: "Male or unsexed total length; no female maximum supplied."
+      - source:
+          kind: "literature"
+          title: "Stigliano (2001, updated 2011). Protomelas spilonotus Mara Rocks. Greater Chicago Cichlid Association husbandry report."
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/83-protomelas-spilonotus-mara-rocks"
+          accessed: "2026-10-13"
+        value:
+          male: 30.5
+        note: "Approximate lower bound of a report exceeding 12 inches; stock identity uncertain."
+  predation:
+    value: 0
+    confidence: "medium"
+    rationale: "All four full runs proposed level 0, retained with unanimous verification, 4 of 4, and medium confidence. FishBase's food records and the Malawi specialist databases describe insects, plankton and other invertebrates without regular fish feeding. The mapping permits incidental fry loss and does not make small fish safe from territorial injury. Stigliano's uncertain Mara Rocks stock refused offered live fish, but that account is supporting evidence rather than an identification-secure predation trial."
+    sources:
+      - kind: "literature"
+        title: "Stigliano (2001, updated 2011). Protomelas spilonotus Mara Rocks. Greater Chicago Cichlid Association husbandry report."
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/83-protomelas-spilonotus-mara-rocks"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Protomelas spilonotus species summary"
+        url: "https://www.fishbase.se/summary/Protomelas-spilonotus.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Bandhauer and Hoernlimann: Protomelas spilonotus, Malawi-Guru species directory"
+        url: "https://malawi-guru.de/protomelas-spilonotus-buntbarsch-verzeichnis/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+        url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Malawi Mayhem species profile of Protomelas spilonotus"
+        url: "https://www.malawimayhem.com/protomelas-spilonotus"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: food items reported for Protomelas spilonotus"
+        url: "https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=2318&genus=Protomelas&species=spilonotus"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Malawi.si: Protomelas spilonotus 'Nakantenga Island'"
+        url: "https://malawi.si/MalawiByLocations/Nakantenga%20Island/slides/Protomelas%20spilonotus%20%27Nakantenga%20Island%27.html"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Stigliano (2001, updated 2011). Protomelas spilonotus Mara Rocks. Greater Chicago Cichlid Association husbandry report."
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/83-protomelas-spilonotus-mara-rocks"
+          accessed: "2026-10-13"
+        value: 0
+        note: "Keeper observed refusal to consume offered fish; sometimes small fish were killed."
+      - source:
+          kind: "database"
+          title: "FishBase: Protomelas spilonotus species summary"
+          url: "https://www.fishbase.se/summary/Protomelas-spilonotus.html"
+          accessed: "2026-10-13"
+        value: 0
+        note: "Rubric mapping of reported invertebrate and insect diet; not a direct fry-feeding trial."
+      - source:
+          kind: "database"
+          title: "Bandhauer and Hoernlimann: Protomelas spilonotus, Malawi-Guru species directory"
+          url: "https://malawi-guru.de/protomelas-spilonotus-buntbarsch-verzeichnis/"
+          accessed: "2026-10-13"
+        value: 0
+        note: "Rubric mapping of insect and plankton feeding, with no regular fish hunting described."
+      - source:
+          kind: "database"
+          title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+          url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+          accessed: "2026-10-13"
+        value: 0
+        note: "Natural prey described as invertebrates and fallen insects."
+      - source:
+          kind: "database"
+          title: "Malawi Mayhem species profile of Protomelas spilonotus"
+          url: "https://www.malawimayhem.com/protomelas-spilonotus"
+          accessed: "2026-10-13"
+        value: 0
+        note: "invertebrates from the water column or surface"
+      - source:
+          kind: "database"
+          title: "FishBase: food items reported for Protomelas spilonotus"
+          url: "https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=2318&genus=Protomelas&species=spilonotus"
+          accessed: "2026-10-13"
+        value: 0
+        note: "Rubric inference from the listed invertebrate prey; absence of a fish item is not a direct aquarium predation trial."
+      - source:
+          kind: "database"
+          title: "Malawi.si: Protomelas spilonotus 'Nakantenga Island'"
+          url: "https://malawi.si/MalawiByLocations/Nakantenga%20Island/slides/Protomelas%20spilonotus%20%27Nakantenga%20Island%27.html"
+          accessed: "2026-10-13"
+        value: 0
+        note: "Species-specific prey account, with no regular fish feeding stated."
+    verification:
+      method: "unanimous"
+      votes:
+        agree: 4
+        total: 4
+  diet:
+    value:
+      type: "invertivore"
+      bloatSensitive: false
+      foods:
+        - "complete cichlid pellets"
+        - "Daphnia"
+        - "Cyclops"
+        - "Artemia"
+        - "mysis"
+    confidence: "medium"
+    rationale: "All four full runs proposed invertivore with bloatSensitive false, yielding unanimous verification, 4 of 4, and medium confidence. FishBase and the species databases support animal-invertebrate feeding. The tally retains the generator's food list of complete cichlid pellets, Daphnia, Cyclops, Artemia and mysis; checker-a emphasized insects, zooplankton, mysis, brine shrimp and pellets; checker-b added small aquatic invertebrates and carnivore pellets; checker-c listed small crustaceans, aquatic invertebrates, insects and pellets. These are alternative examples rather than opposing diet types. Suitability of protein-containing prey supports the false sensitivity flag, but no controlled bloat-susceptibility test was found. P. similis's plant diet and retailer descriptions of Tanzania stock do not replace this species' ecology."
+    sources:
+      - kind: "database"
+        title: "FishBase: Protomelas spilonotus species summary"
+        url: "https://www.fishbase.se/summary/Protomelas-spilonotus.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Bandhauer and Hoernlimann: Protomelas spilonotus, Malawi-Guru species directory"
+        url: "https://malawi-guru.de/protomelas-spilonotus-buntbarsch-verzeichnis/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+        url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Malawi Mayhem species profile of Protomelas spilonotus"
+        url: "https://www.malawimayhem.com/protomelas-spilonotus"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: food items reported for Protomelas spilonotus"
+        url: "https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=2318&genus=Protomelas&species=spilonotus"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: ecology of Protomelas spilonotus"
+        url: "https://www.fishbase.se/Ecology/FishEcologySummary.php?StockCode=2318&GenusName=Protomelas&SpeciesName=spilonotus"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsallskapet: Protomelas sp. 'spilonotus tanzania'"
+        url: "https://www.ciklid.org/artregister/art.php?ID=1588"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Zierfische-Direkt: Protomelas Schwefelkopf, retailer care page"
+        url: "https://www.zierfische-direkt.de/protomelas-schwefelkopf-protomelas-haplochromis-spilonotus/"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "FishBase: Protomelas spilonotus species summary"
+          url: "https://www.fishbase.se/summary/Protomelas-spilonotus.html"
+          accessed: "2026-10-13"
+        value:
+          type: "invertivore"
+        note: "Invertebrates from the water and insects arriving at the surface."
+      - source:
+          kind: "database"
+          title: "Bandhauer and Hoernlimann: Protomelas spilonotus, Malawi-Guru species directory"
+          url: "https://malawi-guru.de/protomelas-spilonotus-buntbarsch-verzeichnis/"
+          accessed: "2026-10-13"
+        value:
+          type: "invertivore"
+        note: "Insects and other animal prey, with seasonal plankton."
+      - source:
+          kind: "database"
+          title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+          url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+          accessed: "2026-10-13"
+        value:
+          type: "invertivore"
+          foods:
+            - "complete cichlid pellets"
+            - "Cyclops"
+            - "Artemia"
+            - "mysis"
+        note: "Species care account recommends prepared food and small animal foods; the bloat flag is an inference."
+      - source:
+          kind: "database"
+          title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+          url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+          accessed: "2026-10-13"
+        value:
+          type: "invertivore"
+      - source:
+          kind: "database"
+          title: "Malawi Mayhem species profile of Protomelas spilonotus"
+          url: "https://www.malawimayhem.com/protomelas-spilonotus"
+          accessed: "2026-10-13"
+        value:
+          type: "invertivore"
+      - source:
+          kind: "database"
+          title: "FishBase: food items reported for Protomelas spilonotus"
+          url: "https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=2318&genus=Protomelas&species=spilonotus"
+          accessed: "2026-10-13"
+        value:
+          type: "invertivore"
+        note: "Three food records: insects, other benthic invertebrates and planktonic invertebrates."
+      - source:
+          kind: "database"
+          title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+          url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+          accessed: "2026-10-13"
+        value:
+          type: "invertivore"
+          bloatSensitive: false
+        note: "Animal-based aquarium feeding recommended; the flag is inferred from suitability of protein foods."
+      - source:
+          kind: "database"
+          title: "Nordiska Ciklidsallskapet: Protomelas sp. 'spilonotus tanzania'"
+          url: "https://www.ciklid.org/artregister/art.php?ID=1588"
+          accessed: "2026-10-13"
+        value:
+          type: "invertivore"
+        note: "Tanzania relative eats insects and other small animals; supporting comparison only."
+      - source:
+          kind: "website"
+          title: "Zierfische-Direkt: Protomelas Schwefelkopf, retailer care page"
+          url: "https://www.zierfische-direkt.de/protomelas-schwefelkopf-protomelas-haplochromis-spilonotus/"
+          accessed: "2026-10-13"
+        value:
+          type: "invertivore"
+          bloatSensitive: false
+        note: "Crustacean-based feeding recommended; no special herbivore-type sensitivity described."
+    verification:
+      method: "unanimous"
+      votes:
+        agree: 4
+        total: 4
+  aggressionConspecific:
+    value: 3
+    confidence: "medium"
+    rationale: "Generator, checker-b and checker-c proposed level 3; checker-a proposed 2. Strong within-species pressure and much larger multi-male housing in Malawi-Guru, with female harassment in Stigliano's keeper account, justify persistent chasing rather than only a stable hierarchy. AquaInfo's comparatively mild injury account supports the lower interpretation but does not exclude harassment. This level assumes one male and three females in the recommended aquarium; the Mara Rocks report has uncertain taxon identity."
+    sources:
+      - kind: "literature"
+        title: "Stigliano (2001, updated 2011). Protomelas spilonotus Mara Rocks. Greater Chicago Cichlid Association husbandry report."
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/83-protomelas-spilonotus-mara-rocks"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Bandhauer and Hoernlimann: Protomelas spilonotus, Malawi-Guru species directory"
+        url: "https://malawi-guru.de/protomelas-spilonotus-buntbarsch-verzeichnis/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+        url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Malawi.si: Protomelas spilonotus 'Nakantenga Island'"
+        url: "https://malawi.si/MalawiByLocations/Nakantenga%20Island/slides/Protomelas%20spilonotus%20%27Nakantenga%20Island%27.html"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Ron's Cichlids: Spilonotus Tanzania AKA Insignis, Liuli trade listing"
+        url: "https://ronscichlids.com/products/insignis"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Riverpark Aquatics: Protomelas spilonotus Tanzania, retailer care page"
+        url: "https://riverparkaquatics.co.uk/protomelas-spilonotus-tanzania-5cm/"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Stigliano (2001, updated 2011). Protomelas spilonotus Mara Rocks. Greater Chicago Cichlid Association husbandry report."
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/83-protomelas-spilonotus-mara-rocks"
+          accessed: "2026-10-13"
+        value: 3
+        note: "Females were heavily harassed in 284 L; the colony settled in about 473 L."
+      - source:
+          kind: "database"
+          title: "Bandhauer and Hoernlimann: Protomelas spilonotus, Malawi-Guru species directory"
+          url: "https://malawi-guru.de/protomelas-spilonotus-buntbarsch-verzeichnis/"
+          accessed: "2026-10-13"
+        value: 3
+        note: "Strong aggression within the species and at least 2000 L advised for multiple males."
+      - source:
+          kind: "database"
+          title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+          url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+          accessed: "2026-10-13"
+        value: 3
+        note: "quite aggressive within the species"
+      - source:
+          kind: "database"
+          title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+          url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+          accessed: "2026-10-13"
+        value: 2
+        note: "Narrative suggests relatively limited injury in a sufficiently large tank."
+      - source:
+          kind: "database"
+          title: "Malawi.si: Protomelas spilonotus 'Nakantenga Island'"
+          url: "https://malawi.si/MalawiByLocations/Nakantenga%20Island/slides/Protomelas%20spilonotus%20%27Nakantenga%20Island%27.html"
+          accessed: "2026-10-13"
+        value: 3
+        note: "One adult male per aquarium recommendation, mapped to the rubric."
+      - source:
+          kind: "website"
+          title: "Ron's Cichlids: Spilonotus Tanzania AKA Insignis, Liuli trade listing"
+          url: "https://ronscichlids.com/products/insignis"
+          accessed: "2026-10-13"
+        value: 2
+        note: "mildly aggressive"
+  aggressionHeterospecific:
+    value: 2
+    confidence: "medium"
+    rationale: "All four full runs proposed level 2. Territorial displacement in breeding areas is compatible with relatively restrained behaviour toward robust adults outside breeding. The sources do not establish routine injurious attacks throughout a suitable aquarium. Small or timid fish can still be harmed."
+    sources:
+      - kind: "literature"
+        title: "Stigliano (2001, updated 2011). Protomelas spilonotus Mara Rocks. Greater Chicago Cichlid Association husbandry report."
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/83-protomelas-spilonotus-mara-rocks"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Bandhauer and Hoernlimann: Protomelas spilonotus, Malawi-Guru species directory"
+        url: "https://malawi-guru.de/protomelas-spilonotus-buntbarsch-verzeichnis/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+        url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Malawi.si: Protomelas spilonotus 'Nakantenga Island'"
+        url: "https://malawi.si/MalawiByLocations/Nakantenga%20Island/slides/Protomelas%20spilonotus%20%27Nakantenga%20Island%27.html"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Ron's Cichlids: Spilonotus Tanzania AKA Insignis, Liuli trade listing"
+        url: "https://ronscichlids.com/products/insignis"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Riverpark Aquatics: Protomelas spilonotus Tanzania, retailer care page"
+        url: "https://riverparkaquatics.co.uk/protomelas-spilonotus-tanzania-5cm/"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Stigliano (2001, updated 2011). Protomelas spilonotus Mara Rocks. Greater Chicago Cichlid Association husbandry report."
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/83-protomelas-spilonotus-mara-rocks"
+          accessed: "2026-10-13"
+        value: 2
+        note: "Generally mild fish with occasional lethal attacks on much smaller fish."
+      - source:
+          kind: "database"
+          title: "Bandhauer and Hoernlimann: Protomelas spilonotus, Malawi-Guru species directory"
+          url: "https://malawi-guru.de/protomelas-spilonotus-buntbarsch-verzeichnis/"
+          accessed: "2026-10-13"
+        value: 2
+        note: "Moderate aggression toward other species and mixed large-hap communities recommended."
+      - source:
+          kind: "database"
+          title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+          url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+          accessed: "2026-10-13"
+        value: 2
+        note: "Territorial but generally restrained toward other species; level mapped to rubric."
+      - source:
+          kind: "database"
+          title: "Malawi.si: Protomelas spilonotus 'Nakantenga Island'"
+          url: "https://malawi.si/MalawiByLocations/Nakantenga%20Island/slides/Protomelas%20spilonotus%20%27Nakantenga%20Island%27.html"
+          accessed: "2026-10-13"
+        value: 2
+        note: "Territorial males with stronger responses to similar-looking species."
+      - source:
+          kind: "website"
+          title: "Ron's Cichlids: Spilonotus Tanzania AKA Insignis, Liuli trade listing"
+          url: "https://ronscichlids.com/products/insignis"
+          accessed: "2026-10-13"
+        value: 2
+  territory:
+    value:
+      size: "small"
+      breedingOnly: true
+    confidence: "low"
+    rationale: "The generator proposed large with breedingOnly true; checker-a and checker-b proposed small with breedingOnly true; checker-c proposed small with breedingOnly false. AquaInfo explicitly describes compact male territories, outweighing the generator's inferred large footprint. Malawi-Guru describes defended midwater courtship areas during spawning, supporting the breedingOnly flag over checker-c's inferred persistence. No territory diameter or controlled observation outside breeding was found. Small describes the defended site, not the required swimming space."
+    sources:
+      - kind: "database"
+        title: "Bandhauer and Hoernlimann: Protomelas spilonotus, Malawi-Guru species directory"
+        url: "https://malawi-guru.de/protomelas-spilonotus-buntbarsch-verzeichnis/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+        url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Malawi.si: Protomelas spilonotus 'Nakantenga Island'"
+        url: "https://malawi.si/MalawiByLocations/Nakantenga%20Island/slides/Protomelas%20spilonotus%20%27Nakantenga%20Island%27.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsallskapet: Protomelas sp. 'spilonotus tanzania'"
+        url: "https://www.ciklid.org/artregister/art.php?ID=1588"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Riverpark Aquatics: Protomelas spilonotus Tanzania, retailer care page"
+        url: "https://riverparkaquatics.co.uk/protomelas-spilonotus-tanzania-5cm/"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Bandhauer and Hoernlimann: Protomelas spilonotus, Malawi-Guru species directory"
+          url: "https://malawi-guru.de/protomelas-spilonotus-buntbarsch-verzeichnis/"
+          accessed: "2026-10-13"
+        value:
+          size: "large"
+          breedingOnly: true
+        note: "Large is an inferred rubric mapping, not a reported measurement."
+      - source:
+          kind: "database"
+          title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+          url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+          accessed: "2026-10-13"
+        value:
+          size: "small"
+          breedingOnly: true
+        note: "Small male territories, most marked during reproduction."
+      - source:
+          kind: "database"
+          title: "Bandhauer and Hoernlimann: Protomelas spilonotus, Malawi-Guru species directory"
+          url: "https://malawi-guru.de/protomelas-spilonotus-buntbarsch-verzeichnis/"
+          accessed: "2026-10-13"
+        value:
+          breedingOnly: true
+        note: "Midwater territories with nearby spawning caves; no measured territory size."
+      - source:
+          kind: "database"
+          title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+          url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+          accessed: "2026-10-13"
+        value:
+          size: "small"
+          breedingOnly: false
+        note: "Size stated qualitatively; persistence outside spawning is an inference."
+      - source:
+          kind: "database"
+          title: "Nordiska Ciklidsallskapet: Protomelas sp. 'spilonotus tanzania'"
+          url: "https://www.ciklid.org/artregister/art.php?ID=1588"
+          accessed: "2026-10-13"
+        value:
+          size: "large"
+          breedingOnly: false
+        note: "Rubric interpretation of an open-water territory for the Tanzania relative; dimensions unmeasured."
+  habitatZones:
+    value:
+      - "rock"
+      - "openWater"
+    confidence: "high"
+    rationale: "Generator, checker-b and checker-c proposed rock and openWater; checker-a additionally proposed sand. FishBase and Malawi.si place foraging fish in midwater beside clean rock faces and spawning sites among rocks. Sand is useful aquarium substrate but does not need to be added as a primary wild habitat requirement. FishBase's usually shallower-than-5 m account is preferred over transferring a 5 to 15 m complex-wide depth statement to all stocks."
+    sources:
+      - kind: "database"
+        title: "FishBase: Protomelas spilonotus species summary"
+        url: "https://www.fishbase.se/summary/Protomelas-spilonotus.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Bandhauer and Hoernlimann: Protomelas spilonotus, Malawi-Guru species directory"
+        url: "https://malawi-guru.de/protomelas-spilonotus-buntbarsch-verzeichnis/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+        url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Malawi Mayhem species profile of Protomelas spilonotus"
+        url: "https://www.malawimayhem.com/protomelas-spilonotus"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: ecology of Protomelas spilonotus"
+        url: "https://www.fishbase.se/Ecology/FishEcologySummary.php?StockCode=2318&GenusName=Protomelas&SpeciesName=spilonotus"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Malawi.si: Protomelas spilonotus 'Nakantenga Island'"
+        url: "https://malawi.si/MalawiByLocations/Nakantenga%20Island/slides/Protomelas%20spilonotus%20%27Nakantenga%20Island%27.html"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "FishBase: Protomelas spilonotus species summary"
+          url: "https://www.fishbase.se/summary/Protomelas-spilonotus.html"
+          accessed: "2026-10-13"
+        value:
+          - "rock"
+          - "openWater"
+      - source:
+          kind: "database"
+          title: "Bandhauer and Hoernlimann: Protomelas spilonotus, Malawi-Guru species directory"
+          url: "https://malawi-guru.de/protomelas-spilonotus-buntbarsch-verzeichnis/"
+          accessed: "2026-10-13"
+        value:
+          - "rock"
+          - "openWater"
+        note: "Feeding above rock and reproduction associated with rocky shelters; the 5 to 15 m depth statement differs from FishBase."
+      - source:
+          kind: "database"
+          title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+          url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+          accessed: "2026-10-13"
+        value:
+          - "rock"
+          - "sand"
+          - "openWater"
+      - source:
+          kind: "database"
+          title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+          url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+          accessed: "2026-10-13"
+        value:
+          - "rock"
+          - "openWater"
+  social:
+    value:
+      structure: "harem"
+      ratio: 3
+    confidence: "high"
+    rationale: "All four full runs proposed one male with three females. AquaInfo, Malawi-Guru and Einrichtungsbeispiele support that captive arrangement independently; some permit four females. It spreads male attention and does not describe an exclusive lifelong mating system. CRC verifies polygynandrous mating without supplying an aquarium ratio. Multiple males need substantially larger housing."
+    sources:
+      - kind: "literature"
+        title: "Stigliano (2001, updated 2011). Protomelas spilonotus Mara Rocks. Greater Chicago Cichlid Association husbandry report."
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/83-protomelas-spilonotus-mara-rocks"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Bandhauer and Hoernlimann: Protomelas spilonotus, Malawi-Guru species directory"
+        url: "https://malawi-guru.de/protomelas-spilonotus-buntbarsch-verzeichnis/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+        url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Cichlid Room Companion: Protomelas spilonotus, public classification and breeding verification"
+        url: "https://cichlidae.com/species.php?id=WJIMM4X67ftNWaDVe34ITA"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Malawi.si: Protomelas spilonotus 'Nakantenga Island'"
+        url: "https://malawi.si/MalawiByLocations/Nakantenga%20Island/slides/Protomelas%20spilonotus%20%27Nakantenga%20Island%27.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Einrichtungsbeispiele: Protomelas spilonotus species care sheet"
+        url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/protomelas-spilonotus-slnk.html"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Riverpark Aquatics: Protomelas spilonotus Tanzania, retailer care page"
+        url: "https://riverparkaquatics.co.uk/protomelas-spilonotus-tanzania-5cm/"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Stigliano (2001, updated 2011). Protomelas spilonotus Mara Rocks. Greater Chicago Cichlid Association husbandry report."
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/83-protomelas-spilonotus-mara-rocks"
+          accessed: "2026-10-13"
+        value:
+          structure: "harem"
+        note: "Captive breeding report; public CRC summary used only to verify the broad mating mode."
+      - source:
+          kind: "literature"
+          title: "Stigliano (2001, updated 2011). Protomelas spilonotus Mara Rocks. Greater Chicago Cichlid Association husbandry report."
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/83-protomelas-spilonotus-mara-rocks"
+          accessed: "2026-10-13"
+        value:
+          structure: "harem"
+          ratio: 2
+        note: "Two males and four females were comfortable only after moving to the larger tank."
+      - source:
+          kind: "database"
+          title: "Bandhauer and Hoernlimann: Protomelas spilonotus, Malawi-Guru species directory"
+          url: "https://malawi-guru.de/protomelas-spilonotus-buntbarsch-verzeichnis/"
+          accessed: "2026-10-13"
+        value:
+          structure: "harem"
+          ratio: 3
+        note: "Allows one male with three or four females."
+      - source:
+          kind: "database"
+          title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+          url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+          accessed: "2026-10-13"
+        value:
+          structure: "harem"
+          ratio: 3
+        note: "Recommends three to four females per male."
+      - source:
+          kind: "website"
+          title: "Riverpark Aquatics: Protomelas spilonotus Tanzania, retailer care page"
+          url: "https://riverparkaquatics.co.uk/protomelas-spilonotus-tanzania-5cm/"
+          accessed: "2026-10-13"
+        value:
+          structure: "harem"
+          ratio: 3
+        note: "one male with multiple females"
+  speciesOnly:
+    value: false
+    confidence: "medium"
+    rationale: "All four full runs proposed false, retained with unanimous verification, 4 of 4, and medium confidence. AquaInfo and Malawi-Guru explicitly allow robust Malawi companions. Pure-species breeding stock can simplify identity control, but ordinary maintenance does not require a tank containing only this species. Tankmate size, temperament and swimming space still matter."
+    sources:
+      - kind: "literature"
+        title: "Stigliano (2001, updated 2011). Protomelas spilonotus Mara Rocks. Greater Chicago Cichlid Association husbandry report."
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/83-protomelas-spilonotus-mara-rocks"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Bandhauer and Hoernlimann: Protomelas spilonotus, Malawi-Guru species directory"
+        url: "https://malawi-guru.de/protomelas-spilonotus-buntbarsch-verzeichnis/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+        url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Malawi Mayhem species profile of Protomelas spilonotus"
+        url: "https://www.malawimayhem.com/protomelas-spilonotus"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Zierfische-Direkt: Protomelas Schwefelkopf, retailer care page"
+        url: "https://www.zierfische-direkt.de/protomelas-schwefelkopf-protomelas-haplochromis-spilonotus/"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Ron's Cichlids: Spilonotus Tanzania AKA Insignis, Liuli trade listing"
+        url: "https://ronscichlids.com/products/insignis"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Stigliano (2001, updated 2011). Protomelas spilonotus Mara Rocks. Greater Chicago Cichlid Association husbandry report."
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/83-protomelas-spilonotus-mara-rocks"
+          accessed: "2026-10-13"
+        value: false
+        note: "Advice discusses housing with other fish rather than requiring a species-only tank."
+      - source:
+          kind: "database"
+          title: "Bandhauer and Hoernlimann: Protomelas spilonotus, Malawi-Guru species directory"
+          url: "https://malawi-guru.de/protomelas-spilonotus-buntbarsch-verzeichnis/"
+          accessed: "2026-10-13"
+        value: false
+        note: "Recommends combinations with several robust Malawi hap genera."
+      - source:
+          kind: "database"
+          title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+          url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+          accessed: "2026-10-13"
+        value: false
+        note: "Lists robust Lake Malawi haplochromines as possible companions."
+      - source:
+          kind: "database"
+          title: "Malawi Mayhem species profile of Protomelas spilonotus"
+          url: "https://www.malawimayhem.com/protomelas-spilonotus"
+          accessed: "2026-10-13"
+        value: false
+      - source:
+          kind: "website"
+          title: "Zierfische-Direkt: Protomelas Schwefelkopf, retailer care page"
+          url: "https://www.zierfische-direkt.de/protomelas-schwefelkopf-protomelas-haplochromis-spilonotus/"
+          accessed: "2026-10-13"
+        value: false
+        note: "Allows an appropriate Malawi community alongside its preference for an art aquarium."
+    verification:
+      method: "unanimous"
+      votes:
+        agree: 4
+        total: 4
+  hybridGroups:
+    value:
+      - "protomelas-spilonotus-complex"
+    confidence: "low"
+    rationale: "The generator, checker-a and checker-c proposed no group; checker-b, tiebreaker-1 and tiebreaker-2 proposed protomelas-spilonotus-complex. With only 3 of 6 supporting either value, no qualified majority exists. The tally therefore conservatively retains the group named by at least two runs, with low confidence and conservative verification, 3 of 6. Bandhauer and Hoernlimann identify P. spilonotus and the undescribed Tanzania, Mozambique and Likoma forms as very close relatives, and Malawi.si independently supports the species-group relationships. The rubric permits presumed membership from such close relationship. No named wild or captive cross with demonstrated conspecific mate choice was found, and every pair remains untested. Neither P. similis nor the taeniolatus complex is included merely through genus membership. Empty proposals describe absent crossing reports, not proven reproductive isolation."
+    sources:
+      - kind: "catalog-of-fishes"
+        title: "Eschmeyer's Catalog of Fishes: Protomelas, update of 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Protomelas"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Stigliano (2001, updated 2011). Protomelas spilonotus Mara Rocks. Greater Chicago Cichlid Association husbandry report."
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/83-protomelas-spilonotus-mara-rocks"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Bandhauer and Hoernlimann: Protomelas spilonotus, Malawi-Guru species directory"
+        url: "https://malawi-guru.de/protomelas-spilonotus-buntbarsch-verzeichnis/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+        url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Malawi Mayhem species profile of Protomelas spilonotus"
+        url: "https://www.malawimayhem.com/protomelas-spilonotus"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Protomelas spilonotus species summary"
+        url: "https://www.fishbase.se/summary/Protomelas-spilonotus.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Malawi.si: Protomelas spilonotus 'Nakantenga Island'"
+        url: "https://malawi.si/MalawiByLocations/Nakantenga%20Island/slides/Protomelas%20spilonotus%20%27Nakantenga%20Island%27.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Malawi.si: Protomelas sp. 'spilonotus tanzania', Puulu Island"
+        url: "https://www.malawi.si/MalawiByLocations/Puulu%20Island/slides/Protomelas%20sp.%20%27spilonotus%20tanzania%27%20Puulu%20Island.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Malawi.si: Protomelas sp. 'spilonotus likoma', Chilucha Reef"
+        url: "https://www.malawi.si/MalawiByLocations/Chilucha%20Reef/slides/Protomelas%20sp.%20%27spilonotus%20likoma%27%20Chilucha%20Reef.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsallskapet: Protomelas sp. 'spilonotus tanzania'"
+        url: "https://www.ciklid.org/artregister/art.php?ID=1588"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Cichlid Room Companion: Protomelas spilonotus, public classification and breeding verification"
+        url: "https://cichlidae.com/species.php?id=WJIMM4X67ftNWaDVe34ITA"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Protomelas similis species summary"
+        url: "https://www.fishbase.se/summary/Protomelas-similis.html"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Malawi.si: Lake Malawi Aquarium Setup, general hobby guidance"
+        url: "https://www.malawi.si/slides/Lake%20Malawi%20Aquarium%20Setup.html"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Namakate Aquatics: stock list on About Us page"
+        url: "https://namakateaquatics.net/page/about"
+        accessed: "2026-10-13"
+      - kind: "archive"
+        title: "cichlids.com forum thread 22229"
+        url: "https://www.cichlids.com/disc/read.php?2,22229"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "catalog-of-fishes"
+          title: "Eschmeyer's Catalog of Fishes: Protomelas, update of 21 September 2026"
+          url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Protomelas"
+          accessed: "2026-10-13"
+        value: []
+        note: "Separates spilonotus and similis; nomenclature supplies no cross evidence."
+      - source:
+          kind: "literature"
+          title: "Stigliano (2001, updated 2011). Protomelas spilonotus Mara Rocks. Greater Chicago Cichlid Association husbandry report."
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/83-protomelas-spilonotus-mara-rocks"
+          accessed: "2026-10-13"
+        value: []
+        note: "Breeding report supplies no named cross or partner-choice test."
+      - source:
+          kind: "database"
+          title: "Bandhauer and Hoernlimann: Protomelas spilonotus, Malawi-Guru species directory"
+          url: "https://malawi-guru.de/protomelas-spilonotus-buntbarsch-verzeichnis/"
+          accessed: "2026-10-13"
+        value: []
+        note: "No named cross stated; related undescribed Tanzania, Mozambique and Likoma taxa are distinguished. Empty membership is the generator's mapping."
+      - source:
+          kind: "database"
+          title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+          url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+          accessed: "2026-10-13"
+        value: []
+        note: "No named crossing evidence in the account. Empty membership is inferred, not a tested negative result."
+      - source:
+          kind: "database"
+          title: "Malawi Mayhem species profile of Protomelas spilonotus"
+          url: "https://www.malawimayhem.com/protomelas-spilonotus"
+          accessed: "2026-10-13"
+        value: []
+        note: "no crossing warning"
+      - source:
+          kind: "database"
+          title: "Bandhauer and Hoernlimann: Protomelas spilonotus, Malawi-Guru species directory"
+          url: "https://malawi-guru.de/protomelas-spilonotus-buntbarsch-verzeichnis/"
+          accessed: "2026-10-13"
+        value:
+          - "protomelas-spilonotus-complex"
+        note: "Proposal inferred from the four closely related spilonotus forms, not a reported cross."
+      - source:
+          kind: "database"
+          title: "Malawi.si: Protomelas spilonotus 'Nakantenga Island'"
+          url: "https://malawi.si/MalawiByLocations/Nakantenga%20Island/slides/Protomelas%20spilonotus%20%27Nakantenga%20Island%27.html"
+          accessed: "2026-10-13"
+        value:
+          - "protomelas-spilonotus-complex"
+        note: "Places true P. spilonotus among closely related geographic forms; mapped to the proposed id under the presumed-group rule."
+      - source:
+          kind: "database"
+          title: "Malawi.si: Protomelas sp. 'spilonotus tanzania', Puulu Island"
+          url: "https://www.malawi.si/MalawiByLocations/Puulu%20Island/slides/Protomelas%20sp.%20%27spilonotus%20tanzania%27%20Puulu%20Island.html"
+          accessed: "2026-10-13"
+        value:
+          - "protomelas-spilonotus-complex"
+        note: "Supports the proposed presumed relationship of Tanzania with true P. spilonotus; says nothing about an actual cross or the complete crossing matrix."
+      - source:
+          kind: "database"
+          title: "Malawi.si: Protomelas sp. 'spilonotus likoma', Chilucha Reef"
+          url: "https://www.malawi.si/MalawiByLocations/Chilucha%20Reef/slides/Protomelas%20sp.%20%27spilonotus%20likoma%27%20Chilucha%20Reef.html"
+          accessed: "2026-10-13"
+        value:
+          - "protomelas-spilonotus-complex"
+        note: "Supports the spilonotus and Likoma connection through close relationship and possible geographical-race status; no observed cross."
+      - source:
+          kind: "website"
+          title: "Malawi.si: Lake Malawi Aquarium Setup, general hobby guidance"
+          url: "https://www.malawi.si/slides/Lake%20Malawi%20Aquarium%20Setup.html"
+          accessed: "2026-10-13"
+        value: []
+        note: "General warning about look-alike congeners and locality mixing; names no specific spilonotus cross."
+      - source:
+          kind: "website"
+          title: "Malawi.si: Lake Malawi Aquarium Setup, general hobby guidance"
+          url: "https://www.malawi.si/slides/Lake%20Malawi%20Aquarium%20Setup.html"
+          accessed: "2026-10-13"
+        value:
+          - "protomelas-spilonotus-complex"
+        note: "General caution for similar congeners supplies husbandry context; no species pair is tested."
+    verification:
+      method: "conservative"
+      votes:
+        agree: 3
+        total: 6
+  coloration:
+    value:
+      baseColors:
+        - "blue"
+        - "yellow"
+        - "black"
+      pattern: "mixed"
+    confidence: "medium"
+    rationale: "The generator, checker-b and checker-c proposed blue, yellow and black with mixed markings; checker-a proposed blue and yellow with the same mixed pattern. Retain black because the lateral marking and dorsal blotches are relevant dark pattern elements. Adult males are mainly blue with variable pale or yellow head colour. Do not use the orange-yellow Tanzania trade phenotype as the defining appearance of the described species."
+    sources:
+      - kind: "literature"
+        title: "Stigliano (2001, updated 2011). Protomelas spilonotus Mara Rocks. Greater Chicago Cichlid Association husbandry report."
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/83-protomelas-spilonotus-mara-rocks"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+        url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Protomelas spilonotus species summary"
+        url: "https://www.fishbase.se/summary/Protomelas-spilonotus.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aquarist Atlas: Protomelas spilonotus"
+        url: "https://www.aquaristatlas.com/species/protomelas-spilonotus/"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Stigliano (2001, updated 2011). Protomelas spilonotus Mara Rocks. Greater Chicago Cichlid Association husbandry report."
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/83-protomelas-spilonotus-mara-rocks"
+          accessed: "2026-10-13"
+        value:
+          baseColors:
+            - "blue"
+            - "yellow"
+          pattern: "mixed"
+        note: "Sulfur-colored head marking and dark stripe in immature fish."
+      - source:
+          kind: "database"
+          title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+          url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+          accessed: "2026-10-13"
+        value:
+          baseColors:
+            - "blue"
+            - "yellow"
+            - "black"
+          pattern: "mixed"
+      - source:
+          kind: "database"
+          title: "FishBase: Protomelas spilonotus species summary"
+          url: "https://www.fishbase.se/summary/Protomelas-spilonotus.html"
+          accessed: "2026-10-13"
+        value:
+          pattern: "mixed"
+        note: "Emphasizes dark dorsal blotches within the ancestral marking pattern."
+      - source:
+          kind: "database"
+          title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+          url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+          accessed: "2026-10-13"
+        value:
+          baseColors:
+            - "blue"
+            - "yellow"
+          pattern: "mixed"
+  feedingSpeed:
+    value: "normal"
+    confidence: "low"
+    rationale: "The generator and checker-c proposed hasty; checker-a and checker-b proposed normal. Strong appetite and seasonal plankton feeding do not demonstrate the rubric's sustained rushing and meal monopolization in captivity. Ready food acceptance without an established comparative feeding disadvantage supports normal provisionally. The enthusiastic-feeding reports remain alternative interpretations rather than a measured speed test."
+    sources:
+      - kind: "literature"
+        title: "Stigliano (2001, updated 2011). Protomelas spilonotus Mara Rocks. Greater Chicago Cichlid Association husbandry report."
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/83-protomelas-spilonotus-mara-rocks"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Bandhauer and Hoernlimann: Protomelas spilonotus, Malawi-Guru species directory"
+        url: "https://malawi-guru.de/protomelas-spilonotus-buntbarsch-verzeichnis/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+        url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsallskapet: Protomelas sp. 'spilonotus tanzania'"
+        url: "https://www.ciklid.org/artregister/art.php?ID=1588"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Stigliano (2001, updated 2011). Protomelas spilonotus Mara Rocks. Greater Chicago Cichlid Association husbandry report."
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/83-protomelas-spilonotus-mara-rocks"
+          accessed: "2026-10-13"
+        value: "hasty"
+        note: "Rubric interpretation of the reported feeding enthusiasm."
+      - source:
+          kind: "database"
+          title: "Bandhauer and Hoernlimann: Protomelas spilonotus, Malawi-Guru species directory"
+          url: "https://malawi-guru.de/protomelas-spilonotus-buntbarsch-verzeichnis/"
+          accessed: "2026-10-13"
+        value: "hasty"
+        note: "Eager consumption when plankton is available; this seasonal field observation does not establish routine aquarium competition."
+      - source:
+          kind: "database"
+          title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+          url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+          accessed: "2026-10-13"
+        value: "normal"
+        note: "Derived from ready feeding without a reported need to protect its ration."
+      - source:
+          kind: "database"
+          title: "Nordiska Ciklidsallskapet: Protomelas sp. 'spilonotus tanzania'"
+          url: "https://www.ciklid.org/artregister/art.php?ID=1588"
+          accessed: "2026-10-13"
+        value: "hasty"
+        note: "Tanzania relative readily consumes offered food; secondary comparison."
+  minTank:
+    value:
+      volumeL: 600
+      lengthCm: 200
+      depthCm: 60
+    confidence: "medium"
+    rationale: "The generator, checker-b and checker-c proposed 600 L, 200 cm length and 60 cm depth; checker-a proposed 500 L, 200 cm and 50 cm. Retain the two named-species care accounts' 600 L and 200 cm recommendation for one male with three females instead of checker-a's unsupported volume compromise. The 60 cm front-to-back depth is a layout inference for large adults and rock shelters, supported by regional non-mbuna examples rather than a species experiment. Smaller retailer minima and Stigliano's successful approximately 473 L colony do not establish a reliable minimum for identified adults. Multi-male or predator communities need appreciably more space."
+    sources:
+      - kind: "literature"
+        title: "Stigliano (2001, updated 2011). Protomelas spilonotus Mara Rocks. Greater Chicago Cichlid Association husbandry report."
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/83-protomelas-spilonotus-mara-rocks"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Bandhauer and Hoernlimann: Protomelas spilonotus, Malawi-Guru species directory"
+        url: "https://malawi-guru.de/protomelas-spilonotus-buntbarsch-verzeichnis/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+        url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Malawi Mayhem species profile of Protomelas spilonotus"
+        url: "https://www.malawimayhem.com/protomelas-spilonotus"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Malawi.si: Lake Malawi Aquarium Setup, general hobby guidance"
+        url: "https://www.malawi.si/slides/Lake%20Malawi%20Aquarium%20Setup.html"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Riverpark Aquatics: Protomelas spilonotus Tanzania, retailer care page"
+        url: "https://riverparkaquatics.co.uk/protomelas-spilonotus-tanzania-5cm/"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Ron's Cichlids: Spilonotus Tanzania AKA Insignis, Liuli trade listing"
+        url: "https://ronscichlids.com/products/insignis"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Stigliano (2001, updated 2011). Protomelas spilonotus Mara Rocks. Greater Chicago Cichlid Association husbandry report."
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/83-protomelas-spilonotus-mara-rocks"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 473.18
+        note: "Successful two-male, four-female colony in 125 US gallons; depth and length unspecified."
+      - source:
+          kind: "database"
+          title: "Bandhauer and Hoernlimann: Protomelas spilonotus, Malawi-Guru species directory"
+          url: "https://malawi-guru.de/protomelas-spilonotus-buntbarsch-verzeichnis/"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 600
+          lengthCm: 200
+        note: "Species-specific minimum for a harem; much larger for multiple males."
+      - source:
+          kind: "database"
+          title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+          url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 600
+          lengthCm: 200
+        note: "Care minimum and structured length; narrative reserves 200 cm especially for multiple pairs."
+      - source:
+          kind: "database"
+          title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+          url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 600
+          lengthCm: 200
+          depthCm: 50
+      - source:
+          kind: "database"
+          title: "Malawi Mayhem species profile of Protomelas spilonotus"
+          url: "https://www.malawimayhem.com/protomelas-spilonotus"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 380
+          lengthCm: 150
+          depthCm: 50
+        note: "100 gallons"
+      - source:
+          kind: "website"
+          title: "Malawi.si: Lake Malawi Aquarium Setup, general hobby guidance"
+          url: "https://www.malawi.si/slides/Lake%20Malawi%20Aquarium%20Setup.html"
+          accessed: "2026-10-13"
+        value:
+          depthCm: 60
+        note: "Illustrated 200 x 60 x 60 cm non-mbuna setup; supports layout inference, not a tested minimum."
+      - source:
+          kind: "website"
+          title: "Riverpark Aquatics: Protomelas spilonotus Tanzania, retailer care page"
+          url: "https://riverparkaquatics.co.uk/protomelas-spilonotus-tanzania-5cm/"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 250
+          lengthCm: 120
+          depthCm: 50
+      - source:
+          kind: "website"
+          title: "Malawi.si: Lake Malawi Aquarium Setup, general hobby guidance"
+          url: "https://www.malawi.si/slides/Lake%20Malawi%20Aquarium%20Setup.html"
+          accessed: "2026-10-13"
+        value:
+          lengthCm: 200
+          depthCm: 60
+        note: "Regional non-mbuna example, not a proven species-specific minimum depth."
+  lifespanYears:
+    value:
+      min: 8
+      max: 10
+    confidence: "low"
+    rationale: "The generator and checker-c proposed 8 to 10 years, checker-a 7 to 10, and checker-b 6 to 8. Retain 8 to 10 only as a weak general Malawi-hap planning estimate. The retailer's up-to-eight-year claim gives no lower endpoint, while the 7 to 10 and 8 to 10 trade estimates concern Tanzania stock. No verified age series for the described species establishes any of these ranges; the choice is not a pooled or median measured survival result."
+    sources:
+      - kind: "literature"
+        title: "OATA: How to look after African Malawi Cichlids, general care sheet"
+        url: "https://ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-freshwater-fish/how-to-look-after-african-malawi-cichlids/"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Home of Cichlids: Protomelas sp. spilonotus tanzania, retailer page"
+        url: "https://homeofcichlids.com.au/product/protomelas-sp-spilonotus-tanzania/"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Riverpark Aquatics: Protomelas spilonotus Tanzania, retailer care page"
+        url: "https://riverparkaquatics.co.uk/protomelas-spilonotus-tanzania-5cm/"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Zierfische-Direkt: Protomelas Schwefelkopf, retailer care page"
+        url: "https://www.zierfische-direkt.de/protomelas-schwefelkopf-protomelas-haplochromis-spilonotus/"
+        accessed: "2026-10-13"
+      - kind: "model-knowledge"
+        title: "Adjudicator inference where species-specific measurements are unavailable"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "model-knowledge"
+          title: "Adjudicator inference where species-specific measurements are unavailable"
+          accessed: "2026-10-13"
+        value:
+          min: 8
+          max: 10
+        note: "Provisional general husbandry estimate; no confirmed age series for the described species."
+      - source:
+          kind: "website"
+          title: "Zierfische-Direkt: Protomelas Schwefelkopf, retailer care page"
+          url: "https://www.zierfische-direkt.de/protomelas-schwefelkopf-protomelas-haplochromis-spilonotus/"
+          accessed: "2026-10-13"
+        value:
+          max: 8
+        note: "Retail upper-age claim only."
+      - source:
+          kind: "website"
+          title: "Riverpark Aquatics: Protomelas spilonotus Tanzania, retailer care page"
+          url: "https://riverparkaquatics.co.uk/protomelas-spilonotus-tanzania-5cm/"
+          accessed: "2026-10-13"
+        value:
+          min: 7
+          max: 10
+        note: "Tanzania trade stock, not direct evidence for the described species."
+      - source:
+          kind: "website"
+          title: "Home of Cichlids: Protomelas sp. spilonotus tanzania, retailer page"
+          url: "https://homeofcichlids.com.au/product/protomelas-sp-spilonotus-tanzania/"
+          accessed: "2026-10-13"
+        value:
+          min: 8
+          max: 10
+        note: "Tanzania trade stock, not direct evidence for the described species."
+  breeding:
+    value: "maternal-mouthbrooder"
+    confidence: "high"
+    rationale: "All four full runs agree. Species husbandry accounts and Stigliano's keeper report describe oral incubation by the female alone. CRC independently verifies this classification. Disagreement over spawning in sand versus a rock shelter does not change the reproductive category."
+    sources:
+      - kind: "literature"
+        title: "Stigliano (2001, updated 2011). Protomelas spilonotus Mara Rocks. Greater Chicago Cichlid Association husbandry report."
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/83-protomelas-spilonotus-mara-rocks"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Bandhauer and Hoernlimann: Protomelas spilonotus, Malawi-Guru species directory"
+        url: "https://malawi-guru.de/protomelas-spilonotus-buntbarsch-verzeichnis/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+        url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Cichlid Room Companion: Protomelas spilonotus, public classification and breeding verification"
+        url: "https://cichlidae.com/species.php?id=WJIMM4X67ftNWaDVe34ITA"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Ron's Cichlids: Spilonotus Tanzania AKA Insignis, Liuli trade listing"
+        url: "https://ronscichlids.com/products/insignis"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Zierfische-Direkt: Protomelas Schwefelkopf, retailer care page"
+        url: "https://www.zierfische-direkt.de/protomelas-schwefelkopf-protomelas-haplochromis-spilonotus/"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Stigliano (2001, updated 2011). Protomelas spilonotus Mara Rocks. Greater Chicago Cichlid Association husbandry report."
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/83-protomelas-spilonotus-mara-rocks"
+          accessed: "2026-10-13"
+        value: "maternal-mouthbrooder"
+      - source:
+          kind: "database"
+          title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+          url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+          accessed: "2026-10-13"
+        value: "maternal-mouthbrooder"
+      - source:
+          kind: "database"
+          title: "Cichlid Room Companion: Protomelas spilonotus, public classification and breeding verification"
+          url: "https://cichlidae.com/species.php?id=WJIMM4X67ftNWaDVe34ITA"
+          accessed: "2026-10-13"
+        value: "maternal-mouthbrooder"
+        note: "Verification only."
+      - source:
+          kind: "website"
+          title: "Ron's Cichlids: Spilonotus Tanzania AKA Insignis, Liuli trade listing"
+          url: "https://ronscichlids.com/products/insignis"
+          accessed: "2026-10-13"
+        value: "maternal-mouthbrooder"
+      - source:
+          kind: "website"
+          title: "Zierfische-Direkt: Protomelas Schwefelkopf, retailer care page"
+          url: "https://www.zierfische-direkt.de/protomelas-schwefelkopf-protomelas-haplochromis-spilonotus/"
+          accessed: "2026-10-13"
+        value: "maternal-mouthbrooder"
+        note: "Female oral incubation for approximately three weeks."
+  beginnerSuitability:
+    value: "moderate"
+    confidence: "medium"
+    rationale: "The generator proposed demanding; all three checkers proposed moderate. Straightforward feeding and routine maintenance support moderate once adequate housing and Malawi experience are available. The generator's emphasis on a 200 cm aquarium and male management remains valid, but it does not by itself establish unusually delicate care. This rating does not remove the adult space requirement or identity checks."
+    sources:
+      - kind: "literature"
+        title: "Stigliano (2001, updated 2011). Protomelas spilonotus Mara Rocks. Greater Chicago Cichlid Association husbandry report."
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/83-protomelas-spilonotus-mara-rocks"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+        url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Bandhauer and Hoernlimann: Protomelas spilonotus, Malawi-Guru species directory"
+        url: "https://malawi-guru.de/protomelas-spilonotus-buntbarsch-verzeichnis/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsallskapet: Protomelas sp. 'spilonotus tanzania'"
+        url: "https://www.ciklid.org/artregister/art.php?ID=1588"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Riverpark Aquatics: Protomelas spilonotus Tanzania, retailer care page"
+        url: "https://riverparkaquatics.co.uk/protomelas-spilonotus-tanzania-5cm/"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Zierfische-Direkt: Protomelas Schwefelkopf, retailer care page"
+        url: "https://www.zierfische-direkt.de/protomelas-schwefelkopf-protomelas-haplochromis-spilonotus/"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Stigliano (2001, updated 2011). Protomelas spilonotus Mara Rocks. Greater Chicago Cichlid Association husbandry report."
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/83-protomelas-spilonotus-mara-rocks"
+          accessed: "2026-10-13"
+        value: "moderate"
+        note: "Hardy colony with social problems in insufficient space."
+      - source:
+          kind: "database"
+          title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+          url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+          accessed: "2026-10-13"
+        value: "demanding"
+        note: "Rubric mapping of its recommendation for experienced aquarists."
+      - source:
+          kind: "database"
+          title: "Bandhauer and Hoernlimann: Protomelas spilonotus, Malawi-Guru species directory"
+          url: "https://malawi-guru.de/protomelas-spilonotus-buntbarsch-verzeichnis/"
+          accessed: "2026-10-13"
+        value: "demanding"
+        note: "Rubric mapping of harem management and very large multi-male systems."
+      - source:
+          kind: "database"
+          title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+          url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+          accessed: "2026-10-13"
+        value: "moderate"
+        note: "Robust fish but large aquarium and behavior management required."
+      - source:
+          kind: "database"
+          title: "Nordiska Ciklidsallskapet: Protomelas sp. 'spilonotus tanzania'"
+          url: "https://www.ciklid.org/artregister/art.php?ID=1588"
+          accessed: "2026-10-13"
+        value: "moderate"
+        note: "Difficulty rating for the Tanzania relative."
+      - source:
+          kind: "website"
+          title: "Riverpark Aquatics: Protomelas spilonotus Tanzania, retailer care page"
+          url: "https://riverparkaquatics.co.uk/protomelas-spilonotus-tanzania-5cm/"
+          accessed: "2026-10-13"
+        value: "moderate"
+      - source:
+          kind: "website"
+          title: "Zierfische-Direkt: Protomelas Schwefelkopf, retailer care page"
+          url: "https://www.zierfische-direkt.de/protomelas-schwefelkopf-protomelas-haplochromis-spilonotus/"
+          accessed: "2026-10-13"
+        value: "moderate"
+        note: "Recommends prior Malawi keeping experience."
+partners:
+  suitable:
+    - species: "Nimbochromis venustus"
+      reason: "Conditional inference from published recommendations of robust Nimbochromis companions; adult sizes must prevent either fish becoming prey."
+      condition: "A substantially larger adult predator aquarium than the 600 L harem minimum, with adequate retreats and separation available."
+    - species: "Dimidiochromis compressiceps"
+      reason: "Conditional inference from the species care accounts accepting robust Dimidiochromis; vulnerable females or juveniles can be prey."
+      condition: "Use a much larger aquarium than the harem minimum and evaluate each adult fish size and behaviour."
+  unsuitable:
+    - species: "Protomelas sp. 'spilonotus tanzania'"
+      reason: "Separate undescribed look-alike in the presumed spilonotus hybrid group; breeding identity and potential crossing are concerns, without a verified cross."
+    - species: "Protomelas sp. 'spilonotus mozambique'"
+      reason: "Close undescribed relative assigned to the same presumed hybrid group; pairwise crossing remains untested."
+    - species: "Protomelas sp. 'spilonotus likoma'"
+      reason: "Close undescribed relative assigned to the same presumed hybrid group; pairwise crossing remains untested."
+    - species: "Protomelas similis"
+      reason: "Separate plant-feeding species with different habitat and feeding priorities; shared genus and trade confusion do not establish hybrid-group membership."
+    - species: "Chindongo demasoni"
+      reason: "Small algae-feeding mbuna with different dietary emphasis and social requirements; a poor match for this adult harem."
+    - species: "Paracheirodon axelrodi"
+      reason: "Small timid fish poorly suited to a large territorial Malawi community and its water conditions; harm may occur even with predation level 0."
+profile:
+  overview:
+    text: "The legacy name refers here to the described Protomelas spilonotus, an active Lake Malawi haplochromine. A shop label saying Tanzania or Liuli usually identifies its undescribed relative, Protomelas sp. 'spilonotus tanzania'. P. similis is a separate valid species with different feeding ecology. Obtain locality and parent-stock information before choosing breeding fish. Allow for large adults and male courtship pressure; a young fish's shop size gives little indication of its eventual housing needs."
+    sources:
+      - kind: "catalog-of-fishes"
+        title: "Eschmeyer's Catalog of Fishes: Protomelas, update of 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Protomelas"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Bandhauer and Hoernlimann: Protomelas spilonotus, Malawi-Guru species directory"
+        url: "https://malawi-guru.de/protomelas-spilonotus-buntbarsch-verzeichnis/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsallskapet: Protomelas sp. 'spilonotus tanzania'"
+        url: "https://www.ciklid.org/artregister/art.php?ID=1588"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Protomelas similis species summary"
+        url: "https://www.fishbase.se/summary/Protomelas-similis.html"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Ron's Cichlids: Spilonotus Tanzania AKA Insignis, Liuli trade listing"
+        url: "https://ronscichlids.com/products/insignis"
+        accessed: "2026-10-13"
+  habitat:
+    text: "Open swimming room beside rock shelters is central to the layout. The described species feeds away from clean rocky shore faces, commonly in the upper few metres. Some complex-wide accounts describe depths of 5 to 15 m, so that deeper range is not applied to every population. The natural water is soft and alkaline: GH measures calcium and magnesium, while KH here represents bicarbonate alkalinity. Rockwork should provide retreats without filling the swimming lane."
+    sources:
+      - kind: "literature"
+        title: "Branchu et al. (2010). Hydrochemistry of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. HESS Discussions 7, 4371-4409."
+        url: "https://doi.org/10.5194/hessd-7-4371-2010"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa, Vol. 1. FAO CIFA Technical Paper 18/1. Lake Malawi chemistry compiled from Jackson et al. (1963) and Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Protomelas spilonotus species summary"
+        url: "https://www.fishbase.se/summary/Protomelas-spilonotus.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Malawi.si: Protomelas spilonotus 'Nakantenga Island'"
+        url: "https://malawi.si/MalawiByLocations/Nakantenga%20Island/slides/Protomelas%20spilonotus%20%27Nakantenga%20Island%27.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Bandhauer and Hoernlimann: Protomelas spilonotus, Malawi-Guru species directory"
+        url: "https://malawi-guru.de/protomelas-spilonotus-buntbarsch-verzeichnis/"
+        accessed: "2026-10-13"
+  sizeAndGrowth:
+    text: "Allow for working aquarium maxima of 25 cm in males and 19 cm in females. These sex-specific estimates remain uncertain because published adult lengths differ. FishBase's unsexed 16.7 cm figure and an exceptionally large Mara Rocks keeper account are different kinds of observation. Moderate portions and body-condition monitoring are preferable to accelerating growth. The 8 to 10 year lifespan is a provisional planning estimate, with no verified age series for the described species."
+    sources:
+      - kind: "literature"
+        title: "Stigliano (2001, updated 2011). Protomelas spilonotus Mara Rocks. Greater Chicago Cichlid Association husbandry report."
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/83-protomelas-spilonotus-mara-rocks"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+        url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Malawi.si: Protomelas spilonotus 'Nakantenga Island'"
+        url: "https://malawi.si/MalawiByLocations/Nakantenga%20Island/slides/Protomelas%20spilonotus%20%27Nakantenga%20Island%27.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Protomelas spilonotus species summary"
+        url: "https://www.fishbase.se/summary/Protomelas-spilonotus.html"
+        accessed: "2026-10-13"
+      - kind: "model-knowledge"
+        title: "Adjudicator inference where species-specific measurements are unavailable"
+        accessed: "2026-10-13"
+  husbandry:
+    text: "Start with at least 600 litres and 200 cm length for one male and three females. A 60 cm front-to-back depth is an inferred allowance for turning room and shelters. Secure rocks near the margins, retain an open lane and use sand where digging occurs. Provide established filtration, oxygenation and regular water changes. A stable 24 to 26 C is a practical routine target. The broader tolerances are 21 to 29 C, pH 7.5 to 8.7, GH 3 to 16 and KH 5 to 15; their endpoints are not uniformly supported by long-term aquarium trials."
+    sources:
+      - kind: "literature"
+        title: "OATA: How to look after African Malawi Cichlids, general care sheet"
+        url: "https://ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-freshwater-fish/how-to-look-after-african-malawi-cichlids/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Bandhauer and Hoernlimann: Protomelas spilonotus, Malawi-Guru species directory"
+        url: "https://malawi-guru.de/protomelas-spilonotus-buntbarsch-verzeichnis/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+        url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Malawi.si: Lake Malawi Aquarium Setup, general hobby guidance"
+        url: "https://www.malawi.si/slides/Lake%20Malawi%20Aquarium%20Setup.html"
+        accessed: "2026-10-13"
+  socialBehavior:
+    text: "Manage the male's attention by keeping at least three females and several routes into cover. Persistent pursuit within the species warrants intervention before injuries appear. Robust companions may coexist, but breeding males can displace fish near their spawning site. The compact territory classification describes a defended area rather than a small aquarium requirement. Several adult males call for much larger housing than the minimum harem. Keep an established separation option available for a fish that cannot feed or leave its shelter."
+    sources:
+      - kind: "literature"
+        title: "Stigliano (2001, updated 2011). Protomelas spilonotus Mara Rocks. Greater Chicago Cichlid Association husbandry report."
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/83-protomelas-spilonotus-mara-rocks"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Bandhauer and Hoernlimann: Protomelas spilonotus, Malawi-Guru species directory"
+        url: "https://malawi-guru.de/protomelas-spilonotus-buntbarsch-verzeichnis/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+        url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Malawi.si: Protomelas spilonotus 'Nakantenga Island'"
+        url: "https://malawi.si/MalawiByLocations/Nakantenga%20Island/slides/Protomelas%20spilonotus%20%27Nakantenga%20Island%27.html"
+        accessed: "2026-10-13"
+  diet:
+    text: "Use complete cichlid pellets as a staple and vary appropriately sized portions with Daphnia, Cyclops, Artemia and mysis. Animal invertebrates dominate the reported natural prey. Regular fish feeding is not established, and live feeder fish are unnecessary. Feeding speed is provisionally normal; observe access to food because strong appetite alone does not establish how quickly this fish outcompetes neighbours. A false bloat-sensitivity flag means special protein-related susceptibility is unproven, not that digestive illness cannot occur."
+    sources:
+      - kind: "literature"
+        title: "Stigliano (2001, updated 2011). Protomelas spilonotus Mara Rocks. Greater Chicago Cichlid Association husbandry report."
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/83-protomelas-spilonotus-mara-rocks"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Protomelas spilonotus species summary"
+        url: "https://www.fishbase.se/summary/Protomelas-spilonotus.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Bandhauer and Hoernlimann: Protomelas spilonotus, Malawi-Guru species directory"
+        url: "https://malawi-guru.de/protomelas-spilonotus-buntbarsch-verzeichnis/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+        url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+        accessed: "2026-10-13"
+  breeding:
+    text: "The female carries the eggs and developing young in her mouth after spawning. Use confidently identified stock from one locality and provide brooding females with quiet retreats. Around three weeks is a useful observation guide, with substantial variation between accounts. Brood-size claims from uncertain trade stocks are not guarantees for the described species. A prepared nursery offers released fry small foods and protection from adult fish. Maintain the species and locality information with each batch of young."
+    sources:
+      - kind: "literature"
+        title: "Stigliano (2001, updated 2011). Protomelas spilonotus Mara Rocks. Greater Chicago Cichlid Association husbandry report."
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/83-protomelas-spilonotus-mara-rocks"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+        url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Bandhauer and Hoernlimann: Protomelas spilonotus, Malawi-Guru species directory"
+        url: "https://malawi-guru.de/protomelas-spilonotus-buntbarsch-verzeichnis/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Cichlid Room Companion: Protomelas spilonotus, public classification and breeding verification"
+        url: "https://cichlidae.com/species.php?id=WJIMM4X67ftNWaDVe34ITA"
+        accessed: "2026-10-13"
+  sexing:
+    text: "Mature displaying males are usually larger and more colourful, with more extended dorsal and anal fins. Females are relatively subdued. Young or socially suppressed males can resemble females, so assess mature development and repeated behaviour rather than one pale photograph. Locality affects male colour, and a yellow or orange head is not sufficient to identify a species. Correct both identification and sex before assuming a purchased group supplies one male and three females."
+    sources:
+      - kind: "literature"
+        title: "Stigliano (2001, updated 2011). Protomelas spilonotus Mara Rocks. Greater Chicago Cichlid Association husbandry report."
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/83-protomelas-spilonotus-mara-rocks"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+        url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Malawi.si: Protomelas spilonotus 'Nakantenga Island'"
+        url: "https://malawi.si/MalawiByLocations/Nakantenga%20Island/slides/Protomelas%20spilonotus%20%27Nakantenga%20Island%27.html"
+        accessed: "2026-10-13"
+  compatibility:
+    text: "Assess companions at their adult size and with enough room for all territories. Published large-hap companion lists support only conditional pairings, especially when the companion is a predator able to swallow smaller fish. Small timid fish and strictly algae-feeding mbuna are poor matches. The spilonotus complex carries a presumed crossing caution based on close relationship among the described species and its Tanzania, Mozambique and Likoma relatives. No free-choice cross was verified. P. similis remains outside that group and has different feeding priorities."
+    sources:
+      - kind: "database"
+        title: "Bandhauer and Hoernlimann: Protomelas spilonotus, Malawi-Guru species directory"
+        url: "https://malawi-guru.de/protomelas-spilonotus-buntbarsch-verzeichnis/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+        url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Malawi.si: Protomelas spilonotus 'Nakantenga Island'"
+        url: "https://malawi.si/MalawiByLocations/Nakantenga%20Island/slides/Protomelas%20spilonotus%20%27Nakantenga%20Island%27.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Malawi.si: Protomelas sp. 'spilonotus tanzania', Puulu Island"
+        url: "https://www.malawi.si/MalawiByLocations/Puulu%20Island/slides/Protomelas%20sp.%20%27spilonotus%20tanzania%27%20Puulu%20Island.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Malawi.si: Protomelas sp. 'spilonotus likoma', Chilucha Reef"
+        url: "https://www.malawi.si/MalawiByLocations/Chilucha%20Reef/slides/Protomelas%20sp.%20%27spilonotus%20likoma%27%20Chilucha%20Reef.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Protomelas similis species summary"
+        url: "https://www.fishbase.se/summary/Protomelas-similis.html"
+        accessed: "2026-10-13"
+  problems:
+    text: "Identity mistakes and inadequate adult space are major avoidable problems. A female hiding continuously, missing meals or losing condition needs a prompt change in management. Check oxygenation, filtration and water quality when breathing or appetite changes, and match replacement water to the established aquarium. Avoid chasing a hardness target through repeated unstable adjustments. Quarantine new arrivals and obtain qualified help for persistent illness. Moderate beginner suitability assumes a prepared large aquarium and competent observation of social pressure."
+    sources:
+      - kind: "literature"
+        title: "OATA: How to look after African Malawi Cichlids, general care sheet"
+        url: "https://ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-freshwater-fish/how-to-look-after-african-malawi-cichlids/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Stigliano (2001, updated 2011). Protomelas spilonotus Mara Rocks. Greater Chicago Cichlid Association husbandry report."
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/83-protomelas-spilonotus-mara-rocks"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "De Lange: Protomelas spilonotus, AquaInfo species database"
+        url: "https://aquainfo.nl/en/article/protomelas-spilonotus/"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Malawi.si: Lake Malawi Aquarium Setup, general hobby guidance"
+        url: "https://www.malawi.si/slides/Lake%20Malawi%20Aquarium%20Setup.html"
+        accessed: "2026-10-13"
+provenance:
+  runs:
+    - role: "generator"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+    - role: "checker"
+      model: "claude-sonnet-5-5"
+      date: "2026-10-13"
+    - role: "checker"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+    - role: "checker"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+    - role: "checker"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+    - role: "checker"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+    - role: "adjudicator"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+  disagreements:
+    - field: "features.origin"
+      proposals:
+        - by: "generator"
+          value:
+            continent: "Africa"
+            region: "Lake Malawi"
+            waterbody: "lake-malawi"
+            localities:
+              - "Chilumba"
+              - "Ruarwe"
+              - "Mbenji Island"
+              - "Magunga Reef"
+              - "Lumessi"
+        - by: "checker-a"
+          value:
+            continent: "Africa"
+            region: "Lake Malawi"
+            waterbody: "lake-malawi"
+            localities:
+              - "Chilumba (type locality)"
+              - "Chimwalani Reef"
+              - "Mara Rocks"
+        - by: "checker-b"
+          value:
+            continent: "Africa"
+            region: "Lake Malawi"
+            waterbody: "lake-malawi"
+            localities:
+              - "Chilumba"
+              - "Ruarwe"
+              - "Mbenji Island"
+              - "Nakantenga Island"
+              - "Magunga Reef"
+              - "Chimwalani Reef"
+        - by: "checker-c"
+          value:
+            continent: "Africa"
+            region: "Lake Malawi"
+            waterbody: "lake-malawi"
+      decision:
+        continent: "Africa"
+        region: "Lake Malawi"
+        waterbody: "lake-malawi"
+        localities:
+          - "Chilumba"
+          - "Ruarwe"
+          - "Mbenji Island"
+          - "Nakantenga Island"
+          - "Magunga Reef"
+          - "Lumessi"
+          - "Chimwalani Reef"
+      rationale: "All four full runs agree on Lake Malawi. The generator proposed Chilumba, Ruarwe, Mbenji Island, Magunga Reef and Lumessi; checker-a proposed Chilumba, Chimwalani Reef and Mara Rocks; checker-b proposed Chilumba, Ruarwe, Mbenji Island, Nakantenga Island, Magunga Reef and Chimwalani Reef; checker-c supplied no locality list. Retain the seven localities supported by the named-species databases. Mara Rocks remains excluded from the locality variants because the historical keeper account's stock identity is unclear. Liuli belongs to the separate Tanzania trade taxon."
+    - field: "features.ph.tolerance"
+      proposals:
+        - by: "generator"
+          value:
+            min: 7.5
+            max: 8.7
+        - by: "checker-a"
+          value:
+            min: 7.4
+            max: 8.6
+        - by: "checker-b"
+          value:
+            min: 7.5
+            max: 8.8
+        - by: "checker-c"
+          value:
+            min: 7.5
+            max: 8.7
+      decision:
+        min: 7.5
+        max: 8.7
+      rationale: "The proposals were 7.5 to 8.7 from the generator, 7.4 to 8.6 from checker-a, 7.5 to 8.8 from checker-b and 7.5 to 8.7 from checker-c. They agree within the 0.3 pH threshold; the tally selects the median bounds of 7.5 and 8.7 with unanimous verification, 4 of 4, and medium confidence. AquaInfo gives 7.5 to 8.5 and Malawi.si 7.6 to 8.7. The adopted range is narrower than Zierfische-Direkt's 7.5 to 8.8 and excludes the 8.8 upper end also shown by Aquarist Atlas. Ron's 7.4 to 8.4 concerns Tanzania trade stock. This is a stable-water husbandry synthesis rather than a physiological limit study."
+    - field: "features.ghDgh.tolerance"
+      proposals:
+        - by: "generator"
+          value:
+            min: 3
+            max: 15
+        - by: "checker-a"
+          value:
+            min: 3
+            max: 20
+        - by: "checker-b"
+          value:
+            min: 3
+            max: 16
+        - by: "checker-c"
+          value:
+            min: 3
+            max: 16
+        - by: "tiebreaker-1"
+          value:
+            min: 3
+            max: 16
+        - by: "tiebreaker-2"
+          value:
+            min: 3
+            max: 15
+      decision:
+        min: 3
+        max: 16
+      rationale: "The generator and tiebreaker-2 proposed 3 to 15 dGH; checker-a proposed 3 to 20; checker-b, checker-c and tiebreaker-1 proposed 3 to 16. Five of six agree within the 2 dGH threshold, and the tally's median of their upper bounds is 16, giving qualified-majority verification and medium confidence. The lower end contains natural 3 to 5 dGH. AquaInfo gives 10 to 16 in care prose, 12 to 16 in metadata and 10 to 15 for breeding; Einrichtungsbeispiele gives 5 to 15 and Malawi.si 3 to 15. The adopted envelope is narrower than the retailer's 7 to 20, Malawi-Guru's general 4 to 20 and OATA's general 12 to 18 recommendations. These wider upper limits are not adopted; the evidence does not show that 17 dGH is harmful."
+    - field: "features.khDkh.tolerance"
+      proposals:
+        - by: "generator"
+          value:
+            min: 5
+            max: 12
+        - by: "checker-a"
+          value:
+            min: 5
+            max: 15
+        - by: "checker-b"
+          value:
+            min: 5
+            max: 15
+        - by: "checker-c"
+          value:
+            min: 5
+            max: 12
+        - by: "tiebreaker-1"
+          value:
+            min: 5
+            max: 15
+        - by: "tiebreaker-2"
+          value:
+            min: 5
+            max: 15
+      decision:
+        min: 5
+        max: 15
+      rationale: "The generator and checker-c proposed 5 to 12 dKH; checker-a, checker-b, tiebreaker-1 and tiebreaker-2 proposed 5 to 15. The latter receives qualified-majority verification, 4 of 6, with low confidence. Zierfische-Direkt explicitly supplies 5 to 15 and OATA supplies 10 to 15 for Malawi cichlids generally; the natural lake observations support the soft end, not a captive upper limit. Malawi.si and Malawi Cichlids instead recommend 6 to 12. The selected 5 to 15 is narrower than Malawi-Guru's general 6 to 20 allowance and includes the mandatory natural 5 to 8 range. Only one species-labelled numerical KH page was found, and it is a retailer website; independent aquarium evidence is regional rather than species-specific, without a multi-year trial. Ron's hard-water wording does not supply a numerical KH range and its inferred 5 to 15 entry is excluded."
+    - field: "features.maxSizeCm"
+      proposals:
+        - by: "generator"
+          value:
+            male: 25
+            female: 19
+        - by: "checker-a"
+          value:
+            male: 20
+            female: 16
+        - by: "checker-b"
+          value:
+            male: 25
+            female: 19
+        - by: "checker-c"
+          value:
+            male: 25
+            female: 19
+      decision:
+        male: 25
+        female: 19
+      rationale: "The generator, checker-b and checker-c proposed 25 cm males and 19 cm females; checker-a proposed 20 and 16. Retain AquaInfo's explicit aquarium sex-specific maxima, which are more appropriate to the rubric than unsexed wild or checklist lengths. Malawi.si gives typical adults of 20 and 16, FishBase 16.7 cm TL unsexed, and Malawi Mayhem an unsexed 17.8 to 22.9 cm range. Stigliano reports males exceeding 30.5 cm from uncertain Mara Rocks stock. The disagreement and sparse independent sex-specific data prevent confidence above low; these are planning maxima, not record lengths."
+    - field: "features.diet"
+      proposals:
+        - by: "generator"
+          value:
+            type: "invertivore"
+            bloatSensitive: false
+            foods:
+              - "complete cichlid pellets"
+              - "Daphnia"
+              - "Cyclops"
+              - "Artemia"
+              - "mysis"
+        - by: "checker-a"
+          value:
+            type: "invertivore"
+            bloatSensitive: false
+            foods:
+              - "insects"
+              - "zooplankton"
+              - "mysis"
+              - "brine shrimp"
+              - "cichlid pellets"
+        - by: "checker-b"
+          value:
+            type: "invertivore"
+            bloatSensitive: false
+            foods:
+              - "insects"
+              - "zooplankton"
+              - "small aquatic invertebrates"
+              - "quality carnivore cichlid pellets"
+              - "Artemia"
+              - "mysis"
+        - by: "checker-c"
+          value:
+            type: "invertivore"
+            bloatSensitive: false
+            foods:
+              - "small crustaceans"
+              - "aquatic invertebrates"
+              - "insects"
+              - "quality cichlid pellets"
+      decision:
+        type: "invertivore"
+        bloatSensitive: false
+        foods:
+          - "complete cichlid pellets"
+          - "Daphnia"
+          - "Cyclops"
+          - "Artemia"
+          - "mysis"
+      rationale: "All four full runs proposed invertivore with bloatSensitive false, yielding unanimous verification, 4 of 4, and medium confidence. FishBase and the species databases support animal-invertebrate feeding. The tally retains the generator's food list of complete cichlid pellets, Daphnia, Cyclops, Artemia and mysis; checker-a emphasized insects, zooplankton, mysis, brine shrimp and pellets; checker-b added small aquatic invertebrates and carnivore pellets; checker-c listed small crustaceans, aquatic invertebrates, insects and pellets. These are alternative examples rather than opposing diet types. Suitability of protein-containing prey supports the false sensitivity flag, but no controlled bloat-susceptibility test was found. P. similis's plant diet and retailer descriptions of Tanzania stock do not replace this species' ecology."
+    - field: "features.aggressionConspecific"
+      proposals:
+        - by: "generator"
+          value: 3
+        - by: "checker-a"
+          value: 2
+        - by: "checker-b"
+          value: 3
+        - by: "checker-c"
+          value: 3
+      decision: 3
+      rationale: "Generator, checker-b and checker-c proposed level 3; checker-a proposed 2. Strong within-species pressure and much larger multi-male housing in Malawi-Guru, with female harassment in Stigliano's keeper account, justify persistent chasing rather than only a stable hierarchy. AquaInfo's comparatively mild injury account supports the lower interpretation but does not exclude harassment. This level assumes one male and three females in the recommended aquarium; the Mara Rocks report has uncertain taxon identity."
+    - field: "features.territory"
+      proposals:
+        - by: "generator"
+          value:
+            size: "large"
+            breedingOnly: true
+        - by: "checker-a"
+          value:
+            size: "small"
+            breedingOnly: true
+        - by: "checker-b"
+          value:
+            size: "small"
+            breedingOnly: true
+        - by: "checker-c"
+          value:
+            size: "small"
+            breedingOnly: false
+      decision:
+        size: "small"
+        breedingOnly: true
+      rationale: "The generator proposed large with breedingOnly true; checker-a and checker-b proposed small with breedingOnly true; checker-c proposed small with breedingOnly false. AquaInfo explicitly describes compact male territories, outweighing the generator's inferred large footprint. Malawi-Guru describes defended midwater courtship areas during spawning, supporting the breedingOnly flag over checker-c's inferred persistence. No territory diameter or controlled observation outside breeding was found. Small describes the defended site, not the required swimming space."
+    - field: "features.habitatZones"
+      proposals:
+        - by: "generator"
+          value:
+            - "rock"
+            - "openWater"
+        - by: "checker-a"
+          value:
+            - "rock"
+            - "sand"
+            - "openWater"
+        - by: "checker-b"
+          value:
+            - "rock"
+            - "openWater"
+        - by: "checker-c"
+          value:
+            - "rock"
+            - "openWater"
+      decision:
+        - "rock"
+        - "openWater"
+      rationale: "Generator, checker-b and checker-c proposed rock and openWater; checker-a additionally proposed sand. FishBase and Malawi.si place foraging fish in midwater beside clean rock faces and spawning sites among rocks. Sand is useful aquarium substrate but does not need to be added as a primary wild habitat requirement. FishBase's usually shallower-than-5 m account is preferred over transferring a 5 to 15 m complex-wide depth statement to all stocks."
+    - field: "features.hybridGroups"
+      proposals:
+        - by: "generator"
+          value: []
+        - by: "checker-a"
+          value: []
+        - by: "checker-b"
+          value:
+            - "protomelas-spilonotus-complex"
+        - by: "checker-c"
+          value: []
+        - by: "tiebreaker-1"
+          value:
+            - "protomelas-spilonotus-complex"
+        - by: "tiebreaker-2"
+          value:
+            - "protomelas-spilonotus-complex"
+      decision:
+        - "protomelas-spilonotus-complex"
+      rationale: "The generator, checker-a and checker-c proposed no group; checker-b, tiebreaker-1 and tiebreaker-2 proposed protomelas-spilonotus-complex. With only 3 of 6 supporting either value, no qualified majority exists. The tally therefore conservatively retains the group named by at least two runs, with low confidence and conservative verification, 3 of 6. Bandhauer and Hoernlimann identify P. spilonotus and the undescribed Tanzania, Mozambique and Likoma forms as very close relatives, and Malawi.si independently supports the species-group relationships. The rubric permits presumed membership from such close relationship. No named wild or captive cross with demonstrated conspecific mate choice was found, and every pair remains untested. Neither P. similis nor the taeniolatus complex is included merely through genus membership. Empty proposals describe absent crossing reports, not proven reproductive isolation."
+    - field: "features.coloration"
+      proposals:
+        - by: "generator"
+          value:
+            baseColors:
+              - "blue"
+              - "yellow"
+              - "black"
+            pattern: "mixed"
+        - by: "checker-a"
+          value:
+            baseColors:
+              - "blue"
+              - "yellow"
+            pattern: "mixed"
+        - by: "checker-b"
+          value:
+            baseColors:
+              - "blue"
+              - "yellow"
+              - "black"
+            pattern: "mixed"
+        - by: "checker-c"
+          value:
+            baseColors:
+              - "blue"
+              - "yellow"
+              - "black"
+            pattern: "mixed"
+      decision:
+        baseColors:
+          - "blue"
+          - "yellow"
+          - "black"
+        pattern: "mixed"
+      rationale: "The generator, checker-b and checker-c proposed blue, yellow and black with mixed markings; checker-a proposed blue and yellow with the same mixed pattern. Retain black because the lateral marking and dorsal blotches are relevant dark pattern elements. Adult males are mainly blue with variable pale or yellow head colour. Do not use the orange-yellow Tanzania trade phenotype as the defining appearance of the described species."
+    - field: "features.feedingSpeed"
+      proposals:
+        - by: "generator"
+          value: "hasty"
+        - by: "checker-a"
+          value: "normal"
+        - by: "checker-b"
+          value: "normal"
+        - by: "checker-c"
+          value: "hasty"
+      decision: "normal"
+      rationale: "The generator and checker-c proposed hasty; checker-a and checker-b proposed normal. Strong appetite and seasonal plankton feeding do not demonstrate the rubric's sustained rushing and meal monopolization in captivity. Ready food acceptance without an established comparative feeding disadvantage supports normal provisionally. The enthusiastic-feeding reports remain alternative interpretations rather than a measured speed test."
+    - field: "features.minTank"
+      proposals:
+        - by: "generator"
+          value:
+            volumeL: 600
+            lengthCm: 200
+            depthCm: 60
+        - by: "checker-a"
+          value:
+            volumeL: 500
+            lengthCm: 200
+            depthCm: 50
+        - by: "checker-b"
+          value:
+            volumeL: 600
+            lengthCm: 200
+            depthCm: 60
+        - by: "checker-c"
+          value:
+            volumeL: 600
+            lengthCm: 200
+            depthCm: 60
+      decision:
+        volumeL: 600
+        lengthCm: 200
+        depthCm: 60
+      rationale: "The generator, checker-b and checker-c proposed 600 L, 200 cm length and 60 cm depth; checker-a proposed 500 L, 200 cm and 50 cm. Retain the two named-species care accounts' 600 L and 200 cm recommendation for one male with three females instead of checker-a's unsupported volume compromise. The 60 cm front-to-back depth is a layout inference for large adults and rock shelters, supported by regional non-mbuna examples rather than a species experiment. Smaller retailer minima and Stigliano's successful approximately 473 L colony do not establish a reliable minimum for identified adults. Multi-male or predator communities need appreciably more space."
+    - field: "features.lifespanYears"
+      proposals:
+        - by: "generator"
+          value:
+            min: 8
+            max: 10
+        - by: "checker-a"
+          value:
+            min: 7
+            max: 10
+        - by: "checker-b"
+          value:
+            min: 6
+            max: 8
+        - by: "checker-c"
+          value:
+            min: 8
+            max: 10
+      decision:
+        min: 8
+        max: 10
+      rationale: "The generator and checker-c proposed 8 to 10 years, checker-a 7 to 10, and checker-b 6 to 8. Retain 8 to 10 only as a weak general Malawi-hap planning estimate. The retailer's up-to-eight-year claim gives no lower endpoint, while the 7 to 10 and 8 to 10 trade estimates concern Tanzania stock. No verified age series for the described species establishes any of these ranges; the choice is not a pooled or median measured survival result."
+    - field: "features.beginnerSuitability"
+      proposals:
+        - by: "generator"
+          value: "demanding"
+        - by: "checker-a"
+          value: "moderate"
+        - by: "checker-b"
+          value: "moderate"
+        - by: "checker-c"
+          value: "moderate"
+      decision: "moderate"
+      rationale: "The generator proposed demanding; all three checkers proposed moderate. Straightforward feeding and routine maintenance support moderate once adequate housing and Malawi experience are available. The generator's emphasis on a 200 cm aquarium and male management remains valid, but it does not by itself establish unusually delicate care. This rating does not remove the adult space requirement or identity checks."
