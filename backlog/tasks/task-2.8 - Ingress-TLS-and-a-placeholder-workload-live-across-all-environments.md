@@ -1,10 +1,10 @@
 ---
 id: TASK-2.8
 title: 'Ingress, TLS and a placeholder workload live across all environments'
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-06-03 16:01'
-updated_date: '2026-10-13 15:01'
+updated_date: '2026-10-13 15:13'
 labels:
   - infra
   - ingress
@@ -16,6 +16,9 @@ dependencies:
 references:
   - apps/cert-manager/
   - apps/placeholder/
+  - tools/check-cluster-manifests.sh
+  - apps/traefik/overlays/cluster/config.yaml
+  - apps/placeholder/base/deployment.yaml
 parent_task_id: TASK-2
 priority: high
 ordinal: 10000
@@ -87,3 +90,36 @@ exists.
 - Platform apply for the records, then the URLs over valid TLS (AC #2, #3) and the preview removal
   (AC #4).
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### Implemented
+- Edge: the Traefik bundled with k3s; ports 80 and 443 through k3s ServiceLB; its HelmChartConfig
+  (`apps/traefik/overlays/cluster/config.yaml`) is reconciled by Argo CD in the addons project and
+  redirects HTTP to HTTPS except the ACME HTTP-01 challenge path.
+- k3s settings in `/etc/rancher/k3s/config.yaml`, written by `install-k3s.sh`; a differing config or
+  version reruns the installer and restarts k3s, an identical one changes nothing; a marker resumes
+  an interrupted application.
+- cert-manager v1.21.2 (`apps/cert-manager`, addons project, `cluster` overlay) with ClusterIssuers
+  for Let's Encrypt staging and production, HTTP-01 through ingress class `traefik`; ACME email
+  placeholder `acme@cichlids.com`; no cloud token in the cluster.
+- Placeholder: BusyBox 1.37.0-musl pinned by digest, non-root, read-only root filesystem;
+  overlays staging (`staging.cichlids.com`), prod (`cichlids.com`) and preview
+  (`pr-<number>.dev.cichlids.com`, host set by the preview ApplicationSet), each with Ingress and
+  a production certificate.
+- DNS (platform tier): A records for the apex, `staging` and `*.dev` to the node address.
+- ADR-0010 names Traefik and HTTP-01 per host.
+
+### Verified by the agent (Codex)
+- Manifest check red, then 149 resources valid; the bundled chart renders; a local Traefik run
+  answers 301 for normal requests and 200 for the ACME path; app and platform validate,
+  guardrails, destroy gate, secret guard, ADR index, story binding.
+- Not verified: live rollout, ServiceLB port binding, real certificate issuance.
+
+### Operator checks
+- Confirm or replace the ACME email `acme@cichlids.com` (monitored address).
+- Platform apply for the three DNS records, then public resolution and ports 80 and 443.
+- After the app tier bootstrap: Argo CD syncs addons, issuers and certificates; HTTPS for staging,
+  prod and one preview (AC #2, #3); the preview disappears after close (AC #4).
+<!-- SECTION:NOTES:END -->
