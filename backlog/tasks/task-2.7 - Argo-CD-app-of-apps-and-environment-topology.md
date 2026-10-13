@@ -1,10 +1,10 @@
 ---
 id: TASK-2.7
 title: Argo CD app-of-apps and environment topology
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-06-03 16:01'
-updated_date: '2026-10-13 12:02'
+updated_date: '2026-10-13 12:14'
 labels:
   - infra
   - argocd
@@ -14,7 +14,10 @@ dependencies:
   - TASK-2.4
   - TASK-2.6
 references:
-  - clusters/cichlids/
+  - tools/check-cluster-manifests.sh
+  - tools/check-cluster-manifests.test.py
+  - tools/preview-admission.test.mjs
+  - clusters/README.md
 parent_task_id: TASK-2
 priority: high
 ordinal: 9000
@@ -90,3 +93,36 @@ Define the Argo CD bootstrap and the environment topology in Git.
 ### Docs
 - `clusters/README.md`: how environments and previews come from the directory layout.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### Implemented
+- `clusters/cichlids/apps/`: AppProject `cichlids`; ApplicationSets `staging` and `prod` (Git file
+  generators that find only deployable overlays, so `apps/keycloak/overlays/*` with realm files
+  only is not picked up); `preview` (GitHub pull request generator on label `preview-active`,
+  requeue 300 s, revision = head SHA, namespace `pr-<number>` from the shared preview overlay) and
+  `preview-environments` (a separate Application per preview for namespace, ResourceQuota and
+  LimitRange).
+- Stateful applications: `Prune=false`, `Delete=false` (the Argo finalizer deletes in cascade)
+  and the resources finalizer.
+- Preview admission (`.github/workflows/previews.yml`, `tools/preview-admission.mjs`): only
+  same-repository pull requests with the label `preview`, at most two at a time, at most 48 hours
+  after creation; the workflow sets or removes `preview-active`. It runs on pull request events of
+  the base branch code only (checkout of the default branch, no pull request code) and every 15
+  minutes.
+- CI job `manifests`: `tools/check-cluster-manifests.sh` renders all kustomizations and validates
+  them with kubeconform against pinned Argo CD CRD schemas in `tools/manifest-schemas`
+  (reproducible with `tools/update-manifest-schemas.py`), with a test fixture service for the
+  generated applications.
+
+### Verified by the agent (Codex)
+- Red before the manifests, then 29 resources valid; eleven kustomizations build; four Python
+  and five Node tests; workflow YAML parses; story binding.
+
+### Operator checks
+- GitHub labels `preview` and `preview-active` exist.
+- After the app tier bootstrap: `kubectl -n argocd get applicationsets` lists staging, prod,
+  preview and preview-environments; a same-repository pull request with label `preview` gets a
+  `pr-<number>` namespace with quota, and it disappears after close (AC #3, #4).
+<!-- SECTION:NOTES:END -->
