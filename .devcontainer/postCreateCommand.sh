@@ -80,6 +80,9 @@ if [ -f "app/pnpm-workspace.yaml" ] && command -v pnpm >/dev/null 2>&1; then
   echo "=== Installing app dependencies and Playwright Chromium ==="
   (cd app && pnpm install --frozen-lockfile && cd mobile && pnpm exec playwright install --with-deps chromium) \
     || echo "WARNING: app dependency install failed (network?). Re-run later: cd app && pnpm install"
+elif [ -f "app/pnpm-workspace.yaml" ]; then
+  echo "WARNING: pnpm is not installed, so the app dependencies and the Playwright Chromium build are NOT installed."
+  echo "         Install pnpm, then run: cd app && pnpm install && cd mobile && pnpm exec playwright install --with-deps chromium"
 fi
 
 # Activate the repo's committed Git hooks (e.g. the pre-push secret scan). Hooks are a
