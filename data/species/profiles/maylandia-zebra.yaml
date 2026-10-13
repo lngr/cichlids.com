@@ -985,7 +985,7 @@ features:
         agree: 3
         total: 3
   hybridGroups:
-    value: [cynotilapia-afra-maylandia-zebra, maylandia, maylandia-zebra-callainos]
+    value: [cynotilapia-afra-maylandia-zebra, maylandia, maylandia-zebra-callainos, maylandia-zebra-tramitichromis-intermedius]
     confidence: high
     rationale: >-
       The genus group maylandia is presumed: hobby sources warn that Maylandia species cross in
@@ -995,6 +995,10 @@ features:
       Turner 2005) and a mixed farm stock in the trade (Aquarium Glaser), and
       cynotilapia-afra-maylandia-zebra, with the genetically confirmed hybrid population of M. zebra
       and Cynotilapia afra at Thumbi West (Stauffer et al. 1996, Streelman et al. 2004).
+      The curated group file data/species/hybrid-groups.yaml defines
+      maylandia-zebra-tramitichromis-intermedius with basis presumed, supported by adult laboratory
+      F1 offspring from zebra males and intermedius females, with F1 fertility and free parental
+      mate choice unverified and aquarium crossing frequency unknown.
     sources:
       - *a1
       - &a37
@@ -1030,6 +1034,17 @@ features:
           archive (wholesaler).
         url: https://www.aquariumglaser.de/en/25-perchlike-fishes/bright-blue-maylandia-from-thailand/
         accessed: 2026-10-13
+      - &hyb4
+        kind: literature
+        title: Patil et al. (2020). Genome-enabled inference of functional genetic variants in the face, brain and
+          behavior. Preprint, supplementary Table 5
+        url: https://doi.org/10.1101/2020.10.12.336453
+        accessed: 2026-10-13
+      - &hyb5
+        kind: literature
+        title: Patil et al. (2021). Genome-enabled discovery of evolutionary divergence in brains and behavior
+        url: https://doi.org/10.1038/s41598-021-92385-8
+        accessed: 2026-10-13
     evidence:
       - source: *a1
         value: maylandia
@@ -1058,6 +1073,12 @@ features:
       - source: *hyb3
         value: maylandia-zebra-callainos
         note: "blue farm-bred fish in the trade carry ancestry of M. callainos and M. zebra"
+      - source: *hyb4
+        value: [maylandia-zebra-tramitichromis-intermedius]
+        note: supplementary Table 5 identifies adult laboratory F1 offspring; fertility is unverified
+      - source: *hyb5
+        value: [maylandia-zebra-tramitichromis-intermedius]
+        note: published laboratory experiment supports viable offspring, without established aquarium mate choice
     verification:
       method: unanimous
       votes:

@@ -774,7 +774,7 @@ features:
       votes: {agree: 3, total: 3}
 
   hybridGroups:
-    value: [aulonocara, sciaenochromis-fryeri-aulonocara]
+    value: [aulonocara, sciaenochromis-fryeri-aulonocara, tramitichromis-intermedius-aulonocara-baenschi]
     confidence: high
     rationale: >-
       A. baenschi belongs to the presumed genus group aulonocara, which rests on the warnings of
@@ -782,6 +782,10 @@ features:
       reports a cross with a named second species. It is also a member of the presumed group
       sciaenochromis-fryeri-aulonocara, because Seriously Fish and Fishkeeper report S. fryeri males
       breeding with Aulonocara females without naming a species.
+      The curated group file data/species/hybrid-groups.yaml defines
+      tramitichromis-intermedius-aulonocara-baenschi with basis presumed, supported by laboratory
+      crosses and partly shared F2 pedigrees demonstrating F1 fertility while aquarium mate choice
+      remains uncertain.
     sources:
       - *cof
       - *sf
@@ -802,6 +806,27 @@ features:
         title: "Fishkeeper (Maidenhead Aquatics): Electric Blue Hap, Sciaenochromis fryeri,
           species profile"
         url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/electric-blue-hap
+        accessed: 2026-10-13
+      - &hyb8
+        kind: literature
+        title: Carleton et al. (2010). Genetic basis of differential opsin gene expression in cichlid fishes
+        url: https://doi.org/10.1111/j.1420-9101.2010.01954.x
+        accessed: 2026-10-13
+      - &hyb9
+        kind: literature
+        title: OQuin et al. (2012). Evolution of cichlid vision via trans-regulatory divergence
+        url: https://doi.org/10.1186/1471-2148-12-251
+        accessed: 2026-10-13
+      - &hyb10
+        kind: literature
+        title: Schulte et al. (2014). Interspecific Variation in Rx1 Expression Controls Opsin Expression and Causes
+          Visual System Diversity in African Cichlid Fishes
+        url: https://doi.org/10.1093/molbev/msu172
+        accessed: 2026-10-13
+      - &hyb11
+        kind: literature
+        title: Sandkam et al. (2020). Tbx2a Modulates Switching of RH2 and LWS Opsin Gene Expression
+        url: https://doi.org/10.1093/molbev/msaa062
         accessed: 2026-10-13
     evidence:
       - source: *cof
@@ -825,6 +850,18 @@ features:
       - source: *hyb7
         value: sciaenochromis-fryeri-aulonocara
         note: "advises against Aulonocara because males may remove the peacock male to breed with its females"
+      - source: *hyb8
+        value: [tramitichromis-intermedius-aulonocara-baenschi]
+        note: laboratory offspring from T. intermedius males and A. baenschi females
+      - source: *hyb9
+        value: [tramitichromis-intermedius-aulonocara-baenschi]
+        note: F2 descendants demonstrate F1 fertility in experimental pedigrees
+      - source: *hyb10
+        value: [tramitichromis-intermedius-aulonocara-baenschi]
+        note: F2 descendants in related experimental pedigrees support interfertility
+      - source: *hyb11
+        value: [tramitichromis-intermedius-aulonocara-baenschi]
+        note: F2 descendants support F1 fertility; aquarium mate choice is not established
     verification:
       method: unanimous
       votes: {agree: 3, total: 3}
