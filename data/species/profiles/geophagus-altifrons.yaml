@@ -1,0 +1,1393 @@
+schemaVersion: 1
+id: geophagus-altifrons
+legacyIds: [819]
+status: described
+taxonomy:
+  validName: Geophagus altifrons
+  genus: Geophagus
+  species: altifrons
+  author: Heckel, 1840
+  source: &cof
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes, species of the genus Geophagus"
+    url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Geophagus
+    accessed: 2026-10-13
+  synonyms: []
+  legacyNames:
+    - Geophagus altifrons
+  note: >-
+    The Catalog of Fishes lists Geophagus altifrons Heckel 1840 (type locality Manaus, Brazil) as
+    valid and names no junior synonym. Gosse (1976) had placed it in the synonymy of
+    G. surinamensis; Kullander (2003) and later authors treat it as a species of its own. The trade
+    often sells G. neambi, G. sveni or other fish of the G. surinamensis group under this name, and
+    Tocantins fish once offered as G. sp. aff. altifrons are G. neambi, so a fish labelled
+    G. altifrons is not always this species. Older records outside the middle and lower Amazon
+    tributaries need the same care. The Cichlid Room Companion uses the same valid name and author.
+names:
+  trade:
+    en:
+      - Altifrons eartheater
+      - High-front eartheater
+variants:
+  - name: "Tapajós"
+    kind: locality
+    note: Wild imports from the Rio Tapajós drainage, traded as G. altifrons 'Tapajós', often with strong head and fin colour.
+  - name: "Xingu"
+    kind: locality
+    note: Population of the middle and lower Rio Xingu, where the species is common along sandy river margins.
+features:
+  origin:
+    value:
+      continent: South America
+      region: Amazon basin (middle and lower Amazon and its clear- and blackwater tributaries)
+      waterbody: null
+      localities:
+        - Rio Negro near Manaus (type locality), Anavilhanas and Jaú
+        - Rio Uatumã and Rio Abacate
+        - Rio Trombetas
+        - Rio Tapajós and Rio Arapiuns
+        - Rio Curuá-Una
+        - Rio Xingu
+        - Rio Paru and Rio Jari
+        - Rio Madeira
+        - Rio Purus
+        - lower Rio Tocantins
+    confidence: high
+    rationale: >-
+      All four runs agree on the Amazon basin. The Catalog of Fishes gives the Amazon basin of
+      Brazil and Ecuador and notes an introduced population in Singapore. The Brazilian national
+      assessment (SALVE) names the Negro, Amazonas, Trombetas, Tapajós, Xingu, Oiapoque and lower
+      Tocantins drainages and treats records from the middle and upper Tocantins as unconfirmed.
+      Seriously Fish adds the Paru, Madeira and Purus and assigns the Tocantins trade fish to
+      G. neambi. Field studies confirm the species in the Rio Jari, in the Arapiuns and Tapajós near
+      Santarém and in the Balbina area of the Uatumã. As a river species it has no entry in the
+      waterbody table.
+    sources:
+      - *cof
+      - &fishbase
+        kind: database
+        title: "FishBase species summary: Geophagus altifrons"
+        url: https://www.fishbase.se/summary/Geophagus-altifrons.html
+        accessed: 2026-10-13
+      - &salve
+        kind: literature
+        title: "ICMBio (2025). Ficha de Geophagus altifrons. Sistema SALVE, Avaliação do Risco de Extinção da Fauna Brasileira."
+        url: https://doi.org/10.37002/salve.ficha.35236.2
+        accessed: 2026-10-13
+      - &sf
+        kind: database
+        title: "Seriously Fish: Geophagus altifrons"
+        url: https://www.seriouslyfish.com/species/geophagus-altifrons/
+        accessed: 2026-10-13
+      - &brito
+        kind: literature
+        title: "Brito-Júnior, Oliveira and Tavares-Dias (2022): Ecology and diversity of metazoan parasites infecting Geophagus altifrons (Cichliformes: Cichlidae) from the Amazon River system in northern Brazil. Revista Brasileira de Parasitologia Veterinária 31(1), e019721."
+        url: https://doi.org/10.1590/s1984-29612022014
+        accessed: 2026-10-13
+      - &bogota
+        kind: literature
+        title: "Bogotá-Gregory, Lima, Correa et al. (2020): Biogeochemical water type influences community composition, species richness, and biomass in megadiverse Amazonian fish assemblages. Scientific Reports 10, 15349."
+        url: https://doi.org/10.1038/s41598-020-72349-0
+        accessed: 2026-10-13
+      - &costa
+        kind: literature
+        title: "Costa, Weiss and Piedade (2024): Responses of trophic fish guilds upstream and downstream of the Balbina dam, Central Amazon, Northern Brazil. Neotropical Ichthyology."
+        url: https://doi.org/10.1590/1982-0224-2023-0009
+        accessed: 2026-10-13
+    evidence:
+      - source: *cof
+        value: {continent: South America, region: "Amazon River basin (Brazil, Ecuador)"}
+        note: native range; introduced in Singapore
+      - source: *salve
+        value: {continent: South America, region: "Negro, Amazonas, Trombetas, Tapajós, Xingu, Oiapoque and lower Tocantins basins"}
+        note: middle and upper Tocantins records unconfirmed
+      - source: *sf
+        value: {continent: South America, region: middle and lower Amazon tributaries}
+        note: Tocantins trade fish assigned to G. neambi
+  temperatureC:
+    value: {min: 27, max: 32}
+    confidence: medium
+    verification:
+      method: qualified-majority
+      votes: {agree: 4, total: 6}
+    rationale: >-
+      Decided by qualified majority (4 of 6 votes). The agreeing votes proposed 27 to 31 C
+      (generator), 26 to 32 C (checker-a), 27 to 32 C (tiebreaker-1) and 26 to 32 C (tiebreaker-2);
+      the median of their bounds gives 27 to 32 C. Checker-b proposed 25 to 30 C and checker-c a
+      measured warm-season envelope of 28.3 to 31.2 C. No study gives temperatures taken at the
+      capture sites of the species, so the range rests on the rivers it lives in. Two hydrological
+      cycles of monitoring in the Xingu main channel gave a mean of about 29.6 C with nearly all
+      readings between 27 and 32 C. Clearwater lagoons of the Tapajós and Trombetas held 29.6 to
+      31.8 C at high water, the middle Xingu near Belo Monte 29.2 to 32.7 C, and an annual mean on
+      the middle Xingu was 28.6 C. The sources span a wider range than the decision: single Xingu
+      readings reach from 26 to 33 C, a floodplain lake near the Rio Negro mouth cooled to 24.5 C
+      during a short cold spell, and one Xingu paper quotes 25 to 27 C from a climate classification
+      rather than water measurements. These extremes are left out as atypical. Care-sheet figures
+      are used for the tolerance only.
+    sources:
+      - &ichthyo
+        kind: literature
+        title: "Ichthyoplankton community in lagoons of the Tapajós and Trombetas rivers, eastern Amazon. Acta of Fisheries and Aquatic Resources (2022)"
+        url: https://doi.org/10.46732/actafish.2022.10.2.113-132
+        accessed: 2026-10-13
+      - &belo
+        kind: literature
+        title: "Carbon dioxide (CO2) concentrations and emission in the newly constructed Belo Monte hydropower complex in the Xingu River, Amazonia. Biogeosciences (2019)"
+        url: https://doi.org/10.5194/bg-16-3527-2019
+        accessed: 2026-10-13
+      - &popxingu
+        kind: literature
+        title: "Population and biological parameters of selected fish species from the middle Xingu River, Amazon Basin. Brazilian Journal of Biology (2015)"
+        url: https://doi.org/10.1590/1519-6984.01914bm
+        accessed: 2026-10-13
+      - &sedentary
+        kind: literature
+        title: "Sedentary fish as indicators of changes in the river flow rate after impoundment. Ecological Indicators (2021)"
+        url: https://doi.org/10.1016/j.ecolind.2021.107466
+        accessed: 2026-10-13
+      - &rodrigues
+        kind: literature
+        title: "Rodrigues-Filho, Abe, Gatti-Junior et al. (2015): Spatial patterns of water quality in Xingu River Basin (Amazonia) prior to the Belo Monte dam impoundment. Brazilian Journal of Biology 75(3 suppl. 1), 34-46."
+        url: https://doi.org/10.1590/1519-6984.02914bm
+        accessed: 2026-10-13
+      - &valwood
+        kind: literature
+        title: "Val and Wood (2022): Global change and physiological challenges for fish of the Amazon today and in the near future. Journal of Experimental Biology 225(10), jeb216440."
+        url: https://doi.org/10.1242/jeb.216440
+        accessed: 2026-10-13
+      - &catalao
+        kind: literature
+        title: "Seasonal and spatial variations in limnological conditions of a floodplain lake (Lake Catalão) connected to both the Solimões and Negro Rivers, Central Amazonia. Acta Amazonica (2014)"
+        url: https://doi.org/10.1590/s0044-59672014000100012
+        accessed: 2026-10-13
+      - &ward
+        kind: literature
+        title: "Ward et al. (2019): Enhanced Aquatic Respiration Associated With Mixing of Clearwater Tributary and Turbid Amazon River Waters. Frontiers in Earth Science."
+        url: https://doi.org/10.3389/feart.2019.00101
+        accessed: 2026-10-13
+      - &leal
+        kind: literature
+        title: "Leal et al. (2021): Variação espaço-temporal e correlatos das variáveis limnológicas do rio Xingu a montante da Usina Hidrelétrica de Belo Monte, Altamira-PA"
+        url: https://doi.org/10.18677/EnciBio_2021B24
+        accessed: 2026-10-13
+    evidence:
+      - source: *ichthyo
+        value: {min: 29.6, max: 31.8}
+        note: means per lagoon, clearwater floodplain lagoons at high water
+      - source: *belo
+        value: {min: 29.2, max: 32.7}
+        note: surface water of the middle Xingu at high and low water
+      - source: *popxingu
+        value: {min: 28.6, max: 28.6}
+        note: annual mean of surface water at the middle Xingu sampling sites of the species
+      - source: *sedentary
+        value: {min: 25, max: 27}
+        note: general figure for the Xingu region taken from a climate reference
+      - source: *rodrigues
+        value: {min: 26, max: 33}
+        note: single readings at Xingu main-channel stations over two cycles; cluster means 29.5 to 29.7 C
+      - source: *valwood
+        value: {min: 28, max: 32}
+        note: present-day water temperature of Amazonian waters in general
+      - source: *catalao
+        value: {min: 24.5, max: 29}
+        note: low end only during a cold-air spell at high water
+      - source: *ward
+        value: {min: 29.5, max: 30.8}
+        note: means plus or minus one standard deviation in the lower Xingu and Tapajós
+      - source: *leal
+        value: {min: 28.3, max: 32.5}
+        note: Xingu beach water over a year after impoundment; rainy season 28.3 to 31.2 C
+    tolerance:
+      value: {min: 24, max: 32}
+      confidence: medium
+      verification:
+        method: unanimous
+        votes: {agree: 4, total: 4}
+      rationale: >-
+        Decided unanimously (4 of 4 votes within the agreement threshold): 24 to 31 C (generator),
+        24 to 32 C (checker-a), 24 to 30 C (checker-b) and 25 to 32 C (checker-c). Care sheets give
+        26 to 32 C (Seriously Fish), 26 to 30 C (Fishipedia), 25 to 30 C (AquariumDomain) and 27 to
+        30 C (a species keeping account on AquaInfo); hobby and retail pages give 24 to 30 C and 25
+        to 29 C. The Fishkeeper data bank goes down to 22 C, wider than the decision; a species
+        from constantly warm water is not kept that cool for years, so 24 C is the lower limit. The
+        upper limit of 32 C rests on Seriously Fish and the natural range, while most sources stay
+        at or below 30 C for long-term keeping.
+      sources:
+        - *sf
+        - &fishkeeper
+          kind: database
+          title: "Fishkeeper (Maidenhead Aquatics) data bank: Geophagus altifrons"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/geophagus-altifrons
+          accessed: 2026-10-13
+        - &fishipedia
+          kind: database
+          title: "Fishipedia: Géo altifrons (Geophagus altifrons)"
+          url: https://www.fishipedia.fr/fr/poissons/geophagus-altifrons
+          accessed: 2026-10-13
+        - &aqdomain
+          kind: database
+          title: "AquariumDomain: Geophagus altifrons species profile"
+          url: https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/Geophagusaltifrons.shtml
+          accessed: 2026-10-13
+        - &aquainfo
+          kind: website
+          title: "AquaInfo: Geophagus altifrons, a keeping and breeding account"
+          url: https://aquainfo.nl/en/article/geophagus-altifrons/
+          accessed: 2026-10-13
+        - &guidarium
+          kind: website
+          title: "Guidarium care guide: Altifrons Eartheater (Geophagus altifrons)"
+          url: https://guidarium.com/fishes/altifrons-eartheater
+          accessed: 2026-10-13
+        - &sims
+          kind: website
+          title: "Sims Tropical Fish: Geophagus altifrons (retailer care notes)"
+          url: https://simstropicalfish.co.uk/product/geophagus-altifrons/
+          accessed: 2026-10-13
+      evidence:
+        - source: *sf
+          value: {min: 26, max: 32}
+          note: aquarium recommendation
+        - source: *fishkeeper
+          value: {min: 22, max: 30}
+          note: aquarium recommendation
+        - source: *fishipedia
+          value: {min: 26, max: 30}
+        - source: *aqdomain
+          value: {min: 25, max: 30}
+          note: converted from 77 to 86 F
+        - source: *aquainfo
+          value: {min: 27, max: 30}
+          note: husbandry table of a species keeping account
+        - source: *guidarium
+          value: {min: 24, max: 30}
+          note: general care guide
+        - source: *sims
+          value: {min: 25, max: 29}
+          note: retailer care notes
+  ph:
+    value: {min: 4.8, max: 7.0}
+    confidence: medium
+    verification:
+      method: qualified-majority
+      votes: {agree: 4, total: 6}
+    rationale: >-
+      Decided by qualified majority (4 of 6 votes). The agreeing votes proposed 5.0 to 7.0
+      (generator) and 4.8 to 7.0 (checker-b, checker-c and tiebreaker-2); the median gives 4.8 to
+      7.0. Checker-a proposed 4.6 to 8.0 and tiebreaker-1 4.6 to 7.5. The species lives in black
+      water (Rio Negro), clear water (Tapajós, Trombetas, Xingu) and floodplain lakes. Channel
+      measurements of the Tapajós and Xingu give about 6.0 to 7.0, Tapajós and Trombetas lagoons 5.2
+      to 6.9, the lower Tapajós a mean of 6.56, and Seriously Fish reports 4.8 to 6.6 from the natural
+      waters of the species. The sources reach beyond the decision on both sides: the Rio Negro at
+      Manaus measured 4.6 to 5.3, Xingu main-channel averages reach 7.3 to 7.9 depending on the
+      water level, and single Xingu readings range from 4.8 to 8.6. The decided range covers the
+      usual values of the habitats and leaves out these extremes.
+    sources:
+      - &rocha
+        kind: literature
+        title: "Rocha da Silva, Ríos-Villamizar, Brandão da Cunha et al. (2019): A contribution to the hydrochemistry and water typology of the Amazon River and its tributaries. Caminhos de Geografia 20(72), 360-374."
+        url: https://doi.org/10.14393/rcg207246295
+        accessed: 2026-10-13
+      - *ichthyo
+      - *sedentary
+      - *belo
+      - &rios14
+        kind: literature
+        title: "Ríos-Villamizar, Piedade, Da Costa, Adeney and Junk (2014): Chemistry of different Amazonian water types for river classification: a preliminary review. WIT Transactions on Ecology and the Environment 178, 17-28."
+        url: https://doi.org/10.2495/ws130021
+        accessed: 2026-10-13
+      - *sf
+      - &hydro
+        kind: literature
+        title: "Hydrochemical classification of Amazonian rivers: a systematic review and meta-analysis. Caminhos de Geografia."
+        url: https://doi.org/10.14393/rcg217853272
+        accessed: 2026-10-13
+      - *rodrigues
+      - *ward
+      - &sabaj
+        kind: literature
+        title: "Sabaj, Fitzgerald and Winemiller (2024): Physicochemical and ecosystem properties of the Middle to Lower Xingu River, Brazil, prior to the operation of the Belo Monte Dam Complex. Proceedings of the Academy of Natural Sciences of Philadelphia 166 (abstract only)."
+        url: https://doi.org/10.1635/053.166.0120
+        accessed: 2026-10-13
+      - &zookeys
+        kind: literature
+        title: "Checklist of the ichthyofauna of the Rio Negro basin in the Brazilian Amazon. ZooKeys 881 (2019)"
+        url: https://doi.org/10.3897/zookeys.881.32055
+        accessed: 2026-10-13
+    evidence:
+      - source: *rocha
+        value: {min: 4.6, max: 7.0}
+        note: Rio Negro at Manaus 4.6 to 5.3, Arapiuns 6.0 to 7.0, Tapajós and Xingu channels 6.0 to 7.0
+      - source: *ichthyo
+        value: {min: 5.2, max: 6.9}
+        note: Tapajós and Trombetas floodplain lagoons at high water
+      - source: *sedentary
+        value: {min: 6.2, max: 7.0}
+        note: middle Xingu, study site of the species
+      - source: *belo
+        value: {min: 6.6, max: 6.8}
+        note: habitat means, middle Xingu
+      - source: *rios14
+        value: {min: 6.3, max: 6.6}
+        note: means of the lower Tapajós and the Cuparí; colourless forest streams of the basin 4.4
+      - source: *sf
+        value: {min: 4.8, max: 6.6}
+        note: values reported from the natural waters of the species, sites not named
+      - source: *hydro
+        value: {min: 5.3, max: 7.2}
+        note: Amazonian clearwater rivers in general
+      - source: *rodrigues
+        value: {min: 6.2, max: 7.7}
+        note: Xingu main channel, mean plus or minus one standard deviation; single readings 4.8 to 8.6, Rio Negro reference value 4.84
+      - source: *ward
+        value: {min: 5.6, max: 6.0}
+        note: mean pH at the Xingu and Tapajós sampling sites
+      - source: *sabaj
+        value: {min: 7.3, max: 7.9}
+        note: Xingu main-channel averages by water level, from the abstract
+      - source: *zookeys
+        value: {min: 4.0, max: 5.0}
+        note: Rio Negro described as below pH 5, species listed there; lower bound not stated
+    tolerance:
+      value: {min: 4.8, max: 7.5}
+      confidence: medium
+      verification:
+        method: qualified-majority
+        votes: {agree: 4, total: 6}
+      rationale: >-
+        Decided by qualified majority (4 of 6 votes). The agreeing votes proposed 5.0 to 7.5
+        (generator and checker-b), 4.5 to 7.5 (tiebreaker-1) and 4.8 to 7.5 (tiebreaker-2); the
+        median gives 4.9 to 7.5, which is widened to 4.8 so that it contains the natural range.
+        Checker-a proposed 4.5 to 8.0 and checker-c 4.8 to 7.0. Seriously Fish advises the acidic
+        natural range for wild fish and says captive-bred fish keep well near neutral; the Fishkeeper
+        data bank and AquariumDomain give 5.0 to 7.0, Fishipedia 5.0 to 6.5, and hobby and trade
+        pages 5.0 to 7.5 or 6.0 to 7.5. A wholesaler reports keeping the species at higher pH with
+        weaker colours, which some votes read as up to 8.0; no care sheet recommends more than 7.5
+        for long-term keeping, so the wider wholesaler range is not adopted.
+      sources:
+        - *sf
+        - *fishkeeper
+        - *fishipedia
+        - *aqdomain
+        - *rocha
+        - *guidarium
+        - &imperial
+          kind: website
+          title: "Imperial Tropicals: Geophagus altifrons (importer care notes)"
+          url: https://imperialtropicals.com/products/geophagus-altifrons
+          accessed: 2026-10-13
+        - &glaser
+          kind: website
+          title: "Aquarium Glaser fish archive (wholesaler): Geophagus altifrons"
+          url: https://www.aquariumglaser.de/en/25-perchlike-fishes/25e-perchlike-fishes-5-remaining-cichlids-from-south-and-central-america/geophagus_altifrons_en/
+          accessed: 2026-10-13
+        - *aquainfo
+        - *sims
+      evidence:
+        - source: *sf
+          value: {min: 4.8, max: 7.0}
+          note: acidic range for wild fish, about neutral for captive-bred fish
+        - source: *fishkeeper
+          value: {min: 5.0, max: 7.0}
+          note: aquarium recommendation
+        - source: *fishipedia
+          value: {min: 5.0, max: 6.5}
+        - source: *aqdomain
+          value: {min: 5.0, max: 7.0}
+          note: aquarium recommendation
+        - source: *rocha
+          value: {min: 4.6, max: 7.0}
+          note: habitat water in which wild populations live permanently
+        - source: *guidarium
+          value: {min: 5.0, max: 7.5}
+          note: general care guide
+        - source: *imperial
+          value: {min: 5.0, max: 7.5}
+          note: importer care notes
+        - source: *glaser
+          value: {min: 6.0, max: 8.0}
+          note: qualitative report of keeping at higher pH; the numbers are an interpretation
+        - source: *aquainfo
+          value: {min: 6.5, max: 6.5}
+          note: pH of a keeper's tank in which the species lived and bred
+        - source: *sims
+          value: {min: 6.0, max: 7.5}
+          note: retailer care notes
+  ghDgh:
+    value: {min: 0, max: 1}
+    confidence: medium
+    verification:
+      method: unanimous
+      votes: {agree: 4, total: 4}
+    rationale: >-
+      Decided unanimously (4 of 4 votes within the agreement threshold): 0 to 1 dGH (generator and
+      checker-a), 0.3 to 2 dGH (checker-b, estimated from conductivity) and 0.1 to 0.5 dGH (checker-c,
+      calculated from measured ions). The waters of the range hold almost no calcium and magnesium.
+      Ion means convert to about 0.13 dGH in the lower Tapajós, 0.15 dGH in the Rio Negro, 0.02 dGH in
+      colourless forest streams and 0.4 to 0.5 dGH at Xingu main-channel stations, with single Xingu
+      maxima near 1.4 dGH. Conductivity below about 40 µS/cm in the Tapajós and Xingu points the same
+      way. Whitewater floodplain lakes, which the species also enters, can be slightly harder.
+    sources:
+      - *rios14
+      - *rocha
+      - *hydro
+      - *rodrigues
+      - &rios20
+        kind: literature
+        title: "Ríos-Villamizar, Adeney, Piedade and Junk (2020): Physicochemical features of Amazonian water typologies for water resources management. IOP Conference Series: Earth and Environmental Science 427, 012003."
+        url: https://doi.org/10.1088/1755-1315/427/1/012003
+        accessed: 2026-10-13
+      - *valwood
+      - *belo
+    evidence:
+      - source: *rios14
+        value: {min: 0.02, max: 0.6}
+        note: converted from calcium and magnesium means of the Tapajós, its streams, the Cuparí and the Tefé
+      - source: *rocha
+        value: {min: 0, max: 1}
+        note: estimate from conductivity below 40 µS/cm in the Tapajós and Xingu; no hardness stated
+      - source: *hydro
+        value: {min: 0.1, max: 2}
+        note: estimate from conductivity of 5 to 54 µS/cm in clearwater rivers
+      - source: *rodrigues
+        value: {min: 0.15, max: 0.51}
+        note: converted from ion means of the Rio Negro and the Xingu main channel; single maxima near 1.4
+      - source: *valwood
+        value: {min: 0, max: 1.4}
+        note: calcium below 10 mg/L in almost all Amazonian waters, an upper bound for calcium only
+      - source: *belo
+        value: {min: 0.3, max: 1.5}
+        note: estimate from conductivity of 18 to 38 µS/cm
+    tolerance:
+      value: {min: 0, max: 8}
+      confidence: medium
+      verification:
+        method: unanimous
+        votes: {agree: 4, total: 4}
+      rationale: >-
+        Decided unanimously (4 of 4 votes within the agreement threshold): 0 to 8 dGH (generator,
+        checker-b and checker-c) and 0 to 10 dGH (checker-a). Seriously Fish recommends 0 to 5 dGH
+        and the Fishkeeper data bank up to 8; a keeper bred Tapajós fish at 8 dGH but prefers 4 or
+        less. Sources give wider ranges than the decision: Fishipedia and a general care guide 1 to
+        10 dGH, a retailer 5 to 15 dGH, and a wholesaler reports breeding at about 25 dGH. These rest
+        on single or retail reports, so soft to medium water up to 8 dGH is the supported long-term
+        range.
+      sources:
+        - *sf
+        - *fishkeeper
+        - *fishipedia
+        - *aquainfo
+        - *guidarium
+        - *sims
+        - *glaser
+      evidence:
+        - source: *sf
+          value: {min: 0, max: 5}
+          note: aquarium recommendation
+        - source: *fishkeeper
+          value: {min: 0, max: 8}
+          note: aquarium recommendation, given as dH
+        - source: *fishipedia
+          value: {min: 1, max: 10}
+        - source: *aquainfo
+          value: {min: 8, max: 8}
+          note: hardness of a keeper's breeding tank; the same page prefers 4 or less
+        - source: *guidarium
+          value: {min: 1, max: 10}
+          note: general care guide
+        - source: *sims
+          value: {min: 5, max: 15}
+          note: retailer care notes
+        - source: *glaser
+          value: {min: 0, max: 25}
+          note: single wholesaler report of breeding at about 25 dGH
+  khDkh:
+    value: {min: 0, max: 1}
+    confidence: medium
+    verification:
+      method: unanimous
+      votes: {agree: 4, total: 4}
+    rationale: >-
+      Decided unanimously (4 of 4 votes within the agreement threshold): 0 to 1 dKH (generator and
+      checker-a), 0.2 to 1.5 dKH (checker-b) and 0.1 to 1.1 dKH (checker-c). Bicarbonate means
+      convert to about 0.4 dKH in the lower Tapajós, 0.3 dKH in the blackwater Tefé, 0.1 dKH in
+      forest streams of the Tapajós basin and 1.0 dKH in the Cuparí. Xingu main-channel alkalinity
+      means give 0.4 to 0.6 dKH, with single readings from 0.2 to 1.7 dKH, and the Rio Negro about
+      0.2 dKH. One Tapajós data set reaches 1.04 dKH, which is the upper end of the measured means.
+    sources:
+      - *rios14
+      - *rocha
+      - *rodrigues
+      - *hydro
+      - *belo
+    evidence:
+      - source: *rios14
+        value: {min: 0.09, max: 1.0}
+        note: converted from bicarbonate means of the Tapajós, its streams, the Cuparí and the Tefé
+      - source: *rocha
+        value: {min: 0, max: 1}
+        note: estimate from conductivity below 40 µS/cm; no alkalinity stated
+      - source: *rodrigues
+        value: {min: 0.18, max: 1.04}
+        note: converted from bicarbonate and alkalinity means of the Rio Negro, Xingu and Tapajós; single Xingu readings 0.19 to 1.74
+    tolerance:
+      value: {min: 0, max: 5}
+      confidence: low
+      verification:
+        method: unanimous
+        votes: {agree: 4, total: 4}
+      rationale: >-
+        Decided unanimously (4 of 4 votes within the agreement threshold): 0 to 5 dKH (generator
+        and checker-b), 0 to 6 dKH (checker-a) and 0.1 to 5 dKH (checker-c). AquariumDomain is the
+        only care sheet that names a carbonate hardness (1 to 5 dKH), and a keeper reports breeding
+        at 4 dKH. The other values are derived from the soft, acidic water that Seriously Fish,
+        the Fishkeeper data bank and Fishipedia recommend; derivations from the Fishkeeper and
+        Fishipedia figures reach 6 dKH, slightly wider than the decision. The lower end contains
+        the natural near-zero alkalinity, at which pH needs careful watching. The value rests
+        largely on inference, hence the low confidence.
+      sources:
+        - *sf
+        - *fishkeeper
+        - *fishipedia
+        - *aqdomain
+        - *aquainfo
+        - *rios14
+      evidence:
+        - source: *sf
+          value: {min: 0, max: 5}
+          note: derived from 0 to 5 dGH at acidic pH; no carbonate hardness stated
+        - source: *fishkeeper
+          value: {min: 0, max: 6}
+          note: derived from soft acidic water up to 8 dH; no carbonate hardness stated
+        - source: *fishipedia
+          value: {min: 0, max: 6}
+          note: derived from 1 to 10 dGH at pH 5 to 6.5; no carbonate hardness stated
+        - source: *aqdomain
+          value: {min: 1, max: 5}
+          note: care-sheet recommendation
+        - source: *aquainfo
+          value: {min: 4, max: 4}
+          note: carbonate hardness of a keeper's breeding tank
+        - source: *rios14
+          value: {min: 0.4, max: 0.4}
+          note: natural Tapajós value, a lower constraint only
+  maxSizeCm:
+    value: {male: 25, female: 22}
+    confidence: medium
+    rationale: >-
+      Kullander (2003, via the SALVE assessment) and Seriously Fish give 22.5 cm standard length,
+      roughly 27 to 28 cm total length, and FishBase lists 26.5 cm total length. Wild fish from the
+      Rio Jari averaged about 17 cm. Care sheets and a keeping account put adult aquarium fish at
+      20 to 25 cm, and 30 cm figures from a wholesaler, Fishipedia and AquariumDomain are
+      exceptional. Well-kept males typically reach about 25 cm. No source gives a size per sex;
+      females are set at 22 cm after the usual size difference in the genus, as proposed by
+      checker-a and checker-b. Checker-c gave both sexes 25 cm as a planning ceiling.
+    sources:
+      - *fishbase
+      - *salve
+      - *sf
+      - *fishkeeper
+      - *fishipedia
+      - *aqdomain
+      - *aquainfo
+      - *brito
+    evidence:
+      - source: *fishbase
+        value: {male: 26.5, female: 26.5}
+        note: maximum total length, sexes not separated
+      - source: *salve
+        value: {male: 27, female: 27}
+        note: 22.5 cm standard length converted to total length
+      - source: *sf
+        value: {male: 28, female: 28}
+        note: 22.5 cm standard length converted to total length
+      - source: *fishkeeper
+        value: {male: 26.5, female: 26.5}
+        note: maximum size, sexes not separated
+      - source: *fishipedia
+        value: {male: 20, female: 20}
+        note: average adult size; 30 cm given as maximum
+      - source: *aquainfo
+        value: {male: 25, female: 25}
+        note: upper end of 20 to 25 cm for aquarium adults
+  predation:
+    value: 1
+    confidence: low
+    verification:
+      method: conservative
+      votes: {agree: 3, total: 6}
+    rationale: >-
+      Decided conservatively at 3 of 6 votes: the generator, checker-a and tiebreaker-1 proposed
+      level 1, checker-b, checker-c and tiebreaker-2 level 0, and without a qualified majority the
+      higher level applies. For level 0 speak the stomach studies: Seriously Fish reports wild stomach
+      contents of small invertebrates, seeds and detritus and says the species leaves fish longer
+      than a few millimetres alone, a study at the Balbina reservoir classes it as a herbivore from
+      its own stomach analyses, and FishBase estimates a trophic level of 2.2, typical of a plant and
+      invertebrate feeder. For level 1 speaks that fish are recorded as an occasional food item: the
+      Jari River parasite study summarises the published diet data and lists fish among insects,
+      crustaceans, algae, detritus, fruits and seeds, fish made up 12 and 4 percent of gut volume in
+      the closely related G. abalios and G. dicrozoster, and the Fishkeeper data bank and a care
+      guide warn against small tankmates and shrimp. No source describes regular fish eating, so
+      level 2 is excluded. In practice fry and very small fish up to about 2 cm are at risk.
+    sources:
+      - *sf
+      - *fishkeeper
+      - *brito
+      - &lopez
+        kind: literature
+        title: "López-Fernández, Winemiller, Montaña and Honeycutt (2012): Diet-morphology correlations in the radiation of South American geophagine cichlids (Perciformes: Cichlidae: Cichlinae). PLoS ONE 7(4), e33997."
+        url: https://doi.org/10.1371/journal.pone.0033997
+        accessed: 2026-10-13
+      - *costa
+      - *fishbase
+      - *guidarium
+    evidence:
+      - source: *sf
+        value: 0
+        note: wild stomachs held invertebrates, seeds and detritus; no predation on fish beyond a few millimetres
+      - source: *costa
+        value: 0
+        note: classed as herbivore from stomach contents in the Balbina reservoir and the Abacate River
+      - source: *fishbase
+        value: 0
+        note: trophic level 2.2 estimated from related species; no diet table for the species
+      - source: *brito
+        value: 1
+        note: summary of published diet data lists fish as one of many food items
+      - source: *lopez
+        value: 1
+        note: congeners G. abalios and G. dicrozoster, fish 12 and 4 percent of gut volume
+      - source: *fishkeeper
+        value: 1
+        note: advises against small tankmates; fish too large to swallow are ignored
+      - source: *guidarium
+        value: 1
+        note: flags fry and shrimp as at risk
+  diet:
+    value:
+      type: omnivore
+      bloatSensitive: false
+      foods:
+        - fine sinking granules and pellets
+        - frozen bloodworm, mosquito larvae, Artemia and Mysis
+        - plant-based flakes or Spirulina foods
+        - gel food with vegetables
+    confidence: medium
+    verification:
+      method: unanimous
+      votes: {agree: 4, total: 4}
+    rationale: >-
+      Decided unanimously (4 of 4 votes) as omnivore without bloat sensitivity. Wild fish sift
+      mouthfuls of sand and eat small aquatic and terrestrial invertebrates, crustaceans, algae,
+      detritus, plant parts, fruits and seeds, with the mix changing between flood and dry season.
+      Seriously Fish found invertebrates, seeds and detritus in wild stomachs, related species of
+      the same group combine benthic invertebrates with much detritus, and the Balbina study even
+      found plant-dominated diets, so the menu depends on the locality. FishBase estimates a trophic
+      level of 2.2. No source reports bloat; a wholesaler warns that coarse, hard-shelled frozen food
+      can upset digestion, which is a matter of food size rather than protein.
+    sources:
+      - *brito
+      - *sf
+      - *fishkeeper
+      - *lopez
+      - *fishbase
+      - *fishipedia
+      - *aqdomain
+      - *costa
+      - *aquainfo
+      - *glaser
+    evidence:
+      - source: *brito
+        value: {type: omnivore, bloatSensitive: false}
+        note: wild diet summary; bloat not addressed
+      - source: *sf
+        value: {type: omnivore, bloatSensitive: false}
+        note: invertebrates, seeds and detritus in wild stomachs; advises some plant-based food
+      - source: *fishkeeper
+        value: {type: omnivore, bloatSensitive: false}
+        note: omnivorous, fine sinking foods
+      - source: *lopez
+        value: {type: omnivore, bloatSensitive: false}
+        note: congeners of the G. surinamensis group, benthic invertebrates plus much detritus
+      - source: *fishbase
+        value: {type: omnivore, bloatSensitive: false}
+        note: trophic level 2.2 estimated from relatives
+      - source: *fishipedia
+        value: {type: omnivore, bloatSensitive: false}
+        note: omnivore leaning to animal food
+      - source: *aqdomain
+        value: {type: omnivore, bloatSensitive: false}
+        note: mixed aquarium diet
+      - source: *costa
+        value: {type: omnivore, bloatSensitive: false}
+        note: plant-dominated stomach contents at one locality
+  aggressionConspecific:
+    value: 2
+    confidence: medium
+    rationale: >-
+      Outside breeding the fish live in loose groups with a visible ranking, and in too small a
+      group the dominant fish keep harassing the weakest. Breeding pairs defend the spawning site and
+      later a growing area around the fry, and some males drive the female off after spawning.
+      Injuries are not reported for groups of adequate size in a large tank, which is level 2.
+      Checker-b proposed level 1 and a keeping account describes the group as generally peaceful,
+      but the documented hierarchy with regular chasing fits level 2 better.
+    sources:
+      - *sf
+      - *fishkeeper
+      - *fishipedia
+      - *aquainfo
+      - *guidarium
+    evidence:
+      - source: *sf
+        value: 2
+        note: hierarchy, harassment of weak fish in small groups
+      - source: *fishipedia
+        value: 2
+        note: calm but territorial
+      - source: *aquainfo
+        value: 1
+        note: generally peaceful group
+      - source: *guidarium
+        value: 1
+        note: mostly peaceful
+  aggressionHeterospecific:
+    value: 1
+    confidence: medium
+    rationale: >-
+      Care sheets describe the species as remarkably peaceful towards other fish outside breeding
+      and suited to communities of peaceful species. Breeding pairs defend the spawning site and the
+      fry, mostly by display and short chases near the brood. Checker-c proposed level 2 because
+      intruders are driven off during brood care; the other three runs chose level 1, since the
+      defence stays local and is limited to breeding.
+    sources:
+      - *sf
+      - *fishkeeper
+      - *guidarium
+      - *aquainfo
+      - *imperial
+    evidence:
+      - source: *sf
+        value: 1
+        note: peaceful unless breeding
+      - source: *guidarium
+        value: 1
+        note: mostly peaceful
+      - source: *aquainfo
+        value: 2
+        note: male keeps other fish away from the brood
+  territory:
+    value: {size: small, breedingOnly: true}
+    confidence: medium
+    rationale: >-
+      Non-breeding fish roam in a group without a fixed area. A pair cleans and guards a flat stone,
+      a piece of wood or a patch of sand for spawning; the defended area grows with the fry but
+      stays local. Checker-c proposed large as a cautious estimate for brood defence, but no source
+      describes a territory of a third of a large tank, so small applies.
+    sources:
+      - *sf
+      - *fishkeeper
+      - *fishipedia
+      - *aquainfo
+    evidence:
+      - source: *sf
+        value: {size: small, breedingOnly: true}
+        note: spawning site and expanding brood area
+      - source: *aquainfo
+        value: {size: small, breedingOnly: true}
+        note: local defence of the spawning site
+  habitatZones:
+    value: [sand, wood]
+    confidence: high
+    rationale: >-
+      The species lives on gently sloping banks of rivers, islands and floodplain lakes over sand,
+      fine gravel and mud, often near sunken roots and branches, and it was caught in river-margin
+      and floodplain habitats of black and clear water. Fine sand is essential for feeding and wood
+      gives cover and spawning surfaces. Checker-b added rock; scattered rocks occur at some sites
+      and serve as optional spawning places, but they are not a habitat the species needs.
+    sources:
+      - *sf
+      - *bogota
+      - *fishkeeper
+      - *aquainfo
+    evidence:
+      - source: *sf
+        value: [sand, wood]
+        note: sand, fine gravel and mud with scattered rocks, roots and branches
+      - source: *aquainfo
+        value: [sand, wood]
+        note: sand sifting and spawning on wood in the tank
+  social:
+    value: {structure: group, minGroup: 5}
+    confidence: high
+    rationale: >-
+      All runs agree. The species is gregarious and lives in loose groups; Seriously Fish advises
+      five to eight fish, the Fishkeeper data bank six or more, Fishipedia at least five and a
+      keeping account prefers eight. Pairs form from within the group, so five is the smallest
+      unit that spreads the hierarchy.
+    sources:
+      - *sf
+      - *fishkeeper
+      - *fishipedia
+      - *aquainfo
+      - *guidarium
+    evidence:
+      - source: *sf
+        value: {structure: group, minGroup: 5}
+        note: five to eight fish
+      - source: *fishipedia
+        value: {structure: group, minGroup: 5}
+      - source: *aquainfo
+        value: {structure: group, minGroup: 8}
+        note: author prefers eight
+      - source: *guidarium
+        value: {structure: group, minGroup: 4}
+  speciesOnly:
+    value: false
+    confidence: high
+    verification:
+      method: unanimous
+      votes: {agree: 4, total: 4}
+    rationale: >-
+      Decided unanimously (4 of 4 votes). Seriously Fish, the Fishkeeper data bank, Fishipedia,
+      AquariumDomain and a keeping account all describe the species in communities of peaceful fish
+      with similar water needs; none advises a tank for this species alone. Small fish and shrimp
+      are the only tankmates the sources warn about.
+    sources:
+      - *sf
+      - *fishkeeper
+      - *fishipedia
+      - *aqdomain
+      - *aquainfo
+      - *guidarium
+    evidence:
+      - source: *sf
+        value: false
+        note: suited to most peaceful species of similar water needs
+      - source: *fishkeeper
+        value: false
+        note: community fish, but no small tankmates
+      - source: *aqdomain
+        value: false
+        note: community keeping described
+      - source: *aquainfo
+        value: false
+        note: several tankmates of other species described
+      - source: *guidarium
+        value: false
+  hybridGroups:
+    value: []
+    confidence: medium
+    verification:
+      method: unanimous
+      votes: {agree: 4, total: 4}
+    rationale: >-
+      Decided unanimously (4 of 4 votes). No cross of G. altifrons with a named species is reported
+      in the literature, the care sheets or the cichlids.com archive, and hybrid-groups.yaml lists
+      no Geophagus group. A keeping account warns that crosses and other species circulate in the
+      trade under this name, but it names no parent species and no circumstances, and a DNA study of
+      the group deals with misidentification, not hybridisation. Close relatives of the
+      G. surinamensis group look alike and are often confused, so the empty list reflects missing
+      evidence rather than proven isolation.
+    sources:
+      - *cof
+      - *sf
+      - *fishkeeper
+      - *fishbase
+      - &peerj
+        kind: literature
+        title: "Mapping the hidden diversity of the Geophagus sensu stricto species group from the Amazon basin. PeerJ (2021)"
+        url: https://doi.org/10.7717/peerj.12443
+        accessed: 2026-10-13
+      - *aquainfo
+    evidence:
+      - source: *cof
+        value: []
+        note: distinct valid species; no hybrid records
+      - source: *sf
+        value: []
+        note: discusses misidentification within the G. surinamensis group, reports no crosses
+      - source: *fishkeeper
+        value: []
+        note: names no crosses
+      - source: *peerj
+        value: []
+        note: genetic study of the species group; misidentification, no hybrids
+      - source: *aquainfo
+        value: []
+        note: unspecified crosses in trade stock, no named parent species
+  coloration:
+    value:
+      baseColors: [silver, yellow, blue]
+      pattern: plain
+    confidence: low
+    rationale: >-
+      Adults are silvery to golden-yellow with iridescent blue lines on the head and blue spangles
+      on the scales and unpaired fins. They show no vertical bars, and the dark mid-flank spot
+      shrinks to a scale or two or vanishes, which sets them apart from most Geophagus; populations
+      differ in colour. At a distance the body reads as plain. Proposals ranged from plain
+      (generator, checker-b) to spots (checker-a, after the scale spangles) and mixed with orange
+      (checker-c, after warm fin tones); silver, yellow and blue are the colours most runs share.
+    sources:
+      - *sf
+      - *salve
+      - *aqdomain
+      - *aquainfo
+    evidence:
+      - source: *sf
+        value: {baseColors: [silver, yellow, blue], pattern: plain}
+        note: no bars, reduced lateral spot
+      - source: *aqdomain
+        value: {baseColors: [grey, yellow, orange, blue, green], pattern: mixed}
+        note: general colour description
+  feedingSpeed:
+    value: normal
+    confidence: low
+    rationale: >-
+      Settled fish rise readily to food and sift the bottom between meals; they take their share
+      among calm tankmates but can lose coarse food to very fast eaters. Checker-b proposed slow
+      because of the sifting mode of feeding; the other runs chose normal. No source grades the speed
+      directly.
+    sources:
+      - *sf
+      - *aqdomain
+    evidence:
+      - source: *sf
+        value: normal
+        note: feeds readily in the water column once settled
+  minTank:
+    value: {volumeL: 650, lengthCm: 180, depthCm: 60}
+    confidence: medium
+    rationale: >-
+      For a long-term group of five or more adults Seriously Fish asks for a base of 180 by 60 cm,
+      about 650 litres; Fishipedia gives 700 litres. Smaller figures exist: a keeping account allows
+      160 by 60 cm for a group, a wholesaler 500 litres and a care guide 475 litres with 150 cm
+      length. For five fish of 20 to 25 cm the larger figure applies. All runs agree.
+    sources:
+      - *sf
+      - *fishipedia
+      - *aquainfo
+      - *glaser
+      - *guidarium
+    evidence:
+      - source: *sf
+        value: {volumeL: 648, lengthCm: 180, depthCm: 60}
+      - source: *fishipedia
+        value: {volumeL: 700, lengthCm: 180, depthCm: 60}
+        note: volume only; length and depth not given
+      - source: *aquainfo
+        value: {volumeL: 576, lengthCm: 160, depthCm: 60}
+        note: calculated from 160 by 60 by 60 cm; larger tanks preferred for communities
+      - source: *guidarium
+        value: {volumeL: 475, lengthCm: 150, depthCm: 50}
+        note: depth not given
+  lifespanYears:
+    value: {min: 8, max: 12}
+    confidence: low
+    rationale: >-
+      Fishipedia and a general care guide give about ten years, the latter allowing longer. Large
+      Geophagus usually live about a decade in good care, so 8 to 12 years is a rough range around
+      that figure. Checker-c proposed 8 to 10 years.
+    sources:
+      - *fishipedia
+      - &fishlab
+        kind: website
+        title: "Fish Laboratory: Geophagus altifrons care guide"
+        url: https://www.fishlaboratory.com/fish/geophagus-altifrons/
+        accessed: 2026-10-13
+      - kind: model-knowledge
+        title: General knowledge of the lifespan of large Geophagus species
+    evidence:
+      - source: *fishipedia
+        value: {min: 10, max: 10}
+      - source: *fishlab
+        value: {min: 10, max: 10}
+        note: about ten years or longer
+  breeding:
+    value: biparental-mouthbrooder
+    confidence: high
+    rationale: >-
+      All runs agree. The pair spawns on a cleaned flat stone, wood or the bottom and the eggs are
+      taken into the mouth soon after (ovophilic mouthbrooding in FishBase). Usually the female holds
+      eggs and larvae while the male guards; after the fry swim free both parents carry them, often
+      swapping the brood. A keeping account observed only the female holding, which does not rule out
+      the biparental mode described by Seriously Fish.
+    sources:
+      - *sf
+      - *fishbase
+      - *fishipedia
+      - *fishkeeper
+      - *aquainfo
+    evidence:
+      - source: *sf
+        value: biparental-mouthbrooder
+      - source: *fishbase
+        value: biparental-mouthbrooder
+        note: ovophilic mouthbrooder without naming the brooding parent
+      - source: *aquainfo
+        value: maternal-mouthbrooder
+        note: female held the brood in one observed pair
+  beginnerSuitability:
+    value: moderate
+    confidence: medium
+    rationale: >-
+      Peaceful and willing to take prepared food, but it needs a very large, mature tank with fine
+      sand, strong filtration and large weekly water changes, and it reacts to poor water with head
+      and lateral line erosion. Seriously Fish rates it moderate; a wholesaler and AquariumDomain
+      call it easy once the tank is large enough. Checker-b proposed demanding because of the
+      sensitivity to water quality; the other runs chose moderate.
+    sources:
+      - *sf
+      - *glaser
+      - *guidarium
+      - *aqdomain
+    evidence:
+      - source: *sf
+        value: moderate
+      - source: *glaser
+        value: easy
+        note: easy once the tank is large enough
+      - source: *aqdomain
+        value: easy
+      - source: *guidarium
+        value: moderate
+partners:
+  suitable:
+    - species: Pterophyllum scalare
+      reason: Peaceful mid-water cichlid of similar soft, warm Amazon water that does not compete for the sand.
+      condition: Adult angelfish only; broods of either species are at risk.
+    - species: Mesonauta festivus
+      reason: Calm South American cichlid of similar water that stays near the surface and among wood.
+    - species: Moenkhausia oligolepis
+      reason: Robust Amazonian tetra of about 10 cm, far too large to be eaten, that occupies the upper water.
+    - species: Uaru amphiacanthoides
+      reason: Large, peaceful cichlid with the same water needs that uses other zones of the tank.
+      condition: Tank of at least 200 cm length.
+  unsuitable:
+    - species: Geophagus neambi
+      reason: Look-alike member of the G. surinamensis group; similar species treat each other as rivals, and the trade confuses them.
+    - species: Amphilophus citrinellus
+      reason: Aggressive, territorial bottom-dweller that harasses the peaceful eartheaters and needs harder water.
+    - species: Lake Malawi mbuna
+      reason: Need hard, alkaline water and are far too aggressive.
+    - species: Neocaridina davidi
+      reason: Dwarf shrimp are eaten while the fish sift the substrate.
+    - species: Potamotrygon motoro
+      reason: Often kept together with success, but some keepers lost eartheaters to stingrays at night.
+      condition: Only in very large tanks with experienced care.
+profile:
+  overview:
+    text: >-
+      Geophagus altifrons is a large eartheater from the clear and black water tributaries of the
+      middle and lower Amazon in Brazil. Adults are deep-bodied with a high forehead, a silver to
+      golden body and blue shimmering lines on the head and fins. Unlike most relatives they show no
+      vertical bars and only a tiny or no dark spot on the flank. The species is peaceful and
+      social, lives in groups and spends the day chewing through sand for food. Many fish sold under
+      this name or as G. surinamensis belong to other species of the same group, so stock of known
+      origin is worth seeking out. Given a very large tank, fine sand and clean, soft, warm water,
+      it makes a calm centrepiece for a South American community.
+    sources:
+      - *sf
+      - *cof
+      - *salve
+  habitat:
+    text: >-
+      The species occurs in the Amazon near Manaus and in large tributaries such as the Negro,
+      Tapajós, Xingu, Trombetas and Jari, usually below the first rapids and in floodplain lakes. It
+      favours clear and black water over turbid white water and lives on gently sloping shores of
+      sand, fine gravel or mud, often near sunken branches and roots. The water carries very few
+      minerals, with conductivity mostly below 40 µS/cm, a pH of about 4.8 to 7 and temperatures of
+      roughly 27 to 32 °C. Calcium and carbonate are nearly absent, so hardness stays below 1 dGH and
+      1 dKH. Water levels swing strongly between flood and dry season, and in the middle Xingu the
+      species was caught in every season.
+    sources:
+      - *sf
+      - *rocha
+      - *rios14
+      - *ichthyo
+      - *rodrigues
+      - *bogota
+      - &waterfalls
+        kind: literature
+        title: "Effect of waterfalls and the flood pulse on the structure of fish assemblages of the middle Xingu River in the eastern Amazon basin. Brazilian Journal of Biology (2015)"
+        url: https://doi.org/10.1590/1519-6984.00214bm
+        accessed: 2026-10-13
+  sizeAndGrowth:
+    text: >-
+      Scientific sources give up to 22.5 cm standard length, about 27 cm total length; FishBase
+      lists 26.5 cm. Well-kept aquarium males usually reach about 25 cm and females stay a little
+      smaller, around 22 cm. Wild fish from the Rio Jari averaged about 17 cm, and in the middle
+      Xingu fish matured at about 10 cm. Young fish grow quickly when fed small portions several
+      times a day, so a group bought at 5 to 8 cm needs its final tank within the first year. Poor
+      growth usually points to too little space or poor water.
+    sources:
+      - *fishbase
+      - *salve
+      - *sf
+      - *sedentary
+      - *brito
+  husbandry:
+    text: >-
+      A group needs a tank with a base of at least 180 by 60 cm, about 650 litres. The key item is a
+      wide area of soft, fine sand, since the fish feed by taking mouthfuls of substrate; coarse
+      gravel hinders feeding and can injure the gills. Driftwood, roots and a few smooth flat stones
+      complete the layout, and subdued light suits the fish. Rooted plants get dug up, so epiphytes
+      on wood work better. Filtration should be strong with a gentle current, and mechanical stages
+      need to catch stirred-up sand. Changing half the water or more each week keeps nitrate low.
+      Aim for 26 to 30 °C, soft water and pH 5.5 to 7; captive-bred fish also live well in neutral,
+      medium-hard water up to about 8 dGH.
+    sources:
+      - *sf
+      - *fishkeeper
+      - *glaser
+      - *aquainfo
+  socialBehavior:
+    text: >-
+      Geophagus altifrons is a group fish. Juveniles stay close together and adults form loose
+      shoals with a clear ranking. Keep at least five, better six to eight; with fewer fish the
+      dominant ones keep chasing the weakest and the group often stays shy. Pairs form on their own
+      within the group. A breeding pair defends its spawning place and later the fry, and some males
+      chase the female away after spawning. Towards other fish the species is calm and rarely does
+      more than display, except close to its brood. Peaceful fish in the upper water help a nervous
+      group settle.
+    sources:
+      - *sf
+      - *fishkeeper
+      - *aquainfo
+  diet:
+    text: >-
+      In the wild the species is an omnivore that sifts the bottom for insect larvae, small
+      crustaceans and other invertebrates and also takes algae, plant parts, fruits, seeds and
+      detritus; the mix changes with the season and between localities. Fish are recorded only as
+      an occasional item, but fry and very small fish in the tank can be eaten. Even adults handle
+      large chunks poorly, so the aquarium diet should consist of fine sinking granules and pellets,
+      small frozen foods such as bloodworm, mosquito larvae, Artemia and Mysis, and some plant-based
+      food such as gel food with vegetables. Coarse or hard-shelled frozen food can cause digestive
+      trouble. Several small meals a day suit the constant foraging better than one large feed.
+    sources:
+      - *brito
+      - *sf
+      - *fishkeeper
+      - *costa
+      - *glaser
+  breeding:
+    text: >-
+      The species lays its eggs on a hard surface and then broods them in the mouth. Fish mature at
+      about a year, and good food plus large water changes are usually enough to trigger spawning.
+      The pair cleans a flat stone, wood or a spot on the bottom, the female lays rows of eggs and
+      the male fertilises them over several hours, up to about 200 eggs in all. Usually the female
+      takes up the eggs, sometimes both parents do. At 25 to 28 °C the fry swim free after 8 to 11
+      days. Both parents then guard them, often handing the brood over, and take them back into the
+      mouth when danger threatens and later only at night. The fry accept Artemia nauplii and fine
+      powdered food straight away. In a community tank other fish eat fry that leave the parents.
+    sources:
+      - *sf
+      - *fishkeeper
+      - *fishbase
+      - *aquainfo
+  sexing:
+    text: >-
+      The sexes look alike. Neither care sheets nor breeders describe a dependable outer difference
+      in colour, fins or body shape, and size within a group says little about sex. The only clear
+      sign is the female's egg tube, visible shortly before and during spawning. Sexing fish in a
+      sales tank is therefore guesswork, and putting together single fish as a pair often fails. A
+      group of six or more young fish that grows up together and pairs off on its own is the
+      reliable route, though this can take a year or longer.
+    sources:
+      - *sf
+      - *fishkeeper
+  compatibility:
+    text: >-
+      Good tankmates are peaceful fish that like the same soft, warm water and are too large to be
+      swallowed: angelfish, festivum, uaru, robust tetras of 6 cm or more, larger peaceful catfish
+      and calm characins in the upper water. Fry, dwarf shrimp and very small fish may be eaten.
+      Aggressive or territorial bottom-dwellers such as large Central American cichlids do not fit,
+      and neither do fish that need hard, alkaline water such as Lake Malawi cichlids. Look-alike
+      relatives of the G. surinamensis group, such as G. neambi, G. sveni or G. proximus, tend to
+      treat each other as rivals, and the trade often confuses them. Freshwater stingrays often work,
+      but some keepers report eartheaters vanishing at night in such tanks.
+    sources:
+      - *sf
+      - *fishkeeper
+      - *aquainfo
+  problems:
+    text: >-
+      The most frequent mistake is a tank that is too small or too new. These fish react badly to
+      rising nitrate and to sudden shifts in water chemistry and should never go into an aquarium
+      that has not matured. Neglect shows as head and lateral line erosion, frayed fins and poor
+      growth. Gravel or sharp substrate prevents normal feeding and can harm the gills, and large or
+      hard-shelled food can upset digestion. A group of only two or three fish leads to constant
+      chasing and stress. Wild imports often carry gill flukes and gut worms, so quarantine is wise.
+      Rooted plants and loose decor get dug up, and sand drawn into filters wears out impellers.
+    sources:
+      - *sf
+      - *glaser
+      - *brito
+provenance:
+  runs:
+    - role: generator
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-13
+    - role: checker
+      model: gpt-6.1-sol
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-13
+    - role: adjudicator
+      model: claude-opus-5-5
+      date: 2026-10-13
+  disagreements:
+    - field: features.predation
+      proposals:
+        - {by: generator, value: 1}
+        - {by: checker-a, value: 1}
+        - {by: checker-b, value: 0}
+        - {by: checker-c, value: 0}
+        - {by: tiebreaker-1, value: 1}
+        - {by: tiebreaker-2, value: 0}
+      decision: 1
+      rationale: >-
+        Tally method conservative at 3 of 6 votes, confidence low. Stomach studies (Seriously Fish,
+        the Balbina study) and the FishBase trophic level show invertebrates and plant matter and
+        support level 0; the Jari River diet summary records fish as an occasional food item and
+        related species had fish in their guts, which supports level 1. Without a qualified
+        majority the higher level applies.
+    - field: features.temperatureC
+      proposals:
+        - {by: generator, value: {min: 27, max: 31}}
+        - {by: checker-a, value: {min: 26, max: 32}}
+        - {by: checker-b, value: {min: 25, max: 30}}
+        - {by: checker-c, value: {min: 28.3, max: 31.2}}
+        - {by: tiebreaker-1, value: {min: 27, max: 32}}
+        - {by: tiebreaker-2, value: {min: 26, max: 32}}
+      decision: {min: 27, max: 32}
+      rationale: >-
+        Tally method qualified-majority at 4 of 6 votes (generator, checker-a, tiebreaker-1 and
+        tiebreaker-2); the median of their bounds gives 27 to 32 C. Checker-b leaned on a
+        climate-based figure of 25 to 27 C and checker-c on a warm-season envelope measured after
+        the Belo Monte impoundment.
+    - field: features.temperatureC.tolerance
+      proposals:
+        - {by: generator, value: {min: 24, max: 31}}
+        - {by: checker-a, value: {min: 24, max: 32}}
+        - {by: checker-b, value: {min: 24, max: 30}}
+        - {by: checker-c, value: {min: 25, max: 32}}
+      decision: {min: 24, max: 32}
+      rationale: >-
+        Tally method unanimous at 4 of 4 votes; all proposals lie within the agreement threshold of
+        the top candidate, and the decided range contains the natural maximum of 32 C.
+    - field: features.ph
+      proposals:
+        - {by: generator, value: {min: 5.0, max: 7.0}}
+        - {by: checker-a, value: {min: 4.6, max: 8.0}}
+        - {by: checker-b, value: {min: 4.8, max: 7.0}}
+        - {by: checker-c, value: {min: 4.8, max: 7.0}}
+        - {by: tiebreaker-1, value: {min: 4.6, max: 7.5}}
+        - {by: tiebreaker-2, value: {min: 4.8, max: 7.0}}
+      decision: {min: 4.8, max: 7.0}
+      rationale: >-
+        Tally method qualified-majority at 4 of 6 votes (generator, checker-b, checker-c and
+        tiebreaker-2). Checker-a and tiebreaker-1 included the Rio Negro minimum of 4.6 and the
+        higher Xingu main-channel values; these are named in the rationale as the wider source
+        range.
+    - field: features.ph.tolerance
+      proposals:
+        - {by: generator, value: {min: 5.0, max: 7.5}}
+        - {by: checker-a, value: {min: 4.5, max: 8.0}}
+        - {by: checker-b, value: {min: 5.0, max: 7.5}}
+        - {by: checker-c, value: {min: 4.8, max: 7.0}}
+        - {by: tiebreaker-1, value: {min: 4.5, max: 7.5}}
+        - {by: tiebreaker-2, value: {min: 4.8, max: 7.5}}
+      decision: {min: 4.8, max: 7.5}
+      rationale: >-
+        Tally method qualified-majority at 4 of 6 votes (generator, checker-b, tiebreaker-1 and
+        tiebreaker-2); the median 4.9 to 7.5 is widened to 4.8 to contain the natural range.
+        Checker-a extended to 8.0 on a wholesaler report, checker-c stopped at 7.0.
+    - field: features.maxSizeCm
+      proposals:
+        - {by: generator, value: {male: 25, female: 21}}
+        - {by: checker-a, value: {male: 25, female: 22}}
+        - {by: checker-b, value: {male: 26, female: 22}}
+        - {by: checker-c, value: {male: 25, female: 25}}
+      decision: {male: 25, female: 22}
+      rationale: >-
+        Three runs agree on 25 cm for males within 1 cm. No source separates the sexes; 22 cm for
+        females follows two runs and the usual size difference in the genus, while checker-c gave
+        both sexes the same planning ceiling.
+    - field: features.aggressionConspecific
+      proposals:
+        - {by: generator, value: 2}
+        - {by: checker-a, value: 2}
+        - {by: checker-b, value: 1}
+        - {by: checker-c, value: 2}
+      decision: 2
+      rationale: The documented hierarchy with regular chasing of weaker fish fits level 2; checker-b read the group as only displaying.
+    - field: features.aggressionHeterospecific
+      proposals:
+        - {by: generator, value: 1}
+        - {by: checker-a, value: 1}
+        - {by: checker-b, value: 1}
+        - {by: checker-c, value: 2}
+      decision: 1
+      rationale: Defence of other species is limited to the brood site and mostly display; checker-c counted brood defence as chasing out of a territory.
+    - field: features.territory
+      proposals:
+        - {by: generator, value: {size: small, breedingOnly: true}}
+        - {by: checker-a, value: {size: small, breedingOnly: true}}
+        - {by: checker-b, value: {size: small, breedingOnly: true}}
+        - {by: checker-c, value: {size: large, breedingOnly: true}}
+      decision: {size: small, breedingOnly: true}
+      rationale: No source describes a brood territory approaching a third of a large tank; checker-c chose large as a cautious estimate without a measurement.
+    - field: features.habitatZones
+      proposals:
+        - {by: generator, value: [sand, wood]}
+        - {by: checker-a, value: [sand, wood]}
+        - {by: checker-b, value: [sand, wood, rock]}
+        - {by: checker-c, value: [sand, wood]}
+      decision: [sand, wood]
+      rationale: Rocks occur only scattered at some sites and are optional spawning places, not a needed zone.
+    - field: features.coloration
+      proposals:
+        - {by: generator, value: {baseColors: [silver, yellow, blue], pattern: plain}}
+        - {by: checker-a, value: {baseColors: [silver, yellow, blue], pattern: spots}}
+        - {by: checker-b, value: {baseColors: [silver, grey, yellow], pattern: plain}}
+        - {by: checker-c, value: {baseColors: [silver, yellow, blue, orange], pattern: mixed}}
+      decision: {baseColors: [silver, yellow, blue], pattern: plain}
+      rationale: >-
+        Silver, yellow and blue are shared by three runs. The body lacks bars and a strong
+        lateral spot and reads as plain at a distance; the scale spangles that led checker-a to
+        spots and the warm fin tones that led checker-c to mixed are fine details. Confidence low.
+    - field: features.feedingSpeed
+      proposals:
+        - {by: generator, value: normal}
+        - {by: checker-a, value: normal}
+        - {by: checker-b, value: slow}
+        - {by: checker-c, value: normal}
+      decision: normal
+      rationale: Settled fish rise readily to food and take their share; checker-b inferred slow from the sifting mode alone.
+    - field: features.lifespanYears
+      proposals:
+        - {by: generator, value: {min: 8, max: 12}}
+        - {by: checker-a, value: {min: 8, max: 12}}
+        - {by: checker-b, value: {min: 8, max: 12}}
+        - {by: checker-c, value: {min: 8, max: 10}}
+      decision: {min: 8, max: 12}
+      rationale: The only figures are about ten years, one of them allowing longer; three runs chose 8 to 12 years around that figure.
+    - field: features.beginnerSuitability
+      proposals:
+        - {by: generator, value: moderate}
+        - {by: checker-a, value: moderate}
+        - {by: checker-b, value: demanding}
+        - {by: checker-c, value: moderate}
+      decision: moderate
+      rationale: Seriously Fish rates it moderate and two sources call it easy in a large enough tank; the demands on tank size and water quality keep it at moderate rather than easy.
