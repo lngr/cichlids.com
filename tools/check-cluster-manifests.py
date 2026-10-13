@@ -106,9 +106,9 @@ def check_application(app):
     require(spec['source']['repoURL'] == REPO, 'Application repository')
     require(spec['destination']['server'] == 'https://kubernetes.default.svc', 'Local cluster only')
     if spec['project'] == 'cichlids-addons':
-        require(spec['source']['path'] in {'apps/ingress-nginx/overlays/cluster',
+        require(spec['source']['path'] in {'apps/traefik/overlays/cluster',
                                           'apps/cert-manager/overlays/cluster'}, 'Add-on source restriction')
-        require(spec['destination']['namespace'] in {'ingress-nginx', 'cert-manager'},
+        require(spec['destination']['namespace'] in {'kube-system', 'cert-manager'},
                 'Add-on namespace restriction')
         require(spec['syncPolicy']['automated']['prune'] is False, 'Add-ons require deliberate pruning')
         require('Prune=false' in spec['syncPolicy']['syncOptions'], 'Add-ons have Prune=false')

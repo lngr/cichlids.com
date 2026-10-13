@@ -40,13 +40,13 @@ class EdgeDelivery(unittest.TestCase):
         project = resource(topology, 'AppProject', 'cichlids-addons')['spec']
         self.assertEqual(project['sourceRepos'], [check.REPO])
         self.assertEqual({d['namespace'] for d in project['destinations']},
-                         {'ingress-nginx', 'cert-manager', 'kube-system'})
+                         {'cert-manager', 'kube-system'})
         self.assertTrue(all(d['server'] == 'https://kubernetes.default.svc'
                             for d in project['destinations']))
         allowed = {(d['group'], d['kind']) for d in project['clusterResourceWhitelist']}
         self.assertNotIn(('*', '*'), allowed)
         namespaced = {(d['group'], d['kind']) for d in project['namespaceResourceWhitelist']}
-        for service in ['ingress-nginx', 'cert-manager']:
+        for service in ['traefik', 'cert-manager']:
             owners = [d for d in topology if d['kind'] == 'Application' and
                       d['spec']['source']['path'] == f'apps/{service}/overlays/cluster']
             self.assertEqual(len(owners), 1)
@@ -70,27 +70,31 @@ class EdgeDelivery(unittest.TestCase):
 
     def test_upstream_copies_match_recorded_checksums(self):
         sources = json.loads((ROOT / 'tools/addon-sources.json').read_text())
-        self.assertEqual(set(sources), {'ingress-nginx', 'cert-manager'})
+        self.assertEqual(set(sources), {'cert-manager'})
         for entry in sources.values():
             self.assertEqual(hashlib.sha256((ROOT / entry['path']).read_bytes()).hexdigest(), entry['sha256'])
             self.assertRegex(entry['version'], r'v\d+\.\d+\.\d+$')
 
-    def test_node_edge_binds_standard_ports_and_rolls_on_one_node(self):
-        docs = build('apps/ingress-nginx/overlays/cluster')
-        deployment = resource(docs, 'Deployment', 'ingress-nginx-controller')['spec']
-        self.assertEqual(deployment['replicas'], 1)
-        self.assertEqual(deployment['strategy']['type'], 'Recreate')
-        pod = deployment['template']['spec']
-        ports = pod['containers'][0]['ports']
-        self.assertEqual({p['containerPort']: p['hostPort'] for p in ports if 'hostPort' in p},
-                         {80: 80, 443: 443})
-        self.assertEqual(resource(docs, 'Service', 'ingress-nginx-controller')['spec']['type'], 'ClusterIP')
-        self.assertIn('--report-node-internal-ip-address', pod['containers'][0]['args'])
-        for name, wave in [('ingress-nginx-admission-create', '-1'), ('ingress-nginx-admission-patch', '1')]:
-            job = resource(docs, 'Job', name)
-            self.assertEqual(job['metadata']['annotations']['argocd.argoproj.io/hook'], 'Sync')
-            self.assertEqual(job['metadata']['annotations']['argocd.argoproj.io/sync-wave'], wave)
-            self.assertIn('BeforeHookCreation', job['metadata']['annotations']['argocd.argoproj.io/hook-delete-policy'])
+    def test_node_edge_ports_and_acme_redirect_exception(self):
+        docs = build('apps/traefik/overlays/cluster')
+        config = resource(docs, 'HelmChartConfig', 'traefik')
+        self.assertEqual(config['metadata']['namespace'], 'kube-system')
+        values = yaml.safe_load(config['spec']['valuesContent'])
+        self.assertEqual(values['deployment']['replicas'], 1)
+        self.assertEqual(values['service']['type'], 'LoadBalancer')
+        self.assertEqual(values['ports']['web']['exposedPort'], 80)
+        self.assertEqual(values['ports']['websecure']['exposedPort'], 443)
+        self.assertTrue(values['providers']['file']['enabled'])
+        http = yaml.safe_load(values['providers']['file']['content'])['http']
+        router = http['routers']['https-redirect']
+        self.assertEqual(router['entryPoints'], ['web'])
+        self.assertEqual(router['rule'], '!PathPrefix(`/.well-known/acme-challenge/`)')
+        self.assertEqual(router['priority'], 2147483646)
+        self.assertEqual(router['service'], 'noop@internal')
+        self.assertEqual(router['middlewares'], ['https-redirect'])
+        self.assertEqual(http['middlewares']['https-redirect']['redirectScheme'],
+                         {'scheme': 'https', 'permanent': True})
+        self.assertFalse(values['ports']['web'].get('redirections'))
 
     def test_issuers_use_http01_and_operator_email(self):
         docs = build('apps/cert-manager/overlays/cluster')
@@ -101,7 +105,7 @@ class EdgeDelivery(unittest.TestCase):
             self.assertEqual(issuer['email'], resource(docs, 'ConfigMap', 'acme-settings')['data']['email'])
             self.assertIn('@', issuer['email'])
             solver = issuer['solvers'][0]['http01']['ingress']
-            self.assertEqual(solver['ingressClassName'], 'nginx')
+            self.assertEqual(solver['ingressClassName'], 'traefik')
             self.assertEqual(solver['serviceType'], 'ClusterIP')
             self.assertEqual(solver['podTemplate']['spec']['resources']['limits'],
                              {'cpu': '100m', 'memory': '128Mi'})
@@ -126,7 +130,7 @@ class EdgeDelivery(unittest.TestCase):
 
     def assert_placeholder(self, docs, host, namespace):
         ingress = resource(docs, 'Ingress', 'placeholder')
-        self.assertEqual(ingress['spec']['ingressClassName'], 'nginx')
+        self.assertEqual(ingress['spec']['ingressClassName'], 'traefik')
         self.assertEqual(ingress['spec']['rules'][0]['host'], host)
         self.assertEqual(ingress['spec']['tls'], [{'hosts': [host], 'secretName': 'placeholder-tls'}])
         self.assertEqual(ingress['metadata']['annotations']['cert-manager.io/cluster-issuer'],
@@ -190,6 +194,7 @@ class EdgeDelivery(unittest.TestCase):
     def test_certificate_and_issuer_schemas_accept_valid_and_reject_unknown_fields(self):
         docs = build('tools/fixtures/cluster-manifests/certificates')
         docs.append(resource(build('apps/cert-manager/overlays/cluster'), 'ClusterIssuer', 'letsencrypt-production'))
+        docs.append(resource(build('apps/traefik/overlays/cluster'), 'HelmChartConfig', 'traefik'))
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / 'resources.yaml'
             path.write_text(yaml.safe_dump_all(docs))
@@ -202,7 +207,7 @@ class EdgeDelivery(unittest.TestCase):
             path.write_text(yaml.safe_dump_all(docs))
             result = subprocess.run(command, capture_output=True, text=True)
             self.assertNotEqual(result.returncode, 0)
-            self.assertIn('Invalid: 2', result.stdout)
+            self.assertIn('Invalid: 3', result.stdout)
 
     def test_dns_hosts_reference_platform_node_with_destroy_protection(self):
         text = (ROOT / 'infra/platform/dns.tf').read_text()

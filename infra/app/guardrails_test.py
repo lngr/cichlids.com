@@ -13,6 +13,7 @@ import glob
 import os
 import re
 import sys
+import subprocess
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
@@ -158,6 +159,9 @@ def self_test():
 
 
 def main(argv):
+    bootstrap = subprocess.run([sys.executable, os.path.join(HERE, "scripts/install-k3s.test.py")])
+    if bootstrap.returncode:
+        return bootstrap.returncode
     if "--self-test" in argv:
         return self_test()
     failures = check(read_tf(HERE))
