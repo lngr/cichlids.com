@@ -16,13 +16,14 @@ public sealed class GalleryMigrationStepTests(EtlFixture fixture)
 
         var stats1 = await RunStepAsync();
 
-        // uid 6004 (no mm rows) and uid 6005 (deleted) never pass the source query's filters, so
-        // only uid 6001-6003 are read.
+        // uid 6004 (never had a picture) is skipped by rule and counted; uid 6005 (deleted) is
+        // outside the migration scope. Only uid 6001-6003 are read.
         Assert.Equal(3, stats1.Read);
         Assert.Equal(3, stats1.Inserted);
         Assert.Equal(0, stats1.Updated);
         Assert.Equal(2, stats1.SkipReasons.GetValueOrDefault("gallery_entry_picture_not_migrated"));
         Assert.Equal(1, stats1.SkipReasons.GetValueOrDefault("gallery_empty_after_filter"));
+        Assert.Equal(1, stats1.SkipReasons.GetValueOrDefault("gallery_without_pictures"));
 
         await using (var db = fixture.CreateTargetContext())
         {
@@ -73,6 +74,7 @@ public sealed class GalleryMigrationStepTests(EtlFixture fixture)
         Assert.Equal(3, stats2.Updated);
         Assert.Equal(2, stats2.SkipReasons.GetValueOrDefault("gallery_entry_picture_not_migrated"));
         Assert.Equal(1, stats2.SkipReasons.GetValueOrDefault("gallery_empty_after_filter"));
+        Assert.Equal(1, stats2.SkipReasons.GetValueOrDefault("gallery_without_pictures"));
 
         await using (var db = fixture.CreateTargetContext())
         {
