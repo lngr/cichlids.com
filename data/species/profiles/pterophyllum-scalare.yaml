@@ -1,0 +1,1662 @@
+schemaVersion: 1
+id: pterophyllum-scalare
+legacyIds: [775]
+status: described
+
+taxonomy:
+  validName: Pterophyllum scalare
+  genus: Pterophyllum
+  species: scalare
+  author: (Schultze, 1823)
+  source: &cof
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes, species of the genus Pterophyllum"
+    url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Pterophyllum
+    accessed: 2026-10-13
+  synonyms:
+    - name: Zeus scalaris
+      note: Original combination of Schultze in Lichtenstein (1823); lectotype from the lower Amazon.
+    - name: Platax scalaris
+      note: Name used by Cuvier in Cuvier and Valenciennes (1831); synonym of P. scalare.
+    - name: Plataxoides dumerilii
+      note: Described by Castelnau (1855) from Pará; synonym of P. scalare.
+    - name: Pterophyllum eimekei
+      note: Described by Ahl (1928) from the Rio Negro; synonym of P. scalare.
+  legacyNames:
+    - Pterophyllum scalare
+  note: >-
+    The Catalog of Fishes lists three valid species in Pterophyllum: P. scalare, P. altum and
+    P. leopoldi. It attributes P. scalare to Schultze in Lichtenstein (1823), following Paepke and
+    Schindler (2002); many hobby texts credit the species to Lichtenstein or to Cuvier and
+    Valenciennes. The legacy name is the valid name. The angelfish of the trade is a domesticated
+    line of this species whose ancestry may include the other two species; this profile describes
+    the wild species and lists the captive strains as colour forms.
+
+names:
+  trade:
+    en: [Angelfish, Freshwater angelfish, Scalare]
+    de: [Segelflosser, Skalar]
+    es-419: [Escalar, Pez ángel]
+    pt-BR: [Acará-bandeira]
+
+variants:
+  - name: "Peruvian Altum (Rio Nanay)"
+    kind: locality
+    note: Tall, brownish wild form from the Rio Nanay in Peru; despite the trade name it is regarded as a population of P. scalare.
+  - name: "Manacapuru (red shoulder)"
+    kind: locality
+    note: Wild form from the Manacapuru area of the Solimões with reddish markings behind the head.
+  - name: "Santa Isabel (Rio Negro)"
+    kind: locality
+    note: Wild form from the middle Rio Negro.
+  - name: Wild type (silver)
+    kind: color-morph
+    note: Silver body with four dark vertical bars; the reference colour of the species and of captive-bred wild-type stock.
+  - name: Black and black lace
+    kind: color-morph
+    note: Captive strain with a dark to completely black body.
+  - name: Gold and platinum
+    kind: color-morph
+    note: Captive strains without dark bars, yellowish to white, partly with an orange crown.
+  - name: Marble and koi
+    kind: color-morph
+    note: Captive strains with irregular black, white and orange patches.
+  - name: Zebra, leopard and smokey
+    kind: color-morph
+    note: Captive strains with extra bars, dark spots or a dusky rear half.
+  - name: Veil
+    kind: color-morph
+    note: Long-finned captive strain; occurs in combination with most colour forms.
+
+features:
+  origin:
+    value:
+      continent: South America
+      region: Amazon basin and Guiana rivers
+      waterbody: null
+      localities:
+        - Rio Ucayali (Peru)
+        - Rio Nanay (Peru)
+        - Rio Solimões and its floodplain lakes (Brazil)
+        - Lower Amazon main stem and rivers of Amapá (Brazil)
+        - Rio Negro (Brazil)
+        - Rio Oyapock (French Guiana)
+        - Essequibo River (Guyana)
+    confidence: high
+    rationale: >-
+      The Catalog of Fishes gives the Amazon basin of Brazil, Colombia, French Guiana, Guyana and
+      Peru as the range and treats the population in Suriname as introduced. FishBase names the
+      Ucayali, Solimões and Amazon, the rivers of Amapá, the Oyapock and the Essequibo; the last
+      two drain to the Atlantic outside the Amazon basin, hence the region name. Field studies
+      worked with wild fish from the Igarapé Fortaleza basin in Amapá, from várzea lakes of the
+      lower Solimões, and from the blackwater of the middle and upper Rio Negro, which is also the
+      type locality of the synonym P. eimekei. The Rio Nanay population is known in the trade as
+      the Peruvian Altum.
+    sources:
+      - *cof
+      - &fishbase
+        kind: database
+        title: "FishBase: Pterophyllum scalare (Schultze, 1823), Freshwater angelfish"
+        url: https://www.fishbase.se/summary/Pterophyllum-scalare.html
+        accessed: 2026-10-13
+      - &farias2015
+        kind: literature
+        title: "Farias Pantoja, W. M., Vargas Flores, L. and Tavares-Dias, M. (2015). Parasites component community in wild population of Pterophyllum scalare Schultze, 1823 and Mesonauta acora Castelnau, 1855, cichlids from the Brazilian Amazon. Journal of Applied Ichthyology 31(6), 1043-1048."
+        url: https://doi.org/10.1111/jai.12903
+        accessed: 2026-10-13
+      - &tavares2010
+        kind: literature
+        title: "Tavares-Dias, M., Lemos, J. R. G. and Martins, M. L. (2010). Parasitic fauna of eight species of ornamental freshwater fish species from the middle Negro River in the Brazilian Amazon Region. Revista Brasileira de Parasitologia Veterinária 19(2), 103-107."
+        url: https://doi.org/10.1590/s1984-29612010000200007
+        accessed: 2026-10-13
+      - &duarte2013
+        kind: literature
+        title: "Duarte, R. M., Ferreira, M. S., Wood, C. M. and Val, A. L. (2013). Effect of low pH exposure on Na+ regulation in two cichlid fish species of the Amazon. Comparative Biochemistry and Physiology Part A 166(3), 441-448."
+        url: https://doi.org/10.1016/j.cbpa.2013.07.022
+        accessed: 2026-10-13
+      - &prado2011
+        kind: literature
+        title: "Prado, K. L. L., Freitas, C. E. C. and Soares, M. G. M. (2011). Assembléias de peixes associadas às macrófitas aquáticas em lagos de várzea do baixo rio Solimões. Biotemas 23(1), 131-142."
+        url: https://doi.org/10.5007/2175-7925.2010v23n1p131
+        accessed: 2026-10-13
+      - &pfkperu
+        kind: literature
+        title: "Practical Fishkeeping (2021): What is the Peruvian Altum?"
+        url: https://www.practicalfishkeeping.co.uk/features/what-is-the-peruvian-altum/
+        accessed: 2026-10-13
+    evidence:
+      - source: *cof
+        value: {continent: South America, region: Amazon basin}
+        note: Range in Brazil, Colombia, French Guiana, Guyana and Peru; introduced in Suriname.
+      - source: *fishbase
+        value: {continent: South America, region: Amazon basin and Guiana rivers}
+        note: Names the Ucayali, Solimões, Amazon, rivers of Amapá, Oyapock and Essequibo.
+
+  temperatureC:
+    value: {min: 27, max: 30}
+    confidence: medium
+    rationale: >-
+      Decided unanimously by the vote count: the generator proposed 26 to 30 °C, checker-a 26 to
+      31 °C, checker-b and checker-c 27 to 30 °C; all four agree within 1 °C, and the median of the
+      bounds gives 27 to 30 °C. The range rests on water measured where wild P. scalare were
+      caught: a mean of 28.6 °C with little spread in the Igarapé Fortaleza basin in Amapá, 27.8 to
+      28.5 °C in the main channel of the same basin, 27.0 to 29.1 °C in a blackwater stream of the
+      middle Rio Negro, and lake means of 28.0 °C at low water in várzea macrophyte banks of the
+      lower Solimões. A review of the species summarises the habitat as 27 to 30 °C, and wild
+      spawning falls into the warm season at 28 to 30 °C. The sources span a wider 26 to 33 °C:
+      shallow floodplain water of the Igarapé Fortaleza ranged from 26 to 33 °C, and the várzea
+      lakes averaged 31.6 °C at high water; these are short or surface extremes and lie outside the
+      decided range. FishBase gives 24 to 30 °C, which reads as a keeping range rather than a
+      habitat measurement.
+    sources:
+      - *farias2015
+      - &bittencourt2014
+        kind: literature
+        title: "Bittencourt, L. S., Pinheiro, D. A., Cárdenas, M. Q., Fernandes, B. M. and Tavares-Dias, M. (2014). Parasites of native Cichlidae populations and invasive Oreochromis niloticus (Linnaeus, 1758) in tributary of Amazonas River (Brazil). Revista Brasileira de Parasitologia Veterinária 23(1), 44-54."
+        url: https://doi.org/10.1590/s1984-29612014006
+        accessed: 2026-10-13
+      - *tavares2010
+      - &korzelecka2012
+        kind: literature
+        title: "Korzelecka-Orkisz, A., Szalast, Z., Pawlos, D., Smaruj, I., Tański, A., Szulc, J. and Formicki, K. (2012). Early ontogenesis of the angelfish, Pterophyllum scalare Schultze, 1823 (Cichlidae). Neotropical Ichthyology 10(3), 567-576."
+        url: https://doi.org/10.1590/s1679-62252012005000017
+        accessed: 2026-10-13
+      - &ortega2009
+        kind: literature
+        title: "Ortega-Salas, A. A., Cortés, G. I. and Reyes-Bustamante, H. (2009). Fecundity, growth, and survival of the angelfish Pterophyllum scalare (Perciformes: Cichlidae) under laboratory conditions. Revista de Biología Tropical 57(3)."
+        url: https://doi.org/10.15517/rbt.v57i3.5488
+        accessed: 2026-10-13
+      - *prado2011
+      - *fishbase
+    evidence:
+      - source: *farias2015
+        value: {min: 28.2, max: 29.0}
+        note: Mean 28.6 ± 0.4 °C at the capture sites in the Igarapé Fortaleza basin, Amapá, September to December.
+      - source: *bittencourt2014
+        value: {min: 26, max: 33}
+        note: Floodplain of the Igarapé Fortaleza, with short daytime peaks; the main channel measured 27.8 to 28.5 °C.
+      - source: *tavares2010
+        value: {min: 27.0, max: 29.1}
+        note: Blackwater stream of the middle Rio Negro where P. scalare was netted.
+      - source: *prado2011
+        value: {min: 28, max: 31.6}
+        note: Lake means at low and high water in várzea macrophyte banks where P. scalare was caught.
+      - source: *korzelecka2012
+        value: {min: 27, max: 30}
+        note: Habitat summary from earlier literature, not own measurements.
+      - source: *ortega2009
+        value: {min: 28, max: 30}
+        note: Water temperature during the wild spawning season.
+      - source: *fishbase
+        value: {min: 24, max: 30}
+        note: Environment field of the species summary; probably a keeping range.
+    verification:
+      method: unanimous
+      votes: {agree: 4, total: 4}
+    tolerance:
+      value: {min: 24, max: 30}
+      confidence: high
+      rationale: >-
+        Decided by a qualified majority of four of five votes: the generator, checker-c and
+        tiebreaker-1 proposed 24 to 30 °C and checker-a 24 to 31 °C, which agrees within 1 °C;
+        checker-b proposed 22 to 30 °C. Seriously Fish, Practical Fishkeeping, FishBase, Tropical
+        Fish Hobbyist and the Fishkeeping.co.uk care sheet all give 24 to 30 °C, and a breeder's
+        article checked on the Cichlid Room Companion agrees. AquaInfo stays at 24 to 27 °C and an
+        Aqualog sheet for wild fish from Guyana at 24 to 29 °C. Captive juveniles grew best at 26 to
+        27.6 °C, and eggs are incubated at about 28 °C. The sources span a wider 22 to 31 °C: an
+        Aqualog sheet for a captive colour line starts at 22 °C, and earlier studies cited by
+        Korzelecka-Orkisz et al. report preferred breeding temperatures of up to 31 °C; no
+        husbandry source recommends keeping below 24 °C or above 30 °C for long periods. The range
+        contains the natural 27 to 30 °C.
+      sources:
+        - &sf
+          kind: database
+          title: "Seriously Fish: Pterophyllum scalare (Angelfish)"
+          url: https://www.seriouslyfish.com/species/pterophyllum-scalare/
+          accessed: 2026-10-13
+        - &pfkfacts
+          kind: literature
+          title: "Practical Fishkeeping (2025): Angelfish fact files, how to care for each species"
+          url: https://www.practicalfishkeeping.co.uk/features/angelfish-fact-files-how-to-care-for-each-species/
+          accessed: 2026-10-13
+        - *fishbase
+        - &tfh
+          kind: literature
+          title: "Tropical Fish Hobbyist Magazine: Pterophyllum scalare, species profile"
+          url: https://www.tfhmagazine.com/articles/freshwater/pterophyllum-scalare
+          accessed: 2026-10-13
+        - &fishkeeping
+          kind: database
+          title: "Fishkeeping.co.uk: Freshwater Angelfish care sheet"
+          url: https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=125
+          accessed: 2026-10-13
+        - &aquainfo
+          kind: database
+          title: "AquaInfo: Pterophyllum scalare, keeping angelfish in the aquarium"
+          url: https://aquainfo.nl/en/article/pterophyllum-scalare-angelfish/
+          accessed: 2026-10-13
+        - &aqualogwild
+          kind: database
+          title: "Aqualog lexicon: Pterophyllum scalare WILD GUYANA"
+          url: https://www.aqualog.de/?p=1127758
+          accessed: 2026-10-13
+        - &aqualogbicolor
+          kind: database
+          title: "Aqualog: Pterophyllum scalare Bicolor, fact sheet"
+          url: https://www.aqualog.de/blog/pterophyllum-scalare/
+          accessed: 2026-10-13
+        - &joudaki2021
+          kind: literature
+          title: "Joudaki, S., Mooraki, N. and Dadgar, S. (2021). Optimized pattern for rearing Pterophyllum scalare according to temperature, acidity and carbonate hardness. Journal of Aquaculture Development 15(2), 27-40 (abstract)."
+          url: https://doi.org/10.52547/aqudev.15.2.27
+          accessed: 2026-10-13
+        - *korzelecka2012
+        - &crcboorman
+          kind: website
+          title: "Cichlid Room Companion: Boorman (2004), Pterophyllum scalare, the Angelfish (verification only)"
+          url: https://cichlidae.com/article.php?id=75R8OoAtmQpeCa-S5MUqew
+          accessed: 2026-10-13
+      evidence:
+        - source: *sf
+          value: {min: 24, max: 30}
+          note: Aquarium recommendation.
+        - source: *pfkfacts
+          value: {min: 24, max: 30}
+          note: Aquarium recommendation for captive-bred fish.
+        - source: *fishbase
+          value: {min: 24, max: 30}
+        - source: *tfh
+          value: {min: 24, max: 30}
+        - source: *fishkeeping
+          value: {min: 24, max: 30}
+        - source: *aquainfo
+          value: {min: 24, max: 27}
+          note: Aquarium recommendation.
+        - source: *aqualogwild
+          value: {min: 24, max: 29}
+          note: Wild-caught fish from Guyana.
+        - source: *aqualogbicolor
+          value: {min: 22, max: 28}
+          note: Captive colour line.
+        - source: *joudaki2021
+          value: {min: 26, max: 27.6}
+          note: Optimum for growth and feed conversion of captive juveniles.
+        - source: *korzelecka2012
+          value: {min: 27, max: 31}
+          note: Preferred temperatures from earlier studies; eggs and larvae reared at 28 °C.
+        - source: *crcboorman
+          value: {min: 24, max: 30}
+          note: Breeder's recommendation, used for verification only.
+      verification:
+        method: qualified-majority
+        votes: {agree: 4, total: 5}
+
+  ph:
+    value: {min: 5.0, max: 7.5}
+    confidence: low
+    rationale: >-
+      The vote did not settle this value, so it is decided by the median rule like a conservative
+      decision: the generator, checker-a and tiebreaker-1 proposed pH 5.0 to 7.5, checker-b 5.5 to
+      7.0 and checker-c 4.5 to 7.5. Only three of the five votes agree within 0.3 pH, one short of a
+      qualified majority, so the range is the median of all five minima (4.5, 5.0, 5.0, 5.0 and 5.5
+      give 5.0) and of all five maxima (7.0, 7.5, 7.5, 7.5 and 7.5 give 7.5), with low confidence.
+      The species lives in several Amazonian water types. At capture sites in the Igarapé Fortaleza
+      basin the pH was 6.5 ± 0.9, with 6.2 to 7.5 on the floodplain and 6.4 to 6.9 in the main
+      channel; várzea lakes of the lower Solimões averaged 5.5 to 6.75, and Lake Catalão, where the
+      species was caught, ranged from 5.86 to 7.47 over a year. Wild fish for a physiological study
+      came from upper Rio Negro blackwater, whose usual pH the paper gives as 5 to 6. The sources
+      span a wider pH 4.0 to 7.5: reviews of Amazonian water chemistry put typical Rio Negro
+      blackwater at pH 4 to 5.5, and a spatial gradient in Lake Catalão reaches down to 4.5, so
+      blackwater populations may live somewhat below the decided lower bound; these are water-type
+      values, not angelfish sites. A collecting paper from the middle Rio Negro prints a pH of 1.5
+      to 2.7, which contradicts its own conductivity and is not used. FishBase gives 6.0 to 8.0,
+      which reads as a keeping range; no field value above 7.5 was found.
+    sources:
+      - *farias2015
+      - *bittencourt2014
+      - *prado2011
+      - &brito2014
+        kind: literature
+        title: "Brito, J. G., Alves, L. F. and Espirito Santo, H. M. V. (2014). Seasonal and spatial variations in limnological conditions of a floodplain lake (Lake Catalão) connected to both the Solimões and Negro Rivers, Central Amazonia. Acta Amazonica 44(1), 121-133."
+        url: https://doi.org/10.1590/s0044-59672014000100012
+        accessed: 2026-10-13
+      - &casado2012
+        kind: literature
+        title: "Casado-del Castillo, C. P., Marques-de Souza, M., Ferreira-Campos, D., do Amaral-Serique, K. K. and Sampaio-Zuanon, J. A. (2012). Ictiofauna associada a macrófitas aquáticas de agua lêntica (lago Catalão) e lótica (Ilha Marchantaria) na época de vazante, Amazônia Central. Folia Amazónica 21(1-2), 23-32."
+        url: https://doi.org/10.24841/fa.v21i1-2.29
+        accessed: 2026-10-13
+      - *duarte2013
+      - &rios2013
+        kind: literature
+        title: "Ríos-Villamizar, E. A., Piedade, M. T. F., Da Costa, J. G., Adeney, J. M. and Junk, W. J. (2013). Chemistry of different Amazonian water types for river classification: a preliminary review. WIT Transactions on Ecology and the Environment 178, 17-28."
+        url: https://doi.org/10.2495/ws130021
+        accessed: 2026-10-13
+      - &rios2020iop
+        kind: literature
+        title: "Ríos-Villamizar, E. A., Adeney, J. M., Junk, W. J. and Piedade, M. T. F. (2020). Physicochemical features of Amazonian water typologies for water resources management. IOP Conference Series: Earth and Environmental Science 427, 012003."
+        url: https://doi.org/10.1088/1755-1315/427/1/012003
+        accessed: 2026-10-13
+      - &rios2020cg
+        kind: literature
+        title: "Ríos-Villamizar, E. A., Adeney, J. M., Piedade, M. T. F. and Junk, W. J. (2020). Hydrochemical classification of Amazonian rivers: a systematic review and meta-analysis. Caminhos de Geografia 21(78), 211-226."
+        url: https://doi.org/10.14393/rcg217853272
+        accessed: 2026-10-13
+      - &aprile2013
+        kind: literature
+        title: "Aprile, F. and Darwich, A. J. (2013). Nutrients and water-forest interactions in an Amazon floodplain lake: an ecological approach. Acta Limnologica Brasiliensia 25(2), 169-182."
+        url: https://doi.org/10.1590/s2179-975x2013000200008
+        accessed: 2026-10-13
+      - &horbe2009
+        kind: literature
+        title: "Horbe, A. M. C. and Santos, A. G. S. (2009). Chemical composition of black-watered rivers in the western Amazon Region (Brazil). Journal of the Brazilian Chemical Society 20(6), 1119-1126."
+        url: https://doi.org/10.1590/s0103-50532009000600018
+        accessed: 2026-10-13
+      - &roberts1972
+        kind: literature
+        title: "Roberts, T. R. (1972). Ecology of fishes in the Amazon and Congo basins. Bulletin of the Museum of Comparative Zoology 143, 117-147."
+        url: https://doi.org/10.5962/bhl.part.16914
+        accessed: 2026-10-13
+      - *tavares2010
+      - *korzelecka2012
+      - *fishbase
+    evidence:
+      - source: *farias2015
+        value: {min: 5.6, max: 7.4}
+        note: Mean 6.5 ± 0.9 at the capture sites in the Igarapé Fortaleza basin.
+      - source: *bittencourt2014
+        value: {min: 6.2, max: 7.5}
+        note: Floodplain of the Igarapé Fortaleza; main channel 6.4 to 6.9.
+      - source: *prado2011
+        value: {min: 5.5, max: 6.75}
+        note: Lake means at low and high water in várzea macrophyte banks where the species was caught.
+      - source: *brito2014
+        value: {min: 5.86, max: 7.47}
+        note: Lake Catalão over a hydrological year; the species was caught there.
+      - source: *duarte2013
+        value: {min: 5.0, max: 6.0}
+        note: Usual pH of the upper Rio Negro blackwater where the study fish were collected.
+      - source: *korzelecka2012
+        value: {min: 6.5, max: 6.9}
+        note: Habitat summarised as about 6.5, upstream Amazon about 6.9; secondary literature.
+      - source: *rios2013
+        value: {min: 4.0, max: 5.0}
+        note: Typical Rio Negro blackwater; water type, not an angelfish site.
+      - source: *rios2020iop
+        value: {min: 4.0, max: 7.0}
+        note: Blackwater about 4 to 5, whitewater near neutral; general water types.
+      - source: *rios2020cg
+        value: {min: 4.0, max: 5.5}
+        note: Typical Amazonian blackwater such as the Rio Negro.
+      - source: *aprile2013
+        value: {min: 4.5, max: 6.6}
+        note: Spatial gradient of mean pH in Lake Catalão; regional habitat proxy.
+      - source: *horbe2009
+        value: {min: 5.26, max: 7.34}
+        note: Western Solimões tributaries and main stem; no fish sampled.
+      - source: *roberts1972
+        value: {min: 6.2, max: 7.2}
+        note: Amazonian whitewater rivers in general.
+      - source: *fishbase
+        value: {min: 6.0, max: 8.0}
+        note: Environment field of the species summary; probably a keeping range.
+    verification:
+      method: median
+      votes: {agree: 3, total: 5}
+    tolerance:
+      value: {min: 5.0, max: 7.5}
+      confidence: low
+      rationale: >-
+        The vote did not reach a qualified majority, so the conservative rule applies: the
+        generator, checker-a and tiebreaker-1 proposed pH 5.0 to 8.0, checker-b 5.5 to 7.5 and
+        checker-c 4.5 to 8.0. The intersection of all five votes is 5.5 to 7.5, which is widened to
+        5.0 to 7.5 so that it contains the natural range; the narrower range triggers more warnings
+        and the confidence is low. Care sheets mostly place the keeping range between pH 6.0 and
+        7.5 (Seriously Fish 6.0 to 7.4, Practical Fishkeeping and AquaInfo 6 to 7.5, AquaExperience
+        5.5 to 7.5), and captive juveniles grew best at 7 to 7.5. Eggs develop well at about 6.8,
+        while at 8.2 almost all embryos die; adults adjust to slightly alkaline water over time.
+        Wild Rio Negro fish were held at pH 6.0 without problems. The sources span a wider pH 4.5
+        to 8.0: a retailer guide keeps wild Rio Nanay fish down to 4.5, and FishBase, Tropical Fish
+        Hobbyist, a breeder's article and a retailer's care data allow up to 8.0 for domestic stock.
+      sources:
+        - *sf
+        - *pfkfacts
+        - *aquainfo
+        - &aquaexp
+          kind: database
+          title: "AquaExperience: Pterophyllum scalare, species care sheet"
+          url: https://aquaexperience.it/pterophyllum-scalare-it.html
+          accessed: 2026-10-13
+        - *fishbase
+        - *tfh
+        - *joudaki2021
+        - *korzelecka2012
+        - *duarte2013
+        - *aqualogbicolor
+        - &charterhouse
+          kind: website
+          title: "Charterhouse Aquatics: Platinum Angelfish, Pterophyllum scalare, retailer care data"
+          url: https://charterhouse-aquatics.com/products/platinum-angelfish-pterophyllum-scalare
+          accessed: 2026-10-13
+        - &amazonia
+          kind: website
+          title: "Amazonia Tropical Fish: Rio Nanay Angelfish wild-caught and F1 care guide (retailer)"
+          url: https://amazoniafish.com/blog/rio-nanay-angelfish-guide/
+          accessed: 2026-10-13
+        - *crcboorman
+      evidence:
+        - source: *sf
+          value: {min: 6.0, max: 7.4}
+          note: Aquarium recommendation.
+        - source: *pfkfacts
+          value: {min: 6.0, max: 7.5}
+          note: Aquarium recommendation for captive-bred fish.
+        - source: *aquainfo
+          value: {min: 6.0, max: 7.5}
+        - source: *aquaexp
+          value: {min: 5.5, max: 7.5}
+        - source: *fishbase
+          value: {min: 6.0, max: 8.0}
+        - source: *tfh
+          value: {min: 6.0, max: 8.0}
+          note: Routine keeping range for domestic angelfish.
+        - source: *joudaki2021
+          value: {min: 7.0, max: 7.5}
+          note: Optimum for growth of captive juveniles.
+        - source: *korzelecka2012
+          value: {min: 6.8, max: 8.0}
+          note: Embryos thrive at 6.8 and nearly all die at 8.2; adults adapt to slightly alkaline water.
+        - source: *duarte2013
+          value: {min: 6.0, max: 6.0}
+          note: Wild blackwater fish held at pH 6.0 in the laboratory.
+        - source: *aqualogbicolor
+          value: {min: 5.0, max: 7.0}
+          note: Captive colour line.
+        - source: *charterhouse
+          value: {min: 6.0, max: 8.0}
+          note: Domestic platinum strain, retailer data.
+        - source: *amazonia
+          value: {min: 4.5, max: 6.5}
+          note: Wild Rio Nanay fish; the same guide gives 6.0 to 7.2 for captive-bred offspring.
+        - source: *crcboorman
+          value: {min: 6.0, max: 8.0}
+          note: Breeder's recommendation, used for verification only.
+      verification:
+        method: conservative
+        votes: {agree: 3, total: 5}
+
+  ghDgh:
+    value: {min: 0, max: 2}
+    confidence: medium
+    rationale: >-
+      Decided unanimously: the generator and all three checkers proposed 0 to 2 dGH. Total
+      hardness at the capture sites in the Igarapé Fortaleza basin was 30 mg/L as CaCO3, about
+      1.7 dGH. Calcium and magnesium measured in Lake Catalão convert to about 0.3 to 1.1 dGH,
+      another floodplain lake gives 0.8 to 1.7 dGH and rivers of the western Solimões drainage 0.2
+      to 0.9 dGH. The Rio Negro blackwater where wild fish were collected has a conductivity of
+      only about 10 to 40 µS/cm and is close to 0 dGH. No measurement above 2 dGH was found for a
+      habitat of the species. FishBase gives 5 to 13 dH and Fishipedia 6 to 9 dGH as natural
+      values; both contradict the field data and look like keeping ranges, so the decided range is
+      deliberately narrower than these two statements.
+    sources:
+      - *farias2015
+      - *tavares2010
+      - *brito2014
+      - *aprile2013
+      - *horbe2009
+      - *duarte2013
+      - *rios2013
+      - *rios2020cg
+      - *korzelecka2012
+      - *fishbase
+      - &fishipedia
+        kind: database
+        title: "Fishipedia: Pterophyllum scalare"
+        url: https://www.fishipedia.fr/fr/poissons/pterophyllum-scalare
+        accessed: 2026-10-13
+    evidence:
+      - source: *farias2015
+        value: {min: 1.7, max: 1.7}
+        note: Total hardness 30 mg/L as CaCO3 at the capture sites, converted.
+      - source: *brito2014
+        value: {min: 0.31, max: 1.14}
+        note: Converted from seasonal mean calcium and magnesium in Lake Catalão.
+      - source: *aprile2013
+        value: {min: 0.8, max: 1.67}
+        note: Converted from the reported calcium and magnesium ranges; regional floodplain proxy.
+      - source: *horbe2009
+        value: {min: 0.15, max: 0.93}
+        note: Converted from calcium and magnesium of western Solimões rivers; no fish sampled.
+      - source: *tavares2010
+        value: {min: 0, max: 1}
+        note: Estimate from a conductivity of 10.8 to 41.5 µS/cm at the Rio Negro site; hardness not measured.
+      - source: *duarte2013
+        value: {min: 0, max: 0.5}
+        note: Rio Negro blackwater below 10 µS/cm; hardness inferred from the ion content.
+      - source: *rios2013
+        value: {min: 0, max: 1}
+        note: Rio Negro blackwater is poor in electrolytes; own conversion of a qualitative statement.
+      - source: *fishbase
+        value: {min: 5, max: 13}
+        note: Environment field, given as dH; probably a keeping range.
+      - source: *fishipedia
+        value: {min: 6, max: 9}
+        note: Stated as natural values; contradicts the field measurements.
+    verification:
+      method: unanimous
+      votes: {agree: 4, total: 4}
+    tolerance:
+      value: {min: 0, max: 15}
+      confidence: medium
+      rationale: >-
+        Decided by a qualified majority of four of five votes: the generator, checker-b, checker-c
+        and tiebreaker-1 proposed 0 to 15 dGH; checker-a proposed 0 to 12 dGH, which differs by
+        3 dGH. Seriously Fish, Practical Fishkeeping and the Fishkeeping.co.uk care sheet give 0 to
+        15 dGH, FishBase 5 to 13 dH and Tropical Fish Hobbyist about 1.7 to 12.6 dGH. Larvae were
+        reared at about 1 dGH and juveniles grew well at 4 to 5 dGH; in a hardness trial fry grew
+        best at about 2.8 to 5.6 dGH and more slowly from about 11 dGH. Domestic stock adapts to
+        moderately hard tap water, while wild fish do better near the soft natural values; a
+        retailer guide keeps wild Rio Nanay fish at 0 to 3 dGH. The sources span a wider 0 to about
+        17 dGH: the fry in the hardness trial all survived up to 300 mg/L as CaCO3, about 16.8 dGH.
+        The range contains the natural 0 to 2 dGH.
+      sources:
+        - *sf
+        - *pfkfacts
+        - *fishkeeping
+        - *fishbase
+        - *tfh
+        - *korzelecka2012
+        - &mao2023
+          kind: literature
+          title: "Mao, J., Chen, Y., Lan, S., Yin, Z., Zhang, M., Gu, Z., Yu, F., Zheng, X. and Vasquez, H. E. (2023). Growth and nutritional health of Pterophyllum scalare juveniles: unleashing the benefits of feeding with Artemia sp. in aquariums. Israeli Journal of Aquaculture - Bamidgeh 75(2)."
+          url: https://doi.org/10.46989/001c.87423
+          accessed: 2026-10-13
+        - &vartak
+          kind: literature
+          title: "Vartak, V. R., Bhatkar, V. R., Bondre, R. D. and Balsare, S. G. Effect of water hardness on growth and survival of fry of angelfish, Pterophyllum scalare (Lichtenstein, 1823). Indian Journal of Fisheries 54(4), 397-402 (abstract)."
+          url: https://epubs.icar.org.in/index.php/IJF/article/view/6968
+          accessed: 2026-10-13
+        - *charterhouse
+        - &garnelio
+          kind: website
+          title: "Garnelio: Angelfish color mix, Pterophyllum scalare (retailer care data)"
+          url: https://www.garnelio.de/en/angelfish-color-mix-pterophyllum-scalare
+          accessed: 2026-10-13
+        - *amazonia
+      evidence:
+        - source: *sf
+          value: {min: 0, max: 15}
+          note: Aquarium recommendation.
+        - source: *pfkfacts
+          value: {min: 0, max: 15}
+          note: Aquarium recommendation for captive-bred fish.
+        - source: *fishkeeping
+          value: {min: 0, max: 15}
+        - source: *fishbase
+          value: {min: 5, max: 13}
+          note: Given as dH.
+        - source: *tfh
+          value: {min: 1.7, max: 12.6}
+          note: 30 to 225 mg/L as CaCO3, converted.
+        - source: *korzelecka2012
+          value: {min: 1, max: 1}
+          note: Hardness of the larval rearing water.
+        - source: *mao2023
+          value: {min: 4, max: 5}
+          note: Holding water of a growth trial with juveniles.
+        - source: *vartak
+          value: {min: 2.8, max: 11.2}
+          note: Best fry growth at 50 to 100 mg/L CaCO3, slower from 200 mg/L; full survival up to 300 mg/L.
+        - source: *charterhouse
+          value: {min: 5, max: 15}
+          note: Domestic platinum strain, retailer data.
+        - source: *garnelio
+          value: {min: 3, max: 15}
+          note: Retailer care data.
+        - source: *amazonia
+          value: {min: 0, max: 3}
+          note: Wild Rio Nanay fish; captive-bred offspring accept up to about 8 dGH.
+      verification:
+        method: qualified-majority
+        votes: {agree: 4, total: 5}
+
+  khDkh:
+    value: {min: 0, max: 2}
+    confidence: low
+    rationale: >-
+      Decided unanimously: the generator and checker-b proposed 0 to 2 dKH, checker-a 0 to 2.5 and
+      checker-c 0 to 3 dKH; all agree within 2, and the median of the bounds gives 0 to 2 dKH. The
+      only measurement at a capture site is an alkalinity of 30 mg/L as CaCO3 in the Igarapé
+      Fortaleza basin, about 1.7 dKH. In Lake Catalão the bicarbonate rises from about 0.6 dKH at
+      rising water to about 2.4 to 2.7 dKH at low water, a compilation for the floodplain gives
+      below 0.2 dKH for the Rio Negro and about 1.4 to 1.7 dKH for the Solimões, and Rio Negro
+      blackwater generally has almost no alkalinity. The sources span a wider 0 to 2.7 dKH; the
+      low-water peak in Lake Catalão lies above the decided upper bound. Confidence stays low
+      because only one value comes from a site where the species was caught.
+    sources:
+      - *farias2015
+      - *brito2014
+      - &caraballo2014
+        kind: literature
+        title: "Caraballo, P., Forsberg, B. R., Almeida, F. F. and Leite, R. G. (2014). Diel patterns of temperature, conductivity and dissolved oxygen in an Amazon floodplain lake: description of a friagem phenomenon. Acta Limnologica Brasiliensia 26(3), 318-331."
+        url: https://doi.org/10.1590/s2179-975x2014000300011
+        accessed: 2026-10-13
+      - *rios2013
+      - *rios2020cg
+    evidence:
+      - source: *farias2015
+        value: {min: 1.7, max: 1.7}
+        note: Alkalinity 30 mg/L as CaCO3 at the capture sites, converted.
+      - source: *brito2014
+        value: {min: 0.56, max: 2.68}
+        note: Seasonal mean bicarbonate in Lake Catalão, converted.
+      - source: *caraballo2014
+        value: {min: 0, max: 1.68}
+        note: Rio Negro and Solimões alkalinity compiled in the study-area description, converted.
+      - source: *rios2013
+        value: {min: 0, max: 0.5}
+        note: Rio Negro blackwater has very low alkalinity; own conversion of a qualitative statement.
+      - source: *rios2020cg
+        value: {min: 0, max: 0.5}
+        note: Typical Amazonian blackwater.
+    verification:
+      method: unanimous
+      votes: {agree: 4, total: 4}
+    tolerance:
+      value: {min: 0, max: 9}
+      confidence: low
+      rationale: >-
+        Decided unanimously with low confidence: the generator and checker-a proposed 0 to 10 dKH,
+        checker-b 0 to 8 and checker-c 0 to 6 dKH; all agree within 2 dKH of the top candidate, and
+        the median of the bounds gives 0 to 9 dKH. Few sources name a carbonate hardness, and
+        Seriously Fish and FishBase give none. An Italian care sheet recommends 0 to 6 dKH, and a
+        growth trial with captive juveniles found the best weight gain at 7 to 8.7 dKH, so domestic
+        stock copes with moderate buffering; the natural water has almost none, and very soft water
+        needs regular changes to keep the pH stable. The sources span a wider 0 to 15 dKH: retailer
+        care data give 0 to 8 and 8 to 12 dKH, a hobby guide 3 to 8 dKH and one retailer an
+        unusually broad 0 to 15 dKH for a marble strain, which no other source supports.
+      sources:
+        - *aquaexp
+        - *joudaki2021
+        - *farias2015
+        - *charterhouse
+        - &aquaticarts
+          kind: website
+          title: "Aquatic Arts: Marble Angelfish (Pterophyllum scalare), tank-bred care guidelines (retailer)"
+          url: https://aquaticarts.com/products/marble-angelfish-pterophyllum-scalare-tank-bred
+          accessed: 2026-10-13
+        - *garnelio
+        - &furrycritter
+          kind: website
+          title: "FurryCritter: Freshwater angelfish (Pterophyllum scalare) care basics"
+          url: https://www.furrycritter.com/pages/articles/fish/angelfish_care_basics.htm
+          accessed: 2026-10-13
+      evidence:
+        - source: *aquaexp
+          value: {min: 0, max: 6}
+        - source: *joudaki2021
+          value: {min: 7, max: 8.7}
+          note: Optimum for growth and feed conversion of captive juveniles.
+        - source: *farias2015
+          value: {min: 1.7, max: 1.7}
+          note: Natural alkalinity at the capture sites, not a keeping limit.
+        - source: *charterhouse
+          value: {min: 8, max: 12}
+          note: Domestic platinum strain, retailer data.
+        - source: *aquaticarts
+          value: {min: 0, max: 15}
+          note: Captive marble strain; unusually broad retailer recommendation.
+        - source: *garnelio
+          value: {min: 0, max: 8}
+          note: Retailer care data.
+        - source: *furrycritter
+          value: {min: 3, max: 8}
+          note: Hobby care guide.
+      verification:
+        method: unanimous
+        votes: {agree: 4, total: 4}
+
+  maxSizeCm:
+    value: {male: 15, female: 15}
+    confidence: medium
+    rationale: >-
+      Seriously Fish gives 15 cm standard length, Practical Fishkeeping and Tropical Fish Hobbyist
+      up to 15 cm and FishBase 15 cm total length, with wild specimens of about 10.5 cm in one
+      sample. With the tall fins adults stand 20 to 25 cm high. Males usually grow somewhat larger
+      and heavier than females, but no source gives a separate female size, so both sexes carry the
+      sourced 15 cm; a smaller female figure would be a guess.
+    sources:
+      - *sf
+      - *pfkfacts
+      - *tfh
+      - *fishbase
+      - *aquainfo
+    evidence:
+      - source: *sf
+        value: {male: 15, female: 15}
+        note: Standard length, sexes not separated.
+      - source: *pfkfacts
+        value: {male: 15, female: 15}
+        note: Sexes not separated.
+      - source: *tfh
+        value: {male: 15, female: 15}
+        note: Horizontal length; males typically larger, no figure per sex.
+      - source: *fishbase
+        value: {male: 15, female: 15}
+        note: Maximum total length; one wild sample reached 10.5 cm.
+      - source: *aquainfo
+        value: {male: 15, female: 15}
+        note: Body length about 15 cm, total height about 25 cm.
+
+  predation:
+    value: 2
+    confidence: medium
+    rationale: >-
+      Decided by a qualified majority of four of five votes: the generator, checker-a, checker-c
+      and tiebreaker-1 chose level 2, checker-b level 1. Adult angelfish are not piscivores, since
+      insects, small crustaceans and other invertebrates make up most of the wild diet, so level 3
+      does not apply. In the aquarium, however, several husbandry sources describe them taking small
+      fish: Seriously Fish warns about small tetras, Practical Fishkeeping says they will eat small
+      fish, AquaInfo reports shrinking schools of cardinal tetras, Tropical Fish Hobbyist calls the
+      species an adept hunter of small fishes and singles out neon tetras, and the Fishkeeping.co.uk
+      care sheet confirms that neon-sized fish are eaten. Neon and cardinal tetras of 3 to 4 cm lie
+      above the 2 cm limit of level 1 and below a third of the adult length, which matches level
+      2. Small fish also appear among the wild food items cited by Farias Pantoja et al. FishBase
+      lists only invertebrates as food items.
+    sources:
+      - *sf
+      - *pfkfacts
+      - *aquainfo
+      - *tfh
+      - *fishkeeping
+      - *farias2015
+      - *fishipedia
+      - &fbeco
+        kind: database
+        title: "FishBase: Pterophyllum scalare, ecology summary (feeding type and trophic level)"
+        url: https://www.fishbase.se/Ecology/FishEcologySummary.php?StockCode=4980&GenusName=Pterophyllum&SpeciesName=scalare
+        accessed: 2026-10-13
+      - *fishbase
+      - &archive2114
+        kind: archive
+        title: cichlids.com forum thread 2114
+        url: https://www.cichlids.com/disc/read.php?1,2114
+        accessed: 2026-10-13
+    evidence:
+      - source: *sf
+        value: 2
+        note: Warns that it may eat small fish such as tetras.
+      - source: *pfkfacts
+        value: 2
+        note: Will eat small fish.
+      - source: *aquainfo
+        value: 2
+        note: Small fish such as cardinal tetras are taken as prey.
+      - source: *tfh
+        value: 2
+        note: Hunts small fishes; small tetras, livebearer fry and neon tetras at risk.
+      - source: *fishkeeping
+        value: 2
+        note: Neon-sized fish are eaten.
+      - source: *farias2015
+        value: 2
+        note: Smaller fish among the cited wild food items, besides insects and algae.
+      - source: *fishipedia
+        value: 2
+        note: Lists fish among the food of the species.
+      - source: *fishbase
+        value: 0
+        note: Listed food items are zoobenthos and crustaceans only.
+    verification:
+      method: qualified-majority
+      votes: {agree: 4, total: 5}
+
+  diet:
+    value:
+      type: invertivore
+      bloatSensitive: false
+      foods:
+        - aquatic insects and their larvae
+        - small crustaceans
+        - small fish
+        - some plant matter and algae
+    confidence: medium
+    rationale: >-
+      Decided unanimously: all four votes chose invertivore without bloat sensitivity. FishBase
+      classes the species as feeding mainly on animals, with zoobenthos, benthic crustaceans and
+      shrimps as food items and a trophic level of about 3.6. Seriously Fish calls it omnivorous
+      but states that wild fish feed mainly on small bottom invertebrates, and AquaInfo names
+      invertebrates and insect larvae as the main wild food; a retailer guide for wild Rio Nanay
+      fish lists insects, larvae and small crustaceans. A wild diet account cited by Farias
+      Pantoja et al. adds algae and small fish, and a stable-isotope study of floodplain lakes
+      classes the species as omnivorous, which is why some sources use that label; invertebrates
+      still dominate. The Cichlid Room Companion, used for verification, lists the species as
+      insectivorous. No source reports a tendency to bloat.
+    sources:
+      - *fishbase
+      - &fbfood
+        kind: database
+        title: "FishBase: food items of Pterophyllum scalare"
+        url: https://www.fishbase.se/TrophicEco/FoodItemsList.php?ID=4717&GenusName=Pterophyllum&SpeciesName=scalare
+        accessed: 2026-10-13
+      - *sf
+      - *aquainfo
+      - *fishkeeping
+      - *farias2015
+      - &oliveira2024
+        kind: literature
+        title: "Oliveira, A. C. B., Freitas, C. E., Pouilly, M., Yamamoto, K. C., Hurd, L. E., DeHart, P., Santos, J. A., Rezende, C. E., Almeida, M. G. and Siqueira-Souza, F. K. (2024). Can species guilds act as hubs for energy transfer in macrophyte meadows of Amazonian floodplain lakes? Anais da Academia Brasileira de Ciências 96(1)."
+        url: https://doi.org/10.1590/0001-3765202420230327
+        accessed: 2026-10-13
+      - *amazonia
+      - &crc
+        kind: website
+        title: "Cichlid Room Companion: Pterophyllum scalare, public species summary (verification only)"
+        url: https://cichlidae.com/species.php?id=5ltAEKjext-cbRfByHP2WA
+        accessed: 2026-10-13
+    evidence:
+      - source: *fishbase
+        value: {type: invertivore, bloatSensitive: false}
+        note: Mainly animal food; trophic level about 3.6.
+      - source: *fbfood
+        value: {type: invertivore, bloatSensitive: false}
+        note: Zoobenthos, benthic crustaceans and shrimps.
+      - source: *sf
+        value: {type: invertivore, bloatSensitive: false}
+        note: Called omnivorous, but wild fish feed mainly on bottom invertebrates.
+      - source: *aquainfo
+        value: {type: invertivore, bloatSensitive: false}
+        note: Mainly invertebrates and insect larvae in the wild.
+      - source: *fishkeeping
+        value: {type: invertivore, bloatSensitive: false}
+        note: Recommends animal food such as insect larvae; mapped to the rubric.
+      - source: *farias2015
+        value: {type: omnivore, bloatSensitive: false}
+        note: Insects, algae and smaller fish.
+      - source: *oliveira2024
+        value: {type: omnivore, bloatSensitive: false}
+        note: Stable-isotope study classes the species as omnivorous.
+      - source: *amazonia
+        value: {type: invertivore, bloatSensitive: false}
+        note: Wild Rio Nanay fish eat insects, larvae and small crustaceans; retailer guide.
+      - source: *crc
+        value: {type: invertivore, bloatSensitive: false}
+        note: Insectivorous; used for verification only.
+    verification:
+      method: unanimous
+      votes: {agree: 4, total: 4}
+
+  aggressionConspecific:
+    value: 2
+    confidence: medium
+    rationale: >-
+      All four runs chose level 2. Groups of young angelfish form a ranking with chasing and fin
+      displays, and pairs that form within the group defend their spawning site against the other
+      angelfish (Seriously Fish, AquaInfo, AquaExperience). Behavioural studies describe breeding
+      males as very aggressive while they set up a territory and pairs that attack intruders during
+      the breeding cycle but not between cycles. In a tall, roomy tank with cover injuries are rare;
+      crowding or forcing two unbonded adults together leads to persistent harassment.
+    sources:
+      - *sf
+      - *aquainfo
+      - *aquaexp
+      - *fishkeeping
+      - &cacho1999
+        kind: literature
+        title: "Cacho, M. S. R. F., Yamamoto, M. E. and Chellappa, S. (1999). Comportamento reprodutivo do acará bandeira, Pterophyllum scalare Cuvier & Valenciennes (Osteichthyes, Cichlidae). Revista Brasileira de Zoologia 16(3), 653-664."
+        url: https://doi.org/10.1590/s0101-81751999000300006
+        accessed: 2026-10-13
+      - &cacho2007
+        kind: literature
+        title: "Cacho, M. S. R. F., Yamamoto, M. E. and Chellappa, S. (2007). Mating system of the amazonian cichlid angel fish, Pterophyllum scalare. Brazilian Journal of Biology 67(1), 161-165."
+        url: https://doi.org/10.1590/s1519-69842007000100022
+        accessed: 2026-10-13
+    evidence:
+      - source: *sf
+        value: 2
+        note: Squabbles with its own kind; males more territorial when breeding.
+      - source: *aquainfo
+        value: 2
+        note: Hierarchy within the group; pairs defend a territory when breeding.
+      - source: *aquaexp
+        value: 2
+        note: Hierarchy and territorial adult pairs.
+      - source: *fishkeeping
+        value: 2
+        note: Conflicts between conspecifics increase during spawning.
+      - source: *cacho1999
+        value: 2
+        note: Breeding males very aggressive while establishing a territory.
+      - source: *cacho2007
+        value: 2
+        note: Mated fish attack intruders during breeding cycles, not between them.
+
+  aggressionHeterospecific:
+    value: 2
+    confidence: medium
+    rationale: >-
+      Outside breeding the angelfish is a calm community fish that leaves tankmates of suitable
+      size alone (Seriously Fish, AquaInfo). A spawning pair, however, guards its leaf or slate and
+      chases other fish away from it for the whole brood care; Practical Fishkeeping and the
+      Fishkeeping.co.uk care sheet note aggression when breeding in a community tank, and a
+      behavioural study describes pairs attacking intruders during the breeding cycle. Chasing
+      other species out of the spawning territory without injuries is level 2; level 1 covers only
+      display. Attacks beyond the spawning site are not typical, so level 3 does not apply.
+    sources:
+      - *pfkfacts
+      - *fishkeeping
+      - *cacho2007
+      - *sf
+      - *aquainfo
+      - &tetra
+        kind: website
+        title: "Tetra: Angelfish (Pterophyllum scalare), care guide"
+        url: https://blog.tetra.net/en-en/angelfish-pterophyllum-scalare/
+        accessed: 2026-10-13
+    evidence:
+      - source: *pfkfacts
+        value: 2
+        note: Aggressive when breeding in a community tank, otherwise suitable for larger community tanks.
+      - source: *fishkeeping
+        value: 2
+        note: Community keeping possible; territorial when spawning.
+      - source: *cacho2007
+        value: 2
+        note: Pairs aggressive towards intruders during breeding cycles.
+      - source: *sf
+        value: 1
+        note: Generally peaceful, a good community fish.
+      - source: *aquainfo
+        value: 1
+        note: Friendly towards other fish; defends a territory when breeding.
+
+  territory:
+    value: {size: small, breedingOnly: true}
+    confidence: medium
+    rationale: >-
+      Angelfish claim no fixed area outside breeding and move through the tank as a group. A pair
+      chooses a vertical surface such as a broad leaf, slate, a pipe or the glass and defends the
+      spawning site and its surroundings while it tends eggs and fry; between breeding cycles the
+      pair does not attack intruders. The defended area is the spawning site and its immediate
+      surroundings rather than a third of a large tank.
+    sources:
+      - *sf
+      - *aquainfo
+      - *fishbase
+      - *cacho1999
+      - *cacho2007
+      - *pfkfacts
+    evidence:
+      - source: *cacho2007
+        value: {size: small, breedingOnly: true}
+        note: No aggression towards intruders between breeding cycles.
+      - source: *sf
+        value: {size: small, breedingOnly: true}
+        note: Males more territorial in breeding condition.
+      - source: *tetra
+        value: {size: large, breedingOnly: true}
+        note: Paired adults defend a spawning territory; size not stated.
+      - source: *amazonia
+        value: {size: large, breedingOnly: true}
+        note: Retailer guide; a breeding pair may dominate a community tank.
+
+  habitatZones:
+    value: [plants, wood, openWater]
+    confidence: high
+    rationale: >-
+      Wild angelfish live in slow or still water of floodplains, swamps, flooded forest and river
+      margins among dense aquatic vegetation, floating macrophyte banks, roots and submerged
+      branches, and they swim in the open midwater between this cover. FishBase and the capture
+      reports describe vegetation and submerged wood at the sites, várzea studies caught the species
+      in macrophyte banks, and care sheets ask for tall plants, roots and open swimming space.
+    sources:
+      - *fishbase
+      - *farias2015
+      - *prado2011
+      - *aquainfo
+      - *aquaexp
+      - *korzelecka2012
+    evidence:
+      - source: *fishbase
+        value: [plants, wood]
+        note: Swamps and flooded ground with dense vegetation.
+      - source: *farias2015
+        value: [plants, wood]
+        note: Caught near submerged wood and vegetation.
+      - source: *prado2011
+        value: [plants]
+        note: Caught in macrophyte banks of várzea lakes.
+      - source: *aquaexp
+        value: [plants, wood, openWater]
+        note: Slow water with roots and plants, plus swimming room.
+
+  social:
+    value: {structure: group, minGroup: 5}
+    confidence: medium
+    rationale: >-
+      FishBase and AquaInfo recommend groups of at least five, and Seriously Fish advises starting
+      with about six juveniles so that a pair can form. Pairs form within the group and separate
+      from it only for brood care; they may then dominate the others, so a large tank or rehoming
+      surplus fish is needed. A single established pair also works in a smaller tank, but the
+      sources give group keeping as the standard.
+    sources:
+      - *fishbase
+      - *aquainfo
+      - *sf
+      - *cacho2007
+    evidence:
+      - source: *fishbase
+        value: {structure: group, minGroup: 5}
+        note: Groups of five or more; single pairs for breeding.
+      - source: *aquainfo
+        value: {structure: group, minGroup: 5}
+      - source: *sf
+        value: {structure: group, minGroup: 6}
+        note: Six juveniles recommended to obtain a pair.
+      - source: *cacho2007
+        value: {structure: pair}
+        note: Serial monogamy under experimental conditions.
+      - source: *tetra
+        value: {structure: pair}
+        note: One adult pair in a smaller tank, groups in large tanks.
+
+  speciesOnly:
+    value: false
+    confidence: high
+    rationale: >-
+      Decided unanimously: all four votes chose false. Seriously Fish rates the angelfish as a good
+      community fish, Practical Fishkeeping as suitable for larger community tanks, and AquaInfo
+      and the Fishkeeping.co.uk care sheet allow peaceful tankmates that are too large to be eaten.
+      FishBase gives no recommendation to keep it alone. The limits are small fish that fit into
+      its mouth and fin nippers, which the predation level and the partner list cover.
+    sources:
+      - *sf
+      - *pfkfacts
+      - *aquainfo
+      - *fishkeeping
+      - *fishbase
+      - *tetra
+    evidence:
+      - source: *sf
+        value: false
+        note: Good community fish.
+      - source: *pfkfacts
+        value: false
+        note: Suitable for larger community tanks.
+      - source: *aquainfo
+        value: false
+        note: Suits a community aquarium with peaceful fish that are not too small.
+      - source: *fishkeeping
+        value: false
+      - source: *fishbase
+        value: false
+        note: No recommendation to keep it alone.
+      - source: *tetra
+        value: false
+    verification:
+      method: unanimous
+      votes: {agree: 4, total: 4}
+
+  hybridGroup:
+    value: pterophyllum
+    confidence: medium
+    rationale: >-
+      Decided unanimously: all four votes proposed the new group pterophyllum with the three valid
+      species of the genus, P. scalare, P. altum and P. leopoldi, as listed by the Catalog of
+      Fishes. One cross is documented: Practical Fishkeeping (Clarke, 2010) reports captive-bred
+      hybrids of a P. altum from the Rio Atabapo and a Rio Negro line of P. scalare, bred in Germany
+      and shown at a trade fair. A Practical Fishkeeping article on the Peruvian Altum regards the
+      farmed angelfish as mostly P. scalare with genes of both other species, and Tropical Fish
+      Hobbyist considers it likely that the aquarium angelfish descends from more than one species;
+      Wikipedia describes the domestic strains as of hybrid ancestry. No documented cross with
+      P. leopoldi was found, and the Seriously Fish page on P. leopoldi gives no crossing warning;
+      that species belongs to the group because of its close relationship and the reported mixed
+      ancestry of the farmed stock. Hence the medium confidence.
+    sources:
+      - &pfkhybrid
+        kind: literature
+        title: "Clarke, M. (2010). Hybrid scalare-altum angel. Practical Fishkeeping (August 2010)."
+        url: https://www.practicalfishkeeping.co.uk/features/hybrid-scalare-altum-angel/
+        accessed: 2026-10-13
+      - *pfkperu
+      - *tfh
+      - *cof
+      - &wikipedia
+        kind: website
+        title: "Wikipedia: Freshwater angelfish"
+        url: https://en.wikipedia.org/wiki/Freshwater_angelfish
+        accessed: 2026-10-13
+    evidence:
+      - source: *pfkhybrid
+        value: pterophyllum
+        note: Captive-bred cross of P. altum and P. scalare.
+      - source: *pfkperu
+        value: pterophyllum
+        note: Farmed angelfish probably carry genes of all three species; no controlled cross.
+      - source: *tfh
+        value: pterophyllum
+        note: Aquarium angelfish likely descend from two or more species.
+      - source: *cof
+        value: pterophyllum
+        note: P. scalare, P. altum and P. leopoldi are the valid species of the genus; states nothing about crosses.
+      - source: *wikipedia
+        value: pterophyllum
+        note: Domestic strains of hybrid ancestry; species only subtly different.
+    verification:
+      method: unanimous
+      votes: {agree: 4, total: 4}
+
+  coloration:
+    value: {baseColors: [silver, black], pattern: bars}
+    confidence: high
+    rationale: >-
+      The wild form is silvery with dark vertical bars, seven in juveniles and four in adults, one
+      of them through the eye; the bars darken during spawning and fade under stress. Captive strains
+      range from black and gold to marbled and koi patterns; the value describes the wild type.
+    sources:
+      - *fishbase
+      - *sf
+      - *aquainfo
+      - *tfh
+    evidence:
+      - source: *fishbase
+        value: {baseColors: [silver, black], pattern: bars}
+        note: Silvery body with vertical bars.
+      - source: *tfh
+        value: {baseColors: [silver, black], pattern: bars}
+        note: Wild type silver with dark vertical bars.
+
+  feedingSpeed:
+    value: normal
+    confidence: low
+    rationale: >-
+      Angelfish accept flakes, granules and frozen food readily and take their share in the middle
+      and upper water among calm tankmates, but fast, pushy feeders such as barbs or mbuna
+      outcompete them. Tropical Fish Hobbyist calls them voracious, and the Fishkeeping.co.uk care
+      sheet warns that they are easily overfed, which points to a strong appetite rather than the
+      rushing of hasty species. No source compares their feeding pace directly, hence low
+      confidence.
+    sources:
+      - *sf
+      - *pfkfacts
+      - *aquainfo
+      - *tfh
+      - *fishkeeping
+    evidence:
+      - source: *tfh
+        value: hasty
+        note: Described as a voracious feeder.
+      - source: *fishkeeping
+        value: hasty
+        note: Takes offered food readily, so overfeeding is common.
+
+  minTank:
+    value: {volumeL: 240, lengthCm: 120, depthCm: 40}
+    confidence: medium
+    rationale: >-
+      The social unit is a group of five adults. Practical Fishkeeping gives 120 x 40 x 50 cm for a
+      group, which holds about 240 litres. AquaInfo asks for about 150 cm length for a group of five
+      or more; Seriously Fish names 100 x 40 x 50 cm, about 200 litres, as the smallest tank, and
+      FishBase a length of at least 100 cm, which suit a single pair rather than a group. Because
+      adults stand up to 25 cm tall with fins, the water should be at least 50 cm high.
+    sources:
+      - *pfkfacts
+      - *aquainfo
+      - *sf
+      - *fishbase
+    evidence:
+      - source: *pfkfacts
+        value: {volumeL: 240, lengthCm: 120, depthCm: 40}
+        note: 120 x 40 x 50 cm for a group.
+      - source: *aquainfo
+        value: {volumeL: 400, lengthCm: 150, depthCm: 50}
+        note: About 150 cm length and at least 50 cm water height for a group; volume calculated.
+      - source: *sf
+        value: {volumeL: 200, lengthCm: 100, depthCm: 40}
+        note: 100 x 40 x 50 cm as the smallest tank.
+
+  lifespanYears:
+    value: {min: 8, max: 12}
+    confidence: medium
+    rationale: >-
+      AquaInfo reports at least ten years under good care, AquaExperience 8 to 12 years and
+      Fishipedia about 9 years; hobby and retailer pages give 8 to 10 years and up to about 12 years
+      for well-kept fish.
+    sources:
+      - *aquainfo
+      - *aquaexp
+      - *fishipedia
+      - *garnelio
+      - *furrycritter
+      - *wikipedia
+    evidence:
+      - source: *aquainfo
+        value: {min: 10, max: 12}
+        note: At least ten years.
+      - source: *aquaexp
+        value: {min: 8, max: 12}
+      - source: *fishipedia
+        value: {min: 9, max: 9}
+      - source: *garnelio
+        value: {min: 8, max: 10}
+      - source: *wikipedia
+        value: {min: 8, max: 12}
+        note: Around 12 years with good care.
+
+  breeding:
+    value: open-substrate-spawner
+    confidence: high
+    rationale: >-
+      Pairs lay their eggs in rows on vertical or steep surfaces such as broad leaves, wood, slate
+      or the aquarium glass, and both parents fan and guard the eggs and the young. FishBase,
+      Seriously Fish, AquaInfo and breeding studies describe this biparental care on an exposed
+      substrate, and the Cichlid Room Companion, used for verification, agrees.
+    sources:
+      - *fishbase
+      - *sf
+      - *aquainfo
+      - *korzelecka2012
+      - *cacho1999
+      - *crc
+    evidence:
+      - source: *fishbase
+        value: open-substrate-spawner
+        note: Both parents guard eggs attached to vegetation.
+      - source: *sf
+        value: open-substrate-spawner
+        note: Spawns on vertical surfaces.
+      - source: *korzelecka2012
+        value: open-substrate-spawner
+        note: Paired spawning and care on exposed vertical strips.
+      - source: *cacho1999
+        value: open-substrate-spawner
+        note: Broad-leaved plants preferred as spawning substrate.
+
+  beginnerSuitability:
+    value: moderate
+    confidence: medium
+    rationale: >-
+      Captive-bred angelfish are hardy and adapt to a wide range of tap water; Seriously Fish rates
+      them easy and AquaInfo easy to keep in a community tank. They do, however, need a tall tank,
+      grow large, become quarrelsome when pairs form and eat small tankmates, which trips up many
+      beginners who buy them small for a low community tank. Wild-caught locality fish need soft,
+      acidic water and are more demanding. The Cichlid Room Companion, used for verification,
+      places the species at the intermediate level, which matches moderate.
+    sources:
+      - *sf
+      - *aquainfo
+      - *pfkperu
+      - *crc
+      - *amazonia
+      - &archive328
+        kind: archive
+        title: cichlids.com forum thread 328
+        url: https://www.cichlids.com/disc/read.php?1,328
+        accessed: 2026-10-13
+    evidence:
+      - source: *sf
+        value: easy
+        note: Common captive stock.
+      - source: *aquainfo
+        value: easy
+      - source: *crc
+        value: moderate
+        note: Intermediate level; used for verification only.
+      - source: *amazonia
+        value: demanding
+        note: Wild locality imports; retailer guide.
+
+partners:
+  suitable:
+    - species: Corydoras sterbai
+      reason: Peaceful bottom dweller of the Amazon basin that tolerates the same warm, soft water and is too large to be eaten.
+    - species: Ancistrus sp. (bristlenose catfish)
+      reason: Robust algae grazer that stays on wood and the bottom and does not compete for space in the water column.
+    - species: Moenkhausia sanctaefilomenae
+      reason: Calm schooling tetra of about 7 cm, too large to be taken as prey.
+    - species: Laetacara curviceps
+      reason: Small, peaceful South American cichlid that stays near the bottom and shares the water requirements.
+      condition: Tank of at least 120 cm with plants and wood so that territories do not overlap.
+    - species: Mesonauta festivus
+      reason: Calm cichlid of the same floodplain habitats with similar body shape and temperament.
+      condition: Tank of at least 150 cm; watch for clashes when either species breeds.
+  unsuitable:
+    - species: Paracheirodon innesi
+      reason: Neon tetras of 3 to 4 cm fit into the mouth of an adult angelfish and are eaten.
+    - species: Puntigrus tetrazona
+      reason: Tiger barbs nip the long ventral and dorsal fins of angelfish.
+    - species: Lake Malawi mbuna
+      reason: Need hard alkaline water and are far too aggressive and fast at feeding for angelfish.
+    - species: Astronotus ocellatus
+      reason: Grows much larger and preys on or harasses angelfish.
+    - species: Pterophyllum altum
+      reason: Same hybrid group; captive crosses with P. scalare are documented, so the two species should not be kept together.
+    - species: Pterophyllum leopoldi
+      reason: Same hybrid group; a close relative that should be kept apart to avoid mixed offspring.
+    - species: Symphysodon aequifasciatus
+      reason: Discus feed slowly and lose food to angelfish, and farmed angelfish may pass on parasites such as gill flukes.
+
+profile:
+  overview:
+    text: >-
+      The freshwater angelfish is one of the best-known aquarium fish and a cichlid from the Amazon
+      basin. Its disc-shaped, laterally compressed body with very tall dorsal and anal fins and long,
+      thread-like ventral fins makes it unmistakable. Wild fish are silver with dark vertical bars,
+      while the trade offers many captive-bred strains such as black, gold, marble, koi and veil
+      forms. Almost all fish on sale come from large breeding farms, and these domesticated lines
+      probably carry some genes of the two other angelfish species, Pterophyllum altum and
+      P. leopoldi. Wild-caught fish from Peru, the Solimões or the Rio Negro reach the hobby only
+      occasionally. Angelfish are calm, attractive fish for a large, tall community tank, but they
+      are cichlids: pairs defend their spawning site and adults eat small fish.
+    sources:
+      - *cof
+      - *sf
+      - *pfkperu
+      - *tfh
+  habitat:
+    text: >-
+      The species ranges across the Amazon basin from the Ucayali in Peru along the Solimões and the
+      lower Amazon to Amapá, and further to the Oyapock in French Guiana and the Essequibo in Guyana.
+      It also lives in the Rio Negro. Angelfish favour quiet, slow-flowing water: floodplain lakes,
+      swamps, flooded forest and sheltered river margins with dense aquatic and bank vegetation,
+      roots and fallen branches. Field measurements at capture sites show warm water of about 27 to
+      30 °C, a pH from moderately acidic to about neutral, and very soft water with almost no
+      carbonate hardness. In the blackwater of the Rio Negro the water is more acidic still and even
+      poorer in minerals.
+    sources:
+      - *cof
+      - *fishbase
+      - *farias2015
+      - *bittencourt2014
+      - *tavares2010
+      - *prado2011
+      - *brito2014
+  sizeAndGrowth:
+    text: >-
+      Adult angelfish reach a body length of about 15 cm, while their fins make them up to 25 cm tall.
+      Males tend to grow slightly larger than females and develop a steeper forehead with age. Young
+      angelfish grow quickly on a varied diet and reach their adult shape within about a year. With
+      good care they live around ten years. Because of their height they need tanks with at least
+      50 cm of water depth; low tanks restrict the fins and cause stress.
+    sources:
+      - *sf
+      - *pfkfacts
+      - *tfh
+      - *fishbase
+      - *aquainfo
+  husbandry:
+    text: >-
+      A group of five adults needs a tank of about 120 cm length and 240 litres with at least 50 cm
+      water height, and more room is better. Tall plants such as Amazon swords, vertical roots and
+      some open swimming space suit their habits; the current should be gentle. Captive-bred
+      angelfish do well at 24 to 30 °C, pH 6 to 7.5 and soft to medium-hard water, and many live in
+      ordinary tap water that is not strongly alkaline. Wild-caught fish and breeding pairs are
+      better kept in soft, slightly acidic water close to the natural values. Clean water matters
+      more than exact numbers: regular partial water changes and a good filter keep nitrate low and
+      prevent many of the diseases that hit stressed angelfish.
+    sources:
+      - *sf
+      - *pfkfacts
+      - *aquainfo
+      - *fishbase
+  socialBehavior:
+    text: >-
+      Juvenile angelfish move in loose groups and establish a ranking with short chases and displays.
+      When a pair forms, the two fish separate from the others, claim a spawning site and drive away
+      both rival angelfish and other fish that come too close. In a spacious tank this rarely causes
+      injuries, but in small tanks the remaining fish can be harassed. A group of five or more young
+      fish in a large tank, or a single established pair, works best. Towards other species
+      angelfish are peaceful outside breeding; they are, however, opportunistic predators of small
+      fish.
+    sources:
+      - *sf
+      - *fishbase
+      - *aquainfo
+      - *cacho1999
+      - *cacho2007
+  diet:
+    text: >-
+      In the wild angelfish feed mainly on insect larvae, small crustaceans and other invertebrates,
+      which they pick from plants, roots and the water column, and they take small fish and some
+      plant matter as well. In the aquarium they accept flakes, granules and pellets readily. Frozen
+      or live foods such as mosquito larvae, brine shrimp, daphnia and mysis add variety and help to
+      condition breeding pairs. Feed small portions once or twice a day that are eaten within a few
+      minutes, because uneaten food quickly spoils the water. Very small tankmates may become part of
+      the menu.
+    sources:
+      - *fishbase
+      - *sf
+      - *farias2015
+      - *pfkfacts
+      - *tfh
+  breeding:
+    text: >-
+      Angelfish are open-substrate spawners that form lasting pairs. After cleaning a vertical
+      surface such as a broad leaf, a piece of slate, a pipe or the glass, the female lays several
+      hundred eggs in rows and the male fertilises them. Both parents fan and guard the clutch; the
+      larvae hatch after about two days at 28 °C and hang from the surface by sticky threads until
+      they swim freely about five days later. Rotifers or infusoria suit the first days, followed by
+      newly hatched brine shrimp. Young or disturbed pairs often eat their first clutches, which is
+      why many breeders hatch the eggs separately. Eggs develop poorly in alkaline water; soft,
+      slightly acidic water improves the hatching rate.
+    sources:
+      - *korzelecka2012
+      - *ortega2009
+      - *sf
+      - *cacho1999
+  sexing:
+    text: >-
+      Sexing angelfish from outside is difficult. Adult males often have a more pronounced bump on
+      the forehead and a slightly larger body, while females look rounder behind the ventral fins
+      when ripe with eggs. The only reliable sign is the genital papilla, which appears shortly before
+      spawning: it is short and pointed in the male and broader and blunt in the female. Behaviour
+      also helps, since males are usually the more active defenders. Buying six young fish and
+      letting a pair form on its own is the most dependable way to get a breeding pair.
+    sources:
+      - *sf
+      - *cacho1999
+  compatibility:
+    text: >-
+      Angelfish suit a large, tall community tank with fish that share their warm, soft water and are
+      too large to be swallowed. Good companions include medium-sized tetras, Corydoras and other
+      armoured catfish, bristlenose catfish and calm South American cichlids such as Laetacara or
+      Mesonauta in larger tanks. Small fish under about 5 cm, such as neon tetras, guppies or small
+      rasboras, are at risk, especially once the angelfish are full grown. Fin-nipping fish like
+      tiger barbs damage their long fins, and boisterous or large cichlids outcompete or attack them.
+      The other two angelfish species should not be added: crosses with P. altum are documented,
+      and P. leopoldi is kept apart as a close relative.
+    sources:
+      - *sf
+      - *pfkfacts
+      - *tfh
+      - *pfkhybrid
+  problems:
+    text: >-
+      The most common mistake is buying small angelfish for a short, low community tank where they
+      soon lack room and eat the small tetras they were meant to live with. Farmed angelfish are
+      often imported with gill flukes, ich or bacterial infections, so a quarantine period before
+      adding them to a tank is sensible. Poor water quality and high nitrate encourage hole-in-the-head
+      symptoms and fin rot. Overfeeding causes digestive trouble and polluted water, and females that
+      cannot spawn may become swollen. Pairs that form in a crowded tank can make life miserable for
+      the other angelfish, so plan for space or for rehoming surplus fish.
+    sources:
+      - *sf
+      - &aguinaga2015
+        kind: literature
+        title: "Aguinaga, J. Y., Marcusso, P. F., Claudiano, G. S., Lima, B. T. M., Sebastião, F. A., Fernandes, J. B. K., Moraes, F. R. and Moraes, J. R. E. (2015). Parasitic infections in ornamental cichlid fish in the Peruvian Amazon. Revista Brasileira de Parasitologia Veterinária 24(1), 82-86."
+        url: https://doi.org/10.1590/s1984-29612014076
+        accessed: 2026-10-13
+      - kind: archive
+        title: cichlids.com forum thread 1269
+        url: https://www.cichlids.com/disc/read.php?1,1269
+        accessed: 2026-10-13
+      - kind: archive
+        title: cichlids.com forum thread 33259
+        url: https://www.cichlids.com/disc/read.php?1,33259
+        accessed: 2026-10-13
+      - kind: archive
+        title: cichlids.com forum thread 61288
+        url: https://www.cichlids.com/disc/read.php?1,61288
+        accessed: 2026-10-13
+
+provenance:
+  runs:
+    - role: generator
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-13
+    - role: checker
+      model: gpt-6.1-sol
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: adjudicator
+      model: claude-opus-5-5
+      date: 2026-10-13
+  disagreements:
+    - field: features.temperatureC.value
+      proposals:
+        - {by: generator, value: {min: 26, max: 30}}
+        - {by: checker-a, value: {min: 26, max: 31}}
+        - {by: checker-b, value: {min: 27, max: 30}}
+        - {by: checker-c, value: {min: 27, max: 30}}
+      decision: {min: 27, max: 30}
+      rationale: The tally finds all four votes within 1 °C and decides unanimously on the median of the bounds.
+    - field: features.temperatureC.tolerance
+      proposals:
+        - {by: generator, value: {min: 24, max: 30}}
+        - {by: checker-a, value: {min: 24, max: 31}}
+        - {by: checker-b, value: {min: 22, max: 30}}
+        - {by: checker-c, value: {min: 24, max: 30}}
+        - {by: tiebreaker-1, value: {min: 24, max: 30}}
+      decision: {min: 24, max: 30}
+      rationale: Qualified majority of four of five votes in the tally; checker-b's lower bound of 22 °C rests on a single trade sheet for a colour line.
+    - field: features.ph.value
+      proposals:
+        - {by: generator, value: {min: 5.0, max: 7.5}}
+        - {by: checker-a, value: {min: 5.0, max: 7.5}}
+        - {by: checker-b, value: {min: 5.5, max: 7.0}}
+        - {by: checker-c, value: {min: 4.5, max: 7.5}}
+        - {by: tiebreaker-1, value: {min: 5.0, max: 7.5}}
+      decision: {min: 5.0, max: 7.5}
+      rationale: Only three of five votes agree, so the tally applies the median method to all five votes; field sources reach down to about pH 4 in Rio Negro blackwater, which the low confidence reflects.
+    - field: features.ph.tolerance
+      proposals:
+        - {by: generator, value: {min: 5.0, max: 8.0}}
+        - {by: checker-a, value: {min: 5.0, max: 8.0}}
+        - {by: checker-b, value: {min: 5.5, max: 7.5}}
+        - {by: checker-c, value: {min: 4.5, max: 8.0}}
+        - {by: tiebreaker-1, value: {min: 5.0, max: 8.0}}
+      decision: {min: 5.0, max: 7.5}
+      rationale: No qualified majority; the tally takes the conservative intersection of all votes, 5.5 to 7.5, widened to contain the natural range down to 5.0.
+    - field: features.ghDgh.tolerance
+      proposals:
+        - {by: generator, value: {min: 0, max: 15}}
+        - {by: checker-a, value: {min: 0, max: 12}}
+        - {by: checker-b, value: {min: 0, max: 15}}
+        - {by: checker-c, value: {min: 0, max: 15}}
+        - {by: tiebreaker-1, value: {min: 0, max: 15}}
+      decision: {min: 0, max: 15}
+      rationale: Qualified majority of four of five votes in the tally; checker-a's 12 dGH follows the reduced fry growth from about 11 dGH, while three care sheets allow 15 dGH.
+    - field: features.khDkh.value
+      proposals:
+        - {by: generator, value: {min: 0, max: 2}}
+        - {by: checker-a, value: {min: 0, max: 2.5}}
+        - {by: checker-b, value: {min: 0, max: 2}}
+        - {by: checker-c, value: {min: 0, max: 3}}
+      decision: {min: 0, max: 2}
+      rationale: The tally finds all four votes within 2 dKH and decides unanimously on the median of the bounds.
+    - field: features.khDkh.tolerance
+      proposals:
+        - {by: generator, value: {min: 0, max: 10}}
+        - {by: checker-a, value: {min: 0, max: 10}}
+        - {by: checker-b, value: {min: 0, max: 8}}
+        - {by: checker-c, value: {min: 0, max: 6}}
+      decision: {min: 0, max: 9}
+      rationale: The tally decides unanimously with the median upper bound of the agreeing votes; the evidence for carbonate hardness is thin, hence low confidence.
+    - field: features.predation.value
+      proposals:
+        - {by: generator, value: 2}
+        - {by: checker-a, value: 2}
+        - {by: checker-b, value: 1}
+        - {by: checker-c, value: 2}
+        - {by: tiebreaker-1, value: 2}
+      decision: 2
+      rationale: Qualified majority of four of five votes in the tally; neon and cardinal tetras of 3 to 4 cm are eaten, which exceeds the 2 cm limit of level 1.
+    - field: features.origin.value.region
+      proposals:
+        - {by: generator, value: Amazon basin}
+        - {by: checker-a, value: Amazon basin and Guiana rivers}
+        - {by: checker-b, value: Amazon basin}
+        - {by: checker-c, value: Amazon basin and adjacent Guiana drainages}
+      decision: Amazon basin and Guiana rivers
+      rationale: The range includes the Oyapock and the Essequibo, which drain to the Atlantic outside the Amazon basin; the shorter wording of checker-a names them.
+    - field: features.maxSizeCm.value
+      proposals:
+        - {by: generator, value: {male: 15, female: 13}}
+        - {by: checker-a, value: {male: 15, female: 13}}
+        - {by: checker-b, value: {male: 15, female: 15}}
+        - {by: checker-c, value: {male: 15, female: 15}}
+      decision: {male: 15, female: 15}
+      rationale: All sources give 15 cm without a separate figure per sex; the smaller female size was an unsourced estimate.
+    - field: features.aggressionHeterospecific.value
+      proposals:
+        - {by: generator, value: 2}
+        - {by: checker-a, value: 1}
+        - {by: checker-b, value: 1}
+        - {by: checker-c, value: 2}
+      decision: 2
+      rationale: Breeding pairs chase other fish out of the spawning area, which is level 2; level 1 covers display only.
+    - field: features.territory.value
+      proposals:
+        - {by: generator, value: {size: small, breedingOnly: true}}
+        - {by: checker-a, value: {size: small, breedingOnly: true}}
+        - {by: checker-b, value: {size: small, breedingOnly: true}}
+        - {by: checker-c, value: {size: large, breedingOnly: true}}
+      decision: {size: small, breedingOnly: true}
+      rationale: Pairs defend the spawning site and its surroundings; the large size rests on a retailer guide and a manufacturer page that give no area.
+    - field: features.habitatZones.value
+      proposals:
+        - {by: generator, value: [plants, wood, openWater]}
+        - {by: checker-a, value: [plants, wood, openWater]}
+        - {by: checker-b, value: [plants, wood]}
+        - {by: checker-c, value: [plants, wood, openWater]}
+      decision: [plants, wood, openWater]
+      rationale: The fish swim in the open midwater between plants and wood, and care sheets ask for open swimming space.
+    - field: features.social.value
+      proposals:
+        - {by: generator, value: {structure: group, minGroup: 5}}
+        - {by: checker-a, value: {structure: group, minGroup: 5}}
+        - {by: checker-b, value: {structure: group, minGroup: 5}}
+        - {by: checker-c, value: {structure: pair}}
+      decision: {structure: group, minGroup: 5}
+      rationale: FishBase, AquaInfo and Seriously Fish recommend groups of five or six from which pairs form; a single pair is an alternative, not the standard.
+    - field: features.feedingSpeed.value
+      proposals:
+        - {by: generator, value: normal}
+        - {by: checker-a, value: normal}
+        - {by: checker-b, value: normal}
+        - {by: checker-c, value: hasty}
+      decision: normal
+      rationale: Angelfish have a strong appetite but lose food to genuinely hasty feeders such as barbs or mbuna; no source compares feeding pace, so confidence is low.
+    - field: features.minTank.value
+      proposals:
+        - {by: generator, value: {volumeL: 240, lengthCm: 120, depthCm: 40}}
+        - {by: checker-a, value: {volumeL: 400, lengthCm: 150, depthCm: 50}}
+        - {by: checker-b, value: {volumeL: 200, lengthCm: 100, depthCm: 40}}
+        - {by: checker-c, value: {volumeL: 200, lengthCm: 100, depthCm: 40}}
+      decision: {volumeL: 240, lengthCm: 120, depthCm: 40}
+      rationale: The social unit is a group of five; Practical Fishkeeping gives 120 x 40 x 50 cm explicitly for a group, between the 100 cm pair minimum of Seriously Fish and the 150 cm of AquaInfo.
+    - field: features.beginnerSuitability.value
+      proposals:
+        - {by: generator, value: moderate}
+        - {by: checker-a, value: easy}
+        - {by: checker-b, value: easy}
+        - {by: checker-c, value: moderate}
+      decision: moderate
+      rationale: The fish are hardy, but tank height, size, pair aggression and predation on small tankmates make them less simple than the easy rating suggests; the intermediate rating of the Cichlid Room Companion agrees.
