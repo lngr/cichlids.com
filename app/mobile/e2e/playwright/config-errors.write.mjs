@@ -34,7 +34,10 @@ const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 async function scrollToEnd(page) {
   await page.locator('[data-testid="picture-card"]').last().scrollIntoViewIfNeeded();
   await page.mouse.move(195, 500);
-  await page.mouse.wheel(0, 4000);
+  // A list reports its end once per content length; moving away from the end first re-arms it.
+  await page.mouse.wheel(0, -1500);
+  await sleep(150);
+  await page.mouse.wheel(0, 6000);
 }
 
 const browser = await chromium.launch();
@@ -124,7 +127,9 @@ try {
   await loginError.waitFor({ state: "detached", timeout: 20000 });
   console.log("The retry loads the discovery document and clears the message");
 
-  if (pageErrors.length > 0) throw new Error(`Page errors: ${pageErrors.join("; ")}`);
+  // Starting the app without Keycloak makes the automatic discovery of expo-auth-session reject.
+  const unexpected = pageErrors.filter((error) => !error.includes("Failed to fetch"));
+  if (unexpected.length > 0) throw new Error(`Page errors: ${unexpected.join("; ")}`);
 } finally {
   await browser.close();
 }
