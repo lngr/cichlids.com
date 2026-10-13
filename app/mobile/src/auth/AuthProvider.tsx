@@ -140,9 +140,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const logout = useCallback(async () => {
     const tokens = await session.signOut();
     if (!tokens?.idToken && !tokens?.refreshToken) return;
-    // Ends the Keycloak sessions as well, so the next login asks for credentials and the offline
-    // token is revoked. Keycloak finds them from the id token hint and the refresh token. Best
-    // effort: the local session is gone either way.
+    // Native logout clears the app's offline session, and Prompt.Login requests credentials for
+    // every login. Web logout ends the API session and Keycloak browser session through its end
+    // session endpoint.
     const params = new URLSearchParams({ client_id: authConfig.clientId });
     if (tokens.idToken) params.set("id_token_hint", tokens.idToken);
     if (tokens.refreshToken) params.set("refresh_token", tokens.refreshToken);
