@@ -96,16 +96,16 @@ System. Details in `PROJECT-STATUS.md`, Abschnitt 9.
 
 ## 3. Artenprofile
 
-Stand: 50 Profile in `data/species/profiles/`, alle validiert. Verfahren in
+Stand: 53 Profile in `data/species/profiles/`, alle validiert. Verfahren in
 `tools/species-data/README.md`. Je Art stimmen Generator, Prüfer A (Opus), Prüfer B (Sonnet) und
 Prüfer C (Codex, gpt-6.1-sol) ab.
 
 ### 3.1 Weitere Profile
 
-- [ ] Nächste Arten nach Fotoanzahl: 321 Labidochromis sp. 'Hongi', 190 Tropheus duboisi,
-  789 Thorichthys meeki (in Arbeit), 466 Pseudotropheus crabro, 236 Aulonocara ngara,
-  814 Aulonocara maleri, 819 Geophagus altifrons, 406 Nimbochromis livingstoni; danach weiter nach
-  Fotoanzahl, Synonym-Paare gemeinsam (etwa 739 Herichthys cyanoguttatus mit
+- [ ] Nächste Arten nach Fotoanzahl: 466 Pseudotropheus crabro, 236 Aulonocara ngara,
+  814 Aulonocara maleri (in Arbeit), 819 Geophagus altifrons, 406 Nimbochromis livingstoni,
+  233 Aulonocara maylandi, 36 Cyphotilapia gibberosa, 309 Fossorochromis rostratus; danach weiter
+  nach Fotoanzahl, Synonym-Paare gemeinsam (etwa 739 Herichthys cyanoguttatus mit
   685 Cichlasoma cyanoguttatum)
 - [ ] Die harten Merkmale aller Arten sind vor Slice 4 gesichert
 - [ ] Das OpenAlex-Tagesbudget (1 USD, Reset 02:00 Uhr MESZ) reicht für etwa 12 Arten. Danach
@@ -178,6 +178,9 @@ Zu jeder Frage ist eine vorläufige Umsetzung in Gebrauch; sie wird bestätigt o
 - [ ] `fetch-oa.mjs` nimmt nur DOIs. Frei zugängliche Arbeiten ohne DOI (Cole 1976 zur Limnologie
   der Nicaragua-Seen, Haberyan et al. 2003) laden Agenten deshalb mit curl; einen URL-Modus mit
   denselben Zugangsregeln ergänzen
+- [ ] `tally.mjs` gibt der natürlichen KH von Seearten die Verifikation `waterbody`, der
+  Validator erlaubt diese Methode nur für Temperatur, pH und GH; die Schiedsrichter lassen die
+  Verifikation deshalb weg. Beides angleichen
 - [ ] Startskript für Codex als Prüfer C ins Repo übernehmen (Auftrag nach der Prüfer-Vorlage,
   Wiederholung bei "Selected model is at capacity", Ausweichen auf `gpt-6-sol`). Codex läuft im
   Container mit `danger-full-access`, die Regeln stehen nur im Auftrag
