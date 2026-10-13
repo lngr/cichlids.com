@@ -96,19 +96,28 @@ System. Details in `PROJECT-STATUS.md`, Abschnitt 9.
 
 ## 3. Artenprofile
 
-Stand: 70 Profile in `data/species/profiles/`, alle validiert. Verfahren in
+Stand: 98 Profile in `data/species/profiles/` mit 124 zugeordneten Legacy-Einträgen, alle
+validiert. Verfahren in
 `tools/species-data/README.md`. Solange die Claude-Credits knapp sind, ist je Art nur Prüfer A ein
 Claude-Agent (Sonnet); Generator, Prüfer B und C, Tie-Breaker und Schiedsrichter laufen über Codex
 (gpt-6.1-sol). Die Codex-Stimmen fallen dabei öfter zusammen, etwa beim größten Mindestbecken.
 
 ### 3.1 Weitere Profile
 
-- [ ] Nächste Arten nach Fotoanzahl: 659 Archocentrus spilurus, 686 Parachromis dovii,
-  257 Copadichromis azureus, 227 Aulonocara hueseri (alle in Arbeit), 457 Protomelas spilonotus,
-  590 Tilapia butterkofferi, 442 Placidochromis milomo, 797 Vieja argentea; danach weiter nach
-  Fotoanzahl, Synonym-Paare gemeinsam
+- [ ] Nächste Arten nach Fotoanzahl: 548 Xystichromis phytophagus, 572 Paratilapia polleni,
+  55 Julidochromis marlieri, 625 Amphilophus robertsoni (alle in Arbeit), 777 Satanoperca
+  jurupari, 125 Neolamprologus tretocephalus, 82 Neolamprologus brevis, 267 Copadichromis
+  mbenjii; danach weiter nach Fotoanzahl. Legacy-Einträge unter älteren Namen einer Art mit
+  Profil werden dem Profil zugeordnet (Abgleich über Namen und Synonyme)
+- [ ] Legacy 589 „Tilapia aurea" (0 Fotos, Kategorie African) ist vermutlich Oreochromis aureus;
+  das Profil von Melanochromis auratus führt Tilapia aurea als Synonym nach Goren (1974). Prüfen,
+  ob dieses Synonym stimmt
+- [ ] Weiche Merkmale mit auffällig großen Werten prüfen: Der Schiedsrichter übernimmt beim
+  Mindestbecken und bei der Maximalgröße oft den größten Vorschlag (etwa Labeotropheus
+  fuelleborni 600 L, Chilotilapia rhoadesii 30 cm und 1000 L)
 - [ ] Legacy 770 „Hybrid (man-made) Parrot Cichlid" (174 Fotos) ist keine Art: offen, ob und wie
-  die Zuchthybride ein Profil bekommt
+  die Zuchthybride ein Profil bekommt; der Flowerhorn hat ein Profil, und Kreuzungsgruppen nennen
+  den Blutpapagei als Mitglied
 - [ ] Die harten Merkmale aller Arten sind vor Slice 4 gesichert
 - [ ] Das OpenAlex-Tagesbudget (1 USD, Reset 02:00 Uhr MESZ) reicht für etwa 12 Arten. Danach
   zahlt das Prepaid-Guthaben des Schlüssels (am 2026-10-13 etwa 10 USD), weil die Werkzeuge nur
