@@ -18,6 +18,7 @@ using Cichlids.Infrastructure.Slugs;
 using Cichlids.Infrastructure.Storage;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.IdentityModel.Tokens;
 using Scalar.AspNetCore;
 
@@ -87,7 +88,20 @@ builder.Services.AddScoped<CommentsWriteService>();
 builder.Services.AddScoped<CurrentProfileService>();
 builder.Services.AddScoped<CommunityQueryService>();
 builder.Services.AddScoped<LegacyRedirectsQueryService>();
+builder.Services.AddOptions<UploadLimitsOptions>()
+    .Bind(builder.Configuration.GetSection(UploadLimitsOptions.SectionName))
+    .Validate(o => o.MaxUploadsPerHour > 0 && o.MaxOpenDrafts > 0, "UploadLimits values must be positive.")
+    .ValidateOnStart();
+builder.Services.AddOptions<DraftCleanupOptions>()
+    .Bind(builder.Configuration.GetSection(DraftCleanupOptions.SectionName))
+    .Validate(
+        o => o.Interval > TimeSpan.Zero && o.Retention > TimeSpan.Zero && o.BatchSize > 0,
+        "DraftCleanup durations and batch size must be positive.")
+    .ValidateOnStart();
+builder.Services.TryAddSingleton(TimeProvider.System);
 builder.Services.AddScoped<UploadsWriteService>();
+builder.Services.AddScoped<DraftCleanupService>();
+builder.Services.AddHostedService<DraftCleanupHostedService>();
 builder.Services.AddScoped<DraftsQueryService>();
 builder.Services.AddScoped<PostPublishService>();
 

@@ -6,6 +6,7 @@ using Cichlids.Infrastructure.Media;
 using Cichlids.Infrastructure.Persistence;
 using Cichlids.Infrastructure.Storage;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 namespace Cichlids.Api.Features.Uploads;
 
@@ -15,13 +16,40 @@ namespace Cichlids.Api.Features.Uploads;
 /// and records the media item, its variants and a single-photo draft post in one transaction.
 /// Objects are written before the commit, so when the database write fails the stored keys are
 /// deleted (best effort, logged). Discarding removes a draft's rows and then its stored objects.
+/// Before an upload the owner's quota is checked: at most the configured number of open drafts
+/// and of uploads within the last hour.
 /// </summary>
 public sealed class UploadsWriteService(
     CichlidsDbContext context,
     IObjectStore objectStore,
+    IOptions<UploadLimitsOptions> limitOptions,
+    TimeProvider timeProvider,
     ILogger<UploadsWriteService> logger)
 {
     private readonly MediaUrlBuilder _mediaUrlBuilder = new(objectStore);
+
+    /// <summary>
+    /// Checks the owner's upload quota and returns the limit that is reached, or null when the
+    /// owner may upload. The open draft limit is checked before the hourly upload limit. The hourly
+    /// count comes from the stored media items, so it holds across restarts and several instances.
+    /// </summary>
+    public async Task<UploadRefusal?> CheckQuotaAsync(long ownerProfileId, CancellationToken cancellationToken)
+    {
+        var limits = limitOptions.Value;
+
+        var openDrafts = await context.Posts.CountAsync(
+            p => p.AuthorProfileId == ownerProfileId && p.State == PostState.Draft && p.DeletedAt == null,
+            cancellationToken);
+        if (openDrafts >= limits.MaxOpenDrafts)
+        {
+            return UploadRefusal.DraftLimitReached;
+        }
+
+        var since = timeProvider.GetUtcNow().AddHours(-1);
+        var recentUploads = await context.MediaItems.CountAsync(
+            m => m.OwnerProfileId == ownerProfileId && m.CreatedAt > since, cancellationToken);
+        return recentUploads >= limits.MaxUploadsPerHour ? UploadRefusal.RateLimited : null;
+    }
 
     /// <summary>
     /// Stores an uploaded photo and creates the owner's draft post for it. Throws
@@ -122,6 +150,23 @@ public sealed class UploadsWriteService(
     /// </summary>
     public async Task<DraftActionOutcome> DiscardAsync(long postId, long authorProfileId, CancellationToken cancellationToken)
     {
+        return await RemoveDraftAsync(postId, authorProfileId, createdBefore: null, cancellationToken);
+    }
+
+    /// <summary>
+    /// Deletes a draft that was created before the given moment, whoever owns it, with its rows
+    /// and stored objects like a discard. Returns false when there is no such draft any more, as
+    /// when a concurrent cleanup deleted it first or it was published in the meantime.
+    /// </summary>
+    public async Task<bool> DeleteExpiredDraftAsync(long postId, DateTimeOffset createdBefore, CancellationToken cancellationToken)
+    {
+        var outcome = await RemoveDraftAsync(postId, authorProfileId: null, createdBefore, cancellationToken);
+        return outcome == DraftActionOutcome.Succeeded;
+    }
+
+    private async Task<DraftActionOutcome> RemoveDraftAsync(
+        long postId, long? authorProfileId, DateTimeOffset? createdBefore, CancellationToken cancellationToken)
+    {
         List<string> storedKeys;
 
         await using (var transaction = await context.Database.BeginTransactionAsync(cancellationToken))
@@ -137,17 +182,19 @@ public sealed class UploadsWriteService(
                 .Concat(context.MediaVariants.Where(v => mediaItemIds.Contains(v.MediaItemId)).Select(v => v.StorageKey))
                 .ToListAsync(cancellationToken);
 
-            // The state condition in the delete itself serializes a discard against a concurrent
-            // publish or discard of the same post on the row lock: whichever runs second sees the
+            var candidates = context.Posts
+                .Where(p => p.Id == postId && p.DeletedAt == null && (authorProfileId == null || p.AuthorProfileId == authorProfileId));
+
+            // The state condition in the delete itself serializes a removal against a concurrent
+            // publish or removal of the same post on the row lock: whichever runs second sees the
             // committed outcome of the first and deletes nothing.
-            var deleted = await context.Posts
-                .Where(p => p.Id == postId && p.AuthorProfileId == authorProfileId && p.DeletedAt == null && p.State == PostState.Draft)
+            var deleted = await candidates
+                .Where(p => p.State == PostState.Draft && (createdBefore == null || p.CreatedAt < createdBefore))
                 .ExecuteDeleteAsync(cancellationToken);
 
             if (deleted == 0)
             {
-                var exists = await context.Posts
-                    .AnyAsync(p => p.Id == postId && p.AuthorProfileId == authorProfileId && p.DeletedAt == null, cancellationToken);
+                var exists = await candidates.AnyAsync(cancellationToken);
                 return exists ? DraftActionOutcome.NotDraft : DraftActionOutcome.NotFound;
             }
 

@@ -37,7 +37,9 @@ public static class UploadsEndpoints
             .WithMetadata(new RequestSizeLimitAttribute(MaxRequestBytes))
             .WithFormOptions(multipartBodyLengthLimit: MaxRequestBytes)
             .Produces(StatusCodes.Status413PayloadTooLarge)
-            .ProducesProblem(StatusCodes.Status403Forbidden);
+            .ProducesProblem(StatusCodes.Status403Forbidden)
+            .ProducesProblem(StatusCodes.Status409Conflict)
+            .ProducesProblem(StatusCodes.Status429TooManyRequests);
 
         app.MapGet("/api/me/drafts", ListDraftsAsync)
             .WithName("ListMyDrafts")
@@ -96,7 +98,32 @@ public static class UploadsEndpoints
         return true;
     }
 
-    private static async Task<Results<Created<DraftDto>, BadRequest<string>>> UploadAsync(
+    public const string DraftLimitReachedCode = "draft_limit_reached";
+    public const string UploadRateLimitedCode = "upload_rate_limited";
+
+    /// <summary>
+    /// The 409 problem details answering an upload by a member who holds the maximum number of
+    /// open drafts, with the code draft_limit_reached.
+    /// </summary>
+    public static ProblemHttpResult DraftLimitProblem() =>
+        ApiProblems.WithCode(
+            StatusCodes.Status409Conflict,
+            "Draft limit reached",
+            "Publish or discard some of your drafts before uploading another photo.",
+            DraftLimitReachedCode);
+
+    /// <summary>
+    /// The 429 problem details answering an upload by a member who reached the hourly upload
+    /// limit, with the code upload_rate_limited.
+    /// </summary>
+    public static ProblemHttpResult RateLimitProblem() =>
+        ApiProblems.WithCode(
+            StatusCodes.Status429TooManyRequests,
+            "Upload limit reached",
+            "You have uploaded many photos within the last hour. Please try again later.",
+            UploadRateLimitedCode);
+
+    private static async Task<Results<Created<DraftDto>, BadRequest<string>, ProblemHttpResult>> UploadAsync(
         UploadsWriteService uploadsWriteService,
         CurrentProfileService currentProfileService,
         ClaimsPrincipal user,
@@ -131,6 +158,12 @@ public static class UploadsEndpoints
         }
 
         var owner = await currentProfileService.ResolveAsync(user, cancellationToken);
+
+        var refusal = await uploadsWriteService.CheckQuotaAsync(owner.Id, cancellationToken);
+        if (refusal is { } reached)
+        {
+            return reached == UploadRefusal.DraftLimitReached ? DraftLimitProblem() : RateLimitProblem();
+        }
 
         try
         {

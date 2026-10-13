@@ -52,6 +52,19 @@ public sealed class UploadsFixture : IAsyncLifetime
     private WebApplicationFactory<Program> _factoryWithoutSlugSecret = null!;
 
     /// <summary>
+    /// A client for a third API host on the same database and object store that allows only two
+    /// uploads per member and hour.
+    /// </summary>
+    public HttpClient ClientWithTwoUploadsPerHour { get; private set; } = null!;
+
+    private WebApplicationFactory<Program> _factoryWithTwoUploadsPerHour = null!;
+
+    /// <summary>
+    /// The services of the API host, for resolving the services a test runs directly.
+    /// </summary>
+    public IServiceProvider Services => _factory.Services;
+
+    /// <summary>
     /// The object store the API host writes to, for assertions on stored keys.
     /// </summary>
     public IObjectStore ObjectStore { get; private set; } = null!;
@@ -82,6 +95,8 @@ public sealed class UploadsFixture : IAsyncLifetime
                     ["ObjectStorage:ForcePathStyle"] = "true",
                     ["ObjectStorage:PublicBaseUrl"] = $"{serviceUrl}/{ObjectStoreBucket}",
                     ["OutboxDispatcher:Enabled"] = "false",
+                    // Tests run cleanup passes directly instead of racing a timer.
+                    ["DraftCleanup:Enabled"] = "false",
                 }));
 
             builder.ConfigureServices(services =>
@@ -99,6 +114,11 @@ public sealed class UploadsFixture : IAsyncLifetime
                 configBuilder.AddInMemoryCollection(new Dictionary<string, string?> { ["Slugs:Secret"] = string.Empty })));
         ClientWithoutSlugSecret = _factoryWithoutSlugSecret.CreateClient();
 
+        _factoryWithTwoUploadsPerHour = _factory.WithWebHostBuilder(builder =>
+            builder.ConfigureAppConfiguration((_, configBuilder) =>
+                configBuilder.AddInMemoryCollection(new Dictionary<string, string?> { ["UploadLimits:MaxUploadsPerHour"] = "2" })));
+        ClientWithTwoUploadsPerHour = _factoryWithTwoUploadsPerHour.CreateClient();
+
         await using (var context = CreateDbContext())
         {
             await context.Database.MigrateAsync();
@@ -114,6 +134,8 @@ public sealed class UploadsFixture : IAsyncLifetime
     {
         Client.Dispose();
         ClientWithoutSlugSecret.Dispose();
+        ClientWithTwoUploadsPerHour.Dispose();
+        await _factoryWithTwoUploadsPerHour.DisposeAsync();
         await _factoryWithoutSlugSecret.DisposeAsync();
         await _factory.DisposeAsync();
         await _postgres.DisposeAsync();
