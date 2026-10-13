@@ -92,6 +92,13 @@ describe("uploadErrorMessage", () => {
     expect(uploadErrorMessage(error, "fallback", t)).toBe("translated:errors.non_member_profile");
   });
 
+  it("translates the upload limit codes of the API", () => {
+    const draftLimit = Object.assign(new Error("Conflict"), { status: 409, code: "draft_limit_reached" });
+    const rateLimit = Object.assign(new Error("Too Many Requests"), { status: 429, code: "upload_rate_limited" });
+    expect(uploadErrorMessage(draftLimit, "fallback", t)).toBe("translated:errors.draft_limit_reached");
+    expect(uploadErrorMessage(rateLimit, "fallback", t)).toBe("translated:errors.upload_rate_limited");
+  });
+
   it("shows the API message of a 400 response", () => {
     const error = Object.assign(new Error("The file must be image/jpeg, image/png or image/webp."), { status: 400 });
     expect(uploadErrorMessage(error, "fallback", t)).toBe("The file must be image/jpeg, image/png or image/webp.");

@@ -9,7 +9,18 @@ import { useLoginAction } from "../auth/useLoginAction";
 import { translateApiError } from "../lib/apiErrors";
 import { minTouchTarget, useTheme } from "../theme";
 import { Button } from "./Button";
-import { STAR_VALUES, canSubmit, emptyCommentDraft, offersStars, toCreateCommentRequest, toggleStar, type CommentDraft } from "./commentComposerState";
+import {
+  COMMENT_MAX_LENGTH,
+  STAR_VALUES,
+  canSubmit,
+  commentLength,
+  emptyCommentDraft,
+  isOverCommentLimit,
+  offersStars,
+  toCreateCommentRequest,
+  toggleStar,
+  type CommentDraft,
+} from "./commentComposerState";
 
 const STAR_ICON_SIZE = 28;
 
@@ -91,6 +102,7 @@ function ComposerForm({
 
   const starsOffered = offersStars(ownerId, myProfileId);
   const effectiveDraft: CommentDraft = starsOffered ? draft : { ...draft, stars: null };
+  const overLimit = isOverCommentLimit(effectiveDraft);
 
   const send = async () => {
     if (sendingRef.current || !canSubmit(effectiveDraft)) return;
@@ -134,6 +146,13 @@ function ComposerForm({
           },
         ]}
       />
+      <Text
+        testID="comment-counter"
+        accessibilityRole={overLimit ? "alert" : undefined}
+        style={[theme.type.meta, { color: overLimit ? theme.colors.danger : theme.colors.muted, textAlign: "right" }]}
+      >
+        {t("comments.counter", { length: commentLength(effectiveDraft), max: COMMENT_MAX_LENGTH })}
+      </Text>
       {starsOffered ? (
         <View style={{ gap: theme.space[1] }} testID="comment-stars">
           <Text style={[theme.type.meta, { color: theme.colors.muted }]}>{t("comments.ratingLabel")}</Text>

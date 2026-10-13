@@ -1,5 +1,12 @@
 /** The error codes the API returns in the code field of its problem details. */
-export const API_ERROR_CODES = ["self_rating", "non_member_profile"] as const;
+export const API_ERROR_CODES = [
+  "self_rating",
+  "non_member_profile",
+  "comment_too_long",
+  "draft_limit_reached",
+  "upload_rate_limited",
+  "request_too_large",
+] as const;
 
 export type ApiErrorCode = (typeof API_ERROR_CODES)[number];
 

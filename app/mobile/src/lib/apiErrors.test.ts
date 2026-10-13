@@ -8,6 +8,10 @@ describe("apiErrorKey", () => {
   it("maps a known API error code to its translation key", () => {
     expect(apiErrorKey(Object.assign(new Error("Forbidden"), { status: 403, code: "self_rating" }))).toBe("errors.self_rating");
     expect(apiErrorKey({ code: "non_member_profile" })).toBe("errors.non_member_profile");
+    expect(apiErrorKey({ code: "comment_too_long" })).toBe("errors.comment_too_long");
+    expect(apiErrorKey({ code: "draft_limit_reached" })).toBe("errors.draft_limit_reached");
+    expect(apiErrorKey({ code: "upload_rate_limited" })).toBe("errors.upload_rate_limited");
+    expect(apiErrorKey({ code: "request_too_large" })).toBe("errors.request_too_large");
   });
 
   it("returns null for unknown codes, missing codes and non-objects", () => {

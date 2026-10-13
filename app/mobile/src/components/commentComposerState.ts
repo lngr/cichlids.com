@@ -14,8 +14,22 @@ export function emptyCommentDraft(): CommentDraft {
   return { body: "", stars: null };
 }
 
-/** A draft can be sent once it has text or a rating (or both). */
+/** The longest comment text the API accepts, in characters after trimming. */
+export const COMMENT_MAX_LENGTH = 10000;
+
+/** The number of characters of the draft's trimmed text, as the API counts them. */
+export function commentLength(draft: CommentDraft): number {
+  return draft.body.trim().length;
+}
+
+/** Whether the draft's text is longer than the API accepts. */
+export function isOverCommentLimit(draft: CommentDraft): boolean {
+  return commentLength(draft) > COMMENT_MAX_LENGTH;
+}
+
+/** A draft can be sent once it has text or a rating (or both) and its text is within the limit. */
 export function canSubmit(draft: CommentDraft): boolean {
+  if (isOverCommentLimit(draft)) return false;
   return draft.body.trim().length > 0 || draft.stars !== null;
 }
 

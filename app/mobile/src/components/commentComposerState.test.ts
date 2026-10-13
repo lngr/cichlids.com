@@ -1,8 +1,11 @@
 import { describe, expect, it } from "vitest";
 import {
+  COMMENT_MAX_LENGTH,
   MAX_STARS,
   STAR_VALUES,
   canSubmit,
+  commentLength,
+  isOverCommentLimit,
   emptyCommentDraft,
   offersStars,
   starsOf,
@@ -109,5 +112,32 @@ describe("offersStars", () => {
 
   it("offers stars while the signed-in profile is unknown", () => {
     expect(offersStars(7, null)).toBe(true);
+  });
+});
+
+describe("comment length limit", () => {
+  it("allows 10000 characters", () => {
+    expect(COMMENT_MAX_LENGTH).toBe(10000);
+  });
+
+  it("counts the characters of the trimmed text", () => {
+    expect(commentLength({ body: "  abc \n", stars: null })).toBe(3);
+    expect(commentLength(emptyCommentDraft())).toBe(0);
+  });
+
+  it("accepts a comment of exactly the maximum length", () => {
+    const draft = { body: "a".repeat(10000), stars: null };
+    expect(isOverCommentLimit(draft)).toBe(false);
+    expect(canSubmit(draft)).toBe(true);
+  });
+
+  it("measures the limit after trimming", () => {
+    expect(isOverCommentLimit({ body: ` ${"a".repeat(10000)} `, stars: null })).toBe(false);
+  });
+
+  it("blocks sending a comment above the maximum length, also with stars", () => {
+    const draft = { body: "a".repeat(10001), stars: 4 };
+    expect(isOverCommentLimit(draft)).toBe(true);
+    expect(canSubmit(draft)).toBe(false);
   });
 });
