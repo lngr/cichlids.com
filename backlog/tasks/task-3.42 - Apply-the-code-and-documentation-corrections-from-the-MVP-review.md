@@ -4,7 +4,7 @@ title: Apply the code and documentation corrections from the MVP review
 status: In Progress
 assignee: []
 created_date: '2026-10-12 04:49'
-updated_date: '2026-10-13 12:00'
+updated_date: '2026-10-13 13:11'
 labels: []
 dependencies: []
 references:
@@ -87,4 +87,12 @@ The development CORS check rejects invalid origins instead of failing. Postgres 
   already correct.
 - Verified: `dotnet test` Infrastructure 310, Api 395, Etl 341; client-core 13.
 - Open: R32 and the AuthProvider comment of R45 (auth code, after the TASK-3.41 changes); R46.
+
+### Part two (auth code)
+- R32: the Development CORS check uses `Uri.TryCreate` and rejects `null` and every value that is
+  not an absolute http or https URI; an Api test with `Origin: null` was red (500) and is green.
+- R45: the logout comment in `AuthProvider.tsx` describes the native and the web behaviour.
+- R43: no inline tags left in C# doc comments outside the generated migrations.
+- Verified: Api 421, Infrastructure 310, Etl 342; mobile typecheck.
+- Open: R46 (`PROJECT-STATUS.md`).
 <!-- SECTION:NOTES:END -->
