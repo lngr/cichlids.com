@@ -1,7 +1,7 @@
 // Story: TASK-3.22
-// Seeds one published picture through the API as the local dev user, opens its detail page
-// anonymously, logs in from the comment section's login prompt and posts a comment with a
-// 4-star rating. A failed first post shows the inline error and keeps the draft; the retry posts
+// Seeds one published picture through the API as the local moderator, opens its detail page
+// anonymously, logs in as the dev user (a member who does not own the picture) from the comment
+// section's login prompt and posts a comment with a 4-star rating. A failed first post shows the inline error and keeps the draft; the retry posts
 // it. The comment renders with its stars, the picture's rating summary counts the rating, the
 // composer clears, and a page reload shows the comment with its stars. Runs on the isolated write
 // stack only (see e2e/write-stack.sh), since seeding and commenting write to the database.
@@ -9,22 +9,23 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
-import { API_URL, KEYCLOAK_URL, PASSWORD, USERNAME, WEB_URL, byTestId, submitKeycloakLogin } from "./support.mjs";
+import { API_URL, KEYCLOAK_URL, PASSWORD, WEB_URL, byTestId, submitKeycloakLogin } from "./support.mjs";
 
+const PICTURE_OWNER = "dev-mod";
 const FIXTURE = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "fixtures", "upload-photo.jpg");
 
-async function devUserToken() {
+async function tokenOf(username) {
   const response = await fetch(`${KEYCLOAK_URL}/realms/cichlids/protocol/openid-connect/token`, {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams({ client_id: "cichlids-app", grant_type: "password", username: USERNAME, password: PASSWORD }),
+    body: new URLSearchParams({ client_id: "cichlids-app", grant_type: "password", username, password: PASSWORD }),
   });
   if (!response.ok) throw new Error(`Password grant returned ${response.status}: ${await response.text()}`);
   return (await response.json()).access_token;
 }
 
 async function seedPublishedPicture(title) {
-  const token = await devUserToken();
+  const token = await tokenOf(PICTURE_OWNER);
   const headers = { Authorization: `Bearer ${token}` };
 
   const form = new FormData();
