@@ -1540,6 +1540,69 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Cichlids.Domain.Entities.WebSession", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("AccessToken")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("access_token");
+
+                    b.Property<DateTimeOffset>("AccessTokenExpiresAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("access_token_expires_at");
+
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
+
+                    b.Property<string>("CsrfToken")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("csrf_token");
+
+                    b.Property<string>("IdToken")
+                        .HasColumnType("text")
+                        .HasColumnName("id_token");
+
+                    b.Property<DateTimeOffset>("LastSeenAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("last_seen_at");
+
+                    b.Property<string>("RefreshToken")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("refresh_token");
+
+                    b.Property<byte[]>("SessionIdHash")
+                        .IsRequired()
+                        .HasColumnType("bytea")
+                        .HasColumnName("session_id_hash");
+
+                    b.Property<string>("Subject")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("subject");
+
+                    b.HasKey("Id")
+                        .HasName("pk_web_session");
+
+                    b.HasIndex("SessionIdHash")
+                        .IsUnique()
+                        .HasDatabaseName("ix_web_session_session_id_hash");
+
+                    b.HasIndex("Subject")
+                        .HasDatabaseName("ix_web_session_subject");
+
+                    b.ToTable("web_session", "public");
+                });
+
             modelBuilder.Entity("Cichlids.Domain.Entities.WebhookSubscription", b =>
                 {
                     b.Property<long>("Id")

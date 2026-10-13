@@ -1,0 +1,75 @@
+namespace Cichlids.Api.Features.Auth.WebSessions;
+
+/// <summary>
+/// The validated settings of the web app session from the WebSession configuration section.
+/// Without a callback URL the API offers no web sign-in. Outside the Development environment the
+/// cookies have the Secure flag and the host prefix, and the callback and the allowed origins
+/// are HTTPS, so a misconfigured deployment fails at startup.
+/// </summary>
+/// <param name="CallbackUrl">The address Keycloak redirects to after a login, or null when web sign-in is off.</param>
+/// <param name="AllowedOrigins">The web app origins a login may return to and a cookie-authenticated write may come from.</param>
+/// <param name="SecureCookies">Whether the cookies have the Secure flag and the host prefix.</param>
+/// <param name="ClientId">The Keycloak client of the login.</param>
+public sealed record WebSessionSettings(Uri? CallbackUrl, IReadOnlyList<string> AllowedOrigins, bool SecureCookies, string ClientId)
+{
+    private const string CallbackUrlKey = "WebSession:CallbackUrl";
+    private const string AllowedOriginsKey = "WebSession:AllowedOrigins";
+    private const string SecureCookiesKey = "WebSession:SecureCookies";
+    private const string ClientIdKey = "WebSession:ClientId";
+    private const string DefaultClientId = "cichlids-app";
+
+    /// <summary>The cookie with the session id.</summary>
+    public string SessionCookieName => SecureCookies ? "__Host-cichlids-session" : "cichlids-session";
+
+    /// <summary>The short-lived cookie with the state, PKCE verifier and return address of a login in progress.</summary>
+    public string LoginCookieName => SecureCookies ? "__Host-cichlids-login" : "cichlids-login";
+
+    /// <summary>
+    /// Reads the settings for the given host environment name and throws an exception naming the
+    /// configuration key when a value is invalid for that environment.
+    /// </summary>
+    public static WebSessionSettings Resolve(IConfiguration configuration, string? environmentName)
+    {
+        var isDevelopment = string.Equals(environmentName, "Development", StringComparison.OrdinalIgnoreCase);
+        var secureCookies = configuration.GetValue(SecureCookiesKey, true);
+        if (!secureCookies && !isDevelopment)
+        {
+            throw Refuse(environmentName, $"{SecureCookiesKey} must not be false; only the Development environment may serve cookies over plain HTTP.");
+        }
+
+        Uri? callbackUrl = null;
+        var callback = configuration[CallbackUrlKey];
+        if (!string.IsNullOrWhiteSpace(callback))
+        {
+            if (!Uri.TryCreate(callback, UriKind.Absolute, out callbackUrl)
+                || (callbackUrl.Scheme != Uri.UriSchemeHttps && (!isDevelopment || callbackUrl.Scheme != Uri.UriSchemeHttp)))
+            {
+                throw Refuse(environmentName, $"{CallbackUrlKey} must be an absolute HTTPS URL but is '{callback}'.");
+            }
+        }
+
+        var origins = configuration.GetSection(AllowedOriginsKey).Get<string[]>() ?? [];
+        foreach (var origin in origins)
+        {
+            if (!IsOrigin(origin, isDevelopment))
+            {
+                throw Refuse(environmentName, $"{AllowedOriginsKey} must list origins such as https://cichlids.com but contains '{origin}'.");
+            }
+        }
+
+        var clientId = configuration[ClientIdKey];
+        return new WebSessionSettings(
+            callbackUrl,
+            origins.Distinct(StringComparer.Ordinal).ToList(),
+            secureCookies,
+            string.IsNullOrWhiteSpace(clientId) ? DefaultClientId : clientId);
+    }
+
+    private static bool IsOrigin(string value, bool isDevelopment) =>
+        Uri.TryCreate(value, UriKind.Absolute, out var uri)
+        && (uri.Scheme == Uri.UriSchemeHttps || (isDevelopment && uri.Scheme == Uri.UriSchemeHttp))
+        && string.Equals(uri.GetLeftPart(UriPartial.Authority), value, StringComparison.Ordinal);
+
+    private static InvalidOperationException Refuse(string? environmentName, string reason) =>
+        new($"Invalid web session configuration for environment '{environmentName}': {reason}");
+}

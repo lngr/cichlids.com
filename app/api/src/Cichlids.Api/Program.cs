@@ -1,5 +1,6 @@
 using System.Text.Json.Serialization;
 using Cichlids.Api.Features.Auth;
+using Cichlids.Api.Features.Auth.WebSessions;
 using Cichlids.Api.Features.Common;
 using Cichlids.Api.Features.Comments;
 using Cichlids.Api.Features.Community;
@@ -16,6 +17,7 @@ using Cichlids.Infrastructure.Outbox;
 using Cichlids.Infrastructure.Persistence;
 using Cichlids.Infrastructure.Slugs;
 using Cichlids.Infrastructure.Storage;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -29,7 +31,9 @@ builder.Services.AddOpenApi();
 // The Expo web target runs the app's browser build against this API from a
 // different origin (Metro's dev server port); browsers enforce CORS for
 // that cross-origin fetch even though native builds never hit this check.
-// Scoped to Development since only the local web dev server needs it.
+// Credentials are allowed so the web session cookie reaches the API.
+// Scoped to Development since only the local web dev server needs it; deployed
+// environments serve the web app and the API from one origin.
 const string localWebDevCorsPolicy = "LocalWebDev";
 if (builder.Environment.IsDevelopment())
 {
@@ -37,7 +41,8 @@ if (builder.Environment.IsDevelopment())
         options.AddPolicy(localWebDevCorsPolicy, policy =>
             policy.SetIsOriginAllowed(origin => new Uri(origin).Host is "localhost" or "127.0.0.1")
                 .AllowAnyHeader()
-                .AllowAnyMethod()));
+                .AllowAnyMethod()
+                .AllowCredentials()));
 }
 
 builder.Services.ConfigureHttpJsonOptions(options =>
@@ -54,7 +59,26 @@ builder.Services.AddHostedService<OutboxDispatcherHostedService>();
 // Resolved before the authentication handler is registered so a deployment outside Development
 // without an HTTPS authority or an audience refuses to start.
 var authenticationSettings = AuthenticationSettings.Resolve(builder.Configuration, builder.Environment.EnvironmentName);
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+builder.Services.AddSingleton(authenticationSettings);
+// Resolved before the host is built so a deployment outside Development with web session cookies
+// or a callback that are not HTTPS refuses to start.
+var webSessionSettings = WebSessionSettings.Resolve(builder.Configuration, builder.Environment.EnvironmentName);
+builder.Services.AddSingleton(webSessionSettings);
+builder.Services.AddHttpClient(KeycloakOidcClient.HttpClientName, client => client.Timeout = TimeSpan.FromSeconds(15));
+builder.Services.AddSingleton<KeycloakOidcClient>();
+builder.Services.AddSingleton<WebSessionLocks>();
+builder.Services.AddSingleton<AccessTokenValidator>();
+builder.Services.AddScoped<WebSessionService>();
+
+// The native app authenticates with a bearer token, the web app with its session cookie. A
+// request with an Authorization header always uses the bearer token.
+const string bearerOrWebSessionScheme = "BearerOrWebSession";
+builder.Services.AddAuthentication(bearerOrWebSessionScheme)
+    .AddPolicyScheme(bearerOrWebSessionScheme, displayName: null, options =>
+        options.ForwardDefaultSelector = context => WebSessionAuthenticationHandler.Applies(context, webSessionSettings)
+            ? WebSessionAuthenticationHandler.SchemeName
+            : JwtBearerDefaults.AuthenticationScheme)
+    .AddScheme<AuthenticationSchemeOptions, WebSessionAuthenticationHandler>(WebSessionAuthenticationHandler.SchemeName, configureOptions: null)
     .AddJwtBearer(options =>
     {
         options.Authority = authenticationSettings.Authority;
@@ -148,6 +172,7 @@ app.MapTanksEndpoints();
 app.MapProfilesEndpoints();
 app.MapCommentsEndpoints();
 app.MapMeEndpoints();
+app.MapWebSessionEndpoints();
 app.MapCommunityEndpoints();
 app.MapLegacyRedirectsEndpoints();
 app.MapUploadsEndpoints();

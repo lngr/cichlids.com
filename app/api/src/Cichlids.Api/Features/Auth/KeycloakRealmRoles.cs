@@ -13,21 +13,26 @@ public static class KeycloakRealmRoles
 {
     public static Task PromoteToRoleClaims(TokenValidatedContext context)
     {
-        if (context.Principal?.Identity is not ClaimsIdentity identity)
+        if (context.Principal?.Identity is ClaimsIdentity identity)
         {
-            return Task.CompletedTask;
+            Promote(identity);
         }
 
+        return Task.CompletedTask;
+    }
+
+    public static void Promote(ClaimsIdentity identity)
+    {
         var realmAccess = identity.FindFirst("realm_access")?.Value;
         if (string.IsNullOrEmpty(realmAccess))
         {
-            return Task.CompletedTask;
+            return;
         }
 
         using var document = JsonDocument.Parse(realmAccess);
         if (!document.RootElement.TryGetProperty("roles", out var roles) || roles.ValueKind != JsonValueKind.Array)
         {
-            return Task.CompletedTask;
+            return;
         }
 
         foreach (var role in roles.EnumerateArray())
@@ -37,7 +42,5 @@ public static class KeycloakRealmRoles
                 identity.AddClaim(new Claim(identity.RoleClaimType, value));
             }
         }
-
-        return Task.CompletedTask;
     }
 }

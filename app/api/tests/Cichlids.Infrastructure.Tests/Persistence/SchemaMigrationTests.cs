@@ -19,6 +19,7 @@ public sealed class SchemaMigrationTests
         "collection", "collection_entry",
         "follow", "slug_alias",
         "outbox_event", "webhook_subscription",
+        "web_session",
         "discussion_thread", "discussion_post", "discussion_post_media",
     ];
 
