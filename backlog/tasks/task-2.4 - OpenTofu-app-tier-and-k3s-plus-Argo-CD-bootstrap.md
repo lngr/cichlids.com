@@ -4,7 +4,7 @@ title: OpenTofu app tier and k3s plus Argo CD bootstrap
 status: In Progress
 assignee: []
 created_date: '2026-06-03 16:00'
-updated_date: '2026-10-13 07:24'
+updated_date: '2026-10-13 15:00'
 labels:
   - infra
   - opentofu
@@ -38,8 +38,8 @@ ordinal: 6000
 Define the ephemeral (**app**) OpenTofu tier that routine automation may apply.
 
 ### Scope
-- Install single-node **k3s** on the existing foundation node **over SSH** (the bundled Traefik
-  disabled), and hand off to an **Argo CD** install so the cluster reconciles the rest from Git.
+- Install single-node **k3s** on the existing foundation node **over SSH** (with its bundled
+  Traefik as the ingress controller), and hand off to an **Argo CD** install so the cluster reconciles the rest from Git.
   The node is created without cloud-init and is protected against replacement (ADR-0014), so the
   app tier installs and upgrades k3s on the running node.
 - This tier must reference **none** of the foundation tier's data resources (separate state,
@@ -49,7 +49,7 @@ Define the ephemeral (**app**) OpenTofu tier that routine automation may apply.
   app state passphrase.
 
 ### Realises
-- ADR-0010 (provisioning split, k3s+Argo bootstrap, Traefik disabled), ADR-0014 (Layer 2
+- ADR-0010 (provisioning split, k3s+Argo bootstrap, Traefik as ingress), ADR-0014 (Layer 2
   state/credential separation, Layer 3 gate on the app plan).
 
 ### Verifying artifact

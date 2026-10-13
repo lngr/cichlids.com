@@ -4,7 +4,7 @@ title: 'Ingress, TLS and a placeholder workload live across all environments'
 status: In Progress
 assignee: []
 created_date: '2026-06-03 16:01'
-updated_date: '2026-10-13 13:06'
+updated_date: '2026-10-13 15:01'
 labels:
   - infra
   - ingress
@@ -14,7 +14,6 @@ milestone: m-0
 dependencies:
   - TASK-2.7
 references:
-  - apps/ingress-nginx/
   - apps/cert-manager/
   - apps/placeholder/
 parent_task_id: TASK-2
@@ -30,7 +29,7 @@ Bring the platform's edge online and prove the full delivery path before any app
 exists.
 
 ### Scope
-- Deploy **ingress-nginx** and **cert-manager** (Let's Encrypt) via Kustomize base+overlays.
+- Use the **Traefik** bundled with k3s as ingress controller and deploy **cert-manager** (Let's Encrypt) via Kustomize base+overlays.
 - Certificates per host through cert-manager **HTTP-01** (Let's Encrypt), so the cluster holds no
   Hetzner Cloud token; a wildcard A record `*.dev.cichlids.com` so preview hosts resolve without
   per-PR DNS changes.
@@ -42,15 +41,15 @@ exists.
   end to end.
 
 ### Realises
-- ADR-0010 (ingress-nginx + cert-manager, Traefik disabled) and the environment topology.
+- ADR-0010 (Traefik + cert-manager) and the environment topology.
 
 ### Verifying artifact
-- `apps/ingress-nginx`, `apps/cert-manager`, `apps/placeholder` rendering + the live TLS URLs.
+- the Traefik configuration, `apps/cert-manager`, `apps/placeholder` rendering + the live TLS URLs.
 <!-- SECTION:DESCRIPTION:END -->
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Given the manifests, When kustomize build runs for ingress-nginx, cert-manager and placeholder across overlays, Then they render and pass schema validation
+- [ ] #1 Given the manifests, When kustomize build runs for the Traefik configuration, cert-manager and placeholder across overlays, Then they render and pass schema validation
 - [ ] #2 Given the applied cluster, When a user opens the staging and prod placeholder URLs, Then each serves the placeholder over valid TLS
 - [ ] #3 Given an open pull request, When the operator opens pr-<n>.dev.cichlids.com, Then the placeholder is reachable over a valid TLS certificate for that host
 - [ ] #4 Given a merged/closed pull request, When reconciliation settles, Then the preview environment is gone
@@ -71,12 +70,11 @@ exists.
   new services before they exist.
 
 ### Services (Kustomize base plus overlays, discovered by the TASK-2.7 generators)
-- `apps/ingress-nginx`: pinned upstream release, a single controller as the node edge (host
-  ports 80 and 443 or a LoadBalancer-free service type that fits single-node k3s without
-  Traefik); cluster-scoped, deployed once (decide where the cluster-wide add-ons live in the
+- Traefik bundled with k3s as the node edge (ports 80 and 443 through k3s ServiceLB), configured
+  from Git; cluster-scoped add-ons deployed once (decide where the cluster-wide add-ons live in the
   topology, for example an `addons` ApplicationSet or Application, and document it).
 - `apps/cert-manager`: pinned upstream release; ClusterIssuers for Let's Encrypt staging and
-  production with the HTTP-01 solver through ingress-nginx; no cloud token anywhere.
+  production with the HTTP-01 solver through Traefik; no cloud token anywhere.
 - `apps/placeholder`: a minimal static page (pinned small image), overlays staging
   (`staging.cichlids.com`), prod (`cichlids.com`) and preview (`pr-<number>.dev.cichlids.com`),
   each with an Ingress and a cert-manager certificate annotation.
