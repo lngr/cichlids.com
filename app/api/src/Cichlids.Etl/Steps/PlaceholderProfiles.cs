@@ -1,6 +1,7 @@
 using Cichlids.Domain.Enums;
 using Cichlids.Etl.Persistence;
 using Cichlids.Etl.Runtime;
+using Cichlids.Infrastructure.Identity;
 using Cichlids.Infrastructure.Persistence.Conversions;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
@@ -30,7 +31,7 @@ public static class PlaceholderProfiles
         var values = new (string, object?)[]
         {
             ("legacy_id", legacyUserId),
-            ("username", $"former-member-{legacyUserId}"),
+            ("username", ReservedUsernames.FormerMember(legacyUserId)),
             ("display_name", "Former member"),
             ("kind", KindConverter.ConvertToProvider(ProfileKind.Archived)),
             ("created_at", DateTimeOffset.UtcNow),
@@ -51,7 +52,7 @@ public static class PlaceholderProfiles
     {
         var values = new (string, object?)[]
         {
-            ("username", "community-archive"),
+            ("username", ReservedUsernames.CommunityArchive),
             ("display_name", "Community archive"),
             ("kind", KindConverter.ConvertToProvider(ProfileKind.System)),
             ("created_at", DateTimeOffset.UtcNow),

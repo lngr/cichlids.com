@@ -17,8 +17,9 @@ namespace Cichlids.Api.Features.Auth;
 /// parallel first call wins the race for the same subject, the call returns the profile that won;
 /// when another account takes the chosen username first, the call retries with a fresh
 /// candidate. A subject bound to a profile of another kind than member is refused with a
-/// NonMemberLoginException. A fresh profile never shows an email address: its handle and display name come from
-/// the token only when they hold none.
+/// NonMemberLoginException. A fresh profile never shows an email address or the name of a system
+/// profile: the token's username and name become its handle and display name only when they are
+/// neither email-like nor reserved.
 /// </summary>
 public sealed class CurrentProfileService(
     CichlidsDbContext context,
@@ -95,7 +96,7 @@ public sealed class CurrentProfileService(
         var profile = new Profile
         {
             Username = username,
-            DisplayName = PublicHandle.IsUsable(name) ? name! : username,
+            DisplayName = PublicHandle.IsUsable(name) && !ReservedUsernames.IsReserved(name) ? name! : username,
             Kind = ProfileKind.Member,
             CreatedAt = createdAt,
             Identities = [identity],
@@ -118,13 +119,13 @@ public sealed class CurrentProfileService(
 
     /// <summary>
     /// Picks the first free handle. A usable preferred username is taken as-is, then with a
-    /// numeric suffix counting up from 2. A blank or email-like preferred username yields the
-    /// generated handles keyed by the subject instead.
+    /// numeric suffix counting up from 2. A blank, email-like or reserved preferred username
+    /// yields the generated handles keyed by the subject instead.
     /// </summary>
     private Task<string> ResolveFreeUsernameAsync(
         string? preferredUsername, string subject, CancellationToken cancellationToken) =>
         FirstFreeAsync(
-            PublicHandle.IsUsable(preferredUsername)
+            PublicHandle.IsUsable(preferredUsername) && !ReservedUsernames.IsReserved(preferredUsername)
                 ? SuffixedCandidates(preferredUsername!.Trim())
                 : generatedNames.Value.Candidates(GeneratedNames.HandleInput(subject)),
             cancellationToken);

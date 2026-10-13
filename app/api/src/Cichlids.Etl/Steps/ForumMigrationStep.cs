@@ -343,7 +343,7 @@ public sealed class ForumMigrationStep : IEtlStep
 
         var values = new (string, object?)[]
         {
-            ("username", $"forum-member-{phorumUserId}"),
+            ("username", ReservedUsernames.ForumMember(phorumUserId)),
             ("display_name", displayName),
             ("kind", ProfileKindConverter.ConvertToProvider(ProfileKind.Archived)),
             ("created_at", DateTimeOffset.UtcNow),
