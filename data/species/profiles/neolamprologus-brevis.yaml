@@ -1,0 +1,3236 @@
+schemaVersion: 1
+id: neolamprologus-brevis
+legacyIds:
+  - 82
+status: described
+taxonomy:
+  validName: Neolamprologus brevis
+  genus: Neolamprologus
+  species: brevis
+  author: "(Boulenger, 1899)"
+  source:
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes: Neolamprologus, version updated 21 September 2026"
+    url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Neolamprologus"
+    accessed: '2026-10-13'
+  synonyms:
+    - name: Lamprologus brevis
+      note: Original combination and an alternative generic placement used by Konings.
+    - name: Lamprologus taeniurus
+      note: Junior synonym accepted in the Catalog of Fishes.
+  legacyNames:
+    - Neolamprologus brevis
+  note: "The Catalog of Fishes current-status entries, accessed 2026-10-13, retain Neolamprologus brevis and\
+    \ Neolamprologus calliurus as separate valid species. Its Lamprologus genus list was also queried and does\
+    \ not place brevis there; Lamprologus brevis remains the original combination and an alternative specialist\
+    \ usage. The calliurus record cites synonym treatments by Marechal and Poll 1991 and Takahashi et al. 2026\
+    \ while still retaining valid calliurus status. Ota 2012 and Ma 2024 use a pooled brevis concept, whereas\
+    \ Lein and Jordan 2021 distinguish the forms. The 2026 paper, DOI 10.1111/jfb.70640, was refused by fetch-oa\
+    \ as not open access, so its synonym argument was not directly read. Calliurus is consequently not added\
+    \ to accepted synonyms and legacyIds remain [82]. AquaInfo incorrectly includes ocellatus among synonyms;\
+    \ that identification is rejected."
+names:
+  trade:
+    en:
+      - Brevis shell-dweller
+      - Brevis cichlid
+    de:
+      - Gebänderter Schneckenbuntbarsch
+variants:
+  - name: Sunspot
+    kind: color-morph
+    note: "Aquarium color label; an archive report associates Sunspot stock with Ikola, but the collection\
+      \ locality of any particular stock needs confirmation."
+  - name: Katabe
+    kind: locality
+    note: Geographical form label in specialist sources; not a separate species.
+  - name: Sambia
+    kind: locality
+    note: Broad trade label for Zambian material rather than an exact collecting site.
+  - name: Kigoma
+    kind: locality
+    note: Named Tanzanian locality represented in the Tanganyika.si species database.
+features:
+  origin:
+    value:
+      continent: Africa
+      region: Lake Tanganyika
+      waterbody: lake-tanganyika
+    confidence: high
+    rationale: "The catalog and species databases agree on a Lake Tanganyika endemic. Checker-a added Wonzye\
+      \ Point, Chezi and Chikonde Island; the field studies at these sites use varying brevis/calliurus concepts.\
+      \ The shared lake origin is retained without treating every sampled population as unambiguously identified\
+      \ brevis. The catalog places the type locality at Albertville on the Congolese shore."
+    sources:
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: Neolamprologus, version updated 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Neolamprologus"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase: Neolamprologus brevis species summary"
+        url: "https://www.fishbase.se/summary/Neolamprologus-brevis.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Tanganyika.si: Neolamprologus brevis 'Kigoma', species treatment"
+        url: "https://www.tanganyika.si/Tanganjika/Neolamprologus/Neolamprologus%20brevis/slides/Neolamprologus%20brevis%20%27Kigoma%27.html"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Ota and colleagues (2012). Alternative Reproductive Tactics in the Shell-Brooding Lake Tanganyika
+          Cichlid Neolamprologus brevis
+        url: "https://doi.org/10.1155/2012/193235"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Population comparisons reveal more social interactions are correlated with larger brains in
+          the Lake Tanganyikan cichlid Neolamprologus brevis (bioRxiv preprint)
+        url: "https://doi.org/10.1101/2024.12.17.627543"
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: catalog-of-fishes
+          title: "Eschmeyer's Catalog of Fishes: Neolamprologus, version updated 21 September 2026"
+          url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Neolamprologus"
+          accessed: '2026-10-13'
+        value:
+          continent: Africa
+          region: Lake Tanganyika
+          waterbody: lake-tanganyika
+      - source:
+          kind: database
+          title: "FishBase: Neolamprologus brevis species summary"
+          url: "https://www.fishbase.se/summary/Neolamprologus-brevis.html"
+          accessed: '2026-10-13'
+        value:
+          continent: Africa
+          region: Lake Tanganyika
+          waterbody: lake-tanganyika
+  temperatureC:
+    value:
+      min: 23
+      max: 29
+    confidence: high
+    rationale: "The fixed lake envelope is 23 to 29 C, with waterbody verification and high confidence. Verburg\
+      \ and colleagues report hourly buoy extremes of 23.85 to 29.01 C in the inherited limnological synthesis;\
+      \ Plisnier and the Langenberg thesis describe southern seasonal surface means of 24.4 to 27.2 C. These\
+      \ are different summaries of variable lake conditions, not preferred aquarium set points. The adopted\
+      \ integer endpoints are retained exactly as decided. The DOI tool cannot retrieve the DOI-less programme\
+      \ reports, so their numerical observations are inherited compilation evidence rather than independently\
+      \ reread full texts."
+    sources:
+      - kind: literature
+        title: Plisnier et al. (1996). Limnological sampling during an annual cycle at three stations on Lake
+          Tanganyika (1993-1994). FAO/FINNIDA TD/46
+        url: "https://fao.org/fishery/static/LTR/FTP/TD46.PDF"
+        accessed: 2026-10-12
+      - kind: literature
+        title: "Plisnier, P.-D. (1996). Limnological sampling during a second annual cycle (1994-1995) and\
+          \ some comparisons with year one on Lake Tanganyika. FAO/FINNIDA GCP/RAF/271/FIN-TD/56."
+        url: "https://fao.org/fishery/static/LTR/FTP/TD56.PDF"
+        accessed: 2026-10-12
+      - kind: literature
+        title: Verburg et al. (1997). Hydrodynamics of Lake Tanganyika and meteorological results. FAO/FINNIDA
+          TD/59
+        url: "https://fao.org/fishery/static/LTR/FTP/TD59.PDF"
+        accessed: 2026-10-12
+      - kind: literature
+        title: "Cohen, A. S., Talbot, M. R., Awramik, S. M., Dettman, D. L. and Abell, P. (1997). Lake level\
+          \ and paleoenvironmental history of Lake Tanganyika, Africa, as inferred from late Holocene and modern\
+          \ stromatolites. GSA Bulletin 109(4), 444-460 (Table 1, north basin surface water chemistry)."
+        url: "https://awramik.faculty.geol.ucsb.edu/pubs/COHE9740.pdf"
+        accessed: 2026-10-12
+      - kind: literature
+        title: "Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. PhD thesis, Wageningen University"
+        url: "https://doi.org/10.18174/121977"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+          \ of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Tanganyika: physical and chemical data\
+          \ after Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E10.htm"
+        accessed: 2026-10-12
+      - kind: literature
+        title: Plisnier et al. (1999). Limnological annual cycle inferred from physical-chemical fluctuations
+          at three stations of Lake Tanganyika
+        url: "https://doi.org/10.1023/A:1003762119873"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Edmond et al. (1993). Nutrient chemistry of the water column of Lake Tanganyika
+        url: "https://doi.org/10.4319/lo.1993.38.4.0725"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: Verburg et al. (1997). Hydrodynamics of Lake Tanganyika and meteorological results. FAO/FINNIDA
+            TD/59
+          url: "https://fao.org/fishery/static/LTR/FTP/TD59.PDF"
+          accessed: 2026-10-12
+        value:
+          min: 23.85
+          max: 29.01
+        note: Hourly Mpulungu buoy observations retained from the supplied limnological synthesis; original
+          report not independently reread.
+      - source:
+          kind: literature
+          title: Plisnier et al. (1999). Limnological annual cycle inferred from physical-chemical fluctuations
+            at three stations of Lake Tanganyika
+          url: "https://doi.org/10.1023/A:1003762119873"
+          accessed: '2026-10-13'
+        value:
+          min: 24.4
+          max: 27.2
+        note: Dry-season and wet-season mean surface temperatures at Mpulungu; not absolute endpoints.
+      - source:
+          kind: literature
+          title: "Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. PhD thesis, Wageningen University"
+          url: "https://doi.org/10.18174/121977"
+          accessed: '2026-10-13'
+        value:
+          min: 24.4
+          max: 27.2
+        note: Chapter 2 reproduces the annual-cycle study; the two publications share data.
+    tolerance:
+      value:
+        min: 23
+        max: 29
+      confidence: low
+      rationale: "The tally decides 23 to 29 C with unanimous verification (4 of 4 within the 1 C agreement\
+        \ threshold) and low confidence. Generator, checker-b and checker-c proposed 23 to 29 C; checker-a\
+        \ proposed 22 to 29 C. The median agreeing lower bound is 23 C. Aqualog offers the wider lower-end\
+        \ recommendation of 22 to 28 C, while Seriously Fish gives 23 to 27 C, Fluval 24 to 27 C, Practical\
+        \ Fishkeeping 23 to 26 C and FishProfiles 23 to 25 C. The 29 C upper endpoint is retained to contain\
+        \ natural exposure, not because a multi-year aquarium study validates it. Routine keeping around 25\
+        \ to 26 C has stronger husbandry support."
+      sources:
+        - kind: database
+          title: "Seriously Fish: Neolamprologus brevis"
+          url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "Fluval (2022). Species Spotlight: Brevis Shelldweller"
+          url: "https://fluvalaquatics.com/us/wp-content/uploads/2022/02/Species-Spotlight_Brevis-Shelldweller_EN.pdf"
+          accessed: '2026-10-13'
+        - kind: literature
+          title: "Hill, N. (2017). Meet the shell dwellers. Practical Fishkeeping"
+          url: "https://www.practicalfishkeeping.co.uk/features/articles/2017/6/7/meet-the-shell-dwellers"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "FishBase: Neolamprologus brevis species summary"
+          url: "https://www.fishbase.se/summary/Neolamprologus-brevis.html"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "Aqualog, Neolamprologus brevis"
+          url: "https://www.aqualog.de/en/lexikon/neolamprologus-brevis-2/"
+          accessed: 2026-10-13
+        - kind: database
+          title: "FishProfiles: Neolamprologus brevis"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_brevis/"
+          accessed: '2026-10-13'
+        - kind: literature
+          title: "Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. PhD thesis, Wageningen University"
+          url: "https://doi.org/10.18174/121977"
+          accessed: '2026-10-13'
+      evidence:
+        - source:
+            kind: database
+            title: "Seriously Fish: Neolamprologus brevis"
+            url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+            accessed: '2026-10-13'
+          value:
+            min: 23
+            max: 27
+        - source:
+            kind: database
+            title: "Fluval (2022). Species Spotlight: Brevis Shelldweller"
+            url: "https://fluvalaquatics.com/us/wp-content/uploads/2022/02/Species-Spotlight_Brevis-Shelldweller_EN.pdf"
+            accessed: '2026-10-13'
+          value:
+            min: 24
+            max: 27
+        - source:
+            kind: literature
+            title: "Hill, N. (2017). Meet the shell dwellers. Practical Fishkeeping"
+            url: "https://www.practicalfishkeeping.co.uk/features/articles/2017/6/7/meet-the-shell-dwellers"
+            accessed: '2026-10-13'
+          value:
+            min: 23
+            max: 26
+        - source:
+            kind: database
+            title: "FishBase: Neolamprologus brevis species summary"
+            url: "https://www.fishbase.se/summary/Neolamprologus-brevis.html"
+            accessed: '2026-10-13'
+          value:
+            min: 23
+            max: 25
+        - source:
+            kind: database
+            title: "Aqualog, Neolamprologus brevis"
+            url: "https://www.aqualog.de/en/lexikon/neolamprologus-brevis-2/"
+            accessed: 2026-10-13
+          value:
+            min: 22
+            max: 28
+        - source:
+            kind: database
+            title: "FishProfiles: Neolamprologus brevis"
+            url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_brevis/"
+            accessed: '2026-10-13'
+          value:
+            min: 23
+            max: 25
+          note: Aquarium care range.
+        - source:
+            kind: literature
+            title: "Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. PhD thesis, Wageningen University"
+            url: "https://doi.org/10.18174/121977"
+            accessed: '2026-10-13'
+          value:
+            min: 24.4
+            max: 27.2
+          note: Chapter 2 reproduces the annual-cycle study; the two publications share data.
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+    verification:
+      method: waterbody
+      waterbody: lake-tanganyika
+  ph:
+    value:
+      min: 8.4
+      max: 9.4
+    confidence: high
+    rationale: "The fixed lake envelope is pH 8.4 to 9.4, with waterbody verification and high confidence.\
+      \ Plisnier and colleagues measured 8.47 to 9.40 at 40 m in the northern basin; the Langenberg thesis\
+      \ reproduces that annual-cycle result. The inherited lake synthesis additionally describes surface pH\
+      \ around 8.8 to 9.2. The anomalous 7.3 to 7.8 in the historical FAO source book is excluded because it\
+      \ conflicts with the modern observations and high alkalinity. Natural endpoints are retained exactly\
+      \ as decided."
+    sources:
+      - kind: literature
+        title: Plisnier et al. (1996). Limnological sampling during an annual cycle at three stations on Lake
+          Tanganyika (1993-1994). FAO/FINNIDA TD/46
+        url: "https://fao.org/fishery/static/LTR/FTP/TD46.PDF"
+        accessed: 2026-10-12
+      - kind: literature
+        title: "Plisnier, P.-D. (1996). Limnological sampling during a second annual cycle (1994-1995) and\
+          \ some comparisons with year one on Lake Tanganyika. FAO/FINNIDA GCP/RAF/271/FIN-TD/56."
+        url: "https://fao.org/fishery/static/LTR/FTP/TD56.PDF"
+        accessed: 2026-10-12
+      - kind: literature
+        title: Verburg et al. (1997). Hydrodynamics of Lake Tanganyika and meteorological results. FAO/FINNIDA
+          TD/59
+        url: "https://fao.org/fishery/static/LTR/FTP/TD59.PDF"
+        accessed: 2026-10-12
+      - kind: literature
+        title: "Cohen, A. S., Talbot, M. R., Awramik, S. M., Dettman, D. L. and Abell, P. (1997). Lake level\
+          \ and paleoenvironmental history of Lake Tanganyika, Africa, as inferred from late Holocene and modern\
+          \ stromatolites. GSA Bulletin 109(4), 444-460 (Table 1, north basin surface water chemistry)."
+        url: "https://awramik.faculty.geol.ucsb.edu/pubs/COHE9740.pdf"
+        accessed: 2026-10-12
+      - kind: literature
+        title: "Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. PhD thesis, Wageningen University"
+        url: "https://doi.org/10.18174/121977"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+          \ of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Tanganyika: physical and chemical data\
+          \ after Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E10.htm"
+        accessed: 2026-10-12
+      - kind: literature
+        title: Plisnier et al. (1999). Limnological annual cycle inferred from physical-chemical fluctuations
+          at three stations of Lake Tanganyika
+        url: "https://doi.org/10.1023/A:1003762119873"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Edmond et al. (1993). Nutrient chemistry of the water column of Lake Tanganyika
+        url: "https://doi.org/10.4319/lo.1993.38.4.0725"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: Plisnier et al. (1999). Limnological annual cycle inferred from physical-chemical fluctuations
+            at three stations of Lake Tanganyika
+          url: "https://doi.org/10.1023/A:1003762119873"
+          accessed: '2026-10-13'
+        value:
+          min: 8.47
+          max: 9.4
+        note: Annual Bujumbura/Uvira measurements at 40 m.
+      - source:
+          kind: literature
+          title: "Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. PhD thesis, Wageningen University"
+          url: "https://doi.org/10.18174/121977"
+          accessed: '2026-10-13'
+        value:
+          min: 8.47
+          max: 9.4
+        note: Chapter 2 reproduces the same monitoring observations; not independent sampling.
+    tolerance:
+      value:
+        min: 7.5
+        max: 9.4
+      confidence: low
+      rationale: "All four full runs proposed pH 7.5 to 9.4; the tally retains unanimous verification and low\
+        \ confidence. Seriously Fish supports 7.5 to 9.0, FishProfiles and Fluval 8.0 to 9.0, and Aqualog reports\
+        \ a different lower interval of 7.0 to 8.0. The selected lower bound does not incorporate the broader\
+        \ acidic-end proposal in Aqualog; it follows the stronger species-specific alkaline husbandry consensus.\
+        \ Natural lake measurements supply the 9.4 maximum. Evidence for constant aquarium exposure above 9.0\
+        \ remains weak. The former Zierfische-Direkt URL now returns a missing-page notice, so its inherited\
+        \ matching range is not independently confirmed."
+      sources:
+        - kind: database
+          title: "Seriously Fish: Neolamprologus brevis"
+          url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+          accessed: '2026-10-13'
+        - kind: website
+          title: "Zierfische-Direkt: Gebaenderter Schneckenbuntbarsch, Neolamprologus brevis"
+          url: "https://www.zierfische-direkt.de/gebaenderter-schneckenbuntbarsch-neolamprologus-brevis/"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "Fluval (2022). Species Spotlight: Brevis Shelldweller"
+          url: "https://fluvalaquatics.com/us/wp-content/uploads/2022/02/Species-Spotlight_Brevis-Shelldweller_EN.pdf"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "FishBase: Neolamprologus brevis species summary"
+          url: "https://www.fishbase.se/summary/Neolamprologus-brevis.html"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "Aqualog, Neolamprologus brevis"
+          url: "https://www.aqualog.de/en/lexikon/neolamprologus-brevis-2/"
+          accessed: 2026-10-13
+        - kind: database
+          title: "FishProfiles: Neolamprologus brevis"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_brevis/"
+          accessed: '2026-10-13'
+        - kind: website
+          title: "Aquarium Dietzenbach: Neolamprologus brevis Sun Spot care sheet"
+          url: "https://www.aquarium-dietzenbach.de/descriptions_neolamprologus_brevis"
+          accessed: '2026-10-13'
+        - kind: literature
+          title: "Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. PhD thesis, Wageningen University"
+          url: "https://doi.org/10.18174/121977"
+          accessed: '2026-10-13'
+      evidence:
+        - source:
+            kind: database
+            title: "Seriously Fish: Neolamprologus brevis"
+            url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+            accessed: '2026-10-13'
+          value:
+            min: 7.5
+            max: 9
+        - source:
+            kind: website
+            title: "Zierfische-Direkt: Gebaenderter Schneckenbuntbarsch, Neolamprologus brevis"
+            url: "https://www.zierfische-direkt.de/gebaenderter-schneckenbuntbarsch-neolamprologus-brevis/"
+            accessed: '2026-10-13'
+          value:
+            min: 7.5
+            max: 9
+          note: "Inherited retailer proposal; URL now returns a missing-page notice, so the range was not independently\
+            \ confirmed."
+        - source:
+            kind: database
+            title: "Fluval (2022). Species Spotlight: Brevis Shelldweller"
+            url: "https://fluvalaquatics.com/us/wp-content/uploads/2022/02/Species-Spotlight_Brevis-Shelldweller_EN.pdf"
+            accessed: '2026-10-13'
+          value:
+            min: 8
+            max: 9
+        - source:
+            kind: database
+            title: "FishBase: Neolamprologus brevis species summary"
+            url: "https://www.fishbase.se/summary/Neolamprologus-brevis.html"
+            accessed: '2026-10-13'
+          value:
+            min: 8
+            max: 9
+        - source:
+            kind: database
+            title: "Aqualog, Neolamprologus brevis"
+            url: "https://www.aqualog.de/en/lexikon/neolamprologus-brevis-2/"
+            accessed: 2026-10-13
+          value:
+            min: 7
+            max: 8
+        - source:
+            kind: database
+            title: "FishProfiles: Neolamprologus brevis"
+            url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_brevis/"
+            accessed: '2026-10-13'
+          value:
+            min: 8
+            max: 9
+        - source:
+            kind: website
+            title: "Aquarium Dietzenbach: Neolamprologus brevis Sun Spot care sheet"
+            url: "https://www.aquarium-dietzenbach.de/descriptions_neolamprologus_brevis"
+            accessed: '2026-10-13'
+          value:
+            min: 7.5
+            max: 9
+          note: Aquarium care range.
+        - source:
+            kind: literature
+            title: "Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. PhD thesis, Wageningen University"
+            url: "https://doi.org/10.18174/121977"
+            accessed: '2026-10-13'
+          value:
+            min: 8.47
+            max: 9.4
+          note: Chapter 2 reproduces the same monitoring observations; not independent sampling.
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+    verification:
+      method: waterbody
+      waterbody: lake-tanganyika
+  ghDgh:
+    value:
+      min: 10
+      max: 13
+    confidence: high
+    rationale: "The fixed natural range is 10 to 13 dGH, with waterbody verification and high confidence. Calcium-magnesium\
+      \ hardness is calculated separately from alkalinity. Programme means in the inherited synthesis convert\
+      \ to 11.1 to 11.5 dGH, historical Talling values to about 11.4 dGH, and Branchu and Bergonzini surface\
+      \ means to about 10.6 dGH. The wider adopted envelope covers the compiled lake measurements rather than\
+      \ any single sample. Cohen 1997 is retained as lake-compilation provenance only because its full text\
+      \ is not available through the permitted open-access route; its readings are not asserted as directly\
+      \ checked evidence. The DOI-less programme reports likewise supply inherited synthesis evidence."
+    sources:
+      - kind: literature
+        title: Plisnier et al. (1996). Limnological sampling during an annual cycle at three stations on Lake
+          Tanganyika (1993-1994). FAO/FINNIDA TD/46
+        url: "https://fao.org/fishery/static/LTR/FTP/TD46.PDF"
+        accessed: 2026-10-12
+      - kind: literature
+        title: "Plisnier, P.-D. (1996). Limnological sampling during a second annual cycle (1994-1995) and\
+          \ some comparisons with year one on Lake Tanganyika. FAO/FINNIDA GCP/RAF/271/FIN-TD/56."
+        url: "https://fao.org/fishery/static/LTR/FTP/TD56.PDF"
+        accessed: 2026-10-12
+      - kind: literature
+        title: Verburg et al. (1997). Hydrodynamics of Lake Tanganyika and meteorological results. FAO/FINNIDA
+          TD/59
+        url: "https://fao.org/fishery/static/LTR/FTP/TD59.PDF"
+        accessed: 2026-10-12
+      - kind: literature
+        title: "Cohen, A. S., Talbot, M. R., Awramik, S. M., Dettman, D. L. and Abell, P. (1997). Lake level\
+          \ and paleoenvironmental history of Lake Tanganyika, Africa, as inferred from late Holocene and modern\
+          \ stromatolites. GSA Bulletin 109(4), 444-460 (Table 1, north basin surface water chemistry)."
+        url: "https://awramik.faculty.geol.ucsb.edu/pubs/COHE9740.pdf"
+        accessed: 2026-10-12
+      - kind: literature
+        title: "Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. PhD thesis, Wageningen University"
+        url: "https://doi.org/10.18174/121977"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+          \ of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Tanganyika: physical and chemical data\
+          \ after Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E10.htm"
+        accessed: 2026-10-12
+      - kind: literature
+        title: "Late Pleistocene-Holocene chemical stratigraphy and paleolimnology of the Rift Valley lakes\
+          \ of central Africa (1973), Table 1"
+        url: "https://doi.org/10.1575/1912/4362"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Branchu, P. and Bergonzini, L. (2004). Chloride concentrations in Lake Tanganyika: an indicator\
+          \ of the hydrological budget?"
+        url: "https://doi.org/10.5194/hess-8-256-2004"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: Plisnier et al. (1996). Limnological sampling during an annual cycle at three stations on
+            Lake Tanganyika (1993-1994). FAO/FINNIDA TD/46
+          url: "https://fao.org/fishery/static/LTR/FTP/TD46.PDF"
+          accessed: 2026-10-12
+        value:
+          min: 11.1
+          max: 11.5
+        note: "Programme surface Ca 10.9 to 11.6 mg/L and Mg 41.2 to 43.2 mg/L; converted using Ca/7.14 + Mg/4.34\
+          \ from the supplied lake-study synthesis, not an independently reread report."
+      - source:
+          kind: literature
+          title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+            \ of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Tanganyika: physical and chemical data\
+            \ after Talling and Talling (1965)."
+          url: "https://www.fao.org/4/t0473e/T0473E10.htm"
+          accessed: 2026-10-12
+        value:
+          min: 11.4
+          max: 11.4
+        note: "Talling and Talling surface chemistry in the supplied synthesis: Ca 9.8 and Mg 43.3 mg/L; rounded\
+          \ conversion to dGH."
+      - source:
+          kind: literature
+          title: "Branchu, P. and Bergonzini, L. (2004). Chloride concentrations in Lake Tanganyika: an indicator\
+            \ of the hydrological budget?"
+          url: "https://doi.org/10.5194/hess-8-256-2004"
+          accessed: '2026-10-13'
+        value:
+          min: 10.6
+          max: 10.6
+        note: "Table 2 surface means: Ca 0.273 and Mg 1.611 mmol/L; converted to dGH."
+    tolerance:
+      value:
+        min: 8
+        max: 25
+      confidence: medium
+      rationale: "All four full runs proposed 8 to 25 dGH; the tally retains that unanimous range with medium\
+        \ confidence. Seriously Fish gives 8 to 25 dGH, Fluval 12 to 25 dGH and Practical Fishkeeping 15 to\
+        \ 25 dGH. FishBase reports 9 to 19 and FishProfiles 10 to 20. These differing husbandry recommendations\
+        \ support a broad practical envelope containing the 10 to 13 dGH lake range, rather than experimentally\
+        \ established long-term physiological thresholds."
+      sources:
+        - kind: database
+          title: "Seriously Fish: Neolamprologus brevis"
+          url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "Fluval (2022). Species Spotlight: Brevis Shelldweller"
+          url: "https://fluvalaquatics.com/us/wp-content/uploads/2022/02/Species-Spotlight_Brevis-Shelldweller_EN.pdf"
+          accessed: '2026-10-13'
+        - kind: literature
+          title: "Hill, N. (2017). Meet the shell dwellers. Practical Fishkeeping"
+          url: "https://www.practicalfishkeeping.co.uk/features/articles/2017/6/7/meet-the-shell-dwellers"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "FishBase: Neolamprologus brevis species summary"
+          url: "https://www.fishbase.se/summary/Neolamprologus-brevis.html"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "FishProfiles: Neolamprologus brevis"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_brevis/"
+          accessed: '2026-10-13'
+        - kind: website
+          title: "Aquarium Dietzenbach: Neolamprologus brevis Sun Spot care sheet"
+          url: "https://www.aquarium-dietzenbach.de/descriptions_neolamprologus_brevis"
+          accessed: '2026-10-13'
+        - kind: literature
+          title: "Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. PhD thesis, Wageningen University"
+          url: "https://doi.org/10.18174/121977"
+          accessed: '2026-10-13'
+      evidence:
+        - source:
+            kind: database
+            title: "Seriously Fish: Neolamprologus brevis"
+            url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+            accessed: '2026-10-13'
+          value:
+            min: 8
+            max: 25
+        - source:
+            kind: database
+            title: "Fluval (2022). Species Spotlight: Brevis Shelldweller"
+            url: "https://fluvalaquatics.com/us/wp-content/uploads/2022/02/Species-Spotlight_Brevis-Shelldweller_EN.pdf"
+            accessed: '2026-10-13'
+          value:
+            min: 12
+            max: 25
+        - source:
+            kind: literature
+            title: "Hill, N. (2017). Meet the shell dwellers. Practical Fishkeeping"
+            url: "https://www.practicalfishkeeping.co.uk/features/articles/2017/6/7/meet-the-shell-dwellers"
+            accessed: '2026-10-13'
+          value:
+            min: 15
+            max: 25
+        - source:
+            kind: database
+            title: "FishBase: Neolamprologus brevis species summary"
+            url: "https://www.fishbase.se/summary/Neolamprologus-brevis.html"
+            accessed: '2026-10-13'
+          value:
+            min: 9
+            max: 19
+        - source:
+            kind: database
+            title: "FishProfiles: Neolamprologus brevis"
+            url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_brevis/"
+            accessed: '2026-10-13'
+          value:
+            min: 10
+            max: 20
+        - source:
+            kind: website
+            title: "Aquarium Dietzenbach: Neolamprologus brevis Sun Spot care sheet"
+            url: "https://www.aquarium-dietzenbach.de/descriptions_neolamprologus_brevis"
+            accessed: '2026-10-13'
+          value:
+            min: 10
+            max: 20
+          note: Explicit aquarium GH.
+        - source:
+            kind: literature
+            title: "Branchu, P. and Bergonzini, L. (2004). Chloride concentrations in Lake Tanganyika: an indicator\
+              \ of the hydrological budget?"
+            url: "https://doi.org/10.5194/hess-8-256-2004"
+            accessed: '2026-10-13'
+          value:
+            min: 10.6
+            max: 10.6
+          note: "Table 2 surface means: Ca 0.273 and Mg 1.611 mmol/L; converted to dGH."
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+    verification:
+      method: waterbody
+      waterbody: lake-tanganyika
+  khDkh:
+    value:
+      min: 15
+      max: 20
+    confidence: high
+    rationale: "The fixed natural range is 15 to 20 dKH with high confidence and no verification object. It\
+      \ represents carbonate alkalinity rather than calcium-magnesium hardness. The programme synthesis includes\
+      \ bicarbonate 5.6 to 6.2 meq/L plus carbonate 0.06 to 1.02 meq/L, a mathematical bounding envelope from\
+      \ separate concentration endpoints of about 15.8 to 20.2 dKH; the decided 15 to 20 interval is retained\
+      \ exactly despite that slightly wider calculated envelope. Langenberg cites 6.7 to 6.9 meq/L alkalinity,\
+      \ about 18.8 to 19.3 dKH. Branchu and Bergonzini provide an independent surface mean of about 18.4 dKH.\
+      \ Programme values are inherited synthesis evidence; unusually dilute readings near the Ruzizi inflow\
+      \ are excluded from the lake-wide envelope."
+    sources:
+      - kind: literature
+        title: Plisnier et al. (1996). Limnological sampling during an annual cycle at three stations on Lake
+          Tanganyika (1993-1994). FAO/FINNIDA TD/46
+        url: "https://fao.org/fishery/static/LTR/FTP/TD46.PDF"
+        accessed: 2026-10-12
+      - kind: literature
+        title: "Plisnier, P.-D. (1996). Limnological sampling during a second annual cycle (1994-1995) and\
+          \ some comparisons with year one on Lake Tanganyika. FAO/FINNIDA GCP/RAF/271/FIN-TD/56."
+        url: "https://fao.org/fishery/static/LTR/FTP/TD56.PDF"
+        accessed: 2026-10-12
+      - kind: literature
+        title: Verburg et al. (1997). Hydrodynamics of Lake Tanganyika and meteorological results. FAO/FINNIDA
+          TD/59
+        url: "https://fao.org/fishery/static/LTR/FTP/TD59.PDF"
+        accessed: 2026-10-12
+      - kind: literature
+        title: "Cohen, A. S., Talbot, M. R., Awramik, S. M., Dettman, D. L. and Abell, P. (1997). Lake level\
+          \ and paleoenvironmental history of Lake Tanganyika, Africa, as inferred from late Holocene and modern\
+          \ stromatolites. GSA Bulletin 109(4), 444-460 (Table 1, north basin surface water chemistry)."
+        url: "https://awramik.faculty.geol.ucsb.edu/pubs/COHE9740.pdf"
+        accessed: 2026-10-12
+      - kind: literature
+        title: "Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. PhD thesis, Wageningen University"
+        url: "https://doi.org/10.18174/121977"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+          \ of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Tanganyika: physical and chemical data\
+          \ after Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E10.htm"
+        accessed: 2026-10-12
+      - kind: literature
+        title: "Branchu, P. and Bergonzini, L. (2004). Chloride concentrations in Lake Tanganyika: an indicator\
+          \ of the hydrological budget?"
+        url: "https://doi.org/10.5194/hess-8-256-2004"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: Plisnier et al. (1996). Limnological sampling during an annual cycle at three stations on
+            Lake Tanganyika (1993-1994). FAO/FINNIDA TD/46
+          url: "https://fao.org/fishery/static/LTR/FTP/TD46.PDF"
+          accessed: 2026-10-12
+        value:
+          min: 15.8
+          max: 20.2
+        note: "Inherited programme concentration intervals: bicarbonate 5.6 to 6.2 meq/L plus carbonate 0.06\
+          \ to 1.02 meq/L. Summing separate extrema and multiplying by 2.8 gives a bounding envelope, not a\
+          \ range of paired observations; original report not independently reread."
+      - source:
+          kind: literature
+          title: "Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. PhD thesis, Wageningen University"
+          url: "https://doi.org/10.18174/121977"
+          accessed: '2026-10-13'
+        value:
+          min: 18.8
+          max: 19.3
+        note: Alkalinity 6.7 to 6.9 meq/L cited from Edmond 1993 in the thesis; converted to dKH.
+      - source:
+          kind: literature
+          title: "Branchu, P. and Bergonzini, L. (2004). Chloride concentrations in Lake Tanganyika: an indicator\
+            \ of the hydrological budget?"
+          url: "https://doi.org/10.5194/hess-8-256-2004"
+          accessed: '2026-10-13'
+        value:
+          min: 18.4
+          max: 18.4
+        note: Table 2 gives bicarbonate 6 and carbonate 0.28 mmol/L; (6 + 2 x 0.28) x 2.8.
+    tolerance:
+      value:
+        min: 8
+        max: 20
+      confidence: low
+      rationale: "The tally decides 8 to 20 dKH with unanimous verification (4 of 4 within the 2 dKH agreement\
+        \ threshold) and low confidence. Generator, checker-a and checker-c proposed 8 to 20; checker-b proposed\
+        \ 10 to 20. The median agreeing lower bound is 8. AquaInfo states 8 to 14 dKH, Dietzenbach and Einrichtungsbeispiele\
+        \ 8 to 15, my-fish 10 to 18, and the broader OATA guidance 10 to 15. The my-fish and Dietzenbach material\
+        \ may share a contributor and cannot establish independent chronic limits. Aqua-Pedia gives 10 to 20\
+        \ but discloses generated content and receives little weight. Natural lake alkalinity extends the maximum\
+        \ to 20. Checker-a derived its low endpoint without a direct KH measurement; GH cannot substitute for\
+        \ KH. The former retailer URL was unavailable during adjudication."
+      sources:
+        - kind: database
+          title: "Ponsen, J. Neolamprologus brevis. AquaInfo"
+          url: "https://www.aquainfo.nl/artikel/neolamprologus-brevis/"
+          accessed: '2026-10-13'
+        - kind: website
+          title: "Zierfische-Direkt: Gebaenderter Schneckenbuntbarsch, Neolamprologus brevis"
+          url: "https://www.zierfische-direkt.de/gebaenderter-schneckenbuntbarsch-neolamprologus-brevis/"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "Aqua-Pedia: Brevis shell-dweller, generated and manually reviewed care data"
+          url: "https://aqua-pedia.com/en/species/neolamprologus-brevis-brevis-shell-dweller"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "Seriously Fish: Neolamprologus brevis"
+          url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "FishBase: Neolamprologus brevis species summary"
+          url: "https://www.fishbase.se/summary/Neolamprologus-brevis.html"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "my-fish Fishothek: Neolamprologus brevis"
+          url: "https://my-fish.org/my-fishothek/neolamprologus-brevis-gebanderter-schneckenbuntbarsch/"
+          accessed: '2026-10-13'
+        - kind: website
+          title: "Aquarium Dietzenbach: Neolamprologus brevis Sun Spot care sheet"
+          url: "https://www.aquarium-dietzenbach.de/descriptions_neolamprologus_brevis"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "OATA: How to look after African lake cichlids"
+          accessed: '2026-10-13'
+          url: "https://ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-freshwater-fish/how-to-look-after-african-lake-cichlids/"
+        - kind: database
+          title: "Einrichtungsbeispiele: Neolamprologus brevis species directory"
+          accessed: '2026-10-13'
+          url: "https://www.einrichtungsbeispiele.de/zierfische/tanganjikasee/neolamprologus-brevis-slnk.html"
+        - kind: literature
+          title: "Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. PhD thesis, Wageningen University"
+          url: "https://doi.org/10.18174/121977"
+          accessed: '2026-10-13'
+      evidence:
+        - source:
+            kind: database
+            title: "Ponsen, J. Neolamprologus brevis. AquaInfo"
+            url: "https://www.aquainfo.nl/artikel/neolamprologus-brevis/"
+            accessed: '2026-10-13'
+          value:
+            min: 8
+            max: 14
+          note: Species care text; its erroneous synonym list is not followed.
+        - source:
+            kind: website
+            title: "Zierfische-Direkt: Gebaenderter Schneckenbuntbarsch, Neolamprologus brevis"
+            url: "https://www.zierfische-direkt.de/gebaenderter-schneckenbuntbarsch-neolamprologus-brevis/"
+            accessed: '2026-10-13'
+          value:
+            min: 8
+            max: 15
+          note: "Inherited retailer proposal; URL now returns a missing-page notice, so the range was not independently\
+            \ confirmed."
+        - source:
+            kind: database
+            title: "Aqua-Pedia: Brevis shell-dweller, generated and manually reviewed care data"
+            url: "https://aqua-pedia.com/en/species/neolamprologus-brevis-brevis-shell-dweller"
+            accessed: '2026-10-13'
+          value:
+            min: 10
+            max: 20
+          note: "Generated and reviewed database, weak corroboration only."
+        - source:
+            kind: database
+            title: "my-fish Fishothek: Neolamprologus brevis"
+            url: "https://my-fish.org/my-fishothek/neolamprologus-brevis-gebanderter-schneckenbuntbarsch/"
+            accessed: '2026-10-13'
+          value:
+            min: 10
+            max: 18
+        - source:
+            kind: website
+            title: "Aquarium Dietzenbach: Neolamprologus brevis Sun Spot care sheet"
+            url: "https://www.aquarium-dietzenbach.de/descriptions_neolamprologus_brevis"
+            accessed: '2026-10-13'
+          value:
+            min: 8
+            max: 15
+        - source:
+            kind: database
+            title: "OATA: How to look after African lake cichlids"
+            accessed: '2026-10-13'
+            url: "https://ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-freshwater-fish/how-to-look-after-african-lake-cichlids/"
+          value:
+            min: 10
+            max: 15
+          note: "Broad African lake-cichlid aquarium guidance, including brevis."
+        - source:
+            kind: database
+            title: "Einrichtungsbeispiele: Neolamprologus brevis species directory"
+            accessed: '2026-10-13'
+            url: "https://www.einrichtungsbeispiele.de/zierfische/tanganjikasee/neolamprologus-brevis-slnk.html"
+          value:
+            min: 8
+            max: 15
+          note: "Species-directory aquarium KH, same endpoints as Dietzenbach."
+        - source:
+            kind: literature
+            title: "Branchu, P. and Bergonzini, L. (2004). Chloride concentrations in Lake Tanganyika: an indicator\
+              \ of the hydrological budget?"
+            url: "https://doi.org/10.5194/hess-8-256-2004"
+            accessed: '2026-10-13'
+          value:
+            min: 18.4
+            max: 18.4
+          note: Table 2 gives bicarbonate 6 and carbonate 0.28 mmol/L; (6 + 2 x 0.28) x 2.8.
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+  maxSizeCm:
+    value:
+      male: 6
+      female: 4
+    confidence: medium
+    rationale: "All four runs proposed male 6 cm and female 4 cm for typical aquarium adults. Practical Fishkeeping\
+      \ supports a 6 cm male; Tanganyika.si and AquaInfo give male 5 and female 4 cm, and Dietzenbach gives\
+      \ 6 and 4 cm. FishBase lists 5.5 cm total length, while Seriously Fish and my-fish use standard length.\
+      \ These length conventions are not averaged. FishProfiles assigns 5 cm to both sexes despite describing\
+      \ larger males, so that table is downweighted. Larger males in pooled brevis/calliurus field studies\
+      \ are not used. Confidence remains medium because the measurement conventions differ."
+    sources:
+      - kind: literature
+        title: "Hill, N. (2017). Meet the shell dwellers. Practical Fishkeeping"
+        url: "https://www.practicalfishkeeping.co.uk/features/articles/2017/6/7/meet-the-shell-dwellers"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Tanganyika.si: Neolamprologus brevis 'Kigoma', species treatment"
+        url: "https://www.tanganyika.si/Tanganjika/Neolamprologus/Neolamprologus%20brevis/slides/Neolamprologus%20brevis%20%27Kigoma%27.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Ponsen, J. Neolamprologus brevis. AquaInfo"
+        url: "https://www.aquainfo.nl/artikel/neolamprologus-brevis/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase: Neolamprologus brevis species summary"
+        url: "https://www.fishbase.se/summary/Neolamprologus-brevis.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Neolamprologus brevis"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Ota and colleagues (2012). Alternative Reproductive Tactics in the Shell-Brooding Lake Tanganyika
+          Cichlid Neolamprologus brevis
+        url: "https://doi.org/10.1155/2012/193235"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqualog, Neolamprologus brevis"
+        url: "https://www.aqualog.de/en/lexikon/neolamprologus-brevis-2/"
+        accessed: 2026-10-13
+      - kind: website
+        title: "Aquarium Dietzenbach: Neolamprologus brevis Sun Spot care sheet"
+        url: "https://www.aquarium-dietzenbach.de/descriptions_neolamprologus_brevis"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "my-fish Fishothek: Neolamprologus brevis"
+        url: "https://my-fish.org/my-fishothek/neolamprologus-brevis-gebanderter-schneckenbuntbarsch/"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Brand, R. (2014). Neolamprologus brevis care, feeding and breeding. Aquarium Tidings"
+        accessed: '2026-10-13'
+        url: "https://aquariumtidings.com/neolamprologus-brevis-care/"
+      - kind: database
+        title: "FishProfiles: Neolamprologus brevis"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_brevis/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Fluval (2022). Species Spotlight: Brevis Shelldweller"
+        url: "https://fluvalaquatics.com/us/wp-content/uploads/2022/02/Species-Spotlight_Brevis-Shelldweller_EN.pdf"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: "Hill, N. (2017). Meet the shell dwellers. Practical Fishkeeping"
+          url: "https://www.practicalfishkeeping.co.uk/features/articles/2017/6/7/meet-the-shell-dwellers"
+          accessed: '2026-10-13'
+        value:
+          male: 6
+        note: Adult male husbandry size; length convention unspecified.
+      - source:
+          kind: database
+          title: "Tanganyika.si: Neolamprologus brevis 'Kigoma', species treatment"
+          url: "https://www.tanganyika.si/Tanganjika/Neolamprologus/Neolamprologus%20brevis/slides/Neolamprologus%20brevis%20%27Kigoma%27.html"
+          accessed: '2026-10-13'
+        value:
+          male: 5
+          female: 4
+        note: Explicit total lengths.
+      - source:
+          kind: database
+          title: "Ponsen, J. Neolamprologus brevis. AquaInfo"
+          url: "https://www.aquainfo.nl/artikel/neolamprologus-brevis/"
+          accessed: '2026-10-13'
+        value:
+          male: 5
+          female: 4
+      - source:
+          kind: database
+          title: "FishBase: Neolamprologus brevis species summary"
+          url: "https://www.fishbase.se/summary/Neolamprologus-brevis.html"
+          accessed: '2026-10-13'
+        value:
+          male: 5.5
+        note: Male/unsexed maximum total length; not female-specific.
+      - source:
+          kind: database
+          title: "Seriously Fish: Neolamprologus brevis"
+          url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+          accessed: '2026-10-13'
+        value:
+          male: 6
+        note: "Unsexed maximum, marked as standard length."
+      - source:
+          kind: literature
+          title: Ota and colleagues (2012). Alternative Reproductive Tactics in the Shell-Brooding Lake Tanganyika
+            Cichlid Neolamprologus brevis
+          url: "https://doi.org/10.1155/2012/193235"
+          accessed: '2026-10-13'
+        value:
+          male: 6
+          female: 4.1
+        note: standard length of floating males and of females in shell patches
+      - source:
+          kind: database
+          title: "Aqualog, Neolamprologus brevis"
+          url: "https://www.aqualog.de/en/lexikon/neolamprologus-brevis-2/"
+          accessed: 2026-10-13
+        value:
+          male: 6
+          female: 3.5
+      - source:
+          kind: website
+          title: "Aquarium Dietzenbach: Neolamprologus brevis Sun Spot care sheet"
+          url: "https://www.aquarium-dietzenbach.de/descriptions_neolamprologus_brevis"
+          accessed: '2026-10-13'
+        value:
+          male: 6
+          female: 4
+        note: Length convention unspecified in care table.
+      - source:
+          kind: database
+          title: "my-fish Fishothek: Neolamprologus brevis"
+          url: "https://my-fish.org/my-fishothek/neolamprologus-brevis-gebanderter-schneckenbuntbarsch/"
+          accessed: '2026-10-13'
+        value:
+          male: 6
+          female: 4
+        note: Explicitly standard length; not interchangeable with total length.
+      - source:
+          kind: website
+          title: "Brand, R. (2014). Neolamprologus brevis care, feeding and breeding. Aquarium Tidings"
+          accessed: '2026-10-13'
+          url: "https://aquariumtidings.com/neolamprologus-brevis-care/"
+        value:
+          male: 5.5
+          female: 4
+      - source:
+          kind: database
+          title: "FishProfiles: Neolamprologus brevis"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_brevis/"
+          accessed: '2026-10-13'
+        value:
+          male: 5
+          female: 5
+        note: Sex-specific table conflicts with the same page describing larger males.
+      - source:
+          kind: database
+          title: "Fluval (2022). Species Spotlight: Brevis Shelldweller"
+          url: "https://fluvalaquatics.com/us/wp-content/uploads/2022/02/Species-Spotlight_Brevis-Shelldweller_EN.pdf"
+          accessed: '2026-10-13'
+        value: 6
+        note: Maximum length without a separate female measurement.
+  predation:
+    value: 1
+    confidence: medium
+    rationale: "The tally fixes level 1 by qualified majority, 5 of 6 votes, with medium confidence. Generator,\
+      \ checker-b, checker-c and both tie-breakers proposed 1; checker-a proposed 0. Seriously Fish reports\
+      \ possible fry consumption by other adults in a colony, while Aquarium Tidings describes it as uncommon\
+      \ and Dietzenbach reports several generations coexisting without cannibalism. FishBase and field observations\
+      \ support ordinary invertebrate feeding. Huyghe et al. 2025 placed brevis in a fish-rich metagenomic\
+      \ cluster but also found substantial copepod material; DNA cannot distinguish fish eggs, juveniles, whole\
+      \ adults or scales, and covers only recent meals. It therefore does not directly establish routine whole-fish\
+      \ hunting at levels 2 or 3. Level 1 represents a plausible fry risk; consumption of fish approaching\
+      \ the rubric ceiling of 2 cm is not specifically demonstrated, and the boundary with incidental level\
+      \ 0 remains uncertain."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Neolamprologus brevis"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase: Neolamprologus brevis species summary"
+        url: "https://www.fishbase.se/summary/Neolamprologus-brevis.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Tanganyika.si: Neolamprologus brevis 'Kigoma', species treatment"
+        url: "https://www.tanganyika.si/Tanganjika/Neolamprologus/Neolamprologus%20brevis/slides/Neolamprologus%20brevis%20%27Kigoma%27.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase: Neolamprologus brevis food items table"
+        url: "https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=8966&genus=Neolamprologus&species=brevis"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Population comparisons reveal more social interactions are correlated with larger brains in
+          the Lake Tanganyikan cichlid Neolamprologus brevis (bioRxiv preprint)
+        url: "https://doi.org/10.1101/2024.12.17.627543"
+        accessed: 2026-10-13
+      - kind: website
+        title: "Aquarium Dietzenbach: Neolamprologus brevis Sun Spot care sheet"
+        url: "https://www.aquarium-dietzenbach.de/descriptions_neolamprologus_brevis"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Huyghe et al. (2025). Metagenomic Insights Into the Dietary Diversity of the Adaptive Radiation\
+          \ of Cichlid Fishes in Lake Tanganyika. Molecular Ecology 34, e17743"
+        url: "https://doi.org/10.1111/mec.17743"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Brand, R. (2014). Neolamprologus brevis care, feeding and breeding. Aquarium Tidings"
+        accessed: '2026-10-13'
+        url: "https://aquariumtidings.com/neolamprologus-brevis-care/"
+      - kind: database
+        title: "Cichlid Room Companion: Neolamprologus brevis, public verification summary only"
+        url: "https://cichlidae.com/species.php?id=N1rHDE97XNdfcaudQTt28Q"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Ota and colleagues (2012). Alternative Reproductive Tactics in the Shell-Brooding Lake Tanganyika
+          Cichlid Neolamprologus brevis
+        url: "https://doi.org/10.1155/2012/193235"
+        accessed: '2026-10-13'
+      - kind: archive
+        title: cichlids.com forum thread 19964
+        url: "https://www.cichlids.com/disc/read.php?2,19964"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Neolamprologus brevis"
+          url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+          accessed: '2026-10-13'
+        value: 1
+        note: "Nonparent adults may consume fry, while parents generally spare their brood. Checker-a mapped\
+          \ the latter observation to 0; the decided mapping retains the nonparent fry risk, with no measured\
+          \ 2 cm prey limit."
+      - source:
+          kind: database
+          title: "FishBase: Neolamprologus brevis species summary"
+          url: "https://www.fishbase.se/summary/Neolamprologus-brevis.html"
+          accessed: '2026-10-13'
+        value: 0
+        note: Plankton diet supports no routine piscivory; fry intake is not assessed.
+      - source:
+          kind: database
+          title: "Tanganyika.si: Neolamprologus brevis 'Kigoma', species treatment"
+          url: "https://www.tanganyika.si/Tanganjika/Neolamprologus/Neolamprologus%20brevis/slides/Neolamprologus%20brevis%20%27Kigoma%27.html"
+          accessed: '2026-10-13'
+        value: 0
+        note: "Zooplankton specialization, with no fish prey listed."
+      - source:
+          kind: literature
+          title: Ota and colleagues (2012). Alternative Reproductive Tactics in the Shell-Brooding Lake Tanganyika
+            Cichlid Neolamprologus brevis
+          url: "https://doi.org/10.1155/2012/193235"
+          accessed: '2026-10-13'
+        value: 0
+        note: feeds by pecking at plankton
+      - source:
+          kind: database
+          title: "FishBase: Neolamprologus brevis food items table"
+          url: "https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=8966&genus=Neolamprologus&species=brevis"
+          accessed: '2026-10-13'
+        value: 0
+        note: Invertebrate-only recorded food item supports absence of routine piscivory; the table does not
+          test fry predation.
+      - source:
+          kind: website
+          title: "Aquarium Dietzenbach: Neolamprologus brevis Sun Spot care sheet"
+          url: "https://www.aquarium-dietzenbach.de/descriptions_neolamprologus_brevis"
+          accessed: '2026-10-13'
+        value: 0
+        note: Reports keeping several generations together without cannibalism; does not test heterospecific
+          fry predation.
+      - source:
+          kind: website
+          title: "Brand, R. (2014). Neolamprologus brevis care, feeding and breeding. Aquarium Tidings"
+          accessed: '2026-10-13'
+          url: "https://aquariumtidings.com/neolamprologus-brevis-care/"
+        value: 1
+        note: Adult consumption of fry occurs infrequently; secondary hobby article.
+      - source:
+          kind: literature
+          title: "Huyghe et al. (2025). Metagenomic Insights Into the Dietary Diversity of the Adaptive Radiation\
+            \ of Cichlid Fishes in Lake Tanganyika. Molecular Ecology 34, e17743"
+          url: "https://doi.org/10.1111/mec.17743"
+          accessed: '2026-10-13'
+        value: 3
+        note: "Provisional mapping of the paper's piscivorous dietary cluster, not an observed predation grade.\
+          \ Non-cichlid fish reads were prominent, but prey life stage and habitual hunting were unresolved;\
+          \ the paper also reports abundant copepod reads."
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 5
+        total: 6
+  diet:
+    value:
+      type: invertivore
+      bloatSensitive: false
+      foods:
+        - Cyclops
+        - Daphnia
+        - Artemia
+        - small aquatic invertebrates
+        - fine sinking pellets
+    confidence: medium
+    rationale: "The tally fixes invertivore and bloatSensitive false by unanimous agreement, 4 of 4, with medium\
+      \ confidence; the foods list is retained exactly from its decision. FishBase food items identify planktonic\
+      \ invertebrates, Tanganyika.si describes zooplankton feeding and the 2021 review supports small invertebrate\
+      \ prey. FishProfiles, Fluval and the broad FishBase ecology field instead suggest omnivory, without species-specific\
+      \ plant stomach contents. Huyghe et al. 2025 found enough fish material to cluster brevis with piscivores,\
+      \ contrary to the older dietary classification, but could not resolve the ingested life stage or habitual\
+      \ diet over time. That conflict limits confidence and does not alter the binding tally decision. The\
+      \ false bloat flag expresses the absence of a demonstrated species-specific high-protein sensitivity,\
+      \ not protection from digestive disease. CRC corroborates plankton feeding only."
+    sources:
+      - kind: database
+        title: "FishBase: Neolamprologus brevis species summary"
+        url: "https://www.fishbase.se/summary/Neolamprologus-brevis.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Tanganyika.si: Neolamprologus brevis 'Kigoma', species treatment"
+        url: "https://www.tanganyika.si/Tanganjika/Neolamprologus/Neolamprologus%20brevis/slides/Neolamprologus%20brevis%20%27Kigoma%27.html"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Hill, N. (2017). Meet the shell dwellers. Practical Fishkeeping"
+        url: "https://www.practicalfishkeeping.co.uk/features/articles/2017/6/7/meet-the-shell-dwellers"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishProfiles: Neolamprologus brevis"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_brevis/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Fluval (2022). Species Spotlight: Brevis Shelldweller"
+        url: "https://fluvalaquatics.com/us/wp-content/uploads/2022/02/Species-Spotlight_Brevis-Shelldweller_EN.pdf"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Cichlid Room Companion: Neolamprologus brevis, public verification summary only"
+        url: "https://cichlidae.com/species.php?id=N1rHDE97XNdfcaudQTt28Q"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Ota and colleagues (2012). Alternative Reproductive Tactics in the Shell-Brooding Lake Tanganyika
+          Cichlid Neolamprologus brevis
+        url: "https://doi.org/10.1155/2012/193235"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Neolamprologus brevis"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Population comparisons reveal more social interactions are correlated with larger brains in
+          the Lake Tanganyikan cichlid Neolamprologus brevis (bioRxiv preprint)
+        url: "https://doi.org/10.1101/2024.12.17.627543"
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishBase: Neolamprologus brevis food items table"
+        url: "https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=8966&genus=Neolamprologus&species=brevis"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase: Neolamprologus brevis ecology table"
+        url: "https://www.fishbase.se/Ecology/FishEcologySummary.php?StockCode=8966&GenusName=Neolamprologus&SpeciesName=brevis"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Lein, E. and Jordan, A. (2021). Studying the evolution of social behaviour in one of Darwin's\
+          \ Dreamponds: a case for the Lamprologine shell-dwelling cichlids"
+        url: "https://doi.org/10.1007/s10750-020-04473-x"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Aquarium Dietzenbach: Neolamprologus brevis Sun Spot care sheet"
+        url: "https://www.aquarium-dietzenbach.de/descriptions_neolamprologus_brevis"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Huyghe et al. (2025). Metagenomic Insights Into the Dietary Diversity of the Adaptive Radiation\
+          \ of Cichlid Fishes in Lake Tanganyika. Molecular Ecology 34, e17743"
+        url: "https://doi.org/10.1111/mec.17743"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: database
+          title: "FishBase: Neolamprologus brevis species summary"
+          url: "https://www.fishbase.se/summary/Neolamprologus-brevis.html"
+          accessed: '2026-10-13'
+        value:
+          type: invertivore
+        note: "Plankton feeding stated; animal plankton is clarified by the food-item table and specialist\
+          \ sources. The bloat flag is an adjudicative inference, not a FishBase test."
+      - source:
+          kind: database
+          title: "Tanganyika.si: Neolamprologus brevis 'Kigoma', species treatment"
+          url: "https://www.tanganyika.si/Tanganjika/Neolamprologus/Neolamprologus%20brevis/slides/Neolamprologus%20brevis%20%27Kigoma%27.html"
+          accessed: '2026-10-13'
+        value:
+          type: invertivore
+        note: Animal plankton and small invertebrates.
+      - source:
+          kind: literature
+          title: "Hill, N. (2017). Meet the shell dwellers. Practical Fishkeeping"
+          url: "https://www.practicalfishkeeping.co.uk/features/articles/2017/6/7/meet-the-shell-dwellers"
+          accessed: '2026-10-13'
+        value:
+          type: invertivore
+          bloatSensitive: false
+        note: "Crustacean-based feeding recommendation; flag inferred, not an experimental result."
+      - source:
+          kind: database
+          title: "FishProfiles: Neolamprologus brevis"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_brevis/"
+          accessed: '2026-10-13'
+        value:
+          type: omnivore
+      - source:
+          kind: database
+          title: "Fluval (2022). Species Spotlight: Brevis Shelldweller"
+          url: "https://fluvalaquatics.com/us/wp-content/uploads/2022/02/Species-Spotlight_Brevis-Shelldweller_EN.pdf"
+          accessed: '2026-10-13'
+        value:
+          type: omnivore
+      - source:
+          kind: literature
+          title: Population comparisons reveal more social interactions are correlated with larger brains in
+            the Lake Tanganyikan cichlid Neolamprologus brevis (bioRxiv preprint)
+          url: "https://doi.org/10.1101/2024.12.17.627543"
+          accessed: 2026-10-13
+        value:
+          type: invertivore
+        note: Unreviewed field account describes chiefly invertebrate feeding through plankton capture and
+          substrate picking; it uses the pooled brevis/calliurus concept.
+      - source:
+          kind: database
+          title: "Seriously Fish: Neolamprologus brevis"
+          url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+          accessed: '2026-10-13'
+        value:
+          type: invertivore
+          bloatSensitive: false
+        note: live and frozen food as the main diet
+      - source:
+          kind: database
+          title: "FishBase: Neolamprologus brevis food items table"
+          url: "https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=8966&genus=Neolamprologus&species=brevis"
+          accessed: '2026-10-13'
+        value:
+          type: invertivore
+        note: Zooplankton is the only reported prey category.
+      - source:
+          kind: database
+          title: "FishBase: Neolamprologus brevis ecology table"
+          url: "https://www.fishbase.se/Ecology/FishEcologySummary.php?StockCode=8966&GenusName=Neolamprologus&SpeciesName=brevis"
+          accessed: '2026-10-13'
+        value:
+          type: omnivore
+        note: Broad feeding-type field differs from the specific food item.
+      - source:
+          kind: literature
+          title: "Lein, E. and Jordan, A. (2021). Studying the evolution of social behaviour in one of Darwin's\
+            \ Dreamponds: a case for the Lamprologine shell-dwelling cichlids"
+          url: "https://doi.org/10.1007/s10750-020-04473-x"
+          accessed: '2026-10-13'
+        value:
+          type: invertivore
+        note: Review describes small invertebrates and zooplankton as the shell-dweller dietary basis.
+      - source:
+          kind: website
+          title: "Aquarium Dietzenbach: Neolamprologus brevis Sun Spot care sheet"
+          url: "https://www.aquarium-dietzenbach.de/descriptions_neolamprologus_brevis"
+          accessed: '2026-10-13'
+        value:
+          type: invertivore
+          bloatSensitive: false
+        note: "Crustaceans and insect larvae recommended; false sensitivity flag is an inference, not a tested\
+          \ claim."
+      - source:
+          kind: database
+          title: "Cichlid Room Companion: Neolamprologus brevis, public verification summary only"
+          url: "https://cichlidae.com/species.php?id=N1rHDE97XNdfcaudQTt28Q"
+          accessed: '2026-10-13'
+        value:
+          type: invertivore
+        note: "Verification only: public summary identifies plankton feeding."
+      - source:
+          kind: literature
+          title: "Huyghe et al. (2025). Metagenomic Insights Into the Dietary Diversity of the Adaptive Radiation\
+            \ of Cichlid Fishes in Lake Tanganyika. Molecular Ecology 34, e17743"
+          url: "https://doi.org/10.1111/mec.17743"
+          accessed: '2026-10-13'
+        value:
+          type: piscivore
+        note: "Paper clusters sampled digestive material with fish-rich diets, also with substantial copepod\
+          \ reads; classification does not establish long-term whole-fish dependence."
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  aggressionConspecific:
+    value: 2
+    confidence: medium
+    rationale: "All four runs proposed level 2. Territorial shell defense and repeated rival chasing fit that\
+      \ level when a compatible pair has adequate space and spare shells. The more severe chasing described\
+      \ for excess females or crowded male-heavy stocking concerns an unsuitable social arrangement. No source\
+      \ quantifies aquarium injury frequencies, so confidence stays medium despite agreement."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Neolamprologus brevis"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishProfiles: Neolamprologus brevis"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_brevis/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Fluval (2022). Species Spotlight: Brevis Shelldweller"
+        url: "https://fluvalaquatics.com/us/wp-content/uploads/2022/02/Species-Spotlight_Brevis-Shelldweller_EN.pdf"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Ota and colleagues (2012). Alternative Reproductive Tactics in the Shell-Brooding Lake Tanganyika
+          Cichlid Neolamprologus brevis
+        url: "https://doi.org/10.1155/2012/193235"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "my-fish Fishothek: Neolamprologus brevis"
+        url: "https://my-fish.org/my-fishothek/neolamprologus-brevis-gebanderter-schneckenbuntbarsch/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Einrichtungsbeispiele: Neolamprologus brevis species directory"
+        accessed: '2026-10-13'
+        url: "https://www.einrichtungsbeispiele.de/zierfische/tanganjikasee/neolamprologus-brevis-slnk.html"
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Neolamprologus brevis"
+          url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+          accessed: '2026-10-13'
+        value: 2
+        note: Territorial defense and advice to reduce male competition.
+      - source:
+          kind: database
+          title: "Fluval (2022). Species Spotlight: Brevis Shelldweller"
+          url: "https://fluvalaquatics.com/us/wp-content/uploads/2022/02/Species-Spotlight_Brevis-Shelldweller_EN.pdf"
+          accessed: '2026-10-13'
+        value: 2
+        note: "Small-territory squabbling, converted to the rubric."
+      - source:
+          kind: database
+          title: "my-fish Fishothek: Neolamprologus brevis"
+          url: "https://my-fish.org/my-fishothek/neolamprologus-brevis-gebanderter-schneckenbuntbarsch/"
+          accessed: '2026-10-13'
+        value: 3
+        note: Extra females may be chased by the established pair; applies to unsuitable adult stocking.
+      - source:
+          kind: literature
+          title: Ota and colleagues (2012). Alternative Reproductive Tactics in the Shell-Brooding Lake Tanganyika
+            Cichlid Neolamprologus brevis
+          url: "https://doi.org/10.1155/2012/193235"
+          accessed: '2026-10-13'
+        value: 2
+        note: "Field dashing and fin displays; the study combines brevis and calliurus, limiting direct application."
+      - source:
+          kind: database
+          title: "Einrichtungsbeispiele: Neolamprologus brevis species directory"
+          accessed: '2026-10-13'
+          url: "https://www.einrichtungsbeispiele.de/zierfische/tanganjikasee/neolamprologus-brevis-slnk.html"
+        value: 2
+        note: Conspecific disputes usually resolve without major injury; level mapped from behavior.
+  aggressionHeterospecific:
+    value: 2
+    confidence: medium
+    rationale: "Generator, checker-b and checker-c proposed level 2; checker-a proposed 1. Strong local shell\
+      \ defense includes driving intruders away, supporting the rubric chasing category rather than display\
+      \ alone. Timidity toward larger fish in FishProfiles does not eliminate territorial chasing. Suitable\
+      \ tankmates occupy other areas; habitual attacks beyond the shell territory or injuries in an adequate\
+      \ community are not established. The behavior-to-level mapping has medium confidence."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Neolamprologus brevis"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Fluval (2022). Species Spotlight: Brevis Shelldweller"
+        url: "https://fluvalaquatics.com/us/wp-content/uploads/2022/02/Species-Spotlight_Brevis-Shelldweller_EN.pdf"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Ponsen, J. Neolamprologus brevis. AquaInfo"
+        url: "https://www.aquainfo.nl/artikel/neolamprologus-brevis/"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Ota and colleagues (2012). Alternative Reproductive Tactics in the Shell-Brooding Lake Tanganyika
+          Cichlid Neolamprologus brevis
+        url: "https://doi.org/10.1155/2012/193235"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishProfiles: Neolamprologus brevis"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_brevis/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "my-fish Fishothek: Neolamprologus brevis"
+        url: "https://my-fish.org/my-fishothek/neolamprologus-brevis-gebanderter-schneckenbuntbarsch/"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Neolamprologus brevis"
+          url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+          accessed: '2026-10-13'
+        value: 2
+        note: Vigorous local shell defense.
+      - source:
+          kind: database
+          title: "Fluval (2022). Species Spotlight: Brevis Shelldweller"
+          url: "https://fluvalaquatics.com/us/wp-content/uploads/2022/02/Species-Spotlight_Brevis-Shelldweller_EN.pdf"
+          accessed: '2026-10-13'
+        value: 2
+        note: Territorial behavior despite conditional community suitability.
+      - source:
+          kind: database
+          title: "FishProfiles: Neolamprologus brevis"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_brevis/"
+          accessed: '2026-10-13'
+        value: 1
+        note: Generally timid with larger fish; compatible with small peaceful Tanganyika species.
+  territory:
+    value:
+      size: small
+      breedingOnly: false
+    confidence: high
+    rationale: The shell and its immediate surroundings are occupied as a home even outside reproduction. Seriously
+      Fish describes a territory about 15 cm across; the rubric small category comfortably covers this scale.
+    sources:
+      - kind: database
+        title: "Seriously Fish: Neolamprologus brevis"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Tanganyika.si: Neolamprologus brevis 'Kigoma', species treatment"
+        url: "https://www.tanganyika.si/Tanganjika/Neolamprologus/Neolamprologus%20brevis/slides/Neolamprologus%20brevis%20%27Kigoma%27.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Fluval (2022). Species Spotlight: Brevis Shelldweller"
+        url: "https://fluvalaquatics.com/us/wp-content/uploads/2022/02/Species-Spotlight_Brevis-Shelldweller_EN.pdf"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Population comparisons reveal more social interactions are correlated with larger brains in
+          the Lake Tanganyikan cichlid Neolamprologus brevis (bioRxiv preprint)
+        url: "https://doi.org/10.1101/2024.12.17.627543"
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Neolamprologus brevis"
+          url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+          accessed: '2026-10-13'
+        value:
+          size: small
+          breedingOnly: false
+        note: Territory diameter around 15 cm.
+      - source:
+          kind: database
+          title: "Tanganyika.si: Neolamprologus brevis 'Kigoma', species treatment"
+          url: "https://www.tanganyika.si/Tanganjika/Neolamprologus/Neolamprologus%20brevis/slides/Neolamprologus%20brevis%20%27Kigoma%27.html"
+          accessed: '2026-10-13'
+        value:
+          size: small
+          breedingOnly: false
+      - source:
+          kind: literature
+          title: Population comparisons reveal more social interactions are correlated with larger brains in
+            the Lake Tanganyikan cichlid Neolamprologus brevis (bioRxiv preprint)
+          url: "https://doi.org/10.1101/2024.12.17.627543"
+          accessed: 2026-10-13
+        value:
+          size: small
+          breedingOnly: false
+        note: Pairs at Chezi share and defend a shell.
+      - source:
+          kind: database
+          title: "Fluval (2022). Species Spotlight: Brevis Shelldweller"
+          url: "https://fluvalaquatics.com/us/wp-content/uploads/2022/02/Species-Spotlight_Brevis-Shelldweller_EN.pdf"
+          accessed: '2026-10-13'
+        value:
+          size: small
+          breedingOnly: false
+        note: Shell and immediately adjacent substrate are defended.
+  habitatZones:
+    value:
+      - sand
+      - shell
+    confidence: high
+    rationale: Sand with empty gastropod shells defines the required aquarium habitat. Some combined brevis/calliurus
+      field samples occur over rock and in midwater; that uncertain identification is insufficient to make
+      rock or openWater a required habitat for the small shell-sharing form. CRC corroborates sandy shell habitats.
+    sources:
+      - kind: database
+        title: "Tanganyika.si: Neolamprologus brevis 'Kigoma', species treatment"
+        url: "https://www.tanganyika.si/Tanganjika/Neolamprologus/Neolamprologus%20brevis/slides/Neolamprologus%20brevis%20%27Kigoma%27.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Neolamprologus brevis"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Lein, E. and Jordan, A. (2021). Studying the evolution of social behaviour in one of Darwin's\
+          \ Dreamponds: a case for the Lamprologine shell-dwelling cichlids"
+        url: "https://doi.org/10.1007/s10750-020-04473-x"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Ota and colleagues (2012). Alternative Reproductive Tactics in the Shell-Brooding Lake Tanganyika
+          Cichlid Neolamprologus brevis
+        url: "https://doi.org/10.1155/2012/193235"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Cichlid Room Companion: Neolamprologus brevis, public verification summary only"
+        url: "https://cichlidae.com/species.php?id=N1rHDE97XNdfcaudQTt28Q"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Population comparisons reveal more social interactions are correlated with larger brains in
+          the Lake Tanganyikan cichlid Neolamprologus brevis (bioRxiv preprint)
+        url: "https://doi.org/10.1101/2024.12.17.627543"
+        accessed: 2026-10-13
+      - kind: archive
+        title: cichlids.com forum thread 8515
+        url: "https://www.cichlids.com/disc/read.php?1,8515"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Aquarium Dietzenbach: Neolamprologus brevis Sun Spot care sheet"
+        url: "https://www.aquarium-dietzenbach.de/descriptions_neolamprologus_brevis"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: database
+          title: "Tanganyika.si: Neolamprologus brevis 'Kigoma', species treatment"
+          url: "https://www.tanganyika.si/Tanganjika/Neolamprologus/Neolamprologus%20brevis/slides/Neolamprologus%20brevis%20%27Kigoma%27.html"
+          accessed: '2026-10-13'
+        value:
+          - sand
+          - shell
+      - source:
+          kind: database
+          title: "Seriously Fish: Neolamprologus brevis"
+          url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+          accessed: '2026-10-13'
+        value:
+          - sand
+          - shell
+      - source:
+          kind: literature
+          title: Ota and colleagues (2012). Alternative Reproductive Tactics in the Shell-Brooding Lake Tanganyika
+            Cichlid Neolamprologus brevis
+          url: "https://doi.org/10.1155/2012/193235"
+          accessed: '2026-10-13'
+        value:
+          - rock
+          - sand
+          - openWater
+          - shell
+        note: Combined-taxonomy Wonzye population; broader than the small aquarium form.
+      - source:
+          kind: literature
+          title: Population comparisons reveal more social interactions are correlated with larger brains in
+            the Lake Tanganyikan cichlid Neolamprologus brevis (bioRxiv preprint)
+          url: "https://doi.org/10.1101/2024.12.17.627543"
+          accessed: 2026-10-13
+        value:
+          - sand
+          - shell
+        note: Chezi paired population on scattered shells over sand.
+      - source:
+          kind: archive
+          title: cichlids.com forum thread 8515
+          url: "https://www.cichlids.com/disc/read.php?1,8515"
+          accessed: '2026-10-13'
+        value:
+          - shell
+        note: Practical shell-size and cleanliness advice only.
+      - source:
+          kind: website
+          title: "Aquarium Dietzenbach: Neolamprologus brevis Sun Spot care sheet"
+          url: "https://www.aquarium-dietzenbach.de/descriptions_neolamprologus_brevis"
+          accessed: '2026-10-13'
+        value:
+          - sand
+          - shell
+      - source:
+          kind: database
+          title: "Cichlid Room Companion: Neolamprologus brevis, public verification summary only"
+          url: "https://cichlidae.com/species.php?id=N1rHDE97XNdfcaudQTt28Q"
+          accessed: '2026-10-13'
+        value:
+          - sand
+          - shell
+        note: "Verification only: public habitat summary matches the selected zones."
+  social:
+    value:
+      structure: pair
+    confidence: medium
+    rationale: "Generator, checker-b and checker-c proposed pair; checker-a proposed harem with three females\
+      \ per male. Tanganyika.si, FishProfiles and my-fish support a compatible male-female pair, often sharing\
+      \ a shell. Seriously Fish permits female-biased colonies and Practical Fishkeeping recommends three females\
+      \ per male. The 2021 review distinguishes mono-bigamous brevis outside callipterus nests from polygamous\
+      \ calliurus-like fish within them, whereas Ota 2012 pools those forms. Pair is retained as the smallest\
+      \ recommended aquarium social unit with medium confidence, not as a claim of universal lifelong monogamy.\
+      \ Additional adults require more territory."
+    sources:
+      - kind: literature
+        title: "Lein, E. and Jordan, A. (2021). Studying the evolution of social behaviour in one of Darwin's\
+          \ Dreamponds: a case for the Lamprologine shell-dwelling cichlids"
+        url: "https://doi.org/10.1007/s10750-020-04473-x"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Tanganyika.si: Neolamprologus brevis 'Kigoma', species treatment"
+        url: "https://www.tanganyika.si/Tanganjika/Neolamprologus/Neolamprologus%20brevis/slides/Neolamprologus%20brevis%20%27Kigoma%27.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishProfiles: Neolamprologus brevis"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_brevis/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Neolamprologus brevis"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Hill, N. (2017). Meet the shell dwellers. Practical Fishkeeping"
+        url: "https://www.practicalfishkeeping.co.uk/features/articles/2017/6/7/meet-the-shell-dwellers"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Ota and colleagues (2012). Alternative Reproductive Tactics in the Shell-Brooding Lake Tanganyika
+          Cichlid Neolamprologus brevis
+        url: "https://doi.org/10.1155/2012/193235"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Population comparisons reveal more social interactions are correlated with larger brains in
+          the Lake Tanganyikan cichlid Neolamprologus brevis (bioRxiv preprint)
+        url: "https://doi.org/10.1101/2024.12.17.627543"
+        accessed: 2026-10-13
+      - kind: database
+        title: "my-fish Fishothek: Neolamprologus brevis"
+        url: "https://my-fish.org/my-fishothek/neolamprologus-brevis-gebanderter-schneckenbuntbarsch/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Einrichtungsbeispiele: Neolamprologus brevis species directory"
+        accessed: '2026-10-13'
+        url: "https://www.einrichtungsbeispiele.de/zierfische/tanganjikasee/neolamprologus-brevis-slnk.html"
+      - kind: literature
+        title: "Koblmuller et al. (2007). Reticulate phylogeny of gastropod-shell-breeding cichlids from Lake\
+          \ Tanganyika: the result of repeated introgressive hybridization"
+        url: "https://doi.org/10.1186/1471-2148-7-7"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: database
+          title: "Tanganyika.si: Neolamprologus brevis 'Kigoma', species treatment"
+          url: "https://www.tanganyika.si/Tanganjika/Neolamprologus/Neolamprologus%20brevis/slides/Neolamprologus%20brevis%20%27Kigoma%27.html"
+          accessed: '2026-10-13'
+        value:
+          structure: pair
+      - source:
+          kind: database
+          title: "FishProfiles: Neolamprologus brevis"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_brevis/"
+          accessed: '2026-10-13'
+        value:
+          structure: pair
+      - source:
+          kind: database
+          title: "Seriously Fish: Neolamprologus brevis"
+          url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+          accessed: '2026-10-13'
+        value:
+          structure: harem
+        note: "Several females per male and colony keeping; an exact female ratio is not specified, although\
+          \ generator and checker-a interpreted it as 3."
+      - source:
+          kind: literature
+          title: "Hill, N. (2017). Meet the shell dwellers. Practical Fishkeeping"
+          url: "https://www.practicalfishkeeping.co.uk/features/articles/2017/6/7/meet-the-shell-dwellers"
+          accessed: '2026-10-13'
+        value:
+          structure: harem
+          ratio: 3
+      - source:
+          kind: literature
+          title: Population comparisons reveal more social interactions are correlated with larger brains in
+            the Lake Tanganyikan cichlid Neolamprologus brevis (bioRxiv preprint)
+          url: "https://doi.org/10.1101/2024.12.17.627543"
+          accessed: 2026-10-13
+        value:
+          structure: pair
+        note: Separated-shell population; dense shell-bed population differs.
+      - source:
+          kind: database
+          title: "my-fish Fishothek: Neolamprologus brevis"
+          url: "https://my-fish.org/my-fishothek/neolamprologus-brevis-gebanderter-schneckenbuntbarsch/"
+          accessed: '2026-10-13'
+        value:
+          structure: pair
+      - source:
+          kind: literature
+          title: Ota and colleagues (2012). Alternative Reproductive Tactics in the Shell-Brooding Lake Tanganyika
+            Cichlid Neolamprologus brevis
+          url: "https://doi.org/10.1155/2012/193235"
+          accessed: '2026-10-13'
+        value:
+          structure: harem
+        note: Multimale polygyny in a population treated as brevis including calliurus; no aquarium ratio supplied.
+      - source:
+          kind: database
+          title: "Einrichtungsbeispiele: Neolamprologus brevis species directory"
+          accessed: '2026-10-13'
+          url: "https://www.einrichtungsbeispiele.de/zierfische/tanganjikasee/neolamprologus-brevis-slnk.html"
+        value:
+          structure: pair
+        note: Compatible pair is the recommended unit.
+      - source:
+          kind: literature
+          title: "Lein, E. and Jordan, A. (2021). Studying the evolution of social behaviour in one of Darwin's\
+            \ Dreamponds: a case for the Lamprologine shell-dwelling cichlids"
+          url: "https://doi.org/10.1007/s10750-020-04473-x"
+          accessed: '2026-10-13'
+        value:
+          structure: pair
+        note: "Interprets field brevis as mono-bigamous, distinct from calliurus polygyny; pair is the closest\
+          \ available rubric category."
+      - source:
+          kind: literature
+          title: "Koblmuller et al. (2007). Reticulate phylogeny of gastropod-shell-breeding cichlids from\
+            \ Lake Tanganyika: the result of repeated introgressive hybridization"
+          url: "https://doi.org/10.1186/1471-2148-7-7"
+          accessed: '2026-10-13'
+        value:
+          structure: harem
+        note: "Literature table gives harem, without an aquarium female ratio."
+  speciesOnly:
+    value: false
+    confidence: high
+    rationale: Multiple care sources allow a carefully selected Tanganyika community with neighbors in different
+      habitat zones. A dedicated pair aquarium is convenient for raising fry but is not a species-wide requirement.
+    sources:
+      - kind: database
+        title: "Seriously Fish: Neolamprologus brevis"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Fluval (2022). Species Spotlight: Brevis Shelldweller"
+        url: "https://fluvalaquatics.com/us/wp-content/uploads/2022/02/Species-Spotlight_Brevis-Shelldweller_EN.pdf"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishProfiles: Neolamprologus brevis"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_brevis/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "my-fish Fishothek: Neolamprologus brevis"
+        url: "https://my-fish.org/my-fishothek/neolamprologus-brevis-gebanderter-schneckenbuntbarsch/"
+        accessed: '2026-10-13'
+      - kind: archive
+        title: cichlids.com forum thread 17295
+        url: "https://www.cichlids.com/disc/read.php?2,17295"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Neolamprologus brevis"
+          url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+          accessed: '2026-10-13'
+        value: false
+      - source:
+          kind: database
+          title: "Fluval (2022). Species Spotlight: Brevis Shelldweller"
+          url: "https://fluvalaquatics.com/us/wp-content/uploads/2022/02/Species-Spotlight_Brevis-Shelldweller_EN.pdf"
+          accessed: '2026-10-13'
+        value: false
+      - source:
+          kind: database
+          title: "FishProfiles: Neolamprologus brevis"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_brevis/"
+          accessed: '2026-10-13'
+        value: false
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  hybridGroups:
+    value:
+      - neolamprologus-brevis-altolamprologus-fasciatus
+      - neolamprologus-brevis-callipterus
+      - neolamprologus-brevis-calliurus
+    confidence: low
+    rationale: "The tally fixes three separate pairwise groups by qualified majority, 4 of 6 votes, with low\
+      \ confidence. Generator, checker-c and both tie-breakers proposed neolamprologus-brevis-calliurus, neolamprologus-brevis-callipterus\
+      \ and neolamprologus-brevis-altolamprologus-fasciatus; checker-a proposed an empty list, while checker-b\
+      \ used neolamprologus-brevis-fasciatus for the same fasciatus partner. The decided spelling follows the\
+      \ current Altolamprologus fasciatus name. Koblmuller et al. 2007 explicitly establish the very close\
+      \ brevis/calliurus relationship and found four wild hybrids near Wonzye, two with callipterus paternal\
+      \ ancestry and two with fasciatus paternal ancestry. Mothers were identified only as brevis/calliurus.\
+      \ These are real wild lineage-level hybrids but not verified named brevis crosses; the 2021 review further\
+      \ questions older brevis identifications within callipterus nests. Sturmbauer 2010 partly repeats the\
+      \ observations and shares authors, so it is not independent brevis-parent confirmation. All three groups\
+      \ therefore have presumed basis. The first is relationship-based, the others reflect credible but unresolved\
+      \ maternal possibilities. No larger group is inferred by transitivity."
+    sources:
+      - kind: literature
+        title: "Koblmuller et al. (2007). Reticulate phylogeny of gastropod-shell-breeding cichlids from Lake\
+          \ Tanganyika: the result of repeated introgressive hybridization"
+        url: "https://doi.org/10.1186/1471-2148-7-7"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Lein, E. and Jordan, A. (2021). Studying the evolution of social behaviour in one of Darwin's\
+          \ Dreamponds: a case for the Lamprologine shell-dwelling cichlids"
+        url: "https://doi.org/10.1007/s10750-020-04473-x"
+        accessed: '2026-10-13'
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: Neolamprologus, version updated 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Neolamprologus"
+        accessed: '2026-10-13'
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: Altolamprologus"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Altolamprologus"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Sturmbauer et al. (2010): Evolutionary history of the Lake Tanganyika cichlid tribe Lamprologini\
+          \ derived from mitochondrial and nuclear DNA data"
+        accessed: '2026-10-13'
+        url: "https://doi.org/10.1016/j.ympev.2010.06.018"
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: Lamprologus"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Lamprologus"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Neolamprologus brevis"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Ota and colleagues (2012). Alternative Reproductive Tactics in the Shell-Brooding Lake Tanganyika
+          Cichlid Neolamprologus brevis
+        url: "https://doi.org/10.1155/2012/193235"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: "Koblmuller et al. (2007). Reticulate phylogeny of gastropod-shell-breeding cichlids from\
+            \ Lake Tanganyika: the result of repeated introgressive hybridization"
+          url: "https://doi.org/10.1186/1471-2148-7-7"
+          accessed: '2026-10-13'
+        value:
+          - neolamprologus-brevis-altolamprologus-fasciatus
+          - neolamprologus-brevis-callipterus
+          - neolamprologus-brevis-calliurus
+        note: "Presumed rubric mapping: close relationship for calliurus, possible maternal assignments for\
+          \ the two other partners. Mothers of the four wild hybrids cannot be separated into brevis versus\
+          \ calliurus; none is a verified named brevis cross."
+      - source:
+          kind: literature
+          title: "Lein, E. and Jordan, A. (2021). Studying the evolution of social behaviour in one of Darwin's\
+            \ Dreamponds: a case for the Lamprologine shell-dwelling cichlids"
+          url: "https://doi.org/10.1007/s10750-020-04473-x"
+          accessed: '2026-10-13'
+        value:
+          - neolamprologus-brevis-calliurus
+        note: Relationship-based presumed caution only. The review questions older brevis identifications in
+          callipterus nests and does not confirm named brevis crosses with either larger paternal species.
+      - source:
+          kind: catalog-of-fishes
+          title: "Eschmeyer's Catalog of Fishes: Neolamprologus, version updated 21 September 2026"
+          url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Neolamprologus"
+          accessed: '2026-10-13'
+        value: []
+        note: "Names brevis, calliurus and callipterus as valid species; taxonomic context only, without crossing\
+          \ evidence."
+      - source:
+          kind: literature
+          title: "Sturmbauer et al. (2010): Evolutionary history of the Lake Tanganyika cichlid tribe Lamprologini\
+            \ derived from mitochondrial and nuclear DNA data"
+          accessed: '2026-10-13'
+          url: "https://doi.org/10.1016/j.ympev.2010.06.018"
+        value:
+          - neolamprologus-brevis-altolamprologus-fasciatus
+          - neolamprologus-brevis-callipterus
+          - neolamprologus-brevis-calliurus
+        note: "Phylogenetic relationship and shell-nest hybridization context; partly repeats the 2007 study\
+          \ and shares authors, without independent brevis maternal identification."
+      - source:
+          kind: catalog-of-fishes
+          title: "Eschmeyer's Catalog of Fishes: Altolamprologus"
+          url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Altolamprologus"
+          accessed: '2026-10-13'
+        value: []
+        note: Establishes the current fasciatus name only; it reports no cross.
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 4
+        total: 6
+  coloration:
+    value:
+      baseColors:
+        - brown
+        - grey
+      pattern: bars
+    confidence: medium
+    rationale: "Generator included brown, grey and blue; all three checkers used brown and grey, with bars.\
+      \ The body ground color is muted brown to grey, while blue facial reflections and locality-dependent\
+      \ yellow patches are accents. The dominant adult-male colors therefore exclude blue. Vertical flank markings\
+      \ determine bars, even though some sources describe additional cheek markings or a mixed visual pattern."
+    sources:
+      - kind: literature
+        title: "Hill, N. (2017). Meet the shell dwellers. Practical Fishkeeping"
+        url: "https://www.practicalfishkeeping.co.uk/features/articles/2017/6/7/meet-the-shell-dwellers"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Neolamprologus brevis"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Zierfische-Direkt: Gebaenderter Schneckenbuntbarsch, Neolamprologus brevis"
+        url: "https://www.zierfische-direkt.de/gebaenderter-schneckenbuntbarsch-neolamprologus-brevis/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "my-fish Fishothek: Neolamprologus brevis"
+        url: "https://my-fish.org/my-fishothek/neolamprologus-brevis-gebanderter-schneckenbuntbarsch/"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Aquarium Dietzenbach: Neolamprologus brevis Sun Spot care sheet"
+        url: "https://www.aquarium-dietzenbach.de/descriptions_neolamprologus_brevis"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Einrichtungsbeispiele: Neolamprologus brevis species directory"
+        accessed: '2026-10-13'
+        url: "https://www.einrichtungsbeispiele.de/zierfische/tanganjikasee/neolamprologus-brevis-slnk.html"
+    evidence:
+      - source:
+          kind: website
+          title: "Zierfische-Direkt: Gebaenderter Schneckenbuntbarsch, Neolamprologus brevis"
+          url: "https://www.zierfische-direkt.de/gebaenderter-schneckenbuntbarsch-neolamprologus-brevis/"
+          accessed: '2026-10-13'
+        value:
+          baseColors:
+            - brown
+            - blue
+          pattern: bars
+      - source:
+          kind: literature
+          title: "Hill, N. (2017). Meet the shell dwellers. Practical Fishkeeping"
+          url: "https://www.practicalfishkeeping.co.uk/features/articles/2017/6/7/meet-the-shell-dwellers"
+          accessed: '2026-10-13'
+        value:
+          baseColors:
+            - brown
+            - blue
+          pattern: mixed
+        note: "Beige body and localized cheek coloration, converted to broad color categories."
+      - source:
+          kind: database
+          title: "my-fish Fishothek: Neolamprologus brevis"
+          url: "https://my-fish.org/my-fishothek/neolamprologus-brevis-gebanderter-schneckenbuntbarsch/"
+          accessed: '2026-10-13'
+        value:
+          baseColors:
+            - brown
+          pattern: bars
+        note: Brown body with vertical bands; blue facial and yellow locality accents.
+      - source:
+          kind: website
+          title: "Aquarium Dietzenbach: Neolamprologus brevis Sun Spot care sheet"
+          url: "https://www.aquarium-dietzenbach.de/descriptions_neolamprologus_brevis"
+          accessed: '2026-10-13'
+        value:
+          baseColors:
+            - brown
+          pattern: bars
+        note: Beige-brown ground color with pale crossbands.
+      - source:
+          kind: database
+          title: "Einrichtungsbeispiele: Neolamprologus brevis species directory"
+          accessed: '2026-10-13'
+          url: "https://www.einrichtungsbeispiele.de/zierfische/tanganjikasee/neolamprologus-brevis-slnk.html"
+        value:
+          baseColors:
+            - silver
+            - brown
+          pattern: bars
+        note: Silvery beige to brown body and vertical bands.
+      - source:
+          kind: database
+          title: "Seriously Fish: Neolamprologus brevis"
+          url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+          accessed: '2026-10-13'
+        value:
+          pattern: bars
+        note: Vertical flank marks distinguish the species in the care account.
+  feedingSpeed:
+    value: normal
+    confidence: low
+    rationale: "All four runs proposed normal. Sources describe small suspended-prey capture and acceptance\
+      \ of live, frozen and fine prepared foods, but do not measure competition for food against aquarium neighbors.\
+      \ Low feeding-event frequencies in field studies are not a feeding-speed experiment. The category remains\
+      \ a low-confidence inference; check that both fish receive their portion."
+    sources:
+      - kind: database
+        title: "Tanganyika.si: Neolamprologus brevis 'Kigoma', species treatment"
+        url: "https://www.tanganyika.si/Tanganjika/Neolamprologus/Neolamprologus%20brevis/slides/Neolamprologus%20brevis%20%27Kigoma%27.html"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Lein, E. and Jordan, A. (2021). Studying the evolution of social behaviour in one of Darwin's\
+          \ Dreamponds: a case for the Lamprologine shell-dwelling cichlids"
+        url: "https://doi.org/10.1007/s10750-020-04473-x"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Population comparisons reveal more social interactions are correlated with larger brains in
+          the Lake Tanganyikan cichlid Neolamprologus brevis (bioRxiv preprint)
+        url: "https://doi.org/10.1101/2024.12.17.627543"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Seriously Fish: Neolamprologus brevis"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Aquarium Dietzenbach: Neolamprologus brevis Sun Spot care sheet"
+        url: "https://www.aquarium-dietzenbach.de/descriptions_neolamprologus_brevis"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase: Neolamprologus brevis species summary"
+        url: "https://www.fishbase.se/summary/Neolamprologus-brevis.html"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: database
+          title: "Tanganyika.si: Neolamprologus brevis 'Kigoma', species treatment"
+          url: "https://www.tanganyika.si/Tanganjika/Neolamprologus/Neolamprologus%20brevis/slides/Neolamprologus%20brevis%20%27Kigoma%27.html"
+          accessed: '2026-10-13'
+        value: normal
+        note: Inferred from feeding on passing zooplankton; no comparative speed measurement.
+      - source:
+          kind: literature
+          title: Population comparisons reveal more social interactions are correlated with larger brains in
+            the Lake Tanganyikan cichlid Neolamprologus brevis (bioRxiv preprint)
+          url: "https://doi.org/10.1101/2024.12.17.627543"
+          accessed: 2026-10-13
+        value: normal
+        note: Inferred rubric mapping from substrate picking and plankton snatching; competitive speed not
+          measured.
+      - source:
+          kind: database
+          title: "Seriously Fish: Neolamprologus brevis"
+          url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+          accessed: '2026-10-13'
+        value: normal
+        note: "Inference from acceptance of live, frozen and small dry foods; no comparative feeding-speed\
+          \ data."
+      - source:
+          kind: website
+          title: "Aquarium Dietzenbach: Neolamprologus brevis Sun Spot care sheet"
+          url: "https://www.aquarium-dietzenbach.de/descriptions_neolamprologus_brevis"
+          accessed: '2026-10-13'
+        value: normal
+        note: Mapped from capture of sinking foods near the shell; speed category is inferred.
+      - source:
+          kind: database
+          title: "FishBase: Neolamprologus brevis species summary"
+          url: "https://www.fishbase.se/summary/Neolamprologus-brevis.html"
+          accessed: '2026-10-13'
+        value: normal
+        note: "Plankton feeding provides context only, not a measured feeding-speed category."
+  minTank:
+    value:
+      volumeL: 60
+      lengthCm: 60
+      depthCm: 30
+    confidence: medium
+    rationale: "Generator, checker-a and checker-b proposed 60 L with a 60 by 30 cm floor; checker-c proposed\
+      \ 40 L with a 45 by 30 cm floor. Seriously Fish explicitly permits the smaller pair tank, and Fluval\
+      \ independently gives 40 L. Tanganyika.si and Dietzenbach recommend 60 L for a pair, AquaInfo about 80\
+      \ L with a 60 by 35 cm floor, and my-fish 112 L and 80 cm length. The selected 60 L and 60 by 30 cm footprint\
+      \ give additional shell spacing without importing a community-sized requirement. The 30 cm front-to-back\
+      \ dimension is supported by the published smaller base and Einrichtungsbeispiele pair example. Its page\
+      \ also lists a much broader 200 L general recommendation, distinct from its 60 by 30 by 30 cm pair example.\
+      \ Colonies and communities require more space; confidence is medium."
+    sources:
+      - kind: database
+        title: "Tanganyika.si: Neolamprologus brevis 'Kigoma', species treatment"
+        url: "https://www.tanganyika.si/Tanganjika/Neolamprologus/Neolamprologus%20brevis/slides/Neolamprologus%20brevis%20%27Kigoma%27.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Neolamprologus brevis"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Fluval (2022). Species Spotlight: Brevis Shelldweller"
+        url: "https://fluvalaquatics.com/us/wp-content/uploads/2022/02/Species-Spotlight_Brevis-Shelldweller_EN.pdf"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Zierfische-Direkt: Gebaenderter Schneckenbuntbarsch, Neolamprologus brevis"
+        url: "https://www.zierfische-direkt.de/gebaenderter-schneckenbuntbarsch-neolamprologus-brevis/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Ponsen, J. Neolamprologus brevis. AquaInfo"
+        url: "https://www.aquainfo.nl/artikel/neolamprologus-brevis/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqualog, Neolamprologus brevis"
+        url: "https://www.aqualog.de/en/lexikon/neolamprologus-brevis-2/"
+        accessed: 2026-10-13
+      - kind: website
+        title: "Aquarium Dietzenbach: Neolamprologus brevis Sun Spot care sheet"
+        url: "https://www.aquarium-dietzenbach.de/descriptions_neolamprologus_brevis"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "my-fish Fishothek: Neolamprologus brevis"
+        url: "https://my-fish.org/my-fishothek/neolamprologus-brevis-gebanderter-schneckenbuntbarsch/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "OATA: How to look after African lake cichlids"
+        accessed: '2026-10-13'
+        url: "https://ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-freshwater-fish/how-to-look-after-african-lake-cichlids/"
+      - kind: database
+        title: "Einrichtungsbeispiele: Neolamprologus brevis species directory"
+        accessed: '2026-10-13'
+        url: "https://www.einrichtungsbeispiele.de/zierfische/tanganjikasee/neolamprologus-brevis-slnk.html"
+    evidence:
+      - source:
+          kind: database
+          title: "Tanganyika.si: Neolamprologus brevis 'Kigoma', species treatment"
+          url: "https://www.tanganyika.si/Tanganjika/Neolamprologus/Neolamprologus%20brevis/slides/Neolamprologus%20brevis%20%27Kigoma%27.html"
+          accessed: '2026-10-13'
+        value:
+          volumeL: 60
+      - source:
+          kind: database
+          title: "Seriously Fish: Neolamprologus brevis"
+          url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+          accessed: '2026-10-13'
+        value:
+          volumeL: 40
+          lengthCm: 45
+          depthCm: 30
+      - source:
+          kind: database
+          title: "Fluval (2022). Species Spotlight: Brevis Shelldweller"
+          url: "https://fluvalaquatics.com/us/wp-content/uploads/2022/02/Species-Spotlight_Brevis-Shelldweller_EN.pdf"
+          accessed: '2026-10-13'
+        value:
+          volumeL: 40
+      - source:
+          kind: website
+          title: "Zierfische-Direkt: Gebaenderter Schneckenbuntbarsch, Neolamprologus brevis"
+          url: "https://www.zierfische-direkt.de/gebaenderter-schneckenbuntbarsch-neolamprologus-brevis/"
+          accessed: '2026-10-13'
+        value:
+          volumeL: 54
+          lengthCm: 60
+      - source:
+          kind: database
+          title: "Ponsen, J. Neolamprologus brevis. AquaInfo"
+          url: "https://www.aquainfo.nl/artikel/neolamprologus-brevis/"
+          accessed: '2026-10-13'
+        value:
+          volumeL: 80
+          lengthCm: 60
+          depthCm: 35
+      - source:
+          kind: website
+          title: "Aquarium Dietzenbach: Neolamprologus brevis Sun Spot care sheet"
+          url: "https://www.aquarium-dietzenbach.de/descriptions_neolamprologus_brevis"
+          accessed: '2026-10-13'
+        value:
+          volumeL: 60
+          lengthCm: 60
+        note: Pair recommendation; width not specified.
+      - source:
+          kind: database
+          title: "my-fish Fishothek: Neolamprologus brevis"
+          url: "https://my-fish.org/my-fishothek/neolamprologus-brevis-gebanderter-schneckenbuntbarsch/"
+          accessed: '2026-10-13'
+        value:
+          volumeL: 112
+          lengthCm: 80
+        note: More generous pair recommendation; width not specified.
+      - source:
+          kind: database
+          title: "OATA: How to look after African lake cichlids"
+          accessed: '2026-10-13'
+          url: "https://ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-freshwater-fish/how-to-look-after-african-lake-cichlids/"
+        value:
+          lengthCm: 45
+        note: General minimum length for a pair of the smallest shell dwellers.
+      - source:
+          kind: database
+          title: "Einrichtungsbeispiele: Neolamprologus brevis species directory"
+          accessed: '2026-10-13'
+          url: "https://www.einrichtungsbeispiele.de/zierfische/tanganjikasee/neolamprologus-brevis-slnk.html"
+        value:
+          volumeL: 54
+          lengthCm: 60
+          depthCm: 30
+        note: Volume calculated from the stated 60 x 30 x 30 cm pair tank.
+  lifespanYears:
+    value:
+      min: 5
+      max: 8
+    confidence: low
+    rationale: "Generator proposed 5 to 6 years from a retailer; checker-a estimated 3 to 5 without an external\
+      \ lifespan source; checker-b and checker-c proposed 5 to 8. Dietzenbach, my-fish and Einrichtungsbeispiele\
+      \ state about 5 to 8 years. Aquarium Tidings gives an average near 8 and possible longevity to 10, a\
+      \ wider 8 to 10 claim rather than a measured lifespan distribution. The 5 to 8 husbandry estimate is\
+      \ retained over the unsupported shorter estimate and the exceptional 10-year endpoint. Shared contributor\
+      \ material and absent longitudinal survival data keep confidence low. The generator retailer URL now\
+      \ returns a missing-page notice."
+    sources:
+      - kind: website
+        title: "Zierfische-Direkt: Gebaenderter Schneckenbuntbarsch, Neolamprologus brevis"
+        url: "https://www.zierfische-direkt.de/gebaenderter-schneckenbuntbarsch-neolamprologus-brevis/"
+        accessed: '2026-10-13'
+      - kind: model-knowledge
+        title: General knowledge of small shell-dwelling lamprologines
+      - kind: database
+        title: "my-fish Fishothek: Neolamprologus brevis"
+        url: "https://my-fish.org/my-fishothek/neolamprologus-brevis-gebanderter-schneckenbuntbarsch/"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Aquarium Dietzenbach: Neolamprologus brevis Sun Spot care sheet"
+        url: "https://www.aquarium-dietzenbach.de/descriptions_neolamprologus_brevis"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Einrichtungsbeispiele: Neolamprologus brevis species directory"
+        accessed: '2026-10-13'
+        url: "https://www.einrichtungsbeispiele.de/zierfische/tanganjikasee/neolamprologus-brevis-slnk.html"
+      - kind: website
+        title: "Brand, R. (2014). Neolamprologus brevis care, feeding and breeding. Aquarium Tidings"
+        accessed: '2026-10-13'
+        url: "https://aquariumtidings.com/neolamprologus-brevis-care/"
+    evidence:
+      - source:
+          kind: website
+          title: "Zierfische-Direkt: Gebaenderter Schneckenbuntbarsch, Neolamprologus brevis"
+          url: "https://www.zierfische-direkt.de/gebaenderter-schneckenbuntbarsch-neolamprologus-brevis/"
+          accessed: '2026-10-13'
+        value:
+          min: 5
+          max: 6
+      - source:
+          kind: database
+          title: "my-fish Fishothek: Neolamprologus brevis"
+          url: "https://my-fish.org/my-fishothek/neolamprologus-brevis-gebanderter-schneckenbuntbarsch/"
+          accessed: '2026-10-13'
+        value:
+          min: 5
+          max: 8
+      - source:
+          kind: website
+          title: "Aquarium Dietzenbach: Neolamprologus brevis Sun Spot care sheet"
+          url: "https://www.aquarium-dietzenbach.de/descriptions_neolamprologus_brevis"
+          accessed: '2026-10-13'
+        value:
+          min: 5
+          max: 8
+      - source:
+          kind: database
+          title: "Einrichtungsbeispiele: Neolamprologus brevis species directory"
+          accessed: '2026-10-13'
+          url: "https://www.einrichtungsbeispiele.de/zierfische/tanganjikasee/neolamprologus-brevis-slnk.html"
+        value:
+          min: 5
+          max: 8
+      - source:
+          kind: website
+          title: "Brand, R. (2014). Neolamprologus brevis care, feeding and breeding. Aquarium Tidings"
+          accessed: '2026-10-13'
+          url: "https://aquariumtidings.com/neolamprologus-brevis-care/"
+        value:
+          min: 8
+          max: 10
+        note: "Approximate average around eight, possible maximum ten; not a measured lifespan distribution."
+  breeding:
+    value: shell-spawner
+    confidence: high
+    rationale: "All four runs proposed shell-spawner. Aquarium accounts and field literature agree that eggs\
+      \ and early brood development are sheltered inside empty gastropod shells. Female care is consistent;\
+      \ descriptions of male participation differ among sources and taxonomic concepts. CRC uses the broader\
+      \ cave-spawning category for verification, compatible with the more specific shell-spawner value."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Neolamprologus brevis"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishProfiles: Neolamprologus brevis"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_brevis/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Tanganyika.si: Neolamprologus brevis 'Kigoma', species treatment"
+        url: "https://www.tanganyika.si/Tanganjika/Neolamprologus/Neolamprologus%20brevis/slides/Neolamprologus%20brevis%20%27Kigoma%27.html"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Lein, E. and Jordan, A. (2021). Studying the evolution of social behaviour in one of Darwin's\
+          \ Dreamponds: a case for the Lamprologine shell-dwelling cichlids"
+        url: "https://doi.org/10.1007/s10750-020-04473-x"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Cichlid Room Companion: Neolamprologus brevis, public verification summary only"
+        url: "https://cichlidae.com/species.php?id=N1rHDE97XNdfcaudQTt28Q"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Ota and colleagues (2012). Alternative Reproductive Tactics in the Shell-Brooding Lake Tanganyika
+          Cichlid Neolamprologus brevis
+        url: "https://doi.org/10.1155/2012/193235"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Population comparisons reveal more social interactions are correlated with larger brains in
+          the Lake Tanganyikan cichlid Neolamprologus brevis (bioRxiv preprint)
+        url: "https://doi.org/10.1101/2024.12.17.627543"
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Neolamprologus brevis"
+          url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+          accessed: '2026-10-13'
+        value: shell-spawner
+      - source:
+          kind: database
+          title: "FishProfiles: Neolamprologus brevis"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_brevis/"
+          accessed: '2026-10-13'
+        value: shell-spawner
+      - source:
+          kind: database
+          title: "Tanganyika.si: Neolamprologus brevis 'Kigoma', species treatment"
+          url: "https://www.tanganyika.si/Tanganjika/Neolamprologus/Neolamprologus%20brevis/slides/Neolamprologus%20brevis%20%27Kigoma%27.html"
+          accessed: '2026-10-13'
+        value: shell-spawner
+      - source:
+          kind: literature
+          title: Population comparisons reveal more social interactions are correlated with larger brains in
+            the Lake Tanganyikan cichlid Neolamprologus brevis (bioRxiv preprint)
+          url: "https://doi.org/10.1101/2024.12.17.627543"
+          accessed: 2026-10-13
+        value: shell-spawner
+      - source:
+          kind: literature
+          title: Ota and colleagues (2012). Alternative Reproductive Tactics in the Shell-Brooding Lake Tanganyika
+            Cichlid Neolamprologus brevis
+          url: "https://doi.org/10.1155/2012/193235"
+          accessed: '2026-10-13'
+        value: shell-spawner
+        note: Field reproductive study uses the broader brevis/calliurus taxonomic concept.
+      - source:
+          kind: literature
+          title: "Lein, E. and Jordan, A. (2021). Studying the evolution of social behaviour in one of Darwin's\
+            \ Dreamponds: a case for the Lamprologine shell-dwelling cichlids"
+          url: "https://doi.org/10.1007/s10750-020-04473-x"
+          accessed: '2026-10-13'
+        value: shell-spawner
+      - source:
+          kind: database
+          title: "Cichlid Room Companion: Neolamprologus brevis, public verification summary only"
+          url: "https://cichlidae.com/species.php?id=N1rHDE97XNdfcaudQTt28Q"
+          accessed: '2026-10-13'
+        value: cave-spawner
+        note: "Verification only: broader substrate-cave category compatible with shell spawning."
+  beginnerSuitability:
+    value: easy
+    confidence: high
+    rationale: "All four runs proposed easy. FishProfiles, Fluval and my-fish independently support beginner\
+      \ care under suitable conditions; CRC corroborates it. Dietzenbach places difficulty between easy and\
+      \ moderate, particularly relevant where water preparation is unfamiliar. The recommendation assumes a\
+      \ mature aquarium, a compatible pair, suitable shells and stable alkaline water rather than an unprepared\
+      \ general community."
+    sources:
+      - kind: database
+        title: "FishProfiles: Neolamprologus brevis"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_brevis/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Fluval (2022). Species Spotlight: Brevis Shelldweller"
+        url: "https://fluvalaquatics.com/us/wp-content/uploads/2022/02/Species-Spotlight_Brevis-Shelldweller_EN.pdf"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Zierfische-Direkt: Gebaenderter Schneckenbuntbarsch, Neolamprologus brevis"
+        url: "https://www.zierfische-direkt.de/gebaenderter-schneckenbuntbarsch-neolamprologus-brevis/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Cichlid Room Companion: Neolamprologus brevis, public verification summary only"
+        url: "https://cichlidae.com/species.php?id=N1rHDE97XNdfcaudQTt28Q"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Neolamprologus brevis"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "my-fish Fishothek: Neolamprologus brevis"
+        url: "https://my-fish.org/my-fishothek/neolamprologus-brevis-gebanderter-schneckenbuntbarsch/"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Aquarium Dietzenbach: Neolamprologus brevis Sun Spot care sheet"
+        url: "https://www.aquarium-dietzenbach.de/descriptions_neolamprologus_brevis"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: database
+          title: "FishProfiles: Neolamprologus brevis"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_brevis/"
+          accessed: '2026-10-13'
+        value: easy
+      - source:
+          kind: database
+          title: "Fluval (2022). Species Spotlight: Brevis Shelldweller"
+          url: "https://fluvalaquatics.com/us/wp-content/uploads/2022/02/Species-Spotlight_Brevis-Shelldweller_EN.pdf"
+          accessed: '2026-10-13'
+        value: easy
+      - source:
+          kind: website
+          title: "Zierfische-Direkt: Gebaenderter Schneckenbuntbarsch, Neolamprologus brevis"
+          url: "https://www.zierfische-direkt.de/gebaenderter-schneckenbuntbarsch-neolamprologus-brevis/"
+          accessed: '2026-10-13'
+        value: easy
+      - source:
+          kind: database
+          title: "Seriously Fish: Neolamprologus brevis"
+          url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+          accessed: '2026-10-13'
+        value: easy
+      - source:
+          kind: database
+          title: "my-fish Fishothek: Neolamprologus brevis"
+          url: "https://my-fish.org/my-fishothek/neolamprologus-brevis-gebanderter-schneckenbuntbarsch/"
+          accessed: '2026-10-13'
+        value: easy
+        note: Suitable for beginners who can maintain stable water conditions.
+      - source:
+          kind: website
+          title: "Aquarium Dietzenbach: Neolamprologus brevis Sun Spot care sheet"
+          url: "https://www.aquarium-dietzenbach.de/descriptions_neolamprologus_brevis"
+          accessed: '2026-10-13'
+        value: moderate
+        note: Care sheet places difficulty between easy and moderate.
+      - source:
+          kind: database
+          title: "Cichlid Room Companion: Neolamprologus brevis, public verification summary only"
+          url: "https://cichlidae.com/species.php?id=N1rHDE97XNdfcaudQTt28Q"
+          accessed: '2026-10-13'
+        value: easy
+        note: "Verification only: public aquarium summary agrees."
+partners:
+  suitable:
+    - species: Cyprichromis leptosoma
+      reason: "Uses the upper water column, reducing competition for shell sites. Seriously Fish specifically\
+        \ allows Cyprichromis companions."
+      condition: A larger Tanganyika community aquarium sized for a full Cyprichromis group; never the 60 L
+        pair minimum.
+    - species: Paracyprichromis nigripinnis
+      reason: "A plausible small plankton-feeding neighbor above the shell territory; this is a habitat-based\
+        \ recommendation, not a verified brevis-specific pairing trial."
+      condition: A spacious community with its own shaded rock zone and a suitable social group; check feeding
+        access for both species.
+    - species: Julidochromis transcriptus
+      reason: A small rock-associated julie can occupy a separate habitat zone; Seriously Fish allows smaller
+        Julidochromis and Practical Fishkeeping stresses spatial separation.
+      condition: "An established pair in a larger community, with rock and shell territories well apart; remove\
+        \ an aggressive individual."
+  unsuitable:
+    - species: Cyphotilapia frontosa
+      reason: "Its large predatory mouth creates an avoidable risk to tiny shell dwellers, despite occasional\
+        \ archive reports of apparent coexistence."
+    - species: Neolamprologus leleupi
+      reason: "Bottom-territory overlap and stronger attacks can displace brevis from its shells, particularly\
+        \ in small aquariums."
+    - species: Neolamprologus calliurus
+      reason: "Very similar disputed taxon, competing for the same shelters, with a presumed crossing risk\
+        \ and difficulty preserving correctly identified stock."
+    - species: Altolamprologus fasciatus
+      reason: "A larger predatory tankmate; genetically supported wild crosses involve the unresolved brevis/calliurus\
+        \ maternal lineage, so the brevis-specific hybrid risk is presumed."
+    - species: Lamprologus ocellatus
+      reason: Competes for the same shell sites; its stronger shell defense makes sharing a small sandy footprint
+        unreliable.
+    - species: Neolamprologus callipterus
+      reason: "A very different-sized shell-nest builder competes over shell habitat; reported wild hybrids\
+        \ have unresolved brevis/calliurus mothers, giving a weak presumed crossing risk."
+profile:
+  overview:
+    text: "Neolamprologus brevis is a small Lake Tanganyika cichlid whose daily activity centers on an empty\
+      \ snail shell. A compatible male and female may share one shelter and feed just above it. Brown-grey\
+      \ coloration, pale flank bars and localized blue reflections are most evident at close range. The Catalog\
+      \ of Fishes retains this name despite continuing Lamprologus usage and disagreement over the boundary\
+      \ with calliurus. Sunspot is an aquarium color label; Katabe, Sambia and Kigoma identify geographical\
+      \ forms or trade origins rather than additional species."
+    sources:
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: Neolamprologus, version updated 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Neolamprologus"
+        accessed: '2026-10-13'
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: Lamprologus"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Lamprologus"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Tanganyika.si: Neolamprologus brevis 'Kigoma', species treatment"
+        url: "https://www.tanganyika.si/Tanganjika/Neolamprologus/Neolamprologus%20brevis/slides/Neolamprologus%20brevis%20%27Kigoma%27.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Neolamprologus brevis"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Lein, E. and Jordan, A. (2021). Studying the evolution of social behaviour in one of Darwin's\
+          \ Dreamponds: a case for the Lamprologine shell-dwelling cichlids"
+        url: "https://doi.org/10.1007/s10750-020-04473-x"
+        accessed: '2026-10-13'
+  habitat:
+    text: "Sandy or muddy lake bottoms with scattered empty snail shells provide shelter and spawning sites.\
+      \ Required aquarium zones are sand and shells; rocky shell-nest observations in studies combining brevis\
+      \ with calliurus do not make rock obligatory here. Lake water is alkaline and strongly buffered, with\
+      \ magnesium contributing much of its general hardness. Seasonal lake extremes are exposures rather than\
+      \ routine aquarium targets."
+    sources:
+      - kind: database
+        title: "Tanganyika.si: Neolamprologus brevis 'Kigoma', species treatment"
+        url: "https://www.tanganyika.si/Tanganjika/Neolamprologus/Neolamprologus%20brevis/slides/Neolamprologus%20brevis%20%27Kigoma%27.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Neolamprologus brevis"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Lein, E. and Jordan, A. (2021). Studying the evolution of social behaviour in one of Darwin's\
+          \ Dreamponds: a case for the Lamprologine shell-dwelling cichlids"
+        url: "https://doi.org/10.1007/s10750-020-04473-x"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Plisnier et al. (1999). Limnological annual cycle inferred from physical-chemical fluctuations
+          at three stations of Lake Tanganyika
+        url: "https://doi.org/10.1023/A:1003762119873"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. PhD thesis, Wageningen University"
+        url: "https://doi.org/10.18174/121977"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Branchu, P. and Bergonzini, L. (2004). Chloride concentrations in Lake Tanganyika: an indicator\
+          \ of the hydrological budget?"
+        url: "https://doi.org/10.5194/hess-8-256-2004"
+        accessed: '2026-10-13'
+  sizeAndGrowth:
+    text: "Plan for usual adult maxima around 6 cm in males and 4 cm in females. Some sources give smaller\
+      \ males or use standard length rather than total length, so apparent precision is misleading. Choose\
+      \ shells that accommodate grown fish and provide spare refuges. Shell access and consistent feeding of\
+      \ both fish matter more than achieving an exact growth schedule. Husbandry references estimate around\
+      \ 5 to 8 years of life, with no robust survival series confirming the full range."
+    sources:
+      - kind: literature
+        title: "Hill, N. (2017). Meet the shell dwellers. Practical Fishkeeping"
+        url: "https://www.practicalfishkeeping.co.uk/features/articles/2017/6/7/meet-the-shell-dwellers"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Tanganyika.si: Neolamprologus brevis 'Kigoma', species treatment"
+        url: "https://www.tanganyika.si/Tanganjika/Neolamprologus/Neolamprologus%20brevis/slides/Neolamprologus%20brevis%20%27Kigoma%27.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase: Neolamprologus brevis species summary"
+        url: "https://www.fishbase.se/summary/Neolamprologus-brevis.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "my-fish Fishothek: Neolamprologus brevis"
+        url: "https://my-fish.org/my-fishothek/neolamprologus-brevis-gebanderter-schneckenbuntbarsch/"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Aquarium Dietzenbach: Neolamprologus brevis Sun Spot care sheet"
+        url: "https://www.aquarium-dietzenbach.de/descriptions_neolamprologus_brevis"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Einrichtungsbeispiele: Neolamprologus brevis species directory"
+        accessed: '2026-10-13'
+        url: "https://www.einrichtungsbeispiele.de/zierfische/tanganjikasee/neolamprologus-brevis-slnk.html"
+  husbandry:
+    text: "For one established pair, provide at least 60 L and a 60 by 30 cm floor. Use a deep layer of fine\
+      \ sand and several clean shells with suitable openings. Install any heavy decorations securely and maintain\
+      \ a mature biological filter, surface movement and regular water changes with matched replacement water.\
+      \ Around 25 to 26 C is a sensible routine target. Measure GH and KH separately; the wider tolerance endpoints\
+      \ have limited long-term evidence."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Neolamprologus brevis"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Fluval (2022). Species Spotlight: Brevis Shelldweller"
+        url: "https://fluvalaquatics.com/us/wp-content/uploads/2022/02/Species-Spotlight_Brevis-Shelldweller_EN.pdf"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Tanganyika.si: Neolamprologus brevis 'Kigoma', species treatment"
+        url: "https://www.tanganyika.si/Tanganjika/Neolamprologus/Neolamprologus%20brevis/slides/Neolamprologus%20brevis%20%27Kigoma%27.html"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Hill, N. (2017). Meet the shell dwellers. Practical Fishkeeping"
+        url: "https://www.practicalfishkeeping.co.uk/features/articles/2017/6/7/meet-the-shell-dwellers"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "my-fish Fishothek: Neolamprologus brevis"
+        url: "https://my-fish.org/my-fishothek/neolamprologus-brevis-gebanderter-schneckenbuntbarsch/"
+        accessed: '2026-10-13'
+  socialBehavior:
+    text: "Start with a compatible male-female pair and enough alternatives to the occupied shell. The pair\
+      \ defends a small area even between broods, and nearby adults can be chased. Persistent exclusion from\
+      \ shelter or feeding calls for a change in the arrangement. Female-biased colonies are described in other\
+      \ husbandry accounts, but additional adults require more space and population differences complicate\
+      \ a single universal mating-system description."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Neolamprologus brevis"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishProfiles: Neolamprologus brevis"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_brevis/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Tanganyika.si: Neolamprologus brevis 'Kigoma', species treatment"
+        url: "https://www.tanganyika.si/Tanganjika/Neolamprologus/Neolamprologus%20brevis/slides/Neolamprologus%20brevis%20%27Kigoma%27.html"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Lein, E. and Jordan, A. (2021). Studying the evolution of social behaviour in one of Darwin's\
+          \ Dreamponds: a case for the Lamprologine shell-dwelling cichlids"
+        url: "https://doi.org/10.1007/s10750-020-04473-x"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Population comparisons reveal more social interactions are correlated with larger brains in
+          the Lake Tanganyikan cichlid Neolamprologus brevis (bioRxiv preprint)
+        url: "https://doi.org/10.1101/2024.12.17.627543"
+        accessed: 2026-10-13
+  diet:
+    text: "Offer small animal foods such as Cyclops, Daphnia and Artemia, with fine sinking pellets for variety.\
+      \ Deliver modest portions where each fish can feed near its refuge and remove uneaten food. Natural-history\
+      \ sources chiefly describe invertebrate feeding; a recent metagenomic study found substantial fish material\
+      \ but could not identify its life stage or show a lasting dependence on whole fish. No special high-protein\
+      \ bloat tendency is established."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Neolamprologus brevis"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Tanganyika.si: Neolamprologus brevis 'Kigoma', species treatment"
+        url: "https://www.tanganyika.si/Tanganjika/Neolamprologus/Neolamprologus%20brevis/slides/Neolamprologus%20brevis%20%27Kigoma%27.html"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Hill, N. (2017). Meet the shell dwellers. Practical Fishkeeping"
+        url: "https://www.practicalfishkeeping.co.uk/features/articles/2017/6/7/meet-the-shell-dwellers"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase: Neolamprologus brevis species summary"
+        url: "https://www.fishbase.se/summary/Neolamprologus-brevis.html"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Huyghe et al. (2025). Metagenomic Insights Into the Dietary Diversity of the Adaptive Radiation\
+          \ of Cichlid Fishes in Lake Tanganyika. Molecular Ecology 34, e17743"
+        url: "https://doi.org/10.1111/mec.17743"
+        accessed: '2026-10-13'
+  breeding:
+    text: "Eggs and early brood development occur within a shell, with the female providing the most consistently\
+      \ reported care. Male attendance varies. Free-swimming young remain near shelter at first and need very\
+      \ small foods such as newly hatched Artemia. Other colony members or tankmates may take fry even when\
+      \ they leave adults alone. A separate rearing arrangement can improve survival without making species-only\
+      \ adult keeping essential."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Neolamprologus brevis"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishProfiles: Neolamprologus brevis"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_brevis/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Tanganyika.si: Neolamprologus brevis 'Kigoma', species treatment"
+        url: "https://www.tanganyika.si/Tanganjika/Neolamprologus/Neolamprologus%20brevis/slides/Neolamprologus%20brevis%20%27Kigoma%27.html"
+        accessed: '2026-10-13'
+  sexing:
+    text: "Compare mature fish of similar age: males are generally larger and may have heavier heads or longer\
+      \ fin extensions. Some populations show yellowish female bellies. Color alone is unreliable across forms,\
+      \ and juveniles are difficult to distinguish. Both sexes use shells, so shelter occupation by itself\
+      \ cannot identify a female. An established pair with known breeding history is easier to assess than\
+      \ two selected juveniles."
+    sources:
+      - kind: database
+        title: "FishProfiles: Neolamprologus brevis"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_brevis/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Tanganyika.si: Neolamprologus brevis 'Kigoma', species treatment"
+        url: "https://www.tanganyika.si/Tanganjika/Neolamprologus/Neolamprologus%20brevis/slides/Neolamprologus%20brevis%20%27Kigoma%27.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "my-fish Fishothek: Neolamprologus brevis"
+        url: "https://my-fish.org/my-fishothek/neolamprologus-brevis-gebanderter-schneckenbuntbarsch/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Neolamprologus brevis"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+        accessed: '2026-10-13'
+  compatibility:
+    text: "A larger Tanganyika aquarium can house brevis with suitable small fish occupying other zones, such\
+      \ as a Cyprichromis group or small Julidochromis with separate rock territory. The minimum pair tank\
+      \ is not a community allowance. Avoid large predators and forceful bottom rivals. Presumed crossing risks\
+      \ concern calliurus, callipterus and Altolamprologus fasciatus; the reported wild hybrid mothers were\
+      \ unresolved between brevis and calliurus."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Neolamprologus brevis"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Fluval (2022). Species Spotlight: Brevis Shelldweller"
+        url: "https://fluvalaquatics.com/us/wp-content/uploads/2022/02/Species-Spotlight_Brevis-Shelldweller_EN.pdf"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Hill, N. (2017). Meet the shell dwellers. Practical Fishkeeping"
+        url: "https://www.practicalfishkeeping.co.uk/features/articles/2017/6/7/meet-the-shell-dwellers"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Koblmuller et al. (2007). Reticulate phylogeny of gastropod-shell-breeding cichlids from Lake\
+          \ Tanganyika: the result of repeated introgressive hybridization"
+        url: "https://doi.org/10.1186/1471-2148-7-7"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Lein, E. and Jordan, A. (2021). Studying the evolution of social behaviour in one of Darwin's\
+          \ Dreamponds: a case for the Lamprologine shell-dwelling cichlids"
+        url: "https://doi.org/10.1007/s10750-020-04473-x"
+        accessed: '2026-10-13'
+  problems:
+    text: "Insufficient usable shells, territorial overlap and competition for food can leave a fish hiding\
+      \ or losing condition. Keep track of both individuals rather than assuming shell sharing guarantees compatibility.\
+      \ Abrupt water changes and accumulated uneaten food also cause trouble. Repeated chasing, damaged fins\
+      \ or persistent breathing changes warrant prompt investigation of water quality and access to refuge.\
+      \ Fry disappearance alone does not establish parental cannibalism."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Neolamprologus brevis"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-brevis/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Fluval (2022). Species Spotlight: Brevis Shelldweller"
+        url: "https://fluvalaquatics.com/us/wp-content/uploads/2022/02/Species-Spotlight_Brevis-Shelldweller_EN.pdf"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Hill, N. (2017). Meet the shell dwellers. Practical Fishkeeping"
+        url: "https://www.practicalfishkeeping.co.uk/features/articles/2017/6/7/meet-the-shell-dwellers"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Brand, R. (2014). Neolamprologus brevis care, feeding and breeding. Aquarium Tidings"
+        accessed: '2026-10-13'
+        url: "https://aquariumtidings.com/neolamprologus-brevis-care/"
+provenance:
+  runs:
+    - role: generator
+      model: gpt-6.1-sol
+      date: '2026-10-13'
+    - role: checker
+      model: gpt-6.1-sol
+      date: 2026-10-13
+    - role: checker
+      model: gpt-6.1-sol
+      date: '2026-10-13'
+    - role: checker
+      model: gpt-6.1-sol
+      date: '2026-10-13'
+    - role: checker
+      model: gpt-6.1-sol
+      date: '2026-10-13'
+    - role: checker
+      model: gpt-6.1-sol
+      date: '2026-10-13'
+    - role: adjudicator
+      model: gpt-6.1-sol
+      date: '2026-10-13'
+  disagreements:
+    - field: features.origin
+      proposals:
+        - by: generator
+          value:
+            continent: Africa
+            region: Lake Tanganyika
+            waterbody: lake-tanganyika
+        - by: checker-a
+          value:
+            continent: Africa
+            region: Lake Tanganyika
+            waterbody: lake-tanganyika
+            localities:
+              - Wonzye Point
+              - Chezi
+              - Chikonde Island
+        - by: checker-b
+          value:
+            continent: Africa
+            region: Lake Tanganyika
+            waterbody: lake-tanganyika
+        - by: checker-c
+          value:
+            continent: Africa
+            region: Lake Tanganyika
+            waterbody: lake-tanganyika
+      decision:
+        continent: Africa
+        region: Lake Tanganyika
+        waterbody: lake-tanganyika
+      rationale: "The catalog and species databases agree on a Lake Tanganyika endemic. Checker-a added Wonzye\
+        \ Point, Chezi and Chikonde Island; the field studies at these sites use varying brevis/calliurus concepts.\
+        \ The shared lake origin is retained without treating every sampled population as unambiguously identified\
+        \ brevis. The catalog places the type locality at Albertville on the Congolese shore."
+    - field: features.temperatureC.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 23
+            max: 29
+        - by: checker-a
+          value:
+            min: 22
+            max: 29
+        - by: checker-b
+          value:
+            min: 23
+            max: 29
+        - by: checker-c
+          value:
+            min: 23
+            max: 29
+      decision:
+        min: 23
+        max: 29
+      rationale: "The tally decides 23 to 29 C with unanimous verification (4 of 4 within the 1 C agreement\
+        \ threshold) and low confidence. Generator, checker-b and checker-c proposed 23 to 29 C; checker-a\
+        \ proposed 22 to 29 C. The median agreeing lower bound is 23 C. Aqualog offers the wider lower-end\
+        \ recommendation of 22 to 28 C, while Seriously Fish gives 23 to 27 C, Fluval 24 to 27 C, Practical\
+        \ Fishkeeping 23 to 26 C and FishProfiles 23 to 25 C. The 29 C upper endpoint is retained to contain\
+        \ natural exposure, not because a multi-year aquarium study validates it. Routine keeping around 25\
+        \ to 26 C has stronger husbandry support."
+    - field: features.khDkh.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 8
+            max: 20
+        - by: checker-a
+          value:
+            min: 8
+            max: 20
+        - by: checker-b
+          value:
+            min: 10
+            max: 20
+        - by: checker-c
+          value:
+            min: 8
+            max: 20
+      decision:
+        min: 8
+        max: 20
+      rationale: "The tally decides 8 to 20 dKH with unanimous verification (4 of 4 within the 2 dKH agreement\
+        \ threshold) and low confidence. Generator, checker-a and checker-c proposed 8 to 20; checker-b proposed\
+        \ 10 to 20. The median agreeing lower bound is 8. AquaInfo states 8 to 14 dKH, Dietzenbach and Einrichtungsbeispiele\
+        \ 8 to 15, my-fish 10 to 18, and the broader OATA guidance 10 to 15. The my-fish and Dietzenbach material\
+        \ may share a contributor and cannot establish independent chronic limits. Aqua-Pedia gives 10 to 20\
+        \ but discloses generated content and receives little weight. Natural lake alkalinity extends the maximum\
+        \ to 20. Checker-a derived its low endpoint without a direct KH measurement; GH cannot substitute for\
+        \ KH. The former retailer URL was unavailable during adjudication."
+    - field: features.predation
+      proposals:
+        - by: generator
+          value: 1
+        - by: checker-a
+          value: 0
+        - by: checker-b
+          value: 1
+        - by: checker-c
+          value: 1
+        - by: tiebreaker-1
+          value: 1
+        - by: tiebreaker-2
+          value: 1
+      decision: 1
+      rationale: "The tally fixes level 1 by qualified majority, 5 of 6 votes, with medium confidence. Generator,\
+        \ checker-b, checker-c and both tie-breakers proposed 1; checker-a proposed 0. Seriously Fish reports\
+        \ possible fry consumption by other adults in a colony, while Aquarium Tidings describes it as uncommon\
+        \ and Dietzenbach reports several generations coexisting without cannibalism. FishBase and field observations\
+        \ support ordinary invertebrate feeding. Huyghe et al. 2025 placed brevis in a fish-rich metagenomic\
+        \ cluster but also found substantial copepod material; DNA cannot distinguish fish eggs, juveniles,\
+        \ whole adults or scales, and covers only recent meals. It therefore does not directly establish routine\
+        \ whole-fish hunting at levels 2 or 3. Level 1 represents a plausible fry risk; consumption of fish\
+        \ approaching the rubric ceiling of 2 cm is not specifically demonstrated, and the boundary with incidental\
+        \ level 0 remains uncertain."
+    - field: features.diet
+      proposals:
+        - by: generator
+          value:
+            type: invertivore
+            bloatSensitive: false
+            foods:
+              - Cyclops
+              - Daphnia
+              - Artemia
+              - small aquatic invertebrates
+              - fine sinking pellets
+        - by: checker-a
+          value:
+            type: invertivore
+            bloatSensitive: false
+            foods:
+              - live foods
+              - frozen foods
+              - zooplankton
+              - brine shrimp nauplii
+        - by: checker-b
+          value:
+            type: invertivore
+            bloatSensitive: false
+            foods:
+              - small zooplankton
+              - Artemia
+              - Cyclops
+              - Daphnia
+              - small insect larvae
+              - small carnivore granules
+        - by: checker-c
+          value:
+            type: invertivore
+            bloatSensitive: false
+            foods:
+              - small crustaceans
+              - zooplankton
+              - Artemia
+              - Daphnia
+              - Cyclops
+              - small insect larvae
+              - fine animal-based prepared foods
+      decision:
+        type: invertivore
+        bloatSensitive: false
+        foods:
+          - Cyclops
+          - Daphnia
+          - Artemia
+          - small aquatic invertebrates
+          - fine sinking pellets
+      rationale: "The tally fixes invertivore and bloatSensitive false by unanimous agreement, 4 of 4, with\
+        \ medium confidence; the foods list is retained exactly from its decision. FishBase food items identify\
+        \ planktonic invertebrates, Tanganyika.si describes zooplankton feeding and the 2021 review supports\
+        \ small invertebrate prey. FishProfiles, Fluval and the broad FishBase ecology field instead suggest\
+        \ omnivory, without species-specific plant stomach contents. Huyghe et al. 2025 found enough fish material\
+        \ to cluster brevis with piscivores, contrary to the older dietary classification, but could not resolve\
+        \ the ingested life stage or habitual diet over time. That conflict limits confidence and does not\
+        \ alter the binding tally decision. The false bloat flag expresses the absence of a demonstrated species-specific\
+        \ high-protein sensitivity, not protection from digestive disease. CRC corroborates plankton feeding\
+        \ only."
+    - field: features.aggressionHeterospecific
+      proposals:
+        - by: generator
+          value: 2
+        - by: checker-a
+          value: 1
+        - by: checker-b
+          value: 2
+        - by: checker-c
+          value: 2
+      decision: 2
+      rationale: "Generator, checker-b and checker-c proposed level 2; checker-a proposed 1. Strong local shell\
+        \ defense includes driving intruders away, supporting the rubric chasing category rather than display\
+        \ alone. Timidity toward larger fish in FishProfiles does not eliminate territorial chasing. Suitable\
+        \ tankmates occupy other areas; habitual attacks beyond the shell territory or injuries in an adequate\
+        \ community are not established. The behavior-to-level mapping has medium confidence."
+    - field: features.social
+      proposals:
+        - by: generator
+          value:
+            structure: pair
+        - by: checker-a
+          value:
+            structure: harem
+            ratio: 3
+        - by: checker-b
+          value:
+            structure: pair
+        - by: checker-c
+          value:
+            structure: pair
+      decision:
+        structure: pair
+      rationale: "Generator, checker-b and checker-c proposed pair; checker-a proposed harem with three females\
+        \ per male. Tanganyika.si, FishProfiles and my-fish support a compatible male-female pair, often sharing\
+        \ a shell. Seriously Fish permits female-biased colonies and Practical Fishkeeping recommends three\
+        \ females per male. The 2021 review distinguishes mono-bigamous brevis outside callipterus nests from\
+        \ polygamous calliurus-like fish within them, whereas Ota 2012 pools those forms. Pair is retained\
+        \ as the smallest recommended aquarium social unit with medium confidence, not as a claim of universal\
+        \ lifelong monogamy. Additional adults require more territory."
+    - field: features.hybridGroups
+      proposals:
+        - by: generator
+          value:
+            - neolamprologus-brevis-calliurus
+            - neolamprologus-brevis-callipterus
+            - neolamprologus-brevis-altolamprologus-fasciatus
+        - by: checker-a
+          value: []
+        - by: checker-b
+          value:
+            - neolamprologus-brevis-calliurus
+            - neolamprologus-brevis-callipterus
+            - neolamprologus-brevis-fasciatus
+        - by: checker-c
+          value:
+            - neolamprologus-brevis-calliurus
+            - neolamprologus-brevis-callipterus
+            - neolamprologus-brevis-altolamprologus-fasciatus
+        - by: tiebreaker-1
+          value:
+            - neolamprologus-brevis-calliurus
+            - neolamprologus-brevis-callipterus
+            - neolamprologus-brevis-altolamprologus-fasciatus
+        - by: tiebreaker-2
+          value:
+            - neolamprologus-brevis-calliurus
+            - neolamprologus-brevis-callipterus
+            - neolamprologus-brevis-altolamprologus-fasciatus
+      decision:
+        - neolamprologus-brevis-altolamprologus-fasciatus
+        - neolamprologus-brevis-callipterus
+        - neolamprologus-brevis-calliurus
+      rationale: "The tally fixes three separate pairwise groups by qualified majority, 4 of 6 votes, with\
+        \ low confidence. Generator, checker-c and both tie-breakers proposed neolamprologus-brevis-calliurus,\
+        \ neolamprologus-brevis-callipterus and neolamprologus-brevis-altolamprologus-fasciatus; checker-a\
+        \ proposed an empty list, while checker-b used neolamprologus-brevis-fasciatus for the same fasciatus\
+        \ partner. The decided spelling follows the current Altolamprologus fasciatus name. Koblmuller et al.\
+        \ 2007 explicitly establish the very close brevis/calliurus relationship and found four wild hybrids\
+        \ near Wonzye, two with callipterus paternal ancestry and two with fasciatus paternal ancestry. Mothers\
+        \ were identified only as brevis/calliurus. These are real wild lineage-level hybrids but not verified\
+        \ named brevis crosses; the 2021 review further questions older brevis identifications within callipterus\
+        \ nests. Sturmbauer 2010 partly repeats the observations and shares authors, so it is not independent\
+        \ brevis-parent confirmation. All three groups therefore have presumed basis. The first is relationship-based,\
+        \ the others reflect credible but unresolved maternal possibilities. No larger group is inferred by\
+        \ transitivity."
+    - field: features.coloration
+      proposals:
+        - by: generator
+          value:
+            baseColors:
+              - brown
+              - grey
+              - blue
+            pattern: bars
+        - by: checker-a
+          value:
+            baseColors:
+              - brown
+              - grey
+            pattern: bars
+        - by: checker-b
+          value:
+            baseColors:
+              - brown
+              - grey
+            pattern: bars
+        - by: checker-c
+          value:
+            baseColors:
+              - brown
+              - grey
+            pattern: bars
+      decision:
+        baseColors:
+          - brown
+          - grey
+        pattern: bars
+      rationale: "Generator included brown, grey and blue; all three checkers used brown and grey, with bars.\
+        \ The body ground color is muted brown to grey, while blue facial reflections and locality-dependent\
+        \ yellow patches are accents. The dominant adult-male colors therefore exclude blue. Vertical flank\
+        \ markings determine bars, even though some sources describe additional cheek markings or a mixed visual\
+        \ pattern."
+    - field: features.minTank
+      proposals:
+        - by: generator
+          value:
+            volumeL: 60
+            lengthCm: 60
+            depthCm: 30
+        - by: checker-a
+          value:
+            volumeL: 60
+            lengthCm: 60
+            depthCm: 30
+        - by: checker-b
+          value:
+            volumeL: 60
+            lengthCm: 60
+            depthCm: 30
+        - by: checker-c
+          value:
+            volumeL: 40
+            lengthCm: 45
+            depthCm: 30
+      decision:
+        volumeL: 60
+        lengthCm: 60
+        depthCm: 30
+      rationale: "Generator, checker-a and checker-b proposed 60 L with a 60 by 30 cm floor; checker-c proposed\
+        \ 40 L with a 45 by 30 cm floor. Seriously Fish explicitly permits the smaller pair tank, and Fluval\
+        \ independently gives 40 L. Tanganyika.si and Dietzenbach recommend 60 L for a pair, AquaInfo about\
+        \ 80 L with a 60 by 35 cm floor, and my-fish 112 L and 80 cm length. The selected 60 L and 60 by 30\
+        \ cm footprint give additional shell spacing without importing a community-sized requirement. The 30\
+        \ cm front-to-back dimension is supported by the published smaller base and Einrichtungsbeispiele pair\
+        \ example. Its page also lists a much broader 200 L general recommendation, distinct from its 60 by\
+        \ 30 by 30 cm pair example. Colonies and communities require more space; confidence is medium."
+    - field: features.lifespanYears
+      proposals:
+        - by: generator
+          value:
+            min: 5
+            max: 6
+        - by: checker-a
+          value:
+            min: 3
+            max: 5
+        - by: checker-b
+          value:
+            min: 5
+            max: 8
+        - by: checker-c
+          value:
+            min: 5
+            max: 8
+      decision:
+        min: 5
+        max: 8
+      rationale: "Generator proposed 5 to 6 years from a retailer; checker-a estimated 3 to 5 without an external\
+        \ lifespan source; checker-b and checker-c proposed 5 to 8. Dietzenbach, my-fish and Einrichtungsbeispiele\
+        \ state about 5 to 8 years. Aquarium Tidings gives an average near 8 and possible longevity to 10,\
+        \ a wider 8 to 10 claim rather than a measured lifespan distribution. The 5 to 8 husbandry estimate\
+        \ is retained over the unsupported shorter estimate and the exceptional 10-year endpoint. Shared contributor\
+        \ material and absent longitudinal survival data keep confidence low. The generator retailer URL now\
+        \ returns a missing-page notice."
