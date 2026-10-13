@@ -4,8 +4,8 @@ namespace Cichlids.Domain.Entities;
 
 /// <summary>
 /// A discussion thread: the platform's own entity for both migrated forum content and, once the
-/// community section opens for writing, new discussions (ADR-0021). <see cref="LastPostAt"/> and
-/// <see cref="PostCount"/> are denormalized and recomputed from the thread's posts.
+/// community section opens for writing, new discussions (ADR-0021). LastPostAt and
+/// PostCount are denormalized and recomputed from the thread's posts.
 /// </summary>
 public class DiscussionThread
 {

@@ -22,9 +22,9 @@ public sealed record CommunityThreadListItemDto(
     ThreadStartedByDto StartedBy);
 
 /// <summary>
-/// A post's author: <see cref="Id"/>, <see cref="Username"/> and <see cref="AvatarUrl"/> are only
+/// A post's author: Id, Username and AvatarUrl are only
 /// set for a real member profile; every other post (an unlisted placeholder profile or a guest
-/// with no profile at all) carries just <see cref="DisplayName"/>.
+/// with no profile at all) carries just DisplayName.
 /// </summary>
 public sealed record CommunityPostAuthorDto(long? Id, string? Username, string DisplayName, string? AvatarUrl);
 

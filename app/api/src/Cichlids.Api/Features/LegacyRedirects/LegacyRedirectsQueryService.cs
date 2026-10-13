@@ -65,7 +65,7 @@ public sealed class LegacyRedirectsQueryService(CichlidsDbContext context)
 
     /// <summary>
     /// Resolves a member's legacy uid to its current profile id. Only profiles of kind
-    /// <see cref="ProfileKind.Member"/> are eligible: a legacy account that only produced an
+    /// ProfileKind.Member are eligible: a legacy account that only produced an
     /// unlisted placeholder profile never had a public member page to redirect to.
     /// </summary>
     public Task<long?> ResolveMemberProfileIdAsync(int legacyUid, CancellationToken cancellationToken) =>

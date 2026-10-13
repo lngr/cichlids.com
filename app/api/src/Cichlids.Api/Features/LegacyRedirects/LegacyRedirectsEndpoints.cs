@@ -8,8 +8,8 @@ namespace Cichlids.Api.Features.LegacyRedirects;
 /// Anonymous endpoints for every legacy URL pattern of the predecessor site (ADR-0021). Every
 /// response is either a permanent redirect to the pattern's current route or a 410 Gone when the
 /// pattern is well-formed but names nothing that migrated; nothing here ever renders content
-/// itself. Routes live at the site root (not under <c>/api</c>) because that is where the legacy
-/// links point, and are chosen so none of them can collide with an <c>/api/...</c> route.
+/// itself. Routes live at the site root (not under /api) because that is where the legacy
+/// links point, and are chosen so none of them can collide with an /api/... route.
 /// </summary>
 public static class LegacyRedirectsEndpoints
 {

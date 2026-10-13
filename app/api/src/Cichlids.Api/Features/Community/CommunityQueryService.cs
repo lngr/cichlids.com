@@ -130,8 +130,8 @@ public sealed class CommunityQueryService(CichlidsDbContext context, IObjectStor
     }
 
     /// <summary>
-    /// Loads the fields needed to resolve a post's author: unlike <see cref="AuthorBatchLoader"/>,
-    /// this also needs <see cref="Cichlids.Domain.Enums.ProfileKind"/> to tell a real member from
+    /// Loads the fields needed to resolve a post's author: unlike AuthorBatchLoader,
+    /// this also needs ProfileKind to tell a real member from
     /// an unlisted placeholder profile.
     /// </summary>
     private Task<Dictionary<long, ProfileAuthorRow>> LoadAuthorRowsAsync(
@@ -232,7 +232,7 @@ public sealed class CommunityQueryService(CichlidsDbContext context, IObjectStor
 
     /// <summary>
     /// A post's author resolved once, then rendered into whichever of the two shapes the caller
-    /// needs (<see cref="ThreadStartedByDto"/> or <see cref="CommunityPostAuthorDto"/>).
+    /// needs (ThreadStartedByDto or CommunityPostAuthorDto).
     /// </summary>
     private readonly record struct ResolvedAuthor(long? Id, string? Username, string DisplayName, string? AvatarUrl, bool IsMember)
     {

@@ -2,7 +2,7 @@ namespace Cichlids.Domain.Entities;
 
 /// <summary>
 /// A star rating on exactly one post or one tank, kept as its own row separate from
-/// <see cref="Comment"/> so rating and commenting can evolve independently.
+/// Comment so rating and commenting can evolve independently.
 /// </summary>
 public class Rating
 {

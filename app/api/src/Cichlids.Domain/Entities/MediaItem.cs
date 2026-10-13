@@ -4,7 +4,7 @@ namespace Cichlids.Domain.Entities;
 
 /// <summary>
 /// A stored file (photo or video): the original upload plus enough metadata to serve and
-/// re-derive renditions. Generated renditions are separate <see cref="MediaVariant"/> rows.
+/// re-derive renditions. Generated renditions are separate MediaVariant rows.
 /// </summary>
 public class MediaItem
 {

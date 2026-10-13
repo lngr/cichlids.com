@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Cichlids.Api.Features.Common;
 
 /// <summary>
-/// Loads the <see cref="AuthorRow"/> for a batch of profile ids in one query, so a page of list
+/// Loads the AuthorRow for a batch of profile ids in one query, so a page of list
 /// items can resolve every author it needs without a round trip per item.
 /// </summary>
 public static class AuthorBatchLoader
