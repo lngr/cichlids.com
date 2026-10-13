@@ -1,3 +1,4 @@
+import { ApiError } from "@cichlids/client-core";
 import { describe, expect, it } from "vitest";
 import de from "../i18n/de.json";
 import en from "../i18n/en.json";
@@ -23,6 +24,12 @@ describe("translateApiError", () => {
 
   it("translates a known API error code", () => {
     expect(translateApiError({ code: "self_rating" }, t, "common.loadError")).toBe("translated:errors.self_rating");
+  });
+
+  it("translates the code of an ApiError", () => {
+    expect(translateApiError(new ApiError("You cannot rate your own picture.", 403, "self_rating"), t, "common.loadError")).toBe(
+      "translated:errors.self_rating",
+    );
   });
 
   it("translates the fallback key for errors without a known code, never showing the raw message", () => {
