@@ -2,10 +2,9 @@
 id: TASK-2.5
 title: Fail-closed Conftest plan-diff gate
 status: In Progress
-assignee:
-  - Claude
+assignee: []
 created_date: '2026-06-03 16:01'
-updated_date: '2026-06-08 18:37'
+updated_date: '2026-10-13 08:15'
 labels:
   - infra
   - policy

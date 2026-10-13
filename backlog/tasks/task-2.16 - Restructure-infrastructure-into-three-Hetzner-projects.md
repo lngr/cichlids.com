@@ -2,10 +2,9 @@
 id: TASK-2.16
 title: Restructure infrastructure into three Hetzner projects
 status: Done
-assignee:
-  - Claude
+assignee: []
 created_date: '2026-06-08 13:14'
-updated_date: '2026-06-09 20:42'
+updated_date: '2026-10-13 08:15'
 labels:
   - infra
 milestone: m-0

@@ -2,10 +2,9 @@
 id: TASK-2.13
 title: Remote OpenTofu state backend (Hetzner Object Storage)
 status: Done
-assignee:
-  - claude
+assignee: []
 created_date: '2026-06-05 13:37'
-updated_date: '2026-06-09 19:57'
+updated_date: '2026-10-13 08:15'
 labels:
   - infra
 milestone: m-0

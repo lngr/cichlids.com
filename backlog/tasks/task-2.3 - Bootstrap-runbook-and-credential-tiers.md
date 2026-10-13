@@ -2,10 +2,9 @@
 id: TASK-2.3
 title: Bootstrap runbook and credential tiers
 status: Done
-assignee:
-  - claude
+assignee: []
 created_date: '2026-06-03 16:00'
-updated_date: '2026-06-09 20:30'
+updated_date: '2026-10-13 08:15'
 labels:
   - infra
   - docs

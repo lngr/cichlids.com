@@ -2,10 +2,9 @@
 id: TASK-2.14
 title: Refresh pinned core toolchain to current stable versions
 status: Done
-assignee:
-  - claude
+assignee: []
 created_date: '2026-06-05 20:29'
-updated_date: '2026-06-09 20:41'
+updated_date: '2026-10-13 08:15'
 labels:
   - infra
 milestone: m-0
