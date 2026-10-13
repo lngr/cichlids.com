@@ -22,7 +22,7 @@ class Bootstrap(unittest.TestCase):
             service.write_text('ExecStart=/usr/local/bin/k3s server --disable traefik\n')
             version.write_text('v1.36.5+k3s1')
             mocks = {
-                'k3s': f'cat {version}',
+                'k3s': f'echo k3s version $(cat {version})',
                 'kubectl': 'echo node Ready',
                 'systemctl': f'echo systemctl "$*" >> {log}',
                 'curl': f'''cat <<'INSTALL'
@@ -66,7 +66,7 @@ INSTALL''',
             self.assertIn('installer server true', log.read_text())
             self.assertIn('systemctl restart k3s', log.read_text())
             log.write_text('')
-            service.write_text('ExecStart=/usr/local/bin/k3s server --disable traefik\n')
+            service.write_text("ExecStart=/usr/local/bin/k3s \\\n    server \\\n    '--disable' \\\n    'traefik'\n")
             run()
             self.assertIn('installer server true', log.read_text())
             self.assertNotIn('--disable', service.read_text())
