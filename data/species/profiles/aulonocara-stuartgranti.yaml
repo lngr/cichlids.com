@@ -1,0 +1,1433 @@
+schemaVersion: 1
+id: aulonocara-stuartgranti
+legacyIds: [242, 241]
+status: described
+
+taxonomy:
+  validName: Aulonocara stuartgranti
+  genus: Aulonocara
+  species: stuartgranti
+  author: Meyer & Riehl, 1985
+  source: &cof
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes, species list of the genus Aulonocara (stuartgranti valid; hansbaenschi and steveni synonyms of A. stuartgranti after Konings 2016)"
+    url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Aulonocara
+    accessed: 2026-10-13
+  synonyms:
+    - name: Aulonocara hansbaenschi
+      note: >-
+        Meyer, Riehl & Zetzsche, 1987, described from 8 km south of Masinje on the eastern shore.
+        Treated as valid by Eccles & Trewavas (1989), Marechal (1991) and Tawil (2003); the
+        Catalog of Fishes lists it as a synonym of A. stuartgranti following Konings (2016).
+    - name: Aulonocara steveni
+      note: >-
+        Meyer, Riehl & Zetzsche, 1987, described from Kande Island. Treated as valid by Eccles &
+        Trewavas (1989), Marechal (1991) and Tawil (2003); the Catalog of Fishes lists it as a
+        synonym of A. stuartgranti following Konings (2016).
+  legacyNames:
+    - Aulonocara stuartgrandi
+    - Aulonocara steveni
+  note: >-
+    The legacy catalog held this species twice: as Aulonocara stuartgrandi, a misspelling of the
+    epithet stuartgranti, which honours the exporter Stuart M. Grant, and as Aulonocara steveni.
+    The Catalog of Fishes lists A. stuartgranti as valid (type locality Mpanga Rocks, Chilumba)
+    and, following Konings (2016), places both A. steveni (Kande Island) and A. hansbaenschi
+    (south of Masinje) in its synonymy, so fish traded under either name belong here. The species
+    is widespread and forms many regional colour populations. Some of them may prove to be
+    separate species: Seriously Fish names two isolated south-western forms, Aulonocara sp.
+    'stuartgranti maleri' and A. sp. 'stuartgranti mbenji', and the Cichlid Room Companion lists
+    the Maleri form as an undescribed species of its own. Aulonocara baenschi, A. korneliae and
+    A. hueseri were once treated as forms of A. stuartgranti and are valid species.
+
+names:
+  trade:
+    en:
+      - Flavescent peacock
+      - Grant's peacock
+      - Blue peacock
+    de:
+      - Kaiserbuntbarsch
+
+variants:
+  - name: Ngara
+    kind: locality
+    note: Northern Malawi; males blue with an orange to red flank and tail, traded as 'flametail'.
+  - name: Chilumba
+    kind: locality
+    note: Region of the type locality; males mainly blue.
+  - name: Maulana
+    kind: locality
+    note: Northern Malawi; males blue in front and yellow behind, traded as 'bi-colour 500'.
+  - name: Usisya
+    kind: locality
+    note: North-western coast of Malawi; males blue with yellowish areas.
+  - name: Chitimba Bay
+    kind: locality
+    note: Traded under the unavailable name 'Aulonocara masoni'.
+  - name: Mdoka
+    kind: locality
+  - name: Hai Reef
+    kind: locality
+  - name: Cobue
+    kind: locality
+    note: Mozambican coast.
+  - name: Mbamba Bay
+    kind: locality
+    note: Tanzanian coast.
+  - name: Maleri
+    kind: locality
+    note: >-
+      Maleri Islands; yellow males with a blue face. Often traded as A. stuartgranti 'Maleri', but
+      possibly a separate, undescribed species (A. sp. 'stuartgranti maleri').
+  - name: Albino
+    kind: color-morph
+    note: Captive-bred albino line.
+
+features:
+  origin:
+    value:
+      continent: Africa
+      region: Lake Malawi
+      waterbody: Lake Malawi
+      localities:
+        - Mpanga Rocks, Chilumba (type locality)
+        - Ngara
+        - Maulana
+        - Usisya
+        - Chitimba Bay
+        - Mdoka
+        - Chirwa Island
+        - Mbowe Island
+        - Hai Reef
+        - Ndumbi
+        - Hongi Island
+        - Mbamba Bay
+        - Cobue
+        - Metangula
+        - Chiloelo
+        - Thumbi West Island
+    confidence: high
+    rationale: >-
+      Endemic to Lake Malawi according to the Catalog of Fishes, FishBase, Seriously Fish and the
+      Cichlid Room Companion. FishBase places it along the coast from Ngara to Chizi Point, and
+      Seriously Fish lists more than twenty populations on the western and eastern shores in
+      Malawi, Tanzania and Mozambique. The localities are a selection of these populations.
+    sources:
+      - *cof
+      - &fb
+        kind: database
+        title: "FishBase species summary: Aulonocara stuartgranti"
+        url: https://www.fishbase.se/summary/Aulonocara-stuartgranti.html
+        accessed: 2026-10-13
+      - &sf
+        kind: database
+        title: "Seriously Fish: Aulonocara stuartgranti (Grant's Peacock)"
+        url: https://www.seriouslyfish.com/species/aulonocara-stuartgranti/
+        accessed: 2026-10-13
+      - &crc
+        kind: database
+        title: "Cichlid Room Companion: Aulonocara stuartgranti (public part of the species page, verification only)"
+        url: https://cichlidae.com/species.php?id=LqddSTaPxHfBuqiHIUPh-Q
+        accessed: 2026-10-13
+    evidence:
+      - source: *cof
+        value: {continent: Africa, region: Lake Malawi, localities: ["Mpanga Rocks, Chilumba"]}
+        note: type locality
+      - source: *fb
+        value: {continent: Africa, region: Lake Malawi, localities: [Ngara, Chizi Point]}
+        note: coast between Ngara and Chizi Point
+      - source: *sf
+        value: {continent: Africa, region: Lake Malawi, localities: [Ngara, Mdoka, Chilumba, Maulana, Chirwa Island, Chitimba Bay, Usisya, Hai Reef, Hongi Island, Mbamba Bay, Cobue, Metangula, Thumbi West Island]}
+        note: shortened list of the populations named
+      - source: *crc
+        value: {continent: Africa, region: Lake Malawi}
+
+  temperatureC:
+    value: {min: 21, max: 29}
+    confidence: high
+    rationale: >-
+      Lake Malawi endemic, so the natural range is the measured range of the lake. Inshore water
+      in the south-east arm cools to about 21 C in the windy season, while the upper 60 m reach
+      27 C by May (Eccles 1974); the surface layer holds 23.5 to 24 C in winter and about 28 C in
+      summer (Vollmer et al. 2005), and a 2013 campaign found 24 to 29 C (Ngochera 2018). The
+      species lives in the shallow intermediate zone inside this mixed upper layer.
+    sources: &lakesources
+      - &branchu
+        kind: literature
+        title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+        url: https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf
+        accessed: 2026-10-12
+      - &fao
+        kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+        url: https://www.fao.org/4/t0473e/T0473E05.htm
+        accessed: 2026-10-12
+      - &eccles
+        kind: literature
+        title: "Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology and Oceanography 19(5), 730-742 (abstract)."
+        url: https://doi.org/10.4319/lo.1974.19.5.0730
+        accessed: 2026-10-12
+      - &vollmer
+        kind: literature
+        title: "Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M., Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and Oceanography 50(2), 727-732."
+        url: https://www.dora.lib4ri.ch/empa/dload/empa:1253/PDF/view
+        accessed: 2026-10-12
+      - kind: literature
+        title: "Vollmer, M. K., Weiss, R. F. and Bootsma, H. A. (1999). Lake Malawi/Nyasa deep water renewal. In: Bootsma, H. A. and Hecky, R. E. (eds.), Water Quality Report, SADC/GEF Lake Malawi/Nyasa Biodiversity Conservation Project, chapter 4."
+        url: https://sites.uwm.edu/hbootsma/files/2020/11/Ch4-Lake-Internal-Mixing.pdf
+        accessed: 2026-10-12
+      - &ngochera
+        kind: literature
+        title: "Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. PhD dissertation, University of Wisconsin-Milwaukee."
+        url: https://minds.wisconsin.edu/handle/1793/91765
+        accessed: 2026-10-12
+    evidence:
+      - source: *eccles
+        value: {min: 21, max: 27}
+        note: inshore minimum in the cool season, upper 60 m by May
+      - source: *vollmer
+        value: {min: 23.5, max: 28}
+        note: winter surface layer to summer surface water
+      - source: *ngochera
+        value: {min: 24, max: 29}
+        note: 2013 campaign
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value: {min: 21, max: 29}
+      confidence: medium
+      rationale: >-
+        Husbandry sources keep the species between 22 and 29 C, each with a narrower band:
+        FishBase, Fishkeeper and FishProfiles 22 to 26 C, Aqualog 22 to 25 C, Fishipedia 23 to
+        28 C, Guidarium and The Fish Barn 24 to 28 C, Garnelio 24 to 27 C and Seriously Fish 23 to
+        29 C, which sets the upper bound. Laboratory groups lived for long periods at 25 to 27 C
+        (Schwalbe et al. 2016) and at 24 C during a month of acclimation, with a critical minimum
+        of 12.5 C far below any keeping value (Yanar et al. 2023). No husbandry source goes below
+        22 C, so the lower bound of 21 C rests on the lake, where wild fish pass the cool season;
+        it is tolerated rather than recommended, and a steady 24 to 27 C is the usual target. All
+        three votes (generator, checker-a, checker-b) proposed 21 to 29 C.
+      sources:
+        - *sf
+        - *fb
+        - &fk
+          kind: database
+          title: "Fishkeeper (Maidenhead Aquatics): Flavescent Peacock, Aulonocara stuartgranti"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/blue-peacock
+          accessed: 2026-10-13
+        - &fpedia
+          kind: database
+          title: "Fishipedia: Aulonocara stuartgranti 'Chitumba'"
+          url: https://www.fishipedia.fr/fr/poissons/aulonocara-stuartgranti-chitumba
+          accessed: 2026-10-13
+        - &aqualog
+          kind: database
+          title: "Aqualog lexicon: Aulonocara stuartgranti"
+          url: https://www.aqualog.de/en/lexikon/aulonocara-stuartgranti-2/
+          accessed: 2026-10-13
+        - &guid
+          kind: database
+          title: "Guidarium: Grant's Peacock Cichlid, Aulonocara stuartgranti"
+          url: https://guidarium.com/fishes/grants-peacock-cichlid
+          accessed: 2026-10-13
+        - &pfk
+          kind: literature
+          title: "Clarke, M. (2005). Aulonocara stuartgranti 'Ngara/Mdoka'. Practical Fishkeeping, Christmas 2005 issue."
+          url: https://www.practicalfishkeeping.co.uk/features/aulonocara-stuartgranti-ngara-mdoka/
+          accessed: 2026-10-13
+        - &schwalbe2016
+          kind: literature
+          title: "Schwalbe, M. A. B., Sevey, B. J. and Webb, J. F. (2016). Detection of artificial water flows by the lateral line system of a benthic feeding cichlid fish. Journal of Experimental Biology 219(7), 1050-1059."
+          url: https://doi.org/10.1242/jeb.136150
+          accessed: 2026-10-13
+        - &yanar
+          kind: literature
+          title: "Yanar, M., Evliyaoglu, E. and Tekelioglu, B. K. (2023). Sex differences in thermal tolerance of nine ornamental fish species from the Poecilidae, Cichlidae and Cyprinidae family. Turkish Journal of Fisheries and Aquatic Sciences 23(6)."
+          url: https://doi.org/10.4194/trjfas22738
+          accessed: 2026-10-13
+        - &ferreira
+          kind: literature
+          title: "Ferreira, A. L., Ferreira, N. S., Silva, W. S., Favero, G. C., Takata, R. and Luz, R. K. (2026). Eugenol as an anesthetic for two African cichlid species (Aulonocara nyassae and Aulonocara stuartgranti): effects on induction time, recovery time and ventilatory frequency. Anais da Academia Brasileira de Ciencias 98(3)."
+          url: https://doi.org/10.1590/0001-3765202620251061
+          accessed: 2026-10-13
+        - &fprof
+          kind: website
+          title: "FishProfiles.com: Aulonocara stuartgranti (user-submitted profile)"
+          url: https://fishprofiles.com/profiles/freshwater/Cichlids/Aulonocara_stuartgranti/
+          accessed: 2026-10-13
+        - &fishbarn
+          kind: website
+          title: "The Fish Barn (retailer): Aulonocara stuartgranti 'Usisya', product page with care data"
+          url: https://thefishbarn.co.uk/product/aulonocara-stuartgranti-usisya/
+          accessed: 2026-10-13
+        - &garnelio
+          kind: website
+          title: "Garnelio (retailer): Emperor cichlid blue, Aulonocara stuartgranti, product page with care data"
+          url: https://www.garnelio.de/en/emperor-cichlid-blue-aulonacara-stuartgranti
+          accessed: 2026-10-13
+        - &cforum
+          kind: website
+          title: "Cichlid-Forum library: The Peacocks of Lake Malawi (genus-level article)"
+          url: https://www.cichlid-forum.com/posts/3153267
+          accessed: 2026-10-13
+      evidence:
+        - source: *sf
+          value: {min: 23, max: 29}
+          note: aquarium recommendation
+        - source: *fb
+          value: {min: 22, max: 26}
+          note: environment field after an aquarium atlas, a keeping range
+        - source: *fk
+          value: {min: 22, max: 26}
+          note: aquarium recommendation
+        - source: *fpedia
+          value: {min: 23, max: 28}
+          note: aquarium recommendation
+        - source: *aqualog
+          value: {min: 22, max: 25}
+        - source: *guid
+          value: {min: 24, max: 28}
+        - source: *pfk
+          value: {min: 26, max: 26}
+          note: single recommended value
+        - source: *schwalbe2016
+          value: {min: 25, max: 27}
+          note: laboratory fish housed long-term at 26 plus or minus 1 C
+        - source: *yanar
+          value: {min: 24, max: 24}
+          note: one month of acclimation at 24 C; critical minimum 12.5 C
+        - source: *ferreira
+          value: {min: 27, max: 27.5}
+          note: juveniles held briefly in a recirculating farm system
+        - source: *fprof
+          value: {min: 22, max: 26}
+          note: user-submitted profile
+        - source: *fishbarn
+          value: {min: 24, max: 28}
+          note: retailer care data
+        - source: *garnelio
+          value: {min: 24, max: 27}
+          note: retailer care text; the summary box of the same page states 20 to 25 C
+        - source: *cforum
+          value: {min: 26, max: 28}
+          note: genus-level hobby article, breeding temperature
+      verification:
+        method: unanimous
+        votes: {agree: 3, total: 3}
+
+  ph:
+    value: {min: 7.7, max: 8.6}
+    confidence: high
+    rationale: >-
+      Lake Malawi endemic, so the natural range is the measured range of the lake. Surface pH is
+      7.7 to 8.6 in the 1960s survey of Jackson et al. compiled by FAO; profiles of the north basin
+      span 7.5 to 8.5 over the whole water column, the lowest values belonging to deep water below
+      the shallow intermediate zone this species inhabits (Branchu et al. 2010).
+    sources: *lakesources
+    evidence:
+      - source: *fao
+        value: {min: 7.7, max: 8.6}
+        note: surface water after Jackson et al. (1963)
+      - source: *branchu
+        value: {min: 7.5, max: 8.5}
+        note: whole water column of the north basin, lower values in deep water
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value: {min: 7.5, max: 8.6}
+      confidence: low
+      rationale: >-
+        Decided by the vote count with the conservative method. Generator, checker-a and
+        tiebreaker-1 proposed 7.5 to 8.6; checker-b and tiebreaker-2 proposed 7.5 to 9.0. The upper
+        limits differ by 0.4, more than the 0.3 that counts as agreement, and the larger camp holds
+        only 3 of 5 votes, so the intersection of all proposals, 7.5 to 8.6, applies; it contains
+        the natural lake range. The sources support this cautious range: nearly all care sheets
+        put the lower limit at 7.5 (Seriously Fish, Fishkeeper, Fishipedia, FishProfiles,
+        Garnelio, The Fish Barn) and the upper limit between 8.2 and 8.6 (Fishkeeper, Fishipedia,
+        Guidarium, FishProfiles and several retailers), while 9.0 rests on Seriously Fish alone,
+        which gives the same value on its other Aulonocara pages. Aqualog and a shop listing with
+        7.0 to 8.0 do not even cover the lake range. Laboratory holding at 7.6 to 7.8 for a month
+        and a two-week holding of juveniles at about 7.1 show short-term survival, not long-term
+        health. Values up to 9.0 are probably tolerated but remain unconfirmed.
+      sources:
+        - *sf
+        - *fk
+        - *fpedia
+        - *guid
+        - *aqualog
+        - *pfk
+        - *yanar
+        - *ferreira
+        - *fprof
+        - *garnelio
+        - *fishbarn
+        - &gensou
+          kind: website
+          title: "Gensou Aquascaping (retailer): Aulonocara stuartgranti peacock care, flavescent peacock"
+          url: https://gensou.sg/?p=32657
+          accessed: 2026-10-13
+        - &ecured
+          kind: website
+          title: "EcuRed: Ciclido emperador"
+          url: https://www.ecured.cu/C%C3%ADclido_emperador
+          accessed: 2026-10-13
+        - &ifish
+          kind: website
+          title: "The iFish Store (retailer): Red Peacock, Aulonocara stuartgranti"
+          url: https://theifishstore.com/collections/all/products/red-peacock
+          accessed: 2026-10-13
+        - &a21846
+          kind: archive
+          title: cichlids.com forum thread 21846
+          url: https://www.cichlids.com/disc/read.php?2,21846
+      evidence:
+        - source: *sf
+          value: {min: 7.5, max: 9.0}
+          note: aquarium recommendation; same range on its other Aulonocara pages
+        - source: *fk
+          value: {min: 7.5, max: 8.5}
+          note: aquarium recommendation
+        - source: *fpedia
+          value: {min: 7.5, max: 8.5}
+          note: aquarium recommendation
+        - source: *guid
+          value: {min: 7.8, max: 8.6}
+        - source: *aqualog
+          value: {min: 7.0, max: 8.0}
+          note: outlier at the low end
+        - source: *pfk
+          value: {min: 8.2, max: 8.2}
+          note: single recommended value
+        - source: *yanar
+          value: {min: 7.6, max: 7.8}
+          note: laboratory holding water during one month of acclimation
+        - source: *ferreira
+          value: {min: 7.1, max: 7.1}
+          note: juveniles held two weeks at about pH 7.1; short-term only
+        - source: *fprof
+          value: {min: 7.5, max: 8.2}
+          note: user-submitted profile
+        - source: *garnelio
+          value: {min: 7.5, max: 8.5}
+          note: retailer care data
+        - source: *fishbarn
+          value: {min: 7.5, max: 8.5}
+          note: retailer care data
+        - source: *gensou
+          value: {min: 7.8, max: 8.6}
+          note: retailer care guide
+        - source: *ecured
+          value: {min: 8.0, max: 8.5}
+          note: general encyclopedia, asks for a constant pH
+        - source: *ifish
+          value: {min: 7.0, max: 8.0}
+          note: shop listing, outlier
+        - source: *a21846
+          value: {min: 7.8, max: 7.8}
+          note: single keeper report of a breeding group
+      verification:
+        method: conservative
+        votes: {agree: 3, total: 5}
+
+  ghDgh:
+    value: {min: 3, max: 5}
+    confidence: high
+    rationale: >-
+      Lake Malawi endemic, so the natural range is the measured range of the lake. Calcium and
+      magnesium of the upper 50 m in the north basin give 4.2 to 4.6 dGH (Branchu et al. 2010),
+      and the 1960s titrations compiled by FAO give 3.2 to 4.9 dGH. The lake is soft water with a
+      moderate bicarbonate buffer; care sheets that call for hard water describe keeping practice,
+      not the habitat.
+    sources: *lakesources
+    evidence:
+      - source: *branchu
+        value: {min: 4.2, max: 4.6}
+        note: upper 50 m of the north basin, computed from calcium and magnesium
+      - source: *fao
+        value: {min: 3.2, max: 4.9}
+        note: 1960s titrations, computed from calcium and magnesium
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value: {min: 3, max: 25}
+      confidence: medium
+      rationale: >-
+        Care sheets agree that the species does well in moderately hard to hard water, with upper
+        limits of 15 to 30 dGH; Seriously Fish, Fishkeeper and Guidarium share 25 dGH, the value
+        most sources reach. Their lower limits of 8 to 12 dGH reflect hobby habit rather than a
+        need, since the fish live in lake water of 3 to 5 dGH, so the tolerance starts at the
+        natural range. A laboratory group stayed healthy for a month at about 17 dGH, and a forum
+        keeper bred the species at about 21 dGH. All three votes (generator, checker-a, checker-b)
+        proposed 3 to 25 dGH.
+      sources:
+        - *sf
+        - *fk
+        - *guid
+        - *fpedia
+        - *yanar
+        - *branchu
+        - *fprof
+        - *fishbarn
+        - *garnelio
+        - *a21846
+      evidence:
+        - source: *sf
+          value: {min: 10, max: 25}
+          note: aquarium recommendation
+        - source: *fk
+          value: {min: 0, max: 25}
+          note: hard water recommended, only an upper limit given
+        - source: *guid
+          value: {min: 10, max: 25}
+        - source: *fpedia
+          value: {min: 8, max: 15}
+          note: aquarium recommendation
+        - source: *yanar
+          value: {min: 16.8, max: 16.8}
+          note: 300 mg/L CaCO3 total hardness during one month of acclimation
+        - source: *branchu
+          value: {min: 4.2, max: 4.6}
+          note: natural lake water, the lower end of the tolerance
+        - source: *fprof
+          value: {min: 12, max: 20}
+          note: user-submitted profile
+        - source: *fishbarn
+          value: {min: 10, max: 20}
+          note: retailer care data
+        - source: *garnelio
+          value: {min: 9, max: 30}
+          note: retailer care data
+        - source: *a21846
+          value: {min: 21, max: 21}
+          note: one male with five females kept at about 380 ppm hardness
+      verification:
+        method: unanimous
+        votes: {agree: 3, total: 3}
+
+  khDkh:
+    value: {min: 5, max: 8}
+    confidence: high
+    rationale: >-
+      Lake Malawi endemic, so the natural range is the measured range of the lake. Alkalinity is
+      2.33 to 2.46 meq/L in the north-basin profiles of Branchu et al. (2010), which is 6.5 to 6.9
+      dKH, and 2.00 to 2.59 meq/L in the survey of Jackson et al. compiled by FAO, which is 5.6 to
+      7.3 dKH. Sodium balances part of the bicarbonate, so carbonate hardness exceeds total
+      hardness.
+    sources: *lakesources
+    evidence:
+      - source: *branchu
+        value: {min: 6.5, max: 6.9}
+        note: alkalinity 2.33 to 2.46 meq/L
+      - source: *fao
+        value: {min: 5.6, max: 7.3}
+        note: alkalinity 2.00 to 2.59 meq/L after Jackson et al. (1963)
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value: {min: 5, max: 12}
+      confidence: low
+      rationale: >-
+        Decided by the vote count with the conservative method. Generator, checker-b and
+        tiebreaker-2 proposed 5 to 15 dKH, checker-a 5 to 12 dKH and tiebreaker-1 5 to 20 dKH.
+        The upper limits lie more than 2 dKH apart and the largest camp holds only 3 of 5 votes, so
+        the intersection of all proposals, 5 to 12 dKH, applies; it contains the natural lake
+        range. Species-specific carbonate hardness figures are rare: the only ones found come from
+        retailers, 6 to 30 dKH at Garnelio and 8 to 12 dKH in a Singapore care guide, while a
+        genus-level hobby article advises at least 10 dKH and a genus-level guide gives 4 to 6 dKH,
+        which stays below the lake maximum. The species databases state only total hardness and
+        hard, alkaline water. The lower limit is the lake minimum, in which wild fish live; the
+        upper limit of 12 dKH is the cautious end of thin evidence, and higher buffering as in
+        many Malawi tanks is probably tolerated but unconfirmed.
+      sources:
+        - *branchu
+        - *fao
+        - *garnelio
+        - *gensou
+        - *cforum
+        - &aqsource
+          kind: website
+          title: "Aquarium Source: Peacock Cichlid care guide (genus Aulonocara)"
+          url: https://www.aquariumsource.com/peacock-cichlid/
+          accessed: 2026-10-13
+        - kind: model-knowledge
+          title: General hobby practice for Lake Malawi haplochromines
+      evidence:
+        - source: *branchu
+          value: {min: 6.5, max: 6.9}
+          note: natural lake water, the lower end of the tolerance
+        - source: *fao
+          value: {min: 5.6, max: 7.3}
+          note: natural lake water
+        - source: *garnelio
+          value: {min: 6, max: 30}
+          note: retailer care data
+        - source: *gensou
+          value: {min: 8, max: 12}
+          note: retailer care guide
+        - source: *cforum
+          value: {min: 10, max: 10}
+          note: genus-level hobby article, minimum recommendation only
+        - source: *aqsource
+          value: {min: 4, max: 6}
+          note: genus-level guide, below the lake maximum
+        - source:
+            kind: model-knowledge
+            title: General hobby practice for Lake Malawi haplochromines
+          value: {min: 5, max: 15}
+          note: buffered Malawi tanks in general
+      verification:
+        method: conservative
+        votes: {agree: 3, total: 5}
+
+  maxSizeCm:
+    value: {male: 13, female: 10}
+    confidence: medium
+    rationale: >-
+      FishBase gives 11.8 cm total length for males or unsexed fish, Fishkeeper and Practical
+      Fishkeeping about 12 cm, and Fishipedia an average of 12 cm with dominant males reaching
+      13 cm, the size Guidarium also gives; Seriously Fish states 13 cm standard length, which is
+      an upper value. Laboratory males measured up to 11.4 cm total length. Dominant aquarium males
+      thus reach about 13 cm. Females stay clearly smaller; laboratory females reached 9.4 cm and
+      Guidarium gives 10 cm.
+    sources:
+      - *fb
+      - *fk
+      - *fpedia
+      - *sf
+      - *guid
+      - *pfk
+      - *schwalbe2016
+      - *gensou
+    evidence:
+      - source: *fb
+        value: {male: 11.8}
+        note: maximum total length, male or unsexed
+      - source: *fk
+        value: {male: 12}
+        note: species maximum, no sex given
+      - source: *fpedia
+        value: {male: 13}
+        note: average 12 cm, dominant males 13 cm
+      - source: *sf
+        value: {male: 13}
+        note: standard length, no sex given
+      - source: *guid
+        value: {male: 13, female: 10}
+      - source: *pfk
+        value: {male: 12}
+        note: about 10 to 12 cm
+      - source: *schwalbe2016
+        value: {male: 11.4, female: 9.4}
+        note: laboratory fish, total length
+      - source: *gensou
+        value: {male: 15, female: 10}
+        note: retailer guide, males 12 to 15 cm, females 8 to 10 cm
+
+  predation:
+    value: 1
+    confidence: medium
+    rationale: >-
+      A benthic invertebrate feeder that hovers over sand and strikes at small buried prey, which
+      it detects with its widened lateral line canals (FishBase; Schwalbe et al. 2012 and 2016;
+      Seriously Fish). It has no specialisation for fish, but as a hunter of small moving animals it
+      takes fry and very small fish within reach, as the rubric describes for level 1; dwarf
+      shrimps are eaten as well. No source reports regular predation on larger fish. All three
+      votes (generator, checker-a, checker-b) proposed level 1.
+    sources:
+      - *fb
+      - &schwalbe2012
+        kind: literature
+        title: "Schwalbe, M. A. B., Bassett, D. K. and Webb, J. F. (2012). Feeding in the dark: lateral-line-mediated prey detection in the peacock cichlid Aulonocara stuartgranti. Journal of Experimental Biology 215(12), 2060-2071 (abstract)."
+        url: https://doi.org/10.1242/jeb.065920
+        accessed: 2026-10-13
+      - *schwalbe2016
+      - *sf
+      - *garnelio
+    evidence:
+      - source: *fb
+        value: 1
+        note: feeds on sand-dwelling invertebrates
+      - source: *schwalbe2012
+        value: 1
+        note: detects and eats small invertebrate prey living in sand
+      - source: *schwalbe2016
+        value: 1
+        note: feeds on benthic invertebrates in Lake Malawi
+      - source: *sf
+        value: 1
+        note: sifts sand and hunts small prey above the bottom
+      - source: *garnelio
+        value: 1
+        note: dwarf shrimps and small invertebrates are eaten
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+
+  diet:
+    value:
+      type: invertivore
+      bloatSensitive: false
+      foods:
+        - insect larvae and small crustaceans sifted from sand
+        - fine cichlid pellets and flakes
+        - frozen mysis, brine shrimp and krill
+        - bloodworm and mosquito larvae
+        - food with Spirulina or other plant matter
+    confidence: medium
+    rationale: >-
+      In the lake it takes small invertebrates from and above the sand, on which FishBase,
+      Seriously Fish and the two lateral-line studies agree. Fishkeeper calls it omnivorous because
+      it accepts plant-enriched prepared food, which describes aquarium feeding rather than the
+      natural diet. It is no aufwuchs grazer and takes a protein-rich cichlid diet, so it is not
+      flagged as bloat-sensitive; FishProfiles advises against a very high protein share, which is
+      a feeding recommendation, not a conflict with meat-eating tankmates. All three votes
+      (generator, checker-a, checker-b) proposed an invertivore without bloat sensitivity.
+    sources:
+      - *fb
+      - *schwalbe2012
+      - *schwalbe2016
+      - *sf
+      - *fk
+      - *fprof
+    evidence:
+      - source: *fb
+        value: {type: invertivore, bloatSensitive: false}
+        note: sand-dwelling invertebrates, trophic level 3.5
+      - source: *schwalbe2012
+        value: {type: invertivore, bloatSensitive: false}
+        note: invertebrate prey living in sand
+      - source: *schwalbe2016
+        value: {type: invertivore, bloatSensitive: false}
+        note: benthic invertebrates in Lake Malawi
+      - source: *sf
+        value: {type: invertivore, bloatSensitive: false}
+        note: benthic sifter; small meaty foods with some plant content in the aquarium
+      - source: *fk
+        value: {type: omnivore, bloatSensitive: false}
+        note: called omnivorous; meaty frozen foods plus some vegetables
+      - source: *fprof
+        value: {type: invertivore, bloatSensitive: true}
+        note: user-submitted profile advises against a high-protein diet
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+
+  aggressionConspecific:
+    value: 2
+    confidence: medium
+    rationale: >-
+      Males hold display sites and chase rival males and courted females; in tanks of normal size
+      a subordinate male stays pale and can be harassed badly. With one male and four or more
+      females in a large enough tank the chasing stays within a hierarchy and injuries are rare
+      (Seriously Fish, Fishkeeper, FishProfiles), which is level 2. A retailer guide reports
+      deaths of subordinate males in small tanks, which the recommended structure avoids.
+    sources:
+      - *sf
+      - *fk
+      - *fprof
+      - *gensou
+      - *cforum
+    evidence:
+      - source: *sf
+        value: 2
+        note: territorial males, one male with four to six females
+      - source: *fk
+        value: 2
+        note: too many males lead to territorial disputes and stress
+      - source: *fprof
+        value: 1
+        note: males may fight, injuries seldom result
+      - source: *gensou
+        value: 3
+        note: two males in a small tank end with the subordinate dying
+
+  aggressionHeterospecific:
+    value: 1
+    confidence: medium
+    rationale: >-
+      Seriously Fish, Fishkeeper and Practical Fishkeeping describe a relatively peaceful fish for
+      a Malawi cichlid, kept with calm haplochromines and placid mbuna. Males react to fish with a
+      similar colour pattern, which the coloration feature covers, and defend their display spot,
+      but they do not pursue other species through the tank. Guidarium rates it semi-aggressive.
+    sources:
+      - *sf
+      - *fk
+      - *pfk
+      - *guid
+      - *cforum
+      - &a23204
+        kind: archive
+        title: cichlids.com forum thread 23204
+        url: https://www.cichlids.com/disc/read.php?2,23204
+    evidence:
+      - source: *sf
+        value: 1
+        note: relatively peaceful, males target similarly coloured fish
+      - source: *fk
+        value: 1
+        note: relatively peaceful among Malawi cichlids
+      - source: *pfk
+        value: 1
+        note: not particularly aggressive
+      - source: *guid
+        value: 2
+        note: rated semi-aggressive
+      - source: *cforum
+        value: 1
+        note: mild temperament, genus-level article
+      - source: *a23204
+        value: 1
+        note: keeper describes the species as not very aggressive
+
+  territory:
+    value: {size: small, breedingOnly: false}
+    confidence: medium
+    rationale: >-
+      The dominant male holds a display and spawning site, usually a flat stone, a cave entrance or
+      a shallow pit in the sand near rocks, and defends the area around it; in the lake such
+      territories are about half a metre across (genus-level account). Seriously Fish and
+      Fishkeeper call the males territorial, and a dominant male keeps the spot as long as he
+      holds his rank, not only while spawning.
+    sources:
+      - *sf
+      - *fk
+      - *cforum
+      - *garnelio
+    evidence:
+      - source: *sf
+        value: {size: small, breedingOnly: false}
+        note: territorial males choose a spawning site
+      - source: *fk
+        value: {size: small, breedingOnly: false}
+        note: male digs a small spawning pit
+      - source: *cforum
+        value: {size: small, breedingOnly: false}
+        note: male territories about 0.5 m across, genus level
+      - source: *garnelio
+        value: {size: small, breedingOnly: true}
+        note: territorial especially when spawning
+
+  habitatZones:
+    value: [rock, sand]
+    confidence: high
+    rationale: >-
+      Lives in the intermediate zone where rocky shores give way to sand with scattered rocks
+      (Seriously Fish, Fishkeeper, the habitat line of the Cichlid Room Companion); it forages over
+      the sand and shelters or spawns among rocks and caves (FishBase).
+    sources:
+      - *sf
+      - *fk
+      - *fb
+      - *crc
+    evidence:
+      - source: *sf
+        value: [rock, sand]
+        note: intermediate zone
+      - source: *fk
+        value: [rock, sand]
+      - source: *fb
+        value: [rock, sand]
+        note: some fish hide in caves, others school over sand
+      - source: *crc
+        value: [rock, sand]
+        note: lake intermediate habitat
+
+  social:
+    value: {structure: harem, ratio: 4}
+    confidence: medium
+    rationale: >-
+      Kept as one male with several females to spread his courtship. Seriously Fish recommends one
+      male with four to six females and at least four for breeding, Fishkeeper one or two males
+      with five or more females, a retailer guide four and Fishipedia and The Fish Barn about
+      three; four females per male is the value most sources reach.
+    sources:
+      - *sf
+      - *fk
+      - *fpedia
+      - *gensou
+      - *fishbarn
+      - *cforum
+    evidence:
+      - source: *sf
+        value: {structure: harem, ratio: 4}
+        note: one male with four to six females
+      - source: *fk
+        value: {structure: harem, ratio: 5}
+        note: one or two males with five or more females
+      - source: *fpedia
+        value: {structure: harem, ratio: 3}
+      - source: *gensou
+        value: {structure: harem, ratio: 4}
+      - source: *fishbarn
+        value: {structure: harem, ratio: 3}
+      - source: *cforum
+        value: {structure: harem, ratio: 2.5}
+        note: two to three females per male, genus level
+
+  speciesOnly:
+    value: false
+    confidence: high
+    rationale: >-
+      Fishkeeper and Seriously Fish recommend the species for a Lake Malawi community with calm
+      haplochromines and easygoing mbuna such as Labidochromis caeruleus, and Practical
+      Fishkeeping keeps it with other small to medium haplochromines; only other Aulonocara, which
+      the hybrid group covers, and boisterous mbuna are to be avoided. Forum keepers report mixed
+      tanks with Labidochromis and Copadichromis. All three votes (generator, checker-a,
+      checker-b) proposed false.
+    sources:
+      - *fk
+      - *sf
+      - *pfk
+      - *fprof
+      - *fishbarn
+      - &a15785
+        kind: archive
+        title: cichlids.com forum thread 15785
+        url: https://www.cichlids.com/disc/read.php?2,15785
+      - &a14959
+        kind: archive
+        title: cichlids.com forum thread 14959
+        url: https://www.cichlids.com/disc/read.php?2,14959
+    evidence:
+      - source: *fk
+        value: false
+        note: suited to a Malawi cichlid community
+      - source: *sf
+        value: false
+        note: relatively peaceful; tankmates chosen with care
+      - source: *pfk
+        value: false
+        note: can be kept with other small to medium haplochromines
+      - source: *fprof
+        value: false
+      - source: *fishbarn
+        value: false
+      - source: *a15785
+        value: false
+        note: mixed tank with Labidochromis and Copadichromis
+      - source: *a14959
+        value: false
+        note: mixed tank with other haplochromines
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+
+  hybridGroup:
+    value: aulonocara
+    confidence: high
+    rationale: >-
+      Seriously Fish advises against other Aulonocara because most of them can hybridise, and
+      Fishkeeper wants it as the only peacock species in a tank for the same reason. Peacock
+      females of different species and populations look alike, so crosses happen easily and many
+      trade lines are already mixed. The curated group aulonocara lists this species. All three
+      votes (generator, checker-a, checker-b) proposed this group.
+    sources:
+      - *sf
+      - *fk
+      - *fishbarn
+      - *cforum
+      - &a36544
+        kind: archive
+        title: cichlids.com forum thread 36544
+        url: https://www.cichlids.com/disc/read.php?2,36544
+    evidence:
+      - source: *sf
+        value: aulonocara
+        note: most Aulonocara can hybridise
+      - source: *fk
+        value: aulonocara
+        note: keep as the only peacock species to avoid hybrids
+      - source: *fishbarn
+        value: aulonocara
+        note: avoid other Aulonocara to prevent hybridisation
+      - source: *cforum
+        value: aulonocara
+        note: crosses among peacocks, genus level
+      - source: *a36544
+        value: aulonocara
+        note: keeper notes many hybrids among traded peacocks
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+
+  coloration:
+    value:
+      baseColors: [blue, yellow, orange]
+      pattern: bars
+    confidence: medium
+    rationale: >-
+      Males are metallic blue in most northern populations and yellow in many southern ones, with
+      yellow to orange areas on flanks and fins; the Ngara form carries an orange to red flank and
+      tail (Seriously Fish, Fishkeeper, Practical Fishkeeping). Dark vertical bars show depending on
+      mood and are distinct in females and juveniles, which are grey-brown.
+    sources:
+      - *sf
+      - *fk
+      - *pfk
+      - *fprof
+    evidence:
+      - source: *sf
+        value: {baseColors: [blue, yellow, orange], pattern: bars}
+        note: blue forms in the north, yellow forms in the south, orange-red flank in the Ngara form
+      - source: *fk
+        value: {baseColors: [blue, yellow], pattern: plain}
+        note: bluer forms in the north, yellower forms in the south
+      - source: *pfk
+        value: {baseColors: [blue, yellow], pattern: bars}
+        note: metallic blue male with yellow on tail and pelvic fins and mood-dependent bars
+      - source: *fprof
+        value: {baseColors: [blue, black], pattern: bars}
+
+  feedingSpeed:
+    value: normal
+    confidence: low
+    rationale: >-
+      Peacocks search for food deliberately over the substrate and lose out to boisterous mbuna,
+      which is why Seriously Fish advises against most mbuna and recommends several small meals;
+      they take prepared food readily and get their share among calm haplochromines. No source
+      rates the feeding speed directly.
+    sources:
+      - *sf
+      - *pfk
+      - *cforum
+    evidence:
+      - source: *sf
+        value: normal
+        note: several small meals; mbuna too boisterous
+      - source: *pfk
+        value: normal
+        note: flakes and frozen foods are taken readily
+      - source: *cforum
+        value: normal
+        note: mild feeders compared with mbuna, genus level
+
+  minTank:
+    value: {volumeL: 240, lengthCm: 120, depthCm: 45}
+    confidence: medium
+    rationale: >-
+      Seriously Fish recommends a base of 120 by 45 cm (about 243 litres), Fishkeeper and
+      Guidarium a length of 120 cm and a retailer guide 250 litres for one male with four females;
+      Fishipedia and Garnelio ask for 300 litres. Practical Fishkeeping considers 90 cm possible for
+      a small group, which is below the other recommendations. A tank of 240 litres with a base of
+      120 by 45 cm suits one male with four females.
+    sources:
+      - *sf
+      - *fk
+      - *guid
+      - *fpedia
+      - *pfk
+      - *gensou
+      - *garnelio
+    evidence:
+      - source: *sf
+        value: {volumeL: 243, lengthCm: 120, depthCm: 45}
+      - source: *fk
+        value: {lengthCm: 120}
+        note: at least 4 ft long, volume not given
+      - source: *guid
+        value: {volumeL: 208, lengthCm: 120}
+      - source: *fpedia
+        value: {volumeL: 300}
+      - source: *pfk
+        value: {volumeL: 150, lengthCm: 90}
+        note: small group in a species tank
+      - source: *gensou
+        value: {volumeL: 250}
+        note: one male with four females
+      - source: *garnelio
+        value: {volumeL: 300, lengthCm: 140, depthCm: 50}
+
+  lifespanYears:
+    value: {min: 6, max: 10}
+    confidence: low
+    rationale: >-
+      Fishipedia gives about 7 years, and two retailer sheets differ widely with 4 to 6 years
+      (Garnelio) and 8 to 10 years (The Fish Barn). A range of 6 to 10 years spans most of these
+      figures and matches the usual life of haplochromines of this size; it rests partly on general
+      knowledge.
+    sources:
+      - *fpedia
+      - *garnelio
+      - *fishbarn
+      - kind: model-knowledge
+        title: General hobby practice for Lake Malawi haplochromines
+    evidence:
+      - source: *fpedia
+        value: {min: 7, max: 7}
+      - source: *garnelio
+        value: {min: 4, max: 6}
+        note: retailer care data
+      - source: *fishbarn
+        value: {min: 8, max: 10}
+        note: retailer care data
+
+  breeding:
+    value: maternal-mouthbrooder
+    confidence: high
+    rationale: >-
+      Maternal mouthbrooder according to Seriously Fish, Fishkeeper, Practical Fishkeeping and the
+      Cichlid Room Companion: the female takes the eggs into her mouth right after spawning, the
+      eggs are fertilised while she nudges the egg spots on the male's anal fin, and she broods for
+      about three to four weeks.
+    sources:
+      - *sf
+      - *fk
+      - *pfk
+      - *crc
+    evidence:
+      - source: *sf
+        value: maternal-mouthbrooder
+        note: brooding up to four weeks
+      - source: *fk
+        value: maternal-mouthbrooder
+      - source: *pfk
+        value: maternal-mouthbrooder
+      - source: *crc
+        value: maternal-mouthbrooder
+
+  beginnerSuitability:
+    value: moderate
+    confidence: medium
+    rationale: >-
+      Seriously Fish rates the species moderate because it needs a mature tank and stable water;
+      Garnelio rates it advanced. It is calm and easy to feed and breed, but it needs a large tank
+      with fine sand, the right sex ratio, pure stock and careful choice of tankmates without other
+      peacocks or rough mbuna.
+    sources:
+      - *sf
+      - *fk
+      - *garnelio
+    evidence:
+      - source: *sf
+        value: moderate
+        note: needs a well-established tank and stable water
+      - source: *garnelio
+        value: demanding
+        note: rated advanced
+
+partners:
+  suitable:
+    - species: Copadichromis borleyi
+      reason: >-
+        Calm open-water haplochromine of similar size that uses the upper water layers and does not
+        compete for the sand zone.
+    - species: Cyrtocara moorii
+      reason: >-
+        Peaceful sand-dwelling haplochromine with the same water needs; its plain blue colour and
+        hump differ enough from a peacock male.
+    - species: Placidochromis electra
+      reason: Peaceful haplochromine of similar size from the same lake; feeding styles are compatible.
+      condition: Blue males of both species may compete; a yellow or orange peacock form avoids this.
+    - species: Labidochromis caeruleus
+      reason: >-
+        One of the few mbuna calm enough for peacocks; its yellow colour and small size cause
+        little rivalry.
+    - species: Otopharynx lithobates
+      reason: >-
+        Moderately peaceful haplochromine of the rock-sand transition zone with similar size and
+        water needs.
+  unsuitable:
+    - species: Aulonocara jacobfreibergi
+      reason: "Another peacock: the females look alike and the species hybridise."
+    - species: Aulonocara baenschi
+      reason: Another peacock, formerly treated as a form of this species; crosses readily.
+    - species: Maylandia zebra
+      reason: Aggressive mbuna that harasses peacocks and outcompetes them at feeding.
+    - species: Chindongo demasoni
+      reason: Highly aggressive small mbuna that keeps peacocks under constant stress.
+    - species: Nimbochromis livingstonii
+      reason: Large ambush predator that eats females and young of this species.
+    - species: Tropheus moorii
+      reason: >-
+        Lake Tanganyika aufwuchs feeder with different water needs, a strict plant diet and
+        species-only keeping.
+
+profile:
+  overview:
+    text: >-
+      Aulonocara stuartgranti is a peacock cichlid from Lake Malawi and one of the most variable
+      species of its genus. Depending on where a population lives, adult males shine in metallic
+      blue, yellow or orange, while females stay grey-brown with faint dark bars. More than twenty
+      local populations are known, and many reach the trade under their locality names, such as
+      Ngara, Chilumba, Maulana or Usisya; fish sold as Aulonocara steveni or A. hansbaenschi belong
+      to this species as well. In the wild it hunts small animals hidden in the sand, which it
+      finds with the large sensory pores on its head. In the aquarium it is a calm, medium-sized
+      cichlid for a spacious tank with sand and a few rock piles, kept as one male with several
+      females. Its main risks are crossing with other peacocks, harassment by boisterous mbuna and
+      unstable water.
+    sources:
+      - *cof
+      - *fb
+      - *sf
+      - *schwalbe2012
+  habitat:
+    text: >-
+      The species lives only in Lake Malawi, along long stretches of shore in Malawi, Tanzania and
+      Mozambique; the type locality is Mpanga Rocks near Chilumba in the north. It inhabits the
+      transition zone where rocky slopes give way to open sand with scattered stones, usually
+      somewhat deeper than the algae-grazing mbuna of the surf zone. Males hold spots near crevices
+      or overhangs, and the fish forage over the neighbouring sand. The lake water is soft but well
+      buffered: about 3 to 5 dGH total hardness, 5 to 8 dKH carbonate hardness and a pH of 7.7 to
+      8.6. The temperature ranges from about 21 °C close to shore in the cool, windy season to
+      29 °C at the surface in summer. Conditions in the lake change only slowly, so stable water
+      matters more in the tank than exact numbers.
+    sources:
+      - *cof
+      - *fb
+      - *sf
+      - *cforum
+      - *branchu
+      - *fao
+      - *eccles
+      - *vollmer
+      - *ngochera
+  sizeAndGrowth:
+    text: >-
+      Dominant males reach about 13 cm total length in the aquarium, most males 12 cm; FishBase
+      gives 11.8 cm. Females stay smaller at roughly 9 to 10 cm. Juveniles of both sexes are
+      silvery brown with dark bars. Young males start to colour up after a few months but often
+      need most of the first year for their full colours, and the rate depends on food,
+      temperature and rank: a subordinate male may stay drab as long as a stronger male is
+      present. With good care the species lives for roughly six to ten years.
+    sources:
+      - *fb
+      - *fk
+      - *fpedia
+      - *sf
+      - *guid
+      - *schwalbe2016
+  husbandry:
+    text: >-
+      A tank of about 240 litres with a base of at least 120 by 45 cm suits one male with four or
+      more females. Cover most of the floor with fine sand, because the fish sift it for food and
+      coarse gravel hinders feeding and can hurt the gills. Build a few stable rock piles with
+      caves and leave open sand between them; set the rocks directly on the glass so that digging
+      cannot topple them. Peacocks rarely eat plants but may uproot them. The species reacts badly
+      to rising nitrate and to sudden changes in water chemistry, so it belongs only in a mature
+      tank with strong filtration and weekly water changes of a third or more. Keep the water at
+      24 to 27 °C and pH 7.5 to 8.6; total hardness may range from soft lake-like water to about
+      25 dGH, and a carbonate hardness of 5 to about 12 dKH keeps the pH stable.
+    sources:
+      - *sf
+      - *fk
+      - *fpedia
+      - *fprof
+      - *branchu
+      - *fao
+  socialBehavior:
+    text: >-
+      Males are territorial and defend a spot around a cave or overhang that serves as their
+      display site. Rival males flare their fins, chase and sometimes nip each other; with a single
+      male, or several males in a large tank with enough visual barriers, injuries are uncommon.
+      One male with four or more females spreads his courtship over several fish so that no female
+      is driven to exhaustion. Females are peaceful and move loosely through the tank. Towards other
+      species the peacock is mild: it mostly ignores fish that look different, but males chase
+      tankmates whose colour and shape resemble a rival, especially other blue or yellow peacocks
+      and haplochromines. Aggressive mbuna easily intimidate this species, and a stressed male
+      loses his colours and hides most of the day.
+    sources:
+      - *sf
+      - *fk
+      - *fprof
+      - *cforum
+  diet:
+    text: >-
+      In the lake the species feeds on small invertebrates in the sand. It hovers just above the
+      bottom, senses buried insect larvae and small crustaceans with the pressure-sensitive canals
+      of its lateral line and strikes at them, taking in mouthfuls of sand that it expels through
+      the gills. Laboratory studies showed that it can find such prey even in complete darkness.
+      In the aquarium it takes fine pellets and flakes for carnivorous cichlids, frozen mysis,
+      brine shrimp, krill and bloodworm, plus a share of food with Spirulina or other plant matter.
+      Offer several small portions a day rather than one large meal. Avoid mammal meat such as beef
+      heart and do not overfeed; a normal protein-rich cichlid diet suits it far better than it
+      suits algae-grazing mbuna.
+    sources:
+      - *fb
+      - *schwalbe2012
+      - *schwalbe2016
+      - *sf
+      - *fk
+  breeding:
+    text: >-
+      Aulonocara stuartgranti is a maternal mouthbrooder that often spawns in a community tank.
+      The male intensifies his colours, cleans a flat stone or digs a shallow pit in the sand near
+      his shelter and courts passing females with spread fins and quivering. The pair circle each
+      other; the female lays a few eggs at a time and takes them into her mouth, and the eggs are
+      fertilised while she nibbles at the egg spots on the male's anal fin. She carries the brood
+      for about three to four weeks without eating and then releases a few dozen free-swimming
+      fry. A holding female can be moved to a separate tank after a few days, but moving her too
+      early may make her spit or swallow the eggs, and a long absence can cost her rank in the
+      group. The fry accept newly hatched brine shrimp at once.
+    sources:
+      - *sf
+      - *fk
+      - *crc
+      - *cforum
+  sexing:
+    text: >-
+      Adult males are easy to recognise: they are larger, show the full metallic colour of their
+      population and carry egg spots on the anal fin. Females and juveniles are grey to brownish
+      with darker vertical bars and no bright colours. Young males can look like females for
+      months, and subordinate males often stay drab while a dominant male is present, so a group
+      of young fish is best sexed at five to six months; venting is the most reliable method at
+      that age. Because the females of different Aulonocara species and colour forms are hard to
+      tell apart, buy females only from a source that keeps each population separate.
+    sources:
+      - *sf
+      - *fk
+      - *fprof
+  compatibility:
+    text: >-
+      The species fits a peaceful Lake Malawi community of open-water and sand-dwelling
+      haplochromines of similar size, such as Copadichromis borleyi, Cyrtocara moorii or
+      Placidochromis electra, and a few calm mbuna like Labidochromis caeruleus. Keep only one
+      Aulonocara species and one population per tank: peacock females look alike and the species
+      cross readily, which is why many trade lines are already mixed. Avoid aggressive mbuna such
+      as Maylandia and Chindongo, which outcompete peacocks at feeding and keep them under stress.
+      Large predatory haplochromines like Nimbochromis livingstonii eat females and young. Blue or
+      yellow males of other haplochromines can trigger fights and suppress the colours of the
+      weaker male. Fish from Lake Tanganyika or from soft, acidic water are poor choices because
+      their water and food needs differ.
+    sources:
+      - *sf
+      - *fk
+      - *pfk
+      - *cforum
+      - *a15785
+      - *a14959
+  problems:
+    text: >-
+      Most problems come from water quality. In a new tank, after skipped water changes or with too
+      many fish, the species reacts with clamped fins, faded colours, hiding and a higher disease
+      risk, so stock it only into a mature, well-filtered tank. Too few females per male lead to
+      harassed females that lose weight or drop their broods. Mixing peacock species or colour
+      forms produces hybrids that should not be passed on. A coarse or sharp substrate hinders
+      natural feeding and can injure the gills. Mammal meat and overfeeding can cause digestive
+      trouble and bloat; if a fish stops eating, swells or produces white, stringy droppings, test
+      the water and consult a fish veterinarian. Aggressive mbuna as tankmates cause chronic stress
+      that shows as constant hiding and weight loss.
+    sources:
+      - *sf
+      - *fk
+      - *fprof
+      - *cforum
+
+provenance:
+  runs:
+    - {role: generator, model: claude-opus-5-5, date: 2026-10-13}
+    - {role: checker, model: claude-opus-5-5, date: 2026-10-13}
+    - {role: checker, model: claude-sonnet-5-5, date: 2026-10-13}
+    - {role: checker, model: claude-opus-5-5, date: 2026-10-13}
+    - {role: checker, model: claude-sonnet-5-5, date: 2026-10-13}
+    - {role: adjudicator, model: claude-opus-5-5, date: 2026-10-13}
+  disagreements:
+    - field: legacyIds
+      proposals:
+        - {by: generator, value: [242]}
+        - {by: checker-a, value: [242]}
+        - {by: checker-b, value: [242]}
+      decision: [242, 241]
+      rationale: >-
+        Legacy entry 241, Aulonocara steveni, names a synonym of A. stuartgranti according to the
+        Catalog of Fishes (after Konings 2016), so it maps to this profile as well.
+    - field: taxonomy.legacyNames
+      proposals:
+        - {by: generator, value: [Aulonocara stuartgrandi]}
+        - {by: checker-a, value: [Aulonocara stuartgrandi]}
+        - {by: checker-b, value: [Aulonocara stuartgrandi]}
+      decision: [Aulonocara stuartgrandi, Aulonocara steveni]
+      rationale: The legacy catalog listed the species under both names; entry 241 joins this profile.
+    - field: taxonomy.synonyms
+      proposals:
+        - {by: generator, value: ["Aulonocara hansbaenschi Meyer, Riehl & Zetzsche, 1987", "Aulonocara steveni Meyer, Riehl & Zetzsche, 1987"]}
+        - {by: checker-a, value: ["Aulonocara hansbaenschi Meyer, Riehl & Zetzsche, 1987", "Aulonocara steveni Meyer, Riehl & Zetzsche, 1987"]}
+        - {by: checker-b, value: [Aulonocara hansbaenschi, Aulonocara steveni]}
+      decision: [Aulonocara hansbaenschi, Aulonocara steveni]
+      rationale: >-
+        All runs name the same two synonyms, confirmed in the Catalog of Fishes. The name field
+        carries the plain binomen so that it matches legacy and trade names; author, year and type
+        locality go into the note.
+    - field: features.origin.value.waterbody
+      proposals:
+        - {by: generator, value: Lake Malawi}
+        - {by: checker-a, value: Lake Malawi}
+        - {by: checker-b, value: lake-malawi}
+      decision: Lake Malawi
+      rationale: Both spellings name the same entry of the water body table; the name form is used, as in the other proposals.
+    - field: features.origin.value.localities
+      proposals:
+        - {by: generator, value: ["Mpanga Rocks, Chilumba (type locality)", Ngara, Maulana, Usisya, Chitimba Bay, Mdoka, Chirwa Island, Mbowe Island, Hai Reef, Ndumbi, Hongi Island, Mbamba Bay, Cobue, Metangula, Chiloelo, Thumbi West Island]}
+        - {by: checker-a, value: ["Mpanga Rocks, Chilumba (type locality)", Ngara, Chitimba Bay, Usisya, Mbamba Bay, Cobue, Metangula, Thumbi West Island]}
+        - {by: checker-b, value: [Ngara, Mdoka, Chilumba, Maulana, Chirwa Island, Chitimba Bay]}
+      decision: ["Mpanga Rocks, Chilumba (type locality)", Ngara, Maulana, Usisya, Chitimba Bay, Mdoka, Chirwa Island, Mbowe Island, Hai Reef, Ndumbi, Hongi Island, Mbamba Bay, Cobue, Metangula, Chiloelo, Thumbi West Island]
+      rationale: >-
+        The lists are selections from the same population list of Seriously Fish; the longest list
+        contains the others and shows the spread along both shores.
+    - field: features.ph.tolerance
+      proposals:
+        - {by: generator, value: {min: 7.5, max: 8.6}}
+        - {by: checker-a, value: {min: 7.5, max: 8.6}}
+        - {by: checker-b, value: {min: 7.5, max: 9.0}}
+        - {by: tiebreaker-1, value: {min: 7.5, max: 8.6}}
+        - {by: tiebreaker-2, value: {min: 7.5, max: 9.0}}
+      decision: {min: 7.5, max: 8.6}
+      rationale: >-
+        Decided by the vote count with the conservative method: the upper limits of 8.6 and 9.0
+        differ by more than 0.3 and the larger camp has only 3 of 5 votes. The intersection of all
+        votes, 7.5 to 8.6, is the most cautious range and contains the lake range; 9.0 rests on
+        Seriously Fish alone.
+    - field: features.khDkh.tolerance
+      proposals:
+        - {by: generator, value: {min: 5, max: 15}}
+        - {by: checker-a, value: {min: 5, max: 12}}
+        - {by: checker-b, value: {min: 5, max: 15}}
+        - {by: tiebreaker-1, value: {min: 5, max: 20}}
+        - {by: tiebreaker-2, value: {min: 5, max: 15}}
+      decision: {min: 5, max: 12}
+      rationale: >-
+        Decided by the vote count with the conservative method: the upper limits of 12, 15 and 20
+        dKH lie more than 2 dKH apart and the largest camp has only 3 of 5 votes. The intersection
+        of all votes, 5 to 12 dKH, is the most cautious range; no species database states a
+        carbonate hardness.
+    - field: features.diet.value.foods
+      proposals:
+        - {by: generator, value: [insect larvae and small crustaceans sifted from sand, fine cichlid pellets and flakes, "frozen mysis, brine shrimp and krill", bloodworm and mosquito larvae, food with Spirulina or other plant matter]}
+        - {by: checker-a, value: [sinking cichlid pellets and granules, flake food with a share of Spirulina, "frozen mysis, Artemia and Cyclops", mosquito larvae]}
+        - {by: checker-b, value: [bloodworm, Artemia, mosquito larvae, fine prepared foods with some vegetable matter]}
+      decision: [insect larvae and small crustaceans sifted from sand, fine cichlid pellets and flakes, "frozen mysis, brine shrimp and krill", bloodworm and mosquito larvae, food with Spirulina or other plant matter]
+      rationale: >-
+        Type and bloat sensitivity agree in all votes (unanimous, 3 of 3); the vote count takes the
+        food list of the first agreeing vote, which covers the items of the other lists.
+    - field: features.maxSizeCm
+      proposals:
+        - {by: generator, value: {male: 13, female: 10}}
+        - {by: checker-a, value: {male: 12, female: 9}}
+        - {by: checker-b, value: {male: 14, female: 10}}
+      decision: {male: 13, female: 10}
+      rationale: >-
+        Fishipedia and Guidarium give 13 cm for dominant males and Seriously Fish 13 cm standard
+        length, while FishBase, Fishkeeper and Practical Fishkeeping name about 12 cm for typical
+        males; 13 cm marks the typical maximum of well-kept males. The 14 cm of checker-b rests on
+        no stated source. Females reach 9.4 cm in the laboratory and 10 cm at Guidarium.
+    - field: features.social.value.ratio
+      proposals:
+        - {by: generator, value: 4}
+        - {by: checker-a, value: 4}
+        - {by: checker-b, value: 3}
+      decision: 4
+      rationale: >-
+        Seriously Fish recommends at least four females per male and Fishkeeper five or more; three
+        appears only in Fishipedia and a retailer sheet, so four is used.
+    - field: features.coloration
+      proposals:
+        - {by: generator, value: {baseColors: [blue, yellow, orange], pattern: bars}}
+        - {by: checker-a, value: {baseColors: [blue, yellow], pattern: bars}}
+        - {by: checker-b, value: {baseColors: [blue, yellow, orange], pattern: mixed}}
+      decision: {baseColors: [blue, yellow, orange], pattern: bars}
+      rationale: >-
+        Orange belongs to the colours of the widely traded Ngara form and of the orange flanks of
+        other populations, so it is kept for the colour conflict check. Seriously Fish and
+        Practical Fishkeeping describe mood-dependent vertical bars, which makes bars the pattern.
