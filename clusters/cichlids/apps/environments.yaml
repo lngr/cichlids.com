@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: environments
+  namespace: argocd
+  labels:
+    cichlids.com/stateful: 'true'
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd.argoproj.io/sync-wave: '-1'
+spec:
+  project: cichlids
+  source:
+    repoURL: https://github.com/lngr/cichlids.com.git
+    targetRevision: main
+    path: clusters/cichlids/namespaces
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: cichlids-staging
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
+    syncOptions:
+    - Prune=false
+    - FailOnSharedResource=true

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Check TASK-2.7 topology and render ApplicationSet templates with offline parameters."""
 import copy
-import json
+import shutil
 from pathlib import Path
 import subprocess
 import tempfile
@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parent.parent
 REPO = 'https://github.com/lngr/cichlids.com.git'
 FINALIZER = 'resources-finalizer.argocd.argoproj.io'
 EXPECTED = {'staging', 'prod', 'preview', 'preview-environments'}
-CRITICAL = {'PersistentVolumeClaim', 'Namespace', 'Cluster'}
+CRITICAL = {'PersistentVolumeClaim', 'Namespace', 'Cluster', 'StatefulSet'}
 
 
 def run(*args):
@@ -32,7 +32,8 @@ def render(value, params, temp):
     # Helm tpl uses Go text/template and Sprig for the simple ApplicationSet expressions.
     # Generator discovery is simulated offline; controller reconciliation needs a live cluster.
     (temp / 'values.yaml').write_text(yaml.safe_dump({'input': value, 'params': params}))
-    return yaml.safe_load(run('helm', 'template', 'fixture', str(temp)))
+    envelope = yaml.safe_load(run('helm', 'template', 'fixture', str(temp)))
+    return yaml.safe_load(envelope['data']['rendered'])
 
 
 def merge(target, patch):
@@ -121,6 +122,9 @@ def check_resources(docs, path):
             if '/preview' not in str(path):
                 require('Prune=false' in options and 'Delete=false' in options,
                         f'{path}: persistent {doc["kind"]} needs Prune=false,Delete=false')
+    if path.name == 'preview' and 'overlays' in path.parts:
+        require(not any(d['kind'] in CRITICAL | {'ResourceQuota', 'LimitRange', 'StatefulSet'}
+                        for d in docs), 'Preview service overlay cannot own namespace bounds or persistent data')
     if stateful and 'overlays' in path.parts:
         config = yaml.safe_load((path / 'kustomization.yaml').read_text())
         marker = config.get('metadata', {}).get('annotations', {}).get('cichlids.com/stateful')
@@ -134,7 +138,9 @@ def main():
         chart = temp / 'chart'
         (chart / 'templates').mkdir(parents=True)
         (chart / 'Chart.yaml').write_text('apiVersion: v2\nname: appset-check\nversion: 0.1.0\n')
-        (chart / 'templates/application.yaml').write_text('{{ tpl (toYaml .Values.input) .Values.params }}\n')
+        (chart / 'templates/application.yaml').write_text(
+            'apiVersion: v1\nkind: ConfigMap\nmetadata:\n  name: rendered\ndata:\n'
+            '  rendered: {{ tpl (toYaml .Values.input) .Values.params | toJson }}\n')
         rendered = []
         topology = load(run('kustomize', 'build', 'clusters/cichlids/apps'))
         sets = {d['metadata']['name']: d for d in topology if d['kind'] == 'ApplicationSet'}
@@ -168,8 +174,24 @@ def main():
                     require(not generate(appset, ROOT / 'tools/fixtures/cluster-manifests',
                                          [{**prs[0], 'state': 'closed'}], chart), 'Closed PR generates no apps')
                     if name == 'preview':
+                        require(app['spec']['source']['kustomize']['namespace'] == 'pr-17',
+                                'Preview manifests override source namespaces')
                         require(app['spec']['source']['targetRevision'] == 'a' * 40, 'Pinned preview head')
                         require(app['spec']['source']['path'] == 'apps/demo/overlays/preview', 'Shared preview overlay')
+                if name == 'preview-environments':
+                    source = app['spec']['source']
+                    preview_path = temp / 'preview'
+                    shutil.copytree(ROOT / source['path'], preview_path)
+                    config_path = preview_path / 'kustomization.yaml'
+                    config = yaml.safe_load(config_path.read_text())
+                    config.update(source['kustomize'])
+                    config_path.write_text(yaml.safe_dump(config))
+                    bounds = load(run('kustomize', 'build', str(preview_path)))
+                    require(next(d for d in bounds if d['kind'] == 'Namespace')['metadata']['name'] ==
+                            'pr-17', 'Preview namespace name patch renders')
+                    require(all(d['metadata']['namespace'] == 'pr-17' for d in bounds
+                                if d['kind'] != 'Namespace'), 'Preview bounds use PR namespace')
+                    rendered.extend(bounds)
                 rendered.append(app)
         for tree in ['clusters', 'apps', 'tools/fixtures/cluster-manifests']:
             for config in sorted((ROOT / tree).rglob('kustomization.yaml')):

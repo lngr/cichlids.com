@@ -1,0 +1,51 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: preview-environments
+  namespace: argocd
+spec:
+  goTemplate: true
+  goTemplateOptions:
+  - missingkey=error
+  generators:
+  - pullRequest:
+      github:
+        owner: lngr
+        repo: cichlids.com
+        labels:
+        - preview-active
+      requeueAfterSeconds: 300
+  syncPolicy:
+    applicationsSync: sync
+    preserveResourcesOnDeletion: false
+  template:
+    metadata:
+      name: preview-environment-{{ .number }}
+      namespace: argocd
+      finalizers:
+      - resources-finalizer.argocd.argoproj.io
+      labels:
+        cichlids.com/environment: preview
+    spec:
+      project: cichlids
+      source:
+        repoURL: https://github.com/lngr/cichlids.com.git
+        targetRevision: main
+        path: clusters/cichlids/preview
+        kustomize:
+          namespace: pr-{{ .number }}
+          patches:
+          - target:
+              kind: Namespace
+              name: preview
+            patch: "- op: replace\n  path: /metadata/name\n  value: pr-{{ .number\
+              \ }}\n"
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: pr-{{ .number }}
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - FailOnSharedResource=true

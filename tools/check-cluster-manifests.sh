@@ -5,5 +5,6 @@
 # extracts openAPIV3Schema, injects Kubernetes metadata and closes typed objects.
 set -euo pipefail
 cd "$(dirname "$0")/.."
+python3 tools/check-cluster-manifests.test.py
 python3 tools/check-cluster-manifests.py
 node --test tools/preview-admission.test.mjs

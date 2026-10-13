@@ -1,0 +1,52 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: preview
+  namespace: argocd
+spec:
+  goTemplate: true
+  goTemplateOptions:
+  - missingkey=error
+  generators:
+  - matrix:
+      generators:
+      - pullRequest:
+          github:
+            owner: lngr
+            repo: cichlids.com
+            labels:
+            - preview-active
+          requeueAfterSeconds: 300
+      - git:
+          repoURL: https://github.com/lngr/cichlids.com.git
+          revision: '{{ .head_sha }}'
+          files:
+          - path: apps/*/overlays/preview/kustomization.yaml
+  syncPolicy:
+    applicationsSync: sync
+    preserveResourcesOnDeletion: false
+  template:
+    metadata:
+      name: '{{ index .path.segments 1 }}-pr-{{ .number }}'
+      namespace: argocd
+      finalizers:
+      - resources-finalizer.argocd.argoproj.io
+      labels:
+        cichlids.com/environment: preview
+    spec:
+      project: cichlids
+      source:
+        repoURL: https://github.com/lngr/cichlids.com.git
+        targetRevision: '{{ .head_sha }}'
+        path: '{{ .path.path }}'
+        kustomize:
+          namespace: pr-{{ .number }}
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: pr-{{ .number }}
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - FailOnSharedResource=true

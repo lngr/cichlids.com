@@ -1,0 +1,46 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: prod
+  namespace: argocd
+spec:
+  goTemplate: true
+  goTemplateOptions:
+  - missingkey=error
+  generators:
+  - git:
+      repoURL: https://github.com/lngr/cichlids.com.git
+      revision: main
+      files:
+      - path: apps/*/overlays/prod/kustomization.yaml
+  syncPolicy:
+    applicationsSync: create-update
+    preserveResourcesOnDeletion: true
+  template:
+    metadata:
+      name: '{{ index .path.segments 1 }}-prod'
+      namespace: argocd
+      labels:
+        cichlids.com/environment: prod
+        cichlids.com/stateful: '{{ dig "metadata" "annotations" "cichlids.com/stateful"
+          "false" . }}'
+    spec:
+      project: cichlids
+      source:
+        repoURL: https://github.com/lngr/cichlids.com.git
+        targetRevision: main
+        path: '{{ .path.path }}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: cichlids-prod
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - FailOnSharedResource=true
+  templatePatch: "{{ if eq (dig \"metadata\" \"annotations\" \"cichlids.com/stateful\"\
+    \ \"false\" .) \"true\" }}\nmetadata:\n  finalizers:\n    - resources-finalizer.argocd.argoproj.io\n\
+    spec:\n  syncPolicy:\n    automated:\n      prune: false\n      selfHeal: true\n\
+    \    syncOptions:\n      - Prune=false\n      - FailOnSharedResource=true\n{{\
+    \ else }}\n{}\n{{ end }}\n"
