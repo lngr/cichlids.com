@@ -74,6 +74,16 @@ jobs:
           python-version: "3.x"
       - name: Install pinned core toolchain
         run: bash tools/install-toolchain.sh
+      - name: Install YAML parser
+        run: python3 -m pip install PyYAML==6.0.3
+      - name: Test and enforce encrypted Kubernetes Secret manifests
+        run: |
+          python3 tools/check-secret-manifests.test.py
+          python3 tools/check-secret-manifests.py
+      - name: Install checksum-pinned KSOPS
+        run: bash tools/install-ksops.sh
+      - name: Round-trip the test-only SOPS age fixture through KSOPS
+        run: python3 tools/test-sops-roundtrip.py
       - name: Pre-push hook behaves as specified
         run: bash tools/test-pre-push-hook.sh
       - name: Scan the working tree with gitleaks
@@ -115,6 +125,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.x"
+      - name: Install YAML parser
+        run: python3 -m pip install PyYAML==6.0.3
       - name: Install pinned core toolchain
         run: bash tools/install-toolchain.sh
       - name: Check formatting
@@ -139,6 +154,10 @@ jobs:
         run: |
           python3 infra/app/guardrails_test.py --self-test
           python3 infra/app/guardrails_test.py
+      - name: Render Argo CD KSOPS bootstrap and check the install contract
+        run: python3 infra/app/ksops_test.py
+      - name: Check bootstrap and KSOPS shell syntax
+        run: bash -n infra/app/scripts/install-argocd.sh tools/install-ksops.sh
       - name: Project separation (ADR-0017)
         run: |
           python3 tools/check-project-separation.py --self-test
