@@ -2,8 +2,9 @@ namespace Cichlids.Domain.Archive;
 
 /// <summary>
 /// A comment from the legacy platform that could not be migrated into the domain model
-/// (for example: no resolvable target or author), kept in full source form for later reuse
-/// instead of being discarded during the migration.
+/// (for example: no resolvable target or author), kept for later reuse instead of being discarded
+/// during the migration. Payload holds the columns of the legacy row that the migration selects,
+/// serialized as JSON.
 /// </summary>
 public class LegacyComment
 {
