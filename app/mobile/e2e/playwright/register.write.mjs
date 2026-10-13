@@ -63,11 +63,7 @@ try {
       await page.fill("#password-confirm", "Reserved-Name-Password-1"); // gitleaks:allow
       await page.locator('input[type="submit"], button[type="submit"]').first().click();
 
-      await page.waitForFunction(
-        (expected) => document.body.innerText.includes(expected),
-        REFUSAL,
-        { timeout: 20000 },
-      );
+      await page.getByText(REFUSAL).first().waitFor({ timeout: 20000 });
       if (!page.url().startsWith(KEYCLOAK_URL)) {
         throw new Error(`Registration of ${username} left the Keycloak page: ${page.url()}`);
       }
