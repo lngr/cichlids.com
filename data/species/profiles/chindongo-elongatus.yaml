@@ -1,0 +1,1133 @@
+schemaVersion: 1
+id: chindongo-elongatus
+legacyIds: [471]
+status: described
+taxonomy:
+  validName: Chindongo elongatus
+  genus: Chindongo
+  species: elongatus
+  author: (Fryer, 1956)
+  source: &cof
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes: species of the genus Chindongo (entry elongatus, Pseudotropheus), queried together with the genus Pseudotropheus"
+    url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Chindongo
+    accessed: 2026-10-13
+  synonyms:
+    - name: Pseudotropheus elongatus Fryer, 1956
+      note: Original combination; type locality Mbamba Bay, eastern shore of Lake Malawi, Tanzania. Valid in Pseudotropheus until Li, Konings and Stauffer (2016) transferred it to Chindongo; hobby literature and Seriously Fish use this name.
+  legacyNames:
+    - Pseudotropheus elongatus
+  note: >-
+    The Catalog of Fishes lists Pseudotropheus elongatus Fryer 1956 with the current status valid
+    as Chindongo elongatus (Fryer 1956) after Li et al. (2016); the species list of Pseudotropheus
+    no longer contains it. The lectotype from Mbamba Bay was designated by Seegers (1996), who
+    redescribed the species in a narrow sense: a comparatively short, deep-bodied member of the
+    elongatus complex with a convex forehead whose territorial males show 7 to 8 blue bars on a
+    dark brown to blackish ground. In the same work Seegers described the slenderer C. longior,
+    which lives beside C. elongatus at Mbamba Bay. Li, Konings and Stauffer (2016) split the old
+    Pseudotropheus elongatus species group: they erected Chindongo for its barred core (type
+    species C. bellicosus, eleven valid species today) and placed six further elongate species in
+    Metriaclima, Tropheops and Cynotilapia. The hobby name elongatus therefore covers far more than
+    this species: Seriously Fish counts more than thirty forms, many trade fish with locality names
+    such as 'Chewere', 'Chailosi' or 'Mpanga' belong to other described or undescribed species, and
+    care data published under the name may refer to them.
+names:
+  trade:
+    en: [Elongate Mbuna, Elongatus, Slender Mbuna]
+variants:
+  - name: Mbamba Bay
+    kind: locality
+    note: Type locality on the Tanzanian shore; the population on which the redescription by Seegers (1996) rests.
+features:
+  origin:
+    value:
+      continent: Africa
+      region: Lake Malawi
+      waterbody: Lake Malawi
+      localities: [Mbamba Bay (Tanzania), Nkhata Bay (Malawi)]
+    confidence: high
+    rationale: >-
+      Endemic to Lake Malawi, which the Catalog of Fishes, FishBase and Seriously Fish agree on. The
+      type locality is Mbamba Bay on the Tanzanian shore, and FishBase places the species between 11
+      and 12 degrees south. Seriously Fish adds Nkhata Bay on the Malawian side, from where Ribbink et
+      al. (1983) illustrated a fish; Oliver notes that very similar fish are widespread in the lake,
+      so under the narrow concept of Seegers (1996) the Nkhata Bay record may belong to a look-alike
+      form. Cichlid-Forum gives Likoma Island, which no other source supports. Photographs of males
+      from Hongi Island on the Cichlid Room Companion are not used as a locality, because that site
+      serves for verification only and no other source names the island.
+    sources:
+      - *cof
+      - &fishbase
+        kind: database
+        title: "FishBase species summary: Chindongo elongatus"
+        url: https://www.fishbase.se/summary/Chindongo-elongatus.html
+        accessed: 2026-10-13
+      - &sf
+        kind: database
+        title: "Seriously Fish: Pseudotropheus elongatus (Elongate Mbuna)"
+        url: https://www.seriouslyfish.com/species/pseudotropheus-elongatus/
+        accessed: 2026-10-13
+      - &oliver
+        kind: website
+        title: "Oliver, M. K.: Chindongo elongatus (Fryer, 1956), malawicichlids.com (quotes the redescription by Seegers 1996)"
+        url: https://malawicichlids.com/mw09005f.htm
+        accessed: 2026-10-13
+      - &cforum
+        kind: database
+        title: "Cichlid-Forum species profile: Pseudotropheus elongatus"
+        url: https://www.cichlid-forum.com/profiles/species.php?id=855
+        accessed: 2026-10-13
+    evidence:
+      - source: *cof
+        value: {continent: Africa, region: Lake Malawi, localities: [Mbamba Bay (Tanzania)]}
+        note: type locality
+      - source: *fishbase
+        value: {continent: Africa, region: Lake Malawi}
+        note: 11 to 12 degrees south
+      - source: *sf
+        value: {continent: Africa, region: Lake Malawi, localities: [Mbamba Bay (Tanzania), Nkhata Bay (Malawi)]}
+      - source: *cforum
+        value: {continent: Africa, region: Lake Malawi, localities: [Likoma Island (Malawi)]}
+        note: locality not supported elsewhere
+  temperatureC:
+    value: {min: 21, max: 29}
+    confidence: high
+    rationale: >-
+      Lake Malawi endemic, so the natural range is the measured temperature range of the lake.
+      Eccles (1974) reports 27 C in the upper 60 m by May and 21 C inshore in the cool, windy season;
+      Vollmer et al. (2005) give winter epilimnion values of about 23.5 C and summer surface water of
+      about 28 C; a 2013 campaign (Ngochera 2018) measured 24 to 29 C. The species lives in shallow
+      rocky water, so the full range applies. The 22 to 25 C on the FishBase page come from an
+      aquarium atlas and are no habitat measurement. All three full profiles proposed this range.
+    sources:
+      - &branchu
+        kind: literature
+        title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+        url: https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf
+        accessed: 2026-10-12
+      - &fao
+        kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+        url: https://www.fao.org/4/t0473e/T0473E05.htm
+        accessed: 2026-10-12
+      - &eccles
+        kind: literature
+        title: "Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology and Oceanography 19(5), 730-742 (abstract)."
+        url: https://doi.org/10.4319/lo.1974.19.5.0730
+        accessed: 2026-10-12
+      - &vollmer05
+        kind: literature
+        title: "Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M., Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and Oceanography 50(2), 727-732."
+        url: https://www.dora.lib4ri.ch/empa/dload/empa:1253/PDF/view
+        accessed: 2026-10-12
+      - &vollmer99
+        kind: literature
+        title: "Vollmer, M. K., Weiss, R. F. and Bootsma, H. A. (1999). Lake Malawi/Nyasa deep water renewal. In: Bootsma, H. A. and Hecky, R. E. (eds.), Water Quality Report, SADC/GEF Lake Malawi/Nyasa Biodiversity Conservation Project, chapter 4."
+        url: https://sites.uwm.edu/hbootsma/files/2020/11/Ch4-Lake-Internal-Mixing.pdf
+        accessed: 2026-10-12
+      - &ngochera
+        kind: literature
+        title: Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. PhD dissertation, University of Wisconsin-Milwaukee.
+        url: https://minds.wisconsin.edu/handle/1793/91765
+        accessed: 2026-10-12
+    evidence:
+      - source: *eccles
+        value: {min: 21, max: 27}
+        note: inshore minimum in the cool season, upper 60 m by May
+      - source: *vollmer05
+        value: {min: 23.5, max: 28}
+        note: winter epilimnion to summer surface water
+      - source: *ngochera
+        value: {min: 24, max: 29}
+        note: 2013 campaign
+    verification: {method: waterbody, waterbody: lake-malawi}
+    tolerance:
+      value: {min: 21, max: 29}
+      confidence: medium
+      rationale: >-
+        Care sheets for the species lie between 22 and 28 C: Seriously Fish and FishProfiles 24 to
+        28, Aqualog 22 to 28, Fishipedia and Riverpark Aquatics 23 to 28, TropicalFreshwaterFish 22
+        to 27, Aquarium Glaser 22 to 26, FishBase after an aquarium atlas 22 to 25 and Cichlid-Forum
+        about 26 to 28. The tolerance has to contain the natural lake range of 21 to 29 C, which the
+        fish meet in the wild every year, so it equals the lake range; no source supports keeping
+        the fish outside these limits, and the usual aquarium set point is 24 to 27 C. Decided
+        unanimously by the vote count (3 of 3).
+      sources:
+        - *sf
+        - *fishbase
+        - *cforum
+        - &fishprofiles
+          kind: database
+          title: "FishProfiles.com: Pseudotropheus elongatus"
+          url: https://fishprofiles.com/profiles/freshwater/Cichlids/Pseudotropheus_elongatus/
+          accessed: 2026-10-13
+        - &fishipedia
+          kind: database
+          title: "Fishipedia: Chindongo elongatus (profile of the trade form 'Chewere')"
+          url: https://www.fishipedia.fr/fr/poissons/chindongo-elongatus
+          accessed: 2026-10-13
+        - &aqualog
+          kind: database
+          title: "Aqualog lexicon: Pseudotropheus elongatus"
+          url: https://www.aqualog.de/en/lexikon/pseudotropheus-elongatus-2/
+          accessed: 2026-10-13
+        - &glaser
+          kind: website
+          title: "Schäfer, F.: Chindongo elongatus (formerly Pseudotropheus elongatus), Aquarium Glaser fish archive"
+          url: https://aquariumglaser.de/en/fisharchive/chindongo-elongatus-formerly-pseudotropheus-elongatus
+          accessed: 2026-10-13
+        - &riverpark
+          kind: website
+          title: "Riverpark Aquatics: Our guide to keeping Elongate Mbuna"
+          url: https://riverparkaquatics.co.uk/elongate-mbuna-cichlid-pseudotropheus-elongatus/
+          accessed: 2026-10-13
+        - &tff
+          kind: website
+          title: "TropicalFreshwaterFish.com: Elongatus, Pseudotropheus elongatus"
+          url: https://tropicalfreshwaterfish.com/species/Pseudotropheus_elongatus.html
+          accessed: 2026-10-13
+      evidence:
+        - source: *sf
+          value: {min: 24, max: 28}
+          note: aquarium recommendation
+        - source: *fishprofiles
+          value: {min: 24, max: 28}
+        - source: *aqualog
+          value: {min: 22, max: 28}
+        - source: *fishipedia
+          value: {min: 23, max: 28}
+          note: trade form 'Chewere'
+        - source: *fishbase
+          value: {min: 22, max: 25}
+          note: aquarium figure after an aquarium atlas
+        - source: *cforum
+          value: {min: 25.6, max: 27.8}
+          note: converted from 78 to 82 F
+        - source: *riverpark
+          value: {min: 23, max: 28}
+        - source: *tff
+          value: {min: 22, max: 27}
+        - source: *glaser
+          value: {min: 22, max: 26}
+          note: recommendation for captive-bred fish
+      verification:
+        method: unanimous
+        votes: {agree: 3, total: 3}
+
+  ph:
+    value: {min: 7.7, max: 8.6}
+    confidence: high
+    rationale: >-
+      Lake Malawi endemic, so the natural range is the measured pH of the lake. Jackson et al. (1963)
+      in the FAO source book give 7.7 to 8.6 for surface water; Branchu et al. (2010) give 7.5 to 8.5
+      for the whole column of the north basin near the type locality, the lower values belonging to
+      deep water that this shallow-water mbuna does not use. All three full profiles proposed this
+      range.
+    sources: [*fao, *branchu, *eccles, *vollmer05, *vollmer99, *ngochera]
+    evidence:
+      - source: *fao
+        value: {min: 7.7, max: 8.6}
+        note: surface water, Jackson et al. 1963
+      - source: *branchu
+        value: {min: 7.5, max: 8.5}
+        note: whole water column, lower values at depth
+    verification: {method: waterbody, waterbody: lake-malawi}
+    tolerance:
+      value: {min: 7.5, max: 8.8}
+      confidence: medium
+      rationale: >-
+        Husbandry sources agree on alkaline water: Seriously Fish 7.6 to 8.8, Cichlid-Forum 7.8 to
+        8.6, FishProfiles 8.0 to 8.5, Fishipedia and Riverpark Aquatics 7.5 to 8.5, FishBase after an
+        aquarium atlas 7.5 to 8.0, and Aquarium Glaser asks for a pH above 8. Aqualog goes down to
+        7.0 and TropicalFreshwaterFish up to 9.0, each alone. The range 7.5 to 8.8 covers the bulk
+        of the sources and contains the lake range. Decided unanimously by the vote count (3 of 3).
+      sources: [*sf, *cforum, *fishbase, *fishprofiles, *fishipedia, *aqualog, *glaser, *riverpark, *tff]
+      evidence:
+        - source: *sf
+          value: {min: 7.6, max: 8.8}
+        - source: *cforum
+          value: {min: 7.8, max: 8.6}
+        - source: *fishprofiles
+          value: {min: 8.0, max: 8.5}
+        - source: *fishipedia
+          value: {min: 7.5, max: 8.5}
+          note: trade form 'Chewere'
+        - source: *fishbase
+          value: {min: 7.5, max: 8.0}
+          note: aquarium figure after an aquarium atlas
+        - source: *aqualog
+          value: {min: 7.0, max: 8.0}
+        - source: *riverpark
+          value: {min: 7.5, max: 8.5}
+        - source: *tff
+          value: {min: 7.5, max: 9.0}
+      verification:
+        method: unanimous
+        votes: {agree: 3, total: 3}
+
+  ghDgh:
+    value: {min: 3, max: 5}
+    confidence: high
+    rationale: >-
+      Lake Malawi endemic, so the natural range is the total hardness of the lake computed from
+      measured calcium and magnesium (dGH = Ca/7.14 + Mg/4.34): 4.2 to 4.6 dGH in the upper 50 m of
+      the north basin (Branchu et al. 2010) and 3.2 to 4.9 dGH from the 1960s titrations in the FAO
+      source book. The lake is soft; care sheets that ask for 10 to 25 dGH confuse its alkalinity
+      with hardness. All three full profiles proposed this range.
+    sources: [*branchu, *fao, *eccles, *vollmer05, *vollmer99, *ngochera]
+    evidence:
+      - source: *branchu
+        value: {min: 4.2, max: 4.6}
+        note: computed from Ca and Mg, upper 50 m
+      - source: *fao
+        value: {min: 3.2, max: 4.9}
+        note: computed from Jackson et al. 1963 and Talling and Talling 1965
+    verification: {method: waterbody, waterbody: lake-malawi}
+    tolerance:
+      value: {min: 3, max: 20}
+      confidence: medium
+      rationale: >-
+        Care sheets ask for moderately hard to hard water: Fishipedia 8 to 15, FishBase after an
+        aquarium atlas 9 to 19 dH, FishProfiles and Riverpark Aquatics 10 to 20, Seriously Fish 10
+        to 25 and TropicalFreshwaterFish 12 to 25 dGH; Cichlid-Forum asks for hard water without a
+        figure. The upper bound follows the majority near 20 dGH. The lower bound is the natural lake
+        value of 3 dGH, which the tolerance must contain; soft water is no risk as long as the
+        carbonate hardness keeps the pH stable. Decided unanimously by the vote count (3 of 3).
+      sources: [*fishbase, *sf, *fishprofiles, *fishipedia, *branchu, *riverpark, *tff]
+      evidence:
+        - source: *fishbase
+          value: {min: 9, max: 19}
+          note: aquarium figure, given as dH
+        - source: *sf
+          value: {min: 10, max: 25}
+        - source: *fishprofiles
+          value: {min: 10, max: 20}
+          note: given as dH
+        - source: *fishipedia
+          value: {min: 8, max: 15}
+          note: trade form 'Chewere'
+        - source: *riverpark
+          value: {min: 10, max: 20}
+        - source: *tff
+          value: {min: 12, max: 25}
+          note: given as dH
+      verification:
+        method: unanimous
+        votes: {agree: 3, total: 3}
+
+  khDkh:
+    value: {min: 5, max: 8}
+    confidence: high
+    rationale: >-
+      Lake Malawi endemic, so the natural range is the measured alkalinity of the lake: 2.33 to 2.46
+      meq/L in the Branchu et al. (2010) profiles (6.5 to 6.9 dKH) and 2.00 to 2.59 meq/L in Jackson
+      et al. (1963) in the FAO source book (5.6 to 7.3 dKH), with dKH = meq/L x 2.8. All three full
+      profiles proposed this range.
+    sources: [*branchu, *fao, *eccles, *vollmer05, *vollmer99, *ngochera]
+    evidence:
+      - source: *branchu
+        value: {min: 6.5, max: 6.9}
+        note: alkalinity profiles, north basin
+      - source: *fao
+        value: {min: 5.6, max: 7.3}
+        note: Jackson et al. 1963
+    verification: {method: waterbody, waterbody: lake-malawi}
+    tolerance:
+      value: {min: 5, max: 14}
+      confidence: low
+      rationale: >-
+        No care sheet for this species gives a carbonate hardness; Seriously Fish, FishBase and the
+        other sheets state only pH and total hardness. Practical Fishkeeping asks for high, well
+        buffered carbonate hardness for all mbuna and warns against unbuffered soft water, without a
+        figure. The lower bound is the natural lake value of 5 dKH. The upper bound rests on general
+        mbuna practice, which keeps such tanks at about 8 to 15 dKH, and on the high pH and hardness
+        that the care sheets accept. The three votes proposed 15, 12 and 14 dKH as upper bound; they
+        agree within 2 dKH, and the vote count took the median, 5 to 14 dKH, unanimously (3 of 3)
+        with confidence low, because no species source states the value.
+      sources:
+        - *branchu
+        - *fao
+        - &pfk
+          kind: literature
+          title: "Practical Fishkeeping: The mbuna keeper's survival guide"
+          url: https://www.practicalfishkeeping.co.uk/features/the-mbuna-keepers-survival-guide/
+          accessed: 2026-10-13
+        - *sf
+        - *fishbase
+        - &mkKh
+          kind: model-knowledge
+          title: General husbandry practice for buffering Lake Malawi mbuna aquaria
+      evidence:
+        - source: *branchu
+          value: {min: 6.5, max: 6.9}
+          note: natural lake water in which the species lives
+        - source: *fao
+          value: {min: 5.6, max: 7.3}
+          note: natural lake water, Jackson et al. 1963
+        - source: *mkKh
+          value: {min: 8, max: 15}
+          note: common aquarium target for mbuna, not species-specific
+      verification:
+        method: unanimous
+        votes: {agree: 3, total: 3}
+
+  maxSizeCm:
+    value: {male: 12, female: 10}
+    confidence: medium
+    rationale: >-
+      Wild fish are small: FishBase gives 9.5 cm standard length, and Aquarium Glaser notes that
+      Chindongo barely exceed 8 cm in the lake but grow about half as large again in the tank.
+      Aquarium sources give 12 cm (FishProfiles, Aqualog, Riverpark Aquatics) to 12.7 cm
+      (Cichlid-Forum) for adults; Seriously Fish lists 135 mm standard length and
+      TropicalFreshwaterFish 13.5 cm for males, which are top values. TropicalFreshwaterFish gives 10
+      cm for females, and males grow larger than females. 12 cm for males is the typical maximum of
+      well-kept aquarium fish.
+    sources: [*fishbase, *sf, *fishprofiles, *cforum, *aqualog, *riverpark, *tff, *glaser, *fishipedia]
+    evidence:
+      - source: *fishbase
+        value: {male: 9.5, female: 9.5}
+        note: standard length of wild fish, male or unsexed
+      - source: *sf
+        value: {male: 13.5, female: 13.5}
+        note: standard length, sexes not separated
+      - source: *fishprofiles
+        value: {male: 12, female: 12}
+      - source: *cforum
+        value: {male: 12.7, female: 12.7}
+        note: given as 5 inches, sexes not separated
+      - source: *aqualog
+        value: {male: 12, female: 12}
+      - source: *riverpark
+        value: {male: 12, female: 12}
+        note: adult length, sexes not separated
+      - source: *tff
+        value: {male: 13.5, female: 10}
+      - source: *fishipedia
+        value: {male: 10, female: 10}
+        note: trade form 'Chewere'
+  predation:
+    value: 0
+    confidence: medium
+    rationale: >-
+      An aufwuchs grazer that combs loose algae from the rock cover (FishBase); FishProfiles adds the
+      small invertebrates living in the algal mats, and Genner and Turner (2005) describe mbuna of
+      this type as feeding mainly on algae and small invertebrates. The Cichlid Room Companion
+      confirms the algae-pulling habit. No source reports fish in the diet; like all mbuna it may
+      take fry that drift past, which level 0 allows. Decided unanimously by the vote count (3 of
+      3).
+    sources:
+      - *fishbase
+      - *sf
+      - *fishprofiles
+      - &crc
+        kind: database
+        title: "Cichlid Room Companion: Chindongo elongatus (public summary, verification only)"
+        url: https://cichlidae.com/species.php?id=3CHd-7ukH2ROQS-S0oxcpA
+        accessed: 2026-10-13
+      - &genner
+        kind: literature
+        title: "Genner, M. J. and Turner, G. F. (2005). The mbuna cichlids of Lake Malawi: a model for rapid speciation and adaptive radiation. Fish and Fisheries 6(1), 1-34."
+        url: https://doi.org/10.1111/j.1467-2679.2005.00173.x
+        accessed: 2026-10-13
+    evidence:
+      - source: *fishbase
+        value: 0
+        note: combs loose algae from the biocover
+      - source: *sf
+        value: 0
+        note: plant-based diet; no fish eating mentioned
+      - source: *fishprofiles
+        value: 0
+        note: algae and small invertebrates from the algal mats
+      - source: *crc
+        value: 0
+        note: algae puller; verification only
+      - source: *genner
+        value: 0
+        note: comb-feeding mbuna eat mainly algae and small invertebrates
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+  diet:
+    value:
+      type: aufwuchs
+      bloatSensitive: true
+      foods: [spirulina flakes and pellets, algae, blanched spinach and peas, nori, small amounts of frozen crustaceans]
+    confidence: high
+    rationale: >-
+      FishBase describes a grazer that combs loose algae from the rock cover, and Genner and Turner
+      (2005) place comb-feeding mbuna of this type among the algae grazers; the Cichlid Room
+      Companion confirms the feeding type. Seriously Fish wants vegetable matter to form a large
+      part of the diet and warns against red meat, FishProfiles links protein-rich feeding to the
+      often fatal Malawi bloat, and Practical Fishkeeping names rich food as the main trigger of
+      bloat in mbuna. Cichlid-Forum and Aqualog list the species as omnivore, a coarse label that
+      reflects what it accepts in the tank, not its natural diet. Decided unanimously by the vote
+      count (3 of 3 on type and bloat sensitivity).
+    sources:
+      - *fishbase
+      - *sf
+      - *fishprofiles
+      - *pfk
+      - *genner
+      - *crc
+      - *cforum
+      - *aqualog
+      - *glaser
+    evidence:
+      - source: *fishbase
+        value: {type: aufwuchs}
+        note: combs loose algae from the biocover; no statement on bloat
+      - source: *sf
+        value: {type: aufwuchs, bloatSensitive: true}
+        note: mainly vegetable food, no red meat
+      - source: *fishprofiles
+        value: {type: aufwuchs, bloatSensitive: true}
+        note: protein-rich food causes Malawi bloat
+      - source: *pfk
+        value: {bloatSensitive: true}
+        note: applies to mbuna in general
+      - source: *genner
+        value: {type: aufwuchs}
+        note: comb-feeding mbuna
+      - source: *cforum
+        value: {type: omnivore}
+        note: coarse label without detail
+      - source: *aqualog
+        value: {type: omnivore}
+        note: coarse trade label
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+  aggressionConspecific:
+    value: 4
+    confidence: high
+    rationale: >-
+      Several independent care sources agree: Seriously Fish counts it among the most aggressive
+      mbuna and expects subordinate males to be killed even in large tanks; FishProfiles ranks it
+      alongside the fiercest mbuna and describes its readiness to fight; Cichlid-Forum rates it
+      highly aggressive towards its own kind; TropicalFreshwaterFish reports that a male will
+      likely kill a single female; Fishipedia describes violent fights between dominant males.
+      Keepers in the cichlids.com archive report the same. The beginner rating in the Cichlid Room
+      Companion summary does not outweigh these reports.
+    sources:
+      - *sf
+      - *fishprofiles
+      - *cforum
+      - *fishipedia
+      - *tff
+      - &t24762
+        kind: archive
+        title: cichlids.com forum thread 24762
+        url: https://www.cichlids.com/disc/read.php?2,24762
+        accessed: 2026-10-13
+      - &t45417
+        kind: archive
+        title: cichlids.com forum thread 45417
+        url: https://www.cichlids.com/disc/read.php?2,45417
+        accessed: 2026-10-13
+    evidence:
+      - source: *sf
+        value: 4
+        note: subordinate males likely killed even in large tanks
+      - source: *fishprofiles
+        value: 4
+      - source: *cforum
+        value: 4
+        note: highly aggressive towards its own kind
+      - source: *tff
+        value: 4
+        note: a male will likely kill a single female
+      - source: *fishipedia
+        value: 3
+        note: rated moderately aggressive, yet violent male fights
+      - source: *t24762
+        value: 4
+        note: keeper experience
+  aggressionHeterospecific:
+    value: 3
+    confidence: medium
+    rationale: >-
+      Seriously Fish rules out calm tankmates such as peacocks and utaka but allows other mbuna that
+      do not resemble it; TropicalFreshwaterFish describes aggression towards all species;
+      Cichlid-Forum rates it highly aggressive towards other fish. FishProfiles warns that it can
+      wipe out unsuitable tankmates and wants similarly aggressive species only, which points to
+      level 4. Because robust mbuna of similar size are kept with it successfully, level 3 fits
+      better: tankmates need comparable size and toughness.
+    sources: [*sf, *tff, *cforum, *fishprofiles]
+    evidence:
+      - source: *sf
+        value: 3
+        note: not with peaceful haps; dissimilar mbuna possible
+      - source: *tff
+        value: 3
+        note: aggressive towards all species
+      - source: *cforum
+        value: 3
+      - source: *fishprofiles
+        value: 4
+        note: may wipe out unsuitable tankmates
+  territory:
+    value: {size: small, breedingOnly: false}
+    confidence: medium
+    rationale: >-
+      Males hold a rock area around a cave or spawning site all year (Seriously Fish; Genner and
+      Turner 2005 for mbuna in general), and in the lake even females defend small feeding
+      territories with algae gardens (Seriously Fish). The fish stays close to small rocks
+      (FishBase), so the defended area is a rock pile rather than a third of the tank. FishProfiles
+      speaks of large territorial demands for its size; that pressure on tankmates is covered by the
+      aggression levels.
+    sources: [*sf, *fishbase, *fishprofiles, *genner]
+    evidence:
+      - source: *sf
+        value: {size: small, breedingOnly: false}
+        note: males defend spawning sites, females algae patches in the wild
+      - source: *fishprofiles
+        value: {size: large, breedingOnly: false}
+        note: large territorial demands for its size
+      - source: *genner
+        value: {breedingOnly: false}
+        note: mbuna males hold territories year-round
+  habitatZones:
+    value: [rock]
+    confidence: high
+    rationale: >-
+      Lives in shallow rocky habitat free of sediment and is common around small rocks (FishBase);
+      Seriously Fish and FishProfiles describe the same rocky biotope with algae cover, and the
+      Cichlid Room Companion confirms the rocky setting. Cichlid-Forum calls the habitat sediment-rich
+      rock, which still means rock. Sand is only the preferred aquarium substrate.
+    sources: [*fishbase, *sf, *fishprofiles, *crc, *cforum]
+    evidence:
+      - source: *fishbase
+        value: [rock]
+        note: shallow, sediment-free rock, around small rocks
+      - source: *sf
+        value: [rock]
+      - source: *fishprofiles
+        value: [rock]
+        note: submerged rocks and rubble with algae mats
+  social:
+    value: {structure: harem, ratio: 4}
+    confidence: medium
+    rationale: >-
+      Seriously Fish asks for one male with four to six females and only one male unless the tank
+      is very large; TropicalFreshwaterFish and Guidarium ask for at least four females per male;
+      Fishipedia suggests fewer. Four females per male is the lowest ratio all stronger
+      recommendations accept and the basis of the minimum tank. Aquarium Glaser advises groups of ten
+      or more, the crowded mbuna approach that also spreads aggression.
+    sources:
+      - *sf
+      - *tff
+      - &guidarium
+        kind: website
+        title: "Guidarium: Elongatus Cichlid (Pseudotropheus elongatus)"
+        url: https://guidarium.com/fishes/elongatus-cichlid-pseudotropheus-elongatus
+        accessed: 2026-10-13
+      - *fishipedia
+      - *glaser
+    evidence:
+      - source: *sf
+        value: {structure: harem, ratio: 4}
+        note: four to six females per male
+      - source: *tff
+        value: {structure: harem, ratio: 4}
+        note: at least four females
+      - source: *fishipedia
+        value: {structure: harem, ratio: 3}
+      - source: *glaser
+        value: {structure: group, minGroup: 10}
+  speciesOnly:
+    value: false
+    confidence: medium
+    rationale: >-
+      No source demands a species tank for keeping: Seriously Fish combines it with other mbuna of
+      similar size that do not resemble it, FishProfiles with similarly aggressive species in large
+      tanks, and Practical Fishkeeping suggests a brown elongatus form as an accent in a mixed mbuna
+      community. A species tank is advised only for planned breeding. Decided unanimously by the
+      vote count (3 of 3).
+    sources: [*sf, *pfk, *fishprofiles, *glaser, *tff]
+    evidence:
+      - source: *sf
+        value: false
+        note: mixed mbuna tank possible; species tank for breeding
+      - source: *pfk
+        value: false
+        note: an elongatus trade form suggested for a mixed mbuna community
+      - source: *fishprofiles
+        value: false
+        note: only with similarly aggressive species
+      - source: *tff
+        value: false
+        note: suggests other mbuna as companions
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+  hybridGroup:
+    value: chindongo-elongatus-complex
+    confidence: low
+    rationale: >-
+      A conservative decision of the vote count (2 of 5, no qualified majority, confidence low). The
+      generator and tiebreaker-1 proposed a new group chindongo-elongatus-complex, checker-a a group
+      for the whole genus Chindongo, checker-b and tiebreaker-2 no group; the vote count took the
+      most common named group. The group rests on hobby crossing warnings and close relationship,
+      not on documented crosses: Seriously Fish reports that the more than thirty elongatus forms of
+      the lake interbreed readily and must not be mixed, and its profile of C. flavus warns against
+      keeping that species with C. elongatus or any member of its complex because they interbreed;
+      Practical Fishkeeping warns that mbuna in general hybridise in tanks. Seegers (1996) split the
+      very similar C. longior from C. elongatus at the type locality, and Li et al. (2016) placed the
+      elongate, vertically barred core of the old elongatus group in Chindongo. The null votes are
+      right that no paper documents a cross of C. elongatus with another species: Genner and Turner
+      (2005) list no cross for the elongatus group, although they note that even distantly related
+      haplochromines can produce fertile hybrids, and the known laboratory crosses of Chindongo (C.
+      demasoni with Pseudotropheus cyaneorhabdos, C. saulosi with Maylandia estherae) run across
+      genus borders and do not involve C. elongatus. The genus-wide group of checker-a is not taken,
+      because no source warns about crosses of C. elongatus with the deeper-bodied C. demasoni, C.
+      saulosi, C. socolofi or C. heteropictus; an archive post that prices a hypothetical demasoni
+      x 'Elongatus Chewere' cross is no report of a cross. The group therefore holds C. elongatus,
+      C. longior and C. flavus.
+    sources:
+      - *sf
+      - &sfflavus
+        kind: database
+        title: "Seriously Fish: Pseudotropheus flavus"
+        url: https://www.seriouslyfish.com/species/pseudotropheus-flavus/
+        accessed: 2026-10-13
+      - *pfk
+      - &seegers
+        kind: literature
+        title: "Seegers, L. (1996). The identity of Pseudotropheus elongatus, with the description of P. longior from Mbamba Bay, Tanzania, and notes on Genyochromis mento (Teleostei: Cichlidae). Ichthyological Exploration of Freshwaters 7(2), 97-110 (bibliographic record in the Catalog of Fishes; diagnosis as quoted by M. K. Oliver)."
+        url: https://researcharchive.calacademy.org/research/ichthyology/catalog/getref.asp?id=22571
+        accessed: 2026-10-13
+      - &li2016
+        kind: literature
+        title: "Li, S., Konings, A. F. and Stauffer, J. R. (2016). A revision of the Pseudotropheus elongatus species group (Teleostei: Cichlidae) with description of a new genus and seven new species. Zootaxa 4168(2), 353-381 (abstract)."
+        url: https://doi.org/10.11646/zootaxa.4168.2.9
+        accessed: 2026-10-13
+      - *cof
+      - *genner
+      - &gerwin
+        kind: literature
+        title: "Gerwin, J., Urban, S., Meyer, A. and Kratochwil, C. F. (2021). Of bars and stripes: a Malawi cichlid hybrid cross provides insights into genetic modularity and evolution of modifier loci underlying colour pattern diversification. Molecular Ecology 30(19), 4789-4803 (abstract)."
+        url: https://doi.org/10.1111/mec.16097
+        accessed: 2026-10-13
+      - &banse
+        kind: literature
+        title: "Banse, M., Hourant, A., Raick, X. and Parmentier, E. (2026). Hybrids reveal that taxonomically informative acoustic signals in Cichlidae are not limited to courtship sounds. Dataset, Dryad (dataset description)."
+        url: https://doi.org/10.5061/dryad.nk98sf865
+        accessed: 2026-10-13
+      - *fishbase
+      - &t38567
+        kind: archive
+        title: cichlids.com forum thread 38567
+        url: https://www.cichlids.com/disc/read.php?2,38567
+        accessed: 2026-10-13
+    evidence:
+      - source: *sf
+        value: chindongo-elongatus-complex
+        note: the many elongatus forms interbreed readily in tanks and are kept apart
+      - source: *sfflavus
+        value: chindongo-elongatus-complex
+        note: C. flavus interbreeds with C. elongatus and its complex
+      - source: *seegers
+        value: null
+        note: separates the sympatric C. longior from C. elongatus; reports no cross
+      - source: *li2016
+        value: null
+        note: places the barred core of the elongatus group in Chindongo; reports no cross
+      - source: *genner
+        value: null
+        note: lists documented mbuna crosses, none for the elongatus group
+      - source: *gerwin
+        value: null
+        note: laboratory cross of C. demasoni with Pseudotropheus cyaneorhabdos
+      - source: *banse
+        value: null
+        note: F1 hybrids of C. saulosi and Maylandia estherae
+      - source: *fishbase
+        value: null
+        note: no statement on hybridisation
+    verification:
+      method: conservative
+      votes: {agree: 2, total: 5}
+  coloration:
+    value: {baseColors: [blue, black], pattern: bars}
+    confidence: high
+    rationale: >-
+      Territorial males are dark brown to black with seven to eight blue vertical bars and two blue
+      bars across the forehead (redescription by Seegers 1996 as quoted by Oliver; Cichlid-Forum);
+      TropicalFreshwaterFish describes blue males with black bars, and Li et al. (2016) define the
+      genus by vertical bars without horizontal elements. Females and subordinate fish are
+      greyish brown with weaker bars.
+    sources: [*oliver, *cforum, *tff, *li2016, *seegers]
+    evidence:
+      - source: *oliver
+        value: {baseColors: [blue, black], pattern: bars}
+      - source: *cforum
+        value: {baseColors: [blue, black], pattern: bars}
+      - source: *tff
+        value: {baseColors: [blue, black], pattern: bars}
+      - source: *li2016
+        value: {pattern: bars}
+        note: genus diagnosis with vertical bars only
+  feedingSpeed:
+    value: hasty
+    confidence: low
+    rationale: >-
+      No source rates the feeding speed of this species. As an active, dominant mbuna it is expected
+      to rush food like the rubric example Maylandia.
+    sources:
+      - kind: model-knowledge
+        title: Feeding behaviour of aggressive mbuna in community tanks
+  minTank:
+    value: {volumeL: 240, lengthCm: 120, depthCm: 45}
+    confidence: medium
+    rationale: >-
+      For one male with four females and dense rockwork. Seriously Fish gives a base of 120 by 38 cm
+      (about 137 L), Guidarium 200 L with 120 cm, TropicalFreshwaterFish 101 cm with 170 to 209 L,
+      Aqualog 120 to 200 cm and Fishipedia 300 L; FishProfiles wants six feet for a community tank.
+      Because the aggression of the male needs room and broken lines of sight, a standard 120 cm tank
+      of about 240 L with 45 cm depth is the middle of these recommendations.
+    sources: [*sf, *guidarium, *tff, *aqualog, *fishipedia, *fishprofiles]
+    evidence:
+      - source: *sf
+        value: {volumeL: 137, lengthCm: 120, depthCm: 38}
+      - source: *guidarium
+        value: {volumeL: 200, lengthCm: 120}
+      - source: *tff
+        value: {volumeL: 170, lengthCm: 101}
+        note: 170 to 209 L
+      - source: *aqualog
+        value: {lengthCm: 120}
+        note: 120 to 200 cm
+      - source: *fishipedia
+        value: {volumeL: 300}
+        note: trade form 'Chewere'
+  lifespanYears:
+    value: {min: 5, max: 8}
+    confidence: low
+    rationale: >-
+      Riverpark Aquatics gives 5 to 8 years and Fishipedia 7 years for the trade form 'Chewere'; no
+      paper or major database states a lifespan for this species, so the value is a rough guide.
+    sources: [*riverpark, *fishipedia]
+    evidence:
+      - source: *riverpark
+        value: {min: 5, max: 8}
+      - source: *fishipedia
+        value: {min: 7, max: 7}
+        note: trade form 'Chewere'
+  breeding:
+    value: maternal-mouthbrooder
+    confidence: high
+    rationale: >-
+      Seriously Fish, Cichlid-Forum, FishProfiles and Fishipedia describe a maternal mouthbrooder
+      whose female carries the brood for about three to four weeks; Genner and Turner (2005) state
+      that all mbuna are maternal mouthbrooders, and the Cichlid Room Companion confirms it. FishBase
+      gives clutches of up to 37 eggs.
+    sources: [*sf, *cforum, *fishprofiles, *fishipedia, *genner, *fishbase, *crc]
+    evidence:
+      - source: *sf
+        value: maternal-mouthbrooder
+      - source: *cforum
+        value: maternal-mouthbrooder
+      - source: *fishprofiles
+        value: maternal-mouthbrooder
+        note: brooding for 21 to 28 days
+      - source: *genner
+        value: maternal-mouthbrooder
+        note: all mbuna
+  beginnerSuitability:
+    value: demanding
+    confidence: medium
+    rationale: >-
+      Water and food are simple for a mbuna, and Aquarium Glaser and the Cichlid Room Companion call
+      care easy. The aggression decides: Seriously Fish rates the difficulty moderate but advises
+      against the species for beginners, FishProfiles reserves it for experienced keepers, and
+      TropicalFreshwaterFish rates it 5 of 10. With conspecific aggression at level 4, whose rubric
+      description requires experience, a harem, dense rockwork and a crowded tank are needed to keep
+      it without losses, so the cautious rating applies.
+    sources: [*sf, *fishprofiles, *tff, *glaser, *crc]
+    evidence:
+      - source: *sf
+        value: moderate
+        note: moderate overall, not recommended for beginners
+      - source: *fishprofiles
+        value: demanding
+        note: best left to experienced keepers
+      - source: *tff
+        value: moderate
+        note: difficulty 5 of 10
+      - source: *glaser
+        value: easy
+        note: simple if the basic mbuna rules are kept
+      - source: *crc
+        value: easy
+        note: verification only
+partners:
+  suitable:
+    - species: Labidochromis caeruleus
+      reason: Yellow, unbarred rock dweller with a plant-rich diet; its colour and shape do not trigger rival fights.
+      condition: Crowded mbuna tank of at least 150 cm with dense rockwork.
+    - species: Labeotropheus trewavasae
+      reason: Robust aufwuchs grazer of similar size that holds its own against an aggressive mbuna and shares the low-protein diet.
+      condition: Tank of at least 150 cm; avoid strongly blue-barred males.
+    - species: Iodotropheus sprengerae
+      reason: Rust-brown, unbarred grazer that looks nothing like C. elongatus and eats the same food.
+      condition: Plenty of caves to retreat into, since it is the weaker fish.
+    - species: Synodontis multipunctatus
+      reason: Bottom-dwelling catfish that lives in the same alkaline, well-buffered water and is ignored by mbuna.
+  unsuitable:
+    - species: Chindongo longior
+      reason: Very similar slender species from the same bay; member of the same hybrid group and attacked as a rival.
+    - species: Chindongo flavus
+      reason: Member of the same hybrid group; the hobby warns that it interbreeds with the elongatus complex and that the males clash heavily.
+    - species: Chindongo saulosi
+      reason: Males share the blue-barred pattern, so the look-alike fish are attacked as rivals.
+    - species: Maylandia zebra
+      reason: Blue males with dark bars resemble C. elongatus males and provoke constant fights.
+    - species: Aulonocara jacobfreibergi
+      reason: Peaceful peacock that is harassed by mbuna aggression and needs more animal protein than C. elongatus tolerates.
+    - species: Copadichromis borleyi
+      reason: Calm open-water utaka that cannot cope with the persistent attacks of this mbuna.
+    - species: Paracheirodon innesi
+      reason: Small soft-water tetra; wrong water chemistry and easily hunted or stressed by mbuna.
+profile:
+  overview:
+    text: >-
+      Chindongo elongatus is a slim mbuna from the rocky shores of Lake Malawi and one of the
+      fiercest of the group. Adult males are striking: a dark brown to black body crossed by
+      seven or eight bright blue bars. In the hobby the name elongatus has long been used for
+      dozens of slender, barred mbuna. Science has since split that collection into several
+      genera and species, and many forms sold as elongatus are undescribed relatives rather
+      than this species. The true C. elongatus comes from Mbamba Bay on the Tanzanian shore.
+      In the tank it is a lively, colourful grazer that stays small, but its temper shapes
+      everything else: it needs a harem, lots of rock and tankmates that can stand up to it.
+      Kept that way it is a rewarding fish for keepers who already have experience with mbuna.
+    sources: [*cof, *li2016, *seegers, *sf]
+  habitat:
+    text: >-
+      The species is endemic to Lake Malawi. Its type locality is Mbamba Bay in Tanzania, and
+      FishBase places it between 11 and 12 degrees south; reports from Nkhata Bay on the Malawian
+      side are linked to it, though the exact range under the modern narrow concept is not settled.
+      It lives in shallow water over rocks, often around smaller stones where little sediment
+      settles, and grazes the algae film that covers them. Lake Malawi water is warm (about 21 to
+      29 C), soft in total hardness (3 to 5 dGH) and moderately alkaline (pH 7.7 to 8.6, 5 to 8
+      dKH). FishBase lists the species as Near Threatened in the IUCN assessment of 2018.
+    sources: [*fishbase, *sf, *branchu, *fao, *oliver]
+  sizeAndGrowth:
+    text: >-
+      Wild fish are small: museum specimens reach about 9.5 cm standard length, and many adults
+      in the lake stay near 8 cm. In aquariums with regular feeding they grow larger. Males
+      usually reach about 12 cm in total length, and occasional fish approach 13 to 14 cm.
+      Females stay smaller at about 10 cm. Overfeeding to push growth is a mistake with this
+      grazer, because rich food harms its gut long before it adds useful size. A lifespan of five
+      to eight years is typical in good conditions.
+    sources: [*fishbase, *sf, *tff, *glaser, *riverpark]
+  husbandry:
+    text: >-
+      Plan at least 120 cm of front length and about 240 litres for one male and four females;
+      a longer tank makes life easier for every fish. Build tall piles of rock with many caves
+      and gaps that break the line of sight, and leave a strip of open water above them. Sand
+      is a good substrate, and algae on the stones should be left as a natural snack. Stable,
+      alkaline water matters more than exact numbers: keep the pH between about 7.5 and 8.5,
+      the temperature between 24 and 27 C and the carbonate hardness high enough to hold the pH
+      steady. Strong filtration and large weekly water changes are needed, because a crowded
+      mbuna tank produces a lot of waste. Plants are usually eaten or dug out.
+    sources: [*sf, *pfk, *guidarium]
+  socialBehavior:
+    text: >-
+      The dominant male claims a rock pile and chases everything that looks like a rival. Other
+      males are attacked without pause, and in an ordinary tank a weaker male is often killed,
+      so keep only one male unless the tank is very large and densely decorated. He also drives
+      females hard; with fewer than four females per male a single female can be harassed to
+      death. In the wild, females guard their own small algae patches. In the tank, a crowded
+      mixed mbuna community or a harem of one male with four to six females spreads the
+      aggression best. Some keepers prefer a large group of ten or more young fish raised
+      together. Watch for torn fins and fish hiding at the surface, which signal that the
+      balance has tipped.
+    sources: [*sf, *tff, *fishprofiles, *glaser, *t45417]
+  diet:
+    text: >-
+      In the lake this mbuna combs loose algae and the small animals living in it from the rock
+      surface. In the tank the base of the diet should be a quality spirulina or vegetable flake
+      or small pellet with low protein. Blanched spinach, peas, nori and courgette are good
+      additions, and natural algae growth on the decoration keeps the fish busy. Frozen
+      crustaceans such as mysis or daphnia are fine as an occasional treat. Avoid beef heart,
+      other meat-based foods and high-protein pellets made for predatory cichlids. Feed small
+      portions once or twice a day and allow a fasting day each week; this mbuna will eat until
+      nothing is left, which makes overfeeding easy.
+    sources: [*fishbase, *sf, *fishprofiles, *pfk]
+  breeding:
+    text: >-
+      C. elongatus is a maternal mouthbrooder. The male cleans a flat stone or a patch of sand
+      near his cave and courts passing females with intense colours. The female lays a few eggs
+      at a time and takes them into her mouth; when she nibbles at the yellow egg spots on the
+      male's anal fin, the eggs are fertilised. Clutches are small, up to about 37 eggs. She
+      carries them for three to four weeks without eating, then releases fully formed fry that
+      take brine shrimp nauplii and crushed flake right away. Because the male rarely leaves a
+      holding female alone, many breeders move her to a separate tank shortly before release.
+      Stable water around pH 8.2 suits breeding.
+    sources: [*sf, *fishbase, *fishprofiles, *tff]
+  sexing:
+    text: >-
+      Adult males are easy to recognise. They are larger and show a dark brown to black body
+      with seven or eight broad blue bars, blue bands across the forehead, black pelvic fins
+      with a white front edge and a black anal fin carrying one to several yellow egg spots.
+      Females and young fish are greyish brown with fainter bars and duller or missing egg
+      spots. Subordinate males can stay in this drab dress for a long time, so a dull fish is
+      not always a female; venting gives a reliable answer in grown fish. Colour also varies
+      between populations, which is one more reason to buy fish with a known collection site.
+    sources: [*oliver, *cforum, *sf]
+  compatibility:
+    text: >-
+      Good company are other robust mbuna of similar size that look clearly different, such as
+      the yellow Labidochromis caeruleus, orange forms of Labeotropheus or the rusty
+      Iodotropheus sprengerae, plus hardy catfish such as Synodontis multipunctatus. Never keep it
+      with C. longior or C. flavus, or with other fish sold as elongatus: the hobby warns that the
+      forms of this complex interbreed, and the males fight hard. Other fish with blue bodies and
+      dark bars, for example Maylandia zebra or C. saulosi, are attacked as rivals. Calm haps such
+      as peacocks (Aulonocara) and utaka (Copadichromis) suffer under the constant pressure and
+      also need richer food. Small soft-water community fish do not suit the water or the
+      temperament. Stocking the tank densely with young fish of similar size helps to share out
+      aggression.
+    sources: [*sf, *sfflavus, *pfk, *tff]
+  problems:
+    text: >-
+      The most common mistake is too much protein. Mbuna fed meaty or rich food often develop
+      Malawi bloat: the belly swells and feels firm, the fish stops eating and the eyes may
+      bulge, and the disease often ends in death. A plant-based diet, small portions and good
+      water quality are the best protection. The second big risk is aggression: one male too
+      many, too few females or too little rock leads to injured or killed fish. Torn fins and
+      wounds then invite bacterial and fungal infections. Mixing several elongatus forms produces
+      hybrids that should never be passed on. Fish bought under a trade name may not be this
+      species at all, so ask for the collection site. Soft, unbuffered water lets the pH drop,
+      which stresses the fish.
+    sources:
+      - *pfk
+      - *fishprofiles
+      - *sf
+      - kind: archive
+        title: cichlids.com forum thread 20566
+        url: https://www.cichlids.com/disc/read.php?2,20566
+        accessed: 2026-10-13
+provenance:
+  runs:
+    - {role: generator, model: claude-opus-5-5, date: 2026-10-13}
+    - {role: checker, model: claude-opus-5-5, date: 2026-10-13}
+    - {role: checker, model: claude-sonnet-5-5, date: 2026-10-13}
+    - {role: checker, model: claude-opus-5-5, date: 2026-10-13}
+    - {role: checker, model: claude-sonnet-5-5, date: 2026-10-13}
+    - {role: adjudicator, model: claude-opus-5-5, date: 2026-10-13}
+  disagreements:
+    - field: features.origin.value.waterbody
+      proposals:
+        - {by: generator, value: Lake Malawi}
+        - {by: checker-a, value: Lake Malawi}
+        - {by: checker-b, value: lake-malawi}
+      decision: Lake Malawi
+      rationale: Both spellings name the same entry of the water body table; the name form is used, as in the other proposals.
+    - field: features.origin.value.localities
+      proposals:
+        - {by: generator, value: [Mbamba Bay (Tanzania), Hongi Island (Tanzania), Nkhata Bay (Malawi)]}
+        - {by: checker-a, value: [Mbamba Bay (Tanzania), type locality, Hongi Island (Tanzania), Nkhata Bay (Malawi)]}
+        - {by: checker-b, value: [Mbamba Bay (type locality), Nkata Bay, Hongi Island]}
+      decision: [Mbamba Bay (Tanzania), Nkhata Bay (Malawi)]
+      rationale: >-
+        Mbamba Bay rests on the Catalog of Fishes and Nkhata Bay on Seriously Fish. Hongi Island rests
+        only on photographs in the Cichlid Room Companion, which serves for verification and is never
+        the origin of a value, and no other source names it; the island is therefore left out, and
+        the Hongi Island variant of the generator as well.
+    - field: features.khDkh.tolerance
+      proposals:
+        - {by: generator, value: {min: 5, max: 15}}
+        - {by: checker-a, value: {min: 5, max: 12}}
+        - {by: checker-b, value: {min: 5, max: 14}}
+      decision: {min: 5, max: 14}
+      rationale: Decided by the vote count (unanimous, 3 of 3 within 2 dKH, confidence low); the median of the agreeing upper bounds is 14 dKH. No species source states a carbonate hardness.
+    - field: features.diet.value.foods
+      proposals:
+        - {by: generator, value: [spirulina flakes and pellets, algae, blanched spinach and peas, nori, small amounts of frozen crustaceans]}
+        - {by: checker-a, value: [algae and aufwuchs, spirulina flakes and other vegetable foods, small invertebrates from the algal cover]}
+        - {by: checker-b, value: [algae, spirulina, blanched spinach, nori, small live and frozen food]}
+      decision: [spirulina flakes and pellets, algae, blanched spinach and peas, nori, small amounts of frozen crustaceans]
+      rationale: >-
+        The diet is decided by the vote count (unanimous on type aufwuchs and bloatSensitive true),
+        which takes the food list of the top candidate. It names the plant-based staples that all
+        proposals share and limits animal food to small amounts, as Seriously Fish and FishProfiles
+        advise.
+    - field: features.hybridGroup.value
+      proposals:
+        - {by: generator, value: chindongo-elongatus-complex}
+        - {by: checker-a, value: chindongo}
+        - {by: checker-b, value: null}
+        - {by: tiebreaker-1, value: chindongo-elongatus-complex}
+        - {by: tiebreaker-2, value: null}
+      decision: chindongo-elongatus-complex
+      rationale: >-
+        Decided by the vote count as the conservative value (2 of 5, no qualified majority,
+        confidence low): the most common named group. The group rests on the crossing warnings of
+        Seriously Fish for the elongatus forms and for C. flavus and on the close relationship
+        shown by Seegers (1996) and Li et al. (2016), not on a documented cross; the null votes
+        rightly note that no paper reports one. The genus-wide group of checker-a lacks any source
+        for crosses with the deeper-bodied Chindongo. The group is added to the curated list with
+        C. elongatus, C. longior and C. flavus.
+    - field: features.maxSizeCm.value
+      proposals:
+        - {by: generator, value: {male: 12, female: 10}}
+        - {by: checker-a, value: {male: 12, female: 10}}
+        - {by: checker-b, value: {male: 13, female: 10}}
+      decision: {male: 12, female: 10}
+      rationale: >-
+        The feature is the typical maximum of well-kept aquarium fish, not a top value. FishProfiles,
+        Aqualog and Riverpark Aquatics give 12 cm and Cichlid-Forum 12.7 cm; only Seriously Fish and
+        TropicalFreshwaterFish reach 13.5 cm, so 13 cm describes the upper tail.
+    - field: features.territory.value
+      proposals:
+        - {by: generator, value: {size: small, breedingOnly: false}}
+        - {by: checker-a, value: {size: small, breedingOnly: false}}
+        - {by: checker-b, value: {size: large, breedingOnly: false}}
+      decision: {size: small, breedingOnly: false}
+      rationale: >-
+        The defended area is a rock pile around a cave or spawning site and, in the wild, a small
+        algae garden (Seriously Fish, FishBase), which is the small level of the rubric. The large
+        territorial demands that FishProfiles reports describe pressure on tankmates, which the
+        aggression levels 4 and 3 already capture.
+    - field: features.social.value
+      proposals:
+        - {by: generator, value: {structure: harem, ratio: 4}}
+        - {by: checker-a, value: {structure: harem, ratio: 4}}
+        - {by: checker-b, value: {structure: harem, ratio: 5}}
+      decision: {structure: harem, ratio: 4}
+      rationale: >-
+        Seriously Fish asks for four to six females, TropicalFreshwaterFish and Guidarium for at
+        least four; four is the lowest ratio that all stronger recommendations accept and matches
+        the minimum tank.
+    - field: features.minTank.value
+      proposals:
+        - {by: generator, value: {volumeL: 200, lengthCm: 120, depthCm: 40}}
+        - {by: checker-a, value: {volumeL: 240, lengthCm: 120, depthCm: 45}}
+        - {by: checker-b, value: {volumeL: 250, lengthCm: 120, depthCm: 50}}
+      decision: {volumeL: 240, lengthCm: 120, depthCm: 45}
+      rationale: >-
+        All proposals agree on 120 cm length. The sources range from 137 L (Seriously Fish) through
+        200 L (Guidarium) to 300 L (Fishipedia); a standard 120 cm tank of about 240 L with 45 cm
+        depth is the middle value and gives the aggressive male and four females room and rockwork.
+    - field: features.lifespanYears.value
+      proposals:
+        - {by: generator, value: {min: 5, max: 8}}
+        - {by: checker-a, value: {min: 6, max: 10}}
+        - {by: checker-b, value: {min: 5, max: 8}}
+      decision: {min: 5, max: 8}
+      rationale: >-
+        Riverpark Aquatics gives 5 to 8 years and Fishipedia 7 years; the upper bound of 10 years
+        rested on model knowledge alone.
+    - field: features.beginnerSuitability.value
+      proposals:
+        - {by: generator, value: moderate}
+        - {by: checker-a, value: demanding}
+        - {by: checker-b, value: moderate}
+      decision: demanding
+      rationale: >-
+        Seriously Fish advises against the species for beginners and FishProfiles reserves it for
+        experienced keepers; the easy ratings of Aquarium Glaser and the Cichlid Room Companion
+        concern water and food only. Conspecific aggression at level 4 requires experience by its
+        rubric definition, and the catalog rates the other level 4 species demanding, so the
+        cautious rating keeps the features consistent.
