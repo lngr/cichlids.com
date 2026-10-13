@@ -1,0 +1,2160 @@
+schemaVersion: 1
+id: paratilapia-polleni
+legacyIds:
+  - 572
+status: described
+taxonomy:
+  validName: Paratilapia polleni
+  genus: Paratilapia
+  species: polleni
+  author: "Bleeker, 1868"
+  source: &a1
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes: species of Paratilapia, updated 21 September 2026"
+    url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=specie\
+      s&genus=Paratilapia"
+    accessed: 2026-10-13
+  synonyms:
+    - name: Paratilapia bleekeri
+      note: "Sauvage, 1891. Catalog synonym; historical large-spot trade usage does not prove parental
+        identity."
+    - name: Paracara typus
+      note: "Bleeker, 1878. Catalog synonym, not an accepted name for a separate eastern species."
+  legacyNames:
+    - Paratilapia polleni
+  note: "The Catalog retains polleni as the valid described name and treats bleekeri and Paracara
+    typus as synonyms. The operational profile scope is the northern large-spotted lineage called
+    polleni sensu stricto in the 2018 COI study. Eastern Paratilapia sp. small spot, also called
+    smallspots East or East Coast Small Spots, is treated separately as undescribed; a distinct Nosy
+    Be lineage is also reported. These genetic distinctions are not formal species descriptions.
+    Seriously Fish reverses older spot-based assignments, and Williams discusses names not accepted
+    by the Catalog. Spot size or a shop label cannot establish identity. FishBase lists Vulnerable
+    (VU), B1ab(iii), assessed on 24 June 2016 in its 2025-2 metadata. This is a 2016 assessment
+    under the database name, not a new assessment in 2026 or a separate assessment of each
+    undescribed lineage; the primary IUCN assessment text was not independently read."
+names:
+  trade:
+    en:
+      - Madagascar cichlid
+      - Black diamond cichlid
+      - Starry night cichlid
+      - Marakely
+variants:
+  - name: Andapa
+    kind: locality
+    note: Northern large-spotted stock associated with polleni sensu stricto in the 2018 study; locality
+      identity requires documented provenance.
+  - name: Sambirano
+    kind: locality
+    note: Northern mainland lineage context; a locality label does not establish interchangeability of
+      all northern populations.
+features:
+  origin:
+    value: &a41
+      continent: Africa
+      region: Northern Madagascar under the large-spotted sensu stricto interpretation
+      waterbody: null
+      localities:
+        - "Ambazoana, type locality"
+        - Sambirano drainage
+        - Andapa
+    confidence: medium
+    rationale: "The described name is Malagasy. Northern large-spotted populations are the operational
+      scope supported by the 2018 lineage analysis. Generator and checker-c focus on northern
+      populations; checker-a also includes Alaotra, Salehy and Nosy Be, and checker-b includes
+      eastern historical records. The Catalog itself gives an eastern distribution alongside a
+      northern type locality. That unresolved difference prevents treating all historical localities
+      as proven native populations of the northern lineage."
+    sources:
+      - *a1
+      - &a2
+        kind: literature
+        title: "Phylogenetic, morphological and systematic studies of three genera of Cichlidae endemic of
+          Madagascar (2018)"
+        url: "https://doi.org/10.15406/bij.2018.02.00110"
+        accessed: 2026-10-13
+      - &a3
+        kind: database
+        title: "FishBase: Paratilapia polleni species summary"
+        url: "https://www.fishbase.se/summary/Paratilapia-polleni.html"
+        accessed: 2026-10-13
+      - &a10
+        kind: literature
+        title: "Williams (2009). How to keep Paratilapia. Practical Fishkeeping, August 2009"
+        url: "https://www.practicalfishkeeping.co.uk/features/how-to-keep-paratilapia/"
+        accessed: 2026-10-13
+      - &a28
+        kind: database
+        title: "Victorian Cichlid Society: Paratilapia sp. East Coast Small Spots, updated 13 June 2010"
+        url: "https://www.cichlidpower.org.au/VCS_3/PRF/HTM/Paratilapia%20sp%20East%20Coast%20Small%20Spots\
+          .html"
+        accessed: 2026-10-13
+    evidence:
+      - source: *a1
+        value:
+          continent: Africa
+          region: Eastern Madagascar
+        note: Catalog distribution statement; the type locality is northern Ambazoana.
+      - source: *a2
+        value:
+          continent: Africa
+          region: Northern Madagascar
+          localities:
+            - Sambirano
+            - Andapa
+        note: Northern large-spotted lineage; eastern smallspots and a Nosy Be lineage are treated
+          separately.
+      - source: *a3
+        value:
+          continent: Africa
+          region: Madagascar
+        note: Island endemism under the database species concept.
+  temperatureC:
+    value: &a33
+      min: 25
+      max: 28
+    confidence: low
+    rationale: "The tally uses the median of all six proposed lower and upper bounds because no
+      candidate secured four agreeing votes. Rounded to whole degrees, this yields 25 to 28 C with
+      low confidence. Loiselle measured 25.2 and 26.6 C at northern regional stations; occurrence of
+      identified polleni at each thermometer station is unconfirmed. The 28 C Salehy measurement has
+      captured historical polleni but may belong to the eastern small-spot lineage. The broader 25.2
+      to 27.8 C killifish habitat summary includes Nosy Be, and the Alaotra study has surface means
+      from 25.7 to around 30 C plus a 41.3 C shallow-water extreme. Those wider datasets concern
+      unresolved stocks or regional conditions, not a confirmed seasonal range of northern polleni.
+      The 12 to 40 C survival accounts are not used as typical habitat endpoints. FishBase 24 to 28
+      C derives from an aquarium atlas. Ravelobe and the Itasy abstract corroborate warm waters
+      without verifying the endpoints or modern species identity; the Itasy full text was
+      unavailable through fetch-oa. Proposals were generator: 25.2 to 26.6; checker-a: 24 to 30;
+      checker-b: 25 to 28; checker-c: 25.2 to 27.8; tiebreaker-1: 25.2 to 28; tiebreaker-2: 25.2 to
+      26.6."
+    sources:
+      - &a4
+        kind: literature
+        title: "Loiselle (2006). A review of the Malagasy Pachypanchax, with descriptions of four new
+          species"
+        url: "https://doi.org/10.11646/zootaxa.1366.1.1"
+        accessed: 2026-10-13
+      - &a6
+        kind: database
+        title: "Seriously Fish: Pachypanchax omalonotus, habitat measurements"
+        url: "https://www.seriouslyfish.com/species/pachypanchax-omalonotus/"
+        accessed: 2026-10-13
+      - &a5
+        kind: literature
+        title: "Stiassny and Gerstner (1992). The parental care behaviour of Paratilapia polleni, with a
+          discussion of maternal care in Cichlidae"
+        url: "https://doi.org/10.1007/BF00004768"
+        accessed: 2026-10-13
+      - &a7
+        kind: literature
+        title: "Lake Alaotra wetlands: how long can Madagascar's most important rice and fish production
+          region withstand the anthropogenic pressure?"
+        url: "https://doi.org/10.4314/mcd.v10i3.4"
+        accessed: 2026-10-13
+      - &a11
+        kind: literature
+        title: "Caballero-Huertas et al. (2024 online, 2025 volume). New insights into the reproductive
+          physiology and culture approaches of Paratilapia sp."
+        url: "https://doi.org/10.1111/jwas.13103"
+        accessed: 2026-10-13
+      - *a3
+      - kind: database
+        title: "FishBase: reference 12468, Aquarien Atlas volume 4"
+        url: "https://www.fishbase.se/references/FBRefSummary.php?ID=12468"
+        accessed: 2026-10-13
+      - &a8
+        kind: literature
+        title: Ranarijaona et al. (2013). Evaluation of water hyacinth proliferation in Lake Ravelobe and a
+          restoration plan
+        url: "https://doi.org/10.4000/vertigo.13522"
+        accessed: 2026-10-13
+      - &a9
+        kind: literature
+        title: "Rasoloariniaina (2019). Endemic fish species diagnostic in Lake Itasy catchment area,
+          towards a conservation strategy. Conference abstract only"
+        url: "https://doi.org/10.13140/RG.2.2.31219.07201"
+        accessed: 2026-10-13
+      - *a2
+    evidence:
+      - source: *a4
+        value:
+          min: 25.2
+          max: 26.6
+        note: Ramena and Ankaze readings in Table 3; regional proxies with incomplete station occupancy.
+      - source: *a5
+        value:
+          min: 28
+          max: 28
+        note: Salehy Lake collection in June 1988; eastern historical identification.
+      - source: *a6
+        value:
+          min: 25.2
+          max: 27.8
+        note: "Four-station aggregate from Loiselle, including Nosy Be; not independent sampling."
+      - source: *a7
+        value:
+          min: 25.7
+          max: 30
+        note: Seasonal surface means; the measured 41.3 C maximum is a shallow-water extreme and stock
+          identity is unresolved.
+      - source: *a8
+        value:
+          min: 26.33
+          max: 26.33
+        note: Reported maximum mean temperature; neither an annual minimum nor an absolute maximum.
+      - source: *a9
+        value:
+          min: 27.4
+          max: 27.4
+        note: Abstract survey mean across several sites containing unresolved Paratilapia sp.; no
+          station-specific endpoint.
+    verification:
+      method: median
+      votes:
+        agree: 3
+        total: 6
+    tolerance:
+      value: &a37
+        min: 23
+        max: 28
+      confidence: low
+      rationale: "The tally applies the conservative intersection of all six proposals: the highest lower
+        endpoint is 23 and the lowest upper endpoint is 28 C. This already contains the decided
+        natural interval. There were only three agreeing votes around the leading candidate, so low
+        confidence is mandatory. FishFish and Aqua-Fish support 23 to 28 C. Seriously Fish lists the
+        wider 17 to 28 C band but prefers approximately 22 to 27 C, and the 1992 study kept eastern
+        historical stock for about two years at 28 to 30 C. Neither colder routine limits nor 30 C
+        can be transferred confidently to every northern stock. The culture paper recommends 22 to
+        28 C for unidentified Paratilapia sp.; Williams advises at least 26 C. Routine 26 to 27 C
+        sits within these overlapping recommendations. Proposals were generator: 23 to 28;
+        checker-a: 17 to 30; checker-b: 22 to 30; checker-c: 22 to 28; tiebreaker-1: 22 to 30;
+        tiebreaker-2: 22 to 28."
+      sources:
+        - &a12
+          kind: database
+          title: "FishFish: Paratilapia polleni, aquarium maintenance parameters"
+          url: "https://www.fishfish.fr/poisson/paratilapia-polleni"
+          accessed: 2026-10-13
+        - &a14
+          kind: database
+          title: "Nordiska Ciklidsallskapet species register: Paratilapia polleni"
+          url: "https://www.ciklid.org/artregister/art.php?ID=470"
+          accessed: 2026-10-13
+        - *a10
+        - &a15
+          kind: database
+          title: "Seriously Fish: Paratilapia polleni"
+          url: "https://www.seriouslyfish.com/species/paratilapia-polleni/"
+          accessed: 2026-10-13
+        - *a5
+        - *a11
+        - *a3
+        - &a16
+          kind: website
+          title: "The Fish Collection: Starry Night Cichlid care guide, water parameter table"
+          url: "https://www.thefishcollection.com/en/species/starry-night-cichlid"
+          accessed: 2026-10-13
+        - &a13
+          kind: database
+          title: "Aqua-Fish: Marakeli cichlid care profile"
+          url: "https://en.aqua-fish.net/fish/marakeli-cichlid"
+          accessed: 2026-10-13
+      evidence:
+        - source: *a12
+          value:
+            min: 23
+            max: 28
+          note: Aquarium maintenance interval.
+        - source: *a13
+          value:
+            min: 23
+            max: 28
+          note: Aquarium recommendation.
+        - source: *a14
+          value:
+            min: 23
+            max: 27
+          note: Species-register maintenance interval.
+        - source: *a15
+          value:
+            min: 17
+            max: 28
+          note: Broad aquarium interval; its preferred 72 to 80 F band is approximately 22.2 to 26.7 C.
+        - source: *a5
+          value:
+            min: 28
+            max: 30
+          note: Extended captive rearing followed by successful spawning; historical eastern stock.
+        - source: *a11
+          value:
+            min: 22
+            max: 28
+          note: "Reviewed culture optimum for unresolved Paratilapia sp., not a chronic endpoint experiment."
+        - source: *a10
+          value:
+            min: 26
+            max: null
+          note: Lower recommendation only; no upper limit stated.
+        - source: *a3
+          value:
+            min: 24
+            max: 28
+          note: Database temperature from an aquarium-atlas reference.
+        - source: *a16
+          value:
+            min: 22
+            max: 28
+          note: Retailer advice with errors elsewhere in the page; low weight.
+      verification:
+        method: conservative
+        votes:
+          agree: 3
+          total: 6
+  ph:
+    value: &a34
+      min: 5
+      max: 7.5
+    confidence: low
+    rationale: "Five of six votes support 5 to 7.5. Loiselle reports acidic northern streams at 5 to 6
+      with photograph-based local reports of Paratilapia in deeper water, and western northern
+      floodplain waters at 6.5 to 7.2 including an Ifasy lake with collected fish. Ramena reaches
+      7.5. Ravelobe measurements of 5.5 to 6.8 and historical Alaotra data add regional context
+      without resolving the lineage. The killifish summary repeats the same northern sampling. The
+      interval is therefore provisional despite qualified majority; laboratory or care-sheet pH is
+      not substituted for habitat measurements. Proposals were generator: 5 to 7.5; checker-a: 6 to
+      7.5; checker-b: 5 to 7.5; checker-c: 5 to 7.5; tiebreaker-1: 5 to 7.5; tiebreaker-2: 5 to
+      7.5."
+    sources:
+      - *a4
+      - *a6
+      - &a17
+        kind: literature
+        title: "Rabelahatra. Les ressources en peche dans les grands plans d'eaux continentaux. FAO
+          Madagascar fisheries planning report, Annex VII"
+        url: "https://www.fao.org/4/ab825f/AB825F09.htm"
+        accessed: 2026-10-13
+      - *a8
+      - *a9
+      - *a2
+    evidence:
+      - source: *a4
+        value:
+          min: 5
+          max: 7.5
+        note: Northern field envelope; occurrence ranges from local reports to an Ifasy collection and
+          regional Ramena association.
+      - source: *a6
+        value:
+          min: 7
+          max: 7.5
+        note: Mixed mainland and island field summary reproduced from Loiselle.
+      - source: *a8
+        value:
+          min: 5.5
+          max: 6.8
+        note: Measured Lake Ravelobe interval; stock identity not resolved in this study.
+      - source: *a17
+        value:
+          min: 6.8
+          max: 7
+        note: Historical Lake Alaotra water under the broad species name.
+      - source: *a9
+        value:
+          min: 7.5
+          max: 7.5
+        note: Abstract survey mean for multiple sites; unresolved Paratilapia sp.
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 5
+        total: 6
+    tolerance:
+      value: &a38
+        min: 5
+        max: 8
+      confidence: low
+      rationale: "The qualified majority retains 5 to 8. The established care recommendations chiefly span
+        6.5 to 8, with FishFish at 6 to 7.5 and aquarium spawning observed at 7.5 to 8. The lower
+        extension to 5 is required to contain the natural range and is not proof of healthy years in
+        captivity at that endpoint. The culture review repeats the wider 6.5 to 9 requirement
+        without testing long-term health at 9; checker-a proposed a higher 8.5 ceiling. Low
+        confidence reflects lineage uncertainty and missing chronic endpoint trials. The archive
+        observation at pH 6 has little weight and does not validate pH 5. The fetched AquaInfo
+        article contained no numerical pH care range, so the attributed 6.5 to 8 evidence is not
+        repeated. Proposals were generator: 5 to 8; checker-a: 6 to 8.5; checker-b: 5 to 8;
+        checker-c: 5 to 8; tiebreaker-1: 5 to 8; tiebreaker-2: 5 to 8."
+      sources:
+        - *a12
+        - *a14
+        - *a15
+        - *a4
+        - *a5
+        - &a19
+          kind: website
+          title: "NageoireBleue: Paratilapia polleni structured aquarium care sheet"
+          url: "https://www.nageoirebleue.com/products/cichlide-diamant-noir-livraison-seulement"
+          accessed: 2026-10-13
+        - &a18
+          kind: database
+          title: "Fishkeeping.co.uk: Marakely structured care sheet 193"
+          url: "https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=193"
+          accessed: 2026-10-13
+        - *a16
+        - &a21
+          kind: website
+          title: "DeCloux: Paratilapia polleni. AquaInfo species profile"
+          url: "https://aquainfo.nl/artikel/paratilapia-polleni/"
+          accessed: 2026-10-13
+        - *a11
+        - &a22
+          kind: website
+          title: DeCloux. Paratilapia polleni. AquaInfo species article
+          url: "https://aquainfo.nl/en/article/paratilapia-polleni/"
+          accessed: 2026-10-13
+        - *a13
+        - &a20
+          kind: archive
+          title: cichlids.com forum thread 29812
+          url: "https://www.cichlids.com/disc/read.php?1,29812"
+          accessed: 2026-10-13
+      evidence:
+        - source: *a15
+          value:
+            min: 6.5
+            max: 8
+          note: Aquarium recommendation.
+        - source: *a14
+          value:
+            min: 6.5
+            max: 8
+          note: Species-register care interval.
+        - source: *a12
+          value:
+            min: 6
+            max: 7.5
+          note: Aquarium recommendation.
+        - source: *a5
+          value:
+            min: 7.5
+            max: 8
+          note: Successful aquarium spawning; not a full tolerance trial.
+        - source: *a11
+          value:
+            min: 6.5
+            max: 9
+          note: Requirement repeated from older literature; stock identified as Paratilapia sp.
+        - source: *a4
+          value:
+            min: 5
+            max: 7.5
+          note: "Habitat evidence only, used for the required lower extension."
+        - source: *a13
+          value:
+            min: 6.5
+            max: 7.7
+          note: Narrower care interval.
+        - source: *a18
+          value:
+            min: 6.5
+            max: 8
+          note: Care sheet with substantial overlap in advice with Seriously Fish.
+        - source: *a19
+          value:
+            min: 6.5
+            max: 7.5
+          note: Retailer recommendation; low weight.
+        - source: *a16
+          value:
+            min: 7
+            max: 8
+          note: Retailer recommendation; low weight.
+        - source: *a20
+          value:
+            min: 6
+            max: 6
+          note: Community account with unspecified duration and problematic nitrate conditions; very low
+            weight.
+      verification:
+        method: qualified-majority
+        votes:
+          agree: 5
+          total: 6
+  ghDgh:
+    value: &a35
+      min: 0
+      max: 4
+    confidence: low
+    rationale: "Five agreeing votes emphasize measured northern water. Their median upper bound is
+      rounded by the tally from 4.1 to 4 dGH. Loiselle reports below 18 mg/L and 36 to 71.6 mg/L as
+      CaCO3, approximately below 1.01 and 2.02 to 4.01 dGH. Zero encodes the unknown lower endpoint
+      of a censored measurement. The broader 2 to 15 dGH database summary includes a Nosy Be creek
+      without syntopic cichlids; that maximum does not define polleni habitat. FishBase supplies
+      only an unlocalized maximum of 10 dGH, not a 1 to 10 measured interval. The Itasy abstract
+      reports very soft survey water but unresolved Paratilapia sp. These records do not establish
+      two independent hardness series for confirmed northern polleni. Proposals were generator: 0 to
+      4; checker-a: 1 to 10; checker-b: 0 to 4.1; checker-c: 0 to 4.1; tiebreaker-1: 0 to 4.1;
+      tiebreaker-2: 0 to 4.1."
+    sources:
+      - *a4
+      - *a6
+      - *a3
+      - *a9
+      - *a2
+    evidence:
+      - source: *a4
+        value:
+          min: 0
+          max: 4.01
+        note: Northern field titrations converted with 17.848 mg/L as CaCO3 per German degree. The lower
+          bound is censored below approximately 1.01 degrees; zero was not measured.
+      - source: *a6
+        value:
+          min: 2
+          max: 15
+        note: Derivative four-station range; 12 to 15 dGH belongs to a Nosy Be killifish creek without
+          syntopic fish.
+      - source: *a3
+        value:
+          min: null
+          max: 10
+        note: Only an upper limit is given; no collecting station or lower endpoint.
+      - source: *a9
+        value:
+          min: 0
+          max: 2
+        note: Abstract gives a below-1 to 2 dGH survey range; zero represents an unresolved lower bound and
+          fish identity is provisional.
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 5
+        total: 6
+    tolerance:
+      value: &a39
+        min: 0
+        max: 25
+      confidence: low
+      rationale: "The tally takes the qualified-majority median of the agreeing proposals, retaining 0 to
+        25 dGH. Seriously Fish recommends 8 to 25 dGH; FishFish gives 4 to 18 and Aqua-Fish 7 to 16.
+        The zero floor is included to contain censored native hardness, rather than as a
+        demonstrated safe target for mineral-free aquarium water. Healthy years at both endpoints
+        have not been documented for securely identified northern polleni, so confidence stays low.
+        The fetched AquaInfo article did not state the attributed 8 to 25 dGH interval. The 1992
+        study also gives no measured GH interval; its general adaptability description is not
+        numerical tolerance evidence. Proposals were generator: 0 to 18; checker-a: 1 to 25;
+        checker-b: 0 to 25; checker-c: 0 to 25; tiebreaker-1: 0 to 25; tiebreaker-2: 0 to 25."
+      sources:
+        - *a15
+        - *a3
+        - *a5
+        - *a4
+        - *a19
+        - *a16
+        - &a23
+          kind: website
+          title: "Tropischevissengids: Madagaskar cichlide structured care profile"
+          url: "https://www.tropischevissengids.nl/vissen/cichliden/afrikaanse-cichliden-overigen/madagaskar-\
+            cichlide"
+          accessed: 2026-10-13
+        - *a21
+        - *a12
+        - *a22
+        - *a13
+        - &a24
+          kind: website
+          title: "Tropical Treasures Wyo (2025). Starry Night Cichlid care guide, water parameter table"
+          url: "https://tropicaltreasureswyo.com/blogs/tank-buddy-blog/starry-night-cichlid-care-guide-parati\
+            lapia-polleni"
+          accessed: 2026-10-13
+      evidence:
+        - source: *a15
+          value:
+            min: 8
+            max: 25
+          note: Aquarium GH recommendation.
+        - source: *a12
+          value:
+            min: 4
+            max: 18
+          note: Narrower aquarium GH recommendation.
+        - source: *a13
+          value:
+            min: 7
+            max: 16
+          note: German hardness degrees; the accompanying ppm conversion agrees.
+        - source: *a4
+          value:
+            min: 0
+            max: 4.01
+          note: "Natural hardness supporting only the required soft-water extension, with censored lower
+            endpoint."
+        - source: *a19
+          value:
+            min: 6
+            max: 15
+          note: Retailer care interval; low weight.
+        - source: *a16
+          value:
+            min: 5
+            max: 15
+          note: Retailer advice; no independent lifetime trial.
+        - source: *a23
+          value:
+            min: 6
+            max: 13
+          note: Hobby care interval; low weight.
+        - source: *a24
+          value:
+            min: 6
+            max: 15
+          note: Retailer care interval; low weight.
+      verification:
+        method: qualified-majority
+        votes:
+          agree: 5
+          total: 6
+  khDkh:
+    value: &a36
+      min: 0
+      max: 4
+    confidence: low
+    rationale: "All four available natural-KH proposals agree within the two-degree threshold, so the
+      tally takes the medians and rounds to 0 to 4 dKH; this plain natural fact carries no
+      verification object. Direct northern carbonate-hardness titrations are below 18 and 36 to 71.6
+      mg/L as CaCO3, approximately below 1.01 and 2.02 to 4.01 dKH. Zero is a reporting bound for
+      censored low alkalinity. The wider 2 to 11 dKH database summary mixes mainland and Nosy Be
+      stations. Historical Alaotra SBV 1.49 is about 4.17 dKH only if its unstated unit follows the
+      meq/L convention; it is retained as an inference rather than controlling the range. The carbon
+      study measures DIC and alkalinity separately, so its DIC cannot be substituted directly for
+      KH. No KH is inferred from GH, conductivity or pH. Proposals were generator: 0 to 4;
+      checker-a: 1 to 6; checker-b: 0 to 4.2; checker-c: 0 to 4.1."
+    sources:
+      - *a4
+      - *a6
+      - kind: literature
+        title: "Biogeochemical functioning of Lake Alaotra (Madagascar): a reset of aquatic carbon sources
+          along the land-ocean aquatic continuum"
+        url: "https://doi.org/10.5194/bg-22-2403-2025"
+        accessed: 2026-10-13
+      - *a17
+    evidence:
+      - source: *a4
+        value:
+          min: 0
+          max: 4.01
+        note: Northern field titrations converted with 17.848 mg/L as CaCO3 per German degree. The lower
+          bound is censored below approximately 1.01 degrees; zero was not measured.
+      - source: *a6
+        value:
+          min: 2
+          max: 11
+        note: Derivative mixed-station field range; its island maximum is excluded from northern species
+          attribution.
+      - source: *a17
+        value:
+          min: 4.17
+          max: 4.17
+        note: SBV 1.49 at Lake Alaotra converted only under the assumed historical meq/L convention;
+          uncertain unit and lineage.
+    tolerance:
+      value: &a40
+        min: 0
+        max: 10
+      confidence: low
+      rationale: "Five of six proposals support 0 to 10 dKH. Tropical Treasures and NageoireBleue list 4
+        to 10, while The Fish Collection lists 3 to 10; these are retailer recommendations with
+        limited evidential weight. Aqua-Pedia gives the wider 3 to 12 interval and discloses
+        generated, manually checked data. The 15 dKH proposal was derived from pH and GH rather than
+        measured or stated KH tolerance and is not used. The lower extension is required to contain
+        the censored natural range. Loiselle documents that habitat inclusion only, not long-term
+        aquarium tolerance. Two independent reliable husbandry studies of these KH endpoints were
+        not found; neither zero nor 10 is an experimentally demonstrated chronic limit. Proposals
+        were generator: 0 to 10; checker-a: 1 to 15; checker-b: 0 to 10; checker-c: 0 to 10;
+        tiebreaker-1: 0 to 10; tiebreaker-2: 0 to 10. Atlarium could not be read past its access
+        challenge and supplies no numerical evidence here."
+      sources:
+        - *a24
+        - *a19
+        - *a4
+        - &a25
+          kind: database
+          title: "Aqua-Pedia: Paratilapia polleni, Marakely-cichlide care sheet"
+          url: "https://www.aqua-pedia.com/nl/species/paratilapia-polleni-marakely"
+          accessed: 2026-10-13
+        - *a16
+      evidence:
+        - source: *a24
+          value:
+            min: 4
+            max: 10
+          note: Retailer buffering advice; no chronic endpoint study.
+        - source: *a19
+          value:
+            min: 4
+            max: 10
+          note: Retailer buffering advice; source independence is unknown.
+        - source: *a16
+          value:
+            min: 3
+            max: 10
+          note: Retailer advice; other taxonomic and spawning details conflict with primary sources.
+        - source: *a25
+          value:
+            min: 3
+            max: 12
+          note: "Structured database recommendation, generated and manually checked; low reliability."
+        - source: *a4
+          value:
+            min: 0
+            max: 4.01
+          note: "Native carbonate hardness supporting only the mandatory lower extension; zero is censored,
+            not measured."
+      verification:
+        method: qualified-majority
+        votes:
+          agree: 5
+          total: 6
+  maxSizeCm:
+    value: &a42
+      male: 30
+      female: 25
+    confidence: medium
+    rationale: "Generator proposes 30/25 cm, checker-a 28/22, checker-b 28/20 and checker-c 30/20.
+      Select 30/25 from the explicit sex-specific FishFish record, which also associates its profile
+      with Andapa. The 30 cm male agrees with typical 25 to 30 cm adults in Williams; his 40 cm
+      account is exceptional. The 20 cm female hobby figure is retained as conflicting evidence
+      rather than used to understate possible adult space needs. FishBase gives 28 cm total length
+      for male or unsexed fish, while Seriously Fish gives 28 cm standard length; these are not
+      interchangeable sex-specific maxima. Lineage confusion limits confidence."
+    sources:
+      - *a12
+      - *a10
+      - *a3
+      - *a15
+      - *a23
+    evidence:
+      - source: *a12
+        value:
+          male: 30
+          female: 25
+        note: Explicit sex-specific care-sheet sizes; profile lists Andapa.
+      - source: *a23
+        value:
+          male: 30
+          female: 20
+        note: Alternative hobby estimates.
+      - source: *a3
+        value:
+          male: 28
+          female: null
+        note: Total length for male or unsexed fish; no female maximum.
+      - source: *a15
+        value:
+          male: 28
+          female: null
+        note: Standard length without separate sex limits; not directly equivalent to total length.
+  predation:
+    value: 2
+    confidence: medium
+    rationale: "The qualified majority selects level 2 for the regular swallowing hazard to mouth-sized
+      tankmates. The biological account describes varied animal prey and occasional fish, and
+      Loiselle independently identifies Paratilapia as a predator of mainland killifishes. Seriously
+      Fish and Williams emphasize piscivory and would support level 3, but do not establish dietary
+      proportions in verified northern stocks. FishBase trophic level is modeled from relatives and
+      does not independently determine a predation level. The level-2 stocking threshold is retained
+      without claiming that fish dominate the diet. Proposals were generator: 3; checker-a: 2;
+      checker-b: 2; checker-c: 2; tiebreaker-1: 2; tiebreaker-2: 2."
+    sources:
+      - *a5
+      - *a15
+      - *a4
+      - *a3
+      - *a10
+      - *a11
+      - *a14
+      - *a22
+      - &a26
+        kind: database
+        title: "Cichlid Room Companion: Paratilapia polleni, public verification summary"
+        url: "https://cichlidae.com/species.php?id=iyFTrb74pLg4TMMxvlO91w"
+        accessed: 2026-10-13
+    evidence:
+      - source: *a4
+        value: 2
+        note: Rubric inference from predation on mainland adult Pachypanchax; no aquarium frequency
+          experiment.
+      - source: *a5
+        value: 2
+        note: Mixed animal prey including small fish; level inferred from prey risk and historical stock.
+      - source: *a14
+        value: 2
+        note: Small tankmates are identified as likely prey.
+      - source: *a15
+        value: 3
+        note: Its wild piscivore label supports the competing level-3 interpretation; its aquarium advice
+          also confirms small-fish predation.
+      - source: *a10
+        value: 3
+        note: Rainbowfish are described as principal wild food in a genus-level husbandry account.
+      - source: *a22
+        value: 3
+        note: Adult diet favors fish; general hobby account with unresolved lineage attribution.
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 5
+        total: 6
+  diet:
+    value: &a31
+      type: invertivore
+      bloatSensitive: false
+      foods:
+        - insects and insect larvae
+        - crustaceans
+        - earthworms
+        - tadpoles
+        - small fish
+        - frozen foods
+        - carnivore pellets
+    confidence: medium
+    rationale: "Five of six votes select invertivore with bloatSensitive false. The 1992 account
+      describes a varied animal diet with occasional fish, and the culture paper emphasizes benthic
+      invertebrates while partly drawing on earlier literature. Both concern eastern or unresolved
+      stock, so the transfer to northern polleni remains uncertain. Seriously Fish and Williams
+      emphasize fish prey instead, and the Nordic register uses an omnivore label while naming
+      mainly animal foods. CRC verifies insect, crustacean and fish consumption but ranks none of
+      them. Successful use of worms and formulated feed supports the absence of a special
+      grazing-cichlid protein restriction; the false bloat flag is an inference and does not mean
+      immunity to digestive illness. Listed natural prey does not require using live feeder fish in
+      captivity. Proposals were generator:
+      {\"type\":\"piscivore\",\"bloatSensitive\":false,\"foods\":[\"complete carnivore cichlid
+      pellets\",\"thawed fish pieces\",\"shrimp\",\"aquatic insect larvae\",\"earthworms\"]};
+      checker-a: {\"type\":\"invertivore\",\"bloatSensitive\":false,\"foods\":[\"insects and insect
+      larvae\",\"crustaceans\",\"earthworms\",\"tadpoles\",\"small fish\",\"frozen
+      foods\",\"carnivore pellets\"]}; checker-b:
+      {\"type\":\"invertivore\",\"bloatSensitive\":false,\"foods\":[\"Aquatic
+      insects\",\"Crustaceans\",\"Worms\",\"Suitable carnivore pellets\",\"Occasional small
+      fish\"]}; checker-c: {\"type\":\"invertivore\",\"bloatSensitive\":false,\"foods\":[\"Carnivore
+      pellets\",\"Aquatic insect larvae\",\"Crustaceans\",\"Earthworms\",\"Occasional fish
+      pieces\"]}; tiebreaker-1: {\"type\":\"invertivore\",\"bloatSensitive\":false}; tiebreaker-2:
+      {\"type\":\"invertivore\",\"bloatSensitive\":false}."
+    sources:
+      - *a5
+      - *a11
+      - *a15
+      - *a3
+      - *a10
+      - *a26
+      - *a14
+      - *a22
+    evidence:
+      - source: *a5
+        value:
+          type: invertivore
+          bloatSensitive: false
+        note: "Rubric mapping of varied animal prey with occasional fish; protein tolerance inferred from
+          captive rearing, not a bloat trial."
+      - source: *a11
+        value:
+          type: invertivore
+          bloatSensitive: false
+        note: Invertebrates emphasized; worms and formulated feed used. Stock identified only as Paratilapia
+          sp. and dietary discussion is partly secondary.
+      - source: *a15
+        value:
+          type: piscivore
+          bloatSensitive: false
+        note: Conflicting wild feeding category; flag inferred from recommended animal foods.
+      - source: *a10
+        value:
+          type: piscivore
+          bloatSensitive: false
+        note: Conflicting principal-prey assessment; flag inferred rather than directly investigated.
+      - source: *a14
+        value:
+          type: omnivore
+          bloatSensitive: false
+        note: "Source label is omnivore; listed wild foods are insects, crustaceans and fish, and flag is
+          inferred."
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 5
+        total: 6
+  aggressionConspecific:
+    value: 4
+    confidence: medium
+    rationale: "Generator, checker-a and checker-b propose 3; checker-c proposes 4. The direct warning
+      of possible female death in Fishkeeping, together with Seriously Fish advising removal or
+      division after partner attacks, justifies 4 for planning separation. Williams describes
+      established pairs as comparatively settled and supports 3, and the primary breeding study
+      documents rival biting rather than routine partner killing. Level 4 here means serious injury
+      can require separation, not that every compatible pair will kill a partner. The care sheets
+      partly overlap, so confidence is medium."
+    sources:
+      - *a18
+      - *a15
+      - *a10
+      - *a5
+      - *a14
+    evidence:
+      - source: *a18
+        value: 4
+        note: Possible lethal male aggression toward females; rubric mapping of separation need.
+      - source: *a15
+        value: 4
+        note: Female removal or tank division may be necessary; level inferred.
+      - source: *a10
+        value: 3
+        note: Strong rival-male intolerance but established pairs often remain settled.
+      - source: *a5
+        value: 3
+        note: Rival biting and fighting in a divided captive setup; no systematic partner-mortality
+          estimate.
+  aggressionHeterospecific:
+    value: 2
+    confidence: medium
+    rationale: "All four full-profile runs select 2. Large fish outside the defended area may coexist,
+      while spawning fish exclude intruders from a broad territory. The evidence supports
+      territorial chasing, not habitual injurious attacks throughout the tank. Losses of small
+      companions are addressed separately as predation. Stronger unspecific retailer labels do not
+      establish level 3."
+    sources:
+      - *a15
+      - *a10
+      - *a11
+      - *a19
+    evidence:
+      - source: *a15
+        value: 2
+        note: Large companions outside the defended territory may be tolerated; breeding increases
+          aggression.
+      - source: *a11
+        value: 2
+        note: Intense nest-area defense in culture ponds; unresolved stock.
+  territory:
+    value:
+      size: large
+      breedingOnly: false
+    confidence: medium
+    rationale: "All four full-profile runs agree. Fish establish individual areas before forming a pair,
+      and a breeding pair may defend more than 90 cm of tank length. The culture study measured a
+      1.5 to 2 m defended radius during pair formation, but does not quantify ordinary nonbreeding
+      territory. The size meets the rubric threshold and territorial behavior is not restricted to
+      reproduction. Independent confirmation of the nonbreeding dimensions remains limited."
+    sources:
+      - *a15
+      - *a18
+      - *a11
+      - *a5
+    evidence:
+      - source: *a15
+        value:
+          size: large
+          breedingOnly: false
+        note: Individual areas before pairing; breeding territories exceed 90 cm.
+      - source: *a11
+        value:
+          size: large
+          breedingOnly: true
+        note: "Meter-scale territory measured during reproduction in ponds, not ordinary adult aquaria."
+  habitatZones:
+    value: &a43
+      - sand
+      - plants
+      - wood
+      - openWater
+    confidence: medium
+    rationale: "Generator, checker-b and checker-c include openWater alongside sand, plants and wood;
+      checker-a omits openWater. Northern collecting accounts establish sandy or clay bottoms and
+      marginal vegetation, while Williams describes hunting away from cover in the upper water
+      column. Retain openWater to provide hunting and swimming space. Wood is a shelter requirement
+      supported by husbandry and older collected habitats; cover descriptions from other northern
+      sites are regional proxies. Rocks can be used as decor without establishing an essential rock
+      habitat."
+    sources:
+      - *a4
+      - *a10
+      - *a15
+      - *a5
+      - *a26
+    evidence:
+      - source: *a4
+        value:
+          - sand
+          - plants
+        note: Ifasy collection lake has clay/sand sediment and marginal sedges or water lilies.
+      - source: *a5
+        value:
+          - sand
+          - wood
+        note: Salehy mud/sand bottom with submerged timber; historical eastern stock.
+      - source: *a10
+        value:
+          - wood
+          - openWater
+        note: Wood shelter and hunting through the upper water column.
+      - source: *a15
+        value:
+          - sand
+          - wood
+          - plants
+        note: Aquarium furnishings; distinguishes care reconstruction from a measured wild habitat.
+  social:
+    value:
+      structure: pair
+    confidence: high
+    rationale: "All four full-profile runs recommend a pair. The planned adult unit is one naturally
+      compatible pair, with rival adults removed. A single unpaired fish can also be maintained.
+      Experimental brood care and independent husbandry descriptions support pairing; juvenile
+      groups and occasional mate changes do not establish a stable adult aquarium group or harem."
+    sources:
+      - *a15
+      - *a10
+      - *a5
+      - *a11
+      - *a26
+    evidence:
+      - source: *a15
+        value:
+          structure: pair
+        note: Compatible pair or single adult recommended.
+      - source: *a5
+        value:
+          structure: pair
+        note: Observed captive pair with competing adults removed or partitioned.
+      - source: *a11
+        value:
+          structure: pair
+        note: Pair formation and serial monogamy in breeding ponds; unresolved stock.
+  speciesOnly:
+    value: false
+    confidence: medium
+    rationale: "All four votes agree that suitably sized other species can coexist when tank space and
+      territories are adequate. Seriously Fish discusses mixed cichlid keeping, and its damii care
+      sheet explicitly names polleni as a companion. This does not promise successful community
+      breeding or permit prey-sized companions. A dedicated pair setup can be preferable without
+      making permanent own-species-only keeping obligatory. Proposals were generator: false;
+      checker-a: false; checker-b: false; checker-c: false."
+    sources:
+      - *a15
+      - &a27
+        kind: database
+        title: "Seriously Fish: Paretroplus damii compatibility account"
+        url: "https://www.seriouslyfish.com/species/paretrolplus-damii/"
+        accessed: 2026-10-13
+      - *a19
+      - *a10
+      - *a16
+      - *a20
+    evidence:
+      - source: *a15
+        value: false
+        note: Allows selected large heterospecific companions in a sufficiently spacious aquarium.
+      - source: *a27
+        value: false
+        note: Explicitly names polleni as a possible companion for similarly sized damii.
+      - source: *a19
+        value: false
+        note: Retailer allows large robust companions; low-weight corroboration.
+      - source: *a16
+        value: false
+        note: "Retailer discusses heterospecific companions, but some small-fish suggestions conflict with
+          predation evidence."
+      - source: *a20
+        value: false
+        note: Community maintenance account; low-weight experience without controlled compatibility
+          evaluation.
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  hybridGroups:
+    value: &a32
+      - paratilapia-polleni-small-spot
+    confidence: low
+    rationale: "The qualified majority retains the pairwise group paratilapia-polleni-small-spot, with
+      Paratilapia polleni and the undescribed eastern Paratilapia sp. small spot as its two members.
+      Seriously Fish reports crossing between spotted forms, Williams suspects mixed commercial
+      stocks, and the 2018 study supports their close relationship and separate lineages. The
+      husbandry source reverses the historical spot-based name assignment, and no verified parental
+      identity, pedigree or availability of conspecific partners is established. The basis is
+      presumed rather than documented. Checker-a requires a named confirmed cross and proposes no
+      group; the rubric also permits relationship-based cautions. No inference of crossability is
+      extended to Nosy Be or other Paratilapia forms. Proposals were generator:
+      [\"paratilapia-polleni-small-spot\"]; checker-a: []; checker-b:
+      [\"paratilapia-polleni-small-spot\"]; checker-c: [\"paratilapia-polleni-small-spot\"];
+      tiebreaker-1: [\"paratilapia-polleni-small-spot\"]; tiebreaker-2:
+      [\"paratilapia-polleni-small-spot\"]."
+    sources:
+      - *a15
+      - *a10
+      - *a2
+      - *a28
+      - *a1
+      - *a3
+      - *a26
+    evidence:
+      - source: *a15
+        value:
+          - paratilapia-polleni-small-spot
+        note: "General crossing warning between spotted forms, mapped provisionally to the pair; modern
+          identities unresolved."
+      - source: *a10
+        value:
+          - paratilapia-polleni-small-spot
+        note: Separate hobby lineages and suspected commercial mixtures; no verified cross or mate-choice
+          information.
+      - source: *a2
+        value:
+          - paratilapia-polleni-small-spot
+        note: Relationship-based rubric inference from distinct northern and eastern lineages; no crossing
+          experiment.
+      - source: *a28
+        value:
+          - paratilapia-polleni-small-spot
+        note: Treats East Coast Small Spots as an undescribed close relative; relationship evidence only.
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 5
+        total: 6
+  coloration:
+    value: &a44
+      baseColors:
+        - black
+        - blue
+        - white
+      pattern: spots
+    confidence: high
+    rationale: "Generator, checker-b and checker-c include white alongside black and blue; checker-a
+      uses black and blue only. Pale reflective spots can appear white or blue over a dark adult
+      body, and northern Andapa fish are specifically described with white spotting. Retain both
+      appearances rather than interpreting reflective white as a separate color morph. Mood and
+      light alter appearance; spot size alone is not a reliable lineage or sex test."
+    sources:
+      - *a10
+      - *a12
+      - *a5
+      - *a18
+    evidence:
+      - source: *a10
+        value:
+          baseColors:
+            - black
+            - blue
+            - white
+          pattern: spots
+        note: "Dark adults with pale reflective spots, including northern Andapa examples."
+      - source: *a12
+        value:
+          baseColors:
+            - black
+            - white
+          pattern: spots
+        note: Collaborative species sheet describes a dark ground and white spotting.
+      - source: *a5
+        value:
+          baseColors:
+            - black
+            - blue
+          pattern: spots
+        note: Historical breeding male with blue spotting; eastern stock.
+  feedingSpeed:
+    value: normal
+    confidence: low
+    rationale: "All four full-profile runs propose normal. Sources show acceptance of prepared food and
+      relatively stationary hunting, but do not measure meal competition. Normal is a low-confidence
+      husbandry inference; neither feeding at dusk nor stalking prey demonstrates slow feeding under
+      the rubric."
+    sources:
+      - *a10
+      - *a15
+      - &a30
+        kind: model-knowledge
+        title: Conservative husbandry inference where species-specific observations are incomplete
+        accessed: 2026-10-13
+  minTank:
+    value: &a45
+      volumeL: 500
+      lengthCm: 180
+      depthCm: 60
+    confidence: medium
+    rationale: "Generator proposes 500 L with a 180 by 60 cm base; checker-a 205 L and 120 by 45 cm;
+      checker-b 400 L and 150 by 50 cm; checker-c 320 L and 150 by 45 cm. Retain 500 L and 180 by 60
+      cm for one established adult pair as a cautious planning synthesis for the selected 30/25 cm
+      adults and separation risk. This rounds the retailer pair-specific 125 US gallons,
+      approximately 473 L, upward and expands the base beyond the smaller recommendations. The
+      selected base dimensions are a planning judgment, not a measured biological cutoff. Seriously
+      Fish gives 205 L for a compatible pair but prefers about 150 cm for breeding; Fishkeeping
+      gives 320 L and a converted 152.4 by 45.72 cm base. The Nordic register recommends the larger
+      700 L and 200 cm without specifying social unit, so the selected minimum is not a claim that
+      smaller or larger advice is erroneous. Other adult species need substantially more space."
+    sources:
+      - *a15
+      - *a18
+      - *a14
+      - *a24
+      - *a19
+    evidence:
+      - source: *a15
+        value:
+          volumeL: 205
+          lengthCm: 120
+          depthCm: 45
+        note: Compatible-pair minimum; breeding text prefers around 150 cm or longer.
+      - source: *a18
+        value:
+          volumeL: 320
+          lengthCm: 152.4
+          depthCm: 45.72
+        note: "Pair-specific recommendation, with base dimensions converted from inches."
+      - source: *a24
+        value:
+          volumeL: 473.18
+          lengthCm: null
+          depthCm: null
+        note: Retailer gives 125 US gallons or more for a breeding pair; dimensions absent.
+      - source: *a14
+        value:
+          volumeL: 700
+          lengthCm: 200
+          depthCm: null
+        note: Larger species-register recommendation; adult social unit not specified.
+      - source: *a19
+        value:
+          volumeL: 400
+          lengthCm: null
+          depthCm: null
+        note: Retailer minimum for a single adult or pair; low weight.
+  lifespanYears:
+    value: &a46
+      min: 10
+      max: 15
+    confidence: low
+    rationale: "Generator and checker-c propose 10 to 15 years, checker-a estimates 8 to 12 from general
+      husbandry knowledge, and checker-b uses the Aquarium Wiki figure of 5 to 8. Keep 10 to 15 as
+      an aquarium planning estimate supported by two retailer guides and hobby accounts around 15.
+      None presents a cohort or securely identified northern-lineage longevity series. The longer
+      estimate is useful for planning a lasting commitment but is not a proven normal survival range
+      or upper biological limit."
+    sources:
+      - *a24
+      - *a16
+      - *a23
+      - *a22
+      - &a29
+        kind: website
+        title: "The Aquarium Wiki: Marakeli Cichlid"
+        url: "https://www.theaquariumwiki.com/wiki/Paratilapia_polleni"
+        accessed: 2026-10-13
+    evidence:
+      - source: *a24
+        value:
+          min: 10
+          max: 15
+        note: Retailer planning estimate.
+      - source: *a16
+        value:
+          min: 10
+          max: 15
+        note: Retailer estimate with limited supporting references.
+      - source: *a23
+        value:
+          min: 15
+          max: 15
+        note: Hobby page reports approximately 15 years.
+      - source: *a29
+        value:
+          min: 5
+          max: 8
+        note: Conflicting unreferenced encyclopedia estimate.
+  breeding:
+    value: open-substrate-spawner
+    confidence: high
+    rationale: "All full-profile runs agree on the substrate-spawning category. Primary observations
+      describe eggs connected by filaments into a movable mass, with the female tending eggs and
+      both parents defending mobile young. Spawning in a sheltered hollow is compatible with this
+      mode and does not establish obligatory cave spawning or mouth incubation. The culture study
+      supports pond-bottom spawning, and CRC verifies the open-substrate classification."
+    sources:
+      - *a5
+      - *a11
+      - *a15
+      - *a10
+      - *a26
+    evidence:
+      - source: *a5
+        value: open-substrate-spawner
+        note: Detailed observation of connected eggs and parental care.
+      - source: *a11
+        value: open-substrate-spawner
+        note: Pond-bottom nests among plant debris; fish identified only as Paratilapia sp.
+      - source: *a15
+        value: open-substrate-spawner
+        note: Aquarium spawning and shared brood defense.
+  beginnerSuitability:
+    value: demanding
+    confidence: medium
+    rationale: "Generator, checker-b and checker-c propose demanding; checker-a proposes moderate,
+      balancing water adaptability against adult behavior. Select demanding because a large adult
+      pair can need immediate separation and reliable territorial management. Seriously Fish gives
+      an easy care rating, but its partner-attack advice makes aquarium handling more demanding than
+      that label suggests. CRC verifies advanced experience, without originating the decision."
+    sources:
+      - *a15
+      - *a18
+      - *a10
+      - *a26
+    evidence:
+      - source: *a15
+        value: easy
+        note: Website care rating; evaluated alongside its partner-separation advice.
+      - source: *a18
+        value: demanding
+        note: Rubric inference from possible female death and need for refuges.
+      - source: *a26
+        value: demanding
+        note: Public aquarium-experience summary used for verification only.
+partners:
+  suitable:
+    - species: Paretroplus damii
+      reason: A specialist husbandry profile explicitly names polleni as a possible similarly sized
+        companion.
+      condition: "A substantially larger aquarium than the pair minimum, with room for the damii group,
+        separate territories, overlapping stable water conditions and immediate separation if
+        aggression develops."
+  unsuitable:
+    - species: Paratilapia sp. 'small spot'
+      reason: "Presumed hybrid-group membership, similar territorial behavior and unresolved trade
+        identity make shared breeding inappropriate for preserving distinct stock."
+    - species: Paracheirodon innesi
+      reason: Its adult size lies well below the mouth-size threshold for a level-2 predator of this size.
+    - species: Small Bedotia species
+      reason: Hobby feeding accounts identify small rainbowfish as prey; their Malagasy origin does not
+        establish compatibility.
+    - species: Additional adult male Paratilapia polleni
+      reason: Rival males can fight severely and are outside the recommended pair unit.
+profile:
+  overview:
+    text: "Paratilapia polleni is a large Malagasy cichlid whose dark adult body carries reflective
+      spotting. This profile follows the northern large-spotted lineage, while eastern fish traded
+      as small spot are treated as a separate undescribed taxon. The Catalog retains one valid
+      described name, and identification in commerce remains uncertain. FishBase reports Vulnerable
+      with a 2016 assessment date. Maintain locality and parentage records when breeding so that a
+      generic trade name does not erase the identity of the stock."
+    sources:
+      - *a1
+      - *a2
+      - *a3
+      - *a10
+      - *a28
+  habitat:
+    text: "Northern collecting accounts describe river drainages and shallow floodplain lakes, with
+      sandy or clay bottoms, organic debris and marginal vegetation. Shelter and open hunting space
+      both matter in an aquarium. Natural water values are provisional sampled envelopes, because
+      some fish records came from local informants and several measurement stations lack modern
+      lineage identification. The decided 25 to 28 C interval also incorporates the uncertainty of
+      an older eastern collection. The low GH and KH floor represents below-detection reporting, not
+      measured mineral-free water."
+    sources:
+      - *a4
+      - *a5
+      - *a2
+      - *a6
+  sizeAndGrowth:
+    text: "Allow for a male around 30 cm and a female around 25 cm when planning the adult aquarium.
+      Other sources give smaller females, and actual growth depends on origin and individuals. Young
+      fish may take years to reach their full size, so a small juvenile does not reduce the eventual
+      space requirement. The 10 to 15 year lifespan is a low-confidence planning estimate rather
+      than a measured survival curve."
+    sources:
+      - *a12
+      - *a10
+      - *a5
+      - *a24
+      - *a29
+  husbandry:
+    text: "For one established pair, provide at least 500 litres with a base about 180 by 60 cm and a
+      workable divider or separate aquarium. Published minima vary substantially, and the Nordic
+      register recommends 700 litres and 200 cm. Build secure refuges and visual barriers with wood,
+      pots or stable rocks over smooth substrate. Combine effective filtration with oxygenation and
+      regular water replacement matched to the existing chemistry. A steady 26 to 27 C is a
+      practical target within the decided 23 to 28 C tolerance. Near-neutral pH and modest mineral
+      content have better aquarium support than the provisional low endpoints; the tolerance
+      envelope is not a set of targets."
+    sources:
+      - *a15
+      - *a18
+      - *a14
+      - *a10
+      - *a24
+      - *a12
+  socialBehavior:
+    text: "A naturally compatible pair is the planned adult unit; an unpaired fish can live alone.
+      Juvenile groups need separate accommodation once territories and pairs develop. Rival males
+      are poor companions, and a previously settled pair can still require separation after spawning
+      or a change in behavior. Provide a refuge that the pursued fish can use and monitor meals,
+      hiding and injuries. The high conspecific aggression grade reflects the possibility of severe
+      partner harm and the need for intervention, rather than constant violence in every pair."
+    sources:
+      - *a15
+      - *a18
+      - *a10
+      - *a5
+  diet:
+    text: "Use a complete formulated cichlid food with varied suitable animal foods such as aquatic
+      larvae, crustaceans and worms. The decided diet is invertivore, although fish remain potential
+      prey and some hobby accounts describe adults as mainly fish eaters. The detailed biological
+      studies concern eastern or unresolved stocks, which limits certainty about proportions in
+      northern polleni. Natural prey records including tadpoles and small fish are not a requirement
+      to supply those animals in an aquarium; live feeder fish are unnecessary. Feed portions that
+      both partners can reach, and avoid treating the false bloat-sensitivity flag as protection
+      from poor feeding or digestive disease."
+    sources:
+      - *a5
+      - *a11
+      - *a15
+      - *a10
+      - *a14
+  breeding:
+    text: "Spawning occurs at a protected substrate site. Filaments connect the eggs into a mass that
+      can be moved within the nesting area, rather than a fixed adhesive plaque. The female tends
+      the eggs while the male largely patrols nearby; both can defend swimming young. Nest cover
+      does not make this an obligatory cave spawner, and retrieving young with the mouth is not
+      mouth incubation. Separate grow-out space and suitable fine fry foods are needed as the young
+      develop, and their parents' provenance should remain attached to the brood."
+    sources:
+      - *a5
+      - *a11
+      - *a15
+      - *a10
+  sexing:
+    text: "Adult males usually become larger and develop longer dorsal and anal fin extensions; some
+      also develop a forehead bulge. Those differences are less useful in small juveniles. Breeding
+      condition and lineage alter coloration, so darkening or the brightness of spots cannot
+      reliably identify sex. A documented breeding pair is more dependable than selecting two shop
+      fish by size alone. Spot size is also an unreliable shortcut to lineage identity."
+    sources:
+      - *a15
+      - *a5
+      - *a11
+      - *a10
+      - *a2
+  compatibility:
+    text: "The fish can share a sufficiently large aquarium with selected similarly sized robust
+      companions, but breeding defense can disrupt a settled community. Paretroplus damii is
+      explicitly suggested by a specialist care sheet; its group and space requirements still apply.
+      Small fish are prey-sized, even if a retailer lists them as companions. The two-member hybrid
+      group creates a presumed mixing caution for polleni and eastern small spot, based on a general
+      crossing warning and close relationship rather than verified parentage. A dedicated tank with
+      known-provenance stock is more predictable than a crowded display."
+    sources:
+      - *a15
+      - *a27
+      - *a10
+      - *a2
+      - *a28
+  problems:
+    text: "The main husbandry concerns are partner injuries, crowding and unstable or degraded water.
+      Very low KH provides little buffering, so the encoded zero floor should not be pursued as a
+      target. Digging may disturb rooted plants and unsecured furnishings. Published accounts
+      mention velvet and white-spot problems, but those reports do not justify copying treatment
+      recipes or diagnosing every loss of appetite as infection. The archive includes a planted
+      community at pH 6 with problematic nitrate conditions; it is practical context, not evidence
+      that such water quality or the full tolerance endpoints are safe for years."
+    sources:
+      - *a15
+      - *a10
+      - *a18
+      - *a20
+      - *a30
+provenance:
+  runs:
+    - role: generator
+      model: gpt-6.1-sol
+      date: 2026-10-13
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-13
+    - role: checker
+      model: gpt-6.1-sol
+      date: 2026-10-13
+    - role: checker
+      model: gpt-6.1-sol
+      date: 2026-10-13
+    - role: checker
+      model: gpt-6.1-sol
+      date: 2026-10-13
+    - role: checker
+      model: gpt-6.1-sol
+      date: 2026-10-13
+    - role: adjudicator
+      model: gpt-6.1-sol
+      date: 2026-10-13
+  disagreements:
+    - field: features.predation
+      proposals:
+        - by: generator
+          value: 3
+        - by: checker-a
+          value: 2
+        - by: checker-b
+          value: 2
+        - by: checker-c
+          value: 2
+        - by: tiebreaker-1
+          value: 2
+        - by: tiebreaker-2
+          value: 2
+      decision: 2
+      rationale: "Tally method qualified-majority, 5 of 6 agreeing votes. The qualified majority selects
+        level 2 for the regular swallowing hazard to mouth-sized tankmates. The biological account
+        describes varied animal prey and occasional fish, and Loiselle independently identifies
+        Paratilapia as a predator of mainland killifishes. Seriously Fish and Williams emphasize
+        piscivory and would support level 3, but do not establish dietary proportions in verified
+        northern stocks. FishBase trophic level is modeled from relatives and does not independently
+        determine a predation level. The level-2 stocking threshold is retained without claiming
+        that fish dominate the diet. Proposals were generator: 3; checker-a: 2; checker-b: 2;
+        checker-c: 2; tiebreaker-1: 2; tiebreaker-2: 2."
+    - field: features.diet
+      proposals:
+        - by: generator
+          value:
+            type: piscivore
+            bloatSensitive: false
+            foods:
+              - complete carnivore cichlid pellets
+              - thawed fish pieces
+              - shrimp
+              - aquatic insect larvae
+              - earthworms
+        - by: checker-a
+          value:
+            type: invertivore
+            bloatSensitive: false
+            foods:
+              - insects and insect larvae
+              - crustaceans
+              - earthworms
+              - tadpoles
+              - small fish
+              - frozen foods
+              - carnivore pellets
+        - by: checker-b
+          value:
+            type: invertivore
+            bloatSensitive: false
+            foods:
+              - Aquatic insects
+              - Crustaceans
+              - Worms
+              - Suitable carnivore pellets
+              - Occasional small fish
+        - by: checker-c
+          value:
+            type: invertivore
+            bloatSensitive: false
+            foods:
+              - Carnivore pellets
+              - Aquatic insect larvae
+              - Crustaceans
+              - Earthworms
+              - Occasional fish pieces
+        - by: tiebreaker-1
+          value:
+            type: invertivore
+            bloatSensitive: false
+        - by: tiebreaker-2
+          value:
+            type: invertivore
+            bloatSensitive: false
+      decision: *a31
+      rationale: "Tally method qualified-majority, 5 of 6 agreeing votes. Five of six votes select
+        invertivore with bloatSensitive false. The 1992 account describes a varied animal diet with
+        occasional fish, and the culture paper emphasizes benthic invertebrates while partly drawing
+        on earlier literature. Both concern eastern or unresolved stock, so the transfer to northern
+        polleni remains uncertain. Seriously Fish and Williams emphasize fish prey instead, and the
+        Nordic register uses an omnivore label while naming mainly animal foods. CRC verifies
+        insect, crustacean and fish consumption but ranks none of them. Successful use of worms and
+        formulated feed supports the absence of a special grazing-cichlid protein restriction; the
+        false bloat flag is an inference and does not mean immunity to digestive illness. Listed
+        natural prey does not require using live feeder fish in captivity. Proposals were generator:
+        {\"type\":\"piscivore\",\"bloatSensitive\":false,\"foods\":[\"complete carnivore cichlid
+        pellets\",\"thawed fish pieces\",\"shrimp\",\"aquatic insect larvae\",\"earthworms\"]};
+        checker-a: {\"type\":\"invertivore\",\"bloatSensitive\":false,\"foods\":[\"insects and
+        insect larvae\",\"crustaceans\",\"earthworms\",\"tadpoles\",\"small fish\",\"frozen
+        foods\",\"carnivore pellets\"]}; checker-b:
+        {\"type\":\"invertivore\",\"bloatSensitive\":false,\"foods\":[\"Aquatic
+        insects\",\"Crustaceans\",\"Worms\",\"Suitable carnivore pellets\",\"Occasional small
+        fish\"]}; checker-c:
+        {\"type\":\"invertivore\",\"bloatSensitive\":false,\"foods\":[\"Carnivore
+        pellets\",\"Aquatic insect larvae\",\"Crustaceans\",\"Earthworms\",\"Occasional fish
+        pieces\"]}; tiebreaker-1: {\"type\":\"invertivore\",\"bloatSensitive\":false}; tiebreaker-2:
+        {\"type\":\"invertivore\",\"bloatSensitive\":false}."
+    - field: features.hybridGroups
+      proposals:
+        - by: generator
+          value:
+            - paratilapia-polleni-small-spot
+        - by: checker-a
+          value: []
+        - by: checker-b
+          value:
+            - paratilapia-polleni-small-spot
+        - by: checker-c
+          value:
+            - paratilapia-polleni-small-spot
+        - by: tiebreaker-1
+          value:
+            - paratilapia-polleni-small-spot
+        - by: tiebreaker-2
+          value:
+            - paratilapia-polleni-small-spot
+      decision: *a32
+      rationale: "Tally method qualified-majority, 5 of 6 agreeing votes. The qualified majority retains
+        the pairwise group paratilapia-polleni-small-spot, with Paratilapia polleni and the
+        undescribed eastern Paratilapia sp. small spot as its two members. Seriously Fish reports
+        crossing between spotted forms, Williams suspects mixed commercial stocks, and the 2018
+        study supports their close relationship and separate lineages. The husbandry source reverses
+        the historical spot-based name assignment, and no verified parental identity, pedigree or
+        availability of conspecific partners is established. The basis is presumed rather than
+        documented. Checker-a requires a named confirmed cross and proposes no group; the rubric
+        also permits relationship-based cautions. No inference of crossability is extended to Nosy
+        Be or other Paratilapia forms. Proposals were generator:
+        [\"paratilapia-polleni-small-spot\"]; checker-a: []; checker-b:
+        [\"paratilapia-polleni-small-spot\"]; checker-c: [\"paratilapia-polleni-small-spot\"];
+        tiebreaker-1: [\"paratilapia-polleni-small-spot\"]; tiebreaker-2:
+        [\"paratilapia-polleni-small-spot\"]."
+    - field: features.temperatureC
+      proposals:
+        - by: generator
+          value:
+            min: 25.2
+            max: 26.6
+        - by: checker-a
+          value:
+            min: 24
+            max: 30
+        - by: checker-b
+          value:
+            min: 25
+            max: 28
+        - by: checker-c
+          value:
+            min: 25.2
+            max: 27.8
+        - by: tiebreaker-1
+          value:
+            min: 25.2
+            max: 28
+        - by: tiebreaker-2
+          value:
+            min: 25.2
+            max: 26.6
+      decision: *a33
+      rationale: "Tally method median, 3 of 6 agreeing votes. The tally uses the median of all six
+        proposed lower and upper bounds because no candidate secured four agreeing votes. Rounded to
+        whole degrees, this yields 25 to 28 C with low confidence. Loiselle measured 25.2 and 26.6 C
+        at northern regional stations; occurrence of identified polleni at each thermometer station
+        is unconfirmed. The 28 C Salehy measurement has captured historical polleni but may belong
+        to the eastern small-spot lineage. The broader 25.2 to 27.8 C killifish habitat summary
+        includes Nosy Be, and the Alaotra study has surface means from 25.7 to around 30 C plus a
+        41.3 C shallow-water extreme. Those wider datasets concern unresolved stocks or regional
+        conditions, not a confirmed seasonal range of northern polleni. The 12 to 40 C survival
+        accounts are not used as typical habitat endpoints. FishBase 24 to 28 C derives from an
+        aquarium atlas. Ravelobe and the Itasy abstract corroborate warm waters without verifying
+        the endpoints or modern species identity; the Itasy full text was unavailable through
+        fetch-oa. Proposals were generator: 25.2 to 26.6; checker-a: 24 to 30; checker-b: 25 to 28;
+        checker-c: 25.2 to 27.8; tiebreaker-1: 25.2 to 28; tiebreaker-2: 25.2 to 26.6."
+    - field: features.ph
+      proposals:
+        - by: generator
+          value:
+            min: 5
+            max: 7.5
+        - by: checker-a
+          value:
+            min: 6
+            max: 7.5
+        - by: checker-b
+          value:
+            min: 5
+            max: 7.5
+        - by: checker-c
+          value:
+            min: 5
+            max: 7.5
+        - by: tiebreaker-1
+          value:
+            min: 5
+            max: 7.5
+        - by: tiebreaker-2
+          value:
+            min: 5
+            max: 7.5
+      decision: *a34
+      rationale: "Tally method qualified-majority, 5 of 6 agreeing votes. Five of six votes support 5 to
+        7.5. Loiselle reports acidic northern streams at 5 to 6 with photograph-based local reports
+        of Paratilapia in deeper water, and western northern floodplain waters at 6.5 to 7.2
+        including an Ifasy lake with collected fish. Ramena reaches 7.5. Ravelobe measurements of
+        5.5 to 6.8 and historical Alaotra data add regional context without resolving the lineage.
+        The killifish summary repeats the same northern sampling. The interval is therefore
+        provisional despite qualified majority; laboratory or care-sheet pH is not substituted for
+        habitat measurements. Proposals were generator: 5 to 7.5; checker-a: 6 to 7.5; checker-b: 5
+        to 7.5; checker-c: 5 to 7.5; tiebreaker-1: 5 to 7.5; tiebreaker-2: 5 to 7.5."
+    - field: features.ghDgh
+      proposals:
+        - by: generator
+          value:
+            min: 0
+            max: 4
+        - by: checker-a
+          value:
+            min: 1
+            max: 10
+        - by: checker-b
+          value:
+            min: 0
+            max: 4.1
+        - by: checker-c
+          value:
+            min: 0
+            max: 4.1
+        - by: tiebreaker-1
+          value:
+            min: 0
+            max: 4.1
+        - by: tiebreaker-2
+          value:
+            min: 0
+            max: 4.1
+      decision: *a35
+      rationale: "Tally method qualified-majority, 5 of 6 agreeing votes. Five agreeing votes emphasize
+        measured northern water. Their median upper bound is rounded by the tally from 4.1 to 4 dGH.
+        Loiselle reports below 18 mg/L and 36 to 71.6 mg/L as CaCO3, approximately below 1.01 and
+        2.02 to 4.01 dGH. Zero encodes the unknown lower endpoint of a censored measurement. The
+        broader 2 to 15 dGH database summary includes a Nosy Be creek without syntopic cichlids;
+        that maximum does not define polleni habitat. FishBase supplies only an unlocalized maximum
+        of 10 dGH, not a 1 to 10 measured interval. The Itasy abstract reports very soft survey
+        water but unresolved Paratilapia sp. These records do not establish two independent hardness
+        series for confirmed northern polleni. Proposals were generator: 0 to 4; checker-a: 1 to 10;
+        checker-b: 0 to 4.1; checker-c: 0 to 4.1; tiebreaker-1: 0 to 4.1; tiebreaker-2: 0 to 4.1."
+    - field: features.khDkh
+      proposals:
+        - by: generator
+          value:
+            min: 0
+            max: 4
+        - by: checker-a
+          value:
+            min: 1
+            max: 6
+        - by: checker-b
+          value:
+            min: 0
+            max: 4.2
+        - by: checker-c
+          value:
+            min: 0
+            max: 4.1
+      decision: *a36
+      rationale: "Tally method unanimous, 4 of 4 agreeing votes. All four available natural-KH proposals
+        agree within the two-degree threshold, so the tally takes the medians and rounds to 0 to 4
+        dKH; this plain natural fact carries no verification object. Direct northern
+        carbonate-hardness titrations are below 18 and 36 to 71.6 mg/L as CaCO3, approximately below
+        1.01 and 2.02 to 4.01 dKH. Zero is a reporting bound for censored low alkalinity. The wider
+        2 to 11 dKH database summary mixes mainland and Nosy Be stations. Historical Alaotra SBV
+        1.49 is about 4.17 dKH only if its unstated unit follows the meq/L convention; it is
+        retained as an inference rather than controlling the range. The carbon study measures DIC
+        and alkalinity separately, so its DIC cannot be substituted directly for KH. No KH is
+        inferred from GH, conductivity or pH. Proposals were generator: 0 to 4; checker-a: 1 to 6;
+        checker-b: 0 to 4.2; checker-c: 0 to 4.1."
+    - field: features.temperatureC.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 23
+            max: 28
+        - by: checker-a
+          value:
+            min: 17
+            max: 30
+        - by: checker-b
+          value:
+            min: 22
+            max: 30
+        - by: checker-c
+          value:
+            min: 22
+            max: 28
+        - by: tiebreaker-1
+          value:
+            min: 22
+            max: 30
+        - by: tiebreaker-2
+          value:
+            min: 22
+            max: 28
+      decision: *a37
+      rationale: "Tally method conservative, 3 of 6 agreeing votes. The tally applies the conservative
+        intersection of all six proposals: the highest lower endpoint is 23 and the lowest upper
+        endpoint is 28 C. This already contains the decided natural interval. There were only three
+        agreeing votes around the leading candidate, so low confidence is mandatory. FishFish and
+        Aqua-Fish support 23 to 28 C. Seriously Fish lists the wider 17 to 28 C band but prefers
+        approximately 22 to 27 C, and the 1992 study kept eastern historical stock for about two
+        years at 28 to 30 C. Neither colder routine limits nor 30 C can be transferred confidently
+        to every northern stock. The culture paper recommends 22 to 28 C for unidentified
+        Paratilapia sp.; Williams advises at least 26 C. Routine 26 to 27 C sits within these
+        overlapping recommendations. Proposals were generator: 23 to 28; checker-a: 17 to 30;
+        checker-b: 22 to 30; checker-c: 22 to 28; tiebreaker-1: 22 to 30; tiebreaker-2: 22 to 28."
+    - field: features.ph.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 5
+            max: 8
+        - by: checker-a
+          value:
+            min: 6
+            max: 8.5
+        - by: checker-b
+          value:
+            min: 5
+            max: 8
+        - by: checker-c
+          value:
+            min: 5
+            max: 8
+        - by: tiebreaker-1
+          value:
+            min: 5
+            max: 8
+        - by: tiebreaker-2
+          value:
+            min: 5
+            max: 8
+      decision: *a38
+      rationale: "Tally method qualified-majority, 5 of 6 agreeing votes. The qualified majority retains 5
+        to 8. The established care recommendations chiefly span 6.5 to 8, with FishFish at 6 to 7.5
+        and aquarium spawning observed at 7.5 to 8. The lower extension to 5 is required to contain
+        the natural range and is not proof of healthy years in captivity at that endpoint. The
+        culture review repeats the wider 6.5 to 9 requirement without testing long-term health at 9;
+        checker-a proposed a higher 8.5 ceiling. Low confidence reflects lineage uncertainty and
+        missing chronic endpoint trials. The archive observation at pH 6 has little weight and does
+        not validate pH 5. The fetched AquaInfo article contained no numerical pH care range, so the
+        attributed 6.5 to 8 evidence is not repeated. Proposals were generator: 5 to 8; checker-a: 6
+        to 8.5; checker-b: 5 to 8; checker-c: 5 to 8; tiebreaker-1: 5 to 8; tiebreaker-2: 5 to 8."
+    - field: features.ghDgh.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 0
+            max: 18
+        - by: checker-a
+          value:
+            min: 1
+            max: 25
+        - by: checker-b
+          value:
+            min: 0
+            max: 25
+        - by: checker-c
+          value:
+            min: 0
+            max: 25
+        - by: tiebreaker-1
+          value:
+            min: 0
+            max: 25
+        - by: tiebreaker-2
+          value:
+            min: 0
+            max: 25
+      decision: *a39
+      rationale: "Tally method qualified-majority, 5 of 6 agreeing votes. The tally takes the
+        qualified-majority median of the agreeing proposals, retaining 0 to 25 dGH. Seriously Fish
+        recommends 8 to 25 dGH; FishFish gives 4 to 18 and Aqua-Fish 7 to 16. The zero floor is
+        included to contain censored native hardness, rather than as a demonstrated safe target for
+        mineral-free aquarium water. Healthy years at both endpoints have not been documented for
+        securely identified northern polleni, so confidence stays low. The fetched AquaInfo article
+        did not state the attributed 8 to 25 dGH interval. The 1992 study also gives no measured GH
+        interval; its general adaptability description is not numerical tolerance evidence.
+        Proposals were generator: 0 to 18; checker-a: 1 to 25; checker-b: 0 to 25; checker-c: 0 to
+        25; tiebreaker-1: 0 to 25; tiebreaker-2: 0 to 25."
+    - field: features.khDkh.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 0
+            max: 10
+        - by: checker-a
+          value:
+            min: 1
+            max: 15
+        - by: checker-b
+          value:
+            min: 0
+            max: 10
+        - by: checker-c
+          value:
+            min: 0
+            max: 10
+        - by: tiebreaker-1
+          value:
+            min: 0
+            max: 10
+        - by: tiebreaker-2
+          value:
+            min: 0
+            max: 10
+      decision: *a40
+      rationale: "Tally method qualified-majority, 5 of 6 agreeing votes. Five of six proposals support 0
+        to 10 dKH. Tropical Treasures and NageoireBleue list 4 to 10, while The Fish Collection
+        lists 3 to 10; these are retailer recommendations with limited evidential weight. Aqua-Pedia
+        gives the wider 3 to 12 interval and discloses generated, manually checked data. The 15 dKH
+        proposal was derived from pH and GH rather than measured or stated KH tolerance and is not
+        used. The lower extension is required to contain the censored natural range. Loiselle
+        documents that habitat inclusion only, not long-term aquarium tolerance. Two independent
+        reliable husbandry studies of these KH endpoints were not found; neither zero nor 10 is an
+        experimentally demonstrated chronic limit. Proposals were generator: 0 to 10; checker-a: 1
+        to 15; checker-b: 0 to 10; checker-c: 0 to 10; tiebreaker-1: 0 to 10; tiebreaker-2: 0 to 10.
+        Atlarium could not be read past its access challenge and supplies no numerical evidence
+        here."
+    - field: features.origin
+      proposals:
+        - by: generator
+          value:
+            continent: Africa
+            region: "Northern Madagascar, principally mainland northern drainages under the sensu stricto
+              interpretation"
+            waterbody: null
+            localities:
+              - "Ambazoana, type locality"
+              - Sambirano drainage
+              - Andapa
+        - by: checker-a
+          value:
+            continent: Africa
+            region: Madagascar
+            waterbody: null
+            localities:
+              - Sambirano basin
+              - Andapa
+              - Lake Alaotra
+              - Salehy lake
+              - Nosy Be
+        - by: checker-b
+          value:
+            continent: Africa
+            region: Madagascar
+            waterbody: null
+            localities:
+              - Northern Madagascar
+              - Northwestern mainland drainages
+              - Eastern Madagascar under the broad historical species concept
+        - by: checker-c
+          value:
+            continent: Africa
+            region: "Northern Madagascar, including Sambirano and northeastern drainages"
+            waterbody: null
+            localities:
+              - Sambirano basin
+              - Andapa
+      decision: *a41
+      rationale: "The described name is Malagasy. Northern large-spotted populations are the operational
+        scope supported by the 2018 lineage analysis. Generator and checker-c focus on northern
+        populations; checker-a also includes Alaotra, Salehy and Nosy Be, and checker-b includes
+        eastern historical records. The Catalog itself gives an eastern distribution alongside a
+        northern type locality. That unresolved difference prevents treating all historical
+        localities as proven native populations of the northern lineage."
+    - field: features.maxSizeCm
+      proposals:
+        - by: generator
+          value:
+            male: 30
+            female: 25
+        - by: checker-a
+          value:
+            male: 28
+            female: 22
+        - by: checker-b
+          value:
+            male: 28
+            female: 20
+        - by: checker-c
+          value:
+            male: 30
+            female: 20
+      decision: *a42
+      rationale: "Generator proposes 30/25 cm, checker-a 28/22, checker-b 28/20 and checker-c 30/20.
+        Select 30/25 from the explicit sex-specific FishFish record, which also associates its
+        profile with Andapa. The 30 cm male agrees with typical 25 to 30 cm adults in Williams; his
+        40 cm account is exceptional. The 20 cm female hobby figure is retained as conflicting
+        evidence rather than used to understate possible adult space needs. FishBase gives 28 cm
+        total length for male or unsexed fish, while Seriously Fish gives 28 cm standard length;
+        these are not interchangeable sex-specific maxima. Lineage confusion limits confidence."
+    - field: features.aggressionConspecific
+      proposals:
+        - by: generator
+          value: 3
+        - by: checker-a
+          value: 3
+        - by: checker-b
+          value: 3
+        - by: checker-c
+          value: 4
+      decision: 4
+      rationale: "Generator, checker-a and checker-b propose 3; checker-c proposes 4. The direct warning
+        of possible female death in Fishkeeping, together with Seriously Fish advising removal or
+        division after partner attacks, justifies 4 for planning separation. Williams describes
+        established pairs as comparatively settled and supports 3, and the primary breeding study
+        documents rival biting rather than routine partner killing. Level 4 here means serious
+        injury can require separation, not that every compatible pair will kill a partner. The care
+        sheets partly overlap, so confidence is medium."
+    - field: features.habitatZones
+      proposals:
+        - by: generator
+          value:
+            - sand
+            - plants
+            - wood
+            - openWater
+        - by: checker-a
+          value:
+            - sand
+            - plants
+            - wood
+        - by: checker-b
+          value:
+            - sand
+            - plants
+            - wood
+            - openWater
+        - by: checker-c
+          value:
+            - sand
+            - wood
+            - plants
+            - openWater
+      decision: *a43
+      rationale: "Generator, checker-b and checker-c include openWater alongside sand, plants and wood;
+        checker-a omits openWater. Northern collecting accounts establish sandy or clay bottoms and
+        marginal vegetation, while Williams describes hunting away from cover in the upper water
+        column. Retain openWater to provide hunting and swimming space. Wood is a shelter
+        requirement supported by husbandry and older collected habitats; cover descriptions from
+        other northern sites are regional proxies. Rocks can be used as decor without establishing
+        an essential rock habitat."
+    - field: features.coloration
+      proposals:
+        - by: generator
+          value:
+            baseColors:
+              - black
+              - blue
+              - white
+            pattern: spots
+        - by: checker-a
+          value:
+            baseColors:
+              - black
+              - blue
+            pattern: spots
+        - by: checker-b
+          value:
+            baseColors:
+              - black
+              - blue
+              - white
+            pattern: spots
+        - by: checker-c
+          value:
+            baseColors:
+              - black
+              - blue
+              - white
+            pattern: spots
+      decision: *a44
+      rationale: "Generator, checker-b and checker-c include white alongside black and blue; checker-a
+        uses black and blue only. Pale reflective spots can appear white or blue over a dark adult
+        body, and northern Andapa fish are specifically described with white spotting. Retain both
+        appearances rather than interpreting reflective white as a separate color morph. Mood and
+        light alter appearance; spot size alone is not a reliable lineage or sex test."
+    - field: features.minTank
+      proposals:
+        - by: generator
+          value:
+            volumeL: 500
+            lengthCm: 180
+            depthCm: 60
+        - by: checker-a
+          value:
+            volumeL: 205
+            lengthCm: 120
+            depthCm: 45
+        - by: checker-b
+          value:
+            volumeL: 400
+            lengthCm: 150
+            depthCm: 50
+        - by: checker-c
+          value:
+            volumeL: 320
+            lengthCm: 150
+            depthCm: 45
+      decision: *a45
+      rationale: "Generator proposes 500 L with a 180 by 60 cm base; checker-a 205 L and 120 by 45 cm;
+        checker-b 400 L and 150 by 50 cm; checker-c 320 L and 150 by 45 cm. Retain 500 L and 180 by
+        60 cm for one established adult pair as a cautious planning synthesis for the selected 30/25
+        cm adults and separation risk. This rounds the retailer pair-specific 125 US gallons,
+        approximately 473 L, upward and expands the base beyond the smaller recommendations. The
+        selected base dimensions are a planning judgment, not a measured biological cutoff.
+        Seriously Fish gives 205 L for a compatible pair but prefers about 150 cm for breeding;
+        Fishkeeping gives 320 L and a converted 152.4 by 45.72 cm base. The Nordic register
+        recommends the larger 700 L and 200 cm without specifying social unit, so the selected
+        minimum is not a claim that smaller or larger advice is erroneous. Other adult species need
+        substantially more space."
+    - field: features.lifespanYears
+      proposals:
+        - by: generator
+          value:
+            min: 10
+            max: 15
+        - by: checker-a
+          value:
+            min: 8
+            max: 12
+        - by: checker-b
+          value:
+            min: 5
+            max: 8
+        - by: checker-c
+          value:
+            min: 10
+            max: 15
+      decision: *a46
+      rationale: "Generator and checker-c propose 10 to 15 years, checker-a estimates 8 to 12 from general
+        husbandry knowledge, and checker-b uses the Aquarium Wiki figure of 5 to 8. Keep 10 to 15 as
+        an aquarium planning estimate supported by two retailer guides and hobby accounts around 15.
+        None presents a cohort or securely identified northern-lineage longevity series. The longer
+        estimate is useful for planning a lasting commitment but is not a proven normal survival
+        range or upper biological limit."
+    - field: features.beginnerSuitability
+      proposals:
+        - by: generator
+          value: demanding
+        - by: checker-a
+          value: moderate
+        - by: checker-b
+          value: demanding
+        - by: checker-c
+          value: demanding
+      decision: demanding
+      rationale: "Generator, checker-b and checker-c propose demanding; checker-a proposes moderate,
+        balancing water adaptability against adult behavior. Select demanding because a large adult
+        pair can need immediate separation and reliable territorial management. Seriously Fish gives
+        an easy care rating, but its partner-attack advice makes aquarium handling more demanding
+        than that label suggests. CRC verifies advanced experience, without originating the
+        decision."
