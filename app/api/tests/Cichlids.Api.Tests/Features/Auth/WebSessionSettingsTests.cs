@@ -24,7 +24,8 @@ public sealed class WebSessionSettingsTests
                 ("WebSession:CallbackUrl", "http://localhost:5045/api/auth/callback"),
                 ("WebSession:AllowedOrigins:0", "http://localhost:8081"),
                 ("WebSession:SecureCookies", "false"),
-                ("WebSession:ClientSecret", "local-secret")),
+                ("WebSession:ClientSecret", "local-secret"),
+                ("WebSession:PostLogoutRedirectUrl", "http://localhost:8081/me")),
             "Development");
 
         Assert.Equal(new Uri("http://localhost:5045/api/auth/callback"), settings.CallbackUrl);
@@ -33,6 +34,26 @@ public sealed class WebSessionSettingsTests
         Assert.Equal("cichlids-session", settings.SessionCookieName);
         Assert.Equal("cichlids-web-bff", settings.ClientId);
         Assert.Equal("local-secret", settings.ClientSecret);
+        Assert.Equal(new Uri("http://localhost:8081/me"), settings.PostLogoutRedirectUrl);
+    }
+
+    [Theory]
+    [InlineData(null)]
+    [InlineData("http://staging.cichlids.com/me")]
+    [InlineData("/me")]
+    [InlineData("https://elsewhere.example/me")]
+    public void Staging_web_sign_in_needs_an_HTTPS_return_address_after_logout_on_an_allowed_origin(string? url)
+    {
+        var exception = Assert.Throws<InvalidOperationException>(() =>
+            WebSessionSettings.Resolve(
+                Configuration(
+                    ("WebSession:CallbackUrl", "https://staging.cichlids.com/api/auth/callback"),
+                    ("WebSession:AllowedOrigins:0", "https://staging.cichlids.com"),
+                    ("WebSession:ClientSecret", "staging-secret"),
+                    ("WebSession:PostLogoutRedirectUrl", url)),
+                "Staging"));
+
+        Assert.Contains("WebSession:PostLogoutRedirectUrl", exception.Message);
     }
 
     [Theory]
@@ -58,7 +79,8 @@ public sealed class WebSessionSettingsTests
                 ("WebSession:CallbackUrl", "https://staging.cichlids.com/api/auth/callback"),
                 ("WebSession:AllowedOrigins:0", "https://staging.cichlids.com"),
                 ("WebSession:ClientId", "custom-bff"),
-                ("WebSession:ClientSecret", "very-secret-value")),
+                ("WebSession:ClientSecret", "very-secret-value"),
+                ("WebSession:PostLogoutRedirectUrl", "https://staging.cichlids.com/me")),
             "Staging");
 
         Assert.Equal("custom-bff", settings.ClientId);

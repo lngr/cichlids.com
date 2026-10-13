@@ -21,6 +21,7 @@ public sealed class WebSessionFixture : IAsyncLifetime
 {
     public const string CallbackUrl = "https://cichlids.test/api/auth/callback";
     public const string WebOrigin = "https://cichlids.test";
+    public const string PostLogoutRedirectUrl = "https://cichlids.test/me";
 
     private readonly PostgreSqlContainer _postgres = new PostgreSqlBuilder("postgres:17")
         .WithDatabase("cichlids")
@@ -52,6 +53,7 @@ public sealed class WebSessionFixture : IAsyncLifetime
             builder.UseSetting("DataProtection:KeyRingPath", _keyRing.FullName);
             builder.UseSetting("WebSession:ClientId", FakeKeycloak.ClientId);
             builder.UseSetting("WebSession:ClientSecret", FakeKeycloak.ClientSecret);
+            builder.UseSetting("WebSession:PostLogoutRedirectUrl", PostLogoutRedirectUrl);
             builder.ConfigureAppConfiguration((_, configBuilder) =>
                 configBuilder.AddInMemoryCollection(new Dictionary<string, string?>
                 {

@@ -21,9 +21,16 @@ public sealed record WebLoginRequest(string? ReturnUrl);
 public sealed record WebLoginDto(string AuthorizationUrl);
 
 /// <summary>
+/// The Keycloak address the web app navigates to after a sign-out, which ends the Keycloak sign-in
+/// of the browser and returns to the web app; null when Keycloak offers no end session endpoint.
+/// </summary>
+public sealed record WebLogoutDto(string? LogoutUrl);
+
+/// <summary>
 /// The web app's sign-in through the API (backend for frontend): login start and callback of the
-/// authorization code flow with PKCE, the session state and the logout. Tokens stay on the server;
-/// the browser holds only the session cookie. The endpoints serve the web app and the browser
+/// authorization code flow with PKCE, the session state and the logout, which also hands the
+/// browser the Keycloak address that ends its Keycloak sign-in. Tokens stay on the server; the
+/// browser holds only the session cookie. The endpoints serve the web app and the browser
 /// navigation back from Keycloak, so they are not part of the API description.
 /// </summary>
 public static class WebSessionEndpoints
@@ -198,8 +205,12 @@ public static class WebSessionEndpoints
         return TypedResults.Ok(new WebSessionDto(true, lookup.Session.CsrfToken, lookup.Session.Subject));
     }
 
-    /// <summary>Ends the session, revokes its offline token at Keycloak and clears the cookie.</summary>
-    private static async Task<NoContent> LogoutAsync(
+    /// <summary>
+    /// Ends the session, revokes its offline token at Keycloak and clears the cookie, then answers
+    /// the Keycloak end session address for the browser (RP-initiated logout): it names the client,
+    /// the id token of the session as hint and the configured return address of the web app.
+    /// </summary>
+    private static async Task<Ok<WebLogoutDto>> LogoutAsync(
         HttpRequest request,
         HttpResponse response,
         WebSessionSettings settings,
@@ -207,6 +218,7 @@ public static class WebSessionEndpoints
         KeycloakOidcClient keycloak,
         CancellationToken cancellationToken)
     {
+        response.Headers.CacheControl = "no-store";
         var sessionId = WebSessionCookies.ReadSession(request, settings);
         var ended = sessionId is null ? null : await sessions.EndAsync(sessionId, cancellationToken);
         WebSessionCookies.ClearSession(response, settings);
@@ -215,6 +227,43 @@ public static class WebSessionEndpoints
             await keycloak.EndSessionAsync(ended.RefreshToken, cancellationToken);
         }
 
-        return TypedResults.NoContent();
+        return TypedResults.Ok(new WebLogoutDto(await EndSessionUrlAsync(settings, keycloak, ended?.IdToken, cancellationToken)));
+    }
+
+    private static async Task<string?> EndSessionUrlAsync(
+        WebSessionSettings settings, KeycloakOidcClient keycloak, string? idToken, CancellationToken cancellationToken)
+    {
+        if (settings.PostLogoutRedirectUrl is null)
+        {
+            return null;
+        }
+
+        KeycloakEndpoints endpoints;
+        try
+        {
+            endpoints = await keycloak.GetEndpointsAsync(cancellationToken);
+        }
+        catch (KeycloakUnavailableException)
+        {
+            return null;
+        }
+
+        if (endpoints.EndSession is null)
+        {
+            return null;
+        }
+
+        var query = new Dictionary<string, string?>
+        {
+            ["client_id"] = settings.ClientId,
+            ["post_logout_redirect_uri"] = settings.PostLogoutRedirectUrl.AbsoluteUri,
+        };
+        if (idToken is not null)
+        {
+            // With the hint Keycloak ends the sign-in without asking the member to confirm.
+            query["id_token_hint"] = idToken;
+        }
+
+        return QueryHelpers.AddQueryString(endpoints.EndSession.AbsoluteUri, query);
     }
 }

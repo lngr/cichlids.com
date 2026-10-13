@@ -247,7 +247,7 @@ public sealed class WebSessionTests(WebSessionFixture fixture)
 
         using var response = await SendAsync(HttpMethod.Post, "/api/auth/logout", login.CookieHeader, csrf, WebSessionFixture.WebOrigin);
 
-        Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
+        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         Assert.True(SetCookie(response, SessionCookie).Expires < DateTimeOffset.UtcNow, "the session cookie is cleared");
         Assert.Contains(fixture.Keycloak.LogoutRequests, form => form.GetValueOrDefault("refresh_token") == login.RefreshToken);
         await using (var db = fixture.CreateDbContext())
@@ -257,6 +257,37 @@ public sealed class WebSessionTests(WebSessionFixture fixture)
 
         using var after = await SendAsync(HttpMethod.Get, "/api/me", login.CookieHeader);
         Assert.Equal(HttpStatusCode.Unauthorized, after.StatusCode);
+    }
+
+    [Fact]
+    public async Task Logout_answers_the_Keycloak_end_session_address_that_ends_the_browser_sign_in()
+    {
+        var login = await LogInAsync("/");
+        var csrf = await CsrfTokenAsync(login);
+
+        using var response = await SendAsync(HttpMethod.Post, "/api/auth/logout", login.CookieHeader, csrf, WebSessionFixture.WebOrigin);
+
+        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        Assert.Equal("no-store", response.Headers.CacheControl?.ToString());
+        var body = await response.Content.ReadAsStringAsync();
+        using var json = JsonDocument.Parse(body);
+        var logoutUrl = new Uri(json.RootElement.GetProperty("logoutUrl").GetString()!);
+        Assert.StartsWith(FakeKeycloak.LogoutEndpoint + "?", logoutUrl.AbsoluteUri);
+        var query = QueryHelpers.ParseQuery(logoutUrl.Query);
+        Assert.Equal(login.IdToken, query["id_token_hint"].ToString());
+        Assert.Equal(WebSessionFixture.PostLogoutRedirectUrl, query["post_logout_redirect_uri"].ToString());
+        Assert.Equal(FakeKeycloak.ClientId, query["client_id"].ToString());
+        Assert.False(query.ContainsKey("client_secret"), "the secret never reaches the browser");
+        Assert.DoesNotContain(login.RefreshToken, body);
+        Assert.DoesNotContain(login.AccessToken, body);
+    }
+
+    [Fact]
+    public async Task Logout_without_a_session_answers_401_and_no_end_session_address()
+    {
+        using var response = await SendAsync(HttpMethod.Post, "/api/auth/logout", cookie: null, origin: WebSessionFixture.WebOrigin);
+
+        Assert.Equal(HttpStatusCode.Unauthorized, response.StatusCode);
     }
 
     [Fact]
@@ -467,7 +498,7 @@ public sealed class WebSessionTests(WebSessionFixture fixture)
 
     private async Task<string> CsrfTokenAsync(Login login)
     {
-        fixture.Keycloak.RenewWith(login.RefreshToken, new TokenAnswer(login.AccessToken, login.RefreshToken));
+        fixture.Keycloak.RenewWith(login.RefreshToken, new TokenAnswer(login.AccessToken, login.RefreshToken, login.IdToken));
         using var response = await SendAsync(HttpMethod.Get, "/api/auth/session", login.CookieHeader);
         using var json = JsonDocument.Parse(await response.Content.ReadAsStringAsync());
         return json.RootElement.GetProperty("csrfToken").GetString()!;

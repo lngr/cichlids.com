@@ -165,7 +165,7 @@ public sealed class KeycloakOidcClientTests
             NullLogger<KeycloakOidcClient>.Instance);
 
     private static WebSessionSettings Settings() =>
-        new(new Uri("https://cichlids.test/api/auth/callback"), ["https://cichlids.test"], true, "cichlids-web-bff", "bff-secret");
+        new(new Uri("https://cichlids.test/api/auth/callback"), ["https://cichlids.test"], true, "cichlids-web-bff", "bff-secret", new Uri("https://cichlids.test/me"));
 
     private static HttpResponseMessage Discovery(HttpRequestMessage request) => new(HttpStatusCode.OK)
     {
