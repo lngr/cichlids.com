@@ -13,9 +13,8 @@ import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
-import { API_URL, WEB_URL, byTestId, logInThroughKeycloak } from "./support.mjs";
+import { API_URL, WEB_URL, byTestId, logInThroughKeycloak, passwordGrantToken } from "./support.mjs";
 
-const TOKEN_STORAGE_KEY = "cichlids.auth.tokens";
 const E2E_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const COMPOSE_FILE = path.resolve(E2E_DIR, "../../stack/compose.yaml");
 const DOTNET = process.env.DOTNET ?? path.join(os.homedir(), ".dotnet", "dotnet");
@@ -41,12 +40,6 @@ function sql(statement) {
 // Stores a file in the write bucket through bucket-tool.cs, which refuses every other bucket.
 function putObject(key, file, contentType) {
   execFileSync(DOTNET, ["run", "bucket-tool.cs", "--", "put", BUCKET, key, file, contentType], { cwd: E2E_DIR, stdio: "pipe" });
-}
-
-async function accessToken(page) {
-  const token = await page.evaluate((key) => JSON.parse(sessionStorage.getItem(key) ?? "null")?.accessToken, TOKEN_STORAGE_KEY);
-  if (!token) throw new Error("No access token in the session storage");
-  return token;
 }
 
 const browser = await chromium.launch();
@@ -76,7 +69,7 @@ try {
     { timeout: 20000 },
   );
 
-  const token = await accessToken(page);
+  const token = await passwordGrantToken();
   const draftsResponse = await fetch(`${API_URL}/api/me/drafts`, { headers: { Authorization: `Bearer ${token}` } });
   if (!draftsResponse.ok) throw new Error(`GET /api/me/drafts returned ${draftsResponse.status}`);
   const drafts = await draftsResponse.json();

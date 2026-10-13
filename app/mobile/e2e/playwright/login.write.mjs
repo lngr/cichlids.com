@@ -1,8 +1,8 @@
 // Logs in through the real Keycloak login page as the local dev user and checks that the Me tab
 // shows the profile from GET /api/me. Logs out and logs in a second time on the same page: Keycloak
-// asks for credentials (logout ended its session), and the second authorization request has a
-// fresh state and PKCE challenge. A page reload keeps the session, and after the final logout a
-// reload keeps the anonymous state. Runs on the isolated write stack only (see
+// asks for credentials again, and the second authorization request has a fresh state and PKCE
+// challenge. A page reload keeps the session, and after the final logout a reload keeps the
+// anonymous state. Runs on the isolated write stack only (see
 // e2e/write-stack.sh): the first /api/me call of a user creates their profile row.
 import { chromium } from "playwright";
 import { AUTHORIZATION_ENDPOINT, WEB_URL, byTestId, logInThroughKeycloak } from "./support.mjs";
@@ -36,8 +36,7 @@ try {
   await logOut();
   console.log("Logged out, Me tab shows the login button");
 
-  // Same page, no reload in between: the second login has to build a new authorization request.
-  // The popup shows the credentials form only when logout ended the Keycloak session.
+  // The second login builds a new authorization request, and Keycloak asks for the credentials.
   console.log(`Logged in a second time, Me tab shows "${await logInThroughKeycloak(page)}"`);
 
   if (authorizationRequests.length !== 2) {

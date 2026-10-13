@@ -15,9 +15,8 @@ import { execFileSync } from "node:child_process";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
-import { API_URL, WEB_URL, byTestId, logInThroughKeycloak } from "./support.mjs";
+import { API_URL, WEB_URL, byTestId, logInThroughKeycloak, passwordGrantToken } from "./support.mjs";
 
-const TOKEN_STORAGE_KEY = "cichlids.auth.tokens";
 const COMPOSE_FILE = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../../stack/compose.yaml");
 
 // Sets the title, description and topic of a draft directly in the write database, the way
@@ -109,8 +108,7 @@ try {
   }
 
   async function listDrafts() {
-    const token = await page.evaluate((key) => JSON.parse(sessionStorage.getItem(key) ?? "null")?.accessToken, TOKEN_STORAGE_KEY);
-    if (!token) throw new Error("No access token in the session storage");
+    const token = await passwordGrantToken();
     const response = await fetch(`${API_URL}/api/me/drafts`, { headers: { Authorization: `Bearer ${token}` } });
     if (!response.ok) throw new Error(`GET /api/me/drafts returned ${response.status}`);
     return response.json();
@@ -195,7 +193,7 @@ try {
   // A draft with a title, description and topic is listed with its title and opens prefilled.
   const seededTitle = `E2E titled draft ${Date.now()}`;
   const seededDescription = "Draft description from the write database";
-  const seededToken = await page.evaluate((key) => JSON.parse(sessionStorage.getItem(key) ?? "null")?.accessToken, TOKEN_STORAGE_KEY);
+  const seededToken = await passwordGrantToken();
   const form = new FormData();
   form.append("file", new Blob([jpeg], { type: "image/jpeg" }), "seeded.jpg");
   const created = await fetch(`${API_URL}/api/uploads`, { method: "POST", headers: { Authorization: `Bearer ${seededToken}` }, body: form });

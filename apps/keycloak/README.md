@@ -12,9 +12,11 @@ The realm file of the local stack, `app/stack/keycloak/cichlids-realm.json`, is 
 development only and is never deployed. It must not be copied into these directories.
 
 The two files differ only in `displayName` and in the `redirectUris` and `webOrigins` of the
-public client `cichlids-app`. Staging allows `cichlids://auth` and `https://staging.cichlids.com/auth`
-with the web origin `https://staging.cichlids.com`, so testers can use a browser. Production
-allows `cichlids://auth` and no web origin.
+public client `cichlids-app`. Staging allows `cichlids://auth` and the web login callback of the
+API, `https://staging.cichlids.com/api/auth/callback`, with the web origin
+`https://staging.cichlids.com`, so testers can use a browser. Production allows `cichlids://auth`
+and no web origin. The web app and the API share one origin, and the API runs the web login
+([ADR-0027](../../docs/adr/0027-session-model-for-native-and-web-clients.md)).
 
 ## Rules enforced by CI
 

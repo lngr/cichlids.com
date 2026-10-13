@@ -1,6 +1,8 @@
+import { Platform } from "react-native";
 import Constants from "expo-constants";
 import { createCichlidsClient } from "@cichlids/client-core";
 import { pickRuntimeUrl } from "../config/appConfig";
+import { createCookieSessionFetch } from "./sessionFetch";
 
 // EXPO_PUBLIC_API_URL is inlined at build time; app.config.ts writes the build's resolved address
 // into expo.extra.apiUrl (localhost only in development).
@@ -9,14 +11,38 @@ const apiUrl = pickRuntimeUrl("EXPO_PUBLIC_API_URL", process.env.EXPO_PUBLIC_API
 type AccessTokenProvider = () => Promise<string | undefined>;
 
 let accessTokenProvider: AccessTokenProvider | null = null;
+let webSessionCsrfToken: string | null = null;
+let webSessionEndedListener: (() => void) | null = null;
 
 /** Sets the source of the bearer token for API calls; with null every call is anonymous. */
 export function setAccessTokenProvider(provider: AccessTokenProvider | null): void {
   accessTokenProvider = provider;
 }
 
+/** Sets the CSRF token that web requests send with every write; null without a web session. */
+export function setWebSessionCsrfToken(token: string | null): void {
+  webSessionCsrfToken = token;
+}
+
+/** Sets the function the web client calls when the API answers 401, which ends the web session. */
+export function setWebSessionEndedListener(listener: (() => void) | null): void {
+  webSessionEndedListener = listener;
+}
+
+// The web build authenticates with the httpOnly session cookie the API manages; native builds
+// send the bearer token.
+const webFetch =
+  Platform.OS === "web"
+    ? createCookieSessionFetch({
+        fetch: (input, init) => fetch(input, init),
+        getCsrfToken: () => webSessionCsrfToken,
+        onUnauthorized: () => webSessionEndedListener?.(),
+      })
+    : undefined;
+
 export const apiClient = createCichlidsClient({
   baseUrl: apiUrl,
   getAccessToken: () => accessTokenProvider?.(),
+  fetch: webFetch,
 });
 export const API_BASE_URL = apiUrl;

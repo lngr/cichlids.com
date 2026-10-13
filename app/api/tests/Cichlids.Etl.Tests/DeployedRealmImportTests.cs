@@ -40,7 +40,7 @@ public sealed class DeployedRealmImportTests(DeployedRealmImportTests.StagingKey
         Assert.False(app.GetProperty("directAccessGrantsEnabled").GetBoolean());
         Assert.False(app.GetProperty("implicitFlowEnabled").GetBoolean());
         Assert.Equal(
-            ["cichlids://auth", "https://staging.cichlids.com/auth"],
+            ["cichlids://auth", "https://staging.cichlids.com/api/auth/callback"],
             Strings(app.GetProperty("redirectUris")));
         Assert.Equal(["https://staging.cichlids.com"], Strings(app.GetProperty("webOrigins")));
     }

@@ -21,18 +21,33 @@ export function byTestId(page, testId) {
 
 /**
  * Presses the given login button and submits the dev user's credentials on the Keycloak page. On
- * the web, expo-auth-session opens that page in a popup window and receives the redirect back from
- * it. Resolves once the credentials are submitted; the caller waits for its own logged-in state.
+ * the web the app asks the API to start the login and navigates the page to Keycloak; after the
+ * credentials, Keycloak returns through the API's callback to the page the login started from.
+ * Resolves once the credentials are submitted; the caller waits for its own logged-in state.
  */
-export async function submitKeycloakLogin(page, loginButton) {
+export async function submitKeycloakLogin(page, loginButton, username = USERNAME, password = PASSWORD) {
   await loginButton.waitFor({ timeout: 20000 });
-  const popupPromise = page.waitForEvent("popup", { timeout: 20000 });
   await loginButton.click();
-  const popup = await popupPromise;
-  await popup.waitForSelector("#username", { timeout: 20000 });
-  await popup.fill("#username", USERNAME);
-  await popup.fill("#password", PASSWORD);
-  await popup.click("#kc-login");
+  await page.waitForURL((url) => url.href.startsWith(AUTHORIZATION_ENDPOINT), { timeout: 20000 });
+  await page.waitForSelector("#username", { timeout: 20000 });
+  await page.fill("#username", username);
+  await page.fill("#password", password);
+  await page.click("#kc-login");
+  await page.waitForURL((url) => url.href.startsWith(WEB_URL), { timeout: 30000 });
+}
+
+/**
+ * An access token of the dev user for direct API calls of a spec, from the password grant of the
+ * local realm. The web app itself keeps no token in the browser.
+ */
+export async function passwordGrantToken(username = USERNAME, password = PASSWORD) {
+  const response = await fetch(`${KEYCLOAK_URL}/realms/cichlids/protocol/openid-connect/token`, {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({ client_id: "cichlids-app", grant_type: "password", username, password }),
+  });
+  if (!response.ok) throw new Error(`Password grant for ${username} returned ${response.status}: ${await response.text()}`);
+  return (await response.json()).access_token;
 }
 
 /**

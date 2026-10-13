@@ -1,13 +1,13 @@
 // Story: TASK-3.40
 // Two paths of the hardened app on the web build. First, the gallery while a further page loads:
 // the member changes the sort, the overtaken load-more is dropped, and scrolling to the end loads
-// further pages of the new sort. Second, login while Keycloak is unreachable: the login button
-// stays usable and keeps its accessibility label while busy, a failed tap shows a message with a
-// retry, and a retry after Keycloak is back loads the discovery document. The API list and the
-// Keycloak discovery request are served by Playwright routes, so the spec writes nothing; it runs
-// on the write stack with the other web specs (see e2e/write-stack.sh).
+// further pages of the new sort. Second, login while the sign-in service is unreachable: the login
+// button stays usable and keeps its accessibility label while busy, a failed tap shows a message
+// with a retry, and a retry once the service is back opens the Keycloak login. The API list and the
+// login start of the API are served by Playwright routes, so the spec writes nothing; it runs on
+// the write stack with the other web specs (see e2e/write-stack.sh).
 import { chromium } from "playwright";
-import { API_URL, WEB_URL, byTestId } from "./support.mjs";
+import { API_URL, AUTHORIZATION_ENDPOINT, WEB_URL, byTestId } from "./support.mjs";
 
 const PAGE_SIZE = 20;
 const TOTAL = 60;
@@ -61,7 +61,8 @@ try {
     await route.fulfill({
       status: 200,
       contentType: "application/json",
-      headers: { "access-control-allow-origin": "*" },
+      // The web client sends its requests with the session cookie, so CORS needs the exact origin.
+      headers: { "access-control-allow-origin": WEB_URL, "access-control-allow-credentials": "true" },
       body: JSON.stringify({ total: TOTAL, items: Array.from({ length: count }, (_, i) => pictureItem(sort, offset + i)) }),
     });
   });
@@ -92,9 +93,9 @@ try {
   console.log("After a sort change during a load-more, scrolling to the end loads further pages");
   await page.unroute(`${API_URL}/api/pictures?*`);
 
-  // Login with Keycloak unreachable.
+  // Login while the sign-in service is unreachable: the API cannot start the login.
   let keycloakReachable = false;
-  await page.route("**/realms/cichlids/.well-known/openid-configuration", async (route) => {
+  await page.route(`${API_URL}/api/auth/login`, async (route) => {
     if (keycloakReachable) return route.continue();
     await sleep(600);
     return route.abort("connectionrefused");
@@ -121,13 +122,11 @@ try {
   console.log(`Login with Keycloak unreachable shows "${message}" and a retry`);
 
   keycloakReachable = true;
-  const discoveryRequest = page.waitForRequest("**/realms/cichlids/.well-known/openid-configuration", { timeout: 20000 });
   await loginButton.click();
-  await discoveryRequest;
-  await loginError.waitFor({ state: "detached", timeout: 20000 });
-  console.log("The retry loads the discovery document and clears the message");
+  await page.waitForURL((url) => url.href.startsWith(AUTHORIZATION_ENDPOINT), { timeout: 20000 });
+  await page.waitForSelector("#username", { timeout: 20000 });
+  console.log("The retry opens the Keycloak login");
 
-  // Starting the app without Keycloak makes the automatic discovery of expo-auth-session reject.
   const unexpected = pageErrors.filter((error) => !error.includes("Failed to fetch"));
   if (unexpected.length > 0) throw new Error(`Page errors: ${unexpected.join("; ")}`);
 } finally {

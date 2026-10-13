@@ -125,7 +125,8 @@ start_api() {
     # build output rather than from app/api.
     cd "$API_BUILD_DIR"
     # The outbox dispatcher polls every second and gives an event up after fifteen seconds, so
-    # the webhook spec observes retries, a given-up event and its redelivery within seconds.
+    # the webhook spec observes retries, a given-up event and its redelivery within seconds. The
+    # web login returns from Keycloak to this API's callback.
     ASPNETCORE_URLS="http://0.0.0.0:${API_PORT}" \
     ASPNETCORE_ENVIRONMENT=Development \
     ConnectionStrings__Cichlids="$DB_CONNECTION" \
@@ -134,6 +135,7 @@ start_api() {
     OutboxDispatcher__Enabled=true \
     OutboxDispatcher__PollInterval=00:00:01 \
     OutboxDispatcher__GiveUpAfter=00:00:15 \
+    WebSession__CallbackUrl="${API_URL}/api/auth/callback" \
     nohup "$DOTNET" "$API_BUILD_DIR/Cichlids.Api.dll" >"$API_LOG" 2>&1 &
     echo $! >"$API_PID_FILE"
   )

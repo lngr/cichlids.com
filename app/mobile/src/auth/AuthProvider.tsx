@@ -1,7 +1,6 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { AppState } from "react-native";
 import * as Crypto from "expo-crypto";
-import * as WebBrowser from "expo-web-browser";
 import {
   exchangeCodeAsync,
   fetchDiscoveryAsync,
@@ -13,6 +12,7 @@ import {
   type DiscoveryDocument,
 } from "expo-auth-session";
 import { setAccessTokenProvider } from "../api/client";
+import { AuthContext, type AuthContextValue, type AuthStatus } from "./authContext";
 import { authConfig } from "./config";
 import { ensureDiscovery } from "./discovery";
 import { toTokenSet } from "./tokenLogic";
@@ -20,30 +20,7 @@ import { requestTokenRefresh } from "./tokenRefresh";
 import { createTokenSession } from "./tokenSession";
 import { tokenStorage } from "./tokenStorage";
 
-// On the web the Keycloak redirect lands in the login popup, which loads the app; this hands the
-// redirect URL back to the opening window and closes the popup.
-WebBrowser.maybeCompleteAuthSession();
-
-export type AuthStatus = "loading" | "anonymous" | "authenticated";
-
-export interface AuthContextValue {
-  status: AuthStatus;
-  /**
-   * Opens the Keycloak login; resolves false when the user cancels it or when the login only
-   * became ready (the discovery document was loaded by this call, a further call opens the login),
-   * and rejects when it fails. Rejects with DiscoveryUnavailableError when Keycloak cannot be reached.
-   */
-  login(): Promise<boolean>;
-  logout(): Promise<void>;
-  /**
-   * The current access token, refreshed first when it is about to expire; undefined when
-   * anonymous. Rejects with SessionUnavailableError when the refresh got no usable answer; the
-   * member stays signed in.
-   */
-  getAccessToken(): Promise<string | undefined>;
-}
-
-const AuthContext = createContext<AuthContextValue | null>(null);
+export { useAuth, type AuthContextValue, type AuthStatus } from "./authContext";
 
 function loadDiscovery(): Promise<DiscoveryDocument> {
   return fetchDiscoveryAsync(authConfig.issuer);
@@ -53,8 +30,8 @@ function loadDiscovery(): Promise<DiscoveryDocument> {
 const FOREGROUND_RENEW_INTERVAL_MS = 5 * 60 * 1000;
 
 /**
- * Holds the Keycloak offline session of the app user and supplies its access token to the API
- * client. The session lasts until the member signs out or Keycloak refuses to renew it; opening
+ * Holds the Keycloak offline session of the native app user and supplies its access token to the
+ * API client; the web build uses AuthProvider.web.tsx. The session lasts until the member signs out or Keycloak refuses to renew it; opening
  * the app renews it once, so a suspended or deleted account is signed out on the next start.
  */
 export function AuthProvider({ children }: { children: ReactNode }) {
@@ -67,8 +44,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     [],
   );
   // Every login attempt uses its own state and PKCE verifier. useAuthRequest builds a new request
-  // (with a new verifier) whenever the state changes, and the request is ready before the press,
-  // since the web popup has to open synchronously from it.
+  // (with a new verifier) whenever the state changes, and the request is ready before the press.
   const [requestState, setRequestState] = useState(() => Crypto.randomUUID());
   const [request, , promptAsync] = useAuthRequest(
     {
@@ -192,10 +168,4 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
-}
-
-export function useAuth(): AuthContextValue {
-  const value = useContext(AuthContext);
-  if (!value) throw new Error("useAuth must be used inside AuthProvider.");
-  return value;
 }

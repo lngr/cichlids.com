@@ -11,13 +11,12 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
-import { API_URL, KEYCLOAK_URL, PASSWORD, WEB_URL, byTestId, submitKeycloakLogin } from "./support.mjs";
+import { API_URL, KEYCLOAK_URL, PASSWORD, USERNAME, WEB_URL, byTestId, submitKeycloakLogin } from "./support.mjs";
 
 const PICTURE_OWNER = "dev-mod";
 const SPEC_DIR = path.dirname(fileURLToPath(import.meta.url));
 const FIXTURE = path.join(SPEC_DIR, "..", "fixtures", "upload-photo.jpg");
 const COMPOSE_FILE = path.resolve(SPEC_DIR, "../../../stack/compose.yaml");
-const TOKEN_STORAGE_KEY = "cichlids.auth.tokens";
 const DRAFT_LIMIT = 50;
 const COMMENT_LIMIT = 10000;
 
@@ -90,8 +89,6 @@ try {
   const submit = byTestId(page, "comment-submit");
   const counter = byTestId(page, "comment-counter");
 
-  const accessToken = () => page.evaluate((key) => JSON.parse(sessionStorage.getItem(key) ?? "null")?.accessToken, TOKEN_STORAGE_KEY);
-
   await page.goto(`${WEB_URL}/gallery/${slug}`, { waitUntil: "networkidle", timeout: 60000 });
   await byTestId(page, "picture-title").waitFor({ timeout: 20000 });
   await submitKeycloakLogin(page, byTestId(page, "comment-login"));
@@ -107,8 +104,7 @@ try {
   console.log(`A comment of ${COMMENT_LIMIT + 1} characters shows the counter "${overText}" and cannot be sent`);
 
   // The API refuses the same comment with the code comment_too_long.
-  const token = await accessToken();
-  if (!token) throw new Error("No access token in the session storage");
+  const token = await tokenOf(USERNAME);
   const refused = await fetch(`${API_URL}/api/pictures/${slug}/comments`, {
     method: "POST",
     headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },

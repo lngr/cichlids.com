@@ -1,9 +1,12 @@
 import type { DiscoveryDocument } from "expo-auth-session";
 
-/** The Keycloak discovery document could not be loaded, for example because the issuer is unreachable. */
+/**
+ * Keycloak cannot be reached for a login: the discovery document could not be loaded, or on the
+ * web the API could not start the login.
+ */
 export class DiscoveryUnavailableError extends Error {
   constructor(cause: unknown) {
-    super("The Keycloak discovery document could not be loaded.", { cause });
+    super("Keycloak cannot be reached for a login.", { cause });
     this.name = "DiscoveryUnavailableError";
   }
 }
