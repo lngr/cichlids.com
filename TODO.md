@@ -53,7 +53,7 @@ Umgesetzt und in `main` gemergt. TASK-3.29 ist Done, die übrigen stehen in Revi
 - [ ] TASK-3.39 Korrekturen der ETL-Regeln (R15, R16, R17, R19, R21, R35, R37): umgesetzt, abnehmen
 - [ ] TASK-3.40 Konfiguration und Fehlerzustände der App (R25, R26, R27, R41): umgesetzt, abnehmen
 - [ ] TASK-3.41 Dauerhafte Anmeldung pro Gerät (R8): umgesetzt, abnehmen; ADR-0027 (Proposed) annehmen
-- [ ] TASK-3.42 Code- und Doku-Korrekturen (R32, R39, R40, R42 bis R46): umgesetzt bis auf R46 (PROJECT-STATUS.md)
+- [ ] TASK-3.42 Code- und Doku-Korrekturen (R32, R39, R40, R42 bis R46): umgesetzt, abnehmen
 - [ ] TASK-3.28 Ich-Tab mit eigenen Bildern, Becken und Entwürfen
 - [ ] TASK-2.24 Playwright-Smoke mit anonymisierten Daten in CI
 - [ ] TASK-2.25 Maestro-Flows in CI (hängt an F13)

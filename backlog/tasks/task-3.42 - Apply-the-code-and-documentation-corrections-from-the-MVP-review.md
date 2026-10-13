@@ -1,10 +1,10 @@
 ---
 id: TASK-3.42
 title: Apply the code and documentation corrections from the MVP review
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-10-12 04:49'
-updated_date: '2026-10-13 13:11'
+updated_date: '2026-10-13 15:21'
 labels: []
 dependencies: []
 references:
@@ -95,4 +95,17 @@ The development CORS check rejects invalid origins instead of failing. Postgres 
 - R43: no inline tags left in C# doc comments outside the generated migrations.
 - Verified: Api 421, Infrastructure 310, Etl 342; mobile typecheck.
 - Open: R46 (`PROJECT-STATUS.md`).
+
+### R46
+- `PROJECT-STATUS.md` reflects the merged state: date, worktree and branches, backlog numbers,
+  implemented platform tasks and open operator checks, ADRs up to 0027, drafts, account import,
+  realm configuration, working rules; thread F29 for the node firewall; no concrete addresses.
+
+### Operator checks
+- AC #1: `curl -s -o /dev/null -w "%{http_code}" -H "Origin: null" http://localhost:5045/api/species`
+  in Development answers without 5xx (Api test `Origin: null`).
+- AC #2: after `docker compose -f app/stack/compose.yaml up -d` outside the devcontainer,
+  `ss -ltn` shows Postgres, RustFS and Keycloak on 127.0.0.1 only.
+- AC #3: `grep -rnE "///.*<(c|see|seealso|paramref|typeparamref)\b" app/api --include=*.cs` finds
+  nothing outside the generated migrations.
 <!-- SECTION:NOTES:END -->
