@@ -71,4 +71,5 @@ by hand. Run that script (or its `--check` mode in CI) after adding or changing 
 | [0024](0024-webhook-delivery-boundary-and-redelivery.md) | Webhook Delivery Boundary and Redelivery | Accepted |
 | [0025](0025-keycloak-realm-configuration-per-environment.md) | Keycloak Realm Configuration per Environment | Accepted |
 | [0026](0026-legacy-import-runs-once-against-an-empty-target.md) | Legacy Import Runs Once Against an Empty Target | Accepted |
+| [0027](0027-session-model-for-native-and-web-clients.md) | Session Model for Native and Web Clients | Proposed |
 <!-- END ADR LIST -->
