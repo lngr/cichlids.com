@@ -50,7 +50,7 @@ public sealed class CommunityQueryService(CichlidsDbContext context, IObjectStor
 
         if (!string.IsNullOrWhiteSpace(query))
         {
-            var pattern = $"%{query}%";
+            var pattern = LikePattern.Contains(query);
             filtered = filtered.Where(t => EF.Functions.ILike(t.Title, pattern));
         }
 

@@ -19,7 +19,7 @@ public sealed class SpeciesQueryService(CichlidsDbContext context)
 
         if (!string.IsNullOrWhiteSpace(query))
         {
-            var pattern = $"%{query}%";
+            var pattern = LikePattern.Contains(query);
             filtered = filtered.Where(s =>
                 EF.Functions.ILike(s.Genus, pattern) ||
                 EF.Functions.ILike(s.Name, pattern) ||

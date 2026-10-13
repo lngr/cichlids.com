@@ -1,3 +1,4 @@
+using Cichlids.Api.Features.Common;
 using Cichlids.Domain.Enums;
 using Cichlids.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -13,9 +14,10 @@ namespace Cichlids.Api.Features.LegacyRedirects;
 public sealed class LegacyRedirectsQueryService(CichlidsDbContext context)
 {
     /// <summary>
-    /// Resolves a picture alias against every slug a post ever had (case-sensitive first, then a
-    /// case-insensitive fallback for links that got the casing slightly wrong) and returns the
-    /// post's current canonical slug.
+    /// Resolves a picture alias against every slug a post ever had (exact match first, then a
+    /// case-insensitive match for links that got the casing slightly wrong; wildcard characters
+    /// are plain characters) and returns the post's current canonical slug. Returns null when the
+    /// post is not publicly visible (not published, or deleted).
     /// </summary>
     public async Task<string?> ResolvePictureCanonicalSlugAsync(string alias, CancellationToken cancellationToken)
     {
@@ -26,13 +28,21 @@ public sealed class LegacyRedirectsQueryService(CichlidsDbContext context)
 
         if (postId is null)
         {
+            var escapedAlias = LikePattern.Escape(alias);
             postId = await context.SlugAliases
-                .Where(s => EF.Functions.ILike(s.Value, alias))
+                .Where(s => EF.Functions.ILike(s.Value, escapedAlias))
                 .Select(s => (long?)s.PostId)
                 .FirstOrDefaultAsync(cancellationToken);
         }
 
         if (postId is null)
+        {
+            return null;
+        }
+
+        var isVisible = await context.Posts
+            .AnyAsync(p => p.Id == postId && p.State == PostState.Published && p.DeletedAt == null, cancellationToken);
+        if (!isVisible)
         {
             return null;
         }
@@ -43,8 +53,15 @@ public sealed class LegacyRedirectsQueryService(CichlidsDbContext context)
             .FirstOrDefaultAsync(cancellationToken);
     }
 
+    /// <summary>
+    /// Resolves a tank's legacy id to its current id, or null when the tank is not publicly
+    /// visible (not published, or deleted).
+    /// </summary>
     public Task<long?> ResolveTankIdAsync(int legacyId, CancellationToken cancellationToken) =>
-        context.Tanks.Where(t => t.LegacyId == legacyId).Select(t => (long?)t.Id).FirstOrDefaultAsync(cancellationToken);
+        context.Tanks
+            .Where(t => t.LegacyId == legacyId && t.State == TankState.Published && t.DeletedAt == null)
+            .Select(t => (long?)t.Id)
+            .FirstOrDefaultAsync(cancellationToken);
 
     /// <summary>
     /// Resolves a member's legacy uid to its current profile id. Only profiles of kind
@@ -57,11 +74,18 @@ public sealed class LegacyRedirectsQueryService(CichlidsDbContext context)
             .Select(p => (long?)p.Id)
             .FirstOrDefaultAsync(cancellationToken);
 
-    public Task<string?> ResolveSpeciesSlugAsync(string alias, CancellationToken cancellationToken) =>
-        context.Species
-            .Where(s => s.Slug != null && EF.Functions.ILike(s.Slug, alias))
+    /// <summary>
+    /// Resolves a species alias against the catalog slugs, ignoring case; wildcard characters are
+    /// plain characters.
+    /// </summary>
+    public Task<string?> ResolveSpeciesSlugAsync(string alias, CancellationToken cancellationToken)
+    {
+        var escapedAlias = LikePattern.Escape(alias);
+        return context.Species
+            .Where(s => s.Slug != null && EF.Functions.ILike(s.Slug, escapedAlias))
             .Select(s => s.Slug)
             .FirstOrDefaultAsync(cancellationToken);
+    }
 
     public Task<long?> ResolveDiscussionThreadIdAsync(int legacyId, CancellationToken cancellationToken) =>
         context.DiscussionThreads
