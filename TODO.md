@@ -151,7 +151,9 @@ Zu jeder Frage ist eine vorläufige Umsetzung in Gebrauch; sie wird bestätigt o
   ergänzten Gruppen die ursprüngliche Abstimmung (etwa Nimbochromis venustus); die Vorsichtsregel
   für Gruppenlisten ohne Mehrheit (alle Gruppen mit mindestens zwei Stimmen, sonst die zuerst
   genannte) bestätigen; eine Forumsmeldung Parachromis managuensis mal Texas-Buntbarsch ergibt
-  wegen der Forumsgewichtung keine Gruppe.
+  wegen der Forumsgewichtung keine Gruppe. Erzwungene Laborkreuzungen ergeben eine vermutete
+  Gruppe; ältere Profile, die eine solche Kreuzung als nicht zählend verworfen haben (etwa
+  Pseudotropheus cyaneorhabdos mit Gerwin et al. 2021), danach nachprüfen.
 - [ ] **Einzelentscheide mit niedriger Sicherheit:** Maylandia zebra Raub 1 bei 3:2 für 0;
   Labeotropheus trewavasae Aggression gegen andere Arten 3 gegen eine 2:1-Mehrheit.
 - [ ] **Reihenfolge und Synonyme:** Profile entstehen nach Fotoanzahl, offensichtliche
