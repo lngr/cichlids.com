@@ -1,0 +1,2957 @@
+schemaVersion: 1
+id: amphilophus-labiatus
+legacyIds:
+  - 618
+status: described
+taxonomy:
+  validName: Amphilophus labiatus
+  genus: Amphilophus
+  species: labiatus
+  author: (Günther, 1864)
+  source:
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes, species of the genus Amphilophus"
+    url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Amphilophus
+    accessed: 2026-10-13
+  synonyms:
+    - name: Heros labiatus Günther, 1864
+      note: Original combination; type locality Lake Managua.
+    - name: Cichlasoma labiatum (Günther, 1864)
+      note: Combination of the older literature, for example Barlow and Munsey (1976).
+    - name: Heros lobochilus Günther, 1867
+      note: Synonym according to the Catalog of Fishes; described from Lake Managua.
+    - name: Cichlasoma dorsatum Meek, 1907
+      note: Synonym according to the Catalog of Fishes; described from Lake Managua at Managua.
+    - name: Amphilophus froebelii Agassiz, 1859
+      note: "Not a confirmed synonym: the Catalog of Fishes gives its status as uncertain. The name rests
+        on a one-sentence description from Lake Nicaragua, is probably the same fish and is treated
+        as an unused senior name."
+  legacyNames:
+    - Amphilophus labiatus
+  note: The Catalog of Fishes lists Amphilophus labiatus as valid, with Lake Managua as type locality
+    and lakes Nicaragua and Managua plus Costa Rica as range. Heros erythraeus Günther, 1867, long
+    treated as a synonym, is listed there as the valid Lake Managua species Amphilophus erythraeus
+    and is therefore not a synonym here. The thick-lipped great-lake fish are genetically only
+    weakly separated from the Midas cichlid A. citrinellus, the trade name red devil is also used
+    for A. citrinellus, and aquarium stock is often of mixed origin.
+names:
+  trade:
+    en:
+      - Red devil
+      - Red devil cichlid
+    de:
+      - Dicklippiger Buntbarsch
+    es-419:
+      - Mojarra picuda
+      - Diablo rojo
+      - Labiata
+variants:
+  - name: Wild type
+    kind: color-morph
+    note: Grey to olive fish with dark bars or blotches; the common colour of wild populations.
+  - name: Gold or red
+    kind: color-morph
+    note: Orange to deep red fish without dark pigment, derived from the gold morph that occurs in the
+      lakes; the dominant form in the trade.
+  - name: White and piebald
+    kind: color-morph
+    note: Tank-bred white, orange-and-white and marbled lines.
+  - name: Lake Nicaragua
+    kind: locality
+    note: Wild fish from Lake Nicaragua (Cocibolca).
+  - name: Lake Managua
+    kind: locality
+    note: Wild fish from Lake Managua (Xolotlán), the type locality.
+features:
+  origin:
+    value:
+      continent: Central America
+      region: Great lakes of Nicaragua (San Juan basin, Atlantic slope)
+      waterbody: null
+      localities:
+        - Lake Nicaragua (Cocibolca)
+        - Lake Managua (Xolotlán)
+        - Tipitapa River (rare)
+        - Costa Rica (range record of the Catalog of Fishes)
+    confidence: high
+    rationale: All four runs agree on the two great lakes of Nicaragua on the Atlantic slope. The
+      Catalog of Fishes and FishBase restrict the species to lakes Nicaragua and Managua, Barlow and
+      Munsey state that it lives only there, and FishBase and Fishkeeper add that it rarely enters
+      the Tipitapa River that links the lakes. The Catalog of Fishes and the Nicaraguan checklist of
+      Angulo et al. also give Costa Rica; no species-specific field account confirms a Costa Rican
+      site, so it is kept as a range record only and does not inform the water values. Introduced
+      populations outside the range are not part of the origin.
+    sources:
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes, species of the genus Amphilophus"
+        url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Amphilophus
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishBase species summary: Amphilophus labiatus"
+        url: https://www.fishbase.se/summary/Amphilophus-labiatus.html
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Barlow, G. W. and Munsey, J. W. (1976). The red devil-Midas-arrow cichlid species complex in
+          Nicaragua. In: Thorson, T. B. (ed.), Investigations of the Ichthyofauna of Nicaraguan
+          Lakes, University of Nebraska-Lincoln, 359-369 (abstract)."
+        url: https://digitalcommons.unl.edu/ichthynicar/24
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Angulo, A., Betts, J. T., González-Alemán, N. J., Castañeda, E., Van den Berghe, E., Elías,
+          D. J., McMahan, C. D. and Matamoros, W. A. (2023). Taxonomic treatment of Amphilophus
+          labiatus from a checklist of the freshwater fishes of Nicaragua (treatment record on
+          Zenodo)."
+        url: https://doi.org/10.5281/zenodo.10248731
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Red Devil, Amphilophus labiatus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-devil
+        accessed: 2026-10-13
+      - kind: database
+        title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+        url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+        accessed: 2026-10-13
+  temperatureC:
+    value:
+      min: 24
+      max: 31
+    confidence: medium
+    rationale: The tally decides 24 to 31 C unanimously from four votes (generator and checker-a 24 to
+      31, checker-b 25 to 29, checker-c 24 to 30 C), as the median of the agreeing bounds. Both
+      great lakes are shallow, wind-mixed and without lasting stratification, so the rocky littoral
+      has nearly the temperature of the whole water column. Swain measured 25 to 28 C at the surface
+      of Lake Nicaragua, 24.7 to 26 C in Lake Managua and 24 to 26 C near the bottom in the early
+      1960s; Collado et al. recorded 27.5 to 28 C at 1 m depth early in the morning in November, and
+      the FAO field compilation gives 26 to 30 C for Lake Managua. These cool-season and morning
+      readings set the lower end. The upper end of 31 C allows for afternoon and dry-season warming
+      of the shallows, which the 28.5 to 32.4 C of the Tipitapa River between the lakes indicates.
+      FishBase gives 28 to 33 C after an aquarium book rather than a field measurement and carries
+      little weight.
+    sources:
+      - kind: literature
+        title: "Swain, F. M. (1966). Bottom sediments of Lake Nicaragua and Lake Managua, western Nicaragua.
+          Journal of Sedimentary Research 36(2), 522-540."
+        url: https://doi.org/10.1306/74d71500-2b21-11d7-8648000102c1865d
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Collado, J., Leal-Cardín, M., Riesgo, A., Gallego, R. and Barluenga, M. (2026). Beyond
+          cichlid diversification: environmental drivers of biodiversity across the Nicaraguan lake
+          system. Hydrobiologia."
+        url: https://doi.org/10.1007/s10750-026-06401-x
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Lacayo Morales, R. and Picado Pavón, F. J. (2022). Calidad y uso potencial de las aguas del
+          río Tipitapa. Revista Torreón Universitario 11(31), 134-146."
+        url: https://doi.org/10.5377/rtu.v11i31.14292
+        accessed: 2026-10-13
+      - kind: literature
+        title: "FAO. The inland waters of Latin America, Central America: Nicaragua and Managua (field
+          chemistry after FAO/UN 1961)."
+        url: https://www.fao.org/4/ad770b/AD770B13.htm
+        accessed: 2026-10-13
+      - kind: database
+        title: "World Lake Database (ILEC): Lago Xolotlán (Lake Managua)"
+        url: https://wldb.ilec.or.jp/Display/html/3461
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishBase species summary: Amphilophus labiatus"
+        url: https://www.fishbase.se/summary/Amphilophus-labiatus.html
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: literature
+          title: "Swain, F. M. (1966). Bottom sediments of Lake Nicaragua and Lake Managua, western Nicaragua.
+            Journal of Sedimentary Research 36(2), 522-540."
+          url: https://doi.org/10.1306/74d71500-2b21-11d7-8648000102c1865d
+          accessed: 2026-10-13
+        value:
+          min: 24
+          max: 28
+        note: surface 25 to 28 C (Lake Nicaragua) and 24.7 to 26 C (Lake Managua), bottom 24 to 26 C
+      - source:
+          kind: literature
+          title: "Collado, J., Leal-Cardín, M., Riesgo, A., Gallego, R. and Barluenga, M. (2026). Beyond
+            cichlid diversification: environmental drivers of biodiversity across the Nicaraguan
+            lake system. Hydrobiologia."
+          url: https://doi.org/10.1007/s10750-026-06401-x
+          accessed: 2026-10-13
+        value:
+          min: 27.5
+          max: 28
+        note: surface water at 1 m, early morning, November
+      - source:
+          kind: literature
+          title: "FAO. The inland waters of Latin America, Central America: Nicaragua and Managua (field
+            chemistry after FAO/UN 1961)."
+          url: https://www.fao.org/4/ad770b/AD770B13.htm
+          accessed: 2026-10-13
+        value:
+          min: 26
+          max: 30
+        note: Lake Managua, field data compilation
+      - source:
+          kind: literature
+          title: "Lacayo Morales, R. and Picado Pavón, F. J. (2022). Calidad y uso potencial de las aguas del
+            río Tipitapa. Revista Torreón Universitario 11(31), 134-146."
+          url: https://doi.org/10.5377/rtu.v11i31.14292
+          accessed: 2026-10-13
+        value:
+          min: 28.5
+          max: 32.4
+        note: Tipitapa River between the lakes, rainy and dry season; river, not lake water
+      - source:
+          kind: database
+          title: "FishBase species summary: Amphilophus labiatus"
+          url: https://www.fishbase.se/summary/Amphilophus-labiatus.html
+          accessed: 2026-10-13
+        value:
+          min: 28
+          max: 33
+        note: taken from an aquarium book, not a habitat measurement
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+    tolerance:
+      value:
+        min: 22
+        max: 31
+      confidence: medium
+      rationale: The tally decides 22 to 31 C unanimously from four votes (generator 22 to 31, checker-a
+        22 to 32, checker-b and checker-c 22 to 30 C). Seriously Fish, Fishkeeper and FishProfiles
+        recommend 22 to 28 C for the aquarium and Aqualog 24 to 29 C, which sets the lower end. The
+        upper end is the natural maximum of 31 C, which the fish meet in their lakes and which
+        research laboratories approach when they rear Midas cichlids at about 28 C. The Nordic
+        Cichlid Society register and FishBase give a wider 28 to 33 C, so the decided upper end is
+        narrower than these two sources. At the warm end the tank needs strong aeration, because
+        these large fish have a high oxygen demand.
+      sources:
+        - kind: database
+          title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+          url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+          accessed: 2026-10-13
+        - kind: database
+          title: "Fishkeeper (Maidenhead Aquatics): Red Devil, Amphilophus labiatus, species profile"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-devil
+          accessed: 2026-10-13
+        - kind: database
+          title: "FishProfiles.com: Amphilophus labiatus"
+          url: https://fishprofiles.com/profiles/freshwater/Cichlids/Amphilophus_labiatus
+          accessed: 2026-10-13
+        - kind: database
+          title: "Aqualog.de fish lexicon: Amphilophus labiatus var. white"
+          url: https://www.aqualog.de/?p=1127311
+          accessed: 2026-10-13
+        - kind: database
+          title: "Nordiska Ciklidsällskapet, species register: Amphilophus labiatus"
+          url: https://www.ciklid.org/artregister/art.php?ID=244
+          accessed: 2026-10-13
+        - kind: database
+          title: "FishBase species summary: Amphilophus labiatus"
+          url: https://www.fishbase.se/summary/Amphilophus-labiatus.html
+          accessed: 2026-10-13
+        - kind: literature
+          title: "Rometsch, S. J., Torres-Dowdall, J., Machado-Schiaffino, G., Karagic, N. and Meyer, A.
+            (2021). Dual function and associated costs of a highly exaggerated trait in a cichlid
+            fish. Ecology and Evolution 11(23), 17496-17508."
+          url: https://doi.org/10.1002/ece3.8383
+          accessed: 2026-10-13
+        - kind: literature
+          title: "FAO. The inland waters of Latin America, Central America: Nicaragua and Managua (field
+            chemistry after FAO/UN 1961)."
+          url: https://www.fao.org/4/ad770b/AD770B13.htm
+          accessed: 2026-10-13
+      evidence:
+        - source:
+            kind: database
+            title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+            url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+            accessed: 2026-10-13
+          value:
+            min: 22
+            max: 28
+          note: aquarium recommendation
+        - source:
+            kind: database
+            title: "Fishkeeper (Maidenhead Aquatics): Red Devil, Amphilophus labiatus, species profile"
+            url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-devil
+            accessed: 2026-10-13
+          value:
+            min: 22
+            max: 28
+          note: aquarium recommendation
+        - source:
+            kind: database
+            title: "FishProfiles.com: Amphilophus labiatus"
+            url: https://fishprofiles.com/profiles/freshwater/Cichlids/Amphilophus_labiatus
+            accessed: 2026-10-13
+          value:
+            min: 22
+            max: 28
+          note: aquarium recommendation
+        - source:
+            kind: database
+            title: "Aqualog.de fish lexicon: Amphilophus labiatus var. white"
+            url: https://www.aqualog.de/?p=1127311
+            accessed: 2026-10-13
+          value:
+            min: 24
+            max: 29
+          note: aquarium recommendation for the white line
+        - source:
+            kind: database
+            title: "Nordiska Ciklidsällskapet, species register: Amphilophus labiatus"
+            url: https://www.ciklid.org/artregister/art.php?ID=244
+            accessed: 2026-10-13
+          value:
+            min: 28
+            max: 33
+        - source:
+            kind: database
+            title: "FishBase species summary: Amphilophus labiatus"
+            url: https://www.fishbase.se/summary/Amphilophus-labiatus.html
+            accessed: 2026-10-13
+          value:
+            min: 28
+            max: 33
+          note: taken from an aquarium book
+        - source:
+            kind: literature
+            title: "Rometsch, S. J., Torres-Dowdall, J., Machado-Schiaffino, G., Karagic, N. and Meyer, A.
+              (2021). Dual function and associated costs of a highly exaggerated trait in a cichlid
+              fish. Ecology and Evolution 11(23), 17496-17508."
+            url: https://doi.org/10.1002/ece3.8383
+            accessed: 2026-10-13
+          value:
+            min: 27
+            max: 29
+          note: laboratory rearing of Midas cichlids at about 28 C
+        - source:
+            kind: literature
+            title: "FAO. The inland waters of Latin America, Central America: Nicaragua and Managua (field
+              chemistry after FAO/UN 1961)."
+            url: https://www.fao.org/4/ad770b/AD770B13.htm
+            accessed: 2026-10-13
+          value:
+            min: 26
+            max: 30
+          note: native lake water; supports the upper extension, not a long-term aquarium test
+        - source:
+            kind: website
+            title: "Aquariadise: Red Devil Cichlid care guide"
+            url: https://aquariadise.com/red-devil-cichlid/
+            accessed: 2026-10-13
+          value:
+            min: 24
+            max: 26
+          note: recommended aquarium range
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+  ph:
+    value:
+      min: 8.2
+      max: 9.3
+    confidence: medium
+    rationale: "The tally decides pH 8.2 to 9.3 by qualified majority (5 of 6 votes; generator and
+      tiebreaker-1 8.0 to 9.3, checker-a, checker-b and tiebreaker-2 8.2 to 9.3, checker-c 7.0 to
+      9.3). The lower bound is the median of the agreeing minima. Both lakes are alkaline: Swain
+      measured 8.2 to 8.9 at the surface of Lake Nicaragua and 8.9 to 9.3 in Lake Managua in dry and
+      rainy season, the ILEC lake database gives surface means of 9.18 and 9.26 for eleven Lake
+      Managua stations in 1988, and Härer et al. measured 8.59 in Lake Nicaragua and 8.69 in Lake
+      Managua at 1 m depth. The sources span a wider range than the decision: the Tipitapa River
+      between the lakes reached down to 8.0, the FAO compilation gives 7.0 for Lake Nicaragua, and
+      the profundal water of Lake Nicaragua is 7.4 to 7.8 (Swain). The profundal is no habitat of
+      this rock-dwelling fish, and the single FAO reading is outweighed by the repeated surface
+      measurements."
+    sources:
+      - kind: literature
+        title: "Swain, F. M. (1966). Bottom sediments of Lake Nicaragua and Lake Managua, western Nicaragua.
+          Journal of Sedimentary Research 36(2), 522-540."
+        url: https://doi.org/10.1306/74d71500-2b21-11d7-8648000102c1865d
+        accessed: 2026-10-13
+      - kind: database
+        title: "World Lake Database (ILEC): Lago Xolotlán (Lake Managua)"
+        url: https://wldb.ilec.or.jp/Display/html/3461
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Härer, A., Ibrahim, A., Torres-Dowdall, J. and Meyer, A. (2021). Heterogeneity across
+          Neotropical aquatic environments affects prokaryotic and eukaryotic biodiversity based on
+          environmental DNA. Environmental DNA 4(2), 469-484."
+        url: https://doi.org/10.1002/edn3.267
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Lacayo Morales, R. and Picado Pavón, F. J. (2022). Calidad y uso potencial de las aguas del
+          río Tipitapa. Revista Torreón Universitario 11(31), 134-146."
+        url: https://doi.org/10.5377/rtu.v11i31.14292
+        accessed: 2026-10-13
+      - kind: literature
+        title: "FAO. The inland waters of Latin America, Central America: Nicaragua and Managua (field
+          chemistry after FAO/UN 1961)."
+        url: https://www.fao.org/4/ad770b/AD770B13.htm
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: literature
+          title: "Swain, F. M. (1966). Bottom sediments of Lake Nicaragua and Lake Managua, western Nicaragua.
+            Journal of Sedimentary Research 36(2), 522-540."
+          url: https://doi.org/10.1306/74d71500-2b21-11d7-8648000102c1865d
+          accessed: 2026-10-13
+        value:
+          min: 8.2
+          max: 9.3
+        note: surface water; 8.2 to 8.9 Lake Nicaragua, 8.9 to 9.3 Lake Managua; profundal water of Lake
+          Nicaragua 7.4 to 7.8
+      - source:
+          kind: database
+          title: "World Lake Database (ILEC): Lago Xolotlán (Lake Managua)"
+          url: https://wldb.ilec.or.jp/Display/html/3461
+          accessed: 2026-10-13
+        value:
+          min: 9.18
+          max: 9.26
+        note: Lake Managua, seasonal means of eleven surface stations, 1988
+      - source:
+          kind: literature
+          title: "Härer, A., Ibrahim, A., Torres-Dowdall, J. and Meyer, A. (2021). Heterogeneity across
+            Neotropical aquatic environments affects prokaryotic and eukaryotic biodiversity based
+            on environmental DNA. Environmental DNA 4(2), 469-484."
+          url: https://doi.org/10.1002/edn3.267
+          accessed: 2026-10-13
+        value:
+          min: 8.59
+          max: 8.69
+        note: one reading per lake at 1 m depth
+      - source:
+          kind: literature
+          title: "Lacayo Morales, R. and Picado Pavón, F. J. (2022). Calidad y uso potencial de las aguas del
+            río Tipitapa. Revista Torreón Universitario 11(31), 134-146."
+          url: https://doi.org/10.5377/rtu.v11i31.14292
+          accessed: 2026-10-13
+        value:
+          min: 8
+          max: 8.89
+        note: Tipitapa River between the lakes
+      - source:
+          kind: literature
+          title: "FAO. The inland waters of Latin America, Central America: Nicaragua and Managua (field
+            chemistry after FAO/UN 1961)."
+          url: https://www.fao.org/4/ad770b/AD770B13.htm
+          accessed: 2026-10-13
+        value:
+          min: 7
+          max: 8.7
+        note: Lake Nicaragua 7.0, Lake Managua 8.7
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 5
+        total: 6
+    tolerance:
+      value:
+        min: 6.5
+        max: 9.3
+      confidence: low
+      rationale: "The votes did not settle: generator, checker-a and tiebreaker-2 proposed 6.5 to 9.3,
+        checker-b, checker-c and tiebreaker-1 proposed 6.0 to 9.3, and the lower bounds differ by
+        more than 0.3. The tally therefore applies the conservative rule, the intersection of all
+        votes, 6.5 to 9.3, with confidence low. The care sheets reach lower than this decision:
+        Seriously Fish, Fishkeeper and Tropical Freshwater Fish accept pH 6.0 to 8.0 and
+        FishProfiles 6.0 to 7.5, while Aqualog and the Nordic Cichlid Society register give 7.0 to
+        8.0 and LiveAquaria a target of 6.8 to 7.2. No care sheet goes above pH 8.0; the upper end
+        of 9.3 follows the alkaline lake water the species lives in permanently (Swain), not a
+        long-term aquarium test."
+      sources:
+        - kind: database
+          title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+          url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+          accessed: 2026-10-13
+        - kind: database
+          title: "Fishkeeper (Maidenhead Aquatics): Red Devil, Amphilophus labiatus, species profile"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-devil
+          accessed: 2026-10-13
+        - kind: database
+          title: "Tropical Freshwater Fish: Red Devil, Cichlasoma labiatum"
+          url: https://tropicalfreshwaterfish.com/species/Cichlasoma_labiatum.html
+          accessed: 2026-10-13
+        - kind: database
+          title: "FishProfiles.com: Amphilophus labiatus"
+          url: https://fishprofiles.com/profiles/freshwater/Cichlids/Amphilophus_labiatus
+          accessed: 2026-10-13
+        - kind: database
+          title: "Aqualog.de fish lexicon: Amphilophus labiatus var. white"
+          url: https://www.aqualog.de/?p=1127311
+          accessed: 2026-10-13
+        - kind: database
+          title: "Nordiska Ciklidsällskapet, species register: Amphilophus labiatus"
+          url: https://www.ciklid.org/artregister/art.php?ID=244
+          accessed: 2026-10-13
+        - kind: literature
+          title: "Swain, F. M. (1966). Bottom sediments of Lake Nicaragua and Lake Managua, western Nicaragua.
+            Journal of Sedimentary Research 36(2), 522-540."
+          url: https://doi.org/10.1306/74d71500-2b21-11d7-8648000102c1865d
+          accessed: 2026-10-13
+        - kind: website
+          title: "LiveAquaria: Red Devil (Amphilophus labiatus), care facts (retailer page)"
+          url: https://www.liveaquaria.com/products/red-devil
+          accessed: 2026-10-13
+      evidence:
+        - source:
+            kind: database
+            title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+            url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+            accessed: 2026-10-13
+          value:
+            min: 6
+            max: 8
+          note: aquarium recommendation
+        - source:
+            kind: database
+            title: "Fishkeeper (Maidenhead Aquatics): Red Devil, Amphilophus labiatus, species profile"
+            url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-devil
+            accessed: 2026-10-13
+          value:
+            min: 6
+            max: 8
+          note: aquarium recommendation
+        - source:
+            kind: database
+            title: "Tropical Freshwater Fish: Red Devil, Cichlasoma labiatum"
+            url: https://tropicalfreshwaterfish.com/species/Cichlasoma_labiatum.html
+            accessed: 2026-10-13
+          value:
+            min: 6
+            max: 8
+          note: aquarium range with 7.0 as optimum
+        - source:
+            kind: database
+            title: "FishProfiles.com: Amphilophus labiatus"
+            url: https://fishprofiles.com/profiles/freshwater/Cichlids/Amphilophus_labiatus
+            accessed: 2026-10-13
+          value:
+            min: 6
+            max: 7.5
+          note: aquarium recommendation
+        - source:
+            kind: database
+            title: "Aqualog.de fish lexicon: Amphilophus labiatus var. white"
+            url: https://www.aqualog.de/?p=1127311
+            accessed: 2026-10-13
+          value:
+            min: 7
+            max: 8
+          note: aquarium recommendation for the white line
+        - source:
+            kind: database
+            title: "Nordiska Ciklidsällskapet, species register: Amphilophus labiatus"
+            url: https://www.ciklid.org/artregister/art.php?ID=244
+            accessed: 2026-10-13
+          value:
+            min: 7
+            max: 8
+        - source:
+            kind: literature
+            title: "Swain, F. M. (1966). Bottom sediments of Lake Nicaragua and Lake Managua, western Nicaragua.
+              Journal of Sedimentary Research 36(2), 522-540."
+            url: https://doi.org/10.1306/74d71500-2b21-11d7-8648000102c1865d
+            accessed: 2026-10-13
+          value:
+            min: 8.2
+            max: 9.3
+          note: natural surface water; sets the upper end
+        - source:
+            kind: website
+            title: "LiveAquaria: Red Devil (Amphilophus labiatus), care facts (retailer page)"
+            url: https://www.liveaquaria.com/products/red-devil
+            accessed: 2026-10-13
+          value:
+            min: 6.8
+            max: 7.2
+          note: recommended aquarium target
+        - source:
+            kind: website
+            title: "Aquariadise: Red Devil Cichlid care guide"
+            url: https://aquariadise.com/red-devil-cichlid/
+            accessed: 2026-10-13
+          value:
+            min: 6.5
+            max: 7.5
+          note: recommended aquarium range
+      verification:
+        method: conservative
+        votes:
+          agree: 3
+          total: 6
+  ghDgh:
+    value:
+      min: 3
+      max: 8
+    confidence: medium
+    rationale: "The tally decides 3 to 8 dGH unanimously from four votes (generator 3 to 8.5, checker-a
+      and checker-b 3 to 8, checker-c 3.3 to 6.5 dGH). Lake Nicaragua is soft: Swain reports 14.7
+      mg/L calcium and 5.4 mg/L magnesium at the surface and 13.2 and 7.2 mg/L near the bottom,
+      which gives 3.3 to 3.5 dGH with dGH = Ca/7.14 + Mg/4.34, and the FAO compilation converts to
+      about 3.5 dGH for Lake Nicaragua and 6.4 dGH for Lake Managua. Urist found 0.9 mmol/L calcium
+      and 0.6 mmol/L magnesium in Lake Nicaragua, about 8.4 dGH, so the two Lake Nicaragua analyses
+      differ by a factor of about 2.5. The Tipitapa River, fed mainly by Lake Managua water, holds
+      100 to 137 mg/L total hardness as CaCO3 (5.6 to 7.7 dGH). Lake Managua is an evaporative lake
+      with about 1400 mg/L dissolved solids dominated by sodium bicarbonate and chloride
+      (Barberena-Moncada et al.), so its high mineral content does not translate into an equally
+      high general hardness. The decided range spans the soft Lake Nicaragua water and the
+      Managua-fed river."
+    sources:
+      - kind: literature
+        title: "Swain, F. M. (1966). Bottom sediments of Lake Nicaragua and Lake Managua, western Nicaragua.
+          Journal of Sedimentary Research 36(2), 522-540."
+        url: https://doi.org/10.1306/74d71500-2b21-11d7-8648000102c1865d
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Urist, M. R. (1962). Calcium and other ions in blood and skeleton of Nicaraguan fresh-water
+          shark. Science 137(3534), 984-986."
+        url: https://doi.org/10.1126/science.137.3534.984.b
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Lacayo Morales, R. and Picado Pavón, F. J. (2022). Calidad y uso potencial de las aguas del
+          río Tipitapa. Revista Torreón Universitario 11(31), 134-146."
+        url: https://doi.org/10.5377/rtu.v11i31.14292
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Barberena-Moncada, J., Hurtado-García, I. and Sirias-Silva, M. (2021). Aplicación de
+          isótopos estables e hidroquímica para la comprensión del sistema hidrológico en Laguna de
+          Tiscapa, Managua, Nicaragua. Revista Científica Estelí 37, 35-53."
+        url: https://doi.org/10.5377/farem.v0i37.11211
+        accessed: 2026-10-13
+      - kind: literature
+        title: "FAO. The inland waters of Latin America, Central America: Nicaragua and Managua (field
+          chemistry after FAO/UN 1961)."
+        url: https://www.fao.org/4/ad770b/AD770B13.htm
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: literature
+          title: "Swain, F. M. (1966). Bottom sediments of Lake Nicaragua and Lake Managua, western Nicaragua.
+            Journal of Sedimentary Research 36(2), 522-540."
+          url: https://doi.org/10.1306/74d71500-2b21-11d7-8648000102c1865d
+          accessed: 2026-10-13
+        value:
+          min: 3.3
+          max: 3.5
+        note: Lake Nicaragua, surface and bottom water, from calcium and magnesium
+      - source:
+          kind: literature
+          title: "Urist, M. R. (1962). Calcium and other ions in blood and skeleton of Nicaraguan fresh-water
+            shark. Science 137(3534), 984-986."
+          url: https://doi.org/10.1126/science.137.3534.984.b
+          accessed: 2026-10-13
+        value:
+          min: 8.4
+          max: 8.4
+        note: Lake Nicaragua, from calcium and magnesium in mmol/L
+      - source:
+          kind: literature
+          title: "FAO. The inland waters of Latin America, Central America: Nicaragua and Managua (field
+            chemistry after FAO/UN 1961)."
+          url: https://www.fao.org/4/ad770b/AD770B13.htm
+          accessed: 2026-10-13
+        value:
+          min: 3.5
+          max: 6.4
+        note: converted from calcium and magnesium equivalents; Lake Nicaragua and Lake Managua
+      - source:
+          kind: literature
+          title: "Lacayo Morales, R. and Picado Pavón, F. J. (2022). Calidad y uso potencial de las aguas del
+            río Tipitapa. Revista Torreón Universitario 11(31), 134-146."
+          url: https://doi.org/10.5377/rtu.v11i31.14292
+          accessed: 2026-10-13
+        value:
+          min: 5.6
+          max: 7.7
+        note: Tipitapa River site means, converted from total hardness as CaCO3
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+    tolerance:
+      value:
+        min: 3
+        max: 25
+      confidence: medium
+      rationale: "The tally decides 3 to 25 dGH unanimously from four votes (generator, checker-a and
+        checker-b 3 to 25, checker-c 3.3 to 25 dGH). Care sheets describe the species as undemanding
+        about hardness: Seriously Fish gives 5 to 25 dGH, Fishkeeper an upper limit of 25 degrees
+        and FishProfiles 10 to 20 dGH. The upper end follows these care sheets; the lower end
+        extends them to the soft water of Lake Nicaragua, about 3.3 dGH (Swain), in which the
+        species lives."
+      sources:
+        - kind: database
+          title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+          url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+          accessed: 2026-10-13
+        - kind: database
+          title: "Fishkeeper (Maidenhead Aquatics): Red Devil, Amphilophus labiatus, species profile"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-devil
+          accessed: 2026-10-13
+        - kind: database
+          title: "FishProfiles.com: Amphilophus labiatus"
+          url: https://fishprofiles.com/profiles/freshwater/Cichlids/Amphilophus_labiatus
+          accessed: 2026-10-13
+        - kind: literature
+          title: "Swain, F. M. (1966). Bottom sediments of Lake Nicaragua and Lake Managua, western Nicaragua.
+            Journal of Sedimentary Research 36(2), 522-540."
+          url: https://doi.org/10.1306/74d71500-2b21-11d7-8648000102c1865d
+          accessed: 2026-10-13
+      evidence:
+        - source:
+            kind: database
+            title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+            url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+            accessed: 2026-10-13
+          value:
+            min: 5
+            max: 25
+          note: aquarium recommendation
+        - source:
+            kind: database
+            title: "Fishkeeper (Maidenhead Aquatics): Red Devil, Amphilophus labiatus, species profile"
+            url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-devil
+            accessed: 2026-10-13
+          value:
+            max: 25
+          note: aquarium recommendation, upper limit only
+        - source:
+            kind: database
+            title: "FishProfiles.com: Amphilophus labiatus"
+            url: https://fishprofiles.com/profiles/freshwater/Cichlids/Amphilophus_labiatus
+            accessed: 2026-10-13
+          value:
+            min: 10
+            max: 20
+          note: aquarium recommendation
+        - source:
+            kind: literature
+            title: "Swain, F. M. (1966). Bottom sediments of Lake Nicaragua and Lake Managua, western Nicaragua.
+              Journal of Sedimentary Research 36(2), 522-540."
+            url: https://doi.org/10.1306/74d71500-2b21-11d7-8648000102c1865d
+            accessed: 2026-10-13
+          value:
+            min: 3.3
+            max: 3.5
+          note: natural water of Lake Nicaragua; sets the lower end
+        - source:
+            kind: website
+            title: "Aquariadise: Red Devil Cichlid care guide"
+            url: https://aquariadise.com/red-devil-cichlid/
+            accessed: 2026-10-13
+          value:
+            min: 6
+            max: 25
+          note: aquarium recommendation
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+  khDkh:
+    value:
+      min: 4
+      max: 10
+    confidence: low
+    rationale: "The six votes did not settle (generator 3 to 13, checker-a 3 to 16, checker-b 3.5 to 10,
+      checker-c 3.3 to 24.5, tiebreaker-1 3 to 16, tiebreaker-2 3.4 to 13 dKH). The tally therefore
+      applies the conservative rule, the intersection of all votes, 3.5 to 10 dKH, decided in whole
+      numbers as 4 to 10 dKH with confidence low. The measured sources span a much wider range, and
+      the decided lower bound of 4 lies above the measured Lake Nicaragua alkalinity: Swain gives 60
+      to 65 mg/L as CaCO3 for Lake Nicaragua, about 3.4 to 3.6 dKH (dKH = mg/L CaCO3 / 17.85), while
+      Urist found about 3 mmol/L bicarbonate there (8.4 dKH). The Tipitapa River, which carries Lake
+      Managua water towards Lake Nicaragua, held 82 to 280 mg/L alkalinity, 3.8 to 12.9 dKH when
+      read as bicarbonate and 4.6 to 15.7 dKH when read as CaCO3. For Lake Managua itself only the
+      FAO compilation gives carbonate plus bicarbonate, about 24.4 dKH; the lake is an evaporative
+      sodium bicarbonate lake with about 1400 mg/L dissolved solids and a conductivity near 1770
+      microsiemens per cm in the 1980s baseline (Moreno and Pacheco), so its alkalinity may exceed
+      the decided upper bound. The sources thus range from about 3.4 to 24.4 dKH; the decided 4 to
+      10 dKH is the narrower band all votes share, and the tolerance below contains the soft Lake
+      Nicaragua end."
+    sources:
+      - kind: literature
+        title: "Swain, F. M. (1966). Bottom sediments of Lake Nicaragua and Lake Managua, western Nicaragua.
+          Journal of Sedimentary Research 36(2), 522-540."
+        url: https://doi.org/10.1306/74d71500-2b21-11d7-8648000102c1865d
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Urist, M. R. (1962). Calcium and other ions in blood and skeleton of Nicaraguan fresh-water
+          shark. Science 137(3534), 984-986."
+        url: https://doi.org/10.1126/science.137.3534.984.b
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Lacayo Morales, R. and Picado Pavón, F. J. (2022). Calidad y uso potencial de las aguas del
+          río Tipitapa. Revista Torreón Universitario 11(31), 134-146."
+        url: https://doi.org/10.5377/rtu.v11i31.14292
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Barberena-Moncada, J., Hurtado-García, I. and Sirias-Silva, M. (2021). Aplicación de
+          isótopos estables e hidroquímica para la comprensión del sistema hidrológico en Laguna de
+          Tiscapa, Managua, Nicaragua. Revista Científica Estelí 37, 35-53."
+        url: https://doi.org/10.5377/farem.v0i37.11211
+        accessed: 2026-10-13
+      - kind: literature
+        title: "FAO. The inland waters of Latin America, Central America: Nicaragua and Managua (field
+          chemistry after FAO/UN 1961)."
+        url: https://www.fao.org/4/ad770b/AD770B13.htm
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Moreno D., L. and Pacheco P., L. Hablemos del Xolotlán: caracterización del lago antes del
+          huracán Mitch. CIRA/UNAN-Managua."
+        url: https://repositorio.unan.edu.ni/2614/1/330.pdf
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: literature
+          title: "Swain, F. M. (1966). Bottom sediments of Lake Nicaragua and Lake Managua, western Nicaragua.
+            Journal of Sedimentary Research 36(2), 522-540."
+          url: https://doi.org/10.1306/74d71500-2b21-11d7-8648000102c1865d
+          accessed: 2026-10-13
+        value:
+          min: 3.4
+          max: 3.6
+        note: Lake Nicaragua, total alkalinity of surface and bottom water
+      - source:
+          kind: literature
+          title: "Urist, M. R. (1962). Calcium and other ions in blood and skeleton of Nicaraguan fresh-water
+            shark. Science 137(3534), 984-986."
+          url: https://doi.org/10.1126/science.137.3534.984.b
+          accessed: 2026-10-13
+        value:
+          min: 8.4
+          max: 8.4
+        note: Lake Nicaragua, bicarbonate
+      - source:
+          kind: literature
+          title: "Lacayo Morales, R. and Picado Pavón, F. J. (2022). Calidad y uso potencial de las aguas del
+            río Tipitapa. Revista Torreón Universitario 11(31), 134-146."
+          url: https://doi.org/10.5377/rtu.v11i31.14292
+          accessed: 2026-10-13
+        value:
+          min: 3.8
+          max: 15.7
+        note: Tipitapa River, 82 to 280 mg/L; the lower figures read as bicarbonate, the upper as CaCO3
+      - source:
+          kind: literature
+          title: "FAO. The inland waters of Latin America, Central America: Nicaragua and Managua (field
+            chemistry after FAO/UN 1961)."
+          url: https://www.fao.org/4/ad770b/AD770B13.htm
+          accessed: 2026-10-13
+        value:
+          min: 3.8
+          max: 24.4
+        note: converted from carbonate plus bicarbonate; Lake Nicaragua and Lake Managua
+    verification:
+      method: conservative
+      votes:
+        agree: 2
+        total: 6
+    tolerance:
+      value:
+        min: 3
+        max: 15
+      confidence: low
+      rationale: "The tally decides 3 to 15 dKH by qualified majority (5 of 6 votes within 2 dKH:
+        generator 3 to 13, checker-a 3 to 16, checker-b 3 to 15, tiebreaker-1 3 to 16, tiebreaker-2
+        3 to 15 dKH; checker-c proposed 3.3 to 24.5 dKH). Few care sources give a carbonate
+        hardness: AquariumDomain recommends 4 to 8 dKH and the retailer LiveAquaria 6 to 12 dKH,
+        while Seriously Fish, Fishkeeper and Tropical Freshwater Fish state only general hardness up
+        to about 25 degrees and describe a fish that adapts to soft and hard water. The lower end of
+        3 dKH contains the measured Lake Nicaragua alkalinity of about 3.4 to 3.6 dKH (Swain), which
+        lies below the decided natural lower bound of 4, and the upper end covers the Tipitapa River
+        values (Lacayo Morales and Picado Pavón). The FAO value of about 24 dKH for Lake Managua, on
+        which checker-c based its wider range, lies outside the decided tolerance; no care source
+        confirms years of health at such alkalinity."
+      sources:
+        - kind: literature
+          title: "Swain, F. M. (1966). Bottom sediments of Lake Nicaragua and Lake Managua, western Nicaragua.
+            Journal of Sedimentary Research 36(2), 522-540."
+          url: https://doi.org/10.1306/74d71500-2b21-11d7-8648000102c1865d
+          accessed: 2026-10-13
+        - kind: literature
+          title: "Lacayo Morales, R. and Picado Pavón, F. J. (2022). Calidad y uso potencial de las aguas del
+            río Tipitapa. Revista Torreón Universitario 11(31), 134-146."
+          url: https://doi.org/10.5377/rtu.v11i31.14292
+          accessed: 2026-10-13
+        - kind: database
+          title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+          url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+          accessed: 2026-10-13
+        - kind: database
+          title: "Fishkeeper (Maidenhead Aquatics): Red Devil, Amphilophus labiatus, species profile"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-devil
+          accessed: 2026-10-13
+        - kind: database
+          title: "Tropical Freshwater Fish: Red Devil, Cichlasoma labiatum"
+          url: https://tropicalfreshwaterfish.com/species/Cichlasoma_labiatum.html
+          accessed: 2026-10-13
+        - kind: database
+          title: "AquariumDomain: Red Devil (Amphilophus labiatus)"
+          url: https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/RedDevil.shtml
+          accessed: 2026-10-13
+        - kind: website
+          title: "LiveAquaria: Red Devil (Amphilophus labiatus), care facts (retailer page)"
+          url: https://www.liveaquaria.com/products/red-devil
+          accessed: 2026-10-13
+      evidence:
+        - source:
+            kind: literature
+            title: "Swain, F. M. (1966). Bottom sediments of Lake Nicaragua and Lake Managua, western Nicaragua.
+              Journal of Sedimentary Research 36(2), 522-540."
+            url: https://doi.org/10.1306/74d71500-2b21-11d7-8648000102c1865d
+            accessed: 2026-10-13
+          value:
+            min: 3.4
+            max: 3.6
+          note: natural value of Lake Nicaragua, the soft end of the habitat
+        - source:
+            kind: literature
+            title: "Lacayo Morales, R. and Picado Pavón, F. J. (2022). Calidad y uso potencial de las aguas del
+              río Tipitapa. Revista Torreón Universitario 11(31), 134-146."
+            url: https://doi.org/10.5377/rtu.v11i31.14292
+            accessed: 2026-10-13
+          value:
+            min: 3.8
+            max: 15.7
+          note: natural value of the Tipitapa River, the hard end of the measured habitat
+        - source:
+            kind: database
+            title: "AquariumDomain: Red Devil (Amphilophus labiatus)"
+            url: https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/RedDevil.shtml
+            accessed: 2026-10-13
+          value:
+            min: 4
+            max: 8
+          note: aquarium recommendation labelled as carbonate hardness
+        - source:
+            kind: website
+            title: "LiveAquaria: Red Devil (Amphilophus labiatus), care facts (retailer page)"
+            url: https://www.liveaquaria.com/products/red-devil
+            accessed: 2026-10-13
+          value:
+            min: 6
+            max: 12
+          note: aquarium recommendation
+        - source:
+            kind: literature
+            title: "FAO. The inland waters of Latin America, Central America: Nicaragua and Managua (field
+              chemistry after FAO/UN 1961)."
+            url: https://www.fao.org/4/ad770b/AD770B13.htm
+            accessed: 2026-10-13
+          value:
+            min: 3.8
+            max: 24.4
+          note: native lake alkalinity; the Lake Managua value lies above the tolerance
+      verification:
+        method: qualified-majority
+        votes:
+          agree: 5
+          total: 6
+  maxSizeCm:
+    value:
+      male: 30
+      female: 24
+    confidence: medium
+    rationale: Size figures vary widely. FishProfiles gives 27 cm for males and 22.5 cm for females,
+      FishBase a measured maximum of 28.3 cm total length, and laboratory-reared adults in Rometsch
+      et al. reached about 25 to 29 cm (males) and 17 to 22 cm (females). Seriously Fish (35 cm
+      standard length), Aqualog (35 cm), AquariumDomain (about 36 cm) and Fishkeeper (40 cm) give
+      larger, unsexed figures that probably include record fish and Midas hybrids traded as red
+      devils. Well-kept males usually end at 25 to 30 cm and females stay clearly smaller, so 30 cm
+      for males and 24 cm for females is the typical maximum. The proposals ranged from 28/23 to
+      35/30 cm.
+    sources:
+      - kind: database
+        title: "FishProfiles.com: Amphilophus labiatus"
+        url: https://fishprofiles.com/profiles/freshwater/Cichlids/Amphilophus_labiatus
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishBase species summary: Amphilophus labiatus"
+        url: https://www.fishbase.se/summary/Amphilophus-labiatus.html
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Rometsch, S. J., Torres-Dowdall, J., Machado-Schiaffino, G., Karagic, N. and Meyer, A.
+          (2021). Dual function and associated costs of a highly exaggerated trait in a cichlid
+          fish. Ecology and Evolution 11(23), 17496-17508."
+        url: https://doi.org/10.1002/ece3.8383
+        accessed: 2026-10-13
+      - kind: database
+        title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+        url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Red Devil, Amphilophus labiatus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-devil
+        accessed: 2026-10-13
+      - kind: database
+        title: "Aqualog.de fish lexicon: Amphilophus labiatus var. white"
+        url: https://www.aqualog.de/?p=1127311
+        accessed: 2026-10-13
+      - kind: database
+        title: "AquariumDomain: Red Devil (Amphilophus labiatus)"
+        url: https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/RedDevil.shtml
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "FishProfiles.com: Amphilophus labiatus"
+          url: https://fishprofiles.com/profiles/freshwater/Cichlids/Amphilophus_labiatus
+          accessed: 2026-10-13
+        value:
+          male: 27
+          female: 22.5
+      - source:
+          kind: database
+          title: "FishBase species summary: Amphilophus labiatus"
+          url: https://www.fishbase.se/summary/Amphilophus-labiatus.html
+          accessed: 2026-10-13
+        value:
+          male: 28.3
+          female: 28.3
+        note: maximum total length, sex not given
+      - source:
+          kind: literature
+          title: "Rometsch, S. J., Torres-Dowdall, J., Machado-Schiaffino, G., Karagic, N. and Meyer, A.
+            (2021). Dual function and associated costs of a highly exaggerated trait in a cichlid
+            fish. Ecology and Evolution 11(23), 17496-17508."
+          url: https://doi.org/10.1002/ece3.8383
+          accessed: 2026-10-13
+        value:
+          male: 28.5
+          female: 22
+        note: upper end of laboratory-reared adults
+      - source:
+          kind: database
+          title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+          url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+          accessed: 2026-10-13
+        value:
+          male: 35
+          female: 35
+        note: standard length, sex not given
+      - source:
+          kind: database
+          title: "Fishkeeper (Maidenhead Aquatics): Red Devil, Amphilophus labiatus, species profile"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-devil
+          accessed: 2026-10-13
+        value:
+          male: 40
+          female: 40
+        note: sex not given
+      - source:
+          kind: database
+          title: "Aqualog.de fish lexicon: Amphilophus labiatus var. white"
+          url: https://www.aqualog.de/?p=1127311
+          accessed: 2026-10-13
+        value:
+          male: 35
+          female: 35
+        note: sex not given
+      - source:
+          kind: database
+          title: "AquariumDomain: Red Devil (Amphilophus labiatus)"
+          url: https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/RedDevil.shtml
+          accessed: 2026-10-13
+        value:
+          male: 35.6
+          female: 35.6
+        note: 14 inches, sex not given
+  predation:
+    value: 2
+    confidence: medium
+    rationale: "The tally decides level 2 unanimously (4 of 4 votes). In the lakes the red devil feeds
+      mainly on bottom invertebrates but also takes small fish: FishBase and the Nordic Cichlid
+      Society register list small fish among its food, Seriously Fish notes fish eating in the wild,
+      and AquariumDomain names small fish among the natural foods. Stable isotopes place it on a
+      higher trophic level than the sympatric thin-lipped Midas cichlid (Manousaki et al.). Fish are
+      no main part of the diet, so level 3 does not apply, but a large cichlid of this kind eats any
+      tankmate that fits into its mouth, which is level 2. The Cichlid Room Companion calls the
+      species insectivorous and detritivorous, which does not contradict occasional fish eating."
+    sources:
+      - kind: database
+        title: "FishBase species summary: Amphilophus labiatus"
+        url: https://www.fishbase.se/summary/Amphilophus-labiatus.html
+        accessed: 2026-10-13
+      - kind: database
+        title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+        url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Manousaki, T., Hull, P. M., Kusche, H., Machado-Schiaffino, G., Franchini, P., Harrod, C.,
+          Elmer, K. R. and Meyer, A. (2013). Parsing parallel evolution: ecological divergence and
+          differential gene expression in the adaptive radiations of thick-lipped Midas cichlid
+          fishes from Nicaragua. Molecular Ecology 22(3), 650-669."
+        url: https://doi.org/10.1111/mec.12034
+        accessed: 2026-10-13
+      - kind: database
+        title: "Nordiska Ciklidsällskapet, species register: Amphilophus labiatus"
+        url: https://www.ciklid.org/artregister/art.php?ID=244
+        accessed: 2026-10-13
+      - kind: database
+        title: "AquariumDomain: Red Devil (Amphilophus labiatus)"
+        url: https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/RedDevil.shtml
+        accessed: 2026-10-13
+      - kind: website
+        title: "Cichlid Room Companion: Amphilophus labiatus (public summary, verification only)"
+        url: https://cichlidae.com/species.php?id=Z_ufmc3Im7J83egao1JTaQ
+        accessed: 2026-10-13
+      - kind: archive
+        title: cichlids.com forum thread 226
+        url: https://www.cichlids.com/disc/read.php?1,226
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "FishBase species summary: Amphilophus labiatus"
+          url: https://www.fishbase.se/summary/Amphilophus-labiatus.html
+          accessed: 2026-10-13
+        value: 2
+        note: small fish among snails, insect larvae and worms
+      - source:
+          kind: database
+          title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+          url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+          accessed: 2026-10-13
+        value: 2
+        note: eats smaller fish in nature
+      - source:
+          kind: literature
+          title: "Manousaki, T., Hull, P. M., Kusche, H., Machado-Schiaffino, G., Franchini, P., Harrod, C.,
+            Elmer, K. R. and Meyer, A. (2013). Parsing parallel evolution: ecological divergence and
+            differential gene expression in the adaptive radiations of thick-lipped Midas cichlid
+            fishes from Nicaragua. Molecular Ecology 22(3), 650-669."
+          url: https://doi.org/10.1111/mec.12034
+          accessed: 2026-10-13
+        value: 2
+        note: higher nitrogen isotope values than the thin-lipped A. citrinellus in both great lakes
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsällskapet, species register: Amphilophus labiatus"
+          url: https://www.ciklid.org/artregister/art.php?ID=244
+          accessed: 2026-10-13
+        value: 2
+        note: small fish besides insects, crustaceans, snails and larvae in the natural diet
+      - source:
+          kind: database
+          title: "AquariumDomain: Red Devil (Amphilophus labiatus)"
+          url: https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/RedDevil.shtml
+          accessed: 2026-10-13
+        value: 2
+        note: natural foods include small fish, invertebrates and plants
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  diet:
+    value:
+      type: invertivore
+      bloatSensitive: false
+      foods:
+        - snails
+        - insect larvae
+        - worms
+        - crustaceans
+        - small fish
+        - cichlid pellets
+        - frozen shrimp and mussel
+        - vegetable matter
+    confidence: medium
+    rationale: "The tally decides invertivore without bloat sensitivity by qualified majority (4 of 6
+      votes: generator, checker-a, tiebreaker-1 and tiebreaker-2 invertivore; checker-b and
+      checker-c omnivore). Every source on the natural diet of A. labiatus itself names animal food:
+      FishBase lists snails, insect larvae, worms and other bottom animals plus some small fish, the
+      Nordic Cichlid Society register names insects, crustaceans, snails and larvae, and the Cichlid
+      Room Companion calls it insectivorous and detritivorous. The ecological literature reads the
+      fleshy lips and pointed snout as tools for sucking crustaceans and other invertebrates out of
+      rock crevices (Barluenga and Meyer; Machado-Schiaffino et al. 2014 and 2017), and stable
+      isotopes place the species above the thin-lipped A. citrinellus in the food web (Manousaki et
+      al.). The mixed diet with algae and aufwuchs that Barlow describes belongs to A. citrinellus
+      and the Midas complex as a whole. The omnivore votes rest on care sheets (Seriously Fish,
+      Fishkeeper, AquariumDomain) that recommend vegetable food in the aquarium; FishProfiles uses a
+      general carnivore label. Fish are a minor part of the diet, so piscivore does not apply. No
+      source reports bloat on a protein-rich diet; Seriously Fish advises against mammalian meat,
+      which is a general husbandry point."
+    sources:
+      - kind: database
+        title: "FishBase species summary: Amphilophus labiatus"
+        url: https://www.fishbase.se/summary/Amphilophus-labiatus.html
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Manousaki, T., Hull, P. M., Kusche, H., Machado-Schiaffino, G., Franchini, P., Harrod, C.,
+          Elmer, K. R. and Meyer, A. (2013). Parsing parallel evolution: ecological divergence and
+          differential gene expression in the adaptive radiations of thick-lipped Midas cichlid
+          fishes from Nicaragua. Molecular Ecology 22(3), 650-669."
+        url: https://doi.org/10.1111/mec.12034
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Machado-Schiaffino, G., Henning, F. and Meyer, A. (2014). Species-specific differences in
+          adaptive phenotypic plasticity in an ecologically relevant trophic trait: hypertrophic
+          lips in Midas cichlid fishes. Evolution 68(7), 2086-2091."
+        url: https://doi.org/10.1111/evo.12367
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Machado-Schiaffino, G., Kautt, A. F., Torres-Dowdall, J., Baumgarten, L., Henning, F. and
+          Meyer, A. (2017). Incipient speciation driven by hypertrophied lips in Midas cichlid
+          fishes? Molecular Ecology 26(8), 2348-2362."
+        url: https://doi.org/10.1111/mec.14029
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Barluenga, M. and Meyer, A. (2010). Phylogeography, colonization and population history of
+          the Midas cichlid species complex (Amphilophus spp.) in the Nicaraguan crater lakes. BMC
+          Evolutionary Biology 10, 326."
+        url: https://doi.org/10.1186/1471-2148-10-326
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Barlow, G. W. (1976). The Midas cichlid in Nicaragua. In: Thorson, T. B. (ed.),
+          Investigations of the Ichthyofauna of Nicaraguan Lakes, University of Nebraska-Lincoln
+          (abstract)."
+        url: https://digitalcommons.unl.edu/ichthynicar/23
+        accessed: 2026-10-13
+      - kind: database
+        title: "Nordiska Ciklidsällskapet, species register: Amphilophus labiatus"
+        url: https://www.ciklid.org/artregister/art.php?ID=244
+        accessed: 2026-10-13
+      - kind: database
+        title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+        url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Red Devil, Amphilophus labiatus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-devil
+        accessed: 2026-10-13
+      - kind: database
+        title: "AquariumDomain: Red Devil (Amphilophus labiatus)"
+        url: https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/RedDevil.shtml
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishProfiles.com: Amphilophus labiatus"
+        url: https://fishprofiles.com/profiles/freshwater/Cichlids/Amphilophus_labiatus
+        accessed: 2026-10-13
+      - kind: website
+        title: "Cichlid Room Companion: Amphilophus labiatus (public summary, verification only)"
+        url: https://cichlidae.com/species.php?id=Z_ufmc3Im7J83egao1JTaQ
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "FishBase species summary: Amphilophus labiatus"
+          url: https://www.fishbase.se/summary/Amphilophus-labiatus.html
+          accessed: 2026-10-13
+        value:
+          type: invertivore
+          bloatSensitive: false
+        note: small fish, snails, insect larvae, worms and other bottom animals
+      - source:
+          kind: literature
+          title: "Manousaki, T., Hull, P. M., Kusche, H., Machado-Schiaffino, G., Franchini, P., Harrod, C.,
+            Elmer, K. R. and Meyer, A. (2013). Parsing parallel evolution: ecological divergence and
+            differential gene expression in the adaptive radiations of thick-lipped Midas cichlid
+            fishes from Nicaragua. Molecular Ecology 22(3), 650-669."
+          url: https://doi.org/10.1111/mec.12034
+          accessed: 2026-10-13
+        value:
+          type: invertivore
+          bloatSensitive: false
+        note: crevice forager on a higher trophic level than A. citrinellus
+      - source:
+          kind: literature
+          title: "Machado-Schiaffino, G., Henning, F. and Meyer, A. (2014). Species-specific differences in
+            adaptive phenotypic plasticity in an ecologically relevant trophic trait: hypertrophic
+            lips in Midas cichlid fishes. Evolution 68(7), 2086-2091."
+          url: https://doi.org/10.1111/evo.12367
+          accessed: 2026-10-13
+        value:
+          type: invertivore
+          bloatSensitive: false
+        note: thick-lipped species feed preferentially on benthic crustaceans in rocky areas
+      - source:
+          kind: literature
+          title: "Barluenga, M. and Meyer, A. (2010). Phylogeography, colonization and population history of
+            the Midas cichlid species complex (Amphilophus spp.) in the Nicaraguan crater lakes. BMC
+            Evolutionary Biology 10, 326."
+          url: https://doi.org/10.1186/1471-2148-10-326
+          accessed: 2026-10-13
+        value:
+          type: invertivore
+          bloatSensitive: false
+        note: lips and snout as adaptations for sucking invertebrates and crustaceans from crevices
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsällskapet, species register: Amphilophus labiatus"
+          url: https://www.ciklid.org/artregister/art.php?ID=244
+          accessed: 2026-10-13
+        value:
+          type: invertivore
+          bloatSensitive: false
+        note: insects, crustaceans, snails, larvae and some small fish
+      - source:
+          kind: website
+          title: "Cichlid Room Companion: Amphilophus labiatus (public summary, verification only)"
+          url: https://cichlidae.com/species.php?id=Z_ufmc3Im7J83egao1JTaQ
+          accessed: 2026-10-13
+        value:
+          type: invertivore
+          bloatSensitive: false
+        note: insectivorous and detritivorous
+      - source:
+          kind: database
+          title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+          url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+          accessed: 2026-10-13
+        value:
+          type: omnivore
+          bloatSensitive: false
+        note: aquarium feeding with a share of vegetable food
+      - source:
+          kind: database
+          title: "Fishkeeper (Maidenhead Aquatics): Red Devil, Amphilophus labiatus, species profile"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-devil
+          accessed: 2026-10-13
+        value:
+          type: omnivore
+          bloatSensitive: false
+        note: aquarium feeding
+      - source:
+          kind: database
+          title: "AquariumDomain: Red Devil (Amphilophus labiatus)"
+          url: https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/RedDevil.shtml
+          accessed: 2026-10-13
+        value:
+          type: omnivore
+          bloatSensitive: false
+        note: calls the species omnivorous and names plants among the natural foods
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 4
+        total: 6
+  aggressionConspecific:
+    value: 4
+    confidence: high
+    rationale: All four runs agree on level 4. Two adult males cannot share any tank, and males often
+      kill females that are not ready to spawn, so pairs are grown up from a group of juveniles and
+      a divider is kept at hand (Seriously Fish, Fishkeeper). The archive reports the same lethal
+      partner aggression.
+    sources:
+      - kind: database
+        title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+        url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Red Devil, Amphilophus labiatus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-devil
+        accessed: 2026-10-13
+      - kind: website
+        title: "Aquariadise: Red Devil Cichlid care guide"
+        url: https://aquariadise.com/red-devil-cichlid/
+        accessed: 2026-10-13
+      - kind: archive
+        title: cichlids.com forum thread 226
+        url: https://www.cichlids.com/disc/read.php?1,226
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+          url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+          accessed: 2026-10-13
+        value: 4
+        note: males often kill females; only one male per tank
+      - source:
+          kind: database
+          title: "Fishkeeper (Maidenhead Aquatics): Red Devil, Amphilophus labiatus, species profile"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-devil
+          accessed: 2026-10-13
+        value: 4
+        note: intolerant of its own kind; an unreceptive female may be killed
+      - source:
+          kind: website
+          title: "Aquariadise: Red Devil Cichlid care guide"
+          url: https://aquariadise.com/red-devil-cichlid/
+          accessed: 2026-10-13
+        value: 4
+        note: advises keeping one adult alone
+  aggressionHeterospecific:
+    value: 4
+    confidence: high
+    rationale: "All four runs agree on level 4. The red devil counts among the most aggressive cichlids
+      of the hobby: some individuals attack every tankmate, breeding pairs kill fish they tolerated
+      before, and tankmates work only with robust fish in tanks of more than 1000 litres (Seriously
+      Fish, Fishkeeper). Archive posts report a juvenile male killing several cichlids of equal or
+      larger size in a small tank. LiveAquaria only asks for tankmates that can defend themselves,
+      which reads like level 3, but the specialist sources support level 4."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+        url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Red Devil, Amphilophus labiatus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-devil
+        accessed: 2026-10-13
+      - kind: website
+        title: "Aquariadise: Red Devil Cichlid care guide"
+        url: https://aquariadise.com/red-devil-cichlid/
+        accessed: 2026-10-13
+      - kind: website
+        title: "LiveAquaria: Red Devil (Amphilophus labiatus), care facts (retailer page)"
+        url: https://www.liveaquaria.com/products/red-devil
+        accessed: 2026-10-13
+      - kind: archive
+        title: cichlids.com forum thread 226
+        url: https://www.cichlids.com/disc/read.php?1,226
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+          url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+          accessed: 2026-10-13
+        value: 4
+        note: some specimens tolerate no tankmates; mixing only above 1000 litres
+      - source:
+          kind: database
+          title: "Fishkeeper (Maidenhead Aquatics): Red Devil, Amphilophus labiatus, species profile"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-devil
+          accessed: 2026-10-13
+        value: 4
+        note: dominates most tankmates; best kept singly or as a pair
+      - source:
+          kind: website
+          title: "Aquariadise: Red Devil Cichlid care guide"
+          url: https://aquariadise.com/red-devil-cichlid/
+          accessed: 2026-10-13
+        value: 4
+      - source:
+          kind: website
+          title: "LiveAquaria: Red Devil (Amphilophus labiatus), care facts (retailer page)"
+          url: https://www.liveaquaria.com/products/red-devil
+          accessed: 2026-10-13
+        value: 3
+        note: advises only tankmates that can defend themselves
+      - source:
+          kind: archive
+          title: cichlids.com forum thread 226
+          url: https://www.cichlids.com/disc/read.php?1,226
+          accessed: 2026-10-13
+        value: 4
+        note: kills tankmates of similar size
+  territory:
+    value:
+      size: large
+      breedingOnly: false
+    confidence: high
+    rationale: All four runs agree. Adults claim a large part of the tank at all times and defend it
+      fiercely while breeding; a single fish needs a 150 cm tank and a pair about 180 cm, and visual
+      barriers only soften the aggression (Seriously Fish, Fishkeeper, AquariumDomain).
+    sources:
+      - kind: database
+        title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+        url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Red Devil, Amphilophus labiatus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-devil
+        accessed: 2026-10-13
+      - kind: database
+        title: "AquariumDomain: Red Devil (Amphilophus labiatus)"
+        url: https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/RedDevil.shtml
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+          url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+          accessed: 2026-10-13
+        value:
+          size: large
+          breedingOnly: false
+        note: 150 by 45 cm for a single fish
+      - source:
+          kind: database
+          title: "Fishkeeper (Maidenhead Aquatics): Red Devil, Amphilophus labiatus, species profile"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-devil
+          accessed: 2026-10-13
+        value:
+          size: large
+          breedingOnly: false
+        note: highly territorial
+  habitatZones:
+    value:
+      - rock
+      - sand
+    confidence: high
+    rationale: All four runs agree. The species lives near submerged volcanic rocks and forages in
+      crevices, for which its thick lips are an adaptation (Seriously Fish, Manousaki et al.,
+      Machado-Schiaffino et al. 2014); the lake floor between the rocks is mud and sand, and the
+      fish dig pits in soft substrate for the fry. In the tank it needs heavy, secured rocks and a
+      sand or fine gravel bottom; plants are uprooted.
+    sources:
+      - kind: database
+        title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+        url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Red Devil, Amphilophus labiatus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-devil
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Manousaki, T., Hull, P. M., Kusche, H., Machado-Schiaffino, G., Franchini, P., Harrod, C.,
+          Elmer, K. R. and Meyer, A. (2013). Parsing parallel evolution: ecological divergence and
+          differential gene expression in the adaptive radiations of thick-lipped Midas cichlid
+          fishes from Nicaragua. Molecular Ecology 22(3), 650-669."
+        url: https://doi.org/10.1111/mec.12034
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Machado-Schiaffino, G., Henning, F. and Meyer, A. (2014). Species-specific differences in
+          adaptive phenotypic plasticity in an ecologically relevant trophic trait: hypertrophic
+          lips in Midas cichlid fishes. Evolution 68(7), 2086-2091."
+        url: https://doi.org/10.1111/evo.12367
+        accessed: 2026-10-13
+      - kind: website
+        title: "Cichlid Room Companion: Amphilophus labiatus (public summary, verification only)"
+        url: https://cichlidae.com/species.php?id=Z_ufmc3Im7J83egao1JTaQ
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+          url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+          accessed: 2026-10-13
+        value:
+          - rock
+        note: close to submerged rocky areas with crevices
+      - source:
+          kind: literature
+          title: "Manousaki, T., Hull, P. M., Kusche, H., Machado-Schiaffino, G., Franchini, P., Harrod, C.,
+            Elmer, K. R. and Meyer, A. (2013). Parsing parallel evolution: ecological divergence and
+            differential gene expression in the adaptive radiations of thick-lipped Midas cichlid
+            fishes from Nicaragua. Molecular Ecology 22(3), 650-669."
+          url: https://doi.org/10.1111/mec.12034
+          accessed: 2026-10-13
+        value:
+          - rock
+        note: crevice foraging among volcanic rocks
+      - source:
+          kind: literature
+          title: "Machado-Schiaffino, G., Henning, F. and Meyer, A. (2014). Species-specific differences in
+            adaptive phenotypic plasticity in an ecologically relevant trophic trait: hypertrophic
+            lips in Midas cichlid fishes. Evolution 68(7), 2086-2091."
+          url: https://doi.org/10.1111/evo.12367
+          accessed: 2026-10-13
+        value:
+          - rock
+        note: rock-associated feeding of thick-lipped fish
+      - source:
+          kind: database
+          title: "Fishkeeper (Maidenhead Aquatics): Red Devil, Amphilophus labiatus, species profile"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-devil
+          accessed: 2026-10-13
+        value:
+          - rock
+          - sand
+        note: aquarium setup
+      - source:
+          kind: website
+          title: "Cichlid Room Companion: Amphilophus labiatus (public summary, verification only)"
+          url: https://cichlidae.com/species.php?id=Z_ufmc3Im7J83egao1JTaQ
+          accessed: 2026-10-13
+        value:
+          - sand
+        note: lake bottoms of mud and sand
+  social:
+    value:
+      structure: pair
+    confidence: high
+    rationale: The species is monogamous and both parents guard eggs and young; care sheets recommend a
+      single fish or one established pair grown up from a group of juveniles (Seriously Fish,
+      Fishkeeper, Cichlid Room Companion). Checker-c proposed solitary, because single-fish keeping
+      is the safest routine unit; pair is kept because it describes the social structure of the
+      species, while the risk to the partner is carried by aggression level 4.
+    sources:
+      - kind: database
+        title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+        url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Red Devil, Amphilophus labiatus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-devil
+        accessed: 2026-10-13
+      - kind: website
+        title: "Cichlid Room Companion: Amphilophus labiatus (public summary, verification only)"
+        url: https://cichlidae.com/species.php?id=Z_ufmc3Im7J83egao1JTaQ
+        accessed: 2026-10-13
+      - kind: website
+        title: "Wikipedia: Amphilophus labiatus"
+        url: https://en.wikipedia.org/wiki/Amphilophus_labiatus
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+          url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+          accessed: 2026-10-13
+        value:
+          structure: pair
+        note: single fish or a pair grown up from juveniles
+      - source:
+          kind: database
+          title: "Fishkeeper (Maidenhead Aquatics): Red Devil, Amphilophus labiatus, species profile"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-devil
+          accessed: 2026-10-13
+        value:
+          structure: pair
+        note: best kept singly or as an established pair
+      - source:
+          kind: website
+          title: "Cichlid Room Companion: Amphilophus labiatus (public summary, verification only)"
+          url: https://cichlidae.com/species.php?id=Z_ufmc3Im7J83egao1JTaQ
+          accessed: 2026-10-13
+        value:
+          structure: pair
+        note: monogamous
+  speciesOnly:
+    value: false
+    confidence: medium
+    rationale: "The tally decides false unanimously (4 of 4 votes). The hobby does not demand a
+      single-species tank: in very large tanks of more than 1000 litres with many visual barriers,
+      robust Central American cichlids, large armoured catfish and fast, large open-water fish are
+      possible companions (Seriously Fish, Fishkeeper, Aqualog). Most keepers still hold it alone or
+      as a pair, and a breeding pair tolerates no tankmates; these restrictions are carried by the
+      aggression levels, not by a species-only rule."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+        url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Red Devil, Amphilophus labiatus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-devil
+        accessed: 2026-10-13
+      - kind: database
+        title: "Aqualog.de fish lexicon: Amphilophus labiatus var. white"
+        url: https://www.aqualog.de/?p=1127311
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+          url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+          accessed: 2026-10-13
+        value: false
+        note: robust tankmates possible beyond 1000 litres
+      - source:
+          kind: database
+          title: "Fishkeeper (Maidenhead Aquatics): Red Devil, Amphilophus labiatus, species profile"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-devil
+          accessed: 2026-10-13
+        value: false
+        note: robust tankmates possible in particularly spacious tanks
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  hybridGroup:
+    value: amphilophus-citrinellus-complex
+    confidence: high
+    rationale: "The tally decides the group unanimously (4 of 4 votes); the species is a listed member
+      of the curated group. Red devil and Midas cichlid are close relatives with weak barriers to
+      crossing: Barlow and Munsey attribute labiatus-like fish in the crater lakes Masaya and Xiloá
+      to introgressive hybridisation with A. citrinellus, Machado-Schiaffino et al. (2014) raised
+      offspring of A. labiatus and A. citrinellus, and Rometsch et al. bred F2 laboratory hybrids of
+      A. labiatus and A. astorquii. Admixture and laboratory crosses within the Midas complex are
+      documented further by Kautt et al. and Recknagel et al. The hobby has mixed A. labiatus and A.
+      citrinellus so much that pure stock is hard to find (Seriously Fish, Fishkeeper), and the
+      flowerhorn goes back in part to crosses of A. labiatus with the three-spot cichlid A.
+      trimaculatus (Tarkhani et al.)."
+    sources:
+      - kind: literature
+        title: "Barlow, G. W. and Munsey, J. W. (1976). The red devil-Midas-arrow cichlid species complex in
+          Nicaragua. In: Thorson, T. B. (ed.), Investigations of the Ichthyofauna of Nicaraguan
+          Lakes, University of Nebraska-Lincoln, 359-369 (abstract)."
+        url: https://digitalcommons.unl.edu/ichthynicar/24
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Machado-Schiaffino, G., Henning, F. and Meyer, A. (2014). Species-specific differences in
+          adaptive phenotypic plasticity in an ecologically relevant trophic trait: hypertrophic
+          lips in Midas cichlid fishes. Evolution 68(7), 2086-2091."
+        url: https://doi.org/10.1111/evo.12367
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Rometsch, S. J., Torres-Dowdall, J., Machado-Schiaffino, G., Karagic, N. and Meyer, A.
+          (2021). Dual function and associated costs of a highly exaggerated trait in a cichlid
+          fish. Ecology and Evolution 11(23), 17496-17508."
+        url: https://doi.org/10.1002/ece3.8383
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Kautt, A. F., Machado-Schiaffino, G. and Meyer, A. (2016). Multispecies outcomes of
+          sympatric speciation after admixture with the source population in two radiations of
+          Nicaraguan crater lake cichlids. PLoS Genetics 12(6), e1006157."
+        url: https://doi.org/10.1371/journal.pgen.1006157
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Recknagel, H., Elmer, K. R. and Meyer, A. (2013). A hybrid genetic linkage map of two
+          ecologically and morphologically divergent Midas cichlid fishes (Amphilophus spp.)
+          obtained by massively parallel DNA sequencing (ddRADSeq). G3 Genes|Genomes|Genetics."
+        url: https://doi.org/10.1534/g3.112.003897
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Tarkhani, R., Imani, A., Jamali, H. and Sarvi Moghanlou, K. (2016). Anaesthetic efficacy of
+          eugenol on Flowerhorn (Amphilophus labiatus x Amphilophus trimaculatus). Aquaculture
+          Research 48(6), 3207-3215 (abstract)."
+        url: https://doi.org/10.1111/are.13151
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Manousaki, T., Hull, P. M., Kusche, H., Machado-Schiaffino, G., Franchini, P., Harrod, C.,
+          Elmer, K. R. and Meyer, A. (2013). Parsing parallel evolution: ecological divergence and
+          differential gene expression in the adaptive radiations of thick-lipped Midas cichlid
+          fishes from Nicaragua. Molecular Ecology 22(3), 650-669."
+        url: https://doi.org/10.1111/mec.12034
+        accessed: 2026-10-13
+      - kind: database
+        title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+        url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Red Devil, Amphilophus labiatus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-devil
+        accessed: 2026-10-13
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes, species of the genus Amphilophus"
+        url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Amphilophus
+        accessed: 2026-10-13
+      - kind: archive
+        title: cichlids.com forum thread 2802
+        url: https://www.cichlids.com/disc/read.php?1,2802
+        accessed: 2026-10-13
+      - kind: archive
+        title: cichlids.com forum thread 2872
+        url: https://www.cichlids.com/disc/read.php?1,2872
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: literature
+          title: "Barlow, G. W. and Munsey, J. W. (1976). The red devil-Midas-arrow cichlid species complex in
+            Nicaragua. In: Thorson, T. B. (ed.), Investigations of the Ichthyofauna of Nicaraguan
+            Lakes, University of Nebraska-Lincoln, 359-369 (abstract)."
+          url: https://digitalcommons.unl.edu/ichthynicar/24
+          accessed: 2026-10-13
+        value: amphilophus-citrinellus-complex
+        note: introgression between C. labiatum and C. citrinellum in lakes Masaya and Xiloá
+      - source:
+          kind: literature
+          title: "Machado-Schiaffino, G., Henning, F. and Meyer, A. (2014). Species-specific differences in
+            adaptive phenotypic plasticity in an ecologically relevant trophic trait: hypertrophic
+            lips in Midas cichlid fishes. Evolution 68(7), 2086-2091."
+          url: https://doi.org/10.1111/evo.12367
+          accessed: 2026-10-13
+        value: amphilophus-citrinellus-complex
+        note: experimental crosses of A. labiatus and A. citrinellus yielded offspring
+      - source:
+          kind: literature
+          title: "Rometsch, S. J., Torres-Dowdall, J., Machado-Schiaffino, G., Karagic, N. and Meyer, A.
+            (2021). Dual function and associated costs of a highly exaggerated trait in a cichlid
+            fish. Ecology and Evolution 11(23), 17496-17508."
+          url: https://doi.org/10.1002/ece3.8383
+          accessed: 2026-10-13
+        value: amphilophus-citrinellus-complex
+        note: F2 laboratory hybrids of A. labiatus and A. astorquii
+      - source:
+          kind: literature
+          title: "Kautt, A. F., Machado-Schiaffino, G. and Meyer, A. (2016). Multispecies outcomes of
+            sympatric speciation after admixture with the source population in two radiations of
+            Nicaraguan crater lake cichlids. PLoS Genetics 12(6), e1006157."
+          url: https://doi.org/10.1371/journal.pgen.1006157
+          accessed: 2026-10-13
+        value: amphilophus-citrinellus-complex
+        note: admixture between species of the Midas complex in the crater lakes
+      - source:
+          kind: literature
+          title: "Recknagel, H., Elmer, K. R. and Meyer, A. (2013). A hybrid genetic linkage map of two
+            ecologically and morphologically divergent Midas cichlid fishes (Amphilophus spp.)
+            obtained by massively parallel DNA sequencing (ddRADSeq). G3 Genes|Genomes|Genetics."
+          url: https://doi.org/10.1534/g3.112.003897
+          accessed: 2026-10-13
+        value: amphilophus-citrinellus-complex
+        note: F2 hybrids of two Midas complex species bred in the laboratory
+      - source:
+          kind: literature
+          title: "Tarkhani, R., Imani, A., Jamali, H. and Sarvi Moghanlou, K. (2016). Anaesthetic efficacy of
+            eugenol on Flowerhorn (Amphilophus labiatus x Amphilophus trimaculatus). Aquaculture
+            Research 48(6), 3207-3215 (abstract)."
+          url: https://doi.org/10.1111/are.13151
+          accessed: 2026-10-13
+        value: amphilophus-citrinellus-complex
+        note: flowerhorn studied as the cross of A. labiatus and A. trimaculatus
+      - source:
+          kind: database
+          title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+          url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+          accessed: 2026-10-13
+        value: amphilophus-citrinellus-complex
+        note: heavily crossed with A. citrinellus in the hobby
+      - source:
+          kind: database
+          title: "Fishkeeper (Maidenhead Aquatics): Red Devil, Amphilophus labiatus, species profile"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-devil
+          accessed: 2026-10-13
+        value: amphilophus-citrinellus-complex
+        note: suspected crosses with the Midas cichlid in the trade
+      - source:
+          kind: archive
+          title: cichlids.com forum thread 2872
+          url: https://www.cichlids.com/disc/read.php?1,2872
+          accessed: 2026-10-13
+        value: amphilophus-citrinellus-complex
+        note: community discussion of trade confusion and hybrid stock; supplementary only
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  coloration:
+    value:
+      baseColors:
+        - orange
+        - red
+        - yellow
+        - white
+        - grey
+      pattern: mixed
+    confidence: medium
+    rationale: Wild fish are mostly grey to greenish grey with dark bars or blotches; a gold morph of
+      orange, red, yellow or white fish occurs in the lakes and is the basis of the trade lines,
+      which range from plain orange and red to white, piebald and marbled (Seriously Fish,
+      Fishkeeper). Because plain gold fish and patterned wild-type and piebald fish are all common,
+      the pattern is mixed. The proposals differed in the colour list and between plain and mixed;
+      the decision combines the colours that at least two runs named.
+    sources:
+      - kind: database
+        title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+        url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Red Devil, Amphilophus labiatus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-devil
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishProfiles.com: Amphilophus labiatus"
+        url: https://fishprofiles.com/profiles/freshwater/Cichlids/Amphilophus_labiatus
+        accessed: 2026-10-13
+      - kind: website
+        title: "Wikipedia: Amphilophus labiatus"
+        url: https://en.wikipedia.org/wiki/Amphilophus_labiatus
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+          url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+          accessed: 2026-10-13
+        value:
+          baseColors:
+            - grey
+            - orange
+            - red
+          pattern: mixed
+        note: wild fish mostly grey; trade forms orange or red
+      - source:
+          kind: database
+          title: "Fishkeeper (Maidenhead Aquatics): Red Devil, Amphilophus labiatus, species profile"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-devil
+          accessed: 2026-10-13
+        value:
+          baseColors:
+            - orange
+            - red
+            - white
+            - yellow
+          pattern: mixed
+        note: tank-bred colour lines, including banded and marbled
+  feedingSpeed:
+    value: hasty
+    confidence: medium
+    rationale: All four runs agree. A greedy feeder that tries to eat anything edible and takes food
+      with great eagerness (Seriously Fish, Fishkeeper); no source compares its feeding speed with
+      other species directly.
+    sources:
+      - kind: database
+        title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+        url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Red Devil, Amphilophus labiatus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-devil
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+          url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+          accessed: 2026-10-13
+        value: hasty
+      - source:
+          kind: database
+          title: "Fishkeeper (Maidenhead Aquatics): Red Devil, Amphilophus labiatus, species profile"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-devil
+          accessed: 2026-10-13
+        value: hasty
+  minTank:
+    value:
+      volumeL: 600
+      lengthCm: 200
+      depthCm: 60
+    confidence: medium
+    rationale: The minimum is for one adult pair, the social unit decided above. Seriously Fish puts a
+      single fish at no less than 150 by 45 cm and a breeding pair at about 180 cm length, Aqualog
+      gives at least 200 cm and the Nordic Cichlid Society 250 cm and 1000 litres. A pair of adults
+      of 24 to 30 cm needs room to separate and a divider, so 200 by 60 cm with about 600 litres is
+      the minimum; tanks with tankmates need more than 1000 litres. The proposals were 700, 600, 500
+      and 400 litres; the last one was for a single fish.
+    sources:
+      - kind: database
+        title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+        url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+        accessed: 2026-10-13
+      - kind: database
+        title: "Aqualog.de fish lexicon: Amphilophus labiatus var. white"
+        url: https://www.aqualog.de/?p=1127311
+        accessed: 2026-10-13
+      - kind: database
+        title: "Nordiska Ciklidsällskapet, species register: Amphilophus labiatus"
+        url: https://www.ciklid.org/artregister/art.php?ID=244
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Red Devil, Amphilophus labiatus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-devil
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+          url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+          accessed: 2026-10-13
+        value:
+          volumeL: 500
+          lengthCm: 183
+          depthCm: 45
+        note: breeding tank of about 6 feet; footprint for a single fish 150 by 45 cm; volume derived
+      - source:
+          kind: database
+          title: "Aqualog.de fish lexicon: Amphilophus labiatus var. white"
+          url: https://www.aqualog.de/?p=1127311
+          accessed: 2026-10-13
+        value:
+          volumeL: 720
+          lengthCm: 200
+          depthCm: 60
+        note: length stated; volume and depth derived
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsällskapet, species register: Amphilophus labiatus"
+          url: https://www.ciklid.org/artregister/art.php?ID=244
+          accessed: 2026-10-13
+        value:
+          volumeL: 1000
+          lengthCm: 250
+          depthCm: 60
+        note: length and volume stated; depth derived
+  lifespanYears:
+    value:
+      min: 10
+      max: 15
+    confidence: low
+    rationale: Hobby pages give 10 to 12 years (Aquarium Source, Aquariadise) and 10 to 15 years
+      (Aqua-Fish) in the tank, and large Amphilophus commonly live into their teens. Three of four
+      runs proposed 10 to 15 years, checker-a 10 to 12. No literature or species database gives a
+      lifespan; Aqua-Fish is a general hobby page, so the value stays at confidence low.
+    sources:
+      - kind: website
+        title: "Aqua-Fish: Red devil cichlid, Amphilophus labiatus"
+        url: https://en.aqua-fish.net/fish/red-devil-cichlid
+        accessed: 2026-10-13
+      - kind: website
+        title: "Aquarium Source: Red Devil Cichlid 101, care, tank mates, size and more"
+        url: https://www.aquariumsource.com/red-devil-cichlid/
+        accessed: 2026-10-13
+      - kind: website
+        title: "Aquariadise: Red Devil Cichlid care guide"
+        url: https://aquariadise.com/red-devil-cichlid/
+        accessed: 2026-10-13
+      - kind: model-knowledge
+        title: General knowledge of the generator model about Midas-complex cichlids in aquaria
+    evidence:
+      - source:
+          kind: website
+          title: "Aqua-Fish: Red devil cichlid, Amphilophus labiatus"
+          url: https://en.aqua-fish.net/fish/red-devil-cichlid
+          accessed: 2026-10-13
+        value:
+          min: 10
+          max: 15
+        note: captive lifespan
+      - source:
+          kind: website
+          title: "Aquarium Source: Red Devil Cichlid 101, care, tank mates, size and more"
+          url: https://www.aquariumsource.com/red-devil-cichlid/
+          accessed: 2026-10-13
+        value:
+          min: 10
+          max: 12
+      - source:
+          kind: website
+          title: "Aquariadise: Red Devil Cichlid care guide"
+          url: https://aquariadise.com/red-devil-cichlid/
+          accessed: 2026-10-13
+        value:
+          min: 10
+          max: 12
+  breeding:
+    value: cave-spawner
+    confidence: medium
+    rationale: Biparental substrate brooder with long brood care. Eggs are laid in a rocky cave or on a
+      vertical stone, slate or piece of wood, and the larvae are then moved into dug pits (Seriously
+      Fish, Fishkeeper); the Cichlid Room Companion classes the species as a cave-spawning substrate
+      brooder. Three runs chose cave-spawner; checker-c chose open-substrate-spawner because
+      FishProfiles and LiveAquaria describe eggs on exposed hard surfaces. Caves are taken when
+      available, so cave-spawner is kept, with the note that the fish is flexible about the spawning
+      site.
+    sources:
+      - kind: database
+        title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+        url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Red Devil, Amphilophus labiatus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-devil
+        accessed: 2026-10-13
+      - kind: website
+        title: "Cichlid Room Companion: Amphilophus labiatus (public summary, verification only)"
+        url: https://cichlidae.com/species.php?id=Z_ufmc3Im7J83egao1JTaQ
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishProfiles.com: Amphilophus labiatus"
+        url: https://fishprofiles.com/profiles/freshwater/Cichlids/Amphilophus_labiatus
+        accessed: 2026-10-13
+      - kind: website
+        title: "LiveAquaria: Red Devil (Amphilophus labiatus), care facts (retailer page)"
+        url: https://www.liveaquaria.com/products/red-devil
+        accessed: 2026-10-13
+      - kind: website
+        title: "Wikipedia: Amphilophus labiatus"
+        url: https://en.wikipedia.org/wiki/Amphilophus_labiatus
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+          url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+          accessed: 2026-10-13
+        value: cave-spawner
+        note: cave or vertical rock surface
+      - source:
+          kind: database
+          title: "Fishkeeper (Maidenhead Aquatics): Red Devil, Amphilophus labiatus, species profile"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-devil
+          accessed: 2026-10-13
+        value: cave-spawner
+        note: vertical slate, flat driftwood or rocky cave
+      - source:
+          kind: website
+          title: "Cichlid Room Companion: Amphilophus labiatus (public summary, verification only)"
+          url: https://cichlidae.com/species.php?id=Z_ufmc3Im7J83egao1JTaQ
+          accessed: 2026-10-13
+        value: cave-spawner
+        note: substrate cave
+      - source:
+          kind: database
+          title: "FishProfiles.com: Amphilophus labiatus"
+          url: https://fishprofiles.com/profiles/freshwater/Cichlids/Amphilophus_labiatus
+          accessed: 2026-10-13
+        value: open-substrate-spawner
+        note: eggs on a prepared flat stone
+      - source:
+          kind: website
+          title: "LiveAquaria: Red Devil (Amphilophus labiatus), care facts (retailer page)"
+          url: https://www.liveaquaria.com/products/red-devil
+          accessed: 2026-10-13
+        value: open-substrate-spawner
+        note: hard horizontal, inclined or vertical surfaces
+  beginnerSuitability:
+    value: demanding
+    confidence: medium
+    rationale: Hardy and easy to feed, but its size, extreme aggression, digging and the difficulty of
+      forming a pair without injuries make it a fish for experienced keepers with very large tanks;
+      the Nordic Cichlid Society rates it advanced and Aqua-Fish discourages beginners. Checker-b
+      proposed moderate after the Cichlid Room Companion, which rates it for intermediate aquarists,
+      and Seriously Fish rates the care itself as moderate; three runs chose demanding because the
+      lethal aggression and the tank size outweigh the easy water and food demands.
+    sources:
+      - kind: database
+        title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+        url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Red Devil, Amphilophus labiatus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-devil
+        accessed: 2026-10-13
+      - kind: database
+        title: "Nordiska Ciklidsällskapet, species register: Amphilophus labiatus"
+        url: https://www.ciklid.org/artregister/art.php?ID=244
+        accessed: 2026-10-13
+      - kind: website
+        title: "Aqua-Fish: Red devil cichlid, Amphilophus labiatus"
+        url: https://en.aqua-fish.net/fish/red-devil-cichlid
+        accessed: 2026-10-13
+      - kind: website
+        title: "Cichlid Room Companion: Amphilophus labiatus (public summary, verification only)"
+        url: https://cichlidae.com/species.php?id=Z_ufmc3Im7J83egao1JTaQ
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+          url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+          accessed: 2026-10-13
+        value: demanding
+        note: very large tank; experience needed for any tankmates
+      - source:
+          kind: database
+          title: "Fishkeeper (Maidenhead Aquatics): Red Devil, Amphilophus labiatus, species profile"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-devil
+          accessed: 2026-10-13
+        value: demanding
+        note: non-community fish, pairing difficult
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsällskapet, species register: Amphilophus labiatus"
+          url: https://www.ciklid.org/artregister/art.php?ID=244
+          accessed: 2026-10-13
+        value: demanding
+        note: rated for advanced keepers
+      - source:
+          kind: website
+          title: "Cichlid Room Companion: Amphilophus labiatus (public summary, verification only)"
+          url: https://cichlidae.com/species.php?id=Z_ufmc3Im7J83egao1JTaQ
+          accessed: 2026-10-13
+        value: moderate
+        note: intermediate aquarists
+partners:
+  suitable:
+    - species: Parachromis managuensis
+      reason: A large, robust guapote from the same lakes that can hold its own against the red devil.
+      condition: Tank of more than 1000 litres with many visual barriers; remove when the red devils breed.
+    - species: Pterygoplichthys pardalis
+      reason: Large armoured catfish that stays on the bottom and is hard to injure.
+      condition: Tank of more than 1000 litres.
+    - species: Barbonymus schwanenfeldii
+      reason: Large, fast open-water fish that avoids the red devil and is too big to swallow.
+      condition: Group in a tank of more than 1000 litres.
+    - species: Herichthys carpintis
+      reason: Robust Central American cichlid of similar size and temperament.
+      condition: Tank of more than 1000 litres; keep apart from breeding pairs.
+  unsuitable:
+    - species: Amphilophus citrinellus
+      reason: Same hybrid group; crosses readily and fights like a conspecific.
+    - species: Amphilophus trimaculatus
+      reason: Same hybrid group; parent species of flowerhorn crosses.
+    - species: Pterophyllum scalare
+      reason: Slow, peaceful fish that is chased, injured or eaten.
+    - species: Amatitlania nigrofasciata
+      reason: Small cichlid that is killed or eaten by the much larger red devil.
+    - species: Paracheirodon innesi
+      reason: Small tetra that is eaten.
+    - species: Symphysodon aequifasciatus
+      reason: Calm soft-water fish that cannot cope with the aggression and needs other water.
+profile:
+  overview:
+    text: The red devil is a large, heavy-bodied cichlid from the two great lakes of Nicaragua. Its name
+      in science refers to the lips, which in wild fish form thick, fleshy lobes; aquarium-raised
+      fish usually show much smaller lips. In the trade the name red devil is also used for the
+      closely related Midas cichlid, Amphilophus citrinellus, and for crosses of both, so many fish
+      sold under this name are not pure A. labiatus. Wild fish are mostly grey with dark markings,
+      while the orange, red and white fish of the hobby go back to a gold morph that occurs
+      naturally in the lakes. The species is known for its intelligence and its bond with the
+      keeper, but also for an aggression that few other cichlids match. It belongs in very large
+      tanks, alone or as a pair.
+    sources:
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes, species of the genus Amphilophus"
+        url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Amphilophus
+        accessed: 2026-10-13
+      - kind: database
+        title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+        url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Red Devil, Amphilophus labiatus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-devil
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Machado-Schiaffino, G., Henning, F. and Meyer, A. (2014). Species-specific differences in
+          adaptive phenotypic plasticity in an ecologically relevant trophic trait: hypertrophic
+          lips in Midas cichlid fishes. Evolution 68(7), 2086-2091."
+        url: https://doi.org/10.1111/evo.12367
+        accessed: 2026-10-13
+      - kind: website
+        title: "Wikipedia: Amphilophus labiatus"
+        url: https://en.wikipedia.org/wiki/Amphilophus_labiatus
+        accessed: 2026-10-13
+  habitat:
+    text: "Amphilophus labiatus lives in Lake Nicaragua and Lake Managua, which drain to the Caribbean
+      through the San Juan River; the Catalog of Fishes also lists Costa Rica, and the species
+      rarely enters rivers such as the Tipitapa, which links the two lakes. Both lakes are shallow,
+      warm and constantly mixed by wind, with turbid water. The fish stays near submerged rocks of
+      volcanic origin and searches crevices for prey. The water is alkaline: the surface of the
+      lakes measures about pH 8.2 to 9.3, the higher values in Lake Managua, which has no regular
+      outflow and is therefore saltier and richer in sodium bicarbonate. Lake Nicaragua is soft and
+      only weakly buffered. Water temperatures range from about 24 C in the cool season to 30 C and
+      more in the shallows in the hot season."
+    sources:
+      - kind: database
+        title: "FishBase species summary: Amphilophus labiatus"
+        url: https://www.fishbase.se/summary/Amphilophus-labiatus.html
+        accessed: 2026-10-13
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes, species of the genus Amphilophus"
+        url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Amphilophus
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Swain, F. M. (1966). Bottom sediments of Lake Nicaragua and Lake Managua, western Nicaragua.
+          Journal of Sedimentary Research 36(2), 522-540."
+        url: https://doi.org/10.1306/74d71500-2b21-11d7-8648000102c1865d
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Collado, J., Leal-Cardín, M., Riesgo, A., Gallego, R. and Barluenga, M. (2026). Beyond
+          cichlid diversification: environmental drivers of biodiversity across the Nicaraguan lake
+          system. Hydrobiologia."
+        url: https://doi.org/10.1007/s10750-026-06401-x
+        accessed: 2026-10-13
+      - kind: database
+        title: "World Lake Database (ILEC): Lago Xolotlán (Lake Managua)"
+        url: https://wldb.ilec.or.jp/Display/html/3461
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Lacayo Morales, R. and Picado Pavón, F. J. (2022). Calidad y uso potencial de las aguas del
+          río Tipitapa. Revista Torreón Universitario 11(31), 134-146."
+        url: https://doi.org/10.5377/rtu.v11i31.14292
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Manousaki, T., Hull, P. M., Kusche, H., Machado-Schiaffino, G., Franchini, P., Harrod, C.,
+          Elmer, K. R. and Meyer, A. (2013). Parsing parallel evolution: ecological divergence and
+          differential gene expression in the adaptive radiations of thick-lipped Midas cichlid
+          fishes from Nicaragua. Molecular Ecology 22(3), 650-669."
+        url: https://doi.org/10.1111/mec.12034
+        accessed: 2026-10-13
+  sizeAndGrowth:
+    text: Males commonly reach 25 to 30 cm in the tank, females stay a few centimetres smaller. Some
+      care sheets give 35 to 40 cm, but such sizes are exceptional and may refer to hybrids. Growth
+      is fast with good feeding, and fish reach most of their size within about three years. Males
+      become bulkier with age, develop longer pointed dorsal and anal fins and often a nuchal hump
+      on the forehead, which in pure A. labiatus tends to be smaller than in the Midas cichlid. With
+      good care the species lives for well over ten years, so a keeper should plan for a long
+      commitment.
+    sources:
+      - kind: database
+        title: "FishProfiles.com: Amphilophus labiatus"
+        url: https://fishprofiles.com/profiles/freshwater/Cichlids/Amphilophus_labiatus
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishBase species summary: Amphilophus labiatus"
+        url: https://www.fishbase.se/summary/Amphilophus-labiatus.html
+        accessed: 2026-10-13
+      - kind: database
+        title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+        url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Rometsch, S. J., Torres-Dowdall, J., Machado-Schiaffino, G., Karagic, N. and Meyer, A.
+          (2021). Dual function and associated costs of a highly exaggerated trait in a cichlid
+          fish. Ecology and Evolution 11(23), 17496-17508."
+        url: https://doi.org/10.1002/ece3.8383
+        accessed: 2026-10-13
+      - kind: website
+        title: "Aquarium Source: Red Devil Cichlid 101, care, tank mates, size and more"
+        url: https://www.aquariumsource.com/red-devil-cichlid/
+        accessed: 2026-10-13
+  husbandry:
+    text: A pair needs a tank of at least 200 cm length and about 600 litres; with tankmates more than
+      1000 litres are needed. The fish digs constantly and moves loose decoration, so rocks must be
+      heavy or glued together, and plants do not survive. A sand or fine gravel bottom suits the
+      digging. Heaters and pipes need guards, and a heavy, weighted cover prevents jumps. The
+      species is a large eater and produces much waste, so a powerful filter, strong aeration and
+      large weekly water changes are essential. Medium-hard, neutral to alkaline water at 24 to 28 C
+      works well; the species adapts to a wide range of tap water but should not be kept in soft,
+      acid water.
+    sources:
+      - kind: database
+        title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+        url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Red Devil, Amphilophus labiatus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-devil
+        accessed: 2026-10-13
+      - kind: database
+        title: "Aqualog.de fish lexicon: Amphilophus labiatus var. white"
+        url: https://www.aqualog.de/?p=1127311
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Swain, F. M. (1966). Bottom sediments of Lake Nicaragua and Lake Managua, western Nicaragua.
+          Journal of Sedimentary Research 36(2), 522-540."
+        url: https://doi.org/10.1306/74d71500-2b21-11d7-8648000102c1865d
+        accessed: 2026-10-13
+  socialBehavior:
+    text: The red devil forms monogamous pairs and defends a large territory. Two males cannot share a
+      tank, and even a male and a female may fight to the death if the female is not ready to spawn.
+      Keepers therefore raise a group of six or more juveniles together and take out the others once
+      a pair has formed. A tank divider should always be at hand, because the male may turn on his
+      partner at any time, especially when guarding fry. Towards other species the red devil is
+      equally hostile; it bites hands during maintenance and treats equipment as a rival. Visual
+      barriers lower the pressure but do not remove it.
+    sources:
+      - kind: database
+        title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+        url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Red Devil, Amphilophus labiatus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-devil
+        accessed: 2026-10-13
+      - kind: archive
+        title: cichlids.com forum thread 226
+        url: https://www.cichlids.com/disc/read.php?1,226
+        accessed: 2026-10-13
+  diet:
+    text: In the lakes the red devil feeds mainly on animals from the bottom and from rock crevices,
+      such as snails, insect larvae, worms and crustaceans, and also eats small fish. Its thick lips
+      and pointed head help it to suck prey out of narrow gaps. In the aquarium it accepts nearly
+      every food. A good cichlid pellet or stick as staple, varied with frozen shrimp, krill, mussel
+      and earthworms, keeps it healthy. Shrimp with shell help to keep the red and orange colours.
+      Some vegetable food such as peas or spinach is accepted. Mammalian meat such as beef heart and
+      live feeder fish are not needed and are best avoided.
+    sources:
+      - kind: database
+        title: "FishBase species summary: Amphilophus labiatus"
+        url: https://www.fishbase.se/summary/Amphilophus-labiatus.html
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Manousaki, T., Hull, P. M., Kusche, H., Machado-Schiaffino, G., Franchini, P., Harrod, C.,
+          Elmer, K. R. and Meyer, A. (2013). Parsing parallel evolution: ecological divergence and
+          differential gene expression in the adaptive radiations of thick-lipped Midas cichlid
+          fishes from Nicaragua. Molecular Ecology 22(3), 650-669."
+        url: https://doi.org/10.1111/mec.12034
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Machado-Schiaffino, G., Henning, F. and Meyer, A. (2014). Species-specific differences in
+          adaptive phenotypic plasticity in an ecologically relevant trophic trait: hypertrophic
+          lips in Midas cichlid fishes. Evolution 68(7), 2086-2091."
+        url: https://doi.org/10.1111/evo.12367
+        accessed: 2026-10-13
+      - kind: database
+        title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+        url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Red Devil, Amphilophus labiatus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-devil
+        accessed: 2026-10-13
+  breeding:
+    text: Once a compatible pair exists, breeding is easy. Both partners clean a hard surface, usually
+      inside a rocky cave or on a vertical stone or piece of wood, and the female lays several
+      hundred eggs, up to about 700. The eggs hatch after two to three days, and the parents move
+      the larvae into pits they have dug in the sand. The fry swim freely after about another week
+      and take newly hatched brine shrimp. Both parents guard the young for several weeks. During
+      this time the male is extremely aggressive and may attack the female, so a divider helps. A
+      pair can spawn again and again, and the many large offspring are hard to place, so breeding
+      should be planned.
+    sources:
+      - kind: database
+        title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+        url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Red Devil, Amphilophus labiatus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-devil
+        accessed: 2026-10-13
+      - kind: website
+        title: "Wikipedia: Amphilophus labiatus"
+        url: https://en.wikipedia.org/wiki/Amphilophus_labiatus
+        accessed: 2026-10-13
+  sexing:
+    text: "Adult males are larger and more massive than females and grow longer, pointed dorsal and anal
+      fins. Many males develop a nuchal hump, which in the wild appears mainly in the breeding
+      season but in tanks often stays permanent. Before spawning both sexes show a swollen forehead,
+      and the female shows a blunt, broad breeding tube while the male has a narrow, pointed one.
+      Juveniles cannot be sexed reliably by colour or shape, which is another reason to start with a
+      group. Telling a pure red devil from a Midas cichlid is difficult: A. labiatus has a slimmer
+      body, a longer and more pointed snout and thicker lips, but hybrids blur these differences."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+        url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Red Devil, Amphilophus labiatus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-devil
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Manousaki, T., Hull, P. M., Kusche, H., Machado-Schiaffino, G., Franchini, P., Harrod, C.,
+          Elmer, K. R. and Meyer, A. (2013). Parsing parallel evolution: ecological divergence and
+          differential gene expression in the adaptive radiations of thick-lipped Midas cichlid
+          fishes from Nicaragua. Molecular Ecology 22(3), 650-669."
+        url: https://doi.org/10.1111/mec.12034
+        accessed: 2026-10-13
+      - kind: archive
+        title: cichlids.com forum thread 2802
+        url: https://www.cichlids.com/disc/read.php?1,2802
+        accessed: 2026-10-13
+      - kind: archive
+        title: cichlids.com forum thread 2872
+        url: https://www.cichlids.com/disc/read.php?1,2872
+        accessed: 2026-10-13
+  compatibility:
+    text: The red devil is no community fish. Kept alone or as a pair it is easiest to manage. In tanks
+      of more than 1000 litres with many visual barriers, robust Central American cichlids of
+      similar size, large armoured catfish and large, fast barbs can live with it, but some
+      individuals do not tolerate any company, and breeding pairs drive out or kill tankmates. Small
+      or calm fish, such as angelfish, tetras or small cichlids, are eaten or bullied to death.
+      Never combine it with the Midas cichlid, the three-spot cichlid or other members of the Midas
+      complex, because they cross readily and the hybrids spoil both lines.
+    sources:
+      - kind: database
+        title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+        url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Red Devil, Amphilophus labiatus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-devil
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Barlow, G. W. and Munsey, J. W. (1976). The red devil-Midas-arrow cichlid species complex in
+          Nicaragua. In: Thorson, T. B. (ed.), Investigations of the Ichthyofauna of Nicaraguan
+          Lakes, University of Nebraska-Lincoln, 359-369 (abstract)."
+        url: https://digitalcommons.unl.edu/ichthynicar/24
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Rometsch, S. J., Torres-Dowdall, J., Machado-Schiaffino, G., Karagic, N. and Meyer, A.
+          (2021). Dual function and associated costs of a highly exaggerated trait in a cichlid
+          fish. Ecology and Evolution 11(23), 17496-17508."
+        url: https://doi.org/10.1002/ece3.8383
+        accessed: 2026-10-13
+  problems:
+    text: The most common mistake is a tank that is too small, which leads to constant fighting and dead
+      tankmates or partners. Putting an adult male and female together without preparation often
+      ends in a killed female. Unsecured rocks can fall and break the glass when the fish dig
+      beneath them. Large amounts of waste quickly raise nitrate and stress the fish; poor water is
+      linked with hole-in-the-head symptoms and fin damage in large cichlids. Buyers should know
+      that many fish sold as red devils are hybrids with the Midas cichlid, so adult size and
+      appearance may differ from expectations. Overfeeding with fatty or mammalian food can cause
+      digestive trouble and fatty organs.
+    sources:
+      - kind: database
+        title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
+        url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Red Devil, Amphilophus labiatus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-devil
+        accessed: 2026-10-13
+      - kind: archive
+        title: cichlids.com forum thread 226
+        url: https://www.cichlids.com/disc/read.php?1,226
+        accessed: 2026-10-13
+      - kind: archive
+        title: cichlids.com forum thread 2872
+        url: https://www.cichlids.com/disc/read.php?1,2872
+        accessed: 2026-10-13
+      - kind: model-knowledge
+        title: General knowledge of the generator model about Midas-complex cichlids in aquaria
+provenance:
+  runs:
+    - role: generator
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-13
+    - role: checker
+      model: gpt-6.1-sol
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-13
+    - role: adjudicator
+      model: claude-opus-5-5
+      date: 2026-10-13
+  disagreements:
+    - field: taxonomy.synonyms
+      proposals:
+        - by: generator
+          value: includes Amphilophus froebelii Agassiz, 1859
+        - by: checker-a
+          value: includes Amphilophus froebelii Agassiz, 1859
+        - by: checker-b
+          value: includes Amphilophus froebelii Agassiz, 1859
+        - by: checker-c
+          value: omits Amphilophus froebelii Agassiz, 1859
+      decision: includes Amphilophus froebelii Agassiz, 1859, marked as uncertain
+      rationale: The Catalog of Fishes gives the status of the name as uncertain and cites authors who
+        regard it as probably the same species; the entry stays listed so that the name can be
+        found, and its note states that it is not a confirmed synonym, which answers the concern of
+        checker-c.
+    - field: features.origin.value.localities
+      proposals:
+        - by: generator
+          value:
+            - Lake Nicaragua (Cocibolca)
+            - Lake Managua (Xolotlán)
+            - northern Costa Rica (Atlantic drainages)
+        - by: checker-a
+          value:
+            - Lake Nicaragua (Cocibolca)
+            - Lake Managua (Xolotlán)
+            - Tipitapa River
+        - by: checker-b
+          value: no localities given
+        - by: checker-c
+          value:
+            - Lake Managua
+            - Lake Nicaragua
+            - Tipitapa River (occasional occurrence)
+      decision:
+        - Lake Nicaragua (Cocibolca)
+        - Lake Managua (Xolotlán)
+        - Tipitapa River (rare)
+        - Costa Rica (range record of the Catalog of Fishes)
+      rationale: The Catalog of Fishes (checked again) lists Costa Rica in the range, but no field account
+        confirms a Costa Rican site, so it is kept as a marked range record. The Tipitapa River is
+        entered as a rare occurrence after FishBase and Fishkeeper. Continent and the two great
+        lakes were undisputed.
+    - field: features.temperatureC
+      proposals:
+        - by: generator
+          value:
+            min: 24
+            max: 31
+        - by: checker-a
+          value:
+            min: 24
+            max: 31
+        - by: checker-b
+          value:
+            min: 25
+            max: 29
+        - by: checker-c
+          value:
+            min: 24
+            max: 30
+      decision:
+        min: 24
+        max: 31
+      rationale: "Decided by tally.yaml: unanimous, 4 of 4 votes; median of the agreeing bounds."
+    - field: features.temperatureC.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 22
+            max: 31
+        - by: checker-a
+          value:
+            min: 22
+            max: 32
+        - by: checker-b
+          value:
+            min: 22
+            max: 30
+        - by: checker-c
+          value:
+            min: 22
+            max: 30
+      decision:
+        min: 22
+        max: 31
+      rationale: "Decided by tally.yaml: unanimous, 4 of 4 votes; median of the agreeing bounds."
+    - field: features.ph
+      proposals:
+        - by: generator
+          value:
+            min: 8
+            max: 9.3
+        - by: checker-a
+          value:
+            min: 8.2
+            max: 9.3
+        - by: checker-b
+          value:
+            min: 8.2
+            max: 9.3
+        - by: checker-c
+          value:
+            min: 7
+            max: 9.3
+        - by: tiebreaker-1
+          value:
+            min: 8
+            max: 9.3
+        - by: tiebreaker-2
+          value:
+            min: 8.2
+            max: 9.3
+      decision:
+        min: 8.2
+        max: 9.3
+      rationale: "Decided by tally.yaml: qualified majority, 5 of 6 votes; checker-c's lower bound of 7.0
+        rests on a single FAO reading for Lake Nicaragua."
+    - field: features.ph.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 6.5
+            max: 9.3
+        - by: checker-a
+          value:
+            min: 6.5
+            max: 9.3
+        - by: checker-b
+          value:
+            min: 6
+            max: 9.3
+        - by: checker-c
+          value:
+            min: 6
+            max: 9.3
+        - by: tiebreaker-1
+          value:
+            min: 6
+            max: 9.3
+        - by: tiebreaker-2
+          value:
+            min: 6.5
+            max: 9.3
+      decision:
+        min: 6.5
+        max: 9.3
+      rationale: "Decided by tally.yaml: conservative, 3 of 6 votes; the intersection of all votes. Care
+        sheets reach down to pH 6.0, which the rationale names."
+    - field: features.ghDgh
+      proposals:
+        - by: generator
+          value:
+            min: 3
+            max: 8.5
+        - by: checker-a
+          value:
+            min: 3
+            max: 8
+        - by: checker-b
+          value:
+            min: 3
+            max: 8
+        - by: checker-c
+          value:
+            min: 3.3
+            max: 6.5
+      decision:
+        min: 3
+        max: 8
+      rationale: "Decided by tally.yaml: unanimous, 4 of 4 votes; median of the agreeing bounds."
+    - field: features.ghDgh.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 3
+            max: 25
+        - by: checker-a
+          value:
+            min: 3
+            max: 25
+        - by: checker-b
+          value:
+            min: 3
+            max: 25
+        - by: checker-c
+          value:
+            min: 3.3
+            max: 25
+      decision:
+        min: 3
+        max: 25
+      rationale: "Decided by tally.yaml: unanimous, 4 of 4 votes."
+    - field: features.khDkh
+      proposals:
+        - by: generator
+          value:
+            min: 3
+            max: 13
+        - by: checker-a
+          value:
+            min: 3
+            max: 16
+        - by: checker-b
+          value:
+            min: 3.5
+            max: 10
+        - by: checker-c
+          value:
+            min: 3.3
+            max: 24.5
+        - by: tiebreaker-1
+          value:
+            min: 3
+            max: 16
+        - by: tiebreaker-2
+          value:
+            min: 3.4
+            max: 13
+      decision:
+        min: 4
+        max: 10
+      rationale: "Decided by tally.yaml: conservative, 2 of 6 votes; the intersection of all votes in
+        whole numbers. The decided lower bound lies above the measured Lake Nicaragua alkalinity of
+        about 3.4 to 3.6 dKH (Swain), and the sources reach up to about 24 dKH for Lake Managua
+        (FAO); the tolerance of 3 to 15 dKH contains the Lake Nicaragua value."
+    - field: features.khDkh.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 3
+            max: 13
+        - by: checker-a
+          value:
+            min: 3
+            max: 16
+        - by: checker-b
+          value:
+            min: 3
+            max: 15
+        - by: checker-c
+          value:
+            min: 3.3
+            max: 24.5
+        - by: tiebreaker-1
+          value:
+            min: 3
+            max: 16
+        - by: tiebreaker-2
+          value:
+            min: 3
+            max: 15
+      decision:
+        min: 3
+        max: 15
+      rationale: "Decided by tally.yaml: qualified majority, 5 of 6 votes; median of the agreeing bounds."
+    - field: features.diet
+      proposals:
+        - by: generator
+          value:
+            type: invertivore
+            bloatSensitive: false
+        - by: checker-a
+          value:
+            type: invertivore
+            bloatSensitive: false
+        - by: checker-b
+          value:
+            type: omnivore
+            bloatSensitive: false
+        - by: checker-c
+          value:
+            type: omnivore
+            bloatSensitive: false
+        - by: tiebreaker-1
+          value:
+            type: invertivore
+            bloatSensitive: false
+        - by: tiebreaker-2
+          value:
+            type: invertivore
+            bloatSensitive: false
+      decision:
+        type: invertivore
+        bloatSensitive: false
+      rationale: "Decided by tally.yaml: qualified majority, 4 of 6 votes. The omnivore votes rest on
+        aquarium feeding advice; every source on the natural diet names animal food."
+    - field: features.maxSizeCm
+      proposals:
+        - by: generator
+          value:
+            male: 30
+            female: 24
+        - by: checker-a
+          value:
+            male: 28
+            female: 23
+        - by: checker-b
+          value:
+            male: 30
+            female: 25
+        - by: checker-c
+          value:
+            male: 35
+            female: 30
+      decision:
+        male: 30
+        female: 24
+      rationale: The sex-specific measurements (FishProfiles, Rometsch et al.) and the FishBase maximum of
+        28.3 cm point to males of about 28 to 30 cm and females of 22 to 25 cm. The 35 to 40 cm of
+        several care sheets are unsexed and likely include record fish and Midas hybrids, so
+        checker-c's 35/30 cm is not taken; 30 cm for males keeps the predation threshold on the safe
+        side.
+    - field: features.social
+      proposals:
+        - by: generator
+          value:
+            structure: pair
+        - by: checker-a
+          value:
+            structure: pair
+        - by: checker-b
+          value:
+            structure: pair
+        - by: checker-c
+          value:
+            structure: solitary
+      decision:
+        structure: pair
+      rationale: The species is monogamous with biparental brood care, and care sheets name one
+        established pair as the alternative to a single fish; the danger to the partner is expressed
+        by aggression level 4.
+    - field: features.coloration
+      proposals:
+        - by: generator
+          value:
+            baseColors:
+              - orange
+              - red
+              - grey
+              - white
+            pattern: mixed
+        - by: checker-a
+          value:
+            baseColors:
+              - orange
+              - yellow
+              - white
+              - grey
+            pattern: plain
+        - by: checker-b
+          value:
+            baseColors:
+              - orange
+              - red
+            pattern: plain
+        - by: checker-c
+          value:
+            baseColors:
+              - grey
+              - orange
+              - red
+              - yellow
+              - white
+              - black
+            pattern: mixed
+      decision:
+        baseColors:
+          - orange
+          - red
+          - yellow
+          - white
+          - grey
+        pattern: mixed
+      rationale: Wild-type barred or blotched fish, plain gold fish and piebald or marbled trade lines are
+        all common, so the pattern is mixed; the colour list keeps every colour named by at least
+        two runs.
+    - field: features.minTank
+      proposals:
+        - by: generator
+          value:
+            volumeL: 700
+            lengthCm: 200
+            depthCm: 60
+        - by: checker-a
+          value:
+            volumeL: 600
+            lengthCm: 200
+            depthCm: 60
+        - by: checker-b
+          value:
+            volumeL: 500
+            lengthCm: 180
+            depthCm: 50
+        - by: checker-c
+          value:
+            volumeL: 400
+            lengthCm: 150
+            depthCm: 50
+      decision:
+        volumeL: 600
+        lengthCm: 200
+        depthCm: 60
+      rationale: The minimum is for the decided social unit, one pair. Aqualog's 200 cm and the need to
+        separate partners favour 200 by 60 cm; a water height of about 50 cm gives about 600 litres.
+        Checker-c's value was for a single fish.
+    - field: features.lifespanYears
+      proposals:
+        - by: generator
+          value:
+            min: 10
+            max: 15
+        - by: checker-a
+          value:
+            min: 10
+            max: 12
+        - by: checker-b
+          value:
+            min: 10
+            max: 15
+        - by: checker-c
+          value:
+            min: 10
+            max: 15
+      decision:
+        min: 10
+        max: 15
+      rationale: Three runs and the Aqua-Fish hobby page support 10 to 15 years; the value rests on hobby
+        pages only and keeps confidence low.
+    - field: features.breeding
+      proposals:
+        - by: generator
+          value: cave-spawner
+        - by: checker-a
+          value: cave-spawner
+        - by: checker-b
+          value: cave-spawner
+        - by: checker-c
+          value: open-substrate-spawner
+      decision: cave-spawner
+      rationale: Seriously Fish, Fishkeeper and the Cichlid Room Companion name caves as the preferred
+        spawning site; open surfaces are also used, which the rationale states.
+    - field: features.beginnerSuitability
+      proposals:
+        - by: generator
+          value: demanding
+        - by: checker-a
+          value: demanding
+        - by: checker-b
+          value: moderate
+        - by: checker-c
+          value: demanding
+      decision: demanding
+      rationale: Tank size and lethal aggression towards partners and tankmates outweigh the easy water
+        and food demands; the Nordic Cichlid Society rates the species advanced.
