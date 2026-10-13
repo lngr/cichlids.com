@@ -29,7 +29,8 @@ Umgesetzt und in `main` gemergt. TASK-3.29 ist Done, die übrigen stehen in Revi
 
 ### 1.2 Deployment (Strang A)
 
-- [ ] TASK-2.4 OpenTofu-App-Tier, k3s und Argo CD; schließt danach TASK-2.5 und AC #3 von TASK-2.21 ab
+- [ ] TASK-2.4 OpenTofu-App-Tier, k3s und Argo CD per SSH auf den bestehenden Node; schließt danach TASK-2.5 und AC #3 von TASK-2.21 ab
+- [ ] Hetzner-Cloud-Firewall für den Node im Plattform-Tier: SSH ist aus dem ganzen Internet erreichbar, nur die nötigen Ports freigeben
 - [ ] TASK-2.6 SOPS, age und KSOPS
 - [ ] TASK-2.7 Argo CD app-of-apps und Umgebungen
 - [ ] TASK-2.8 Ingress, TLS und Platzhalter-Workload
