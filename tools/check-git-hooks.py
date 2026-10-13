@@ -2,7 +2,7 @@
 """Asserts the repository's Git hooks are present and wired.
 
 A secret must be caught before it leaves the machine, not only in CI. This check guards that
-the pre-push hook exists, is executable, runs the plaintext-secret scanner, and that the
+the pre-push hook exists, is executable, runs gitleaks, and that the
 devcontainer activates the committed hooks via core.hooksPath. The hook is a local early
 warning (bypassable with --no-verify); the CI secrets-scan job stays the enforced backstop.
 
@@ -29,8 +29,8 @@ def check_repo(root):
         if not (os.stat(hook).st_mode & stat.S_IXUSR):
             failures.append(".githooks/pre-push is not executable")
         text = _read(hook)
-        if "check-no-plaintext-secrets" not in text:
-            failures.append(".githooks/pre-push does not run the secret scanner")
+        if "gitleaks" not in text:
+            failures.append(".githooks/pre-push does not run gitleaks")
     post = os.path.join(root, POSTCREATE)
     post_text = _read(post)
     if "core.hooksPath" not in post_text or ".githooks" not in post_text:
@@ -83,12 +83,20 @@ def self_test():
             errors.append("expected failures for an unwired repo")
         # Good fixture.
         with open(hook, "w") as fh:
-            fh.write("#!/usr/bin/env bash\npython3 tools/check-no-plaintext-secrets.py\n")
+            fh.write("#!/usr/bin/env bash\ngitleaks git --log-opts x\n")
         os.chmod(hook, 0o755)
         with open(os.path.join(root, POSTCREATE), "w") as fh:
             fh.write("git config core.hooksPath .githooks\n")
         if check_repo(root):
             errors.append("good fixture should pass")
+        # Hook without gitleaks -> failure.
+        with open(hook, "w") as fh:
+            fh.write("#!/usr/bin/env bash\nexit 0\n")
+        os.chmod(hook, 0o755)
+        if not any("does not run gitleaks" in f for f in check_repo(root)):
+            errors.append("hook without gitleaks should fail")
+        with open(hook, "w") as fh:
+            fh.write("#!/usr/bin/env bash\ngitleaks git --log-opts x\n")
         # Non-executable hook -> failure.
         os.chmod(hook, 0o644)
         if not any("not executable" in f for f in check_repo(root)):
