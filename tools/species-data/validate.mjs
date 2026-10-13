@@ -249,7 +249,7 @@ function toleranceIssues(features, file) {
   return issues;
 }
 
-function semanticIssues(profile, { fileName, hybridGroupIds, waterbodies }, file) {
+function semanticIssues(profile, { fileName, hybridGroupIds, hybridGroups, waterbodies }, file) {
   const issues = [];
   if (fileName !== undefined && typeof profile.id === "string" && fileName !== `${profile.id}.yaml`) {
     issues.push(error("/id", `file name "${fileName}" must be "${profile.id}.yaml"`, file));
@@ -319,13 +319,37 @@ function semanticIssues(profile, { fileName, hybridGroupIds, waterbodies }, file
       }
     });
   }
+  if (Array.isArray(groups) && Array.isArray(hybridGroups)) {
+    issues.push(...groupMembershipIssues(profile.taxonomy?.validName, groups, hybridGroups, file));
+  }
+  return issues;
+}
+
+// A group and the profiles of its members name each other: a profile lists every group whose
+// members include its valid name and only such groups.
+function groupMembershipIssues(validName, groups, hybridGroups, file) {
+  if (typeof validName !== "string") return [];
+  const issues = [];
+  const byId = new Map(hybridGroups.filter(isObject).map((g) => [g.id, g]));
+  groups.forEach((id, i) => {
+    const members = byId.get(id)?.members;
+    if (Array.isArray(members) && !members.includes(validName)) {
+      issues.push(warning(`/features/hybridGroups/value/${i}`, `hybrid group "${id}" does not list ${validName} as a member`, file));
+    }
+  });
+  const missing = hybridGroups
+    .filter((g) => isObject(g) && Array.isArray(g.members) && g.members.includes(validName) && !groups.includes(g.id))
+    .map((g) => g.id);
+  if (missing.length > 0) {
+    issues.push(warning("/features/hybridGroups/value", `hybrid groups naming ${validName} are missing: ${missing.join(", ")}`, file));
+  }
   return issues;
 }
 
 /**
  * Validates one profile object. With options.final, the final-profile checks run as well.
  * Options: final (boolean), fileName (base name, checked against the id), hybridGroupIds (Set),
- * waterbodies (Map from loadWaterbodies, or null to skip the waterbody rule), file (label put
+ * hybridGroups (the parsed group list, for the membership check in both directions), waterbodies (Map from loadWaterbodies, or null to skip the waterbody rule), file (label put
  * into the issues).
  */
 export function validateProfile(profile, options = {}) {
@@ -431,7 +455,7 @@ function isFinalProfilePath(path) {
  */
 export function validateFiles(
   paths,
-  { hybridGroupIds, hybridGroupsPath = HYBRID_GROUPS_PATH, waterbodiesPath = WATERBODIES_PATH, waterbodies } = {},
+  { hybridGroupIds, hybridGroups, hybridGroupsPath = HYBRID_GROUPS_PATH, waterbodiesPath = WATERBODIES_PATH, waterbodies } = {},
 ) {
   const issues = [];
   if (existsSync(hybridGroupsPath)) {
@@ -440,6 +464,7 @@ export function validateFiles(
       const doc = parse(readFileSync(hybridGroupsPath, "utf8"));
       issues.push(...hybridGroupIssues(doc, groupsFile));
       hybridGroupIds ??= new Set((Array.isArray(doc?.groups) ? doc.groups : []).map((g) => g?.id));
+      hybridGroups ??= Array.isArray(doc?.groups) ? doc.groups : undefined;
     } catch (e) {
       issues.push(error("", `cannot read or parse YAML: ${e.message}`, groupsFile));
     }
@@ -471,7 +496,7 @@ export function validateFiles(
       issues.push(warning("", "waterbody table not found, waterbody rule skipped", tableFile));
     }
   }
-  issues.push(...validateProfiles(finals, { final: true, hybridGroupIds, waterbodies }));
+  issues.push(...validateProfiles(finals, { final: true, hybridGroupIds, hybridGroups, waterbodies }));
   issues.push(...validateProfiles(others, { final: false, hybridGroupIds, waterbodies }));
   return issues;
 }

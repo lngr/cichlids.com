@@ -319,6 +319,26 @@ test("duplicate hybrid group ids and a non-list value are rejected", () => {
   }
 });
 
+test("a profile missing a group that names its species yields a warning", () => {
+  const profile = makeProfile();
+  const hybridGroups = [
+    { id: "tropheus", members: ["Tropheus moorii", "Tropheus duboisi"] },
+    { id: "tropheus-moorii-ikola", members: ["Tropheus moorii", "Tropheus sp. 'Ikola'"] },
+  ];
+  const found = warnings(validateProfile(profile, { ...options, hybridGroupIds: new Set(["tropheus", "tropheus-moorii-ikola"]), hybridGroups }));
+  assert.equal(found.length, 1, JSON.stringify(found));
+  assert.equal(found[0].pointer, "/features/hybridGroups/value");
+  assert.match(found[0].message, /tropheus-moorii-ikola/);
+});
+
+test("a profile listing a group that does not name its species yields a warning", () => {
+  const profile = makeProfile();
+  const hybridGroups = [{ id: "tropheus", members: ["Tropheus duboisi", "Tropheus brichardi"] }];
+  const found = warnings(validateProfile(profile, { ...options, hybridGroups }));
+  assert.equal(found.length, 1, JSON.stringify(found));
+  assert.equal(found[0].pointer, "/features/hybridGroups/value/0");
+});
+
 test("the feature hybridGroup is rejected by the schema", () => {
   const profile = makeProfile();
   profile.features.hybridGroup = profile.features.hybridGroups;

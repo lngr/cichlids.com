@@ -84,6 +84,7 @@ Every file is checked against `data/species/schema/species-profile.schema.json` 
 - id and legacyIds are unique across all validated profiles;
 - every group of `data/species/hybrid-groups.yaml` has a unique `id`, a `description`, at least two `members` (name strings), at least one source, a `basis` of `documented` or `presumed` and a non-empty `userNote` (one or two plain-English sentences for hobbyists that explain the background of the group: what was observed, where and by whom where known, and how reliable the evidence is; no instructions); a violation is an error that names the group file;
 - a group id in a hybridGroups value (a list of unique strings) that is not listed in `data/species/hybrid-groups.yaml` is a warning, because agents may propose new groups.
+- a final profile and the group file name each other: a group whose `members` include the valid name of the profile and is missing from its hybridGroups value is a warning, and so is a group in the value whose `members` lack that name.
 
 Other files, such as pipeline intermediates under `data/species/work/<id>/`, are checked against the schema only.
 
