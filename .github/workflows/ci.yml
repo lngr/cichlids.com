@@ -103,10 +103,18 @@ jobs:
         run: |
           tofu -chdir=infra/backup init -backend=false
           tofu -chdir=infra/backup validate
+      - name: Validate app tier
+        run: |
+          tofu -chdir=infra/app init -backend=false
+          tofu -chdir=infra/app validate
       - name: Platform guardrails (ADR-0014 Layer 1)
         run: python3 infra/platform/guardrails_test.py
       - name: Backup guardrails (ADR-0014 Layer 1)
         run: python3 infra/backup/guardrails_test.py
+      - name: App guardrails (ADR-0014 Layer 2)
+        run: |
+          python3 infra/app/guardrails_test.py --self-test
+          python3 infra/app/guardrails_test.py
       - name: Project separation (ADR-0017)
         run: |
           python3 tools/check-project-separation.py --self-test

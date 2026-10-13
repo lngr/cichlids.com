@@ -13,3 +13,8 @@
 # Open-Design throwaway artifacts (do not commit)
 *.artifact.json
 mpz*-image.png
+
+# OpenTofu working files (plans can embed sensitive values)
+.terraform/
+tfplan
+infra/app/plan.json

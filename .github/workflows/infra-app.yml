@@ -1,0 +1,58 @@
+# Story: task-2.4
+# Plans the app tier (k3s and Argo CD bootstrap on the foundation node) on pull requests and
+# applies it after merge to main. The plan passes the destroy gate (ADR-0014 Layer 3) before any
+# apply. The job holds no cloud token: it reaches the node with a dedicated CI SSH key and the
+# state bucket with the object-storage key.
+name: infra-app
+
+on:
+  pull_request:
+    paths:
+      - "infra/app/**"
+      - "clusters/**"
+      - "policy/**"
+      - ".github/workflows/infra-app.yml"
+  push:
+    branches: [main]
+    paths:
+      - "infra/app/**"
+      - "clusters/**"
+      - "policy/**"
+      - ".github/workflows/infra-app.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: infra-app
+  cancel-in-progress: false
+
+jobs:
+  plan-apply:
+    name: App tier plan and apply
+    # Pull requests from forks get no secrets and do not run.
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    env:
+      TF_VAR_ssh_private_key: ${{ secrets.CICHLIDS_APP_SSH_PRIVATE_KEY }}
+      TF_VAR_node_ipv4: ${{ vars.CICHLIDS_NODE_IPV4 }}
+      TF_VAR_node_host_key: ${{ vars.CICHLIDS_NODE_HOST_KEY }}
+      TF_VAR_state_encryption_passphrase: ${{ secrets.CICHLIDS_APP_STATE_PASSPHRASE }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.CICHLIDS_S3_PRIMARY_ACCESS_KEY }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.CICHLIDS_S3_PRIMARY_SECRET_KEY }}
+    steps:
+      - uses: actions/checkout@v5
+      - name: Install pinned core toolchain
+        run: bash tools/install-toolchain.sh
+      - name: Init
+        run: tofu -chdir=infra/app init
+      - name: Plan
+        run: tofu -chdir=infra/app plan -out=tfplan
+      - name: Render plan
+        run: tofu -chdir=infra/app show -json tfplan > infra/app/plan.json
+      - name: Destroy gate (ADR-0014 Layer 3)
+        run: conftest test infra/app/plan.json -p policy/destroy_gate.rego
+      - name: Apply
+        if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main'
+        run: tofu -chdir=infra/app apply tfplan
