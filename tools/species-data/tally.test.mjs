@@ -383,6 +383,19 @@ test("an empty intersection falls back to the median range, widened the same way
   assert.deepEqual(f.decision, { min: 18, max: 26 });
 });
 
+test("a decided tolerance of any method is widened to contain the natural range", () => {
+  // Three files vote the tolerance unanimously; tie-breakers vote only the natural range, whose
+  // median ends above the tolerance.
+  const naturals = [{ min: 3, max: 10 }, { min: 3, max: 13 }, { min: 3, max: 16 }];
+  const files = naturals.map((nat, i) => rangeFile(NAMES[i], nat, { min: 3, max: 15 }));
+  files.push(file(NAMES[3], { ghDgh: [{ min: 4, max: 16 }, TWO] }), file(NAMES[4], { ghDgh: [{ min: 4, max: 24 }, TWO] }));
+  const result = tally(files);
+  assert.deepEqual(result.features.ghDgh.decision, { min: 3, max: 16 });
+  const f = result.features["ghDgh.tolerance"];
+  assert.equal(f.verification.method, "unanimous");
+  assert.deepEqual(f.decision, { min: 3, max: 16 });
+});
+
 test("lake species vote the tolerance while the table decides the natural value", () => {
   const origin = { value: { continent: "Africa", region: "R", waterbody: "Lake Malawi" } };
   const tol = { min: 2, max: 7 };

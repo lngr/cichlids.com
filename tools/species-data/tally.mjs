@@ -308,7 +308,15 @@ export function tally(files, waterbodies = new Map()) {
   // The tolerance is voted for every water feature, also where a water body decides the natural value.
   for (const name of TOLERANCE_FEATURES) {
     const natural = features[name]?.decision ?? undefined;
-    features[`${name}.tolerance`] = decideVoted(`${name}.tolerance`, castVotes(name, (feature) => feature?.tolerance), natural);
+    const tolerance = decideVoted(`${name}.tolerance`, castVotes(name, (feature) => feature?.tolerance), natural);
+    // A tolerance contains the natural range, whatever method decided either of them.
+    if (tolerance.decision && natural) {
+      tolerance.decision = {
+        min: Math.min(tolerance.decision.min, natural.min),
+        max: Math.max(tolerance.decision.max, natural.max),
+      };
+    }
+    features[`${name}.tolerance`] = tolerance;
   }
 
   const result = {
