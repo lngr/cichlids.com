@@ -72,6 +72,7 @@ builder.Services.AddHttpClient(KeycloakOidcClient.HttpClientName, client => clie
 builder.Services.AddSingleton<KeycloakOidcClient>();
 builder.Services.AddSingleton<WebSessionLocks>();
 builder.Services.AddSingleton<AccessTokenValidator>();
+builder.Services.AddSingleton<WebSessionTokenProtector>();
 builder.Services.AddScoped<WebSessionService>();
 builder.Services.AddOptions<WebSessionCleanupOptions>()
     .Bind(builder.Configuration.GetSection(WebSessionCleanupOptions.SectionName))

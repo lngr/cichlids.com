@@ -31,6 +31,18 @@ public sealed class WebSessionCleanupTests(WebSessionFixture fixture)
     }
 
     [Fact]
+    public async Task A_session_whose_refresh_token_cannot_be_decrypted_is_deleted_without_a_revocation()
+    {
+        var stale = await InsertSessionAsync(DateTimeOffset.UtcNow.AddDays(-401), encryptedRefreshToken: "not-encrypted-with-this-key-ring");
+
+        await RunCleanupAsync();
+
+        await using var db = fixture.CreateDbContext();
+        Assert.False(await db.WebSessions.AnyAsync(s => s.Subject == stale.Subject));
+        Assert.DoesNotContain(fixture.Keycloak.LogoutRequests, form => form.GetValueOrDefault("refresh_token") == "not-encrypted-with-this-key-ring");
+    }
+
+    [Fact]
     public async Task A_session_used_within_the_retention_stays()
     {
         var active = await InsertSessionAsync(DateTimeOffset.UtcNow.AddDays(-399));
@@ -85,6 +97,7 @@ public sealed class WebSessionCleanupTests(WebSessionFixture fixture)
         var service = new WebSessionCleanupService(
             scope.ServiceProvider.GetRequiredService<CichlidsDbContext>(),
             scope.ServiceProvider.GetRequiredService<KeycloakOidcClient>(),
+            scope.ServiceProvider.GetRequiredService<WebSessionTokenProtector>(),
             Options.Create(new WebSessionCleanupOptions { BatchSize = 1 }),
             TimeProvider.System);
 
@@ -113,15 +126,18 @@ public sealed class WebSessionCleanupTests(WebSessionFixture fixture)
         return await scope.ServiceProvider.GetRequiredService<WebSessionCleanupService>().RunOnceAsync(CancellationToken.None);
     }
 
-    private async Task<WebSession> InsertSessionAsync(DateTimeOffset lastSeenAt)
+    private sealed record StoredSession(string Subject, string RefreshToken);
+
+    private async Task<StoredSession> InsertSessionAsync(DateTimeOffset lastSeenAt, string? encryptedRefreshToken = null)
     {
+        var refreshToken = $"offline-{Guid.NewGuid():N}";
         var session = new WebSession
         {
             SessionIdHash = SHA256.HashData(Guid.NewGuid().ToByteArray()),
             Subject = Guid.NewGuid().ToString(),
-            AccessToken = "access",
+            EncryptedAccessToken = fixture.Encrypt("access"),
             AccessTokenExpiresAt = lastSeenAt.AddMinutes(5),
-            RefreshToken = $"offline-{Guid.NewGuid():N}",
+            EncryptedRefreshToken = encryptedRefreshToken ?? fixture.Encrypt(refreshToken),
             CsrfToken = "csrf",
             CreatedAt = lastSeenAt,
             LastSeenAt = lastSeenAt,
@@ -129,6 +145,6 @@ public sealed class WebSessionCleanupTests(WebSessionFixture fixture)
         await using var db = fixture.CreateDbContext();
         db.WebSessions.Add(session);
         await db.SaveChangesAsync();
-        return session;
+        return new StoredSession(session.Subject, refreshToken);
     }
 }

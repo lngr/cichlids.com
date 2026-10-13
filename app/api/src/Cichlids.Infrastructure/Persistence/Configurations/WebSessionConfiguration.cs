@@ -14,9 +14,9 @@ public class WebSessionConfiguration : IEntityTypeConfiguration<WebSession>
 
         builder.Property(x => x.SessionIdHash).IsRequired();
         builder.Property(x => x.Subject).IsRequired();
-        builder.Property(x => x.AccessToken).IsRequired();
+        builder.Property(x => x.EncryptedAccessToken).IsRequired();
         builder.Property(x => x.AccessTokenExpiresAt).IsRequired();
-        builder.Property(x => x.RefreshToken).IsRequired();
+        builder.Property(x => x.EncryptedRefreshToken).IsRequired();
         builder.Property(x => x.CsrfToken).IsRequired();
         builder.Property(x => x.CreatedAt).IsRequired();
         builder.Property(x => x.LastSeenAt).IsRequired();

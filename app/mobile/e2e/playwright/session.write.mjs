@@ -1,6 +1,7 @@
 // Story: TASK-3.41
 // The web app's durable session through the API (backend for frontend), as a member who signs in
 // on the web build:
+// - The API stores the tokens encrypted.
 // - The browser holds only the httpOnly session cookie: no token appears in the script-visible
 //   cookies, in localStorage or in sessionStorage.
 // - An access token that expired months ago is renewed on the server with the offline token when
@@ -76,11 +77,15 @@ async function createMember(username, password) {
   return users[0].id;
 }
 
+// The stored session of the member: its encrypted token columns and whether the access token is valid.
 function sessionRow(subject) {
-  const row = sql(`SELECT access_token, refresh_token, access_token_expires_at > now() FROM web_session WHERE subject = '${subject}'`);
+  const row = sql(
+    `SELECT encrypted_access_token, encrypted_refresh_token, coalesce(encrypted_id_token, ''), access_token_expires_at > now() ` +
+      `FROM web_session WHERE subject = '${subject}'`,
+  );
   if (!row) return null;
-  const [accessToken, refreshToken, valid] = row.split("|");
-  return { accessToken, refreshToken, valid: valid === "t" };
+  const [accessToken, refreshToken, idToken, valid] = row.split("|");
+  return { accessToken, refreshToken, idToken, valid: valid === "t" };
 }
 
 const username = `e2e-session-${crypto.randomBytes(4).toString("hex")}`;
@@ -105,6 +110,12 @@ try {
   if (!session) throw new Error("The API stored no web session for the member");
   console.log(`Signed in on the web as ${username}`);
 
+  // The database holds the tokens encrypted: no stored column is a token.
+  if ([session.accessToken, session.refreshToken, session.idToken].some((value) => JWT.test(value))) {
+    throw new Error("The web session stores a token in plain text");
+  }
+  console.log("The stored session holds its tokens encrypted");
+
   // The browser holds no token: the session cookie is httpOnly, and neither script-visible cookies
   // nor web storage contain a token.
   const cookies = await context.cookies(API_URL);
@@ -112,9 +123,7 @@ try {
   if (!sessionCookie) throw new Error(`No session cookie for the API, cookies: ${cookies.map((c) => c.name).join(", ")}`);
   if (!sessionCookie.httpOnly) throw new Error("The session cookie is visible to scripts");
   if (sessionCookie.sameSite !== "Lax") throw new Error(`The session cookie is SameSite=${sessionCookie.sameSite}`);
-  if ([session.accessToken, session.refreshToken].some((token) => sessionCookie.value.includes(token))) {
-    throw new Error("The session cookie holds a token");
-  }
+  if (JWT.test(sessionCookie.value)) throw new Error("The session cookie holds a token");
   const visible = await page.evaluate(() => {
     const dump = (storage) => Array.from({ length: storage.length }, (_, i) => [storage.key(i), storage.getItem(storage.key(i))]);
     return { cookie: document.cookie, local: dump(localStorage), session: dump(sessionStorage) };
@@ -122,9 +131,6 @@ try {
   const visibleText = JSON.stringify(visible);
   if (visible.cookie.includes("cichlids-session")) throw new Error("The session cookie is readable from scripts");
   if (JWT.test(visibleText)) throw new Error(`A token is visible to scripts: ${visibleText}`);
-  if ([session.accessToken, session.refreshToken].some((token) => visibleText.includes(token))) {
-    throw new Error("A token of the session is visible to scripts");
-  }
   console.log(`No token in script-visible cookies or web storage (keys: ${[...visible.local, ...visible.session].map(([key]) => key).join(", ") || "none"})`);
 
   // An access token that expired three months ago is renewed with the offline token on opening.

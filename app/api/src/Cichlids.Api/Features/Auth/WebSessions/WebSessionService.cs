@@ -9,7 +9,7 @@ namespace Cichlids.Api.Features.Auth.WebSessions;
 
 public enum WebSessionState
 {
-    /// <summary>No session has this id.</summary>
+    /// <summary>No session has this id, or its tokens cannot be decrypted, in which case it is deleted.</summary>
     Missing,
 
     /// <summary>The session is usable; its access token is valid.</summary>
@@ -22,20 +22,26 @@ public enum WebSessionState
     Unavailable,
 }
 
-/// <summary>The state of a looked-up session; Session is null for Missing and Refused.</summary>
-public sealed record WebSessionLookup(WebSessionState State, WebSession? Session);
+/// <summary>The decrypted Keycloak tokens of a web session; IdToken is null when Keycloak issued none.</summary>
+public sealed record WebSessionTokens(string AccessToken, string RefreshToken, string? IdToken);
+
+/// <summary>The state of a looked-up session; Session and Tokens are null for Missing and Refused.</summary>
+public sealed record WebSessionLookup(WebSessionState State, WebSession? Session, WebSessionTokens? Tokens);
 
 /// <summary>
 /// Creates, finds, renews and ends the server-side web sessions. A session is found through the
-/// hash of its id. Its access token is renewed with the refresh token shortly before it expires:
-/// a refusal of Keycloak deletes the session, an unreachable Keycloak leaves it in place.
-/// Renewals of one session in this process run one at a time.
+/// hash of its id, and its tokens are stored encrypted. Its access token is renewed with the
+/// refresh token shortly before it expires: a refusal of Keycloak deletes the session, an
+/// unreachable Keycloak leaves it in place. A session whose tokens the key ring cannot decrypt is
+/// deleted and counts as missing. Renewals of one session in this process run one at a time.
 /// </summary>
 public sealed class WebSessionService(
     CichlidsDbContext db,
     KeycloakOidcClient keycloak,
+    WebSessionTokenProtector protector,
     WebSessionLocks locks,
-    TimeProvider timeProvider)
+    TimeProvider timeProvider,
+    ILogger<WebSessionService> logger)
 {
     /// <summary>An access token this close to its expiry is renewed before use.</summary>
     public static readonly TimeSpan RenewalMargin = TimeSpan.FromSeconds(30);
@@ -45,18 +51,17 @@ public sealed class WebSessionService(
     {
         var sessionId = RandomToken();
         var now = timeProvider.GetUtcNow();
-        db.WebSessions.Add(new WebSession
+        var session = new WebSession
         {
             SessionIdHash = Hash(sessionId),
             Subject = subject,
-            AccessToken = tokens.AccessToken,
             AccessTokenExpiresAt = now.AddSeconds(tokens.ExpiresIn),
-            RefreshToken = tokens.RefreshToken ?? string.Empty,
-            IdToken = tokens.IdToken,
             CsrfToken = RandomToken(),
             CreatedAt = now,
             LastSeenAt = now,
-        });
+        };
+        Store(session, new WebSessionTokens(tokens.AccessToken, tokens.RefreshToken ?? string.Empty, tokens.IdToken));
+        db.WebSessions.Add(session);
         await db.SaveChangesAsync(cancellationToken);
         return sessionId;
     }
@@ -72,12 +77,12 @@ public sealed class WebSessionService(
         var session = await db.WebSessions.SingleOrDefaultAsync(s => s.SessionIdHash == hash, cancellationToken);
         if (session is null)
         {
-            return new WebSessionLookup(WebSessionState.Missing, null);
+            return new WebSessionLookup(WebSessionState.Missing, null, null);
         }
 
         if (!renew && !NeedsRenewal(session))
         {
-            return new WebSessionLookup(WebSessionState.Active, session);
+            return await ActiveAsync(session, cancellationToken);
         }
 
         using (await locks.AcquireAsync(session.Id, cancellationToken))
@@ -86,31 +91,40 @@ public sealed class WebSessionService(
             await db.Entry(session).ReloadAsync(cancellationToken);
             if (db.Entry(session).State == EntityState.Detached)
             {
-                return new WebSessionLookup(WebSessionState.Missing, null);
+                return new WebSessionLookup(WebSessionState.Missing, null, null);
             }
 
             if (!renew && !NeedsRenewal(session))
             {
-                return new WebSessionLookup(WebSessionState.Active, session);
+                return await ActiveAsync(session, cancellationToken);
             }
 
-            var result = await keycloak.RefreshAsync(session.RefreshToken, cancellationToken);
+            var tokens = Decrypt(session);
+            if (tokens is null)
+            {
+                return await DiscardAsync(session, cancellationToken);
+            }
+
+            var result = await keycloak.RefreshAsync(tokens.RefreshToken, cancellationToken);
             switch (result.Outcome)
             {
                 case TokenRequestOutcome.Issued:
-                    var tokens = result.Tokens!;
-                    session.AccessToken = tokens.AccessToken;
-                    session.AccessTokenExpiresAt = timeProvider.GetUtcNow().AddSeconds(tokens.ExpiresIn);
-                    session.RefreshToken = tokens.RefreshToken ?? session.RefreshToken;
-                    session.IdToken = tokens.IdToken ?? session.IdToken;
+                    var issued = result.Tokens!;
+                    var renewed = new WebSessionTokens(
+                        issued.AccessToken,
+                        issued.RefreshToken ?? tokens.RefreshToken,
+                        issued.IdToken ?? tokens.IdToken);
+                    Store(session, renewed);
+                    session.AccessTokenExpiresAt = timeProvider.GetUtcNow().AddSeconds(issued.ExpiresIn);
                     await db.SaveChangesAsync(cancellationToken);
-                    return new WebSessionLookup(WebSessionState.Active, session);
+                    return new WebSessionLookup(WebSessionState.Active, session, renewed);
                 case TokenRequestOutcome.Refused:
                     db.WebSessions.Remove(session);
                     await db.SaveChangesAsync(cancellationToken);
-                    return new WebSessionLookup(WebSessionState.Refused, null);
+                    return new WebSessionLookup(WebSessionState.Refused, null, null);
                 default:
-                    return new WebSessionLookup(NeedsRenewal(session) ? WebSessionState.Unavailable : WebSessionState.Active, session);
+                    return new WebSessionLookup(
+                        NeedsRenewal(session) ? WebSessionState.Unavailable : WebSessionState.Active, session, tokens);
             }
         }
     }
@@ -122,8 +136,11 @@ public sealed class WebSessionService(
         await db.SaveChangesAsync(cancellationToken);
     }
 
-    /// <summary>Deletes the session and returns it, or null when no session has this id.</summary>
-    public async Task<WebSession?> EndAsync(string sessionId, CancellationToken cancellationToken)
+    /// <summary>
+    /// Deletes the session and returns its tokens, or null when no session has this id or its
+    /// tokens cannot be decrypted.
+    /// </summary>
+    public async Task<WebSessionTokens?> EndAsync(string sessionId, CancellationToken cancellationToken)
     {
         var hash = Hash(sessionId);
         var session = await db.WebSessions.SingleOrDefaultAsync(s => s.SessionIdHash == hash, cancellationToken);
@@ -134,11 +151,53 @@ public sealed class WebSessionService(
 
         db.WebSessions.Remove(session);
         await db.SaveChangesAsync(cancellationToken);
-        return session;
+        return Decrypt(session);
     }
 
     /// <summary>A random URL-safe token of 256 bits.</summary>
     public static string RandomToken() => WebEncoders.Base64UrlEncode(RandomNumberGenerator.GetBytes(32));
+
+    private async Task<WebSessionLookup> ActiveAsync(WebSession session, CancellationToken cancellationToken)
+    {
+        var tokens = Decrypt(session);
+        return tokens is null
+            ? await DiscardAsync(session, cancellationToken)
+            : new WebSessionLookup(WebSessionState.Active, session, tokens);
+    }
+
+    // Nobody can use a session whose tokens the key ring cannot decrypt, and its offline session
+    // at Keycloak cannot be revoked without the refresh token.
+    private async Task<WebSessionLookup> DiscardAsync(WebSession session, CancellationToken cancellationToken)
+    {
+        logger.LogWarning("The tokens of web session {SessionId} cannot be decrypted with the key ring; the session is deleted.", session.Id);
+        db.WebSessions.Remove(session);
+        await db.SaveChangesAsync(cancellationToken);
+        return new WebSessionLookup(WebSessionState.Missing, null, null);
+    }
+
+    private WebSessionTokens? Decrypt(WebSession session)
+    {
+        if (!protector.TryDecrypt(session.EncryptedAccessToken, out var accessToken)
+            || !protector.TryDecrypt(session.EncryptedRefreshToken, out var refreshToken))
+        {
+            return null;
+        }
+
+        string? idToken = null;
+        if (session.EncryptedIdToken is not null && !protector.TryDecrypt(session.EncryptedIdToken, out idToken))
+        {
+            return null;
+        }
+
+        return new WebSessionTokens(accessToken, refreshToken, idToken);
+    }
+
+    private void Store(WebSession session, WebSessionTokens tokens)
+    {
+        session.EncryptedAccessToken = protector.Encrypt(tokens.AccessToken);
+        session.EncryptedRefreshToken = protector.Encrypt(tokens.RefreshToken);
+        session.EncryptedIdToken = tokens.IdToken is null ? null : protector.Encrypt(tokens.IdToken);
+    }
 
     private bool NeedsRenewal(WebSession session) =>
         timeProvider.GetUtcNow() >= session.AccessTokenExpiresAt - RenewalMargin;

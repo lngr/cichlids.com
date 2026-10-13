@@ -12,9 +12,9 @@ using Testcontainers.PostgreSql;
 namespace Cichlids.Api.Tests.Features.Auth;
 
 /// <summary>
-/// Runs the API against its own Postgres container with the web session settings of a deployed
-/// environment (Secure cookies, an HTTPS callback, one web origin) and a FakeKeycloak in place of
-/// the identity provider. Its client follows no redirects and keeps no cookies, so the tests read
+/// Runs the API against its own Postgres container and key ring with the web session settings of
+/// a deployed environment (Secure cookies, an HTTPS callback, one web origin) and a FakeKeycloak
+/// in place of the identity provider. Its client follows no redirects and keeps no cookies, so the tests read
 /// and send every cookie explicitly.
 /// </summary>
 public sealed class WebSessionFixture : IAsyncLifetime
@@ -27,6 +27,8 @@ public sealed class WebSessionFixture : IAsyncLifetime
         .WithUsername("cichlids")
         .WithPassword("cichlids")
         .Build();
+
+    private readonly DirectoryInfo _keyRing = Directory.CreateTempSubdirectory("cichlids-web-session-keys-");
 
     private WebApplicationFactory<Program> _factory = null!;
 
@@ -47,6 +49,7 @@ public sealed class WebSessionFixture : IAsyncLifetime
             builder.UseSetting("WebSession:AllowedOrigins:0", WebOrigin);
             builder.UseSetting("WebSession:AllowedOrigins:1", WebOrigin);
             builder.UseSetting("WebSession:SecureCookies", "true");
+            builder.UseSetting("DataProtection:KeyRingPath", _keyRing.FullName);
             builder.ConfigureAppConfiguration((_, configBuilder) =>
                 configBuilder.AddInMemoryCollection(new Dictionary<string, string?>
                 {
@@ -90,7 +93,17 @@ public sealed class WebSessionFixture : IAsyncLifetime
         Client.Dispose();
         await _factory.DisposeAsync();
         await _postgres.DisposeAsync();
+        _keyRing.Delete(recursive: true);
     }
+
+    /// <summary>The plain text of a token column, decrypted with the key ring of the API.</summary>
+    public string Decrypt(string encrypted) =>
+        Services.GetRequiredService<WebSessionTokenProtector>().TryDecrypt(encrypted, out var token)
+            ? token
+            : throw new InvalidOperationException("The token cannot be decrypted with the key ring of the API.");
+
+    /// <summary>A token encrypted with the key ring of the API, as the API stores it.</summary>
+    public string Encrypt(string token) => Services.GetRequiredService<WebSessionTokenProtector>().Encrypt(token);
 
     public CichlidsDbContext CreateDbContext()
     {

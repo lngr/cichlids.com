@@ -74,7 +74,7 @@ public sealed class WebSessionAuthenticationHandler(
             return AuthenticateResult.Fail("The request failed the CSRF check of the web session.");
         }
 
-        var principal = await validator.ValidateAsync(session.AccessToken, Context.RequestAborted);
+        var principal = await validator.ValidateAsync(lookup.Tokens!.AccessToken, Context.RequestAborted);
         return principal is null
             ? AuthenticateResult.Fail("The access token of the web session is not valid.")
             : AuthenticateResult.Success(new AuthenticationTicket(principal, SchemeName));

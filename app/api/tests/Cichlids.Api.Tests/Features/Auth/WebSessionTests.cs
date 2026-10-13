@@ -4,6 +4,8 @@ using System.Net.Http.Json;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
+using Cichlids.Api.Features.Auth.WebSessions;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Net.Http.Headers;
@@ -73,8 +75,75 @@ public sealed class WebSessionTests(WebSessionFixture fixture)
 
         await using var db = fixture.CreateDbContext();
         var stored = await db.WebSessions.SingleAsync(s => s.Subject == login.Subject);
-        Assert.Equal(login.RefreshToken, stored.RefreshToken);
+        Assert.Equal(login.RefreshToken, fixture.Decrypt(stored.EncryptedRefreshToken));
+        Assert.Equal(login.IdToken, fixture.Decrypt(stored.EncryptedIdToken!));
         Assert.NotEqual(Encoding.ASCII.GetBytes(cookie.Value.ToString()), stored.SessionIdHash);
+    }
+
+    [Fact]
+    public async Task The_stored_session_holds_no_token_in_plain_text()
+    {
+        var login = await LogInAsync("/");
+        await ExpireAccessTokenAsync(login);
+        var renewed = new TokenAnswer(TestTokens.Create(login.Subject, login.Username), $"offline-{Guid.NewGuid():N}", $"id-{Guid.NewGuid():N}");
+        fixture.Keycloak.RenewWith(login.RefreshToken, renewed);
+        using (var response = await SendAsync(HttpMethod.Get, "/api/me", login.CookieHeader))
+        {
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        }
+
+        await using var db = fixture.CreateDbContext();
+        var row = await db.Database
+            .SqlQueryRaw<string>("SELECT row_to_json(w)::text AS \"Value\" FROM public.web_session w WHERE w.subject = {0}", login.Subject)
+            .SingleAsync();
+        foreach (var token in new[] { login.AccessToken, login.RefreshToken, login.IdToken, renewed.AccessToken, renewed.RefreshToken, renewed.IdToken })
+        {
+            Assert.DoesNotContain(token, row);
+        }
+    }
+
+    [Fact]
+    public async Task A_session_encrypted_with_another_key_ring_ends_cleanly()
+    {
+        var login = await LogInAsync("/");
+        var otherKeyRing = Directory.CreateTempSubdirectory("cichlids-other-key-ring-");
+        try
+        {
+            var foreign = DataProtectionProvider
+                .Create(otherKeyRing, builder => builder.SetApplicationName(KeyRingSettings.ApplicationName))
+                .CreateProtector(WebSessionTokenProtector.Purpose);
+            await using (var db = fixture.CreateDbContext())
+            {
+                await db.WebSessions
+                    .Where(s => s.Subject == login.Subject)
+                    .ExecuteUpdateAsync(set => set
+                        .SetProperty(s => s.EncryptedAccessToken, foreign.Protect(login.AccessToken))
+                        .SetProperty(s => s.EncryptedRefreshToken, foreign.Protect(login.RefreshToken))
+                        .SetProperty(s => s.EncryptedIdToken, foreign.Protect(login.IdToken)));
+            }
+
+            using (var call = await SendAsync(HttpMethod.Get, "/api/me", login.CookieHeader))
+            {
+                Assert.Equal(HttpStatusCode.Unauthorized, call.StatusCode);
+                Assert.True(SetCookie(call, SessionCookie).Expires < DateTimeOffset.UtcNow, "the session cookie is cleared");
+            }
+
+            using (var session = await SendAsync(HttpMethod.Get, "/api/auth/session", login.CookieHeader))
+            {
+                Assert.Equal(HttpStatusCode.OK, session.StatusCode);
+                using var json = JsonDocument.Parse(await session.Content.ReadAsStringAsync());
+                Assert.False(json.RootElement.GetProperty("authenticated").GetBoolean());
+            }
+
+            await using (var db = fixture.CreateDbContext())
+            {
+                Assert.False(await db.WebSessions.AnyAsync(s => s.Subject == login.Subject));
+            }
+        }
+        finally
+        {
+            otherKeyRing.Delete(recursive: true);
+        }
     }
 
     [Fact]
@@ -203,7 +272,7 @@ public sealed class WebSessionTests(WebSessionFixture fixture)
             form.GetValueOrDefault("grant_type") == "refresh_token" && form.GetValueOrDefault("refresh_token") == login.RefreshToken);
         await using var db = fixture.CreateDbContext();
         var stored = await db.WebSessions.SingleAsync(s => s.Subject == login.Subject);
-        Assert.Equal(renewedToken, stored.AccessToken);
+        Assert.Equal(renewedToken, fixture.Decrypt(stored.EncryptedAccessToken));
         Assert.True(stored.AccessTokenExpiresAt > DateTimeOffset.UtcNow);
     }
 
@@ -341,6 +410,7 @@ public sealed class WebSessionTests(WebSessionFixture fixture)
         string CodeChallenge,
         string AccessToken,
         string RefreshToken,
+        string IdToken,
         string CallbackLocation,
         SetCookieHeaderValue Cookie)
     {
@@ -373,7 +443,8 @@ public sealed class WebSessionTests(WebSessionFixture fixture)
         var code = $"code-{Guid.NewGuid():N}";
         var accessToken = TestTokens.Create(subject, username);
         var refreshToken = $"offline-{Guid.NewGuid():N}";
-        fixture.Keycloak.IssueForCode(code, new TokenAnswer(accessToken, refreshToken));
+        var idToken = $"id-{Guid.NewGuid():N}";
+        fixture.Keycloak.IssueForCode(code, new TokenAnswer(accessToken, refreshToken, idToken));
 
         using var request = new HttpRequestMessage(HttpMethod.Get, $"/api/auth/callback?code={code}&state={Uri.EscapeDataString(start.State)}");
         request.Headers.Add("Cookie", start.LoginCookieHeader);
@@ -387,6 +458,7 @@ public sealed class WebSessionTests(WebSessionFixture fixture)
             start.CodeChallenge,
             accessToken,
             refreshToken,
+            idToken,
             response.Headers.Location!.OriginalString,
             SetCookie(response, SessionCookie));
     }

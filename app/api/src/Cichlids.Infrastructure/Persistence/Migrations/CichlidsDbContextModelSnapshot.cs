@@ -1553,11 +1553,6 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
-                    b.Property<string>("AccessToken")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("access_token");
-
                     b.Property<DateTimeOffset>("AccessTokenExpiresAt")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("access_token_expires_at");
@@ -1571,18 +1566,23 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasColumnType("text")
                         .HasColumnName("csrf_token");
 
-                    b.Property<string>("IdToken")
+                    b.Property<string>("EncryptedAccessToken")
+                        .IsRequired()
                         .HasColumnType("text")
-                        .HasColumnName("id_token");
+                        .HasColumnName("encrypted_access_token");
+
+                    b.Property<string>("EncryptedIdToken")
+                        .HasColumnType("text")
+                        .HasColumnName("encrypted_id_token");
+
+                    b.Property<string>("EncryptedRefreshToken")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("encrypted_refresh_token");
 
                     b.Property<DateTimeOffset>("LastSeenAt")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("last_seen_at");
-
-                    b.Property<string>("RefreshToken")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("refresh_token");
 
                     b.Property<byte[]>("SessionIdHash")
                         .IsRequired()
