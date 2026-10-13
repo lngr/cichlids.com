@@ -24,6 +24,14 @@ public sealed class FakeKeycloak : HttpMessageHandler
 
     public ConcurrentQueue<IReadOnlyDictionary<string, string>> LogoutRequests { get; } = new();
 
+    private readonly ConcurrentDictionary<string, byte> _unreachableLogouts = new();
+
+    /// <summary>Lets the logout of the refresh token fail as if Keycloak were unreachable.</summary>
+    public void BeUnreachableForLogoutOf(string refreshToken) => _unreachableLogouts[refreshToken] = 0;
+
+    /// <summary>Lets the logout of the refresh token succeed again.</summary>
+    public void BeReachableForLogoutOf(string refreshToken) => _unreachableLogouts.TryRemove(refreshToken, out _);
+
     /// <summary>The token response for the code, as Keycloak issues it for a fresh login.</summary>
     public void IssueForCode(string code, TokenAnswer answer) => _codes[code] = () => Json(HttpStatusCode.OK, answer.ToJson());
 
@@ -77,6 +85,11 @@ public sealed class FakeKeycloak : HttpMessageHandler
         if (request.Method == HttpMethod.Post && url == LogoutEndpoint)
         {
             LogoutRequests.Enqueue(form);
+            if (_unreachableLogouts.ContainsKey(form.GetValueOrDefault("refresh_token") ?? string.Empty))
+            {
+                throw new HttpRequestException("Connection refused");
+            }
+
             return new HttpResponseMessage(HttpStatusCode.NoContent);
         }
 

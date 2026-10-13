@@ -34,6 +34,9 @@ public sealed class WebSessionFixture : IAsyncLifetime
 
     public HttpClient Client { get; private set; } = null!;
 
+    /// <summary>The services of the API host, for resolving the services a test runs directly.</summary>
+    public IServiceProvider Services => _factory.Services;
+
     public async Task InitializeAsync()
     {
         await _postgres.StartAsync();
@@ -56,6 +59,7 @@ public sealed class WebSessionFixture : IAsyncLifetime
                     ["ObjectStorage:ForcePathStyle"] = "true",
                     ["ObjectStorage:PublicBaseUrl"] = "http://objects.test/cichlids-media",
                     ["OutboxDispatcher:Enabled"] = "false",
+                    ["WebSessionCleanup:Enabled"] = "false",
                 }));
 
             builder.ConfigureTestServices(services =>

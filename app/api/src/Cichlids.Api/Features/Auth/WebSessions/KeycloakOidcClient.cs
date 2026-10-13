@@ -121,17 +121,20 @@ public sealed class KeycloakOidcClient(
             cancellationToken);
 
     /// <summary>
-    /// Ends the Keycloak session of the refresh token, which revokes an offline token. Best
-    /// effort: a failure is logged, and the session stays in Keycloak until its idle timeout.
+    /// Ends the Keycloak session of the refresh token, which revokes an offline token. Returns true
+    /// when no session of the token remains in Keycloak: it ended the session, refused the token
+    /// as already invalid, or offers no logout endpoint. Returns false when Keycloak gave no usable
+    /// answer (no connection, a timeout or a server error), in which case the failure is logged and
+    /// the session stays in Keycloak until its idle timeout.
     /// </summary>
-    public async Task EndSessionAsync(string refreshToken, CancellationToken cancellationToken)
+    public async Task<bool> EndSessionAsync(string refreshToken, CancellationToken cancellationToken)
     {
         try
         {
             var endpoints = await GetEndpointsAsync(cancellationToken);
             if (endpoints.EndSession is null)
             {
-                return;
+                return true;
             }
 
             using var content = new FormUrlEncodedContent(new Dictionary<string, string>
@@ -140,14 +143,18 @@ public sealed class KeycloakOidcClient(
                 ["refresh_token"] = refreshToken,
             });
             using var response = await Http().PostAsync(endpoints.EndSession, content, cancellationToken);
-            if (!response.IsSuccessStatusCode)
+            if (response.IsSuccessStatusCode)
             {
-                logger.LogWarning("Keycloak answered the logout of a web session with {Status}.", (int)response.StatusCode);
+                return true;
             }
+
+            logger.LogWarning("Keycloak answered the logout of a web session with {Status}.", (int)response.StatusCode);
+            return (int)response.StatusCode is >= 400 and < 500;
         }
         catch (Exception exception) when (exception is HttpRequestException or TaskCanceledException or KeycloakUnavailableException)
         {
             logger.LogWarning(exception, "The Keycloak session of a web session could not be ended.");
+            return false;
         }
     }
 

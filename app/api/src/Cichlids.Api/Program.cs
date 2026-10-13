@@ -69,6 +69,14 @@ builder.Services.AddSingleton<KeycloakOidcClient>();
 builder.Services.AddSingleton<WebSessionLocks>();
 builder.Services.AddSingleton<AccessTokenValidator>();
 builder.Services.AddScoped<WebSessionService>();
+builder.Services.AddOptions<WebSessionCleanupOptions>()
+    .Bind(builder.Configuration.GetSection(WebSessionCleanupOptions.SectionName))
+    .Validate(
+        o => o.Interval > TimeSpan.Zero && o.Retention > TimeSpan.Zero && o.BatchSize > 0,
+        "WebSessionCleanup durations and batch size must be positive.")
+    .ValidateOnStart();
+builder.Services.AddScoped<WebSessionCleanupService>();
+builder.Services.AddHostedService<WebSessionCleanupHostedService>();
 
 // The native app authenticates with a bearer token, the web app with its session cookie. A
 // request with an Authorization header always uses the bearer token.

@@ -61,6 +61,9 @@ and keeps its tokens in the operating system's secure storage.
 - The API runs the authorization code flow with PKCE against Keycloak, stores the tokens on the
   server and renews them there under the same refresh rules. A refused renewal deletes the stored
   session.
+- A stored session that has not been used for the lifetime of its cookie can no longer be
+  reached by any browser. The server revokes its offline session at Keycloak and deletes it; a
+  revocation that gets no answer is retried, so no offline session outlives its stored record.
 - The browser holds only a random, opaque session id in a cookie that is httpOnly, Secure,
   SameSite=Lax, host-only with the `__Host-` prefix and persistent; opening the app renews its
   expiry. The server stores a hash of the session id, so a read of the session table does not
