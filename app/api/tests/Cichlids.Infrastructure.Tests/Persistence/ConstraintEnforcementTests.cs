@@ -1,4 +1,6 @@
 using Cichlids.Domain.Entities;
+using Cichlids.Domain.Enums;
+using Cichlids.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
 
@@ -176,5 +178,74 @@ public sealed class ConstraintEnforcementTests
             connection);
 
         await Assert.ThrowsAsync<PostgresException>(() => command.ExecuteNonQueryAsync());
+    }
+
+    [Fact]
+    public async Task Discussion_post_with_an_author_profile_and_a_poster_name_is_rejected()
+    {
+        await using var context = _fixture.CreateContext();
+        var profile = await TestDataBuilder.CreateProfileAsync(context);
+        var thread = await CreateThreadAsync(context);
+
+        context.DiscussionPosts.Add(new DiscussionPost
+        {
+            ThreadId = thread.Id,
+            AuthorProfileId = profile.Id,
+            PosterName = "Guest Name",
+            Body = "author and poster name",
+            CreatedAt = DateTimeOffset.UtcNow,
+        });
+
+        await Assert.ThrowsAsync<DbUpdateException>(() => context.SaveChangesAsync());
+    }
+
+    [Fact]
+    public async Task Discussion_post_by_a_guest_without_an_author_profile_is_accepted()
+    {
+        await using var context = _fixture.CreateContext();
+        var thread = await CreateThreadAsync(context);
+
+        context.DiscussionPosts.Add(new DiscussionPost
+        {
+            ThreadId = thread.Id,
+            PosterName = "Guest Name",
+            Body = "guest post",
+            CreatedAt = DateTimeOffset.UtcNow,
+        });
+
+        await context.SaveChangesAsync();
+    }
+
+    [Fact]
+    public async Task Discussion_post_by_a_member_without_a_poster_name_is_accepted()
+    {
+        await using var context = _fixture.CreateContext();
+        var profile = await TestDataBuilder.CreateProfileAsync(context);
+        var thread = await CreateThreadAsync(context);
+
+        context.DiscussionPosts.Add(new DiscussionPost
+        {
+            ThreadId = thread.Id,
+            AuthorProfileId = profile.Id,
+            Body = "member post",
+            CreatedAt = DateTimeOffset.UtcNow,
+        });
+
+        await context.SaveChangesAsync();
+    }
+
+    private static async Task<DiscussionThread> CreateThreadAsync(CichlidsDbContext context)
+    {
+        var thread = new DiscussionThread
+        {
+            Category = DiscussionCategory.Cichlids,
+            Title = $"Thread {Guid.NewGuid():N}",
+            State = DiscussionThreadState.Open,
+            CreatedAt = DateTimeOffset.UtcNow,
+        };
+
+        context.DiscussionThreads.Add(thread);
+        await context.SaveChangesAsync();
+        return thread;
     }
 }
