@@ -23,14 +23,47 @@ public sealed class WebSessionSettingsTests
             Configuration(
                 ("WebSession:CallbackUrl", "http://localhost:5045/api/auth/callback"),
                 ("WebSession:AllowedOrigins:0", "http://localhost:8081"),
-                ("WebSession:SecureCookies", "false")),
+                ("WebSession:SecureCookies", "false"),
+                ("WebSession:ClientSecret", "local-secret")),
             "Development");
 
         Assert.Equal(new Uri("http://localhost:5045/api/auth/callback"), settings.CallbackUrl);
         Assert.Equal(["http://localhost:8081"], settings.AllowedOrigins);
         Assert.False(settings.SecureCookies);
         Assert.Equal("cichlids-session", settings.SessionCookieName);
-        Assert.Equal("cichlids-app", settings.ClientId);
+        Assert.Equal("cichlids-web-bff", settings.ClientId);
+        Assert.Equal("local-secret", settings.ClientSecret);
+    }
+
+    [Theory]
+    [InlineData("Development")]
+    [InlineData("Staging")]
+    public void Web_sign_in_refuses_to_start_without_the_client_secret(string environment)
+    {
+        var exception = Assert.Throws<InvalidOperationException>(() =>
+            WebSessionSettings.Resolve(
+                Configuration(
+                    ("WebSession:CallbackUrl", "https://staging.cichlids.com/api/auth/callback"),
+                    ("WebSession:AllowedOrigins:0", "https://staging.cichlids.com")),
+                environment));
+
+        Assert.Contains("WebSession:ClientSecret", exception.Message);
+    }
+
+    [Fact]
+    public void The_text_of_the_settings_leaves_out_the_client_secret()
+    {
+        var settings = WebSessionSettings.Resolve(
+            Configuration(
+                ("WebSession:CallbackUrl", "https://staging.cichlids.com/api/auth/callback"),
+                ("WebSession:AllowedOrigins:0", "https://staging.cichlids.com"),
+                ("WebSession:ClientId", "custom-bff"),
+                ("WebSession:ClientSecret", "very-secret-value")),
+            "Staging");
+
+        Assert.Equal("custom-bff", settings.ClientId);
+        Assert.DoesNotContain("very-secret-value", settings.ToString());
+        Assert.Contains("custom-bff", settings.ToString());
     }
 
     [Fact]

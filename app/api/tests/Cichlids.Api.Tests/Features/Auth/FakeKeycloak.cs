@@ -9,13 +9,19 @@ namespace Cichlids.Api.Tests.Features.Auth;
 /// Answers the Keycloak requests of the web session flow in memory: the discovery document, the
 /// token endpoint for authorization codes and refresh tokens, and the logout endpoint. Each test
 /// registers the answer for its own codes and refresh tokens, so tests sharing one instance stay
-/// independent. Every token endpoint and logout request is recorded with its form fields.
+/// independent. Token endpoint and logout requests must authenticate the confidential client with
+/// its secret in the form; every one of them is recorded with its form fields.
 /// </summary>
 public sealed class FakeKeycloak : HttpMessageHandler
 {
     public const string AuthorizationEndpoint = "https://keycloak.test/realms/cichlids/protocol/openid-connect/auth";
     public const string TokenEndpoint = "https://keycloak.test/realms/cichlids/protocol/openid-connect/token";
     public const string LogoutEndpoint = "https://keycloak.test/realms/cichlids/protocol/openid-connect/logout";
+
+    /// <summary>The confidential client that token and logout requests must authenticate as.</summary>
+    public const string ClientId = "cichlids-web-bff";
+
+    public const string ClientSecret = "fake-keycloak-client-secret";
 
     private readonly ConcurrentDictionary<string, Func<HttpResponseMessage>> _codes = new();
     private readonly ConcurrentDictionary<string, Func<HttpResponseMessage>> _refreshTokens = new();
@@ -73,6 +79,10 @@ public sealed class FakeKeycloak : HttpMessageHandler
         if (request.Method == HttpMethod.Post && url == TokenEndpoint)
         {
             TokenRequests.Enqueue(form);
+            if (!IsClientAuthenticated(form))
+            {
+                return UnauthorizedClient();
+            }
             var answer = form.GetValueOrDefault("grant_type") switch
             {
                 "authorization_code" => _codes.TryRemove(form.GetValueOrDefault("code") ?? string.Empty, out var issue) ? issue : null,
@@ -85,6 +95,11 @@ public sealed class FakeKeycloak : HttpMessageHandler
         if (request.Method == HttpMethod.Post && url == LogoutEndpoint)
         {
             LogoutRequests.Enqueue(form);
+            if (!IsClientAuthenticated(form))
+            {
+                return UnauthorizedClient();
+            }
+
             if (_unreachableLogouts.ContainsKey(form.GetValueOrDefault("refresh_token") ?? string.Empty))
             {
                 throw new HttpRequestException("Connection refused");
@@ -95,6 +110,13 @@ public sealed class FakeKeycloak : HttpMessageHandler
 
         return new HttpResponseMessage(HttpStatusCode.NotFound);
     }
+
+    private static bool IsClientAuthenticated(IReadOnlyDictionary<string, string> form) =>
+        form.GetValueOrDefault("client_id") == ClientId && form.GetValueOrDefault("client_secret") == ClientSecret;
+
+    private static HttpResponseMessage UnauthorizedClient() => Json(
+        HttpStatusCode.Unauthorized,
+        new { error = "unauthorized_client", error_description = "Invalid client or Invalid client credentials" });
 
     private static async Task<IReadOnlyDictionary<string, string>> ReadFormAsync(HttpRequestMessage request, CancellationToken cancellationToken)
     {

@@ -7,9 +7,10 @@ using Microsoft.Extensions.Logging.Abstractions;
 namespace Cichlids.Api.Tests.Features.Auth;
 
 /// <summary>
-/// The classification of Keycloak's answers for web sessions: HTTP 400 and 401 refuse, every
-/// other failure leaves Keycloak unavailable, and a discovery document that could not be loaded is
-/// loaded again on the next call.
+/// The classification of Keycloak's answers for web sessions: HTTP 400 and 401 refuse, unless they
+/// reject the client credentials of the API; every other failure leaves Keycloak unavailable, and a
+/// discovery document that could not be loaded is loaded again on the next call. Every request
+/// authenticates the confidential client with its secret.
 /// </summary>
 [Trait("Story", "task-3.41")]
 public sealed class KeycloakOidcClientTests
@@ -32,6 +33,71 @@ public sealed class KeycloakOidcClientTests
 
         Assert.Equal(expected, result.Outcome);
         Assert.Null(result.Tokens);
+    }
+
+    [Theory]
+    [InlineData(HttpStatusCode.Unauthorized, "unauthorized_client")]
+    [InlineData(HttpStatusCode.BadRequest, "invalid_client")]
+    [InlineData(HttpStatusCode.Unauthorized, "invalid_client")]
+    public async Task Refresh_reports_refused_client_credentials_as_unavailable(HttpStatusCode status, string error)
+    {
+        var client = Client(_ => new HttpResponseMessage(status)
+        {
+            Content = new StringContent($"{{\"error\":\"{error}\",\"error_description\":\"Invalid client or Invalid client credentials\"}}", Encoding.UTF8, "application/json"),
+        });
+
+        Assert.Equal(TokenRequestOutcome.Unavailable, (await client.RefreshAsync("offline", CancellationToken.None)).Outcome);
+    }
+
+    [Fact]
+    public async Task A_revocation_whose_client_credentials_Keycloak_refuses_reports_the_session_as_not_ended()
+    {
+        var client = new KeycloakOidcClient(
+            new SingleClientFactory(new Handler(request => request.Method == HttpMethod.Get
+                ? Discovery(request)
+                : new HttpResponseMessage(HttpStatusCode.Unauthorized)
+                {
+                    Content = new StringContent("{\"error\":\"unauthorized_client\"}", Encoding.UTF8, "application/json"),
+                })),
+            new AuthenticationSettings(Authority, "cichlids-api", true),
+            Settings(),
+            NullLogger<KeycloakOidcClient>.Instance);
+
+        Assert.False(await client.EndSessionAsync("offline", CancellationToken.None));
+    }
+
+    [Fact]
+    public async Task Token_requests_and_the_revocation_authenticate_the_client_with_its_secret()
+    {
+        var forms = new List<Dictionary<string, string>>();
+        var client = new KeycloakOidcClient(
+            new SingleClientFactory(new Handler(request =>
+            {
+                if (request.Method == HttpMethod.Get)
+                {
+                    return Discovery(request);
+                }
+
+                forms.Add(ReadForm(request));
+                return new HttpResponseMessage(HttpStatusCode.OK)
+                {
+                    Content = new StringContent("{\"access_token\":\"a\",\"refresh_token\":\"r\",\"expires_in\":300}", Encoding.UTF8, "application/json"),
+                };
+            })),
+            new AuthenticationSettings(Authority, "cichlids-api", true),
+            Settings(),
+            NullLogger<KeycloakOidcClient>.Instance);
+
+        await client.ExchangeCodeAsync("code", "verifier", new Uri("https://cichlids.test/api/auth/callback"), CancellationToken.None);
+        await client.RefreshAsync("offline", CancellationToken.None);
+        Assert.True(await client.EndSessionAsync("offline", CancellationToken.None));
+
+        Assert.Equal(3, forms.Count);
+        Assert.All(forms, form =>
+        {
+            Assert.Equal("cichlids-web-bff", form["client_id"]);
+            Assert.Equal("bff-secret", form["client_secret"]);
+        });
     }
 
     [Fact]
@@ -99,15 +165,21 @@ public sealed class KeycloakOidcClientTests
             NullLogger<KeycloakOidcClient>.Instance);
 
     private static WebSessionSettings Settings() =>
-        new(new Uri("https://cichlids.test/api/auth/callback"), ["https://cichlids.test"], true, "cichlids-app");
+        new(new Uri("https://cichlids.test/api/auth/callback"), ["https://cichlids.test"], true, "cichlids-web-bff", "bff-secret");
 
     private static HttpResponseMessage Discovery(HttpRequestMessage request) => new(HttpStatusCode.OK)
     {
         Content = new StringContent(
-            $"{{\"authorization_endpoint\":\"{Authority}/protocol/openid-connect/auth\",\"token_endpoint\":\"{TokenEndpoint}\"}}",
+            $"{{\"authorization_endpoint\":\"{Authority}/protocol/openid-connect/auth\",\"token_endpoint\":\"{TokenEndpoint}\",\"end_session_endpoint\":\"{Authority}/protocol/openid-connect/logout\"}}",
             Encoding.UTF8,
             "application/json"),
     };
+
+    private static Dictionary<string, string> ReadForm(HttpRequestMessage request) =>
+        request.Content!.ReadAsStringAsync().GetAwaiter().GetResult()
+            .Split('&', StringSplitOptions.RemoveEmptyEntries)
+            .Select(pair => pair.Split('=', 2))
+            .ToDictionary(parts => Uri.UnescapeDataString(parts[0]), parts => Uri.UnescapeDataString(parts[1].Replace('+', ' ')));
 
     private sealed class Handler(Func<HttpRequestMessage, HttpResponseMessage> answer) : HttpMessageHandler
     {

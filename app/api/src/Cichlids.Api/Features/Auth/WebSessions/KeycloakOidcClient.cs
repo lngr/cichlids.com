@@ -17,7 +17,10 @@ public enum TokenRequestOutcome
     /// <summary>Keycloak refused the code or refresh token with HTTP 400 or 401.</summary>
     Refused,
 
-    /// <summary>No usable answer arrived: no connection, a timeout, a server error or an unreadable body.</summary>
+    /// <summary>
+    /// No usable answer arrived: no connection, a timeout, a server error, an unreadable body, or
+    /// Keycloak refused the client credentials of the API.
+    /// </summary>
     Unavailable,
 }
 
@@ -29,10 +32,11 @@ public sealed class KeycloakUnavailableException(string message, Exception? inne
     : Exception(message, innerException);
 
 /// <summary>
-/// Talks to Keycloak on behalf of web app sessions: loads and caches the endpoints of the
-/// issuer, exchanges login codes, renews tokens with a refresh token and ends sessions. Token
-/// requests never throw; their answer is classified into issued, refused (HTTP 400 or 401) and
-/// unavailable (everything else).
+/// Talks to Keycloak on behalf of web app sessions as a confidential client: loads and caches the
+/// endpoints of the issuer, exchanges login codes, renews tokens with a refresh token and ends
+/// sessions, each request authenticated with the client secret. Token requests never throw; their
+/// answer is classified into issued, refused (HTTP 400 or 401 for the code or token) and
+/// unavailable (everything else, including refused client credentials).
 /// </summary>
 public sealed class KeycloakOidcClient(
     IHttpClientFactory httpClientFactory,
@@ -99,33 +103,31 @@ public sealed class KeycloakOidcClient(
     /// <summary>Exchanges the code of a login for tokens, proving the login with the PKCE verifier.</summary>
     public Task<TokenRequestResult> ExchangeCodeAsync(string code, string codeVerifier, Uri redirectUri, CancellationToken cancellationToken) =>
         RequestTokensAsync(
-            new Dictionary<string, string>
+            ClientForm(new Dictionary<string, string>
             {
                 ["grant_type"] = "authorization_code",
-                ["client_id"] = settings.ClientId,
                 ["code"] = code,
                 ["code_verifier"] = codeVerifier,
                 ["redirect_uri"] = redirectUri.AbsoluteUri,
-            },
+            }),
             cancellationToken);
 
     /// <summary>Renews the tokens with the given refresh token.</summary>
     public Task<TokenRequestResult> RefreshAsync(string refreshToken, CancellationToken cancellationToken) =>
         RequestTokensAsync(
-            new Dictionary<string, string>
+            ClientForm(new Dictionary<string, string>
             {
                 ["grant_type"] = "refresh_token",
-                ["client_id"] = settings.ClientId,
                 ["refresh_token"] = refreshToken,
-            },
+            }),
             cancellationToken);
 
     /// <summary>
     /// Ends the Keycloak session of the refresh token, which revokes an offline token. Returns true
     /// when no session of the token remains in Keycloak: it ended the session, refused the token
     /// as already invalid, or offers no logout endpoint. Returns false when Keycloak gave no usable
-    /// answer (no connection, a timeout or a server error), in which case the failure is logged and
-    /// the session stays in Keycloak until its idle timeout.
+    /// answer (no connection, a timeout or a server error) or refused the client credentials, in
+    /// which case the failure is logged and the session stays in Keycloak until its idle timeout.
     /// </summary>
     public async Task<bool> EndSessionAsync(string refreshToken, CancellationToken cancellationToken)
     {
@@ -137,15 +139,20 @@ public sealed class KeycloakOidcClient(
                 return true;
             }
 
-            using var content = new FormUrlEncodedContent(new Dictionary<string, string>
+            using var content = new FormUrlEncodedContent(ClientForm(new Dictionary<string, string>
             {
-                ["client_id"] = settings.ClientId,
                 ["refresh_token"] = refreshToken,
-            });
+            }));
             using var response = await Http().PostAsync(endpoints.EndSession, content, cancellationToken);
             if (response.IsSuccessStatusCode)
             {
                 return true;
+            }
+
+            if ((int)response.StatusCode is >= 400 and < 500 && await RejectsClientAsync(response, cancellationToken))
+            {
+                logger.LogError("Keycloak refused the client credentials of the API ({Status}).", (int)response.StatusCode);
+                return false;
             }
 
             logger.LogWarning("Keycloak answered the logout of a web session with {Status}.", (int)response.StatusCode);
@@ -167,6 +174,14 @@ public sealed class KeycloakOidcClient(
             using var response = await Http().PostAsync(endpoints.Token, content, cancellationToken);
             if (response.StatusCode is System.Net.HttpStatusCode.BadRequest or System.Net.HttpStatusCode.Unauthorized)
             {
+                // Refused client credentials are a fault of the API's configuration; the session
+                // itself may be fine and stays.
+                if (await RejectsClientAsync(response, cancellationToken))
+                {
+                    logger.LogError("Keycloak refused the client credentials of the API ({Status}).", (int)response.StatusCode);
+                    return new TokenRequestResult(TokenRequestOutcome.Unavailable, null);
+                }
+
                 return new TokenRequestResult(TokenRequestOutcome.Refused, null);
             }
 
@@ -199,6 +214,33 @@ public sealed class KeycloakOidcClient(
     }
 
     private HttpClient Http() => httpClientFactory.CreateClient(HttpClientName);
+
+    // Authenticates the confidential client with its secret in the form (client_secret_post).
+    private Dictionary<string, string> ClientForm(Dictionary<string, string> form)
+    {
+        form["client_id"] = settings.ClientId;
+        if (settings.ClientSecret is not null)
+        {
+            form["client_secret"] = settings.ClientSecret;
+        }
+
+        return form;
+    }
+
+    private static async Task<bool> RejectsClientAsync(HttpResponseMessage response, CancellationToken cancellationToken)
+    {
+        try
+        {
+            var error = await response.Content.ReadFromJsonAsync<ErrorResponse>(cancellationToken);
+            return error?.Error is "invalid_client" or "unauthorized_client";
+        }
+        catch (Exception exception) when (exception is JsonException or NotSupportedException)
+        {
+            return false;
+        }
+    }
+
+    private sealed record ErrorResponse([property: JsonPropertyName("error")] string? Error);
 
     private sealed record DiscoveryDocument(
         [property: JsonPropertyName("authorization_endpoint")] Uri? AuthorizationEndpoint,

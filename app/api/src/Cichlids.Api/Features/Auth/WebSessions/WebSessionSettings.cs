@@ -2,21 +2,29 @@ namespace Cichlids.Api.Features.Auth.WebSessions;
 
 /// <summary>
 /// The validated settings of the web app session from the WebSession configuration section.
-/// Without a callback URL the API offers no web sign-in. Outside the Development environment the
+/// Without a callback URL the API offers no web sign-in; with one it needs the secret of its
+/// confidential Keycloak client. Outside the Development environment the
 /// cookies have the Secure flag and the host prefix, and the callback and the allowed origins
 /// are HTTPS, so a misconfigured deployment fails at startup.
 /// </summary>
 /// <param name="CallbackUrl">The address Keycloak redirects to after a login, or null when web sign-in is off.</param>
 /// <param name="AllowedOrigins">The web app origins a login may return to and a cookie-authenticated write may come from.</param>
 /// <param name="SecureCookies">Whether the cookies have the Secure flag and the host prefix.</param>
-/// <param name="ClientId">The Keycloak client of the login.</param>
-public sealed record WebSessionSettings(Uri? CallbackUrl, IReadOnlyList<string> AllowedOrigins, bool SecureCookies, string ClientId)
+/// <param name="ClientId">The confidential Keycloak client of the login.</param>
+/// <param name="ClientSecret">The secret of the client, or null when web sign-in is off.</param>
+public sealed record WebSessionSettings(
+    Uri? CallbackUrl,
+    IReadOnlyList<string> AllowedOrigins,
+    bool SecureCookies,
+    string ClientId,
+    string? ClientSecret)
 {
     private const string CallbackUrlKey = "WebSession:CallbackUrl";
     private const string AllowedOriginsKey = "WebSession:AllowedOrigins";
     private const string SecureCookiesKey = "WebSession:SecureCookies";
     private const string ClientIdKey = "WebSession:ClientId";
-    private const string DefaultClientId = "cichlids-app";
+    private const string ClientSecretKey = "WebSession:ClientSecret";
+    private const string DefaultClientId = "cichlids-web-bff";
 
     /// <summary>The cookie with the session id.</summary>
     public string SessionCookieName => SecureCookies ? "__Host-cichlids-session" : "cichlids-session";
@@ -58,11 +66,26 @@ public sealed record WebSessionSettings(Uri? CallbackUrl, IReadOnlyList<string> 
         }
 
         var clientId = configuration[ClientIdKey];
+        var clientSecret = configuration[ClientSecretKey];
+        if (callbackUrl is not null && string.IsNullOrWhiteSpace(clientSecret))
+        {
+            throw Refuse(environmentName, $"{ClientSecretKey} is not set. Web sign-in needs the secret of the confidential Keycloak client.");
+        }
+
         return new WebSessionSettings(
             callbackUrl,
             origins.Distinct(StringComparer.Ordinal).ToList(),
             secureCookies,
-            string.IsNullOrWhiteSpace(clientId) ? DefaultClientId : clientId);
+            string.IsNullOrWhiteSpace(clientId) ? DefaultClientId : clientId,
+            string.IsNullOrWhiteSpace(clientSecret) ? null : clientSecret);
+    }
+
+    // Keeps the client secret out of the text of the settings, which may reach a log.
+    private bool PrintMembers(System.Text.StringBuilder builder)
+    {
+        builder.Append($"CallbackUrl = {CallbackUrl}, AllowedOrigins = [{string.Join(", ", AllowedOrigins)}], ");
+        builder.Append($"SecureCookies = {SecureCookies}, ClientId = {ClientId}");
+        return true;
     }
 
     private static bool IsOrigin(string value, bool isDevelopment) =>

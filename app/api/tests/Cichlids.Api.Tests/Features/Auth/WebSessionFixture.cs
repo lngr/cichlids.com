@@ -50,6 +50,8 @@ public sealed class WebSessionFixture : IAsyncLifetime
             builder.UseSetting("WebSession:AllowedOrigins:1", WebOrigin);
             builder.UseSetting("WebSession:SecureCookies", "true");
             builder.UseSetting("DataProtection:KeyRingPath", _keyRing.FullName);
+            builder.UseSetting("WebSession:ClientId", FakeKeycloak.ClientId);
+            builder.UseSetting("WebSession:ClientSecret", FakeKeycloak.ClientSecret);
             builder.ConfigureAppConfiguration((_, configBuilder) =>
                 configBuilder.AddInMemoryCollection(new Dictionary<string, string?>
                 {

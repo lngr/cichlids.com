@@ -35,7 +35,8 @@ public sealed class WebSessionTests(WebSessionFixture fixture)
         var location = await AuthorizationUrlAsync(response);
         Assert.StartsWith(FakeKeycloak.AuthorizationEndpoint + "?", location.AbsoluteUri);
         var query = QueryHelpers.ParseQuery(location.Query);
-        Assert.Equal("cichlids-app", query["client_id"].ToString());
+        Assert.Equal("cichlids-web-bff", query["client_id"].ToString());
+        Assert.False(query.ContainsKey("client_secret"), "the secret never reaches the browser");
         Assert.Equal(WebSessionFixture.CallbackUrl, query["redirect_uri"].ToString());
         Assert.Equal("code", query["response_type"].ToString());
         Assert.Equal("S256", query["code_challenge_method"].ToString());
@@ -60,7 +61,8 @@ public sealed class WebSessionTests(WebSessionFixture fixture)
         var exchange = fixture.Keycloak.TokenRequests.Single(r => r.GetValueOrDefault("code") == login.Code);
         Assert.Equal("authorization_code", exchange["grant_type"]);
         Assert.Equal(WebSessionFixture.CallbackUrl, exchange["redirect_uri"]);
-        Assert.Equal("cichlids-app", exchange["client_id"]);
+        Assert.Equal("cichlids-web-bff", exchange["client_id"]);
+        Assert.Equal(FakeKeycloak.ClientSecret, exchange["client_secret"]);
         Assert.Equal(login.CodeChallenge, Base64UrlTextEncoder.Encode(SHA256.HashData(Encoding.ASCII.GetBytes(exchange["code_verifier"]))));
 
         var cookie = login.Cookie;
