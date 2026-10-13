@@ -1,0 +1,2990 @@
+schemaVersion: 1
+id: iodotropheus-sprengerae
+legacyIds:
+  - 316
+status: described
+taxonomy:
+  validName: Iodotropheus sprengerae
+  genus: Iodotropheus
+  species: sprengerae
+  author: "Oliver & Loiselle, 1972"
+  source:
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes: Iodotropheus, update of 21 September 2026"
+    url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=specie\
+      s&genus=Iodotropheus"
+    accessed: 2026-10-13
+  synonyms:
+    - name: Iodotropheus declivitas
+      note: Stauffer 1994; junior synonym in the current Catalog treatment.
+    - name: Iodochromis sprengeri
+      note: Mensi 1973; the Catalog treats this spelling as a synonym.
+  legacyNames:
+    - Iodotropheus sprengerae
+  note: "The Catalog recognizes Iodotropheus sprengerae in its original combination and records the
+    neotype PSU 2721 established through Opinion 1871. Iodotropheus declivitas is a junior synonym,
+    and Iodochromis sprengeri is a historical misspelling in synonymy. The 1995 proposed neotype and
+    distribution split must be interpreted through this current treatment. The legacy and valid
+    genera are identical, so one genus query covers both."
+names:
+  trade:
+    en:
+      - Rusty Cichlid
+      - Lavender Mbuna
+variants:
+  - name: Chinyamwezi Island
+    kind: locality
+    note: Geographic population label within the species rather than a formally named colour morph.
+  - name: Chinyankwazi Island
+    kind: locality
+    note: Geographic population label within the species rather than a formally named colour morph.
+  - name: Boadzulu Island
+    kind: locality
+    note: Geographic stock label within the current species; older accounts may use the synonym I.
+      declivitas. It does not establish a separate species or a fixed colour morph.
+  - name: Makokola Reef
+    kind: locality
+    note: Geographic stock label within the current species; older accounts may use the synonym I.
+      declivitas. It does not establish a separate species or a fixed colour morph.
+features:
+  origin:
+    value:
+      continent: Africa
+      region: Southeastern Lake Malawi
+      waterbody: lake-malawi
+      localities:
+        - Chinyamwezi Island
+        - Chinyankwazi Island
+        - Boadzulu Island
+        - Makokola Reef
+    confidence: high
+    rationale: "Generator, checker-b and checker-c include Chinyamwezi and Chinyankwazi islands together
+      with Boadzulu Island and Makokola Reef; checker-a restricts the locality list to the northern
+      pair. The current Catalog synonymy places the former Boadzulu taxon declivitas within
+      sprengerae. FishBase confirms the three islands and AquaInfo explicitly adds Makokola Reef.
+      The older Stauffer split and the separation still used by Malawi-Guru cannot narrow the
+      current species distribution. All sites are in southeastern Lake Malawi."
+    sources:
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: Iodotropheus, update of 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=specie\
+          s&genus=Iodotropheus"
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishBase: Iodotropheus sprengerae species summary"
+        url: "https://www.fishbase.se/summary/Iodotropheus-sprengerae.html"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Iodotropheus sprengerae"
+        url: "https://www.ciklid.org/artregister/art.php?ID=755"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Stauffer (1995). Iodotropheus sprengerae: proposed replacement of holotype by a neotype"
+        url: "https://doi.org/10.5962/bhl.part.6809"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Seriously Fish: Iodotropheus sprengerae"
+        url: "https://www.seriouslyfish.com/species/iodotropheus-sprengerae/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "AquaInfo: Iodotropheus sprengerae, Rusty Cichlid"
+        url: "https://aquainfo.nl/en/article/iodotropheus-sprengerae-rusty-cichlid/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Hoernlimann and Bandhauer: Iodotropheus sprengerae, Malawi-Guru species directory"
+        url: "https://malawi-guru.de/artentafel-iodotropheus-sprengerae-verzeichnis/"
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "FishBase: Iodotropheus sprengerae species summary"
+          url: "https://www.fishbase.se/summary/Iodotropheus-sprengerae.html"
+          accessed: 2026-10-13
+        value:
+          continent: Africa
+          region: Lake Malawi
+          waterbody: lake-malawi
+          localities:
+            - Boadzulu Island
+            - Chinyankwazi Island
+            - Chinyamwezi Island
+      - source:
+          kind: database
+          title: "AquaInfo: Iodotropheus sprengerae, Rusty Cichlid"
+          url: "https://aquainfo.nl/en/article/iodotropheus-sprengerae-rusty-cichlid/"
+          accessed: 2026-10-13
+        value:
+          continent: Africa
+          region: Southeastern Lake Malawi
+          waterbody: lake-malawi
+          localities:
+            - Boadzulu Island
+            - Chinyamwezi Island
+            - Chinyankwazi Island
+            - Makokola Reef
+      - source:
+          kind: literature
+          title: "Stauffer (1995). Iodotropheus sprengerae: proposed replacement of holotype by a neotype"
+          url: "https://doi.org/10.5962/bhl.part.6809"
+          accessed: 2026-10-13
+        value:
+          continent: Africa
+          region: Southeastern Lake Malawi
+          localities:
+            - Chinyamwezi Island
+            - Chinyankwazi Island
+        note: Historical distribution under the superseded species split.
+  temperatureC:
+    value:
+      min: 21
+      max: 29
+    confidence: high
+    rationale: The tally fixes the lake-wide natural envelope at 21 to 29 C. Eccles reports 21 C inshore
+      in the southeast arm and about 27 C in the upper layer in May; Branchu and Vollmer provide
+      additional campaign and seasonal context. Individual sampled ranges are narrower and must not
+      replace the prescribed annual envelope. Only the repository abstract of Ngochera was readable
+      through the allowed access route; it confirms seasonal lake sampling but supplies no numerical
+      endpoints. The 29 C endpoint is therefore retained from the tally rather than claimed as an
+      independently reread dissertation measurement.
+    sources:
+      - kind: literature
+        title: "Eccles (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa), abstract
+          only"
+        url: "https://doi.org/10.4319/lo.1974.19.5.0730"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Branchu et al. (2010). Hydrochemistry of Lake Malawi, Tanzanian Northern Basin: local versus
+          global considerations. HESS Discussions 7, 4371-4409"
+        url: "https://doi.org/10.5194/hessd-7-4371-2010"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa,
+          Vol. 1. Lake Malawi data after Jackson et al. (1963) and Talling and Talling (1965)"
+        url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Vollmer et al. (2005). Deep-water warming trend in Lake Malawi, East Africa"
+        url: "https://doi.org/10.4319/lo.2005.50.2.0727"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. Dissertation repository abstract
+          only
+        url: "https://minds.wisconsin.edu/handle/1793/91765"
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: literature
+          title: "Eccles (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa), abstract
+            only"
+          url: "https://doi.org/10.4319/lo.1974.19.5.0730"
+          accessed: 2026-10-13
+        value:
+          min: 21
+          max: 27
+        note: The readable abstract reports cool inshore water at 21 C and the upper 60 m at about 27 C in
+          May.
+      - source:
+          kind: literature
+          title: "Branchu et al. (2010). Hydrochemistry of Lake Malawi, Tanzanian Northern Basin: local versus
+            global considerations. HESS Discussions 7, 4371-4409"
+          url: "https://doi.org/10.5194/hessd-7-4371-2010"
+          accessed: 2026-10-13
+        value:
+          min: 24.48
+          max: 26.15
+        note: Upper-layer campaign temperatures in Table 4; this sampled interval is narrower than the
+          annual lake envelope.
+      - source:
+          kind: literature
+          title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa,
+            Vol. 1. Lake Malawi data after Jackson et al. (1963) and Talling and Talling (1965)"
+          url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+          accessed: 2026-10-13
+        value:
+          min: 23
+          max: 25
+        note: Surface observations compiled from Jackson et al.; not full seasonal extremes.
+      - source:
+          kind: literature
+          title: "Vollmer et al. (2005). Deep-water warming trend in Lake Malawi, East Africa"
+          url: "https://doi.org/10.4319/lo.2005.50.2.0727"
+          accessed: 2026-10-13
+        value:
+          max: 28
+        note: Approximate summer surface maximum; winter surface water falls below 24 C. The text does not
+          provide a precise winter minimum.
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value:
+        min: 21
+        max: 29
+      confidence: low
+      rationale: "All four main runs proposed 21 to 29 C and the tally records unanimous agreement with
+        low confidence. Seriously Fish gives 25 to 29 C, AquaInfo 22 to 26 C, the Nordic register 23
+        to 28 C, and Borstein about 24.4 to 26.7 C. The 21 C floor is retained to contain the
+        prescribed natural range, not because any source demonstrates multiyear aquarium health at
+        that endpoint. Egg incubation at 29 C in the larval-study abstract is not an adult lifetime
+        tolerance experiment. Stable conditions near the middle of the care recommendations are
+        better supported than continuous endpoint maintenance."
+      sources:
+        - kind: database
+          title: "Seriously Fish: Iodotropheus sprengerae"
+          url: "https://www.seriouslyfish.com/species/iodotropheus-sprengerae/"
+          accessed: 2026-10-13
+        - kind: database
+          title: "AquaInfo: Iodotropheus sprengerae, Rusty Cichlid"
+          url: "https://aquainfo.nl/en/article/iodotropheus-sprengerae-rusty-cichlid/"
+          accessed: 2026-10-13
+        - kind: database
+          title: "Nordiska Ciklidsallskapet species register: Iodotropheus sprengerae"
+          url: "https://www.ciklid.org/artregister/art.php?ID=755"
+          accessed: 2026-10-13
+        - kind: database
+          title: "FishProfiles: Iodotropheus sprengerae"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Iodotropheus_sprengerae/"
+          accessed: 2026-10-13
+        - kind: database
+          title: "FishBase: Iodotropheus sprengerae species summary"
+          url: "https://www.fishbase.se/summary/Iodotropheus-sprengerae.html"
+          accessed: 2026-10-13
+        - kind: literature
+          title: Borstein (2007). Iodotropheus sprengerae. Greater Chicago Cichlid Association husbandry and
+            breeding report
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/66-iodotropheus-sprengera\
+            e.html"
+          accessed: 2026-10-13
+        - kind: database
+          title: "Fischlexikon: Iodotropheus sprengerae"
+          url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000000807"
+          accessed: 2026-10-13
+        - kind: literature
+          title: Yilmaz. Iodotropheus sprengerae (Pasli Cichlid). Akvaryum.com husbandry article
+          url: "https://www.akvaryum.com/makale.asp?alt_kat=4868&id=12"
+          accessed: 2026-10-13
+        - kind: literature
+          title: "Eccles (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa), abstract
+            only"
+          url: "https://doi.org/10.4319/lo.1974.19.5.0730"
+          accessed: 2026-10-13
+      evidence:
+        - source:
+            kind: database
+            title: "Seriously Fish: Iodotropheus sprengerae"
+            url: "https://www.seriouslyfish.com/species/iodotropheus-sprengerae/"
+            accessed: 2026-10-13
+          value:
+            min: 25
+            max: 29
+        - source:
+            kind: database
+            title: "AquaInfo: Iodotropheus sprengerae, Rusty Cichlid"
+            url: "https://aquainfo.nl/en/article/iodotropheus-sprengerae-rusty-cichlid/"
+            accessed: 2026-10-13
+          value:
+            min: 22
+            max: 26
+        - source:
+            kind: database
+            title: "Nordiska Ciklidsallskapet species register: Iodotropheus sprengerae"
+            url: "https://www.ciklid.org/artregister/art.php?ID=755"
+            accessed: 2026-10-13
+          value:
+            min: 23
+            max: 28
+        - source:
+            kind: database
+            title: "FishProfiles: Iodotropheus sprengerae"
+            url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Iodotropheus_sprengerae/"
+            accessed: 2026-10-13
+          value:
+            min: 25.5
+            max: 28
+        - source:
+            kind: literature
+            title: Borstein (2007). Iodotropheus sprengerae. Greater Chicago Cichlid Association husbandry and
+              breeding report
+            url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/66-iodotropheus-sprengera\
+              e.html"
+            accessed: 2026-10-13
+          value:
+            min: 24.4
+            max: 26.7
+          note: 76 to 80 F converted to Celsius.
+        - source:
+            kind: database
+            title: "Fischlexikon: Iodotropheus sprengerae"
+            url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000000807"
+            accessed: 2026-10-13
+          value:
+            min: 22
+            max: 27
+        - source:
+            kind: literature
+            title: Yilmaz. Iodotropheus sprengerae (Pasli Cichlid). Akvaryum.com husbandry article
+            url: "https://www.akvaryum.com/makale.asp?alt_kat=4868&id=12"
+            accessed: 2026-10-13
+          value:
+            min: 23
+            max: 28
+        - source:
+            kind: database
+            title: "FishBase: Iodotropheus sprengerae species summary"
+            url: "https://www.fishbase.se/summary/Iodotropheus-sprengerae.html"
+            accessed: 2026-10-13
+          value:
+            min: 24
+            max: 26
+          note: Environment line; supplementary context rather than a chronic aquarium trial.
+        - source:
+            kind: literature
+            title: "Eccles (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa), abstract
+              only"
+            url: "https://doi.org/10.4319/lo.1974.19.5.0730"
+            accessed: 2026-10-13
+          value:
+            min: 21
+            max: 27
+          note: Natural exposure anchors the low endpoint; not aquarium tolerance data.
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+  ph:
+    value:
+      min: 7.7
+      max: 8.6
+    confidence: high
+    rationale: "The tally fixes the natural surface-water range at pH 7.7 to 8.6, matching the FAO
+      compilation of Jackson and colleagues. Branchu discusses pH 7.5 to 8.5 across the water
+      column, including deeper water. That wider depth coverage is not a reason to lower the surface
+      habitat boundary. These are lake measurements rather than care-sheet aquarium targets."
+    sources:
+      - kind: literature
+        title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa,
+          Vol. 1. Lake Malawi data after Jackson et al. (1963) and Talling and Talling (1965)"
+        url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Branchu et al. (2010). Hydrochemistry of Lake Malawi, Tanzanian Northern Basin: local versus
+          global considerations. HESS Discussions 7, 4371-4409"
+        url: "https://doi.org/10.5194/hessd-7-4371-2010"
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: literature
+          title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa,
+            Vol. 1. Lake Malawi data after Jackson et al. (1963) and Talling and Talling (1965)"
+          url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+          accessed: 2026-10-13
+        value:
+          min: 7.7
+          max: 8.6
+        note: Lake surface pH after Jackson et al. (1963).
+      - source:
+          kind: literature
+          title: "Branchu et al. (2010). Hydrochemistry of Lake Malawi, Tanzanian Northern Basin: local versus
+            global considerations. HESS Discussions 7, 4371-4409"
+          url: "https://doi.org/10.5194/hessd-7-4371-2010"
+          accessed: 2026-10-13
+        value:
+          min: 7.5
+          max: 8.5
+        note: Whole-column context includes water deeper than the occupied rocky shore habitat.
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value:
+        min: 7.5
+        max: 8.8
+      confidence: medium
+      rationale: "All four main runs proposed pH 7.5 to 8.8 and the tally records unanimous agreement with
+        medium confidence. Seriously Fish supplies that full interval; FishProfiles gives 7.8 to
+        8.6, the Nordic register and other sheets commonly 7.5 to 8.5, and Yilmaz 7.6 to 8.6. These
+        are aquarium recommendations containing the natural range, rather than controlled lifetime
+        thresholds."
+      sources:
+        - kind: database
+          title: "Seriously Fish: Iodotropheus sprengerae"
+          url: "https://www.seriouslyfish.com/species/iodotropheus-sprengerae/"
+          accessed: 2026-10-13
+        - kind: database
+          title: "FishProfiles: Iodotropheus sprengerae"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Iodotropheus_sprengerae/"
+          accessed: 2026-10-13
+        - kind: database
+          title: "Nordiska Ciklidsallskapet species register: Iodotropheus sprengerae"
+          url: "https://www.ciklid.org/artregister/art.php?ID=755"
+          accessed: 2026-10-13
+        - kind: database
+          title: "Fischlexikon: Iodotropheus sprengerae"
+          url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000000807"
+          accessed: 2026-10-13
+        - kind: literature
+          title: Yilmaz. Iodotropheus sprengerae (Pasli Cichlid). Akvaryum.com husbandry article
+          url: "https://www.akvaryum.com/makale.asp?alt_kat=4868&id=12"
+          accessed: 2026-10-13
+        - kind: database
+          title: "DRTA-Archiv: Rostroter Maulbrueter, Iodotropheus sprengerae care sheet"
+          url: "https://www.drta-archiv.de/rostroster-maulbrueter/"
+          accessed: 2026-10-13
+      evidence:
+        - source:
+            kind: database
+            title: "Seriously Fish: Iodotropheus sprengerae"
+            url: "https://www.seriouslyfish.com/species/iodotropheus-sprengerae/"
+            accessed: 2026-10-13
+          value:
+            min: 7.5
+            max: 8.8
+        - source:
+            kind: database
+            title: "FishProfiles: Iodotropheus sprengerae"
+            url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Iodotropheus_sprengerae/"
+            accessed: 2026-10-13
+          value:
+            min: 7.8
+            max: 8.6
+        - source:
+            kind: database
+            title: "Nordiska Ciklidsallskapet species register: Iodotropheus sprengerae"
+            url: "https://www.ciklid.org/artregister/art.php?ID=755"
+            accessed: 2026-10-13
+          value:
+            min: 7.5
+            max: 8.5
+        - source:
+            kind: database
+            title: "Fischlexikon: Iodotropheus sprengerae"
+            url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000000807"
+            accessed: 2026-10-13
+          value:
+            min: 7.5
+            max: 8.5
+        - source:
+            kind: literature
+            title: Yilmaz. Iodotropheus sprengerae (Pasli Cichlid). Akvaryum.com husbandry article
+            url: "https://www.akvaryum.com/makale.asp?alt_kat=4868&id=12"
+            accessed: 2026-10-13
+          value:
+            min: 7.6
+            max: 8.6
+        - source:
+            kind: database
+            title: "DRTA-Archiv: Rostroter Maulbrueter, Iodotropheus sprengerae care sheet"
+            url: "https://www.drta-archiv.de/rostroster-maulbrueter/"
+            accessed: 2026-10-13
+          value:
+            min: 7.5
+            max: 8.5
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+  ghDgh:
+    value:
+      min: 3
+      max: 5
+    confidence: high
+    rationale: The tally fixes natural GH at 3 to 5 dGH. Historical calcium and magnesium measurements
+      give about 3.2 to 4.9 dGH; the paired upper-layer Branchu samples give about 4.2 to 4.6 dGH.
+      The rounded lake envelope contains both. Malawi is naturally soft in calcium-magnesium
+      hardness despite its alkaline pH; harder aquarium recommendations belong in tolerance.
+    sources:
+      - kind: literature
+        title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa,
+          Vol. 1. Lake Malawi data after Jackson et al. (1963) and Talling and Talling (1965)"
+        url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Branchu et al. (2010). Hydrochemistry of Lake Malawi, Tanzanian Northern Basin: local versus
+          global considerations. HESS Discussions 7, 4371-4409"
+        url: "https://doi.org/10.5194/hessd-7-4371-2010"
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: literature
+          title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa,
+            Vol. 1. Lake Malawi data after Jackson et al. (1963) and Talling and Talling (1965)"
+          url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+          accessed: 2026-10-13
+        value:
+          min: 3.2
+          max: 4.9
+        note: Historical calcium and magnesium data converted using dGH = Ca mg/L / 7.14 + Mg mg/L / 4.34;
+          the low end includes the Talling and Talling compilation.
+      - source:
+          kind: literature
+          title: "Branchu et al. (2010). Hydrochemistry of Lake Malawi, Tanzanian Northern Basin: local versus
+            global considerations. HESS Discussions 7, 4371-4409"
+          url: "https://doi.org/10.5194/hessd-7-4371-2010"
+          accessed: 2026-10-13
+        value:
+          min: 4.2
+          max: 4.6
+        note: "Paired calcium and magnesium concentrations in the upper 50 m, converted to dGH."
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value:
+        min: 3
+        max: 20
+      confidence: medium
+      rationale: "The tally selects 3 to 20 dGH by qualified majority, 5 of 6 votes. Generator, checker-a,
+        checker-c, tiebreaker-1 and tiebreaker-2 proposed 3 to 20; checker-b proposed 3 to 25. The
+        less permissive 20 dGH ceiling is independently supported by FishProfiles and my-fish, both
+        giving 10 to 20. Seriously Fish explicitly allows the wider 10 to 25 dGH source range, but
+        its upper endpoint lacks comparable corroboration. DRTA and Malawi.si give 3 to 15,
+        Einrichtungsbeispiele 5 to 15, and Yilmaz prefers 7 to 12. The natural 3 to 5 dGH range
+        anchors the floor. This is a cautious husbandry synthesis, not proof that 21 to 25 dGH is
+        harmful."
+      sources:
+        - kind: database
+          title: "FishProfiles: Iodotropheus sprengerae"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Iodotropheus_sprengerae/"
+          accessed: 2026-10-13
+        - kind: database
+          title: "my-fish Fishothek: Iodotropheus sprengerae husbandry sheet"
+          url: "https://my-fish.org/my-fishothek/lodotropheus-sprengerae-violetter-maulbrueter/"
+          accessed: 2026-10-13
+        - kind: database
+          title: "Malawi.si: Lake Malawi Aquarium Setup"
+          url: "https://www.malawi.si/slides/Lake%20Malawi%20Aquarium%20Setup.html"
+          accessed: 2026-10-13
+        - kind: database
+          title: "Seriously Fish: Iodotropheus sprengerae"
+          url: "https://www.seriouslyfish.com/species/iodotropheus-sprengerae/"
+          accessed: 2026-10-13
+        - kind: database
+          title: "DRTA-Archiv: Rostroter Maulbrueter, Iodotropheus sprengerae care sheet"
+          url: "https://www.drta-archiv.de/rostroster-maulbrueter/"
+          accessed: 2026-10-13
+        - kind: database
+          title: "Einrichtungsbeispiele: Iodotropheus sprengerae husbandry sheet"
+          url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/iodotropheus-sprengerae-slnk.html"
+          accessed: 2026-10-13
+        - kind: literature
+          title: Yilmaz. Iodotropheus sprengerae (Pasli Cichlid). Akvaryum.com husbandry article
+          url: "https://www.akvaryum.com/makale.asp?alt_kat=4868&id=12"
+          accessed: 2026-10-13
+        - kind: database
+          title: "Fischlexikon: Iodotropheus sprengerae"
+          url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000000807"
+          accessed: 2026-10-13
+        - kind: literature
+          title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa,
+            Vol. 1. Lake Malawi data after Jackson et al. (1963) and Talling and Talling (1965)"
+          url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+          accessed: 2026-10-13
+      evidence:
+        - source:
+            kind: database
+            title: "FishProfiles: Iodotropheus sprengerae"
+            url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Iodotropheus_sprengerae/"
+            accessed: 2026-10-13
+          value:
+            min: 10
+            max: 20
+        - source:
+            kind: database
+            title: "my-fish Fishothek: Iodotropheus sprengerae husbandry sheet"
+            url: "https://my-fish.org/my-fishothek/lodotropheus-sprengerae-violetter-maulbrueter/"
+            accessed: 2026-10-13
+          value:
+            min: 10
+            max: 20
+        - source:
+            kind: database
+            title: "Seriously Fish: Iodotropheus sprengerae"
+            url: "https://www.seriouslyfish.com/species/iodotropheus-sprengerae/"
+            accessed: 2026-10-13
+          value:
+            min: 10
+            max: 25
+        - source:
+            kind: database
+            title: "Malawi.si: Lake Malawi Aquarium Setup"
+            url: "https://www.malawi.si/slides/Lake%20Malawi%20Aquarium%20Setup.html"
+            accessed: 2026-10-13
+          value:
+            min: 3
+            max: 15
+          note: General Malawi husbandry advice.
+        - source:
+            kind: database
+            title: "Fischlexikon: Iodotropheus sprengerae"
+            url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000000807"
+            accessed: 2026-10-13
+          value:
+            min: 3
+            max: 15
+        - source:
+            kind: database
+            title: "DRTA-Archiv: Rostroter Maulbrueter, Iodotropheus sprengerae care sheet"
+            url: "https://www.drta-archiv.de/rostroster-maulbrueter/"
+            accessed: 2026-10-13
+          value:
+            min: 3
+            max: 15
+        - source:
+            kind: database
+            title: "Einrichtungsbeispiele: Iodotropheus sprengerae husbandry sheet"
+            url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/iodotropheus-sprengerae-slnk.html"
+            accessed: 2026-10-13
+          value:
+            min: 5
+            max: 15
+        - source:
+            kind: literature
+            title: Yilmaz. Iodotropheus sprengerae (Pasli Cichlid). Akvaryum.com husbandry article
+            url: "https://www.akvaryum.com/makale.asp?alt_kat=4868&id=12"
+            accessed: 2026-10-13
+          value:
+            min: 7
+            max: 12
+          note: Preferred aquarium range.
+        - source:
+            kind: literature
+            title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa,
+              Vol. 1. Lake Malawi data after Jackson et al. (1963) and Talling and Talling (1965)"
+            url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+            accessed: 2026-10-13
+          value:
+            min: 3.2
+            max: 4.9
+          note: Natural measurements provide the lower baseline; not an aquarium upper-limit trial.
+      verification:
+        method: qualified-majority
+        votes:
+          agree: 5
+          total: 6
+  khDkh:
+    value:
+      min: 5
+      max: 8
+    confidence: high
+    rationale: "The tally fixes natural carbonate hardness at 5 to 8 dKH. Historical alkalinity converts
+      to about 5.6 to 7.3 dKH and Branchu measurements to about 6.5 to 6.9 dKH. These support the
+      rounded lake envelope. Aquarium KH approximates alkalinity here; sodium contributes to
+      bicarbonate charge balance, so KH can exceed GH. Natural KH is a plain fact and carries no
+      verification object."
+    sources:
+      - kind: literature
+        title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa,
+          Vol. 1. Lake Malawi data after Jackson et al. (1963) and Talling and Talling (1965)"
+        url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Branchu et al. (2010). Hydrochemistry of Lake Malawi, Tanzanian Northern Basin: local versus
+          global considerations. HESS Discussions 7, 4371-4409"
+        url: "https://doi.org/10.5194/hessd-7-4371-2010"
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: literature
+          title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa,
+            Vol. 1. Lake Malawi data after Jackson et al. (1963) and Talling and Talling (1965)"
+          url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+          accessed: 2026-10-13
+        value:
+          min: 5.6
+          max: 7.3
+        note: Alkalinity of 2.00 to 2.59 meq/L multiplied by 2.8.
+      - source:
+          kind: literature
+          title: "Branchu et al. (2010). Hydrochemistry of Lake Malawi, Tanzanian Northern Basin: local versus
+            global considerations. HESS Discussions 7, 4371-4409"
+          url: "https://doi.org/10.5194/hessd-7-4371-2010"
+          accessed: 2026-10-13
+        value:
+          min: 6.5
+          max: 6.9
+        note: "Alkalinity of 2.3339 to 2.4613 meq/L multiplied by 2.8; the upper observation is from 125 m,
+          not a shallow island measurement."
+    tolerance:
+      value:
+        min: 5
+        max: 12
+      confidence: low
+      rationale: "The tally selects 5 to 12 dKH by qualified majority, 5 of 6 votes. Generator, checker-b,
+        checker-c, tiebreaker-1 and tiebreaker-2 proposed 5 to 12; checker-a proposed 5 to 15 from
+        indirect pH and general buffering advice. The natural 5 to 8 dKH baseline anchors the floor.
+        Yilmaz explicitly separates KH from GH, gives a minimum near 5 to 6 and prefers 10 to 12;
+        Malawi.si gives 6 to 12. Wider source recommendations are OATA 10 to 15,
+        Einrichtungsbeispiele 6 to 20, and DRTA 15 to 18 dKH. Those broader endpoints are not
+        independently established by lifetime trials, so the narrower working ceiling is retained.
+        Twelve dKH is a provisional recommendation rather than a demonstrated biological limit;
+        confidence remains low. The commercial PFA page reported blocked by earlier runs was not
+        used."
+      sources:
+        - kind: database
+          title: "Malawi.si: Lake Malawi Aquarium Setup"
+          url: "https://www.malawi.si/slides/Lake%20Malawi%20Aquarium%20Setup.html"
+          accessed: 2026-10-13
+        - kind: database
+          title: "OATA care sheet: How to look after African Malawi Cichlids"
+          url: "https://ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-fres\
+            hwater-fish/how-to-look-after-african-malawi-cichlids/"
+          accessed: 2026-10-13
+        - kind: literature
+          title: Yilmaz. Iodotropheus sprengerae (Pasli Cichlid). Akvaryum.com husbandry article
+          url: "https://www.akvaryum.com/makale.asp?alt_kat=4868&id=12"
+          accessed: 2026-10-13
+        - kind: database
+          title: "Einrichtungsbeispiele: Iodotropheus sprengerae husbandry sheet"
+          url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/iodotropheus-sprengerae-slnk.html"
+          accessed: 2026-10-13
+        - kind: database
+          title: "DRTA-Archiv: Rostroter Maulbrueter, Iodotropheus sprengerae care sheet"
+          url: "https://www.drta-archiv.de/rostroster-maulbrueter/"
+          accessed: 2026-10-13
+        - kind: database
+          title: "Seriously Fish: Iodotropheus sprengerae"
+          url: "https://www.seriouslyfish.com/species/iodotropheus-sprengerae/"
+          accessed: 2026-10-13
+        - kind: database
+          title: "FishProfiles: Iodotropheus sprengerae"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Iodotropheus_sprengerae/"
+          accessed: 2026-10-13
+        - kind: literature
+          title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa,
+            Vol. 1. Lake Malawi data after Jackson et al. (1963) and Talling and Talling (1965)"
+          url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+          accessed: 2026-10-13
+      evidence:
+        - source:
+            kind: literature
+            title: Yilmaz. Iodotropheus sprengerae (Pasli Cichlid). Akvaryum.com husbandry article
+            url: "https://www.akvaryum.com/makale.asp?alt_kat=4868&id=12"
+            accessed: 2026-10-13
+          value:
+            min: 10
+            max: 12
+          note: Preferred KH; a separate minimum near 5 to 6 dKH is also stated.
+        - source:
+            kind: database
+            title: "Malawi.si: Lake Malawi Aquarium Setup"
+            url: "https://www.malawi.si/slides/Lake%20Malawi%20Aquarium%20Setup.html"
+            accessed: 2026-10-13
+          value:
+            min: 6
+            max: 12
+          note: General Malawi aquarium guidance.
+        - source:
+            kind: database
+            title: "OATA care sheet: How to look after African Malawi Cichlids"
+            url: "https://ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-fres\
+              hwater-fish/how-to-look-after-african-malawi-cichlids/"
+            accessed: 2026-10-13
+          value:
+            min: 10
+            max: 15
+          note: General Malawi care recommendation.
+        - source:
+            kind: database
+            title: "Einrichtungsbeispiele: Iodotropheus sprengerae husbandry sheet"
+            url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/iodotropheus-sprengerae-slnk.html"
+            accessed: 2026-10-13
+          value:
+            min: 6
+            max: 20
+          note: Wider care recommendation with no reported lifetime experiment.
+        - source:
+            kind: database
+            title: "DRTA-Archiv: Rostroter Maulbrueter, Iodotropheus sprengerae care sheet"
+            url: "https://www.drta-archiv.de/rostroster-maulbrueter/"
+            accessed: 2026-10-13
+          value:
+            min: 15
+            max: 18
+          note: Conflicting elevated recommendation; not adopted.
+        - source:
+            kind: literature
+            title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa,
+              Vol. 1. Lake Malawi data after Jackson et al. (1963) and Talling and Talling (1965)"
+            url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+            accessed: 2026-10-13
+          value:
+            min: 5.6
+            max: 7.3
+          note: "Natural alkalinity baseline, not a chronic aquarium trial."
+      verification:
+        method: qualified-majority
+        votes:
+          agree: 5
+          total: 6
+  maxSizeCm:
+    value:
+      male: 10
+      female: 9
+    confidence: medium
+    rationale: "Generator, checker-b and checker-c propose typical aquarium maxima of 10 cm male and 9
+      cm female; checker-a proposes 10 and 8. Borstein reports about 10.2 cm males and females up to
+      8.9 cm, supporting the rounded 10 and 9 cm values. NVC gives 11 and 8 cm, FishProfiles lists
+      10 cm for both sexes while describing larger males, and AquaInfo gives the wider 12 and 9 cm
+      estimate with occasional 13.5 cm claims. The selected typical sizes do not treat the largest
+      report as a growth target. FishBase records 10.8 cm standard length for male or unsexed fish,
+      not a sex-specific aquarium total-length maximum."
+    sources:
+      - kind: literature
+        title: Borstein (2007). Iodotropheus sprengerae. Greater Chicago Cichlid Association husbandry and
+          breeding report
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/66-iodotropheus-sprengera\
+          e.html"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Verheesen. Iodotropheus sprengerae. Nederlandse Vereniging van Cichlidenliefhebbers
+        url: "https://www.nvcweb.nl/visbeschrijvingen/malawi/iodotropheus-sprengerae-oliver-loiselle-1972"
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishProfiles: Iodotropheus sprengerae"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Iodotropheus_sprengerae/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishBase: Iodotropheus sprengerae species summary"
+        url: "https://www.fishbase.se/summary/Iodotropheus-sprengerae.html"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Seriously Fish: Iodotropheus sprengerae"
+        url: "https://www.seriouslyfish.com/species/iodotropheus-sprengerae/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Tawil (2012). Iodotropheus sprengerae. Cichlid Room Companion, verification only"
+        url: "https://cichlidae.com/species.php?id=kQGYZECPxLXUm2ha21TMuw"
+        accessed: 2026-10-13
+      - kind: database
+        title: "AquaInfo: Iodotropheus sprengerae, Rusty Cichlid"
+        url: "https://aquainfo.nl/en/article/iodotropheus-sprengerae-rusty-cichlid/"
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: literature
+          title: Borstein (2007). Iodotropheus sprengerae. Greater Chicago Cichlid Association husbandry and
+            breeding report
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/66-iodotropheus-sprengera\
+            e.html"
+          accessed: 2026-10-13
+        value:
+          male: 10.2
+          female: 8.9
+        note: Aquarium adult maxima converted from inches.
+      - source:
+          kind: literature
+          title: Verheesen. Iodotropheus sprengerae. Nederlandse Vereniging van Cichlidenliefhebbers
+          url: "https://www.nvcweb.nl/visbeschrijvingen/malawi/iodotropheus-sprengerae-oliver-loiselle-1972"
+          accessed: 2026-10-13
+        value:
+          male: 11
+          female: 8
+        note: Aquarium lengths.
+      - source:
+          kind: database
+          title: "FishProfiles: Iodotropheus sprengerae"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Iodotropheus_sprengerae/"
+          accessed: 2026-10-13
+        value:
+          male: 10
+          female: 10
+        note: Potential-size table; accompanying prose acknowledges larger males.
+      - source:
+          kind: database
+          title: "AquaInfo: Iodotropheus sprengerae, Rusty Cichlid"
+          url: "https://aquainfo.nl/en/article/iodotropheus-sprengerae-rusty-cichlid/"
+          accessed: 2026-10-13
+        value:
+          male: 12
+          female: 9
+        note: Larger aquarium estimate.
+      - source:
+          kind: database
+          title: "FishBase: Iodotropheus sprengerae species summary"
+          url: "https://www.fishbase.se/summary/Iodotropheus-sprengerae.html"
+          accessed: 2026-10-13
+        value:
+          male: 10.8
+        note: "Male or unsexed standard-length maximum, not typical aquarium total length."
+  predation:
+    value: 0
+    confidence: low
+    rationale: "The tally selects level 0 by qualified majority, 5 of 6 votes. Generator, checker-a,
+      checker-c, tiebreaker-1 and tiebreaker-2 proposed 0; checker-b proposed 1. The detailed
+      FishBase food record concerns Bagrus meridionalis eggs, despite its broad eggs/larvae heading.
+      Egg eating does not establish hunting free-swimming fish up to 2 cm. Seriously Fish describes
+      brood consumption under stress and fry-protection precautions, not a measured prey-size
+      threshold. The scientific micro-CT account confirms algal feeding, and the specialist accounts
+      describe invertebrates and grazing. These are indirect ecological support, not experiments
+      excluding all fry consumption. Level 0 permits incidental fry loss; low confidence is
+      retained."
+    sources:
+      - kind: literature
+        title: Verheesen. Iodotropheus sprengerae. Nederlandse Vereniging van Cichlidenliefhebbers
+        url: "https://www.nvcweb.nl/visbeschrijvingen/malawi/iodotropheus-sprengerae-oliver-loiselle-1972"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Hoernlimann and Bandhauer: Iodotropheus sprengerae, Malawi-Guru species directory"
+        url: "https://malawi-guru.de/artentafel-iodotropheus-sprengerae-verzeichnis/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishBase: Iodotropheus sprengerae species summary"
+        url: "https://www.fishbase.se/summary/Iodotropheus-sprengerae.html"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Seriously Fish: Iodotropheus sprengerae"
+        url: "https://www.seriouslyfish.com/species/iodotropheus-sprengerae/"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Genner and Turner (2005). The mbuna cichlids of Lake Malawi: a model for rapid speciation
+          and adaptive radiation"
+        url: "https://doi.org/10.1111/j.1467-2679.2005.00173.x"
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishProfiles: Iodotropheus sprengerae"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Iodotropheus_sprengerae/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishBase: Iodotropheus sprengerae food-item record 35290"
+        url: "https://www.fishbase.se/TrophicEco/FoodItemsSummary.php?genusname=Iodotropheus&speciesname=sp\
+          rengerae&vstockcode=8663&autoctr=35290"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Borstein (2007). Iodotropheus sprengerae. Greater Chicago Cichlid Association husbandry and
+          breeding report
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/66-iodotropheus-sprengera\
+          e.html"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "A whole-body micro-CT scan library that captures the skeletal diversity of Lake Malawi
+          cichlid fishes (2024). Scientific Data 11, 984"
+        url: "https://doi.org/10.1038/s41597-024-03687-1"
+        accessed: 2026-10-13
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: Iodotropheus, update of 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=specie\
+          s&genus=Iodotropheus"
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: literature
+          title: "A whole-body micro-CT scan library that captures the skeletal diversity of Lake Malawi
+            cichlid fishes (2024). Scientific Data 11, 984"
+          url: "https://doi.org/10.1038/s41597-024-03687-1"
+          accessed: 2026-10-13
+        value: 0
+        note: Rubric inference from algal feeding and specialized dentition; no fish-predation experiment.
+      - source:
+          kind: database
+          title: "Hoernlimann and Bandhauer: Iodotropheus sprengerae, Malawi-Guru species directory"
+          url: "https://malawi-guru.de/artentafel-iodotropheus-sprengerae-verzeichnis/"
+          accessed: 2026-10-13
+        value: 0
+        note: Rubric inference from reported grazing and invertebrate foods; no fish hunting stated.
+      - source:
+          kind: database
+          title: "FishBase: Iodotropheus sprengerae food-item record 35290"
+          url: "https://www.fishbase.se/TrophicEco/FoodItemsSummary.php?genusname=Iodotropheus&speciesname=sp\
+            rengerae&vstockcode=8663&autoctr=35290"
+          accessed: 2026-10-13
+        value: 0
+        note: "Interpretation of an egg record, not a negative predation experiment; the earlier level 1
+          proposal inferred more than this prey stage establishes."
+      - source:
+          kind: database
+          title: "Seriously Fish: Iodotropheus sprengerae"
+          url: "https://www.seriouslyfish.com/species/iodotropheus-sprengerae/"
+          accessed: 2026-10-13
+        value: 0
+        note: Brood consumption under stress does not establish ordinary predation on independent small
+          fish.
+      - source:
+          kind: literature
+          title: Verheesen. Iodotropheus sprengerae. Nederlandse Vereniging van Cichlidenliefhebbers
+          url: "https://www.nvcweb.nl/visbeschrijvingen/malawi/iodotropheus-sprengerae-oliver-loiselle-1972"
+          accessed: 2026-10-13
+        value: 0
+        note: Indirect inference from omnivorous plant and crustacean feeding.
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 5
+        total: 6
+  diet:
+    value:
+      type: omnivore
+      bloatSensitive: true
+      foods:
+        - Spirulina-based flakes or small pellets
+        - Algae and biofilm
+        - Blanched greens
+        - Small portions of Daphnia or Cyclops
+        - Occasional Artemia
+    confidence: medium
+    rationale: "The tally selects omnivore with bloatSensitive true by qualified majority, 5 of 6 votes.
+      Generator, checker-b, checker-c and both tie-breakers proposed omnivore; checker-a proposed
+      aufwuchs. All proposed bloat sensitivity, while their food lists differed and the tally
+      retained the generator list. Mixed plant and invertebrate feeding in NVC, Seriously Fish and
+      Malawi-Guru is a better match to omnivore than a specialized low-protein grazer category.
+      Borstein and the micro-CT study emphasize herbivory or algal feeding, and CRC verifies grazing
+      without originating the decision. my-fish and Yilmaz explicitly warn of bloat with excessive
+      rich animal food; Borstein reports digestive trouble in fry given excessive Artemia. These are
+      husbandry warnings, not measured adult incidence. Plant-rich staples and modest animal
+      supplements remain consistent with the decided class; Yilmaz's heavier animal-food emphasis is
+      not adopted."
+    sources:
+      - kind: literature
+        title: Verheesen. Iodotropheus sprengerae. Nederlandse Vereniging van Cichlidenliefhebbers
+        url: "https://www.nvcweb.nl/visbeschrijvingen/malawi/iodotropheus-sprengerae-oliver-loiselle-1972"
+        accessed: 2026-10-13
+      - kind: database
+        title: "my-fish Fishothek: Iodotropheus sprengerae husbandry sheet"
+        url: "https://my-fish.org/my-fishothek/lodotropheus-sprengerae-violetter-maulbrueter/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Hoernlimann and Bandhauer: Iodotropheus sprengerae, Malawi-Guru species directory"
+        url: "https://malawi-guru.de/artentafel-iodotropheus-sprengerae-verzeichnis/"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Borstein (2007). Iodotropheus sprengerae. Greater Chicago Cichlid Association husbandry and
+          breeding report
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/66-iodotropheus-sprengera\
+          e.html"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Tawil (2012). Iodotropheus sprengerae. Cichlid Room Companion, verification only"
+        url: "https://cichlidae.com/species.php?id=kQGYZECPxLXUm2ha21TMuw"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Seriously Fish: Iodotropheus sprengerae"
+        url: "https://www.seriouslyfish.com/species/iodotropheus-sprengerae/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishProfiles: Iodotropheus sprengerae"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Iodotropheus_sprengerae/"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Genner and Turner (2005). The mbuna cichlids of Lake Malawi: a model for rapid speciation
+          and adaptive radiation"
+        url: "https://doi.org/10.1111/j.1467-2679.2005.00173.x"
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishBase: Iodotropheus sprengerae species summary"
+        url: "https://www.fishbase.se/summary/Iodotropheus-sprengerae.html"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Yilmaz. Iodotropheus sprengerae (Pasli Cichlid). Akvaryum.com husbandry article
+        url: "https://www.akvaryum.com/makale.asp?alt_kat=4868&id=12"
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishBase: Iodotropheus sprengerae food-item record 35290"
+        url: "https://www.fishbase.se/TrophicEco/FoodItemsSummary.php?genusname=Iodotropheus&speciesname=sp\
+          rengerae&vstockcode=8663&autoctr=35290"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "A whole-body micro-CT scan library that captures the skeletal diversity of Lake Malawi
+          cichlid fishes (2024). Scientific Data 11, 984"
+        url: "https://doi.org/10.1038/s41597-024-03687-1"
+        accessed: 2026-10-13
+      - kind: archive
+        title: cichlids.com forum thread 10873
+        url: "https://www.cichlids.com/disc/read.php?1,10873"
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: literature
+          title: Verheesen. Iodotropheus sprengerae. Nederlandse Vereniging van Cichlidenliefhebbers
+          url: "https://www.nvcweb.nl/visbeschrijvingen/malawi/iodotropheus-sprengerae-oliver-loiselle-1972"
+          accessed: 2026-10-13
+        value:
+          type: omnivore
+        note: Mixed plant and crustacean feeding.
+      - source:
+          kind: database
+          title: "Seriously Fish: Iodotropheus sprengerae"
+          url: "https://www.seriouslyfish.com/species/iodotropheus-sprengerae/"
+          accessed: 2026-10-13
+        value:
+          type: omnivore
+        note: Explicit mixed feeding with a substantial plant component; no explicit bloat diagnosis.
+      - source:
+          kind: database
+          title: "Hoernlimann and Bandhauer: Iodotropheus sprengerae, Malawi-Guru species directory"
+          url: "https://malawi-guru.de/artentafel-iodotropheus-sprengerae-verzeichnis/"
+          accessed: 2026-10-13
+        value:
+          type: omnivore
+        note: Mixed grazing and invertebrates; excessive protein is discouraged.
+      - source:
+          kind: database
+          title: "my-fish Fishothek: Iodotropheus sprengerae husbandry sheet"
+          url: "https://my-fish.org/my-fishothek/lodotropheus-sprengerae-violetter-maulbrueter/"
+          accessed: 2026-10-13
+        value:
+          type: omnivore
+          bloatSensitive: true
+        note: Explicit bloat prevention warning.
+      - source:
+          kind: literature
+          title: Yilmaz. Iodotropheus sprengerae (Pasli Cichlid). Akvaryum.com husbandry article
+          url: "https://www.akvaryum.com/makale.asp?alt_kat=4868&id=12"
+          accessed: 2026-10-13
+        value:
+          type: omnivore
+          bloatSensitive: true
+        note: Explicit warning linking excessive animal feeding to bloat.
+      - source:
+          kind: literature
+          title: Borstein (2007). Iodotropheus sprengerae. Greater Chicago Cichlid Association husbandry and
+            breeding report
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/66-iodotropheus-sprengera\
+            e.html"
+          accessed: 2026-10-13
+        value:
+          type: aufwuchs
+        note: Author calls the fish herbivorous but uses animal supplements; digestive trouble is reported
+          in fry.
+      - source:
+          kind: literature
+          title: "A whole-body micro-CT scan library that captures the skeletal diversity of Lake Malawi
+            cichlid fishes (2024). Scientific Data 11, 984"
+          url: "https://doi.org/10.1038/s41597-024-03687-1"
+          accessed: 2026-10-13
+        value:
+          type: aufwuchs
+        note: Algal grazing establishes the plant component rather than an exclusive aquarium diet.
+      - source:
+          kind: database
+          title: "Tawil (2012). Iodotropheus sprengerae. Cichlid Room Companion, verification only"
+          url: "https://cichlidae.com/species.php?id=kQGYZECPxLXUm2ha21TMuw"
+          accessed: 2026-10-13
+        value:
+          type: aufwuchs
+        note: Verification only; grazing label does not overturn the independently sourced mixed diet.
+      - source:
+          kind: archive
+          title: cichlids.com forum thread 10873
+          url: "https://www.cichlids.com/disc/read.php?1,10873"
+          accessed: 2026-10-13
+        value:
+          type: omnivore
+        note: Low-weight community feeding experience.
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 5
+        total: 6
+  aggressionConspecific:
+    value: 1
+    confidence: medium
+    rationale: "Generator, checker-a and checker-c propose level 1; checker-b proposes level 2 as a
+      cautious interpretation of hierarchy and male rivalry. Borstein observed little aggression
+      even while spawning, FishProfiles describes generally mild fish, and NVC reports tolerance
+      toward conspecifics. With one male and three females in the selected tank, displays and brief
+      chases fit level 1 better than routine hierarchy chasing. Rival-male conflict or losses in
+      cramped multi-male housing do not describe the stipulated adult unit. Reports differ, so
+      confidence stays medium."
+    sources:
+      - kind: literature
+        title: Borstein (2007). Iodotropheus sprengerae. Greater Chicago Cichlid Association husbandry and
+          breeding report
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/66-iodotropheus-sprengera\
+          e.html"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Verheesen. Iodotropheus sprengerae. Nederlandse Vereniging van Cichlidenliefhebbers
+        url: "https://www.nvcweb.nl/visbeschrijvingen/malawi/iodotropheus-sprengerae-oliver-loiselle-1972"
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishProfiles: Iodotropheus sprengerae"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Iodotropheus_sprengerae/"
+        accessed: 2026-10-13
+      - kind: archive
+        title: cichlids.com forum thread 10873
+        url: "https://www.cichlids.com/disc/read.php?1,10873"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Seriously Fish: Iodotropheus sprengerae"
+        url: "https://www.seriouslyfish.com/species/iodotropheus-sprengerae/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "AquaInfo: Iodotropheus sprengerae, Rusty Cichlid"
+        url: "https://aquainfo.nl/en/article/iodotropheus-sprengerae-rusty-cichlid/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Tawil (2012). Iodotropheus sprengerae. Cichlid Room Companion, verification only"
+        url: "https://cichlidae.com/species.php?id=kQGYZECPxLXUm2ha21TMuw"
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: literature
+          title: Borstein (2007). Iodotropheus sprengerae. Greater Chicago Cichlid Association husbandry and
+            breeding report
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/66-iodotropheus-sprengera\
+            e.html"
+          accessed: 2026-10-13
+        value: 1
+        note: Rubric mapping of minimal observed spawning aggression.
+      - source:
+          kind: database
+          title: "FishProfiles: Iodotropheus sprengerae"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Iodotropheus_sprengerae/"
+          accessed: 2026-10-13
+        value: 1
+        note: Rubric mapping of mild behaviour with increased defence during spawning.
+      - source:
+          kind: database
+          title: "Seriously Fish: Iodotropheus sprengerae"
+          url: "https://www.seriouslyfish.com/species/iodotropheus-sprengerae/"
+          accessed: 2026-10-13
+        value: 2
+        note: Alternative cautious rubric mapping of limited male rivalry; no measured chase rate.
+      - source:
+          kind: archive
+          title: cichlids.com forum thread 10873
+          url: "https://www.cichlids.com/disc/read.php?1,10873"
+          accessed: 2026-10-13
+        value: 1
+        note: Supplementary community experience with tolerant groups.
+  aggressionHeterospecific:
+    value: 1
+    confidence: medium
+    rationale: "All four main runs propose level 1. Borstein and the main species databases describe
+      limited defensive behaviour and compatibility with calm Malawi cichlids. Yilmaz describes more
+      fighting with other species, which maps closer to level 2 and lowers confidence in an absolute
+      peacefulness claim. Limited defence is the best-supported baseline for the specified tank and
+      compatible adult companions."
+    sources:
+      - kind: literature
+        title: Borstein (2007). Iodotropheus sprengerae. Greater Chicago Cichlid Association husbandry and
+          breeding report
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/66-iodotropheus-sprengera\
+          e.html"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Verheesen. Iodotropheus sprengerae. Nederlandse Vereniging van Cichlidenliefhebbers
+        url: "https://www.nvcweb.nl/visbeschrijvingen/malawi/iodotropheus-sprengerae-oliver-loiselle-1972"
+        accessed: 2026-10-13
+      - kind: database
+        title: "my-fish Fishothek: Iodotropheus sprengerae husbandry sheet"
+        url: "https://my-fish.org/my-fishothek/lodotropheus-sprengerae-violetter-maulbrueter/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Seriously Fish: Iodotropheus sprengerae"
+        url: "https://www.seriouslyfish.com/species/iodotropheus-sprengerae/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishProfiles: Iodotropheus sprengerae"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Iodotropheus_sprengerae/"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Yilmaz. Iodotropheus sprengerae (Pasli Cichlid). Akvaryum.com husbandry article
+        url: "https://www.akvaryum.com/makale.asp?alt_kat=4868&id=12"
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: literature
+          title: Borstein (2007). Iodotropheus sprengerae. Greater Chicago Cichlid Association husbandry and
+            breeding report
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/66-iodotropheus-sprengera\
+            e.html"
+          accessed: 2026-10-13
+        value: 1
+        note: Rubric mapping of minimal aggression during spawning in mixed housing.
+      - source:
+          kind: database
+          title: "Seriously Fish: Iodotropheus sprengerae"
+          url: "https://www.seriouslyfish.com/species/iodotropheus-sprengerae/"
+          accessed: 2026-10-13
+        value: 1
+        note: Rubric interpretation of calm companions and susceptibility to more assertive fish.
+      - source:
+          kind: literature
+          title: Verheesen. Iodotropheus sprengerae. Nederlandse Vereniging van Cichlidenliefhebbers
+          url: "https://www.nvcweb.nl/visbeschrijvingen/malawi/iodotropheus-sprengerae-oliver-loiselle-1972"
+          accessed: 2026-10-13
+        value: 1
+        note: Rubric interpretation of interspecific tolerance and ability to defend itself.
+      - source:
+          kind: literature
+          title: Yilmaz. Iodotropheus sprengerae (Pasli Cichlid). Akvaryum.com husbandry article
+          url: "https://www.akvaryum.com/makale.asp?alt_kat=4868&id=12"
+          accessed: 2026-10-13
+        value: 2
+        note: Contrary rubric interpretation of stronger interspecific fighting.
+  territory:
+    value:
+      size: small
+      breedingOnly: true
+    confidence: medium
+    rationale: "Generator, checker-b and checker-c propose small defence restricted chiefly to breeding;
+      checker-a proposes a small persistent territory from general mbuna territoriality. Borstein
+      observed defence only at spawning, and Fischlexikon expressly places territoriality in that
+      period. The Nordic register and Malawi-Guru describe no lasting defended territory; Seriously
+      Fish describes loose male territories around spawning sites. A small breeding site captures
+      the limited aquarium defence without importing the long-term territory claims of general mbuna
+      literature. The rubric's approximately 30 cm scale is a category interpretation, not a
+      measured diameter. CRC verifies brief breeding defence rather than supplying the original
+      value."
+    sources:
+      - kind: literature
+        title: Borstein (2007). Iodotropheus sprengerae. Greater Chicago Cichlid Association husbandry and
+          breeding report
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/66-iodotropheus-sprengera\
+          e.html"
+        accessed: 2026-10-13
+      - kind: database
+        title: "AquaInfo: Iodotropheus sprengerae, Rusty Cichlid"
+        url: "https://aquainfo.nl/en/article/iodotropheus-sprengerae-rusty-cichlid/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Iodotropheus sprengerae"
+        url: "https://www.ciklid.org/artregister/art.php?ID=755"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Hoernlimann and Bandhauer: Iodotropheus sprengerae, Malawi-Guru species directory"
+        url: "https://malawi-guru.de/artentafel-iodotropheus-sprengerae-verzeichnis/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Tawil (2012). Iodotropheus sprengerae. Cichlid Room Companion, verification only"
+        url: "https://cichlidae.com/species.php?id=kQGYZECPxLXUm2ha21TMuw"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Seriously Fish: Iodotropheus sprengerae"
+        url: "https://www.seriouslyfish.com/species/iodotropheus-sprengerae/"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Genner and Turner (2005). The mbuna cichlids of Lake Malawi: a model for rapid speciation
+          and adaptive radiation"
+        url: "https://doi.org/10.1111/j.1467-2679.2005.00173.x"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fischlexikon: Iodotropheus sprengerae"
+        url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000000807"
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: literature
+          title: Borstein (2007). Iodotropheus sprengerae. Greater Chicago Cichlid Association husbandry and
+            breeding report
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/66-iodotropheus-sprengera\
+            e.html"
+          accessed: 2026-10-13
+        value:
+          size: small
+          breedingOnly: true
+        note: Spawning-linked defence; exact diameter unmeasured.
+      - source:
+          kind: database
+          title: "Fischlexikon: Iodotropheus sprengerae"
+          url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000000807"
+          accessed: 2026-10-13
+        value:
+          size: small
+          breedingOnly: true
+        note: Territories outside breeding are explicitly absent; size is inferred.
+      - source:
+          kind: database
+          title: "Seriously Fish: Iodotropheus sprengerae"
+          url: "https://www.seriouslyfish.com/species/iodotropheus-sprengerae/"
+          accessed: 2026-10-13
+        value:
+          size: small
+          breedingOnly: false
+        note: Alternative mapping of loose male territory; duration is not established.
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet species register: Iodotropheus sprengerae"
+          url: "https://www.ciklid.org/artregister/art.php?ID=755"
+          accessed: 2026-10-13
+        value:
+          size: none
+          breedingOnly: false
+        note: No fixed breeding territory described.
+      - source:
+          kind: database
+          title: "Hoernlimann and Bandhauer: Iodotropheus sprengerae, Malawi-Guru species directory"
+          url: "https://malawi-guru.de/artentafel-iodotropheus-sprengerae-verzeichnis/"
+          accessed: 2026-10-13
+        value:
+          size: none
+          breedingOnly: false
+        note: Roaming fish without lasting territory.
+  habitatZones:
+    value:
+      - rock
+      - sand
+    confidence: high
+    rationale: "Generator, checker-b and checker-c include rock and sand; checker-a includes rock only.
+      Rocky feeding and refuge habitat is shared across accounts. The Nordic register, Malawi-Guru
+      and AquaInfo also include transition habitat and sandy gaps between boulders, supporting sand
+      as a supplementary habitat component. This does not describe an open-bottom sand specialist."
+    sources:
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Iodotropheus sprengerae"
+        url: "https://www.ciklid.org/artregister/art.php?ID=755"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Verheesen. Iodotropheus sprengerae. Nederlandse Vereniging van Cichlidenliefhebbers
+        url: "https://www.nvcweb.nl/visbeschrijvingen/malawi/iodotropheus-sprengerae-oliver-loiselle-1972"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Hoernlimann and Bandhauer: Iodotropheus sprengerae, Malawi-Guru species directory"
+        url: "https://malawi-guru.de/artentafel-iodotropheus-sprengerae-verzeichnis/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Tawil (2012). Iodotropheus sprengerae. Cichlid Room Companion, verification only"
+        url: "https://cichlidae.com/species.php?id=kQGYZECPxLXUm2ha21TMuw"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Seriously Fish: Iodotropheus sprengerae"
+        url: "https://www.seriouslyfish.com/species/iodotropheus-sprengerae/"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Stauffer (1995). Iodotropheus sprengerae: proposed replacement of holotype by a neotype"
+        url: "https://doi.org/10.5962/bhl.part.6809"
+        accessed: 2026-10-13
+      - kind: database
+        title: "AquaInfo: Iodotropheus sprengerae, Rusty Cichlid"
+        url: "https://aquainfo.nl/en/article/iodotropheus-sprengerae-rusty-cichlid/"
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet species register: Iodotropheus sprengerae"
+          url: "https://www.ciklid.org/artregister/art.php?ID=755"
+          accessed: 2026-10-13
+        value:
+          - rock
+          - sand
+        note: Rock and transition-zone habitat.
+      - source:
+          kind: database
+          title: "Hoernlimann and Bandhauer: Iodotropheus sprengerae, Malawi-Guru species directory"
+          url: "https://malawi-guru.de/artentafel-iodotropheus-sprengerae-verzeichnis/"
+          accessed: 2026-10-13
+        value:
+          - rock
+          - sand
+        note: "Rock, rubble and transition habitat."
+      - source:
+          kind: database
+          title: "AquaInfo: Iodotropheus sprengerae, Rusty Cichlid"
+          url: "https://aquainfo.nl/en/article/iodotropheus-sprengerae-rusty-cichlid/"
+          accessed: 2026-10-13
+        value:
+          - rock
+          - sand
+        note: Boulders with sandy gaps.
+      - source:
+          kind: literature
+          title: "Stauffer (1995). Iodotropheus sprengerae: proposed replacement of holotype by a neotype"
+          url: "https://doi.org/10.5962/bhl.part.6809"
+          accessed: 2026-10-13
+        value:
+          - rock
+        note: Rock-dwelling island fish.
+  social:
+    value:
+      structure: harem
+      ratio: 3
+    confidence: medium
+    rationale: "Generator, checker-a and checker-b propose one male with three females; checker-c
+      proposes four females. Malawi-Guru explicitly permits at least three, Fischlexikon gives two
+      to three and AquaInfo gives three to four. Yilmaz prefers four to five and Seriously Fish
+      describes larger female-biased breeding groups. Three is the directly supported minimum unit;
+      four or more remains a useful more spacious alternative. The harem label is aquarium stocking
+      guidance for polygamous fish, not a permanent pair bond or an exclusive wild male territory."
+    sources:
+      - kind: database
+        title: "Hoernlimann and Bandhauer: Iodotropheus sprengerae, Malawi-Guru species directory"
+        url: "https://malawi-guru.de/artentafel-iodotropheus-sprengerae-verzeichnis/"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Verheesen. Iodotropheus sprengerae. Nederlandse Vereniging van Cichlidenliefhebbers
+        url: "https://www.nvcweb.nl/visbeschrijvingen/malawi/iodotropheus-sprengerae-oliver-loiselle-1972"
+        accessed: 2026-10-13
+      - kind: database
+        title: "AquaInfo: Iodotropheus sprengerae, Rusty Cichlid"
+        url: "https://aquainfo.nl/en/article/iodotropheus-sprengerae-rusty-cichlid/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Seriously Fish: Iodotropheus sprengerae"
+        url: "https://www.seriouslyfish.com/species/iodotropheus-sprengerae/"
+        accessed: 2026-10-13
+      - kind: archive
+        title: cichlids.com forum thread 10873
+        url: "https://www.cichlids.com/disc/read.php?1,10873"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fischlexikon: Iodotropheus sprengerae"
+        url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000000807"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Yilmaz. Iodotropheus sprengerae (Pasli Cichlid). Akvaryum.com husbandry article
+        url: "https://www.akvaryum.com/makale.asp?alt_kat=4868&id=12"
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "Hoernlimann and Bandhauer: Iodotropheus sprengerae, Malawi-Guru species directory"
+          url: "https://malawi-guru.de/artentafel-iodotropheus-sprengerae-verzeichnis/"
+          accessed: 2026-10-13
+        value:
+          structure: harem
+          ratio: 3
+        note: Explicit permitted minimum; larger loose groups are also discussed.
+      - source:
+          kind: database
+          title: "Fischlexikon: Iodotropheus sprengerae"
+          url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000000807"
+          accessed: 2026-10-13
+        value:
+          structure: harem
+          ratio: 3
+        note: Upper end of the two-to-three-female recommendation.
+      - source:
+          kind: database
+          title: "AquaInfo: Iodotropheus sprengerae, Rusty Cichlid"
+          url: "https://aquainfo.nl/en/article/iodotropheus-sprengerae-rusty-cichlid/"
+          accessed: 2026-10-13
+        value:
+          structure: harem
+          ratio: 3
+        note: Lower end of the three-to-four-female recommendation.
+      - source:
+          kind: literature
+          title: Yilmaz. Iodotropheus sprengerae (Pasli Cichlid). Akvaryum.com husbandry article
+          url: "https://www.akvaryum.com/makale.asp?alt_kat=4868&id=12"
+          accessed: 2026-10-13
+        value:
+          structure: harem
+          ratio: 4
+        note: Lower end of the four-to-five-female recommendation.
+      - source:
+          kind: database
+          title: "Seriously Fish: Iodotropheus sprengerae"
+          url: "https://www.seriouslyfish.com/species/iodotropheus-sprengerae/"
+          accessed: 2026-10-13
+        value:
+          structure: harem
+          ratio: 4
+        note: Approximate lower ratio in its larger breeding-group example.
+  speciesOnly:
+    value: false
+    confidence: high
+    rationale: "The tally records unanimous agreement, 4 of 4 votes, that species-only housing is not
+      required. Independent breeder and species-database accounts allow suitable calm Malawi
+      companions. A separate breeding tank is an option for fry survival and traceable parentage,
+      not a requirement for routine adult maintenance."
+    sources:
+      - kind: literature
+        title: Borstein (2007). Iodotropheus sprengerae. Greater Chicago Cichlid Association husbandry and
+          breeding report
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/66-iodotropheus-sprengera\
+          e.html"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Verheesen. Iodotropheus sprengerae. Nederlandse Vereniging van Cichlidenliefhebbers
+        url: "https://www.nvcweb.nl/visbeschrijvingen/malawi/iodotropheus-sprengerae-oliver-loiselle-1972"
+        accessed: 2026-10-13
+      - kind: database
+        title: "my-fish Fishothek: Iodotropheus sprengerae husbandry sheet"
+        url: "https://my-fish.org/my-fishothek/lodotropheus-sprengerae-violetter-maulbrueter/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Seriously Fish: Iodotropheus sprengerae"
+        url: "https://www.seriouslyfish.com/species/iodotropheus-sprengerae/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishProfiles: Iodotropheus sprengerae"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Iodotropheus_sprengerae/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Tawil (2012). Iodotropheus sprengerae. Cichlid Room Companion, verification only"
+        url: "https://cichlidae.com/species.php?id=kQGYZECPxLXUm2ha21TMuw"
+        accessed: 2026-10-13
+      - kind: database
+        title: "AquaInfo: Iodotropheus sprengerae, Rusty Cichlid"
+        url: "https://aquainfo.nl/en/article/iodotropheus-sprengerae-rusty-cichlid/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Hoernlimann and Bandhauer: Iodotropheus sprengerae, Malawi-Guru species directory"
+        url: "https://malawi-guru.de/artentafel-iodotropheus-sprengerae-verzeichnis/"
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: literature
+          title: Borstein (2007). Iodotropheus sprengerae. Greater Chicago Cichlid Association husbandry and
+            breeding report
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/66-iodotropheus-sprengera\
+            e.html"
+          accessed: 2026-10-13
+        value: false
+        note: Mixed housing with calm cichlids reported.
+      - source:
+          kind: literature
+          title: Verheesen. Iodotropheus sprengerae. Nederlandse Vereniging van Cichlidenliefhebbers
+          url: "https://www.nvcweb.nl/visbeschrijvingen/malawi/iodotropheus-sprengerae-oliver-loiselle-1972"
+          accessed: 2026-10-13
+        value: false
+        note: Suitable heterospecific companions are allowed.
+      - source:
+          kind: database
+          title: "my-fish Fishothek: Iodotropheus sprengerae husbandry sheet"
+          url: "https://my-fish.org/my-fishothek/lodotropheus-sprengerae-violetter-maulbrueter/"
+          accessed: 2026-10-13
+        value: false
+        note: Calmer mbuna companions are named.
+      - source:
+          kind: database
+          title: "Seriously Fish: Iodotropheus sprengerae"
+          url: "https://www.seriouslyfish.com/species/iodotropheus-sprengerae/"
+          accessed: 2026-10-13
+        value: false
+        note: Peaceful Malawi companions are explicitly suggested.
+      - source:
+          kind: database
+          title: "AquaInfo: Iodotropheus sprengerae, Rusty Cichlid"
+          url: "https://aquainfo.nl/en/article/iodotropheus-sprengerae-rusty-cichlid/"
+          accessed: 2026-10-13
+        value: false
+        note: Mixed Malawi maintenance is allowed.
+      - source:
+          kind: database
+          title: "FishProfiles: Iodotropheus sprengerae"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Iodotropheus_sprengerae/"
+          accessed: 2026-10-13
+        value: false
+        note: Compatible calm companions implied by the care account.
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  hybridGroups:
+    value: []
+    confidence: low
+    rationale: "The tally records unanimous agreement, 4 of 4 votes, on an empty group list. Stauffer
+      discussed possible captive mixing of northern-island stocks and fish then called declivitas,
+      without verified parentage; the current Catalog treats both as one valid species. That
+      historical population concern therefore supplies no pair of distinct valid species. Seriously
+      Fish supplies no named crossing report. Archive thread 40837 describes courtship toward a
+      Labidochromis trade form but no confirmed hybrid offspring. Empty membership means that no
+      supported group was identified, not that crossing is impossible. Neither the Catalog nor the
+      nomenclatural paper is a negative mating experiment; confidence remains low."
+    sources:
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: Iodotropheus, update of 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=specie\
+          s&genus=Iodotropheus"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Stauffer (1995). Iodotropheus sprengerae: proposed replacement of holotype by a neotype"
+        url: "https://doi.org/10.5962/bhl.part.6809"
+        accessed: 2026-10-13
+      - kind: archive
+        title: cichlids.com forum thread 40837
+        url: "https://www.cichlids.com/disc/read.php?2,40837"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Seriously Fish: Iodotropheus sprengerae"
+        url: "https://www.seriouslyfish.com/species/iodotropheus-sprengerae/"
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: catalog-of-fishes
+          title: "Eschmeyer's Catalog of Fishes: Iodotropheus, update of 21 September 2026"
+          url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=specie\
+            s&genus=Iodotropheus"
+          accessed: 2026-10-13
+        value: []
+        note: Current synonymy only; not a crossing experiment.
+      - source:
+          kind: literature
+          title: "Stauffer (1995). Iodotropheus sprengerae: proposed replacement of holotype by a neotype"
+          url: "https://doi.org/10.5962/bhl.part.6809"
+          accessed: 2026-10-13
+        value: []
+        note: "Possible historic population mixing, not a validated interspecific parental pair under
+          current taxonomy."
+      - source:
+          kind: database
+          title: "Seriously Fish: Iodotropheus sprengerae"
+          url: "https://www.seriouslyfish.com/species/iodotropheus-sprengerae/"
+          accessed: 2026-10-13
+        value: []
+        note: No named crossing partner established by the species account.
+      - source:
+          kind: archive
+          title: cichlids.com forum thread 40837
+          url: "https://www.cichlids.com/disc/read.php?2,40837"
+          accessed: 2026-10-13
+        value: []
+        note: Low-weight heterospecific display report without offspring confirmation.
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  coloration:
+    value:
+      baseColors:
+        - brown
+        - orange
+        - blue
+      pattern: plain
+    confidence: medium
+    rationale: "All four main runs agree on the decided colours and plain pattern. Adult males show
+      rust-brown or orange areas with blue to lavender iridescence; blue represents that sheen
+      within the fixed palette. FishProfiles labels vertical bars, while NVC, Borstein and AquaInfo
+      describe the dominant colour fields and weak possible markings. Plain represents the main
+      appearance without excluding faint or condition-dependent barring."
+    sources:
+      - kind: literature
+        title: Verheesen. Iodotropheus sprengerae. Nederlandse Vereniging van Cichlidenliefhebbers
+        url: "https://www.nvcweb.nl/visbeschrijvingen/malawi/iodotropheus-sprengerae-oliver-loiselle-1972"
+        accessed: 2026-10-13
+      - kind: database
+        title: "AquaInfo: Iodotropheus sprengerae, Rusty Cichlid"
+        url: "https://aquainfo.nl/en/article/iodotropheus-sprengerae-rusty-cichlid/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishProfiles: Iodotropheus sprengerae"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Iodotropheus_sprengerae/"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Borstein (2007). Iodotropheus sprengerae. Greater Chicago Cichlid Association husbandry and
+          breeding report
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/66-iodotropheus-sprengera\
+          e.html"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Tawil (2012). Iodotropheus sprengerae. Cichlid Room Companion, verification only"
+        url: "https://cichlidae.com/species.php?id=kQGYZECPxLXUm2ha21TMuw"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Seriously Fish: Iodotropheus sprengerae"
+        url: "https://www.seriouslyfish.com/species/iodotropheus-sprengerae/"
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: literature
+          title: Borstein (2007). Iodotropheus sprengerae. Greater Chicago Cichlid Association husbandry and
+            breeding report
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/66-iodotropheus-sprengera\
+            e.html"
+          accessed: 2026-10-13
+        value:
+          baseColors:
+            - brown
+            - orange
+            - blue
+          pattern: plain
+        note: Rubric mapping of rusty and lavender male colour fields.
+      - source:
+          kind: literature
+          title: Verheesen. Iodotropheus sprengerae. Nederlandse Vereniging van Cichlidenliefhebbers
+          url: "https://www.nvcweb.nl/visbeschrijvingen/malawi/iodotropheus-sprengerae-oliver-loiselle-1972"
+          accessed: 2026-10-13
+        value:
+          baseColors:
+            - brown
+            - blue
+          pattern: plain
+        note: Rust body and violet-toned sides.
+      - source:
+          kind: database
+          title: "FishProfiles: Iodotropheus sprengerae"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Iodotropheus_sprengerae/"
+          accessed: 2026-10-13
+        value:
+          baseColors:
+            - brown
+            - blue
+          pattern: bars
+        note: Alternative structured marking classification.
+      - source:
+          kind: database
+          title: "AquaInfo: Iodotropheus sprengerae, Rusty Cichlid"
+          url: "https://aquainfo.nl/en/article/iodotropheus-sprengerae-rusty-cichlid/"
+          accessed: 2026-10-13
+        value:
+          baseColors:
+            - brown
+            - blue
+          pattern: plain
+        note: Weak possible vertical marks rather than dominant barring.
+  feedingSpeed:
+    value: normal
+    confidence: low
+    rationale: "All four main runs propose normal feeding speed. Acceptance of varied foods and
+      displacement by assertive tankmates make this a reasonable provisional mapping. No source
+      measures comparative feeding speed, and mild temperament alone does not prove a slow or normal
+      feeding rate. Confidence remains low."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Iodotropheus sprengerae"
+        url: "https://www.seriouslyfish.com/species/iodotropheus-sprengerae/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishProfiles: Iodotropheus sprengerae"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Iodotropheus_sprengerae/"
+        accessed: 2026-10-13
+      - kind: model-knowledge
+        title: Adjudicator rubric interpretation where observations do not specify a numeric class
+        accessed: 2026-10-13
+      - kind: literature
+        title: Borstein (2007). Iodotropheus sprengerae. Greater Chicago Cichlid Association husbandry and
+          breeding report
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/66-iodotropheus-sprengera\
+          e.html"
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Iodotropheus sprengerae"
+          url: "https://www.seriouslyfish.com/species/iodotropheus-sprengerae/"
+          accessed: 2026-10-13
+        value: normal
+        note: Indirect rubric inference from susceptibility to competitive companions.
+      - source:
+          kind: literature
+          title: Borstein (2007). Iodotropheus sprengerae. Greater Chicago Cichlid Association husbandry and
+            breeding report
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/66-iodotropheus-sprengera\
+            e.html"
+          accessed: 2026-10-13
+        value: normal
+        note: Inference from routine acceptance of prepared and live foods.
+  minTank:
+    value:
+      volumeL: 200
+      lengthCm: 120
+      depthCm: 40
+    confidence: medium
+    rationale: "Generator proposes 200 L with a 120 by 40 cm base; checker-a proposes 81 L with 90 by 30
+      cm; checker-b proposes 200 L with 100 by 40 cm; checker-c proposes 150 L with 90 by 45 cm. The
+      generator recommendation is retained for one adult male and three females because AquaInfo
+      independently specifies 120 cm for a harem and Malawi.si gives 200 L with a 120 by 40 cm base
+      for small mild mbuna. NVC permits 160 L at 100 cm, Seriously Fish 81 L at 90 by 30 cm, and
+      Borstein reports a 40 US gallon breeder for six to eight adults. The approximately 91 by 46 cm
+      standard breeder footprint is inferred from the tank format, not explicitly measured in that
+      report. Malawi-Guru and Einrichtungsbeispiele recommend the larger 300 L and 120 cm option for
+      groups. This cautious editorial minimum is not a physiological threshold; additional males or
+      companion groups require more space."
+    sources:
+      - kind: literature
+        title: Verheesen. Iodotropheus sprengerae. Nederlandse Vereniging van Cichlidenliefhebbers
+        url: "https://www.nvcweb.nl/visbeschrijvingen/malawi/iodotropheus-sprengerae-oliver-loiselle-1972"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Borstein (2007). Iodotropheus sprengerae. Greater Chicago Cichlid Association husbandry and
+          breeding report
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/66-iodotropheus-sprengera\
+          e.html"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Malawi.si: Lake Malawi Aquarium Setup"
+        url: "https://www.malawi.si/slides/Lake%20Malawi%20Aquarium%20Setup.html"
+        accessed: 2026-10-13
+      - kind: database
+        title: "AquaInfo: Iodotropheus sprengerae, Rusty Cichlid"
+        url: "https://aquainfo.nl/en/article/iodotropheus-sprengerae-rusty-cichlid/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Seriously Fish: Iodotropheus sprengerae"
+        url: "https://www.seriouslyfish.com/species/iodotropheus-sprengerae/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fischlexikon: Iodotropheus sprengerae"
+        url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000000807"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Einrichtungsbeispiele: Iodotropheus sprengerae husbandry sheet"
+        url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/iodotropheus-sprengerae-slnk.html"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Hoernlimann and Bandhauer: Iodotropheus sprengerae, Malawi-Guru species directory"
+        url: "https://malawi-guru.de/artentafel-iodotropheus-sprengerae-verzeichnis/"
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "Malawi.si: Lake Malawi Aquarium Setup"
+          url: "https://www.malawi.si/slides/Lake%20Malawi%20Aquarium%20Setup.html"
+          accessed: 2026-10-13
+        value:
+          volumeL: 200
+          lengthCm: 120
+          depthCm: 40
+        note: General guidance for smaller mild mbuna.
+      - source:
+          kind: database
+          title: "AquaInfo: Iodotropheus sprengerae, Rusty Cichlid"
+          url: "https://aquainfo.nl/en/article/iodotropheus-sprengerae-rusty-cichlid/"
+          accessed: 2026-10-13
+        value:
+          lengthCm: 120
+        note: Species-specific single-male harem recommendation.
+      - source:
+          kind: literature
+          title: Verheesen. Iodotropheus sprengerae. Nederlandse Vereniging van Cichlidenliefhebbers
+          url: "https://www.nvcweb.nl/visbeschrijvingen/malawi/iodotropheus-sprengerae-oliver-loiselle-1972"
+          accessed: 2026-10-13
+        value:
+          volumeL: 160
+          lengthCm: 100
+        note: Published species minimum without depth.
+      - source:
+          kind: database
+          title: "Seriously Fish: Iodotropheus sprengerae"
+          url: "https://www.seriouslyfish.com/species/iodotropheus-sprengerae/"
+          accessed: 2026-10-13
+        value:
+          volumeL: 81
+          lengthCm: 90
+          depthCm: 30
+        note: Published single-male minimum.
+      - source:
+          kind: literature
+          title: Borstein (2007). Iodotropheus sprengerae. Greater Chicago Cichlid Association husbandry and
+            breeding report
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/66-iodotropheus-sprengera\
+            e.html"
+          accessed: 2026-10-13
+        value:
+          volumeL: 151.4
+        note: 40 US gallon breeder for six to eight adults; footprint not explicitly stated.
+      - source:
+          kind: database
+          title: "Hoernlimann and Bandhauer: Iodotropheus sprengerae, Malawi-Guru species directory"
+          url: "https://malawi-guru.de/artentafel-iodotropheus-sprengerae-verzeichnis/"
+          accessed: 2026-10-13
+        value:
+          volumeL: 300
+          lengthCm: 120
+        note: Larger group recommendation.
+      - source:
+          kind: database
+          title: "Einrichtungsbeispiele: Iodotropheus sprengerae husbandry sheet"
+          url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/iodotropheus-sprengerae-slnk.html"
+          accessed: 2026-10-13
+        value:
+          volumeL: 300
+          lengthCm: 120
+        note: Larger small-group recommendation.
+  lifespanYears:
+    value:
+      min: 4
+      max: 10
+    confidence: low
+    rationale: "Generator proposes 5 to 7 years, checker-a 5 to 8, checker-b 7 to 10 and checker-c 4 to
+      10. DRTA gives 4 to 6, my-fish 5 to 10, AquaInfo an upper age of 7, and Einrichtungsbeispiele
+      8 to 10. The broad 4 to 10 span preserves these contradictory husbandry estimates rather than
+      narrowing them to the generator's 5 to 7. No longitudinal age-validated series was found. Four
+      is not a guaranteed minimum and ten is not a proven biological maximum."
+    sources:
+      - kind: database
+        title: "AquaInfo: Iodotropheus sprengerae, Rusty Cichlid"
+        url: "https://aquainfo.nl/en/article/iodotropheus-sprengerae-rusty-cichlid/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "my-fish Fishothek: Iodotropheus sprengerae husbandry sheet"
+        url: "https://my-fish.org/my-fishothek/lodotropheus-sprengerae-violetter-maulbrueter/"
+        accessed: 2026-10-13
+      - kind: model-knowledge
+        title: Adjudicator rubric interpretation where observations do not specify a numeric class
+        accessed: 2026-10-13
+      - kind: database
+        title: "Einrichtungsbeispiele: Iodotropheus sprengerae husbandry sheet"
+        url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/iodotropheus-sprengerae-slnk.html"
+        accessed: 2026-10-13
+      - kind: database
+        title: "DRTA-Archiv: Rostroter Maulbrueter, Iodotropheus sprengerae care sheet"
+        url: "https://www.drta-archiv.de/rostroster-maulbrueter/"
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "DRTA-Archiv: Rostroter Maulbrueter, Iodotropheus sprengerae care sheet"
+          url: "https://www.drta-archiv.de/rostroster-maulbrueter/"
+          accessed: 2026-10-13
+        value:
+          min: 4
+          max: 6
+      - source:
+          kind: database
+          title: "my-fish Fishothek: Iodotropheus sprengerae husbandry sheet"
+          url: "https://my-fish.org/my-fishothek/lodotropheus-sprengerae-violetter-maulbrueter/"
+          accessed: 2026-10-13
+        value:
+          min: 5
+          max: 10
+      - source:
+          kind: database
+          title: "AquaInfo: Iodotropheus sprengerae, Rusty Cichlid"
+          url: "https://aquainfo.nl/en/article/iodotropheus-sprengerae-rusty-cichlid/"
+          accessed: 2026-10-13
+        value:
+          max: 7
+        note: Upper aquarium-age estimate only.
+      - source:
+          kind: database
+          title: "Einrichtungsbeispiele: Iodotropheus sprengerae husbandry sheet"
+          url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/iodotropheus-sprengerae-slnk.html"
+          accessed: 2026-10-13
+        value:
+          min: 8
+          max: 10
+  breeding:
+    value: maternal-mouthbrooder
+    confidence: high
+    rationale: "All four main runs agree. FishBase expressly identifies the female as the mouthbrooding
+      parent, and independent breeder and species accounts confirm the mode. The readable 2020
+      incubation-study abstract includes this species and female egg carrying; the 2022 larval-study
+      abstract confirms mouthbrooding but not every husbandry detail. CRC verifies the independently
+      sourced maternal mode."
+    sources:
+      - kind: database
+        title: "FishBase: Iodotropheus sprengerae species summary"
+        url: "https://www.fishbase.se/summary/Iodotropheus-sprengerae.html"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Verheesen. Iodotropheus sprengerae. Nederlandse Vereniging van Cichlidenliefhebbers
+        url: "https://www.nvcweb.nl/visbeschrijvingen/malawi/iodotropheus-sprengerae-oliver-loiselle-1972"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Celik et al. (2022). Larval Development of Rusty Cichlid Fish: Morphological Observations,
+          abstract only"
+        url: "https://doi.org/10.29329/actanatsci.2022.352.11"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Borstein (2007). Iodotropheus sprengerae. Greater Chicago Cichlid Association husbandry and
+          breeding report
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/66-iodotropheus-sprengera\
+          e.html"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Tawil (2012). Iodotropheus sprengerae. Cichlid Room Companion, verification only"
+        url: "https://cichlidae.com/species.php?id=kQGYZECPxLXUm2ha21TMuw"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Seriously Fish: Iodotropheus sprengerae"
+        url: "https://www.seriouslyfish.com/species/iodotropheus-sprengerae/"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Genner and Turner (2005). The mbuna cichlids of Lake Malawi: a model for rapid speciation
+          and adaptive radiation"
+        url: "https://doi.org/10.1111/j.1467-2679.2005.00173.x"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Celik and Yalcin (2020). Determination of Artificial Incubation Time of Some Malawi Cichlid
+          Species Incubating in the Mouth Eggs, abstract only"
+        url: "https://doi.org/10.29329/actanatsci.2020.313.9"
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "FishBase: Iodotropheus sprengerae species summary"
+          url: "https://www.fishbase.se/summary/Iodotropheus-sprengerae.html"
+          accessed: 2026-10-13
+        value: maternal-mouthbrooder
+      - source:
+          kind: literature
+          title: Verheesen. Iodotropheus sprengerae. Nederlandse Vereniging van Cichlidenliefhebbers
+          url: "https://www.nvcweb.nl/visbeschrijvingen/malawi/iodotropheus-sprengerae-oliver-loiselle-1972"
+          accessed: 2026-10-13
+        value: maternal-mouthbrooder
+      - source:
+          kind: literature
+          title: Borstein (2007). Iodotropheus sprengerae. Greater Chicago Cichlid Association husbandry and
+            breeding report
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/66-iodotropheus-sprengera\
+            e.html"
+          accessed: 2026-10-13
+        value: maternal-mouthbrooder
+        note: Observed holding females and released young.
+      - source:
+          kind: database
+          title: "Seriously Fish: Iodotropheus sprengerae"
+          url: "https://www.seriouslyfish.com/species/iodotropheus-sprengerae/"
+          accessed: 2026-10-13
+        value: maternal-mouthbrooder
+      - source:
+          kind: literature
+          title: "Celik and Yalcin (2020). Determination of Artificial Incubation Time of Some Malawi Cichlid
+            Species Incubating in the Mouth Eggs, abstract only"
+          url: "https://doi.org/10.29329/actanatsci.2020.313.9"
+          accessed: 2026-10-13
+        value: maternal-mouthbrooder
+        note: Only the abstract is used for female incubation.
+      - source:
+          kind: database
+          title: "Tawil (2012). Iodotropheus sprengerae. Cichlid Room Companion, verification only"
+          url: "https://cichlidae.com/species.php?id=kQGYZECPxLXUm2ha21TMuw"
+          accessed: 2026-10-13
+        value: maternal-mouthbrooder
+        note: Verification only.
+  beginnerSuitability:
+    value: easy
+    confidence: medium
+    rationale: "All four main runs propose easy. Borstein reports robust straightforward care and the
+      species narrative in Seriously Fish recommends it to mbuna beginners. Fischlexikon and the
+      automated Seriously Fish score are more cautious. Easy assumes a cycled tank, the specified
+      social unit, balanced feeding and suitable companions; medium confidence acknowledges those
+      differing assessments."
+    sources:
+      - kind: literature
+        title: Borstein (2007). Iodotropheus sprengerae. Greater Chicago Cichlid Association husbandry and
+          breeding report
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/66-iodotropheus-sprengera\
+          e.html"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Iodotropheus sprengerae"
+        url: "https://www.ciklid.org/artregister/art.php?ID=755"
+        accessed: 2026-10-13
+      - kind: database
+        title: "my-fish Fishothek: Iodotropheus sprengerae husbandry sheet"
+        url: "https://my-fish.org/my-fishothek/lodotropheus-sprengerae-violetter-maulbrueter/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Seriously Fish: Iodotropheus sprengerae"
+        url: "https://www.seriouslyfish.com/species/iodotropheus-sprengerae/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Tawil (2012). Iodotropheus sprengerae. Cichlid Room Companion, verification only"
+        url: "https://cichlidae.com/species.php?id=kQGYZECPxLXUm2ha21TMuw"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fischlexikon: Iodotropheus sprengerae"
+        url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000000807"
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: literature
+          title: Borstein (2007). Iodotropheus sprengerae. Greater Chicago Cichlid Association husbandry and
+            breeding report
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/66-iodotropheus-sprengera\
+            e.html"
+          accessed: 2026-10-13
+        value: easy
+        note: Species-specific keeper assessment.
+      - source:
+          kind: database
+          title: "Seriously Fish: Iodotropheus sprengerae"
+          url: "https://www.seriouslyfish.com/species/iodotropheus-sprengerae/"
+          accessed: 2026-10-13
+        value: easy
+        note: Narrative assessment; the same page has a conflicting automated moderate score.
+      - source:
+          kind: database
+          title: "Fischlexikon: Iodotropheus sprengerae"
+          url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000000807"
+          accessed: 2026-10-13
+        value: moderate
+      - source:
+          kind: database
+          title: "my-fish Fishothek: Iodotropheus sprengerae husbandry sheet"
+          url: "https://my-fish.org/my-fishothek/lodotropheus-sprengerae-violetter-maulbrueter/"
+          accessed: 2026-10-13
+        value: easy
+partners:
+  suitable:
+    - species: Labidochromis caeruleus
+      reason: A frequently recommended calmer Malawi companion with compatible alkaline water and a diet
+        that can include a substantial plant component.
+      condition: Use a larger aquarium than the single-harem minimum and provide separate shelters for
+        each group.
+    - species: Chindongo saulosi
+      reason: Named by my-fish under its older Pseudotropheus name as a possible calmer mbuna companion;
+        adult groups still require separate cover and observation.
+      condition: Use at least a 300 litre community with a 120 cm or longer base and multiple rock
+        formations; watch the more assertive saulosi male.
+    - species: Cynotilapia afra
+      reason: Cynotilapia are suggested by the species directory and C. afra in community experience;
+        population and individual male temperament affect suitability.
+      condition: Use at least a 300 litre community with adequate floor area and cover; select a
+        manageable population and monitor male aggression and feeding.
+  unsuitable:
+    - species: Melanochromis auratus
+      reason: Its stronger territorial aggression can overwhelm this relatively mild mbuna.
+    - species: Maylandia lombardoi
+      reason: Dominant adults can persistently bully rusties and prevent access to shelter or food.
+    - species: Nimbochromis livingstonii
+      reason: A substantially larger fish-eating Malawi cichlid presents a predation risk and has
+        different space and feeding requirements.
+profile:
+  overview:
+    text: "The rusty cichlid combines warm brown-orange colour with a blue to lavender sheen in mature
+      males. It is a relatively mild Malawi mbuna, although suitable companions and escape cover
+      still matter. The valid name is Iodotropheus sprengerae, including fish formerly separated as
+      I. declivitas. Locality labels describe stocks within that species and remain useful when
+      preserving identifiable breeding lines."
+    sources:
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: Iodotropheus, update of 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=specie\
+          s&genus=Iodotropheus"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Verheesen. Iodotropheus sprengerae. Nederlandse Vereniging van Cichlidenliefhebbers
+        url: "https://www.nvcweb.nl/visbeschrijvingen/malawi/iodotropheus-sprengerae-oliver-loiselle-1972"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Borstein (2007). Iodotropheus sprengerae. Greater Chicago Cichlid Association husbandry and
+          breeding report
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/66-iodotropheus-sprengera\
+          e.html"
+        accessed: 2026-10-13
+      - kind: database
+        title: "AquaInfo: Iodotropheus sprengerae, Rusty Cichlid"
+        url: "https://aquainfo.nl/en/article/iodotropheus-sprengerae-rusty-cichlid/"
+        accessed: 2026-10-13
+  habitat:
+    text: "This fish comes from southeastern Lake Malawi around Chinyamwezi, Chinyankwazi and Boadzulu
+      islands, with Makokola Reef also included under the current synonymy. Rock faces and rubble
+      provide feeding surfaces and shelter; adjoining sandy spaces form part of its transition
+      habitat. Natural lake water is alkaline but soft in calcium-magnesium hardness: GH is 3 to 5
+      dGH and KH 5 to 8 dKH. Aquarium recommendations for harder water describe captive maintenance
+      rather than the natural habitat."
+    sources:
+      - kind: database
+        title: "FishBase: Iodotropheus sprengerae species summary"
+        url: "https://www.fishbase.se/summary/Iodotropheus-sprengerae.html"
+        accessed: 2026-10-13
+      - kind: database
+        title: "AquaInfo: Iodotropheus sprengerae, Rusty Cichlid"
+        url: "https://aquainfo.nl/en/article/iodotropheus-sprengerae-rusty-cichlid/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Iodotropheus sprengerae"
+        url: "https://www.ciklid.org/artregister/art.php?ID=755"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Hoernlimann and Bandhauer: Iodotropheus sprengerae, Malawi-Guru species directory"
+        url: "https://malawi-guru.de/artentafel-iodotropheus-sprengerae-verzeichnis/"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa,
+          Vol. 1. Lake Malawi data after Jackson et al. (1963) and Talling and Talling (1965)"
+        url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Branchu et al. (2010). Hydrochemistry of Lake Malawi, Tanzanian Northern Basin: local versus
+          global considerations. HESS Discussions 7, 4371-4409"
+        url: "https://doi.org/10.5194/hessd-7-4371-2010"
+        accessed: 2026-10-13
+  sizeAndGrowth:
+    text: "Plan for typical aquarium adults around 10 cm for males and 9 cm for females. Reports range
+      from smaller females to substantially larger males, and scientific standard length excludes
+      the tail fin. Those measurements should not be treated as interchangeable. Juveniles can
+      reproduce before reaching their adult size. Published lifespan estimates disagree; roughly 4
+      to 10 years is a broad planning span with low confidence, rather than a guaranteed duration or
+      a proven maximum."
+    sources:
+      - kind: literature
+        title: Borstein (2007). Iodotropheus sprengerae. Greater Chicago Cichlid Association husbandry and
+          breeding report
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/66-iodotropheus-sprengera\
+          e.html"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Verheesen. Iodotropheus sprengerae. Nederlandse Vereniging van Cichlidenliefhebbers
+        url: "https://www.nvcweb.nl/visbeschrijvingen/malawi/iodotropheus-sprengerae-oliver-loiselle-1972"
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishBase: Iodotropheus sprengerae species summary"
+        url: "https://www.fishbase.se/summary/Iodotropheus-sprengerae.html"
+        accessed: 2026-10-13
+      - kind: database
+        title: "DRTA-Archiv: Rostroter Maulbrueter, Iodotropheus sprengerae care sheet"
+        url: "https://www.drta-archiv.de/rostroster-maulbrueter/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "my-fish Fishothek: Iodotropheus sprengerae husbandry sheet"
+        url: "https://my-fish.org/my-fishothek/lodotropheus-sprengerae-violetter-maulbrueter/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Einrichtungsbeispiele: Iodotropheus sprengerae husbandry sheet"
+        url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/iodotropheus-sprengerae-slnk.html"
+        accessed: 2026-10-13
+  husbandry:
+    text: "For one adult male with three females, provide at least 200 litres and a base of 120 by 40
+      cm. More fish need more floor area and refuge space. Secure rocks on a stable foundation, add
+      sand and leave multiple passages so a chased fish can escape. Mature filtration, regular water
+      changes and good surface agitation help keep conditions stable. A routine temperature around
+      24 to 26 C has better husbandry support than constant maintenance at the outer 21 to 29 C
+      envelope. Keep water alkaline and adequately buffered without assuming that high GH is
+      essential. The recorded tolerance limits are working ranges, not targets for repeated
+      fluctuations."
+    sources:
+      - kind: database
+        title: "AquaInfo: Iodotropheus sprengerae, Rusty Cichlid"
+        url: "https://aquainfo.nl/en/article/iodotropheus-sprengerae-rusty-cichlid/"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Verheesen. Iodotropheus sprengerae. Nederlandse Vereniging van Cichlidenliefhebbers
+        url: "https://www.nvcweb.nl/visbeschrijvingen/malawi/iodotropheus-sprengerae-oliver-loiselle-1972"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Borstein (2007). Iodotropheus sprengerae. Greater Chicago Cichlid Association husbandry and
+          breeding report
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/66-iodotropheus-sprengera\
+          e.html"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Malawi.si: Lake Malawi Aquarium Setup"
+        url: "https://www.malawi.si/slides/Lake%20Malawi%20Aquarium%20Setup.html"
+        accessed: 2026-10-13
+      - kind: database
+        title: "OATA care sheet: How to look after African Malawi Cichlids"
+        url: "https://ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-fres\
+          hwater-fish/how-to-look-after-african-malawi-cichlids/"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Branchu et al. (2010). Hydrochemistry of Lake Malawi, Tanzanian Northern Basin: local versus
+          global considerations. HESS Discussions 7, 4371-4409"
+        url: "https://doi.org/10.5194/hessd-7-4371-2010"
+        accessed: 2026-10-13
+  socialBehavior:
+    text: "A single male with at least three females is the selected adult unit; four or more females
+      are a supported alternative with enough room. These fish do not form a lasting pair. Brief
+      displays and chases can accompany courtship, but persistent injury or exclusion from food is
+      not the expected baseline. Accounts differ on territoriality: limited defence of a breeding
+      site fits better than assuming a large permanent territory. Several males can coexist in
+      larger groups, but that does not make them appropriate additions to the minimum setup."
+    sources:
+      - kind: literature
+        title: Borstein (2007). Iodotropheus sprengerae. Greater Chicago Cichlid Association husbandry and
+          breeding report
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/66-iodotropheus-sprengera\
+          e.html"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Verheesen. Iodotropheus sprengerae. Nederlandse Vereniging van Cichlidenliefhebbers
+        url: "https://www.nvcweb.nl/visbeschrijvingen/malawi/iodotropheus-sprengerae-oliver-loiselle-1972"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fischlexikon: Iodotropheus sprengerae"
+        url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000000807"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Hoernlimann and Bandhauer: Iodotropheus sprengerae, Malawi-Guru species directory"
+        url: "https://malawi-guru.de/artentafel-iodotropheus-sprengerae-verzeichnis/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "AquaInfo: Iodotropheus sprengerae, Rusty Cichlid"
+        url: "https://aquainfo.nl/en/article/iodotropheus-sprengerae-rusty-cichlid/"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Yilmaz. Iodotropheus sprengerae (Pasli Cichlid). Akvaryum.com husbandry article
+        url: "https://www.akvaryum.com/makale.asp?alt_kat=4868&id=12"
+        accessed: 2026-10-13
+  diet:
+    text: "Use plant-rich flakes or small pellets as the staple, with grazing surfaces and suitable
+      greens providing variety. Modest portions of small aquatic invertebrates can supplement this.
+      Mixed feeding supports the omnivore classification even though several accounts emphasize
+      algal grazing. The bloat-sensitive flag records husbandry warnings about rich animal-heavy
+      feeding; it does not imply that every animal food is unsuitable. Excessive Artemia feeding has
+      also been associated with digestive trouble in fry. Offer restrained portions and check that
+      quieter individuals receive food."
+    sources:
+      - kind: literature
+        title: Verheesen. Iodotropheus sprengerae. Nederlandse Vereniging van Cichlidenliefhebbers
+        url: "https://www.nvcweb.nl/visbeschrijvingen/malawi/iodotropheus-sprengerae-oliver-loiselle-1972"
+        accessed: 2026-10-13
+      - kind: database
+        title: "my-fish Fishothek: Iodotropheus sprengerae husbandry sheet"
+        url: "https://my-fish.org/my-fishothek/lodotropheus-sprengerae-violetter-maulbrueter/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Hoernlimann and Bandhauer: Iodotropheus sprengerae, Malawi-Guru species directory"
+        url: "https://malawi-guru.de/artentafel-iodotropheus-sprengerae-verzeichnis/"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Yilmaz. Iodotropheus sprengerae (Pasli Cichlid). Akvaryum.com husbandry article
+        url: "https://www.akvaryum.com/makale.asp?alt_kat=4868&id=12"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Borstein (2007). Iodotropheus sprengerae. Greater Chicago Cichlid Association husbandry and
+          breeding report
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/66-iodotropheus-sprengera\
+          e.html"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "A whole-body micro-CT scan library that captures the skeletal diversity of Lake Malawi
+          cichlid fishes (2024). Scientific Data 11, 984"
+        url: "https://doi.org/10.1038/s41597-024-03687-1"
+        accessed: 2026-10-13
+  breeding:
+    text: "The female incubates eggs and developing young in her mouth after spawning. A swollen throat
+      and reduced feeding can identify a holding female. Provide quiet cover and avoid unnecessary
+      disturbance. A separate breeding arrangement can protect released young and make parentage
+      easier to trace, although adults do not require species-only housing. Finely sized prepared
+      foods and appropriately small aquatic foods suit free-swimming fry. A larval experiment used
+      about 29 C; that short developmental study does not establish a required everyday temperature
+      or a lifetime adult tolerance."
+    sources:
+      - kind: database
+        title: "FishBase: Iodotropheus sprengerae species summary"
+        url: "https://www.fishbase.se/summary/Iodotropheus-sprengerae.html"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Borstein (2007). Iodotropheus sprengerae. Greater Chicago Cichlid Association husbandry and
+          breeding report
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/66-iodotropheus-sprengera\
+          e.html"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Celik and Yalcin (2020). Determination of Artificial Incubation Time of Some Malawi Cichlid
+          Species Incubating in the Mouth Eggs, abstract only"
+        url: "https://doi.org/10.29329/actanatsci.2020.313.9"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Celik et al. (2022). Larval Development of Rusty Cichlid Fish: Morphological Observations,
+          abstract only"
+        url: "https://doi.org/10.29329/actanatsci.2022.352.11"
+        accessed: 2026-10-13
+      - kind: database
+        title: "AquaInfo: Iodotropheus sprengerae, Rusty Cichlid"
+        url: "https://aquainfo.nl/en/article/iodotropheus-sprengerae-rusty-cichlid/"
+        accessed: 2026-10-13
+  sexing:
+    text: "Adult males usually become larger and show stronger iridescence, longer fins and more
+      prominent anal-fin egg spots. Females may also have egg spots, so none of those clues is
+      decisive alone. Juveniles are especially difficult to sex. Confirming the adult sex
+      composition is more useful than repeatedly altering food or water when apparent spawning fails
+      to produce fertile offspring."
+    sources:
+      - kind: database
+        title: "FishProfiles: Iodotropheus sprengerae"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Iodotropheus_sprengerae/"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Verheesen. Iodotropheus sprengerae. Nederlandse Vereniging van Cichlidenliefhebbers
+        url: "https://www.nvcweb.nl/visbeschrijvingen/malawi/iodotropheus-sprengerae-oliver-loiselle-1972"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Borstein (2007). Iodotropheus sprengerae. Greater Chicago Cichlid Association husbandry and
+          breeding report
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/66-iodotropheus-sprengera\
+          e.html"
+        accessed: 2026-10-13
+  compatibility:
+    text: "Calm Malawi cichlids with compatible feeding and space needs can share a larger tank.
+      Labidochromis caeruleus is a frequently named companion; Chindongo saulosi and appropriately
+      selected Cynotilapia groups are conditional alternatives requiring more space and observation.
+      Avoid dominant aggressive mbuna and large fish-eating cichlids. Predation level 0 for the
+      rusty permits incidental fry loss and does not promise safe communal fry rearing. No hybrid
+      group is supported by the decided evidence, but that empty list does not establish
+      reproductive isolation. A reported display toward a Labidochromis female did not confirm
+      hybrid offspring."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Iodotropheus sprengerae"
+        url: "https://www.seriouslyfish.com/species/iodotropheus-sprengerae/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "my-fish Fishothek: Iodotropheus sprengerae husbandry sheet"
+        url: "https://my-fish.org/my-fishothek/lodotropheus-sprengerae-violetter-maulbrueter/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Hoernlimann and Bandhauer: Iodotropheus sprengerae, Malawi-Guru species directory"
+        url: "https://malawi-guru.de/artentafel-iodotropheus-sprengerae-verzeichnis/"
+        accessed: 2026-10-13
+      - kind: database
+        title: "AquaInfo: Iodotropheus sprengerae, Rusty Cichlid"
+        url: "https://aquainfo.nl/en/article/iodotropheus-sprengerae-rusty-cichlid/"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "A whole-body micro-CT scan library that captures the skeletal diversity of Lake Malawi
+          cichlid fishes (2024). Scientific Data 11, 984"
+        url: "https://doi.org/10.1038/s41597-024-03687-1"
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Stauffer (1995). Iodotropheus sprengerae: proposed replacement of holotype by a neotype"
+        url: "https://doi.org/10.5962/bhl.part.6809"
+        accessed: 2026-10-13
+      - kind: archive
+        title: cichlids.com forum thread 40837
+        url: "https://www.cichlids.com/disc/read.php?2,40837"
+        accessed: 2026-10-13
+  problems:
+    text: "Watch for loss of appetite, persistent hiding, weight loss or swelling. Competition can
+      prevent a mild fish from feeding even when overt fighting looks limited. Excess food and
+      animal-heavy diets can contribute to digestive problems, while poor water quality adds stress.
+      Check husbandry promptly when a fish deteriorates and obtain appropriate advice if signs
+      persist. Inspect and quarantine incoming stock; the archive includes a report of visible skin
+      problems in newly bought juveniles. Stable rockwork and adult-sized escape passages also
+      prevent avoidable injuries."
+    sources:
+      - kind: database
+        title: "my-fish Fishothek: Iodotropheus sprengerae husbandry sheet"
+        url: "https://my-fish.org/my-fishothek/lodotropheus-sprengerae-violetter-maulbrueter/"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Borstein (2007). Iodotropheus sprengerae. Greater Chicago Cichlid Association husbandry and
+          breeding report
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/66-iodotropheus-sprengera\
+          e.html"
+        accessed: 2026-10-13
+      - kind: literature
+        title: Yilmaz. Iodotropheus sprengerae (Pasli Cichlid). Akvaryum.com husbandry article
+        url: "https://www.akvaryum.com/makale.asp?alt_kat=4868&id=12"
+        accessed: 2026-10-13
+      - kind: database
+        title: "Malawi.si: Lake Malawi Aquarium Setup"
+        url: "https://www.malawi.si/slides/Lake%20Malawi%20Aquarium%20Setup.html"
+        accessed: 2026-10-13
+      - kind: database
+        title: "OATA care sheet: How to look after African Malawi Cichlids"
+        url: "https://ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-fres\
+          hwater-fish/how-to-look-after-african-malawi-cichlids/"
+        accessed: 2026-10-13
+      - kind: archive
+        title: cichlids.com forum thread 22932
+        url: "https://www.cichlids.com/disc/read.php?2,22932"
+        accessed: 2026-10-13
+provenance:
+  runs:
+    - role: generator
+      model: gpt-6.1-sol
+      date: 2026-10-13
+    - role: checker
+      model: gpt-6.1-sol
+      date: 2026-10-13
+    - role: checker
+      model: gpt-6.1-sol
+      date: 2026-10-13
+    - role: checker
+      model: gpt-6.1-sol
+      date: 2026-10-13
+    - role: checker
+      model: gpt-6.1-sol
+      date: 2026-10-13
+    - role: checker
+      model: gpt-6.1-sol
+      date: 2026-10-13
+    - role: adjudicator
+      model: gpt-6.1-sol
+      date: 2026-10-13
+  disagreements:
+    - field: features.predation
+      proposals:
+        - by: generator
+          value: 0
+        - by: checker-a
+          value: 0
+        - by: checker-b
+          value: 1
+        - by: checker-c
+          value: 0
+        - by: tiebreaker-1
+          value: 0
+        - by: tiebreaker-2
+          value: 0
+      decision: 0
+      rationale: "The tally selects level 0 by qualified majority, 5 of 6 votes. Generator, checker-a,
+        checker-c, tiebreaker-1 and tiebreaker-2 proposed 0; checker-b proposed 1. The detailed
+        FishBase food record concerns Bagrus meridionalis eggs, despite its broad eggs/larvae
+        heading. Egg eating does not establish hunting free-swimming fish up to 2 cm. Seriously Fish
+        describes brood consumption under stress and fry-protection precautions, not a measured
+        prey-size threshold. The scientific micro-CT account confirms algal feeding, and the
+        specialist accounts describe invertebrates and grazing. These are indirect ecological
+        support, not experiments excluding all fry consumption. Level 0 permits incidental fry loss;
+        low confidence is retained."
+    - field: features.diet
+      proposals:
+        - by: generator
+          value:
+            type: omnivore
+            bloatSensitive: true
+            foods:
+              - Spirulina-based flakes or small pellets
+              - Algae and biofilm
+              - Blanched greens
+              - Small portions of Daphnia or Cyclops
+              - Occasional Artemia
+        - by: checker-a
+          value:
+            type: aufwuchs
+            bloatSensitive: true
+            foods:
+              - spirulina flake
+              - blanched spinach
+              - daphnia
+              - brine shrimp
+        - by: checker-b
+          value:
+            type: omnivore
+            bloatSensitive: true
+            foods:
+              - algae and biofilm
+              - small crustaceans
+              - insect larvae
+              - plant-rich cichlid food
+        - by: checker-c
+          value:
+            type: omnivore
+            bloatSensitive: true
+            foods:
+              - algae and biofilm
+              - small crustaceans
+              - insect larvae
+              - zooplankton
+              - vegetable-rich prepared foods
+        - by: tiebreaker-1
+          value:
+            type: omnivore
+            bloatSensitive: true
+        - by: tiebreaker-2
+          value:
+            type: omnivore
+            bloatSensitive: true
+      decision:
+        type: omnivore
+        bloatSensitive: true
+        foods:
+          - Spirulina-based flakes or small pellets
+          - Algae and biofilm
+          - Blanched greens
+          - Small portions of Daphnia or Cyclops
+          - Occasional Artemia
+      rationale: "The tally selects omnivore with bloatSensitive true by qualified majority, 5 of 6 votes.
+        Generator, checker-b, checker-c and both tie-breakers proposed omnivore; checker-a proposed
+        aufwuchs. All proposed bloat sensitivity, while their food lists differed and the tally
+        retained the generator list. Mixed plant and invertebrate feeding in NVC, Seriously Fish and
+        Malawi-Guru is a better match to omnivore than a specialized low-protein grazer category.
+        Borstein and the micro-CT study emphasize herbivory or algal feeding, and CRC verifies
+        grazing without originating the decision. my-fish and Yilmaz explicitly warn of bloat with
+        excessive rich animal food; Borstein reports digestive trouble in fry given excessive
+        Artemia. These are husbandry warnings, not measured adult incidence. Plant-rich staples and
+        modest animal supplements remain consistent with the decided class; Yilmaz's heavier
+        animal-food emphasis is not adopted."
+    - field: features.ghDgh.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 3
+            max: 20
+        - by: checker-a
+          value:
+            min: 3
+            max: 20
+        - by: checker-b
+          value:
+            min: 3
+            max: 25
+        - by: checker-c
+          value:
+            min: 3
+            max: 20
+        - by: tiebreaker-1
+          value:
+            min: 3
+            max: 20
+        - by: tiebreaker-2
+          value:
+            min: 3
+            max: 20
+      decision:
+        min: 3
+        max: 20
+      rationale: "The tally selects 3 to 20 dGH by qualified majority, 5 of 6 votes. Generator, checker-a,
+        checker-c, tiebreaker-1 and tiebreaker-2 proposed 3 to 20; checker-b proposed 3 to 25. The
+        less permissive 20 dGH ceiling is independently supported by FishProfiles and my-fish, both
+        giving 10 to 20. Seriously Fish explicitly allows the wider 10 to 25 dGH source range, but
+        its upper endpoint lacks comparable corroboration. DRTA and Malawi.si give 3 to 15,
+        Einrichtungsbeispiele 5 to 15, and Yilmaz prefers 7 to 12. The natural 3 to 5 dGH range
+        anchors the floor. This is a cautious husbandry synthesis, not proof that 21 to 25 dGH is
+        harmful."
+    - field: features.khDkh.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 5
+            max: 12
+        - by: checker-a
+          value:
+            min: 5
+            max: 15
+        - by: checker-b
+          value:
+            min: 5
+            max: 12
+        - by: checker-c
+          value:
+            min: 5
+            max: 12
+        - by: tiebreaker-1
+          value:
+            min: 5
+            max: 12
+        - by: tiebreaker-2
+          value:
+            min: 5
+            max: 12
+      decision:
+        min: 5
+        max: 12
+      rationale: "The tally selects 5 to 12 dKH by qualified majority, 5 of 6 votes. Generator, checker-b,
+        checker-c, tiebreaker-1 and tiebreaker-2 proposed 5 to 12; checker-a proposed 5 to 15 from
+        indirect pH and general buffering advice. The natural 5 to 8 dKH baseline anchors the floor.
+        Yilmaz explicitly separates KH from GH, gives a minimum near 5 to 6 and prefers 10 to 12;
+        Malawi.si gives 6 to 12. Wider source recommendations are OATA 10 to 15,
+        Einrichtungsbeispiele 6 to 20, and DRTA 15 to 18 dKH. Those broader endpoints are not
+        independently established by lifetime trials, so the narrower working ceiling is retained.
+        Twelve dKH is a provisional recommendation rather than a demonstrated biological limit;
+        confidence remains low. The commercial PFA page reported blocked by earlier runs was not
+        used."
+    - field: features.origin
+      proposals:
+        - by: generator
+          value:
+            continent: Africa
+            region: Southeastern Lake Malawi
+            waterbody: lake-malawi
+            localities:
+              - Chinyamwezi Island
+              - Chinyankwazi Island
+              - Boadzulu Island
+              - Makokola Reef
+        - by: checker-a
+          value:
+            continent: Africa
+            region: Lake Malawi
+            waterbody: lake-malawi
+            localities:
+              - Chinyamwezi Island
+              - Chinyankwazi Island
+        - by: checker-b
+          value:
+            continent: Africa
+            region: Southeastern Lake Malawi
+            waterbody: lake-malawi
+            localities:
+              - Chinyamwezi Island
+              - Chinyankwazi Island
+              - Boadzulu Island
+              - Makokola Reef
+        - by: checker-c
+          value:
+            continent: Africa
+            region: Southeastern Lake Malawi
+            waterbody: lake-malawi
+            localities:
+              - Chinyamwezi Island
+              - Chinyankwazi Island
+              - Boadzulu Island
+              - Makokola Reef
+      decision:
+        continent: Africa
+        region: Southeastern Lake Malawi
+        waterbody: lake-malawi
+        localities:
+          - Chinyamwezi Island
+          - Chinyankwazi Island
+          - Boadzulu Island
+          - Makokola Reef
+      rationale: "Generator, checker-b and checker-c include Chinyamwezi and Chinyankwazi islands together
+        with Boadzulu Island and Makokola Reef; checker-a restricts the locality list to the
+        northern pair. The current Catalog synonymy places the former Boadzulu taxon declivitas
+        within sprengerae. FishBase confirms the three islands and AquaInfo explicitly adds Makokola
+        Reef. The older Stauffer split and the separation still used by Malawi-Guru cannot narrow
+        the current species distribution. All sites are in southeastern Lake Malawi."
+    - field: features.maxSizeCm
+      proposals:
+        - by: generator
+          value:
+            male: 10
+            female: 9
+        - by: checker-a
+          value:
+            male: 10
+            female: 8
+        - by: checker-b
+          value:
+            male: 10
+            female: 9
+        - by: checker-c
+          value:
+            male: 10
+            female: 9
+      decision:
+        male: 10
+        female: 9
+      rationale: "Generator, checker-b and checker-c propose typical aquarium maxima of 10 cm male and 9
+        cm female; checker-a proposes 10 and 8. Borstein reports about 10.2 cm males and females up
+        to 8.9 cm, supporting the rounded 10 and 9 cm values. NVC gives 11 and 8 cm, FishProfiles
+        lists 10 cm for both sexes while describing larger males, and AquaInfo gives the wider 12
+        and 9 cm estimate with occasional 13.5 cm claims. The selected typical sizes do not treat
+        the largest report as a growth target. FishBase records 10.8 cm standard length for male or
+        unsexed fish, not a sex-specific aquarium total-length maximum."
+    - field: features.aggressionConspecific
+      proposals:
+        - by: generator
+          value: 1
+        - by: checker-a
+          value: 1
+        - by: checker-b
+          value: 2
+        - by: checker-c
+          value: 1
+      decision: 1
+      rationale: "Generator, checker-a and checker-c propose level 1; checker-b proposes level 2 as a
+        cautious interpretation of hierarchy and male rivalry. Borstein observed little aggression
+        even while spawning, FishProfiles describes generally mild fish, and NVC reports tolerance
+        toward conspecifics. With one male and three females in the selected tank, displays and
+        brief chases fit level 1 better than routine hierarchy chasing. Rival-male conflict or
+        losses in cramped multi-male housing do not describe the stipulated adult unit. Reports
+        differ, so confidence stays medium."
+    - field: features.territory
+      proposals:
+        - by: generator
+          value:
+            size: small
+            breedingOnly: true
+        - by: checker-a
+          value:
+            size: small
+            breedingOnly: false
+        - by: checker-b
+          value:
+            size: small
+            breedingOnly: true
+        - by: checker-c
+          value:
+            size: small
+            breedingOnly: true
+      decision:
+        size: small
+        breedingOnly: true
+      rationale: "Generator, checker-b and checker-c propose small defence restricted chiefly to breeding;
+        checker-a proposes a small persistent territory from general mbuna territoriality. Borstein
+        observed defence only at spawning, and Fischlexikon expressly places territoriality in that
+        period. The Nordic register and Malawi-Guru describe no lasting defended territory;
+        Seriously Fish describes loose male territories around spawning sites. A small breeding site
+        captures the limited aquarium defence without importing the long-term territory claims of
+        general mbuna literature. The rubric's approximately 30 cm scale is a category
+        interpretation, not a measured diameter. CRC verifies brief breeding defence rather than
+        supplying the original value."
+    - field: features.habitatZones
+      proposals:
+        - by: generator
+          value:
+            - rock
+            - sand
+        - by: checker-a
+          value:
+            - rock
+        - by: checker-b
+          value:
+            - rock
+            - sand
+        - by: checker-c
+          value:
+            - rock
+            - sand
+      decision:
+        - rock
+        - sand
+      rationale: "Generator, checker-b and checker-c include rock and sand; checker-a includes rock only.
+        Rocky feeding and refuge habitat is shared across accounts. The Nordic register, Malawi-Guru
+        and AquaInfo also include transition habitat and sandy gaps between boulders, supporting
+        sand as a supplementary habitat component. This does not describe an open-bottom sand
+        specialist."
+    - field: features.social
+      proposals:
+        - by: generator
+          value:
+            structure: harem
+            ratio: 3
+        - by: checker-a
+          value:
+            structure: harem
+            ratio: 3
+        - by: checker-b
+          value:
+            structure: harem
+            ratio: 3
+        - by: checker-c
+          value:
+            structure: harem
+            ratio: 4
+      decision:
+        structure: harem
+        ratio: 3
+      rationale: "Generator, checker-a and checker-b propose one male with three females; checker-c
+        proposes four females. Malawi-Guru explicitly permits at least three, Fischlexikon gives two
+        to three and AquaInfo gives three to four. Yilmaz prefers four to five and Seriously Fish
+        describes larger female-biased breeding groups. Three is the directly supported minimum
+        unit; four or more remains a useful more spacious alternative. The harem label is aquarium
+        stocking guidance for polygamous fish, not a permanent pair bond or an exclusive wild male
+        territory."
+    - field: features.minTank
+      proposals:
+        - by: generator
+          value:
+            volumeL: 200
+            lengthCm: 120
+            depthCm: 40
+        - by: checker-a
+          value:
+            volumeL: 81
+            lengthCm: 90
+            depthCm: 30
+        - by: checker-b
+          value:
+            volumeL: 200
+            lengthCm: 100
+            depthCm: 40
+        - by: checker-c
+          value:
+            volumeL: 150
+            lengthCm: 90
+            depthCm: 45
+      decision:
+        volumeL: 200
+        lengthCm: 120
+        depthCm: 40
+      rationale: "Generator proposes 200 L with a 120 by 40 cm base; checker-a proposes 81 L with 90 by 30
+        cm; checker-b proposes 200 L with 100 by 40 cm; checker-c proposes 150 L with 90 by 45 cm.
+        The generator recommendation is retained for one adult male and three females because
+        AquaInfo independently specifies 120 cm for a harem and Malawi.si gives 200 L with a 120 by
+        40 cm base for small mild mbuna. NVC permits 160 L at 100 cm, Seriously Fish 81 L at 90 by
+        30 cm, and Borstein reports a 40 US gallon breeder for six to eight adults. The
+        approximately 91 by 46 cm standard breeder footprint is inferred from the tank format, not
+        explicitly measured in that report. Malawi-Guru and Einrichtungsbeispiele recommend the
+        larger 300 L and 120 cm option for groups. This cautious editorial minimum is not a
+        physiological threshold; additional males or companion groups require more space."
+    - field: features.lifespanYears
+      proposals:
+        - by: generator
+          value:
+            min: 5
+            max: 7
+        - by: checker-a
+          value:
+            min: 5
+            max: 8
+        - by: checker-b
+          value:
+            min: 7
+            max: 10
+        - by: checker-c
+          value:
+            min: 4
+            max: 10
+      decision:
+        min: 4
+        max: 10
+      rationale: "Generator proposes 5 to 7 years, checker-a 5 to 8, checker-b 7 to 10 and checker-c 4 to
+        10. DRTA gives 4 to 6, my-fish 5 to 10, AquaInfo an upper age of 7, and
+        Einrichtungsbeispiele 8 to 10. The broad 4 to 10 span preserves these contradictory
+        husbandry estimates rather than narrowing them to the generator's 5 to 7. No longitudinal
+        age-validated series was found. Four is not a guaranteed minimum and ten is not a proven
+        biological maximum."
