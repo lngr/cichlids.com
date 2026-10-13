@@ -313,7 +313,22 @@ public sealed class WebSessionTests(WebSessionFixture fixture)
         using var response = await fixture.Client.SendAsync(request);
 
         Assert.Equal(HttpStatusCode.Redirect, response.StatusCode);
-        Assert.Equal("/me", response.Headers.Location!.OriginalString);
+        Assert.Equal("/me?sign_in=failed", response.Headers.Location!.OriginalString);
+        Assert.DoesNotContain(SetCookies(response), cookie => cookie.Name == SessionCookie && cookie.Value.Length > 0);
+    }
+
+    [Fact]
+    public async Task Callback_whose_code_Keycloak_refuses_returns_to_the_app_with_the_failure_flag()
+    {
+        var start = await StartLoginAsync("/me?tab=drafts");
+
+        using var request = new HttpRequestMessage(
+            HttpMethod.Get, $"/api/auth/callback?code=unknown-{Guid.NewGuid():N}&state={Uri.EscapeDataString(start.State)}");
+        request.Headers.Add("Cookie", start.LoginCookieHeader);
+        using var response = await fixture.Client.SendAsync(request);
+
+        Assert.Equal(HttpStatusCode.Redirect, response.StatusCode);
+        Assert.Equal("/me?tab=drafts&sign_in=failed", response.Headers.Location!.OriginalString);
         Assert.DoesNotContain(SetCookies(response), cookie => cookie.Name == SessionCookie && cookie.Value.Length > 0);
     }
 

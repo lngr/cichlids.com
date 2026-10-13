@@ -30,6 +30,12 @@ public static class WebSessionEndpoints
 {
     private const string Scopes = "openid profile email offline_access";
 
+    /// <summary>The query parameter that marks the return address of a login that did not complete.</summary>
+    public const string FailedLoginFlag = "sign_in";
+
+    /// <summary>The value of the failure flag.</summary>
+    public const string FailedLoginValue = "failed";
+
     public static IEndpointRouteBuilder MapWebSessionEndpoints(this IEndpointRouteBuilder app)
     {
         var group = app.MapGroup("/api/auth").ExcludeFromDescription();
@@ -100,7 +106,8 @@ public static class WebSessionEndpoints
     /// <summary>
     /// Completes a login: checks the state against the login cookie, exchanges the code with the
     /// PKCE verifier, stores the session and sets its cookie, then returns to the web app. A login
-    /// that Keycloak cancelled or refused returns to the web app without a session.
+    /// that Keycloak cancelled or refused, or whose code cannot be exchanged, returns to the web
+    /// app without a session and with the query flag sign_in=failed, which the web app reports.
     /// </summary>
     private static async Task<IResult> CallbackAsync(
         string? code,
@@ -134,14 +141,14 @@ public static class WebSessionEndpoints
         if (error is not null || string.IsNullOrEmpty(code))
         {
             logger.LogInformation("A web login returned from Keycloak with the error {Error}.", error);
-            return TypedResults.Redirect(login.ReturnUrl);
+            return FailedLoginRedirect(login.ReturnUrl);
         }
 
         var result = await keycloak.ExchangeCodeAsync(code, login.Verifier, settings.CallbackUrl, cancellationToken);
         if (result.Outcome != TokenRequestOutcome.Issued || string.IsNullOrEmpty(result.Tokens!.RefreshToken))
         {
             logger.LogWarning("The code of a web login could not be exchanged: {Outcome}.", result.Outcome);
-            return TypedResults.Redirect(login.ReturnUrl);
+            return FailedLoginRedirect(login.ReturnUrl);
         }
 
         var principal = await validator.ValidateAsync(result.Tokens.AccessToken, cancellationToken);
@@ -149,13 +156,16 @@ public static class WebSessionEndpoints
         if (subject is null)
         {
             logger.LogWarning("Keycloak issued an access token for a web login that the API does not accept.");
-            return TypedResults.Redirect(login.ReturnUrl);
+            return FailedLoginRedirect(login.ReturnUrl);
         }
 
         var sessionId = await sessions.CreateAsync(result.Tokens, subject, cancellationToken);
         WebSessionCookies.WriteSession(response, settings, sessionId);
         return TypedResults.Redirect(login.ReturnUrl);
     }
+
+    private static IResult FailedLoginRedirect(string returnUrl) =>
+        TypedResults.Redirect(QueryHelpers.AddQueryString(returnUrl, FailedLoginFlag, FailedLoginValue));
 
     /// <summary>
     /// The session state for the web app as it opens. Each call renews the session with Keycloak,
