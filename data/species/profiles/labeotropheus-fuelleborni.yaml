@@ -1,0 +1,1887 @@
+schemaVersion: 1
+id: "labeotropheus-fuelleborni"
+legacyIds:
+  - 318
+status: "described"
+taxonomy:
+  validName: "Labeotropheus fuelleborni"
+  genus: "Labeotropheus"
+  species: "fuelleborni"
+  author: "Ahl, 1926"
+  source: &a1
+    kind: "catalog-of-fishes"
+    title: "Eschmeyer's Catalog of Fishes: species of Labeotropheus (updated 21 September 2026)"
+    url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=La\
+      beotropheus"
+    accessed: "2026-10-13"
+  synonyms:
+    - name: "Labeotropheus curvirostris"
+      note: "Junior synonym in the Catalog of Fishes."
+  legacyNames:
+    - "Labeotropheus fuelleborni"
+  note: "Catalog of Fishes retains Labeotropheus fuelleborni Ahl, 1926 and eleven valid species in this genus.
+    Pauers' 2018 study concerns ecology and experimental hybridization, not a taxonomic revision; the Pauers
+    and Phiri revision of 2023 describes six species following collecting trips in 2018 and 2020. CRC instead
+    follows Konings' broader synonymy and uses 1927. The Catalog controls the name, authority and species
+    limits here. In particular, the robust Maleri population belongs to L. alticodia, Mumbo to L.
+    artatorostris, Katale to L. chlorosiglos and Namalenje to L. obscurus under that treatment. They are not
+    included as variants or synonyms of this profile. Legacy entry 318 has no verified collecting locality, so
+    it cannot be reassigned to one of these species. Older husbandry sources may cover a broader species
+    concept."
+names:
+  trade:
+    en:
+      - "Blue mbuna"
+      - "Fuelleborn's cichlid"
+      - "Marmalade cat (blotched males)"
+    de:
+      - "Schabemund-Buntbarsch"
+      - "Fuelleborns Maulschaber"
+    pt-BR:
+      - "Ciclídeo fuelleborni"
+variants:
+  - name: "Chidunga Rocks"
+    kind: "locality"
+    note: "Population identified as L. fuelleborni in the 2018 Pauers study; retain documented locality and
+      parentage."
+  - name: "Chimwalani Reef"
+    kind: "locality"
+    note: "Locality form in the Malawi-Guru species directory; exact colour and identity should be checked against
+      provenance."
+  - name: "Blue barred form"
+    kind: "color-morph"
+    note: "Common adult male appearance; shade and fin accents vary among localities."
+  - name: "Orange (O)"
+    kind: "color-morph"
+    note: "Orange female colour morph; colour does not establish the locality."
+  - name: "Orange blotch (OB)"
+    kind: "color-morph"
+    note: "Usually a female morph with irregular dark patches on an orange or pale background."
+  - name: "Marmalade cat (MC)"
+    kind: "color-morph"
+    note: "Hobby name for uncommon blotched males; also applied to other mbuna and therefore not diagnostic of
+      this species."
+features:
+  origin:
+    value:
+      continent: "Africa"
+      region: "Lake Malawi"
+      waterbody: "lake-malawi"
+      localities:
+        - "Lumbila, Tanzania"
+        - "Chidunga Rocks"
+    confidence: "high"
+    rationale: "The Catalog identifies the type locality near Lumbila in Tanzania, and the 2018 and 2023
+      experimental studies used fish collected at Chidunga Rocks. Generator includes these plus Chimwalani
+      Reef; checker-a adds Katale Island but omits Lumbila; checker-b gives the lake without locality claims;
+      checker-c gives Lumbila and Chidunga. Retain checker-c's two independently anchored localities. Katale
+      belongs to the separate valid L. chlorosiglos in the Catalog. Chimwalani is retained as a qualified
+      trade locality variant, supported by the specialist directory and publicly verified by CRC, rather than
+      added to the stronger catalog and research distribution evidence."
+    sources:
+      - *a1
+      - &a2
+        kind: "literature"
+        title: "Pauers, Fox, Hall and Patel (2018): Selection, hybridization, and the evolution of morphology in the
+          Lake Malawi endemic cichlids of the genus Labeotropheus"
+        url: "https://doi.org/10.1038/s41598-018-34135-x"
+        accessed: "2026-10-13"
+      - &a30
+        kind: "literature"
+        title: "Pauers and Phiri (2023). Six New Species of Labeotropheus (Cichliformes: Cichlidae) from the Malawian
+          Shore of Lake Malawi, Africa. Ichthyology and Herpetology 111(2), 264-292."
+        url: "https://doi.org/10.1643/i2021055"
+        accessed: "2026-10-13"
+      - &a38
+        kind: "database"
+        title: "Malawi-Guru species directory: Labeotropheus fuelleborni 'Chimwalani Reef'"
+        url: "https://malawi-guru.de/labeotropheus-fuelleborni-chimwalani-reef-mbuna/"
+        accessed: "2026-10-13"
+      - &a3
+        kind: "database"
+        title: "FishBase species summary: Labeotropheus fuelleborni"
+        url: "https://www.fishbase.se/summary/Labeotropheus-fuelleborni.html"
+        accessed: "2026-10-13"
+      - &a9
+        kind: "database"
+        title: "Seriously Fish: Labeotropheus fuelleborni"
+        url: "https://www.seriouslyfish.com/species/labeotropheus-fuelleborni/"
+        accessed: "2026-10-13"
+    evidence:
+      - source: *a1
+        value:
+          continent: "Africa"
+          region: "Lake Malawi"
+          waterbody: "lake-malawi"
+          localities:
+            - "Lumbila, Tanzania"
+        note: "Type locality."
+      - source: *a2
+        value:
+          continent: "Africa"
+          region: "Lake Malawi"
+          waterbody: "lake-malawi"
+          localities:
+            - "Chidunga Rocks"
+        note: "Collecting origin of experimental parents."
+      - source: *a3
+        value:
+          continent: "Africa"
+          region: "Lake Malawi"
+          waterbody: "lake-malawi"
+        note: "Broad distribution account under the older species concept."
+  temperatureC:
+    value:
+      min: 21
+      max: 29
+    confidence: "high"
+    rationale: "The waterbody decision fixes 21 to 29 C at high confidence, with all four full-profile runs
+      proposing that range. Eccles reports 21 C inshore cooling and about 27 C in the upper water; Vollmer
+      describes seasonal surface temperatures below 24 C to about 28 C, while the historical FAO compilation
+      gives the narrower 23 to 25 C. These observations cover different seasons and sites. The 29 C ceiling is
+      retained exactly from the lake decision; the Ngochera repository abstract confirms seasonal lake
+      sampling but does not independently expose that endpoint. Its dissertation full text and the 1999 mixing
+      chapter were not retrieved through fetch-oa, so no new numerical evidence is attributed to them."
+    sources:
+      - &a7
+        kind: "literature"
+        title: "Branchu et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian
+          Northern Basin: local versus global considerations. HESS Discussions 7, 4371-4409."
+        url: "https://doi.org/10.5194/hessd-7-4371-2010"
+        accessed: "2026-10-13"
+      - &a6
+        kind: "literature"
+        title: "Vanden Bossche and Bernacsek (1990): Source book for the inland fishery resources of Africa, Vol. 1,
+          Lake Malawi/Nyasa physical and chemical data"
+        url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+        accessed: "2026-10-13"
+      - &a4
+        kind: "literature"
+        title: "Eccles (1974). An outline of the physical limnology of Lake Malawi, abstract only"
+        url: "https://doi.org/10.4319/lo.1974.19.5.0730"
+        accessed: "2026-10-13"
+      - &a5
+        kind: "literature"
+        title: "Vollmer et al. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and
+          Oceanography 50, 727-732."
+        url: "https://doi.org/10.4319/lo.2005.50.2.0727"
+        accessed: "2026-10-13"
+      - &a8
+        kind: "literature"
+        title: "Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. Dissertation repository abstract only."
+        url: "https://minds.wisconsin.edu/handle/1793/91765"
+        accessed: "2026-10-13"
+    evidence:
+      - source: *a4
+        value: &a16
+          min: 21
+          max: 27
+        note: "Abstract only; separate cool-season inshore and May upper-water observations."
+      - source: *a5
+        value: &a17
+          min: 23.5
+          max: 28
+        note: "Approximate seasonal upper-water interval; the summer ceiling is about 28 C."
+      - source: *a6
+        value: &a18
+          min: 23
+          max: 25
+        note: "Historical surface observations; narrower than the decided lake envelope."
+      - source: *a7
+        value: &a19
+          min: 25.4
+          max: 25.4
+        note: "Northern-basin surface observation in October 1993."
+    tolerance:
+      value:
+        min: 21
+        max: 29
+      confidence: "low"
+      rationale: "Generator, checker-a, checker-b and checker-c all propose 21 to 29 C; tally retains their
+        unanimous range and low confidence. Seriously Fish recommends 24 to 28 C, Aqua-Fish and the Nordic
+        register 23 to 28 C, Tropical Freshwater Fish 22 to 28 C and Einrichtungsbeispiele 24 to 26 C. Pauers
+        maintained experimental stocks at 28 C in 2018 and at 25 C in the later study. The decided envelope is
+        widened to contain the entire natural lake range. Constant multiyear aquarium maintenance at 21 or 29
+        C is not established by the retrieved care recommendations or experiments; a stable 24 to 26 C has
+        better support for routine care."
+      sources:
+        - *a2
+        - &a15
+          kind: "literature"
+          title: "Pauers, Hoffmann and Ackley (2023). Differences among reciprocal hybrids of Labeotropheus.
+            Hydrobiologia 850, 2149-2164"
+          url: "https://doi.org/10.1007/s10750-022-05092-4"
+          accessed: "2026-10-13"
+        - *a7
+        - *a6
+        - *a4
+        - *a5
+        - *a8
+        - *a9
+        - &a10
+          kind: "database"
+          title: "Aqua-Fish: Blue mbuna care guide"
+          url: "https://en.aqua-fish.net/fish/blue-mbuna"
+          accessed: "2026-10-13"
+        - &a11
+          kind: "database"
+          title: "Einrichtungsbeispiele species directory: Labeotropheus fuelleborni"
+          url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/labeotropheus-fuelleborni-slnk.html"
+          accessed: "2026-10-13"
+        - &a12
+          kind: "database"
+          title: "TropicalFreshwaterFish: Fuelleborni species sheet"
+          url: "https://tropicalfreshwaterfish.com/species/Labeotropheus_fuelleborni.html"
+          accessed: "2026-10-13"
+        - *a3
+        - &a13
+          kind: "database"
+          title: "Nordiska Ciklidsallskapet species register: Labeotropheus fuelleborni"
+          url: "https://www.ciklid.org/artregister/art.php?ID=624"
+          accessed: "2026-10-13"
+        - &a14
+          kind: "website"
+          title: "LiveAquaria: Fuelleborni Cichlid, Marmalade care sheet"
+          url: "https://www.liveaquaria.com/products/fuelleborni-cichlid-marmalade"
+          accessed: "2026-10-13"
+      evidence:
+        - source: *a9
+          value:
+            min: 24
+            max: 28
+        - source: *a10
+          value:
+            min: 23
+            max: 28
+        - source: *a11
+          value:
+            min: 24
+            max: 26
+          note: "Narrower routine care range."
+        - source: *a12
+          value:
+            min: 22
+            max: 28
+          note: "aquarium recommendation"
+        - source: *a3
+          value:
+            min: 22
+            max: 25
+          note: "FishBase environmental temperature, not aquarium longevity evidence."
+        - source: *a2
+          value:
+            min: 28
+            max: 28
+          note: "colony temperature in a zoo laboratory"
+        - source: *a13
+          value:
+            min: 23
+            max: 28
+        - source: *a14
+          value:
+            min: 24.4
+            max: 27.8
+          note: "Converted from 76 to 82 F."
+        - source: *a15
+          value:
+            min: 25
+            max: 25
+          note: "Adults and their offspring were maintained at 25 C through maturity."
+        - source: *a4
+          value: *a16
+          note: "Abstract only; separate cool-season inshore and May upper-water observations."
+        - source: *a5
+          value: *a17
+          note: "Approximate seasonal upper-water interval; the summer ceiling is about 28 C."
+        - source: *a6
+          value: *a18
+          note: "Historical surface observations; narrower than the decided lake envelope."
+        - source: *a7
+          value: *a19
+          note: "Northern-basin surface observation in October 1993."
+      verification:
+        method: "unanimous"
+        votes:
+          agree: 4
+          total: 4
+    verification:
+      method: "waterbody"
+      waterbody: "lake-malawi"
+  ph:
+    value:
+      min: 7.7
+      max: 8.6
+    confidence: "high"
+    rationale: "All four runs propose 7.7 to 8.6, which the waterbody decision retains at high confidence. The
+      surface observations compiled by FAO match this interval. Branchu gives 7.5 to 8.5 for broader
+      water-column context; the lower deep-water endpoint does not replace the shallow-habitat envelope. This
+      is natural lake chemistry rather than a pH inferred from aquarium care advice."
+    sources:
+      - *a7
+      - *a6
+      - *a4
+      - *a5
+      - *a8
+    evidence:
+      - source: *a6
+        value: &a20
+          min: 7.7
+          max: 8.6
+        note: "Surface observations compiled from Jackson et al. (1963)."
+      - source: *a7
+        value: &a21
+          min: 7.5
+          max: 8.5
+        note: "Water-column background interval, including deeper water."
+    tolerance:
+      value:
+        min: 7.5
+        max: 8.8
+      confidence: "medium"
+      rationale: "Generator, checker-a, checker-b and checker-c all propose 7.5 to 8.8, retained by tally with
+        unanimous verification and medium confidence. Aqua-Fish and Tropical Freshwater Fish give this
+        aquarium range; Seriously Fish gives 7.6 to 8.8, while the Nordic register and Einrichtungsbeispiele
+        stop at 8.5. The selected envelope contains the natural 7.7 to 8.6 interval. These are care
+        recommendations for acclimated fish in stable water rather than experimentally demonstrated lifetime
+        thresholds."
+      sources:
+        - *a7
+        - *a6
+        - *a4
+        - *a5
+        - *a8
+        - *a9
+        - *a10
+        - *a11
+        - *a12
+        - *a3
+        - *a13
+        - *a14
+      evidence:
+        - source: *a9
+          value:
+            min: 7.6
+            max: 8.8
+        - source: *a10
+          value:
+            min: 7.5
+            max: 8.8
+        - source: *a11
+          value:
+            min: 7.5
+            max: 8.5
+        - source: *a12
+          value:
+            min: 7.5
+            max: 8.8
+        - source: *a3
+          value:
+            min: 7.5
+            max: 8.5
+          note: "habitat"
+        - source: *a13
+          value:
+            min: 7.5
+            max: 8.5
+        - source: *a14
+          value:
+            min: 7.8
+            max: 8.6
+        - source: *a6
+          value: *a20
+          note: "Surface observations compiled from Jackson et al. (1963)."
+        - source: *a7
+          value: *a21
+          note: "Water-column background interval, including deeper water."
+      verification:
+        method: "unanimous"
+        votes:
+          agree: 4
+          total: 4
+    verification:
+      method: "waterbody"
+      waterbody: "lake-malawi"
+  ghDgh:
+    value:
+      min: 3
+      max: 5
+    confidence: "high"
+    rationale: "All four runs propose 3 to 5 dGH and the waterbody decision retains it at high confidence. The FAO
+      calcium and magnesium ranges convert to approximately 3.2 to 4.9 dGH using dGH = Ca/7.14 + Mg/4.34 with
+      concentrations in mg/L. Paired upper-50-m measurements in Branchu give about 4.2 to 4.6 dGH. Alkaline pH
+      and bicarbonate buffering are compatible with this relatively low calcium and magnesium hardness."
+    sources:
+      - *a7
+      - *a6
+      - *a4
+      - *a5
+      - *a8
+    evidence:
+      - source: *a6
+        value: &a24
+          min: 3.2
+          max: 4.9
+        note: "Converted Ca and Mg ranges from the historical measurements; rounded component envelope."
+      - source: *a7
+        value: &a25
+          min: 4.2
+          max: 4.6
+        note: "Converted paired Ca and Mg measurements in the upper 50 m."
+    tolerance:
+      value:
+        min: 3
+        max: 25
+      confidence: "medium"
+      rationale: "Generator, checker-a, checker-b and checker-c all propose 3 to 25 dGH; tally retains unanimous
+        verification and medium confidence. The 3 dGH lower endpoint contains the natural lake envelope
+        supported by ion measurements. Seriously Fish gives 10 to 25 dGH; Aqua-Fish and Tropical Freshwater
+        Fish both give the wider 12 to 30 dGH range. The 25 dGH ceiling deliberately retains the more cautious
+        published upper recommendation instead of extending to 30 dGH. Einrichtungsbeispiele gives 5 to 15,
+        Fischlexikon 3 to 15 and Monitarium 10 to 20 dGH. Agreement between agents is not a controlled
+        long-term test at the endpoints; high GH is a reported aquarium tolerance rather than a natural
+        requirement."
+      sources:
+        - *a7
+        - *a6
+        - *a4
+        - *a5
+        - *a8
+        - *a9
+        - *a11
+        - *a10
+        - *a12
+        - *a3
+        - &a22
+          kind: "database"
+          title: "Fischlexikon: Schabemund-Buntbarsch, Labeotropheus fuelleborni"
+          url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000000794"
+          accessed: "2026-10-13"
+        - &a23
+          kind: "database"
+          title: "Monitarium: Labeotropheus fuelleborni encyclopedia entry"
+          url: "https://monitarium.com/en/encyclopedia/labeotropheus-fuelleborni"
+          accessed: "2026-10-13"
+      evidence:
+        - source: *a9
+          value:
+            min: 10
+            max: 25
+        - source: *a11
+          value:
+            min: 5
+            max: 15
+        - source: *a10
+          value:
+            min: 12
+            max: 30
+          note: "German hardness scale; a broader aquarium recommendation."
+        - source: *a12
+          value:
+            min: 12
+            max: 30
+        - source: *a22
+          value:
+            min: 3
+            max: 15
+        - source: *a23
+          value:
+            min: 10
+            max: 20
+        - source: *a6
+          value: *a24
+          note: "Converted Ca and Mg ranges from the historical measurements; rounded component envelope."
+        - source: *a7
+          value: *a25
+          note: "Converted paired Ca and Mg measurements in the upper 50 m."
+      verification:
+        method: "unanimous"
+        votes:
+          agree: 4
+          total: 4
+    verification:
+      method: "waterbody"
+      waterbody: "lake-malawi"
+  khDkh:
+    value:
+      min: 5
+      max: 8
+    confidence: "high"
+    rationale: "All four runs propose the natural 5 to 8 dKH interval, retained at high confidence from the lake
+      decision. FAO alkalinity of 2.00 to 2.59 meq/L converts to about 5.6 to 7.3 dKH. Branchu upper-30-m
+      values of 2.3339 to 2.3978 meq/L give about 6.5 to 6.7 dKH; including its 125-m sample extends that
+      study to about 6.9 dKH. Sodium contributes counterions to bicarbonate, so alkalinity expressed as KH can
+      exceed GH. No verification object is assigned to this natural KH fact."
+    sources:
+      - *a7
+      - *a6
+      - *a4
+      - *a5
+      - *a8
+    evidence:
+      - source: *a6
+        value: &a26
+          min: 5.6
+          max: 7.3
+        note: "Converted alkalinity from the historical lake measurements."
+      - source: *a7
+        value: &a27
+          min: 6.5
+          max: 6.7
+        note: "Converted upper-30-m alkalinity; including the 125-m sample gives about 6.5 to 6.9 dKH."
+    tolerance:
+      value:
+        min: 5
+        max: 15
+      confidence: "low"
+      rationale: "Generator, checker-a, checker-b and checker-c all propose 5 to 15 dKH; tally retains unanimous
+        verification and low confidence. Monitarium explicitly gives 10 to 15 dKH and the LiveAquaria retailer
+        gives the wider 10 to 20 dKH range. The selected ceiling follows the lower of those recommendations,
+        while 5 dKH includes natural buffering supported by lake alkalinity measurements. Seriously Fish and
+        Tropical Freshwater Fish do not state separate KH intervals, so checker-a's inferred KH evidence from
+        their pH and GH advice is excluded. LiveAquaria remains a low-weight website source. The lake studies
+        support the natural part of the envelope, not years of aquarium health at 15 dKH; the upper extension
+        remains provisional."
+      sources:
+        - *a7
+        - *a6
+        - *a4
+        - *a5
+        - *a8
+        - *a23
+        - *a9
+        - *a12
+        - *a14
+        - &a41
+          kind: "model-knowledge"
+          title: "General knowledge of Lake Malawi mbuna husbandry"
+          accessed: "2026-10-13"
+      evidence:
+        - source: *a23
+          value:
+            min: 10
+            max: 15
+        - source: *a14
+          value:
+            min: 10
+            max: 20
+        - source: *a6
+          value: *a26
+          note: "Converted alkalinity from the historical lake measurements."
+        - source: *a7
+          value: *a27
+          note: "Converted upper-30-m alkalinity; including the 125-m sample gives about 6.5 to 6.9 dKH."
+      verification:
+        method: "unanimous"
+        votes:
+          agree: 4
+          total: 4
+  maxSizeCm:
+    value:
+      male: 18
+      female: 15
+    confidence: "medium"
+    rationale: "Generator, checker-b and checker-c propose males 18 cm and females 15 cm; checker-a proposes 17.5
+      and 12 cm. Retain 18 and 15 cm as practical adult aquarium planning maxima: Malawi-Guru gives males
+      about 18 cm and females 14 to 15 cm, and Aqua-Fish gives an unsexed aquarium range of 13 to 18 cm.
+      Tropical Freshwater Fish gives 18 and 13 cm, while Oliver gives about 18 cm for both sexes. Female
+      maxima remain less settled. Seriously Fish's 17.5 cm is standard length and is not converted directly
+      into a total-length planning figure. FishBase's 30 cm male record and 8.7 cm female standard-length
+      record are not typical aquarium maxima; Oliver also disputes the attribution of the male figure. These
+      uncertainties prevent high confidence."
+    sources:
+      - &a28
+        kind: "database"
+        title: "Malawi-Guru species directory: Labeotropheus fuelleborni"
+        url: "https://malawi-guru.de/labeotropheus-fuelleborni/"
+        accessed: "2026-10-13"
+      - *a10
+      - *a12
+      - *a3
+      - *a9
+      - &a29
+        kind: "database"
+        title: "Oliver, M. K.: Labeotropheus fuelleborni. The Cichlid Fishes of Lake Malawi, Africa."
+        url: "https://malawicichlids.com/mw09000g.htm"
+        accessed: "2026-10-13"
+      - &a37
+        kind: "database"
+        title: "Malawi-Guru: Labeotropheus fuelleborni species directory"
+        url: "https://malawi-guru.de/labeotropheus-fuelleborni-verzeichnis-mbuna-arten/"
+        accessed: "2026-10-13"
+      - &a42
+        kind: "model-knowledge"
+        title: "Checker inference from mbuna husbandry and the feature rubric"
+        accessed: "2026-10-13"
+    evidence:
+      - source: *a28
+        value:
+          male: 18
+          female: 15
+        note: "Upper end of its sex-specific natural-size estimates; unusually large captive fish are linked to
+          feeding."
+      - source: *a12
+        value:
+          male: 18
+          female: 13
+        note: "Sex-specific care-sheet maxima."
+      - source: *a29
+        value:
+          male: 18
+          female: 18
+        note: "Total-length estimate for both sexes."
+      - source: *a10
+        value:
+          min: 13
+          max: 18
+        note: "Usual aquarium range without a sex split."
+      - source: *a9
+        value:
+          male: 17.5
+        note: "Standard length; no numerical female maximum."
+      - source: *a3
+        value:
+          male: 30
+          female: 8.7
+        note: "Recorded standard-length maxima excluded from ordinary aquarium planning."
+  predation:
+    value: 1
+    confidence: "low"
+    rationale: "Generator, tiebreaker-1 and tiebreaker-2 propose level 1; checker-a, checker-b and checker-c
+      propose level 0. With only three of six votes for either value, tally uses conservative selection of the
+      higher proposed level, 1, and confidence low. USGS attributes opportunistic fry consumption to Fryer
+      (1959); the Aquarismo Paulista hobby page repeats fry consumption, and FishProfiles lists small live
+      fish without a supporting observation. The specialist algae-feeding accounts underpin the level-0
+      proposals but do not prove that opportunities to consume fish are ignored. FishBase explicitly
+      identifies the Bagrus prey record as eggs, so that entry is not independent evidence of fry predation.
+      The rubric boundary of about 2 cm is not a measured limit for this species. Fryer full text was
+      unavailable through fetch-oa in the input research, so the original observation is used only through
+      USGS."
+    sources:
+      - *a1
+      - *a2
+      - *a30
+      - &a31
+        kind: "database"
+        title: "USGS Nonindigenous Aquatic Species Database: blue mbuna"
+        url: "https://nas.er.usgs.gov/queries/FactSheet.aspx?speciesID=3017"
+        accessed: "2026-10-13"
+      - *a3
+      - *a9
+      - &a33
+        kind: "database"
+        title: "FishBase ecology table: Labeotropheus fuelleborni"
+        url: "https://www.fishbase.se/Ecology/FishEcologySummary.php?StockCode=2520&GenusName=Labeotropheus&SpeciesNa\
+          me=fuelleborni"
+        accessed: "2026-10-13"
+      - &a34
+        kind: "database"
+        title: "FishBase food item record, Bagrus meridionalis eggs eaten by Labeotropheus fuelleborni"
+        url: "https://www.fishbase.se/TrophicEco/FoodItemsSummary.php?genusname=Labeotropheus&speciesname=fuelleborni\
+          &vstockcode=2520&autoctr=21308"
+        accessed: "2026-10-13"
+      - *a29
+      - *a10
+      - &a35
+        kind: "database"
+        title: "FishProfiles.com: Labeotropheus fuelleborni"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Labeotropheus_fuelleborni/"
+        accessed: "2026-10-13"
+      - &a36
+        kind: "database"
+        title: "Cichlid Room Companion: Labeotropheus fuelleborni public species summary"
+        url: "https://cichlidae.com/species.php?id=eEwJZr7yWcUVclwJXIwbTA"
+        accessed: "2026-10-13"
+      - &a32
+        kind: "website"
+        title: "Rechi (2020): Ciclideo fuelleborni, Aquarismo Paulista species sheet"
+        url: "https://www.aquarismopaulista.com/labeotropheus-fuelleborni/"
+        accessed: "2026-10-13"
+    evidence:
+      - source: *a31
+        value: 1
+        note: "Reports fry consumption as opportunistic feeding in addition to algal grazing. Mapping to level 1 rests
+          on deliberate opportunity feeding rather than accidental ingestion; prey length is unspecified."
+      - source: *a32
+        value: 1
+        note: "Newly hatched fish are listed as occasional natural food; translated to the rubric level."
+      - source: *a3
+        value: 0
+        note: "Mapped from aufwuchs and invertebrate feeding; no fish prey listed in the summary."
+      - source: *a9
+        value: 0
+        note: "grazes algae from rocks"
+      - source: *a2
+        value: 0
+        note: "Mapped from specialized filamentous-algae scraping; direct predation trials were not performed."
+      - source: *a33
+        value: 0
+        note: "Plant and detritus feeding with invertebrates; no free-swimming fish prey stated."
+      - source: *a34
+        value: 0
+        note: "Bagrus meridionalis prey stage is eggs, not fish larvae."
+      - source: *a29
+        value: 0
+        note: "Field feeding account concerns algae, plankton and benthic invertebrates."
+      - source: *a10
+        value: 0
+        note: "Mapped from the herbivorous diet description."
+      - source: *a35
+        value: 1
+        note: "Includes live fish of small size in its feeding advice. This is weak corroboration of small-fish
+          consumption, without an observation, citation, prey length or frequency; it is not adopted as a
+          feeding recommendation."
+    verification:
+      method: "conservative"
+      votes:
+        agree: 3
+        total: 6
+  diet:
+    value:
+      type: "aufwuchs"
+      bloatSensitive: true
+      foods:
+        - "spirulina-based mbuna flakes"
+        - "plant-rich mbuna pellets"
+        - "algae and biofilm on rocks"
+        - "small portions of blanched vegetables"
+    confidence: "high"
+    rationale: "All four full-profile runs agree on aufwuchs and bloatSensitive true; tally assigns unanimous
+      verification and high confidence. Pauers describes morphology specialized for removing attached algae,
+      and FishBase, Seriously Fish and the husbandry directories favor a plant-rich staple. Small animal foods
+      and occasional fry do not displace that feeding category. Aqua-Fish and Oliver associate inappropriate
+      rich feeding with digestive disease, supporting a husbandry sensitivity flag rather than a claim that
+      protein alone causes every episode of bloat. The papers successfully used mixed diets. Foods differ
+      across proposals: generator lists spirulina flakes, plant-rich pellets, rock biofilm and vegetables;
+      checker-a adds algae wafers and occasional frozen food; checker-b includes occasional invertebrates;
+      checker-c lists algae pellets, spirulina and vegetables. The exact generator food list selected by tally
+      is retained."
+    sources:
+      - *a2
+      - *a15
+      - *a31
+      - *a10
+      - *a28
+      - *a9
+      - *a3
+      - *a36
+      - *a12
+      - *a33
+      - kind: "database"
+        title: "FishBase diet composition table: Labeotropheus fuelleborni"
+        url: "https://www.fishbase.se/TrophicEco/DietCompoList.php?ID=2325&GenusName=Labeotropheus&SpeciesName=fuelle\
+          borni&fc=349&StockCode=2520"
+        accessed: "2026-10-13"
+      - *a29
+      - *a11
+      - *a37
+      - *a32
+      - *a14
+      - kind: "archive"
+        title: "cichlids.com forum thread 38621"
+        url: "https://www.cichlids.com/disc/read.php?2,38621"
+        accessed: "2026-10-13"
+    evidence:
+      - source: *a2
+        value:
+          type: "aufwuchs"
+        note: "Primary feeding morphology and ecology; the experimental diet also included animal foods and does not
+          measure bloat sensitivity."
+      - source: *a15
+        value:
+          type: "aufwuchs"
+        note: "Algal feeding specialization, with a mixed experimental diet."
+      - source: *a31
+        value:
+          type: "aufwuchs"
+        note: "Algal scraping is the principal feeding mode; occasional animal foods are also reported."
+      - source: *a3
+        value:
+          type: "aufwuchs"
+        note: "Rock biofilm is the main resource alongside some invertebrate foods."
+      - source: *a9
+        value:
+          type: "aufwuchs"
+        note: "Plant material forms a major part of the recommended care diet; no separate bloat threshold is stated."
+      - source: *a10
+        value:
+          type: "aufwuchs"
+          bloatSensitive: true
+        note: "Plant-rich feeding and an explicit warning about rich protein feeding and digestive disease."
+      - source: *a29
+        value:
+          type: "aufwuchs"
+          bloatSensitive: true
+        note: "Predominantly vegetable feeding is associated with reduced bloat risk."
+      - source: *a28
+        value:
+          type: "aufwuchs"
+        note: "Recommends restrained low-protein feeding; no separate physiological threshold is reported."
+      - source: *a11
+        value:
+          type: "aufwuchs"
+          bloatSensitive: true
+        note: "Care advice associates inappropriate rich feeding with digestive disease."
+      - source: *a12
+        value:
+          type: "aufwuchs"
+        note: "A mixed food list includes substantial plant material; feeding category is mapped from that guidance."
+      - source: *a14
+        value:
+          type: "omnivore"
+        note: "Commercial category differs, although its care text prioritizes plant foods."
+      - source: *a36
+        value:
+          type: "aufwuchs"
+        note: "Verification of algae feeding only."
+    verification:
+      method: "unanimous"
+      votes:
+        agree: 4
+        total: 4
+  aggressionConspecific:
+    value: 3
+    confidence: "medium"
+    rationale: "Checker-a, checker-b and checker-c propose level 3; generator proposes level 4. Persistent rival
+      pursuit and female harassment justify level 3 under the rubric. Seriously Fish and Malawi-Guru require
+      multiple females and ample shelter; the specialist cautions strongly against small multi-male groups.
+      The retailer article discusses lethal harassment in confined polygamous mouthbrooders generally, rather
+      than establishing persistent lethal attacks by this species in the recommended spacious single-male
+      harem. That broader warning does not justify level 4 under the rubric's specified keeping conditions.
+      The Nordic account is milder and Tropical Freshwater Fish calls it relatively mild among mbuna, so
+      severity remains moderately confident."
+    sources:
+      - *a2
+      - *a28
+      - *a9
+      - *a12
+      - *a13
+      - *a11
+      - *a37
+      - &a39
+        kind: "website"
+        title: "Maidenhead Aquatics: African Cichlid Recommendations and Suggestions"
+        url: "https://www.fishkeeper.co.uk/stories/african-cichlid-recommendations-and-suggestions"
+        accessed: "2026-10-13"
+      - kind: "archive"
+        title: "cichlids.com forum thread 15967"
+        url: "https://www.cichlids.com/disc/read.php?2,15967"
+        accessed: "2026-10-13"
+    evidence:
+      - source: *a9
+        value: 3
+        note: "Rubric mapping from strong conspecific aggression and courtship harassment."
+      - source: *a28
+        value: 3
+        note: "Rubric mapping from difficult multi-male keeping and territorial pressure."
+      - source: *a13
+        value: 2
+        note: "Milder qualitative account mapped approximately to the rubric."
+  aggressionHeterospecific:
+    value: 3
+    confidence: "medium"
+    rationale: "Generator, checker-b and checker-c propose level 3; checker-a proposes level 2. Aqua-Fish reports
+      aggression toward other mbuna and Malawi-Guru restricts companions to equally assertive mbuna,
+      supporting the requirement for robust tankmates in level 3. Seriously Fish excludes peaceful peacocks
+      and utaka. The Nordic register and Tropical Freshwater Fish describe milder behavior, supporting the
+      lower proposal but offering less assurance for timid companions. No source establishes routine killing
+      of comparably robust adults in an adequate tank, so level 4 is not inferred."
+    sources:
+      - *a28
+      - *a38
+      - *a9
+      - *a12
+      - *a13
+      - *a10
+      - *a11
+      - *a37
+      - *a23
+      - *a39
+      - kind: "archive"
+        title: "cichlids.com forum thread 17088"
+        url: "https://www.cichlids.com/disc/read.php?2,17088"
+        accessed: "2026-10-13"
+    evidence:
+      - source: *a10
+        value: 3
+        note: "Rubric mapping from aggression toward other mbuna."
+      - source: *a38
+        value: 3
+        note: "Restricts companions to similarly assertive mbuna."
+      - source: *a13
+        value: 2
+        note: "Qualitatively intermediate aggression, mapped approximately to the rubric."
+  territory:
+    value:
+      size: "large"
+      breedingOnly: false
+    confidence: "low"
+    rationale: "All four runs propose large and breedingOnly false. FishBase reports defense of rocky feeding
+      substrate and the care directories describe continuing territorial behavior. A substantial defended
+      aquarium area is inferred from adult size and exclusion of rivals; no read source measures the rubric's
+      footprint threshold. Aquairi describes small cave-centered territories and the retailer article notes
+      that competition can compress territories. The common large proposal is retained as cautious spatial
+      planning with low confidence, not as a measured territory diameter."
+    sources:
+      - *a2
+      - *a3
+      - *a28
+      - kind: "database"
+        title: "Aquairi: Fuelleborn's Cichlid care guide"
+        url: "https://aquairi.app/learn/en/labeotropheus-fuelleborni-care-guide"
+        accessed: "2026-10-13"
+      - *a9
+      - *a11
+      - *a39
+    evidence:
+      - source: *a3
+        value:
+          breedingOnly: false
+        note: "Defense includes rocky grazing substrate; dimensions are not given."
+      - source: *a9
+        value:
+          size: "large"
+          breedingOnly: false
+        note: "Large is an inferred rubric mapping from territory formation, not a measured source dimension."
+  habitatZones:
+    value:
+      - "rock"
+    confidence: "high"
+    rationale: "All four runs agree on rock. Primary ecology describes wave-exposed shallow rocky surfaces used
+      for feeding and territorial defense. Aquarium sand between rock structures does not establish a separate
+      natural sand niche. CRC confirms rock habitat but emphasizes sediment-rich rocks, whereas Malawi-Guru
+      emphasizes sediment-poor areas; that secondary habitat distinction does not change the shared rock
+      requirement."
+    sources:
+      - *a2
+      - *a31
+      - *a3
+      - *a36
+      - *a9
+      - *a29
+    evidence:
+      - source: *a2
+        value:
+          - "rock"
+        note: "Primary ecological description of shallow rocky feeding habitat."
+      - source: *a31
+        value:
+          - "rock"
+        note: "Shallow rock-associated habitat."
+      - source: *a3
+        value:
+          - "rock"
+        note: "Rocky substrate feeding and territory defense."
+      - source: *a36
+        value:
+          - "rock"
+        note: "Public summary verification only; sediment emphasis differs from some specialist accounts."
+  social:
+    value:
+      structure: "harem"
+      ratio: 4
+    confidence: "medium"
+    rationale: "Generator and checker-c propose one male with four females; checker-a and checker-b propose three.
+      Retain four females within Malawi-Guru's explicit three-to-four recommendation to spread courtship
+      pressure. Seriously Fish specifies at least three, so three is a plausible lower recommendation;
+      LiveAquaria's wider five-to-seven breeding recommendation is retained as low-weight context. This
+      selected social unit is a practical stocking decision and not a biologically proven optimum. It does not
+      imply a lasting harem bond in nature, where both sexes can mate with multiple partners."
+    sources:
+      - *a9
+      - *a38
+      - *a36
+      - *a12
+      - *a10
+      - *a32
+      - *a14
+    evidence:
+      - source: *a38
+        value:
+          structure: "harem"
+          ratio: 4
+        note: "Upper end of the explicit three-to-four female recommendation."
+      - source: *a9
+        value:
+          structure: "harem"
+          ratio: 3
+        note: "At least three females per male."
+      - source: *a14
+        value:
+          structure: "harem"
+          ratio: 5
+        note: "Retail breeding advice extends from five to seven females."
+  speciesOnly:
+    value: false
+    confidence: "high"
+    rationale: "All four full-profile runs propose false and tally retains unanimous verification and high
+      confidence. Seriously Fish permits other mbuna, the Nordic register allows similarly assertive cichlids,
+      and Malawi-Guru restricts companions to comparably robust mbuna. A separate breeding aquarium preserves
+      species and locality identity but does not make species-only adult maintenance mandatory. This decision
+      does not make peaceful Malawi species suitable partners."
+    sources:
+      - *a9
+      - *a28
+      - *a38
+      - *a12
+      - *a13
+      - *a11
+      - *a37
+      - *a23
+      - *a39
+    evidence:
+      - source: *a9
+        value: false
+      - source: *a28
+        value: false
+        note: "Allows comparably assertive mbuna; excludes non-mbuna."
+      - source: *a38
+        value: false
+        note: "Names several other mbuna genera as companions."
+      - source: *a12
+        value: false
+        note: "tankmates among other mbuna"
+      - source: *a13
+        value: false
+      - source: *a11
+        value: false
+      - source: *a37
+        value: false
+      - source: *a23
+        value: false
+    verification:
+      method: "unanimous"
+      votes:
+        agree: 4
+        total: 4
+  hybridGroups:
+    value:
+      - "labeotropheus"
+    confidence: "high"
+    rationale: "All four full-profile runs propose only labeotropheus, retained by tally with unanimous
+      verification and high confidence. Seriously Fish gives a general warning about congeners and colour
+      forms, the Nordic register specifically names trewavasae, and the Pauers studies establish
+      interfertility of fuelleborni and trewavasae. Their breeding groups paired females only with males of
+      the other species, so they do not establish free-choice crosses and the genus group remains presumed.
+      The Catalog supplies accepted member names but reports no crossing experiment. Archive thread 19053
+      alleges a cross with an ambiguously identified elongatus fish without a conspecific male at the original
+      spawning; this does not establish an additional named-species group."
+    sources:
+      - *a1
+      - *a2
+      - *a15
+      - *a9
+      - kind: "database"
+        title: "Seriously Fish: Labeotropheus trewavasae"
+        url: "https://www.seriouslyfish.com/species/labeotropheus-trewavasae/"
+        accessed: "2026-10-13"
+      - *a13
+      - &a40
+        kind: "archive"
+        title: "cichlids.com forum thread 19053"
+        url: "https://www.cichlids.com/disc/read.php?2,19053"
+        accessed: "2026-10-13"
+    evidence:
+      - source: *a9
+        value:
+          - "labeotropheus"
+        note: "General warning against congener and colour-form mixing."
+      - source: *a2
+        value:
+          - "labeotropheus"
+        note: "Forced L. trewavasae male x L. fuelleborni female cross with viable fertile offspring."
+      - source: *a15
+        value:
+          - "labeotropheus"
+        note: "Reciprocal forced crosses raised through adulthood; same breeding stock as the earlier study."
+      - source: *a13
+        value:
+          - "labeotropheus"
+        note: "Specifically warns against mixing L. trewavasae."
+      - source: *a40
+        value: []
+        note: "Extra-genus cross allegation lacks secure partner identification and partner-choice information; no
+          additional group inferred."
+    verification:
+      method: "unanimous"
+      votes:
+        agree: 4
+        total: 4
+  coloration:
+    value:
+      baseColors:
+        - "blue"
+        - "black"
+      pattern: "mixed"
+    confidence: "medium"
+    rationale: "Generator proposes blue, black and orange with mixed pattern; checker-a blue with bars; checker-b
+      blue and black with bars; checker-c blue and black with mixed pattern. Retain checker-c's species-wide
+      pattern while keeping the base colours focused on typical adult males. Blue and dark markings are
+      widespread and rare blotched males justify mixed rather than universal bars. Orange female morphs and
+      occasional orange male accents remain described in variants and prose; they do not make orange a
+      dominant base colour of the typical male. The Katale, Maleri and Namalenje colour patterns are not
+      pooled from taxa the Catalog treats separately."
+    sources:
+      - *a30
+      - *a9
+      - *a31
+      - *a38
+      - *a3
+      - *a12
+      - *a29
+      - *a23
+      - *a14
+    evidence:
+      - source: *a31
+        value:
+          baseColors:
+            - "blue"
+            - "black"
+          pattern: "bars"
+        note: "Typical mature male colour pattern; some individuals have yellow flank accents."
+      - source: *a29
+        value:
+          baseColors:
+            - "blue"
+            - "black"
+            - "orange"
+          pattern: "mixed"
+        note: "Describes a speckled male as well as the typical barred blue morph."
+      - source: *a9
+        value:
+          baseColors:
+            - "blue"
+            - "black"
+            - "orange"
+          pattern: "mixed"
+        note: "Includes rare blotched males; its historical treatment covers many colour forms."
+  feedingSpeed:
+    value: "hasty"
+    confidence: "medium"
+    rationale: "All four runs propose hasty. Malawi-Guru's Chimwalani account specifically describes eager food
+      intake and warns against generous portions, providing a species-specific observation beyond checker-a
+      and checker-b's general mbuna inference. FishBase describes competitive feeding aggregations, which are
+      consistent but not a timed aquarium test. The classification is moderately confident and does not imply
+      that repeated natural grazing bites are identical to rushing delivered food."
+    sources:
+      - *a38
+      - *a3
+      - *a9
+      - *a41
+      - *a42
+    evidence:
+      - source: *a38
+        value: "hasty"
+        note: "Mapped from eager intake and portion restraint; no timed comparison was reported."
+  minTank:
+    value:
+      volumeL: 600
+      lengthCm: 150
+      depthCm: 60
+    confidence: "medium"
+    rationale: "Generator and checker-c propose 600 L, 150 cm length and 60 cm depth; checker-a proposes 200 L,
+      120 cm and 40 cm; checker-b proposes 400 L, 150 cm and 50 cm. Retain the larger specialist 600 L and 150
+      cm floor for the chosen one-male, four-female adult unit, with 60 cm front-to-back depth as an inferred
+      layout allowance. This gives room for separated rocky retreats and is not a measured welfare threshold.
+      The Nordic header gives 350 L and 150 cm, Einrichtungsbeispiele 400 L and 150 cm, and Seriously Fish
+      gives a 154 L general minimum with a roughly 122 cm harem breeding recommendation. The 160 L research
+      breeding tanks establish successful experimental reproduction under close management, not a minimum home
+      aquarium for long-term adult welfare. Added tankmate groups can require more room."
+    sources:
+      - *a2
+      - *a28
+      - *a38
+      - *a11
+      - *a9
+      - *a12
+      - *a13
+      - *a37
+      - *a23
+      - *a39
+      - *a14
+    evidence:
+      - source: *a28
+        value:
+          volumeL: 600
+          lengthCm: 150
+        note: "Specialist minimum; no front-to-back depth stated."
+      - source: *a11
+        value:
+          volumeL: 400
+          lengthCm: 150
+        note: "Published adult keeping recommendation."
+      - source: *a13
+        value:
+          volumeL: 350
+          lengthCm: 150
+        note: "Header recommendation; its body separately mentions 300 L."
+      - source: *a9
+        value:
+          volumeL: 154
+          lengthCm: 90
+          depthCm: 45
+        note: "General minimum; breeding discussion instead gives about 122 cm length."
+      - source: *a2
+        value:
+          volumeL: 160
+        note: "Closely managed research breeding aquaria; not a long-term home welfare minimum."
+  lifespanYears:
+    value:
+      min: 7
+      max: 12
+    confidence: "medium"
+    rationale: "Generator, checker-a and checker-b propose 8 to 12 years; checker-c proposes 7 to 12. Retain the
+      broader 7 to 12 practical envelope because Monitarium gives seven years, Einrichtungsbeispiele eight to
+      twelve and Aqua-Fish an attainable upper age of ten to twelve. These are care estimates rather than a
+      verified survival cohort; seven is not a guaranteed minimum and twelve is not a demonstrated
+      physiological limit."
+    sources:
+      - *a11
+      - *a10
+      - *a23
+      - *a32
+      - *a41
+    evidence:
+      - source: *a23
+        value:
+          min: 7
+          max: 7
+        note: "Single husbandry age estimate."
+      - source: *a11
+        value:
+          min: 8
+          max: 12
+        note: "Care estimate without a survival cohort."
+      - source: *a10
+        value:
+          min: 10
+          max: 12
+        note: "Attainable upper-age estimate rather than an observed population interval."
+  breeding:
+    value: "maternal-mouthbrooder"
+    confidence: "high"
+    rationale: "All four runs agree that the female incubates eggs and young in her mouth. Experimental methods
+      and independent species accounts support maternal-mouthbrooder at high confidence. Whether individual
+      eggs are fertilized before or after uptake does not change the parental-care category. CRC verifies this
+      mode without supplying the origin of the classification."
+    sources:
+      - *a2
+      - *a15
+      - *a3
+      - *a31
+      - *a9
+      - *a36
+    evidence:
+      - source: *a2
+        value: "maternal-mouthbrooder"
+        note: "Researchers isolated brooding females until fry release at about 21 days."
+      - source: *a15
+        value: "maternal-mouthbrooder"
+        note: "Experimental breeding and female incubation."
+      - source: *a9
+        value: "maternal-mouthbrooder"
+        note: "Species-specific reproductive account."
+      - source: *a36
+        value: "maternal-mouthbrooder"
+        note: "Verification only."
+  beginnerSuitability:
+    value: "demanding"
+    confidence: "medium"
+    rationale: "Generator proposes demanding; checker-a, checker-b and checker-c propose moderate. Seriously Fish
+      and the Nordic register label routine care moderate, while Aqua-Fish favors experienced keepers and
+      Malawi-Guru emphasizes difficult social management. Select demanding for a first-time keeper because the
+      recommended large aquarium, persistent harassment and dietary restraint require prior planning and
+      intervention skills. This is an editorial husbandry assessment rather than a vote-bound hard feature.
+      The retailer easy label has low weight and does not resolve these combined demands."
+    sources:
+      - *a28
+      - *a10
+      - *a9
+      - *a12
+      - *a13
+      - *a11
+      - *a39
+      - *a14
+    evidence:
+      - source: *a10
+        value: "demanding"
+        note: "Mapped from preference for experienced African-cichlid keepers."
+      - source: *a9
+        value: "moderate"
+        note: "Published routine-care category."
+      - source: *a13
+        value: "moderate"
+        note: "Published care category."
+      - source: *a14
+        value: "easy"
+        note: "Low-weight commercial category."
+partners:
+  suitable:
+    - species: "Maylandia estherae"
+      reason: "Robust rock-dwelling mbuna with a compatible plant-rich feeding regime; choose an orange male form to
+        reduce similarity to blue fuelleborni."
+      condition: "At least the 600 L minimum with added room for both harems and separated rocky retreats; monitor
+        for bullying and be ready to separate."
+    - species: "Maylandia lombardoi"
+      reason: "Assertive mbuna with a similar vegetable-based care diet; mature yellow males differ from the usual
+        blue fuelleborni. This is a demanding combination."
+      condition: "Prefer a tank larger than 600 L and longer than 150 cm; one male per species with females and
+        distinct territories. Females and subordinate males remain blue, so rivalry is still possible."
+    - species: "Pseudotropheus johannii"
+      reason: "An assertive mbuna that accepts a plant-rich staple and whose horizontal male stripes differ from the
+        typical vertical fuelleborni pattern."
+      condition: "Use well-grown adults with additional space beyond the minimum social unit; avoid small or timid
+        individuals and watch for persistent harassment."
+  unsuitable:
+    - species: "Labeotropheus trewavasae"
+      reason: "Shares the presumed labeotropheus hybrid group; forced experiments produced fertile offspring.
+        Similar shape also invites rivalry."
+    - species: "Labeotropheus chlorosiglos"
+      reason: "A separate valid species rather than a Katale colour form here; shares the presumed genus crossing
+        group and similar territorial behaviour."
+    - species: "Aulonocara stuartgranti"
+      reason: "A comparatively peaceful peacock is vulnerable to harassment and loss of feeding access in this
+        aggressive rocky community."
+    - species: "Copadichromis borleyi"
+      reason: "An open-water utaka whose feeding and space use fit poorly with a dominant rock-grazing mbuna
+        community."
+profile:
+  overview:
+    text: "A projecting fleshy snout above a downward-facing mouth gives Labeotropheus fuelleborni its distinctive
+      profile. This robust mbuna spends much of its time grazing rock surfaces in Lake Malawi. Mature males
+      are usually blue with dark markings, while orange and blotched forms add considerable variety. The valid
+      name remains Labeotropheus fuelleborni Ahl, 1926. Several populations historically sold under this name
+      are separate species in the Catalog, so a locality label and reliable breeding history are useful parts
+      of the fish's identity. Strong territorial behavior makes this a demanding first cichlid."
+    sources:
+      - *a1
+      - *a30
+      - *a2
+      - *a31
+      - *a10
+  habitat:
+    text: "The species is native to Lake Malawi, with its type locality near Lumbila in Tanzania and
+      experimentally studied stock from Chidunga Rocks. It feeds around shallow rocky shores and islands where
+      water movement keeps oxygen available. Reproduce the useful features of this habitat with stable rock
+      faces, crevices and sheltered paths. The decided natural lake ranges are 21 to 29 C, pH 7.7 to 8.6, GH 3
+      to 5 dGH and KH 5 to 8 dKH. These span places and seasons rather than describing one constant aquarium
+      setting. Calcium and magnesium hardness is relatively low even though bicarbonate provides substantial
+      buffering."
+    sources:
+      - *a1
+      - *a2
+      - *a6
+      - *a7
+      - *a4
+      - *a5
+      - *a31
+  sizeAndGrowth:
+    text: "Allow for a typical adult aquarium planning maximum of about 18 cm for males and 15 cm for females.
+      Published sex-specific figures differ, so these values should guide space planning rather than predict
+      every individual. Standard-length records exclude the tail and cannot be treated as equivalent to
+      aquarium total lengths. Heavy feeding can produce unusually large captive fish without demonstrating a
+      healthier outcome. Juveniles need access to their adult space before territorial behavior intensifies.
+      Husbandry sources suggest a lifespan envelope of roughly seven to twelve years, with limited evidence
+      for precise age boundaries."
+    sources:
+      - *a28
+      - *a10
+      - *a12
+      - *a29
+      - *a3
+      - *a23
+      - *a11
+  husbandry:
+    text: "For the recommended one male and four females, use at least 600 L with 150 cm length and about 60 cm
+      front-to-back room. The depth is a layout allowance for separate rock structures and retreat routes.
+      More fish may need a larger tank. Anchor rocks securely and leave swimming passages between them. Strong
+      oxygenation, suitable biological filtration and regular matched-water changes are essential. A stable 24
+      to 26 C is a well-supported routine target. The recorded tolerances are 21 to 29 C, pH 7.5 to 8.8, GH 3
+      to 25 dGH and KH 5 to 15 dKH; temperature extremes and the KH extension have weaker long-term support.
+      Test GH and KH separately and change conditions gradually."
+    sources:
+      - *a6
+      - *a7
+      - *a28
+      - *a38
+      - *a11
+      - *a9
+      - *a10
+      - *a23
+  socialBehavior:
+    text: "Keep a single adult male with four females in the minimum arrangement. Male pursuit can become
+      persistent, and rivals or unreceptive females need routes out of sight. The conspecific aggression
+      rating is 3: injuries become a substantial concern when space, shelter or the sex ratio is inadequate. A
+      female that hides constantly or misses meals may be under pressure before damage is obvious. Multiple
+      male groups need much more room and active management. Robust heterospecific mbuna can distribute
+      attention, but they also add territory and filtration demands."
+    sources:
+      - *a9
+      - *a28
+      - *a38
+      - *a13
+      - *a10
+  diet:
+    text: "Make a plant-rich mbuna formulation the main food, with spirulina-based flakes or pellets and rock
+      biofilm available for grazing. Small accepted portions of vegetables provide variety. Tiny animals in
+      the natural biofilm and opportunistically consumed fry do not change the aufwuchs feeding
+      classification. Predation level 1 is a conservative low-confidence decision, so exposed fry and very
+      small fish cannot be assumed safe. Avoid feeding to the fish's apparent appetite without checking body
+      condition and waste production. Some animal food is accepted, but rich feeding is linked in care sources
+      to digestive problems. The bloat sensitivity flag expresses a husbandry risk with multiple possible
+      contributing causes."
+    sources:
+      - *a2
+      - *a31
+      - *a10
+      - *a29
+      - *a9
+  breeding:
+    text: "Females incubate eggs and young orally, usually releasing fry after roughly three to four weeks. The
+      male courts multiple females and does not share brood care. A brooding female eats little and needs a
+      refuge from pursuit; unnecessary capture can interrupt incubation. If young are to be raised, prepare a
+      sheltered nursery with matched water and appropriate filtration. Finely divided suitable food can be
+      provided after release. Community adults may consume exposed fry. Species and locality records matter
+      because laboratory work has produced fertile fuelleborni and trewavasae hybrids under forced pairing."
+    sources:
+      - *a2
+      - *a15
+      - *a31
+      - *a9
+  sexing:
+    text: "Use several clues together when choosing adults. Males normally become larger and more strongly blue,
+      with conspicuous anal-fin markings; females are often greyish but may be orange or blotched. Rare
+      blotched males make colour alone unreliable. Juvenile and subordinate patterns can also mislead.
+      Brooding confirms a female in this maternal mouthbrooder. Ask for locality and breeding history as well
+      as sexing confidence. Distinguishing recently separated Labeotropheus species can require more than
+      judging colour or snout shape from a photograph."
+    sources:
+      - *a30
+      - *a9
+      - *a31
+      - *a12
+  compatibility:
+    text: "Adult robust mbuna with a compatible plant-rich staple are conditional companions in spacious aquaria.
+      Orange male Maylandia estherae, yellow male M. lombardoi and striped Pseudotropheus johannii are
+      examples requiring close observation; appearance differences may reduce rivalry but cannot prevent
+      attacks. The minimum aquarium describes the fuelleborni social unit, so additional groups need extra
+      room. Peaceful peacocks and open-water utaka are poor matches for the aggression rating of 3. Other
+      Labeotropheus species share the presumed hybrid group. The forced breeding experiments demonstrate
+      interfertility, without demonstrating free-choice crosses among every group member. Locality lines of
+      the same species can also lose identity when mixed."
+    sources:
+      - *a2
+      - *a15
+      - *a9
+      - *a28
+      - *a38
+      - kind: "database"
+        title: "Seriously Fish: Pseudotropheus estherae (valid name Maylandia estherae)"
+        url: "https://www.seriouslyfish.com/species/pseudotropheus-estherae/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Pseudotropheus lombardoi (valid name Maylandia lombardoi)"
+        url: "https://www.seriouslyfish.com/species/pseudotropheus-lombardoi/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Melanochromis johanni (valid name Pseudotropheus johannii)"
+        url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+        accessed: "2026-10-13"
+      - *a39
+  problems:
+    text: "Persistent harassment, inadequate oxygenation and excessive feeding are practical threats. Investigate
+      missed meals, sustained hiding and fin damage early by checking water quality and the social
+      arrangement. Abdominal swelling or abnormal breathing does not identify one cause on its own; persistent
+      illness needs qualified assessment. New arrivals should be quarantined and acclimated to existing
+      conditions. Keep refuges accessible as adults grow. Taxonomic confusion is another avoidable problem: a
+      familiar old locality name may now designate a separate valid species, so species and breeding-line
+      identity should be checked before combining stock."
+    sources:
+      - *a1
+      - *a30
+      - *a9
+      - *a10
+      - *a28
+provenance:
+  runs:
+    - role: "generator"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+    - role: "checker"
+      model: "claude-sonnet-5-5"
+      date: "2026-10-13"
+    - role: "checker"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+    - role: "checker"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+    - role: "checker"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+    - role: "checker"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+    - role: "adjudicator"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+  disagreements:
+    - field: "features.origin"
+      proposals:
+        - by: "generator"
+          value:
+            continent: "Africa"
+            region: "Lake Malawi, East Africa"
+            waterbody: "lake-malawi"
+            localities:
+              - "Lumbila, Tanzania (type locality)"
+              - "Chidunga Rocks"
+              - "Chimwalani Reef"
+        - by: "checker-a"
+          value:
+            continent: "Africa"
+            region: "Lake Malawi"
+            waterbody: "lake-malawi"
+            localities:
+              - "Chidunga Rocks"
+              - "Katale Island"
+              - "Chimwalani Reef"
+        - by: "checker-b"
+          value:
+            continent: "Africa"
+            region: "Lake Malawi"
+            waterbody: "lake-malawi"
+        - by: "checker-c"
+          value:
+            continent: "Africa"
+            region: "Lake Malawi"
+            waterbody: "lake-malawi"
+            localities:
+              - "Lumbila, Tanzania"
+              - "Chidunga Rocks"
+      decision:
+        continent: "Africa"
+        region: "Lake Malawi"
+        waterbody: "lake-malawi"
+        localities:
+          - "Lumbila, Tanzania"
+          - "Chidunga Rocks"
+      rationale: "The Catalog identifies the type locality near Lumbila in Tanzania, and the 2018 and 2023
+        experimental studies used fish collected at Chidunga Rocks. Generator includes these plus Chimwalani
+        Reef; checker-a adds Katale Island but omits Lumbila; checker-b gives the lake without locality
+        claims; checker-c gives Lumbila and Chidunga. Retain checker-c's two independently anchored
+        localities. Katale belongs to the separate valid L. chlorosiglos in the Catalog. Chimwalani is
+        retained as a qualified trade locality variant, supported by the specialist directory and publicly
+        verified by CRC, rather than added to the stronger catalog and research distribution evidence."
+    - field: "features.maxSizeCm"
+      proposals:
+        - by: "generator"
+          value:
+            male: 18
+            female: 15
+        - by: "checker-a"
+          value:
+            male: 17.5
+            female: 12
+        - by: "checker-b"
+          value:
+            male: 18
+            female: 15
+        - by: "checker-c"
+          value:
+            male: 18
+            female: 15
+      decision:
+        male: 18
+        female: 15
+      rationale: "Generator, checker-b and checker-c propose males 18 cm and females 15 cm; checker-a proposes 17.5
+        and 12 cm. Retain 18 and 15 cm as practical adult aquarium planning maxima: Malawi-Guru gives males
+        about 18 cm and females 14 to 15 cm, and Aqua-Fish gives an unsexed aquarium range of 13 to 18 cm.
+        Tropical Freshwater Fish gives 18 and 13 cm, while Oliver gives about 18 cm for both sexes. Female
+        maxima remain less settled. Seriously Fish's 17.5 cm is standard length and is not converted directly
+        into a total-length planning figure. FishBase's 30 cm male record and 8.7 cm female standard-length
+        record are not typical aquarium maxima; Oliver also disputes the attribution of the male figure. These
+        uncertainties prevent high confidence."
+    - field: "features.predation"
+      proposals:
+        - by: "generator"
+          value: 1
+        - by: "checker-a"
+          value: 0
+        - by: "checker-b"
+          value: 0
+        - by: "checker-c"
+          value: 0
+        - by: "tiebreaker-1"
+          value: 1
+        - by: "tiebreaker-2"
+          value: 1
+      decision: 1
+      rationale: "Generator, tiebreaker-1 and tiebreaker-2 propose level 1; checker-a, checker-b and checker-c
+        propose level 0. With only three of six votes for either value, tally uses conservative selection of
+        the higher proposed level, 1, and confidence low. USGS attributes opportunistic fry consumption to
+        Fryer (1959); the Aquarismo Paulista hobby page repeats fry consumption, and FishProfiles lists small
+        live fish without a supporting observation. The specialist algae-feeding accounts underpin the level-0
+        proposals but do not prove that opportunities to consume fish are ignored. FishBase explicitly
+        identifies the Bagrus prey record as eggs, so that entry is not independent evidence of fry predation.
+        The rubric boundary of about 2 cm is not a measured limit for this species. Fryer full text was
+        unavailable through fetch-oa in the input research, so the original observation is used only through
+        USGS."
+    - field: "features.diet"
+      proposals:
+        - by: "generator"
+          value:
+            type: "aufwuchs"
+            bloatSensitive: true
+            foods:
+              - "spirulina-based mbuna flakes"
+              - "plant-rich mbuna pellets"
+              - "algae and biofilm on rocks"
+              - "small portions of blanched vegetables"
+        - by: "checker-a"
+          value:
+            type: "aufwuchs"
+            bloatSensitive: true
+            foods:
+              - "spirulina flake"
+              - "blanched spinach"
+              - "algae wafers"
+              - "vegetable pellets"
+              - "occasional frozen food"
+        - by: "checker-b"
+          value:
+            type: "aufwuchs"
+            bloatSensitive: true
+            foods:
+              - "Algae-based cichlid flakes or pellets"
+              - "Spirulina"
+              - "Vegetable matter"
+              - "Small occasional invertebrate supplements"
+        - by: "checker-c"
+          value:
+            type: "aufwuchs"
+            bloatSensitive: true
+            foods:
+              - "Algae-based pellets"
+              - "Spirulina flakes"
+              - "Blanched vegetables"
+      decision:
+        type: "aufwuchs"
+        bloatSensitive: true
+        foods:
+          - "spirulina-based mbuna flakes"
+          - "plant-rich mbuna pellets"
+          - "algae and biofilm on rocks"
+          - "small portions of blanched vegetables"
+      rationale: "All four full-profile runs agree on aufwuchs and bloatSensitive true; tally assigns unanimous
+        verification and high confidence. Pauers describes morphology specialized for removing attached algae,
+        and FishBase, Seriously Fish and the husbandry directories favor a plant-rich staple. Small animal
+        foods and occasional fry do not displace that feeding category. Aqua-Fish and Oliver associate
+        inappropriate rich feeding with digestive disease, supporting a husbandry sensitivity flag rather than
+        a claim that protein alone causes every episode of bloat. The papers successfully used mixed diets.
+        Foods differ across proposals: generator lists spirulina flakes, plant-rich pellets, rock biofilm and
+        vegetables; checker-a adds algae wafers and occasional frozen food; checker-b includes occasional
+        invertebrates; checker-c lists algae pellets, spirulina and vegetables. The exact generator food list
+        selected by tally is retained."
+    - field: "features.aggressionConspecific"
+      proposals:
+        - by: "generator"
+          value: 4
+        - by: "checker-a"
+          value: 3
+        - by: "checker-b"
+          value: 3
+        - by: "checker-c"
+          value: 3
+      decision: 3
+      rationale: "Checker-a, checker-b and checker-c propose level 3; generator proposes level 4. Persistent rival
+        pursuit and female harassment justify level 3 under the rubric. Seriously Fish and Malawi-Guru require
+        multiple females and ample shelter; the specialist cautions strongly against small multi-male groups.
+        The retailer article discusses lethal harassment in confined polygamous mouthbrooders generally,
+        rather than establishing persistent lethal attacks by this species in the recommended spacious
+        single-male harem. That broader warning does not justify level 4 under the rubric's specified keeping
+        conditions. The Nordic account is milder and Tropical Freshwater Fish calls it relatively mild among
+        mbuna, so severity remains moderately confident."
+    - field: "features.aggressionHeterospecific"
+      proposals:
+        - by: "generator"
+          value: 3
+        - by: "checker-a"
+          value: 2
+        - by: "checker-b"
+          value: 3
+        - by: "checker-c"
+          value: 3
+      decision: 3
+      rationale: "Generator, checker-b and checker-c propose level 3; checker-a proposes level 2. Aqua-Fish reports
+        aggression toward other mbuna and Malawi-Guru restricts companions to equally assertive mbuna,
+        supporting the requirement for robust tankmates in level 3. Seriously Fish excludes peaceful peacocks
+        and utaka. The Nordic register and Tropical Freshwater Fish describe milder behavior, supporting the
+        lower proposal but offering less assurance for timid companions. No source establishes routine killing
+        of comparably robust adults in an adequate tank, so level 4 is not inferred."
+    - field: "features.social"
+      proposals:
+        - by: "generator"
+          value:
+            structure: "harem"
+            ratio: 4
+        - by: "checker-a"
+          value:
+            structure: "harem"
+            ratio: 3
+        - by: "checker-b"
+          value:
+            structure: "harem"
+            ratio: 3
+        - by: "checker-c"
+          value:
+            structure: "harem"
+            ratio: 4
+      decision:
+        structure: "harem"
+        ratio: 4
+      rationale: "Generator and checker-c propose one male with four females; checker-a and checker-b propose three.
+        Retain four females within Malawi-Guru's explicit three-to-four recommendation to spread courtship
+        pressure. Seriously Fish specifies at least three, so three is a plausible lower recommendation;
+        LiveAquaria's wider five-to-seven breeding recommendation is retained as low-weight context. This
+        selected social unit is a practical stocking decision and not a biologically proven optimum. It does
+        not imply a lasting harem bond in nature, where both sexes can mate with multiple partners."
+    - field: "features.coloration"
+      proposals:
+        - by: "generator"
+          value:
+            baseColors:
+              - "blue"
+              - "black"
+              - "orange"
+            pattern: "mixed"
+        - by: "checker-a"
+          value:
+            baseColors:
+              - "blue"
+            pattern: "bars"
+        - by: "checker-b"
+          value:
+            baseColors:
+              - "blue"
+              - "black"
+            pattern: "bars"
+        - by: "checker-c"
+          value:
+            baseColors:
+              - "blue"
+              - "black"
+            pattern: "mixed"
+      decision:
+        baseColors:
+          - "blue"
+          - "black"
+        pattern: "mixed"
+      rationale: "Generator proposes blue, black and orange with mixed pattern; checker-a blue with bars; checker-b
+        blue and black with bars; checker-c blue and black with mixed pattern. Retain checker-c's species-wide
+        pattern while keeping the base colours focused on typical adult males. Blue and dark markings are
+        widespread and rare blotched males justify mixed rather than universal bars. Orange female morphs and
+        occasional orange male accents remain described in variants and prose; they do not make orange a
+        dominant base colour of the typical male. The Katale, Maleri and Namalenje colour patterns are not
+        pooled from taxa the Catalog treats separately."
+    - field: "features.minTank"
+      proposals:
+        - by: "generator"
+          value:
+            volumeL: 600
+            lengthCm: 150
+            depthCm: 60
+        - by: "checker-a"
+          value:
+            volumeL: 200
+            lengthCm: 120
+            depthCm: 40
+        - by: "checker-b"
+          value:
+            volumeL: 400
+            lengthCm: 150
+            depthCm: 50
+        - by: "checker-c"
+          value:
+            volumeL: 600
+            lengthCm: 150
+            depthCm: 60
+      decision:
+        volumeL: 600
+        lengthCm: 150
+        depthCm: 60
+      rationale: "Generator and checker-c propose 600 L, 150 cm length and 60 cm depth; checker-a proposes 200 L,
+        120 cm and 40 cm; checker-b proposes 400 L, 150 cm and 50 cm. Retain the larger specialist 600 L and
+        150 cm floor for the chosen one-male, four-female adult unit, with 60 cm front-to-back depth as an
+        inferred layout allowance. This gives room for separated rocky retreats and is not a measured welfare
+        threshold. The Nordic header gives 350 L and 150 cm, Einrichtungsbeispiele 400 L and 150 cm, and
+        Seriously Fish gives a 154 L general minimum with a roughly 122 cm harem breeding recommendation. The
+        160 L research breeding tanks establish successful experimental reproduction under close management,
+        not a minimum home aquarium for long-term adult welfare. Added tankmate groups can require more room."
+    - field: "features.lifespanYears"
+      proposals:
+        - by: "generator"
+          value:
+            min: 8
+            max: 12
+        - by: "checker-a"
+          value:
+            min: 8
+            max: 12
+        - by: "checker-b"
+          value:
+            min: 8
+            max: 12
+        - by: "checker-c"
+          value:
+            min: 7
+            max: 12
+      decision:
+        min: 7
+        max: 12
+      rationale: "Generator, checker-a and checker-b propose 8 to 12 years; checker-c proposes 7 to 12. Retain the
+        broader 7 to 12 practical envelope because Monitarium gives seven years, Einrichtungsbeispiele eight
+        to twelve and Aqua-Fish an attainable upper age of ten to twelve. These are care estimates rather than
+        a verified survival cohort; seven is not a guaranteed minimum and twelve is not a demonstrated
+        physiological limit."
+    - field: "features.beginnerSuitability"
+      proposals:
+        - by: "generator"
+          value: "demanding"
+        - by: "checker-a"
+          value: "moderate"
+        - by: "checker-b"
+          value: "moderate"
+        - by: "checker-c"
+          value: "moderate"
+      decision: "demanding"
+      rationale: "Generator proposes demanding; checker-a, checker-b and checker-c propose moderate. Seriously Fish
+        and the Nordic register label routine care moderate, while Aqua-Fish favors experienced keepers and
+        Malawi-Guru emphasizes difficult social management. Select demanding for a first-time keeper because
+        the recommended large aquarium, persistent harassment and dietary restraint require prior planning and
+        intervention skills. This is an editorial husbandry assessment rather than a vote-bound hard feature.
+        The retailer easy label has low weight and does not resolve these combined demands."
+    - field: "taxonomy.synonyms"
+      proposals:
+        - by: "generator"
+          value:
+            - name: "Labeotropheus curvirostris"
+              note: "Junior synonym in the Catalog of Fishes."
+        - by: "checker-a"
+          value:
+            - name: "Labeotropheus curvirostris Ahl, 1926"
+              note: "Synonym in the Catalog of Fishes"
+        - by: "checker-b"
+          value:
+            - name: "Labeotropheus curvirostris"
+              note: "Junior synonym according to the Catalog of Fishes."
+        - by: "checker-c"
+          value:
+            - name: "Labeotropheus curvirostris"
+              note: "Junior synonym according to the Catalog of Fishes."
+      decision:
+        - name: "Labeotropheus curvirostris"
+          note: "Junior synonym in the Catalog of Fishes."
+      rationale: "All four runs identify the same junior synonym. Checker-a includes the authority in the name
+        string; the other runs use the bare binomial. Normalize to the bare binomial used by the schema
+        examples, following the Catalog. The taxa that CRC synonymizes are retained as separate valid species
+        under the Catalog treatment."
