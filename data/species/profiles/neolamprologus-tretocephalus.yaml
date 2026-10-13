@@ -1,0 +1,2784 @@
+schemaVersion: 1
+id: neolamprologus-tretocephalus
+legacyIds:
+  - 125
+status: described
+taxonomy:
+  validName: Neolamprologus tretocephalus
+  genus: Neolamprologus
+  species: tretocephalus
+  author: "(Boulenger, 1899)"
+  source:
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes: species of Neolamprologus, online version updated 21 September 2026"
+    url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Neolamprologus"
+    accessed: '2026-10-13'
+  synonyms:
+    - name: Lamprologus tretocephalus
+      note: "Original combination, not a separate species."
+  legacyNames:
+    - Neolamprologus tretocephalus
+  note: "Catalog of Fishes recognizes Neolamprologus tretocephalus, originally described as Lamprologus tretocephalus\
+    \ in 1899 from Albertville, now Kalemie. The Neolamprologus and Lamprologus lists were checked. Neolamprologus\
+    \ sexfasciatus is a separate valid species; the bar-count similarity does not make it a synonym."
+names:
+  trade:
+    en:
+      - Five-bar cichlid
+      - Five-barred lamprologus
+      - Tret
+variants: []
+features:
+  origin:
+    value:
+      continent: Africa
+      region: Northern half of Lake Tanganyika
+      waterbody: lake-tanganyika
+    confidence: high
+    rationale: "Catalog of Fishes establishes Lake Tanganyika endemism. FishBase and Fishkeeper restrict the distribution\
+      \ to the northern half and FishBase excludes Zambian waters. All four agents agree on that biological origin;\
+      \ checker-a uses the whole lake as region with the northern half in localities. The northern-half region\
+      \ is retained. AquaInfo claims the entire lake and MARE 2000 the southern shores, both rejected against\
+      \ the more specific distribution evidence."
+    sources:
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: species of Neolamprologus, online version updated 21 September\
+          \ 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Neolamprologus"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase species summary: Neolamprologus tretocephalus"
+        url: "https://www.fishbase.se/summary/Neolamprologus-tretocephalus.html"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "van Oosting, J. Neolamprologus tretocephalus. AquaInfo husbandry account"
+        url: "https://aquainfo.nl/en/article/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Maidenhead Aquatics Fishkeeper data bank: Five-bar Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/five-bar-cichlid"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "MARE 2000: Neolamprologus tretocephalus care sheet"
+        url: "https://www.mare2000.it/Pescidolce/neolamprologus_tre.htm"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: database
+          title: "FishBase species summary: Neolamprologus tretocephalus"
+          url: "https://www.fishbase.se/summary/Neolamprologus-tretocephalus.html"
+          accessed: '2026-10-13'
+        value:
+          continent: Africa
+          region: Northern half of Lake Tanganyika
+          waterbody: lake-tanganyika
+        note: "Northern-half distribution, with Zambia explicitly excluded."
+      - source:
+          kind: website
+          title: "Maidenhead Aquatics Fishkeeper data bank: Five-bar Cichlid"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/five-bar-cichlid"
+          accessed: '2026-10-13'
+        value:
+          continent: Africa
+          region: Northern half of Lake Tanganyika
+          waterbody: lake-tanganyika
+        note: Northern-half distribution in the care account.
+      - source:
+          kind: literature
+          title: "van Oosting, J. Neolamprologus tretocephalus. AquaInfo husbandry account"
+          url: "https://aquainfo.nl/en/article/neolamprologus-tretocephalus/"
+          accessed: '2026-10-13'
+        value:
+          continent: Africa
+          region: Lake Tanganyika
+          waterbody: lake-tanganyika
+        note: "Conflicting lake-wide distribution claim, rejected."
+      - source:
+          kind: website
+          title: "MARE 2000: Neolamprologus tretocephalus care sheet"
+          url: "https://www.mare2000.it/Pescidolce/neolamprologus_tre.htm"
+          accessed: '2026-10-13'
+        value:
+          continent: Africa
+          region: Southern Lake Tanganyika
+          waterbody: lake-tanganyika
+        note: "Conflicting southern-origin claim, rejected."
+  temperatureC:
+    value:
+      min: 23
+      max: 29
+    confidence: high
+    rationale: "The tally fixes the lake habitat envelope at 23 to 29 C with waterbody verification and high confidence.\
+      \ The Verburg et al. buoy series underlying that decision spans 23.85 to 29.01 C. Plisnier et al. and Langenberg\
+      \ report seasonal surface means of 24.4 and 27.2 C at Mpulungu; these are averages, not extrema, and describe\
+      \ the same sampling programme. The lake envelope includes seasonal and geographic variation rather than\
+      \ a constant aquarium target."
+    sources:
+      - kind: literature
+        title: "Plisnier, P.-D., Langenberg, V., Mwape, L., Chitamwembwa, D., Tshibangu, K. and Coenen, E. (1996).\
+          \ Limnological sampling during an annual cycle at three stations on Lake Tanganyika (1993-1994). FAO/FINNIDA\
+          \ Research for the Management of the Fisheries on Lake Tanganyika, GCP/RAF/271/FIN-TD/46."
+        url: "https://fao.org/fishery/static/LTR/FTP/TD46.PDF"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Plisnier, P.-D. (1996). Limnological sampling during a second annual cycle (1994-1995) and some\
+          \ comparisons with year one on Lake Tanganyika. FAO/FINNIDA GCP/RAF/271/FIN-TD/56."
+        url: "https://fao.org/fishery/static/LTR/FTP/TD56.PDF"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Verburg, P., Huttula, T., Kakogozo, B., Kihakwi, A., Kotilainen, P., Makasa, L. and Peltonen,\
+          \ A. (1997). Hydrodynamics of Lake Tanganyika and meteorological results. FAO/FINNIDA GCP/RAF/271/FIN-TD/59."
+        url: "https://fao.org/fishery/static/LTR/FTP/TD59.PDF"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Cohen, A. S., Talbot, M. R., Awramik, S. M., Dettman, D. L. and Abell, P. (1997). Lake level and\
+          \ paleoenvironmental history of Lake Tanganyika, Africa, as inferred from late Holocene and modern stromatolites.\
+          \ GSA Bulletin 109(4), 444-460 (Table 1, north basin surface water chemistry)."
+        url: "https://awramik.faculty.geol.ucsb.edu/pubs/COHE9740.pdf"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. PhD thesis, Wageningen University."
+        url: "https://doi.org/10.18174/121977"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+          \ of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Tanganyika: physical and chemical data after\
+          \ Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E10.htm"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Plisnier et al. (1999). Limnological annual cycle inferred from physical-chemical fluctuations
+          at three stations of Lake Tanganyika. Full text
+        url: "https://doi.org/10.1023/a:1003762119873"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Branchu, P. and Bergonzini, L. (2004). Chloride concentrations in Lake Tanganyika: an indicator\
+          \ of the hydrological budget? Hydrology and Earth System Sciences 8, 256-265."
+        url: "https://doi.org/10.5194/hess-8-256-2004"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: Plisnier et al. (1999). Limnological annual cycle inferred from physical-chemical fluctuations
+            at three stations of Lake Tanganyika. Full text
+          url: "https://doi.org/10.1023/a:1003762119873"
+          accessed: '2026-10-13'
+        value:
+          min: 24.4
+          max: 27.2
+        note: Dry- and wet-season surface means at Mpulungu; these means do not define the lake extrema.
+      - source:
+          kind: literature
+          title: "Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. PhD thesis, Wageningen University."
+          url: "https://doi.org/10.18174/121977"
+          accessed: '2026-10-13'
+        value:
+          min: 24.4
+          max: 27.2
+        note: "Chapter 2 reproduces the annual-cycle study; shared data, not independent replication."
+    tolerance:
+      value:
+        min: 23
+        max: 29
+      confidence: medium
+      rationale: "All four proposals are 23 to 29 C, retained by the tally as unanimous with medium confidence.\
+        \ Seriously Fish and FishProfiles recommend 23 to 27 C; Aquarismo Paulista gives 24 to 28 C and Fishkeeper\
+        \ 24 to 26 C. Aqua-Fish reaches lower, at 22 to 25 C, and LiveAquaria gives 22.22 to 27.78 C after conversion\
+        \ from Fahrenheit. The selected lower endpoint therefore excludes these wider low-temperature recommendations.\
+        \ Inclusion of 29 C follows the mandatory natural envelope, not demonstrated multiyear aquarium health\
+        \ at that endpoint."
+      sources:
+        - kind: database
+          title: "Seriously Fish species profile: Neolamprologus tretocephalus"
+          url: "https://www.seriouslyfish.com/species/neolamprologus-tretocephalus/"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "Aquarismo Paulista species care sheet: Neolamprologus Cinco Barras"
+          url: "https://www.aquarismopaulista.com/neolamprologus-tretocephalus/"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "FishBase: Neolamprologus tretocephalus"
+          url: "https://www.fishbase.se/summary/Neolamprologus-tretocephalus.html"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "FishProfiles: Neolamprologus tretocephalus"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_tretocephalus/"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "Aqua-Fish: Five-bar cichlid care sheet"
+          url: "https://en.aqua-fish.net/fish/five-bar-cichlid"
+          accessed: '2026-10-13'
+        - kind: literature
+          title: "Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. PhD thesis, Wageningen University."
+          url: "https://doi.org/10.18174/121977"
+          accessed: '2026-10-13'
+        - kind: literature
+          title: Plisnier et al. (1999). Limnological annual cycle inferred from physical-chemical fluctuations
+            at three stations of Lake Tanganyika. Full text
+          url: "https://doi.org/10.1023/a:1003762119873"
+          accessed: '2026-10-13'
+        - kind: website
+          title: "Maidenhead Aquatics Fishkeeper: Five-bar Cichlid"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/five-bar-cichlid"
+          accessed: '2026-10-13'
+        - kind: website
+          title: "LiveAquaria: Tretocephalus Cichlid structured care sheet"
+          url: "https://www.liveaquaria.com/products/tretocephalus-cichlid"
+          accessed: '2026-10-13'
+      evidence:
+        - source:
+            kind: database
+            title: "Seriously Fish species profile: Neolamprologus tretocephalus"
+            url: "https://www.seriouslyfish.com/species/neolamprologus-tretocephalus/"
+            accessed: '2026-10-13'
+          value:
+            min: 23
+            max: 27
+          note: Aquarium maintenance recommendation.
+        - source:
+            kind: database
+            title: "Aquarismo Paulista species care sheet: Neolamprologus Cinco Barras"
+            url: "https://www.aquarismopaulista.com/neolamprologus-tretocephalus/"
+            accessed: '2026-10-13'
+          value:
+            min: 24
+            max: 28
+          note: Aquarium maintenance recommendation.
+        - source:
+            kind: database
+            title: "FishBase: Neolamprologus tretocephalus"
+            url: "https://www.fishbase.se/summary/Neolamprologus-tretocephalus.html"
+            accessed: '2026-10-13'
+          value:
+            min: 24
+            max: 26
+        - source:
+            kind: database
+            title: "FishProfiles: Neolamprologus tretocephalus"
+            url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_tretocephalus/"
+            accessed: '2026-10-13'
+          value:
+            min: 23
+            max: 27
+        - source:
+            kind: database
+            title: "Aqua-Fish: Five-bar cichlid care sheet"
+            url: "https://en.aqua-fish.net/fish/five-bar-cichlid"
+            accessed: '2026-10-13'
+          value:
+            min: 22
+            max: 25
+        - source:
+            kind: literature
+            title: Plisnier et al. (1999). Limnological annual cycle inferred from physical-chemical fluctuations
+              at three stations of Lake Tanganyika. Full text
+            url: "https://doi.org/10.1023/a:1003762119873"
+            accessed: '2026-10-13'
+          value:
+            min: 24.4
+            max: 27.2
+          note: Dry- and wet-season surface means at Mpulungu; these means do not define the lake extrema.
+        - source:
+            kind: literature
+            title: "Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. PhD thesis, Wageningen University."
+            url: "https://doi.org/10.18174/121977"
+            accessed: '2026-10-13'
+          value:
+            min: 24.4
+            max: 27.2
+          note: "Chapter 2 reproduces the annual-cycle study; shared data, not independent replication."
+        - source:
+            kind: website
+            title: "Maidenhead Aquatics Fishkeeper: Five-bar Cichlid"
+            url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/five-bar-cichlid"
+            accessed: '2026-10-13'
+          value:
+            min: 24
+            max: 26
+          note: Aquarium recommendation.
+        - source:
+            kind: website
+            title: "LiveAquaria: Tretocephalus Cichlid structured care sheet"
+            url: "https://www.liveaquaria.com/products/tretocephalus-cichlid"
+            accessed: '2026-10-13'
+          value:
+            min: 22.22
+            max: 27.78
+          note: Converted from 72 to 82 F.
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+    verification:
+      method: waterbody
+      waterbody: lake-tanganyika
+  ph:
+    value:
+      min: 8.4
+      max: 9.4
+    confidence: high
+    rationale: "The waterbody decision fixes 8.4 to 9.4 at high confidence. The annual sampling programme reported\
+      \ by Plisnier et al. and reproduced in Langenberg measured 8.47 to 9.40 at 40 m in the northern basin, with\
+      \ surface values commonly near 9. FishBase gives 7.6 to 8.0 in its environment summary; that narrower and\
+      \ lower interval is not substituted for measured lake chemistry."
+    sources:
+      - kind: literature
+        title: "Plisnier, P.-D., Langenberg, V., Mwape, L., Chitamwembwa, D., Tshibangu, K. and Coenen, E. (1996).\
+          \ Limnological sampling during an annual cycle at three stations on Lake Tanganyika (1993-1994). FAO/FINNIDA\
+          \ Research for the Management of the Fisheries on Lake Tanganyika, GCP/RAF/271/FIN-TD/46."
+        url: "https://fao.org/fishery/static/LTR/FTP/TD46.PDF"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Plisnier, P.-D. (1996). Limnological sampling during a second annual cycle (1994-1995) and some\
+          \ comparisons with year one on Lake Tanganyika. FAO/FINNIDA GCP/RAF/271/FIN-TD/56."
+        url: "https://fao.org/fishery/static/LTR/FTP/TD56.PDF"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Verburg, P., Huttula, T., Kakogozo, B., Kihakwi, A., Kotilainen, P., Makasa, L. and Peltonen,\
+          \ A. (1997). Hydrodynamics of Lake Tanganyika and meteorological results. FAO/FINNIDA GCP/RAF/271/FIN-TD/59."
+        url: "https://fao.org/fishery/static/LTR/FTP/TD59.PDF"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Cohen, A. S., Talbot, M. R., Awramik, S. M., Dettman, D. L. and Abell, P. (1997). Lake level and\
+          \ paleoenvironmental history of Lake Tanganyika, Africa, as inferred from late Holocene and modern stromatolites.\
+          \ GSA Bulletin 109(4), 444-460 (Table 1, north basin surface water chemistry)."
+        url: "https://awramik.faculty.geol.ucsb.edu/pubs/COHE9740.pdf"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. PhD thesis, Wageningen University."
+        url: "https://doi.org/10.18174/121977"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+          \ of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Tanganyika: physical and chemical data after\
+          \ Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E10.htm"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Plisnier et al. (1999). Limnological annual cycle inferred from physical-chemical fluctuations
+          at three stations of Lake Tanganyika. Full text
+        url: "https://doi.org/10.1023/a:1003762119873"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Branchu, P. and Bergonzini, L. (2004). Chloride concentrations in Lake Tanganyika: an indicator\
+          \ of the hydrological budget? Hydrology and Earth System Sciences 8, 256-265."
+        url: "https://doi.org/10.5194/hess-8-256-2004"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: Plisnier et al. (1999). Limnological annual cycle inferred from physical-chemical fluctuations
+            at three stations of Lake Tanganyika. Full text
+          url: "https://doi.org/10.1023/a:1003762119873"
+          accessed: '2026-10-13'
+        value:
+          min: 8.47
+          max: 9.4
+        note: Annual measurements at 40 m near Bujumbura/Uvira.
+      - source:
+          kind: literature
+          title: "Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. PhD thesis, Wageningen University."
+          url: "https://doi.org/10.18174/121977"
+          accessed: '2026-10-13'
+        value:
+          min: 8.47
+          max: 9.4
+        note: "Chapter 2 repeats the same annual measurements, not an independent sample."
+    tolerance:
+      value:
+        min: 7.7
+        max: 9.4
+      confidence: medium
+      rationale: "The tally labels agreement unanimous within its range threshold and takes the rounded median\
+        \ endpoints. Generator proposed 7.8 to 9.4; checker-a and checker-c proposed 7.5 to 9.4; checker-b proposed\
+        \ 8.0 to 9.4. The lower median is 7.65, rounded to 7.7, with 9.4 retained to contain the natural range.\
+        \ Seriously Fish gives 7.5 to 9.0 and FishProfiles 7.5 to 8.5, both extending below the decided minimum;\
+        \ Garnelio starts at 7.8 and Fishkeeper at 8.0. Medium confidence reflects these differing care recommendations\
+        \ and the lack of chronic endpoint experiments."
+      sources:
+        - kind: database
+          title: "Seriously Fish species profile: Neolamprologus tretocephalus"
+          url: "https://www.seriouslyfish.com/species/neolamprologus-tretocephalus/"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "FishBase: Neolamprologus tretocephalus"
+          url: "https://www.fishbase.se/summary/Neolamprologus-tretocephalus.html"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "FishProfiles: Neolamprologus tretocephalus"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_tretocephalus/"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "Aqua-Fish: Five-bar cichlid care sheet"
+          url: "https://en.aqua-fish.net/fish/five-bar-cichlid"
+          accessed: '2026-10-13'
+        - kind: literature
+          title: "Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. PhD thesis, Wageningen University."
+          url: "https://doi.org/10.18174/121977"
+          accessed: '2026-10-13'
+        - kind: literature
+          title: Plisnier et al. (1999). Limnological annual cycle inferred from physical-chemical fluctuations
+            at three stations of Lake Tanganyika. Full text
+          url: "https://doi.org/10.1023/a:1003762119873"
+          accessed: '2026-10-13'
+        - kind: website
+          title: "Garnelio structured care sheet: Fuenfstreifen-Tanganjikabuntbarsch"
+          url: "https://www.garnelio.de/fuenfstreifen-tanganjikabuntbarsch-lamprologus-tretocephalus-raritaet"
+          accessed: '2026-10-13'
+        - kind: website
+          title: "Maidenhead Aquatics Fishkeeper: Five-bar Cichlid"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/five-bar-cichlid"
+          accessed: '2026-10-13'
+      evidence:
+        - source:
+            kind: database
+            title: "Seriously Fish species profile: Neolamprologus tretocephalus"
+            url: "https://www.seriouslyfish.com/species/neolamprologus-tretocephalus/"
+            accessed: '2026-10-13'
+          value:
+            min: 7.5
+            max: 9
+          note: Aquarium maintenance recommendation; lower than the chosen cautious minimum.
+        - source:
+            kind: database
+            title: "FishBase: Neolamprologus tretocephalus"
+            url: "https://www.fishbase.se/summary/Neolamprologus-tretocephalus.html"
+            accessed: '2026-10-13'
+          value:
+            min: 7.6
+            max: 8
+        - source:
+            kind: database
+            title: "FishProfiles: Neolamprologus tretocephalus"
+            url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_tretocephalus/"
+            accessed: '2026-10-13'
+          value:
+            min: 7.5
+            max: 8.5
+        - source:
+            kind: database
+            title: "Aqua-Fish: Five-bar cichlid care sheet"
+            url: "https://en.aqua-fish.net/fish/five-bar-cichlid"
+            accessed: '2026-10-13'
+          value:
+            min: 7.8
+            max: 8.9
+        - source:
+            kind: literature
+            title: Plisnier et al. (1999). Limnological annual cycle inferred from physical-chemical fluctuations
+              at three stations of Lake Tanganyika. Full text
+            url: "https://doi.org/10.1023/a:1003762119873"
+            accessed: '2026-10-13'
+          value:
+            min: 8.47
+            max: 9.4
+          note: Annual measurements at 40 m near Bujumbura/Uvira.
+        - source:
+            kind: literature
+            title: "Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. PhD thesis, Wageningen University."
+            url: "https://doi.org/10.18174/121977"
+            accessed: '2026-10-13'
+          value:
+            min: 8.47
+            max: 9.4
+          note: "Chapter 2 repeats the same annual measurements, not an independent sample."
+        - source:
+            kind: website
+            title: "Garnelio structured care sheet: Fuenfstreifen-Tanganjikabuntbarsch"
+            url: "https://www.garnelio.de/fuenfstreifen-tanganjikabuntbarsch-lamprologus-tretocephalus-raritaet"
+            accessed: '2026-10-13'
+          value:
+            min: 7.8
+            max: 9
+          note: Species care-sheet recommendation.
+        - source:
+            kind: website
+            title: "Maidenhead Aquatics Fishkeeper: Five-bar Cichlid"
+            url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/five-bar-cichlid"
+            accessed: '2026-10-13'
+          value:
+            min: 8
+            max: 9
+          note: Aquarium recommendation.
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+    verification:
+      method: waterbody
+      waterbody: lake-tanganyika
+  ghDgh:
+    value:
+      min: 10
+      max: 13
+    confidence: high
+    rationale: "The tally fixes the measured lake envelope at 10 to 13 dGH with high confidence. Plisnier programme\
+      \ station means correspond to approximately 11.1 to 11.5 dGH, while Cohen north-basin chemistry corresponds\
+      \ to about 12.2 dGH. Branchu and Bergonzini independently give about 10.55 dGH from surface calcium and\
+      \ magnesium. These support the compiled range; alkalinity is not relabelled as total hardness."
+    sources:
+      - kind: literature
+        title: "Plisnier, P.-D., Langenberg, V., Mwape, L., Chitamwembwa, D., Tshibangu, K. and Coenen, E. (1996).\
+          \ Limnological sampling during an annual cycle at three stations on Lake Tanganyika (1993-1994). FAO/FINNIDA\
+          \ Research for the Management of the Fisheries on Lake Tanganyika, GCP/RAF/271/FIN-TD/46."
+        url: "https://fao.org/fishery/static/LTR/FTP/TD46.PDF"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Plisnier, P.-D. (1996). Limnological sampling during a second annual cycle (1994-1995) and some\
+          \ comparisons with year one on Lake Tanganyika. FAO/FINNIDA GCP/RAF/271/FIN-TD/56."
+        url: "https://fao.org/fishery/static/LTR/FTP/TD56.PDF"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Verburg, P., Huttula, T., Kakogozo, B., Kihakwi, A., Kotilainen, P., Makasa, L. and Peltonen,\
+          \ A. (1997). Hydrodynamics of Lake Tanganyika and meteorological results. FAO/FINNIDA GCP/RAF/271/FIN-TD/59."
+        url: "https://fao.org/fishery/static/LTR/FTP/TD59.PDF"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Cohen, A. S., Talbot, M. R., Awramik, S. M., Dettman, D. L. and Abell, P. (1997). Lake level and\
+          \ paleoenvironmental history of Lake Tanganyika, Africa, as inferred from late Holocene and modern stromatolites.\
+          \ GSA Bulletin 109(4), 444-460 (Table 1, north basin surface water chemistry)."
+        url: "https://awramik.faculty.geol.ucsb.edu/pubs/COHE9740.pdf"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. PhD thesis, Wageningen University."
+        url: "https://doi.org/10.18174/121977"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+          \ of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Tanganyika: physical and chemical data after\
+          \ Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E10.htm"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Plisnier et al. (1999). Limnological annual cycle inferred from physical-chemical fluctuations
+          at three stations of Lake Tanganyika. Full text
+        url: "https://doi.org/10.1023/a:1003762119873"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Branchu, P. and Bergonzini, L. (2004). Chloride concentrations in Lake Tanganyika: an indicator\
+          \ of the hydrological budget? Hydrology and Earth System Sciences 8, 256-265."
+        url: "https://doi.org/10.5194/hess-8-256-2004"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: "Branchu, P. and Bergonzini, L. (2004). Chloride concentrations in Lake Tanganyika: an indicator\
+            \ of the hydrological budget? Hydrology and Earth System Sciences 8, 256-265."
+          url: "https://doi.org/10.5194/hess-8-256-2004"
+          accessed: '2026-10-13'
+        value:
+          min: 10.55
+          max: 10.55
+        note: "Table 2 surface-water means: Ca 0.273 mmol/L and Mg 1.611 mmol/L. Convert to mg/L, then calculate\
+          \ dGH as Ca/7.14 + Mg/4.34."
+    tolerance:
+      value:
+        min: 8
+        max: 25
+      confidence: medium
+      rationale: "All four proposals are 8 to 25 dGH, retained by the tally as unanimous with medium confidence.\
+        \ Seriously Fish supports the whole interval; FishProfiles and FishBase give 8 to 12 dGH, and Fishkeeper\
+        \ recommends 15 to 25 dGH. Aqua-Fish gives the wider upper recommendation of 18 to 30 dGH; its 30 dGH\
+        \ endpoint is not adopted because the stronger care accounts stop at 25. MARE 2000 gives 9 to 20 dGH for\
+        \ maintenance and an isolated 5 dGH breeding suggestion, which is not evidence for healthy long-term maintenance\
+        \ below 8."
+      sources:
+        - kind: database
+          title: "Seriously Fish species profile: Neolamprologus tretocephalus"
+          url: "https://www.seriouslyfish.com/species/neolamprologus-tretocephalus/"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "FishBase: Neolamprologus tretocephalus"
+          url: "https://www.fishbase.se/summary/Neolamprologus-tretocephalus.html"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "FishProfiles: Neolamprologus tretocephalus"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_tretocephalus/"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "Aqua-Fish: Five-bar cichlid care sheet"
+          url: "https://en.aqua-fish.net/fish/five-bar-cichlid"
+          accessed: '2026-10-13'
+        - kind: website
+          title: "Maidenhead Aquatics Fishkeeper data bank: Five-bar Cichlid"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/five-bar-cichlid"
+          accessed: '2026-10-13'
+        - kind: website
+          title: "Garnelio structured care sheet: Fuenfstreifen-Tanganjikabuntbarsch"
+          url: "https://www.garnelio.de/fuenfstreifen-tanganjikabuntbarsch-lamprologus-tretocephalus-raritaet"
+          accessed: '2026-10-13'
+        - kind: website
+          title: "MARE 2000: Neolamprologus tretocephalus care sheet"
+          url: "https://www.mare2000.it/Pescidolce/neolamprologus_tre.htm"
+          accessed: '2026-10-13'
+      evidence:
+        - source:
+            kind: database
+            title: "Seriously Fish species profile: Neolamprologus tretocephalus"
+            url: "https://www.seriouslyfish.com/species/neolamprologus-tretocephalus/"
+            accessed: '2026-10-13'
+          value:
+            min: 8
+            max: 25
+          note: Species aquarium recommendation.
+        - source:
+            kind: database
+            title: "FishBase: Neolamprologus tretocephalus"
+            url: "https://www.fishbase.se/summary/Neolamprologus-tretocephalus.html"
+            accessed: '2026-10-13'
+          value:
+            min: 8
+            max: 12
+        - source:
+            kind: database
+            title: "FishProfiles: Neolamprologus tretocephalus"
+            url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_tretocephalus/"
+            accessed: '2026-10-13'
+          value:
+            min: 8
+            max: 12
+        - source:
+            kind: database
+            title: "Aqua-Fish: Five-bar cichlid care sheet"
+            url: "https://en.aqua-fish.net/fish/five-bar-cichlid"
+            accessed: '2026-10-13'
+          value:
+            min: 18
+            max: 30
+          note: Conflicting care recommendation; its highest endpoint is not adopted.
+        - source:
+            kind: website
+            title: "Maidenhead Aquatics Fishkeeper data bank: Five-bar Cichlid"
+            url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/five-bar-cichlid"
+            accessed: '2026-10-13'
+          value:
+            min: 15
+            max: 25
+          note: Supports the higher hardness part of the envelope.
+        - source:
+            kind: website
+            title: "Garnelio structured care sheet: Fuenfstreifen-Tanganjikabuntbarsch"
+            url: "https://www.garnelio.de/fuenfstreifen-tanganjikabuntbarsch-lamprologus-tretocephalus-raritaet"
+            accessed: '2026-10-13'
+          value:
+            min: 9
+            max: 20
+          note: Narrower species aquarium recommendation.
+        - source:
+            kind: website
+            title: "MARE 2000: Neolamprologus tretocephalus care sheet"
+            url: "https://www.mare2000.it/Pescidolce/neolamprologus_tre.htm"
+            accessed: '2026-10-13'
+          value:
+            min: 9
+            max: 20
+          note: General care range; a separate breeding paragraph gives 5 dGH.
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+    verification:
+      method: waterbody
+      waterbody: lake-tanganyika
+  khDkh:
+    value:
+      min: 15
+      max: 20
+    confidence: high
+    rationale: "The tally fixes natural carbonate hardness at 15 to 20 dKH and high confidence; this plain natural\
+      \ fact carries no verification object. Plisnier programme alkalinity supplies the lower part of the compiled\
+      \ lake envelope. Langenberg cites 6.7 to 6.9 meq/L, equivalent to 18.76 to 19.32 dKH, and Branchu and Bergonzini\
+      \ surface means give 18.37 dKH. Lake sodium and potassium help balance this alkalinity, so KH can exceed\
+      \ calcium-magnesium GH."
+    sources:
+      - kind: literature
+        title: "Plisnier, P.-D., Langenberg, V., Mwape, L., Chitamwembwa, D., Tshibangu, K. and Coenen, E. (1996).\
+          \ Limnological sampling during an annual cycle at three stations on Lake Tanganyika (1993-1994). FAO/FINNIDA\
+          \ Research for the Management of the Fisheries on Lake Tanganyika, GCP/RAF/271/FIN-TD/46."
+        url: "https://fao.org/fishery/static/LTR/FTP/TD46.PDF"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Plisnier, P.-D. (1996). Limnological sampling during a second annual cycle (1994-1995) and some\
+          \ comparisons with year one on Lake Tanganyika. FAO/FINNIDA GCP/RAF/271/FIN-TD/56."
+        url: "https://fao.org/fishery/static/LTR/FTP/TD56.PDF"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Verburg, P., Huttula, T., Kakogozo, B., Kihakwi, A., Kotilainen, P., Makasa, L. and Peltonen,\
+          \ A. (1997). Hydrodynamics of Lake Tanganyika and meteorological results. FAO/FINNIDA GCP/RAF/271/FIN-TD/59."
+        url: "https://fao.org/fishery/static/LTR/FTP/TD59.PDF"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Cohen, A. S., Talbot, M. R., Awramik, S. M., Dettman, D. L. and Abell, P. (1997). Lake level and\
+          \ paleoenvironmental history of Lake Tanganyika, Africa, as inferred from late Holocene and modern stromatolites.\
+          \ GSA Bulletin 109(4), 444-460 (Table 1, north basin surface water chemistry)."
+        url: "https://awramik.faculty.geol.ucsb.edu/pubs/COHE9740.pdf"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. PhD thesis, Wageningen University."
+        url: "https://doi.org/10.18174/121977"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+          \ of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Tanganyika: physical and chemical data after\
+          \ Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E10.htm"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Plisnier et al. (1999). Limnological annual cycle inferred from physical-chemical fluctuations
+          at three stations of Lake Tanganyika. Full text
+        url: "https://doi.org/10.1023/a:1003762119873"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Branchu, P. and Bergonzini, L. (2004). Chloride concentrations in Lake Tanganyika: an indicator\
+          \ of the hydrological budget? Hydrology and Earth System Sciences 8, 256-265."
+        url: "https://doi.org/10.5194/hess-8-256-2004"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: "Branchu, P. and Bergonzini, L. (2004). Chloride concentrations in Lake Tanganyika: an indicator\
+            \ of the hydrological budget? Hydrology and Earth System Sciences 8, 256-265."
+          url: "https://doi.org/10.5194/hess-8-256-2004"
+          accessed: '2026-10-13'
+        value:
+          min: 18.37
+          max: 18.37
+        note: "Table 2 surface means: bicarbonate 6 mmol/L and carbonate 0.28 mmol/L. Alkalinity is (6 + 2 x 0.28)\
+          \ meq/L, multiplied by 2.8 for dKH."
+      - source:
+          kind: literature
+          title: "Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. PhD thesis, Wageningen University."
+          url: "https://doi.org/10.18174/121977"
+          accessed: '2026-10-13'
+        value:
+          min: 18.76
+          max: 19.32
+        note: "Alkalinity of 6.7 to 6.9 meq/L after Edmond et al. (1993), converted using 2.8 dKH per meq/L."
+    tolerance:
+      value:
+        min: 10
+        max: 20
+      confidence: low
+      rationale: "The tally decides 10 to 20 dKH by qualified majority, four of six votes, with low confidence.\
+        \ Generator proposed 15 to 20; checker-b proposed 14 to 20; checker-a, checker-c, tiebreaker-1 and tiebreaker-2\
+        \ proposed 10 to 20. LiveAquaria explicitly gives 10 to 20, Aqua-Pedia gives 10 to 18, and Garnelio 15\
+        \ to 20. WikiFish gives the wider upper interval of 14 to 24 dKH; its uncorroborated 24 endpoint is not\
+        \ adopted. Aqua-Pedia identifies its data as generated and manually reviewed, and retailers and care databases\
+        \ provide no multiyear exposure study. Neither general hardness nor pH alone establishes KH tolerance;\
+        \ the natural maximum of 20 is retained."
+      sources:
+        - kind: database
+          title: "Aquarium.org.il WikiFish species care sheet: Neolamprologus tretocephalus"
+          url: "https://www.aquarium.org.il/%D7%95%D7%99%D7%A7%D7%99%D7%A4%D7%99%D7%A9-%D7%98%D7%A8%D7%98%D7%95%D7%A6%D7%A4%D7%9C%D7%95%D7%A1-371"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "Seriously Fish: Neolamprologus tretocephalus"
+          url: "https://www.seriouslyfish.com/species/neolamprologus-tretocephalus/"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "FishProfiles: Neolamprologus tretocephalus"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_tretocephalus/"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "Aqua-Pedia: Neolamprologus tretocephalus structured care sheet"
+          url: "https://www.aqua-pedia.com/it/species/neolamprologus-tretocephalus-five-bar-cichlid"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "Aqua-Pedia: Five-bar cichlid (Neolamprologus tretocephalus), water parameters"
+          url: "https://www.aqua-pedia.com/en/species/neolamprologus-tretocephalus-five-bar-cichlid"
+          accessed: '2026-10-13'
+        - kind: literature
+          title: "Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. PhD thesis, Wageningen University."
+          url: "https://doi.org/10.18174/121977"
+          accessed: '2026-10-13'
+        - kind: literature
+          title: "Branchu, P. and Bergonzini, L. (2004). Chloride concentrations in Lake Tanganyika: an indicator\
+            \ of the hydrological budget? Hydrology and Earth System Sciences 8, 256-265."
+          url: "https://doi.org/10.5194/hess-8-256-2004"
+          accessed: '2026-10-13'
+        - kind: website
+          title: "Garnelio structured care sheet: Fuenfstreifen-Tanganjikabuntbarsch"
+          url: "https://www.garnelio.de/fuenfstreifen-tanganjikabuntbarsch-lamprologus-tretocephalus-raritaet"
+          accessed: '2026-10-13'
+        - kind: website
+          title: "LiveAquaria: Tretocephalus Cichlid structured care sheet"
+          url: "https://www.liveaquaria.com/products/tretocephalus-cichlid"
+          accessed: '2026-10-13'
+      evidence:
+        - source:
+            kind: database
+            title: "Aquarium.org.il WikiFish species care sheet: Neolamprologus tretocephalus"
+            url: "https://www.aquarium.org.il/%D7%95%D7%99%D7%A7%D7%99%D7%A4%D7%99%D7%A9-%D7%98%D7%A8%D7%98%D7%95%D7%A6%D7%A4%D7%9C%D7%95%D7%A1-371"
+            accessed: '2026-10-13'
+          value:
+            min: 14
+            max: 24
+          note: Numeric interval under the KH heading in the structured species care sheet.
+        - source:
+            kind: database
+            title: "Aqua-Pedia: Five-bar cichlid, generated and manually reviewed care data"
+            url: "https://www.aqua-pedia.com/en/species/neolamprologus-tretocephalus-five-bar-cichlid"
+            accessed: '2026-10-13'
+          value:
+            min: 10
+            max: 18
+          note: Explicit KH range; generated care data with unspecified primary references.
+        - source:
+            kind: database
+            title: "Aqua-Pedia: Neolamprologus tretocephalus structured care sheet"
+            url: "https://www.aqua-pedia.com/it/species/neolamprologus-tretocephalus-five-bar-cichlid"
+            accessed: '2026-10-13'
+          value:
+            min: 10
+            max: 18
+          note: Structured care data with limited traceable primary provenance.
+        - source:
+            kind: literature
+            title: "Branchu, P. and Bergonzini, L. (2004). Chloride concentrations in Lake Tanganyika: an indicator\
+              \ of the hydrological budget? Hydrology and Earth System Sciences 8, 256-265."
+            url: "https://doi.org/10.5194/hess-8-256-2004"
+            accessed: '2026-10-13'
+          value:
+            min: 18.37
+            max: 18.37
+          note: "Table 2 surface means: bicarbonate 6 mmol/L and carbonate 0.28 mmol/L. Alkalinity is (6 + 2 x\
+            \ 0.28) meq/L, multiplied by 2.8 for dKH."
+        - source:
+            kind: literature
+            title: "Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. PhD thesis, Wageningen University."
+            url: "https://doi.org/10.18174/121977"
+            accessed: '2026-10-13'
+          value:
+            min: 18.76
+            max: 19.32
+          note: "Alkalinity of 6.7 to 6.9 meq/L after Edmond et al. (1993), converted using 2.8 dKH per meq/L."
+        - source:
+            kind: website
+            title: "Garnelio structured care sheet: Fuenfstreifen-Tanganjikabuntbarsch"
+            url: "https://www.garnelio.de/fuenfstreifen-tanganjikabuntbarsch-lamprologus-tretocephalus-raritaet"
+            accessed: '2026-10-13'
+          value:
+            min: 15
+            max: 20
+          note: Explicit carbonate-hardness recommendation.
+        - source:
+            kind: website
+            title: "LiveAquaria: Tretocephalus Cichlid structured care sheet"
+            url: "https://www.liveaquaria.com/products/tretocephalus-cichlid"
+            accessed: '2026-10-13'
+          value:
+            min: 10
+            max: 20
+      verification:
+        method: qualified-majority
+        votes:
+          agree: 4
+          total: 6
+  maxSizeCm:
+    value:
+      male: 15
+      female: 12
+    confidence: medium
+    rationale: "Generator, checker-b and checker-c propose male 15 cm and female 12 cm; checker-a proposes 15\
+      \ and 13, with its female figure explicitly inferred. AquaInfo states 15 and 12, and my-fish independently\
+      \ gives females about 10 to 12 cm. FishProfiles lists 15 cm for both sexes and Garnelio gives females 10\
+      \ cm. The 15/12 adult aquarium estimate is retained with medium confidence because sex-specific measurements\
+      \ are limited. FishBase gives a 15 cm male or unsexed total-length maximum, not a measured female maximum;\
+      \ Seriously Fish gives 15 cm standard length, which is not directly interchangeable with total length."
+    sources:
+      - kind: literature
+        title: "van Oosting, J. Neolamprologus tretocephalus. AquaInfo husbandry account"
+        url: "https://aquainfo.nl/en/article/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Fish species care sheet: Five-bar cichlid"
+        url: "https://en.aqua-fish.net/fish/five-bar-cichlid"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishProfiles species entry: Neolamprologus tretocephalus"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Neolamprologus tretocephalus"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase: Neolamprologus tretocephalus"
+        url: "https://www.fishbase.se/summary/Neolamprologus-tretocephalus.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "my-fish Fishothek: Neolamprologus tretocephalus"
+        url: "https://my-fish.org/my-fishothek/neolamprologus-tretocephalus-funfstreifen-tanganjikaseebuntbarsch/"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Maidenhead Aquatics Fishkeeper data bank: Five-bar Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/five-bar-cichlid"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Garnelio structured care sheet: Fuenfstreifen-Tanganjikabuntbarsch"
+        url: "https://www.garnelio.de/fuenfstreifen-tanganjikabuntbarsch-lamprologus-tretocephalus-raritaet"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: "van Oosting, J. Neolamprologus tretocephalus. AquaInfo husbandry account"
+          url: "https://aquainfo.nl/en/article/neolamprologus-tretocephalus/"
+          accessed: '2026-10-13'
+        value:
+          male: 15
+          female: 12
+        note: Explicit aquarium sex maxima.
+      - source:
+          kind: database
+          title: "FishProfiles species entry: Neolamprologus tretocephalus"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_tretocephalus/"
+          accessed: '2026-10-13'
+        value:
+          male: 15
+          female: 15
+        note: Contrasting equal-sex size listing.
+      - source:
+          kind: website
+          title: "Garnelio structured care sheet: Fuenfstreifen-Tanganjikabuntbarsch"
+          url: "https://www.garnelio.de/fuenfstreifen-tanganjikabuntbarsch-lamprologus-tretocephalus-raritaet"
+          accessed: '2026-10-13'
+        value:
+          male: 15
+          female: 10
+        note: Contrasting retailer estimate.
+      - source:
+          kind: database
+          title: "my-fish Fishothek: Neolamprologus tretocephalus"
+          url: "https://my-fish.org/my-fishothek/neolamprologus-tretocephalus-funfstreifen-tanganjikaseebuntbarsch/"
+          accessed: '2026-10-13'
+        value:
+          male: 15
+          female: 12
+        note: Upper female estimate from 10 to 12 cm; the page is inconsistent about TL and SL.
+      - source:
+          kind: database
+          title: "FishBase species summary: Neolamprologus tretocephalus"
+          url: "https://www.fishbase.se/summary/Neolamprologus-tretocephalus.html"
+          accessed: '2026-10-13'
+        value:
+          male: 15
+        note: Male or unsexed TL maximum; no separate female measurement.
+      - source:
+          kind: database
+          title: "Seriously Fish species profile: Neolamprologus tretocephalus"
+          url: "https://www.seriouslyfish.com/species/neolamprologus-tretocephalus/"
+          accessed: '2026-10-13'
+        value:
+          male: 15
+        note: "Unsexed species maximum in SL, not a directly comparable total-length observation."
+  predation:
+    value: 1
+    confidence: medium
+    rationale: "All four agents propose level 1 and the tally records unanimous agreement with medium confidence.\
+      \ Van Oosting reports aquarium prey about 1 to 1.5 cm, explicitly smaller than 2 to 3 cm, matching opportunistic\
+      \ capture of fry and tiny fish. MARE 2000 lists small fish without a size threshold and carries less weight\
+      \ because of other care inaccuracies. FishBase publishes a 4.12 percent fish-egg component in one field\
+      \ diet table; eggs do not demonstrate regular attacks on larger live fish. Huyghe et al. found few fish-classified\
+      \ reads in the mixed-diet cluster, with within-tribe predation difficult to detect. These data support the\
+      \ chosen precaution without establishing level 2 or 3."
+    sources:
+      - kind: literature
+        title: "van Oosting, J. Neolamprologus tretocephalus. AquaInfo husbandry account"
+        url: "https://aquainfo.nl/en/article/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase species summary: Neolamprologus tretocephalus"
+        url: "https://www.fishbase.se/summary/Neolamprologus-tretocephalus.html"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Huyghe, C. E. T. et al. (2025). Metagenomic insights into the dietary diversity of the adaptive\
+          \ radiation of cichlid fishes in Lake Tanganyika. Molecular Ecology 34(9), e17743"
+        url: "https://doi.org/10.1111/mec.17743"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Neolamprologus tretocephalus"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase diet composition 2871: Yuma (1994), field sample of 18 fish"
+        url: "https://www.fishbase.se/TrophicEco/DietCompoSummary.php?dietcode=2871&genusname=Neolamprologus&speciesname=tretocephalus"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase diet composition 2872: Yuma et al. (1998), field sample of five fish"
+        url: "https://www.fishbase.se/TrophicEco/DietCompoSummary.php?dietcode=2872&genusname=Neolamprologus&speciesname=tretocephalus"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Tankora structured species care guide: Five Barred Cichlid"
+        url: "https://tankora.co.uk/five-barred-cichlid-care-guide/"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "MARE 2000: Neolamprologus tretocephalus care sheet"
+        url: "https://www.mare2000.it/Pescidolce/neolamprologus_tre.htm"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: "van Oosting, J. Neolamprologus tretocephalus. AquaInfo husbandry account"
+          url: "https://aquainfo.nl/en/article/neolamprologus-tretocephalus/"
+          accessed: '2026-10-13'
+        value: 1
+        note: Observed aquarium prey around 1 to 1.5 cm; direct rubric mapping.
+      - source:
+          kind: website
+          title: "MARE 2000: Neolamprologus tretocephalus care sheet"
+          url: "https://www.mare2000.it/Pescidolce/neolamprologus_tre.htm"
+          accessed: '2026-10-13'
+        value: 1
+        note: Small fish mentioned without measured sizes; level 1 is an interpretation with weak support.
+      - source:
+          kind: database
+          title: "FishBase diet composition 2871: Yuma (1994), field sample of 18 fish"
+          url: "https://www.fishbase.se/TrophicEco/DietCompoSummary.php?dietcode=2871&genusname=Neolamprologus&speciesname=tretocephalus"
+          accessed: '2026-10-13'
+        value: 1
+        note: "4.12 percent fish eggs in 18 sampled fish. Supports early fish-stage feeding, not the exact live-prey\
+          \ threshold."
+      - source:
+          kind: literature
+          title: "Huyghe, C. E. T. et al. (2025). Metagenomic insights into the dietary diversity of the adaptive\
+            \ radiation of cichlid fishes in Lake Tanganyika. Molecular Ecology 34(9), e17743"
+          url: "https://doi.org/10.1111/mec.17743"
+          accessed: '2026-10-13'
+        value: 1
+        note: Interpretation from few fish reads in its mixed-diet cluster. Within-tribe piscivory may be underestimated.
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  diet:
+    value:
+      type: invertivore
+      bloatSensitive: false
+      foods:
+        - Quality cichlid pellets
+        - Mysis shrimp
+        - Artemia
+        - Insect larvae
+        - Small snails
+    confidence: medium
+    rationale: "All four votes agree on invertivore and bloatSensitive false; the tally retains medium confidence\
+      \ and the generator food list exactly. Their differently worded food proposals all concern complete cichlid\
+      \ foods plus aquatic invertebrates. FishBase field records are dominated by insects, molluscs and crustaceans.\
+      \ Huyghe et al. instead place this species in a mixed invertebrate/plant-algae cluster, so the earlier invertivore\
+      \ classification simplifies a variable natural diet. LiveAquaria and archive accounts use omnivore for mixed\
+      \ aquarium food acceptance. Neither observation establishes a special protein-linked bloat conflict; false\
+      \ records the absence of that demonstrated dietary restriction, not disease immunity. CRC confirms insect\
+      \ and mollusc feeding only."
+    sources:
+      - kind: database
+        title: "FishBase species summary: Neolamprologus tretocephalus"
+        url: "https://www.fishbase.se/summary/Neolamprologus-tretocephalus.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish species profile: Neolamprologus tretocephalus"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Cichlid Room Companion public profile: Neolamprologus tretocephalus, verification only"
+        url: "https://cichlidae.com/species.php?id=mq9k7TNhVjfzVMdKyWJjfw"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Huyghe, C. E. T. et al. (2025). Metagenomic insights into the dietary diversity of the adaptive\
+          \ radiation of cichlid fishes in Lake Tanganyika. Molecular Ecology 34(9), e17743"
+        url: "https://doi.org/10.1111/mec.17743"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase diet composition 2871: Yuma (1994), field sample of 18 fish"
+        url: "https://www.fishbase.se/TrophicEco/DietCompoSummary.php?dietcode=2871&genusname=Neolamprologus&speciesname=tretocephalus"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase diet composition 2872: Yuma et al. (1998), field sample of five fish"
+        url: "https://www.fishbase.se/TrophicEco/DietCompoSummary.php?dietcode=2872&genusname=Neolamprologus&speciesname=tretocephalus"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Fish: Five-bar cichlid care sheet"
+        url: "https://en.aqua-fish.net/fish/five-bar-cichlid"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Maidenhead Aquatics Fishkeeper data bank: Five-bar Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/five-bar-cichlid"
+        accessed: '2026-10-13'
+      - kind: archive
+        title: cichlids.com forum thread 16400
+        url: "https://www.cichlids.com/disc/read.php?2,16400"
+        accessed: '2026-10-13'
+      - kind: archive
+        title: cichlids.com forum thread 13697
+        url: "https://www.cichlids.com/disc/read.php?2,13697"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "LiveAquaria: Tretocephalus Cichlid structured care sheet"
+        url: "https://www.liveaquaria.com/products/tretocephalus-cichlid"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: database
+          title: "FishBase species summary: Neolamprologus tretocephalus"
+          url: "https://www.fishbase.se/summary/Neolamprologus-tretocephalus.html"
+          accessed: '2026-10-13'
+        value:
+          type: invertivore
+          bloatSensitive: false
+        note: "Natural invertebrate diet is explicit; the absence of special protein sensitivity is inferred from\
+          \ that diet, not a disease trial."
+      - source:
+          kind: database
+          title: "FishBase: Neolamprologus tretocephalus"
+          url: "https://www.fishbase.se/summary/Neolamprologus-tretocephalus.html"
+          accessed: '2026-10-13'
+        value:
+          type: invertivore
+        note: "insect larvae, crustaceans, snails"
+      - source:
+          kind: literature
+          title: "Huyghe, C. E. T. et al. (2025). Metagenomic insights into the dietary diversity of the adaptive\
+            \ radiation of cichlid fishes in Lake Tanganyika. Molecular Ecology 34(9), e17743"
+          url: "https://doi.org/10.1111/mec.17743"
+          accessed: '2026-10-13'
+        value:
+          type: omnivore
+        note: "gut contents of the mixed-diet cluster, animal material dominant but with plant and algae reads"
+      - source:
+          kind: database
+          title: "Seriously Fish: Neolamprologus tretocephalus"
+          url: "https://www.seriouslyfish.com/species/neolamprologus-tretocephalus/"
+          accessed: '2026-10-13'
+        value:
+          type: invertivore
+        note: "carnivorous, meaty foods"
+      - source:
+          kind: database
+          title: "FishBase diet composition 2871: Yuma (1994), field sample of 18 fish"
+          url: "https://www.fishbase.se/TrophicEco/DietCompoSummary.php?dietcode=2871&genusname=Neolamprologus&speciesname=tretocephalus"
+          accessed: '2026-10-13'
+        value:
+          type: invertivore
+          bloatSensitive: false
+        note: "Most recorded food consists of insects, snails and crustaceans; bloat susceptibility was not tested."
+      - source:
+          kind: database
+          title: "FishBase diet composition 2872: Yuma et al. (1998), field sample of five fish"
+          url: "https://www.fishbase.se/TrophicEco/DietCompoSummary.php?dietcode=2872&genusname=Neolamprologus&speciesname=tretocephalus"
+          accessed: '2026-10-13'
+        value:
+          type: invertivore
+          bloatSensitive: false
+        note: 99 percent combined molluscs and mayfly nymphs plus 1 percent shrimp; no disease trial.
+      - source:
+          kind: database
+          title: "Cichlid Room Companion: Neolamprologus tretocephalus, public verification summary"
+          url: "https://cichlidae.com/species.php?id=mq9k7TNhVjfzVMdKyWJjfw"
+          accessed: '2026-10-13'
+        value:
+          type: invertivore
+          bloatSensitive: false
+        note: "Verification only: public feeding classification confirms insect and mollusc prey; it does not\
+          \ assess bloat."
+      - source:
+          kind: database
+          title: "Aqua-Fish: Five-bar cichlid care sheet"
+          url: "https://en.aqua-fish.net/fish/five-bar-cichlid"
+          accessed: '2026-10-13'
+        value:
+          type: invertivore
+          bloatSensitive: false
+      - source:
+          kind: website
+          title: "Maidenhead Aquatics Fishkeeper data bank: Five-bar Cichlid"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/five-bar-cichlid"
+          accessed: '2026-10-13'
+        value:
+          type: invertivore
+          bloatSensitive: false
+        note: Substrate invertebrate feeding and animal-food husbandry; no specific protein-linked bloat restriction.
+      - source:
+          kind: archive
+          title: cichlids.com forum thread 16400
+          url: "https://www.cichlids.com/disc/read.php?2,16400"
+          accessed: '2026-10-13'
+        value:
+          type: omnivore
+          bloatSensitive: false
+        note: Aquarium food acceptance only; low-weight counterpoint to the ecological category.
+      - source:
+          kind: archive
+          title: cichlids.com forum thread 13697
+          url: "https://www.cichlids.com/disc/read.php?2,13697"
+          accessed: '2026-10-13'
+        value:
+          type: invertivore
+          bloatSensitive: false
+        note: Low-weight practical report of accepting shrimp-based food in a mixed aquarium; not proof of diet
+          requirements or absence of disease.
+      - source:
+          kind: website
+          title: "LiveAquaria: Tretocephalus Cichlid structured care sheet"
+          url: "https://www.liveaquaria.com/products/tretocephalus-cichlid"
+          accessed: '2026-10-13'
+        value:
+          type: omnivore
+          bloatSensitive: false
+        note: Commercial care classification differs from natural prey evidence.
+      - source:
+          kind: archive
+          title: cichlids.com forum thread 13697
+          url: "https://www.cichlids.com/disc/read.php?2,13697"
+          accessed: '2026-10-13'
+        value:
+          type: omnivore
+          bloatSensitive: false
+        note: "Keeper reports acceptance of a mixed shrimp-and-pea food, not a wild dietary classification."
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  aggressionConspecific:
+    value: 4
+    confidence: high
+    rationale: All four agents propose level 4. Seriously Fish describes death of rejected females and loss of
+      tolerance between spawns; Van Oosting reports lethal partner conflict even in a two-metre aquarium. Multiple
+      independent accounts support high confidence. A compatible pair does not guarantee lasting protection of
+      either partner.
+    sources:
+      - kind: database
+        title: "Seriously Fish species profile: Neolamprologus tretocephalus"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "van Oosting, J. Neolamprologus tretocephalus. AquaInfo husbandry account"
+        url: "https://aquainfo.nl/en/article/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishProfiles: Neolamprologus tretocephalus"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Maidenhead Aquatics Fishkeeper data bank: Five-bar Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/five-bar-cichlid"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish species profile: Neolamprologus tretocephalus"
+          url: "https://www.seriouslyfish.com/species/neolamprologus-tretocephalus/"
+          accessed: '2026-10-13'
+        value: 4
+        note: Partner death and removal of surplus adults are explicitly discussed.
+      - source:
+          kind: literature
+          title: "van Oosting, J. Neolamprologus tretocephalus. AquaInfo husbandry account"
+          url: "https://aquainfo.nl/en/article/neolamprologus-tretocephalus/"
+          accessed: '2026-10-13'
+        value: 4
+        note: An incompatible female can be killed despite a 2 m aquarium.
+      - source:
+          kind: database
+          title: "FishProfiles: Neolamprologus tretocephalus"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_tretocephalus/"
+          accessed: '2026-10-13'
+        value: 3
+        note: "territorial, very aggressive when breeding"
+      - source:
+          kind: website
+          title: "Maidenhead Aquatics Fishkeeper: Five-bar Cichlid"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/five-bar-cichlid"
+          accessed: '2026-10-13'
+        value: 3
+        note: Severe conspecific aggression and weak pairing described without an explicit fatality report.
+  aggressionHeterospecific:
+    value: 3
+    confidence: medium
+    rationale: "All four agents propose level 3. Seriously Fish and Fishkeeper restrict mixed keeping to robust\
+      \ fish with separate space, while Van Oosting describes a broad defended breeding area. Aquarismo Paulista\
+      \ reports fatal attacks on barred companions, a level 4 counterpoint without a comparable suitable-tank\
+      \ context. Level 3 is retained with medium confidence for the recommended large layout; breeding escalation\
+      \ may require removal of companions."
+    sources:
+      - kind: literature
+        title: "van Oosting, J. Neolamprologus tretocephalus. AquaInfo husbandry account"
+        url: "https://aquainfo.nl/en/article/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aquarismo Paulista species care sheet: Neolamprologus Cinco Barras"
+        url: "https://www.aquarismopaulista.com/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Neolamprologus tretocephalus"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishProfiles: Neolamprologus tretocephalus"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Maidenhead Aquatics Fishkeeper data bank: Five-bar Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/five-bar-cichlid"
+        accessed: '2026-10-13'
+      - kind: archive
+        title: cichlids.com forum thread 13909
+        url: "https://www.cichlids.com/disc/read.php?2,13909"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: "van Oosting, J. Neolamprologus tretocephalus. AquaInfo husbandry account"
+          url: "https://aquainfo.nl/en/article/neolamprologus-tretocephalus/"
+          accessed: '2026-10-13'
+        value: 3
+        note: Large territory and recommendation for strong larger companions; rubric conversion.
+      - source:
+          kind: database
+          title: "Aquarismo Paulista species care sheet: Neolamprologus Cinco Barras"
+          url: "https://www.aquarismopaulista.com/neolamprologus-tretocephalus/"
+          accessed: '2026-10-13'
+        value: 4
+        note: "Fatal attacks on striped tankmates are described, without a suitable-tank comparison."
+      - source:
+          kind: database
+          title: "Seriously Fish: Neolamprologus tretocephalus"
+          url: "https://www.seriouslyfish.com/species/neolamprologus-tretocephalus/"
+          accessed: '2026-10-13'
+        value: 3
+        note: choose tankmates with care
+      - source:
+          kind: database
+          title: "FishProfiles: Neolamprologus tretocephalus"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_tretocephalus/"
+          accessed: '2026-10-13'
+        value: 3
+        note: only with similar-sized and similarly tempered Tanganyikans
+      - source:
+          kind: website
+          title: "Maidenhead Aquatics Fishkeeper data bank: Five-bar Cichlid"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/five-bar-cichlid"
+          accessed: '2026-10-13'
+        value: 3
+        note: Community recommendation restricted to similar-sized robust fishes; rubric conversion.
+  territory:
+    value:
+      size: large
+      breedingOnly: false
+    confidence: medium
+    rationale: "All four agents propose large territory outside breeding as well as during it. AquaInfo and the\
+      \ older TropicalFreshwaterFish account describe extensive defended areas, and Fishkeeper calls for broken\
+      \ sightlines. Large is retained with medium confidence: no source measures a diameter against the rubric\
+      \ threshold. Breeding intensifies an existing territorial pattern."
+    sources:
+      - kind: literature
+        title: "van Oosting, J. Neolamprologus tretocephalus. AquaInfo husbandry account"
+        url: "https://aquainfo.nl/en/article/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Neolamprologus tretocephalus"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishProfiles: Neolamprologus tretocephalus"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "TropicalFreshwaterFish species care sheet: Five-bar Cichlid"
+        url: "https://tropicalfreshwaterfish.com/species/Neolamprologus_tretocephalus.html"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Maidenhead Aquatics Fishkeeper data bank: Five-bar Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/five-bar-cichlid"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: "van Oosting, J. Neolamprologus tretocephalus. AquaInfo husbandry account"
+          url: "https://aquainfo.nl/en/article/neolamprologus-tretocephalus/"
+          accessed: '2026-10-13'
+        value:
+          size: large
+          breedingOnly: false
+        note: Extensive breeding defense and ongoing bullying; size category is a rubric conversion.
+      - source:
+          kind: database
+          title: "Seriously Fish: Neolamprologus tretocephalus"
+          url: "https://www.seriouslyfish.com/species/neolamprologus-tretocephalus/"
+          accessed: '2026-10-13'
+        value:
+          size: large
+          breedingOnly: false
+        note: Size class inferred from compatibility restrictions and required territorial separation.
+      - source:
+          kind: website
+          title: "TropicalFreshwaterFish species care sheet: Five-bar Cichlid"
+          url: "https://tropicalfreshwaterfish.com/species/Neolamprologus_tretocephalus.html"
+          accessed: '2026-10-13'
+        value:
+          size: large
+          breedingOnly: false
+        note: Large established territories explicitly described.
+      - source:
+          kind: website
+          title: "Maidenhead Aquatics Fishkeeper: Five-bar Cichlid"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/five-bar-cichlid"
+          accessed: '2026-10-13'
+        value:
+          size: large
+          breedingOnly: false
+        note: Space and broken sightlines are needed before and during spawning.
+  habitatZones:
+    value:
+      - rock
+      - sand
+    confidence: high
+    rationale: "All four agents propose rock and sand. FishBase describes substrate feeding among stones in shallow\
+      \ intermediate habitat, and Seriously Fish independently describes sand interrupted by rocks. Both zones\
+      \ are necessary; open swimming room in an aquarium does not add an open-water specialization. CRC verifies\
+      \ intermediate habitat."
+    sources:
+      - kind: database
+        title: "FishBase species summary: Neolamprologus tretocephalus"
+        url: "https://www.fishbase.se/summary/Neolamprologus-tretocephalus.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish species profile: Neolamprologus tretocephalus"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Cichlid Room Companion public profile: Neolamprologus tretocephalus, verification only"
+        url: "https://cichlidae.com/species.php?id=mq9k7TNhVjfzVMdKyWJjfw"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Maidenhead Aquatics Fishkeeper: Five-bar Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/five-bar-cichlid"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: database
+          title: "FishBase species summary: Neolamprologus tretocephalus"
+          url: "https://www.fishbase.se/summary/Neolamprologus-tretocephalus.html"
+          accessed: '2026-10-13'
+        value:
+          - rock
+          - sand
+        note: Substrate feeding in rocky and sandy intermediate habitat.
+      - source:
+          kind: database
+          title: "Seriously Fish species profile: Neolamprologus tretocephalus"
+          url: "https://www.seriouslyfish.com/species/neolamprologus-tretocephalus/"
+          accessed: '2026-10-13'
+        value:
+          - rock
+          - sand
+        note: Shallow rocky shores and scattered rocks over sand.
+      - source:
+          kind: database
+          title: "Cichlid Room Companion: Neolamprologus tretocephalus, public verification summary"
+          url: "https://cichlidae.com/species.php?id=mq9k7TNhVjfzVMdKyWJjfw"
+          accessed: '2026-10-13'
+        value:
+          - rock
+          - sand
+        note: "Verification only: public habitat classification agrees on the intermediate zone."
+      - source:
+          kind: website
+          title: "Maidenhead Aquatics Fishkeeper: Five-bar Cichlid"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/five-bar-cichlid"
+          accessed: '2026-10-13'
+        value:
+          - rock
+          - sand
+  social:
+    value:
+      structure: pair
+    confidence: high
+    rationale: All four agents propose one pair. Sefc reviews exclusive monogamy and biparental guarding in the
+      wild; Seriously Fish and Fishkeeper describe one breeding pair with a potentially temporary aquarium bond.
+      AquaInfo labels solitary in its summary while describing pairs in its narrative. Pair is retained with high
+      confidence as the adult reproductive unit; a single fish is an alternative and rejected partners may require
+      separation.
+    sources:
+      - kind: database
+        title: "Seriously Fish species profile: Neolamprologus tretocephalus"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "van Oosting, J. Neolamprologus tretocephalus. AquaInfo husbandry account"
+        url: "https://aquainfo.nl/en/article/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Sefc, K. M. (2011). Mating and parental care in Lake Tanganyika's cichlids. International Journal\
+          \ of Evolutionary Biology 2011, 470875"
+        url: "https://doi.org/10.4061/2011/470875"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Maidenhead Aquatics Fishkeeper data bank: Five-bar Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/five-bar-cichlid"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: "Sefc, K. M. (2011). Mating and parental care in Lake Tanganyika's cichlids. International Journal\
+            \ of Evolutionary Biology 2011, 470875"
+          url: "https://doi.org/10.4061/2011/470875"
+          accessed: '2026-10-13'
+        value:
+          structure: pair
+        note: Review of exclusive monogamy and biparental guarding.
+      - source:
+          kind: database
+          title: "Seriously Fish species profile: Neolamprologus tretocephalus"
+          url: "https://www.seriouslyfish.com/species/neolamprologus-tretocephalus/"
+          accessed: '2026-10-13'
+        value:
+          structure: pair
+        note: "One pair, with tolerance potentially ending after brood care."
+      - source:
+          kind: literature
+          title: "van Oosting, J. Neolamprologus tretocephalus. AquaInfo husbandry account"
+          url: "https://aquainfo.nl/en/article/neolamprologus-tretocephalus/"
+          accessed: '2026-10-13'
+        value:
+          structure: solitary
+        note: "Summary label, contrasting with pairs in the same narrative."
+  speciesOnly:
+    value: false
+    confidence: medium
+    rationale: "All four agents propose false and the tally records unanimous agreement with medium confidence.\
+      \ Seriously Fish and FishProfiles allow selected similar-sized Tanganyikans, and Fishkeeper permits a robust\
+      \ community while warning that breeding pairs can require separate quarters. False permits conditional mixed\
+      \ keeping, not a general community or companions in the minimum pair aquarium."
+    sources:
+      - kind: database
+        title: "Seriously Fish species profile: Neolamprologus tretocephalus"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "van Oosting, J. Neolamprologus tretocephalus. AquaInfo husbandry account"
+        url: "https://aquainfo.nl/en/article/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishProfiles: Neolamprologus tretocephalus"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Maidenhead Aquatics Fishkeeper data bank: Five-bar Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/five-bar-cichlid"
+        accessed: '2026-10-13'
+      - kind: archive
+        title: cichlids.com forum thread 13909
+        url: "https://www.cichlids.com/disc/read.php?2,13909"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish species profile: Neolamprologus tretocephalus"
+          url: "https://www.seriouslyfish.com/species/neolamprologus-tretocephalus/"
+          accessed: '2026-10-13'
+        value: false
+        note: Allows selected Cyprichromis and larger rock-dwellers if enough space and territories exist.
+      - source:
+          kind: database
+          title: "FishProfiles: Neolamprologus tretocephalus"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_tretocephalus/"
+          accessed: '2026-10-13'
+        value: false
+        note: keep with similar-sized Tanganyikans
+      - source:
+          kind: website
+          title: "Maidenhead Aquatics Fishkeeper data bank: Five-bar Cichlid"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/five-bar-cichlid"
+          accessed: '2026-10-13'
+        value: false
+        note: Allows a robust Tanganyikan community but recommends isolating an aggressive breeding pair.
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  hybridGroups:
+    value:
+      - neolamprologus-sexfasciatus-tretocephalus
+    confidence: low
+    rationale: "The tally decides neolamprologus-sexfasciatus-tretocephalus by its conservative rule, with three\
+      \ of six agreeing votes and low confidence. Generator, checker-a and checker-b proposed an empty list; checker-c,\
+      \ tiebreaker-1 and tiebreaker-2 proposed this single pairwise group. No proposal reaches four votes, so\
+      \ the rule retains groups proposed at least twice. Sturmbauer et al. recover the two species as genetically\
+      \ close sisters with mitochondrial and nuclear markers; my-fish also describes them as sisters. Aquarist\
+      \ Atlas supplies a general congener crossing caution, and CRC verifies their classification association\
+      \ only. No verified hybrid or free-choice cross of this named pair was found. Close relationship qualifies\
+      \ only for presumed basis under the rubric; the group does not extend to the rest of Neolamprologus. Irisarri\
+      \ et al. discuss much older lineage introgression rather than this pair crossing."
+    sources:
+      - kind: literature
+        title: "Sturmbauer, C., Salzburger, W., Duftner, N., Schelly, R. and Koblmuller, S. (2010). Evolutionary\
+          \ history of the Lake Tanganyika cichlid tribe Lamprologini derived from mitochondrial and nuclear DNA\
+          \ data. Molecular Phylogenetics and Evolution 57, 266-284."
+        url: "https://doi.org/10.1016/j.ympev.2010.06.018"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "my-fish Fishothek: Neolamprologus tretocephalus"
+        url: "https://my-fish.org/my-fishothek/neolamprologus-tretocephalus-funfstreifen-tanganjikaseebuntbarsch/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish species profile: Neolamprologus tretocephalus"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Irisarri et al. (2018). Phylogenomics uncovers early hybridization and adaptive loci shaping the
+          radiation of Lake Tanganyika cichlid fishes. Full text
+        url: "https://doi.org/10.1038/s41467-018-05479-9"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Cichlid Room Companion public profile: Neolamprologus tretocephalus, verification only"
+        url: "https://cichlidae.com/species.php?id=mq9k7TNhVjfzVMdKyWJjfw"
+        accessed: '2026-10-13'
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: species of Neolamprologus, online version updated 21 September\
+          \ 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Neolamprologus"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Aquarist Atlas: Neolamprologus tretocephalus"
+        url: "https://www.aquaristatlas.com/species/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: "Sturmbauer, C., Salzburger, W., Duftner, N., Schelly, R. and Koblmuller, S. (2010). Evolutionary\
+            \ history of the Lake Tanganyika cichlid tribe Lamprologini derived from mitochondrial and nuclear\
+            \ DNA data. Molecular Phylogenetics and Evolution 57, 266-284."
+          url: "https://doi.org/10.1016/j.ympev.2010.06.018"
+          accessed: '2026-10-13'
+        value:
+          - neolamprologus-sexfasciatus-tretocephalus
+        note: Rubric inference from a genetically close sister relationship; no named cross reported.
+      - source:
+          kind: database
+          title: "my-fish Fishothek: Neolamprologus tretocephalus"
+          url: "https://my-fish.org/my-fishothek/neolamprologus-tretocephalus-funfstreifen-tanganjikaseebuntbarsch/"
+          accessed: '2026-10-13'
+        value:
+          - neolamprologus-sexfasciatus-tretocephalus
+        note: "Sister-species description mapped to presumed membership, not offspring evidence."
+      - source:
+          kind: website
+          title: "Aquarist Atlas: Neolamprologus tretocephalus"
+          url: "https://www.aquaristatlas.com/species/neolamprologus-tretocephalus/"
+          accessed: '2026-10-13'
+        value:
+          - neolamprologus-sexfasciatus-tretocephalus
+        note: Close relationship and general congener caution; no verified hybrid of this pair.
+      - source:
+          kind: database
+          title: "Seriously Fish species profile: Neolamprologus tretocephalus"
+          url: "https://www.seriouslyfish.com/species/neolamprologus-tretocephalus/"
+          accessed: '2026-10-13'
+        value: []
+        note: Distinguishes the species but reports no cross; this is not proof of reproductive isolation.
+      - source:
+          kind: literature
+          title: Irisarri et al. (2018). Phylogenomics uncovers early hybridization and adaptive loci shaping
+            the radiation of Lake Tanganyika cichlid fishes. Full text
+          url: "https://doi.org/10.1038/s41467-018-05479-9"
+          accessed: '2026-10-13'
+        value: []
+        note: Deep lineage introgression discussed; no verified cross of this named pair.
+    verification:
+      method: conservative
+      votes:
+        agree: 3
+        total: 6
+  coloration:
+    value:
+      baseColors:
+        - white
+        - silver
+        - blue
+        - black
+      pattern: bars
+    confidence: high
+    rationale: "Generator proposes white, silver, blue and black; checker-a silver and black; checker-b and checker-c\
+      \ white, black and blue. All propose bars. AquaInfo describes a silver-grey ground with dark blue bars and\
+      \ blue fins, while FishProfiles gives white, black and blue. The merged white/silver/blue/black palette\
+      \ records descriptive variation, not separate morphs, with high confidence. Five flank bars are counted\
+      \ independently of the facial mark."
+    sources:
+      - kind: literature
+        title: "van Oosting, J. Neolamprologus tretocephalus. AquaInfo husbandry account"
+        url: "https://aquainfo.nl/en/article/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishProfiles species entry: Neolamprologus tretocephalus"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Neolamprologus tretocephalus"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "TropicalFreshwaterFish species care sheet: Five-bar Cichlid"
+        url: "https://tropicalfreshwaterfish.com/species/Neolamprologus_tretocephalus.html"
+        accessed: '2026-10-13'
+      - kind: model-knowledge
+        title: Model knowledge of the pale body colour
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: "van Oosting, J. Neolamprologus tretocephalus. AquaInfo husbandry account"
+          url: "https://aquainfo.nl/en/article/neolamprologus-tretocephalus/"
+          accessed: '2026-10-13'
+        value:
+          baseColors:
+            - silver
+            - blue
+            - black
+          pattern: bars
+        note: "Silvery body, dark blue bands and blue fins."
+      - source:
+          kind: database
+          title: "FishProfiles species entry: Neolamprologus tretocephalus"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_tretocephalus/"
+          accessed: '2026-10-13'
+        value:
+          baseColors:
+            - white
+            - black
+            - blue
+          pattern: bars
+        note: Lists these main colors and a vertical pattern.
+      - source:
+          kind: literature
+          title: "van Oosting, J. Neolamprologus tretocephalus. AquaInfo husbandry account"
+          url: "https://aquainfo.nl/en/article/neolamprologus-tretocephalus/"
+          accessed: '2026-10-13'
+        value:
+          baseColors:
+            - silver
+            - grey
+            - blue
+          pattern: bars
+        note: Dark bars and blue fins are described; the account emphasizes a grey to silver ground.
+      - source:
+          kind: database
+          title: "FishProfiles: Neolamprologus tretocephalus"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_tretocephalus/"
+          accessed: '2026-10-13'
+        value:
+          baseColors:
+            - black
+            - white
+            - blue
+          pattern: bars
+      - source:
+          kind: literature
+          title: "van Oosting, J. Neolamprologus tretocephalus. AquaInfo husbandry account"
+          url: "https://aquainfo.nl/en/article/neolamprologus-tretocephalus/"
+          accessed: '2026-10-13'
+        value:
+          baseColors:
+            - grey
+            - silver
+            - blue
+          pattern: bars
+        note: Describes a grey-silver body and dark blue bars.
+      - source:
+          kind: website
+          title: "Tropical Freshwater Fish: Five-bar Cichlid species profile"
+          url: "https://tropicalfreshwaterfish.com/species/Neolamprologus_tretocephalus.html"
+          accessed: '2026-10-13'
+        value:
+          baseColors:
+            - white
+            - black
+            - blue
+          pattern: bars
+  feedingSpeed:
+    value: normal
+    confidence: low
+    rationale: "All four agents propose normal, but no consulted source compares feeding speed. Van Oosting reports\
+      \ acceptance of prepared and frozen foods; that alone is only indirect support for the category. Low confidence\
+      \ is retained without claiming measured competitive feeding ability."
+    sources:
+      - kind: literature
+        title: "van Oosting, J. Neolamprologus tretocephalus. AquaInfo husbandry account"
+        url: "https://aquainfo.nl/en/article/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: model-knowledge
+        title: Model knowledge of lamprologine feeding behaviour
+        accessed: '2026-10-13'
+      - kind: model-knowledge
+        title: Checker inference where published husbandry accounts omit a quantitative measurement
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: "van Oosting, J. Neolamprologus tretocephalus. AquaInfo husbandry account"
+          url: "https://aquainfo.nl/en/article/neolamprologus-tretocephalus/"
+          accessed: '2026-10-13'
+        value: normal
+        note: Inferred from readily accepted foods; no feeding-speed measurement.
+      - source:
+          kind: model-knowledge
+          title: Checker inference where published husbandry accounts omit a quantitative measurement
+          accessed: '2026-10-13'
+        value: normal
+        note: No comparative feeding-speed data found.
+  minTank:
+    value:
+      volumeL: 400
+      lengthCm: 150
+      depthCm: 50
+    confidence: medium
+    rationale: "Generator proposes 400 L with a 150 by 50 cm footprint; checker-a 200 L with 120 by 40 cm; checker-b\
+      \ and checker-c 300 L with 150 by 40 cm. The larger 400 L, 150 by 50 cm pair setup is retained as a cautious\
+      \ spatial synthesis, with medium confidence. Garnelio explicitly recommends 400 L, and Fishkeeper asks for\
+      \ five feet, 152.4 cm, rounded here to the customary 150 cm tank class. The 50 cm depth is inferred room\
+      \ for retreats and divided sightlines. Seriously Fish gives 108 L and 120 by 30 cm for a mated pair; Aqua-Fish\
+      \ about 200 L; TropicalFreshwaterFish 209 L and 122 cm; WikiFish 250 L. Their smaller recommendations offer\
+      \ less margin for documented partner aggression. This minimum concerns one compatible pair, not a community\
+      \ or a guarantee against partner rejection."
+    sources:
+      - kind: database
+        title: "Seriously Fish species profile: Neolamprologus tretocephalus"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishProfiles: Neolamprologus tretocephalus"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aquarium.org.il Wikipish: Neolamprologus tretocephalus, entry 371"
+        url: "https://www.aquarium.org.il/%D7%95%D7%99%D7%A7%D7%99%D7%A4%D7%99%D7%A9-%D7%98%D7%A8%D7%98%D7%95%D7%A6%D7%A4%D7%9C%D7%95%D7%A1-371"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Fish: Five-bar cichlid care sheet"
+        url: "https://en.aqua-fish.net/fish/five-bar-cichlid"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Garnelio structured care sheet: Fuenfstreifen-Tanganjikabuntbarsch"
+        url: "https://www.garnelio.de/fuenfstreifen-tanganjikabuntbarsch-lamprologus-tretocephalus-raritaet"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Maidenhead Aquatics Fishkeeper data bank: Five-bar Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/five-bar-cichlid"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "TropicalFreshwaterFish species care sheet: Five-bar Cichlid"
+        url: "https://tropicalfreshwaterfish.com/species/Neolamprologus_tretocephalus.html"
+        accessed: '2026-10-13'
+      - kind: model-knowledge
+        title: Checker inference where published husbandry accounts omit a quantitative measurement
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish species profile: Neolamprologus tretocephalus"
+          url: "https://www.seriouslyfish.com/species/neolamprologus-tretocephalus/"
+          accessed: '2026-10-13'
+        value:
+          volumeL: 108
+          lengthCm: 120
+          depthCm: 30
+        note: Smaller recommendation for a mated pair; not adopted.
+      - source:
+          kind: database
+          title: "Aquarium.org.il Wikipish: Neolamprologus tretocephalus, entry 371"
+          url: "https://www.aquarium.org.il/%D7%95%D7%99%D7%A7%D7%99%D7%A4%D7%99%D7%A9-%D7%98%D7%A8%D7%98%D7%95%D7%A6%D7%A4%D7%9C%D7%95%D7%A1-371"
+          accessed: '2026-10-13'
+        value:
+          volumeL: 250
+        note: Atlas recommends at least 250 L for maintenance; footprint dimensions are not stated.
+      - source:
+          kind: database
+          title: "Aqua-Fish: Five-bar cichlid care sheet"
+          url: "https://en.aqua-fish.net/fish/five-bar-cichlid"
+          accessed: '2026-10-13'
+        value:
+          volumeL: 200
+        note: "Pair minimum, no exact footprint stated."
+      - source:
+          kind: website
+          title: "Garnelio structured care sheet: Fuenfstreifen-Tanganjikabuntbarsch"
+          url: "https://www.garnelio.de/fuenfstreifen-tanganjikabuntbarsch-lamprologus-tretocephalus-raritaet"
+          accessed: '2026-10-13'
+        value:
+          volumeL: 400
+        note: Species minimum recommendation.
+      - source:
+          kind: website
+          title: "Maidenhead Aquatics Fishkeeper data bank: Five-bar Cichlid"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/five-bar-cichlid"
+          accessed: '2026-10-13'
+        value:
+          lengthCm: 152.4
+        note: 5 ft minimum converted to centimetres; selected 150 cm is the practical rounded category.
+      - source:
+          kind: website
+          title: "TropicalFreshwaterFish species care sheet: Five-bar Cichlid"
+          url: "https://tropicalfreshwaterfish.com/species/Neolamprologus_tretocephalus.html"
+          accessed: '2026-10-13'
+        value:
+          volumeL: 209
+          lengthCm: 122
+        note: Adult minimum in the older guide; narrower safety margin.
+      - source:
+          kind: model-knowledge
+          title: Checker inference where published husbandry accounts omit a quantitative measurement
+          accessed: '2026-10-13'
+        value:
+          volumeL: 300
+          lengthCm: 150
+          depthCm: 40
+        note: "Derived working footprint, with roughly 50 cm water-column height."
+  lifespanYears:
+    value:
+      min: 5
+      max: 8
+    confidence: medium
+    rationale: "Generator, checker-b and checker-c propose 5 to 8 years; checker-a proposes 6 to 10 by analogy\
+      \ without a species-specific source. Aqua-Fish directly gives 5 to 8 and Aquarismo Paulista 5 years or more.\
+      \ The 5 to 8 estimate is retained with medium confidence. Garnelio claims up to 10 and my-fish about 10\
+      \ to 12, so longer lifespans than the decided planning range are reported, but none provides longitudinal\
+      \ cohort evidence."
+    sources:
+      - kind: database
+        title: "Aqua-Fish species care sheet: Five-bar cichlid"
+        url: "https://en.aqua-fish.net/fish/five-bar-cichlid"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aquarismo Paulista species care sheet: Neolamprologus Cinco Barras"
+        url: "https://www.aquarismopaulista.com/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "my-fish Fishothek: Neolamprologus tretocephalus"
+        url: "https://my-fish.org/my-fishothek/neolamprologus-tretocephalus-funfstreifen-tanganjikaseebuntbarsch/"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Garnelio structured care sheet: Fuenfstreifen-Tanganjikabuntbarsch"
+        url: "https://www.garnelio.de/fuenfstreifen-tanganjikabuntbarsch-lamprologus-tretocephalus-raritaet"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: database
+          title: "Aqua-Fish species care sheet: Five-bar cichlid"
+          url: "https://en.aqua-fish.net/fish/five-bar-cichlid"
+          accessed: '2026-10-13'
+        value:
+          min: 5
+          max: 8
+        note: Approximate typical care lifespan.
+      - source:
+          kind: database
+          title: "Aquarismo Paulista species care sheet: Neolamprologus Cinco Barras"
+          url: "https://www.aquarismopaulista.com/neolamprologus-tretocephalus/"
+          accessed: '2026-10-13'
+        value:
+          min: 5
+        note: "At least five years stated, no upper boundary supplied."
+      - source:
+          kind: website
+          title: "Garnelio structured care sheet: Fuenfstreifen-Tanganjikabuntbarsch"
+          url: "https://www.garnelio.de/fuenfstreifen-tanganjikabuntbarsch-lamprologus-tretocephalus-raritaet"
+          accessed: '2026-10-13'
+        value:
+          max: 10
+        note: "Possible upper lifespan, not a typical range."
+      - source:
+          kind: database
+          title: "my-fish Fishothek: Neolamprologus tretocephalus"
+          url: "https://my-fish.org/my-fishothek/neolamprologus-tretocephalus-funfstreifen-tanganjikaseebuntbarsch/"
+          accessed: '2026-10-13'
+        value:
+          min: 10
+          max: 12
+        note: Longer care estimate without cohort records.
+  breeding:
+    value: cave-spawner
+    confidence: high
+    rationale: "All four agents propose cave-spawner. Seriously Fish and the independent AquaInfo husbandry account\
+      \ describe eggs within protected rock cavities and parental defence. Sefc independently reviews biparental\
+      \ guarding, and CRC verifies cave substrate spawning. High confidence applies to breeding mode; exact brood\
+      \ timing varies among accounts."
+    sources:
+      - kind: database
+        title: "Seriously Fish species profile: Neolamprologus tretocephalus"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "van Oosting, J. Neolamprologus tretocephalus. AquaInfo husbandry account"
+        url: "https://aquainfo.nl/en/article/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Cichlid Room Companion public profile: Neolamprologus tretocephalus, verification only"
+        url: "https://cichlidae.com/species.php?id=mq9k7TNhVjfzVMdKyWJjfw"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Sefc, K. M. (2011). Mating and parental care in Lake Tanganyika's cichlids. International Journal\
+          \ of Evolutionary Biology 2011, 470875"
+        url: "https://doi.org/10.4061/2011/470875"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Maidenhead Aquatics Fishkeeper data bank: Five-bar Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/five-bar-cichlid"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish species profile: Neolamprologus tretocephalus"
+          url: "https://www.seriouslyfish.com/species/neolamprologus-tretocephalus/"
+          accessed: '2026-10-13'
+        value: cave-spawner
+        note: Biparental cave spawning explicitly described.
+      - source:
+          kind: database
+          title: "Cichlid Room Companion: Neolamprologus tretocephalus, public verification summary"
+          url: "https://cichlidae.com/species.php?id=mq9k7TNhVjfzVMdKyWJjfw"
+          accessed: '2026-10-13'
+        value: cave-spawner
+        note: "Verification only: public reproductive classification agrees."
+      - source:
+          kind: literature
+          title: "van Oosting, J. Neolamprologus tretocephalus. AquaInfo husbandry account"
+          url: "https://aquainfo.nl/en/article/neolamprologus-tretocephalus/"
+          accessed: '2026-10-13'
+        value: cave-spawner
+      - source:
+          kind: website
+          title: "Maidenhead Aquatics Fishkeeper data bank: Five-bar Cichlid"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/five-bar-cichlid"
+          accessed: '2026-10-13'
+        value: cave-spawner
+        note: Eggs placed in a selected or excavated cave.
+  beginnerSuitability:
+    value: demanding
+    confidence: medium
+    rationale: "Generator, checker-b and checker-c propose demanding; checker-a proposes moderate, following the\
+      \ Seriously Fish and CRC intermediate care labels. AquaInfo rejects beginner suitability and documents lethal\
+      \ pairing failures. Demanding is retained with medium confidence because management of partner rejection\
+      \ and unstable bonds matters more than a broad ease label. LiveAquaria and MARE 2000 label care easy, but\
+      \ their labels do not resolve that documented risk."
+    sources:
+      - kind: literature
+        title: "van Oosting, J. Neolamprologus tretocephalus. AquaInfo husbandry account"
+        url: "https://aquainfo.nl/en/article/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish species profile: Neolamprologus tretocephalus"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Cichlid Room Companion public profile: Neolamprologus tretocephalus, verification only"
+        url: "https://cichlidae.com/species.php?id=mq9k7TNhVjfzVMdKyWJjfw"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Maidenhead Aquatics Fishkeeper data bank: Five-bar Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/five-bar-cichlid"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "LiveAquaria: Tretocephalus Cichlid structured care sheet"
+        url: "https://www.liveaquaria.com/products/tretocephalus-cichlid"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "MARE 2000: Neolamprologus tretocephalus care sheet"
+        url: "https://www.mare2000.it/Pescidolce/neolamprologus_tre.htm"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: "van Oosting, J. Neolamprologus tretocephalus. AquaInfo husbandry account"
+          url: "https://aquainfo.nl/en/article/neolamprologus-tretocephalus/"
+          accessed: '2026-10-13'
+        value: demanding
+        note: Not recommended for beginners; lethal pairing failures described.
+      - source:
+          kind: database
+          title: "Seriously Fish species profile: Neolamprologus tretocephalus"
+          url: "https://www.seriouslyfish.com/species/neolamprologus-tretocephalus/"
+          accessed: '2026-10-13'
+        value: demanding
+        note: Inferred from difficult pair formation and lethal harassment.
+      - source:
+          kind: database
+          title: "Cichlid Room Companion: Neolamprologus tretocephalus, public verification summary"
+          url: "https://cichlidae.com/species.php?id=mq9k7TNhVjfzVMdKyWJjfw"
+          accessed: '2026-10-13'
+        value: moderate
+        note: "Verification only: public aquarium category is intermediate."
+      - source:
+          kind: website
+          title: "LiveAquaria: Tretocephalus Cichlid structured care sheet"
+          url: "https://www.liveaquaria.com/products/tretocephalus-cichlid"
+          accessed: '2026-10-13'
+        value: easy
+      - source:
+          kind: website
+          title: "MARE 2000: Neolamprologus tretocephalus care sheet"
+          url: "https://www.mare2000.it/Pescidolce/neolamprologus_tre.htm"
+          accessed: '2026-10-13'
+        value: easy
+partners:
+  suitable:
+    - species: Cyprichromis leptosoma
+      reason: "An adult shoal uses the water above the defended floor, reducing direct cave competition. This\
+        \ is a conditional example from the recommended genus, not a promise of fry survival."
+      condition: "At least 600 L and 180 cm length with open upper swimming space, an appropriate Cyprichromis\
+        \ group and immediate separation if the pair attacks."
+    - species: Altolamprologus compressiceps
+      reason: A mature individual of suitable size can use narrow rock gaps and shares an invertebrate-based diet.
+        Small juveniles and exposed fry are at risk.
+      condition: "A spacious tank beyond the 400 L pair minimum, preferably at least 600 L and 180 cm, with separate\
+        \ rock territories and close observation."
+    - species: Julidochromis marlieri
+      reason: One of the larger Julidochromis can use a separate rock area and is more robust than tiny cave dwellers.
+        Breeding territories must remain distinct.
+      condition: At least 600 L and 180 cm length with widely separated rock formations; move either pair if defenses
+        merge or injuries occur.
+  unsuitable:
+    - species: Neolamprologus sexfasciatus
+      reason: Similar appearance and overlapping defended rock areas create rivalry. The decided pairwise hybrid
+        group adds a presumed crossing caution based on close relationship; no verified cross of these two species
+        was found.
+    - species: Neolamprologus multifasciatus
+      reason: Tiny shell dwellers and their fry cannot safely share the defended bottom area of a five-bar breeding
+        pair. Adult harassment remains a risk even where adults are too large for level 1 predation.
+    - species: Tropheus moorii
+      reason: A colony of active rock grazers has a different feeding balance and occupies territory needed by
+        the pair. Matching lake chemistry alone does not resolve those conflicts.
+profile:
+  overview:
+    text: "An adult pair needs an aquarium planned around territorial conflict. Five-bar cichlids can reject or\
+      \ kill a partner even after successful breeding, so room and a way to separate fish matter throughout their\
+      \ lives. The species is a Lake Tanganyika lamprologine with five dark flank bars on a pale body and blue\
+      \ accents. Count the flank bars rather than the facial mark when distinguishing it from the separate six-bar\
+      \ species Neolamprologus sexfasciatus."
+    sources:
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: species of Neolamprologus, online version updated 21 September\
+          \ 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Neolamprologus"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish species profile: Neolamprologus tretocephalus"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "van Oosting, J. Neolamprologus tretocephalus. AquaInfo husbandry account"
+        url: "https://aquainfo.nl/en/article/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishProfiles species entry: Neolamprologus tretocephalus"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_tretocephalus/"
+        accessed: '2026-10-13'
+  habitat:
+    text: "FishBase places the species in the northern half of Lake Tanganyika and records shallow captures from\
+      \ approximately 1 to 10 m. It searches sand among scattered stones for invertebrates and uses rock cavities\
+      \ for shelter and reproduction. Provide both accessible sand and secure rock cover. The adopted natural\
+      \ lake envelope is 23 to 29 C, pH 8.4 to 9.4, GH 10 to 13 dGH and KH 15 to 20 dKH. These describe variable\
+      \ habitat water. GH and carbonate alkalinity measure different properties and should be tested separately."
+    sources:
+      - kind: database
+        title: "FishBase species summary: Neolamprologus tretocephalus"
+        url: "https://www.fishbase.se/summary/Neolamprologus-tretocephalus.html"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Plisnier et al. (1999). Limnological annual cycle inferred from physical-chemical fluctuations
+          at three stations of Lake Tanganyika. Full text
+        url: "https://doi.org/10.1023/a:1003762119873"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. PhD thesis, Wageningen University."
+        url: "https://doi.org/10.18174/121977"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Branchu, P. and Bergonzini, L. (2004). Chloride concentrations in Lake Tanganyika: an indicator\
+          \ of the hydrological budget? Hydrology and Earth System Sciences 8, 256-265."
+        url: "https://doi.org/10.5194/hess-8-256-2004"
+        accessed: '2026-10-13'
+  sizeAndGrowth:
+    text: "Use about 15 cm for a well-kept adult male and 12 cm for a female when planning space. Female maxima\
+      \ differ among sources, so a smaller female is no reason to reduce the pair aquarium. No numerical growth\
+      \ curve is established here. Plan for the adult setup before buying young fish. Five to eight years is the\
+      \ adopted lifespan estimate; longer care-sheet claims also exist and lack cohort confirmation."
+    sources:
+      - kind: literature
+        title: "van Oosting, J. Neolamprologus tretocephalus. AquaInfo husbandry account"
+        url: "https://aquainfo.nl/en/article/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase species summary: Neolamprologus tretocephalus"
+        url: "https://www.fishbase.se/summary/Neolamprologus-tretocephalus.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Fish species care sheet: Five-bar cichlid"
+        url: "https://en.aqua-fish.net/fish/five-bar-cichlid"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "my-fish Fishothek: Neolamprologus tretocephalus"
+        url: "https://my-fish.org/my-fishothek/neolamprologus-tretocephalus-funfstreifen-tanganjikaseebuntbarsch/"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Garnelio structured care sheet: Fuenfstreifen-Tanganjikabuntbarsch"
+        url: "https://www.garnelio.de/fuenfstreifen-tanganjikabuntbarsch-lamprologus-tretocephalus-raritaet"
+        accessed: '2026-10-13'
+  husbandry:
+    text: "For one compatible adult pair, use at least 400 litres with a 150 cm length and 50 cm front-to-back\
+      \ depth. This is a cautious planning minimum assembled from differing care recommendations. Divide sightlines\
+      \ with secure rockwork and several retreats, while retaining sandy feeding space. Keep filtration and oxygenation\
+      \ effective and replace water regularly without abrupt changes in chemistry. Routine care around 24 to 26\
+      \ C is better supported than continuous maintenance at the full temperature endpoints. The decided tolerances\
+      \ are 23 to 29 C, pH 7.7 to 9.4, GH 8 to 25 dGH and KH 10 to 20 dKH. KH tolerance is provisional, and the\
+      \ upper temperature and pH limits include the natural envelope rather than chronic aquarium trial results."
+    sources:
+      - kind: database
+        title: "Seriously Fish species profile: Neolamprologus tretocephalus"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Pedia: Five-bar cichlid, generated and manually reviewed care data"
+        url: "https://www.aqua-pedia.com/en/species/neolamprologus-tretocephalus-five-bar-cichlid"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aquarium.org.il WikiFish species care sheet: Neolamprologus tretocephalus"
+        url: "https://www.aquarium.org.il/%D7%95%D7%99%D7%A7%D7%99%D7%A4%D7%99%D7%A9-%D7%98%D7%A8%D7%98%D7%95%D7%A6%D7%A4%D7%9C%D7%95%D7%A1-371"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Maidenhead Aquatics Fishkeeper data bank: Five-bar Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/five-bar-cichlid"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Garnelio structured care sheet: Fuenfstreifen-Tanganjikabuntbarsch"
+        url: "https://www.garnelio.de/fuenfstreifen-tanganjikabuntbarsch-lamprologus-tretocephalus-raritaet"
+        accessed: '2026-10-13'
+  socialBehavior:
+    text: "The recommended reproductive unit is one naturally compatible pair. Starting with juveniles may allow\
+      \ pair formation, after which extra conspecifics need removal. Selecting an adult male and female does not\
+      \ establish compatibility. Watch access to food and shelters as well as visible injuries, because persistent\
+      \ hiding can reveal rejection before severe damage appears. A divider or separate aquarium must be available\
+      \ when pursuit continues. Territorial behaviour occurs outside breeding; the spawning pair defends a much\
+      \ larger area."
+    sources:
+      - kind: database
+        title: "Seriously Fish species profile: Neolamprologus tretocephalus"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "van Oosting, J. Neolamprologus tretocephalus. AquaInfo husbandry account"
+        url: "https://aquainfo.nl/en/article/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Sefc, K. M. (2011). Mating and parental care in Lake Tanganyika's cichlids. International Journal\
+          \ of Evolutionary Biology 2011, 470875"
+        url: "https://doi.org/10.4061/2011/470875"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Maidenhead Aquatics Fishkeeper data bank: Five-bar Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/five-bar-cichlid"
+        accessed: '2026-10-13'
+  diet:
+    text: "Supply a complete cichlid food and vary it with aquatic invertebrates such as mysis, Artemia and insect\
+      \ larvae. Snails fit its natural feeding apparatus. Wild diet records support an invertebrate-focused classification,\
+      \ although a recent gut-DNA study also detects substantial plant and algal material in its mixed-diet cluster.\
+      \ Tiny fish and fry can be eaten opportunistically; routine feeding with live fish is unnecessary. Both\
+      \ adults should be able to feed without sustained harassment. The false bloat-sensitivity flag means no\
+      \ established special protein restriction, rather than protection from digestive disease."
+    sources:
+      - kind: database
+        title: "FishBase species summary: Neolamprologus tretocephalus"
+        url: "https://www.fishbase.se/summary/Neolamprologus-tretocephalus.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase diet composition 2871: Yuma (1994), field sample of 18 fish"
+        url: "https://www.fishbase.se/TrophicEco/DietCompoSummary.php?dietcode=2871&genusname=Neolamprologus&speciesname=tretocephalus"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase diet composition 2872: Yuma et al. (1998), field sample of five fish"
+        url: "https://www.fishbase.se/TrophicEco/DietCompoSummary.php?dietcode=2872&genusname=Neolamprologus&speciesname=tretocephalus"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish species profile: Neolamprologus tretocephalus"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Huyghe, C. E. T. et al. (2025). Metagenomic insights into the dietary diversity of the adaptive\
+          \ radiation of cichlid fishes in Lake Tanganyika. Molecular Ecology 34(9), e17743"
+        url: "https://doi.org/10.1111/mec.17743"
+        accessed: '2026-10-13'
+  breeding:
+    text: "Spawning takes place on a protected surface within a rock cavity. Both parents guard the brood, often\
+      \ with the female attending the nest while the male confronts intruders. A concealed clutch may first become\
+      \ apparent through increased defence or visible fry. Accounts give broods reaching several hundred eggs,\
+      \ but hatch and free-swimming times vary with conditions. Once the young swim freely, suitably small foods\
+      \ including Artemia nauplii can be offered. Published wild observations describe prolonged guarding; aquarium\
+      \ pair tolerance can still deteriorate during or after brood care."
+    sources:
+      - kind: database
+        title: "Seriously Fish species profile: Neolamprologus tretocephalus"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "van Oosting, J. Neolamprologus tretocephalus. AquaInfo husbandry account"
+        url: "https://aquainfo.nl/en/article/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Sefc, K. M. (2011). Mating and parental care in Lake Tanganyika's cichlids. International Journal\
+          \ of Evolutionary Biology 2011, 470875"
+        url: "https://doi.org/10.4061/2011/470875"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Maidenhead Aquatics Fishkeeper data bank: Five-bar Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/five-bar-cichlid"
+        accessed: '2026-10-13'
+  sexing:
+    text: "Adults are difficult to sex reliably from colour alone. Males tend to be larger and heavier around\
+      \ the head, while both sexes show the barred pattern. Unequal growth makes size a weak clue in juveniles.\
+      \ Fin-shape claims vary across care accounts and should not establish a supposed pair by themselves. Observed\
+      \ spawning roles can clarify sex, but they do not guarantee future partner acceptance."
+    sources:
+      - kind: database
+        title: "Seriously Fish species profile: Neolamprologus tretocephalus"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishProfiles species entry: Neolamprologus tretocephalus"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "van Oosting, J. Neolamprologus tretocephalus. AquaInfo husbandry account"
+        url: "https://aquainfo.nl/en/article/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Maidenhead Aquatics Fishkeeper data bank: Five-bar Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/five-bar-cichlid"
+        accessed: '2026-10-13'
+  compatibility:
+    text: "Mixed keeping is conditional on ample space and robust adults. Cyprichromis leptosoma, Altolamprologus\
+      \ compressiceps and Julidochromis marlieri illustrate genera permitted by the care literature, with separate\
+      \ swimming or shelter areas. The additional community sizes listed here are planning margins rather than\
+      \ tested compatibility thresholds. Breeding escalation can still require removal of companions. Tiny shell\
+      \ dwellers overlap the defended floor and cannot rely on fry survival. Similar Neolamprologus sexfasciatus\
+      \ adds rivalry and a presumed crossing caution: molecular evidence establishes close relationship, with\
+      \ no verified cross of this pair reported. Tropheus colonies have different feeding and social needs, despite\
+      \ sharing lake chemistry; low-weight archive accounts of mixed keeping do not establish general safety."
+    sources:
+      - kind: database
+        title: "Seriously Fish species profile: Neolamprologus tretocephalus"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "van Oosting, J. Neolamprologus tretocephalus. AquaInfo husbandry account"
+        url: "https://aquainfo.nl/en/article/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Sturmbauer, C., Salzburger, W., Duftner, N., Schelly, R. and Koblmuller, S. (2010). Evolutionary\
+          \ history of the Lake Tanganyika cichlid tribe Lamprologini derived from mitochondrial and nuclear DNA\
+          \ data. Molecular Phylogenetics and Evolution 57, 266-284."
+        url: "https://doi.org/10.1016/j.ympev.2010.06.018"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "my-fish Fishothek: Neolamprologus tretocephalus"
+        url: "https://my-fish.org/my-fishothek/neolamprologus-tretocephalus-funfstreifen-tanganjikaseebuntbarsch/"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Maidenhead Aquatics Fishkeeper data bank: Five-bar Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/five-bar-cichlid"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Aquarist Atlas: Neolamprologus tretocephalus"
+        url: "https://www.aquaristatlas.com/species/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: archive
+        title: cichlids.com forum thread 13697
+        url: "https://www.cichlids.com/disc/read.php?2,13697"
+        accessed: '2026-10-13'
+  problems:
+    text: "Rejected partners and retained surplus adults pose the clearest documented risks. Persistent confinement,\
+      \ missed meals and damaged fins warrant intervention in the social arrangement. Water pollution and abrupt\
+      \ changes compound stress, so assess filtration and maintenance when health declines. Feeding pace is unmeasured\
+      \ and provisionally normal; check each fish rather than assuming it receives a share. Treat swelling or\
+      \ poor condition as a problem requiring diagnosis instead of assuming a species-specific protein intolerance."
+    sources:
+      - kind: database
+        title: "Seriously Fish species profile: Neolamprologus tretocephalus"
+        url: "https://www.seriouslyfish.com/species/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "van Oosting, J. Neolamprologus tretocephalus. AquaInfo husbandry account"
+        url: "https://aquainfo.nl/en/article/neolamprologus-tretocephalus/"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Maidenhead Aquatics Fishkeeper data bank: Five-bar Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/five-bar-cichlid"
+        accessed: '2026-10-13'
+provenance:
+  runs:
+    - role: generator
+      model: gpt-6.1-sol
+      date: '2026-10-13'
+    - role: checker
+      model: gpt-6.1-sol
+      date: '2026-10-13'
+    - role: checker
+      model: gpt-6.1-sol
+      date: '2026-10-13'
+    - role: checker
+      model: gpt-6.1-sol
+      date: '2026-10-13'
+    - role: checker
+      model: gpt-6.1-sol
+      date: '2026-10-13'
+    - role: checker
+      model: gpt-6.1-sol
+      date: '2026-10-13'
+    - role: adjudicator
+      model: gpt-6.1-sol
+      date: '2026-10-13'
+  disagreements:
+    - field: taxonomy.author
+      proposals:
+        - by: generator
+          value: "(Boulenger, 1899)"
+        - by: checker-a
+          value: (Boulenger 1899)
+        - by: checker-b
+          value: "(Boulenger, 1899)"
+        - by: checker-c
+          value: "(Boulenger, 1899)"
+      decision: "(Boulenger, 1899)"
+      rationale: "All four proposals name Boulenger and 1899. Checker-a omits the comma; the conventional formatted\
+        \ authority (Boulenger, 1899) is retained. The catalog confirms 1899; the alternate 1898 year mentioned\
+        \ in checker-a is not its proposal and is not adopted."
+    - field: features.origin
+      proposals:
+        - by: generator
+          value:
+            continent: Africa
+            region: Northern half of Lake Tanganyika
+            waterbody: lake-tanganyika
+        - by: checker-a
+          value:
+            continent: Africa
+            region: Lake Tanganyika
+            waterbody: lake-tanganyika
+            localities:
+              - northern half of the lake
+        - by: checker-b
+          value:
+            continent: Africa
+            region: Northern half of Lake Tanganyika
+            waterbody: lake-tanganyika
+        - by: checker-c
+          value:
+            continent: Africa
+            region: Northern half of Lake Tanganyika
+            waterbody: lake-tanganyika
+      decision:
+        continent: Africa
+        region: Northern half of Lake Tanganyika
+        waterbody: lake-tanganyika
+      rationale: "Catalog of Fishes establishes Lake Tanganyika endemism. FishBase and Fishkeeper restrict the\
+        \ distribution to the northern half and FishBase excludes Zambian waters. All four agents agree on that\
+        \ biological origin; checker-a uses the whole lake as region with the northern half in localities. The\
+        \ northern-half region is retained. AquaInfo claims the entire lake and MARE 2000 the southern shores,\
+        \ both rejected against the more specific distribution evidence."
+    - field: features.ph.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 7.8
+            max: 9.4
+        - by: checker-a
+          value:
+            min: 7.5
+            max: 9.4
+        - by: checker-b
+          value:
+            min: 8
+            max: 9.4
+        - by: checker-c
+          value:
+            min: 7.5
+            max: 9.4
+      decision:
+        min: 7.7
+        max: 9.4
+      rationale: "The tally labels agreement unanimous within its range threshold and takes the rounded median\
+        \ endpoints. Generator proposed 7.8 to 9.4; checker-a and checker-c proposed 7.5 to 9.4; checker-b proposed\
+        \ 8.0 to 9.4. The lower median is 7.65, rounded to 7.7, with 9.4 retained to contain the natural range.\
+        \ Seriously Fish gives 7.5 to 9.0 and FishProfiles 7.5 to 8.5, both extending below the decided minimum;\
+        \ Garnelio starts at 7.8 and Fishkeeper at 8.0. Medium confidence reflects these differing care recommendations\
+        \ and the lack of chronic endpoint experiments."
+    - field: features.khDkh.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 15
+            max: 20
+        - by: checker-a
+          value:
+            min: 10
+            max: 20
+        - by: checker-b
+          value:
+            min: 14
+            max: 20
+        - by: checker-c
+          value:
+            min: 10
+            max: 20
+        - by: tiebreaker-1
+          value:
+            min: 10
+            max: 20
+        - by: tiebreaker-2
+          value:
+            min: 10
+            max: 20
+      decision:
+        min: 10
+        max: 20
+      rationale: "The tally decides 10 to 20 dKH by qualified majority, four of six votes, with low confidence.\
+        \ Generator proposed 15 to 20; checker-b proposed 14 to 20; checker-a, checker-c, tiebreaker-1 and tiebreaker-2\
+        \ proposed 10 to 20. LiveAquaria explicitly gives 10 to 20, Aqua-Pedia gives 10 to 18, and Garnelio 15\
+        \ to 20. WikiFish gives the wider upper interval of 14 to 24 dKH; its uncorroborated 24 endpoint is not\
+        \ adopted. Aqua-Pedia identifies its data as generated and manually reviewed, and retailers and care databases\
+        \ provide no multiyear exposure study. Neither general hardness nor pH alone establishes KH tolerance;\
+        \ the natural maximum of 20 is retained."
+    - field: features.maxSizeCm
+      proposals:
+        - by: generator
+          value:
+            male: 15
+            female: 12
+        - by: checker-a
+          value:
+            male: 15
+            female: 13
+        - by: checker-b
+          value:
+            male: 15
+            female: 12
+        - by: checker-c
+          value:
+            male: 15
+            female: 12
+      decision:
+        male: 15
+        female: 12
+      rationale: "Generator, checker-b and checker-c propose male 15 cm and female 12 cm; checker-a proposes 15\
+        \ and 13, with its female figure explicitly inferred. AquaInfo states 15 and 12, and my-fish independently\
+        \ gives females about 10 to 12 cm. FishProfiles lists 15 cm for both sexes and Garnelio gives females\
+        \ 10 cm. The 15/12 adult aquarium estimate is retained with medium confidence because sex-specific measurements\
+        \ are limited. FishBase gives a 15 cm male or unsexed total-length maximum, not a measured female maximum;\
+        \ Seriously Fish gives 15 cm standard length, which is not directly interchangeable with total length."
+    - field: features.diet
+      proposals:
+        - by: generator
+          value:
+            type: invertivore
+            bloatSensitive: false
+            foods:
+              - Quality cichlid pellets
+              - Mysis shrimp
+              - Artemia
+              - Insect larvae
+              - Small snails
+        - by: checker-a
+          value:
+            type: invertivore
+            bloatSensitive: false
+            foods:
+              - snails
+              - insect larvae
+              - crustaceans
+              - frozen meaty foods
+              - cichlid pellets
+        - by: checker-b
+          value:
+            type: invertivore
+            bloatSensitive: false
+            foods:
+              - Aquatic insect larvae
+              - Small snails
+              - Crustaceans
+              - Carnivore cichlid pellets
+              - Frozen mysis and Artemia
+        - by: checker-c
+          value:
+            type: invertivore
+            bloatSensitive: false
+            foods:
+              - snails
+              - crustaceans
+              - insect larvae
+              - quality carnivore pellets
+              - frozen mysis and brine shrimp
+      decision:
+        type: invertivore
+        bloatSensitive: false
+        foods:
+          - Quality cichlid pellets
+          - Mysis shrimp
+          - Artemia
+          - Insect larvae
+          - Small snails
+      rationale: "All four votes agree on invertivore and bloatSensitive false; the tally retains medium confidence\
+        \ and the generator food list exactly. Their differently worded food proposals all concern complete cichlid\
+        \ foods plus aquatic invertebrates. FishBase field records are dominated by insects, molluscs and crustaceans.\
+        \ Huyghe et al. instead place this species in a mixed invertebrate/plant-algae cluster, so the earlier\
+        \ invertivore classification simplifies a variable natural diet. LiveAquaria and archive accounts use\
+        \ omnivore for mixed aquarium food acceptance. Neither observation establishes a special protein-linked\
+        \ bloat conflict; false records the absence of that demonstrated dietary restriction, not disease immunity.\
+        \ CRC confirms insect and mollusc feeding only."
+    - field: features.hybridGroups
+      proposals:
+        - by: generator
+          value: []
+        - by: checker-a
+          value: []
+        - by: checker-b
+          value: []
+        - by: checker-c
+          value:
+            - neolamprologus-sexfasciatus-tretocephalus
+        - by: tiebreaker-1
+          value:
+            - neolamprologus-sexfasciatus-tretocephalus
+        - by: tiebreaker-2
+          value:
+            - neolamprologus-sexfasciatus-tretocephalus
+      decision:
+        - neolamprologus-sexfasciatus-tretocephalus
+      rationale: "The tally decides neolamprologus-sexfasciatus-tretocephalus by its conservative rule, with three\
+        \ of six agreeing votes and low confidence. Generator, checker-a and checker-b proposed an empty list;\
+        \ checker-c, tiebreaker-1 and tiebreaker-2 proposed this single pairwise group. No proposal reaches four\
+        \ votes, so the rule retains groups proposed at least twice. Sturmbauer et al. recover the two species\
+        \ as genetically close sisters with mitochondrial and nuclear markers; my-fish also describes them as\
+        \ sisters. Aquarist Atlas supplies a general congener crossing caution, and CRC verifies their classification\
+        \ association only. No verified hybrid or free-choice cross of this named pair was found. Close relationship\
+        \ qualifies only for presumed basis under the rubric; the group does not extend to the rest of Neolamprologus.\
+        \ Irisarri et al. discuss much older lineage introgression rather than this pair crossing."
+    - field: features.coloration
+      proposals:
+        - by: generator
+          value:
+            baseColors:
+              - white
+              - silver
+              - blue
+              - black
+            pattern: bars
+        - by: checker-a
+          value:
+            baseColors:
+              - silver
+              - black
+            pattern: bars
+        - by: checker-b
+          value:
+            baseColors:
+              - white
+              - black
+              - blue
+            pattern: bars
+        - by: checker-c
+          value:
+            baseColors:
+              - white
+              - black
+              - blue
+            pattern: bars
+      decision:
+        baseColors:
+          - white
+          - silver
+          - blue
+          - black
+        pattern: bars
+      rationale: "Generator proposes white, silver, blue and black; checker-a silver and black; checker-b and\
+        \ checker-c white, black and blue. All propose bars. AquaInfo describes a silver-grey ground with dark\
+        \ blue bars and blue fins, while FishProfiles gives white, black and blue. The merged white/silver/blue/black\
+        \ palette records descriptive variation, not separate morphs, with high confidence. Five flank bars are\
+        \ counted independently of the facial mark."
+    - field: features.minTank
+      proposals:
+        - by: generator
+          value:
+            volumeL: 400
+            lengthCm: 150
+            depthCm: 50
+        - by: checker-a
+          value:
+            volumeL: 200
+            lengthCm: 120
+            depthCm: 40
+        - by: checker-b
+          value:
+            volumeL: 300
+            lengthCm: 150
+            depthCm: 40
+        - by: checker-c
+          value:
+            volumeL: 300
+            lengthCm: 150
+            depthCm: 40
+      decision:
+        volumeL: 400
+        lengthCm: 150
+        depthCm: 50
+      rationale: "Generator proposes 400 L with a 150 by 50 cm footprint; checker-a 200 L with 120 by 40 cm; checker-b\
+        \ and checker-c 300 L with 150 by 40 cm. The larger 400 L, 150 by 50 cm pair setup is retained as a cautious\
+        \ spatial synthesis, with medium confidence. Garnelio explicitly recommends 400 L, and Fishkeeper asks\
+        \ for five feet, 152.4 cm, rounded here to the customary 150 cm tank class. The 50 cm depth is inferred\
+        \ room for retreats and divided sightlines. Seriously Fish gives 108 L and 120 by 30 cm for a mated pair;\
+        \ Aqua-Fish about 200 L; TropicalFreshwaterFish 209 L and 122 cm; WikiFish 250 L. Their smaller recommendations\
+        \ offer less margin for documented partner aggression. This minimum concerns one compatible pair, not\
+        \ a community or a guarantee against partner rejection."
+    - field: features.lifespanYears
+      proposals:
+        - by: generator
+          value:
+            min: 5
+            max: 8
+        - by: checker-a
+          value:
+            min: 6
+            max: 10
+        - by: checker-b
+          value:
+            min: 5
+            max: 8
+        - by: checker-c
+          value:
+            min: 5
+            max: 8
+      decision:
+        min: 5
+        max: 8
+      rationale: "Generator, checker-b and checker-c propose 5 to 8 years; checker-a proposes 6 to 10 by analogy\
+        \ without a species-specific source. Aqua-Fish directly gives 5 to 8 and Aquarismo Paulista 5 years or\
+        \ more. The 5 to 8 estimate is retained with medium confidence. Garnelio claims up to 10 and my-fish about\
+        \ 10 to 12, so longer lifespans than the decided planning range are reported, but none provides longitudinal\
+        \ cohort evidence."
+    - field: features.beginnerSuitability
+      proposals:
+        - by: generator
+          value: demanding
+        - by: checker-a
+          value: moderate
+        - by: checker-b
+          value: demanding
+        - by: checker-c
+          value: demanding
+      decision: demanding
+      rationale: "Generator, checker-b and checker-c propose demanding; checker-a proposes moderate, following\
+        \ the Seriously Fish and CRC intermediate care labels. AquaInfo rejects beginner suitability and documents\
+        \ lethal pairing failures. Demanding is retained with medium confidence because management of partner\
+        \ rejection and unstable bonds matters more than a broad ease label. LiveAquaria and MARE 2000 label care\
+        \ easy, but their labels do not resolve that documented risk."
