@@ -17,6 +17,7 @@ RUN apt-get update && \
         git \
         jq \
         libimage-exiftool-perl \
+        python3 \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
