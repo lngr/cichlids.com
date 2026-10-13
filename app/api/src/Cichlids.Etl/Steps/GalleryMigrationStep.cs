@@ -7,11 +7,12 @@ using Npgsql;
 namespace Cichlids.Etl.Steps;
 
 /// <summary>
-/// Migrates legacy picture galleries (<c>user_cichlids_gallery</c>) that still have at least one
-/// surviving picture entry into <c>collection</c>, and their ordered listings
-/// (<c>user_cichlids_gallery_pictures_mm</c>) into <c>collection_entry</c>. Runs after
-/// <see cref="PictureMigrationStep"/>, whose <c>post.legacy_id</c> rows resolve each gallery
-/// entry's picture reference to its migrated post.
+/// Migrates the non-deleted legacy picture galleries (user_cichlids_gallery) into collection and
+/// their ordered listings (user_cichlids_gallery_pictures_mm) into collection_entry. A gallery
+/// that never had a picture assignment is skipped by rule and counted under the skip reason
+/// gallery_without_pictures. A gallery whose assigned pictures all failed to migrate still
+/// becomes an empty collection. Runs after PictureMigrationStep, whose post.legacy_id rows
+/// resolve each gallery entry's picture reference to its migrated post.
 /// </summary>
 public sealed class GalleryMigrationStep : IEtlStep
 {
@@ -33,10 +34,15 @@ public sealed class GalleryMigrationStep : IEtlStep
         var postIdByLegacyId = await LoadLegacyIdMapAsync(context, "post", cancellationToken);
         var entriesByGalleryUid = await LoadGalleryEntriesAsync(context, cancellationToken);
 
-        // A gallery with no surviving mm row at all never becomes a collection: there is nothing
-        // for a member to have curated if every listing entry it ever had is gone from the source
-        // table too, unlike a gallery whose entries exist but whose pictures failed to migrate
-        // (handled below, once the source row is already read).
+        // A gallery without any mm row never had a picture assigned, so it is an album that was
+        // created and never filled. It is skipped and counted. A gallery whose mm rows exist but
+        // whose pictures failed to migrate is handled below, once the source row is read.
+        var galleriesWithoutPictures = await CountGalleriesWithoutPicturesAsync(context, cancellationToken);
+        if (galleriesWithoutPictures > 0)
+        {
+            stats.AddSkip("gallery_without_pictures", galleriesWithoutPictures);
+        }
+
         const string sql = """
             SELECT g.uid, g.tstamp, g.hidden, g.title, g.fe_user
             FROM user_cichlids_gallery g
@@ -132,6 +138,19 @@ public sealed class GalleryMigrationStep : IEtlStep
         }
 
         return rows;
+    }
+
+    private static async Task<int> CountGalleriesWithoutPicturesAsync(
+        EtlContext context, CancellationToken cancellationToken)
+    {
+        const string sql = """
+            SELECT COUNT(*) FROM user_cichlids_gallery g
+            WHERE g.deleted = 0
+              AND NOT EXISTS (SELECT 1 FROM user_cichlids_gallery_pictures_mm mm WHERE mm.uid_gallery = g.uid)
+            """;
+
+        await using var command = new MySqlCommand(sql, context.Legacy);
+        return Convert.ToInt32(await command.ExecuteScalarAsync(cancellationToken));
     }
 
     private static async Task<long> ResolveOwnerAsync(
