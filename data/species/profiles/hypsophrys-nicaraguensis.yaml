@@ -1861,17 +1861,14 @@ features:
         agree: 4
         total: 4
   hybridGroups:
-    value: []
+    value: [amatitlania-nigrofasciata-hypsophrys-nicaraguensis]
     confidence: medium
-    rationale: Decided by qualified majority (5 of 6 votes for no group; checker-c proposed
-      amatitlania-nigrofasciata-complex). The species is the only valid member of its genus in the
-      Catalog of Fishes; its closest relative is Neetroplus nematopus, the sister group in the
-      analysis of Chakrabarty and Sparks, which the Catalog keeps in Neetroplus and for which no
-      cross is reported. Seriously Fish mentions a deliberate aquarium cross with the convict
-      cichlid, repeated by a French retailer, but names no source; the convict cichlid crosses with
-      many unrelated Central American cichlids, and the curated convict group rests on the close
-      relationship of the four Amatitlania species, to which Hypsophrys does not belong. FishBase
-      reports no hybrids. The convict cichlid is listed as an unsuitable tankmate instead.
+    rationale: >-
+      Seriously Fish reports that the species has been crossed with the convict cichlid, but names
+      no source and gives no circumstances, and no primary report is known. The cross therefore does
+      not count as documented, and the species is a member of the presumed two-member group
+      amatitlania-nigrofasciata-hypsophrys-nicaraguensis with A. nigrofasciata only; it is not a
+      member of the Amatitlania group, to which it is not closely related.
     sources:
       - kind: catalog-of-fishes
         title: "Eschmeyer's Catalog of Fishes, species of the genus Hypsophrys"
@@ -1917,8 +1914,8 @@ features:
           title: "Seriously Fish: Hypsophrys nicaraguensis (Nicaragua Cichlid)"
           url: https://www.seriouslyfish.com/species/hypsophrys-nicaraguensis/
           accessed: 2026-10-13
-        value: null
-        note: reports an aquarium cross with the convict cichlid without a source; names no group
+        value: amatitlania-nigrofasciata-hypsophrys-nicaraguensis
+        note: "reports an aquarium cross with the convict cichlid without a source; names no group"
       - source:
           kind: database
           title: "FishBase species summary: Hypsophrys nicaraguensis"
@@ -1931,8 +1928,8 @@ features:
           title: "Aqua Frebourg: Hypsophrys nicaraguensis, retailer page"
           url: https://www.aquafrebourg.fr/hypsophrys-nicaraguensis
           accessed: 2026-10-13
-        value: amatitlania-nigrofasciata-complex
-        note: repeats the convict cross; derivative, low weight
+        value: amatitlania-nigrofasciata-hypsophrys-nicaraguensis
+        note: "repeats the convict cross; derivative, low weight"
     verification:
       method: qualified-majority
       votes:

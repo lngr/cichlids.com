@@ -2273,14 +2273,13 @@ features:
         agree: 3
         total: 3
   hybridGroups:
-    value: [aulonocara]
+    value: [aulonocara, sciaenochromis-fryeri-aulonocara]
     confidence: high
-    rationale: Decided unanimously as aulonocara (three of three votes). The line is a selection of the
-      Maleri / Chipoka form of the A. stuartgranti complex; Seriously Fish warns for this form and
-      for A. stuartgranti that most Aulonocara can hybridise, Practical Fishkeeping reports that
-      stuartgranti forms interbreed with other peacocks, and the drab, barred females of all
-      peacocks look alike. Red peacocks of mixed descent are common in the trade (Fishkeeper, Hybrid
-      Peacock), so keeping the line apart from every other Aulonocara also preserves it.
+    rationale: >-
+      Rubescens is a strain selected from the southern stuartgranti form (Seriously Fish, Aquarium
+      Glaser) and takes the groups of A. stuartgranti: the presumed genus group aulonocara and the
+      presumed group sciaenochromis-fryeri-aulonocara, which list it under its profile name. The
+      evidence consists of genus-wide crossing warnings without a documented named pair.
     sources:
       - kind: database
         title: "Seriously Fish: Aulonocara sp. 'stuartgranti maleri' (Sunshine Peacock)"
@@ -2316,6 +2315,17 @@ features:
       - kind: website
         title: "Gensou: Aulonocara stuartgranti peacock care, Flavescent Peacock"
         url: https://gensou.sg/?p=32657
+        accessed: 2026-10-13
+      - &hyb16
+        kind: database
+        title: "Seriously Fish: Sciaenochromis fryeri (Electric Blue Hap)"
+        url: https://www.seriouslyfish.com/species/sciaenochromis-fryeri/
+        accessed: 2026-10-13
+      - &hyb17
+        kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Electric Blue Hap, Sciaenochromis fryeri,
+          species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/electric-blue-hap
         accessed: 2026-10-13
     evidence:
       - source:
@@ -2377,6 +2387,12 @@ features:
           accessed: 2026-10-13
         value: aulonocara
         note: cross breeding with other Aulonocara discouraged
+      - source: *hyb16
+        value: sciaenochromis-fryeri-aulonocara
+        note: "males spawn with females of other genera, above all Aulonocara"
+      - source: *hyb17
+        value: sciaenochromis-fryeri-aulonocara
+        note: "advises against Aulonocara because males may remove the peacock male to breed with its females"
     verification:
       method: unanimous
       votes:

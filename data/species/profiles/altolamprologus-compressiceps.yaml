@@ -861,26 +861,17 @@ features:
         note: No advice to keep it only with its own species.
 
   hybridGroups:
-    value: []
+    value: [altolamprologus]
     confidence: medium
     verification:
       method: qualified-majority
       votes: {agree: 4, total: 5}
     rationale: >-
-      The only close relative is A. calvus. The two species split only 67,000 to 142,000 years
-      ago and share some mitochondrial haplotypes, but they live side by side in the southwest of
-      the lake as stable, distinct forms, and the divergence ran with little if any gene flow
-      (Koblmüller et al.); Spreitzer et al. take their stable coexistence as reproductive
-      isolation while not excluding rare gene exchange. The introgression found in northern
-      populations is ancient and comes from another lineage. No study, species database or care
-      sheet reports a cross between A. calvus and A. compressiceps, and Seriously Fish warns only
-      against mixing locality forms within each species. A. fasciatus, the third valid species
-      of the genus, has no reported crosses either. In the cichlids.com archive one keeper claims
-      that the two species interbreed, while another keeps a pair of each in one tank without
-      crosses; a single unconfirmed claim does not justify a hard group. The generator, checker-a
-      and both tie-breakers voted null; checker-b proposed a new group altolamprologus from the
-      recent split and the locality-form warning. The young split leaves aquarium crosses
-      possible, hence medium confidence.
+      No study, database or care sheet documents a cross with A. calvus; the single archive claim is
+      unconfirmed. The two species split only 67,000 to 142,000 years ago and share haplotypes
+      (Koblmüller et al. 2017, Spreitzer et al. 2012), which meets the close-relationship basis of
+      the presumed group altolamprologus. A. fasciatus is not a member because it is only distantly
+      related and no source links it to crosses.
     sources:
       - *koblmueller
       - *spreitzer
@@ -892,13 +883,17 @@ features:
         kind: archive
         title: cichlids.com forum thread 13809
         url: https://www.cichlids.com/disc/read.php?2,13809
+      - &hyb25
+        kind: archive
+        title: cichlids.com forum thread 41333
+        url: https://www.cichlids.com/disc/read.php?2,41333
     evidence:
       - source: *koblmueller
-        value: null
-        note: Recent split from A. calvus with little if any gene flow; no crosses reported.
+        value: altolamprologus
+        note: "recent split from A. calvus with little if any gene flow; neither species monophyletic; no crosses reported"
       - source: *spreitzer
-        value: null
-        note: Stable coexistence with A. calvus taken as reproductive isolation; rare gene exchange not excluded.
+        value: altolamprologus
+        note: "incomplete lineage sorting with A. calvus; stable coexistence taken as reproductive isolation"
       - source: *sf
         value: null
         note: Hybridisation warning only between locality forms of the species.
@@ -912,6 +907,9 @@ features:
         value: altolamprologus
         note: One keeper states that A. calvus and A. compressiceps interbreed; unconfirmed.
 
+      - source: *hyb25
+        value: altolamprologus
+        note: "advises keeping only one Altolamprologus species when breeding to avoid hybrids"
   coloration:
     value:
       baseColors: [brown, yellow, black]

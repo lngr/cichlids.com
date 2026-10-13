@@ -1731,24 +1731,21 @@ features:
         value: false
         note: medium to large cichlids
   hybridGroups:
-    value: [amphilophus-citrinellus-complex]
+    value: [amphilophus-citrinellus-complex, amphilophus-trimaculatus-midas, vieja-melanurus-midas]
     confidence: high
     verification:
       method: unanimous
       votes:
         agree: 3
         total: 3
-    rationale: "All three votes agree on the curated group amphilophus-citrinellus-complex. Barlow and
-      Munsey (1976) describe fish of lakes Masaya and Xiloá that show features of A. labiatus,
-      apparently through introgressive hybridisation, and the care sheets report that much aquarium
-      stock is crossed with the red devil A. labiatus. Elmer et al. (2010) found no significant
-      mitochondrial differentiation between A. citrinellus and A. labiatus in Lake Nicaragua. The
-      crater-lake species of the complex belong to the group as well: Kautt et al. (2016) report
-      that no intrinsic incompatibilities are known among Midas cichlids, that the species cross
-      easily in the laboratory, that great-lake fish admixed into the founding populations of lakes
-      Apoyo and Xiloá, and that the Xiloá species hybridise in nature; Recknagel et al. (2013)
-      raised F2 hybrids of A. astorquii and A. zaliosus. The species is also a parent of the blood
-      parrot and flowerhorn crosses."
+    rationale: >-
+      The Midas cichlid is a member of the documented Midas complex: Barlow and Munsey (1976) report
+      wild introgression with A. labiatus, and Kautt et al. (2016) report wild hybrids among the
+      crater-lake species. It is also a documented member of two cross groups:
+      amphilophus-trimaculatus-midas, with A. trimaculatus, the cross behind the fertile flowerhorn
+      (Magalhães et al. 2017, Manassila et al. 2025), and vieja-melanurus-midas, with Vieja
+      melanurus, the cross behind the blood parrot, whose females gave viable young with both
+      parents in a preliminary trial (Fisher et al. 2025).
     sources:
       - kind: literature
         title: "Barlow, G. W. and Munsey, J. W. (1976). The red devil-Midas-arrow cichlid species complex in
@@ -1791,6 +1788,30 @@ features:
           obtained by massively parallel DNA sequencing (ddRADSeq). G3 Genes|Genomes|Genetics.
         url: https://doi.org/10.1534/g3.112.003897
         accessed: 2026-10-12
+      - &hyb26
+        kind: literature
+        title: "Magalhães, A. L. B., Orsi, M. L., Pelicice, F. M., Azevedo-Santos, V. M., Vitule,
+          J. R. S., Lima-Junior, D. P. and Brito, M. F. G. (2017). Small size today, aquarium
+          dumping tomorrow: sales of juvenile non-native large fish as an important threat in
+          Brazil. Neotropical Ichthyology 15(4), e170033."
+        url: https://doi.org/10.1590/1982-0224-20170033
+        accessed: 2026-10-13
+      - &hyb27
+        kind: literature
+        title: Manassila, P., Sangsawad, P., Boonanuntanasarn, S., Kaewda, J., Boonchuen, P.,
+          Limkul, S. and Nakharuthai, C. (2025). Transcriptomic analysis reveals glycolysis and
+          gluconeogenesis pathway activation underlying growth enhancement by duck-blood protein
+          hydrolysate in flowerhorn cichlid fish. International Journal of Molecular Sciences
+          26(19), 9563.
+        url: https://doi.org/10.3390/ijms26199563
+        accessed: 2026-10-13
+      - &hyb28
+        kind: literature
+        title: Fisher, K. J., Miller, M. E., Delomas, T. A., Oldfield, R. G. and Dabrowski, K.
+          (2025). Response to salinity challenge in hybrid blood parrot cichlids (Vieja melanura x
+          Amphilophus citrinellus). Environmental Biology of Fishes 108(6), 923-936.
+        url: https://doi.org/10.1007/s10641-025-01694-8
+        accessed: 2026-10-13
     evidence:
       - source:
           kind: literature
@@ -1815,8 +1836,8 @@ features:
           title: "Seriously Fish: Amphilophus citrinellus (Midas Cichlid)"
           url: https://www.seriouslyfish.com/species/amphilophus-citrinellus/
           accessed: 2026-10-12
-        value: amphilophus-citrinellus-complex
-        note: Often confused with A. labiatus; used for the blood parrot and flowerhorn crosses.
+        value: [amphilophus-citrinellus-complex, amphilophus-trimaculatus-midas, vieja-melanurus-midas]
+        note: "often confused with A. labiatus; used for the blood parrot and flowerhorn crosses"
       - source:
           kind: catalog-of-fishes
           title: Eschmeyer's Catalog of Fishes, species list of the genus Amphilophus (entries citrinellus,
@@ -1842,6 +1863,15 @@ features:
         value: amphilophus-citrinellus-complex
         note: Midas species cross easily in the laboratory; great-lake fish admixed into the crater-lake
           radiations.
+      - source: *hyb26
+        value: amphilophus-trimaculatus-midas
+        note: "flowerhorn given as A. trimaculatus x A. citrinellus"
+      - source: *hyb27
+        value: amphilophus-trimaculatus-midas
+        note: "flowerhorn given as the cross of A. citrinellus and Cichlasoma trimaculatum"
+      - source: *hyb28
+        value: vieja-melanurus-midas
+        note: "blood parrot is a trade hybrid of V. melanurus and A. citrinellus; females gave viable young with both parent species"
   coloration:
     value:
       baseColors:

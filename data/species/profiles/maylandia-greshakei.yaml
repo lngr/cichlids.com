@@ -675,16 +675,12 @@ features:
       method: unanimous
       votes: {agree: 3, total: 3}
     rationale: >-
-      All three votes gave maylandia, and the curated group lists Maylandia greshakei. The species
-      is valid in Maylandia (Catalog of Fishes) and is its type species. The key of Stauffer et al.
-      (2013) places it in the zebra complex next to M. mbenjii, from which only the colour of the
-      male pectoral fin separates it, and O'Quin et al. (2013) raised fertile hybrids of two species
-      of the genus in the laboratory, so the barriers within the genus are behavioural. Genner and
-      Turner (2005) report fertile laboratory hybrids between mbuna species, Fishkeeper warns that
-      many Maylandia species cross in tanks, and Streelman et al. (2004) and Stauffer et al. (1996)
-      document crosses of M. zebra with Cynotilapia afra in the lake. A forum keeper reports a male
-      greshakei that spawned with a female Labeotropheus trewavasae. No published source
-      documents a cross of M. greshakei itself, which is why the confidence is medium.
+      The species belongs to the genus group maylandia, whose basis is presumed: Fishkeeper warns on
+      its page that many Maylandia species can cross, and Aquarium Glaser reports frequent
+      accidental hybrids in the genus. No cross of M. greshakei itself is documented, and a forum
+      report of a spawning with Labeotropheus trewavasae is a single anecdote that gives no group.
+      The documented hybrids of M. zebra with Cynotilapia afra concern the group
+      cynotilapia-afra-maylandia-zebra, not this species.
     sources:
       - *cof
       - *gt
@@ -735,11 +731,11 @@ features:
         value: maylandia
         note: fertile laboratory hybrids of two species of the genus
       - source: *streelman
-        value: maylandia
-        note: crosses of M. zebra and C. afra in the lake; evidence for the group, not for greshakei
+        value: null
+        note: "hybrids of M. zebra and Cynotilapia afra in the lake; concern the group cynotilapia-afra-maylandia-zebra, not this species"
       - source: *stauffer96
-        value: maylandia
-        note: same finding as Streelman et al.
+        value: null
+        note: "same finding as Streelman et al.; concerns the group cynotilapia-afra-maylandia-zebra, not this species"
       - source: *glaserTh
         value: maylandia
         note: Maylandia species interbreed readily in aquaria
@@ -907,7 +903,7 @@ partners:
     - species: Maylandia lombardoi
       reason: Same hybrid group; its blue-barred females and juveniles resemble greshakei and the species cross.
     - species: Cynotilapia afra
-      reason: Member of the maylandia hybrid group with blue males; it crosses with Maylandia even in the wild.
+      reason: Blue-barred mbuna whose males fight greshakei males as rivals; it hybridises with M. zebra in the wild.
     - species: Labeotropheus trewavasae
       reason: Its red-topped blue males look similar, which provokes rival fights, and a keeper reports a cross between the two.
     - species: Aulonocara stuartgranti
@@ -1039,14 +1035,14 @@ profile:
   compatibility:
     text: >-
       This species belongs in a Lake Malawi mbuna tank. Good companions are robust mbuna of other
-      genera that look clearly different, such as the yellow Labidochromis caeruleus, the
-      rust-brown Iodotropheus sprengerae or, in larger tanks, Pseudotropheus crabro. Do not combine
-      it with other Maylandia or with Cynotilapia afra, because they cross readily and the blue
-      males fight as rivals. Avoid fish with a similar red-topped blue pattern, such as
-      Labeotropheus trewavasae. Peaceful haplochromines such as peacocks (Aulonocara) and utaka
-      (Copadichromis) suffer from the constant pressure and need a richer diet that does not suit
-      mbuna. Fry and very small fish may be eaten when the chance arises, and fish from soft-water
-      habitats do not match its water needs.
+      genera that look clearly different, such as the yellow Labidochromis caeruleus, the rust-brown
+      Iodotropheus sprengerae or, in larger tanks, Pseudotropheus crabro. Do not combine it with
+      other Maylandia, because they cross readily, or with Cynotilapia afra, whose blue males fight
+      as rivals. Avoid fish with a similar red-topped blue pattern, such as Labeotropheus
+      trewavasae. Peaceful haplochromines such as peacocks (Aulonocara) and utaka (Copadichromis)
+      suffer from the constant pressure and need a richer diet that does not suit mbuna. Fry and
+      very small fish may be eaten when the chance arises, and fish from soft-water habitats do not
+      match its water needs.
     sources:
       - *sf
       - *fk

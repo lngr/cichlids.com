@@ -372,7 +372,7 @@ const HYBRID_GROUP_BASES = ["documented", "presumed"];
 
 /**
  * Errors for a parsed hybrid group file: every group has a unique id, a description, at least two
- * member names, at least one source and a basis of documented or presumed.
+ * member names, at least one source, a basis of documented or presumed and a non-empty user note.
  */
 export function hybridGroupIssues(doc, file) {
   if (!isObject(doc) || !Array.isArray(doc.groups)) {
@@ -395,6 +395,9 @@ export function hybridGroupIssues(doc, file) {
     }
     if (typeof group.description !== "string" || group.description.trim() === "") {
       issues.push(error(`${at}/description`, "a hybrid group needs a description", file));
+    }
+    if (typeof group.userNote !== "string" || group.userNote.trim() === "") {
+      issues.push(error(`${at}/userNote`, "a hybrid group needs a userNote", file));
     }
     const members = Array.isArray(group.members) ? group.members : [];
     if (members.length < 2 || !members.every((m) => typeof m === "string" && m.trim() !== "")) {

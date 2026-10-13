@@ -1644,17 +1644,14 @@ features:
         agree: 3
         total: 3
   hybridGroups:
-    value: []
+    value: [altolamprologus]
     confidence: medium
-    rationale: All three votes agree on no group. The only congeners are A. compressiceps and A.
-      fasciatus. A. calvus and A. compressiceps live side by side in the south-west of the lake and
-      split only recently, but the divergence models of Koblmüller et al. (2017) show little if any
-      gene flow between them; the ancient introgression they found concerns a northern lineage of A.
-      compressiceps. No literature or database source documents a cross between the two species.
-      Seriously Fish warns against mixing the colour forms of A. calvus, which concerns forms within
-      one species. In the archive one keeper reports an accidental cross with Julidochromis
-      transcriptus and another claims that calvus and compressiceps interbreed; both are single,
-      unconfirmed posts and do not justify a group.
+    rationale: >-
+      No source documents a cross with A. compressiceps or any other species, so no documented group
+      applies. The presumed group altolamprologus rests on the very recent split of the two species,
+      which leaves neither monophyletic (Koblmüller et al. 2017), and on hobby advice not to breed
+      them together; their stable coexistence in the lake argues for a caution rather than a
+      warning.
     sources:
       - kind: catalog-of-fishes
         title: "Eschmeyer's Catalog of Fishes: species of Altolamprologus (online version updated 21 Sep.
@@ -1691,6 +1688,10 @@ features:
         title: cichlids.com forum thread 13809
         url: https://www.cichlids.com/disc/read.php?2,13809
         accessed: 2026-10-13
+      - &hyb24
+        kind: archive
+        title: cichlids.com forum thread 41333
+        url: https://www.cichlids.com/disc/read.php?2,41333
     evidence:
       - source:
           kind: catalog-of-fishes
@@ -1708,8 +1709,8 @@ features:
             genus. Hydrobiologia 791, 35-50 (published online 2016)."
           url: https://doi.org/10.1007/s10750-016-2896-2
           accessed: 2026-10-13
-        value: null
-        note: recent divergence from A. compressiceps with little if any gene flow
+        value: altolamprologus
+        note: "recent divergence from A. compressiceps with little if any gene flow; neither species monophyletic"
       - source:
           kind: database
           title: "Seriously Fish: Altolamprologus calvus (Calvus Cichlid)"
@@ -1724,6 +1725,9 @@ features:
           accessed: 2026-10-13
         value: null
         note: single anecdotal report of a cross with Julidochromis transcriptus
+      - source: *hyb24
+        value: altolamprologus
+        note: "advises keeping only one Altolamprologus species when breeding to avoid hybrids"
     verification:
       method: unanimous
       votes:

@@ -529,6 +529,7 @@ function group(extra = {}) {
     members: ["Tropheus moorii", "Tropheus duboisi"],
     sources: [SOURCE],
     basis: "documented",
+    userNote: "Wild hybrids of these species are reported.",
     ...extra,
   };
 }
@@ -557,6 +558,23 @@ test("a duplicate hybrid group id is an error", () => {
   assert.ok(found.some((i) => i.pointer === "/groups/1/id" && /duplicate/.test(i.message)), JSON.stringify(found));
 });
 
+test("a hybrid group without a user note is an error", () => {
+  const broken = group();
+  delete broken.userNote;
+  const found = errors(hybridGroupIssues({ groups: [broken] }, "g.yaml"));
+  assert.equal(found.length, 1, JSON.stringify(found));
+  assert.equal(found[0].file, "g.yaml");
+  assert.equal(found[0].pointer, "/groups/0/userNote");
+});
+
+test("a hybrid group with an empty or non-string user note is an error", () => {
+  for (const userNote of ["", "   ", 5, null]) {
+    const found = errors(hybridGroupIssues({ groups: [group({ userNote })] }, "g.yaml"));
+    assert.equal(found.length, 1, JSON.stringify({ userNote, found }));
+    assert.equal(found[0].pointer, "/groups/0/userNote");
+  }
+});
+
 test("a hybrid group with one member is an error", () => {
   const found = errors(hybridGroupIssues({ groups: [group({ members: ["Tropheus moorii"] })] }, "g.yaml"));
   assert.ok(found.some((i) => i.pointer === "/groups/0/members"), JSON.stringify(found));
@@ -571,7 +589,7 @@ test("a broken hybrid group file fails validateFiles", () => {
   const dir = mkdtempSync(join(tmpdir(), "hybrid-groups-"));
   try {
     const path = join(dir, "hybrid-groups.yaml");
-    writeFileSync(path, "groups:\n  - id: x\n    description: d\n    members: [A a, B b]\n    sources: [{kind: literature, title: t}]\n");
+    writeFileSync(path, "groups:\n  - id: x\n    description: d\n    members: [A a, B b]\n    userNote: n\n    sources: [{kind: literature, title: t}]\n");
     const found = errors(validateFiles([], { hybridGroupsPath: path }));
     assert.ok(found.some((i) => i.pointer === "/groups/0/basis" && i.file.endsWith("hybrid-groups.yaml")), JSON.stringify(found));
   } finally {

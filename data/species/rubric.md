@@ -114,7 +114,16 @@ in the stocking planner:
 | `presumed` | Only general warnings exist, such as hobby sources saying that the species of a genus cross and must not share a tank, or a very close relationship. | Medium (caution). |
 
 A forced laboratory cross, such as females kept without a male of their own species, does not make a
-group `documented`.
+group `documented`. A report of a cross between two specific species where free choice of partners is
+not shown gives a group of those two species with the basis `presumed`.
+
+Every group has a `userNote`: one or two plain-English sentences for hobbyists, shown next to the
+caution or warning. The note explains the background of the group and gives no instructions. It
+says what was observed (wild hybrids, a tank report, only a general warning about the genus, a forced
+laboratory cross that does not count), where and by whom where known, and how reliable that evidence
+is, so that a reader understands why the planner shows the caution or warning. Example: "Wild hybrids
+of these two species were found at Thumbi West Island after Cynotilapia afra was introduced there;
+genetic studies confirm the mixing."
 
 ## Minimum tank (`minTank`)
 

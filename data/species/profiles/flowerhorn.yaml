@@ -1001,21 +1001,18 @@ features:
         value: false
 
   hybridGroups:
-    value: [amphilophus-citrinellus-complex]
+    value: [amphilophus-citrinellus-complex, amphilophus-trimaculatus-midas, vieja-melanurus-midas]
     confidence: medium
     verification:
       method: unanimous
       votes: {agree: 3, total: 3}
     rationale: >-
-      All three votes give amphilophus-citrinellus-complex. The flowerhorn descends from crosses of
-      A. trimaculatus with members of that group: A. labiatus x A. trimaculatus (Tarkhani et al.
-      2016, Abe et al. 2020) and A. citrinellus x A. trimaculatus (Magalhães et al. 2017, Manassila
-      et al. 2025); Sari et al. (2023) list A. citrinellus and A. labiatus among the species crossed
-      into the strains, and Seriously Fish names the Midas cichlid as a source species. Breeders
-      keep crossing new species into existing lines, so a flowerhorn kept with a Midas cichlid, a
-      red devil or a three-spot cichlid can produce hybrid fry. A. trimaculatus is listed as a
-      member of the group because these works document its crosses with A. citrinellus and A.
-      labiatus.
+      As a domestic line, the flowerhorn is a member of the groups of all its parent species, which
+      Sari et al. (2023) name as A. citrinellus, A. labiatus, A. trimaculatus and V. melanurus. All
+      three groups are documented: the Midas complex, amphilophus-trimaculatus-midas with A.
+      trimaculatus, A. citrinellus and A. labiatus, and vieja-melanurus-midas with V. melanurus and
+      A. citrinellus. The line is fertile and has spread on its own in Lake Matano (Herder et al.
+      2012).
     sources:
       - &tarkhani
         kind: literature
@@ -1039,29 +1036,41 @@ features:
           Nicaraguan crater lake cichlids. PLoS Genetics 12(6), e1006157.
         url: https://doi.org/10.1371/journal.pgen.1006157
         accessed: 2026-10-13
+      - &hyb30
+        kind: literature
+        title: "Herder, F., Schliewen, U., Geiger, M., Hadiaty, R., Gray, S., McKinnon, J.,
+          Walter, R. and Pfaender, J. (2012). Alien invasion in Wallace's Dreamponds: records of
+          the hybridogenic \"flowerhorn\" cichlid in Lake Matano, with an annotated checklist of
+          fish species introduced to the Malili Lakes system in Sulawesi. Aquatic Invasions 7(4),
+          521-535 (abstract)."
+        url: https://doi.org/10.3391/ai.2012.7.4.009
+        accessed: 2026-10-13
     evidence:
       - source: *tarkhani
-        value: amphilophus-citrinellus-complex
+        value: amphilophus-trimaculatus-midas
         note: flowerhorn given as A. labiatus x A. trimaculatus
       - source: *abe
-        value: amphilophus-citrinellus-complex
+        value: amphilophus-trimaculatus-midas
         note: flowerhorn given as A. labiatus x A. trimaculatus
       - source: *magalhaes
-        value: amphilophus-citrinellus-complex
+        value: amphilophus-trimaculatus-midas
         note: flowerhorn given as A. trimaculatus x A. citrinellus
       - source: *manassila
-        value: amphilophus-citrinellus-complex
+        value: amphilophus-trimaculatus-midas
         note: flowerhorn given as A. citrinellus x Cichlasoma trimaculatum
       - source: *sari
-        value: amphilophus-citrinellus-complex
-        note: A. citrinellus and A. labiatus named among the crossed species
+        value: [amphilophus-citrinellus-complex, amphilophus-trimaculatus-midas, vieja-melanurus-midas]
+        note: "A. citrinellus, A. labiatus, A. trimaculatus and V. melanurus named among the crossed species"
       - source: *sfCitrinellus
-        value: amphilophus-citrinellus-complex
-        note: Midas cichlid named as a source species of the flowerhorn
+        value: [amphilophus-citrinellus-complex, amphilophus-trimaculatus-midas]
+        note: "Midas cichlid named as a source species of the flowerhorn"
       - source: *fishkeeper
         value: amphilophus-citrinellus-complex
         note: further species crossed into existing lines
 
+      - source: *hyb30
+        value: amphilophus-trimaculatus-midas
+        note: "flowerhorn spread on its own around Lake Matano, so the hybrid line reproduces"
   coloration:
     value:
       baseColors: [red, silver, black]

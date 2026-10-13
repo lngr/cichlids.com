@@ -916,14 +916,14 @@ features:
       votes: {agree: 3, total: 3}
 
   hybridGroups:
-    value: [aulonocara]
+    value: [aulonocara, sciaenochromis-fryeri-aulonocara]
     confidence: high
     rationale: >-
-      Seriously Fish advises against other Aulonocara because most of them can hybridise, and
-      Fishkeeper wants it as the only peacock species in a tank for the same reason. Peacock
-      females of different species and populations look alike, so crosses happen easily and many
-      trade lines are already mixed. The curated group aulonocara lists this species. All three
-      votes (generator, checker-a, checker-b) proposed this group.
+      The species is a member of the presumed group aulonocara: Seriously Fish, Fishkeeper and the
+      Cichlid-Forum article warn that it interbreeds with other peacocks, phrased for the genus and
+      without a documented cross with a named species. The presumed group
+      sciaenochromis-fryeri-aulonocara covers the hobby reports of S. fryeri males spawning with
+      Aulonocara females.
     sources:
       - *sf
       - *fk
@@ -933,6 +933,17 @@ features:
         kind: archive
         title: cichlids.com forum thread 36544
         url: https://www.cichlids.com/disc/read.php?2,36544
+      - &hyb8
+        kind: database
+        title: "Seriously Fish: Sciaenochromis fryeri (Electric Blue Hap)"
+        url: https://www.seriouslyfish.com/species/sciaenochromis-fryeri/
+        accessed: 2026-10-13
+      - &hyb9
+        kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Electric Blue Hap, Sciaenochromis fryeri,
+          species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/electric-blue-hap
+        accessed: 2026-10-13
     evidence:
       - source: *sf
         value: aulonocara
@@ -949,6 +960,12 @@ features:
       - source: *a36544
         value: aulonocara
         note: keeper notes many hybrids among traded peacocks
+      - source: *hyb8
+        value: sciaenochromis-fryeri-aulonocara
+        note: "males spawn with females of other genera, above all Aulonocara"
+      - source: *hyb9
+        value: sciaenochromis-fryeri-aulonocara
+        note: "advises against Aulonocara because males may remove the peacock male to breed with its females"
     verification:
       method: unanimous
       votes: {agree: 3, total: 3}

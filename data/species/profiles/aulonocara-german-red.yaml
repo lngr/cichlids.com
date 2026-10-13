@@ -1872,17 +1872,13 @@ features:
         agree: 3
         total: 3
   hybridGroups:
-    value: [aulonocara]
+    value: [aulonocara, sciaenochromis-fryeri-aulonocara]
     confidence: high
-    rationale: All three votes (generator, checker-a, checker-b) agree. The line descends from the
-      southern form of the A. stuartgranti complex, and A. stuartgranti is a member of the curated
-      group aulonocara. Seriously Fish warns for the Maleri form, A. stuartgranti and A. baenschi
-      that most Aulonocara hybridise, Practical Fishkeeping reports that stuartgranti forms
-      interbreed with other Aulonocara, and Tropical Fish Hobbyist and Elieson note that some red
-      peacocks in the trade are hybrids; a breeder reported that his German Red stock crossed with
-      Blue Neon peacocks. Females of the line look like those of other peacocks, so mixed keeping
-      risks hybrid offspring and the loss of the line. The group's member list holds valid species
-      names; the line belongs to it through its parent form A. stuartgranti.
+    rationale: >-
+      German Red is a strain selected from the southern stuartgranti form (Seriously Fish), so it
+      belongs to the groups of A. stuartgranti: the presumed genus group aulonocara and the presumed
+      group sciaenochromis-fryeri-aulonocara, which list it under its profile name. Both groups rest
+      on hobby warnings, not on a documented cross with a named species.
     sources:
       - kind: database
         title: "Seriously Fish: Aulonocara sp. 'stuartgranti maleri' (Sunshine Peacock)"
@@ -1924,6 +1920,17 @@ features:
         title: cichlids.com forum thread 15920
         url: https://www.cichlids.com/disc/read.php?2,15920
         accessed: 2026-10-12
+      - &hyb14
+        kind: database
+        title: "Seriously Fish: Sciaenochromis fryeri (Electric Blue Hap)"
+        url: https://www.seriouslyfish.com/species/sciaenochromis-fryeri/
+        accessed: 2026-10-13
+      - &hyb15
+        kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Electric Blue Hap, Sciaenochromis fryeri,
+          species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/electric-blue-hap
+        accessed: 2026-10-13
     evidence:
       - source:
           kind: database
@@ -1981,6 +1988,12 @@ features:
           accessed: 2026-10-12
         value: aulonocara
         note: breeder's German Red stock crossed with Blue Neon peacocks
+      - source: *hyb14
+        value: sciaenochromis-fryeri-aulonocara
+        note: "males spawn with females of other genera, above all Aulonocara"
+      - source: *hyb15
+        value: sciaenochromis-fryeri-aulonocara
+        note: "advises against Aulonocara because males may remove the peacock male to breed with its females"
     verification:
       method: unanimous
       votes:

@@ -1015,19 +1015,17 @@ features:
         note: kept with Labidochromis and other mbuna in a large tank
 
   hybridGroups:
-    value: [aulonocara]
+    value: [aulonocara, sciaenochromis-fryeri-aulonocara]
     confidence: high
     verification:
       method: unanimous
       votes: {agree: 4, total: 4}
     rationale: >-
-      All four votes chose the curated group aulonocara, to which the parent species belongs.
-      Seriously Fish advises against keeping other Aulonocara with A. jacobfreibergi because most
-      of them cross with it, and the Fishipedia profile of the Otter Point form, the wild stock of
-      the Eureka, warns against mixing species of the genus or varieties of the species for the same
-      reason. Retailer sheets give the same warning, and the trade sells several peacock strains
-      that arose from such crosses. Females of all peacocks look alike, so crosses go unnoticed;
-      keeping the Eureka with wild forms of its own species also dilutes the line.
+      Eureka is a line bred from the Otter Point population of A. jacobfreibergi (Seriously Fish),
+      so it belongs to the groups of that species: the presumed genus group aulonocara and the
+      presumed group sciaenochromis-fryeri-aulonocara, which list it under its profile name.
+      Seriously Fish and Fishipedia warn against mixing peacocks and varieties of the species, and
+      Fishkeeper describes trade peacocks as aquarium crosses.
     sources:
       - *sf
       - *fpd
@@ -1040,6 +1038,17 @@ features:
         url: https://www.baybridgeaquarium.com/products/lemon-jake-cichlid
         accessed: 2026-10-13
       - *a22114
+      - &hyb12
+        kind: database
+        title: "Seriously Fish: Sciaenochromis fryeri (Electric Blue Hap)"
+        url: https://www.seriouslyfish.com/species/sciaenochromis-fryeri/
+        accessed: 2026-10-13
+      - &hyb13
+        kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Electric Blue Hap, Sciaenochromis fryeri,
+          species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/electric-blue-hap
+        accessed: 2026-10-13
     evidence:
       - source: *sf
         value: aulonocara
@@ -1060,6 +1069,12 @@ features:
         value: aulonocara
         note: peacocks may cross with each other
 
+      - source: *hyb12
+        value: sciaenochromis-fryeri-aulonocara
+        note: "males spawn with females of other genera, above all Aulonocara"
+      - source: *hyb13
+        value: sciaenochromis-fryeri-aulonocara
+        note: "advises against Aulonocara because males may remove the peacock male to breed with its females"
   coloration:
     value:
       baseColors: [red, orange, blue]

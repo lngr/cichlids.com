@@ -985,16 +985,16 @@ features:
         agree: 3
         total: 3
   hybridGroups:
-    value: [maylandia]
+    value: [cynotilapia-afra-maylandia-zebra, maylandia, maylandia-zebra-callainos]
     confidence: high
-    rationale: Decided by the vote count (unanimous, 3 of 3) with high confidence. The curated group
-      maylandia lists Maylandia zebra as a member. In mixed laboratory tanks about a third of the
-      offspring of zebra females from one population were sired by males of other, differently
-      coloured populations (Knight and Turner 2004), and crosses with Maylandia benetos gave fertile
-      F1, F2 and backcross generations (Husemann et al. 2017). Congeneric mbuna are separated mainly
-      by male colour and mate choice (Genner and Turner 2005), and females at Maleri Island cannot
-      be told apart from M. xanstomachus by colour (Konings and Stauffer 2006). The Catalog of
-      Fishes places the species in Maylandia together with its relatives.
+    rationale: >-
+      The genus group maylandia is presumed: hobby sources warn that Maylandia species cross in
+      tanks, and Husemann et al. (2017) raised fertile hybrids with M. benetos by artificial
+      fertilisation. Two documented pairs rest on wild evidence: maylandia-zebra-callainos, with
+      probable hybrids seen at Thumbi West Island where M. callainos was introduced (Genner and
+      Turner 2005) and a mixed farm stock in the trade (Aquarium Glaser), and
+      cynotilapia-afra-maylandia-zebra, with the genetically confirmed hybrid population of M. zebra
+      and Cynotilapia afra at Thumbi West (Stauffer et al. 1996, Streelman et al. 2004).
     sources:
       - *a1
       - &a37
@@ -1008,6 +1008,28 @@ features:
       - *a3
       - *a35
       - *a2
+      - &hyb1
+        kind: literature
+        title: "Stauffer, J. R., Bowers, N. J., Kocher, T. D. and McKaye, K. R. (1996). Evidence
+          of hybridization between Cynotilapia afra and Pseudotropheus zebra (Teleostei:
+          Cichlidae) following an intralacustrine translocation in Lake Malawi. Copeia 1996(1),
+          203-208."
+        url: https://doi.org/10.2307/1446959
+        accessed: 2026-10-13
+      - &hyb2
+        kind: literature
+        title: Streelman, J. T., Gmyrek, S. L., Kidd, M. R., Kidd, C., Robinson, R. L., Hert, E.,
+          Ambali, A. J. and Kocher, T. D. (2004). Hybridization and contemporary evolution in an
+          introduced cichlid fish from Lake Malawi National Park. Molecular Ecology 13(8),
+          2471-2479 (abstract).
+        url: https://doi.org/10.1111/j.1365-294x.2004.02240.x
+        accessed: 2026-10-13
+      - &hyb3
+        kind: website
+        title: Schäfer, F. (2021). Bright blue Maylandia from Thailand. Aquarium Glaser fish
+          archive (wholesaler).
+        url: https://www.aquariumglaser.de/en/25-perchlike-fishes/bright-blue-maylandia-from-thailand/
+        accessed: 2026-10-13
     evidence:
       - source: *a1
         value: maylandia
@@ -1022,11 +1044,20 @@ features:
         value: maylandia
         note: females at Maleri indistinguishable by colour from M. xanstomachus
       - source: *a35
-        value: maylandia
-        note: congeners separated mainly by male colour and mate choice
+        value: [maylandia, maylandia-zebra-callainos, cynotilapia-afra-maylandia-zebra]
+        note: "congeners separated mainly by male colour and mate choice; probable wild hybrids of M. zebra and M. callainos at Thumbi West and review of the hybrids with Cynotilapia afra"
       - source: *a2
         value: maylandia
         note: listed as Maylandia zebra
+      - source: *hyb1
+        value: cynotilapia-afra-maylandia-zebra
+        note: "hybridisation with Cynotilapia afra after translocation within the lake"
+      - source: *hyb2
+        value: cynotilapia-afra-maylandia-zebra
+        note: "high share of hybrids with C. afra at turbid sites of Thumbi West"
+      - source: *hyb3
+        value: maylandia-zebra-callainos
+        note: "blue farm-bred fish in the trade carry ancestry of M. callainos and M. zebra"
     verification:
       method: unanimous
       votes:

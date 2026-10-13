@@ -14,12 +14,18 @@ file:
    feature carries the `tolerance` the tally decides.
    For every group id in the `hybridGroups` the tally decides: when `data/species/hybrid-groups.yaml`
    does not list the group, add it there with `id`, a one-sentence `description`, the valid names of
-   its `members`, the `sources` (literature or database) that report crosses and its `basis`:
+   its `members`, the `sources` (literature or database) that report crosses, a `userNote` and its `basis`:
    `documented` when a source reports a cross between named members from the wild or from a tank
    where the fish could choose partners of their own species, otherwise `presumed` (general
    warnings such as "the species of this genus cross", or a very close relationship). A forced
    laboratory cross, such as females kept without a male of their own species, does not make a
-   group `documented`. When the group
+   group `documented`. A report of a cross between two specific species where free choice of partners
+   is not shown gives a two-member group with the basis `presumed`. The `userNote` is one or two
+   plain-English sentences for hobbyists that explain the background of the group and give no
+   instructions: what was observed (wild hybrids, a tank report, only a general warning about the
+   genus, a forced laboratory cross that does not count), where and by whom where known, and how
+   reliable that evidence is, for example "A single hobby source mentions an aquarium cross of these
+   two species without naming its circumstances, so the risk is plausible but unconfirmed." When the group
    exists but lacks this species, add the species to its members. A species may be a member of
    several groups.
 2. Compare taxonomy and every other feature value across all files. Values agree when they are

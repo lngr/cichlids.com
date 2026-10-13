@@ -1763,9 +1763,18 @@ features:
         agree: 3
         total: 3
   hybridGroups:
-    value: [tropheus]
+    value: [tropheus, tropheus-brichardi-moorii, tropheus-moorii-red]
     confidence: high
-    rationale: "Tropheus species and populations cross readily: Konings and Seriously Fish warn that geographic forms hybridise freely in the tank, and the hobby keeps even locality forms apart. In the lake, natural hybrid populations occur where T. moorii meets T. sp. 'red' (Van Steenberge et al. 2018; tanganyika.si), an experimental cross and genetic data show that a yellow colour variant arose from admixture of two colour forms (Sefc et al. 2017), and colour-assortative mating among introduced morphs is incomplete (Salzburger et al. 2006). Herler et al. (2010) report one site where T. moorii coexists with a congener without interbreeding, which shows that the barrier is behavioural and weak in a tank. The Catalog of Fishes lists four valid Tropheus species, and the curated group tropheus holds all of them including T. moorii."
+    rationale: >-
+      The genus group tropheus has the basis presumed, because crosses are documented only for a few
+      pairs of its members and none involves T. duboisi or T. annectens; it rests on the close
+      relationship, past gene flow across the genus and the hobby warning against mixing forms, and
+      it includes the undescribed species named by Konings. Two documented two-member groups carry
+      the direct evidence: tropheus-moorii-red, with T. sp. 'red', which mixes with T. moorii in the
+      wild, after a release in Mpulungu harbour and in ponds holding both forms (Van Steenberge et
+      al. 2018, Salzburger et al. 2006, Sefc et al. 2015), and tropheus-brichardi-moorii, with the
+      Kipili form of T. brichardi, whose natural hybrids with T. moorii are reported from the
+      Tanzanian coast (tanganyika.si).
     sources:
       - kind: literature
         title: "Van Steenberge, M., Raeymaekers, J. A. M., Hablützel, P. I., Vanhove, M. P. M., Koblmüller, S. and Snoeks, J. (2018). Delineating species along shifting shorelines: Tropheus (Teleostei, Cichlidae) from the southern subbasin of Lake Tanganyika. Frontiers in Zoology 15, 42."
@@ -1802,14 +1811,27 @@ features:
       - kind: archive
         title: cichlids.com forum thread 24654
         url: https://www.cichlids.com/disc/read.php?2,24654
+      - &hyb22
+        kind: literature
+        title: Sefc, K. M., Hermann, C. M., Steinwender, B., Brindl, H., Zimmermann, H.,
+          Mattersdorfer, K., Postl, L., Makasa, L., Sturmbauer, C. and Koblmüller, S. (2015).
+          Asymmetric dominance and asymmetric mate choice oppose premating isolation after
+          allopatric divergence. Ecology and Evolution 5, 1549-1562.
+        url: https://doi.org/10.1002/ece3.1372
+        accessed: 2026-10-13
+      - &hyb23
+        kind: database
+        title: "Tanganyika.si: Tropheus sp. 'kipili' Kipili (Tropheus brichardi 'Kipili')"
+        url: https://tanganyika.si/TanganjikaByLocations/Kipili/slides/Tropheus%20sp.%20%27kipili%27%20Kipili.html
+        accessed: 2026-10-13
     evidence:
       - source:
           kind: literature
           title: "Van Steenberge, M., Raeymaekers, J. A. M., Hablützel, P. I., Vanhove, M. P. M., Koblmüller, S. and Snoeks, J. (2018). Delineating species along shifting shorelines: Tropheus (Teleostei, Cichlidae) from the southern subbasin of Lake Tanganyika. Frontiers in Zoology 15, 42."
           url: https://doi.org/10.1186/s12983-018-0287-4
           accessed: 2026-10-12
-        value: tropheus
-        note: natural hybrid populations between T. moorii and T. sp. 'red'
+        value: [tropheus, tropheus-moorii-red, tropheus-brichardi-moorii]
+        note: "natural hybrid populations between T. moorii and T. sp. 'red'; Kipili form of T. brichardi overlaps with T. moorii"
       - source:
           kind: literature
           title: Konings, A. (2009). Tropheus - home is where the rocks are. Practical Fishkeeping.
@@ -1829,22 +1851,22 @@ features:
           title: Sefc, K. M. et al. (2017). Shifting barriers and phenotypic diversification by hybridisation. Ecology Letters 20.
           url: https://doi.org/10.1111/ele.12766
           accessed: 2026-10-12
-        value: tropheus
-        note: hybrid colour variant, cross confirmed experimentally
+        value: [tropheus, tropheus-moorii-red]
+        note: "yellow hybrid form traced to admixture of the red and bluish forms"
       - source:
           kind: literature
           title: Salzburger, W. et al. (2006). Colour-assortative mating among populations of Tropheus moorii, a cichlid fish from Lake Tanganyika, East Africa. Proceedings of the Royal Society B 273, 257-266.
           url: https://doi.org/10.1098/rspb.2005.3321
           accessed: 2026-10-12
-        value: tropheus
-        note: incomplete assortative mating among introduced morphs
+        value: [tropheus, tropheus-moorii-red]
+        note: "incomplete assortative mating among introduced morphs"
       - source:
           kind: database
           title: tanganyika.si, Tropheus moorii 'Molwe'
           url: https://tanganyika.si/TanganjikaByLocations/Molwe/slides/Tropheus%20moorii%20'Molwe'.html
           accessed: 2026-10-12
-        value: tropheus
-        note: hybrid populations occur where Tropheus forms meet
+        value: [tropheus, tropheus-brichardi-moorii]
+        note: "hybrid populations occur where Tropheus forms meet; T. moorii shares the coast with the Kipili form of T. brichardi"
       - source:
           kind: literature
           title: Herler, J. et al. (2010). Sexual dimorphism and population divergence in the Lake Tanganyika cichlid fish genus Tropheus. Frontiers in Zoology 7, 4.
@@ -1858,6 +1880,12 @@ features:
           url: https://www.cichlids.com/disc/read.php?2,24654
         value: tropheus
         note: keeper mixes two differently coloured Tropheus to limit crossing, which confirms the risk
+      - source: *hyb22
+        value: tropheus-moorii-red
+        note: "females of T. moorii mated with red males as well as with their own males in ponds holding both forms"
+      - source: *hyb23
+        value: tropheus-brichardi-moorii
+        note: "Kipili form hybridises with T. cf. moorii; natural hybrids documented in the Mtosi Bay area"
     verification:
       method: unanimous
       votes:

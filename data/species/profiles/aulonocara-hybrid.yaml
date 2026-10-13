@@ -1872,9 +1872,14 @@ features:
         agree: 3
         total: 3
   hybridGroups:
-    value: [aulonocara]
+    value: [aulonocara, sciaenochromis-fryeri-aulonocara]
     confidence: high
-    rationale: "The lines descend from Aulonocara, and their females look like peacock females: any peacock male courts them and hybrid males fertilise pure females (Seriously Fish: most Aulonocara species cross with each other; Aquarium Glaser; Fishkeeper; archive). Kept together with described Aulonocara they carry hybrid genes into pure lines, so they belong to the group aulonocara. OB lines also carry mbuna genes, since the orange blotch pattern comes from a blotched mbuna, and could cross with mbuna as well (Elieson: the hybrids cross with other cichlids kept with them; archive thread 49231). A profile belongs to one group only, so the peacock group, the certain and most frequent crossing partner, is the value; the mbuna risk appears in the compatibility text. Proposal for hybrid-groups.yaml: add Aulonocara hybrid as a member of the group aulonocara."
+    rationale: >-
+      The trade hybrid peacocks descend from Aulonocara and look and behave like them (Fishkeeper,
+      Aquarium Glaser), so they are members of the presumed groups of their peacock parents,
+      aulonocara and sciaenochromis-fryeri-aulonocara. Their mbuna ancestry gives no further group:
+      the sources name no mbuna species, and Aquarium Glaser describes the peacock x mbuna lines as
+      artificial fertilisations, which do not count as documented crosses.
     sources:
       - kind: literature
         title: Schäfer, F. (2021). Aulonocara 'Dragon Blood'. Aquarium Glaser fish archive
@@ -1912,6 +1917,17 @@ features:
         title: cichlids.com forum thread 49231
         url: https://www.cichlids.com/disc/read.php?2,49231
         accessed: 2026-10-12
+      - &hyb18
+        kind: database
+        title: "Seriously Fish: Sciaenochromis fryeri (Electric Blue Hap)"
+        url: https://www.seriouslyfish.com/species/sciaenochromis-fryeri/
+        accessed: 2026-10-13
+      - &hyb19
+        kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Electric Blue Hap, Sciaenochromis fryeri,
+          species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/electric-blue-hap
+        accessed: 2026-10-13
     evidence:
       - source:
           kind: literature
@@ -1969,6 +1985,12 @@ features:
           accessed: 2026-10-12
         value: aulonocara
         note: same statement
+      - source: *hyb18
+        value: sciaenochromis-fryeri-aulonocara
+        note: "males spawn with females of other genera, above all Aulonocara"
+      - source: *hyb19
+        value: sciaenochromis-fryeri-aulonocara
+        note: "advises against Aulonocara because males may remove the peacock male to breed with its females"
     verification:
       method: unanimous
       votes:

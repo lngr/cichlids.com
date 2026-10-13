@@ -937,25 +937,14 @@ features:
       votes: {agree: 3, total: 5}
 
   hybridGroups:
-    value: [amatitlania-nigrofasciata-complex]
+    value: [amatitlania-nigrofasciata-complex, amatitlania-nigrofasciata-hypsophrys-nicaraguensis]
     confidence: low
     rationale: >-
-      The vote count decided this group with the method conservative (3 of 5 votes agree). The
-      proposals were generator amatitlania-nigrofasciata-complex, checker-a null, checker-b null,
-      tiebreaker-1 amatitlania-nigrofasciata-complex and tiebreaker-2 null. Three votes for null
-      fall one short of a qualified majority, and the conservative rule takes the most common
-      named group. The group holds A. nigrofasciata, A. siquia, A. kanna and A. coatepeque, which
-      formed one species until Schmitter-Soto (2007) described the southern and lake populations as
-      new species on subtle morphological characters. The Catalog of Fishes lists all four as
-      valid but records that McMahan et al. (2014) and Artigas Azas (2021) treat A. coatepeque, and
-      Artigas Azas (2021) also A. siquia, as synonyms of A. nigrofasciata; the Cichlid Room
-      Companion follows that view, and field studies of A. siquia call it the convict cichlid.
-      Practical Fishkeeping reported that the colour forms, such as the Honduran red point, reached
-      the hobby without locality data. No paper or species database read for this profile
-      documents a cross between these four species; the group rests on their close relationship and
-      the former single-species concept, and taxa without a known barrier to interbreeding are
-      expected to cross in a tank. The convict also crosses in captivity with more distant cichlids
-      such as the Texas cichlid and the blood parrot, which a curated group cannot cover.
+      The convict cichlid is a member of the presumed group of the four Amatitlania species
+      described from its range, which rests on their very close relationship (Schmitter-Soto 2007);
+      no cross among them is documented. The presumed two-member group
+      amatitlania-nigrofasciata-hypsophrys-nicaraguensis covers the Nicaragua cichlid, with which
+      Seriously Fish reports a captive cross without source or circumstances.
     sources:
       - *cof
       - &zt1603
@@ -994,6 +983,11 @@ features:
       - kind: archive
         title: cichlids.com forum thread 25556
         url: https://www.cichlids.com/disc/read.php?1,25556
+      - &hyb31
+        kind: database
+        title: "Seriously Fish: Hypsophrys nicaraguensis (Nicaragua Cichlid)"
+        url: https://www.seriouslyfish.com/species/hypsophrys-nicaraguensis/
+        accessed: 2026-10-13
     evidence:
       - source: *cof
         value: amatitlania-nigrofasciata-complex
@@ -1016,6 +1010,9 @@ features:
       - source: *sf
         value: null
         note: no hybridisation mentioned
+      - source: *hyb31
+        value: amatitlania-nigrofasciata-hypsophrys-nicaraguensis
+        note: "reports a captive cross of the Nicaragua cichlid with the convict cichlid without a source or circumstances"
     verification:
       method: conservative
       votes: {agree: 3, total: 5}
@@ -1185,9 +1182,6 @@ partners:
     - species: Rocio octofasciata
       reason: Sturdy Central American cichlid of similar temperament that holds its own against a breeding convict pair.
       condition: Exception to the recommended species tank; at least 150 cm with separate cave zones.
-    - species: Hypsophrys nicaraguensis
-      reason: Sturdy Central American cichlid of comparable size that copes with the territorial pressure of convicts.
-      condition: Exception to the recommended species tank; at least 150 cm.
     - species: Astyanax mexicanus
       reason: Fast, tough characin of the upper water layers that serves as a dither fish for Central American cichlids.
       condition: Exception to the recommended species tank; group of six or more adults, tank from 120 cm.
@@ -1198,6 +1192,8 @@ partners:
       reason: Close relative from Atlantic Panama and Costa Rica, formerly part of the convict cichlid; crosses are expected.
     - species: Amatitlania coatepeque
       reason: Lake form that some authors treat as the same species; crosses are expected.
+    - species: Hypsophrys nicaraguensis
+      reason: Same hybrid group; a captive cross with the convict cichlid is reported, and the two compete for the same caves.
     - species: Paracheirodon innesi
       reason: Small slender tetra that is harassed and eaten.
     - species: Pterophyllum scalare
@@ -1330,7 +1326,9 @@ profile:
       mouth, slow and long-finned species such as angelfish, bottom-dwelling catfish that compete
       for caves, and large predatory cichlids that would eat the convicts. Never keep them with
       their closest relatives A. siquia (the Honduran red point), A. kanna or A. coatepeque: these
-      formed one species until 2007 and are expected to cross.
+      formed one species until 2007 and are expected to cross. The Nicaragua cichlid, Hypsophrys
+      nicaraguensis, is reported to have crossed with the convict cichlid in aquaria and does not
+      belong in the same tank either.
     sources:
       - *sf
       - *fk

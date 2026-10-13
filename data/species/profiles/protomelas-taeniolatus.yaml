@@ -856,14 +856,11 @@ features:
     value: [protomelas-taeniolatus-complex]
     confidence: low
     rationale: >-
-      Seriously Fish warns on the pages of both P. taeniolatus and P. fenestratus that the two
-      species and their colour forms should not be kept together because they may cross. FishBase
-      stresses how closely P. taeniolatus resembles P. fenestratus in form and ecology, Oliver
-      notes look-alike fish sold under related trade names, and Ribbink et al. (1980) could not
-      separate the two in the field and recorded them jointly. The plain grey, striped females are
-      hard to tell apart. Only one publisher reports crosses directly and no breeding study
-      confirms them, which keeps the confidence low. The group protomelas-taeniolatus-complex holds
-      Protomelas taeniolatus and Protomelas fenestratus.
+      The group protomelas-taeniolatus-complex has the basis presumed: Seriously Fish warns on the
+      pages of P. taeniolatus and P. fenestratus that these species and the Taiwan Reef fish may
+      hybridise, and FishBase stresses how closely P. taeniolatus resembles P. fenestratus. A shop
+      page reports Taiwan Reef stock crossed with Red Empress, but names no setting, and no cross
+      from the wild or from a tank with free choice of partners is documented.
     sources:
       - *sf
       - &sffen
@@ -882,6 +879,11 @@ features:
         title: Ribbink, A. J., Marsh, A. C., Marsh, B. and Sharp, B. J. (1980). Parental behaviour and mixed broods among cichlid fish of Lake Malawi. South African Journal of Zoology 15(1), 1-6.
         url: https://doi.org/10.1080/02541858.1980.11447677
         accessed: 2026-10-12
+      - &hyb20
+        kind: website
+        title: "Gensou (Singapore fish shop): Protomelas Steveni Taiwan Reef care"
+        url: https://gensou.sg/?p=32658
+        accessed: 2026-10-13
     evidence:
       - source: *sf
         value: protomelas-taeniolatus-complex
@@ -898,6 +900,9 @@ features:
       - source: *ribbink
         value: protomelas-taeniolatus-complex
         note: field records merge P. taeniolatus and P. fenestratus; crosses not covered
+      - source: *hyb20
+        value: protomelas-taeniolatus-complex
+        note: "claims that trade stock of the Taiwan Reef fish is crossed with P. taeniolatus; names no setting"
     verification:
       method: unanimous
       votes: {agree: 3, total: 3}

@@ -986,14 +986,11 @@ features:
       method: unanimous
       votes: {agree: 4, total: 4}
     rationale: >-
-      All four runs decided the group maylandia, which lists this species. The Catalog of Fishes
-      places it in Maylandia and M. K. Oliver counts it to the Maylandia zebra complex. Within
-      the complex, Maylandia (Metriaclima) zebra and the look-alike Cynotilapia afra cross where
-      they meet (Streelman et al. 2004). Aqua-Fish warns of hybridisation, and Seriously Fish
-      advises against tankmates of similar pattern; the blue barred females and subdominant males
-      of the kenyi resemble M. zebra, M. callainos and C. afra. No documented cross involving M.
-      lombardoi itself was found, so the assignment rests on the close relationship and the hobby
-      warnings.
+      The species belongs to the genus group maylandia with basis presumed. Aqua-Fish warns of
+      hybridisation in mixed tanks and advises a single-species tank for breeding, and Seriously
+      Fish advises against tankmates of similar pattern. No documented cross involving M. lombardoi
+      exists. The hybrids of M. zebra with Cynotilapia afra concern the group
+      cynotilapia-afra-maylandia-zebra and not this species.
     sources:
       - *cof
       - *oliver
@@ -1013,8 +1010,8 @@ features:
         value: maylandia
         note: member of the Maylandia zebra complex
       - source: *streelman
-        value: maylandia
-        note: crosses of C. afra and Maylandia (Metriaclima) zebra; genus-level evidence
+        value: null
+        note: "hybrids of C. afra and Maylandia zebra in the lake; concern the group cynotilapia-afra-maylandia-zebra, not this species"
       - source: *sf
         value: maylandia
         note: avoid tankmates of similar pattern
@@ -1270,7 +1267,7 @@ partners:
     - species: Maylandia zebra
       reason: Same hybrid group; blue barred females and subdominant males look alike, which leads to fights and crosses.
     - species: Cynotilapia afra
-      reason: Same hybrid group; blue barred males resemble kenyi females and are attacked as rivals.
+      reason: Blue barred males resemble kenyi females and are attacked as rivals.
     - species: Chindongo saulosi
       reason: Blue barred males and yellow females copy the colours of both kenyi sexes and draw constant attacks; it is also smaller and weaker.
     - species: Labidochromis caeruleus
@@ -1411,10 +1408,11 @@ profile:
       Only robust mbuna of similar size suit the kenyi, and they should look different from both
       sexes. Good choices are strongly built species such as Melanochromis auratus, Labeotropheus
       trewavasae or Tropheops, together with a group of Synodontis multipunctatus as bottom
-      dwellers. Avoid other Maylandia and Cynotilapia afra, which look alike and may cross, and
-      species such as Chindongo saulosi or Labidochromis caeruleus whose colours copy those of the
-      kenyi. Peaceful Malawi cichlids such as peacocks and utaka, and all soft-water fish, do not
-      belong in its tank. Stock densely and add all fish at the same time where possible.
+      dwellers. Avoid other Maylandia, which look alike and may cross, and Cynotilapia afra, which
+      looks alike as well, and species such as Chindongo saulosi or Labidochromis caeruleus whose
+      colours copy those of the kenyi. Peaceful Malawi cichlids such as peacocks and utaka, and all
+      soft-water fish, do not belong in its tank. Stock densely and add all fish at the same time
+      where possible.
     sources:
       - *sf
       - *tt

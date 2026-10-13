@@ -14,28 +14,149 @@
 #               genus cross and must not share a tank, or a very close relationship; shared
 #               membership is a medium conflict (caution).
 # A forced laboratory cross, such as females kept without a male of their own species, does not
-# make a group documented.
+# make a group documented. A report of a cross between two specific species where free choice of
+# partners is not shown gives a group of those two species with the basis presumed.
+#
+# Every group has a userNote of one or two plain-English sentences for hobbyists, shown next to the
+# caution or warning of the stocking planner. It explains the background of the group and gives no
+# instructions: what was observed (wild hybrids, a tank report, only a general warning about
+# the genus, a forced laboratory cross that does not count), where and by whom where known, and how
+# reliable that evidence is, so that a reader understands why the planner shows the caution or
+# warning.
 groups:
   - id: maylandia
-    description: Species of Maylandia (Metriaclima), which cross readily in tanks, also across colour forms, together with the look-alike Cynotilapia afra, whose blue barred males resemble Maylandia zebra and which forms hybrids with it in the wild where it was introduced to Thumbi West Island in Lake Malawi.
+    description: All valid species of the zebra mbuna genus Maylandia (Metriaclima), whose blue, barred or orange forms look alike and which hobby sources warn may cross when several species share a tank; the group rests on these warnings for the genus as a whole and on fertile laboratory crosses within the genus, while documented crosses exist only for M. zebra with M. callainos and with Cynotilapia afra, which have groups of their own.
+    basis: presumed
+    userNote: >-
+      Hobby sources and a wholesaler warn in general terms that the zebra mbuna of this genus
+      interbreed in tanks, and researchers have raised fertile hybrids of two species by artificial
+      fertilisation. Crosses between named species from the wild are documented only for the pairs
+      listed separately, so the caution for the rest of the genus rests on these general warnings.
+    members:
+      - Maylandia aurora
+      - Maylandia barlowi
+      - Maylandia benetos
+      - Maylandia callainos
+      - Maylandia chrysomallos
+      - Maylandia cyneusmarginata
+      - Maylandia emmiltos
+      - Maylandia estherae
+      - Maylandia fainzilberi
+      - Maylandia flavicauda
+      - Maylandia flavifemina
+      - Maylandia gallireyae
+      - Maylandia glaucos
+      - Maylandia greshakei
+      - Maylandia hajomaylandi
+      - Maylandia koningsi
+      - Maylandia lanisticola
+      - Maylandia lombardoi
+      - Maylandia lundoensis
+      - Maylandia mbenjii
+      - Maylandia melissa
+      - Maylandia midomo
+      - Maylandia mossambica
+      - Maylandia ngarae
+      - Maylandia nigrodorsalis
+      - Maylandia nkhunguensis
+      - Maylandia pambazuko
+      - Maylandia phaeos
+      - Maylandia pulpican
+      - Maylandia pyrsonotos
+      - Maylandia sciasma
+      - Maylandia staufferi
+      - Maylandia tarakiki
+      - Maylandia usisyae
+      - Maylandia xanstomachus
+      - Maylandia xanthos
+      - Maylandia zebra
+    sources:
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes, species of the genus Maylandia"
+        url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Maylandia
+        accessed: 2026-10-13
+        note: Lists 37 valid Maylandia species, which define the members; says nothing about crosses.
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics) data bank: Red-top Ice-blue Zebra, Maylandia greshakei"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-top-ice-blue-zebra-
+        accessed: 2026-10-13
+        note: States that many Maylandia species can cross and advises against keeping look-alike congeners together.
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics) data bank: Red/Blue Zebra, Maylandia estherae"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-blue-zebra
+        accessed: 2026-10-13
+        note: Gives the same warning about crosses between Maylandia species for M. estherae.
+      - kind: website
+        title: "Schäfer, F. (2021). Bright blue Maylandia from Thailand. Aquarium Glaser fish archive (wholesaler)."
+        url: https://www.aquariumglaser.de/en/25-perchlike-fishes/bright-blue-maylandia-from-thailand/
+        accessed: 2026-10-13
+        note: Says that the zebra cichlids of the genus Maylandia readily interbreed in aquaria, so accidental hybrids are frequent.
+      - kind: database
+        title: "Aqua-Fish: Kenyi Cichlid care guide"
+        url: https://en.aqua-fish.net/fish/kenyi-cichlid
+        accessed: 2026-10-13
+        note: Recommends a tank without other species for breeding M. lombardoi to prevent hybrids; names no partner.
+      - kind: literature
+        title: >-
+          Husemann, M., Tobler, M., McCauley, C., Ding, B. and Danley, P. D. (2017). Body shape
+          differences in a pair of closely related Malawi cichlids and their hybrids: effects of
+          genetic variation, phenotypic plasticity, and transgressive segregation. Ecology and
+          Evolution 7, 4336-4346.
+        url: https://doi.org/10.1002/ece3.2823
+        accessed: 2026-10-13
+        note: Raises F1, F2 and backcross hybrids of M. zebra and M. benetos from artificial fertilisation and states that the two do not cross in nature; shows interfertility within the genus, not a free cross.
+      - kind: archive
+        title: cichlids.com forum thread 1443
+        url: https://www.cichlids.com/disc/read.php?1,1443
+        accessed: 2026-10-13
+        note: A keeper mentions one hybrid of a red zebra (M. estherae) and M. aurora without saying whether conspecific partners were present.
+  - id: maylandia-zebra-callainos
+    description: Maylandia zebra and the cobalt zebra M. callainos, of which probable wild hybrids were seen where M. callainos was introduced to Thumbi West Island and of which a mixed stock has reached the trade from Asian farms.
     basis: documented
+    userNote: >-
+      Probable wild hybrids of these two species were seen at Thumbi West Island in Lake Malawi
+      after the cobalt zebra was introduced there, and a wholesaler reports that blue farm-bred fish
+      in the trade carry ancestry of both. The evidence rests on sightings and a trade report rather
+      than on genetic proof.
     members:
       - Maylandia zebra
-      - Maylandia estherae
       - Maylandia callainos
-      - Maylandia greshakei
-      - Maylandia lombardoi
+    sources:
+      - kind: literature
+        title: >-
+          Genner, M. J. and Turner, G. F. (2005). The mbuna cichlids of Lake Malawi: a model for
+          rapid speciation and adaptive radiation. Fish and Fisheries 6(1), 1-34.
+        url: https://doi.org/10.1111/j.1467-2679.2005.00173.x
+        accessed: 2026-10-13
+        note: Reports, after Stauffer and Hert (1992), sightings at Thumbi West Island of unusual fish that were probably hybrids of the native P. (Maylandia) zebra and the introduced P. callainos.
+      - kind: website
+        title: "Schäfer, F. (2021). Bright blue Maylandia from Thailand. Aquarium Glaser fish archive (wholesaler)."
+        url: https://www.aquariumglaser.de/en/25-perchlike-fishes/bright-blue-maylandia-from-thailand/
+        accessed: 2026-10-13
+        note: Identifies blue farm-bred fish imported from Thailand as "M. estherae Blue" as M. callainos carrying some M. zebra ancestry.
+      - kind: database
+        title: "Seriously Fish: Maylandia callainos (Cobalt Blue Zebra)"
+        url: https://www.seriouslyfish.com/species/maylandia-callainos/
+        accessed: 2026-10-13
+        note: Records that M. callainos was traded as a form of Pseudotropheus zebra and is easily confused with M. estherae and M. benetos; gives no crossing report.
+  - id: cynotilapia-afra-maylandia-zebra
+    description: Cynotilapia afra and Maylandia zebra, two blue, dark-barred mbuna that formed a hybrid population on the turbid southern shore of Thumbi West Island after C. afra was moved there by an exporter.
+    basis: documented
+    userNote: >-
+      Wild hybrids of these two species were found at Thumbi West Island after Cynotilapia afra was
+      introduced there; genetic studies confirm the mixing.
+    members:
       - Cynotilapia afra
+      - Maylandia zebra
     sources:
       - kind: literature
         title: >-
           Stauffer, J. R., Bowers, N. J., Kocher, T. D. and McKaye, K. R. (1996). Evidence of
           hybridization between Cynotilapia afra and Pseudotropheus zebra (Teleostei: Cichlidae)
-          following an intralacustrine translocation in Lake Malawi. Copeia 1996(1), 203-208
-          (title and bibliographic record).
+          following an intralacustrine translocation in Lake Malawi. Copeia 1996(1), 203-208.
         url: https://doi.org/10.2307/1446959
-        accessed: 2026-10-12
-        note: Reports hybridisation between C. afra and Pseudotropheus (Maylandia) zebra after C. afra was moved within Lake Malawi.
+        accessed: 2026-10-13
+        note: Describes nine wild specimens from Mitande Point, Thumbi West Island, with teeth and fin pattern intermediate between the two species and links the crosses to the few C. afra males among many P. zebra males.
       - kind: literature
         title: >-
           Streelman, J. T., Gmyrek, S. L., Kidd, M. R., Kidd, C., Robinson, R. L., Hert, E.,
@@ -43,8 +164,8 @@ groups:
           introduced cichlid fish from Lake Malawi National Park. Molecular Ecology 13(8),
           2471-2479 (abstract).
         url: https://doi.org/10.1111/j.1365-294x.2004.02240.x
-        accessed: 2026-10-12
-        note: Finds with microsatellites a high share of hybrids between introduced C. afra and native Metriaclima zebra on the turbid southern coast of Thumbi West Island.
+        accessed: 2026-10-13
+        note: Finds with microsatellites a high share of hybrids of introduced C. afra and native Metriaclima zebra at the turbid southern sites of Thumbi West.
       - kind: literature
         title: >-
           Zidana, H., Turner, G. F., Van Oosterhout, C. and Hänfling, B. (2009). Elevated mtDNA
@@ -52,249 +173,122 @@ groups:
           National Park is evidence for multiple source populations and hybridization. Molecular
           Ecology 18(21), 4380-4389 (abstract).
         url: https://doi.org/10.1111/j.1365-294x.2009.04362.x
-        accessed: 2026-10-12
-        note: Calls C. afra and Pseudotropheus zebra closely related and hybridising and traces part of the mtDNA diversity of introduced C. afra to introgression from P. zebra.
-  - id: tropheus
-    description: All Tropheus species and locality forms; locality forms are kept apart as well to preserve them.
-    basis: documented
-    members:
-      - Tropheus moorii
-      - Tropheus duboisi
-      - Tropheus brichardi
-      - Tropheus annectens
-    sources:
+        accessed: 2026-10-13
+        note: Calls the two species closely related and hybridising and attributes part of the mtDNA diversity of introduced C. afra to introgression from P. zebra.
       - kind: literature
-        title: "Van Steenberge, M., Raeymaekers, J. A. M., Hablützel, P. I., Vanhove, M. P. M., Koblmüller,
-          S. and Snoeks, J. (2018). Delineating species along shifting shorelines: Tropheus (Teleostei,
-          Cichlidae) from the southern subbasin of Lake Tanganyika. Frontiers in Zoology 15, 42."
-        url: https://doi.org/10.1186/s12983-018-0287-4
-        accessed: 2026-10-12
-        note: natural hybrid populations between T. moorii and T. sp. 'red'
-      - kind: literature
-        title: Sefc, K. M. et al. (2017). Shifting barriers and phenotypic diversification by hybridisation.
-          Ecology Letters 20.
-        url: https://doi.org/10.1111/ele.12766
-        accessed: 2026-10-12
-        note: hybrid colour variant, cross confirmed experimentally
-      - kind: literature
-        title: Konings, A. (2009). Tropheus - home is where the rocks are. Practical Fishkeeping.
-        url: https://www.practicalfishkeeping.co.uk/features/tropheus-home-is-where-the-rocks-are/
-        accessed: 2026-10-12
-        note: different localities in one tank frequently hybridise
-      - kind: database
-        title: Seriously Fish, Tropheus moorii
-        url: https://www.seriouslyfish.com/species/tropheus-moorii/
-        accessed: 2026-10-12
-        note: morphs hybridise freely
-  - id: aulonocara
-    description: Peacock cichlids of the genus Aulonocara; females look alike and cross easily.
+        title: >-
+          Genner, M. J. and Turner, G. F. (2005). The mbuna cichlids of Lake Malawi: a model for
+          rapid speciation and adaptive radiation. Fish and Fisheries 6(1), 1-34.
+        url: https://doi.org/10.1111/j.1467-2679.2005.00173.x
+        accessed: 2026-10-13
+        note: Reviews the Thumbi West case and the molecular support for introgression between P. zebra and C. afra.
+  - id: labeotropheus
+    description: All valid species of the scrapermouth genus Labeotropheus, which hobby sources warn may cross when several of its species or colour forms share a tank and whose two classic species L. fuelleborni and L. trewavasae give viable, fertile hybrids in both directions when females are kept with males of the other species only.
     basis: presumed
+    userNote: >-
+      Hobby databases warn in general terms that Labeotropheus species and colour forms hybridise in
+      tanks. Researchers raised fertile hybrids of L. fuelleborni and L. trewavasae, but only by
+      pairing each female with a male of the other species, which does not show what happens in a
+      mixed tank, and wild hybrids are reported as very rare.
     members:
-      - Aulonocara stuartgranti
-      - Aulonocara jacobfreibergi
-      - Aulonocara baenschi
-      - "Aulonocara jacobfreibergi 'Eureka'"
+      - Labeotropheus fuelleborni
+      - Labeotropheus trewavasae
+      - Labeotropheus alticodia
+      - Labeotropheus artatorostris
+      - Labeotropheus aurantinfra
+      - Labeotropheus candipygia
+      - Labeotropheus chirangali
+      - Labeotropheus chlorosiglos
+      - Labeotropheus obscurus
+      - Labeotropheus rubidorsalis
+      - Labeotropheus simoneae
     sources:
-      - kind: database
-        title: "Seriously Fish: Aulonocara stuartgranti (Grant's Peacock)"
-        url: https://www.seriouslyfish.com/species/aulonocara-stuartgranti/
-        accessed: 2026-10-13
-        note: most Aulonocara can hybridise, so other peacocks are best avoided
-      - kind: database
-        title: Seriously Fish, Aulonocara jacobfreibergi
-        url: https://www.seriouslyfish.com/species/aulonocara-jacobfreibergi/
-        accessed: 2026-10-12
-        note: most Aulonocara hybridise with each other
-      - kind: website
-        title: "Elieson, M.: Aulonocara jacobfreibergi, species article on Cichlid-Forum.com"
-        url: https://www.cichlid-forum.com/articles/a_jacobfreibergi.php
-        accessed: 2026-10-12
-        note: locality forms cross readily and are to be kept apart
-      - kind: literature
-        title: Chin, P. (2008). Aulonocara jacobfreibergi. The Cichlid Room Companion (abstract only).
-        url: https://cichlidae.com/reference.php?id=2318
-        accessed: 2026-10-12
-        note: abstract stresses avoiding cross-breeding
-  - id: amphilophus-citrinellus-complex
-    description: Midas and red devil cichlids of the Amphilophus citrinellus complex, including the crater-lake species of lakes Apoyo and Xiloá, which lack intrinsic barriers to crossing and hybridise in the laboratory, in the trade and in nature, together with the three-spot cichlid Amphilophus trimaculatus, whose crosses with A. citrinellus and A. labiatus gave rise to the flowerhorn.
-    basis: documented
-    members:
-      - Amphilophus citrinellus
-      - Amphilophus labiatus
-      - Amphilophus zaliosus
-      - Amphilophus astorquii
-      - Amphilophus chancho
-      - Amphilophus flaveolus
-      - Amphilophus globosus
-      - Amphilophus supercilius
-      - Amphilophus amarillo
-      - Amphilophus sagittae
-      - Amphilophus viridis
-      - Amphilophus xiloaensis
-      - Amphilophus trimaculatus
-    sources:
-      - kind: literature
-        title: >-
-          Barlow, G. W. and Munsey, J. W. (1976). The red devil-Midas-arrow cichlid species complex
-          in Nicaragua. In: Thorson, T. B. (ed.), Investigations of the Ichthyofauna of Nicaraguan
-          Lakes, University of Nebraska-Lincoln, 359-369 (abstract).
-        url: https://digitalcommons.unl.edu/ichthynicar/24
-        accessed: 2026-10-12
-      - kind: literature
-        title: >-
-          Kautt, A. F., Machado-Schiaffino, G. and Meyer, A. (2016). Multispecies outcomes of
-          sympatric speciation after admixture with the source population in two radiations of
-          Nicaraguan crater lake cichlids. PLoS Genetics 12(6), e1006157.
-        url: https://doi.org/10.1371/journal.pgen.1006157
-        accessed: 2026-10-12
-      - kind: literature
-        title: >-
-          Recknagel, H., Elmer, K. R. and Meyer, A. (2013). A hybrid genetic linkage map of two
-          ecologically and morphologically divergent Midas cichlid fishes (Amphilophus spp.)
-          obtained by massively parallel DNA sequencing (ddRADSeq). G3 Genes|Genomes|Genetics.
-        url: https://doi.org/10.1534/g3.112.003897
-        accessed: 2026-10-12
-      - kind: database
-        title: "Fishkeeper (Maidenhead Aquatics): Midas Cichlid, Amphilophus citrinellus, species profile"
-        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/midas-cichlid
-        accessed: 2026-10-12
-      - kind: literature
-        title: >-
-          Tarkhani, R., Imani, A., Jamali, H. and Sarvi Moghanlou, K. (2016). Anaesthetic efficacy
-          of eugenol on Flowerhorn (Amphilophus labiatus x Amphilophus trimaculatus). Aquaculture
-          Research 48(6), 3207-3215 (abstract).
-        url: https://doi.org/10.1111/are.13151
-        accessed: 2026-10-13
-        note: Studies the flowerhorn as the cross of A. labiatus and A. trimaculatus.
-      - kind: literature
-        title: >-
-          Abe, H. A., Reis, R. G. A., Barros, F. A. L., Paixão, P. E. G., Meneses, J. O., Souza, J.
-          C. N. and Fujimoto, R. Y. (2020). Optimal management improves Flowerhorn fish
-          larviculture. Aquaculture Research 52(5), 2353-2358.
-        url: https://doi.org/10.1111/are.15085
-        accessed: 2026-10-13
-        note: Rears larvae of the flowerhorn, given as the cross of A. labiatus and A. trimaculatus.
-      - kind: literature
-        title: >-
-          Magalhães, A. L. B., Orsi, M. L., Pelicice, F. M., Azevedo-Santos, V. M., Vitule, J. R. S.,
-          Lima-Junior, D. P. and Brito, M. F. G. (2017). Small size today, aquarium dumping
-          tomorrow: sales of juvenile non-native large fish as an important threat in Brazil.
-          Neotropical Ichthyology 15(4), e170033.
-        url: https://doi.org/10.1590/1982-0224-20170033
-        accessed: 2026-10-13
-        note: Records the flowerhorn in the Brazilian trade as the hybrid A. trimaculatus x A. citrinellus.
-      - kind: literature
-        title: >-
-          Manassila, P., Sangsawad, P., Boonanuntanasarn, S., Kaewda, J., Boonchuen, P., Limkul, S.
-          and Nakharuthai, C. (2025). Transcriptomic analysis reveals glycolysis and
-          gluconeogenesis pathway activation underlying growth enhancement by duck-blood protein
-          hydrolysate in flowerhorn cichlid fish. International Journal of Molecular Sciences
-          26(19), 9563.
-        url: https://doi.org/10.3390/ijms26199563
-        accessed: 2026-10-13
-        note: Names the flowerhorn as the cross of A. citrinellus and Cichlasoma trimaculatum, a synonym of A. trimaculatus.
-  - id: symphysodon
-    description: All discus species and their aquarium strains.
-    basis: documented
-    members:
-      - Symphysodon aequifasciatus
-      - Symphysodon discus
-      - Symphysodon tarzoo
-    sources:
-      - kind: literature
-        title: "Practical Fishkeeping: Discus genus revised"
-        url: https://www.practicalfishkeeping.co.uk/fishkeeping-news/discus-genus-revised/
-        accessed: 2026-10-12
-        note: natural hybrids between discus species reported by Bleher et al. (2007)
-      - kind: literature
-        title: "Amado, M. V., Farias, I. P. and Hrbek, T. (2011). A molecular perspective on systematics,
-          taxonomy and classification of Amazonian discus fishes of the genus Symphysodon. International
-          Journal of Evolutionary Biology 2011, 360654 (with supplement 1: pH and conductivity of
-          Symphysodon habitats after Bleher et al. 2007)."
-        url: https://doi.org/10.4061/2011/360654
-        accessed: 2026-10-12
-        note: admixture between discus phenotypes in the wild
       - kind: catalog-of-fishes
-        title: Eschmeyer's Catalog of Fishes, species of the genus Symphysodon (online version of 21 Sep. 2026)
-        url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Symphysodon
-        accessed: 2026-10-12
-        note: three valid, closely related discus species
-  - id: cyphotilapia
-    description: The two frontosa species of Lake Tanganyika, which look alike, meet in a natural hybrid zone in the middle of the lake and are often mixed up in the trade.
-    basis: documented
-    members:
-      - Cyphotilapia frontosa
-      - Cyphotilapia gibberosa
-    sources:
+        title: "Eschmeyer's Catalog of Fishes, species of the genus Labeotropheus"
+        url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Labeotropheus
+        accessed: 2026-10-13
+        note: Lists 11 valid Labeotropheus species, which define the members; says nothing about crosses.
+      - kind: database
+        title: "Seriously Fish: Labeotropheus trewavasae"
+        url: https://www.seriouslyfish.com/species/labeotropheus-trewavasae/
+        accessed: 2026-10-13
+        note: Advises keeping neither colour forms nor other Labeotropheus species together, since they may hybridise.
+      - kind: database
+        title: "Seriously Fish: Labeotropheus fuelleborni"
+        url: https://www.seriouslyfish.com/species/labeotropheus-fuelleborni/
+        accessed: 2026-10-13
+        note: Gives the same warning against mixing colour forms or other Labeotropheus species.
       - kind: literature
         title: >-
-          Jackson, G. D., Standish, T., Cetintas, O., Zinenko, O., Shechonge, A. H. and Yanchukov,
-          A. (2024). Population genetics and gene flow in Cyphotilapia frontosa and Cyphotilapia
-          gibberosa along the east coast of Lake Tanganyika. Fishes 9(12), 481.
-        url: https://doi.org/10.3390/fishes9120481
-        accessed: 2026-10-12
-      - kind: database
-        title: Tanganyika.si, Cyphotilapia frontosa 'Kigoma'
-        url: https://tanganyika.si/TanganjikaByLocations/Kigoma/slides/Cyphotilapia%20frontosa%20%27Kigoma%27.html
-        accessed: 2026-10-12
+          Pauers, M. J., Fox, K. R., Hall, R. A. and Patel, K. (2018). Selection, hybridization,
+          and the evolution of morphology in the Lake Malawi endemic cichlids of the genus
+          Labeotropheus. Scientific Reports 8, 15842.
+        url: https://doi.org/10.1038/s41598-018-34135-x
+        accessed: 2026-10-13
+        note: Obtains viable, fertile hybrids by isolating male L. trewavasae with female L. fuelleborni from Chidunga Rocks; a forced cross that shows interfertility.
+      - kind: literature
+        title: >-
+          Pauers, M. J., Hoffmann, J. and Ackley, L. J.-B. (2023). Differences among reciprocal
+          hybrids of Labeotropheus. Hydrobiologia 850, 2149-2164.
+        url: https://doi.org/10.1007/s10750-022-05092-4
+        accessed: 2026-10-13
+        note: Pairs males of one species with females of the other in both directions and raises the hybrids to adulthood; notes that wild hybrids are very rarely found.
   - id: labidochromis
-    description: Described Labidochromis species common in the trade, whose slender bodies and pale or yellowish females look alike; the hobby warns that they and the colour forms of L. caeruleus may cross when kept together.
+    description: All valid species of the mbuna genus Labidochromis, slender insect pickers with look-alike pale or yellowish females, which hobby sources warn may cross when kept together; the warnings name the genus as a whole, and no cross between two named species is documented.
     basis: presumed
+    userNote: >-
+      Only a general warning exists: hobby sources say that Labidochromis species hybridise easily
+      when kept together. No cross between two named species has been reported, so the risk is
+      plausible but unconfirmed.
     members:
       - Labidochromis caeruleus
       - Labidochromis chisumulae
-      - Labidochromis mbenjii
+      - Labidochromis flavigulis
       - Labidochromis freibergi
+      - Labidochromis gigas
+      - Labidochromis heterodon
+      - Labidochromis ianthinus
+      - Labidochromis joanjohnsonae
+      - Labidochromis lividus
+      - Labidochromis maculicauda
+      - Labidochromis mbenjii
+      - Labidochromis mylodon
+      - Labidochromis pallidus
+      - Labidochromis shiranus
+      - Labidochromis strigatus
+      - Labidochromis textilis
       - Labidochromis vellicans
+      - Labidochromis zebroides
     sources:
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes, species of the genus Labidochromis"
+        url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Labidochromis
+        accessed: 2026-10-13
+        note: Lists 18 valid Labidochromis species, which define the members, and L. mathotho as of uncertain status; says nothing about crosses.
       - kind: database
         title: "Seriously Fish: Labidochromis caeruleus"
         url: https://www.seriouslyfish.com/species/labidochromis-caeruleus/
-        accessed: 2026-10-12
+        accessed: 2026-10-13
+        note: Advises against keeping its colour forms or other Labidochromis species together, since they may hybridise.
       - kind: literature
         title: >-
           Tawil, P. (2019). Labidochromis chisumulae, the striped relative of Labidochromis
           caeruleus. Cichlid News Magazine 28(2), 6-10 (abstract only).
         url: https://cichlidae.com/reference.php?id=9305
-        accessed: 2026-10-12
-      - kind: literature
-        title: >-
-          Cicek, E., Fricke, R., Sungur, S., Capar, O. B. and Golani, D. (2023). Freshwater fishes
-          of Israel; a revised and updated annotated checklist 2023. Zootaxa 5369(4), 451-484,
-          treatment of Labidochromis caeruleus (via Plazi).
-        url: https://treatment.plazi.org/id/03EC8B3A8F00607595F1D076FE5FB8BD
-        accessed: 2026-10-12
-      - kind: literature
-        title: >-
-          DeLorenzo, L. et al. (2021). Genetic basis of body shape variation along the
-          benthic-pelagic axis in cichlid fishes. bioRxiv preprint, published 2023 in Molecular
-          Ecology 32(14).
-        url: https://doi.org/10.1101/2021.10.02.462884
-        accessed: 2026-10-12
-  - id: protomelas-taeniolatus-complex
-    description: Protomelas taeniolatus, the very similar Protomelas fenestratus and the undescribed Protomelas sp. 'Steveni Taiwan' of the same "Steveni" group, whose plain barred or striped females are hard to tell apart and whose species and colour forms may cross when kept together.
-    basis: presumed
-    members:
-      - Protomelas taeniolatus
-      - Protomelas fenestratus
-      - "Protomelas sp. 'Steveni Taiwan'"
-    sources:
-      - kind: database
-        title: "Seriously Fish: Protomelas sp. steveni 'Taiwan reef'"
-        url: https://www.seriouslyfish.com/species/protomelas-sp-steveni-taiwan-reef/
         accessed: 2026-10-13
-        note: Warns that this fish, P. fenestratus and P. taeniolatus may hybridise and must not be kept together.
-      - kind: database
-        title: "Seriously Fish: Protomelas taeniolatus"
-        url: https://www.seriouslyfish.com/species/protomelas-taeniolatus/
-        accessed: 2026-10-12
-      - kind: database
-        title: "Seriously Fish: Protomelas fenestratus"
-        url: https://www.seriouslyfish.com/species/protomelas-fenestratus/
-        accessed: 2026-10-12
+        note: Treats L. chisumulae as the close relative of L. caeruleus and stresses avoiding hybrids with similar species in captivity.
+      - kind: website
+        title: "Wikipedia (en): Labidochromis"
+        url: https://en.wikipedia.org/wiki/Labidochromis
+        accessed: 2026-10-13
+        note: States that the species of the genus hybridise easily and recommends one Labidochromis species per tank.
   - id: chindongo-elongatus-complex
     description: Chindongo elongatus and its closest elongate, blue-barred relatives C. longior and C. flavus, which the hobby warns not to keep together because the forms of the elongatus complex interbreed in tanks; the group rests on these crossing warnings and the close relationship, and no cross between the three species is documented.
     basis: presumed
+    userNote: >-
+      Hobby databases say that the closely related forms of the elongatus group interbreed in tanks,
+      but no cross between these three named species is documented. The caution rests on that
+      general warning and on the close relationship of the species.
     members:
       - Chindongo elongatus
       - Chindongo longior
@@ -310,15 +304,11 @@ groups:
         url: https://www.seriouslyfish.com/species/pseudotropheus-flavus/
         accessed: 2026-10-13
         note: Warns against keeping C. flavus with C. elongatus or any member of its complex, because the species interbreed and the males clash heavily.
-      - kind: literature
-        title: >-
-          Seegers, L. (1996). The identity of Pseudotropheus elongatus, with the description of P.
-          longior from Mbamba Bay, Tanzania, and notes on Genyochromis mento (Teleostei: Cichlidae).
-          Ichthyological Exploration of Freshwaters 7(2), 97-110 (bibliographic record in the
-          Catalog of Fishes; diagnosis as quoted by M. K. Oliver).
-        url: https://researcharchive.calacademy.org/research/ichthyology/catalog/getref.asp?id=22571
+      - kind: database
+        title: "Oliver, M. K.: Chindongo elongatus (Fryer, 1956). The Cichlid Fishes of Lake Malawi, Africa (malawicichlids.com), quoting the redescription by Seegers (1996)"
+        url: https://malawicichlids.com/mw09005f.htm
         accessed: 2026-10-13
-        note: Restricts C. elongatus to the short, deep-bodied barred form of Mbamba Bay and describes the sympatric, slenderer C. longior from the same elongatus forms.
+        note: Places C. elongatus in the short, deep-bodied part of the elongatus complex after Seegers (1996) and compares it with the sympatric, described C. longior.
       - kind: literature
         title: >-
           Li, S., Konings, A. F. and Stauffer, J. R. (2016). A revision of the Pseudotropheus
@@ -326,46 +316,282 @@ groups:
           new species. Zootaxa 4168(2), 353-381 (abstract).
         url: https://doi.org/10.11646/zootaxa.4168.2.9
         accessed: 2026-10-13
-        note: Places C. elongatus, C. longior and C. flavus together in Chindongo, the barred core of the former elongatus species group; reports no crosses.
-  - id: amatitlania-nigrofasciata-complex
-    description: The convict cichlid and the three species described in 2007 from its southern and lake populations, which share one morphological clade and are treated as synonyms by some authors; the group rests on this close relationship and the former single-species concept, and no cross between the four species is documented.
+        note: Erects Chindongo for the barred core of the elongatus species group, which includes C. elongatus, C. longior and C. flavus; reports no crosses.
+  - id: melanochromis
+    description: All valid species of the mbuna genus Melanochromis together with the striped Pseudotropheus johannii and P. cyaneorhabdos, which hobby sources file under Melanochromis; striped males and golden or pale females look alike across this set, and the hobby warns, for the genus as a whole, that its species cross when kept together, while no cross between two named species is documented.
     basis: presumed
+    userNote: >-
+      Hobby sources warn that Melanochromis species cross when kept together, which is plausible
+      because striped males and golden or pale females look alike across the genus. The warnings
+      concern the genus as a whole and no cross between two named species is documented.
     members:
-      - Amatitlania nigrofasciata
-      - Amatitlania siquia
-      - Amatitlania kanna
-      - Amatitlania coatepeque
+      - Melanochromis auratus
+      - Melanochromis baliodigma
+      - Melanochromis chipokae
+      - Melanochromis dialeptos
+      - Melanochromis heterochromis
+      - Melanochromis kaskazini
+      - Melanochromis lepidiadaptes
+      - Melanochromis loriae
+      - Melanochromis melanopterus
+      - Melanochromis mossambiquensis
+      - Melanochromis mpoto
+      - Melanochromis robustus
+      - Melanochromis simulans
+      - Melanochromis vermivorus
+      - Melanochromis wochepa
+      - Pseudotropheus johannii
+      - Pseudotropheus cyaneorhabdos
+    sources:
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes, species of the genus Melanochromis"
+        url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Melanochromis
+        accessed: 2026-10-13
+        note: Lists 15 valid Melanochromis species; says nothing about crosses.
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes, species of the genus Pseudotropheus"
+        url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Pseudotropheus
+        accessed: 2026-10-13
+        note: Lists P. johannii and P. cyaneorhabdos as valid in Pseudotropheus.
+      - kind: database
+        title: "Seriously Fish: Melanochromis auratus (Golden Mbuna)"
+        url: https://www.seriouslyfish.com/species/melanochromis-auratus/
+        accessed: 2026-10-13
+        note: Advises against keeping other Melanochromis with M. auratus because they may hybridise.
+      - kind: database
+        title: "Seriously Fish: Melanochromis chipokae"
+        url: https://www.seriouslyfish.com/species/melanochromis-chipokae/
+        accessed: 2026-10-13
+        note: Gives the same genus-wide warning for M. chipokae, in stronger terms.
+      - kind: database
+        title: "Seriously Fish: Melanochromis johanni"
+        url: https://www.seriouslyfish.com/species/melanochromis-johanni/
+        accessed: 2026-10-13
+        note: Files the species under Melanochromis and warns against keeping it with other Melanochromis species because they may hybridise.
+      - kind: database
+        title: "Seriously Fish: Melanochromis cyaneorhabdos"
+        url: https://www.seriouslyfish.com/species/melanochromis-cyaneorhabdos/
+        accessed: 2026-10-13
+        note: Files the species under Melanochromis, compares it with M. johanni and gives the same warning against other Melanochromis.
+      - kind: literature
+        title: "Tropical Fish Hobbyist Magazine: Golden Cichlid (Melanochromis auratus), species profile"
+        url: https://www.tfhmagazine.com/articles/freshwater/melanochromis-auratus
+        accessed: 2026-10-13
+        note: Expects M. auratus to cross with any other Melanochromis and possibly with other genera, since a dominant male may spawn with every female in the tank.
+      - kind: database
+        title: "Oliver, M. K.: Melanochromis auratus. The Cichlid Fishes of Lake Malawi, Africa (malawicichlids.com)"
+        url: https://www.malawicichlids.com/mw09002a.htm
+        accessed: 2026-10-13
+        note: Advises against keeping other Melanochromis species in the same tank because they tend to hybridise.
+      - kind: database
+        title: "AquaInfo: Melanochromis auratus, Golden Mbuna"
+        url: https://aquainfo.nl/en/article/melanochromis-auratus-golden-mbuna/
+        accessed: 2026-10-13
+        note: Allows other mbuna genera as tankmates but excludes other Melanochromis to avoid hybrids.
+      - kind: literature
+        title: >-
+          Konings, A. F. and Stauffer, J. R. (2012). Review of the Lake Malawi genus Melanochromis
+          (Teleostei: Cichlidae) with a description of a new species. Zootaxa 3258, 1-37.
+        url: https://doi.org/10.11646/zootaxa.3258.1.1
+        accessed: 2026-10-13
+        note: Restricts the genus to species with two dark horizontal stripes and lists P. cyaneorhabdos among the species moved to Pseudotropheus; finds no hybrids where M. loriae was introduced among M. heterochromis.
+  - id: aulonocara
+    description: All valid peacock cichlids of the genus Aulonocara together with the captive lines bred from them, whose drab barred females look alike and which hobby sources warn cross readily with other peacocks in the same tank, a warning phrased for the genus rather than for named pairs.
+    basis: presumed
+    userNote: >-
+      Hobby databases and magazines warn that most peacock cichlids hybridise with one another, and
+      the females of different species are hard to tell apart. The warning concerns the genus and
+      its aquarium lines as a whole; no cross between two named species is documented.
+    members:
+      - Aulonocara aquilonium
+      - Aulonocara auditor
+      - Aulonocara baenschi
+      - Aulonocara brevinidus
+      - Aulonocara ethelwynnae
+      - Aulonocara gertrudae
+      - Aulonocara guentheri
+      - Aulonocara hueseri
+      - Aulonocara jacobfreibergi
+      - Aulonocara kandeense
+      - Aulonocara koningsi
+      - Aulonocara korneliae
+      - Aulonocara maylandi
+      - Aulonocara nyassae
+      - Aulonocara rostratum
+      - Aulonocara saulosi
+      - Aulonocara stonemani
+      - Aulonocara stuartgranti
+      - Aulonocara trematocephalum
+      - "Aulonocara jacobfreibergi 'Eureka'"
+      - "Aulonocara 'German Red'"
+      - "Aulonocara 'Rubescens'"
+      - Aulonocara hybrid
+    sources:
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes, species of the genus Aulonocara"
+        url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Aulonocara
+        accessed: 2026-10-13
+        note: Lists 19 valid Aulonocara species, which define the described members; states nothing about crosses.
+      - kind: database
+        title: "Seriously Fish: Aulonocara stuartgranti (Grant's Peacock)"
+        url: https://www.seriouslyfish.com/species/aulonocara-stuartgranti/
+        accessed: 2026-10-13
+        note: Advises against other Aulonocara in the tank because most species of the genus can hybridise.
+      - kind: database
+        title: "Seriously Fish: Aulonocara jacobfreibergi"
+        url: https://www.seriouslyfish.com/species/aulonocara-jacobfreibergi/
+        accessed: 2026-10-13
+        note: Gives the same genus-wide warning and names Eureka as an ornamental strain bred from the wild Otter Point population.
+      - kind: database
+        title: "Seriously Fish: Aulonocara baenschi"
+        url: https://www.seriouslyfish.com/species/aulonocara-baenschi/
+        accessed: 2026-10-13
+        note: Gives the same genus-wide warning for A. baenschi.
+      - kind: database
+        title: "Seriously Fish: Aulonocara sp. 'stuartgranti maleri' (Sunshine Peacock)"
+        url: https://www.seriouslyfish.com/species/aulonocara-sp-stuartgranti-maleri/
+        accessed: 2026-10-13
+        note: Gives the same genus-wide warning for the southern stuartgranti form and lists German Red and Rubescens as strains selected from it.
+      - kind: literature
+        title: "Clarke, M. (2005). Aulonocara stuartgranti 'Ngara Mdoka'. Practical Fishkeeping, Christmas 2005 issue (online feature)."
+        url: https://www.practicalfishkeeping.co.uk/features/aulonocara-stuartgranti-ngara-mdoka/
+        accessed: 2026-10-13
+        note: Warns that the form interbreeds with other Aulonocara and that the females can hardly be told apart.
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Blue Peacock, Aulonocara stuartgranti, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/blue-peacock
+        accessed: 2026-10-13
+        note: Wants it as the only peacock species in a tank to avoid hybrids.
+      - kind: website
+        title: "Elieson, M.: Aulonocara jacobfreibergi, species article on Cichlid-Forum.com"
+        url: https://www.cichlid-forum.com/articles/a_jacobfreibergi.php
+        accessed: 2026-10-13
+        note: Names Eureka among the variants of A. jacobfreibergi and warns that the variants cross readily when kept together.
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Hybrid Peacock, Aulonocara sp., species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+        accessed: 2026-10-13
+        note: Describes the colourful hybrid peacocks as aquarium crosses of an Aulonocara with other cichlids, line-bred back towards the Aulonocara type; names no parent species.
+      - kind: website
+        title: "Schäfer, F. (2021). Aulonocara 'Dragon Blood'. Aquarium Glaser fish archive (wholesaler)."
+        url: https://aquariumglaser.de/en/fish-archives/aulonocara-dragon-blood-2
+        accessed: 2026-10-13
+        note: States that the peacock x mbuna lines such as Dragon Blood and OB Aulonocara arose by artificial fertilisation and resemble Aulonocara in shape and feeding.
+  - id: sciaenochromis-fryeri-aulonocara
+    description: The electric blue hap Sciaenochromis fryeri together with the peacocks of the genus Aulonocara and their captive lines, whose females its males are reported to court and spawn with in community tanks, a report that names the genus but no single peacock species.
+    basis: presumed
+    userNote: >-
+      Hobby sources report that males of the electric blue hap have spawned with peacock females in
+      community tanks, without naming a peacock species. The reports are anecdotal, so the risk is
+      plausible but unconfirmed.
+    members:
+      - Sciaenochromis fryeri
+      - Aulonocara aquilonium
+      - Aulonocara auditor
+      - Aulonocara baenschi
+      - Aulonocara brevinidus
+      - Aulonocara ethelwynnae
+      - Aulonocara gertrudae
+      - Aulonocara guentheri
+      - Aulonocara hueseri
+      - Aulonocara jacobfreibergi
+      - Aulonocara kandeense
+      - Aulonocara koningsi
+      - Aulonocara korneliae
+      - Aulonocara maylandi
+      - Aulonocara nyassae
+      - Aulonocara rostratum
+      - Aulonocara saulosi
+      - Aulonocara stonemani
+      - Aulonocara stuartgranti
+      - Aulonocara trematocephalum
+      - "Aulonocara jacobfreibergi 'Eureka'"
+      - "Aulonocara 'German Red'"
+      - "Aulonocara 'Rubescens'"
+      - Aulonocara hybrid
+    sources:
+      - kind: database
+        title: "Seriously Fish: Sciaenochromis fryeri (Electric Blue Hap)"
+        url: https://www.seriouslyfish.com/species/sciaenochromis-fryeri/
+        accessed: 2026-10-13
+        note: Reports that S. fryeri males have spawned with females of other genera, above all Aulonocara, and asks for care with tankmates.
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Electric Blue Hap, Sciaenochromis fryeri, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/electric-blue-hap
+        accessed: 2026-10-13
+        note: Advises against Aulonocara as tankmates because S. fryeri males may remove the peacock male to breed with its females.
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes, species of the genus Aulonocara"
+        url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Aulonocara
+        accessed: 2026-10-13
+        note: Lists the 19 valid Aulonocara species, which define the peacock members; states nothing about crosses.
+  - id: sciaenochromis-fryeri-cynotilapia-afra
+    description: The piscivorous hap Sciaenochromis fryeri and the mbuna Cynotilapia afra, for which a captive mate-choice study reports spawning between the two species and fertile offspring; whether the fish could choose partners of their own species is unclear.
+    basis: presumed
+    userNote: >-
+      A laboratory study (Gerlai 2007) reports that these two species spawned and produced fertile
+      young, but it is unclear whether the fish could choose partners of their own species. Because
+      the circumstances of the cross are unclear, the risk is plausible but unconfirmed.
+    members:
+      - Sciaenochromis fryeri
+      - Cynotilapia afra
     sources:
       - kind: literature
         title: >-
-          Schmitter-Soto, J. J. (2007). A systematic revision of the genus Archocentrus (Perciformes:
-          Cichlidae), with the description of two new genera and six new species. Zootaxa 1603, 1-78
-          (abstract only).
-        url: https://doi.org/10.11646/zootaxa.1603.1.1
-        accessed: 2026-10-12
-        note: Erects Amatitlania with A. nigrofasciata as type species and describes A. siquia, A. kanna and A. coatepeque from populations formerly placed in A. nigrofasciata.
-      - kind: literature
-        title: >-
-          Schmitter-Soto, J. J. (2007). Phylogeny of species formerly assigned to the genus
-          Archocentrus (Perciformes: Cichlidae). Zootaxa 1618 (abstract only).
-        url: https://doi.org/10.11646/zootaxa.1618.1.1
-        accessed: 2026-10-12
-        note: Resolves the four species as one clade within Amatitlania, with A. coatepeque as sister to A. nigrofasciata plus A. siquia and A. kanna.
-      - kind: literature
-        title: >-
-          Practical Fishkeeping (2007). Convict and Jack Dempsey placed in new genera. News item on
-          Schmitter-Soto (2007), Zootaxa 1603 (archived copy).
-        url: https://web.archive.org/web/20071228234519/http://www.practicalfishkeeping.co.uk/pfk/pages/item.php?news=1399
-        accessed: 2026-10-12
-        note: Reports the split of the convict cichlid into four species and the ranges of the new species, with A. siquia from Costa Rica north to Atlantic Honduras.
+          Gerlai, R. (2007). Mate choice and hybridization in Lake Malawi cichlids, Sciaenochromis
+          fryeri and Cynotilapia afra. Ethology 113(7), 673-685 (abstract).
+        url: https://doi.org/10.1111/j.1439-0310.2007.01372.x
+        accessed: 2026-10-13
+        note: Varies territory size, male size and the presence of conspecific mates; females favoured large territorial males, which raised heterospecific courtship when the male was of the other species, and the cross gave fertile offspring. Only the abstract was readable.
       - kind: database
-        title: "FishBase species summary: Amatitlania nigrofasciata"
-        url: https://www.fishbase.se/summary/Amatitlania-nigrofasciata.html
-        accessed: 2026-10-12
-        note: Separates A. nigrofasciata from A. siquia, A. kanna and A. coatepeque by subtle morphological characters and assigns the southern populations to them.
-  - id: placidochromis-electra-complex
-    description: Placidochromis phenochilus and its close relative P. electra, blue sand-dwelling followers of sand-sifting cichlids that some authors treated as one variable species; the group rests on a hobby warning that the two hybridise when kept together and on this close relationship, and no cross between the two species is documented.
+        title: "Seriously Fish: Sciaenochromis fryeri (Electric Blue Hap)"
+        url: https://www.seriouslyfish.com/species/sciaenochromis-fryeri/
+        accessed: 2026-10-13
+        note: Reports that S. fryeri males spawn with females of other genera in tanks; names Aulonocara, not C. afra.
+  - id: protomelas-taeniolatus-complex
+    description: Protomelas taeniolatus, the very similar P. fenestratus and the undescribed P. sp. 'Steveni Taiwan' of the same Steveni group, whose plain barred or striped females are hard to tell apart and which hobby sources warn may cross when kept together, while no cross from the wild or from a mixed tank with free choice of partners is documented.
     basis: presumed
+    userNote: >-
+      A hobby database warns that these closely related Protomelas species and colour forms may
+      hybridise, and a shop page claims that cheap trade stock of the Taiwan Reef form is crossed
+      with the Red Empress. Neither report says how the crosses arose, so the evidence is anecdotal.
+    members:
+      - Protomelas taeniolatus
+      - Protomelas fenestratus
+      - "Protomelas sp. 'Steveni Taiwan'"
+    sources:
+      - kind: database
+        title: "Seriously Fish: Protomelas sp. steveni 'Taiwan reef'"
+        url: https://www.seriouslyfish.com/species/protomelas-sp-steveni-taiwan-reef/
+        accessed: 2026-10-13
+        note: Separates the fish from P. fenestratus and P. taeniolatus by the red anal fin of the males and warns that these related species and their forms may hybridise.
+      - kind: database
+        title: "Seriously Fish: Protomelas taeniolatus"
+        url: https://www.seriouslyfish.com/species/protomelas-taeniolatus/
+        accessed: 2026-10-13
+        note: Gives the same warning for P. taeniolatus, P. fenestratus and their colour forms.
+      - kind: database
+        title: "Seriously Fish: Protomelas fenestratus"
+        url: https://www.seriouslyfish.com/species/protomelas-fenestratus/
+        accessed: 2026-10-13
+        note: Names P. taeniolatus and P. sp. 'steveni taiwan reef' as fish that may hybridise with P. fenestratus.
+      - kind: database
+        title: "FishBase species summary: Protomelas taeniolatus"
+        url: https://www.fishbase.se/summary/Protomelas-taeniolatus.html
+        accessed: 2026-10-13
+        note: Describes P. taeniolatus as resembling P. fenestratus in form and ecology and separates them by eye size and tooth counts; says nothing about crosses.
+      - kind: website
+        title: "Gensou (Singapore fish shop): Protomelas Steveni Taiwan Reef care"
+        url: https://gensou.sg/?p=32658
+        accessed: 2026-10-13
+        note: Claims that cheaper trade stock of the Taiwan Reef fish is often crossed with Red Empress (P. taeniolatus); says nothing on how the crosses arose.
+  - id: placidochromis-electra-complex
+    description: Placidochromis phenochilus and its close relative P. electra, blue sand-dwelling followers of digging cichlids that a hobby author advises not to keep together because they hybridise, while no actual cross between the two species is documented.
+    basis: presumed
+    userNote: >-
+      A hobby author advises against keeping these two close relatives together because they
+      hybridise, but no actual cross between them is documented. The evidence is that general
+      warning together with the close relationship of the species.
     members:
       - Placidochromis phenochilus
       - Placidochromis electra
@@ -376,93 +602,25 @@ groups:
           (WetWebMedia) 6(1).
         url: http://www.wetwebmedia.com/ca/volume_6/volume_6_1/placidochromis.htm
         accessed: 2026-10-13
-        note: Treats P. phenochilus and P. electra as a group of close relatives, formerly regarded as one species, and advises against keeping them together because they hybridise.
+        note: Treats P. phenochilus and P. electra as close relatives and twice advises against keeping them together because of hybridisation.
+      - kind: database
+        title: "Oliver, M. K.: Generic assignment of \"Haplochromis\" phenochilus. The Cichlid Fishes of Lake Malawi, Africa (malawicichlids.com)"
+        url: https://malawicichlids.com/mw17002.htm
+        accessed: 2026-10-13
+        note: Reports that Konings placed phenochilus in Placidochromis because of its resemblance to P. electra; says nothing about crosses.
       - kind: database
         title: "Seriously Fish: Placidochromis electra (Deepwater Hap)"
         url: https://www.seriouslyfish.com/species/placidochromis-electra/
         accessed: 2026-10-13
         note: Warns that the colour forms of P. electra may hybridise and must not be mixed; does not name P. phenochilus.
-  - id: labeotropheus
-    description: All valid species of the scrapermouth genus Labeotropheus, whose slender and deep-bodied forms are traded as colour forms of L. trewavasae and L. fuelleborni; the group rests on forced aquarium crosses of L. fuelleborni and L. trewavasae in both directions (Pauers et al.), which show that the species are interfertile, and on the hobby warning against keeping Labeotropheus forms together.
-    basis: presumed
-    members:
-      - Labeotropheus fuelleborni
-      - Labeotropheus trewavasae
-      - Labeotropheus alticodia
-      - Labeotropheus artatorostris
-      - Labeotropheus aurantinfra
-      - Labeotropheus candipygia
-      - Labeotropheus chirangali
-      - Labeotropheus chlorosiglos
-      - Labeotropheus obscurus
-      - Labeotropheus rubidorsalis
-      - Labeotropheus simoneae
-    sources:
-      - kind: literature
-        title: >-
-          Pauers, M. J., Fox, K. R., Hall, R. A. and Patel, K. (2018). Selection, hybridization,
-          and the evolution of morphology in the Lake Malawi endemic cichlids of the genus
-          Labeotropheus. Scientific Reports 8, 15842.
-        url: https://doi.org/10.1038/s41598-018-34135-x
-        accessed: 2026-10-13
-        note: Produces hybrids in aquaria by isolating male L. trewavasae with female L. fuelleborni from Chidunga Rocks; the hybrids are viable and fertile and gave an inbred F2 generation.
-      - kind: literature
-        title: >-
-          Pauers, M. J., Hoffmann, J. and Ackley, L. J.-B. (2023). Differences among reciprocal
-          hybrids of Labeotropheus. Hydrobiologia 850, 2149-2164.
-        url: https://doi.org/10.1007/s10750-022-05092-4
-        accessed: 2026-10-13
-        note: Crosses L. fuelleborni and L. trewavasae in both directions and raises both reciprocal hybrids to adulthood in aquaria.
-      - kind: database
-        title: "Seriously Fish: Labeotropheus trewavasae"
-        url: https://www.seriouslyfish.com/species/labeotropheus-trewavasae/
-        accessed: 2026-10-13
-        note: Warns that the more than forty colour forms may hybridise and should not be mixed in aquaria.
-  - id: heros
-    description: The five valid species of the severum genus Heros, which look alike and are mixed up in the trade, where most severums are H. efasciatus or stock of unclear origin; the group rests on this close relationship, the confusion of the species in the trade and hobby reports of mixed captive stock, and no cross between the species is documented.
-    basis: presumed
-    members:
-      - Heros severus
-      - Heros efasciatus
-      - Heros liberifer
-      - Heros notatus
-      - Heros spurius
-    sources:
-      - kind: catalog-of-fishes
-        title: "Eschmeyer's Catalog of Fishes, species of the genus Heros"
-        url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Heros
-        accessed: 2026-10-13
-        note: Lists H. severus, H. efasciatus, H. liberifer, H. notatus and H. spurius as the valid species; all other nominal species of the genus are synonyms.
-      - kind: literature
-        title: >-
-          U.S. Fish and Wildlife Service (2026). Banded Cichlid (Heros severus), Ecological Risk
-          Screening Summary, web version 2/4/2026, with passages of Staeck, W. and Schindler, I.
-          (2015), Bulletin of Fish Biology 15(1/2), 121-136.
-        url: https://www.fws.gov/sites/default/files/documents/2026-02/ecological-risk-screening-summary-banded-cichlid-feb-2026.pdf
-        accessed: 2026-10-13
-        note: Quotes Staeck and Schindler on the unresolved alpha taxonomy of Heros and on imports that fit none of the described species; reports no cross.
-      - kind: literature
-        title: >-
-          Bleher, H. (2016). Heiko Bleher discovers: South American surprises. Practical
-          Fishkeeping (online feature).
-        url: https://www.practicalfishkeeping.co.uk/features/heiko-bleher-discovers-south-american-surprises
-        accessed: 2026-10-13
-        note: Describes a Heros from the Inírida basin that fits none of the described species and expects more species and many colour forms in the genus.
-      - kind: database
-        title: "Seriously Fish: Heros efasciatus (Severum)"
-        url: https://www.seriouslyfish.com/species/heros-efasciatus/
-        accessed: 2026-10-13
-        note: Treats the common green and gold severum of the trade as H. efasciatus; gives no crossing warning.
-      - kind: website
-        title: >-
-          Schäfer, F. (2015). The mouthbrooding Heros from Venezuela: a new species! Heros
-          liberifer. Aquarium Glaser fish archive (wholesaler).
-        url: https://www.aquariumglaser.de/en/fish-archives/the_mouthbrooding_heros_from_venezuela_a_new_species_heros_liberifer_en/
-        accessed: 2026-10-13
-        note: Hobby report that attributes the variable bar pattern of captive-bred true H. severus to unwanted hybridisation and notes that H. severus and H. liberifer occur together in Venezuela.
   - id: copadichromis
-    description: All valid species of the utaka genus Copadichromis, whose silvery, dark-spotted females and juveniles look alike; Seriously Fish warns on each of its five Copadichromis profiles that the species of the genus hybridise and must not share a tank, a warning phrased for the whole genus rather than for named pairs, and Anseeuw et al. (2012) explain divergent mtDNA lineages in Copadichromis by past hybridisation in the lake; the group therefore covers every valid species of the genus, and no aquarium cross between two named species is documented.
+    description: All valid species of the utaka genus Copadichromis, whose silvery, dark-spotted females and juveniles look alike and which Seriously Fish warns on each of its Copadichromis profiles may hybridise with one another, a warning phrased for the genus rather than for named pairs, while no cross between two named species from a tank or the wild is documented.
     basis: presumed
+    userNote: >-
+      A hobby database warns on several Copadichromis profiles that the species of the genus may
+      hybridise with one another, and genetic work finds old gene exchange among the utaka. No cross
+      between two named species from a tank or the wild is documented, so the warning rests on the
+      genus as a whole.
     members:
       - Copadichromis atripinnis
       - Copadichromis azureus
@@ -528,67 +686,582 @@ groups:
           865603.
         url: https://doi.org/10.1155/2012/865603
         accessed: 2026-10-13
-        note: Finds two deeply divergent mtDNA lineages across Copadichromis species without matching nuclear structure and attributes them most likely to past hybridisation; reports no cross between two named species.
-  - id: melanochromis
-    description: All valid species of the mbuna genus Melanochromis, whose striped males and golden or pale females look alike; Seriously Fish (on its M. auratus and M. chipokae pages), TFH Magazine, M. K. Oliver and AquaInfo warn that M. auratus crosses with other Melanochromis and must not share a tank with them, warnings phrased for the whole genus rather than for named pairs, so the group covers every species the Catalog of Fishes lists as valid in Melanochromis and none of the striped species now placed in Pseudotropheus (such as P. johannii), which no source names as crossing partners; no published cross between two named species is documented, and Konings and Stauffer (2012) found no hybrids where M. loriae was introduced among M. heterochromis in Lake Malawi.
+        note: Explains two deeply split mtDNA lineages within C. sp. 'virginalis kajose' by an old hybridisation with an unidentified species and finds C. quadrimaculatus and that form inseparable at microsatellites; names no crossing pair of valid species.
+  - id: tropheus
+    description: All Tropheus species, the four valid ones and the undescribed species that Konings recognises, which are so closely related that genes have passed between them repeatedly in the lake and which the hobby, selling most of them as T. moorii, warns not to mix; crosses are documented only for the pairs listed as separate groups, T. duboisi and T. annectens have no reported cross, and several sympatric species keep apart in the wild.
     basis: presumed
+    userNote: >-
+      Tropheus species and forms are so closely related that genes have passed between them
+      repeatedly in the lake, and hobby sources report that forms kept together hybridise freely.
+      Crosses between named species are documented only for the pairs listed separately, so for the
+      other combinations the caution rests on the close relationship and these general warnings.
     members:
-      - Melanochromis auratus
-      - Melanochromis baliodigma
-      - Melanochromis chipokae
-      - Melanochromis dialeptos
-      - Melanochromis heterochromis
-      - Melanochromis kaskazini
-      - Melanochromis lepidiadaptes
-      - Melanochromis loriae
-      - Melanochromis melanopterus
-      - Melanochromis mossambiquensis
-      - Melanochromis mpoto
-      - Melanochromis robustus
-      - Melanochromis simulans
-      - Melanochromis vermivorus
-      - Melanochromis wochepa
+      - Tropheus moorii
+      - Tropheus duboisi
+      - Tropheus brichardi
+      - Tropheus annectens
+      - "Tropheus sp. 'black'"
+      - "Tropheus sp. 'red'"
+      - "Tropheus sp. 'Mpimbwe'"
+      - "Tropheus sp. 'Ikola'"
     sources:
       - kind: catalog-of-fishes
-        title: "Eschmeyer's Catalog of Fishes, species of the genus Melanochromis"
-        url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Melanochromis
+        title: Eschmeyer's Catalog of Fishes, species of the genus Tropheus (online version updated 21 Sep. 2026)
+        url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Tropheus
         accessed: 2026-10-13
-        note: Lists 15 valid Melanochromis species, which define the members; states nothing about crosses.
-      - kind: database
-        title: "Seriously Fish: Melanochromis auratus (Golden Mbuna)"
-        url: https://www.seriouslyfish.com/species/melanochromis-auratus/
-        accessed: 2026-10-13
-        note: Advises against keeping other Melanochromis with M. auratus because they may hybridise.
-      - kind: database
-        title: "Seriously Fish: Melanochromis chipokae"
-        url: https://www.seriouslyfish.com/species/melanochromis-chipokae/
-        accessed: 2026-10-13
-        note: Gives the same genus-wide warning for M. chipokae, in stronger terms.
+        note: Lists T. moorii, T. duboisi, T. brichardi and T. annectens as valid; T. polli and T. kasabae are synonyms of T. annectens and T. moorii.
       - kind: literature
-        title: "Tropical Fish Hobbyist Magazine: Golden Cichlid (Melanochromis auratus), species profile"
-        url: https://www.tfhmagazine.com/articles/freshwater/melanochromis-auratus
+        title: Konings, A. (2009). Tropheus - home is where the rocks are. Practical Fishkeeping.
+        url: https://www.practicalfishkeeping.co.uk/features/tropheus-home-is-where-the-rocks-are/
         accessed: 2026-10-13
-        note: Expects M. auratus to cross with any other Melanochromis and possibly with other genera.
-      - kind: database
-        title: "Oliver, M. K.: Melanochromis auratus. The Cichlid Fishes of Lake Malawi, Africa (malawicichlids.com)"
-        url: https://www.malawicichlids.com/mw09002a.htm
-        accessed: 2026-10-13
-        note: Warns that other Melanochromis kept in the same tank are likely to hybridise with M. auratus.
-      - kind: database
-        title: "AquaInfo: Melanochromis auratus, Golden Mbuna"
-        url: https://aquainfo.nl/en/article/melanochromis-auratus-golden-mbuna/
-        accessed: 2026-10-13
-        note: Allows other mbuna genera as tankmates but excludes other Melanochromis to avoid hybrids.
+        note: Counts at least eight species including T. sp. 'black', 'red', 'mpimbwe' and 'ikola', notes that the hobby calls almost all of them T. moorii and warns that races or localities kept together often hybridise.
       - kind: literature
         title: >-
-          Konings, A. F. and Stauffer, J. R. (2012). Review of the Lake Malawi genus Melanochromis
-          (Teleostei: Cichlidae) with a description of a new species. Zootaxa 3258, 1-37.
-        url: https://doi.org/10.11646/zootaxa.3258.1.1
+          Egger, B., Koblmüller, S., Sturmbauer, C. and Sefc, K. M. (2007). Nuclear and
+          mitochondrial data reveal different evolutionary processes in the Lake Tanganyika cichlid
+          genus Tropheus. BMC Evolutionary Biology 7, 137.
+        url: https://doi.org/10.1186/1471-2148-7-137
         accessed: 2026-10-13
-        note: Revises the genus and its valid species; reports no hybrids between introduced M. loriae and native M. heterochromis.
-  - id: pterophyllum
-    description: The three valid angelfish species of the genus Pterophyllum, which are close relatives with the same shape and breeding mode; a captive cross of P. altum and P. scalare is documented (Clarke, 2010), while P. leopoldi belongs to the group because hobby sources consider the farmed angelfish a mixed stock carrying genes of both other species, and no cross involving P. leopoldi is documented.
+        note: Finds introgression between morphs and species across the genus, while sympatric T. sp. 'black' and T. polli (T. annectens) keep a reproductive barrier.
+      - kind: literature
+        title: >-
+          Sturmbauer, C., Börger, C., Van Steenberge, M. and Koblmüller, S. (2017). A separate
+          lowstand lake at the northern edge of Lake Tanganyika? Evidence from phylogeographic
+          patterns in the cichlid genus Tropheus. Hydrobiologia 791, 51-68 (published online 2016).
+        url: https://doi.org/10.1007/s10750-016-2939-8
+        accessed: 2026-10-13
+        note: Stresses considerable past gene flow among Tropheus taxa regarded as valid species; notes that T. duboisi co-occurs with T. sp. 'black' and with T. brichardi and reports no hybrids involving it.
+      - kind: database
+        title: Seriously Fish, Tropheus moorii
+        url: https://www.seriouslyfish.com/species/tropheus-moorii/
+        accessed: 2026-10-13
+        note: Warns that the colour morphs hybridise freely and must not be mixed.
+      - kind: database
+        title: Seriously Fish, Tropheus duboisi
+        url: https://www.seriouslyfish.com/species/tropheus-duboisi/
+        accessed: 2026-10-13
+        note: Gives the same warning only for the geographical morphs of T. duboisi; names no cross with other Tropheus.
+      - kind: archive
+        title: cichlids.com forum thread 24654
+        url: https://www.cichlids.com/disc/read.php?2,24654
+        note: A keeper mixes T. duboisi with a differently coloured T. moorii form in large groups to keep crosses away, which shows the perceived risk.
+  - id: tropheus-moorii-red
+    description: Tropheus moorii and the red Tropheus sp. 'red' of the southwestern shore, which mixed in the wild into the yellow hybrid form of the Lufubu area, interbred after fish of several forms were released together in Mpulungu harbour, and mated across forms in breeding ponds that also held partners of their own form.
     basis: documented
+    userNote: >-
+      Researchers found a yellow hybrid form of these two species in the wild, recorded a few
+      hybrids after fish of several forms were released together in a harbour bay, and observed
+      females mating across forms in breeding ponds that also held males of their own form. The
+      mixing is well documented, mostly from the wild.
+    members:
+      - Tropheus moorii
+      - "Tropheus sp. 'red'"
+    sources:
+      - kind: literature
+        title: >-
+          Van Steenberge, M., Raeymaekers, J. A. M., Hablützel, P. I., Vanhove, M. P. M., Koblmüller,
+          S. and Snoeks, J. (2018). Delineating species along shifting shorelines: Tropheus
+          (Teleostei, Cichlidae) from the southern subbasin of Lake Tanganyika. Frontiers in Zoology
+          15, 42.
+        url: https://doi.org/10.1186/s12983-018-0287-4
+        accessed: 2026-10-13
+        note: Treats the yellow form as a natural hybrid of T. sp. 'red' and southern T. moorii and finds clinal genetic and morphological mixing between the two along shallow shores.
+      - kind: literature
+        title: >-
+          Sefc, K. M., Hermann, C. M., Steinwender, B., Brindl, H., Zimmermann, H., Mattersdorfer,
+          K., Postl, L., Makasa, L., Sturmbauer, C. and Koblmüller, S. (2015). Asymmetric dominance and asymmetric mate choice oppose premating
+          isolation after allopatric divergence. Ecology and Evolution 5, 1549-1562.
+        url: https://doi.org/10.1002/ece3.1372
+        accessed: 2026-10-13
+        note: In ponds stocked with males and females of both forms, bluish and yellow-blotch T. moorii females mated with red males from Chimba as well as with their own males; red females mated only with red males.
+      - kind: literature
+        title: >-
+          Salzburger, W., Niederstätter, H., Brandstätter, A., Berger, B., Parson, W., Snoeks, J. and
+          Sturmbauer, C. (2006). Colour-assortative mating among populations of Tropheus moorii, a
+          cichlid fish from Lake Tanganyika, East Africa. Proceedings of the Royal Society B 273,
+          257-266.
+        url: https://doi.org/10.1098/rspb.2005.3321
+        accessed: 2026-10-13
+        note: After human release of several forms into one bay, mating was mostly assortative, but three of 180 young were hybrids between olive T. moorii and reddish fish from the Chimba and Chilanga shore.
+      - kind: literature
+        title: >-
+          Sefc, K. M., Mattersdorfer, K., Ziegelbecker, A., Neuhüttler, N., Steiner, O., Goessler, W.
+          and Koblmüller, S. (2017). Shifting barriers and phenotypic diversification by
+          hybridization. Ecology Letters 20, 651-662.
+        url: https://doi.org/10.1111/ele.12766
+        accessed: 2026-10-13
+        note: Genetic data trace the yellow form to old admixture of the red and bluish forms and show that yellow females do not prefer their own form; the experimental cross in this study used females without own males and is not counted.
+  - id: tropheus-brichardi-moorii
+    description: Tropheus brichardi, whose Kipili form invaded the southeastern shore, and Tropheus moorii, which share stretches of coast between Katale and Sangamwisha bays and around Mtosi Bay, where natural hybrids of the two are reported.
+    basis: documented
+    userNote: >-
+      Natural hybrids of the Kipili form of T. brichardi and T. moorii are reported where their
+      ranges meet on the Tanzanian coast of Lake Tanganyika. The reports come from a regional fish
+      database and a population study.
+    members:
+      - Tropheus brichardi
+      - Tropheus moorii
+    sources:
+      - kind: database
+        title: "Tanganyika.si: Tropheus sp. 'kipili' Kipili (Tropheus brichardi 'Kipili')"
+        url: https://tanganyika.si/TanganjikaByLocations/Kipili/slides/Tropheus%20sp.%20%27kipili%27%20Kipili.html
+        accessed: 2026-10-13
+        note: Reports that the Kipili form hybridises with T. cf. moorii between Katale and Sangamwisha bays and that natural hybrids are documented in the Mtosi Bay area.
+      - kind: database
+        title: "Tanganyika.si: Tropheus moorii 'Molwe'"
+        url: https://tanganyika.si/TanganjikaByLocations/Molwe/slides/Tropheus%20moorii%20'Molwe'.html
+        accessed: 2026-10-13
+        note: Places T. moorii together with the Kipili form on the same coast and mentions natural hybridisation where Tropheus species meet.
+      - kind: literature
+        title: >-
+          Van Steenberge, M., Raeymaekers, J. A. M., Hablützel, P. I., Vanhove, M. P. M., Koblmüller,
+          S. and Snoeks, J. (2018). Delineating species along shifting shorelines: Tropheus
+          (Teleostei, Cichlidae) from the southern subbasin of Lake Tanganyika. Frontiers in Zoology
+          15, 42.
+        url: https://doi.org/10.1186/s12983-018-0287-4
+        accessed: 2026-10-13
+        note: Assigns the Kipili form to T. brichardi, describes its range overlap with T. moorii south of the Kipili Islands and finds T. moorii populations partly assigned to the brichardi cluster.
+  - id: tropheus-brichardi-black
+    description: Tropheus brichardi and the undescribed Tropheus sp. 'black' of the northern lake, whose populations along the Ubwari peninsula and the Bujumbura basin carry each other's mitochondrial lineages, including a sympatric pair that points to hybridisation and mitochondrial capture.
+    basis: documented
+    userNote: >-
+      Genetic studies of populations in the north of Lake Tanganyika find that T. brichardi and T.
+      sp. 'black' carry each other's mitochondrial lineages, which points to hybridisation in the
+      wild. The evidence is genetic rather than a direct observation of crosses.
+    members:
+      - Tropheus brichardi
+      - "Tropheus sp. 'black'"
+    sources:
+      - kind: literature
+        title: >-
+          Sturmbauer, C., Börger, C., Van Steenberge, M. and Koblmüller, S. (2017). A separate
+          lowstand lake at the northern edge of Lake Tanganyika? Evidence from phylogeographic
+          patterns in the cichlid genus Tropheus. Hydrobiologia 791, 51-68 (published online 2016).
+        url: https://doi.org/10.1007/s10750-016-2939-8
+        accessed: 2026-10-13
+        note: Finds introgressed populations of T. brichardi and T. sp. 'black' in the north and a genetically intermediate T. cf. brichardi 'Ubwari-green' sharing the mitochondrial lineage of the sympatric T. sp. 'black' Caramba.
+  - id: tropheus-brichardi-mpimbwe
+    description: Tropheus brichardi and the undescribed Tropheus sp. 'Mpimbwe' of the central east coast, which is genetically and morphologically intermediate between T. brichardi and the southern Tropheus lineage and carries brichardi-like mitochondrial haplotypes, a sign of hybridisation with invading T. brichardi.
+    basis: documented
+    userNote: >-
+      T. sp. 'Mpimbwe' of the central east coast is genetically and physically intermediate between
+      T. brichardi and a southern Tropheus lineage, which researchers read as a sign of
+      hybridisation with T. brichardi. The evidence is indirect, from genetic data and body
+      measurements, not from observed crosses.
+    members:
+      - Tropheus brichardi
+      - "Tropheus sp. 'Mpimbwe'"
+    sources:
+      - kind: literature
+        title: >-
+          Van Steenberge, M., Raeymaekers, J. A. M., Hablützel, P. I., Vanhove, M. P. M., Koblmüller,
+          S. and Snoeks, J. (2018). Delineating species along shifting shorelines: Tropheus
+          (Teleostei, Cichlidae) from the southern subbasin of Lake Tanganyika. Frontiers in Zoology
+          15, 42.
+        url: https://doi.org/10.1186/s12983-018-0287-4
+        accessed: 2026-10-13
+        note: Reads the intermediate AFLP position, shared mitochondrial haplotypes and similar meristics as a hybrid origin of T. sp. 'Mpimbwe' or at least a strong influx of T. brichardi genes; mentions T. annectens as an alternative parent proposed by Konings.
+  - id: cyphotilapia
+    description: The two frontosa species of Lake Tanganyika, which look alike, meet in a natural hybrid zone in the middle of the lake and are often mixed up in the trade.
+    basis: documented
+    userNote: >-
+      The two frontosa species meet in a natural hybrid zone in the middle of the east coast of Lake
+      Tanganyika, where genetic data show gene flow in both directions. They differ little in
+      appearance and are often confused in the trade.
+    members:
+      - Cyphotilapia frontosa
+      - Cyphotilapia gibberosa
+    sources:
+      - kind: literature
+        title: >-
+          Jackson, G. D., Standish, T., Cetintas, O., Zinenko, O., Shechonge, A. H. and Yanchukov,
+          A. (2024). Population genetics and gene flow in Cyphotilapia frontosa and Cyphotilapia
+          gibberosa along the east coast of Lake Tanganyika. Fishes 9(12), 481 (abstract).
+        url: https://doi.org/10.3390/fishes9120481
+        accessed: 2026-10-13
+        note: Finds with ddRAD data a probable hybrid zone at a sharp cline in the middle of the east coast and introgression in both directions, mostly from C. gibberosa into C. frontosa.
+      - kind: database
+        title: Tanganyika.si, Cyphotilapia frontosa 'Kigoma'
+        url: https://tanganyika.si/TanganjikaByLocations/Kigoma/slides/Cyphotilapia%20frontosa%20%27Kigoma%27.html
+        accessed: 2026-10-13
+        note: Describes central lake populations with characters of both species and cites the view that they may be of hybrid origin.
+      - kind: literature
+        title: >-
+          Takahashi, T. and Nakaya, K. (2003). New species of Cyphotilapia (Perciformes:
+          Cichlidae) from Lake Tanganyika, Africa. Copeia 2003(4), 824-832 (abstract).
+        url: https://doi.org/10.1643/IA03-148.1
+        accessed: 2026-10-13
+        note: Separates C. gibberosa from C. frontosa only by scale counts and body proportions.
+      - kind: database
+        title: Seriously Fish, Cyphotilapia frontosa (Humphead Cichlid)
+        url: https://www.seriouslyfish.com/species/cyphotilapia-frontosa/
+        accessed: 2026-10-13
+        note: Places the 'Blue Zaire' trade forms in C. gibberosa and advises labelling by locality to keep lines pure.
+  - id: altolamprologus
+    description: The two sister species Altolamprologus calvus and A. compressiceps, which split so recently that neither is genetically monophyletic and which hobbyists advise not to breed together; they live side by side in the south of the lake as distinct forms with little gene flow, and no cross between them is documented.
+    basis: presumed
+    userNote: >-
+      A. calvus and A. compressiceps split so recently that neither is genetically distinct from the
+      other, and hobbyists advise against breeding them together. In the lake they live side by side
+      as distinct forms with little gene flow, and no cross is documented; a forum keeper's claim
+      that they interbreed is unconfirmed.
+    members:
+      - Altolamprologus calvus
+      - Altolamprologus compressiceps
+    sources:
+      - kind: literature
+        title: >-
+          Koblmüller, S., Nevado, B., Makasa, L., Van Steenberge, M., Vanhove, M. P. M., Verheyen,
+          E., Sturmbauer, C. and Sefc, K. M. (2017). Phylogeny and phylogeography of
+          Altolamprologus: ancient introgression and recent divergence in a rock-dwelling Lake
+          Tanganyika cichlid genus. Hydrobiologia 791, 35-50 (published online 2016).
+        url: https://doi.org/10.1007/s10750-016-2896-2
+        accessed: 2026-10-13
+        note: Dates the split of the two species to 67,000 to 142,000 years ago and finds neither monophyletic in mitochondrial or nuclear trees; gene flow after the split was low if any, and no hybrids are reported.
+      - kind: literature
+        title: >-
+          Spreitzer, M. L., Mautner, S., Makasa, L. and Sturmbauer, C. (2012). Genetic and
+          morphological population differentiation in the rock-dwelling and specialized
+          shrimp-feeding cichlid fish species Altolamprologus compressiceps from Lake Tanganyika,
+          East Africa. Hydrobiologia 682, 143-154 (published online 2011).
+        url: https://doi.org/10.1007/s10750-011-0698-0
+        accessed: 2026-10-13
+        note: Notes incomplete lineage sorting between the two species and takes their stable coexistence in sympatry as a sign of reproductive isolation.
+      - kind: catalog-of-fishes
+        title: Eschmeyer's Catalog of Fishes, species of the genus Altolamprologus (online version updated 21 Sep. 2026)
+        url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Altolamprologus
+        accessed: 2026-10-13
+        note: Lists A. calvus, A. compressiceps and A. fasciatus as valid; A. fasciatus is no close relative of the other two.
+      - kind: archive
+        title: cichlids.com forum thread 13809
+        url: https://www.cichlids.com/disc/read.php?2,13809
+        note: A keeper states that the two species interbreed; unconfirmed.
+      - kind: archive
+        title: cichlids.com forum thread 41333
+        url: https://www.cichlids.com/disc/read.php?2,41333
+        note: Advises keeping only one Altolamprologus species when breeding to avoid hybrids.
+      - kind: archive
+        title: cichlids.com forum thread 18125
+        url: https://www.cichlids.com/disc/read.php?2,18125
+        note: A keeper holds A. calvus and A. compressiceps together without crosses but sees a risk.
+  - id: amphilophus-citrinellus-complex
+    description: The Midas cichlids of the Nicaraguan great lakes and crater lakes, which have no known intrinsic barrier to crossing, hybridise in the wild in lakes Masaya, Xiloá and Apoyo and cross readily in the laboratory, together with the flowerhorn, a domestic line bred in part from A. citrinellus and A. labiatus.
+    basis: documented
+    userNote: >-
+      Midas cichlids have no known barrier to crossing: hybrids occur in the wild in several
+      Nicaraguan lakes and are easily produced in the laboratory, and the flowerhorn is a domestic
+      line derived in part from two of them. Hobby stock without locality data is often of mixed
+      origin.
+    members:
+      - Amphilophus citrinellus
+      - Amphilophus labiatus
+      - Amphilophus zaliosus
+      - Amphilophus astorquii
+      - Amphilophus chancho
+      - Amphilophus flaveolus
+      - Amphilophus globosus
+      - Amphilophus supercilius
+      - Amphilophus amarillo
+      - Amphilophus sagittae
+      - Amphilophus viridis
+      - Amphilophus xiloaensis
+      - Flowerhorn
+    sources:
+      - kind: literature
+        title: >-
+          Barlow, G. W. and Munsey, J. W. (1976). The red devil-Midas-arrow cichlid species complex
+          in Nicaragua. In: Thorson, T. B. (ed.), Investigations of the Ichthyofauna of Nicaraguan
+          Lakes, University of Nebraska-Lincoln, 359-369 (abstract).
+        url: https://digitalcommons.unl.edu/ichthynicar/24
+        accessed: 2026-10-13
+        note: Attributes red devil features in Midas cichlids of lakes Masaya and Xiloá to introgressive hybridisation of A. citrinellus and A. labiatus in the wild.
+      - kind: literature
+        title: >-
+          Kautt, A. F., Machado-Schiaffino, G. and Meyer, A. (2016). Multispecies outcomes of
+          sympatric speciation after admixture with the source population in two radiations of
+          Nicaraguan crater lake cichlids. PLoS Genetics 12(6), e1006157.
+        url: https://doi.org/10.1371/journal.pgen.1006157
+        accessed: 2026-10-13
+        note: Finds wild fish of mixed ancestry between A. sagittae and A. xiloaensis, A. viridis and A. sagittae, and A. amarillo and A. viridis in Lake Xiloá, calls both crater-lake radiations young with ongoing hybridisation, and states that no intrinsic incompatibilities are known among Midas cichlids.
+      - kind: literature
+        title: >-
+          Recknagel, H., Elmer, K. R. and Meyer, A. (2013). A hybrid genetic linkage map of two
+          ecologically and morphologically divergent Midas cichlid fishes (Amphilophus spp.)
+          obtained by massively parallel DNA sequencing (ddRADSeq). G3 Genes|Genomes|Genetics 3(1),
+          65-74.
+        url: https://doi.org/10.1534/g3.112.003897
+        accessed: 2026-10-13
+        note: Raises 343 F2 offspring of a laboratory cross of the sympatric A. astorquii and A. zaliosus from Lake Apoyo, so the F1 hybrids are fertile.
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Midas Cichlid, Amphilophus citrinellus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/midas-cichlid
+        accessed: 2026-10-13
+        note: Reports suspected crossing of Midas cichlids with red devils in the hobby, so stock without locality data is often of mixed origin.
+      - kind: literature
+        title: >-
+          Sari, D. W. K., Achmad, H., Rahman, H. and Bimasuci, H. (2023). Molecular identification
+          of several morphologically distinct flowerhorn fish using mitochondrial COI gene marker.
+          Journal of Tropical Biodiversity and Biotechnology 8(2), 78459 (abstract and reference
+          list).
+        url: https://doi.org/10.22146/jtbb.78459
+        accessed: 2026-10-13
+        note: Names A. citrinellus, A. labiatus, Vieja melanurus and A. trimaculatus as the species crossed to make the flowerhorn strains.
+  - id: amphilophus-trimaculatus-midas
+    description: The three-spot cichlid Amphilophus trimaculatus, the Midas cichlid and the red devil, whose deliberate crosses by breeders gave rise to the fertile commercial flowerhorn, which belongs to this group as well.
+    basis: documented
+    userNote: >-
+      The fertile commercial flowerhorn was produced by deliberate crosses of the three-spot cichlid
+      with the Midas cichlid and the red devil, so these species are known to interbreed. The
+      evidence comes from papers on the parentage of the flowerhorn rather than from wild
+      observations.
+    members:
+      - Amphilophus trimaculatus
+      - Amphilophus citrinellus
+      - Amphilophus labiatus
+      - Flowerhorn
+    sources:
+      - kind: literature
+        title: >-
+          Magalhães, A. L. B., Orsi, M. L., Pelicice, F. M., Azevedo-Santos, V. M., Vitule, J. R. S.,
+          Lima-Junior, D. P. and Brito, M. F. G. (2017). Small size today, aquarium dumping
+          tomorrow: sales of juvenile non-native large fish as an important threat in Brazil.
+          Neotropical Ichthyology 15(4), e170033.
+        url: https://doi.org/10.1590/1982-0224-20170033
+        accessed: 2026-10-13
+        note: Lists the flowerhorn, the most common large cichlid in the surveyed Brazilian shops, as the hybrid A. trimaculatus x A. citrinellus.
+      - kind: literature
+        title: >-
+          Manassila, P., Sangsawad, P., Boonanuntanasarn, S., Kaewda, J., Boonchuen, P., Limkul, S.
+          and Nakharuthai, C. (2025). Transcriptomic analysis reveals glycolysis and
+          gluconeogenesis pathway activation underlying growth enhancement by duck-blood protein
+          hydrolysate in flowerhorn cichlid fish. International Journal of Molecular Sciences
+          26(19), 9563.
+        url: https://doi.org/10.3390/ijms26199563
+        accessed: 2026-10-13
+        note: Treats the flowerhorn as the cross of A. citrinellus and Cichlasoma trimaculatum (a synonym of A. trimaculatus), a commercially important ornamental fish in Thailand.
+      - kind: literature
+        title: >-
+          Tarkhani, R., Imani, A., Jamali, H. and Sarvi Moghanlou, K. (2016). Anaesthetic efficacy
+          of eugenol on Flowerhorn (Amphilophus labiatus x Amphilophus trimaculatus). Aquaculture
+          Research 48(6), 3207-3215 (title and abstract).
+        url: https://doi.org/10.1111/are.13151
+        accessed: 2026-10-13
+        note: Names the flowerhorn as the cross of A. labiatus and A. trimaculatus.
+      - kind: literature
+        title: >-
+          Sari, D. W. K., Achmad, H., Rahman, H. and Bimasuci, H. (2023). Molecular identification
+          of several morphologically distinct flowerhorn fish using mitochondrial COI gene marker.
+          Journal of Tropical Biodiversity and Biotechnology 8(2), 78459 (abstract and reference
+          list).
+        url: https://doi.org/10.22146/jtbb.78459
+        accessed: 2026-10-13
+        note: Finds the mitochondrial lineage of A. trimaculatus in all six flowerhorn strains studied and names A. citrinellus and A. labiatus among the species crossed into them.
+      - kind: literature
+        title: >-
+          Herder, F., Schliewen, U., Geiger, M., Hadiaty, R., Gray, S., McKinnon, J., Walter, R. and
+          Pfaender, J. (2012). Alien invasion in Wallace's Dreamponds: records of the hybridogenic
+          "flowerhorn" cichlid in Lake Matano, with an annotated checklist of fish species
+          introduced to the Malili Lakes system in Sulawesi. Aquatic Invasions 7(4), 521-535
+          (abstract).
+        url: https://doi.org/10.3391/ai.2012.7.4.009
+        accessed: 2026-10-13
+        note: Records the rapid spread of the flowerhorn around Lake Matano within a few years, which shows that the hybrid line reproduces on its own.
+  - id: vieja-melanurus-midas
+    description: The redhead cichlid Vieja melanurus and the Midas cichlid, whose commercial cross is the blood parrot, together with the flowerhorn, into whose strains V. melanurus was crossed as well.
+    basis: documented
+    userNote: >-
+      The blood parrot, a common trade fish, is a deliberate cross of the redhead cichlid and the
+      Midas cichlid; a preliminary trial found males apparently sterile and females producing viable
+      young with both parent species. The flowerhorn carries redhead ancestry as well.
+    members:
+      - Vieja melanurus
+      - Amphilophus citrinellus
+      - Flowerhorn
+    sources:
+      - kind: literature
+        title: >-
+          Fisher, K. J., Miller, M. E., Delomas, T. A., Oldfield, R. G. and Dabrowski, K. (2025).
+          Response to salinity challenge in hybrid blood parrot cichlids (Vieja melanura x
+          Amphilophus citrinellus). Environmental Biology of Fishes 108(6), 923-936.
+        url: https://doi.org/10.1007/s10641-025-01694-8
+        accessed: 2026-10-13
+        note: Describes the blood parrot as a common trade hybrid of V. melanurus and A. citrinellus and reports a preliminary trial in which male blood parrots seemed sterile while females gave viable young with both parent species.
+      - kind: literature
+        title: >-
+          Li, M., Rahman, M. M., Lin, Y.-C. and Chiu, K. (2017). Effect of dietary lipid on growth,
+          expression of canthaxanthin-based coloration, digestive enzymes activities and immunity
+          in blood parrot cichlid Amphilophus citrinellus x Paraneetroplus synspilus. Aquaculture
+          Nutrition 24(1), 277-284.
+        url: https://doi.org/10.1111/anu.12556
+        accessed: 2026-10-13
+        note: Names the blood parrot as the hybrid of the redhead cichlid (Paraneetroplus synspilus, a synonym of V. melanurus) and the Midas cichlid and reports a large annual commercial production.
+      - kind: literature
+        title: >-
+          Sari, D. W. K., Achmad, H., Rahman, H. and Bimasuci, H. (2023). Molecular identification
+          of several morphologically distinct flowerhorn fish using mitochondrial COI gene marker.
+          Journal of Tropical Biodiversity and Biotechnology 8(2), 78459 (abstract and reference
+          list).
+        url: https://doi.org/10.22146/jtbb.78459
+        accessed: 2026-10-13
+        note: Names V. melanurus among the species crossed into the flowerhorn and samples strains called Parrot and Vieja.
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes, species of the genus Vieja"
+        url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Vieja
+        accessed: 2026-10-13
+        note: Lists Vieja melanurus as the valid name of the redhead cichlid.
+  - id: amatitlania-nigrofasciata-complex
+    description: The convict cichlid and the three species described in 2007 from its southern and lake populations, which form one clade, are separated only by subtle characters and are partly not recoverable as distinct genetic lineages; the group rests on this very close relationship, and no cross between the four species is documented.
+    basis: presumed
+    userNote: >-
+      The convict cichlid and the three species split from it in 2007 are very closely related, and
+      genetic work cannot always tell them apart. No cross between them is documented; the caution
+      rests on that close relationship.
+    members:
+      - Amatitlania nigrofasciata
+      - Amatitlania siquia
+      - Amatitlania kanna
+      - Amatitlania coatepeque
+    sources:
+      - kind: literature
+        title: >-
+          Schmitter-Soto, J. J. (2007). A systematic revision of the genus Archocentrus (Perciformes:
+          Cichlidae), with the description of two new genera and six new species. Zootaxa 1603, 1-78
+          (abstract only).
+        url: https://doi.org/10.11646/zootaxa.1603.1.1
+        accessed: 2026-10-12
+        note: Erects Amatitlania with A. nigrofasciata as type species and describes A. siquia, A. kanna and A. coatepeque from populations of A. nigrofasciata.
+      - kind: literature
+        title: >-
+          Schmitter-Soto, J. J. (2007). Phylogeny of species formerly assigned to the genus
+          Archocentrus (Perciformes: Cichlidae). Zootaxa 1618 (abstract only).
+        url: https://doi.org/10.11646/zootaxa.1618.1.1
+        accessed: 2026-10-12
+        note: Resolves the four species as one clade within Amatitlania, with A. coatepeque as sister to A. nigrofasciata plus A. siquia and A. kanna.
+      - kind: literature
+        title: >-
+          Bagley, J. C., Matamoros, W. A., McMahan, C. D., Tobler, M., Chakrabarty, P. and Johnson,
+          J. B. (2016). Phylogeography and species delimitation in convict cichlids (Cichlidae:
+          Amatitlania): implications for taxonomy and Plio-Pleistocene evolutionary history in
+          Central America. Biological Journal of the Linnean Society (abstract).
+        url: https://doi.org/10.1111/bij.12845
+        accessed: 2026-10-13
+        note: Finds in mtDNA of 318 fish one major clade in which the described species are polyphyletic and supports only two genetic species, A. nigrofasciata and A. kanna; reports no crosses.
+      - kind: literature
+        title: >-
+          Practical Fishkeeping (2007). Convict and Jack Dempsey placed in new genera. News item on
+          Schmitter-Soto (2007), Zootaxa 1603 (archived copy).
+        url: https://web.archive.org/web/20071228234519/http://www.practicalfishkeeping.co.uk/pfk/pages/item.php?news=1399
+        accessed: 2026-10-12
+        note: Reports the split of the convict cichlid into four species and the ranges of the new species, with A. siquia from Costa Rica north to Atlantic Honduras.
+      - kind: database
+        title: "FishBase species summary: Amatitlania nigrofasciata"
+        url: https://www.fishbase.se/summary/Amatitlania-nigrofasciata.html
+        accessed: 2026-10-12
+        note: Separates A. nigrofasciata from A. siquia, A. kanna and A. coatepeque by subtle morphological characters and assigns the southern populations to them.
+  - id: amatitlania-nigrofasciata-hypsophrys-nicaraguensis
+    description: The convict cichlid and the Nicaragua cichlid, two cave-spawning Central American cichlids that a species database reports as having been crossed in captivity; the circumstances of the cross and its original source are unknown, so the group rests on this single unsourced report.
+    basis: presumed
+    userNote: >-
+      A single unsourced entry in a species database says that the Nicaragua cichlid has been
+      crossed with the convict cichlid in captivity. The circumstances of the cross are unknown, so
+      the risk is plausible but unconfirmed.
+    members:
+      - Amatitlania nigrofasciata
+      - Hypsophrys nicaraguensis
+    sources:
+      - kind: database
+        title: "Seriously Fish: Hypsophrys nicaraguensis (Nicaragua Cichlid)"
+        url: https://www.seriouslyfish.com/species/hypsophrys-nicaraguensis/
+        accessed: 2026-10-13
+        note: States that the species has been hybridised with the convict cichlid (under the older name Archocentrus nigrofasciatus) and advises against it; names no source and does not say whether the fish could choose partners of their own species.
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes, species of the genus Hypsophrys"
+        url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Hypsophrys
+        accessed: 2026-10-13
+        note: Lists H. nicaraguensis as the only valid species of the genus, distinct from Amatitlania; states nothing about crosses.
+  - id: heros
+    description: The five valid species of the severum genus Heros, which look alike and are mixed up in the trade, where most severums are H. efasciatus or stock of unclear origin; the group rests on this close relationship, the confusion of the species in the trade and hobby reports of mixed captive stock, and no cross between the species is documented.
+    basis: presumed
+    userNote: >-
+      The five Heros species look alike and are mixed up in the trade, and a hobby report blames
+      unwanted hybridisation for the variable bar pattern of captive-bred stock. No cross between
+      named species is documented; the caution rests on the close relationship and these reports.
+    members:
+      - Heros severus
+      - Heros efasciatus
+      - Heros liberifer
+      - Heros notatus
+      - Heros spurius
+    sources:
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes, species of the genus Heros"
+        url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Heros
+        accessed: 2026-10-13
+        note: Lists H. severus, H. efasciatus, H. liberifer, H. notatus and H. spurius as the valid species; all other nominal species of the genus are synonyms.
+      - kind: literature
+        title: >-
+          U.S. Fish and Wildlife Service (2026). Banded Cichlid (Heros severus), Ecological Risk
+          Screening Summary, web version 2/4/2026, with passages of Staeck, W. and Schindler, I.
+          (2015), Bulletin of Fish Biology 15(1/2), 121-136.
+        url: https://www.fws.gov/sites/default/files/documents/2026-02/ecological-risk-screening-summary-banded-cichlid-feb-2026.pdf
+        accessed: 2026-10-13
+        note: Quotes Staeck and Schindler on the unresolved alpha taxonomy of Heros and on imports that fit none of the described species; reports no cross.
+      - kind: literature
+        title: >-
+          Bleher, H. (2016). Heiko Bleher discovers: South American surprises. Practical
+          Fishkeeping (online feature).
+        url: https://www.practicalfishkeeping.co.uk/features/heiko-bleher-discovers-south-american-surprises
+        accessed: 2026-10-13
+        note: Describes a Heros from the Inírida basin that fits none of the described species and expects more species and many colour forms in the genus.
+      - kind: database
+        title: "Seriously Fish: Heros efasciatus (Severum)"
+        url: https://www.seriouslyfish.com/species/heros-efasciatus/
+        accessed: 2026-10-13
+        note: Treats the common green and gold severum of the trade as H. efasciatus; gives no crossing warning.
+      - kind: website
+        title: >-
+          Schäfer, F. (2015). The mouthbrooding Heros from Venezuela: a new species! Heros
+          liberifer. Aquarium Glaser fish archive (wholesaler).
+        url: https://www.aquariumglaser.de/en/fish-archives/the_mouthbrooding_heros_from_venezuela_a_new_species_heros_liberifer_en/
+        accessed: 2026-10-13
+        note: Hobby report that attributes the variable bar pattern of captive-bred true H. severus to unwanted hybridisation and notes that H. severus and H. liberifer occur together in Venezuela.
+  - id: symphysodon
+    description: All discus species and their aquarium strains.
+    basis: documented
+    userNote: >-
+      Natural hybrids between discus species are reported from the Amazon, and genetic work finds
+      admixture between wild discus forms.
+    members:
+      - Symphysodon aequifasciatus
+      - Symphysodon discus
+      - Symphysodon tarzoo
+    sources:
+      - kind: literature
+        title: "Practical Fishkeeping: Discus genus revised"
+        url: https://www.practicalfishkeeping.co.uk/fishkeeping-news/discus-genus-revised/
+        accessed: 2026-10-12
+        note: natural hybrids between discus species reported by Bleher et al. (2007)
+      - kind: literature
+        title: "Amado, M. V., Farias, I. P. and Hrbek, T. (2011). A molecular perspective on systematics,
+          taxonomy and classification of Amazonian discus fishes of the genus Symphysodon. International
+          Journal of Evolutionary Biology 2011, 360654 (with supplement 1: pH and conductivity of
+          Symphysodon habitats after Bleher et al. 2007)."
+        url: https://doi.org/10.4061/2011/360654
+        accessed: 2026-10-12
+        note: admixture between discus phenotypes in the wild
+      - kind: catalog-of-fishes
+        title: Eschmeyer's Catalog of Fishes, species of the genus Symphysodon (online version of 21 Sep. 2026)
+        url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Symphysodon
+        accessed: 2026-10-12
+        note: three valid, closely related discus species
+  - id: pterophyllum
+    description: The three valid angelfish species of the genus Pterophyllum, close relatives of the same shape and breeding mode whose farmed stock is regarded as being of mixed ancestry; the only reported cross, P. altum x P. scalare, was made deliberately by a breeder and is not known to have founded a fertile strain, and no cross involving P. leopoldi is documented.
+    basis: presumed
+    userNote: >-
+      A breeder deliberately crossed the altum angelfish with the common angelfish, and hobby
+      writers assume that farmed angelfish carry genes of several species. No cross with free choice
+      of partners is documented and nothing is known for P. leopoldi, so the caution rests on the
+      close relationship.
     members:
       - Pterophyllum scalare
       - Pterophyllum altum
@@ -598,14 +1271,19 @@ groups:
         title: "Clarke, M. (2010). Hybrid scalare-altum angel. Practical Fishkeeping (August 2010)."
         url: https://www.practicalfishkeeping.co.uk/features/hybrid-scalare-altum-angel/
         accessed: 2026-10-13
-        note: Reports captive-bred hybrids of a P. altum from the Rio Atabapo and a Rio Negro line of P. scalare, shown at a trade fair.
+        note: Reports hybrids that a German breeder produced by pairing a P. altum from the Rio Atabapo with a Rio Negro line of P. scalare, shown at a trade fair; a deliberate single cross with no word on fertility or free partner choice.
       - kind: literature
         title: "Practical Fishkeeping (2021): What is the Peruvian Altum?"
         url: https://www.practicalfishkeeping.co.uk/features/what-is-the-peruvian-altum/
         accessed: 2026-10-13
-        note: Regards the farmed angelfish as mostly P. scalare with some genes of P. altum and P. leopoldi; documents no controlled cross.
+        note: Assumes that the farmed angelfish is mostly P. scalare with some genes of P. altum and P. leopoldi; describes no observed cross.
       - kind: literature
         title: "Tropical Fish Hobbyist Magazine: Pterophyllum scalare, species profile"
         url: https://www.tfhmagazine.com/articles/freshwater/pterophyllum-scalare
         accessed: 2026-10-13
         note: Considers it very likely that the aquarium angelfish descends from a cross of two or more species.
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes, species of the genus Pterophyllum"
+        url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Pterophyllum
+        accessed: 2026-10-13
+        note: Lists P. scalare, P. altum and P. leopoldi as the valid species of the genus; states nothing about crosses.

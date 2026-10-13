@@ -1662,18 +1662,14 @@ features:
         agree: 4
         total: 4
   hybridGroups:
-    value: [amphilophus-citrinellus-complex]
+    value: [amphilophus-citrinellus-complex, amphilophus-trimaculatus-midas]
     confidence: high
-    rationale: "The tally decides the group unanimously (4 of 4 votes); the species is a listed member
-      of the curated group. Red devil and Midas cichlid are close relatives with weak barriers to
-      crossing: Barlow and Munsey attribute labiatus-like fish in the crater lakes Masaya and Xiloá
-      to introgressive hybridisation with A. citrinellus, Machado-Schiaffino et al. (2014) raised
-      offspring of A. labiatus and A. citrinellus, and Rometsch et al. bred F2 laboratory hybrids of
-      A. labiatus and A. astorquii. Admixture and laboratory crosses within the Midas complex are
-      documented further by Kautt et al. and Recknagel et al. The hobby has mixed A. labiatus and A.
-      citrinellus so much that pure stock is hard to find (Seriously Fish, Fishkeeper), and the
-      flowerhorn goes back in part to crosses of A. labiatus with the three-spot cichlid A.
-      trimaculatus (Tarkhani et al.)."
+    rationale: >-
+      The red devil is a member of the documented Midas complex through wild introgression with A.
+      citrinellus in lakes Masaya and Xiloá (Barlow and Munsey 1976) and the lack of intrinsic
+      barriers among Midas cichlids (Kautt et al. 2016). Its cross with A. trimaculatus is one of
+      the documented origins of the flowerhorn (Tarkhani et al. 2016, Sari et al. 2023), which makes
+      it a member of the group amphilophus-trimaculatus-midas.
     sources:
       - kind: literature
         title: "Barlow, G. W. and Munsey, J. W. (1976). The red devil-Midas-arrow cichlid species complex in
@@ -1738,6 +1734,14 @@ features:
         title: cichlids.com forum thread 2872
         url: https://www.cichlids.com/disc/read.php?1,2872
         accessed: 2026-10-13
+      - &hyb29
+        kind: literature
+        title: Sari, D. W. K., Achmad, H., Rahman, H. and Bimasuci, H. (2023). Molecular
+          identification of several morphologically distinct flowerhorn fish using mitochondrial
+          COI gene marker. Journal of Tropical Biodiversity and Biotechnology 8(2), 78459
+          (abstract and reference list).
+        url: https://doi.org/10.22146/jtbb.78459
+        accessed: 2026-10-13
     evidence:
       - source:
           kind: literature
@@ -1791,8 +1795,8 @@ features:
             Research 48(6), 3207-3215 (abstract)."
           url: https://doi.org/10.1111/are.13151
           accessed: 2026-10-13
-        value: amphilophus-citrinellus-complex
-        note: flowerhorn studied as the cross of A. labiatus and A. trimaculatus
+        value: amphilophus-trimaculatus-midas
+        note: "flowerhorn studied as the cross of A. labiatus and A. trimaculatus"
       - source:
           kind: database
           title: "Seriously Fish: Amphilophus labiatus (Red Devil Cichlid)"
@@ -1814,6 +1818,9 @@ features:
           accessed: 2026-10-13
         value: amphilophus-citrinellus-complex
         note: community discussion of trade confusion and hybrid stock; supplementary only
+      - source: *hyb29
+        value: amphilophus-trimaculatus-midas
+        note: "names A. citrinellus, A. labiatus, V. melanurus and A. trimaculatus as the species crossed to make the flowerhorn"
     verification:
       method: unanimous
       votes:

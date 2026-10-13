@@ -988,19 +988,11 @@ features:
       method: qualified-majority
       votes: {agree: 4, total: 5}
     rationale: >-
-      Four of five votes chose the new group melanochromis; checker-b proposed no group because it
-      found only one crossing warning. Five independent references warn that M. auratus crosses
-      with other Melanochromis and must not share a tank with them: Seriously Fish on its pages for
-      M. auratus and M. chipokae, TFH Magazine (which adds that a dominant male may spawn with
-      females of other genera too), the species pages of the ichthyologist M. K. Oliver and
-      AquaInfo; a cichlids.com forum thread reports the same concern for M. chipokae. Every warning
-      names the genus as a whole and none singles out particular species, so the group covers all
-      15 species that the Catalog of Fishes lists as valid in Melanochromis. Striped species that
-      the catalog places in Pseudotropheus today (P. johannii, P. cyaneorhabdos, P. interruptus, P.
-      perileucos) are not members, because no source names them as crossing partners. No published
-      cross between M. auratus and a named congener was found, and Konings and Stauffer (2012) saw
-      no hybrids where M. loriae was introduced among M. heterochromis in the lake, so the group
-      rests on consistent hobby warnings and the close relationship within the genus.
+      The group melanochromis has the basis presumed: Seriously Fish, TFH Magazine, Oliver and
+      AquaInfo warn that M. auratus crosses with other Melanochromis. Its members include
+      Pseudotropheus johannii and P. cyaneorhabdos, which Seriously Fish files under Melanochromis
+      with the same warning. No published cross between two named species exists, and Konings and
+      Stauffer (2012) found no hybrids between introduced M. loriae and native M. heterochromis.
     sources:
       - *sf
       - *sfc
@@ -1018,6 +1010,16 @@ features:
         kind: archive
         title: cichlids.com forum thread 14875
         url: https://www.cichlids.com/disc/read.php?2,14875
+        accessed: 2026-10-13
+      - &hyb4
+        kind: database
+        title: "Seriously Fish: Melanochromis johanni"
+        url: https://www.seriouslyfish.com/species/melanochromis-johanni/
+        accessed: 2026-10-13
+      - &hyb5
+        kind: database
+        title: "Seriously Fish: Melanochromis cyaneorhabdos"
+        url: https://www.seriouslyfish.com/species/melanochromis-cyaneorhabdos/
         accessed: 2026-10-13
     evidence:
       - source: *sf
@@ -1042,6 +1044,12 @@ features:
         value: melanochromis
         note: crossing risk with M. chipokae
 
+      - source: *hyb4
+        value: melanochromis
+        note: "files the species under Melanochromis and warns against other Melanochromis"
+      - source: *hyb5
+        value: melanochromis
+        note: "files the species under Melanochromis and gives the same warning"
   coloration:
     value: {baseColors: [black, blue], pattern: stripes}
     confidence: high
@@ -1222,7 +1230,7 @@ partners:
       condition: Tank of at least 150 cm with many caves; only one male of each species.
     - species: Maylandia estherae
       reason: Sturdy, similarly sized mbuna that holds its own against M. auratus, eats the same plant-based food and lacks the striped pattern.
-      condition: Do not combine with other Maylandia, which cross with it; tank of at least 150 cm.
+      condition: Only one Maylandia species with it; tank of at least 150 cm.
     - species: Maylandia callainos
       reason: Plain blue robust mbuna of similar size and diet that does not resemble M. auratus.
       condition: Do not combine with other Maylandia; tank of at least 150 cm.
@@ -1235,7 +1243,7 @@ partners:
     - species: Other Melanochromis species
       reason: All valid Melanochromis belong to the same hybrid group, and the hobby warns that they cross with M. auratus.
     - species: Pseudotropheus johannii
-      reason: Males are dark with light horizontal stripes like M. auratus males and are attacked as rivals.
+      reason: Same hybrid group; males are dark with light horizontal stripes like M. auratus males and are attacked as rivals.
     - species: Aulonocara
       reason: Peaceful peacock cichlids are harassed and cannot breed; they also need more protein-rich food.
     - species: Copadichromis

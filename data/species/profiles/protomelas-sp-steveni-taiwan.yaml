@@ -812,13 +812,10 @@ features:
       method: unanimous
       votes: {agree: 3, total: 3}
     rationale: >-
-      All three votes agree. The fish belongs to the "Steveni" group around P. taeniolatus:
-      Konings found its anatomy closest to P. taeniolatus and its broad bars similar to
-      P. fenestratus, and the trade sells it as a form of P. fenestratus. Seriously Fish warns on
-      the pages of this fish, of P. fenestratus and of P. taeniolatus that these related species
-      and colour forms may hybridise and must not be kept together, and the P. fenestratus page
-      names this fish explicitly. The plain barred females are hard to tell apart. No documented
-      cross was found, so the membership rests on these warnings and the close relationship.
+      The fish is a member of the presumed group protomelas-taeniolatus-complex together with P.
+      taeniolatus and P. fenestratus, which Seriously Fish names as related forms that may hybridise
+      with it. A Singapore shop claims that cheap trade stock is crossed with P. taeniolatus, but
+      gives no setting, so the basis is presumed.
     sources:
       - *sf
       - *sfFen
@@ -828,6 +825,11 @@ features:
         kind: archive
         title: cichlids.com forum thread 14033
         url: https://www.cichlids.com/disc/read.php?2,14033
+        accessed: 2026-10-13
+      - &hyb21
+        kind: website
+        title: "Gensou (Singapore fish shop): Protomelas Steveni Taiwan Reef care"
+        url: https://gensou.sg/?p=32658
         accessed: 2026-10-13
     evidence:
       - source: *sf
@@ -846,6 +848,9 @@ features:
         value: protomelas-taeniolatus-complex
         note: trade confusion of the names P. fenestratus 'Taiwan Reef' and P. steveni
 
+      - source: *hyb21
+        value: protomelas-taeniolatus-complex
+        note: "claims that trade stock of the Taiwan Reef fish is crossed with P. taeniolatus; names no setting"
   coloration:
     value:
       baseColors: [blue, yellow, red]

@@ -797,28 +797,17 @@ features:
       votes: {agree: 3, total: 3}
 
   hybridGroups:
-    value: [maylandia]
+    value: [cynotilapia-afra-maylandia-zebra, sciaenochromis-fryeri-cynotilapia-afra]
     confidence: low
     rationale: >-
-      Decided by the vote count with the conservative method: generator, checker-a and
-      tiebreaker-1 proposed the group maylandia, checker-b and tiebreaker-2 no group. Three of five
-      votes do not reach a qualified majority, so the most common named group applies with
-      confidence low. All five runs cite the same field evidence; the null votes rest on the species
-      missing from the curated group and on the lack of documented crosses with its other
-      members. Stauffer et al. (1996) report hybridisation of C.
-      afra with Pseudotropheus (Maylandia) zebra after C. afra was moved within Lake Malawi to
-      Thumbi West Island. Streelman et al. (2004) found a high share of hybrids between the
-      introduced C. afra and native Metriaclima (Maylandia) zebra on the turbid southern coast of
-      that island, and Zidana et al. (2009) call the two species closely related and hybridising
-      and trace part of the genetic diversity of the introduced populations to introgression from
-      P. zebra. Genner and Turner (2005) review the case. The males of both species are blue with
-      dark bars, and Oliver stresses how closely several Cynotilapia forms resemble M. zebra; in a
-      tank with few females that similarity removes the visual mate choice that keeps the species
-      apart in clear water. Crosses with the other members of the group (M. estherae, M.
-      callainos, M. greshakei, M. lombardoi) are not documented. Gerlai (2007) obtained fertile
-      hybrids with Sciaenochromis fryeri in captivity, a species in no curated group, and
-      Seriously Fish warns that the colour forms of C. afra interbreed. The species is added to
-      the members of maylandia in hybrid-groups.yaml.
+      The documented two-member group cynotilapia-afra-maylandia-zebra rests on the hybrid
+      population of the two species at Thumbi West Island after C. afra was introduced there
+      (Stauffer et al. 1996), confirmed with genetic markers by Streelman et al. (2004) and Zidana
+      et al. (2009) and reviewed by Genner and Turner (2005). The presumed two-member group
+      sciaenochromis-fryeri-cynotilapia-afra rests on Gerlai (2007), who reports spawning and
+      fertile offspring of the two species in a captive mate-choice study; it is unclear whether the
+      fish could choose partners of their own species. No source reports or warns of crosses of C.
+      afra with other Maylandia species, so it is not a member of the genus group maylandia.
     sources:
       - &stauffer
         kind: literature
@@ -846,23 +835,23 @@ features:
         accessed: 2026-10-12
     evidence:
       - source: *stauffer
-        value: maylandia
+        value: cynotilapia-afra-maylandia-zebra
         note: hybridisation with P. zebra after translocation within the lake
       - source: *streelman
-        value: maylandia
+        value: cynotilapia-afra-maylandia-zebra
         note: high share of hybrids with M. zebra at turbid sites of Thumbi West
       - source: *zidana
-        value: maylandia
+        value: cynotilapia-afra-maylandia-zebra
         note: introgression from P. zebra into introduced C. afra
       - source: *genner
-        value: maylandia
+        value: cynotilapia-afra-maylandia-zebra
         note: review citing the Thumbi West hybrids
       - source: *oliver
-        value: maylandia
+        value: cynotilapia-afra-maylandia-zebra
         note: close resemblance of Cynotilapia forms to M. zebra
       - source: *gerlai
-        value: null
-        note: fertile captive hybrids with Sciaenochromis fryeri, which is in no curated group
+        value: sciaenochromis-fryeri-cynotilapia-afra
+        note: "spawning and fertile offspring with Sciaenochromis fryeri in a captive mate-choice study; circumstances of the cross unclear"
       - source: *sf
         value: null
         note: colour forms of C. afra interbreed; no other species named
@@ -1009,7 +998,7 @@ partners:
     - species: Maylandia zebra
       reason: Same hybrid group; closely related blue barred mbuna that crosses with C. afra in the lake, and males fight it as a rival.
     - species: Maylandia callainos
-      reason: Same hybrid group; a blue mbuna that C. afra males treat as a rival.
+      reason: A blue mbuna that C. afra males treat as a rival.
     - species: Cynotilapia zebroides
       reason: Look-alike Cynotilapia sold under similar trade names; the two are easily confused in the trade and should not be mixed.
     - species: Pseudotropheus saulosi
@@ -1135,14 +1124,14 @@ profile:
         accessed: 2026-10-12
   compatibility:
     text: >-
-      Keep C. afra with other mbuna of similar size and temperament that look different, for
-      example yellow Labidochromis caeruleus or rust-coloured Iodotropheus sprengerae. Maylandia
-      zebra and the other members of its hybrid group do not belong in the same tank: C. afra
-      crosses with M. zebra in the lake, and blue males on both sides fight as rivals. Other blue
-      barred mbuna such as Pseudotropheus saulosi provoke the same rivalry. Do not mix different
-      afra forms or other Cynotilapia either, since the colour forms interbreed and the species are
-      hard to tell apart. Peacocks, utaka and other calm haplochromines suffer in the hectic mbuna
-      setting and should not share the tank.
+      Keep C. afra with other mbuna of similar size and temperament that look different, for example
+      yellow Labidochromis caeruleus or rust-coloured Iodotropheus sprengerae. Maylandia zebra and
+      the other Maylandia species do not belong in the same tank: C. afra crosses with M. zebra in
+      the lake, and blue males on both sides fight as rivals. Other blue barred mbuna such as
+      Pseudotropheus saulosi provoke the same rivalry. Do not mix different afra forms or other
+      Cynotilapia either, since the colour forms interbreed and the species are hard to tell apart.
+      Peacocks, utaka and other calm haplochromines suffer in the hectic mbuna setting and should
+      not share the tank.
     sources:
       - *sf
       - *fk

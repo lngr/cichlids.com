@@ -863,16 +863,15 @@ features:
       votes: {agree: 3, total: 3}
 
   hybridGroups:
-    value: []
+    value: [sciaenochromis-fryeri-aulonocara, sciaenochromis-fryeri-cynotilapia-afra]
     confidence: medium
     rationale: >-
-      The genus holds four valid species (Catalog of Fishes), of which only S. fryeri is common in
-      the trade, and no curated group of close relatives covers it. Crosses with other genera are
-      documented: Gerlai (2007) obtained fertile offspring with Cynotilapia afra under
-      semi-natural conditions in captivity, and Seriously Fish and Fishkeeper report males that
-      spawn with Aulonocara females. These crosses span distant genera and do not make the species
-      a member of a hybrid group; the partner warnings and the similar blue coloration cover them.
-      Colour forms of S. fryeri interbreed and are not mixed either.
+      Two presumed groups apply. Seriously Fish and Fishkeeper report males breeding with or
+      courting Aulonocara females without naming a peacock species, which gives the group
+      sciaenochromis-fryeri-aulonocara. Gerlai (2007) reports spawning and fertile offspring of S.
+      fryeri and Cynotilapia afra in a captive mate-choice study, but it is unclear whether the fish
+      could choose partners of their own species, so the two-member group
+      sciaenochromis-fryeri-cynotilapia-afra is presumed (only the abstract was readable).
     sources:
       - *cof
       - *gerlai
@@ -881,16 +880,16 @@ features:
     evidence:
       - source: *cof
         value: null
-        note: four valid Sciaenochromis species, none in a listed group
+        note: "four valid Sciaenochromis species; states nothing about crosses"
       - source: *gerlai
-        value: null
-        note: fertile crosses with Cynotilapia afra in captivity
+        value: sciaenochromis-fryeri-cynotilapia-afra
+        note: "spawning and fertile offspring with Cynotilapia afra in a captive mate-choice study; circumstances of the cross unclear"
       - source: *sf
-        value: null
-        note: males spawn with Aulonocara females; colour forms interbreed
+        value: sciaenochromis-fryeri-aulonocara
+        note: "males spawn with Aulonocara females; colour forms interbreed"
       - source: *fk
-        value: null
-        note: males court Aulonocara females
+        value: sciaenochromis-fryeri-aulonocara
+        note: "males court Aulonocara females"
     verification:
       method: unanimous
       votes: {agree: 3, total: 3}
@@ -1071,7 +1070,7 @@ partners:
     - species: Aulonocara
       reason: Males court and spawn with peacock females and may kill the peacock males to reach them; the blue peacock males are also treated as rivals.
     - species: Cynotilapia afra
-      reason: Crosses with this blue mbuna produced fertile offspring in captivity, and its hectic activity unsettles the hap.
+      reason: A captive study reports spawning and fertile offspring between the two species, and its hectic activity unsettles the hap.
     - species: Sciaenochromis ahli
       reason: Congener whose blue males look almost identical; the males fight as rivals, and the two cannot be told apart reliably in the trade.
     - species: Pseudotropheus saulosi
@@ -1212,9 +1211,9 @@ profile:
       Dimidiochromis, plus robust Synodontis catfish. Small fish, juveniles and fry will be hunted.
       Avoid mbuna, which outcompete the hap at feeding time and keep it stressed. Be careful with
       blue species: males treat blue males as rivals and court foreign females, and crosses with
-      Aulonocara females and with Cynotilapia afra are documented, so peacocks and other blue
-      Malawi cichlids do not belong in its tank. Do not keep it with the look-alike S. ahli, and
-      never mix different colour forms of S. fryeri, as they interbreed.
+      Aulonocara females and with Cynotilapia afra are reported, so peacocks and other blue Malawi
+      cichlids do not belong in its tank. Do not keep it with the look-alike S. ahli, and never mix
+      different colour forms of S. fryeri, as they interbreed.
     sources:
       - *sf
       - *fk

@@ -774,15 +774,14 @@ features:
       votes: {agree: 3, total: 3}
 
   hybridGroups:
-    value: [aulonocara]
+    value: [aulonocara, sciaenochromis-fryeri-aulonocara]
     confidence: high
     rationale: >-
-      The species is valid in Aulonocara (Catalog of Fishes) and a listed member of the curated
-      group aulonocara. Seriously Fish advises against other Aulonocara because most of them can
-      hybridise with it, Fishipedia warns against mixing species of one genus for the same reason,
-      and FishProfiles states that peacocks interbreed freely. The females of the genus are hard to
-      tell apart, which makes accidental crosses likely. An archive member also warns of crosses
-      with a blue haplochromine sold as ahli.
+      A. baenschi belongs to the presumed genus group aulonocara, which rests on the warnings of
+      Seriously Fish, Fishipedia and FishProfiles that peacocks cross with each other; none of them
+      reports a cross with a named second species. It is also a member of the presumed group
+      sciaenochromis-fryeri-aulonocara, because Seriously Fish and Fishkeeper report S. fryeri males
+      breeding with Aulonocara females without naming a species.
     sources:
       - *cof
       - *sf
@@ -793,6 +792,17 @@ features:
         title: cichlids.com forum thread 14801
         url: https://www.cichlids.com/disc/read.php?2,14801
         accessed: 2026-10-12
+      - &hyb6
+        kind: database
+        title: "Seriously Fish: Sciaenochromis fryeri (Electric Blue Hap)"
+        url: https://www.seriouslyfish.com/species/sciaenochromis-fryeri/
+        accessed: 2026-10-13
+      - &hyb7
+        kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Electric Blue Hap, Sciaenochromis fryeri,
+          species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/electric-blue-hap
+        accessed: 2026-10-13
     evidence:
       - source: *cof
         value: aulonocara
@@ -809,6 +819,12 @@ features:
       - source: *a14801
         value: aulonocara
         note: warns of crosses between baenschi and an ahli in the same tank
+      - source: *hyb6
+        value: sciaenochromis-fryeri-aulonocara
+        note: "males spawn with females of other genera, above all Aulonocara"
+      - source: *hyb7
+        value: sciaenochromis-fryeri-aulonocara
+        note: "advises against Aulonocara because males may remove the peacock male to breed with its females"
     verification:
       method: unanimous
       votes: {agree: 3, total: 3}
