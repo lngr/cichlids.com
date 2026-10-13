@@ -810,6 +810,10 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasColumnType("text")
                         .HasColumnName("topic");
 
+                    b.Property<DateTimeOffset>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("updated_at");
+
                     b.Property<long>("ViewCount")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")

@@ -18,6 +18,7 @@ public class PostConfiguration : IEntityTypeConfiguration<Post>
         builder.Property(x => x.ViewCount).IsRequired().HasDefaultValue(0L);
         builder.Property(x => x.RatingCount).IsRequired().HasDefaultValue(0);
         builder.Property(x => x.CreatedAt).IsRequired();
+        builder.Property(x => x.UpdatedAt).IsRequired();
 
         builder.HasIndex(x => x.LegacyId).IsUnique();
 

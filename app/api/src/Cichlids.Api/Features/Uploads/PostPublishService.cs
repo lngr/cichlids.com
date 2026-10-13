@@ -40,7 +40,8 @@ public sealed class PostPublishService(
                     .SetProperty(p => p.Description, description)
                     .SetProperty(p => p.Topic, topic)
                     .SetProperty(p => p.State, PostState.Published)
-                    .SetProperty(p => p.PublishedAt, now),
+                    .SetProperty(p => p.PublishedAt, now)
+                    .SetProperty(p => p.UpdatedAt, now),
                 cancellationToken);
 
         if (updated == 0)

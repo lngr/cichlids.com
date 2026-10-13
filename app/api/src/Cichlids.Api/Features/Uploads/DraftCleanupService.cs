@@ -6,7 +6,7 @@ using Microsoft.Extensions.Options;
 namespace Cichlids.Api.Features.Uploads;
 
 /// <summary>
-/// One cleanup pass over abandoned drafts: every unpublished draft created longer ago than the
+/// One cleanup pass over abandoned drafts: every unpublished draft last changed longer ago than the
 /// retention is deleted with its rows and stored objects. Several instances may run a pass at the
 /// same time; the delete of a draft happens once and a draft another instance removed first is
 /// skipped.
@@ -26,7 +26,7 @@ public sealed class DraftCleanupService(
         var cutoff = timeProvider.GetUtcNow() - settings.Retention;
 
         var expiredIds = await context.Posts
-            .Where(p => p.State == PostState.Draft && p.DeletedAt == null && p.CreatedAt < cutoff)
+            .Where(p => p.State == PostState.Draft && p.DeletedAt == null && p.UpdatedAt < cutoff)
             .OrderBy(p => p.Id)
             .Select(p => p.Id)
             .Take(settings.BatchSize)

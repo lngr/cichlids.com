@@ -58,12 +58,12 @@ public class UploadLimitsTests(UploadsFixture fixture)
             db.Posts.Add(new Post
             {
                 AuthorProfileId = profileId, Kind = PostKind.Single, Topic = PostTopic.Cichlids,
-                State = PostState.Published, CreatedAt = DateTimeOffset.UtcNow, PublishedAt = DateTimeOffset.UtcNow,
+                State = PostState.Published, CreatedAt = DateTimeOffset.UtcNow, UpdatedAt = DateTimeOffset.UtcNow, PublishedAt = DateTimeOffset.UtcNow,
             });
             db.Posts.Add(new Post
             {
                 AuthorProfileId = profileId, Kind = PostKind.Single, Topic = PostTopic.Cichlids,
-                State = PostState.Draft, CreatedAt = DateTimeOffset.UtcNow, DeletedAt = DateTimeOffset.UtcNow,
+                State = PostState.Draft, CreatedAt = DateTimeOffset.UtcNow, UpdatedAt = DateTimeOffset.UtcNow, DeletedAt = DateTimeOffset.UtcNow,
             });
             await db.SaveChangesAsync();
         }
@@ -161,6 +161,49 @@ public class UploadLimitsTests(UploadsFixture fixture)
     }
 
     [Fact]
+    public async Task Cleanup_KeepsDraftCreatedLongAgoButChangedRecently()
+    {
+        var token = NewToken();
+        var edited = await UploadDraftAsync(fixture.Client, token, Jpeg(300, 200));
+        var untouched = await UploadDraftAsync(fixture.Client, token, Jpeg(300, 200));
+        await SetTimestampsAsync(edited.Id, DateTimeOffset.UtcNow.AddDays(-40), DateTimeOffset.UtcNow.AddDays(-2));
+        await SetTimestampsAsync(untouched.Id, DateTimeOffset.UtcNow.AddDays(-40), DateTimeOffset.UtcNow.AddDays(-31));
+
+        using var scope = fixture.Services.CreateScope();
+        await scope.ServiceProvider.GetRequiredService<DraftCleanupService>().RunOnceAsync(CancellationToken.None);
+
+        await using var db = fixture.CreateDbContext();
+        Assert.True(await db.Posts.AnyAsync(p => p.Id == edited.Id));
+        Assert.False(await db.Posts.AnyAsync(p => p.Id == untouched.Id));
+    }
+
+    [Fact]
+    public async Task UploadSetsUpdatedAtToTheCreationMoment()
+    {
+        var token = NewToken();
+        var draft = await UploadDraftAsync(fixture.Client, token, Jpeg(300, 200));
+
+        await using var db = fixture.CreateDbContext();
+        var post = await db.Posts.SingleAsync(p => p.Id == draft.Id);
+        Assert.Equal(post.CreatedAt, post.UpdatedAt);
+    }
+
+    [Fact]
+    public async Task PublishMovesUpdatedAtForward()
+    {
+        var token = NewToken();
+        var draft = await UploadDraftAsync(fixture.Client, token, Jpeg(300, 200));
+        await SetTimestampsAsync(draft.Id, DateTimeOffset.UtcNow.AddDays(-10), DateTimeOffset.UtcNow.AddDays(-10));
+
+        (await PublishAsync(fixture.Client, token, draft.Id, new PublishPostRequest("Title", null, "cichlids")))
+            .EnsureSuccessStatusCode();
+
+        await using var db = fixture.CreateDbContext();
+        var post = await db.Posts.SingleAsync(p => p.Id == draft.Id);
+        Assert.True(post.UpdatedAt > DateTimeOffset.UtcNow.AddMinutes(-5));
+    }
+
+    [Fact]
     public async Task Cleanup_RunTwiceIsIdempotentAndRunsConcurrentlyWithoutError()
     {
         var token = NewToken();
@@ -197,7 +240,7 @@ public class UploadLimitsTests(UploadsFixture fixture)
             db.Posts.Add(new Post
             {
                 AuthorProfileId = profileId, Kind = PostKind.Single, Topic = PostTopic.Cichlids,
-                State = PostState.Draft, CreatedAt = createdAt,
+                State = PostState.Draft, CreatedAt = createdAt, UpdatedAt = createdAt,
             });
         }
 
@@ -207,7 +250,15 @@ public class UploadLimitsTests(UploadsFixture fixture)
     private async Task SetCreatedAtAsync(long postId, DateTimeOffset createdAt)
     {
         await using var db = fixture.CreateDbContext();
-        await db.Posts.Where(p => p.Id == postId).ExecuteUpdateAsync(s => s.SetProperty(p => p.CreatedAt, createdAt));
+        await db.Posts.Where(p => p.Id == postId).ExecuteUpdateAsync(
+            s => s.SetProperty(p => p.CreatedAt, createdAt).SetProperty(p => p.UpdatedAt, createdAt));
+    }
+
+    private async Task SetTimestampsAsync(long postId, DateTimeOffset createdAt, DateTimeOffset updatedAt)
+    {
+        await using var db = fixture.CreateDbContext();
+        await db.Posts.Where(p => p.Id == postId).ExecuteUpdateAsync(
+            s => s.SetProperty(p => p.CreatedAt, createdAt).SetProperty(p => p.UpdatedAt, updatedAt));
     }
 
     private async Task<List<string>> StoredKeysOfAsync(long postId)

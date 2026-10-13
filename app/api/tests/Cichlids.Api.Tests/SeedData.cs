@@ -181,7 +181,7 @@ public sealed record SeedData(
         var draftPicture = new Post
         {
             AuthorProfileId = alice.Id, Kind = PostKind.Single, Topic = PostTopic.Cichlids,
-            Title = "Unpublished Draft", State = PostState.Draft, CreatedAt = now.AddDays(-1),
+            Title = "Unpublished Draft", State = PostState.Draft, CreatedAt = now.AddDays(-1), UpdatedAt = now.AddDays(-1),
         };
         var archivedPicture = new Post
         {

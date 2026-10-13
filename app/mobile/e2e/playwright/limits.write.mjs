@@ -61,8 +61,8 @@ function psql(sql) {
 function seedEmptyDrafts(profileId, count) {
   if (!/^\d+$/.test(profileId) || !Number.isInteger(count)) throw new Error("Unexpected draft seed values");
   psql(
-    `INSERT INTO post (author_profile_id, kind, topic, state, created_at, view_count, rating_count) ` +
-      `SELECT ${profileId}, 'single', 'cichlids', 'draft', now(), 0, 0 FROM generate_series(1, ${count})`,
+    `INSERT INTO post (author_profile_id, kind, topic, state, created_at, updated_at, view_count, rating_count) ` +
+      `SELECT ${profileId}, 'single', 'cichlids', 'draft', now(), now(), 0, 0 FROM generate_series(1, ${count})`,
   );
 }
 

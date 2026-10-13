@@ -170,6 +170,33 @@ public sealed class SchemaMigrationTests
     }
 
     [Fact]
+    public async Task Post_updated_at_migration_backfills_the_creation_moment()
+    {
+        await using var database = await _fixture.CreateEmptyDatabaseAsync();
+        await using var context = database.CreateContext();
+        var migrations = context.Database.GetMigrations().ToList();
+        var target = migrations.FindIndex(m => m.EndsWith("_AddPostUpdatedAt", StringComparison.Ordinal));
+        Assert.True(target > 0);
+
+        var migrator = context.GetService<IMigrator>();
+        await migrator.MigrateAsync(migrations[target - 1]);
+
+        await context.Database.ExecuteSqlAsync(
+            $$"""
+            INSERT INTO profile (id, username, kind, created_at) OVERRIDING SYSTEM VALUE
+            VALUES (1, 'owner', 'member', now());
+            INSERT INTO post (id, author_profile_id, kind, topic, state, created_at) OVERRIDING SYSTEM VALUE
+            VALUES (10, 1, 'single', 'cichlids', 'draft', now() - interval '40 days');
+            """);
+
+        await migrator.MigrateAsync();
+
+        var equal = await context.Database.SqlQueryRaw<bool>(
+            "SELECT updated_at = created_at AS \"Value\" FROM post WHERE id = 10").SingleAsync();
+        Assert.True(equal);
+    }
+
+    [Fact]
     public async Task Temporary_database_is_dropped_when_disposed()
     {
         string name;

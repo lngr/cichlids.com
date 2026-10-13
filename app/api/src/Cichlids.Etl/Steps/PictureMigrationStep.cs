@@ -249,6 +249,7 @@ public sealed class PictureMigrationStep : IEtlStep
                 picture.RatingCount,
                 ratingAverage,
                 picture.CreatedAt,
+                picture.CreatedAt,
             });
         }
 
@@ -259,7 +260,7 @@ public sealed class PictureMigrationStep : IEtlStep
             "legacy_id",
             [
                 "legacy_id", "author_profile_id", "kind", "topic", "state", "published_at",
-                "title", "description", "view_count", "rating_count", "rating_average", "created_at",
+                "title", "description", "view_count", "rating_count", "rating_average", "created_at", "updated_at",
             ],
             postRows,
             cancellationToken);

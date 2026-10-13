@@ -22,6 +22,13 @@ public class Post
     public double? RatingAverage { get; set; }
     public int RatingCount { get; set; }
     public DateTimeOffset CreatedAt { get; set; }
+
+    /// <summary>
+    /// When the post last changed: its creation, a change of its content or media, or its
+    /// publication. The age of an unpublished draft is measured from this moment.
+    /// </summary>
+    public DateTimeOffset UpdatedAt { get; set; }
+
     public DateTimeOffset? PublishedAt { get; set; }
     public DateTimeOffset? DeletedAt { get; set; }
     public string? DeleteReason { get; set; }

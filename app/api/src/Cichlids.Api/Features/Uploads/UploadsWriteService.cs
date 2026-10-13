@@ -124,6 +124,7 @@ public sealed class UploadsWriteService(
                 Topic = PostTopic.Cichlids,
                 State = PostState.Draft,
                 CreatedAt = now,
+                UpdatedAt = now,
             };
             context.Posts.Add(post);
             await context.SaveChangesAsync(cancellationToken);
@@ -150,22 +151,22 @@ public sealed class UploadsWriteService(
     /// </summary>
     public async Task<DraftActionOutcome> DiscardAsync(long postId, long authorProfileId, CancellationToken cancellationToken)
     {
-        return await RemoveDraftAsync(postId, authorProfileId, createdBefore: null, cancellationToken);
+        return await RemoveDraftAsync(postId, authorProfileId, changedBefore: null, cancellationToken);
     }
 
     /// <summary>
-    /// Deletes a draft that was created before the given moment, whoever owns it, with its rows
+    /// Deletes a draft that was last changed before the given moment, whoever owns it, with its rows
     /// and stored objects like a discard. Returns false when there is no such draft any more, as
     /// when a concurrent cleanup deleted it first or it was published in the meantime.
     /// </summary>
-    public async Task<bool> DeleteExpiredDraftAsync(long postId, DateTimeOffset createdBefore, CancellationToken cancellationToken)
+    public async Task<bool> DeleteExpiredDraftAsync(long postId, DateTimeOffset changedBefore, CancellationToken cancellationToken)
     {
-        var outcome = await RemoveDraftAsync(postId, authorProfileId: null, createdBefore, cancellationToken);
+        var outcome = await RemoveDraftAsync(postId, authorProfileId: null, changedBefore, cancellationToken);
         return outcome == DraftActionOutcome.Succeeded;
     }
 
     private async Task<DraftActionOutcome> RemoveDraftAsync(
-        long postId, long? authorProfileId, DateTimeOffset? createdBefore, CancellationToken cancellationToken)
+        long postId, long? authorProfileId, DateTimeOffset? changedBefore, CancellationToken cancellationToken)
     {
         List<string> storedKeys;
 
@@ -189,7 +190,7 @@ public sealed class UploadsWriteService(
             // publish or removal of the same post on the row lock: whichever runs second sees the
             // committed outcome of the first and deletes nothing.
             var deleted = await candidates
-                .Where(p => p.State == PostState.Draft && (createdBefore == null || p.CreatedAt < createdBefore))
+                .Where(p => p.State == PostState.Draft && (changedBefore == null || p.UpdatedAt < changedBefore))
                 .ExecuteDeleteAsync(cancellationToken);
 
             if (deleted == 0)
