@@ -58,7 +58,8 @@
       "notFound": "Picture not found",
       "comments": "Comments ({{count}})",
       "commentsLoading": "Loading comments…",
-      "commentsEmpty": "No comments yet."
+      "commentsEmpty": "No comments yet.",
+      "commentsError": "The comments could not be loaded."
     }
   },
   "tanks": {
@@ -96,7 +97,8 @@
       "sectionTechnic": "Equipment",
       "comments": "Comments",
       "commentsLoading": "Loading comments…",
-      "commentsEmpty": "No comments yet."
+      "commentsEmpty": "No comments yet.",
+      "commentsError": "The comments could not be loaded."
     }
   },
   "species": {
@@ -180,7 +182,8 @@
       "deleteConfirmText": "The photo is deleted for good.",
       "cancel": "Cancel",
       "deleteError": "Deleting the draft failed. Please try again."
-    }
+    },
+    "loginUnavailable": "Login is unavailable right now because the login service cannot be reached. Please try again."
   },
   "upload": {
     "title": "Upload photo",
@@ -214,6 +217,11 @@
     "postError": "Posting failed. Please try again.",
     "anonymousText": "Log in to comment and rate.",
     "login": "Log in",
-    "loginError": "Login failed. Please try again."
+    "loginError": "Login failed. Please try again.",
+    "loginUnavailable": "Login is unavailable right now because the login service cannot be reached. Please try again."
+  },
+  "errors": {
+    "self_rating": "You cannot rate your own content.",
+    "non_member_profile": "This account is not a member account and cannot log in to the app."
   }
 }

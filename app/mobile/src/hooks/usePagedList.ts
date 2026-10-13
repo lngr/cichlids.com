@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import type { PagedResponse } from "@cichlids/client-core";
+import { translateApiError } from "../lib/apiErrors";
 import {
   applyFirstPage,
   applyNextPage,
@@ -60,13 +61,13 @@ export function usePagedList<T>(
         setState((current) => (append ? applyNextPage(current, page, keyOf) : applyFirstPage(current, page, keyOf)));
       } catch (err) {
         if (id !== requestId.current) return;
-        setError(err instanceof Error ? err.message : t("common.unknownError"));
+        setError(translateApiError(err, t, "common.loadError"));
       } finally {
         if (id !== requestId.current) return;
         setStatus((current) => finishLoad(current, append));
       }
     },
-    [fetchPage, keyOf],
+    [fetchPage, keyOf, t],
   );
 
   useEffect(() => {

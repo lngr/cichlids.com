@@ -5,6 +5,7 @@ import { useLocalSearchParams, useNavigation, useRouter } from "expo-router";
 import { useTranslation } from "react-i18next";
 import { apiClient } from "../../../src/api/client";
 import { useTheme } from "../../../src/theme";
+import { listEmptyState } from "../../../src/hooks/pagedListState";
 import { usePagedList } from "../../../src/hooks/usePagedList";
 import { CommentComposer } from "../../../src/components/CommentComposer";
 import { CommentItem } from "../../../src/components/CommentItem";
@@ -60,6 +61,8 @@ export default function PictureDetailScreen() {
     [slug, comments.prepend],
   );
 
+  const emptyState = listEmptyState(comments);
+
   if (loading) return <LoadingView label={t("gallery.detail.loading")} />;
   if (error || !picture) return <ErrorView message={error ?? t("gallery.detail.notFound")} />;
 
@@ -102,7 +105,15 @@ export default function PictureDetailScreen() {
           </View>
         </View>
       }
-      ListEmptyComponent={comments.loading ? <LoadingView label={t("gallery.detail.commentsLoading")} /> : <EmptyView message={t("gallery.detail.commentsEmpty")} />}
+      ListEmptyComponent={
+        emptyState === "loading" ? (
+          <LoadingView label={t("gallery.detail.commentsLoading")} />
+        ) : emptyState === "error" ? (
+          <ErrorView message={t("gallery.detail.commentsError")} onRetry={comments.reload} />
+        ) : (
+          <EmptyView message={t("gallery.detail.commentsEmpty")} />
+        )
+      }
       ListFooterComponent={comments.loadingMore ? <LoadingView /> : null}
       contentContainerStyle={styles.listContent}
     />

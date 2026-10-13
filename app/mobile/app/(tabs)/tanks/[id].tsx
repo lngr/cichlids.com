@@ -5,6 +5,7 @@ import { useLocalSearchParams, useNavigation, useRouter } from "expo-router";
 import { useTranslation } from "react-i18next";
 import { apiClient } from "../../../src/api/client";
 import { useTheme } from "../../../src/theme";
+import { listEmptyState } from "../../../src/hooks/pagedListState";
 import { usePagedList } from "../../../src/hooks/usePagedList";
 import { CommentComposer } from "../../../src/components/CommentComposer";
 import { CommentItem } from "../../../src/components/CommentItem";
@@ -56,6 +57,8 @@ export default function TankDetailScreen() {
     },
     [comments.prepend],
   );
+
+  const emptyState = listEmptyState(comments);
 
   if (loading) return <LoadingView label={t("tanks.detail.loading")} />;
   if (error || !tank) return <ErrorView message={error ?? t("tanks.detail.notFound")} />;
@@ -115,7 +118,15 @@ export default function TankDetailScreen() {
           </View>
         </View>
       }
-      ListEmptyComponent={comments.loading ? <LoadingView label={t("tanks.detail.commentsLoading")} /> : <EmptyView message={t("tanks.detail.commentsEmpty")} />}
+      ListEmptyComponent={
+        emptyState === "loading" ? (
+          <LoadingView label={t("tanks.detail.commentsLoading")} />
+        ) : emptyState === "error" ? (
+          <ErrorView message={t("tanks.detail.commentsError")} onRetry={comments.reload} />
+        ) : (
+          <EmptyView message={t("tanks.detail.commentsEmpty")} />
+        )
+      }
       ListFooterComponent={comments.loadingMore ? <LoadingView /> : null}
       contentContainerStyle={styles.listContent}
     />

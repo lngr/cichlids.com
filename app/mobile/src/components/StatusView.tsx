@@ -1,6 +1,6 @@
-import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, Pressable, StyleSheet, Text, View } from "react-native";
 import { useTranslation } from "react-i18next";
-import { useTheme } from "../theme";
+import { minTouchTarget, useTheme } from "../theme";
 
 export function LoadingView({ label }: { label?: string }) {
   const theme = useTheme();
@@ -20,9 +20,9 @@ export function ErrorView({ message, onRetry }: { message: string; onRetry?: () 
     <View style={[styles.center, { backgroundColor: theme.colors.bg }]}>
       <Text style={[styles.label, { color: theme.colors.danger }]}>{message}</Text>
       {onRetry ? (
-        <Text style={[styles.retry, { color: theme.colors.accent }]} onPress={onRetry}>
-          {t("common.retry")}
-        </Text>
+        <Pressable testID="error-retry" accessibilityRole="button" onPress={onRetry} style={styles.retryTarget}>
+          <Text style={[styles.retry, { color: theme.colors.accent }]}>{t("common.retry")}</Text>
+        </Pressable>
       ) : null}
     </View>
   );
@@ -52,6 +52,11 @@ const styles = StyleSheet.create({
   retry: {
     fontSize: 15,
     fontWeight: "600",
-    marginTop: 4,
+  },
+  retryTarget: {
+    minHeight: minTouchTarget,
+    minWidth: minTouchTarget,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

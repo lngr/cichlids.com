@@ -5,6 +5,8 @@ import { useTranslation } from "react-i18next";
 import type { CommentCreated, CreateCommentRequest } from "@cichlids/client-core";
 import { apiClient } from "../api/client";
 import { useAuth } from "../auth/AuthProvider";
+import { useLoginAction } from "../auth/useLoginAction";
+import { translateApiError } from "../lib/apiErrors";
 import { minTouchTarget, useTheme } from "../theme";
 import { Button } from "./Button";
 import { STAR_VALUES, canSubmit, emptyCommentDraft, offersStars, toCreateCommentRequest, toggleStar, type CommentDraft } from "./commentComposerState";
@@ -36,25 +38,17 @@ export function CommentComposer({
 function LoginPrompt() {
   const theme = useTheme();
   const { t } = useTranslation();
-  const { login, loginReady } = useAuth();
-  const [busy, setBusy] = useState(false);
-  const [failed, setFailed] = useState(false);
-
-  // login() runs directly in the press handler: on the web it opens the Keycloak popup, which
-  // browsers only allow as the immediate result of a user gesture.
-  const onLogin = () => {
-    setFailed(false);
-    setBusy(true);
-    login()
-      .catch(() => setFailed(true))
-      .finally(() => setBusy(false));
-  };
+  const { busy, failure, onLogin } = useLoginAction();
 
   return (
     <View style={[styles.section, { gap: theme.space[2], paddingVertical: theme.space[3] }]}>
       <Text style={[theme.type.body, { color: theme.colors.muted }]}>{t("comments.anonymousText")}</Text>
-      {failed ? <Text style={[theme.type.body, { color: theme.colors.danger }]}>{t("comments.loginError")}</Text> : null}
-      <Button testID="comment-login" variant="secondary" label={t("comments.login")} onPress={onLogin} disabled={!loginReady} busy={busy} />
+      {failure ? (
+        <Text testID="comment-login-error" accessibilityRole="alert" style={[theme.type.body, { color: theme.colors.danger }]}>
+          {failure === "unavailable" ? t("comments.loginUnavailable") : t("comments.loginError")}
+        </Text>
+      ) : null}
+      <Button testID="comment-login" variant="secondary" label={failure ? t("common.retry") : t("comments.login")} onPress={onLogin} busy={busy} />
     </View>
   );
 }
@@ -73,7 +67,7 @@ function ComposerForm({
   const [myProfileId, setMyProfileId] = useState<number | string | null>(null);
   const [draft, setDraft] = useState<CommentDraft>(emptyCommentDraft);
   const [sending, setSending] = useState(false);
-  const [failed, setFailed] = useState(false);
+  const [failure, setFailure] = useState<string | null>(null);
   const mountedRef = useRef(true);
   const sendingRef = useRef(false);
 
@@ -102,14 +96,14 @@ function ComposerForm({
     if (sendingRef.current || !canSubmit(effectiveDraft)) return;
     sendingRef.current = true;
     setSending(true);
-    setFailed(false);
+    setFailure(null);
     try {
       const created = await submit(toCreateCommentRequest(effectiveDraft));
       if (!mountedRef.current) return;
       setDraft(emptyCommentDraft());
       onPosted(created);
-    } catch {
-      if (mountedRef.current) setFailed(true);
+    } catch (error) {
+      if (mountedRef.current) setFailure(translateApiError(error, t, "comments.postError"));
     } finally {
       sendingRef.current = false;
       if (mountedRef.current) setSending(false);
@@ -168,10 +162,10 @@ function ComposerForm({
           </View>
         </View>
       ) : null}
-      {failed ? (
+      {failure ? (
         <View style={{ gap: theme.space[2] }}>
           <Text testID="comment-error" style={[theme.type.body, { color: theme.colors.danger }]}>
-            {t("comments.postError")}
+            {failure}
           </Text>
           <Button testID="comment-retry" variant="secondary" label={t("common.retry")} onPress={() => void send()} disabled={sending} />
         </View>

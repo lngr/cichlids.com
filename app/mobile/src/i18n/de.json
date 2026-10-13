@@ -58,7 +58,8 @@
       "notFound": "Bild nicht gefunden",
       "comments": "Kommentare ({{count}})",
       "commentsLoading": "Kommentare laden…",
-      "commentsEmpty": "Noch keine Kommentare."
+      "commentsEmpty": "Noch keine Kommentare.",
+      "commentsError": "Die Kommentare konnten nicht geladen werden."
     }
   },
   "tanks": {
@@ -96,7 +97,8 @@
       "sectionTechnic": "Technik",
       "comments": "Kommentare",
       "commentsLoading": "Kommentare laden…",
-      "commentsEmpty": "Noch keine Kommentare."
+      "commentsEmpty": "Noch keine Kommentare.",
+      "commentsError": "Die Kommentare konnten nicht geladen werden."
     }
   },
   "species": {
@@ -180,7 +182,8 @@
       "deleteConfirmText": "Das Foto wird endgültig gelöscht.",
       "cancel": "Abbrechen",
       "deleteError": "Der Entwurf konnte nicht gelöscht werden. Bitte versuche es erneut."
-    }
+    },
+    "loginUnavailable": "Die Anmeldung ist gerade nicht möglich, weil der Anmeldedienst nicht erreichbar ist. Bitte versuche es erneut."
   },
   "upload": {
     "title": "Foto hochladen",
@@ -214,6 +217,11 @@
     "postError": "Das Senden ist fehlgeschlagen. Bitte versuche es erneut.",
     "anonymousText": "Melde dich an, um zu kommentieren und zu bewerten.",
     "login": "Anmelden",
-    "loginError": "Anmeldung fehlgeschlagen. Bitte versuche es erneut."
+    "loginError": "Anmeldung fehlgeschlagen. Bitte versuche es erneut.",
+    "loginUnavailable": "Die Anmeldung ist gerade nicht möglich, weil der Anmeldedienst nicht erreichbar ist. Bitte versuche es erneut."
+  },
+  "errors": {
+    "self_rating": "Eigene Inhalte kannst du nicht bewerten.",
+    "non_member_profile": "Dieses Konto ist kein Mitgliedskonto und kann sich nicht in der App anmelden."
   }
 }

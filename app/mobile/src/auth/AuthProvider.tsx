@@ -13,6 +13,7 @@ import {
 } from "expo-auth-session";
 import { setAccessTokenProvider } from "../api/client";
 import { authConfig } from "./config";
+import { ensureDiscovery } from "./discovery";
 import { needsRefresh, resolveRefreshOutcome, toTokenSet, type TokenSet } from "./tokenLogic";
 import { tokenStorage } from "./tokenStorage";
 
@@ -25,9 +26,11 @@ export type AuthStatus = "loading" | "anonymous" | "authenticated";
 export interface AuthContextValue {
   status: AuthStatus;
   accessToken: string | null;
-  /** True once the Keycloak discovery document and the PKCE request are ready for login(). */
-  loginReady: boolean;
-  /** Opens the Keycloak login; resolves false when the user cancels it and rejects when it fails. */
+  /**
+   * Opens the Keycloak login; resolves false when the user cancels it or when the login only
+   * became ready (the discovery document was loaded by this call, a further call opens the login),
+   * and rejects when it fails. Rejects with DiscoveryUnavailableError when Keycloak cannot be reached.
+   */
   login(): Promise<boolean>;
   logout(): Promise<void>;
   /** The current access token, refreshed first when it is about to expire; undefined when anonymous. */
@@ -36,13 +39,16 @@ export interface AuthContextValue {
 
 const AuthContext = createContext<AuthContextValue | null>(null);
 
-async function resolveDiscovery(loaded: DiscoveryDocument | null): Promise<DiscoveryDocument> {
-  return loaded ?? (await fetchDiscoveryAsync(authConfig.issuer));
+function loadDiscovery(): Promise<DiscoveryDocument> {
+  return fetchDiscoveryAsync(authConfig.issuer);
 }
 
 /** Holds the Keycloak session of the app user and supplies its access token to the API client. */
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const discovery = useAutoDiscovery(authConfig.issuer);
+  const autoDiscovery = useAutoDiscovery(authConfig.issuer);
+  // The document a login tap loaded after the automatic discovery at start failed.
+  const [tappedDiscovery, setTappedDiscovery] = useState<DiscoveryDocument | null>(null);
+  const discovery = autoDiscovery ?? tappedDiscovery;
   const redirectUri = useMemo(
     () => makeRedirectUri({ scheme: authConfig.redirectScheme, path: authConfig.redirectPath }),
     [],
@@ -98,7 +104,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const login = useCallback(async () => {
-    if (!request || !discovery || request.state !== requestState) return false;
+    if (!discovery) {
+      try {
+        setTappedDiscovery(await ensureDiscovery(null, loadDiscovery));
+      } catch (error) {
+        console.error("Loading the Keycloak discovery document failed.", error);
+        throw error;
+      }
+      return false;
+    }
+    if (!request || request.state !== requestState) return false;
     let result;
     try {
       result = await promptAsync();
@@ -133,7 +148,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (tokens.idToken) params.set("id_token_hint", tokens.idToken);
     if (tokens.refreshToken) params.set("refresh_token", tokens.refreshToken);
     try {
-      const { endSessionEndpoint } = await resolveDiscovery(discoveryRef.current);
+      const { endSessionEndpoint } = await ensureDiscovery(discoveryRef.current, loadDiscovery);
       if (!endSessionEndpoint) return;
       await fetch(endSessionEndpoint, {
         method: "POST",
@@ -152,7 +167,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         if (!tokens.refreshToken) throw new Error("No refresh token.");
         const response = await refreshAsync(
           { clientId: authConfig.clientId, refreshToken: tokens.refreshToken, scopes: [...authConfig.scopes] },
-          await resolveDiscovery(discoveryRef.current),
+          await ensureDiscovery(discoveryRef.current, loadDiscovery),
         );
         outcome = toTokenSet(response, Date.now(), tokens);
       } catch {
@@ -190,12 +205,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     () => ({
       status: state.status,
       accessToken: state.accessToken,
-      loginReady: request !== null && request.state === requestState && discovery !== null,
       login,
       logout,
       getAccessToken,
     }),
-    [state, request, requestState, discovery, login, logout, getAccessToken],
+    [state, login, logout, getAccessToken],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

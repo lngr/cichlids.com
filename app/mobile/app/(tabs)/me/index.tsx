@@ -5,8 +5,10 @@ import { useTranslation } from "react-i18next";
 import type { Me } from "@cichlids/client-core";
 import { apiClient } from "../../../src/api/client";
 import { useAuth } from "../../../src/auth/AuthProvider";
+import { useLoginAction } from "../../../src/auth/useLoginAction";
 import { Button } from "../../../src/components/Button";
 import { ErrorView, LoadingView } from "../../../src/components/StatusView";
+import { translateApiError } from "../../../src/lib/apiErrors";
 import { useTheme } from "../../../src/theme";
 import { DraftsSection } from "../../../src/upload/DraftsSection";
 
@@ -21,26 +23,18 @@ export default function MeScreen() {
 function AnonymousView() {
   const theme = useTheme();
   const { t } = useTranslation();
-  const { login, loginReady } = useAuth();
-  const [busy, setBusy] = useState(false);
-  const [failed, setFailed] = useState(false);
-
-  // login() is called directly from the press handler: on the web it opens the Keycloak popup,
-  // which browsers only allow as the immediate result of a user gesture.
-  const onLogin = () => {
-    setFailed(false);
-    setBusy(true);
-    login()
-      .catch(() => setFailed(true))
-      .finally(() => setBusy(false));
-  };
+  const { busy, failure, onLogin } = useLoginAction();
 
   return (
     <View style={[styles.anonymous, { backgroundColor: theme.colors.bg, padding: theme.space[6], gap: theme.space[3] }]}>
       <Text style={[theme.type.h1, styles.centered, { color: theme.colors.fg }]}>{t("me.anonymousTitle")}</Text>
       <Text style={[theme.type.body, styles.centered, { color: theme.colors.muted }]}>{t("me.anonymousText")}</Text>
-      {failed ? <Text style={[theme.type.body, styles.centered, { color: theme.colors.danger }]}>{t("me.loginError")}</Text> : null}
-      <Button testID="login-button" label={t("me.login")} onPress={onLogin} disabled={!loginReady} busy={busy} />
+      {failure ? (
+        <Text testID="login-error" accessibilityRole="alert" style={[theme.type.body, styles.centered, { color: theme.colors.danger }]}>
+          {failure === "unavailable" ? t("me.loginUnavailable") : t("me.loginError")}
+        </Text>
+      ) : null}
+      <Button testID="login-button" label={failure ? t("common.retry") : t("me.login")} onPress={onLogin} busy={busy} />
     </View>
   );
 }
@@ -60,7 +54,7 @@ function ProfileView() {
     apiClient.me
       .get()
       .then((result) => !cancelled && setMe(result))
-      .catch((err) => !cancelled && setError(err instanceof Error ? err.message : t("common.loadError")));
+      .catch((err) => !cancelled && setError(translateApiError(err, t, "common.loadError")));
     return () => {
       cancelled = true;
     };

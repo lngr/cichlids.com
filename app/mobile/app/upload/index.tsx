@@ -89,7 +89,7 @@ function UploadFlow({ draftId }: { draftId: string | null }) {
       })
       .catch((err) => {
         if (cancelled) return;
-        setError({ message: uploadErrorMessage(err, t("upload.draftLoadError")), action: "load" });
+        setError({ message: uploadErrorMessage(err, t("upload.draftLoadError"), t), action: "load" });
       });
     return () => {
       cancelled = true;
@@ -108,7 +108,7 @@ function UploadFlow({ draftId }: { draftId: string | null }) {
       setPhase("editing");
     } catch (err) {
       if (!mountedRef.current) return;
-      setError({ message: uploadErrorMessage(err, t("upload.uploadError")), action: "upload" });
+      setError({ message: uploadErrorMessage(err, t("upload.uploadError"), t), action: "upload" });
       setPhase("picking");
     }
   };
@@ -128,7 +128,7 @@ function UploadFlow({ draftId }: { draftId: string | null }) {
       if (mountedRef.current) router.dismissTo(`/gallery/${picture.slug}`);
     } catch (err) {
       if (!mountedRef.current) return;
-      setError({ message: uploadErrorMessage(err, t("upload.publishError")), action: "publish" });
+      setError({ message: uploadErrorMessage(err, t("upload.publishError"), t), action: "publish" });
       setPhase("editing");
     } finally {
       actionRef.current = null;
@@ -149,7 +149,7 @@ function UploadFlow({ draftId }: { draftId: string | null }) {
       else router.replace("/gallery");
     } catch (err) {
       if (!mountedRef.current) return;
-      setError({ message: uploadErrorMessage(err, t("upload.discardError")), action: "discard" });
+      setError({ message: uploadErrorMessage(err, t("upload.discardError"), t), action: "discard" });
       setPhase("editing");
     } finally {
       actionRef.current = null;

@@ -85,19 +85,26 @@ describe("toUploadFile", () => {
 });
 
 describe("uploadErrorMessage", () => {
+  const t = (key: string) => `translated:${key}`;
+
+  it("translates a known API error code before anything else", () => {
+    const error = Object.assign(new Error("Forbidden"), { status: 403, code: "non_member_profile" });
+    expect(uploadErrorMessage(error, "fallback", t)).toBe("translated:errors.non_member_profile");
+  });
+
   it("shows the API message of a 400 response", () => {
     const error = Object.assign(new Error("The file must be image/jpeg, image/png or image/webp."), { status: 400 });
-    expect(uploadErrorMessage(error, "fallback")).toBe("The file must be image/jpeg, image/png or image/webp.");
+    expect(uploadErrorMessage(error, "fallback", t)).toBe("The file must be image/jpeg, image/png or image/webp.");
   });
 
   it("uses the fallback for other failures", () => {
     const serverError = Object.assign(new Error("Internal Server Error"), { status: 500 });
-    expect(uploadErrorMessage(serverError, "fallback")).toBe("fallback");
-    expect(uploadErrorMessage(new TypeError("Failed to fetch"), "fallback")).toBe("fallback");
-    expect(uploadErrorMessage("boom", "fallback")).toBe("fallback");
+    expect(uploadErrorMessage(serverError, "fallback", t)).toBe("fallback");
+    expect(uploadErrorMessage(new TypeError("Failed to fetch"), "fallback", t)).toBe("fallback");
+    expect(uploadErrorMessage("boom", "fallback", t)).toBe("fallback");
   });
 
   it("uses the fallback for a 400 response without a message", () => {
-    expect(uploadErrorMessage(Object.assign(new Error(""), { status: 400 }), "fallback")).toBe("fallback");
+    expect(uploadErrorMessage(Object.assign(new Error(""), { status: 400 }), "fallback", t)).toBe("fallback");
   });
 });
