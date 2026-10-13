@@ -1,10 +1,10 @@
 ---
 id: TASK-2.6
 title: SOPS and age secret management with KSOPS
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-06-03 16:01'
-updated_date: '2026-10-13 12:15'
+updated_date: '2026-10-13 12:26'
 labels:
   - infra
   - secrets
@@ -14,8 +14,9 @@ milestone: m-0
 dependencies:
   - TASK-2.1
 references:
+  - tools/check-secret-manifests.py
   - .sops.yaml
-  - tools/check-no-plaintext-secrets.mjs
+  - .github/workflows/ci.yml
 parent_task_id: TASK-2
 priority: high
 ordinal: 8000
@@ -40,7 +41,7 @@ decrypted in Argo CD via the **KSOPS** plugin (ADR-0010).
   into CI).
 
 ### Verifying artifact
-- `.sops.yaml` + `tools/check-no-plaintext-secrets` + CI job `secrets-scan`.
+- `.sops.yaml` + `tools/check-secret-manifests.py` + the SOPS and KSOPS round-trip + CI job `secrets-scan` (with gitleaks).
 <!-- SECTION:DESCRIPTION:END -->
 
 ## Acceptance Criteria
@@ -86,3 +87,32 @@ decrypted in Argo CD via the **KSOPS** plugin (ADR-0010).
 - `infra/README.md`: age key generation, public key into `.sops.yaml`, private key into the
   cluster secret and the password manager, rotation.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### Implemented
+- `tools/check-secret-manifests.py`: fails on any tracked Kubernetes Secret in YAML or JSON whose
+  `data` or `stringData` is not SOPS-encrypted (also duplicate mapping keys), naming the file.
+- `.sops.yaml`: the only active creation rule covers the public CI fixture, encrypted with a
+  committed test-only age key (gitleaks allowlist limited to that key file). The rules for real
+  secrets (`apps/` and `clusters/` `*.sops.yaml` with `data`/`stringData`, `infra/` `*.sops.*`) are
+  documented in `infra/README.md` and are added with the operator public key.
+- Round-trip test: decrypt the fixture with the test key, validate it, render it through KSOPS;
+  a missing key is rejected; recipient isolation tested.
+- Argo CD: `install-argocd.sh` applies a kustomization (upstream v3.5.5 plus KSOPS v4.5.1, init
+  container pinned by digest, Kustomize flags `--enable-alpha-plugins --enable-exec`, optional
+  mount of secret `sops-age` with `SOPS_AGE_KEY_FILE`); the repo server starts without the secret.
+- CI `secrets-scan` runs the guard, the round-trip and gitleaks.
+
+### Verified by the agent (Codex)
+- Guard red with a plaintext fixture, then 137 tracked YAML/JSON files OK; 12 tests OK; KSOPS
+  render; manifests 29 valid; app tier validate and guardrails; gitleaks over tracked files and
+  the full history without findings.
+
+### Operator checks
+- Generate the age key, give the public key (`age1...`) to the agent for `.sops.yaml`, keep
+  `keys.txt` in the password manager.
+- After the app tier bootstrap: create the secret `sops-age` in `argocd` on the node, restart the
+  repo server, reconcile an encrypted manifest (AC #3).
+<!-- SECTION:NOTES:END -->
