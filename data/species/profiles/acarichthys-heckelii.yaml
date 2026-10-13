@@ -1,0 +1,3642 @@
+schemaVersion: 1
+id: acarichthys-heckelii
+legacyIds:
+- 595
+status: described
+taxonomy:
+  validName: Acarichthys heckelii
+  genus: Acarichthys
+  species: heckelii
+  author: "(Müller & Troschel, 1849)"
+  source:
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes: species of Acarichthys, updated 21 September 2026"
+    url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Acarichthys"
+    accessed: '2026-10-13'
+  synonyms:
+  - name: Acara heckelii
+    note: Original generic combination.
+  - name: Acara subocularis
+    note: Junior synonym in the Catalog of Fishes.
+  - name: Geophagus thayeri
+    note: Junior synonym in the Catalog of Fishes.
+  legacyNames:
+  - Acarichthys heckelii
+  note: "The Catalog confirms the valid legacy combination and authorship in 1849. Acara heckelii is the original\
+    \ combination; Acara subocularis and Geophagus thayeri are junior synonyms. Checker-a includes authors and years\
+    \ in its synonym strings; the other runs use bare names, which are retained consistently here. CRC displays\
+    \ 1848 in its heading but cites the 1849 original publication; the Catalog takes priority. The Singapore ecology\
+    \ paper DOI 10.1007/s10641-013-0201-z was unavailable through the permitted open-access route in the input research\
+    \ and supplies no full-text evidence."
+names:
+  trade:
+    en:
+    - Threadfin acara
+    - Heckel's threadfin acara
+    de:
+    - Heckels Buntbarsch
+    pt-BR:
+    - Acará amarelo
+    - Acará heckelii
+variants:
+- name: Albino
+  kind: color-morph
+  note: "Established captive form with a pale body and warm-colored fins, documented by Imperial Tropicals. No separately\
+    \ named locality form was sufficiently substantiated in the accessible research."
+features:
+  origin:
+    value:
+      continent: South America
+      region: "Amazon basin, lower Tocantins and Capim systems, and Essequibo drainage of Guyana, with additional\
+        \ Suriname records"
+      waterbody: null
+      localities:
+      - Amazon main channel and floodplains
+      - Lower Negro River
+      - Branco River
+      - Lower Xingu River
+      - Lower Trombetas River
+      - Lower Putumayo River
+      - Lower Tapajos River
+      - Lower Tocantins and Capim rivers
+      - Essequibo basin in Guyana
+      - Suriname rivers
+    confidence: high
+    rationale: "The four origin proposals describe the same Amazon and Essequibo core range but list different tributaries.\
+      \ The Catalog controls the native-range identification; FishBase and Seriously Fish supply the lower Tocantins,\
+      \ Capim and Branco detail, while the ICMBio assessment independently adds Tapajos and Suriname records. These\
+      \ locality lists are merged rather than treated as mutually exclusive. Singapore is introduced and contributes\
+      \ no native-water values."
+    sources:
+    - kind: catalog-of-fishes
+      title: "Eschmeyer's Catalog of Fishes: species of Acarichthys, updated 21 September 2026"
+      url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Acarichthys"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Gay (2009). Habitat Expert: Acarichthys heckeli. Practical Fishkeeping, November 2009"
+      url: "https://www.practicalfishkeeping.co.uk/features/habitat-expert-acarichthys-heckeli/"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "ICMBio SALVE: Ficha de Acarichthys heckelii"
+      url: "https://doi.org/10.37002/salve.ficha.35110.2"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "FishBase: Acarichthys heckelii species summary"
+      url: "https://www.fishbase.se/summary/Acarichthys-heckelii.html"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Seriously Fish: Acarichthys heckelii"
+      url: "https://www.seriouslyfish.com/species/acarichthys-heckelii/"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: species of Acarichthys, updated 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Acarichthys"
+        accessed: '2026-10-13'
+      value:
+        continent: South America
+        region: Amazon and Essequibo basins
+      note: Native distribution.
+    - source:
+        kind: database
+        title: "FishBase: Acarichthys heckelii species summary"
+        url: "https://www.fishbase.se/summary/Acarichthys-heckelii.html"
+        accessed: '2026-10-13'
+      value:
+        continent: South America
+        region: "Amazon, lower Tocantins and Essequibo systems"
+      note: "Named tributaries, with Branco extending into Guyana."
+    - source:
+        kind: database
+        title: "Seriously Fish: Acarichthys heckelii"
+        url: "https://www.seriouslyfish.com/species/acarichthys-heckelii/"
+        accessed: '2026-10-13'
+      value:
+        continent: South America
+        region: Northern Amazon basin and Essequibo drainage
+      note: Includes lowland floodplain habitat
+  temperatureC:
+    value:
+      min: 26
+      max: 32
+    confidence: low
+    rationale: "The tally requires a median decision of 26 to 32 C with 2 of 6 votes agreeing and low confidence.\
+      \ Generator and checker-b proposed 28 to 32 C; checker-a 25 to 29.5 C; checker-c 26.5 to 32 C; tiebreaker-1\
+      \ 25 to 32 C; and tiebreaker-2 25 to 30 C. The median lower bound is 25.75 C, rounded to 26, and the median\
+      \ upper bound is 32 C. This statistical synthesis is not a pair of directly observed species endpoints. Gay\
+      \ observed occupied Negro margins at 28 to 30 C; Frois measured 25.2 to 29.4 C across a stream network that\
+      \ included the species; Brito measured seasonal layer means of 28.3 to 31.7 C. Prado reported the wider pooled\
+      \ range of 28.2 to 32.9 C, but captures of this species were confined to flooding and cannot be matched to\
+      \ the hottest reading. Affonso reported an even wider regional range of 26.5 to 34.7 C without confirming\
+      \ this species at those stations. Neither warmer extreme is a proven species exposure, and the selected lower\
+      \ bound omits some cooler surveyed water. FishBase 23 to 26 C comes from an aquarium atlas and is excluded\
+      \ as field evidence."
+    sources:
+    - kind: catalog-of-fishes
+      title: "Eschmeyer's Catalog of Fishes: Acarichthys, updated 21 September 2026."
+      url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Acarichthys"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Gay (2009). Habitat Expert: Acarichthys heckeli. Practical Fishkeeping, November 2009"
+      url: "https://www.practicalfishkeeping.co.uk/features/habitat-expert-acarichthys-heckeli/"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Brito et al. (2014). Seasonal and spatial variations in limnological conditions of a floodplain lake\
+        \ (Lake Catalao) connected to both the Solimoes and Negro Rivers, Central Amazonia. Table 2"
+      url: "https://doi.org/10.1590/s0044-59672014000100012"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Fish fauna of small-order streams of savannah and forest fragments landscape in the lower Tapajós\
+        \ River basin, Amazonia (Biota Neotropica 21)"
+      url: "https://doi.org/10.1590/1676-0611-bn-2020-1179"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: Oltman (1968). Reconnaissance investigations of the discharge and water quality of the Amazon River.
+        USGS Circular 552
+      url: "https://doi.org/10.3133/cir552"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Affonso et al. (2011). Limnological characterization of floodplain lakes in Mamiraua Sustainable Development\
+        \ Reserve, Central Amazon"
+      url: "https://doi.org/10.4322/actalb.2011.023"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Caraballo et al. (2014). Diel patterns of temperature, conductivity and dissolved oxygen in an Amazon\
+        \ floodplain lake: description of a friagem phenomenon"
+      url: "https://doi.org/10.1590/s2179-975x2014000300011"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: Prado et al. (2009). Fish communities associated with different aquatic macrophytes shoals in varzea
+        lakes in the lower Solimoes River
+      url: "https://doi.org/10.24188/recia.v1.n2.2009.354"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Evaluation of fisheries management strategies using a biotic integrity index in floodplain lakes in\
+        \ the lower Solimoes River, Amazonas, Brazil (2022)"
+      url: "https://doi.org/10.1590/1809-4392202201461"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "FishBase: Acarichthys heckelii species summary"
+      url: "https://www.fishbase.se/summary/Acarichthys-heckelii.html"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: literature
+        title: "Gay (2009). Habitat Expert: Acarichthys heckeli. Practical Fishkeeping, November 2009"
+        url: "https://www.practicalfishkeeping.co.uk/features/habitat-expert-acarichthys-heckeli/"
+        accessed: '2026-10-13'
+      value:
+        min: 28
+        max: 30
+      note: Direct observation and collection of the species in shallow Rio Negro margins and pools.
+    - source:
+        kind: literature
+        title: "Brito et al. (2014). Seasonal and spatial variations in limnological conditions of a floodplain\
+          \ lake (Lake Catalao) connected to both the Solimoes and Negro Rivers, Central Amazonia. Table 2"
+        url: "https://doi.org/10.1590/s0044-59672014000100012"
+        accessed: '2026-10-13'
+      value:
+        min: 28.3
+        max: 31.7
+      note: "Range of seasonal mean bottom and surface water temperatures, Table 2; regional proxy rather than a\
+        \ species capture measurement."
+    - source:
+        kind: literature
+        title: "Fish fauna of small-order streams of savannah and forest fragments landscape in the lower Tapajós\
+          \ River basin, Amazonia (Biota Neotropica 21)"
+        url: "https://doi.org/10.1590/1676-0611-bn-2020-1179"
+        accessed: '2026-10-13'
+      value:
+        min: 25.2
+        max: 29.4
+      note: Field measurements in 13 streams where the species occurred.
+    - source:
+        kind: literature
+        title: Oltman (1968). Reconnaissance investigations of the discharge and water quality of the Amazon River.
+          USGS Circular 552
+        url: "https://doi.org/10.3133/cir552"
+        accessed: '2026-10-13'
+      value:
+        min: 28.3
+        max: 30
+      note: "Table 3, Amazon River at Obidos, sampled in July and November 1963 and August 1964; Fahrenheit converted\
+        \ to Celsius."
+    - source:
+        kind: literature
+        title: "Affonso et al. (2011). Limnological characterization of floodplain lakes in Mamiraua Sustainable\
+          \ Development Reserve, Central Amazon"
+        url: "https://doi.org/10.4322/actalb.2011.023"
+        accessed: '2026-10-13'
+      value:
+        min: 26.5
+        max: 34.7
+      note: Measured surface range across flood and drought campaigns near Tefe; species presence at individual
+        stations was not established
+    - source:
+        kind: literature
+        title: "Caraballo et al. (2014). Diel patterns of temperature, conductivity and dissolved oxygen in an Amazon\
+          \ floodplain lake: description of a friagem phenomenon"
+        url: "https://doi.org/10.1590/s2179-975x2014000300011"
+        accessed: '2026-10-13'
+      value:
+        min: 27.8
+        max: 32
+      note: Catalao measurements include a 27.8 C mixed water column and 32 C surface maximum; regional habitat
+        proxy
+    - source:
+        kind: literature
+        title: Prado et al. (2009). Fish communities associated with different aquatic macrophytes shoals in varzea
+          lakes in the lower Solimoes River
+        url: "https://doi.org/10.24188/recia.v1.n2.2009.354"
+        accessed: '2026-10-13'
+      value:
+        min: 28.2
+        max: 32.9
+      note: Measured surface water across five native floodplain lakes in flood and dry seasons; three fish were
+        recorded during flooding only.
+    - source:
+        kind: database
+        title: "FishBase: Acarichthys heckelii"
+        url: "https://www.fishbase.se/summary/Acarichthys-heckelii.html"
+        accessed: '2026-10-13'
+      value:
+        min: 23
+        max: 26
+      note: "Climate-zone entry taken from an aquarium handbook, not a field measurement."
+    - source:
+        kind: literature
+        title: "Evaluation of fisheries management strategies using a biotic integrity index in floodplain lakes\
+          \ in the lower Solimoes River, Amazonas, Brazil (2022)"
+        url: "https://doi.org/10.1590/1809-4392202201461"
+        accessed: '2026-10-13'
+      value:
+        min: 25.8
+        max: 29.4
+      note: Range of lake means in Table 2; not absolute extrema or temperatures matched to individual captures.
+    tolerance:
+      value:
+        min: 24
+        max: 32
+      confidence: low
+      rationale: "The tally fixes 24 to 32 C by qualified majority, 4 of 6 votes, with low confidence. Generator,\
+        \ checker-b, checker-c and tiebreaker-1 proposed 24 to 32 C; checker-a 24 to 29.5 C; tiebreaker-2 24 to\
+        \ 30 C. Seriously Fish supports 24 to 30 C, Fishkeeper 24 to 29 C, AquariumDomain about 25.6 to 30 C, AquaInfo\
+        \ 23 to 26 C and the Nordic register 23 to 30 C. The selected lower bound excludes the cooler 23 C recommendations\
+        \ because broader corroboration begins at 24 C. The upper bound is provisionally extended to contain the\
+        \ decided natural range; no cited source demonstrates healthy aquarium maintenance for years at 32 C. Prado\
+        \ pooled field readings reach 32.9 C, a wider source range, but do not establish long-term aquarium health\
+        \ or this species at the maximum. About 26 to 29 C has stronger routine support than either outer endpoint."
+      sources:
+      - kind: literature
+        title: "Brito et al. (2014). Seasonal and spatial variations in limnological conditions of a floodplain\
+          \ lake (Lake Catalao) connected to both the Solimoes and Negro Rivers, Central Amazonia. Table 2"
+        url: "https://doi.org/10.1590/s0044-59672014000100012"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Frois et al. (2021). Fish fauna of small-order streams of savannah and forest fragments landscape\
+          \ in the lower Tapajos River basin, Amazonia"
+        url: "https://doi.org/10.1590/1676-0611-bn-2020-1179"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Prado et al. (2009). Fish communities associated with different aquatic macrophytes shoals in varzea
+          lakes in the lower Solimoes River
+        url: "https://doi.org/10.24188/recia.v1.n2.2009.354"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Acarichthys heckelii"
+        url: "https://www.seriouslyfish.com/species/acarichthys-heckelii/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Fish.Net: Thread-finned cichlid care guide"
+        url: "https://en.aqua-fish.net/fish/thread-finned-cichlid"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "AquaInfo: Acarichthys heckelii"
+        url: "https://aquainfo.nl/en/article/acarichthys-heckelii/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "AquariumDomain: Threadfin Geophagus, Acarichthys heckelii."
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/ThreadfinGeophagus.shtml"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordic Cichlid Society species register: Acarichthys heckelii."
+        url: "https://ciklid.org/artregister/art.php?ID=179"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Maidenhead Aquatics Fishkeeper: Threadfin Acara"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/threadfin-acara"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Aquatic Arts: Threadfin Acara Cichlid, tank-bred care sheet"
+        url: "https://aquaticarts.com/products/threadfin-acara-cichlid"
+        accessed: '2026-10-13'
+      evidence:
+      - source:
+          kind: literature
+          title: "Brito et al. (2014). Seasonal and spatial variations in limnological conditions of a floodplain\
+            \ lake (Lake Catalao) connected to both the Solimoes and Negro Rivers, Central Amazonia. Table 2"
+          url: "https://doi.org/10.1590/s0044-59672014000100012"
+          accessed: '2026-10-13'
+        value:
+          min: 28.3
+          max: 31.7
+        note: "Native-region temperatures support environmental plausibility, not a chronic tolerance experiment."
+      - source:
+          kind: literature
+          title: Prado et al. (2009). Fish communities associated with different aquatic macrophytes shoals in varzea
+            lakes in the lower Solimoes River
+          url: "https://doi.org/10.24188/recia.v1.n2.2009.354"
+          accessed: '2026-10-13'
+        value:
+          min: 28.2
+          max: 32.9
+        note: "Pooled native field measurements support a warm environment, but do not demonstrate long-term aquarium\
+          \ tolerance or species-specific extremes."
+      - source:
+          kind: database
+          title: "Seriously Fish: Acarichthys heckelii"
+          url: "https://www.seriouslyfish.com/species/acarichthys-heckelii/"
+          accessed: '2026-10-13'
+        value:
+          min: 24
+          max: 30
+        note: Aquarium maintenance range.
+      - source:
+          kind: database
+          title: "FishBase: Acarichthys heckelii"
+          url: "https://www.fishbase.se/summary/Acarichthys-heckelii.html"
+          accessed: '2026-10-13'
+        value:
+          min: 23
+          max: 26
+      - source:
+          kind: database
+          title: "Aqua-Fish.Net: Thread-finned cichlid care guide"
+          url: "https://en.aqua-fish.net/fish/thread-finned-cichlid"
+          accessed: '2026-10-13'
+        value:
+          min: 24
+          max: 28
+        note: Aquarium maintenance range
+      - source:
+          kind: database
+          title: "AquaInfo: Acarichthys heckelii"
+          url: "https://aquainfo.nl/en/article/acarichthys-heckelii/"
+          accessed: '2026-10-13'
+        value:
+          min: 23
+          max: 26
+        note: Aquarium recommendation that conflicts with the warmer field evidence.
+      - source:
+          kind: database
+          title: "AquariumDomain: Threadfin Geophagus, Acarichthys heckelii."
+          url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/ThreadfinGeophagus.shtml"
+          accessed: '2026-10-13'
+        value:
+          min: 25.6
+          max: 30
+        note: Routine aquarium range converted from 78 to 86 F; the separately described brief spawning stimulus
+          is excluded.
+      - source:
+          kind: database
+          title: "Nordic Cichlid Society species register: Acarichthys heckelii."
+          url: "https://ciklid.org/artregister/art.php?ID=179"
+          accessed: '2026-10-13'
+        value:
+          min: 23
+          max: 30
+        note: Species-specific husbandry range in the society's register.
+      - source:
+          kind: website
+          title: "Maidenhead Aquatics Fishkeeper: Threadfin Acara"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/threadfin-acara"
+          accessed: '2026-10-13'
+        value:
+          min: 24
+          max: 29
+        note: Aquarium maintenance range.
+      - source:
+          kind: website
+          title: "Aquatic Arts: Threadfin Acara Cichlid, tank-bred care sheet"
+          url: "https://aquaticarts.com/products/threadfin-acara-cichlid"
+          accessed: '2026-10-13'
+        value:
+          min: 24
+          max: 30
+        note: Tank-bred aquarium maintenance range.
+      verification:
+        method: qualified-majority
+        votes:
+          agree: 4
+          total: 6
+    verification:
+      method: median
+      votes:
+        agree: 2
+        total: 6
+  ph:
+    value:
+      min: 4.6
+      max: 8
+    confidence: low
+    rationale: "The tally fixes pH 4.6 to 8.0 by qualified majority, 4 of 6 votes, at low confidence. Generator\
+      \ proposed 4.0 to 7.5; checker-a 4.5 to 7.0; checker-b 4.6 to 7.9; checker-c 4.5 to 7.9; tiebreaker-1 4.5\
+      \ to 8.0; and tiebreaker-2 4.6 to 8.0. The agreeing bounds have medians of 4.55 and 7.95, rounded to one decimal.\
+      \ Welcomme compiles Rio Negro pH 4.6 to 5.2 and Silva records a lower Negro station mean of 4.62 plus a Solimoes\
+      \ observation of 7.86. Andrade records lake means of 7.5 to 8.0, with 8.06 in the text, and the species in\
+      \ all three management categories. Frois reports the wider acidic network range of 3.4 to 5.3, while the Rios-Villamizar\
+      \ review gives blackwater pH 4 to 5. These lower readings are not linked to individual captures, so the decided\
+      \ minimum does not represent the most acidic basin water. Lake means and regional station data establish a\
+      \ provisional habitat envelope rather than precise species-wide limits."
+    sources:
+    - kind: literature
+      title: Silva et al. (2019). A contribution to the hydrochemistry and water typology of the Amazon River and
+        its tributaries
+      url: "https://doi.org/10.14393/rcg207246295"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Brito et al. (2014). Seasonal and spatial variations in limnological conditions of a floodplain lake\
+        \ (Lake Catalao) connected to both the Solimoes and Negro Rivers, Central Amazonia"
+      url: "https://doi.org/10.1590/s0044-59672014000100012"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Aprile and Darwich (2013). Nutrients and water-forest interactions in an Amazon floodplain lake: an\
+        \ ecological approach"
+      url: "https://doi.org/10.1590/s2179-975x2013000200008"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Frois et al. (2021). Fish fauna of small-order streams of savannah and forest fragments landscape\
+        \ in the lower Tapajos River basin, Amazonia"
+      url: "https://doi.org/10.1590/1676-0611-bn-2020-1179"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Evaluation of fisheries management strategies using a biotic integrity index in floodplain lakes in\
+        \ the lower Solimoes River, Amazonas, Brazil (2022)"
+      url: "https://doi.org/10.1590/1809-4392202201461"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: Prado et al. (2009). Fish communities associated with different aquatic macrophytes shoals in varzea
+        lakes in the lower Solimoes River
+      url: "https://doi.org/10.24188/recia.v1.n2.2009.354"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Welcomme, R. L. (1985). River fisheries. FAO Fisheries Technical Paper 262, Table 2.7, Rio Negro measurements\
+        \ after Ungemach (1972)."
+      url: "https://www.fao.org/4/t0537e/T0537E02.htm"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Gay, J. (2009). Habitat Expert: Acarichthys heckeli. Practical Fishkeeping."
+      url: "https://www.practicalfishkeeping.co.uk/features/habitat-expert-acarichthys-heckeli/"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Rios-Villamizar et al. (2020). Hydrochemical classification of Amazonian rivers: a systematic review\
+        \ and meta-analysis"
+      url: "https://doi.org/10.14393/rcg217853272"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: Physicochemical features of Amazonian water typologies for water resources management (IOP Conf. Ser.
+        Earth Environ. Sci. 427)
+      url: "https://doi.org/10.1088/1755-1315/427/1/012003"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: literature
+        title: "Rios-Villamizar et al. (2020). Hydrochemical classification of Amazonian rivers: a systematic review\
+          \ and meta-analysis"
+        url: "https://doi.org/10.14393/rcg217853272"
+        accessed: '2026-10-13'
+      value:
+        min: 4
+        max: 5
+      note: Measured blackwater chemistry synthesized for the Negro system; no species-specific capture pairing.
+    - source:
+        kind: literature
+        title: "Brito et al. (2014). Seasonal and spatial variations in limnological conditions of a floodplain\
+          \ lake (Lake Catalao) connected to both the Solimoes and Negro Rivers, Central Amazonia. Table 2"
+        url: "https://doi.org/10.1590/s0044-59672014000100012"
+        accessed: '2026-10-13'
+      value:
+        min: 5.86
+        max: 7.47
+      note: Measured Catalao lake water; native-range floodplain analogue.
+    - source:
+        kind: literature
+        title: "Aprile and Darwich (2013). Nutrients and water-forest interactions in an Amazon floodplain lake:\
+          \ an ecological approach"
+        url: "https://doi.org/10.1590/s2179-975x2013000200008"
+        accessed: '2026-10-13'
+      value:
+        min: 4.5
+        max: 6.6
+      note: Mean horizontal pH gradient between Negro-facing and Solimoes-facing stations; separate sampling programme.
+    - source:
+        kind: literature
+        title: "Fish fauna of small-order streams of savannah and forest fragments landscape in the lower Tapajós\
+          \ River basin, Amazonia (Biota Neotropica 21)"
+        url: "https://doi.org/10.1590/1676-0611-bn-2020-1179"
+        accessed: '2026-10-13'
+      value:
+        min: 3.4
+        max: 5.3
+      note: Field measurements in streams where the species occurred.
+    - source:
+        kind: literature
+        title: Physicochemical features of Amazonian water typologies for water resources management (IOP Conf.
+          Ser. Earth Environ. Sci. 427)
+        url: "https://doi.org/10.1088/1755-1315/427/1/012003"
+        accessed: '2026-10-13'
+      value:
+        min: 4
+        max: 7
+      note: "Blackwater 4 to 5, clearwater 6 to 7, whitewater above 6.5; habitat types of the species, not site\
+        \ data."
+    - source:
+        kind: literature
+        title: Silva et al. (2019). A contribution to the hydrochemistry and water typology of the Amazon River
+          and its tributaries
+        url: "https://doi.org/10.14393/rcg207246295"
+        accessed: '2026-10-13'
+      value:
+        min: 4.62
+        max: 7.86
+      note: Lower Negro at Manaus to Amazon mainstem near Manaus; not the extrema of every tributary in the basin.
+    - source:
+        kind: literature
+        title: Prado et al. (2009). Fish communities associated with different aquatic macrophytes shoals in varzea
+          lakes in the lower Solimoes River
+        url: "https://doi.org/10.24188/recia.v1.n2.2009.354"
+        accessed: '2026-10-13'
+      value:
+        min: 5.8
+        max: 7.3
+      note: Measured surface pH across five Solimoes floodplain lakes and two seasons; the species was recorded
+        only during flooding.
+    - source:
+        kind: literature
+        title: "Welcomme, R. L. (1985). River fisheries. FAO Fisheries Technical Paper 262, Table 2.7, Rio Negro\
+          \ measurements after Ungemach (1972)."
+        url: "https://www.fao.org/4/t0537e/T0537E02.htm"
+        accessed: '2026-10-13'
+      value:
+        min: 4.6
+        max: 5.2
+      note: Measured regional Rio Negro blackwater chemistry; not readings taken beside identified specimens.
+    - source:
+        kind: literature
+        title: "Evaluation of fisheries management strategies using a biotic integrity index in floodplain lakes\
+          \ in the lower Solimoes River, Amazonas, Brazil (2022)"
+        url: "https://doi.org/10.1590/1809-4392202201461"
+        accessed: '2026-10-13'
+      value:
+        min: 7.5
+        max: 8
+      note: Lake means in Table 2; text gives 8.06 for Baixo. Species occurrence is grouped by management category.
+    tolerance:
+      value:
+        min: 4.5
+        max: 8
+      confidence: low
+      rationale: "The tally fixes pH 4.5 to 8.0 by qualified majority, 5 of 6 votes, with low confidence. Generator\
+        \ proposed the wider 4.0 to 8.0 interval; checker-a, checker-c and tiebreaker-1 proposed 4.5 to 8.0; checker-b\
+        \ and tiebreaker-2 4.6 to 8.0. The agreeing lower bounds have median 4.5. Seriously Fish recommends 6 to\
+        \ 8, Fishkeeper 6 to 7.2, AquariumDomain 5.5 to 7.5, AquaInfo 6.5 to 7 and the Nordic register 5.7 to 7.5.\
+        \ The acidic extension contains the decided natural range and reflects regional occurrence rather than demonstrated\
+        \ multi-year aquarium outcomes. The wider Frois network range of 3.4 to 5.3 and Rios-Villamizar blackwater\
+        \ range of 4 to 5 cannot establish chronic maintenance at their minima. Mildly acidic water around pH 6\
+        \ to 7.2 is better supported for routine care."
+      sources:
+      - kind: literature
+        title: Silva et al. (2019). A contribution to the hydrochemistry and water typology of the Amazon River
+          and its tributaries
+        url: "https://doi.org/10.14393/rcg207246295"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Frois et al. (2021). Fish fauna of small-order streams of savannah and forest fragments landscape\
+          \ in the lower Tapajos River basin, Amazonia"
+        url: "https://doi.org/10.1590/1676-0611-bn-2020-1179"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Evaluation of fisheries management strategies using a biotic integrity index in floodplain lakes\
+          \ in the lower Solimoes River, Amazonas, Brazil (2022)"
+        url: "https://doi.org/10.1590/1809-4392202201461"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Welcomme, R. L. (1985). River fisheries. FAO Fisheries Technical Paper 262, Table 2.7, Rio Negro\
+          \ measurements after Ungemach (1972)."
+        url: "https://www.fao.org/4/t0537e/T0537E02.htm"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Rios-Villamizar et al. (2020). Hydrochemical classification of Amazonian rivers: a systematic review\
+          \ and meta-analysis"
+        url: "https://doi.org/10.14393/rcg217853272"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Acarichthys heckelii"
+        url: "https://www.seriouslyfish.com/species/acarichthys-heckelii/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "AquariumDomain: Threadfin Geophagus species profile"
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/ThreadfinGeophagus.shtml"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Fish.Net: Thread-finned cichlid care guide"
+        url: "https://en.aqua-fish.net/fish/thread-finned-cichlid"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "AquaInfo: Acarichthys heckelii"
+        url: "https://aquainfo.nl/en/article/acarichthys-heckelii/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordic Cichlid Society species register: Acarichthys heckelii."
+        url: "https://ciklid.org/artregister/art.php?ID=179"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Fishkeeper (Maidenhead Aquatics) data bank: Threadfin Acara"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/threadfin-acara"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Aquatic Arts: Threadfin Acara Cichlid, tank-bred care parameters"
+        url: "https://aquaticarts.com/products/threadfin-acara-cichlid"
+        accessed: '2026-10-13'
+      evidence:
+      - source:
+          kind: literature
+          title: "Rios-Villamizar et al. (2020). Hydrochemical classification of Amazonian rivers: a systematic\
+            \ review and meta-analysis"
+          url: "https://doi.org/10.14393/rcg217853272"
+          accessed: '2026-10-13'
+        value:
+          min: 4
+          max: 5
+        note: Native blackwater context only; does not prove multi-year aquarium tolerance.
+      - source:
+          kind: literature
+          title: Silva et al. (2019). A contribution to the hydrochemistry and water typology of the Amazon River
+            and its tributaries
+          url: "https://doi.org/10.14393/rcg207246295"
+          accessed: '2026-10-13'
+        value:
+          min: 4.62
+          max: 7.86
+        note: Regional field context only for the provisional lower endpoint.
+      - source:
+          kind: literature
+          title: "Frois et al. (2021). Fish fauna of small-order streams of savannah and forest fragments landscape\
+            \ in the lower Tapajos River basin, Amazonia"
+          url: "https://doi.org/10.1590/1676-0611-bn-2020-1179"
+          accessed: '2026-10-13'
+        value:
+          min: 3.4
+          max: 5.3
+        note: "Native network measurements, mean 4.5; habitat support for an acidic extension, not proof of multi-year\
+          \ aquarium health."
+      - source:
+          kind: database
+          title: "Seriously Fish: Acarichthys heckelii"
+          url: "https://www.seriouslyfish.com/species/acarichthys-heckelii/"
+          accessed: '2026-10-13'
+        value:
+          min: 6
+          max: 8
+        note: Aquarium care range.
+      - source:
+          kind: database
+          title: "AquariumDomain: Threadfin Geophagus species profile"
+          url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/ThreadfinGeophagus.shtml"
+          accessed: '2026-10-13'
+        value:
+          min: 5.5
+          max: 7.5
+        note: Aquarium care range.
+      - source:
+          kind: database
+          title: "Aqua-Fish.Net: Thread-finned cichlid care guide"
+          url: "https://en.aqua-fish.net/fish/thread-finned-cichlid"
+          accessed: '2026-10-13'
+        value:
+          min: 6.8
+          max: 7.2
+        note: Narrower maintenance recommendation
+      - source:
+          kind: database
+          title: "AquaInfo: Acarichthys heckelii"
+          url: "https://aquainfo.nl/en/article/acarichthys-heckelii/"
+          accessed: '2026-10-13'
+        value:
+          min: 6.5
+          max: 7
+        note: Aquarium recommendation.
+      - source:
+          kind: database
+          title: "Nordic Cichlid Society species register: Acarichthys heckelii."
+          url: "https://ciklid.org/artregister/art.php?ID=179"
+          accessed: '2026-10-13'
+        value:
+          min: 5.7
+          max: 7.5
+        note: Species-specific husbandry range; approximately pH 6 is discussed for breeding.
+      - source:
+          kind: website
+          title: "Maidenhead Aquatics Fishkeeper: Threadfin Acara"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/threadfin-acara"
+          accessed: '2026-10-13'
+        value:
+          min: 6
+          max: 7.2
+        note: Aquarium care range.
+      - source:
+          kind: website
+          title: "Aquatic Arts: Threadfin Acara Cichlid, tank-bred care parameters"
+          url: "https://aquaticarts.com/products/threadfin-acara-cichlid"
+          accessed: '2026-10-13'
+        value:
+          min: 6
+          max: 7.2
+        note: Tank-bred care range
+      verification:
+        method: qualified-majority
+        votes:
+          agree: 5
+          total: 6
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 4
+        total: 6
+  ghDgh:
+    value:
+      min: 0
+      max: 2
+    confidence: low
+    rationale: "The tally fixes 0 to 2 dGH with unanimous agreement under its 2 dGH comparison threshold, at low\
+      \ confidence. Generator and checker-b proposed 0 to 2; checker-a 0.5 to 3; and checker-c 0.1 to 2 dGH. Brito\
+      \ seasonal calcium and magnesium means convert to about 0.31 to 1.14 dGH, using Ca/7.14 + Mg/4.34 with concentrations\
+      \ in mg/L. Aprile and Darwich extrema give a bounding estimate of 0.80 to 1.67 dGH, and Oltman measured 12\
+      \ to 27 mg/L hardness as CaCO3, or 0.67 to 1.51 dGH. The FAO compilation independently gives 0.1 to 1.78 dGH\
+      \ in relevant regional waters. Zero is coarse rounding of very dilute water, not a measured absence of calcium\
+      \ or magnesium. Checker-a proposed the wider 0.5 to 3 interval partly from conductivity, which cannot independently\
+      \ determine GH; the measured-ion evidence supports the tally decision. These are regional proxies rather than\
+      \ contemporaneous capture-site hardness measurements. FishBase has an incomplete 18 dH entry without a usable\
+      \ field context."
+    sources:
+    - kind: literature
+      title: "Aprile and Darwich (2013). Nutrients and water-forest interactions in an Amazon floodplain lake: an\
+        \ ecological approach"
+      url: "https://doi.org/10.1590/s2179-975x2013000200008"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Brito et al. (2014). Seasonal and spatial variations in limnological conditions of a floodplain lake\
+        \ (Lake Catalao) connected to both the Solimoes and Negro Rivers, Central Amazonia. Table 2"
+      url: "https://doi.org/10.1590/s0044-59672014000100012"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Rios-Villamizar et al. (2020). Hydrochemical classification of Amazonian rivers: a systematic review\
+        \ and meta-analysis"
+      url: "https://doi.org/10.14393/rcg217853272"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Fish fauna of small-order streams of savannah and forest fragments landscape in the lower Tapajós\
+        \ River basin, Amazonia (Biota Neotropica 21)"
+      url: "https://doi.org/10.1590/1676-0611-bn-2020-1179"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: Physicochemical features of Amazonian water typologies for water resources management (IOP Conf. Ser.
+        Earth Environ. Sci. 427)
+      url: "https://doi.org/10.1088/1755-1315/427/1/012003"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: Oltman (1968). Reconnaissance investigations of the discharge and water quality of the Amazon River.
+        USGS Circular 552
+      url: "https://doi.org/10.3133/cir552"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "FAO: The inland waters of Latin America, Amazon chemistry table after Sioli (1975)"
+      url: "https://www.fao.org/4/ad770b/AD770B05.htm"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "FishBase: Acarichthys heckelii species summary"
+      url: "https://www.fishbase.se/summary/Acarichthys-heckelii.html"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: literature
+        title: "Aprile and Darwich (2013). Nutrients and water-forest interactions in an Amazon floodplain lake:\
+          \ an ecological approach"
+        url: "https://doi.org/10.1590/s2179-975x2013000200008"
+        accessed: '2026-10-13'
+      value:
+        min: 0.8
+        max: 1.67
+      note: "Calculated from reported Ca/Mg extrema; bounding calculation, not paired GH titrations."
+    - source:
+        kind: literature
+        title: Oltman (1968). Reconnaissance investigations of the discharge and water quality of the Amazon River.
+          USGS Circular 552
+        url: "https://doi.org/10.3133/cir552"
+        accessed: '2026-10-13'
+      value:
+        min: 0.67
+        max: 1.51
+      note: Measured total hardness divided by 17.848 mg/L CaCO3 per dGH.
+    - source:
+        kind: literature
+        title: "FAO: The inland waters of Latin America, Amazon chemistry table after Sioli (1975)"
+        url: "https://www.fao.org/4/ad770b/AD770B05.htm"
+        accessed: '2026-10-13'
+      value:
+        min: 0.1
+        max: 1.78
+      note: "Measured hardness compilation across Amazon whitewater, Tapajos clearwater and Negro-associated waters"
+    - source:
+        kind: literature
+        title: "Brito et al. (2014). Seasonal and spatial variations in limnological conditions of a floodplain\
+          \ lake (Lake Catalao) connected to both the Solimoes and Negro Rivers, Central Amazonia. Table 2"
+        url: "https://doi.org/10.1590/s0044-59672014000100012"
+        accessed: '2026-10-13'
+      value:
+        min: 0.31
+        max: 1.14
+      note: "Calculated from paired seasonal layer Ca and Mg means in Table 2; regional proxy, not capture-site\
+        \ titrations."
+    tolerance:
+      value:
+        min: 0
+        max: 12
+      confidence: low
+      rationale: "The tally fixes 0 to 12 dGH with unanimous agreement under its comparison threshold and low confidence.\
+        \ Generator and checker-b proposed 0 to 12; checker-a 0.5 to 12; checker-c 0.1 to 12 dGH. Seriously Fish\
+        \ gives 1 to 12, FishFish 5 to 12, Aqua-Fish 6 to 12 and Zierfische-Direkt 4 to 12. Fishkeeper supplies\
+        \ the wider upper allowance of 15 dGH without a numerical lower limit; the more widely supported 12 dGH\
+        \ ceiling is retained as a cautious limit. The near-zero lower boundary is extended from regional natural\
+        \ chemistry and rounding, not from a controlled chronic aquarium trial. Different lower care-sheet recommendations\
+        \ do not prove physiological minima."
+      sources:
+      - kind: literature
+        title: "Aprile and Darwich (2013). Nutrients and water-forest interactions in an Amazon floodplain lake:\
+          \ an ecological approach"
+        url: "https://doi.org/10.1590/s2179-975x2013000200008"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Acarichthys heckelii"
+        url: "https://www.seriouslyfish.com/species/acarichthys-heckelii/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishFish: Acarichthys heckelii care profile"
+        url: "https://www.fishfish.fr/poisson/acarichthys-heckelii"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Fish.Net: Thread-finned cichlid care guide"
+        url: "https://en.aqua-fish.net/fish/thread-finned-cichlid"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Maidenhead Aquatics Fishkeeper: Threadfin Acara"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/threadfin-acara"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Zierfische-Direkt: Heckels Buntbarsch, Acarichthys heckelii care sheet"
+        url: "https://www.zierfische-direkt.de/heckels-buntbarsch-acarichthys-heckelii/"
+        accessed: '2026-10-13'
+      evidence:
+      - source:
+          kind: literature
+          title: "Aprile and Darwich (2013). Nutrients and water-forest interactions in an Amazon floodplain lake:\
+            \ an ecological approach"
+          url: "https://doi.org/10.1590/s2179-975x2013000200008"
+          accessed: '2026-10-13'
+        value:
+          min: 0.8
+          max: 1.67
+        note: "Calculated natural-region GH, not chronic aquarium tolerance."
+      - source:
+          kind: database
+          title: "Seriously Fish: Acarichthys heckelii"
+          url: "https://www.seriouslyfish.com/species/acarichthys-heckelii/"
+          accessed: '2026-10-13'
+        value:
+          min: 1
+          max: 12
+        note: Aquarium hardness range.
+      - source:
+          kind: database
+          title: "FishFish: Acarichthys heckelii care profile"
+          url: "https://www.fishfish.fr/poisson/acarichthys-heckelii"
+          accessed: '2026-10-13'
+        value:
+          min: 5
+          max: 12
+        note: Species-specific maintenance interval.
+      - source:
+          kind: database
+          title: "Aqua-Fish.Net: Thread-finned cichlid care guide"
+          url: "https://en.aqua-fish.net/fish/thread-finned-cichlid"
+          accessed: '2026-10-13'
+        value:
+          min: 6
+          max: 12
+        note: German hardness care range; this narrower recommendation does not establish a physiological lower
+          limit
+      - source:
+          kind: website
+          title: "Zierfische-Direkt: Heckels Buntbarsch, Acarichthys heckelii care sheet"
+          url: "https://www.zierfische-direkt.de/heckels-buntbarsch-acarichthys-heckelii/"
+          accessed: '2026-10-13'
+        value:
+          min: 4
+          max: 12
+        note: Species-specific maintenance interval.
+      - source:
+          kind: website
+          title: "Maidenhead Aquatics Fishkeeper: Threadfin Acara"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/threadfin-acara"
+          accessed: '2026-10-13'
+        value:
+          max: 15
+        note: Published upper allowance only; no numerical lower limit or chronic trial is supplied.
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  khDkh:
+    value:
+      min: 0
+      max: 3
+    confidence: low
+    rationale: "The tally fixes the natural range at 0 to 3 dKH with low confidence; this plain fact deliberately\
+      \ has no verification object. Generator and checker-b proposed 0 to 3; checker-a 0.5 to 2.5; and checker-c\
+      \ 0 to 2 dKH. Brito seasonal bicarbonate means span 12.2 to 58.4 mg/L, equivalent to 0.56 to 2.68 dKH using\
+      \ HCO3/21.8. Oltman bicarbonate measurements give 0.73 to 1.47 dKH, and Camara dos Reis measured Curuai alkalinity\
+      \ corresponding to 0.61 to 1.26 dKH. Caraballo compiles Negro alkalinity below 0.05 meq/L and Solimoes 0.5\
+      \ to 0.6 meq/L, or below 0.14 and 1.4 to 1.68 dKH. Regional low buffering plus outward rounding supports the\
+      \ selected envelope. Zero denotes negligible buffering at this resolution. GH and conductivity were not converted\
+      \ into KH, and the studies do not establish every endpoint at an occupied site."
+    sources:
+    - kind: literature
+      title: "Brito et al. (2014). Seasonal and spatial variations in limnological conditions of a floodplain lake\
+        \ (Lake Catalao) connected to both the Solimoes and Negro Rivers, Central Amazonia. Table 2"
+      url: "https://doi.org/10.1590/s0044-59672014000100012"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: Camara dos Reis et al. (2019). Spatial heterogeneity and hydrological fluctuations drive bacterioplankton
+        community composition in an Amazon floodplain system. Table 1
+      url: "https://doi.org/10.1371/journal.pone.0220695"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Aprile and Darwich (2013). Nutrients and water-forest interactions in an Amazon floodplain lake: an\
+        \ ecological approach"
+      url: "https://doi.org/10.1590/s2179-975x2013000200008"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: Physicochemical features of Amazonian water typologies for water resources management (IOP Conf. Ser.
+        Earth Environ. Sci. 427)
+      url: "https://doi.org/10.1088/1755-1315/427/1/012003"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: Oltman (1968). Reconnaissance investigations of the discharge and water quality of the Amazon River.
+        USGS Circular 552
+      url: "https://doi.org/10.3133/cir552"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Caraballo et al. (2014). Diel patterns of temperature, conductivity and dissolved oxygen in an Amazon\
+        \ floodplain lake: description of a friagem phenomenon"
+      url: "https://doi.org/10.1590/s2179-975x2014000300011"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: literature
+        title: Camara dos Reis et al. (2019). Spatial heterogeneity and hydrological fluctuations drive bacterioplankton
+          community composition in an Amazon floodplain system. Table 1
+        url: "https://doi.org/10.1371/journal.pone.0220695"
+        accessed: '2026-10-13'
+      value:
+        min: 0.61
+        max: 1.26
+      note: Converted field minima and maxima for Curuai; original unit mg/L CaCO3. Occupancy by this fish was not
+        established.
+    - source:
+        kind: literature
+        title: Oltman (1968). Reconnaissance investigations of the discharge and water quality of the Amazon River.
+          USGS Circular 552
+        url: "https://doi.org/10.3133/cir552"
+        accessed: '2026-10-13'
+      value:
+        min: 0.73
+        max: 1.47
+      note: Table 3 bicarbonate concentrations converted to dKH.
+    - source:
+        kind: literature
+        title: "Caraballo et al. (2014). Diel patterns of temperature, conductivity and dissolved oxygen in an Amazon\
+          \ floodplain lake: description of a friagem phenomenon"
+        url: "https://doi.org/10.1590/s2179-975x2014000300011"
+        accessed: '2026-10-13'
+      value:
+        min: 0
+        max: 1.68
+      note: Compiled river alkalinity converted with dKH = meq/L x 2.8; Negro lower bound denotes negligible buffering
+    - source:
+        kind: literature
+        title: "Brito et al. (2014). Seasonal and spatial variations in limnological conditions of a floodplain\
+          \ lake (Lake Catalao) connected to both the Solimoes and Negro Rivers, Central Amazonia. Table 2"
+        url: "https://doi.org/10.1590/s0044-59672014000100012"
+        accessed: '2026-10-13'
+      value:
+        min: 0.56
+        max: 2.68
+      note: "Full range of seasonal layer bicarbonate means in Table 2, divided by 21.8; regional proxy."
+    tolerance:
+      value:
+        min: 0
+        max: 8
+      confidence: low
+      rationale: "The tally fixes 0 to 8 dKH with unanimous agreement under its 2 dKH comparison threshold and low\
+        \ confidence. Generator and checker-b proposed 0 to 7; checker-a 0.5 to 8; checker-c 0 to 8 dKH. Median\
+        \ agreeing maxima are 7.5, rounded to 8, and median minima are 0. AquariumDomain explicitly recommends 2\
+        \ to 7 dKH, Zierfische-Direkt 3 to 8 and Aquatic Arts the much wider 0 to 15 dKH interval. The decided upper\
+        \ limit is a cautious synthesis rather than adoption of the commercial 15 dKH ceiling. The lower endpoint\
+        \ includes negligible natural buffering. Checker-a inferred KH from GH and pH recommendations at Seriously\
+        \ Fish and Fishkeeper; those recommendations cannot determine KH and are retained only as husbandry context.\
+        \ Brito alkalinity measurements independently support the low-buffer habitat extension. No controlled multi-year\
+        \ species-specific KH limit was established."
+      sources:
+      - kind: literature
+        title: "Brito et al. (2014). Seasonal and spatial variations in limnological conditions of a floodplain\
+          \ lake (Lake Catalao) connected to both the Solimoes and Negro Rivers, Central Amazonia. Table 2"
+        url: "https://doi.org/10.1590/s0044-59672014000100012"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Camara dos Reis et al. (2019). Spatial heterogeneity and hydrological fluctuations drive bacterioplankton
+          community composition in an Amazon floodplain system. Table 1
+        url: "https://doi.org/10.1371/journal.pone.0220695"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Aprile and Darwich (2013). Nutrients and water-forest interactions in an Amazon floodplain lake:\
+          \ an ecological approach"
+        url: "https://doi.org/10.1590/s2179-975x2013000200008"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Physicochemical features of Amazonian water typologies for water resources management (IOP Conf.
+          Ser. Earth Environ. Sci. 427)
+        url: "https://doi.org/10.1088/1755-1315/427/1/012003"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Oltman (1968). Reconnaissance investigations of the discharge and water quality of the Amazon River.
+          USGS Circular 552
+        url: "https://doi.org/10.3133/cir552"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Caraballo et al. (2014). Diel patterns of temperature, conductivity and dissolved oxygen in an Amazon\
+          \ floodplain lake: description of a friagem phenomenon"
+        url: "https://doi.org/10.1590/s2179-975x2014000300011"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "AquariumDomain: Threadfin Geophagus species profile"
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/ThreadfinGeophagus.shtml"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Acarichthys heckelii"
+        url: "https://www.seriouslyfish.com/species/acarichthys-heckelii/"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Aquatic Arts: Threadfin Acara Cichlid, tank-bred care sheet"
+        url: "https://aquaticarts.com/products/threadfin-acara-cichlid"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Fishkeeper (Maidenhead Aquatics) data bank: Threadfin Acara"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/threadfin-acara"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Zierfische-Direkt: Heckels Buntbarsch, Acarichthys heckelii care sheet"
+        url: "https://www.zierfische-direkt.de/heckels-buntbarsch-acarichthys-heckelii/"
+        accessed: '2026-10-13'
+      evidence:
+      - source:
+          kind: literature
+          title: "Brito et al. (2014). Seasonal and spatial variations in limnological conditions of a floodplain\
+            \ lake (Lake Catalao) connected to both the Solimoes and Negro Rivers, Central Amazonia. Table 2"
+          url: "https://doi.org/10.1590/s0044-59672014000100012"
+          accessed: '2026-10-13'
+        value:
+          min: 0.56
+          max: 2.68
+        note: Native regional alkalinity converted from bicarbonate; supports low-buffer habitat context only and
+          is not a multi-year aquarium tolerance result.
+      - source:
+          kind: database
+          title: "AquariumDomain: Threadfin Geophagus species profile"
+          url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/ThreadfinGeophagus.shtml"
+          accessed: '2026-10-13'
+        value:
+          min: 2
+          max: 7
+        note: Aquarium recommendation.
+      - source:
+          kind: website
+          title: "Aquatic Arts: Threadfin Acara Cichlid, tank-bred care sheet"
+          url: "https://aquaticarts.com/products/threadfin-acara-cichlid"
+          accessed: '2026-10-13'
+        value:
+          min: 0
+          max: 15
+        note: "Broader commercial aquarium recommendation, not a controlled chronic trial."
+      - source:
+          kind: website
+          title: "Zierfische-Direkt: Heckels Buntbarsch, Acarichthys heckelii care sheet"
+          url: "https://www.zierfische-direkt.de/heckels-buntbarsch-acarichthys-heckelii/"
+          accessed: '2026-10-13'
+        value:
+          min: 3
+          max: 8
+        note: Independent structured care recommendation.
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+  maxSizeCm:
+    value:
+      male: 20
+      female: 20
+    confidence: medium
+    rationale: "Generator proposed males 23.5 cm and females 20 cm; checker-a, checker-b and checker-c proposed\
+      \ 20 cm for both sexes. FishFish explicitly lists 20 cm for each sex, while Aquatic Arts and FishBase provide\
+      \ an unsexed 20 cm aquarium or total-length figure. This supports a typical adult planning maximum of 20 cm\
+      \ without inventing a precise female reduction. Fishkeeper reports the larger unsexed maximum of 23.5 cm;\
+      \ Bednarczuk about 25 cm; AquariumDomain 25.4 cm; and Aqua-Fish the smaller usual interval ending at 13 cm.\
+      \ Those differing maxima and length conventions limit confidence. Seriously Fish 20 cm standard length ends\
+      \ at the tail base and is not equivalent to 20 cm total length. Larger adults remain possible."
+    sources:
+    - kind: literature
+      title: "Bednarczuk: A Survey of Eartheaters. Tropical Fish Hobbyist"
+      url: "https://www.tfhmagazine.com/articles/freshwater/a-survey-of-eartheaters-full-article"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Rechi (2021). Aquarismo Paulista: Acara Amarelo (Acarichthys heckelii)"
+      url: "https://www.aquarismopaulista.com/acarichthys-heckelii/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Seriously Fish: Acarichthys heckelii"
+      url: "https://www.seriouslyfish.com/species/acarichthys-heckelii/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "FishBase: Acarichthys heckelii"
+      url: "https://www.fishbase.se/summary/Acarichthys-heckelii.html"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "FishFish: Acarichthys heckelii care profile"
+      url: "https://www.fishfish.fr/poisson/acarichthys-heckelii"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Aqua-Fish.Net: Thread-finned cichlid care guide"
+      url: "https://en.aqua-fish.net/fish/thread-finned-cichlid"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Maidenhead Aquatics Fishkeeper: Threadfin Acara"
+      url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/threadfin-acara"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Aquatic Arts: Threadfin Acara Cichlid, tank-bred care sheet"
+      url: "https://aquaticarts.com/products/threadfin-acara-cichlid"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: literature
+        title: "Bednarczuk: A Survey of Eartheaters. Tropical Fish Hobbyist"
+        url: "https://www.tfhmagazine.com/articles/freshwater/a-survey-of-eartheaters-full-article"
+        accessed: '2026-10-13'
+      value:
+        male: 25
+        female: 25
+      note: "About 25 cm, unsexed; a larger published estimate."
+    - source:
+        kind: database
+        title: "Seriously Fish: Acarichthys heckelii"
+        url: "https://www.seriouslyfish.com/species/acarichthys-heckelii/"
+        accessed: '2026-10-13'
+      value:
+        male: 20
+        female: 20
+    - source:
+        kind: database
+        title: "FishBase: Acarichthys heckelii"
+        url: "https://www.fishbase.se/summary/Acarichthys-heckelii.html"
+        accessed: '2026-10-13'
+      value:
+        male: 20
+        female: 20
+    - source:
+        kind: database
+        title: "FishFish: Acarichthys heckelii care profile"
+        url: "https://www.fishfish.fr/poisson/acarichthys-heckelii"
+        accessed: '2026-10-13'
+      value:
+        male: 20
+        female: 20
+    - source:
+        kind: database
+        title: "Aqua-Fish.Net: Thread-finned cichlid care guide"
+        url: "https://en.aqua-fish.net/fish/thread-finned-cichlid"
+        accessed: '2026-10-13'
+      value:
+        male: 13
+        female: 13
+      note: Unsexed usual aquarium range ends at 13 cm; inconsistent with other adult sources
+    - source:
+        kind: website
+        title: "Maidenhead Aquatics Fishkeeper: Threadfin Acara"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/threadfin-acara"
+        accessed: '2026-10-13'
+      value:
+        male: 23.5
+        female: 23.5
+      note: "Unsexed maximum, shown for both sexes only because the source does not separate them."
+    - source:
+        kind: website
+        title: "Aquatic Arts: Threadfin Acara Cichlid, tank-bred care sheet"
+        url: "https://aquaticarts.com/products/threadfin-acara-cichlid"
+        accessed: '2026-10-13'
+      value:
+        male: 20
+        female: 20
+      note: Unsexed aquarium adult figure; no sex-specific maximum.
+  predation:
+    value: 1
+    confidence: medium
+    rationale: "All four voting runs propose level 1 and the tally requires unanimous 4 of 4 verification with medium\
+      \ confidence. Seriously Fish places likely fish prey near the rubric limit of 2 cm. Aquatic Arts independently\
+      \ warns about very small prey-sized companions, without measuring a cutoff. The Amazon beach diet study classifies\
+      \ the species as an insect-feeding benthic invertivore and does not report fish prey; FishBase juvenile records\
+      \ likewise show invertebrates and plant material. Those observations support low predatory specialization\
+      \ but cannot prove level 0 for all adults. Level 1 therefore describes opportunistic fry and very small fish\
+      \ consumption rather than regular consumption of larger mouth-sized fish."
+    sources:
+    - kind: literature
+      title: Trophic Fish Structure Along the Beaches of The Brazilian Amazon River (Rev. Gestão Social e Ambiental)
+      url: "https://doi.org/10.24857/rgsa.v18n2-053"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Seriously Fish: Acarichthys heckelii"
+      url: "https://www.seriouslyfish.com/species/acarichthys-heckelii/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "FishBase: food items reported for Acarichthys heckelii"
+      url: "https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=12584&genus=Acarichthys&species=heckelii"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Aquatic Arts: Threadfin Acara Cichlid, tank-bred care sheet"
+      url: "https://aquaticarts.com/products/threadfin-acara-cichlid"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Maidenhead Aquatics Fishkeeper: Threadfin Acara"
+      url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/threadfin-acara"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: database
+        title: "Seriously Fish: Acarichthys heckelii"
+        url: "https://www.seriouslyfish.com/species/acarichthys-heckelii/"
+        accessed: '2026-10-13'
+      value: 1
+      note: Explicit prey-size statement supports the rubric threshold of about 2 cm.
+    - source:
+        kind: website
+        title: "Aquatic Arts: Threadfin Acara Cichlid, tank-bred care sheet"
+        url: "https://aquaticarts.com/products/threadfin-acara-cichlid"
+        accessed: '2026-10-13'
+      value: 1
+      note: "Qualitative small-prey warning supports opportunistic risk; exact level is inferred, not measured by\
+        \ this sheet."
+    - source:
+        kind: literature
+        title: Trophic Fish Structure Along the Beaches of The Brazilian Amazon River (Rev. Gestão Social e Ambiental)
+        url: "https://doi.org/10.24857/rgsa.v18n2-053"
+        accessed: '2026-10-13'
+      value: 0
+      note: "No fish prey reported in the insect-dominated study samples. Level 0 is an inference about those samples,\
+        \ not proof that adults never eat small fish."
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  diet:
+    value:
+      type: omnivore
+      bloatSensitive: false
+      foods:
+      - Small omnivore pellets
+      - Insect larvae
+      - Artemia
+      - Daphnia
+      - Vegetable-containing prepared food
+    confidence: medium
+    rationale: "Generator, checker-a, checker-b and checker-c agree on omnivore and bloatSensitive false; the tally\
+      \ fixes their generator food list with unanimous 4 of 4 verification and medium confidence. Their lists respectively\
+      \ emphasize pellets, insect larvae, Artemia, Daphnia and vegetable-containing foods; larvae, other invertebrates,\
+      \ frozen foods and vegetables; invertebrates, plants, algae, detritus and mixed prepared food; and small invertebrates,\
+      \ larvae, prepared cichlid food and vegetables. FishBase ecology and juvenile food records, the ICMBio assessment\
+      \ and Seriously Fish support mixed animal and plant feeding. The Amazon beach study instead found an insect-dominated\
+      \ benthic-invertivore diet in its samples; that local feeding result does not negate the wider mixed records.\
+      \ CRC verifies insects and detritus only. The false bloat flag records no established species-specific high-protein\
+      \ syndrome and does not guarantee immunity from digestive disease."
+    sources:
+    - kind: literature
+      title: "ICMBio SALVE: Ficha de Acarichthys heckelii"
+      url: "https://doi.org/10.37002/salve.ficha.35110.2"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: Trophic Fish Structure Along the Beaches of The Brazilian Amazon River (Rev. Gestão Social e Ambiental)
+      url: "https://doi.org/10.24857/rgsa.v18n2-053"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Rechi (2021). Aquarismo Paulista: Acara Amarelo (Acarichthys heckelii)"
+      url: "https://www.aquarismopaulista.com/acarichthys-heckelii/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Cichlid Room Companion: Acarichthys heckelii, public verification summary"
+      url: "https://cichlidae.com/species.php?id=i4PFCO6q96O9fRPgCNK2Lg"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Seriously Fish: Acarichthys heckelii"
+      url: "https://www.seriouslyfish.com/species/acarichthys-heckelii/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "FishBase: ecology of Acarichthys heckelii"
+      url: "https://www.fishbase.se/Ecology/FishEcologySummary.php?StockCode=12584&GenusName=Acarichthys&SpeciesName=heckelii"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "FishBase: food items reported for Acarichthys heckelii"
+      url: "https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=12584&genus=Acarichthys&species=heckelii"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "AquariumDomain: Threadfin Geophagus species profile"
+      url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/ThreadfinGeophagus.shtml"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Maidenhead Aquatics Fishkeeper: Threadfin Acara"
+      url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/threadfin-acara"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Aquatic Arts: Threadfin Acara Cichlid, tank-bred care sheet"
+      url: "https://aquaticarts.com/products/threadfin-acara-cichlid"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: literature
+        title: "ICMBio SALVE: Ficha de Acarichthys heckelii"
+        url: "https://doi.org/10.37002/salve.ficha.35110.2"
+        accessed: '2026-10-13'
+      value:
+        type: omnivore
+    - source:
+        kind: literature
+        title: Trophic Fish Structure Along the Beaches of The Brazilian Amazon River (Rev. Gestão Social e Ambiental)
+        url: "https://doi.org/10.24857/rgsa.v18n2-053"
+        accessed: '2026-10-13'
+      value:
+        type: invertivore
+      note: Benthic invertivore on insects in the wild.
+    - source:
+        kind: database
+        title: "Rechi (2021). Aquarismo Paulista: Acara Amarelo (Acarichthys heckelii)"
+        url: "https://www.aquarismopaulista.com/acarichthys-heckelii/"
+        accessed: '2026-10-13'
+      value:
+        type: omnivore
+        bloatSensitive: false
+      note: "Plants, algae, detritus and invertebrates reported; no specific bloat sensitivity stated."
+    - source:
+        kind: database
+        title: "Seriously Fish: Acarichthys heckelii"
+        url: "https://www.seriouslyfish.com/species/acarichthys-heckelii/"
+        accessed: '2026-10-13'
+      value:
+        type: omnivore
+        bloatSensitive: false
+    - source:
+        kind: database
+        title: "FishBase: ecology of Acarichthys heckelii"
+        url: "https://www.fishbase.se/Ecology/FishEcologySummary.php?StockCode=12584&GenusName=Acarichthys&SpeciesName=heckelii"
+        accessed: '2026-10-13'
+      value:
+        type: omnivore
+        bloatSensitive: false
+      note: "Mixed feeding category is direct evidence; false bloat flag is absence of a specific warning, not an\
+        \ experimental result."
+    - source:
+        kind: database
+        title: "AquariumDomain: Threadfin Geophagus species profile"
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/ThreadfinGeophagus.shtml"
+        accessed: '2026-10-13'
+      value:
+        type: omnivore
+        bloatSensitive: false
+      note: "Omnivore classification and use of animal foods, including increased protein for spawning."
+    - source:
+        kind: database
+        title: "Cichlid Room Companion: Acarichthys heckelii, public verification summary"
+        url: "https://cichlidae.com/species.php?id=i4PFCO6q96O9fRPgCNK2Lg"
+        accessed: '2026-10-13'
+      value:
+        type: omnivore
+        bloatSensitive: false
+      note: "Verification only: insect and detritus feeding; no protein-bloat statement"
+    - source:
+        kind: website
+        title: "Maidenhead Aquatics Fishkeeper: Threadfin Acara"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/threadfin-acara"
+        accessed: '2026-10-13'
+      value:
+        type: omnivore
+        bloatSensitive: false
+      note: Omnivorous feeding stated; bloat flag not addressed and inferred from the lack of a specific warning.
+    - source:
+        kind: website
+        title: "Aquatic Arts: Threadfin Acara Cichlid, tank-bred care sheet"
+        url: "https://aquaticarts.com/products/threadfin-acara-cichlid"
+        accessed: '2026-10-13'
+      value:
+        type: omnivore
+        bloatSensitive: false
+      note: Animal food emphasized with vegetable supplementation; no specific bloat tendency stated.
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  aggressionConspecific:
+    value: 4
+    confidence: high
+    rationale: "All four runs assign level 4. Seriously Fish describes adult attacks that can kill weaker conspecifics,\
+      \ and Fishkeeper independently reports severe and sometimes fatal breeding-partner injury. These detailed\
+      \ adult accounts meet the rubric even though juvenile groups often appear calm. Aqua-Fish describes peaceful\
+      \ conspecific temperament and Bednarczuk emphasizes aggression without quantifying fatalities; neither cancels\
+      \ the specific adult danger. Adequate room and cover reduce risk but do not make arbitrary adult pairings\
+      \ safe."
+    sources:
+    - kind: literature
+      title: "Bednarczuk: A Survey of Eartheaters. Tropical Fish Hobbyist"
+      url: "https://www.tfhmagazine.com/articles/freshwater/a-survey-of-eartheaters-full-article"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Seriously Fish: Acarichthys heckelii"
+      url: "https://www.seriouslyfish.com/species/acarichthys-heckelii/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Nordiska Ciklidsallskapet: Acarichthys heckelii species register"
+      url: "https://ciklid.org/artregister/art.php?ID=179"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Aqua-Fish.Net: Thread-finned cichlid care guide"
+      url: "https://en.aqua-fish.net/fish/thread-finned-cichlid"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Maidenhead Aquatics Fishkeeper: Threadfin Acara"
+      url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/threadfin-acara"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: literature
+        title: "Bednarczuk: A Survey of Eartheaters. Tropical Fish Hobbyist"
+        url: "https://www.tfhmagazine.com/articles/freshwater/a-survey-of-eartheaters-full-article"
+        accessed: '2026-10-13'
+      value: 3
+      note: "Aggression and substantial space requirements, without a quantified injury rate; approximate rubric\
+        \ mapping."
+    - source:
+        kind: database
+        title: "Seriously Fish: Acarichthys heckelii"
+        url: "https://www.seriouslyfish.com/species/acarichthys-heckelii/"
+        accessed: '2026-10-13'
+      value: 4
+      note: Fatal adult attacks are reported.
+    - source:
+        kind: database
+        title: "Aqua-Fish.Net: Thread-finned cichlid care guide"
+        url: "https://en.aqua-fish.net/fish/thread-finned-cichlid"
+        accessed: '2026-10-13'
+      value: 0
+      note: General peaceful conspecific label without equivalent adult risk detail
+    - source:
+        kind: website
+        title: "Maidenhead Aquatics Fishkeeper: Threadfin Acara"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/threadfin-acara"
+        accessed: '2026-10-13'
+      value: 4
+      note: Breeding partners may severely injure or kill each other; physical separation may be needed.
+  aggressionHeterospecific:
+    value: 2
+    confidence: medium
+    rationale: "Generator, checker-b and checker-c propose level 2; checker-a level 1. Fishkeeper describes defense\
+      \ of a sizeable breeding area and Aqua-Fish explicitly describes territorial defense. FishFish and Aquatic\
+      \ Arts independently identify spawning territoriality. Exclusion of intruders from that area supports level\
+      \ 2 more closely than display alone at level 1; no evidence establishes routine attacks beyond the territory.\
+      \ The single archive conflict with severums has unknown space and reproductive context and cannot establish\
+      \ a higher typical grade."
+    sources:
+    - kind: database
+      title: "Seriously Fish: Acarichthys heckelii"
+      url: "https://www.seriouslyfish.com/species/acarichthys-heckelii/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "FishFish: Acarichthys heckelii care profile"
+      url: "https://www.fishfish.fr/poisson/acarichthys-heckelii"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Aqua-Fish.Net: Thread-finned cichlid care guide"
+      url: "https://en.aqua-fish.net/fish/thread-finned-cichlid"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Maidenhead Aquatics Fishkeeper: Threadfin Acara"
+      url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/threadfin-acara"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Aquatic Arts: Threadfin Acara Cichlid, tank-bred care sheet"
+      url: "https://aquaticarts.com/products/threadfin-acara-cichlid"
+      accessed: '2026-10-13'
+    - kind: archive
+      title: cichlids.com forum thread 59330
+      url: "https://www.cichlids.com/disc/read.php?1,59330"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: database
+        title: "FishFish: Acarichthys heckelii care profile"
+        url: "https://www.fishfish.fr/poisson/acarichthys-heckelii"
+        accessed: '2026-10-13'
+      value: 2
+      note: Breeding territoriality interpreted under the rubric.
+    - source:
+        kind: database
+        title: "Aqua-Fish.Net: Thread-finned cichlid care guide"
+        url: "https://en.aqua-fish.net/fish/thread-finned-cichlid"
+        accessed: '2026-10-13'
+      value: 2
+      note: "Rubric mapping of territorial defense, especially while breeding"
+    - source:
+        kind: website
+        title: "Maidenhead Aquatics Fishkeeper: Threadfin Acara"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/threadfin-acara"
+        accessed: '2026-10-13'
+      value: 2
+      note: Breeding territoriality alongside community suitability.
+    - source:
+        kind: website
+        title: "Aquatic Arts: Threadfin Acara Cichlid, tank-bred care sheet"
+        url: "https://aquaticarts.com/products/threadfin-acara-cichlid"
+        accessed: '2026-10-13'
+      value: 2
+      note: Territorial behavior increases during reproduction.
+    - source:
+        kind: archive
+        title: cichlids.com forum thread 59330
+        url: "https://www.cichlids.com/disc/read.php?1,59330"
+        accessed: '2026-10-13'
+      value: 2
+      note: Single aquarium conflict with severums; numerical grading is uncertain.
+  territory:
+    value:
+      size: large
+      breedingOnly: true
+    confidence: medium
+    rationale: "All four runs propose a large territory associated with breeding. Fishkeeper reports a defended\
+      \ wild spawning area 2 to 3 m across, far beyond the rubric small-area threshold, and other accounts describe\
+      \ nest defense around excavated chambers. Aquarium territory dimensions have not been measured, so the large\
+      \ category is an extrapolation with medium confidence. Nonbreeding adults can still show conspecific aggression;\
+      \ breedingOnly describes the established defended area rather than promising peace outside spawning."
+    sources:
+    - kind: literature
+      title: "Bednarczuk: A Survey of Eartheaters. Tropical Fish Hobbyist"
+      url: "https://www.tfhmagazine.com/articles/freshwater/a-survey-of-eartheaters-full-article"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Seriously Fish: Acarichthys heckelii"
+      url: "https://www.seriouslyfish.com/species/acarichthys-heckelii/"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Maidenhead Aquatics Fishkeeper: Threadfin Acara"
+      url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/threadfin-acara"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Aquatic Arts: Threadfin Acara Cichlid, tank-bred care sheet"
+      url: "https://aquaticarts.com/products/threadfin-acara-cichlid"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: database
+        title: "Seriously Fish: Acarichthys heckelii"
+        url: "https://www.seriouslyfish.com/species/acarichthys-heckelii/"
+        accessed: '2026-10-13'
+      value:
+        size: large
+        breedingOnly: true
+      note: Male territorial defence around a complex breeding burrow; size is not measured.
+    - source:
+        kind: website
+        title: "Maidenhead Aquatics Fishkeeper: Threadfin Acara"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/threadfin-acara"
+        accessed: '2026-10-13'
+      value:
+        size: large
+        breedingOnly: true
+      note: Wild spawning territory greatly exceeds the small-territory rubric.
+    - source:
+        kind: website
+        title: "Aquatic Arts: Threadfin Acara Cichlid, tank-bred care sheet"
+        url: "https://aquaticarts.com/products/threadfin-acara-cichlid"
+        accessed: '2026-10-13'
+      value:
+        size: large
+        breedingOnly: true
+      note: Spawning-associated territoriality; size inferred with Fishkeeper.
+  habitatZones:
+    value:
+    - sand
+    - wood
+    - openWater
+    - plants
+    confidence: medium
+    rationale: "Generator proposes sand, wood and openWater; checker-a sand, wood and plants; checker-b and checker-c\
+      \ all four. Gay documents woody margins and pools, Seriously Fish supports a diggable substrate and substantial\
+      \ activity above the bottom, and Bednarczuk and Frois associate the fish with vegetation or flooded margins.\
+      \ The combined set captures substrate, structural shelter, swimming space and vegetation. Plants can be provided\
+      \ as sheltered margins or robust growth on wood rather than as a compulsory densely planted bed. Routine sand-sifting\
+      \ is disputed between sources; the need for digging substrate is better established."
+    sources:
+    - kind: literature
+      title: "Gay (2009). Habitat Expert: Acarichthys heckeli. Practical Fishkeeping, November 2009"
+      url: "https://www.practicalfishkeeping.co.uk/features/habitat-expert-acarichthys-heckeli/"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "ICMBio SALVE: Ficha de Acarichthys heckelii"
+      url: "https://doi.org/10.37002/salve.ficha.35110.2"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Bednarczuk: A Survey of Eartheaters. Tropical Fish Hobbyist"
+      url: "https://www.tfhmagazine.com/articles/freshwater/a-survey-of-eartheaters-full-article"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Seriously Fish: Acarichthys heckelii"
+      url: "https://www.seriouslyfish.com/species/acarichthys-heckelii/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "AquariumDomain: Threadfin Geophagus species profile"
+      url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/ThreadfinGeophagus.shtml"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Cichlid Room Companion: Acarichthys heckelii, public verification summary"
+      url: "https://cichlidae.com/species.php?id=i4PFCO6q96O9fRPgCNK2Lg"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Aqua-Fish.Net: Thread-finned cichlid care guide"
+      url: "https://en.aqua-fish.net/fish/thread-finned-cichlid"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Maidenhead Aquatics Fishkeeper: Threadfin Acara"
+      url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/threadfin-acara"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Aquatic Arts: Threadfin Acara Cichlid, tank-bred care sheet"
+      url: "https://aquaticarts.com/products/threadfin-acara-cichlid"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: literature
+        title: "Gay (2009). Habitat Expert: Acarichthys heckeli. Practical Fishkeeping, November 2009"
+        url: "https://www.practicalfishkeeping.co.uk/features/habitat-expert-acarichthys-heckeli/"
+        accessed: '2026-10-13'
+      value:
+      - wood
+      - openWater
+      note: Shallow river margins and pools with submerged wood.
+    - source:
+        kind: literature
+        title: "Bednarczuk: A Survey of Eartheaters. Tropical Fish Hobbyist"
+        url: "https://www.tfhmagazine.com/articles/freshwater/a-survey-of-eartheaters-full-article"
+        accessed: '2026-10-13'
+      value:
+      - sand
+      - plants
+      note: Soft breeding substrate near vegetation.
+    - source:
+        kind: database
+        title: "Seriously Fish: Acarichthys heckelii"
+        url: "https://www.seriouslyfish.com/species/acarichthys-heckelii/"
+        accessed: '2026-10-13'
+      value:
+      - sand
+      - wood
+      - openWater
+      note: "Soft substrate, roots or driftwood and midwater activity."
+    - source:
+        kind: database
+        title: "Aqua-Fish.Net: Thread-finned cichlid care guide"
+        url: "https://en.aqua-fish.net/fish/thread-finned-cichlid"
+        accessed: '2026-10-13'
+      value:
+      - sand
+      - wood
+      - plants
+      - openWater
+      note: "Sand, submerged roots, vegetation and open swimming areas"
+    - source:
+        kind: website
+        title: "Maidenhead Aquatics Fishkeeper: Threadfin Acara"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/threadfin-acara"
+        accessed: '2026-10-13'
+      value:
+      - sand
+      - wood
+      note: Fine substrate and woody shelter recommended.
+  social:
+    value:
+      structure: pair
+    confidence: medium
+    rationale: "Generator, checker-a and checker-c propose pair; checker-b group with at least six adults. Gay observes\
+      \ reproductive pairs, Seriously Fish explicitly supplies a pair footprint, and Fishkeeper suggests selecting\
+      \ partners from eight or more juveniles before removing surplus fish where needed. Bednarczuk instead recommends\
+      \ very large quarters for five to six adults, and Aquatic Arts describes loose groups. These accounts establish\
+      \ both pairing and group behavior. A compatible adult pair is selected as the minimum planning unit, not as\
+      \ a claim that the species is solitary outside reproduction. A maintained adult group remains possible in\
+      \ a substantially larger aquarium, with individual separation sometimes still necessary."
+    sources:
+    - kind: literature
+      title: "Gay (2009). Habitat Expert: Acarichthys heckeli. Practical Fishkeeping, November 2009"
+      url: "https://www.practicalfishkeeping.co.uk/features/habitat-expert-acarichthys-heckeli/"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Bednarczuk: A Survey of Eartheaters. Tropical Fish Hobbyist"
+      url: "https://www.tfhmagazine.com/articles/freshwater/a-survey-of-eartheaters-full-article"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Cichlid Room Companion: Acarichthys heckelii, public verification summary"
+      url: "https://cichlidae.com/species.php?id=i4PFCO6q96O9fRPgCNK2Lg"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Seriously Fish: Acarichthys heckelii"
+      url: "https://www.seriouslyfish.com/species/acarichthys-heckelii/"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Maidenhead Aquatics Fishkeeper: Threadfin Acara"
+      url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/threadfin-acara"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Aquatic Arts: Threadfin Acara Cichlid, tank-bred care guidelines"
+      url: "https://aquaticarts.com/products/threadfin-acara-cichlid"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: literature
+        title: "Gay (2009). Habitat Expert: Acarichthys heckeli. Practical Fishkeeping, November 2009"
+        url: "https://www.practicalfishkeeping.co.uk/features/habitat-expert-acarichthys-heckeli/"
+        accessed: '2026-10-13'
+      value:
+        structure: pair
+      note: Mated pairs observed using burrows.
+    - source:
+        kind: literature
+        title: "Bednarczuk: A Survey of Eartheaters. Tropical Fish Hobbyist"
+        url: "https://www.tfhmagazine.com/articles/freshwater/a-survey-of-eartheaters-full-article"
+        accessed: '2026-10-13'
+      value:
+        structure: group
+        minGroup: 5
+      note: Published adult social-unit example is five to six fish; five is its lower bound.
+    - source:
+        kind: database
+        title: "Cichlid Room Companion: Acarichthys heckelii, public verification summary"
+        url: "https://cichlidae.com/species.php?id=i4PFCO6q96O9fRPgCNK2Lg"
+        accessed: '2026-10-13'
+      value:
+        structure: pair
+      note: Verification only of monogamous reproduction.
+    - source:
+        kind: database
+        title: "Seriously Fish: Acarichthys heckelii"
+        url: "https://www.seriouslyfish.com/species/acarichthys-heckelii/"
+        accessed: '2026-10-13'
+      value:
+        structure: pair
+      note: Pair accommodation and reproduction described
+    - source:
+        kind: website
+        title: "Maidenhead Aquatics Fishkeeper: Threadfin Acara"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/threadfin-acara"
+        accessed: '2026-10-13'
+      value:
+        structure: group
+        minGroup: 8
+      note: "Juvenile acquisition recommendation, not the minimum tank unit used here."
+    - source:
+        kind: website
+        title: "Aquatic Arts: Threadfin Acara Cichlid, tank-bred care guidelines"
+        url: "https://aquaticarts.com/products/threadfin-acara-cichlid"
+        accessed: '2026-10-13'
+      value:
+        structure: group
+      note: Loose-group behaviour; no safe minimum group size is stated.
+  speciesOnly:
+    value: false
+    confidence: high
+    rationale: "All four voting runs propose false and the tally fixes unanimous 4 of 4 verification with high confidence.\
+      \ Seriously Fish, AquariumDomain and Bednarczuk permit suitably sized peaceful companions; retailer husbandry\
+      \ accounts provide additional practical agreement. Breeding isolation or removal of surplus conspecifics addresses\
+      \ territorial and partner risk rather than a general requirement to exclude every other species."
+    sources:
+    - kind: literature
+      title: "Bednarczuk: A Survey of Eartheaters. Tropical Fish Hobbyist"
+      url: "https://www.tfhmagazine.com/articles/freshwater/a-survey-of-eartheaters-full-article"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "AquariumDomain: Threadfin Geophagus species profile"
+      url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/ThreadfinGeophagus.shtml"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Seriously Fish: Acarichthys heckelii"
+      url: "https://www.seriouslyfish.com/species/acarichthys-heckelii/"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Maidenhead Aquatics Fishkeeper: Threadfin Acara"
+      url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/threadfin-acara"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Aquatic Arts: Threadfin Acara Cichlid, tank-bred care sheet"
+      url: "https://aquaticarts.com/products/threadfin-acara-cichlid"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: literature
+        title: "Bednarczuk: A Survey of Eartheaters. Tropical Fish Hobbyist"
+        url: "https://www.tfhmagazine.com/articles/freshwater/a-survey-of-eartheaters-full-article"
+        accessed: '2026-10-13'
+      value: false
+      note: Similar-sized cichlids are allowed.
+    - source:
+        kind: database
+        title: "AquariumDomain: Threadfin Geophagus species profile"
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/ThreadfinGeophagus.shtml"
+        accessed: '2026-10-13'
+      value: false
+      note: Community keeping described despite preference for careful biotope combinations.
+    - source:
+        kind: database
+        title: "Seriously Fish: Acarichthys heckelii"
+        url: "https://www.seriouslyfish.com/species/acarichthys-heckelii/"
+        accessed: '2026-10-13'
+      value: false
+    - source:
+        kind: website
+        title: "Maidenhead Aquatics Fishkeeper: Threadfin Acara"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/threadfin-acara"
+        accessed: '2026-10-13'
+      value: false
+      note: Specialist community permitted.
+    - source:
+        kind: website
+        title: "Aquatic Arts: Threadfin Acara Cichlid, tank-bred care sheet"
+        url: "https://aquaticarts.com/products/threadfin-acara-cichlid"
+        accessed: '2026-10-13'
+      value: false
+      note: Compatible community species permitted.
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  hybridGroups:
+    value: []
+    confidence: low
+    rationale: "All four voting runs propose an empty list and the tally fixes unanimous 4 of 4 verification with\
+      \ low confidence. The Catalog, Seriously Fish and Bednarczuk describe a monotypic genus, but monotypy does\
+      \ not prove reproductive isolation from other genera. No supported named crossing group is established by\
+      \ these sources. A 2011 MonsterFishKeepers discussion repeats an unverified sale claim concerning Geophagus\
+      \ altifrons and Acarichthys heckelii, without authenticated offspring or parentage; replies question whether\
+      \ the eggs could develop. That low-weight discussion does not establish a crossing group. The empty list records\
+      \ the evidence gap, and close relationship to Guianacara alone supplies no additional group."
+    sources:
+    - kind: catalog-of-fishes
+      title: "Eschmeyer's Catalog of Fishes: species of Acarichthys, updated 21 September 2026"
+      url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Acarichthys"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Bednarczuk: A Survey of Eartheaters. Tropical Fish Hobbyist"
+      url: "https://www.tfhmagazine.com/articles/freshwater/a-survey-of-eartheaters-full-article"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Seriously Fish: Acarichthys heckelii"
+      url: "https://www.seriouslyfish.com/species/acarichthys-heckelii/"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Fishkeeper (Maidenhead Aquatics) data bank: Threadfin Acara"
+      url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/threadfin-acara"
+      accessed: '2026-10-13'
+    - kind: forum
+      title: MonsterFishKeepers (2011). Discussion of an alleged Geophagus altifrons and Acarichthys heckelii breeding
+        pair
+      url: "https://www.monsterfishkeepers.com/forums/threads/can-eartheaters-interbreed-specifically-geophagus-altifrons-and-acarichthys-heckelii.420110/"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: species of Acarichthys, updated 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Acarichthys"
+        accessed: '2026-10-13'
+      value: []
+      note: Only one valid species in the genus; no crossing information. Empty value is an inference about available
+        evidence.
+    - source:
+        kind: literature
+        title: "Bednarczuk: A Survey of Eartheaters. Tropical Fish Hobbyist"
+        url: "https://www.tfhmagazine.com/articles/freshwater/a-survey-of-eartheaters-full-article"
+        accessed: '2026-10-13'
+      value: []
+      note: One described species and no named hybrid report.
+    - source:
+        kind: database
+        title: "Seriously Fish: Acarichthys heckelii"
+        url: "https://www.seriouslyfish.com/species/acarichthys-heckelii/"
+        accessed: '2026-10-13'
+      value: []
+      note: "Monotypic genus and related genera discussed, without a named cross; absence is not proof of isolation."
+    - source:
+        kind: website
+        title: "Fishkeeper (Maidenhead Aquatics) data bank: Threadfin Acara"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/threadfin-acara"
+        accessed: '2026-10-13'
+      value: []
+      note: No crossing reported.
+    - source:
+        kind: forum
+        title: MonsterFishKeepers (2011). Discussion of an alleged Geophagus altifrons and Acarichthys heckelii
+          breeding pair
+        url: "https://www.monsterfishkeepers.com/forums/threads/can-eartheaters-interbreed-specifically-geophagus-altifrons-and-acarichthys-heckelii.420110/"
+        accessed: '2026-10-13'
+      value: []
+      note: "Repeated sales claim lacks authenticated offspring; discussion questions viability. Empty group list\
+        \ is an assessment of this weak evidence, not a demonstrated reproductive barrier."
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  coloration:
+    value:
+      baseColors:
+      - silver
+      - yellow
+      - blue
+      - green
+      - red
+      - black
+      pattern: mixed
+    confidence: medium
+    rationale: "Generator and checker-b propose silver, yellow, blue, green, red and black with a mixed pattern;\
+      \ checker-c the same set without green; checker-a silver, brown and yellow with spots. Adult descriptions\
+      \ combine reflective blue-green scales, warm fin accents and contrasting dark flank or facial marks. Mixed\
+      \ better represents the combined spotting, blotch and faint bars than spots alone. The final colors represent\
+      \ the common adult wild type rather than every hue or the albino morph. Descriptions and photographs support\
+      \ the combination, but perceived dominant colors vary with condition and lighting."
+    sources:
+    - kind: literature
+      title: "ICMBio SALVE: Ficha de Acarichthys heckelii"
+      url: "https://doi.org/10.37002/salve.ficha.35110.2"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Bednarczuk: A Survey of Eartheaters. Tropical Fish Hobbyist"
+      url: "https://www.tfhmagazine.com/articles/freshwater/a-survey-of-eartheaters-full-article"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "AquariumDomain: Threadfin Geophagus species profile"
+      url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/ThreadfinGeophagus.shtml"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Seriously Fish: Acarichthys heckelii"
+      url: "https://www.seriouslyfish.com/species/acarichthys-heckelii/"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Aquatic Arts: Threadfin Acara Cichlid, tank-bred care sheet"
+      url: "https://aquaticarts.com/products/threadfin-acara-cichlid"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Imperial Tropicals: Albino Threadfin Acara"
+      url: "https://imperialtropicals.com/products/albino-threadfin-acara-acarichthys-heckelii"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Wikipedia: Threadfin acara"
+      url: "https://en.wikipedia.org/wiki/Acarichthys_heckelii"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Zierfische-Direkt: Acarichthys heckelii husbandry sheet"
+      url: "https://www.zierfische-direkt.de/heckels-buntbarsch-acarichthys-heckelii/"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: literature
+        title: "Bednarczuk: A Survey of Eartheaters. Tropical Fish Hobbyist"
+        url: "https://www.tfhmagazine.com/articles/freshwater/a-survey-of-eartheaters-full-article"
+        accessed: '2026-10-13'
+      value:
+        baseColors:
+        - green
+        - blue
+        - red
+        - black
+        pattern: mixed
+    - source:
+        kind: database
+        title: "AquariumDomain: Threadfin Geophagus species profile"
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/ThreadfinGeophagus.shtml"
+        accessed: '2026-10-13'
+      value:
+        baseColors:
+        - grey
+        - green
+        - yellow
+        - blue
+        - red
+        pattern: mixed
+      note: Faint bars with iridescent scales and colored fins.
+    - source:
+        kind: database
+        title: "Seriously Fish: Acarichthys heckelii"
+        url: "https://www.seriouslyfish.com/species/acarichthys-heckelii/"
+        accessed: '2026-10-13'
+      value:
+        baseColors:
+        - silver
+        - blue
+        - yellow
+        - red
+        - black
+        pattern: mixed
+      note: "Visual assessment of published adult male image, not a numerical color study"
+    - source:
+        kind: website
+        title: "Aquatic Arts: Threadfin Acara Cichlid, tank-bred care sheet"
+        url: "https://aquaticarts.com/products/threadfin-acara-cichlid"
+        accessed: '2026-10-13'
+      value:
+        baseColors:
+        - blue
+        - green
+        - yellow
+        - red
+        - orange
+        pattern: mixed
+      note: Adult multicolor appearance described.
+    - source:
+        kind: website
+        title: "Zierfische-Direkt: Acarichthys heckelii husbandry sheet"
+        url: "https://www.zierfische-direkt.de/heckels-buntbarsch-acarichthys-heckelii/"
+        accessed: '2026-10-13'
+      value:
+        baseColors:
+        - silver
+        - yellow
+        - blue
+        - green
+        - red
+        pattern: mixed
+      note: Reflective adult colors
+  feedingSpeed:
+    value: normal
+    confidence: low
+    rationale: "All four runs propose normal. Care accounts describe acceptance of varied small foods at more than\
+      \ one water level, but none quantifies competitive feeding rate. Normal is therefore a provisional rubric\
+      \ interpretation, not an observed timing result; assess access to food for each individual when choosing companions."
+    sources:
+    - kind: database
+      title: "AquariumDomain: Threadfin Geophagus species profile"
+      url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/ThreadfinGeophagus.shtml"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Seriously Fish: Acarichthys heckelii"
+      url: "https://www.seriouslyfish.com/species/acarichthys-heckelii/"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Maidenhead Aquatics Fishkeeper: Threadfin Acara"
+      url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/threadfin-acara"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Aquatic Arts: Threadfin Acara Cichlid, tank-bred care parameters"
+      url: "https://aquaticarts.com/products/threadfin-acara-cichlid"
+      accessed: '2026-10-13'
+    - kind: model-knowledge
+      title: Generator inference from the stated evidence; no direct species-specific measurement
+    - kind: model-knowledge
+      title: Own judgement from the feeding descriptions of the keeping sources
+    evidence:
+    - source:
+        kind: database
+        title: "AquariumDomain: Threadfin Geophagus species profile"
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/ThreadfinGeophagus.shtml"
+        accessed: '2026-10-13'
+      value: normal
+      note: "Acceptance of bottom and surface foods; speed class inferred, not directly stated."
+    - source:
+        kind: database
+        title: "Seriously Fish: Acarichthys heckelii"
+        url: "https://www.seriouslyfish.com/species/acarichthys-heckelii/"
+        accessed: '2026-10-13'
+      value: normal
+      note: "Inferred from general food acceptance and midwater feeding, not a timed feeding study."
+    - source:
+        kind: website
+        title: "Aquatic Arts: Threadfin Acara Cichlid, tank-bred care parameters"
+        url: "https://aquaticarts.com/products/threadfin-acara-cichlid"
+        accessed: '2026-10-13'
+      value: normal
+      note: Inferred from ready acceptance of prepared and live foods
+    - source:
+        kind: website
+        title: "Maidenhead Aquatics Fishkeeper: Threadfin Acara"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/threadfin-acara"
+        accessed: '2026-10-13'
+      value: normal
+      note: Inferred from general small-food feeding recommendations
+  minTank:
+    value:
+      volumeL: 450
+      lengthCm: 150
+      depthCm: 60
+    confidence: medium
+    rationale: "Generator proposes 450 L with a 150 by 60 cm base; checker-a 300 L and 150 by 45 cm; checker-b 672\
+      \ L and 160 by 70 cm; checker-c 400 L and 150 by 50 cm. The adopted 450 L, 150 by 60 cm recommendation is\
+      \ a cautious synthesis for the selected compatible adult pair, adding escape and cover space to Seriously\
+      \ Fish marginal pair base of 150 by 45 cm. FishFish explicitly recommends 450 L for two fish and gives a 150\
+      \ by 50 by 60 cm example; 60 cm front-to-back depth is an adjudicator allowance rather than a published universal\
+      \ threshold. Aquatic Arts allows about 284 to 341 L for a pair, the Nordic register 375 L with 150 cm length,\
+      \ and Zierfische-Direkt inconsistently gives 400 and 450 L. Bednarczuk 160 by 70 by 60 cm, about 672 L gross,\
+      \ concerns five to six adults and cannot be compared as a pair minimum. AquaInfo recommends the longer 180\
+      \ cm aquarium. Communities and selection groups need materially more space than this minimum, and no dimension\
+      \ guarantees partner safety."
+    sources:
+    - kind: literature
+      title: "Bednarczuk: A Survey of Eartheaters. Tropical Fish Hobbyist"
+      url: "https://www.tfhmagazine.com/articles/freshwater/a-survey-of-eartheaters-full-article"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Seriously Fish: Acarichthys heckelii"
+      url: "https://www.seriouslyfish.com/species/acarichthys-heckelii/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Nordic Cichlid Society species register: Acarichthys heckelii."
+      url: "https://ciklid.org/artregister/art.php?ID=179"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "AquaInfo: Acarichthys heckelii"
+      url: "https://aquainfo.nl/en/article/acarichthys-heckelii/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "FishFish: Acarichthys heckelii care profile"
+      url: "https://www.fishfish.fr/poisson/acarichthys-heckelii"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Aquatic Arts: Threadfin Acara Cichlid, tank-bred care sheet"
+      url: "https://aquaticarts.com/products/threadfin-acara-cichlid"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Zierfische-Direkt: Heckels Buntbarsch care sheet"
+      url: "https://www.zierfische-direkt.de/heckels-buntbarsch-acarichthys-heckelii/"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: literature
+        title: "Bednarczuk: A Survey of Eartheaters. Tropical Fish Hobbyist"
+        url: "https://www.tfhmagazine.com/articles/freshwater/a-survey-of-eartheaters-full-article"
+        accessed: '2026-10-13'
+      value:
+        volumeL: 672
+        lengthCm: 160
+        depthCm: 70
+      note: Dimensions for five to six adults; gross volume calculated with the published 60 cm height.
+    - source:
+        kind: database
+        title: "Seriously Fish: Acarichthys heckelii"
+        url: "https://www.seriouslyfish.com/species/acarichthys-heckelii/"
+        accessed: '2026-10-13'
+      value:
+        lengthCm: 150
+        depthCm: 45
+      note: Marginal pair footprint; volume is not supplied.
+    - source:
+        kind: website
+        title: "Aquatic Arts: Threadfin Acara Cichlid, tank-bred care sheet"
+        url: "https://aquaticarts.com/products/threadfin-acara-cichlid"
+        accessed: '2026-10-13'
+      value:
+        volumeL: 284
+      note: "Lower end of 75 to 90 US gallons for a pair, converted to litres."
+    - source:
+        kind: website
+        title: "Zierfische-Direkt: Heckels Buntbarsch care sheet"
+        url: "https://www.zierfische-direkt.de/heckels-buntbarsch-acarichthys-heckelii/"
+        accessed: '2026-10-13'
+      value:
+        volumeL: 450
+      note: "The care summary gives 450 L, while the main text gives 400 L; the social unit is inconsistent. Neither\
+        \ supplies the decided footprint."
+  lifespanYears:
+    value:
+      min: 6
+      max: 10
+    confidence: low
+    rationale: "Generator proposes 8 to 10 years; checker-a and checker-b 8 to 12; checker-c 6 to 10. Aqua-Fish\
+      \ gives the species-specific 6 to 8 estimate, Zierfische-Direkt 8 to 10 and FishFish approximately 10. Their\
+      \ combined 6 to 10 interval is retained as a weak husbandry expectation without cohort data. The wider upper\
+      \ allowance of 12 years in checker-a is model-based, and in checker-b rests partly on Bednarczuk general statement\
+      \ that eartheaters may live a dozen years or longer. That group-wide statement does not establish a species-specific\
+      \ 12-year endpoint. Rechi leaves longevity unknown."
+    sources:
+    - kind: literature
+      title: "Bednarczuk: A Survey of Eartheaters. Tropical Fish Hobbyist"
+      url: "https://www.tfhmagazine.com/articles/freshwater/a-survey-of-eartheaters-full-article"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Rechi (2021). Aquarismo Paulista: Acara Amarelo (Acarichthys heckelii)"
+      url: "https://www.aquarismopaulista.com/acarichthys-heckelii/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "FishFish: Acarichthys heckelii care profile"
+      url: "https://www.fishfish.fr/poisson/acarichthys-heckelii"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Aqua-Fish.Net: Thread-finned cichlid care guide"
+      url: "https://en.aqua-fish.net/fish/thread-finned-cichlid"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Zierfische-Direkt: Heckels Buntbarsch care sheet"
+      url: "https://www.zierfische-direkt.de/heckels-buntbarsch-acarichthys-heckelii/"
+      accessed: '2026-10-13'
+    - kind: model-knowledge
+      title: Own estimate for a large geophagine cichlid
+    evidence:
+    - source:
+        kind: literature
+        title: "Bednarczuk: A Survey of Eartheaters. Tropical Fish Hobbyist"
+        url: "https://www.tfhmagazine.com/articles/freshwater/a-survey-of-eartheaters-full-article"
+        accessed: '2026-10-13'
+      value:
+        min: 12
+        max: 12
+      note: "Group-wide longevity statement, used only as weak support for the upper bound."
+    - source:
+        kind: database
+        title: "FishFish: Acarichthys heckelii care profile"
+        url: "https://www.fishfish.fr/poisson/acarichthys-heckelii"
+        accessed: '2026-10-13'
+      value:
+        min: 10
+        max: 10
+      note: "Approximate longevity statement, not a demographic estimate."
+    - source:
+        kind: database
+        title: "Aqua-Fish.Net: Thread-finned cichlid care guide"
+        url: "https://en.aqua-fish.net/fish/thread-finned-cichlid"
+        accessed: '2026-10-13'
+      value:
+        min: 6
+        max: 8
+      note: Aquarium care estimate
+    - source:
+        kind: website
+        title: "Zierfische-Direkt: Heckels Buntbarsch care sheet"
+        url: "https://www.zierfische-direkt.de/heckels-buntbarsch-acarichthys-heckelii/"
+        accessed: '2026-10-13'
+      value:
+        min: 8
+        max: 10
+      note: Care-sheet estimate; no specimen ages or method supplied.
+  breeding:
+    value: cave-spawner
+    confidence: high
+    rationale: "All four runs assign cave-spawner. Gay describes reproductive pairs in excavated bank burrows; Seriously\
+      \ Fish and Bednarczuk describe enclosed nesting chambers and biparental care; FishBase records hole nesting.\
+      \ Aquarium pots or other enclosed cavities can provide substitute spawning sites. CRC independently verifies\
+      \ the classification but is not its origin. This is substrate spawning inside shelter, rather than mouthbrooding."
+    sources:
+    - kind: literature
+      title: "Gay (2009). Habitat Expert: Acarichthys heckeli. Practical Fishkeeping, November 2009"
+      url: "https://www.practicalfishkeeping.co.uk/features/habitat-expert-acarichthys-heckeli/"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Bednarczuk: A Survey of Eartheaters. Tropical Fish Hobbyist"
+      url: "https://www.tfhmagazine.com/articles/freshwater/a-survey-of-eartheaters-full-article"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "FishBase: Acarichthys heckelii species summary"
+      url: "https://www.fishbase.se/summary/Acarichthys-heckelii.html"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Cichlid Room Companion: Acarichthys heckelii, public verification summary"
+      url: "https://cichlidae.com/species.php?id=i4PFCO6q96O9fRPgCNK2Lg"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Seriously Fish: Acarichthys heckelii"
+      url: "https://www.seriouslyfish.com/species/acarichthys-heckelii/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Aqua-Fish.Net: Thread-finned cichlid care guide"
+      url: "https://en.aqua-fish.net/fish/thread-finned-cichlid"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Maidenhead Aquatics Fishkeeper: Threadfin Acara"
+      url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/threadfin-acara"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: literature
+        title: "Gay (2009). Habitat Expert: Acarichthys heckeli. Practical Fishkeeping, November 2009"
+        url: "https://www.practicalfishkeeping.co.uk/features/habitat-expert-acarichthys-heckeli/"
+        accessed: '2026-10-13'
+      value: cave-spawner
+      note: Paired breeding inside bank burrows described.
+    - source:
+        kind: literature
+        title: "Bednarczuk: A Survey of Eartheaters. Tropical Fish Hobbyist"
+        url: "https://www.tfhmagazine.com/articles/freshwater/a-survey-of-eartheaters-full-article"
+        accessed: '2026-10-13'
+      value: cave-spawner
+    - source:
+        kind: database
+        title: "FishBase: Acarichthys heckelii species summary"
+        url: "https://www.fishbase.se/summary/Acarichthys-heckelii.html"
+        accessed: '2026-10-13'
+      value: cave-spawner
+      note: Hole nesting reported.
+    - source:
+        kind: database
+        title: "Seriously Fish: Acarichthys heckelii"
+        url: "https://www.seriouslyfish.com/species/acarichthys-heckelii/"
+        accessed: '2026-10-13'
+      value: cave-spawner
+    - source:
+        kind: database
+        title: "Aqua-Fish.Net: Thread-finned cichlid care guide"
+        url: "https://en.aqua-fish.net/fish/thread-finned-cichlid"
+        accessed: '2026-10-13'
+      value: cave-spawner
+      note: Cave spawning described
+    - source:
+        kind: database
+        title: "Cichlid Room Companion: Acarichthys heckelii, public verification summary"
+        url: "https://cichlidae.com/species.php?id=i4PFCO6q96O9fRPgCNK2Lg"
+        accessed: '2026-10-13'
+      value: cave-spawner
+      note: "Verification only: substrate cave breeding"
+    - source:
+        kind: website
+        title: "Maidenhead Aquatics Fishkeeper: Threadfin Acara"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/threadfin-acara"
+        accessed: '2026-10-13'
+      value: cave-spawner
+      note: Enclosed spawning chamber and aquarium cave substitutes.
+  beginnerSuitability:
+    value: demanding
+    confidence: medium
+    rationale: "Generator, checker-b and checker-c propose demanding; checker-a moderate. Seriously Fish labels\
+      \ ordinary care moderate and the Nordic register easy, but their brief labels do not remove the detailed reports\
+      \ of fatal adult attacks, partner management and sensitivity to deteriorating water. Bednarczuk recommends\
+      \ gaining experience before keeping Acarichthys, and CRC independently verifies an advanced-keeper assessment.\
+      \ Those practical consequences support demanding with medium confidence despite disagreement among published\
+      \ ratings."
+    sources:
+    - kind: literature
+      title: "Bednarczuk: A Survey of Eartheaters. Tropical Fish Hobbyist"
+      url: "https://www.tfhmagazine.com/articles/freshwater/a-survey-of-eartheaters-full-article"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Cichlid Room Companion: Acarichthys heckelii, public verification summary"
+      url: "https://cichlidae.com/species.php?id=i4PFCO6q96O9fRPgCNK2Lg"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Seriously Fish: Acarichthys heckelii"
+      url: "https://www.seriouslyfish.com/species/acarichthys-heckelii/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Nordiska Ciklidsallskapet: Acarichthys heckelii species register"
+      url: "https://ciklid.org/artregister/art.php?ID=179"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Maidenhead Aquatics Fishkeeper: Threadfin Acara"
+      url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/threadfin-acara"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Aquatic Arts: Threadfin Acara Cichlid, tank-bred care sheet"
+      url: "https://aquaticarts.com/products/threadfin-acara-cichlid"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: literature
+        title: "Bednarczuk: A Survey of Eartheaters. Tropical Fish Hobbyist"
+        url: "https://www.tfhmagazine.com/articles/freshwater/a-survey-of-eartheaters-full-article"
+        accessed: '2026-10-13'
+      value: demanding
+      note: Species belongs to the more demanding choices in the survey.
+    - source:
+        kind: database
+        title: "Cichlid Room Companion: Acarichthys heckelii, public verification summary"
+        url: "https://cichlidae.com/species.php?id=i4PFCO6q96O9fRPgCNK2Lg"
+        accessed: '2026-10-13'
+      value: demanding
+      note: Verification summary recommends experienced keepers.
+    - source:
+        kind: database
+        title: "Seriously Fish: Acarichthys heckelii"
+        url: "https://www.seriouslyfish.com/species/acarichthys-heckelii/"
+        accessed: '2026-10-13'
+      value: moderate
+      note: "Published routine-care rating, with severe adult social-risk qualifications elsewhere in the same profile."
+    - source:
+        kind: database
+        title: "Nordiska Ciklidsallskapet: Acarichthys heckelii species register"
+        url: "https://ciklid.org/artregister/art.php?ID=179"
+        accessed: '2026-10-13'
+      value: easy
+      note: Published difficulty label differs from the social-risk assessment.
+    - source:
+        kind: website
+        title: "Maidenhead Aquatics Fishkeeper: Threadfin Acara"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/threadfin-acara"
+        accessed: '2026-10-13'
+      value: demanding
+      note: Mature aquarium and readiness to separate breeding adults; rubric judgement.
+    - source:
+        kind: website
+        title: "Aquatic Arts: Threadfin Acara Cichlid, tank-bred care sheet"
+        url: "https://aquaticarts.com/products/threadfin-acara-cichlid"
+        accessed: '2026-10-13'
+      value: moderate
+      note: Hardy commercial description; demanding assessment weights partner injury risk more heavily.
+partners:
+  suitable:
+  - species: Mesonauta insignis
+    reason: A calm companion recorded alongside the species in Rio Negro collecting observations.
+    condition: "Large community beyond the pair minimum, matched adult sizes and separate cover."
+  - species: Biotodoma wavrini
+    reason: A relatively quiet co-occurring cichlid suited to soft water and fine substrate.
+    condition: A larger footprint with separate territories; observe especially during breeding.
+  - species: Pterophyllum scalare
+    reason: Adult angelfish are a plausible upper-water companion; Gay reported angelfish in shared pools without
+      identifying their species.
+    condition: "Tall, spacious aquarium with adult companions, no fin nipping and room outside the acara breeding\
+      \ territory."
+  unsuitable:
+  - species: Amphilophus labiatus
+    reason: Strong aggression risks injury and chronic displacement of the threadfin acara.
+  - species: Puntigrus tetrazona
+    reason: Fin-nipping behavior puts the long streamers at risk.
+  - species: Potamotrygon motoro
+    reason: Stingrays can prey on these cichlids at night even after apparently peaceful coexistence.
+  - species: Hyphessobrycon amandae
+    reason: "Small adults approach the opportunistic prey size, so predation risk remains."
+profile:
+  overview:
+    text: "The threadfin acara offers long fin streamers and a changing mix of reflective colors as it matures.\
+      \ It is the only recognized species of Acarichthys and belongs to the South American cichlids commonly associated\
+      \ with eartheaters. Expect an active digger that also explores above the bottom. Adults can share a spacious\
+      \ aquarium with selected peaceful fish, but their behavior toward their own species deserves special attention.\
+      \ An apparently calm youngster can become a dangerous breeding adult. Albino fish are a color form of the\
+      \ same species."
+    sources:
+    - kind: catalog-of-fishes
+      title: "Eschmeyer's Catalog of Fishes: species of Acarichthys, updated 21 September 2026"
+      url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Acarichthys"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Aquatic Arts: Threadfin Acara Cichlid, tank-bred care sheet"
+      url: "https://aquaticarts.com/products/threadfin-acara-cichlid"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Maidenhead Aquatics Fishkeeper: Threadfin Acara"
+      url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/threadfin-acara"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Imperial Tropicals: Albino Threadfin Acara"
+      url: "https://imperialtropicals.com/products/albino-threadfin-acara-acarichthys-heckelii"
+      accessed: '2026-10-13'
+  habitat:
+    text: "The species occurs through lowland Amazon drainages and the Essequibo system of Guyana, with further\
+      \ records in Suriname. Floods connect rivers, lakes and marginal forest or savannah habitats. Direct collecting\
+      \ observations place it among submerged wood in quiet Rio Negro margins and pools; native surveys also record\
+      \ it near vegetation and in floodplain lakes. The natural values here are provisional regional summaries:\
+      \ 26 to 32 C, pH 4.6 to 8.0, 0 to 2 dGH and 0 to 3 dKH. Many readings are network measurements or seasonal\
+      \ means rather than chemistry taken beside identified fish. Near-zero hardness denotes dilute water at coarse\
+      \ resolution. Singapore populations are introduced and do not define these native ranges."
+    sources:
+    - kind: catalog-of-fishes
+      title: "Eschmeyer's Catalog of Fishes: species of Acarichthys, updated 21 September 2026"
+      url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Acarichthys"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Gay (2009). Habitat Expert: Acarichthys heckeli. Practical Fishkeeping, November 2009"
+      url: "https://www.practicalfishkeeping.co.uk/features/habitat-expert-acarichthys-heckeli/"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "ICMBio SALVE: Ficha de Acarichthys heckelii"
+      url: "https://doi.org/10.37002/salve.ficha.35110.2"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Brito et al. (2014). Seasonal and spatial variations in limnological conditions of a floodplain lake\
+        \ (Lake Catalao) connected to both the Solimoes and Negro Rivers, Central Amazonia. Table 2"
+      url: "https://doi.org/10.1590/s0044-59672014000100012"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Fish fauna of small-order streams of savannah and forest fragments landscape in the lower Tapajós\
+        \ River basin, Amazonia (Biota Neotropica 21)"
+      url: "https://doi.org/10.1590/1676-0611-bn-2020-1179"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: Oltman (1968). Reconnaissance investigations of the discharge and water quality of the Amazon River.
+        USGS Circular 552
+      url: "https://doi.org/10.3133/cir552"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Affonso et al. (2011). Limnological characterization of floodplain lakes in Mamiraua Sustainable Development\
+        \ Reserve, Central Amazon"
+      url: "https://doi.org/10.4322/actalb.2011.023"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Caraballo et al. (2014). Diel patterns of temperature, conductivity and dissolved oxygen in an Amazon\
+        \ floodplain lake: description of a friagem phenomenon"
+      url: "https://doi.org/10.1590/s2179-975x2014000300011"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: Prado et al. (2009). Fish communities associated with different aquatic macrophytes shoals in varzea
+        lakes in the lower Solimoes River
+      url: "https://doi.org/10.24188/recia.v1.n2.2009.354"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Evaluation of fisheries management strategies using a biotic integrity index in floodplain lakes in\
+        \ the lower Solimoes River, Amazonas, Brazil (2022)"
+      url: "https://doi.org/10.1590/1809-4392202201461"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: Silva et al. (2019). A contribution to the hydrochemistry and water typology of the Amazon River and
+        its tributaries
+      url: "https://doi.org/10.14393/rcg207246295"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Aprile and Darwich (2013). Nutrients and water-forest interactions in an Amazon floodplain lake: an\
+        \ ecological approach"
+      url: "https://doi.org/10.1590/s2179-975x2013000200008"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Welcomme, R. L. (1985). River fisheries. FAO Fisheries Technical Paper 262, Table 2.7, Rio Negro measurements\
+        \ after Ungemach (1972)."
+      url: "https://www.fao.org/4/t0537e/T0537E02.htm"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Rios-Villamizar et al. (2020). Hydrochemical classification of Amazonian rivers: a systematic review\
+        \ and meta-analysis"
+      url: "https://doi.org/10.14393/rcg217853272"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: Physicochemical features of Amazonian water typologies for water resources management (IOP Conf. Ser.
+        Earth Environ. Sci. 427)
+      url: "https://doi.org/10.1088/1755-1315/427/1/012003"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "FAO: The inland waters of Latin America, Amazon chemistry table after Sioli (1975)"
+      url: "https://www.fao.org/4/ad770b/AD770B05.htm"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: Camara dos Reis et al. (2019). Spatial heterogeneity and hydrological fluctuations drive bacterioplankton
+        community composition in an Amazon floodplain system. Table 1
+      url: "https://doi.org/10.1371/journal.pone.0220695"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "FishBase: Acarichthys heckelii species summary"
+      url: "https://www.fishbase.se/summary/Acarichthys-heckelii.html"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Seriously Fish: Acarichthys heckelii"
+      url: "https://www.seriouslyfish.com/species/acarichthys-heckelii/"
+      accessed: '2026-10-13'
+  sizeAndGrowth:
+    text: "Use 20 cm for either sex as the typical adult planning maximum in this profile. Larger published figures\
+      \ of 23.5 to about 25 cm remain relevant when leaving spare space. Sources disagree about length convention,\
+      \ and 20 cm standard length excludes the tail. No robust aquarium growth series establishes a precise difference\
+      \ between male and female maxima. Young fish develop their fin streamers and adult colors gradually. Plan\
+      \ the adult aquarium from the outset; restricted space and neglected water quality can interfere with growth.\
+      \ Longevity estimates are weak, with species care sheets suggesting roughly six to ten years."
+    sources:
+    - kind: literature
+      title: "Bednarczuk: A Survey of Eartheaters. Tropical Fish Hobbyist"
+      url: "https://www.tfhmagazine.com/articles/freshwater/a-survey-of-eartheaters-full-article"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Rechi (2021). Aquarismo Paulista: Acara Amarelo (Acarichthys heckelii)"
+      url: "https://www.aquarismopaulista.com/acarichthys-heckelii/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Seriously Fish: Acarichthys heckelii"
+      url: "https://www.seriouslyfish.com/species/acarichthys-heckelii/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "FishBase: Acarichthys heckelii"
+      url: "https://www.fishbase.se/summary/Acarichthys-heckelii.html"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "FishFish: Acarichthys heckelii care profile"
+      url: "https://www.fishfish.fr/poisson/acarichthys-heckelii"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Aqua-Fish.Net: Thread-finned cichlid care guide"
+      url: "https://en.aqua-fish.net/fish/thread-finned-cichlid"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Maidenhead Aquatics Fishkeeper: Threadfin Acara"
+      url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/threadfin-acara"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Aquatic Arts: Threadfin Acara Cichlid, tank-bred care sheet"
+      url: "https://aquaticarts.com/products/threadfin-acara-cichlid"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Zierfische-Direkt: Heckels Buntbarsch care sheet"
+      url: "https://www.zierfische-direkt.de/heckels-buntbarsch-acarichthys-heckelii/"
+      accessed: '2026-10-13'
+    - kind: model-knowledge
+      title: Own estimate for a large geophagine cichlid
+  husbandry:
+    text: "The planning minimum is 450 litres with a floor around 150 by 60 cm for one established compatible adult\
+      \ pair. A group or a mixed community needs appreciably larger quarters. Fine sand permits excavation; wood,\
+      \ stable caves and robust plants attached to furnishings can divide sightlines and shelter weaker fish. Leave\
+      \ open swimming space above the bottom and secure heavy decorations against digging. Use a mature biological\
+      \ filter, effective waste removal and quiet resting areas. Around 26 to 29 C and pH 6 to 7.2 have stronger\
+      \ routine husbandry support than the broad tolerance endpoints. The recorded 24 to 32 C, pH 4.5 to 8, GH 0\
+      \ to 12 and KH 0 to 8 tolerances include provisional habitat extensions. Their edges are uncertain and do\
+      \ not establish healthy maintenance for years at every endpoint."
+    sources:
+    - kind: literature
+      title: "Bednarczuk: A Survey of Eartheaters. Tropical Fish Hobbyist"
+      url: "https://www.tfhmagazine.com/articles/freshwater/a-survey-of-eartheaters-full-article"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Brito et al. (2014). Seasonal and spatial variations in limnological conditions of a floodplain lake\
+        \ (Lake Catalao) connected to both the Solimoes and Negro Rivers, Central Amazonia. Table 2"
+      url: "https://doi.org/10.1590/s0044-59672014000100012"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Frois et al. (2021). Fish fauna of small-order streams of savannah and forest fragments landscape\
+        \ in the lower Tapajos River basin, Amazonia"
+      url: "https://doi.org/10.1590/1676-0611-bn-2020-1179"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: Prado et al. (2009). Fish communities associated with different aquatic macrophytes shoals in varzea
+        lakes in the lower Solimoes River
+      url: "https://doi.org/10.24188/recia.v1.n2.2009.354"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: Silva et al. (2019). A contribution to the hydrochemistry and water typology of the Amazon River and
+        its tributaries
+      url: "https://doi.org/10.14393/rcg207246295"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Evaluation of fisheries management strategies using a biotic integrity index in floodplain lakes in\
+        \ the lower Solimoes River, Amazonas, Brazil (2022)"
+      url: "https://doi.org/10.1590/1809-4392202201461"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Welcomme, R. L. (1985). River fisheries. FAO Fisheries Technical Paper 262, Table 2.7, Rio Negro measurements\
+        \ after Ungemach (1972)."
+      url: "https://www.fao.org/4/t0537e/T0537E02.htm"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Rios-Villamizar et al. (2020). Hydrochemical classification of Amazonian rivers: a systematic review\
+        \ and meta-analysis"
+      url: "https://doi.org/10.14393/rcg217853272"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Aprile and Darwich (2013). Nutrients and water-forest interactions in an Amazon floodplain lake: an\
+        \ ecological approach"
+      url: "https://doi.org/10.1590/s2179-975x2013000200008"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: Camara dos Reis et al. (2019). Spatial heterogeneity and hydrological fluctuations drive bacterioplankton
+        community composition in an Amazon floodplain system. Table 1
+      url: "https://doi.org/10.1371/journal.pone.0220695"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: Physicochemical features of Amazonian water typologies for water resources management (IOP Conf. Ser.
+        Earth Environ. Sci. 427)
+      url: "https://doi.org/10.1088/1755-1315/427/1/012003"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: Oltman (1968). Reconnaissance investigations of the discharge and water quality of the Amazon River.
+        USGS Circular 552
+      url: "https://doi.org/10.3133/cir552"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Caraballo et al. (2014). Diel patterns of temperature, conductivity and dissolved oxygen in an Amazon\
+        \ floodplain lake: description of a friagem phenomenon"
+      url: "https://doi.org/10.1590/s2179-975x2014000300011"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Seriously Fish: Acarichthys heckelii"
+      url: "https://www.seriouslyfish.com/species/acarichthys-heckelii/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Nordic Cichlid Society species register: Acarichthys heckelii."
+      url: "https://ciklid.org/artregister/art.php?ID=179"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "AquaInfo: Acarichthys heckelii"
+      url: "https://aquainfo.nl/en/article/acarichthys-heckelii/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "FishFish: Acarichthys heckelii care profile"
+      url: "https://www.fishfish.fr/poisson/acarichthys-heckelii"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Aqua-Fish.Net: Thread-finned cichlid care guide"
+      url: "https://en.aqua-fish.net/fish/thread-finned-cichlid"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "AquariumDomain: Threadfin Geophagus, Acarichthys heckelii."
+      url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/ThreadfinGeophagus.shtml"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Aquatic Arts: Threadfin Acara Cichlid, tank-bred care sheet"
+      url: "https://aquaticarts.com/products/threadfin-acara-cichlid"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Zierfische-Direkt: Heckels Buntbarsch care sheet"
+      url: "https://www.zierfische-direkt.de/heckels-buntbarsch-acarichthys-heckelii/"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Maidenhead Aquatics Fishkeeper: Threadfin Acara"
+      url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/threadfin-acara"
+      accessed: '2026-10-13'
+  socialBehavior:
+    text: "Adult group keeping and reproductive pairing are both reported. This profile uses a naturally compatible\
+      \ pair for its minimum tank recommendation; it does not suggest that two unfamiliar adults will reliably accept\
+      \ one another. Raising juveniles together can reveal partners, but their selection group requires much more\
+      \ space. Published group guidance includes five to six adults in a 160 by 70 by 60 cm aquarium, while another\
+      \ account begins partner selection with eight or more juveniles. Adult rivals or even a partner can face severe\
+      \ attacks despite earlier calm behavior. Divide sightlines, provide escape routes and keep separation facilities\
+      \ available. Repeated pursuit, feeding exclusion or persistent hiding calls for prompt intervention."
+    sources:
+    - kind: literature
+      title: "Gay (2009). Habitat Expert: Acarichthys heckeli. Practical Fishkeeping, November 2009"
+      url: "https://www.practicalfishkeeping.co.uk/features/habitat-expert-acarichthys-heckeli/"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Bednarczuk: A Survey of Eartheaters. Tropical Fish Hobbyist"
+      url: "https://www.tfhmagazine.com/articles/freshwater/a-survey-of-eartheaters-full-article"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Cichlid Room Companion: Acarichthys heckelii, public verification summary"
+      url: "https://cichlidae.com/species.php?id=i4PFCO6q96O9fRPgCNK2Lg"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Seriously Fish: Acarichthys heckelii"
+      url: "https://www.seriouslyfish.com/species/acarichthys-heckelii/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Nordiska Ciklidsallskapet: Acarichthys heckelii species register"
+      url: "https://ciklid.org/artregister/art.php?ID=179"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Aqua-Fish.Net: Thread-finned cichlid care guide"
+      url: "https://en.aqua-fish.net/fish/thread-finned-cichlid"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Maidenhead Aquatics Fishkeeper: Threadfin Acara"
+      url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/threadfin-acara"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Aquatic Arts: Threadfin Acara Cichlid, tank-bred care guidelines"
+      url: "https://aquaticarts.com/products/threadfin-acara-cichlid"
+      accessed: '2026-10-13'
+  diet:
+    text: "Use a varied diet of small prepared omnivore foods, suitable frozen invertebrates and some vegetable-containing\
+      \ food. Their adult body size does not mean they require large prey. Spread portions where both fish can reach\
+      \ them and remove excess food before it degrades the water. Vegetable components complement insect larvae\
+      \ and small crustaceans; a meat-only menu misses part of the reported feeding pattern. The profile does not\
+      \ identify a specific high-protein bloat tendency, but that is not permission to overfeed. Watch body condition\
+      \ and feeding access over time."
+    sources:
+    - kind: database
+      title: "Rechi (2021). Aquarismo Paulista: Acara Amarelo (Acarichthys heckelii)"
+      url: "https://www.aquarismopaulista.com/acarichthys-heckelii/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "AquariumDomain: Threadfin Geophagus species profile"
+      url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/ThreadfinGeophagus.shtml"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Maidenhead Aquatics Fishkeeper: Threadfin Acara"
+      url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/threadfin-acara"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Aquatic Arts: Threadfin Acara Cichlid, tank-bred care sheet"
+      url: "https://aquaticarts.com/products/threadfin-acara-cichlid"
+      accessed: '2026-10-13'
+  breeding:
+    text: "Wild reproduction takes place in a chamber reached through a dug tunnel, sometimes with more than one\
+      \ entrance. A female prepares the nesting area and recruits a mate. The parents protect the brood and the\
+      \ surrounding space. In aquariums, a roomy enclosed pot or similar stable cave can substitute for the natural\
+      \ burrow. Successful spawning still depends on compatible adults and adequate space. Brood size varies considerably\
+      \ between reports. Avoid forcing dramatic changes in heat or chemistry as a shortcut, because courtship itself\
+      \ can expose a partner to serious injury."
+    sources:
+    - kind: literature
+      title: "Gay (2009). Habitat Expert: Acarichthys heckeli. Practical Fishkeeping, November 2009"
+      url: "https://www.practicalfishkeeping.co.uk/features/habitat-expert-acarichthys-heckeli/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "AquariumDomain: Threadfin Geophagus species profile"
+      url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/ThreadfinGeophagus.shtml"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Rechi (2021). Aquarismo Paulista: Acara Amarelo (Acarichthys heckelii)"
+      url: "https://www.aquarismopaulista.com/acarichthys-heckelii/"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Maidenhead Aquatics Fishkeeper: Threadfin Acara"
+      url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/threadfin-acara"
+      accessed: '2026-10-13'
+  sexing:
+    text: "Appearance alone is unreliable in young fish. A mature female in reproductive condition often has a fuller\
+      \ body; males may grow larger and develop longer fin extensions. These tendencies overlap and are not precise\
+      \ measurements. Vivid color or a single long streamer does not reliably establish sex. Assess mature fish\
+      \ over time, combining body shape with reproductive behavior. The equal 20 cm planning maxima in the features\
+      \ reflect the available aquarium size evidence, not a claim that males and females have identical growth."
+    sources:
+    - kind: database
+      title: "Rechi (2021). Aquarismo Paulista: Acara Amarelo (Acarichthys heckelii)"
+      url: "https://www.aquarismopaulista.com/acarichthys-heckelii/"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Maidenhead Aquatics Fishkeeper: Threadfin Acara"
+      url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/threadfin-acara"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Aquatic Arts: Threadfin Acara Cichlid, tank-bred care sheet"
+      url: "https://aquaticarts.com/products/threadfin-acara-cichlid"
+      accessed: '2026-10-13'
+  compatibility:
+    text: "Calm adults with compatible warm, soft-water care requirements are the best candidates for a spacious\
+      \ community. Mesonauta insignis and Biotodoma wavrini were observed with this species, while angelfish were\
+      \ reported from deeper shared pools. Such co-occurrence identifies possible companions but does not prove\
+      \ aquarium compatibility. Allow separate cover and space beyond the pair minimum. Tiny fish can be eaten opportunistically,\
+      \ and habitual fin nippers threaten the trailing fins. Strongly aggressive cichlids or large predators can\
+      \ cause serious problems. Breeding adults may exclude tankmates from a large area, so an established community\
+      \ can require separation. No supported hybrid group is recorded; that evidence gap does not guarantee reproductive\
+      \ isolation."
+    sources:
+    - kind: literature
+      title: "Gay (2009). Habitat Expert: Acarichthys heckeli. Practical Fishkeeping, November 2009"
+      url: "https://www.practicalfishkeeping.co.uk/features/habitat-expert-acarichthys-heckeli/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "AquariumDomain: Threadfin Geophagus species profile"
+      url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/ThreadfinGeophagus.shtml"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Maidenhead Aquatics Fishkeeper: Threadfin Acara"
+      url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/threadfin-acara"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Aquatic Arts: Threadfin Acara Cichlid, tank-bred care sheet"
+      url: "https://aquaticarts.com/products/threadfin-acara-cichlid"
+      accessed: '2026-10-13'
+  problems:
+    text: "The most serious keeping mistake is judging adult behavior from a peaceful juvenile group. Aggression\
+      \ can damage fins or isolate a weaker partner before it becomes obvious during feeding. Digging can undermine\
+      \ decorations and uproot plants, so check the layout regularly. Poor water maintenance increases the risk\
+      \ of damaged skin and fins, head erosion and poor growth. Very warm water also demands careful oxygenation.\
+      \ Introduce new fish through quarantine and investigate changes in appetite, breathing or body condition.\
+      \ These signs warrant a water-quality check and qualified help rather than an assumed diagnosis."
+    sources:
+    - kind: database
+      title: "AquariumDomain: Threadfin Geophagus species profile"
+      url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/ThreadfinGeophagus.shtml"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Seriously Fish: Acarichthys heckelii"
+      url: "https://www.seriouslyfish.com/species/acarichthys-heckelii/"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Maidenhead Aquatics Fishkeeper: Threadfin Acara"
+      url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/threadfin-acara"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Aquatic Arts: Threadfin Acara Cichlid, tank-bred care sheet"
+      url: "https://aquaticarts.com/products/threadfin-acara-cichlid"
+      accessed: '2026-10-13'
+provenance:
+  runs:
+  - role: generator
+    model: gpt-6.1-sol
+    date: '2026-10-13'
+  - role: checker
+    model: gpt-6.1-sol
+    date: '2026-10-13'
+  - role: checker
+    model: gpt-6.1-sol
+    date: '2026-10-13'
+  - role: checker
+    model: gpt-6.1-sol
+    date: '2026-10-13'
+  - role: checker
+    model: gpt-6.1-sol
+    date: '2026-10-13'
+  - role: checker
+    model: gpt-6.1-sol
+    date: '2026-10-13'
+  - role: adjudicator
+    model: gpt-6.1-sol
+    date: '2026-10-13'
+  disagreements:
+  - field: features.origin
+    proposals:
+    - by: generator
+      value:
+        continent: South America
+        region: "Amazon, lower Tocantins and Essequibo river systems"
+        waterbody: null
+        localities:
+        - Amazon main channel and floodplains
+        - Lower Negro River
+        - Lower Xingu River
+        - Lower Trombetas River
+        - Lower Putumayo River
+        - Branco River
+        - Lower Tocantins and Capim rivers
+        - Essequibo basin in Guyana
+    - by: checker-a
+      value:
+        continent: South America
+        region: Amazon and Essequibo basins
+        waterbody: null
+        localities:
+        - Rio Negro
+        - Rio Trombetas
+        - Rio Xingu
+        - Rio Tapajós
+        - Rio Putumayo
+        - Essequibo drainage (Guyana)
+    - by: checker-b
+      value:
+        continent: South America
+        region: "Amazon basin and Essequibo drainage, including the lower Tocantins and Capim systems"
+        waterbody: null
+        localities:
+        - Lower Rio Negro
+        - Rio Branco
+        - Lower Rio Xingu
+        - Lower Rio Trombetas
+        - Amazon mainstem
+        - Essequibo River
+    - by: checker-c
+      value:
+        continent: South America
+        region: Amazon basin and Essequibo drainage of the Guianas
+        waterbody: null
+        localities:
+        - Amazon main channel
+        - lower Putumayo
+        - lower Negro
+        - lower Trombetas
+        - lower Xingu
+        - lower Tocantins and Capim
+        - Branco
+        - Essequibo
+    decision:
+      continent: South America
+      region: "Amazon basin, lower Tocantins and Capim systems, and Essequibo drainage of Guyana, with additional\
+        \ Suriname records"
+      waterbody: null
+      localities:
+      - Amazon main channel and floodplains
+      - Lower Negro River
+      - Branco River
+      - Lower Xingu River
+      - Lower Trombetas River
+      - Lower Putumayo River
+      - Lower Tapajos River
+      - Lower Tocantins and Capim rivers
+      - Essequibo basin in Guyana
+      - Suriname rivers
+    rationale: "The four origin proposals describe the same Amazon and Essequibo core range but list different tributaries.\
+      \ The Catalog controls the native-range identification; FishBase and Seriously Fish supply the lower Tocantins,\
+      \ Capim and Branco detail, while the ICMBio assessment independently adds Tapajos and Suriname records. These\
+      \ locality lists are merged rather than treated as mutually exclusive. Singapore is introduced and contributes\
+      \ no native-water values."
+  - field: features.temperatureC
+    proposals:
+    - by: generator
+      value:
+        min: 28
+        max: 32
+    - by: checker-a
+      value:
+        min: 25
+        max: 29.5
+    - by: checker-b
+      value:
+        min: 28
+        max: 32
+    - by: checker-c
+      value:
+        min: 26.5
+        max: 32
+    - by: tiebreaker-1
+      value:
+        min: 25
+        max: 32
+    - by: tiebreaker-2
+      value:
+        min: 25
+        max: 30
+    decision:
+      min: 26
+      max: 32
+    rationale: "The tally requires a median decision of 26 to 32 C with 2 of 6 votes agreeing and low confidence.\
+      \ Generator and checker-b proposed 28 to 32 C; checker-a 25 to 29.5 C; checker-c 26.5 to 32 C; tiebreaker-1\
+      \ 25 to 32 C; and tiebreaker-2 25 to 30 C. The median lower bound is 25.75 C, rounded to 26, and the median\
+      \ upper bound is 32 C. This statistical synthesis is not a pair of directly observed species endpoints. Gay\
+      \ observed occupied Negro margins at 28 to 30 C; Frois measured 25.2 to 29.4 C across a stream network that\
+      \ included the species; Brito measured seasonal layer means of 28.3 to 31.7 C. Prado reported the wider pooled\
+      \ range of 28.2 to 32.9 C, but captures of this species were confined to flooding and cannot be matched to\
+      \ the hottest reading. Affonso reported an even wider regional range of 26.5 to 34.7 C without confirming\
+      \ this species at those stations. Neither warmer extreme is a proven species exposure, and the selected lower\
+      \ bound omits some cooler surveyed water. FishBase 23 to 26 C comes from an aquarium atlas and is excluded\
+      \ as field evidence."
+  - field: features.temperatureC.tolerance
+    proposals:
+    - by: generator
+      value:
+        min: 24
+        max: 32
+    - by: checker-a
+      value:
+        min: 24
+        max: 29.5
+    - by: checker-b
+      value:
+        min: 24
+        max: 32
+    - by: checker-c
+      value:
+        min: 24
+        max: 32
+    - by: tiebreaker-1
+      value:
+        min: 24
+        max: 32
+    - by: tiebreaker-2
+      value:
+        min: 24
+        max: 30
+    decision:
+      min: 24
+      max: 32
+    rationale: "The tally fixes 24 to 32 C by qualified majority, 4 of 6 votes, with low confidence. Generator,\
+      \ checker-b, checker-c and tiebreaker-1 proposed 24 to 32 C; checker-a 24 to 29.5 C; tiebreaker-2 24 to 30\
+      \ C. Seriously Fish supports 24 to 30 C, Fishkeeper 24 to 29 C, AquariumDomain about 25.6 to 30 C, AquaInfo\
+      \ 23 to 26 C and the Nordic register 23 to 30 C. The selected lower bound excludes the cooler 23 C recommendations\
+      \ because broader corroboration begins at 24 C. The upper bound is provisionally extended to contain the decided\
+      \ natural range; no cited source demonstrates healthy aquarium maintenance for years at 32 C. Prado pooled\
+      \ field readings reach 32.9 C, a wider source range, but do not establish long-term aquarium health or this\
+      \ species at the maximum. About 26 to 29 C has stronger routine support than either outer endpoint."
+  - field: features.ph
+    proposals:
+    - by: generator
+      value:
+        min: 4
+        max: 7.5
+    - by: checker-a
+      value:
+        min: 4.5
+        max: 7.0
+    - by: checker-b
+      value:
+        min: 4.6
+        max: 7.9
+    - by: checker-c
+      value:
+        min: 4.5
+        max: 7.9
+    - by: tiebreaker-1
+      value:
+        min: 4.5
+        max: 8
+    - by: tiebreaker-2
+      value:
+        min: 4.6
+        max: 8
+    decision:
+      min: 4.6
+      max: 8
+    rationale: "The tally fixes pH 4.6 to 8.0 by qualified majority, 4 of 6 votes, at low confidence. Generator\
+      \ proposed 4.0 to 7.5; checker-a 4.5 to 7.0; checker-b 4.6 to 7.9; checker-c 4.5 to 7.9; tiebreaker-1 4.5\
+      \ to 8.0; and tiebreaker-2 4.6 to 8.0. The agreeing bounds have medians of 4.55 and 7.95, rounded to one decimal.\
+      \ Welcomme compiles Rio Negro pH 4.6 to 5.2 and Silva records a lower Negro station mean of 4.62 plus a Solimoes\
+      \ observation of 7.86. Andrade records lake means of 7.5 to 8.0, with 8.06 in the text, and the species in\
+      \ all three management categories. Frois reports the wider acidic network range of 3.4 to 5.3, while the Rios-Villamizar\
+      \ review gives blackwater pH 4 to 5. These lower readings are not linked to individual captures, so the decided\
+      \ minimum does not represent the most acidic basin water. Lake means and regional station data establish a\
+      \ provisional habitat envelope rather than precise species-wide limits."
+  - field: features.ph.tolerance
+    proposals:
+    - by: generator
+      value:
+        min: 4
+        max: 8
+    - by: checker-a
+      value:
+        min: 4.5
+        max: 8.0
+    - by: checker-b
+      value:
+        min: 4.6
+        max: 8
+    - by: checker-c
+      value:
+        min: 4.5
+        max: 8
+    - by: tiebreaker-1
+      value:
+        min: 4.5
+        max: 8
+    - by: tiebreaker-2
+      value:
+        min: 4.6
+        max: 8
+    decision:
+      min: 4.5
+      max: 8
+    rationale: "The tally fixes pH 4.5 to 8.0 by qualified majority, 5 of 6 votes, with low confidence. Generator\
+      \ proposed the wider 4.0 to 8.0 interval; checker-a, checker-c and tiebreaker-1 proposed 4.5 to 8.0; checker-b\
+      \ and tiebreaker-2 4.6 to 8.0. The agreeing lower bounds have median 4.5. Seriously Fish recommends 6 to 8,\
+      \ Fishkeeper 6 to 7.2, AquariumDomain 5.5 to 7.5, AquaInfo 6.5 to 7 and the Nordic register 5.7 to 7.5. The\
+      \ acidic extension contains the decided natural range and reflects regional occurrence rather than demonstrated\
+      \ multi-year aquarium outcomes. The wider Frois network range of 3.4 to 5.3 and Rios-Villamizar blackwater\
+      \ range of 4 to 5 cannot establish chronic maintenance at their minima. Mildly acidic water around pH 6 to\
+      \ 7.2 is better supported for routine care."
+  - field: features.ghDgh
+    proposals:
+    - by: generator
+      value:
+        min: 0
+        max: 2
+    - by: checker-a
+      value:
+        min: 0.5
+        max: 3
+    - by: checker-b
+      value:
+        min: 0
+        max: 2
+    - by: checker-c
+      value:
+        min: 0.1
+        max: 2
+    decision:
+      min: 0
+      max: 2
+    rationale: "The tally fixes 0 to 2 dGH with unanimous agreement under its 2 dGH comparison threshold, at low\
+      \ confidence. Generator and checker-b proposed 0 to 2; checker-a 0.5 to 3; and checker-c 0.1 to 2 dGH. Brito\
+      \ seasonal calcium and magnesium means convert to about 0.31 to 1.14 dGH, using Ca/7.14 + Mg/4.34 with concentrations\
+      \ in mg/L. Aprile and Darwich extrema give a bounding estimate of 0.80 to 1.67 dGH, and Oltman measured 12\
+      \ to 27 mg/L hardness as CaCO3, or 0.67 to 1.51 dGH. The FAO compilation independently gives 0.1 to 1.78 dGH\
+      \ in relevant regional waters. Zero is coarse rounding of very dilute water, not a measured absence of calcium\
+      \ or magnesium. Checker-a proposed the wider 0.5 to 3 interval partly from conductivity, which cannot independently\
+      \ determine GH; the measured-ion evidence supports the tally decision. These are regional proxies rather than\
+      \ contemporaneous capture-site hardness measurements. FishBase has an incomplete 18 dH entry without a usable\
+      \ field context."
+  - field: features.ghDgh.tolerance
+    proposals:
+    - by: generator
+      value:
+        min: 0
+        max: 12
+    - by: checker-a
+      value:
+        min: 0.5
+        max: 12
+    - by: checker-b
+      value:
+        min: 0
+        max: 12
+    - by: checker-c
+      value:
+        min: 0.1
+        max: 12
+    decision:
+      min: 0
+      max: 12
+    rationale: "The tally fixes 0 to 12 dGH with unanimous agreement under its comparison threshold and low confidence.\
+      \ Generator and checker-b proposed 0 to 12; checker-a 0.5 to 12; checker-c 0.1 to 12 dGH. Seriously Fish gives\
+      \ 1 to 12, FishFish 5 to 12, Aqua-Fish 6 to 12 and Zierfische-Direkt 4 to 12. Fishkeeper supplies the wider\
+      \ upper allowance of 15 dGH without a numerical lower limit; the more widely supported 12 dGH ceiling is retained\
+      \ as a cautious limit. The near-zero lower boundary is extended from regional natural chemistry and rounding,\
+      \ not from a controlled chronic aquarium trial. Different lower care-sheet recommendations do not prove physiological\
+      \ minima."
+  - field: features.khDkh
+    proposals:
+    - by: generator
+      value:
+        min: 0
+        max: 3
+    - by: checker-a
+      value:
+        min: 0.5
+        max: 2.5
+    - by: checker-b
+      value:
+        min: 0
+        max: 3
+    - by: checker-c
+      value:
+        min: 0
+        max: 2
+    decision:
+      min: 0
+      max: 3
+    rationale: "The tally fixes the natural range at 0 to 3 dKH with low confidence; this plain fact deliberately\
+      \ has no verification object. Generator and checker-b proposed 0 to 3; checker-a 0.5 to 2.5; and checker-c\
+      \ 0 to 2 dKH. Brito seasonal bicarbonate means span 12.2 to 58.4 mg/L, equivalent to 0.56 to 2.68 dKH using\
+      \ HCO3/21.8. Oltman bicarbonate measurements give 0.73 to 1.47 dKH, and Camara dos Reis measured Curuai alkalinity\
+      \ corresponding to 0.61 to 1.26 dKH. Caraballo compiles Negro alkalinity below 0.05 meq/L and Solimoes 0.5\
+      \ to 0.6 meq/L, or below 0.14 and 1.4 to 1.68 dKH. Regional low buffering plus outward rounding supports the\
+      \ selected envelope. Zero denotes negligible buffering at this resolution. GH and conductivity were not converted\
+      \ into KH, and the studies do not establish every endpoint at an occupied site."
+  - field: features.khDkh.tolerance
+    proposals:
+    - by: generator
+      value:
+        min: 0
+        max: 7
+    - by: checker-a
+      value:
+        min: 0.5
+        max: 8
+    - by: checker-b
+      value:
+        min: 0
+        max: 7
+    - by: checker-c
+      value:
+        min: 0
+        max: 8
+    decision:
+      min: 0
+      max: 8
+    rationale: "The tally fixes 0 to 8 dKH with unanimous agreement under its 2 dKH comparison threshold and low\
+      \ confidence. Generator and checker-b proposed 0 to 7; checker-a 0.5 to 8; checker-c 0 to 8 dKH. Median agreeing\
+      \ maxima are 7.5, rounded to 8, and median minima are 0. AquariumDomain explicitly recommends 2 to 7 dKH,\
+      \ Zierfische-Direkt 3 to 8 and Aquatic Arts the much wider 0 to 15 dKH interval. The decided upper limit is\
+      \ a cautious synthesis rather than adoption of the commercial 15 dKH ceiling. The lower endpoint includes\
+      \ negligible natural buffering. Checker-a inferred KH from GH and pH recommendations at Seriously Fish and\
+      \ Fishkeeper; those recommendations cannot determine KH and are retained only as husbandry context. Brito\
+      \ alkalinity measurements independently support the low-buffer habitat extension. No controlled multi-year\
+      \ species-specific KH limit was established."
+  - field: features.maxSizeCm
+    proposals:
+    - by: generator
+      value:
+        male: 23.5
+        female: 20
+    - by: checker-a
+      value:
+        male: 20
+        female: 20
+    - by: checker-b
+      value:
+        male: 20
+        female: 20
+    - by: checker-c
+      value:
+        male: 20
+        female: 20
+    decision:
+      male: 20
+      female: 20
+    rationale: "Generator proposed males 23.5 cm and females 20 cm; checker-a, checker-b and checker-c proposed\
+      \ 20 cm for both sexes. FishFish explicitly lists 20 cm for each sex, while Aquatic Arts and FishBase provide\
+      \ an unsexed 20 cm aquarium or total-length figure. This supports a typical adult planning maximum of 20 cm\
+      \ without inventing a precise female reduction. Fishkeeper reports the larger unsexed maximum of 23.5 cm;\
+      \ Bednarczuk about 25 cm; AquariumDomain 25.4 cm; and Aqua-Fish the smaller usual interval ending at 13 cm.\
+      \ Those differing maxima and length conventions limit confidence. Seriously Fish 20 cm standard length ends\
+      \ at the tail base and is not equivalent to 20 cm total length. Larger adults remain possible."
+  - field: features.diet
+    proposals:
+    - by: generator
+      value:
+        type: omnivore
+        bloatSensitive: false
+        foods:
+        - Small omnivore pellets
+        - Insect larvae
+        - Artemia
+        - Daphnia
+        - Vegetable-containing prepared food
+    - by: checker-a
+      value:
+        type: omnivore
+        bloatSensitive: false
+        foods:
+        - insect larvae
+        - small invertebrates
+        - frozen foods
+        - vegetable matter
+    - by: checker-b
+      value:
+        type: omnivore
+        bloatSensitive: false
+        foods:
+        - Aquatic and terrestrial invertebrates
+        - Plant material and algae
+        - Detritus
+        - Varied prepared foods with vegetable ingredients
+    - by: checker-c
+      value:
+        type: omnivore
+        bloatSensitive: false
+        foods:
+        - small aquatic invertebrates
+        - insect larvae
+        - prepared cichlid foods
+        - vegetable matter
+    decision:
+      type: omnivore
+      bloatSensitive: false
+      foods:
+      - Small omnivore pellets
+      - Insect larvae
+      - Artemia
+      - Daphnia
+      - Vegetable-containing prepared food
+    rationale: "Generator, checker-a, checker-b and checker-c agree on omnivore and bloatSensitive false; the tally\
+      \ fixes their generator food list with unanimous 4 of 4 verification and medium confidence. Their lists respectively\
+      \ emphasize pellets, insect larvae, Artemia, Daphnia and vegetable-containing foods; larvae, other invertebrates,\
+      \ frozen foods and vegetables; invertebrates, plants, algae, detritus and mixed prepared food; and small invertebrates,\
+      \ larvae, prepared cichlid food and vegetables. FishBase ecology and juvenile food records, the ICMBio assessment\
+      \ and Seriously Fish support mixed animal and plant feeding. The Amazon beach study instead found an insect-dominated\
+      \ benthic-invertivore diet in its samples; that local feeding result does not negate the wider mixed records.\
+      \ CRC verifies insects and detritus only. The false bloat flag records no established species-specific high-protein\
+      \ syndrome and does not guarantee immunity from digestive disease."
+  - field: features.aggressionHeterospecific
+    proposals:
+    - by: generator
+      value: 2
+    - by: checker-a
+      value: 1
+    - by: checker-b
+      value: 2
+    - by: checker-c
+      value: 2
+    decision: 2
+    rationale: "Generator, checker-b and checker-c propose level 2; checker-a level 1. Fishkeeper describes defense\
+      \ of a sizeable breeding area and Aqua-Fish explicitly describes territorial defense. FishFish and Aquatic\
+      \ Arts independently identify spawning territoriality. Exclusion of intruders from that area supports level\
+      \ 2 more closely than display alone at level 1; no evidence establishes routine attacks beyond the territory.\
+      \ The single archive conflict with severums has unknown space and reproductive context and cannot establish\
+      \ a higher typical grade."
+  - field: features.habitatZones
+    proposals:
+    - by: generator
+      value:
+      - sand
+      - wood
+      - openWater
+    - by: checker-a
+      value:
+      - sand
+      - wood
+      - plants
+    - by: checker-b
+      value:
+      - sand
+      - wood
+      - plants
+      - openWater
+    - by: checker-c
+      value:
+      - sand
+      - wood
+      - openWater
+      - plants
+    decision:
+    - sand
+    - wood
+    - openWater
+    - plants
+    rationale: "Generator proposes sand, wood and openWater; checker-a sand, wood and plants; checker-b and checker-c\
+      \ all four. Gay documents woody margins and pools, Seriously Fish supports a diggable substrate and substantial\
+      \ activity above the bottom, and Bednarczuk and Frois associate the fish with vegetation or flooded margins.\
+      \ The combined set captures substrate, structural shelter, swimming space and vegetation. Plants can be provided\
+      \ as sheltered margins or robust growth on wood rather than as a compulsory densely planted bed. Routine sand-sifting\
+      \ is disputed between sources; the need for digging substrate is better established."
+  - field: features.social
+    proposals:
+    - by: generator
+      value:
+        structure: pair
+    - by: checker-a
+      value:
+        structure: pair
+    - by: checker-b
+      value:
+        structure: group
+        minGroup: 6
+    - by: checker-c
+      value:
+        structure: pair
+    decision:
+      structure: pair
+    rationale: "Generator, checker-a and checker-c propose pair; checker-b group with at least six adults. Gay observes\
+      \ reproductive pairs, Seriously Fish explicitly supplies a pair footprint, and Fishkeeper suggests selecting\
+      \ partners from eight or more juveniles before removing surplus fish where needed. Bednarczuk instead recommends\
+      \ very large quarters for five to six adults, and Aquatic Arts describes loose groups. These accounts establish\
+      \ both pairing and group behavior. A compatible adult pair is selected as the minimum planning unit, not as\
+      \ a claim that the species is solitary outside reproduction. A maintained adult group remains possible in\
+      \ a substantially larger aquarium, with individual separation sometimes still necessary."
+  - field: features.coloration
+    proposals:
+    - by: generator
+      value:
+        baseColors:
+        - silver
+        - yellow
+        - blue
+        - green
+        - red
+        - black
+        pattern: mixed
+    - by: checker-a
+      value:
+        baseColors:
+        - silver
+        - brown
+        - yellow
+        pattern: spots
+    - by: checker-b
+      value:
+        baseColors:
+        - silver
+        - yellow
+        - blue
+        - green
+        - red
+        - black
+        pattern: mixed
+    - by: checker-c
+      value:
+        baseColors:
+        - silver
+        - blue
+        - yellow
+        - red
+        - black
+        pattern: mixed
+    decision:
+      baseColors:
+      - silver
+      - yellow
+      - blue
+      - green
+      - red
+      - black
+      pattern: mixed
+    rationale: "Generator and checker-b propose silver, yellow, blue, green, red and black with a mixed pattern;\
+      \ checker-c the same set without green; checker-a silver, brown and yellow with spots. Adult descriptions\
+      \ combine reflective blue-green scales, warm fin accents and contrasting dark flank or facial marks. Mixed\
+      \ better represents the combined spotting, blotch and faint bars than spots alone. The final colors represent\
+      \ the common adult wild type rather than every hue or the albino morph. Descriptions and photographs support\
+      \ the combination, but perceived dominant colors vary with condition and lighting."
+  - field: features.minTank
+    proposals:
+    - by: generator
+      value:
+        volumeL: 450
+        lengthCm: 150
+        depthCm: 60
+    - by: checker-a
+      value:
+        volumeL: 300
+        lengthCm: 150
+        depthCm: 45
+    - by: checker-b
+      value:
+        volumeL: 672
+        lengthCm: 160
+        depthCm: 70
+    - by: checker-c
+      value:
+        volumeL: 400
+        lengthCm: 150
+        depthCm: 50
+    decision:
+      volumeL: 450
+      lengthCm: 150
+      depthCm: 60
+    rationale: "Generator proposes 450 L with a 150 by 60 cm base; checker-a 300 L and 150 by 45 cm; checker-b 672\
+      \ L and 160 by 70 cm; checker-c 400 L and 150 by 50 cm. The adopted 450 L, 150 by 60 cm recommendation is\
+      \ a cautious synthesis for the selected compatible adult pair, adding escape and cover space to Seriously\
+      \ Fish marginal pair base of 150 by 45 cm. FishFish explicitly recommends 450 L for two fish and gives a 150\
+      \ by 50 by 60 cm example; 60 cm front-to-back depth is an adjudicator allowance rather than a published universal\
+      \ threshold. Aquatic Arts allows about 284 to 341 L for a pair, the Nordic register 375 L with 150 cm length,\
+      \ and Zierfische-Direkt inconsistently gives 400 and 450 L. Bednarczuk 160 by 70 by 60 cm, about 672 L gross,\
+      \ concerns five to six adults and cannot be compared as a pair minimum. AquaInfo recommends the longer 180\
+      \ cm aquarium. Communities and selection groups need materially more space than this minimum, and no dimension\
+      \ guarantees partner safety."
+  - field: features.lifespanYears
+    proposals:
+    - by: generator
+      value:
+        min: 8
+        max: 10
+    - by: checker-a
+      value:
+        min: 8
+        max: 12
+    - by: checker-b
+      value:
+        min: 8
+        max: 12
+    - by: checker-c
+      value:
+        min: 6
+        max: 10
+    decision:
+      min: 6
+      max: 10
+    rationale: "Generator proposes 8 to 10 years; checker-a and checker-b 8 to 12; checker-c 6 to 10. Aqua-Fish\
+      \ gives the species-specific 6 to 8 estimate, Zierfische-Direkt 8 to 10 and FishFish approximately 10. Their\
+      \ combined 6 to 10 interval is retained as a weak husbandry expectation without cohort data. The wider upper\
+      \ allowance of 12 years in checker-a is model-based, and in checker-b rests partly on Bednarczuk general statement\
+      \ that eartheaters may live a dozen years or longer. That group-wide statement does not establish a species-specific\
+      \ 12-year endpoint. Rechi leaves longevity unknown."
+  - field: features.beginnerSuitability
+    proposals:
+    - by: generator
+      value: demanding
+    - by: checker-a
+      value: moderate
+    - by: checker-b
+      value: demanding
+    - by: checker-c
+      value: demanding
+    decision: demanding
+    rationale: "Generator, checker-b and checker-c propose demanding; checker-a moderate. Seriously Fish labels\
+      \ ordinary care moderate and the Nordic register easy, but their brief labels do not remove the detailed reports\
+      \ of fatal adult attacks, partner management and sensitivity to deteriorating water. Bednarczuk recommends\
+      \ gaining experience before keeping Acarichthys, and CRC independently verifies an advanced-keeper assessment.\
+      \ Those practical consequences support demanding with medium confidence despite disagreement among published\
+      \ ratings."
+  - field: taxonomy.synonyms
+    proposals:
+    - by: generator
+      value:
+      - name: Acara heckelii
+        note: Original generic combination.
+      - name: Acara subocularis
+        note: Junior synonym in the Catalog of Fishes.
+      - name: Geophagus thayeri
+        note: Junior synonym in the Catalog of Fishes.
+    - by: checker-a
+      value:
+      - name: "Acara heckelii Müller & Troschel, 1849"
+        note: Original combination.
+      - name: "Acara subocularis Cope, 1878"
+        note: Synonym of Acarichthys heckelii.
+      - name: "Geophagus thayeri Steindachner, 1875"
+        note: Synonym of Acarichthys heckelii.
+    - by: checker-b
+      value:
+      - name: Acara heckelii
+        note: Original combination.
+      - name: Acara subocularis
+        note: Junior synonym in the Catalog of Fishes.
+      - name: Geophagus thayeri
+        note: Junior synonym in the Catalog of Fishes.
+    - by: checker-c
+      value:
+      - name: Acara heckelii
+        note: Original combination
+      - name: Acara subocularis
+        note: Junior synonym
+      - name: Geophagus thayeri
+        note: Junior synonym
+    decision:
+    - name: Acara heckelii
+      note: Original generic combination.
+    - name: Acara subocularis
+      note: Junior synonym in the Catalog of Fishes.
+    - name: Geophagus thayeri
+      note: Junior synonym in the Catalog of Fishes.
+    rationale: "The same three taxonomic names are proposed in every full input. Checker-a includes authority strings\
+      \ while the other inputs use bare names; bare names are retained, with original-combination and synonym status\
+      \ explained separately. The Catalog supports those names and the 1849 authority; wording differences are not\
+      \ competing species identifications."
