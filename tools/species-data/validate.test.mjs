@@ -3,7 +3,11 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 
-import { validateProfile, validateProfiles } from "./validate.mjs";
+import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+
+import { hybridGroupIssues, validateFiles, validateProfile, validateProfiles } from "./validate.mjs";
 
 const SOURCE = { kind: "literature", title: "Example source", url: "https://example.org/a", accessed: "2026-01-02" };
 const SOURCE_2 = { kind: "database", title: "Second source", url: "https://example.org/b", accessed: "2026-01-02" };
@@ -516,4 +520,61 @@ test("a value resting only on archive or forum sources must have confidence low"
   assert.ok(found.some((i) => i.pointer === "/features/feedingSpeed/confidence"), JSON.stringify(found));
   profile.features.feedingSpeed.confidence = "low";
   assert.deepEqual(errors(validateProfile(profile, options)), []);
+});
+
+function group(extra = {}) {
+  return {
+    id: "tropheus",
+    description: "All Tropheus species.",
+    members: ["Tropheus moorii", "Tropheus duboisi"],
+    sources: [SOURCE],
+    basis: "documented",
+    ...extra,
+  };
+}
+
+test("a well-formed hybrid group file has no issues", () => {
+  assert.deepEqual(hybridGroupIssues({ groups: [group(), group({ id: "aulonocara", basis: "presumed" })] }, "g.yaml"), []);
+});
+
+test("a hybrid group without basis is an error", () => {
+  const broken = group();
+  delete broken.basis;
+  const found = errors(hybridGroupIssues({ groups: [broken] }, "g.yaml"));
+  assert.equal(found.length, 1, JSON.stringify(found));
+  assert.equal(found[0].file, "g.yaml");
+  assert.equal(found[0].pointer, "/groups/0/basis");
+});
+
+test("a hybrid group with an unknown basis is an error", () => {
+  const found = errors(hybridGroupIssues({ groups: [group({ basis: "likely" })] }, "g.yaml"));
+  assert.equal(found.length, 1, JSON.stringify(found));
+  assert.equal(found[0].pointer, "/groups/0/basis");
+});
+
+test("a duplicate hybrid group id is an error", () => {
+  const found = errors(hybridGroupIssues({ groups: [group(), group()] }, "g.yaml"));
+  assert.ok(found.some((i) => i.pointer === "/groups/1/id" && /duplicate/.test(i.message)), JSON.stringify(found));
+});
+
+test("a hybrid group with one member is an error", () => {
+  const found = errors(hybridGroupIssues({ groups: [group({ members: ["Tropheus moorii"] })] }, "g.yaml"));
+  assert.ok(found.some((i) => i.pointer === "/groups/0/members"), JSON.stringify(found));
+});
+
+test("a hybrid group without description or sources is an error", () => {
+  const found = errors(hybridGroupIssues({ groups: [group({ description: "", sources: [] })] }, "g.yaml"));
+  assert.deepEqual(found.map((i) => i.pointer).sort(), ["/groups/0/description", "/groups/0/sources"]);
+});
+
+test("a broken hybrid group file fails validateFiles", () => {
+  const dir = mkdtempSync(join(tmpdir(), "hybrid-groups-"));
+  try {
+    const path = join(dir, "hybrid-groups.yaml");
+    writeFileSync(path, "groups:\n  - id: x\n    description: d\n    members: [A a, B b]\n    sources: [{kind: literature, title: t}]\n");
+    const found = errors(validateFiles([], { hybridGroupsPath: path }));
+    assert.ok(found.some((i) => i.pointer === "/groups/0/basis" && i.file.endsWith("hybrid-groups.yaml")), JSON.stringify(found));
+  } finally {
+    rmSync(dir, { recursive: true });
+  }
 });

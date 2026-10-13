@@ -368,6 +368,48 @@ export function validateProfiles(entries, options = {}) {
   return issues;
 }
 
+const HYBRID_GROUP_BASES = ["documented", "presumed"];
+
+/**
+ * Errors for a parsed hybrid group file: every group has a unique id, a description, at least two
+ * member names, at least one source and a basis of documented or presumed.
+ */
+export function hybridGroupIssues(doc, file) {
+  if (!isObject(doc) || !Array.isArray(doc.groups)) {
+    return [error("/groups", "the hybrid group file needs a list \"groups\"", file)];
+  }
+  const issues = [];
+  const ids = new Set();
+  doc.groups.forEach((group, i) => {
+    const at = `/groups/${i}`;
+    if (!isObject(group)) {
+      issues.push(error(at, "a hybrid group must be an object", file));
+      return;
+    }
+    if (typeof group.id !== "string" || group.id.trim() === "") {
+      issues.push(error(`${at}/id`, "a hybrid group needs an id", file));
+    } else if (ids.has(group.id)) {
+      issues.push(error(`${at}/id`, `duplicate hybrid group id "${group.id}"`, file));
+    } else {
+      ids.add(group.id);
+    }
+    if (typeof group.description !== "string" || group.description.trim() === "") {
+      issues.push(error(`${at}/description`, "a hybrid group needs a description", file));
+    }
+    const members = Array.isArray(group.members) ? group.members : [];
+    if (members.length < 2 || !members.every((m) => typeof m === "string" && m.trim() !== "")) {
+      issues.push(error(`${at}/members`, "a hybrid group needs at least two members, each a valid name string", file));
+    }
+    if (!Array.isArray(group.sources) || group.sources.length === 0) {
+      issues.push(error(`${at}/sources`, "a hybrid group needs at least one source", file));
+    }
+    if (!HYBRID_GROUP_BASES.includes(group.basis)) {
+      issues.push(error(`${at}/basis`, `a hybrid group needs a basis, one of ${HYBRID_GROUP_BASES.join(", ")}`, file));
+    }
+  });
+  return issues;
+}
+
 export function loadHybridGroupIds(path = HYBRID_GROUPS_PATH) {
   if (!existsSync(path)) return new Set();
   const doc = parse(readFileSync(path, "utf8"));
@@ -379,15 +421,27 @@ function isFinalProfilePath(path) {
 }
 
 /**
- * Reads and validates YAML files; final and intermediate files may be mixed. The hybrid group ids
- * and the waterbody table can be injected (waterbodies: Map or null) or read from the given
- * paths. A missing table file skips the waterbody rule with a warning.
+ * Reads and validates YAML files; final and intermediate files may be mixed. The hybrid group file
+ * is validated as well. The hybrid group ids and the waterbody table can be injected
+ * (waterbodies: Map or null) or read from the given paths. A missing table file skips the
+ * waterbody rule with a warning.
  */
 export function validateFiles(
   paths,
-  { hybridGroupIds = loadHybridGroupIds(), waterbodiesPath = WATERBODIES_PATH, waterbodies } = {},
+  { hybridGroupIds, hybridGroupsPath = HYBRID_GROUPS_PATH, waterbodiesPath = WATERBODIES_PATH, waterbodies } = {},
 ) {
   const issues = [];
+  if (existsSync(hybridGroupsPath)) {
+    const groupsFile = relative(process.cwd(), hybridGroupsPath) || hybridGroupsPath;
+    try {
+      const doc = parse(readFileSync(hybridGroupsPath, "utf8"));
+      issues.push(...hybridGroupIssues(doc, groupsFile));
+      hybridGroupIds ??= new Set((Array.isArray(doc?.groups) ? doc.groups : []).map((g) => g?.id));
+    } catch (e) {
+      issues.push(error("", `cannot read or parse YAML: ${e.message}`, groupsFile));
+    }
+  }
+  hybridGroupIds ??= new Set();
   const finals = [];
   const others = [];
   for (const path of paths) {

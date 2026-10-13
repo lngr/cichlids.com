@@ -103,7 +103,18 @@ every member may cross with every other member. A documented cross of two specie
 group is a group of two members. Crossability is not transitive (A crosses with B and B with C, but
 A not with C), so a species belongs to every group whose crosses concern it. The groups and their
 members are listed in `hybrid-groups.yaml`. Two species that share at least one group are in hybrid
-conflict, which is a hard conflict in one tank.
+conflict in one tank.
+
+Every group has a `basis` that states the strength of its evidence and sets the level of the conflict
+in the stocking planner:
+
+| Basis | Evidence | Conflict of two members in one tank |
+|---|---|---|
+| `documented` | At least one cross between named members is reported from the wild or from an aquarium where the fish could choose partners of their own species. | Hard (warning). |
+| `presumed` | Only general warnings exist, such as hobby sources saying that the species of a genus cross and must not share a tank, or a very close relationship. | Medium (caution). |
+
+A forced laboratory cross, such as females kept without a male of their own species, does not make a
+group `documented`.
 
 ## Minimum tank (`minTank`)
 

@@ -1,13 +1,24 @@
 # Curated hybrid groups: closely related species that cross in tanks. Every member of a group may
 # cross with every other member, and a documented cross of two species without a wider group is a
-# group of two members. Two species that share at least one group are a hard conflict of the
-# compatibility check in one tank. Members are valid names. Crossability is not transitive, so a
-# species belongs to every group whose crosses concern it. When the vote of the species pipeline
-# decides a group that is not listed, the adjudicator adds it with its members and the sources that
-# report crosses.
+# group of two members. Members are valid names. Crossability is not transitive, so a species
+# belongs to every group whose crosses concern it. When the vote of the species pipeline decides a
+# group that is not listed, the adjudicator adds it with its members and the sources that report
+# crosses.
+#
+# Every group has a basis that states the strength of its evidence and sets the conflict level of
+# the compatibility check for two species that share the group:
+#   documented  at least one cross between named members is reported from the wild or from an
+#               aquarium where the fish could choose partners of their own species; shared
+#               membership is a hard conflict (warning).
+#   presumed    only general warnings exist, such as hobby sources saying that the species of a
+#               genus cross and must not share a tank, or a very close relationship; shared
+#               membership is a medium conflict (caution).
+# A forced laboratory cross, such as females kept without a male of their own species, does not
+# make a group documented.
 groups:
   - id: maylandia
     description: Species of Maylandia (Metriaclima), which cross readily in tanks, also across colour forms, together with the look-alike Cynotilapia afra, whose blue barred males resemble Maylandia zebra and which forms hybrids with it in the wild where it was introduced to Thumbi West Island in Lake Malawi.
+    basis: documented
     members:
       - Maylandia zebra
       - Maylandia estherae
@@ -45,20 +56,68 @@ groups:
         note: Calls C. afra and Pseudotropheus zebra closely related and hybridising and traces part of the mtDNA diversity of introduced C. afra to introgression from P. zebra.
   - id: tropheus
     description: All Tropheus species and locality forms; locality forms are kept apart as well to preserve them.
+    basis: documented
     members:
       - Tropheus moorii
       - Tropheus duboisi
       - Tropheus brichardi
       - Tropheus annectens
+    sources:
+      - kind: literature
+        title: "Van Steenberge, M., Raeymaekers, J. A. M., Hablützel, P. I., Vanhove, M. P. M., Koblmüller,
+          S. and Snoeks, J. (2018). Delineating species along shifting shorelines: Tropheus (Teleostei,
+          Cichlidae) from the southern subbasin of Lake Tanganyika. Frontiers in Zoology 15, 42."
+        url: https://doi.org/10.1186/s12983-018-0287-4
+        accessed: 2026-10-12
+        note: natural hybrid populations between T. moorii and T. sp. 'red'
+      - kind: literature
+        title: Sefc, K. M. et al. (2017). Shifting barriers and phenotypic diversification by hybridisation.
+          Ecology Letters 20.
+        url: https://doi.org/10.1111/ele.12766
+        accessed: 2026-10-12
+        note: hybrid colour variant, cross confirmed experimentally
+      - kind: literature
+        title: Konings, A. (2009). Tropheus - home is where the rocks are. Practical Fishkeeping.
+        url: https://www.practicalfishkeeping.co.uk/features/tropheus-home-is-where-the-rocks-are/
+        accessed: 2026-10-12
+        note: different localities in one tank frequently hybridise
+      - kind: database
+        title: Seriously Fish, Tropheus moorii
+        url: https://www.seriouslyfish.com/species/tropheus-moorii/
+        accessed: 2026-10-12
+        note: morphs hybridise freely
   - id: aulonocara
     description: Peacock cichlids of the genus Aulonocara; females look alike and cross easily.
+    basis: presumed
     members:
       - Aulonocara stuartgranti
       - Aulonocara jacobfreibergi
       - Aulonocara baenschi
       - "Aulonocara jacobfreibergi 'Eureka'"
+    sources:
+      - kind: database
+        title: "Seriously Fish: Aulonocara stuartgranti (Grant's Peacock)"
+        url: https://www.seriouslyfish.com/species/aulonocara-stuartgranti/
+        accessed: 2026-10-13
+        note: most Aulonocara can hybridise, so other peacocks are best avoided
+      - kind: database
+        title: Seriously Fish, Aulonocara jacobfreibergi
+        url: https://www.seriouslyfish.com/species/aulonocara-jacobfreibergi/
+        accessed: 2026-10-12
+        note: most Aulonocara hybridise with each other
+      - kind: website
+        title: "Elieson, M.: Aulonocara jacobfreibergi, species article on Cichlid-Forum.com"
+        url: https://www.cichlid-forum.com/articles/a_jacobfreibergi.php
+        accessed: 2026-10-12
+        note: locality forms cross readily and are to be kept apart
+      - kind: literature
+        title: Chin, P. (2008). Aulonocara jacobfreibergi. The Cichlid Room Companion (abstract only).
+        url: https://cichlidae.com/reference.php?id=2318
+        accessed: 2026-10-12
+        note: abstract stresses avoiding cross-breeding
   - id: amphilophus-citrinellus-complex
     description: Midas and red devil cichlids of the Amphilophus citrinellus complex, including the crater-lake species of lakes Apoyo and Xiloá, which lack intrinsic barriers to crossing and hybridise in the laboratory, in the trade and in nature, together with the three-spot cichlid Amphilophus trimaculatus, whose crosses with A. citrinellus and A. labiatus gave rise to the flowerhorn.
+    basis: documented
     members:
       - Amphilophus citrinellus
       - Amphilophus labiatus
@@ -136,12 +195,33 @@ groups:
         note: Names the flowerhorn as the cross of A. citrinellus and Cichlasoma trimaculatum, a synonym of A. trimaculatus.
   - id: symphysodon
     description: All discus species and their aquarium strains.
+    basis: documented
     members:
       - Symphysodon aequifasciatus
       - Symphysodon discus
       - Symphysodon tarzoo
+    sources:
+      - kind: literature
+        title: "Practical Fishkeeping: Discus genus revised"
+        url: https://www.practicalfishkeeping.co.uk/fishkeeping-news/discus-genus-revised/
+        accessed: 2026-10-12
+        note: natural hybrids between discus species reported by Bleher et al. (2007)
+      - kind: literature
+        title: "Amado, M. V., Farias, I. P. and Hrbek, T. (2011). A molecular perspective on systematics,
+          taxonomy and classification of Amazonian discus fishes of the genus Symphysodon. International
+          Journal of Evolutionary Biology 2011, 360654 (with supplement 1: pH and conductivity of
+          Symphysodon habitats after Bleher et al. 2007)."
+        url: https://doi.org/10.4061/2011/360654
+        accessed: 2026-10-12
+        note: admixture between discus phenotypes in the wild
+      - kind: catalog-of-fishes
+        title: Eschmeyer's Catalog of Fishes, species of the genus Symphysodon (online version of 21 Sep. 2026)
+        url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Symphysodon
+        accessed: 2026-10-12
+        note: three valid, closely related discus species
   - id: cyphotilapia
     description: The two frontosa species of Lake Tanganyika, which look alike, meet in a natural hybrid zone in the middle of the lake and are often mixed up in the trade.
+    basis: documented
     members:
       - Cyphotilapia frontosa
       - Cyphotilapia gibberosa
@@ -159,6 +239,7 @@ groups:
         accessed: 2026-10-12
   - id: labidochromis
     description: Described Labidochromis species common in the trade, whose slender bodies and pale or yellowish females look alike; the hobby warns that they and the colour forms of L. caeruleus may cross when kept together.
+    basis: presumed
     members:
       - Labidochromis caeruleus
       - Labidochromis chisumulae
@@ -192,6 +273,7 @@ groups:
         accessed: 2026-10-12
   - id: protomelas-taeniolatus-complex
     description: Protomelas taeniolatus, the very similar Protomelas fenestratus and the undescribed Protomelas sp. 'Steveni Taiwan' of the same "Steveni" group, whose plain barred or striped females are hard to tell apart and whose species and colour forms may cross when kept together.
+    basis: presumed
     members:
       - Protomelas taeniolatus
       - Protomelas fenestratus
@@ -212,6 +294,7 @@ groups:
         accessed: 2026-10-12
   - id: chindongo-elongatus-complex
     description: Chindongo elongatus and its closest elongate, blue-barred relatives C. longior and C. flavus, which the hobby warns not to keep together because the forms of the elongatus complex interbreed in tanks; the group rests on these crossing warnings and the close relationship, and no cross between the three species is documented.
+    basis: presumed
     members:
       - Chindongo elongatus
       - Chindongo longior
@@ -246,6 +329,7 @@ groups:
         note: Places C. elongatus, C. longior and C. flavus together in Chindongo, the barred core of the former elongatus species group; reports no crosses.
   - id: amatitlania-nigrofasciata-complex
     description: The convict cichlid and the three species described in 2007 from its southern and lake populations, which share one morphological clade and are treated as synonyms by some authors; the group rests on this close relationship and the former single-species concept, and no cross between the four species is documented.
+    basis: presumed
     members:
       - Amatitlania nigrofasciata
       - Amatitlania siquia
@@ -281,6 +365,7 @@ groups:
         note: Separates A. nigrofasciata from A. siquia, A. kanna and A. coatepeque by subtle morphological characters and assigns the southern populations to them.
   - id: placidochromis-electra-complex
     description: Placidochromis phenochilus and its close relative P. electra, blue sand-dwelling followers of sand-sifting cichlids that some authors treated as one variable species; the group rests on a hobby warning that the two hybridise when kept together and on this close relationship, and no cross between the two species is documented.
+    basis: presumed
     members:
       - Placidochromis phenochilus
       - Placidochromis electra
@@ -298,7 +383,8 @@ groups:
         accessed: 2026-10-13
         note: Warns that the colour forms of P. electra may hybridise and must not be mixed; does not name P. phenochilus.
   - id: labeotropheus
-    description: All valid species of the scrapermouth genus Labeotropheus, whose slender and deep-bodied forms are traded as colour forms of L. trewavasae and L. fuelleborni; aquarium crosses of L. fuelleborni and L. trewavasae in both directions are documented (Pauers et al.), and the hobby warns against keeping Labeotropheus forms together.
+    description: All valid species of the scrapermouth genus Labeotropheus, whose slender and deep-bodied forms are traded as colour forms of L. trewavasae and L. fuelleborni; the group rests on forced aquarium crosses of L. fuelleborni and L. trewavasae in both directions (Pauers et al.), which show that the species are interfertile, and on the hobby warning against keeping Labeotropheus forms together.
+    basis: presumed
     members:
       - Labeotropheus fuelleborni
       - Labeotropheus trewavasae
@@ -334,6 +420,7 @@ groups:
         note: Warns that the more than forty colour forms may hybridise and should not be mixed in aquaria.
   - id: heros
     description: The five valid species of the severum genus Heros, which look alike and are mixed up in the trade, where most severums are H. efasciatus or stock of unclear origin; the group rests on this close relationship, the confusion of the species in the trade and hobby reports of mixed captive stock, and no cross between the species is documented.
+    basis: presumed
     members:
       - Heros severus
       - Heros efasciatus
@@ -375,6 +462,7 @@ groups:
         note: Hobby report that attributes the variable bar pattern of captive-bred true H. severus to unwanted hybridisation and notes that H. severus and H. liberifer occur together in Venezuela.
   - id: copadichromis
     description: All valid species of the utaka genus Copadichromis, whose silvery, dark-spotted females and juveniles look alike; Seriously Fish warns on each of its five Copadichromis profiles that the species of the genus hybridise and must not share a tank, a warning phrased for the whole genus rather than for named pairs, and Anseeuw et al. (2012) explain divergent mtDNA lineages in Copadichromis by past hybridisation in the lake; the group therefore covers every valid species of the genus, and no aquarium cross between two named species is documented.
+    basis: presumed
     members:
       - Copadichromis atripinnis
       - Copadichromis azureus
@@ -443,6 +531,7 @@ groups:
         note: Finds two deeply divergent mtDNA lineages across Copadichromis species without matching nuclear structure and attributes them most likely to past hybridisation; reports no cross between two named species.
   - id: melanochromis
     description: All valid species of the mbuna genus Melanochromis, whose striped males and golden or pale females look alike; Seriously Fish (on its M. auratus and M. chipokae pages), TFH Magazine, M. K. Oliver and AquaInfo warn that M. auratus crosses with other Melanochromis and must not share a tank with them, warnings phrased for the whole genus rather than for named pairs, so the group covers every species the Catalog of Fishes lists as valid in Melanochromis and none of the striped species now placed in Pseudotropheus (such as P. johannii), which no source names as crossing partners; no published cross between two named species is documented, and Konings and Stauffer (2012) found no hybrids where M. loriae was introduced among M. heterochromis in Lake Malawi.
+    basis: presumed
     members:
       - Melanochromis auratus
       - Melanochromis baliodigma
@@ -499,6 +588,7 @@ groups:
         note: Revises the genus and its valid species; reports no hybrids between introduced M. loriae and native M. heterochromis.
   - id: pterophyllum
     description: The three valid angelfish species of the genus Pterophyllum, which are close relatives with the same shape and breeding mode; a captive cross of P. altum and P. scalare is documented (Clarke, 2010), while P. leopoldi belongs to the group because hobby sources consider the farmed angelfish a mixed stock carrying genes of both other species, and no cross involving P. leopoldi is documented.
+    basis: documented
     members:
       - Pterophyllum scalare
       - Pterophyllum altum
