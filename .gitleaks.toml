@@ -1,0 +1,20 @@
+# gitleaks configuration for the pre-push hook and the CI secrets-scan job.
+# The default rules apply; the allowlist below only removes paths from the scan.
+
+title = "cichlids.com gitleaks configuration"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Recovered legacy material and lock files"
+paths = [
+  # Recovered legacy configs with credentials that are treated as compromised, plus PII.
+  '''^workspace-legacy/''',
+  # Content hashes in lock files resemble tokens.
+  '''(^|/)pnpm-lock\.yaml$''',
+  '''(^|/)package-lock\.json$''',
+  '''(^|/)packages\.lock\.json$''',
+  '''(^|/)\.terraform\.lock\.hcl$''',
+  '''\.lock$''',
+]
