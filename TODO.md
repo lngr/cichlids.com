@@ -96,17 +96,21 @@ System. Details in `PROJECT-STATUS.md`, Abschnitt 9.
 
 ## 3. Artenprofile
 
-Stand: 32 Profile in `data/species/profiles/`, alle validiert. Verfahren in
-`tools/species-data/README.md`.
+Stand: 37 Profile in `data/species/profiles/`, alle validiert. Verfahren in
+`tools/species-data/README.md`. Je Art stimmen Generator, Prüfer A (Opus), Prüfer B (Sonnet) und
+Prüfer C (Codex, gpt-6.1-sol) ab.
 
 ### 3.1 Weitere Profile
 
-- [ ] Nächste Arten nach Fotoanzahl: 825 Protomelas sp. 'steveni Taiwan', 478 Pseudotropheus
-  greshakei, 462 Pseudotropheus acei, 4 Altolamprologus compressiceps, 259 Copadichromis borleyi;
-  danach weiter nach Fotoanzahl
+- [ ] Nächste Arten nach Fotoanzahl: 469 Pseudotropheus demasoni, 618 Amphilophus labiatus,
+  366 Melanochromis auratus, 489 Pseudotropheus socolofi (in Arbeit), 294 Dimidiochromis
+  compressiceps, 480 Pseudotropheus lombardoi, 707 Cichlasoma salvini, 223 Aulonocara eureka;
+  danach weiter nach Fotoanzahl, Synonym-Paare gemeinsam (etwa 739 Herichthys cyanoguttatus mit
+  685 Cichlasoma cyanoguttatum)
 - [ ] Die harten Merkmale aller Arten sind vor Slice 4 gesichert
-- [ ] Das OpenAlex-Budget (1 USD am Tag, Reset 02:00 Uhr MESZ) reicht für etwa 12 Arten am Tag;
-  klären, ob ein höheres Budget sinnvoll ist
+- [ ] Das OpenAlex-Tagesbudget (1 USD, Reset 02:00 Uhr MESZ) reicht für etwa 12 Arten. Danach
+  zahlt das Prepaid-Guthaben des Schlüssels (am 2026-10-13 etwa 10 USD), weil die Werkzeuge nur
+  bei HTTP 429 oder 402 auf Europe PMC und Crossref ausweichen; Restguthaben im Blick behalten
 
 ### 3.2 Offene Fragen zum Verfahren
 
@@ -126,16 +130,28 @@ Zu jeder Frage ist eine vorläufige Umsetzung in Gebrauch; sie wird bestätigt o
   anderen als website; Tropical Freshwater Fish und FishProfiles sind als database eingestuft.
   Davon hängt ab, ob ein hartes Merkmal zwei externe Quellen hat. Ebenso offen: ob Cichlid Room
   Companion als eine der zwei Quellen zählt oder nur zusätzlich. Vorschlag: feste Liste der
-  Quellenarten in `tools/species-data/prompts/common.md`, Profile danach neu prüfen.
+  Quellenarten in `tools/species-data/prompts/common.md`, Profile danach neu prüfen. Die
+  Schiedsrichter stufen Händlerseiten (LiveAquaria, Aquarium Glaser, Guidarium) als website
+  ein, Fishkeeper bei Pseudotropheus sp. 'acei' als website und bei Maylandia greshakei
+  als database.
 - [ ] **Heros severus und der Handels-Severum:** Das Profil beschreibt H. severus im engen Sinn
   (Schwarzwasser, pH etwa 4-6). Legacy 749 und die Archivfotos zeigen fast sicher den
   Handels-Severum, meist H. efasciatus. Optionen: zusätzliches Profil H. efasciatus mit
-  Zuordnung der Fotos, oder Legacy 749 umhängen.
+  Zuordnung der Fotos, oder Legacy 749 umhängen. Legacy 709 Cichlasoma severum (187 Fotos) ist
+  ein weiterer Eintrag derselben Art und gehört in diese Entscheidung.
 - [ ] **Vorsichtsregel bei der Ernährung:** Sie kombiniert Merkmale aus verschiedenen Stimmen und
   wird strenger als jede einzelne (Andinoacara rivulatus; Otopharynx lithobates bekommt bei 3:2
-  für Allesfresser den Typ Wirbellosenfresser). Bestätigen oder ändern.
+  für Allesfresser den Typ Wirbellosenfresser; Protomelas sp. 'Steveni Taiwan' bekommt bei 4:1
+  für Allesfresser den Typ Aufwuchsfresser). Bestätigen oder ändern.
+- [ ] **Vorsichtsregel beim Raub:** Bei 3:2 für Stufe 0 entscheidet die Regel Stufe 1
+  (Pseudotropheus sp. 'acei', Maylandia greshakei). Belegt ist dort nur, dass Mbuna Jungfische
+  gelegentlich mitfressen. Bestätigen oder ändern.
 - [ ] **Cynotilapia afra in der Kreuzungsgruppe maylandia:** Belegt sind Feldhybriden nur mit
   M. zebra; jede Maylandia neben C. afra ergibt trotzdem eine Warnung.
+- [ ] **Gattungsweite Kreuzungsgruppe copadichromis:** Sie umfasst alle 25 gültigen Arten und
+  beruht auf der pauschalen Warnung von Seriously Fish und alter Introgression im See
+  (Anseeuw et al. 2012); eine Aquarienkreuzung zweier benannter Arten ist nicht dokumentiert.
+  Zusammen mit Cynotilapia afra klären, welche Belege eine Kreuzungsgruppe braucht.
 - [ ] **Zuchtformen ohne Kreuzungsgruppe:** Aulonocara 'German Red' und 'Rubescens' sind keine
   Mitglieder einer Kreuzungsgruppe. Klären, ob Zuchtformen in die Gruppe ihrer Ausgangsarten
   gehören.
