@@ -1,0 +1,1414 @@
+schemaVersion: 1
+id: mesoheros-festae
+legacyIds: [690]
+status: described
+
+taxonomy:
+  validName: Mesoheros festae
+  genus: Mesoheros
+  species: festae
+  author: (Boulenger, 1899)
+  source: &cof
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes, species list of the genus Mesoheros (entry festae, Heros)"
+    url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Mesoheros
+    accessed: 2026-10-13
+  synonyms:
+    - name: Heros festae
+      note: Original combination, Boulenger 1899; type locality Rio Guayas at Guayaquil, Ecuador. Also used by Ortega and Vari (1986).
+    - name: Cichlaurus festae
+      note: Combination used by Ovchynnyk (1967).
+    - name: Nandopsis festae
+      note: Combination used by Burgess (2000).
+    - name: Cichlasoma festae
+      note: Used by Kullander (2003) as incertae sedis in 'Cichlasoma' and by later checklists; the common trade name and the name of the Ecuadorian aquaculture papers.
+    - name: Amphilophus festae
+      note: Hobby name found on care sheets; not a combination listed by the Catalog of Fishes.
+    - name: Herichthys festae
+      note: Hobby name found on care sheets; not a combination listed by the Catalog of Fishes.
+  legacyNames:
+    - Cichlasoma festae
+  note: >-
+    Boulenger described the species in 1899 as Heros festae from the Rio Guayas at Guayaquil.
+    Ovchynnyk (1967) placed it in Cichlaurus, Ortega and Vari (1986) kept it in Heros, Burgess (2000)
+    put it in Nandopsis, and Kullander (2003) listed it as incertae sedis in 'Cichlasoma', the name
+    under which the trade and the legacy catalog know it. McMahan et al. (2015) and Musilová et al.
+    (2015) erected Mesoheros for this species and its Pacific-slope relatives, followed by Říčan et
+    al. (2016) and later authors; the Catalog of Fishes lists it as valid as Mesoheros festae, with
+    Pacific drainages of Ecuador and Peru as range and an introduced population in Singapore. The
+    Catalog lists no separate festae entry under Cichlasoma, since the species is filed under its
+    original genus Heros. FishBase uses the name Mesoheros festae in its title but keeps the older
+    placement in its remarks, treating the species as incertae sedis in Cichlasoma pending a
+    revision of the heroine cichlids. The Cichlid Room Companion also uses Mesoheros festae. The
+    common name red terror is shared in the trade with Mayaheros urophthalmus, a different species.
+
+names:
+  trade:
+    en: [Red terror, True red terror, Festae cichlid, Festa's cichlid, Guayas cichlid]
+    de: [Tigerbuntbarsch, Red Terror]
+    es-419: [Vieja colorada, Vieja roja]
+
+features:
+  origin:
+    value:
+      continent: South America
+      region: Pacific slope of Ecuador and northernmost Peru, from the Esmeraldas to the Tumbes drainage
+      waterbody: null
+      localities:
+        - Rio Esmeraldas drainage, Ecuador, including the Santiago-Cayapas system
+        - Rio Guayas basin (Daule, Babahoyo and Vinces rivers), Ecuador
+        - Abras de Mantequilla wetland, Los Rios, Ecuador
+        - Rio Tumbes, Peru
+    confidence: high
+    rationale: >-
+      The Catalog of Fishes gives the Pacific drainages of Ecuador and Peru, and FishBase and the
+      Freshwater Fishes of Western Ecuador database narrow this to the coastal rivers between the
+      Esmeraldas in Ecuador and the Tumbes in Peru; the type locality is the Rio Guayas at Guayaquil.
+      Field studies confirm wild fish in the Babahoyo River of the Guayas basin and in the
+      Santiago-Cayapas watershed of Esmeraldas province. One older author restricted the species to
+      the Guayas drainage, which later records contradict. The public part of the Cichlid Room
+      Companion page adds Colombia to the range, which the Catalog of Fishes does not support. An
+      introduced population in Singapore is not part of the natural range. The species lives in
+      rivers, not in a lake of the waterbody table. All three runs agree on the origin.
+    sources:
+      - *cof
+      - &fishbase
+        kind: database
+        title: "FishBase species summary: Mesoheros festae, Guayas cichlid"
+        url: https://www.fishbase.se/summary/Mesoheros-festae.html
+        accessed: 2026-10-13
+      - &depaul
+        kind: database
+        title: "Aguirre, W. and Laaz, E. Freshwater Fishes of Western Ecuador (DePaul University): Mesoheros festae"
+        url: https://condor.depaul.edu/waguirre/fishwestec/mesoheros_festae.html
+        accessed: 2026-10-13
+      - &gonzalez
+        kind: literature
+        title: >-
+          González, M. A., Rodríguez, J. M., Angón, E., Martínez, A., Garcia, A. and Peña, F. (2016).
+          Characterization of morphological and meristic traits and their variations between two
+          different populations (wild and cultured) of Cichlasoma festae, a species native to tropical
+          Ecuadorian rivers. Archives Animal Breeding 59, 435-444.
+        url: https://doi.org/10.5194/aab-59-435-2016
+        accessed: 2026-10-13
+      - &rebolledo
+        kind: literature
+        title: >-
+          Rebolledo Monsalve, E., Jiménez Prado, P., Molinero Ortiz, J. and Toulkeridis, T. (2022).
+          Differences in fish abundance in rivers under the influence of open-pit gold mining in the
+          Santiago-Cayapas watershed, Esmeraldas, Ecuador. Water 14(19), 2992.
+        url: https://doi.org/10.3390/w14192992
+        accessed: 2026-10-13
+      - &mercury
+        kind: literature
+        title: >-
+          Yánez-Jácome, G. S., Merino-Viteri, A., Rebolledo Monsalve, E., Supe Tulcan, R. X., Maurice,
+          L. and Navarrete, H. (2026). Total mercury contamination in fish species of Northwestern
+          Ecuador and potential human health risks. PLoS ONE 21, e0342455.
+        url: https://doi.org/10.1371/journal.pone.0342455
+        accessed: 2026-10-13
+      - &crc
+        kind: website
+        title: "Cichlid Room Companion: Mesoheros festae (public part of the species page)"
+        url: https://cichlidae.com/species.php?id=gNViBJnKJeOLlUb2yaxqcg
+        accessed: 2026-10-13
+    evidence:
+      - source: *cof
+        value: {continent: South America, region: Pacific drainages of Ecuador and Peru}
+      - source: *fishbase
+        value: {continent: South America, region: Esmeraldas River in Ecuador to Tumbes River in Peru}
+      - source: *depaul
+        value: {continent: South America, region: Pacific slope of Ecuador from Esmeraldas to Huaquillas, and the Tumbes River in Peru}
+      - source: *gonzalez
+        value: {continent: South America, region: Babahoyo River, Los Rios province, Ecuador}
+        note: collecting site of the wild sample
+      - source: *mercury
+        value: {continent: South America, region: Cayapas River watershed, Esmeraldas, Ecuador}
+      - source: *crc
+        value: {continent: South America, region: Colombia, Ecuador and Peru}
+        note: verification only; the Colombian record is not supported by the Catalog of Fishes
+
+  temperatureC:
+    value: {min: 23, max: 29}
+    confidence: low
+    verification: {method: conservative, votes: {agree: 3, total: 5}}
+    rationale: >-
+      The votes did not settle: the generator proposed 23 to 29 C, checker-a 20 to 29 C, checker-b
+      and tiebreaker-1 22 to 30 C and tiebreaker-2 20 to 30 C. No candidate reached four agreeing
+      votes, so the vote count took the intersection of all five proposals, 23 to 29 C, with low
+      confidence. This intersection is narrower than the range the sources measured where the
+      species lives. The river data span about 20 to 30 C: the Santiago-Cayapas streams of the
+      Esmeraldas drainage measured 22.0 to 29.9 C at control and downstream sites (23.7 to 28.4 C at
+      the unmined control sites), the Babahoyo River in the Guayas basin 19.7 C at the collecting
+      site of wild fish, the lowland rivers of the Guayas basin below 250 m 22.6 C upwards with a
+      mean of 26.0 C at the end of the dry season, and the long-term HYBAM stations means of 24.5 C
+      (Esmeraldas, standard deviation 1 C) and 24.9 C (Tumbes). Single extremes of 19 C at foothill
+      sites and 34 C at a shallow exposed site lie outside this river range. The decided 23 to 29 C
+      therefore covers the core of the measurements and leaves out the cooler Guayas readings
+      between about 20 and 23 C and the warmest stream readings near 30 C. The 26 to 28 C in FishBase
+      comes from an aquarium atlas and is no habitat measurement.
+    sources:
+      - &moquet
+        kind: literature
+        title: >-
+          Moquet, J.-S., Guyot, J.-L., Morera, S., Crave, A., Rau, P., Vauchel, P., Lagane, C.,
+          Sondag, F. et al. (2018). Temporal variability and annual budget of inorganic dissolved
+          matter in Andean Pacific Rivers located along a climate gradient from northern Ecuador to
+          southern Peru. Comptes Rendus Geoscience 350, 76-87, with supplementary Table S3.
+        url: https://doi.org/10.1016/j.crte.2017.11.002
+        accessed: 2026-10-13
+      - &nguyen
+        kind: literature
+        title: >-
+          Nguyen, T. H. T., Forio, M. A. E., Boets, P., Lock, K., Damanik Ambarita, M. N., Suhareva,
+          N. et al. (2018). Threshold responses of macroinvertebrate communities to stream velocity in
+          relation to hydropower dam: a case study from the Guayas River basin (Ecuador). Water 10(9),
+          1195, Table 1.
+        url: https://doi.org/10.3390/w10091195
+        accessed: 2026-10-13
+      - &damanik
+        kind: literature
+        title: >-
+          Damanik-Ambarita, M. N., Lock, K., Boets, P., Everaert, G., Nguyen, T. H. T., Forio, M. A. E.
+          et al. (2016). Ecological water quality analysis of the Guayas river basin (Ecuador) based
+          on macroinvertebrates indices. Limnologica 57, 27-59.
+        url: https://doi.org/10.1016/j.limno.2016.01.001
+        accessed: 2026-10-13
+      - *gonzalez
+      - *rebolledo
+      - &canande
+        kind: literature
+        title: >-
+          Griesbaum, F., Falconí-López, A., Lindner, T., Schönleitner, M., Fuchs, N. and Rödel, M.-O.
+          (2025). Preliminary assessment of the fish fauna of the Canandé Forest Reserve, Ecuadorian
+          Chocó, with comments on its trophic role. Biota Neotropica 25(3), e20251761.
+        url: https://doi.org/10.1590/1676-0611-bn-2025-1761
+        accessed: 2026-10-13
+      - &sjar
+        kind: literature
+        title: >-
+          González, M. A., Angón, E., Rodríguez, J., Moya, Á., García, A. and Peña, F. (2017). Yield,
+          flesh parameters, and proximate and fatty acid composition in muscle tissue of wild and
+          cultured Vieja Colorada (Cichlasoma festae) in tropical Ecuadorian river. Spanish Journal of
+          Agricultural Research 15(3).
+        url: https://doi.org/10.5424/sjar/2017153-10271
+        accessed: 2026-10-13
+      - *fishbase
+    evidence:
+      - source: *moquet
+        value: {min: 23.5, max: 25.5}
+        note: Esmeraldas at D.J. Sade, mean 24.5 C plus or minus one standard deviation, 2001 to 2011; Tumbes at El Tigre mean 24.9 C
+      - source: *damanik
+        value: {min: 19, max: 34}
+        note: 120 sites of the Guayas basin, end of the 2013 dry season, mean 26 C; lowland rivers below 250 m 22.6 to 34 C with a standard deviation of 2.1 C
+      - source: *nguyen
+        value: {min: 19, max: 34}
+        note: same 2013 Guayas survey, median 26 C, standard deviation 2.5 C
+      - source: *rebolledo
+        value: {min: 22.0, max: 29.9}
+        note: Santiago-Cayapas control and downstream sites with the species present, 14 visits 2011 to 2014; control sites 23.7 to 28.4 C; deforested mining sites up to 30.8 C
+      - source: *gonzalez
+        value: {min: 19.7, max: 19.7}
+        note: river reading in the Babahoyo at the collecting site of wild fish; the fish farm measured 24.7 C
+      - source: *sjar
+        value: {min: 19.7, max: 19.7}
+        note: same sampling area and river reading as the morphometric study
+      - source: *canande
+        value: {min: 23.2, max: 23.6}
+        note: single evening readings in two forest waters of the Esmeraldas drainage
+      - source: *fishbase
+        value: {min: 26, max: 28}
+        note: aquarium value after Baensch and Riehl, not a habitat measurement
+    tolerance:
+      value: {min: 23, max: 29}
+      confidence: low
+      verification: {method: conservative, votes: {agree: 3, total: 5}}
+      rationale: >-
+        The tolerance votes did not settle either: the generator proposed 23 to 29 C, checker-a and
+        tiebreaker-2 20 to 30 C, checker-b and tiebreaker-1 22 to 30 C. The vote count took the
+        intersection, 23 to 29 C, which already contains the decided natural range. Care sheets put
+        the long-term aquarium range between 24 and 29 C: Seriously Fish and Tropical Freshwater Fish
+        25 to 29 C, Fishkeeper 25 to 28 C, FishProfiles 24.4 to 27.8 C and FishBase, after an
+        aquarium atlas, 26 to 28 C. The wider proposals rest on the river measurements of about 20 to
+        30 C and on aquaculture stock held for a month at 19.5 C; these show that the fish survives
+        cooler and warmer phases, but no source documents years at the edges. The narrower range
+        warns earlier, which is the cautious side; keepers do best at 25 to 28 C.
+      sources:
+        - &sf
+          kind: database
+          title: "Seriously Fish: Cichlasoma festae (Red Terror)"
+          url: https://www.seriouslyfish.com/species/cichlasoma-festae/
+          accessed: 2026-10-13
+        - &tff
+          kind: database
+          title: "Tropical Freshwater Fish: Red Terror, Cichlasoma festae (care sheet)"
+          url: https://tropicalfreshwaterfish.com/species/Cichlasoma_festae.html
+          accessed: 2026-10-13
+        - &fp
+          kind: database
+          title: "FishProfiles.com: Amphilophus festae (care sheet)"
+          url: https://fishprofiles.com/profiles/freshwater/Cichlids/Amphilophus_festae/
+          accessed: 2026-10-13
+        - *fishbase
+        - &fk
+          kind: website
+          title: "Fishkeeper (Maidenhead Aquatics, retailer): Red Terror, Mesoheros festae"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-terror
+          accessed: 2026-10-13
+        - &guidarium
+          kind: website
+          title: "Guidarium: Red Terror (Festa's Cichlid)"
+          url: https://guidarium.com/fishes/red-terror-festas-cichlid
+          accessed: 2026-10-13
+        - *moquet
+        - *damanik
+        - *rebolledo
+        - *sjar
+        - &hidro
+          kind: literature
+          title: >-
+            Mazón Paredes, E., Herrera Rodríguez, M., Mazón Paredes, M., García Martínez, A., Mazón
+            Paredes, C. and Guzmán Guerrero, J. L. (2020). Productive performance of the Guayas cichlid
+            (Mesoheros festae) fed palm meal based diets during the juvenile stage. Hidrobiológica
+            30(3).
+          url: https://doi.org/10.24275/uam/izt/dcbs/hidro/2020v30n3/mazon
+          accessed: 2026-10-13
+      evidence:
+        - source: *sf
+          value: {min: 25, max: 29}
+          note: aquarium recommendation
+        - source: *tff
+          value: {min: 25, max: 29}
+          note: aquarium recommendation
+        - source: *fp
+          value: {min: 24.4, max: 27.8}
+          note: aquarium recommendation, converted from 76 to 82 F
+        - source: *fishbase
+          value: {min: 26, max: 28}
+          note: aquarium value after Baensch and Riehl
+        - source: *fk
+          value: {min: 25, max: 28}
+          note: aquarium recommendation
+        - source: *guidarium
+          value: {min: 25, max: 29}
+          note: aquarium recommendation
+        - source: *moquet
+          value: {min: 23.5, max: 25.5}
+          note: natural Esmeraldas temperatures
+        - source: *damanik
+          value: {min: 19, max: 34}
+          note: natural extremes in the Guayas basin
+        - source: *rebolledo
+          value: {min: 22.0, max: 29.9}
+          note: natural river range in the Santiago-Cayapas watershed
+        - source: *sjar
+          value: {min: 19.7, max: 24.7}
+          note: wild fish in the river and cultured stock in a fish farm in Los Rios
+        - source: *hidro
+          value: {min: 19.5, max: 19.5}
+          note: juveniles fed for 30 days at 19.5 C plus or minus 0.5 C
+
+  ph:
+    value: {min: 6.2, max: 8.0}
+    confidence: medium
+    verification: {method: unanimous, votes: {agree: 3, total: 3}}
+    rationale: >-
+      The rivers of the range are near neutral to slightly alkaline. The 28 Pacific rivers of the
+      HYBAM study range from pH 6.6 to 7.8, with station means of 6.3 for the Esmeraldas and 6.2 for
+      the Tumbes. In the Guayas basin the 2013 dry-season survey found a median of 7.6 and a mean of
+      7.7 with a standard deviation of 0.5; its extremes of 6.6 and 8.9 include a reservoir and
+      eutrophic still water where algae raise the pH. The wild fish of the Babahoyo were caught at
+      pH 7.0 to 7.3, and the soft Santiago-Cayapas streams averaged 7.0 with single readings from 5.6
+      to 8.0. The range 6.2 to 8.0 joins the low river means with the bulk of the Guayas sites and
+      leaves out photosynthetic peaks and acid mine or blackwater readings. The three proposals (6.2
+      to 8.0, 6.5 to 8.0 and 6.0 to 8.0) agree within the threshold of the vote count.
+    sources:
+      - *moquet
+      - *nguyen
+      - *damanik
+      - *gonzalez
+      - *rebolledo
+      - &laccei
+        kind: literature
+        title: >-
+          Goyburo, C., Villamar, K., Villalta, M., Cedeño, J. A., Vitvar, T., Valverde-Armas, P. and
+          Jiménez-Oyola, S. (2023). Hydrochemical characterization of water in Santa Rosa community,
+          southern Ecuador. Proceedings of the LACCEI 2023 conference.
+        url: https://doi.org/10.18687/laccei2023.1.1.594
+        accessed: 2026-10-13
+    evidence:
+      - source: *moquet
+        value: {min: 6.2, max: 7.8}
+        note: station means 6.3 (Esmeraldas) and 6.2 (Tumbes); 6.6 to 7.8 across the 28 sampled rivers; single Esmeraldas samples in the supplementary table reach 8.8
+      - source: *damanik
+        value: {min: 7.2, max: 8.2}
+        note: Guayas basin mean plus or minus one standard deviation; extremes 6.6 to 8.9
+      - source: *nguyen
+        value: {min: 6.6, max: 8.9}
+        note: same Guayas survey, extremes; median 7.6
+      - source: *gonzalez
+        value: {min: 7.0, max: 7.3}
+        note: Babahoyo River collecting site of wild fish and fish farm
+      - source: *rebolledo
+        value: {min: 5.6, max: 8.0}
+        note: unmined control streams of the Santiago-Cayapas watershed, mean 7.0; downstream sites 5.9 to 8.0
+      - source: *laccei
+        value: {min: 4.56, max: 8.13}
+        note: Santa Rosa river system in El Oro; the low values come from mining-affected streams
+      - source: *fishbase
+        value: {min: 7.0}
+        note: lower limit only, aquarium value
+    tolerance:
+      value: {min: 6.0, max: 8.0}
+      confidence: medium
+      verification: {method: unanimous, votes: {agree: 3, total: 3}}
+      rationale: >-
+        Seriously Fish, Tropical Freshwater Fish and Fishkeeper all give pH 6.0 to 8.0 and describe a
+        species that adapts to a wide range of water; Guidarium gives 6.5 to 8.0, FishProfiles a
+        narrower 7.0 to 7.8 and FishBase a lower limit of 7.0. Juveniles grew in an Ecuadorian feed
+        trial at pH 6.7 plus or minus 0.5, and wild fish were held for two days at pH 5.6 before
+        slaughter, a short exposure that says nothing about long-term keeping. The range 6.0 to 8.0
+        contains the natural range of 6.2 to 8.0.
+      sources:
+        - *sf
+        - *tff
+        - *fp
+        - *fishbase
+        - *fk
+        - *guidarium
+        - *sjar
+        - *hidro
+      evidence:
+        - source: *sf
+          value: {min: 6.0, max: 8.0}
+          note: aquarium recommendation
+        - source: *tff
+          value: {min: 6.0, max: 8.0}
+          note: aquarium recommendation, optimum 7.0
+        - source: *fp
+          value: {min: 7.0, max: 7.8}
+          note: aquarium recommendation
+        - source: *fishbase
+          value: {min: 7.0}
+          note: lower limit only, aquarium value
+        - source: *fk
+          value: {min: 6.0, max: 8.0}
+          note: aquarium recommendation, wide adaptability stated
+        - source: *guidarium
+          value: {min: 6.5, max: 8.0}
+          note: aquarium recommendation
+        - source: *hidro
+          value: {min: 6.2, max: 7.2}
+          note: culture tanks, pH 6.7 plus or minus 0.5 over 30 days
+        - source: *sjar
+          value: {min: 5.6, max: 7.3}
+          note: two days at pH 5.6 in holding tanks; river and farm 7.0 to 7.3
+
+  ghDgh:
+    value: {min: 1, max: 5}
+    confidence: medium
+    verification: {method: unanimous, votes: {agree: 3, total: 3}}
+    rationale: >-
+      The coastal rivers carry soft water. Total hardness calculated from the HYBAM major-ion means
+      is 2.2 dGH for the Esmeraldas (0.22 mmol/L calcium, 0.17 mmol/L magnesium; 1.3 to 3.1 dGH
+      within one standard deviation) and 3.1 dGH for the Tumbes (0.8 to 5.4 dGH within one standard
+      deviation). The Santiago-Cayapas streams are softer still, with conductivities of about 11 to
+      74 uS/cm and little magnesium, and the Santa Rosa river in the far south gives 1.2 to 7.2 dGH
+      from calcium and magnesium, the upper values from sulfate-rich mining streams. No direct
+      hardness measurement exists for the Guayas basin; its median conductivity of about 123 uS/cm in
+      the dry-season survey resembles the 121 and 127 uS/cm of the two HYBAM stations, so its water
+      is taken as similarly soft. The FishBase limit of 15 dH is an aquarium value. The proposals (1
+      to 5, 1 to 6 and 1 to 5 dGH) agree within the threshold of the vote count.
+    sources:
+      - *moquet
+      - *nguyen
+      - *fishbase
+      - *rebolledo
+      - *damanik
+      - *gonzalez
+      - *laccei
+    evidence:
+      - source: *moquet
+        value: {min: 0.8, max: 5.4}
+        note: calculated from calcium and magnesium means and standard deviations of the Esmeraldas and Tumbes stations
+      - source: *rebolledo
+        value: {min: 0.3, max: 2}
+        note: estimated from conductivity and magnesium of the control streams; calcium not reported
+      - source: *damanik
+        value: {min: 2, max: 7}
+        note: estimated from a mean conductivity of 200 uS/cm in the Guayas basin; no ions measured
+      - source: *laccei
+        value: {min: 1.2, max: 7.2}
+        note: calculated from calcium and magnesium of one river in the dry season, median 4.0
+      - source: *fishbase
+        value: {max: 15}
+        note: aquarium value after Baensch and Riehl, not a habitat measurement
+    tolerance:
+      value: {min: 1, max: 18}
+      confidence: medium
+      verification: {method: unanimous, votes: {agree: 3, total: 3}}
+      rationale: >-
+        All three runs proposed 1 to 18 dGH. Care sheets agree that the species accepts a wide
+        hardness range: Seriously Fish and Guidarium give 4 to 18 dGH, Tropical Freshwater Fish 2 to
+        18, FishProfiles 5 to 15, FishBase up to 15 and Fishkeeper up to 20 dH. The upper limit is
+        the value most care sheets share. The lower limit is the soft natural water of the native
+        rivers, which lies below what the care sheets cover.
+      sources:
+        - *sf
+        - *tff
+        - *fp
+        - *fishbase
+        - *fk
+        - *guidarium
+        - *moquet
+      evidence:
+        - source: *sf
+          value: {min: 4, max: 18}
+          note: aquarium recommendation
+        - source: *tff
+          value: {min: 2, max: 18}
+          note: aquarium recommendation, optimum 8
+        - source: *fp
+          value: {min: 5, max: 15}
+          note: aquarium recommendation
+        - source: *fishbase
+          value: {max: 15}
+          note: upper limit only, aquarium value
+        - source: *fk
+          value: {max: 20}
+          note: upper limit only, wide adaptability stated
+        - source: *guidarium
+          value: {min: 4, max: 18}
+          note: aquarium recommendation
+        - source: *moquet
+          value: {min: 0.8, max: 5.4}
+          note: natural water of the Esmeraldas and Tumbes
+
+  khDkh:
+    value: {min: 1, max: 4}
+    confidence: medium
+    verification: {method: unanimous, votes: {agree: 3, total: 3}}
+    rationale: >-
+      Bicarbonate is the main anion of the Pacific rivers of Ecuador and northern Peru. The HYBAM
+      stations give 0.91 mmol/L in the Esmeraldas and 0.90 mmol/L in the Tumbes, about 2.5 dKH; one
+      standard deviation spans 1.5 to 3.6 dKH and 1.7 to 3.4 dKH. The Santa Rosa river in the south
+      carries 0.2 to 2.7 dKH, and the very soft Santiago-Cayapas streams cannot hold much more. The
+      somewhat higher conductivity of the Guayas basin suggests a little more bicarbonate there, but
+      no alkalinity was measured. The proposals (1 to 4, 1 to 5 and 0.5 to 3 dKH) agree within the
+      threshold of the vote count.
+    sources:
+      - *moquet
+      - *damanik
+      - *rebolledo
+      - *laccei
+    evidence:
+      - source: *moquet
+        value: {min: 1.5, max: 3.6}
+        note: bicarbonate means plus or minus one standard deviation of the Esmeraldas and Tumbes stations
+      - source: *damanik
+        value: {min: 2, max: 5}
+        note: estimated from conductivity only; no alkalinity measured
+      - source: *laccei
+        value: {min: 0.2, max: 2.7}
+        note: calculated from bicarbonate of one river in the dry season, median 1.4
+    tolerance:
+      value: {min: 1, max: 12}
+      confidence: low
+      verification: {method: unanimous, votes: {agree: 3, total: 3}}
+      rationale: >-
+        No species database states a carbonate hardness for this species. Seriously Fish and FishBase
+        give only total hardness limits of 18 and 15 dGH with pH up to 8, which implies that
+        moderately buffered tap water is kept without trouble; a care guide gives 2 to 10 dKH. In
+        tap water of that total hardness the carbonate hardness rarely exceeds about 12 dKH, so the
+        upper limit is an inference. The lower limit is the soft natural water. The proposals (1 to
+        12, 1 to 10 and 0.5 to 12 dKH) agree within the threshold of the vote count; the value needs
+        confirmation.
+      sources:
+        - *sf
+        - *fishbase
+        - *moquet
+        - *fk
+        - &aquariadise
+          kind: website
+          title: "Aquariadise: Red Terror Cichlid care guide"
+          url: https://aquariadise.com/red-terror-cichlid
+          accessed: 2026-10-13
+      evidence:
+        - source: *sf
+          value: null
+          note: no carbonate hardness given; total hardness 4 to 18 dGH and pH 6.0 to 8.0
+        - source: *fishbase
+          value: null
+          note: no carbonate hardness given; total hardness up to 15 dH
+        - source: *moquet
+          value: {min: 1.5, max: 3.6}
+          note: natural water that the tolerance contains
+        - source: *fk
+          value: null
+          note: no carbonate hardness given; total hardness up to 20 dH and pH 6.0 to 8.0
+        - source: *aquariadise
+          value: {min: 2, max: 10}
+          note: aquarium recommendation
+
+  maxSizeCm:
+    value: {male: 38, female: 30}
+    confidence: medium
+    rationale: >-
+      Sources differ widely. Hobby sources that separate the sexes give females of 28 to 30 cm
+      (FishProfiles, Tropical Freshwater Fish, Seriously Fish, Guidarium, Aquarium Glaser, Quality
+      Marine) and males of 35 to 45 cm, with 50 cm figures that read as records (Seriously Fish,
+      Tropical Freshwater Fish, the Western Ecuador database after Laaz et al. 2009). FishBase and
+      Fishkeeper give 25 cm, the length of museum material, and the largest of 100 wild and farmed
+      adults from the Babahoyo measured 25 cm; the wild fish are heavily fished for food and stay
+      smaller than well-fed aquarium males. Males of about 38 cm and females of about 30 cm are the
+      typical maximum of well-kept aquarium fish.
+    sources:
+      - *sf
+      - *tff
+      - *fp
+      - *fishbase
+      - *depaul
+      - *gonzalez
+      - &glaser
+        kind: website
+        title: "Aquarium Glaser fish archive (wholesaler): Mesoheros festae (formerly Cichlasoma festae)"
+        url: https://www.aquariumglaser.de/en/fisharchive/mesoheros-festae-formerly-cichlasoma-festae/
+        accessed: 2026-10-13
+      - &qm
+        kind: website
+        title: "Quality Marine (wholesaler): Feisty Festae, species spotlight"
+        url: https://www.qualitymarine.com/news/feisty-festae/
+        accessed: 2026-10-13
+      - *guidarium
+      - *fk
+    evidence:
+      - source: *glaser
+        value: {male: 35, female: 30}
+      - source: *fp
+        value: {male: 40.6, female: 30.5}
+      - source: *guidarium
+        value: {male: 40, female: 30}
+      - source: *qm
+        value: {male: 45, female: 28}
+      - source: *sf
+        value: {male: 50.8, female: 30.5}
+        note: given as standard length, probably a record
+      - source: *tff
+        value: {male: 50, female: 30}
+        note: probably a record for males
+      - source: *depaul
+        value: {male: 50, female: 50}
+        note: unsexed maximum after Laaz et al. 2009
+      - source: *fishbase
+        value: {male: 25, female: 25}
+        note: total length of museum material, sex not given
+      - source: *gonzalez
+        value: {male: 25, female: 25}
+        note: largest of 100 wild and cultured adults, sexes not separated
+      - source: *fk
+        value: {male: 25, female: 25}
+        note: single maximum without sex
+
+  predation:
+    value: 2
+    confidence: medium
+    verification: {method: unanimous, votes: {agree: 3, total: 3}}
+    rationale: >-
+      The Western Ecuador database, after Laaz et al. (2009), names fishes and crustaceans as the
+      wild food, and the mercury survey of the Cayapas River groups the species with the carnivorous
+      fishes. FishBase mentions only benthic organisms such as small shrimps. In the aquarium
+      Seriously Fish warns that anything that fits into the large mouth is treated as food, which at
+      full size means fish of about 15 cm, and Tropical Freshwater Fish lists live fish among the
+      foods. Fish are taken regularly when they fit, but no source makes them the main food, so the
+      level is 2 and not 3.
+    sources:
+      - *depaul
+      - *sf
+      - *fishbase
+      - *tff
+      - *mercury
+      - *rebolledo
+      - *guidarium
+      - *qm
+    evidence:
+      - source: *depaul
+        value: 2
+        note: eats fishes and crustaceans in the wild
+      - source: *sf
+        value: 2
+        note: any tankmate that fits into the mouth is eaten
+      - source: *tff
+        value: 2
+        note: live fish listed among the foods
+      - source: *mercury
+        value: 2
+        note: grouped with the carnivorous species of the Cayapas River
+      - source: *fishbase
+        value: 1
+        note: benthic organisms such as small shrimps; fish not mentioned
+      - source: *rebolledo
+        value: 1
+        note: listed as omnivorous in a species table, without diet data
+      - source: *guidarium
+        value: 3
+        note: called a piscivore that eats fish fitting into its mouth
+      - source: *qm
+        value: 2
+        note: smaller tankmates may be eaten
+
+  diet:
+    value:
+      type: invertivore
+      bloatSensitive: false
+      foods: [benthic crustaceans such as small shrimps, aquatic invertebrates, insects, fish fry and small fish, fruits and seeds]
+    confidence: medium
+    verification: {method: qualified-majority, votes: {agree: 4, total: 5}}
+    rationale: >-
+      Four of five votes chose invertivore (checker-a, checker-b, tiebreaker-1, tiebreaker-2); the
+      generator proposed omnivore. Every concrete food item reported from the wild is animal: FishBase
+      lists benthic organisms such as small shrimps and gives a trophic level of 3.6, Seriously Fish
+      summarises the data as mainly benthic crustaceans and other invertebrates with fry and
+      possibly fruits and seeds, the Western Ecuador database names fish and crustaceans, and the
+      Cayapas mercury survey groups the species with the carnivores. The omnivore labels of the
+      Western Ecuador database, a fish-community table and the care sheets are not backed by measured
+      plant intake. Fish are eaten but are not the main food. No stomach-content study was found. No
+      source reports bloat, keepers feed meaty pellets, shrimp and mussel as staples, and farmed
+      juveniles grew well on pellets with palm kernel meal, so the species is not bloat sensitive.
+    sources:
+      - *fishbase
+      - &fbfood
+        kind: database
+        title: "FishBase food items: Mesoheros festae"
+        url: https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=12633&genus=Mesoheros&species=festae
+        accessed: 2026-10-13
+      - &fbeco
+        kind: database
+        title: "FishBase ecology: Mesoheros festae"
+        url: https://www.fishbase.se/Ecology/FishEcologySummary.php?StockCode=12633&GenusName=Mesoheros&SpeciesName=festae
+        accessed: 2026-10-13
+      - *sf
+      - *tff
+      - *depaul
+      - *mercury
+      - *rebolledo
+      - *hidro
+      - *fp
+      - *fk
+    evidence:
+      - source: *fishbase
+        value: {type: invertivore, bloatSensitive: false}
+        note: benthic organisms such as small shrimps
+      - source: *fbfood
+        value: {type: invertivore, bloatSensitive: false}
+        note: zoobenthos and benthic crustaceans; mainly animal food hunted as macrofauna, trophic level 3.6
+      - source: *sf
+        value: {type: invertivore, bloatSensitive: false}
+        note: mainly benthic crustaceans and invertebrates, fry and possibly fruits and seeds; the care text calls it omnivorous
+      - source: *tff
+        value: {type: invertivore, bloatSensitive: false}
+        note: insects, shrimp, snails, worms and fish as foods
+      - source: *mercury
+        value: {type: invertivore, bloatSensitive: false}
+        note: grouped as carnivorous without a split between invertebrates and fish
+      - source: *depaul
+        value: {type: omnivore, bloatSensitive: false}
+        note: labelled omnivorous, but the named foods are fish and crustaceans
+      - source: *rebolledo
+        value: {type: omnivore, bloatSensitive: false}
+        note: feeding category in a species table, no diet data shown
+      - source: *fp
+        value: {type: omnivore, bloatSensitive: false}
+        note: meaty foods with some vegetable food recommended
+      - source: *fk
+        value: {type: omnivore, bloatSensitive: false}
+        note: aquarium feeding, meaty foods with some vegetables
+
+  aggressionConspecific:
+    value: 4
+    confidence: high
+    rationale: >-
+      Seriously Fish, Tropical Freshwater Fish and Fishkeeper agree that the weaker fish of an
+      incompatible pair is likely to be killed, that a pair should form from a group of juveniles
+      and that even a formed pair may need a divider when the male wants to spawn and the female is
+      not ready. Guidarium allows at most two fish per tank. Forum keepers in the cichlids.com
+      archive describe individuals that range from tolerable to extremely aggressive. All three runs
+      chose level 4.
+    sources:
+      - *sf
+      - *tff
+      - *fk
+      - *guidarium
+      - *glaser
+      - &arch347
+        kind: archive
+        title: cichlids.com forum thread 347
+        url: https://www.cichlids.com/disc/read.php?1,347
+        accessed: 2026-10-13
+    evidence:
+      - source: *sf
+        value: 4
+      - source: *tff
+        value: 4
+      - source: *fk
+        value: 4
+      - source: *guidarium
+        value: 4
+        note: at most two per tank
+      - source: *arch347
+        value: 3
+        note: individual fish vary; a wild pair was very aggressive
+
+  aggressionHeterospecific:
+    value: 4
+    confidence: medium
+    rationale: >-
+      Fishkeeper calls the species exceptionally aggressive, best kept alone or as a pair, and allows
+      robust Central and South American cichlids only in tanks above about 1000 litres with many
+      visual barriers. FishProfiles reports intolerance of tankmates even in tanks above 750 litres,
+      and Guidarium reports fish of similar size being killed. Seriously Fish and Tropical Freshwater
+      Fish allow similarly sized, robust and aggressive tankmates, which fits level 3, and Aquarium
+      Glaser considers it manageable with other large cichlids given space. A forum keeper saw his
+      fish at the bottom of the hierarchy beside a Jack Dempsey and a Flowerhorn. Level 4 follows the
+      majority of the sources and the heavy attacks of breeding pairs on every tankmate.
+    sources:
+      - *fk
+      - *fp
+      - *sf
+      - *tff
+      - *guidarium
+      - *glaser
+      - *arch347
+      - &arch359
+        kind: archive
+        title: cichlids.com forum thread 359
+        url: https://www.cichlids.com/disc/read.php?1,359
+        accessed: 2026-10-13
+    evidence:
+      - source: *fk
+        value: 4
+      - source: *fp
+        value: 4
+      - source: *guidarium
+        value: 4
+      - source: *sf
+        value: 3
+      - source: *tff
+        value: 3
+      - source: *glaser
+        value: 3
+      - source: *arch347
+        value: 2
+        note: one fish ranked lowest beside a Jack Dempsey and a Flowerhorn
+
+  territory:
+    value: {size: large, breedingOnly: false}
+    confidence: medium
+    rationale: >-
+      Seriously Fish describes it as very territorial and Fishkeeper as highly territorial; adult
+      fish claim a large part of even a 2 m tank outside breeding as well, and breeding pairs defend
+      the whole tank against tankmates and the keeper's hands. All three runs agree.
+    sources:
+      - *sf
+      - *fk
+      - *tff
+      - *guidarium
+    evidence:
+      - source: *sf
+        value: {size: large, breedingOnly: false}
+      - source: *fk
+        value: {size: large, breedingOnly: false}
+        note: tankmates only in tanks above about 1000 litres
+
+  habitatZones:
+    value: [sand, rock, wood, openWater]
+    confidence: medium
+    rationale: >-
+      In the wild the species lives in small to medium rivers and favours slow stretches near the
+      banks with submerged vegetation and woody debris (FishBase, Fishkeeper, the Cayapas mercury
+      survey). In the tank it needs open swimming space, a sandy or fine bottom for digging and
+      secured rock and wood for cover and spawning. Rooted plants are dug up, so plants are a zone
+      it uses in the wild but not one it needs in the tank.
+    sources:
+      - *fishbase
+      - *sf
+      - *fk
+      - *tff
+      - *mercury
+    evidence:
+      - source: *sf
+        value: [rock, wood, openWater]
+        note: much swimming space, stable rocks and wood; plants do not last
+      - source: *fk
+        value: [sand, plants, wood]
+        note: slow, vegetated river margins in the wild; sand, wood and rock in the tank
+      - source: *mercury
+        value: [plants, wood]
+        note: netted at banks with submerged vegetation and woody debris
+
+  social:
+    value: {structure: pair}
+    confidence: high
+    rationale: >-
+      A monogamous open-substrate spawner with biparental care. All husbandry sources recommend a
+      single fish or one established pair grown from a group of juveniles; other adults of the
+      species are treated as rivals.
+    sources:
+      - *sf
+      - *tff
+      - *fk
+      - *guidarium
+      - *glaser
+    evidence:
+      - source: *sf
+        value: {structure: pair}
+      - source: *tff
+        value: {structure: pair}
+      - source: *fk
+        value: {structure: pair}
+      - source: *guidarium
+        value: {structure: pair}
+        note: at most two per tank
+
+  speciesOnly:
+    value: false
+    confidence: medium
+    verification: {method: unanimous, votes: {agree: 3, total: 3}}
+    rationale: >-
+      Seriously Fish allows similarly sized, robust and aggressive tankmates, and Tropical Freshwater
+      Fish names large cichlasomines, large predatory cichlids, catfish and characins as companions;
+      Fishkeeper, Aquarium Glaser and Guidarium likewise allow large robust cichlids or armoured
+      catfish in a spacious tank. FishProfiles advises keeping the fish alone or with its mate, and
+      Fishkeeper prefers this as well, but a species tank in the sense of Tropheus is not the general
+      recommendation of the hobby.
+    sources:
+      - *sf
+      - *tff
+      - *fp
+      - *fk
+      - *guidarium
+      - *glaser
+    evidence:
+      - source: *sf
+        value: false
+        note: similarly sized, robust tankmates possible
+      - source: *tff
+        value: false
+        note: large robust cichlids, catfish and characins listed as companions
+      - source: *fp
+        value: true
+        note: best kept alone or with a mate
+      - source: *fk
+        value: false
+        note: best alone or as a pair; robust cichlids possible above about 1000 litres
+      - source: *glaser
+        value: false
+      - source: *guidarium
+        value: false
+        note: compatibility depends on tank size
+
+  hybridGroup:
+    value: null
+    confidence: medium
+    verification: {method: unanimous, votes: {agree: 3, total: 3}}
+    rationale: >-
+      Mesoheros holds four species, M. festae, M. atromaculatus, M. gephyrus and M. ornatus, all on
+      the Pacific slope of Colombia and Ecuador, and none of the congeners is common in the trade.
+      Neither the Catalog of Fishes nor FishBase nor the field literature reports crosses, and no
+      curated hybrid group contains the species. The look-alike Mayaheros urophthalmus is sold under
+      the same common name but belongs to a different lineage; keeping the two together is avoided
+      for identification and rival-aggression reasons, not because of a documented cross.
+    sources:
+      - *cof
+      - *fishbase
+      - *fp
+    evidence:
+      - source: *cof
+        value: null
+        note: Mesoheros with four Pacific-slope species, none of them a common trade species
+      - source: *fishbase
+        value: null
+        note: no hybrids reported
+
+  coloration:
+    value:
+      baseColors: [red, green, black]
+      pattern: bars
+    confidence: medium
+    rationale: >-
+      Juveniles and females are vivid red to orange with about seven to nine broad black bars and a
+      black spot at the upper base of the tail, and females keep this pattern for life. Adult males
+      turn greenish or yellowish with blue spangling, keep red in the fins and show intense red
+      again while breeding; their bars fade with age but remain visible, the second bar often forked
+      in a Y. The dominant colours of the adult male are therefore red, green and black on a barred
+      pattern. The pattern resembles Mayaheros urophthalmus and, less closely, other barred
+      cichlids.
+    sources:
+      - *depaul
+      - *tff
+      - *fp
+      - *sf
+      - *fk
+      - *aquariadise
+    evidence:
+      - source: *depaul
+        value: {baseColors: [red, black], pattern: bars}
+        note: nine black bands alternating with red, black spot on the caudal base
+      - source: *fp
+        value: {baseColors: [red, black, orange], pattern: bars}
+        note: males keep red dorsal and pelvic fins and blue spangling
+      - source: *tff
+        value: {baseColors: [green, blue], pattern: bars}
+        note: adult males green with fading bars; females keep the red juvenile colour
+      - source: *fk
+        value: {baseColors: [red], pattern: mixed}
+        note: females keep red colour and dark bands; old males lose most bars
+
+  feedingSpeed:
+    value: hasty
+    confidence: low
+    rationale: >-
+      Large, dominant heroine cichlids rush food; Fishkeeper notes that meaty foods are taken with
+      great enthusiasm. No source rates the feeding speed directly. All three runs agree.
+    sources:
+      - *fk
+      - &mk
+        kind: model-knowledge
+        title: General husbandry knowledge of large heroine cichlids
+    evidence:
+      - source: *fk
+        value: hasty
+
+  minTank:
+    value: {volumeL: 750, lengthCm: 200, depthCm: 60}
+    confidence: medium
+    rationale: >-
+      For one adult pair Seriously Fish gives a base of 210 by 60 cm and about 756 litres, and
+      Fishkeeper allows tankmates only above about 1000 litres. Guidarium names 450 litres and 150 cm
+      for a single fish, which is too small for a pair with males near 38 cm. A pair alone needs
+      about 750 litres and 200 cm length; tankmates require considerably more.
+    sources:
+      - *sf
+      - *fk
+      - *guidarium
+      - *aquariadise
+    evidence:
+      - source: *sf
+        value: {volumeL: 756, lengthCm: 210, depthCm: 60}
+      - source: *fk
+        value: {volumeL: 1000, lengthCm: 200, depthCm: 60}
+        note: volume for keeping with tankmates; length and depth not stated
+      - source: *guidarium
+        value: {volumeL: 450, lengthCm: 150, depthCm: 50}
+        note: single fish; depth not stated
+
+  lifespanYears:
+    value: {min: 10, max: 15}
+    confidence: low
+    rationale: >-
+      Only a care guide gives a figure, 12 to 15 years. Large heroine cichlids of comparable size
+      commonly live 10 to 15 years in aquaria; the value needs confirmation.
+    sources:
+      - *aquariadise
+      - *mk
+    evidence:
+      - source: *aquariadise
+        value: {min: 12, max: 15}
+
+  breeding:
+    value: open-substrate-spawner
+    confidence: medium
+    rationale: >-
+      Aquarium Glaser calls it a typical open breeder with a parental family. Fishkeeper describes
+      eggs laid on a cleaned vertical slate, flat wood or in a rock cave, with the larvae moved into
+      pits dug by the parents, and FishProfiles describes the pair cleaning a flat surface. Seriously
+      Fish and Tropical Freshwater Fish call it a cave brooder but describe the same sequence of a
+      sheltered spawning site and pits; spawning on open hard surfaces with biparental pit care is
+      the pattern of an open-substrate spawner. Up to about 3000 eggs per clutch are reported by
+      FishBase and Fishkeeper.
+    sources:
+      - *glaser
+      - *fk
+      - *fp
+      - *sf
+      - *tff
+      - *fishbase
+    evidence:
+      - source: *glaser
+        value: open-substrate-spawner
+      - source: *fk
+        value: open-substrate-spawner
+        note: slate, wood or cave; larvae moved to pits
+      - source: *fp
+        value: open-substrate-spawner
+        note: pair cleans a flat surface
+      - source: *sf
+        value: cave-spawner
+        note: sheltered site or cave, then pits
+
+  beginnerSuitability:
+    value: demanding
+    confidence: high
+    rationale: >-
+      Very large final size, a tank of at least 2 m, a high risk of partner killing and very large
+      broods make it a fish for experienced keepers of large cichlids. Seriously Fish rates it
+      difficult because of the tank size alone. All three runs agree.
+    sources:
+      - *sf
+      - *tff
+      - *fk
+      - *guidarium
+    evidence:
+      - source: *sf
+        value: demanding
+      - source: *fk
+        value: demanding
+        note: non-community fish, very large aquarium and strong filtration
+      - source: *guidarium
+        value: demanding
+
+partners:
+  suitable:
+    - species: Pterygoplichthys pardalis
+      reason: Large armoured catfish that lives on the bottom, is too big to eat and is protected by its armour; care sheets name large armoured catfish as tankmates.
+      condition: Tank of at least 1000 litres with caves for the catfish.
+    - species: Parachromis managuensis
+      reason: Of similar size, robustness and temperament, so it can hold its own against an adult red terror.
+      condition: At least 1000 litres and many visual barriers; both introduced at the same size; separate when a pair spawns.
+    - species: Vieja melanurus
+      reason: Large, robust Central American cichlid of comparable size that feeds largely on plant matter and competes less for the same food.
+      condition: At least 1000 litres; works better with a single red terror than with a breeding pair.
+    - species: Andinoacara rivulatus
+      reason: Lives in the same rivers of western Ecuador and is a robust, assertive cichlid that tolerates similar water.
+      condition: Only in very large tanks with adult green terrors of 25 cm or more; remove when the red terrors breed.
+  unsuitable:
+    - species: Mayaheros urophthalmus
+      reason: Look-alike with the same bar pattern; it provokes rival aggression, and both species are hard to tell apart in the trade.
+    - species: Pterophyllum scalare
+      reason: Slow, tall-bodied fish that fits into the mouth of an adult and would be harassed and eaten.
+    - species: Symphysodon aequifasciatus
+      reason: Peaceful, slow feeder that needs warmer, softer water and calm surroundings; it would be outcompeted and attacked.
+    - species: Amatitlania nigrofasciata
+      reason: Much smaller barred cichlid that is eaten or killed by an adult, and whose similar bars trigger rival behaviour.
+    - species: Paracheirodon innesi
+      reason: Small schooling fish that is simply food for the red terror.
+
+profile:
+  overview:
+    text: >-
+      Mesoheros festae, the red terror, is a large, colourful cichlid from the Pacific side of
+      Ecuador and northern Peru. The trade knows it as Cichlasoma festae; since 2015 it has been
+      placed in the genus Mesoheros. In its home country it is a valued food fish called vieja
+      colorada. Young fish and females are bright red to orange with broad black bars, while big
+      males turn greener and show blue spangles. The species is known as one of the most aggressive
+      cichlids in the hobby: pairs are hard to form, a mismatched partner may be killed, and breeding
+      fish attack everything in their tank. It is a fish for experienced keepers with a tank of at
+      least 2 m. Its water needs are simple, and it is hardy once settled. The look-alike Mayaheros
+      urophthalmus is often sold under the same name, so buy from a dealer who knows the difference.
+    sources:
+      - *cof
+      - *sf
+      - *fk
+      - *depaul
+      - *glaser
+  habitat:
+    text: >-
+      The species lives in the coastal rivers west of the Andes, from the Esmeraldas drainage in
+      northern Ecuador through the large Guayas basin to the Tumbes River in Peru. It is found in
+      small and medium rivers, their tributaries and lowland wetlands such as Abras de Mantequilla,
+      and prefers slow stretches near the bank with submerged plants and fallen wood. These rivers
+      carry soft water with little carbonate: long-term monitoring of the Esmeraldas and Tumbes shows
+      about 2 to 3 dGH and about 2.5 dKH. River temperatures where the fish lives mostly lie between
+      about 22 and 30 C, with means near 25 to 26 C, and the pH is mostly between about 6.2 and 8. A
+      population introduced through the aquarium trade is established in Singapore.
+    sources:
+      - *fishbase
+      - *depaul
+      - *moquet
+      - *damanik
+      - *rebolledo
+      - *mercury
+      - *fk
+  sizeAndGrowth:
+    text: >-
+      Red terrors grow large and heavy. In the aquarium males usually reach 35 to 40 cm and females
+      about 30 cm; reports of 50 cm fish are exceptional records, and wild fish caught for food
+      rarely exceed 25 cm. Growth is fast in the first year: the sexes start to differ in colour at
+      about 10 cm, and pairs usually mature when the male is around 18 to 20 cm and well over a year
+      old. Juveniles raised in Ecuadorian net cages grew from about 6 to 12 cm standard length in
+      half a year. Plan the tank for the adult size from the start, because shops rarely take back a
+      fully grown red terror.
+    sources:
+      - *glaser
+      - *fp
+      - *sf
+      - *tff
+      - *gonzalez
+      - &rbt
+        kind: literature
+        title: >-
+          Rodríguez, J. M., Angón, E., González, M. A., Perea, J., Barba, C. and García, A. (2017).
+          Allometric relationship and growth models of juveniles of Cichlasoma festae (Perciforme:
+          Cichlidae), a freshwater species native in Ecuador. Revista de Biología Tropical 65(3).
+        url: https://doi.org/10.15517/rbt.v65i3.26173
+        accessed: 2026-10-13
+  husbandry:
+    text: >-
+      A single adult pair needs about 750 litres and a tank of at least 200 by 60 cm; tankmates call
+      for 1000 litres or more. Use soft sand or fine rounded gravel, because these fish dig a lot.
+      Build caves and cover from large rocks and wood and bond the rockwork with silicone so it
+      cannot collapse. Leave open swimming space in front. Rooted plants will be uprooted; floating
+      plants or plants tied to wood may survive. Protect the heater or use an external heater, and
+      fit a heavy, tight lid against jumping. Strong filtration and large, frequent water changes
+      keep nitrate low. The species adapts to most tap water: a temperature of 25 to 28 C, pH 6.5 to
+      7.8 and soft to medium-hard water suit it well.
+    sources:
+      - *sf
+      - *fk
+      - *fp
+      - *tff
+  socialBehavior:
+    text: >-
+      Red terrors are fiercely territorial towards their own kind. Placing an adult male and female
+      together often ends with the weaker fish badly hurt or killed. The safer way is to raise a group
+      of six to ten juveniles and let a pair form by itself, then rehome the rest. Even an
+      established male may press a female that is not ready to spawn, so keep a tank divider at hand.
+      Towards other species they defend a large area and, when breeding, attack every fish in the
+      tank as well as the keeper's hands. Individual temperament varies: some fish stay manageable
+      with large companions, others tolerate no tankmates at all.
+    sources:
+      - *sf
+      - *fk
+      - *tff
+      - *glaser
+      - *fp
+      - *arch347
+  diet:
+    text: >-
+      In the wild the red terror feeds mainly on crustaceans such as small shrimps and other bottom
+      invertebrates, also takes small fish and fry, and possibly some fruits and seeds. In the tank it
+      accepts almost everything. A good large cichlid pellet makes a suitable staple, supplemented
+      with frozen shrimp, krill, mussel, earthworms and similar foods. A small plant share such as a
+      spirulina-based food adds variety. Feed adults a moderate amount once or twice a day rather
+      than overfeeding, because the large amounts of waste quickly spoil the water. Live feeder fish
+      are not needed and can bring in disease.
+    sources:
+      - *fishbase
+      - *depaul
+      - *sf
+      - *tff
+      - *fk
+      - *fp
+  breeding:
+    text: >-
+      The species spawns on open but sheltered surfaces such as vertical slate, flat wood or the
+      inside of a rock cave. Before spawning the pair intensifies its colours, courts with jaw
+      locking and tail beating, and digs several pits in the substrate. The female lays up to about
+      3000 eggs, which hatch in about three days; the parents then carry the larvae into the pits.
+      The fry swim freely a few days later and take newly hatched brine shrimp and fine dry food.
+      Both parents guard them for several weeks, and the male becomes extremely aggressive. A
+      divider between male and female after spawning protects the female. Think about where
+      hundreds of fast-growing juveniles will go before letting a pair breed.
+    sources:
+      - *fk
+      - *sf
+      - *fp
+      - *glaser
+      - *fishbase
+  sexing:
+    text: >-
+      Juveniles cannot be sexed reliably until about 10 cm. From then on females keep the bright red
+      to orange body with strong black bars and usually develop dark front parts of the dorsal fin
+      and dark ventral fins, while losing most of their blue spangling. Males grow clearly larger,
+      lose much of the red outside breeding, turn more greenish or yellowish, and keep blue spots in
+      the fins and on the body. Old males can develop a fatty hump on the forehead. During breeding
+      both sexes show their strongest colours, so compare fish of the same age.
+    sources:
+      - *fp
+      - *tff
+      - *fk
+      - *sf
+      - *glaser
+  compatibility:
+    text: >-
+      Many keepers maintain red terrors alone or as a single pair. If tankmates are wanted, they
+      must be equally large and robust, such as big Central American cichlids like Parachromis
+      managuensis or Vieja melanurus, or large armoured catfish. This only works in tanks of 1000
+      litres or more with plenty of visual barriers, and every tankmate may need to be moved out once
+      a pair breeds. Any fish that fits into the mouth will be eaten, which at full size means fish
+      of around 15 cm. Avoid Mayaheros urophthalmus and other barred look-alikes, which trigger
+      rival fights, as well as calm, slow species such as angelfish or discus.
+    sources:
+      - *sf
+      - *tff
+      - *fk
+      - *fp
+      - *glaser
+  problems:
+    text: >-
+      The most common mistake is a tank that is too small: a 5 cm juvenile soon becomes a 35 cm
+      fighter. The second is putting an adult male and female together without a divider, which can
+      end with a dead partner. Insufficiently secured rockwork can collapse when the fish dig, and
+      unprotected heaters get broken. Heavy feeding of large cichlids leads to high nitrate and poor
+      water quality, which in large neotropical cichlids is linked to head and lateral line erosion
+      and to intestinal flagellate problems; keep the water clean, the diet varied and seek expert
+      advice when lesions or white stringy faeces appear. Uncontrolled breeding produces far more
+      large juveniles than the trade can absorb. Finally, check the identity of the fish: many fish
+      sold as red terrors are Mayaheros urophthalmus.
+    sources:
+      - *sf
+      - *fk
+      - *glaser
+      - *fp
+      - *mk
+
+provenance:
+  runs:
+    - role: generator
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-13
+    - role: adjudicator
+      model: claude-opus-5-5
+      date: 2026-10-13
+  disagreements:
+    - field: features.temperatureC
+      proposals:
+        - {by: generator, value: {min: 23, max: 29}}
+        - {by: checker-a, value: {min: 20, max: 29}}
+        - {by: checker-b, value: {min: 22, max: 30}}
+        - {by: tiebreaker-1, value: {min: 22, max: 30}}
+        - {by: tiebreaker-2, value: {min: 20, max: 30}}
+      decision: {min: 23, max: 29}
+      rationale: >-
+        Decided by the vote count with method conservative (3 of 5 votes for the top candidate, fewer
+        than the 4 needed): the intersection of all proposals. It is narrower than the measured river
+        range of about 20 to 30 C, which the rationale of the feature names.
+    - field: features.temperatureC.tolerance
+      proposals:
+        - {by: generator, value: {min: 23, max: 29}}
+        - {by: checker-a, value: {min: 20, max: 30}}
+        - {by: checker-b, value: {min: 22, max: 30}}
+        - {by: tiebreaker-1, value: {min: 22, max: 30}}
+        - {by: tiebreaker-2, value: {min: 20, max: 30}}
+      decision: {min: 23, max: 29}
+      rationale: >-
+        Decided by the vote count with method conservative (3 of 5): the intersection of all
+        proposals, which contains the decided natural range of 23 to 29 C.
+    - field: features.diet
+      proposals:
+        - {by: generator, value: {type: omnivore, bloatSensitive: false}}
+        - {by: checker-a, value: {type: invertivore, bloatSensitive: false}}
+        - {by: checker-b, value: {type: invertivore, bloatSensitive: false}}
+        - {by: tiebreaker-1, value: {type: invertivore, bloatSensitive: false}}
+        - {by: tiebreaker-2, value: {type: invertivore, bloatSensitive: false}}
+      decision: {type: invertivore, bloatSensitive: false}
+      rationale: >-
+        Decided by the vote count with method qualified-majority (4 of 5). All food items reported
+        from the wild are animal; the omnivore label rests on care-sheet wording, not on measured
+        plant intake.
+    - field: features.ph
+      proposals:
+        - {by: generator, value: {min: 6.2, max: 8.0}}
+        - {by: checker-a, value: {min: 6.5, max: 8.0}}
+        - {by: checker-b, value: {min: 6.0, max: 8.0}}
+      decision: {min: 6.2, max: 8.0}
+      rationale: Decided by the vote count with method unanimous (3 of 3); all proposals lie within 0.3 pH of the top candidate.
+    - field: features.ghDgh
+      proposals:
+        - {by: generator, value: {min: 1, max: 5}}
+        - {by: checker-a, value: {min: 1, max: 6}}
+        - {by: checker-b, value: {min: 1, max: 5}}
+      decision: {min: 1, max: 5}
+      rationale: Decided by the vote count with method unanimous (3 of 3); the proposals lie within 2 dGH of each other.
+    - field: features.khDkh
+      proposals:
+        - {by: generator, value: {min: 1, max: 4}}
+        - {by: checker-a, value: {min: 1, max: 5}}
+        - {by: checker-b, value: {min: 0.5, max: 3}}
+      decision: {min: 1, max: 4}
+      rationale: Decided by the vote count with method unanimous (3 of 3); the proposals lie within the agreement threshold of the top candidate.
+    - field: features.khDkh.tolerance
+      proposals:
+        - {by: generator, value: {min: 1, max: 12}}
+        - {by: checker-a, value: {min: 1, max: 10}}
+        - {by: checker-b, value: {min: 0.5, max: 12}}
+      decision: {min: 1, max: 12}
+      rationale: Decided by the vote count with method unanimous (3 of 3); the proposals lie within 2 dKH of the top candidate.
+    - field: features.maxSizeCm
+      proposals:
+        - {by: generator, value: {male: 38, female: 30}}
+        - {by: checker-a, value: {male: 38, female: 28}}
+        - {by: checker-b, value: {male: 30, female: 23}}
+      decision: {male: 38, female: 30}
+      rationale: >-
+        Checker-b based the size on wild fish and the 25 cm of FishBase and Fishkeeper, but the wild
+        fish are heavily fished and smaller than well-fed aquarium adults. Five hobby sources that
+        separate the sexes give females of 30 cm, one 28 cm; males of 35 to 45 cm without the 50 cm
+        records point to about 38 cm.
+    - field: features.aggressionHeterospecific
+      proposals:
+        - {by: generator, value: 4}
+        - {by: checker-a, value: 4}
+        - {by: checker-b, value: 3}
+      decision: 4
+      rationale: >-
+        Fishkeeper, FishProfiles and Guidarium describe fish that tolerate tankmates only in very
+        large tanks, if at all, and breeding pairs attack every tankmate; this matches level 4.
+        Seriously Fish, Tropical Freshwater Fish and Aquarium Glaser support level 3.
+    - field: features.habitatZones
+      proposals:
+        - {by: generator, value: [sand, rock, wood, openWater]}
+        - {by: checker-a, value: [sand, wood, plants, rock]}
+        - {by: checker-b, value: [sand, plants, wood]}
+      decision: [sand, rock, wood, openWater]
+      rationale: >-
+        Plants are used in the wild but uprooted in the tank, so the species does not need them
+        there; rock caves serve for spawning and cover, and Seriously Fish asks for much open
+        swimming space.
+    - field: features.coloration
+      proposals:
+        - {by: generator, value: {baseColors: [orange, red, black, green], pattern: bars}}
+        - {by: checker-a, value: {baseColors: [green, blue], pattern: bars}}
+        - {by: checker-b, value: {baseColors: [red, brown], pattern: mixed}}
+      decision: {baseColors: [red, green, black], pattern: bars}
+      rationale: >-
+        The rubric asks for the dominant colours of the adult male: a green to yellowish ground with
+        red in the fins and during breeding and fading but visible black bars. Orange belongs to
+        juveniles and females, blue to the spangles only, and brown is named by no source.
+    - field: features.minTank
+      proposals:
+        - {by: generator, value: {volumeL: 750, lengthCm: 200, depthCm: 60}}
+        - {by: checker-a, value: {volumeL: 750, lengthCm: 200, depthCm: 60}}
+        - {by: checker-b, value: {volumeL: 450, lengthCm: 150, depthCm: 50}}
+      decision: {volumeL: 750, lengthCm: 200, depthCm: 60}
+      rationale: >-
+        The 450 litres of Guidarium refer to a single fish; Seriously Fish gives 210 by 60 cm and
+        about 756 litres for the pair, the recommended social unit.
+    - field: features.lifespanYears
+      proposals:
+        - {by: generator, value: {min: 10, max: 15}}
+        - {by: checker-a, value: {min: 10, max: 15}}
+        - {by: checker-b, value: {min: 8, max: 15}}
+      decision: {min: 10, max: 15}
+      rationale: The only stated figure, 12 to 15 years from a care guide, supports the higher lower bound; confidence stays low.
+    - field: taxonomy.synonyms
+      proposals:
+        - {by: generator, value: [Heros festae, Cichlasoma festae, Nandopsis festae, Cichlaurus festae, Amphilophus festae]}
+        - {by: checker-a, value: [Heros festae, Cichlasoma festae, Nandopsis festae, Cichlaurus festae, Amphilophus festae, Herichthys festae]}
+        - {by: checker-b, value: [Heros festae, Cichlaurus festae, Nandopsis festae, Cichlasoma festae, Amphilophus festae]}
+      decision: [Heros festae, Cichlaurus festae, Nandopsis festae, Cichlasoma festae, Amphilophus festae, Herichthys festae]
+      rationale: >-
+        The four combinations of the Catalog of Fishes are kept; Amphilophus festae and Herichthys
+        festae appear on care sheets and help users find the species, marked as hobby names without
+        a taxonomic basis.
