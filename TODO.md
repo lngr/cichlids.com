@@ -96,16 +96,16 @@ System. Details in `PROJECT-STATUS.md`, Abschnitt 9.
 
 ## 3. Artenprofile
 
-Stand: 55 Profile in `data/species/profiles/`, alle validiert. Verfahren in
+Stand: 58 Profile in `data/species/profiles/`, alle validiert. Verfahren in
 `tools/species-data/README.md`. Je Art stimmen Generator, Prüfer A (Opus), Prüfer B (Sonnet) und
 Prüfer C (Codex, gpt-6.1-sol) ab.
 
 ### 3.1 Weitere Profile
 
-- [ ] Nächste Arten nach Fotoanzahl: 819 Geophagus altifrons, 406 Nimbochromis livingstoni,
-  36 Cyphotilapia gibberosa (in Arbeit), 233 Aulonocara maylandi, 309 Fossorochromis rostratus,
-  738 Herichthys carpintis, 374 Melanochromis maingano, 557 Hemichromis bimaculatus; danach weiter
-  nach Fotoanzahl, Synonym-Paare gemeinsam (etwa 739 Herichthys cyanoguttatus mit
+- [ ] Nächste Arten nach Fotoanzahl: 233 Aulonocara maylandi, 309 Fossorochromis rostratus,
+  738 Herichthys carpintis, 374 Melanochromis maingano, 557 Hemichromis bimaculatus,
+  318 Labeotropheus fuelleborni, 438 Placidochromis electra, 404 Nimbochromis fuscotaeniatus;
+  danach weiter nach Fotoanzahl, Synonym-Paare gemeinsam (etwa 739 Herichthys cyanoguttatus mit
   685 Cichlasoma cyanoguttatum)
 - [ ] Die harten Merkmale aller Arten sind vor Slice 4 gesichert
 - [ ] Das OpenAlex-Tagesbudget (1 USD, Reset 02:00 Uhr MESZ) reicht für etwa 12 Arten. Danach
@@ -145,7 +145,8 @@ Zu jeder Frage ist eine vorläufige Umsetzung in Gebrauch; sie wird bestätigt o
 - [ ] **Kreuzungsgruppen nachpflegen:** Die Gruppen sind nach Beleglage kuratiert (28 Gruppen,
   Zuchtformen in den Gruppen ihrer Ausgangsarten). Offen: `provenance`-Texte einiger Profile
   nennen `maylandia` als entschiedene Gruppe, obwohl die Art dort kein Mitglied ist (etwa
-  Cynotilapia afra); die Vorsichtsregel
+  Cynotilapia afra), und die `verification` von `hybridGroups` beschreibt bei nachträglich
+  ergänzten Gruppen die ursprüngliche Abstimmung (etwa Nimbochromis venustus); die Vorsichtsregel
   für Gruppenlisten ohne Mehrheit (alle Gruppen mit mindestens zwei Stimmen, sonst die zuerst
   genannte) bestätigen; eine Forumsmeldung Parachromis managuensis mal Texas-Buntbarsch ergibt
   wegen der Forumsgewichtung keine Gruppe.
@@ -181,6 +182,9 @@ Zu jeder Frage ist eine vorläufige Umsetzung in Gebrauch; sie wird bestätigt o
 - [ ] `tally.mjs` gibt der natürlichen KH von Seearten die Verifikation `waterbody`, der
   Validator erlaubt diese Methode nur für Temperatur, pH und GH; die Schiedsrichter lassen die
   Verifikation deshalb weg. Beides angleichen
+- [ ] `tally.mjs` übernimmt Quellen-Einträge ungeprüft; ein Titel mit Doppelpunkt ohne
+  Anführungszeichen erzeugt einen falschen Schlüssel (gesehen bei Geophagus altifrons). Quellen beim
+  Zählen gegen das Schema prüfen und kaputte Einträge melden
 - [ ] Startskript für Codex als Prüfer C ins Repo übernehmen (Auftrag nach der Prüfer-Vorlage,
   Wiederholung bei "Selected model is at capacity", Ausweichen auf `gpt-6-sol`). Codex läuft im
   Container mit `danger-full-access`, die Regeln stehen nur im Auftrag
