@@ -7,28 +7,31 @@
 # CICHLIDS_ENV=/path/to/file.
 #
 # Usage:
-#     infra/tofu.sh <platform|backup> <tofu args...>
+#     infra/tofu.sh <platform|backup|app> <tofu args...>
 # Examples:
 #     infra/tofu.sh backup init
 #     infra/tofu.sh platform plan
-#     infra/tofu.sh platform apply
+#     infra/tofu.sh app apply
 #
 # Credential mapping (ADR-0016, ADR-0017):
 #   - platform uses the cichlids project's object-storage key (CICHLIDS_S3_PRIMARY_*) for both the
 #     provider and the state backend, plus the cloud token and the SSH key;
 #   - backup uses the backup project's object-storage key (CICHLIDS_S3_BACKUP_*) for both the
-#     provider and the state backend, and NO cloud token.
+#     provider and the state backend, and NO cloud token;
+#   - app uses the cichlids project's object-storage key for the state backend only, its own
+#     state passphrase, the node address and pinned host key, and the dedicated CI SSH private key
+#     (read from the file CICHLIDS_APP_SSH_PRIVATE_KEY_FILE), and NO cloud token.
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 ENV_FILE="${CICHLIDS_ENV:-$HOME/.config/cichlids/cichlids.env}"
 
 TIER="${1:-}"
-[ -n "$TIER" ] || { echo "usage: infra/tofu.sh <platform|backup> <tofu args...>" >&2; exit 2; }
+[ -n "$TIER" ] || { echo "usage: infra/tofu.sh <platform|backup|app> <tofu args...>" >&2; exit 2; }
 shift
 case "$TIER" in
-  platform | backup) ;;
-  *) echo "unknown tier '$TIER' (expected platform or backup)" >&2; exit 2 ;;
+  platform | backup | app) ;;
+  *) echo "unknown tier '$TIER' (expected platform, backup or app)" >&2; exit 2 ;;
 esac
 
 if [ ! -f "$ENV_FILE" ]; then
@@ -54,11 +57,16 @@ require() {
   [ "$missing" -eq 0 ] || exit 2
 }
 
-# Shared backend/provider settings (both tiers).
-require CICHLIDS_STATE_PASSPHRASE
-export TF_VAR_state_encryption_passphrase="$CICHLIDS_STATE_PASSPHRASE"
-export TF_VAR_s3_endpoint="${CICHLIDS_S3_ENDPOINT:-https://nbg1.your-objectstorage.com}"
-export TF_VAR_s3_region="${CICHLIDS_S3_REGION:-nbg1}"
+# Shared backend/provider settings. The app tier has its own state passphrase and no provider.
+if [ "$TIER" = app ]; then
+  require CICHLIDS_APP_STATE_PASSPHRASE
+  export TF_VAR_state_encryption_passphrase="$CICHLIDS_APP_STATE_PASSPHRASE"
+else
+  require CICHLIDS_STATE_PASSPHRASE
+  export TF_VAR_state_encryption_passphrase="$CICHLIDS_STATE_PASSPHRASE"
+  export TF_VAR_s3_endpoint="${CICHLIDS_S3_ENDPOINT:-https://nbg1.your-objectstorage.com}"
+  export TF_VAR_s3_region="${CICHLIDS_S3_REGION:-nbg1}"
+fi
 
 case "$TIER" in
   platform)
@@ -69,6 +77,21 @@ case "$TIER" in
     export TF_VAR_ssh_public_key="$CICHLIDS_SSH_PUBLIC_KEY"
     export TF_VAR_s3_access_key="$CICHLIDS_S3_PRIMARY_ACCESS_KEY"
     export TF_VAR_s3_secret_key="$CICHLIDS_S3_PRIMARY_SECRET_KEY"
+    export AWS_ACCESS_KEY_ID="$CICHLIDS_S3_PRIMARY_ACCESS_KEY"
+    export AWS_SECRET_ACCESS_KEY="$CICHLIDS_S3_PRIMARY_SECRET_KEY"
+    ;;
+  app)
+    # No cloud token by design. The object-storage key reaches the state backend only.
+    require CICHLIDS_S3_PRIMARY_ACCESS_KEY CICHLIDS_S3_PRIMARY_SECRET_KEY \
+      CICHLIDS_NODE_IPV4 CICHLIDS_NODE_HOST_KEY CICHLIDS_APP_SSH_PRIVATE_KEY_FILE
+    if [ ! -r "$CICHLIDS_APP_SSH_PRIVATE_KEY_FILE" ]; then
+      echo "not readable: CICHLIDS_APP_SSH_PRIVATE_KEY_FILE=$CICHLIDS_APP_SSH_PRIVATE_KEY_FILE" >&2
+      exit 2
+    fi
+    export TF_VAR_node_ipv4="$CICHLIDS_NODE_IPV4"
+    export TF_VAR_node_host_key="$CICHLIDS_NODE_HOST_KEY"
+    TF_VAR_ssh_private_key="$(cat "$CICHLIDS_APP_SSH_PRIVATE_KEY_FILE")"
+    export TF_VAR_ssh_private_key
     export AWS_ACCESS_KEY_ID="$CICHLIDS_S3_PRIMARY_ACCESS_KEY"
     export AWS_SECRET_ACCESS_KEY="$CICHLIDS_S3_PRIMARY_SECRET_KEY"
     ;;
