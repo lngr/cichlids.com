@@ -1,0 +1,1317 @@
+schemaVersion: 1
+id: parachromis-managuensis
+legacyIds: [766, 697]
+status: described
+
+taxonomy:
+  validName: Parachromis managuensis
+  genus: Parachromis
+  species: managuensis
+  author: (Günther, 1867)
+  source: &cof
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes, species list of Parachromis (entry Heros managuensis Günther 1867, current status valid as Parachromis managuensis); Cichlasoma also queried"
+    url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Parachromis
+    accessed: 2026-10-13
+  synonyms:
+    - name: Heros managuensis
+      note: Original combination of Günther (1867); type locality Lake Managua, Nicaragua.
+    - name: Cichlasoma managuense
+      note: Combination used by Villa, Bussing, Conkel and many aquarium books until about 2000; the legacy catalog spelled it Cichlasoma managuensis.
+    - name: Nandopsis managuensis
+      note: Combination of Burgess (2000), common in the hobby around that time.
+    - name: Parachromis gulosus
+      note: Agassiz 1859 from Lake Nicaragua; Kullander and Hartel (1997) treated it as available and valid, while the Catalog of Fishes regards it as probably not available and lists it as a synonym of the younger name managuensis.
+  legacyNames:
+    - Parachromis managuensis
+    - Cichlasoma managuensis
+  note: >-
+    The Catalog of Fishes lists Heros managuensis Günther 1867 (holotype from Lake Managua) as
+    valid in Parachromis and records the combination Cichlasoma managuense for Villa (1982),
+    Bussing (1987), Conkel (1993) and others. Its species list of Cichlasoma holds no separate
+    managuensis entry, because the species was described in Heros. The legacy entry 697
+    "Cichlasoma managuensis" is therefore the older generic placement of the same species as entry
+    766. The name Parachromis gulosus Agassiz 1859 consists of a single sentence without
+    distinguishing characters; the Catalog notes that it would typically be regarded as not
+    available and follows Bussing (1998) and Kullander (2003) in keeping managuensis. The Cichlid
+    Room Companion gives the year 1866, the volume year of the journal; the Catalog of Fishes dates
+    the description 1867.
+
+names:
+  trade:
+    en: [Jaguar cichlid, Jaguar guapote, Managuense cichlid, Aztec cichlid]
+    de: [Managua-Buntbarsch]
+    es-419: [Guapote tigre, Guapote barcino, Mojarra de Managua]
+    pt-BR: [Peixe-jaguar]
+
+features:
+  origin:
+    value:
+      continent: Central America
+      region: Atlantic slope of Honduras, Nicaragua and Costa Rica, from the Río Ulúa to the Río Matina, including Lakes Managua and Nicaragua
+      waterbody: null
+      localities:
+        - Lake Managua (Xolotlán), Nicaragua, type locality
+        - Lake Nicaragua (Cocibolca), Nicaragua
+        - Río Caño Negro, Río Escondido basin, Nicaragua
+        - Río Ulúa, Honduras
+        - Río Matina, Costa Rica
+    confidence: high
+    rationale: >-
+      The Catalog of Fishes gives Honduras, Nicaragua and Costa Rica as native range with Lake
+      Managua as type locality and lists many introductions elsewhere (Mexico, Guatemala, El
+      Salvador, Cuba, Florida, Hawaii, Asia and others). FishBase and Seriously Fish place the
+      range on the Caribbean side from the Río Ulúa in Honduras to the Río Matina in Costa Rica.
+      The species is part of the current fish list of Lake Nicaragua, and a reproductive study
+      covers a native population in the Río Caño Negro of the Río Escondido basin. Lake Managua
+      drains through the Río Tipitapa into Lake Nicaragua and from there through the Río San Juan
+      to the Caribbean, so the whole range belongs to the Atlantic slope. The species lives in more
+      than one lake and in rivers, so no single water body of the table applies.
+    sources:
+      - *cof
+      - &fb
+        kind: database
+        title: "FishBase species summary: Parachromis managuensis"
+        url: https://www.fishbase.se/summary/Parachromis-managuensis.html
+        accessed: 2026-10-13
+      - &sf
+        kind: database
+        title: "Seriously Fish: Parachromis managuensis (Jaguar Cichlid)"
+        url: https://www.seriouslyfish.com/species/parachromis-managuensis/
+        accessed: 2026-10-13
+      - &cocibolca
+        kind: literature
+        title: "Fishes of Cocibolca, the great Central American lake. Journal of Threatened Taxa 16(1), 24589-24596 (2024)"
+        url: https://doi.org/10.11609/jott.8506.16.1.24589-24596
+        accessed: 2026-10-13
+      - &rama
+        kind: literature
+        title: >-
+          González Alemán, N. J., Marenco Vivas, I. A. and Solano Briton, O. O. (2025). Biología
+          reproductiva del guapote pinto Parachromis managuensis en Caño Negro - Humedales de
+          Mahogany, El Rama, Nicaragua. Revista Científica Estelí 52, 147-160.
+        url: https://doi.org/10.5377/esteli.v13i52.19987
+        accessed: 2026-10-13
+    evidence:
+      - source: *cof
+        value: {continent: Central America, region: Honduras, Nicaragua and Costa Rica}
+        note: type locality Lake Managua
+      - source: *fb
+        value: {continent: Central America, region: Atlantic slope from the Río Ulúa to the Río Matina}
+      - source: *rama
+        value: {continent: Central America, region: Río Caño Negro, Río Escondido basin}
+        note: native population studied over one year
+
+  temperatureC:
+    value: {min: 25, max: 32}
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+    confidence: medium
+    rationale: >-
+      Decided unanimously by the vote count (3 of 3). The value rests on measurements from the
+      native range. Lake Nicaragua is a shallow, wind-mixed lake whose surface water measured 25 to
+      28 C in the 1960s (Swain 1966) and 25.4 to 29.3 C through 2002 and 2003 (CIRA/UNAN). Lake
+      Managua measured 24.7 to 26 C in the dry season (Swain 1966), and profiles of 1988 and 1989
+      show 26 to 27 C on a windy day and up to 32 C at the surface on calm afternoons (ILEC). The
+      Río Tipitapa, which carries Lake Managua water to Lake Nicaragua, held 28.5 to 32.4 C in the
+      rainy and the dry season. FishBase and the Caño Negro study give 25 to 36 C after Bussing
+      (1998); the upper part describes warm, oxygen-poor floodplain water that the species
+      tolerates rather than its typical habitat, and no measurement behind it could be read.
+    sources:
+      - &swain
+        kind: literature
+        title: "Swain, F. M. (1966). Bottom sediments of Lake Nicaragua and Lake Managua, western Nicaragua. Journal of Sedimentary Research 36(2), 522-540"
+        url: https://doi.org/10.1306/74d71500-2b21-11d7-8648000102c1865d
+        accessed: 2026-10-13
+      - &vammen
+        kind: literature
+        title: "Vammen, K., Pitty Tercero, J. and Montenegro Guillén, S. Evaluación del proceso de eutroficación del Lago Cocibolca, Nicaragua y sus causas en la cuenca. CIRA/UNAN Managua"
+        url: https://repositorio.unan.edu.ni/2478/1/709.pdf
+        accessed: 2026-10-13
+      - &ilec
+        kind: database
+        title: "ILEC World Lake Database: Lake Managua (Lago Xolotlán), water quality and temperature profiles 1988-1989"
+        url: https://wldb.ilec.or.jp/Display/html/3461
+        accessed: 2026-10-13
+      - &tip
+        kind: literature
+        title: "Lacayo Morales, R. and Picado Pavón, F. J. (2022). Calidad y uso potencial de las aguas del río Tipitapa. Revista Torreón Universitario 11(31), 134-146."
+        url: https://doi.org/10.5377/rtu.v11i31.14292
+        accessed: 2026-10-13
+      - *fb
+      - *rama
+    evidence:
+      - source: *swain
+        value: {min: 24.7, max: 28}
+        note: surface water, Lake Nicaragua 25 to 28 C, Lake Managua 24.7 to 26 C, 1961 and 1962
+      - source: *vammen
+        value: {min: 25, max: 29}
+        note: Lake Cocibolca over a whole year, 25.4 to 29.3 C, 2002 and 2003
+      - source: *ilec
+        value: {min: 26, max: 32}
+        note: Lake Managua profiles, windy April day and calm October afternoon
+      - source: *tip
+        value: {min: 28.5, max: 32.4}
+        note: river linking Lakes Managua and Nicaragua, four sites in two seasons
+      - source: *fb
+        value: {min: 25, max: 36}
+        note: environment field after Bussing (1998), habitat not specified
+      - source: *rama
+        value: {min: 25, max: 36}
+        note: littoral habitat range quoted after Bussing and other authors
+    tolerance:
+      value: {min: 23, max: 32}
+      verification:
+        method: unanimous
+        votes: {agree: 3, total: 3}
+      confidence: medium
+      rationale: >-
+        Decided unanimously by the vote count (3 of 3; generator and checker-a proposed 23 to 32 C,
+        checker-b 22 to 32 C). Care sheets recommend 23 to 30 C (Seriously Fish 24 to 30,
+        Guidarium 24 to 28, Fishkeeper 23 to 26, LiveAquaria about 23 to 25). The lower bound
+        follows the care sheets. The upper bound reaches the natural maximum of 32 C, since wild
+        fish live at this surface temperature in Lake Managua and an introduced population thrives
+        in Taal Lake at about 30 to 31 C.
+      sources:
+        - *sf
+        - &fk
+          kind: website
+          title: "Fishkeeper (Maidenhead Aquatics, retailer): Jaguar Cichlid, Parachromis managuensis, species profile"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jaguar-cichlid
+          accessed: 2026-10-13
+        - &guid
+          kind: website
+          title: "Guidarium: Jaguar Cichlid care sheet"
+          url: https://guidarium.com/fishes/jaguar-cichlid
+          accessed: 2026-10-13
+        - &la
+          kind: website
+          title: "LiveAquaria (retailer): Managuense Cichlid, quick stats"
+          url: https://www.liveaquaria.com/products/managuense-cichlid
+          accessed: 2026-10-13
+        - &taal
+          kind: literature
+          title: >-
+            Agasen, E. V., Clemente, J. P., Rosana, M. R. and Kawit, N. S. (2006). Biological
+            investigation of jaguar guapote Parachromis managuensis (Günther) in Taal Lake,
+            Philippines. Journal of Environmental Science and Management 9(2), 20-30 (abstract).
+          url: https://www.ukdr.uplb.edu.ph/journal-articles/4255/
+          accessed: 2026-10-13
+        - *fb
+      evidence:
+        - source: *sf
+          value: {min: 24, max: 30}
+          note: aquarium recommendation
+        - source: *fk
+          value: {min: 23, max: 26}
+          note: aquarium recommendation
+        - source: *guid
+          value: {min: 24, max: 28}
+          note: aquarium recommendation
+        - source: *la
+          value: {min: 23, max: 25}
+          note: 73 to 77 F converted, aquarium recommendation
+        - source: *taal
+          value: {min: 30, max: 30.7}
+          note: surface water of a lake with an established introduced population
+        - source: *fb
+          value: {min: 25, max: 36}
+          note: environment field after Bussing (1998)
+
+  ph:
+    value: {min: 7.0, max: 9.0}
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+    confidence: medium
+    rationale: >-
+      Decided unanimously by the vote count (3 of 3); the proposals of 7.2 to 9.3, 7.0 to 9.0 and
+      7.0 to 8.9 agree within 0.3, and the decided range is their median. Both large lakes are
+      alkaline: Swain (1966) measured surface pH 8.2 to 8.9 in Lake Nicaragua and 8.9 to 9.3 in
+      Lake Managua, and 7.4 to 7.8 in the bottom water of Lake Nicaragua. The ILEC database gives
+      surface means of about 9.2 to 9.3 for Lake Managua in 1988, Härer et al. (2021) measured 8.59
+      and 8.69 in the two lakes, and the Río Tipitapa between them ranged from 8.0 to 8.9. FishBase
+      gives 7.0 to 8.7 and an undated Nicaraguan fisheries account 7.2 to 8.4. The single Lake
+      Managua readings above 9.0 lie just outside the decided range and are covered by the
+      tolerance. No measurements were found for the Caribbean-slope rivers.
+    sources:
+      - *swain
+      - *ilec
+      - *fb
+      - *tip
+      - &harer
+        kind: literature
+        title: "Härer, A., Ibrahim, A., Torres-Dowdall, J. and Meyer, A. (2021). Heterogeneity across Neotropical aquatic environments affects prokaryotic and eukaryotic biodiversity based on environmental DNA. Environmental DNA 4(2), 469-484."
+        url: https://doi.org/10.1002/edn3.267
+        accessed: 2026-10-13
+      - &sajurin
+        kind: website
+        title: "Undated article on the inland fisheries of Nicaragua (Lago de Nicaragua, Lago de Managua, crater lakes), Biblioteca Enrique Bolaños"
+        url: https://sajurin.enriquebolanos.org/docs/888.pdf
+        accessed: 2026-10-13
+    evidence:
+      - source: *swain
+        value: {min: 8.2, max: 9.3}
+        note: surface water, Lake Nicaragua 8.2 to 8.9, Lake Managua 8.9 to 9.3; bottom water of Lake Nicaragua 7.4 to 7.8
+      - source: *ilec
+        value: {min: 9.2, max: 9.3}
+        note: Lake Managua, mean of 11 surface stations, dry and rainy season 1988
+      - source: *harer
+        value: {min: 8.59, max: 8.69}
+        note: single surface readings in Lakes Nicaragua and Managua
+      - source: *tip
+        value: {min: 8.0, max: 8.9}
+        note: river linking the two lakes
+      - source: *fb
+        value: {min: 7.0, max: 8.7}
+        note: environment field, habitat not specified
+      - source: *sajurin
+        value: {min: 7.2, max: 8.4}
+        note: Lake Nicaragua 7.2 to 7.7, Lake Managua 7.8 to 8.4
+    tolerance:
+      value: {min: 6.0, max: 9.0}
+      verification:
+        method: qualified-majority
+        votes: {agree: 4, total: 5}
+      confidence: medium
+      rationale: >-
+        Decided by qualified majority (4 of 5): checker-a, checker-b and both tie-breakers proposed
+        6.0 to 9.0 or 6.0 to 8.9, the generator 6.5 to 9.3. Seriously Fish and Fishkeeper accept
+        pH 6.0 to 8.0 and describe the species as adaptable; FishBase, Guidarium and AquariumSource
+        give 7.0 to 8.5 or 8.7. The upper bound of 9.0 contains the alkaline natural range; Lake
+        Managua reaches 9.1 to 9.3 during algal blooms, and an introduced population thrives at
+        8.3 to 8.7 in Taal Lake. The lower bound follows the two care sheets that name it and
+        describes aquarium keeping, not the wild habitat.
+      sources:
+        - *sf
+        - *fk
+        - *fb
+        - *swain
+        - &chow
+          kind: literature
+          title: "Chow Wong, Zelaya Noguera and Chacón Mayorga (2016). Florecimiento de Microcystis en el lago Xolotlán. Revista Agua y Conocimiento 2(1), 1-9"
+          url: https://repositorio.unan.edu.ni/2637/1/1049.pdf
+          accessed: 2026-10-13
+        - *guid
+        - *la
+        - &aqs
+          kind: website
+          title: "AquariumSource: Jaguar Cichlid (Managuense) care guide"
+          url: https://www.aquariumsource.com/jaguar-cichlid/
+          accessed: 2026-10-13
+        - *taal
+      evidence:
+        - source: *sf
+          value: {min: 6.0, max: 8.0}
+          note: aquarium recommendation
+        - source: *fk
+          value: {min: 6.0, max: 8.0}
+          note: aquarium recommendation, adapts to a wide range
+        - source: *fb
+          value: {min: 7.0, max: 8.7}
+          note: environment field
+        - source: *guid
+          value: {min: 7.0, max: 8.5}
+          note: aquarium recommendation
+        - source: *la
+          value: {min: 7.0, max: 7.8}
+          note: aquarium recommendation
+        - source: *aqs
+          value: {min: 7.0, max: 8.7}
+          note: aquarium recommendation
+        - source: *swain
+          value: {min: 8.2, max: 9.3}
+          note: lake surface water in the native range
+        - source: *chow
+          value: {min: 9.11, max: 9.11}
+          note: Lake Managua during a cyanobacteria bloom
+        - source: *taal
+          value: {min: 8.3, max: 8.7}
+          note: lake with an established introduced population
+
+  ghDgh:
+    value: {min: 3, max: 8}
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+    confidence: low
+    rationale: >-
+      Decided unanimously by the vote count (3 of 3; generator and checker-a proposed 3 to 8 dGH,
+      checker-b 5 to 8 dGH). Swain (1966) gives 14.7 mg/L calcium and 5.4 mg/L magnesium for the
+      surface water of Lake Nicaragua and 13.2 and 7.2 mg/L for its bottom water, which is 3.3 to
+      3.5 dGH. The Río Tipitapa, fed mainly by Lake Managua, held 50 to 164 mg/L CaCO3 total
+      hardness in single samples (2.8 to 9.2 dGH) and 100 to 137 mg/L as site means (5.6 to 7.7
+      dGH). A compilation of the classic lake limnology gives about 6.4 dGH for Lake Managua.
+      FishBase lists 10 to 15 dH without a habitat measurement and probably follows aquarium
+      literature. Confidence stays low because the Caribbean-slope rivers lack data.
+    sources:
+      - *swain
+      - *tip
+      - *fb
+      - &aaman
+        kind: website
+        title: "Aquarists Atlas: Lake Managua, water parameters compiled from Cole (1976), Table 2"
+        url: https://www.aquaristatlas.com/water/lake-managua/
+        accessed: 2026-10-13
+    evidence:
+      - source: *swain
+        value: {min: 3.3, max: 3.5}
+        note: Lake Nicaragua surface and bottom water, computed from calcium and magnesium
+      - source: *tip
+        value: {min: 2.8, max: 9.2}
+        note: single samples of total hardness; site means 5.6 to 7.7
+      - source: *aaman
+        value: {min: 6.4, max: 6.4}
+        note: Lake Managua surface water, 2.29 meq/L total hardness
+      - source: *fb
+        value: {min: 10, max: 15}
+        note: environment field, habitat not specified
+    tolerance:
+      value: {min: 3, max: 18}
+      verification:
+        method: unanimous
+        votes: {agree: 3, total: 3}
+      confidence: medium
+      rationale: >-
+        Decided unanimously by the vote count (3 of 3; generator and checker-a proposed 3 to 18
+        dGH, checker-b 5 to 18 dGH). Care sheets accept up to 18 to 20 dGH (Seriously Fish 6 to 18,
+        Fishkeeper up to 18, Guidarium 10 to 20, FishBase 10 to 15). The upper bound follows the
+        care sheets. The lower bound is the natural minimum of about 3 dGH in Lake Nicaragua, below
+        the care-sheet minimum of 6.
+      sources:
+        - *sf
+        - *fk
+        - *guid
+        - *fb
+        - *swain
+      evidence:
+        - source: *sf
+          value: {min: 6, max: 18}
+          note: aquarium recommendation
+        - source: *fk
+          value: {max: 18}
+          note: aquarium recommendation, upper limit only
+        - source: *guid
+          value: {min: 10, max: 20}
+          note: aquarium recommendation
+        - source: *fb
+          value: {min: 10, max: 15}
+          note: environment field
+        - source: *swain
+          value: {min: 3.3, max: 3.5}
+          note: natural water of Lake Nicaragua
+
+  khDkh:
+    value: {min: 4, max: 10}
+    verification:
+      method: conservative
+      votes: {agree: 2, total: 5}
+    confidence: low
+    rationale: >-
+      The votes did not settle: the generator proposed 3 to 16 dKH, checker-a 3 to 10, checker-b
+      4 to 13, tie-breaker 1 4 to 16 and tie-breaker 2 3.5 to 24. The vote count therefore takes
+      the conservative value, the intersection of all proposals, 4 to 10 dKH. This intersection is
+      clearly narrower than the range the sources measure in the native habitat, which spans about
+      3.5 to 16 dKH and more: soft Lake Nicaragua holds a total alkalinity of 60 to 65 mg/L CaCO3,
+      about 3.4 to 3.6 dKH (Swain 1966; the compilation of Cole 1976 gives 1.25 to 1.35 meq/L, 3.5
+      to 3.8 dKH), while the bicarbonate-rich water of Lake Managua and its outflow, the Río
+      Tipitapa, reaches 82 to 280 mg/L CaCO3 (4.6 to 15.7 dKH, highest at the Lake Managua end in
+      the dry season), and the same compilation gives 8.7 meq/L, about 24 dKH, for Lake Managua
+      itself. The narrow value comes from the conversions in the votes: two of them read the
+      Tipitapa alkalinity as mg/L bicarbonate instead of CaCO3 and so ended at 10 to 13 dKH,
+      although the paper reports the bicarbonate in meq/L as well (1.64 to 5.54 meq/L, 4.6 to 15.5
+      dKH). The tolerance covers most of the natural range.
+    sources:
+      - *swain
+      - *tip
+      - &cole
+        kind: literature
+        title: >-
+          Cole, G. A. (1976). Limnology of the Great Lakes of Nicaragua. In: Thorson, T. B. (ed.),
+          Investigations of the Ichthyofauna of Nicaraguan Lakes, University of Nebraska-Lincoln
+          (values read only in the Aquarists Atlas compilation; the full text sits behind a bot
+          check and was not read)
+        url: http://digitalcommons.unl.edu/ichthynicar/3
+        accessed: 2026-10-13
+      - &aanic
+        kind: website
+        title: "Aquarists Atlas: Lake Nicaragua, water parameters compiled from Cole (1976), Table 2"
+        url: https://www.aquaristatlas.com/water/lake-nicaragua/
+        accessed: 2026-10-13
+      - *aaman
+      - *sajurin
+      - &jbl
+        kind: website
+        title: "JBL expedition report, day 8, Solentiname archipelago, Lake Nicaragua"
+        url: https://www.jbl.de/pl/prasa/detail/259/day-8-everyone-got-up-bright-and-early-and?country=pl
+        accessed: 2026-10-13
+    evidence:
+      - source: *swain
+        value: {min: 3.4, max: 3.6}
+        note: Lake Nicaragua total alkalinity, surface and bottom water
+      - source: *tip
+        value: {min: 4.6, max: 15.7}
+        note: river linking both lakes, total alkalinity as CaCO3; maximum at the Lake Managua outflow in the dry season, 7.5 to 10.2 dKH at the station next to Lake Nicaragua
+      - source: *cole
+        value: {min: 3.5, max: 3.8}
+        note: Lake Nicaragua, 1.25 to 1.35 meq/L, read in the Aquarists Atlas compilation only
+      - source: *cole
+        value: {min: 24, max: 24}
+        note: Lake Managua surface water, 8.7 meq/L, read in the Aquarists Atlas compilation only
+      - source: *sajurin
+        value: {min: 4.5, max: 15.7}
+        note: Lake Nicaragua 4.5 to 6.7, Lake Managua 6.7 to 15.7
+      - source: *jbl
+        value: {min: 4, max: 4}
+        note: test-kit reading in the south of Lake Nicaragua
+    tolerance:
+      value: {min: 3, max: 15}
+      verification:
+        method: unanimous
+        votes: {agree: 3, total: 3}
+      confidence: low
+      rationale: >-
+        Decided unanimously by the vote count (3 of 3; the generator proposed 3 to 16 dKH,
+        checker-a 3 to 15, checker-b 3 to 14). LiveAquaria recommends 10 to 15 dKH and FishBase
+        gives a hardness of 10 to 15 dH without naming the kind; Seriously Fish and Fishkeeper give
+        general hardness only. The lower bound is the soft water of Lake Nicaragua, the upper bound
+        lies near the highest values of the Río Tipitapa. Lake Managua itself reaches about 24 dKH
+        according to the compiled lake data, so the upper bound is cautious rather than a limit of
+        the species.
+      sources:
+        - *fb
+        - *tip
+        - *la
+      evidence:
+        - source: *la
+          value: {min: 10, max: 15}
+          note: aquarium recommendation
+        - source: *fb
+          value: {min: 10, max: 15}
+          note: hardness without stating the kind
+        - source: *tip
+          value: {min: 4.6, max: 15.7}
+          note: single river samples in the native range
+
+  maxSizeCm:
+    value: {male: 45, female: 35}
+    confidence: medium
+    rationale: >-
+      Wild fish reach 55 cm total length and more (FishBase, record lengths up to 63 to 65 cm),
+      which are no aquarium sizes. Care sheets give 40 cm for males and 30 cm for females
+      (Guidarium), 45 cm (Fishkeeper) and 46 cm (LiveAquaria) as single maxima, and keepers in the
+      cichlids.com archive report males of 40 to 45 cm and females of 30 to 35 cm. Seriously Fish
+      notes that most aquarium fish stay below 30 cm. Typical well-kept aquarium adults are set to
+      45 cm for males and 35 cm for females.
+    sources:
+      - *fk
+      - *guid
+      - *la
+      - *fb
+      - *sf
+      - &af
+        kind: database
+        title: "Aqua-Fish.net: Jaguar cichlid, Parachromis managuensis"
+        url: https://en.aqua-fish.net/fish/jaguar-cichlid
+        accessed: 2026-10-13
+      - &arch2684
+        kind: archive
+        title: cichlids.com forum thread 2684
+        url: https://www.cichlids.com/disc/read.php?1,2684
+      - &arch2890
+        kind: archive
+        title: cichlids.com forum thread 2890
+        url: https://www.cichlids.com/disc/read.php?1,2890
+    evidence:
+      - source: *guid
+        value: {male: 40, female: 30}
+      - source: *fk
+        value: {male: 45, female: 45}
+        note: one value without sex
+      - source: *la
+        value: {male: 46, female: 46}
+        note: 18 inches, one value without sex
+      - source: *af
+        value: {male: 55, female: 35}
+        note: usual size in tanks given as 35 to 55 cm without sex
+      - source: *fb
+        value: {male: 55, female: 55}
+        note: wild maximum total length, male or unsexed
+      - source: *arch2684
+        value: {male: 45, female: 30}
+        note: aquarium experience
+      - source: *arch2890
+        value: {male: 40, female: 35}
+        note: aquarium experience
+
+  predation:
+    value: 3
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+    confidence: high
+    rationale: >-
+      Decided unanimously by the vote count (3 of 3). Adults are pronounced piscivores. FishBase
+      calls the species highly predaceous, feeding mainly on small fishes and macroinvertebrates.
+      Gut contents of introduced populations consist mostly of fish: about 82 to 85 percent in the
+      Penjalin Reservoir on Java, native fish and shrimp in the Feitsui Reservoir in Taiwan, and
+      studies in Brazil call it a piscivore that threatens native fish. Seriously Fish describes it
+      as almost exclusively carnivorous and a predator of smaller fish, and the Cichlid Room
+      Companion confirms the classification as piscivorous predator. Juveniles in Jamaica fed
+      mainly on invertebrates, which does not change the adult level.
+    sources:
+      - *fb
+      - *sf
+      - &doce
+        kind: literature
+        title: "Plagioscion squamosissimus (Sciaenidae) and Parachromis managuensis (Cichlidae): A Threat to Native Fishes of the Doce River in Minas Gerais, Brazil. PLoS ONE 7(6), e39138 (2012)"
+        url: https://doi.org/10.1371/journal.pone.0039138
+        accessed: 2026-10-13
+      - &crc
+        kind: database
+        title: "Cichlid Room Companion: Parachromis managuensis, public species summary (verification only)"
+        url: https://cichlidae.com/species.php?id=DUNJ4SXqAQKvbvpPfILgYg
+        accessed: 2026-10-13
+      - &jamaica
+        kind: literature
+        title: "The First Record of Parachromis managuensis (Günther, 1867) and an Analysis of its Feeding Habits in Jamaica. Caribbean Journal of Science 52(2) (2022), abstract"
+        url: https://doi.org/10.18475/cjos.v52i2.a2
+        accessed: 2026-10-13
+      - *fk
+      - &penjalin
+        kind: literature
+        title: "Trophic structure of jaguar cichlid (Parachromis managuensis) caught in Penjalin Reservoir, Central Java (2025). Journal of Artha Biological Engineering (abstract)."
+        url: https://doi.org/10.62521/528ehp50
+        accessed: 2026-10-13
+      - &feitsui
+        kind: literature
+        title: "Northernmost Record of Invasive Jaguar Cichlid (Parachromis managuensis) in East Asia: Ecological Implications for Native Species in Feitsui Reservoir, Taiwan (Aquatic Conservation)"
+        url: https://doi.org/10.1002/aqc.70264
+        accessed: 2026-10-13
+    evidence:
+      - source: *fb
+        value: 3
+        note: feeds mainly on small fishes and macroinvertebrates
+      - source: *sf
+        value: 3
+        note: almost exclusively carnivorous, eats smaller fish
+      - source: *doce
+        value: 3
+        note: piscivore in the introduced range
+      - source: *crc
+        value: 3
+        note: listed as piscivorous predator
+      - source: *penjalin
+        value: 3
+        note: fish about 82 to 85 percent of the gut content in an introduced population
+      - source: *feitsui
+        value: 3
+        note: prey included native fish and shrimp
+      - source: *fk
+        value: 3
+        note: described as a strong predator
+      - source: *jamaica
+        value: 1
+        note: juveniles only, mainly invertebrates
+
+  diet:
+    value:
+      type: piscivore
+      bloatSensitive: false
+      foods: [fish, crustaceans, insects, krill, prawns, cichlid pellets]
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+    confidence: high
+    rationale: >-
+      Decided unanimously by the vote count (3 of 3). Adults eat mainly fish, plus crustaceans,
+      insects and snails (FishBase, Seriously Fish, the Doce River study and gut contents from
+      Penjalin and Feitsui reservoirs; the Cichlid Room Companion confirms the piscivorous
+      feeding). Juveniles take more invertebrates. In the aquarium the species accepts meaty frozen
+      foods and large pellets. No source reports bloat; as a carnivore it is not sensitive to
+      protein-rich food.
+    sources:
+      - *fb
+      - *sf
+      - *doce
+      - *crc
+      - *fk
+      - *jamaica
+      - *penjalin
+      - *feitsui
+    evidence:
+      - source: *fb
+        value: {type: piscivore, bloatSensitive: false}
+      - source: *sf
+        value: {type: piscivore, bloatSensitive: false}
+      - source: *doce
+        value: {type: piscivore, bloatSensitive: false}
+      - source: *crc
+        value: {type: piscivore, bloatSensitive: false}
+      - source: *penjalin
+        value: {type: piscivore, bloatSensitive: false}
+        note: 85 percent fish, minor shares of insects and gastropods
+      - source: *feitsui
+        value: {type: piscivore, bloatSensitive: false}
+      - source: *fk
+        value: {type: piscivore, bloatSensitive: false}
+        note: meaty frozen foods and pellets in the aquarium
+      - source: *jamaica
+        value: {type: invertivore, bloatSensitive: false}
+        note: juveniles only
+
+  aggressionConspecific:
+    value: 4
+    confidence: medium
+    rationale: >-
+      Adults do not tolerate others of their kind except a bonded partner. A male that is ready to
+      spawn chases and can badly injure or kill a female that is not; Fishkeeper advises keeping a
+      divider at hand, and Seriously Fish describes the same male aggression towards unwilling
+      females. Two males cannot share a tank, and keepers report fights to the death. This matches
+      level 4.
+    sources:
+      - *fk
+      - *sf
+      - *guid
+      - *arch2684
+      - *arch2890
+    evidence:
+      - source: *fk
+        value: 4
+        note: intolerant of its own kind outside an established pair, divider advised
+      - source: *sf
+        value: 3
+        note: male aggression towards unwilling females, cover helps
+      - source: *guid
+        value: 4
+        note: rated highly aggressive, one fish per tank recommended
+
+  aggressionHeterospecific:
+    value: 4
+    confidence: medium
+    rationale: >-
+      The species claims a large area and attacks fish of similar size, most of all while
+      breeding, when Fishkeeper advises moving tankmates out. Guidarium recommends keeping it
+      alone, Aqua-Fish.net calls it aggressive to other fish and advises a separate tank for a
+      breeding pair, and keepers report that it dominates and injures even large cichlids. Robust
+      cichlids and armoured catfish of similar size are possible only in very large tanks with many
+      visual barriers, which fits level 4.
+    sources:
+      - *fk
+      - *guid
+      - *af
+      - *sf
+      - *arch2684
+      - &arch2554
+        kind: archive
+        title: cichlids.com forum thread 2554
+        url: https://www.cichlids.com/disc/read.php?1,2554
+      - &arch363
+        kind: archive
+        title: cichlids.com forum thread 363
+        url: https://www.cichlids.com/disc/read.php?1,363
+    evidence:
+      - source: *fk
+        value: 4
+        note: robust tankmates only in a very spacious tank, move them when breeding
+      - source: *guid
+        value: 4
+        note: best kept alone
+      - source: *af
+        value: 4
+        note: aggressive to other fish, separate tank for a breeding pair
+      - source: *sf
+        value: 3
+        note: territorial at all times, smaller fish are food
+
+  territory:
+    value: {size: large, breedingOnly: false}
+    confidence: medium
+    rationale: >-
+      Adults claim a substantial part of any tank and defend it at all times; the claim grows when
+      a pair spawns. Seriously Fish calls the species always territorial, and Fishkeeper and keepers
+      describe large territories.
+    sources:
+      - *sf
+      - *fk
+      - *arch2684
+    evidence:
+      - source: *sf
+        value: {size: large, breedingOnly: false}
+        note: territorial at all times
+      - source: *fk
+        value: {size: large, breedingOnly: false}
+      - source: *arch2684
+        value: {size: large, breedingOnly: false}
+
+  habitatZones:
+    value: [openWater, sand, wood, rock]
+    confidence: medium
+    rationale: >-
+      In the wild it lives over mud, sand and detritus in turbid, eutrophic lakes, ponds and springs
+      (FishBase), lays its eggs on rocks and other hard surfaces, and hides among logs and stones in
+      the littoral (Caño Negro study after Bussing 1998). FishBase classes it as benthopelagic, and
+      as an active predator it hunts in the water column; Aqua-Fish.net stresses open swimming
+      space in the middle levels of the tank. Care sheets recommend a soft sand bottom with wood
+      and rocks as territory boundaries.
+    sources:
+      - *fb
+      - *rama
+      - *af
+      - *sf
+      - *fk
+    evidence:
+      - source: *fb
+        value: [sand, rock]
+        note: mud, sand and detritus bottoms, eggs on rocks; benthopelagic
+      - source: *rama
+        value: [wood, rock]
+        note: hides among logs and stones in the littoral
+      - source: *af
+        value: [openWater]
+        note: open swimming space, middle levels of the tank
+      - source: *sf
+        value: [rock, wood, sand]
+        note: aquarium setup
+
+  social:
+    value: {structure: pair}
+    confidence: high
+    rationale: >-
+      A monogamous open-substrate spawner with biparental brood care. It is kept singly or as one
+      established pair, best grown from a group of juveniles; other adults of the species are
+      rivals.
+    sources:
+      - *sf
+      - *fk
+      - *crc
+    evidence:
+      - source: *fk
+        value: {structure: pair}
+        note: singly or as an established pair
+      - source: *sf
+        value: {structure: pair}
+        note: breeding pair or six juveniles grown on until a pair forms
+      - source: *crc
+        value: {structure: pair}
+        note: monogamous
+
+  speciesOnly:
+    value: false
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+    confidence: medium
+    rationale: >-
+      Decided unanimously by the vote count (3 of 3). The hobby does not restrict the species to
+      a species tank: Seriously Fish asks for carefully chosen tankmates, Aqua-Fish.net names large,
+      robust cichlids and fish of similar size as companions, and Fishkeeper lists Central and
+      South American cichlids of similar size and temper and large armoured catfish for a very
+      spacious tank. Guidarium prefers a single fish, which is no species-only rule. The limits come
+      from size, predation and aggression, which the other features capture.
+    sources:
+      - *sf
+      - *af
+      - *fk
+      - *guid
+    evidence:
+      - source: *sf
+        value: false
+        note: tankmates to be chosen carefully
+      - source: *af
+        value: false
+        note: large, robust cichlids or fish of similar size as companions
+      - source: *fk
+        value: false
+        note: robust cichlids and large catfish possible in spacious tanks
+      - source: *guid
+        value: false
+        note: recommends a single fish, not a species tank
+
+  hybridGroup:
+    value: null
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+    confidence: medium
+    rationale: >-
+      Decided unanimously by the vote count (3 of 3). No curated hybrid group contains
+      Parachromis. The Catalog of Fishes treats the species as distinct and lists no hybrid names
+      involving it, and neither FishBase nor Seriously Fish reports crosses with other Parachromis
+      or sympatric species. A thread in the cichlids.com archive mentions an aquarium cross with a
+      Texas cichlid (Herichthys), an unrelated genus; such single events in mixed tanks define no
+      group of look-alike species and are covered under the partners.
+    sources:
+      - *cof
+      - *fb
+      - *sf
+      - &arch134
+        kind: archive
+        title: cichlids.com forum thread 134
+        url: https://www.cichlids.com/disc/read.php?1,134
+    evidence:
+      - source: *cof
+        value: null
+        note: valid distinct species, no hybrid names listed
+      - source: *fb
+        value: null
+        note: no hybrids listed
+      - source: *arch134
+        value: null
+        note: aquarium cross with a Texas cichlid, no species group
+
+  coloration:
+    value: {baseColors: [silver, yellow, black], pattern: spots}
+    confidence: medium
+    rationale: >-
+      Adults are silvery to golden or greenish with many black spots on body and fins and a row of
+      large black blotches along the flank, which give the jaguar name; males often show a purple
+      sheen. Females keep a darker band along the mid-flank. Black spots on silver to yellow are the
+      dominant impression.
+    sources:
+      - *fb
+      - *guid
+      - *la
+      - &wiki
+        kind: website
+        title: "Wikipedia: Parachromis managuensis"
+        url: https://en.wikipedia.org/wiki/Parachromis_managuensis
+        accessed: 2026-10-13
+      - *arch2890
+    evidence:
+      - source: *wiki
+        value: {baseColors: [silver, black, yellow], pattern: spots}
+      - source: *la
+        value: {baseColors: [black, white, yellow], pattern: spots}
+        note: colour field of the shop page
+      - source: *arch2890
+        value: {baseColors: [silver, black], pattern: spots}
+
+  feedingSpeed:
+    value: hasty
+    confidence: low
+    rationale: >-
+      A large ambush predator that takes food at once and competes hard for it, so slower feeders
+      lose out. No source rates the feeding speed directly; the level follows from its predatory
+      habits.
+    sources:
+      - *sf
+      - *fk
+      - kind: model-knowledge
+        title: General knowledge of large Central American predatory cichlids
+
+  minTank:
+    value: {volumeL: 750, lengthCm: 200, depthCm: 70}
+    confidence: low
+    rationale: >-
+      Guidarium gives 680 L and 180 cm for a single adult male and 470 L and 150 cm for a female,
+      Aqua-Fish.net 475 L for a single adult. Seriously Fish gives a 120 cm base only for small
+      fish and stresses much larger tanks for fish over 30 cm. An adult pair with a male of about
+      45 cm needs room for the female to escape and for visual barriers, which calls for at least
+      200 by 70 cm and about 750 L. No source gives a pair tank directly.
+    sources:
+      - *guid
+      - *af
+      - *sf
+      - *la
+    evidence:
+      - source: *guid
+        value: {volumeL: 680, lengthCm: 180, depthCm: 60}
+        note: single adult male; depth not stated, set to a typical value
+      - source: *af
+        value: {volumeL: 475, lengthCm: 180, depthCm: 60}
+        note: single adult, only the volume is stated
+      - source: *sf
+        value: {volumeL: 205, lengthCm: 120, depthCm: 38}
+        note: base for small fish, much larger for adults
+
+  lifespanYears:
+    value: {min: 10, max: 15}
+    confidence: low
+    rationale: >-
+      Aqua-Fish.net gives up to 15 years or more in captivity; no measured life span from a study
+      was found. Large guapotes commonly live more than ten years in aquaria. Wild growth is fast,
+      with maturity at about six months in an introduced Brazilian population.
+    sources:
+      - *af
+      - &growth
+        kind: literature
+        title: "Maturity, growth and natural mortality rate of the introduced fish Parachromis managuensis in the semiarid region of Brazil. Acta Limnologica Brasiliensia (2020)"
+        url: https://doi.org/10.1590/s2179-975x2820
+        accessed: 2026-10-13
+      - kind: model-knowledge
+        title: General knowledge of the life span of large Central American cichlids in aquaria
+
+  breeding:
+    value: open-substrate-spawner
+    confidence: high
+    rationale: >-
+      The pair cleans a flat stone or other hard surface and spawns there; FishBase reports up to
+      5,000 eggs and a Philippine study more than 10,000 per female. Both parents guard the eggs,
+      move the larvae into pits dug in the substrate and care for the fry for weeks.
+    sources:
+      - *fb
+      - *sf
+      - *fk
+      - *crc
+    evidence:
+      - source: *fb
+        value: open-substrate-spawner
+      - source: *sf
+        value: open-substrate-spawner
+      - source: *fk
+        value: open-substrate-spawner
+      - source: *crc
+        value: open-substrate-spawner
+
+  beginnerSuitability:
+    value: demanding
+    confidence: medium
+    rationale: >-
+      The fish itself is hardy and tolerant of water chemistry, but its adult size, its need for a
+      very large tank and strong filtration, its aggression towards partners and tankmates and its
+      huge broods make it unsuitable for beginners. Fishkeeper and Guidarium stress experience and
+      space; LiveAquaria rates care as moderate, and Seriously Fish calls it easy to maintain with
+      adequate filtration.
+    sources:
+      - *fk
+      - *guid
+      - *la
+      - *sf
+
+partners:
+  suitable:
+    - species: Astronotus ocellatus
+      reason: Similar size and robustness and also eats meaty food; strong enough to hold its own.
+      condition: Tank of at least 250 cm, both fish introduced at similar size, no breeding pair of the jaguar cichlid.
+    - species: Amphilophus trimaculatus
+      reason: Large, sturdy Central American cichlid with comparable temperament that is too big to be prey.
+      condition: Very large tank with many visual barriers; separate if the jaguar cichlids spawn.
+    - species: Vieja melanura
+      reason: Large, heavy-bodied herbivorous cichlid that occupies different food niches and grows too big to be eaten.
+      condition: Very large tank, tankmates of equal or larger size.
+    - species: Pterygoplichthys gibbiceps
+      reason: Armoured catfish that grows big, stays near the bottom and is protected by its bony plates.
+  unsuitable:
+    - species: Parachromis dovii
+      reason: Even larger and more aggressive guapote; two of these predators in one tank fight until one is badly hurt.
+    - species: Hypsophrys nicaraguensis
+      reason: Medium-sized peaceful cichlid that becomes prey or is chased to death.
+    - species: Herichthys carpintis
+      reason: Hobby reports of crosses with Texas cichlids, and the two fight for the same territory.
+    - species: Small tetras, livebearers and dwarf cichlids
+      reason: Any fish that fits into the mouth is eaten.
+    - species: Symphysodon aequifasciatus
+      reason: Slow, shy feeder that needs soft, warm water and calm tankmates; it would be harassed or eaten.
+    - species: Lake Malawi mbuna
+      reason: Too small, different water chemistry and constant fighting with a predator many times their size.
+
+profile:
+  overview:
+    text: >-
+      The jaguar cichlid is one of the classic big predators of Central America. Its silvery to
+      golden body is covered with black spots and blotches, which give the fish its common name.
+      The species was described as Heros managuensis from Lake Managua in Nicaragua, and older
+      books list it as Cichlasoma managuense or Nandopsis managuensis. Males grow to about 45 cm in
+      aquaria and more in the wild, so the fish needs a very large tank, strong filtration and an
+      owner who can handle an aggressive, intelligent predator. Kept right, a single fish or a pair
+      becomes an impressive show fish. A breeding pair can produce thousands of fry, and released
+      fish have founded invasive populations on several continents, so keepers must never set them
+      free.
+    sources:
+      - *cof
+      - *sf
+      - *fb
+  habitat:
+    text: >-
+      The natural range covers the Caribbean side of Central America from the Río Ulúa in Honduras
+      through Nicaragua to the Río Matina in Costa Rica. The species is common in Lake Managua and
+      Lake Nicaragua. It favours warm, turbid and nutrient-rich lakes with muddy bottoms, but also
+      lives in rivers, ponds and springs over sand and detritus, and copes with water poor in
+      oxygen. Lake Nicaragua has soft water of about 3 dGH and 3.5 dKH with pH around 8 and
+      temperatures of 25 to 29 C. Lake Managua is warmer, up to about 32 C at the surface, more
+      alkaline with pH above 9, and rich in sodium bicarbonate, so that its outflow reaches about
+      16 dKH and the lake itself more.
+    sources:
+      - *fb
+      - *sf
+      - *swain
+      - *vammen
+      - *ilec
+      - *tip
+  sizeAndGrowth:
+    text: >-
+      Jaguar cichlids grow fast. An introduced wild population in Brazil reached maturity at about
+      six months and 13 to 14 cm total length, and its fish grew towards an asymptotic length of
+      about 34 cm within their first years. Aquarium males usually end at 40 to 45 cm, females at
+      30 to 35 cm. Wild fish can exceed 50 cm and weigh more than a kilogram. Growth slows once the
+      fish are adult, but even a half-grown fish outgrows a medium tank, so plan the final tank
+      before buying a juvenile. Fish in small tanks become stunted and unhealthy rather than
+      staying small by choice.
+    sources:
+      - *fb
+      - *guid
+      - *growth
+  husbandry:
+    text: >-
+      A pair of adults needs a tank of around 750 litres with a length of at least 200 cm. Use a
+      soft sand bottom, since the fish dig a lot, and create territory boundaries with large roots
+      and stones that are glued or set directly on the glass floor so they cannot topple. A flat
+      stone serves as a spawning site. Rooted plants are dug up; robust ferns tied to wood survive.
+      The fish are heavy feeders and produce much waste, so strong filtration and large weekly
+      water changes are required. Temperatures of 24 to 28 C suit them, and they accept a wide
+      range of water from slightly acidic to clearly alkaline and from soft to hard. A heavy,
+      tight cover is needed because they jump.
+    sources:
+      - *sf
+      - *fk
+      - *guid
+  socialBehavior:
+    text: >-
+      Adults are territorial at all times and keep other fish at a distance, with attacks growing
+      much worse when a pair spawns. Two males cannot share a tank. A male that is ready to spawn
+      may chase and badly injure a female that is not, so a pair should form from a group of
+      juveniles, and a tank divider should be at hand. Many keepers prefer a single fish. Where
+      tankmates are planned, they must be large, sturdy fish of similar size, and the tank must
+      offer many visual barriers.
+    sources:
+      - *sf
+      - *fk
+      - *guid
+  diet:
+    text: >-
+      In the wild adults hunt mainly smaller fish and also take crustaceans, insects and other
+      invertebrates, while juveniles feed mostly on invertebrates. In the tank they accept a varied
+      diet of quality pellets for large cichlids, frozen krill, shrimp and mussel, and pieces of
+      white fish. Feeder fish are unnecessary and carry the risk of disease. Feed juveniles small
+      portions several times a day and adults once a day, with a fasting day now and then, because
+      overfed fish foul the water quickly.
+    sources:
+      - *fb
+      - *fk
+      - *jamaica
+  breeding:
+    text: >-
+      The jaguar cichlid spawns on open, hard surfaces. The pair cleans a flat stone, the female
+      lays a large clutch and both parents guard it. After hatching the larvae are moved to pits
+      that the parents dig in the sand. The fry swim free after a few days and take newly hatched
+      brine shrimp. Parents care for them for about six weeks and may then spawn again, at which
+      point older fry are in danger. A single spawn from large adults can number thousands of
+      eggs, so keepers should plan in advance where the young fish will go.
+    sources:
+      - *sf
+      - *fk
+      - *crc
+  sexing:
+    text: >-
+      Males grow larger and develop longer, pointed dorsal and anal fins. Their pattern breaks into
+      many spots and blotches, and they often show a purple or bronze sheen. Females stay smaller
+      and rounder, and usually keep a dark horizontal band along the flank from their juvenile
+      pattern. Juveniles cannot be sexed reliably; a group of six youngsters gives a good chance
+      of a pair.
+    sources:
+      - *sf
+      - *guid
+      - *arch2890
+  compatibility:
+    text: >-
+      Any fish small enough to be swallowed will be eaten. Possible tankmates are large, robust
+      cichlids of similar size such as oscars or trimacs, big plant-eating cichlids like Vieja,
+      and large armoured catfish, and only in very large tanks with many visual barriers. Even
+      then a breeding pair may turn on them. Avoid the larger and fiercer Parachromis dovii,
+      peaceful medium cichlids, small community fish and slow, delicate species such as discus.
+      Texas cichlids have crossed with jaguar cichlids in aquaria, so do not keep them together.
+    sources:
+      - *fk
+      - *sf
+      - *af
+      - *arch134
+  problems:
+    text: >-
+      The most common mistake is buying a cute juvenile for a tank that cannot hold the adult;
+      cramped fish become stunted, stressed and aggressive. Overfeeding and weak filtration lead to
+      high nitrate and poor water, which favour head and lateral line erosion, fin rot and
+      bacterial infections. Live feeder fish can carry parasites and disease. A male may injure an
+      unready female, so watch new pairs closely. Unsecured rocks can fall and crack the glass when
+      the fish dig. The fish jump through gaps in the cover. Finally, never release unwanted fish;
+      the species has become invasive in many countries.
+    sources:
+      - *sf
+      - *fk
+      - kind: literature
+        title: "Evidence of naturalisation of the invasive jaguar cichlid Parachromis managuensis (Günther, 1867), in Queensland, Australia. BioInvasions Records 9(1), 146-157 (2020), abstract"
+        url: https://doi.org/10.3391/bir.2020.9.1.19
+        accessed: 2026-10-13
+
+provenance:
+  runs:
+    - {role: generator, model: claude-opus-5-5, date: 2026-10-13}
+    - {role: checker, model: claude-opus-5-5, date: 2026-10-13}
+    - {role: checker, model: claude-sonnet-5-5, date: 2026-10-13}
+    - {role: checker, model: claude-opus-5-5, date: 2026-10-13}
+    - {role: checker, model: claude-sonnet-5-5, date: 2026-10-13}
+    - {role: adjudicator, model: claude-opus-5-5, date: 2026-10-13}
+  disagreements:
+    - field: taxonomy.synonyms
+      proposals:
+        - {by: generator, value: "Parachromis gulosus: later authors regard it as the same species and keep the younger name"}
+        - {by: checker-a, value: "Parachromis gulosus: listed as a synonym following Bussing (1998) and later authors"}
+        - {by: checker-b, value: "Parachromis gulosus: older name treated as not available by the Catalog"}
+      decision: "Parachromis gulosus is a synonym; the Catalog regards the name as probably not available and keeps managuensis after Bussing (1998) and Kullander (2003)"
+      rationale: >-
+        The synonym list itself agrees; only the notes on P. gulosus differ. The Catalog of Fishes
+        entry states both points: the name lacks distinguishing characters and would typically be
+        regarded as not available, and later authors treat it as the same species as the younger
+        managuensis. The note combines both.
+    - field: features.origin.value.region
+      proposals:
+        - {by: generator, value: "Atlantic drainages of Honduras, Nicaragua and Costa Rica, including the Great Lakes of Nicaragua"}
+        - {by: checker-a, value: "Atlantic slope of Honduras, Nicaragua and Costa Rica, from the Río Ulúa to the Río Matina, including Lakes Managua and Nicaragua"}
+        - {by: checker-b, value: "Atlantic and Pacific-draining lowland lakes and rivers of Honduras, Nicaragua and Costa Rica, including the great lakes Managua and Nicaragua"}
+      decision: "Atlantic slope of Honduras, Nicaragua and Costa Rica, from the Río Ulúa to the Río Matina, including Lakes Managua and Nicaragua"
+      rationale: >-
+        FishBase and Seriously Fish describe the native range as Atlantic slope. The two great lakes
+        drain through the Río San Juan to the Caribbean, so the Pacific drainage of checker-b has no
+        support. The localities of all runs are merged; the Río Tipitapa and Tisma lagoons are left
+        out because no source read documents the species there.
+    - field: features.temperatureC.tolerance
+      proposals:
+        - {by: generator, value: {min: 23, max: 32}}
+        - {by: checker-a, value: {min: 23, max: 32}}
+        - {by: checker-b, value: {min: 22, max: 32}}
+      decision: {min: 23, max: 32}
+      rationale: Decided by the vote count with method unanimous (3 of 3); the proposals agree within 1 C.
+    - field: features.ph
+      proposals:
+        - {by: generator, value: {min: 7.2, max: 9.3}}
+        - {by: checker-a, value: {min: 7.0, max: 9.0}}
+        - {by: checker-b, value: {min: 7.0, max: 8.9}}
+      decision: {min: 7.0, max: 9.0}
+      rationale: >-
+        Decided by the vote count with method unanimous (3 of 3); the proposals agree within 0.3
+        and the decided range is the median of their bounds. Lake Managua readings of 9.1 to 9.3
+        lie inside the tolerance.
+    - field: features.ph.tolerance
+      proposals:
+        - {by: generator, value: {min: 6.5, max: 9.3}}
+        - {by: checker-a, value: {min: 6.0, max: 9.0}}
+        - {by: checker-b, value: {min: 6.0, max: 8.9}}
+        - {by: tiebreaker-1, value: {min: 6.0, max: 9.0}}
+        - {by: tiebreaker-2, value: {min: 6.0, max: 9.0}}
+      decision: {min: 6.0, max: 9.0}
+      rationale: >-
+        Decided by the vote count with method qualified-majority (4 of 5). The generator's lower
+        bound of 6.5 lies between two groups of care sheets; the majority follows the two care
+        sheets that accept pH 6.0.
+    - field: features.ghDgh
+      proposals:
+        - {by: generator, value: {min: 3, max: 8}}
+        - {by: checker-a, value: {min: 3, max: 8}}
+        - {by: checker-b, value: {min: 5, max: 8}}
+      decision: {min: 3, max: 8}
+      rationale: >-
+        Decided by the vote count with method unanimous (3 of 3); the proposals agree within 2 dGH.
+        Checker-b used only the Río Tipitapa; the soft water of Lake Nicaragua sets the lower bound
+        near 3 dGH.
+    - field: features.ghDgh.tolerance
+      proposals:
+        - {by: generator, value: {min: 3, max: 18}}
+        - {by: checker-a, value: {min: 3, max: 18}}
+        - {by: checker-b, value: {min: 5, max: 18}}
+      decision: {min: 3, max: 18}
+      rationale: Decided by the vote count with method unanimous (3 of 3); the proposals agree within 2 dGH.
+    - field: features.khDkh
+      proposals:
+        - {by: generator, value: {min: 3, max: 16}}
+        - {by: checker-a, value: {min: 3, max: 10}}
+        - {by: checker-b, value: {min: 4, max: 13}}
+        - {by: tiebreaker-1, value: {min: 4, max: 16}}
+        - {by: tiebreaker-2, value: {min: 3.5, max: 24}}
+      decision: {min: 4, max: 10}
+      rationale: >-
+        Decided by the vote count with method conservative (2 of 5 agree): the intersection of all
+        proposals. It is narrower than the measured natural range of about 3.5 dKH in Lake
+        Nicaragua to about 16 dKH in the Río Tipitapa and about 24 dKH in Lake Managua; two votes
+        converted the Tipitapa alkalinity as bicarbonate instead of CaCO3 and so ended too low.
+        The decided value is kept as the vote count set it.
+    - field: features.khDkh.tolerance
+      proposals:
+        - {by: generator, value: {min: 3, max: 16}}
+        - {by: checker-a, value: {min: 3, max: 15}}
+        - {by: checker-b, value: {min: 3, max: 14}}
+      decision: {min: 3, max: 15}
+      rationale: >-
+        Decided by the vote count with method unanimous (3 of 3); the proposals agree within 2
+        dKH. Evidence entries that attributed carbonate hardness values to Seriously Fish and
+        Fishkeeper, which state general hardness only, are left out.
+    - field: features.maxSizeCm
+      proposals:
+        - {by: generator, value: {male: 40, female: 30}}
+        - {by: checker-a, value: {male: 45, female: 35}}
+        - {by: checker-b, value: {male: 50, female: 38}}
+      decision: {male: 45, female: 35}
+      rationale: >-
+        Care sheets give 40 to 46 cm as the aquarium maximum and keepers report males of 40 to 45
+        cm and females of 30 to 35 cm. The 50 cm of checker-b rests on wild records and a single
+        forum figure in standard length; 40 cm of the generator sits below two of three care-sheet
+        maxima. The upper end of typical aquarium sizes is taken, which also keeps the prey
+        threshold of the compatibility check on the cautious side.
+    - field: features.aggressionHeterospecific
+      proposals:
+        - {by: generator, value: 4}
+        - {by: checker-a, value: 4}
+        - {by: checker-b, value: 3}
+      decision: 4
+      rationale: >-
+        Fishkeeper advises removing tankmates when the pair breeds, Guidarium recommends a single
+        fish, and keepers report injured and killed tankmates of similar size; this is level 4.
+        Checker-b weighted the possible robust tankmates higher, which level 4 also allows in very
+        large tanks.
+    - field: features.habitatZones
+      proposals:
+        - {by: generator, value: [openWater, sand, wood, rock]}
+        - {by: checker-a, value: [sand, wood, rock]}
+        - {by: checker-b, value: [sand, rock, wood]}
+      decision: [openWater, sand, wood, rock]
+      rationale: >-
+        All runs agree on sand, wood and rock. Open water is added because FishBase classes the
+        species as benthopelagic and Aqua-Fish.net stresses open swimming space in the middle
+        levels; an active predator of this size uses the water column.
+    - field: features.coloration
+      proposals:
+        - {by: generator, value: {baseColors: [silver, yellow, black], pattern: spots}}
+        - {by: checker-a, value: {baseColors: [silver, black, yellow], pattern: spots}}
+        - {by: checker-b, value: {baseColors: [silver, green, yellow], pattern: spots}}
+      decision: {baseColors: [silver, yellow, black], pattern: spots}
+      rationale: >-
+        The black spots and blotches dominate the adult pattern and name the fish; the greenish tint
+        that FishBase mentions is a sheen on the silvery to golden body rather than a base colour.
+    - field: features.minTank
+      proposals:
+        - {by: generator, value: {volumeL: 750, lengthCm: 200, depthCm: 70}}
+        - {by: checker-a, value: {volumeL: 650, lengthCm: 180, depthCm: 60}}
+        - {by: checker-b, value: {volumeL: 500, lengthCm: 150, depthCm: 60}}
+      decision: {volumeL: 750, lengthCm: 200, depthCm: 70}
+      rationale: >-
+        Guidarium already asks for 680 L and 180 cm for a single male, so a pair of adults needs
+        more; 150 cm and 500 L fall below the single-fish recommendations of two care sheets.
+        Confidence stays low because no source gives a pair tank.
+    - field: features.lifespanYears
+      proposals:
+        - {by: generator, value: {min: 12, max: 18}}
+        - {by: checker-a, value: {min: 10, max: 15}}
+        - {by: checker-b, value: {min: 10, max: 15}}
+      decision: {min: 10, max: 15}
+      rationale: >-
+        Aqua-Fish.net gives up to 15 years or more in captivity, which fits the range of the two
+        checkers; the generator's 18 years has no source.
+    - field: variants
+      proposals:
+        - {by: generator, value: [Gold color-morph]}
+        - {by: checker-a, value: []}
+        - {by: checker-b, value: []}
+      decision: []
+      rationale: >-
+        None of the sources read mentions a gold or other captive colour line, so the variant is
+        left out until a source confirms it.
