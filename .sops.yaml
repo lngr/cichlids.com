@@ -1,0 +1,5 @@
+creation_rules:
+  # TEST ONLY: this recipient protects public CI fixture values.
+  - path_regex: ^tools/fixtures/secrets/[^/]+\.sops\.yaml$
+    encrypted_regex: ^(data|stringData)$
+    age: age12g73sk8te69jszpuy0rl8yuf6c8j9978v90wkqvgmh4gphmud97s7ecrkg

@@ -64,6 +64,10 @@ class SecretGuardTest(unittest.TestCase):
         result = self.scan('kind: Secret\nstringData: {password: fixture-value}\n', tracked=False)
         self.assertEqual(result.returncode, 0, result.stderr)
 
+    def test_duplicate_keys_fail_closed(self):
+        self.assert_rejected('kind: Secret\nkind: ConfigMap\n')
+        self.assert_rejected('{"kind": "Secret", "kind": "ConfigMap"}', 'secret.json')
+
     def test_invalid_yaml_fails_closed(self):
         self.assert_rejected('kind: Secret\nstringData: [broken\n')
 

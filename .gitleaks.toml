@@ -23,3 +23,7 @@ paths = [
 description = "Env templates hold empty assignments; the generic rule reads the next key name as the value"
 targetRules = ["generic-api-key"]
 paths = ['''(^|/)[^/]*\.env\.example$''']
+
+[[allowlists]]
+description = "Public test-only age key for the CI round-trip fixture"
+paths = ['''^tools/fixtures/secrets/age-test-key\.txt$''']
