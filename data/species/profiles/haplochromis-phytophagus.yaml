@@ -1,0 +1,2358 @@
+schemaVersion: 1
+id: "haplochromis-phytophagus"
+legacyIds:
+  - 548
+status: "described"
+taxonomy:
+  validName: "Haplochromis phytophagus"
+  genus: "Haplochromis"
+  species: "phytophagus"
+  author: "Greenwood, 1966"
+  source: &a1
+    kind: "catalog-of-fishes"
+    title: "Eschmeyer's Catalog of Fishes: Haplochromis, updated 21 September 2026"
+    url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Ha\
+      plochromis"
+    accessed: "2026-10-13"
+  synonyms:
+    - name: "Xystichromis phytophagus"
+      note: "Alternative generic combination widely retained by aquarists and ecological studies."
+  legacyNames:
+    - "Xystichromis phytophagus"
+  note: "The Catalog validates Haplochromis phytophagus Greenwood, 1966; the Xystichromis query returns no
+    species records. Xystichromis phytophagus is the familiar alternative combination. The original journal
+    issue was dated 1965 but publication is assigned to 1966. CRC verifies the genus and maternal
+    mouthbrooding while showing 1965 in its heading; the Catalog controls authorship."
+names:
+  trade:
+    en:
+      - "Christmas fulu"
+      - "Christmas hap"
+variants:
+  - name: "Lake Kanyaboli"
+    kind: "locality"
+    note: "Documented wild source of aquarium and research fish. This label identifies origin, not a demonstrated
+      separate colour morph. Kyoga flameback and Dayglow are other taxa, not variants of this species."
+features:
+  origin:
+    value:
+      continent: "Africa"
+      region: "Lake Victoria basin and connected Kyoga system; satellite-lake refuges in Kenya and Uganda"
+      waterbody: null
+      localities:
+        - "Lake Kanyaboli, Yala Swamp, Kenya"
+        - "Lake Kyoga, Uganda"
+        - "Lake Nawampasa, Uganda"
+        - "Kisumu, Lake Victoria, Kenya (historical type locality)"
+    confidence: "high"
+    rationale: "Kanyaboli is directly documented by genetic samples and a 2020 to 2021 fish survey. The Ugandan
+      biodiversity portal independently lists Xystichromis phytophagus at both Kyoga and Nawampasa. These
+      records correct the earlier runs that could not substantiate Uganda. The sources do not provide
+      comparable population estimates across the three lakes, so they cannot establish which refuges hold most
+      living fish. Lake Victoria is retained as historical type locality and basin context; reports of
+      disappearance from the main lake are not treated as a complete present-day extinction census. No single
+      registered waterbody represents these distinct occupied lakes, so waterbody is null and
+      satellite/regional measurements support the tally decisions."
+    sources:
+      - *a1
+      - &a2
+        kind: "literature"
+        title: "Abila et al. (2008). The role of the Yala swamp lakes in the conservation of Lake Victoria region
+          haplochromine cichlids: Evidence from genetic and trophic ecology studies. Full text and Table 1"
+        url: "https://doi.org/10.1111/j.1440-1770.2008.00366.x"
+        accessed: "2026-10-13"
+      - &a3
+        kind: "literature"
+        title: "Kondowe et al. (2024). Community Diversity and Dynamics of Fish Assemblages in Lake Kanyaboli, Western
+          Kenya"
+        url: "https://doi.org/10.1002/aff2.70014"
+        accessed: "2026-10-13"
+      - &a4
+        kind: "database"
+        title: "Natugonza and Musinguzi (2020). Freshwater Biodiversity Portal for Uganda: Lake Kyoga species records"
+        url: "https://freshwaterbiodiversity.go.ug/water_body/?name=Lake+Kyoga"
+        accessed: "2026-10-13"
+      - &a5
+        kind: "database"
+        title: "NaFIRRI Freshwater Biodiversity Portal for Uganda: Lake Nawampasa species occurrences"
+        url: "https://freshwaterbiodiversity.go.ug/water_body/?name=Lake+Nawampasa"
+        accessed: "2026-10-13"
+    evidence:
+      - source: *a2
+        value:
+          waterbody: "Lake Kanyaboli"
+        note: "Directly collected wild specimens."
+      - source: *a3
+        value:
+          waterbody: "Lake Kanyaboli"
+        note: "Named species recorded in both seasons during the 2020 to 2021 survey."
+      - source: *a4
+        value:
+          waterbody: "Lake Kyoga"
+        note: "Species occurrence listing, without a comparative present-day population census."
+      - source: *a5
+        value:
+          waterbody: "Lake Nawampasa"
+        note: "Species occurrence listing, without a comparative present-day population census."
+  temperatureC:
+    value:
+      min: 25
+      max: 30
+    confidence: "low"
+    rationale: "The tally selects 25 to 30 C by qualified majority (4 of 6, low confidence), using its agreement
+      threshold and rounded medians rather than the union of field extremes. The Kanyaboli seasonal means are
+      27.9 +/- 1.4 and 28.2 +/- 0.7 C; their combined mean-plus/minus-SD envelope is 26.5 to 29.3 C, not
+      observed annual extrema. Kyoga measurements in Ongom span 24.5 to 27 C and Obubu Table 8 spans 25.6 to
+      30.4 C in 2020. Those wider regional endpoints, 24.5 to 30.4 C together, are excluded by the tally
+      rounding and should not be mistaken for a complete species-specific collection envelope. The secondary
+      Yala range of 25 to 33 C in Aquatic Community is wider again; its primary collecting record was not
+      read. Nambi reports 25.9 to 29.4 C in its Results, with a different minimum in its table. Lake Victoria
+      values are historical comparison only because the living refuge lakes are distinct. Proposals: generator
+      {\"min\":26,\"max\":30}; checker-a {\"min\":22,\"max\":30}; checker-b {\"min\":25.8,\"max\":28.2};
+      checker-c {\"min\":25,\"max\":30}; tiebreaker-1 {\"min\":24.5,\"max\":30.4}; tiebreaker-2
+      {\"min\":25,\"max\":30}."
+    sources:
+      - &a6
+        kind: "literature"
+        title: "Kondowe et al. (2022). Seasonality in Environmental Conditions Drive Variation in Plankton Communities
+          in a Shallow Tropical Lake. Table 1"
+        url: "https://doi.org/10.3389/frwa.2022.883767"
+        accessed: "2026-10-13"
+      - &a7
+        kind: "literature"
+        title: "Muyodi, Mwanuzi and Kapiyo (2011). Environmental Quality and Fish Communities in Selected Catchments
+          of Lake Victoria. Table 1"
+        url: "https://doi.org/10.2174/1874829501104010054"
+        accessed: "2026-10-13"
+      - &a8
+        kind: "database"
+        title: "Aquatic Community species care sheet: Christmas Fulu, Haplochromis (Xystichromis) phytophagus"
+        url: "https://www.aquaticcommunity.com/cichlid/fulu.php"
+        accessed: "2026-10-13"
+      - &a11
+        kind: "literature"
+        title: "Aloo (2003). Biological diversity of the Yala Swamp lakes. Abstract only available through fetch-oa"
+        url: "https://doi.org/10.1023/a:1022869624524"
+        accessed: "2026-10-13"
+      - &a12
+        kind: "literature"
+        title: "Ongom, Andama and Lukubye (2017). Physico-Chemical Quality of Lake Kyoga at Selected Landing Sites and
+          Anthropogenic Activities"
+        url: "https://doi.org/10.4236/jwarp.2017.911080"
+        accessed: "2026-10-13"
+      - &a13
+        kind: "literature"
+        title: "Obubu et al. (2022). Determination of the Connectedness of Land Use, Land Cover Change to Water
+          Quality Status of a Shallow Lake: A Case of Lake Kyoga Basin, Uganda"
+        url: "https://doi.org/10.3390/su14010372"
+        accessed: "2026-10-13"
+      - *a3
+      - *a5
+      - &a14
+        kind: "literature"
+        title: "Nambi et al. (2023). Identification and characterization of fish breeding habitats on Lake Kyoga as an
+          approach to sustainable fisheries management"
+        url: "https://doi.org/10.47853/fas.2023.e24"
+        accessed: "2026-10-13"
+      - *a4
+      - &a9
+        kind: "literature"
+        title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa, Vol. 1.
+          Lake Victoria chemistry after EAFRO and Talling and Talling"
+        url: "https://www.fao.org/4/t0473e/T0473E12.htm"
+        accessed: "2026-10-13"
+      - &a10
+        kind: "literature"
+        title: "Effects of Papyrus Plants on the Physicochemical Parameters and Nutrient Levels of Water and Sediments
+          in Yala Swamp Wetland in Western Kenya (2024)"
+        url: "https://doi.org/10.4236/jbpc.2024.151001"
+        accessed: "2026-10-13"
+    evidence:
+      - source: *a6
+        value:
+          min: 26.5
+          max: 29.3
+        note: "Calculated envelope of seasonal mean +/- SD, not observed extrema; dry mean 27.9 and wet mean 28.2 C."
+      - source: *a7
+        value:
+          min: 26.5
+          max: 26.5
+        note: "Yala River catchment field measurement; regional corroboration only."
+      - source: *a8
+        value:
+          min: 25
+          max: 33
+        note: "Secondary attribution to Yala field conditions; exact site and duration unavailable."
+      - source: *a9
+        value: null
+        note: "Historical Lake Victoria comparator from the FAO compilation; not satellite-lake water and not the
+          origin of the decided range."
+      - source: *a10
+        value:
+          min: 23.6
+          max: 29
+        note: "station means in the Yala swamp, Lake Sare and River Yala"
+      - source: *a11
+        value: null
+        note: "The retrieved document contains only the abstract. Reviewer-reported Table 2 numbers could not be
+          checked and are not direct numerical evidence here."
+      - source: *a6
+        value:
+          min: 27.9
+          max: 28.2
+        note: "Table 1. Seasonal means; standard deviations 1.4 and 0.7 C"
+      - source: *a12
+        value:
+          min: 24.5
+          max: 27
+        note: "Table 1: actual minimum and maximum across western Kyoga landing sites during December 2015 and January
+          2016."
+      - source: *a13
+        value:
+          min: 25.6
+          max: 30.4
+        note: "Table 8: eastern Kyoga measurements in 2020; the 2000 and 2010 records extend down to 25.8 C."
+      - source: *a12
+        value:
+          min: 25.06
+          max: 25.76
+        note: "Range of reported activity-site means, not instantaneous extremes."
+      - source: *a14
+        value:
+          min: 25.9
+          max: 29.4
+        note: "Kyoga field range in the Results text; the summary table instead gives 26.3 C as its minimum."
+    verification:
+      method: "qualified-majority"
+      votes:
+        agree: 4
+        total: 6
+    tolerance:
+      value:
+        min: 22
+        max: 30
+      confidence: "low"
+      rationale: "The tally retains 22 to 30 C with unanimous threshold agreement (4 of 4, low confidence), although
+        the proposals differ within 1 C. The Nordic register gives 22 to 28 C, the Cichlid Fish Forum profile
+        gives about 25.6 to 27.8 C and Guidarium gives 24 to 28 C; retailer advice is supporting website
+        evidence. The selected 30 C ceiling contains the natural decision and is not a demonstrated multi-year
+        chronic limit. Aquatic Community publishes the wider 25 to 33 C and American Aquarium Products the
+        wider 25 to 32.2 C; their hot endpoints lack convincing long-term health evidence. Routine keeping
+        around 24 to 28 C has more direct husbandry support. Proposals: generator {\"min\":22,\"max\":30};
+        checker-a {\"min\":22,\"max\":30}; checker-b {\"min\":22,\"max\":29}; checker-c
+        {\"min\":23,\"max\":30}."
+      sources:
+        - &a15
+          kind: "database"
+          title: "Nordiska Ciklidsallskapet species register: Haplochromis phytophagus"
+          url: "https://www.ciklid.org/artregister/art.php?ID=2077"
+          accessed: "2026-10-13"
+        - &a16
+          kind: "website"
+          title: "Coburg Aquarium species care sheet: Xystichromis phytophagus"
+          url: "https://coburgaquarium.com.au/collections/african/products/xystichromis-phytophagus"
+          accessed: "2026-10-13"
+        - &a17
+          kind: "website"
+          title: "Ron's Cichlids species care sheet: Christmas Fulu"
+          url: "https://ronscichlids.com/products/christmas-fulu"
+          accessed: "2026-10-13"
+        - *a8
+        - &a18
+          kind: "database"
+          title: "Guidarium, Christmas Fulu (Xystichromis phytophagus)"
+          url: "https://guidarium.com/fishes/christmas-fulu"
+          accessed: "2026-10-13"
+        - &a19
+          kind: "database"
+          title: "Cichlid Fish Forum species profile, Xystichromis phytophagus"
+          url: "https://www.cichlid-forum.com/posts/3155236"
+          accessed: "2026-10-13"
+        - &a20
+          kind: "database"
+          title: "Dyrenes Beskyttelse. Care guidance for African and Asian aquarium cichlids"
+          url: "https://www.dyrenesbeskyttelse.dk/familiedyr/pasningsvejledninger/fisk/cichlider-stueakvarium"
+          accessed: "2026-10-13"
+        - &a21
+          kind: "database"
+          title: "Aquarist Atlas: Haplochromis phytophagus"
+          url: "https://www.cichlidatlas.com/species/haplochromis-phytophagus/"
+          accessed: "2026-10-13"
+        - &a22
+          kind: "website"
+          title: "American Aquarium Products: Victoria Cichlids, Christmas Fulu section"
+          url: "https://www.americanaquariumproducts.com/victoria-cichlids.html"
+          accessed: "2026-10-13"
+      evidence:
+        - source: *a15
+          value:
+            min: 22
+            max: 28
+          note: "Aquarium range."
+        - source: *a16
+          value:
+            min: 24
+            max: 28
+          note: "Aquarium range."
+        - source: *a17
+          value:
+            min: 23.3
+            max: 28.9
+          note: "74 to 84 F converted to C."
+        - source: *a8
+          value:
+            min: 25
+            max: 33
+          note: "Published care range, but upper endpoint is weakly supported for sustained keeping."
+        - source: *a18
+          value:
+            min: 24
+            max: 28
+        - source: *a19
+          value:
+            min: 25.6
+            max: 27.8
+        - source: *a17
+          value:
+            min: 23.33
+            max: 28.89
+          note: "74 to 84 F converted to Celsius"
+        - source: *a20
+          value:
+            min: 25
+            max: 28
+          note: "The species is explicitly in this temperature group"
+        - source: *a21
+          value:
+            min: 23
+            max: 28
+          note: "Aquarium maintenance range."
+        - source: *a22
+          value:
+            min: 25
+            max: 32.2
+          note: "77 to 90 F converted; warmer recommendation receives less weight."
+      verification:
+        method: "unanimous"
+        votes:
+          agree: 4
+          total: 4
+  ph:
+    value:
+      min: 6.9
+      max: 8.4
+    confidence: "medium"
+    rationale: "The tally selects pH 6.9 to 8.4 by qualified majority (4 of 6, medium confidence). This is the
+      rounded median of agreeing proposals, not the full measured span. Kanyaboli seasonal means near 7.1 to
+      7.2 and Newman's Nawampasa kit range of about 7.0 to 7.5 provide locality context. Checker-c reports an
+      Anyona Table 4 range of 6.7 to 8.5, wider than the decision; that thesis table could not be
+      independently read here. Western Kyoga measurements in Ongom span 5.7 to 8.5, Obubu gives 6.5 to 8.5 in
+      2010 and 6.9 to 9.9 in 2020, and Nambi reports 7.0 to 9.6. These wider basin ranges include sampling
+      stations without simultaneous phytophagus identification and are not substituted for the voted
+      representative range. Secondary Yala accounts give 7.5 to 8.2. The Lake Victoria comparator of 6.8 to
+      9.4 does not establish satellite-lake chemistry. Proposals: generator {\"min\":7,\"max\":8.2}; checker-a
+      {\"min\":6.8,\"max\":9.4}; checker-b {\"min\":7,\"max\":8.2}; checker-c {\"min\":6.7,\"max\":8.5};
+      tiebreaker-1 {\"min\":6.7,\"max\":8.5}; tiebreaker-2 {\"min\":7,\"max\":7.5}."
+    sources:
+      - *a6
+      - *a7
+      - *a8
+      - &a23
+        kind: "literature"
+        title: "Githaiga et al. (2026). Assessment of drinking water quality, heavy metal pollution, ecological and
+          human health risks in Kenya's rural wetlands. Supplementary measurements reported by checker-b; full
+          text unavailable to adjudicator"
+        url: "https://doi.org/10.1007/s43832-026-00377-4"
+        accessed: "2026-10-13"
+      - *a11
+      - &a24
+        kind: "literature"
+        title: "Anyona (1997). An investigation into some water quality problems of Lake Kanyaboli in Kenya.
+          University of Nairobi MSc thesis, Table 4"
+        url: "https://erepository.uonbi.ac.ke/handle/11295/96322"
+        accessed: "2026-10-13"
+      - *a12
+      - *a13
+      - &a25
+        kind: "literature"
+        title: "Newman. Cichlid Conservation in Uganda. Field expedition report republished by AquaInfo"
+        url: "https://aquainfo.nl/en/cichlid-conservation-in-uganda/"
+        accessed: "2026-10-13"
+      - *a5
+      - *a9
+      - *a10
+      - *a3
+      - *a14
+    evidence:
+      - source: *a6
+        value:
+          min: 7
+          max: 7.3
+        note: "Seasonal mean +/- SD envelope; actual seasonal means 7.1 and 7.2."
+      - source: *a7
+        value:
+          min: 7.9
+          max: 7.9
+        note: "Yala River catchment, not the lake itself."
+      - source: *a8
+        value:
+          min: 7.5
+          max: 8.2
+        note: "Secondary account of Yala field measurements."
+      - source: *a9
+        value: null
+        note: "Historical Lake Victoria comparator from the FAO compilation; not satellite-lake water and not the
+          origin of the decided range."
+      - source: *a10
+        value:
+          min: 7.38
+          max: 7.86
+        note: "station means, Yala swamp"
+      - source: *a23
+        value:
+          min: 7.19
+          max: 7.19
+        note: "Wet-season Kanyaboli composite sample Inherited from checker-b; fetch-oa could not retrieve the paper
+          or supplement, so the number was not independently rechecked. Inherited from checker-b; fetch-oa
+          could not retrieve the paper or supplement, so the number was not independently rechecked."
+      - source: *a11
+        value: null
+        note: "The retrieved document contains only the abstract. Reviewer-reported Table 2 numbers could not be
+          checked and are not direct numerical evidence here."
+      - source: *a24
+        value:
+          min: 6.7
+          max: 8.5
+        note: "Table 4 pooled water measurements; mean 7.47. Numerical Table 4 evidence inherited from checker-c; the
+          repository returned no readable text to the adjudicator and no DOI was available for fetch-oa.
+          Numerical Table 4 evidence inherited from checker-c; the repository returned no readable text to the
+          adjudicator and no DOI was available for fetch-oa."
+      - source: *a12
+        value:
+          min: 6.73
+          max: 7.15
+        note: "Means across activity categories; actual individual readings span 5.7 to 8.5, including waste sites."
+      - source: *a13
+        value:
+          min: 6.5
+          max: 8.5
+        note: "Table 8: actual 2010 range in eastern Kyoga. The wider 2020 range is 6.9 to 9.9; no species-specific
+          occupation is demonstrated."
+      - source: *a25
+        value:
+          min: 7
+          max: 7.5
+        note: "Field testing of Nawampasa littoral water with a Tetra kit."
+      - source: *a6
+        value:
+          min: 7.1
+          max: 7.2
+        note: "Kanyaboli seasonal means, not physiological limits."
+      - source: *a14
+        value:
+          min: 7
+          max: 9.6
+        note: "Regional Kyoga measurements, excluded without a species-specific locality link."
+    verification:
+      method: "qualified-majority"
+      votes:
+        agree: 4
+        total: 6
+    tolerance:
+      value:
+        min: 6.9
+        max: 8.6
+      confidence: "medium"
+      rationale: "The tally retains 6.9 to 8.6 by qualified majority (5 of 6, medium confidence). Successful
+        neutral-water breeding is qualitative support around pH 7, while structured care guidance reaches 8.5
+        or 8.6. The 6.9 floor contains the decided natural range rather than a demonstrated multi-year lower
+        limit. Checker-a's wider 6.8 to 9.4 proposal extrapolated the Lake Victoria comparator into aquarium
+        tolerance; the read husbandry accounts do not establish sustained health at 9.4. The broader Kyoga
+        field readings up to 9.9 likewise do not prove chronic aquarium safety. Proposals: generator
+        {\"min\":7,\"max\":8.6}; checker-a {\"min\":6.8,\"max\":9.4}; checker-b {\"min\":7,\"max\":8.6};
+        checker-c {\"min\":6.7,\"max\":8.6}; tiebreaker-1 {\"min\":6.7,\"max\":8.6}; tiebreaker-2
+        {\"min\":7,\"max\":8.6}."
+      sources:
+        - *a8
+        - *a15
+        - *a16
+        - *a17
+        - *a18
+        - *a21
+        - *a12
+        - *a19
+      evidence:
+        - source: *a8
+          value:
+            min: 7
+            max: 8.2
+          note: "Neutral-water reproduction reported, alongside a 7.5 to 8.2 recommendation; neutral interpreted as
+            approximately 7."
+        - source: *a15
+          value:
+            min: 7.5
+            max: 8
+          note: "Aquarium recommendation."
+        - source: *a16
+          value:
+            min: 7.8
+            max: 8.6
+          note: "Aquarium recommendation."
+        - source: *a17
+          value:
+            min: 7.4
+            max: 8.4
+          note: "Aquarium recommendation."
+        - source: *a18
+          value:
+            min: 7.5
+            max: 8.6
+        - source: *a19
+          value:
+            min: 7.2
+            max: 8.6
+        - source: *a21
+          value:
+            min: 7.2
+            max: 8.5
+          note: "Published aquarium target."
+        - source: *a8
+          value:
+            min: 7
+            max: 7
+          note: "Approximately neutral breeding water; the numeric pH of 7 interprets the qualitative report."
+      verification:
+        method: "qualified-majority"
+        votes:
+          agree: 5
+          total: 6
+  ghDgh:
+    value:
+      min: 1
+      max: 3
+    confidence: "low"
+    rationale: "The tally retains 1 to 3 dGH with unanimous threshold agreement (4 of 4, low confidence);
+      agreement permits endpoints within 2 dGH, so the votes are not identical measurements. Muyodi reports 32
+      mg/L hardness at River Yala, equivalent to about 1.79 dGH, a regional proxy. The Anyona abstract
+      describes soft Kanyaboli water. Checker-b reports a direct composite-sample value of 36.6 mg/L, about
+      2.05 dGH, from Githaiga; fetch-oa did not retrieve that paper or supplement for rechecking. Checker-c
+      reports Anyona titration values of 4 to 46 mg/L, about 0.224 to 2.577 dGH, whose lower end lies below
+      the decision; that full thesis was not readable here. The FAO Lake Victoria compilation provides an
+      independently readable historical comparator, about 1.2 to 1.8 dGH from its calcium and magnesium
+      values, not direct Kanyaboli measurement. The voted band is approximate and cannot describe every refuge
+      station. Conductivity, KH and aquarium hard-water advice are not measurements of GH. Proposals:
+      generator {\"min\":1,\"max\":3}; checker-a {\"min\":1,\"max\":3}; checker-b {\"min\":2.05,\"max\":2.05};
+      checker-c {\"min\":0.2,\"max\":2.6}."
+    sources:
+      - *a7
+      - &a26
+        kind: "database"
+        title: "FAO AGRIS record of Anyona (1997). An investigation into some water quality problems of Lake Kanyaboli
+          in Kenya. Abstract only"
+        url: "https://agris.fao.org/search/en/providers/122430/records/6903475db901ffe5ca6537f1"
+        accessed: "2026-10-13"
+      - *a9
+      - *a10
+      - *a23
+      - *a24
+      - &a27
+        kind: "literature"
+        title: "Thenya (2006). Analysis of Macrophyte Biomass Productivity, Utilization and its Impact on Various
+          Eco-Types of Yala Swamp, Lake Victoria Basin, Kenya"
+        url: "https://hdl.handle.net/1834/6837"
+        accessed: "2026-10-13"
+    evidence:
+      - source: *a7
+        value:
+          min: 1.79
+          max: 1.79
+        note: "32 mg/L as CaCO3 divided by 17.848; Yala catchment proxy, not Kanyaboli."
+      - source: *a26
+        value: null
+        note: "Lake field study describes soft water, but the accessible abstract supplies no numerical GH. This is
+          qualitative corroboration only."
+      - source: *a9
+        value: null
+        note: "Historical Lake Victoria comparator from the FAO compilation; not satellite-lake water and not the
+          origin of the decided range."
+      - source: *a23
+        value:
+          min: 2.05
+          max: 2.05
+        note: "Supplementary Material 2. Sheet1 row 33; 36.6 mg/L divided by 17.848 Inherited from checker-b; fetch-oa
+          could not retrieve the paper or supplement, so the number was not independently rechecked. Inherited
+          from checker-b; fetch-oa could not retrieve the paper or supplement, so the number was not
+          independently rechecked."
+      - source: *a24
+        value:
+          min: 0.224
+          max: 2.577
+        note: "Table 4 total-hardness titration; mean 28.63 mg/L as CaCO3 equals 1.60 dGH. Numerical Table 4 evidence
+          inherited from checker-c; the repository returned no readable text to the adjudicator and no DOI was
+          available for fetch-oa. Numerical Table 4 evidence inherited from checker-c; the repository returned
+          no readable text to the adjudicator and no DOI was available for fetch-oa."
+      - source: *a27
+        value: null
+        note: "Qualitative elevated hardness relative to nearby lakes; no numerical GH. This entry documents the
+          evidence gap and is not a second numerical vote."
+      - source: *a9
+        value:
+          min: 1.2
+          max: 1.8
+        note: "Calculated from calcium and magnesium in the historical main-lake compilation; regional comparison
+          only, not the living refuge habitat."
+    verification:
+      method: "unanimous"
+      votes:
+        agree: 4
+        total: 4
+    tolerance:
+      value:
+        min: 1
+        max: 20
+      confidence: "low"
+      rationale: "The tally retains 1 to 20 dGH by qualified majority (5 of 6, low confidence). Guidarium states 10
+        to 20 dGH; Aquatic Community reports successful reproduction in unspecified soft water. Coburg's 150
+        to 300 ppm general hardness converts to about 8.4 to 16.8 dGH but is retailer guidance with habitat
+        errors elsewhere. Qualitative hard-water statements from Ron's Cichlids and Cichlid Fish Forum cannot
+        be converted into numeric 10 to 20 dGH evidence. The 1 dGH floor is an inferred working estimate.
+        Checker-c's wider 0.2 to 20 proposal followed a reported native minimum; the tally instead keeps 1 to
+        20. None of these sources establishes both multi-year physiological limits. Proposals: generator
+        {\"min\":1,\"max\":17}; checker-a {\"min\":1,\"max\":20}; checker-b {\"min\":2,\"max\":20}; checker-c
+        {\"min\":0.2,\"max\":20}; tiebreaker-1 {\"min\":1,\"max\":20}; tiebreaker-2 {\"min\":1,\"max\":20}."
+      sources:
+        - *a18
+        - *a19
+        - *a8
+        - *a22
+        - *a16
+        - &a28
+          kind: "literature"
+          title: "Stigliano (2000). Xystichromis phytophagus. Greater Chicago Cichlid Association breeding report"
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/victorian-cichlids/169-xystichromis-phytophagus.htm\
+            l"
+          accessed: "2026-10-13"
+        - *a17
+      evidence:
+        - source: *a8
+          value: null
+          note: "Successful breeding in soft water reported; neither GH nor duration quantified."
+        - source: *a16
+          value:
+            min: 8.4
+            max: 16.8
+          note: "150 to 300 ppm general hardness, interpreted as CaCO3 and converted to dGH."
+        - source: *a28
+          value: null
+          note: "Hard-water aquarium success described, without a numerical GH range."
+        - source: *a18
+          value:
+            min: 10
+            max: 20
+        - source: *a19
+          value: null
+          note: "Qualitative hard-water advice supplies no numerical GH endpoints."
+        - source: *a17
+          value: null
+          note: "Qualitative hard-water advice supplies no numerical GH endpoints."
+        - source: *a22
+          value:
+            min: 11.2
+            max: 11.2
+          note: "200 ppm as CaCO3 converts to 11.2 dGH; the sheet recommends values above this threshold and gives no
+            maximum."
+      verification:
+        method: "qualified-majority"
+        votes:
+          agree: 5
+          total: 6
+  khDkh:
+    value:
+      min: 4
+      max: 7
+    confidence: "low"
+    rationale: "The tally chooses 4 to 7 dKH by its low-confidence median fallback (2 of 6 agreeing), not a
+      measured natural envelope. The six proposed minima have median 4.3, rounded to 4, and their maxima have
+      median 7. This decision is retained as a plain natural-water fact without a verification object. Newman
+      directly reports 11 dKH at Nawampasa, outside the chosen band. The FAO Kyoga compilation gives 133 mg/L
+      combined bicarbonate and carbonate in the EAFRO (1954) column, corresponding to about 6.1 dKH if
+      bicarbonate dominates; this is an approximate conversion. The tie-breaker regional proposal of 6 to 11
+      dKH is wider at the upper end. At the low end checker-c reports Anyona alkalinity of 8 to 36 mg/L as
+      CaCO3, about 0.448 to 2.017 dKH; its full table could not be rechecked. Muyodi's River Yala 46.3
+      alkalinity result gives about 2.59 dKH if the damaged unit is interpreted as mg/L CaCO3. The 6 to 7 dKH
+      Yala account in care databases repeats an older observation. These incompatible locality results remain
+      visible in evidence; the median must not be presented as covering all occupied lakes. Proposals:
+      generator {\"min\":2.6,\"max\":7}; checker-a {\"min\":2,\"max\":6}; checker-b {\"min\":6,\"max\":7};
+      checker-c {\"min\":0.4,\"max\":2.1}; tiebreaker-1 {\"min\":6,\"max\":11}; tiebreaker-2
+      {\"min\":6,\"max\":11}."
+    sources:
+      - *a7
+      - *a8
+      - *a9
+      - &a29
+        kind: "database"
+        title: "Aquarist Atlas. Haplochromis phytophagus species account"
+        url: "https://www.aquaristatlas.com/species/haplochromis-phytophagus/"
+        accessed: "2026-10-13"
+      - *a24
+      - *a27
+      - &a30
+        kind: "literature"
+        title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa, Vol. 1.
+          Uganda: Lake Kyoga physical and chemical data"
+        url: "https://www.fao.org/4/t0473e/T0473E11.htm"
+        accessed: "2026-10-13"
+      - *a25
+      - *a5
+    evidence:
+      - source: *a7
+        value:
+          min: 2.59
+          max: 2.59
+        note: "46.3 mg/L as CaCO3 divided by 17.848; Yala catchment proxy and corrected implausible extraction unit."
+      - source: *a8
+        value:
+          min: 6
+          max: 7
+        note: "Secondary report of Yala field KH; exact lake station unavailable."
+      - source: *a9
+        value: null
+        note: "Historical Lake Victoria comparator from the FAO compilation; not satellite-lake water and not the
+          origin of the decided range."
+      - source: *a29
+        value:
+          min: 6
+          max: 7
+        note: "Attributes the same field report to Loiselle 1996"
+      - source: *a24
+        value:
+          min: 0.448
+          max: 2.017
+        note: "Table 4 alkalinity divided by 17.848; mean 17.46 mg/L equals 0.98 dKH. Numerical Table 4 evidence
+          inherited from checker-c; the repository returned no readable text to the adjudicator and no DOI was
+          available for fetch-oa. Numerical Table 4 evidence inherited from checker-c; the repository returned
+          no readable text to the adjudicator and no DOI was available for fetch-oa."
+      - source: *a27
+        value: null
+        note: "Qualitative alkaline swamp chemistry without a numerical KH value; not independent numeric
+          confirmation."
+      - source: *a30
+        value:
+          min: 6.1
+          max: 6.1
+        note: "Approximate bicarbonate-based conversion of the reported 133 mg/L HCO3 plus CO3; no split between the
+          two ions is supplied."
+      - source: *a25
+        value:
+          min: 11
+          max: 11
+        note: "A field KH-kit reading from Nawampasa, not a husbandry recommendation."
+    tolerance:
+      value:
+        min: 2
+        max: 7
+      confidence: "low"
+      rationale: "The tally conservatively selects the intersection of the six proposals, 2 to 7 dKH (3 of 6, low
+        confidence); it already contains the decided natural 4 to 7 band. Generator and checker-b proposed 2
+        to 7, checker-a 2 to 12, checker-c 0.4 to 7, and both tie-breakers 2 to 11 dKH. The 0.4 to 7, 2 to 11
+        and 2 to 12 proposals are wider than the result. Aquatic Community and Aquarist Atlas discuss 6 to 7
+        dKH and unquantified soft neutral-water reproduction, but repeat the same older field history. The 2
+        dKH floor is inferred, not a measured chronic minimum. Newman's 11 dKH is a natural-water observation
+        excluded by the conservative intersection, not evidence of a chronic aquarium threshold. The decided
+        tolerance consequently does not cover that observed Nawampasa locality even though it contains the
+        tally's median natural band; the unresolved mismatch must remain explicit. Proposals: generator
+        {\"min\":2,\"max\":7}; checker-a {\"min\":2,\"max\":12}; checker-b {\"min\":2,\"max\":7}; checker-c
+        {\"min\":0.4,\"max\":7}; tiebreaker-1 {\"min\":2,\"max\":11}; tiebreaker-2 {\"min\":2,\"max\":11}."
+      sources:
+        - *a8
+        - *a21
+        - *a18
+        - *a19
+        - *a29
+        - *a25
+        - *a30
+      evidence:
+        - source: *a8
+          value:
+            min: 6
+            max: 7
+          note: "KH guidance plus unquantified soft-water breeding."
+        - source: *a21
+          value:
+            min: 6
+            max: 7
+          note: "Same earlier Yala account; maintenance is described as adaptable, not tested at fixed KH endpoints."
+        - source: *a18
+          value:
+            note: "only hardness and pH given"
+        - source: *a29
+          value:
+            min: 6
+            max: 7
+          note: "Habitat-mimicking recommendation; lower KH tolerance is not quantified"
+        - source: *a25
+          value:
+            min: 11
+            max: 11
+          note: "Natural-water observation used for containment only; not a long-term aquarium tolerance experiment."
+        - source: *a30
+          value:
+            min: 6.1
+            max: 6.1
+          note: "Natural-water alkalinity estimate, supporting context rather than demonstrated tolerance."
+      verification:
+        method: "conservative"
+        votes:
+          agree: 3
+          total: 6
+  maxSizeCm:
+    value:
+      male: 11.5
+      female: 9
+    confidence: "medium"
+    rationale: "Generator, checker-b and checker-c propose males 11.5 cm and females 9 cm; checker-a proposes 11
+      and 9 cm. Retain 11.5 and 9 as typical aquarium total-length planning values from the 4.5-inch
+      structured profile, breeder reports of males exceeding 10 to 11 cm and Guidarium's sex-specific 11 and 9
+      cm figures. The 8.6 cm FishBase standard length excludes the tail and is not converted with an assumed
+      universal ratio. Retail reports of 12 to 15 cm or 12.7 to 15.2 cm are larger but poorly corroborated.
+      The female endpoint has only one explicit numerical care source, so overall confidence remains medium."
+    sources:
+      - *a28
+      - *a8
+      - &a31
+        kind: "database"
+        title: "FishBase species summary: Haplochromis phytophagus"
+        url: "https://www.fishbase.se/summary/Haplochromis-phytophagus.html"
+        accessed: "2026-10-13"
+      - *a18
+      - *a19
+      - &a32
+        kind: "database"
+        title: "FishBase. Haplochromis phytophagus species summary"
+        url: "https://www.fishbase.se/summary/Xystichromis-phytophagus.html"
+        accessed: "2026-10-13"
+      - *a17
+    evidence:
+      - source: *a28
+        value:
+          male: 10.2
+          female: null
+        note: "Males exceed four inches; females described only as smaller."
+      - source: *a8
+        value:
+          male: 11
+          female: null
+        note: "Males exceed eleven centimetres; separate female measurement absent."
+      - source: *a31
+        value:
+          male: 8.6
+          female: null
+        note: "Standard length of scientific material, not total length."
+      - source: *a18
+        value:
+          male: 11
+          female: 9
+      - source: *a19
+        value:
+          male: 11.4
+          female: 11.4
+        note: "single maximum"
+      - source: *a31
+        value:
+          male: 8.6
+          female: 8.6
+        note: "standard length, male or unsexed"
+      - source: *a28
+        value:
+          male: 10.16
+          female: null
+        note: "Male length exceeds the stated 10.16 cm threshold; female maximum not quantified"
+      - source: *a17
+        value:
+          male: 15.2
+          female: null
+        note: "Five to six inch generic size claim; larger than the selected typical maximum."
+  predation:
+    value: 0
+    confidence: "medium"
+    rationale: "All four original runs proposed level 0, and the tally records unanimous agreement (4 of 4, medium
+      confidence). Abila and colleagues examined 50 phytophagus for diet and recorded no fish eggs or embryos,
+      while FishBase describes vegetation and attached algae. The rubric therefore treats it as
+      nonpiscivorous; incidental fry picking is still possible. Absence from sampled guts does not establish
+      that aquarium fry are never eaten."
+    sources:
+      - *a2
+      - *a31
+      - *a19
+      - *a32
+    evidence:
+      - source: *a2
+        value: 0
+        note: "Fifty phytophagus examined; no fish embryos or eggs recorded, unlike the sampled paedophagous species."
+      - source: *a31
+        value: 0
+        note: "Inference from reported plant and algal gut contents; aquarium fry behaviour not measured."
+      - source: *a19
+        value: 0
+        note: "herbivore"
+      - source: *a32
+        value: 0
+        note: "Diet description contains leaf material and epiphytic algae"
+    verification:
+      method: "unanimous"
+      votes:
+        agree: 4
+        total: 4
+  diet:
+    value:
+      type: "omnivore"
+      bloatSensitive: false
+      foods:
+        - "Plant-rich cichlid flakes or small pellets"
+        - "Spirulina-containing prepared food"
+        - "Small portions of aquatic invertebrates"
+    confidence: "medium"
+    rationale: "The tally retains omnivore with bloatSensitive false by qualified majority (5 of 6, medium
+      confidence). Abila Table 1 records 56.1 percent plant remains, 36.9 percent other insects, 5.7 percent
+      insect larvae and 2.5 percent algae by relative abundance. Stigliano independently reports successful
+      mixed vegetable and animal feeding. These support the rubric omnivore category despite the older
+      FishBase and care-sheet grazing emphasis. Checker-a inferred a bloat restriction from plant feeding; no
+      read source demonstrates that syndrome in this species. The false flag means an unestablished
+      restriction, not evidence that excessive protein is harmless. The generator food list is retained
+      exactly; the checkers proposed alternative plant-rich and insect foods and both tie-breakers left foods
+      unspecified. Proposals: generator
+      {\"type\":\"omnivore\",\"bloatSensitive\":false,\"foods\":[\"Plant-rich cichlid flakes or small
+      pellets\",\"Spirulina-containing prepared food\",\"Small portions of aquatic invertebrates\"]};
+      checker-a {\"type\":\"aufwuchs\",\"bloatSensitive\":true,\"foods\":[\"algae\",\"spirulina
+      flakes\",\"vegetable matter\",\"occasional insect larvae\"]}; checker-b
+      {\"type\":\"omnivore\",\"bloatSensitive\":false,\"foods\":[\"vegetation-associated algae\",\"decaying
+      plant material\",\"insects\",\"insect larvae\",\"vegetable-rich prepared food\"]}; checker-c
+      {\"type\":\"omnivore\",\"bloatSensitive\":false,\"foods\":[\"plant-rich prepared food\",\"epiphytic
+      algae and biofilm\",\"small aquatic insects\",\"occasional small invertebrates\"]}; tiebreaker-1
+      {\"type\":\"omnivore\",\"bloatSensitive\":false}; tiebreaker-2
+      {\"type\":\"omnivore\",\"bloatSensitive\":false}."
+    sources:
+      - *a2
+      - *a31
+      - *a28
+      - *a8
+      - &a33
+        kind: "database"
+        title: "FishBase. Ecology of Haplochromis phytophagus"
+        url: "https://www.fishbase.se/Ecology/FishEcologySummary.php?StockCode=7147&GenusName=Haplochromis&SpeciesNam\
+          e=phytophagus"
+        accessed: "2026-10-13"
+      - *a1
+      - *a19
+    evidence:
+      - source: *a2
+        value:
+          type: "omnivore"
+          bloatSensitive: null
+        note: "Mixed plant and insect gut contents; bloat was not studied."
+      - source: *a31
+        value:
+          type: "aufwuchs"
+          bloatSensitive: null
+        note: "Older plant and algal diet description maps to grazing; no disease susceptibility evidence."
+      - source: *a28
+        value:
+          type: "omnivore"
+          bloatSensitive: null
+        note: "Successful feeding includes vegetable flakes and animal foods; no bloat measurement."
+      - source: *a2
+        value:
+          type: "aufwuchs"
+        note: "plant feeder"
+      - source: *a31
+        value:
+          type: "aufwuchs"
+        note: "leaf tissue, diatoms, blue-green algae"
+      - source: *a19
+        value:
+          type: "aufwuchs"
+        note: "herbivore"
+      - source: *a2
+        value:
+          type: "omnivore"
+          bloatSensitive: false
+        note: "Plant remains 56.1% relative abundance; other insects 36.9%; insect larvae 5.7%. The bloat flag is not
+          tested"
+      - source: *a33
+        value:
+          type: "aufwuchs"
+          bloatSensitive: false
+        note: "Plant and detritus feeding classification. No bloat assessment"
+      - source: *a28
+        value:
+          type: "omnivore"
+          bloatSensitive: false
+        note: "Vegetable staples plus animal foods in captive feeding; no clinical bloat claim"
+      - source: *a2
+        value:
+          type: "omnivore"
+        note: "Table 1 reports substantial plant and insect components. It does not investigate bloat."
+      - source: *a28
+        value:
+          type: "omnivore"
+        note: "Breeding account uses vegetable prepared food and animal supplements; no bloat tendency is reported."
+    verification:
+      method: "qualified-majority"
+      votes:
+        agree: 5
+        total: 6
+  aggressionConspecific:
+    value: 3
+    confidence: "high"
+    rationale: "Males pursue rivals and unreceptive or brooding females persistently. Both keeping accounts
+      require substantial shelter and female-skewed stocking. This is more than harmless displaying, but the
+      evidence does not establish routine killing with the recommended social unit and adequate cover."
+    sources:
+      - *a28
+      - *a8
+      - *a19
+      - *a18
+      - &a34
+        kind: "archive"
+        title: "cichlids.com forum thread 59808"
+        url: "https://www.cichlids.com/disc/read.php?1,59808"
+        accessed: "2026-10-13"
+    evidence:
+      - source: *a28
+        value: 3
+        note: "Strong male aggression and repeated harassment of holding females."
+      - source: *a8
+        value: 3
+        note: "Rivals and unreceptive females are chased; visual refuges are emphasized."
+      - source: *a19
+        value: 3
+        note: "aggressive towards conspecifics"
+      - source: *a18
+        value: 3
+        note: "males kill or harass without enough females"
+  aggressionHeterospecific:
+    value: 2
+    confidence: "medium"
+    rationale: "Spawning males exclude intruders from their territory, while documented companions demonstrate
+      that a suitable community can work. An archive case reports a troublesome male but does not establish
+      routine attacks throughout an appropriately sized tank. Stronger rival-like cichlids may provoke more
+      conflict than unrelated companions."
+    sources:
+      - *a28
+      - *a8
+      - *a34
+      - *a19
+      - *a18
+      - *a17
+    evidence:
+      - source: *a28
+        value: 2
+        note: "Intruders are chased away during courtship."
+      - source: *a8
+        value: 2
+        note: "Compatible characin and catfish companions reported."
+      - source: *a34
+        value: 3
+        note: "One male was reported too aggressive for its existing mixed tank; layout and stocking were not
+          established."
+      - source: *a19
+        value: 2
+      - source: *a18
+        value: 2
+        note: "semi-aggressive"
+      - source: *a17
+        value: 2
+        note: "Mild aggression with compatible African cichlids"
+      - source: *a17
+        value: 1
+        note: "Mild aggression on the care sheet; imprecise rubric mapping."
+  territory:
+    value:
+      size: "small"
+      breedingOnly: false
+    confidence: "low"
+    rationale: "Generator and checker-a propose small, breedingOnly false; checker-b proposes small, breedingOnly
+      true; checker-c proposes large, breedingOnly false. The observed spawning pit and explicit breeder
+      statement of small territories favor small. Aquatic Community's separate-end layout for multiple males
+      is a precaution against visible rivals, not a measured territory spanning a third of a 150 cm tank.
+      Continuing dominance and female exclusion justify the cautious false flag, although neither territory
+      dimensions nor off-season persistence have been quantified."
+    sources:
+      - *a8
+      - *a28
+      - *a17
+      - *a18
+      - *a34
+    evidence:
+      - source: *a17
+        value:
+          size: "small"
+          breedingOnly: false
+        note: "Care account calls male territories small; the breedingOnly flag is inferred from continued dominance."
+      - source: *a17
+        value:
+          size: "small"
+          breedingOnly: true
+        note: "Small territories described with breeding"
+      - source: *a28
+        value:
+          size: "small"
+          breedingOnly: true
+        note: "Pit-centred spawning defence; dimensions not measured"
+      - source: *a8
+        value:
+          size: "large"
+          breedingOnly: false
+        note: "Separate aquarium ends are advised for males; size and persistence are inferred."
+  habitatZones:
+    value:
+      - "sand"
+      - "plants"
+    confidence: "high"
+    rationale: "Scientific and husbandry descriptions consistently associate the species with shallow sand or soft
+      sediment beside dense aquatic vegetation. Aquarium rocks and wood are useful shelter but are not
+      evidence of a natural rocky-reef or wood specialization."
+    sources:
+      - *a31
+      - *a2
+      - *a8
+      - *a19
+      - *a18
+      - *a32
+    evidence:
+      - source: *a31
+        value:
+          - "sand"
+          - "plants"
+        note: "Shallow vegetated littoral."
+      - source: *a8
+        value:
+          - "sand"
+          - "plants"
+        note: "Plant-associated native range and digging behaviour."
+      - source: *a19
+        value:
+          - "plants"
+      - source: *a32
+        value:
+          - "sand"
+          - "plants"
+        note: "Species-specific habitat description"
+      - source: *a2
+        value:
+          - "plants"
+        note: "Kanyaboli papyrus-associated refugium"
+  social:
+    value:
+      structure: "harem"
+      ratio: 6
+    confidence: "medium"
+    rationale: "Generator proposes six females per male, checker-a three, and checker-b and checker-c four. Retain
+      six for a single-male adult breeding group because Stigliano explicitly recommends six to eight females.
+      The lower three-female care minimum and the four-female inference from two-male groups are plausible
+      alternatives, but provide less margin against repeated pursuit. This is a captive stocking
+      recommendation for a polygamous species, not a permanent wild family."
+    sources:
+      - *a28
+      - *a8
+      - *a18
+      - *a19
+      - *a17
+    evidence:
+      - source: *a28
+        value:
+          structure: "harem"
+          ratio: 6
+        note: "Suggested six to eight females and one male."
+      - source: *a8
+        value:
+          structure: "harem"
+          ratio: 3
+        note: "Several females per male; exact minimum not established, three is an interpretive minimum."
+      - source: *a8
+        value:
+          structure: "harem"
+          ratio: 4
+        note: "Two males with six to eight females in a larger aquarium"
+      - source: *a17
+        value:
+          structure: "harem"
+          ratio: 7
+        note: "Breeder listing offers one male with seven females."
+  speciesOnly:
+    value: false
+    confidence: "medium"
+    rationale: "All four original runs proposed false and the tally records unanimous agreement (4 of 4, medium
+      confidence). Aquatic Community names successful characin and catfish companions; the structured Cichlid
+      Fish Forum and Aquarist Atlas profiles also permit compatible mixed stocking. Restricting breeding
+      haplochromines protects parentage, but does not require exclusion of all other fishes. Commercial
+      breeder statements have website weight."
+    sources:
+      - *a8
+      - *a17
+      - *a18
+      - *a19
+      - *a21
+      - kind: "archive"
+        title: "cichlids.com forum thread 14302"
+        url: "https://www.cichlids.com/disc/read.php?2,14302"
+        accessed: "2026-10-13"
+    evidence:
+      - source: *a8
+        value: false
+        note: "Named successful noncichlid companions."
+      - source: *a17
+        value: false
+        note: "Similarly sized African cichlids are considered possible companions."
+      - source: *a18
+        value: false
+        note: "suitable for a mixed African cichlid tank"
+      - source: *a19
+        value: false
+      - source: *a21
+        value: false
+        note: "Appropriate non-haplochromine companions permitted while breeding-line purity is protected."
+    verification:
+      method: "unanimous"
+      votes:
+        agree: 4
+        total: 4
+  hybridGroups:
+    value:
+      - "haplochromis-phytophagus-nubilus"
+    confidence: "low"
+    rationale: "The tally conservatively retains the pairwise group haplochromis-phytophagus-nubilus (3 of 6, low
+      confidence). Generator, checker-a and checker-b proposed []; checker-c and both tie-breakers proposed
+      this group. Abila found mitochondrial FST 0.025 for phytophagus and the fish named Astatotilapia nubila,
+      and the readable Odhiambo abstract describes closely overlapping nuclear-marker clusters. The Catalog
+      maps the second species to Haplochromis nubilus. The rubric permits a presumed group from very close
+      relationship, but these partly overlapping research teams did not verify hybrid offspring or free
+      partner choice. Abila also argues for reproductive isolation elsewhere in the assemblage. The Odhiambo
+      and Ongoma full texts were refused as non-open-access by fetch-oa, so only their abstracts are used. No
+      wider all-to-all haplochromine group is inferred. Proposals: generator []; checker-a []; checker-b [];
+      checker-c [\"haplochromis-phytophagus-nubilus\"]; tiebreaker-1 [\"haplochromis-phytophagus-nubilus\"];
+      tiebreaker-2 [\"haplochromis-phytophagus-nubilus\"]."
+    sources:
+      - *a2
+      - *a21
+      - *a1
+      - *a20
+      - &a35
+        kind: "literature"
+        title: "Odhiambo et al. (2011 online, 2012 volume). Genetic distinction of four haplochromine cichlid fish
+          species in a satellite lake of Lake Victoria, East Africa. Abstract only"
+        url: "https://doi.org/10.1111/j.1439-0469.2011.00641.x"
+        accessed: "2026-10-13"
+      - &a36
+        kind: "literature"
+        title: "Ongoma et al. (2011). Morphometric differentiation among haplochromine cichlid fish species of a
+          satellite lake of Lake Victoria. Abstract only"
+        url: "https://doi.org/10.1111/j.1439-0469.2011.00624.x"
+        accessed: "2026-10-13"
+      - kind: "catalog-of-fishes"
+        title: "Eschmeyer's Catalog of Fishes: Tilapia nubila, valid as Haplochromis nubilus"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?spid=38656"
+        accessed: "2026-10-13"
+    evidence:
+      - source: *a2
+        value: []
+        note: "Genetic affinity and shared mitochondrial variants do not identify a contemporary aquarium crossing
+          pair."
+      - source: *a21
+        value: []
+        note: "Broad aquarium warning lacks a named partner and spawning circumstances."
+      - source: *a20
+        value: []
+        note: "General crossing warning lacks a species-specific pair"
+      - source: *a2
+        value:
+          - "haplochromis-phytophagus-nubilus"
+        note: "Non-significant pairwise FST of 0.025 with A. nubila supports a presumed relationship-based proposal,
+          not observed hybrid offspring."
+      - source: *a35
+        value:
+          - "haplochromis-phytophagus-nubilus"
+        note: "Five microsatellite loci show very close partially overlapping taxa; abstract only. Presumed proposal,
+          not a documented cross."
+      - source: *a36
+        value:
+          - "haplochromis-phytophagus-nubilus"
+        note: "Abstract establishes morphological similarity, while hybridization remains an untested hypothesis."
+    verification:
+      method: "conservative"
+      votes:
+        agree: 3
+        total: 6
+  coloration:
+    value:
+      baseColors:
+        - "red"
+        - "green"
+        - "blue"
+        - "black"
+      pattern: "mixed"
+    confidence: "medium"
+    rationale: "Generator, checker-b and checker-c include red, green, blue and black with a mixed pattern;
+      checker-a omits black. Retain the four colours because displaying males combine red and green body
+      regions, blue head or fin areas and contrasting dark markings. Colour-list order is immaterial. Females
+      and subordinate males are much duller, and this is a male display classification rather than a
+      calibrated colour measurement."
+    sources:
+      - *a28
+      - *a21
+      - *a18
+      - *a19
+      - *a22
+    evidence:
+      - source: *a28
+        value:
+          baseColors:
+            - "red"
+            - "green"
+          pattern: "mixed"
+        note: "Breeding male colours."
+      - source: *a21
+        value:
+          baseColors:
+            - "red"
+            - "green"
+            - "blue"
+            - "black"
+          pattern: "mixed"
+        note: "Male and fin pattern description."
+      - source: *a28
+        value:
+          baseColors:
+            - "green"
+            - "red"
+          pattern: "mixed"
+        note: "Male display colours stated; pattern inferred"
+      - source: *a18
+        value:
+          baseColors:
+            - "green"
+            - "red"
+            - "blue"
+          pattern: "mixed"
+        note: "Male colour description; mixed pattern inferred"
+      - source: *a22
+        value:
+          baseColors:
+            - "red"
+            - "green"
+            - "blue"
+          pattern: "mixed"
+        note: "Blue face and dorsal fin added to red and green breeding colour; pattern inferred."
+  feedingSpeed:
+    value: "normal"
+    confidence: "low"
+    rationale: "Generator and checker-c propose hasty, while checker-a and checker-b propose normal. Retain normal
+      provisionally: ready acceptance of prepared foods and an active swimming style do not demonstrate the
+      rubric's habitual rush that leaves nothing for tankmates. Stigliano establishes easy feeding, and
+      Aquarist Atlas describes enthusiastic feeding without comparative rates. Subordinate females still need
+      monitored access. No direct feeding-speed experiment was found."
+    sources:
+      - *a8
+      - *a28
+      - *a21
+      - kind: "model-knowledge"
+        title: "Model knowledge"
+        accessed: "2026-10-13"
+      - *a18
+    evidence:
+      - source: *a28
+        value: "normal"
+        note: "Inferred from uncomplicated prepared-food acceptance; no direct speed observation"
+      - source: *a21
+        value: "hasty"
+        note: "Very eager feeding is described; rubric inference."
+      - source: *a18
+        value: "hasty"
+        note: "Fast-swimming and hyperactive traits; indirect feeding-speed evidence."
+  minTank:
+    value:
+      volumeL: 300
+      lengthCm: 120
+      depthCm: 50
+    confidence: "medium"
+    rationale: "Generator proposes 300 L and 120 by 50 cm, checker-a 150 L and 90 by 40 cm, checker-b 200 L and
+      100 by 40 cm, and checker-c 150 L and 90 by 45 cm. Retain the generator recommendation for the selected
+      one-male, six-female social unit. The Nordic register states 300 L and 110 cm length; 120 by 50 cm is an
+      explicit layout judgement to provide refuges and interrupted sight lines. Stigliano gives about 151 L
+      without dimensions and Aquatic Community 150 L for a smaller single-male group. Those smaller
+      recommendations do not establish equal protection for six adult females; 300 L is a conservative
+      husbandry choice, not an experimentally determined boundary."
+    sources:
+      - *a15
+      - *a28
+      - *a8
+      - *a18
+      - *a19
+      - *a17
+      - *a21
+    evidence:
+      - source: *a15
+        value:
+          volumeL: 300
+          lengthCm: 110
+          depthCm: null
+        note: "Register aquarium minimum; no depth stated."
+      - source: *a28
+        value:
+          volumeL: 151
+          lengthCm: null
+          depthCm: null
+        note: "At least forty US gallons; no dimensions."
+      - source: *a8
+        value:
+          volumeL: 150
+          lengthCm: null
+          depthCm: null
+        note: "Small group with one male and extensive cover; not specifically six females."
+      - source: *a17
+        value:
+          volumeL: 208
+          lengthCm: null
+          depthCm: null
+        note: "55 US gallons converted; no dimensions stated"
+      - source: *a28
+        value:
+          volumeL: 151.4
+          lengthCm: null
+          depthCm: null
+        note: "Forty US gallons minimum; dimensions not supplied."
+      - source: *a18
+        value:
+          volumeL: 150
+          lengthCm: 90
+          depthCm: null
+        note: "Explicit volume and length."
+      - source: *a21
+        value:
+          volumeL: 151
+          lengthCm: 91.44
+          depthCm: 45.72
+        note: "36 by 18 inch 40-gallon breeder footprint."
+      - source: *a17
+        value:
+          volumeL: 208.2
+          lengthCm: null
+          depthCm: null
+        note: "Fifty-five US gallons recommended."
+  lifespanYears:
+    value:
+      min: 5
+      max: 8
+    confidence: "low"
+    rationale: "Generator, checker-a and checker-c propose 5 to 8 years; checker-b proposes 7 to 15 years from
+      broad cichlid welfare guidance. Retain 5 to 8 solely as a provisional small-haplochromine planning
+      estimate. The welfare range is not a species-specific longevity series. A retailer also publishes 7 to 9
+      years alongside erroneous habitat and morphology claims, which does not validate a species lifetime. No
+      read source establishes the selected endpoints, so confidence remains low."
+    sources:
+      - &a37
+        kind: "model-knowledge"
+        title: "Adjudicator estimate for small Lake Victoria basin haplochromines; species-specific longevity data
+          unavailable"
+        accessed: "2026-10-13"
+      - *a20
+    evidence:
+      - source: *a37
+        value:
+          min: 5
+          max: 8
+        note: "Planning estimate, not measured longevity."
+      - source: *a20
+        value:
+          min: 7
+          max: 15
+        note: "Broad cichlid guidance reported by checker-b; not a species-specific cohort."
+  breeding:
+    value: "maternal-mouthbrooder"
+    confidence: "high"
+    rationale: "Species-specific breeding observations agree that females collect and incubate eggs after mating
+      with a territorial male. FishBase and the public Cichlid Room Companion summary also confirm
+      mouthbrooding, with the latter specifying maternal care."
+    sources:
+      - *a28
+      - *a8
+      - *a31
+      - *a19
+      - &a38
+        kind: "database"
+        title: "Cichlid Room Companion, Haplochromis phytophagus"
+        url: "https://cichlidae.com/species.php?id=MwXUxSIfSfotcHihPpqZ7g"
+        accessed: "2026-10-13"
+    evidence:
+      - source: *a28
+        value: "maternal-mouthbrooder"
+        note: "Female egg collection and brooding directly described."
+      - source: *a8
+        value: "maternal-mouthbrooder"
+        note: "Female incubation, release and fry feeding described."
+      - source: *a38
+        value: "maternal-mouthbrooder"
+        note: "Verification only"
+  beginnerSuitability:
+    value: "moderate"
+    confidence: "medium"
+    rationale: "Food acceptance and captive spawning are straightforward, but managing relentless male pursuit
+      requires a suitable sex ratio, visual refuges and a spare separation option. The Nordic register and
+      Coburg guide both rate the species at an intermediate level."
+    sources:
+      - *a15
+      - *a16
+      - *a28
+      - *a19
+      - *a18
+      - *a8
+      - *a17
+    evidence:
+      - source: *a15
+        value: "moderate"
+        note: "Species register assigns medium difficulty"
+      - source: *a28
+        value: "moderate"
+        note: "Straightforward care combined with male-aggression constraints"
+      - source: *a8
+        value: "moderate"
+        note: "Adaptability combined with aggression and water-quality sensitivity; rubric inference."
+partners:
+  suitable:
+    - species: "Brycinus sadleri"
+      reason: "A species-specific care account reports successful coexistence with this active characin; it adds no
+        haplochromine crossing risk."
+      condition: "Adult fish in a larger community aquarium with adequate shoaling space; not an addition to the
+        minimum breeding group."
+    - species: "Synodontis afrofischeri"
+      reason: "Aquatic Community reports coexistence under the misspelling afrofisheri. A catfish cannot cross with
+        this cichlid."
+      condition: "Provide separate refuges and additional floor space for adult catfish. Eggs and young may be eaten."
+  unsuitable:
+    - species: "Haplochromis nubilus"
+      reason: "Shares the presumed haplochromis-phytophagus-nubilus group. Genetic relationship evidence supports a
+        caution, but verified aquarium hybrids have not been demonstrated."
+    - species: "Melanochromis auratus"
+      reason: "Strong aggression can overwhelm brooding females and subordinate adults; this is a behaviour-based
+        stocking inference."
+    - species: "Lates niloticus"
+      reason: "A large fish predator with an overwhelming size mismatch."
+    - species: "Other breeding Lake Victoria basin haplochromines"
+      reason: "Similar males can trigger rivalry and mixed breeding groups make parentage unreliable. General
+        crossing warnings do not verify every named pair."
+profile:
+  overview:
+    text: "Christmas fulu males develop a striking display as they mature, but their colour comes with persistent
+      pursuit of other adults. A carefully planned female-rich colony is more dependable than an unsexed group
+      in a small aquarium. Haplochromis phytophagus is the accepted Catalog name; Xystichromis phytophagus
+      remains common in the trade. Populations are recorded in satellite waters of the Lake Victoria basin and
+      the connected Kyoga system. Traceable captive breeding helps preserve distinct stocks, while the present
+      distribution and relative population sizes remain incompletely surveyed."
+    sources:
+      - *a1
+      - *a28
+      - *a3
+      - *a4
+      - *a5
+  habitat:
+    text: "The best recent species-specific sampling comes from Lake Kanyaboli in Kenya, where a year-long survey
+      recorded the fish in both seasons. Uganda's biodiversity portal also lists it from Lake Kyoga and Lake
+      Nawampasa. These records do not establish that Uganda holds most surviving fish. The historical type
+      locality is Kisumu in Lake Victoria, from which older accounts report disappearance. Vegetated shallows
+      with sand or soft sediment provide cover and feeding surfaces. Water differs among these lakes: the
+      profile ranges summarize voted evidence and do not cover every recorded station, especially the 11 dKH
+      Nawampasa reading."
+    sources:
+      - *a31
+      - *a2
+      - *a3
+      - *a4
+      - *a5
+      - *a25
+  sizeAndGrowth:
+    text: "Allow for males around 11.5 cm total length and females around 9 cm. The female estimate has less
+      independent numerical support. FishBase reports 8.6 cm standard length, which excludes the tail and
+      cannot be treated as the same measurement. Males that look quiet as juveniles can change markedly once
+      they mature and compete for space. Reassess the sex ratio as the group grows rather than judging adult
+      compatibility from a peaceful juvenile group."
+    sources:
+      - *a31
+      - *a28
+      - *a18
+  husbandry:
+    text: "The recommended adult unit is one male with six females in at least 300 litres and a floor about 120 by
+      50 cm. Arrange dense cover so a female can move completely out of the male's view, and secure heavy
+      decorations before adding a diggable substrate. Routine maintenance around 24 to 28 C has better
+      husbandry support than the hottest swamp reports. Acclimate gradually to stable replacement water and
+      use filtration and regular partial changes to control waste. The wider tolerance bands include uncertain
+      endpoints and should not be read as experimentally proven targets."
+    sources:
+      - *a15
+      - *a28
+      - *a8
+  socialBehavior:
+    text: "A male may pursue rivals and unreceptive or brooding females repeatedly. Several females distribute
+      that attention but do not guarantee safety. Pit-centred defence is classified as a small territory, with
+      continuing dominance treated cautiously as more than a brief spawning event. Keep a second male out of
+      the minimum setup; larger multi-male arrangements need separated sight lines and more space. A fish that
+      remains cornered, loses condition or cannot reach food needs a change in layout or stocking and, when
+      necessary, separation."
+    sources:
+      - *a28
+      - *a8
+  diet:
+    text: "Use a complete plant-rich flake or small pellet as the staple and offer modest invertebrate
+      supplements. The Kanyaboli stomach study found substantial insects as well as plant remains and algae,
+      supporting an omnivore classification under this rubric. Older grazing descriptions capture part of the
+      diet. No specific protein-induced bloat predisposition was established, but that does not justify
+      excessive animal food or portions. Distribute food so quieter females get access and remove avoidable
+      leftovers."
+    sources:
+      - *a2
+      - *a31
+      - *a28
+  breeding:
+    text: "The male courts around a prepared substrate depression, and the female collects the eggs and incubates
+      them in her mouth. Male care does not form a lasting pair or family; after spawning he seeks further
+      mates. Brooding females need protected cover and monitoring because they can still be chased. Plan
+      accommodation for young before breeding a colony. A separate nursery can improve survival, while
+      transfers can stress a holding female. Released fry can take suitably small prepared food and newly
+      hatched aquatic invertebrates."
+    sources:
+      - *a28
+      - *a8
+  sexing:
+    text: "Displaying adult males show red and green areas with blue and dark markings. Females tend to stay
+      subdued and are smaller. Subordinate males can suppress their display, so a plain juvenile or a dull
+      fish in a shop is not a dependable female identification. Known sexes make the recommended group easier
+      to establish. When starting with juveniles, arrange room or rehoming options for surplus males as their
+      roles become clear."
+    sources:
+      - *a28
+      - *a18
+      - *a21
+  compatibility:
+    text: "This fish can share a suitably enlarged aquarium with selected unrelated companions. A species-specific
+      care account reports Brycinus sadleri and Synodontis afrofischeri, although adult space, refuges and fry
+      losses still require consideration. Persistent male aggression makes delicate fishes and forceful
+      territorial cichlids poor choices. Keep breeding haplochromine stocks identifiable. A presumed pairwise
+      caution with Haplochromis nubilus rests on very close genetic relationship; it is not a verified hybrid
+      event and does not imply that every Victorian species crosses with every other."
+    sources:
+      - *a8
+      - *a28
+      - *a2
+      - *a35
+  problems:
+    text: "Repeated pursuit can keep a female from feeding even when the tank contains plenty of food. Check
+      access to shelter and feeding space before simply increasing portions. Digging can undermine unsecured
+      rocks or plants, while leftover food increases the maintenance load. The voted natural KH band of 4 to 7
+      and conservative tolerance of 2 to 7 dKH omit a published 11 dKH Nawampasa reading; this is an
+      unresolved evidence difference rather than a claim that the wild fish could not live there. Protect
+      stocking identity and monitor water quality and fish condition as well as numerical chemistry."
+    sources:
+      - *a28
+      - *a8
+      - *a25
+provenance:
+  runs:
+    - role: "generator"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+    - role: "checker"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+    - role: "checker"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+    - role: "checker"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+    - role: "checker"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+    - role: "checker"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+    - role: "adjudicator"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+  disagreements:
+    - field: "features.diet"
+      proposals:
+        - by: "generator"
+          value:
+            type: "omnivore"
+            bloatSensitive: false
+            foods:
+              - "Plant-rich cichlid flakes or small pellets"
+              - "Spirulina-containing prepared food"
+              - "Small portions of aquatic invertebrates"
+        - by: "checker-a"
+          value:
+            type: "aufwuchs"
+            bloatSensitive: true
+            foods:
+              - "algae"
+              - "spirulina flakes"
+              - "vegetable matter"
+              - "occasional insect larvae"
+        - by: "checker-b"
+          value:
+            type: "omnivore"
+            bloatSensitive: false
+            foods:
+              - "vegetation-associated algae"
+              - "decaying plant material"
+              - "insects"
+              - "insect larvae"
+              - "vegetable-rich prepared food"
+        - by: "checker-c"
+          value:
+            type: "omnivore"
+            bloatSensitive: false
+            foods:
+              - "plant-rich prepared food"
+              - "epiphytic algae and biofilm"
+              - "small aquatic insects"
+              - "occasional small invertebrates"
+        - by: "tiebreaker-1"
+          value:
+            type: "omnivore"
+            bloatSensitive: false
+        - by: "tiebreaker-2"
+          value:
+            type: "omnivore"
+            bloatSensitive: false
+      decision:
+        type: "omnivore"
+        bloatSensitive: false
+        foods:
+          - "Plant-rich cichlid flakes or small pellets"
+          - "Spirulina-containing prepared food"
+          - "Small portions of aquatic invertebrates"
+      rationale: "Tally method qualified-majority; 5 of 6 votes; confidence medium. The tally retains omnivore with
+        bloatSensitive false by qualified majority (5 of 6, medium confidence). Abila Table 1 records 56.1
+        percent plant remains, 36.9 percent other insects, 5.7 percent insect larvae and 2.5 percent algae by
+        relative abundance. Stigliano independently reports successful mixed vegetable and animal feeding.
+        These support the rubric omnivore category despite the older FishBase and care-sheet grazing emphasis.
+        Checker-a inferred a bloat restriction from plant feeding; no read source demonstrates that syndrome
+        in this species. The false flag means an unestablished restriction, not evidence that excessive
+        protein is harmless. The generator food list is retained exactly; the checkers proposed alternative
+        plant-rich and insect foods and both tie-breakers left foods unspecified. Proposals: generator
+        {\"type\":\"omnivore\",\"bloatSensitive\":false,\"foods\":[\"Plant-rich cichlid flakes or small
+        pellets\",\"Spirulina-containing prepared food\",\"Small portions of aquatic invertebrates\"]};
+        checker-a {\"type\":\"aufwuchs\",\"bloatSensitive\":true,\"foods\":[\"algae\",\"spirulina
+        flakes\",\"vegetable matter\",\"occasional insect larvae\"]}; checker-b
+        {\"type\":\"omnivore\",\"bloatSensitive\":false,\"foods\":[\"vegetation-associated algae\",\"decaying
+        plant material\",\"insects\",\"insect larvae\",\"vegetable-rich prepared food\"]}; checker-c
+        {\"type\":\"omnivore\",\"bloatSensitive\":false,\"foods\":[\"plant-rich prepared food\",\"epiphytic
+        algae and biofilm\",\"small aquatic insects\",\"occasional small invertebrates\"]}; tiebreaker-1
+        {\"type\":\"omnivore\",\"bloatSensitive\":false}; tiebreaker-2
+        {\"type\":\"omnivore\",\"bloatSensitive\":false}."
+    - field: "features.hybridGroups"
+      proposals:
+        - by: "generator"
+          value: []
+        - by: "checker-a"
+          value: []
+        - by: "checker-b"
+          value: []
+        - by: "checker-c"
+          value:
+            - "haplochromis-phytophagus-nubilus"
+        - by: "tiebreaker-1"
+          value:
+            - "haplochromis-phytophagus-nubilus"
+        - by: "tiebreaker-2"
+          value:
+            - "haplochromis-phytophagus-nubilus"
+      decision:
+        - "haplochromis-phytophagus-nubilus"
+      rationale: "Tally method conservative; 3 of 6 votes; confidence low. The tally conservatively retains the
+        pairwise group haplochromis-phytophagus-nubilus (3 of 6, low confidence). Generator, checker-a and
+        checker-b proposed []; checker-c and both tie-breakers proposed this group. Abila found mitochondrial
+        FST 0.025 for phytophagus and the fish named Astatotilapia nubila, and the readable Odhiambo abstract
+        describes closely overlapping nuclear-marker clusters. The Catalog maps the second species to
+        Haplochromis nubilus. The rubric permits a presumed group from very close relationship, but these
+        partly overlapping research teams did not verify hybrid offspring or free partner choice. Abila also
+        argues for reproductive isolation elsewhere in the assemblage. The Odhiambo and Ongoma full texts were
+        refused as non-open-access by fetch-oa, so only their abstracts are used. No wider all-to-all
+        haplochromine group is inferred. Proposals: generator []; checker-a []; checker-b []; checker-c
+        [\"haplochromis-phytophagus-nubilus\"]; tiebreaker-1 [\"haplochromis-phytophagus-nubilus\"];
+        tiebreaker-2 [\"haplochromis-phytophagus-nubilus\"]."
+    - field: "features.temperatureC"
+      proposals:
+        - by: "generator"
+          value:
+            min: 26
+            max: 30
+        - by: "checker-a"
+          value:
+            min: 22
+            max: 30
+        - by: "checker-b"
+          value:
+            min: 25.8
+            max: 28.2
+        - by: "checker-c"
+          value:
+            min: 25
+            max: 30
+        - by: "tiebreaker-1"
+          value:
+            min: 24.5
+            max: 30.4
+        - by: "tiebreaker-2"
+          value:
+            min: 25
+            max: 30
+      decision:
+        min: 25
+        max: 30
+      rationale: "Tally method qualified-majority; 4 of 6 votes; confidence low. The tally selects 25 to 30 C by
+        qualified majority (4 of 6, low confidence), using its agreement threshold and rounded medians rather
+        than the union of field extremes. The Kanyaboli seasonal means are 27.9 +/- 1.4 and 28.2 +/- 0.7 C;
+        their combined mean-plus/minus-SD envelope is 26.5 to 29.3 C, not observed annual extrema. Kyoga
+        measurements in Ongom span 24.5 to 27 C and Obubu Table 8 spans 25.6 to 30.4 C in 2020. Those wider
+        regional endpoints, 24.5 to 30.4 C together, are excluded by the tally rounding and should not be
+        mistaken for a complete species-specific collection envelope. The secondary Yala range of 25 to 33 C
+        in Aquatic Community is wider again; its primary collecting record was not read. Nambi reports 25.9 to
+        29.4 C in its Results, with a different minimum in its table. Lake Victoria values are historical
+        comparison only because the living refuge lakes are distinct. Proposals: generator
+        {\"min\":26,\"max\":30}; checker-a {\"min\":22,\"max\":30}; checker-b {\"min\":25.8,\"max\":28.2};
+        checker-c {\"min\":25,\"max\":30}; tiebreaker-1 {\"min\":24.5,\"max\":30.4}; tiebreaker-2
+        {\"min\":25,\"max\":30}."
+    - field: "features.ph"
+      proposals:
+        - by: "generator"
+          value:
+            min: 7
+            max: 8.2
+        - by: "checker-a"
+          value:
+            min: 6.8
+            max: 9.4
+        - by: "checker-b"
+          value:
+            min: 7
+            max: 8.2
+        - by: "checker-c"
+          value:
+            min: 6.7
+            max: 8.5
+        - by: "tiebreaker-1"
+          value:
+            min: 6.7
+            max: 8.5
+        - by: "tiebreaker-2"
+          value:
+            min: 7
+            max: 7.5
+      decision:
+        min: 6.9
+        max: 8.4
+      rationale: "Tally method qualified-majority; 4 of 6 votes; confidence medium. The tally selects pH 6.9 to 8.4
+        by qualified majority (4 of 6, medium confidence). This is the rounded median of agreeing proposals,
+        not the full measured span. Kanyaboli seasonal means near 7.1 to 7.2 and Newman's Nawampasa kit range
+        of about 7.0 to 7.5 provide locality context. Checker-c reports an Anyona Table 4 range of 6.7 to 8.5,
+        wider than the decision; that thesis table could not be independently read here. Western Kyoga
+        measurements in Ongom span 5.7 to 8.5, Obubu gives 6.5 to 8.5 in 2010 and 6.9 to 9.9 in 2020, and
+        Nambi reports 7.0 to 9.6. These wider basin ranges include sampling stations without simultaneous
+        phytophagus identification and are not substituted for the voted representative range. Secondary Yala
+        accounts give 7.5 to 8.2. The Lake Victoria comparator of 6.8 to 9.4 does not establish satellite-lake
+        chemistry. Proposals: generator {\"min\":7,\"max\":8.2}; checker-a {\"min\":6.8,\"max\":9.4};
+        checker-b {\"min\":7,\"max\":8.2}; checker-c {\"min\":6.7,\"max\":8.5}; tiebreaker-1
+        {\"min\":6.7,\"max\":8.5}; tiebreaker-2 {\"min\":7,\"max\":7.5}."
+    - field: "features.ghDgh"
+      proposals:
+        - by: "generator"
+          value:
+            min: 1
+            max: 3
+        - by: "checker-a"
+          value:
+            min: 1
+            max: 3
+        - by: "checker-b"
+          value:
+            min: 2.05
+            max: 2.05
+        - by: "checker-c"
+          value:
+            min: 0.2
+            max: 2.6
+      decision:
+        min: 1
+        max: 3
+      rationale: "Tally method unanimous; 4 of 4 votes; confidence low. The tally retains 1 to 3 dGH with unanimous
+        threshold agreement (4 of 4, low confidence); agreement permits endpoints within 2 dGH, so the votes
+        are not identical measurements. Muyodi reports 32 mg/L hardness at River Yala, equivalent to about
+        1.79 dGH, a regional proxy. The Anyona abstract describes soft Kanyaboli water. Checker-b reports a
+        direct composite-sample value of 36.6 mg/L, about 2.05 dGH, from Githaiga; fetch-oa did not retrieve
+        that paper or supplement for rechecking. Checker-c reports Anyona titration values of 4 to 46 mg/L,
+        about 0.224 to 2.577 dGH, whose lower end lies below the decision; that full thesis was not readable
+        here. The FAO Lake Victoria compilation provides an independently readable historical comparator,
+        about 1.2 to 1.8 dGH from its calcium and magnesium values, not direct Kanyaboli measurement. The
+        voted band is approximate and cannot describe every refuge station. Conductivity, KH and aquarium
+        hard-water advice are not measurements of GH. Proposals: generator {\"min\":1,\"max\":3}; checker-a
+        {\"min\":1,\"max\":3}; checker-b {\"min\":2.05,\"max\":2.05}; checker-c {\"min\":0.2,\"max\":2.6}."
+    - field: "features.khDkh"
+      proposals:
+        - by: "generator"
+          value:
+            min: 2.6
+            max: 7
+        - by: "checker-a"
+          value:
+            min: 2
+            max: 6
+        - by: "checker-b"
+          value:
+            min: 6
+            max: 7
+        - by: "checker-c"
+          value:
+            min: 0.4
+            max: 2.1
+        - by: "tiebreaker-1"
+          value:
+            min: 6
+            max: 11
+        - by: "tiebreaker-2"
+          value:
+            min: 6
+            max: 11
+      decision:
+        min: 4
+        max: 7
+      rationale: "Tally method median; 2 of 6 votes; confidence low. The tally chooses 4 to 7 dKH by its
+        low-confidence median fallback (2 of 6 agreeing), not a measured natural envelope. The six proposed
+        minima have median 4.3, rounded to 4, and their maxima have median 7. This decision is retained as a
+        plain natural-water fact without a verification object. Newman directly reports 11 dKH at Nawampasa,
+        outside the chosen band. The FAO Kyoga compilation gives 133 mg/L combined bicarbonate and carbonate
+        in the EAFRO (1954) column, corresponding to about 6.1 dKH if bicarbonate dominates; this is an
+        approximate conversion. The tie-breaker regional proposal of 6 to 11 dKH is wider at the upper end. At
+        the low end checker-c reports Anyona alkalinity of 8 to 36 mg/L as CaCO3, about 0.448 to 2.017 dKH;
+        its full table could not be rechecked. Muyodi's River Yala 46.3 alkalinity result gives about 2.59 dKH
+        if the damaged unit is interpreted as mg/L CaCO3. The 6 to 7 dKH Yala account in care databases
+        repeats an older observation. These incompatible locality results remain visible in evidence; the
+        median must not be presented as covering all occupied lakes. Proposals: generator
+        {\"min\":2.6,\"max\":7}; checker-a {\"min\":2,\"max\":6}; checker-b {\"min\":6,\"max\":7}; checker-c
+        {\"min\":0.4,\"max\":2.1}; tiebreaker-1 {\"min\":6,\"max\":11}; tiebreaker-2 {\"min\":6,\"max\":11}."
+    - field: "features.temperatureC.tolerance"
+      proposals:
+        - by: "generator"
+          value:
+            min: 22
+            max: 30
+        - by: "checker-a"
+          value:
+            min: 22
+            max: 30
+        - by: "checker-b"
+          value:
+            min: 22
+            max: 29
+        - by: "checker-c"
+          value:
+            min: 23
+            max: 30
+      decision:
+        min: 22
+        max: 30
+      rationale: "Tally method unanimous; 4 of 4 votes; confidence low. The tally retains 22 to 30 C with unanimous
+        threshold agreement (4 of 4, low confidence), although the proposals differ within 1 C. The Nordic
+        register gives 22 to 28 C, the Cichlid Fish Forum profile gives about 25.6 to 27.8 C and Guidarium
+        gives 24 to 28 C; retailer advice is supporting website evidence. The selected 30 C ceiling contains
+        the natural decision and is not a demonstrated multi-year chronic limit. Aquatic Community publishes
+        the wider 25 to 33 C and American Aquarium Products the wider 25 to 32.2 C; their hot endpoints lack
+        convincing long-term health evidence. Routine keeping around 24 to 28 C has more direct husbandry
+        support. Proposals: generator {\"min\":22,\"max\":30}; checker-a {\"min\":22,\"max\":30}; checker-b
+        {\"min\":22,\"max\":29}; checker-c {\"min\":23,\"max\":30}."
+    - field: "features.ph.tolerance"
+      proposals:
+        - by: "generator"
+          value:
+            min: 7
+            max: 8.6
+        - by: "checker-a"
+          value:
+            min: 6.8
+            max: 9.4
+        - by: "checker-b"
+          value:
+            min: 7
+            max: 8.6
+        - by: "checker-c"
+          value:
+            min: 6.7
+            max: 8.6
+        - by: "tiebreaker-1"
+          value:
+            min: 6.7
+            max: 8.6
+        - by: "tiebreaker-2"
+          value:
+            min: 7
+            max: 8.6
+      decision:
+        min: 6.9
+        max: 8.6
+      rationale: "Tally method qualified-majority; 5 of 6 votes; confidence medium. The tally retains 6.9 to 8.6 by
+        qualified majority (5 of 6, medium confidence). Successful neutral-water breeding is qualitative
+        support around pH 7, while structured care guidance reaches 8.5 or 8.6. The 6.9 floor contains the
+        decided natural range rather than a demonstrated multi-year lower limit. Checker-a's wider 6.8 to 9.4
+        proposal extrapolated the Lake Victoria comparator into aquarium tolerance; the read husbandry
+        accounts do not establish sustained health at 9.4. The broader Kyoga field readings up to 9.9 likewise
+        do not prove chronic aquarium safety. Proposals: generator {\"min\":7,\"max\":8.6}; checker-a
+        {\"min\":6.8,\"max\":9.4}; checker-b {\"min\":7,\"max\":8.6}; checker-c {\"min\":6.7,\"max\":8.6};
+        tiebreaker-1 {\"min\":6.7,\"max\":8.6}; tiebreaker-2 {\"min\":7,\"max\":8.6}."
+    - field: "features.ghDgh.tolerance"
+      proposals:
+        - by: "generator"
+          value:
+            min: 1
+            max: 17
+        - by: "checker-a"
+          value:
+            min: 1
+            max: 20
+        - by: "checker-b"
+          value:
+            min: 2
+            max: 20
+        - by: "checker-c"
+          value:
+            min: 0.2
+            max: 20
+        - by: "tiebreaker-1"
+          value:
+            min: 1
+            max: 20
+        - by: "tiebreaker-2"
+          value:
+            min: 1
+            max: 20
+      decision:
+        min: 1
+        max: 20
+      rationale: "Tally method qualified-majority; 5 of 6 votes; confidence low. The tally retains 1 to 20 dGH by
+        qualified majority (5 of 6, low confidence). Guidarium states 10 to 20 dGH; Aquatic Community reports
+        successful reproduction in unspecified soft water. Coburg's 150 to 300 ppm general hardness converts
+        to about 8.4 to 16.8 dGH but is retailer guidance with habitat errors elsewhere. Qualitative
+        hard-water statements from Ron's Cichlids and Cichlid Fish Forum cannot be converted into numeric 10
+        to 20 dGH evidence. The 1 dGH floor is an inferred working estimate. Checker-c's wider 0.2 to 20
+        proposal followed a reported native minimum; the tally instead keeps 1 to 20. None of these sources
+        establishes both multi-year physiological limits. Proposals: generator {\"min\":1,\"max\":17};
+        checker-a {\"min\":1,\"max\":20}; checker-b {\"min\":2,\"max\":20}; checker-c
+        {\"min\":0.2,\"max\":20}; tiebreaker-1 {\"min\":1,\"max\":20}; tiebreaker-2 {\"min\":1,\"max\":20}."
+    - field: "features.khDkh.tolerance"
+      proposals:
+        - by: "generator"
+          value:
+            min: 2
+            max: 7
+        - by: "checker-a"
+          value:
+            min: 2
+            max: 12
+        - by: "checker-b"
+          value:
+            min: 2
+            max: 7
+        - by: "checker-c"
+          value:
+            min: 0.4
+            max: 7
+        - by: "tiebreaker-1"
+          value:
+            min: 2
+            max: 11
+        - by: "tiebreaker-2"
+          value:
+            min: 2
+            max: 11
+      decision:
+        min: 2
+        max: 7
+      rationale: "Tally method conservative; 3 of 6 votes; confidence low. The tally conservatively selects the
+        intersection of the six proposals, 2 to 7 dKH (3 of 6, low confidence); it already contains the
+        decided natural 4 to 7 band. Generator and checker-b proposed 2 to 7, checker-a 2 to 12, checker-c 0.4
+        to 7, and both tie-breakers 2 to 11 dKH. The 0.4 to 7, 2 to 11 and 2 to 12 proposals are wider than
+        the result. Aquatic Community and Aquarist Atlas discuss 6 to 7 dKH and unquantified soft
+        neutral-water reproduction, but repeat the same older field history. The 2 dKH floor is inferred, not
+        a measured chronic minimum. Newman's 11 dKH is a natural-water observation excluded by the
+        conservative intersection, not evidence of a chronic aquarium threshold. The decided tolerance
+        consequently does not cover that observed Nawampasa locality even though it contains the tally's
+        median natural band; the unresolved mismatch must remain explicit. Proposals: generator
+        {\"min\":2,\"max\":7}; checker-a {\"min\":2,\"max\":12}; checker-b {\"min\":2,\"max\":7}; checker-c
+        {\"min\":0.4,\"max\":7}; tiebreaker-1 {\"min\":2,\"max\":11}; tiebreaker-2 {\"min\":2,\"max\":11}."
+    - field: "features.origin"
+      proposals:
+        - by: "generator"
+          value:
+            continent: "Africa"
+            region: "Lake Victoria basin, western Kenya; living populations documented in the Yala Swamp"
+            waterbody: "Lake Kanyaboli"
+            localities:
+              - "Lake Kanyaboli, Yala Swamp, Kenya"
+              - "Kisumu, Lake Victoria, Kenya (type locality)"
+        - by: "checker-a"
+          value:
+            continent: "Africa"
+            region: "Lake Victoria basin"
+            waterbody: "Lake Victoria"
+            localities:
+              - "Kisumu (Nyanza Gulf"
+              - "type locality)"
+              - "Lake Kanyaboli (Yala swamp"
+              - "Kenya)"
+        - by: "checker-b"
+          value:
+            continent: "Africa"
+            region: "Lake Victoria basin. Extant refuge population in the Yala wetlands of western Kenya"
+            waterbody: "Lake Kanyaboli"
+            localities:
+              - "Lake Kanyaboli"
+              - "Kisumu. Historical type locality in Lake Victoria"
+        - by: "checker-c"
+          value:
+            continent: "Africa"
+            region: "Lake Victoria basin; documented extant refuge in the Kenyan Yala Swamp"
+            waterbody: null
+            localities:
+              - "Lake Kanyaboli"
+              - "Kisumu littoral of Lake Victoria, historical type locality"
+      decision:
+        continent: "Africa"
+        region: "Lake Victoria basin and connected Kyoga system; satellite-lake refuges in Kenya and Uganda"
+        waterbody: null
+        localities:
+          - "Lake Kanyaboli, Yala Swamp, Kenya"
+          - "Lake Kyoga, Uganda"
+          - "Lake Nawampasa, Uganda"
+          - "Kisumu, Lake Victoria, Kenya (historical type locality)"
+      rationale: "Kanyaboli is directly documented by genetic samples and a 2020 to 2021 fish survey. The Ugandan
+        biodiversity portal independently lists Xystichromis phytophagus at both Kyoga and Nawampasa. These
+        records correct the earlier runs that could not substantiate Uganda. The sources do not provide
+        comparable population estimates across the three lakes, so they cannot establish which refuges hold
+        most living fish. Lake Victoria is retained as historical type locality and basin context; reports of
+        disappearance from the main lake are not treated as a complete present-day extinction census. No
+        single registered waterbody represents these distinct occupied lakes, so waterbody is null and
+        satellite/regional measurements support the tally decisions."
+    - field: "features.maxSizeCm"
+      proposals:
+        - by: "generator"
+          value:
+            male: 11.5
+            female: 9
+        - by: "checker-a"
+          value:
+            male: 11
+            female: 9
+        - by: "checker-b"
+          value:
+            male: 11.5
+            female: 9
+        - by: "checker-c"
+          value:
+            male: 11.5
+            female: 9
+      decision:
+        male: 11.5
+        female: 9
+      rationale: "Generator, checker-b and checker-c propose males 11.5 cm and females 9 cm; checker-a proposes 11
+        and 9 cm. Retain 11.5 and 9 as typical aquarium total-length planning values from the 4.5-inch
+        structured profile, breeder reports of males exceeding 10 to 11 cm and Guidarium's sex-specific 11 and
+        9 cm figures. The 8.6 cm FishBase standard length excludes the tail and is not converted with an
+        assumed universal ratio. Retail reports of 12 to 15 cm or 12.7 to 15.2 cm are larger but poorly
+        corroborated. The female endpoint has only one explicit numerical care source, so overall confidence
+        remains medium."
+    - field: "features.territory"
+      proposals:
+        - by: "generator"
+          value:
+            size: "small"
+            breedingOnly: false
+        - by: "checker-a"
+          value:
+            size: "small"
+            breedingOnly: false
+        - by: "checker-b"
+          value:
+            size: "small"
+            breedingOnly: true
+        - by: "checker-c"
+          value:
+            size: "large"
+            breedingOnly: false
+      decision:
+        size: "small"
+        breedingOnly: false
+      rationale: "Generator and checker-a propose small, breedingOnly false; checker-b proposes small, breedingOnly
+        true; checker-c proposes large, breedingOnly false. The observed spawning pit and explicit breeder
+        statement of small territories favor small. Aquatic Community's separate-end layout for multiple males
+        is a precaution against visible rivals, not a measured territory spanning a third of a 150 cm tank.
+        Continuing dominance and female exclusion justify the cautious false flag, although neither territory
+        dimensions nor off-season persistence have been quantified."
+    - field: "features.social"
+      proposals:
+        - by: "generator"
+          value:
+            structure: "harem"
+            ratio: 6
+        - by: "checker-a"
+          value:
+            structure: "harem"
+            ratio: 3
+        - by: "checker-b"
+          value:
+            structure: "harem"
+            ratio: 4
+        - by: "checker-c"
+          value:
+            structure: "harem"
+            ratio: 4
+      decision:
+        structure: "harem"
+        ratio: 6
+      rationale: "Generator proposes six females per male, checker-a three, and checker-b and checker-c four. Retain
+        six for a single-male adult breeding group because Stigliano explicitly recommends six to eight
+        females. The lower three-female care minimum and the four-female inference from two-male groups are
+        plausible alternatives, but provide less margin against repeated pursuit. This is a captive stocking
+        recommendation for a polygamous species, not a permanent wild family."
+    - field: "features.coloration"
+      proposals:
+        - by: "generator"
+          value:
+            baseColors:
+              - "red"
+              - "green"
+              - "blue"
+              - "black"
+            pattern: "mixed"
+        - by: "checker-a"
+          value:
+            baseColors:
+              - "red"
+              - "green"
+              - "blue"
+            pattern: "mixed"
+        - by: "checker-b"
+          value:
+            baseColors:
+              - "green"
+              - "red"
+              - "blue"
+              - "black"
+            pattern: "mixed"
+        - by: "checker-c"
+          value:
+            baseColors:
+              - "green"
+              - "red"
+              - "blue"
+              - "black"
+            pattern: "mixed"
+      decision:
+        baseColors:
+          - "red"
+          - "green"
+          - "blue"
+          - "black"
+        pattern: "mixed"
+      rationale: "Generator, checker-b and checker-c include red, green, blue and black with a mixed pattern;
+        checker-a omits black. Retain the four colours because displaying males combine red and green body
+        regions, blue head or fin areas and contrasting dark markings. Colour-list order is immaterial.
+        Females and subordinate males are much duller, and this is a male display classification rather than a
+        calibrated colour measurement."
+    - field: "features.feedingSpeed"
+      proposals:
+        - by: "generator"
+          value: "hasty"
+        - by: "checker-a"
+          value: "normal"
+        - by: "checker-b"
+          value: "normal"
+        - by: "checker-c"
+          value: "hasty"
+      decision: "normal"
+      rationale: "Generator and checker-c propose hasty, while checker-a and checker-b propose normal. Retain normal
+        provisionally: ready acceptance of prepared foods and an active swimming style do not demonstrate the
+        rubric's habitual rush that leaves nothing for tankmates. Stigliano establishes easy feeding, and
+        Aquarist Atlas describes enthusiastic feeding without comparative rates. Subordinate females still
+        need monitored access. No direct feeding-speed experiment was found."
+    - field: "features.minTank"
+      proposals:
+        - by: "generator"
+          value:
+            volumeL: 300
+            lengthCm: 120
+            depthCm: 50
+        - by: "checker-a"
+          value:
+            volumeL: 150
+            lengthCm: 90
+            depthCm: 40
+        - by: "checker-b"
+          value:
+            volumeL: 200
+            lengthCm: 100
+            depthCm: 40
+        - by: "checker-c"
+          value:
+            volumeL: 150
+            lengthCm: 90
+            depthCm: 45
+      decision:
+        volumeL: 300
+        lengthCm: 120
+        depthCm: 50
+      rationale: "Generator proposes 300 L and 120 by 50 cm, checker-a 150 L and 90 by 40 cm, checker-b 200 L and
+        100 by 40 cm, and checker-c 150 L and 90 by 45 cm. Retain the generator recommendation for the
+        selected one-male, six-female social unit. The Nordic register states 300 L and 110 cm length; 120 by
+        50 cm is an explicit layout judgement to provide refuges and interrupted sight lines. Stigliano gives
+        about 151 L without dimensions and Aquatic Community 150 L for a smaller single-male group. Those
+        smaller recommendations do not establish equal protection for six adult females; 300 L is a
+        conservative husbandry choice, not an experimentally determined boundary."
+    - field: "features.lifespanYears"
+      proposals:
+        - by: "generator"
+          value:
+            min: 5
+            max: 8
+        - by: "checker-a"
+          value:
+            min: 5
+            max: 8
+        - by: "checker-b"
+          value:
+            min: 7
+            max: 15
+        - by: "checker-c"
+          value:
+            min: 5
+            max: 8
+      decision:
+        min: 5
+        max: 8
+      rationale: "Generator, checker-a and checker-c propose 5 to 8 years; checker-b proposes 7 to 15 years from
+        broad cichlid welfare guidance. Retain 5 to 8 solely as a provisional small-haplochromine planning
+        estimate. The welfare range is not a species-specific longevity series. A retailer also publishes 7 to
+        9 years alongside erroneous habitat and morphology claims, which does not validate a species lifetime.
+        No read source establishes the selected endpoints, so confidence remains low."
+    - field: "taxonomy.author"
+      proposals:
+        - by: "generator"
+          value: "Greenwood, 1966"
+        - by: "checker-a"
+          value: "Greenwood, 1966"
+        - by: "checker-b"
+          value: "Greenwood 1966"
+        - by: "checker-c"
+          value: "Greenwood, 1966"
+      decision: "Greenwood, 1966"
+      rationale: "All runs agree on Greenwood and publication in 1966; checker-b omits the comma. Retain the
+        conventional display punctuation Greenwood, 1966. The 1965 issue date and CRC heading are
+        distinguished from the Catalog publication year."
