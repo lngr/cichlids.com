@@ -1426,11 +1426,17 @@ features:
         agree: 3
         total: 3
   hybridGroups:
-    value: []
+    value:
+      - nimbochromis
     confidence: medium
     rationale: >-
       Neither FishBase, Seriously Fish nor Fishkeeper reports crosses of N. venustus, and no cross
-      with a named species is documented, so no group applies.
+      with a named species is documented. The curated group file nevertheless places the species
+      in the group nimbochromis, which covers the five valid species of the genus with the basis
+      presumed: a wholesaler and a Malawi specialist site warn in general terms that Nimbochromis
+      species can cross in tanks, the genus is a close lineage, and one retailer lists a cross of
+      N. venustus and N. livingstonii without stating the circumstances. No cross from the wild or
+      with free choice of partners is documented.
     sources:
       - kind: catalog-of-fishes
         title: Eschmeyer's Catalog of Fishes, species of Nimbochromis
@@ -1447,6 +1453,24 @@ features:
       - kind: database
         title: "Fishkeeper (Maidenhead Aquatics): Venustus Hap, Nimbochromis venustus, species profile"
         url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/venustus-hap
+        accessed: 2026-10-13
+      - kind: database
+        title: "Malawi-Guru species directory: Nimbochromis livingstonii"
+        url: https://malawi-guru.de/nimbochromis-livingstonii-buntbarsch-verzeichnis/
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Masonick, P., Meyer, A. and Hulsey, C. D. (2022). Phylogenomic analyses show repeated
+          evolution of hypertrophied lips among Lake Malawi cichlid fishes. Genome Biology and
+          Evolution 14(4), evac051."
+        url: https://doi.org/10.1093/gbe/evac051
+        accessed: 2026-10-13
+      - kind: website
+        title: "Schäfer, F. (2020). Nimbochromis livingstonii. Aquarium Glaser fish archive (wholesaler)."
+        url: https://www.aquariumglaser.de/en/25-perchlike-fishes/nimbochromis-livingstonii-2/
+        accessed: 2026-10-13
+      - kind: website
+        title: "Jason's Plecos & Cichlids: Giraffe Cichlid x Livingstoni Hybrid (retailer listing)"
+        url: https://jasonsplecoscichlids.com/products/giraffe-cichlid-x-livingstoni-hybrid
         accessed: 2026-10-13
     evidence:
       - source:
@@ -1477,6 +1501,40 @@ features:
           accessed: 2026-10-13
         value: null
         note: avoid look-alikes as tankmates, no crosses mentioned
+      - source:
+          kind: database
+          title: "Malawi-Guru species directory: Nimbochromis livingstonii"
+          url: https://malawi-guru.de/nimbochromis-livingstonii-buntbarsch-verzeichnis/
+          accessed: 2026-10-13
+        value:
+          - nimbochromis
+        note: genus-wide warning that Nimbochromis species can cross
+      - source:
+          kind: literature
+          title: "Masonick, P., Meyer, A. and Hulsey, C. D. (2022). Phylogenomic analyses show repeated
+            evolution of hypertrophied lips among Lake Malawi cichlid fishes. Genome Biology and
+            Evolution 14(4), evac051."
+          url: https://doi.org/10.1093/gbe/evac051
+          accessed: 2026-10-13
+        value:
+          - nimbochromis
+        note: genus recovered as monophyletic with high support; close relationship only
+      - source:
+          kind: website
+          title: "Schäfer, F. (2020). Nimbochromis livingstonii. Aquarium Glaser fish archive (wholesaler)."
+          url: https://www.aquariumglaser.de/en/25-perchlike-fishes/nimbochromis-livingstonii-2/
+          accessed: 2026-10-13
+        value:
+          - nimbochromis
+        note: genus-wide warning that the species can hybridise
+      - source:
+          kind: website
+          title: "Jason's Plecos & Cichlids: Giraffe Cichlid x Livingstoni Hybrid (retailer listing)"
+          url: https://jasonsplecoscichlids.com/products/giraffe-cichlid-x-livingstoni-hybrid
+          accessed: 2026-10-13
+        value:
+          - nimbochromis
+        note: retailer listing of a venustus x livingstonii cross; circumstances not stated
     verification:
       method: unanimous
       votes:
