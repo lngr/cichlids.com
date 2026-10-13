@@ -1,0 +1,1239 @@
+schemaVersion: 1
+id: labeotropheus-trewavasae
+legacyIds: [319]
+status: described
+
+taxonomy:
+  validName: Labeotropheus trewavasae
+  genus: Labeotropheus
+  species: trewavasae
+  author: Fryer, 1956
+  source: &cof
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes: species of the genus Labeotropheus (online version of 21 Sep. 2026)"
+    url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Labeotropheus
+    accessed: 2026-10-13
+  legacyNames:
+    - Labeotropheus trewavasae
+  note: >-
+    The Catalog of Fishes lists Labeotropheus trewavasae Fryer 1956 as valid, with the rocky shores
+    at Nkhata Bay as type locality. It lists ten further names in the genus: L. fuelleborni Ahl
+    1926 (with L. curvirostris as its synonym) and nine species described by Pauers and co-workers,
+    L. chlorosiglos and L. simoneae (Pauers 2016), L. artatorostris (Pauers 2017) and L. alticodia,
+    L. aurantinfra, L. candipygia, L. chirangali, L. obscurus and L. rubidorsalis (Pauers and Phiri
+    2023). The descriptions rest on body shape, meristics and male nuptial colour of populations
+    that the trade sells as colour forms of L. trewavasae or L. fuelleborni. The Catalog keeps all
+    of them valid. Konings (2024) treats aurantinfra, candipygia, chirangali, rubidorsalis and
+    simoneae as synonyms of L. trewavasae and alticodia, artatorostris, chlorosiglos and obscurus
+    as synonyms of L. fuelleborni, and the Cichlid Room Companion follows the broad concept as
+    well. This profile follows the Catalog: in the strict sense L. trewavasae is the slender
+    Labeotropheus of the Nkhata Bay type population and of the slender populations that no
+    description assigns to another species. Husbandry data in care sheets and hobby literature
+    refer to the broad concept; no source reports keeping requirements that differ between the
+    slender forms.
+
+names:
+  trade:
+    en:
+      - Red Top Trewavasae
+      - Scrapermouth Mbuna
+      - Redtop Mbuna
+      - Trewavas' Cichlid
+      - Red-finned Cichlid
+    de:
+      - Gestreckter Schabemaul-Buntbarsch
+
+variants:
+  - name: "'Nkhata Bay'"
+    kind: locality
+    note: Type population of the species.
+  - name: "'Thumbi West'"
+    kind: locality
+    note: The classic red top form of the trade from Thumbi West Island in the south of the lake.
+  - name: "'Chidunga Rocks'"
+    kind: locality
+    note: Population of the laboratory stocks of Pauers and co-workers in the south-west of the lake.
+  - name: "'Mumbo Island'"
+    kind: locality
+  - name: "'Chilumba'"
+    kind: locality
+    note: >-
+      Trade name for slender forms from the Luromo Peninsula near Chilumba, including blotched
+      fish sold as marmalade cat; several populations of this area are the type populations of
+      L. simoneae, L. chirangali, L. aurantinfra or L. candipygia under the Catalog of Fishes.
+  - name: OB (orange blotch)
+    kind: color-morph
+    note: Blotched females, rarely males, occur in several populations.
+
+features:
+  origin:
+    value:
+      continent: Africa
+      region: Lake Malawi
+      waterbody: Lake Malawi
+      localities:
+        - Nkhata Bay (type locality)
+        - Chidunga Rocks
+        - Thumbi West Island
+        - Mumbo Island
+        - Masinje Rocks
+        - Boadzulu Island
+    confidence: high
+    rationale: >-
+      Endemic to the rocky shores of Lake Malawi, on which the Catalog of Fishes, FishBase and
+      Seriously Fish agree. The type locality is Nkhata Bay. Pauers and co-workers bred wild fish
+      caught at Chidunga Rocks in the south-west. Seriously Fish lists many further localities in
+      the broad concept; those that are type localities of species split off since 2016 (Maleri,
+      Namalenje, Chitande, Chirwa and Mphanga Rocks) are left out here.
+    sources:
+      - *cof
+      - &fishbase
+        kind: database
+        title: "FishBase species summary: Labeotropheus trewavasae"
+        url: https://www.fishbase.se/summary/Labeotropheus-trewavasae.html
+        accessed: 2026-10-13
+      - &sf
+        kind: database
+        title: "Seriously Fish: Labeotropheus trewavasae"
+        url: https://www.seriouslyfish.com/species/labeotropheus-trewavasae/
+        accessed: 2026-10-13
+      - &pauers2018
+        kind: literature
+        title: >-
+          Pauers, M. J., Fox, K. R., Hall, R. A. and Patel, K. (2018). Selection, hybridization,
+          and the evolution of morphology in the Lake Malawi endemic cichlids of the genus
+          Labeotropheus. Scientific Reports 8, 15842.
+        url: https://doi.org/10.1038/s41598-018-34135-x
+        accessed: 2026-10-13
+    evidence:
+      - source: *cof
+        value: {continent: Africa, region: Lake Malawi, localities: [Nkhata Bay]}
+        note: type locality on the rocky shore
+      - source: *fishbase
+        value: {continent: Africa, region: Lake Malawi}
+      - source: *sf
+        value: {continent: Africa, region: Lake Malawi, localities: [Masinje Rocks, Thumbi West Island, Mumbo Island, Boadzulu Island, Nkhata Bay]}
+        note: many island groups and coastal stretches in the broad concept
+      - source: *pauers2018
+        value: {continent: Africa, region: Lake Malawi, localities: [Chidunga Rocks]}
+        note: origin of the wild-caught laboratory stock
+
+  temperatureC:
+    value: {min: 21, max: 29}
+    confidence: high
+    rationale: >-
+      Lake Malawi endemic, so the natural range is the measured temperature range of the lake.
+      Eccles (1974) reports 27 C in the upper 60 m by May and 21 C inshore in the cool, windy
+      season; Vollmer et al. (2005) give winter epilimnion values of about 23.5 C and summer surface
+      water of about 28 C; a 2013 campaign (Ngochera 2018) measured 24 to 29 C. The species lives in
+      shallow to moderately deep rocky water, so the full range applies. The 21 to 24 C on the
+      FishBase page are an aquarium figure and no habitat measurement. All three full profiles
+      proposed this range.
+    sources:
+      - &branchu
+        kind: literature
+        title: >-
+          Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M.,
+          Pons-Branchu, E. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi
+          (Nyasa), Tanzanian Northern Basin: local versus global considerations. Hydrology and
+          Earth System Sciences Discussions 7, 4371-4409.
+        url: https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf
+        accessed: 2026-10-12
+      - &fao
+        kind: literature
+        title: >-
+          Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery
+          resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical
+          and chemical data after Jackson et al. (1963) and Talling and Talling (1965).
+        url: https://www.fao.org/4/t0473e/T0473E05.htm
+        accessed: 2026-10-12
+      - &eccles
+        kind: literature
+        title: >-
+          Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa).
+          Limnology and Oceanography 19(5), 730-742 (abstract).
+        url: https://doi.org/10.4319/lo.1974.19.5.0730
+        accessed: 2026-10-12
+      - &vollmer05
+        kind: literature
+        title: >-
+          Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond,
+          J. M., Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi,
+          East Africa. Limnology and Oceanography 50(2), 727-732.
+        url: https://www.dora.lib4ri.ch/empa/dload/empa:1253/PDF/view
+        accessed: 2026-10-12
+      - &vollmer99
+        kind: literature
+        title: >-
+          Vollmer, M. K., Weiss, R. F. and Bootsma, H. A. (1999). Lake Malawi/Nyasa deep water
+          renewal. In: Bootsma, H. A. and Hecky, R. E. (eds.), Water Quality Report, SADC/GEF Lake
+          Malawi/Nyasa Biodiversity Conservation Project, chapter 4.
+        url: https://sites.uwm.edu/hbootsma/files/2020/11/Ch4-Lake-Internal-Mixing.pdf
+        accessed: 2026-10-12
+      - &ngochera
+        kind: literature
+        title: >-
+          Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. PhD dissertation, University
+          of Wisconsin-Milwaukee.
+        url: https://minds.wisconsin.edu/handle/1793/91765
+        accessed: 2026-10-12
+    evidence:
+      - source: *eccles
+        value: {min: 21, max: 27}
+        note: inshore minimum in the cool season, upper 60 m by May
+      - source: *vollmer05
+        value: {min: 23.5, max: 28}
+        note: winter epilimnion to summer surface water
+      - source: *ngochera
+        value: {min: 24, max: 29}
+        note: 2013 campaign
+    verification: {method: waterbody, waterbody: lake-malawi}
+    tolerance:
+      value: {min: 21, max: 29}
+      confidence: medium
+      rationale: >-
+        Care sheets lie between 21 and 28 C: FishBase and Fishkeeper 21 to 24, FishProfiles 21 to 25
+        with up to 27 for breeding, Fishipedia 23 to 28, Seriously Fish and Guidarium 24 to 28. The
+        laboratory stocks of Pauers and co-workers lived and bred for years at 28 C (2018) and 25 C
+        (2023). The tolerance has to contain the natural lake range, which the fish meet in the wild
+        every year, so it equals 21 to 29 C; the upper end rests on the lake measurements, no
+        aquarium source goes beyond 28 C. The vote count decided the range unanimously (3 of 3):
+        generator and checker-a proposed 21 to 29 C, checker-b 22 to 28 C, which lies within 1 C.
+      sources:
+        - *fishbase
+        - *sf
+        - &fishprofiles
+          kind: database
+          title: "FishProfiles.com: Labeotropheus trewavasae"
+          url: https://fishprofiles.com/profiles/freshwater/Cichlids/Labeotropheus_trewavasae
+          accessed: 2026-10-13
+        - &fishipedia
+          kind: database
+          title: "Fishipedia: Labeotropheus trewavasae 'Chinyawesi'"
+          url: https://www.fishipedia.fr/fr/poissons/labeotropheus-trewavasae-chinyawesi
+          accessed: 2026-10-13
+        - *pauers2018
+        - &pauers2023
+          kind: literature
+          title: >-
+            Pauers, M. J., Hoffmann, J. and Ackley, L. J.-B. (2023). Differences among reciprocal
+            hybrids of Labeotropheus. Hydrobiologia 850, 2149-2164.
+          url: https://doi.org/10.1007/s10750-022-05092-4
+          accessed: 2026-10-13
+        - &fishkeeper
+          kind: website
+          title: "Fishkeeper (Maidenhead Aquatics): Trewavasae, Labeotropheus trewavasae, species profile"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/trewavasae
+          accessed: 2026-10-13
+        - &guidarium
+          kind: website
+          title: "Guidarium: Trewavas' Cichlid"
+          url: https://guidarium.com/fishes/trewavas-cichlid
+          accessed: 2026-10-13
+      evidence:
+        - source: *fishbase
+          value: {min: 21, max: 24}
+          note: aquarium figure
+        - source: *sf
+          value: {min: 24, max: 28}
+          note: aquarium recommendation
+        - source: *fishprofiles
+          value: {min: 21, max: 27}
+          note: 21 to 25 C for keeping, up to 27 C for breeding
+        - source: *fishipedia
+          value: {min: 23, max: 28}
+          note: trade form 'Chinyawesi'
+        - source: *pauers2018
+          value: {min: 28, max: 28}
+          note: laboratory stock and mesocosms kept and bred at 28 C
+        - source: *pauers2023
+          value: {min: 25, max: 25}
+          note: laboratory stock kept and bred at 25 C
+        - source: *fishkeeper
+          value: {min: 21, max: 24}
+        - source: *guidarium
+          value: {min: 24, max: 28}
+      verification:
+        method: unanimous
+        votes: {agree: 3, total: 3}
+
+  ph:
+    value: {min: 7.7, max: 8.6}
+    confidence: high
+    rationale: >-
+      Lake Malawi endemic, so the natural range is the measured pH of the lake. Jackson et al.
+      (1963) in the FAO source book give 7.7 to 8.6 for surface water; Branchu et al. (2010) give
+      7.5 to 8.5 for the whole column of the north basin, the lower values belonging to deep water.
+      The single value of 8.0 on the FishBase page lies inside this range. All three full profiles
+      proposed this range.
+    sources: [*fao, *branchu, *eccles, *vollmer05, *vollmer99, *ngochera]
+    evidence:
+      - source: *fao
+        value: {min: 7.7, max: 8.6}
+        note: surface water, Jackson et al. 1963
+      - source: *branchu
+        value: {min: 7.5, max: 8.5}
+        note: whole water column, lower values at depth
+    verification: {method: waterbody, waterbody: lake-malawi}
+    tolerance:
+      value: {min: 7.5, max: 8.8}
+      confidence: medium
+      rationale: >-
+        Husbandry sources agree on alkaline water: Seriously Fish 7.6 to 8.8 with 8.0 as ideal and
+        8.2 to 8.5 for breeding, Fishkeeper and Fishipedia 7.5 to 8.5, FishProfiles 8.0 to 8.5,
+        Guidarium 7.8 to 8.6, a hobby care guide 7.6 to 8.6 and FishBase a single 8.0. The range
+        7.5 to 8.8 joins these statements and contains the lake range. The vote count decided it
+        unanimously (3 of 3, all three full profiles proposed 7.5 to 8.8).
+      sources: [*sf, *fishprofiles, *fishipedia, *fishbase, *fishkeeper, *guidarium, &gensou {kind: website, title: "Gensou: Labeotropheus trewavasae care guide", url: "https://gensou.sg/labeotropheus-trewavasae-care-guide/", accessed: 2026-10-13}]
+      evidence:
+        - source: *sf
+          value: {min: 7.6, max: 8.8}
+          note: aquarium recommendation, 8.2 to 8.5 for breeding
+        - source: *fishprofiles
+          value: {min: 8.0, max: 8.5}
+        - source: *fishipedia
+          value: {min: 7.5, max: 8.5}
+          note: trade form 'Chinyawesi'
+        - source: *fishbase
+          value: {min: 8.0, max: 8.0}
+          note: single value
+        - source: *fishkeeper
+          value: {min: 7.5, max: 8.5}
+        - source: *guidarium
+          value: {min: 7.8, max: 8.6}
+        - source: *gensou
+          value: {min: 7.6, max: 8.6}
+      verification:
+        method: unanimous
+        votes: {agree: 3, total: 3}
+
+  ghDgh:
+    value: {min: 3, max: 5}
+    confidence: high
+    rationale: >-
+      Lake Malawi endemic, so the natural range is the total hardness of the lake computed from
+      measured calcium and magnesium (dGH = Ca/7.14 + Mg/4.34): 4.2 to 4.6 dGH in the upper 50 m of
+      the north basin (Branchu et al. 2010) and 3.2 to 4.9 dGH from the 1960s titrations in the FAO
+      source book. The lake is soft; care sheets that ask for 10 to 25 dGH describe aquarium
+      practice and no habitat measurement. All three full profiles proposed this range.
+    sources: [*branchu, *fao, *eccles, *vollmer05, *vollmer99, *ngochera]
+    evidence:
+      - source: *branchu
+        value: {min: 4.2, max: 4.6}
+        note: computed from Ca and Mg, upper 50 m
+      - source: *fao
+        value: {min: 3.2, max: 4.9}
+        note: computed from Jackson et al. 1963 and Talling and Talling 1965
+    verification: {method: waterbody, waterbody: lake-malawi}
+    tolerance:
+      value: {min: 3, max: 20}
+      confidence: medium
+      rationale: >-
+        Care sheets keep the species in harder water than the lake: FishBase and FishProfiles 5 to
+        12 dH, Fishkeeper up to 20 dH, Seriously Fish and Guidarium 10 to 25 dGH. The upper bound of
+        20 dGH is covered by most statements; 25 dGH rests on two hobby sheets alone. The lower bound
+        is the natural lake value of 3 dGH, which the tolerance must contain; wild fish live in this
+        soft water. The vote count decided the range unanimously (3 of 3, all three full profiles
+        proposed 3 to 20 dGH).
+      sources: [*fishbase, *sf, *fishprofiles, *fishkeeper, *guidarium, *branchu]
+      evidence:
+        - source: *fishbase
+          value: {min: 5, max: 12}
+          note: given as dH
+        - source: *fishprofiles
+          value: {min: 5, max: 12}
+          note: given as dH
+        - source: *sf
+          value: {min: 10, max: 25}
+        - source: *fishkeeper
+          value: {max: 20}
+          note: only an upper limit given, as dH
+        - source: *guidarium
+          value: {min: 10, max: 25}
+        - source: *branchu
+          value: {min: 4.2, max: 4.6}
+          note: natural lake water, lower end of the tolerance
+      verification:
+        method: unanimous
+        votes: {agree: 3, total: 3}
+
+  khDkh:
+    value: {min: 5, max: 8}
+    confidence: high
+    rationale: >-
+      Lake Malawi endemic, so the natural range is the measured alkalinity of the lake: 2.33 to
+      2.46 meq/L in the Branchu et al. (2010) profiles (6.5 to 6.9 dKH) and 2.00 to 2.59 meq/L in
+      Jackson et al. (1963) in the FAO source book (5.6 to 7.3 dKH), with dKH = meq/L x 2.8. All
+      three full profiles proposed this range.
+    sources: [*branchu, *fao, *eccles, *vollmer05, *vollmer99, *ngochera]
+    evidence:
+      - source: *branchu
+        value: {min: 6.5, max: 6.9}
+        note: alkalinity profiles, north basin
+      - source: *fao
+        value: {min: 5.6, max: 7.3}
+        note: Jackson et al. 1963
+    verification: {method: waterbody, waterbody: lake-malawi}
+    tolerance:
+      value: {min: 5, max: 10}
+      confidence: low
+      rationale: >-
+        No species database, book or paper gives a carbonate hardness for this species; Seriously
+        Fish, FishBase, FishProfiles and Fishkeeper state only total or unspecified hardness. Explicit
+        KH figures come from hobby pages alone: a species care guide aims at 6 to 10 dKH, a retailer
+        guide to Malawi tanks accepts 6 to 20 dKH with 8 to 10 as the optimum, and a general mbuna
+        page suggests 10 to 12 dKH. The lower bound of 5 dKH is the natural lake value, which the
+        tolerance must contain. The five votes differ: generator 5 to 10, checker-a 5 to 12,
+        checker-b 4 to 15, tiebreaker-1 5 to 20 and tiebreaker-2 5 to 10 dKH. With only 3 of 5
+        votes agreeing there is no qualified majority, so the vote count took the conservative
+        value, the intersection of all five ranges: 5 to 10 dKH, with confidence low. The narrower
+        range warns earlier when a tankmate needs much harder water; it covers the species care
+        guide and the optimum of the retailer guide.
+      sources:
+        - *branchu
+        - *fao
+        - *gensou
+        - &garnelio
+          kind: website
+          title: Garnelio blog, The Malawi aquarium (archived copy of 2025-08-15)
+          url: https://web.archive.org/web/20250815214454/https://www.garnelio.de/en/blog/ornamental-fish/the-malawi-aquarium
+          accessed: 2026-10-13
+        - &tropicaltank
+          kind: website
+          title: "The Tropical Tank: Malawi mbuna cichlids, keeping and breeding (water chemistry)"
+          url: https://thetropicaltank.co.uk/mbuna2.htm
+          accessed: 2026-10-13
+        - *fishbase
+        - *fishprofiles
+        - *sf
+        - *fishkeeper
+      evidence:
+        - source: *branchu
+          value: {min: 6.5, max: 6.9}
+          note: natural lake water
+        - source: *fao
+          value: {min: 5.6, max: 7.3}
+          note: natural lake water, Jackson et al. 1963
+        - source: *gensou
+          value: {min: 6, max: 10}
+          note: species-specific aquarium target
+        - source: *garnelio
+          value: {min: 6, max: 20}
+          note: acceptable range for Malawi tanks in general, optimum 8 to 10
+        - source: *tropicaltank
+          value: {min: 10, max: 12}
+          note: general target for mbuna, described as not critical
+        - source: *fishbase
+          value: {min: 5, max: 12}
+          note: unspecified dH, no KH value
+        - source: *fishprofiles
+          value: {min: 5, max: 12}
+          note: unspecified dH, no KH value
+      verification:
+        method: conservative
+        votes: {agree: 3, total: 5}
+
+  maxSizeCm:
+    value: {male: 13, female: 11}
+    confidence: medium
+    rationale: >-
+      The feature is the typical maximum of well-kept adult aquarium fish. FishBase gives 11.7 cm
+      total length for wild fish, Seriously Fish 11.3 cm standard length (about 13.5 to 14 cm total
+      length), FishProfiles 12 cm and Guidarium about 14 cm for males and 11 cm for females;
+      Fishkeeper's 15 cm is a top value. Adult laboratory fish of Pauers and co-workers had mean
+      total lengths of 11.4 to 12.0 cm in males (standard deviation up to 0.66 cm) and 10.9 cm in
+      females, so well-kept males reach about 13 cm and females about 11 cm. Mbuna grow larger in
+      the aquarium than in the lake (Genner and Turner 2005).
+    sources:
+      - *fishbase
+      - *sf
+      - *fishprofiles
+      - *pauers2023
+      - &genner
+        kind: literature
+        title: >-
+          Genner, M. J. and Turner, G. F. (2005). The mbuna cichlids of Lake Malawi: a model for
+          rapid speciation and adaptive radiation. Fish and Fisheries 6, 1-34.
+        url: https://doi.org/10.1111/j.1467-2679.2005.00173.x
+        accessed: 2026-10-13
+      - *guidarium
+      - *fishkeeper
+    evidence:
+      - source: *fishbase
+        value: {male: 11.7, female: 11.7}
+        note: total length, male or unsexed
+      - source: *sf
+        value: {male: 14, female: 14}
+        note: 11.3 cm standard length converted to total length, sexes not separated
+      - source: *fishprofiles
+        value: {male: 12, female: 12}
+      - source: *pauers2023
+        value: {male: 12.0, female: 10.9}
+        note: mean total length of adult aquarium fish
+      - source: *guidarium
+        value: {male: 14, female: 11}
+      - source: *fishkeeper
+        value: {male: 15, female: 15}
+        note: sexes not separated
+
+  predation:
+    value: 0
+    confidence: medium
+    rationale: >-
+      A specialised scraper of epilithic algae with a subterminal mouth under a fleshy snout and
+      chisel-like teeth. Ribbink et al. (1983) and FishBase name small crustaceans, worms, plankton
+      and insects only as secondary food; Pauers et al. (2018) describe the snout and jaws as tools
+      for scraping algae, and Genner and Turner (2005) class Labeotropheus with the algae scrapers.
+      No study or database reports fish in the diet. FishProfiles alone lists small live fish among
+      the foods, which contradicts all other sources and the feeding anatomy, so it is discounted.
+      Fry may be taken by chance, as in any mbuna. The vote count decided level 0 unanimously (3 of
+      3).
+    sources:
+      - *fishbase
+      - &ribbink
+        kind: literature
+        title: >-
+          Ribbink, A. J., Marsh, A. C., Marsh, B. A. and Sharp, B. J. (1983). The zoogeography,
+          ecology and taxonomy of the genus Labeotropheus Ahl, 1927, of Lake Malawi (Pisces:
+          Cichlidae). Zoological Journal of the Linnean Society 79(3), 223-243 (abstract).
+        url: https://doi.org/10.1111/j.1096-3642.1983.tb01166.x
+        accessed: 2026-10-13
+      - *pauers2018
+      - *genner
+      - *sf
+      - *fishprofiles
+      - *fishkeeper
+    evidence:
+      - source: *fishbase
+        value: 0
+        note: scrapes algae, also small crustaceans and worms
+      - source: *ribbink
+        value: 0
+        note: crops epilithic algae, secondarily plankton and insects
+      - source: *pauers2018
+        value: 0
+        note: snout and jaws adapted to scraping epilithic algae
+      - source: *genner
+        value: 0
+        note: Labeotropheus scrapes algae
+      - source: *fishkeeper
+        value: 0
+        note: primarily vegetarian diet
+      - source: *fishprofiles
+        value: 1
+        note: lists small live fish among foods; isolated statement
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+
+  diet:
+    value:
+      type: aufwuchs
+      bloatSensitive: true
+      foods:
+        - spirulina flakes and pellets
+        - vegetable-based mbuna pellets
+        - blanched spinach, peas, cucumber
+        - mysis or brine shrimp as a rare treat
+    confidence: high
+    rationale: >-
+      Field studies show a specialised grazer that crops filamentous epilithic algae, mainly from
+      the undersides and vertical faces of rocks (Ribbink et al. 1983), with its body held almost
+      parallel to the rock (Pauers et al. 2018); FishBase, Genner and Turner (2005) and the
+      Cichlid Room Companion agree. Seriously Fish asks for vegetable food as a large share of the
+      diet. Fishkeeper and a hobby care guide warn that food rich in animal protein causes Malawi
+      bloat, the typical risk of aufwuchs-feeding mbuna. The vote count decided aufwuchs with
+      bloat sensitivity unanimously (3 of 3) and took the food list of the generator.
+    sources:
+      - *ribbink
+      - *pauers2018
+      - *genner
+      - *fishbase
+      - *sf
+      - &crc
+        kind: database
+        title: "Cichlid Room Companion: Labeotropheus trewavasae (public summary)"
+        url: https://cichlidae.com/species.php?id=ymgJaejTeVwk0Y5IKPMmwQ
+        accessed: 2026-10-13
+      - *fishkeeper
+      - *gensou
+    evidence:
+      - source: *ribbink
+        value: {type: aufwuchs}
+        note: crops epilithic algae, favours rock undersides
+      - source: *pauers2018
+        value: {type: aufwuchs}
+        note: scrapes filamentous epilithic algae
+      - source: *genner
+        value: {type: aufwuchs}
+        note: Labeotropheus scrapes algae
+      - source: *fishbase
+        value: {type: aufwuchs}
+        note: algae with some small crustaceans and worms
+      - source: *sf
+        value: {type: aufwuchs}
+        note: vegetable food as a large share, some live and frozen food
+      - source: *crc
+        value: {type: aufwuchs}
+        note: listed as an algae grazer
+      - source: *fishkeeper
+        value: {type: aufwuchs, bloatSensitive: true}
+        note: mainly vegetarian; animal protein risks Malawi bloat
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+
+  aggressionConspecific:
+    value: 3
+    confidence: medium
+    rationale: >-
+      Seriously Fish calls it very aggressive towards its own kind and advises dense stocking and
+      several females per male; Fishkeeper warns that a male kept with a single female harasses her,
+      sometimes to death. In arena experiments males aimed more aggression at conspecific rivals
+      than at males of L. fuelleborni (Pauers and Grudnowski 2020; Pauers et al. 2023), and in the
+      lake territorial males of mbuna hold their sites for long periods (Genner and Turner 2005).
+      Persistent chasing with injuries under the wrong ratio or too little space fits level 3; no
+      source reports routine killing of rivals in adequate tanks. All three full profiles proposed
+      level 3.
+    sources:
+      - *sf
+      - &pauers2020
+        kind: literature
+        title: >-
+          Pauers, M. J. and Grudnowski, J. A. (2020). Assortative aggression among males in a
+          sympatric pair of Labeotropheus from Lake Malawi, Africa. Journal of Fish Biology 97(1),
+          183-189 (abstract).
+        url: https://doi.org/10.1111/jfb.14346
+        accessed: 2026-10-13
+      - *pauers2023
+      - *genner
+      - *fishkeeper
+      - kind: archive
+        title: cichlids.com forum thread 15967
+        url: https://www.cichlids.com/disc/read.php?2,15967
+      - kind: archive
+        title: cichlids.com forum thread 21893
+        url: https://www.cichlids.com/disc/read.php?2,21893
+    evidence:
+      - source: *sf
+        value: 3
+        note: very aggressive towards conspecifics, several females per male
+      - source: *pauers2020
+        value: 3
+        note: males direct more aggression at conspecific rivals
+      - source: *fishkeeper
+        value: 3
+        note: a single female can be harassed to death
+
+  aggressionHeterospecific:
+    value: 3
+    confidence: medium
+    rationale: >-
+      Seriously Fish describes an aggressive, territorial mbuna that must not live with peaceful
+      species such as peacocks or utaka and suits other mbuna only; Fishkeeper calls it moderately
+      aggressive and pairs it with other outgoing mbuna; TropicalFreshwaterFish keeps it with mbuna
+      only. All sources thus demand tankmates of comparable size and robustness, which is the
+      definition of level 3. Other species draw less aggression than conspecifics (Pauers and
+      Grudnowski 2020), which keeps the level below 4.
+    sources:
+      - *sf
+      - *pauers2020
+      - *fishkeeper
+      - &tfwf
+        kind: website
+        title: "TropicalFreshwaterFish: Trewavas Cichlid, Labeotropheus trewavasae"
+        url: https://tropicalfreshwaterfish.com/species/Labeotropheus_trewavasae.html
+        accessed: 2026-10-13
+      - kind: archive
+        title: cichlids.com forum thread 17685
+        url: https://www.cichlids.com/disc/read.php?2,17685
+      - kind: archive
+        title: cichlids.com forum thread 14086
+        url: https://www.cichlids.com/disc/read.php?2,14086
+      - kind: archive
+        title: cichlids.com forum thread 20029
+        url: https://www.cichlids.com/disc/read.php?2,20029
+    evidence:
+      - source: *sf
+        value: 3
+        note: not with peaceful species, only with other mbuna
+      - source: *fishkeeper
+        value: 2
+        note: moderately aggressive, with other outgoing mbuna
+      - source: *tfwf
+        value: 3
+        note: aggressive and territorial, only with mbuna
+
+  territory:
+    value: {size: small, breedingOnly: false}
+    confidence: medium
+    rationale: >-
+      Males hold a permanent feeding and spawning site among the rocks, centred on a flat stone near
+      a cave, and drive rivals from it (Fishkeeper, Seriously Fish); territory holding is the norm
+      for male mbuna and lasts for many months (Genner and Turner 2005). In the aquarium the
+      territory covers a rock pile and its surroundings, which fits the small class of the rubric.
+    sources:
+      - *sf
+      - *genner
+      - *pauers2020
+      - *fishkeeper
+    evidence:
+      - source: *genner
+        value: {size: small, breedingOnly: false}
+        note: male mbuna hold territories for 18 months or more
+      - source: *sf
+        value: {size: small, breedingOnly: false}
+        note: male cleans and guards a spawning site
+      - source: *pauers2020
+        value: {size: small, breedingOnly: false}
+        note: territory-holding males court females
+      - source: *fishkeeper
+        value: {size: small, breedingOnly: false}
+        note: flat spawning rock near a cave, males very territorial
+
+  habitatZones:
+    value: [rock]
+    confidence: high
+    rationale: >-
+      A strict rock dweller of shores and islands with heavy algal growth. Compared with
+      L. fuelleborni it lives in deeper, more structured rock habitat and grazes the bottoms and
+      sides of smaller rocks (Ribbink et al. 1983; Pauers 2011; Pauers et al. 2018). Sand serves as
+      substrate and spawning area in the aquarium and is no habitat zone of its own.
+    sources:
+      - *ribbink
+      - *pauers2018
+      - &pauers2011
+        kind: literature
+        title: >-
+          Pauers, M. J. (2011). One fish, two fish, red fish, blue fish: geography, ecology,
+          sympatry, and male coloration in the Lake Malawi cichlid genus Labeotropheus (Perciformes:
+          Cichlidae). International Journal of Evolutionary Biology 2011, 575469.
+        url: https://doi.org/10.4061/2011/575469
+        accessed: 2026-10-13
+      - *sf
+      - *crc
+    evidence:
+      - source: *ribbink
+        value: [rock]
+      - source: *pauers2018
+        value: [rock]
+        note: structurally complex, deeper rocky habitat
+      - source: *pauers2011
+        value: [rock]
+        note: deeper-dwelling scraper of the bottoms and sides of smaller rocks
+      - source: *sf
+        value: [rock]
+        note: algae-covered rocky shores and islands
+
+  social:
+    value: {structure: harem, ratio: 3}
+    confidence: high
+    rationale: >-
+      Care sheets agree on one male with several females: at least three (Seriously Fish,
+      Guidarium), three to four (a hobby care guide) or several (Fishkeeper, FishProfiles). The
+      laboratory colonies of Pauers and co-workers were bred in groups of a few males with several
+      females in large tanks.
+    sources:
+      - *sf
+      - *fishprofiles
+      - *pauers2023
+      - *fishkeeper
+      - *guidarium
+      - *gensou
+    evidence:
+      - source: *sf
+        value: {structure: harem, ratio: 3}
+      - source: *fishprofiles
+        value: {structure: harem}
+        note: several females per male for breeding
+      - source: *fishkeeper
+        value: {structure: harem}
+        note: one male with several females
+      - source: *guidarium
+        value: {structure: harem, ratio: 3}
+      - source: *gensou
+        value: {structure: harem, ratio: 3.5}
+
+  speciesOnly:
+    value: false
+    confidence: high
+    rationale: >-
+      Seriously Fish combines the species with other mbuna and notes that other fish in the tank
+      help to spread its aggression towards conspecifics; Fishkeeper keeps it with other outgoing
+      mbuna in a Malawi tank, and Guidarium recommends mbuna as companions. Arena experiments show
+      that males aim more aggression at conspecific rivals than at males of another species (Pauers
+      and Grudnowski 2020; Pauers et al. 2023), which fits keeping it with other mbuna. Mixing
+      Labeotropheus forms is discouraged because of crossing, which the hybrid group covers. No
+      source asks for a species tank except for breeding. The vote count decided the value
+      unanimously (3 of 3).
+    sources:
+      - *sf
+      - *pauers2020
+      - *pauers2023
+      - *fishkeeper
+      - *guidarium
+    evidence:
+      - source: *sf
+        value: false
+        note: can be combined with other mbuna, which spread the aggression
+      - source: *pauers2023
+        value: false
+        note: males direct more aggression at conspecific than at heterospecific males
+      - source: *fishkeeper
+        value: false
+        note: Malawi community with other outgoing mbuna
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+
+  hybridGroup:
+    value: labeotropheus
+    confidence: medium
+    rationale: >-
+      Pauers et al. (2018) produced hybrids in aquaria by isolating male L. trewavasae with female
+      L. fuelleborni; the hybrids were viable and fertile and gave an inbred F2 generation. Pauers
+      et al. (2023) crossed both species in both directions and raised the reciprocal hybrids to
+      adulthood. In the wild, hybrids are rare because females choose mates by male colour.
+      Seriously Fish warns that the colour forms may hybridise and should not be mixed. Because the
+      trade forms of the genus belong to several species under the Catalog of Fishes, the group
+      contains all valid Labeotropheus species. The vote count decided the group unanimously (3 of
+      3); it is added to the curated list of hybrid groups.
+    sources:
+      - *pauers2018
+      - *pauers2023
+      - *sf
+      - *gensou
+    evidence:
+      - source: *pauers2018
+        value: labeotropheus
+        note: fertile aquarium hybrids of male L. trewavasae and female L. fuelleborni
+      - source: *pauers2023
+        value: labeotropheus
+        note: reciprocal hybrids raised to adulthood
+      - source: *sf
+        value: labeotropheus
+        note: colour forms should not be mixed because they may hybridise
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+
+  coloration:
+    value:
+      baseColors: [blue, red]
+      pattern: bars
+    confidence: low
+    rationale: >-
+      More than 40 colour forms are known, and the dorsal fin varies most (Seriously Fish). Males of
+      the common trade forms, such as the red top from Thumbi West, are blue with faint dark
+      vertical bars and a red to orange dorsal fin; females are brownish, speckled or orange
+      blotched. The value describes the most frequent trade form; the male colour depends on the
+      population.
+    sources:
+      - *sf
+      - *pauers2011
+      - *tfwf
+      - *crc
+      - kind: archive
+        title: cichlids.com forum thread 21893
+        url: https://www.cichlids.com/disc/read.php?2,21893
+    evidence:
+      - source: *sf
+        value: {baseColors: [blue], pattern: mixed}
+        note: over 40 colour forms, variable dorsal fin, orange blotch females
+      - source: *tfwf
+        value: {baseColors: [blue, red], pattern: bars}
+        note: blue males with dark bands and yellow to red fins
+      - source: *pauers2011
+        value: {baseColors: [blue, red]}
+        note: red dorsal fin is the most frequent male nuptial pattern; colour varies between populations
+
+  feedingSpeed:
+    value: hasty
+    confidence: low
+    rationale: >-
+      Like other mbuna it takes food greedily and competes well at feeding time; the rubric names
+      mbuna as the example of hasty feeders. Seriously Fish notes only that it accepts most foods,
+      and no source rates its feeding pace explicitly.
+    sources:
+      - *sf
+      - kind: model-knowledge
+        title: Feeding behaviour of mbuna in aquaria
+
+  minTank:
+    value: {volumeL: 240, lengthCm: 120, depthCm: 45}
+    confidence: medium
+    rationale: >-
+      Fishkeeper asks for at least 120 cm (4 ft) and Seriously Fish recommends a 48 inch tank for a
+      breeding harem, while its base of 90 by 45 cm is the absolute minimum; Guidarium gives 200 L
+      and 120 cm and a hobby care guide 250 L for one male with three to four females. A 120 by 45 cm
+      tank of about 240 L meets these recommendations and gives the aggressive males room for
+      rockwork and retreats.
+    sources:
+      - *sf
+      - *fishkeeper
+      - *guidarium
+      - *gensou
+    evidence:
+      - source: *sf
+        value: {volumeL: 154, lengthCm: 90, depthCm: 45}
+        note: minimum base; 120 cm recommended for a breeding harem
+      - source: *fishkeeper
+        value: {lengthCm: 120}
+      - source: *guidarium
+        value: {volumeL: 200, lengthCm: 120}
+      - source: *gensou
+        value: {volumeL: 250}
+        note: one male with three to four females
+
+  lifespanYears:
+    value: {min: 8, max: 10}
+    confidence: low
+    rationale: >-
+      Only Fishipedia gives a lifespan (8 years); mbuna of this size usually live 8 to 10 years in
+      the aquarium. The range needs confirmation.
+    sources:
+      - *fishipedia
+      - kind: model-knowledge
+        title: Lifespan of mbuna in aquaria
+    evidence:
+      - source: *fishipedia
+        value: {min: 8, max: 8}
+
+  breeding:
+    value: maternal-mouthbrooder
+    confidence: high
+    rationale: >-
+      The female takes the eggs into her mouth right after spawning and carries them for about three
+      to four weeks; laboratory broods were released at about 21 days. All sources agree.
+    sources:
+      - *fishbase
+      - *sf
+      - *pauers2018
+      - *pauers2023
+      - *genner
+      - *crc
+    evidence:
+      - source: *fishbase
+        value: maternal-mouthbrooder
+      - source: *sf
+        value: maternal-mouthbrooder
+        note: brood of 10 to 40 eggs carried for up to three or four weeks
+      - source: *pauers2018
+        value: maternal-mouthbrooder
+        note: fry released at about 21 days
+      - source: *pauers2023
+        value: maternal-mouthbrooder
+      - source: *crc
+        value: maternal-mouthbrooder
+
+  beginnerSuitability:
+    value: moderate
+    confidence: medium
+    rationale: >-
+      Hardy and easy to feed with a plant-based diet, but its aggression demands a harem, a long
+      rock-filled tank and robust mbuna tankmates, and protein-rich food risks bloat. Seriously Fish
+      rates it moderate; TropicalFreshwaterFish calls it a hardy mbuna of middling difficulty.
+    sources:
+      - *sf
+      - *fishkeeper
+      - *tfwf
+      - kind: archive
+        title: cichlids.com forum thread 17685
+        url: https://www.cichlids.com/disc/read.php?2,17685
+    evidence:
+      - source: *sf
+        value: moderate
+      - source: *tfwf
+        value: easy
+        note: hardy mbuna, middle difficulty score
+
+partners:
+  suitable:
+    - species: Labidochromis caeruleus
+      reason: One of the calmer mbuna; its yellow colour and shape differ from red top males, so it is not taken for a rival, and it shares the water values and the plant-based diet.
+      condition: Only in a tank of at least 120 cm with dense rockwork, so that it can avoid the more aggressive Labeotropheus males.
+    - species: Pseudotropheus crabro
+      reason: Robust mbuna of similar size with a brown and yellow pattern that does not resemble L. trewavasae.
+    - species: Iodotropheus sprengerae
+      reason: Rust-brown mbuna of similar size and diet whose colour differs from blue red top males.
+      condition: Only in a densely stocked mbuna tank with many caves.
+    - species: Synodontis multipunctatus
+      reason: Robust catfish that tolerates Malawi water and stays out of the cichlids' way.
+      condition: Only in a tank of at least 150 cm.
+  unsuitable:
+    - species: Labeotropheus fuelleborni
+      reason: Crosses with L. trewavasae in aquaria in both directions and is a direct rival of the same shape (hybrid group labeotropheus).
+    - species: Labeotropheus simoneae
+      reason: Slender Labeotropheus that the hobby sells as a colour form of L. trewavasae; mixed forms can hybridise (hybrid group labeotropheus).
+    - species: Maylandia callainos
+      reason: Blue males look like rivals, which leads to constant fighting.
+    - species: Aulonocara jacobfreibergi
+      reason: Peaceful peacock that suffers from constant chasing and needs more protein-rich food.
+    - species: Copadichromis borleyi
+      reason: Calm open-water hap that is stressed by aggressive mbuna.
+    - species: Tropheus moorii
+      reason: Kept as a species-only group; two aggressive grazers compete for the same rock surfaces.
+    - species: Nimbochromis livingstonii
+      reason: A large predatory hap that eats young mbuna and needs meaty food that causes bloat in L. trewavasae.
+
+profile:
+  overview:
+    text: >-
+      Labeotropheus trewavasae is a slender mbuna from the rocky shores of Lake Malawi, easily
+      recognised by its fleshy, overhanging snout and the mouth set low beneath it. With this
+      tool it scrapes algae from rock surfaces, often from the undersides and crevices that other
+      grazers cannot reach. Males of most forms are blue with a red or orange dorsal fin, which
+      gave the fish its trade name red top, while females are brownish, speckled or orange
+      blotched. Dozens of colour forms are known from different stretches of coast, and several
+      of them have been described as separate species since 2016. The fish is hardy and very
+      attractive, but it is one of the more quarrelsome mbuna. It belongs in a well-structured
+      rock tank with other robust mbuna, one male and several females, and a diet that is mostly
+      vegetable.
+    sources:
+      - *cof
+      - *ribbink
+      - *sf
+  habitat:
+    text: >-
+      The species lives only in Lake Malawi. The type population comes from the rocky shore at
+      Nkhata Bay, and further slender populations live at many islands and headlands, for example
+      at Chidunga Rocks, Thumbi West and Mumbo Island. Compared with its stocky relative
+      L. fuelleborni it prefers deeper and more broken rock habitat with many crevices, and it has
+      been recorded down to more than 30 metres. The water of the lake is warm, soft and moderately
+      alkaline: 21 to 29 C, pH 7.7 to 8.6, about 3 to 5 dGH and 5 to 8 dKH. Rock surfaces there
+      carry a dense film of algae with small invertebrates, the food the fish is built for.
+    sources:
+      - *cof
+      - *ribbink
+      - *pauers2018
+      - *sf
+      - *branchu
+      - *fao
+      - *eccles
+  sizeAndGrowth:
+    text: >-
+      Well-kept adult males reach about 13 cm total length and females about 11 cm; wild fish stay
+      a little smaller, and figures of 15 cm in some care sheets are exceptions. The body is long
+      and low, clearly slimmer than that of L. fuelleborni, with a short, deep head. Young fish grow
+      steadily on a vegetable diet, and males develop the blue body and the coloured dorsal fin as
+      they mature. In laboratory ponds with strong current, fish with deeper bodies foraged better
+      than slender ones, so this slender grazer does best with moderate flow and plenty of grazing
+      surfaces. With good care they live about eight to ten years.
+    sources:
+      - *fishbase
+      - *sf
+      - *pauers2023
+      - *pauers2018
+      - *genner
+      - *fishipedia
+  husbandry:
+    text: >-
+      Plan a tank of at least 120 cm length and about 240 litres for one male with three or more
+      females. Build stable rock piles from the bottom almost to the surface with many caves and
+      gaps, and use rounded stones, because sharp rock can damage the grazing lips. A sandy
+      bottom is fine; plants are usually eaten. Keep the temperature between about 24 and 27 C
+      and the water alkaline at pH 7.5 to 8.5 with a stable carbonate buffer of about 6 to 10 dKH.
+      Moderately hard tap water is tolerated well. Strong filtration, good oxygen supply and regular
+      large water changes keep nitrate low. Bright light lets algae grow on the rocks, which the
+      fish graze all day.
+    sources:
+      - *fishkeeper
+      - *sf
+      - *gensou
+  socialBehavior:
+    text: >-
+      Males claim a patch of rock with a flat stone near a cave and defend it all year against
+      rivals. They aim their attacks above all at males of their own kind, so two males need a
+      large tank and plenty of visual barriers. A male kept with only one female will harass her
+      until she is exhausted, which is why a group of one male with at least three females is the
+      rule. Other mbuna are chased away from the territory as well, and peaceful fish suffer from
+      it, but robust mbuna draw less anger than conspecifics. Stocking the tank fairly densely with
+      robust mbuna spreads the aggression across many fish.
+    sources:
+      - *pauers2020
+      - *pauers2023
+      - *sf
+      - *fishkeeper
+  diet:
+    text: >-
+      In the lake this mbuna grazes algae from rocks and takes small invertebrates living in the
+      algal film; plankton and insects are only a secondary food. In the aquarium the menu should
+      therefore be mainly plant-based: spirulina flakes or pellets, mbuna pellets with a low
+      protein content and blanched vegetables such as spinach, peas or cucumber. Small portions
+      several times a day suit a grazer better than one large meal. Brine shrimp or mysis can be
+      offered now and then, but protein-rich food such as bloodworms or beef heart should be
+      avoided, because it can cause Malawi bloat.
+    sources:
+      - *ribbink
+      - *fishbase
+      - *fishkeeper
+      - *sf
+  breeding:
+    text: >-
+      Breeding is not difficult in a harem. The male cleans a flat stone near his cave and
+      displays in full colour to lure a ripe female. The pair circles head to tail; the female
+      lays a few eggs at a time and takes them into her mouth at once. While she nips at the egg
+      spots on the male's anal fin, she takes in sperm and the eggs are fertilised. A brood holds
+      about 10 to 40 eggs. The female carries them for about three to four weeks without eating
+      and then releases free-swimming young. Move her only with care, as stressed females may
+      spit or swallow the brood. The fry take crushed flakes and fine live food at once.
+    sources:
+      - *sf
+      - *fishkeeper
+      - *pauers2018
+  sexing:
+    text: >-
+      Adult males are easy to tell apart in most forms: they are blue, often with faint dark
+      bars, and carry a red, orange or yellow dorsal fin and clear egg spots on the anal fin.
+      Females are usually brown, olive or speckled, and orange blotched females occur in several
+      populations; their egg spots are faint or absent. Males also grow a little larger. Because
+      the colours vary so much between localities, and some females or rare males show blotched
+      patterns, sexing young fish is uncertain until they are nearly adult.
+    sources:
+      - *sf
+      - *fishprofiles
+      - *tfwf
+  compatibility:
+    text: >-
+      Combine it only with other robust mbuna of similar size whose males look different, for
+      example Pseudotropheus crabro, Iodotropheus sprengerae or, in a large and densely decorated
+      tank, yellow Labidochromis caeruleus. Peaceful peacocks and open-water haps suffer from its
+      attacks and need more protein in their food. Do not keep it with other Labeotropheus, because
+      L. trewavasae and L. fuelleborni cross in the aquarium, the colour forms of the genus may
+      hybridise and the hybrids cannot be told apart. Blue mbuna such as Maylandia males are
+      treated as rivals. Large predators eat young mbuna and need meaty food that does not suit
+      this grazer.
+    sources:
+      - *sf
+      - *pauers2018
+      - *pauers2023
+      - *fishkeeper
+  problems:
+    text: >-
+      The most common mistake is a diet too rich in protein: frozen bloodworms, beef heart or
+      fish-based pellets can lead to Malawi bloat, which often ends fatally. A second risk is the
+      wrong group: a single female or two males in a small tank leads to constant chasing,
+      injured fins and exhausted females. Sharp or unstable rock can injure the lips or collapse
+      when the fish dig. Mixing several Labeotropheus forms leads to hybrids. Poor water quality
+      with rising nitrate weakens these fish quickly, so changes of a large share of the water
+      every week matter. Stressed fish lose colour and stop eating; check the group structure and
+      the water first.
+    sources:
+      - *fishkeeper
+      - *sf
+      - *gensou
+
+provenance:
+  runs:
+    - {role: generator, model: claude-opus-5-5, date: 2026-10-13}
+    - {role: checker, model: claude-opus-5-5, date: 2026-10-13}
+    - {role: checker, model: claude-sonnet-5-5, date: 2026-10-13}
+    - {role: checker, model: claude-opus-5-5, date: 2026-10-13}
+    - {role: checker, model: claude-sonnet-5-5, date: 2026-10-13}
+    - {role: adjudicator, model: claude-opus-5-5, date: 2026-10-13}
+  disagreements:
+    - field: features.origin.value.waterbody
+      proposals:
+        - {by: generator, value: Lake Malawi}
+        - {by: checker-a, value: Lake Malawi}
+        - {by: checker-b, value: lake-malawi}
+      decision: Lake Malawi
+      rationale: Both spellings name the same entry of the water body table; the name form is used, as in the other proposals.
+    - field: features.origin.value.localities
+      proposals:
+        - {by: generator, value: [Nkhata Bay (type locality), Chidunga Rocks, Thumbi West Island, Mumbo Island]}
+        - {by: checker-a, value: [Nkhata Bay, Thumbi West Island, Mumbo Island, Masinje Rocks, Boadzulu Island]}
+        - {by: checker-b, value: null}
+      decision: [Nkhata Bay (type locality), Chidunga Rocks, Thumbi West Island, Mumbo Island, Masinje Rocks, Boadzulu Island]
+      rationale: >-
+        The proposals complement each other. Nkhata Bay rests on the Catalog of Fishes, Chidunga
+        Rocks on the laboratory stocks of Pauers and co-workers, the southern islands and Masinje
+        Rocks on Seriously Fish. Localities of Seriously Fish that are type localities of species
+        described since 2016 (Maleri, Namalenje, Chitande, Chirwa, Mphanga Rocks) are left out,
+        because under the Catalog of Fishes their slender Labeotropheus belong to other species.
+    - field: features.temperatureC.tolerance
+      proposals:
+        - {by: generator, value: {min: 21, max: 29}}
+        - {by: checker-a, value: {min: 21, max: 29}}
+        - {by: checker-b, value: {min: 22, max: 28}}
+      decision: {min: 21, max: 29}
+      rationale: Decided by the vote count (unanimous, 3 of 3 within 1 C, confidence medium); the median of the agreeing bounds is 21 to 29 C, which equals the natural lake range that the tolerance must contain.
+    - field: features.khDkh.tolerance
+      proposals:
+        - {by: generator, value: {min: 5, max: 10}}
+        - {by: checker-a, value: {min: 5, max: 12}}
+        - {by: checker-b, value: {min: 4, max: 15}}
+        - {by: tiebreaker-1, value: {min: 5, max: 20}}
+        - {by: tiebreaker-2, value: {min: 5, max: 10}}
+      decision: {min: 5, max: 10}
+      rationale: >-
+        Decided by the vote count as the conservative value (3 of 5 agree, no qualified majority,
+        confidence low): the intersection of all five ranges. No species source of kind literature
+        or database states a carbonate hardness; the upper bounds above 10 dKH rest on general
+        mbuna pages or on total hardness used as a proxy.
+    - field: features.diet.value.foods
+      proposals:
+        - {by: generator, value: [spirulina flakes and pellets, vegetable-based mbuna pellets, "blanched spinach, peas, cucumber", mysis or brine shrimp as a rare treat]}
+        - {by: checker-a, value: [spirulina flakes and pellets, blanched spinach and other vegetables, occasional small frozen crustaceans]}
+        - {by: checker-b, value: [spirulina flakes, algae wafers, blanched greens, occasional frozen foods]}
+      decision: [spirulina flakes and pellets, vegetable-based mbuna pellets, "blanched spinach, peas, cucumber", mysis or brine shrimp as a rare treat]
+      rationale: >-
+        The diet is decided by the vote count (unanimous on type aufwuchs and bloatSensitive true),
+        which takes the food list of the top candidate. It names the plant-based staples that all
+        proposals share and limits animal food to rare treats, as Fishkeeper advises.
+    - field: features.maxSizeCm.value
+      proposals:
+        - {by: generator, value: {male: 12, female: 11}}
+        - {by: checker-a, value: {male: 13, female: 11}}
+        - {by: checker-b, value: {male: 13, female: 11}}
+      decision: {male: 13, female: 11}
+      rationale: >-
+        The feature is the typical maximum of well-kept aquarium fish. The generator's 12 cm is
+        close to the mean of adult laboratory males (11.4 to 12.0 cm total length, Pauers et al.
+        2023); the larger males of such a stock, the 11.3 cm standard length of Seriously Fish
+        (about 13.5 to 14 cm total length) and the 14 cm of Guidarium support 13 cm. All proposals
+        agree on 11 cm for females.
+    - field: features.aggressionHeterospecific.value
+      proposals:
+        - {by: generator, value: 3}
+        - {by: checker-a, value: 2}
+        - {by: checker-b, value: 2}
+      decision: 3
+      rationale: >-
+        All three runs read the same facts: chasing beyond the spawning site, unsuitable for
+        peaceful peacocks and utaka, suitable only with other robust mbuna. The rubric defines
+        level 3 as aggression that requires tankmates of comparable size and robustness, which
+        matches these statements; checker-a named them the upper edge of level 2 and checker-b
+        called level 3 possible. Since a too low level would let the compatibility check accept
+        peaceful tankmates, the higher level is kept.
+    - field: features.territory.value
+      proposals:
+        - {by: generator, value: {size: small, breedingOnly: false}}
+        - {by: checker-a, value: {size: small, breedingOnly: false}}
+        - {by: checker-b, value: {size: large, breedingOnly: false}}
+      decision: {size: small, breedingOnly: false}
+      rationale: >-
+        Fishkeeper and Seriously Fish describe a spawning site on a flat stone near a cave, which
+        fits the small class; checker-b gave large as an estimate with confidence low and no source
+        for a territory of a third of the tank.
+    - field: features.coloration.value
+      proposals:
+        - {by: generator, value: {baseColors: [blue, red], pattern: bars}}
+        - {by: checker-a, value: {baseColors: [blue, red], pattern: bars}}
+        - {by: checker-b, value: {baseColors: [blue, orange], pattern: mixed}}
+      decision: {baseColors: [blue, red], pattern: bars}
+      rationale: >-
+        The common red top trade forms have blue males with faint bars and a red to orange dorsal
+        fin, as two runs and TropicalFreshwaterFish describe. Checker-b's orange and mixed pattern
+        reflect the variability between populations and the orange blotch females, which the
+        confidence low and the rationale cover.
+    - field: features.minTank.value
+      proposals:
+        - {by: generator, value: {volumeL: 240, lengthCm: 120, depthCm: 45}}
+        - {by: checker-a, value: {volumeL: 240, lengthCm: 120, depthCm: 45}}
+        - {by: checker-b, value: {volumeL: 250, lengthCm: 120, depthCm: 50}}
+      decision: {volumeL: 240, lengthCm: 120, depthCm: 45}
+      rationale: >-
+        All proposals agree on 120 cm length. The sources range from 154 L (Seriously Fish base)
+        through 200 L (Guidarium) to 250 L (a hobby care guide); a standard 120 by 45 cm tank of
+        about 240 L meets them, and no source asks for 50 cm depth.
