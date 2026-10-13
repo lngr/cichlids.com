@@ -1,5 +1,6 @@
 using Cichlids.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
@@ -45,6 +46,11 @@ public sealed class ApiFixture : IAsyncLifetime
 
         _factory = new WebApplicationFactory<Program>().WithWebHostBuilder(builder =>
         {
+            // The allowlist is read while the application is being built, so it is set as a host
+            // setting. It overrides the Development allowlist index by index, so every index of
+            // that list is set here.
+            builder.UseSetting("Webhooks:AllowedTargetHosts:0", "example.test");
+            builder.UseSetting("Webhooks:AllowedTargetHosts:1", "localhost");
             builder.ConfigureAppConfiguration((_, configBuilder) =>
                 configBuilder.AddInMemoryCollection(new Dictionary<string, string?>
                 {
@@ -60,10 +66,6 @@ public sealed class ApiFixture : IAsyncLifetime
                     // check an outbox row's dispatched_at right after a write; tests that exercise
                     // dispatch drive it directly instead.
                     ["OutboxDispatcher:Enabled"] = "false",
-                    // In-memory configuration overrides the Development allowlist index by index,
-                    // so every index of that list is set here.
-                    ["Webhooks:AllowedTargetHosts:0"] = "example.test",
-                    ["Webhooks:AllowedTargetHosts:1"] = "localhost",
                 }));
 
             // Tokens are validated against the test signing key directly instead of an identity

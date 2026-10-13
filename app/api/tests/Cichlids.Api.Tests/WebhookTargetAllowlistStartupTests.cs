@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.Configuration;
 
@@ -17,6 +18,11 @@ public sealed class WebhookTargetAllowlistStartupTests
     public void Host_fails_to_start_with_an_allowlist_entry_that_is_not_a_bare_host(string entry)
     {
         using var factory = new WebApplicationFactory<Program>().WithWebHostBuilder(builder =>
+        {
+            // The allowlist is read while the application is being built, before the configuration
+            // added through ConfigureAppConfiguration is available, so it is set as a host setting.
+            builder.UseSetting("Webhooks:AllowedTargetHosts:0", "example.test");
+            builder.UseSetting("Webhooks:AllowedTargetHosts:1", entry);
             builder.ConfigureAppConfiguration((_, configBuilder) =>
                 configBuilder.AddInMemoryCollection(new Dictionary<string, string?>
                 {
@@ -24,9 +30,8 @@ public sealed class WebhookTargetAllowlistStartupTests
                     ["ObjectStorage:ServiceUrl"] = "http://objects.test",
                     ["ObjectStorage:PublicBaseUrl"] = "http://objects.test/cichlids-media",
                     ["OutboxDispatcher:Enabled"] = "false",
-                    ["Webhooks:AllowedTargetHosts:0"] = "example.test",
-                    ["Webhooks:AllowedTargetHosts:1"] = entry,
-                })));
+                }));
+        });
 
         var exception = Assert.ThrowsAny<Exception>(() => factory.Server);
 

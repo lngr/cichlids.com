@@ -44,7 +44,10 @@ builder.Services.ConfigureHttpJsonOptions(options =>
 
 builder.Services.AddCichlidsDbContext(builder.Configuration);
 builder.Services.AddS3ObjectStore(builder.Configuration);
-builder.Services.AddOutboxDispatcher(builder.Configuration);
+// Resolved before the host is built so an invalid webhook target allowlist fails startup with
+// the validation message.
+var webhookTargets = WebhookTargetOptions.Resolve(builder.Configuration);
+builder.Services.AddOutboxDispatcher(builder.Configuration, webhookTargets);
 builder.Services.AddHostedService<OutboxDispatcherHostedService>();
 
 // Resolved before the authentication handler is registered so a deployment outside Development

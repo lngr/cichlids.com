@@ -3,6 +3,7 @@ using Cichlids.Api.Features.Webhooks;
 using Cichlids.Domain.Entities;
 using Cichlids.Infrastructure.Outbox;
 using Cichlids.Infrastructure.Persistence;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -42,6 +43,11 @@ public class OutboxDispatcherHostedServiceTests(OutboxDispatchFixture fixture) :
         }
 
         await using var factory = new WebApplicationFactory<Program>().WithWebHostBuilder(builder =>
+        {
+            // The allowlist is read while the application is being built, so it is set as a host
+            // setting.
+            builder.UseSetting("Webhooks:AllowedTargetHosts:0", "127.0.0.1");
+            builder.UseSetting("Webhooks:AllowedTargetHosts:1", "localhost");
             builder.ConfigureAppConfiguration((_, configBuilder) =>
                 configBuilder.AddInMemoryCollection(new Dictionary<string, string?>
                 {
@@ -50,9 +56,8 @@ public class OutboxDispatcherHostedServiceTests(OutboxDispatchFixture fixture) :
                     ["ObjectStorage:PublicBaseUrl"] = "http://objects.test/cichlids-media",
                     ["OutboxDispatcher:Enabled"] = "true",
                     ["OutboxDispatcher:PollInterval"] = "00:00:00.200",
-                    ["Webhooks:AllowedTargetHosts:0"] = "127.0.0.1",
-                    ["Webhooks:AllowedTargetHosts:1"] = "localhost",
-                })));
+                }));
+        });
         using var client = factory.CreateClient();
         var lifetime = factory.Services.GetRequiredService<IHostApplicationLifetime>();
 
@@ -100,7 +105,7 @@ public class OutboxDispatcherHostedServiceTests(OutboxDispatchFixture fixture) :
         var services = new ServiceCollection();
         services.AddLogging();
         services.AddCichlidsDbContext(configuration);
-        services.AddOutboxDispatcher(configuration);
+        services.AddOutboxDispatcher(configuration, WebhookTargetOptions.Resolve(configuration));
         await using var provider = services.BuildServiceProvider();
 
         var logger = new FakeLogger<OutboxDispatcherHostedService>();

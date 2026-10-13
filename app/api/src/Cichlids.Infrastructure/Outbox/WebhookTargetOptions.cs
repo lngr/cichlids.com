@@ -1,3 +1,6 @@
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
+
 namespace Cichlids.Infrastructure.Outbox;
 
 /// <summary>
@@ -14,4 +17,22 @@ public class WebhookTargetOptions
     /// a webhook URL. Entries carry no scheme, port, path or wildcard.
     /// </summary>
     public List<string> AllowedTargetHosts { get; set; } = [];
+
+    /// <summary>
+    /// Binds the "Webhooks" configuration section and validates it. A missing section yields an
+    /// empty allowlist. An entry that is not a bare host name or IP address raises an
+    /// OptionsValidationException naming the invalid entries.
+    /// </summary>
+    public static WebhookTargetOptions Resolve(IConfiguration configuration)
+    {
+        var options = configuration.GetSection(SectionName).Get<WebhookTargetOptions>() ?? new WebhookTargetOptions();
+
+        var result = new WebhookTargetOptionsValidator().Validate(Options.DefaultName, options);
+        if (result.Failed)
+        {
+            throw new OptionsValidationException(Options.DefaultName, typeof(WebhookTargetOptions), result.Failures);
+        }
+
+        return options;
+    }
 }
