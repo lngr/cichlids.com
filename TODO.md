@@ -96,15 +96,15 @@ System. Details in `PROJECT-STATUS.md`, Abschnitt 9.
 
 ## 3. Artenprofile
 
-Stand: 37 Profile in `data/species/profiles/`, alle validiert. Verfahren in
+Stand: 43 Profile in `data/species/profiles/`, alle validiert. Verfahren in
 `tools/species-data/README.md`. Je Art stimmen Generator, Prüfer A (Opus), Prüfer B (Sonnet) und
 Prüfer C (Codex, gpt-6.1-sol) ab.
 
 ### 3.1 Weitere Profile
 
-- [ ] Nächste Arten nach Fotoanzahl: 469 Pseudotropheus demasoni, 618 Amphilophus labiatus,
-  366 Melanochromis auratus, 489 Pseudotropheus socolofi (in Arbeit), 294 Dimidiochromis
-  compressiceps, 480 Pseudotropheus lombardoi, 707 Cichlasoma salvini, 223 Aulonocara eureka;
+- [ ] Nächste Arten nach Fotoanzahl: 707 Cichlasoma salvini, 754 Hypsophrys nicaraguense,
+  223 Aulonocara eureka (in Arbeit), 565 Hemichromis lifalili, 775 Pterophyllum scalare,
+  83 Neolamprologus brichardi, 758 Microgeophagus ramirezi, 321 Labidochromis sp. 'Hongi';
   danach weiter nach Fotoanzahl, Synonym-Paare gemeinsam (etwa 739 Herichthys cyanoguttatus mit
   685 Cichlasoma cyanoguttatum)
 - [ ] Die harten Merkmale aller Arten sind vor Slice 4 gesichert
@@ -119,7 +119,9 @@ Zu jeder Frage ist eine vorläufige Umsetzung in Gebrauch; sie wird bestätigt o
 - [ ] **Natürliche Bereiche zu eng:** Ohne Mehrheit nimmt `tally.mjs` die Schnittmenge der
   Stimmen. Bei natürlichen Wasserwerten entstehen so Bereiche, die enger sind als die Quellen
   (Maylandia zebra GH 9-10 bei Quellen 3-14; Parachromis managuensis KH 4-10 bei Quellen etwa
-  3,5-16; Flowerhorn KH 4-8 bei etwa 4-12; Mesoheros festae 23-29 °C bei etwa 20-30 °C).
+  3,5-16; Flowerhorn KH 4-8 bei etwa 4-12; Mesoheros festae 23-29 °C bei etwa 20-30 °C;
+  Amphilophus labiatus KH 4-10, wobei die Rundung der Schnittmenge 3,5 auf 4 die gemessenen
+  3,4-3,6 dKH des Nicaraguasees ausschließt).
   Vorschlag: bei natürlichen Bereichen ohne Mehrheit den Median-Bereich nehmen, die Toleranzen
   bleiben streng. Umbau: `conservativeValue` in `tally.mjs`, betroffene Profile neu zählen.
 - [ ] **Diskus neben Malawis ohne harte Warnung:** Die Toleranzen berühren sich am Rand (pH
@@ -132,8 +134,9 @@ Zu jeder Frage ist eine vorläufige Umsetzung in Gebrauch; sie wird bestätigt o
   Companion als eine der zwei Quellen zählt oder nur zusätzlich. Vorschlag: feste Liste der
   Quellenarten in `tools/species-data/prompts/common.md`, Profile danach neu prüfen. Die
   Schiedsrichter stufen Händlerseiten (LiveAquaria, Aquarium Glaser, Guidarium) als website
-  ein, Fishkeeper bei Pseudotropheus sp. 'acei' als website und bei Maylandia greshakei
-  als database.
+  ein, Fishkeeper wechselnd (database bei Maylandia greshakei und Chindongo demasoni, website
+  bei Pseudotropheus sp. 'acei', Chindongo socolofi und Maylandia lombardoi), den Cichlid Room
+  Companion bei Amphilophus labiatus als website.
 - [ ] **Heros severus und der Handels-Severum:** Das Profil beschreibt H. severus im engen Sinn
   (Schwarzwasser, pH etwa 4-6). Legacy 749 und die Archivfotos zeigen fast sicher den
   Handels-Severum, meist H. efasciatus. Optionen: zusätzliches Profil H. efasciatus mit
@@ -166,6 +169,13 @@ Zu jeder Frage ist eine vorläufige Umsetzung in Gebrauch; sie wird bestätigt o
   haben (Warnung statt Fehler). Bestätigen.
 - [ ] **Verhalten bei leerem OpenAlex-Budget:** laufende Arten mit Europe PMC fertigstellen, keine
   neuen beginnen. Bestätigen.
+- [ ] **Tie-Breaker mit Sonnet:** Die Sonnet-Tie-Breaker arbeiten knapp (etwa 15
+  Werkzeugaufrufe), übernehmen Werte teils aus Suchzusammenfassungen und liefern vereinzelt
+  falsche Formen (Ernährung als bloßer Text). Vorschlag: den zweiten Tie-Breaker mit Codex
+  besetzen. Bestätigen oder ändern.
+- [ ] **Breite Prozessabbrüche:** Ein Generator beendete einen hängenden eigenen Befehl mit
+  `pkill -x cat -u alex`, was alle `cat`-Prozesse des Users trifft, auch die der parallelen
+  Session. Die Aufträge untersagen breite `pkill`-Aufrufe; klären, ob das in `common.md` gehört.
 - [ ] **User-Agent:** Einzelne Agenten haben Seiten mit Browser-User-Agent geladen, gegen die
   Regel. Klären, ob ein Standard-User-Agent ohne Sperre erlaubt sein soll.
 
@@ -174,6 +184,12 @@ Zu jeder Frage ist eine vorläufige Umsetzung in Gebrauch; sie wird bestätigt o
 - [ ] Kleines PDF-zu-Text-Werkzeug ins Repo, weil `pdftotext` fehlt und Agenten sich sonst eigene
   Hilfsskripte bauen
 - [ ] Unabhängigkeit der Prüfer technisch absichern: Prüfer lesen fertige Profile nicht
+- [ ] `fetch-oa.mjs` nimmt nur DOIs. Frei zugängliche Arbeiten ohne DOI (Cole 1976 zur Limnologie
+  der Nicaragua-Seen, Haberyan et al. 2003) laden Agenten deshalb mit curl; einen URL-Modus mit
+  denselben Zugangsregeln ergänzen
+- [ ] Startskript für Codex als Prüfer C ins Repo übernehmen (Auftrag nach der Prüfer-Vorlage,
+  Wiederholung bei "Selected model is at capacity", Ausweichen auf `gpt-6-sol`). Codex läuft im
+  Container mit `danger-full-access`, die Regeln stehen nur im Auftrag
 
 ### 3.4 Taxonomie-Zuordnung
 
