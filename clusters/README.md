@@ -35,15 +35,15 @@ this topology defines no image build or promotion automation.
 
 ## Cluster add-ons and TLS
 
-Deploy cluster-wide services through the fixed `ingress-nginx` and
+Deploy cluster-wide services through the fixed `traefik` and
 `cert-manager` Applications in `clusters/cichlids/apps/addons.yaml`. Each uses
 its service's `overlays/cluster` at `main`. The environment generators discover
 only `staging`, `prod` and `preview` overlays, so each add-on has one owner.
 
 Use the `cichlids-addons` AppProject for these Applications. Its destinations
-are `ingress-nginx`, `cert-manager` and `kube-system` (cert-manager leader
-election RBAC). Its explicit resource allowlists permit the upstream RBAC,
-webhooks, IngressClass, cert-manager CRDs and ClusterIssuers. Workload
+are `cert-manager` and `kube-system` (Traefik configuration and cert-manager
+leader election RBAC). Its explicit resource allowlists permit the upstream RBAC,
+webhooks, cert-manager CRDs, ClusterIssuers and namespaced HelmChartConfig. Workload
 Applications use the separate `cichlids` project.
 
 The add-on Applications use server-side apply for the large CRDs, self-healing
@@ -53,19 +53,28 @@ explicit operator action. Webhook CA bundles are owned by certificate
 controllers; Argo CD ignores those fields and respects the ignore rules during
 sync.
 
-The ingress controller uses one replica with `hostPort` 80 and 443. k3s's CNI
-maps these node ports to the pod; its Service is ClusterIP. The controller
-publishes the node's internal address in Ingress status. Public DNS uses the
-platform node's IPv4 address. The `Recreate` strategy releases host ports before
-starting a replacement; controller updates interrupt ingress on the single
-node. Keep TCP 80 and 443 reachable from the public internet for HTTP-01 and
-HTTPS. The admission certificate creation job runs as a Sync hook before the
-controller, and the webhook CA patch job runs after it. Hook deletion policies
-allow repeat synchronization and upgrades.
+k3s owns the bundled Traefik chart, its CRDs and ServiceLB. The `traefik`
+Application owns only `apps/traefik/overlays/cluster/config.yaml`, a
+`helm.cattle.io/v1` HelmChartConfig named `traefik` in `kube-system`. The k3s
+Helm controller applies these values to the matching bundled HelmChart. This
+configuration belongs in Git because Argo CD bootstrap uses the local Kubernetes
+API and requires no ingress. Traefik's version follows the pinned k3s release.
 
-Upstream pins are ingress-nginx **v1.15.1** and cert-manager **v1.21.2**.
-The upstream copies live in each `base/upstream.yaml`; their release URLs and
-SHA-256 hashes are in `tools/addon-sources.json`. Reproduce them with:
+The chart runs one replica with a LoadBalancer Service. k3s ServiceLB exposes
+TCP 80 and 443 on the single node. Public DNS uses the platform node's IPv4
+address. Controller updates can interrupt ingress on this node. Keep both
+ports reachable from the public internet for HTTP-01 and HTTPS.
+
+The chart's file provider defines an HTTP router on `web` with the rule
+``!PathPrefix(`/.well-known/acme-challenge/`)`` and priority 2147483646.
+It applies a permanent HTTPS redirect for all hosts. The challenge path is
+excluded from this router, so cert-manager's solver Ingress answers directly
+over HTTP. Entry-point redirects are absent. cert-manager owns certificate
+issuance and TLS Secrets. Traefik reads the Secrets from the workload Ingresses.
+
+cert-manager is pinned at **v1.21.2**. Its upstream copy lives in
+`apps/cert-manager/base/upstream.yaml`; the release URL and SHA-256 hash are
+in `tools/addon-sources.json`. Reproduce it with:
 
 ```sh
 python3 tools/update-addon-manifests.py
@@ -77,13 +86,8 @@ For upgrades, select an exact upstream release and record its URL and verified
 SHA-256 hash in `tools/addon-sources.json`. Run the commands above and review
 the manifest and schema changes. CI validates the local copies offline.
 
-[ingress-nginx is archived](https://github.com/kubernetes/ingress-nginx/releases/tag/controller-v1.15.1)
-and unsupported. Review this maintenance risk before
-public deployment. Its compatibility with the configured k3s 1.36 cluster
-requires a runtime check by the operator.
-
 The `letsencrypt-staging` and `letsencrypt-production` ClusterIssuers use
-HTTP-01 with `ingressClassName: nginx`. The solver Service is explicitly
+HTTP-01 with `ingressClassName: traefik`. The solver Service is explicitly
 ClusterIP so it fits the preview quota. Solver pods request 10m CPU and 64Mi
 memory, with limits of 100m and 128Mi. ACME account keys are generated in
 `cert-manager` and use separate Secret names for each issuer.
@@ -124,12 +128,21 @@ Delegate the zone to its assigned nameservers and verify public resolution
 before requesting certificates. A wildcard DNS record routes preview names;
 each preview receives a certificate for its individual hostname.
 
+One ingress controller owns node ports 80 and 443. Inspect existing controller
+Applications, workloads and host-port bindings before enabling ServiceLB.
+Add-on Applications have deliberate pruning and no cascade finalizer, so deleting
+an Application preserves its managed resources. The operator reviews and deletes
+external controller resources and releases their port bindings before rollout.
+
 Publish the reviewed manifests to `main`. From an operator workstation with
 cluster access, inspect Argo CD sync and
 health for both add-ons and the placeholder Applications. Then run:
 
 ```sh
-kubectl -n ingress-nginx rollout status deployment/ingress-nginx-controller
+kubectl -n kube-system get helmchart/traefik helmchartconfig/traefik
+kubectl -n kube-system rollout status deployment/traefik
+kubectl -n kube-system get service/traefik
+kubectl -n kube-system get pods -l svccontroller.k3s.cattle.io/svcname=traefik
 kubectl -n cert-manager rollout status deployment/cert-manager
 kubectl -n cert-manager rollout status deployment/cert-manager-webhook
 kubectl -n cert-manager rollout status deployment/cert-manager-cainjector
@@ -139,7 +152,15 @@ kubectl -n cichlids-staging wait --for=condition=Ready certificate/placeholder-t
 kubectl -n cichlids-prod wait --for=condition=Ready certificate/placeholder-tls --timeout=300s
 curl --fail --show-error https://staging.cichlids.com/
 curl --fail --show-error https://cichlids.com/
+curl --head http://staging.cichlids.com/
+curl --head http://cichlids.com/
 ```
+
+HTTP responses for ordinary paths have a permanent redirect to the same host
+over HTTPS. During issuance, use the active Challenge's token to request
+`http://<host>/.well-known/acme-challenge/<token>` and verify a 200 response
+with its key authorization and no HTTPS redirect. Inspect ServiceLB pod readiness
+and node port bindings if the Traefik Service is unreachable.
 
 For a ready same-repository PR with the `preview` label, wait for
 `preview-active` admission and the `placeholder-pr-<number>` Application. The
@@ -283,7 +304,9 @@ Kubeconform runs in strict mode with local schemas and rejects missing schemas.
 `tools/manifest-schemas/sources.json` records immutable upstream commits and
 source hashes. Kubernetes schemas use v1.36.0, matching the cluster's minor
 version. Argo CD schemas derive from the v3.5.5 CRDs. Certificate and ClusterIssuer
-schemas derive from the checksum-pinned cert-manager v1.21.2 CRDs. The CRD
+schemas derive from the checksum-pinned cert-manager v1.21.2 CRDs. The
+HelmChartConfig schema derives from helm-controller v0.17.9 at immutable commit
+`71be4991f2652515a2bb7f7464399f6733297964`, matching the pinned k3s dependency. The CRD
 resource schema derives from Kubernetes v1.36.0 OpenAPI at an immutable commit. The conversion extracts
 `openAPIV3Schema`, inserts Kubernetes metadata and disallows unknown properties
 on typed objects. The checked-in output makes CI schema validation offline.

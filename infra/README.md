@@ -190,6 +190,22 @@ token. Steps in order, each with its expected result.
 
    **Expected result:** all three checks pass.
 
+The k3s bootstrap writes `/etc/rancher/k3s/config.yaml` with mode 0600 and
+`write-kubeconfig-mode: "0600"`. It compares the desired file with the installed
+file. A config difference, version mismatch or service flag disabling Traefik
+runs the pinned installer with `INSTALL_K3S_EXEC=server` and
+`INSTALL_K3S_SKIP_START=true`, then restarts k3s. This reconciles service arguments
+and applies config changes even at the pinned version. Matching config and
+version require no restart. OpenTofu trigger hashes cover every uploaded script,
+the root Application and all bootstrap Argo CD YAML files.
+
+k3s runs bundled Traefik and ServiceLB. Argo CD owns the Traefik
+`HelmChartConfig` in `apps/traefik/overlays/cluster/config.yaml`; the k3s Helm
+controller applies its values to the bundled chart. Git reconciliation configures
+the ingress after Argo CD bootstrap. The bootstrap uses the local Kubernetes API
+and requires no ingress endpoint. See [cluster operations](../clusters/README.md)
+for port ownership, TLS and rollout checks.
+
 ### SOPS age key
 
 1. Generate the operator key outside the repository:
@@ -303,9 +319,9 @@ stays on Hetzner; R2 is the serving cache, ADR-0009). Wired in with the serving 
 
 ### GitHub Actions secrets
 
-For the CI-driven apply, preview environments and the DNS-01 solver:
+For the CI-driven infrastructure apply and media operations:
 
-- Cloud token (step 3): previews and cert-manager DNS-01 for `*.dev`. The app tier apply does not use it.
+- Cloud token (step 3): platform provisioning and DNS records. The cluster holds no Hetzner Cloud token; cert-manager issues HTTP-01 certificates per host through Traefik.
 - cichlids object-storage S3 key (step 4): media operations and the platform/app state backend.
 - State-encryption passphrase (step 7): so CI can read/write the platform state.
 - App tier: `CICHLIDS_APP_SSH_PRIVATE_KEY` and `CICHLIDS_APP_STATE_PASSPHRASE` as secrets,
