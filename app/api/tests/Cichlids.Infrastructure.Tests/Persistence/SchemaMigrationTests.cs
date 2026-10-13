@@ -136,6 +136,39 @@ public sealed class SchemaMigrationTests
     }
 
     [Fact]
+    public async Task Unique_rating_migration_keeps_the_newest_rating_per_member_and_target_and_recomputes_aggregates()
+    {
+        await using var database = await _fixture.CreateEmptyDatabaseAsync();
+        await using var context = database.CreateContext();
+        var migrations = context.Database.GetMigrations().ToList();
+        var target = migrations.FindIndex(m => m.EndsWith("_UniqueRatingPerMemberAndTarget", StringComparison.Ordinal));
+        Assert.True(target > 0);
+
+        var migrator = context.GetService<IMigrator>();
+        await migrator.MigrateAsync(migrations[target - 1]);
+
+        await context.Database.ExecuteSqlAsync(
+            $$"""
+            INSERT INTO profile (id, username, kind, created_at) OVERRIDING SYSTEM VALUE
+            VALUES (1, 'owner', 'member', now()), (2, 'rater', 'member', now());
+            INSERT INTO post (id, author_profile_id, kind, topic, state, created_at, rating_count, rating_average) OVERRIDING SYSTEM VALUE
+            VALUES (10, 1, 'single', 'cichlids', 'published', now(), 3, 3);
+            INSERT INTO rating (post_id, profile_id, stars, created_at)
+            VALUES (10, 2, 1, now() - interval '2 days'), (10, 2, 5, now() - interval '1 day'), (10, NULL, 3, now());
+            """);
+
+        await migrator.MigrateAsync();
+
+        var rows = await context.Database.SqlQueryRaw<int>(
+            "SELECT stars AS \"Value\" FROM rating WHERE profile_id = 2 AND post_id = 10").ToListAsync();
+        Assert.Equal([5], rows);
+        var count = await context.Database.SqlQueryRaw<int>("SELECT rating_count AS \"Value\" FROM post WHERE id = 10").SingleAsync();
+        Assert.Equal(2, count);
+        var average = await context.Database.SqlQueryRaw<double>("SELECT rating_average AS \"Value\" FROM post WHERE id = 10").SingleAsync();
+        Assert.Equal(4, average);
+    }
+
+    [Fact]
     public async Task Temporary_database_is_dropped_when_disposed()
     {
         string name;

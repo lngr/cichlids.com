@@ -15,6 +15,16 @@ public class RatingConfiguration : IEntityTypeConfiguration<Rating>
 
         builder.HasIndex(x => x.LegacyCommentId).IsUnique();
 
+        // A member has one rating per target. Anonymous ratings have no profile and stay unconstrained.
+        builder.HasIndex(x => new { x.ProfileId, x.PostId })
+            .IsUnique()
+            .HasDatabaseName("ux_rating_profile_post")
+            .HasFilter("profile_id IS NOT NULL AND post_id IS NOT NULL");
+        builder.HasIndex(x => new { x.ProfileId, x.TankId })
+            .IsUnique()
+            .HasDatabaseName("ux_rating_profile_tank")
+            .HasFilter("profile_id IS NOT NULL AND tank_id IS NOT NULL");
+
         builder.HasOne<Post>()
             .WithMany()
             .HasForeignKey(x => x.PostId)

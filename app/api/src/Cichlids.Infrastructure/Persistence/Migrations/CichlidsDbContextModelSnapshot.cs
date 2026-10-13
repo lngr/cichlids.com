@@ -1076,11 +1076,18 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                     b.HasIndex("PostId")
                         .HasDatabaseName("ix_rating_post_id");
 
-                    b.HasIndex("ProfileId")
-                        .HasDatabaseName("ix_rating_profile_id");
-
                     b.HasIndex("TankId")
                         .HasDatabaseName("ix_rating_tank_id");
+
+                    b.HasIndex("ProfileId", "PostId")
+                        .IsUnique()
+                        .HasDatabaseName("ux_rating_profile_post")
+                        .HasFilter("profile_id IS NOT NULL AND post_id IS NOT NULL");
+
+                    b.HasIndex("ProfileId", "TankId")
+                        .IsUnique()
+                        .HasDatabaseName("ux_rating_profile_tank")
+                        .HasFilter("profile_id IS NOT NULL AND tank_id IS NOT NULL");
 
                     b.ToTable("rating", "public", t =>
                         {
