@@ -19,7 +19,7 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 INFRA = os.path.join(os.path.dirname(HERE), "infra")
 
-TIERS = ("platform", "backup")
+TIERS = ("platform", "backup", "app")
 # Variable names across the tiers whose defaults are the buckets those tiers manage; the state
 # bucket must differ from each of them (it must not live inside a resource its own state
 # creates, ADR-0016). The backup buckets live in the separate backup project (ADR-0017).
@@ -165,6 +165,8 @@ def self_test():
         ("backend without bucket", no_bucket, 1),
     ]
     errors = []
+    if "app" not in TIERS:
+        errors.append("TIERS does not include the app tier")
     for label, text, want in cases:
         got = len(check_tier("t", text, managed))
         if got != want:
