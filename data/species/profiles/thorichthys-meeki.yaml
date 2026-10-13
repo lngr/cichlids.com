@@ -1,0 +1,1521 @@
+schemaVersion: 1
+id: thorichthys-meeki
+legacyIds: [789]
+status: described
+taxonomy:
+  validName: Thorichthys meeki
+  genus: Thorichthys
+  species: meeki
+  author: Brind, 1918
+  source: &cof
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes, species of the genus Thorichthys"
+    url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Thorichthys
+    accessed: 2026-10-13
+  synonyms:
+    - name: Thorichthys helleri meeki
+      note: Original combination; Brind described the firemouth as a subspecies of T. helleri from near Progreso, Yucatan.
+    - name: Cichlasoma meeki
+      note: Combination used by many authors up to 2004, while Thorichthys was treated as part of Cichlasoma.
+    - name: Cichlasoma hyorhynchum
+      note: Described by Hubbs (1935) from the Rio San Pedro de Martir, Peten, Guatemala; a junior synonym of T. meeki.
+  legacyNames:
+    - Thorichthys meeki
+  note: >-
+    The Catalog of Fishes lists Thorichthys meeki Brind 1918 as valid. Brind named it in
+    Thorichthys, so the author citation carries no parentheses, although the Cichlid Room Companion
+    prints them. Herichthys meeki, a combination found in some hobby databases, has no entry in the
+    catalog's lists of Herichthys or Cichlasoma and is therefore not listed as a synonym.
+names:
+  trade:
+    en: [Firemouth cichlid, Firemouth]
+    de: [Feuermaulbuntbarsch]
+    es-419: [Mojarra boca de fuego, Chonga]
+variants:
+  - name: "Angeles (Rio Mamantel)"
+    kind: locality
+    note: Dark regional form from the Rio Mamantel, sold as the black firemouth; some fish, mostly females, turn almost entirely black and have a yellowish rather than red throat.
+  - name: Bacalar
+    kind: locality
+    note: Population of Laguna Bacalar with an orange to salmon throat and small differences in bone shape; no genetic difference to T. meeki has been found, and its taxonomic identity is regarded as open.
+features:
+  origin:
+    value:
+      continent: Central America
+      region: Atlantic slope of southern Mexico, northern Guatemala and Belize, from the Yucatan Peninsula to the Grijalva-Usumacinta and Belize River drainages
+      waterbody: null
+      localities:
+        - Near Progreso, Yucatan, Mexico (type locality)
+        - Cenotes of the Ring of Cenotes, Yucatan, Mexico
+        - Petenes of the El Palmar reserve and the Petenes Biosphere Reserve, Yucatan and Campeche, Mexico
+        - Karstic pools of the Calakmul Biosphere Reserve, Campeche, Mexico
+        - Laguna Caobas, Quintana Roo, Mexico
+        - Laguna Chile Verde, Quintana Roo, Mexico
+        - Laguna Bacalar, Quintana Roo, Mexico (population of uncertain identity)
+        - Muyil Lagoon, Quintana Roo, Mexico
+        - Lacantun basin, Chiapas, Mexico
+        - Rio San Pedro, Peten, Guatemala
+        - Lake Lachua, Alta Verapaz, Guatemala
+    confidence: high
+    rationale: >-
+      All four runs agree on the native range. The Catalog of Fishes gives the Atlantic slope of
+      Belize, Guatemala and southern Mexico, and FishBase names the Usumacinta and Belize drainages
+      and the area near Progreso. Field surveys and DNA studies record the species in Yucatan cenotes,
+      coastal petenes, karstic pools of Calakmul, the lagoons Caobas, Chile Verde and Muyil, the
+      Lacantun basin, the Rio San Pedro and Lake Lachua. The firemouth of Laguna Bacalar, where Neil
+      (1984) studied wild fish, differs in throat colour and is of uncertain identity. Introduced
+      populations in Colombia, Hawaii, Puerto Rico and Florida are not part of the native range.
+    sources:
+      - *cof
+      - &fishbase
+        kind: database
+        title: "FishBase species summary: Thorichthys meeki"
+        url: https://www.fishbase.se/summary/Thorichthys-meeki.html
+        accessed: 2026-10-13
+      - &sf
+        kind: database
+        title: "Seriously Fish: Thorichthys meeki (Firemouth Cichlid)"
+        url: https://www.seriouslyfish.com/species/thorichthys-meeki/
+        accessed: 2026-10-13
+      - &neil
+        kind: literature
+        title: "Neil, S. J. (1984). Field studies of the behavioral ecology and agonistic behavior of Cichlasoma meeki (Pisces: Cichlidae). Environmental Biology of Fishes 10, 59-68 (abstract only)."
+        url: https://doi.org/10.1007/BF00001662
+        accessed: 2026-10-13
+      - &vegacendejas
+        kind: literature
+        title: "Vega-Cendejas, M. E., Hernández de Santillana, M. and Norris, S. (2013). Habitat characteristics and environmental parameters influencing fish assemblages of karstic pools in southern Mexico. Neotropical Ichthyology 11(4), 859-870."
+        url: https://doi.org/10.1590/S1679-62252013000400014
+        accessed: 2026-10-13
+      - &valtierra
+        kind: literature
+        title: "Valtierra-Vega, M. T. and Schmitter-Soto, J. J. (2000). Hábitos alimentarios de las mojarras (Perciformes: Cichlidae) de la laguna Caobas, Quintana Roo, México. Revista de Biología Tropical 48(2-3), 503-508."
+        url: https://doi.org/10.15517/rbt.v48i2-3.18819
+        accessed: 2026-10-13
+      - &espinosa
+        kind: literature
+        title: "Espinosa-Mendoza, Arceo-Carranza, Chiappa-Carrara et al. (2025). The Effect of the Seasonal Variations on the Structure of the Fish Community in Karstic Wetlands. Wetlands 45(2), 24."
+        url: https://doi.org/10.1007/s13157-025-01909-9
+        accessed: 2026-10-13
+      - &uhnavarrete
+        kind: literature
+        title: "Uh-Navarrete, Valdez-Moreno, Callejas-Jiménez and Vásquez-Yeomans (2023). Discovering the fish fauna of a lagoon from the southeast of the Yucatan Peninsula, Mexico, using DNA barcodes. PeerJ 11, e16285."
+        url: https://doi.org/10.7717/peerj.16285
+        accessed: 2026-10-13
+      - &alter
+        kind: literature
+        title: "Alter, Arroyave et al. (2022). Environmental DNA metabarcoding is a promising method for assaying fish diversity in cenotes of the Yucatán Peninsula, Mexico. Metabarcoding and Metagenomics 6, e89857."
+        url: https://doi.org/10.3897/mbmg.6.89857
+        accessed: 2026-10-13
+      - &siankaan
+        kind: literature
+        title: "DNA Barcodes Applied to a Rapid Baseline Construction in Biodiversity Monitoring for the Conservation of Aquatic Ecosystems in the Sian Ka'an Reserve (Mexico) and Adjacent Areas. Diversity 13(7), 292 (2021), species-by-locality table."
+        url: https://doi.org/10.3390/d13070292
+        accessed: 2026-10-13
+      - &lacantun
+        kind: literature
+        title: "Variation in patterns of fish assemblage and their environmental correlates in a tropical river basin from the Gulf of Mexico slope. Neotropical Ichthyology (2023)."
+        url: https://doi.org/10.1590/1982-0224-2022-0098
+        accessed: 2026-10-13
+      - &quintana
+        kind: literature
+        title: "Quintana (2024). Fish fauna of the Río San Pedro and Río La Pasión, Usumacinta River Basin, Guatemala. Biota Neotropica 24(1), e20231481."
+        url: https://doi.org/10.1590/1676-0611-bn-2023-1481
+        accessed: 2026-10-13
+      - &granados
+        kind: literature
+        title: "Granados-Dieseldorff, Christensen and Kihn-Pineda (2012). Fishes from Lachuá Lake, Upper Usumacinta Basin, Guatemala. Check List 8(1), 095."
+        url: https://doi.org/10.15560/8.1.095
+        accessed: 2026-10-13
+      - &ecosur
+        kind: website
+        title: "ECOSUR Laguna Bacalar working group: research topic fish"
+        url: https://www.ecosur.mx/lagunabacalar/principal/temas-de-investigacion/?tema=peces
+        accessed: 2026-10-13
+  temperatureC:
+    value: {min: 24, max: 30}
+    confidence: medium
+    verification:
+      method: qualified-majority
+      votes: {agree: 4, total: 6}
+    rationale: >-
+      Decided by qualified majority: checker-a, checker-b, tiebreaker-1 and tiebreaker-2 proposed 24
+      to 30 C, the generator 22 to 32 C and checker-c 21 to 30 C. The range rests on field
+      measurements where the species was caught: Laguna Caobas 25.1 to 29.3 C, the petenes with
+      seasonal means of 25.0 to 26.6 C, Laguna Chile Verde about 24 C in late winter and about 29 C in
+      spring, Lacantun basin site means of 23.6 to 29.6 C and Calakmul pool group means of 26.1 to
+      27.9 C. The sources reach wider: single daytime readings of the shallow Calakmul pools span 22
+      to 32 C, cenotes of the Ring of Cenotes reach 32.2 C in the dry season, and the Usumacinta basin
+      survey measured 20.8 to 29.8 C, its minimum in an upland tributary. These extremes are short
+      spells of small or upland waters and are not part of the typical range. FishBase gives 26 to 30
+      C from an aquarium atlas.
+    sources:
+      - *valtierra
+      - *espinosa
+      - *uhnavarrete
+      - *lacantun
+      - *vegacendejas
+      - &soria
+        kind: literature
+        title: "Soria-Reinoso, Alcocer, Sánchez-Carrillo, García-Oliva, Cuevas-Lara, Cortés-Guzmán et al. (2022). The Seasonal Dynamics of Organic and Inorganic Carbon along the Tropical Usumacinta River Basin (Mexico). Water 14(17), 2703."
+        url: https://doi.org/10.3390/w14172703
+        accessed: 2026-10-13
+      - &perezceballos
+        kind: literature
+        title: "Pérez-Ceballos, R., Pacheco-Ávila, J., Euán-Ávila, J. I. and Hernández-Arana, H. (2012). Regionalization based on water chemistry and physicochemical traits in the ring of cenotes, Yucatan, Mexico. Journal of Cave and Karst Studies 74(1), 90-102."
+        url: https://doi.org/10.4311/2011es0222
+        accessed: 2026-10-13
+      - *granados
+      - *fishbase
+    evidence:
+      - source: *valtierra
+        value: {min: 25.1, max: 29.3}
+        note: Bottom water of Laguna Caobas during sampling, dry and rainy season 1995.
+      - source: *espinosa
+        value: {min: 25.0, max: 26.6}
+        note: Seasonal means of four coastal petenes where the species was caught.
+      - source: *uhnavarrete
+        value: {min: 24, max: 29}
+        note: Monthly means of Laguna Chile Verde from February to spring.
+      - source: *lacantun
+        value: {min: 23.6, max: 29.6}
+        note: Site means across the Lacantun basin; 373 firemouths caught.
+      - source: *vegacendejas
+        value: {min: 26.1, max: 27.9}
+        note: Means of the three Calakmul habitat groups, all of which hold the species.
+      - source: *vegacendejas
+        value: {min: 22, max: 32}
+        note: Range of single daytime readings in the Calakmul pools.
+      - source: *perezceballos
+        value: {min: 26, max: 32}
+        note: Cenotes of northern Yucatan, annual mean 27 C and dry-season maximum 32.2 C.
+      - source: *soria
+        value: {min: 20.8, max: 29.8}
+        note: Usumacinta river survey of two seasons; the minimum comes from an upland tributary.
+      - source: *fishbase
+        value: {min: 26, max: 30}
+        note: Aquarium atlas value, not a field measurement.
+    tolerance:
+      value: {min: 20, max: 30}
+      confidence: medium
+      verification:
+        method: qualified-majority
+        votes: {agree: 4, total: 6}
+      rationale: >-
+        Decided by qualified majority: checker-b, checker-c, tiebreaker-1 and tiebreaker-2 proposed 20
+        to 30 C, the generator 21 to 32 C and checker-a 22 to 30 C. Seriously Fish gives the widest
+        husbandry range of 20 to 32 C, Practical Fishkeeping 22 to 30 C with 24 to 27 C as the best
+        band, Fishkeeper 24 to 30 C and FishBase 26 to 30 C. The lower end follows Seriously Fish and
+        the long record of introduced populations in subtropical climates; the upper end stays at 30 C
+        because only Seriously Fish goes higher, and 32 C occurs in the wild only briefly in shallow
+        pools.
+      sources:
+        - *sf
+        - &pfk
+          kind: literature
+          title: "Horvath, G. Caring for Firemouth cichlids. Practical Fishkeeping (online feature)."
+          url: https://www.practicalfishkeeping.co.uk/features/caring-for-firemouth-cichlids/
+          accessed: 2026-10-13
+        - &fishkeeper
+          kind: database
+          title: "Fishkeeper (Maidenhead Aquatics) data bank: Firemouth Cichlid, Thorichthys meeki"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/firemouth-cichlid
+          accessed: 2026-10-13
+        - *fishbase
+        - &tff
+          kind: website
+          title: "Tropical Freshwater Fish: Cichlasoma meeki"
+          url: https://tropicalfreshwaterfish.com/species/Cichlasoma_meeki.html
+          accessed: 2026-10-13
+        - &aquafish
+          kind: website
+          title: "Aqua-Fish.net: Firemouth cichlid - Thorichthys meeki"
+          url: https://www.aqua-fish.net/show.php?h=firemouthcichlid
+          accessed: 2026-10-13
+        - &guidarium
+          kind: website
+          title: "Guidarium: Firemouth Cichlid, species care sheet"
+          url: https://guidarium.com/fishes/firemouth-cichlid
+          accessed: 2026-10-13
+        - &liveaquaria
+          kind: website
+          title: "LiveAquaria: Firemouth Cichlid (Thorichthys meeki), retailer care sheet"
+          url: https://www.liveaquaria.com/products/firemouth-cichlid
+          accessed: 2026-10-13
+        - &aquariadise
+          kind: website
+          title: "Aquariadise: Firemouth cichlid"
+          url: https://www.aquariadise.com/firemouth-cichlid/
+          accessed: 2026-10-13
+      evidence:
+        - source: *sf
+          value: {min: 20, max: 32}
+          note: Aquarium recommendation.
+        - source: *pfk
+          value: {min: 22, max: 30}
+          note: Aquarium range; 24 to 27 C named as the best band.
+        - source: *fishkeeper
+          value: {min: 24, max: 30}
+          note: Aquarium recommendation.
+        - source: *fishbase
+          value: {min: 26, max: 30}
+          note: Aquarium atlas value.
+        - source: *tff
+          value: {min: 20, max: 27}
+        - source: *aquafish
+          value: {min: 24, max: 28}
+        - source: *guidarium
+          value: {min: 23, max: 30}
+        - source: *liveaquaria
+          value: {min: 21, max: 24}
+          note: Retailer recommendation, narrow and cool.
+        - source: *aquariadise
+          value: {min: 21.1, max: 27.8}
+  ph:
+    value: {min: 6.6, max: 8.4}
+    confidence: medium
+    verification:
+      method: qualified-majority
+      votes: {agree: 5, total: 6}
+    rationale: >-
+      Decided by qualified majority as the median of the agreeing proposals: generator 6.5 to 8.5,
+      checker-a 6.6 to 8.3, checker-b 6.9 to 8.4, tiebreaker-1 6.5 to 8.3 and tiebreaker-2 6.6 to
+      8.4; checker-c proposed 7.3 to 8.4 from river and pool means alone. The habitat spans neutral
+      wetlands and alkaline karst water: Laguna Caobas 6.55 to 8.23, the petenes with seasonal means
+      of 6.9 to 7.4, the Lacantun basin 7.3 to 8.1, the Usumacinta 7.3 to 8.3, Laguna Bacalar 7.4 to
+      7.6, Calakmul pool group means of 7.9 to 8.4 and Laguna Chile Verde with a mean of 8.3. Single
+      readings reach beyond the decided range: Laguna Chile Verde scatters to about 8.9, and the Ring
+      of Cenotes has a mean of 7.15 with rare extremes of 5.8 and 11.1 that the authors tie to cattle
+      runoff. FishBase gives 6.5 to 7.5 from an aquarium book.
+    sources:
+      - *valtierra
+      - *espinosa
+      - *lacantun
+      - *soria
+      - &yanez
+        kind: literature
+        title: "Yanez-Montalvo, Águila, de León-Lorenzana, Bayona, Torrescano-Valle, Popoca et al. (2025). Karst-environments of the southeastern Yucatan Peninsula: Hotspots for modern freshwater microbialites. PLOS One 20(5), e0322625."
+        url: https://doi.org/10.1371/journal.pone.0322625
+        accessed: 2026-10-13
+      - *vegacendejas
+      - *uhnavarrete
+      - *perezceballos
+      - *granados
+      - *alter
+      - *neil
+      - *fishbase
+    evidence:
+      - source: *valtierra
+        value: {min: 6.55, max: 8.23}
+        note: Laguna Caobas, 1995; mean near 7.0.
+      - source: *espinosa
+        value: {min: 6.88, max: 7.36}
+        note: Seasonal means of the petenes; single readings scatter by about 0.5 to 0.9 units.
+      - source: *lacantun
+        value: {min: 7.3, max: 8.09}
+        note: Site means of the Lacantun basin.
+      - source: *soria
+        value: {min: 7.3, max: 8.3}
+        note: Usumacinta basin, both seasons.
+      - source: *yanez
+        value: {min: 7.4, max: 8.1}
+        note: Karst lakes of southern Quintana Roo; Laguna Bacalar 7.4 to 7.6.
+      - source: *vegacendejas
+        value: {min: 7.9, max: 8.4}
+        note: Means of the three Calakmul habitat groups.
+      - source: *uhnavarrete
+        value: {min: 7.7, max: 8.9}
+        note: Laguna Chile Verde, mean 8.3 with a standard deviation of 0.58.
+      - source: *perezceballos
+        value: {min: 6.4, max: 7.9}
+        note: Annual mean plus or minus one standard deviation over 22 cenotes.
+      - source: *granados
+        value: {min: 8.0, max: 8.5}
+        note: Lake Lachua in the Usumacinta basin.
+      - source: *fishbase
+        value: {min: 6.5, max: 7.5}
+        note: Aquarium book value.
+    tolerance:
+      value: {min: 6.5, max: 8.5}
+      confidence: medium
+      verification:
+        method: unanimous
+        votes: {agree: 4, total: 4}
+      rationale: >-
+        All four votes proposed 6.5 to 8.5. Seriously Fish and Tropical Freshwater Fish give exactly
+        this span; Practical Fishkeeping gives 6.5 to 8 in its text and 6.0 to 8.2 in its data box,
+        Fishkeeper 6.8 to 8.0 and FishBase 6.5 to 7.5. A breeding colony did well at pH 7.6. Values
+        below 6.5 come from one retailer and from short drops in a breeding report and do not show
+        years of healthy keeping.
+      sources:
+        - *sf
+        - *pfk
+        - *fishkeeper
+        - *fishbase
+        - &parha
+          kind: literature
+          title: "Parha, M. and Reclos, G. J. (2009). Keeping and breeding Thorichthys meeki. AquaInfo / MCH Portal."
+          url: https://aquainfo.nl/en/keeping-and-breeding-thorichthys-meeki/
+          accessed: 2026-10-13
+        - *tff
+        - *guidarium
+        - *liveaquaria
+      evidence:
+        - source: *sf
+          value: {min: 6.5, max: 8.5}
+        - source: *pfk
+          value: {min: 6.0, max: 8.2}
+          note: Data box; the text gives 6.5 to 8.
+        - source: *fishkeeper
+          value: {min: 6.8, max: 8.0}
+        - source: *fishbase
+          value: {min: 6.5, max: 7.5}
+          note: Aquarium book value.
+        - source: *parha
+          value: {min: 7.6, max: 7.6}
+          note: Routine pH of a breeding colony.
+        - source: *tff
+          value: {min: 6.5, max: 8.5}
+        - source: *guidarium
+          value: {min: 6.5, max: 8.0}
+        - source: *liveaquaria
+          value: {min: 6.0, max: 7.5}
+  ghDgh:
+    value: {min: 8, max: 30}
+    confidence: low
+    verification:
+      method: median
+      votes: {agree: 3, total: 6}
+    rationale: >-
+      No vote reached a qualified majority, so the range is the median of all six proposals:
+      generator 7 to 90, checker-a 8 to 30, checker-b 8 to 20, checker-c 15.2 to 18.3, tiebreaker-1
+      8 to 30 and tiebreaker-2 8 to 30 dGH. No study measured total hardness at a capture site, so
+      all values are converted from calcium and magnesium of the waters the species lives in. The low
+      end of about 8 dGH is an estimate from the conductivity of Laguna Caobas and from the
+      bicarbonate of the Usumacinta rivers. Muyil Lagoon, where DNA confirms the species, holds 15 to
+      18 dGH, nearby Lake Azul about 22 dGH, and the cenotes of northern Yucatan average about 28
+      dGH (20 to 36 dGH as mean plus or minus one standard deviation, single samples about 10 to 50
+      dGH). The sources reach far beyond the decided range: Laguna Bacalar and the connected Chile
+      Verde lagoon carry gypsum water of about 74 to 90 dGH, and Neil (1984) studied wild firemouths
+      at Bacalar. That population differs in throat colour and its identity is regarded as open, so
+      the median leaves this extreme outside the typical range. FishBase gives up to 10 dH, an
+      aquarium value.
+    sources:
+      - *perezceballos
+      - *yanez
+      - &frontiers
+        kind: literature
+        title: "Exploring Biogeochemistry and Microbial Diversity of Extant Microbialites in Mexico and Cuba. Frontiers in Microbiology 9, 510 (2018), Table 1."
+        url: https://doi.org/10.3389/fmicb.2018.00510
+        accessed: 2026-10-13
+      - *siankaan
+      - *alter
+      - *valtierra
+      - *soria
+      - *lacantun
+      - *uhnavarrete
+      - *vegacendejas
+      - *neil
+      - *ecosur
+      - *fishbase
+    evidence:
+      - source: *valtierra
+        value: {min: 8, max: 8}
+        note: Own estimate of the votes from 280 to 288 uS/cm conductivity at Laguna Caobas; no hardness measured.
+      - source: *soria
+        value: {min: 7}
+        note: Lower estimate from the mean bicarbonate of the Usumacinta; calcium was not measured.
+      - source: *lacantun
+        value: {min: 8, max: 15}
+        note: Estimate from the conductivity of Lacantun river water; not a measured hardness.
+      - source: *frontiers
+        value: {min: 15.25, max: 15.25}
+        note: Muyil water, converted from calcium and magnesium.
+      - source: *yanez
+        value: {min: 18.3, max: 22.1}
+        note: Muyil Lagoon and Lake Azul, converted from calcium and magnesium, spring 2020.
+      - source: *perezceballos
+        value: {min: 20, max: 36}
+        note: Calcium plus magnesium of 22 cenotes, mean plus or minus one standard deviation; single samples about 10 to 50 dGH.
+      - source: *yanez
+        value: {min: 74, max: 90}
+        note: Laguna Bacalar, gypsum water; local extreme outside the decided range.
+      - source: *fishbase
+        value: {max: 10}
+        note: Upper limit only, aquarium value.
+    tolerance:
+      value: {min: 5, max: 30}
+      confidence: low
+      verification:
+        method: conservative
+        votes: {agree: 3, total: 6}
+      rationale: >-
+        The votes did not settle, so the tolerance is the intersection of all proposals, widened to
+        contain the decided natural range. The proposals were generator 4 to 90, checker-a 5 to 30,
+        checker-b 4 to 22, checker-c 2 to 20, tiebreaker-1 4 to 30 and tiebreaker-2 4 to 30 dGH; their
+        intersection of 5 to 20 dGH is widened to 30 dGH at the top. Husbandry sources reach wider at
+        both ends: Seriously Fish accepts 2 to 15 dGH, a breeding colony spawned repeatedly at 3 to 5
+        dGH, Aqua-Fish.net names 4 to 30 dGH, and wild fish live in Laguna Bacalar at about 74 to 90
+        dGH. Practical Fishkeeping asks for more than 6 and up to 18 dGH and Fishkeeper up to 18 dH.
+        Captive-bred stock is commonly kept in soft to hard tap water without trouble.
+      sources:
+        - *sf
+        - *pfk
+        - *fishkeeper
+        - *parha
+        - *fishbase
+        - &tfh
+          kind: literature
+          title: "Tropical Fish Hobbyist Magazine: Thorichthys meeki, species profile"
+          url: https://tfhmagazine.com/articles/freshwater/thorichthys-meeki
+          accessed: 2026-10-13
+        - *yanez
+        - *aquafish
+        - *tff
+        - &garnelio
+          kind: website
+          title: "Garnelio: Thorichthys meeki pair, retailer care sheet"
+          url: https://www.garnelio.de/2-x-feuermaulbuntbarsch-thorichthys-meeki-dnz-paerchen
+          accessed: 2026-10-13
+        - *guidarium
+      evidence:
+        - source: *sf
+          value: {min: 2, max: 15}
+        - source: *pfk
+          value: {min: 6, max: 18}
+        - source: *fishkeeper
+          value: {max: 18}
+          note: Upper limit only.
+        - source: *parha
+          value: {min: 3, max: 5}
+          note: Water of a breeding colony that spawned repeatedly.
+        - source: *fishbase
+          value: {max: 10}
+          note: Upper limit only, aquarium value.
+        - source: *yanez
+          value: {min: 74, max: 90}
+          note: Hardness of Laguna Bacalar, which holds a wild population.
+        - source: *aquafish
+          value: {min: 4, max: 30}
+        - source: *tff
+          value: {min: 4, max: 20}
+        - source: *garnelio
+          value: {min: 5, max: 20}
+        - source: *guidarium
+          value: {min: 8, max: 15}
+  khDkh:
+    value: {min: 6, max: 18}
+    confidence: low
+    verification:
+      method: median
+      votes: {agree: 3, total: 6}
+    rationale: >-
+      No vote reached a qualified majority, so the range is the median of all six proposals:
+      generator 4 to 21, checker-a 6 to 18, checker-b 8 to 20, checker-c 9.2 to 9.4, tiebreaker-1 5
+      to 18 and tiebreaker-2 6 to 10 dKH. No source titrated alkalinity at a capture site; the values
+      are converted from bicarbonate. The karst lakes of southern Quintana Roo hold about 6 to 10
+      dKH (Laguna Bacalar 5.8 to 8.1, Muyil 9.2 to 9.4, Cenote Azul 9.9), Laguna Caobas points to
+      about 7 to 8 dKH from its conductivity, and the cenotes of northern Yucatan average about 18
+      dKH. The sources reach wider at both ends: single cenote samples range from 10.5 to 26 dKH,
+      and the dissolved inorganic carbon of the Usumacinta corresponds to roughly 3.6 to 11 dKH.
+    sources:
+      - *perezceballos
+      - *yanez
+      - *frontiers
+      - *siankaan
+      - *soria
+      - *alter
+      - *valtierra
+      - *vegacendejas
+      - kind: literature
+        title: "Use of Microbiological and Chemical Data to Evaluate the Effects of Tourism on Water Quality in Karstic Cenotes in Yucatan, Mexico. Bulletin of Environmental Contamination and Toxicology (2023)."
+        url: https://doi.org/10.1007/s00128-023-03761-1
+        accessed: 2026-10-13
+    evidence:
+      - source: *perezceballos
+        value: {min: 15.8, max: 21.0}
+        note: Bicarbonate of 22 cenotes, mean plus or minus one standard deviation.
+      - source: *perezceballos
+        value: {min: 10.5, max: 26.2}
+        note: Single cenote samples, minimum and maximum.
+      - source: *yanez
+        value: {min: 5.7, max: 9.9}
+        note: Bicarbonate of Laguna Bacalar, Muyil, Lake Azul and Cenote Azul.
+      - source: *frontiers
+        value: {min: 9.22, max: 9.22}
+        note: Muyil bicarbonate, converted.
+      - source: *soria
+        value: {min: 3.6, max: 11.3}
+        note: Converted from dissolved inorganic carbon of the Usumacinta, not measured as alkalinity.
+      - source: *valtierra
+        value: {min: 7, max: 8}
+        note: Own estimate of a vote from the conductivity of Laguna Caobas.
+    tolerance:
+      value: {min: 4, max: 20}
+      confidence: low
+      verification:
+        method: qualified-majority
+        votes: {agree: 5, total: 6}
+      rationale: >-
+        Decided by qualified majority as the median of the agreeing proposals: generator 4 to 21,
+        checker-a 4 to 20, checker-b 2 to 20, tiebreaker-1 4 to 20 and tiebreaker-2 2 to 20 dKH;
+        checker-c proposed 2 to 10 dKH. Few husbandry sources give carbonate hardness: LiveAquaria
+        and Bay Bridge Aquarium name 4 to 10 dKH, Zierfische-Direkt 2 to 8 dKH, and a breeding colony
+        was kept at KH 3. The general hardness ranges of Seriously Fish (2 to 15 dGH) and Practical
+        Fishkeeping (6 to 18 dGH) describe soft to hard water, and Tropical Fish Hobbyist calls the
+        native waters fairly hard. The upper end of 20 dKH covers the average cenote water in which
+        wild fish live; single cenote samples reach 26 dKH. The value is largely derived, hence low
+        confidence.
+      sources:
+        - *sf
+        - *pfk
+        - *tfh
+        - *parha
+        - *perezceballos
+        - *liveaquaria
+        - &zierfische
+          kind: website
+          title: "Zierfische-Direkt: Feuermaulbuntbarsch (Thorichthys meeki), retailer care sheet"
+          url: https://www.zierfische-direkt.de/feuermaulbuntbarsch-thorichthys-meeki-l/
+          accessed: 2026-10-13
+        - &baybridge
+          kind: website
+          title: "Bay Bridge Aquarium: Firemouth Cichlid, retailer care sheet"
+          url: https://www.baybridgeaquarium.com/products/firemouth-cichlid
+          accessed: 2026-10-13
+      evidence:
+        - source: *sf
+          value: {min: 2, max: 15}
+          note: General hardness only, no carbonate hardness given.
+        - source: *pfk
+          value: {min: 6, max: 18}
+          note: General hardness only.
+        - source: *tfh
+          value: fairly hard, slightly basic water
+          note: Qualitative statement on the native habitat.
+        - source: *parha
+          value: {min: 3, max: 3}
+          note: Carbonate hardness of a breeding colony that spawned repeatedly.
+        - source: *perezceballos
+          value: {min: 15.8, max: 21.0}
+          note: Bicarbonate of cenote water that holds wild populations.
+        - source: *liveaquaria
+          value: {min: 4, max: 10}
+        - source: *zierfische
+          value: {min: 2, max: 8}
+        - source: *baybridge
+          value: {min: 4, max: 10}
+  maxSizeCm:
+    value: {male: 15, female: 12}
+    confidence: medium
+    rationale: >-
+      Well-kept aquarium males reach about 15 cm total length: Seriously Fish gives 12 cm standard
+      length, Fishkeeper 15 cm, Practical Fishkeeping males up to 15 cm, and the French aquarium
+      federation 14 cm for males and 12 cm for females. FishBase and Tropical Fish Hobbyist give 17
+      cm as a record that is not reached by typical tank fish. Females stay a few centimetres
+      smaller, about 12 cm.
+    sources:
+      - *sf
+      - *fishkeeper
+      - *pfk
+      - &ffa
+        kind: database
+        title: "Fédération Française d'Aquariophilie: Thorichthys meeki, species sheet"
+        url: https://www.fedeaqua.org/pratique/fiches-faune-flore/3193-thorichthys-meeki
+        accessed: 2026-10-13
+      - *fishbase
+      - *tfh
+      - &dewiki
+        kind: website
+        title: "Wikipedia (German): Feuermaulbuntbarsch"
+        url: https://de.wikipedia.org/wiki/Feuermaulbuntbarsch
+        accessed: 2026-10-13
+    evidence:
+      - source: *sf
+        value: {male: 15}
+        note: Given as 12 cm standard length.
+      - source: *fishkeeper
+        value: {male: 15}
+      - source: *pfk
+        value: {male: 15, female: 13}
+      - source: *ffa
+        value: {male: 14, female: 12}
+      - source: *fishbase
+        value: {male: 17}
+        note: Maximum total length, sexes not separated.
+      - source: *tfh
+        value: {male: 17}
+      - source: *dewiki
+        value: {male: 16}
+        note: 15 to 16 cm, females smaller.
+  predation:
+    value: 1
+    confidence: medium
+    verification:
+      method: unanimous
+      votes: {agree: 4, total: 4}
+    rationale: >-
+      All four votes chose level 1. The firemouth sifts the bottom for small invertebrates and is no
+      fish hunter. Seriously Fish warns that it may eat much smaller fish and Fishkeeper advises
+      against tiny tankmates. In Laguna Caobas small fish turned up in juvenile stomachs only in some
+      months and as a minor item next to zooplankton, and a review of native cichlids reports the
+      same. A study of the Petenes pools classes the species as a snail and detritus feeder without
+      fish, and FishBase names no fish in the diet. Fry and very small fish taken when the chance
+      arises match level 1.
+    sources:
+      - *sf
+      - *fishkeeper
+      - *valtierra
+      - &review2025
+        kind: literature
+        title: "Feeding habits and nutritional requirements of native cichlids with aquaculture potential from Mexico and Central America. A review. Latin American Journal of Aquatic Research 53(3) (2025)."
+        url: https://doi.org/10.3856/vol53-issue3-fulltext-3369
+        accessed: 2026-10-13
+      - &hinojosa
+        kind: literature
+        title: "Hinojosa-Garro, D. et al. (2013). Fish diet composition in permanent and semi-permanent pools in tropical wetlands of the Yucatan Peninsula. Neotropical Ichthyology 11(4)."
+        url: https://doi.org/10.1590/s1679-62252013000400016
+        accessed: 2026-10-13
+      - *pfk
+      - *fishbase
+    evidence:
+      - source: *sf
+        value: 1
+        note: May eat much smaller fish.
+      - source: *fishkeeper
+        value: 1
+        note: Advises against very small tankmates; livebearers and small characins are fine.
+      - source: *valtierra
+        value: 1
+        note: Small fish a minor, seasonal item in wild juveniles.
+      - source: *review2025
+        value: 1
+        note: Small fish a minor stomach item next to zooplankton.
+      - source: *pfk
+        value: 1
+        note: Parents may eat their own fry; adult mollies lived with the pair.
+      - source: *hinojosa
+        value: 0
+        note: Classed as snail and detritus feeder, no fish in the diet.
+      - source: *fishbase
+        value: 0
+        note: No fish named in the diet.
+  diet:
+    value:
+      type: invertivore
+      bloatSensitive: true
+      foods:
+        - cladocerans and copepods
+        - insect larvae such as chironomids
+        - snails
+        - other small crustaceans and invertebrates
+        - detritus sifted from the bottom
+        - some filamentous algae
+    confidence: low
+    verification:
+      method: conservative
+      votes: {agree: 3, total: 6}
+    rationale: >-
+      The six votes split, so the tally took the most cautious value. The proposals were omnivore
+      without bloat sensitivity (generator, checker-b), invertivore without bloat sensitivity
+      (checker-a, tiebreaker-1, tiebreaker-2) and omnivore with bloat sensitivity (checker-c). Of the
+      proposed types invertivore is the stricter one, and bloatSensitive is true because one vote
+      set it. The type fits the stomach studies: in Laguna Caobas 127 juveniles had eaten mainly
+      cladocerans and copepods, with algae a minor item; in the Petenes pools the species took snails
+      and detritus selectively; a review of native cichlids reports a clear preference for benthic
+      invertebrates, and a study of pharyngeal jaws places Thorichthys among the mollusc eaters.
+      FishBase, Seriously Fish and Tropical Fish Hobbyist call it an omnivore, the FishBase claim of
+      mainly algae resting on an aquarium reference. The bloat flag rests on the Fishkeeper warning
+      that too much protein upsets digestion; no source reports actual cases of bloat, so the flag is
+      a precaution.
+    sources:
+      - *valtierra
+      - *hinojosa
+      - *review2025
+      - &burress
+        kind: literature
+        title: "Burress, E. D. (2016). Ecological diversification associated with the pharyngeal jaw diversity of Neotropical cichlid fishes. Journal of Animal Ecology."
+        url: https://doi.org/10.1111/1365-2656.12457
+        accessed: 2026-10-13
+      - *fishbase
+      - *sf
+      - *fishkeeper
+      - *tfh
+      - *parha
+      - &crc
+        kind: database
+        title: "Cichlid Room Companion: Thorichthys meeki, public species summary"
+        url: https://cichlidae.com/species.php?id=0Bbw9wxieOAUKAcGWh0e0A
+        accessed: 2026-10-13
+    evidence:
+      - source: *valtierra
+        value: {type: invertivore, bloatSensitive: false}
+        note: 127 stomachs of juveniles below 41 mm; cladocerans and copepods dominate, algae minor.
+      - source: *hinojosa
+        value: {type: invertivore, bloatSensitive: false}
+        note: Snails and detritus taken selectively in permanent pools.
+      - source: *review2025
+        value: {type: invertivore, bloatSensitive: false}
+        note: Middle trophic level with a preference for benthic invertebrates.
+      - source: *burress
+        value: {type: invertivore}
+        note: Thorichthys in the mollusc-eating guild by stomach data and jaw shape.
+      - source: *fishbase
+        value: {type: omnivore, bloatSensitive: false}
+        note: Mainly algae according to an aquarium reference.
+      - source: *sf
+        value: {type: omnivore, bloatSensitive: false}
+        note: Bottom-sifting omnivore whose wild food is mainly small invertebrates and detritus.
+      - source: *tfh
+        value: {type: omnivore, bloatSensitive: false}
+      - source: *fishkeeper
+        value: {type: omnivore, bloatSensitive: true}
+        note: Warns that too much protein causes digestive trouble; no bloat cases named.
+      - source: *crc
+        value: {type: invertivore, bloatSensitive: false}
+        note: Classed as substrate picker; used for verification only.
+  aggressionConspecific:
+    value: 2
+    confidence: medium
+    rationale: >-
+      All four runs chose level 2. In the wild at Laguna Bacalar contests between firemouths were
+      frequent but ritualised and rarely harmful. In tanks rivals settle disputes by flaring the red
+      throat and gill covers, and a keeper of a group of eight saw a clear pecking order with border
+      disputes between pairs but no injuries. Breeding pairs chase other firemouths hard, and females
+      compete for spawning sites in a colony.
+    sources:
+      - *neil
+      - *pfk
+      - *fishkeeper
+      - *sf
+      - *parha
+      - *liveaquaria
+      - &archive156
+        kind: archive
+        title: cichlids.com forum thread 156
+        url: https://www.cichlids.com/disc/read.php?1,156
+    evidence:
+      - source: *neil
+        value: 1
+        note: Ritualised contests without serious injuries in the wild.
+      - source: *pfk
+        value: 2
+        note: Hierarchy and border disputes in a group without injuries.
+      - source: *fishkeeper
+        value: 2
+      - source: *parha
+        value: 2
+        note: Females competed for breeding sites; neighbouring pairs defended nests.
+      - source: *liveaquaria
+        value: 2
+        note: Harasses smaller conspecifics, especially when spawning.
+  aggressionHeterospecific:
+    value: 2
+    confidence: medium
+    rationale: >-
+      All four runs chose level 2. Outside breeding the firemouth is rather shy and loses fights with
+      boisterous Central American cichlids. A spawning pair drives intruders out of the brood area;
+      in a small tank that area can be the whole tank. Catfish in a breeding colony were mostly
+      ignored until they occupied a chosen spawning site. It does not pursue other fish across a tank
+      of adequate size.
+    sources:
+      - *fishkeeper
+      - *pfk
+      - *sf
+      - *parha
+      - *tfh
+      - *neil
+    evidence:
+      - source: *fishkeeper
+        value: 2
+        note: Peaceful outside breeding, defends the brood.
+      - source: *pfk
+        value: 2
+        note: Mollies coexisted; defence centred on the family.
+      - source: *parha
+        value: 2
+        note: Catfish tolerated until they took a spawning site.
+      - source: *tfh
+        value: 1
+        note: Described as mildly aggressive.
+  territory:
+    value: {size: small, breedingOnly: true}
+    confidence: medium
+    rationale: >-
+      Three of four runs chose a small territory held only while breeding; checker-c proposed a large
+      one. In the wild a pair holds a fixed territory around a nest in a rock crevice only until the
+      young swim freely and then guards the moving brood. In a large colony tank several pairs nested
+      close together, each defending the area around its spawning site. A pair that claimed half of
+      a smaller tank shows that the defended area grows with confinement, not a large territory by
+      the rubric. Outside breeding the fish claim no area.
+    sources:
+      - *neil
+      - *sf
+      - *fishkeeper
+      - *pfk
+      - *parha
+  habitatZones:
+    value: [sand, rock, plants, wood]
+    confidence: high
+    rationale: >-
+      All four runs agree. The species sifts sand and mud for food, spawns on stones, wood or broad
+      leaves and nests in rock crevices, and keeps close to shore vegetation, leaf litter and
+      submerged branches in shallow, quiet water. Lake Lachua yielded it from the rocky shore.
+    sources:
+      - *fishbase
+      - *sf
+      - *fishkeeper
+      - *neil
+      - *granados
+      - *crc
+  social:
+    value: {structure: pair}
+    confidence: medium
+    rationale: >-
+      Three of four runs chose pair; checker-c proposed a group of at least eight. The firemouth is a
+      monogamous substrate spawner whose pair guards the brood together, and other adults become
+      rivals around a breeding site. Seriously Fish describes it as gregarious outside spawning and
+      suitable for groups of eight or more in large tanks, and keepers raise six to eight juveniles
+      to let pairs form by choice. A group is therefore possible in a large tank, but the unit that
+      the sources recommend for an ordinary tank is one adult pair.
+    sources:
+      - *sf
+      - *ffa
+      - *tfh
+      - *pfk
+      - *parha
+      - *neil
+  speciesOnly:
+    value: false
+    confidence: high
+    verification:
+      method: unanimous
+      votes: {agree: 4, total: 4}
+    rationale: >-
+      All four votes chose false. Seriously Fish, Fishkeeper, Tropical Fish Hobbyist and Practical
+      Fishkeeping all describe the species as suitable for a community with calm cichlids of similar
+      size, livebearers, characins or barbs. Fishkeeper mentions a species tank only as one option,
+      because rough cichlids may bully the firemouth; nothing requires keeping it alone.
+    sources:
+      - *sf
+      - *fishkeeper
+      - *tfh
+      - *pfk
+      - *tff
+      - *liveaquaria
+    evidence:
+      - source: *sf
+        value: false
+        note: Fits with suitable cichlids and livebearers of the upper water.
+      - source: *fishkeeper
+        value: false
+        note: Species tank or placid companions both named.
+      - source: *tfh
+        value: false
+        note: Cichlid community with fish of similar size and temper.
+      - source: *pfk
+        value: false
+        note: A pair lived without problems in a community with barbs, rainbowfish and catfish.
+  hybridGroups:
+    value: [amatitlania-nigrofasciata-thorichthys-meeki, thorichthys-meeki-maculipinnis]
+    confidence: low
+    verification:
+      method: conservative
+      votes: {agree: 2, total: 6}
+    rationale: >-
+      The votes split, so the tally took the union of all groups named by at least two votes. The
+      proposals were thorichthys-meeki-maculipinnis (generator),
+      amatitlania-nigrofasciata-thorichthys-meeki (checker-a), no group (checker-b), a genus-wide
+      group thorichthys together with amatitlania-nigrofasciata-thorichthys-meeki (checker-c), and
+      both two-member groups (tiebreaker-1, tiebreaker-2). The genus group was named only once and
+      is not part of the decision. Both groups are new and presumed. The convict cross is reported by
+      a Practical Fishkeeping author whose female firemouth, kept without a firemouth male, spawned
+      with a convict male and raised young, and by a 1982 description of hybrids of the two species
+      whose text could not be read. The cross with T. maculipinnis (T. ellioti is its synonym) rests
+      on a single forum report of a tank spawning and on two Dutch hobby articles that warn in general
+      that Thorichthys species cross in aquaria. The Swedish Ciklidbladet article that earlier votes
+      cited for this cross is a version of the same author's account; its early hybrid mishap is the
+      convict cross, not a cross between the two Thorichthys. Free choice of partners is shown for
+      neither group and no wild cross is known.
+    sources:
+      - *pfk
+      - &novak
+        kind: literature
+        title: "Novak, J. F. (1982). Description of hybrids between Cichlasoma meeki and Cichlasoma nigrofasciatum (Pisces: Cichlidae). Vol. 46(2), 109-112 (bibliographic record only)."
+        url: https://openalex.org/W2469891841
+        accessed: 2026-10-13
+      - &ciklidbladet
+        kind: literature
+        title: "Horvath, G. (2023). Eld i akvariet. Ciklidbladet 57(2), 24-36 (abstract only, read in the Cichlid Room Companion bibliography)."
+        url: https://cichlidae.com/reference.php?id=12570
+        accessed: 2026-10-13
+      - *parha
+      - &beerlink
+        kind: literature
+        title: "Beerlink, R. Thorichthys pasionis. AquaInfo (article of the Nederlandse Cichliden Vereniging)."
+        url: https://aquainfo.nl/en/article/thorichthys-pasionis/
+        accessed: 2026-10-13
+      - *cof
+      - *sf
+      - *fishbase
+      - &mfk
+        kind: forum
+        title: "MonsterFishKeepers forum: Firemouth X Ellioti Hybrids (2016)"
+        url: https://www.monsterfishkeepers.com/forums/threads/firemouth-x-ellioti-hybrids.672431/
+        accessed: 2026-10-13
+      - &mfkconvict
+        kind: forum
+        title: "MonsterFishKeepers forum: Firemouth x convict breeding"
+        url: https://www.monsterfishkeepers.com/forums/goto/post?id=5881651
+        accessed: 2026-10-13
+      - &mfkpossible
+        kind: forum
+        title: "MonsterFishKeepers forum: Is it possible to hybridize these species?"
+        url: https://www.monsterfishkeepers.com/forums/goto/post?id=8552070
+        accessed: 2026-10-13
+      - *archive156
+    evidence:
+      - source: *pfk
+        value: [amatitlania-nigrofasciata-thorichthys-meeki]
+        note: Tank cross of a female firemouth with a convict male; no firemouth male was available.
+      - source: *novak
+        value: [amatitlania-nigrofasciata-thorichthys-meeki]
+        note: Title names hybrids of the two species; circumstances unknown.
+      - source: *ciklidbladet
+        value: [amatitlania-nigrofasciata-thorichthys-meeki]
+        note: Swedish version of the same account; its hybrid mishap is the convict cross.
+      - source: *parha
+        value: [thorichthys-meeki-maculipinnis]
+        note: General warning that firemouths cross with other Thorichthys; no named case.
+      - source: *beerlink
+        value: [thorichthys-meeki-maculipinnis]
+        note: General warning that Thorichthys species cross easily in aquaria; no named case.
+      - source: *cof
+        value: [thorichthys-meeki-maculipinnis]
+        note: T. ellioti is a synonym of T. maculipinnis; nothing about crosses.
+      - source: *mfk
+        value: [thorichthys-meeki-maculipinnis]
+        note: Female firemouth spawned with a male Ellioti cichlid in a mixed tank; fry raised.
+      - source: *mfkconvict
+        value: [amatitlania-nigrofasciata-thorichthys-meeki]
+        note: A keeper holds a pair of hybrid offspring; origin of the cross not described.
+      - source: *mfkpossible
+        value: [amatitlania-nigrofasciata-thorichthys-meeki]
+        note: Second-hand remark that the cross was bred; no conditions given.
+      - source: *archive156
+        value: []
+        note: A member asks whether convicts and firemouths cross; the answer stays general.
+  coloration:
+    value:
+      baseColors: [grey, blue, red]
+      pattern: mixed
+    confidence: medium
+    rationale: >-
+      Three runs chose a mixed pattern, the generator bars; checker-c added black to the base
+      colours. Adult males are blue-grey with iridescent blue spots on head, body and fins, a brick
+      to fiery red throat and belly and a dark, light-ringed spot on each gill cover. Five to seven
+      faint bars combine with a dark midlateral blotch or band, so no single pattern dominates. The
+      black markings are details, not a base colour.
+    sources:
+      - *sf
+      - *tfh
+      - *liveaquaria
+      - *dewiki
+      - &fishkeepingcouk
+        kind: website
+        title: "Fishkeeping.co.uk care sheet: Firemouth Cichlid"
+        url: https://www.fishkeeping.co.uk/modules/caresheets/caresheet.php?caresheetID=109
+        accessed: 2026-10-13
+  feedingSpeed:
+    value: normal
+    confidence: low
+    rationale: >-
+      Three runs chose normal and checker-c slow. The firemouth takes mouthfuls of substrate and
+      sifts them, and readily takes prepared food. One care sheet advises getting food down to the
+      bottom because faster fish may take it near the surface, but a breeding colony fed eagerly, and
+      no source describes it as losing its share as a rule. Normal is the best fit; the sources give
+      no explicit statement on feeding pace.
+    sources:
+      - *sf
+      - *pfk
+      - *parha
+      - *fishkeepingcouk
+  minTank:
+    value: {volumeL: 200, lengthCm: 120, depthCm: 40}
+    confidence: medium
+    rationale: >-
+      The runs proposed 160 litres with 120 by 40 cm (generator), 200 litres with 120 by 40 cm
+      (checker-a), 110 litres with 120 by 30 cm (checker-b) and 450 litres with 150 by 60 cm for a
+      group of eight (checker-c). The social unit is one pair, so the group tank does not apply.
+      Seriously Fish and Practical Fishkeeping accept a base of 120 by 30 cm for one pair, FishBase
+      gives 100 cm, and Fishkeeper wants at least 120 cm and 150 to 180 cm for adult groups. A pair
+      with a breeding territory and room for tankmates to retreat needs 120 cm length and 40 cm front
+      to back; at a usual water height this holds about 200 litres.
+    sources:
+      - *sf
+      - *pfk
+      - *fishkeeper
+      - *fishbase
+      - *archive156
+    evidence:
+      - source: *sf
+        value: {volumeL: 108, lengthCm: 120, depthCm: 30}
+        note: One pair.
+      - source: *pfk
+        value: {volumeL: 108, lengthCm: 120, depthCm: 30}
+      - source: *fishkeeper
+        value: {lengthCm: 152.4}
+        note: Lower end of five to six feet for a group of adults.
+  lifespanYears:
+    value: {min: 10, max: 12}
+    confidence: low
+    rationale: >-
+      The runs proposed 8 to 15 (generator), 10 to 15 (checker-a), 8 to 12 (checker-b) and 10 to 12
+      years (checker-c). The French aquarium federation gives 10 years, two retailer sheets 10 to 12
+      and 12 years, and the German Wikipedia a maximum of 12 years. Up to 15 years appears only on
+      general hobby pages that also call shorter lives common. No scientific source on longevity was
+      found, so 10 to 12 years is a husbandry estimate.
+    sources:
+      - *ffa
+      - *zierfische
+      - *garnelio
+      - *dewiki
+      - *aquariadise
+      - &fishtankadvisor
+        kind: website
+        title: "FishTankAdvisor: Firemouth Cichlid care guide"
+        url: https://fishtankadvisor.com/firemouth-cichlid/
+        accessed: 2026-10-13
+      - &mexicanfish
+        kind: website
+        title: "Mexican Fish.com: Firemouth Cichlid, Thorichthys meeki"
+        url: https://mexican-fish.com/firemouth-cichlid/
+        accessed: 2026-10-13
+    evidence:
+      - source: *ffa
+        value: {min: 10, max: 10}
+      - source: *zierfische
+        value: {min: 10, max: 12}
+      - source: *garnelio
+        value: {min: 12, max: 12}
+      - source: *fishtankadvisor
+        value: {min: 8, max: 15}
+        note: Up to 15 years, 8 to 10 called common.
+      - source: *mexicanfish
+        value: {min: 15, max: 15}
+  breeding:
+    value: open-substrate-spawner
+    confidence: high
+    rationale: >-
+      All four runs agree. The pair cleans a stone, a piece of wood, a broad leaf or a vertical
+      surface such as a coconut shell or the filter, and both parents guard several hundred eggs;
+      the larvae are moved into pits in the sand. Wild pairs at Laguna Bacalar nested in small rock
+      crevices, which still leaves the eggs on an exposed surface. The Cichlid Room Companion lists
+      substrate breeding as well.
+    sources:
+      - *fishbase
+      - *sf
+      - *fishkeeper
+      - *pfk
+      - *parha
+      - *neil
+      - *crc
+  beginnerSuitability:
+    value: moderate
+    confidence: medium
+    rationale: >-
+      The runs split evenly: the generator and checker-a chose easy, checker-b and checker-c
+      moderate. The firemouth is hardy, adapts to a wide range of water and breeds readily, and
+      Tropical Fish Hobbyist and the Cichlid Room Companion rate it as a cichlid for beginners.
+      Seriously Fish rates it moderate because it needs a tank of at least 120 cm and a mature,
+      stable aquarium, and a breeding pair turns aggressive towards tankmates. Moderate is chosen
+      because these demands go beyond an ordinary community tank.
+    sources:
+      - *sf
+      - *tfh
+      - *pfk
+      - *crc
+      - *garnelio
+      - &aquariumsource
+        kind: website
+        title: "AquariumSource: Firemouth Cichlid care guide"
+        url: https://www.aquariumsource.com/firemouth-cichlid
+        accessed: 2026-10-13
+partners:
+  suitable:
+    - species: Xiphophorus hellerii
+      reason: Robust swordtails share the native waters, use the upper water layers and act as dither fish that draw the firemouths into the open.
+    - species: Poecilia mexicana
+      reason: A sympatric livebearer that is large and quick enough not to be eaten and stays clear of the bottom territory.
+    - species: Astyanax aeneus
+      reason: Mexican tetras live alongside firemouths in the wild and fit a biotope tank as an active midwater shoal.
+    - species: Heros severus
+      reason: A calm cichlid of similar size that does not bully the comparatively shy firemouth.
+    - species: Andinoacara pulcher
+      reason: The blue acara is placid and of similar size, so both can hold small territories without serious fights.
+      condition: Tank of at least 150 cm with separate caves for each pair.
+    - species: Megalechis thoracata
+      reason: A robust armoured catfish that shared a community tank with a firemouth pair without problems.
+  unsuitable:
+    - species: Amatitlania nigrofasciata
+      reason: The convict cichlid has crossed with firemouths in tanks, and it is bolder and claims more of the tank.
+    - species: Thorichthys maculipinnis
+      reason: A close relative that has spawned with a female firemouth in a tank, so mixed pairs and hybrid fry are a risk.
+    - species: Parachromis managuensis
+      reason: A large predatory cichlid that eats or batters a 15 cm firemouth.
+    - species: Amphilophus citrinellus
+      reason: Far larger and more aggressive; the firemouth comes off worst in fights with such boisterous cichlids.
+    - species: Maylandia zebra
+      reason: Hasty, aggressive mbuna that crowd and chase constantly, which the shy firemouth cannot cope with.
+    - species: Corydoras spp.
+      reason: Small bottom dwellers that a spawning pair chases from the breeding site again and again.
+profile:
+  overview:
+    text: >-
+      The firemouth cichlid is one of the classic Central American cichlids and has been kept by
+      hobbyists for many decades. Its name comes from the brick to bright red throat and chest,
+      which a male shows off by spreading his gill covers wide; the two dark spots on the gill covers
+      then look like a pair of large eyes. Adults stay at a moderate size of about 15 cm and accept a
+      wide range of water conditions. Outside breeding the species is rather peaceful for a cichlid
+      and even a little shy, which makes it a good choice for a mixed tank with calm companions of
+      similar size. A pair that spawns turns into devoted parents and guards its young for weeks.
+      Almost all firemouths in the trade are captive-bred.
+    sources:
+      - *sf
+      - *fishkeeper
+      - *tfh
+      - *pfk
+  habitat:
+    text: >-
+      The firemouth lives in the lowlands of the Yucatan Peninsula and on the Atlantic slope of
+      southern Mexico, northern Guatemala and Belize, including the Usumacinta and Belize river
+      systems. It turns up in a remarkable variety of waters: sinkholes (cenotes), clear karst lakes
+      and lagoons, slow rivers, ditches and seasonal forest pools. Most of these waters run over
+      limestone, so they are moderately hard to very hard and neutral to alkaline; the lake of
+      Bacalar even carries gypsum water of extreme hardness, although the identity of its firemouth
+      population is not settled. The fish stay in shallow water near the shore, over sand or mud with
+      stones, plants, leaf litter and fallen branches. Typical water temperatures lie between 24 and
+      30 C, with brief spells up to 32 C in shallow pools, and the pH mostly between 6.6 and 8.4.
+    sources:
+      - *cof
+      - *fishbase
+      - *sf
+      - *neil
+      - *vegacendejas
+      - *perezceballos
+      - *yanez
+      - *ecosur
+  sizeAndGrowth:
+    text: >-
+      Males of the firemouth reach about 15 cm in a well-kept aquarium, females usually stop at
+      around 12 cm. The largest recorded fish reach 17 cm total length. Young firemouths grow quickly
+      on a varied diet and show colour while still small, but the full red of throat and belly takes
+      a year or more to develop and is strongest in breeding fish. The fish become sexually mature at
+      about 6 to 7 cm. Kept well, firemouths usually live 10 to 12 years. Buyers should plan the tank
+      for the adult size, since a group of juveniles bought at 3 cm soon needs far more room.
+    sources:
+      - *fishbase
+      - *sf
+      - *fishkeeper
+      - *tfh
+      - *ffa
+  husbandry:
+    text: >-
+      A pair needs a tank of at least 120 cm length, 40 cm front to back and about 200 litres; a
+      group or a community with other cichlids needs 150 cm or more. Fine, smooth sand is essential
+      because the fish constantly take mouthfuls of substrate, sift them and push the sand out
+      through the gills. Smooth stones, flat slates, roots and a few caves or flowerpots give cover,
+      spawning sites and broken lines of sight, while an open area at the front leaves room to swim.
+      Only tough plants survive, preferably tied to wood or stones, since the fish dig. Water
+      chemistry is uncritical: soft to hard, neutral to alkaline water at 24 to 28 C suits captive-bred
+      fish well. Clean water matters more, so a strong filter, regular large water changes and low
+      nitrate are important.
+    sources:
+      - *sf
+      - *fishkeeper
+      - *pfk
+      - *fishbase
+  socialBehavior:
+    text: >-
+      Outside the breeding season firemouths are sociable and tolerate each other well. Disputes
+      are mostly settled by display: rivals face each other, flare the red throat and gill covers
+      and then swim off, and field studies found such contests frequent but rarely harmful. Once a
+      pair forms and spawns, it defends its site and later its brood vigorously against other
+      firemouths and any fish that come close. In an average tank one pair is the right unit; in
+      large tanks a group of six to eight can be kept, and pairs then form by free choice. Towards
+      other species the firemouth is mild and is easily bullied by rough cichlids.
+    sources:
+      - *neil
+      - *sf
+      - *fishkeeper
+      - *pfk
+      - *parha
+  diet:
+    text: >-
+      In the wild firemouths feed from the bottom: they sift sand and mud for water fleas, copepods,
+      insect larvae, snails and other small invertebrates, and take some detritus and algae along
+      the way. Stomach studies from Quintana Roo and Campeche find animal food in first place. In the
+      aquarium they eat almost anything. A good base is a quality sinking granule or pellet,
+      supplemented by frozen foods such as brine shrimp, mysis, daphnia and mosquito larvae, and some
+      vegetable food such as spirulina. Rich protein food such as bloodworm should be given
+      sparingly, since too much of it can upset digestion; small, varied portions are better than
+      large meals.
+    sources:
+      - *valtierra
+      - *hinojosa
+      - *review2025
+      - *sf
+      - *fishkeeper
+      - *fishbase
+  breeding:
+    text: >-
+      Firemouths are monogamous open spawners and among the easiest cichlids to breed. The pair
+      cleans a smooth stone, a piece of wood or a near-vertical surface such as a coconut shell or the
+      side of the filter, and the female lays rows of eggs that the male fertilises; a spawn holds up
+      to several hundred eggs. The female usually tends the clutch while the male guards the
+      surroundings, and the partners swap roles from time to time. After hatching, the parents move
+      the larvae into pits dug in the sand. The fry swim freely after a few days and accept Artemia
+      nauplii and powdered food at once. Both parents lead and defend them for several weeks. Young
+      pairs often eat their first clutches, and tankmates need room to keep out of the way.
+    sources:
+      - *sf
+      - *fishkeeper
+      - *pfk
+      - *fishbase
+      - *neil
+  sexing:
+    text: >-
+      Young firemouths are hard to sex. In adults the male grows larger and usually has longer,
+      pointed tips on the dorsal and anal fins, while the female stays smaller, rounder and paler,
+      with shorter, more rounded fins; the fin shape is not reliable in every fish. The red of throat
+      and belly is usually more intense and more extensive in males, especially during courtship.
+      When fish are in breeding condition, the genital papilla helps: in the female it is broad and
+      blunt, in the male narrow and pointed. Buying a group of juveniles and letting a pair form on
+      its own avoids mistakes.
+    sources:
+      - *sf
+      - *fishkeeper
+      - *parha
+      - *tfh
+  compatibility:
+    text: >-
+      The firemouth suits a mixed tank of medium-sized, calm fish. Good companions are robust
+      livebearers such as swordtails and mollies, Mexican tetras or other sturdy characins and barbs,
+      and peaceful cichlids of similar size such as severums or blue acaras. Armoured catfish can
+      share the bottom. Very small fish may be eaten, and small bottom dwellers such as Corydoras are
+      harried when a pair spawns. Large or aggressive cichlids such as Managua or Midas cichlids are a
+      poor match because the firemouth loses every serious fight. The convict cichlid and other
+      Thorichthys species such as the Ellioti cichlid are best avoided, since tank crosses with the
+      firemouth have been reported.
+    sources:
+      - *sf
+      - *fishkeeper
+      - *tfh
+      - *pfk
+      - *parha
+      - *mfk
+  problems:
+    text: >-
+      The most common mistake is a tank that is too small: firemouths sold at 3 cm grow to 15 cm, and
+      a breeding pair in a cramped tank harasses every other fish. Coarse or sharp gravel damages the
+      mouth and gills of a fish that constantly sifts the bottom. Poor water quality with high
+      nitrate makes the species prone to illness, so a young, unstable tank is a risk. Too much rich
+      protein food can upset digestion; a varied diet of small invertebrate foods with some plant
+      matter is safer. Mixing firemouths with rough Central American cichlids leads to stress and
+      torn fins. Another mistake is buying a single pair of unknown age; incompatible partners may
+      fight, so letting a pair form from a group works better.
+    sources:
+      - *fishkeeper
+      - *sf
+      - *liveaquaria
+      - &archive824
+        kind: archive
+        title: cichlids.com forum thread 824
+        url: https://www.cichlids.com/disc/read.php?1,824
+      - *archive156
+provenance:
+  runs:
+    - role: generator
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-13
+    - role: checker
+      model: gpt-6.1-sol
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-13
+    - role: adjudicator
+      model: claude-opus-5-5
+      date: 2026-10-13
+  disagreements:
+    - field: taxonomy.synonyms
+      proposals:
+        - {by: generator, value: [Thorichthys helleri meeki, Cichlasoma meeki, Cichlasoma hyorhynchum]}
+        - {by: checker-a, value: [Thorichthys helleri meeki, Cichlasoma meeki, Herichthys meeki, Cichlasoma hyorhynchum]}
+        - {by: checker-b, value: [Thorichthys helleri meeki, Cichlasoma meeki, Cichlasoma hyorhynchum]}
+        - {by: checker-c, value: [Thorichthys helleri meeki, Cichlasoma meeki, Cichlasoma hyorhynchum]}
+      decision: [Thorichthys helleri meeki, Cichlasoma meeki, Cichlasoma hyorhynchum]
+      rationale: The Catalog of Fishes lists no Herichthys meeki in the genera Herichthys or Cichlasoma; the name is a trade combination of hobby databases and is mentioned only in the taxonomy note.
+    - field: features.temperatureC
+      proposals:
+        - {by: generator, value: {min: 22, max: 32}}
+        - {by: checker-a, value: {min: 24, max: 30}}
+        - {by: checker-b, value: {min: 24, max: 30}}
+        - {by: checker-c, value: {min: 21, max: 30}}
+        - {by: tiebreaker-1, value: {min: 24, max: 30}}
+        - {by: tiebreaker-2, value: {min: 24, max: 30}}
+      decision: {min: 24, max: 30}
+      rationale: Qualified majority of the tally (4 of 6 votes); the extremes of 20.8 and 32 C come from an upland tributary and shallow pools in the dry season.
+    - field: features.temperatureC.tolerance
+      proposals:
+        - {by: generator, value: {min: 21, max: 32}}
+        - {by: checker-a, value: {min: 22, max: 30}}
+        - {by: checker-b, value: {min: 20, max: 30}}
+        - {by: checker-c, value: {min: 20, max: 30}}
+        - {by: tiebreaker-1, value: {min: 20, max: 30}}
+        - {by: tiebreaker-2, value: {min: 20, max: 30}}
+      decision: {min: 20, max: 30}
+      rationale: Qualified majority of the tally (4 of 6 votes); only Seriously Fish goes above 30 C.
+    - field: features.ph
+      proposals:
+        - {by: generator, value: {min: 6.5, max: 8.5}}
+        - {by: checker-a, value: {min: 6.6, max: 8.3}}
+        - {by: checker-b, value: {min: 6.9, max: 8.4}}
+        - {by: checker-c, value: {min: 7.3, max: 8.4}}
+        - {by: tiebreaker-1, value: {min: 6.5, max: 8.3}}
+        - {by: tiebreaker-2, value: {min: 6.6, max: 8.4}}
+      decision: {min: 6.6, max: 8.4}
+      rationale: Qualified majority of the tally (5 of 6 votes), the median of the agreeing ranges; checker-c left out the near-neutral wetlands and Laguna Caobas.
+    - field: features.ghDgh
+      proposals:
+        - {by: generator, value: {min: 7, max: 90}}
+        - {by: checker-a, value: {min: 8, max: 30}}
+        - {by: checker-b, value: {min: 8, max: 20}}
+        - {by: checker-c, value: {min: 15.2, max: 18.3}}
+        - {by: tiebreaker-1, value: {min: 8, max: 30}}
+        - {by: tiebreaker-2, value: {min: 8, max: 30}}
+      decision: {min: 8, max: 30}
+      rationale: Median of all six votes by the tally; the gypsum water of Laguna Bacalar at about 74 to 90 dGH lies outside the decided range, and the identity of its firemouth population is open.
+    - field: features.ghDgh.tolerance
+      proposals:
+        - {by: generator, value: {min: 4, max: 90}}
+        - {by: checker-a, value: {min: 5, max: 30}}
+        - {by: checker-b, value: {min: 4, max: 22}}
+        - {by: checker-c, value: {min: 2, max: 20}}
+        - {by: tiebreaker-1, value: {min: 4, max: 30}}
+        - {by: tiebreaker-2, value: {min: 4, max: 30}}
+      decision: {min: 5, max: 30}
+      rationale: Conservative decision of the tally; the intersection of all votes (5 to 20 dGH) is widened to contain the natural range of 8 to 30 dGH.
+    - field: features.khDkh
+      proposals:
+        - {by: generator, value: {min: 4, max: 21}}
+        - {by: checker-a, value: {min: 6, max: 18}}
+        - {by: checker-b, value: {min: 8, max: 20}}
+        - {by: checker-c, value: {min: 9.2, max: 9.4}}
+        - {by: tiebreaker-1, value: {min: 5, max: 18}}
+        - {by: tiebreaker-2, value: {min: 6, max: 10}}
+      decision: {min: 6, max: 18}
+      rationale: Median of all six votes by the tally; single cenote samples reach 26 dKH and the Usumacinta rivers about 3.6 dKH.
+    - field: features.khDkh.tolerance
+      proposals:
+        - {by: generator, value: {min: 4, max: 21}}
+        - {by: checker-a, value: {min: 4, max: 20}}
+        - {by: checker-b, value: {min: 2, max: 20}}
+        - {by: checker-c, value: {min: 2, max: 10}}
+        - {by: tiebreaker-1, value: {min: 4, max: 20}}
+        - {by: tiebreaker-2, value: {min: 2, max: 20}}
+      decision: {min: 4, max: 20}
+      rationale: Qualified majority of the tally (5 of 6 votes), the median of the agreeing ranges; checker-c's upper end of 10 dKH would not contain the natural range.
+    - field: features.diet
+      proposals:
+        - {by: generator, value: {type: omnivore, bloatSensitive: false}}
+        - {by: checker-a, value: {type: invertivore, bloatSensitive: false}}
+        - {by: checker-b, value: {type: omnivore, bloatSensitive: false}}
+        - {by: checker-c, value: {type: omnivore, bloatSensitive: true}}
+        - {by: tiebreaker-1, value: {type: invertivore, bloatSensitive: false}}
+        - {by: tiebreaker-2, value: {type: invertivore, bloatSensitive: false}}
+      decision: {type: invertivore, bloatSensitive: true}
+      rationale: Conservative decision of the tally; invertivore is the stricter of the proposed types and bloatSensitive is true because one vote set it. The stomach studies support invertivore; the bloat flag is a precaution based on a care sheet warning about excess protein.
+    - field: features.hybridGroups
+      proposals:
+        - {by: generator, value: [thorichthys-meeki-maculipinnis]}
+        - {by: checker-a, value: [amatitlania-nigrofasciata-thorichthys-meeki]}
+        - {by: checker-b, value: []}
+        - {by: checker-c, value: [thorichthys, amatitlania-nigrofasciata-thorichthys-meeki]}
+        - {by: tiebreaker-1, value: [amatitlania-nigrofasciata-thorichthys-meeki, thorichthys-meeki-maculipinnis]}
+        - {by: tiebreaker-2, value: [thorichthys-meeki-maculipinnis, amatitlania-nigrofasciata-thorichthys-meeki]}
+      decision: [amatitlania-nigrofasciata-thorichthys-meeki, thorichthys-meeki-maculipinnis]
+      rationale: Conservative decision of the tally, the union of the groups named by at least two votes; the genus group thorichthys was named once and is not part of the decision. Both groups are new and presumed, since no report shows free choice of partners.
+    - field: features.maxSizeCm
+      proposals:
+        - {by: generator, value: {male: 15, female: 12}}
+        - {by: checker-a, value: {male: 15, female: 12}}
+        - {by: checker-b, value: {male: 15, female: 11}}
+        - {by: checker-c, value: {male: 15, female: 12}}
+      decision: {male: 15, female: 12}
+      rationale: Three runs and the French aquarium federation give about 12 cm for females; checker-b's 11 cm rests on a single hobby guide.
+    - field: features.territory
+      proposals:
+        - {by: generator, value: {size: small, breedingOnly: true}}
+        - {by: checker-a, value: {size: small, breedingOnly: true}}
+        - {by: checker-b, value: {size: small, breedingOnly: true}}
+        - {by: checker-c, value: {size: large, breedingOnly: true}}
+      decision: {size: small, breedingOnly: true}
+      rationale: Wild pairs and colony pairs defend the area around one spawning site; the half-tank territory reported by checker-c was held in a smaller tank, where the defended area grows with confinement.
+    - field: features.social
+      proposals:
+        - {by: generator, value: {structure: pair}}
+        - {by: checker-a, value: {structure: pair}}
+        - {by: checker-b, value: {structure: pair}}
+        - {by: checker-c, value: {structure: group, minGroup: 8}}
+      decision: {structure: pair}
+      rationale: The species is a monogamous biparental spawner; a group of eight is an option for large tanks, but the unit recommended for an ordinary tank is one pair.
+    - field: features.coloration
+      proposals:
+        - {by: generator, value: {baseColors: [grey, blue, red], pattern: bars}}
+        - {by: checker-a, value: {baseColors: [grey, red, blue], pattern: mixed}}
+        - {by: checker-b, value: {baseColors: [grey, red, blue], pattern: mixed}}
+        - {by: checker-c, value: {baseColors: [grey, blue, red, black], pattern: mixed}}
+      decision: {baseColors: [grey, blue, red], pattern: mixed}
+      rationale: Bars, a midlateral blotch, gill cover spots and iridescent spots together make a mixed pattern; the black markings are details rather than a dominant colour.
+    - field: features.feedingSpeed
+      proposals:
+        - {by: generator, value: normal}
+        - {by: checker-a, value: normal}
+        - {by: checker-b, value: normal}
+        - {by: checker-c, value: slow}
+      decision: normal
+      rationale: One care sheet advises getting food to the bottom, but no source reports that the species regularly loses food to tankmates, and a breeding colony fed eagerly.
+    - field: features.minTank
+      proposals:
+        - {by: generator, value: {volumeL: 160, lengthCm: 120, depthCm: 40}}
+        - {by: checker-a, value: {volumeL: 200, lengthCm: 120, depthCm: 40}}
+        - {by: checker-b, value: {volumeL: 110, lengthCm: 120, depthCm: 30}}
+        - {by: checker-c, value: {volumeL: 450, lengthCm: 150, depthCm: 60}}
+      decision: {volumeL: 200, lengthCm: 120, depthCm: 40}
+      rationale: The social unit is one pair, so checker-c's tank for a group of eight does not apply; 120 by 40 cm gives the pair a breeding territory and tankmates room to retreat, which at a usual water height holds about 200 litres.
+    - field: features.lifespanYears
+      proposals:
+        - {by: generator, value: {min: 8, max: 15}}
+        - {by: checker-a, value: {min: 10, max: 15}}
+        - {by: checker-b, value: {min: 8, max: 12}}
+        - {by: checker-c, value: {min: 10, max: 12}}
+      decision: {min: 10, max: 12}
+      rationale: The French aquarium federation, two retailer sheets and the German Wikipedia agree on 10 to 12 years; 15 years appears only on general hobby pages.
+    - field: features.beginnerSuitability
+      proposals:
+        - {by: generator, value: easy}
+        - {by: checker-a, value: easy}
+        - {by: checker-b, value: moderate}
+        - {by: checker-c, value: moderate}
+      decision: moderate
+      rationale: The species is hardy and easy to breed, but it needs a tank of at least 120 cm, a mature aquarium and room for a pair that turns aggressive when breeding, which Seriously Fish rates as moderate.

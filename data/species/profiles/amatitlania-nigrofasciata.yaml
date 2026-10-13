@@ -937,14 +937,19 @@ features:
       votes: {agree: 3, total: 5}
 
   hybridGroups:
-    value: [amatitlania-nigrofasciata-complex, amatitlania-nigrofasciata-hypsophrys-nicaraguensis]
+    value: [amatitlania-nigrofasciata-complex, amatitlania-nigrofasciata-hypsophrys-nicaraguensis,
+      amatitlania-nigrofasciata-thorichthys-meeki]
     confidence: low
     rationale: >-
       The convict cichlid is a member of the presumed group of the four Amatitlania species
       described from its range, which rests on their very close relationship (Schmitter-Soto 2007);
       no cross among them is documented. The presumed two-member group
       amatitlania-nigrofasciata-hypsophrys-nicaraguensis covers the Nicaragua cichlid, with which
-      Seriously Fish reports a captive cross without source or circumstances.
+      Seriously Fish reports a captive cross without source or circumstances. The presumed
+      two-member group amatitlania-nigrofasciata-thorichthys-meeki covers the firemouth, Thorichthys
+      meeki: an aquarist reported that a firemouth female kept without a male of her own species
+      spawned with a convict male and raised young, and a 1982 paper describes hybrids of the two
+      species, though only its title could be read.
     sources:
       - *cof
       - &zt1603
@@ -988,6 +993,26 @@ features:
         title: "Seriously Fish: Hypsophrys nicaraguensis (Nicaragua Cichlid)"
         url: https://www.seriouslyfish.com/species/hypsophrys-nicaraguensis/
         accessed: 2026-10-13
+      - &hyb32
+        kind: literature
+        title: "Horvath, G. Caring for Firemouth cichlids. Practical Fishkeeping (online feature)."
+        url: https://www.practicalfishkeeping.co.uk/features/caring-for-firemouth-cichlids/
+        accessed: 2026-10-13
+      - &hyb33
+        kind: literature
+        title: "Novak, J. F. (1982). Description of hybrids between Cichlasoma meeki and Cichlasoma nigrofasciatum (Pisces: Cichlidae). Vol. 46(2), 109-112 (bibliographic record only)."
+        url: https://openalex.org/W2469891841
+        accessed: 2026-10-13
+      - &hyb34
+        kind: literature
+        title: "Horvath, G. (2023). Eld i akvariet. Ciklidbladet 57(2), 24-36 (abstract only, read in the Cichlid Room Companion bibliography)."
+        url: https://cichlidae.com/reference.php?id=12570
+        accessed: 2026-10-13
+      - &hyb35
+        kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes, species of the genus Thorichthys"
+        url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Thorichthys
+        accessed: 2026-10-13
     evidence:
       - source: *cof
         value: amatitlania-nigrofasciata-complex
@@ -1013,6 +1038,18 @@ features:
       - source: *hyb31
         value: amatitlania-nigrofasciata-hypsophrys-nicaraguensis
         note: "reports a captive cross of the Nicaragua cichlid with the convict cichlid without a source or circumstances"
+      - source: *hyb32
+        value: amatitlania-nigrofasciata-thorichthys-meeki
+        note: "first-hand account of a firemouth female that spawned with a convict male in the same tank and raised intermediate-looking young"
+      - source: *hyb33
+        value: amatitlania-nigrofasciata-thorichthys-meeki
+        note: "title reports hybrids of the two species under their former genus names; the text could not be read"
+      - source: *hyb34
+        value: amatitlania-nigrofasciata-thorichthys-meeki
+        note: "abstract follows the Practical Fishkeeping account, so its early hybrid mishap is the convict cross"
+      - source: *hyb35
+        value: amatitlania-nigrofasciata-thorichthys-meeki
+        note: "lists Cichlasoma meeki as a former combination of Thorichthys meeki; states nothing about crosses"
     verification:
       method: conservative
       votes: {agree: 3, total: 5}
