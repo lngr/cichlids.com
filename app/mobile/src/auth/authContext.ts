@@ -12,6 +12,11 @@ export interface AuthContextValue {
    * and rejects when it fails. Rejects with DiscoveryUnavailableError when Keycloak cannot be reached.
    */
   login(): Promise<boolean>;
+  /**
+   * True on the web when the last login returned without a session (refused by the member or the
+   * code exchange failed), until the next login starts; always false in the native app.
+   */
+  signInFailed: boolean;
   logout(): Promise<void>;
   /**
    * The current access token for the bearer header, refreshed first when it is about to expire;

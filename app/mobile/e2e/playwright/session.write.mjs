@@ -11,6 +11,8 @@
 //   again, the draft opens with them.
 // - After the account is suspended in Keycloak, opening the app signs the member out and the API
 //   deletes the session.
+// - A login that returns without a session (here: refused at Keycloak) brings the member back to
+//   the app with a message and a retry button, and the flag leaves the address.
 //
 // The member is a Keycloak account this spec creates and deletes again. Runs on the isolated write
 // stack only (see e2e/write-stack.sh): the session row and the profile live in the write database.
@@ -19,13 +21,14 @@ import { execFileSync } from "node:child_process";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
-import { API_URL, KEYCLOAK_URL, WEB_URL, byTestId, submitKeycloakLogin } from "./support.mjs";
+import { API_URL, AUTHORIZATION_ENDPOINT, KEYCLOAK_URL, WEB_URL, byTestId, submitKeycloakLogin } from "./support.mjs";
 
 const SPEC_DIR = path.dirname(fileURLToPath(import.meta.url));
 const COMPOSE_FILE = path.resolve(SPEC_DIR, "../../../stack/compose.yaml");
 const UPLOAD_PHOTO = path.join(SPEC_DIR, "..", "fixtures", "upload-photo.jpg");
 const UPLOAD_INPUT_KEY = "cichlids.upload.input";
 const CONNECTION_MESSAGE = "The connection failed. You stay signed in; please try again in a moment.";
+const LOGIN_FAILED_MESSAGE = "Login failed. Please try again.";
 const JWT = /eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+/;
 
 // Runs one statement against the write database and returns its unaligned output.
@@ -191,6 +194,26 @@ try {
   if ((await meName.count()) !== 0) throw new Error("The suspended member still sees the profile");
   if (sessionRow(memberId)) throw new Error("The session of the suspended account still exists");
   console.log("After the suspension, opening the app signs the member out and ends the session");
+
+  // A login that Keycloak reports as refused returns to the app with a message and a retry.
+  await page.goto(`${WEB_URL}/me`, { waitUntil: "networkidle", timeout: 60000 });
+  await loginButton.click({ timeout: 20000 });
+  await page.waitForURL((url) => url.href.startsWith(AUTHORIZATION_ENDPOINT), { timeout: 20000 });
+  const loginState = new URL(page.url()).searchParams.get("state");
+  if (!loginState) throw new Error("The Keycloak login address has no state");
+  await page.goto(`${API_URL}/api/auth/callback?error=access_denied&state=${encodeURIComponent(loginState)}`, {
+    waitUntil: "networkidle",
+    timeout: 60000,
+  });
+  await loginButton.waitFor({ timeout: 30000 });
+  const loginError = byTestId(page, "login-error");
+  await loginError.waitFor({ timeout: 10000 });
+  if ((await loginError.textContent())?.trim() !== LOGIN_FAILED_MESSAGE) {
+    throw new Error(`Expected "${LOGIN_FAILED_MESSAGE}", got "${await loginError.textContent()}"`);
+  }
+  if ((await loginButton.textContent())?.trim() !== "Try again") throw new Error("The login button does not offer a retry");
+  if (new URL(page.url()).searchParams.has("sign_in")) throw new Error(`The failure flag stays in the address ${page.url()}`);
+  console.log(`A refused login returns to the app with "${LOGIN_FAILED_MESSAGE}" and a retry button`);
 
   const unexpected = pageErrors.filter((error) => !error.includes("Failed to fetch"));
   if (unexpected.length > 0) throw new Error(`Page errors: ${unexpected.join("; ")}`);

@@ -55,3 +55,17 @@ export async function endWebSession(apiUrl: string, csrfToken: string | null, fe
   if (csrfToken) headers["X-CSRF-Token"] = csrfToken;
   await fetchImpl(`${apiUrl}/api/auth/logout`, { method: "POST", credentials: "include", headers });
 }
+
+const SIGN_IN_FLAG = "sign_in";
+const SIGN_IN_FAILED = "failed";
+
+/**
+ * Reads the flag the API appends to the return address of a login that did not complete (refused
+ * by the member or the code exchange failed) and returns the address without it.
+ */
+export function takeSignInFailure(href: string): { failed: boolean; cleanUrl: string } {
+  const url = new URL(href);
+  if (url.searchParams.get(SIGN_IN_FLAG) !== SIGN_IN_FAILED) return { failed: false, cleanUrl: href };
+  url.searchParams.delete(SIGN_IN_FLAG);
+  return { failed: true, cleanUrl: url.toString() };
+}

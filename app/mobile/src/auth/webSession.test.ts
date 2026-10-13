@@ -1,7 +1,7 @@
 // Story: TASK-3.41
 import { describe, expect, it, vi } from "vitest";
 import { DiscoveryUnavailableError } from "./discovery";
-import { endWebSession, readWebSession, startWebLogin } from "./webSession";
+import { endWebSession, readWebSession, startWebLogin, takeSignInFailure } from "./webSession";
 
 const apiUrl = "https://cichlids.test";
 
@@ -84,5 +84,32 @@ describe("endWebSession", () => {
     expect(init.method).toBe("POST");
     expect(init.credentials).toBe("include");
     expect(new Headers(init.headers).get("X-CSRF-Token")).toBe("csrf");
+  });
+});
+
+describe("takeSignInFailure", () => {
+  it("reads the failure flag of the API and returns the address without it", () => {
+    expect(takeSignInFailure("https://cichlids.test/me?sign_in=failed")).toEqual({
+      failed: true,
+      cleanUrl: "https://cichlids.test/me",
+    });
+  });
+
+  it("keeps the other query parameters and the fragment", () => {
+    expect(takeSignInFailure("https://cichlids.test/me?tab=drafts&sign_in=failed#top")).toEqual({
+      failed: true,
+      cleanUrl: "https://cichlids.test/me?tab=drafts#top",
+    });
+  });
+
+  it("reports no failure for an address without the flag or with another value", () => {
+    expect(takeSignInFailure("https://cichlids.test/me?tab=drafts")).toEqual({
+      failed: false,
+      cleanUrl: "https://cichlids.test/me?tab=drafts",
+    });
+    expect(takeSignInFailure("https://cichlids.test/me?sign_in=ok")).toEqual({
+      failed: false,
+      cleanUrl: "https://cichlids.test/me?sign_in=ok",
+    });
   });
 });
