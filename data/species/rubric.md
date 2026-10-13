@@ -113,9 +113,11 @@ in the stocking planner:
 | `documented` | At least one cross between named members is reported from the wild or from an aquarium where the fish could choose partners of their own species. | Hard (warning). |
 | `presumed` | Only general warnings exist, such as hobby sources saying that the species of a genus cross and must not share a tank, or a very close relationship. | Medium (caution). |
 
-A forced laboratory cross, such as females kept without a male of their own species, does not make a
-group `documented`. A report of a cross between two specific species where free choice of partners is
-not shown gives a group of those two species with the basis `presumed`.
+A forced laboratory cross, such as females kept without a male of their own species, gives a group of
+those two species with the basis `presumed`: it shows fertile offspring, and in hobby tanks a female
+without a fitting male of her own species is common. A report of a cross between two specific species
+where free choice of partners is not shown also gives a group of those two species with the basis
+`presumed`.
 
 A member is a valid species name or the trade name of a domestic hybrid line, such as Flowerhorn or
 the blood parrot cichlid. Keepers put such lines into community tanks as well, and the risk of an
@@ -125,7 +127,7 @@ reported; the group then names the line itself and leaves the species in its unk
 Every group has a `userNote`: one or two plain-English sentences for hobbyists, shown next to the
 caution or warning. The note explains the background of the group and gives no instructions. It
 says what was observed (wild hybrids, a tank report, only a general warning about the genus, a forced
-laboratory cross that does not count), where and by whom where known, and how reliable that evidence
+laboratory cross), where and by whom where known, and how reliable that evidence
 is, so that a reader understands why the planner shows the caution or warning. Example: "Wild hybrids
 of these two species were found at Thumbi West Island after Cynotilapia afra was introduced there;
 genetic studies confirm the mixing."
