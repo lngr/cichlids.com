@@ -6,10 +6,14 @@ import json
 from pathlib import Path
 import re
 import shutil
+import subprocess
+import sys
 import tempfile
 import unittest
 
 import yaml
+
+sys.dont_write_bytecode = True
 
 spec = importlib.util.spec_from_file_location('manifests', Path(__file__).with_name('check-cluster-manifests.py'))
 check = importlib.util.module_from_spec(spec)
@@ -25,6 +29,11 @@ def resource(docs, kind, name):
     return next(d for d in docs if d['kind'] == kind and d['metadata']['name'] == name)
 
 
+def quantity(value):
+    match = re.fullmatch(r'(\d+)(m|Mi|Gi)?', value)
+    return int(match[1]) * {None: 1, 'm': 0.001, 'Mi': 2**20, 'Gi': 2**30}[match[2]]
+
+
 class EdgeDelivery(unittest.TestCase):
     def test_addons_have_one_owner_and_constrained_permissions(self):
         topology = build('clusters/cichlids/apps')
@@ -36,6 +45,7 @@ class EdgeDelivery(unittest.TestCase):
                             for d in project['destinations']))
         allowed = {(d['group'], d['kind']) for d in project['clusterResourceWhitelist']}
         self.assertNotIn(('*', '*'), allowed)
+        namespaced = {(d['group'], d['kind']) for d in project['namespaceResourceWhitelist']}
         for service in ['ingress-nginx', 'cert-manager']:
             owners = [d for d in topology if d['kind'] == 'Application' and
                       d['spec']['source']['path'] == f'apps/{service}/overlays/cluster']
@@ -43,6 +53,10 @@ class EdgeDelivery(unittest.TestCase):
             self.assertEqual(owners[0]['spec']['project'], 'cichlids-addons')
             self.assertIn('ServerSideApply=true', owners[0]['spec']['syncPolicy']['syncOptions'])
             self.assertFalse(owners[0]['spec']['syncPolicy']['automated']['prune'])
+            self.assertNotIn(check.FINALIZER, owners[0]['metadata'].get('finalizers', []))
+            self.assertIn('RespectIgnoreDifferences=true', owners[0]['spec']['syncPolicy']['syncOptions'])
+            self.assertTrue(all(rule['jqPathExpressions'] == ['.webhooks[]?.clientConfig.caBundle']
+                                for rule in owners[0]['spec']['ignoreDifferences']))
             for env in ['staging', 'prod', 'preview']:
                 self.assertFalse((ROOT / f'apps/{service}/overlays/{env}').exists())
             for doc in build(f'apps/{service}/overlays/cluster'):
@@ -50,6 +64,7 @@ class EdgeDelivery(unittest.TestCase):
                 if 'namespace' not in doc['metadata']:
                     self.assertIn((group, doc['kind']), allowed)
                 else:
+                    self.assertIn((group, doc['kind']), namespaced)
                     self.assertIn(doc['metadata']['namespace'],
                                   {d['namespace'] for d in project['destinations']})
 
@@ -85,13 +100,29 @@ class EdgeDelivery(unittest.TestCase):
             self.assertEqual(issuer['server'], endpoint)
             self.assertEqual(issuer['email'], resource(docs, 'ConfigMap', 'acme-settings')['data']['email'])
             self.assertIn('@', issuer['email'])
-            self.assertEqual(issuer['solvers'], [{'http01': {'ingress': {'ingressClassName': 'nginx'}}}])
+            solver = issuer['solvers'][0]['http01']['ingress']
+            self.assertEqual(solver['ingressClassName'], 'nginx')
+            self.assertEqual(solver['serviceType'], 'ClusterIP')
+            self.assertEqual(solver['podTemplate']['spec']['resources']['limits'],
+                             {'cpu': '100m', 'memory': '128Mi'})
             self.assertEqual(issuer['privateKeySecretRef']['name'], f'letsencrypt-{env}-account')
-        self.assertNotIn('dns01', yaml.safe_dump_all(docs))
+        self.assertFalse(any('dns01' in solver for d in docs if d['kind'] == 'ClusterIssuer'
+                             for solver in d['spec']['acme']['solvers']))
         for doc in docs:
             if doc['kind'] in {'Namespace', 'CustomResourceDefinition', 'ClusterIssuer'}:
                 self.assertEqual(doc['metadata']['annotations']['argocd.argoproj.io/sync-options'],
                                  'Prune=false,Delete=false')
+
+        with tempfile.TemporaryDirectory() as directory:
+            tree = Path(directory) / 'cert-manager'
+            shutil.copytree(ROOT / 'apps/cert-manager', tree)
+            config = tree / 'overlays/cluster/kustomization.yaml'
+            settings = yaml.safe_load(config.read_text())
+            settings['configMapGenerator'][0]['literals'] = ['email=acme@example.invalid']
+            config.write_text(yaml.safe_dump(settings))
+            issuers = [d for d in build(config.parent) if d['kind'] == 'ClusterIssuer']
+            self.assertEqual(len(issuers), 2)
+            self.assertTrue(all(d['spec']['acme']['email'] == 'acme@example.invalid' for d in issuers))
 
     def assert_placeholder(self, docs, host, namespace):
         ingress = resource(docs, 'Ingress', 'placeholder')
@@ -108,6 +139,13 @@ class EdgeDelivery(unittest.TestCase):
         for field in ['requests', 'limits']:
             self.assertIn('cpu', container['resources'][field])
             self.assertIn('memory', container['resources'][field])
+        quota = resource(build('clusters/cichlids/preview'), 'ResourceQuota', 'preview')['spec']['hard']
+        solver = resource(build('apps/cert-manager/overlays/cluster'), 'ClusterIssuer',
+                          'letsencrypt-production')['spec']['acme']['solvers'][0]['http01']['ingress']['podTemplate']['spec']['resources']
+        for field in ['requests', 'limits']:
+            for name in ['cpu', 'memory']:
+                total = quantity(container['resources'][field][name]) + quantity(solver[field][name])
+                self.assertLessEqual(total, quantity(quota[f'{field}.{name}']))
         self.assertEqual(container['ports'][0]['containerPort'], 8080)
         self.assertFalse(deployment['template']['spec']['automountServiceAccountToken'])
         service = resource(docs, 'Service', 'placeholder')['spec']
@@ -148,6 +186,23 @@ class EdgeDelivery(unittest.TestCase):
                 self.assert_placeholder(build(config.parent), f'pr-{number}.dev.cichlids.com', f'pr-{number}')
                 self.assertFalse(check.generate(appset, ROOT, [{**pr, 'state': 'closed'}], chart))
                 self.assertFalse(check.generate(appset, ROOT, [{**pr, 'labels': []}], chart))
+
+    def test_certificate_and_issuer_schemas_accept_valid_and_reject_unknown_fields(self):
+        docs = build('tools/fixtures/cluster-manifests/certificates')
+        docs.append(resource(build('apps/cert-manager/overlays/cluster'), 'ClusterIssuer', 'letsencrypt-production'))
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / 'resources.yaml'
+            path.write_text(yaml.safe_dump_all(docs))
+            command = ['kubeconform', '-strict', '-summary', '-schema-location',
+                       str(ROOT / 'tools/manifest-schemas/{{.ResourceKind}}{{.KindSuffix}}.json'), str(path)]
+            result = subprocess.run(command, capture_output=True, text=True)
+            self.assertEqual(result.returncode, 0, result.stdout)
+            for doc in docs:
+                doc['spec']['unknownField'] = True
+            path.write_text(yaml.safe_dump_all(docs))
+            result = subprocess.run(command, capture_output=True, text=True)
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn('Invalid: 2', result.stdout)
 
     def test_dns_hosts_reference_platform_node_with_destroy_protection(self):
         text = (ROOT / 'infra/platform/dns.tf').read_text()

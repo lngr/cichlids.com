@@ -1,0 +1,126 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../../base
+patches:
+- target:
+    kind: Deployment
+    name: ingress-nginx-controller
+  patch: |
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: ingress-nginx-controller
+    spec:
+      replicas: 1
+      strategy:
+        type: Recreate
+        rollingUpdate: null
+      template:
+        spec:
+          containers:
+          - name: controller
+            args:
+            - /nginx-ingress-controller
+            - --election-id=ingress-nginx-leader
+            - --controller-class=k8s.io/ingress-nginx
+            - --ingress-class=nginx
+            - --configmap=$(POD_NAMESPACE)/ingress-nginx-controller
+            - --validating-webhook=:8443
+            - --validating-webhook-certificate=/usr/local/certificates/cert
+            - --validating-webhook-key=/usr/local/certificates/key
+            - --report-node-internal-ip-address
+            resources:
+              limits:
+                cpu: 500m
+                memory: 256Mi
+- target:
+    kind: Service
+    name: ingress-nginx-controller
+  patch: |
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: ingress-nginx-controller
+    spec:
+      type: ClusterIP
+- target:
+    kind: Job
+    name: ingress-nginx-admission-create
+  patch: |
+    apiVersion: batch/v1
+    kind: Job
+    metadata:
+      name: ingress-nginx-admission-create
+      annotations:
+        argocd.argoproj.io/hook: Sync
+        argocd.argoproj.io/hook-delete-policy: BeforeHookCreation,HookSucceeded
+        argocd.argoproj.io/sync-wave: '-1'
+    spec:
+      ttlSecondsAfterFinished: null
+- target:
+    kind: Job
+    name: ingress-nginx-admission-patch
+  patch: |
+    apiVersion: batch/v1
+    kind: Job
+    metadata:
+      name: ingress-nginx-admission-patch
+      annotations:
+        argocd.argoproj.io/hook: Sync
+        argocd.argoproj.io/hook-delete-policy: BeforeHookCreation,HookSucceeded
+        argocd.argoproj.io/sync-wave: '1'
+    spec:
+      ttlSecondsAfterFinished: null
+- target:
+    kind: ServiceAccount
+  patch: |
+    - op: add
+      path: /metadata/annotations
+      value:
+        argocd.argoproj.io/sync-wave: "-2"
+- target:
+    kind: Role
+  patch: |
+    - op: add
+      path: /metadata/annotations
+      value:
+        argocd.argoproj.io/sync-wave: "-2"
+- target:
+    kind: RoleBinding
+  patch: |
+    - op: add
+      path: /metadata/annotations
+      value:
+        argocd.argoproj.io/sync-wave: "-2"
+- target:
+    kind: ClusterRole
+  patch: |
+    - op: add
+      path: /metadata/annotations
+      value:
+        argocd.argoproj.io/sync-wave: "-2"
+- target:
+    kind: ClusterRoleBinding
+  patch: |
+    - op: add
+      path: /metadata/annotations
+      value:
+        argocd.argoproj.io/sync-wave: "-2"
+- target:
+    kind: Service
+  patch: |
+    - op: add
+      path: /metadata/annotations
+      value:
+        argocd.argoproj.io/sync-wave: "-2"
+- target:
+    kind: Deployment
+    name: ingress-nginx-controller
+  patch: |
+    - op: add
+      path: /spec/template/spec/containers/0/ports/0/hostPort
+      value: 80
+    - op: add
+      path: /spec/template/spec/containers/0/ports/1/hostPort
+      value: 443

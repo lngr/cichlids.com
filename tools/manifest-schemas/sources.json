@@ -11,17 +11,53 @@
     "sha256": "ab225266944322750136f1198d93786e4a79a0e43c8d149abfba44da30a3eac8",
     "url": "https://raw.githubusercontent.com/argoproj/argo-cd/a5038b0e2bbac1715754380ae0084df8e3d5b48c/manifests/crds/appproject-crd.yaml"
   },
+  "certificate": {
+    "sha256": "e03b668ec8675214af6b0a671699d088f2601fa3878e0dbe1b41d3feafd1879f",
+    "url": "https://github.com/cert-manager/cert-manager/releases/download/v1.21.2/cert-manager.yaml"
+  },
+  "clusterissuer": {
+    "sha256": "e03b668ec8675214af6b0a671699d088f2601fa3878e0dbe1b41d3feafd1879f",
+    "url": "https://github.com/cert-manager/cert-manager/releases/download/v1.21.2/cert-manager.yaml"
+  },
+  "clusterrole-rbac-v1": {
+    "sha256": "0777f91c4fa08bd3989b6db8c59dad0429a63dec8f59e883ff55c947a14d0d5f",
+    "url": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/817113f21a2643311cbc3e992bb44ffe1c416c54/v1.36.0-standalone-strict/clusterrole-rbac-v1.json"
+  },
+  "clusterrolebinding-rbac-v1": {
+    "sha256": "e44498f0ead69333bf1d066dec35470f8bf54898ec2647c9e60f8396aa26f04a",
+    "url": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/817113f21a2643311cbc3e992bb44ffe1c416c54/v1.36.0-standalone-strict/clusterrolebinding-rbac-v1.json"
+  },
   "configmap-v1": {
     "sha256": "e0eaddebd677c08aa092b2da2264d86ac4fc34eed112b9fac2945b3f00c1e9b1",
     "url": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/817113f21a2643311cbc3e992bb44ffe1c416c54/v1.36.0-standalone-strict/configmap-v1.json"
+  },
+  "customresourcedefinition": {
+    "sha256": "dcede2063da1d7ad62ecb5af8adb6d7fabd0b52385a7fa0048afb491dac90450",
+    "url": "https://raw.githubusercontent.com/kubernetes/kubernetes/ecf6decece6a6de25a57aad9ba90b6ce580f6f78/api/openapi-spec/swagger.json"
   },
   "deployment-apps-v1": {
     "sha256": "3725782fb01e3f27d8be2da565e2d653d7b78bf6debe5440804cea993c87b8f9",
     "url": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/817113f21a2643311cbc3e992bb44ffe1c416c54/v1.36.0-standalone-strict/deployment-apps-v1.json"
   },
+  "ingress-networking-v1": {
+    "sha256": "4e0f63ad84c2bf22565e489d1f4b885ddaa9f6bf7cff1ddd562553760afe4d79",
+    "url": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/817113f21a2643311cbc3e992bb44ffe1c416c54/v1.36.0-standalone-strict/ingress-networking-v1.json"
+  },
+  "ingressclass-networking-v1": {
+    "sha256": "7a92c21dcb17add498b881563e66adfa23bc2ee75bd208c6d818adb9dd2aa31f",
+    "url": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/817113f21a2643311cbc3e992bb44ffe1c416c54/v1.36.0-standalone-strict/ingressclass-networking-v1.json"
+  },
+  "job-batch-v1": {
+    "sha256": "f49fee30367890a492146d63c3c433a7853e9088ebfe9e25cc792ec4b1400f18",
+    "url": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/817113f21a2643311cbc3e992bb44ffe1c416c54/v1.36.0-standalone-strict/job-batch-v1.json"
+  },
   "limitrange-v1": {
     "sha256": "de9bfabf9ea0bff36b71e5e686d3ecce5246b098061f39a70549f82f8f03acd7",
     "url": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/817113f21a2643311cbc3e992bb44ffe1c416c54/v1.36.0-standalone-strict/limitrange-v1.json"
+  },
+  "mutatingwebhookconfiguration-admissionregistration-v1": {
+    "sha256": "f6d7abff06dc187551017d0bb188940f41ae75f78612211df95a447c686b8711",
+    "url": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/817113f21a2643311cbc3e992bb44ffe1c416c54/v1.36.0-standalone-strict/mutatingwebhookconfiguration-admissionregistration-v1.json"
   },
   "namespace-v1": {
     "sha256": "324fae677b98d1a6d54340db0c334d053e8ffbafceb3f73326e41de2610d5843",
@@ -35,8 +71,28 @@
     "sha256": "9546ed313e622ea84a0ab1ec7ef7e683f05acfbfe97beb746f0b5be6407691df",
     "url": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/817113f21a2643311cbc3e992bb44ffe1c416c54/v1.36.0-standalone-strict/resourcequota-v1.json"
   },
+  "role-rbac-v1": {
+    "sha256": "dfe8fb03b1642f985b57b12edd1727b6867c13ed4b6761ef81bdd51b1d236711",
+    "url": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/817113f21a2643311cbc3e992bb44ffe1c416c54/v1.36.0-standalone-strict/role-rbac-v1.json"
+  },
+  "rolebinding-rbac-v1": {
+    "sha256": "b12ea4163fc37df2e02192b4291b1b7c28836e3e7665d989dd538bfcffa10076",
+    "url": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/817113f21a2643311cbc3e992bb44ffe1c416c54/v1.36.0-standalone-strict/rolebinding-rbac-v1.json"
+  },
+  "service-v1": {
+    "sha256": "8bf019854daed511e7c174896a898173fa65d88ec5937c687a37303d4cc9351b",
+    "url": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/817113f21a2643311cbc3e992bb44ffe1c416c54/v1.36.0-standalone-strict/service-v1.json"
+  },
+  "serviceaccount-v1": {
+    "sha256": "8193d6c3561475c6d3d5c44e1faedb1df53905373d904bc17015694326d659cf",
+    "url": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/817113f21a2643311cbc3e992bb44ffe1c416c54/v1.36.0-standalone-strict/serviceaccount-v1.json"
+  },
   "statefulset-apps-v1": {
     "sha256": "cfa6579916fc2a1be0deb6372a3c67c3747a212131d0cb7b342d645f65639987",
     "url": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/817113f21a2643311cbc3e992bb44ffe1c416c54/v1.36.0-standalone-strict/statefulset-apps-v1.json"
+  },
+  "validatingwebhookconfiguration-admissionregistration-v1": {
+    "sha256": "e3119eb8530edcd3b114b653d2291f9c56bd62ba62349db23d6e4c8fc1eb8bda",
+    "url": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/817113f21a2643311cbc3e992bb44ffe1c416c54/v1.36.0-standalone-strict/validatingwebhookconfiguration-admissionregistration-v1.json"
   }
 }
