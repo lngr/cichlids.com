@@ -5,6 +5,12 @@ using Cichlids.Api.Features.Common;
 using Cichlids.Api.Features.Pictures;
 using Cichlids.Api.Features.Uploads;
 using Cichlids.Domain.Enums;
+using Cichlids.Infrastructure.Media;
+using Cichlids.Tests.Shared;
+using MetadataExtractor;
+using MetadataExtractor.Formats.Exif;
+using MetadataExtractor.Formats.Icc;
+using MetadataExtractor.Formats.Xmp;
 using Microsoft.EntityFrameworkCore;
 using static Cichlids.Api.Tests.Features.Uploads.UploadTestSupport;
 
@@ -19,6 +25,20 @@ public class UploadsEndpointsTests(UploadsFixture fixture)
         var response = await UploadAsync(fixture.Client, token: null, Jpeg(300, 200), "image/jpeg");
 
         Assert.Equal(HttpStatusCode.Unauthorized, response.StatusCode);
+    }
+
+    [Fact]
+    public async Task Publish_MalformedJsonBodyKeepsItsBadRequestStatus()
+    {
+        using var request = new HttpRequestMessage(HttpMethod.Post, "/api/posts/1/publish")
+        {
+            Content = new StringContent("{ not json", System.Text.Encoding.UTF8, "application/json"),
+        };
+        request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", NewToken());
+
+        var response = await fixture.Client.SendAsync(request);
+
+        Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
     }
 
     [Theory]
@@ -102,6 +122,35 @@ public class UploadsEndpointsTests(UploadsFixture fixture)
     }
 
     [Fact]
+    public async Task Upload_SmallPngDeclaring200000By200000PixelsReturnsBadRequestAndStoresNothing()
+    {
+        var (token, subject) = NewCaller();
+        (await ListDraftsAsync(fixture.Client, token)).EnsureSuccessStatusCode();
+
+        var response = await UploadAsync(fixture.Client, token, SyntheticImages.PngDeclaring(200_000, 200_000), "image/png", "bomb.png");
+
+        Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+        Assert.Contains("100 megapixels", await response.Content.ReadAsStringAsync());
+
+        var profileId = await ResolveProfileIdAsync(subject);
+        await using var db = fixture.CreateDbContext();
+        Assert.False(await db.MediaItems.AnyAsync(m => m.OwnerProfileId == profileId));
+        Assert.False(await db.Posts.AnyAsync(p => p.AuthorProfileId == profileId));
+        Assert.Empty(await ListStoredKeysAsync($"originals/uploads/{profileId}/"));
+        Assert.Empty(await ListStoredKeysAsync($"variants/thumb/originals/uploads/{profileId}/"));
+    }
+
+    [Fact]
+    public async Task Upload_PngStripOfOnePixelBy50MillionReturnsBadRequest()
+    {
+        var response = await UploadAsync(
+            fixture.Client, NewToken(), SyntheticImages.PngDeclaring(1, 50_000_000, rows: 1), "image/png", "strip.png");
+
+        Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+        Assert.Contains("1x50000000", await response.Content.ReadAsStringAsync());
+    }
+
+    [Fact]
     public async Task Upload_DocumentsTheRequestBodyLimitResponseInTheOpenApiDocument()
     {
         var response = await fixture.Client.GetAsync("/openapi/v1.json");
@@ -141,7 +190,6 @@ public class UploadsEndpointsTests(UploadsFixture fixture)
         Assert.NotNull(draft.Image.Small);
         Assert.NotNull(draft.Image.Medium);
         Assert.Null(draft.Image.Large);
-        Assert.EndsWith(".jpg", draft.Image.Original);
 
         var profileId = await ResolveProfileIdAsync(subject);
 
@@ -163,12 +211,11 @@ public class UploadsEndpointsTests(UploadsFixture fixture)
         Assert.EndsWith(".jpg", mediaItem.StorageKey);
         Assert.Equal("reef.jpg", mediaItem.OriginalFilename);
         Assert.Equal("image/jpeg", mediaItem.ContentType);
-        Assert.Equal(bytes.LongLength, mediaItem.ByteSize);
+        var stored = await DownloadAsync(mediaItem.StorageKey);
+        Assert.Equal(stored.LongLength, mediaItem.ByteSize);
         Assert.Equal(1000, mediaItem.Width);
         Assert.Equal(700, mediaItem.Height);
-        Assert.Equal(Convert.ToHexStringLower(SHA256.HashData(bytes)), mediaItem.ChecksumSha256);
-
-        Assert.Equal(bytes.LongLength, await fixture.ObjectStore.GetSizeAsync(mediaItem.StorageKey));
+        Assert.Equal(Convert.ToHexStringLower(SHA256.HashData(stored)), mediaItem.ChecksumSha256);
 
         var variants = await db.MediaVariants.Where(v => v.MediaItemId == mediaItem.Id).OrderBy(v => v.Width).ToListAsync();
         Assert.Equal(["thumb", "small", "medium"], variants.Select(v => v.Label));
@@ -179,6 +226,84 @@ public class UploadsEndpointsTests(UploadsFixture fixture)
             Assert.Equal($"variants/{variant.Label}/{mediaItem.StorageKey}.jpg", variant.StorageKey);
             Assert.Equal(variant.ByteSize, await fixture.ObjectStore.GetSizeAsync(variant.StorageKey));
         }
+    }
+
+    [Fact]
+    public async Task Upload_StoresTheOriginalWithoutLocationSerialAndOwnerDataButWithDateOrientationAndColourProfile()
+    {
+        var (token, _) = NewCaller();
+        var bytes = PhotoFixtures.PhoneJpeg(1000, 700, orientation: 6);
+
+        var draft = await UploadDraftAsync(fixture.Client, token, bytes);
+
+        await using var db = fixture.CreateDbContext();
+        var mediaItem = await LoadMediaItemAsync(db, draft.Id);
+        var stored = await DownloadAsync(mediaItem.StorageKey);
+        Assert.False(PhotoFixtures.ContainsSecret(stored), "A SECRET- value survived in the stored original.");
+        var directories = ImageMetadataReader.ReadMetadata(new MemoryStream(stored));
+        Assert.Empty(directories.OfType<GpsDirectory>());
+        Assert.Empty(directories.OfType<XmpDirectory>());
+        var subIfd = Assert.Single(directories.OfType<ExifSubIfdDirectory>());
+        Assert.False(subIfd.ContainsTag(ExifDirectoryBase.TagBodySerialNumber));
+        Assert.False(subIfd.ContainsTag(ExifDirectoryBase.TagLensSerialNumber));
+        Assert.False(subIfd.ContainsTag(ExifDirectoryBase.TagCameraOwnerName));
+        Assert.Equal(PhotoFixtures.CaptureDate, subIfd.GetString(ExifDirectoryBase.TagDateTimeOriginal));
+        var ifd0 = Assert.Single(directories.OfType<ExifIfd0Directory>());
+        Assert.Equal(6, ifd0.GetInt32(ExifDirectoryBase.TagOrientation));
+        Assert.Equal(PhotoFixtures.Model, ifd0.GetString(ExifDirectoryBase.TagModel));
+        Assert.NotEmpty(directories.OfType<IccDirectory>());
+
+        Assert.Equal(700, mediaItem.Width);
+        Assert.Equal(1000, mediaItem.Height);
+        Assert.Equal(stored.LongLength, mediaItem.ByteSize);
+        Assert.Equal(Convert.ToHexStringLower(SHA256.HashData(stored)), mediaItem.ChecksumSha256);
+    }
+
+    [Fact]
+    public async Task Upload_StoresTheOriginalAndItsVariantsWithTheObjectMetadataContract()
+    {
+        var bytes = PhotoFixtures.PhoneJpeg(1000, 700);
+        var sourceSha256 = Convert.ToHexStringLower(SHA256.HashData(bytes));
+
+        var draft = await UploadDraftAsync(fixture.Client, NewToken(), bytes);
+
+        await using var db = fixture.CreateDbContext();
+        var mediaItem = await LoadMediaItemAsync(db, draft.Id);
+        var head = await fixture.ObjectStore.HeadAsync(mediaItem.StorageKey);
+        Assert.NotNull(head);
+        Assert.Equal(mediaItem.ChecksumSha256, head!.Metadata[MediaObjectMetadata.Sha256Key]);
+        Assert.Equal(sourceSha256, head.Metadata[MediaObjectMetadata.SourceSha256Key]);
+        Assert.Equal(MediaObjectMetadata.OriginalPipelineVersion.ToString(), head.Metadata[MediaObjectMetadata.PipelineKey]);
+        Assert.Equal("1000", head.Metadata[MediaObjectMetadata.WidthKey]);
+        Assert.Equal("700", head.Metadata[MediaObjectMetadata.HeightKey]);
+        Assert.Equal("true", head.Metadata[MediaObjectMetadata.DecodableKey]);
+
+        var variants = await db.MediaVariants.Where(v => v.MediaItemId == mediaItem.Id).ToListAsync();
+        Assert.NotEmpty(variants);
+        foreach (var variant in variants)
+        {
+            var variantHead = await fixture.ObjectStore.HeadAsync(variant.StorageKey);
+            var variantBytes = await DownloadAsync(variant.StorageKey);
+            Assert.Equal(Convert.ToHexStringLower(SHA256.HashData(variantBytes)), variantHead!.Metadata[MediaObjectMetadata.Sha256Key]);
+            Assert.Equal(sourceSha256, variantHead.Metadata[MediaObjectMetadata.SourceSha256Key]);
+            Assert.Equal(MediaObjectMetadata.VariantPipelineVersion.ToString(), variantHead.Metadata[MediaObjectMetadata.PipelineKey]);
+        }
+    }
+
+    [Fact]
+    public async Task Upload_StoresAnOriginalAnonymousRequestsCannotReadAndVariantsTheyCan()
+    {
+        var draft = await UploadDraftAsync(fixture.Client, NewToken(), PhotoFixtures.PhoneJpeg(1000, 700));
+
+        await using var db = fixture.CreateDbContext();
+        var mediaItem = await LoadMediaItemAsync(db, draft.Id);
+        var medium = await db.MediaVariants.SingleAsync(v => v.MediaItemId == mediaItem.Id && v.Label == "medium");
+
+        using var anonymous = new HttpClient();
+        using var original = await anonymous.GetAsync($"{fixture.PublicBaseUrl}/{mediaItem.StorageKey}");
+        using var variant = await anonymous.GetAsync($"{fixture.PublicBaseUrl}/{medium.StorageKey}");
+        Assert.Equal(HttpStatusCode.Forbidden, original.StatusCode);
+        Assert.Equal(HttpStatusCode.OK, variant.StatusCode);
     }
 
     [Fact]
@@ -325,6 +450,7 @@ public class UploadsEndpointsTests(UploadsFixture fixture)
             Assert.Equal(draft.Id, payload.RootElement.GetProperty("postId").GetInt64());
             Assert.Equal(published.Slug, payload.RootElement.GetProperty("slug").GetString());
             Assert.Equal(profileId, payload.RootElement.GetProperty("authorProfileId").GetInt64());
+            Assert.Equal(outboxEvent.OccurredAt, outboxEvent.NextAttemptAt);
         }
 
         var gallery = await GetGalleryAsync();
@@ -552,6 +678,15 @@ public class UploadsEndpointsTests(UploadsFixture fixture)
     {
         var mediaItemId = await db.PostMedia.Where(pm => pm.PostId == postId).Select(pm => pm.MediaItemId).SingleAsync();
         return await db.MediaItems.SingleAsync(m => m.Id == mediaItemId);
+    }
+
+    private async Task<byte[]> DownloadAsync(string key)
+    {
+        await using var stream = await fixture.ObjectStore.GetAsync(key);
+        Assert.NotNull(stream);
+        using var buffer = new MemoryStream();
+        await stream!.CopyToAsync(buffer);
+        return buffer.ToArray();
     }
 
     private async Task<List<string>> ListStoredKeysAsync(string prefix)

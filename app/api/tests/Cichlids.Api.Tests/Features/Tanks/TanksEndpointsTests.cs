@@ -61,7 +61,7 @@ public class TanksEndpointsTests(ApiFixture fixture)
 
         Assert.NotNull(tank.MainImage);
         Assert.StartsWith(ApiFixture.ExpectedPublicUrlPrefix, tank.MainImage!.Thumb);
-        Assert.Contains("showcase-1", tank.MainImage.Original);
+        Assert.Contains("showcase-1", tank.MainImage.Thumb);
         Assert.Equal(3, tank.ImageCount);
     }
 
@@ -72,7 +72,7 @@ public class TanksEndpointsTests(ApiFixture fixture)
         var tank = body.Items.Single(t => t.Id == fixture.Seed.PublishedTankWithExplicitMainImage.Id);
 
         Assert.NotNull(tank.MainImage);
-        Assert.Contains("malawi-main", tank.MainImage!.Original);
+        Assert.Contains("malawi-main", tank.MainImage!.Thumb);
         Assert.Equal(0, tank.ImageCount);
     }
 

@@ -90,6 +90,20 @@ public sealed class ProfileMigrationStepTests(EtlFixture fixture)
             Assert.False(await db.Profiles.AnyAsync(p => p.LegacyId == 16));
         }
 
+        await fixture.RunExclusiveAsync(async () =>
+        {
+            await using var db = fixture.CreateTargetContext();
+            var aliceId = await db.Profiles.Where(p => p.LegacyId == 10).Select(p => p.Id).SingleAsync();
+            db.ProfileIdentities.Add(new ProfileIdentity
+            {
+                ProfileId = aliceId,
+                Provider = "oidc",
+                Subject = "keycloak-alice",
+                CreatedAt = DateTimeOffset.UtcNow,
+            });
+            await db.SaveChangesAsync();
+        });
+
         var stats2 = await RunStepAsync();
 
         Assert.Equal(8, stats2.Read);
@@ -103,7 +117,11 @@ public sealed class ProfileMigrationStepTests(EtlFixture fixture)
             // unrelated profile rows (legacy ids 101/102) and a placeholder (999) directly into
             // the same shared table.
             Assert.Equal(8, await db.Profiles.CountAsync(p => p.LegacyId != null && p.LegacyId <= 20));
-            Assert.Equal(6, await db.ProfileIdentities.CountAsync());
+            Assert.Equal(7, await db.ProfileIdentities.CountAsync());
+
+            var alice = await db.Profiles.Include(p => p.Identities).SingleAsync(p => p.LegacyId == 10);
+            Assert.Equal(4, alice.Identities.Count);
+            Assert.Contains(alice.Identities, i => i.Provider == "oidc" && i.Subject == "keycloak-alice");
 
             var handles = await db.Profiles.Where(p => p.LegacyId >= 17 && p.LegacyId <= 20).OrderBy(p => p.LegacyId).Select(p => p.Username).ToListAsync();
             Assert.Equal([eveHandle, "frank", ginaCandidates[1], hankHandle], handles);
@@ -140,7 +158,7 @@ public sealed class ProfileMigrationStepTests(EtlFixture fixture)
     private Task<StepStatistics> RunStepAsync() => fixture.RunExclusiveAsync(async () =>
     {
         await using var context = await EtlContext.CreateAsync(
-            fixture.LegacyConnectionString, fixture.TargetConnectionString, dryRun: false, CancellationToken.None);
+            fixture.LegacyConnectionString, fixture.TargetConnectionString, CancellationToken.None);
         await EtlRunner.RunAsync(new ProfileMigrationStep(), context, CancellationToken.None);
         return context.Statistics.ForStep("profiles");
     });

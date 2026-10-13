@@ -45,7 +45,8 @@ reached, and how long the core keeps trying.
   capped at one hour. The delay counts from the previous attempt.
 - An event is given up only when it is older than a configurable period, seven days by
   default. Until then, it is retried at least hourly.
-- An administrator can trigger the redelivery of given-up events.
+- An administrator can trigger the redelivery of given-up events. A redelivery starts a new
+  period: the event is retried until the configured period has passed since the redelivery.
 - Each event keeps a stable id across redeliveries, so subscribers can discard duplicates.
 - A failure while delivering one event counts as a failed attempt of that event. It never
   stops the delivery of other events or the core itself.

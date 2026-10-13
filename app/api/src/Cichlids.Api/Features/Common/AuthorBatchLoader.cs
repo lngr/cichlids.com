@@ -1,3 +1,4 @@
+using Cichlids.Infrastructure.Media;
 using Cichlids.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,6 +21,12 @@ public static class AuthorBatchLoader
                 pr.AvatarMediaId != null
                     ? context.MediaVariants
                         .Where(v => v.MediaItemId == pr.AvatarMediaId && v.Label == "thumb")
+                        .Select(v => v.StorageKey)
+                        .FirstOrDefault()
+                    : null,
+                pr.AvatarMediaId != null
+                    ? context.MediaVariants
+                        .Where(v => v.MediaItemId == pr.AvatarMediaId && v.Label == MediaVariantSpec.PublicCopyLabel)
                         .Select(v => v.StorageKey)
                         .FirstOrDefault()
                     : null,

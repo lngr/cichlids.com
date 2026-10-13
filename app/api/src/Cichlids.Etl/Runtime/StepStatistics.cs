@@ -29,8 +29,8 @@ public sealed class StepStatistics
 
     public void AddUpdated() => Updated++;
 
-    public void AddSkip(string reason) =>
-        _skipReasons[reason] = _skipReasons.GetValueOrDefault(reason) + 1;
+    public void AddSkip(string reason, int count = 1) =>
+        _skipReasons[reason] = _skipReasons.GetValueOrDefault(reason) + count;
 
     public void AddWarning(string message) => _warnings.Add(message);
 }

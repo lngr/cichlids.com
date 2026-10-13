@@ -16,7 +16,9 @@ public static class TanksEndpoints
         group.MapGet("/", ListAsync).WithName("ListTanks");
         group.MapGet("/{id:long}", GetByIdAsync).WithName("GetTank");
         group.MapGet("/{id:long}/comments", ListCommentsAsync).WithName("ListTankComments");
-        group.MapPost("/{id:long}/comments", CreateCommentAsync).WithName("CreateTankComment").RequireAuthorization();
+        group.MapPost("/{id:long}/comments", CreateCommentAsync).WithName("CreateTankComment")
+            .RequireAuthorization()
+            .ProducesProblem(StatusCodes.Status403Forbidden);
 
         return app;
     }

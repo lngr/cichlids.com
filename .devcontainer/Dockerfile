@@ -16,6 +16,7 @@ RUN apt-get update && \
         curl \
         git \
         jq \
+        libimage-exiftool-perl \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 

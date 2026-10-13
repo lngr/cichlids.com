@@ -7,14 +7,16 @@ namespace Cichlids.Etl.Identity;
 /// <summary>
 /// The "keycloak-import" command: creates a Keycloak user for every legacy account from the
 /// Auth0 export that has a known email or a migrated profile, with the login username the
-/// planner assigns, and links each account with a migrated profile to that profile through an
+/// planner assigns, and links each account with a migrated member profile to that profile through an
 /// oidc profile identity whose subject is the Keycloak user id. Existing Keycloak users are never
 /// changed. An account whose email belongs to an existing user with a verified email is linked to
 /// that user. An email account whose login username another user holds is created with its
 /// generated username. An account whose email belongs to an existing user with an unverified
 /// email, whose email another user holds as username, or which has no free username left is
 /// neither created nor linked and is counted as a conflict. A repeated run over the same data
-/// creates no user and inserts no identity.
+/// creates no user and inserts no identity. On request, the run opens self-registration of the
+/// realm once no account is missing in Keycloak, so the realm accepts new registrations only after
+/// every legacy account exists.
 /// </summary>
 public static class KeycloakAccountImportCommand
 {
@@ -26,8 +28,9 @@ public static class KeycloakAccountImportCommand
     private const string UsernameTakenConflict = "username_taken";
 
     /// <summary>
-    /// Runs the import and prints its summary. Returns 0 on success and 1 when an account could
-    /// not be found in Keycloak after the import.
+    /// Runs the import and prints its summary. With openRegistration, the realm allows
+    /// self-registration afterwards unless an account could not be found in Keycloak. Returns 0
+    /// on success and 1 when an account could not be found in Keycloak after the import.
     /// </summary>
     public static async Task<int> RunAsync(
         string legacyConnectionString,
@@ -35,12 +38,13 @@ public static class KeycloakAccountImportCommand
         string auth0ExportPath,
         KeycloakAdminSettings keycloak,
         GeneratedNames generatedNames,
+        bool openRegistration,
         CancellationToken cancellationToken)
     {
         Console.WriteLine($"Importing legacy accounts from {auth0ExportPath} into Keycloak realm '{keycloak.Realm}' at {keycloak.BaseUrl}...");
 
         var summary = await ImportAsync(
-            legacyConnectionString, targetConnectionString, auth0ExportPath, keycloak, generatedNames, cancellationToken);
+            legacyConnectionString, targetConnectionString, auth0ExportPath, keycloak, generatedNames, openRegistration, cancellationToken);
 
         Console.WriteLine($"Auth0 records read:        {summary.RecordsRead}");
         Console.WriteLine($"Accounts planned:          {summary.AccountsPlanned}");
@@ -65,20 +69,30 @@ public static class KeycloakAccountImportCommand
         Console.WriteLine($"Profile links inserted:    {summary.ProfileLinksInserted}");
         Console.WriteLine($"Profile links present:     {summary.ProfileLinksPresent}");
         Console.WriteLine($"Profile link conflicts:    {summary.ProfileLinkConflicts}");
+        Console.WriteLine($"Profile identities skipped (profile is not a member): {summary.ProfileIdentitiesSkippedNotMember}");
 
         if (summary.Unresolved > 0)
         {
             Console.Error.WriteLine($"Accounts missing in Keycloak after the import: {summary.Unresolved}");
+            if (openRegistration)
+            {
+                Console.Error.WriteLine("Self-registration stays closed.");
+            }
+
             return 1;
         }
 
+        Console.WriteLine(openRegistration
+            ? "Self-registration is open."
+            : "Self-registration is unchanged; pass --open-registration to open it.");
         return 0;
     }
 
     /// <summary>
     /// Plans the accounts from the Auth0 export, the legacy user table and the migrated profiles,
     /// ensures the realm prerequisites, creates the missing Keycloak users and inserts the missing
-    /// oidc profile identities. Generated login usernames come from the given generator.
+    /// oidc profile identities. Generated login usernames come from the given generator. With
+    /// openRegistration, the realm allows self-registration once no account is missing in Keycloak.
     /// </summary>
     public static Task<KeycloakImportSummary> ImportAsync(
         string legacyConnectionString,
@@ -86,6 +100,7 @@ public static class KeycloakAccountImportCommand
         string auth0ExportPath,
         KeycloakAdminSettings keycloak,
         GeneratedNames generatedNames,
+        bool openRegistration,
         CancellationToken cancellationToken) =>
         ImportAsync(
             legacyConnectionString,
@@ -93,6 +108,7 @@ public static class KeycloakAccountImportCommand
             auth0ExportPath,
             keycloak,
             generatedNames,
+            openRegistration,
             KeycloakAdminClient.DefaultUserPageSize,
             KeycloakAdminClient.DefaultImportChunkSize,
             cancellationToken);
@@ -107,13 +123,14 @@ public static class KeycloakAccountImportCommand
         string auth0ExportPath,
         KeycloakAdminSettings keycloak,
         GeneratedNames generatedNames,
+        bool openRegistration,
         int userPageSize,
         int importChunkSize,
         CancellationToken cancellationToken)
     {
         var records = Auth0ExportReader.ReadFile(auth0ExportPath);
         var (members, uidBySubject) = await LoadLegacyMembersAsync(legacyConnectionString, cancellationToken);
-        var identities = await LoadProfileIdentitiesAsync(targetConnectionString, cancellationToken);
+        var (identities, skippedNotMember, oidcOnOtherKinds) = await LoadProfileIdentitiesAsync(targetConnectionString, cancellationToken);
         var legacyIdByProfileId = await LoadProfileLegacyIdsAsync(targetConnectionString, cancellationToken);
 
         var plan = LegacyAccountPlanner.Plan(
@@ -202,6 +219,12 @@ public static class KeycloakAccountImportCommand
                 continue;
             }
 
+            if (oidcOnOtherKinds.Contains(keycloakUserId))
+            {
+                conflicts++;
+                continue;
+            }
+
             if (oidcProfileIdBySubject.TryGetValue(keycloakUserId, out var linkedProfileId))
             {
                 if (linkedProfileId == profileId)
@@ -221,6 +244,11 @@ public static class KeycloakAccountImportCommand
 
         var inserted = await InsertOidcIdentitiesAsync(targetConnectionString, linksToInsert, cancellationToken);
 
+        if (openRegistration && unresolved == 0)
+        {
+            await client.OpenRegistrationAsync(cancellationToken);
+        }
+
         return new KeycloakImportSummary(
             records.Count,
             plan.Accounts.Count,
@@ -236,7 +264,8 @@ public static class KeycloakAccountImportCommand
             inserted,
             present,
             conflicts,
-            unresolved);
+            unresolved,
+            skippedNotMember);
     }
 
     // Every fe_users row with its username, last login and email, and the legacy id each
@@ -283,7 +312,8 @@ public static class KeycloakAccountImportCommand
 
         await using var connection = new NpgsqlConnection(targetConnectionString);
         await connection.OpenAsync(cancellationToken);
-        await using var command = new NpgsqlCommand("SELECT id, legacy_id FROM profile WHERE legacy_id IS NOT NULL", connection);
+        await using var command = new NpgsqlCommand(
+            "SELECT id, legacy_id FROM profile WHERE legacy_id IS NOT NULL AND kind = 'member'", connection);
         await using var reader = await command.ExecuteReaderAsync(cancellationToken);
         while (await reader.ReadAsync(cancellationToken))
         {
@@ -293,8 +323,11 @@ public static class KeycloakAccountImportCommand
         return legacyIdByProfileId;
     }
 
-    // Profile id by subject, grouped by provider, for the providers the import reads.
-    private static async Task<Dictionary<string, Dictionary<string, long>>> LoadProfileIdentitiesAsync(
+    // Profile id by subject, grouped by provider, for the providers the import reads and the
+    // profiles that are members. The count is the number of email and auth0 identities that belong
+    // to a profile of another kind and are left out; the oidc subjects of such profiles are
+    // returned as a set of their own.
+    private static async Task<(Dictionary<string, Dictionary<string, long>> ByProvider, int SkippedNotMember, HashSet<string> OidcOnOtherKinds)> LoadProfileIdentitiesAsync(
         string targetConnectionString, CancellationToken cancellationToken)
     {
         var byProvider = new Dictionary<string, Dictionary<string, long>>(StringComparer.Ordinal);
@@ -302,13 +335,34 @@ public static class KeycloakAccountImportCommand
         await using var connection = new NpgsqlConnection(targetConnectionString);
         await connection.OpenAsync(cancellationToken);
         await using var command = new NpgsqlCommand(
-            "SELECT provider, subject, profile_id FROM profile_identity WHERE provider = ANY(@providers)",
+            """
+            SELECT i.provider, i.subject, i.profile_id, p.kind = 'member'
+            FROM profile_identity i
+            JOIN profile p ON p.id = i.profile_id
+            WHERE i.provider = ANY(@providers)
+            """,
             connection);
         command.Parameters.AddWithValue("providers", new[] { EmailProvider, Auth0Provider, OidcProvider });
         await using var reader = await command.ExecuteReaderAsync(cancellationToken);
+        var skippedNotMember = 0;
+        var oidcOnOtherKinds = new HashSet<string>(StringComparer.Ordinal);
         while (await reader.ReadAsync(cancellationToken))
         {
             var provider = reader.GetString(0);
+            if (!reader.GetBoolean(3))
+            {
+                if (provider == OidcProvider)
+                {
+                    oidcOnOtherKinds.Add(reader.GetString(1));
+                }
+                else
+                {
+                    skippedNotMember++;
+                }
+
+                continue;
+            }
+
             if (!byProvider.TryGetValue(provider, out var bySubject))
             {
                 bySubject = new Dictionary<string, long>(StringComparer.Ordinal);
@@ -318,7 +372,7 @@ public static class KeycloakAccountImportCommand
             bySubject[reader.GetString(1)] = reader.GetInt64(2);
         }
 
-        return byProvider;
+        return (byProvider, skippedNotMember, oidcOnOtherKinds);
     }
 
     private static string SourceName(LoginUsernameSource source) => source switch
@@ -342,13 +396,15 @@ public static class KeycloakAccountImportCommand
         await using var connection = new NpgsqlConnection(targetConnectionString);
         await connection.OpenAsync(cancellationToken);
 
-        // The unique index on (provider, subject) makes a concurrent insert of the same link a
+        // The join on profile keeps links off profiles of other kinds. The unique index on
+        // (provider, subject) makes a concurrent insert of the same link a
         // no-op, so a subject linked in the meantime keeps its existing profile.
         await using var command = new NpgsqlCommand(
             """
             INSERT INTO profile_identity (profile_id, provider, subject, created_at)
             SELECT link.profile_id, @provider, link.subject, now()
             FROM unnest(@subjects, @profile_ids) AS link(subject, profile_id)
+            JOIN profile p ON p.id = link.profile_id AND p.kind = 'member'
             ON CONFLICT (provider, subject) DO NOTHING
             """,
             connection);
@@ -368,7 +424,9 @@ public static class KeycloakAccountImportCommand
 /// dropped records per reason, accounts skipped per conflict reason (existing_unverified,
 /// username_taken), the oidc
 /// profile links inserted, already present, or left untouched because their subject belongs to
-/// another profile, and the accounts that could not be found in Keycloak after the import.
+/// another profile or to a profile that is not a member (both counted as conflicts), the email
+/// and auth0 profile identities left out because their profile is not a member, and
+/// the accounts that could not be found in Keycloak after the import.
 /// </summary>
 public sealed record KeycloakImportSummary(
     int RecordsRead,
@@ -382,4 +440,5 @@ public sealed record KeycloakImportSummary(
     int ProfileLinksInserted,
     int ProfileLinksPresent,
     int ProfileLinkConflicts,
-    int Unresolved);
+    int Unresolved,
+    int ProfileIdentitiesSkippedNotMember);

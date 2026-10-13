@@ -1,3 +1,4 @@
+using Cichlids.Infrastructure.Media;
 using Cichlids.Infrastructure.Persistence;
 using Cichlids.Infrastructure.Storage;
 using DotNet.Testcontainers.Builders;
@@ -55,6 +56,12 @@ public sealed class UploadsFixture : IAsyncLifetime
     /// </summary>
     public IObjectStore ObjectStore { get; private set; } = null!;
 
+    /// <summary>
+    /// The URL prefix under which the bucket's objects answer anonymous requests, with the public
+    /// read policy the ETL applies to the dev bucket.
+    /// </summary>
+    public string PublicBaseUrl { get; private set; } = null!;
+
     public async Task InitializeAsync()
     {
         await Task.WhenAll(_postgres.StartAsync(), _rustfs.StartAsync());
@@ -74,9 +81,6 @@ public sealed class UploadsFixture : IAsyncLifetime
                     ["ObjectStorage:SecretKey"] = ObjectStoreSecretKey,
                     ["ObjectStorage:ForcePathStyle"] = "true",
                     ["ObjectStorage:PublicBaseUrl"] = $"{serviceUrl}/{ObjectStoreBucket}",
-                    ["Authentication:Authority"] = TestTokens.Issuer,
-                    ["Authentication:Audience"] = TestTokens.Audience,
-                    ["Authentication:RequireHttpsMetadata"] = "false",
                     ["OutboxDispatcher:Enabled"] = "false",
                 }));
 
@@ -102,6 +106,8 @@ public sealed class UploadsFixture : IAsyncLifetime
 
         ObjectStore = _factory.Services.GetRequiredService<IObjectStore>();
         await EnsureBucketAsync((S3ObjectStore)ObjectStore);
+        await ((S3ObjectStore)ObjectStore).EnsurePublicReadPolicyAsync(MediaStorageKeys.PublicPrefixes);
+        PublicBaseUrl = $"{serviceUrl}/{ObjectStoreBucket}";
     }
 
     public async Task DisposeAsync()

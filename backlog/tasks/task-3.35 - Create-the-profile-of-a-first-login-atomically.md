@@ -1,14 +1,15 @@
 ---
 id: TASK-3.35
 title: Create the profile of a first login atomically
-status: To Do
+status: In Review
 assignee: []
 created_date: '2026-10-12 04:48'
-updated_date: '2026-10-12 06:40'
+updated_date: '2026-10-12 07:19'
 labels: []
 dependencies: []
 references:
   - REVIEW-MVP.md
+  - app/api/tests/Cichlids.Api.Tests/Features/Auth/FirstLoginTests.cs
 parent_task_id: TASK-3
 priority: high
 ordinal: 58000
@@ -24,8 +25,8 @@ Profile and oidc identity of a first login are stored in one transaction; on a c
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Given a new account, When the app sends several authenticated requests at the same moment right after the first login, Then all succeed and exactly one profile exists
-- [ ] #2 Given a login bound to an archived profile, When the app calls the me endpoint, Then the API answers with a clear refusal and no server error
+- [x] #1 Given a new account, When the app sends several authenticated requests at the same moment right after the first login, Then all succeed and exactly one profile exists
+- [x] #2 Given a login bound to an archived profile, When the app calls the me endpoint, Then the API answers with a clear refusal and no server error
 <!-- AC:END -->
 
 ## Definition of Done
@@ -126,3 +127,21 @@ Profile and oidc identity of a first login are stored in one transaction; on a c
   - TASK-3.40 adopts the problem-details `code` field as its error-code convention.
 - **Retries run out** only if three conflicting commits land within milliseconds. The result is a logged 500.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### Implemented
+- CurrentProfileService creates the profile and its oidc identity in a single save (Profile.Identities). On a unique violation (23505) only the two new entries are detached, then the subject is looked up again (a parallel first call won) and otherwise the create is retried with a fresh username candidate, at most 3 attempts. After the last attempt one final lookup by subject runs before the service throws.
+- A subject bound to a profile whose kind is not member raises NonMemberLoginException (warning with profile id, kind and subject). NonMemberLoginExceptionHandler answers 403 as application/problem+json with the code non_member_profile. Program.cs registers AddProblemDetails and the handler and runs UseExceptionHandler as the first middleware; BadHttpRequestException keeps its own status code (for example 400 for malformed JSON).
+- Every authenticated endpoint that resolves the profile documents the 403 response (ProducesProblem); the client in app/client-core is regenerated.
+- Tests: app/api/tests/Cichlids.Api.Tests/Features/Auth/FirstLoginTests.cs (deterministic interceptor races including a same-subject winner on the last attempt, 10 concurrent requests, refusal for Archived and System, service warning), an OpenAPI test for the 403 responses and a malformed JSON status test in UploadsEndpointsTests.
+
+### Operator checks (dev stack, not automated)
+- AC #1: a fresh Keycloak user signs in with the app; the Me tab calls /api/me and /api/me/drafts together and the profile appears. For another new user run 10 parallel curl calls on /api/me with that user's token; every line reads 200. SQL: `SELECT count(*) FROM profile_identity WHERE provider='oidc' AND subject='<sub>'` returns 1; `SELECT count(*) FROM profile p WHERE p.kind='member' AND p.legacy_id IS NULL AND NOT EXISTS (SELECT 1 FROM profile_identity i WHERE i.profile_id=p.id)` returns 0.
+- AC #2 (dev only): `UPDATE profile_identity SET profile_id=<archived id> WHERE provider='oidc' AND subject='<sub>'`; `curl -i` on /api/me shows 403, Content-Type application/problem+json and code non_member_profile; the API log holds one warning. Revert the update.
+- Before staging: `SELECT count(*) FROM profile_identity i JOIN profile p ON p.id=i.profile_id WHERE i.provider='oidc' AND p.kind<>'member'` returns 0.
+
+### Follow-ups
+- TASK-3.40 translates the code non_member_profile in the app; TASK-3.41 treats this 403 as a message without token refresh or sign-out.
+<!-- SECTION:NOTES:END -->

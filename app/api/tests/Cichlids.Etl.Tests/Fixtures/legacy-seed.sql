@@ -227,10 +227,13 @@ VALUES
     (300, 390, 0, 0, 1, 'Picture Fixture Tank', 100, 40, 40, 'centimeters',
      2000000000, 2000000000, '', '', '2001', ',2006,2099', ',2003', '');
 
--- Comment/rating/vote step fixtures (CommentMigrationStepTests): owner legacy ids 400-402 and
+-- Comment/rating/vote step fixtures (CommentMigrationStepTests): member legacy ids 400-404 and
 -- target legacy id 4001 (post)/4101 (tank) are their own range, disjoint from every id range
 -- above. CommentMigrationStepTests seeds the matching profile/post/tank rows directly in
 -- Postgres, the same way PictureMigrationStepTests does, instead of running the earlier steps.
+-- Member 401 owns post 4001 and tank 4101. Members 400, 403 and 404 rate the post once each,
+-- except that member 400 rates it a second time with the older uid 5016, which collapses into
+-- 5001. The owner's own rating (uid 5017) is a self-rating.
 --
 -- The "target_deleted" vault rows below deliberately target picture uid 2005 and tank uid 1, both
 -- already seeded above as soft-deleted rows nothing ever turns into a post/tank: reusing them
@@ -244,7 +247,7 @@ VALUES
     -- uid 5001: text plus a star rating, split into both a comment and a rating row.
     (5001, 1, 4001, 4, NULL, 'Great tank!', 400, 1700000000, 0, 0, 0, 0, NULL, NULL, 7),
     -- uid 5002: no text, only a rating -- a rating-only row.
-    (5002, 1, 4001, 5, NULL, NULL, 400, 1700000010, 0, 0, 0, 0, NULL, NULL, 0),
+    (5002, 1, 4001, 5, NULL, NULL, 403, 1700000010, 0, 0, 0, 0, NULL, NULL, 0),
     -- uid 5003: neither text nor rating -- content-empty, skipped entirely.
     (5003, 1, 4001, 0, NULL, NULL, 400, 1700000020, 0, 0, 0, 0, NULL, NULL, 0),
     -- uid 5004: targets picture 2005 (PictureMigrationStepTests' soft-deleted fixture row), which
@@ -262,7 +265,7 @@ VALUES
     (5008, 1, 4001, 0, NULL, 'placeholder author note', 402, 1700000070, 0, 0, 0, 0, NULL, NULL, 0),
     -- uid 5009: hidden with a delete trail -- the comment gets a moderation trail, its rating
     -- still migrates (the comment text is moderated away, the star rating is not).
-    (5009, 1, 4001, 2, NULL, 'hidden comment text', 400, 1700000080, 0, 0, 1, 1700000090, 'spam', 401, 0),
+    (5009, 1, 4001, 2, NULL, 'hidden comment text', 404, 1700000080, 0, 0, 1, 1700000090, 'spam', 401, 0),
     -- uid 5010: targets tank 4101 instead of a post, exercising the tank side of the split.
     (5010, 2, 4101, 3, NULL, 'tank comment', 400, 1700000100, 0, 0, 0, 0, NULL, NULL, 0),
     -- uid 5011: soft-deleted at the top level -- skipped before target resolution even runs.
@@ -276,7 +279,11 @@ VALUES
     -- other letter case: both get the same generated guest name.
     (5014, 1, 4001, 0, 'Shared.Guest@Example.com', 'guest note with an address', 0, 1700000140, 0, 0, 0, 0, NULL, NULL, 0),
     -- uid 5015: a guest name that contains a second address, on the tank.
-    (5015, 2, 4101, 0, 'Mail me: other.guest@example.org', 'second guest note', 0, 1700000150, 0, 0, 0, 0, NULL, NULL, 0);
+    (5015, 2, 4101, 0, 'Mail me: other.guest@example.org', 'second guest note', 0, 1700000150, 0, 0, 0, 0, NULL, NULL, 0),
+    -- uid 5016: an older rating of member 400 on post 4001 -- collapsed into the newer uid 5001.
+    (5016, 1, 4001, 1, NULL, NULL, 400, 1699999990, 0, 0, 0, 0, NULL, NULL, 0),
+    -- uid 5017: the owner 401 rates their own post 4001 -- the text migrates, the rating does not.
+    (5017, 1, 4001, 5, NULL, 'owner note', 401, 1700000160, 0, 0, 0, 0, NULL, NULL, 0);
 
 INSERT INTO user_cichlids_comments_rated (comment_uid, fe_user, rated, tstamp) VALUES
     -- Earliest of the two 5001/401 rows wins (+1), the later one is a counted duplicate.

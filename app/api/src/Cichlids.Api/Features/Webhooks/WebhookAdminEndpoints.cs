@@ -1,5 +1,6 @@
 using Cichlids.Api.Features.Auth;
 using Cichlids.Domain.Entities;
+using Cichlids.Infrastructure.Outbox;
 using Cichlids.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
@@ -8,9 +9,9 @@ using Microsoft.EntityFrameworkCore;
 namespace Cichlids.Api.Features.Webhooks;
 
 /// <summary>
-/// Minimal admin management for webhook subscriptions: registration and listing only. There is no
-/// update or delete endpoint; re-registering a corrected subscription is cheap at this scale and
-/// an operator UI does not exist yet to justify the extra surface.
+/// Admin management for webhook subscriptions: registration and listing. A registration is
+/// accepted only for a target the webhook target allowlist allows. Correcting a subscription means
+/// registering a new one, which is cheap at this scale.
 /// </summary>
 public static class WebhookAdminEndpoints
 {
@@ -27,7 +28,10 @@ public static class WebhookAdminEndpoints
     }
 
     private static async Task<Results<Created<WebhookDto>, BadRequest<string>>> CreateAsync(
-        CichlidsDbContext context, [FromBody] CreateWebhookRequest request, CancellationToken cancellationToken)
+        CichlidsDbContext context,
+        WebhookTargetPolicy targetPolicy,
+        [FromBody] CreateWebhookRequest request,
+        CancellationToken cancellationToken)
     {
         var url = request.Url?.Trim();
         var secret = request.Secret?.Trim();
@@ -36,9 +40,9 @@ public static class WebhookAdminEndpoints
             .Select(t => t.Trim())
             .ToList() ?? [];
 
-        if (string.IsNullOrEmpty(url) || !Uri.TryCreate(url, UriKind.Absolute, out _))
+        if (!targetPolicy.IsAllowed(url, out var rejection))
         {
-            return TypedResults.BadRequest("A valid absolute url is required.");
+            return TypedResults.BadRequest(rejection);
         }
 
         if (string.IsNullOrEmpty(secret))

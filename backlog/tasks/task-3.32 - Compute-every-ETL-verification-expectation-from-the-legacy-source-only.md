@@ -1,14 +1,20 @@
 ---
 id: TASK-3.32
 title: Compute every ETL verification expectation from the legacy source only
-status: To Do
+status: In Review
 assignee: []
 created_date: '2026-10-12 04:48'
-updated_date: '2026-10-12 06:40'
+updated_date: '2026-10-12 08:44'
 labels: []
 dependencies: []
 references:
   - REVIEW-MVP.md
+  - app/api/tests/Cichlids.Etl.Tests/VerifyStepTests.cs
+  - app/api/tests/Cichlids.Etl.Tests/VerifyEtlFixture.cs
+  - app/api/tests/Cichlids.Etl.Tests/VerificationReportPrinterTests.cs
+  - app/api/tests/Cichlids.Etl.Tests/RatingSelectionTests.cs
+  - app/api/tests/Cichlids.Etl.Tests/LegacyLocalTimeTests.cs
+  - app/api/tests/Cichlids.Etl.Tests/CommentMigrationStepTests.cs
 parent_task_id: TASK-3
 priority: high
 ordinal: 54000
@@ -24,9 +30,9 @@ The verify step derives all expectations from the legacy database, expects no AP
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Given a target where the operator deleted one migrated post, When the verify step runs, Then it reports a post mismatch and the comment comparison is not silently adjusted
-- [ ] #2 Given a correct import, When the verify step runs, Then every comparison passes and names its rule in the report
-- [ ] #3 Given the imported votes, When the operator queries for a vote older than its comment, Then there is none
+- [x] #1 Given a target where the operator deleted one migrated post, When the verify step runs, Then it reports a post mismatch and the comment comparison is not silently adjusted
+- [x] #2 Given a correct import, When the verify step runs, Then every comparison passes and names its rule in the report
+- [x] #3 Given the imported votes, When the operator queries for a vote older than its comment, Then there is none
 <!-- AC:END -->
 
 ## Definition of Done
@@ -88,3 +94,36 @@ The verify step derives all expectations from the legacy database, expects no AP
 - The rating winner set holds about 1.25M uids in memory, which is acceptable.
 - Size L, about 8 commits, 2.5 to 3 days.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### Implementation
+- VerifyStep computes every expected count from the legacy MySQL only: eligible pictures with owner (not deleted, pid 21, 29, 109, 131), tanks with owner (deleted = 0) and species (deleted = 0). It reads no migrated ids from Postgres. Actual values are whole-table counts, so a row the import did not write is a mismatch.
+- profiles_member counts every member profile. identities_oidc is an information row for the links the Keycloak account import writes.
+- Every VerificationRow has a mandatory, non-empty Rule (checked in the record itself). The console table prints a rule line under each row, the JSON has a rule field. The sentences live in Runtime/MigrationRules.cs.
+- Ratings (ETL): Steps/RatingSelection.cs drops self-ratings, then keeps the newest rating per member and target (tie: higher legacy uid); fe_user 0 ratings always migrate. CommentMigrationStep detects self-ratings by target profile ids (rater profile equals post author or tank owner) and reports the skip counters rating_collapsed_older and rating_self_dropped. The comment text of a dropped rating migrates.
+- Ratings (verify): an independent count from legacy owner fe_user maps, the check rating_not_newest (every migrated rating is an anonymous rating or the newest legacy rating of its member and target, expected 0), plus information rows rating_collapsed and rating_self_dropped.
+- Vote times: Runtime/LegacyLocalTime.cs reads the vote DATETIME as America/New_York (spring gap shifted one hour forward, ambiguous autumn hour read as standard time). Verify adds comment_vote_not_before_comment (expected 0).
+- Empty galleries: verify adds the legacy-derived information row collection_skipped_empty. The step counter and class comment of GalleryMigrationStep belong to TASK-3.39.
+- TASK-3 notes list the rating, anonymous-rating, vote-time and empty-gallery rules; app/stack/README.md states that verify expects a target holding only the import.
+
+### Deviation from the plan
+- Self-ratings are dropped before the newest rating is chosen. This matches the expected real figures below (14,952 self-ratings are rows, 30,016 collapsed among the remaining member ratings). Choosing the newest rating first gives the same rating total, but other counters (10,275 and 34,693).
+
+### Tests
+- VerifyEtlFixture runs EtlRunner.RunAllAsync once into an isolated database; VerifyInRolledBackTransactionAsync mutates and verifies inside a transaction it rolls back.
+- AC 1: VerifyStepTests.FlagsADeletedPostWithoutAdjustingTheCommentExpectations (post 2 vs 1, comment 3 vs 1, vault 3 vs 3).
+- AC 2: VerifyStepTests.ReportsNoMismatchesAfterAFullPipelineRun (zero mismatches, all rows asserted) and EveryRowNamesItsRule; VerificationReportPrinterTests.
+- AC 3: LegacyLocalTimeTests (DST change days), CommentMigrationStepTests (converted vote time) and the verify invariant row with a seed vote that precedes its comment when read as UTC.
+- VerifyStepTests.FlagsAMigratedRatingThatIsNotTheNewestOfItsMember swaps a migrated rating to the collapsed legacy uid and expects a rating_not_newest mismatch.
+- RatingSelectionTests cover newest wins, tie by uid, anonymous ratings and self-ratings; CommentMigrationStepTests cover the collapsed and the self-rating counters.
+- Full backend suite green: Infrastructure 113, Api 219, Etl 299; Cichlids.Etl.Tests 300 with the newest-rating check.
+
+### Operator checks (dev stack, not automated)
+- AC 1: after reset and full run, delete one post with its dependents in psql (comment_vote of its comments, comment, rating, slug_alias, post_species, collection_entry, then post), run etl verify: post shows mismatch -1, comment shows a mismatch with the expected value of the clean run. Reset afterwards.
+- AC 2: reset, full run, etl verify --out /tmp/v.json prints Result: ok; jq '[.rows[]|select((.rule//"")=="")]|length' /tmp/v.json returns 0.
+- Expected real figures: rating 1,252,380, rating_self_dropped 14,952, rating_collapsed 30,016, collection 161, collection_skipped_empty 86. The rating figures were confirmed read-only against the legacy MySQL.
+- AC 3: SELECT COUNT(*) FROM comment_vote v JOIN comment c ON c.id = v.comment_id WHERE v.created_at < c.created_at; returns 0. Read as UTC, 4,838 legacy votes precede their comment; after the New York conversion none does (checked against the legacy data).
+- An ETL image needs tzdata for America/New_York; CI and the devcontainer have it.
+<!-- SECTION:NOTES:END -->

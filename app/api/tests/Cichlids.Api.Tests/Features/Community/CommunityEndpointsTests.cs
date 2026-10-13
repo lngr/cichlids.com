@@ -188,7 +188,6 @@ public class CommunityEndpointsTests(ApiFixture fixture)
         Assert.Equal(fixture.Seed.CommunityCichlidsThreadAGuestPostAttachmentMediaItemId, attachment.MediaItemId);
         Assert.StartsWith(ApiFixture.ExpectedPublicUrlPrefix, attachment.Image.Thumb);
         Assert.StartsWith(ApiFixture.ExpectedPublicUrlPrefix, attachment.Image.Small);
-        Assert.StartsWith(ApiFixture.ExpectedPublicUrlPrefix, attachment.Image.Original);
     }
 
     [Fact]

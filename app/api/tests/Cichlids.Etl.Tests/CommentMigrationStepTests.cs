@@ -21,7 +21,7 @@ public sealed class CommentMigrationStepTests(EtlFixture fixture)
         // uid 1/2 are PictureMigrationStepTests'/TankMigrationStepTests' shared "give this legacy
         // user some content" rows: this step reads user_cichlids_comments unconditionally, and
         // their default type (0) lands them in the unknown_type vault path alongside uid 5006.
-        Assert.Equal(17, stats1.Read);
+        Assert.Equal(19, stats1.Read);
         Assert.Equal(1, stats1.SkipReasons.GetValueOrDefault("comment_deleted"));
         Assert.Equal(3, stats1.SkipReasons.GetValueOrDefault("comment_vaulted_unknown_type"));
         Assert.Equal(2, stats1.SkipReasons.GetValueOrDefault("comment_vaulted_target_deleted"));
@@ -30,8 +30,10 @@ public sealed class CommentMigrationStepTests(EtlFixture fixture)
         Assert.Equal(1, stats1.SkipReasons.GetValueOrDefault("comment_rating_from_hidden_comment"));
         Assert.Equal(1, stats1.SkipReasons.GetValueOrDefault("comment_vote_duplicate"));
         Assert.Equal(2, stats1.SkipReasons.GetValueOrDefault("comment_vote_target_not_migrated"));
-        // 7 vault rows + 7 comments + 4 ratings + 2 votes.
-        Assert.Equal(20, stats1.Inserted);
+        Assert.Equal(1, stats1.SkipReasons.GetValueOrDefault("rating_collapsed_older"));
+        Assert.Equal(1, stats1.SkipReasons.GetValueOrDefault("rating_self_dropped"));
+        // 7 vault rows + 8 comments + 4 ratings + 2 votes.
+        Assert.Equal(21, stats1.Inserted);
         Assert.Equal(0, stats1.Updated);
         Assert.Contains(stats1.Warnings, w => w.Contains("legacy user 402"));
         Assert.Contains(stats1.Warnings, w => w.StartsWith("post rating_average recompute:", StringComparison.Ordinal));
@@ -64,6 +66,16 @@ public sealed class CommentMigrationStepTests(EtlFixture fixture)
             Assert.False(await db.Comments.AnyAsync(c => c.LegacyId == 5002));
             var rating5002 = await db.Ratings.SingleAsync(r => r.LegacyCommentId == 5002);
             Assert.Equal((short)5, rating5002.Stars);
+
+            // uid 5016: an older rating of member 400 on the same post as 5001 collapses into it.
+            Assert.False(await db.Ratings.AnyAsync(r => r.LegacyCommentId == 5016));
+            Assert.Equal(1, await db.Ratings.CountAsync(r => r.PostId == post4001.Id && r.ProfileId == owner400.Id));
+
+            // uid 5017: the owner's rating of their own post is dropped, the text stays.
+            var ownerComment = await db.Comments.SingleAsync(c => c.LegacyId == 5017);
+            Assert.Equal(owner401.Id, ownerComment.AuthorProfileId);
+            Assert.Equal("owner note", ownerComment.Body);
+            Assert.False(await db.Ratings.AnyAsync(r => r.LegacyCommentId == 5017));
 
             // uid 5003: content-empty, neither row exists.
             Assert.False(await db.Comments.AnyAsync(c => c.LegacyId == 5003));
@@ -143,6 +155,11 @@ public sealed class CommentMigrationStepTests(EtlFixture fixture)
             // Votes: 5 source rows -> 2 valid, 1 duplicate, 2 on rows that never became a comment.
             Assert.Equal(2, await db.CommentVotes.CountAsync());
 
+            // Vote timestamps are New York wall-clock times: 10:00 EST is 15:00 UTC.
+            var vote401 = await db.CommentVotes.SingleAsync(
+                v => v.CommentId == comment5001.Id && v.ProfileId == owner401.Id);
+            Assert.Equal(new DateTimeOffset(2024, 1, 1, 15, 0, 0, TimeSpan.Zero), vote401.CreatedAt);
+
             // Aggregate recompute: post4001's rating_average/rating_count now reflect the three
             // migrated ratings against it (4, 5, 2), not the stale legacy denorm value (1.0/1)
             // this fixture seeded on purpose.
@@ -161,7 +178,7 @@ public sealed class CommentMigrationStepTests(EtlFixture fixture)
 
         var stats2 = await RunStepAsync();
 
-        Assert.Equal(17, stats2.Read);
+        Assert.Equal(19, stats2.Read);
         Assert.Equal(1, stats2.SkipReasons.GetValueOrDefault("comment_deleted"));
         Assert.Equal(3, stats2.SkipReasons.GetValueOrDefault("comment_vaulted_unknown_type"));
         Assert.Equal(2, stats2.SkipReasons.GetValueOrDefault("comment_vaulted_target_deleted"));
@@ -170,11 +187,13 @@ public sealed class CommentMigrationStepTests(EtlFixture fixture)
         Assert.Equal(1, stats2.SkipReasons.GetValueOrDefault("comment_rating_from_hidden_comment"));
         Assert.Equal(1, stats2.SkipReasons.GetValueOrDefault("comment_vote_duplicate"));
         Assert.Equal(2, stats2.SkipReasons.GetValueOrDefault("comment_vote_target_not_migrated"));
+        Assert.Equal(1, stats2.SkipReasons.GetValueOrDefault("rating_collapsed_older"));
+        Assert.Equal(1, stats2.SkipReasons.GetValueOrDefault("rating_self_dropped"));
         // The vault is insert-only (ON CONFLICT DO NOTHING): none of its 7 rows count as inserted
-        // or updated on a rerun. The 7 comments and 4 ratings already exist, so they count as
+        // or updated on a rerun. The 8 comments and 4 ratings already exist, so they count as
         // updated; the 2 votes already exist too, so they add nothing at all.
         Assert.Equal(0, stats2.Inserted);
-        Assert.Equal(11, stats2.Updated);
+        Assert.Equal(12, stats2.Updated);
         // The placeholder profile already exists on the second run, so it is not created again.
         Assert.DoesNotContain(stats2.Warnings, w => w.Contains("legacy user 402"));
 
@@ -182,7 +201,7 @@ public sealed class CommentMigrationStepTests(EtlFixture fixture)
         {
             // Byte-stable: the vault, comments, ratings and votes this class owns are unchanged.
             Assert.Equal(7, await db.LegacyComments.CountAsync());
-            Assert.Equal(7, await db.Comments.CountAsync(c => c.LegacyId >= 5000 && c.LegacyId < 6000));
+            Assert.Equal(8, await db.Comments.CountAsync(c => c.LegacyId >= 5000 && c.LegacyId < 6000));
             Assert.Equal(4, await db.Ratings.CountAsync(r => r.LegacyCommentId >= 5000 && r.LegacyCommentId < 6000));
             Assert.Equal(2, await db.CommentVotes.CountAsync());
 
@@ -198,7 +217,7 @@ public sealed class CommentMigrationStepTests(EtlFixture fixture)
         }
     }
 
-    // Owner legacy ids 400-402 and target legacy ids 4001 (post)/4101 (tank) are their own range,
+    // Member legacy ids 400-404 and target legacy ids 4001 (post)/4101 (tank) are their own range,
     // disjoint from every other step test's fixtures. Seeded directly (idempotent find-or-create),
     // the same way PictureMigrationStepTests/TankMigrationStepTests seed their own prerequisites,
     // instead of running ProfileMigrationStep/TankMigrationStep/PictureMigrationStep.
@@ -218,28 +237,31 @@ public sealed class CommentMigrationStepTests(EtlFixture fixture)
             });
         }
 
-        if (!await db.Profiles.AnyAsync(p => p.LegacyId == 401))
+        foreach (var legacyId in (int[])[401, 403, 404])
         {
-            db.Profiles.Add(new Profile
+            if (!await db.Profiles.AnyAsync(p => p.LegacyId == legacyId))
             {
-                LegacyId = 401,
-                Username = "comment-fixture-owner-401",
-                DisplayName = "Comment Fixture Owner 401",
-                Kind = ProfileKind.Member,
-                CreatedAt = DateTimeOffset.FromUnixTimeSeconds(1700000000),
-            });
+                db.Profiles.Add(new Profile
+                {
+                    LegacyId = legacyId,
+                    Username = $"comment-fixture-owner-{legacyId}",
+                    DisplayName = $"Comment Fixture Owner {legacyId}",
+                    Kind = ProfileKind.Member,
+                    CreatedAt = DateTimeOffset.FromUnixTimeSeconds(1700000000),
+                });
+            }
         }
 
         await db.SaveChangesAsync();
 
-        var owner400 = await db.Profiles.SingleAsync(p => p.LegacyId == 400);
+        var owner401 = await db.Profiles.SingleAsync(p => p.LegacyId == 401);
 
         if (!await db.Posts.AnyAsync(p => p.LegacyId == 4001))
         {
             db.Posts.Add(new Post
             {
                 LegacyId = 4001,
-                AuthorProfileId = owner400.Id,
+                AuthorProfileId = owner401.Id,
                 Kind = PostKind.Single,
                 Topic = PostTopic.Cichlids,
                 State = PostState.Published,
@@ -256,7 +278,7 @@ public sealed class CommentMigrationStepTests(EtlFixture fixture)
             db.Tanks.Add(new Tank
             {
                 LegacyId = 4101,
-                ProfileId = owner400.Id,
+                ProfileId = owner401.Id,
                 Title = "Comment Fixture Tank",
                 State = TankState.Published,
                 CreatedAt = DateTimeOffset.FromUnixTimeSeconds(1700000000),
@@ -269,7 +291,7 @@ public sealed class CommentMigrationStepTests(EtlFixture fixture)
     private Task<StepStatistics> RunStepAsync() => fixture.RunExclusiveAsync(async () =>
     {
         await using var context = await EtlContext.CreateAsync(
-            fixture.LegacyConnectionString, fixture.TargetConnectionString, dryRun: false, CancellationToken.None);
+            fixture.LegacyConnectionString, fixture.TargetConnectionString, CancellationToken.None);
         await EtlRunner.RunAsync(new CommentMigrationStep(), context, CancellationToken.None);
         return context.Statistics.ForStep("comments");
     });

@@ -4,6 +4,8 @@ using Cichlids.Api.Features.Common;
 using Cichlids.Api.Features.Pictures;
 using Cichlids.Api.Features.Profiles;
 using Cichlids.Api.Features.Tanks;
+using Cichlids.Domain.Entities;
+using Cichlids.Domain.Enums;
 
 namespace Cichlids.Api.Tests.Features.Profiles;
 
@@ -32,7 +34,7 @@ public class ProfilesEndpointsTests(ApiFixture fixture)
     }
 
     [Fact]
-    public async Task GetById_FallsBackToExternalAvatarAndResolvesProfileImage()
+    public async Task GetById_FallsBackToExternalAvatarAndResolvesTheProfileImageToItsLargestVariant()
     {
         var response = await fixture.Client.GetAsync($"/api/profiles/{fixture.Seed.Bob.Id}");
         response.EnsureSuccessStatusCode();
@@ -40,8 +42,37 @@ public class ProfilesEndpointsTests(ApiFixture fixture)
         var detail = JsonSerializer.Deserialize<ProfileDetailDto>(await response.Content.ReadAsStringAsync(), TestJson.Options)!;
 
         Assert.Equal("https://example.test/avatars/bob.png", detail.AvatarUrl);
-        Assert.NotNull(detail.ProfileImageUrl);
-        Assert.Contains("bob-cover", detail.ProfileImageUrl);
+        Assert.Equal($"{ApiFixture.ExpectedPublicUrlPrefix}/variants/medium/profiles/bob-cover.jpg", detail.ProfileImageUrl);
+    }
+
+    [Fact]
+    public async Task GetById_ResolvesAnAvatarWithOnlyAPublicCopyToTheCopy()
+    {
+        long profileId;
+        await using (var db = fixture.CreateDbContext())
+        {
+            var now = DateTimeOffset.UtcNow;
+            var avatar = new MediaItem { Kind = MediaKind.Photo, StorageKey = "originals/avatars/carol-legacy.jpg", CreatedAt = now };
+            db.MediaItems.Add(avatar);
+            await db.SaveChangesAsync();
+            db.MediaVariants.Add(new MediaVariant
+            {
+                MediaItemId = avatar.Id, Label = "copy", Width = 64, StorageKey = "variants/copy/originals/avatars/carol-legacy.jpg",
+            });
+            var carol = new Profile
+            {
+                Username = $"carol-{Guid.NewGuid():N}"[..20], Kind = ProfileKind.Member, AvatarMediaId = avatar.Id, CreatedAt = now,
+            };
+            db.Profiles.Add(carol);
+            await db.SaveChangesAsync();
+            profileId = carol.Id;
+        }
+
+        var response = await fixture.Client.GetAsync($"/api/profiles/{profileId}");
+        response.EnsureSuccessStatusCode();
+        var detail = JsonSerializer.Deserialize<ProfileDetailDto>(await response.Content.ReadAsStringAsync(), TestJson.Options)!;
+
+        Assert.Equal($"{ApiFixture.ExpectedPublicUrlPrefix}/variants/copy/originals/avatars/carol-legacy.jpg", detail.AvatarUrl);
     }
 
     [Fact]

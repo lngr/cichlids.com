@@ -1,4 +1,3 @@
-using System.Net.Http.Headers;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json.Nodes;
@@ -11,125 +10,305 @@ using Microsoft.Extensions.Options;
 namespace Cichlids.Infrastructure.Outbox;
 
 /// <summary>
-/// Delivers due outbox events to their matching webhook subscribers. A dispatch pass locks a
-/// batch of undispatched rows with SKIP LOCKED so concurrent dispatcher instances split the
-/// backlog instead of racing on the same rows, then signs and posts each event to every active
-/// subscription whose event_types entry matches (including the "*" wildcard). An event is marked
-/// dispatched once every matching subscriber accepted it with a 2xx response, or immediately when
-/// it has no matching subscribers; a subscriber failure leaves the event for redelivery after a
-/// backoff computed from its attempt count, until the configured attempt ceiling is reached and
-/// the event is dropped as a dead letter.
+/// Delivers due outbox events to their matching webhook subscribers. A dispatch pass reserves a
+/// batch of due events in one short statement by moving their next attempt time to the end of a
+/// lease, delivers them without any transaction or row lock, and records each result in its own
+/// update. That update only applies while the row still holds the lease value this instance set,
+/// so a result that arrives after another instance took over the event is discarded. Events of an
+/// instance that stops mid-pass become due again once the lease ends.
 /// </summary>
 public sealed class OutboxDispatchService(
     CichlidsDbContext context,
     IHttpClientFactory httpClientFactory,
+    WebhookTargetPolicy targetPolicy,
+    TimeProvider timeProvider,
     IOptions<OutboxDispatcherOptions> options,
     ILogger<OutboxDispatchService> logger)
 {
     public const string HttpClientName = "outbox-webhook-delivery";
     private const string SignatureHeaderName = "X-Cichlids-Signature";
+    private const int MaxErrorLength = 1000;
 
     /// <summary>
-    /// Locks and considers one batch of undispatched events in a single transaction. Returns the
-    /// number of rows the batch selected, including rows left untouched this pass because their
-    /// backoff has not elapsed yet, so callers such as tests can tell an empty backlog apart from
-    /// "nothing was due yet".
+    /// Reserves and processes one batch of due events. Returns the number of events reserved, so a
+    /// caller can run the next pass at once when a full batch was reserved.
     /// </summary>
     public async Task<int> RunOnceAsync(CancellationToken cancellationToken)
     {
-        var settings = options.Value;
-
-        await using var transaction = await context.Database.BeginTransactionAsync(cancellationToken);
-
-        var batch = await context.OutboxEvents.FromSqlInterpolated(
-            $"""
-            SELECT * FROM outbox_event
-            WHERE dispatched_at IS NULL
-            ORDER BY occurred_at
-            LIMIT {settings.BatchSize}
-            FOR UPDATE SKIP LOCKED
-            """).ToListAsync(cancellationToken);
-
-        if (batch.Count > 0)
+        var reserved = await ReserveDueAsync(cancellationToken);
+        if (reserved.Count > 0)
         {
-            var activeSubscriptions = await context.WebhookSubscriptions
-                .Where(s => s.Active)
-                .ToListAsync(cancellationToken);
-
-            var now = DateTimeOffset.UtcNow;
-
-            foreach (var outboxEvent in batch)
-            {
-                var due = outboxEvent.OccurredAt + OutboxBackoff.Compute(outboxEvent.AttemptCount, settings.MaxBackoff);
-                if (now < due)
-                {
-                    continue;
-                }
-
-                await DeliverAsync(outboxEvent, activeSubscriptions, settings, cancellationToken);
-            }
-
-            await context.SaveChangesAsync(cancellationToken);
+            await ProcessAsync(reserved, cancellationToken);
         }
 
-        await transaction.CommitAsync(cancellationToken);
-        return batch.Count;
+        return reserved.Count;
     }
 
-    private async Task DeliverAsync(
+    /// <summary>
+    /// Reserves up to one batch of open events whose next attempt time has come, oldest due first,
+    /// and returns them with the end of the reservation as their next attempt time, in the order a
+    /// pass handles them. Rows another instance is reserving at the same moment are skipped.
+    /// </summary>
+    public async Task<IReadOnlyList<OutboxEvent>> ReserveDueAsync(CancellationToken cancellationToken)
+    {
+        var settings = options.Value;
+        var now = Now();
+        var reservedUntil = now + settings.ReservationLease;
+
+        var reserved = await context.OutboxEvents.FromSqlInterpolated(
+            $"""
+            UPDATE outbox_event AS e
+            SET next_attempt_at = {reservedUntil}
+            FROM (
+                SELECT id FROM outbox_event
+                WHERE dispatched_at IS NULL AND given_up_at IS NULL AND next_attempt_at <= {now}
+                ORDER BY next_attempt_at
+                LIMIT {settings.BatchSize}
+                FOR UPDATE SKIP LOCKED
+            ) AS due
+            WHERE e.id = due.id
+            RETURNING e.*
+            """).AsNoTracking().ToListAsync(cancellationToken);
+
+        // Events without an earlier attempt, and then those attempted longest ago, come first, so an
+        // event left over when an earlier pass ran out of its reservation is handled before the
+        // events that pass attempted.
+        return reserved
+            .OrderBy(e => e.LastAttemptAt ?? DateTimeOffset.MinValue)
+            .ThenBy(e => e.OccurredAt)
+            .ToList();
+    }
+
+    /// <summary>
+    /// Delivers and records the given reserved events one after another. An event gets as many
+    /// deliveries as fit into the remaining reservation, keeping one delivery timeout for recording;
+    /// the first event always gets at least one. Subscribers left out count as failed for this
+    /// attempt and come first on a later attempt. The pass stops once no delivery fits any more;
+    /// the remaining events are due again when their reservation ends.
+    /// </summary>
+    public async Task ProcessAsync(IReadOnlyList<OutboxEvent> reserved, CancellationToken cancellationToken)
+    {
+        var settings = options.Value;
+        var activeSubscriptions = await context.WebhookSubscriptions
+            .AsNoTracking()
+            .Where(s => s.Active)
+            .OrderBy(s => s.Id)
+            .ToListAsync(cancellationToken);
+
+        for (var index = 0; index < reserved.Count; index++)
+        {
+            var outboxEvent = reserved[index];
+            var pending = activeSubscriptions
+                .Where(s => s.EventTypes.Contains(outboxEvent.EventType) || s.EventTypes.Contains("*"))
+                .Where(s => !outboxEvent.AcknowledgedSubscriptionIds.Contains(s.Id))
+                .ToList();
+
+            var remainingLease = outboxEvent.NextAttemptAt - Now();
+            var capacity = (int)Math.Min(int.MaxValue, Math.Floor(remainingLease / settings.DeliveryTimeout) - 1);
+            if (index == 0)
+            {
+                capacity = Math.Max(capacity, 1);
+            }
+
+            if (pending.Count > 0 && capacity <= 0)
+            {
+                logger.LogWarning(
+                    "Outbox pass stops before event {EventId}: its reservation ends in {RemainingLease}; it and the "
+                    + "{Remaining} events after it are due again when their reservation ends",
+                    outboxEvent.Id, remainingLease, reserved.Count - index - 1);
+                return;
+            }
+
+            var attempted = pending;
+            var notAttempted = new List<WebhookSubscription>();
+            if (pending.Count > capacity)
+            {
+                // Rotating by the attempt count lets the subscribers left out this time come first
+                // on a later attempt.
+                var offset = (int)((long)outboxEvent.AttemptCount * capacity % pending.Count);
+                var rotated = pending.Skip(offset).Concat(pending.Take(offset)).ToList();
+                attempted = rotated.Take(capacity).ToList();
+                notAttempted = rotated.Skip(capacity).ToList();
+                logger.LogWarning(
+                    "Outbox event {EventId} has {Pending} pending subscribers, but its reservation allows {Capacity} deliveries",
+                    outboxEvent.Id, pending.Count, capacity);
+            }
+
+            DeliveryOutcome outcome;
+            try
+            {
+                outcome = await DeliverAsync(outboxEvent, attempted, settings, cancellationToken);
+            }
+            catch (Exception ex) when (!cancellationToken.IsCancellationRequested)
+            {
+                logger.LogWarning(ex, "Delivering outbox event {EventId} failed", outboxEvent.Id);
+                outcome = DeliveryOutcome.Failed($"delivery failed: {ex.GetType().Name}");
+            }
+
+            if (notAttempted.Count > 0)
+            {
+                outcome = outcome with
+                {
+                    Errors =
+                    [
+                        .. outcome.Errors,
+                        .. notAttempted.Select(s => $"subscription {s.Id} not attempted: the reservation is too short"),
+                    ],
+                };
+            }
+
+            try
+            {
+                await RecordAsync(outboxEvent, outcome, settings, cancellationToken);
+            }
+            catch (Exception ex) when (!cancellationToken.IsCancellationRequested)
+            {
+                logger.LogError(
+                    ex, "Recording the delivery result of outbox event {EventId} failed; it is due again when its reservation ends",
+                    outboxEvent.Id);
+            }
+        }
+    }
+
+    private async Task<DeliveryOutcome> DeliverAsync(
         OutboxEvent outboxEvent,
-        IReadOnlyList<WebhookSubscription> activeSubscriptions,
+        IReadOnlyList<WebhookSubscription> subscribers,
         OutboxDispatcherOptions settings,
         CancellationToken cancellationToken)
     {
-        var subscribers = activeSubscriptions
-            .Where(s => s.EventTypes.Contains(outboxEvent.EventType) || s.EventTypes.Contains("*"))
-            .ToList();
+        // The body is built only for an actual delivery, so an event nobody subscribes to is
+        // dispatched even when its payload cannot be read.
+        if (subscribers.Count == 0)
+        {
+            return new DeliveryOutcome([], []);
+        }
 
         var body = BuildDeliveryBody(outboxEvent);
         var httpClient = httpClientFactory.CreateClient(HttpClientName);
+        var acknowledged = new List<long>();
+        var errors = new List<string>();
 
         foreach (var subscriber in subscribers)
         {
-            try
+            var error = await DeliverToAsync(httpClient, subscriber, body, settings, cancellationToken);
+            if (error is null)
             {
-                using var request = new HttpRequestMessage(HttpMethod.Post, subscriber.Url)
-                {
-                    Content = new StringContent(body, Encoding.UTF8, "application/json"),
-                };
-                request.Headers.Add(SignatureHeaderName, Sign(body, subscriber.Secret));
-
-                using var response = await httpClient.SendAsync(request, cancellationToken);
-                if (!response.IsSuccessStatusCode)
-                {
-                    Fail(outboxEvent, settings, $"{subscriber.Url} responded {(int)response.StatusCode}");
-                    return;
-                }
+                acknowledged.Add(subscriber.Id);
             }
-            catch (Exception ex) when (ex is HttpRequestException or TaskCanceledException)
+            else
             {
-                Fail(outboxEvent, settings, $"{subscriber.Url}: {ex.Message}");
-                return;
+                errors.Add(error);
             }
         }
 
-        outboxEvent.DispatchedAt = DateTimeOffset.UtcNow;
+        return new DeliveryOutcome(acknowledged, errors);
     }
 
-    private void Fail(OutboxEvent outboxEvent, OutboxDispatcherOptions settings, string error)
+    /// <summary>
+    /// Posts the body to one subscriber and returns null on a success status, otherwise an error
+    /// naming the subscription and the status or exception type. A subscriber whose target the
+    /// allowlist rejects is never contacted.
+    /// </summary>
+    private async Task<string?> DeliverToAsync(
+        HttpClient httpClient,
+        WebhookSubscription subscriber,
+        string body,
+        OutboxDispatcherOptions settings,
+        CancellationToken cancellationToken)
     {
-        outboxEvent.AttemptCount++;
-        outboxEvent.LastError = error;
-
-        if (outboxEvent.AttemptCount >= settings.MaxAttempts)
+        if (!targetPolicy.IsAllowed(subscriber.Url, out _))
         {
-            outboxEvent.DispatchedAt = DateTimeOffset.UtcNow;
-            outboxEvent.LastError = "gave up";
-            logger.LogWarning(
-                "Outbox event {EventId} ({EventType}) gave up after {AttemptCount} attempts. Last error: {Error}",
-                outboxEvent.Id, outboxEvent.EventType, outboxEvent.AttemptCount, error);
+            return $"subscription {subscriber.Id} target is not allowed";
+        }
+
+        using var timeout = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+        timeout.CancelAfter(settings.DeliveryTimeout);
+
+        try
+        {
+            using var request = new HttpRequestMessage(HttpMethod.Post, subscriber.Url)
+            {
+                Content = new StringContent(body, Encoding.UTF8, "application/json"),
+            };
+            request.Headers.Add(SignatureHeaderName, Sign(body, subscriber.Secret));
+
+            using var response = await httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, timeout.Token);
+            return response.IsSuccessStatusCode
+                ? null
+                : $"subscription {subscriber.Id} responded {(int)response.StatusCode}";
+        }
+        catch (OperationCanceledException) when (!cancellationToken.IsCancellationRequested)
+        {
+            return $"subscription {subscriber.Id} timed out";
+        }
+        catch (Exception ex) when (!cancellationToken.IsCancellationRequested)
+        {
+            logger.LogInformation(ex, "Delivering to webhook subscription {SubscriptionId} failed", subscriber.Id);
+            return $"subscription {subscriber.Id} failed: {ex.GetType().Name}";
         }
     }
+
+    private async Task RecordAsync(
+        OutboxEvent reserved, DeliveryOutcome outcome, OutboxDispatcherOptions settings, CancellationToken cancellationToken)
+    {
+        var now = Now();
+        var reservedUntil = reserved.NextAttemptAt;
+        var stillReserved = context.OutboxEvents.Where(e =>
+            e.Id == reserved.Id && e.NextAttemptAt == reservedUntil && e.DispatchedAt == null && e.GivenUpAt == null);
+
+        var acknowledged = reserved.AcknowledgedSubscriptionIds.Union(outcome.Acknowledged).ToList();
+
+        int updated;
+        if (outcome.Errors.Count == 0)
+        {
+            updated = await stillReserved.ExecuteUpdateAsync(
+                s => s
+                    .SetProperty(e => e.DispatchedAt, now)
+                    .SetProperty(e => e.LastAttemptAt, now)
+                    .SetProperty(e => e.LastError, (string?)null)
+                    .SetProperty(e => e.AcknowledgedSubscriptionIds, acknowledged),
+                cancellationToken);
+        }
+        else
+        {
+            var error = string.Join("; ", outcome.Errors);
+            if (error.Length > MaxErrorLength)
+            {
+                error = error[..MaxErrorLength];
+            }
+
+            var attemptCount = reserved.AttemptCount + 1;
+            var (nextAttemptAt, givenUp) = OutboxRetrySchedule.AfterFailure(
+                attemptCount, now, reserved.RedeliveredAt ?? reserved.OccurredAt, settings);
+            DateTimeOffset? givenUpAt = givenUp ? now : null;
+
+            updated = await stillReserved.ExecuteUpdateAsync(
+                s => s
+                    .SetProperty(e => e.AttemptCount, attemptCount)
+                    .SetProperty(e => e.LastError, error)
+                    .SetProperty(e => e.LastAttemptAt, now)
+                    .SetProperty(e => e.NextAttemptAt, nextAttemptAt)
+                    .SetProperty(e => e.GivenUpAt, givenUpAt)
+                    .SetProperty(e => e.AcknowledgedSubscriptionIds, acknowledged),
+                cancellationToken);
+
+            if (updated == 1 && givenUp)
+            {
+                logger.LogWarning(
+                    "Outbox event {EventId} ({EventType}) is given up after {AttemptCount} attempts. Last error: {Error}",
+                    reserved.Id, reserved.EventType, attemptCount, error);
+            }
+        }
+
+        if (updated == 0)
+        {
+            logger.LogWarning(
+                "The delivery result of outbox event {EventId} is discarded because its reservation ended",
+                reserved.Id);
+        }
+    }
+
+    private DateTimeOffset Now() => OutboxTime.UtcNow(timeProvider);
 
     private static string Sign(string body, string secret) =>
         Convert.ToHexStringLower(HMACSHA256.HashData(Encoding.UTF8.GetBytes(secret), Encoding.UTF8.GetBytes(body)));
@@ -151,5 +330,15 @@ public sealed class OutboxDispatchService(
             ["payload"] = JsonNode.Parse(outboxEvent.Payload),
         };
         return envelope.ToJsonString();
+    }
+
+    /// <summary>
+    /// The subscriptions that acknowledged one delivery attempt of an event and the errors of
+    /// those that did not. An attempt without errors means every matching subscriber has
+    /// acknowledged the event.
+    /// </summary>
+    private sealed record DeliveryOutcome(IReadOnlyList<long> Acknowledged, IReadOnlyList<string> Errors)
+    {
+        public static DeliveryOutcome Failed(string error) => new([], [error]);
     }
 }

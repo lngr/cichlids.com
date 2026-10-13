@@ -1,6 +1,8 @@
 using Cichlids.Domain.Entities;
 using Cichlids.Domain.Enums;
+using System.Security.Cryptography;
 using Cichlids.Etl.Media;
+using Cichlids.Infrastructure.Storage;
 using MySqlConnector;
 using NetVips;
 
@@ -67,6 +69,19 @@ internal static class MediaTestSupport
         return $"user_pics/{uid}/{filename}";
     }
 
+    /// <summary>
+    /// Writes the given bytes under the same layout a photo would use and returns the legacy
+    /// path a user_cichlids_pictures.image column would hold for it.
+    /// </summary>
+    public static string WriteFile(string root, int uid, string filename, byte[] bytes)
+    {
+        var directory = Path.Combine(root, "user_pics", uid.ToString());
+        Directory.CreateDirectory(directory);
+        File.WriteAllBytes(Path.Combine(directory, filename), bytes);
+
+        return $"user_pics/{uid}/{filename}";
+    }
+
     public static async Task<MySqlConnection> OpenLegacyConnectionAsync(MediaEtlFixture fixture)
     {
         var connection = new MySqlConnection(fixture.LegacyConnectionString);
@@ -85,9 +100,13 @@ internal static class MediaTestSupport
     }
 
     public static async Task<long> InsertMediaItemAsync(
-        MediaEtlFixture fixture, int legacyId, string storageKey, MediaKind kind = MediaKind.Photo)
+        MediaEtlFixture fixture,
+        int legacyId,
+        string storageKey,
+        MediaKind kind = MediaKind.Photo,
+        string? targetConnectionString = null)
     {
-        await using var db = fixture.CreateTargetContext();
+        await using var db = fixture.CreateTargetContext(targetConnectionString);
         var item = new MediaItem
         {
             LegacyId = legacyId,
@@ -100,18 +119,37 @@ internal static class MediaTestSupport
         return item.Id;
     }
 
-    public static Task<int> RunSeedAsync(
-        MediaEtlFixture fixture, string imagesRoot, bool onlyMissing = true, int? limit = null, string? missingOutPath = null) =>
-        MediaSeedCommand.RunAsync(
+    public static Task<MediaSeedSummary> RunSeedAsync(
+        MediaEtlFixture fixture,
+        string imagesRoot,
+        int? limit = null,
+        string? missingOutPath = null,
+        string? targetConnectionString = null,
+        IObjectStore? objectStore = null,
+        long maxSourceBytes = 64L * 1024 * 1024) =>
+        MediaSeedCommand.SeedAsync(
             fixture.LegacyConnectionString,
-            fixture.TargetConnectionString,
-            fixture.ObjectStore,
+            targetConnectionString ?? fixture.TargetConnectionString,
+            objectStore ?? fixture.ObjectStore,
             imagesRoot,
             limit,
             workers: 2,
-            onlyMissing,
             missingOutPath,
+            maxSourceBytes,
             CancellationToken.None);
+
+    public static string Sha256OfFile(string root, string legacyPath) =>
+        Convert.ToHexStringLower(SHA256.HashData(File.ReadAllBytes(Path.Combine(root, legacyPath))));
+
+    /// <summary>
+    /// Reads the pixel size of a variant. Variants have their orientation baked in, so the stored
+    /// size is the displayed size.
+    /// </summary>
+    public static (int Width, int Height) MeasureVariant(byte[] variantBytes)
+    {
+        using var image = Image.NewFromBuffer(variantBytes);
+        return (image.Width, image.Height);
+    }
 
     public static async Task<byte[]> DownloadAsync(MediaEtlFixture fixture, string storageKey)
     {

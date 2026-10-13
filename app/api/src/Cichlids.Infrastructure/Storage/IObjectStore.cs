@@ -12,8 +12,28 @@ public interface IObjectStore
     Task PutAsync(string key, Stream content, string contentType, CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Downloads the object stored under the given key. Returns null when no object exists for
-    /// that key instead of throwing, so callers can treat a missing object as a normal outcome.
+    /// Uploads content under the given key together with user metadata, overwriting any existing
+    /// object with the same key. Metadata keys are lower-case names without any provider prefix.
+    /// </summary>
+    Task PutAsync(
+        string key,
+        Stream content,
+        string contentType,
+        IReadOnlyDictionary<string, string> metadata,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Reads the byte size and the user metadata of the object stored under the given key without
+    /// downloading its content, or returns null when no object exists for that key. Metadata keys
+    /// are lower-case and carry no provider prefix.
+    /// </summary>
+    Task<ObjectHead?> HeadAsync(string key, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Opens a forward-only stream over the object stored under the given key; disposing the
+    /// stream releases the download. Returns null when no object exists for that key, so callers
+    /// can treat a missing object as a normal outcome. Throws ObjectTooLargeException when the
+    /// object is larger than the configured download cap.
     /// </summary>
     Task<Stream?> GetAsync(string key, CancellationToken cancellationToken = default);
 
@@ -47,3 +67,8 @@ public interface IObjectStore
     /// </summary>
     string GetPublicUrl(string key);
 }
+
+/// <summary>
+/// Size and user metadata of a stored object, as returned without downloading its content.
+/// </summary>
+public sealed record ObjectHead(long Size, IReadOnlyDictionary<string, string> Metadata);

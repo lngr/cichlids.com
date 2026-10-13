@@ -12,7 +12,8 @@ public static class MeEndpoints
         app.MapGet("/api/me", GetAsync)
             .WithName("GetMe")
             .WithTags("Me")
-            .RequireAuthorization();
+            .RequireAuthorization()
+            .ProducesProblem(StatusCodes.Status403Forbidden);
 
         return app;
     }

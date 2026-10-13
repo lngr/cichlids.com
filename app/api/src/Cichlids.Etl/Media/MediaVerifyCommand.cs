@@ -7,10 +7,9 @@ namespace Cichlids.Etl.Media;
 
 /// <summary>
 /// The "media-verify" command: checks the target database's media references against what is
-/// actually in object storage, independently in both directions. Unlike the "media" command's
-/// idempotency fast path (which trusts a media_item's own recorded byte size and checksum once
-/// set), every check here asks the object store directly, so it also catches an object that
-/// disappeared or changed size after the media command last recorded it.
+/// actually in object storage, independently in both directions. Every check asks the object
+/// store directly, so it catches an object that disappeared or changed size after the media
+/// command recorded it.
 /// </summary>
 public static class MediaVerifyCommand
 {

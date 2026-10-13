@@ -31,10 +31,17 @@ public sealed class KeycloakAccountImportTests(KeycloakAccountImportTests.Scenar
             Assert.True(matches.Count == 1, $"expected exactly one user with email {email}, found {matches.Count}");
         }
 
-        // Five email accounts and the email-less facebook account created by the import, the five
+        // Seven email accounts and the email-less facebook account created by the import, the five
         // pre-existing users and the realm's two seeded dev users.
         var all = await scenario.Admin.GetArrayAsync("users?briefRepresentation=true&first=0&max=100");
-        Assert.Equal(13, all.Count);
+        Assert.Equal(15, all.Count);
+    }
+
+    [Fact]
+    public void KeepsRegistrationClosedUntilTheRunThatOpensIt()
+    {
+        Assert.False(scenario.RegistrationAfterFirstRun);
+        Assert.True(scenario.RegistrationAfterSecondRun);
     }
 
     [Fact]
@@ -133,6 +140,34 @@ public sealed class KeycloakAccountImportTests(KeycloakAccountImportTests.Scenar
     }
 
     [Fact]
+    public async Task CreatesTheAccountOfAnArchivedProfileWithoutLinkingIt()
+    {
+        Assert.Single(await scenario.Admin.GetArrayAsync("users?email=kim%40example.test&exact=true"));
+
+        await using var db = scenario.Fixture.CreateTargetContext();
+        var kimEmailAccountId = Uuidv5.Create(LegacyAccountPlanner.NamespaceId, "kim@example.test").ToString();
+        Assert.False(await db.ProfileIdentities.AnyAsync(i => i.Provider == "oidc" && i.Subject == kimEmailAccountId));
+        Assert.Single(await db.ProfileIdentities.Where(i => i.Provider == "oidc" && i.ProfileId == scenario.ProfileIds["kim"]).ToListAsync());
+        Assert.Equal(1, scenario.FirstRun.ProfileIdentitiesSkippedNotMember);
+        Assert.Equal(1, scenario.SecondRun.ProfileIdentitiesSkippedNotMember);
+    }
+
+    [Fact]
+    public async Task CountsAnOidcLinkOnAProfileThatIsNotAMemberAsAConflict()
+    {
+        var lenaId = await UserIdByEmailAsync("lena@example.test");
+
+        await using var db = scenario.Fixture.CreateTargetContext();
+        var links = await db.ProfileIdentities.Where(i => i.Provider == "oidc" && i.Subject == lenaId).ToListAsync();
+
+        var link = Assert.Single(links);
+        Assert.Equal(scenario.ProfileIds["kim"], link.ProfileId);
+        Assert.False(await db.ProfileIdentities.AnyAsync(i => i.Provider == "oidc" && i.ProfileId == scenario.ProfileIds["lena"]));
+        Assert.Equal(2, scenario.FirstRun.ProfileLinkConflicts);
+        Assert.Equal(2, scenario.SecondRun.ProfileLinkConflicts);
+    }
+
+    [Fact]
     public async Task LeavesAPreexistingKeycloakUserUntouchedAndLinksItsProfile()
     {
         var grace = await scenario.Admin.GetObjectAsync($"users/{scenario.PreexistingGraceId}");
@@ -162,32 +197,32 @@ public sealed class KeycloakAccountImportTests(KeycloakAccountImportTests.Scenar
         // Dave's imported user has an unverified email; it counts as the import's own user on the
         // second run and keeps its profile link.
         var first = scenario.FirstRun;
-        Assert.Equal(12, first.RecordsRead);
-        Assert.Equal(10, first.AccountsPlanned);
-        Assert.Equal(6, first.Created);
+        Assert.Equal(14, first.RecordsRead);
+        Assert.Equal(12, first.AccountsPlanned);
+        Assert.Equal(8, first.Created);
         Assert.Equal(1, first.Existing);
         Assert.Equal(1, first.DroppedByReason["no_contact_no_profile"]);
         Assert.Equal(
-            new Dictionary<string, int> { ["legacy"] = 4, ["email_like"] = 1, ["rejected_by_keycloak"] = 1, ["duplicate"] = 1, ["no_legacy_row"] = 3 },
+            new Dictionary<string, int> { ["legacy"] = 5, ["email_like"] = 1, ["rejected_by_keycloak"] = 1, ["duplicate"] = 1, ["no_legacy_row"] = 4 },
             first.LoginUsernamesBySource);
         Assert.Equal(1, first.GeneratedForTakenUsername);
         Assert.Equal(1, first.AccountConflictsByReason["existing_unverified"]);
         Assert.Equal(2, first.AccountConflictsByReason["username_taken"]);
         Assert.Equal(5, first.ProfileLinksInserted);
         Assert.Equal(0, first.ProfileLinksPresent);
-        Assert.Equal(1, first.ProfileLinkConflicts);
+        Assert.Equal(2, first.ProfileLinkConflicts);
         Assert.Equal(0, first.Unresolved);
 
         var second = scenario.SecondRun;
-        Assert.Equal(10, second.AccountsPlanned);
+        Assert.Equal(12, second.AccountsPlanned);
         Assert.Equal(0, second.GeneratedForTakenUsername);
         Assert.Equal(0, second.Created);
-        Assert.Equal(7, second.Existing);
+        Assert.Equal(9, second.Existing);
         Assert.Equal(1, second.AccountConflictsByReason["existing_unverified"]);
         Assert.Equal(2, second.AccountConflictsByReason["username_taken"]);
         Assert.Equal(0, second.ProfileLinksInserted);
         Assert.Equal(5, second.ProfileLinksPresent);
-        Assert.Equal(1, second.ProfileLinkConflicts);
+        Assert.Equal(2, second.ProfileLinkConflicts);
         Assert.Equal(0, second.Unresolved);
     }
 
@@ -370,6 +405,18 @@ public sealed class KeycloakAccountImportTests(KeycloakAccountImportTests.Scenar
 
         public KeycloakImportSummary SecondRun { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether the realm allows self-registration after the first run, which imports without
+        /// the open-registration option.
+        /// </summary>
+        public bool RegistrationAfterFirstRun { get; private set; }
+
+        /// <summary>
+        /// Whether the realm allows self-registration after the second run, which imports with
+        /// the open-registration option.
+        /// </summary>
+        public bool RegistrationAfterSecondRun { get; private set; }
+
         public async Task InitializeAsync()
         {
             await Fixture.InitializeAsync();
@@ -387,8 +434,10 @@ public sealed class KeycloakAccountImportTests(KeycloakAccountImportTests.Scenar
             var settings = new KeycloakAdminSettings(
                 Fixture.KeycloakUrl, KeycloakImportFixture.Realm, KeycloakImportFixture.AdminUser, KeycloakImportFixture.AdminPassword);
 
-            FirstRun = await ImportAsync(settings);
-            SecondRun = await ImportAsync(settings);
+            FirstRun = await ImportAsync(settings, openRegistration: false);
+            RegistrationAfterFirstRun = await RegistrationAllowedAsync();
+            SecondRun = await ImportAsync(settings, openRegistration: true);
+            RegistrationAfterSecondRun = await RegistrationAllowedAsync();
         }
 
         public async Task DisposeAsync()
@@ -397,13 +446,19 @@ public sealed class KeycloakAccountImportTests(KeycloakAccountImportTests.Scenar
             await Fixture.DisposeAsync();
         }
 
-        private Task<KeycloakImportSummary> ImportAsync(KeycloakAdminSettings settings) => _sizes is { } sizes
+        private Task<KeycloakImportSummary> ImportAsync(KeycloakAdminSettings settings, bool openRegistration) => _sizes is { } sizes
             ? KeycloakAccountImportCommand.ImportAsync(
                 Fixture.LegacyConnectionString, Fixture.TargetConnectionString, Fixture.Auth0ExportPath, settings,
-                new GeneratedNames(GeneratedNamesSecret), sizes.UserPageSize, sizes.ImportChunkSize, CancellationToken.None)
+                new GeneratedNames(GeneratedNamesSecret), openRegistration, sizes.UserPageSize, sizes.ImportChunkSize, CancellationToken.None)
             : KeycloakAccountImportCommand.ImportAsync(
                 Fixture.LegacyConnectionString, Fixture.TargetConnectionString, Fixture.Auth0ExportPath, settings,
-                new GeneratedNames(GeneratedNamesSecret), CancellationToken.None);
+                new GeneratedNames(GeneratedNamesSecret), openRegistration, CancellationToken.None);
+
+        private async Task<bool> RegistrationAllowedAsync()
+        {
+            var realm = await Admin.GetObjectAsync(string.Empty);
+            return realm.GetProperty("registrationAllowed").GetBoolean();
+        }
 
         // The realm file maps email_verified; removing the mapper leaves a realm like one imported
         // from an older realm file, which the import has to repair.
@@ -429,7 +484,7 @@ public sealed class KeycloakAccountImportTests(KeycloakAccountImportTests.Scenar
         private async Task SeedProfilesAsync()
         {
             await using var db = Fixture.CreateTargetContext();
-            foreach (var username in new[] { "alice", "carol", "dave", "erin", "grace", "heidi", "ivy", "ivy-other", "judy", "victor" })
+            foreach (var username in new[] { "alice", "carol", "dave", "erin", "grace", "heidi", "ivy", "ivy-other", "judy", "lena", "victor" })
             {
                 var profile = new Profile { Username = username, Kind = ProfileKind.Member, CreatedAt = DateTimeOffset.UtcNow };
                 db.Profiles.Add(profile);
@@ -437,6 +492,14 @@ public sealed class KeycloakAccountImportTests(KeycloakAccountImportTests.Scenar
                 ProfileIds[username] = profile.Id;
             }
 
+            var kim = new Profile { LegacyId = 9109, Username = "kim", Kind = ProfileKind.Archived, CreatedAt = DateTimeOffset.UtcNow };
+            db.Profiles.Add(kim);
+            await db.SaveChangesAsync();
+            ProfileIds["kim"] = kim.Id;
+
+            AddIdentity(db, "kim", "email", "kim@example.test");
+            AddIdentity(db, "kim", "oidc", Uuidv5.Create(LegacyAccountPlanner.NamespaceId, "lena@example.test").ToString());
+            AddIdentity(db, "lena", "email", "lena@example.test");
             AddIdentity(db, "alice", "email", "alice@example.test");
             AddIdentity(db, "alice", "auth0", "auth0|pw-alice");
             AddIdentity(db, "carol", "auth0", "google-oauth2|g-carol");

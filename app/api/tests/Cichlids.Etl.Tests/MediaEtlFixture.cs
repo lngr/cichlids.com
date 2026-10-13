@@ -7,6 +7,7 @@ using DotNet.Testcontainers.Containers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using MySqlConnector;
+using Npgsql;
 using Testcontainers.MySql;
 using Testcontainers.PostgreSql;
 
@@ -98,13 +99,33 @@ public sealed class MediaEtlFixture : IAsyncLifetime
     /// Opens a fresh context against the target database, independent of any command run's own
     /// connection, for assertions after a run has completed.
     /// </summary>
-    public CichlidsDbContext CreateTargetContext()
+    public CichlidsDbContext CreateTargetContext(string? connectionString = null)
     {
         var optionsBuilder = new DbContextOptionsBuilder<CichlidsDbContext>()
-            .UseNpgsql(TargetConnectionString)
+            .UseNpgsql(connectionString ?? TargetConnectionString)
             .UseSnakeCaseNamingConvention();
 
         return new CichlidsDbContext(optionsBuilder.Options);
+    }
+
+    /// <summary>
+    /// Creates a migrated, empty database of its own in the target container and returns its
+    /// connection string, so a test sees only the rows it inserts and can assert exact counts.
+    /// </summary>
+    public async Task<string> CreateIsolatedTargetAsync()
+    {
+        var name = $"t_{Guid.NewGuid():N}";
+        await using (var connection = new NpgsqlConnection(TargetConnectionString))
+        {
+            await connection.OpenAsync();
+            await using var command = new NpgsqlCommand($"CREATE DATABASE \"{name}\"", connection);
+            await command.ExecuteNonQueryAsync();
+        }
+
+        var connectionString = new NpgsqlConnectionStringBuilder(TargetConnectionString) { Database = name }.ConnectionString;
+        await using var db = CreateTargetContext(connectionString);
+        await db.Database.MigrateAsync();
+        return connectionString;
     }
 
     private async Task ApplyLegacySchemaAsync()

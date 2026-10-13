@@ -1,14 +1,17 @@
 ---
 id: TASK-3.31
 title: Decide media seeding from the object store state
-status: To Do
+status: In Review
 assignee: []
 created_date: '2026-10-12 04:48'
-updated_date: '2026-10-12 06:41'
+updated_date: '2026-10-12 16:43'
 labels: []
 dependencies: []
 references:
   - REVIEW-MVP.md
+  - app/api/tests/Cichlids.Etl.Tests/MediaSeedCommandTests.cs
+  - app/api/tests/Cichlids.Infrastructure.Tests/MediaObjectMetadataTests.cs
+  - app/api/tests/Cichlids.Infrastructure.Tests/S3ObjectStoreTests.cs
 parent_task_id: TASK-3
 priority: high
 ordinal: 53000
@@ -25,7 +28,7 @@ The media seed checks every original and variant in the object store (existence 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
 - [ ] #1 Given a fully seeded object store and a freshly reset database, When the operator runs the media seed, Then it finishes within minutes and its log shows no original uploads
-- [ ] #2 Given an original the operator deleted from the object store, When the media seed runs, Then the object exists again with the checksum of the legacy file
+- [x] #2 Given an original the operator deleted from the object store, When the media seed runs, Then the object exists again with the checksum of the legacy file
 <!-- AC:END -->
 
 ## Definition of Done
@@ -132,3 +135,30 @@ Size: M, about 3 to 3.5 days in 6 commits, plus one full seed (about 94 minutes)
 - If RustFS drops user metadata, step 1 shows it before the seed is touched.
 - TASK-3.29 also changes `IObjectStore.cs` (streamed `GetAsync` with a size cap) and `MediaSeedCommand.cs`. Landing this task first keeps that merge one-directional.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Implemented as planned: the media seed decides from the object store state.
+
+##### Implementation
+- Object metadata contract in `MediaObjectMetadata` (keys sha256, source-sha256, pipeline, width, height, decodable; original and variant pipeline version constants; Decide returns Current, Missing or Differs). `IObjectStore` has a PutAsync overload with metadata and `HeadAsync` returning `ObjectHead` (size and unprefixed metadata) or null. RustFS keeps user metadata.
+- `MediaSeedCommand`: every original is stream-hashed and looked up in the store; only Missing or Differs originals are uploaded. Every variant label from `MediaVariantSpec.Resolve` is looked up and regenerated only when Missing or Differs. Present objects are recorded in `media_item` and `media_variant` from the HEAD response and metadata, without a decode. `SeedAsync` returns a `MediaSeedSummary`; `RunAsync` prints it.
+- `--force`, `onlyMissing` and the database based `IsComplete` shortcut are removed; `media --force` is rejected as an unknown option.
+- Forum attachments: `ForumMigrationStep` uses the same store check (checksum of the legacy bytes against metadata) and writes sha256, source-sha256 and pipeline. The seed completes the photo metadata of an attachment once (one download), later runs read it from the HEAD response.
+- Objects seeded before this change carry no metadata and count as Differs: the first run re-uploads everything once.
+
+##### Tests
+- `S3ObjectStoreTests`, `MediaObjectMetadataTests`, `MediaSeedCommandTests` (reset database, restored original, overwritten and metadata-less original, regenerated variants, present broken original, forum attachment), `ForumMigrationStepTests`, `EtlCommandLineTests`.
+- Full backend suite: 126 + 219 + 311 tests pass.
+- AC #2 is proven by `RestoresADeletedOriginalWithTheChecksumOfTheLegacyFile`. AC #1 needs the operator run below and stays unchecked.
+
+##### Operator checks
+1. Run one full seed with `CICHLIDS_MEDIA_LIMIT=0 app/stack/bootstrap.sh` (about one hour; writes the metadata).
+2. Run it again; the media summary must show `originals uploaded: 0` and an elapsed time under 15 minutes (AC #1). Tune `--workers` if HEAD requests are the bottleneck.
+3. Delete one original with `amazon/aws-cli ... s3 rm`, run `etl media` without `--limit`, and compare `source-sha256` from `s3api head-object` with `sha256sum` of the legacy file.
+
+##### Verification on an isolated stack (2026-10-12)
+- AC #1: with all 179,340 media items in the object store, `etl reset` and `etl all` followed by `etl media` report originals uploaded 0, variants uploaded 0, originals present 179,336 (3 missing, 908 broken, 1 rejected), bytes transferred 0 and an elapsed time of 4 min 39 s. With `--limit 3000` the same check takes 2.2 s.
+- The first full seed uploads about 283 GB at 67 to 113 items/s (about 75 MB/s) and takes about one hour.
+<!-- SECTION:NOTES:END -->

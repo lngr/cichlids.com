@@ -176,10 +176,6 @@ public sealed class PicturesQueryService(CichlidsDbContext context, IObjectStore
 
         var mediaItemIds = firstMediaItemIdByPost.Values.Distinct().ToList();
 
-        var originalByMediaItem = await context.MediaItems
-            .Where(m => mediaItemIds.Contains(m.Id))
-            .ToDictionaryAsync(m => m.Id, m => m.StorageKey, cancellationToken);
-
         var variantsByMediaItem = (await context.MediaVariants
                 .Where(v => mediaItemIds.Contains(v.MediaItemId))
                 .Select(v => new { v.MediaItemId, v.Label, v.StorageKey })
@@ -200,7 +196,7 @@ public sealed class PicturesQueryService(CichlidsDbContext context, IObjectStore
             p.Topic,
             authors[p.AuthorProfileId].ToDto(objectStore),
             firstMediaItemIdByPost.TryGetValue(p.Id, out var mediaItemId)
-                ? _mediaUrlBuilder.Build(originalByMediaItem[mediaItemId], variantsByMediaItem.GetValueOrDefault(mediaItemId, NoVariants))
+                ? _mediaUrlBuilder.Build(variantsByMediaItem.GetValueOrDefault(mediaItemId, NoVariants))
                 : null))
             .ToList();
     }

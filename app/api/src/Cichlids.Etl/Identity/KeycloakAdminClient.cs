@@ -2,18 +2,22 @@ using System.Net;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using System.Text.Json.Serialization;
 
 namespace Cichlids.Etl.Identity;
 
 /// <summary>
-/// Talks to the Keycloak admin REST API of one realm for the legacy account import: ensures the
-/// realm prerequisites the imported accounts rely on, lists the existing users, and creates
-/// missing users in chunks. Authenticates as the master realm admin through admin-cli and fetches
+/// Talks to the Keycloak admin REST API of one realm for the legacy account import and the reset:
+/// ensures the realm prerequisites the imported accounts rely on, lists the existing users,
+/// creates missing users in chunks, deletes users and opens or closes self-registration.
+/// Authenticates as the master realm admin through admin-cli and fetches
 /// a fresh token shortly before the current one expires, so runs over many thousand users keep
-/// working with short token lifetimes.
+/// working with short token lifetimes. Requests answered with 429 or a 5xx status are repeated up
+/// to five attempts with a growing delay (the Retry-After header, capped, when present). Errors
+/// carry the operation, the HTTP status and a short error code, never the response body.
 /// </summary>
-public sealed class KeycloakAdminClient : IDisposable
+public sealed partial class KeycloakAdminClient : IDisposable
 {
     /// <summary>
     /// The default number of users read in one user list page.
@@ -30,6 +34,10 @@ public sealed class KeycloakAdminClient : IDisposable
     private const string EmailClientScope = "email";
     private const string EmailVerifiedClaim = "email_verified";
 
+    private const int MaxAttempts = 5;
+
+    private static readonly TimeSpan MaxRetryDelay = TimeSpan.FromSeconds(30);
+
     // A token is replaced this long before its reported expiry, so a request never starts with a
     // token that runs out while Keycloak processes it.
     private static readonly TimeSpan TokenRefreshMargin = TimeSpan.FromSeconds(20);
@@ -39,11 +47,13 @@ public sealed class KeycloakAdminClient : IDisposable
         DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
     };
 
+    private readonly SemaphoreSlim _tokenLock = new(1, 1);
     private readonly HttpClient _http;
     private readonly KeycloakAdminSettings _settings;
     private readonly string _serverUrl;
     private readonly int _userPageSize;
     private readonly int _importChunkSize;
+    private readonly Func<TimeSpan, CancellationToken, Task> _delay;
     private string? _accessToken;
     private DateTimeOffset _accessTokenExpiresAt;
 
@@ -53,6 +63,16 @@ public sealed class KeycloakAdminClient : IDisposable
     }
 
     internal KeycloakAdminClient(KeycloakAdminSettings settings, int userPageSize, int importChunkSize)
+        : this(settings, userPageSize, importChunkSize, new HttpClientHandler(), Task.Delay)
+    {
+    }
+
+    internal KeycloakAdminClient(
+        KeycloakAdminSettings settings,
+        int userPageSize,
+        int importChunkSize,
+        HttpMessageHandler handler,
+        Func<TimeSpan, CancellationToken, Task> delay)
     {
         ArgumentOutOfRangeException.ThrowIfLessThan(userPageSize, 1);
         ArgumentOutOfRangeException.ThrowIfLessThan(importChunkSize, 1);
@@ -63,7 +83,8 @@ public sealed class KeycloakAdminClient : IDisposable
         _serverUrl = settings.BaseUrl.ToString().TrimEnd('/');
 
         // A partial import of a full chunk takes a while on a busy server.
-        _http = new HttpClient { Timeout = TimeSpan.FromMinutes(5) };
+        _delay = delay;
+        _http = new HttpClient(handler) { Timeout = TimeSpan.FromMinutes(5) };
     }
 
     /// <summary>
@@ -79,6 +100,94 @@ public sealed class KeycloakAdminClient : IDisposable
         await EnsureEmailVerifiedMapperAsync(cancellationToken);
         await EnsureIdentityProviderAsync("google", "google", cancellationToken);
         await EnsureIdentityProviderAsync("facebook", "facebook", cancellationToken);
+    }
+
+    /// <summary>
+    /// Allows self-registration in the realm. Other realm settings are left as they are.
+    /// </summary>
+    public async Task OpenRegistrationAsync(CancellationToken cancellationToken)
+    {
+        using var response = await SendAsync(
+            HttpMethod.Put, string.Empty, new { registrationAllowed = true }, cancellationToken);
+        await EnsureSuccessAsync(response, "open self-registration", cancellationToken);
+    }
+
+    /// <summary>
+    /// Disallows self-registration in the realm. Other realm settings are left as they are.
+    /// </summary>
+    public async Task CloseRegistrationAsync(CancellationToken cancellationToken)
+    {
+        using var response = await SendAsync(
+            HttpMethod.Put, string.Empty, new { registrationAllowed = false }, cancellationToken);
+        await EnsureSuccessAsync(response, "close self-registration", cancellationToken);
+    }
+
+    /// <summary>
+    /// Reads the realm. Returns false when the realm does not exist.
+    /// </summary>
+    public async Task<bool> RealmExistsAsync(CancellationToken cancellationToken)
+    {
+        using var response = await SendAsync(HttpMethod.Get, string.Empty, null, cancellationToken);
+        if (response.StatusCode == HttpStatusCode.NotFound)
+        {
+            return false;
+        }
+
+        await EnsureSuccessAsync(response, "read the realm", cancellationToken);
+        return true;
+    }
+
+    /// <summary>
+    /// Reads the ids of every user of the realm, page by page.
+    /// </summary>
+    public async Task<IReadOnlyList<string>> ListUserIdsAsync(CancellationToken cancellationToken) =>
+        await ListUserIdsAsync("users?briefRepresentation=true&", "list users", cancellationToken);
+
+    /// <summary>
+    /// Reads the ids of the users that hold the given realm role directly, page by page. Returns
+    /// an empty list when the realm has no such role.
+    /// </summary>
+    public async Task<IReadOnlyList<string>> ListRealmRoleUserIdsAsync(string role, CancellationToken cancellationToken)
+    {
+        using (var get = await SendAsync(HttpMethod.Get, $"roles/{Uri.EscapeDataString(role)}", null, cancellationToken))
+        {
+            if (get.StatusCode == HttpStatusCode.NotFound)
+            {
+                return [];
+            }
+
+            await EnsureSuccessAsync(get, $"read the realm role {role}", cancellationToken);
+        }
+
+        return await ListUserIdsAsync(
+            $"roles/{Uri.EscapeDataString(role)}/users?briefRepresentation=true&", $"list the users of the realm role {role}", cancellationToken);
+    }
+
+    /// <summary>
+    /// Deletes the given users with at most the given number of requests in flight. A user that
+    /// does not exist counts as deleted. Returns the number of users handled.
+    /// </summary>
+    public async Task<int> DeleteUsersAsync(
+        IReadOnlyCollection<string> userIds, int parallelism, CancellationToken cancellationToken)
+    {
+        ArgumentOutOfRangeException.ThrowIfLessThan(parallelism, 1);
+
+        var deleted = 0;
+        await Parallel.ForEachAsync(
+            userIds,
+            new ParallelOptions { MaxDegreeOfParallelism = parallelism, CancellationToken = cancellationToken },
+            async (userId, token) =>
+            {
+                using var response = await SendAsync(HttpMethod.Delete, $"users/{Uri.EscapeDataString(userId)}", null, token);
+                if (response.StatusCode != HttpStatusCode.NotFound)
+                {
+                    await EnsureSuccessAsync(response, $"delete user {userId}", token);
+                }
+
+                Interlocked.Increment(ref deleted);
+            });
+
+        return deleted;
     }
 
     /// <summary>
@@ -141,7 +250,31 @@ public sealed class KeycloakAdminClient : IDisposable
         return added;
     }
 
-    public void Dispose() => _http.Dispose();
+    public void Dispose()
+    {
+        _http.Dispose();
+        _tokenLock.Dispose();
+    }
+
+    private async Task<IReadOnlyList<string>> ListUserIdsAsync(
+        string pathWithQuery, string operation, CancellationToken cancellationToken)
+    {
+        var ids = new List<string>();
+        for (var first = 0; ; first += _userPageSize)
+        {
+            using var response = await SendAsync(
+                HttpMethod.Get, $"{pathWithQuery}first={first}&max={_userPageSize}", null, cancellationToken);
+            await EnsureSuccessAsync(response, operation, cancellationToken);
+
+            var page = await response.Content.ReadFromJsonAsync<List<UserSummary>>(JsonOptions, cancellationToken) ?? [];
+            ids.AddRange(page.Select(user => user.Id));
+
+            if (page.Count < _userPageSize)
+            {
+                return ids;
+            }
+        }
+    }
 
     private static UserRepresentation ToRepresentation(PlannedAccount account) => new(
         account.KeycloakUserId.ToString(),
@@ -289,36 +422,104 @@ public sealed class KeycloakAdminClient : IDisposable
         return await SendOnceAsync(method, realmPath, body, cancellationToken);
     }
 
-    private async Task<HttpResponseMessage> SendOnceAsync(
-        HttpMethod method, string realmPath, object? body, CancellationToken cancellationToken)
-    {
-        using var request = new HttpRequestMessage(
-            method, $"{_serverUrl}/admin/realms/{Uri.EscapeDataString(_settings.Realm)}/{realmPath}");
-        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", await GetAccessTokenAsync(cancellationToken));
-        if (body is not null)
-        {
-            request.Content = JsonContent.Create(body, body.GetType(), options: JsonOptions);
-        }
+    private Task<HttpResponseMessage> SendOnceAsync(
+        HttpMethod method, string realmPath, object? body, CancellationToken cancellationToken) =>
+        SendWithRetryAsync(
+            async () =>
+            {
+                var request = new HttpRequestMessage(
+                    method, $"{_serverUrl}/admin/realms/{Uri.EscapeDataString(_settings.Realm)}/{realmPath}");
+                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", await GetAccessTokenAsync(cancellationToken));
+                if (body is not null)
+                {
+                    request.Content = JsonContent.Create(body, body.GetType(), options: JsonOptions);
+                }
 
-        return await _http.SendAsync(request, cancellationToken);
+                return request;
+            },
+            cancellationToken);
+
+    // A request message cannot be sent twice, so every attempt builds its own from the factory.
+    // 429 and 5xx answers are repeated with a delay that doubles per attempt starting at one
+    // second, or the Retry-After value when the answer has one; both are capped.
+    private async Task<HttpResponseMessage> SendWithRetryAsync(
+        Func<Task<HttpRequestMessage>> createRequest, CancellationToken cancellationToken)
+    {
+        for (var attempt = 1; ; attempt++)
+        {
+            using var request = await createRequest();
+            var response = await _http.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken);
+            if (attempt >= MaxAttempts || !IsRetryable(response.StatusCode))
+            {
+                return response;
+            }
+
+            var delay = RetryDelay(response, attempt);
+            response.Dispose();
+            await _delay(delay, cancellationToken);
+        }
     }
 
-    private async Task<string> GetAccessTokenAsync(CancellationToken cancellationToken)
+    private static bool IsRetryable(HttpStatusCode status) =>
+        status == HttpStatusCode.TooManyRequests || (int)status >= 500;
+
+    private static TimeSpan RetryDelay(HttpResponseMessage response, int attempt)
     {
-        if (_accessToken is not null && DateTimeOffset.UtcNow < _accessTokenExpiresAt - TokenRefreshMargin)
+        var retryAfter = response.Headers.RetryAfter;
+        TimeSpan delay;
+        if (retryAfter?.Delta is { } delta)
         {
-            return _accessToken;
+            delay = delta;
+        }
+        else if (retryAfter?.Date is { } date)
+        {
+            delay = date - DateTimeOffset.UtcNow;
+        }
+        else
+        {
+            delay = TimeSpan.FromSeconds(Math.Pow(2, attempt - 1));
         }
 
-        var requestedAt = DateTimeOffset.UtcNow;
-        using var response = await _http.PostAsync(
-            $"{_serverUrl}/realms/master/protocol/openid-connect/token",
-            new FormUrlEncodedContent(new Dictionary<string, string>
+        if (delay < TimeSpan.Zero)
+        {
+            delay = TimeSpan.Zero;
+        }
+
+        return delay > MaxRetryDelay ? MaxRetryDelay : delay;
+    }
+
+    // Parallel requests share one token; the lock makes only one of them fetch a fresh token.
+    private async Task<string> GetAccessTokenAsync(CancellationToken cancellationToken)
+    {
+        await _tokenLock.WaitAsync(cancellationToken);
+        try
+        {
+            if (_accessToken is not null && DateTimeOffset.UtcNow < _accessTokenExpiresAt - TokenRefreshMargin)
             {
-                ["grant_type"] = "password",
-                ["client_id"] = "admin-cli",
-                ["username"] = _settings.AdminUser,
-                ["password"] = _settings.AdminPassword,
+                return _accessToken;
+            }
+
+            return await FetchAccessTokenAsync(cancellationToken);
+        }
+        finally
+        {
+            _tokenLock.Release();
+        }
+    }
+
+    private async Task<string> FetchAccessTokenAsync(CancellationToken cancellationToken)
+    {
+        var requestedAt = DateTimeOffset.UtcNow;
+        using var response = await SendWithRetryAsync(
+            () => Task.FromResult(new HttpRequestMessage(HttpMethod.Post, $"{_serverUrl}/realms/master/protocol/openid-connect/token")
+            {
+                Content = new FormUrlEncodedContent(new Dictionary<string, string>
+                {
+                    ["grant_type"] = "password",
+                    ["client_id"] = "admin-cli",
+                    ["username"] = _settings.AdminUser,
+                    ["password"] = _settings.AdminPassword,
+                }),
             }),
             cancellationToken);
         await EnsureSuccessAsync(response, "obtain an admin token", cancellationToken);
@@ -338,10 +539,36 @@ public sealed class KeycloakAdminClient : IDisposable
             return;
         }
 
-        var content = await response.Content.ReadAsStringAsync(cancellationToken);
-        throw new InvalidOperationException(
-            $"Keycloak request to {operation} failed with {(int)response.StatusCode} {response.StatusCode}: {content}");
+        throw new KeycloakAdminException(
+            operation, response.StatusCode, await ReadErrorCodeAsync(response, cancellationToken));
     }
+
+    // Only the error field of the answer is read, and only when it is a short identifier such as
+    // invalid_grant. Free-text fields can contain usernames and email addresses.
+    private static async Task<string?> ReadErrorCodeAsync(HttpResponseMessage response, CancellationToken cancellationToken)
+    {
+        try
+        {
+            var content = await response.Content.ReadAsStringAsync(cancellationToken);
+            using var document = JsonDocument.Parse(content);
+            if (document.RootElement.ValueKind == JsonValueKind.Object
+                && document.RootElement.TryGetProperty("error", out var error)
+                && error.ValueKind == JsonValueKind.String
+                && error.GetString() is { } code
+                && ErrorCodePattern().IsMatch(code))
+            {
+                return code;
+            }
+        }
+        catch (Exception ex) when (ex is JsonException or HttpRequestException or IOException)
+        {
+        }
+
+        return null;
+    }
+
+    [GeneratedRegex("^[A-Za-z0-9_.-]{1,64}$")]
+    private static partial Regex ErrorCodePattern();
 
     private sealed record TokenResponse(
         [property: JsonPropertyName("access_token")] string AccessToken,

@@ -1,5 +1,6 @@
 using System.Net;
 using System.Text;
+using Cichlids.Infrastructure.Media;
 using Cichlids.Infrastructure.Storage;
 
 namespace Cichlids.Infrastructure.Tests;
@@ -25,9 +26,37 @@ public sealed class S3ObjectStoreTests
 
         await using var result = await store.GetAsync("images/original.jpg");
         Assert.NotNull(result);
+        Assert.False(result!.CanSeek);
         using var buffer = new MemoryStream();
         await result!.CopyToAsync(buffer);
         Assert.Equal(content, buffer.ToArray());
+    }
+
+    [Fact]
+    public async Task GetAsync_reads_an_object_exactly_at_the_download_cap()
+    {
+        var store = _fixture.CreateStoreForNewBucket(maxDownloadBytes: 1024);
+        var content = new byte[1024];
+        Random.Shared.NextBytes(content);
+        await store.PutAsync("images/at-cap.bin", new MemoryStream(content), "application/octet-stream");
+
+        await using var result = await store.GetAsync("images/at-cap.bin");
+        using var buffer = new MemoryStream();
+        await result!.CopyToAsync(buffer);
+
+        Assert.Equal(content, buffer.ToArray());
+    }
+
+    [Fact]
+    public async Task GetAsync_refuses_an_object_one_byte_over_the_download_cap()
+    {
+        var store = _fixture.CreateStoreForNewBucket(maxDownloadBytes: 1024);
+        await store.PutAsync("images/over-cap.bin", new MemoryStream(new byte[1025]), "application/octet-stream");
+
+        var ex = await Assert.ThrowsAsync<ObjectTooLargeException>(() => store.GetAsync("images/over-cap.bin"));
+
+        Assert.Equal("images/over-cap.bin", ex.Key);
+        Assert.Equal(1024, ex.MaxBytes);
     }
 
     [Fact]
@@ -73,6 +102,51 @@ public sealed class S3ObjectStoreTests
         var size = await store.GetSizeAsync("does/not/exist.jpg");
 
         Assert.Null(size);
+    }
+
+    [Fact]
+    public async Task PutAsync_with_metadata_is_read_back_by_HeadAsync_with_the_size_and_unprefixed_keys()
+    {
+        var store = _fixture.CreateStoreForNewBucket();
+        var content = Encoding.UTF8.GetBytes("cichlids swim in schools");
+        var metadata = new Dictionary<string, string>
+        {
+            ["sha256"] = "abc123",
+            ["source-sha256"] = "def456",
+            ["pipeline"] = "7",
+        };
+
+        await store.PutAsync("images/tagged.jpg", new MemoryStream(content), "image/jpeg", metadata);
+
+        var head = await store.HeadAsync("images/tagged.jpg");
+
+        Assert.NotNull(head);
+        Assert.Equal(content.LongLength, head!.Size);
+        Assert.Equal("abc123", head.Metadata["sha256"]);
+        Assert.Equal("def456", head.Metadata["source-sha256"]);
+        Assert.Equal("7", head.Metadata["pipeline"]);
+        Assert.DoesNotContain(head.Metadata.Keys, k => k.StartsWith("x-amz-meta-", StringComparison.OrdinalIgnoreCase));
+    }
+
+    [Fact]
+    public async Task HeadAsync_returns_empty_metadata_for_an_object_put_without_metadata()
+    {
+        var store = _fixture.CreateStoreForNewBucket();
+        await store.PutAsync("images/plain.jpg", new MemoryStream([1, 2, 3]), "image/jpeg");
+
+        var head = await store.HeadAsync("images/plain.jpg");
+
+        Assert.NotNull(head);
+        Assert.Equal(3, head!.Size);
+        Assert.Empty(head.Metadata);
+    }
+
+    [Fact]
+    public async Task HeadAsync_returns_null_for_a_missing_key()
+    {
+        var store = _fixture.CreateStoreForNewBucket();
+
+        Assert.Null(await store.HeadAsync("does/not/exist.jpg"));
     }
 
     [Fact]
@@ -123,32 +197,47 @@ public sealed class S3ObjectStoreTests
         Assert.Empty(listedKeys);
     }
 
+    [Theory]
+    [InlineData("variants/medium/originals/user_pics/1/x.jpg.jpg")]
+    [InlineData("forum_attachments/x.jpg")]
+    public async Task EnsurePublicReadPolicyAsync_makes_an_object_under_a_public_prefix_anonymously_readable(string key)
+    {
+        var store = _fixture.CreateStoreForNewBucket();
+        await store.PutAsync(key, new MemoryStream([1, 2, 3]), "image/jpeg");
+
+        var applied = await store.EnsurePublicReadPolicyAsync(MediaStorageKeys.PublicPrefixes);
+        Assert.True(applied);
+
+        Assert.Equal(HttpStatusCode.OK, await GetAnonymouslyAsync(store, key));
+    }
+
     [Fact]
-    public async Task EnsurePublicReadPolicyAsync_makes_an_existing_object_anonymously_readable()
+    public async Task EnsurePublicReadPolicyAsync_refuses_an_anonymous_read_of_an_original()
     {
         var store = _fixture.CreateStoreForNewBucket();
         await store.PutAsync("originals/public-read.jpg", new MemoryStream([1, 2, 3]), "image/jpeg");
 
-        var applied = await store.EnsurePublicReadPolicyAsync();
+        var applied = await store.EnsurePublicReadPolicyAsync(MediaStorageKeys.PublicPrefixes);
         Assert.True(applied);
 
-        using var anonymousClient = new HttpClient();
-        var response = await anonymousClient.GetAsync($"{_fixture.ServiceUrl}/{store.Bucket}/originals/public-read.jpg");
-
-        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        Assert.Equal(HttpStatusCode.Forbidden, await GetAnonymouslyAsync(store, "originals/public-read.jpg"));
     }
 
     [Fact]
-    public async Task EnsurePublicReadPolicyAsync_leaves_a_missing_key_reported_as_not_found()
+    public async Task EnsurePublicReadPolicyAsync_leaves_a_missing_variant_reported_as_not_found()
     {
         var store = _fixture.CreateStoreForNewBucket();
 
-        var applied = await store.EnsurePublicReadPolicyAsync();
+        var applied = await store.EnsurePublicReadPolicyAsync(MediaStorageKeys.PublicPrefixes);
         Assert.True(applied);
 
-        using var anonymousClient = new HttpClient();
-        var response = await anonymousClient.GetAsync($"{_fixture.ServiceUrl}/{store.Bucket}/originals/does-not-exist.jpg");
+        Assert.Equal(HttpStatusCode.NotFound, await GetAnonymouslyAsync(store, "variants/thumb/originals/does-not-exist.jpg.jpg"));
+    }
 
-        Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
+    private async Task<HttpStatusCode> GetAnonymouslyAsync(S3ObjectStore store, string key)
+    {
+        using var anonymousClient = new HttpClient();
+        using var response = await anonymousClient.GetAsync($"{_fixture.ServiceUrl}/{store.Bucket}/{key}");
+        return response.StatusCode;
     }
 }

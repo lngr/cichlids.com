@@ -34,10 +34,6 @@ public sealed class DraftsQueryService(CichlidsDbContext context, IObjectStore o
 
         var mediaItemIds = mediaItemIdByPost.Values.ToList();
 
-        var originalByMediaItem = await context.MediaItems
-            .Where(m => mediaItemIds.Contains(m.Id))
-            .ToDictionaryAsync(m => m.Id, m => m.StorageKey, cancellationToken);
-
         var variantsByMediaItem = (await context.MediaVariants
                 .Where(v => mediaItemIds.Contains(v.MediaItemId))
                 .Select(v => new { v.MediaItemId, v.Label, v.StorageKey })
@@ -52,8 +48,7 @@ public sealed class DraftsQueryService(CichlidsDbContext context, IObjectStore o
             .Select(d =>
             {
                 var mediaItemId = mediaItemIdByPost[d.Id];
-                var image = _mediaUrlBuilder.Build(
-                    originalByMediaItem[mediaItemId], variantsByMediaItem.GetValueOrDefault(mediaItemId, NoVariants));
+                var image =  _mediaUrlBuilder.Build(variantsByMediaItem.GetValueOrDefault(mediaItemId, NoVariants));
                 return new DraftDto(d.Id, d.State, d.Topic, d.Title, d.Description, d.CreatedAt, image);
             })
             .ToList();

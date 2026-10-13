@@ -40,6 +40,27 @@ public sealed class PostgresFixture : IAsyncLifetime
     }
 
     /// <summary>
+    /// Creates a new, empty database in the container without applying any migration, for tests
+    /// that migrate step by step. Disposing the result drops the database.
+    /// </summary>
+    public async Task<TemporaryDatabase> CreateEmptyDatabaseAsync()
+    {
+        var databaseName = $"empty_{Guid.NewGuid():N}";
+        await ExecuteAsync($"CREATE DATABASE {databaseName}");
+
+        var connectionString = new NpgsqlConnectionStringBuilder(ConnectionString) { Database = databaseName }.ConnectionString;
+        return new TemporaryDatabase(connectionString, () => ExecuteAsync($"DROP DATABASE {databaseName} WITH (FORCE)"));
+    }
+
+    private async Task ExecuteAsync(string sql)
+    {
+        await using var connection = new NpgsqlConnection(ConnectionString);
+        await connection.OpenAsync();
+        await using var command = new NpgsqlCommand(sql, connection);
+        await command.ExecuteNonQueryAsync();
+    }
+
+    /// <summary>
     /// Runs a scalar query against the raw connection, for assertions the EF Core model does
     /// not expose (catalog views such as information_schema.tables or pg_indexes).
     /// </summary>
@@ -58,6 +79,31 @@ public sealed class PostgresFixture : IAsyncLifetime
         }
 
         return results;
+    }
+}
+
+/// <summary>
+/// A database of the fixture container that exists until it is disposed.
+/// </summary>
+public sealed class TemporaryDatabase(string connectionString, Func<Task> drop) : IAsyncDisposable
+{
+    public CichlidsDbContext CreateContext()
+    {
+        var optionsBuilder = new DbContextOptionsBuilder<CichlidsDbContext>()
+            .UseNpgsql(connectionString)
+            .UseSnakeCaseNamingConvention();
+
+        return new CichlidsDbContext(optionsBuilder.Options);
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        await using (var connection = new NpgsqlConnection(connectionString))
+        {
+            NpgsqlConnection.ClearPool(connection);
+        }
+
+        await drop();
     }
 }
 

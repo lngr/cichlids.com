@@ -4,9 +4,9 @@ using System.Text.Json.Serialization;
 namespace Cichlids.Etl.Runtime;
 
 /// <summary>
-/// Renders a verification report as an aligned console table and, on request, as JSON: the table
-/// is the day-to-day read-out, the JSON is for diffing a run's outcome against a previous one or
-/// feeding it into other tooling.
+/// Renders a verification report as an aligned console table, each row followed by the rule its
+/// expectation follows from, and on request as JSON: the table is the day-to-day read-out, the
+/// JSON is for diffing a run's outcome against a previous one or feeding it into other tooling.
 /// </summary>
 public static class VerificationReportPrinter
 {
@@ -33,6 +33,7 @@ public static class VerificationReportPrinter
             Console.WriteLine(
                 $"{row.Entity.PadRight(entityWidth)}  {row.Expected,12}  {row.Actual,12}  {row.Delta,8}  {status}"
                 + (row.Note is null ? string.Empty : $"  ({row.Note})"));
+            Console.WriteLine($"{string.Empty.PadRight(entityWidth)}  rule: {row.Rule}");
         }
 
         Console.WriteLine();
@@ -50,7 +51,7 @@ public static class VerificationReportPrinter
             report.Passed,
             report.MismatchCount,
             report.Rows
-                .Select(row => new JsonRowDto(row.Entity, row.Expected, row.Actual, row.Delta, row.Status.ToString().ToLowerInvariant(), row.Note))
+                .Select(row => new JsonRowDto(row.Entity, row.Expected, row.Actual, row.Delta, row.Status.ToString().ToLowerInvariant(), row.Rule, row.Note))
                 .ToList());
 
         var options = new JsonSerializerOptions { WriteIndented = true };
@@ -71,6 +72,7 @@ public static class VerificationReportPrinter
         [property: JsonPropertyName("actual")] long Actual,
         [property: JsonPropertyName("delta")] long Delta,
         [property: JsonPropertyName("status")] string Status,
+        [property: JsonPropertyName("rule")] string Rule,
         [property: JsonPropertyName("note")] string? Note);
 
     private sealed record JsonDocumentDto(

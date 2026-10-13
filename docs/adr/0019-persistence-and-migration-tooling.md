@@ -14,7 +14,8 @@ the persistence and migration tooling open. The application needs:
    transaction as the domain change ([ADR-0008](0008-event-driven-architecture.md)).
 3. Integration tests against a real PostgreSQL instance.
 4. Bulk data paths for the one-time migration of the legacy dataset (millions of rows),
-   which must be idempotent and repeatable.
+   which must be idempotent and repeatable. [ADR-0026](0026-legacy-import-runs-once-against-an-empty-target.md)
+   refines this for the legacy import: it runs once, atomically, against an empty target.
 
 ## Decision
 
@@ -51,3 +52,4 @@ the persistence and migration tooling open. The application needs:
 
 - [ADR-0002: Technology Stack](0002-technology-stack.md)
 - [ADR-0008: Event-Driven Architecture](0008-event-driven-architecture.md)
+- [ADR-0026: Legacy Import Runs Once Against an Empty Target](0026-legacy-import-runs-once-against-an-empty-target.md)

@@ -124,12 +124,16 @@ start_api() {
     # a .dll is launched from, not the directory the .dll lives in, so this runs from inside the
     # build output rather than from app/api.
     cd "$API_BUILD_DIR"
+    # The outbox dispatcher polls every second and gives an event up after fifteen seconds, so
+    # the webhook spec observes retries, a given-up event and its redelivery within seconds.
     ASPNETCORE_URLS="http://0.0.0.0:${API_PORT}" \
     ASPNETCORE_ENVIRONMENT=Development \
     ConnectionStrings__Cichlids="$DB_CONNECTION" \
     ObjectStorage__Bucket="$BUCKET_NAME" \
     ObjectStorage__PublicBaseUrl="http://127.0.0.1:9000/${BUCKET_NAME}" \
-    OutboxDispatcher__Enabled=false \
+    OutboxDispatcher__Enabled=true \
+    OutboxDispatcher__PollInterval=00:00:01 \
+    OutboxDispatcher__GiveUpAfter=00:00:15 \
     nohup "$DOTNET" "$API_BUILD_DIR/Cichlids.Api.dll" >"$API_LOG" 2>&1 &
     echo $! >"$API_PID_FILE"
   )

@@ -660,6 +660,13 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("id");
 
+                    b.PrimitiveCollection<List<long>>("AcknowledgedSubscriptionIds")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint[]")
+                        .HasColumnName("acknowledged_subscription_ids")
+                        .HasDefaultValueSql("'{}'");
+
                     b.Property<string>("AggregateId")
                         .IsRequired()
                         .HasColumnType("text")
@@ -685,9 +692,23 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasColumnType("text")
                         .HasColumnName("event_type");
 
+                    b.Property<DateTimeOffset?>("GivenUpAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("given_up_at");
+
+                    b.Property<DateTimeOffset?>("LastAttemptAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("last_attempt_at");
+
                     b.Property<string>("LastError")
                         .HasColumnType("text")
                         .HasColumnName("last_error");
+
+                    b.Property<DateTimeOffset>("NextAttemptAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("next_attempt_at")
+                        .HasDefaultValueSql("now()");
 
                     b.Property<DateTimeOffset>("OccurredAt")
                         .HasColumnType("timestamp with time zone")
@@ -698,8 +719,16 @@ namespace Cichlids.Infrastructure.Persistence.Migrations
                         .HasColumnType("jsonb")
                         .HasColumnName("payload");
 
+                    b.Property<DateTimeOffset?>("RedeliveredAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("redelivered_at");
+
                     b.HasKey("Id")
                         .HasName("pk_outbox_event");
+
+                    b.HasIndex("NextAttemptAt")
+                        .HasDatabaseName("ix_outbox_event_due")
+                        .HasFilter("dispatched_at IS NULL AND given_up_at IS NULL");
 
                     b.ToTable("outbox_event", "public");
                 });

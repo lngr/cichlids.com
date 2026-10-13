@@ -30,4 +30,14 @@ public class OutboxBackoffTests
 
         Assert.Equal(TimeSpan.FromHours(1), backoff);
     }
+
+    [Theory]
+    [InlineData(200)]
+    [InlineData(int.MaxValue)]
+    public void Compute_HighAttemptCountsStayAtTheMaximum(int attemptCount)
+    {
+        var backoff = OutboxBackoff.Compute(attemptCount, TimeSpan.FromHours(1));
+
+        Assert.Equal(TimeSpan.FromHours(1), backoff);
+    }
 }

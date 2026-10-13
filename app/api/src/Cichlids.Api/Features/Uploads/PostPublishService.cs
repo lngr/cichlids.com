@@ -55,15 +55,12 @@ public sealed class PostPublishService(
             candidate => context.SlugAliases.Any(s => s.Value == candidate));
 
         context.SlugAliases.Add(new SlugAlias { PostId = postId, Value = slug, IsCanonical = true, CreatedAt = now });
-        context.OutboxEvents.Add(new OutboxEvent
-        {
-            Id = Guid.CreateVersion7(),
-            OccurredAt = now,
-            EventType = "post.published",
-            AggregateType = "post",
-            AggregateId = postId.ToString(),
-            Payload = JsonSerializer.Serialize(new { postId, slug, authorProfileId }, PayloadOptions),
-        });
+        context.OutboxEvents.Add(OutboxEvent.Create(
+            "post.published",
+            "post",
+            postId.ToString(),
+            JsonSerializer.Serialize(new { postId, slug, authorProfileId }, PayloadOptions),
+            now));
 
         await context.SaveChangesAsync(cancellationToken);
         await transaction.CommitAsync(cancellationToken);

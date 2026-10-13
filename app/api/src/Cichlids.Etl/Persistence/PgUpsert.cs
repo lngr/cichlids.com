@@ -3,9 +3,10 @@ using Npgsql;
 namespace Cichlids.Etl.Persistence;
 
 /// <summary>
-/// Executes an <c>INSERT ... ON CONFLICT DO UPDATE</c> against a target row keyed by its legacy
-/// id, the idempotency pattern every parent table in the ETL upserts through: a repeated run with
-/// the same legacy row updates the existing target row instead of duplicating it.
+/// Executes an INSERT ... ON CONFLICT DO UPDATE against a target row keyed by a unique column,
+/// usually its legacy id. A row that exists under the key is updated in place. Within one full
+/// run this lets several steps write the same row (the placeholder profiles, for instance), and a
+/// single step run in Development or a step test can run over the rows of an earlier run.
 /// </summary>
 public static class PgUpsert
 {

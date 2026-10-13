@@ -4,6 +4,7 @@ using Cichlids.Etl.Identity;
 using Cichlids.Etl.Persistence;
 using Cichlids.Etl.Runtime;
 using Cichlids.Infrastructure.Identity;
+using Cichlids.Infrastructure.Media;
 using Cichlids.Infrastructure.Persistence.Conversions;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MySqlConnector;
@@ -141,7 +142,9 @@ public sealed class ForumMigrationStep : IEtlStep
     /// <summary>
     /// Deletes every discussion_post row whose legacy id is not among this run's migrated
     /// messages, together with its discussion_post_media rows through the foreign key cascade, and
-    /// any forum-attachment media_item row left with no discussion_post_media referencing it.
+    /// any forum-attachment media_item row left with no discussion_post_media referencing it. In
+    /// the full run the table starts empty and nothing is deleted; a single step run in
+    /// Development or a step test over earlier rows ends with the migrated set.
     /// </summary>
     private static async Task RemoveStalePostsAsync(
         EtlContext context, IReadOnlyCollection<int> currentPostLegacyIds, CancellationToken cancellationToken)
@@ -169,7 +172,7 @@ public sealed class ForumMigrationStep : IEtlStep
 
     /// <summary>
     /// Deletes every discussion_thread row whose legacy id is not among this run's roots and that
-    /// carries no posts.
+    /// has no posts. In the full run the table starts empty and nothing is deleted.
     /// </summary>
     private static async Task RemoveStaleThreadsAsync(
         EtlContext context, IReadOnlyCollection<int> currentRootLegacyIds, CancellationToken cancellationToken)
@@ -351,10 +354,14 @@ public sealed class ForumMigrationStep : IEtlStep
     }
 
     /// <summary>
-    /// Exports every migrated post's attachments (<c>phorum_files</c> rows linked to a message)
-    /// into the object store as media items. Idempotent per file id through the deterministic
-    /// storage key: a second run with an unchanged decoded byte size skips the re-upload but still
-    /// keeps the media_item and discussion_post_media rows in sync.
+    /// Exports every migrated post's attachments (phorum_files rows linked to a message)
+    /// into the object store as media items. Image attachments are stored with their location,
+    /// serial number and owner metadata removed by MediaMetadataSanitizer; any other file is
+    /// stored byte for byte. Idempotent per file id through the deterministic storage key: an
+    /// attachment whose stored object carries the checksum of the legacy bytes and the current
+    /// original pipeline version is skipped by the upload, and the media_item and
+    /// discussion_post_media rows are kept in sync with the legacy data in every case. Size and
+    /// checksum on media_item describe the stored bytes.
     /// </summary>
     private static async Task MigrateAttachmentsAsync(
         EtlContext context,
@@ -363,8 +370,6 @@ public sealed class ForumMigrationStep : IEtlStep
         StepStatistics stats,
         CancellationToken cancellationToken)
     {
-        var existingByteSizeByStorageKey = await LoadExistingAttachmentByteSizesAsync(context, cancellationToken);
-
         const string sql = $"""
             SELECT file_id, filename, file_data, message_id
             FROM {PhorumDatabase}.phorum_files
@@ -376,7 +381,7 @@ public sealed class ForumMigrationStep : IEtlStep
         var attachments = new List<(string StorageKey, int PostLegacyId, int Sort)>();
         var nextSortByPostLegacyId = new Dictionary<int, int>();
         var uploaded = 0;
-        var uploadsSkippedUnchanged = 0;
+        var alreadyPresent = 0;
 
         await using (var command = new MySqlCommand(sql, context.Legacy))
         await using (var reader = await command.ExecuteReaderAsync(cancellationToken))
@@ -407,17 +412,40 @@ public sealed class ForumMigrationStep : IEtlStep
                 }
 
                 var storageKey = $"forum_attachments/{fileId}_{StorageKeyNormalizer.NormalizeFilename(filename)}";
-                var checksum = Convert.ToHexStringLower(SHA256.HashData(bytes));
+
+                byte[] stored;
+                try
+                {
+                    stored = MediaMetadataSanitizer.Sanitize(bytes);
+                }
+                catch (Exception ex) when (ex is MediaMetadataSanitizer.UnsanitizableImageException
+                    or ImageProcessor.ImageTooLargeException)
+                {
+                    // Forum attachments are publicly readable, so an image whose personal
+                    // metadata cannot be removed is not stored, and an earlier copy is deleted.
+                    await context.ObjectStore!.DeleteAsync(storageKey, cancellationToken);
+                    stats.AddSkip("attachment_unsanitizable");
+                    continue;
+                }
+
+                var sourceChecksum = Convert.ToHexStringLower(SHA256.HashData(bytes));
+                var storedChecksum = Convert.ToHexStringLower(SHA256.HashData(stored));
                 var ownerProfileId = authorProfileIdByLegacyId.GetValueOrDefault(messageId);
 
-                if (existingByteSizeByStorageKey.TryGetValue(storageKey, out var existingByteSize) && existingByteSize == bytes.LongLength)
+                var head = await context.ObjectStore!.HeadAsync(storageKey, cancellationToken);
+                if (MediaObjectMetadata.Decide(head, sourceChecksum, MediaObjectMetadata.OriginalPipelineVersion) == ObjectState.Current)
                 {
-                    uploadsSkippedUnchanged++;
+                    alreadyPresent++;
                 }
                 else
                 {
-                    await using var content = new MemoryStream(bytes);
-                    await context.ObjectStore!.PutAsync(storageKey, content, ResolveContentType(filename), cancellationToken);
+                    await using var content = new MemoryStream(stored);
+                    await context.ObjectStore.PutAsync(
+                        storageKey,
+                        content,
+                        ResolveContentType(filename),
+                        MediaObjectMetadata.ForOriginal(storedChecksum, sourceChecksum, photo: null),
+                        cancellationToken);
                     uploaded++;
                 }
 
@@ -427,8 +455,8 @@ public sealed class ForumMigrationStep : IEtlStep
                     MediaKindConverter.ConvertToProvider(MediaKind.Photo),
                     storageKey,
                     filename.Length == 0 ? null : filename,
-                    bytes.LongLength,
-                    checksum,
+                    stored.LongLength,
+                    storedChecksum,
                     DateTimeOffset.UtcNow,
                 });
 
@@ -438,7 +466,7 @@ public sealed class ForumMigrationStep : IEtlStep
             }
         }
 
-        stats.AddWarning($"forum attachments: {uploaded} uploaded, {uploadsSkippedUnchanged} skipped (unchanged size).");
+        stats.AddWarning($"forum attachments: {uploaded} uploaded, {alreadyPresent} already in the object store.");
 
         if (mediaRows.Count == 0)
         {
@@ -505,23 +533,6 @@ public sealed class ForumMigrationStep : IEtlStep
         }
 
         return results;
-    }
-
-    private static async Task<Dictionary<string, long?>> LoadExistingAttachmentByteSizesAsync(
-        EtlContext context, CancellationToken cancellationToken)
-    {
-        await using var command = new NpgsqlCommand(
-            "SELECT storage_key, byte_size FROM media_item WHERE storage_key LIKE 'forum_attachments/%'",
-            context.Target, context.Transaction);
-        await using var reader = await command.ExecuteReaderAsync(cancellationToken);
-
-        var result = new Dictionary<string, long?>();
-        while (await reader.ReadAsync(cancellationToken))
-        {
-            result[reader.GetString(0)] = reader.IsDBNull(1) ? null : reader.GetInt64(1);
-        }
-
-        return result;
     }
 
     private static async Task RecomputeThreadAggregatesAsync(EtlContext context, CancellationToken cancellationToken)

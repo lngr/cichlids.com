@@ -1,8 +1,9 @@
 {
   "realm": "cichlids",
+  "displayName": "cichlids (local development only)",
   "enabled": true,
   "sslRequired": "none",
-  "registrationAllowed": true,
+  "registrationAllowed": false,
   "resetPasswordAllowed": true,
   "requiredActions": [
     { "alias": "CONFIGURE_TOTP", "name": "Configure OTP", "providerId": "CONFIGURE_TOTP", "enabled": true, "defaultAction": false, "priority": 10, "config": {} },
@@ -37,7 +38,8 @@
   "roles": {
     "realm": [
       { "name": "moderator", "description": "Can delete comments and moderate content." },
-      { "name": "admin", "description": "Full administrative access." }
+      { "name": "admin", "description": "Full administrative access." },
+      { "name": "tester", "description": "Test account kept across staging resets." }
     ]
   },
   "clientScopes": [

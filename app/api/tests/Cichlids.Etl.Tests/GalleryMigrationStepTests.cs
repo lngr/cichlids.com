@@ -146,7 +146,7 @@ public sealed class GalleryMigrationStepTests(EtlFixture fixture)
     private Task<StepStatistics> RunStepAsync() => fixture.RunExclusiveAsync(async () =>
     {
         await using var context = await EtlContext.CreateAsync(
-            fixture.LegacyConnectionString, fixture.TargetConnectionString, dryRun: false, CancellationToken.None);
+            fixture.LegacyConnectionString, fixture.TargetConnectionString, CancellationToken.None);
         await EtlRunner.RunAsync(new GalleryMigrationStep(), context, CancellationToken.None);
         return context.Statistics.ForStep("galleries");
     });

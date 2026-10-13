@@ -126,7 +126,6 @@ export type ImageUrlsDto = {
     small: null | string;
     medium: null | string;
     large: null | string;
-    original: string;
 };
 
 export type InhabitantDto = {
@@ -147,6 +146,23 @@ export type MeDto = {
     roles: Array<string>;
 };
 
+export type OutboxEventDto = {
+    id: string;
+    eventType: string;
+    aggregateType: string;
+    aggregateId: string;
+    occurredAt: string;
+    attemptCount: number | string;
+    lastError: null | string;
+    lastAttemptAt: null | string;
+    givenUpAt: null | string;
+    redeliveredAt: null | string;
+};
+
+export type OutboxRedeliveryDto = {
+    count: number | string;
+};
+
 export type PagedResponseOfCommentDto = {
     total: number | string;
     items: Array<CommentDto>;
@@ -155,6 +171,11 @@ export type PagedResponseOfCommentDto = {
 export type PagedResponseOfCommunityThreadListItemDto = {
     total: number | string;
     items: Array<CommunityThreadListItemDto>;
+};
+
+export type PagedResponseOfOutboxEventDto = {
+    total: number | string;
+    items: Array<OutboxEventDto>;
 };
 
 export type PagedResponseOfPictureListItemDto = {
@@ -206,6 +227,14 @@ export type PictureListItemDto = {
 export type PostState = 'draft' | 'published' | 'archived';
 
 export type PostTopic = 'cichlids' | 'tanks' | 'offtopic' | 'contest' | 'unknown';
+
+export type ProblemDetails = {
+    type?: null | string;
+    title?: null | string;
+    status?: null | number | string;
+    detail?: null | string;
+    instance?: null | string;
+};
 
 export type ProfileDetailDto = {
     id: number | string;
@@ -370,6 +399,10 @@ export type DeleteCommentErrors = {
      */
     400: string;
     /**
+     * Forbidden
+     */
+    403: ProblemDetails;
+    /**
      * Not Found
      */
     404: unknown;
@@ -392,6 +425,15 @@ export type GetMeData = {
     query?: never;
     url: '/api/me';
 };
+
+export type GetMeErrors = {
+    /**
+     * Forbidden
+     */
+    403: ProblemDetails;
+};
+
+export type GetMeError = GetMeErrors[keyof GetMeErrors];
 
 export type GetMeResponses = {
     /**
@@ -557,6 +599,10 @@ export type UploadPhotoErrors = {
      */
     400: string;
     /**
+     * Forbidden
+     */
+    403: ProblemDetails;
+    /**
      * Payload Too Large
      */
     413: unknown;
@@ -579,6 +625,15 @@ export type ListMyDraftsData = {
     query?: never;
     url: '/api/me/drafts';
 };
+
+export type ListMyDraftsErrors = {
+    /**
+     * Forbidden
+     */
+    403: ProblemDetails;
+};
+
+export type ListMyDraftsError = ListMyDraftsErrors[keyof ListMyDraftsErrors];
 
 export type ListMyDraftsResponses = {
     /**
@@ -603,6 +658,10 @@ export type PublishPostErrors = {
      * Bad Request
      */
     400: string;
+    /**
+     * Forbidden
+     */
+    403: ProblemDetails;
     /**
      * Not Found
      */
@@ -634,6 +693,10 @@ export type DiscardPostData = {
 };
 
 export type DiscardPostErrors = {
+    /**
+     * Forbidden
+     */
+    403: ProblemDetails;
     /**
      * Not Found
      */
@@ -800,6 +863,10 @@ export type CreatePictureCommentErrors = {
      */
     400: string;
     /**
+     * Forbidden
+     */
+    403: ProblemDetails;
+    /**
      * Not Found
      */
     404: unknown;
@@ -913,6 +980,10 @@ export type CreateTankCommentErrors = {
      * Bad Request
      */
     400: string;
+    /**
+     * Forbidden
+     */
+    403: ProblemDetails;
     /**
      * Not Found
      */
@@ -1109,3 +1180,77 @@ export type CreateWebhookSubscriptionResponses = {
 };
 
 export type CreateWebhookSubscriptionResponse = CreateWebhookSubscriptionResponses[keyof CreateWebhookSubscriptionResponses];
+
+export type ListOutboxEventsData = {
+    body?: never;
+    path?: never;
+    query?: {
+        state?: string;
+        offset?: number | string;
+        limit?: number | string;
+    };
+    url: '/api/admin/outbox/events';
+};
+
+export type ListOutboxEventsErrors = {
+    /**
+     * Bad Request
+     */
+    400: string;
+};
+
+export type ListOutboxEventsError = ListOutboxEventsErrors[keyof ListOutboxEventsErrors];
+
+export type ListOutboxEventsResponses = {
+    /**
+     * OK
+     */
+    200: PagedResponseOfOutboxEventDto;
+};
+
+export type ListOutboxEventsResponse = ListOutboxEventsResponses[keyof ListOutboxEventsResponses];
+
+export type RedeliverOutboxEventData = {
+    body?: never;
+    path: {
+        id: string;
+    };
+    query?: never;
+    url: '/api/admin/outbox/events/{id}/redeliver';
+};
+
+export type RedeliverOutboxEventErrors = {
+    /**
+     * Not Found
+     */
+    404: unknown;
+    /**
+     * Conflict
+     */
+    409: string;
+};
+
+export type RedeliverOutboxEventError = RedeliverOutboxEventErrors[keyof RedeliverOutboxEventErrors];
+
+export type RedeliverOutboxEventResponses = {
+    /**
+     * Accepted
+     */
+    202: unknown;
+};
+
+export type RedeliverGivenUpOutboxEventsData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/admin/outbox/given-up/redeliver';
+};
+
+export type RedeliverGivenUpOutboxEventsResponses = {
+    /**
+     * Accepted
+     */
+    202: OutboxRedeliveryDto;
+};
+
+export type RedeliverGivenUpOutboxEventsResponse = RedeliverGivenUpOutboxEventsResponses[keyof RedeliverGivenUpOutboxEventsResponses];

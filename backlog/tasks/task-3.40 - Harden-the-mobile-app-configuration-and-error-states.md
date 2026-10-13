@@ -4,6 +4,7 @@ title: Harden the mobile app configuration and error states
 status: To Do
 assignee: []
 created_date: '2026-10-12 04:48'
+updated_date: '2026-10-12 12:58'
 labels: []
 dependencies: []
 references:
@@ -36,3 +37,9 @@ Builds outside development fail when the API or Keycloak address is missing; app
 - [ ] #4 Authoritative domain logic is covered by unit/integration tests
 - [ ] #5 All CI test suites are fully green
 <!-- DOD:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+The API problem details carry a stable `code` extension field (for example `non_member_profile`) that the generated client type does not declare yet.
+<!-- SECTION:NOTES:END -->

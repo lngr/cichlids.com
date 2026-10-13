@@ -2,6 +2,7 @@ using Cichlids.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Testcontainers.PostgreSql;
@@ -55,13 +56,14 @@ public sealed class ApiFixture : IAsyncLifetime
                     ["ObjectStorage:SecretKey"] = "test",
                     ["ObjectStorage:ForcePathStyle"] = "true",
                     ["ObjectStorage:PublicBaseUrl"] = ObjectStorePublicBaseUrl,
-                    ["Authentication:Authority"] = TestTokens.Issuer,
-                    ["Authentication:Audience"] = TestTokens.Audience,
-                    ["Authentication:RequireHttpsMetadata"] = "false",
                     // The polling dispatcher would otherwise race read-endpoint assertions that
                     // check an outbox row's dispatched_at right after a write; tests that exercise
                     // dispatch drive it directly instead.
                     ["OutboxDispatcher:Enabled"] = "false",
+                    // In-memory configuration overrides the Development allowlist index by index,
+                    // so every index of that list is set here.
+                    ["Webhooks:AllowedTargetHosts:0"] = "example.test",
+                    ["Webhooks:AllowedTargetHosts:1"] = "localhost",
                 }));
 
             // Tokens are validated against the test signing key directly instead of an identity
@@ -95,7 +97,7 @@ public sealed class ApiFixture : IAsyncLifetime
 
     /// <summary>
     /// The prefix every public media URL returned by the API is expected to start with, for tests
-    /// that assert a variant or original resolved to a URL instead of null.
+    /// that assert a variant resolved to a URL instead of null.
     /// </summary>
     public static string ExpectedPublicUrlPrefix => ObjectStorePublicBaseUrl;
 
@@ -105,11 +107,18 @@ public sealed class ApiFixture : IAsyncLifetime
     /// </summary>
     public IServiceProvider Services => _factory.Services;
 
-    public CichlidsDbContext CreateDbContext()
+    public CichlidsDbContext CreateDbContext() => CreateDbContext([]);
+
+    /// <summary>
+    /// Creates a context against the fixture database with the given EF Core interceptors
+    /// attached, for tests that need to act at a precise point of a save.
+    /// </summary>
+    public CichlidsDbContext CreateDbContext(params IInterceptor[] interceptors)
     {
         var optionsBuilder = new DbContextOptionsBuilder<CichlidsDbContext>()
             .UseNpgsql(_postgres.GetConnectionString())
-            .UseSnakeCaseNamingConvention();
+            .UseSnakeCaseNamingConvention()
+            .AddInterceptors(interceptors);
 
         return new CichlidsDbContext(optionsBuilder.Options);
     }

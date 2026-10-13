@@ -151,7 +151,6 @@ public class PicturesEndpointsTests(ApiFixture fixture)
         Assert.StartsWith(ApiFixture.ExpectedPublicUrlPrefix, pictureA.Image.Small);
         Assert.StartsWith(ApiFixture.ExpectedPublicUrlPrefix, pictureA.Image.Medium);
         Assert.Null(pictureA.Image.Large);
-        Assert.StartsWith(ApiFixture.ExpectedPublicUrlPrefix, pictureA.Image.Original);
     }
 
     [Fact]

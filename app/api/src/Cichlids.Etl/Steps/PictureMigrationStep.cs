@@ -547,6 +547,8 @@ public sealed class PictureMigrationStep : IEtlStep
             await clear.ExecuteNonQueryAsync(cancellationToken);
         }
 
+        // Empty in the full run; a single step run in Development or a step test replaces the
+        // rows of an earlier run.
         if (allTankIds.Count > 0)
         {
             await using var delete = new NpgsqlCommand(
@@ -649,6 +651,8 @@ public sealed class PictureMigrationStep : IEtlStep
             aliasRows.Add(new object?[] { postId, slug, true, DateTimeOffset.UtcNow });
         }
 
+        // Empty in the full run; a single step run in Development or a step test replaces the
+        // rows of an earlier run.
         if (postIdByLegacyId.Count > 0)
         {
             await using var delete = new NpgsqlCommand(

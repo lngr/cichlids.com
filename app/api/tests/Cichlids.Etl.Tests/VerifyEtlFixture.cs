@@ -1,12 +1,17 @@
 using Amazon.Runtime;
 using Amazon.S3;
+using Cichlids.Etl.Runtime;
+using Cichlids.Etl.Steps;
 using Cichlids.Infrastructure.Persistence;
 using Cichlids.Infrastructure.Storage;
 using DotNet.Testcontainers.Builders;
 using DotNet.Testcontainers.Containers;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.Options;
 using MySqlConnector;
+using Npgsql;
 using Testcontainers.MySql;
 using Testcontainers.PostgreSql;
 
@@ -18,7 +23,9 @@ namespace Cichlids.Etl.Tests;
 /// row left dangling. Kept separate from EtlFixture's shared containers (which several test
 /// classes seed with their own Postgres-only prerequisite rows that have no legacy counterpart) so
 /// a full-pipeline run here converges to a target with zero verification mismatches by
-/// construction, not by coincidence of test execution order.
+/// construction, not by coincidence of test execution order. The full pipeline runs once per
+/// fixture into a database of its own; tests change that database only inside transactions they
+/// roll back.
 /// </summary>
 public sealed class VerifyEtlFixture : IAsyncLifetime
 {
@@ -54,15 +61,77 @@ public sealed class VerifyEtlFixture : IAsyncLifetime
 
     public IObjectStore ObjectStore { get; private set; } = null!;
 
+    /// <summary>
+    /// Connection string of the database the full pipeline ran into once for this fixture.
+    /// </summary>
+    public string PipelineConnectionString { get; private set; } = null!;
+
+    /// <summary>
+    /// Exit code of the full pipeline run: 0 when its verification passed.
+    /// </summary>
+    public int PipelineExitCode { get; private set; }
+
+    /// <summary>
+    /// The verification report of the full pipeline run.
+    /// </summary>
+    public VerificationReport PipelineReport { get; private set; } = null!;
+
     public async Task InitializeAsync()
     {
         await Task.WhenAll(_legacy.StartAsync(), _target.StartAsync(), _rustfs.StartAsync());
         await SeedLegacyAsync();
 
-        await using var db = CreateTargetContext();
-        await db.Database.MigrateAsync();
+        await using (var db = CreateTargetContext())
+        {
+            await db.Database.MigrateAsync();
+        }
 
         ObjectStore = await CreateObjectStoreAsync();
+
+        PipelineConnectionString = await CreateEmptyTargetDatabaseAsync();
+        await using var context = await EtlContext.CreateAsync(
+            LegacyConnectionString, PipelineConnectionString, CancellationToken.None, ObjectStore);
+        PipelineExitCode = await EtlRunner.RunAllAsync(
+            context, EtlStepRegistry.WriteSteps, EtlStepRegistry.Verify, afterGuard: null, CancellationToken.None);
+        PipelineReport = context.VerificationReport!;
+    }
+
+    /// <summary>
+    /// Runs the verify step against the pipeline database inside a transaction, after mutate (when
+    /// given) has changed the target in that same transaction, and rolls the transaction back.
+    /// Returns the report of that verification.
+    /// </summary>
+    public async Task<VerificationReport> VerifyInRolledBackTransactionAsync(Func<EtlContext, Task>? mutate = null)
+    {
+        await using var context = await EtlContext.CreateAsync(
+            LegacyConnectionString, PipelineConnectionString, CancellationToken.None, ObjectStore);
+        await using var transaction = await context.Target.BeginTransactionAsync();
+        context.Db.Database.UseTransaction(transaction);
+        context.Transaction = transaction;
+
+        try
+        {
+            if (mutate is not null)
+            {
+                await mutate(context);
+            }
+
+            await new VerifyStep().RunAsync(context, CancellationToken.None);
+            return context.VerificationReport!;
+        }
+        finally
+        {
+            await transaction.RollbackAsync();
+        }
+    }
+
+    /// <summary>
+    /// Executes one SQL statement in the context's current transaction.
+    /// </summary>
+    public static async Task ExecuteAsync(EtlContext context, string sql)
+    {
+        await using var command = new NpgsqlCommand(sql, context.Target, context.Transaction);
+        await command.ExecuteNonQueryAsync();
     }
 
     public async Task DisposeAsync()
@@ -94,13 +163,45 @@ public sealed class VerifyEtlFixture : IAsyncLifetime
         return store;
     }
 
-    public CichlidsDbContext CreateTargetContext()
+    public CichlidsDbContext CreateTargetContext() => CreateTargetContext(TargetConnectionString);
+
+    public static CichlidsDbContext CreateTargetContext(string connectionString)
     {
         var optionsBuilder = new DbContextOptionsBuilder<CichlidsDbContext>()
-            .UseNpgsql(TargetConnectionString)
+            .UseNpgsql(connectionString)
             .UseSnakeCaseNamingConvention();
 
         return new CichlidsDbContext(optionsBuilder.Options);
+    }
+
+    /// <summary>
+    /// Creates a database of its own in the target container, applies the migrations up to and
+    /// including the given one (all of them when none is given), and returns its connection
+    /// string. Tests that need an empty target use it, since the fixture's own target database is
+    /// shared by every test of the collection.
+    /// </summary>
+    public async Task<string> CreateEmptyTargetDatabaseAsync(string? lastMigration = null)
+    {
+        var name = $"t_{Guid.NewGuid():N}";
+        await using (var connection = new NpgsqlConnection(TargetConnectionString))
+        {
+            await connection.OpenAsync();
+            await using var command = new NpgsqlCommand($"CREATE DATABASE \"{name}\"", connection);
+            await command.ExecuteNonQueryAsync();
+        }
+
+        var connectionString = new NpgsqlConnectionStringBuilder(TargetConnectionString) { Database = name }.ConnectionString;
+        await using var db = CreateTargetContext(connectionString);
+        if (lastMigration is null)
+        {
+            await db.Database.MigrateAsync();
+        }
+        else
+        {
+            await db.GetService<IMigrator>().MigrateAsync(lastMigration);
+        }
+
+        return connectionString;
     }
 
     private async Task SeedLegacyAsync()

@@ -10,7 +10,7 @@ function draft(overrides: Partial<Draft> = {}): Draft {
     title: null,
     description: null,
     createdAt: "2026-09-01T10:00:00Z",
-    image: { thumb: "t.jpg", small: "s.jpg", medium: "m.jpg", large: "l.jpg", original: "o.jpg" },
+    image: { thumb: "t.jpg", small: "s.jpg", medium: "m.jpg", large: "l.jpg" },
     ...overrides,
   };
 }
@@ -51,19 +51,27 @@ describe("draftPreviewUri", () => {
     expect(draftPreviewUri(draft())).toBe("m.jpg");
   });
 
-  it("falls back to large, small and the original", () => {
-    expect(draftPreviewUri(draft({ image: { thumb: null, small: "s.jpg", medium: null, large: "l.jpg", original: "o.jpg" } }))).toBe("l.jpg");
-    expect(draftPreviewUri(draft({ image: { thumb: null, small: "s.jpg", medium: null, large: null, original: "o.jpg" } }))).toBe("s.jpg");
-    expect(draftPreviewUri(draft({ image: { thumb: null, small: null, medium: null, large: null, original: "o.jpg" } }))).toBe("o.jpg");
+  it("falls back to large, small and the thumbnail", () => {
+    expect(draftPreviewUri(draft({ image: { thumb: "t.jpg", small: "s.jpg", medium: null, large: "l.jpg" } }))).toBe("l.jpg");
+    expect(draftPreviewUri(draft({ image: { thumb: "t.jpg", small: "s.jpg", medium: null, large: null } }))).toBe("s.jpg");
+    expect(draftPreviewUri(draft({ image: { thumb: "t.jpg", small: null, medium: null, large: null } }))).toBe("t.jpg");
+  });
+
+  it("is null without a variant", () => {
+    expect(draftPreviewUri(draft({ image: { thumb: null, small: null, medium: null, large: null } }))).toBeNull();
   });
 });
 
 describe("draftThumbnailUri", () => {
-  it("prefers the thumbnail, then small, medium and the original", () => {
+  it("prefers the thumbnail, then small, medium and large", () => {
     expect(draftThumbnailUri(draft())).toBe("t.jpg");
-    expect(draftThumbnailUri(draft({ image: { thumb: null, small: "s.jpg", medium: "m.jpg", large: null, original: "o.jpg" } }))).toBe("s.jpg");
-    expect(draftThumbnailUri(draft({ image: { thumb: null, small: null, medium: "m.jpg", large: null, original: "o.jpg" } }))).toBe("m.jpg");
-    expect(draftThumbnailUri(draft({ image: { thumb: null, small: null, medium: null, large: null, original: "o.jpg" } }))).toBe("o.jpg");
+    expect(draftThumbnailUri(draft({ image: { thumb: null, small: "s.jpg", medium: "m.jpg", large: null } }))).toBe("s.jpg");
+    expect(draftThumbnailUri(draft({ image: { thumb: null, small: null, medium: "m.jpg", large: "l.jpg" } }))).toBe("m.jpg");
+    expect(draftThumbnailUri(draft({ image: { thumb: null, small: null, medium: null, large: "l.jpg" } }))).toBe("l.jpg");
+  });
+
+  it("is null without a variant", () => {
+    expect(draftThumbnailUri(draft({ image: { thumb: null, small: null, medium: null, large: null } }))).toBeNull();
   });
 });
 

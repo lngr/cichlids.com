@@ -4,7 +4,14 @@ using Cichlids.Domain.Entities;
 using Cichlids.Domain.Enums;
 using Cichlids.Etl.Runtime;
 using Cichlids.Etl.Steps;
+using Cichlids.Infrastructure.Media;
+using Cichlids.Infrastructure.Storage;
+using Cichlids.Tests.Shared;
+using MetadataExtractor;
+using MetadataExtractor.Formats.Exif;
+using MetadataExtractor.Formats.Icc;
 using Microsoft.EntityFrameworkCore;
+using MySqlConnector;
 
 namespace Cichlids.Etl.Tests;
 
@@ -168,6 +175,156 @@ public sealed class ForumMigrationStepTests(EtlFixture fixture)
         }
     }
 
+    private const string AttachmentKey = "forum_attachments/9001_attach.jpg";
+
+    [Fact]
+    public async Task UploadsNoPresentAttachmentAgainEvenWhenTheDatabaseRowsAreGone()
+    {
+        await RunPrerequisiteStepsAsync();
+        await RunStepAsync();
+
+        var recording = new RecordingObjectStore(fixture.ObjectStore);
+        await RunStepAsync(recording);
+        Assert.Empty(recording.PutKeys);
+
+        // After a database reset the media_item rows are gone while the object stays in the store.
+        await using (var db = fixture.CreateTargetContext())
+        {
+            await db.Database.ExecuteSqlRawAsync("DELETE FROM discussion_post_media");
+            await db.Database.ExecuteSqlRawAsync("DELETE FROM media_item WHERE storage_key LIKE 'forum_attachments/%'");
+        }
+
+        var afterReset = new RecordingObjectStore(fixture.ObjectStore);
+        var stats = await RunStepAsync(afterReset);
+
+        Assert.Empty(afterReset.PutKeys);
+        Assert.Contains(stats.Warnings, w => w.Contains("forum attachments: 0 uploaded"));
+        await using var readback = fixture.CreateTargetContext();
+        Assert.Equal(1, await readback.MediaItems.CountAsync(m => m.StorageKey == AttachmentKey));
+    }
+
+    [Fact]
+    public async Task UploadsADeletedAttachmentAgainWithItsChecksumMetadata()
+    {
+        await RunPrerequisiteStepsAsync();
+        await RunStepAsync();
+        await fixture.ObjectStore.DeleteAsync(AttachmentKey);
+
+        var recording = new RecordingObjectStore(fixture.ObjectStore);
+        await RunStepAsync(recording);
+
+        Assert.Equal([AttachmentKey], recording.PutKeys);
+        var head = await fixture.ObjectStore.HeadAsync(AttachmentKey);
+        Assert.NotNull(head);
+        var checksum = Convert.ToHexStringLower(SHA256.HashData(AttachmentBytes));
+        Assert.Equal(AttachmentBytes.LongLength, head!.Size);
+        Assert.Equal(checksum, head.Metadata[MediaObjectMetadata.Sha256Key]);
+        Assert.Equal(checksum, head.Metadata[MediaObjectMetadata.SourceSha256Key]);
+    }
+
+    private const string PhotoAttachmentKey = "forum_attachments/9003_phone.jpg";
+
+    [Fact]
+    public async Task StoresAJpegAttachmentWithoutLocationDataAndWithTheObjectMetadataContract()
+    {
+        await RunPrerequisiteStepsAsync();
+        var legacyBytes = PhotoFixtures.PhoneJpeg(640, 480, orientation: 6);
+        await AddLegacyAttachmentAsync(9003, "phone.jpg", legacyBytes, messageId: 90010);
+
+        try
+        {
+            await RunStepAsync();
+
+            var stored = await DownloadAsync(PhotoAttachmentKey);
+            Assert.False(PhotoFixtures.ContainsSecret(stored), "A SECRET- value survived in the stored attachment.");
+            var directories = ImageMetadataReader.ReadMetadata(new MemoryStream(stored));
+            Assert.Empty(directories.OfType<GpsDirectory>());
+            var subIfd = Assert.Single(directories.OfType<ExifSubIfdDirectory>());
+            Assert.Equal(PhotoFixtures.CaptureDate, subIfd.GetString(ExifDirectoryBase.TagDateTimeOriginal));
+            Assert.Equal(6, Assert.Single(directories.OfType<ExifIfd0Directory>()).GetInt32(ExifDirectoryBase.TagOrientation));
+            Assert.NotEmpty(directories.OfType<IccDirectory>());
+
+            var storedChecksum = Convert.ToHexStringLower(SHA256.HashData(stored));
+            var head = await fixture.ObjectStore.HeadAsync(PhotoAttachmentKey);
+            Assert.NotNull(head);
+            Assert.Equal(storedChecksum, head!.Metadata[MediaObjectMetadata.Sha256Key]);
+            Assert.Equal(Convert.ToHexStringLower(SHA256.HashData(legacyBytes)), head.Metadata[MediaObjectMetadata.SourceSha256Key]);
+            Assert.Equal(MediaObjectMetadata.OriginalPipelineVersion.ToString(), head.Metadata[MediaObjectMetadata.PipelineKey]);
+
+            await using (var db = fixture.CreateTargetContext())
+            {
+                var mediaItem = await db.MediaItems.SingleAsync(m => m.StorageKey == PhotoAttachmentKey);
+                Assert.Equal(stored.LongLength, mediaItem.ByteSize);
+                Assert.Equal(storedChecksum, mediaItem.ChecksumSha256);
+            }
+
+            var rerun = new RecordingObjectStore(fixture.ObjectStore);
+            await RunStepAsync(rerun);
+            Assert.DoesNotContain(PhotoAttachmentKey, rerun.PutKeys);
+        }
+        finally
+        {
+            await RemoveLegacyAttachmentAsync(9003, PhotoAttachmentKey);
+        }
+    }
+
+    [Fact]
+    public async Task ReplacesAnAttachmentStoredWithItsLocationDataBySanitizedBytes()
+    {
+        await RunPrerequisiteStepsAsync();
+        var legacyBytes = PhotoFixtures.PhoneJpeg(640, 480);
+        var legacyChecksum = Convert.ToHexStringLower(SHA256.HashData(legacyBytes));
+        await AddLegacyAttachmentAsync(9003, "phone.jpg", legacyBytes, messageId: 90010);
+
+        try
+        {
+            // An object stored by an earlier pipeline version: the legacy bytes, location data included.
+            await fixture.ObjectStore.PutAsync(
+                PhotoAttachmentKey,
+                new MemoryStream(legacyBytes),
+                "image/jpeg",
+                new Dictionary<string, string>
+                {
+                    [MediaObjectMetadata.Sha256Key] = legacyChecksum,
+                    [MediaObjectMetadata.SourceSha256Key] = legacyChecksum,
+                    [MediaObjectMetadata.PipelineKey] = "1",
+                });
+
+            await RunStepAsync();
+
+            Assert.False(PhotoFixtures.ContainsSecret(await DownloadAsync(PhotoAttachmentKey)), "A SECRET- value survived in the stored attachment.");
+        }
+        finally
+        {
+            await RemoveLegacyAttachmentAsync(9003, PhotoAttachmentKey);
+        }
+    }
+
+    [Fact]
+    public async Task StoresNoImageAttachmentWhoseMetadataCannotBeRemovedAndDeletesAnEarlierCopy()
+    {
+        await RunPrerequisiteStepsAsync();
+        const string key = "forum_attachments/9004_scan.tif";
+        var legacyBytes = PhotoFixtures.UndecodableTiffWithGps();
+        await AddLegacyAttachmentAsync(9004, "scan.tif", legacyBytes, messageId: 90010);
+
+        try
+        {
+            await fixture.ObjectStore.PutAsync(key, new MemoryStream(legacyBytes), "image/tiff");
+
+            var stats = await RunStepAsync();
+
+            Assert.Equal(1, stats.SkipReasons.GetValueOrDefault("attachment_unsanitizable"));
+            Assert.Null(await fixture.ObjectStore.HeadAsync(key));
+            await using var db = fixture.CreateTargetContext();
+            Assert.False(await db.MediaItems.AnyAsync(m => m.StorageKey == key));
+        }
+        finally
+        {
+            await RemoveLegacyAttachmentAsync(9004, key);
+        }
+    }
+
     // A target migrated under the naive root rule holds a discussion_thread row per parent_id-0
     // message (legacy_id 90007 and 90008 here) and a discussion_post row for the moved notice
     // (90007), attributed to thread A because its own thread column resolves there, with an
@@ -284,10 +441,59 @@ public sealed class ForumMigrationStepTests(EtlFixture fixture)
         }
     });
 
-    private Task<StepStatistics> RunStepAsync() => fixture.RunExclusiveAsync(async () =>
+    private async Task AddLegacyAttachmentAsync(int fileId, string filename, byte[] bytes, int messageId)
+    {
+        await using var connection = new MySqlConnection(fixture.LegacyConnectionString);
+        await connection.OpenAsync();
+        await using var command = new MySqlCommand(
+            $"""
+            INSERT INTO {ForumMigrationStep.PhorumDatabase}.phorum_files (file_id, filename, file_data, message_id, link)
+            VALUES (@fileId, @filename, @data, @messageId, 'message')
+            """,
+            connection);
+        command.Parameters.AddWithValue("fileId", fileId);
+        command.Parameters.AddWithValue("filename", filename);
+        command.Parameters.AddWithValue("data", Convert.ToBase64String(bytes));
+        command.Parameters.AddWithValue("messageId", messageId);
+        await command.ExecuteNonQueryAsync();
+    }
+
+    // Removes a test-only attachment from the legacy rows, the target rows and the object store,
+    // so the other tests of the collection see the shared seed only.
+    private async Task RemoveLegacyAttachmentAsync(int fileId, string storageKey)
+    {
+        await using (var connection = new MySqlConnection(fixture.LegacyConnectionString))
+        {
+            await connection.OpenAsync();
+            await using var command = new MySqlCommand(
+                $"DELETE FROM {ForumMigrationStep.PhorumDatabase}.phorum_files WHERE file_id = @fileId", connection);
+            command.Parameters.AddWithValue("fileId", fileId);
+            await command.ExecuteNonQueryAsync();
+        }
+
+        await using (var db = fixture.CreateTargetContext())
+        {
+            await db.Database.ExecuteSqlInterpolatedAsync(
+                $"DELETE FROM discussion_post_media WHERE media_item_id IN (SELECT id FROM media_item WHERE storage_key = {storageKey})");
+            await db.Database.ExecuteSqlInterpolatedAsync($"DELETE FROM media_item WHERE storage_key = {storageKey}");
+        }
+
+        await fixture.ObjectStore.DeleteAsync(storageKey);
+    }
+
+    private async Task<byte[]> DownloadAsync(string storageKey)
+    {
+        await using var stream = await fixture.ObjectStore.GetAsync(storageKey);
+        Assert.NotNull(stream);
+        using var buffer = new MemoryStream();
+        await stream!.CopyToAsync(buffer);
+        return buffer.ToArray();
+    }
+
+    private Task<StepStatistics> RunStepAsync(IObjectStore? objectStore = null) => fixture.RunExclusiveAsync(async () =>
     {
         await using var context = await EtlContext.CreateAsync(
-            fixture.LegacyConnectionString, fixture.TargetConnectionString, dryRun: false, CancellationToken.None, fixture.ObjectStore);
+            fixture.LegacyConnectionString, fixture.TargetConnectionString, CancellationToken.None, objectStore ?? fixture.ObjectStore);
         await EtlRunner.RunAsync(new ForumMigrationStep(), context, CancellationToken.None);
         return context.Statistics.ForStep("forum");
     });

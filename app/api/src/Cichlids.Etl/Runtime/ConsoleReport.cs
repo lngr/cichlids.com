@@ -6,10 +6,10 @@ namespace Cichlids.Etl.Runtime;
 /// </summary>
 public static class ConsoleReport
 {
-    public static void Print(EtlStatistics statistics, bool dryRun)
+    public static void Print(EtlStatistics statistics)
     {
         Console.WriteLine();
-        Console.WriteLine(dryRun ? "=== ETL run summary (dry run, no changes committed) ===" : "=== ETL run summary ===");
+        Console.WriteLine("=== ETL run summary ===");
 
         foreach (var step in statistics.Steps)
         {

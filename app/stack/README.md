@@ -49,35 +49,66 @@ docker start cichlids-legacy-db-1
 
 ## Bootstrap
 
-`bootstrap.sh` brings a clean checkout up to the full local stand: Docker services, legacy MySQL,
-ETL migration and seed, the Keycloak realm import, and the legacy account import into Keycloak. It
-is idempotent: on an already-bootstrapped stack the service, legacy MySQL and realm steps report
-their work as done, the ETL, media and account import steps rerun without changing the result,
-and the script exits green.
+`bootstrap.sh` brings a checkout to the full local stand and starts every run from the state the
+production import starts from. It runs in this order:
+
+1. `services-up.sh` starts Postgres, RustFS and Keycloak and fails when Postgres is not ready
+   within `CICHLIDS_POSTGRES_WAIT_SECONDS`.
+2. The legacy MySQL stack is started when port 3306 is closed.
+3. `etl reset` drops and rebuilds the database schemas, deletes the realm users without the realm
+   role `admin` and closes self-registration.
+4. The `cichlids` realm is deleted and imported from `keycloak/cichlids-realm.json`, which holds
+   `dev-user` and `dev-mod`.
+5. `etl all` imports the legacy data into the empty database and verifies it.
+6. `etl media` seeds the media.
+7. `etl keycloak-import --open-registration` imports the legacy accounts and opens
+   self-registration once every account exists.
+8. `etl verify` checks the finished stand against the legacy source.
 
 ```sh
 app/stack/bootstrap.sh
 ```
 
+Every run resets the dev database and the realm, so rows and accounts created by hand are lost.
+Media objects in the bucket stay. Stop the API before running the script: a connection holding a
+lock makes the reset fail after ten seconds. Run the reset on the dev stack only through
+`bootstrap.sh`, because the realm import that follows it restores `dev-user`, which the write E2E
+stack signs in with. To only start the services, use `docker compose -f app/stack/compose.yaml up -d`
+or `services-up.sh`.
+
+The full run (`etl all`) writes only into an empty, fully migrated database and stops with the
+reason otherwise. The reset runs only with `DOTNET_ENVIRONMENT` set to `Development` or `Staging`;
+`bootstrap.sh` sets `Development`. Single write steps (`etl profiles`, `etl tanks`, ...) skip the
+empty-target check, write over existing rows and run only in `Development`.
+
+`etl verify` computes every expected count from the legacy source and compares it with whole
+target tables, so it expects a target that holds the import and nothing else: a row created
+through the API or by hand shows up as a mismatch. Every report row names the migration rule its
+expectation follows from. The oidc identities of the account import appear as an information row.
+
 Environment variables (all optional):
 
 | Variable                     | Default                                                  | Purpose |
 |-------------------------------|-----------------------------------------------------------|---------|
-| `CICHLIDS_LEGACY_STACK_DIR`   | `/workspaces/cichlids.com/workspace-legacy/legacy-stack`  | Where to find the legacy MySQL stack's `docker-compose.yml` if MySQL is not already reachable on 3306. |
-| `CICHLIDS_MEDIA_LIMIT`        | `3000`                                                     | How many media items the ETL media step seeds; `0` seeds the full legacy image set. |
+| `CICHLIDS_LEGACY_STACK_DIR`   | `<repository>/workspace-legacy/legacy-stack`               | Where to find the legacy MySQL stack's `docker-compose.yml` if MySQL is not already reachable on 3306. |
+| `CICHLIDS_MEDIA_LIMIT`        | `3000`                                                     | How many media items the ETL media step processes; `0` processes the full legacy image set. The ETL uploads only objects that are missing from the bucket or whose metadata differs. |
 | `CICHLIDS_AUTH0_EXPORT`       | `/workspaces/legacy-data/auth0/auth0-cichlids.json`        | Auth0 export (newline-delimited JSON) for the Keycloak account import; the step is skipped when the file does not exist. |
+| `CICHLIDS_POSTGRES_WAIT_SECONDS` | `60`                                                    | How long to wait for Postgres before the script fails. |
 | `DOTNET`                      | `~/.dotnet/dotnet`                                         | Path to the `dotnet` executable. |
 
 To run the Keycloak account import on its own:
 
 ```sh
-cd app/api && CICHLIDS_ETL_AUTH0_EXPORT=/path/to/auth0-export.json \
+cd app/api && DOTNET_ENVIRONMENT=Development CICHLIDS_ETL_AUTH0_EXPORT=/path/to/auth0-export.json \
   ~/.dotnet/dotnet run --project src/Cichlids.Etl -- keycloak-import
 ```
 
 The command reads the Keycloak connection from the `Keycloak` section of
 `app/api/src/Cichlids.Etl/appsettings.json`, overridable with `CICHLIDS_KEYCLOAK_URL`,
 `CICHLIDS_KEYCLOAK_REALM`, `CICHLIDS_KEYCLOAK_ADMIN_USER` and `CICHLIDS_KEYCLOAK_ADMIN_PASSWORD`.
+The local `admin`/`admin` credentials apply in the Development environment only. In any other
+environment the command aborts unless both admin variables (or `Keycloak:AdminUser` and
+`Keycloak:AdminPassword`) hold other values.
 Repeated runs create only missing users and missing profile links. A member's login username is
 the legacy username when Keycloak accepts it, it holds no email address and no other member keeps
 the same name; otherwise it is a generated `user<number>` derived with the slug secret
@@ -87,7 +118,7 @@ identity the import creates for the member's Keycloak user, so the import has to
 environment opens self-registration.
 
 Before it creates users, the import adds the `email_verified` mapper to the realm's `email`
-client scope when the scope lacks it, which covers an existing realm that `bootstrap.sh` skips,
+client scope when the scope lacks it, which covers a realm imported from a file without the mapper,
 so tokens carry the standard `email_verified` claim. A realm without an Auth0 export gets the
 mapper with:
 
@@ -99,6 +130,17 @@ docker compose -f app/stack/compose.yaml exec -T keycloak sh -c '
     -s "name=email verified" -s protocol=openid-connect -s protocolMapper=oidc-usermodel-property-mapper \
     -s "config.\"user.attribute\"=emailVerified" -s "config.\"claim.name\"=email_verified" \
     -s "config.\"jsonType.label\"=boolean" -s "config.\"access.token.claim\"=true" -s "config.\"id.token.claim\"=true"'
+```
+
+## Services without legacy data
+
+`services-up.sh` starts Postgres, RustFS and Keycloak and waits until each answers. It needs no
+legacy MySQL and no legacy files, which makes it the entry point for the write E2E stack on a
+fresh host. `bootstrap.sh` runs it as its first step. The flag `--wait-realm` additionally waits
+for the imported `cichlids` realm.
+
+```sh
+app/stack/services-up.sh --wait-realm
 ```
 
 ## Start / stop the Docker services directly
@@ -123,6 +165,24 @@ Keycloak's `cichlids` realm has two seeded local users (password `dev-password` 
 
 These are local-development defaults only and are not used in any deployed environment.
 
+### Local only, never deploy
+
+The realm file `app/stack/keycloak/cichlids-realm.json` is for this stack alone. Its display name
+says so on the login page. It requires no TLS, keeps the password grant on the public client,
+seeds two users in the realm, and accepts redirects to any localhost port. Staging and production import
+their own files from `apps/keycloak/overlays/`, which a CI check keeps free of these settings.
+
+The realm starts with self-registration closed. `bootstrap.sh` opens it with
+`etl keycloak-import --open-registration`, which does so only after the account import has
+created every legacy account. Without an Auth0 export the import is skipped and registration
+stays closed. The reset closes registration as well. To close it by hand:
+
+```sh
+docker compose -f app/stack/compose.yaml exec -T keycloak sh -c '
+  /opt/keycloak/bin/kcadm.sh config credentials --server http://localhost:8080 --realm master --user admin --password admin &&
+  /opt/keycloak/bin/kcadm.sh update realms/cichlids -s registrationAllowed=false'
+```
+
 ### Test login as a migrated member
 
 Imported legacy accounts have no password (the Auth0 export carries none) and require a password
@@ -142,8 +202,9 @@ The app logs in through the public client `cichlids-app` (authorization code wit
 redirect URIs cover the web app on any localhost port and the native app scheme `cichlids://`;
 its web origins list the dev Expo web server (`http://localhost:8081`) and the write E2E stack
 (`http://localhost:8082`), since the web app calls the token endpoint cross-origin and Keycloak
-matches web origins exactly. `bootstrap.sh` skips an existing realm; an existing realm gets these
-client settings with:
+matches web origins exactly. `bootstrap.sh` imports the realm fresh from its file on every run. A
+realm kept outside `bootstrap.sh` (an older volume started with `docker compose up -d`, for
+instance) gets these client settings with:
 
 ```sh
 docker compose -f app/stack/compose.yaml exec -T keycloak sh -c '
@@ -153,6 +214,34 @@ docker compose -f app/stack/compose.yaml exec -T keycloak sh -c '
     -s "redirectUris=[\"http://localhost:*\",\"cichlids://*\"]" \
     -s "webOrigins=[\"http://localhost:8081\",\"http://localhost:8082\",\"+\"]"'
 ```
+
+## Media objects and their privacy
+
+The ETL gives the bucket a policy that lets anyone read the objects under `variants/` and
+`forum_attachments/`. Originals under `originals/` answer 403 without credentials, and the API
+returns variant URLs only. Every stored original has its GPS data, camera serial numbers and
+owner tags removed; capture date, orientation, colour profile and camera model stay. A legacy
+picture libvips cannot decode, mostly a BMP file, is shown from its sanitized public copy under
+`variants/copy/`.
+
+To inspect a stored original, download it with the RustFS keys through the AWS CLI container and
+read it with `exiftool` (installed in the dev container). `RUSTFS_ACCESS` and `RUSTFS_SECRET` hold
+the keys from `compose.yaml`; `KEY` is the original's storage key, for example the newest upload:
+
+```sh
+docker compose -f app/stack/compose.yaml exec postgres psql -U cichlids -d cichlids -c \
+  "select storage_key from media_item where storage_key like 'originals/uploads/%' order by id desc limit 1"
+curl -s -o /dev/null -w '%{http_code}\n' "http://127.0.0.1:9000/cichlids-media/$KEY"   # 403
+docker run --rm --network host -e AWS_ACCESS_KEY_ID="$RUSTFS_ACCESS" -e AWS_SECRET_ACCESS_KEY="$RUSTFS_SECRET" \
+  -v "$PWD:/w" amazon/aws-cli --endpoint-url http://127.0.0.1:9000 s3 cp "s3://cichlids-media/$KEY" /w/original.jpg
+exiftool -a -G1 -s original.jpg | grep -Ei 'gps|serial|owner'   # prints nothing
+exiftool -DateTimeOriginal -Orientation -ICC_Profile:ProfileDescription -Model original.jpg
+```
+
+`etl media --missing-out report.json` writes a report that lists missing sources, every
+undecodable original (`broken`), rejected sources with the reason (`rejected`: files over
+`ObjectStorage:MaxDownloadBytes`, images beyond the size limits and TIFF files whose metadata
+cannot be removed) and the undecodable originals that have a public copy (`copies`).
 
 ## Start the API and the app
 
@@ -174,6 +263,38 @@ The app imports `@cichlids/client-core` from its compiled `dist/`: an install th
 builds it through the package's `prepare` script, an install that finds nothing to do skips that
 script, so after a change to the client-core sources `pnpm --filter @cichlids/client-core build`
 rebuilds it.
+
+## Webhooks and the outbox
+
+The API delivers outbox events as signed webhooks only to hosts on the allowlist
+`Webhooks:AllowedTargetHosts`. It lives in Git: `appsettings.json` holds the empty production
+list, `appsettings.Development.json` allows `localhost` and `127.0.0.1`, and each deployment adds
+its own hosts in its configuration. An entry is a bare host name or IP address. The API logs the
+effective list at startup, and a registration for an `ftp://` URL or an unlisted host returns 400.
+
+A failing delivery is retried with a delay that doubles from 5 seconds up to one hour, counted
+from the previous attempt. An event is given up seven days after it occurred
+(`OutboxDispatcher:GiveUpAfter`). An admin lists given-up events and triggers their redelivery,
+which starts a new seven-day period; `dev-mod` has the admin role:
+
+```sh
+TOKEN=$(curl -s -d client_id=cichlids-app -d grant_type=password -d username=dev-mod \
+  -d password=dev-password http://localhost:8180/realms/cichlids/protocol/openid-connect/token | jq -r .access_token)  # gitleaks:allow
+curl -s -H "Authorization: Bearer $TOKEN" 'http://localhost:5045/api/admin/outbox/events?state=given-up'
+curl -s -X POST -H "Authorization: Bearer $TOKEN" "http://localhost:5045/api/admin/outbox/events/$EVENT_ID/redeliver"
+curl -s -X POST -H "Authorization: Bearer $TOKEN" http://localhost:5045/api/admin/outbox/given-up/redeliver
+```
+
+The open events with their schedule:
+
+```sh
+docker compose -f app/stack/compose.yaml exec postgres psql -U cichlids -d cichlids -c \
+  "select id, event_type, attempt_count, last_attempt_at, next_attempt_at, given_up_at, acknowledged_subscription_ids, last_error
+   from outbox_event where dispatched_at is null order by next_attempt_at"
+```
+
+While a dispatcher instance delivers an event, its `next_attempt_at` is the end of that
+instance's five-minute reservation.
 
 ## Smoke test
 
@@ -203,7 +324,7 @@ the already-running Postgres, RustFS and Keycloak containers above:
   policy as the dev bucket so the app can load uploaded images;
 - a second `Cichlids.Api` instance built in Release to a temp directory and run on
   `http://localhost:5046`, pointed at that database and bucket, with the outbox dispatcher
-  disabled;
+  polling every second and giving events up after fifteen seconds;
 - a static export of the Expo web app (`expo export --platform web`), built against that API and
   served on `http://localhost:8082`; `@cichlids/client-core` is compiled first, since the app
   imports its `dist/` output.

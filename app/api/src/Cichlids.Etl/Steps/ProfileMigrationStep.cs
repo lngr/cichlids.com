@@ -92,7 +92,8 @@ public sealed class ProfileMigrationStep : IEtlStep
                 profileId,
                 ["provider", "subject", "created_at"],
                 identityRows,
-                cancellationToken);
+                cancellationToken,
+                new PgChildRows.Scope("provider", LegacyIdentityProviders.All));
         }
     }
 
@@ -171,19 +172,19 @@ public sealed class ProfileMigrationStep : IEtlStep
 
         if (auth0SubjectsByUserId.TryGetValue(row.Uid, out var subs))
         {
-            candidates.AddRange(subs.Select(sub => ("auth0", sub)));
+            candidates.AddRange(subs.Select(sub => (LegacyIdentityProviders.Auth0, sub)));
         }
 
         var openId = NullIfEmpty(row.LegacyOpenId);
         if (openId is not null)
         {
-            candidates.Add(("legacy-openid", openId));
+            candidates.Add((LegacyIdentityProviders.LegacyOpenId, openId));
         }
 
         var email = NullIfEmpty(row.Email);
         if (email is not null)
         {
-            candidates.Add(("email", email.ToLowerInvariant()));
+            candidates.Add((LegacyIdentityProviders.Email, email.ToLowerInvariant()));
         }
 
         var result = new List<IReadOnlyList<object?>>();

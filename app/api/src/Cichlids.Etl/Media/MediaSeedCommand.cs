@@ -1,5 +1,6 @@
 using System.Collections.Concurrent;
 using System.Diagnostics;
+using System.Globalization;
 using System.Security.Cryptography;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -12,20 +13,23 @@ namespace Cichlids.Etl.Media;
 
 /// <summary>
 /// The "media" command: seeds object storage with every migrated picture's and forum attachment's
-/// original file plus its photo variants, and backfills the width/height/byte_size/checksum_sha256
-/// media_item was migrated without. Not part of "all" (<see cref="Steps.EtlStepRegistry"/>): it
-/// reads large binary files and runs its own worker pool instead of the single-transaction-per-step
-/// model every other step uses, so it is invoked on its own.
+/// original file plus its photo variants, and records the byte size, checksum, width and height
+/// of each media_item and the variant rows from what the object store holds. Not part of "all"
+/// (EtlStepRegistry): it reads large binary files and runs its own worker pool outside the
+/// single-transaction-per-step model of the other steps, so it is invoked on its own.
 ///
-/// Idempotency has two layers. "Complete" media_item rows (an already-recorded byte size and
-/// checksum, and for a photo, a recorded width plus every variant label <see
-/// cref="MediaVariantSpec.Resolve"/> expects for that width) are skipped outright when
-/// <c>onlyMissing</c> is true, without any object storage or file-system access at all -- the
-/// default, and what makes a second run over an unchanged source cheap. Underneath that, every
-/// individual upload (the original, and each variant) additionally compares the freshly computed
-/// byte count against what is already on record for that key rather than presuming the object
-/// needs to be written; a run that turns onlyMissing off still skips re-uploading content that has
-/// not actually changed.
+/// The object store is the source of truth for what needs work. Each original and each variant is
+/// looked up in the store and compared with the SHA-256 of its legacy source file and the
+/// pipeline version stored as object metadata (MediaObjectMetadata). Only a missing object, or one
+/// whose source checksum or pipeline version differs, is uploaded; a present object is recorded
+/// in the database from its metadata without being read or decoded. A run against a freshly
+/// reset database therefore uploads nothing, and an object lost from the store is restored.
+///
+/// Every stored original has its location, serial number and owner metadata removed by
+/// MediaMetadataSanitizer; size and checksum on media_item describe the stored bytes. A source
+/// larger than the size limit, beyond the image size limits, or a TIFF whose metadata cannot be
+/// removed is rejected: nothing is uploaded for it, and the report lists it. A legacy picture
+/// libvips cannot decode gets a public copy when it is in a format browsers render.
 /// </summary>
 public static class MediaSeedCommand
 {
@@ -38,22 +42,44 @@ public static class MediaSeedCommand
         string legacyImagesRoot,
         int? limit,
         int workers,
-        bool onlyMissing,
         string? missingOutPath,
+        long maxSourceBytes,
+        CancellationToken cancellationToken)
+    {
+        var summary = await SeedAsync(
+            legacyConnectionString, targetConnectionString, objectStore, legacyImagesRoot, limit, workers,
+            missingOutPath, maxSourceBytes, cancellationToken);
+        PrintSummary(summary);
+        return 0;
+    }
+
+    /// <summary>
+    /// Seeds object storage and the media metadata and returns the counts of the run.
+    /// </summary>
+    public static async Task<MediaSeedSummary> SeedAsync(
+        string legacyConnectionString,
+        string targetConnectionString,
+        IObjectStore objectStore,
+        string legacyImagesRoot,
+        int? limit,
+        int workers,
+        string? missingOutPath,
+        long maxSourceBytes,
         CancellationToken cancellationToken)
     {
         Console.WriteLine(
-            $"Running media (limit={(limit is null ? "none" : limit.Value.ToString())}, workers={workers}, onlyMissing={onlyMissing})...");
+            $"Running media (limit={(limit is null ? "none" : limit.Value.ToString())}, workers={workers})...");
 
         var legacyImageByLegacyId = await LoadLegacyImagePathsAsync(legacyConnectionString, cancellationToken);
         var candidates = await LoadCandidatesAsync(targetConnectionString, limit, cancellationToken);
-        var variantLabelsByMediaId = await LoadExistingVariantLabelsAsync(targetConnectionString, cancellationToken);
 
         Console.WriteLine($"Loaded {candidates.Count} media_item candidate(s).");
 
         var stats = new Statistics();
         var missingEntries = new ConcurrentBag<MissingEntry>();
         var brokenKeys = new ConcurrentBag<string>();
+        var rejectedEntries = new ConcurrentBag<MissingEntry>();
+        var copyEntries = new ConcurrentBag<CopyEntry>();
         var stopwatch = Stopwatch.StartNew();
 
         try
@@ -63,16 +89,9 @@ public static class MediaSeedCommand
                 new ParallelOptions { MaxDegreeOfParallelism = workers, CancellationToken = cancellationToken },
                 async (candidate, itemCancellationToken) =>
                 {
-                    if (onlyMissing && IsComplete(candidate, variantLabelsByMediaId))
-                    {
-                        stats.IncrementSkippedComplete();
-                    }
-                    else
-                    {
-                        await ProcessOneAsync(
-                            candidate, targetConnectionString, objectStore, legacyImagesRoot, legacyImageByLegacyId,
-                            variantLabelsByMediaId, onlyMissing, stats, missingEntries, brokenKeys, itemCancellationToken);
-                    }
+                    await ProcessOneAsync(
+                        candidate, targetConnectionString, objectStore, legacyImagesRoot, legacyImageByLegacyId,
+                        maxSourceBytes, stats, missingEntries, brokenKeys, rejectedEntries, copyEntries, itemCancellationToken);
 
                     var processed = stats.IncrementProcessed();
                     if (processed % ProgressInterval == 0)
@@ -87,14 +106,14 @@ public static class MediaSeedCommand
             Console.WriteLine($"Interrupted after {stats.Processed} item(s); safe to re-run (idempotent).");
         }
 
-        PrintSummary(stats, stopwatch);
+        var summary = stats.ToSummary(stopwatch.Elapsed);
 
         if (missingOutPath is not null)
         {
-            await WriteMissingReportAsync(missingOutPath, missingEntries, brokenKeys, cancellationToken);
+            await WriteMissingReportAsync(missingOutPath, missingEntries, brokenKeys, rejectedEntries, copyEntries, cancellationToken);
         }
 
-        return 0;
+        return summary;
     }
 
     // === per-item processing ========================================================================
@@ -105,32 +124,29 @@ public static class MediaSeedCommand
         IObjectStore objectStore,
         string legacyImagesRoot,
         IReadOnlyDictionary<int, string> legacyImageByLegacyId,
-        IReadOnlyDictionary<long, HashSet<string>> variantLabelsByMediaId,
-        bool onlyMissing,
+        long maxSourceBytes,
         Statistics stats,
         ConcurrentBag<MissingEntry> missingEntries,
         ConcurrentBag<string> brokenKeys,
+        ConcurrentBag<MissingEntry> rejectedEntries,
+        ConcurrentBag<CopyEntry> copyEntries,
         CancellationToken cancellationToken)
     {
+        var isPhoto = candidate.Kind == "photo";
         var isForumAttachment = candidate.StorageKey.StartsWith("forum_attachments/", StringComparison.Ordinal);
 
-        byte[] sourceBytes;
-        var sourceIsAlreadyInStore = isForumAttachment;
-
+        SourceFile source;
         if (isForumAttachment)
         {
-            var downloaded = await objectStore.GetAsync(candidate.StorageKey, cancellationToken);
-            if (downloaded is null)
+            var attachmentHead = await objectStore.HeadAsync(candidate.StorageKey, cancellationToken);
+            if (attachmentHead is null)
             {
                 stats.IncrementMissing();
                 missingEntries.Add(new MissingEntry(candidate.Id, candidate.StorageKey, "object missing from store"));
                 return;
             }
 
-            await using var stream = downloaded;
-            using var buffer = new MemoryStream();
-            await stream.CopyToAsync(buffer, cancellationToken);
-            sourceBytes = buffer.ToArray();
+            source = SourceFile.FromStoredObject(objectStore, candidate.StorageKey, attachmentHead);
         }
         else
         {
@@ -149,93 +165,377 @@ public static class MediaSeedCommand
                 return;
             }
 
-            sourceBytes = await File.ReadAllBytesAsync(resolvedPath, cancellationToken);
-        }
-
-        var checksum = Convert.ToHexStringLower(SHA256.HashData(sourceBytes));
-        var size = (long)sourceBytes.LongLength;
-
-        // The forum attachment's original bytes were just read back out of the store, so writing
-        // them back in would be a pointless round trip; only a legacy-disk original ever needs
-        // uploading here.
-        if (!sourceIsAlreadyInStore && candidate.ByteSize != size)
-        {
-            await objectStore.PutAsync(
-                candidate.StorageKey, new MemoryStream(sourceBytes), MediaStorageKeys.ResolveContentType(candidate.StorageKey), cancellationToken);
-            stats.AddBytesTransferred(size);
-        }
-
-        int? width = candidate.Width;
-        int? height = candidate.Height;
-        var variantsToRecord = new List<(string Label, int Width, string StorageKey, long ByteSize)>();
-
-        if (candidate.Kind == "photo")
-        {
-            try
+            var length = new FileInfo(resolvedPath).Length;
+            if (length > maxSourceBytes)
             {
-                var measured = ImageProcessor.Measure(sourceBytes);
-                width = measured.Width;
-                height = measured.Height;
+                await RejectAsync(
+                    candidate, $"the file has {length} bytes, more than the limit of {maxSourceBytes} bytes",
+                    objectStore, stats, rejectedEntries, cancellationToken);
+                return;
+            }
 
-                var existingLabels = variantLabelsByMediaId.TryGetValue(candidate.Id, out var labels) ? labels : [];
-                foreach (var (label, targetWidth) in MediaVariantSpec.Resolve(width.Value))
+            source = SourceFile.FromLegacyFile(resolvedPath);
+        }
+
+        StoredOriginal original;
+        IReadOnlyList<RecordedVariant> variantsToRecord = [];
+        try
+        {
+            (original, var processed) = await EnsureOriginalAsync(candidate, isPhoto, source, objectStore, stats, cancellationToken);
+
+            if (isPhoto && original.Photo is { Decodable: true } photo)
+            {
+                var variants = await EnsureVariantsAsync(
+                    candidate.StorageKey, original.SourceSha256, photo.Width!.Value, photo.Height!.Value, source, processed, objectStore, stats,
+                    cancellationToken);
+                if (variants is null)
                 {
-                    if (onlyMissing && existingLabels.Contains(label))
-                    {
-                        continue;
-                    }
-
-                    var variantBytes = ImageProcessor.GenerateVariant(sourceBytes, targetWidth);
-                    var variantKey = MediaStorageKeys.BuildVariantKey(candidate.StorageKey, label);
-                    await objectStore.PutAsync(variantKey, new MemoryStream(variantBytes), "image/jpeg", cancellationToken);
-                    stats.AddBytesTransferred(variantBytes.LongLength);
-                    variantsToRecord.Add((label, targetWidth, variantKey, variantBytes.LongLength));
+                    // The stored original is recorded as decodable but its source does not decode.
+                    // It is recorded as undecodable, so later runs do not retry it.
+                    var sourceBytes = await source.ReadAllBytesAsync(cancellationToken);
+                    var undecodable = DescribeUndecodable(sourceBytes);
+                    var stored = SanitizeOrReject(sourceBytes);
+                    original = new StoredOriginal(
+                        stored.LongLength, Convert.ToHexStringLower(SHA256.HashData(stored)), original.SourceSha256, undecodable);
+                    await PutOriginalAsync(
+                        objectStore, candidate.StorageKey, stored, original.Sha256, original.SourceSha256, original.Photo,
+                        cancellationToken);
+                }
+                else
+                {
+                    variantsToRecord = variants;
                 }
             }
-            catch (ImageProcessor.BrokenImageException)
+
+            // The size of an undecodable original is recorded only when it is in a format browsers
+            // render, so an original without one needs no copy and no lookup. A forum attachment
+            // is publicly readable itself and needs no copy.
+            if (isPhoto && !isForumAttachment && original.Photo is { Decodable: false, Width: not null })
             {
-                stats.IncrementBroken();
-                brokenKeys.Add(candidate.StorageKey);
-                width = null;
-                height = null;
+                var copy = await EnsurePublicCopyAsync(
+                    candidate.StorageKey, original.SourceSha256, source, objectStore, stats, cancellationToken);
+                if (copy is not null)
+                {
+                    variantsToRecord = [copy];
+                    copyEntries.Add(new CopyEntry(candidate.Id, candidate.StorageKey, copy.StorageKey));
+                }
             }
+        }
+        catch (StoredObjectVanishedException)
+        {
+            stats.IncrementMissing();
+            missingEntries.Add(new MissingEntry(candidate.Id, candidate.StorageKey, "object missing from store"));
+            return;
+        }
+        catch (ObjectTooLargeException ex)
+        {
+            stats.IncrementMissing();
+            missingEntries.Add(new MissingEntry(
+                candidate.Id, candidate.StorageKey, $"object exceeds the download limit of {ex.MaxBytes} bytes"));
+            return;
+        }
+        catch (RejectedSourceException ex)
+        {
+            await RejectAsync(candidate, ex.Message, objectStore, stats, rejectedEntries, cancellationToken);
+            return;
+        }
+
+        if (isPhoto && original.Photo is not { Decodable: true })
+        {
+            stats.IncrementBroken();
+            brokenKeys.Add(candidate.StorageKey);
         }
 
         await using var connection = new NpgsqlConnection(targetConnectionString);
         await connection.OpenAsync(cancellationToken);
 
-        var wasComplete = candidate.ByteSize is not null && candidate.ChecksumSha256 is not null;
-        await UpdateMediaItemMetadataAsync(connection, candidate.Id, size, checksum, width, height, cancellationToken);
-        stats.IncrementUpdatedMediaItem(wasComplete);
+        var decodable = original.Photo is { Decodable: true };
+        await UpdateMediaItemMetadataAsync(
+            connection, candidate.Id, original.Size, original.Sha256,
+            decodable ? original.Photo!.Width : null, decodable ? original.Photo!.Height : null, cancellationToken);
+        stats.IncrementMetadataRecorded();
 
-        foreach (var (label, variantWidth, variantKey, variantByteSize) in variantsToRecord)
+        foreach (var variant in variantsToRecord)
         {
-            var inserted = await UpsertMediaVariantAsync(connection, candidate.Id, label, variantWidth, variantKey, variantByteSize, cancellationToken);
-            stats.IncrementVariant(inserted);
+            await UpsertMediaVariantAsync(
+                connection, candidate.Id, variant.Label, variant.Width, variant.StorageKey, variant.ByteSize, cancellationToken);
         }
     }
 
-    private static bool IsComplete(MediaCandidate candidate, IReadOnlyDictionary<long, HashSet<string>> variantLabelsByMediaId)
+    /// <summary>
+    /// Brings the original in the object store in line with its source and returns what the store
+    /// holds afterwards, together with the processed image when the source had to be decoded.
+    /// Legacy originals are uploaded with sanitized bytes when they are missing or differ; a stored
+    /// forum attachment is the source itself, so only its metadata is completed when it lacks the
+    /// photo information or was stored by an earlier pipeline version, and it is rewritten with
+    /// sanitized bytes.
+    /// </summary>
+    private static async Task<(StoredOriginal Original, ProcessedImage? Processed)> EnsureOriginalAsync(
+        MediaCandidate candidate,
+        bool isPhoto,
+        SourceFile source,
+        IObjectStore objectStore,
+        Statistics stats,
+        CancellationToken cancellationToken)
     {
-        if (candidate.ByteSize is null || candidate.ChecksumSha256 is null)
+        var sourceSha256 = await source.ComputeSha256Async(cancellationToken);
+        var head = await objectStore.HeadAsync(candidate.StorageKey, cancellationToken);
+        var state = MediaObjectMetadata.Decide(head, sourceSha256, MediaObjectMetadata.OriginalPipelineVersion);
+
+        PhotoInfo? photo = null;
+        string? storedSha256 = null;
+        if (state == ObjectState.Current)
         {
-            return false;
+            if (!head!.Metadata.TryGetValue(MediaObjectMetadata.Sha256Key, out storedSha256) || storedSha256.Length == 0)
+            {
+                state = ObjectState.Differs;
+            }
+            else if (isPhoto)
+            {
+                photo = MediaObjectMetadata.ReadPhotoInfo(head);
+                if (photo is null)
+                {
+                    state = ObjectState.Differs;
+                }
+            }
         }
 
-        if (candidate.Kind != "photo")
+        if (state == ObjectState.Current)
         {
-            return true;
+            stats.IncrementOriginalPresent();
+            return (new StoredOriginal(head!.Size, storedSha256!, sourceSha256, photo), null);
         }
 
-        if (candidate.Width is null || candidate.Height is null)
+        var bytes = await source.ReadAllBytesAsync(cancellationToken);
+        ProcessedImage? processed = null;
+        if (isPhoto)
         {
-            return false;
+            processed = TryProcess(bytes);
+            photo = processed is null ? DescribeUndecodable(bytes) : new PhotoInfo(processed.Width, processed.Height);
         }
 
-        var expectedLabels = MediaVariantSpec.Resolve(candidate.Width.Value).Select(v => v.Label).ToHashSet();
-        var actualLabels = variantLabelsByMediaId.TryGetValue(candidate.Id, out var labels) ? labels : [];
-        return expectedLabels.SetEquals(actualLabels);
+        var stored = SanitizeOrReject(bytes);
+        var uploadedSha256 = Convert.ToHexStringLower(SHA256.HashData(stored));
+        await PutOriginalAsync(objectStore, candidate.StorageKey, stored, uploadedSha256, sourceSha256, photo, cancellationToken);
+
+        // A forum attachment is already in the store: completing its metadata rewrites it and is
+        // not an upload of new content.
+        if (source.IsStoredObject)
+        {
+            stats.IncrementOriginalPresent();
+        }
+        else
+        {
+            stats.AddBytesTransferred(stored.LongLength);
+            stats.IncrementOriginalUploaded();
+        }
+
+        return (new StoredOriginal(stored.LongLength, uploadedSha256, sourceSha256, photo), processed);
     }
+
+    /// <summary>
+    /// Brings the variants of a decodable photo in line with its source and returns them for the
+    /// database, or null when the source does not decode. The source is decoded at most once, and
+    /// only when a variant is missing or differs; no variant is uploaded unless that decode
+    /// succeeded.
+    /// </summary>
+    private static async Task<IReadOnlyList<RecordedVariant>?> EnsureVariantsAsync(
+        string originalKey,
+        string sourceSha256,
+        int width,
+        int height,
+        SourceFile source,
+        ProcessedImage? processed,
+        IObjectStore objectStore,
+        Statistics stats,
+        CancellationToken cancellationToken)
+    {
+        var present = new List<RecordedVariant>();
+        var needed = new List<(string Label, string StorageKey)>();
+        foreach (var (label, targetWidth) in MediaVariantSpec.Resolve(width, height))
+        {
+            var variantKey = MediaStorageKeys.BuildVariantKey(originalKey, label);
+            var variantHead = await objectStore.HeadAsync(variantKey, cancellationToken);
+            if (MediaObjectMetadata.Decide(variantHead, sourceSha256, MediaObjectMetadata.VariantPipelineVersion) == ObjectState.Current)
+            {
+                present.Add(new RecordedVariant(label, targetWidth, variantKey, variantHead!.Size));
+            }
+            else
+            {
+                needed.Add((label, variantKey));
+            }
+        }
+
+        if (needed.Count > 0)
+        {
+            processed ??= TryProcess(await source.ReadAllBytesAsync(cancellationToken));
+            if (processed is null)
+            {
+                return null;
+            }
+        }
+
+        var recorded = new List<RecordedVariant>(present);
+        stats.AddVariantsPresent(present.Count);
+
+        foreach (var (label, variantKey) in needed)
+        {
+            var variant = processed!.Variants.SingleOrDefault(v => v.Label == label);
+            if (variant is null)
+            {
+                // The recorded width allows a variant the decoded image is too narrow for.
+                continue;
+            }
+
+            var variantChecksum = Convert.ToHexStringLower(SHA256.HashData(variant.Bytes));
+            await objectStore.PutAsync(
+                variantKey,
+                new MemoryStream(variant.Bytes),
+                "image/jpeg",
+                MediaObjectMetadata.ForVariant(variantChecksum, sourceSha256),
+                cancellationToken);
+            stats.AddBytesTransferred(variant.Bytes.LongLength);
+            stats.IncrementVariantUploaded();
+            recorded.Add(new RecordedVariant(label, variant.Width, variantKey, variant.Bytes.LongLength));
+        }
+
+        return recorded;
+    }
+
+    // An image outside the format allowlist or with undecodable data is recorded as an
+    // undecodable photo. An image beyond the size limits (pixel count, side length or aspect
+    // ratio) is rejected before any of it is decoded.
+    private static ProcessedImage? TryProcess(byte[] bytes)
+    {
+        try
+        {
+            return ImageProcessor.Process(bytes);
+        }
+        catch (Exception ex) when (ex is ImageProcessor.BrokenImageException
+            or ImageProcessor.UnsupportedImageFormatException)
+        {
+            return null;
+        }
+        catch (ImageProcessor.ImageTooLargeException ex)
+        {
+            throw new RejectedSourceException(ex.Message);
+        }
+    }
+
+    /// <summary>
+    /// Brings the public copy of an undecodable photo in line with its source and returns it for
+    /// the database, or null when the source is in no format a browser renders. The copy holds
+    /// the sanitized source bytes under the content type their signature shows, so browsers and
+    /// the apps display the picture although libvips cannot derive variants from it.
+    /// </summary>
+    private static async Task<RecordedVariant?> EnsurePublicCopyAsync(
+        string originalKey,
+        string sourceSha256,
+        SourceFile source,
+        IObjectStore objectStore,
+        Statistics stats,
+        CancellationToken cancellationToken)
+    {
+        var copyKey = MediaStorageKeys.BuildPublicCopyKey(originalKey);
+        var head = await objectStore.HeadAsync(copyKey, cancellationToken);
+        if (MediaObjectMetadata.Decide(head, sourceSha256, MediaObjectMetadata.VariantPipelineVersion) == ObjectState.Current
+            && MediaObjectMetadata.ReadSize(head!) is { } size)
+        {
+            stats.IncrementCopyPresent();
+            return new RecordedVariant(MediaVariantSpec.PublicCopyLabel, size.Width, copyKey, head!.Size);
+        }
+
+        var bytes = SanitizeOrReject(await source.ReadAllBytesAsync(cancellationToken));
+        if (BrowserImageSniffer.Sniff(bytes) is not { } image)
+        {
+            return null;
+        }
+
+        CheckDeclaredSizeOrReject(image);
+        var checksum = Convert.ToHexStringLower(SHA256.HashData(bytes));
+        await objectStore.PutAsync(
+            copyKey,
+            new MemoryStream(bytes),
+            image.ContentType,
+            MediaObjectMetadata.ForPublicCopy(checksum, sourceSha256, image.Width, image.Height),
+            cancellationToken);
+        stats.AddBytesTransferred(bytes.LongLength);
+        stats.IncrementCopyUploaded();
+        return new RecordedVariant(MediaVariantSpec.PublicCopyLabel, image.Width, copyKey, bytes.LongLength);
+    }
+
+    // An undecodable photo in a format browsers render records the size its header declares, held
+    // to the same size limits as a decodable image; any other undecodable photo records no size.
+    private static PhotoInfo DescribeUndecodable(byte[] bytes)
+    {
+        if (BrowserImageSniffer.Sniff(bytes) is not { } declared)
+        {
+            return PhotoInfo.Undecodable;
+        }
+
+        CheckDeclaredSizeOrReject(declared);
+        return new PhotoInfo(declared.Width, declared.Height, false);
+    }
+
+    private static void CheckDeclaredSizeOrReject(BrowserImage image)
+    {
+        try
+        {
+            ImageProcessor.CheckDeclaredSize(image.Width, image.Height);
+        }
+        catch (ImageProcessor.ImageTooLargeException ex)
+        {
+            throw new RejectedSourceException(ex.Message);
+        }
+    }
+
+    // Every stored original has its location, serial number and owner metadata removed; an image
+    // whose metadata cannot be removed is rejected.
+    private static byte[] SanitizeOrReject(byte[] bytes)
+    {
+        try
+        {
+            return MediaMetadataSanitizer.Sanitize(bytes);
+        }
+        catch (Exception ex) when (ex is MediaMetadataSanitizer.UnsanitizableImageException
+            or ImageProcessor.ImageTooLargeException)
+        {
+            throw new RejectedSourceException(ex.Message);
+        }
+    }
+
+    // A rejected source stores nothing. An original stored under its key by an earlier pipeline
+    // version can hold personal metadata, so it is deleted; an original of the current pipeline
+    // is sanitized and stays.
+    private static async Task RejectAsync(
+        MediaCandidate candidate,
+        string reason,
+        IObjectStore objectStore,
+        Statistics stats,
+        ConcurrentBag<MissingEntry> rejectedEntries,
+        CancellationToken cancellationToken)
+    {
+        stats.IncrementRejected();
+        rejectedEntries.Add(new MissingEntry(candidate.Id, candidate.StorageKey, reason));
+
+        var head = await objectStore.HeadAsync(candidate.StorageKey, cancellationToken);
+        var currentPipeline = MediaObjectMetadata.OriginalPipelineVersion.ToString(CultureInfo.InvariantCulture);
+        if (head is not null
+            && !(head.Metadata.TryGetValue(MediaObjectMetadata.PipelineKey, out var pipeline) && pipeline == currentPipeline))
+        {
+            await objectStore.DeleteAsync(candidate.StorageKey, cancellationToken);
+        }
+    }
+
+    private static Task PutOriginalAsync(
+        IObjectStore objectStore, string key, byte[] bytes, string sha256, string sourceSha256, PhotoInfo? photo,
+        CancellationToken cancellationToken) =>
+        objectStore.PutAsync(
+            key,
+            new MemoryStream(bytes),
+            MediaStorageKeys.ResolveContentType(key),
+            MediaObjectMetadata.ForOriginal(sha256, sourceSha256, photo),
+            cancellationToken);
 
     // === persistence =================================================================================
 
@@ -253,7 +553,7 @@ public static class MediaSeedCommand
         await command.ExecuteNonQueryAsync(cancellationToken);
     }
 
-    private static async Task<bool> UpsertMediaVariantAsync(
+    private static async Task UpsertMediaVariantAsync(
         NpgsqlConnection connection, long mediaItemId, string label, int width, string storageKey, long byteSize, CancellationToken cancellationToken)
     {
         await using var command = new NpgsqlCommand(
@@ -262,7 +562,6 @@ public static class MediaSeedCommand
             VALUES (@mediaItemId, @label, @width, @storageKey, @byteSize)
             ON CONFLICT (media_item_id, label) DO UPDATE SET
                 width = EXCLUDED.width, storage_key = EXCLUDED.storage_key, byte_size = EXCLUDED.byte_size
-            RETURNING (xmax = 0) AS inserted
             """,
             connection);
         command.Parameters.AddWithValue("mediaItemId", mediaItemId);
@@ -271,8 +570,7 @@ public static class MediaSeedCommand
         command.Parameters.AddWithValue("storageKey", storageKey);
         command.Parameters.AddWithValue("byteSize", byteSize);
 
-        var result = await command.ExecuteScalarAsync(cancellationToken);
-        return result is true;
+        await command.ExecuteNonQueryAsync(cancellationToken);
     }
 
     // === loading ======================================================================================
@@ -304,7 +602,7 @@ public static class MediaSeedCommand
         await connection.OpenAsync(cancellationToken);
 
         var sql = """
-            SELECT id, kind, storage_key, legacy_id, width, height, byte_size, checksum_sha256
+            SELECT id, kind, storage_key, legacy_id
             FROM media_item
             WHERE storage_key LIKE 'originals/%' OR storage_key LIKE 'forum_attachments/%'
             ORDER BY id
@@ -328,37 +626,7 @@ public static class MediaSeedCommand
                 reader.GetInt64(0),
                 reader.GetString(1),
                 reader.GetString(2),
-                reader.IsDBNull(3) ? null : reader.GetInt32(3),
-                reader.IsDBNull(4) ? null : reader.GetInt32(4),
-                reader.IsDBNull(5) ? null : reader.GetInt32(5),
-                reader.IsDBNull(6) ? null : reader.GetInt64(6),
-                reader.IsDBNull(7) ? null : reader.GetString(7)));
-        }
-
-        return result;
-    }
-
-    private static async Task<Dictionary<long, HashSet<string>>> LoadExistingVariantLabelsAsync(
-        string targetConnectionString, CancellationToken cancellationToken)
-    {
-        await using var connection = new NpgsqlConnection(targetConnectionString);
-        await connection.OpenAsync(cancellationToken);
-
-        await using var command = new NpgsqlCommand("SELECT media_item_id, label FROM media_variant", connection);
-        await using var reader = await command.ExecuteReaderAsync(cancellationToken);
-
-        var result = new Dictionary<long, HashSet<string>>();
-        while (await reader.ReadAsync(cancellationToken))
-        {
-            var mediaItemId = reader.GetInt64(0);
-            var label = reader.GetString(1);
-            if (!result.TryGetValue(mediaItemId, out var labels))
-            {
-                labels = [];
-                result[mediaItemId] = labels;
-            }
-
-            labels.Add(label);
+                reader.IsDBNull(3) ? null : reader.GetInt32(3)));
         }
 
         return result;
@@ -373,40 +641,51 @@ public static class MediaSeedCommand
         var megabytesPerSecond = stats.BytesTransferred / 1024.0 / 1024.0 / elapsedSeconds;
         Console.WriteLine(
             $"[media] processed {processed}/{total} ({itemsPerSecond:F1} items/s, {megabytesPerSecond:F2} MB/s, "
-            + $"missing={stats.Missing}, broken={stats.Broken})...");
+            + $"missing={stats.Missing}, broken={stats.Broken}, rejected={stats.Rejected})...");
     }
 
-    private static void PrintSummary(Statistics stats, Stopwatch stopwatch)
+    private static void PrintSummary(MediaSeedSummary summary)
     {
-        var elapsedSeconds = Math.Max(stopwatch.Elapsed.TotalSeconds, 0.001);
+        var elapsedSeconds = Math.Max(summary.Elapsed.TotalSeconds, 0.001);
         Console.WriteLine();
         Console.WriteLine("=== media summary ===");
-        Console.WriteLine($"  processed:           {stats.Processed}");
-        Console.WriteLine($"  skipped (complete):  {stats.SkippedComplete}");
-        Console.WriteLine($"  media_item inserted: {stats.MediaItemFirstCompleted}");
-        Console.WriteLine($"  media_item updated:  {stats.MediaItemRefreshed}");
-        Console.WriteLine($"  variant inserted:    {stats.VariantInserted}");
-        Console.WriteLine($"  variant updated:     {stats.VariantUpdated}");
-        Console.WriteLine($"  missing:             {stats.Missing}");
-        Console.WriteLine($"  broken:              {stats.Broken}");
-        Console.WriteLine($"  bytes transferred:   {stats.BytesTransferred:N0}");
-        Console.WriteLine($"  elapsed:             {stopwatch.Elapsed:c}");
-        Console.WriteLine($"  throughput:          {stats.Processed / elapsedSeconds:F1} items/s, {stats.BytesTransferred / 1024.0 / 1024.0 / elapsedSeconds:F2} MB/s");
+        Console.WriteLine($"  processed:           {summary.Processed}");
+        Console.WriteLine($"  originals uploaded:  {summary.OriginalsUploaded}");
+        Console.WriteLine($"  originals present:   {summary.OriginalsPresent}");
+        Console.WriteLine($"  variants uploaded:   {summary.VariantsUploaded}");
+        Console.WriteLine($"  variants present:    {summary.VariantsPresent}");
+        Console.WriteLine($"  metadata recorded:   {summary.MetadataRecorded}");
+        Console.WriteLine($"  missing:             {summary.Missing}");
+        Console.WriteLine($"  broken:              {summary.Broken}");
+        Console.WriteLine($"  rejected:            {summary.Rejected}");
+        Console.WriteLine($"  copies uploaded:     {summary.CopiesUploaded}");
+        Console.WriteLine($"  copies present:      {summary.CopiesPresent}");
+        Console.WriteLine($"  bytes transferred:   {summary.BytesTransferred:N0}");
+        Console.WriteLine($"  elapsed:             {summary.Elapsed:c}");
+        Console.WriteLine($"  throughput:          {summary.Processed / elapsedSeconds:F1} items/s, {summary.BytesTransferred / 1024.0 / 1024.0 / elapsedSeconds:F2} MB/s");
         Console.WriteLine();
     }
 
     private static async Task WriteMissingReportAsync(
-        string path, ConcurrentBag<MissingEntry> missingEntries, ConcurrentBag<string> brokenKeys, CancellationToken cancellationToken)
+        string path,
+        ConcurrentBag<MissingEntry> missingEntries,
+        ConcurrentBag<string> brokenKeys,
+        ConcurrentBag<MissingEntry> rejectedEntries,
+        ConcurrentBag<CopyEntry> copyEntries,
+        CancellationToken cancellationToken)
     {
         var document = new MissingReportDto(
             DateTimeOffset.UtcNow,
             missingEntries.Count,
             brokenKeys.Count,
-            missingEntries
+            rejectedEntries.Count,
+            ToDtos(missingEntries),
+            brokenKeys.OrderBy(k => k, StringComparer.Ordinal).ToList(),
+            ToDtos(rejectedEntries),
+            copyEntries
                 .OrderBy(e => e.MediaItemId)
-                .Select(e => new MissingEntryDto(e.MediaItemId, e.StorageKey, e.Reason))
-                .ToList(),
-            brokenKeys.OrderBy(k => k, StringComparer.Ordinal).ToList());
+                .Select(e => new CopyEntryDto(e.MediaItemId, e.StorageKey, e.CopyKey))
+                .ToList());
 
         var options = new JsonSerializerOptions { WriteIndented = true };
         var json = JsonSerializer.Serialize(document, options);
@@ -418,13 +697,89 @@ public static class MediaSeedCommand
         }
 
         await File.WriteAllTextAsync(path, json, cancellationToken);
-        Console.WriteLine($"Wrote missing/broken report to {path}.");
+        Console.WriteLine($"Wrote missing/broken/rejected/copies report to {path}.");
+
+        static List<MissingEntryDto> ToDtos(ConcurrentBag<MissingEntry> entries) =>
+            entries
+                .OrderBy(e => e.MediaItemId)
+                .Select(e => new MissingEntryDto(e.MediaItemId, e.StorageKey, e.Reason))
+                .ToList();
     }
 
     // === types ========================================================================================
 
-    private sealed record MediaCandidate(
-        long Id, string Kind, string StorageKey, int? LegacyId, int? Width, int? Height, long? ByteSize, string? ChecksumSha256);
+    private sealed record MediaCandidate(long Id, string Kind, string StorageKey, int? LegacyId);
+
+    private sealed class StoredObjectVanishedException : Exception;
+
+    private sealed class RejectedSourceException(string reason) : Exception(reason);
+
+    private sealed record StoredOriginal(long Size, string Sha256, string SourceSha256, PhotoInfo? Photo);
+
+    private sealed record RecordedVariant(string Label, int Width, string StorageKey, long ByteSize);
+
+    /// <summary>
+    /// The bytes an original and its variants are derived from: a legacy file on disk, or an
+    /// object already in the store (forum attachments). Hashing streams the content; the bytes are
+    /// loaded once, only when an upload or a decode needs them. A stored object's checksum is the
+    /// source checksum recorded on it, which identifies the legacy attachment the forum step
+    /// stored, so completing its metadata keeps that identity.
+    /// </summary>
+    private sealed class SourceFile
+    {
+        private readonly Func<CancellationToken, Task<byte[]>> _load;
+        private readonly Func<CancellationToken, Task<string>> _hash;
+        private byte[]? _bytes;
+
+        private SourceFile(bool isStoredObject, Func<CancellationToken, Task<byte[]>> load, Func<CancellationToken, Task<string>> hash)
+        {
+            IsStoredObject = isStoredObject;
+            _load = load;
+            _hash = hash;
+        }
+
+        public bool IsStoredObject { get; }
+
+        public static SourceFile FromLegacyFile(string path) =>
+            new(
+                false,
+                token => File.ReadAllBytesAsync(path, token),
+                async token =>
+                {
+                    await using var stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read, 81920, useAsync: true);
+                    return Convert.ToHexStringLower(await SHA256.HashDataAsync(stream, token));
+                });
+
+        public static SourceFile FromStoredObject(IObjectStore store, string key, ObjectHead head)
+        {
+            SourceFile? self = null;
+            self = new SourceFile(
+                true,
+                async token =>
+                {
+                    var downloaded = await store.GetAsync(key, token) ?? throw new StoredObjectVanishedException();
+                    await using var stream = downloaded;
+                    using var buffer = new MemoryStream();
+                    await stream.CopyToAsync(buffer, token);
+                    return buffer.ToArray();
+                },
+                async token =>
+                {
+                    if (head.Metadata.TryGetValue(MediaObjectMetadata.SourceSha256Key, out var source) && source.Length > 0)
+                    {
+                        return source;
+                    }
+
+                    return Convert.ToHexStringLower(SHA256.HashData(await self!.ReadAllBytesAsync(token)));
+                });
+            return self;
+        }
+
+        public Task<string> ComputeSha256Async(CancellationToken cancellationToken) => _hash(cancellationToken);
+
+        public async Task<byte[]> ReadAllBytesAsync(CancellationToken cancellationToken) =>
+            _bytes ??= await _load(cancellationToken);
+    }
 
     private sealed record MissingEntry(long MediaItemId, string StorageKey, string Reason);
 
@@ -437,67 +792,91 @@ public static class MediaSeedCommand
         [property: JsonPropertyName("generatedAt")] DateTimeOffset GeneratedAt,
         [property: JsonPropertyName("missingCount")] int MissingCount,
         [property: JsonPropertyName("brokenCount")] int BrokenCount,
+        [property: JsonPropertyName("rejectedCount")] int RejectedCount,
         [property: JsonPropertyName("missing")] IReadOnlyList<MissingEntryDto> Missing,
-        [property: JsonPropertyName("broken")] IReadOnlyList<string> Broken);
+        [property: JsonPropertyName("broken")] IReadOnlyList<string> Broken,
+        [property: JsonPropertyName("rejected")] IReadOnlyList<MissingEntryDto> Rejected,
+        [property: JsonPropertyName("copies")] IReadOnlyList<CopyEntryDto> Copies);
+
+    private sealed record CopyEntry(long MediaItemId, string StorageKey, string CopyKey);
+
+    private sealed record CopyEntryDto(
+        [property: JsonPropertyName("mediaItemId")] long MediaItemId,
+        [property: JsonPropertyName("storageKey")] string StorageKey,
+        [property: JsonPropertyName("copyKey")] string CopyKey);
 
     /// <summary>
     /// Thread-safe run counters: every worker in the pool increments the same instance
-    /// concurrently, so every mutation goes through <see cref="Interlocked"/>.
+    /// concurrently, so every mutation goes through Interlocked.
     /// </summary>
     private sealed class Statistics
     {
         private int _processed;
-        private int _skippedComplete;
-        private int _mediaItemFirstCompleted;
-        private int _mediaItemRefreshed;
-        private int _variantInserted;
-        private int _variantUpdated;
+        private int _originalsUploaded;
+        private int _originalsPresent;
+        private int _variantsUploaded;
+        private int _variantsPresent;
+        private int _metadataRecorded;
         private int _missing;
         private int _broken;
+        private int _rejected;
+        private int _copiesUploaded;
+        private int _copiesPresent;
         private long _bytesTransferred;
 
         public int Processed => _processed;
-        public int SkippedComplete => _skippedComplete;
-        public int MediaItemFirstCompleted => _mediaItemFirstCompleted;
-        public int MediaItemRefreshed => _mediaItemRefreshed;
-        public int VariantInserted => _variantInserted;
-        public int VariantUpdated => _variantUpdated;
         public int Missing => _missing;
         public int Broken => _broken;
+        public int Rejected => _rejected;
         public long BytesTransferred => _bytesTransferred;
 
         public int IncrementProcessed() => Interlocked.Increment(ref _processed);
 
-        public void IncrementSkippedComplete() => Interlocked.Increment(ref _skippedComplete);
+        public void IncrementOriginalUploaded() => Interlocked.Increment(ref _originalsUploaded);
 
-        public void IncrementUpdatedMediaItem(bool wasAlreadyComplete)
-        {
-            if (wasAlreadyComplete)
-            {
-                Interlocked.Increment(ref _mediaItemRefreshed);
-            }
-            else
-            {
-                Interlocked.Increment(ref _mediaItemFirstCompleted);
-            }
-        }
+        public void IncrementOriginalPresent() => Interlocked.Increment(ref _originalsPresent);
 
-        public void IncrementVariant(bool inserted)
-        {
-            if (inserted)
-            {
-                Interlocked.Increment(ref _variantInserted);
-            }
-            else
-            {
-                Interlocked.Increment(ref _variantUpdated);
-            }
-        }
+        public void IncrementVariantUploaded() => Interlocked.Increment(ref _variantsUploaded);
+
+        public void AddVariantsPresent(int count) => Interlocked.Add(ref _variantsPresent, count);
+
+        public void IncrementMetadataRecorded() => Interlocked.Increment(ref _metadataRecorded);
 
         public void IncrementMissing() => Interlocked.Increment(ref _missing);
 
         public void IncrementBroken() => Interlocked.Increment(ref _broken);
 
+        public void IncrementRejected() => Interlocked.Increment(ref _rejected);
+
+        public void IncrementCopyUploaded() => Interlocked.Increment(ref _copiesUploaded);
+
+        public void IncrementCopyPresent() => Interlocked.Increment(ref _copiesPresent);
+
         public void AddBytesTransferred(long bytes) => Interlocked.Add(ref _bytesTransferred, bytes);
+
+        public MediaSeedSummary ToSummary(TimeSpan elapsed) =>
+            new(_processed, _originalsUploaded, _originalsPresent, _variantsUploaded, _variantsPresent, _metadataRecorded,
+                _missing, _broken, _rejected, _copiesUploaded, _copiesPresent, _bytesTransferred, elapsed);
     }
 }
+
+/// <summary>
+/// The counts of one media seed run: processed candidates, originals and variants uploaded or
+/// already present in the object store, media rows whose metadata was recorded, candidates whose
+/// source is missing, undecodable photos, rejected sources, public copies of undecodable photos
+/// uploaded or already present, the bytes uploaded and the elapsed time.
+/// </summary>
+public sealed record MediaSeedSummary(
+    int Processed,
+    int OriginalsUploaded,
+    int OriginalsPresent,
+    int VariantsUploaded,
+    int VariantsPresent,
+    int MetadataRecorded,
+    int Missing,
+    int Broken,
+    int Rejected,
+    int CopiesUploaded,
+    int CopiesPresent,
+    long BytesTransferred,
+    TimeSpan Elapsed);

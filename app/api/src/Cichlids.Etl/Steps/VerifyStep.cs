@@ -7,12 +7,13 @@ using Npgsql;
 namespace Cichlids.Etl.Steps;
 
 /// <summary>
-/// Checks the target database against the legacy source, entity by entity. Every check
-/// recomputes its expected count from the legacy source (or, where a source-side formula would be
-/// prohibitively expensive to reproduce, from a target-side consistency invariant) using its own
-/// SQL and its own copy of each other step's filter rules, rather than reading the other steps'
-/// run statistics: a bug shared between a step and its statistics counter would otherwise go
-/// unnoticed. Prints its findings as a table and, with "--out", writes them as JSON.
+/// Checks the target database against the legacy source, entity by entity. Every expected count
+/// comes from the legacy source, computed with this step's own SQL and its own copy of each
+/// migration rule, or from a target-side invariant that holds for every row, so a defect in a
+/// migration step shows up as a mismatch. Actual counts cover whole target tables, because the
+/// verification runs right after the import into an empty target and every row there has to
+/// follow from a legacy row. Every report row names the migration rule its expectation follows
+/// from. Prints its findings as a table and, with "--out", writes them as JSON.
 /// </summary>
 public sealed class VerifyStep : IEtlStep
 {
@@ -24,24 +25,34 @@ public sealed class VerifyStep : IEtlStep
     {
         var report = new VerificationReport();
 
-        await AddSpeciesRowsAsync(context, report, cancellationToken);
-        await AddProfileAndIdentityRowsAsync(context, report, cancellationToken);
-        await AddTankRowsAsync(context, report, cancellationToken);
+        // pid 21/29/109/131 are the picture placements PictureMigrationStep's PostTopicByPid
+        // turns into a post, the same set this check mirrors independently.
+        var postOwnerByPictureUid = await LoadLegacyOwnerMapAsync(
+            context,
+            """
+            SELECT uid, fe_user FROM user_cichlids_pictures
+            WHERE NOT (deleted = 1 OR delete_tstamp > 0) AND pid IN (21, 29, 109, 131)
+            """,
+            cancellationToken);
+        var tankOwnerByTankUid = await LoadLegacyOwnerMapAsync(
+            context, "SELECT uid, fe_user FROM user_cichlids_tanks WHERE deleted = 0", cancellationToken);
+        var speciesUids = await LoadLegacyUidSetAsync(
+            context, "SELECT uid FROM user_cichlids_species WHERE deleted = 0", cancellationToken);
 
-        var migratedPostLegacyIds = await LoadLegacyIdSetAsync(context, "post", cancellationToken);
-        var migratedTankLegacyIds = await LoadLegacyIdSetAsync(context, "tank", cancellationToken);
-        var migratedSpeciesLegacyIds = await LoadLegacyIdSetAsync(context, "species", cancellationToken);
+        await AddSpeciesRowsAsync(context, report, speciesUids.Count, cancellationToken);
+        await AddProfileAndIdentityRowsAsync(context, report, cancellationToken);
+        await AddTankRowsAsync(context, report, tankOwnerByTankUid.Count, cancellationToken);
 
         var eligibleForumMessageIds = await AddDiscussionRowsAsync(context, report, cancellationToken);
         await AddMediaRowsAsync(context, report, eligibleForumMessageIds, cancellationToken);
-        await AddPostRowsAsync(context, report, cancellationToken);
-        await AddPostSpeciesRowsAsync(context, report, migratedPostLegacyIds, migratedSpeciesLegacyIds, cancellationToken);
+        await AddPostRowsAsync(context, report, postOwnerByPictureUid.Count, cancellationToken);
+        await AddPostSpeciesRowsAsync(context, report, postOwnerByPictureUid, speciesUids, cancellationToken);
         await AddSlugAliasRowsAsync(context, report, cancellationToken);
         var migratedCommentLegacyIds = await AddCommentRatingVaultRowsAsync(
-            context, report, migratedPostLegacyIds, migratedTankLegacyIds, cancellationToken);
+            context, report, postOwnerByPictureUid, tankOwnerByTankUid, cancellationToken);
         await AddCommentVoteRowAsync(context, report, migratedCommentLegacyIds, cancellationToken);
         await AddAggregateConsistencyRowsAsync(context, report, cancellationToken);
-        await AddCollectionRowsAsync(context, report, migratedPostLegacyIds, cancellationToken);
+        await AddCollectionRowsAsync(context, report, postOwnerByPictureUid, cancellationToken);
         await AddReferenceCheckRowsAsync(context, report, cancellationToken);
 
         VerificationReportPrinter.PrintTable(report);
@@ -63,16 +74,15 @@ public sealed class VerifyStep : IEtlStep
 
     // === species ===================================================================================
 
-    private static async Task AddSpeciesRowsAsync(EtlContext context, VerificationReport report, CancellationToken cancellationToken)
+    private static async Task AddSpeciesRowsAsync(
+        EtlContext context, VerificationReport report, long expected, CancellationToken cancellationToken)
     {
-        var expected = await MySqlScalarAsync(
-            context, "SELECT COUNT(*) FROM user_cichlids_species WHERE deleted = 0", cancellationToken);
         var actual = await PgScalarAsync(context, "SELECT COUNT(*) FROM species", cancellationToken);
-        report.Add(VerificationRow.Compare("species", expected, actual));
+        report.Add(VerificationRow.Compare("species", expected, actual, MigrationRules.Species));
 
         var slugCount = await PgScalarAsync(
             context, "SELECT COUNT(*) FROM species WHERE slug IS NOT NULL", cancellationToken);
-        report.Add(VerificationRow.Info("species_slug", slugCount));
+        report.Add(VerificationRow.Info("species_slug", slugCount, MigrationRules.SpeciesSlugs));
     }
 
     // === profiles and identities ===================================================================
@@ -80,13 +90,11 @@ public sealed class VerifyStep : IEtlStep
     /// <summary>
     /// Recomputes ProfileMigrationStep's eligibility formula (a non-deleted, non-disabled legacy
     /// user who owns at least one row in the pictures, tanks or comments table, deleted or not)
-    /// and checks it against the target's migrated member profile count (kind member and a
-    /// non-null legacy_id, which excludes profiles the API creates for a first login), then
-    /// checks each identity provider's row count. Returns the eligible legacy user rows (with
-    /// their openid/email columns) for the identity checks and for any future check that needs
-    /// the same set. Also counts the profiles whose public handle or display name holds an email
-    /// address, and the profiles whose external avatar URL is a Gravatar URL, both of which have
-    /// to be zero for every profile, migrated or not.
+    /// and checks it against the target's member profile count, then checks each legacy identity
+    /// provider's row count and reports the oidc identities the account import links. Also counts
+    /// the profiles whose public handle or display name holds an email address, and the profiles
+    /// whose external avatar URL is a Gravatar URL, both of which have to be zero for every
+    /// profile.
     /// </summary>
     private static async Task AddProfileAndIdentityRowsAsync(
         EtlContext context, VerificationReport report, CancellationToken cancellationToken)
@@ -128,18 +136,14 @@ public sealed class VerifyStep : IEtlStep
         }
 
         var actualMembers = await PgScalarAsync(
-            context, "SELECT COUNT(*) FROM profile WHERE kind = 'member' AND legacy_id IS NOT NULL", cancellationToken);
-        report.Add(VerificationRow.Compare("profiles_member", eligibleUsers.Count, actualMembers));
+            context, "SELECT COUNT(*) FROM profile WHERE kind = 'member'", cancellationToken);
+        report.Add(VerificationRow.Compare("profiles_member", eligibleUsers.Count, actualMembers, MigrationRules.MemberProfiles));
 
         var actualArchived = await PgScalarAsync(context, "SELECT COUNT(*) FROM profile WHERE kind = 'archived'", cancellationToken);
-        report.Add(VerificationRow.Info("profiles_archived", actualArchived));
-
-        var actualMembersRegistered = await PgScalarAsync(
-            context, "SELECT COUNT(*) FROM profile WHERE kind = 'member' AND legacy_id IS NULL", cancellationToken);
-        report.Add(VerificationRow.Info("profiles_member_registered", actualMembersRegistered));
+        report.Add(VerificationRow.Info("profiles_archived", actualArchived, MigrationRules.ArchivedProfiles));
 
         var actualSystem = await PgScalarAsync(context, "SELECT COUNT(*) FROM profile WHERE kind = 'system'", cancellationToken);
-        report.Add(VerificationRow.Info("profiles_system", actualSystem));
+        report.Add(VerificationRow.Info("profiles_system", actualSystem, MigrationRules.SystemProfiles));
 
         await AddEmailLikeProfileRowsAsync(context, report, cancellationToken);
         await AddAvatarGravatarProfileRowsAsync(context, report, cancellationToken);
@@ -181,11 +185,13 @@ public sealed class VerifyStep : IEtlStep
         }
 
         report.Add(VerificationRow.Compare(
-            "identities_auth0", expectedAuth0.Count, actualByProvider.GetValueOrDefault("auth0")));
+            "identities_auth0", expectedAuth0.Count, actualByProvider.GetValueOrDefault("auth0"), MigrationRules.LegacyIdentities));
         report.Add(VerificationRow.Compare(
-            "identities_legacy_openid", expectedOpenId.Count, actualByProvider.GetValueOrDefault("legacy-openid")));
+            "identities_legacy_openid", expectedOpenId.Count, actualByProvider.GetValueOrDefault("legacy-openid"), MigrationRules.LegacyIdentities));
         report.Add(VerificationRow.Compare(
-            "identities_email", expectedEmail.Count, actualByProvider.GetValueOrDefault("email")));
+            "identities_email", expectedEmail.Count, actualByProvider.GetValueOrDefault("email"), MigrationRules.LegacyIdentities));
+        report.Add(VerificationRow.Info(
+            "identities_oidc", actualByProvider.GetValueOrDefault("oidc"), MigrationRules.OidcIdentities));
     }
 
     private sealed record EligibleUser(int Uid, string? OpenId, string? Email);
@@ -215,8 +221,8 @@ public sealed class VerifyStep : IEtlStep
             }
         }
 
-        report.Add(VerificationRow.Compare("profile_username_email_like", 0, usernames));
-        report.Add(VerificationRow.Compare("profile_display_name_email_like", 0, displayNames));
+        report.Add(VerificationRow.Compare("profile_username_email_like", 0, usernames, MigrationRules.PrivateAddresses));
+        report.Add(VerificationRow.Compare("profile_display_name_email_like", 0, displayNames, MigrationRules.PrivateAddresses));
     }
 
     // A Gravatar avatar URL is a reversible hash of a member's email address, so no profile may
@@ -239,7 +245,7 @@ public sealed class VerifyStep : IEtlStep
             }
         }
 
-        report.Add(VerificationRow.Compare("profile_avatar_gravatar", 0, gravatarAvatars));
+        report.Add(VerificationRow.Compare("profile_avatar_gravatar", 0, gravatarAvatars, MigrationRules.GravatarAvatars));
     }
 
     // A guest's poster name is public, so no comment or forum post may hold an address in it. The
@@ -263,24 +269,23 @@ public sealed class VerifyStep : IEtlStep
                 }
             }
 
-            report.Add(VerificationRow.Compare($"{table}_poster_name_email_like", 0, emailLike));
+            report.Add(VerificationRow.Compare($"{table}_poster_name_email_like", 0, emailLike, MigrationRules.PrivateAddresses));
         }
 
         var guestNames = await context.GetGuestNamesAsync(cancellationToken);
-        report.Add(VerificationRow.Info("guest_names_generated", guestNames.Count));
+        report.Add(VerificationRow.Info("guest_names_generated", guestNames.Count, MigrationRules.GuestNames));
     }
 
     // === tanks ======================================================================================
 
-    private static async Task AddTankRowsAsync(EtlContext context, VerificationReport report, CancellationToken cancellationToken)
+    private static async Task AddTankRowsAsync(
+        EtlContext context, VerificationReport report, long expected, CancellationToken cancellationToken)
     {
-        var expected = await MySqlScalarAsync(
-            context, "SELECT COUNT(*) FROM user_cichlids_tanks WHERE deleted = 0", cancellationToken);
         var actual = await PgScalarAsync(context, "SELECT COUNT(*) FROM tank", cancellationToken);
-        report.Add(VerificationRow.Compare("tanks", expected, actual));
+        report.Add(VerificationRow.Compare("tanks", expected, actual, MigrationRules.Tanks));
 
         var inhabitants = await PgScalarAsync(context, "SELECT COUNT(*) FROM inhabitant", cancellationToken);
-        report.Add(VerificationRow.Info("tank_inhabitants", inhabitants));
+        report.Add(VerificationRow.Info("tank_inhabitants", inhabitants, MigrationRules.TankInhabitants));
     }
 
     // === discussion (forum threads and posts) ======================================================
@@ -321,10 +326,10 @@ public sealed class VerifyStep : IEtlStep
         var eligiblePostIds = messages.Where(m => !m.Moved && rootIds.Contains(m.Thread)).Select(m => m.MessageId).ToHashSet();
 
         var actualThreads = await PgScalarAsync(context, "SELECT COUNT(*) FROM discussion_thread", cancellationToken);
-        report.Add(VerificationRow.Compare("discussion_thread", rootIds.Count, actualThreads));
+        report.Add(VerificationRow.Compare("discussion_thread", rootIds.Count, actualThreads, MigrationRules.DiscussionThreads));
 
         var actualPosts = await PgScalarAsync(context, "SELECT COUNT(*) FROM discussion_post", cancellationToken);
-        report.Add(VerificationRow.Compare("discussion_post", eligiblePostIds.Count, actualPosts));
+        report.Add(VerificationRow.Compare("discussion_post", eligiblePostIds.Count, actualPosts, MigrationRules.DiscussionPosts));
 
         var postCountMismatches = await PgScalarAsync(
             context,
@@ -335,7 +340,7 @@ public sealed class VerifyStep : IEtlStep
             WHERE COALESCE(p.c, 0) <> t.post_count
             """,
             cancellationToken);
-        report.Add(VerificationRow.Compare("discussion_thread_post_count_consistency", 0, postCountMismatches));
+        report.Add(VerificationRow.Compare("discussion_thread_post_count_consistency", 0, postCountMismatches, MigrationRules.DiscussionPostCounts));
 
         return eligiblePostIds;
     }
@@ -351,7 +356,7 @@ public sealed class VerifyStep : IEtlStep
             cancellationToken);
         var actualOriginals = await PgScalarAsync(
             context, "SELECT COUNT(*) FROM media_item WHERE storage_key LIKE 'originals/%'", cancellationToken);
-        report.Add(VerificationRow.Compare("media_originals", expectedOriginals, actualOriginals));
+        report.Add(VerificationRow.Compare("media_originals", expectedOriginals, actualOriginals, MigrationRules.MediaOriginals));
 
         var expectedAttachments = 0L;
         await using (var command = new MySqlCommand(
@@ -370,24 +375,16 @@ public sealed class VerifyStep : IEtlStep
 
         var actualAttachments = await PgScalarAsync(
             context, "SELECT COUNT(*) FROM media_item WHERE storage_key LIKE 'forum_attachments/%'", cancellationToken);
-        report.Add(VerificationRow.Compare("media_forum_attachments", expectedAttachments, actualAttachments));
+        report.Add(VerificationRow.Compare("media_forum_attachments", expectedAttachments, actualAttachments, MigrationRules.ForumAttachments));
     }
 
     // === post (blog posts derived from pictures) ===================================================
 
-    private static async Task AddPostRowsAsync(EtlContext context, VerificationReport report, CancellationToken cancellationToken)
+    private static async Task AddPostRowsAsync(
+        EtlContext context, VerificationReport report, long expected, CancellationToken cancellationToken)
     {
-        // pid 21/29/109/131 are the picture placements PictureMigrationStep's PostTopicByPid
-        // turns into a post, the same set this check mirrors independently.
-        var expected = await MySqlScalarAsync(
-            context,
-            """
-            SELECT COUNT(*) FROM user_cichlids_pictures
-            WHERE NOT (deleted = 1 OR delete_tstamp > 0) AND pid IN (21, 29, 109, 131)
-            """,
-            cancellationToken);
         var actual = await PgScalarAsync(context, "SELECT COUNT(*) FROM post", cancellationToken);
-        report.Add(VerificationRow.Compare("post", expected, actual));
+        report.Add(VerificationRow.Compare("post", expected, actual, MigrationRules.Posts));
 
         await using var command = new NpgsqlCommand(
             "SELECT state, COUNT(*) FROM post GROUP BY state", context.Target, context.Transaction);
@@ -398,24 +395,24 @@ public sealed class VerifyStep : IEtlStep
             byState[reader.GetString(0)] = reader.GetInt64(1);
         }
 
-        report.Add(VerificationRow.Info("post_state_published", byState.GetValueOrDefault("published")));
-        report.Add(VerificationRow.Info("post_state_draft", byState.GetValueOrDefault("draft")));
-        report.Add(VerificationRow.Info("post_state_archived", byState.GetValueOrDefault("archived")));
+        report.Add(VerificationRow.Info("post_state_published", byState.GetValueOrDefault("published"), MigrationRules.PostStates));
+        report.Add(VerificationRow.Info("post_state_draft", byState.GetValueOrDefault("draft"), MigrationRules.PostStates));
+        report.Add(VerificationRow.Info("post_state_archived", byState.GetValueOrDefault("archived"), MigrationRules.PostStates));
     }
 
     // === post_species (picture-species links) =======================================================
 
     /// <summary>
-    /// Recomputes SpeciesLinksStep's eligibility formula (a link with a nonzero species reference,
-    /// whose picture resolved to a migrated post and whose species resolved to a migrated species)
-    /// as the count of distinct (post, species) pairs directly from the legacy source, and checks
-    /// it against post_species.
+    /// Recomputes SpeciesLinksStep's eligibility formula (a link with a nonzero species reference
+    /// whose picture is eligible as a post and whose species is eligible for the catalog) as the
+    /// count of distinct (post, species) pairs directly from the legacy source, and checks it
+    /// against post_species.
     /// </summary>
     private static async Task AddPostSpeciesRowsAsync(
         EtlContext context,
         VerificationReport report,
-        HashSet<int> migratedPostLegacyIds,
-        HashSet<int> migratedSpeciesLegacyIds,
+        Dictionary<int, int> postOwnerByPictureUid,
+        HashSet<int> speciesUids,
         CancellationToken cancellationToken)
     {
         var distinctPairs = new HashSet<(int PostLegacyId, int SpeciesLegacyId)>();
@@ -428,7 +425,7 @@ public sealed class VerifyStep : IEtlStep
             {
                 var postLegacyId = reader.GetInt32(0);
                 var speciesLegacyId = reader.GetInt32(1);
-                if (migratedPostLegacyIds.Contains(postLegacyId) && migratedSpeciesLegacyIds.Contains(speciesLegacyId))
+                if (postOwnerByPictureUid.ContainsKey(postLegacyId) && speciesUids.Contains(speciesLegacyId))
                 {
                     distinctPairs.Add((postLegacyId, speciesLegacyId));
                 }
@@ -436,7 +433,7 @@ public sealed class VerifyStep : IEtlStep
         }
 
         var actual = await PgScalarAsync(context, "SELECT COUNT(*) FROM post_species", cancellationToken);
-        report.Add(VerificationRow.Compare("post_species", distinctPairs.Count, actual));
+        report.Add(VerificationRow.Compare("post_species", distinctPairs.Count, actual, MigrationRules.PostSpecies));
     }
 
     // === slug_alias (target-side consistency only) =================================================
@@ -453,53 +450,62 @@ public sealed class VerifyStep : IEtlStep
             ) x
             """,
             cancellationToken);
-        report.Add(VerificationRow.Compare("slug_alias_one_canonical_per_post", 0, canonicalViolations));
+        report.Add(VerificationRow.Compare("slug_alias_one_canonical_per_post", 0, canonicalViolations, MigrationRules.SlugAliases));
 
         var total = await PgScalarAsync(context, "SELECT COUNT(*) FROM slug_alias", cancellationToken);
-        report.Add(VerificationRow.Info("slug_alias_total", total));
+        report.Add(VerificationRow.Info("slug_alias_total", total, MigrationRules.SlugAliases));
 
         var orphans = await PgScalarAsync(
             context,
             "SELECT COUNT(*) FROM slug_alias sa LEFT JOIN post p ON p.id = sa.post_id WHERE p.id IS NULL",
             cancellationToken);
-        report.Add(VerificationRow.Compare("slug_alias_orphans", 0, orphans));
+        report.Add(VerificationRow.Compare("slug_alias_orphans", 0, orphans, MigrationRules.SlugAliases));
 
         var uniqueViolations = await PgScalarAsync(
             context,
             "SELECT COUNT(*) FROM (SELECT value FROM slug_alias GROUP BY value HAVING COUNT(*) > 1) x",
             cancellationToken);
-        report.Add(VerificationRow.Compare("slug_alias_unique_value", 0, uniqueViolations));
+        report.Add(VerificationRow.Compare("slug_alias_unique_value", 0, uniqueViolations, MigrationRules.SlugAliases));
 
         var postsWithoutAlias = await PgScalarAsync(
             context,
             "SELECT COUNT(*) FROM post p LEFT JOIN slug_alias sa ON sa.post_id = p.id WHERE sa.id IS NULL",
             cancellationToken);
-        report.Add(VerificationRow.Compare("post_without_slug_alias", 0, postsWithoutAlias));
+        report.Add(VerificationRow.Compare("post_without_slug_alias", 0, postsWithoutAlias, MigrationRules.SlugAliases));
     }
 
     // === comment, rating and archive.legacy_comment (vault) =========================================
 
     /// <summary>
-    /// Recomputes CommentMigrationStep's per-row classification (unresolved target vaults the row;
-    /// a resolved target with no text and no rating is dropped; otherwise a non-empty note becomes
-    /// a comment and a positive rating becomes a rating, independently of each other) by streaming
-    /// the whole legacy comments table, and checks the resulting counts against comment, rating and
-    /// archive.legacy_comment. Returns the legacy ids of comments that migrated, for the vote check.
+    /// Recomputes CommentMigrationStep's per-row classification (a target outside the eligible
+    /// posts and tanks vaults the row; an eligible target with no text and no rating is dropped;
+    /// otherwise a non-empty note becomes a comment and a positive rating becomes a rating
+    /// candidate, independently of each other) by streaming the whole legacy comments table, and
+    /// checks the resulting counts against comment, rating and archive.legacy_comment. A rating
+    /// candidate counts once per member and target; a member rating the picture or tank they own
+    /// in the legacy source is a self-rating and an anonymous rating always counts. Checks that
+    /// every migrated rating is an anonymous rating or the newest rating of its member on its
+    /// target, a tie going to the higher legacy uid. Reports the collapsed and the self-ratings as
+    /// information. Returns the legacy ids of comments that
+    /// migrated, for the vote check.
     /// </summary>
     private static async Task<HashSet<int>> AddCommentRatingVaultRowsAsync(
         EtlContext context,
         VerificationReport report,
-        HashSet<int> migratedPostLegacyIds,
-        HashSet<int> migratedTankLegacyIds,
+        Dictionary<int, int> postOwnerByPictureUid,
+        Dictionary<int, int> tankOwnerByTankUid,
         CancellationToken cancellationToken)
     {
         var vaultCount = 0L;
         var commentCount = 0L;
-        var ratingCount = 0L;
+        var anonymousRatingUids = new HashSet<int>();
+        var memberRatings = 0L;
+        var selfRatings = 0L;
+        var newestRatingByMemberAndTarget = new Dictionary<(int FeUser, int Type, int Item), (long CreatedAt, int Uid)>();
         var migratedCommentLegacyIds = new HashSet<int>();
 
         await using (var command = new MySqlCommand(
-            "SELECT uid, type, item, rating, note, deleted FROM user_cichlids_comments",
+            "SELECT uid, type, item, rating, note, deleted, fe_user, crdate, tstamp FROM user_cichlids_comments",
             context.Legacy))
         await using (var reader = await command.ExecuteReaderAsync(cancellationToken))
         {
@@ -520,18 +526,17 @@ public sealed class VerifyStep : IEtlStep
                     note = null;
                 }
 
-                var validTarget = type switch
+                var owners = type switch
                 {
-                    1 => migratedPostLegacyIds.Contains(item),
-                    2 => migratedTankLegacyIds.Contains(item),
-                    _ => false,
+                    1 => postOwnerByPictureUid,
+                    2 => tankOwnerByTankUid,
+                    _ => null,
                 };
 
-                if (!validTarget)
+                if (owners is null || !owners.TryGetValue(item, out var ownerFeUser))
                 {
-                    // Every unresolved row lands in the vault regardless of why (an unmigrated
-                    // target, a target id that never existed at all, or an unrecognized type): the
-                    // distinction only matters for the step's own diagnostics, not for this count.
+                    // Every row without an eligible target lands in the vault, whatever the reason
+                    // (a deleted target, a target id that never existed, or an unrecognized type).
                     vaultCount++;
                     continue;
                 }
@@ -548,21 +553,65 @@ public sealed class VerifyStep : IEtlStep
                     migratedCommentLegacyIds.Add(legacyId);
                 }
 
-                if (hasRating)
+                if (!hasRating)
                 {
-                    ratingCount++;
+                    continue;
+                }
+
+                var feUser = reader.GetInt32(6);
+                if (feUser == 0)
+                {
+                    anonymousRatingUids.Add(legacyId);
+                }
+                else if (feUser == ownerFeUser)
+                {
+                    selfRatings++;
+                }
+                else
+                {
+                    memberRatings++;
+                    var crdate = reader.GetInt64(7);
+                    var candidate = (crdate > 0 ? crdate : reader.GetInt64(8), legacyId);
+                    var key = (feUser, type, item);
+                    if (!newestRatingByMemberAndTarget.TryGetValue(key, out var newest)
+                        || candidate.CompareTo(newest) > 0)
+                    {
+                        newestRatingByMemberAndTarget[key] = candidate;
+                    }
                 }
             }
         }
 
         var actualComments = await PgScalarAsync(context, "SELECT COUNT(*) FROM comment", cancellationToken);
-        report.Add(VerificationRow.Compare("comment", commentCount, actualComments));
+        report.Add(VerificationRow.Compare("comment", commentCount, actualComments, MigrationRules.Comments));
 
         var actualRatings = await PgScalarAsync(context, "SELECT COUNT(*) FROM rating", cancellationToken);
-        report.Add(VerificationRow.Compare("rating", ratingCount, actualRatings));
+        report.Add(VerificationRow.Compare(
+            "rating", anonymousRatingUids.Count + newestRatingByMemberAndTarget.Count, actualRatings, MigrationRules.Ratings));
+
+        var expectedRatingUids = new HashSet<int>(anonymousRatingUids);
+        expectedRatingUids.UnionWith(newestRatingByMemberAndTarget.Values.Select(newest => newest.Uid));
+        var ratingsNotNewest = 0L;
+        await using (var command = new NpgsqlCommand(
+            "SELECT legacy_comment_id FROM rating", context.Target, context.Transaction))
+        await using (var reader = await command.ExecuteReaderAsync(cancellationToken))
+        {
+            while (await reader.ReadAsync(cancellationToken))
+            {
+                if (reader.IsDBNull(0) || !expectedRatingUids.Contains(reader.GetInt32(0)))
+                {
+                    ratingsNotNewest++;
+                }
+            }
+        }
+
+        report.Add(VerificationRow.Compare("rating_not_newest", 0, ratingsNotNewest, MigrationRules.NewestRatings));
+        report.Add(VerificationRow.Info(
+            "rating_collapsed", memberRatings - newestRatingByMemberAndTarget.Count, MigrationRules.CollapsedRatings));
+        report.Add(VerificationRow.Info("rating_self_dropped", selfRatings, MigrationRules.SelfRatings));
 
         var actualVault = await PgScalarAsync(context, "SELECT COUNT(*) FROM archive.legacy_comment", cancellationToken);
-        report.Add(VerificationRow.Compare("vault_legacy_comment", vaultCount, actualVault));
+        report.Add(VerificationRow.Compare("vault_legacy_comment", vaultCount, actualVault, MigrationRules.LegacyCommentVault));
 
         return migratedCommentLegacyIds;
     }
@@ -572,7 +621,8 @@ public sealed class VerifyStep : IEtlStep
     /// <summary>
     /// Recomputes MigrateCommentVotesAsync's dedupe (the earliest vote per comment/voter pair wins)
     /// and its two drop rules (an invalid value, or a comment that never migrated) from the legacy
-    /// votes table, and checks the result against comment_vote.
+    /// votes table, and checks the result against comment_vote. Also checks that no vote is older
+    /// than its comment.
     /// </summary>
     private static async Task AddCommentVoteRowAsync(
         EtlContext context, VerificationReport report, HashSet<int> migratedCommentLegacyIds, CancellationToken cancellationToken)
@@ -612,7 +662,14 @@ public sealed class VerifyStep : IEtlStep
         }
 
         var actual = await PgScalarAsync(context, "SELECT COUNT(*) FROM comment_vote", cancellationToken);
-        report.Add(VerificationRow.Compare("comment_vote", expectedVotes, actual));
+        report.Add(VerificationRow.Compare("comment_vote", expectedVotes, actual, MigrationRules.CommentVotes));
+
+        var votesBeforeComment = await PgScalarAsync(
+            context,
+            "SELECT COUNT(*) FROM comment_vote v JOIN comment c ON c.id = v.comment_id WHERE v.created_at < c.created_at",
+            cancellationToken);
+        report.Add(VerificationRow.Compare(
+            "comment_vote_not_before_comment", 0, votesBeforeComment, MigrationRules.VoteTimes));
     }
 
     // === aggregate consistency (target only) ========================================================
@@ -628,7 +685,7 @@ public sealed class VerifyStep : IEtlStep
             WHERE COALESCE(r.c, 0) <> p.rating_count
             """,
             cancellationToken);
-        report.Add(VerificationRow.Compare("post_rating_count_consistency", 0, ratingCountMismatches));
+        report.Add(VerificationRow.Compare("post_rating_count_consistency", 0, ratingCountMismatches, MigrationRules.Aggregates));
 
         var scoreMismatches = await PgScalarAsync(
             context,
@@ -639,13 +696,13 @@ public sealed class VerifyStep : IEtlStep
             WHERE COALESCE(v.s, 0) <> c.score
             """,
             cancellationToken);
-        report.Add(VerificationRow.Compare("comment_score_consistency", 0, scoreMismatches));
+        report.Add(VerificationRow.Compare("comment_score_consistency", 0, scoreMismatches, MigrationRules.Aggregates));
     }
 
     // === collection and collection_entry (galleries) ================================================
 
     private static async Task AddCollectionRowsAsync(
-        EtlContext context, VerificationReport report, HashSet<int> migratedPostLegacyIds, CancellationToken cancellationToken)
+        EtlContext context, VerificationReport report, Dictionary<int, int> postOwnerByPictureUid, CancellationToken cancellationToken)
     {
         var expectedCollections = await MySqlScalarAsync(
             context,
@@ -656,7 +713,17 @@ public sealed class VerifyStep : IEtlStep
             """,
             cancellationToken);
         var actualCollections = await PgScalarAsync(context, "SELECT COUNT(*) FROM collection", cancellationToken);
-        report.Add(VerificationRow.Compare("collection", expectedCollections, actualCollections));
+        report.Add(VerificationRow.Compare("collection", expectedCollections, actualCollections, MigrationRules.Collections));
+
+        var emptyGalleries = await MySqlScalarAsync(
+            context,
+            """
+            SELECT COUNT(*) FROM user_cichlids_gallery g
+            WHERE g.deleted = 0
+              AND NOT EXISTS (SELECT 1 FROM user_cichlids_gallery_pictures_mm mm WHERE mm.uid_gallery = g.uid)
+            """,
+            cancellationToken);
+        report.Add(VerificationRow.Info("collection_skipped_empty", emptyGalleries, MigrationRules.EmptyGalleries));
 
         var distinctEntries = new HashSet<(int Gallery, int Picture)>();
         await using (var command = new MySqlCommand(
@@ -671,7 +738,7 @@ public sealed class VerifyStep : IEtlStep
             while (await reader.ReadAsync(cancellationToken))
             {
                 var picture = reader.GetInt32(1);
-                if (migratedPostLegacyIds.Contains(picture))
+                if (postOwnerByPictureUid.ContainsKey(picture))
                 {
                     distinctEntries.Add((reader.GetInt32(0), picture));
                 }
@@ -679,7 +746,7 @@ public sealed class VerifyStep : IEtlStep
         }
 
         var actualEntries = await PgScalarAsync(context, "SELECT COUNT(*) FROM collection_entry", cancellationToken);
-        report.Add(VerificationRow.Compare("collection_entry", distinctEntries.Count, actualEntries));
+        report.Add(VerificationRow.Compare("collection_entry", distinctEntries.Count, actualEntries, MigrationRules.CollectionEntries));
     }
 
     // === reference and domain checks (target only) ==================================================
@@ -690,7 +757,7 @@ public sealed class VerifyStep : IEtlStep
             context,
             "SELECT COUNT(*) FROM post p LEFT JOIN post_media pm ON pm.post_id = p.id WHERE pm.id IS NULL",
             cancellationToken);
-        report.Add(VerificationRow.Compare("post_without_media", 0, postsWithoutMedia));
+        report.Add(VerificationRow.Compare("post_without_media", 0, postsWithoutMedia, MigrationRules.PostMedia));
 
         var publishedWithoutCanonicalSlug = await PgScalarAsync(
             context,
@@ -700,7 +767,7 @@ public sealed class VerifyStep : IEtlStep
               AND NOT EXISTS (SELECT 1 FROM slug_alias sa WHERE sa.post_id = p.id AND sa.is_canonical)
             """,
             cancellationToken);
-        report.Add(VerificationRow.Compare("post_published_without_canonical_slug", 0, publishedWithoutCanonicalSlug));
+        report.Add(VerificationRow.Compare("post_published_without_canonical_slug", 0, publishedWithoutCanonicalSlug, MigrationRules.SlugAliases));
 
         var archivedWithMemberAuthor = await PgScalarAsync(
             context,
@@ -710,15 +777,34 @@ public sealed class VerifyStep : IEtlStep
             WHERE p.state = 'archived' AND pr.kind = 'member'
             """,
             cancellationToken);
-        report.Add(VerificationRow.Info("post_archived_author_member", archivedWithMemberAuthor));
+        report.Add(VerificationRow.Info("post_archived_author_member", archivedWithMemberAuthor, MigrationRules.PostStates));
     }
 
     // === shared helpers ==============================================================================
 
-    private static async Task<HashSet<int>> LoadLegacyIdSetAsync(EtlContext context, string table, CancellationToken cancellationToken)
+    /// <summary>
+    /// Reads a legacy query returning a uid and an owner fe_user per row into a map from uid to
+    /// owner.
+    /// </summary>
+    private static async Task<Dictionary<int, int>> LoadLegacyOwnerMapAsync(
+        EtlContext context, string sql, CancellationToken cancellationToken)
     {
-        await using var command = new NpgsqlCommand(
-            $"SELECT legacy_id FROM {table} WHERE legacy_id IS NOT NULL", context.Target, context.Transaction);
+        await using var command = new MySqlCommand(sql, context.Legacy);
+        await using var reader = await command.ExecuteReaderAsync(cancellationToken);
+
+        var result = new Dictionary<int, int>();
+        while (await reader.ReadAsync(cancellationToken))
+        {
+            result[reader.GetInt32(0)] = reader.GetInt32(1);
+        }
+
+        return result;
+    }
+
+    private static async Task<HashSet<int>> LoadLegacyUidSetAsync(
+        EtlContext context, string sql, CancellationToken cancellationToken)
+    {
+        await using var command = new MySqlCommand(sql, context.Legacy);
         await using var reader = await command.ExecuteReaderAsync(cancellationToken);
 
         var result = new HashSet<int>();

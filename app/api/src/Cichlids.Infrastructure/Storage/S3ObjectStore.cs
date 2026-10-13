@@ -24,7 +24,15 @@ public sealed class S3ObjectStore : IObjectStore
 
     public string Bucket => _options.Bucket;
 
-    public async Task PutAsync(string key, Stream content, string contentType, CancellationToken cancellationToken = default)
+    public Task PutAsync(string key, Stream content, string contentType, CancellationToken cancellationToken = default) =>
+        PutAsync(key, content, contentType, new Dictionary<string, string>(), cancellationToken);
+
+    public async Task PutAsync(
+        string key,
+        Stream content,
+        string contentType,
+        IReadOnlyDictionary<string, string> metadata,
+        CancellationToken cancellationToken = default)
     {
         if (content.CanSeek)
         {
@@ -40,7 +48,38 @@ public sealed class S3ObjectStore : IObjectStore
             AutoCloseStream = false,
         };
 
+        foreach (var (name, value) in metadata)
+        {
+            request.Metadata[name] = value;
+        }
+
         await _client.PutObjectAsync(request, cancellationToken).ConfigureAwait(false);
+    }
+
+    public async Task<ObjectHead?> HeadAsync(string key, CancellationToken cancellationToken = default)
+    {
+        var request = new GetObjectMetadataRequest
+        {
+            BucketName = _options.Bucket,
+            Key = key,
+        };
+
+        try
+        {
+            var response = await _client.GetObjectMetadataAsync(request, cancellationToken).ConfigureAwait(false);
+            var metadata = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            foreach (var name in response.Metadata.Keys)
+            {
+                var plainName = name.StartsWith("x-amz-meta-", StringComparison.OrdinalIgnoreCase) ? name["x-amz-meta-".Length..] : name;
+                metadata[plainName] = response.Metadata[name];
+            }
+
+            return new ObjectHead(response.ContentLength, metadata);
+        }
+        catch (AmazonS3Exception ex) when (ex.StatusCode == HttpStatusCode.NotFound)
+        {
+            return null;
+        }
     }
 
     public async Task<Stream?> GetAsync(string key, CancellationToken cancellationToken = default)
@@ -51,18 +90,25 @@ public sealed class S3ObjectStore : IObjectStore
             Key = key,
         };
 
+        GetObjectResponse response;
         try
         {
-            using var response = await _client.GetObjectAsync(request, cancellationToken).ConfigureAwait(false);
-            var buffer = new MemoryStream();
-            await response.ResponseStream.CopyToAsync(buffer, cancellationToken).ConfigureAwait(false);
-            buffer.Position = 0;
-            return buffer;
+            response = await _client.GetObjectAsync(request, cancellationToken).ConfigureAwait(false);
         }
         catch (AmazonS3Exception ex) when (ex.StatusCode == HttpStatusCode.NotFound)
         {
             return null;
         }
+
+        if (response.ContentLength > _options.MaxDownloadBytes)
+        {
+            response.Dispose();
+            throw new ObjectTooLargeException(key, _options.MaxDownloadBytes);
+        }
+
+        // The declared length passed the check; the capped stream also bounds what the body
+        // actually delivers.
+        return new CappedReadStream(response.ResponseStream, key, _options.MaxDownloadBytes, response);
     }
 
     public async Task<bool> ExistsAsync(string key, CancellationToken cancellationToken = default)
@@ -165,28 +211,15 @@ public sealed class S3ObjectStore : IObjectStore
     }
 
     /// <summary>
-    /// Applies a public-read bucket policy (anonymous <c>s3:GetObject</c> on every key) so served
-    /// media reaches a browser directly instead of through a signed or authenticated request.
-    /// Every media key is a content-addressed original or a derived variant, neither of which is
-    /// sensitive, so a bucket-wide allow is the whole policy. Returns false instead of throwing
-    /// when the provider does not implement <c>PutBucketPolicy</c> at all, so a caller can log a
-    /// warning and fall back to provider-specific configuration rather than fail the run.
+    /// Applies a bucket policy that grants anonymous s3:GetObject on every key under the given
+    /// prefixes, so served media reaches a browser directly through its public URL. Keys outside
+    /// these prefixes answer 403 to a request without credentials. Returns false when the provider
+    /// does not implement PutBucketPolicy, so a caller can log a warning and configure access in a
+    /// provider-specific way.
     /// </summary>
-    public async Task<bool> EnsurePublicReadPolicyAsync(CancellationToken cancellationToken = default)
+    public async Task<bool> EnsurePublicReadPolicyAsync(IReadOnlyCollection<string> publicPrefixes, CancellationToken cancellationToken = default)
     {
-        var policy = $$"""
-            {
-              "Version": "2012-10-17",
-              "Statement": [
-                {
-                  "Effect": "Allow",
-                  "Principal": "*",
-                  "Action": ["s3:GetObject"],
-                  "Resource": ["arn:aws:s3:::{{_options.Bucket}}/*"]
-                }
-              ]
-            }
-            """;
+        var policy = BuildPublicReadPolicy(_options.Bucket, publicPrefixes);
 
         try
         {
@@ -199,5 +232,27 @@ public sealed class S3ObjectStore : IObjectStore
         {
             return false;
         }
+    }
+
+    /// <summary>
+    /// Builds the bucket policy document that allows anonymous s3:GetObject on the keys under the
+    /// given prefixes of the bucket.
+    /// </summary>
+    public static string BuildPublicReadPolicy(string bucket, IReadOnlyCollection<string> publicPrefixes)
+    {
+        var resources = string.Join(", ", publicPrefixes.Select(prefix => $"\"arn:aws:s3:::{bucket}/{prefix}*\""));
+        return $$"""
+            {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Principal": "*",
+                  "Action": ["s3:GetObject"],
+                  "Resource": [{{resources}}]
+                }
+              ]
+            }
+            """;
     }
 }

@@ -17,6 +17,7 @@ using Cichlids.Infrastructure.Persistence;
 using Cichlids.Infrastructure.Slugs;
 using Cichlids.Infrastructure.Storage;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.IdentityModel.Tokens;
 using Scalar.AspNetCore;
 
@@ -46,18 +47,20 @@ builder.Services.AddS3ObjectStore(builder.Configuration);
 builder.Services.AddOutboxDispatcher(builder.Configuration);
 builder.Services.AddHostedService<OutboxDispatcherHostedService>();
 
-var authenticationSection = builder.Configuration.GetSection("Authentication");
+// Resolved before the authentication handler is registered so a deployment outside Development
+// without an HTTPS authority or an audience refuses to start.
+var authenticationSettings = AuthenticationSettings.Resolve(builder.Configuration, builder.Environment.EnvironmentName);
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
-        options.Authority = authenticationSection["Authority"];
-        options.RequireHttpsMetadata = authenticationSection.GetValue("RequireHttpsMetadata", true);
+        options.Authority = authenticationSettings.Authority;
+        options.RequireHttpsMetadata = authenticationSettings.RequireHttpsMetadata;
         // Claims keep their OIDC names (sub, preferred_username) instead of the legacy SOAP-era
         // claim type URIs the handler would map them to by default.
         options.MapInboundClaims = false;
         options.TokenValidationParameters = new TokenValidationParameters
         {
-            ValidAudience = authenticationSection["Audience"],
+            ValidAudience = authenticationSettings.Audience,
             NameClaimType = "preferred_username",
         };
         options.Events = new JwtBearerEvents { OnTokenValidated = KeycloakRealmRoles.PromoteToRoleClaims };
@@ -68,6 +71,9 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy(AuthorizationPolicies.Moderator, policy => policy.RequireRole("moderator", "admin"));
     options.AddPolicy(AuthorizationPolicies.Admin, policy => policy.RequireRole("admin"));
 });
+
+builder.Services.AddProblemDetails();
+builder.Services.AddExceptionHandler<NonMemberLoginExceptionHandler>();
 
 builder.Services.AddScoped<SpeciesQueryService>();
 builder.Services.AddScoped<PicturesQueryService>();
@@ -92,6 +98,14 @@ builder.Services.AddSingleton(serviceProvider =>
     new Lazy<GeneratedNames>(serviceProvider.GetRequiredService<GeneratedNames>));
 
 var app = builder.Build();
+
+// Request errors raised by the host (oversized or malformed bodies) keep their own status code.
+app.UseExceptionHandler(new ExceptionHandlerOptions
+{
+    StatusCodeSelector = exception => exception is BadHttpRequestException badRequest
+        ? badRequest.StatusCode
+        : StatusCodes.Status500InternalServerError,
+});
 
 app.MapOpenApi();
 app.MapScalarApiReference();
@@ -119,6 +133,7 @@ app.MapCommunityEndpoints();
 app.MapLegacyRedirectsEndpoints();
 app.MapUploadsEndpoints();
 app.MapWebhookAdminEndpoints();
+app.MapOutboxAdminEndpoints();
 
 app.Run();
 

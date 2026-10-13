@@ -78,7 +78,7 @@ INSERT INTO tx_realurl_uniqalias (uid, tablename, value_alias, value_id) VALUES
     (99101, 'user_cichlids_pictures', 'verify-pic-one', 9101);
 
 -- uid 9301: text plus a star rating, split into both a comment and a rating row.
--- uid 9302: rating-only (no text).
+-- uid 9302: rating-only (no text) by alice on her own picture 9101 -- a self-rating, dropped.
 -- uid 9303: tank-side comment (no rating).
 -- uid 9304: targets picture 9999, which does not exist in the legacy source at all -- vaulted
 --   with reason target_missing.
@@ -87,6 +87,9 @@ INSERT INTO tx_realurl_uniqalias (uid, tablename, value_alias, value_id) VALUES
 -- uid 9307: neither text nor rating -- content-empty, skipped entirely.
 -- uid 9308: soft-deleted at the top level -- never reaches target resolution.
 -- uid 9309: author legacy id 9999 has no fe_users row at all -- placeholder profile path.
+-- uid 9310: an older rating of bob (9011) on picture 9101 -- collapsed into the newer uid 9301.
+-- uid 9311: bob rates his own tank 9201 -- a self-rating, dropped.
+-- uid 9312: an anonymous rating on the anonymous tank 9202 -- migrates unchanged.
 INSERT INTO user_cichlids_comments
     (uid, type, item, rating, poster, note, fe_user, tstamp, crdate, deleted, hidden,
      delete_tstamp, delete_reason, delete_user, score)
@@ -99,7 +102,10 @@ VALUES
     (9306, 9, 9101, 0, NULL, 'unknown type', 9010, 1700000550, 0, 0, 0, 0, NULL, NULL, 0),
     (9307, 1, 9101, 0, NULL, NULL, 9010, 1700000560, 0, 0, 0, 0, NULL, NULL, 0),
     (9308, 1, 9101, 0, NULL, 'ignored deleted', 9010, 1700000570, 0, 1, 0, 0, NULL, NULL, 0),
-    (9309, 1, 9101, 0, NULL, 'from ghost user', 9999, 1700000580, 0, 0, 0, 0, NULL, NULL, 0);
+    (9309, 1, 9101, 0, NULL, 'from ghost user', 9999, 1700000580, 0, 0, 0, 0, NULL, NULL, 0),
+    (9310, 1, 9101, 3, NULL, NULL, 9011, 1700000490, 0, 0, 0, 0, NULL, NULL, 0),
+    (9311, 2, 9201, 4, NULL, NULL, 9011, 1700000590, 0, 0, 0, 0, NULL, NULL, 0),
+    (9312, 2, 9202, 5, NULL, NULL, 0, 1700000600, 0, 0, 0, 0, NULL, NULL, 0);
 
 INSERT INTO user_cichlids_comments_rated (comment_uid, fe_user, rated, tstamp) VALUES
     -- Earliest of the two 9301/9010 rows wins (+1), the later one is a counted duplicate.
@@ -108,10 +114,15 @@ INSERT INTO user_cichlids_comments_rated (comment_uid, fe_user, rated, tstamp) V
     -- An invalid rated value from a second voter: dropped.
     (9301, 9011, 2, '2024-01-01 11:00:00'),
     -- A vote on a rating-only row: it never became a comment, so this never migrates either.
-    (9302, 9010, 1, '2024-01-01 12:00:00');
+    (9302, 9010, 1, '2024-01-01 12:00:00'),
+    -- New York wall-clock time eight minutes after comment 9303 (2023-11-14 17:22 EST). Read as
+    -- UTC it would precede the comment by almost five hours.
+    (9303, 9010, 1, '2023-11-14 17:30:00');
 
+-- Gallery 9502 never got a picture, so it is skipped as an empty gallery.
 INSERT INTO user_cichlids_gallery (uid, tstamp, deleted, hidden, title, fe_user) VALUES
-    (9501, 1700000400, 0, 0, 'Verify Gallery', 9010);
+    (9501, 1700000400, 0, 0, 'Verify Gallery', 9010),
+    (9502, 1700000410, 0, 0, 'Verify Empty Gallery', 9010);
 
 INSERT INTO user_cichlids_gallery_pictures_mm (uid_gallery, uid_picture, sorting) VALUES
     (9501, 9101, 0),
