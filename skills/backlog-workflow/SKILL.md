@@ -128,5 +128,7 @@ backlog board                        # Terminal-Kanban
 
 Die Web-UI laeuft als Devcontainer-Service auf `http://localhost:6480` (vom Host erreichbar).
 Eine vollstaendige Befehlsreferenz steht in [`references/backlog-cli.md`](references/backlog-cli.md).
+Abweichend von der Referenz setzen Agenten keinen Assignee (`-a`); Zuweisungen vergibt nur der
+Projektinhaber.
 Zusaetzlich ist die Workflow-Referenz ueber die MCP-Resource `backlog://docs/task-workflow`
 bzw. das MCP-Tool `get_backlog_instructions` verfuegbar.

@@ -86,8 +86,9 @@ Historie konsistent bleiben.
 3. **Task anlegen, wenn die Arbeit Planung oder eine Entscheidung erfordert** (untersuchen,
    Vorgehen wählen, Struktur entwerfen). Für triviale mechanische Edits, Fragen und reine
    Exploration keinen Task anlegen.
-4. **Self-assign & pflegen:** Task sich selbst zuweisen, auf `In Progress` setzen und
-   Implementierungsplan, Notizen und Acceptance-Criteria-Häkchen über `task_edit` aktuell halten.
+4. **Pflegen:** Task auf `In Progress` setzen und Implementierungsplan, Notizen und
+   Acceptance-Criteria-Häkchen über `task_edit` aktuell halten. Agenten setzen keinen Assignee;
+   Zuweisungen vergibt nur der Projektinhaber.
 5. **Gegen die Definition of Done abschließen:** Ein Task ist erst *Done*, wenn seine
    DoD-Checkliste erfüllt ist.
 
