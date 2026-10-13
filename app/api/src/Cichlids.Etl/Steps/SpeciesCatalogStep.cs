@@ -8,9 +8,9 @@ using MySqlConnector;
 namespace Cichlids.Etl.Steps;
 
 /// <summary>
-/// Migrates the legacy species catalog (<c>user_cichlids_species</c> and its lookup and link
-/// tables) into <c>species</c>, <c>species_common_name</c> and <c>species_link</c>. The parent
-/// row upserts on <c>legacy_id</c>; the child rows are replaced under the parent on every run.
+/// Migrates the legacy species catalog (user_cichlids_species and its lookup and link
+/// tables) into species, species_common_name and species_link. The parent
+/// row upserts on legacy_id; the child rows are replaced under the parent on every run.
 /// </summary>
 public sealed class SpeciesCatalogStep : IEtlStep
 {

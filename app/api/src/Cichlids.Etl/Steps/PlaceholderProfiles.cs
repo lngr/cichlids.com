@@ -10,8 +10,8 @@ namespace Cichlids.Etl.Steps;
 /// <summary>
 /// Resolves the owning profile for content whose legacy owner has no migrated member profile:
 /// either a specific legacy user with no profile row (their account was hard-deleted or excluded
-/// by <see cref="ProfileMigrationStep"/>), or anonymous legacy content with no owner at all
-/// (<c>fe_user = 0</c>). Both attribution paths are shared by every step that migrates
+/// by ProfileMigrationStep), or anonymous legacy content with no owner at all
+/// (fe_user = 0). Both attribution paths are shared by every step that migrates
 /// user-owned content, so a tank and a picture from the same removed member land on the same
 /// placeholder profile.
 /// </summary>
@@ -21,7 +21,7 @@ public static class PlaceholderProfiles
 
     /// <summary>
     /// Finds or creates the archived placeholder profile for one specific legacy user id. Reuses
-    /// the same <c>legacy_id</c> unique index <see cref="ProfileMigrationStep"/> upserts real
+    /// the same legacy_id unique index ProfileMigrationStep upserts real
     /// member profiles on, so this is idempotent across runs and can never collide with a real
     /// profile for the same legacy user (a legacy id has at most one profile row of either kind).
     /// </summary>
@@ -44,7 +44,7 @@ public static class PlaceholderProfiles
 
     /// <summary>
     /// Finds or creates the single shared profile that owns anonymous legacy content
-    /// (<c>fe_user = 0</c>, which has no legacy user id to key a placeholder on). Idempotent over
+    /// (fe_user = 0, which has no legacy user id to key a placeholder on). Idempotent over
     /// the fixed username instead of a legacy id, since this profile has none.
     /// </summary>
     public static async Task<long> EnsureCommunityArchiveProfileAsync(

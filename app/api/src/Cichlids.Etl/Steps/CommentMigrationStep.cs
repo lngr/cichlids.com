@@ -343,7 +343,7 @@ public sealed class CommentMigrationStep : IEtlStep
 
     /// <summary>
     /// Resolves a comment row's target post or tank. A resolved target returns exactly one of
-    /// <c>PostId</c>/<c>TankId</c> with a null <c>VaultReason</c>; an unresolvable target (the
+    /// PostId/TankId with a null VaultReason; an unresolvable target (the
     /// legacy picture/tank was deleted or never migrated, the item id does not exist at all, or
     /// the legacy type is neither 1 nor 2) returns a reason instead, for the caller to vault the
     /// row rather than migrate it.
@@ -567,12 +567,12 @@ public sealed class CommentMigrationStep : IEtlStep
     }
 
     /// <summary>
-    /// Recomputes <c>post.rating_average</c>/<c>rating_count</c> and <c>comment.score</c> from the
-    /// <c>rating</c> and <c>comment_vote</c> base tables (ADR-0020: derived aggregates are
+    /// Recomputes post.rating_average/rating_count and comment.score from the
+    /// rating and comment_vote base tables (ADR-0020: derived aggregates are
     /// recomputed, never authored), unconditionally over the whole table rather than only the rows
     /// this run touched, so the aggregates stay correct however they drifted. Reports, purely as
     /// information, how many posts' newly computed average differs from the legacy denormalized
-    /// value <see cref="PictureMigrationStep"/> seeded from <c>user_cichlids_pictures.rating</c> by
+    /// value PictureMigrationStep seeded from user_cichlids_pictures.rating by
     /// more than 0.05.
     /// </summary>
     private static async Task RecomputeAggregatesAsync(EtlContext context, StepStatistics stats, CancellationToken cancellationToken)

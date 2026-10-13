@@ -8,9 +8,9 @@ using MySqlConnector;
 namespace Cichlids.Etl.Steps;
 
 /// <summary>
-/// Migrates legacy aquarium setups (<c>user_cichlids_tanks</c>) into <c>tank</c> and their
-/// stocking lists into <c>inhabitant</c>. Tank media (<c>tank_media</c>, <c>tank.main_media_id</c>)
-/// is attached later by <see cref="PictureMigrationStep"/>, once the pictures the legacy image
+/// Migrates legacy aquarium setups (user_cichlids_tanks) into tank and their
+/// stocking lists into inhabitant. Tank media (tank_media, tank.main_media_id)
+/// is attached later by PictureMigrationStep, once the pictures the legacy image
 /// columns reference have their own migrated media items to point at.
 /// </summary>
 public sealed class TankMigrationStep : IEtlStep
@@ -197,8 +197,8 @@ public sealed class TankMigrationStep : IEtlStep
     }
 
     /// <summary>
-    /// Pairs the comma-separated species uid list (<c>fish</c>) with the newline-separated count
-    /// list (<c>fish_count</c>) by position. The uid list is dirty (leading commas, literal "0"
+    /// Pairs the comma-separated species uid list (fish) with the newline-separated count
+    /// list (fish_count) by position. The uid list is dirty (leading commas, literal "0"
     /// placeholders from removed rows), so a position with no resolvable species is only kept
     /// when it still carries a count; otherwise it is dropped rather than producing an empty
     /// inhabitant row.

@@ -14,8 +14,8 @@ public static class PgBulkInsert
 
     /// <summary>
     /// Inserts rows in chunks, skipping any row whose conflict-column values already exist, and
-    /// returns the total number of rows actually inserted across all chunks. <paramref
-    /// name="columnCasts"/> optionally names an explicit target type (for example <c>jsonb</c>)
+    /// returns the total number of rows actually inserted across all chunks. columnCasts
+    /// optionally names an explicit target type (for example jsonb)
     /// for a column whose value would otherwise be sent as a type PostgreSQL has no implicit
     /// conversion from, keyed by column name.
     /// </summary>

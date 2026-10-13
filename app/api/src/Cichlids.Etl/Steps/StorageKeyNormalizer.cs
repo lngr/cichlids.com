@@ -5,9 +5,9 @@ using System.Text.RegularExpressions;
 namespace Cichlids.Etl.Steps;
 
 /// <summary>
-/// Turns a legacy picture path (<c>user_cichlids_pictures.image</c>, e.g.
-/// <c>user_pics/5229/01_HPIM3766.JPG</c>) into a deterministic object storage key under
-/// <c>originals/</c>. The legacy path is untrusted free text accumulated over a decade of
+/// Turns a legacy picture path (user_cichlids_pictures.image, e.g.
+/// user_pics/5229/01_HPIM3766.JPG) into a deterministic object storage key under
+/// originals/. The legacy path is untrusted free text accumulated over a decade of
 /// uploads and admin tooling: it can carry percent-encoded and doubly percent-encoded sequences,
 /// non-ASCII characters, and characters no storage provider key should contain.
 /// </summary>
@@ -24,8 +24,8 @@ public static partial class StorageKeyNormalizer
 
     /// <summary>
     /// Builds the storage key for a legacy path. Paths with no directory component (a bare
-    /// filename, no <c>/</c> anywhere) are filed under a dedicated unresolved bucket instead of
-    /// directly under <c>originals/</c>, since their original upload location cannot be recovered.
+    /// filename, no / anywhere) are filed under a dedicated unresolved bucket instead of
+    /// directly under originals/, since their original upload location cannot be recovered.
     /// </summary>
     public static string ToStorageKey(string legacyImagePath)
     {
@@ -37,7 +37,7 @@ public static partial class StorageKeyNormalizer
 
     /// <summary>
     /// Applies the same percent-decoding, ASCII folding and disallowed-character substitution
-    /// <see cref="ToStorageKey"/> uses, without its "originals/" placement decision, for callers
+    /// ToStorageKey uses, without its "originals/" placement decision, for callers
     /// that need a safe storage key segment under a different prefix (for example forum
     /// attachments).
     /// </summary>
@@ -45,7 +45,7 @@ public static partial class StorageKeyNormalizer
 
     /// <summary>
     /// The basename (last path segment) of the raw, un-normalized legacy path, used as
-    /// <c>media_item.original_filename</c>.
+    /// media_item.original_filename.
     /// </summary>
     public static string GetOriginalFilename(string legacyImagePath)
     {

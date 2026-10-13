@@ -18,7 +18,7 @@ public static class PgUpsert
 
     /// <summary>
     /// Upserts one row and reports whether it was inserted or updated via the
-    /// <c>xmax = 0</c> trick (a freshly inserted row has no prior transaction id in <c>xmax</c>).
+    /// xmax = 0 trick (a freshly inserted row has no prior transaction id in xmax).
     /// </summary>
     public static async Task<(long Id, bool Inserted)> UpsertAsync(
         NpgsqlConnection connection,

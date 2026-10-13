@@ -10,11 +10,11 @@ using Npgsql;
 namespace Cichlids.Etl.Steps;
 
 /// <summary>
-/// Migrates legacy pictures (<c>user_cichlids_pictures</c>) into <c>media_item</c> and, for the
+/// Migrates legacy pictures (user_cichlids_pictures) into media_item and, for the
 /// legacy "pid" values that represent a gallery listing rather than a technical/decoration
-/// upload, into a matching <c>post</c> plus its <c>post_media</c> and <c>slug_alias</c> rows.
-/// Also backfills <c>profile.profile_image_media_id</c>/<c>avatar_media_id</c> and
-/// <c>tank.main_media_id</c>/<c>tank_media</c> once every picture has its own media item, since
+/// upload, into a matching post plus its post_media and slug_alias rows.
+/// Also backfills profile.profile_image_media_id/avatar_media_id and
+/// tank.main_media_id/tank_media once every picture has its own media item, since
 /// those legacy image references only resolve after this step has run.
 /// </summary>
 public sealed class PictureMigrationStep : IEtlStep
@@ -318,7 +318,7 @@ public sealed class PictureMigrationStep : IEtlStep
     /// Resolves the deterministic storage key for one picture, resolving a collision against a
     /// key a DIFFERENT legacy id already owns by appending this row's legacy id before the file
     /// extension. Stable across runs: the same legacy id always resolves the same way, because
-    /// <paramref name="storageKeyOwners"/> is seeded from the currently persisted state and the
+    /// storageKeyOwners is seeded from the currently persisted state and the
     /// same collisions recur in the same order against the same data.
     /// </summary>
     private static string ResolveStorageKey(
@@ -389,8 +389,8 @@ public sealed class PictureMigrationStep : IEtlStep
     }
 
     /// <summary>
-    /// Backfills one profile media reference column (<c>profile_image_media_id</c> or
-    /// <c>avatar_media_id</c>) from the matching legacy <c>fe_users</c> column, for existing
+    /// Backfills one profile media reference column (profile_image_media_id or
+    /// avatar_media_id) from the matching legacy fe_users column, for existing
     /// profiles and migrated media items only: this never creates a placeholder profile, since a
     /// legacy user with no migrated profile at all has nothing to attach an image to.
     /// </summary>
@@ -445,7 +445,7 @@ public sealed class PictureMigrationStep : IEtlStep
     }
 
     /// <summary>
-    /// Attaches <c>tank.main_media_id</c> and replaces each tank's <c>tank_media</c> rows from
+    /// Attaches tank.main_media_id and replaces each tank's tank_media rows from
     /// the legacy image/tank_images/deco_images/tec_images columns, now that every migrated
     /// picture has a media item to point at. All writes run as set-based statements over the
     /// whole tank population (one main-image update pair, one delete, chunked inserts): a round

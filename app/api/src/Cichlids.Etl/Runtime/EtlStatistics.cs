@@ -1,7 +1,7 @@
 namespace Cichlids.Etl.Runtime;
 
 /// <summary>
-/// Collects the <see cref="StepStatistics"/> of every step executed in one ETL run, keyed by
+/// Collects the StepStatistics of every step executed in one ETL run, keyed by
 /// step name, so a run touching several steps reports each of them independently.
 /// </summary>
 public sealed class EtlStatistics

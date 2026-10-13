@@ -13,7 +13,7 @@ using Npgsql;
 namespace Cichlids.Etl.Steps;
 
 /// <summary>
-/// Migrates the legacy discussion forum (Phorum, database <c>cichlids_phorum5</c> on the same
+/// Migrates the legacy discussion forum (Phorum, database cichlids_phorum5 on the same
 /// MySQL server as the TYPO3 legacy database) into the platform's own discussion archive entities
 /// (ADR-0021): visible messages only, threads rebuilt from each root message, authors matched to
 /// migrated profiles by e-mail or attributed to a forum-specific placeholder profile, and message
@@ -329,9 +329,9 @@ public sealed class ForumMigrationStep : IEtlStep
 
     /// <summary>
     /// Finds or creates the archived placeholder profile for one specific phorum user id.
-    /// Idempotent over <c>username</c> rather than <c>legacy_id</c>: phorum user ids and TYPO3
-    /// <c>fe_users</c> ids are separate numbering spaces sharing no meaning, so keying this on
-    /// <c>legacy_id</c> the way <see cref="PlaceholderProfiles"/> does for TYPO3 users could
+    /// Idempotent over username rather than legacy_id: phorum user ids and TYPO3
+    /// fe_users ids are separate numbering spaces sharing no meaning, so keying this on
+    /// legacy_id the way PlaceholderProfiles does for TYPO3 users could
     /// collide two unrelated legacy accounts onto the same profile row.
     /// </summary>
     private static async Task<long> EnsureForumPlaceholderProfileAsync(

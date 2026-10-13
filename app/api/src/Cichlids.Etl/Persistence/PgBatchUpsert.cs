@@ -24,11 +24,11 @@ public static class PgBatchUpsert
 
     /// <summary>
     /// Upserts a batch of rows and reports each one's id and whether it was inserted or updated,
-    /// keyed by the value of <paramref name="conflictColumn"/> in each row rather than by
-    /// position: a multi-row <c>INSERT ... RETURNING</c> is not guaranteed by the SQL standard to
-    /// preserve the input order of its <c>VALUES</c> list, so the conflict column (expected to be
+    /// keyed by the value of conflictColumn in each row rather than by
+    /// position: a multi-row INSERT ... RETURNING is not guaranteed by the SQL standard to
+    /// preserve the input order of its VALUES list, so the conflict column (expected to be
     /// the legacy id every row in the batch upserts on, hence unique within the batch) is
-    /// round-tripped through <c>RETURNING</c> instead and used to match results back to rows.
+    /// round-tripped through RETURNING instead and used to match results back to rows.
     /// </summary>
     public static async Task<Dictionary<int, (long Id, bool Inserted)>> UpsertBatchAsync(
         NpgsqlConnection connection,

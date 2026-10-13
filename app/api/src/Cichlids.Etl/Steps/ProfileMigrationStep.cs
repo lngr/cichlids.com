@@ -12,8 +12,8 @@ using Npgsql;
 namespace Cichlids.Etl.Steps;
 
 /// <summary>
-/// Migrates legacy members with actual content (pictures, tanks or comments) into <c>profile</c>
-/// and their login identities into <c>profile_identity</c>. Members without content stay in the
+/// Migrates legacy members with actual content (pictures, tanks or comments) into profile
+/// and their login identities into profile_identity. Members without content stay in the
 /// legacy database only; they never had anything for the new application to show. The public
 /// handle and the display name never contain an email address: a member whose legacy username is
 /// empty or holds an address gets a generated handle, and the display name falls back past any
