@@ -1550,3 +1550,135 @@ groups:
       url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Champsochromis"
       accessed: '2026-10-13'
       note: Verifies the second member name only; reports no cross.
+  - id: "herichthys-carpintis-cyanoguttatus"
+    description: "Herichthys carpintis and H. cyanoguttatus have a reported wild hybrid zone in the
+      Soto la Marina drainage and aquarium interbreeding warnings."
+    basis: "documented"
+    userNote: "Lorenz and O'Connell (2008) report a wild hybrid zone of these two species in the Rio
+      Josefina of Mexico's Soto la Marina drainage, citing Miller (2005), and hobby breeding articles
+      also report interbreeding. The wild evidence is a secondary report without genetic parentage
+      testing, so the frequency of crossing in aquaria remains uncertain."
+    members:
+      - "Herichthys carpintis"
+      - "Herichthys cyanoguttatus"
+    sources:
+      - kind: "literature"
+        title: "Lorenz, O. T. and O'Connell, M. T. (2008). Growth of Non-Native Rio Grande Cichlids at
+          Different Salinities and in the Presence of Native Bluegill. Journal of Freshwater Ecology."
+        url: "https://doi.org/10.1080/02705060.2008.9664241"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Cepeda-Corona et al. (2020). Genetic identification and phylogenetic analysis of cichlids
+          from the state of Tamaulipas by mitochondrial Cytochrome B gene sequencing. Ecosistemas y
+          Recursos Agropecuarios 7(3), e2512."
+        url: "https://doi.org/10.19136/era.a7n3.2512"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Borstein (2006): Herichthys carpintis breeding and husbandry report"
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/central-american-cichlids/130-herichthy\
+          s-carpintis.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "AKVARISTA.cz: Herichthys carpintis care and breeding profile"
+        url: "https://www.akvarista.cz/web/atlas/detail/?id=106"
+        accessed: "2026-10-13"
+  - id: "herichthys-carpintis-labridens"
+    description: "Herichthys carpintis and H. labridens have reported wild hybrids after carpintis was
+      introduced into the Media Luna system."
+    basis: "documented"
+    userNote: "In an AMAZONAS interview in 2014, collector Don Danko reported introduced carpintis
+      hybridizing with endemic labridens at Media Luna in Mexico; an NVC account by Alex Becker also
+      identifies a photographed wild hybrid. These specialist field reports document a named wild
+      cross, although they provide no genetic parentage test."
+    members:
+      - "Herichthys carpintis"
+      - "Herichthys labridens"
+    sources:
+      - kind: "literature"
+        title: "OLeary, R. (2014). Fishroom Tour: Don Danko. AMAZONAS, March/April 2014 excerpt."
+        url: "https://www.amazonasmagazine.com/2014/01/28/fishroom-tour-don-danko/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Nederlandse Vereniging van Cichlidenliefhebbers: Herichthys labridens species article"
+        url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/herichthys-labridens-pellegrin-1903"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Beerlink: Herichthys carpintis, Pearlscale Cichlid"
+        url: "https://aquainfo.nl/en/article/herichthys-carpintis-pearlscale-cichlid/"
+        accessed: "2026-10-13"
+  - id: "herichthys-carpintis-pame"
+    description: "Herichthys carpintis and H. pame have a tentative mitochondrial COI introgression
+      signal from wild samples with limited species resolution."
+    basis: "presumed"
+    userNote: "Perez-Miranda and colleagues (2018) interpret shared mitochondrial COI sequences from
+      wild Mexican fish as introgression involving these two species. The same study finds COI poor at
+      separating species and calls for denser sampling, so this is a weak historical signal with no
+      confirmed contemporary cross."
+    members:
+      - "Herichthys carpintis"
+      - "Herichthys pame"
+    sources:
+      - kind: "literature"
+        title: "Perez-Miranda et al. (2018): Phylogeny and species diversity of the genus Herichthys"
+        url: "https://doi.org/10.1111/jzs.12197"
+        accessed: "2026-10-13"
+  - id: "herichthys-carpintis-pantostictus"
+    description: "Herichthys carpintis and H. pantostictus show genetic evidence of ancient
+      introgression in wild Santa Maria River populations."
+    basis: "documented"
+    userNote: "Mejia and colleagues (2025) found wild Santa Maria River fish with pantostictus nuclear
+      ancestry and carpintis mitochondrial ancestry, interpreted as introgression about 1.2 to 1.3
+      million years ago. This documents inferred mixing in the wild from genetic data rather than an
+      observed spawning, and current aquarium crossing risk has not been measured."
+    members:
+      - "Herichthys carpintis"
+      - "Herichthys pantostictus"
+    sources:
+      - kind: "literature"
+        title: "Mejia, O., Perez-Miranda, F. and Bernal-Portillo, A. (2025). Genetic and morphological
+          analysis of Herichthys pantostictus (Cichliformes: Cichlidae) populations that showed
+          mitochondrial DNA introgression. Neotropical Ichthyology 23(3), e250042."
+        url: "https://doi.org/10.1590/1982-0224-2025-0042"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Perez-Miranda et al. (2018): Phylogeny and species diversity of the genus Herichthys"
+        url: "https://doi.org/10.1111/jzs.12197"
+        accessed: "2026-10-13"
+  - id: "herichthys-carpintis-tamasopoensis"
+    description: "Herichthys carpintis and H. tamasopoensis are close relatives with mitochondrial
+      discordance interpreted as possible introgression."
+    basis: "presumed"
+    userNote: "Perez-Miranda and colleagues (2018) interpret mitochondrial discordance between these
+      close Mexican relatives as introgression, with Cepeda-Corona and colleagues (2020) discussing
+      the same possible mixing. No observed free-choice cross is described and denser genetic sampling
+      is needed, so the risk remains presumed."
+    members:
+      - "Herichthys carpintis"
+      - "Herichthys tamasopoensis"
+    sources:
+      - kind: "literature"
+        title: "Perez-Miranda et al. (2018): Phylogeny and species diversity of the genus Herichthys"
+        url: "https://doi.org/10.1111/jzs.12197"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Cepeda-Corona et al. (2020). Genetic identification and phylogenetic analysis of cichlids
+          from the state of Tamaulipas by mitochondrial Cytochrome B gene sequencing. Ecosistemas y
+          Recursos Agropecuarios 7(3), e2512."
+        url: "https://doi.org/10.19136/era.a7n3.2512"
+        accessed: "2026-10-13"
+  - id: "herichthys-carpintis-tepehua"
+    description: "Herichthys carpintis and H. tepehua show nuclear-marker sharing interpreted as
+      possible historical hybridization in a limited wild-sample analysis."
+    basis: "presumed"
+    userNote: "Perez-Miranda and colleagues (2018) found nuclear-marker sharing in wild samples and
+      suggested historical hybridization between these two species. Their limited specimen sampling
+      leaves the extent and interpretation unresolved, and no observed contemporary cross is
+      reported."
+    members:
+      - "Herichthys carpintis"
+      - "Herichthys tepehua"
+    sources:
+      - kind: "literature"
+        title: "Perez-Miranda et al. (2018): Phylogeny and species diversity of the genus Herichthys"
+        url: "https://doi.org/10.1111/jzs.12197"
+        accessed: "2026-10-13"
