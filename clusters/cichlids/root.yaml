@@ -1,0 +1,21 @@
+# Story: task-2.4
+# Root Application of the cichlids cluster. Argo CD reconciles clusters/cichlids/apps from Git;
+# each application added there is reconciled from its own path (app-of-apps, ADR-0010).
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: root
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/lngr/cichlids.com.git
+    targetRevision: main
+    path: clusters/cichlids/apps
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: false
