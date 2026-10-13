@@ -1,0 +1,3927 @@
+schemaVersion: 1
+id: uaru-amphiacanthoides
+legacyIds:
+- 795
+status: described
+taxonomy:
+  validName: Uaru amphiacanthoides
+  genus: Uaru
+  species: amphiacanthoides
+  author: "Heckel, 1840"
+  source:
+    accessed: '2026-10-13'
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes: species of Uaru, updated 21 September 2026"
+    url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Uaru"
+  synonyms:
+  - name: Pomotis fasciatus
+    note: Junior synonym confirmed by the Catalog of Fishes.
+  - name: Uaru obscurum
+    note: Junior synonym confirmed by the Catalog of Fishes.
+  - name: Acara (Heros) imperialis
+    note: Junior synonym confirmed by the Catalog of Fishes.
+  legacyNames:
+  - Uaru amphiacanthoides
+  note: "The Catalog of Fishes recognizes Uaru amphiacanthoides Heckel, 1840 as valid and the three listed historical\
+    \ names as synonyms. Uaru fernandezyepezi Stawikowski, 1989 is separately valid in the Orinoco basin, including\
+    \ the Rio Atabapo; it is not a variant or synonym of this Amazonian species. The older Stigliano husbandry article\
+    \ uses imperialis as a species name, but that taxonomy is superseded by the Catalog."
+names:
+  trade:
+    en:
+    - Uaru
+    - Triangle cichlid
+    - Waroo
+    de:
+    - Keilfleckbuntbarsch
+    es:
+    - Uaru
+    pt-BR:
+    - Uaru
+    - Acará-fuso
+    - Bararuá
+variants: []
+features:
+  origin:
+    value:
+      continent: South America
+      region: Amazon-Solimoes basin and middle to lower Rio Negro
+      waterbody: null
+      localities:
+      - Rio Negro
+      - Rio Solimoes-Amazon mainstem between the Japura and Tapajos
+      - Rio Uatuma
+    confidence: high
+    rationale: "The four geographic wordings describe overlapping Amazonian range rather than four different origins.\
+      \ The Catalog of Fishes supports Brazil and Colombia, FishBase specifies the mainstem between the Japura and\
+      \ Tapajos and middle to lower Negro, and the 2024 Balbina survey confirms Uatuma occurrence. The generator\
+      \ also listed Purus without comparable species-occurrence evidence, so it is not retained as a confirmed locality.\
+      \ Orinoco and Guyana claims in some care accounts do not override the taxonomic sources."
+    sources:
+    - kind: catalog-of-fishes
+      title: "Eschmeyer's Catalog of Fishes: species of Uaru, updated 21 September 2026"
+      url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Uaru"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Costa, Weiss and Piedade (2024). Responses of trophic fish guilds upstream and downstream of the Balbina\
+        \ dam, Central Amazon, Northern Brazil"
+      url: "https://doi.org/10.1590/1982-0224-2023-0009"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "FishBase species summary: Uaru amphiacanthoides"
+      url: "https://www.fishbase.se/summary/Uaru-amphiacanthoides.html"
+      accessed: '2026-10-13'
+    - kind: database
+      title: Seriously Fish Uaru amphiacanthoides
+      url: "https://www.seriouslyfish.com/species/uaru-amphiacanthoides/"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: species of Uaru, updated 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Uaru"
+        accessed: '2026-10-13'
+      value:
+        continent: South America
+        region: Amazon basin in Brazil and Colombia
+    - source:
+        kind: database
+        title: "FishBase species summary: Uaru amphiacanthoides"
+        url: "https://www.fishbase.se/summary/Uaru-amphiacanthoides.html"
+        accessed: '2026-10-13'
+      value:
+        continent: South America
+        region: Amazon-Solimoes from Japura to Tapajos and middle to lower Negro
+    - source:
+        kind: database
+        title: "FishBase: Uaru amphiacanthoides species summary"
+        url: "https://www.fishbase.se/summary/Uaru-amphiacanthoides.html"
+        accessed: '2026-10-13'
+      value:
+        continent: South America
+        region: "Solimoes-Amazonas between Japura and Tapajos, and middle and lower Negro"
+    - source:
+        kind: literature
+        title: "Costa, Weiss and Piedade (2024). Responses of trophic fish guilds upstream and downstream of the\
+          \ Balbina dam, Central Amazon, Northern Brazil"
+        url: "https://doi.org/10.1590/1982-0224-2023-0009"
+        accessed: '2026-10-13'
+      value:
+        continent: South America
+        region: Uatuma basin
+      note: Species is present in the field collection list; this paper is not a source of water chemistry for the
+        profile.
+    - source:
+        kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: species of Uaru, version updated 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Uaru"
+        accessed: '2026-10-13'
+      value:
+        continent: South America
+        region: Amazon River basin in Brazil and Colombia
+    - source:
+        kind: database
+        title: "FishBase: Uaru amphiacanthoides species summary"
+        url: "https://www.fishbase.se/summary/Uaru-amphiacanthoides.html"
+        accessed: '2026-10-13'
+      value:
+        continent: South America
+        region: Japura to Tapajos along the Solimoes-Amazon and middle to lower Negro
+  temperatureC:
+    value:
+      min: 26
+      max: 31
+    confidence: medium
+    rationale: "The tally fixes 26 to 31 C by qualified-majority agreement of five of six votes. JBL measured 26.3\
+      \ to 30.3 C in the Negro-Solimoes region; Lapointe and colleagues used 31 C as a regional average maximum.\
+      \ The decided integer range summarizes habitat proxies, not continuous tracking of Uaru. Wider regional records\
+      \ are retained as context: Catalao seasonal means extend to 31.7 C, its diel study reaches 32 C, and Mamiraua\
+      \ surface measurements span 26.5 to 34.7 C with the highest value during the exceptional 2010 drought. None\
+      \ demonstrates sustained Uaru occupation at those extremes. FishBase temperature recommendations derive from\
+      \ husbandry and do not establish natural limits."
+    sources:
+    - kind: catalog-of-fishes
+      title: "Eschmeyer's Catalog of Fishes: species of Uaru, updated 21 September 2026"
+      url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Uaru"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Affonso, Queiroz and Novo (2011). Limnological characterization of floodplain lakes in Mamiraua Sustainable\
+        \ Development Reserve, Central Amazon (Amazonas State, Brazil)"
+      url: "https://doi.org/10.4322/actalb.2011.023"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Araujo et al. (2017). Triportheus albus Cope, 1872 in the Blackwater, Clearwater, and Whitewater of\
+        \ the Amazon: A Case of Phenotypic Plasticity?"
+      url: "https://doi.org/10.3389/fgene.2017.00114"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Brito, Alves and Espirito Santo (2014). Seasonal and spatial variations in limnological conditions\
+        \ of a floodplain lake (Lake Catalao) connected to both the Solimoes and Negro Rivers, Central Amazonia"
+      url: "https://doi.org/10.1590/s0044-59672014000100012"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Diel patterns of temperature, conductivity and dissolved oxygen in an Amazon floodplain lake: description\
+        \ of a friagem phenomenon (2014)"
+      url: "https://doi.org/10.1590/s2179-975x2014000300011"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "JBL (2009). Brazil expedition report: measured water parameters"
+      url: "https://www.jbl.de/en/expeditions-2009-brazil/detail/9/expedition-2009-brazil?country=dk&page_id=5002"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "JBL Expedition Brazil (2009): field water analysis results for the Negro and Solimoes region"
+      url: "https://www.jbl.de/en/expeditions-2009-brazil/detail/9/expedition-2009-brazil?page_id=5002"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "JBL Expeditions: Water analyses worldwide 2002-2019, Brazil expedition 2009"
+      url: "https://www.jbl.de/en/blog/detail/772/jbl-expeditions-water-analyses-worldwide-2002-2019"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: Lapointe et al. (2018). Predicted impacts of climate warming on aerobic performance and upper thermal
+        tolerance of six tropical freshwater fishes spanning three continents
+      url: "https://doi.org/10.1093/conphys/coy056"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: Parasitic fauna of eight species of ornamental freshwater fish from the middle Negro River (Rev. Bras.
+        Parasitol. Vet. 2010)
+      url: "https://doi.org/10.1590/s1984-29612010000200007"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Queiroz et al. (2009). Hidroquimica do rio Solimoes na regiao entre Manacapuru e Alvaraes, Amazonas,\
+        \ Brasil"
+      url: "https://doi.org/10.1590/s0044-59672009000400022"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "The density and biomass of mesozooplankton and ichthyoplankton in the Negro and the Amazon Rivers\
+        \ during the rainy season: the ecological importance of the confluence boundary (2017)"
+      url: "https://doi.org/10.7717/peerj.3308"
+      accessed: '2026-10-13'
+    - kind: database
+      title: FishBase Uaru amphiacanthoides
+      url: "https://www.fishbase.se/summary/Uaru-amphiacanthoides.html"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: literature
+        title: "Araujo, Ghelfi and Val (2017). Triportheus albus Cope, 1872 in the Blackwater, Clearwater, and Whitewater\
+          \ of the Amazon: A Case of Phenotypic Plasticity? Table 1."
+        url: "https://doi.org/10.3389/fgene.2017.00114"
+        accessed: '2026-10-13'
+      value:
+        min: 28.3
+        max: 31.2
+      note: "Means at Solimoes, Negro and Tapajos fish-collection sites in July and August 2015; fish studied were\
+        \ Triportheus, not Uaru."
+    - source:
+        kind: literature
+        title: "Brito, Alves and Espirito Santo (2014). Seasonal and spatial variations in limnological conditions\
+          \ of a floodplain lake (Lake Catalao) connected to both the Solimoes and Negro Rivers, Central Amazonia"
+        url: "https://doi.org/10.1590/s0044-59672014000100012"
+        accessed: '2026-10-13'
+      value:
+        min: 28.3
+        max: 31.7
+      note: "Span of seasonal surface and bottom means at the Negro-Solimoes confluence, 2004 to 2005."
+    - source:
+        kind: literature
+        title: Parasitic fauna of eight species of ornamental freshwater fish from the middle Negro River (Rev.
+          Bras. Parasitol. Vet. 2010)
+        url: "https://doi.org/10.1590/s1984-29612010000200007"
+        accessed: '2026-10-13'
+      value:
+        min: 27
+        max: 29.1
+      note: measured at fish collection sites in the middle Rio Negro
+    - source:
+        kind: database
+        title: FishBase Uaru amphiacanthoides
+        url: "https://www.fishbase.se/summary/Uaru-amphiacanthoides.html"
+        accessed: '2026-10-13'
+      value:
+        min: 26
+        max: 28
+      note: "environment line, based on an aquarium reference"
+    - source:
+        kind: literature
+        title: "Queiroz et al. (2009). Hidroquimica do rio Solimoes na regiao entre Manacapuru e Alvaraes, Amazonas,\
+          \ Brasil"
+        url: "https://doi.org/10.1590/s0044-59672009000400022"
+        accessed: '2026-10-13'
+      value:
+        min: 28.9
+        max: 30.1
+      note: "Table 1, six Solimoes main-channel samples in November 2004; regional habitat proxy, no simultaneous\
+        \ Uaru collection."
+    - source:
+        kind: literature
+        title: "JBL Expedition Brazil (2009): field water analysis results for the Negro and Solimoes region"
+        url: "https://www.jbl.de/en/expeditions-2009-brazil/detail/9/expedition-2009-brazil?page_id=5002"
+        accessed: '2026-10-13'
+      value:
+        min: 26.3
+        max: 30.3
+      note: April 2009 river samples within the Negro-Solimoes system; no species-specific thermal tracking.
+    - source:
+        kind: literature
+        title: "The density and biomass of mesozooplankton and ichthyoplankton in the Negro and the Amazon Rivers\
+          \ during the rainy season: the ecological importance of the confluence boundary (2017)"
+        url: "https://doi.org/10.7717/peerj.3308"
+        accessed: '2026-10-13'
+      value:
+        min: 27.5
+        max: 28.2
+      note: Table 2 station means near the Negro-Amazon confluence; station SDs are 0.2 to 0.9 C.
+    - source:
+        kind: literature
+        title: "Diel patterns of temperature, conductivity and dissolved oxygen in an Amazon floodplain lake: description\
+          \ of a friagem phenomenon (2014)"
+        url: "https://doi.org/10.1590/s2179-975x2014000300011"
+        accessed: '2026-10-13'
+      value:
+        min: 27.8
+        max: 32
+      note: "Annual surface and mixed-column observations at Catalao, including a natural cold-front event."
+    - source:
+        kind: literature
+        title: "JBL Expeditions: Water analyses worldwide 2002-2019, Brazil expedition 2009"
+        url: "https://www.jbl.de/en/blog/detail/772/jbl-expeditions-water-analyses-worldwide-2002-2019"
+        accessed: '2026-10-13'
+      value:
+        min: 26.3
+        max: 30.3
+      note: "2009 field readings from Rio Negro, Rio Branco, Rio Jauaperi, a regional lake, the Negro-Solimoes mixing\
+        \ zone and Solimoes; regional proxy without species-linked sampling."
+    - source:
+        kind: literature
+        title: "Affonso, Queiroz and Novo (2011). Limnological characterization of floodplain lakes in Mamiraua\
+          \ Sustainable Development Reserve, Central Amazon (Amazonas State, Brazil)"
+        url: "https://doi.org/10.4322/actalb.2011.023"
+        accessed: '2026-10-13'
+      value:
+        min: 26.5
+        max: 34.7
+      note: Observed regional surface extrema; 34.7 C occurred in the exceptional 2010 drought and is not adopted
+        as a sustained Uaru habitat limit.
+    - source:
+        kind: literature
+        title: "JBL (2009). Brazil expedition report: measured water parameters"
+        url: "https://www.jbl.de/en/expeditions-2009-brazil/detail/9/expedition-2009-brazil?country=dk&page_id=5002"
+        accessed: '2026-10-13'
+      value:
+        min: 26.3
+        max: 30.3
+      note: "Union of measured Negro-system tributary, lake and river temperatures from the 2009 expedition; regional\
+        \ habitat proxy."
+    - source:
+        kind: literature
+        title: Lapointe et al. (2018). Predicted impacts of climate warming on aerobic performance and upper thermal
+          tolerance of six tropical freshwater fishes spanning three continents
+        url: "https://doi.org/10.1093/conphys/coy056"
+        accessed: '2026-10-13'
+      value:
+        min: 31
+        max: 31
+      note: "Average maximum derived from Rio Negro observations supplied by INPA; this is an upper reference point,\
+        \ not a reported minimum or a Uaru tolerance experiment."
+    tolerance:
+      value:
+        min: 26
+        max: 32
+      confidence: low
+      rationale: "The tally selects 26 to 32 C by qualified majority, with low confidence for the outer endpoints.\
+        \ Generator, checker-c and tiebreaker-1 proposed 26 to 32; checker-a proposed 25 to 30; checker-b 25 to\
+        \ 30.3; tiebreaker-2 25 to 32. Fishkeeper and Akvaforum recommend 26 to 30, Seriously Fish 27 to 30, and\
+        \ the Bulgarian register 28 to 32. The wider Aquaplante retailer range is 24 to 32 C and GCCA gives approximately\
+        \ 23.9 to 29.4 C; neither justifies lowering the decided minimum. Aquarium Glaser supports 26 to 32, but\
+        \ those upper-end accounts do not document years of health at 32 C. Routine maintenance around 28 to 30\
+        \ C is better supported than either outer edge."
+      sources:
+      - kind: literature
+        title: "Diel patterns of temperature, conductivity and dissolved oxygen in an Amazon floodplain lake: description\
+          \ of a friagem phenomenon (2014)"
+        url: "https://doi.org/10.1590/s2179-975x2014000300011"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Akvaforum fish database: Uaru amphiacanthoides"
+        url: "https://akvaforum.no/lex/fish.cfm/2472"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Bulgarian Aquarium Encyclopedia: Uaru amphiacanthoides"
+        url: "https://aquariumbg.com/fish/517"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishProfiles: Uaru amphiacanthoides"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Uaru_amphiacanthoides/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Uaru amphiacanthoides"
+        url: "https://ciklid.org/artregister/art.php?ID=548"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Uaru amphiacanthoides"
+        url: "https://www.seriouslyfish.com/species/uaru-amphiacanthoides/"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Aquaplante: Uaru amphiacanthoides species care parameters"
+        url: "https://www.aquaplante.fr/poissons-invertebres/poissons-eau-douce/77581-uaru-amphiacanthoides-4-6cm.html"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Fishkeeper species data bank: Uaru amphiacanthoides"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/uaru-triangle-cichlid-"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "LiveAquaria species care sheet: Uaru Cichlid"
+        url: "https://www.liveaquaria.com/products/uaru-cichlid"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Schafer (2024): Uaru amphiacanthoides, Aquarium Glaser"
+        url: "https://www.aquariumglaser.de/en/fisharchive/uaru-amphiacanthoides-2/"
+        accessed: '2026-10-13'
+      evidence:
+      - source:
+          kind: website
+          title: "Fishkeeper species data bank: Uaru amphiacanthoides"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/uaru-triangle-cichlid-"
+          accessed: '2026-10-13'
+        value:
+          min: 26
+          max: 30
+        note: Aquarium maintenance range.
+      - source:
+          kind: database
+          title: "Bulgarian Aquarium Encyclopedia: Uaru amphiacanthoides"
+          url: "https://aquariumbg.com/fish/517"
+          accessed: '2026-10-13'
+        value:
+          min: 28
+          max: 32
+        note: Aquarium maintenance range; this page has unreliable adult-size information and is weighted cautiously.
+      - source:
+          kind: website
+          title: "Schafer (2024): Uaru amphiacanthoides, Aquarium Glaser"
+          url: "https://www.aquariumglaser.de/en/fisharchive/uaru-amphiacanthoides-2/"
+          accessed: '2026-10-13'
+        value:
+          min: 26
+          max: 32
+        note: Wholesaler husbandry experience; supporting low-weight source.
+      - source:
+          kind: database
+          title: Seriously Fish Uaru amphiacanthoides
+          url: "https://www.seriouslyfish.com/species/uaru-amphiacanthoides/"
+          accessed: '2026-10-13'
+        value:
+          min: 27
+          max: 30
+      - source:
+          kind: database
+          title: FishBase Uaru amphiacanthoides
+          url: "https://www.fishbase.se/summary/Uaru-amphiacanthoides.html"
+          accessed: '2026-10-13'
+        value:
+          min: 26
+          max: 28
+      - source:
+          kind: website
+          title: TropicalFreshwaterFish Uaru amphiacanthoides
+          url: "https://tropicalfreshwaterfish.com/species/Uaru_amphiacanthoides.html"
+          accessed: '2026-10-13'
+        value:
+          min: 26
+          max: 30
+      - source:
+          kind: database
+          title: FishProfiles Uaru amphiacanthoides
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Uaru_amphiacanthoides/"
+          accessed: '2026-10-13'
+        value:
+          min: 25
+          max: 29
+      - source:
+          kind: literature
+          title: Stigliano (2000). Uaru amphiacanthoides. Greater Chicago Cichlid Association
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/south-american-cichlids/149-uaru-amphiacanthoides.html"
+          accessed: '2026-10-13'
+        value:
+          min: 23.9
+          max: 29.4
+        note: Converted from 75 to 85 F; preferred temperatures convert to 27.2 to 28.9 C.
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet species register: Uaru amphiacanthoides"
+          url: "https://ciklid.org/artregister/art.php?ID=548"
+          accessed: '2026-10-13'
+        value:
+          min: 28
+          max: 30
+        note: Aquarium recommendation.
+      - source:
+          kind: literature
+          title: "Diel patterns of temperature, conductivity and dissolved oxygen in an Amazon floodplain lake:\
+            \ description of a friagem phenomenon (2014)"
+          url: "https://doi.org/10.1590/s2179-975x2014000300011"
+          accessed: '2026-10-13'
+        value:
+          min: 27.8
+          max: 32
+        note: Habitat observations justify inclusion of the upper edge but do not demonstrate multiyear aquarium
+          health.
+      - source:
+          kind: database
+          title: "Akvaforum fish database: Uaru amphiacanthoides"
+          url: "https://akvaforum.no/lex/fish.cfm/2472"
+          accessed: '2026-10-13'
+        value:
+          min: 26
+          max: 30
+        note: Aquarium recommendation.
+      - source:
+          kind: website
+          title: "LiveAquaria species care sheet: Uaru Cichlid"
+          url: "https://www.liveaquaria.com/products/uaru-cichlid"
+          accessed: '2026-10-13'
+        value:
+          min: 23.9
+          max: 28.3
+        note: 75 to 83 F converted to C; cooler than the specialist recommendations.
+      - source:
+          kind: website
+          title: "Aquaplante: Uaru amphiacanthoides species care parameters"
+          url: "https://www.aquaplante.fr/poissons-invertebres/poissons-eau-douce/77581-uaru-amphiacanthoides-4-6cm.html"
+          accessed: '2026-10-13'
+        value:
+          min: 24
+          max: 32
+        note: Retailer care limits; no long-term observation period is given.
+      verification:
+        method: qualified-majority
+        votes:
+          agree: 4
+          total: 6
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 5
+        total: 6
+  ph:
+    value:
+      min: 4.4
+      max: 7.1
+    confidence: medium
+    rationale: "The tally fixes pH 4.4 to 7.1 and classifies the four votes as unanimous under its range-agreement\
+      \ procedure. Regional field studies and the FishBase occurrence at pH 6.8 support acidic Negro and less acidic\
+      \ Solimoes habitats. This aggregate is narrower than Leenheer and Santos measurements of 4.2 to 7.2, Kuchler\
+      \ and colleagues regional span of 3.89 to 6.99, and the Catalao span of 5.86 to 7.47. Those wider source ranges\
+      \ remain evidence rather than being silently replaced. The lower Kuchler extreme was in the Tea tributary;\
+      \ identified Uaru were not recorded at every chemistry station. The decided range is a regional summary, not\
+      \ a proven species-wide boundary."
+    sources:
+    - kind: literature
+      title: "Araujo, Ghelfi and Val (2017). Triportheus albus Cope, 1872 in the Blackwater, Clearwater, and Whitewater\
+        \ of the Amazon: A Case of Phenotypic Plasticity? Table 1."
+      url: "https://doi.org/10.3389/fgene.2017.00114"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Brito, Alves and Espirito Santo (2014). Seasonal and spatial variations in limnological conditions\
+        \ of a floodplain lake (Lake Catalao) connected to both the Solimoes and Negro Rivers, Central Amazonia"
+      url: "https://doi.org/10.1590/s0044-59672014000100012"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Chemistry of different Amazonian water types for river classification, a preliminary review (WIT Trans.\
+        \ Ecol. Environ. 2013)"
+      url: "https://doi.org/10.2495/ws130021"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "JBL Expedition Brazil (2009): field water analysis results for the Negro and Solimoes region"
+      url: "https://www.jbl.de/en/expeditions-2009-brazil/detail/9/expedition-2009-brazil?page_id=5002"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Kuchler, I. L., Miekeley, N. and Forsberg, B. R. (2000). A contribution to the chemical characterization\
+        \ of rivers in the Rio Negro Basin, Brazil"
+      url: "https://doi.org/10.1590/s0103-50532000000300015"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: Leenheer and Santos (1980). Consideracoes sobre os processos de sedimentacao na agua preta acida do
+        rio Negro (Amazonia Central)
+      url: "https://doi.org/10.1590/1809-43921980102343"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Queiroz et al. (2009). Hidroquimica do rio Solimoes na regiao entre Manacapuru e Alvaraes, Amazonas,\
+        \ Brasil"
+      url: "https://doi.org/10.1590/s0044-59672009000400022"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: Silva et al. (2019). A contribution to the hydrochemistry and water typology of the Amazon River and
+        its tributaries. Table 2.
+      url: "https://doi.org/10.14393/rcg207246295"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "FishBase species summary: Uaru amphiacanthoides"
+      url: "https://www.fishbase.se/summary/Uaru-amphiacanthoides.html"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: literature
+        title: "Araujo, Ghelfi and Val (2017). Triportheus albus Cope, 1872 in the Blackwater, Clearwater, and Whitewater\
+          \ of the Amazon: A Case of Phenotypic Plasticity? Table 1."
+        url: "https://doi.org/10.3389/fgene.2017.00114"
+        accessed: '2026-10-13'
+      value:
+        min: 4.6
+        max: 6.3
+      note: "Site means for Negro, Tapajos and Solimoes; not Uaru-specific captures."
+    - source:
+        kind: literature
+        title: Silva et al. (2019). A contribution to the hydrochemistry and water typology of the Amazon River
+          and its tributaries. Table 2.
+        url: "https://doi.org/10.14393/rcg207246295"
+        accessed: '2026-10-13'
+      value:
+        min: 4.62
+        max: 5.29
+      note: Rainy and dry season means for Rio Negro at Manaus.
+    - source:
+        kind: literature
+        title: "Brito, Alves and Espirito Santo (2014). Seasonal and spatial variations in limnological conditions\
+          \ of a floodplain lake (Lake Catalao) connected to both the Solimoes and Negro Rivers, Central Amazonia"
+        url: "https://doi.org/10.1590/s0044-59672014000100012"
+        accessed: '2026-10-13'
+      value:
+        min: 5.86
+        max: 7.47
+      note: Observed regional floodplain lake pH span.
+    - source:
+        kind: database
+        title: "FishBase species summary: Uaru amphiacanthoides"
+        url: "https://www.fishbase.se/summary/Uaru-amphiacanthoides.html"
+        accessed: '2026-10-13'
+      value:
+        min: 6.8
+        max: 6.8
+      note: Species occurrence in clear streams; original collecting source not read.
+    - source:
+        kind: literature
+        title: Chemistry of different Amazonian water types for river classification (2013)
+        url: "https://doi.org/10.2495/ws130021"
+        accessed: '2026-10-13'
+      value:
+        min: 4
+        max: 5
+      note: Rio Negro blackwater
+    - source:
+        kind: database
+        title: FishBase Uaru amphiacanthoides
+        url: "https://www.fishbase.se/summary/Uaru-amphiacanthoides.html"
+        accessed: '2026-10-13'
+      value:
+        min: 5
+        max: 7
+      note: environment line; a clear stream at 6.8 is mentioned
+    - source:
+        kind: literature
+        title: Leenheer and Santos (1980). Consideracoes sobre os processos de sedimentacao na agua preta acida
+          do rio Negro (Amazonia Central)
+        url: "https://doi.org/10.1590/1809-43921980102343"
+        accessed: '2026-10-13'
+      value:
+        min: 4.2
+        max: 7.2
+      note: "Table 1, Negro and Solimoes water samples from the 1978 expedition; pH was measured after sampling,\
+        \ not continuously in situ."
+    - source:
+        kind: literature
+        title: "Queiroz et al. (2009). Hidroquimica do rio Solimoes na regiao entre Manacapuru e Alvaraes, Amazonas,\
+          \ Brasil"
+        url: "https://doi.org/10.1590/s0044-59672009000400022"
+        accessed: '2026-10-13'
+      value:
+        min: 6.5
+        max: 7
+      note: "Table 1, in situ Solimoes main-channel measurements."
+    - source:
+        kind: literature
+        title: "JBL Expedition Brazil (2009): field water analysis results for the Negro and Solimoes region"
+        url: "https://www.jbl.de/en/expeditions-2009-brazil/detail/9/expedition-2009-brazil?page_id=5002"
+        accessed: '2026-10-13'
+      value:
+        min: 4.5
+        max: 6.5
+      note: "Negro, Jauaperi and Solimoes field measurements; Pantanal sites excluded."
+    - source:
+        kind: literature
+        title: "Kuchler, I. L., Miekeley, N. and Forsberg, B. R. (2000). A contribution to the chemical characterization\
+          \ of rivers in the Rio Negro Basin, Brazil"
+        url: "https://doi.org/10.1590/s0103-50532000000300015"
+        accessed: '2026-10-13'
+      value:
+        min: 3.89
+        max: 6.99
+      note: Negro basin 3.89 to 6.07; Solimoes 6.93 to 6.99. Rio Negro mainstem stations 4.42 to 5.80.
+    tolerance:
+      value:
+        min: 4.4
+        max: 7.5
+      confidence: low
+      rationale: "The tally selects pH 4.4 to 7.5 with unanimous range agreement and low confidence. Generator and\
+        \ checker-a proposed 4.5 to 7.5, checker-b 4.2 to 7.5 and checker-c 3.9 to 7.5. Its final lower bound includes\
+        \ the decided natural range. Husbandry support is strongest around 5 to 7.2, with FishProfiles allowing\
+        \ 5.5 to 7.5 and Stigliano reporting spawnings at 5.5 to 7.4. The broader checker-c proposal originates\
+        \ in regional measurements down to 3.89, not documented years of captive health there. The 4.4 extension\
+        \ is habitat-based inclusion rather than a proved multiyear aquarium endpoint."
+      sources:
+      - kind: literature
+        title: "Araujo, Ghelfi and Val (2017). Triportheus albus Cope, 1872 in the Blackwater, Clearwater, and Whitewater\
+          \ of the Amazon: A Case of Phenotypic Plasticity? Table 1."
+        url: "https://doi.org/10.3389/fgene.2017.00114"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Leenheer and Santos (1980). Consideracoes sobre os processos de sedimentacao na agua preta acida
+          do rio Negro (Amazonia Central)
+        url: "https://doi.org/10.1590/1809-43921980102343"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: Stigliano (2000). Uaru amphiacanthoides. Greater Chicago Cichlid Association
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/south-american-cichlids/149-uaru-amphiacanthoides.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: FishBase Uaru amphiacanthoides
+        url: "https://www.fishbase.se/summary/Uaru-amphiacanthoides.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishProfiles: Uaru amphiacanthoides"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Uaru_amphiacanthoides/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Uaru amphiacanthoides"
+        url: "https://ciklid.org/artregister/art.php?ID=548"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Uaru amphiacanthoides"
+        url: "https://www.seriouslyfish.com/species/uaru-amphiacanthoides/"
+        accessed: '2026-10-13'
+      evidence:
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet species register: Uaru amphiacanthoides"
+          url: "https://ciklid.org/artregister/art.php?ID=548"
+          accessed: '2026-10-13'
+        value:
+          min: 5
+          max: 7.2
+        note: Aquarium recommendation.
+      - source:
+          kind: database
+          title: "FishProfiles: Uaru amphiacanthoides"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Uaru_amphiacanthoides/"
+          accessed: '2026-10-13'
+        value:
+          min: 5.5
+          max: 7.5
+        note: Aquarium recommendation.
+      - source:
+          kind: database
+          title: "Seriously Fish: Uaru amphiacanthoides"
+          url: "https://www.seriouslyfish.com/species/uaru-amphiacanthoides/"
+          accessed: '2026-10-13'
+        value:
+          min: 6
+          max: 7
+        note: Aquarium recommendation.
+      - source:
+          kind: literature
+          title: "Araujo, Ghelfi and Val (2017). Triportheus albus Cope, 1872 in the Blackwater, Clearwater, and\
+            \ Whitewater of the Amazon: A Case of Phenotypic Plasticity? Table 1."
+          url: "https://doi.org/10.3389/fgene.2017.00114"
+          accessed: '2026-10-13'
+        value:
+          min: 4.6
+          max: 4.6
+        note: Native-range Negro field proxy only; does not establish long-term captive tolerance.
+      - source:
+          kind: database
+          title: FishBase Uaru amphiacanthoides
+          url: "https://www.fishbase.se/summary/Uaru-amphiacanthoides.html"
+          accessed: '2026-10-13'
+        value:
+          min: 5
+          max: 7
+      - source:
+          kind: website
+          title: TropicalFreshwaterFish Uaru amphiacanthoides
+          url: "https://tropicalfreshwaterfish.com/species/Uaru_amphiacanthoides.html"
+          accessed: '2026-10-13'
+        value:
+          min: 5.5
+          max: 7.3
+      - source:
+          kind: literature
+          title: Stigliano (2000). Uaru amphiacanthoides. Greater Chicago Cichlid Association
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/south-american-cichlids/149-uaru-amphiacanthoides.html"
+          accessed: '2026-10-13'
+        value:
+          min: 5.5
+          max: 7.4
+        note: "Reported successful spawnings, rather than a controlled longevity test."
+      - source:
+          kind: literature
+          title: Leenheer and Santos (1980). Consideracoes sobre os processos de sedimentacao na agua preta acida
+            do rio Negro (Amazonia Central)
+          url: "https://doi.org/10.1590/1809-43921980102343"
+          accessed: '2026-10-13'
+        value:
+          min: 4.2
+          max: 4.9
+        note: "Native Negro chemistry only; supplies the inclusive lower extension, not an aquarium tolerance experiment."
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  ghDgh:
+    value:
+      min: 0
+      max: 2
+    confidence: low
+    rationale: The tally fixes 0 to 2 dGH with unanimous range agreement and low confidence. Actual calcium and
+      magnesium support very soft native water; conversion uses dGH = Ca in mg/L divided by 7.14 plus Mg in mg/L
+      divided by 4.34. Zero represents hardness below common aquarium-test resolution. The decided ceiling is narrower
+      than the Solimoes paired-sample conversions of about 1.45 to 2.30 dGH in Queiroz and colleagues and the later
+      collected-water mean of about 2.48 dGH in the Tambaqui study. These wider regional results are disclosed without
+      changing the tally. Conductivity is not converted into hardness. FishBase 5 to 12 dH is husbandry context
+      rather than a field-hardness series.
+    sources:
+    - kind: literature
+      title: "Aprile and Darwich (2013). Nutrients and water-forest interactions in an Amazon floodplain lake: an\
+        \ ecological approach"
+      url: "https://doi.org/10.1590/s2179-975x2013000200008"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Brito, Alves and Espirito Santo (2014). Seasonal and spatial variations in limnological conditions\
+        \ of a floodplain lake (Lake Catalao) connected to both the Solimoes and Negro Rivers, Central Amazonia"
+      url: "https://doi.org/10.1590/s0044-59672014000100012"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: Chemistry of different Amazonian water types for river classification (WIT Trans. 2013)
+      url: "https://doi.org/10.2495/ws130021"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Gonzalez, Patrick and Val (2024). Ion uptake in naturally acidic water. Table 1, Rio Negro field chemistry\
+        \ from Holland et al. (2017)."
+      url: "https://doi.org/10.1007/s00360-024-01552-6"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: Joint effects of elevated copper and temperature in juvenile Tambaqui exposed in black and white waters
+        of the Amazon (2025)
+      url: "https://doi.org/10.1111/jfb.70238"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Kuchler, I. L., Miekeley, N. and Forsberg, B. R. (2000). A contribution to the chemical characterization\
+        \ of rivers in the Rio Negro Basin, Brazil"
+      url: "https://doi.org/10.1590/s0103-50532000000300015"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: Leenheer and Santos (1980). Consideracoes sobre os processos de sedimentacao na agua preta acida do
+        rio Negro (Amazonia Central)
+      url: "https://doi.org/10.1590/1809-43921980102343"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Queiroz et al. (2009). Hidroquimica do rio Solimoes na regiao entre Manacapuru e Alvaraes, Amazonas,\
+        \ Brasil"
+      url: "https://doi.org/10.1590/s0044-59672009000400022"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "FishBase: Uaru amphiacanthoides species summary"
+      url: "https://www.fishbase.se/summary/Uaru-amphiacanthoides.html"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: literature
+        title: "Gonzalez, Patrick and Val (2024). Ion uptake in naturally acidic water. Table 1, Rio Negro field\
+          \ chemistry from Holland et al. (2017)."
+        url: "https://doi.org/10.1007/s00360-024-01552-6"
+        accessed: '2026-10-13'
+      value:
+        min: 0.04
+        max: 0.05
+      note: "Conversion supplied by the generator from the review reproduction of Holland field data. The downloaded\
+        \ open-access extraction omits Table 1, so this exact transcription was not independently rechecked by the\
+        \ adjudicator; other readable Ca and Mg records support the rationale."
+    - source:
+        kind: literature
+        title: "Brito, Alves and Espirito Santo (2014). Seasonal and spatial variations in limnological conditions\
+          \ of a floodplain lake (Lake Catalao) connected to both the Solimoes and Negro Rivers, Central Amazonia"
+        url: "https://doi.org/10.1590/s0044-59672014000100012"
+        accessed: '2026-10-13'
+      value:
+        min: 0.31
+        max: 1.14
+      note: "Calculated from paired seasonal mean Ca and Mg in surface and bottom water; means, not observed extremes."
+    - source:
+        kind: literature
+        title: "Brito, Alves and Espirito Santo (2014). Seasonal and spatial variations in limnological conditions\
+          \ of a floodplain lake (Lake Catalao) connected to both the Solimoes and Negro Rivers, Central Amazonia"
+        url: "https://doi.org/10.1590/s0044-59672014000100012"
+        accessed: '2026-10-13'
+      value:
+        min: 0.4
+        max: 0.4
+      note: converted from Ca 1.7 and Mg 0.6 mg/L at rising water
+    - source:
+        kind: literature
+        title: Leenheer and Santos (1980). Consideracoes sobre os processos de sedimentacao na agua preta acida
+          do rio Negro (Amazonia Central)
+        url: "https://doi.org/10.1590/1809-43921980102343"
+        accessed: '2026-10-13'
+      value:
+        min: 0.038
+        max: 1.742
+      note: Converted from paired Ca and Mg concentrations in Table 1 for Negro and Solimoes samples.
+    - source:
+        kind: literature
+        title: "Queiroz et al. (2009). Hidroquimica do rio Solimoes na regiao entre Manacapuru e Alvaraes, Amazonas,\
+          \ Brasil"
+        url: "https://doi.org/10.1590/s0044-59672009000400022"
+        accessed: '2026-10-13'
+      value:
+        min: 1.448
+        max: 2.297
+      note: Converted from paired Solimoes main-channel rows in Table 1.
+    - source:
+        kind: database
+        title: "FishBase: Uaru amphiacanthoides species summary"
+        url: "https://www.fishbase.se/summary/Uaru-amphiacanthoides.html"
+        accessed: '2026-10-13'
+      value:
+        min: 5
+        max: 12
+      note: General summary range without a demonstrated field hardness measurement; excluded from the natural value.
+    - source:
+        kind: literature
+        title: "Kuchler, I. L., Miekeley, N. and Forsberg, B. R. (2000). A contribution to the chemical characterization\
+          \ of rivers in the Rio Negro Basin, Brazil"
+        url: "https://doi.org/10.1590/s0103-50532000000300015"
+        accessed: '2026-10-13'
+      value:
+        min: 0.01
+        max: 1.57
+      note: "Tables 4 and 5: blackwater Ca 0.037 to 0.680 mg/L and Mg 0.020 to 0.171 mg/L give an outer bound of\
+        \ 0.010 to 0.135 dGH; Solimoes Ca 7.1 to 9.3 and Mg 0.91 to 1.14 mg/L give 1.20 to 1.57 dGH. XML extraction\
+        \ loses the micro prefix in table units; numerical concentrations are converted from micrograms/L."
+    - source:
+        kind: literature
+        title: "Aprile and Darwich (2013). Nutrients and water-forest interactions in an Amazon floodplain lake:\
+          \ an ecological approach"
+        url: "https://doi.org/10.1590/s2179-975x2013000200008"
+        accessed: '2026-10-13'
+      value:
+        min: 0.8
+        max: 1.67
+      note: Seasonal concentration envelope from Ca 4.7 to 8.8 mg/L and Mg 0.6 to 1.9 mg/L; extrema need not occur
+        in the same sample.
+    - source:
+        kind: literature
+        title: Joint effects of elevated copper and temperature in juvenile Tambaqui exposed in black and white
+          waters of the Amazon (2025)
+        url: "https://doi.org/10.1111/jfb.70238"
+        accessed: '2026-10-13'
+      value:
+        min: 0.12
+        max: 2.48
+      note: "Collected unamended river-water means: Negro Ca 13.2 and Mg 8.07 micromol/L; Solimoes Ca 355 and Mg\
+        \ 86.8 micromol/L. Converted using atomic masses before computing dGH."
+    tolerance:
+      value:
+        min: 0
+        max: 5
+      confidence: low
+      rationale: "The tally uses the conservative intersection of all six proposals, yielding 0 to 5 dGH with low\
+        \ confidence. Generator and tiebreaker-2 proposed 0 to 8; checker-a, checker-c and tiebreaker-1 proposed\
+        \ 0 to 12; checker-b proposed 0 to 5. Seriously Fish gives an upper limit of 5, whereas Fishkeeper allows\
+        \ 8, FishBase and Akvaforum give 5 to 12, Aqua-Fish 5 to 12, Aquariumline 2 to 12 and FishProfiles 5 to\
+        \ 14 dGH. Those wider source ranges do not establish identical long-term suitability for every population.\
+        \ Zero is an inferred very-soft-water reporting floor, not an explicit care-sheet minimum or a recommendation\
+        \ for chemically pure water. This conservative compatibility limit can warn against conditions that some\
+        \ broader care sheets permit."
+      sources:
+      - kind: literature
+        title: "Brito, Alves and Espirito Santo (2014). Seasonal and spatial variations in limnological conditions\
+          \ of a floodplain lake (Lake Catalao) connected to both the Solimoes and Negro Rivers, Central Amazonia"
+        url: "https://doi.org/10.1590/s0044-59672014000100012"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Akvaforum fish database: Uaru amphiacanthoides"
+        url: "https://akvaforum.no/lex/fish.cfm/2472"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Fish: Uaru Cichlid care and breeding profile"
+        url: "https://en.aqua-fish.net/fish/the-uaru-cichlid?PageSpeed=noscript"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase species summary: Uaru amphiacanthoides"
+        url: "https://www.fishbase.se/summary/Uaru-amphiacanthoides.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishProfiles: Uaru amphiacanthoides"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Uaru_amphiacanthoides/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Uaru amphiacanthoides"
+        url: "https://www.seriouslyfish.com/species/uaru-amphiacanthoides/"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Aquariumline: Uaru amphiacanthoides structured care sheet"
+        url: "https://www.aquariumline.com/it/ciclidi-americani/39427-uaru-amphiacanthoides-cm-35.html"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Fishkeeper species data bank: Uaru amphiacanthoides"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/uaru-triangle-cichlid-"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "TropicalFreshwaterFish: Uaru amphiacanthoides"
+        url: "https://tropicalfreshwaterfish.com/species/Uaru_amphiacanthoides.html"
+        accessed: '2026-10-13'
+      evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Uaru amphiacanthoides"
+          url: "https://www.seriouslyfish.com/species/uaru-amphiacanthoides/"
+          accessed: '2026-10-13'
+        value:
+          max: 5
+        note: The source supplies an upper general-hardness limit only; the adopted zero reporting floor is inferred
+          from very soft native water.
+      - source:
+          kind: website
+          title: "Fishkeeper species data bank: Uaru amphiacanthoides"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/uaru-triangle-cichlid-"
+          accessed: '2026-10-13'
+        value:
+          max: 8
+        note: The source supplies an upper general-hardness limit only; the adopted zero reporting floor is inferred
+          from very soft native water.
+      - source:
+          kind: database
+          title: "FishProfiles: Uaru amphiacanthoides"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Uaru_amphiacanthoides/"
+          accessed: '2026-10-13'
+        value:
+          min: 5
+          max: 14
+        note: "Broader aquarium range, not selected as the universal upper limit."
+      - source:
+          kind: database
+          title: "FishBase species summary: Uaru amphiacanthoides"
+          url: "https://www.fishbase.se/summary/Uaru-amphiacanthoides.html"
+          accessed: '2026-10-13'
+        value:
+          min: 5
+          max: 12
+        note: Database headline dH range; not used as natural field hardness.
+      - source:
+          kind: website
+          title: TropicalFreshwaterFish Uaru amphiacanthoides
+          url: "https://tropicalfreshwaterfish.com/species/Uaru_amphiacanthoides.html"
+          accessed: '2026-10-13'
+        value:
+          min: 0
+          max: 12
+      - source:
+          kind: website
+          title: "Aquariumline: Uaru amphiacanthoides structured care sheet"
+          url: "https://www.aquariumline.com/it/ciclidi-americani/39427-uaru-amphiacanthoides-cm-35.html"
+          accessed: '2026-10-13'
+        value:
+          min: 2
+          max: 12
+        note: Aquarium range; a stronger recommendation to avoid excessively hard water accompanies it.
+      - source:
+          kind: database
+          title: "Akvaforum fish database: Uaru amphiacanthoides"
+          url: "https://akvaforum.no/lex/fish.cfm/2472"
+          accessed: '2026-10-13'
+        value:
+          min: 5
+          max: 12
+        note: Explicit aquarium-care GH range.
+      - source:
+          kind: literature
+          title: "Brito, Alves and Espirito Santo (2014). Seasonal and spatial variations in limnological conditions\
+            \ of a floodplain lake (Lake Catalao) connected to both the Solimoes and Negro Rivers, Central Amazonia"
+          url: "https://doi.org/10.1590/s0044-59672014000100012"
+          accessed: '2026-10-13'
+        value:
+          min: 0.31
+          max: 1.14
+        note: "Approximate dGH calculated from seasonal mean Ca and Mg in surface and bottom samples; field context\
+          \ for the lower end, not tolerance evidence."
+      - source:
+          kind: database
+          title: "Aqua-Fish: Uaru Cichlid care and breeding profile"
+          url: "https://en.aqua-fish.net/fish/the-uaru-cichlid?PageSpeed=noscript"
+          accessed: '2026-10-13'
+        value:
+          min: 5
+          max: 12
+        note: "Stated aquarium general-hardness range, with a long-term emphasis on stable conditions."
+      verification:
+        method: conservative
+        votes:
+          agree: 3
+          total: 6
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  khDkh:
+    value:
+      min: 0
+      max: 2
+    confidence: low
+    rationale: "The tally fixes the natural value at 0 to 2 dKH with low confidence; KH remains a plain natural-water\
+      \ fact without a verification object. JBL measured zero in Negro-system waters, 1.5 in mixed water and 2 in\
+      \ the Solimoes. Leenheer and Santos and Queiroz independently support low carbonate alkalinity from measured\
+      \ bicarbonate, converted as HCO3 in mg/L divided by 21.8. This is narrower than the supplied Catalao seasonal-mean\
+      \ bicarbonate-equivalent span of 0.56 to 2.68 dKH and the checker-a conversion of 0.7 to 2.4. Titrated alkalinity\
+      \ in humic blackwater may include noncarbonate contributions. No GH value is used as KH."
+    sources:
+    - kind: literature
+      title: "Aprile and Darwich (2013). Nutrients and water-forest interactions in an Amazon floodplain lake: an\
+        \ ecological approach"
+      url: "https://doi.org/10.1590/s2179-975x2013000200008"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Brito, Alves and Espirito Santo (2014). Seasonal and spatial variations in limnological conditions\
+        \ of a floodplain lake (Lake Catalao) connected to both the Solimoes and Negro Rivers, Central Amazonia"
+      url: "https://doi.org/10.1590/s0044-59672014000100012"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: Chemistry of different Amazonian water types for river classification (WIT Trans. 2013)
+      url: "https://doi.org/10.2495/ws130021"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Diel patterns of temperature, conductivity and dissolved oxygen in an Amazon floodplain lake: description\
+        \ of a friagem phenomenon (2014)"
+      url: "https://doi.org/10.1590/s2179-975x2014000300011"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Gonzalez, Patrick and Val (2024). Ion uptake in naturally acidic water. Table 1, Rio Negro field chemistry\
+        \ from Holland et al. (2017)."
+      url: "https://doi.org/10.1007/s00360-024-01552-6"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "JBL Expedition Brazil (2009): field water analysis results for the Negro and Solimoes region"
+      url: "https://www.jbl.de/en/expeditions-2009-brazil/detail/9/expedition-2009-brazil?page_id=5002"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: Leenheer and Santos (1980). Consideracoes sobre os processos de sedimentacao na agua preta acida do
+        rio Negro (Amazonia Central)
+      url: "https://doi.org/10.1590/1809-43921980102343"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: Pinto et al. (2009). Efeitos da acao antropica sobre a hidrogeoquimica do rio Negro na orla de Manaus/AM
+      url: "https://doi.org/10.1590/s0044-59672009000300018"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Queiroz et al. (2009). Hidroquimica do rio Solimoes na regiao entre Manacapuru e Alvaraes, Amazonas,\
+        \ Brasil"
+      url: "https://doi.org/10.1590/s0044-59672009000400022"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: literature
+        title: "Gonzalez, Patrick and Val (2024). Ion uptake in naturally acidic water. Table 1, Rio Negro field\
+          \ chemistry from Holland et al. (2017)."
+        url: "https://doi.org/10.1007/s00360-024-01552-6"
+        accessed: '2026-10-13'
+      value:
+        min: 0.43
+        max: 0.7
+      note: "CaCO3-equivalent total alkalinity from Rio Negro field samples, not a direct carbonate-hardness titration."
+    - source:
+        kind: literature
+        title: "Brito, Alves and Espirito Santo (2014). Seasonal and spatial variations in limnological conditions\
+          \ of a floodplain lake (Lake Catalao) connected to both the Solimoes and Negro Rivers, Central Amazonia"
+        url: "https://doi.org/10.1590/s0044-59672014000100012"
+        accessed: '2026-10-13'
+      value:
+        min: 0.56
+        max: 2.68
+      note: Bicarbonate-equivalent seasonal mean alkalinity; includes surface and bottom measurements.
+    - source:
+        kind: literature
+        title: "Brito, Alves and Espirito Santo (2014). Seasonal and spatial variations in limnological conditions\
+          \ of a floodplain lake (Lake Catalao) connected to both the Solimoes and Negro Rivers, Central Amazonia"
+        url: "https://doi.org/10.1590/s0044-59672014000100012"
+        accessed: '2026-10-13'
+      value:
+        min: 0.7
+        max: 2.4
+      note: "converted from bicarbonate, rising and low water"
+    - source:
+        kind: literature
+        title: Leenheer and Santos (1980). Consideracoes sobre os processos de sedimentacao na agua preta acida
+          do rio Negro (Amazonia Central)
+        url: "https://doi.org/10.1590/1809-43921980102343"
+        accessed: '2026-10-13'
+      value:
+        min: 0
+        max: 1.651
+      note: Bicarbonate conversion from Table 1; native Negro and Solimoes samples.
+    - source:
+        kind: literature
+        title: "Queiroz et al. (2009). Hidroquimica do rio Solimoes na regiao entre Manacapuru e Alvaraes, Amazonas,\
+          \ Brasil"
+        url: "https://doi.org/10.1590/s0044-59672009000400022"
+        accessed: '2026-10-13'
+      value:
+        min: 0.872
+        max: 1.697
+      note: "Bicarbonate conversion from Table 1, Solimoes main channel."
+    - source:
+        kind: literature
+        title: "JBL Expedition Brazil (2009): field water analysis results for the Negro and Solimoes region"
+        url: "https://www.jbl.de/en/expeditions-2009-brazil/detail/9/expedition-2009-brazil?page_id=5002"
+        accessed: '2026-10-13'
+      value:
+        min: 0
+        max: 2
+      note: Direct field test-kit readings in the Negro-Solimoes system.
+    - source:
+        kind: literature
+        title: Pinto et al. (2009). Efeitos da acao antropica sobre a hidrogeoquimica do rio Negro na orla de Manaus/AM
+        url: "https://doi.org/10.1590/s0044-59672009000300018"
+        accessed: '2026-10-13'
+      value:
+        min: 0.056
+        max: 0.28
+      note: Background river stations upstream or downstream of urban inflows had 1.22 to 6.10 mg HCO3/L. The polluted
+        tributary-mouth values are excluded.
+    - source:
+        kind: literature
+        title: "Diel patterns of temperature, conductivity and dissolved oxygen in an Amazon floodplain lake: description\
+          \ of a friagem phenomenon (2014)"
+        url: "https://doi.org/10.1590/s2179-975x2014000300011"
+        accessed: '2026-10-13'
+      value:
+        min: 0
+        max: 1.68
+      note: "Field literature summarized for the supplying rivers: Negro alkalinity below 0.05 meq/L gives below\
+        \ 0.14 dKH; Solimoes 0.5 to 0.6 meq/L gives 1.40 to 1.68 dKH."
+    tolerance:
+      value:
+        min: 0
+        max: 5
+      confidence: low
+      rationale: "The tally selects 0 to 5 dKH by qualified majority, with low confidence. Generator, checker-a,\
+        \ checker-c and tiebreaker-2 proposed 0 to 5; checker-b proposed 0 to 8 and tiebreaker-1 0 to 10. LiveAquaria\
+        \ supplies a 2 to 5 care range, while the Nordic register permits up to 10, Aquariumline lists 1 to 8, Aquaristikstudio\
+        \ 2 to 10, Lone Star 2 to 6 and AquariumDomain 8 to 10 dKH. These wider allowances are disclosed but do\
+        \ not replace the fixed tally. The Nordic register is a specialist database; the positive 5 dKH boundary\
+        \ is chiefly a retailer recommendation and two independent specialist husbandry sources do not establish\
+        \ that endpoint. JBL field measurements support inclusion of near-zero native buffering only. A GH recommendation\
+        \ cannot supply a KH tolerance, and no multiyear endpoint trial was found."
+      sources:
+      - kind: literature
+        title: "Gonzalez, Patrick and Val (2024). Ion uptake in naturally acidic water. Table 1, Rio Negro field\
+          \ chemistry from Holland et al. (2017)."
+        url: "https://doi.org/10.1007/s00360-024-01552-6"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "JBL (2009). Brazil expedition report: measured water parameters"
+        url: "https://www.jbl.de/en/expeditions-2009-brazil/detail/9/expedition-2009-brazil?country=dk&page_id=5002"
+        accessed: '2026-10-13'
+      - kind: database
+        title: FishBase Uaru amphiacanthoides
+        url: "https://www.fishbase.se/summary/Uaru-amphiacanthoides.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet species register: Uaru amphiacanthoides"
+        url: "https://ciklid.org/artregister/art.php?ID=548"
+        accessed: '2026-10-13'
+      - kind: database
+        title: Seriously Fish Uaru amphiacanthoides
+        url: "https://www.seriouslyfish.com/species/uaru-amphiacanthoides/"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Aquaristikstudio species care sheet: Keilfleckbuntbarsch"
+        url: "https://www.aquaristikstudio.de/p/keilfleck-buntbarsch"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "AquariumDomain: Uaru Cichlid"
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/UaruCichlid.shtml"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "LiveAquaria: Uaru Cichlid species care sheet"
+        url: "https://www.liveaquaria.com/products/uaru-cichlid"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Lone Star Rare Exotic Fish: Uaru Cichlid care information"
+        url: "https://www.lonestarrareexoticfish.com/products/uaru-cichlid-amphiacanthoides-for-sale-online-live-freshwater"
+        accessed: '2026-10-13'
+      evidence:
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet species register: Uaru amphiacanthoides"
+          url: "https://ciklid.org/artregister/art.php?ID=548"
+          accessed: '2026-10-13'
+        value:
+          max: 10
+        note: The source permits KH up to 10 dKH and supplies no numerical minimum or longitudinal endpoint study.
+      - source:
+          kind: website
+          title: "Aquaristikstudio species care sheet: Keilfleckbuntbarsch"
+          url: "https://www.aquaristikstudio.de/p/keilfleck-buntbarsch"
+          accessed: '2026-10-13'
+        value:
+          min: 2
+          max: 10
+        note: Structured retailer care range; low evidential strength despite database classification.
+      - source:
+          kind: literature
+          title: "Gonzalez, Patrick and Val (2024). Ion uptake in naturally acidic water. Table 1, Rio Negro field\
+            \ chemistry from Holland et al. (2017)."
+          url: "https://doi.org/10.1007/s00360-024-01552-6"
+          accessed: '2026-10-13'
+        value:
+          min: 0.43
+          max: 0.7
+        note: "Native-range alkalinity supports low buffering only, not a captive tolerance trial."
+      - source:
+          kind: website
+          title: "Aquariumline: Uaru amphiacanthoides structured care sheet"
+          url: "https://www.aquariumline.com/it/ciclidi-americani/39427-uaru-amphiacanthoides-cm-35.html"
+          accessed: '2026-10-13'
+        value:
+          min: 1
+          max: 8
+        note: Explicit aquarium carbonate-hardness range.
+      - source:
+          kind: website
+          title: "Lone Star Rare Exotic Fish: Uaru Cichlid care information"
+          url: "https://www.lonestarrareexoticfish.com/products/uaru-cichlid-amphiacanthoides-for-sale-online-live-freshwater"
+          accessed: '2026-10-13'
+        value:
+          min: 2
+          max: 6
+        note: "Explicit aquarium KH recommendation. The sheet misplaces part of the species range in the Orinoco\
+          \ and has an inaccurate color description, lowering its reliability."
+      - source:
+          kind: website
+          title: "AquariumDomain: Uaru Cichlid"
+          url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/UaruCichlid.shtml"
+          accessed: '2026-10-13'
+        value:
+          min: 8
+          max: 10
+        note: "Explicit care-table KH, conflicting with the same page preference for warm soft acidic water."
+      - source:
+          kind: website
+          title: "LiveAquaria species care sheet: Uaru Cichlid"
+          url: "https://www.liveaquaria.com/products/uaru-cichlid"
+          accessed: '2026-10-13'
+        value:
+          min: 2
+          max: 5
+        note: Narrower captive-maintenance recommendation.
+      - source:
+          kind: literature
+          title: "JBL Expeditions: Water analyses worldwide 2002-2019, Brazil expedition 2009"
+          url: "https://www.jbl.de/en/blog/detail/772/jbl-expeditions-water-analyses-worldwide-2002-2019"
+          accessed: '2026-10-13'
+        value:
+          min: 0
+          max: 2
+        note: "Measured native-region carbonate hardness; establishes field context, not the upper aquarium tolerance."
+      - source:
+          kind: literature
+          title: "JBL (2009). Brazil expedition report: measured water parameters"
+          url: "https://www.jbl.de/en/expeditions-2009-brazil/detail/9/expedition-2009-brazil?country=dk&page_id=5002"
+          accessed: '2026-10-13'
+        value:
+          min: 0
+          max: 2
+        note: Native-range field KH measurements in Negro-system and Solimoes waters; not direct aquarium tolerance
+          evidence.
+      verification:
+        method: qualified-majority
+        votes:
+          agree: 4
+          total: 6
+  maxSizeCm:
+    value:
+      male: 25
+      female: 24
+    confidence: medium
+    rationale: "Checker-a, checker-b and checker-c proposed 25 cm males and 24 cm females; the generator proposed\
+      \ 30 and 25. FishProfiles gives the smaller sex-specific aquarium lengths, and Stigliano describes fish above\
+      \ roughly 25.4 cm as unusual. Fishkeeper and the Nordic register give an unsexed 30 cm ceiling, while the\
+      \ archive reports one adult near 28 cm. Typical aquarium maxima are used rather than the larger general ceiling.\
+      \ FishBase 25 cm is standard length and excludes the tail; it is not a direct total-length confirmation. The\
+      \ one-centimetre sex split is approximate and unreliable for identifying sex."
+    sources:
+    - kind: literature
+      title: Stigliano (2000). Uaru amphiacanthoides. Greater Chicago Cichlid Association
+      url: "https://www.gcca.net/art-pics/cichlid-profiles-list/south-american-cichlids/149-uaru-amphiacanthoides.html"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "FishBase species summary: Uaru amphiacanthoides"
+      url: "https://www.fishbase.se/summary/Uaru-amphiacanthoides.html"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "FishProfiles: Uaru amphiacanthoides"
+      url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Uaru_amphiacanthoides/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Nordiska Ciklidsallskapet species register: Uaru amphiacanthoides"
+      url: "https://ciklid.org/artregister/art.php?ID=548"
+      accessed: '2026-10-13'
+    - kind: database
+      title: Seriously Fish Uaru amphiacanthoides
+      url: "https://www.seriouslyfish.com/species/uaru-amphiacanthoides/"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "AquariumDomain: Uaru Cichlid"
+      url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/UaruCichlid.shtml"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Fishkeeper species data bank: Uaru amphiacanthoides"
+      url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/uaru-triangle-cichlid-"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Schafer (2024): Uaru amphiacanthoides, Aquarium Glaser"
+      url: "https://www.aquariumglaser.de/en/fisharchive/uaru-amphiacanthoides-2/"
+      accessed: '2026-10-13'
+    - kind: archive
+      title: cichlids.com forum thread 125
+      url: "https://www.cichlids.com/disc/read.php?1,125"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: website
+        title: "Fishkeeper species data bank: Uaru amphiacanthoides"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/uaru-triangle-cichlid-"
+        accessed: '2026-10-13'
+      value:
+        male: 30
+        female: 30
+      note: 30 cm unsexed maximum; duplicated across sexes only to show an unsexed source.
+    - source:
+        kind: database
+        title: "FishProfiles: Uaru amphiacanthoides"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Uaru_amphiacanthoides/"
+        accessed: '2026-10-13'
+      value:
+        male: 25
+        female: 24
+      note: Sex-specific care-sheet sizes.
+    - source:
+        kind: archive
+        title: cichlids.com forum thread 125
+        url: "https://www.cichlids.com/disc/read.php?1,125"
+        accessed: '2026-10-13'
+      value:
+        male: 27.94
+        female: 27.94
+      note: Unsexed aquarium adult about 11 inches total length; anecdotal supporting record.
+    - source:
+        kind: database
+        title: FishBase Uaru amphiacanthoides
+        url: "https://www.fishbase.se/summary/Uaru-amphiacanthoides.html"
+        accessed: '2026-10-13'
+      value:
+        male: 25
+        female: 25
+      note: "standard length, sexes not separated"
+    - source:
+        kind: database
+        title: Seriously Fish Uaru amphiacanthoides
+        url: "https://www.seriouslyfish.com/species/uaru-amphiacanthoides/"
+        accessed: '2026-10-13'
+      value:
+        male: 25.4
+        female: 25.4
+      note: standard length
+    - source:
+        kind: literature
+        title: Stigliano (2000). Uaru amphiacanthoides. Greater Chicago Cichlid Association
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/south-american-cichlids/149-uaru-amphiacanthoides.html"
+        accessed: '2026-10-13'
+      value:
+        male: 25.4
+        female: 25.4
+      note: "Unsexed usual upper size, converted from 10 inches; approximately 30.5 cm is described as an exceptional\
+        \ larger size."
+    - source:
+        kind: website
+        title: "AquariumDomain: Uaru Cichlid"
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/UaruCichlid.shtml"
+        accessed: '2026-10-13'
+      value:
+        male: 25.4
+        female: 25.4
+      note: Aquarium adult length is unsexed and shown for both sexes.
+  predation:
+    value: 1
+    confidence: medium
+    rationale: "The tally selects level 1 by five of six votes: occasional fry and very small fish are at risk,\
+      \ with no established routine piscivory. Fishkeeper excludes small companions, LiveAquaria reports occasional\
+      \ consumption of offspring, and other retailer sheets warn about tiny fish. Seriously Fish accepts tetra companions\
+      \ and FishBase lists plant and invertebrate foods without fish prey; these are weaker negative evidence against\
+      \ occasional ingestion. AquariumDomain gives a broader mouth-sized prey warning without showing frequency.\
+      \ The 2 cm cutoff belongs to the rubric, not a measured Uaru prey threshold."
+    sources:
+    - kind: database
+      title: "FishBase species summary: Uaru amphiacanthoides"
+      url: "https://www.fishbase.se/summary/Uaru-amphiacanthoides.html"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "FishBase: food items reported for Uaru amphiacanthoides"
+      url: "https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=11512&genus=Uaru&species=amphiacanthoides"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Seriously Fish: Uaru amphiacanthoides"
+      url: "https://www.seriouslyfish.com/species/uaru-amphiacanthoides/"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "AquariumDomain: Uaru Cichlid"
+      url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/UaruCichlid.shtml"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Aquariumline: Uaru amphiacanthoides structured care sheet"
+      url: "https://www.aquariumline.com/it/ciclidi-americani/39427-uaru-amphiacanthoides-cm-35.html"
+      accessed: '2026-10-13'
+    - kind: website
+      title: Cichlid Room Companion Uaru amphiacanthoides
+      url: "https://cichlidae.com/species.php?id=Mto7SrpAQK6rm5MV7tRe6A"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Fishkeeper species data bank: Uaru amphiacanthoides"
+      url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/uaru-triangle-cichlid-"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "LiveAquaria species care sheet: Uaru Cichlid"
+      url: "https://www.liveaquaria.com/products/uaru-cichlid"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "The Fish Barn: Uaru Cichlid species care guide"
+      url: "https://thefishbarn.co.uk/product/uaru-cichlid-uaru-amphiacanthoides/"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: website
+        title: "Fishkeeper species data bank: Uaru amphiacanthoides"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/uaru-triangle-cichlid-"
+        accessed: '2026-10-13'
+      value: 1
+      note: Mapped from excluding small fish in a community; no measured prey-size threshold.
+    - source:
+        kind: database
+        title: "Seriously Fish: Uaru amphiacanthoides"
+        url: "https://www.seriouslyfish.com/species/uaru-amphiacanthoides/"
+        accessed: '2026-10-13'
+      value: 0
+      note: Mapped from tetra compatibility and predominantly plant-based feeding; no explicit fry observation.
+    - source:
+        kind: database
+        title: "FishBase species summary: Uaru amphiacanthoides"
+        url: "https://www.fishbase.se/summary/Uaru-amphiacanthoides.html"
+        accessed: '2026-10-13'
+      value: 0
+      note: "Listed natural foods are invertebrates and plant material, not fishes; dietary list is not proof that\
+        \ fry are never eaten."
+    - source:
+        kind: database
+        title: "FishBase: food items reported for Uaru amphiacanthoides"
+        url: "https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=11512&genus=Uaru&species=amphiacanthoides"
+        accessed: '2026-10-13'
+      value: 0
+      note: "Inference from the listed foods: no fish prey documented; absence from a food list cannot prove exclusion."
+    - source:
+        kind: website
+        title: "Aquariumline: Uaru amphiacanthoides structured care sheet"
+        url: "https://www.aquariumline.com/it/ciclidi-americani/39427-uaru-amphiacanthoides-cm-35.html"
+        accessed: '2026-10-13'
+      value: 1
+      note: Explicit warning about very small fish and fry; precise prey length is not quantified.
+    - source:
+        kind: website
+        title: "AquariumDomain: Uaru Cichlid"
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/UaruCichlid.shtml"
+        accessed: '2026-10-13'
+      value: 2
+      note: Warns of consumption of mouth-sized small fish; frequency and primary observation are not supplied.
+    - source:
+        kind: website
+        title: "LiveAquaria species care sheet: Uaru Cichlid"
+        url: "https://www.liveaquaria.com/products/uaru-cichlid"
+        accessed: '2026-10-13'
+      value: 1
+      note: Parents sometimes consume offspring; supports fry consumption but does not measure predation on other
+        species.
+    - source:
+        kind: website
+        title: "The Fish Barn: Uaru Cichlid species care guide"
+        url: "https://thefishbarn.co.uk/product/uaru-cichlid-uaru-amphiacanthoides/"
+        accessed: '2026-10-13'
+      value: 1
+      note: "Small fish are identified as potential food; occasional risk inferred, with no measured prey-size cutoff."
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 5
+        total: 6
+  diet:
+    value:
+      type: omnivore
+      bloatSensitive: false
+      foods:
+      - plant matter
+      - vegetables
+      - insects
+      - crustaceans
+      - sponges
+      - pellets
+    confidence: low
+    rationale: "The tally selects plant-heavy omnivory and bloatSensitive false by five of six votes, retaining\
+      \ the exact decided food list. FishBase food records and Seriously Fish describe plants together with invertebrates\
+      \ and freshwater sponges; this fits omnivore rather than specialized biofilm grazing. The CRC herbivory summary\
+      \ independently confirms plant dominance only. The generator proposed bloatSensitive true from a general retailer\
+      \ article, while all three checkers and both tie-breakers proposed false because independent species-specific\
+      \ evidence of a protein-triggered bloat tendency was not established. False means that the conflict flag is\
+      \ unestablished, not proven immunity. Uncertainty in that flag keeps the compound feature at low confidence."
+    sources:
+    - kind: database
+      title: "Cichlid Room Companion: public Uaru amphiacanthoides summary, verification only"
+      url: "https://cichlidae.com/species.php?id=Mto7SrpAQK6rm5MV7tRe6A"
+      accessed: '2026-10-13'
+    - kind: database
+      title: FishBase Uaru amphiacanthoides
+      url: "https://www.fishbase.se/summary/Uaru-amphiacanthoides.html"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "FishBase: food items reported for Uaru amphiacanthoides"
+      url: "https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=11512&genus=Uaru&species=amphiacanthoides"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Nordiska Ciklidsallskapet: Uaru amphiacanthoides species register"
+      url: "https://ciklid.org/artregister/art.php?ID=548"
+      accessed: '2026-10-13'
+    - kind: database
+      title: Seriously Fish Uaru amphiacanthoides
+      url: "https://www.seriouslyfish.com/species/uaru-amphiacanthoides/"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Aquariumline: Uaru amphiacanthoides structured care sheet"
+      url: "https://www.aquariumline.com/it/ciclidi-americani/39427-uaru-amphiacanthoides-cm-35.html"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "LiveAquaria species care sheet: Uaru Cichlid"
+      url: "https://www.liveaquaria.com/products/uaru-cichlid"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Maidenhead Aquatics Fishkeeper: Uaru"
+      url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/uaru-triangle-cichlid-"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Valderrama: Uaru Cichlid Care Guide, AquariumStoreDepot"
+      url: "https://aquariumstoredepot.com/blogs/news/uaru-cichlid"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: database
+        title: "Seriously Fish: Uaru amphiacanthoides"
+        url: "https://www.seriouslyfish.com/species/uaru-amphiacanthoides/"
+        accessed: '2026-10-13'
+      value:
+        type: omnivore
+      note: Wild diet includes substantial plants and invertebrates; captive feeding is strongly herbivorous.
+    - source:
+        kind: database
+        title: "FishBase species summary: Uaru amphiacanthoides"
+        url: "https://www.fishbase.se/summary/Uaru-amphiacanthoides.html"
+        accessed: '2026-10-13'
+      value:
+        type: omnivore
+      note: Natural invertebrate foods plus a plant requirement.
+    - source:
+        kind: website
+        title: "Fishkeeper species data bank: Uaru amphiacanthoides"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/uaru-triangle-cichlid-"
+        accessed: '2026-10-13'
+      value:
+        type: omnivore
+      note: Mixed aquarium food with substantial vegetable matter.
+    - source:
+        kind: website
+        title: "Valderrama: Uaru Cichlid Care Guide, AquariumStoreDepot"
+        url: "https://aquariumstoredepot.com/blogs/news/uaru-cichlid"
+        accessed: '2026-10-13'
+      value:
+        type: omnivore
+        bloatSensitive: true
+      note: Low-weight husbandry account linking excessive protein-rich feeding to bloat; no diagnostic or treatment
+        advice adopted.
+    - source:
+        kind: website
+        title: Cichlid Room Companion Uaru amphiacanthoides
+        url: "https://cichlidae.com/species.php?id=Mto7SrpAQK6rm5MV7tRe6A"
+        accessed: '2026-10-13'
+      value:
+        type: omnivore
+      note: "Verification only: the public herbivory classification supports plant dominance when interpreted alongside\
+        \ the independent mixed-food records; it does not establish specialized biofilm grazing or a bloat flag."
+    - source:
+        kind: database
+        title: "FishBase: food items reported for Uaru amphiacanthoides"
+        url: "https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=11512&genus=Uaru&species=amphiacanthoides"
+        accessed: '2026-10-13'
+      value:
+        type: omnivore
+      note: Both terrestrial plant foods and several invertebrate categories occur in the species food table.
+    - source:
+        kind: database
+        title: "Nordiska Ciklidsallskapet: Uaru amphiacanthoides species register"
+        url: "https://ciklid.org/artregister/art.php?ID=548"
+        accessed: '2026-10-13'
+      value:
+        type: omnivore
+      note: "Strong plant feeding is explicit; omnivore is the closest rubric category, not a claim of exclusive\
+        \ algae grazing."
+    - source:
+        kind: website
+        title: "Aquariumline: Uaru amphiacanthoides structured care sheet"
+        url: "https://www.aquariumline.com/it/ciclidi-americani/39427-uaru-amphiacanthoides-cm-35.html"
+        accessed: '2026-10-13'
+      value:
+        type: omnivore
+      note: Mixed plant-focused feeding and protein-related digestive concerns are explicit; a specific bloat syndrome
+        is not identified.
+    - source:
+        kind: database
+        title: "FishBase: Uaru amphiacanthoides species summary"
+        url: "https://www.fishbase.se/summary/Uaru-amphiacanthoides.html"
+        accessed: '2026-10-13'
+      value:
+        type: omnivore
+        bloatSensitive: null
+      note: "Worms, crustaceans and insects are reported alongside required plant supplementation; no bloat claim."
+    - source:
+        kind: database
+        title: "Seriously Fish: Uaru amphiacanthoides"
+        url: "https://www.seriouslyfish.com/species/uaru-amphiacanthoides/"
+        accessed: '2026-10-13'
+      value:
+        type: omnivore
+        bloatSensitive: null
+      note: "Wild stomach contents include plants, invertebrates and freshwater sponges; captive observations emphasize\
+        \ plants."
+    - source:
+        kind: website
+        title: "Maidenhead Aquatics Fishkeeper: Uaru"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/uaru-triangle-cichlid-"
+        accessed: '2026-10-13'
+      value:
+        type: omnivore
+        bloatSensitive: null
+      note: Vegetables and both prepared and frozen animal foods are recommended.
+    - source:
+        kind: database
+        title: "Nordiska Ciklidsallskapet species register: Uaru amphiacanthoides"
+        url: "https://ciklid.org/artregister/art.php?ID=548"
+        accessed: '2026-10-13'
+      value:
+        type: omnivore
+        bloatSensitive: null
+      note: Strong plant dependence fits plant-dominated omnivory rather than demonstrated biofilm specialization.
+    - source:
+        kind: website
+        title: "LiveAquaria species care sheet: Uaru Cichlid"
+        url: "https://www.liveaquaria.com/products/uaru-cichlid"
+        accessed: '2026-10-13'
+      value:
+        type: omnivore
+      note: Explicit omnivore classification; no test of bloat sensitivity.
+    - source:
+        kind: database
+        title: "Cichlid Room Companion: Uaru amphiacanthoides, public summary only"
+        url: "https://cichlidae.com/species.php?id=Mto7SrpAQK6rm5MV7tRe6A"
+        accessed: '2026-10-13'
+      value:
+        type: omnivore
+      note: "Verification only: the public herbivory label supports plant dominance, translated using the more detailed\
+        \ mixed-food records. No bloat evidence is public."
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 5
+        total: 6
+  aggressionConspecific:
+    value: 1
+    confidence: medium
+    rationale: "The generator proposed 2; all three checkers proposed 1. Peaceful social groups and short disputes\
+      \ are supported by the Nordic register and FishProfiles. Breeding confrontation is possible, but the sources\
+      \ do not establish regular hierarchy-driven chasing as the ordinary behavior in the specified spacious group.\
+      \ Level 1 is the better-supported rubric interpretation, with separate attention to breeding territoriality."
+    sources:
+    - kind: database
+      title: "FishProfiles: Uaru amphiacanthoides"
+      url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Uaru_amphiacanthoides/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Nordiska Ciklidsallskapet species register: Uaru amphiacanthoides"
+      url: "https://ciklid.org/artregister/art.php?ID=548"
+      accessed: '2026-10-13'
+    - kind: database
+      title: Seriously Fish Uaru amphiacanthoides
+      url: "https://www.seriouslyfish.com/species/uaru-amphiacanthoides/"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Aquariumline: Uaru amphiacanthoides structured care sheet"
+      url: "https://www.aquariumline.com/it/ciclidi-americani/39427-uaru-amphiacanthoides-cm-35.html"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Fishkeeper species data bank: Uaru amphiacanthoides"
+      url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/uaru-triangle-cichlid-"
+      accessed: '2026-10-13'
+    - kind: website
+      title: TropicalFreshwaterFish Uaru amphiacanthoides
+      url: "https://tropicalfreshwaterfish.com/species/Uaru_amphiacanthoides.html"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: website
+        title: "Fishkeeper species data bank: Uaru amphiacanthoides"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/uaru-triangle-cichlid-"
+        accessed: '2026-10-13'
+      value: 2
+      note: "Peaceful group outside breeding, confrontation possible when a pair forms."
+    - source:
+        kind: database
+        title: "Nordiska Ciklidsallskapet species register: Uaru amphiacanthoides"
+        url: "https://ciklid.org/artregister/art.php?ID=548"
+        accessed: '2026-10-13'
+      value: 1
+      note: "Generally calm group behavior, with breeding pairs within the group."
+    - source:
+        kind: database
+        title: "Nordiska Ciklidsallskapet: Uaru amphiacanthoides species register"
+        url: "https://ciklid.org/artregister/art.php?ID=548"
+        accessed: '2026-10-13'
+      value: 0
+      note: "Species is described as peaceful and shoaling, with pairs forming during breeding."
+    - source:
+        kind: website
+        title: "Aquariumline: Uaru amphiacanthoides structured care sheet"
+        url: "https://www.aquariumline.com/it/ciclidi-americani/39427-uaru-amphiacanthoides-cm-35.html"
+        accessed: '2026-10-13'
+      value: 1
+      note: "Adult hierarchy and breeding territoriality, without a quantified frequency of injury."
+    - source:
+        kind: website
+        title: "Maidenhead Aquatics Fishkeeper: Uaru"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/uaru-triangle-cichlid-"
+        accessed: '2026-10-13'
+      value: 1
+      note: "Normally social, with confrontation after pairing."
+    - source:
+        kind: website
+        title: "TropicalFreshwaterFish: Uaru amphiacanthoides"
+        url: "https://tropicalfreshwaterfish.com/species/Uaru_amphiacanthoides.html"
+        accessed: '2026-10-13'
+      value: 2
+      note: "Male disputes during spawning are described, with no quantified injury rate."
+  aggressionHeterospecific:
+    value: 2
+    confidence: medium
+    rationale: "Generator, checker-b and checker-c proposed 2; checker-a proposed 1. Generally calm behavior can\
+      \ escalate to exclusion of companions from the spawning area when eggs or fry are defended. That local breeding\
+      \ response fits level 2 better than display alone; routine attacks beyond the territory are not established."
+    sources:
+    - kind: database
+      title: "FishProfiles: Uaru amphiacanthoides"
+      url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Uaru_amphiacanthoides/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Seriously Fish: Uaru amphiacanthoides"
+      url: "https://www.seriouslyfish.com/species/uaru-amphiacanthoides/"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "AquariumDomain: Uaru Cichlid"
+      url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/UaruCichlid.shtml"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Aquariumline: Uaru amphiacanthoides structured care sheet"
+      url: "https://www.aquariumline.com/it/ciclidi-americani/39427-uaru-amphiacanthoides-cm-35.html"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Fishkeeper species data bank: Uaru amphiacanthoides"
+      url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/uaru-triangle-cichlid-"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: database
+        title: "Seriously Fish: Uaru amphiacanthoides"
+        url: "https://www.seriouslyfish.com/species/uaru-amphiacanthoides/"
+        accessed: '2026-10-13'
+      value: 1
+      note: Normally peaceful community behavior.
+    - source:
+        kind: database
+        title: "FishProfiles: Uaru amphiacanthoides"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Uaru_amphiacanthoides/"
+        accessed: '2026-10-13'
+      value: 2
+      note: Both parents defend eggs; territorial exclusion mapped to the rubric.
+    - source:
+        kind: database
+        title: "Seriously Fish: Uaru amphiacanthoides"
+        url: "https://www.seriouslyfish.com/species/uaru-amphiacanthoides/"
+        accessed: '2026-10-13'
+      value: 0
+      note: General peaceful community behavior outside breeding.
+    - source:
+        kind: website
+        title: "Aquariumline: Uaru amphiacanthoides structured care sheet"
+        url: "https://www.aquariumline.com/it/ciclidi-americani/39427-uaru-amphiacanthoides-cm-35.html"
+        accessed: '2026-10-13'
+      value: 2
+      note: Breeding territoriality and defense of the spawning area.
+    - source:
+        kind: website
+        title: "AquariumDomain: Uaru Cichlid"
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/UaruCichlid.shtml"
+        accessed: '2026-10-13'
+      value: 3
+      note: "Stronger breeding aggression is claimed, without injury observations or distance measurements."
+  territory:
+    value:
+      size: small
+      breedingOnly: true
+    confidence: low
+    rationale: "The generator proposed a large breeding-only territory; all three checkers proposed small and breedingOnly\
+      \ true. Repeated accounts describe defense of a discrete spawning surface and nearby larval pits, without\
+      \ measuring territory dimensions. Small is retained as the more specific site-based interpretation. The rubric\
+      \ radius is not a measured limit, and a pair with dispersed fry can need more room."
+    sources:
+    - kind: database
+      title: "FishProfiles: Uaru amphiacanthoides"
+      url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Uaru_amphiacanthoides/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Nordiska Ciklidsallskapet species register: Uaru amphiacanthoides"
+      url: "https://ciklid.org/artregister/art.php?ID=548"
+      accessed: '2026-10-13'
+    - kind: database
+      title: Seriously Fish Uaru amphiacanthoides
+      url: "https://www.seriouslyfish.com/species/uaru-amphiacanthoides/"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Aquariumline: Uaru amphiacanthoides structured care sheet"
+      url: "https://www.aquariumline.com/it/ciclidi-americani/39427-uaru-amphiacanthoides-cm-35.html"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Fishkeeper species data bank: Uaru amphiacanthoides"
+      url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/uaru-triangle-cichlid-"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: database
+        title: "FishProfiles: Uaru amphiacanthoides"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Uaru_amphiacanthoides/"
+        accessed: '2026-10-13'
+      value:
+        size: large
+        breedingOnly: true
+      note: "Brood defense supports timing; large area is an inference, not measured by the source."
+    - source:
+        kind: database
+        title: "Nordiska Ciklidsallskapet: Uaru amphiacanthoides species register"
+        url: "https://ciklid.org/artregister/art.php?ID=548"
+        accessed: '2026-10-13'
+      value:
+        size: small
+        breedingOnly: true
+      note: "Nearby egg surface and larval pits; size is inferred, not measured."
+    - source:
+        kind: website
+        title: "Aquariumline: Uaru amphiacanthoides structured care sheet"
+        url: "https://www.aquariumline.com/it/ciclidi-americani/39427-uaru-amphiacanthoides-cm-35.html"
+        accessed: '2026-10-13'
+      value:
+        size: small
+        breedingOnly: true
+      note: "Spawning-site defense, with no stated territory dimensions."
+    - source:
+        kind: database
+        title: "Seriously Fish: Uaru amphiacanthoides"
+        url: "https://www.seriouslyfish.com/species/uaru-amphiacanthoides/"
+        accessed: '2026-10-13'
+      value:
+        size: small
+        breedingOnly: true
+      note: Local rock or wood spawning site; area inferred.
+  habitatZones:
+    value:
+    - wood
+    - sand
+    - plants
+    - openWater
+    confidence: medium
+    rationale: "Generator and checker-b proposed wood, sand and openWater; checker-a and checker-c proposed wood,\
+      \ sand and plants. These sets capture complementary resources: timber shelter, a soft bottom, vegetation used\
+      \ for shelter or food, and adjacent swimming space. Retain their union. OpenWater does not imply an obligate\
+      \ pelagic life and plants need not survive as aquarium decoration; submerged wood and swimming room are the\
+      \ central structural provisions."
+    sources:
+    - kind: database
+      title: "Cichlid Room Companion: Uaru amphiacanthoides, public species summary"
+      url: "https://cichlidae.com/species.php?id=Mto7SrpAQK6rm5MV7tRe6A"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "FishProfiles: Uaru amphiacanthoides"
+      url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Uaru_amphiacanthoides/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Nordiska Ciklidsallskapet: Uaru amphiacanthoides species register"
+      url: "https://ciklid.org/artregister/art.php?ID=548"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Seriously Fish: Uaru amphiacanthoides"
+      url: "https://www.seriouslyfish.com/species/uaru-amphiacanthoides/"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Aquariumline: Uaru amphiacanthoides structured care sheet"
+      url: "https://www.aquariumline.com/it/ciclidi-americani/39427-uaru-amphiacanthoides-cm-35.html"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Fishkeeper species data bank: Uaru amphiacanthoides"
+      url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/uaru-triangle-cichlid-"
+      accessed: '2026-10-13'
+    - kind: website
+      title: TropicalFreshwaterFish Uaru amphiacanthoides
+      url: "https://tropicalfreshwaterfish.com/species/Uaru_amphiacanthoides.html"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: database
+        title: "Seriously Fish: Uaru amphiacanthoides"
+        url: "https://www.seriouslyfish.com/species/uaru-amphiacanthoides/"
+        accessed: '2026-10-13'
+      value:
+      - wood
+      - sand
+      note: Root-associated habitat and sand-based aquarium design.
+    - source:
+        kind: database
+        title: "FishProfiles: Uaru amphiacanthoides"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Uaru_amphiacanthoides/"
+        accessed: '2026-10-13'
+      value:
+      - openWater
+      - sand
+      note: Middle and lower aquarium zones.
+    - source:
+        kind: database
+        title: "Nordiska Ciklidsallskapet: Uaru amphiacanthoides species register"
+        url: "https://ciklid.org/artregister/art.php?ID=548"
+        accessed: '2026-10-13'
+      value:
+      - wood
+      note: Natural fallen-tree and branch habitat.
+    - source:
+        kind: website
+        title: "Aquariumline: Uaru amphiacanthoides structured care sheet"
+        url: "https://www.aquariumline.com/it/ciclidi-americani/39427-uaru-amphiacanthoides-cm-35.html"
+        accessed: '2026-10-13'
+      value:
+      - wood
+      - sand
+      - openWater
+      note: "Sheltered wood, fine substrate and middle-to-lower swimming space."
+    - source:
+        kind: website
+        title: "Maidenhead Aquatics Fishkeeper: Uaru"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/uaru-triangle-cichlid-"
+        accessed: '2026-10-13'
+      value:
+      - wood
+      - plants
+      note: Vegetation and fallen timber in shaded native habitat.
+    - source:
+        kind: database
+        title: "Nordiska Ciklidsallskapet species register: Uaru amphiacanthoides"
+        url: "https://ciklid.org/artregister/art.php?ID=548"
+        accessed: '2026-10-13'
+      value:
+      - wood
+      - sand
+      note: Wood-associated habitat and sand pits used by breeding fish.
+  social:
+    value:
+      structure: group
+      minGroup: 6
+    confidence: medium
+    rationale: "All full runs recommend a group, but the generator proposed five adults, checker-a four and checker-b\
+      \ and checker-c six. Akvaforum explicitly recommends five to six individuals; six is selected as the upper\
+      \ end of that practical minimum. Stigliano describes a six-to-eight pairing cohort, the Nordic register prefers\
+      \ ten juveniles, and Crampton observed small wild groups. Juvenile pairing cohorts and wild group sizes are\
+      \ supporting context rather than tested adult aggression thresholds. Breeding pairs remain part of a social\
+      \ species."
+    sources:
+    - kind: literature
+      title: "Crampton (2008). Ecology and life history of an Amazon floodplain cichlid: the discus fish Symphysodon\
+        \ (Perciformes: Cichlidae). Uaru observations in the discussion."
+      url: "https://doi.org/10.1590/s1679-62252008000400008"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: Stigliano (2000). Uaru amphiacanthoides. Greater Chicago Cichlid Association
+      url: "https://www.gcca.net/art-pics/cichlid-profiles-list/south-american-cichlids/149-uaru-amphiacanthoides.html"
+      accessed: '2026-10-13'
+    - accessed: '2026-10-13'
+      kind: database
+      title: "Akvaforum fish database: Uaru amphiacanthoides"
+      url: "https://akvaforum.no/lex/fish.cfm/2472"
+    - kind: database
+      title: "FishProfiles: Uaru amphiacanthoides"
+      url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Uaru_amphiacanthoides/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Nordiska Ciklidsallskapet species register: Uaru amphiacanthoides"
+      url: "https://ciklid.org/artregister/art.php?ID=548"
+      accessed: '2026-10-13'
+    - kind: database
+      title: Seriously Fish Uaru amphiacanthoides
+      url: "https://www.seriouslyfish.com/species/uaru-amphiacanthoides/"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Aquaristikstudio species care sheet: Keilfleckbuntbarsch"
+      url: "https://www.aquaristikstudio.de/p/keilfleck-buntbarsch"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Fishkeeper species data bank: Uaru amphiacanthoides"
+      url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/uaru-triangle-cichlid-"
+      accessed: '2026-10-13'
+    - kind: website
+      title: TropicalFreshwaterFish Uaru amphiacanthoides
+      url: "https://tropicalfreshwaterfish.com/species/Uaru_amphiacanthoides.html"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: website
+        title: "Aquaristikstudio species care sheet: Keilfleckbuntbarsch"
+        url: "https://www.aquaristikstudio.de/p/keilfleck-buntbarsch"
+        accessed: '2026-10-13'
+      value:
+        structure: group
+        minGroup: 5
+      note: Explicit aquarium group minimum.
+    - source:
+        kind: literature
+        title: "Crampton (2008). Ecology and life history of an Amazon floodplain cichlid: the discus fish Symphysodon\
+          \ (Perciformes: Cichlidae). Uaru observations in the discussion."
+        url: "https://doi.org/10.1590/s1679-62252008000400008"
+        accessed: '2026-10-13'
+      value:
+        structure: group
+      note: Wild groups of no more than six reported; no aquarium minimum supplied.
+    - source:
+        kind: database
+        title: "Nordiska Ciklidsallskapet species register: Uaru amphiacanthoides"
+        url: "https://ciklid.org/artregister/art.php?ID=548"
+        accessed: '2026-10-13'
+      value:
+        structure: group
+        minGroup: 10
+      note: "Suggested juvenile starting group, not a mandatory adult minimum."
+    - source:
+        kind: database
+        title: "FishProfiles: Uaru amphiacanthoides"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Uaru_amphiacanthoides/"
+        accessed: '2026-10-13'
+      value:
+        structure: group
+      note: Shoaling setup is preferred; no numeric minimum.
+    - source:
+        kind: literature
+        title: Stigliano (2000). Uaru amphiacanthoides. Greater Chicago Cichlid Association
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/south-american-cichlids/149-uaru-amphiacanthoides.html"
+        accessed: '2026-10-13'
+      value:
+        structure: group
+        minGroup: 6
+      note: Six to eight fish are suggested for natural pair formation; not a formal adult minimum.
+    - source:
+        kind: website
+        title: "Maidenhead Aquatics Fishkeeper: Uaru"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/uaru-triangle-cichlid-"
+        accessed: '2026-10-13'
+      value:
+        structure: group
+      note: Small social groups without a numerical minimum.
+    - source:
+        accessed: '2026-10-13'
+        kind: database
+        title: "Akvaforum fish database: Uaru amphiacanthoides"
+        url: "https://akvaforum.no/lex/fish.cfm/2472"
+      value:
+        structure: group
+        minGroup: 5
+      note: The explicit care recommendation is five to six individuals; the upper endpoint is selected for the
+        final group minimum.
+  speciesOnly:
+    value: false
+    confidence: high
+    rationale: "All four full runs agree that a species-only aquarium is not the general recommendation. Seriously\
+      \ Fish and FishProfiles explicitly permit peaceful companions, independently supported by retailer husbandry\
+      \ accounts. The Uaru social group still needs space of its own, and breeding pairs can temporarily exclude\
+      \ neighbors."
+    sources:
+    - kind: database
+      title: FishBase Uaru amphiacanthoides
+      url: "https://www.fishbase.se/summary/Uaru-amphiacanthoides.html"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "FishProfiles: Uaru amphiacanthoides"
+      url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Uaru_amphiacanthoides/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Seriously Fish: Uaru amphiacanthoides"
+      url: "https://www.seriouslyfish.com/species/uaru-amphiacanthoides/"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Aquariumline: Uaru amphiacanthoides structured care sheet"
+      url: "https://www.aquariumline.com/it/ciclidi-americani/39427-uaru-amphiacanthoides-cm-35.html"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Fishkeeper species data bank: Uaru amphiacanthoides"
+      url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/uaru-triangle-cichlid-"
+      accessed: '2026-10-13'
+    - kind: website
+      title: TropicalFreshwaterFish Uaru amphiacanthoides
+      url: "https://tropicalfreshwaterfish.com/species/Uaru_amphiacanthoides.html"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: database
+        title: "Seriously Fish: Uaru amphiacanthoides"
+        url: "https://www.seriouslyfish.com/species/uaru-amphiacanthoides/"
+        accessed: '2026-10-13'
+      value: false
+      note: "Angelfish, severums, eartheaters and characins are suggested."
+    - source:
+        kind: website
+        title: "Fishkeeper species data bank: Uaru amphiacanthoides"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/uaru-triangle-cichlid-"
+        accessed: '2026-10-13'
+      value: false
+      note: Compatible with similarly sized nonaggressive community fish.
+    - source:
+        kind: database
+        title: "FishProfiles: Uaru amphiacanthoides"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Uaru_amphiacanthoides/"
+        accessed: '2026-10-13'
+      value: false
+      note: Allows peaceful tankmates.
+    - source:
+        kind: website
+        title: "Aquariumline: Uaru amphiacanthoides structured care sheet"
+        url: "https://www.aquariumline.com/it/ciclidi-americani/39427-uaru-amphiacanthoides-cm-35.html"
+        accessed: '2026-10-13'
+      value: false
+      note: Allows appropriately sized peaceful Amazonian companions.
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  hybridGroups:
+    value: []
+    confidence: low
+    rationale: "All four full runs assign no supported hybrid group, with confidence kept low. The Catalog of Fishes\
+      \ recognizes U. fernandezyepezi as a distinct Orinoco species, and the Nordic genus account, Staeck and Becker\
+      \ article and Practical Fishkeeping comparison report no named cross or direct interbreeding warning. The\
+      \ targeted search likewise found no substantiated cross. Shared genus alone was not taken as sufficient evidence\
+      \ for a group in this case. The empty list denotes absence of an assigned evidence-supported group; it does\
+      \ not establish reproductive isolation or impossibility of aquarium crossing."
+    sources:
+    - kind: catalog-of-fishes
+      title: "Eschmeyer's Catalog of Fishes: species of Uaru, updated 21 September 2026"
+      url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Uaru"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Clarke, M. Practical Fishkeeping: Uaru fernandezyepezi"
+      url: "https://www.practicalfishkeeping.co.uk/features/uaru-fernandezyepezi"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Staeck, adapted by Becker (2002). Uaru fernandezyepezi. NVC species article"
+      url: "https://www.nvcweb.nl/visbeschrijvingen/zuid-amerika/uaru-fernandezyepezi-stawikowski-1989"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Ahlander: Uaru genus account, Nordiska Ciklidsallskapet"
+      url: "https://www.ciklid.org/artregister/art_slakte.php?ID=Uaru"
+      accessed: '2026-10-13'
+    - kind: database
+      title: FishBase Uaru amphiacanthoides
+      url: "https://www.fishbase.se/summary/Uaru-amphiacanthoides.html"
+      accessed: '2026-10-13'
+    - kind: database
+      title: Seriously Fish Uaru amphiacanthoides
+      url: "https://www.seriouslyfish.com/species/uaru-amphiacanthoides/"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: species of Uaru, updated 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Uaru"
+        accessed: '2026-10-13'
+      value: []
+      note: "Taxonomy lists two valid species and no crossing evidence; the empty group is a research conclusion,\
+        \ not a claim made by the catalog."
+    - source:
+        kind: database
+        title: "Ahlander: Uaru genus account, Nordiska Ciklidsallskapet"
+        url: "https://www.ciklid.org/artregister/art_slakte.php?ID=Uaru"
+        accessed: '2026-10-13'
+      value: []
+      note: Recognizes separate species with different habitat requirements; reports no cross. Not an exclusion
+        experiment.
+    - source:
+        kind: literature
+        title: "Staeck, adapted by Becker (2002). Uaru fernandezyepezi. NVC species article"
+        url: "https://www.nvcweb.nl/visbeschrijvingen/zuid-amerika/uaru-fernandezyepezi-stawikowski-1989"
+        accessed: '2026-10-13'
+      value: []
+      note: "Two species are distinguished in the article, but no hybrid or crossing trial is reported."
+    - source:
+        kind: literature
+        title: "Clarke, M. Practical Fishkeeping: Uaru fernandezyepezi"
+        url: "https://www.practicalfishkeeping.co.uk/features/uaru-fernandezyepezi"
+        accessed: '2026-10-13'
+      value: []
+      note: Comparison of the two species contains no crossing report; absence is not an exclusion experiment.
+    - source:
+        kind: database
+        title: "Seriously Fish: Uaru amphiacanthoides"
+        url: "https://www.seriouslyfish.com/species/uaru-amphiacanthoides/"
+        accessed: '2026-10-13'
+      value: []
+      note: The species account supplies no crossing partner or hybridization warning.
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  coloration:
+    value:
+      baseColors:
+      - brown
+      - grey
+      - green
+      - black
+      pattern: spots
+    confidence: medium
+    rationale: "Generator and checker-c selected brown, grey and black with spots; checker-b also included green;\
+      \ checker-a selected grey, silver and black with mixed. Stigliano describes a green-brown adult background,\
+      \ and the other accounts support grey tones and dark discrete flank and tail-base marks. Retain green as an\
+      \ olive adult tone and use spots for the characteristic wedge-shaped blotch. Juvenile mottling and minor eye\
+      \ colors do not define the adult male value."
+    sources:
+    - kind: literature
+      title: Stigliano (2000). Uaru amphiacanthoides. Greater Chicago Cichlid Association
+      url: "https://www.gcca.net/art-pics/cichlid-profiles-list/south-american-cichlids/149-uaru-amphiacanthoides.html"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "FishProfiles: Uaru amphiacanthoides"
+      url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Uaru_amphiacanthoides/"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "AquariumDomain: Uaru Cichlid"
+      url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/UaruCichlid.shtml"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Aquariumline: Uaru amphiacanthoides structured care sheet"
+      url: "https://www.aquariumline.com/it/ciclidi-americani/39427-uaru-amphiacanthoides-cm-35.html"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Fishkeeper species data bank: Uaru amphiacanthoides"
+      url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/uaru-triangle-cichlid-"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Schafer (2024): Uaru amphiacanthoides, Aquarium Glaser"
+      url: "https://www.aquariumglaser.de/en/fisharchive/uaru-amphiacanthoides-2/"
+      accessed: '2026-10-13'
+    - kind: website
+      title: TropicalFreshwaterFish Uaru amphiacanthoides
+      url: "https://tropicalfreshwaterfish.com/species/Uaru_amphiacanthoides.html"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: database
+        title: "FishProfiles: Uaru amphiacanthoides"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Uaru_amphiacanthoides/"
+        accessed: '2026-10-13'
+      value:
+        baseColors:
+        - brown
+        - black
+        - orange
+        pattern: spots
+      note: Colour list and juvenile-to-adult transformation; pattern mapped from the description.
+    - source:
+        kind: website
+        title: "Schafer (2024): Uaru amphiacanthoides, Aquarium Glaser"
+        url: "https://www.aquariumglaser.de/en/fisharchive/uaru-amphiacanthoides-2/"
+        accessed: '2026-10-13'
+      value:
+        baseColors:
+        - brown
+        - grey
+        - black
+        pattern: spots
+      note: Adult wedge and strongly different juvenile patterns.
+    - source:
+        kind: literature
+        title: Stigliano (2000). Uaru amphiacanthoides. Greater Chicago Cichlid Association
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/south-american-cichlids/149-uaru-amphiacanthoides.html"
+        accessed: '2026-10-13'
+      value:
+        baseColors:
+        - brown
+        - green
+        - black
+        pattern: spots
+      note: Adult coloration; breeding dress becomes much darker.
+    - source:
+        kind: website
+        title: "Aquariumline: Uaru amphiacanthoides structured care sheet"
+        url: "https://www.aquariumline.com/it/ciclidi-americani/39427-uaru-amphiacanthoides-cm-35.html"
+        accessed: '2026-10-13'
+      value:
+        baseColors:
+        - brown
+        - grey
+        - green
+        - black
+        pattern: spots
+      note: Adult ground colors and triangular dark flank marking.
+    - source:
+        kind: website
+        title: "TropicalFreshwaterFish: Uaru amphiacanthoides"
+        url: "https://tropicalfreshwaterfish.com/species/Uaru_amphiacanthoides.html"
+        accessed: '2026-10-13'
+      value:
+        baseColors:
+        - grey
+        - silver
+        - black
+        pattern: spots
+      note: Adult flank blotch and tail-base spot.
+    - source:
+        kind: website
+        title: "AquariumDomain: Uaru Cichlid"
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/UaruCichlid.shtml"
+        accessed: '2026-10-13'
+      value:
+        baseColors:
+        - green
+        - brown
+        - black
+        pattern: spots
+      note: Adult brown-green base with a dark side blotch.
+    - source:
+        kind: database
+        title: "FishProfiles: Uaru amphiacanthoides"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Uaru_amphiacanthoides/"
+        accessed: '2026-10-13'
+      value:
+        baseColors:
+        - brown
+        - black
+        - orange
+        pattern: mixed
+      note: "Color listing includes orange, but does not separate dominant adult body colors from eyes or small\
+        \ accents."
+  feedingSpeed:
+    value: hasty
+    confidence: medium
+    rationale: "The generator proposed normal, checker-a slow and checker-b and checker-c hasty. Staeck and Becker\
+      \ explicitly describe eager plant-food consumption in U. amphiacanthoides and warn that Uaru can deprive slower\
+      \ discus of food. This species-specific appetite is stronger evidence than analogies with the calm swimming\
+      \ of discus. Hasty is a qualitative mapping, not a measured feeding-rate score; newly arrived or selective\
+      \ individuals may feed less eagerly."
+    sources:
+    - kind: literature
+      title: "Staeck, adapted by Becker (2002). Uaru fernandezyepezi. NVC species article"
+      url: "https://www.nvcweb.nl/visbeschrijvingen/zuid-amerika/uaru-fernandezyepezi-stawikowski-1989"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: Stigliano (2000). Uaru amphiacanthoides. Greater Chicago Cichlid Association
+      url: "https://www.gcca.net/art-pics/cichlid-profiles-list/south-american-cichlids/149-uaru-amphiacanthoides.html"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Nordiska Ciklidsallskapet species register: Uaru amphiacanthoides"
+      url: "https://ciklid.org/artregister/art.php?ID=548"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Fishkeeper species data bank: Uaru amphiacanthoides"
+      url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/uaru-triangle-cichlid-"
+      accessed: '2026-10-13'
+    - kind: model-knowledge
+      title: Inference from related discus-like cichlids and descriptions of the species
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: website
+        title: "Fishkeeper species data bank: Uaru amphiacanthoides"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/uaru-triangle-cichlid-"
+        accessed: '2026-10-13'
+      value: normal
+      note: Inference from acceptance of various foods with occasional selectivity; no speed measurement.
+    - source:
+        kind: literature
+        title: "Staeck, adapted by Becker (2002). Uaru fernandezyepezi. NVC species article"
+        url: "https://www.nvcweb.nl/visbeschrijvingen/zuid-amerika/uaru-fernandezyepezi-stawikowski-1989"
+        accessed: '2026-10-13'
+      value: hasty
+      note: "Species-specific appetite for vegetables, with a genus-level comparison against slower discus."
+    - source:
+        kind: literature
+        title: Stigliano (2000). Uaru amphiacanthoides. Greater Chicago Cichlid Association
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/south-american-cichlids/149-uaru-amphiacanthoides.html"
+        accessed: '2026-10-13'
+      value: normal
+      note: Readily accepts many foods; no actual feeding-speed measurement.
+    - source:
+        kind: database
+        title: "Nordiska Ciklidsallskapet species register: Uaru amphiacanthoides"
+        url: "https://ciklid.org/artregister/art.php?ID=548"
+        accessed: '2026-10-13'
+      value: hasty
+      note: Strong consumption of vegetable foods and planted vegetation; speed itself is not measured.
+  minTank:
+    value:
+      volumeL: 600
+      lengthCm: 180
+      depthCm: 60
+    confidence: low
+    rationale: "For the decided six-adult group, select checker-b proposal of 600 L, 180 cm length and 60 cm depth.\
+      \ Generator and checker-c proposed 540 L, 160 by 60 cm; checker-a proposed 400 L, 150 by 50 cm. The Nordic\
+      \ register specifies 540 L and 160 cm, while Aquariumline gives 400 to 500 L and 150 to 180 cm for a juvenile\
+      \ group or managed pair, with more space for adult groups. Akvaforum gives a wider 720 L recommendation. The\
+      \ selected intermediate volume and longer footprint are a practical group allowance, not an experimentally\
+      \ established threshold. Depth is inferred. Seriously Fish 200 L with a 120 by 45 cm base is explicitly pair-only\
+      \ and cannot set this adult-group minimum."
+    sources:
+    - accessed: '2026-10-13'
+      kind: database
+      title: "Akvaforum fish database: Uaru amphiacanthoides"
+      url: "https://akvaforum.no/lex/fish.cfm/2472"
+    - kind: database
+      title: "FishProfiles: Uaru amphiacanthoides"
+      url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Uaru_amphiacanthoides/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Nordiska Ciklidsallskapet species register: Uaru amphiacanthoides"
+      url: "https://ciklid.org/artregister/art.php?ID=548"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Seriously Fish: Uaru amphiacanthoides"
+      url: "https://www.seriouslyfish.com/species/uaru-amphiacanthoides/"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Aquaristikstudio species care sheet: Keilfleckbuntbarsch"
+      url: "https://www.aquaristikstudio.de/p/keilfleck-buntbarsch"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Aquariumline: Uaru amphiacanthoides structured care sheet"
+      url: "https://www.aquariumline.com/it/ciclidi-americani/39427-uaru-amphiacanthoides-cm-35.html"
+      accessed: '2026-10-13'
+    - kind: website
+      title: TropicalFreshwaterFish Uaru amphiacanthoides
+      url: "https://tropicalfreshwaterfish.com/species/Uaru_amphiacanthoides.html"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: database
+        title: "Nordiska Ciklidsallskapet species register: Uaru amphiacanthoides"
+        url: "https://ciklid.org/artregister/art.php?ID=548"
+        accessed: '2026-10-13'
+      value:
+        volumeL: 540
+        lengthCm: 160
+      note: Explicit aquarium size guidance.
+    - source:
+        kind: website
+        title: "Aquaristikstudio species care sheet: Keilfleckbuntbarsch"
+        url: "https://www.aquaristikstudio.de/p/keilfleck-buntbarsch"
+        accessed: '2026-10-13'
+      value:
+        volumeL: 400
+      note: Smaller stated floor with a group minimum of five.
+    - source:
+        kind: database
+        title: "Seriously Fish: Uaru amphiacanthoides"
+        url: "https://www.seriouslyfish.com/species/uaru-amphiacanthoides/"
+        accessed: '2026-10-13'
+      value:
+        volumeL: 200
+        lengthCm: 120
+        depthCm: 45
+      note: Pair-only recommendation; not applied to five adults.
+    - source:
+        kind: website
+        title: TropicalFreshwaterFish Uaru amphiacanthoides
+        url: "https://tropicalfreshwaterfish.com/species/Uaru_amphiacanthoides.html"
+        accessed: '2026-10-13'
+      value:
+        volumeL: 265
+        lengthCm: 122
+        depthCm: 45
+      note: depth assumed
+    - source:
+        kind: website
+        title: "Aquariumline: Uaru amphiacanthoides structured care sheet"
+        url: "https://www.aquariumline.com/it/ciclidi-americani/39427-uaru-amphiacanthoides-cm-35.html"
+        accessed: '2026-10-13'
+      value:
+        volumeL: 500
+        lengthCm: 180
+      note: Upper end of the stated pair or juvenile-group recommendation; adult groups need more.
+    - source:
+        kind: database
+        title: "Nordiska Ciklidsallskapet species register: Uaru amphiacanthoides"
+        url: "https://ciklid.org/artregister/art.php?ID=548"
+        accessed: '2026-10-13'
+      value:
+        volumeL: 540
+        lengthCm: 160
+        depthCm: null
+      note: Species recommendation supplies volume and length only.
+    - source:
+        kind: database
+        title: "FishProfiles: Uaru amphiacanthoides"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Uaru_amphiacanthoides/"
+        accessed: '2026-10-13'
+      value:
+        volumeL: 283.9
+        lengthCm: null
+        depthCm: null
+      note: 75 US gallons without footprint or adult shoal count.
+    - source:
+        accessed: '2026-10-13'
+        kind: database
+        title: "Akvaforum fish database: Uaru amphiacanthoides"
+        url: "https://akvaforum.no/lex/fish.cfm/2472"
+      value:
+        volumeL: 720
+      note: Larger published aquarium minimum; neither length nor front-to-back depth is supplied.
+  lifespanYears:
+    value:
+      min: 8
+      max: 12
+    confidence: low
+    rationale: "Generator and checker-c proposed 8 to 12 years, checker-b 8 to 10, and checker-a 8 to 15 from general\
+      \ model knowledge. The Bulgarian register and several hobby or retailer accounts give 8 to 12, while Fish\
+      \ Laboratory gives 8 to 10. None supplies a longitudinal cohort or documented series of old specimens; one\
+      \ retailer even gives five years. Retain 8 to 12 as a provisional commitment estimate rather than infer a\
+      \ 15-year ceiling."
+    sources:
+    - accessed: '2026-10-13'
+      kind: database
+      title: "Aqua-Fish: Uaru Cichlid care and breeding profile"
+      url: "https://en.aqua-fish.net/fish/the-uaru-cichlid?PageSpeed=noscript"
+    - kind: database
+      title: "Bulgarian Aquarium Encyclopedia: Uaru amphiacanthoides"
+      url: "https://aquariumbg.com/fish/517"
+      accessed: '2026-10-13'
+    - accessed: '2026-10-13'
+      kind: website
+      title: "Aquaristikstudio species care sheet: Keilfleckbuntbarsch"
+      url: "https://www.aquaristikstudio.de/p/keilfleck-buntbarsch"
+    - kind: website
+      title: "Fish Laboratory (2023): Uaru Cichlid care guide"
+      url: "https://www.fishlaboratory.com/fish/uaru-cichlid/"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Lone Star Rare Exotic Fish: Uaru Cichlid care information"
+      url: "https://www.lonestarrareexoticfish.com/products/uaru-cichlid-amphiacanthoides-for-sale-online-live-freshwater"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Valderrama: Uaru Cichlid Care Guide, AquariumStoreDepot"
+      url: "https://aquariumstoredepot.com/blogs/news/uaru-cichlid"
+      accessed: '2026-10-13'
+    - kind: model-knowledge
+      title: General knowledge of large Neotropical cichlids
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: database
+        title: "Bulgarian Aquarium Encyclopedia: Uaru amphiacanthoides"
+        url: "https://aquariumbg.com/fish/517"
+        accessed: '2026-10-13'
+      value:
+        min: 8
+        max: 12
+      note: Care-sheet estimate.
+    - source:
+        kind: website
+        title: "Valderrama: Uaru Cichlid Care Guide, AquariumStoreDepot"
+        url: "https://aquariumstoredepot.com/blogs/news/uaru-cichlid"
+        accessed: '2026-10-13'
+      value:
+        min: 8
+        max: 12
+      note: General hobby estimate.
+    - source:
+        kind: website
+        title: "Fish Laboratory (2023): Uaru Cichlid care guide"
+        url: "https://www.fishlaboratory.com/fish/uaru-cichlid/"
+        accessed: '2026-10-13'
+      value:
+        min: 8
+        max: 10
+      note: Hobby estimate without documented individual longevity records.
+    - source:
+        kind: website
+        title: "Lone Star Rare Exotic Fish: Uaru Cichlid care information"
+        url: "https://www.lonestarrareexoticfish.com/products/uaru-cichlid-amphiacanthoides-for-sale-online-live-freshwater"
+        accessed: '2026-10-13'
+      value:
+        min: 8
+        max: 12
+      note: Unreferenced aquarium lifespan claim.
+    - source:
+        accessed: '2026-10-13'
+        kind: database
+        title: "Aqua-Fish: Uaru Cichlid care and breeding profile"
+        url: "https://en.aqua-fish.net/fish/the-uaru-cichlid?PageSpeed=noscript"
+      value:
+        min: 8
+        max: 12
+      note: Care-page expectation without tracked survival records.
+    - source:
+        accessed: '2026-10-13'
+        kind: website
+        title: "Aquaristikstudio species care sheet: Keilfleckbuntbarsch"
+        url: "https://www.aquaristikstudio.de/p/keilfleck-buntbarsch"
+      value:
+        min: 5
+        max: 5
+      note: Conflicting unreferenced retailer expectation; not selected.
+  breeding:
+    value: open-substrate-spawner
+    confidence: high
+    rationale: "All full runs agree on open-substrate spawning. Seriously Fish, FishProfiles, the Nordic register\
+      \ and Stigliano describe firm exposed egg surfaces and parental care; CRC independently verifies the classification.\
+      \ Fishkeeper and some hobby accounts describe shaded cave spawnings, but optional shelter does not make an\
+      \ enclosed cave obligatory. Mucus grazing by fry is part of brood care and does not indicate mouthbrooding."
+    sources:
+    - kind: literature
+      title: "Crampton (2008). Ecology and life history of an Amazon floodplain cichlid: the discus fish Symphysodon\
+        \ (Perciformes: Cichlidae). Uaru observations in the discussion."
+      url: "https://doi.org/10.1590/s1679-62252008000400008"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: Stigliano (2000). Uaru amphiacanthoides. Greater Chicago Cichlid Association
+      url: "https://www.gcca.net/art-pics/cichlid-profiles-list/south-american-cichlids/149-uaru-amphiacanthoides.html"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Cichlid Room Companion: Uaru amphiacanthoides, public summary"
+      url: "https://cichlidae.com/species.php?id=Mto7SrpAQK6rm5MV7tRe6A"
+      accessed: '2026-10-13'
+    - kind: database
+      title: FishBase Uaru amphiacanthoides
+      url: "https://www.fishbase.se/summary/Uaru-amphiacanthoides.html"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "FishProfiles: Uaru amphiacanthoides"
+      url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Uaru_amphiacanthoides/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Nordiska Ciklidsallskapet species register: Uaru amphiacanthoides"
+      url: "https://ciklid.org/artregister/art.php?ID=548"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Seriously Fish: Uaru amphiacanthoides"
+      url: "https://www.seriouslyfish.com/species/uaru-amphiacanthoides/"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Fishkeeper species data bank: Uaru amphiacanthoides"
+      url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/uaru-triangle-cichlid-"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: database
+        title: "Seriously Fish: Uaru amphiacanthoides"
+        url: "https://www.seriouslyfish.com/species/uaru-amphiacanthoides/"
+        accessed: '2026-10-13'
+      value: open-substrate-spawner
+      note: Eggs on rock or wood.
+    - source:
+        kind: database
+        title: "Nordiska Ciklidsallskapet species register: Uaru amphiacanthoides"
+        url: "https://ciklid.org/artregister/art.php?ID=548"
+        accessed: '2026-10-13'
+      value: open-substrate-spawner
+      note: Eggs on a flat stone.
+    - source:
+        kind: website
+        title: "Fishkeeper species data bank: Uaru amphiacanthoides"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/uaru-triangle-cichlid-"
+        accessed: '2026-10-13'
+      value: cave-spawner
+      note: Conflicting shaded-cave description; interpreted as site choice.
+    - source:
+        kind: database
+        title: "FishProfiles: Uaru amphiacanthoides"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Uaru_amphiacanthoides/"
+        accessed: '2026-10-13'
+      value: open-substrate-spawner
+      note: Flat surfaces with brood defense by both parents.
+    - source:
+        kind: database
+        title: "Cichlid Room Companion: public Uaru amphiacanthoides summary, verification only"
+        url: "https://cichlidae.com/species.php?id=Mto7SrpAQK6rm5MV7tRe6A"
+        accessed: '2026-10-13'
+      value: open-substrate-spawner
+      note: "Verification only, used after independent husbandry research."
+  beginnerSuitability:
+    value: demanding
+    confidence: high
+    rationale: "All full runs select demanding. The Nordic register assigns advanced care and the Fishkeeper account\
+      \ excludes beginners, independently confirmed by CRC. An adult social group needs a large mature aquarium,\
+      \ stable warm water and a substantial plant component in its diet. More permissive moderate or easy ratings\
+      \ in individual care sheets do not remove these combined requirements."
+    sources:
+    - kind: database
+      title: "Cichlid Room Companion: Uaru amphiacanthoides, public summary"
+      url: "https://cichlidae.com/species.php?id=Mto7SrpAQK6rm5MV7tRe6A"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Nordiska Ciklidsallskapet species register: Uaru amphiacanthoides"
+      url: "https://ciklid.org/artregister/art.php?ID=548"
+      accessed: '2026-10-13'
+    - kind: database
+      title: Seriously Fish Uaru amphiacanthoides
+      url: "https://www.seriouslyfish.com/species/uaru-amphiacanthoides/"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "AquariumDomain: Uaru Cichlid"
+      url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/UaruCichlid.shtml"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Aquariumline: Uaru amphiacanthoides structured care sheet"
+      url: "https://www.aquariumline.com/it/ciclidi-americani/39427-uaru-amphiacanthoides-cm-35.html"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Fishkeeper species data bank: Uaru amphiacanthoides"
+      url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/uaru-triangle-cichlid-"
+      accessed: '2026-10-13'
+    - kind: website
+      title: TropicalFreshwaterFish Uaru amphiacanthoides
+      url: "https://tropicalfreshwaterfish.com/species/Uaru_amphiacanthoides.html"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: website
+        title: "Fishkeeper species data bank: Uaru amphiacanthoides"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/uaru-triangle-cichlid-"
+        accessed: '2026-10-13'
+      value: demanding
+      note: Not recommended for first-time keepers.
+    - source:
+        kind: database
+        title: "Nordiska Ciklidsallskapet species register: Uaru amphiacanthoides"
+        url: "https://ciklid.org/artregister/art.php?ID=548"
+        accessed: '2026-10-13'
+      value: demanding
+      note: Advanced care category.
+    - source:
+        kind: website
+        title: "Aquariumline: Uaru amphiacanthoides structured care sheet"
+        url: "https://www.aquariumline.com/it/ciclidi-americani/39427-uaru-amphiacanthoides-cm-35.html"
+        accessed: '2026-10-13'
+      value: demanding
+      note: Experienced large-cichlid keepers are recommended.
+    - source:
+        kind: database
+        title: "Seriously Fish: Uaru amphiacanthoides"
+        url: "https://www.seriouslyfish.com/species/uaru-amphiacanthoides/"
+        accessed: '2026-10-13'
+      value: moderate
+      note: "Its displayed difficulty grade differs, while its husbandry account emphasizes mature filtration and\
+        \ warm water."
+    - source:
+        kind: database
+        title: "Cichlid Room Companion: public Uaru amphiacanthoides summary, verification only"
+        url: "https://cichlidae.com/species.php?id=Mto7SrpAQK6rm5MV7tRe6A"
+        accessed: '2026-10-13'
+      value: demanding
+      note: "Public advanced-aquarist classification, verification only."
+    - source:
+        kind: website
+        title: "AquariumDomain: Uaru Cichlid"
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/UaruCichlid.shtml"
+        accessed: '2026-10-13'
+      value: easy
+      note: Conflicting simplified care-table rating.
+partners:
+  suitable:
+  - species: Pterophyllum scalare
+    reason: Husbandry sources name angelfish as peaceful companions sharing warm soft-water conditions.
+    condition: Use adults with compatible behavior and extra room beyond the Uaru group minimum.
+  - species: Heros efasciatus
+    reason: Severums are among the calm South American cichlids suggested as companions.
+    condition: Match individual water requirements and provide separate retreats for breeding pairs in a larger
+      tank.
+  - species: Satanoperca jurupari
+    reason: The suggested eartheater genus can complement a calm Uaru group when water conditions overlap.
+    condition: Provide its own social unit and sand-foraging area in a substantially larger aquarium.
+  unsuitable:
+  - species: Aggressive large cichlids
+    reason: Persistent intimidation prevents the Uaru group from resting and feeding normally.
+  - species: Fish at or below 2 cm adult length
+    reason: Level 1 predation assigns an opportunistic risk to fry and tiny fish; 2 cm is the rubric threshold.
+  - species: Symphysodon spp.
+    reason: "Staeck and Becker warn that enthusiastic Uaru feeding can deprive slower discus of food, so shared\
+      \ water requirements alone do not establish a suitable pairing."
+profile:
+  overview:
+    text: "Uaru amphiacanthoides is a social Amazonian cichlid whose adult flank wedge contrasts with the mottled\
+      \ pattern of young fish. A compatible adult group can share a spacious aquarium with peaceful companions.\
+      \ Its size, appetite for vegetation and water-quality needs make it demanding to maintain. The panda uaru,\
+      \ U. fernandezyepezi, is a separately recognized Orinoco species. The two names should remain distinct when\
+      \ identifying fish or recording breeding stock."
+    sources:
+    - accessed: '2026-10-13'
+      kind: catalog-of-fishes
+      title: "Eschmeyer's Catalog of Fishes: species of Uaru, updated 21 September 2026"
+      url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Uaru"
+    - accessed: '2026-10-13'
+      kind: database
+      title: "FishBase species summary: Uaru amphiacanthoides"
+      url: "https://www.fishbase.se/summary/Uaru-amphiacanthoides.html"
+    - accessed: '2026-10-13'
+      kind: database
+      title: "Nordiska Ciklidsallskapet: Uaru amphiacanthoides species register"
+      url: "https://ciklid.org/artregister/art.php?ID=548"
+    - accessed: '2026-10-13'
+      kind: database
+      title: "Seriously Fish: Uaru amphiacanthoides"
+      url: "https://www.seriouslyfish.com/species/uaru-amphiacanthoides/"
+    - accessed: '2026-10-13'
+      kind: website
+      title: "Schafer (2024): Uaru amphiacanthoides, Aquarium Glaser"
+      url: "https://www.aquariumglaser.de/en/fisharchive/uaru-amphiacanthoides-2/"
+  habitat:
+    text: "The range includes the Amazon-Solimoes mainstem between the Japura and Tapajos and the middle and lower\
+      \ Rio Negro; a modern survey also records it in the Uatuma basin. Submerged wood, shaded margins and neighboring\
+      \ swimming space provide a useful habitat model. Regional field studies support warm water with little calcium\
+      \ and magnesium, especially in the Negro. The adopted natural ranges are 26 to 31 C, pH 4.4 to 7.1, GH 0 to\
+      \ 2 dGH and KH 0 to 2 dKH. Regional samples also extend beyond these bounds, as disclosed in the feature rationales.\
+      \ Identified Uaru were not sampled beside every chemistry measurement, so these are habitat summaries with\
+      \ incomplete locality coverage."
+    sources:
+    - accessed: '2026-10-13'
+      kind: catalog-of-fishes
+      title: "Eschmeyer's Catalog of Fishes: species of Uaru, updated 21 September 2026"
+      url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Uaru"
+    - accessed: '2026-10-13'
+      kind: literature
+      title: "Costa, Weiss and Piedade (2024). Responses of trophic fish guilds upstream and downstream of the Balbina\
+        \ dam, Central Amazon, Northern Brazil"
+      url: "https://doi.org/10.1590/1982-0224-2023-0009"
+    - accessed: '2026-10-13'
+      kind: literature
+      title: "Diel patterns of temperature, conductivity and dissolved oxygen in an Amazon floodplain lake: description\
+        \ of a friagem phenomenon (2014)"
+      url: "https://doi.org/10.1590/s2179-975x2014000300011"
+    - accessed: '2026-10-13'
+      kind: literature
+      title: "JBL (2009). Brazil expedition report: measured water parameters"
+      url: "https://www.jbl.de/en/expeditions-2009-brazil/detail/9/expedition-2009-brazil?country=dk&page_id=5002"
+    - accessed: '2026-10-13'
+      kind: literature
+      title: Leenheer and Santos (1980). Consideracoes sobre os processos de sedimentacao na agua preta acida do
+        rio Negro (Amazonia Central)
+      url: "https://doi.org/10.1590/1809-43921980102343"
+    - accessed: '2026-10-13'
+      kind: literature
+      title: "Queiroz et al. (2009). Hidroquimica do rio Solimoes na regiao entre Manacapuru e Alvaraes, Amazonas,\
+        \ Brasil"
+      url: "https://doi.org/10.1590/s0044-59672009000400022"
+    - accessed: '2026-10-13'
+      kind: database
+      title: "FishBase species summary: Uaru amphiacanthoides"
+      url: "https://www.fishbase.se/summary/Uaru-amphiacanthoides.html"
+    - accessed: '2026-10-13'
+      kind: database
+      title: "Nordiska Ciklidsallskapet: Uaru amphiacanthoides species register"
+      url: "https://ciklid.org/artregister/art.php?ID=548"
+    - accessed: '2026-10-13'
+      kind: database
+      title: "Seriously Fish: Uaru amphiacanthoides"
+      url: "https://www.seriouslyfish.com/species/uaru-amphiacanthoides/"
+  sizeAndGrowth:
+    text: "Typical planning maxima are about 25 cm for males and 24 cm for females, with considerable uncertainty\
+      \ in the small sex difference. Some accounts list an unsexed 30 cm ceiling and the archive contains a roughly\
+      \ 28 cm aquarium specimen. Scientific standard length excludes the tail and should be distinguished from aquarium\
+      \ total-length reports. The chosen values favor usual well-kept adults rather than the largest reported fish.\
+      \ Young fish change their markings as they grow. A lifespan around eight to twelve years is a provisional\
+      \ estimate with no supporting survival series."
+    sources:
+    - accessed: '2026-10-13'
+      kind: literature
+      title: Stigliano (2000). Uaru amphiacanthoides. Greater Chicago Cichlid Association
+      url: "https://www.gcca.net/art-pics/cichlid-profiles-list/south-american-cichlids/149-uaru-amphiacanthoides.html"
+    - accessed: '2026-10-13'
+      kind: database
+      title: "Aqua-Fish: Uaru Cichlid care and breeding profile"
+      url: "https://en.aqua-fish.net/fish/the-uaru-cichlid?PageSpeed=noscript"
+    - accessed: '2026-10-13'
+      kind: database
+      title: "Bulgarian Aquarium Encyclopedia: Uaru amphiacanthoides"
+      url: "https://aquariumbg.com/fish/517"
+    - accessed: '2026-10-13'
+      kind: database
+      title: "FishBase species summary: Uaru amphiacanthoides"
+      url: "https://www.fishbase.se/summary/Uaru-amphiacanthoides.html"
+    - accessed: '2026-10-13'
+      kind: database
+      title: "FishProfiles: Uaru amphiacanthoides"
+      url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Uaru_amphiacanthoides/"
+    - accessed: '2026-10-13'
+      kind: archive
+      title: cichlids.com forum thread 125
+      url: "https://www.cichlids.com/disc/read.php?1,125"
+  husbandry:
+    text: "Provide a compatible group of at least six adults with a practical minimum of 600 litres, 180 cm length\
+      \ and 60 cm front-to-back space. Those dimensions are an adjudicated planning allowance; published recommendations\
+      \ vary, and additional large fish need more room. Arrange submerged wood and sheltered areas around an unobstructed\
+      \ swimming space, with a fine substrate. Decorative plants may be eaten. Mature filtration and regular partial\
+      \ water changes are central to sustained health. Routine temperatures near 28 to 30 C, soft water and a stable\
+      \ mildly acidic to near-neutral pH are better supported than the outer tolerance endpoints. The selected tolerances\
+      \ are 26 to 32 C, pH 4.4 to 7.5, GH 0 to 5 dGH and KH 0 to 5 dKH, with low confidence in each complete interval.\
+      \ Different endpoint combinations need not be chemically achievable together."
+    sources:
+    - accessed: '2026-10-13'
+      kind: literature
+      title: "JBL (2009). Brazil expedition report: measured water parameters"
+      url: "https://www.jbl.de/en/expeditions-2009-brazil/detail/9/expedition-2009-brazil?country=dk&page_id=5002"
+    - accessed: '2026-10-13'
+      kind: database
+      title: "Akvaforum fish database: Uaru amphiacanthoides"
+      url: "https://akvaforum.no/lex/fish.cfm/2472"
+    - accessed: '2026-10-13'
+      kind: database
+      title: "Bulgarian Aquarium Encyclopedia: Uaru amphiacanthoides"
+      url: "https://aquariumbg.com/fish/517"
+    - accessed: '2026-10-13'
+      kind: database
+      title: "FishProfiles: Uaru amphiacanthoides"
+      url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Uaru_amphiacanthoides/"
+    - accessed: '2026-10-13'
+      kind: database
+      title: "Nordiska Ciklidsallskapet: Uaru amphiacanthoides species register"
+      url: "https://ciklid.org/artregister/art.php?ID=548"
+    - accessed: '2026-10-13'
+      kind: database
+      title: "Seriously Fish: Uaru amphiacanthoides"
+      url: "https://www.seriouslyfish.com/species/uaru-amphiacanthoides/"
+    - accessed: '2026-10-13'
+      kind: website
+      title: "Maidenhead Aquatics Fishkeeper: Uaru"
+      url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/uaru-triangle-cichlid-"
+  socialBehavior:
+    text: "Adults usually stay calm in a compatible group and may settle disputes with displays or short chases.\
+      \ A pair defending eggs or fry can drive other fish away from its immediate breeding area. The expected territory\
+      \ is local and breeding-related, but its size has not been measured. Source advice differs on retaining surplus\
+      \ adults after a pair forms, so observe the actual group for exclusion and damage. Repeated hiding or failure\
+      \ to feed calls for a change in space, shelter or social arrangement."
+    sources:
+    - accessed: '2026-10-13'
+      kind: literature
+      title: Stigliano (2000). Uaru amphiacanthoides. Greater Chicago Cichlid Association
+      url: "https://www.gcca.net/art-pics/cichlid-profiles-list/south-american-cichlids/149-uaru-amphiacanthoides.html"
+    - accessed: '2026-10-13'
+      kind: database
+      title: "FishProfiles: Uaru amphiacanthoides"
+      url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Uaru_amphiacanthoides/"
+    - accessed: '2026-10-13'
+      kind: database
+      title: "Nordiska Ciklidsallskapet: Uaru amphiacanthoides species register"
+      url: "https://ciklid.org/artregister/art.php?ID=548"
+    - accessed: '2026-10-13'
+      kind: website
+      title: "Maidenhead Aquatics Fishkeeper: Uaru"
+      url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/uaru-triangle-cichlid-"
+  diet:
+    text: "Use a nutritionally complete food with a substantial plant component and offer suitable vegetables for\
+      \ browsing. Aquatic invertebrates can provide variety. Wild food records include plants and animal foods,\
+      \ including freshwater sponges, supporting plant-heavy omnivory. The fixed food list describes both natural\
+      \ foods and aquarium foods; it is not an instruction to obtain wild sponges. Established adults may feed eagerly\
+      \ and compete strongly with slower fish. The bloat-sensitive conflict flag is false because the specific tendency\
+      \ remains unestablished; it does not establish immunity or justify an animal-food-only menu. Remove uneaten\
+      \ fresh foods before they spoil."
+    sources:
+    - accessed: '2026-10-13'
+      kind: literature
+      title: "Staeck, adapted by Becker (2002). Uaru fernandezyepezi. NVC species article"
+      url: "https://www.nvcweb.nl/visbeschrijvingen/zuid-amerika/uaru-fernandezyepezi-stawikowski-1989"
+    - accessed: '2026-10-13'
+      kind: database
+      title: "FishBase species summary: Uaru amphiacanthoides"
+      url: "https://www.fishbase.se/summary/Uaru-amphiacanthoides.html"
+    - accessed: '2026-10-13'
+      kind: database
+      title: "FishBase: food items reported for Uaru amphiacanthoides"
+      url: "https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=11512&genus=Uaru&species=amphiacanthoides"
+    - accessed: '2026-10-13'
+      kind: database
+      title: "Nordiska Ciklidsallskapet: Uaru amphiacanthoides species register"
+      url: "https://ciklid.org/artregister/art.php?ID=548"
+    - accessed: '2026-10-13'
+      kind: database
+      title: "Seriously Fish: Uaru amphiacanthoides"
+      url: "https://www.seriouslyfish.com/species/uaru-amphiacanthoides/"
+    - accessed: '2026-10-13'
+      kind: website
+      title: "Maidenhead Aquatics Fishkeeper: Uaru"
+      url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/uaru-triangle-cichlid-"
+  breeding:
+    text: "A pair deposits adhesive eggs on a firm surface such as stone or wood and both adults care for the brood.\
+      \ A shaded site may be chosen, but an enclosed cave is not obligatory. Larvae may be moved to nearby substrate\
+      \ pits. Free-swimming young can graze the parents' skin mucus and subsequently accept fine fry foods. Mucus\
+      \ feeding is distinct from mouthbrooding. Provide room for brood defense and observe whether the other adults\
+      \ can withdraw. Wild fish may need softer and more acidic spawning conditions than established captive stock."
+    sources:
+    - accessed: '2026-10-13'
+      kind: literature
+      title: "Crampton (2008). Ecology and life history of an Amazon floodplain cichlid: the discus fish Symphysodon\
+        \ (Perciformes: Cichlidae). Uaru observations in the discussion."
+      url: "https://doi.org/10.1590/s1679-62252008000400008"
+    - accessed: '2026-10-13'
+      kind: literature
+      title: Stigliano (2000). Uaru amphiacanthoides. Greater Chicago Cichlid Association
+      url: "https://www.gcca.net/art-pics/cichlid-profiles-list/south-american-cichlids/149-uaru-amphiacanthoides.html"
+    - accessed: '2026-10-13'
+      kind: database
+      title: "FishProfiles: Uaru amphiacanthoides"
+      url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Uaru_amphiacanthoides/"
+    - accessed: '2026-10-13'
+      kind: database
+      title: "Nordiska Ciklidsallskapet: Uaru amphiacanthoides species register"
+      url: "https://ciklid.org/artregister/art.php?ID=548"
+    - accessed: '2026-10-13'
+      kind: database
+      title: "Seriously Fish: Uaru amphiacanthoides"
+      url: "https://www.seriouslyfish.com/species/uaru-amphiacanthoides/"
+    - accessed: '2026-10-13'
+      kind: website
+      title: "Schafer (2024): Uaru amphiacanthoides, Aquarium Glaser"
+      url: "https://www.aquariumglaser.de/en/fisharchive/uaru-amphiacanthoides-2/"
+  sexing:
+    text: "Both sexes have broadly similar appearance, and color or fin shape is an uncertain basis for choosing\
+      \ a pair. Average size differences overlap too much to identify individual fish reliably. Near spawning, the\
+      \ female egg-laying tube is broader than the male papilla, and observing egg deposition is more useful than\
+      \ judging a photograph. Growing a social group together allows compatible pairs to form."
+    sources:
+    - accessed: '2026-10-13'
+      kind: database
+      title: "FishProfiles: Uaru amphiacanthoides"
+      url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Uaru_amphiacanthoides/"
+    - accessed: '2026-10-13'
+      kind: database
+      title: "Nordiska Ciklidsallskapet: Uaru amphiacanthoides species register"
+      url: "https://ciklid.org/artregister/art.php?ID=548"
+    - accessed: '2026-10-13'
+      kind: database
+      title: "Seriously Fish: Uaru amphiacanthoides"
+      url: "https://www.seriouslyfish.com/species/uaru-amphiacanthoides/"
+    - accessed: '2026-10-13'
+      kind: website
+      title: "Maidenhead Aquatics Fishkeeper: Uaru"
+      url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/uaru-triangle-cichlid-"
+    - accessed: '2026-10-13'
+      kind: website
+      title: "Schafer (2024): Uaru amphiacanthoides, Aquarium Glaser"
+      url: "https://www.aquariumglaser.de/en/fisharchive/uaru-amphiacanthoides-2/"
+  compatibility:
+    text: "Peaceful adult angelfish, severums and suitable eartheaters can work when their individual water needs\
+      \ overlap and the aquarium accommodates every social unit. Avoid fish that persistently intimidate Uaru. Tiny\
+      \ fish and fry remain vulnerable to occasional ingestion, despite some sources reporting safe tetra companions.\
+      \ Feeding competition also matters: the Staeck and Becker account warns that Uaru can deprive slower discus\
+      \ of food. U. fernandezyepezi is a separate species with more specialized blackwater care. No supported Uaru\
+      \ hybrid group was assigned; that research result does not prove that crossing is impossible."
+    sources:
+    - accessed: '2026-10-13'
+      kind: catalog-of-fishes
+      title: "Eschmeyer's Catalog of Fishes: species of Uaru, updated 21 September 2026"
+      url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Uaru"
+    - accessed: '2026-10-13'
+      kind: literature
+      title: "Clarke, M. Practical Fishkeeping: Uaru fernandezyepezi"
+      url: "https://www.practicalfishkeeping.co.uk/features/uaru-fernandezyepezi"
+    - accessed: '2026-10-13'
+      kind: literature
+      title: "Staeck, adapted by Becker (2002). Uaru fernandezyepezi. NVC species article"
+      url: "https://www.nvcweb.nl/visbeschrijvingen/zuid-amerika/uaru-fernandezyepezi-stawikowski-1989"
+    - accessed: '2026-10-13'
+      kind: database
+      title: "Ahlander: Uaru genus account, Nordiska Ciklidsallskapet"
+      url: "https://www.ciklid.org/artregister/art_slakte.php?ID=Uaru"
+    - accessed: '2026-10-13'
+      kind: database
+      title: "FishProfiles: Uaru amphiacanthoides"
+      url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Uaru_amphiacanthoides/"
+    - accessed: '2026-10-13'
+      kind: database
+      title: "Seriously Fish: Uaru amphiacanthoides"
+      url: "https://www.seriouslyfish.com/species/uaru-amphiacanthoides/"
+    - accessed: '2026-10-13'
+      kind: website
+      title: "Maidenhead Aquatics Fishkeeper: Uaru"
+      url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/uaru-triangle-cichlid-"
+  problems:
+    text: "An inadequate adult tank, isolation, repeated exclusion at feeding, plant-poor nutrition and declining\
+      \ water quality can all undermine this species. Monitor whether each fish eats and maintains body condition,\
+      \ particularly after a pair begins breeding. Warm water calls for dependable oxygenation and filtration, while\
+      \ leftover vegetables add to the waste load. New fish benefit from quarantine. Persistent appetite loss, abnormal\
+      \ breathing, swelling or tissue damage warrants a water-quality review and qualified fish-health assessment;\
+      \ symptoms alone do not identify one cause."
+    sources:
+    - accessed: '2026-10-13'
+      kind: database
+      title: "Nordiska Ciklidsallskapet: Uaru amphiacanthoides species register"
+      url: "https://ciklid.org/artregister/art.php?ID=548"
+    - accessed: '2026-10-13'
+      kind: database
+      title: "Seriously Fish: Uaru amphiacanthoides"
+      url: "https://www.seriouslyfish.com/species/uaru-amphiacanthoides/"
+    - accessed: '2026-10-13'
+      kind: website
+      title: "Maidenhead Aquatics Fishkeeper: Uaru"
+      url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/uaru-triangle-cichlid-"
+provenance:
+  runs:
+  - role: generator
+    model: gpt-6.1-sol
+    date: '2026-10-13'
+  - role: checker
+    model: gpt-6.1-sol
+    date: '2026-10-13'
+  - role: checker
+    model: gpt-6.1-sol
+    date: '2026-10-13'
+  - role: checker
+    model: gpt-6.1-sol
+    date: '2026-10-13'
+  - role: checker
+    model: gpt-6.1-sol
+    date: '2026-10-13'
+  - role: checker
+    model: gpt-6.1-sol
+    date: '2026-10-13'
+  - role: adjudicator
+    model: gpt-6.1-sol
+    date: '2026-10-13'
+  disagreements:
+  - field: taxonomy.synonyms
+    proposals:
+    - by: generator
+      value:
+      - Pomotis fasciatus
+      - Acara imperialis
+      - Uaru obscurum
+    - by: checker-a
+      value:
+      - Pomotis fasciatus
+      - Uaru obscurum
+      - Acara (Heros) imperialis
+    - by: checker-b
+      value:
+      - Pomotis fasciatus
+      - Uaru obscurum
+      - Acara (Heros) imperialis
+    - by: checker-c
+      value:
+      - Pomotis fasciatus
+      - Acara (Heros) imperialis
+      - Uaru obscurum
+    decision:
+    - Pomotis fasciatus
+    - Uaru obscurum
+    - Acara (Heros) imperialis
+    rationale: The generator abbreviated Acara (Heros) imperialis to Acara imperialis; the other full runs used
+      the original catalog spelling. Preserve the Catalog of Fishes spelling and recognize all three names as synonyms.
+      Order differences have no taxonomic significance.
+  - field: features.predation
+    proposals:
+    - by: generator
+      value: 1
+    - by: checker-a
+      value: 0
+    - by: checker-b
+      value: 1
+    - by: checker-c
+      value: 1
+    - by: tiebreaker-1
+      value: 1
+    - by: tiebreaker-2
+      value: 1
+    decision: 1
+    rationale: "The tally selects level 1 by five of six votes: occasional fry and very small fish are at risk,\
+      \ with no established routine piscivory. Fishkeeper excludes small companions, LiveAquaria reports occasional\
+      \ consumption of offspring, and other retailer sheets warn about tiny fish. Seriously Fish accepts tetra companions\
+      \ and FishBase lists plant and invertebrate foods without fish prey; these are weaker negative evidence against\
+      \ occasional ingestion. AquariumDomain gives a broader mouth-sized prey warning without showing frequency.\
+      \ The 2 cm cutoff belongs to the rubric, not a measured Uaru prey threshold. The recorded decision and verification\
+      \ method are copied from tally.yaml."
+  - field: features.diet
+    proposals:
+    - by: generator
+      value:
+        type: omnivore
+        bloatSensitive: true
+        foods:
+        - Plant-rich complete cichlid pellets
+        - Spirulina flakes
+        - Soft leafy greens
+        - Shelled peas
+        - Zucchini
+        - Small portions of aquatic invertebrates
+    - by: checker-a
+      value:
+        type: omnivore
+        bloatSensitive: false
+        foods:
+        - plant matter
+        - vegetables
+        - insects
+        - crustaceans
+        - sponges
+        - pellets
+    - by: checker-b
+      value:
+        type: omnivore
+        bloatSensitive: false
+        foods:
+        - plant material
+        - fruit and seeds
+        - detritus
+        - aquatic invertebrates
+        - freshwater sponges
+        - vegetable-based prepared food
+    - by: checker-c
+      value:
+        type: omnivore
+        bloatSensitive: false
+        foods:
+        - aquatic plant material
+        - vegetable-based pellets
+        - peas and leafy greens
+        - small invertebrates
+    - by: tiebreaker-1
+      value:
+        type: omnivore
+        bloatSensitive: false
+    - by: tiebreaker-2
+      value:
+        type: omnivore
+        bloatSensitive: false
+    decision:
+      type: omnivore
+      bloatSensitive: false
+      foods:
+      - plant matter
+      - vegetables
+      - insects
+      - crustaceans
+      - sponges
+      - pellets
+    rationale: "The tally selects plant-heavy omnivory and bloatSensitive false by five of six votes, retaining\
+      \ the exact decided food list. FishBase food records and Seriously Fish describe plants together with invertebrates\
+      \ and freshwater sponges; this fits omnivore rather than specialized biofilm grazing. The CRC herbivory summary\
+      \ independently confirms plant dominance only. The generator proposed bloatSensitive true from a general retailer\
+      \ article, while all three checkers and both tie-breakers proposed false because independent species-specific\
+      \ evidence of a protein-triggered bloat tendency was not established. False means that the conflict flag is\
+      \ unestablished, not proven immunity. Uncertainty in that flag keeps the compound feature at low confidence.\
+      \ The recorded decision and verification method are copied from tally.yaml."
+  - field: features.temperatureC
+    proposals:
+    - by: generator
+      value:
+        min: 28
+        max: 32
+    - by: checker-a
+      value:
+        min: 27
+        max: 30
+    - by: checker-b
+      value:
+        min: 26.3
+        max: 30.3
+    - by: checker-c
+      value:
+        min: 27
+        max: 32
+    - by: tiebreaker-1
+      value:
+        min: 26.3
+        max: 32
+    - by: tiebreaker-2
+      value:
+        min: 26.3
+        max: 31
+    decision:
+      min: 26
+      max: 31
+    rationale: "The tally fixes 26 to 31 C by qualified-majority agreement of five of six votes. JBL measured 26.3\
+      \ to 30.3 C in the Negro-Solimoes region; Lapointe and colleagues used 31 C as a regional average maximum.\
+      \ The decided integer range summarizes habitat proxies, not continuous tracking of Uaru. Wider regional records\
+      \ are retained as context: Catalao seasonal means extend to 31.7 C, its diel study reaches 32 C, and Mamiraua\
+      \ surface measurements span 26.5 to 34.7 C with the highest value during the exceptional 2010 drought. None\
+      \ demonstrates sustained Uaru occupation at those extremes. FishBase temperature recommendations derive from\
+      \ husbandry and do not establish natural limits. The recorded decision and verification method are copied\
+      \ from tally.yaml."
+  - field: features.ph
+    proposals:
+    - by: generator
+      value:
+        min: 4.5
+        max: 7.5
+    - by: checker-a
+      value:
+        min: 4.5
+        max: 7
+    - by: checker-b
+      value:
+        min: 4.2
+        max: 7.2
+    - by: checker-c
+      value:
+        min: 3.9
+        max: 7
+    decision:
+      min: 4.4
+      max: 7.1
+    rationale: "The tally fixes pH 4.4 to 7.1 and classifies the four votes as unanimous under its range-agreement\
+      \ procedure. Regional field studies and the FishBase occurrence at pH 6.8 support acidic Negro and less acidic\
+      \ Solimoes habitats. This aggregate is narrower than Leenheer and Santos measurements of 4.2 to 7.2, Kuchler\
+      \ and colleagues regional span of 3.89 to 6.99, and the Catalao span of 5.86 to 7.47. Those wider source ranges\
+      \ remain evidence rather than being silently replaced. The lower Kuchler extreme was in the Tea tributary;\
+      \ identified Uaru were not recorded at every chemistry station. The decided range is a regional summary, not\
+      \ a proven species-wide boundary. The recorded decision and verification method are copied from tally.yaml."
+  - field: features.ghDgh
+    proposals:
+    - by: generator
+      value:
+        min: 0
+        max: 2
+    - by: checker-a
+      value:
+        min: 0
+        max: 2
+    - by: checker-b
+      value:
+        min: 0
+        max: 2.5
+    - by: checker-c
+      value:
+        min: 0
+        max: 3
+    decision:
+      min: 0
+      max: 2
+    rationale: The tally fixes 0 to 2 dGH with unanimous range agreement and low confidence. Actual calcium and
+      magnesium support very soft native water; conversion uses dGH = Ca in mg/L divided by 7.14 plus Mg in mg/L
+      divided by 4.34. Zero represents hardness below common aquarium-test resolution. The decided ceiling is narrower
+      than the Solimoes paired-sample conversions of about 1.45 to 2.30 dGH in Queiroz and colleagues and the later
+      collected-water mean of about 2.48 dGH in the Tambaqui study. These wider regional results are disclosed without
+      changing the tally. Conductivity is not converted into hardness. FishBase 5 to 12 dH is husbandry context
+      rather than a field-hardness series. The recorded decision and verification method are copied from tally.yaml.
+  - field: features.khDkh
+    proposals:
+    - by: generator
+      value:
+        min: 0
+        max: 3
+    - by: checker-a
+      value:
+        min: 0
+        max: 2.5
+    - by: checker-b
+      value:
+        min: 0
+        max: 2
+    - by: checker-c
+      value:
+        min: 0
+        max: 2
+    decision:
+      min: 0
+      max: 2
+    rationale: "The tally fixes the natural value at 0 to 2 dKH with low confidence; KH remains a plain natural-water\
+      \ fact without a verification object. JBL measured zero in Negro-system waters, 1.5 in mixed water and 2 in\
+      \ the Solimoes. Leenheer and Santos and Queiroz independently support low carbonate alkalinity from measured\
+      \ bicarbonate, converted as HCO3 in mg/L divided by 21.8. This is narrower than the supplied Catalao seasonal-mean\
+      \ bicarbonate-equivalent span of 0.56 to 2.68 dKH and the checker-a conversion of 0.7 to 2.4. Titrated alkalinity\
+      \ in humic blackwater may include noncarbonate contributions. No GH value is used as KH. The recorded decision\
+      \ and verification method are copied from tally.yaml."
+  - field: features.temperatureC.tolerance
+    proposals:
+    - by: generator
+      value:
+        min: 26
+        max: 32
+    - by: checker-a
+      value:
+        min: 25
+        max: 30
+    - by: checker-b
+      value:
+        min: 25
+        max: 30.3
+    - by: checker-c
+      value:
+        min: 26
+        max: 32
+    - by: tiebreaker-1
+      value:
+        min: 26
+        max: 32
+    - by: tiebreaker-2
+      value:
+        min: 25
+        max: 32
+    decision:
+      min: 26
+      max: 32
+    rationale: "The tally selects 26 to 32 C by qualified majority, with low confidence for the outer endpoints.\
+      \ Generator, checker-c and tiebreaker-1 proposed 26 to 32; checker-a proposed 25 to 30; checker-b 25 to 30.3;\
+      \ tiebreaker-2 25 to 32. Fishkeeper and Akvaforum recommend 26 to 30, Seriously Fish 27 to 30, and the Bulgarian\
+      \ register 28 to 32. The wider Aquaplante retailer range is 24 to 32 C and GCCA gives approximately 23.9 to\
+      \ 29.4 C; neither justifies lowering the decided minimum. Aquarium Glaser supports 26 to 32, but those upper-end\
+      \ accounts do not document years of health at 32 C. Routine maintenance around 28 to 30 C is better supported\
+      \ than either outer edge. The recorded decision and verification method are copied from tally.yaml."
+  - field: features.ph.tolerance
+    proposals:
+    - by: generator
+      value:
+        min: 4.5
+        max: 7.5
+    - by: checker-a
+      value:
+        min: 4.5
+        max: 7.5
+    - by: checker-b
+      value:
+        min: 4.2
+        max: 7.5
+    - by: checker-c
+      value:
+        min: 3.9
+        max: 7.5
+    decision:
+      min: 4.4
+      max: 7.5
+    rationale: "The tally selects pH 4.4 to 7.5 with unanimous range agreement and low confidence. Generator and\
+      \ checker-a proposed 4.5 to 7.5, checker-b 4.2 to 7.5 and checker-c 3.9 to 7.5. Its final lower bound includes\
+      \ the decided natural range. Husbandry support is strongest around 5 to 7.2, with FishProfiles allowing 5.5\
+      \ to 7.5 and Stigliano reporting spawnings at 5.5 to 7.4. The broader checker-c proposal originates in regional\
+      \ measurements down to 3.89, not documented years of captive health there. The 4.4 extension is habitat-based\
+      \ inclusion rather than a proved multiyear aquarium endpoint. The recorded decision and verification method\
+      \ are copied from tally.yaml."
+  - field: features.ghDgh.tolerance
+    proposals:
+    - by: generator
+      value:
+        min: 0
+        max: 8
+    - by: checker-a
+      value:
+        min: 0
+        max: 12
+    - by: checker-b
+      value:
+        min: 0
+        max: 5
+    - by: checker-c
+      value:
+        min: 0
+        max: 12
+    - by: tiebreaker-1
+      value:
+        min: 0
+        max: 12
+    - by: tiebreaker-2
+      value:
+        min: 0
+        max: 8
+    decision:
+      min: 0
+      max: 5
+    rationale: "The tally uses the conservative intersection of all six proposals, yielding 0 to 5 dGH with low\
+      \ confidence. Generator and tiebreaker-2 proposed 0 to 8; checker-a, checker-c and tiebreaker-1 proposed 0\
+      \ to 12; checker-b proposed 0 to 5. Seriously Fish gives an upper limit of 5, whereas Fishkeeper allows 8,\
+      \ FishBase and Akvaforum give 5 to 12, Aqua-Fish 5 to 12, Aquariumline 2 to 12 and FishProfiles 5 to 14 dGH.\
+      \ Those wider source ranges do not establish identical long-term suitability for every population. Zero is\
+      \ an inferred very-soft-water reporting floor, not an explicit care-sheet minimum or a recommendation for\
+      \ chemically pure water. This conservative compatibility limit can warn against conditions that some broader\
+      \ care sheets permit. The recorded decision and verification method are copied from tally.yaml."
+  - field: features.khDkh.tolerance
+    proposals:
+    - by: generator
+      value:
+        min: 0
+        max: 5
+    - by: checker-a
+      value:
+        min: 0
+        max: 5
+    - by: checker-b
+      value:
+        min: 0
+        max: 8
+    - by: checker-c
+      value:
+        min: 0
+        max: 5
+    - by: tiebreaker-1
+      value:
+        min: 0
+        max: 10
+    - by: tiebreaker-2
+      value:
+        min: 0
+        max: 5
+    decision:
+      min: 0
+      max: 5
+    rationale: "The tally selects 0 to 5 dKH by qualified majority, with low confidence. Generator, checker-a, checker-c\
+      \ and tiebreaker-2 proposed 0 to 5; checker-b proposed 0 to 8 and tiebreaker-1 0 to 10. LiveAquaria supplies\
+      \ a 2 to 5 care range, while the Nordic register permits up to 10, Aquariumline lists 1 to 8, Aquaristikstudio\
+      \ 2 to 10, Lone Star 2 to 6 and AquariumDomain 8 to 10 dKH. These wider allowances are disclosed but do not\
+      \ replace the fixed tally. The Nordic register is a specialist database; the positive 5 dKH boundary is chiefly\
+      \ a retailer recommendation and two independent specialist husbandry sources do not establish that endpoint.\
+      \ JBL field measurements support inclusion of near-zero native buffering only. A GH recommendation cannot\
+      \ supply a KH tolerance, and no multiyear endpoint trial was found. The recorded decision and verification\
+      \ method are copied from tally.yaml."
+  - field: features.origin
+    proposals:
+    - by: generator
+      value:
+        continent: South America
+        region: Amazon-Solimoes drainage and middle to lower Rio Negro basin
+        waterbody: null
+        localities:
+        - Rio Negro
+        - Rio Japura
+        - Rio Solimoes
+        - Rio Purus
+        - Rio Tapajos
+    - by: checker-a
+      value:
+        continent: South America
+        region: "Amazon basin, Rio Negro and the Solimoes-Amazon from the Rio Japura to the Rio Tapajos"
+        waterbody: null
+        localities:
+        - Rio Negro
+        - Rio Solimoes and Amazon
+        - Rio Tapajos
+    - by: checker-b
+      value:
+        continent: South America
+        region: "Amazon basin, including the Solimoes-Amazonas and middle and lower Negro systems"
+        waterbody: null
+        localities:
+        - Rio Negro
+        - Rio Solimoes
+        - Rio Japura
+        - Rio Tapajos
+        - Rio Uatuma
+    - by: checker-c
+      value:
+        continent: South America
+        region: Central Amazon basin and middle to lower Rio Negro
+        waterbody: null
+        localities:
+        - Rio Negro
+        - Solimoes-Amazon mainstem between the Japura and Tapajos rivers
+    decision:
+      continent: South America
+      region: Amazon-Solimoes basin and middle to lower Rio Negro
+      waterbody: null
+      localities:
+      - Rio Negro
+      - Rio Solimoes-Amazon mainstem between the Japura and Tapajos
+      - Rio Uatuma
+    rationale: "The four geographic wordings describe overlapping Amazonian range rather than four different origins.\
+      \ The Catalog of Fishes supports Brazil and Colombia, FishBase specifies the mainstem between the Japura and\
+      \ Tapajos and middle to lower Negro, and the 2024 Balbina survey confirms Uatuma occurrence. The generator\
+      \ also listed Purus without comparable species-occurrence evidence, so it is not retained as a confirmed locality.\
+      \ Orinoco and Guyana claims in some care accounts do not override the taxonomic sources."
+  - field: features.maxSizeCm
+    proposals:
+    - by: generator
+      value:
+        male: 30
+        female: 25
+    - by: checker-a
+      value:
+        male: 25
+        female: 24
+    - by: checker-b
+      value:
+        male: 25
+        female: 24
+    - by: checker-c
+      value:
+        male: 25
+        female: 24
+    decision:
+      male: 25
+      female: 24
+    rationale: "Checker-a, checker-b and checker-c proposed 25 cm males and 24 cm females; the generator proposed\
+      \ 30 and 25. FishProfiles gives the smaller sex-specific aquarium lengths, and Stigliano describes fish above\
+      \ roughly 25.4 cm as unusual. Fishkeeper and the Nordic register give an unsexed 30 cm ceiling, while the\
+      \ archive reports one adult near 28 cm. Typical aquarium maxima are used rather than the larger general ceiling.\
+      \ FishBase 25 cm is standard length and excludes the tail; it is not a direct total-length confirmation. The\
+      \ one-centimetre sex split is approximate and unreliable for identifying sex."
+  - field: features.aggressionConspecific
+    proposals:
+    - by: generator
+      value: 2
+    - by: checker-a
+      value: 1
+    - by: checker-b
+      value: 1
+    - by: checker-c
+      value: 1
+    decision: 1
+    rationale: "The generator proposed 2; all three checkers proposed 1. Peaceful social groups and short disputes\
+      \ are supported by the Nordic register and FishProfiles. Breeding confrontation is possible, but the sources\
+      \ do not establish regular hierarchy-driven chasing as the ordinary behavior in the specified spacious group.\
+      \ Level 1 is the better-supported rubric interpretation, with separate attention to breeding territoriality."
+  - field: features.aggressionHeterospecific
+    proposals:
+    - by: generator
+      value: 2
+    - by: checker-a
+      value: 1
+    - by: checker-b
+      value: 2
+    - by: checker-c
+      value: 2
+    decision: 2
+    rationale: "Generator, checker-b and checker-c proposed 2; checker-a proposed 1. Generally calm behavior can\
+      \ escalate to exclusion of companions from the spawning area when eggs or fry are defended. That local breeding\
+      \ response fits level 2 better than display alone; routine attacks beyond the territory are not established."
+  - field: features.territory
+    proposals:
+    - by: generator
+      value:
+        size: large
+        breedingOnly: true
+    - by: checker-a
+      value:
+        size: small
+        breedingOnly: true
+    - by: checker-b
+      value:
+        size: small
+        breedingOnly: true
+    - by: checker-c
+      value:
+        size: small
+        breedingOnly: true
+    decision:
+      size: small
+      breedingOnly: true
+    rationale: "The generator proposed a large breeding-only territory; all three checkers proposed small and breedingOnly\
+      \ true. Repeated accounts describe defense of a discrete spawning surface and nearby larval pits, without\
+      \ measuring territory dimensions. Small is retained as the more specific site-based interpretation. The rubric\
+      \ radius is not a measured limit, and a pair with dispersed fry can need more room."
+  - field: features.habitatZones
+    proposals:
+    - by: generator
+      value:
+      - wood
+      - sand
+      - openWater
+    - by: checker-a
+      value:
+      - wood
+      - sand
+      - plants
+    - by: checker-b
+      value:
+      - sand
+      - wood
+      - openWater
+    - by: checker-c
+      value:
+      - wood
+      - sand
+      - plants
+    decision:
+    - wood
+    - sand
+    - plants
+    - openWater
+    rationale: "Generator and checker-b proposed wood, sand and openWater; checker-a and checker-c proposed wood,\
+      \ sand and plants. These sets capture complementary resources: timber shelter, a soft bottom, vegetation used\
+      \ for shelter or food, and adjacent swimming space. Retain their union. OpenWater does not imply an obligate\
+      \ pelagic life and plants need not survive as aquarium decoration; submerged wood and swimming room are the\
+      \ central structural provisions."
+  - field: features.social
+    proposals:
+    - by: generator
+      value:
+        structure: group
+        minGroup: 5
+    - by: checker-a
+      value:
+        structure: group
+        minGroup: 4
+    - by: checker-b
+      value:
+        structure: group
+        minGroup: 6
+    - by: checker-c
+      value:
+        structure: group
+        minGroup: 6
+    decision:
+      structure: group
+      minGroup: 6
+    rationale: "All full runs recommend a group, but the generator proposed five adults, checker-a four and checker-b\
+      \ and checker-c six. Akvaforum explicitly recommends five to six individuals; six is selected as the upper\
+      \ end of that practical minimum. Stigliano describes a six-to-eight pairing cohort, the Nordic register prefers\
+      \ ten juveniles, and Crampton observed small wild groups. Juvenile pairing cohorts and wild group sizes are\
+      \ supporting context rather than tested adult aggression thresholds. Breeding pairs remain part of a social\
+      \ species."
+  - field: features.coloration
+    proposals:
+    - by: generator
+      value:
+        baseColors:
+        - brown
+        - grey
+        - black
+        pattern: spots
+    - by: checker-a
+      value:
+        baseColors:
+        - grey
+        - silver
+        - black
+        pattern: mixed
+    - by: checker-b
+      value:
+        baseColors:
+        - brown
+        - grey
+        - green
+        - black
+        pattern: spots
+    - by: checker-c
+      value:
+        baseColors:
+        - grey
+        - brown
+        - black
+        pattern: spots
+    decision:
+      baseColors:
+      - brown
+      - grey
+      - green
+      - black
+      pattern: spots
+    rationale: "Generator and checker-c selected brown, grey and black with spots; checker-b also included green;\
+      \ checker-a selected grey, silver and black with mixed. Stigliano describes a green-brown adult background,\
+      \ and the other accounts support grey tones and dark discrete flank and tail-base marks. Retain green as an\
+      \ olive adult tone and use spots for the characteristic wedge-shaped blotch. Juvenile mottling and minor eye\
+      \ colors do not define the adult male value."
+  - field: features.feedingSpeed
+    proposals:
+    - by: generator
+      value: normal
+    - by: checker-a
+      value: slow
+    - by: checker-b
+      value: hasty
+    - by: checker-c
+      value: hasty
+    decision: hasty
+    rationale: "The generator proposed normal, checker-a slow and checker-b and checker-c hasty. Staeck and Becker\
+      \ explicitly describe eager plant-food consumption in U. amphiacanthoides and warn that Uaru can deprive slower\
+      \ discus of food. This species-specific appetite is stronger evidence than analogies with the calm swimming\
+      \ of discus. Hasty is a qualitative mapping, not a measured feeding-rate score; newly arrived or selective\
+      \ individuals may feed less eagerly."
+  - field: features.minTank
+    proposals:
+    - by: generator
+      value:
+        volumeL: 540
+        lengthCm: 160
+        depthCm: 60
+    - by: checker-a
+      value:
+        volumeL: 400
+        lengthCm: 150
+        depthCm: 50
+    - by: checker-b
+      value:
+        volumeL: 600
+        lengthCm: 180
+        depthCm: 60
+    - by: checker-c
+      value:
+        volumeL: 540
+        lengthCm: 160
+        depthCm: 60
+    decision:
+      volumeL: 600
+      lengthCm: 180
+      depthCm: 60
+    rationale: "For the decided six-adult group, select checker-b proposal of 600 L, 180 cm length and 60 cm depth.\
+      \ Generator and checker-c proposed 540 L, 160 by 60 cm; checker-a proposed 400 L, 150 by 50 cm. The Nordic\
+      \ register specifies 540 L and 160 cm, while Aquariumline gives 400 to 500 L and 150 to 180 cm for a juvenile\
+      \ group or managed pair, with more space for adult groups. Akvaforum gives a wider 720 L recommendation. The\
+      \ selected intermediate volume and longer footprint are a practical group allowance, not an experimentally\
+      \ established threshold. Depth is inferred. Seriously Fish 200 L with a 120 by 45 cm base is explicitly pair-only\
+      \ and cannot set this adult-group minimum."
+  - field: features.lifespanYears
+    proposals:
+    - by: generator
+      value:
+        min: 8
+        max: 12
+    - by: checker-a
+      value:
+        min: 8
+        max: 15
+    - by: checker-b
+      value:
+        min: 8
+        max: 10
+    - by: checker-c
+      value:
+        min: 8
+        max: 12
+    decision:
+      min: 8
+      max: 12
+    rationale: "Generator and checker-c proposed 8 to 12 years, checker-b 8 to 10, and checker-a 8 to 15 from general\
+      \ model knowledge. The Bulgarian register and several hobby or retailer accounts give 8 to 12, while Fish\
+      \ Laboratory gives 8 to 10. None supplies a longitudinal cohort or documented series of old specimens; one\
+      \ retailer even gives five years. Retain 8 to 12 as a provisional commitment estimate rather than infer a\
+      \ 15-year ceiling."
