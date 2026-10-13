@@ -1,12 +1,12 @@
 # gitleaks configuration for the pre-push hook and the CI secrets-scan job.
-# The default rules apply; the allowlist below only removes paths from the scan.
+# The default rules apply; the allowlists below only remove paths from the scan.
 
 title = "cichlids.com gitleaks configuration"
 
 [extend]
 useDefault = true
 
-[allowlist]
+[[allowlists]]
 description = "Recovered legacy material and lock files"
 paths = [
   # Recovered legacy configs with credentials that are treated as compromised, plus PII.
@@ -15,6 +15,11 @@ paths = [
   '''(^|/)pnpm-lock\.yaml$''',
   '''(^|/)package-lock\.json$''',
   '''(^|/)packages\.lock\.json$''',
-  '''(^|/)\.terraform\.lock\.hcl$''',
+  '''\.lock\.hcl$''',
   '''\.lock$''',
 ]
+
+[[allowlists]]
+description = "Env templates hold empty assignments; the generic rule reads the next key name as the value"
+targetRules = ["generic-api-key"]
+paths = ['''(^|/)[^/]*\.env\.example$''']
