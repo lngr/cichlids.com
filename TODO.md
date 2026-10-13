@@ -96,15 +96,15 @@ System. Details in `PROJECT-STATUS.md`, Abschnitt 9.
 
 ## 3. Artenprofile
 
-Stand: 53 Profile in `data/species/profiles/`, alle validiert. Verfahren in
+Stand: 55 Profile in `data/species/profiles/`, alle validiert. Verfahren in
 `tools/species-data/README.md`. Je Art stimmen Generator, Prüfer A (Opus), Prüfer B (Sonnet) und
 Prüfer C (Codex, gpt-6.1-sol) ab.
 
 ### 3.1 Weitere Profile
 
-- [ ] Nächste Arten nach Fotoanzahl: 466 Pseudotropheus crabro, 236 Aulonocara ngara,
-  814 Aulonocara maleri (in Arbeit), 819 Geophagus altifrons, 406 Nimbochromis livingstoni,
-  233 Aulonocara maylandi, 36 Cyphotilapia gibberosa, 309 Fossorochromis rostratus; danach weiter
+- [ ] Nächste Arten nach Fotoanzahl: 819 Geophagus altifrons, 406 Nimbochromis livingstoni,
+  36 Cyphotilapia gibberosa (in Arbeit), 233 Aulonocara maylandi, 309 Fossorochromis rostratus,
+  738 Herichthys carpintis, 374 Melanochromis maingano, 557 Hemichromis bimaculatus; danach weiter
   nach Fotoanzahl, Synonym-Paare gemeinsam (etwa 739 Herichthys cyanoguttatus mit
   685 Cichlasoma cyanoguttatum)
 - [ ] Die harten Merkmale aller Arten sind vor Slice 4 gesichert
