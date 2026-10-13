@@ -280,7 +280,7 @@ public sealed record SeedData(
         var draftTank = new Tank
         {
             ProfileId = bob.Id, Title = "Unfinished Tank", Category = TankCategory.Tanganyika,
-            State = TankState.Draft, CreatedAt = now.AddDays(-2),
+            State = TankState.Draft, CreatedAt = now.AddDays(-2), LegacyId = 5002,
         };
         context.Tanks.AddRange(publishedTank, publishedTankWithExplicitMainImage, draftTank);
         await context.SaveChangesAsync();

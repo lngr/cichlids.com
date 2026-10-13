@@ -84,6 +84,17 @@ public class CommunityEndpointsTests(ApiFixture fixture)
         Assert.Equal(fixture.Seed.CommunityCichlidsThreadB.Id, body.Items[0].Id);
     }
 
+    [Theory]
+    [InlineData("%25")]
+    [InlineData("_")]
+    [InlineData("pH%25")]
+    public async Task Threads_QueryTreatsWildcardCharactersAsLiterals(string query)
+    {
+        var body = await ListThreadsAsync($"?query={query}");
+
+        Assert.Equal(0, body.Total);
+    }
+
     [Fact]
     public async Task Threads_StartedByIsProfileRefForARealMember()
     {

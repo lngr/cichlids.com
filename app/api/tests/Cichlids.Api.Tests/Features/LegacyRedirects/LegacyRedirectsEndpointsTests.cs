@@ -1,4 +1,7 @@
 using System.Net;
+using Cichlids.Domain.Entities;
+using Cichlids.Domain.Enums;
+using Microsoft.EntityFrameworkCore;
 
 namespace Cichlids.Api.Tests.Features.LegacyRedirects;
 
@@ -185,5 +188,125 @@ public class LegacyRedirectsEndpointsTests(ApiFixture fixture)
         var response = await fixture.NoRedirectClient.GetAsync("/wiki/index.php/Definitely_not_a_real_species");
 
         AssertGone(response);
+    }
+
+    [Theory]
+    [InlineData("/pictures/pic/%25.html")]
+    [InlineData("/pictures/pic/%25")]
+    [InlineData("/pictures/pic/old_reef_tank_beauty.html")]
+    [InlineData("/pictures/pic/old%25.html")]
+    public async Task Picture_WildcardCharactersAreLiteralAndReturnGone(string path)
+    {
+        var response = await fixture.NoRedirectClient.GetAsync(path);
+
+        AssertGone(response);
+    }
+
+    [Theory]
+    [InlineData("archived")]
+    [InlineData("deleted")]
+    [InlineData("draft")]
+    public async Task Picture_NotVisibleReturnsGone(string state)
+    {
+        var slug = state switch
+        {
+            "archived" => fixture.Seed.ArchivedPictureSlug,
+            "deleted" => fixture.Seed.DeletedPictureSlug,
+            _ => fixture.Seed.DraftPictureSlug,
+        };
+
+        var response = await fixture.NoRedirectClient.GetAsync($"/pictures/pic/{slug}.html");
+
+        AssertGone(response);
+    }
+
+    [Fact]
+    public async Task Picture_AliasOfHiddenPictureReturnsGone()
+    {
+        await using var context = fixture.CreateDbContext();
+        var alias = new SlugAlias
+        {
+            PostId = fixture.Seed.ArchivedPicture.Id, Value = "older-archived-post", IsCanonical = false, CreatedAt = DateTimeOffset.UtcNow,
+        };
+        context.SlugAliases.Add(alias);
+        await context.SaveChangesAsync();
+        try
+        {
+            var response = await fixture.NoRedirectClient.GetAsync($"/pictures/pic/{alias.Value}.html");
+
+            AssertGone(response);
+        }
+        finally
+        {
+            context.SlugAliases.Remove(alias);
+            await context.SaveChangesAsync();
+        }
+    }
+
+    [Fact]
+    public async Task Picture_RedirectsAgainWhenArchivedPictureBecomesVisible()
+    {
+        var archivedId = fixture.Seed.ArchivedPicture.Id;
+        await SetPostStateAsync(archivedId, PostState.Published);
+        try
+        {
+            var response = await fixture.NoRedirectClient.GetAsync($"/pictures/pic/{fixture.Seed.ArchivedPictureSlug}.html");
+
+            AssertPermanentRedirectTo(response, $"/pictures/{fixture.Seed.ArchivedPictureSlug}");
+        }
+        finally
+        {
+            await SetPostStateAsync(archivedId, PostState.Archived);
+        }
+    }
+
+    [Fact]
+    public async Task Tank_DraftTankReturnsGone()
+    {
+        var response = await fixture.NoRedirectClient.GetAsync($"/tanks/details/{fixture.Seed.DraftTank.LegacyId}");
+
+        AssertGone(response);
+    }
+
+    [Fact]
+    public async Task Tank_DeletedTankReturnsGone()
+    {
+        await using var context = fixture.CreateDbContext();
+        var tank = new Tank
+        {
+            ProfileId = fixture.Seed.Bob.Id, Title = "Removed Tank", Category = TankCategory.Tanganyika,
+            State = TankState.Published, CreatedAt = DateTimeOffset.UtcNow, PublishedAt = DateTimeOffset.UtcNow,
+            DeletedAt = DateTimeOffset.UtcNow, LegacyId = 5003,
+        };
+        context.Tanks.Add(tank);
+        await context.SaveChangesAsync();
+        try
+        {
+            var response = await fixture.NoRedirectClient.GetAsync($"/tanks/details/{tank.LegacyId}");
+
+            AssertGone(response);
+        }
+        finally
+        {
+            context.Tanks.Remove(tank);
+            await context.SaveChangesAsync();
+        }
+    }
+
+    [Theory]
+    [InlineData("/browse/species/%25.html")]
+    [InlineData("/browse/species/tropheus_duboisi.html")]
+    [InlineData("/browse/species/tropheus%25.html")]
+    public async Task Species_WildcardCharactersAreLiteralAndReturnGone(string path)
+    {
+        var response = await fixture.NoRedirectClient.GetAsync(path);
+
+        AssertGone(response);
+    }
+
+    private async Task SetPostStateAsync(long postId, PostState state)
+    {
+        await using var context = fixture.CreateDbContext();
+        await context.Posts.Where(p => p.Id == postId).ExecuteUpdateAsync(s => s.SetProperty(p => p.State, state));
     }
 }

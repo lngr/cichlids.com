@@ -51,6 +51,21 @@ public class SpeciesEndpointsTests(ApiFixture fixture)
         Assert.Equal(1, body.Total);
     }
 
+    [Theory]
+    [InlineData("%25")]
+    [InlineData("_")]
+    [InlineData("tropheus%25")]
+    public async Task List_QueryTreatsWildcardCharactersAsLiterals(string query)
+    {
+        var response = await fixture.Client.GetAsync($"/api/species?query={query}");
+        response.EnsureSuccessStatusCode();
+
+        var body = JsonSerializer.Deserialize<PagedResponse<SpeciesListItemDto>>(
+            await response.Content.ReadAsStringAsync(), TestJson.Options)!;
+
+        Assert.Equal(0, body.Total);
+    }
+
     [Fact]
     public async Task List_CapsLimit()
     {
