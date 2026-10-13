@@ -1,0 +1,1625 @@
+schemaVersion: 1
+id: pseudotropheus-crabro
+legacyIds: [466, 383]
+status: described
+
+taxonomy:
+  validName: Pseudotropheus crabro
+  genus: Pseudotropheus
+  species: crabro
+  author: (Ribbink & Lewis, 1982)
+  source: &cof
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes, species of the genus Pseudotropheus"
+    url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Pseudotropheus
+    accessed: 2026-10-13
+  synonyms:
+    - name: Melanochromis crabro
+      note: Original combination of Ribbink and Lewis (1982); type locality Maleri Island at 15 to 18 m depth.
+    - name: Pseudotropheus chamaeleo
+      note: Nomen nudum of Staeck (1977) from Likoma Island, placed by the Catalog of Fishes in the synonymy of P. crabro; the trade also spells it chameleo.
+    - name: Maylandia crabro
+      note: Combination used by some hobby and specialist sources; the Catalog of Fishes does not record it.
+    - name: Metriaclima crabro
+      note: Combination used in the hobby and in the legacy catalog; the Catalog of Fishes does not record it.
+  legacyNames:
+    - Pseudotropheus crabro
+    - Metriaclima crabro
+  note: >-
+    The Catalog of Fishes lists Melanochromis crabro Ribbink & Lewis 1982 with the current status
+    "Valid as Pseudotropheus crabro", after Marechal (1991), Konings-Dudin et al. (2009), Konings
+    and Stauffer (2012), Konings (2016) and Stauffer et al. (2016). The legacy catalog held the
+    species twice, as entry 466 (Pseudotropheus crabro) and as entry 383 (Metriaclima crabro);
+    both map to this profile. The Cichlid Room Companion files a blue form, P. sp. 'crabro blue',
+    as a separate undescribed taxon that this profile does not cover.
+
+names:
+  trade:
+    en: [Bumblebee cichlid, Hornet cichlid, Bumblebee mbuna, Bumblebee mouthbrooder, Chameleon cichlid]
+    de: [Chamäleonbuntbarsch, Chamäleon-Maulbrüter]
+
+variants:
+  - name: Maleri
+    kind: locality
+    note: Type locality; fish from the southern and central lake look much alike.
+  - name: Mbenji
+    kind: locality
+    note: The first aquarium imports of the early 1980s probably came from the Mbenji Islands.
+
+features:
+  origin:
+    value:
+      continent: Africa
+      region: Lake Malawi
+      waterbody: lake-malawi
+      localities:
+        - Maleri Island
+        - Mbenji Islands
+        - Chinyankwazi Island
+        - Chinyamwezi Island
+        - Likoma Island
+        - Chizumulu Island
+        - Eccles Reef
+        - West Reef
+        - Nkhata Bay
+        - Cobue (Mozambique)
+        - Nametumbwe (Mozambique)
+    confidence: high
+    rationale: >-
+      Endemic to Lake Malawi; the Catalog of Fishes gives Maleri Island as the type locality.
+      FishBase lists island and reef sites of the southern and central lake, Oliver shows a wild
+      fish photographed at Cobue on the Mozambican shore and the Cichlid Room Companion one from
+      Nametumbwe. The Swedish species database adds that the species is missing from the far north
+      of the lake. Locality spellings follow current usage (Chinyamwezi, Chizumulu).
+    sources:
+      - *cof
+      - &fishbase
+        kind: database
+        title: "FishBase species summary: Pseudotropheus crabro"
+        url: https://www.fishbase.se/summary/Pseudotropheus-crabro.html
+        accessed: 2026-10-13
+      - &oliver
+        kind: database
+        title: "Oliver, M. K.: Maylandia crabro. The Cichlid Fishes of Lake Malawi, Africa (malawicichlids.com)"
+        url: https://malawicichlids.com/mw09007q.htm
+        accessed: 2026-10-13
+      - &ciklider
+        kind: database
+        title: "Persson, M.: Pseudotropheus crabro. Ciklider.se species description"
+        url: https://www.ciklider.se/artbeskrivning/pseudotropheus-crabro/
+        accessed: 2026-10-13
+      - &aqualog
+        kind: literature
+        title: "Jung, A.: The dark side of the Hornet Cichlid. Aqualog News 113 (English edition), pages 3 to 5"
+        url: https://www.aqualog.de/wp-content/uploads/flippingbooks/NEWS_113-E/NEWS113E/assets/basic-html/page3.html
+        accessed: 2026-10-13
+      - &crc
+        kind: database
+        title: "Cichlid Room Companion: Pseudotropheus crabro (public summary)"
+        url: https://cichlidae.com/species.php?id=4EFq3HhPOzcnYDXzDx_-8Q
+        accessed: 2026-10-13
+    evidence:
+      - source: *cof
+        value: {continent: Africa, region: Lake Malawi}
+        note: Type locality Maleri Island, distribution Lake Malawi.
+      - source: *fishbase
+        value: {continent: Africa, region: Lake Malawi}
+        note: Endemic; lists several islands and reefs of the southern and central lake.
+      - source: *oliver
+        value: {continent: Africa, region: Lake Malawi}
+        note: Wild fish photographed at Cobue, Mozambique.
+      - source: *ciklider
+        value: {continent: Africa, region: Lake Malawi}
+        note: Absent from the far north of the lake.
+
+  temperatureC:
+    value: {min: 21, max: 29}
+    confidence: high
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    rationale: >-
+      The species lives only in Lake Malawi, so the natural range is the measured temperature of
+      the lake. Eccles (1974) reports 21 C inshore in the south-east arm in the cool, windy season
+      and 27 C in the upper 60 m by May; Vollmer et al. (2005) give about 23.5 to 24 C for the
+      winter epilimnion and about 28 C for summer surface water, and a later campaign found up to
+      29 C. All four votes copied this range.
+    sources:
+      - &eccles
+        kind: literature
+        title: "Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology and Oceanography 19(5), 730-742 (abstract)."
+        url: https://doi.org/10.4319/lo.1974.19.5.0730
+        accessed: 2026-10-12
+      - &vollmer2005
+        kind: literature
+        title: "Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M., Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and Oceanography 50(2), 727-732."
+        url: https://www.dora.lib4ri.ch/empa/dload/empa:1253/PDF/view
+        accessed: 2026-10-12
+      - &vollmer1999
+        kind: literature
+        title: "Vollmer, M. K., Weiss, R. F. and Bootsma, H. A. (1999). Lake Malawi/Nyasa deep water renewal. In: Bootsma, H. A. and Hecky, R. E. (eds.), Water Quality Report, SADC/GEF Lake Malawi/Nyasa Biodiversity Conservation Project, chapter 4."
+        url: https://sites.uwm.edu/hbootsma/files/2020/11/Ch4-Lake-Internal-Mixing.pdf
+        accessed: 2026-10-12
+      - &ngochera
+        kind: literature
+        title: "Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. PhD dissertation, University of Wisconsin-Milwaukee."
+        url: https://minds.wisconsin.edu/handle/1793/91765
+        accessed: 2026-10-12
+      - &branchu
+        kind: literature
+        title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+        url: https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf
+        accessed: 2026-10-12
+      - &fao
+        kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+        url: https://www.fao.org/4/t0473e/T0473E05.htm
+        accessed: 2026-10-12
+    evidence:
+      - source: *eccles
+        value: {min: 21, max: 27}
+        note: Cool-season inshore water and the upper 60 m in May.
+      - source: *vollmer2005
+        value: {min: 23.5, max: 28}
+        note: Winter epilimnion and summer surface water.
+      - source: *branchu
+        value: {min: 22.8, max: 25.4}
+        note: One campaign in the north basin, surface to 240 m.
+    tolerance:
+      value: {min: 21, max: 29}
+      confidence: medium
+      verification:
+        method: unanimous
+        votes: {agree: 4, total: 4}
+      rationale: >-
+        All four votes proposed 21 to 29 C. Care sheets for this species give between 22 and 29 C,
+        most of them about 23 or 24 to 28 C (Fishkeeper and FishBase 24 to 26, AquaInfo 22 to 26,
+        Ciklider.se 23 to 27, DRTA 24 to 27, The Tropical Tank 23 to 28, Guidarium 24 to 28,
+        Tropical Freshwater Fish and Aqua-Fish 24 to 29). The upper bound of 29 C follows the
+        warmest care sheets and the lake maximum. The lower bound of 21 C rests on the cool-season
+        lake water, because the tolerance contains the natural range; no care sheet recommends
+        keeping the fish that cool for long, and 24 to 27 C is the better permanent setting.
+      sources:
+        - &fishkeeper
+          kind: database
+          title: "Fishkeeper (Maidenhead Aquatics) data bank: Bumblebee Cichlid, Pseudotropheus crabro"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/bumblebee-cichlid
+          accessed: 2026-10-13
+        - &tropicaltank
+          kind: database
+          title: "The Tropical Tank: Pseudotropheus crabro (bumblebee cichlid), archived copy of 15 Sep. 2024"
+          url: https://web.archive.org/web/20240915092225/https://www.thetropicaltank.co.uk/Fishindx/m_crabro.htm
+          accessed: 2026-10-13
+        - &tff
+          kind: database
+          title: "Tropical Freshwater Fish: Bumblebee Mbuna, Pseudotropheus crabro"
+          url: https://tropicalfreshwaterfish.com/species/Pseudotropheus_crabro.html
+          accessed: 2026-10-13
+        - &guidarium
+          kind: database
+          title: "Guidarium: Bumblebee Cichlid (Pseudotropheus crabro), care guide and profile"
+          url: https://guidarium.com/fishes/bumblebee-cichlid
+          accessed: 2026-10-13
+        - &aquainfo
+          kind: database
+          title: "AquaInfo: Pseudotropheus crabro, Bumblebee Cichlid"
+          url: https://aquainfo.nl/en/article/pseudotropheus-crabro/
+          accessed: 2026-10-13
+        - *ciklider
+        - &drta
+          kind: database
+          title: "DRTA-Archiv: Chamäleonbuntbarsch (Pseudotropheus crabro)"
+          url: https://www.drta-archiv.de/chamaeleonbuntbarsch/
+          accessed: 2026-10-13
+        - &aquafish
+          kind: database
+          title: "Aqua-Fish: Bumble bee, Pseudotropheus crabro"
+          url: https://en.aqua-fish.net/fish/bumble-bee
+          accessed: 2026-10-13
+        - *fishbase
+        - &liveaquaria
+          kind: website
+          title: "LiveAquaria (retailer): Bumblebee Cichlid, Pseudotropheus crabro"
+          url: https://www.liveaquaria.com/products/bumblebee-cichlid
+          accessed: 2026-10-13
+        - &sims
+          kind: website
+          title: "Sims Tropical Fish (retailer): Pseudotropheus Crabro Malawi African Cichlid"
+          url: https://simstropicalfish.co.uk/product/pseudotropheus-crabro-malawi-african-cichlid-small-2-inches/
+          accessed: 2026-10-13
+        - &riverpark
+          kind: website
+          title: "Riverpark Aquatics (retailer): Our guide to keeping Bumblebee Mouthbrooder Cichlid fish"
+          url: https://riverparkaquatics.co.uk/bumblebee-mouthbrooder-cichlid-pseudotropheus-crabro/
+          accessed: 2026-10-13
+        - &garnelio
+          kind: website
+          title: "Garnelio (retailer): Chameleon Cichlid, Pseudotropheus crabro"
+          url: https://www.garnelio.de/en/chameleon-cichlid-pseudotropheus-crabro
+          accessed: 2026-10-13
+        - *eccles
+      evidence:
+        - source: *fishkeeper
+          value: {min: 24, max: 26}
+        - source: *aquainfo
+          value: {min: 22, max: 26}
+        - source: *ciklider
+          value: {min: 23, max: 27}
+        - source: *drta
+          value: {min: 24, max: 27}
+          note: Aquarium recommendation.
+        - source: *tropicaltank
+          value: {min: 23, max: 28}
+        - source: *guidarium
+          value: {min: 24, max: 28}
+        - source: *tff
+          value: {min: 24, max: 29}
+        - source: *aquafish
+          value: {min: 24, max: 29}
+        - source: *fishbase
+          value: {min: 24, max: 26}
+        - source: *liveaquaria
+          value: {min: 24.4, max: 27.8}
+          note: Given as 76 to 82 F.
+        - source: *sims
+          value: {min: 25, max: 28}
+        - source: *riverpark
+          value: {min: 23, max: 28}
+        - source: *garnelio
+          value: {min: 22, max: 28}
+        - source: *eccles
+          value: {min: 21, max: 27}
+          note: Natural lake range; sets the lower bound.
+
+  ph:
+    value: {min: 7.7, max: 8.6}
+    confidence: high
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    rationale: >-
+      Lake Malawi endemic, so the natural range is the measured surface pH of the lake, 7.7 to 8.6
+      after Jackson et al. (1963) as compiled by FAO. Branchu et al. (2010) give 7.5 to 8.5 for the
+      whole water column, the low values coming from deep water that this rock-dwelling species
+      does not use. All four votes copied this range.
+    sources:
+      - *fao
+      - *branchu
+      - *eccles
+      - *vollmer2005
+      - *vollmer1999
+      - *ngochera
+    evidence:
+      - source: *fao
+        value: {min: 7.7, max: 8.6}
+        note: Lake surface water.
+      - source: *branchu
+        value: {min: 7.5, max: 8.5}
+        note: Whole water column; the lower values belong to deep water.
+    tolerance:
+      value: {min: 7.5, max: 8.6}
+      confidence: medium
+      verification:
+        method: unanimous
+        votes: {agree: 4, total: 4}
+      rationale: >-
+        Three votes proposed 7.5 to 8.6 and checker-b proposed 7.5 to 8.8; the bounds agree within
+        0.3, and the median of the upper bounds is 8.6. Care sheets give lower limits of 7.5 to 7.8
+        and upper limits of 8.5 or 8.6. Tropical Freshwater Fish goes further, up to 8.8, which is
+        wider than the decided range; FishBase (7.5 to 8.2) and Aqua-Fish (7.5 to 8.0) are
+        narrower. The range covers the natural surface values and the agreement of most sources.
+        A falling pH from poor buffering is the usual failure in mbuna tanks.
+      sources:
+        - *fishkeeper
+        - *aquainfo
+        - *ciklider
+        - *drta
+        - &aquariumdomain
+          kind: database
+          title: "AquariumDomain: Bumblebee Cichlid (Pseudotropheus crabro)"
+          url: https://www.aquariumdomain.com/SpeciesProfiles/AfricanCichlids/BumblebeeCichlid.shtml
+          accessed: 2026-10-13
+        - *tropicaltank
+        - *guidarium
+        - *tff
+        - *aquafish
+        - *fishbase
+        - *liveaquaria
+        - *sims
+        - *riverpark
+        - &animallux
+          kind: website
+          title: "Animallux (retailer): Pseudotropheus crabro"
+          url: https://animallux.pt/loja/10487-pseudotropheus-crabro.html
+          accessed: 2026-10-13
+        - *fao
+      evidence:
+        - source: *fishkeeper
+          value: {min: 7.5, max: 8.5}
+        - source: *aquainfo
+          value: {min: 7.5, max: 8.5}
+        - source: *ciklider
+          value: {min: 7.5, max: 8.5}
+        - source: *drta
+          value: {min: 7.5, max: 8.5}
+        - source: *aquariumdomain
+          value: {min: 7.5, max: 8.5}
+        - source: *tropicaltank
+          value: {min: 7.6, max: 8.6}
+        - source: *guidarium
+          value: {min: 7.8, max: 8.6}
+        - source: *tff
+          value: {min: 7.5, max: 8.8}
+          note: Widest care-sheet range.
+        - source: *aquafish
+          value: {min: 7.5, max: 8.0}
+          note: Narrower aquarium preference.
+        - source: *fishbase
+          value: {min: 7.5, max: 8.2}
+        - source: *liveaquaria
+          value: {min: 7.8, max: 8.6}
+        - source: *sims
+          value: {min: 7.8, max: 8.6}
+        - source: *riverpark
+          value: {min: 7.5, max: 8.5}
+        - source: *animallux
+          value: {min: 7.8, max: 8.6}
+        - source: *fao
+          value: {min: 7.7, max: 8.6}
+          note: Natural lake surface range.
+
+  ghDgh:
+    value: {min: 3, max: 5}
+    confidence: high
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    rationale: >-
+      Lake Malawi endemic, so the natural range is the total hardness of the lake, 3 to 5 dGH,
+      computed from the calcium and magnesium measured by Branchu et al. (2010) in the upper 50 m
+      and by the 1960s titrations compiled by FAO. Lake Malawi is soft water; the hard water that
+      many care sheets describe mixes up hardness and alkalinity. All four votes copied this range.
+    sources:
+      - *branchu
+      - *fao
+      - *eccles
+      - *vollmer2005
+      - *vollmer1999
+      - *ngochera
+    evidence:
+      - source: *branchu
+        value: {min: 4.2, max: 4.6}
+        note: Upper 50 m of the north basin, computed from calcium and magnesium.
+      - source: *fao
+        value: {min: 3.2, max: 4.9}
+        note: 1960s calcium and magnesium titrations.
+    tolerance:
+      value: {min: 3, max: 25}
+      confidence: medium
+      verification:
+        method: qualified-majority
+        votes: {agree: 4, total: 5}
+      rationale: >-
+        The generator, checker-a, checker-b and tiebreaker-1 proposed 3 to 25 dGH; checker-c
+        proposed 3 to 20 dGH because it judged the 25 dGH end too weakly supported. Four species
+        care sheets name 25 dGH as the upper limit (Fishkeeper, Guidarium, Tropical Freshwater
+        Fish and Aqua-Fish), while DRTA (5 to 15), AquaInfo (12 to 16) and two retailer
+        sheets (up to 20) stay lower. The care sheets set their lower limits of 5 to 12 dGH far
+        above the lake because they confuse hardness with alkalinity; wild fish live at 3 to 5 dGH
+        and a keeper in the archive held the species at 5 dGH, so the lower bound follows the lake.
+        All upper-limit sources are hobby care sheets, and stable carbonate buffering matters more
+        for this species than total hardness.
+      sources:
+        - *fishkeeper
+        - *guidarium
+        - *tff
+        - *aquafish
+        - *tropicaltank
+        - *aquainfo
+        - *drta
+        - *sims
+        - *animallux
+        - *branchu
+        - *fao
+        - &thread13949
+          kind: archive
+          title: cichlids.com forum thread 13949
+          url: https://www.cichlids.com/disc/read.php?2,13949
+          accessed: 2026-10-13
+      evidence:
+        - source: *fishkeeper
+          value: {max: 25}
+          note: Upper limit only.
+        - source: *guidarium
+          value: {min: 10, max: 25}
+        - source: *tff
+          value: {min: 12, max: 25}
+        - source: *aquafish
+          value: {min: 12, max: 25}
+        - source: *tropicaltank
+          value: {min: 7}
+          note: Lower limit only.
+        - source: *aquainfo
+          value: {min: 12, max: 16}
+        - source: *drta
+          value: {min: 5, max: 15}
+        - source: *sims
+          value: {min: 10, max: 20}
+        - source: *animallux
+          value: {min: 8, max: 20}
+        - source: *branchu
+          value: {min: 4.2, max: 4.6}
+          note: Natural lake water; sets the lower bound.
+        - source: *fao
+          value: {min: 3.2, max: 4.9}
+          note: Natural lake water.
+        - source: *thread13949
+          value: {min: 5, max: 5}
+          note: Single tank measurement of a keeper.
+
+  khDkh:
+    value: {min: 5, max: 8}
+    confidence: high
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    rationale: >-
+      Lake Malawi endemic, so the natural range is the carbonate hardness of the lake, 5 to 8 dKH,
+      converted from the alkalinity of 2.0 to 2.6 meq/L measured by Jackson et al. (1963, after
+      FAO) and Branchu et al. (2010). Carbonate hardness exceeds total hardness there because sodium
+      balances part of the bicarbonate. All four votes copied this range.
+    sources:
+      - *branchu
+      - *fao
+      - *eccles
+      - *vollmer2005
+      - *vollmer1999
+      - *ngochera
+    evidence:
+      - source: *branchu
+        value: {min: 6.5, max: 6.9}
+        note: Alkalinity 2.33 to 2.46 meq/L.
+      - source: *fao
+        value: {min: 5.6, max: 7.3}
+        note: Alkalinity 2.00 to 2.59 meq/L.
+    tolerance:
+      value: {min: 5, max: 15}
+      confidence: medium
+      verification:
+        method: qualified-majority
+        votes: {agree: 4, total: 5}
+      rationale: >-
+        The generator, checker-a, checker-c and tiebreaker-1 proposed 5 to 15 dKH; checker-b
+        proposed 5 to 12 dKH as an estimate because it found no species figure. Two species care
+        sheets give carbonate hardness: AquariumDomain names 10 to 15 dKH and The Tropical Tank
+        prefers 10 to 12 with 6 as the minimum; two retailer sheets agree (LiveAquaria 10 to 15,
+        Animallux 6 to 12). The value 12 is a preferred range rather than a limit, so 15 is the only
+        stated upper limit. The lower bound follows the lake, where the species lives at 5 to 8 dKH,
+        and a keeper in the archive held it at 8 dKH. The evidence is thin and rests on hobby care
+        sheets.
+      sources:
+        - *aquariumdomain
+        - *tropicaltank
+        - *liveaquaria
+        - *animallux
+        - *branchu
+        - *fao
+        - *thread13949
+      evidence:
+        - source: *aquariumdomain
+          value: {min: 10, max: 15}
+        - source: *tropicaltank
+          value: {min: 6, max: 12}
+          note: 10 to 12 preferred, 6 as the lowest value.
+        - source: *liveaquaria
+          value: {min: 10, max: 15}
+        - source: *animallux
+          value: {min: 6, max: 12}
+        - source: *branchu
+          value: {min: 6.5, max: 6.9}
+          note: Natural lake water; within the lower part of the range.
+        - source: *fao
+          value: {min: 5.6, max: 7.3}
+          note: Natural lake water; sets the lower bound.
+        - source: *thread13949
+          value: {min: 8, max: 8}
+          note: Single tank measurement of a keeper.
+
+  maxSizeCm:
+    value: {male: 15, female: 12}
+    confidence: medium
+    rationale: >-
+      Wild fish stay small: FishBase gives 9.4 cm standard length and the Aqualog article 9 to 12
+      cm in the lake, while well-fed aquarium males reach about 15 cm total length (Aqualog,
+      Guidarium, DRTA, LiveAquaria; Ciklider.se up to 16 cm). Females stay smaller in every source
+      that separates the sexes: Guidarium gives 12 cm, DRTA 11 cm in its data table and 13 cm in
+      its text, Ciklider.se about 14 cm. The proposals were 14/11 (generator), 15/12 (checker-a),
+      12/10 (checker-b, from the wild standard length) and 15/13 (checker-c); 15 cm for males
+      matches most aquarium sources and 12 cm for females lies in the middle of the female
+      figures. The 20 cm of Fishkeeper, AquaInfo and AquariumDomain and the 10 cm of Tropical
+      Freshwater Fish are outliers.
+    sources:
+      - *fishbase
+      - *aqualog
+      - *guidarium
+      - *drta
+      - *ciklider
+      - *tropicaltank
+      - *aquainfo
+      - *fishkeeper
+      - *tff
+      - *liveaquaria
+    evidence:
+      - source: *fishbase
+        value: {male: 9.4}
+        note: Standard length of wild material.
+      - source: *aqualog
+        value: {male: 15}
+        note: About 15 cm in the aquarium, 9 to 12 cm in the lake.
+      - source: *guidarium
+        value: {male: 15, female: 12}
+      - source: *drta
+        value: {male: 15, female: 11}
+        note: Data table; its text gives 13 cm for females.
+      - source: *ciklider
+        value: {male: 16, female: 14}
+        note: About 14 cm in the wild, a little more in tanks.
+      - source: *tropicaltank
+        value: {male: 12.5}
+      - source: *liveaquaria
+        value: {male: 15}
+        note: Given as 6 inches.
+      - source: *aquainfo
+        value: {male: 20, female: 17}
+        note: Outlier.
+      - source: *fishkeeper
+        value: {male: 20}
+        note: Outlier.
+      - source: *tff
+        value: {male: 10}
+        note: Low outlier.
+
+  predation:
+    value: 1
+    confidence: medium
+    verification:
+      method: qualified-majority
+      votes: {agree: 4, total: 5}
+    rationale: >-
+      The generator, checker-a, checker-b and tiebreaker-1 voted level 1, checker-c voted level 0.
+      In the lake the species picks parasites off the kampango catfish and raids its nests for
+      eggs (Ribbink and Lewis 1982, Genner and Turner 2005, Oliver); the Aqualog article reports
+      that it also takes the tiny young of the catfish, and the Cichlid Room Companion and
+      Guidarium list brood and fry eating. FishBase describes it as taking whatever food is
+      available. No source reports adults hunting grown fish. Checker-c relied on Konings, who
+      only ever saw the species eat eggs and credits the hunting of catfish larvae to Melanochromis
+      baliodigma; the majority weighed the other reports of fry eating and the general habit of
+      opportunistic mbuna. Level 1 means that fry and fish up to about 2 cm are at risk.
+    sources:
+      - &ribbink
+        kind: literature
+        title: "Ribbink, A. J. and Lewis, D. S. C. (1982). Melanochromis crabro sp. nov.: a cichlid fish from Lake Malawi which feeds on ectoparasites and catfish eggs. Netherlands Journal of Zoology 32(1), 72-87 (abstract)."
+        url: https://doi.org/10.1163/002829682x00058
+        accessed: 2026-10-13
+      - &genner
+        kind: literature
+        title: "Genner, M. J. and Turner, G. F. (2005). The mbuna cichlids of Lake Malawi: a model for rapid speciation and adaptive radiation. Fish and Fisheries 6(1), 1-34."
+        url: https://doi.org/10.1111/j.1467-2679.2005.00173.x
+        accessed: 2026-10-13
+      - *aqualog
+      - *oliver
+      - *fishbase
+      - *guidarium
+      - *crc
+      - &konings
+        kind: literature
+        title: "Konings, A.: Catfish-Cichlid Interactions in Lake Malawi. Tropical Fish Hobbyist"
+        url: https://www.tfhmagazine.com/articles/freshwater/catfishcichlid-interactions-in-lake-malawi
+        accessed: 2026-10-13
+    evidence:
+      - source: *ribbink
+        value: 1
+        note: Feeds on catfish eggs besides parasites and varied food.
+      - source: *aqualog
+        value: 1
+        note: Eats eggs and tiny fry of the kampango.
+      - source: *genner
+        value: 1
+        note: Parasites and catfish eggs, plus algae, plankton and insect larvae.
+      - source: *oliver
+        value: 1
+        note: Catfish eggs, zooplankton, some algae and insects.
+      - source: *fishbase
+        value: 1
+        note: Takes whatever is available; specialised on catfish parasites.
+      - source: *guidarium
+        value: 1
+        note: Listed as a fry predator.
+      - source: *crc
+        value: 1
+        note: Verification only; lists egg and brood eating among its feeding modes.
+      - source: *konings
+        value: 0
+        note: Field observation of egg eating only; the hunting of catfish larvae is assigned to another mbuna.
+
+  diet:
+    value:
+      type: omnivore
+      bloatSensitive: false
+      foods:
+        - crustacean and insect larva frozen food
+        - mysis and brine shrimp
+        - cichlid pellets and flakes with spirulina
+        - vegetable matter
+    confidence: medium
+    verification:
+      method: qualified-majority
+      votes: {agree: 4, total: 5}
+    rationale: >-
+      All five votes classed the species as an omnivore; checker-a, checker-b, checker-c and
+      tiebreaker-1 left the bloat flag unset, the generator set it as a precaution for mbuna in
+      general. In the wild it cleans Argulus lice from the kampango, steals catfish eggs and also
+      takes zooplankton, algae from the rocks and insect larvae (Ribbink and Lewis 1982 via Genner
+      and Turner 2005, Oliver, FishBase), so its natural diet has a large animal share and is not
+      the low-protein aufwuchs diet that the bloat flag addresses. Fishkeeper recommends more
+      protein than for most mbuna together with plant matter, and AquaInfo, AquariumDomain, the
+      GCCA breeding report and The Tropical Tank describe varied diets with animal food and no
+      bloat warning. Two retailer guides (Riverpark, Coburg) call the species mainly herbivorous,
+      which contradicts the field data. The flag rests on the absence of reports rather than on a
+      positive statement, hence medium confidence.
+    sources:
+      - *genner
+      - *ribbink
+      - *oliver
+      - *fishbase
+      - *fishkeeper
+      - *aquainfo
+      - *aquariumdomain
+      - *tropicaltank
+      - *tff
+      - &gcca
+        kind: literature
+        title: "Borstein, R. (2002). Pseudotropheus crabro. Greater Chicago Cichlid Association breeding report"
+        url: https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/85-pseudotropheus-crabro.html
+        accessed: 2026-10-13
+      - *aqualog
+      - *crc
+      - *liveaquaria
+      - *riverpark
+      - &coburg
+        kind: website
+        title: "Coburg Aquarium (retailer): Pseudotropheus crabro"
+        url: https://coburgaquarium.com.au/products/pseudotropheus-crabro-3
+        accessed: 2026-10-13
+    evidence:
+      - source: *genner
+        value: {type: omnivore, bloatSensitive: false}
+        note: Parasites, catfish eggs, plankton, algae and insect larvae.
+      - source: *ribbink
+        value: {type: omnivore}
+        note: Abstract names parasites and catfish eggs as special foods next to a varied diet.
+      - source: *oliver
+        value: {type: omnivore}
+        note: Zooplankton, some phytoplankton, aufwuchs and insects, plus lice and eggs.
+      - source: *fishbase
+        value: {type: omnivore}
+        note: Feeds on anything available.
+      - source: *aqualog
+        value: {type: omnivore}
+        note: Opportunistic omnivore with a focus on plankton.
+      - source: *fishkeeper
+        value: {type: omnivore, bloatSensitive: false}
+        note: More protein than for most mbuna, plus plant matter.
+      - source: *aquainfo
+        value: {type: omnivore, bloatSensitive: false}
+      - source: *aquariumdomain
+        value: {type: omnivore, bloatSensitive: false}
+        note: Broad animal-food share without a protein warning.
+      - source: *tropicaltank
+        value: {type: omnivore, bloatSensitive: false}
+        note: Dry food plus frozen or live food; no bloat warning.
+      - source: *tff
+        value: {type: omnivore, bloatSensitive: false}
+        note: Algae plus live foods.
+      - source: *gcca
+        value: {type: omnivore, bloatSensitive: false}
+        note: Varied prepared foods in a successful breeding report.
+      - source: *crc
+        value: {type: omnivore}
+        note: Verification only; algae, crustaceans, eggs and parasites.
+      - source: *liveaquaria
+        value: {type: omnivore, bloatSensitive: false}
+        note: Plant-rich staple with meaty supplements.
+      - source: *riverpark
+        value: {type: aufwuchs}
+        note: Retailer guide calling it mainly herbivorous.
+      - source: *coburg
+        value: {type: aufwuchs, bloatSensitive: true}
+        note: Retailer guide; contradicts the field data.
+
+  aggressionConspecific:
+    value: 4
+    confidence: medium
+    rationale: >-
+      The generator, checker-a and checker-b proposed level 3, checker-c level 4. The GCCA breeding
+      report states from first-hand experience that dominant males kill subordinate males and can
+      harass females to death, and that the keeper had to build a large rock pile that blocked the
+      male's view before the females could brood in a 100-gallon tank. Aqua-Fish independently
+      reports lethal attacks on males and on females and advises removing surplus males;
+      Fishkeeper warns that a single female with a male may die, and Guidarium calls dominant
+      males extremely aggressive. Both GCCA and Aqua-Fish advise against the species for
+      beginners. This matches level 4 (kills rivals or partners unless given space, cover or
+      separation; needs experience) better than level 3, which the majority based on the absence
+      of reported deaths. AquaInfo calls the species calm and barely territorial, which no other
+      source supports.
+    sources:
+      - *gcca
+      - *aquafish
+      - *fishkeeper
+      - *guidarium
+      - *ciklider
+      - *tff
+      - *aquainfo
+      - *oliver
+      - &thread10013
+        kind: archive
+        title: cichlids.com forum thread 10013
+        url: https://www.cichlids.com/disc/read.php?1,10013
+        accessed: 2026-10-13
+    evidence:
+      - source: *gcca
+        value: 4
+        note: Dominant males kill subordinate males and may kill females.
+      - source: *aquafish
+        value: 4
+        note: Lethal attacks on males and females; surplus males must go.
+      - source: *guidarium
+        value: 4
+        note: Dominant males extremely aggressive to other males.
+      - source: *fishkeeper
+        value: 3
+        note: A lone female suffers constant harassment and may die.
+      - source: *ciklider
+        value: 3
+        note: Strongly territorial males; one male per tank.
+      - source: *tff
+        value: 3
+        note: Pugnacious; one male with several females.
+      - source: *aquainfo
+        value: 1
+        note: Calls it calm and barely territorial.
+      - source: *thread10013
+        value: 3
+        note: Keepers count it among the most aggressive mbuna.
+
+  aggressionHeterospecific:
+    value: 3
+    confidence: medium
+    rationale: >-
+      The generator, checker-a and checker-c proposed level 3, checker-b level 2. GCCA reports
+      that the species quickly dominates less aggressive tankmates and advises keeping it only with
+      other aggressive cichlids; AquariumDomain warns that less aggressive fish may be killed, and
+      Fishkeeper, Ciklider.se and Guidarium advise robust mbuna of a different colour pattern as
+      tankmates. Keepers in the archive describe grown males harming tankmates in small tanks.
+      This is aggression beyond its own cave that requires tankmates of comparable size and
+      robustness, level 3; level 2 does not reflect the reports of dominated or killed tankmates.
+      AquaInfo describes only mild chasing.
+    sources:
+      - *gcca
+      - *aquariumdomain
+      - *fishkeeper
+      - *ciklider
+      - *guidarium
+      - *tff
+      - *aquainfo
+      - &thread9766
+        kind: archive
+        title: cichlids.com forum thread 9766
+        url: https://www.cichlids.com/disc/read.php?1,9766
+        accessed: 2026-10-13
+      - &thread2298
+        kind: archive
+        title: cichlids.com forum thread 2298
+        url: https://www.cichlids.com/disc/read.php?1,2298
+        accessed: 2026-10-13
+    evidence:
+      - source: *gcca
+        value: 3
+        note: Dominates less aggressive companions.
+      - source: *aquariumdomain
+        value: 3
+        note: Less aggressive fish may be killed; robust cichlids recommended.
+      - source: *fishkeeper
+        value: 3
+        note: Outgoing mbuna as tankmates, no similar colour patterns.
+      - source: *ciklider
+        value: 3
+        note: Aggressive to similar species.
+      - source: *guidarium
+        value: 3
+        note: Look-alikes are attacked.
+      - source: *tff
+        value: 3
+        note: Pugnacious despite its moderate size.
+      - source: *aquainfo
+        value: 2
+        note: Mild chasing from its territory.
+      - source: *thread9766
+        value: 4
+        note: A keeper warns that a grown male harms any tankmate in a small tank.
+
+  territory:
+    value: {size: small, breedingOnly: false}
+    confidence: medium
+    rationale: >-
+      The generator, checker-a and checker-b proposed a small, permanent territory; checker-c
+      proposed a large one. Males hold a cave or rock crevice and its surroundings all year, as
+      mbuna males generally keep territories for many months (Genner and Turner), and Ciklider.se,
+      Fishkeeper and AquaInfo describe a territory around a cave. Checker-c derived a large
+      territory from AquariumDomain's advice to give each male room and from the GCCA keeper
+      blocking the male's view; both describe a male harassing fish he can see from his cave
+      rather than a claim over a third of the tank, which the aggression level captures. No source
+      gives a territory covering a large part of the tank.
+    sources:
+      - *genner
+      - *ciklider
+      - *fishkeeper
+      - *aquainfo
+      - *aquariumdomain
+      - *gcca
+    evidence:
+      - source: *genner
+        value: {size: small, breedingOnly: false}
+        note: Mbuna males hold territories for 18 months or more.
+      - source: *ciklider
+        value: {size: small, breedingOnly: false}
+        note: Territory around a cave or crevice.
+      - source: *fishkeeper
+        value: {size: small, breedingOnly: false}
+        note: Many caves needed to avoid territorial fights.
+      - source: *aquainfo
+        value: {size: small, breedingOnly: false}
+      - source: *aquariumdomain
+        value: {size: large, breedingOnly: false}
+        note: Rubric mapping by checker-c from the advice to give each male room.
+
+  habitatZones:
+    value: [rock]
+    confidence: medium
+    rationale: >-
+      The generator, checker-a and checker-b proposed rock only; checker-c proposed rock and sand.
+      FishBase places the species mostly in large caves and beside big boulders, Ciklider.se on
+      rocks and boulders at 15 to 30 m, and the Cichlid Room Companion on rocky shores with
+      sediment. Konings describes it as always associated with the kampango, whose nests lie mostly
+      under a large rock on sand at the rock-sand interface; the species visits that edge to feed
+      but depends on the rock. In the tank it needs rock structures with caves; sand serves as
+      substrate but is not a zone it needs.
+    sources:
+      - *fishbase
+      - *ciklider
+      - *aqualog
+      - *konings
+      - *crc
+      - *drta
+    evidence:
+      - source: *fishbase
+        value: [rock]
+        note: Mostly in large caves or near large boulders.
+      - source: *ciklider
+        value: [rock]
+        note: Rocks and large boulders, usually 15 to 30 m deep.
+      - source: *aqualog
+        value: [rock]
+        note: Mainly in and near the caves of the catfish.
+      - source: *crc
+        value: [rock]
+        note: Verification only; rocky habitat with sediment.
+      - source: *konings
+        value: [rock, sand]
+        note: Feeds at catfish nests at the rock-sand interface.
+
+  social:
+    value: {structure: harem, ratio: 3}
+    confidence: high
+    rationale: >-
+      All four proposals agree. Fishkeeper, Ciklider.se, AquaInfo, DRTA, Aqua-Fish and Tropical
+      Freshwater Fish advise one male with several females, and Guidarium and LiveAquaria name at
+      least three females per male. Several females spread the attention of the male; a male with
+      a single female can kill her. Mbuna are polygamous and form no pair bond (Genner and Turner).
+    sources:
+      - *fishkeeper
+      - *guidarium
+      - *ciklider
+      - *aquainfo
+      - *drta
+      - *aquafish
+      - *tff
+      - *genner
+      - *liveaquaria
+    evidence:
+      - source: *guidarium
+        value: {structure: harem, ratio: 3}
+      - source: *drta
+        value: {structure: harem, ratio: 3}
+        note: Two to three females per male.
+      - source: *fishkeeper
+        value: {structure: harem}
+        note: One male with several females.
+      - source: *ciklider
+        value: {structure: harem}
+        note: Several females per male.
+      - source: *aquafish
+        value: {structure: harem}
+        note: Several females to share the courtship pressure.
+      - source: *liveaquaria
+        value: {structure: harem, ratio: 3}
+
+  speciesOnly:
+    value: false
+    confidence: high
+    verification:
+      method: unanimous
+      votes: {agree: 4, total: 4}
+    rationale: >-
+      All four votes agree. Every husbandry source places the species in a community of robust
+      Malawi cichlids: Fishkeeper names other outgoing mbuna, Tropical Freshwater Fish and The
+      Tropical Tank suggest an mbuna community, Ciklider.se and Aqua-Fish advise robust mbuna of a
+      different appearance, AquariumDomain describes large communities of aggressive African
+      cichlids and the GCCA report accepts other aggressive cichlids. No source asks for a species
+      tank; the restrictions concern timid and look-alike tankmates, which the aggression levels
+      and the partner list cover.
+    sources:
+      - *fishkeeper
+      - *tff
+      - *tropicaltank
+      - *ciklider
+      - *aquainfo
+      - *gcca
+      - *aquafish
+      - *aquariumdomain
+    evidence:
+      - source: *fishkeeper
+        value: false
+        note: Kept with other outgoing mbuna.
+      - source: *tff
+        value: false
+        note: Suits an mbuna community tank.
+      - source: *tropicaltank
+        value: false
+        note: Combine with other mbuna.
+      - source: *ciklider
+        value: false
+        note: With other robust mbuna that look different.
+      - source: *aquainfo
+        value: false
+      - source: *gcca
+        value: false
+        note: Other aggressive cichlids are accepted tankmates.
+      - source: *aquafish
+        value: false
+        note: Other mbuna allowed with attention to appearance and aggression.
+      - source: *aquariumdomain
+        value: false
+        note: Large communities of aggressive African cichlids.
+
+  hybridGroups:
+    value: []
+    confidence: low
+    verification:
+      method: unanimous
+      votes: {agree: 4, total: 4}
+    rationale: >-
+      All four votes agree that no curated group concerns the species. No source read reports a
+      cross of P. crabro with another species, in the wild or in the tank. The Catalog of Fishes
+      and the Melanochromis revision of Konings and Stauffer (2012) keep it in Pseudotropheus, so
+      groups of its original genus Melanochromis do not apply, and Genner and Turner name no
+      hybrid involving it. Its colour, its cleaning and egg-robbing habits and its marked genetic
+      distance to related genera (Hashem et al. 2024, abstract) set it apart. The only hint of a
+      cross is anecdotal: the generator found a search result pointing to a forum claim of crosses
+      with Maylandia estherae that it could not read, and checker-b found a forum remark about a
+      possible mix with a red zebra; no other source confirms either. The empty list therefore
+      rests on the absence of reports, which is weak evidence, hence low confidence.
+    sources:
+      - *cof
+      - &koningsstauffer
+        kind: literature
+        title: "Konings, A. F. and Stauffer, J. R. (2012). Review of the Lake Malawi genus Melanochromis (Teleostei: Cichlidae) with a description of a new species. Zootaxa 3258, 1-37."
+        url: https://doi.org/10.11646/zootaxa.3258.1.1
+        accessed: 2026-10-13
+      - *genner
+      - &hashem
+        kind: literature
+        title: "Hashem et al. (2024). Genetic relationships between and within some Malawian cichlid genera. Journal of Fish Biology (abstract only)."
+        url: https://doi.org/10.1111/jfb.15848
+        accessed: 2026-10-13
+      - *oliver
+      - *fishbase
+      - *fishkeeper
+      - *ciklider
+    evidence:
+      - source: *cof
+        value: []
+        note: Valid species in Pseudotropheus; no hybrid origin recorded.
+      - source: *koningsstauffer
+        value: []
+        note: Places crabro in Pseudotropheus; reports no cross.
+      - source: *genner
+        value: []
+        note: Its hybrid examples do not involve crabro.
+      - source: *hashem
+        value: []
+        note: Genetic distance shown; says nothing about actual crosses.
+      - source: *oliver
+        value: []
+        note: Describes the species without any crossing report.
+      - source: *fishbase
+        value: []
+        note: No cross mentioned.
+      - source: *fishkeeper
+        value: []
+        note: Warns only about rival aggression against look-alikes.
+      - source: *ciklider
+        value: []
+        note: No cross mentioned.
+
+  coloration:
+    value:
+      baseColors: [yellow, brown, black]
+      pattern: bars
+    confidence: high
+    rationale: >-
+      All four proposals agree. Juveniles, females and subordinate males show broad chocolate-brown
+      vertical bars on a golden yellow body (Oliver, Ciklider.se, The Tropical Tank). Dominant and
+      breeding males switch within moments to an almost uniformly dark brown or black dress
+      (Aqualog, AquaInfo, Fishkeeper), and GCCA reports that males can also look like females and
+      females can turn dark. The barred yellow pattern resembles that of other barred mbuna.
+    sources:
+      - *oliver
+      - *ciklider
+      - *aqualog
+      - *aquainfo
+      - *tropicaltank
+      - *fishkeeper
+      - *gcca
+      - &glaser
+        kind: website
+        title: "Aquarium Glaser (wholesaler): Pseudotropheus crabro, fish archive"
+        url: https://aquariumglaser.de/en/fish-archives/pseudotropheus_crabro_en
+        accessed: 2026-10-13
+    evidence:
+      - source: *oliver
+        value: {baseColors: [yellow, brown], pattern: bars}
+      - source: *ciklider
+        value: {baseColors: [yellow, brown], pattern: bars}
+        note: Breeding males almost entirely dark brown.
+      - source: *aqualog
+        value: {baseColors: [yellow, brown, black], pattern: bars}
+        note: Can turn almost completely black within moments.
+      - source: *aquainfo
+        value: {baseColors: [yellow, brown, black], pattern: bars}
+      - source: *gcca
+        value: {baseColors: [yellow, black], pattern: bars}
+        note: Both sexes can switch between barred and nearly black.
+      - source: *glaser
+        value: {baseColors: [yellow, black], pattern: bars}
+
+  feedingSpeed:
+    value: hasty
+    confidence: medium
+    rationale: >-
+      All four proposals agree. AquaInfo stresses a big appetite and quick eating, and
+      AquariumDomain describes competitive feeding; this matches the hasty feeding of mbuna in
+      general. An archive keeper describes the fish eating greedily.
+    sources:
+      - *aquainfo
+      - *aquariumdomain
+      - &thread10465
+        kind: archive
+        title: cichlids.com forum thread 10465
+        url: https://www.cichlids.com/disc/read.php?1,10465
+        accessed: 2026-10-13
+    evidence:
+      - source: *aquainfo
+        value: hasty
+        note: Big appetite, quick eating.
+      - source: *aquariumdomain
+        value: hasty
+        note: Competitive feeding.
+
+  minTank:
+    value: {volumeL: 300, lengthCm: 150, depthCm: 50}
+    confidence: medium
+    rationale: >-
+      The proposals were 250 L, 120 by 45 cm (generator), 300 L, 150 by 50 cm (checker-a), 200 L,
+      120 by 40 cm (checker-b) and 400 L, 150 by 50 cm (checker-c). For one male with three females
+      the sources ask for 120 to 150 cm and about 200 to 400 L: Fishkeeper at least 120 cm,
+      Guidarium 200 L and 120 cm, Ciklider.se 250 L, LiveAquaria about 265 L, Aqua-Fish about
+      284 L, DRTA 400 L and 130 cm, AquaInfo 150 cm; the GCCA keeper bred the species only after
+      adding extensive rockwork to a 379 L tank. Given the lethal male aggression, the decision
+      takes the middle of these figures with the longer length: 300 L, 150 cm long and 50 cm
+      front to back, which leaves room for several rock piles that break the male's line of sight.
+      Tropical Freshwater Fish (114 L, 81 cm) is too small for adult males.
+    sources:
+      - *fishkeeper
+      - *guidarium
+      - *ciklider
+      - *aquafish
+      - *drta
+      - *aquainfo
+      - *gcca
+      - *liveaquaria
+      - *tff
+    evidence:
+      - source: *fishkeeper
+        value: {lengthCm: 120}
+      - source: *guidarium
+        value: {volumeL: 200, lengthCm: 120}
+      - source: *ciklider
+        value: {volumeL: 250}
+        note: For one male with females.
+      - source: *aquafish
+        value: {volumeL: 284}
+        note: Given as 75 US gallons for a harem.
+      - source: *drta
+        value: {volumeL: 400, lengthCm: 130}
+      - source: *aquainfo
+        value: {lengthCm: 150}
+      - source: *gcca
+        value: {volumeL: 379}
+        note: Tank of the successful breeding report (100 US gallons).
+      - source: *liveaquaria
+        value: {volumeL: 265}
+        note: Given as 70 US gallons.
+      - source: *tff
+        value: {volumeL: 114, lengthCm: 81}
+        note: Too small; outlier.
+
+  lifespanYears:
+    value: {min: 5, max: 10}
+    confidence: low
+    rationale: >-
+      The proposals were 6 to 10 years (generator, checker-a, both from general mbuna knowledge)
+      and 5 to 10 years (checker-b, checker-c, from care sheets). Aqua-Fish gives about 10 years,
+      Riverpark 5 to 8 years and Aquariadise more than 10; DRTA claims 10 to 20 years without
+      support. The decision follows the stated figures, 5 to 10 years; the sources are few and
+      mostly retailers, so the confidence is low.
+    sources:
+      - *aquafish
+      - *riverpark
+      - &aquariadise
+        kind: website
+        title: "Aquariadise: Bumblebee Cichlid"
+        url: https://www.aquariadise.com/bumblebee-cichlid/
+        accessed: 2026-10-13
+      - *drta
+    evidence:
+      - source: *aquafish
+        value: {min: 10, max: 10}
+        note: About ten years.
+      - source: *riverpark
+        value: {min: 5, max: 8}
+      - source: *drta
+        value: {min: 10, max: 20}
+        note: Unsupported high figure.
+
+  breeding:
+    value: maternal-mouthbrooder
+    confidence: high
+    rationale: >-
+      All four proposals agree. All mbuna are maternal mouthbrooders (Genner and Turner). The GCCA
+      report, Fishkeeper, Aqua-Fish, Ciklider.se and AquaInfo describe the female taking the eggs
+      into her mouth and carrying them for about 18 to 25 days; the Cichlid Room Companion confirms
+      the breeding mode.
+    sources:
+      - *genner
+      - *gcca
+      - *fishkeeper
+      - *aquafish
+      - *ciklider
+      - *aquainfo
+      - *crc
+    evidence:
+      - source: *genner
+        value: maternal-mouthbrooder
+      - source: *gcca
+        value: maternal-mouthbrooder
+        note: Females hold 18 to 21 days; about 16 young from a stripped female.
+      - source: *fishkeeper
+        value: maternal-mouthbrooder
+        note: Brooding up to about 25 days.
+      - source: *aquafish
+        value: maternal-mouthbrooder
+        note: About 18 to 21 days; 25 to 30 young per spawn.
+      - source: *ciklider
+        value: maternal-mouthbrooder
+        note: 10 to 30 young after about three weeks.
+      - source: *crc
+        value: maternal-mouthbrooder
+        note: Verification only.
+
+  beginnerSuitability:
+    value: moderate
+    confidence: medium
+    rationale: >-
+      The generator, checker-a and checker-b proposed moderate, checker-c demanding. The fish is
+      hardy, eats everything and breeds readily, which is why LiveAquaria, AquariumDomain and the
+      Cichlid Room Companion rate it easy. Its aggression rules out a beginner's community tank:
+      GCCA, Aqua-Fish and Oliver advise against it for novices, and Sims rates it for intermediate
+      keepers. The difficulty lies in stocking and tank layout, not in feeding, water or health,
+      so moderate (some experience with mbuna needed) fits better than demanding; the aggression
+      level of 4 carries the warning about male rivalry.
+    sources:
+      - *gcca
+      - *aquafish
+      - *oliver
+      - *drta
+      - *tff
+      - *aquariumdomain
+      - *crc
+      - *liveaquaria
+      - *sims
+    evidence:
+      - source: *gcca
+        value: demanding
+        note: Should not be sold to beginners.
+      - source: *aquafish
+        value: demanding
+        note: Not for beginners; for experienced keepers.
+      - source: *oliver
+        value: demanding
+        note: Poor choice for novices because of its aggression.
+      - source: *drta
+        value: moderate
+      - source: *tff
+        value: moderate
+        note: Middle of its difficulty scale, aggressive.
+      - source: *sims
+        value: moderate
+        note: Intermediate keepers.
+      - source: *aquariumdomain
+        value: easy
+      - source: *crc
+        value: easy
+        note: Verification only; listed as a beginner species.
+      - source: *liveaquaria
+        value: easy
+
+partners:
+  suitable:
+    - species: Labeotropheus fuelleborni
+      reason: A robust mbuna of similar size whose shape and colour differ clearly, so it is not taken for a rival.
+      condition: Tank of at least 150 cm with several separate rock piles.
+    - species: Maylandia callainos
+      reason: A sturdy, plain blue mbuna without bars that holds its own against an aggressive tankmate.
+      condition: Tank of at least 150 cm with several separate rock piles.
+    - species: Maylandia greshakei
+      reason: A robust mbuna of similar temperament with an unbarred blue and orange colour.
+      condition: Tank of at least 150 cm with several separate rock piles.
+    - species: Synodontis multipunctatus
+      reason: Care sheets suggest it as a fast, armoured bottom dweller for mbuna tanks.
+      condition: The crabro cleans catfish in the lake and may pester them in the tank as well; watch the catfish for damaged skin or fins.
+  unsuitable:
+    - species: Maylandia lombardoi
+      reason: Barred blue females and yellow males resemble the crabro, and the species is just as aggressive; look-alikes are treated as rivals.
+    - species: Melanochromis auratus
+      reason: Yellow and black and highly aggressive; the similar colours provoke constant fights.
+    - species: Aulonocara
+      reason: Peaceful peacocks are bullied and cannot compete at feeding times.
+    - species: Tropheus moorii
+      reason: A Lake Tanganyika aufwuchs grazer best kept with its own species; it does not belong in a tank with aggressive mbuna.
+    - species: Poecilia reticulata
+      reason: Small, peaceful community fish are harassed and their young are eaten.
+
+profile:
+  overview:
+    text: >-
+      The bumblebee or hornet cichlid is a mbuna from the rocky shores of Lake Malawi. Its common
+      names refer to the dark brown bars on a golden yellow body that juveniles, females and
+      subordinate males wear. Dominant males can turn almost black within moments, which earned
+      the species the trade name chamaeleo. In the lake it lives an unusual life: it picks
+      parasites from the skin of the large kampango catfish and, when the catfish breed, darkens
+      and slips into their nests to eat the eggs. In the aquarium it is hardy, eats any food and
+      breeds readily, but its males are among the most combative mbuna and can kill rivals and
+      females. It suits a large rock aquarium with other robust mbuna, kept as one male with
+      several females. Described in 1982 as Melanochromis crabro, it is placed in Pseudotropheus
+      and is sometimes sold as Metriaclima or Maylandia crabro.
+    sources:
+      - *cof
+      - *oliver
+      - *aqualog
+      - *konings
+      - *gcca
+      - *fishkeeper
+  habitat:
+    text: >-
+      Pseudotropheus crabro lives only in Lake Malawi. It is known from many islands and reefs of
+      the southern and central lake, among them Maleri, Mbenji, Chinyankwazi, Likoma and
+      Chizumulu, from Nkhata Bay and from the Mozambican shore; the far north of the lake has no
+      populations. It is found mostly in large caves and beside big boulders, where the kampango
+      catfish rests by day, and it visits the catfish nests at the edge of rock and sand. The type
+      specimens came from 15 to 18 m depth. Lake Malawi water is soft but alkaline: about 21 to 29
+      C over the year, pH 7.7 to 8.6, total hardness 3 to 5 dGH and carbonate hardness 5 to 8 dKH.
+      Carbonate hardness exceeds total hardness there, so the lake is not hard water, as it is
+      often described.
+    sources:
+      - *cof
+      - *fishbase
+      - *oliver
+      - *ciklider
+      - *konings
+      - *branchu
+      - *fao
+      - *eccles
+  sizeAndGrowth:
+    text: >-
+      In the lake this mbuna stays fairly small, usually about 9 to 12 cm. Aquarium fish grow
+      larger on rich food: males typically reach about 15 cm in total length and females about
+      12 cm. The young grow fast and already show the barred pattern. With age, dominant males
+      spend more and more time in the dark dress. Figures of 20 cm on some care sheets go beyond
+      what most keepers see, and figures of 10 cm underestimate grown males.
+    sources:
+      - *fishbase
+      - *aqualog
+      - *guidarium
+      - *drta
+      - *gcca
+  husbandry:
+    text: >-
+      One male with three or more females needs a tank of at least 150 cm length and about 300
+      litres. Build several stable rock piles from the floor nearly up to the surface, with many
+      caves and crevices, so that each fish can get out of the male's sight; set the rocks on the
+      glass before adding the sand, because mbuna dig. Mbuna tanks are usually stocked densely to
+      spread aggression, which creates a heavy waste load, so strong filtration and large weekly
+      water changes are essential. The species copes with a wide range of water: about 24 to 27 C
+      is a good permanent setting, pH 7.5 to 8.6, total hardness from soft up to about 25 dGH and
+      carbonate hardness from 5 up to about 15 dKH. Stable alkaline buffering matters more than
+      the exact hardness.
+    sources:
+      - *fishkeeper
+      - *guidarium
+      - *aquainfo
+      - *drta
+      - *gcca
+      - *tropicaltank
+  socialBehavior:
+    text: >-
+      Each adult male claims a cave and its surroundings and defends it all year. A dominant male
+      turns dark and drives off rivals and females that are not ready to spawn, often with long
+      chases. Several keepers report that dominant males kill subordinate males and can harass
+      females to death, so keep a single male with at least three females and remove surplus
+      males from a group of young fish as they colour up. Rock piles that block the male's view
+      help a lot: a male that cannot see the females from his cave leaves them alone more often.
+      Towards other species the crabro is quarrelsome as well; it dominates calmer tankmates and
+      attacks fish with a similar barred pattern and newcomers to the tank.
+    sources:
+      - *gcca
+      - *aquafish
+      - *fishkeeper
+      - *guidarium
+      - *aquariumdomain
+  diet:
+    text: >-
+      In the wild the bumblebee cichlid eats whatever it finds. It removes fish lice from the
+      kampango catfish, steals the catfish's eggs and also feeds on zooplankton, algae from the
+      rocks and insect larvae. In the aquarium it accepts all common foods. A good base is a
+      quality cichlid pellet or flake with a plant share such as spirulina, together with frozen
+      foods like mysis, daphnia or brine shrimp; it tolerates more animal food than the
+      algae-grazing mbuna. Feed small portions once or twice a day rather than one large meal. The
+      species eats fast and greedily, so slower tankmates may go short.
+    sources:
+      - *genner
+      - *oliver
+      - *fishkeeper
+      - *aquainfo
+      - *aquariumdomain
+  breeding:
+    text: >-
+      The crabro is a maternal mouthbrooder and breeds readily in a harem tank. The darkened male
+      courts ripe females with shaking and circling displays and leads them to a flat stone in or
+      near his cave. The pair circles, the female lays a few eggs at a time and takes them into her
+      mouth, where they are fertilised as she nips at the egg spots on the male's anal fin. She
+      carries the brood for about 18 to 21 days, up to 25, eats little in that time and then
+      releases about 15 to 30 young that take crushed flake and newly hatched brine shrimp. Females
+      do not guard the free young. Harassment by the male can make females spit or swallow the
+      eggs, so many keepers move a holding female to a separate tank.
+    sources:
+      - *gcca
+      - *aquafish
+      - *fishkeeper
+      - *ciklider
+      - *genner
+  sexing:
+    text: >-
+      Adult males are larger than females and usually darker. A dominant male spends much of the
+      day in a dark brown to black dress, while females and subordinate males keep the yellow body
+      with brown bars. The colour alone is not reliable, because subordinate males can stay barred
+      and female-like for a long time and females can turn dark briefly. Males often have clearer
+      egg spots on the anal fin, but some females show them too. The safest way to a harem is to
+      raise six or more young fish together and remove surplus males as they colour up.
+    sources:
+      - *gcca
+      - *fishkeeper
+      - *aquafish
+      - *aqualog
+  compatibility:
+    text: >-
+      Keep this species only with other robust mbuna of similar size whose colours and shapes
+      differ clearly, for example Labeotropheus or plain blue Maylandia species. Avoid barred mbuna
+      such as Maylandia lombardoi and yellow and black Melanochromis, because look-alikes are
+      treated as rivals. Peaceful Malawi haplochromines such as peacocks are bullied, fish from Lake
+      Tanganyika such as Tropheus do not belong with it, and small community fish are harassed and
+      their young eaten. Fast, armoured catfish such as Synodontis multipunctatus are often
+      suggested, but the crabro cleans catfish in the wild and may pester them in the tank too.
+      Its own fry survive reliably only in a separate tank.
+    sources:
+      - *fishkeeper
+      - *ciklider
+      - *guidarium
+      - *gcca
+      - *tff
+      - &thread13905
+        kind: archive
+        title: cichlids.com forum thread 13905
+        url: https://www.cichlids.com/disc/read.php?2,13905
+        accessed: 2026-10-13
+  problems:
+    text: >-
+      Most problems come from aggression. Too few females, a second male, too small a tank or too
+      little rock lead to torn fins, injured or dead females and fish hiding in corners; watch the
+      group daily and remove a fish that is chased persistently. Brooding females under constant
+      pressure often lose their clutch. Dense stocking quickly raises nitrate, so large regular
+      water changes matter, and a drop in pH from poor buffering stresses the fish. No source
+      reports bloat as a particular weakness of this species, but overfeeding and poor water raise
+      the risk in any mbuna tank. Catfish in the tank may be pestered by its cleaning habit.
+    sources:
+      - *gcca
+      - *fishkeeper
+      - *aquafish
+      - *tropicaltank
+      - *thread13905
+
+provenance:
+  runs:
+    - role: generator
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-13
+    - role: checker
+      model: gpt-6.1-sol
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: adjudicator
+      model: claude-opus-5-5
+      date: 2026-10-13
+  disagreements:
+    - field: taxonomy.synonyms
+      proposals:
+        - {by: generator, value: Pseudotropheus chamaeleo}
+        - {by: checker-a, value: Pseudotropheus chamaeleo}
+        - {by: checker-b, value: Pseudotropheus chamaeleo}
+        - {by: checker-c, value: Pseudotropheus chameleo}
+      decision: Pseudotropheus chamaeleo
+      rationale: The Catalog of Fishes spells the nomen nudum of Staeck (1977) chamaeleo; chameleo is a trade spelling, noted in the synonym note. Metriaclima crabro is added as a hobby combination because legacy entry 383 used it.
+    - field: features.origin.value.localities
+      proposals:
+        - {by: generator, value: [Maleri Island, Mbenji Islands, Chinyankwazi Island, Chiyamwezi Island, Likoma Island, Chisumulu Island, Eccles Reef, West Reef, Nkhata Bay, Cobue (Mozambique)]}
+        - {by: checker-a, value: [Maleri Island, Eccles Reef, West Reef, Chinyankwazi Island, Chinyamwezi Island, Mbenji Island, Likoma Island, Chizumulu Island, Nkhata Bay, Nametumbwe]}
+        - {by: checker-b, value: [Eccles Reef, West Reef, Chinyankwazi Island, Chiyamwezi Island, Maleri Island, Mbenji Island, Likoma Island, Chisumulu Island, Nkata Bay]}
+        - {by: checker-c, value: [Maleri Island, Mbenji Island, Likoma Island, Chizumulu Island, Nkhata Bay]}
+      decision: [Maleri Island, Mbenji Islands, Chinyankwazi Island, Chinyamwezi Island, Likoma Island, Chizumulu Island, Eccles Reef, West Reef, Nkhata Bay, Cobue (Mozambique), Nametumbwe (Mozambique)]
+      rationale: The lists complement each other; the decision merges them in current spelling. The waterbody is given as the table id lake-malawi.
+    - field: features.ph.tolerance
+      proposals:
+        - {by: generator, value: {min: 7.5, max: 8.6}}
+        - {by: checker-a, value: {min: 7.5, max: 8.6}}
+        - {by: checker-b, value: {min: 7.5, max: 8.8}}
+        - {by: checker-c, value: {min: 7.5, max: 8.6}}
+      decision: {min: 7.5, max: 8.6}
+      rationale: Decided by tally.yaml, method unanimous (4 of 4, bounds within 0.3); the median of the upper bounds is 8.6. The 8.8 of checker-b follows a single care sheet.
+    - field: features.ghDgh.tolerance
+      proposals:
+        - {by: generator, value: {min: 3, max: 25}}
+        - {by: checker-a, value: {min: 3, max: 25}}
+        - {by: checker-b, value: {min: 3, max: 25}}
+        - {by: checker-c, value: {min: 3, max: 20}}
+        - {by: tiebreaker-1, value: {min: 3, max: 25}}
+      decision: {min: 3, max: 25}
+      rationale: Decided by tally.yaml, method qualified-majority (4 of 5). Four care sheets name 25 dGH as the upper limit; checker-c judged that end too weakly supported.
+    - field: features.khDkh.tolerance
+      proposals:
+        - {by: generator, value: {min: 5, max: 15}}
+        - {by: checker-a, value: {min: 5, max: 15}}
+        - {by: checker-b, value: {min: 5, max: 12}}
+        - {by: checker-c, value: {min: 5, max: 15}}
+        - {by: tiebreaker-1, value: {min: 5, max: 15}}
+      decision: {min: 5, max: 15}
+      rationale: Decided by tally.yaml, method qualified-majority (4 of 5). Two species care sheets give 10 to 15 dKH and 6 to 12 dKH, where 12 is a preferred value rather than a limit; checker-b estimated 12 without a species figure.
+    - field: features.maxSizeCm
+      proposals:
+        - {by: generator, value: {male: 14, female: 11}}
+        - {by: checker-a, value: {male: 15, female: 12}}
+        - {by: checker-b, value: {male: 12, female: 10}}
+        - {by: checker-c, value: {male: 15, female: 13}}
+      decision: {male: 15, female: 12}
+      rationale: Most aquarium sources give about 15 cm for males; female figures range from 11 to 14 cm, with 12 cm in the middle. Checker-b based its value on the wild standard length, which understates well-kept aquarium fish.
+    - field: features.predation
+      proposals:
+        - {by: generator, value: 1}
+        - {by: checker-a, value: 1}
+        - {by: checker-b, value: 1}
+        - {by: checker-c, value: 0}
+        - {by: tiebreaker-1, value: 1}
+      decision: 1
+      rationale: Decided by tally.yaml, method qualified-majority (4 of 5). Several sources report egg and fry eating; checker-c relied on a field observation of egg eating only.
+    - field: features.diet
+      proposals:
+        - {by: generator, value: {type: omnivore, bloatSensitive: true}}
+        - {by: checker-a, value: {type: omnivore, bloatSensitive: false}}
+        - {by: checker-b, value: {type: omnivore, bloatSensitive: false}}
+        - {by: checker-c, value: {type: omnivore, bloatSensitive: false}}
+        - {by: tiebreaker-1, value: {type: omnivore, bloatSensitive: false}}
+      decision: {type: omnivore, bloatSensitive: false}
+      rationale: Decided by tally.yaml, method qualified-majority (4 of 5). The generator set the bloat flag as a general mbuna precaution; no source reports bloat for this species, whose wild diet has a large animal share. The food lists differed and the tally took that of checker-a.
+    - field: features.aggressionConspecific
+      proposals:
+        - {by: generator, value: 3}
+        - {by: checker-a, value: 3}
+        - {by: checker-b, value: 3}
+        - {by: checker-c, value: 4}
+      decision: 4
+      rationale: The GCCA breeding report and Aqua-Fish independently report dominant males killing subordinate males and females and advise against the species for beginners, which matches level 4; the majority based level 3 on the absence of such reports, which these sources contradict.
+    - field: features.aggressionHeterospecific
+      proposals:
+        - {by: generator, value: 3}
+        - {by: checker-a, value: 3}
+        - {by: checker-b, value: 2}
+        - {by: checker-c, value: 3}
+      decision: 3
+      rationale: GCCA and AquariumDomain report that calmer tankmates are dominated or killed and advise robust tankmates, which is level 3.
+    - field: features.territory
+      proposals:
+        - {by: generator, value: {size: small, breedingOnly: false}}
+        - {by: checker-a, value: {size: small, breedingOnly: false}}
+        - {by: checker-b, value: {size: small, breedingOnly: false}}
+        - {by: checker-c, value: {size: large, breedingOnly: false}}
+      decision: {size: small, breedingOnly: false}
+      rationale: Sources describe a territory around a cave; the harassment of fish within the male's sight that checker-c read as a large territory is covered by the aggression level.
+    - field: features.habitatZones
+      proposals:
+        - {by: generator, value: [rock]}
+        - {by: checker-a, value: [rock]}
+        - {by: checker-b, value: [rock]}
+        - {by: checker-c, value: [rock, sand]}
+      decision: [rock]
+      rationale: The species lives in caves and among boulders; it visits the rock-sand edge at catfish nests to feed but does not depend on open sand.
+    - field: features.minTank
+      proposals:
+        - {by: generator, value: {volumeL: 250, lengthCm: 120, depthCm: 45}}
+        - {by: checker-a, value: {volumeL: 300, lengthCm: 150, depthCm: 50}}
+        - {by: checker-b, value: {volumeL: 200, lengthCm: 120, depthCm: 40}}
+        - {by: checker-c, value: {volumeL: 400, lengthCm: 150, depthCm: 50}}
+      decision: {volumeL: 300, lengthCm: 150, depthCm: 50}
+      rationale: Sources range from 200 to 400 L and 120 to 150 cm; the decision takes the middle volume with the longer length because of the lethal male aggression.
+    - field: features.lifespanYears
+      proposals:
+        - {by: generator, value: {min: 6, max: 10}}
+        - {by: checker-a, value: {min: 6, max: 10}}
+        - {by: checker-b, value: {min: 5, max: 10}}
+        - {by: checker-c, value: {min: 5, max: 10}}
+      decision: {min: 5, max: 10}
+      rationale: The care sheets that state a lifespan give 5 to 8 and about 10 years; the 6-year minimum of the generator and checker-a came from general mbuna knowledge only.
+    - field: features.beginnerSuitability
+      proposals:
+        - {by: generator, value: moderate}
+        - {by: checker-a, value: moderate}
+        - {by: checker-b, value: moderate}
+        - {by: checker-c, value: demanding}
+      decision: moderate
+      rationale: Care, feeding and breeding are easy; the difficulty lies in stocking and tank layout, which moderate covers together with aggression level 4. Sources range from easy to not for beginners.
