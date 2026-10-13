@@ -195,6 +195,9 @@ Zu jeder Frage ist eine vorläufige Umsetzung in Gebrauch; sie wird bestätigt o
 - [ ] Kleines PDF-zu-Text-Werkzeug ins Repo, weil `pdftotext` fehlt und Agenten sich sonst eigene
   Hilfsskripte bauen
 - [ ] Unabhängigkeit der Prüfer technisch absichern: Prüfer lesen fertige Profile nicht
+- [ ] `fetch-oa.mjs` legt Fehlerseiten als Volltext in `data/species/work/.literature/` ab (gesehen
+  beim Neotropical-Ichthyology-Artikel zu Vieja maculicauda: eine Zertifikatsfehler-Seite). Antworten
+  ohne Artikeltext erkennen und nicht speichern; vorhandene Fehlerseiten in der Ablage entfernen
 - [ ] `fetch-oa.mjs` nimmt nur DOIs. Frei zugängliche Arbeiten ohne DOI (Cole 1976 zur Limnologie
   der Nicaragua-Seen, Haberyan et al. 2003) laden Agenten deshalb mit curl; einen URL-Modus mit
   denselben Zugangsregeln ergänzen
