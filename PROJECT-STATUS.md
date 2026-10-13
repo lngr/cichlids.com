@@ -71,8 +71,7 @@ Danach folgt der Cutover: finale ETL, Medienmigration, Auth0 nach Keycloak, Go-L
 
 | Pfad | Inhalt |
 |---|---|
-| `/workspaces/cichlids.com` | Haupt-Worktree, Branch `main`. Enthält Doku, ADRs, Backlog, `infra/`, `policy/`, `tools/`, `design-system/` und `workspace-legacy/`. |
-| `/workspaces/cichlids-mvp` | Zweiter Worktree, Branch `feat/legacy-mvp`. Enthält zusätzlich `app/` (API, ETL, Client, Mobile, lokaler Stack). |
+| `/workspaces/cichlids.com` | Haupt-Worktree, Branch `main`. Enthält Doku, ADRs, Backlog, `app/` (API, ETL, Client, Mobile, lokaler Stack), `infra/`, `policy/`, `tools/`, `design-system/` und `workspace-legacy/`. |
 | `/workspaces/cichlids.com/workspace-legacy/` | Bestandsaufnahme des Altsystems: HTML-Report, `findings/` 01 bis 10, kuratierte Altquellen, `legacy-stack/` (Compose für MySQL 5.7 und phpMyAdmin), Server-Konfigurationen, `tools/verify_images.py`. |
 | `/workspaces/legacy-data/db-dump/` | `frontosa-mysql-2023-09-20-06-00.sql.gz` (382 MB) |
 | `/workspaces/legacy-data/images/userpics/` | Originalbilder (235 GB) |
@@ -106,7 +105,6 @@ vom eigenen Host.
 | Branch | Worktree | Stand |
 |---|---|---|
 | `main` | `/workspaces/cichlids.com` | Mehrere Commits vor `origin/main`, Push durch den Operator ausstehend |
-| `feat/legacy-mvp` | `/workspaces/cichlids-mvp` | 127 Commits über der Merge-Base `c8ad766`; die obersten 45 (2026-09-28 und 29) lokal, Push durch den Operator ausstehend. Lokale Sicherung des Stands vor dem Aufräumen der History: Branch `backup/pre-fold-2026-09-29` (nicht pushen) |
 | `backup/pre-secret-scrub` | keiner | Historienstand vor dem Entfernen von AWS- und Auth0-Secrets. Er enthält vermutlich genau diese Secrets und wird nicht gepusht. |
 
 **Details zu den Commits:**
@@ -115,12 +113,8 @@ vom eigenen Host.
   `fa6e35c` enthält zusätzlich Änderungen an `postCreateCommand.sh` und `postStartCommand.sh`
   (unter anderem `core.hooksPath`). Das Autor-Datum von `fa6e35c` ist 2026-07-08, das Commit-Datum
   2026-09-28.
-- `git merge-tree` meldet beim Mergen von `feat/legacy-mvp` in `main` keine Konflikte. Der Branch
-  ändert `app/`, `backlog/` (TASK-3, DRAFT-1, DRAFT-2), `docs/adr/` (0019 bis 0021),
-  `.devcontainer/`, `.gitignore` und `tools/check-no-plaintext-secrets.py`. `infra/` und die
-  `task-2.*`-Dateien fasst er nicht an.
-- Draft-IDs werden nur auf `feat/legacy-mvp` vergeben, bis der Branch gemergt ist. Ein Draft auf
-  `main` bekäme sonst eine ID, die beim Merge kollidiert.
+- `feat/legacy-mvp` (Strang B) und `fix/mvp-review` (Korrekturen aus dem MVP-Review) sind in
+  `main` gemergt.
 
 **Untracked auf `main`:** `HANDOFF.md` (siehe F4) und `.claude/settings.local.json` (lokale
 Einstellungen).
@@ -146,7 +140,7 @@ Einstellungen).
 
 ## 4. Die zwei Arbeitsstränge im Überblick
 
-| | Strang A: Plattform (`main`) | Strang B: Legacy-Parity-MVP (`feat/legacy-mvp`) |
+| | Strang A: Plattform (`main`) | Strang B: Legacy-Parity-MVP |
 |---|---|---|
 | Epic | TASK-2 "Foundation and strict GitOps platform" | TASK-3 "Legacy parity MVP on local stack" |
 | Ort | Hetzner Cloud (live) | Lokaler Compose-Stack |
@@ -319,7 +313,7 @@ Anschließend den Status prüfen und `node tools/check-story-test-binding.mjs` l
 
 ---
 
-## 6. Strang B: Legacy-Parity-MVP (`feat/legacy-mvp`)
+## 6. Strang B: Legacy-Parity-MVP
 
 ### 6.1 Ziel laut Epic TASK-3
 
@@ -412,7 +406,7 @@ Kein Task ist Done, kein AC ist abgehakt (Stand 2026-09-28).
 
 ### 6.6 Lokal starten
 
-Die Anleitung steht in `app/stack/README.md` im Worktree `/workspaces/cichlids-mvp`.
+Die Anleitung steht in `app/stack/README.md`.
 
 1. Die Legacy-MySQL muss laufen und den importierten Dump enthalten. `bootstrap.sh` startet sie bei
    Bedarf, importiert den Dump aber nicht.
@@ -564,8 +558,8 @@ Die IDs sind stabil, damit sich die Fäden einzeln abarbeiten und abhaken lassen
   Story: `/workspaces/cichlids.com/PRECHECK-IN-REVIEW.md` (untracked) und die Notizen von 3.15, 3.16, 3.21
   und 3.22.
 - [ ] **F13** Den Maestro-Runner zum Laufen bringen oder den AC von 3.23 bewusst anpassen.
-- [ ] **F14** `feat/legacy-mvp` nach `main` mergen (macht der Operator; technisch konfliktfrei). Danach den
-  lokalen Sicherungs-Branch `backup/pre-fold-2026-09-29` löschen.
+- [x] **F14** `feat/legacy-mvp` ist in `main` gemergt, der lokale Sicherungs-Branch
+  `backup/pre-fold-2026-09-29` ist gelöscht.
 - [x] **F15** Die MVP-Stories 3.15, 3.16, 3.21 und 3.22 sind umgesetzt und stehen in Review.
   DRAFT-1 (Mail-Kampagne) ist offen.
 - [ ] **F21** Die ACs von 3.15 am Dev-Stack beobachten. Der Import lief am 2026-09-29: 12.050 Konten

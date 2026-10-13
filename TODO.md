@@ -16,8 +16,7 @@ Reihenfolge laut `PROJECT-STATUS.md` (F28): zuerst die für Staging wichtigen Ko
 
 ### 1.1 Korrekturen aus dem MVP-Review, Priorität hoch (Voraussetzung für TASK-2.4)
 
-Umgesetzt auf dem Branch `fix/mvp-review` (Worktree `/workspaces/fix-mvp-review`), noch nicht nach
-`main` gemergt. TASK-3.29 ist Done, die übrigen stehen in Review.
+Umgesetzt und in `main` gemergt. TASK-3.29 ist Done, die übrigen stehen in Review.
 
 - [ ] TASK-3.30 ETL nur gegen eine leere Datenbank, Reset für Dev und Staging (R3, R18, R38): abnehmen
 - [ ] TASK-3.31 Medien-Seed anhand des Object Stores (R20): abnehmen
@@ -27,7 +26,6 @@ Umgesetzt auf dem Branch `fix/mvp-review` (Worktree `/workspaces/fix-mvp-review`
 - [ ] TASK-3.34 Zuverlässige Webhook-Zustellung mit Positivliste (R4, R5, R10, R14): abnehmen
 - [ ] TASK-3.35 Profil beim ersten Login atomar anlegen (R12, R31): abnehmen
 - [ ] TASK-2.28 App-Tests in CI (R6): abnehmen
-- [ ] `fix/mvp-review` nach `main` mergen
 
 ### 1.2 Deployment (Strang A)
 
@@ -47,7 +45,7 @@ Umgesetzt auf dem Branch `fix/mvp-review` (Worktree `/workspaces/fix-mvp-review`
 
 ### 1.3 Korrekturen aus dem MVP-Review, Priorität mittel und niedrig
 
-- [ ] TASK-3.36 Eine Bewertung pro Mitglied und Ziel, keine Selbstbewertung (R9); der ETL-Teil ist mit TASK-3.32 auf `fix/mvp-review` umgesetzt
+- [ ] TASK-3.36 Eine Bewertung pro Mitglied und Ziel, keine Selbstbewertung (R9); der ETL-Teil ist mit TASK-3.32 umgesetzt
 - [ ] TASK-3.37 Grenzen für Kommentare, Uploads und Entwürfe (R11, R13)
 - [ ] TASK-3.38 Exakte Legacy-Weiterleitungen mit Sichtbarkeitsprüfung (R29, R30)
 - [ ] TASK-3.39 Korrekturen der ETL-Regeln (R15, R16, R17, R19, R21, R35, R37)
@@ -88,7 +86,6 @@ System. Details in `PROJECT-STATUS.md`, Abschnitt 9.
 - [ ] F9 Laufende Kosten der Live-Ressourcen gegen den Nutzen abwägen
 - [ ] F12 MVP-Stories in Review abnehmen (Prüfbefehle in `PRECHECK-IN-REVIEW.md`, untracked)
 - [ ] F13 Maestro-Runner zum Laufen bringen oder den AC von TASK-3.23 anpassen
-- [ ] F14 Sicherungs-Branch `backup/pre-fold-2026-09-29` löschen
 - [ ] F21 ACs von TASK-3.15 am Dev-Stack beobachten
 - [ ] F23 Über DRAFT-3 (Link Bewertung zu Kommentar) und DRAFT-5 (View-Zählung in der Dev-DB) entscheiden
 - [ ] DRAFT-1 Mail-Kampagne an die Bestandsmitglieder: Mail-Provider und rechtliche Prüfung
