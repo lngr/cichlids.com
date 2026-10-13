@@ -1,0 +1,1286 @@
+schemaVersion: 1
+id: placidochromis-phenochilus
+legacyIds:
+  - 443
+status: described
+taxonomy:
+  validName: Placidochromis phenochilus
+  genus: Placidochromis
+  species: phenochilus
+  author: (Trewavas, 1935)
+  source: &cof
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes, species of Placidochromis (entries phenochilus and electra)"
+    url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Placidochromis
+    accessed: 2026-10-13
+  synonyms:
+    - name: Haplochromis phenochilus Trewavas, 1935
+      note: >-
+        Original combination; the unique holotype comes from Vua in the north of Lake Malawi. Eccles
+        and Trewavas (1989) left the generic placement open because the only specimen was a dark
+        breeding male whose pattern could not be read.
+    - name: Cyrtocara phenochilus
+      note: Combination listed as a synonym by FishBase; no entry of its own in the Catalog of Fishes.
+    - name: Protomelas phenochilus
+      note: Combination listed as a synonym by FishBase; no entry of its own in the Catalog of Fishes.
+  legacyNames:
+    - Placidochromis phenochilus
+  note: >-
+    The Catalog of Fishes lists Placidochromis phenochilus (Trewavas, 1935) as valid and follows
+    Konings (2016) for the genus. Konings found the species alive on the north-western coast of
+    Malawi (Mdoka, Chesese, Chirwa Island, between Selewa and Kasinda), saw that it is vertically
+    barred and placed it in Placidochromis for its resemblance to P. electra (M. K. Oliver). The
+    trade fish "Mdoka White Lips" belongs to this species. The legacy catalog entry and the hobby,
+    including the cichlids.com forum archive, use the name phenochilus for the blue fish from the
+    Tanzanian shore as well ("phenochilus Tanzania", "Star Sapphire"). That form is an undescribed
+    species, listed by the Cichlid Room Companion as Placidochromis sp. 'phenochilus tanzania',
+    next to the black-cheeked Placidochromis sp. 'phenochilus gissel'. This profile describes the
+    valid species P. phenochilus; values and text rest on sources for the Malawian fish, and
+    sources on the Tanzanian form appear only as supporting evidence marked as such.
+names:
+  trade:
+    en:
+      - Mdoka White Lips
+      - Blue Follower
+    de:
+      - Weißlippen-Maulbrüter
+variants:
+  - name: Mdoka
+    kind: locality
+    note: >-
+      Population of the north-western Malawian coast sold as "Mdoka White Lips"; males blue with
+      thick white lips and, with age, irregular pearly white blotches. It is the described species.
+features:
+  origin:
+    value:
+      continent: Africa
+      region: Lake Malawi
+      waterbody: Lake Malawi
+      localities:
+        - Vua (type locality)
+        - Mdoka
+        - Chesese
+        - Chirwa Island
+        - between Selewa and Kasinda
+    confidence: high
+    rationale: >-
+      The Catalog of Fishes gives Vua in Lake Malawi as type locality and Lake Malawi as the only
+      distribution. FishBase knows the species only from the holotype in the northern part of the
+      lake, which reflects an outdated record: Konings found it again at Mdoka, Chesese, Chirwa
+      Island and between Selewa and Kasinda on the north-western coast of Malawi, as summarised by
+      M. K. Oliver. Rizzo also places the species in the north of the lake.
+    sources:
+      - *cof
+      - &fishbase
+        kind: database
+        title: "FishBase species summary: Placidochromis phenochilus"
+        url: https://www.fishbase.se/summary/Placidochromis-phenochilus.html
+        accessed: 2026-10-13
+      - &rizzo
+        kind: literature
+        title: "Rizzo, D. The Blue Followers: the Placidochromis of Lake Malawi. Conscientious Aquarist (WetWebMedia) 6(1)."
+        url: http://www.wetwebmedia.com/ca/volume_6/volume_6_1/placidochromis.htm
+        accessed: 2026-10-13
+      - &oliver
+        kind: website
+        title: "Oliver, M. K.: The Cichlid Fishes of Lake Malawi, Note 2: generic assignment of Haplochromis phenochilus (malawicichlids.com, last update 2004)"
+        url: https://malawicichlids.com/mw17002.htm
+        accessed: 2026-10-13
+    evidence:
+      - source: *cof
+        value: {continent: Africa, region: Lake Malawi, localities: [Vua]}
+        note: type locality; distribution Lake Malawi
+      - source: *fishbase
+        value: {continent: Africa, region: Lake Malawi, localities: [Vua]}
+        note: northern part of the lake, holotype only
+      - source: *rizzo
+        value: {continent: Africa, region: Lake Malawi}
+        note: northern part of the lake
+      - source: *oliver
+        value: {continent: Africa, region: Lake Malawi, localities: [Mdoka, Chesese, Chirwa Island, between Selewa and Kasinda]}
+        note: sites of the rediscovery by Konings, north-western coast
+  temperatureC:
+    value: {min: 21, max: 29}
+    confidence: high
+    rationale: >-
+      Lake Malawi endemic, so the natural range is the measured lake range: about 21 C in inshore
+      water during the cool, windy season and 27 C in the upper 60 m by May (Eccles 1974), 23.5 to
+      24 C in the winter surface layer and about 28 C in summer surface water (Vollmer et al. 2005),
+      and 24 to 29 C in a 2013 campaign (Ngochera 2018). The species lives over shallow sand, inside
+      this water.
+    sources: &lakesources
+      - &branchu
+        kind: literature
+        title: >-
+          Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E.
+          et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian
+          Northern Basin: local versus global considerations. Hydrology and Earth System Sciences
+          Discussions 7, 4371-4409.
+        url: https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf
+        accessed: 2026-10-12
+      - &fao
+        kind: literature
+        title: >-
+          Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery
+          resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical
+          and chemical data after Jackson et al. (1963) and Talling and Talling (1965).
+        url: https://www.fao.org/4/t0473e/T0473E05.htm
+        accessed: 2026-10-12
+      - &eccles
+        kind: literature
+        title: >-
+          Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa).
+          Limnology and Oceanography 19(5), 730-742 (abstract).
+        url: https://doi.org/10.4319/lo.1974.19.5.0730
+        accessed: 2026-10-12
+      - &vollmer05
+        kind: literature
+        title: >-
+          Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M.,
+          Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East
+          Africa. Limnology and Oceanography 50(2), 727-732.
+        url: https://www.dora.lib4ri.ch/empa/dload/empa:1253/PDF/view
+        accessed: 2026-10-12
+      - kind: literature
+        title: >-
+          Vollmer, M. K., Weiss, R. F. and Bootsma, H. A. (1999). Lake Malawi/Nyasa deep water
+          renewal. In: Bootsma, H. A. and Hecky, R. E. (eds.), Water Quality Report, SADC/GEF Lake
+          Malawi/Nyasa Biodiversity Conservation Project, chapter 4.
+        url: https://sites.uwm.edu/hbootsma/files/2020/11/Ch4-Lake-Internal-Mixing.pdf
+        accessed: 2026-10-12
+      - &ngochera
+        kind: literature
+        title: >-
+          Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. PhD dissertation, University of
+          Wisconsin-Milwaukee.
+        url: https://minds.wisconsin.edu/handle/1793/91765
+        accessed: 2026-10-12
+    evidence:
+      - source: *eccles
+        value: {min: 21, max: 27}
+        note: inshore minimum in the cool season, upper 60 m by May
+      - source: *vollmer05
+        value: {min: 23.5, max: 28}
+        note: winter surface layer to summer surface water
+      - source: *ngochera
+        value: {min: 24, max: 29}
+        note: 2013 campaign
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value: {min: 21, max: 29}
+      confidence: medium
+      rationale: >-
+        Care sources for the Malawian fish give 23 to 28 C (Fishipedia, Sims Tropical Fish), 24 to
+        28 C with 24 to 27 C in the profile text (Garnelio) and 23 to 29 C (Ron's Cichlids);
+        Seriously Fish gives 24 to 28 C for the close relative P. electra. All lie inside the lake
+        range, and the tolerance has to contain the natural range, so it spans 21 to 29 C; the
+        lower end rests on the lake, where the species lives through the cool season. No source
+        supports more than 29 C, and a member of the cichlids.com forum lost a fish of this name
+        when a faulty heater drove the tank to about 34 C. Decided by qualified majority (4 of 5):
+        the generator, checker-a, tiebreaker-1 and tiebreaker-2 proposed 21 to 29 C, checker-b 23
+        to 28 C.
+      sources:
+        - &fishipedia
+          kind: database
+          title: "Fishipedia: Placidochromis phenochilus Mdoka (species sheet)"
+          url: https://www.fishipedia.fr/fr/poissons/placidochromis-phenochilus-mdoka
+          accessed: 2026-10-13
+        - &sfelectra
+          kind: database
+          title: "Seriously Fish: Placidochromis electra (Deepwater Hap)"
+          url: https://www.seriouslyfish.com/species/placidochromis-electra/
+          accessed: 2026-10-13
+        - *eccles
+        - *vollmer05
+        - &garnelio
+          kind: website
+          title: "Garnelio (retailer): White-lipped mouthbrooder, Placidochromis phenochilus Mdoka, care sheet"
+          url: https://www.garnelio.de/en/white-lipped-mouthbrooder-placidochromis-phenochilus-mdoka
+          accessed: 2026-10-13
+        - &sims
+          kind: website
+          title: "Sims Tropical Fish (retailer): Placidochromis Mdoka White Lips, care sheet"
+          url: https://simstropicalfish.co.uk/product/placidochromis-mdoka-white-lips-african-cichlid-4cm/
+          accessed: 2026-10-13
+        - &rons
+          kind: website
+          title: "Ron's Cichlids (retailer): Mdoka White Lips, Placidochromis phenochilus, care summary"
+          url: https://ronscichlids.com/products/mdoka-white-lips
+          accessed: 2026-10-13
+        - &thread28033
+          kind: archive
+          title: cichlids.com forum thread 28033
+          url: https://www.cichlids.com/disc/read.php?2,28033
+          accessed: 2026-10-13
+      evidence:
+        - source: *fishipedia
+          value: {min: 23, max: 28}
+          note: aquarium recommendation
+        - source: *sfelectra
+          value: {min: 24, max: 28}
+          note: aquarium recommendation for the close relative P. electra
+        - source: *eccles
+          value: {min: 21, max: 27}
+          note: lake water in which the species lives permanently
+        - source: *vollmer05
+          value: {min: 23.5, max: 28}
+          note: lake water in which the species lives permanently
+        - source: *garnelio
+          value: {min: 24, max: 28}
+          note: aquarium recommendation; the profile text of the same page gives 24 to 27 C
+        - source: *sims
+          value: {min: 23, max: 28}
+          note: retailer care sheet
+        - source: *rons
+          value: {min: 23.3, max: 28.9}
+          note: converted from 74 to 84 F
+        - source: *thread28033
+          value: {max: 33}
+          note: a fish died after a heater fault at about 34 C; marks the lethal side only
+      verification:
+        method: qualified-majority
+        votes: {agree: 4, total: 5}
+  ph:
+    value: {min: 7.7, max: 8.6}
+    confidence: high
+    rationale: >-
+      Lake Malawi endemic; the surface water of the lake has a pH of 7.7 to 8.6 (Jackson et al.
+      1963 in the FAO source book). Branchu et al. (2010) measured 7.5 to 8.5 over the whole water
+      column, the lower values belonging to deep water the species does not use.
+    sources: *lakesources
+    evidence:
+      - source: *fao
+        value: {min: 7.7, max: 8.6}
+        note: lake surface water
+      - source: *branchu
+        value: {min: 7.5, max: 8.5}
+        note: whole water column, lower values in deep water
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value: {min: 7.5, max: 8.6}
+      confidence: medium
+      rationale: >-
+        All care sources ask for alkaline water: Fishipedia and Garnelio 7.5 to 8.5, Sims Tropical
+        Fish 7.8 to 8.6, Ron's Cichlids 7.4 to 8.4, and Rizzo aims at pH 8 for the blue
+        Placidochromis. Seriously Fish gives 7.6 to 8.8 for P. electra. The tolerance spans the
+        species-specific recommendations and contains the lake range. Decided unanimously by the
+        vote count (3 of 3 within 0.3 pH): the generator and checker-a proposed 7.5 to 8.6,
+        checker-b 7.4 to 8.6, and the median of the agreeing bounds is 7.5 to 8.6.
+      sources:
+        - *fishipedia
+        - *rizzo
+        - *sfelectra
+        - *garnelio
+        - *sims
+        - *rons
+      evidence:
+        - source: *fishipedia
+          value: {min: 7.5, max: 8.5}
+          note: aquarium recommendation
+        - source: *rizzo
+          value: {min: 8, max: 8}
+          note: single target value for the aquarium
+        - source: *sfelectra
+          value: {min: 7.6, max: 8.8}
+          note: aquarium recommendation for the close relative P. electra
+        - source: *garnelio
+          value: {min: 7.5, max: 8.5}
+          note: aquarium recommendation
+        - source: *sims
+          value: {min: 7.8, max: 8.6}
+          note: retailer care sheet
+        - source: *rons
+          value: {min: 7.4, max: 8.4}
+          note: retailer care summary
+      verification:
+        method: unanimous
+        votes: {agree: 3, total: 3}
+  ghDgh:
+    value: {min: 3, max: 5}
+    confidence: high
+    rationale: >-
+      Lake Malawi endemic; the calcium and magnesium of the lake correspond to 3.2 to 4.9 dGH in the
+      1960s titrations (Jackson et al. 1963, Talling and Talling 1965) and 4.2 to 4.6 dGH in the
+      upper 50 m of the north basin (Branchu et al. 2010). Care sheets that call the lake water
+      hard confuse hardness with alkalinity.
+    sources: *lakesources
+    evidence:
+      - source: *fao
+        value: {min: 3.2, max: 4.9}
+        note: calculated from lake calcium and magnesium
+      - source: *branchu
+        value: {min: 4.2, max: 4.6}
+        note: north basin, upper 50 m
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value: {min: 3, max: 15}
+      confidence: low
+      rationale: >-
+        A conservative decision of the vote count (no qualified majority, confidence low). The five
+        votes proposed 3 to 20 dGH (generator, checker-a), 3 to 15 dGH (checker-b) and 3 to 25 dGH
+        (tiebreaker-1, tiebreaker-2); all start at the soft lake water, but their upper bounds
+        spread over 10 dGH. The vote count takes the intersection of all proposals, 3 to 15 dGH, the
+        narrower range that triggers more warnings. The care sources themselves differ widely:
+        Fishipedia gives 8 to 15 dGH, Rizzo about 20 degrees of hardness, Garnelio 5 to 25 dGH, and
+        for the close relative P. electra Seriously Fish gives 10 to 25 and FishBase 9 to 19 dGH. The
+        upper bound of 15 dGH is the one that Fishipedia and the most cautious vote share; harder
+        water is reported as kept but is not covered by the decided range. The lower bound is the
+        lake water, in which the species lives permanently.
+      sources:
+        - *fishipedia
+        - *rizzo
+        - *sfelectra
+        - &fbelectra
+          kind: database
+          title: "FishBase species summary: Placidochromis electra"
+          url: https://www.fishbase.se/summary/Placidochromis-electra.html
+          accessed: 2026-10-13
+        - *branchu
+        - *fao
+        - *garnelio
+      evidence:
+        - source: *fishipedia
+          value: {min: 8, max: 15}
+          note: listed under habitat but far above the lake hardness; aquarium figure
+        - source: *rizzo
+          value: {min: 20, max: 20}
+          note: single target hardness for the aquarium, in degrees dH
+        - source: *sfelectra
+          value: {min: 10, max: 25}
+          note: aquarium recommendation for the close relative P. electra
+        - source: *fbelectra
+          value: {min: 9, max: 19}
+          note: aquarium value for the close relative P. electra
+        - source: *branchu
+          value: {min: 4.2, max: 4.6}
+          note: lake water in which the species lives permanently
+        - source: *fao
+          value: {min: 3.2, max: 4.9}
+          note: lake water in which the species lives permanently
+        - source: *garnelio
+          value: {min: 5, max: 25}
+          note: retailer care sheet
+      verification:
+        method: conservative
+        votes: {agree: 2, total: 5}
+  khDkh:
+    value: {min: 5, max: 8}
+    confidence: high
+    rationale: >-
+      Lake Malawi endemic; the alkalinity of 2.33 to 2.46 meq/L in the north basin profiles
+      (Branchu et al. 2010) and 2.00 to 2.59 meq/L after Jackson et al. (1963) corresponds to 5.6 to
+      7.3 dKH. Sodium balances part of the bicarbonate, so carbonate hardness exceeds total
+      hardness in this lake.
+    sources: *lakesources
+    evidence:
+      - source: *branchu
+        value: {min: 6.5, max: 6.9}
+        note: converted from alkalinity, north basin
+      - source: *fao
+        value: {min: 5.6, max: 7.3}
+        note: converted from alkalinity after Jackson et al. (1963)
+    tolerance:
+      value: {min: 5, max: 12}
+      confidence: low
+      rationale: >-
+        Only one species-specific care sheet names a carbonate hardness: Garnelio gives 6 to 12
+        dKH. The other care sources state total hardness or pH only. The lower bound is the lake
+        minimum of 5 dKH, at which the species lives; the upper bound follows the care sheet. A
+        single retailer value is thin support, hence the low confidence. Decided unanimously by the
+        vote count (3 of 3, all proposing 5 to 12 dKH).
+      sources:
+        - *garnelio
+        - *branchu
+        - *fao
+      evidence:
+        - source: *garnelio
+          value: {min: 6, max: 12}
+          note: retailer care sheet
+        - source: *branchu
+          value: {min: 6.5, max: 6.9}
+          note: lake water in which the species lives permanently
+        - source: *fao
+          value: {min: 5.6, max: 7.3}
+          note: lake water in which the species lives permanently
+      verification:
+        method: unanimous
+        votes: {agree: 3, total: 3}
+  maxSizeCm:
+    value: {male: 16, female: 13}
+    confidence: medium
+    rationale: >-
+      The holotype, a wild male, measures 15.7 cm total length (FishBase). Rizzo reports that wild
+      fish rarely exceed 15 cm and that well-fed aquarium fish grow slightly larger; Fishipedia
+      gives about 14 cm with dominant males to 16 cm, and Garnelio 12 to 14 cm. A male of 16 cm is
+      therefore the typical well-kept adult. All sources describe smaller females without giving a
+      figure, so 13 cm is an estimate from the male sizes. Ron's Cichlids states 8 to 9 inches (20
+      to 23 cm) but places the Mdoka fish in Tanzanian waters and deep rocky habitat, so its size
+      claim is not followed.
+    sources:
+      - *fishbase
+      - *rizzo
+      - *fishipedia
+      - *garnelio
+      - *rons
+    evidence:
+      - source: *fishbase
+        value: {male: 15.7}
+        note: total length of the male holotype
+      - source: *rizzo
+        value: {male: 15}
+        note: wild fish; slightly larger in aquaria
+      - source: *fishipedia
+        value: {male: 16}
+        note: about 14 cm on average, dominant males to 16 cm
+      - source: *garnelio
+        value: {male: 14, female: 12}
+        note: 12 to 14 cm, unsexed
+      - source: *rons
+        value: {male: 22}
+        note: 8 to 9 inches; the same page misplaces the form in Tanzania
+  predation:
+    value: 1
+    confidence: medium
+    rationale: >-
+      In the lake the species follows large sand-sifting cichlids and picks invertebrates and
+      other edible particles from the stirred-up sand (Rizzo); no source reports fish in its diet,
+      and FishBase estimates a trophic level of 3.3 from its closest relatives, typical of an
+      invertebrate feeder. As a 16 cm haplochromine it takes fry and very small fish within
+      reach: Rizzo notes that very few fry survive in community tanks. That is level 1. The
+      Cichlid Room Companion summary lists a detritivore and Fishipedia a peaceful omnivore, which
+      confirms that it is no fish eater. Decided unanimously by the vote count (3 of 3).
+    sources:
+      - *rizzo
+      - *fishbase
+      - *fishipedia
+      - &crc
+        kind: database
+        title: "Cichlid Room Companion: Placidochromis phenochilus (public summary, verification only)"
+        url: https://cichlidae.com/species.php?id=Qyn97j5IDaw5Y2-_8FJDeg
+        accessed: 2026-10-13
+      - *garnelio
+      - &glaser
+        kind: website
+        title: "Aquarium Glaser (wholesaler): Placidochromis sp. \"Phenochilus Tanzania\" (Frank Schäfer, 2010)"
+        url: https://www.aquariumglaser.de/en/fish-archives/placidochromis_sp_phenochilus_tanzania__en
+        accessed: 2026-10-13
+    evidence:
+      - source: *rizzo
+        value: 1
+        note: feeds on invertebrates from sifted sand; few fry survive in community tanks
+      - source: *fishbase
+        value: 1
+        note: estimated trophic level 3.3, typical of an invertebrate feeder
+      - source: *fishipedia
+        value: 0
+        note: peaceful omnivore, no mention of eating fish
+      - source: *crc
+        value: 0
+        note: summary lists a detritivore
+      - source: *garnelio
+        value: 1
+        note: carnivorous; other fish only conditionally compatible
+      - source: *glaser
+        value: 1
+        note: Tanzanian sister form; picks up small animals uncovered by burrowing cichlids
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+  diet:
+    value:
+      type: invertivore
+      bloatSensitive: false
+      foods:
+        - sinking cichlid pellets with low fat content
+        - mysis
+        - krill
+        - cyclops
+        - daphnia
+        - brine shrimp
+        - spirulina flakes as a supplement
+    confidence: medium
+    rationale: >-
+      The natural diet consists of invertebrates and other edible particles that sand-sifting
+      cichlids expose (Rizzo); the Cichlid Room Companion summary lists a detritivore, which fits a
+      fish that picks food from stirred-up sediment. Care sheets call it an omnivore (Fishipedia)
+      or a meat eater (Garnelio), which describes aquarium feeding. Rizzo advises low-fat dry food,
+      small portions, a weekly fasting day and rich live food only every week or two, because the
+      fish overeat; no source names bloat as a problem of this species, so the flag is false. The
+      food list follows Rizzo's recommendations. Decided unanimously by the vote count (3 of 3 on
+      type and flag).
+    sources:
+      - *rizzo
+      - *fishipedia
+      - *crc
+      - *garnelio
+      - &fishipediatz
+        kind: database
+        title: "Fishipedia: Placidochromis phenochilus tanzania (species sheet of the Tanzanian form)"
+        url: https://www.fishipedia.fr/fr/poissons/placidochromis-phenochilus-tanzania
+        accessed: 2026-10-13
+      - *glaser
+    evidence:
+      - source: *rizzo
+        value: {type: invertivore, bloatSensitive: false}
+        note: follows sand-sifters for invertebrates; warns against overfeeding and fatty food without naming bloat
+      - source: *fishipedia
+        value: {type: omnivore, bloatSensitive: false}
+        note: aquarium feeding
+      - source: *crc
+        value: {type: invertivore}
+        note: summary lists a detritivore
+      - source: *garnelio
+        value: {type: invertivore}
+        note: meat eater; live, frozen and protein-rich dry food
+      - source: *fishipediatz
+        value: {type: omnivore}
+        note: Tanzanian sister form; aquarium feeding
+      - source: *glaser
+        value: {type: invertivore}
+        note: Tanzanian sister form; small animals uncovered by burrowing cichlids
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+  aggressionConspecific:
+    value: 2
+    confidence: medium
+    rationale: >-
+      Rizzo finds the species not particularly aggressive towards its own kind and Fishipedia calls
+      it peaceful, while Garnelio describes the males as very territorial and Ron's Cichlids as
+      mildly aggressive towards conspecifics. The males are polygamous and court every ripe female
+      in the tank (Rizzo), which is why all sources recommend several females per male. A clear
+      hierarchy with regular chasing of rivals and females, but rare injuries in a large tank with
+      the recommended ratio, matches level 2.
+    sources:
+      - *rizzo
+      - *fishipedia
+      - *garnelio
+      - *rons
+      - &thread17685
+        kind: archive
+        title: cichlids.com forum thread 17685
+        url: https://www.cichlids.com/disc/read.php?2,17685
+        accessed: 2026-10-13
+    evidence:
+      - source: *rizzo
+        value: 1
+        note: little aggression to conspecifics; groups of one male to two females
+      - source: *fishipedia
+        value: 1
+        note: peaceful, lives in small groups
+      - source: *garnelio
+        value: 3
+        note: describes the males as very territorial
+      - source: *rons
+        value: 2
+        note: mildly aggressive towards conspecifics
+      - source: *thread17685
+        value: 1
+        note: described as very mild
+  aggressionHeterospecific:
+    value: 1
+    confidence: medium
+    rationale: >-
+      It lives peacefully with Aulonocara, Copadichromis and Protomelas (Rizzo) and is the weaker
+      party against mbuna. Fishipedia rates it peaceful and non-territorial; the retailer sheets
+      of Sims Tropical Fish and Garnelio add that breeding males can turn territorial. Displays of
+      a breeding male towards fish that come close match level 1.
+    sources:
+      - *rizzo
+      - *fishipedia
+      - *sims
+      - *garnelio
+      - *thread17685
+    evidence:
+      - source: *rizzo
+        value: 1
+        note: gentle; coexists with peaceful haplochromines and peacocks
+      - source: *fishipedia
+        value: 0
+        note: peaceful, not territorial
+      - source: *sims
+        value: 2
+        note: relatively peaceful, territorial especially when breeding
+      - source: *garnelio
+        value: 1
+        note: peaceful, other fish conditionally compatible
+      - source: *thread17685
+        value: 0
+        note: described as very mild
+  territory:
+    value: {size: none, breedingOnly: false}
+    confidence: medium
+    rationale: >-
+      Rizzo describes the courtship: the male swims up to a ripe female and they circle over the
+      sand, without a pit, a nest or a defended site. Fishipedia also lists the species as not
+      territorial. The retailer sheets that report territorial breeding males (Garnelio, Sims
+      Tropical Fish) give no details, and the pit digging known from P. electra is not reported
+      for this species. The observed courtship is the stronger evidence.
+    sources:
+      - *rizzo
+      - *fishipedia
+      - *sims
+      - *garnelio
+    evidence:
+      - source: *rizzo
+        value: {size: none, breedingOnly: false}
+        note: no pit, nest or territory during courtship
+      - source: *fishipedia
+        value: {size: none, breedingOnly: false}
+        note: not territorial
+      - source: *sims
+        value: {size: small, breedingOnly: true}
+        note: territorial especially when breeding
+      - source: *garnelio
+        value: {size: small, breedingOnly: false}
+        note: males very territorial
+  habitatZones:
+    value: [sand, rock]
+    confidence: medium
+    rationale: >-
+      The species forages over open sand behind sand-sifting cichlids in the north of the lake
+      (Rizzo), and the Cichlid Room Companion summary and Fishipedia list a sandy bottom. In the
+      tank it needs a large area of fine sand; Rizzo adds a few rocks at the edges or the back,
+      because brooding females hide among rocks or plants for about three weeks. Sand and rock
+      together describe what the species uses and needs.
+    sources:
+      - *rizzo
+      - *fishipedia
+      - *crc
+      - *rons
+    evidence:
+      - source: *rizzo
+        value: [sand, rock]
+        note: open sand in the lake; fine sand with a few rocks as refuges in the tank
+      - source: *fishipedia
+        value: [sand]
+        note: sandy bottom, close to the substrate
+      - source: *crc
+        value: [sand]
+        note: verification only
+      - source: *rons
+        value: [sand, rock]
+        note: sand with rockwork to break sight lines
+  social:
+    value: {structure: harem, ratio: 3}
+    confidence: medium
+    rationale: >-
+      The male courts every ripe female and the female broods alone, so the species is kept as one
+      male with several females. Rizzo recommends at least three fish with two females per male,
+      Garnelio one male with two or three females, and Fishipedia a group of at least four. Three
+      females per male spread the male's attention best.
+    sources:
+      - *rizzo
+      - *garnelio
+      - *fishipedia
+    evidence:
+      - source: *rizzo
+        value: {structure: harem, ratio: 2}
+        note: at least three fish, two females per male
+      - source: *garnelio
+        value: {structure: harem, ratio: 3}
+        note: one male with two to three females
+      - source: *fishipedia
+        value: {structure: group, minGroup: 4}
+        note: small groups of at least four
+  speciesOnly:
+    value: false
+    confidence: high
+    rationale: >-
+      Rizzo recommends the species for peaceful Malawi communities with Aulonocara, Protomelas and
+      Copadichromis and names only mbuna as unsuitable; Fishipedia rates it a peaceful community
+      fish, and the retailer sheets suggest Malawi cichlids of similar size and temperament. No
+      source advises a species tank except for raising fry. Decided unanimously by the vote count
+      (3 of 3).
+    sources:
+      - *rizzo
+      - *fishipedia
+      - *fishipediatz
+      - *sims
+      - *garnelio
+      - *glaser
+    evidence:
+      - source: *rizzo
+        value: false
+        note: suitable for Malawi communities with Aulonocara, Protomelas and Copadichromis
+      - source: *fishipedia
+        value: false
+        note: peaceful community fish
+      - source: *fishipediatz
+        value: false
+        note: Tanzanian sister form; peaceful community fish
+      - source: *sims
+        value: false
+        note: with Malawi cichlids of similar size and temperament
+      - source: *garnelio
+        value: false
+        note: other fish conditionally compatible
+      - source: *glaser
+        value: false
+        note: Tanzanian sister form; with utaka or Aulonocara, never with mbuna
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+  hybridGroup:
+    value: placidochromis-electra-complex
+    confidence: low
+    rationale: >-
+      A conservative decision of the vote count (3 of 5, no qualified majority, confidence low). The
+      generator, tiebreaker-1 and tiebreaker-2 proposed the new group
+      placidochromis-electra-complex, checker-a and checker-b no group; the vote count took the most
+      common named group. The group rests on a hobby crossing warning and the close relationship,
+      not on a documented cross: Rizzo treats P. phenochilus and P. electra as a group of close
+      relatives that were once regarded as one variable species and advises twice against keeping
+      them together because they hybridise. Konings placed phenochilus in Placidochromis for its
+      resemblance to P. electra (M. K. Oliver), and the Catalog of Fishes lists both as valid
+      species of the genus. Seriously Fish warns that colour forms of P. electra cross in tanks but
+      does not name P. phenochilus. The null votes are right that neither the literature nor the
+      databases report an actual electra x phenochilus cross. The group holds the two valid
+      species; the undescribed trade forms P. sp. 'phenochilus tanzania' and P. sp. 'phenochilus
+      gissel' have no valid names and are not members.
+    sources:
+      - *rizzo
+      - *cof
+      - *sfelectra
+      - *fishbase
+      - *oliver
+    evidence:
+      - source: *rizzo
+        value: placidochromis-electra-complex
+        note: close relatives, once one species; should not share a tank because they hybridise
+      - source: *cof
+        value: placidochromis-electra-complex
+        note: both valid species of Placidochromis; supports the membership, not the crossing
+      - source: *sfelectra
+        value: null
+        note: warns only against mixing colour forms of P. electra; P. phenochilus is not named
+      - source: *fishbase
+        value: null
+        note: no hybridisation noted
+      - source: *oliver
+        value: placidochromis-electra-complex
+        note: generic placement based on the resemblance to P. electra; no statement on crosses
+    verification:
+      method: conservative
+      votes: {agree: 3, total: 5}
+  coloration:
+    value:
+      baseColors: [blue, white]
+      pattern: mixed
+    confidence: medium
+    rationale: >-
+      Adult males are metallic blue with conspicuous white lips; older males of the Malawian
+      population carry irregular pearly white spots (Rizzo), and Konings found the living fish
+      vertically barred (Oliver). Garnelio describes a shimmering blue with faint bars and light
+      spots. Bars together with spots give a mixed pattern. The blue barred P. electra looks
+      similar.
+    sources:
+      - *rizzo
+      - *oliver
+      - *garnelio
+    evidence:
+      - source: *rizzo
+        value: {baseColors: [blue, white], pattern: spots}
+        note: pearly white spots on a blue body, white lips
+      - source: *oliver
+        value: {baseColors: [blue], pattern: bars}
+        note: living fish vertically barred
+      - source: *garnelio
+        value: {baseColors: [blue, white], pattern: mixed}
+        note: shimmering blue with faint vertical bars and light spots
+  feedingSpeed:
+    value: normal
+    confidence: low
+    rationale: >-
+      No source rates the feeding pace directly. Rizzo notes that the fish eat eagerly and are
+      easily overfed, but also that mbuna outcompete them. Among calm haplochromines and peacocks
+      it takes its share at a normal pace.
+    sources:
+      - *rizzo
+      - *thread17685
+  minTank:
+    value: {volumeL: 450, lengthCm: 160, depthCm: 50}
+    confidence: medium
+    rationale: >-
+      For one male with three females of about 16 cm, Rizzo sets 160 cm length as the minimum
+      because the fish need much free swimming space over sand, Garnelio 400 to 450 L at about
+      150 cm, and Fishipedia 700 L at 150 cm for a group of four. A tank of 160 cm length, 50 cm
+      front-to-back depth and about 450 L meets the length requirement and the retailer volume;
+      a mixed community needs more.
+    sources:
+      - *rizzo
+      - *garnelio
+      - *fishipedia
+    evidence:
+      - source: *rizzo
+        value: {lengthCm: 160}
+        note: minimum length; 200 cm for a biotope tank with sand-sifters
+      - source: *garnelio
+        value: {volumeL: 450, lengthCm: 150}
+        note: the same page also mentions 300 L
+      - source: *fishipedia
+        value: {volumeL: 700, lengthCm: 150}
+        note: group of at least four
+  lifespanYears:
+    value: {min: 6, max: 10}
+    confidence: medium
+    rationale: >-
+      Garnelio gives 6 to 8 years and Fishipedia 10 years. Males need several years to reach full
+      size and colour, which fits a lifespan towards the upper end in a well-kept tank.
+    sources:
+      - *garnelio
+      - *fishipedia
+    evidence:
+      - source: *garnelio
+        value: {min: 6, max: 8}
+      - source: *fishipedia
+        value: {min: 10, max: 10}
+  breeding:
+    value: maternal-mouthbrooder
+    confidence: high
+    rationale: >-
+      Rizzo describes the spawning: the pair circles, the female lays and picks up the eggs one by
+      one, the male fertilises them in her mouth, and she broods for about 24 days without feeding.
+      FishBase and the Cichlid Room Companion summary also record brood care in the mouth of the
+      female.
+    sources:
+      - *rizzo
+      - *fishbase
+      - *crc
+    evidence:
+      - source: *rizzo
+        value: maternal-mouthbrooder
+        note: about 24 days of brooding, about 25 fry
+      - source: *fishbase
+        value: maternal-mouthbrooder
+      - source: *crc
+        value: maternal-mouthbrooder
+        note: verification only
+  beginnerSuitability:
+    value: moderate
+    confidence: medium
+    rationale: >-
+      The fish is hardy and breeds readily, but it needs a long tank with sand, very good water and
+      oxygen, careful low-fat feeding and calm tankmates, and stock of known origin is hard to find
+      (Rizzo). The Cichlid Room Companion rates it for intermediate aquarists and Charterhouse
+      Aquatics for intermediate to advanced keepers, while Fishipedia and Garnelio call it easy.
+    sources:
+      - *rizzo
+      - *crc
+      - *fishipedia
+      - *garnelio
+      - &charterhouse
+        kind: website
+        title: "Charterhouse Aquatics (retailer): Placidochromis Mdoka White Lips, care sheet"
+        url: https://charterhouse-aquatics.com/products/placidochromis-mdoka-white-lips-african-cichlid-4cm
+        accessed: 2026-10-13
+    evidence:
+      - source: *crc
+        value: moderate
+        note: intermediate aquarists; verification only
+      - source: *fishipedia
+        value: easy
+      - source: *garnelio
+        value: easy
+        note: difficulty rated normal in the feature list
+      - source: *charterhouse
+        value: moderate
+        note: intermediate to advanced aquarists
+partners:
+  suitable:
+    - species: Aulonocara stuartgranti
+      reason: Peaceful peacock of similar size that also feeds over sand; Rizzo names Aulonocara as good companions.
+      condition: Keep the groups in a tank of at least 160 cm; blue peacock males may provoke the blue white lip male.
+    - species: Copadichromis borleyi
+      reason: Calm utaka that uses the open water above the sand, so the two species hardly compete for space or food.
+    - species: Cyrtocara moorii
+      reason: Gentle sand dweller that also follows sand-sifting cichlids in the wild and shares the peaceful temperament.
+      condition: Tank of at least 180 cm, as C. moorii grows larger.
+    - species: Taeniolethrinops praeorbitalis
+      reason: Large sand-sifter of the kind this species follows in the lake; together they show the natural feeding association.
+      condition: Tank of at least 200 cm with deep fine sand.
+  unsuitable:
+    - species: Lake Malawi mbuna
+      reason: Fast, aggressive rock dwellers such as Maylandia and Melanochromis stress this gentle fish, take its food and prevent normal breeding.
+    - species: Melanochromis auratus
+      reason: Very quarrelsome mbuna that harasses calm haplochromines in the whole tank.
+    - species: Placidochromis electra
+      reason: Close relative and look-alike; the hobby warns that the two hybridise, and both belong to the hybrid group placidochromis-electra-complex.
+    - species: Tropheus moorii
+      reason: Lake Tanganyika algae grazer that needs a plant-based diet, harder water and a species tank.
+profile:
+  overview:
+    text: >-
+      Placidochromis phenochilus is a peaceful haplochromine from the north of Lake Malawi, named
+      for the white lips of its males. Breeding males turn a rich metallic blue, and older males
+      collect irregular pearly blotches on the body. For decades the species was known from a
+      single museum specimen; Ad Konings found it alive on the north-western coast of Malawi, and
+      it is the fish of the trade called "Mdoka White Lips". The deep blue fish from the Tanzanian
+      shore, sold as "phenochilus Tanzania" or "Star Sapphire", belong to an undescribed relative
+      and are not covered here. In the wild these fish trail large sand-sifting cichlids and snap
+      up what the sifters stir up. In the aquarium they are calm, sociable and suited to a long
+      tank with other gentle Malawi cichlids, never with mbuna.
+    sources:
+      - *cof
+      - *oliver
+      - *rizzo
+      - *fishbase
+  habitat:
+    text: >-
+      The species is endemic to Lake Malawi. The type specimen came from Vua, and the living
+      populations lie along the north-western coast of Malawi at Mdoka, Chesese, Chirwa Island and
+      between Selewa and Kasinda. It keeps to open sand, where it swims behind large bottom-sifting
+      cichlids such as Taeniolethrinops and picks small animals and particles out of the clouds of
+      sand they expel. The lake water is warm, soft and moderately alkaline: about 21 to 29 C, pH
+      7.7 to 8.6, 3 to 5 dGH and 5 to 8 dKH. The IUCN Red List rates the species as endangered.
+    sources:
+      - *cof
+      - *oliver
+      - *rizzo
+      - *fishbase
+      - *branchu
+      - *fao
+      - *eccles
+  sizeAndGrowth:
+    text: >-
+      Adult males reach about 16 cm in the aquarium, females stay a few centimetres shorter at
+      roughly 13 cm. The wild holotype measured just under 16 cm in total length, and wild fish
+      seldom pass 15 cm. Growth is slow: juveniles resemble their parents after about eight months,
+      and males take years to show their full colour and thick white lips. Fish that are fed too
+      much grow larger and heavier than wild ones, which harms their health.
+    sources:
+      - *fishbase
+      - *fishipedia
+      - *rizzo
+  husbandry:
+    text: >-
+      Plan a tank of at least 160 cm length and around 450 L for one male and three females; a
+      mixed community deserves more. Cover most of the floor with fine sand and leave a long open
+      swimming area, with a few rocks or caves along the back as refuges for brooding females.
+      Sturdy plants such as Vallisneria or Anubias can grow at the rear. These fish react badly to
+      poor water and low oxygen, so filter strongly, keep good circulation and change a large share
+      of the water every week. Keep the temperature at 24 to 27 C and the pH between 7.5 and 8.5.
+      Moderately hard water is fine; keep the total hardness at or below about 15 dGH and the
+      carbonate hardness between 5 and 12 dKH, so that the pH stays stable.
+    sources:
+      - *rizzo
+      - *garnelio
+      - *fishipedia
+  socialBehavior:
+    text: >-
+      This is one of the gentler Malawi haplochromines. A group moves calmly across the sand, and
+      the dominant male shows the strongest colour. He courts every ripe female and chases rivals
+      and females, but he digs no pit and holds no fixed territory, so injuries are rare when
+      there is enough room and each male has two or three females. Towards other species it is
+      unassuming and at most displays at fish that come too close. Boisterous tankmates intimidate
+      it, take its food and keep it from colouring up or breeding.
+    sources:
+      - *rizzo
+      - *fishipedia
+      - *garnelio
+  diet:
+    text: >-
+      In nature it lives on small invertebrates and organic particles that larger cichlids churn up
+      from the sand. In the aquarium it accepts nearly every food, so restraint matters more than
+      any special item. Base the diet on a sinking cichlid pellet or flake with low fat content,
+      and add frozen mysis, krill, cyclops and daphnia. Some spirulina food belongs in the menu,
+      even though the fish show little interest in it. Brine shrimp and other rich live food make
+      a treat every week or two. Feed small portions and allow one fasting day per week, because
+      the fish overeat readily.
+    sources:
+      - *rizzo
+      - *fishipedia
+  breeding:
+    text: >-
+      Placidochromis phenochilus is a maternal mouthbrooder and breeds readily once the fish are
+      well conditioned. The male needs no pit or territory: he swims up to a ripe female, the two
+      circle over the sand, and she lays her eggs a few at a time and takes them into her mouth,
+      where the male fertilises them. The female then hides among rocks or plants and fasts for
+      about three and a half weeks. She releases roughly two dozen grey fry of about half a
+      centimetre and does not guard them afterwards. In a community most fry are eaten, so move the
+      brooding female to a separate tank and let her release the young on her own. The fry take
+      brine shrimp nauplii and fine powdered food.
+    sources:
+      - *rizzo
+      - *fishbase
+  sexing:
+    text: >-
+      Mature males are easy to recognise: they are larger, deep metallic blue, and develop the thick
+      white lips that give the species its name, and older males gain pearly white patches. Females
+      and juveniles are a duller blue-grey, show the faint dark vertical bars more clearly and never
+      grow the heavy white lips. Colour takes years to develop fully, so young fish are hard to
+      sex; buying a group of six to eight juveniles and keeping one male with several females is
+      the practical way.
+    sources:
+      - *rizzo
+      - *garnelio
+      - *oliver
+  compatibility:
+    text: >-
+      Good tankmates are calm Malawi cichlids of similar size that do not dominate the sand:
+      peacocks such as Aulonocara, utaka such as Copadichromis, and gentle haplochromines like
+      Cyrtocara moorii or Protomelas in a large tank. A long tank with a large sand-sifter such as
+      Taeniolethrinops recreates the natural feeding association. Avoid mbuna and other rough rock
+      dwellers, which harass it and eat its share. Do not combine it with Placidochromis electra:
+      the two are close relatives and the hobby warns that they hybridise. Keep it apart from the
+      Tanzanian "phenochilus" and the 'gissel' form as well, so that the lines stay pure. Large
+      piscivores can eat juveniles, and fish from other lakes or with plant-based diets have
+      different needs.
+    sources:
+      - *rizzo
+      - *fishipedia
+      - *sfelectra
+  problems:
+    text: >-
+      The most common mistake is housing this gentle fish with mbuna, where it hides, loses colour
+      and goes hungry. Overfeeding comes second: the fish eat whatever they are given, and fatty
+      food or too much rich live food leads to obesity and poor health, so keep portions small.
+      Nitrate build-up and low oxygen show as dull colour and rapid breathing; large weekly water
+      changes and strong circulation prevent most of this. A faulty heater is a real danger: a
+      forum member lost a fish of this name when the tank reached about 34 C. Mixing it with P.
+      electra or with other phenochilus forms produces hybrids.
+    sources:
+      - *rizzo
+      - *thread28033
+provenance:
+  runs:
+    - role: generator
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-13
+    - role: adjudicator
+      model: claude-opus-5-5
+      date: 2026-10-13
+  disagreements:
+    - field: taxonomy.synonyms
+      proposals:
+        - by: generator
+          value: [Haplochromis phenochilus Trewavas, 1935, Cyrtocara phenochilus]
+        - by: checker-a
+          value: [Haplochromis phenochilus, Cyrtocara phenochilus, Protomelas phenochilus]
+        - by: checker-b
+          value: [Haplochromis phenochilus, Cyrtocara phenochilus, Protomelas phenochilus]
+      decision: [Haplochromis phenochilus Trewavas, 1935, Cyrtocara phenochilus, Protomelas phenochilus]
+      rationale: >-
+        The FishBase synonym list names all three combinations; the Catalog of Fishes lists only the
+        original combination. The union is kept.
+    - field: taxonomy.note
+      proposals:
+        - by: generator
+          value: The profile covers the Malawian species and the Tanzanian trade form, whose care does not differ.
+        - by: checker-a
+          value: The profile describes the nominal species; the Tanzanian and gissel forms are undescribed Placidochromis sp.
+        - by: checker-b
+          value: The Mdoka fish is the species; the Tanzanian fish is a separate undescribed form.
+      decision: The profile describes the valid species; the Tanzanian form is the undescribed Placidochromis sp. 'phenochilus tanzania'.
+      rationale: >-
+        The Catalog of Fishes recognises one species, which Konings found on the Malawian coast, and
+        the Cichlid Room Companion lists the Tanzanian fish as a separate undescribed form. A profile
+        for the valid name therefore rests on the Malawian fish; sources on the Tanzanian form serve
+        only as marked supporting evidence, and its trade names and variant entry are left out.
+    - field: variants
+      proposals:
+        - by: generator
+          value: [Mdoka, Tanzania]
+      decision: [Mdoka]
+      rationale: >-
+        Only the generator listed variants. The Tanzanian form is an undescribed species of its own,
+        so it is no variant of P. phenochilus.
+    - field: features.origin.value.waterbody
+      proposals:
+        - by: generator
+          value: Lake Malawi
+        - by: checker-a
+          value: Lake Malawi
+        - by: checker-b
+          value: lake-malawi
+      decision: Lake Malawi
+      rationale: Both spellings name the same entry of the water body table; the name form is used, as in the other proposals.
+    - field: features.origin.value.localities
+      proposals:
+        - by: generator
+          value: [Vua (type locality), Mdoka, Chesese, Chirwa Island, between Selewa and Kasinda]
+        - by: checker-a
+          value: [Vua (type locality), Mdoka, Chesese, Chirwa Island, Selewa to Kasinda]
+        - by: checker-b
+          value: [Vua, Mdoka Reef]
+      decision: [Vua (type locality), Mdoka, Chesese, Chirwa Island, between Selewa and Kasinda]
+      rationale: >-
+        The lists differ in spelling and completeness only; the full list follows the sites of the
+        rediscovery as summarised by M. K. Oliver.
+    - field: features.temperatureC.tolerance
+      proposals:
+        - by: generator
+          value: {min: 21, max: 29}
+        - by: checker-a
+          value: {min: 21, max: 29}
+        - by: checker-b
+          value: {min: 23, max: 28}
+        - by: tiebreaker-1
+          value: {min: 21, max: 29}
+        - by: tiebreaker-2
+          value: {min: 21, max: 29}
+      decision: {min: 21, max: 29}
+      rationale: >-
+        Decided by the vote count (qualified majority, 4 of 5). Checker-b's 23 to 28 C would not
+        contain the natural lake range of 21 to 29 C, in which the species lives.
+    - field: features.ph.tolerance
+      proposals:
+        - by: generator
+          value: {min: 7.5, max: 8.6}
+        - by: checker-a
+          value: {min: 7.5, max: 8.6}
+        - by: checker-b
+          value: {min: 7.4, max: 8.6}
+      decision: {min: 7.5, max: 8.6}
+      rationale: Decided by the vote count (unanimous, 3 of 3 within 0.3 pH); the median of the agreeing bounds is 7.5 to 8.6.
+    - field: features.ghDgh.tolerance
+      proposals:
+        - by: generator
+          value: {min: 3, max: 20}
+        - by: checker-a
+          value: {min: 3, max: 20}
+        - by: checker-b
+          value: {min: 3, max: 15}
+        - by: tiebreaker-1
+          value: {min: 3, max: 25}
+        - by: tiebreaker-2
+          value: {min: 3, max: 25}
+      decision: {min: 3, max: 15}
+      rationale: >-
+        Conservative decision of the vote count: no proposal reached four agreeing votes, so the
+        intersection of all proposals applies, with confidence low. The care sources range from 8
+        to 15 dGH (Fishipedia) up to 25 dGH (Garnelio, and Seriously Fish for P. electra).
+    - field: features.hybridGroup
+      proposals:
+        - by: generator
+          value: placidochromis-electra-complex
+        - by: checker-a
+          value: null
+        - by: checker-b
+          value: null
+        - by: tiebreaker-1
+          value: placidochromis-electra-complex
+        - by: tiebreaker-2
+          value: placidochromis-electra-complex
+      decision: placidochromis-electra-complex
+      rationale: >-
+        Conservative decision of the vote count (3 of 5): the most common named group. It rests on
+        Rizzo's warning that the two species hybridise and on their close relationship; no cross is
+        documented. The group is added to the curated list with the two valid species as members.
+    - field: features.diet.value.foods
+      proposals:
+        - by: generator
+          value: [sinking cichlid pellets with low fat content, mysis, krill, cyclops, daphnia, brine shrimp, spirulina flakes as a supplement]
+        - by: checker-a
+          value: [small crustaceans such as mysis, krill and cyclops, insect larvae, low-fat sinking pellets and flakes, some spirulina-based food]
+        - by: checker-b
+          value: [frozen mysis, brine shrimp, bloodworms, protein-rich pellets, flakes]
+      decision: [sinking cichlid pellets with low fat content, mysis, krill, cyclops, daphnia, brine shrimp, spirulina flakes as a supplement]
+      rationale: >-
+        Type and bloat flag were unanimous; the vote count takes the food list of the first agreeing
+        vote. It matches Rizzo's low-fat recommendations, whereas protein-rich pellets and
+        bloodworms conflict with his warning against overfeeding.
+    - field: features.maxSizeCm
+      proposals:
+        - by: generator
+          value: {male: 16, female: 13}
+        - by: checker-a
+          value: {male: 16, female: 13}
+        - by: checker-b
+          value: {male: 20, female: 15}
+      decision: {male: 16, female: 13}
+      rationale: >-
+        The holotype measures 15.7 cm, Rizzo gives about 15 cm for wild fish and Fishipedia 16 cm for
+        dominant males. Checker-b's 20 cm rests on a retailer that places the Mdoka fish in
+        Tanzanian waters, so its size claim is not reliable.
+    - field: features.aggressionConspecific
+      proposals:
+        - by: generator
+          value: 1
+        - by: checker-a
+          value: 2
+        - by: checker-b
+          value: 2
+      decision: 2
+      rationale: >-
+        The polygamous males court and chase every ripe female, and two care sheets describe
+        territorial males, which is why all sources advise several females per male. Regular chasing
+        with rare injuries fits level 2 better than the short displays of level 1.
+    - field: features.aggressionHeterospecific
+      proposals:
+        - by: generator
+          value: 0
+        - by: checker-a
+          value: 1
+        - by: checker-b
+          value: 1
+      decision: 1
+      rationale: >-
+        The fish is gentle, but retailer sheets report territorial behaviour of breeding males;
+        displays towards fish that come close fit level 1, while level 0 would mean ignoring other
+        species entirely.
+    - field: features.territory
+      proposals:
+        - by: generator
+          value: {size: none, breedingOnly: false}
+        - by: checker-a
+          value: {size: none, breedingOnly: false}
+        - by: checker-b
+          value: {size: small, breedingOnly: true}
+      decision: {size: none, breedingOnly: false}
+      rationale: >-
+        Rizzo observed courtship without a pit, nest or defended site, and Fishipedia lists the
+        species as not territorial; the retailer statements behind checker-b give no details.
+    - field: features.habitatZones
+      proposals:
+        - by: generator
+          value: [sand]
+        - by: checker-a
+          value: [sand, rock]
+        - by: checker-b
+          value: [sand, rock]
+      decision: [sand, rock]
+      rationale: >-
+        The species forages over sand, but brooding females hide among rocks or plants, and Rizzo
+        and the care sheets place a few rocks in the tank for them.
+    - field: features.minTank
+      proposals:
+        - by: generator
+          value: {volumeL: 500, lengthCm: 160, depthCm: 60}
+        - by: checker-a
+          value: {volumeL: 450, lengthCm: 160, depthCm: 50}
+        - by: checker-b
+          value: {volumeL: 375, lengthCm: 150, depthCm: 50}
+      decision: {volumeL: 450, lengthCm: 160, depthCm: 50}
+      rationale: >-
+        Rizzo's minimum length of 160 cm is the most specific statement; Garnelio's 400 to 450 L
+        gives the volume. Checker-b's 150 cm falls short of Rizzo, and the generator's 60 cm depth
+        is supported by no source.
+    - field: features.lifespanYears
+      proposals:
+        - by: generator
+          value: {min: 6, max: 10}
+        - by: checker-a
+          value: {min: 6, max: 10}
+        - by: checker-b
+          value: {min: 6, max: 8}
+      decision: {min: 6, max: 10}
+      rationale: Garnelio gives 6 to 8 years and Fishipedia 10 years; the range covers both sources.
