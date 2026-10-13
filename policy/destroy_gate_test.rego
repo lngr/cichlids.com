@@ -69,3 +69,30 @@ test_allow_noop if {
 		},
 	]}
 }
+
+# A replace of an ephemeral app-tier resource (terraform_data) is allowed.
+test_allow_replace_terraform_data if {
+	count(deny) == 0 with input as {"resource_changes": [
+		{
+			"address": "terraform_data.k3s",
+			"type": "terraform_data",
+			"change": {"actions": ["delete", "create"], "before": {"id": "x"}, "after": {"id": "y"}},
+		},
+	]}
+}
+
+# An allowed ephemeral replace does not shield a delete of a critical resource in the same plan.
+test_deny_critical_delete_next_to_ephemeral_replace if {
+	count(deny) > 0 with input as {"resource_changes": [
+		{
+			"address": "terraform_data.k3s",
+			"type": "terraform_data",
+			"change": {"actions": ["delete", "create"], "before": {"id": "x"}, "after": {"id": "y"}},
+		},
+		{
+			"address": "hcloud_server.node",
+			"type": "hcloud_server",
+			"change": {"actions": ["delete"], "before": {"id": "n"}, "after": null},
+		},
+	]}
+}
