@@ -56,6 +56,20 @@ public sealed class ImageProcessorTests
         Assert.Throws<ImageProcessor.BrokenImageException>(() => ImageProcessor.Process(bytes));
     }
 
+    [Theory]
+    [InlineData(".jpg")]
+    [InlineData(".png")]
+    public void Throws_a_broken_image_exception_for_a_file_cut_off_in_the_middle_of_its_pixel_data(string extension)
+    {
+        using var noise = Image.Gaussnoise(800, 600, mean: 128, sigma: 40).Bandjoin(
+            [Image.Gaussnoise(800, 600, mean: 128, sigma: 40), Image.Gaussnoise(800, 600, mean: 128, sigma: 40)])
+            .Cast(Enums.BandFormat.Uchar);
+        var complete = noise.WriteToBuffer(extension);
+        var truncated = complete[..(complete.Length / 2)];
+
+        Assert.Throws<ImageProcessor.BrokenImageException>(() => ImageProcessor.Process(truncated));
+    }
+
     [Fact]
     public void Rejects_a_small_file_declaring_200000_by_200000_pixels_quickly_and_without_decoding_it()
     {
