@@ -60,6 +60,7 @@ public sealed class PictureMigrationStep : IEtlStep
         var storageKeyOwners = await LoadStorageKeyOwnersAsync(context, cancellationToken);
         var mediaIdByLegacyId = new Dictionary<int, long>();
         var postIdByLegacyId = new Dictionary<int, long>();
+        var anonymous = new AnonymousArchiveAttribution(context, stats, "pictures");
 
         const string sql = """
             SELECT
@@ -100,7 +101,7 @@ public sealed class PictureMigrationStep : IEtlStep
                 var tstamp = reader.GetInt64("tstamp");
                 var crdate = reader.GetInt64("crdate");
                 var createdAt = DateTimeOffset.FromUnixTimeSeconds(crdate > 0 ? crdate : tstamp);
-                var owner = await ResolveOwnerAsync(context, feUser, profileByLegacyId, stats, cancellationToken);
+                var owner = await ResolveOwnerAsync(context, feUser, profileByLegacyId, anonymous, stats, cancellationToken);
 
                 batch.Add(new ActivePicture(
                     legacyId,
@@ -144,6 +145,8 @@ public sealed class PictureMigrationStep : IEtlStep
 
         await PopulateTankMediaAsync(context, mediaIdByLegacyId, stats, cancellationToken);
         await PopulateSlugAliasesAsync(context, postIdByLegacyId, stats, cancellationToken);
+
+        anonymous.Report();
     }
 
     private static async Task ProcessBatchAsync(
@@ -276,13 +279,13 @@ public sealed class PictureMigrationStep : IEtlStep
         EtlContext context,
         int feUser,
         Dictionary<int, (long Id, ProfileKind Kind)> profileByLegacyId,
+        AnonymousArchiveAttribution anonymous,
         StepStatistics stats,
         CancellationToken cancellationToken)
     {
         if (feUser == 0)
         {
-            stats.AddWarning("picture owner fe_user is 0 (anonymous); attributed to the community archive profile.");
-            var communityArchiveId = await PlaceholderProfiles.EnsureCommunityArchiveProfileAsync(context, cancellationToken);
+            var communityArchiveId = await anonymous.ResolveAsync(cancellationToken);
             return (communityArchiveId, ProfileKind.System);
         }
 

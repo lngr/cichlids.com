@@ -504,6 +504,7 @@ public sealed class CommentMigrationStep : IEtlStep
             }
         }
 
+        var anonymous = new AnonymousArchiveAttribution(context, stats, "comment votes");
         var voteRows = new List<IReadOnlyList<object?>>();
         foreach (var row in winners)
         {
@@ -519,7 +520,7 @@ public sealed class CommentMigrationStep : IEtlStep
                 continue;
             }
 
-            var profileId = await ResolveVoterProfileIdAsync(context, row.FeUser, profileByLegacyId, stats, cancellationToken);
+            var profileId = await ResolveVoterProfileIdAsync(context, row.FeUser, profileByLegacyId, anonymous, stats, cancellationToken);
             var createdAt = LegacyLocalTime.ToUtc(row.Tstamp);
 
             voteRows.Add(new object?[] { commentId, profileId, (short)row.Rated, createdAt });
@@ -537,19 +538,21 @@ public sealed class CommentMigrationStep : IEtlStep
                 cancellationToken);
             stats.AddInserted(votesInserted);
         }
+
+        anonymous.Report();
     }
 
     private static async Task<long> ResolveVoterProfileIdAsync(
         EtlContext context,
         int feUser,
         Dictionary<int, (long Id, ProfileKind Kind)> profileByLegacyId,
+        AnonymousArchiveAttribution anonymous,
         StepStatistics stats,
         CancellationToken cancellationToken)
     {
         if (feUser == 0)
         {
-            stats.AddWarning("comment vote fe_user is 0 (anonymous); attributed to the community archive profile.");
-            return await PlaceholderProfiles.EnsureCommunityArchiveProfileAsync(context, cancellationToken);
+            return await anonymous.ResolveAsync(cancellationToken);
         }
 
         if (profileByLegacyId.TryGetValue(feUser, out var profile))

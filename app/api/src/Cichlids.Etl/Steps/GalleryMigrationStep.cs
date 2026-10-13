@@ -33,6 +33,7 @@ public sealed class GalleryMigrationStep : IEtlStep
         var profileIdsByLegacyId = await LoadLegacyIdMapAsync(context, "profile", cancellationToken);
         var postIdByLegacyId = await LoadLegacyIdMapAsync(context, "post", cancellationToken);
         var entriesByGalleryUid = await LoadGalleryEntriesAsync(context, cancellationToken);
+        var anonymous = new AnonymousArchiveAttribution(context, stats, "galleries");
 
         // A gallery without any mm row never had a picture assigned, so it is an album that was
         // created and never filled. It is skipped and counted. A gallery whose mm rows exist but
@@ -65,7 +66,7 @@ public sealed class GalleryMigrationStep : IEtlStep
             var title = reader.GetTrimmedOrNull("title") ?? $"Gallery {legacyId}";
             var createdAt = tstamp > 0 ? DateTimeOffset.FromUnixTimeSeconds(tstamp) : UnknownCreatedAtMarker;
 
-            var ownerProfileId = await ResolveOwnerAsync(context, feUser, profileIdsByLegacyId, stats, cancellationToken);
+            var ownerProfileId = await ResolveOwnerAsync(context, feUser, profileIdsByLegacyId, anonymous, stats, cancellationToken);
 
             var values = new (string, object?)[]
             {
@@ -106,6 +107,8 @@ public sealed class GalleryMigrationStep : IEtlStep
                 entryRows,
                 cancellationToken);
         }
+
+        anonymous.Report();
     }
 
     // Duplicate picture references within the same gallery collapse to their first sorted
@@ -157,13 +160,13 @@ public sealed class GalleryMigrationStep : IEtlStep
         EtlContext context,
         int feUser,
         Dictionary<int, long> profileIdsByLegacyId,
+        AnonymousArchiveAttribution anonymous,
         StepStatistics stats,
         CancellationToken cancellationToken)
     {
         if (feUser == 0)
         {
-            stats.AddWarning("gallery owner fe_user is 0 (anonymous); attributed to the community archive profile.");
-            return await PlaceholderProfiles.EnsureCommunityArchiveProfileAsync(context, cancellationToken);
+            return await anonymous.ResolveAsync(cancellationToken);
         }
 
         if (profileIdsByLegacyId.TryGetValue(feUser, out var profileId))

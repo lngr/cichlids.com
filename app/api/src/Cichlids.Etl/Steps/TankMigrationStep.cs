@@ -29,6 +29,7 @@ public sealed class TankMigrationStep : IEtlStep
 
         var profileIdsByLegacyId = await LoadLegacyIdMapAsync(context, "profile", cancellationToken);
         var speciesIdsByLegacyId = await LoadLegacyIdMapAsync(context, "species", cancellationToken);
+        var anonymous = new AnonymousArchiveAttribution(context, stats, "tanks");
 
         // fish is a legacy BLOB column even though it only ever holds plain ASCII CSV text;
         // MySqlConnector surfaces a BLOB as byte[] rather than string, so the CAST forces it to
@@ -55,7 +56,7 @@ public sealed class TankMigrationStep : IEtlStep
 
             var legacyId = reader.GetInt32("uid");
             var feUser = reader.GetInt32("fe_user");
-            var ownerProfileId = await ResolveOwnerAsync(context, feUser, profileIdsByLegacyId, stats, cancellationToken);
+            var ownerProfileId = await ResolveOwnerAsync(context, feUser, profileIdsByLegacyId, anonymous, stats, cancellationToken);
 
             var hidden = reader.GetInt32("hidden") != 0;
             var state = hidden ? TankState.Draft : TankState.Published;
@@ -124,19 +125,21 @@ public sealed class TankMigrationStep : IEtlStep
                 inhabitants,
                 cancellationToken);
         }
+
+        anonymous.Report();
     }
 
     private static async Task<long> ResolveOwnerAsync(
         EtlContext context,
         int feUser,
         Dictionary<int, long> profileIdsByLegacyId,
+        AnonymousArchiveAttribution anonymous,
         StepStatistics stats,
         CancellationToken cancellationToken)
     {
         if (feUser == 0)
         {
-            stats.AddWarning("tank owner fe_user is 0 (anonymous); attributed to the community archive profile.");
-            return await PlaceholderProfiles.EnsureCommunityArchiveProfileAsync(context, cancellationToken);
+            return await anonymous.ResolveAsync(cancellationToken);
         }
 
         if (profileIdsByLegacyId.TryGetValue(feUser, out var profileId))
