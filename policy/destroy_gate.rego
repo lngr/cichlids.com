@@ -20,9 +20,11 @@ critical_type := {
 	"hcloud_zone",
 }
 
-# Resource types whose destruction is explicitly permitted. Empty here: nothing in the protected
-# tiers may be destroyed by automation. The ephemeral app tier extends this set when it lands.
-ephemeral_type := set()
+# Resource types whose destruction is explicitly permitted. The app tier consists of
+# terraform_data resources that install and upgrade software on the running node; replacing one
+# re-runs its provisioners and removes nothing in the cloud. Nothing in the protected tiers may
+# be destroyed by automation.
+ephemeral_type := {"terraform_data"}
 
 destructive(change) if "delete" in change.actions
 
