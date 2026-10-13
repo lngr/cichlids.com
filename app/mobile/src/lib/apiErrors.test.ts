@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import de from "../i18n/de.json";
 import en from "../i18n/en.json";
-import { API_ERROR_CODES, apiErrorKey } from "./apiErrors";
+import { API_ERROR_CODES, apiErrorKey, translateApiError } from "./apiErrors";
 
 describe("apiErrorKey", () => {
   it("maps a known API error code to its translation key", () => {
@@ -15,6 +15,18 @@ describe("apiErrorKey", () => {
     expect(apiErrorKey({ code: 5 })).toBeNull();
     expect(apiErrorKey("self_rating")).toBeNull();
     expect(apiErrorKey(null)).toBeNull();
+  });
+});
+
+describe("translateApiError", () => {
+  const t = (key: string) => `translated:${key}`;
+
+  it("translates a known API error code", () => {
+    expect(translateApiError({ code: "self_rating" }, t, "common.loadError")).toBe("translated:errors.self_rating");
+  });
+
+  it("translates the fallback key for errors without a known code, never showing the raw message", () => {
+    expect(translateApiError(new Error("Failed to fetch"), t, "common.loadError")).toBe("translated:common.loadError");
   });
 });
 
