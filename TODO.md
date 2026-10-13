@@ -115,15 +115,6 @@ Prüfer C (Codex, gpt-6.1-sol) ab.
 
 Zu jeder Frage ist eine vorläufige Umsetzung in Gebrauch; sie wird bestätigt oder umgebaut.
 
-- [ ] **Natürliche Bereiche ohne Mehrheit:** Entschieden: Natürliche Wasserbereiche ohne
-  qualifizierte Mehrheit bekommen den Median-Bereich aller Stimmen (Methode `median`, Sicherheit
-  low); die Toleranzen bleiben bei der Schnittmenge. Anlass waren Schnittmengen enger als die
-  Messungen (Hypsophrys nicaraguensis 29-30 °C bei Messungen von 19,5 bis 36 °C; Amphilophus
-  labiatus KH 4-10 bei gemessenen 3,4-3,6 dKH im Nicaraguasee). Offen: betroffene Profile neu
-  zählen: Amatitlania nigrofasciata, Amphilophus citrinellus, Amphilophus labiatus, Andinoacara
-  rivulatus, Astronotus ocellatus, Flowerhorn, Heros severus, Mesoheros festae, Parachromis
-  managuensis, Rocio octofasciata, Symphysodon aequifasciatus (Methode conservative bei
-  natürlichen Werten).
 - [ ] **Wasserkonflikt nach Abstand vom Ideal:** Diskus und Malawis berühren sich in der
   Toleranz am Rand (pH 4,8-7,5 gegen 7,2-8,8), deshalb greift "Toleranzen ohne gemeinsamen
   Bereich" nicht. Vorgabe: Der Konflikt hängt von der Größe des gemeinsamen Bereichs und vom
