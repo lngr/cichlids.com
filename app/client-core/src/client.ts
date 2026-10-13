@@ -123,26 +123,37 @@ export interface PageParams {
   limit?: number;
 }
 
+/** An API error with the HTTP status and, for problem details bodies, the machine-readable code. */
 export class ApiError extends Error {
   constructor(
     message: string,
     public readonly status: number,
+    public readonly code?: string,
   ) {
     super(message);
     this.name = "ApiError";
   }
 }
 
+function problemDetailsOf(error: unknown): { message?: string; code?: string } {
+  if (typeof error !== "object" || error === null) return {};
+  const { detail, title, code } = error as { detail?: unknown; title?: unknown; code?: unknown };
+  const message = [detail, title].find((text): text is string => typeof text === "string" && text !== "");
+  return { message, code: typeof code === "string" ? code : undefined };
+}
+
 /**
  * Throws for any non-2xx response with the response body's error text, if
- * present. `response` is optional because the generated client also reaches
+ * present. A problem details body supplies the message (detail, else title)
+ * and the code. `response` is optional because the generated client also reaches
  * this path for errors raised while building the request itself, before any
  * response exists (e.g. a network failure).
  */
 function unwrap<T>({ data, error, response }: { data?: T; error?: unknown; response?: Response }): T {
   if (error !== undefined) {
-    const message = typeof error === "string" ? error : (response?.statusText ?? "Network error");
-    throw new ApiError(message, response?.status ?? 0);
+    const problem = problemDetailsOf(error);
+    const message = typeof error === "string" ? error : (problem.message ?? response?.statusText ?? "Network error");
+    throw new ApiError(message, response?.status ?? 0, problem.code);
   }
   if (data === undefined) {
     throw new ApiError("Empty response body", response?.status ?? 0);
