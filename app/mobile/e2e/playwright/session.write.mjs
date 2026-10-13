@@ -7,6 +7,8 @@
 //   the app opens, and the member stays signed in.
 // - Without a connection, a screen shows the connection message and the member stays signed in;
 //   once the connection is back, the retry loads the screen.
+// - The title and description typed for an uploaded photo survive a sign-out: after signing in
+//   again, the draft opens with them.
 // - After the account is suspended in Keycloak, opening the app signs the member out and the API
 //   deletes the session.
 //
@@ -19,7 +21,10 @@ import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
 import { API_URL, KEYCLOAK_URL, WEB_URL, byTestId, submitKeycloakLogin } from "./support.mjs";
 
-const COMPOSE_FILE = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../../stack/compose.yaml");
+const SPEC_DIR = path.dirname(fileURLToPath(import.meta.url));
+const COMPOSE_FILE = path.resolve(SPEC_DIR, "../../../stack/compose.yaml");
+const UPLOAD_PHOTO = path.join(SPEC_DIR, "..", "fixtures", "upload-photo.jpg");
+const UPLOAD_INPUT_KEY = "cichlids.upload.input";
 const CONNECTION_MESSAGE = "The connection failed. You stay signed in; please try again in a moment.";
 const JWT = /eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+/;
 
@@ -140,6 +145,44 @@ try {
   await byTestId(page, "error-retry").click();
   await meName.waitFor({ timeout: 30000 });
   console.log("Back online, the retry loads the profile");
+
+  // The input typed for an uploaded photo survives a sign-out and returns with the draft.
+  const keptTitle = "Kept across a sign-out";
+  const keptDescription = "Typed before signing out";
+  await page.goto(`${WEB_URL}/gallery`, { waitUntil: "networkidle", timeout: 60000 });
+  await byTestId(page, "upload-button").click({ timeout: 20000 });
+  await page.waitForURL(/\/upload$/, { timeout: 10000 });
+  await byTestId(page, "upload-file-input").setInputFiles(UPLOAD_PHOTO);
+  await byTestId(page, "upload-preview").waitFor({ timeout: 30000 });
+  await byTestId(page, "upload-title").fill(keptTitle);
+  await byTestId(page, "upload-description").fill(keptDescription);
+  const keptInput = (key) => page.evaluate((storageKey) => localStorage.getItem(storageKey) ?? "", key);
+  await page.waitForFunction(
+    ([key, text]) => (localStorage.getItem(key) ?? "").includes(text),
+    [UPLOAD_INPUT_KEY, keptDescription],
+    { timeout: 10000 },
+  );
+  await page.goto(`${WEB_URL}/me`, { waitUntil: "networkidle", timeout: 60000 });
+  await byTestId(page, "logout-button").click({ timeout: 20000 });
+  await loginButton.waitFor({ timeout: 20000 });
+  const keptWhileSignedOut = await keptInput(UPLOAD_INPUT_KEY);
+  if (!keptWhileSignedOut.includes(keptTitle)) throw new Error("The typed upload input is gone after the sign-out");
+  if (JWT.test(keptWhileSignedOut)) throw new Error("The kept upload input holds a token");
+  await submitKeycloakLogin(page, loginButton, username, password);
+  await meName.waitFor({ timeout: 30000 });
+  await byTestId(page, "draft-open").first().click({ timeout: 20000 });
+  await page.waitForURL(/\/upload\?draft=/, { timeout: 10000 });
+  await byTestId(page, "upload-preview").waitFor({ timeout: 30000 });
+  const shownTitle = await byTestId(page, "upload-title").inputValue();
+  const shownDescription = await byTestId(page, "upload-description").inputValue();
+  if (shownTitle !== keptTitle || shownDescription !== keptDescription) {
+    throw new Error(`Expected the draft to open with "${keptTitle}" / "${keptDescription}", got "${shownTitle}" / "${shownDescription}"`);
+  }
+  console.log("The title and description typed before a sign-out return with the draft after signing in again");
+  await byTestId(page, "upload-discard").click();
+  await page.waitForURL((url) => !url.pathname.startsWith("/upload"), { timeout: 20000 });
+  await page.waitForFunction((key) => localStorage.getItem(key) === null, UPLOAD_INPUT_KEY, { timeout: 10000 });
+  console.log("Discarding the draft forgets its kept input");
 
   // A suspended account is signed out when the app opens, and its session is deleted.
   await adminRequest("PUT", `users/${memberId}`, { enabled: false });
