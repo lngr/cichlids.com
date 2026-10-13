@@ -74,16 +74,31 @@ describe("startWebLogin", () => {
 });
 
 describe("endWebSession", () => {
-  it("posts the logout with the CSRF token and the cookie", async () => {
-    const fetchImpl = vi.fn(async () => new Response(null, { status: 204 }));
+  it("posts the logout with the CSRF token and the cookie and answers the Keycloak end session address", async () => {
+    const logoutUrl = "https://auth.cichlids.test/logout?client_id=cichlids-web-bff&id_token_hint=i";
+    const fetchImpl = vi.fn(async () => json(200, { logoutUrl }));
 
-    await endWebSession(apiUrl, "csrf", fetchImpl as unknown as typeof fetch);
+    expect(await endWebSession(apiUrl, "csrf", fetchImpl as unknown as typeof fetch)).toBe(logoutUrl);
 
     const [url, init] = fetchImpl.mock.calls[0] as unknown as [string, RequestInit];
     expect(url).toBe(`${apiUrl}/api/auth/logout`);
     expect(init.method).toBe("POST");
     expect(init.credentials).toBe("include");
     expect(new Headers(init.headers).get("X-CSRF-Token")).toBe("csrf");
+  });
+
+  it("answers no address when the API names none or refuses the logout", async () => {
+    const none = vi.fn(async () => json(200, { logoutUrl: null }));
+    expect(await endWebSession(apiUrl, "csrf", none as unknown as typeof fetch)).toBeNull();
+    const refused = vi.fn(async () => json(401, { title: "Unauthorized" }));
+    expect(await endWebSession(apiUrl, null, refused as unknown as typeof fetch)).toBeNull();
+    const unreadable = vi.fn(async () => new Response("<html></html>", { status: 200 }));
+    expect(await endWebSession(apiUrl, "csrf", unreadable as unknown as typeof fetch)).toBeNull();
+  });
+
+  it("answers no address that leaves for a script or a non-web scheme", async () => {
+    const script = vi.fn(async () => json(200, { logoutUrl: "javascript:alert(1)" }));
+    expect(await endWebSession(apiUrl, "csrf", script as unknown as typeof fetch)).toBeNull();
   });
 });
 

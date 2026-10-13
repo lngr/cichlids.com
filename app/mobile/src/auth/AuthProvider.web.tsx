@@ -21,7 +21,8 @@ const browserFetch: typeof fetch = (input, init) => fetch(input, init);
  * Holds the web app's session, which the API keeps in an httpOnly cookie (backend for frontend):
  * no token ever reaches the page. Opening the app asks the API for the session state and its CSRF
  * token; while the API cannot be reached the state stays loading and is asked for again. A 401
- * answer of the API ends the session in the app as well. A login that returned without a session
+ * answer of the API ends the session in the app as well. Signing out ends the session at the API
+ * and then passes the page through Keycloak's end session address. A login that returned without a session
  * carries a flag in the address; it is removed from the address and reported as signInFailed.
  */
 export function AuthProvider({ children }: { children: ReactNode }) {
@@ -70,16 +71,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return new Promise<boolean>(() => {});
   }, []);
 
+  // The page leaves for Keycloak, which ends the Keycloak sign-in of this browser and returns to
+  // the app signed out.
   const logout = useCallback(async () => {
     setWebSessionCsrfToken(null);
     setCsrfToken(null);
     setAccountId(null);
     setStatus("anonymous");
+    let logoutUrl: string | null = null;
     try {
-      await endWebSession(API_BASE_URL, csrfToken, browserFetch);
+      logoutUrl = await endWebSession(API_BASE_URL, csrfToken, browserFetch);
     } catch {
       // The API is unreachable: the server session stays until the next sign-out.
     }
+    if (logoutUrl) window.location.assign(logoutUrl);
   }, [csrfToken]);
 
   const getAccessToken = useCallback(async () => undefined, []);

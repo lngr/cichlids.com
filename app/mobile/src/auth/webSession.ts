@@ -49,11 +49,23 @@ export async function startWebLogin(apiUrl: string, returnUrl: string, fetchImpl
   return body.authorizationUrl;
 }
 
-/** Ends the session at the API, which revokes it at Keycloak and clears the cookie. */
-export async function endWebSession(apiUrl: string, csrfToken: string | null, fetchImpl: typeof fetch): Promise<void> {
-  const headers: Record<string, string> = {};
+/**
+ * Ends the session at the API, which revokes it at Keycloak and clears the cookie. Resolves with the
+ * Keycloak address that ends the Keycloak sign-in of this browser and returns to the app, or null
+ * when the API names none or refuses the logout. Rejects when the API cannot be reached.
+ */
+export async function endWebSession(apiUrl: string, csrfToken: string | null, fetchImpl: typeof fetch): Promise<string | null> {
+  const headers: Record<string, string> = { Accept: "application/json" };
   if (csrfToken) headers["X-CSRF-Token"] = csrfToken;
-  await fetchImpl(`${apiUrl}/api/auth/logout`, { method: "POST", credentials: "include", headers });
+  const response = await fetchImpl(`${apiUrl}/api/auth/logout`, { method: "POST", credentials: "include", headers });
+  if (!response.ok) return null;
+  let body: { logoutUrl?: unknown };
+  try {
+    body = (await response.json()) as { logoutUrl?: unknown };
+  } catch {
+    return null;
+  }
+  return typeof body.logoutUrl === "string" && /^https?:\/\//i.test(body.logoutUrl) ? body.logoutUrl : null;
 }
 
 const SIGN_IN_FLAG = "sign_in";
