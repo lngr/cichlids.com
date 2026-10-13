@@ -1,0 +1,1759 @@
+schemaVersion: 1
+id: neolamprologus-brichardi
+legacyIds: [83]
+status: described
+
+taxonomy:
+  validName: Neolamprologus brichardi
+  genus: Neolamprologus
+  species: brichardi
+  author: (Poll, 1974)
+  source: &cof
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes, species of the genus Neolamprologus"
+    url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Neolamprologus
+    accessed: 2026-10-13
+  synonyms:
+    - name: Lamprologus brichardi
+      note: Original combination (Poll 1974), a replacement name for Lamprologus savoryi elongatus.
+    - name: Lamprologus savoryi elongatus
+      note: Described by Trewavas and Poll (1952) as a subspecies of L. savoryi; preoccupied by Lamprologus elongatus Boulenger 1898 and therefore replaced.
+    - name: Neolamprologus elongatus
+      note: Name used in the hobby and aquarium literature of the 1980s for this fish, based on the unavailable name elongatus; not Lepidiolamprologus elongatus.
+  legacyNames:
+    - Neolamprologus brichardi
+  note: >-
+    The Catalog of Fishes lists the species as valid (Marechal and Poll 1991, Schelly et al. 2003,
+    Verburg and Bills 2007, Konings 2023) and records that Konings (2019) treated it as a synonym
+    of Neolamprologus pulcher. Duftner et al. (2007) found that mitochondrial lineages do not sort
+    by the gill-cover bar pattern that separates N. brichardi from N. pulcher and proposed uniting
+    both under N. pulcher, so the species boundary is disputed. The yellow-finned trade form
+    'Daffodil' (described as Neolamprologus daffodil Prokofiev 2003) is a synonym of N. pulcher in
+    the Catalog and not part of this species. The type locality is Kisoje (Kasoje) on the Tanzanian
+    shore. The Catalog was queried for the genera Neolamprologus and Lamprologus; the latter holds
+    no separate entry for brichardi.
+
+names:
+  trade:
+    en: [Princess of Burundi, Fairy cichlid, Lyretail cichlid, Princess cichlid, Brichardi]
+    de: [Prinzessin von Burundi, Feenbarsch, Gabelschwanzbuntbarsch]
+    es-419: [Princesa de Burundi]
+    pt-BR: [Princesa do Burundi]
+
+variants:
+  - name: Magara
+    kind: locality
+    note: Burundi coast; origin of the first exports in 1971 that gave the trade name Princess of Burundi.
+  - name: Kasoje
+    kind: locality
+    note: Type locality on the Tanzanian shore near the Mahale Mountains (spelled Kisoje in the original description).
+  - name: Kigoma
+    kind: locality
+    note: Northern Tanzanian population sampled in genetic and ecological studies.
+  - name: Albino
+    kind: color-morph
+    note: Aquarium-bred amelanistic form without dark pigment.
+
+features:
+  origin:
+    value:
+      continent: Africa
+      region: Lake Tanganyika
+      waterbody: Lake Tanganyika
+      localities:
+        - Kasoje (Kisoje), Tanzania (type locality)
+        - Magara, Burundi
+        - Kigoma, Tanzania
+        - Kalo
+        - Malasa Island
+        - Wapembe
+        - Kapampa
+        - Loasi River North
+    confidence: high
+    rationale: >-
+      Endemic to Lake Tanganyika. FishBase places it in the northern part of the lake, Seriously
+      Fish names the shores of Burundi, Tanzania and the DR Congo with the brichardi head pattern
+      mainly in the northern half, and the Catalog of Fishes gives the type locality Kisoje.
+      Duftner et al. (2007) sampled fish with the brichardi pattern at Kalo, Malasa Island,
+      Wapembe and Kigoma and on a few stretches of the southern shore (Kapampa, Loasi River North);
+      Britton et al. (2019) studied the species near Kigoma. All runs agree on the lake; they differ
+      only in the localities they list.
+    sources:
+      - *cof
+      - &fishbase
+        kind: database
+        title: "FishBase species summary: Neolamprologus brichardi"
+        url: https://www.fishbase.se/summary/Neolamprologus-brichardi.html
+        accessed: 2026-10-13
+      - &sf
+        kind: database
+        title: "Seriously Fish: Neolamprologus brichardi"
+        url: https://www.seriouslyfish.com/species/neolamprologus-brichardi/
+        accessed: 2026-10-13
+      - &duftner
+        kind: literature
+        title: >-
+          Duftner, N., Sefc, K. M., Koblmüller, S., Salzburger, W., Taborsky, M. and Sturmbauer, C.
+          (2007). Parallel evolution of facial stripe patterns in the Neolamprologus
+          brichardi/pulcher species complex endemic to Lake Tanganyika. Molecular Phylogenetics and
+          Evolution 45, 706-715.
+        url: https://doi.org/10.1016/j.ympev.2007.08.001
+        accessed: 2026-10-13
+      - &britton
+        kind: literature
+        title: >-
+          Britton, A. W., Murrell, D. J., McGill, R. A. R., Doble, C. J., Ramage, C. I. and Day, J. J.
+          (2019). The effects of land use disturbance vary with trophic position in littoral cichlid
+          fish communities from Lake Tanganyika. Freshwater Biology 64, 1114-1130.
+        url: https://doi.org/10.1111/fwb.13287
+        accessed: 2026-10-13
+    evidence:
+      - source: *cof
+        value: {continent: Africa, region: Lake Tanganyika}
+        note: type locality Kisoje
+      - source: *fishbase
+        value: {continent: Africa, region: Lake Tanganyika}
+        note: northern part of the lake
+      - source: *sf
+        value: {continent: Africa, region: Lake Tanganyika}
+        note: Burundi, Tanzania and DR Congo shores
+      - source: *duftner
+        value: {continent: Africa, region: Lake Tanganyika}
+        note: northern populations and a few southern stretches with the brichardi pattern
+
+  temperatureC:
+    value: {min: 23, max: 29}
+    confidence: high
+    verification:
+      method: waterbody
+      waterbody: lake-tanganyika
+    rationale: >-
+      Lake Tanganyika endemic, so the natural range is the measured lake range: an hourly buoy
+      series at Mpulungu spans about 23.9 to 29.0 C, with the cooler readings in the southern
+      upwelling season from June to September (Verburg et al. 1997); the FAO/FINNIDA sampling
+      cycles and Langenberg (2008) give medians of the upper water column in the mid twenties. All
+      four full runs proposed 23 to 29 C.
+    sources:
+      - &plisnier46
+        kind: literature
+        title: >-
+          Plisnier, P.-D., Langenberg, V., Mwape, L., Chitamwembwa, D., Tshibangu, K. and Coenen, E.
+          (1996). Limnological sampling during an annual cycle at three stations on Lake Tanganyika
+          (1993-1994). FAO/FINNIDA Research for the Management of the Fisheries on Lake Tanganyika,
+          GCP/RAF/271/FIN-TD/46.
+        url: https://fao.org/fishery/static/LTR/FTP/TD46.PDF
+        accessed: 2026-10-12
+      - &plisnier56
+        kind: literature
+        title: >-
+          Plisnier, P.-D. (1996). Limnological sampling during a second annual cycle (1994-1995) and
+          some comparisons with year one on Lake Tanganyika. FAO/FINNIDA GCP/RAF/271/FIN-TD/56.
+        url: https://fao.org/fishery/static/LTR/FTP/TD56.PDF
+        accessed: 2026-10-12
+      - &verburg
+        kind: literature
+        title: >-
+          Verburg, P., Huttula, T., Kakogozo, B., Kihakwi, A., Kotilainen, P., Makasa, L. and
+          Peltonen, A. (1997). Hydrodynamics of Lake Tanganyika and meteorological results.
+          FAO/FINNIDA GCP/RAF/271/FIN-TD/59.
+        url: https://fao.org/fishery/static/LTR/FTP/TD59.PDF
+        accessed: 2026-10-12
+      - &cohen
+        kind: literature
+        title: >-
+          Cohen, A. S., Talbot, M. R., Awramik, S. M., Dettman, D. L. and Abell, P. (1997). Lake
+          level and paleoenvironmental history of Lake Tanganyika, Africa, as inferred from late
+          Holocene and modern stromatolites. GSA Bulletin 109(4), 444-460 (Table 1, north basin
+          surface water chemistry).
+        url: https://awramik.faculty.geol.ucsb.edu/pubs/COHE9740.pdf
+        accessed: 2026-10-12
+      - &langenberg
+        kind: literature
+        title: Langenberg, V. T. (2008). On the limnology of Lake Tanganyika. PhD thesis, Wageningen University.
+        url: https://edepot.wur.nl/121977
+        accessed: 2026-10-12
+      - &vandenbossche
+        kind: literature
+        title: >-
+          Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery
+          resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Tanganyika: physical and
+          chemical data after Talling and Talling (1965).
+        url: https://www.fao.org/4/t0473e/T0473E10.htm
+        accessed: 2026-10-12
+    evidence:
+      - source: *verburg
+        value: {min: 23, max: 29}
+        note: hourly buoy series at Mpulungu
+      - source: *langenberg
+        value: {min: 24.5, max: 25.8}
+        note: annual medians of the upper 100 m at three stations, not the extremes
+    tolerance:
+      value: {min: 22, max: 29}
+      confidence: medium
+      verification:
+        method: unanimous
+        votes: {agree: 4, total: 4}
+      rationale: >-
+        Unanimous vote: generator, checker-a and checker-b proposed 22 to 29 C and checker-c 23 to
+        29 C. Care sources cluster in the low to middle twenties: FishBase 22 to 25, Seriously Fish
+        and TFH 23 to 26, Aqua-Fish 23 to 25, Fishkeeper 24 to 26, The Tropical Tank 24 to 27 and a
+        retailer sheet of LiveAquaria about 22 to 28 C; TropicalFreshwaterFish gives 22 to 25 C for
+        keeping and up to 29 C for breeding, and a Polish study kept its fish at about 26 C. The
+        upper bound follows the natural lake maximum of 29 C, which only the breeding
+        recommendation reaches, so routine care in the middle of the range is the safer choice. A
+        club breeding report states a wider span of about 21 to 28 C (70 to 82 F); its lower end is
+        not adopted because no structured care sheet goes below 22 C.
+      sources:
+        - *fishbase
+        - *sf
+        - &tfh
+          kind: literature
+          title: "Tropical Fish Hobbyist Magazine: Neolamprologus brichardi, species profile"
+          url: https://www.tfhmagazine.com/articles/freshwater/neolamprologus-brichardi
+          accessed: 2026-10-13
+        - &aquafish
+          kind: database
+          title: "Aqua-Fish.net: Fairy cichlid, Neolamprologus brichardi care sheet"
+          url: https://en.aqua-fish.net/fish/fairy-cichlid
+          accessed: 2026-10-13
+        - &fishkeeper
+          kind: database
+          title: "Fishkeeper (Maidenhead Aquatics) data bank: Fairy Cichlid, Neolamprologus brichardi"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/fairy-cichlid
+          accessed: 2026-10-13
+        - &ttt
+          kind: database
+          title: "The Tropical Tank: Neolamprologus brichardi"
+          url: http://thetropicaltank.co.uk/Fishindx/nbrichar.htm
+          accessed: 2026-10-13
+        - &tff
+          kind: database
+          title: "TropicalFreshwaterFish: Brichardi, Neolamprologus brichardi"
+          url: https://tropicalfreshwaterfish.com/species/Neolamprologus_brichardi.html
+          accessed: 2026-10-13
+        - &polish
+          kind: literature
+          title: >-
+            Intraspecific aggression in the princess of Burundi Neolamprologus brichardi and ways to
+            limit it in aquaria. In: Wybrane zagadnienia produkcji zwierzęcej, vol. 3 (2022).
+          url: https://doi.org/10.24326/mon.2022.9
+          accessed: 2026-10-13
+        - &stigliano
+          kind: literature
+          title: "Stigliano (2000): Neolamprologus brichardi, Greater Chicago Cichlid Association breeding report"
+          url: https://www.gcca.net/art-pics/cichlid-profiles-list/tanganyikan-cichlids/105-neolamprologus-brichardi.html
+          accessed: 2026-10-13
+        - &liveaquaria
+          kind: website
+          title: "LiveAquaria (retailer): Brichardi Cichlid Group, Albino, care facts"
+          url: https://www.liveaquaria.com/products/brichardi-cichlid-group-albino
+          accessed: 2026-10-13
+        - &riverpark
+          kind: website
+          title: "Riverpark Aquatics (retailer): Fairy Cichlid, Neolamprologus brichardi, product care notes"
+          url: https://riverparkaquatics.co.uk/product/neolamprologus-brichardi
+          accessed: 2026-10-13
+      evidence:
+        - source: *fishbase
+          value: {min: 22, max: 25}
+          note: aquarium range in the environment data
+        - source: *sf
+          value: {min: 23, max: 26}
+          note: aquarium recommendation
+        - source: *tfh
+          value: {min: 23, max: 26}
+          note: aquarium recommendation
+        - source: *aquafish
+          value: {min: 23, max: 25}
+        - source: *fishkeeper
+          value: {min: 24, max: 26}
+        - source: *ttt
+          value: {min: 24, max: 27}
+        - source: *tff
+          value: {min: 22, max: 29}
+          note: 22 to 25 C for keeping, 25 to 29 C for breeding
+        - source: *polish
+          value: {min: 25, max: 27}
+          note: laboratory tanks held at about 26 C
+        - source: *stigliano
+          value: {min: 21.1, max: 27.8}
+          note: converted from 70 to 82 F; about 24 to 26 C preferred
+        - source: *liveaquaria
+          value: {min: 22, max: 28}
+          note: converted from 72 to 82 F
+        - source: *riverpark
+          value: {min: 24, max: 27}
+          note: retailer care notes
+
+  ph:
+    value: {min: 8.4, max: 9.4}
+    confidence: high
+    verification:
+      method: waterbody
+      waterbody: lake-tanganyika
+    rationale: >-
+      Lake Tanganyika endemic, so the natural range is the measured lake pH: a year of sampling
+      gave 8.8 to 9.2 at the surface and 8.47 to 9.40 at 40 m (Plisnier et al. 1996), and
+      Langenberg (2008) describes alkaline water with typical profile values near 8.7 to 9.0. All
+      four full runs proposed 8.4 to 9.4.
+    sources:
+      - *plisnier46
+      - *plisnier56
+      - *verburg
+      - *cohen
+      - *langenberg
+      - *vandenbossche
+    evidence:
+      - source: *plisnier46
+        value: {min: 8.4, max: 9.4}
+        note: surface to 40 m over an annual cycle
+      - source: *langenberg
+        value: {min: 8.7, max: 9.0}
+        note: typical values of the water column, not the full lake range
+    tolerance:
+      value: {min: 7.8, max: 9.4}
+      confidence: medium
+      verification:
+        method: unanimous
+        votes: {agree: 4, total: 4}
+      rationale: >-
+        Unanimous vote: generator and checker-a proposed 7.8 to 9.4, checker-b 7.6 to 9.4 and
+        checker-c 8.0 to 9.5, all within 0.3 of the decided bounds. FishBase, Seriously Fish, TFH
+        and Fishkeeper give 8.0 to 9.0, and The Tropical Tank and a LiveAquaria retailer sheet start
+        at 7.8; an archive keeper held the species at about 7.8 with buffering substrate. The upper
+        bound is widened to the lake maximum of 9.4. The sources range wider than the decided
+        range: Aqua-Fish gives 7.6 to 8.9, TropicalFreshwaterFish 7.5 to 9.0, AquariumDomain 8.5 to
+        9.5, a club keeper had adults healthy at about 7.4 that spawned only after the water was
+        buffered, and a breeder report describes spawning near 7.0. These single or outlying values
+        are not adopted as bounds for long-term keeping.
+      sources:
+        - *fishbase
+        - *sf
+        - *tfh
+        - *fishkeeper
+        - *ttt
+        - *tff
+        - *aquafish
+        - &aquariumdomain
+          kind: database
+          title: "AquariumDomain: Fairy Cichlid (Neolamprologus brichardi)"
+          url: https://www.aquariumdomain.com/SpeciesProfiles/AfricanCichlids/FairyCichlid.shtml
+          accessed: 2026-10-13
+        - &kinyon
+          kind: literature
+          title: "Kinyon, D.: Neolamprologus brichardi. Potomac Valley Aquarium Society, Delta Tale 31(3-4)"
+          url: https://www.pvas.com/amp/neolamprologus-brichardi
+          accessed: 2026-10-13
+        - &marshall
+          kind: literature
+          title: "Marshall (2004): A Few Bits & Pieces on the Fairy Cichlid Neolamprologus brichardi, Ryedale Reporter, republished by AquaInfo"
+          url: https://aquainfo.nl/en/a-few-bits-pieces-on-the-fairy-cichlid-neolamprologus-brichardi/
+          accessed: 2026-10-13
+        - *liveaquaria
+        - *riverpark
+        - &arch1374
+          kind: archive
+          title: cichlids.com forum thread 1374
+          url: https://www.cichlids.com/disc/read.php?1,1374
+          accessed: 2026-10-13
+      evidence:
+        - source: *fishbase
+          value: {min: 8.0, max: 9.0}
+        - source: *sf
+          value: {min: 8.0, max: 9.0}
+        - source: *tfh
+          value: {min: 8.0, max: 9.0}
+        - source: *fishkeeper
+          value: {min: 8.0, max: 9.0}
+        - source: *ttt
+          value: {min: 7.8, max: 9.0}
+        - source: *tff
+          value: {min: 7.5, max: 9.0}
+        - source: *aquafish
+          value: {min: 7.6, max: 8.9}
+        - source: *aquariumdomain
+          value: {min: 8.5, max: 9.5}
+        - source: *kinyon
+          value: {min: 7.4, max: 7.4}
+          note: adults healthy in tap water of about pH 7.4; spawning began after buffering
+        - source: *marshall
+          value: {min: 7.0, max: 7.0}
+          note: single breeder report
+        - source: *liveaquaria
+          value: {min: 7.8, max: 9.0}
+        - source: *riverpark
+          value: {min: 7.8, max: 9.0}
+        - source: *arch1374
+          value: {min: 7.8, max: 7.8}
+          note: one keeper's tank with buffering substrate
+
+  ghDgh:
+    value: {min: 10, max: 13}
+    confidence: high
+    verification:
+      method: waterbody
+      waterbody: lake-tanganyika
+    rationale: >-
+      Lake Tanganyika endemic, so the natural range is the measured lake hardness. Magnesium far
+      exceeds calcium: station means of the FAO/FINNIDA programme of about 11 mg/L calcium and 41 to
+      43 mg/L magnesium give about 11 to 12 dGH, the north basin values of Cohen et al. (1997) about
+      12 dGH and the older data of Talling and Talling about 11 dGH, together 10 to 13 dGH. All
+      four full runs proposed this range.
+    sources:
+      - *plisnier46
+      - *plisnier56
+      - *cohen
+      - *vandenbossche
+      - *verburg
+      - *langenberg
+    evidence:
+      - source: *plisnier46
+        value: {min: 11, max: 12}
+        note: surface station means at Bujumbura, Kigoma and Mpulungu, converted from calcium and magnesium
+      - source: *cohen
+        value: {min: 12, max: 12}
+        note: north basin surface water
+      - source: *vandenbossche
+        value: {min: 11, max: 11}
+        note: converted from calcium and magnesium after Talling and Talling (1965)
+    tolerance:
+      value: {min: 9, max: 20}
+      confidence: medium
+      verification:
+        method: unanimous
+        votes: {agree: 4, total: 4}
+      rationale: >-
+        Unanimous vote: generator and checker-a proposed 8 to 20 dGH, checker-b and checker-c 9 to
+        19 dGH; the decided range takes the median bounds of these proposals. FishBase and
+        Seriously Fish give 9 to 19, DRTA 9 to 15, FishProfiles 10 to 20, The Tropical Tank 12 to
+        20 and Aqua-Fish 12 to 18 dGH, and the range contains the natural 10 to 13 dGH. The sources
+        range wider than the decided range: TropicalFreshwaterFish gives 8 to 22, Fishipedia 8 to 20,
+        TFH from about 8 dGH (150 ppm) with an open upper end, Fishkeeper 15 to 25, AquaInfo 7 to
+        11, and a club keeper kept adults in tap water of about 8 dGH.
+      sources:
+        - *fishbase
+        - *sf
+        - &drta
+          kind: database
+          title: "DRTA species care sheet: Gabelschwanzbuntbarsch / Feenbuntbarsch"
+          url: https://www.drta-archiv.de/gabelschwanzbuntbarsch-feenbuntbarsch/
+          accessed: 2026-10-13
+        - &fishprofiles
+          kind: database
+          title: "FishProfiles.com: Neolamprologus brichardi"
+          url: https://fishprofiles.com/profiles/freshwater/Cichlids/Neolamprologus_brichardi/
+          accessed: 2026-10-13
+        - *ttt
+        - *aquafish
+        - *tff
+        - &fishipedia
+          kind: database
+          title: "Fishipedia: Neolamprologus brichardi"
+          url: https://www.fishipedia.fr/fr/poissons/neolamprologus-brichardi
+          accessed: 2026-10-13
+        - *tfh
+        - *fishkeeper
+        - &aquainfo
+          kind: database
+          title: "AquaInfo: Neolamprologus brichardi, Fairy Cichlid"
+          url: https://aquainfo.nl/en/article/neolamprologus-brichardi-fairy-cichlid/
+          accessed: 2026-10-13
+        - *kinyon
+        - *riverpark
+      evidence:
+        - source: *fishbase
+          value: {min: 9, max: 19}
+        - source: *sf
+          value: {min: 9, max: 19}
+        - source: *drta
+          value: {min: 9, max: 15}
+        - source: *fishprofiles
+          value: {min: 10, max: 20}
+        - source: *ttt
+          value: {min: 12, max: 20}
+        - source: *aquafish
+          value: {min: 12, max: 18}
+        - source: *tff
+          value: {min: 8, max: 22}
+        - source: *fishipedia
+          value: {min: 8, max: 20}
+        - source: *tfh
+          value: {min: 8.4, max: 16.8}
+          note: converted from 150 to more than 300 ppm; upper end open
+        - source: *fishkeeper
+          value: {min: 15, max: 25}
+          note: harder than the lake
+        - source: *aquainfo
+          value: {min: 7, max: 11}
+        - source: *kinyon
+          value: {min: 7.8, max: 7.8}
+          note: about 140 ppm tap water, fish healthy
+        - source: *riverpark
+          value: {min: 10, max: 20}
+
+  khDkh:
+    value: {min: 15, max: 20}
+    confidence: high
+    rationale: >-
+      Lake Tanganyika endemic, so the natural range is the measured lake alkalinity: 6.5 to 6.6
+      meq/L in the north basin (Cohen et al. 1997), 6.71 meq/L after Talling and Talling and 6.7 to
+      6.9 meq/L cited by Langenberg (2008), about 18 to 19 dKH, while the FAO/FINNIDA titrations of
+      bicarbonate plus carbonate reach down to about 15 dKH: 15 to 20 dKH. All four full runs
+      proposed this range.
+    sources:
+      - *cohen
+      - *plisnier46
+      - *langenberg
+      - *vandenbossche
+    evidence:
+      - source: *cohen
+        value: {min: 18.2, max: 18.5}
+        note: 6.5 to 6.6 meq/L, north basin
+      - source: *plisnier46
+        value: {min: 15.4, max: 20}
+        note: titrated bicarbonate plus carbonate
+      - source: *langenberg
+        value: {min: 18.8, max: 19.3}
+        note: 6.7 to 6.9 meq/L after Edmond et al. (1993)
+      - source: *vandenbossche
+        value: {min: 18.8, max: 18.8}
+        note: 6.71 meq/L after Talling and Talling (1965)
+    tolerance:
+      value: {min: 10, max: 20}
+      confidence: low
+      verification:
+        method: qualified-majority
+        votes: {agree: 5, total: 6}
+      rationale: >-
+        Qualified majority: generator, checker-a, checker-b and both tie-breakers voted 10 to 20
+        dKH, checker-c 15 to 20 dKH. Few care sources state carbonate hardness: The Tropical Tank
+        calls 14 to 20 dKH ideal and 6 dKH the lowest acceptable value, a LiveAquaria retailer sheet
+        gives 10 to 20, a shop guide 10 to 15, AquariumDomain 15 to 25 and DRTA at least 15 dKH.
+        FishBase (9 to 19 dH) and TFH (150 to more than 300 ppm) give a single hardness figure
+        without saying which kind is meant, which supports the order of magnitude only. The decided
+        range contains the natural 15 to 20 dKH and is narrower than the full span of the sources,
+        6 to 25 dKH. Confidence is low because so few sources state a carbonate hardness.
+      sources:
+        - *ttt
+        - *aquariumdomain
+        - *drta
+        - *fishbase
+        - *tfh
+        - *liveaquaria
+        - &gensou
+          kind: website
+          title: "Gensou Aquascaping (shop): Neolamprologus brichardi care guide"
+          url: https://gensou.sg/neolamprologus-brichardi-care-guide/
+          accessed: 2026-10-13
+        - *arch1374
+      evidence:
+        - source: *ttt
+          value: {min: 6, max: 20}
+          note: 14 to 20 dKH ideal, 6 dKH as the floor
+        - source: *aquariumdomain
+          value: {min: 15, max: 25}
+          note: aquarium recommendation
+        - source: *drta
+          value: {min: 15, max: 15}
+          note: lower bound only
+        - source: *fishbase
+          value: {min: 9, max: 19}
+          note: single hardness figure in dH, kind not stated
+        - source: *tfh
+          value: {min: 8.4, max: 16.8}
+          note: single hardness figure in ppm, kind not stated; upper end open
+        - source: *liveaquaria
+          value: {min: 10, max: 20}
+        - source: *gensou
+          value: {min: 10, max: 15}
+        - source: *arch1374
+          value: {min: 10, max: 20}
+          note: a keeper raised the hardness above 10 degrees with coral sand
+
+  maxSizeCm:
+    value: {male: 9, female: 8}
+    confidence: medium
+    rationale: >-
+      FishBase and Seriously Fish give 9 cm total length after Marechal and Poll (1991), and TFH
+      gives the same size; the long fin filaments are not included. Males are usually the larger
+      partner of a pair, so females are set at about 8 cm. Generator and checker-a proposed 9 and 8
+      cm. Checker-b proposed 10 and 8.5 cm and checker-c 12 and 8 cm, based on aquarium sources
+      that state more: FishProfiles, The Tropical Tank and TropicalFreshwaterFish round up to 10 cm,
+      Aqua-Fish gives 9 to 10 cm, AquaInfo 10 to 12 cm, a Polish monograph about 12 cm and a club
+      breeding report males of about 12.7 cm and females of 7.6 cm. These larger figures are single
+      reports or rounded values; the typical maximum of well-kept fish follows the measured 9 cm.
+    sources:
+      - *fishbase
+      - *sf
+      - *tfh
+      - *fishprofiles
+      - *aquafish
+      - *aquainfo
+      - *polish
+      - *stigliano
+    evidence:
+      - source: *fishbase
+        value: {male: 9, female: 9}
+        note: male or unsexed maximum total length
+      - source: *sf
+        value: {male: 9, female: 9}
+        note: males usually a little larger
+      - source: *tfh
+        value: {male: 9, female: 9}
+        note: species maximum
+      - source: *fishprofiles
+        value: {male: 10, female: 10}
+      - source: *aquafish
+        value: {male: 10, female: 10}
+        note: usual aquarium size 9 to 10 cm
+      - source: *aquainfo
+        value: {male: 12, female: 12}
+        note: 10 to 12 cm, sexes not separated
+      - source: *polish
+        value: {male: 12, female: 12}
+        note: maximum about 12 cm
+      - source: *stigliano
+        value: {male: 12.7, female: 7.6}
+        note: converted from 5 and 3 inches
+
+  predation:
+    value: 1
+    confidence: medium
+    verification:
+      method: qualified-majority
+      votes: {agree: 5, total: 6}
+    rationale: >-
+      Qualified majority: generator, checker-a, checker-c and both tie-breakers voted level 1,
+      checker-b level 0. In the lake the species is an invertebrate picker: FishBase lists it as a
+      plankton feeder, Britton et al. (2019) classify it by stable isotopes as a zooplankton feeder
+      of the water column, and TFH calls it a micropredator. No source reports fish as regular food,
+      which rules out levels 2 and 3. In tanks adults eat eggs and the smallest fry once a colony
+      runs short of space (Seriously Fish, Stigliano 2000), dominant group members eat clutches
+      (von Siemens 1990, abstract), an archive keeper fed surplus fry to a pair and Guidarium lists
+      it as a fry eater. Taking fry when the chance arises is level 1; the vote for level 0 rested on
+      the wild diet alone. The Cichlid Room Companion summary confirms crustacean and plankton
+      feeding without fish.
+    sources:
+      - *fishbase
+      - *sf
+      - *tfh
+      - *britton
+      - &vonsiemens
+        kind: literature
+        title: >-
+          von Siemens, M. (1990). Broodcare or egg cannibalism by parents and helpers in
+          Neolamprologus brichardi (Poll 1986) (Pisces: Cichlidae): a study on behavioural
+          mechanisms. Ethology 84, 60-80 (abstract).
+        url: https://doi.org/10.1111/j.1439-0310.1990.tb00785.x
+        accessed: 2026-10-13
+      - *stigliano
+      - &crc
+        kind: website
+        title: "Cichlid Room Companion: Neolamprologus brichardi (public summary)"
+        url: https://cichlidae.com/species.php?id=nFl8S1_IgoQ1rwkXbx9Lxg
+        accessed: 2026-10-13
+      - &guidarium
+        kind: website
+        title: "Guidarium: Fairy Cichlid (Brichardi)"
+        url: https://guidarium.com/fishes/fairy-cichlid-brichardi
+        accessed: 2026-10-13
+      - &wiki
+        kind: website
+        title: "Wikipedia (en): Neolamprologus brichardi"
+        url: https://en.wikipedia.org/wiki/Neolamprologus_brichardi
+        accessed: 2026-10-13
+      - &arch19
+        kind: archive
+        title: cichlids.com forum thread 19
+        url: https://www.cichlids.com/disc/read.php?1,19
+        accessed: 2026-10-13
+    evidence:
+      - source: *fishbase
+        value: 0
+        note: plankton feeder; nothing on fish
+      - source: *britton
+        value: 0
+        note: zooplankton feeder of the water column in the field
+      - source: *sf
+        value: 1
+        note: crowded adults eat the smallest fry
+      - source: *tfh
+        value: 1
+        note: micropredator and plankton feeder
+      - source: *stigliano
+        value: 1
+        note: fry are eaten when space runs short
+      - source: *crc
+        value: 0
+        note: crustacean eater and planktivore; verification only
+      - source: *guidarium
+        value: 1
+        note: lists fry predation
+      - source: *wiki
+        value: 0
+        note: crustaceans, invertebrates and plankton only
+      - source: *arch19
+        value: 1
+        note: a pair took surplus fry offered by a keeper
+
+  diet:
+    value:
+      type: invertivore
+      bloatSensitive: false
+      foods: [zooplankton, small crustaceans, frozen and live invertebrates, small pellets and flakes, some plant matter]
+    confidence: high
+    verification:
+      method: unanimous
+      votes: {agree: 4, total: 4}
+    rationale: >-
+      Unanimous vote for an invertivore that is not bloat-sensitive. Field data show a zooplankton
+      feeder of the water just above the rocks: FishBase lists a plankton feeder, Britton et al.
+      (2019) class it as a planktivore near Kigoma, Seriously Fish describes plankton picking up to
+      a metre above the rocks, and Culbert et al. (2022) find mainly zooplankton in the diet of the
+      closely related N. pulcher. TFH calls it a micropredator, and AquaInfo and AquariumDomain
+      recommend small animal foods. Fishipedia and FishProfiles call it an omnivore, which reflects
+      its acceptance of all aquarium foods rather than its natural diet. No source reports bloat; a
+      club keeper notes that it thrives on meaty foods. The Cichlid Room Companion summary confirms
+      crustacean eating and planktivory. The food lists of the runs differed only in examples
+      (insect larvae, brine shrimp, Daphnia, Mysis, spirulina flakes), which the profile text names.
+    sources:
+      - *fishbase
+      - *sf
+      - *tfh
+      - *britton
+      - &culbert
+        kind: literature
+        title: >-
+          Culbert, B. M., Barnett, J. B., Ligocki, I. Y., Salena, M. G., Wong, M. Y. L., Hamilton,
+          I. M. and Balshine, S. (2022). Colorful facial markings are associated with foraging rates
+          and affiliative relationships in a wild group-living cichlid fish. Current Zoology 70,
+          70-78.
+        url: https://doi.org/10.1093/cz/zoac100
+        accessed: 2026-10-13
+      - *kinyon
+      - *fishkeeper
+      - *aquainfo
+      - *aquariumdomain
+      - *fishipedia
+      - *crc
+      - *wiki
+    evidence:
+      - source: *fishbase
+        value: {type: invertivore, bloatSensitive: false}
+        note: plankton feeder
+      - source: *britton
+        value: {type: invertivore, bloatSensitive: false}
+        note: water-column zooplankton feeder, stable isotope study
+      - source: *sf
+        value: {type: invertivore, bloatSensitive: false}
+        note: plankton in the lake; mostly live and frozen foods plus some plant matter in the tank
+      - source: *tfh
+        value: {type: invertivore, bloatSensitive: false}
+        note: micropredator and plankton feeder
+      - source: *culbert
+        value: {type: invertivore, bloatSensitive: false}
+        note: N. pulcher in the wild, mainly zooplankton
+      - source: *aquainfo
+        value: {type: invertivore, bloatSensitive: false}
+        note: small animal foods recommended
+      - source: *aquariumdomain
+        value: {type: invertivore, bloatSensitive: false}
+        note: invertebrates and crustaceans
+      - source: *fishipedia
+        value: {type: omnivore, bloatSensitive: false}
+        note: aquarium feeding
+      - source: *crc
+        value: {type: invertivore, bloatSensitive: false}
+        note: crustacean eater and planktivore; verification only
+
+  aggressionConspecific:
+    value: 3
+    confidence: medium
+    rationale: >-
+      A pair and its own young of several broods live together, but unrelated adults are not
+      tolerated unless raised together (TFH). Seriously Fish advises raising about six juveniles and
+      removing the rest once a pair has formed, AquaInfo reports that crowded families kill older
+      offspring, and dominant group members eat clutches (von Siemens 1990, abstract). Persistent
+      chasing with injuries when space is short fits level 3. Generator, checker-a and checker-c
+      proposed 3; checker-b proposed 2, citing a Polish study in which fights against newcomers
+      eased with more hiding places and a stable hierarchy. That calming depends on space and cover,
+      which level 3 already describes, so 3 is kept.
+    sources:
+      - *tfh
+      - *sf
+      - *aquainfo
+      - *vonsiemens
+      - *polish
+      - *fishkeeper
+      - &balshine
+        kind: literature
+        title: >-
+          Balshine-Earn, S. and Lotem, A. (1998). Individual recognition in a cooperatively breeding
+          cichlid: evidence from video playback experiments. Behaviour 135, 369-386 (abstract).
+        url: https://doi.org/10.1163/156853998793066221
+        accessed: 2026-10-13
+    evidence:
+      - source: *tfh
+        value: 3
+        note: intolerant of unrelated adults in the aquarium
+      - source: *sf
+        value: 3
+        note: surplus fish must be removed after pairing
+      - source: *aquainfo
+        value: 3
+        note: crowded families may kill older offspring
+      - source: *polish
+        value: 2
+        note: chasing, biting and mouth fights against newcomers, reduced by structure
+      - source: *fishkeeper
+        value: 2
+        note: aggressive to each other in confined tanks
+      - source: *balshine
+        value: 2
+        note: fights strangers and courts its mate
+
+  aggressionHeterospecific:
+    value: 3
+    confidence: medium
+    rationale: >-
+      TFH describes breeding pairs that take over even a 180 cm tank and drive much larger
+      tankmates into a corner, AquaInfo reports a colony jointly attacking larger cichlids, and DRTA
+      notes suppressed or dead tankmates in small or crowded mixed tanks. Seriously Fish accepts
+      other rock dwellers only in a large tank with broken sight lines. Attacks beyond the cave fit
+      level 3. Generator, checker-a and checker-c proposed 3; checker-b proposed 2, weighting
+      Fishkeeper and archive reports of peaceful mixed tanks of about 100 litres, and a club
+      breeding report also describes mild behaviour; these show variation between pairs but not a
+      lower typical level.
+    sources:
+      - *tfh
+      - *aquainfo
+      - *drta
+      - *sf
+      - *fishkeeper
+      - *fishprofiles
+      - *stigliano
+      - &arch824
+        kind: archive
+        title: cichlids.com forum thread 824
+        url: https://www.cichlids.com/disc/read.php?1,824
+        accessed: 2026-10-13
+      - &arch928
+        kind: archive
+        title: cichlids.com forum thread 928
+        url: https://www.cichlids.com/disc/read.php?1,928
+        accessed: 2026-10-13
+    evidence:
+      - source: *tfh
+        value: 3
+        note: pairs can take over a large tank
+      - source: *aquainfo
+        value: 3
+        note: colony members pursue and corner other cichlids
+      - source: *drta
+        value: 3
+        note: losses in small or crowded mixed tanks
+      - source: *sf
+        value: 2
+        note: persistent defence of its own patch
+      - source: *fishkeeper
+        value: 2
+        note: growing family leaves no room for other fish
+      - source: *stigliano
+        value: 1
+        note: mild community behaviour reported
+      - source: *arch824
+        value: 1
+        note: pair kept with other pairs in about 100 litres without trouble
+      - source: *arch928
+        value: 1
+        note: pair kept with convicts and kribensis in 100 litres
+
+  territory:
+    value: {size: large, breedingOnly: false}
+    confidence: medium
+    rationale: >-
+      The pair holds a cave territory all year and defends it harder with fry (Seriously Fish).
+      Because the young stay as helpers, the family territory grows with every brood: TFH reports a
+      family claiming most of a 180 cm tank and AquaInfo describes a colony shutting other fish out
+      of the space. In a mixed tank the claim exceeds a single cave, so large; breeding is nearly
+      continuous, so the claim is not limited to breeding. Generator, checker-a and checker-c
+      proposed large; checker-b proposed small, after the size of a single pair's patch in the lake
+      colonies, which the rubric would rate small but which does not describe a family in a tank.
+    sources:
+      - *tfh
+      - *sf
+      - *aquainfo
+      - *drta
+      - *fishkeeper
+    evidence:
+      - source: *tfh
+        value: {size: large, breedingOnly: false}
+        note: a family claimed most of a 180 cm tank
+      - source: *aquainfo
+        value: {size: large, breedingOnly: false}
+        note: colony defence shuts out other fish
+      - source: *sf
+        value: {size: small, breedingOnly: false}
+        note: persistent defence of its patch, stronger with fry
+
+  habitatZones:
+    value: [rock, openWater]
+    confidence: high
+    rationale: >-
+      Lives on rocky shores at about 5 to 25 m, shelters and breeds in crevices and dug-out caves,
+      and hovers up to a metre above the rocks to pick plankton (Seriously Fish after Hori et al.
+      1983 and Konings; Britton et al. 2019; the Cichlid Room Companion summary confirms the rocky
+      habitat). The open water directly above the rocks is part of its feeding zone, and the tank
+      needs this space above the rockwork. Checker-a and checker-c proposed rock and open water, the
+      generator rock alone and checker-b rock and sand; sand is the recommended substrate under the
+      rockwork but not a zone the species uses, and the generator's own rationale describes the
+      feeding above the rocks.
+    sources:
+      - *sf
+      - *britton
+      - *aquainfo
+      - *duftner
+      - *fishkeeper
+      - *crc
+    evidence:
+      - source: *sf
+        value: [rock, openWater]
+        note: feeds up to a metre above the rocks
+      - source: *britton
+        value: [rock, openWater]
+        note: rocky littoral, feeds in the water column
+      - source: *aquainfo
+        value: [rock]
+        note: rock formations at about 5 to 15 m
+      - source: *duftner
+        value: [rock]
+        note: rock-dwelling populations
+      - source: *fishkeeper
+        value: [rock, sand]
+        note: rocky habitats with sediment; sand substrate in the tank
+
+  social:
+    value: {structure: pair}
+    confidence: high
+    rationale: >-
+      A monogamous pair forms the core of a family; 1 to 14 offspring of earlier broods stay as
+      helpers (Duftner et al. 2007), and in the lake many such families live in dense colonies.
+      FishBase and Seriously Fish recommend keeping one pair, which becomes a family group; unrelated
+      adults are rivals. Raising about six juveniles is a way to obtain a pair, not a group size.
+      All runs agree.
+    sources:
+      - *fishbase
+      - *sf
+      - *duftner
+      - *stigliano
+    evidence:
+      - source: *fishbase
+        value: {structure: pair}
+        note: keep in pairs
+      - source: *sf
+        value: {structure: pair}
+        note: best kept as a pair, which grows into a family
+      - source: *duftner
+        value: {structure: pair}
+        note: dominant breeding pair with helpers
+      - source: *stigliano
+        value: {structure: pair}
+        note: lasting pair bond with retained broods
+
+  speciesOnly:
+    value: false
+    confidence: medium
+    verification:
+      method: qualified-majority
+      votes: {agree: 5, total: 6}
+    rationale: >-
+      Qualified majority: generator, checker-a, checker-b and both tie-breakers voted false,
+      checker-c true. Seriously Fish calls a species tank the best option but names Cyprichromis and
+      shell dwellers as partners in a large tank and allows Julidochromis or Altolamprologus where
+      rockwork gives each fish its own area; TFH says it can share a tank with other Tanganyika
+      cichlids; Fishkeeper, The Tropical Tank, TropicalFreshwaterFish and DRTA describe mixed
+      Tanganyika tanks; a club breeder and archive keepers report working community tanks; the
+      Seriously Fish page on N. pulcher warns only against members of the complex. Checker-c read the
+      preference for a dedicated tank in Seriously Fish and AquariumDomain as a requirement, and
+      Guidarium recommends a species-only tank. The rubric reserves the flag for species the hobby
+      keeps only with their own kind, such as Tropheus; this species needs space and careful choice
+      of tankmates, which the aggression levels and hybrid groups express.
+    sources:
+      - *sf
+      - *tfh
+      - *fishkeeper
+      - *ttt
+      - *tff
+      - *drta
+      - &sfpulcher
+        kind: database
+        title: "Seriously Fish: Neolamprologus pulcher"
+        url: https://www.seriouslyfish.com/species/neolamprologus-pulcher/
+        accessed: 2026-10-13
+      - *aquariumdomain
+      - *stigliano
+      - *guidarium
+      - *arch824
+      - &arch20619
+        kind: archive
+        title: cichlids.com forum thread 20619
+        url: https://www.cichlids.com/disc/read.php?2,20619
+        accessed: 2026-10-13
+    evidence:
+      - source: *sf
+        value: false
+        note: species tank preferred, named tankmates possible in large tanks
+      - source: *tfh
+        value: false
+        note: can be kept with other Tanganyika cichlids
+      - source: *fishkeeper
+        value: false
+        note: species tank or a Tanganyika community of similar temperament
+      - source: *ttt
+        value: false
+        note: with similar Tanganyika cichlids
+      - source: *tff
+        value: false
+        note: suggests Julidochromis, Cyprichromis and other lamprologines
+      - source: *drta
+        value: false
+        note: mixed Tanganyika stocking in large, well-structured tanks
+      - source: *sfpulcher
+        value: false
+        note: closest relative; warns only against its own complex
+      - source: *aquariumdomain
+        value: true
+        note: own-species tank recommended
+      - source: *stigliano
+        value: false
+        note: successful community care
+      - source: *guidarium
+        value: true
+        note: species-only tank recommended
+      - source: *arch824
+        value: false
+        note: community report
+      - source: *arch20619
+        value: false
+        note: keepers plan Tanganyika community tanks with this species
+
+  hybridGroups:
+    value: [neolamprologus-brichardi-complex, neolamprologus-brichardi-pulcher]
+    confidence: low
+    verification:
+      method: conservative
+      votes: {agree: 3, total: 6}
+    rationale: >-
+      Conservative decision: no proposal reached four agreeing votes. Generator, checker-b and
+      tiebreaker-1 proposed only neolamprologus-brichardi-complex; checker-c and tiebreaker-2
+      proposed the complex and neolamprologus-brichardi-pulcher; checker-a proposed
+      neolamprologus-brichardi-pulcher and neolamprologus-savoryi-complex. The conservative rule
+      takes every group named by at least two votes: the complex (five votes) and the
+      brichardi-pulcher pair (three votes). The savoryi complex was named by checker-a alone; it has
+      the same seven members as neolamprologus-brichardi-complex, so its content is covered. Both
+      groups have the basis presumed. The complex rests on the hobby warning of Seriously Fish (on
+      its N. brichardi and N. pulcher pages) that the species of the brichardi complex hybridise
+      freely when mixed, and on genetic work that places the cooperatively breeding species in one
+      young clade with repeated gene exchange (Sturmbauer et al. 2010; Salzburger et al. 2002 and
+      Gante et al. 2016, abstracts); the wild introgression named there concerns N. savoryi, N.
+      gracilis and N. marunguensis, not N. brichardi. For the pair, checker-a, checker-c and
+      tiebreaker-2 proposed documented. The decision is presumed because the readable texts report
+      no hybrid fish: Duftner et al. (2007) find mixed mitochondrial clades in wild populations,
+      state that the two forms are never found together, offer past hybridisation only as one of
+      two explanations for an intermediate population at Chaitika and propose treating both as one
+      species; the only explicit statement of a brichardi-pulcher hybridisation is a one-sentence
+      summary by Bouckaert et al. (2019) of a genome comparison by Gante et al. (2016), whose full
+      text is not open access and whose abstract names no species pair. This is a report whose
+      circumstances are unclear, so the pair is a presumed group; given the very close relationship
+      the risk of crosses is high nonetheless.
+    sources:
+      - *sf
+      - *sfpulcher
+      - *duftner
+      - &sturmbauer
+        kind: literature
+        title: >-
+          Sturmbauer, C., Salzburger, W., Duftner, N., Schelly, R. and Koblmüller, S. (2010).
+          Evolutionary history of the Lake Tanganyika cichlid tribe Lamprologini (Teleostei:
+          Perciformes) derived from mitochondrial and nuclear DNA data. Molecular Phylogenetics and
+          Evolution 57, 266-284.
+        url: https://doi.org/10.1016/j.ympev.2010.06.018
+        accessed: 2026-10-13
+      - &bouckaert
+        kind: literature
+        title: >-
+          Bouckaert, R., Vaughan, T. G., Barido-Sottani, J., Duchêne, S., Fourment, M.,
+          Gavryushkina, A. et al. (2019). BEAST 2.5: An advanced software platform for Bayesian
+          evolutionary analysis. PLoS Computational Biology 15, e1006650.
+        url: https://doi.org/10.1371/journal.pcbi.1006650
+        accessed: 2026-10-13
+      - &gante
+        kind: literature
+        title: >-
+          Gante, H. F., Matschiner, M., Malmstrøm, M., Jakobsen, K. S., Jentoft, S. and Salzburger,
+          W. (2016). Genomics of speciation and introgression in Princess cichlid fishes from Lake
+          Tanganyika. Molecular Ecology 25, 6143-6161 (abstract).
+        url: https://doi.org/10.1111/mec.13767
+        accessed: 2026-10-13
+      - &salzburger
+        kind: literature
+        title: >-
+          Salzburger, W., Baric, S. and Sturmbauer, C. (2002). Speciation via introgressive
+          hybridization in East African cichlids? Molecular Ecology 11, 619-625 (abstract).
+        url: https://doi.org/10.1046/j.0962-1083.2001.01438.x
+        accessed: 2026-10-13
+      - *cof
+      - &glaser
+        kind: website
+        title: "Aquarium Glaser (wholesaler): Neolamprologus pulcher (= N. brichardi)"
+        url: https://www.aquariumglaser.de/en/25-perchlike-fishes/neolamprologus-pulcher-n-brichardi-2/
+        accessed: 2026-10-13
+    evidence:
+      - source: *sf
+        value: [neolamprologus-brichardi-complex, neolamprologus-brichardi-pulcher]
+        note: says the two hybridise and that the brichardi complex hybridises freely in tanks
+      - source: *sfpulcher
+        value: [neolamprologus-brichardi-complex]
+        note: same general warning for the complex
+      - source: *duftner
+        value: [neolamprologus-brichardi-pulcher]
+        note: mixed mitochondrial clades; hybridisation one of two possible explanations
+      - source: *bouckaert
+        value: [neolamprologus-brichardi-pulcher]
+        note: summarises a genome comparison that supports an old brichardi-pulcher hybridisation
+      - source: *sturmbauer
+        value: [neolamprologus-brichardi-complex]
+        note: helper species form one clade; introgression named for savoryi, gracilis and marunguensis
+      - source: *gante
+        value: [neolamprologus-brichardi-complex]
+        note: several introgression events in the complex; no pairs named in the abstract
+      - source: *salzburger
+        value: [neolamprologus-brichardi-complex]
+        note: N. marunguensis of hybrid origin
+      - source: *glaser
+        value: [neolamprologus-brichardi-complex]
+        note: exporter treats brichardi and several pulcher forms as one species
+
+  coloration:
+    value:
+      baseColors: [brown, white]
+      pattern: plain
+    confidence: medium
+    rationale: >-
+      The body is plain beige to bronze brown without bars or stripes; the long unpaired fins have
+      white to bluish-white margins, and the head shows a dark bar behind the eye that meets a dark
+      gill-cover bar in a sideways T, with blue or yellow lines on the cheek (Seriously Fish, TFH,
+      TropicalFreshwaterFish, Duftner et al. 2007). The sexes look alike. Checker-a and checker-b
+      proposed brown and white with a plain pattern. The generator proposed brown and yellow,
+      after a golden sheen that is a highlight rather than a dominant colour. Checker-c proposed
+      grey, brown and white with a mixed pattern, counting the head markings; the rubric pattern
+      describes the body, which is plain.
+    sources:
+      - *sf
+      - *tfh
+      - *tff
+      - *aquainfo
+      - *polish
+      - *duftner
+      - &ahi
+        kind: literature
+        title: >-
+          Ahi, E. P., Richter, F. and Sefc, K. M. (2017). A gene expression study of ornamental fin
+          shape in Neolamprologus brichardi, an African cichlid species. Scientific Reports 7, 17398.
+        url: https://doi.org/10.1038/s41598-017-17778-0
+        accessed: 2026-10-13
+    evidence:
+      - source: *tfh
+        value: {baseColors: [brown], pattern: plain}
+        note: copper bronze body with gold highlights
+      - source: *tff
+        value: {baseColors: [white, brown], pattern: plain}
+        note: creamy to beige body, blue-white fin edges
+      - source: *sf
+        value: {baseColors: [brown], pattern: plain}
+        note: head bars and blue or yellow cheek lines
+      - source: *polish
+        value: {baseColors: [brown], pattern: plain}
+        note: light brown base colour
+      - source: *aquainfo
+        value: {baseColors: [grey], pattern: mixed}
+        note: grey-silver body with dark facial markings
+
+  feedingSpeed:
+    value: normal
+    confidence: low
+    rationale: >-
+      Takes every aquarium food readily (TFH, a club article, a breeder report, AquaInfo) and picks
+      plankton in mid-water, but no source describes it as outcompeted or as a food rusher. All runs
+      chose normal as an estimate.
+    sources:
+      - *tfh
+      - *kinyon
+      - *marshall
+      - *aquainfo
+      - kind: model-knowledge
+        title: General knowledge of lamprologine cichlids in aquaria
+
+  minTank:
+    value: {volumeL: 110, lengthCm: 80, depthCm: 35}
+    confidence: medium
+    rationale: >-
+      The recommended unit is one pair. FishBase and Seriously Fish give a tank length of 80 cm for
+      a pair, a LiveAquaria retailer sheet 30 US gallons (about 114 litres), Aqua-Fish 75 litres and
+      a shop guide 100 litres; the depth of 35 cm follows from an 80 cm tank of about 110 litres.
+      Generator and checker-a proposed 110 litres, 80 by 35 cm. Checker-b proposed 80 litres, 80 by
+      30 cm, the bare minimum of the length figure. Checker-c proposed 150 litres, 120 by 30 cm, for
+      a pair with its helpers, after Seriously Fish (a base of 120 by 30 cm for a family group) and
+      DRTA (150, better 200 litres); AquariumDomain asks for 55 US gallons (about 208 litres). A
+      pair soon grows into a family, so the profile text recommends 120 cm or more for the long
+      term.
+    sources:
+      - *fishbase
+      - *sf
+      - *aquafish
+      - *drta
+      - *aquariumdomain
+      - *liveaquaria
+      - *gensou
+    evidence:
+      - source: *fishbase
+        value: {lengthCm: 80}
+        note: one pair
+      - source: *sf
+        value: {lengthCm: 80}
+        note: one pair; family group 120 by 30 cm, about 108 litres
+      - source: *aquafish
+        value: {volumeL: 75}
+        note: one pair
+      - source: *drta
+        value: {volumeL: 150, lengthCm: 120}
+        note: 200 litres preferred
+      - source: *aquariumdomain
+        value: {volumeL: 208}
+        note: 55 US gallons
+      - source: *liveaquaria
+        value: {volumeL: 114}
+        note: 30 US gallons
+      - source: *gensou
+        value: {volumeL: 100}
+        note: breeding pair
+
+  lifespanYears:
+    value: {min: 5, max: 10}
+    confidence: low
+    rationale: >-
+      Only hobby sources give a lifespan: Fishipedia 5 years, a retailer sheet 5 to 8 years,
+      Aqua-Fish and Acquariofilia Consapevole 8 to 10 years, and a forum report describes pairs kept
+      for five years. No study measures it. The range spans these figures. Proposals: generator 5
+      to 10, checker-a 5 to 8, checker-b and checker-c 8 to 10 years.
+    sources:
+      - *fishipedia
+      - *aquafish
+      - &acquariofilia
+        kind: database
+        title: "Acquariofilia Consapevole: Neolamprologus brichardi"
+        url: https://acquariofiliaconsapevole.it/pesci_neolamprologus_brichardi
+        accessed: 2026-10-13
+      - *riverpark
+      - &apistoforum
+        kind: forum
+        title: "Apistogramma.com forum: common age of brichardi"
+        url: https://apistogramma.com/forum/threads/common-age-of-brichardi.3844
+        accessed: 2026-10-13
+    evidence:
+      - source: *fishipedia
+        value: {min: 5, max: 5}
+      - source: *aquafish
+        value: {min: 8, max: 10}
+      - source: *acquariofilia
+        value: {min: 8, max: 10}
+      - source: *riverpark
+        value: {min: 5, max: 8}
+
+  breeding:
+    value: cave-spawner
+    confidence: high
+    rationale: >-
+      Spawns hidden in a cave or crevice, often one the pair digs out under a stone, with the eggs on
+      the wall or roof; the pair and helpers from earlier broods guard eggs and young (Seriously
+      Fish, TFH, Fishkeeper, AquaInfo, a club breeding report; the Cichlid Room Companion summary
+      confirms a cave breeder with an extended family). All runs agree.
+    sources:
+      - *sf
+      - *tfh
+      - *fishkeeper
+      - *aquainfo
+      - *stigliano
+      - *fishbase
+      - *crc
+    evidence:
+      - source: *sf
+        value: cave-spawner
+      - source: *tfh
+        value: cave-spawner
+      - source: *fishkeeper
+        value: cave-spawner
+      - source: *aquainfo
+        value: cave-spawner
+      - source: *stigliano
+        value: cave-spawner
+      - source: *crc
+        value: cave-spawner
+        note: substrate cave; verification only
+
+  beginnerSuitability:
+    value: moderate
+    confidence: medium
+    rationale: >-
+      Hardy and easy to breed (TFH, AquaInfo, a club breeding report), but it needs stable hard,
+      alkaline water, its families outgrow small tanks and its aggression limits tankmates.
+      Seriously Fish rates it moderate, Fishkeeper and a LiveAquaria retailer sheet likewise, and
+      the Cichlid Room Companion summary aims it at intermediate keepers. All runs agree.
+    sources:
+      - *sf
+      - *fishkeeper
+      - *tfh
+      - *aquainfo
+      - *stigliano
+      - *liveaquaria
+      - *crc
+    evidence:
+      - source: *sf
+        value: moderate
+        note: difficulty 5 of 8
+      - source: *fishkeeper
+        value: moderate
+      - source: *tfh
+        value: easy
+        note: recommended as a first Rift Lake cichlid
+      - source: *aquainfo
+        value: easy
+      - source: *liveaquaria
+        value: moderate
+      - source: *crc
+        value: moderate
+        note: intermediate keepers; verification only
+
+partners:
+  suitable:
+    - species: Cyprichromis leptosoma
+      reason: Swims in schools in open water above the rocks and does not compete for caves.
+      condition: Tank of at least 150 cm with open swimming space.
+    - species: Neolamprologus multifasciatus
+      reason: Stays in its own shell bed on the sand, away from the rock caves.
+      condition: Shell bed placed at the opposite end from the rockwork; tank of at least 120 cm.
+    - species: Julidochromis regani
+      reason: Robust rock-dweller of similar size that can hold its own territory.
+      condition: Tank of at least 150 cm with separate rock piles that break sight lines.
+    - species: Altolamprologus calvus
+      reason: Well armoured, slow rock-dweller that is not bullied out of its crevices.
+      condition: Large tank with ample rockwork; fry of either species may be eaten.
+  unsuitable:
+    - species: Neolamprologus pulcher
+      reason: So closely related that it may be the same species; the two are expected to cross.
+    - species: Neolamprologus savoryi
+      reason: Member of the same princess cichlid complex, which hobby sources say hybridises freely.
+    - species: Tropheus moorii
+      reason: Herbivore that needs a species tank and a low-protein diet; constant fights over rockwork.
+    - species: Cyphotilapia frontosa
+      reason: Large predator that swallows fish of 9 cm.
+    - species: Lake Malawi mbuna
+      reason: Hasty, aggressive rock-dwellers that compete for the same rockwork; many need a plant-based, low-protein diet.
+    - species: Paracheirodon innesi
+      reason: Needs soft acidic water and would be chased or eaten as a tiny fish.
+
+profile:
+  overview:
+    text: >-
+      Neolamprologus brichardi, sold as Princess of Burundi or fairy cichlid, is a slender
+      lamprologine cichlid of about 9 cm from the rocky shores of Lake Tanganyika. Its lyre-shaped
+      tail with white-edged filaments and the dark T-shaped mark on the gill cover make it easy to
+      recognise. It became popular soon after the first exports in the early 1970s and remains a
+      favourite, partly for its looks and partly for its social life: a pair raises one brood after
+      another while older offspring stay and help guard the younger ones. This cooperative breeding
+      has made the species and its close relative N. pulcher model animals in behavioural research;
+      genetic work suggests that the two may be a single species. In the aquarium it is hardy and
+      breeds readily, but a growing family can dominate a whole tank, so planning space and
+      tankmates matters more than with many other small cichlids.
+    sources: [*sf, *tfh, *duftner]
+  habitat:
+    text: >-
+      The species lives only in Lake Tanganyika, mainly along the northern half of the lake in
+      Burundi, Tanzania and the DR Congo, with some populations on southern shores. It is found over
+      rocky slopes, usually between about 5 and 25 m deep, where large numbers of pairs hold
+      neighbouring territories that together look like a loose school. The fish hover a short way
+      above the stones to pick plankton and retreat into crevices when threatened. The water is warm
+      (about 23 to 29 C), very stable, moderately hard and strongly alkaline, with a pH of roughly
+      8.4 to 9.4, a general hardness of 10 to 13 dGH and a carbonate hardness of 15 to 20 dKH.
+    sources: [*sf, *fishbase, *duftner, *plisnier46, *verburg, *cohen]
+  sizeAndGrowth:
+    text: >-
+      Adults reach about 9 cm in total length, not counting the long tail filaments, and females stay
+      a little smaller than males; some aquarium reports mention larger fish of 10 to 12 cm. The body
+      is slim and laterally compressed, which lets the fish slip into narrow cracks between rocks.
+      Fry are tiny at first and need many months to reach adult size, and the fins develop their long
+      extensions only in older fish. Because the species stays small, it is often grouped with dwarf
+      cichlids, yet its behaviour is that of a much larger fish. Size alone is not a safe way to tell
+      males from females, since well-fed females can equal males of the same age.
+    sources: [*fishbase, *sf, *tfh, *aquainfo]
+  husbandry:
+    text: >-
+      A pair can start in a tank of about 80 cm and 110 litres, but the family grows with each brood,
+      so a tank of 120 cm or more is the better long-term choice, and community setups need more room
+      still. Build piles of rock with many caves and cracks over a sandy floor, leaving some open water
+      above them. Keep the water hard and alkaline: the natural range is 23 to 29 C, pH 8.4 to 9.4,
+      10 to 13 dGH and 15 to 20 dKH, while aquarium fish stay healthy from about 22 to 29 C, pH 7.8 to
+      9.4, 9 to 20 dGH and 10 to 20 dKH; the middle twenties suit routine care best. Crushed coral or a
+      Tanganyika salt mix helps to buffer soft tap water. Regular partial water changes keep nitrate
+      low; avoid large, sudden changes in pH or temperature.
+    sources: [*sf, *fishbase, *tfh, *ttt, *drta, *liveaquaria]
+  socialBehavior:
+    text: >-
+      The basic unit is a bonded pair together with its young of several broods. Older juveniles of
+      both sexes help to defend the cave and clean the eggs, and they are tolerated as long as there is
+      room. Unrelated adults of the same species are attacked hard, so a group of youngsters bought to
+      form a pair must be thinned out once a couple has settled. In a crowded tank the breeders start
+      to chase off or kill older offspring and eat the smallest fry. Towards other species the pair
+      defends a territory that grows with the family and can end up covering a large part of the tank.
+      Plenty of rockwork with separated caves helps to spread this pressure.
+    sources: [*sf, *tfh, *aquainfo, *duftner]
+  diet:
+    text: >-
+      In the lake the fish feed mainly on zooplankton and small crustaceans that drift just above the
+      rocks, plus tiny invertebrates picked from the stone surface. In the aquarium they accept almost
+      any suitable food. A good base is a high-quality small pellet or flake, complemented several
+      times a week with frozen or live foods such as Cyclops, Mysis, brine shrimp, Daphnia or insect
+      larvae. A share of plant-based food, for example spirulina flakes, rounds out the menu. Feed
+      small portions once or twice a day so that nothing rots on the bottom. The species is not known
+      to be prone to bloat, but overfeeding still harms water quality.
+    sources: [*fishbase, *sf, *britton, *tfh, *aquainfo]
+  breeding:
+    text: >-
+      This is one of the easiest Tanganyika cichlids to breed. The pair digs out or chooses a cave and
+      lays a few dozen eggs on its ceiling or wall, out of sight. The female usually stays close to the
+      eggs while the male patrols the surroundings. After hatching and a few days in the cave the fry
+      swim out and can take newly hatched brine shrimp and fine powdered food at once. The parents spawn
+      again every few weeks, and the earlier broods stay and help to guard the newer ones. To raise many
+      young, move some fry to a separate tank, because space limits and the parents begin to cull the
+      brood when the tank fills up.
+    sources: [*sf, *tfh, *fishbase, *stigliano]
+  sexing:
+    text: >-
+      Sexing is difficult because both sexes share the same colours and markings. Adult males tend to
+      be slightly larger and develop longer tips on the dorsal fin and longer tail filaments, but these
+      differences overlap and depend on condition and age. The most reliable approach is to watch the
+      behaviour of a group: a pair that has formed stays together, defends a cave and spawns. Venting,
+      a look at the genital papilla when the fish are about to spawn, is another option for experienced
+      keepers. Buying six or more young fish and letting them pair naturally avoids most sexing
+      problems.
+    sources: [*sf, *tfh]
+  compatibility:
+    text: >-
+      Many keepers give this species a tank of its own, which shows its family life best. In a large
+      Tanganyika tank it can share space with fish that use other zones, such as schooling
+      Cyprichromis in open water or shell dwellers on a separate sand area. Robust rock-dwellers like
+      Julidochromis or Altolamprologus are possible when the tank is long and the rockwork is divided
+      into separate areas. Do not mix it with other princess cichlids of the brichardi complex, such as
+      N. pulcher or N. savoryi: hobby sources report that they hybridise freely, and N. pulcher is so
+      close that it may be the same species. Avoid large predators that can swallow it, herbivores such
+      as Tropheus that need species tanks, Malawi mbuna and any soft-water community fish.
+    sources: [*sf, *sfpulcher, *tfh, *duftner, *sturmbauer]
+  problems:
+    text: >-
+      The most common mistake is too small a tank: a pair that starts out peaceful turns into a large
+      family that terrorises tankmates or kills its own older young once space runs out. Mixing it with
+      look-alike relatives leads to hybrids that should never be passed on. Soft or acidic water,
+      unstable pH and rising nitrate cause stress, faded colours and a higher risk of bacterial
+      infections. Sudden large water changes with water of very different chemistry can shock the
+      fish. Fights between unrelated adults cause torn fins and skin injuries that may become
+      infected. Overfeeding fouls the water quickly in a well-stocked tank. Sick fish should be
+      observed closely and a veterinarian or experienced keeper consulted if they stop eating.
+    sources: [*sf, *tfh, *aquainfo, *arch1374]
+
+provenance:
+  runs:
+    - role: generator
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-13
+    - role: checker
+      model: gpt-6.1-sol
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-13
+    - role: adjudicator
+      model: claude-opus-5-5
+      date: 2026-10-13
+  disagreements:
+    - field: features.origin.value.localities
+      proposals:
+        - by: generator
+          value: [Magara, Kasoje, Kigoma, Kalo, Malasa Island, Wapembe, Kapampa, Loasi River North]
+        - by: checker-a
+          value: [Kisoje (Kasoje) Tanzania (type locality), Magara Burundi, Kigoma Tanzania, Luhanga DR Congo]
+        - by: checker-b
+          value: [Kasoje (type locality), Magara (Burundi), northern half of the lake]
+        - by: checker-c
+          value: [Kisoje (type locality), Burundi coast, Tanzanian rocky shores, Congolese rocky shores]
+      decision: [Kasoje (Kisoje) Tanzania (type locality), Magara Burundi, Kigoma Tanzania, Kalo, Malasa Island, Wapembe, Kapampa, Loasi River North]
+      rationale: >-
+        All runs agree on Lake Tanganyika. The list keeps the type locality, the export locality and
+        the sampling sites of fish with the brichardi pattern in Duftner et al. (2007). Luhanga is
+        dropped because no read source places N. brichardi there (it is the type locality of forms
+        now filed under N. pulcher), and general shore descriptions are not localities.
+    - field: features.maxSizeCm
+      proposals:
+        - by: generator
+          value: {male: 9, female: 8}
+        - by: checker-a
+          value: {male: 9, female: 8}
+        - by: checker-b
+          value: {male: 10, female: 8.5}
+        - by: checker-c
+          value: {male: 12, female: 8}
+      decision: {male: 9, female: 8}
+      rationale: >-
+        FishBase, Seriously Fish and TFH give 9 cm after the measured maximum of Marechal and Poll;
+        the 10 cm figures are roundings of care sheets and the 12 cm figures single aquarium reports.
+    - field: features.predation
+      proposals:
+        - by: generator
+          value: 1
+        - by: checker-a
+          value: 1
+        - by: checker-b
+          value: 0
+        - by: checker-c
+          value: 1
+        - by: tiebreaker-1
+          value: 1
+        - by: tiebreaker-2
+          value: 1
+      decision: 1
+      rationale: >-
+        Tally: qualified majority, 5 of 6 votes. Fry eating in crowded tanks is reported by several
+        sources, which is level 1; the vote for 0 rested on the plankton diet alone.
+    - field: features.diet.value.foods
+      proposals:
+        - by: generator
+          value: [zooplankton, small crustaceans, frozen and live invertebrates, small pellets and flakes, some plant matter]
+        - by: checker-a
+          value: [zooplankton, small crustaceans, insect larvae, frozen and live foods, flake and pellet foods]
+        - by: checker-b
+          value: [zooplankton, small crustaceans, brine shrimp, daphnia, mysis, spirulina flake]
+        - by: checker-c
+          value: [zooplankton, small crustaceans, aquatic insect larvae, Artemia, Daphnia, Mysis, suitable prepared foods]
+      decision: [zooplankton, small crustaceans, frozen and live invertebrates, small pellets and flakes, some plant matter]
+      rationale: >-
+        Tally: unanimous, 4 of 4 votes on type invertivore and bloatSensitive false; the decided value
+        carries the food list of the generator. The lists differ only in examples, which the diet
+        section of the profile names.
+    - field: features.aggressionConspecific
+      proposals:
+        - by: generator
+          value: 3
+        - by: checker-a
+          value: 3
+        - by: checker-b
+          value: 2
+        - by: checker-c
+          value: 3
+      decision: 3
+      rationale: >-
+        Surplus adults must be removed and crowded families kill older offspring, which is level 3;
+        the calming with more cover that checker-b cited depends on space, as level 3 describes.
+    - field: features.aggressionHeterospecific
+      proposals:
+        - by: generator
+          value: 3
+        - by: checker-a
+          value: 3
+        - by: checker-b
+          value: 2
+        - by: checker-c
+          value: 3
+      decision: 3
+      rationale: >-
+        TFH, AquaInfo and DRTA report families that dominate or attack larger tankmates; reports of
+        peaceful mixed tanks show variation between pairs.
+    - field: features.territory
+      proposals:
+        - by: generator
+          value: {size: large, breedingOnly: false}
+        - by: checker-a
+          value: {size: large, breedingOnly: false}
+        - by: checker-b
+          value: {size: small, breedingOnly: false}
+        - by: checker-c
+          value: {size: large, breedingOnly: false}
+      decision: {size: large, breedingOnly: false}
+      rationale: >-
+        A family with helpers claims a large part of a tank; the small patch of a single pair in a
+        lake colony does not describe the aquarium situation.
+    - field: features.habitatZones
+      proposals:
+        - by: generator
+          value: [rock]
+        - by: checker-a
+          value: [rock, openWater]
+        - by: checker-b
+          value: [rock, sand]
+        - by: checker-c
+          value: [rock, openWater]
+      decision: [rock, openWater]
+      rationale: >-
+        The species feeds on plankton in the water up to a metre above the rocks; sand is only the
+        recommended substrate under the rockwork.
+    - field: features.coloration
+      proposals:
+        - by: generator
+          value: {baseColors: [brown, yellow], pattern: plain}
+        - by: checker-a
+          value: {baseColors: [brown, white], pattern: plain}
+        - by: checker-b
+          value: {baseColors: [brown, white], pattern: plain}
+        - by: checker-c
+          value: {baseColors: [grey, brown, white], pattern: mixed}
+      decision: {baseColors: [brown, white], pattern: plain}
+      rationale: >-
+        Beige to bronze body with white fin margins and no bars or stripes on the body; yellow is a
+        sheen and the head markings do not make the body pattern mixed.
+    - field: features.minTank
+      proposals:
+        - by: generator
+          value: {volumeL: 110, lengthCm: 80, depthCm: 35}
+        - by: checker-a
+          value: {volumeL: 110, lengthCm: 80, depthCm: 35}
+        - by: checker-b
+          value: {volumeL: 80, lengthCm: 80, depthCm: 30}
+        - by: checker-c
+          value: {volumeL: 150, lengthCm: 120, depthCm: 30}
+      decision: {volumeL: 110, lengthCm: 80, depthCm: 35}
+      rationale: >-
+        The unit is one pair, for which FishBase and Seriously Fish give 80 cm and care sheets about
+        75 to 114 litres; the 120 cm base of checker-c applies to a family group with helpers.
+    - field: features.lifespanYears
+      proposals:
+        - by: generator
+          value: {min: 5, max: 10}
+        - by: checker-a
+          value: {min: 5, max: 8}
+        - by: checker-b
+          value: {min: 8, max: 10}
+        - by: checker-c
+          value: {min: 8, max: 10}
+      decision: {min: 5, max: 10}
+      rationale: >-
+        Hobby sources give 5, 5 to 8 and 8 to 10 years; the range spans them, with low confidence.
+    - field: features.speciesOnly
+      proposals:
+        - by: generator
+          value: false
+        - by: checker-a
+          value: false
+        - by: checker-b
+          value: false
+        - by: checker-c
+          value: true
+        - by: tiebreaker-1
+          value: false
+        - by: tiebreaker-2
+          value: false
+      decision: false
+      rationale: >-
+        Tally: qualified majority, 5 of 6 votes. The sources prefer a species tank but name workable
+        tankmates, which does not meet the rubric flag.
+    - field: features.khDkh.tolerance
+      proposals:
+        - by: generator
+          value: {min: 10, max: 20}
+        - by: checker-a
+          value: {min: 10, max: 20}
+        - by: checker-b
+          value: {min: 10, max: 20}
+        - by: checker-c
+          value: {min: 15, max: 20}
+        - by: tiebreaker-1
+          value: {min: 10, max: 20}
+        - by: tiebreaker-2
+          value: {min: 10, max: 20}
+      decision: {min: 10, max: 20}
+      rationale: >-
+        Tally: qualified majority, 5 of 6 votes. The care sources that state a carbonate hardness
+        reach down to 10 dKH and below; a lower bound of 15 would only repeat the lake values.
+    - field: features.hybridGroups
+      proposals:
+        - by: generator
+          value: [neolamprologus-brichardi-complex]
+        - by: checker-a
+          value: [neolamprologus-brichardi-pulcher, neolamprologus-savoryi-complex]
+        - by: checker-b
+          value: [neolamprologus-brichardi-complex]
+        - by: checker-c
+          value: [neolamprologus-brichardi-complex, neolamprologus-brichardi-pulcher]
+        - by: tiebreaker-1
+          value: [neolamprologus-brichardi-complex]
+        - by: tiebreaker-2
+          value: [neolamprologus-brichardi-pulcher, neolamprologus-brichardi-complex]
+      decision: [neolamprologus-brichardi-complex, neolamprologus-brichardi-pulcher]
+      rationale: >-
+        Tally: conservative, 3 of 6 votes for the top candidate; the decision is the union of the
+        groups named by at least two votes. The savoryi complex of checker-a has the same members as
+        the brichardi complex.
+    - field: hybrid-groups.yaml neolamprologus-brichardi-complex basis
+      proposals:
+        - by: generator
+          value: presumed
+        - by: checker-b
+          value: documented
+        - by: checker-c
+          value: presumed
+        - by: tiebreaker-1
+          value: presumed
+        - by: tiebreaker-2
+          value: presumed
+      decision: presumed
+      rationale: >-
+        Checker-b counted the wild introgression among N. savoryi, N. gracilis and N. marunguensis
+        for the whole complex; crossing is not transitive, and no cross of N. brichardi with a named
+        member under free partner choice is reported.
+    - field: hybrid-groups.yaml neolamprologus-brichardi-complex members
+      proposals:
+        - by: generator
+          value: [N. brichardi, N. pulcher, N. savoryi, N. splendens, N. falcicula, N. gracilis, N. marunguensis]
+        - by: checker-b
+          value: [N. brichardi, N. pulcher, N. savoryi, N. splendens, N. falcicula, N. gracilis]
+        - by: checker-c
+          value: [N. brichardi, N. pulcher, N. falcicula, N. gracilis, N. helianthus, N. savoryi, N. splendens]
+        - by: tiebreaker-1
+          value: [N. brichardi, N. pulcher, N. savoryi, N. splendens, N. falcicula, N. gracilis, N. marunguensis]
+        - by: tiebreaker-2
+          value: [N. brichardi, N. pulcher, N. savoryi, N. splendens, N. falcicula, N. gracilis, N. marunguensis]
+      decision: [N. brichardi, N. pulcher, N. savoryi, N. splendens, N. falcicula, N. gracilis, N. marunguensis]
+      rationale: >-
+        The Catalog of Fishes lists N. helianthus as a synonym of N. splendens, so it is covered;
+        N. marunguensis belongs to the same clade of helper species and has a hybrid origin within
+        it, so it is kept.
+    - field: hybrid-groups.yaml neolamprologus-brichardi-pulcher basis
+      proposals:
+        - by: checker-a
+          value: documented
+        - by: checker-c
+          value: documented
+        - by: tiebreaker-2
+          value: documented
+      decision: presumed
+      rationale: >-
+        No readable text reports a hybrid fish: Duftner et al. (2007) offer hybridisation only as
+        one of two explanations and note that the forms never meet, and the brichardi-pulcher
+        hybridisation of Gante et al. (2016) is known only from a one-sentence summary by Bouckaert
+        et al. (2019). A report with unclear circumstances gives a presumed group.
