@@ -1,0 +1,1391 @@
+schemaVersion: 1
+id: protomelas-sp-steveni-taiwan
+legacyIds: [825]
+status: undescribed
+
+taxonomy:
+  validName: "Protomelas sp. 'Steveni Taiwan'"
+  genus: Protomelas
+  species: null
+  author: null
+  source: &cof
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes, species of the genus Protomelas (22 nominal species)"
+    url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Protomelas
+    accessed: 2026-10-13
+  synonyms:
+    - name: "Protomelas sp. 'Taiwan Reef'"
+      note: Trade name after the reef where the fish was found, which the local fishermen call Taiwanee.
+    - name: "Protomelas fenestratus 'Taiwan Reef'"
+      note: >-
+        Trade label that sells the fish as a form of P. fenestratus; Konings and Seriously Fish
+        regard it as a distinct, undescribed species.
+    - name: Protomelas steveni
+      note: >-
+        Trade label without nomenclatural standing. The Catalog of Fishes lists no nominal species
+        steveni in Protomelas; the only available name with this epithet is Aulonocara steveni
+        Meyer, Riehl and Zetzsche 1987, an unrelated peacock and a synonym of Aulonocara
+        stuartgranti.
+  legacyNames:
+    - "Protomelas spec. \"steveni Taiwan\""
+  note: >-
+    The Catalog of Fishes (genus Protomelas, accessed 2026-10-13) lists 22 nominal species, 17 of
+    them valid, and none named steveni or matching this fish, so it remains undescribed. Konings
+    discovered it at Taiwanee Reef and placed it in the "Steveni" group, the hobby name for
+    P. taeniolatus and its close relatives. Its anatomy is closest to P. taeniolatus, but it has a
+    much larger eye and a different ground colour, while the broad vertical bars recall
+    P. fenestratus; unlike that species it was not seen blowing water into the biocover to
+    expose prey. Seriously Fish, the Malawi Cichlid Homepage and the Cichlid Room Companion treat
+    it as undescribed as well. Aulonocara steveni, a synonym of Aulonocara stuartgranti in the
+    Catalog of Fishes, is a different fish. FishBase has no entry for this form.
+
+names:
+  trade:
+    en:
+      - Taiwan Reef
+      - Taiwan Reef Cichlid
+      - Taiwanee Reef
+      - Steveni Taiwan
+      - "Protomelas sp. 'Steveni Taiwan'"
+    de:
+      - Taiwan Reef
+      - "Protomelas sp. 'Steveni Taiwan'"
+
+variants:
+  - name: Taiwan (Taiwanee) Reef
+    kind: locality
+    note: Population at the reef that gave the trade name, an isolated offshore reef north of Chizumulu Island in Mozambican waters.
+  - name: Chimoto Red
+    kind: locality
+    note: Nearly identical population from Higga Reef, Tanzania, thought to be the same species.
+  - name: Chimoto Yellow
+    kind: locality
+    note: Nearly identical population from Ngkuyo Island at Mbamba Bay, Tanzania, thought to be the same species.
+  - name: Albino
+    kind: color-morph
+    note: Captive line; albino fry have appeared in aquarium spawns.
+
+features:
+  origin:
+    value:
+      continent: Africa
+      region: Lake Malawi
+      waterbody: Lake Malawi
+      localities:
+        - Taiwan (Taiwanee) Reef, Mozambican waters north of Chizumulu Island
+        - Higga Reef, Tanzania
+        - Ngkuyo Island (Mbamba Bay Island), Tanzania
+    confidence: high
+    rationale: >-
+      Endemic to Lake Malawi. Konings found the fish on Taiwanee Reef, an isolated rocky reef
+      north of Chizumulu Island that is cut off from the island by water deeper than 100 m; he
+      gives the distance to Chizumulu as about 7 km, while Oliver places the reef about 15 km
+      north of the island and some 30 km west of the Mozambican shore. Almost identical fish from
+      Higga Reef and Ngkuyo Island near Mbamba Bay on the Tanzanian coast are thought to be the
+      same species. The public page of the Cichlid Room Companion confirms the reef in
+      Mozambique.
+    sources:
+      - &pfk
+        kind: literature
+        title: "Konings, A. (2009). Protomelas sp. 'Steveni Taiwan', interview feature. Practical Fishkeeping, September 2009 issue (online version)."
+        url: https://www.practicalfishkeeping.co.uk/features/protomelas-sp---steveni-taiwan-/
+        accessed: 2026-10-13
+      - &oliver
+        kind: database
+        title: "Oliver, M. K.: Malawi Cichlid Homepage, Protomelas sp. 'steveni taiwan' (species page with notes after Konings 1995, updated 16 March 2005)"
+        url: https://www.malawicichlids.com/mw08087b.htm
+        accessed: 2026-10-13
+      - &sf
+        kind: database
+        title: "Seriously Fish: Protomelas sp. steveni 'Taiwan reef'"
+        url: https://www.seriouslyfish.com/species/protomelas-sp-steveni-taiwan-reef/
+        accessed: 2026-10-13
+      - &crc
+        kind: database
+        title: "Cichlid Room Companion: Protomelas sp. 'steveni taiwan' (public species page, verification only)"
+        url: https://cichlidae.com/species.php?id=jzUCCyfG0l8Mj321I_DCGg
+        accessed: 2026-10-13
+    evidence:
+      - source: *pfk
+        value: {region: Lake Malawi, localities: [Taiwanee Reef, Higga Reef, Ngkuyo Island]}
+        note: reef about 7 km north of Chizumulu
+      - source: *oliver
+        value: {region: Lake Malawi, localities: [Taiwan Reef, Higga Reef, Mbamba Bay Island]}
+        note: reef about 15 km north of Chizumulu
+      - source: *sf
+        value: {region: Lake Malawi, localities: [Taiwan Reef, Higga Reef, Mbamba Bay Island]}
+
+  temperatureC:
+    value: {min: 21, max: 29}
+    confidence: high
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    rationale: >-
+      The species is endemic to Lake Malawi, so the natural range is the measured range of the
+      lake. Eccles found 21 °C inshore in the cool, windy season and about 27 °C in the upper 60 m
+      by May; Vollmer and co-workers report about 23.5 °C in the winter mixed layer and 28 °C at
+      the surface in summer, and later surveys found up to 29 °C at the surface. Territorial males
+      live mostly below 15 to 20 m, where the water lies in the middle of this range.
+    sources: &lakeSources
+      - &branchu
+        kind: literature
+        title: >-
+          Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M.,
+          Pons-Branchu, E. et al. (2010). Hydrochemistry (major and trace elements)
+          of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global
+          considerations. Hydrology and Earth System Sciences Discussions 7,
+          4371-4409.
+        url: https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf
+        accessed: 2026-10-12
+      - &vdb
+        kind: literature
+        title: >-
+          Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the
+          inland fishery resources of Africa, Vol. 1, CIFA Technical Paper 18/1,
+          FAO. Lake Malawi/Nyasa: physical and chemical data after Jackson et al.
+          (1963) and Talling and Talling (1965).
+        url: https://www.fao.org/4/t0473e/T0473E05.htm
+        accessed: 2026-10-12
+      - &eccles
+        kind: literature
+        title: >-
+          Eccles, D. H. (1974). An outline of the physical limnology of Lake
+          Malawi (Lake Nyasa). Limnology and Oceanography 19(5), 730-742
+          (abstract).
+        url: https://doi.org/10.4319/lo.1974.19.5.0730
+        accessed: 2026-10-12
+      - &vollmer2005
+        kind: literature
+        title: >-
+          Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman,
+          J. D., Edmond, J. M., Eccles, D. H. and Weiss, R. F. (2005). Deep-water
+          warming trend in Lake Malawi, East Africa. Limnology and Oceanography
+          50(2), 727-732.
+        url: https://www.dora.lib4ri.ch/empa/dload/empa:1253/PDF/view
+        accessed: 2026-10-12
+      - kind: literature
+        title: >-
+          Vollmer, M. K., Weiss, R. F. and Bootsma, H. A. (1999). Lake
+          Malawi/Nyasa deep water renewal. In: Bootsma, H. A. and Hecky, R. E.
+          (eds.), Water Quality Report, SADC/GEF Lake Malawi/Nyasa Biodiversity
+          Conservation Project, chapter 4.
+        url: https://sites.uwm.edu/hbootsma/files/2020/11/Ch4-Lake-Internal-Mixing.pdf
+        accessed: 2026-10-12
+      - kind: literature
+        title: >-
+          Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. PhD
+          dissertation, University of Wisconsin-Milwaukee.
+        url: https://minds.wisconsin.edu/handle/1793/91765
+        accessed: 2026-10-12
+    evidence:
+      - source: *eccles
+        value: {min: 21, max: 27}
+        note: cool-season inshore minimum and upper 60 m in May
+      - source: *vollmer2005
+        value: {min: 23.5, max: 28}
+        note: winter mixed layer to summer surface water
+    tolerance:
+      value: {min: 21, max: 29}
+      confidence: medium
+      verification:
+        method: unanimous
+        votes: {agree: 3, total: 3}
+      rationale: >-
+        All three votes set the tolerance to 21 to 29 °C. Care sheets for this fish recommend a
+        narrower, steady band of about 24 to 28 °C (Seriously Fish, the Cichlid-Forum profile and
+        hobby sites), and the general Malawi care sheet of OATA gives 23 to 27 °C. The tolerance
+        must contain the lake range, and the fish lives through 21 to 29 °C over the seasons in
+        the wild, so the tolerance equals the natural range; no source supports keeping it
+        permanently outside it. Keepers should aim for the middle, about 24 to 27 °C.
+      sources:
+        - *sf
+        - &cf
+          kind: database
+          title: "Cichlid-Forum species profile: Protomelas sp. 'Steveni Taiwan' (Taiwan Reef)"
+          url: https://www.cichlid-forum.com/threads/protomelas-sp-steveni-taiwan-taiwan-reef.457352/
+          accessed: 2026-10-13
+        - &oata
+          kind: database
+          title: "OATA (Ornamental Aquatic Trade Association): How to look after African Malawi cichlids (care sheet)"
+          url: https://ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-freshwater-fish/how-to-look-after-african-malawi-cichlids/
+          accessed: 2026-10-13
+        - &fbTaen
+          kind: database
+          title: "FishBase species summary: Protomelas taeniolatus (closest described relative)"
+          url: https://www.fishbase.se/summary/Protomelas-taeniolatus.html
+          accessed: 2026-10-13
+        - *eccles
+        - &fishprofiles
+          kind: website
+          title: "FishProfiles.com: Protomelas steveni (Taiwan Reef), user-submitted profile"
+          url: https://fishprofiles.com/profiles/freshwater/Cichlids/Protomelas_steveni
+          accessed: 2026-10-13
+        - &guidarium
+          kind: website
+          title: "Guidarium: Taiwan Reef Cichlid"
+          url: https://guidarium.com/fishes/taiwan-reef-cichlid
+          accessed: 2026-10-13
+        - &fishipedia
+          kind: website
+          title: "Fishipedia: Protomelas sp. Steveni"
+          url: https://www.fishipedia.fr/fr/poissons/protomelas-sp-steveni
+          accessed: 2026-10-13
+      evidence:
+        - source: *sf
+          value: {min: 24, max: 28}
+          note: aquarium recommendation for this species; 25 to 26.5 °C for breeding
+        - source: *cf
+          value: {min: 25.6, max: 27.8}
+          note: aquarium recommendation, converted from 78 to 82 °F
+        - source: *oata
+          value: {min: 23, max: 27}
+          note: general care sheet for Malawi cichlids
+        - source: *fbTaen
+          value: {min: 24, max: 26}
+          note: closest described relative, not this species
+        - source: *eccles
+          value: {min: 21, max: 27}
+          note: natural lake range the species lives in
+        - source: *fishprofiles
+          value: {min: 25, max: 28}
+          note: aquarium recommendation
+        - source: *guidarium
+          value: {min: 24, max: 28}
+          note: aquarium recommendation
+        - source: *fishipedia
+          value: {min: 23, max: 28}
+          note: general care page of low weight
+
+  ph:
+    value: {min: 7.7, max: 8.6}
+    confidence: high
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    rationale: >-
+      Lake Malawi endemic; the natural pH is the lake range. Surface water measured by Jackson and
+      co-workers in the 1960s (compiled by FAO) lies at 7.7 to 8.6; Branchu and co-workers give
+      7.5 to 8.5 for the whole water column, the lower values coming from deep water below the
+      habitat of the fish.
+    sources: *lakeSources
+    evidence:
+      - source: *vdb
+        value: {min: 7.7, max: 8.6}
+        note: surface water, 1960s measurements
+      - source: *branchu
+        value: {min: 7.5, max: 8.5}
+        note: whole water column including deep water
+    tolerance:
+      value: {min: 7.6, max: 8.8}
+      confidence: medium
+      verification:
+        method: unanimous
+        votes: {agree: 3, total: 3}
+      rationale: >-
+        All three votes agree on 7.6 to 8.8, the range Seriously Fish gives for this fish; the
+        Cichlid-Forum profile and two hobby sites give 7.8 to 8.6, OATA 8.0 to 8.6 for Malawi
+        cichlids in general and FishBase 8.0 for the related P. fenestratus. The widest
+        well-sourced range contains the lake range and is taken as the tolerance. For breeding
+        Seriously Fish advises about 8.0 to 8.5.
+      sources:
+        - *sf
+        - *cf
+        - *oata
+        - &fbFen
+          kind: database
+          title: "FishBase species summary: Protomelas fenestratus"
+          url: https://www.fishbase.se/summary/Protomelas-fenestratus.html
+          accessed: 2026-10-13
+        - *fishprofiles
+        - *guidarium
+      evidence:
+        - source: *sf
+          value: {min: 7.6, max: 8.8}
+          note: aquarium recommendation for this species
+        - source: *cf
+          value: {min: 7.8, max: 8.6}
+          note: aquarium recommendation
+        - source: *oata
+          value: {min: 8.0, max: 8.6}
+          note: general care sheet for Malawi cichlids
+        - source: *fbFen
+          value: {min: 8.0, max: 8.0}
+          note: related species, aquarium data
+        - source: *fishprofiles
+          value: {min: 7.8, max: 8.6}
+          note: aquarium recommendation
+        - source: *guidarium
+          value: {min: 7.8, max: 8.6}
+          note: aquarium recommendation
+
+  ghDgh:
+    value: {min: 3, max: 5}
+    confidence: high
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    rationale: >-
+      Lake Malawi endemic; the natural total hardness is the lake range, calculated from measured
+      calcium and magnesium: 4.2 to 4.6 dGH in the upper 50 m of the north basin (Branchu and
+      co-workers) and 3.2 to 4.9 dGH in the 1960s titrations compiled by FAO. The lake is soft;
+      care sheets that call it hard confuse hardness with alkalinity.
+    sources: *lakeSources
+    evidence:
+      - source: *branchu
+        value: {min: 4.2, max: 4.6}
+        note: upper 50 m of the north basin, from calcium and magnesium
+      - source: *vdb
+        value: {min: 3.2, max: 4.9}
+        note: 1960s titrations, from calcium and magnesium
+    tolerance:
+      value: {min: 3, max: 20}
+      confidence: low
+      verification:
+        method: qualified-majority
+        votes: {agree: 4, total: 5}
+      rationale: >-
+        Four of five votes (checker-a, checker-b and both tie-breakers) set 3 to 20 dGH; the
+        generator proposed 3 to 25 dGH. The lower bound is the soft lake water the fish lives in.
+        For the upper bound, Seriously Fish gives 10 to 25 dGH, but uses the same generic figure
+        for P. taeniolatus and P. fenestratus; FishBase lists 9 to 19 for P. fenestratus, OATA 12
+        to 18 for Malawi cichlids in general and hobby sites 10 to 18 or 10 to 20. The decided
+        upper bound follows the bulk of these values and is narrower than the 25 dGH of Seriously
+        Fish. The Cichlid-Forum profile only asks for hard water without a figure. No source
+        tested the limits, hence low confidence.
+      sources:
+        - *sf
+        - &sfTaen
+          kind: database
+          title: "Seriously Fish: Protomelas taeniolatus"
+          url: https://www.seriouslyfish.com/species/protomelas-taeniolatus/
+          accessed: 2026-10-13
+        - *fbFen
+        - *oata
+        - *branchu
+        - *guidarium
+        - *fishprofiles
+        - &gensou
+          kind: website
+          title: "Gensou: Protomelas Steveni Taiwan Reef care guide"
+          url: https://gensou.sg/?p=32658
+          accessed: 2026-10-13
+        - *fishipedia
+      evidence:
+        - source: *sf
+          value: {min: 10, max: 25}
+          note: aquarium recommendation for this species
+        - source: *sfTaen
+          value: {min: 10, max: 25}
+          note: relative; the same range is given for P. fenestratus
+        - source: *fbFen
+          value: {min: 9, max: 19}
+          note: related species, given as dH
+        - source: *oata
+          value: {min: 12, max: 18}
+          note: general care sheet for Malawi cichlids
+        - source: *branchu
+          value: {min: 4.2, max: 4.6}
+          note: lake water the species lives in
+        - source: *guidarium
+          value: {min: 10, max: 20}
+          note: aquarium recommendation
+        - source: *fishprofiles
+          value: {min: 10, max: 20}
+          note: user-submitted profile
+        - source: *gensou
+          value: {min: 10, max: 18}
+          note: aquarium recommendation
+        - source: *fishipedia
+          value: {min: 8, max: 15}
+          note: general care page of low weight
+
+  khDkh:
+    value: {min: 5, max: 8}
+    confidence: high
+    rationale: >-
+      Lake Malawi endemic; the natural carbonate hardness is the lake range, calculated from the
+      measured alkalinity: 6.5 to 6.9 dKH in the profiles of Branchu and co-workers and 5.6 to 7.3
+      dKH in the 1960s data compiled by FAO. Bicarbonate is partly balanced by sodium, so the
+      carbonate hardness exceeds the total hardness.
+    sources: *lakeSources
+    evidence:
+      - source: *branchu
+        value: {min: 6.5, max: 6.9}
+        note: north basin profiles, from alkalinity
+      - source: *vdb
+        value: {min: 5.6, max: 7.3}
+        note: 1960s titrations, from alkalinity
+    tolerance:
+      value: {min: 5, max: 12}
+      confidence: low
+      verification:
+        method: qualified-majority
+        votes: {agree: 4, total: 5}
+      rationale: >-
+        Four of five votes agree on an upper bound of 10 to 12 dKH (checker-a proposed 5 to 10,
+        checker-b and both tie-breakers 5 to 12), which gives 5 to 12 dKH; the generator proposed
+        5 to 15. No species database states a carbonate hardness for this fish or its relatives.
+        OATA advises 10 to 15 dKH for Malawi cichlids in general, wider than the decided range; a
+        care guide for this fish asks for 8 to 12 dKH and one for P. taeniolatus for 6 to 10. The
+        lower bound is the lake value. Stable buffering matters more than the exact figure,
+        because the pH depends on it.
+      sources:
+        - *oata
+        - *branchu
+        - *vdb
+        - *gensou
+        - &gensouTaen
+          kind: website
+          title: "Gensou: Protomelas taeniolatus care guide"
+          url: https://gensou.sg/protomelas-taeniolatus-care-guide/
+          accessed: 2026-10-13
+        - kind: model-knowledge
+          title: General aquarium practice for buffering Lake Malawi tanks
+      evidence:
+        - source: *oata
+          value: {min: 10, max: 15}
+          note: general care sheet for Malawi cichlids
+        - source: *branchu
+          value: {min: 6.5, max: 6.9}
+          note: lake water the species lives in
+        - source: *vdb
+          value: {min: 5.6, max: 7.3}
+          note: lake water, 1960s titrations
+        - source: *gensou
+          value: {min: 8, max: 12}
+          note: aquarium recommendation for this species
+        - source: *gensouTaen
+          value: {min: 6, max: 10}
+          note: close relative; aquarium recommendation
+        - source:
+            kind: model-knowledge
+            title: General aquarium practice for buffering Lake Malawi tanks
+          value: {min: 8, max: 12}
+          note: common buffering target for Malawi tanks, no species-specific source
+
+  maxSizeCm:
+    value: {male: 17, female: 14}
+    confidence: medium
+    rationale: >-
+      Seriously Fish gives 14 cm standard length, about 17 cm total length; the Cichlid-Forum
+      profile lists 7 inches (about 18 cm) and FishProfiles 18 cm. Konings writes that the fish
+      reaches nearly 20 cm, which describes the largest males rather than typical adults.
+      Seriously Fish and the hobby sites agree that males grow clearly larger than females;
+      Guidarium gives 17 cm for males and 14 cm for females. Retailers quoting 12 to 15 cm
+      probably describe fish that have not finished growing.
+    sources:
+      - *sf
+      - *cf
+      - *pfk
+      - *fishprofiles
+      - *guidarium
+      - &riverpark
+        kind: website
+        title: "Riverpark Aquatics: Taiwan Reef Cichlid (Protomelas sp. Steveni Taiwan), retailer care guide"
+        url: https://riverparkaquatics.co.uk/taiwan-reef-cichlid-protomelas-sp-steveni-taiwan
+        accessed: 2026-10-13
+    evidence:
+      - source: *sf
+        value: {male: 17, female: 17}
+        note: 14 cm standard length converted to total length, sexes not separated
+      - source: *cf
+        value: {male: 18, female: 18}
+        note: 7 inches, sexes not separated
+      - source: *pfk
+        value: {male: 20, female: 20}
+        note: nearly 20 cm, largest fish
+      - source: *fishprofiles
+        value: {male: 18, female: 18}
+      - source: *guidarium
+        value: {male: 17, female: 14}
+      - source: *riverpark
+        value: {male: 15, female: 12}
+        note: retailer range of 12 to 15 cm
+
+  predation:
+    value: 1
+    confidence: low
+    verification:
+      method: conservative
+      votes: {agree: 3, total: 5}
+    rationale: >-
+      The votes did not settle: the generator, checker-a and tiebreaker-1 proposed level 1,
+      checker-b and tiebreaker-2 level 0, so the conservative rule takes the higher level 1 with
+      low confidence. No source records fish in the diet of this species or its relatives: it
+      feeds on the biocover of the rocks and on zooplankton in open water (Cichlid-Forum profile,
+      Seriously Fish), and FishBase describes P. taeniolatus as an aufwuchs feeder that also
+      takes small invertebrates and zooplankton; Dierickx and Snoeks describe the genus as
+      short-jawed, with only the paedophage P. krampus specialised on eggs and larvae. Levels 2
+      and 3 are therefore excluded. The case for level 1 is that an adult of about 17 cm that
+      takes small animal prey will snap up free-swimming fry within reach; a hobby site lists the
+      species as a fry predator and a keeper in the cichlids.com archive saw adults lunge at
+      freshly released fry, both of low weight.
+    sources:
+      - *sf
+      - *cf
+      - *fbTaen
+      - *fbFen
+      - *sfTaen
+      - &ejt
+        kind: literature
+        title: "Dierickx, K. and Snoeks, J. (2020). Protomelas krampus, a new paedophagous cichlid from Lake Malawi. European Journal of Taxonomy 672 (genus description)."
+        url: https://doi.org/10.5852/ejt.2020.672
+        accessed: 2026-10-13
+      - *pfk
+      - *guidarium
+      - &arch14612
+        kind: archive
+        title: cichlids.com forum thread 14612
+        url: https://www.cichlids.com/disc/read.php?2,14612
+        accessed: 2026-10-13
+    evidence:
+      - source: *sf
+        value: 1
+        note: takes zooplankton in open water and live foods in the tank; no fish mentioned
+      - source: *cf
+        value: 0
+        note: herbivore feeding on biocover, peaceful towards other species
+      - source: *fbTaen
+        value: 0
+        note: relative feeds on aufwuchs, small invertebrates and zooplankton
+      - source: *fbFen
+        value: 0
+        note: relative picks food items from sediment-covered rock
+      - source: *sfTaen
+        value: 0
+        note: relative described as peaceful, no meaty foods advised
+      - source: *ejt
+        value: 0
+        note: short jaws in the genus; only the paedophage P. krampus specialises on eggs
+      - source: *guidarium
+        value: 1
+        note: lists the species as a fry predator
+      - source: *arch14612
+        value: 1
+        note: keeper saw adults lunging at freshly released fry
+
+  diet:
+    value:
+      type: aufwuchs
+      bloatSensitive: true
+      foods:
+        - spirulina-based flakes and pellets
+        - blanched vegetables
+        - algae and biocover
+        - zooplankton and small crustaceans such as Mysis, Daphnia and Artemia as a supplement
+    confidence: low
+    verification:
+      method: conservative
+      votes: {agree: 3, total: 5}
+    rationale: >-
+      The votes did not settle: the generator proposed aufwuchs with bloat sensitivity, checker-a
+      and both tie-breakers omnivore with bloat sensitivity and checker-b omnivore without it. The
+      conservative rule takes the strictest type, aufwuchs, and sets bloat sensitivity because
+      four votes report it; the confidence is low. Most votes and several sources describe a
+      mixed natural diet: the Cichlid-Forum profile names algae-rich biocover as the main food,
+      Seriously Fish describes fish rising into open water for zooplankton and asks for live and
+      frozen food next to vegetable matter, and FishBase gives the closest relative P.
+      taeniolatus aufwuchs plus small invertebrates and zooplankton. The aufwuchs classification
+      is the cautious reading for tank planning: it calls for a plant-based, low-protein staple,
+      which suits this fish, with animal food as a supplement. Bloat sensitivity rests on
+      Seriously Fish, which calls meaty foods harmful to P. taeniolatus in the long run, and on
+      hobby pages for this fish that warn of bloat on rich protein.
+    sources:
+      - *cf
+      - *sf
+      - *fbTaen
+      - *sfTaen
+      - *fbFen
+      - &sfFen
+        kind: database
+        title: "Seriously Fish: Protomelas fenestratus"
+        url: https://www.seriouslyfish.com/species/protomelas-fenestratus/
+        accessed: 2026-10-13
+      - *pfk
+      - *guidarium
+      - *fishprofiles
+      - &imperial
+        kind: website
+        title: "Imperial Tropicals: Protomelas Taiwanee Reef Cichlid (retailer product page)"
+        url: https://imperialtropicals.com/products/protomelas-taiwanee-reef-cichlid
+        accessed: 2026-10-13
+      - *gensou
+    evidence:
+      - source: *cf
+        value: {type: aufwuchs}
+        note: herbivore; biocover with algae as the main food in the wild
+      - source: *sf
+        value: {type: omnivore}
+        note: zooplankton in nature; live, frozen and vegetable food in the tank; no bloat statement
+      - source: *fbTaen
+        value: {type: aufwuchs}
+        note: closest relative; aufwuchs, also small invertebrates and zooplankton when plentiful
+      - source: *sfTaen
+        value: {type: aufwuchs, bloatSensitive: true}
+        note: relative; high-fibre diet, meaty foods harmful in the long run
+      - source: *fbFen
+        value: {type: omnivore}
+        note: relative picks food items from sediment on rock
+      - source: *sfFen
+        value: {type: omnivore}
+        note: relative; live and frozen food as the bulk of the captive diet
+      - source: *guidarium
+        value: {type: aufwuchs, bloatSensitive: true}
+        note: mainly herbivorous, prone to bloat on heavy protein
+      - source: *fishprofiles
+        value: {type: aufwuchs}
+        note: listed as herbivore
+      - source: *imperial
+        value: {type: omnivore, bloatSensitive: true}
+        note: grazer in nature, varied low-protein diet to avoid bloat
+      - source: *gensou
+        value: {type: invertivore, bloatSensitive: true}
+        note: small invertebrates and zooplankton in the wild; overfeeding causes bloat
+
+  aggressionConspecific:
+    value: 2
+    confidence: medium
+    rationale: >-
+      Males are territorial: in the wild three or four dominant males share a large rock and
+      challenge each other at the edges, and Seriously Fish advises a very large tank for more
+      than one male and a harem to spread the pressure of a courting male. Konings recommends at
+      least two females per male so that no single female is harassed, and the Cichlid-Forum
+      profile rates the fish only mildly aggressive towards its own kind. With one male, several
+      females and enough rockwork the result is a clear hierarchy with regular chasing and rare
+      injuries, which is level 2; with a single female, two males or too little space injuries
+      become likely.
+    sources:
+      - *sf
+      - *pfk
+      - *oliver
+      - *cf
+    evidence:
+      - source: *sf
+        value: 3
+        note: males very territorial and forceful when courting; one male per normal tank
+      - source: *cf
+        value: 2
+        note: mildly aggressive towards conspecifics
+      - source: *pfk
+        value: 2
+        note: more females than males to protect single females
+
+  aggressionHeterospecific:
+    value: 2
+    confidence: medium
+    rationale: >-
+      Seriously Fish calls it gentle and unsuited to boisterous mbuna, but a breeding male keeps
+      other species out of his territory; the Cichlid-Forum profile rates it peaceful towards
+      other species, and Konings advises only against larger or feistier tankmates. Keepers in
+      the cichlids.com archive report it with Labidochromis, Aulonocara and Cyrtocara moorii.
+      Chasing other fish out of the territory without injuries is level 2.
+    sources:
+      - *sf
+      - *cf
+      - *pfk
+      - &arch15767
+        kind: archive
+        title: cichlids.com forum thread 15767
+        url: https://www.cichlids.com/disc/read.php?2,15767
+        accessed: 2026-10-13
+    evidence:
+      - source: *sf
+        value: 2
+        note: gentle, but territorial males keep other fish out of their area
+      - source: *cf
+        value: 1
+        note: peaceful
+      - source: *pfk
+        value: 1
+        note: avoid larger or boisterous tankmates
+      - source: *arch15767
+        value: 1
+        note: kept with labs, peacocks and C. moorii
+
+  territory:
+    value: {size: large, breedingOnly: true}
+    confidence: medium
+    rationale: >-
+      In nature territorial males defend the tops of rocks over areas of about 1.5 to 1.8 m
+      (Seriously Fish, Konings via Oliver), and Seriously Fish requires a very large tank for a
+      second male, so the territory takes a large share of a 150 cm tank. Seriously Fish states
+      that the fish becomes territorial when breeding and that the male then claims a flat stone
+      or a pit in the sand; the territories seen on the reef are the display sites of breeding
+      males, so the flag is set. In a harem tank a ripe male displays much of the time.
+    sources:
+      - *sf
+      - *pfk
+      - *oliver
+    evidence:
+      - source: *sf
+        value: {size: large, breedingOnly: true}
+        note: territorial when breeding; wild territories of 5 to 6 feet
+      - source: *oliver
+        value: {size: large}
+        note: three to four dominant males on each rock of about 9 m
+
+  habitatZones:
+    value: [rock, openWater]
+    confidence: medium
+    rationale: >-
+      A rock dweller of an isolated, sediment-free offshore reef: males hold the tops of rocks,
+      mostly below 15 to 20 m, females roam in loose groups in shallower water, and the fish rises
+      into the water column to feed on zooplankton. In the tank it needs rockwork with caves and
+      flat surfaces plus open swimming space. Sand is the recommended substrate and a male may dig
+      a spawning pit in it, but the fish does not use sand areas in the wild.
+    sources:
+      - *pfk
+      - *oliver
+      - *sf
+      - *cf
+    evidence:
+      - source: *sf
+        value: [rock, openWater]
+        note: rocky reefs, rises into the water column for zooplankton
+      - source: *cf
+        value: [rock]
+        note: sediment-free rocky habitat
+      - source: *pfk
+        value: [rock]
+        note: territories on rock tops at depth
+
+  social:
+    value: {structure: harem, ratio: 3}
+    confidence: high
+    rationale: >-
+      All sources advise one male with several females: Konings gives two females per male as
+      the minimum and more as better, Oliver recommends at least three, and Seriously Fish
+      advises several females per male, a very large tank for a second male and a group of six to
+      eight young fish as the start.
+    sources:
+      - *pfk
+      - *oliver
+      - *sf
+      - *guidarium
+    evidence:
+      - source: *pfk
+        value: {structure: harem, ratio: 2}
+        note: minimum, more females preferred
+      - source: *oliver
+        value: {structure: harem, ratio: 3}
+      - source: *sf
+        value: {structure: harem, ratio: 3}
+        note: several females per male
+
+  speciesOnly:
+    value: false
+    confidence: high
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+    rationale: >-
+      All three votes agree. Seriously Fish recommends Aulonocara, Copadichromis and other
+      peaceful Malawi species as tankmates, the Cichlid-Forum profile rates the fish peaceful
+      towards other species, and Konings names the small mbuna Pseudotropheus saulosi as its
+      neighbour on the reef and advises only against larger or boisterous company. A species tank
+      is suggested for the best breeding results, which is a breeding tip rather than a keeping
+      requirement; keepers in the cichlids.com archive report long-term community tanks.
+    sources:
+      - *sf
+      - *cf
+      - *pfk
+      - *arch15767
+    evidence:
+      - source: *sf
+        value: false
+        note: suitable with Aulonocara, Copadichromis and other peaceful Malawi species
+      - source: *cf
+        value: false
+        note: peaceful towards other species
+      - source: *pfk
+        value: false
+        note: avoid larger or boisterous tankmates only
+      - source: *arch15767
+        value: false
+        note: kept with yellow labs, C. moorii, Aulonocara and others
+
+  hybridGroup:
+    value: protomelas-taeniolatus-complex
+    confidence: medium
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+    rationale: >-
+      All three votes agree. The fish belongs to the "Steveni" group around P. taeniolatus:
+      Konings found its anatomy closest to P. taeniolatus and its broad bars similar to
+      P. fenestratus, and the trade sells it as a form of P. fenestratus. Seriously Fish warns on
+      the pages of this fish, of P. fenestratus and of P. taeniolatus that these related species
+      and colour forms may hybridise and must not be kept together, and the P. fenestratus page
+      names this fish explicitly. The plain barred females are hard to tell apart. No documented
+      cross was found, so the membership rests on these warnings and the close relationship.
+    sources:
+      - *sf
+      - *sfFen
+      - *sfTaen
+      - *pfk
+      - &arch14033
+        kind: archive
+        title: cichlids.com forum thread 14033
+        url: https://www.cichlids.com/disc/read.php?2,14033
+        accessed: 2026-10-13
+    evidence:
+      - source: *sf
+        value: protomelas-taeniolatus-complex
+        note: names P. fenestratus and P. taeniolatus as similar species that may hybridise with it
+      - source: *sfFen
+        value: protomelas-taeniolatus-complex
+        note: names the Taiwan Reef fish among the forms that may hybridise with P. fenestratus
+      - source: *sfTaen
+        value: protomelas-taeniolatus-complex
+        note: warns that P. taeniolatus, P. fenestratus and their morphs may hybridise
+      - source: *pfk
+        value: protomelas-taeniolatus-complex
+        note: anatomy close to P. taeniolatus, bar pattern like P. fenestratus; no crossing statement
+      - source: *arch14033
+        value: protomelas-taeniolatus-complex
+        note: trade confusion of the names P. fenestratus 'Taiwan Reef' and P. steveni
+
+  coloration:
+    value:
+      baseColors: [blue, yellow, red]
+      pattern: bars
+    confidence: medium
+    rationale: >-
+      A territorial male has a metallic blue head and back, a yellow to golden flank and a bright
+      red anal fin, the mark that separates it from P. fenestratus and P. taeniolatus. Broad
+      vertical bars are the basic pattern of the species at Taiwanee Reef (Konings); they show
+      plainly in young males and females, and in fully coloured males the bright colours partly
+      mask them (Oliver). Bars are taken as the pattern because they are the species pattern
+      that links it to similar barred haps.
+    sources:
+      - *oliver
+      - *pfk
+      - *sf
+      - *fishprofiles
+      - *imperial
+    evidence:
+      - source: *oliver
+        value: {baseColors: [red], pattern: bars}
+        note: red anal fin in mature males; bars masked in territorial males, plain in young males and females
+      - source: *pfk
+        value: {pattern: bars}
+        note: broad vertical bars at Taiwanee Reef
+      - source: *sf
+        value: {baseColors: [red]}
+        note: bright red anal fin of adult males
+      - source: *fishprofiles
+        value: {baseColors: [blue, yellow, red], pattern: plain}
+
+  feedingSpeed:
+    value: normal
+    confidence: low
+    rationale: >-
+      No source rates its feeding pace. A gentle hap that Seriously Fish considers unsuited to
+      boisterous mbuna takes its share at a normal pace; Seriously Fish describes the related
+      P. taeniolatus as greedy and prone to put on weight, so portions need control.
+    sources:
+      - *sf
+      - *sfTaen
+      - kind: model-knowledge
+        title: Feeding behaviour of comparable rock-dwelling Malawi haplochromines
+
+  minTank:
+    value: {volumeL: 240, lengthCm: 120, depthCm: 45}
+    confidence: medium
+    rationale: >-
+      For one male with three females: Konings names 120 x 30 x 45 cm as the minimum for a male
+      and some females, Seriously Fish a base of 120 x 45 cm (about 205 litres), Guidarium about
+      280 litres at 120 cm, and Oliver prefers 380 litres or more. A tank of 120 cm length, 45 cm
+      front-to-back depth and about 240 litres follows the length both specialist sources give
+      and adds volume for a fish of 17 cm with large territories; 150 cm and more are better.
+    sources:
+      - *pfk
+      - *sf
+      - *oliver
+      - *guidarium
+    evidence:
+      - source: *pfk
+        value: {volumeL: 162, lengthCm: 120, depthCm: 30}
+        note: 120 x 30 x 45 cm for a male and some females
+      - source: *sf
+        value: {volumeL: 205, lengthCm: 120, depthCm: 45}
+      - source: *guidarium
+        value: {volumeL: 280, lengthCm: 120}
+      - source: *oliver
+        value: {volumeL: 380}
+        note: one male with at least three females, bigger is better
+
+  lifespanYears:
+    value: {min: 6, max: 10}
+    confidence: low
+    rationale: >-
+      No reliable species-specific figure exists. A retailer guide gives 5 to 8 years and a
+      general care page 8 years; Malawi haplochromines of this size commonly live about 8 to 10
+      years with good care. 6 to 10 years is a cautious estimate that needs confirmation.
+    sources:
+      - *riverpark
+      - *fishipedia
+      - kind: model-knowledge
+        title: Typical aquarium lifespan of medium-sized Lake Malawi haplochromines
+    evidence:
+      - source: *riverpark
+        value: {min: 5, max: 8}
+      - source: *fishipedia
+        value: {min: 8, max: 8}
+
+  breeding:
+    value: maternal-mouthbrooder
+    confidence: high
+    rationale: >-
+      Maternal mouthbrooder like the other Protomelas: the male courts at a flat stone or a pit
+      in the sand, and the female takes the eggs into her mouth and carries them for about three
+      weeks. The public summary of the Cichlid Room Companion agrees.
+    sources:
+      - *sf
+      - *pfk
+      - *cf
+      - *crc
+    evidence:
+      - source: *sf
+        value: maternal-mouthbrooder
+      - source: *pfk
+        value: maternal-mouthbrooder
+      - source: *cf
+        value: maternal-mouthbrooder
+
+  beginnerSuitability:
+    value: moderate
+    confidence: medium
+    rationale: >-
+      Hardy and easy to feed, and the Cichlid-Forum profile gives its easiest difficulty grade,
+      but it needs a large tank, a harem, stable alkaline water, a low-protein diet and peaceful
+      company; Seriously Fish rates it moderate. Moderate reflects the space and stocking demands
+      rather than the water care.
+    sources:
+      - *sf
+      - *cf
+    evidence:
+      - source: *sf
+        value: moderate
+      - source: *cf
+        value: easy
+
+partners:
+  suitable:
+    - species: Copadichromis borleyi
+      reason: Peaceful open-water hap of similar size with a different shape and colour; no crossing risk.
+    - species: Otopharynx lithobates
+      reason: Calm rock-associated hap of similar size, kept with it in long-term community tanks.
+    - species: Aulonocara stuartgranti
+      reason: Peaceful peacock that care sheets recommend as a tankmate; keeps to the lower zones.
+      condition: Only one male of each species with its own females, in a tank of at least 150 cm.
+    - species: Labidochromis caeruleus
+      reason: Mild mbuna that does not harass larger haps; often kept with it according to keeper reports.
+      condition: Feed a low-protein, plant-based diet that suits both.
+    - species: Cyrtocara moorii
+      reason: Peaceful, slow-moving sand-dwelling hap that stays out of the rock territories.
+      condition: Tank of at least 180 cm, since C. moorii grows larger.
+  unsuitable:
+    - species: Protomelas taeniolatus
+      reason: Close relative of the same Steveni group with similar females; the two may hybridise.
+    - species: Protomelas fenestratus
+      reason: Close relative with similar barred females; the trade even sells the Taiwan Reef fish as its form, and they may hybridise.
+    - species: Melanochromis auratus
+      reason: Very aggressive mbuna that harasses a gentle hap and its females.
+    - species: Tropheus moorii
+      reason: Lake Tanganyika species that is kept in species-only groups and needs different water and diet.
+    - species: Astronotus ocellatus
+      reason: South American soft-water predator that grows far larger and can swallow juveniles and females.
+
+profile:
+  overview:
+    text: >-
+      Protomelas sp. 'Steveni Taiwan', sold as Taiwan Reef, is one of the most colourful
+      haplochromines of Lake Malawi and still has no scientific name. Ad Konings discovered it on
+      an isolated offshore reef that the local fishermen call Taiwanee, and the trade name grew
+      out of a misheard version of that name. It belongs to the "Steveni" group around Protomelas
+      taeniolatus, and shops sometimes label it as a form of P. fenestratus. Adult males combine a
+      metallic blue head, a golden body and a red anal fin, while females stay silvery with dark
+      bars. In the aquarium it is a calm, robust hap for spacious Malawi communities with gentle
+      companions, kept as one male with several females. Its main demands are room, a plant-based
+      diet and keeping it apart from its close relatives, with which it may cross.
+    sources:
+      - *pfk
+      - *sf
+      - *oliver
+  habitat:
+    text: >-
+      The species is known from three isolated rocky sites in the eastern half of Lake Malawi.
+      Taiwanee Reef rises from deep water north of Chizumulu Island in Mozambican waters, cut off
+      from the island by water more than 100 m deep and swept by strong currents when the
+      south-east wind blows. Almost identical fish live at Higga Reef and Ngkuyo Island near
+      Mbamba Bay on the Tanzanian coast. Territorial males sit on top of large rocks, mostly
+      deeper than 15 to 20 m, while females roam in loose groups in shallower water, and the fish
+      leave the rock to pick zooplankton from open water. The water is very clear, warm (about 21
+      to 29 °C over the year), soft at 3 to 5 dGH, yet alkaline at pH 7.7 to 8.6 with 5 to 8 dKH.
+      Taiwanee Reef has few other rock dwellers; the small yellow mbuna Pseudotropheus saulosi
+      lives there too.
+    sources:
+      - *pfk
+      - *oliver
+      - *sf
+      - *branchu
+      - *vdb
+      - *eccles
+  sizeAndGrowth:
+    text: >-
+      Well-kept males usually reach about 17 cm total length, and exceptional males approach
+      20 cm. Females stay smaller at roughly 14 cm. Juveniles are grey-silver with dark bars and
+      conspicuously large eyes, which Konings links to life in deeper water. Young males gain the
+      blue head, the golden flanks and the red anal fin gradually, and full colour appears once a
+      male becomes dominant; subordinate males may stay drab while a stronger rival is present.
+      Retail figures of 12 to 15 cm describe fish that have not finished growing.
+    sources:
+      - *sf
+      - *pfk
+      - *cf
+      - *guidarium
+  husbandry:
+    text: >-
+      A group of one male and three or more females needs a tank of at least 120 cm length, 45 cm
+      depth and about 240 litres; 150 cm and 300 litres or more give the male room for a proper
+      territory and make life easier for the females. Build stacks of rock with caves where
+      brooding females can hide, add several flat stones on which a male can display, and leave
+      open water above and a sand floor in front. Keep the temperature at about 24 to 27 °C and
+      the pH between 7.8 and 8.5. Stable alkalinity matters more than high general hardness: the
+      lake itself is soft, and the fish copes with a wide hardness range. The species reacts badly
+      to dirty water, so strong filtration and large weekly water changes are essential.
+    sources:
+      - *sf
+      - *pfk
+      - *oliver
+      - *oata
+      - *guidarium
+      - *imperial
+  socialBehavior:
+    text: >-
+      Males are territorial and court females with intense colour and displays. A male ready to
+      spawn chases females hard, so several females are needed to spread his attention, and rocks
+      must give them places to escape. Two males in one tank only work in very large aquaria,
+      since wild males defend rock tops of well over a metre. Towards other species the fish is
+      gentle: it pushes others away from its spawning site but does not hunt them through the
+      tank. It copes with moderate pressure from mild mbuna, yet constant harassment by rough
+      species keeps it shy and pale. Females and young males live peacefully in loose groups.
+    sources:
+      - *sf
+      - *pfk
+      - *oliver
+      - *cf
+      - *arch15767
+  diet:
+    text: >-
+      In the lake the fish feeds mainly on loose algae and the small life of the biocover on rock
+      surfaces and also takes zooplankton in open water. In the aquarium a good flake or pellet
+      with spirulina or other plant ingredients should form the staple. Add blanched vegetables
+      now and then and give small crustaceans such as Mysis, Daphnia or brine shrimp as a
+      supplement a few times a week. Avoid mammalian meat, rich protein pellets and frequent
+      bloodworm, since haps of this group are prone to bloat on such food. Feed small portions
+      once or twice a day, because related species eat greedily and put on weight easily.
+    sources:
+      - *cf
+      - *sf
+      - *fbTaen
+      - *sfTaen
+      - *imperial
+  breeding:
+    text: >-
+      Breeding follows the usual pattern of Malawi mouthbrooders. A ripe male chooses a flat
+      stone or digs a shallow pit in the sand, colours up strongly and leads females there. The
+      female lays her eggs in small batches and picks them up into her mouth, where they are
+      fertilised. She carries the brood for about three weeks without eating and then releases
+      small fry. Brooding females should rest in a quiet spot or a separate tank, but moving them
+      can make them spit or swallow the brood. Adult fish chase and eat free fry in a community
+      tank. Freshly hatched brine shrimp and microworms are suitable first foods. Albino fry have
+      appeared in captive spawns and are the origin of the albino line.
+    sources:
+      - *sf
+      - *pfk
+      - *arch14612
+  sexing:
+    text: >-
+      Adult males are easy to tell apart. They are larger and show a metallic blue head and back,
+      a yellow to golden flank and a bright red anal fin, and their dorsal, anal and pelvic fins
+      are longer and more pointed. Females are smaller, silvery grey to brownish and marked with
+      broad dark vertical bars, a pattern they share with juveniles. Young males look like
+      females for a long time and gain colour gradually, and a subordinate male can stay in
+      female-like dress. Juveniles cannot be sexed reliably, so buying a group of six to eight
+      young fish and later removing surplus males is the common way to build a harem.
+    sources:
+      - *sf
+      - *oliver
+      - *imperial
+  compatibility:
+    text: >-
+      The best companions are peaceful Malawi haps and calm peacocks of similar size, such as
+      Copadichromis borleyi, Otopharynx lithobates, Aulonocara stuartgranti and, in larger tanks,
+      Cyrtocara moorii. Mild mbuna like Labidochromis caeruleus also work. Keep only one male per
+      Aulonocara or Copadichromis species so that territories do not overlap. Avoid very
+      aggressive mbuna such as Melanochromis auratus, which wear down this gentle fish. Never
+      combine it with other members of the Steveni group, especially Protomelas taeniolatus and
+      P. fenestratus: the females look nearly identical and the species may cross. Large
+      predatory haps can eat its juveniles, and fish from other lakes or continents need
+      different water and diets. Fry and fish below about 2 cm are at risk from it.
+    sources:
+      - *sf
+      - *sfFen
+      - *pfk
+      - *cf
+  problems:
+    text: >-
+      The most common mistake is a diet that is too rich: protein-heavy pellets and frequent
+      bloodworm can lead to Malawi bloat, a swollen belly with loss of appetite. A plant-based
+      staple reduces the risk. Poor water quality shows quickly in this fish, often first as faded
+      colour and reduced appetite, so regular large water changes are important. Newly bought
+      juveniles sometimes spit food out for a few days while they settle. Too few females, too
+      small a tank or two males in a medium tank lead to battered females and stressed males.
+      Mixing it with P. taeniolatus or P. fenestratus produces hybrids that spoil both lines, so
+      buy from breeders who keep the species separate and know the origin of their stock.
+    sources:
+      - *sf
+      - *sfTaen
+      - *imperial
+      - &arch456
+        kind: archive
+        title: cichlids.com forum thread 456
+        url: https://www.cichlids.com/disc/read.php?1,456
+        accessed: 2026-10-13
+
+provenance:
+  runs:
+    - role: generator
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-13
+    - role: adjudicator
+      model: claude-opus-5-5
+      date: 2026-10-13
+  disagreements:
+    - field: taxonomy.synonyms
+      proposals:
+        - by: generator
+          value: ["Protomelas fenestratus 'Taiwan Reef'", Protomelas steveni]
+        - by: checker-a
+          value: ["Protomelas sp. 'Taiwan Reef'", Protomelas steveni, "Protomelas fenestratus 'Taiwan Reef'"]
+        - by: checker-b
+          value: []
+      decision: ["Protomelas sp. 'Taiwan Reef'", "Protomelas fenestratus 'Taiwan Reef'", Protomelas steveni]
+      rationale: >-
+        None of these names is a nomenclatural synonym, but all three circulate in the trade and
+        the hobby literature for this fish; listing them with a note on their status helps users
+        find the species under the name they know.
+    - field: taxonomy.note
+      proposals:
+        - by: checker-a
+          value: Aulonocara steveni is valid in the Catalog of Fishes
+        - by: checker-b
+          value: Aulonocara steveni is a synonym of Aulonocara stuartgranti
+      decision: Aulonocara steveni is a synonym of Aulonocara stuartgranti
+      rationale: >-
+        The Aulonocara species list of the Catalog of Fishes (accessed 2026-10-13) gives the
+        current status of Aulonocara steveni Meyer, Riehl and Zetzsche 1987 as a synonym of
+        A. stuartgranti, after Konings (2016).
+    - field: taxonomy.legacyNames
+      proposals:
+        - by: generator
+          value: ["Protomelas spec. \"steveni Taiwan\""]
+        - by: checker-a
+          value: ["Protomelas spec. 'steveni Taiwan'"]
+        - by: checker-b
+          value: ["Protomelas spec. 'steveni Taiwan'"]
+      decision: ["Protomelas spec. \"steveni Taiwan\""]
+      rationale: The legacy catalog spells the name with double quotes; the spelling is kept exactly.
+    - field: features.origin.value.localities
+      proposals:
+        - by: generator
+          value: ["Taiwan (Taiwanee) Reef, Mozambique, north of Chizumulu Island", "Higga Reef, Tanzania", "Ngkuyo Island, Mbamba Bay, Tanzania"]
+        - by: checker-a
+          value: ["Taiwan (Taiwanee) Reef, Mozambican waters about 15 km north of Chizumulu Island", "Higga Reef, Tanzania", "Mbamba Bay Island (Ngkuyo Island), Tanzania"]
+        - by: checker-b
+          value: ["Taiwan Reef (Taiwanee Reef), central Lake Malawi, Mozambique side", "Higga Reef, Tanzania (population thought to be the same)", "Mbamba Bay Island (Ngkuyo), Tanzania (population thought to be the same)"]
+      decision: ["Taiwan (Taiwanee) Reef, Mozambican waters north of Chizumulu Island", "Higga Reef, Tanzania", "Ngkuyo Island (Mbamba Bay Island), Tanzania"]
+      rationale: >-
+        The three proposals name the same sites. The distance to Chizumulu differs between
+        Konings (about 7 km) and Oliver (about 15 km), so the locality names leave it out and the
+        rationale gives both figures.
+    - field: features.maxSizeCm
+      proposals:
+        - by: generator
+          value: {male: 17, female: 14}
+        - by: checker-a
+          value: {male: 17, female: 14}
+        - by: checker-b
+          value: {male: 18, female: 15}
+      decision: {male: 17, female: 14}
+      rationale: >-
+        Seriously Fish gives 14 cm standard length, about 17 cm total length, and Guidarium
+        separates 17 cm males from 14 cm females; the 18 cm of the Cichlid-Forum profile and the
+        nearly 20 cm of Konings describe the largest fish. The female size of checker-b is an
+        estimate without a source figure.
+    - field: features.predation
+      proposals:
+        - by: generator
+          value: 1
+        - by: checker-a
+          value: 1
+        - by: checker-b
+          value: 0
+        - by: tiebreaker-1
+          value: 1
+        - by: tiebreaker-2
+          value: 0
+      decision: 1
+      rationale: >-
+        Decided by the vote count with method conservative (3 of 5 votes for level 1): the votes
+        did not reach a qualified majority, so the higher level applies with low confidence.
+    - field: features.diet
+      proposals:
+        - by: generator
+          value: {type: aufwuchs, bloatSensitive: true}
+        - by: checker-a
+          value: {type: omnivore, bloatSensitive: true}
+        - by: checker-b
+          value: {type: omnivore, bloatSensitive: false}
+        - by: tiebreaker-1
+          value: {type: omnivore, bloatSensitive: true}
+        - by: tiebreaker-2
+          value: {type: omnivore, bloatSensitive: true}
+      decision: {type: aufwuchs, bloatSensitive: true}
+      rationale: >-
+        Decided by the vote count with method conservative (3 of 5 votes for the top candidate,
+        omnivore with bloat sensitivity): without a qualified majority the strictest type,
+        aufwuchs, applies, and bloat sensitivity is set because votes report it; the confidence
+        is low.
+    - field: features.ghDgh.tolerance
+      proposals:
+        - by: generator
+          value: {min: 3, max: 25}
+        - by: checker-a
+          value: {min: 3, max: 20}
+        - by: checker-b
+          value: {min: 3, max: 20}
+        - by: tiebreaker-1
+          value: {min: 3, max: 20}
+        - by: tiebreaker-2
+          value: {min: 3, max: 20}
+      decision: {min: 3, max: 20}
+      rationale: >-
+        Decided by the vote count with method qualified-majority (4 of 5 votes); the 25 dGH of
+        the generator follows the generic upper bound of Seriously Fish, which the other sources
+        do not reach.
+    - field: features.khDkh.tolerance
+      proposals:
+        - by: generator
+          value: {min: 5, max: 15}
+        - by: checker-a
+          value: {min: 5, max: 10}
+        - by: checker-b
+          value: {min: 5, max: 12}
+        - by: tiebreaker-1
+          value: {min: 5, max: 12}
+        - by: tiebreaker-2
+          value: {min: 5, max: 12}
+      decision: {min: 5, max: 12}
+      rationale: >-
+        Decided by the vote count with method qualified-majority (4 of 5 votes within 2 dKH of
+        each other); the 15 dKH of the generator follows the general OATA care sheet for Malawi
+        cichlids.
+    - field: features.aggressionConspecific
+      proposals:
+        - by: generator
+          value: 3
+        - by: checker-a
+          value: 2
+        - by: checker-b
+          value: 2
+      decision: 2
+      rationale: >-
+        Seriously Fish describes very territorial males and forceful courting, but all sources
+        set the condition that solves it, one male with several females and enough space; the
+        Cichlid-Forum profile rates the fish mildly aggressive towards its own kind and no source
+        reports frequent injuries under these conditions. Level 2 describes exactly this case;
+        the rationale names the risk of injuries with the wrong ratio.
+    - field: features.territory
+      proposals:
+        - by: generator
+          value: {size: large, breedingOnly: true}
+        - by: checker-a
+          value: {size: large, breedingOnly: true}
+        - by: checker-b
+          value: {size: large, breedingOnly: false}
+      decision: {size: large, breedingOnly: true}
+      rationale: >-
+        Seriously Fish states that the fish becomes territorial when breeding, and the reef
+        territories of the field accounts are display sites of breeding males; the size is
+        undisputed.
+    - field: features.habitatZones
+      proposals:
+        - by: generator
+          value: [rock, openWater]
+        - by: checker-a
+          value: [rock, openWater]
+        - by: checker-b
+          value: [rock, sand]
+      decision: [rock, openWater]
+      rationale: >-
+        The reef is sediment-free (Cichlid-Forum profile, Konings), and Seriously Fish describes
+        the fish rising into the water column for zooplankton. Sand is a recommended aquarium
+        substrate and a possible spawning site in the tank, not a zone the fish uses in the wild.
+    - field: features.coloration
+      proposals:
+        - by: generator
+          value: {baseColors: [blue, yellow, red], pattern: mixed}
+        - by: checker-a
+          value: {baseColors: [blue, red, yellow], pattern: bars}
+        - by: checker-b
+          value: {baseColors: [grey, red], pattern: bars}
+      decision: {baseColors: [blue, yellow, red], pattern: bars}
+      rationale: >-
+        The adult male is blue, yellow to golden and red; grey was a guess of checker-b, who could
+        not read a description of the male body colour. Konings and Oliver describe broad
+        vertical bars as the basic pattern of the species, partly masked in fully coloured males,
+        so bars is chosen over mixed.
+    - field: features.minTank
+      proposals:
+        - by: generator
+          value: {volumeL: 300, lengthCm: 150, depthCm: 50}
+        - by: checker-a
+          value: {volumeL: 240, lengthCm: 120, depthCm: 45}
+        - by: checker-b
+          value: {volumeL: 205, lengthCm: 120, depthCm: 45}
+      decision: {volumeL: 240, lengthCm: 120, depthCm: 45}
+      rationale: >-
+        Konings and Seriously Fish both give 120 cm as the minimum length for a male with
+        several females, Seriously Fish with a depth of 45 cm; the volume of about 240 litres
+        leaves room above the 205 litres of Seriously Fish towards the 280 to 380 litres that
+        Guidarium and Oliver prefer. A 150 cm tank is recommended in the husbandry text but not
+        required by the sources.
+    - field: features.lifespanYears
+      proposals:
+        - by: generator
+          value: {min: 6, max: 10}
+        - by: checker-a
+          value: {min: 8, max: 12}
+        - by: checker-b
+          value: {min: 5, max: 10}
+      decision: {min: 6, max: 10}
+      rationale: >-
+        Only low-weight sources exist (a retailer with 5 to 8 years, a care page with 8 years);
+        6 to 10 years lies between these figures and the general experience with Malawi haps of
+        this size, and stays low in confidence.
