@@ -80,7 +80,7 @@ def main():
             continue
         count += 1
         try:
-            source = (args.root / name).read_text()
+            source = (args.root / name).read_text(encoding='utf-8-sig')
             documents = ([json.loads(source, object_pairs_hook=unique_pairs)]
                          if Path(name).suffix.lower() == '.json'
                          else list(yaml.load_all(source, Loader=UniqueLoader)))

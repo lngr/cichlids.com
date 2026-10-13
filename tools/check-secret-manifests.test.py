@@ -39,6 +39,10 @@ class SecretGuardTest(unittest.TestCase):
         self.assert_rejected('kind: ConfigMap\n---\nkind: List\nitems:\n'
                              '  - kind: Secret\n    stringData: {password: fixture-value}\n')
 
+    def test_json_with_bom(self):
+        result = self.scan('\ufeff{"kind": "ConfigMap"}', 'bom.json')
+        self.assertEqual(result.returncode, 0, result.stderr)
+
     def test_json_secret(self):
         self.assert_rejected(json.dumps({'kind': 'Secret', 'data': {'password': 'abc'}}),
                              'elsewhere/secret.json')
