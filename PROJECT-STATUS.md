@@ -16,6 +16,7 @@ Weitere Leitdokumente:
 - [`PLAN.md`](PLAN.md): Zielarchitektur, Domänenmodell, ETL-Konzept, Aufbauphasen.
 - [`PROJECT-CONTEXT.md`](PROJECT-CONTEXT.md): Altsystem, gerettete Daten, Sicherheitslage.
 - [`AGENTS.md`](AGENTS.md): verbindliche Arbeitsregeln für Agents.
+- [`TODO.md`](TODO.md): alle offenen Punkte an einer Stelle.
 - [`infra/README.md`](infra/README.md): Betriebs-Runbook der Infrastruktur.
 - [`HANDOFF.md`](HANDOFF.md) (untracked, transient): Übergabenotiz zur Infrastruktur mit Stand
   2026-07-08. Ihr Inhalt ist in Abschnitt 5 eingearbeitet.
