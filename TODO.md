@@ -96,16 +96,15 @@ System. Details in `PROJECT-STATUS.md`, Abschnitt 9.
 
 ## 3. Artenprofile
 
-Stand: 43 Profile in `data/species/profiles/`, alle validiert. Verfahren in
+Stand: 48 Profile in `data/species/profiles/`, alle validiert. Verfahren in
 `tools/species-data/README.md`. Je Art stimmen Generator, Prüfer A (Opus), Prüfer B (Sonnet) und
 Prüfer C (Codex, gpt-6.1-sol) ab.
 
 ### 3.1 Weitere Profile
 
-- [ ] Nächste Arten nach Fotoanzahl: 707 Cichlasoma salvini, 754 Hypsophrys nicaraguense,
-  223 Aulonocara eureka (in Arbeit), 565 Hemichromis lifalili, 775 Pterophyllum scalare,
-  83 Neolamprologus brichardi, 758 Microgeophagus ramirezi, 321 Labidochromis sp. 'Hongi';
-  danach weiter nach Fotoanzahl, Synonym-Paare gemeinsam (etwa 739 Herichthys cyanoguttatus mit
+- [ ] Nächste Arten nach Fotoanzahl: 83 Neolamprologus brichardi, 758 Microgeophagus ramirezi,
+  321 Labidochromis sp. 'Hongi', 190 Tropheus duboisi, 789 Thorichthys meeki, 466 Pseudotropheus
+  crabro, 236 Aulonocara ngara, 814 Aulonocara maleri; danach weiter nach Fotoanzahl, Synonym-Paare gemeinsam (etwa 739 Herichthys cyanoguttatus mit
   685 Cichlasoma cyanoguttatum)
 - [ ] Die harten Merkmale aller Arten sind vor Slice 4 gesichert
 - [ ] Das OpenAlex-Tagesbudget (1 USD, Reset 02:00 Uhr MESZ) reicht für etwa 12 Arten. Danach
@@ -121,8 +120,10 @@ Zu jeder Frage ist eine vorläufige Umsetzung in Gebrauch; sie wird bestätigt o
   low); die Toleranzen bleiben bei der Schnittmenge. Anlass waren Schnittmengen enger als die
   Messungen (Hypsophrys nicaraguensis 29-30 °C bei Messungen von 19,5 bis 36 °C; Amphilophus
   labiatus KH 4-10 bei gemessenen 3,4-3,6 dKH im Nicaraguasee). Offen: betroffene Profile neu
-  zählen (Maylandia zebra, Parachromis managuensis, Flowerhorn, Mesoheros festae, Amphilophus
-  labiatus und weitere mit Methode conservative bei natürlichen Werten).
+  zählen: Amatitlania nigrofasciata, Amphilophus citrinellus, Amphilophus labiatus, Andinoacara
+  rivulatus, Astronotus ocellatus, Flowerhorn, Heros severus, Mesoheros festae, Parachromis
+  managuensis, Rocio octofasciata, Symphysodon aequifasciatus (Methode conservative bei
+  natürlichen Werten).
 - [ ] **Wasserkonflikt nach Abstand vom Ideal:** Diskus und Malawis berühren sich in der
   Toleranz am Rand (pH 4,8-7,5 gegen 7,2-8,8), deshalb greift "Toleranzen ohne gemeinsamen
   Bereich" nicht. Vorgabe: Der Konflikt hängt von der Größe des gemeinsamen Bereichs und vom
@@ -155,6 +156,12 @@ Zu jeder Frage ist eine vorläufige Umsetzung in Gebrauch; sie wird bestätigt o
   beruht auf der pauschalen Warnung von Seriously Fish und alter Introgression im See
   (Anseeuw et al. 2012); eine Aquarienkreuzung zweier benannter Arten ist nicht dokumentiert.
   Zusammen mit Cynotilapia afra klären, welche Belege eine Kreuzungsgruppe braucht.
+- [ ] **Mehrfachmitgliedschaft in Kreuzungsgruppen:** Entschieden: `hybridGroups` ist eine Liste,
+  eine Gruppe heißt "alle Mitglieder kreuzen sich untereinander", eine belegte Einzelkreuzung ist
+  eine Zweiergruppe. Offen: die Gruppen danach kuratieren (Cynotilapia afra nur mit Maylandia
+  zebra, Pterophyllum leopoldi ohne belegte Kreuzung, Zuchtformen in den Gruppen ihrer
+  Ausgangsarten). Vorläufige Vorsichtsregel ohne Mehrheit: alle Gruppen, die mindestens zwei
+  Stimmen nennen, sonst die zuerst genannte. Bestätigen oder ändern.
 - [ ] **Zuchtformen ohne Kreuzungsgruppe:** Aulonocara 'German Red' und 'Rubescens' sind keine
   Mitglieder einer Kreuzungsgruppe. Klären, ob Zuchtformen in die Gruppe ihrer Ausgangsarten
   gehören.
