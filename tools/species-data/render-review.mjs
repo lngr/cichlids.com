@@ -241,14 +241,14 @@ function overview() {
   const keys = ['temperatureC', 'ph', 'ghDgh', 'khDkh', 'maxSizeCm', 'predation', 'diet', 'aggressionConspecific', 'aggressionHeterospecific', 'territory', 'social', 'speciesOnly', 'hybridGroup', 'feedingSpeed', 'minTank', 'beginnerSuitability'];
   return `<section class="panel" id="p-overview">
   <h2>Pilotprofile im Vergleich</h2>
-  <p>Je Art erzeugt ein Generator das Profil, zwei Prüfer bestimmen die Merkmale unabhängig, ein Schiedsrichter entscheidet die Abweichungen. Harte Merkmale (fett) tragen auf den Seiten der Arten ein Abzeichen mit der automatischen Verifikation: einstimmig, qualifizierte Mehrheit, vorsichtigster Wert oder Seewerte, jeweils mit der Zahl der übereinstimmenden Stimmen. Ein Klick auf einen Wert springt zum Merkmal.</p>
-  <div class="scroll"><table>
-    <thead><tr><th>Merkmal</th>${profiles.map((p) => `<th><i>${esc(p.taxonomy.validName)}</i></th>`).join('')}</tr></thead>
-    <tbody>${keys
+  <p>Je Art erzeugt ein Generator das Profil, zwei oder drei Prüfer bestimmen die Merkmale unabhängig, ein Schiedsrichter entscheidet die Abweichungen. Harte Merkmale (fett) tragen auf den Seiten der Arten ein Abzeichen mit der automatischen Verifikation: einstimmig, qualifizierte Mehrheit, vorsichtigster Wert oder Seewerte, jeweils mit der Zahl der übereinstimmenden Stimmen. Ein Klick auf eine Art öffnet ihr Profil, ein Klick auf einen Wert springt zum Merkmal.</p>
+  <div class="scroll"><table class="ov">
+    <thead><tr><th>Art</th>${keys.map((k) => `<th class="${HARD.includes(k) ? 'hard' : ''}">${esc(LABELS[k])}</th>`).join('')}</tr></thead>
+    <tbody>${profiles
       .map(
-        (k) =>
-          `<tr class="${HARD.includes(k) ? 'hard' : ''}"><td>${esc(LABELS[k])}</td>${profiles
-            .map((p) => {
+        (p) =>
+          `<tr><td><a href="#" data-go="${esc(p.id)}"><i>${esc(p.taxonomy.validName)}</i></a></td>${keys
+            .map((k) => {
               const f = p.features[k];
               if (!f) return '<td></td>';
               const d = disagreementsFor(p, k).length;
@@ -268,9 +268,9 @@ const css = `
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
 header.top{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding:10px 16px 0}
 header.top h1{font-size:17px;margin:0 0 8px}
-nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}nav button{flex:none;border:0;background:none;color:var(--muted);padding:8px 10px;border-bottom:3px solid transparent;font:inherit;cursor:pointer}
+nav{display:flex;flex-wrap:wrap;gap:0 4px;max-height:40vh;overflow-y:auto}nav button{flex:none;border:0;background:none;color:var(--muted);padding:6px 10px;border-bottom:3px solid transparent;font:inherit;cursor:pointer}
 nav button.on{color:var(--fg);border-color:var(--accent);font-weight:600}
-main{max-width:900px;margin:0 auto;padding:12px 16px 80px}
+main{max-width:900px;margin:0 auto;padding:12px 16px 80px}main:has(#p-overview:not([hidden])){max-width:none}
 h2{font-size:21px;margin:12px 0 4px}h3{font-size:17px;margin:26px 0 8px;border-bottom:1px solid var(--line);padding-bottom:4px}h4{margin:0;font-size:15px}
 .muted{color:var(--muted);font-weight:400}.meta{color:var(--muted);font-size:13px}
 .tag{display:inline-block;font-size:11px;padding:1px 7px;border-radius:9px;background:var(--line);color:var(--fg);font-weight:500;vertical-align:middle}
@@ -293,7 +293,7 @@ a{color:var(--accent);overflow-wrap:anywhere}
 .scroll{overflow-x:auto;border:1px solid var(--line);border-radius:10px}
 table{border-collapse:collapse;width:100%;font-size:13px;background:var(--card)}th,td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
 th{position:sticky;top:0;background:var(--card)}td:first-child,th:first-child{position:sticky;left:0;background:var(--card);min-width:120px}
-tr.hard td:first-child{color:var(--hard);font-weight:700}td a{text-decoration:none}
+th.hard{color:var(--hard)}.ov td{white-space:nowrap}.ov a{overflow-wrap:normal}td a{text-decoration:none}
 .dot{display:inline-block;width:8px;height:8px;border-radius:50%}.dot.high{background:var(--high)}.dot.medium{background:var(--medium)}.dot.low{background:var(--low)}
 .dis-mark{color:var(--dis);font-weight:700}.legend{font-size:12px;color:var(--muted)}
 .tol{margin:2px 0 6px;font-size:14px}.verif{margin:2px 0 6px;font-size:13px}.tag.ver{background:var(--high);color:#fff}.tag.ver.conservative{background:var(--low)}.tag.ver.qualified-majority{background:var(--medium)}.tag.ver.waterbody{background:var(--accent);color:var(--bg)}
@@ -364,9 +364,7 @@ const html = `<!doctype html>
 <title>Artenprofile und Fachartikel</title><style>${css}</style></head>
 <body>
 <header class="top"><h1>Artenprofile und Fachartikel</h1>
-<nav><button data-p="overview">Übersicht</button>${profiles
-  .map((p) => `<button data-p="${esc(p.id)}"><i>${esc(p.taxonomy.validName)}</i></button>`)
-  .join('')}${articles.map((a) => `<button data-p="a-${esc(a.meta.id)}">${esc(a.meta.title)}</button>`).join('')}</nav></header>
+<nav><button data-p="overview">Übersicht</button>${articles.map((a) => `<button data-p="a-${esc(a.meta.id)}">${esc(a.meta.title)}</button>`).join('')}</nav></header>
 <main>
 ${overview()}
 ${profiles.map(speciesPanel).join('\n')}
