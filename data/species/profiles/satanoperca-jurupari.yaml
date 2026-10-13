@@ -1,0 +1,3392 @@
+schemaVersion: 1
+id: "satanoperca-jurupari"
+legacyIds:
+  - 777
+status: "described"
+taxonomy:
+  validName: "Satanoperca jurupari"
+  genus: "Satanoperca"
+  species: "jurupari"
+  author: "(Heckel, 1840)"
+  source:
+    kind: "catalog-of-fishes"
+    title: "Eschmeyer's Catalog of Fishes: Satanoperca, updated 21 September 2026"
+    url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Sa\
+      tanoperca"
+    accessed: "2026-10-13"
+  synonyms:
+    - name: "Geophagus jurupari"
+      note: "Original combination."
+  legacyNames:
+    - "Satanoperca jurupari"
+  note: "The Catalog confirms Satanoperca jurupari (Heckel, 1840), originally Geophagus jurupari, as valid.
+    Leucosticta, mapiritensis and rhynchitis remain distinct valid species despite historical synonymy or
+    difficult identification. This profile covers the described Amazonian jurupari rather than all fish sold
+    under that name. The taxonomic jurupari species group consists of mouthbrooding relatives and is not
+    itself evidence of all-to-all crossing. Willis's abstract identifies distinct nominal populations in the
+    Tapajos, Xingu and Araguaia plus Parana. Coastal Amapa and French Guiana samples also need identification
+    review; some are related to rhynchitis. Shop labels cannot resolve those lineages."
+names:
+  trade:
+    en:
+      - "Demon eartheater"
+      - "Jurupari"
+      - "Green horse face"
+variants:
+  - name: "Madre de Dios orange-lipped population"
+    kind: "locality"
+    note: "Reported in the Seriously Fish account; identification and boundaries need checking, and this is not a
+      captive colour strain."
+  - name: "Amapa coastal population"
+    kind: "locality"
+    note: "Provisional regional form, not a distinct colour morph. Some specimens resemble rhynchitis; no separate
+      compatibility claims are made."
+features:
+  origin:
+    value:
+      continent: "South America"
+      region: "Amazon basin and Atlantic coastal drainages near its mouth"
+      waterbody: null
+      localities:
+        - "Rio Negro and Solimoes confluence"
+        - "Igarape Fortaleza, Amapa"
+        - "Taraira Lake, lower Apaporis basin"
+        - "Jurua and Jutai basins"
+    confidence: "high"
+    rationale: "The Catalog and FishBase support an Amazonian species including northeastern coastal records.
+      Named collecting studies add Taraira Lake and Igarape Fortaleza. Coastal identity remains uncertain
+      after the description of rhynchitis, while Essequibo and Nickerie leucosticta and Orinoco mapiritensis
+      are not treated as jurupari. The regional wordings and locality subsets proposed by generator,
+      checker-a, checker-b and checker-c describe overlapping records rather than four distinct ranges; the
+      final wording combines those records and keeps the coastal qualification."
+    sources:
+      - kind: "catalog-of-fishes"
+        title: "Eschmeyer's Catalog of Fishes: Satanoperca, updated 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Sa\
+          tanoperca"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Satanoperca jurupari species summary"
+        url: "https://www.fishbase.se/summary/Satanoperca-jurupari.html"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Bittencourt et al. (2014). Parasites of native Cichlidae populations and invasive Oreochromis
+          niloticus in tributary of Amazonas River. Full text and Table 1"
+        url: "https://doi.org/10.1590/S1984-29612014006"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Correa (2008). Fish assemblage structure is consistent through an annual hydrological cycle in
+          habitats of a floodplain-lake in the Colombian Amazon. Full text and Tables 1 and 2"
+        url: "https://doi.org/10.1590/S1679-62252008000200014"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Satanoperca jurupari"
+        url: "https://www.seriouslyfish.com/species/satanoperca-jurupari/"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "catalog-of-fishes"
+          title: "Eschmeyer's Catalog of Fishes: Satanoperca, updated 21 September 2026"
+          url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Sa\
+            tanoperca"
+          accessed: "2026-10-13"
+        value:
+          continent: "South America"
+          region: "Amazon River basin, including northeastern South America"
+      - source:
+          kind: "database"
+          title: "FishBase: Satanoperca jurupari species summary"
+          url: "https://www.fishbase.se/summary/Satanoperca-jurupari.html"
+          accessed: "2026-10-13"
+        value:
+          continent: "South America"
+          region: "Amazon basin and Amapa, with some eastern French Guiana records"
+  temperatureC:
+    value:
+      min: 27
+      max: 30
+    confidence: "low"
+    rationale: "The tally uses a median because no qualified majority settled the native temperature envelope. The
+      six minima have a median of 26.5 C, rounded to 27, and the maxima have a median of 30 C. The result is a
+      partial habitat estimate rather than complete species limits. Bittencourt records 27.8 to 28.5 C in the
+      channel containing the sampled fish; its wider 26 to 33 C floodplain measurements did not accompany
+      jurupari captures. Correa records jurupari in Taraira Lake and pooled habitat temperatures of 24.4 to
+      37.1 C, with a narrower 24.4 to 32 C span across low and rising water. These wider ranges and Drake's
+      regional 27.8 to 31.1 C observations are retained as evidence without claiming fish exposure at every
+      endpoint. Hidalgo Sanchez station means and Queiroz regional measurements supply context. FishBase 24 to
+      26 C refers to an aquarium atlas, not a collecting series. Low confidence reflects incomplete coverage
+      and uncertain coastal identification. Proposals: generator proposed {\"min\": 27.8, \"max\": 29.5};
+      checker-a proposed {\"min\": 26, \"max\": 30}; checker-b proposed {\"min\": 24.4, \"max\": 30.1};
+      checker-c proposed {\"min\": 27, \"max\": 30}; tiebreaker-1 proposed {\"min\": 27.8, \"max\": 28.5};
+      tiebreaker-2 proposed {\"min\": 24.4, \"max\": 32}."
+    sources:
+      - kind: "literature"
+        title: "Bittencourt et al. (2014). Parasites of native Cichlidae populations and invasive Oreochromis
+          niloticus in tributary of Amazonas River. Full text and Table 1"
+        url: "https://doi.org/10.1590/S1984-29612014006"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Hidalgo Sanchez et al. (2015). Spatial-temporal variation of dissolved inorganic material in the
+          Amazon basin. Full text and Table 2"
+        url: "https://doi.org/10.1590/1809-4392201402722"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Drake et al. (2021). The Pulse of the Amazon. Full text and Tables 1 and 3"
+        url: "https://doi.org/10.1029/2020GB006895"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Correa (2008). Fish assemblage structure is consistent through an annual hydrological cycle in
+          habitats of a floodplain-lake in the Colombian Amazon. Full text and Tables 1 and 2"
+        url: "https://doi.org/10.1590/S1679-62252008000200014"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Queiroz et al. (2009). Hidroquimica do rio Solimoes na regiao entre Manacapuru e Alvaraes: Amazonas,
+          Brasil"
+        url: "https://doi.org/10.1590/S0044-59672009000400022"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Akvaforum: Satanoperca jurupari"
+        url: "https://akvaforum.no/lex/fish.cfm/2283/Satanoperca-jurupari"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Satanoperca jurupari species summary"
+        url: "https://www.fishbase.se/summary/Satanoperca-jurupari.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase reference 1672: Riehl and Baensch (1991), Aquarien Atlas, volume 1"
+        url: "https://www.fishbase.se/references/FBRefSummary.php?ID=1672"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Bittencourt et al. (2014). Parasites of native Cichlidae populations and invasive Oreochromis
+            niloticus in tributary of Amazonas River. Full text and Table 1"
+          url: "https://doi.org/10.1590/S1984-29612014006"
+          accessed: "2026-10-13"
+        value:
+          min: 27.8
+          max: 28.5
+        note: "Channel measurements with jurupari captures; the separate 26 to 33 C floodplain range is excluded from
+          species-linked evidence."
+      - source:
+          kind: "literature"
+          title: "Hidalgo Sanchez et al. (2015). Spatial-temporal variation of dissolved inorganic material in the
+            Amazon basin. Full text and Table 2"
+          url: "https://doi.org/10.1590/1809-4392201402722"
+          accessed: "2026-10-13"
+        value:
+          min: 28.4
+          max: 29.5
+        note: "Range of station means in native drainages, not observed seasonal extremes."
+      - source:
+          kind: "literature"
+          title: "Drake et al. (2021). The Pulse of the Amazon. Full text and Tables 1 and 3"
+          url: "https://doi.org/10.1029/2020GB006895"
+          accessed: "2026-10-13"
+        value:
+          min: 27.8
+          max: 31.1
+        note: "Regional mainstem measurements; no simultaneous species occurrence data."
+      - source:
+          kind: "literature"
+          title: "Correa (2008). Fish assemblage structure is consistent through an annual hydrological cycle in
+            habitats of a floodplain-lake in the Colombian Amazon. Full text and Tables 1 and 2"
+          url: "https://doi.org/10.1590/S1679-62252008000200014"
+          accessed: "2026-10-13"
+        value:
+          min: 24.4
+          max: 37.1
+        note: "Pooled lake and microhabitat extremes; no fish-specific exposure assignment."
+      - source:
+          kind: "literature"
+          title: "Queiroz et al. (2009). Hidroquimica do rio Solimoes na regiao entre Manacapuru e Alvaraes: Amazonas,
+            Brasil"
+          url: "https://doi.org/10.1590/S0044-59672009000400022"
+          accessed: "2026-10-13"
+        value:
+          min: 28.9
+          max: 30.1
+        note: "Solimoes main-channel measurements in November 2004; other sampled tributaries were hotter."
+      - source:
+          kind: "database"
+          title: "Akvaforum: Satanoperca jurupari"
+          url: "https://akvaforum.no/lex/fish.cfm/2283/Satanoperca-jurupari"
+          accessed: "2026-10-13"
+        value:
+          min: 27
+          max: 30
+        note: "Secondary description of native genus habitats, not a station-level field dataset."
+      - source:
+          kind: "database"
+          title: "FishBase: Satanoperca jurupari species summary"
+          url: "https://www.fishbase.se/summary/Satanoperca-jurupari.html"
+          accessed: "2026-10-13"
+        value:
+          min: 24
+          max: 26
+        note: "Published summary temperature range, excluded from the decision because reference 1672 is an aquarium
+          atlas rather than a field dataset."
+    tolerance:
+      value:
+        min: 24
+        max: 30
+      confidence: "medium"
+      rationale: "The four proposals agree within 1 C and the tally selects 24 to 30 C after endpoint aggregation.
+        Seriously Fish recommends 20 to 28 C, a cooler source range than the decision, while Aqua-Fish and
+        Fishkeeper give 24 to 28 C, Guidarium 26 to 30 C and Akvaforum 24 to 30 C. AquariumDomain gives
+        approximately 25 to 29.4 C. The unsupported chronic 20 C endpoint and spawning-only warmer settings
+        are not adopted. This interval contains the decided natural range, but neither the warm edge nor the
+        cold edge is a controlled lifetime limit. Proposals: generator proposed {\"min\": 24, \"max\": 30};
+        checker-a proposed {\"min\": 24, \"max\": 30}; checker-b proposed {\"min\": 24, \"max\": 30.5};
+        checker-c proposed {\"min\": 24, \"max\": 30}."
+      sources:
+        - kind: "database"
+          title: "Seriously Fish: Satanoperca jurupari"
+          url: "https://www.seriouslyfish.com/species/satanoperca-jurupari/"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Aqua-Fish: Earth eater, Satanoperca jurupari"
+          url: "https://en.aqua-fish.net/fish/earth-eater"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Aquaristic Online: Cichlid Eartheater Green Horse Face care data"
+          url: "https://www.aquaristiconline.com.au/collections/aquaristic-online/products/geophagus-jurupari"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "AquariumDomain: Earth Eater Jurupari species profile"
+          url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/EarthEaterJurupari.shtml"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "FishBase, Satanoperca jurupari"
+          url: "https://www.fishbase.se/summary/Satanoperca-jurupari.html"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Fishkeeper: Jurupari Eartheater"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jurupari-eartheater"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Guidarium: Jurupari Eartheater"
+          url: "https://guidarium.com/fishes/jurupari-eartheater"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Akvaforum: Satanoperca jurupari"
+          url: "https://akvaforum.no/lex/fish.cfm/2283/Satanoperca-jurupari"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Einrichtungsbeispiele: Satanoperca jurupari species directory"
+          url: "https://www.einrichtungsbeispiele.de/zierfische/suedamerika/satanoperca-jurupari-slnk.html"
+          accessed: "2026-10-13"
+      evidence:
+        - source:
+            kind: "database"
+            title: "Seriously Fish: Satanoperca jurupari"
+            url: "https://www.seriouslyfish.com/species/satanoperca-jurupari/"
+            accessed: "2026-10-13"
+          value:
+            min: 20
+            max: 28
+          note: "Aquarium recommendation."
+        - source:
+            kind: "database"
+            title: "Aqua-Fish: Earth eater, Satanoperca jurupari"
+            url: "https://en.aqua-fish.net/fish/earth-eater"
+            accessed: "2026-10-13"
+          value:
+            min: 24
+            max: 28
+          note: "Aquarium recommendation."
+        - source:
+            kind: "website"
+            title: "Aquaristic Online: Cichlid Eartheater Green Horse Face care data"
+            url: "https://www.aquaristiconline.com.au/collections/aquaristic-online/products/geophagus-jurupari"
+            accessed: "2026-10-13"
+          value:
+            min: 26
+            max: 30
+          note: "Aquarium recommendation."
+        - source:
+            kind: "database"
+            title: "AquariumDomain: Earth Eater Jurupari species profile"
+            url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/EarthEaterJurupari.shtml"
+            accessed: "2026-10-13"
+          value:
+            min: 25
+            max: 29.4
+          note: "77 to 85 F converted to C; separate spawning heat excluded."
+        - source:
+            kind: "database"
+            title: "FishBase, Satanoperca jurupari"
+            url: "https://www.fishbase.se/summary/Satanoperca-jurupari.html"
+            accessed: "2026-10-13"
+          value:
+            min: 24
+            max: 26
+        - source:
+            kind: "website"
+            title: "Fishkeeper: Jurupari Eartheater"
+            url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jurupari-eartheater"
+            accessed: "2026-10-13"
+          value:
+            min: 24
+            max: 28
+        - source:
+            kind: "database"
+            title: "Guidarium: Jurupari Eartheater"
+            url: "https://guidarium.com/fishes/jurupari-eartheater"
+            accessed: "2026-10-13"
+          value:
+            min: 26
+            max: 30
+        - source:
+            kind: "database"
+            title: "Akvaforum: Satanoperca jurupari"
+            url: "https://akvaforum.no/lex/fish.cfm/2283/Satanoperca-jurupari"
+            accessed: "2026-10-13"
+          value:
+            min: 24
+            max: 30
+        - source:
+            kind: "website"
+            title: "Einrichtungsbeispiele: Satanoperca jurupari species directory"
+            url: "https://www.einrichtungsbeispiele.de/zierfische/suedamerika/satanoperca-jurupari-slnk.html"
+            accessed: "2026-10-13"
+          value:
+            min: 25
+            max: 30
+      verification:
+        method: "unanimous"
+        votes:
+          agree: 4
+          total: 4
+    verification:
+      method: "median"
+      votes:
+        agree: 3
+        total: 6
+  ph:
+    value:
+      min: 5.3
+      max: 7.5
+    confidence: "medium"
+    rationale: "The qualified majority selects pH 5.3 to 7.5. Correa directly measured 5.3 to 5.7 in Taraira Lake,
+      where the species was recorded, and Bittencourt measured 6.4 to 6.9 in the species-positive Fortaleza
+      channel. Tavares-Dias and Oliveira give a basin-wide 5.5 to 7.5 interval attributed to an earlier
+      environmental assessment, while Hidalgo Sanchez gives native-drainage station means reaching 7.5. These
+      are partial regional observations. Wider source ranges include Drake's 6.1 to 8.3 at Obidos, Silva's
+      4.62 to 7.86 and Aprile and Darwich's 4.5 to 6.6 in Catalao; species occurrence was not matched to their
+      endpoints. They do not establish broader limits for correctly identified jurupari. Bittencourt's
+      floodplain pH 6.2 to 7.5 is not substituted for its sampled channel. The upper endpoint is habitat-scale
+      evidence rather than a measurement beside an individual fish. Proposals: generator proposed {\"min\":
+      5.3, \"max\": 7.5}; checker-a proposed {\"min\": 5.3, \"max\": 7.5}; checker-b proposed {\"min\": 4.5,
+      \"max\": 7.2}; checker-c proposed {\"min\": 5, \"max\": 7.3}; tiebreaker-1 proposed {\"min\": 5.5,
+      \"max\": 7.5}; tiebreaker-2 proposed {\"min\": 5.3, \"max\": 7.5}."
+    sources:
+      - kind: "literature"
+        title: "Correa (2008). Fish assemblage structure is consistent through an annual hydrological cycle in
+          habitats of a floodplain-lake in the Colombian Amazon. Full text and Tables 1 and 2"
+        url: "https://doi.org/10.1590/S1679-62252008000200014"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Bittencourt et al. (2014). Parasites of native Cichlidae populations and invasive Oreochromis
+          niloticus in tributary of Amazonas River. Full text and Table 1"
+        url: "https://doi.org/10.1590/S1984-29612014006"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Hidalgo Sanchez et al. (2015). Spatial-temporal variation of dissolved inorganic material in the
+          Amazon basin. Full text and Table 2"
+        url: "https://doi.org/10.1590/1809-4392201402722"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Drake et al. (2021). The Pulse of the Amazon. Full text and Tables 1 and 3"
+        url: "https://doi.org/10.1029/2020GB006895"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Hydrochemical classification of Amazonian rivers, a systematic review and meta-analysis"
+        url: "https://doi.org/10.14393/rcg217853272"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Rios-Villamizar et al. (2013). Chemistry of different Amazonian water types for river classification:
+          a preliminary review, Table 1"
+        url: "https://doi.org/10.2495/WS130021"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Vin Kutty: Collecting in the Peruvian Amazon, travelogue with Rio Momon collecting observations"
+        url: "https://www.geocities.ws/napavalley/5491/collectperu.html"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Silva et al. (2019). A contribution to the hydrochemistry and water typology of the Amazon River and
+          its tributaries"
+        url: "https://doi.org/10.14393/rcg207246295"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Tavares-Dias and Oliveira (2018). Patterns of the parasite communities in a fish assemblage of a river
+          in the Brazilian Amazon region. Full text"
+        url: "https://doi.org/10.1515/ap-2018-0035"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Satanoperca jurupari species summary"
+        url: "https://www.fishbase.se/summary/Satanoperca-jurupari.html"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Aprile and Darwich (2013). Nutrients and water-forest interactions in an Amazon floodplain lake: an
+          ecological approach"
+        url: "https://doi.org/10.1590/S2179-975X2013000200008"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Queiroz et al. (2009). Hidroquimica do rio Solimoes na regiao entre Manacapuru e Alvaraes: Amazonas,
+          Brasil"
+        url: "https://doi.org/10.1590/S0044-59672009000400022"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Souto, Oliveira and Silva (2015). Variacao espacial de cations, anions e variaveis fisico-quimicas no
+          rio Solimoes-Amazonas entre Manaus e Jutai"
+        url: "https://doi.org/10.1590/1809-4392201500722"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Correa (2008). Fish assemblage structure is consistent through an annual hydrological cycle in
+            habitats of a floodplain-lake in the Colombian Amazon. Full text and Tables 1 and 2"
+          url: "https://doi.org/10.1590/S1679-62252008000200014"
+          accessed: "2026-10-13"
+        value:
+          min: 5.3
+          max: 5.7
+        note: "Taraira Lake main-channel chemistry; fish listed in the inventory."
+      - source:
+          kind: "literature"
+          title: "Bittencourt et al. (2014). Parasites of native Cichlidae populations and invasive Oreochromis
+            niloticus in tributary of Amazonas River. Full text and Table 1"
+          url: "https://doi.org/10.1590/S1984-29612014006"
+          accessed: "2026-10-13"
+        value:
+          min: 6.4
+          max: 6.9
+        note: "Species-positive channel readings; the separate floodplain span of 6.2 to 7.5 is not assigned to the
+          captured fish."
+      - source:
+          kind: "literature"
+          title: "Hidalgo Sanchez et al. (2015). Spatial-temporal variation of dissolved inorganic material in the
+            Amazon basin. Full text and Table 2"
+          url: "https://doi.org/10.1590/1809-4392201402722"
+          accessed: "2026-10-13"
+        value:
+          min: 6.9
+          max: 7.5
+        note: "Range of station mean pH in native drainages."
+      - source:
+          kind: "literature"
+          title: "Drake et al. (2021). The Pulse of the Amazon. Full text and Tables 1 and 3"
+          url: "https://doi.org/10.1029/2020GB006895"
+          accessed: "2026-10-13"
+        value:
+          min: 6.1
+          max: 8.3
+        note: "Regional mainstem observations; not a demonstrated species-specific envelope."
+      - source:
+          kind: "literature"
+          title: "Aprile and Darwich (2013). Nutrients and water-forest interactions in an Amazon floodplain lake: an
+            ecological approach"
+          url: "https://doi.org/10.1590/S2179-975X2013000200008"
+          accessed: "2026-10-13"
+        value:
+          min: 4.5
+          max: 6.6
+        note: "Spatial mean gradient in a mixed-water floodplain lake near the type region."
+      - source:
+          kind: "literature"
+          title: "Queiroz et al. (2009). Hidroquimica do rio Solimoes na regiao entre Manacapuru e Alvaraes: Amazonas,
+            Brasil"
+          url: "https://doi.org/10.1590/S0044-59672009000400022"
+          accessed: "2026-10-13"
+        value:
+          min: 5.3
+          max: 7.2
+        note: "Solimoes, Purus and tributary field campaign."
+      - source:
+          kind: "literature"
+          title: "Souto, Oliveira and Silva (2015). Variacao espacial de cations, anions e variaveis fisico-quimicas no
+            rio Solimoes-Amazonas entre Manaus e Jutai"
+          url: "https://doi.org/10.1590/1809-4392201500722"
+          accessed: "2026-10-13"
+        value:
+          min: 5.08
+          max: 7.16
+        note: "Main-channel field campaign."
+      - source:
+          kind: "literature"
+          title: "Rios-Villamizar et al. (2013). Chemistry of different Amazonian water types for river classification:
+            a preliminary review, Table 1"
+          url: "https://doi.org/10.2495/WS130021"
+          accessed: "2026-10-13"
+        value:
+          min: 5.03
+          max: 7.27
+        note: "Field means for Tefe 5.03, Jutai 5.96 and Jurua 7.27."
+      - source:
+          kind: "website"
+          title: "Vin Kutty: Collecting in the Peruvian Amazon, travelogue with Rio Momon collecting observations"
+          url: "https://www.geocities.ws/napavalley/5491/collectperu.html"
+          accessed: "2026-10-13"
+        value:
+          min: 6.4
+          max: 6.4
+        note: "Rio Momon measurement in a collecting account reporting S. jurupari."
+      - source:
+          kind: "literature"
+          title: "Silva et al. (2019). A contribution to the hydrochemistry and water typology of the Amazon River and
+            its tributaries"
+          url: "https://doi.org/10.14393/rcg207246295"
+          accessed: "2026-10-13"
+        value:
+          min: 4.62
+          max: 7.86
+        note: "Broader regional observations; species occupancy at these extremes unverified."
+      - source:
+          kind: "literature"
+          title: "Tavares-Dias and Oliveira (2018). Patterns of the parasite communities in a fish assemblage of a river
+            in the Brazilian Amazon region. Full text"
+          url: "https://doi.org/10.1515/ap-2018-0035"
+          accessed: "2026-10-13"
+        value:
+          min: 5.5
+          max: 7.5
+        note: "Igarape Fortaleza basin habitat range attributed to Takiyama et al. (2004); S. jurupari is among the
+          studied fishes, but endpoints are not linked to its capture sites."
+      - source:
+          kind: "database"
+          title: "FishBase: Satanoperca jurupari species summary"
+          url: "https://www.fishbase.se/summary/Satanoperca-jurupari.html"
+          accessed: "2026-10-13"
+        value:
+          min: 6.3
+          max: 7
+        note: "Species environment summary; no individual collecting measurements are supplied on the page."
+    tolerance:
+      value:
+        min: 5
+        max: 7.5
+      confidence: "medium"
+      rationale: "Five of six proposals support the tally's pH 5.0 to 7.5 interval within the comparison threshold.
+        Seriously Fish recommends 5.5 to 7.5 and AquariumDomain 5.0 to 6.5; their combined maintenance
+        envelope contains the decided natural range. Aqua-Fish gives 6.0 to 7.5. Aquarist Atlas allows the
+        wider acidic interval 4.3 to 7.2, but its taxonomic and breeding inconsistencies weaken that claim, so
+        the proposed 4.5 lower limit is not adopted. The outer endpoints are care recommendations rather than
+        demonstrated multiyear physiological limits, and trade misidentification further limits transfer.
+        Proposals: generator proposed {\"min\": 5, \"max\": 7.5}; checker-a proposed {\"min\": 5.3, \"max\":
+        7.5}; checker-b proposed {\"min\": 4.5, \"max\": 7.5}; checker-c proposed {\"min\": 5, \"max\": 7.5};
+        tiebreaker-1 proposed {\"min\": 5, \"max\": 7.5}; tiebreaker-2 proposed {\"min\": 5, \"max\": 7.5}."
+      sources:
+        - kind: "database"
+          title: "Seriously Fish: Satanoperca jurupari"
+          url: "https://www.seriouslyfish.com/species/satanoperca-jurupari/"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "AquariumDomain: Earth Eater Jurupari species profile"
+          url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/EarthEaterJurupari.shtml"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Aqua-Fish: Earth eater, Satanoperca jurupari"
+          url: "https://en.aqua-fish.net/fish/earth-eater"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Lone Star Rare Exotic Fish: Jurupari Eartheater Cichlid care data"
+          url: "https://www.lonestarrareexoticfish.com/products/jurupari-eartheater-cichlid-satanoperca-jurupari-for-sa\
+            le-online"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "FishBase, Satanoperca jurupari"
+          url: "https://www.fishbase.se/summary/Satanoperca-jurupari.html"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Fishkeeper: Jurupari Eartheater"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jurupari-eartheater"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Guidarium: Jurupari Eartheater"
+          url: "https://guidarium.com/fishes/jurupari-eartheater"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Einrichtungsbeispiele: Satanoperca jurupari species directory"
+          url: "https://www.einrichtungsbeispiele.de/zierfische/suedamerika/satanoperca-jurupari-slnk.html"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Akvaforum: Satanoperca jurupari"
+          url: "https://akvaforum.no/lex/fish.cfm/2283/Satanoperca-jurupari"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "FishProfiles.com: Satanoperca jurupari"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Satanoperca_jurupari/"
+          accessed: "2026-10-13"
+      evidence:
+        - source:
+            kind: "database"
+            title: "Seriously Fish: Satanoperca jurupari"
+            url: "https://www.seriouslyfish.com/species/satanoperca-jurupari/"
+            accessed: "2026-10-13"
+          value:
+            min: 5.5
+            max: 7.5
+        - source:
+            kind: "database"
+            title: "AquariumDomain: Earth Eater Jurupari species profile"
+            url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/EarthEaterJurupari.shtml"
+            accessed: "2026-10-13"
+          value:
+            min: 5
+            max: 6.5
+        - source:
+            kind: "database"
+            title: "Aqua-Fish: Earth eater, Satanoperca jurupari"
+            url: "https://en.aqua-fish.net/fish/earth-eater"
+            accessed: "2026-10-13"
+          value:
+            min: 6
+            max: 7.5
+        - source:
+            kind: "website"
+            title: "Lone Star Rare Exotic Fish: Jurupari Eartheater Cichlid care data"
+            url: "https://www.lonestarrareexoticfish.com/products/jurupari-eartheater-cichlid-satanoperca-jurupari-for-sa\
+              le-online"
+            accessed: "2026-10-13"
+          value:
+            min: 5.5
+            max: 7.5
+        - source:
+            kind: "database"
+            title: "FishBase, Satanoperca jurupari"
+            url: "https://www.fishbase.se/summary/Satanoperca-jurupari.html"
+            accessed: "2026-10-13"
+          value:
+            min: 6.3
+            max: 7
+        - source:
+            kind: "website"
+            title: "Fishkeeper: Jurupari Eartheater"
+            url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jurupari-eartheater"
+            accessed: "2026-10-13"
+          value:
+            min: 6
+            max: 7
+        - source:
+            kind: "database"
+            title: "Guidarium: Jurupari Eartheater"
+            url: "https://guidarium.com/fishes/jurupari-eartheater"
+            accessed: "2026-10-13"
+          value:
+            min: 5.5
+            max: 7.5
+        - source:
+            kind: "database"
+            title: "Aquarist Atlas: Satanoperca jurupari"
+            url: "https://www.aquaristatlas.com/species/satanoperca-jurupari/"
+            accessed: "2026-10-13"
+          value:
+            min: 4.3
+            max: 7.2
+          note: "Database target range; source has taxonomic and reproductive inconsistencies."
+        - source:
+            kind: "website"
+            title: "Einrichtungsbeispiele: Satanoperca jurupari species directory"
+            url: "https://www.einrichtungsbeispiele.de/zierfische/suedamerika/satanoperca-jurupari-slnk.html"
+            accessed: "2026-10-13"
+          value:
+            min: 6
+            max: 7.2
+        - source:
+            kind: "database"
+            title: "Akvaforum: Satanoperca jurupari"
+            url: "https://akvaforum.no/lex/fish.cfm/2283/Satanoperca-jurupari"
+            accessed: "2026-10-13"
+          value:
+            min: 6.3
+            max: 7
+        - source:
+            kind: "database"
+            title: "FishProfiles.com: Satanoperca jurupari"
+            url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Satanoperca_jurupari/"
+            accessed: "2026-10-13"
+          value:
+            min: 6.3
+            max: 7
+          note: "Narrower species-labelled aquarium recommendation; not an experimentally demonstrated exclusion of
+            other pH values."
+      verification:
+        method: "qualified-majority"
+        votes:
+          agree: 5
+          total: 6
+    verification:
+      method: "qualified-majority"
+      votes:
+        agree: 5
+        total: 6
+  ghDgh:
+    value:
+      min: 0
+      max: 5
+    confidence: "low"
+    rationale: "All four votes agree within the permitted 2 dGH comparison threshold. Their endpoint medians round
+      to 0 and 5 dGH, as fixed by the tally; agreement does not make the underlying habitat transfer certain.
+      Rios-Villamizar measured Ca and Mg in the Jutai, Tefe and Jurua; Ca mg/L / 7.14 plus Mg mg/L / 4.34
+      gives approximately 0.11 to 5.58 dGH. That source range is wider at its upper end than the rounded
+      decision. Drake independently supports about 0.87 to 1.70 dGH in the mainstem, and the Catalao, Queiroz
+      and Souto studies support mineral-poor regional water. These are regional proxies without simultaneous
+      species sampling. The rounded zero means extremely dilute water, not a demonstrated absence of every
+      hardness ion. Conductivity and aquarium hardness recommendations are not used as natural GH
+      measurements. Proposals: generator proposed {\"min\": 0.1, \"max\": 5.6}; checker-a proposed {\"min\":
+      0.5, \"max\": 5}; checker-b proposed {\"min\": 0, \"max\": 3.5}; checker-c proposed {\"min\": 0,
+      \"max\": 6}."
+    sources:
+      - kind: "literature"
+        title: "Rios-Villamizar et al. (2013). Chemistry of different Amazonian water types for river classification.
+          Full text and Table 1"
+        url: "https://doi.org/10.2495/WS130021"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Drake et al. (2021). The Pulse of the Amazon. Full text and Tables 1 and 3"
+        url: "https://doi.org/10.1029/2020GB006895"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Satanoperca jurupari"
+        url: "https://www.seriouslyfish.com/species/satanoperca-jurupari/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Seasonal and spatial variations in limnological conditions of a floodplain lake (lake Catalao)
+          connected to both the Solimoes and Negro Rivers, Central Amazonia"
+        url: "https://doi.org/10.1590/s0044-59672014000100012"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Hydrochemistry of oxbow lakes of the Chandless River, southwest Amazon"
+        url: "https://doi.org/10.4136/ambi-agua.3097"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Hydrochemical classification of Amazonian rivers, a systematic review and meta-analysis"
+        url: "https://doi.org/10.14393/rcg217853272"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Queiroz et al. (2009). Hidroquimica do rio Solimoes na regiao entre Manacapuru e Alvaraes: Amazonas,
+          Brasil"
+        url: "https://doi.org/10.1590/S0044-59672009000400022"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Souto, Oliveira and Silva (2015). Variacao espacial de cations, anions e variaveis fisico-quimicas no
+          rio Solimoes-Amazonas entre Manaus e Jutai"
+        url: "https://doi.org/10.1590/1809-4392201500722"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Aprile and Darwich (2013). Nutrients and water-forest interactions in an Amazon floodplain lake: an
+          ecological approach"
+        url: "https://doi.org/10.1590/S2179-975X2013000200008"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Borghezan et al. (2021). A Review on Fish Sensory Systems and Amazon Water Types With Implications to
+          Biodiversity, Table 1"
+        url: "https://doi.org/10.3389/fevo.2020.589760"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Rios-Villamizar et al. (2013). Chemistry of different Amazonian water types for river classification.
+            Full text and Table 1"
+          url: "https://doi.org/10.2495/WS130021"
+          accessed: "2026-10-13"
+        value:
+          min: 0.11
+          max: 5.58
+        note: "Ca and Mg concentrations converted from Jutai, Tefe and Jurua river samples; regional habitat proxy,
+          not simultaneous species collection."
+      - source:
+          kind: "literature"
+          title: "Drake et al. (2021). The Pulse of the Amazon. Full text and Tables 1 and 3"
+          url: "https://doi.org/10.1029/2020GB006895"
+          accessed: "2026-10-13"
+        value:
+          min: 0.87
+          max: 1.7
+        note: "Converted paired Obidos Ca and Mg measurements; regional mainstem proxy."
+      - source:
+          kind: "literature"
+          title: "Seasonal and spatial variations in limnological conditions of a floodplain lake (lake Catalao)
+            connected to both the Solimoes and Negro Rivers, Central Amazonia"
+          url: "https://doi.org/10.1590/s0044-59672014000100012"
+          accessed: "2026-10-13"
+        value:
+          min: 0.31
+          max: 1.14
+        note: "Converted paired seasonal mean Ca and Mg in surface and bottom samples from Table 2; regional lake
+          proxy. This replaces checker-a's unconfirmed 0.4-only reading."
+      - source:
+          kind: "literature"
+          title: "Hydrochemistry of oxbow lakes of the Chandless River, southwest Amazon"
+          url: "https://doi.org/10.4136/ambi-agua.3097"
+          accessed: "2026-10-13"
+        value:
+          min: 2.6
+          max: 5
+        note: "calculated; river and lakes of the whitewater Purus basin"
+      - source:
+          kind: "literature"
+          title: "Queiroz et al. (2009). Hidroquimica do rio Solimoes na regiao entre Manacapuru e Alvaraes: Amazonas,
+            Brasil"
+          url: "https://doi.org/10.1590/S0044-59672009000400022"
+          accessed: "2026-10-13"
+        value:
+          min: 0.04
+          max: 2.14
+        note: "Calculated from paired Ca and Mg values in Table 1."
+      - source:
+          kind: "literature"
+          title: "Souto, Oliveira and Silva (2015). Variacao espacial de cations, anions e variaveis fisico-quimicas no
+            rio Solimoes-Amazonas entre Manaus e Jutai"
+          url: "https://doi.org/10.1590/1809-4392201500722"
+          accessed: "2026-10-13"
+        value:
+          min: 0.13
+          max: 3.35
+        note: "Calculated from paired Ca and Mg values in Table 4."
+      - source:
+          kind: "literature"
+          title: "Aprile and Darwich (2013). Nutrients and water-forest interactions in an Amazon floodplain lake: an
+            ecological approach"
+          url: "https://doi.org/10.1590/S2179-975X2013000200008"
+          accessed: "2026-10-13"
+        value:
+          min: 0.8
+          max: 1.7
+        note: "Approximate bounds from the reported Ca 4.7 to 8.8 and Mg 0.6 to 1.9 mg/L; extrema need not coincide."
+      - source:
+          kind: "literature"
+          title: "Borghezan et al. (2021). A Review on Fish Sensory Systems and Amazon Water Types With Implications to
+            Biodiversity, Table 1"
+          url: "https://doi.org/10.3389/fevo.2020.589760"
+          accessed: "2026-10-13"
+        value:
+          min: 0.05
+          max: 1.53
+        note: "Regional blackwater and whitewater calcium-magnesium compilation; habitat proxy, not a new independent
+          sampling campaign."
+    tolerance:
+      value:
+        min: 0
+        max: 12
+      confidence: "low"
+      rationale: "The four proposals agree within 2 dGH and the tally selects 0 to 12 dGH. Seriously Fish states 2
+        to 12 dGH, Guidarium 1 to 10 and Akvaforum 5 to 10. Fishkeeper permits up to 12 and the low native
+        mineral concentrations justify an inferred lower extension to the rounded zero. Wider source ranges
+        are Aqua-Fish 4 to 18 dGH and Einrichtungsbeispiele 2 to 15 dGH; their upper limits lack strong
+        independent confirmation for identified jurupari and are not adopted. Neither near-zero aquarium
+        hardness nor the upper endpoint has been demonstrated in a multiyear experiment, so confidence remains
+        low. Proposals: generator proposed {\"min\": 0.1, \"max\": 12}; checker-a proposed {\"min\": 0.5,
+        \"max\": 12}; checker-b proposed {\"min\": 0, \"max\": 12}; checker-c proposed {\"min\": 0, \"max\":
+        12}."
+      sources:
+        - kind: "database"
+          title: "Seriously Fish: Satanoperca jurupari"
+          url: "https://www.seriouslyfish.com/species/satanoperca-jurupari/"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Aquaristic Online: Cichlid Eartheater Green Horse Face care data"
+          url: "https://www.aquaristiconline.com.au/collections/aquaristic-online/products/geophagus-jurupari"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Lone Star Rare Exotic Fish: Jurupari Eartheater Cichlid care data"
+          url: "https://www.lonestarrareexoticfish.com/products/jurupari-eartheater-cichlid-satanoperca-jurupari-for-sa\
+            le-online"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Aqua-Fish: Earth eater, Satanoperca jurupari"
+          url: "https://en.aqua-fish.net/fish/earth-eater"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Rios-Villamizar et al. (2013). Chemistry of different Amazonian water types for river classification.
+            Full text and Table 1"
+          url: "https://doi.org/10.2495/WS130021"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "FishBase, Satanoperca jurupari"
+          url: "https://www.fishbase.se/summary/Satanoperca-jurupari.html"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Fishkeeper: Jurupari Eartheater"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jurupari-eartheater"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Guidarium: Jurupari Eartheater"
+          url: "https://guidarium.com/fishes/jurupari-eartheater"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Aquarist Atlas: Satanoperca jurupari"
+          url: "https://www.aquaristatlas.com/species/satanoperca-jurupari/"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Akvaforum: Satanoperca jurupari"
+          url: "https://akvaforum.no/lex/fish.cfm/2283/Satanoperca-jurupari"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Einrichtungsbeispiele: Satanoperca jurupari species directory"
+          url: "https://www.einrichtungsbeispiele.de/zierfische/suedamerika/satanoperca-jurupari-slnk.html"
+          accessed: "2026-10-13"
+      evidence:
+        - source:
+            kind: "database"
+            title: "Seriously Fish: Satanoperca jurupari"
+            url: "https://www.seriouslyfish.com/species/satanoperca-jurupari/"
+            accessed: "2026-10-13"
+          value:
+            min: 2
+            max: 12
+        - source:
+            kind: "website"
+            title: "Aquaristic Online: Cichlid Eartheater Green Horse Face care data"
+            url: "https://www.aquaristiconline.com.au/collections/aquaristic-online/products/geophagus-jurupari"
+            accessed: "2026-10-13"
+          value:
+            min: 1
+            max: 8
+        - source:
+            kind: "website"
+            title: "Lone Star Rare Exotic Fish: Jurupari Eartheater Cichlid care data"
+            url: "https://www.lonestarrareexoticfish.com/products/jurupari-eartheater-cichlid-satanoperca-jurupari-for-sa\
+              le-online"
+            accessed: "2026-10-13"
+          value:
+            min: 5
+            max: 12
+        - source:
+            kind: "database"
+            title: "Aqua-Fish: Earth eater, Satanoperca jurupari"
+            url: "https://en.aqua-fish.net/fish/earth-eater"
+            accessed: "2026-10-13"
+          value:
+            min: 4
+            max: 18
+          note: "Broader claim not used for the final upper limit."
+        - source:
+            kind: "literature"
+            title: "Rios-Villamizar et al. (2013). Chemistry of different Amazonian water types for river classification.
+              Full text and Table 1"
+            url: "https://doi.org/10.2495/WS130021"
+            accessed: "2026-10-13"
+          value:
+            min: 0.1
+            max: 5.6
+          note: "Native regional evidence supporting an inferred soft-water extension, not aquarium longevity."
+        - source:
+            kind: "database"
+            title: "FishBase, Satanoperca jurupari"
+            url: "https://www.fishbase.se/summary/Satanoperca-jurupari.html"
+            accessed: "2026-10-13"
+          value:
+            min: 5
+            max: 10
+        - source:
+            kind: "website"
+            title: "Fishkeeper: Jurupari Eartheater"
+            url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jurupari-eartheater"
+            accessed: "2026-10-13"
+          value:
+            min: 0
+            max: 12
+        - source:
+            kind: "database"
+            title: "Guidarium: Jurupari Eartheater"
+            url: "https://guidarium.com/fishes/jurupari-eartheater"
+            accessed: "2026-10-13"
+          value:
+            min: 1
+            max: 10
+        - source:
+            kind: "database"
+            title: "Aquarist Atlas: Satanoperca jurupari"
+            url: "https://www.aquaristatlas.com/species/satanoperca-jurupari/"
+            accessed: "2026-10-13"
+          value:
+            min: 0
+            max: 8
+          note: "Database summary; broader hard-water claim in prose is weakly documented."
+        - source:
+            kind: "database"
+            title: "Akvaforum: Satanoperca jurupari"
+            url: "https://akvaforum.no/lex/fish.cfm/2283/Satanoperca-jurupari"
+            accessed: "2026-10-13"
+          value:
+            min: 5
+            max: 10
+        - source:
+            kind: "website"
+            title: "Einrichtungsbeispiele: Satanoperca jurupari species directory"
+            url: "https://www.einrichtungsbeispiele.de/zierfische/suedamerika/satanoperca-jurupari-slnk.html"
+            accessed: "2026-10-13"
+          value:
+            min: 2
+            max: 15
+      verification:
+        method: "unanimous"
+        votes:
+          agree: 4
+          total: 4
+    verification:
+      method: "unanimous"
+      votes:
+        agree: 4
+        total: 4
+  khDkh:
+    value:
+      min: 0
+      max: 5
+    confidence: "low"
+    rationale: "The tally fixes a rounded regional estimate of 0 to 5 dKH. Endpoint medians of the four broadly
+      agreeing proposals round to these bounds; natural KH has no verification object. Rios-Villamizar's Tefe,
+      Jutai and Jurua bicarbonate concentrations of 6.86, 8.78 and 106.14 mg/L yield approximately 0.31 to
+      4.87 dKH after division by 21.8. Souto's alkalinity table independently spans about 0.20 to 4.85 dKH
+      after dividing mg/L CaCO3 by 17.848, and Queiroz reports concentrations extending below detection.
+      Catalao and Barro Branco are additional regional proxies. Drake's ion-charge residual is only
+      contextual, not measured carbonate hardness. Organic contributors to alkalinity and missing
+      fish-locality linkage limit interpretation; zero is rounded weak buffering rather than proven chemical
+      zero. Proposals: generator proposed {\"min\": 0.3, \"max\": 4.9}; checker-a proposed {\"min\": 0.5,
+      \"max\": 3}; checker-b proposed {\"min\": 0, \"max\": 5}; checker-c proposed {\"min\": 0, \"max\": 5}."
+    sources:
+      - kind: "literature"
+        title: "Rios-Villamizar et al. (2013). Chemistry of different Amazonian water types for river classification.
+          Full text and Table 1"
+        url: "https://doi.org/10.2495/WS130021"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Drake et al. (2021). The Pulse of the Amazon. Full text and Tables 1 and 3"
+        url: "https://doi.org/10.1029/2020GB006895"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Seasonal and spatial variations in limnological conditions of a floodplain lake (lake Catalao)
+          connected to both the Solimoes and Negro Rivers, Central Amazonia"
+        url: "https://doi.org/10.1590/s0044-59672014000100012"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Hydrochemical classification of Amazonian rivers, a systematic review and meta-analysis"
+        url: "https://doi.org/10.14393/rcg217853272"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Souto, Oliveira and Silva (2015). Variacao espacial de cations, anions e variaveis fisico-quimicas no
+          rio Solimoes-Amazonas entre Manaus e Jutai"
+        url: "https://doi.org/10.1590/1809-4392201500722"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Queiroz et al. (2009). Hidroquimica do rio Solimoes na regiao entre Manacapuru e Alvaraes: Amazonas,
+          Brasil"
+        url: "https://doi.org/10.1590/S0044-59672009000400022"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Franco-de-Sa and Val (2014). Copper toxicity for Scinax ruber and Rhinella granulosa of the Amazon:
+          Potential of Biotic Ligand Model to predict toxicity in urban streams"
+        url: "https://doi.org/10.1590/1809-4392201400383"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Rios-Villamizar et al. (2013). Chemistry of different Amazonian water types for river classification.
+            Full text and Table 1"
+          url: "https://doi.org/10.2495/WS130021"
+          accessed: "2026-10-13"
+        value:
+          min: 0.31
+          max: 4.87
+        note: "Measured regional bicarbonate converted by HCO3 mg/L divided by 21.8; not direct fish-associated KH
+          titration."
+      - source:
+          kind: "literature"
+          title: "Drake et al. (2021). The Pulse of the Amazon. Full text and Tables 1 and 3"
+          url: "https://doi.org/10.1029/2020GB006895"
+          accessed: "2026-10-13"
+        value:
+          min: 0.94
+          max: 1.64
+        note: "Calculated charge-residual proxy from measured ions; not a direct KH measurement."
+      - source:
+          kind: "literature"
+          title: "Seasonal and spatial variations in limnological conditions of a floodplain lake (lake Catalao)
+            connected to both the Solimoes and Negro Rivers, Central Amazonia"
+          url: "https://doi.org/10.1590/s0044-59672014000100012"
+          accessed: "2026-10-13"
+        value:
+          min: 0.56
+          max: 2.68
+        note: "Table 2 seasonal mean bicarbonate alkalinity spans 12.2 to 58.4 mg/L across surface and bottom samples;
+          converted by division by 21.8. The checker-a 0.7 to 2.4 interval was not reproduced."
+      - source:
+          kind: "literature"
+          title: "Souto, Oliveira and Silva (2015). Variacao espacial de cations, anions e variaveis fisico-quimicas no
+            rio Solimoes-Amazonas entre Manaus e Jutai"
+          url: "https://doi.org/10.1590/1809-4392201500722"
+          accessed: "2026-10-13"
+        value:
+          min: 0.2
+          max: 4.85
+        note: "Alkalinity as CaCO3 converted to dKH; table values take precedence over inconsistent prose."
+      - source:
+          kind: "literature"
+          title: "Queiroz et al. (2009). Hidroquimica do rio Solimoes na regiao entre Manacapuru e Alvaraes: Amazonas,
+            Brasil"
+          url: "https://doi.org/10.1590/S0044-59672009000400022"
+          accessed: "2026-10-13"
+        value:
+          min: 0
+          max: 1.7
+        note: "Bicarbonate-equivalent dKH; the lower end is below detection, not proven exactly zero."
+      - source:
+          kind: "literature"
+          title: "Franco-de-Sa and Val (2014). Copper toxicity for Scinax ruber and Rhinella granulosa of the Amazon:
+            Potential of Biotic Ligand Model to predict toxicity in urban streams"
+          url: "https://doi.org/10.1590/1809-4392201400383"
+          accessed: "2026-10-13"
+        value:
+          min: 0.16
+          max: 0.16
+        note: "Pristine Barro Branco water alkalinity divided by 17.848 mg/L CaCO3 per dKH; excludes well water."
+    tolerance:
+      value:
+        min: 0
+        max: 7
+      confidence: "low"
+      rationale: "The four proposals agree within 2 dKH even though their exact bounds differ. The tally rounds
+        their median lower endpoint to 0 and upper endpoint of 6.5 to 7 dKH. AquariumDomain explicitly
+        recommends 2 to 7 dKH and the Lone Star retailer 2 to 6 dKH; the latter carries lower weight because
+        its breeding description is incorrect. Natural bicarbonate data justify the inferred extension below 2
+        to contain the decided natural range. This is not derived from GH, nor is there a verified multiyear
+        experiment at near-zero or 7 dKH. The broader checker proposal up to 8 dKH is not supported by either
+        explicit KH recommendation. Proposals: generator proposed {\"min\": 0.3, \"max\": 6}; checker-a
+        proposed {\"min\": 0.5, \"max\": 8}; checker-b proposed {\"min\": 0, \"max\": 6}; checker-c proposed
+        {\"min\": 0, \"max\": 7}."
+      sources:
+        - kind: "database"
+          title: "AquariumDomain: Earth Eater Jurupari species profile"
+          url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/EarthEaterJurupari.shtml"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Lone Star Rare Exotic Fish: Jurupari Eartheater Cichlid care data"
+          url: "https://www.lonestarrareexoticfish.com/products/jurupari-eartheater-cichlid-satanoperca-jurupari-for-sa\
+            le-online"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Rios-Villamizar et al. (2013). Chemistry of different Amazonian water types for river classification.
+            Full text and Table 1"
+          url: "https://doi.org/10.2495/WS130021"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Seriously Fish: Satanoperca jurupari"
+          url: "https://www.seriouslyfish.com/species/satanoperca-jurupari/"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Fishkeeper: Jurupari Eartheater"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jurupari-eartheater"
+          accessed: "2026-10-13"
+      evidence:
+        - source:
+            kind: "database"
+            title: "AquariumDomain: Earth Eater Jurupari species profile"
+            url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/EarthEaterJurupari.shtml"
+            accessed: "2026-10-13"
+          value:
+            min: 2
+            max: 7
+        - source:
+            kind: "website"
+            title: "Lone Star Rare Exotic Fish: Jurupari Eartheater Cichlid care data"
+            url: "https://www.lonestarrareexoticfish.com/products/jurupari-eartheater-cichlid-satanoperca-jurupari-for-sa\
+              le-online"
+            accessed: "2026-10-13"
+          value:
+            min: 2
+            max: 6
+        - source:
+            kind: "literature"
+            title: "Rios-Villamizar et al. (2013). Chemistry of different Amazonian water types for river classification.
+              Full text and Table 1"
+            url: "https://doi.org/10.2495/WS130021"
+            accessed: "2026-10-13"
+          value:
+            min: 0.3
+            max: 4.9
+          note: "Native buffering proxy supporting an inferred lower extension."
+      verification:
+        method: "unanimous"
+        votes:
+          agree: 4
+          total: 4
+  maxSizeCm:
+    value:
+      male: 25
+      female: 23
+    confidence: "medium"
+    rationale: "Generator and checker-b proposed male 25 and female 23 cm; checker-a proposed 23 and 20, and
+      checker-c 25 and 22. Aqua-Fish gives usual aquarium sizes of 20 to 25 cm and AquariumDomain about 25.4
+      cm, supporting 25 cm for a well-grown male. The larger 23 cm female planning estimate is retained
+      conservatively within the unquantified report that females are smaller. No sex-specific aquarium series
+      establishes that difference. FishBase records 26.0 cm male/unsexed and 23.3 cm female in standard
+      length; those record measurements are not adopted as typical aquarium total lengths."
+    sources:
+      - kind: "database"
+        title: "Aqua-Fish: Earth eater, Satanoperca jurupari"
+        url: "https://en.aqua-fish.net/fish/earth-eater"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "AquariumDomain: Earth Eater Jurupari species profile"
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/EarthEaterJurupari.shtml"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Satanoperca jurupari"
+        url: "https://www.seriouslyfish.com/species/satanoperca-jurupari/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Satanoperca jurupari species summary"
+        url: "https://www.fishbase.se/summary/Satanoperca-jurupari.html"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Fishkeeper: Jurupari Eartheater"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jurupari-eartheater"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishProfiles: Satanoperca jurupari"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Satanoperca_jurupari/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Akvaforum: Satanoperca jurupari"
+        url: "https://akvaforum.no/lex/fish.cfm/2283/Satanoperca-jurupari"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Aqua-Fish: Earth eater, Satanoperca jurupari"
+          url: "https://en.aqua-fish.net/fish/earth-eater"
+          accessed: "2026-10-13"
+        value:
+          male: 25
+          female: 25
+        note: "Unsexed maximum of usual aquarium size; female planning reduction is separate inference."
+      - source:
+          kind: "database"
+          title: "AquariumDomain: Earth Eater Jurupari species profile"
+          url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/EarthEaterJurupari.shtml"
+          accessed: "2026-10-13"
+        value:
+          male: 25.4
+          female: 25.4
+        note: "Unsexed aquarium maximum converted from 10 inches."
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Satanoperca jurupari"
+          url: "https://www.seriouslyfish.com/species/satanoperca-jurupari/"
+          accessed: "2026-10-13"
+        value:
+          male: 22
+          female: 20
+        note: "185 mm SL converted to total length"
+      - source:
+          kind: "database"
+          title: "FishBase, Satanoperca jurupari"
+          url: "https://www.fishbase.se/summary/Satanoperca-jurupari.html"
+          accessed: "2026-10-13"
+        value:
+          male: 26
+          female: 23.3
+        note: "record sizes in SL"
+      - source:
+          kind: "website"
+          title: "Fishkeeper: Jurupari Eartheater"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jurupari-eartheater"
+          accessed: "2026-10-13"
+        value:
+          male: 22
+          female: 22
+      - source:
+          kind: "database"
+          title: "FishProfiles: Satanoperca jurupari"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Satanoperca_jurupari/"
+          accessed: "2026-10-13"
+        value:
+          male: 24
+          female: 24
+        note: "Database aquarium maxima."
+      - source:
+          kind: "database"
+          title: "Akvaforum: Satanoperca jurupari"
+          url: "https://akvaforum.no/lex/fish.cfm/2283/Satanoperca-jurupari"
+          accessed: "2026-10-13"
+        value:
+          male: 25
+          female: 25
+        note: "Unsexed maximum; males described as somewhat larger."
+  predation:
+    value: 1
+    confidence: "medium"
+    rationale: "Four of six votes select level 1 by qualified majority. Explicit conspecific fry consumption in
+      Seriously Fish and small-fish items in the 2017 Amazon diet accounts support opportunistic prey-taking.
+      Level 0 would omit that evidence; level 2 would require regular predation on mouth-sized fish that the
+      readable sources do not establish. FishProfiles warns about swallowable companions without demonstrating
+      consumption frequency, and Aquarist Atlas's stronger piscivory claim lacks a verified primary result.
+      The rubric's 2 cm boundary is a category definition, not a measured maximum prey size. The two parasite
+      papers partly reuse diet background and are not two independent prey experiments. Proposals: generator
+      proposed 1; checker-a proposed 0; checker-b proposed 2; checker-c proposed 1; tiebreaker-1 proposed 1;
+      tiebreaker-2 proposed 1."
+    sources:
+      - kind: "literature"
+        title: "Tavares-Dias et al. (2017). Parasitic diversity of a wild Satanoperca jurupari population. Full text"
+        url: "https://doi.org/10.1590/1809-4392201602514"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Oliveira et al. (2017). Ectoparasites community in Satanoperca jurupari from the Jari River. Full
+          text"
+        url: "https://doi.org/10.1590/S1984-29612017028"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Satanoperca jurupari"
+        url: "https://www.seriouslyfish.com/species/satanoperca-jurupari/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Brejao, Gerhard and Zuanon (2013). Functional trophic composition of the ichthyofauna of forest
+          streams in eastern Brazilian Amazon"
+        url: "https://doi.org/10.1590/s1679-62252013005000006"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishProfiles.com: Satanoperca jurupari"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Satanoperca_jurupari/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Satanoperca jurupari species summary and reference 1672"
+        url: "https://www.fishbase.se/summary/Satanoperca-jurupari.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aquarist Atlas: Satanoperca jurupari"
+        url: "https://www.aquaristatlas.com/species/satanoperca-jurupari/"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Satanoperca jurupari"
+          url: "https://www.seriouslyfish.com/species/satanoperca-jurupari/"
+          accessed: "2026-10-13"
+        value: 1
+        note: "Opportunistic consumption of released conspecific fry supports level 1; the rubric cutoff is not a
+          measured prey length."
+      - source:
+          kind: "literature"
+          title: "Tavares-Dias et al. (2017). Parasitic diversity of a wild Satanoperca jurupari population. Full text"
+          url: "https://doi.org/10.1590/1809-4392201602514"
+          accessed: "2026-10-13"
+        value: 1
+        note: "Small fish listed in diet; inferred opportunistic level, sizes unknown."
+      - source:
+          kind: "literature"
+          title: "Oliveira et al. (2017). Ectoparasites community in Satanoperca jurupari from the Jari River. Full
+            text"
+          url: "https://doi.org/10.1590/S1984-29612017028"
+          accessed: "2026-10-13"
+        value: 1
+        note: "Same secondary diet background as the Fortaleza paper, not independent quantitative proof."
+      - source:
+          kind: "database"
+          title: "FishBase, Satanoperca jurupari"
+          url: "https://www.fishbase.se/summary/Satanoperca-jurupari.html"
+          accessed: "2026-10-13"
+        value: 0
+        note: "food is crustaceans, insects and fruit seeds"
+      - source:
+          kind: "database"
+          title: "FishProfiles: Satanoperca jurupari"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Satanoperca_jurupari/"
+          accessed: "2026-10-13"
+        value: 1
+        note: "Small-fish feeding and swallowing warnings lack quantified prey frequency; level 1 is the adjudicated
+          interpretation, while checker-b interpreted this as level 2."
+      - source:
+          kind: "database"
+          title: "Aquarist Atlas: Satanoperca jurupari"
+          url: "https://www.aquaristatlas.com/species/satanoperca-jurupari/"
+          accessed: "2026-10-13"
+        value: 3
+        note: "Secondary claim of about half gut contents as fish in a Rio Negro population; primary result not
+          verified."
+      - source:
+          kind: "literature"
+          title: "Brejao, Gerhard and Zuanon (2013). Functional trophic composition of the ichthyofauna of forest
+            streams in eastern Brazilian Amazon"
+          url: "https://doi.org/10.1590/s1679-62252013005000006"
+          accessed: "2026-10-13"
+        value: 1
+        note: "Contextual support only: observed substrate sifting. This feeding study does not measure maximum prey
+          size."
+    verification:
+      method: "qualified-majority"
+      votes:
+        agree: 4
+        total: 6
+  diet:
+    value:
+      type: "omnivore"
+      bloatSensitive: false
+      foods:
+        - "Fine sinking complete food with plant ingredients"
+        - "Small aquatic invertebrates"
+        - "Artemia and insect larvae"
+        - "Occasional vegetable foods"
+    confidence: "medium"
+    rationale: "All four votes agree on omnivore and bloatSensitive false; the tally preserves the generator's
+      food suggestions. Seeds and plant material alongside crustaceans, insects and occasional small fish
+      support mixed feeding in FishBase and Amazon literature. Seriously Fish recommends small animal foods
+      plus plant-containing prepared food. False means the particular high-protein bloat conflict is not
+      established, not immunity from digestive illness. Bednarczuk's stronger bloat warning concerns other
+      Satanoperca species and cannot be transferred automatically to jurupari. Proposals: generator proposed
+      {\"type\": \"omnivore\", \"bloatSensitive\": false, \"foods\": [\"Fine sinking complete food with plant
+      ingredients\", \"Small aquatic invertebrates\", \"Artemia and insect larvae\", \"Occasional vegetable
+      foods\"]}; checker-a proposed {\"type\": \"omnivore\", \"bloatSensitive\": false, \"foods\": [\"fine
+      pellets\", \"bloodworm\", \"brine shrimp\", \"daphnia\", \"spirulina\"]}; checker-b proposed {\"type\":
+      \"omnivore\", \"bloatSensitive\": false, \"foods\": [\"small crustaceans\", \"insect larvae\", \"small
+      sinking pellets\", \"seeds and other plant material\", \"occasional small fish\"]}; checker-c proposed
+      {\"type\": \"omnivore\", \"bloatSensitive\": false, \"foods\": [\"Small crustaceans\", \"Insect
+      larvae\", \"Fine sinking prepared food\", \"Plant material and seeds\"]}."
+    sources:
+      - kind: "database"
+        title: "FishBase: Satanoperca jurupari species summary"
+        url: "https://www.fishbase.se/summary/Satanoperca-jurupari.html"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Tavares-Dias et al. (2017). Parasitic diversity of a wild Satanoperca jurupari population. Full text"
+        url: "https://doi.org/10.1590/1809-4392201602514"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aqua-Fish: Earth eater, Satanoperca jurupari"
+        url: "https://en.aqua-fish.net/fish/earth-eater"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "AquariumDomain: Earth Eater Jurupari species profile"
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/EarthEaterJurupari.shtml"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Satanoperca jurupari"
+        url: "https://www.seriouslyfish.com/species/satanoperca-jurupari/"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Fishkeeper: Jurupari Eartheater"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jurupari-eartheater"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Bednarczuk: Picking the Right Eartheater for your Tank, Tropical Fish Hobbyist"
+        url: "https://www.tfhmagazine.com/articles/freshwater/picking-the-right-eartheater-for-your-tank-full-article"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Oliveira et al. (2017). Ectoparasites community in Satanoperca jurupari from the Jari River"
+        url: "https://doi.org/10.1590/S1984-29612017028"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "FishBase: Satanoperca jurupari species summary"
+          url: "https://www.fishbase.se/summary/Satanoperca-jurupari.html"
+          accessed: "2026-10-13"
+        value:
+          type: "omnivore"
+          bloatSensitive: false
+        note: "Plant seeds plus insects and crustaceans; type inferred from foods, bloat flag not directly tested."
+      - source:
+          kind: "literature"
+          title: "Tavares-Dias et al. (2017). Parasitic diversity of a wild Satanoperca jurupari population. Full text"
+          url: "https://doi.org/10.1590/1809-4392201602514"
+          accessed: "2026-10-13"
+        value:
+          type: "omnivore"
+          bloatSensitive: false
+        note: "Mixed plant and animal diet; no specific protein-linked bloat diagnosis established."
+      - source:
+          kind: "database"
+          title: "Aqua-Fish: Earth eater, Satanoperca jurupari"
+          url: "https://en.aqua-fish.net/fish/earth-eater"
+          accessed: "2026-10-13"
+        value:
+          type: "omnivore"
+          bloatSensitive: false
+        note: "Mixed aquarium feeding; flag is a cautious absence-of-evidence interpretation."
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Satanoperca jurupari"
+          url: "https://www.seriouslyfish.com/species/satanoperca-jurupari/"
+          accessed: "2026-10-13"
+        value:
+          type: "omnivore"
+      - source:
+          kind: "website"
+          title: "Fishkeeper: Jurupari Eartheater"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jurupari-eartheater"
+          accessed: "2026-10-13"
+        value:
+          type: "omnivore"
+      - source:
+          kind: "literature"
+          title: "Bednarczuk: Picking the Right Eartheater for your Tank, Tropical Fish Hobbyist"
+          url: "https://www.tfhmagazine.com/articles/freshwater/picking-the-right-eartheater-for-your-tank-full-article"
+          accessed: "2026-10-13"
+        value:
+          type: "omnivore"
+          bloatSensitive: false
+        note: "Bloat discussion concerns other Satanoperca species and does not establish this flag for jurupari."
+      - source:
+          kind: "literature"
+          title: "Oliveira et al. (2017). Ectoparasites community in Satanoperca jurupari from the Jari River"
+          url: "https://doi.org/10.1590/S1984-29612017028"
+          accessed: "2026-10-13"
+        value:
+          type: "omnivore"
+          bloatSensitive: false
+        note: "Omnivory stated; no protein-linked bloat sensitivity reported, so the flag is inferred."
+      - source:
+          kind: "database"
+          title: "AquariumDomain: Earth Eater Jurupari species profile"
+          url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/EarthEaterJurupari.shtml"
+          accessed: "2026-10-13"
+        value:
+          type: "omnivore"
+          bloatSensitive: false
+        note: "Mixed prepared and animal foods recommended; bloat flag not explicitly discussed."
+    verification:
+      method: "unanimous"
+      votes:
+        agree: 4
+        total: 4
+  aggressionConspecific:
+    value: 2
+    confidence: "medium"
+    rationale: "Adults form a rank order, and a group allows subordinates to avoid dominant individuals. Breeding
+      disputes increase chasing. Level 2 represents hierarchy-related pursuit in the recommended large tank
+      and group rather than the severe bullying possible in an undersized setup."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Satanoperca jurupari"
+        url: "https://www.seriouslyfish.com/species/satanoperca-jurupari/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aqua-Fish: Earth eater, Satanoperca jurupari"
+        url: "https://en.aqua-fish.net/fish/earth-eater"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Aquaristic Online: Cichlid Eartheater Green Horse Face care data"
+        url: "https://www.aquaristiconline.com.au/collections/aquaristic-online/products/geophagus-jurupari"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Fishkeeper: Jurupari Eartheater"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jurupari-eartheater"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Akvaforum: Satanoperca jurupari"
+        url: "https://akvaforum.no/lex/fish.cfm/2283/Satanoperca-jurupari"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Satanoperca jurupari"
+          url: "https://www.seriouslyfish.com/species/satanoperca-jurupari/"
+          accessed: "2026-10-13"
+        value: 2
+        note: "Rubric interpretation of dominance hierarchy and risk when numbers are too small."
+      - source:
+          kind: "database"
+          title: "Aqua-Fish: Earth eater, Satanoperca jurupari"
+          url: "https://en.aqua-fish.net/fish/earth-eater"
+          accessed: "2026-10-13"
+        value: 1
+        note: "Care account describes mild hierarchy and otherwise peaceful group behaviour."
+      - source:
+          kind: "database"
+          title: "Akvaforum: Satanoperca jurupari"
+          url: "https://akvaforum.no/lex/fish.cfm/2283/Satanoperca-jurupari"
+          accessed: "2026-10-13"
+        value: 1
+        note: "Group care advised; aggression severity not quantified."
+  aggressionHeterospecific:
+    value: 2
+    confidence: "medium"
+    rationale: "Generator, checker-b and checker-c proposed level 2; checker-a proposed level 1. The breeding
+      account describes eviction of neighbouring fish rather than display alone, which supports level 2 under
+      the rubric. Ordinary mixed-community behaviour is peaceful and there is no evidence of persistent
+      attacks across the aquarium in suitable housing."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Satanoperca jurupari"
+        url: "https://www.seriouslyfish.com/species/satanoperca-jurupari/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aqua-Fish: Earth eater, Satanoperca jurupari"
+        url: "https://en.aqua-fish.net/fish/earth-eater"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "AquariumDomain: Earth Eater Jurupari species profile"
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/EarthEaterJurupari.shtml"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Fishkeeper: Jurupari Eartheater"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jurupari-eartheater"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishProfiles: Satanoperca jurupari"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Satanoperca_jurupari/"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Aqua-Fish: Earth eater, Satanoperca jurupari"
+          url: "https://en.aqua-fish.net/fish/earth-eater"
+          accessed: "2026-10-13"
+        value: 2
+        note: "Breeding territoriality converted to the rubric."
+      - source:
+          kind: "database"
+          title: "AquariumDomain: Earth Eater Jurupari species profile"
+          url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/EarthEaterJurupari.shtml"
+          accessed: "2026-10-13"
+        value: 1
+        note: "Generally peaceful community behaviour outside spawning."
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Satanoperca jurupari"
+          url: "https://www.seriouslyfish.com/species/satanoperca-jurupari/"
+          accessed: "2026-10-13"
+        value: 2
+        note: "Breeding fish exclude nearby companions."
+      - source:
+          kind: "database"
+          title: "FishProfiles: Satanoperca jurupari"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Satanoperca_jurupari/"
+          accessed: "2026-10-13"
+        value: 2
+        note: "Peaceful community fish with territorial breeding behavior."
+  territory:
+    value:
+      size: "small"
+      breedingOnly: true
+    confidence: "low"
+    rationale: "All runs propose a small breeding-only territory. The breeding site centres on wood or another
+      firm surface, and nonbreeding fish aggregate rather than defend a permanent feeding area. No measured
+      defended radius establishes the rubric's approximately 30 cm scale; small is a low-confidence
+      interpretation of local spawning-site defence."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Satanoperca jurupari"
+        url: "https://www.seriouslyfish.com/species/satanoperca-jurupari/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aqua-Fish: Earth eater, Satanoperca jurupari"
+        url: "https://en.aqua-fish.net/fish/earth-eater"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "AquariumDomain: Earth Eater Jurupari species profile"
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/EarthEaterJurupari.shtml"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Fishkeeper: Jurupari Eartheater"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jurupari-eartheater"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishProfiles: Satanoperca jurupari"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Satanoperca_jurupari/"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Satanoperca jurupari"
+          url: "https://www.seriouslyfish.com/species/satanoperca-jurupari/"
+          accessed: "2026-10-13"
+        value:
+          size: "small"
+          breedingOnly: true
+        note: "Locality around a spawning object; dimension inferred."
+      - source:
+          kind: "database"
+          title: "FishProfiles: Satanoperca jurupari"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Satanoperca_jurupari/"
+          accessed: "2026-10-13"
+        value:
+          size: "small"
+          breedingOnly: true
+        note: "Territorial primarily while breeding; dimension unspecified."
+  habitatZones:
+    value:
+      - "sand"
+      - "wood"
+    confidence: "high"
+    rationale: "Soft bottom feeding and submerged woody cover are described in native habitat accounts and
+      reproduced in care recommendations. Floodplain vegetation is habitat context; dense planted cover is not
+      a compulsory zone for this profile."
+    sources:
+      - kind: "database"
+        title: "FishBase: Satanoperca jurupari species summary"
+        url: "https://www.fishbase.se/summary/Satanoperca-jurupari.html"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Correa (2008). Fish assemblage structure is consistent through an annual hydrological cycle in
+          habitats of a floodplain-lake in the Colombian Amazon. Full text and Tables 1 and 2"
+        url: "https://doi.org/10.1590/S1679-62252008000200014"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aqua-Fish: Earth eater, Satanoperca jurupari"
+        url: "https://en.aqua-fish.net/fish/earth-eater"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Satanoperca jurupari"
+        url: "https://www.seriouslyfish.com/species/satanoperca-jurupari/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "AquariumDomain: Earth Eater Jurupari species profile"
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/EarthEaterJurupari.shtml"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Aqua-Fish: Earth eater, Satanoperca jurupari"
+          url: "https://en.aqua-fish.net/fish/earth-eater"
+          accessed: "2026-10-13"
+        value:
+          - "sand"
+          - "wood"
+      - source:
+          kind: "literature"
+          title: "Correa (2008). Fish assemblage structure is consistent through an annual hydrological cycle in
+            habitats of a floodplain-lake in the Colombian Amazon. Full text and Tables 1 and 2"
+          url: "https://doi.org/10.1590/S1679-62252008000200014"
+          accessed: "2026-10-13"
+        value:
+          - "sand"
+          - "wood"
+        note: "Inventory and descriptions of sandy forest soils and submerged woody habitats; habitat association is
+          not exclusive."
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Satanoperca jurupari"
+          url: "https://www.seriouslyfish.com/species/satanoperca-jurupari/"
+          accessed: "2026-10-13"
+        value:
+          - "sand"
+          - "wood"
+      - source:
+          kind: "database"
+          title: "AquariumDomain: Earth Eater Jurupari species profile"
+          url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/EarthEaterJurupari.shtml"
+          accessed: "2026-10-13"
+        value:
+          - "sand"
+          - "wood"
+          - "plants"
+          - "rock"
+        note: "Sand necessary; other listed structures are optional aquarium cover."
+  social:
+    value:
+      structure: "group"
+      minGroup: 6
+    confidence: "medium"
+    rationale: "Generator and checker-c proposed a minimum of five, while checker-a and checker-b proposed six.
+      Six is selected as a cautious planning minimum within Seriously Fish and Aqua-Fish recommendations of
+      five to eight. Fishkeeper recommends at least eight, Guidarium at least five and Aquaristic Online five
+      to six; these wider recommendations do not establish a biological threshold. The retailer proposal of
+      eight is acknowledged but does not outweigh the independent five-to-eight database guidance. Temporary
+      breeding pairs do not replace adult group maintenance."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Satanoperca jurupari"
+        url: "https://www.seriouslyfish.com/species/satanoperca-jurupari/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aqua-Fish: Earth eater, Satanoperca jurupari"
+        url: "https://en.aqua-fish.net/fish/earth-eater"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Aquaristic Online: Cichlid Eartheater Green Horse Face care data"
+        url: "https://www.aquaristiconline.com.au/collections/aquaristic-online/products/geophagus-jurupari"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Fishkeeper: Jurupari Eartheater"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jurupari-eartheater"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Guidarium: Jurupari Eartheater"
+        url: "https://guidarium.com/fishes/jurupari-eartheater"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Akvaforum: Satanoperca jurupari"
+        url: "https://akvaforum.no/lex/fish.cfm/2283/Satanoperca-jurupari"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Satanoperca jurupari"
+          url: "https://www.seriouslyfish.com/species/satanoperca-jurupari/"
+          accessed: "2026-10-13"
+        value:
+          structure: "group"
+          minGroup: 5
+        note: "Recommended purchase band is five to eight."
+      - source:
+          kind: "website"
+          title: "Aquaristic Online: Cichlid Eartheater Green Horse Face care data"
+          url: "https://www.aquaristiconline.com.au/collections/aquaristic-online/products/geophagus-jurupari"
+          accessed: "2026-10-13"
+        value:
+          structure: "group"
+          minGroup: 5
+        note: "Recommended group band is five to six."
+      - source:
+          kind: "website"
+          title: "Fishkeeper: Jurupari Eartheater"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jurupari-eartheater"
+          accessed: "2026-10-13"
+        value: 8
+      - source:
+          kind: "database"
+          title: "Guidarium: Jurupari Eartheater"
+          url: "https://guidarium.com/fishes/jurupari-eartheater"
+          accessed: "2026-10-13"
+        value: 5
+      - source:
+          kind: "database"
+          title: "Aqua-Fish: Earth eater, Satanoperca jurupari"
+          url: "https://en.aqua-fish.net/fish/earth-eater"
+          accessed: "2026-10-13"
+        value:
+          structure: "group"
+          minGroup: 5
+        note: "Five to eight recommended."
+      - source:
+          kind: "database"
+          title: "Akvaforum: Satanoperca jurupari"
+          url: "https://akvaforum.no/lex/fish.cfm/2283/Satanoperca-jurupari"
+          accessed: "2026-10-13"
+        value:
+          structure: "group"
+        note: "No numerical minimum provided."
+  speciesOnly:
+    value: false
+    confidence: "high"
+    rationale: "All four votes agree that a species-only aquarium is not required. Seriously Fish, Aqua-Fish and
+      AquariumDomain permit peaceful companions with compatible water requirements and feeding access. A
+      separate spawning arrangement can protect fry but does not change the normal maintenance category.
+      Archive mixed-stock reports remain low-weight experience and do not establish the suitability of the
+      particular aggressive combinations reported there. Proposals: generator proposed false; checker-a
+      proposed false; checker-b proposed false; checker-c proposed false."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Satanoperca jurupari"
+        url: "https://www.seriouslyfish.com/species/satanoperca-jurupari/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "AquariumDomain: Earth Eater Jurupari species profile"
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/EarthEaterJurupari.shtml"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aqua-Fish: Earth eater, Satanoperca jurupari"
+        url: "https://en.aqua-fish.net/fish/earth-eater"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Aquaristic Online: Cichlid Eartheater Green Horse Face care data"
+        url: "https://www.aquaristiconline.com.au/collections/aquaristic-online/products/geophagus-jurupari"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Fishkeeper: Jurupari Eartheater"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jurupari-eartheater"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishProfiles: Satanoperca jurupari"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Satanoperca_jurupari/"
+        accessed: "2026-10-13"
+      - kind: "archive"
+        title: "cichlids.com forum thread 16563"
+        url: "https://www.cichlids.com/disc/read.php?2,16563"
+        accessed: "2026-10-13"
+      - kind: "archive"
+        title: "cichlids.com forum thread 8772"
+        url: "https://www.cichlids.com/disc/read.php?1,8772"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Satanoperca jurupari"
+          url: "https://www.seriouslyfish.com/species/satanoperca-jurupari/"
+          accessed: "2026-10-13"
+        value: false
+      - source:
+          kind: "database"
+          title: "AquariumDomain: Earth Eater Jurupari species profile"
+          url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/EarthEaterJurupari.shtml"
+          accessed: "2026-10-13"
+        value: false
+      - source:
+          kind: "database"
+          title: "Aqua-Fish: Earth eater, Satanoperca jurupari"
+          url: "https://en.aqua-fish.net/fish/earth-eater"
+          accessed: "2026-10-13"
+        value: false
+      - source:
+          kind: "database"
+          title: "FishProfiles: Satanoperca jurupari"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Satanoperca_jurupari/"
+          accessed: "2026-10-13"
+        value: false
+        note: "Community keeping accepted with adequately sized companions."
+      - source:
+          kind: "archive"
+          title: "cichlids.com forum thread 16563"
+          url: "https://www.cichlids.com/disc/read.php?2,16563"
+          accessed: "2026-10-13"
+        value: false
+        note: "Mixed stocking report only; no documented long-term outcome."
+      - source:
+          kind: "archive"
+          title: "cichlids.com forum thread 8772"
+          url: "https://www.cichlids.com/disc/read.php?1,8772"
+          accessed: "2026-10-13"
+        value: false
+        note: "A keeper reports trade-labelled jurupari in a mixed aquarium; identification and long-term outcome
+          unverified."
+    verification:
+      method: "unanimous"
+      votes:
+        agree: 4
+        total: 4
+  hybridGroups:
+    value:
+      - "satanoperca-jurupari-mapiritensis"
+      - "satanoperca-jurupari-rhynchitis"
+    confidence: "low"
+    rationale: "Four of six votes support both pairwise ids by qualified majority. The presumed
+      jurupari-mapiritensis group follows the rubric's very-close-relationship provision: Willis and
+      colleagues found no clear genetic separation in their 2012 study. Only the abstract was accessible;
+      fetch-oa refused its full text as non-open-access. The presumed jurupari-rhynchitis group follows
+      Kullander's possible coastal introgression and the competing explanations summarized by Seriously Fish.
+      The permitted fetch returned Kullander's abstract rather than the full revision. Neither study
+      establishes verified free-choice aquarium offspring. The Catalog retains all three names as valid, and
+      incomplete lineage sorting or disputed species boundaries remain alternatives. These are two separate
+      presumed groups, with no inferred mapiritensis-rhynchitis cross and no all-to-all group containing
+      leucosticta or undescribed trade fish. Proposals: generator proposed
+      [\"satanoperca-jurupari-mapiritensis\", \"satanoperca-jurupari-rhynchitis\"]; checker-a proposed [];
+      checker-b proposed [\"satanoperca-jurupari-rhynchitis\", \"satanoperca-jurupari-mapiritensis\"];
+      checker-c proposed [\"satanoperca-jurupari-rhynchitis\"]; tiebreaker-1 proposed
+      [\"satanoperca-jurupari-mapiritensis\", \"satanoperca-jurupari-rhynchitis\"]; tiebreaker-2 proposed
+      [\"satanoperca-jurupari-mapiritensis\", \"satanoperca-jurupari-rhynchitis\"]."
+    sources:
+      - kind: "literature"
+        title: "Willis et al. (2012). Species-level phylogeny of Satanoperca based on discordant gene trees. Abstract
+          only, read through Europe PMC"
+        url: "https://doi.org/10.1016/j.ympev.2012.02.018"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Kullander (2012). A taxonomic review of Satanoperca from French Guiana. Abstract only; fetch-oa
+          delivered the landing page"
+        url: "https://doi.org/10.26028/cybium/2012-361-014"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Satanoperca jurupari"
+        url: "https://www.seriouslyfish.com/species/satanoperca-jurupari/"
+        accessed: "2026-10-13"
+      - kind: "catalog-of-fishes"
+        title: "Eschmeyer's Catalog of Fishes: Satanoperca, updated 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Sa\
+          tanoperca"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase, Satanoperca jurupari"
+        url: "https://www.fishbase.se/summary/Satanoperca-jurupari.html"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Willis et al. (2012). Species-level phylogeny of Satanoperca based on discordant gene trees. Abstract
+            only, read through Europe PMC"
+          url: "https://doi.org/10.1016/j.ympev.2012.02.018"
+          accessed: "2026-10-13"
+        value:
+          - "satanoperca-jurupari-mapiritensis"
+        note: "Proposed presumed pair from genetic closeness; abstract establishes no confirmed hybrid offspring."
+      - source:
+          kind: "literature"
+          title: "Kullander (2012). A taxonomic review of Satanoperca from French Guiana. Abstract only; fetch-oa
+            delivered the landing page"
+          url: "https://doi.org/10.26028/cybium/2012-361-014"
+          accessed: "2026-10-13"
+        value:
+          - "satanoperca-jurupari-rhynchitis"
+        note: "Proposed presumed pair from uncertain possible introgression; abstract only."
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Satanoperca jurupari"
+          url: "https://www.seriouslyfish.com/species/satanoperca-jurupari/"
+          accessed: "2026-10-13"
+        value:
+          - "satanoperca-jurupari-mapiritensis"
+          - "satanoperca-jurupari-rhynchitis"
+        note: "Secondary account of the same underlying studies."
+      - source:
+          kind: "catalog-of-fishes"
+          title: "Eschmeyer's Catalog of Fishes: Satanoperca, updated 21 September 2026"
+          url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Sa\
+            tanoperca"
+          accessed: "2026-10-13"
+        value:
+          - "satanoperca-jurupari-mapiritensis"
+        note: "Historical synonymy and current valid names supply relationship context only; this is not crossing
+          evidence."
+    verification:
+      method: "qualified-majority"
+      votes:
+        agree: 4
+        total: 6
+  coloration:
+    value:
+      baseColors:
+        - "silver"
+        - "brown"
+        - "green"
+      pattern: "mixed"
+    confidence: "medium"
+    rationale: "Generator, checker-b and checker-c proposed silver, brown and green with a mixed pattern;
+      checker-a proposed grey and silver with a plain pattern. Species diagnostics and labelled photographs
+      support subdued metallic ground colours, variable faint bars and a small tail-base mark. Mixed retains
+      the occasional bars and ocellus without implying pronounced side blotches. Persistent white facial
+      markings can indicate leucosticta and require an identification check."
+    sources:
+      - kind: "website"
+        title: "Aquaristic Online: Cichlid Eartheater Green Horse Face care data"
+        url: "https://www.aquaristiconline.com.au/collections/aquaristic-online/products/geophagus-jurupari"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "AquariumDomain: Earth Eater Jurupari species profile"
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/EarthEaterJurupari.shtml"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Satanoperca jurupari"
+        url: "https://www.seriouslyfish.com/species/satanoperca-jurupari/"
+        accessed: "2026-10-13"
+      - kind: "model-knowledge"
+        title: "general knowledge of the species appearance"
+    evidence:
+      - source:
+          kind: "database"
+          title: "AquariumDomain: Earth Eater Jurupari"
+          url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/EarthEaterJurupari.shtml"
+          accessed: "2026-10-13"
+        value:
+          baseColors:
+            - "brown"
+            - "grey"
+            - "green"
+          pattern: "mixed"
+        note: "Ground color, faint bars and iridescent scales."
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Satanoperca jurupari"
+          url: "https://www.seriouslyfish.com/species/satanoperca-jurupari/"
+          accessed: "2026-10-13"
+        value:
+          baseColors:
+            - "silver"
+            - "green"
+          pattern: "mixed"
+        note: "Diagnostic markings and adult photographs; no dense white cheek spotting."
+  feedingSpeed:
+    value: "slow"
+    confidence: "medium"
+    rationale: "All runs propose slow feeding. The Aquaristic Online retailer explicitly reports deliberate
+      feeding and food competition, while Aqua-Fish recommends avoiding boisterous competitors. Seriously Fish
+      notes that settled fish rise promptly at feeding, so slow describes competitive vulnerability during
+      substrate browsing rather than inability to take food quickly. No measured feeding-rate study was
+      found."
+    sources:
+      - kind: "website"
+        title: "Aquaristic Online: Cichlid Eartheater Green Horse Face care data"
+        url: "https://www.aquaristiconline.com.au/collections/aquaristic-online/products/geophagus-jurupari"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aqua-Fish: Earth eater, Satanoperca jurupari"
+        url: "https://en.aqua-fish.net/fish/earth-eater"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Satanoperca jurupari"
+        url: "https://www.seriouslyfish.com/species/satanoperca-jurupari/"
+        accessed: "2026-10-13"
+      - kind: "model-knowledge"
+        title: "general knowledge of eartheater feeding behaviour"
+    evidence:
+      - source:
+          kind: "website"
+          title: "Aquaristic Online: Cichlid Eartheater Green Horse Face care data"
+          url: "https://www.aquaristiconline.com.au/collections/aquaristic-online/products/geophagus-jurupari"
+          accessed: "2026-10-13"
+        value: "slow"
+      - source:
+          kind: "database"
+          title: "Aqua-Fish: Earth eater, Satanoperca jurupari"
+          url: "https://en.aqua-fish.net/fish/earth-eater"
+          accessed: "2026-10-13"
+        value: "slow"
+        note: "Avoiding competitors is translated to the rubric; speed itself is not quantified."
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Satanoperca jurupari"
+          url: "https://www.seriouslyfish.com/species/satanoperca-jurupari/"
+          accessed: "2026-10-13"
+        value: "normal"
+        note: "Fish readily rise at feeding once settled; small frequent portions remain preferred."
+  minTank:
+    value:
+      volumeL: 756
+      lengthCm: 210
+      depthCm: 60
+    confidence: "medium"
+    rationale: "Generator, checker-a and checker-b proposed 750 L with a 210 by 60 cm base; checker-c proposed 756
+      L with the same base. Retain the source's approximately 756 L and exact 210 by 60 cm footprint for the
+      final minimum of six adults. This differs from 750 L only by rounding and preserves the clearest
+      published adult-group footprint. Lower recommendations include Aqua-Fish 300 L, Guidarium 280 L at 120
+      cm, Akvaforum 450 L, Einrichtungsbeispiele 500 L and Aquaristic Online 350 L; they do not demonstrate
+      equivalent space for the selected adult social unit. Depth means front-to-back width, and additional
+      companions require additional capacity."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Satanoperca jurupari"
+        url: "https://www.seriouslyfish.com/species/satanoperca-jurupari/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aqua-Fish: Earth eater, Satanoperca jurupari"
+        url: "https://en.aqua-fish.net/fish/earth-eater"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Aquaristic Online: Cichlid Eartheater Green Horse Face care data"
+        url: "https://www.aquaristiconline.com.au/collections/aquaristic-online/products/geophagus-jurupari"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "AquariumDomain: Earth Eater Jurupari species profile"
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/EarthEaterJurupari.shtml"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Guidarium: Jurupari Eartheater"
+        url: "https://guidarium.com/fishes/jurupari-eartheater"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Akvaforum: Satanoperca jurupari"
+        url: "https://akvaforum.no/lex/fish.cfm/2283/Satanoperca-jurupari"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Einrichtungsbeispiele: Satanoperca jurupari species directory"
+        url: "https://www.einrichtungsbeispiele.de/zierfische/suedamerika/satanoperca-jurupari-slnk.html"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Satanoperca jurupari"
+          url: "https://www.seriouslyfish.com/species/satanoperca-jurupari/"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 756
+          lengthCm: 210
+          depthCm: 60
+      - source:
+          kind: "database"
+          title: "Guidarium: Jurupari Eartheater"
+          url: "https://guidarium.com/fishes/jurupari-eartheater"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 280
+          lengthCm: 120
+          depthCm: 50
+        note: "depth not stated, assumed"
+      - source:
+          kind: "database"
+          title: "Aqua-Fish: Earth eater, Satanoperca jurupari"
+          url: "https://en.aqua-fish.net/fish/earth-eater"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 300
+        note: "Only volume supplied; no footprint dimensions given."
+      - source:
+          kind: "database"
+          title: "Akvaforum: Satanoperca jurupari"
+          url: "https://akvaforum.no/lex/fish.cfm/2283/Satanoperca-jurupari"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 450
+        note: "No footprint specified."
+      - source:
+          kind: "website"
+          title: "Einrichtungsbeispiele: Satanoperca jurupari species directory"
+          url: "https://www.einrichtungsbeispiele.de/zierfische/suedamerika/satanoperca-jurupari-slnk.html"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 500
+        note: "Pair or roughly eight fish mentioned; no footprint specified."
+  lifespanYears:
+    value:
+      min: 8
+      max: 12
+    confidence: "medium"
+    rationale: "Generator, checker-a and checker-b proposed eight to twelve years; checker-c proposed eight to
+      ten. Aqua-Fish explicitly gives eight to twelve and the Lone Star retailer about ten. The narrower
+      checker-c estimate lacks stronger evidence for its upper bound, while Aquaristic Online's wider
+      ten-to-fifteen-year claim is not adopted as typical. These are hobby expectations without a documented
+      longitudinal cohort, so agreement among agents does not justify high confidence."
+    sources:
+      - kind: "database"
+        title: "Aqua-Fish: Earth eater, Satanoperca jurupari"
+        url: "https://en.aqua-fish.net/fish/earth-eater"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Lone Star Rare Exotic Fish: Jurupari Eartheater Cichlid care data"
+        url: "https://www.lonestarrareexoticfish.com/products/jurupari-eartheater-cichlid-satanoperca-jurupari-for-sa\
+          le-online"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Aquaristic Online: Cichlid Eartheater Green Horse Face care data"
+        url: "https://www.aquaristiconline.com.au/collections/aquaristic-online/products/geophagus-jurupari"
+        accessed: "2026-10-13"
+      - kind: "model-knowledge"
+        title: "general knowledge of eartheater longevity"
+      - kind: "model-knowledge"
+        title: "Rubric interpretation where direct species-specific measurements are unavailable"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Aqua-Fish: Earth eater, Satanoperca jurupari"
+          url: "https://en.aqua-fish.net/fish/earth-eater"
+          accessed: "2026-10-13"
+        value:
+          min: 8
+          max: 12
+      - source:
+          kind: "website"
+          title: "Lone Star Rare Exotic Fish: Jurupari Eartheater Cichlid care data"
+          url: "https://www.lonestarrareexoticfish.com/products/jurupari-eartheater-cichlid-satanoperca-jurupari-for-sa\
+            le-online"
+          accessed: "2026-10-13"
+        value:
+          min: 10
+          max: 10
+      - source:
+          kind: "website"
+          title: "Aquaristic Online: Cichlid Eartheater Green Horse Face care data"
+          url: "https://www.aquaristiconline.com.au/collections/aquaristic-online/products/geophagus-jurupari"
+          accessed: "2026-10-13"
+        value:
+          min: 10
+          max: 15
+        note: "Broader estimate not adopted."
+      - source:
+          kind: "model-knowledge"
+          title: "Rubric interpretation where direct species-specific measurements are unavailable"
+          accessed: "2026-10-13"
+        value:
+          min: 8
+          max: 10
+        note: "Unverified lower-bound planning estimate."
+  breeding:
+    value: "maternal-mouthbrooder"
+    confidence: "medium"
+    rationale: "All runs select maternal mouthbrooding. Seriously Fish and Fishkeeper describe female egg
+      incubation, while FishBase confirms egg mouthbrooding without specifying the incubating sex.
+      AquariumDomain and FishProfiles describe delayed uptake or shared care, possibly involving other trade
+      taxa or population variation. The CRC public page verifies oral incubation but its delayed-brooding
+      timing differs and does not establish the parental sex. The maternal category is retained with medium
+      confidence rather than extrapolating a universal timetable or exclusively female participation."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Satanoperca jurupari"
+        url: "https://www.seriouslyfish.com/species/satanoperca-jurupari/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Satanoperca jurupari species summary"
+        url: "https://www.fishbase.se/summary/Satanoperca-jurupari.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aqua-Fish: Earth eater, Satanoperca jurupari"
+        url: "https://en.aqua-fish.net/fish/earth-eater"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "AquariumDomain: Earth Eater Jurupari species profile"
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/EarthEaterJurupari.shtml"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Cichlid Room Companion: Satanoperca jurupari, public verification only"
+        url: "https://cichlidae.com/species.php?id=Yk8BkbKdNi9PhsYnPeewpQ"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Fishkeeper: Jurupari Eartheater"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jurupari-eartheater"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishProfiles: Satanoperca jurupari"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Satanoperca_jurupari/"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Satanoperca jurupari"
+          url: "https://www.seriouslyfish.com/species/satanoperca-jurupari/"
+          accessed: "2026-10-13"
+        value: "maternal-mouthbrooder"
+      - source:
+          kind: "website"
+          title: "Fishkeeper: Jurupari Eartheater"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jurupari-eartheater"
+          accessed: "2026-10-13"
+        value: "maternal-mouthbrooder"
+      - source:
+          kind: "database"
+          title: "FishBase: Satanoperca jurupari species summary"
+          url: "https://www.fishbase.se/summary/Satanoperca-jurupari.html"
+          accessed: "2026-10-13"
+        value: "maternal-mouthbrooder"
+        note: "Ovophilous mouthbrooding is stated; maternal role is clearer in Seriously Fish."
+      - source:
+          kind: "database"
+          title: "FishProfiles: Satanoperca jurupari"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Satanoperca_jurupari/"
+          accessed: "2026-10-13"
+        value: "biparental-mouthbrooder"
+        note: "Delayed uptake and parental exchange conflict with the selected account."
+      - source:
+          kind: "database"
+          title: "Cichlid Room Companion: Satanoperca jurupari, public verification only"
+          url: "https://cichlidae.com/species.php?id=Yk8BkbKdNi9PhsYnPeewpQ"
+          accessed: "2026-10-13"
+        value: "maternal-mouthbrooder"
+        note: "Verification only: public page confirms mouthbrooding but not sex of incubator, and its timing label
+          differs."
+      - source:
+          kind: "database"
+          title: "AquariumDomain: Earth Eater Jurupari species profile"
+          url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/EarthEaterJurupari.shtml"
+          accessed: "2026-10-13"
+        value: "biparental-mouthbrooder"
+        note: "Delayed uptake and shared care reported; potentially misidentified trade fish."
+  beginnerSuitability:
+    value: "demanding"
+    confidence: "medium"
+    rationale: "All runs propose demanding. The adult group footprint, fine-sand feeding requirement and
+      sensitivity to deteriorating water quality require a mature system and reliable maintenance. Bednarczuk
+      places jurupari among the moderately difficult eartheaters for experienced aquarists, whereas
+      AquariumDomain and Akvaforum use easier ratings. The final category reflects the combined space and care
+      commitment for a general beginner."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Satanoperca jurupari"
+        url: "https://www.seriouslyfish.com/species/satanoperca-jurupari/"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Aquaristic Online: Cichlid Eartheater Green Horse Face care data"
+        url: "https://www.aquaristiconline.com.au/collections/aquaristic-online/products/geophagus-jurupari"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aqua-Fish: Earth eater, Satanoperca jurupari"
+        url: "https://en.aqua-fish.net/fish/earth-eater"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "AquariumDomain: Earth Eater Jurupari species profile"
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/EarthEaterJurupari.shtml"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Fishkeeper: Jurupari Eartheater"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jurupari-eartheater"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Bednarczuk: Picking the Right Eartheater for your Tank, Tropical Fish Hobbyist"
+        url: "https://www.tfhmagazine.com/articles/freshwater/picking-the-right-eartheater-for-your-tank-full-article"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Akvaforum: Satanoperca jurupari"
+        url: "https://akvaforum.no/lex/fish.cfm/2283/Satanoperca-jurupari"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Satanoperca jurupari"
+          url: "https://www.seriouslyfish.com/species/satanoperca-jurupari/"
+          accessed: "2026-10-13"
+        value: "demanding"
+        note: "Large tank and mature-system requirements."
+      - source:
+          kind: "literature"
+          title: "Bednarczuk: Picking the Right Eartheater for your Tank, Tropical Fish Hobbyist"
+          url: "https://www.tfhmagazine.com/articles/freshwater/picking-the-right-eartheater-for-your-tank-full-article"
+          accessed: "2026-10-13"
+        value: "moderate"
+        note: "Recommended to more experienced aquarists; easier than the spotted Satanoperca species."
+      - source:
+          kind: "database"
+          title: "AquariumDomain: Earth Eater Jurupari species profile"
+          url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/EarthEaterJurupari.shtml"
+          accessed: "2026-10-13"
+        value: "easy"
+      - source:
+          kind: "database"
+          title: "Akvaforum: Satanoperca jurupari"
+          url: "https://akvaforum.no/lex/fish.cfm/2283/Satanoperca-jurupari"
+          accessed: "2026-10-13"
+        value: "easy"
+partners:
+  suitable:
+    - species: "Pterophyllum scalare"
+      reason: "Adult angelfish share warm soft-water conditions and usually occupy a different feeding level."
+      condition: "Peaceful adults with retreats; allow additional volume and watch spawning aggression."
+    - species: "Hyphessobrycon erythrostigma"
+      reason: "A suitably sized peaceful tetra can act as a midwater companion without relying on the sand floor."
+      condition: "Established adult school; exclude very small fry and maintain feeding access for the eartheaters."
+    - species: "Mesonauta festivus"
+      reason: "A generally restrained cichlid suited to warm, soft-water communities."
+      condition: "Additional space and visual cover; separate if breeding territoriality disturbs the eartheater group."
+  unsuitable:
+    - species: "Rocio octofasciata"
+      reason: "Strong territorial aggression and competition can overwhelm a quiet sand-feeding group."
+    - species: "Tropheus moorii"
+      reason: "Its alkaline-water maintenance, social aggression and specialised grazing diet do not fit this
+        community."
+    - species: "Potamotrygon motoro"
+      reason: "Shares the floor but can prey on sleeping eartheaters; the cited care account reports losses with
+        rays."
+    - species: "Satanoperca mapiritensis"
+      reason: "Shares a presumed pairwise crossing group supported by genetic closeness; risk remains unconfirmed."
+    - species: "Satanoperca rhynchitis"
+      reason: "Shares a presumed pairwise crossing group supported by possible coastal introgression; parentage is
+        unresolved."
+profile:
+  overview:
+    text: "A group of demon eartheaters can make an absorbing centrepiece for a spacious South American aquarium.
+      The fish spend much of their time processing fine sediment for food, with subdued metallic colours that
+      change with light and mood. Confirm identification before relying on a sales label: jurupari frequently
+      denotes leucosticta or an unresolved Satanoperca form in the trade."
+    sources:
+      - kind: "catalog-of-fishes"
+        title: "Eschmeyer's Catalog of Fishes: Satanoperca, updated 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Sa\
+          tanoperca"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Satanoperca jurupari species summary"
+        url: "https://www.fishbase.se/summary/Satanoperca-jurupari.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aqua-Fish: Earth eater, Satanoperca jurupari"
+        url: "https://en.aqua-fish.net/fish/earth-eater"
+        accessed: "2026-10-13"
+  habitat:
+    text: "Records cover the Amazon system and nearby northeastern coastal drainages. Connected lakes and quieter
+      river areas provide soft sediment and submerged cover. The profile uses 27 to 30 C and pH 5.3 to 7.5 as
+      partial natural habitat estimates; wider regional measurements exist and do not establish individual
+      fish exposure. GH and KH of 0 to 5 are rounded chemistry proxies with low confidence, not complete
+      collecting-site limits."
+    sources:
+      - kind: "literature"
+        title: "Bittencourt et al. (2014). Parasites of native Cichlidae populations and invasive Oreochromis
+          niloticus in tributary of Amazonas River. Full text and Table 1"
+        url: "https://doi.org/10.1590/S1984-29612014006"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Correa (2008). Fish assemblage structure is consistent through an annual hydrological cycle in
+          habitats of a floodplain-lake in the Colombian Amazon. Full text and Tables 1 and 2"
+        url: "https://doi.org/10.1590/S1679-62252008000200014"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Hidalgo Sanchez et al. (2015). Spatial-temporal variation of dissolved inorganic material in the
+          Amazon basin. Full text and Table 2"
+        url: "https://doi.org/10.1590/1809-4392201402722"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Rios-Villamizar et al. (2013). Chemistry of different Amazonian water types for river classification.
+          Full text and Table 1"
+        url: "https://doi.org/10.2495/WS130021"
+        accessed: "2026-10-13"
+  sizeAndGrowth:
+    text: "Allow for a well-grown male around 25 cm total length and a female around 23 cm. The female figure is
+      approximate because aquarium size series separated by sex are unavailable. Record standard lengths
+      exclude the tail and are not interchangeable with these planning sizes. Juvenile dimensions should never
+      determine the permanent space available to the adult group."
+    sources:
+      - kind: "database"
+        title: "Aqua-Fish: Earth eater, Satanoperca jurupari"
+        url: "https://en.aqua-fish.net/fish/earth-eater"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "AquariumDomain: Earth Eater Jurupari species profile"
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/EarthEaterJurupari.shtml"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Satanoperca jurupari species summary"
+        url: "https://www.fishbase.se/summary/Satanoperca-jurupari.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Satanoperca jurupari"
+        url: "https://www.seriouslyfish.com/species/satanoperca-jurupari/"
+        accessed: "2026-10-13"
+  husbandry:
+    text: "Provide at least six adults with approximately 756 litres and a footprint of 210 by 60 cm. Give them
+      open areas of fine sand with sheltered resting spaces around securely placed wood. Maintain mature
+      biological filtration and regular substantial water changes with closely matched replacement water. The
+      maintenance envelopes are 24 to 30 C, pH 5.0 to 7.5, GH 0 to 12 and KH 0 to 7; the endpoints are
+      uncertain and should not become targets. Warm, soft, mildly acidic and stable conditions are a
+      reasonable starting point."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Satanoperca jurupari"
+        url: "https://www.seriouslyfish.com/species/satanoperca-jurupari/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aqua-Fish: Earth eater, Satanoperca jurupari"
+        url: "https://en.aqua-fish.net/fish/earth-eater"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Aquaristic Online: Cichlid Eartheater Green Horse Face care data"
+        url: "https://www.aquaristiconline.com.au/collections/aquaristic-online/products/geophagus-jurupari"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "AquariumDomain: Earth Eater Jurupari species profile"
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/EarthEaterJurupari.shtml"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase, Satanoperca jurupari"
+        url: "https://www.fishbase.se/summary/Satanoperca-jurupari.html"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Fishkeeper: Jurupari Eartheater"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/jurupari-eartheater"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Guidarium: Jurupari Eartheater"
+        url: "https://guidarium.com/fishes/jurupari-eartheater"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Akvaforum: Satanoperca jurupari"
+        url: "https://akvaforum.no/lex/fish.cfm/2283/Satanoperca-jurupari"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Einrichtungsbeispiele: Satanoperca jurupari species directory"
+        url: "https://www.einrichtungsbeispiele.de/zierfische/suedamerika/satanoperca-jurupari-slnk.html"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Lone Star Rare Exotic Fish: Jurupari Eartheater Cichlid care data"
+        url: "https://www.lonestarrareexoticfish.com/products/jurupari-eartheater-cichlid-satanoperca-jurupari-for-sa\
+          le-online"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Rios-Villamizar et al. (2013). Chemistry of different Amazonian water types for river classification.
+          Full text and Table 1"
+        url: "https://doi.org/10.2495/WS130021"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aquarist Atlas: Satanoperca jurupari"
+        url: "https://www.aquaristatlas.com/species/satanoperca-jurupari/"
+        accessed: "2026-10-13"
+  socialBehavior:
+    text: "The normal maintenance unit is a group rather than an isolated pair. Six is a planning minimum within
+      published recommendations that range from five to eight fish. Watch feeding access and persistent
+      exclusion of a subordinate, even when wounds are absent. Breeding adults defend a local site and may
+      chase approaching fish. Visual barriers and broad retreat routes help keep that temporary defence from
+      trapping the rest of the group."
+    sources:
+      - kind: "database"
+        title: "Aqua-Fish: Earth eater, Satanoperca jurupari"
+        url: "https://en.aqua-fish.net/fish/earth-eater"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Aquaristic Online: Cichlid Eartheater Green Horse Face care data"
+        url: "https://www.aquaristiconline.com.au/collections/aquaristic-online/products/geophagus-jurupari"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Satanoperca jurupari"
+        url: "https://www.seriouslyfish.com/species/satanoperca-jurupari/"
+        accessed: "2026-10-13"
+  diet:
+    text: "Offer fine sinking complete foods containing both animal and plant ingredients, supplemented with small
+      aquatic invertebrates. Spread modest meals across several locations so quieter fish can feed. Their
+      omnivorous diet does not call for a fish-based staple. Opportunistic consumption of fry warrants
+      predation level 1, with no evidence for routine predation on all mouth-sized companions. The false bloat
+      flag indicates an unestablished specific protein conflict rather than immunity from digestive disease."
+    sources:
+      - kind: "database"
+        title: "FishBase: Satanoperca jurupari species summary"
+        url: "https://www.fishbase.se/summary/Satanoperca-jurupari.html"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Tavares-Dias et al. (2017). Parasitic diversity of a wild Satanoperca jurupari population. Full text"
+        url: "https://doi.org/10.1590/1809-4392201602514"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aqua-Fish: Earth eater, Satanoperca jurupari"
+        url: "https://en.aqua-fish.net/fish/earth-eater"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "AquariumDomain: Earth Eater Jurupari species profile"
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/EarthEaterJurupari.shtml"
+        accessed: "2026-10-13"
+  breeding:
+    text: "The selected breeding category is maternal mouthbrooding. The clearest species-specific care accounts
+      describe the female collecting eggs and protecting the developing young orally. Other accounts report
+      delayed collection or some male participation, and uncertain trade identities complicate those
+      differences. Do not assume a fixed incubation timetable for every population. Released fry remain
+      vulnerable to other fish, including adults of their own species."
+    sources:
+      - kind: "database"
+        title: "FishBase: Satanoperca jurupari species summary"
+        url: "https://www.fishbase.se/summary/Satanoperca-jurupari.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Satanoperca jurupari"
+        url: "https://www.seriouslyfish.com/species/satanoperca-jurupari/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "AquariumDomain: Earth Eater Jurupari species profile"
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/EarthEaterJurupari.shtml"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aqua-Fish: Earth eater, Satanoperca jurupari"
+        url: "https://en.aqua-fish.net/fish/earth-eater"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Cichlid Room Companion: Satanoperca jurupari, public verification only"
+        url: "https://cichlidae.com/species.php?id=Yk8BkbKdNi9PhsYnPeewpQ"
+        accessed: "2026-10-13"
+  sexing:
+    text: "Body size alone is a weak guide to sex. Mature females can be fuller when carrying eggs, but age and
+      feeding history also affect shape and size. External differences are subtle and there is no dependable
+      colour rule for assigning juveniles. Repeated spawning observations provide more useful evidence than a
+      presumed sex label on a single fish."
+    sources:
+      - kind: "database"
+        title: "Aqua-Fish: Earth eater, Satanoperca jurupari"
+        url: "https://en.aqua-fish.net/fish/earth-eater"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Satanoperca jurupari"
+        url: "https://www.seriouslyfish.com/species/satanoperca-jurupari/"
+        accessed: "2026-10-13"
+  compatibility:
+    text: "Calm companions that share the water conditions and leave food accessible can suit an adequately
+      enlarged aquarium. Adult angelfish and appropriately sized peaceful tetras are conditional examples.
+      Avoid aggressive bottom territories, very fast competitors and tiny fry. Two pairwise crossing cautions
+      concern mapiritensis and rhynchitis; both are presumed from relationship or possible introgression
+      evidence. Their inclusion does not establish crossing with every member of the genus."
+    sources:
+      - kind: "database"
+        title: "AquariumDomain: Earth Eater Jurupari species profile"
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/NewWorldCichlids/EarthEaterJurupari.shtml"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aqua-Fish: Earth eater, Satanoperca jurupari"
+        url: "https://en.aqua-fish.net/fish/earth-eater"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Aquaristic Online: Cichlid Eartheater Green Horse Face care data"
+        url: "https://www.aquaristiconline.com.au/collections/aquaristic-online/products/geophagus-jurupari"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Willis et al. (2012). Species-level phylogeny of Satanoperca based on discordant gene trees. Abstract
+          only, read through Europe PMC"
+        url: "https://doi.org/10.1016/j.ympev.2012.02.018"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Kullander (2012). A taxonomic review of Satanoperca from French Guiana. Abstract only; fetch-oa
+          delivered the landing page"
+        url: "https://doi.org/10.26028/cybium/2012-361-014"
+        accessed: "2026-10-13"
+  problems:
+    text: "Check the substrate and feeding access when a fish loses condition or remains hidden. Coarse gravel
+      interferes with normal sand processing, and accumulated waste or abrupt changes can cause further
+      stress. Studies of wild populations report diverse parasites, making quarantine and observation useful
+      for new arrivals. The archive includes stressed mixed-stock situations but supplies weak identification
+      and duration evidence. Persistent lesions, swelling or breathing changes need investigation rather than
+      an automatic diagnosis from appearance."
+    sources:
+      - kind: "database"
+        title: "Aqua-Fish: Earth eater, Satanoperca jurupari"
+        url: "https://en.aqua-fish.net/fish/earth-eater"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Aquaristic Online: Cichlid Eartheater Green Horse Face care data"
+        url: "https://www.aquaristiconline.com.au/collections/aquaristic-online/products/geophagus-jurupari"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Tavares-Dias et al. (2017). Parasitic diversity of a wild Satanoperca jurupari population. Full text"
+        url: "https://doi.org/10.1590/1809-4392201602514"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Oliveira et al. (2017). Ectoparasites community in Satanoperca jurupari from the Jari River. Full
+          text"
+        url: "https://doi.org/10.1590/S1984-29612017028"
+        accessed: "2026-10-13"
+      - kind: "archive"
+        title: "cichlids.com forum thread 16563"
+        url: "https://www.cichlids.com/disc/read.php?2,16563"
+        accessed: "2026-10-13"
+provenance:
+  runs:
+    - role: "generator"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+    - role: "checker"
+      model: "claude-sonnet-5-5"
+      date: "2026-10-13"
+    - role: "checker"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+    - role: "checker"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+    - role: "checker"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+    - role: "checker"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+    - role: "adjudicator"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+  disagreements:
+    - field: "features.origin"
+      proposals:
+        - by: "generator"
+          value:
+            continent: "South America"
+            region: "Amazon basin and Atlantic coastal drainages near its mouth"
+            waterbody: null
+            localities:
+              - "Rio Negro and Solimoes confluence"
+              - "Igarape Fortaleza, Amapa"
+              - "Taraira Lake, lower Apaporis basin"
+              - "Jurua and Jutai basins"
+        - by: "checker-a"
+          value:
+            continent: "South America"
+            region: "Amazon basin, with coastal rivers of Amapa and French Guiana"
+            waterbody: null
+            localities:
+              - "Rio Negro mouth (type locality)"
+              - "Lower Amazon floodplain, Amapa"
+              - "Peruvian and Colombian Amazon"
+        - by: "checker-b"
+          value:
+            continent: "South America"
+            region: "Amazon basin and adjacent northeastern coastal drainages"
+            waterbody: null
+            localities:
+              - "Solimoes-Amazonas"
+              - "Lower Rio Negro"
+              - "Peruvian Amazon"
+              - "Lower Apaporis"
+              - "Amapa"
+        - by: "checker-c"
+          value:
+            continent: "South America"
+            region: "Amazon basin and adjacent northern coastal drainages"
+            waterbody: null
+            localities:
+              - "Lower Rio Negro and Solimoes-Amazonas junction"
+              - "Peruvian Amazon tributaries"
+              - "Igarape Fortaleza and lower Jari in Amapa"
+      decision:
+        continent: "South America"
+        region: "Amazon basin and Atlantic coastal drainages near its mouth"
+        waterbody: null
+        localities:
+          - "Rio Negro and Solimoes confluence"
+          - "Igarape Fortaleza, Amapa"
+          - "Taraira Lake, lower Apaporis basin"
+          - "Jurua and Jutai basins"
+      rationale: "The Catalog and FishBase support an Amazonian species including northeastern coastal records.
+        Named collecting studies add Taraira Lake and Igarape Fortaleza. Coastal identity remains uncertain
+        after the description of rhynchitis, while Essequibo and Nickerie leucosticta and Orinoco mapiritensis
+        are not treated as jurupari. The regional wordings and locality subsets proposed by generator,
+        checker-a, checker-b and checker-c describe overlapping records rather than four distinct ranges; the
+        final wording combines those records and keeps the coastal qualification."
+    - field: "features.temperatureC"
+      proposals:
+        - by: "generator"
+          value:
+            min: 27.8
+            max: 29.5
+        - by: "checker-a"
+          value:
+            min: 26
+            max: 30
+        - by: "checker-b"
+          value:
+            min: 24.4
+            max: 30.1
+        - by: "checker-c"
+          value:
+            min: 27
+            max: 30
+        - by: "tiebreaker-1"
+          value:
+            min: 27.8
+            max: 28.5
+        - by: "tiebreaker-2"
+          value:
+            min: 24.4
+            max: 32
+      decision:
+        min: 27
+        max: 30
+      rationale: "The tally uses a median because no qualified majority settled the native temperature envelope. The
+        six minima have a median of 26.5 C, rounded to 27, and the maxima have a median of 30 C. The result is
+        a partial habitat estimate rather than complete species limits. Bittencourt records 27.8 to 28.5 C in
+        the channel containing the sampled fish; its wider 26 to 33 C floodplain measurements did not
+        accompany jurupari captures. Correa records jurupari in Taraira Lake and pooled habitat temperatures
+        of 24.4 to 37.1 C, with a narrower 24.4 to 32 C span across low and rising water. These wider ranges
+        and Drake's regional 27.8 to 31.1 C observations are retained as evidence without claiming fish
+        exposure at every endpoint. Hidalgo Sanchez station means and Queiroz regional measurements supply
+        context. FishBase 24 to 26 C refers to an aquarium atlas, not a collecting series. Low confidence
+        reflects incomplete coverage and uncertain coastal identification. Proposals: generator proposed
+        {\"min\": 27.8, \"max\": 29.5}; checker-a proposed {\"min\": 26, \"max\": 30}; checker-b proposed
+        {\"min\": 24.4, \"max\": 30.1}; checker-c proposed {\"min\": 27, \"max\": 30}; tiebreaker-1 proposed
+        {\"min\": 27.8, \"max\": 28.5}; tiebreaker-2 proposed {\"min\": 24.4, \"max\": 32}."
+    - field: "features.temperatureC.tolerance"
+      proposals:
+        - by: "generator"
+          value:
+            min: 24
+            max: 30
+        - by: "checker-a"
+          value:
+            min: 24
+            max: 30
+        - by: "checker-b"
+          value:
+            min: 24
+            max: 30.5
+        - by: "checker-c"
+          value:
+            min: 24
+            max: 30
+      decision:
+        min: 24
+        max: 30
+      rationale: "The four proposals agree within 1 C and the tally selects 24 to 30 C after endpoint aggregation.
+        Seriously Fish recommends 20 to 28 C, a cooler source range than the decision, while Aqua-Fish and
+        Fishkeeper give 24 to 28 C, Guidarium 26 to 30 C and Akvaforum 24 to 30 C. AquariumDomain gives
+        approximately 25 to 29.4 C. The unsupported chronic 20 C endpoint and spawning-only warmer settings
+        are not adopted. This interval contains the decided natural range, but neither the warm edge nor the
+        cold edge is a controlled lifetime limit. Proposals: generator proposed {\"min\": 24, \"max\": 30};
+        checker-a proposed {\"min\": 24, \"max\": 30}; checker-b proposed {\"min\": 24, \"max\": 30.5};
+        checker-c proposed {\"min\": 24, \"max\": 30}."
+    - field: "features.ph"
+      proposals:
+        - by: "generator"
+          value:
+            min: 5.3
+            max: 7.5
+        - by: "checker-a"
+          value:
+            min: 5.3
+            max: 7.5
+        - by: "checker-b"
+          value:
+            min: 4.5
+            max: 7.2
+        - by: "checker-c"
+          value:
+            min: 5
+            max: 7.3
+        - by: "tiebreaker-1"
+          value:
+            min: 5.5
+            max: 7.5
+        - by: "tiebreaker-2"
+          value:
+            min: 5.3
+            max: 7.5
+      decision:
+        min: 5.3
+        max: 7.5
+      rationale: "The qualified majority selects pH 5.3 to 7.5. Correa directly measured 5.3 to 5.7 in Taraira Lake,
+        where the species was recorded, and Bittencourt measured 6.4 to 6.9 in the species-positive Fortaleza
+        channel. Tavares-Dias and Oliveira give a basin-wide 5.5 to 7.5 interval attributed to an earlier
+        environmental assessment, while Hidalgo Sanchez gives native-drainage station means reaching 7.5.
+        These are partial regional observations. Wider source ranges include Drake's 6.1 to 8.3 at Obidos,
+        Silva's 4.62 to 7.86 and Aprile and Darwich's 4.5 to 6.6 in Catalao; species occurrence was not
+        matched to their endpoints. They do not establish broader limits for correctly identified jurupari.
+        Bittencourt's floodplain pH 6.2 to 7.5 is not substituted for its sampled channel. The upper endpoint
+        is habitat-scale evidence rather than a measurement beside an individual fish. Proposals: generator
+        proposed {\"min\": 5.3, \"max\": 7.5}; checker-a proposed {\"min\": 5.3, \"max\": 7.5}; checker-b
+        proposed {\"min\": 4.5, \"max\": 7.2}; checker-c proposed {\"min\": 5, \"max\": 7.3}; tiebreaker-1
+        proposed {\"min\": 5.5, \"max\": 7.5}; tiebreaker-2 proposed {\"min\": 5.3, \"max\": 7.5}."
+    - field: "features.ph.tolerance"
+      proposals:
+        - by: "generator"
+          value:
+            min: 5
+            max: 7.5
+        - by: "checker-a"
+          value:
+            min: 5.3
+            max: 7.5
+        - by: "checker-b"
+          value:
+            min: 4.5
+            max: 7.5
+        - by: "checker-c"
+          value:
+            min: 5
+            max: 7.5
+        - by: "tiebreaker-1"
+          value:
+            min: 5
+            max: 7.5
+        - by: "tiebreaker-2"
+          value:
+            min: 5
+            max: 7.5
+      decision:
+        min: 5
+        max: 7.5
+      rationale: "Five of six proposals support the tally's pH 5.0 to 7.5 interval within the comparison threshold.
+        Seriously Fish recommends 5.5 to 7.5 and AquariumDomain 5.0 to 6.5; their combined maintenance
+        envelope contains the decided natural range. Aqua-Fish gives 6.0 to 7.5. Aquarist Atlas allows the
+        wider acidic interval 4.3 to 7.2, but its taxonomic and breeding inconsistencies weaken that claim, so
+        the proposed 4.5 lower limit is not adopted. The outer endpoints are care recommendations rather than
+        demonstrated multiyear physiological limits, and trade misidentification further limits transfer.
+        Proposals: generator proposed {\"min\": 5, \"max\": 7.5}; checker-a proposed {\"min\": 5.3, \"max\":
+        7.5}; checker-b proposed {\"min\": 4.5, \"max\": 7.5}; checker-c proposed {\"min\": 5, \"max\": 7.5};
+        tiebreaker-1 proposed {\"min\": 5, \"max\": 7.5}; tiebreaker-2 proposed {\"min\": 5, \"max\": 7.5}."
+    - field: "features.ghDgh"
+      proposals:
+        - by: "generator"
+          value:
+            min: 0.1
+            max: 5.6
+        - by: "checker-a"
+          value:
+            min: 0.5
+            max: 5
+        - by: "checker-b"
+          value:
+            min: 0
+            max: 3.5
+        - by: "checker-c"
+          value:
+            min: 0
+            max: 6
+      decision:
+        min: 0
+        max: 5
+      rationale: "All four votes agree within the permitted 2 dGH comparison threshold. Their endpoint medians round
+        to 0 and 5 dGH, as fixed by the tally; agreement does not make the underlying habitat transfer
+        certain. Rios-Villamizar measured Ca and Mg in the Jutai, Tefe and Jurua; Ca mg/L / 7.14 plus Mg mg/L
+        / 4.34 gives approximately 0.11 to 5.58 dGH. That source range is wider at its upper end than the
+        rounded decision. Drake independently supports about 0.87 to 1.70 dGH in the mainstem, and the
+        Catalao, Queiroz and Souto studies support mineral-poor regional water. These are regional proxies
+        without simultaneous species sampling. The rounded zero means extremely dilute water, not a
+        demonstrated absence of every hardness ion. Conductivity and aquarium hardness recommendations are not
+        used as natural GH measurements. Proposals: generator proposed {\"min\": 0.1, \"max\": 5.6}; checker-a
+        proposed {\"min\": 0.5, \"max\": 5}; checker-b proposed {\"min\": 0, \"max\": 3.5}; checker-c proposed
+        {\"min\": 0, \"max\": 6}."
+    - field: "features.ghDgh.tolerance"
+      proposals:
+        - by: "generator"
+          value:
+            min: 0.1
+            max: 12
+        - by: "checker-a"
+          value:
+            min: 0.5
+            max: 12
+        - by: "checker-b"
+          value:
+            min: 0
+            max: 12
+        - by: "checker-c"
+          value:
+            min: 0
+            max: 12
+      decision:
+        min: 0
+        max: 12
+      rationale: "The four proposals agree within 2 dGH and the tally selects 0 to 12 dGH. Seriously Fish states 2
+        to 12 dGH, Guidarium 1 to 10 and Akvaforum 5 to 10. Fishkeeper permits up to 12 and the low native
+        mineral concentrations justify an inferred lower extension to the rounded zero. Wider source ranges
+        are Aqua-Fish 4 to 18 dGH and Einrichtungsbeispiele 2 to 15 dGH; their upper limits lack strong
+        independent confirmation for identified jurupari and are not adopted. Neither near-zero aquarium
+        hardness nor the upper endpoint has been demonstrated in a multiyear experiment, so confidence remains
+        low. Proposals: generator proposed {\"min\": 0.1, \"max\": 12}; checker-a proposed {\"min\": 0.5,
+        \"max\": 12}; checker-b proposed {\"min\": 0, \"max\": 12}; checker-c proposed {\"min\": 0, \"max\":
+        12}."
+    - field: "features.khDkh"
+      proposals:
+        - by: "generator"
+          value:
+            min: 0.3
+            max: 4.9
+        - by: "checker-a"
+          value:
+            min: 0.5
+            max: 3
+        - by: "checker-b"
+          value:
+            min: 0
+            max: 5
+        - by: "checker-c"
+          value:
+            min: 0
+            max: 5
+      decision:
+        min: 0
+        max: 5
+      rationale: "The tally fixes a rounded regional estimate of 0 to 5 dKH. Endpoint medians of the four broadly
+        agreeing proposals round to these bounds; natural KH has no verification object. Rios-Villamizar's
+        Tefe, Jutai and Jurua bicarbonate concentrations of 6.86, 8.78 and 106.14 mg/L yield approximately
+        0.31 to 4.87 dKH after division by 21.8. Souto's alkalinity table independently spans about 0.20 to
+        4.85 dKH after dividing mg/L CaCO3 by 17.848, and Queiroz reports concentrations extending below
+        detection. Catalao and Barro Branco are additional regional proxies. Drake's ion-charge residual is
+        only contextual, not measured carbonate hardness. Organic contributors to alkalinity and missing
+        fish-locality linkage limit interpretation; zero is rounded weak buffering rather than proven chemical
+        zero. Proposals: generator proposed {\"min\": 0.3, \"max\": 4.9}; checker-a proposed {\"min\": 0.5,
+        \"max\": 3}; checker-b proposed {\"min\": 0, \"max\": 5}; checker-c proposed {\"min\": 0, \"max\":
+        5}."
+    - field: "features.khDkh.tolerance"
+      proposals:
+        - by: "generator"
+          value:
+            min: 0.3
+            max: 6
+        - by: "checker-a"
+          value:
+            min: 0.5
+            max: 8
+        - by: "checker-b"
+          value:
+            min: 0
+            max: 6
+        - by: "checker-c"
+          value:
+            min: 0
+            max: 7
+      decision:
+        min: 0
+        max: 7
+      rationale: "The four proposals agree within 2 dKH even though their exact bounds differ. The tally rounds
+        their median lower endpoint to 0 and upper endpoint of 6.5 to 7 dKH. AquariumDomain explicitly
+        recommends 2 to 7 dKH and the Lone Star retailer 2 to 6 dKH; the latter carries lower weight because
+        its breeding description is incorrect. Natural bicarbonate data justify the inferred extension below 2
+        to contain the decided natural range. This is not derived from GH, nor is there a verified multiyear
+        experiment at near-zero or 7 dKH. The broader checker proposal up to 8 dKH is not supported by either
+        explicit KH recommendation. Proposals: generator proposed {\"min\": 0.3, \"max\": 6}; checker-a
+        proposed {\"min\": 0.5, \"max\": 8}; checker-b proposed {\"min\": 0, \"max\": 6}; checker-c proposed
+        {\"min\": 0, \"max\": 7}."
+    - field: "features.maxSizeCm"
+      proposals:
+        - by: "generator"
+          value:
+            male: 25
+            female: 23
+        - by: "checker-a"
+          value:
+            male: 23
+            female: 20
+        - by: "checker-b"
+          value:
+            male: 25
+            female: 23
+        - by: "checker-c"
+          value:
+            male: 25
+            female: 22
+      decision:
+        male: 25
+        female: 23
+      rationale: "Generator and checker-b proposed male 25 and female 23 cm; checker-a proposed 23 and 20, and
+        checker-c 25 and 22. Aqua-Fish gives usual aquarium sizes of 20 to 25 cm and AquariumDomain about 25.4
+        cm, supporting 25 cm for a well-grown male. The larger 23 cm female planning estimate is retained
+        conservatively within the unquantified report that females are smaller. No sex-specific aquarium
+        series establishes that difference. FishBase records 26.0 cm male/unsexed and 23.3 cm female in
+        standard length; those record measurements are not adopted as typical aquarium total lengths."
+    - field: "features.predation"
+      proposals:
+        - by: "generator"
+          value: 1
+        - by: "checker-a"
+          value: 0
+        - by: "checker-b"
+          value: 2
+        - by: "checker-c"
+          value: 1
+        - by: "tiebreaker-1"
+          value: 1
+        - by: "tiebreaker-2"
+          value: 1
+      decision: 1
+      rationale: "Four of six votes select level 1 by qualified majority. Explicit conspecific fry consumption in
+        Seriously Fish and small-fish items in the 2017 Amazon diet accounts support opportunistic
+        prey-taking. Level 0 would omit that evidence; level 2 would require regular predation on mouth-sized
+        fish that the readable sources do not establish. FishProfiles warns about swallowable companions
+        without demonstrating consumption frequency, and Aquarist Atlas's stronger piscivory claim lacks a
+        verified primary result. The rubric's 2 cm boundary is a category definition, not a measured maximum
+        prey size. The two parasite papers partly reuse diet background and are not two independent prey
+        experiments. Proposals: generator proposed 1; checker-a proposed 0; checker-b proposed 2; checker-c
+        proposed 1; tiebreaker-1 proposed 1; tiebreaker-2 proposed 1."
+    - field: "features.diet"
+      proposals:
+        - by: "generator"
+          value:
+            type: "omnivore"
+            bloatSensitive: false
+            foods:
+              - "Fine sinking complete food with plant ingredients"
+              - "Small aquatic invertebrates"
+              - "Artemia and insect larvae"
+              - "Occasional vegetable foods"
+        - by: "checker-a"
+          value:
+            type: "omnivore"
+            bloatSensitive: false
+            foods:
+              - "fine pellets"
+              - "bloodworm"
+              - "brine shrimp"
+              - "daphnia"
+              - "spirulina"
+        - by: "checker-b"
+          value:
+            type: "omnivore"
+            bloatSensitive: false
+            foods:
+              - "small crustaceans"
+              - "insect larvae"
+              - "small sinking pellets"
+              - "seeds and other plant material"
+              - "occasional small fish"
+        - by: "checker-c"
+          value:
+            type: "omnivore"
+            bloatSensitive: false
+            foods:
+              - "Small crustaceans"
+              - "Insect larvae"
+              - "Fine sinking prepared food"
+              - "Plant material and seeds"
+      decision:
+        type: "omnivore"
+        bloatSensitive: false
+        foods:
+          - "Fine sinking complete food with plant ingredients"
+          - "Small aquatic invertebrates"
+          - "Artemia and insect larvae"
+          - "Occasional vegetable foods"
+      rationale: "All four votes agree on omnivore and bloatSensitive false; the tally preserves the generator's
+        food suggestions. Seeds and plant material alongside crustaceans, insects and occasional small fish
+        support mixed feeding in FishBase and Amazon literature. Seriously Fish recommends small animal foods
+        plus plant-containing prepared food. False means the particular high-protein bloat conflict is not
+        established, not immunity from digestive illness. Bednarczuk's stronger bloat warning concerns other
+        Satanoperca species and cannot be transferred automatically to jurupari. Proposals: generator proposed
+        {\"type\": \"omnivore\", \"bloatSensitive\": false, \"foods\": [\"Fine sinking complete food with
+        plant ingredients\", \"Small aquatic invertebrates\", \"Artemia and insect larvae\", \"Occasional
+        vegetable foods\"]}; checker-a proposed {\"type\": \"omnivore\", \"bloatSensitive\": false, \"foods\":
+        [\"fine pellets\", \"bloodworm\", \"brine shrimp\", \"daphnia\", \"spirulina\"]}; checker-b proposed
+        {\"type\": \"omnivore\", \"bloatSensitive\": false, \"foods\": [\"small crustaceans\", \"insect
+        larvae\", \"small sinking pellets\", \"seeds and other plant material\", \"occasional small fish\"]};
+        checker-c proposed {\"type\": \"omnivore\", \"bloatSensitive\": false, \"foods\": [\"Small
+        crustaceans\", \"Insect larvae\", \"Fine sinking prepared food\", \"Plant material and seeds\"]}."
+    - field: "features.aggressionHeterospecific"
+      proposals:
+        - by: "generator"
+          value: 2
+        - by: "checker-a"
+          value: 1
+        - by: "checker-b"
+          value: 2
+        - by: "checker-c"
+          value: 2
+      decision: 2
+      rationale: "Generator, checker-b and checker-c proposed level 2; checker-a proposed level 1. The breeding
+        account describes eviction of neighbouring fish rather than display alone, which supports level 2
+        under the rubric. Ordinary mixed-community behaviour is peaceful and there is no evidence of
+        persistent attacks across the aquarium in suitable housing."
+    - field: "features.social"
+      proposals:
+        - by: "generator"
+          value:
+            structure: "group"
+            minGroup: 5
+        - by: "checker-a"
+          value:
+            structure: "group"
+            minGroup: 6
+        - by: "checker-b"
+          value:
+            structure: "group"
+            minGroup: 6
+        - by: "checker-c"
+          value:
+            structure: "group"
+            minGroup: 5
+      decision:
+        structure: "group"
+        minGroup: 6
+      rationale: "Generator and checker-c proposed a minimum of five, while checker-a and checker-b proposed six.
+        Six is selected as a cautious planning minimum within Seriously Fish and Aqua-Fish recommendations of
+        five to eight. Fishkeeper recommends at least eight, Guidarium at least five and Aquaristic Online
+        five to six; these wider recommendations do not establish a biological threshold. The retailer
+        proposal of eight is acknowledged but does not outweigh the independent five-to-eight database
+        guidance. Temporary breeding pairs do not replace adult group maintenance."
+    - field: "features.hybridGroups"
+      proposals:
+        - by: "generator"
+          value:
+            - "satanoperca-jurupari-mapiritensis"
+            - "satanoperca-jurupari-rhynchitis"
+        - by: "checker-a"
+          value: []
+        - by: "checker-b"
+          value:
+            - "satanoperca-jurupari-rhynchitis"
+            - "satanoperca-jurupari-mapiritensis"
+        - by: "checker-c"
+          value:
+            - "satanoperca-jurupari-rhynchitis"
+        - by: "tiebreaker-1"
+          value:
+            - "satanoperca-jurupari-mapiritensis"
+            - "satanoperca-jurupari-rhynchitis"
+        - by: "tiebreaker-2"
+          value:
+            - "satanoperca-jurupari-mapiritensis"
+            - "satanoperca-jurupari-rhynchitis"
+      decision:
+        - "satanoperca-jurupari-mapiritensis"
+        - "satanoperca-jurupari-rhynchitis"
+      rationale: "Four of six votes support both pairwise ids by qualified majority. The presumed
+        jurupari-mapiritensis group follows the rubric's very-close-relationship provision: Willis and
+        colleagues found no clear genetic separation in their 2012 study. Only the abstract was accessible;
+        fetch-oa refused its full text as non-open-access. The presumed jurupari-rhynchitis group follows
+        Kullander's possible coastal introgression and the competing explanations summarized by Seriously
+        Fish. The permitted fetch returned Kullander's abstract rather than the full revision. Neither study
+        establishes verified free-choice aquarium offspring. The Catalog retains all three names as valid, and
+        incomplete lineage sorting or disputed species boundaries remain alternatives. These are two separate
+        presumed groups, with no inferred mapiritensis-rhynchitis cross and no all-to-all group containing
+        leucosticta or undescribed trade fish. Proposals: generator proposed
+        [\"satanoperca-jurupari-mapiritensis\", \"satanoperca-jurupari-rhynchitis\"]; checker-a proposed [];
+        checker-b proposed [\"satanoperca-jurupari-rhynchitis\", \"satanoperca-jurupari-mapiritensis\"];
+        checker-c proposed [\"satanoperca-jurupari-rhynchitis\"]; tiebreaker-1 proposed
+        [\"satanoperca-jurupari-mapiritensis\", \"satanoperca-jurupari-rhynchitis\"]; tiebreaker-2 proposed
+        [\"satanoperca-jurupari-mapiritensis\", \"satanoperca-jurupari-rhynchitis\"]."
+    - field: "features.coloration"
+      proposals:
+        - by: "generator"
+          value:
+            baseColors:
+              - "silver"
+              - "brown"
+              - "green"
+            pattern: "mixed"
+        - by: "checker-a"
+          value:
+            baseColors:
+              - "grey"
+              - "silver"
+            pattern: "plain"
+        - by: "checker-b"
+          value:
+            baseColors:
+              - "silver"
+              - "brown"
+              - "green"
+            pattern: "mixed"
+        - by: "checker-c"
+          value:
+            baseColors:
+              - "silver"
+              - "brown"
+              - "green"
+            pattern: "mixed"
+      decision:
+        baseColors:
+          - "silver"
+          - "brown"
+          - "green"
+        pattern: "mixed"
+      rationale: "Generator, checker-b and checker-c proposed silver, brown and green with a mixed pattern;
+        checker-a proposed grey and silver with a plain pattern. Species diagnostics and labelled photographs
+        support subdued metallic ground colours, variable faint bars and a small tail-base mark. Mixed retains
+        the occasional bars and ocellus without implying pronounced side blotches. Persistent white facial
+        markings can indicate leucosticta and require an identification check."
+    - field: "features.minTank"
+      proposals:
+        - by: "generator"
+          value:
+            volumeL: 750
+            lengthCm: 210
+            depthCm: 60
+        - by: "checker-a"
+          value:
+            volumeL: 750
+            lengthCm: 210
+            depthCm: 60
+        - by: "checker-b"
+          value:
+            volumeL: 750
+            lengthCm: 210
+            depthCm: 60
+        - by: "checker-c"
+          value:
+            volumeL: 756
+            lengthCm: 210
+            depthCm: 60
+      decision:
+        volumeL: 756
+        lengthCm: 210
+        depthCm: 60
+      rationale: "Generator, checker-a and checker-b proposed 750 L with a 210 by 60 cm base; checker-c proposed 756
+        L with the same base. Retain the source's approximately 756 L and exact 210 by 60 cm footprint for the
+        final minimum of six adults. This differs from 750 L only by rounding and preserves the clearest
+        published adult-group footprint. Lower recommendations include Aqua-Fish 300 L, Guidarium 280 L at 120
+        cm, Akvaforum 450 L, Einrichtungsbeispiele 500 L and Aquaristic Online 350 L; they do not demonstrate
+        equivalent space for the selected adult social unit. Depth means front-to-back width, and additional
+        companions require additional capacity."
+    - field: "features.lifespanYears"
+      proposals:
+        - by: "generator"
+          value:
+            min: 8
+            max: 12
+        - by: "checker-a"
+          value:
+            min: 8
+            max: 12
+        - by: "checker-b"
+          value:
+            min: 8
+            max: 12
+        - by: "checker-c"
+          value:
+            min: 8
+            max: 10
+      decision:
+        min: 8
+        max: 12
+      rationale: "Generator, checker-a and checker-b proposed eight to twelve years; checker-c proposed eight to
+        ten. Aqua-Fish explicitly gives eight to twelve and the Lone Star retailer about ten. The narrower
+        checker-c estimate lacks stronger evidence for its upper bound, while Aquaristic Online's wider
+        ten-to-fifteen-year claim is not adopted as typical. These are hobby expectations without a documented
+        longitudinal cohort, so agreement among agents does not justify high confidence."
+    - field: "taxonomy.synonyms"
+      proposals:
+        - by: "generator"
+          value:
+            - name: "Geophagus jurupari"
+              note: "Original combination."
+        - by: "checker-a"
+          value:
+            - name: "Geophagus jurupari Heckel, 1840"
+              note: "original combination"
+        - by: "checker-b"
+          value:
+            - name: "Geophagus jurupari"
+              note: "Original combination."
+        - by: "checker-c"
+          value:
+            - name: "Geophagus jurupari"
+              note: "Original combination."
+      decision:
+        - name: "Geophagus jurupari"
+          note: "Original combination."
+      rationale: "All entries denote the same original combination. The generator, checker-b and checker-c use the
+        bare binomial; checker-a includes the author and year. The Catalog supports Geophagus jurupari as the
+        historical combination, with authorship stored separately in taxonomy.author. Related currently valid
+        species are not synonyms."
