@@ -1,0 +1,3113 @@
+schemaVersion: 1
+id: fossorochromis-rostratus
+legacyIds:
+- 309
+status: described
+taxonomy:
+  validName: Fossorochromis rostratus
+  genus: Fossorochromis
+  species: rostratus
+  author: "(Boulenger, 1899)"
+  source:
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes: species of Fossorochromis"
+    url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Fossorochromis"
+    accessed: '2026-10-13'
+  synonyms:
+  - name: Tilapia rostrata
+    note: Original combination recorded by the Catalog of Fishes.
+  - name: Haplochromis rostratus
+    note: Former genus combination used in aquarium literature.
+  - name: Cyrtocara rostrata
+    note: Former combination recorded in the Nordic register and AquaInfo.
+  - name: Haplochromis macrorhynchus
+    note: Regan 1922 name explicitly treated as a synonym by the Catalog of Fishes.
+  legacyNames:
+  - Fossorochromis rostratus
+  note: "The Catalog of Fishes accepts Fossorochromis rostratus (Boulenger, 1899) and treats Haplochromis macrorhynchus\
+    \ as its junior synonym. The legacy genus is unchanged. Former genus combinations are retained separately from\
+    \ that junior synonym. The GCCA article gives 1898, which is rejected in favour of the catalog authority; the\
+    \ CRC public summary independently confirms the valid name."
+names:
+  trade:
+    en:
+    - Rostratus
+    - Malawi sand diver
+    - Fosso
+    de:
+    - Fünffleckmaulbrüter
+variants:
+- name: Chesese
+  kind: locality
+  note: Collection-origin label shown in the Malawi-Guru species directory. A distinct inherited colour race is
+    not established.
+- name: Otter Point
+  kind: locality
+  note: Collection-origin label shown in the Malawi-Guru species directory. A distinct inherited colour race is
+    not established.
+- name: Thumbi West Island
+  kind: locality
+  note: Collection-origin label shown in the Malawi-Guru species directory. A distinct inherited colour race is
+    not established.
+- name: Mbenji Island
+  kind: locality
+  note: Collection-origin label shown in the Malawi-Guru species directory. A distinct inherited colour race is
+    not established.
+- name: Mbamba Islands
+  kind: locality
+  note: Collection-origin label shown in the Malawi-Guru species directory. A distinct inherited colour race is
+    not established.
+features:
+  origin:
+    value:
+      continent: Africa
+      region: Lake Malawi and its connected Lake Malombe system
+      waterbody: lake-malawi
+      localities:
+      - Chesese
+      - Otter Point
+      - Thumbi West Island
+      - Mbenji Island
+      - Mbamba Islands
+    confidence: high
+    rationale: All four runs identify Lake Malawi. Generator and checker-c include connected Lake Malombe; checker-b
+      uses Lake Malawi system with both lakes as localities; checker-a limits the value to Lake Malawi although
+      its rationale also notes Malombe. Retain the fuller regional description and the generator collection labels
+      because Malawi-Guru explicitly reports Malombe and illustrates those origins. These labels do not establish
+      separate inherited colour forms.
+    sources:
+    - kind: catalog-of-fishes
+      title: "Eschmeyer's Catalog of Fishes: species of Fossorochromis"
+      url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Fossorochromis"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "FishBase: Fossorochromis rostratus species summary"
+      url: "https://www.fishbase.se/summary/Fossorochromis-rostratus.html"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Malawi-Guru: Fossorochromis rostratus species directory"
+      url: "https://malawi-guru.de/artentafel-fossorochromis-rostratus-verzeichnis/"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: species of Fossorochromis"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Fossorochromis"
+        accessed: '2026-10-13'
+      value:
+        continent: Africa
+        region: Lake Malawi
+        waterbody: lake-malawi
+      note: Accepted distribution.
+    - source:
+        kind: database
+        title: "FishBase: Fossorochromis rostratus species summary"
+        url: "https://www.fishbase.se/summary/Fossorochromis-rostratus.html"
+        accessed: '2026-10-13'
+      value:
+        continent: Africa
+        region: Lake Malawi
+        waterbody: lake-malawi
+      note: Lake distribution.
+    - source:
+        kind: database
+        title: "Malawi-Guru: Fossorochromis rostratus species directory"
+        url: "https://malawi-guru.de/artentafel-fossorochromis-rostratus-verzeichnis/"
+        accessed: '2026-10-13'
+      value:
+        continent: Africa
+        region: Lake Malawi and its connected Lake Malombe system
+        waterbody: lake-malawi
+        localities:
+        - Chesese
+        - Otter Point
+        - Thumbi West Island
+        - Mbenji Island
+        - Mbamba Islands
+      note: Connected Lake Malombe and illustrated collection-origin labels.
+  temperatureC:
+    value:
+      min: 21
+      max: 29
+    confidence: high
+    rationale: "Retain the tally waterbody decision of 21 to 29 C at high confidence. Eccles describes the cool\
+      \ inshore endpoint in its abstract; Vollmer documents seasonal upper-water cooling and warming, and the later\
+      \ Ngochera and Bootsma publication corroborates 29 C. Branchu campaign means of 24.48 to 26.15 C and the FAO\
+      \ historical 23 to 25 C interval sample only part of this envelope. The range describes natural sites and\
+      \ seasons rather than a constant captive setting. The full Eccles text was unavailable through fetch-oa; its\
+      \ abstract is sufficient for the temperatures cited. The non-DOI 1999 mixing chapter and 2018 dissertation\
+      \ full text were not fetched; no numerical evidence is assigned to those unread works."
+    sources:
+    - kind: literature
+      title: "Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology\
+        \ and Oceanography 19(5), 730-742 (abstract only)."
+      url: "https://doi.org/10.4319/lo.1974.19.5.0730"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Vollmer, M. K. et al. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and\
+        \ Oceanography 50(2), 727-732."
+      url: "https://doi.org/10.4319/lo.2005.50.2.0727"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Branchu, P. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian\
+        \ Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7,\
+        \ 4371-4409."
+      url: "https://doi.org/10.5194/hessd-7-4371-2010"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of\
+        \ Africa, Vol. 1. CIFA Technical Paper 18/1. Lake Malawi/Nyasa measurements after Jackson et al. (1963)\
+        \ and Talling and Talling (1965)."
+      url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Ngochera, M. J. and Bootsma, H. A. (2020). Spatial and temporal dynamics of pCO2 and CO2 flux in tropical\
+        \ Lake Malawi. Limnology and Oceanography 65, 1594-1607."
+      url: "https://doi.org/10.1002/lno.11408"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: literature
+        title: "Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology\
+          \ and Oceanography 19(5), 730-742 (abstract only)."
+        url: "https://doi.org/10.4319/lo.1974.19.5.0730"
+        accessed: '2026-10-13'
+      value:
+        min: 21
+        max: 27
+      note: Abstract describes 21 C inshore cooling in the southeast arm and about 27 C in the upper 60 m by May.
+        Only the abstract was available; fetch-oa refused the full work as not open access.
+    - source:
+        kind: literature
+        title: "Vollmer, M. K. et al. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and\
+          \ Oceanography 50(2), 727-732."
+        url: "https://doi.org/10.4319/lo.2005.50.2.0727"
+        accessed: '2026-10-13'
+      value:
+        min: 23.5
+        max: 28
+      note: Approximate seasonal upper-water temperatures; these are a subset of the lake envelope.
+    - source:
+        kind: literature
+        title: "Branchu, P. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian\
+          \ Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions\
+          \ 7, 4371-4409."
+        url: "https://doi.org/10.5194/hessd-7-4371-2010"
+        accessed: '2026-10-13'
+      value:
+        min: 24.48
+        max: 26.15
+      note: "Table 4 epilimnetic campaign means, not seasonal extremes."
+    - source:
+        kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+          \ of Africa, Vol. 1. CIFA Technical Paper 18/1. Lake Malawi/Nyasa measurements after Jackson et al. (1963)\
+          \ and Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+        accessed: '2026-10-13'
+      value:
+        min: 23
+        max: 25
+      note: Historical surface-temperature interval attributed to Jackson et al. (1963).
+    - source:
+        kind: literature
+        title: "Ngochera, M. J. and Bootsma, H. A. (2020). Spatial and temporal dynamics of pCO2 and CO2 flux in\
+          \ tropical Lake Malawi. Limnology and Oceanography 65, 1594-1607."
+        url: "https://doi.org/10.1002/lno.11408"
+        accessed: '2026-10-13'
+      value:
+        min: 23.2
+        max: 29
+      note: Southern cool-season surface water around 23.2 C and hot-season surface water reaching 29 C in the 2013
+        survey account.
+    tolerance:
+      value:
+        min: 21
+        max: 29
+      confidence: low
+      rationale: "All four runs propose 21 to 29 C, retained exactly with unanimous verification and low confidence.\
+        \ Seriously Fish gives 25 to 29 C, AquaInfo 22 to 26, Aqua-Fish 25 to 27, the Nordic and Aquainfo.dk tables\
+        \ 23 to 28, and GCCA about 23.9 to 26.7. The natural cool endpoint of 21 C must be included, but the care\
+        \ sources do not establish multi-year captive health there. These are recommended intervals rather than\
+        \ controlled longevity trials. About 24 to 26 C is a practical central setting."
+      sources:
+      - kind: literature
+        title: "Borstein, R. (2002). Fossorochromis rostratus. Greater Chicago Cichlid Association breeding report."
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/62-fossorochromis-rostratus.html"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology\
+          \ and Oceanography 19(5), 730-742 (abstract only)."
+        url: "https://doi.org/10.4319/lo.1974.19.5.0730"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Vollmer, M. K. et al. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and\
+          \ Oceanography 50(2), 727-732."
+        url: "https://doi.org/10.4319/lo.2005.50.2.0727"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Branchu, P. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian\
+          \ Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions\
+          \ 7, 4371-4409."
+        url: "https://doi.org/10.5194/hessd-7-4371-2010"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+          \ of Africa, Vol. 1. CIFA Technical Paper 18/1. Lake Malawi/Nyasa measurements after Jackson et al. (1963)\
+          \ and Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Ngochera, M. J. and Bootsma, H. A. (2020). Spatial and temporal dynamics of pCO2 and CO2 flux in\
+          \ tropical Lake Malawi. Limnology and Oceanography 65, 1594-1607."
+        url: "https://doi.org/10.1002/lno.11408"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Fossorochromis rostratus"
+        url: "https://www.seriouslyfish.com/species/fossorochromis-rostratus/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "AquaInfo: Fossorochromis rostratus, by Walter Deproost and John de Lange"
+        url: "https://aquainfo.nl/en/article/fossorochromis-rostratus/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet: Fossorochromis rostratus species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=733"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Fish: Rostratus species profile"
+        url: "https://en.aqua-fish.net/fish/rostratus"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aquainfo.dk: Fossorochromis rostratus species table and keeping account"
+        url: "https://aquainfo.dk/en/fossorochromis-rostratus"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Imperial Tropicals: Fossorochromis rostratus retailer care sheet"
+        url: "https://imperialtropicals.com/products/fossorochromis-rostratus"
+        accessed: '2026-10-13'
+      evidence:
+      - source:
+          kind: literature
+          title: "Borstein, R. (2002). Fossorochromis rostratus. Greater Chicago Cichlid Association breeding report."
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/62-fossorochromis-rostratus.html"
+          accessed: '2026-10-13'
+        value:
+          min: 23.9
+          max: 26.7
+        note: 75 to 80 F converted to Celsius.
+      - source:
+          kind: literature
+          title: "Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology\
+            \ and Oceanography 19(5), 730-742 (abstract only)."
+          url: "https://doi.org/10.4319/lo.1974.19.5.0730"
+          accessed: '2026-10-13'
+        value:
+          min: 21
+          max: 27
+        note: Abstract describes 21 C inshore cooling in the southeast arm and about 27 C in the upper 60 m by May.
+          Only the abstract was available; fetch-oa refused the full work as not open access.
+      - source:
+          kind: literature
+          title: "Vollmer, M. K. et al. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology\
+            \ and Oceanography 50(2), 727-732."
+          url: "https://doi.org/10.4319/lo.2005.50.2.0727"
+          accessed: '2026-10-13'
+        value:
+          min: 23.5
+          max: 28
+        note: Approximate seasonal upper-water temperatures; these are a subset of the lake envelope.
+      - source:
+          kind: literature
+          title: "Branchu, P. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian\
+            \ Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions\
+            \ 7, 4371-4409."
+          url: "https://doi.org/10.5194/hessd-7-4371-2010"
+          accessed: '2026-10-13'
+        value:
+          min: 24.48
+          max: 26.15
+        note: "Table 4 epilimnetic campaign means, not seasonal extremes."
+      - source:
+          kind: literature
+          title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+            \ of Africa, Vol. 1. CIFA Technical Paper 18/1. Lake Malawi/Nyasa measurements after Jackson et al.\
+            \ (1963) and Talling and Talling (1965)."
+          url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+          accessed: '2026-10-13'
+        value:
+          min: 23
+          max: 25
+        note: Historical surface-temperature interval attributed to Jackson et al. (1963).
+      - source:
+          kind: literature
+          title: "Ngochera, M. J. and Bootsma, H. A. (2020). Spatial and temporal dynamics of pCO2 and CO2 flux\
+            \ in tropical Lake Malawi. Limnology and Oceanography 65, 1594-1607."
+          url: "https://doi.org/10.1002/lno.11408"
+          accessed: '2026-10-13'
+        value:
+          min: 23.2
+          max: 29
+        note: Southern cool-season surface water around 23.2 C and hot-season surface water reaching 29 C in the
+          2013 survey account.
+      - source:
+          kind: database
+          title: "Seriously Fish: Fossorochromis rostratus"
+          url: "https://www.seriouslyfish.com/species/fossorochromis-rostratus/"
+          accessed: '2026-10-13'
+        value:
+          min: 25
+          max: 29
+        note: Aquarium recommendation.
+      - source:
+          kind: database
+          title: "AquaInfo: Fossorochromis rostratus, by Walter Deproost and John de Lange"
+          url: "https://aquainfo.nl/en/article/fossorochromis-rostratus/"
+          accessed: '2026-10-13'
+        value:
+          min: 22
+          max: 26
+        note: Aquarium recommendation in the narrative.
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet: Fossorochromis rostratus species register"
+          url: "https://www.ciklid.org/artregister/art.php?ID=733"
+          accessed: '2026-10-13'
+        value:
+          min: 23
+          max: 28
+        note: Species-register care interval.
+      - source:
+          kind: database
+          title: "Aqua-Fish: Rostratus species profile"
+          url: "https://en.aqua-fish.net/fish/rostratus"
+          accessed: '2026-10-13'
+        value:
+          min: 25
+          max: 27
+        note: Aquarium care range.
+      - source:
+          kind: database
+          title: "Aquainfo.dk: Fossorochromis rostratus species table and keeping account"
+          url: "https://aquainfo.dk/en/fossorochromis-rostratus"
+          accessed: '2026-10-13'
+        value:
+          min: 23
+          max: 28
+        note: Care-sheet range.
+      - source:
+          kind: website
+          title: "Imperial Tropicals: Fossorochromis rostratus retailer care sheet"
+          url: "https://imperialtropicals.com/products/fossorochromis-rostratus"
+          accessed: '2026-10-13'
+        value:
+          min: 23.3
+          max: 28.9
+        note: Aquarium range converted from 74 to 84 F.
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+  ph:
+    value:
+      min: 7.7
+      max: 8.6
+    confidence: high
+    rationale: Retain the tally waterbody decision of pH 7.7 to 8.6 at high confidence. The FAO compilation attributes
+      that surface interval to Jackson et al. Branchu discusses 7.5 to 8.5 for the water column. Its lower 7.5 endpoint
+      includes deeper water and does not replace the decided surface envelope for this mainly shallow-water fish.
+      Aquarium recommendations determine tolerance separately.
+    sources:
+    - kind: literature
+      title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of\
+        \ Africa, Vol. 1. CIFA Technical Paper 18/1. Lake Malawi/Nyasa measurements after Jackson et al. (1963)\
+        \ and Talling and Talling (1965)."
+      url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Branchu, P. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian\
+        \ Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7,\
+        \ 4371-4409."
+      url: "https://doi.org/10.5194/hessd-7-4371-2010"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+          \ of Africa, Vol. 1. CIFA Technical Paper 18/1. Lake Malawi/Nyasa measurements after Jackson et al. (1963)\
+          \ and Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+        accessed: '2026-10-13'
+      value:
+        min: 7.7
+        max: 8.6
+      note: Lake surface chemistry attributed to Jackson et al. (1963).
+    - source:
+        kind: literature
+        title: "Branchu, P. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian\
+          \ Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions\
+          \ 7, 4371-4409."
+        url: "https://doi.org/10.5194/hessd-7-4371-2010"
+        accessed: '2026-10-13'
+      value:
+        min: 7.5
+        max: 8.5
+      note: Whole-column pH discussed in the hydrochemistry paper; includes deeper water.
+    tolerance:
+      value:
+        min: 7.5
+        max: 8.8
+      confidence: medium
+      rationale: "All four runs propose pH 7.5 to 8.8, retained exactly with unanimous verification and medium confidence.\
+        \ Seriously Fish supplies this range, while Aqua-Fish, AquaInfo and the Nordic register give 7.5 to 8.5.\
+        \ Aquainfo.dk gives the wider 7.2 to 8.8 interval; its lower endpoint is excluded because the other species-specific\
+        \ sources converge on 7.5. The narrower decided range is a cautious husbandry envelope and includes natural\
+        \ pH 7.7 to 8.6. No controlled long-term endpoint study was found."
+      sources:
+      - kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+          \ of Africa, Vol. 1. CIFA Technical Paper 18/1. Lake Malawi/Nyasa measurements after Jackson et al. (1963)\
+          \ and Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Branchu, P. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian\
+          \ Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions\
+          \ 7, 4371-4409."
+        url: "https://doi.org/10.5194/hessd-7-4371-2010"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Fossorochromis rostratus"
+        url: "https://www.seriouslyfish.com/species/fossorochromis-rostratus/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Fish: Rostratus species profile"
+        url: "https://en.aqua-fish.net/fish/rostratus"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsallskapet: Fossorochromis rostratus species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=733"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "AquaInfo: Fossorochromis rostratus, by Walter Deproost and John de Lange"
+        url: "https://aquainfo.nl/en/article/fossorochromis-rostratus/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Einrichtungsbeispiele: Fossorochromis rostratus species directory"
+        url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/rostratus-slnk.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aquainfo.dk: Fossorochromis rostratus species table and keeping account"
+        url: "https://aquainfo.dk/en/fossorochromis-rostratus"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "AquaInfo: Fossorochromis rostratus, Dutch version of the same account"
+        url: "https://aquainfo.nl/artikel/fossorochromis-rostratus/"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Imperial Tropicals: Fossorochromis rostratus retailer care sheet"
+        url: "https://imperialtropicals.com/products/fossorochromis-rostratus"
+        accessed: '2026-10-13'
+      evidence:
+      - source:
+          kind: literature
+          title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+            \ of Africa, Vol. 1. CIFA Technical Paper 18/1. Lake Malawi/Nyasa measurements after Jackson et al.\
+            \ (1963) and Talling and Talling (1965)."
+          url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+          accessed: '2026-10-13'
+        value:
+          min: 7.7
+          max: 8.6
+        note: Lake surface chemistry attributed to Jackson et al. (1963).
+      - source:
+          kind: literature
+          title: "Branchu, P. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian\
+            \ Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions\
+            \ 7, 4371-4409."
+          url: "https://doi.org/10.5194/hessd-7-4371-2010"
+          accessed: '2026-10-13'
+        value:
+          min: 7.5
+          max: 8.5
+        note: Whole-column pH discussed in the hydrochemistry paper; includes deeper water.
+      - source:
+          kind: database
+          title: "Seriously Fish: Fossorochromis rostratus"
+          url: "https://www.seriouslyfish.com/species/fossorochromis-rostratus/"
+          accessed: '2026-10-13'
+        value:
+          min: 7.5
+          max: 8.8
+        note: Aquarium care interval.
+      - source:
+          kind: database
+          title: "Aqua-Fish: Rostratus species profile"
+          url: "https://en.aqua-fish.net/fish/rostratus"
+          accessed: '2026-10-13'
+        value:
+          min: 7.5
+          max: 8.5
+        note: Aquarium care interval.
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet: Fossorochromis rostratus species register"
+          url: "https://www.ciklid.org/artregister/art.php?ID=733"
+          accessed: '2026-10-13'
+        value:
+          min: 7.5
+          max: 8.5
+        note: Species-register care interval.
+      - source:
+          kind: database
+          title: "AquaInfo: Fossorochromis rostratus, by Walter Deproost and John de Lange"
+          url: "https://aquainfo.nl/en/article/fossorochromis-rostratus/"
+          accessed: '2026-10-13'
+        value:
+          min: 7.5
+          max: 8.5
+      - source:
+          kind: database
+          title: "Einrichtungsbeispiele: Fossorochromis rostratus species directory"
+          url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/rostratus-slnk.html"
+          accessed: '2026-10-13'
+        value:
+          min: 7.5
+          max: 8.5
+      - source:
+          kind: database
+          title: "Aquainfo.dk: Fossorochromis rostratus species table and keeping account"
+          url: "https://aquainfo.dk/en/fossorochromis-rostratus"
+          accessed: '2026-10-13'
+        value:
+          min: 7.2
+          max: 8.8
+      - source:
+          kind: database
+          title: "AquaInfo: Fossorochromis rostratus, Dutch version of the same account"
+          url: "https://aquainfo.nl/artikel/fossorochromis-rostratus/"
+          accessed: '2026-10-13'
+        value:
+          min: 7.5
+          max: 8.5
+      - source:
+          kind: website
+          title: "Imperial Tropicals: Fossorochromis rostratus retailer care sheet"
+          url: "https://imperialtropicals.com/products/fossorochromis-rostratus"
+          accessed: '2026-10-13'
+        value:
+          min: 7.5
+          max: 8.6
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+  ghDgh:
+    value:
+      min: 3
+      max: 5
+    confidence: high
+    rationale: "Retain the tally waterbody decision of 3 to 5 dGH at high confidence. Branchu calcium and magnesium\
+      \ measurements yield about 4.2 to 4.6 dGH, while the older ion data compiled by FAO yield about 3.2 to 4.9.\
+      \ The decided rounded lake envelope covers both. General hardness describes calcium and magnesium, and is\
+      \ distinct from bicarbonate alkalinity."
+    sources:
+    - kind: literature
+      title: "Branchu, P. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian\
+        \ Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7,\
+        \ 4371-4409."
+      url: "https://doi.org/10.5194/hessd-7-4371-2010"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of\
+        \ Africa, Vol. 1. CIFA Technical Paper 18/1. Lake Malawi/Nyasa measurements after Jackson et al. (1963)\
+        \ and Talling and Talling (1965)."
+      url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: literature
+        title: "Branchu, P. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian\
+          \ Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions\
+          \ 7, 4371-4409."
+        url: "https://doi.org/10.5194/hessd-7-4371-2010"
+        accessed: '2026-10-13'
+      value:
+        min: 4.2
+        max: 4.6
+      note: Upper 50 m calcium and magnesium in Table 2 converted using dGH = Ca/7.14 + Mg/4.34 with concentrations
+        in mg/L.
+    - source:
+        kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+          \ of Africa, Vol. 1. CIFA Technical Paper 18/1. Lake Malawi/Nyasa measurements after Jackson et al. (1963)\
+          \ and Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+        accessed: '2026-10-13'
+      value:
+        min: 3.2
+        max: 4.9
+      note: Historical calcium and magnesium values of Jackson et al. and Talling and Talling converted to dGH.
+    tolerance:
+      value:
+        min: 3
+        max: 25
+      confidence: medium
+      rationale: "Generator, checker-a, checker-c and both tie-breakers propose 3 to 25 dGH; checker-b proposes\
+        \ 3 to 15. Retain the exact tally qualified-majority decision of 3 to 25 with five agreeing votes out of\
+        \ six and medium confidence. Seriously Fish and the separately maintained Aquainfo.dk table give 10 to 25\
+        \ dGH. The natural 3 to 5 dGH range supplies the lower endpoint. Aqua-Fish gives 10 to 18, AQUAPORTAL 8\
+        \ to 18 and Einrichtungsbeispiele 5 to 15. AquaInfo gives 8 to 12 in its prose and 12 to 16 in its table.\
+        \ These narrower recommendations do not establish injury above 15 dGH. The upper endpoint remains care-sheet\
+        \ guidance, without a controlled chronic tolerance test or demonstrated independence of identical numbers."
+      sources:
+      - kind: literature
+        title: "Branchu, P. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian\
+          \ Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions\
+          \ 7, 4371-4409."
+        url: "https://doi.org/10.5194/hessd-7-4371-2010"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+          \ of Africa, Vol. 1. CIFA Technical Paper 18/1. Lake Malawi/Nyasa measurements after Jackson et al. (1963)\
+          \ and Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Fossorochromis rostratus"
+        url: "https://www.seriouslyfish.com/species/fossorochromis-rostratus/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Einrichtungsbeispiele: Fossorochromis rostratus species directory"
+        url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/rostratus-slnk.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Fish: Rostratus species profile"
+        url: "https://en.aqua-fish.net/fish/rostratus"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "AquaInfo: Fossorochromis rostratus, by Walter Deproost and John de Lange"
+        url: "https://aquainfo.nl/en/article/fossorochromis-rostratus/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "AquaInfo: Fossorochromis rostratus, Dutch version of the same account"
+        url: "https://aquainfo.nl/artikel/fossorochromis-rostratus/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aquainfo.dk: Fossorochromis rostratus species table and keeping account"
+        url: "https://aquainfo.dk/en/fossorochromis-rostratus"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "AQUAPORTAL.BG: Fossorochromis rostratus species profile"
+        url: "https://www.aquaportal.bg/Fish/details.php?Fish=493"
+        accessed: '2026-10-13'
+      evidence:
+      - source:
+          kind: literature
+          title: "Branchu, P. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian\
+            \ Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions\
+            \ 7, 4371-4409."
+          url: "https://doi.org/10.5194/hessd-7-4371-2010"
+          accessed: '2026-10-13'
+        value:
+          min: 4.2
+          max: 4.6
+        note: Upper 50 m calcium and magnesium in Table 2 converted using dGH = Ca/7.14 + Mg/4.34 with concentrations
+          in mg/L.
+      - source:
+          kind: literature
+          title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+            \ of Africa, Vol. 1. CIFA Technical Paper 18/1. Lake Malawi/Nyasa measurements after Jackson et al.\
+            \ (1963) and Talling and Talling (1965)."
+          url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+          accessed: '2026-10-13'
+        value:
+          min: 3.2
+          max: 4.9
+        note: Historical calcium and magnesium values of Jackson et al. and Talling and Talling converted to dGH.
+      - source:
+          kind: database
+          title: "Seriously Fish: Fossorochromis rostratus"
+          url: "https://www.seriouslyfish.com/species/fossorochromis-rostratus/"
+          accessed: '2026-10-13'
+        value:
+          min: 10
+          max: 25
+        note: "Aquarium recommendation, not measured lake hardness."
+      - source:
+          kind: database
+          title: "Einrichtungsbeispiele: Fossorochromis rostratus species directory"
+          url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/rostratus-slnk.html"
+          accessed: '2026-10-13'
+        value:
+          min: 5
+          max: 15
+        note: Aquarium recommendation with a lower minimum.
+      - source:
+          kind: database
+          title: "Aqua-Fish: Rostratus species profile"
+          url: "https://en.aqua-fish.net/fish/rostratus"
+          accessed: '2026-10-13'
+        value:
+          min: 10
+          max: 18
+        note: Aquarium hardness in German degrees.
+      - source:
+          kind: database
+          title: "AquaInfo: Fossorochromis rostratus, by Walter Deproost and John de Lange"
+          url: "https://aquainfo.nl/en/article/fossorochromis-rostratus/"
+          accessed: '2026-10-13'
+        value:
+          min: 8
+          max: 12
+        note: Narrative recommendation; the same account gives 12 to 16 dGH in its structured table. The translated
+          pages are one source.
+      - source:
+          kind: database
+          title: "Aquainfo.dk: Fossorochromis rostratus species table and keeping account"
+          url: "https://aquainfo.dk/en/fossorochromis-rostratus"
+          accessed: '2026-10-13'
+        value:
+          min: 10
+          max: 25
+      - source:
+          kind: database
+          title: "AquaInfo: Fossorochromis rostratus, Dutch version of the same account"
+          url: "https://aquainfo.nl/artikel/fossorochromis-rostratus/"
+          accessed: '2026-10-13'
+        value:
+          min: 8
+          max: 12
+        note: Narrative recommendation; the same account gives 12 to 16 dGH in its structured table. The translated
+          pages are one source.
+      - source:
+          kind: database
+          title: "AQUAPORTAL.BG: Fossorochromis rostratus species profile"
+          url: "https://www.aquaportal.bg/Fish/details.php?Fish=493"
+          accessed: '2026-10-13'
+        value:
+          min: 8
+          max: 18
+        note: "Species-specific general-hardness recommendation in German degrees, narrower than the two 25 dGH\
+          \ care ranges."
+      verification:
+        method: qualified-majority
+        votes:
+          agree: 5
+          total: 6
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+  khDkh:
+    value:
+      min: 5
+      max: 8
+    confidence: high
+    rationale: "Retain the tally waterbody decision of 5 to 8 dKH at high confidence, without a verification object\
+      \ on natural KH. Branchu alkalinity yields about 6.5 to 6.9 dKH and Jackson et al. data in the FAO compilation\
+      \ yield about 5.6 to 7.3. The rounded decided envelope contains those measurements. Sodium-associated bicarbonate\
+      \ allows alkalinity to exceed calcium-magnesium hardness."
+    sources:
+    - kind: literature
+      title: "Branchu, P. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian\
+        \ Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7,\
+        \ 4371-4409."
+      url: "https://doi.org/10.5194/hessd-7-4371-2010"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of\
+        \ Africa, Vol. 1. CIFA Technical Paper 18/1. Lake Malawi/Nyasa measurements after Jackson et al. (1963)\
+        \ and Talling and Talling (1965)."
+      url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: literature
+        title: "Branchu, P. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian\
+          \ Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions\
+          \ 7, 4371-4409."
+        url: "https://doi.org/10.5194/hessd-7-4371-2010"
+        accessed: '2026-10-13'
+      value:
+        min: 6.5
+        max: 6.9
+      note: Table 2 alkalinity across the sampled column of about 2.33 to 2.46 meq/L multiplied by 2.8; upper 30
+        m alone gives about 6.5 to 6.7.
+    - source:
+        kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+          \ of Africa, Vol. 1. CIFA Technical Paper 18/1. Lake Malawi/Nyasa measurements after Jackson et al. (1963)\
+          \ and Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+        accessed: '2026-10-13'
+      value:
+        min: 5.6
+        max: 7.3
+      note: Jackson et al. alkalinity of 2.00 to 2.59 meq/L converted to dKH.
+    tolerance:
+      value:
+        min: 5
+        max: 12
+      confidence: low
+      rationale: "Generator, checker-b and checker-c propose 5 to 12 dKH; checker-a proposes 5 to 10. Retain the\
+        \ tally decision of 5 to 12 with unanimous verification and low confidence. The 2 dKH difference counts\
+        \ as agreement under the pipeline threshold, and the median of the agreeing upper endpoints is 12. Einrichtungsbeispiele\
+        \ gives 6 to 12 dKH, while retailer Abysse gives a target of 10. JBL supplies an independent literature\
+        \ recommendation near 7 dKH for a Malawi aquarium and a general buffering interval of 5 to 12, rather than\
+        \ a species-specific longevity trial. Natural 5 to 8 dKH supplies the lower boundary. The endpoints remain\
+        \ weakly established for continuous lifelong aquarium use."
+      sources:
+      - kind: literature
+        title: "JBL: Carbonate hardness aquarium husbandry booklet, pages 3 to 6."
+        url: "https://www.jbl.de/en/download/8737/Ratgeber/JBL-Karbonathaerte_de.pdf"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Branchu, P. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian\
+          \ Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions\
+          \ 7, 4371-4409."
+        url: "https://doi.org/10.5194/hessd-7-4371-2010"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+          \ of Africa, Vol. 1. CIFA Technical Paper 18/1. Lake Malawi/Nyasa measurements after Jackson et al. (1963)\
+          \ and Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Einrichtungsbeispiele: Fossorochromis rostratus species directory"
+        url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/rostratus-slnk.html"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Abysse Cichlides: Fossorochromis rostratus retailer care sheet"
+        url: "https://www.abysse-cichlides.com/listgen/fiche-fossorochromis.rostratus-19.html"
+        accessed: '2026-10-13'
+      evidence:
+      - source:
+          kind: literature
+          title: "JBL: Carbonate hardness aquarium husbandry booklet, pages 3 to 6."
+          url: "https://www.jbl.de/en/download/8737/Ratgeber/JBL-Karbonathaerte_de.pdf"
+          accessed: '2026-10-13'
+        value:
+          min: 7
+          max: 7
+        note: Malawi aquarium target based on reproducing lake conditions; its general stability band is 5 to 12.
+      - source:
+          kind: literature
+          title: "Branchu, P. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian\
+            \ Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions\
+            \ 7, 4371-4409."
+          url: "https://doi.org/10.5194/hessd-7-4371-2010"
+          accessed: '2026-10-13'
+        value:
+          min: 6.5
+          max: 6.9
+        note: Table 2 alkalinity across the sampled column of about 2.33 to 2.46 meq/L multiplied by 2.8; upper
+          30 m alone gives about 6.5 to 6.7.
+      - source:
+          kind: literature
+          title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+            \ of Africa, Vol. 1. CIFA Technical Paper 18/1. Lake Malawi/Nyasa measurements after Jackson et al.\
+            \ (1963) and Talling and Talling (1965)."
+          url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+          accessed: '2026-10-13'
+        value:
+          min: 5.6
+          max: 7.3
+        note: Jackson et al. alkalinity of 2.00 to 2.59 meq/L converted to dKH.
+      - source:
+          kind: database
+          title: "Einrichtungsbeispiele: Fossorochromis rostratus species directory"
+          url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/rostratus-slnk.html"
+          accessed: '2026-10-13'
+        value:
+          min: 6
+          max: 12
+        note: Aquarium KH recommendation. Other claims on this page conflict with stronger sources.
+      - source:
+          kind: website
+          title: "Abysse Cichlides: Fossorochromis rostratus retailer care sheet"
+          url: "https://www.abysse-cichlides.com/listgen/fiche-fossorochromis.rostratus-19.html"
+          accessed: '2026-10-13'
+        value:
+          min: 10
+          max: 10
+        note: "Single recommended KH value, not an experimentally measured tolerance interval."
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+  maxSizeCm:
+    value:
+      male: 35
+      female: 25
+    confidence: medium
+    rationale: "Generator proposes a 30 cm male and 25 cm female; all three checkers propose 35 and 25. Use the\
+      \ explicit sex-specific aquarium account in AquaInfo, which describes 35 cm captive males as ordinary rather\
+      \ than exceptional. Its broader unsexed metadata range of 35 to 40 cm is not adopted. The retailer Fish Barn\
+      \ gives male 25 to 30 and female 20 to 25, and the Nordic register gives an unsexed 30 cm. FishBase 24.4 cm\
+      \ total length and Seriously Fish 25 cm standard length describe different measurement contexts and do not\
+      \ establish sex-specific captive maxima. Medium confidence reflects reliance on one detailed sex-specific\
+      \ account."
+    sources:
+    - kind: database
+      title: "AquaInfo: Fossorochromis rostratus, by Walter Deproost and John de Lange"
+      url: "https://aquainfo.nl/en/article/fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Nordiska Ciklidsallskapet: Fossorochromis rostratus species register"
+      url: "https://www.ciklid.org/artregister/art.php?ID=733"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Aqua-Fish: Rostratus species profile"
+      url: "https://en.aqua-fish.net/fish/rostratus"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "FishBase: Fossorochromis rostratus species summary"
+      url: "https://www.fishbase.se/summary/Fossorochromis-rostratus.html"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Seriously Fish: Fossorochromis rostratus"
+      url: "https://www.seriouslyfish.com/species/fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Einrichtungsbeispiele: Fossorochromis rostratus species directory"
+      url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/rostratus-slnk.html"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "The Fish Barn: Malawi Sand Diver retailer care guide"
+      url: "https://thefishbarn.co.uk/product/malawi-sand-diver-fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: database
+        title: "AquaInfo: Fossorochromis rostratus, by Walter Deproost and John de Lange"
+        url: "https://aquainfo.nl/en/article/fossorochromis-rostratus/"
+        accessed: '2026-10-13'
+      value:
+        male: 35
+        female: 25
+      note: Typical sex-specific aquarium sizes in the narrative; unsexed table instead gives 35 to 40 cm.
+    - source:
+        kind: database
+        title: "Nordiska Ciklidsallskapet: Fossorochromis rostratus species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=733"
+        accessed: '2026-10-13'
+      value: 30
+      note: Unsexed size figure; not a female maximum.
+    - source:
+        kind: database
+        title: "Aqua-Fish: Rostratus species profile"
+        url: "https://en.aqua-fish.net/fish/rostratus"
+        accessed: '2026-10-13'
+      value:
+        min: 25
+        max: 30
+      note: "Unsexed usual aquarium size, retained without assigning an invented sex."
+    - source:
+        kind: database
+        title: "FishBase: Fossorochromis rostratus species summary"
+        url: "https://www.fishbase.se/summary/Fossorochromis-rostratus.html"
+        accessed: '2026-10-13'
+      value: 24.4
+      note: Male or unsexed total length record; no captive female maximum.
+    - source:
+        kind: database
+        title: "Seriously Fish: Fossorochromis rostratus"
+        url: "https://www.seriouslyfish.com/species/fossorochromis-rostratus/"
+        accessed: '2026-10-13'
+      value: 25
+      note: "Unsexed standard length, excluding the tail; no conversion to total length assumed."
+    - source:
+        kind: database
+        title: "Einrichtungsbeispiele: Fossorochromis rostratus species directory"
+        url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/rostratus-slnk.html"
+        accessed: '2026-10-13'
+      value:
+        male: 40
+        female: 35
+      note: "Upper hobby estimates, not adopted as typical captive maxima."
+    - source:
+        kind: website
+        title: "The Fish Barn: Malawi Sand Diver retailer care guide"
+        url: "https://thefishbarn.co.uk/product/malawi-sand-diver-fossorochromis-rostratus/"
+        accessed: '2026-10-13'
+      value:
+        male: 30
+        female: 25
+      note: Upper ends of retailer male 25 to 30 cm and female 20 to 25 cm intervals.
+  predation:
+    value: 2
+    confidence: low
+    rationale: "Generator, checker-b, checker-c and both tie-breakers propose level 2; checker-a proposes level\
+      \ 1. Retain the exact tally qualified-majority decision of level 2 with five agreeing votes out of six and\
+      \ low confidence. Seriously Fish and AquaInfo warn that small tankmates may be swallowed, without establishing\
+      \ a 2 cm ceiling or consumption frequency. Level 2 is an uncertain compatibility mapping of that mouth-size\
+      \ risk, rather than a measured frequency. FishBase and the Ribbink field account describe benthic invertebrate\
+      \ feeding. GCCA and Hulsey (2007) instead call the species piscivorous; the Hulsey (2022) table inherits diet\
+      \ categories from earlier work and is not a second independent diet observation. These broad labels do not\
+      \ outweigh the specific feeding descriptions. AQUAPORTAL reports refusal of small fish, so a confident predation\
+      \ assignment is not possible."
+    sources:
+    - kind: catalog-of-fishes
+      title: "Eschmeyer's Catalog of Fishes: species of Fossorochromis"
+      url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Fossorochromis"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Borstein, R. (2002). Fossorochromis rostratus. Greater Chicago Cichlid Association breeding report."
+      url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/62-fossorochromis-rostratus.html"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Ribbink, A. J. et al. (1980). Parental behaviour and mixed broods among cichlid fish of Lake Malawi.\
+        \ South African Journal of Zoology 15(1), 1-6."
+      url: "https://doi.org/10.1080/02541858.1980.11447677"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Hulsey, C. D., Mims, M. C. and Streelman, J. T. (2007). Do constructional constraints influence cichlid\
+        \ craniofacial diversification? Proceedings of the Royal Society B 274, 1867-1875."
+      url: "https://doi.org/10.1098/rspb.2007.0444"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Hulsey, C. D. et al. (2022). Coevolution of the premaxillary ascending process and jaw protrusion\
+        \ in Lake Malawi cichlid fishes. Hydrobiologia."
+      url: "https://doi.org/10.1007/s10750-022-04949-y"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Seriously Fish: Fossorochromis rostratus"
+      url: "https://www.seriouslyfish.com/species/fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "AquaInfo: Fossorochromis rostratus, by Walter Deproost and John de Lange"
+      url: "https://aquainfo.nl/en/article/fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "FishBase: Fossorochromis rostratus food records"
+      url: "https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=2468&genus=Fossorochromis&species=rostratus"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "AquaInfo: Fossorochromis rostratus, Dutch version of the same account"
+      url: "https://aquainfo.nl/artikel/fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "AQUAPORTAL.BG: Fossorochromis rostratus species profile"
+      url: "https://www.aquaportal.bg/Fish/details.php?Fish=493"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "FishBase: Fossorochromis rostratus species summary"
+      url: "https://www.fishbase.se/summary/Fossorochromis-rostratus.html"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Konings, A. (2011). Fossorochromis rostratus. Cichlid Room Companion public summary, verification\
+        \ only."
+      url: "https://cichlidae.com/species.php?id=5Nuhb02_xvhkP9qQqPpGxA"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Imperial Tropicals: Fossorochromis rostratus retailer care sheet"
+      url: "https://imperialtropicals.com/products/fossorochromis-rostratus"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: literature
+        title: "Borstein, R. (2002). Fossorochromis rostratus. Greater Chicago Cichlid Association breeding report."
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/62-fossorochromis-rostratus.html"
+        accessed: '2026-10-13'
+      value: 3
+      note: "Piscivore label, although the keeper reports no observed live-food consumption."
+    - source:
+        kind: literature
+        title: "Hulsey, C. D., Mims, M. C. and Streelman, J. T. (2007). Do constructional constraints influence\
+          \ cichlid craniofacial diversification? Proceedings of the Royal Society B 274, 1867-1875."
+        url: "https://doi.org/10.1098/rspb.2007.0444"
+        accessed: '2026-10-13'
+      value: 3
+      note: "Table 1 codes this species as piscivorous. The study measures cranial muscles and eyes, and reports\
+        \ no quantitative dietary test."
+    - source:
+        kind: literature
+        title: "Hulsey, C. D. et al. (2022). Coevolution of the premaxillary ascending process and jaw protrusion\
+          \ in Lake Malawi cichlid fishes. Hydrobiologia."
+        url: "https://doi.org/10.1007/s10750-022-04949-y"
+        accessed: '2026-10-13'
+      value: 3
+      note: "Table 2 repeats a piscivore category inherited from earlier sources, without a new diet observation."
+    - source:
+        kind: database
+        title: "Seriously Fish: Fossorochromis rostratus"
+        url: "https://www.seriouslyfish.com/species/fossorochromis-rostratus/"
+        accessed: '2026-10-13'
+      value: 2
+      note: Rubric mapping of a small-tankmate ingestion warning; prey size and consumption frequency are not measured.
+    - source:
+        kind: database
+        title: "AquaInfo: Fossorochromis rostratus, by Walter Deproost and John de Lange"
+        url: "https://aquainfo.nl/en/article/fossorochromis-rostratus/"
+        accessed: '2026-10-13'
+      value: 2
+      note: Rubric mapping of a warning about swallowing small tankmates; no 2 cm cutoff is stated.
+    - source:
+        kind: database
+        title: "AQUAPORTAL.BG: Fossorochromis rostratus species profile"
+        url: "https://www.aquaportal.bg/Fish/details.php?Fish=493"
+        accessed: '2026-10-13'
+      value: 0
+      note: Reports rejection of small fish as food; not a controlled test of aquarium tankmate safety.
+    - source:
+        kind: database
+        title: "FishBase: Fossorochromis rostratus food records"
+        url: "https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=2468&genus=Fossorochromis&species=rostratus"
+        accessed: '2026-10-13'
+      value: 0
+      note: Lists insects and benthic crustaceans without fish. Absence in this table does not establish zero aquarium
+        predation.
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 5
+        total: 6
+  diet:
+    value:
+      type: invertivore
+      bloatSensitive: false
+      foods:
+      - Sinking cichlid pellets
+      - Mysis shrimp
+      - Artemia
+      - Small portions of krill or chopped shrimp
+    confidence: medium
+    rationale: "All four initial runs agree on invertivore and bloatSensitive false, retained exactly with unanimous\
+      \ verification and medium confidence. Their food suggestions differ; the full generator food list is preserved\
+      \ because the tally selects it unchanged. FishBase, the Ribbink field account, Malawi-Guru and Seriously Fish\
+      \ support invertebrate feeding in sand; the CRC public insect-feeding summary verifies that interpretation\
+      \ only. GCCA and Hulsey use a conflicting piscivore label, and Fish Barn uses omnivore. Specific prey accounts\
+      \ outweigh those broad labels. Hulsey (2022) repeats earlier diet classification and is not independent confirmation.\
+      \ False for bloatSensitive means no established conflict with an appropriate invertebrate-protein diet, rather\
+      \ than protection against intestinal disease. AquaInfo warnings about fatty foods and mammalian meat concern\
+      \ unsuitable feeding."
+    sources:
+    - kind: literature
+      title: "Borstein, R. (2002). Fossorochromis rostratus. Greater Chicago Cichlid Association breeding report."
+      url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/62-fossorochromis-rostratus.html"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Ribbink, A. J. et al. (1980). Parental behaviour and mixed broods among cichlid fish of Lake Malawi.\
+        \ South African Journal of Zoology 15(1), 1-6."
+      url: "https://doi.org/10.1080/02541858.1980.11447677"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Hulsey, C. D., Mims, M. C. and Streelman, J. T. (2007). Do constructional constraints influence cichlid\
+        \ craniofacial diversification? Proceedings of the Royal Society B 274, 1867-1875."
+      url: "https://doi.org/10.1098/rspb.2007.0444"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Hulsey, C. D. et al. (2022). Coevolution of the premaxillary ascending process and jaw protrusion\
+        \ in Lake Malawi cichlid fishes. Hydrobiologia."
+      url: "https://doi.org/10.1007/s10750-022-04949-y"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "FishBase: Fossorochromis rostratus species summary"
+      url: "https://www.fishbase.se/summary/Fossorochromis-rostratus.html"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Malawi-Guru: Fossorochromis rostratus species directory"
+      url: "https://malawi-guru.de/artentafel-fossorochromis-rostratus-verzeichnis/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Nordiska Ciklidsallskapet: Fossorochromis rostratus species register"
+      url: "https://www.ciklid.org/artregister/art.php?ID=733"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Seriously Fish: Fossorochromis rostratus"
+      url: "https://www.seriouslyfish.com/species/fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "AquaInfo: Fossorochromis rostratus, by Walter Deproost and John de Lange"
+      url: "https://aquainfo.nl/en/article/fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Konings, A. (2011). Fossorochromis rostratus. Cichlid Room Companion public summary, verification\
+        \ only."
+      url: "https://cichlidae.com/species.php?id=5Nuhb02_xvhkP9qQqPpGxA"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "FishBase: Fossorochromis rostratus food records"
+      url: "https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=2468&genus=Fossorochromis&species=rostratus"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "FishBase: Fossorochromis rostratus ecology"
+      url: "https://www.fishbase.se/Ecology/FishEcologySummary.php?StockCode=2468&GenusName=Fossorochromis&SpeciesName=rostratus"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "AquaInfo: Fossorochromis rostratus, Dutch version of the same account"
+      url: "https://aquainfo.nl/artikel/fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "The Fish Barn: Malawi Sand Diver retailer care guide"
+      url: "https://thefishbarn.co.uk/product/malawi-sand-diver-fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: literature
+        title: "Ribbink, A. J. et al. (1980). Parental behaviour and mixed broods among cichlid fish of Lake Malawi.\
+          \ South African Journal of Zoology 15(1), 1-6."
+        url: "https://doi.org/10.1080/02541858.1980.11447677"
+        accessed: '2026-10-13'
+      value:
+        type: invertivore
+      note: Table 1 places Haplochromis rostratus among consumers of animals within sand.
+    - source:
+        kind: literature
+        title: "Hulsey, C. D., Mims, M. C. and Streelman, J. T. (2007). Do constructional constraints influence\
+          \ cichlid craniofacial diversification? Proceedings of the Royal Society B 274, 1867-1875."
+        url: "https://doi.org/10.1098/rspb.2007.0444"
+        accessed: '2026-10-13'
+      value:
+        type: piscivore
+      note: Conflicting comparative diet code without a quantitative prey analysis.
+    - source:
+        kind: literature
+        title: "Hulsey, C. D. et al. (2022). Coevolution of the premaxillary ascending process and jaw protrusion\
+          \ in Lake Malawi cichlid fishes. Hydrobiologia."
+        url: "https://doi.org/10.1007/s10750-022-04949-y"
+        accessed: '2026-10-13'
+      value:
+        type: piscivore
+      note: Inherited comparative label rather than new dietary evidence.
+    - source:
+        kind: literature
+        title: "Borstein, R. (2002). Fossorochromis rostratus. Greater Chicago Cichlid Association breeding report."
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/62-fossorochromis-rostratus.html"
+        accessed: '2026-10-13'
+      value:
+        type: piscivore
+      note: Broad label inconsistent with the more detailed natural-prey accounts.
+    - source:
+        kind: database
+        title: "FishBase: Fossorochromis rostratus species summary"
+        url: "https://www.fishbase.se/summary/Fossorochromis-rostratus.html"
+        accessed: '2026-10-13'
+      value:
+        type: invertivore
+      note: Insect larvae and small crustaceans are the stated natural food.
+    - source:
+        kind: database
+        title: "FishBase: Fossorochromis rostratus food records"
+        url: "https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=2468&genus=Fossorochromis&species=rostratus"
+        accessed: '2026-10-13'
+      value:
+        type: invertivore
+      note: Insect and benthic crustacean records include juvenile and adult fish.
+    - source:
+        kind: database
+        title: "Malawi-Guru: Fossorochromis rostratus species directory"
+        url: "https://malawi-guru.de/artentafel-fossorochromis-rostratus-verzeichnis/"
+        accessed: '2026-10-13'
+      value:
+        type: invertivore
+      note: Sediment-associated invertebrates and opportunistic plankton feeding.
+    - source:
+        kind: database
+        title: "Seriously Fish: Fossorochromis rostratus"
+        url: "https://www.seriouslyfish.com/species/fossorochromis-rostratus/"
+        accessed: '2026-10-13'
+      value:
+        type: invertivore
+        bloatSensitive: false
+      note: "Invertebrate-rich foods are recommended. The false flag is inferred from normal feeding ecology, not\
+        \ a disease experiment."
+    - source:
+        kind: website
+        title: "The Fish Barn: Malawi Sand Diver retailer care guide"
+        url: "https://thefishbarn.co.uk/product/malawi-sand-diver-fossorochromis-rostratus/"
+        accessed: '2026-10-13'
+      value:
+        type: omnivore
+      note: Retailer label differs from its own account of sediment invertebrates.
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  aggressionConspecific:
+    value: 3
+    confidence: medium
+    rationale: "Generator proposes level 2; all three checkers propose 3. Adopt level 3 because large spawning territories\
+      \ and strong male rivalry make sustained reproductive pursuit a plausible risk even in a one-male harem. The\
+      \ Nordic register instead describes mild spawning aggression, and AquaInfo describes generally tolerant fish.\
+      \ GCCA documents a fatal rival attack with two males in an undersized 65 US gallon tank; that establishes\
+      \ danger from the wrong ratio and space, not routine level-4 behaviour under the stated adult setup. The exact\
+      \ chasing and injury rate in a 1000 L harem is not measured, so medium confidence is retained."
+    sources:
+    - kind: literature
+      title: "Borstein, R. (2002). Fossorochromis rostratus. Greater Chicago Cichlid Association breeding report."
+      url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/62-fossorochromis-rostratus.html"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Seriously Fish: Fossorochromis rostratus"
+      url: "https://www.seriouslyfish.com/species/fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Nordiska Ciklidsallskapet: Fossorochromis rostratus species register"
+      url: "https://www.ciklid.org/artregister/art.php?ID=733"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "AquaInfo: Fossorochromis rostratus, by Walter Deproost and John de Lange"
+      url: "https://aquainfo.nl/en/article/fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Imperial Tropicals: Fossorochromis rostratus retailer care sheet"
+      url: "https://imperialtropicals.com/products/fossorochromis-rostratus"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: literature
+        title: "Borstein, R. (2002). Fossorochromis rostratus. Greater Chicago Cichlid Association breeding report."
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/62-fossorochromis-rostratus.html"
+        accessed: '2026-10-13'
+      value: 4
+      note: A rival male was killed below the chosen minimum tank and with an unsuitable sex ratio.
+    - source:
+        kind: database
+        title: "Seriously Fish: Fossorochromis rostratus"
+        url: "https://www.seriouslyfish.com/species/fossorochromis-rostratus/"
+        accessed: '2026-10-13'
+      value: 3
+      note: Rubric mapping of extensive spawning territoriality and the difficulty of housing another dominant male.
+    - source:
+        kind: database
+        title: "Nordiska Ciklidsallskapet: Fossorochromis rostratus species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=733"
+        accessed: '2026-10-13'
+      value: 1
+      note: Species register describes comparatively mild reproductive aggression.
+    - source:
+        kind: database
+        title: "AquaInfo: Fossorochromis rostratus, by Walter Deproost and John de Lange"
+        url: "https://aquainfo.nl/en/article/fossorochromis-rostratus/"
+        accessed: '2026-10-13'
+      value: 2
+      note: Generally tolerant fish with reproductive territoriality; qualitative rubric mapping.
+    - source:
+        kind: website
+        title: "Imperial Tropicals: Fossorochromis rostratus retailer care sheet"
+        url: "https://imperialtropicals.com/products/fossorochromis-rostratus"
+        accessed: '2026-10-13'
+      value: 3
+      note: "Retailer reports substantial male rivalry, especially with insufficient space or females."
+  aggressionHeterospecific:
+    value: 2
+    confidence: medium
+    rationale: "All four runs select level 2. Malawi-Guru describes displacement of other species from spawning\
+      \ areas, while Seriously Fish, AquaInfo and the Nordic register describe calm behaviour with substantial companions\
+      \ outside breeding. Territorial chasing fits level 2; the broadly stronger Aqua-Fish aggression rating supplies\
+      \ no comparable adult tank or injury context. Medium confidence reflects qualitative rubric mapping rather\
+      \ than an observed injury rate."
+    sources:
+    - kind: database
+      title: "Malawi-Guru: Fossorochromis rostratus species directory"
+      url: "https://malawi-guru.de/artentafel-fossorochromis-rostratus-verzeichnis/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Nordiska Ciklidsallskapet: Fossorochromis rostratus species register"
+      url: "https://www.ciklid.org/artregister/art.php?ID=733"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Seriously Fish: Fossorochromis rostratus"
+      url: "https://www.seriouslyfish.com/species/fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Aqua-Fish: Rostratus species profile"
+      url: "https://en.aqua-fish.net/fish/rostratus"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "AquaInfo: Fossorochromis rostratus, by Walter Deproost and John de Lange"
+      url: "https://aquainfo.nl/en/article/fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "AquaInfo: Fossorochromis rostratus, Dutch version of the same account"
+      url: "https://aquainfo.nl/artikel/fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    - kind: archive
+      title: cichlids.com forum thread 39257
+      url: "https://www.cichlids.com/disc/read.php?2,39257"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: database
+        title: "Malawi-Guru: Fossorochromis rostratus species directory"
+        url: "https://malawi-guru.de/artentafel-fossorochromis-rostratus-verzeichnis/"
+        accessed: '2026-10-13'
+      value: 2
+      note: Defends spawning areas against other species but is calmer outside breeding.
+    - source:
+        kind: database
+        title: "Nordiska Ciklidsallskapet: Fossorochromis rostratus species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=733"
+        accessed: '2026-10-13'
+      value: 0
+      note: Reports little trouble with other large haps in a suitable aquarium.
+    - source:
+        kind: database
+        title: "Aqua-Fish: Rostratus species profile"
+        url: "https://en.aqua-fish.net/fish/rostratus"
+        accessed: '2026-10-13'
+      value: 3
+      note: General territorial aggression label without tank context.
+    - source:
+        kind: database
+        title: "Seriously Fish: Fossorochromis rostratus"
+        url: "https://www.seriouslyfish.com/species/fossorochromis-rostratus/"
+        accessed: '2026-10-13'
+      value: 1
+      note: Generally peaceful in a compatible community outside spawning.
+    - source:
+        kind: database
+        title: "AquaInfo: Fossorochromis rostratus, Dutch version of the same account"
+        url: "https://aquainfo.nl/artikel/fossorochromis-rostratus/"
+        accessed: '2026-10-13'
+      value: 1
+      note: Describes acceptance of other large calm Malawi cichlids; qualitative rubric mapping.
+    - source:
+        kind: archive
+        title: cichlids.com forum thread 39257
+        url: "https://www.cichlids.com/disc/read.php?2,39257"
+        accessed: '2026-10-13'
+      value: 0
+      note: A keeper described timid fish being bullied; low-weight juvenile experience.
+  territory:
+    value:
+      size: large
+      breedingOnly: true
+    confidence: high
+    rationale: "All four runs agree on a large territory associated with breeding. Seriously Fish reports natural\
+      \ spawning depressions up to about 2.5 m across; Malawi-Guru describes mobile feeding aggregations and defensive\
+      \ spawning sites. Ribbink also records fixed maternal brood locations, including a rostratus brood observed\
+      \ at one site for seven days. This reproductive use exceeds the rubric size threshold, while foraging fish\
+      \ do not maintain an equivalent permanent feeding territory."
+    sources:
+    - kind: literature
+      title: "Ribbink, A. J. et al. (1980). Parental behaviour and mixed broods among cichlid fish of Lake Malawi.\
+        \ South African Journal of Zoology 15(1), 1-6."
+      url: "https://doi.org/10.1080/02541858.1980.11447677"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Seriously Fish: Fossorochromis rostratus"
+      url: "https://www.seriouslyfish.com/species/fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Malawi-Guru: Fossorochromis rostratus species directory"
+      url: "https://malawi-guru.de/artentafel-fossorochromis-rostratus-verzeichnis/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Nordiska Ciklidsallskapet: Fossorochromis rostratus species register"
+      url: "https://www.ciklid.org/artregister/art.php?ID=733"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: literature
+        title: "Ribbink, A. J. et al. (1980). Parental behaviour and mixed broods among cichlid fish of Lake Malawi.\
+          \ South African Journal of Zoology 15(1), 1-6."
+        url: "https://doi.org/10.1080/02541858.1980.11447677"
+        accessed: '2026-10-13'
+      value:
+        breedingOnly: true
+      note: Fixed maternal brood site; its dimensions are not supplied.
+    - source:
+        kind: database
+        title: "Seriously Fish: Fossorochromis rostratus"
+        url: "https://www.seriouslyfish.com/species/fossorochromis-rostratus/"
+        accessed: '2026-10-13'
+      value:
+        size: large
+        breedingOnly: true
+      note: Very wide sand spawning depression and territorial breeding males.
+    - source:
+        kind: database
+        title: "Malawi-Guru: Fossorochromis rostratus species directory"
+        url: "https://malawi-guru.de/artentafel-fossorochromis-rostratus-verzeichnis/"
+        accessed: '2026-10-13'
+      value:
+        size: large
+        breedingOnly: true
+      note: Roaming groups and defensive spawning arenas.
+    - source:
+        kind: database
+        title: "Nordiska Ciklidsallskapet: Fossorochromis rostratus species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=733"
+        accessed: '2026-10-13'
+      value:
+        size: large
+        breedingOnly: true
+      note: Large shallow spawning depression; size category inferred.
+  habitatZones:
+    value:
+    - sand
+    - openWater
+    - rock
+    confidence: high
+    rationale: "Generator, checker-a and checker-c propose sand and openWater; checker-b also includes rock. Retain\
+      \ all three because Ribbink directly observed rostratus mothers and broods over sand and over rock. Sand remains\
+      \ the essential feeding and escape substrate, and open water represents unobstructed movement above it. Rock\
+      \ denotes reproductive refuge and sparse peripheral structure; it does not justify replacing exposed sand\
+      \ with a rock-filled layout. The CRC public habitat line confirms sand and is verification only."
+    sources:
+    - kind: literature
+      title: "Ribbink, A. J. et al. (1980). Parental behaviour and mixed broods among cichlid fish of Lake Malawi.\
+        \ South African Journal of Zoology 15(1), 1-6."
+      url: "https://doi.org/10.1080/02541858.1980.11447677"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "FishBase: Fossorochromis rostratus species summary"
+      url: "https://www.fishbase.se/summary/Fossorochromis-rostratus.html"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Seriously Fish: Fossorochromis rostratus"
+      url: "https://www.seriouslyfish.com/species/fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Malawi-Guru: Fossorochromis rostratus species directory"
+      url: "https://malawi-guru.de/artentafel-fossorochromis-rostratus-verzeichnis/"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: literature
+        title: "Ribbink, A. J. et al. (1980). Parental behaviour and mixed broods among cichlid fish of Lake Malawi.\
+          \ South African Journal of Zoology 15(1), 1-6."
+        url: "https://doi.org/10.1080/02541858.1980.11447677"
+        accessed: '2026-10-13'
+      value:
+      - sand
+      - rock
+      note: Field observations specifically place rostratus mothers and broods over both substrates.
+    - source:
+        kind: database
+        title: "FishBase: Fossorochromis rostratus species summary"
+        url: "https://www.fishbase.se/summary/Fossorochromis-rostratus.html"
+        accessed: '2026-10-13'
+      value:
+      - sand
+      note: Shallow sandy shores.
+    - source:
+        kind: database
+        title: "Seriously Fish: Fossorochromis rostratus"
+        url: "https://www.seriouslyfish.com/species/fossorochromis-rostratus/"
+        accessed: '2026-10-13'
+      value:
+      - sand
+      - openWater
+      - rock
+      note: Sandy substrate with unobstructed swimming space and peripheral rock refuges.
+    - source:
+        kind: database
+        title: "Malawi-Guru: Fossorochromis rostratus species directory"
+        url: "https://malawi-guru.de/artentafel-fossorochromis-rostratus-verzeichnis/"
+        accessed: '2026-10-13'
+      value:
+      - sand
+      - openWater
+      - rock
+      note: Broad sand areas with isolated rock platforms or large stones.
+  social:
+    value:
+      structure: harem
+      ratio: 3
+    confidence: high
+    rationale: "All four runs select one male with three females. Seriously Fish and AquaInfo give breeding ratios\
+      \ of three to six females, while Malawi-Guru accepts two or three females for one male and requires roughly\
+      \ 2000 to 3000 L for multiple mature males. The agreed adult harem supplies the social unit for the stated\
+      \ minimum tank. Wild foraging schools and the CRC mating classification do not imply stable pairs or justify\
+      \ extra dominant males in that minimum. Independent species accounts support high confidence in this practical\
+      \ social recommendation."
+    sources:
+    - kind: database
+      title: "Seriously Fish: Fossorochromis rostratus"
+      url: "https://www.seriouslyfish.com/species/fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Malawi-Guru: Fossorochromis rostratus species directory"
+      url: "https://malawi-guru.de/artentafel-fossorochromis-rostratus-verzeichnis/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "AquaInfo: Fossorochromis rostratus, by Walter Deproost and John de Lange"
+      url: "https://aquainfo.nl/en/article/fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "AquaInfo: Fossorochromis rostratus, Dutch version of the same account"
+      url: "https://aquainfo.nl/artikel/fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "The Fish Barn: Malawi Sand Diver retailer care guide"
+      url: "https://thefishbarn.co.uk/product/malawi-sand-diver-fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    - kind: archive
+      title: cichlids.com forum thread 30475
+      url: "https://www.cichlids.com/disc/read.php?2,30475"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: database
+        title: "Seriously Fish: Fossorochromis rostratus"
+        url: "https://www.seriouslyfish.com/species/fossorochromis-rostratus/"
+        accessed: '2026-10-13'
+      value:
+        structure: harem
+        ratio: 3
+      note: Lower end of the recommended breeding ratio of three to six females.
+    - source:
+        kind: database
+        title: "Malawi-Guru: Fossorochromis rostratus species directory"
+        url: "https://malawi-guru.de/artentafel-fossorochromis-rostratus-verzeichnis/"
+        accessed: '2026-10-13'
+      value:
+        structure: harem
+        ratio: 3
+      note: Accepts a harem with two to three females in large tanks.
+    - source:
+        kind: database
+        title: "AquaInfo: Fossorochromis rostratus, by Walter Deproost and John de Lange"
+        url: "https://aquainfo.nl/en/article/fossorochromis-rostratus/"
+        accessed: '2026-10-13'
+      value:
+        structure: harem
+        ratio: 3
+      note: Common aquarium practice described as one male and two or three females.
+    - source:
+        kind: database
+        title: "AquaInfo: Fossorochromis rostratus, Dutch version of the same account"
+        url: "https://aquainfo.nl/artikel/fossorochromis-rostratus/"
+        accessed: '2026-10-13'
+      value:
+        structure: harem
+        ratio: 3
+      note: Recommends one male and two or three females in aquarium practice.
+    - source:
+        kind: website
+        title: "The Fish Barn: Malawi Sand Diver retailer care guide"
+        url: "https://thefishbarn.co.uk/product/malawi-sand-diver-fossorochromis-rostratus/"
+        accessed: '2026-10-13'
+      value:
+        structure: harem
+        ratio: 3
+      note: One male with at least three females.
+    - source:
+        kind: archive
+        title: cichlids.com forum thread 30475
+        url: "https://www.cichlids.com/disc/read.php?2,30475"
+        accessed: '2026-10-13'
+      value:
+        structure: harem
+        ratio: 2
+      note: Community report of a breeding male with two females; low weight.
+  speciesOnly:
+    value: false
+    confidence: high
+    rationale: "All four runs propose false, retained exactly with unanimous verification and high confidence. Seriously\
+      \ Fish, AquaInfo, Malawi-Guru and the Nordic register recommend mixed communities with appropriately sized\
+      \ calm cichlids. A brief archive warning favouring an adult tank of its own has very low weight and does not\
+      \ establish a general conspecific-only requirement. Minimum space, mouth-size safety and reproductive territoriality\
+      \ still apply."
+    sources:
+    - kind: database
+      title: "Seriously Fish: Fossorochromis rostratus"
+      url: "https://www.seriouslyfish.com/species/fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Malawi-Guru: Fossorochromis rostratus species directory"
+      url: "https://malawi-guru.de/artentafel-fossorochromis-rostratus-verzeichnis/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Nordiska Ciklidsallskapet: Fossorochromis rostratus species register"
+      url: "https://www.ciklid.org/artregister/art.php?ID=733"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "AquaInfo: Fossorochromis rostratus, by Walter Deproost and John de Lange"
+      url: "https://aquainfo.nl/en/article/fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "AquaInfo: Fossorochromis rostratus, Dutch version of the same account"
+      url: "https://aquainfo.nl/artikel/fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    - kind: archive
+      title: cichlids.com forum thread 40323
+      url: "https://www.cichlids.com/disc/read.php?2,40323"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: database
+        title: "Seriously Fish: Fossorochromis rostratus"
+        url: "https://www.seriouslyfish.com/species/fossorochromis-rostratus/"
+        accessed: '2026-10-13'
+      value: false
+      note: Names Cyrtocara moorii and larger Rift Lake fishes as companions.
+    - source:
+        kind: database
+        title: "Malawi-Guru: Fossorochromis rostratus species directory"
+        url: "https://malawi-guru.de/artentafel-fossorochromis-rostratus-verzeichnis/"
+        accessed: '2026-10-13'
+      value: false
+      note: Provides species-specific follower and large-hap companions.
+    - source:
+        kind: database
+        title: "Nordiska Ciklidsallskapet: Fossorochromis rostratus species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=733"
+        accessed: '2026-10-13'
+      value: false
+      note: Supports keeping it with other large haps.
+    - source:
+        kind: database
+        title: "AquaInfo: Fossorochromis rostratus, by Walter Deproost and John de Lange"
+        url: "https://aquainfo.nl/en/article/fossorochromis-rostratus/"
+        accessed: '2026-10-13'
+      value: false
+      note: Recommends other large calm Malawi haps.
+    - source:
+        kind: database
+        title: "AquaInfo: Fossorochromis rostratus, Dutch version of the same account"
+        url: "https://aquainfo.nl/artikel/fossorochromis-rostratus/"
+        accessed: '2026-10-13'
+      value: false
+      note: Suitable large calm haps are recommended.
+    - source:
+        kind: archive
+        title: cichlids.com forum thread 40323
+        url: "https://www.cichlids.com/disc/read.php?2,40323"
+        accessed: '2026-10-13'
+      value: true
+      note: One brief forum warning favors a separate adult tank; no demonstrated universal requirement.
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  hybridGroups:
+    value:
+    - fossorochromis-rostratus-champsochromis-caeruleus
+    confidence: low
+    rationale: "Generator, checker-b, checker-c and both tie-breakers propose fossorochromis-rostratus-champsochromis-caeruleus;\
+      \ checker-a proposes an empty list. Retain the exact tally qualified-majority decision with five agreeing\
+      \ votes out of six and low confidence. Ron's Cichlids reports an accidental aquarium cross with those named\
+      \ parents. Conspecific mate availability, independent genetic parentage checks and fertility are unspecified,\
+      \ so the two-member group has basis presumed. Catalog entries confirm valid member names only, and species\
+      \ accounts without a cross report do not establish reproductive isolation. The crossing claim has one breeder-retailer\
+      \ website source and lacks two independent literature or database confirmations; contextual taxonomic evidence\
+      \ is explicitly not crossing evidence. No wider Malawi group is inferred."
+    sources:
+    - kind: catalog-of-fishes
+      title: "Eschmeyer's Catalog of Fishes: species of Fossorochromis"
+      url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Fossorochromis"
+      accessed: '2026-10-13'
+    - kind: catalog-of-fishes
+      title: "Eschmeyer's Catalog of Fishes: species of Champsochromis"
+      url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Champsochromis"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Malawi-Guru: Fossorochromis rostratus species directory"
+      url: "https://malawi-guru.de/artentafel-fossorochromis-rostratus-verzeichnis/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Seriously Fish: Fossorochromis rostratus"
+      url: "https://www.seriouslyfish.com/species/fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Ron's Cichlids: Rostratus x Trout Cross breeder listing"
+      url: "https://ronscichlids.com/products/rostratus-trout-cross"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: species of Fossorochromis"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Fossorochromis"
+        accessed: '2026-10-13'
+      value: []
+      note: "Confirms Fossorochromis rostratus as a valid species. No cross is assessed, so this is taxonomic context\
+        \ only, not evidence of an empty biological crossing set."
+    - source:
+        kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: species of Champsochromis"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Champsochromis"
+        accessed: '2026-10-13'
+      value: []
+      note: Confirms Champsochromis caeruleus as valid. Taxonomic context only; does not support or refute hybridisation.
+    - source:
+        kind: database
+        title: "Malawi-Guru: Fossorochromis rostratus species directory"
+        url: "https://malawi-guru.de/artentafel-fossorochromis-rostratus-verzeichnis/"
+        accessed: '2026-10-13'
+      value: []
+      note: Recommends these fish as companions but does not report a cross; silence does not refute the breeder
+        report.
+    - source:
+        kind: database
+        title: "Seriously Fish: Fossorochromis rostratus"
+        url: "https://www.seriouslyfish.com/species/fossorochromis-rostratus/"
+        accessed: '2026-10-13'
+      value: []
+      note: "Names no hybrid partner; this is absence of a report, not proof of reproductive isolation."
+    - source:
+        kind: website
+        title: "Ron's Cichlids: Rostratus x Trout Cross breeder listing"
+        url: "https://ronscichlids.com/products/rostratus-trout-cross"
+        accessed: '2026-10-13'
+      value:
+      - fossorochromis-rostratus-champsochromis-caeruleus
+      note: Reports an accidental named-parent aquarium cross; conspecific partner availability and independent
+        parentage verification are unstated.
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 5
+        total: 6
+  coloration:
+    value:
+      baseColors:
+      - blue
+      - green
+      - black
+      pattern: plain
+    confidence: medium
+    rationale: "Generator proposes mixed; all three checkers propose plain with the same blue, green and black base\
+      \ colours. Adopt plain for a dominant adult male because AquaInfo describes fading flank spots with blue-green\
+      \ iridescence and a dark underside. Females and suppressed males retain conspicuous spots; some dominant males\
+      \ retain faint ones. The retailer Imperial account confirms this variation and mentions orange fin accents,\
+      \ which are secondary rather than dominant base colours. Medium confidence reflects differences with rank\
+      \ and reproductive condition."
+    sources:
+    - kind: database
+      title: "AquaInfo: Fossorochromis rostratus, by Walter Deproost and John de Lange"
+      url: "https://aquainfo.nl/en/article/fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Nordiska Ciklidsallskapet: Fossorochromis rostratus species register"
+      url: "https://www.ciklid.org/artregister/art.php?ID=733"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Imperial Tropicals: Fossorochromis rostratus retailer care sheet"
+      url: "https://imperialtropicals.com/products/fossorochromis-rostratus"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: database
+        title: "AquaInfo: Fossorochromis rostratus, by Walter Deproost and John de Lange"
+        url: "https://aquainfo.nl/en/article/fossorochromis-rostratus/"
+        accessed: '2026-10-13'
+      value:
+        baseColors:
+        - blue
+        - green
+        - black
+        pattern: plain
+      note: Dominant adult male appearance; spots fade.
+    - source:
+        kind: database
+        title: "Nordiska Ciklidsallskapet: Fossorochromis rostratus species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=733"
+        accessed: '2026-10-13'
+      value:
+        baseColors:
+        - blue
+        - green
+        pattern: mixed
+      note: Iridescent mature males and spotted females or subordinate fish.
+    - source:
+        kind: website
+        title: "Imperial Tropicals: Fossorochromis rostratus retailer care sheet"
+        url: "https://imperialtropicals.com/products/fossorochromis-rostratus"
+        accessed: '2026-10-13'
+      value:
+        baseColors:
+        - blue
+        - green
+        - orange
+        pattern: mixed
+      note: Retailer account includes orange accents and occasionally retained lateral spots.
+  feedingSpeed:
+    value: hasty
+    confidence: low
+    rationale: "Generator, checker-b and checker-c propose hasty; checker-a proposes normal. Choose hasty because\
+      \ the firsthand GCCA account reports fast consumption of prepared foods. It does not quantify competitive\
+      \ food monopolisation or eating until every ration disappears, so the full rubric mapping remains uncertain\
+      \ and confidence is low. The archive describes timid newcomers missing meals, which concerns acclimation rather\
+      \ than the usual feeding response of settled adults."
+    sources:
+    - kind: literature
+      title: "Borstein, R. (2002). Fossorochromis rostratus. Greater Chicago Cichlid Association breeding report."
+      url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/62-fossorochromis-rostratus.html"
+      accessed: '2026-10-13'
+    - kind: archive
+      title: cichlids.com forum thread 39257
+      url: "https://www.cichlids.com/disc/read.php?2,39257"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: literature
+        title: "Borstein, R. (2002). Fossorochromis rostratus. Greater Chicago Cichlid Association breeding report."
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/62-fossorochromis-rostratus.html"
+        accessed: '2026-10-13'
+      value: hasty
+      note: Rubric inference from rapid prepared-food uptake; competitive monopolisation is not demonstrated.
+    - source:
+        kind: archive
+        title: cichlids.com forum thread 39257
+        url: "https://www.cichlids.com/disc/read.php?2,39257"
+        accessed: '2026-10-13'
+      value: slow
+      note: Newly introduced timid fish hid during feeding; low-weight acclimation experience.
+  minTank:
+    value:
+      volumeL: 1000
+      lengthCm: 250
+      depthCm: 60
+    confidence: medium
+    rationale: "Generator, checker-b and checker-c propose 1000 L with 250 cm length and 60 cm front-to-back depth;\
+      \ checker-a proposes the same volume and length with 70 cm depth. Retain 60 cm because AquaInfo explicitly\
+      \ recommends that dimension, whereas 70 is an extra precaution without an independent threshold. Malawi-Guru\
+      \ supplies 1000 L and 250 cm for adults; both footprint and volume must be met for one male and three females.\
+      \ Smaller published minima include Seriously Fish about 257 L and 150 by 38 cm, the Nordic register 700 L\
+      \ and 200 cm, Abysse 800 L, and Einrichtungsbeispiele 960 L and 200 cm. These are not adopted for the large\
+      \ adult harem. Malawi-Guru multi-male recommendations of 2000 to 3000 L describe a different social unit;\
+      \ extra large companions also require more space."
+    sources:
+    - kind: literature
+      title: "Borstein, R. (2002). Fossorochromis rostratus. Greater Chicago Cichlid Association breeding report."
+      url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/62-fossorochromis-rostratus.html"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Malawi-Guru: Fossorochromis rostratus species directory"
+      url: "https://malawi-guru.de/artentafel-fossorochromis-rostratus-verzeichnis/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "AquaInfo: Fossorochromis rostratus, by Walter Deproost and John de Lange"
+      url: "https://aquainfo.nl/en/article/fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Seriously Fish: Fossorochromis rostratus"
+      url: "https://www.seriouslyfish.com/species/fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Nordiska Ciklidsallskapet: Fossorochromis rostratus species register"
+      url: "https://www.ciklid.org/artregister/art.php?ID=733"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Einrichtungsbeispiele: Fossorochromis rostratus species directory"
+      url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/rostratus-slnk.html"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Abysse Cichlides: Fossorochromis rostratus retailer care sheet"
+      url: "https://www.abysse-cichlides.com/listgen/fiche-fossorochromis.rostratus-19.html"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: literature
+        title: "Borstein, R. (2002). Fossorochromis rostratus. Greater Chicago Cichlid Association breeding report."
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/62-fossorochromis-rostratus.html"
+        accessed: '2026-10-13'
+      value:
+        volumeL: 378.5
+      note: 100 US gallons recommended for six to eight fish; a smaller historical allowance.
+    - source:
+        kind: database
+        title: "Malawi-Guru: Fossorochromis rostratus species directory"
+        url: "https://malawi-guru.de/artentafel-fossorochromis-rostratus-verzeichnis/"
+        accessed: '2026-10-13'
+      value:
+        volumeL: 1000
+        lengthCm: 250
+      note: Adult recommendation; multiple males separately require about 2000 to 3000 L.
+    - source:
+        kind: database
+        title: "AquaInfo: Fossorochromis rostratus, by Walter Deproost and John de Lange"
+        url: "https://aquainfo.nl/en/article/fossorochromis-rostratus/"
+        accessed: '2026-10-13'
+      value:
+        lengthCm: 200
+        depthCm: 60
+      note: Narrative minimum; 250 cm or more preferred for full-grown groups.
+    - source:
+        kind: database
+        title: "Seriously Fish: Fossorochromis rostratus"
+        url: "https://www.seriouslyfish.com/species/fossorochromis-rostratus/"
+        accessed: '2026-10-13'
+      value:
+        volumeL: 256.5
+        lengthCm: 150
+        depthCm: 38
+      note: "Smaller published minimum, not selected for the stated adult harem."
+    - source:
+        kind: database
+        title: "Nordiska Ciklidsallskapet: Fossorochromis rostratus species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=733"
+        accessed: '2026-10-13'
+      value:
+        volumeL: 700
+        lengthCm: 200
+      note: Species-register minimum.
+    - source:
+        kind: database
+        title: "Einrichtungsbeispiele: Fossorochromis rostratus species directory"
+        url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/rostratus-slnk.html"
+        accessed: '2026-10-13'
+      value:
+        volumeL: 960
+        lengthCm: 200
+      note: "Published minimum, below the selected adult footprint."
+    - source:
+        kind: website
+        title: "Abysse Cichlides: Fossorochromis rostratus retailer care sheet"
+        url: "https://www.abysse-cichlides.com/listgen/fiche-fossorochromis.rostratus-19.html"
+        accessed: '2026-10-13'
+      value:
+        volumeL: 800
+      note: Retailer minimum without comparable adult dimensions.
+  lifespanYears:
+    value:
+      min: 8
+      max: 10
+    confidence: low
+    rationale: "Generator and checker-b propose 8 to 10 years; checker-a proposes the wider 5 to 10 and checker-c\
+      \ the wider 8 to 15. Retain the direct AquaInfo expectation of 8 to 10 years as a planning estimate. Aqua-Fish\
+      \ gives 5 to 8, Einrichtungsbeispiele 10 to 15, and Abysse a single 15-year figure. Fish Barn and my-fish\
+      \ also give 8 to 10, but their estimates are not established independent cohorts. The selected range is narrower\
+      \ than the combined care claims of 5 to 15 years; it is neither an assured lifespan nor a biological maximum.\
+      \ No validated longitudinal age data were found."
+    sources:
+    - kind: database
+      title: "AquaInfo: Fossorochromis rostratus, by Walter Deproost and John de Lange"
+      url: "https://aquainfo.nl/en/article/fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Aqua-Fish: Rostratus species profile"
+      url: "https://en.aqua-fish.net/fish/rostratus"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Einrichtungsbeispiele: Fossorochromis rostratus species directory"
+      url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/rostratus-slnk.html"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "my-fish: Fossorochromis rostratus species sheet"
+      url: "https://my-fish.org/my-fishothek/fossorochromis-rostratus-fuenffleckmaulbrueter/"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Abysse Cichlides: Fossorochromis rostratus retailer care sheet"
+      url: "https://www.abysse-cichlides.com/listgen/fiche-fossorochromis.rostratus-19.html"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "The Fish Barn: Malawi Sand Diver retailer care guide"
+      url: "https://thefishbarn.co.uk/product/malawi-sand-diver-fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: database
+        title: "AquaInfo: Fossorochromis rostratus, by Walter Deproost and John de Lange"
+        url: "https://aquainfo.nl/en/article/fossorochromis-rostratus/"
+        accessed: '2026-10-13'
+      value:
+        min: 8
+        max: 10
+      note: Typical care expectation.
+    - source:
+        kind: database
+        title: "Aqua-Fish: Rostratus species profile"
+        url: "https://en.aqua-fish.net/fish/rostratus"
+        accessed: '2026-10-13'
+      value:
+        min: 5
+        max: 8
+      note: Shorter published estimate.
+    - source:
+        kind: database
+        title: "Einrichtungsbeispiele: Fossorochromis rostratus species directory"
+        url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/rostratus-slnk.html"
+        accessed: '2026-10-13'
+      value:
+        min: 10
+        max: 15
+      note: "Longer published range, not a verified cohort."
+    - source:
+        kind: database
+        title: "my-fish: Fossorochromis rostratus species sheet"
+        url: "https://my-fish.org/my-fishothek/fossorochromis-rostratus-fuenffleckmaulbrueter/"
+        accessed: '2026-10-13'
+      value:
+        min: 8
+        max: 10
+      note: Compiled care estimate with uncertain independence.
+    - source:
+        kind: website
+        title: "Abysse Cichlides: Fossorochromis rostratus retailer care sheet"
+        url: "https://www.abysse-cichlides.com/listgen/fiche-fossorochromis.rostratus-19.html"
+        accessed: '2026-10-13'
+      value:
+        min: 15
+        max: 15
+      note: Retailer longevity figure without documented individual ages.
+    - source:
+        kind: website
+        title: "The Fish Barn: Malawi Sand Diver retailer care guide"
+        url: "https://thefishbarn.co.uk/product/malawi-sand-diver-fossorochromis-rostratus/"
+        accessed: '2026-10-13'
+      value:
+        min: 8
+        max: 10
+      note: Retailer care estimate with uncertain independence.
+  breeding:
+    value: maternal-mouthbrooder
+    confidence: high
+    rationale: All four runs agree on maternal mouthbrooding. FishBase and the firsthand GCCA captive account establish
+      incubation by the female. Ribbink independently records mothers protecting and retrieving free-swimming fry
+      in the lake; those mixed broods involve fostered young rather than hybrid offspring. The CRC public breeding
+      summary verifies this mode only. Independent natural and captive observations support high confidence.
+    sources:
+    - kind: literature
+      title: "Borstein, R. (2002). Fossorochromis rostratus. Greater Chicago Cichlid Association breeding report."
+      url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/62-fossorochromis-rostratus.html"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Ribbink, A. J. et al. (1980). Parental behaviour and mixed broods among cichlid fish of Lake Malawi.\
+        \ South African Journal of Zoology 15(1), 1-6."
+      url: "https://doi.org/10.1080/02541858.1980.11447677"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "FishBase: Fossorochromis rostratus species summary"
+      url: "https://www.fishbase.se/summary/Fossorochromis-rostratus.html"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Seriously Fish: Fossorochromis rostratus"
+      url: "https://www.seriouslyfish.com/species/fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Konings, A. (2011). Fossorochromis rostratus. Cichlid Room Companion public summary, verification\
+        \ only."
+      url: "https://cichlidae.com/species.php?id=5Nuhb02_xvhkP9qQqPpGxA"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Abysse Cichlides: Fossorochromis rostratus retailer care sheet"
+      url: "https://www.abysse-cichlides.com/listgen/fiche-fossorochromis.rostratus-19.html"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: literature
+        title: "Borstein, R. (2002). Fossorochromis rostratus. Greater Chicago Cichlid Association breeding report."
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/62-fossorochromis-rostratus.html"
+        accessed: '2026-10-13'
+      value: maternal-mouthbrooder
+      note: Firsthand captive brood observation.
+    - source:
+        kind: literature
+        title: "Ribbink, A. J. et al. (1980). Parental behaviour and mixed broods among cichlid fish of Lake Malawi.\
+          \ South African Journal of Zoology 15(1), 1-6."
+        url: "https://doi.org/10.1080/02541858.1980.11447677"
+        accessed: '2026-10-13'
+      value: maternal-mouthbrooder
+      note: Maternal post-release brood care observed in the lake.
+    - source:
+        kind: database
+        title: "FishBase: Fossorochromis rostratus species summary"
+        url: "https://www.fishbase.se/summary/Fossorochromis-rostratus.html"
+        accessed: '2026-10-13'
+      value: maternal-mouthbrooder
+      note: Female mouthbrooding with roughly three weeks of development.
+    - source:
+        kind: database
+        title: "Seriously Fish: Fossorochromis rostratus"
+        url: "https://www.seriouslyfish.com/species/fossorochromis-rostratus/"
+        accessed: '2026-10-13'
+      value: maternal-mouthbrooder
+      note: Maternal mouthbrooding account.
+    - source:
+        kind: database
+        title: "Konings, A. (2011). Fossorochromis rostratus. Cichlid Room Companion public summary, verification\
+          \ only."
+        url: "https://cichlidae.com/species.php?id=5Nuhb02_xvhkP9qQqPpGxA"
+        accessed: '2026-10-13'
+      value: maternal-mouthbrooder
+      note: Verification only.
+    - source:
+        kind: website
+        title: "Abysse Cichlides: Fossorochromis rostratus retailer care sheet"
+        url: "https://www.abysse-cichlides.com/listgen/fiche-fossorochromis.rostratus-19.html"
+        accessed: '2026-10-13'
+      value: maternal-mouthbrooder
+  beginnerSuitability:
+    value: demanding
+    confidence: medium
+    rationale: "All four runs select demanding. The 35 cm adult male, very large sand-bottom aquarium, reproductive\
+      \ rivalry, difficult sexing of subordinate males and risk of injury during escape dives make the full adult\
+      \ setup demanding. AquaInfo and Aqua-Fish discourage novice ownership, and GCCA favours intermediate or advanced\
+      \ keepers. Nordic and CRC assessments of moderate or intermediate describe general care and do not remove\
+      \ these facility and social-management demands. The Imperial beginner label has low weight and conflicts with\
+      \ its own male-rivalry warning."
+    sources:
+    - kind: literature
+      title: "Borstein, R. (2002). Fossorochromis rostratus. Greater Chicago Cichlid Association breeding report."
+      url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/62-fossorochromis-rostratus.html"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Malawi-Guru: Fossorochromis rostratus species directory"
+      url: "https://malawi-guru.de/artentafel-fossorochromis-rostratus-verzeichnis/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Nordiska Ciklidsallskapet: Fossorochromis rostratus species register"
+      url: "https://www.ciklid.org/artregister/art.php?ID=733"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Aqua-Fish: Rostratus species profile"
+      url: "https://en.aqua-fish.net/fish/rostratus"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "AquaInfo: Fossorochromis rostratus, by Walter Deproost and John de Lange"
+      url: "https://aquainfo.nl/en/article/fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Konings, A. (2011). Fossorochromis rostratus. Cichlid Room Companion public summary, verification\
+        \ only."
+      url: "https://cichlidae.com/species.php?id=5Nuhb02_xvhkP9qQqPpGxA"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Seriously Fish: Fossorochromis rostratus"
+      url: "https://www.seriouslyfish.com/species/fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "AquaInfo: Fossorochromis rostratus, Dutch version of the same account"
+      url: "https://aquainfo.nl/artikel/fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Imperial Tropicals: Fossorochromis rostratus retailer care sheet"
+      url: "https://imperialtropicals.com/products/fossorochromis-rostratus"
+      accessed: '2026-10-13'
+    evidence:
+    - source:
+        kind: literature
+        title: "Borstein, R. (2002). Fossorochromis rostratus. Greater Chicago Cichlid Association breeding report."
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/62-fossorochromis-rostratus.html"
+        accessed: '2026-10-13'
+      value: demanding
+      note: Intermediate to advanced keeper recommendation and firsthand lethal male rivalry.
+    - source:
+        kind: database
+        title: "Nordiska Ciklidsallskapet: Fossorochromis rostratus species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=733"
+        accessed: '2026-10-13'
+      value: moderate
+      note: Register rates the species intermediate.
+    - source:
+        kind: database
+        title: "Aqua-Fish: Rostratus species profile"
+        url: "https://en.aqua-fish.net/fish/rostratus"
+        accessed: '2026-10-13'
+      value: demanding
+      note: Explicitly discourages beginner maintenance.
+    - source:
+        kind: database
+        title: "AquaInfo: Fossorochromis rostratus, by Walter Deproost and John de Lange"
+        url: "https://aquainfo.nl/en/article/fossorochromis-rostratus/"
+        accessed: '2026-10-13'
+      value: demanding
+      note: Not recommended for beginners.
+    - source:
+        kind: database
+        title: "Konings, A. (2011). Fossorochromis rostratus. Cichlid Room Companion public summary, verification\
+          \ only."
+        url: "https://cichlidae.com/species.php?id=5Nuhb02_xvhkP9qQqPpGxA"
+        accessed: '2026-10-13'
+      value: moderate
+      note: Verification only; its public aquarium level is intermediate.
+    - source:
+        kind: database
+        title: "Seriously Fish: Fossorochromis rostratus"
+        url: "https://www.seriouslyfish.com/species/fossorochromis-rostratus/"
+        accessed: '2026-10-13'
+      value: moderate
+    - source:
+        kind: database
+        title: "AquaInfo: Fossorochromis rostratus, Dutch version of the same account"
+        url: "https://aquainfo.nl/artikel/fossorochromis-rostratus/"
+        accessed: '2026-10-13'
+      value: demanding
+      note: Explicitly excludes beginners.
+    - source:
+        kind: website
+        title: "Imperial Tropicals: Fossorochromis rostratus retailer care sheet"
+        url: "https://imperialtropicals.com/products/fossorochromis-rostratus"
+        accessed: '2026-10-13'
+      value: easy
+      note: Commercial beginner label conflicts with the male aggression described on the same page.
+partners:
+  suitable:
+  - species: Cyrtocara moorii
+    reason: Calm substantial Malawi sand follower with a documented feeding association in the wild.
+    condition: "Established adults in an aquarium with extra room for both social units, beyond the base harem minimum."
+  - species: Placidochromis electra
+    reason: A specialist-directory companion with compatible sand and invertebrate-feeding requirements.
+    condition: "Established adults comfortably too large to swallow, with extra sand area and volume for both species.\
+      \ Juveniles may be at risk."
+  - species: Placidochromis phenochilus
+    reason: A compatible sand follower identified by Malawi-Guru for a large Malawi community.
+    condition: "Established adults comfortably too large to swallow, with extra sand area and volume for both species.\
+      \ Juveniles may be at risk."
+  unsuitable:
+  - species: Melanochromis auratus
+    reason: The mbuna temperament and rock-territory pressure can repeatedly intimidate this calmer sand-feeding
+      fish.
+  - species: Paracheirodon innesi
+    reason: Very small adults are prey candidates and their usual water requirements are poorly matched to an alkaline
+      Malawi setup.
+  - species: Champsochromis caeruleus
+    reason: A breeder reports an accidental named-parent aquarium cross. The crossing group has presumed basis because
+      conspecific mate availability and parentage are unverified.
+    condition: A caution for pure-species breeding projects; not a claim that every adult display pairing produces
+      hybrids.
+profile:
+  overview:
+    text: "A sand-diving escape is the behaviour that makes this large Malawi cichlid memorable. Fossorochromis\
+      \ rostratus searches the bottom for tiny animals, while mature dominant males develop striking iridescent\
+      \ colour. Females and young fish are much less conspicuous. It can live with other calm, substantial Malawi\
+      \ cichlids, provided the aquarium offers generous swimming room. Choose it for a long-term large-tank project.\
+      \ A young fish looking comfortable in a small aquarium gives little indication of the space and social management\
+      \ an adult harem will need."
+    sources:
+    - kind: catalog-of-fishes
+      title: "Eschmeyer's Catalog of Fishes: species of Fossorochromis"
+      url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Fossorochromis"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "FishBase: Fossorochromis rostratus species summary"
+      url: "https://www.fishbase.se/summary/Fossorochromis-rostratus.html"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Nordiska Ciklidsallskapet: Fossorochromis rostratus species register"
+      url: "https://www.ciklid.org/artregister/art.php?ID=733"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Malawi-Guru: Fossorochromis rostratus species directory"
+      url: "https://malawi-guru.de/artentafel-fossorochromis-rostratus-verzeichnis/"
+      accessed: '2026-10-13'
+  habitat:
+    text: "Fossorochromis rostratus lives across Lake Malawi, with occurrence also reported in connected Lake Malombe.\
+      \ It searches broad sandy shallows for invertebrates, and can disappear into the substrate when disturbed.\
+      \ Open water above the bottom accommodates roaming feeding groups. Mothers with young have also been observed\
+      \ over rock, so sparse rocky refuges have a reproductive role alongside the essential sand. Natural lake ranges\
+      \ used here are 21 to 29 C, pH 7.7 to 8.6, GH 3 to 5 dGH and KH 5 to 8 dKH. These measurements span sites\
+      \ and seasons; aquarium settings should remain steady."
+    sources:
+    - kind: literature
+      title: "Ribbink, A. J. et al. (1980). Parental behaviour and mixed broods among cichlid fish of Lake Malawi.\
+        \ South African Journal of Zoology 15(1), 1-6."
+      url: "https://doi.org/10.1080/02541858.1980.11447677"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Branchu, P. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian\
+        \ Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7,\
+        \ 4371-4409."
+      url: "https://doi.org/10.5194/hessd-7-4371-2010"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of\
+        \ Africa, Vol. 1. CIFA Technical Paper 18/1. Lake Malawi/Nyasa measurements after Jackson et al. (1963)\
+        \ and Talling and Talling (1965)."
+      url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology\
+        \ and Oceanography 19(5), 730-742 (abstract only)."
+      url: "https://doi.org/10.4319/lo.1974.19.5.0730"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Vollmer, M. K. et al. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and\
+        \ Oceanography 50(2), 727-732."
+      url: "https://doi.org/10.4319/lo.2005.50.2.0727"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Ngochera, M. J. and Bootsma, H. A. (2020). Spatial and temporal dynamics of pCO2 and CO2 flux in tropical\
+        \ Lake Malawi. Limnology and Oceanography 65, 1594-1607."
+      url: "https://doi.org/10.1002/lno.11408"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "FishBase: Fossorochromis rostratus species summary"
+      url: "https://www.fishbase.se/summary/Fossorochromis-rostratus.html"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Malawi-Guru: Fossorochromis rostratus species directory"
+      url: "https://malawi-guru.de/artentafel-fossorochromis-rostratus-verzeichnis/"
+      accessed: '2026-10-13'
+  sizeAndGrowth:
+    text: "Allow for a well-grown aquarium male of about 35 cm and a female of about 25 cm. Some unsexed care-sheet\
+      \ figures are smaller, while others extend to 40 cm; standard and total length also measure different parts\
+      \ of a fish. The selected sizes are practical sex-specific adult estimates. The GCCA keeper needed roughly\
+      \ two years for males to reach a mature appearance. A subordinate adult may still resemble a female. Eight\
+      \ to ten years is a provisional lifespan expectation, with published estimates spanning five to fifteen, so\
+      \ this is a substantial long-term commitment."
+    sources:
+    - kind: literature
+      title: "Borstein, R. (2002). Fossorochromis rostratus. Greater Chicago Cichlid Association breeding report."
+      url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/62-fossorochromis-rostratus.html"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "AquaInfo: Fossorochromis rostratus, by Walter Deproost and John de Lange"
+      url: "https://aquainfo.nl/en/article/fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "FishBase: Fossorochromis rostratus species summary"
+      url: "https://www.fishbase.se/summary/Fossorochromis-rostratus.html"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Seriously Fish: Fossorochromis rostratus"
+      url: "https://www.seriouslyfish.com/species/fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Aqua-Fish: Rostratus species profile"
+      url: "https://en.aqua-fish.net/fish/rostratus"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Einrichtungsbeispiele: Fossorochromis rostratus species directory"
+      url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/rostratus-slnk.html"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Abysse Cichlides: Fossorochromis rostratus retailer care sheet"
+      url: "https://www.abysse-cichlides.com/listgen/fiche-fossorochromis.rostratus-19.html"
+      accessed: '2026-10-13'
+  husbandry:
+    text: "One adult male with three females needs at least 1000 litres, 250 cm of length and 60 cm of front-to-back\
+      \ space. Meet the volume and footprint requirements together. Keep much of the floor exposed sand, with clear\
+      \ swimming routes and secure stones at the margins. A soft sand layer about 5 to 10 cm deep permits digging\
+      \ and escape dives. Rocks must remain stable when sand beneath them moves. Maintain effective biological filtration,\
+      \ oxygenation and regular water changes. About 24 to 26 C is a practical central setting. The recorded tolerance\
+      \ envelopes are 21 to 29 C, pH 7.5 to 8.8, GH 3 to 25 dGH and KH 5 to 12 dKH; confidence is lowest at poorly\
+      \ tested temperature and KH endpoints. Test GH and KH separately and keep alkaline conditions stable."
+    sources:
+    - kind: literature
+      title: "JBL: Carbonate hardness aquarium husbandry booklet, pages 3 to 6."
+      url: "https://www.jbl.de/en/download/8737/Ratgeber/JBL-Karbonathaerte_de.pdf"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Malawi-Guru: Fossorochromis rostratus species directory"
+      url: "https://malawi-guru.de/artentafel-fossorochromis-rostratus-verzeichnis/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "AquaInfo: Fossorochromis rostratus, by Walter Deproost and John de Lange"
+      url: "https://aquainfo.nl/en/article/fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Seriously Fish: Fossorochromis rostratus"
+      url: "https://www.seriouslyfish.com/species/fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Nordiska Ciklidsallskapet: Fossorochromis rostratus species register"
+      url: "https://www.ciklid.org/artregister/art.php?ID=733"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Aquainfo.dk: Fossorochromis rostratus species table and keeping account"
+      url: "https://aquainfo.dk/en/fossorochromis-rostratus"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Einrichtungsbeispiele: Fossorochromis rostratus species directory"
+      url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/rostratus-slnk.html"
+      accessed: '2026-10-13'
+  socialBehavior:
+    text: "The chosen adult unit is one male with three females. Plain-looking juveniles can mature into competing\
+      \ males, and colour alone cannot guarantee a safe sex ratio. Breeding males may defend a substantial part\
+      \ of the aquarium and pursue rivals or females. The Nordic register describes milder breeding behaviour, so\
+      \ individual and contextual variation remains important. A GCCA keeper recorded a fatal rival attack in a\
+      \ much smaller tank with two males. Provide refuge and routes away from a courting male, and watch for persistent\
+      \ pursuit, missed meals or damage. Multiple mature males need substantially more room than the stated harem\
+      \ minimum."
+    sources:
+    - kind: literature
+      title: "Borstein, R. (2002). Fossorochromis rostratus. Greater Chicago Cichlid Association breeding report."
+      url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/62-fossorochromis-rostratus.html"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Seriously Fish: Fossorochromis rostratus"
+      url: "https://www.seriouslyfish.com/species/fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Malawi-Guru: Fossorochromis rostratus species directory"
+      url: "https://malawi-guru.de/artentafel-fossorochromis-rostratus-verzeichnis/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Nordiska Ciklidsallskapet: Fossorochromis rostratus species register"
+      url: "https://www.ciklid.org/artregister/art.php?ID=733"
+      accessed: '2026-10-13'
+  diet:
+    text: "Base feeding on its natural role as an invertebrate eater. Offer a suitable sinking cichlid food and\
+      \ small supplementary portions of aquatic crustaceans such as Artemia or Mysis. This gives bottom-feeding\
+      \ opportunities without requiring live fish. Appetite can be strong once fish settle, so spread food and check\
+      \ that quieter individuals receive some. Remove leftovers before they become a water-quality problem. A protein-rich\
+      \ invertebrate diet suits the species; fatty mammalian foods and oversized meals do not. Its large mouth still\
+      \ makes small tankmates unsafe even though fish are not its principal wild food."
+    sources:
+    - kind: literature
+      title: "Ribbink, A. J. et al. (1980). Parental behaviour and mixed broods among cichlid fish of Lake Malawi.\
+        \ South African Journal of Zoology 15(1), 1-6."
+      url: "https://doi.org/10.1080/02541858.1980.11447677"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Borstein, R. (2002). Fossorochromis rostratus. Greater Chicago Cichlid Association breeding report."
+      url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/62-fossorochromis-rostratus.html"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "FishBase: Fossorochromis rostratus species summary"
+      url: "https://www.fishbase.se/summary/Fossorochromis-rostratus.html"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "FishBase: Fossorochromis rostratus food records"
+      url: "https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=2468&genus=Fossorochromis&species=rostratus"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Seriously Fish: Fossorochromis rostratus"
+      url: "https://www.seriouslyfish.com/species/fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "AquaInfo: Fossorochromis rostratus, by Walter Deproost and John de Lange"
+      url: "https://aquainfo.nl/en/article/fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+  breeding:
+    text: "The female mouthbroods the eggs and young for about three weeks. A male can court several females and\
+      \ may use a sand depression or a flat surface. Mature size and a stable social group matter more than attempting\
+      \ to trigger spawning in young fish. Provide sheltered areas where a brooding female can withdraw without\
+      \ losing all contact with the group. Brooding reduces feeding and can cost body condition. Stressful moves\
+      \ may interrupt the brood. If you intend to raise fry, prepare suitable separate space before release and\
+      \ offer appropriately small aquatic foods."
+    sources:
+    - kind: literature
+      title: "Borstein, R. (2002). Fossorochromis rostratus. Greater Chicago Cichlid Association breeding report."
+      url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/62-fossorochromis-rostratus.html"
+      accessed: '2026-10-13'
+    - kind: literature
+      title: "Ribbink, A. J. et al. (1980). Parental behaviour and mixed broods among cichlid fish of Lake Malawi.\
+        \ South African Journal of Zoology 15(1), 1-6."
+      url: "https://doi.org/10.1080/02541858.1980.11447677"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "FishBase: Fossorochromis rostratus species summary"
+      url: "https://www.fishbase.se/summary/Fossorochromis-rostratus.html"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Seriously Fish: Fossorochromis rostratus"
+      url: "https://www.seriouslyfish.com/species/fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "AquaInfo: Fossorochromis rostratus, by Walter Deproost and John de Lange"
+      url: "https://aquainfo.nl/en/article/fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+  sexing:
+    text: "Bright colour identifies a dominant mature male more reliably than it identifies every male. Females\
+      \ and subordinate males may share a pale body and dark flank markings. This means that buying several plain\
+      \ fish does not guarantee several females. The colourful male is generally larger and may change intensity\
+      \ with rank or breeding activity. Allow juveniles time to develop, and reassess the sex ratio when the group\
+      \ begins courting. Locality labels such as Chesese or Otter Point refer to origin; they should not be treated\
+      \ as a reliable method of sexing or as established separate colour breeds."
+    sources:
+    - kind: literature
+      title: "Borstein, R. (2002). Fossorochromis rostratus. Greater Chicago Cichlid Association breeding report."
+      url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/62-fossorochromis-rostratus.html"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Nordiska Ciklidsallskapet: Fossorochromis rostratus species register"
+      url: "https://www.ciklid.org/artregister/art.php?ID=733"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Malawi-Guru: Fossorochromis rostratus species directory"
+      url: "https://malawi-guru.de/artentafel-fossorochromis-rostratus-verzeichnis/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "my-fish: Fossorochromis rostratus species sheet"
+      url: "https://my-fish.org/my-fishothek/fossorochromis-rostratus-fuenffleckmaulbrueter/"
+      accessed: '2026-10-13'
+  compatibility:
+    text: "A spacious community with calm, substantial adult Malawi cichlids is possible. Cyrtocara moorii is a\
+      \ well-supported companion, and Malawi-Guru also names Placidochromis electra and Placidochromis phenochilus.\
+      \ Allow additional space for their adult social units and keep each fish comfortably too large to swallow.\
+      \ Aggressive mbuna can intimidate this sand feeder. Small tankmates and fry remain at risk even though natural\
+      \ feeding accounts primarily describe invertebrates. Ron's Cichlids reports an accidental cross with Champsochromis\
+      \ caeruleus. Free partner choice and parentage checks are unstated, so the planner treats that pair as a presumed\
+      \ crossing risk rather than a confirmed free-choice cross."
+    sources:
+    - kind: database
+      title: "Seriously Fish: Fossorochromis rostratus"
+      url: "https://www.seriouslyfish.com/species/fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "Malawi-Guru: Fossorochromis rostratus species directory"
+      url: "https://malawi-guru.de/artentafel-fossorochromis-rostratus-verzeichnis/"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "AquaInfo: Fossorochromis rostratus, by Walter Deproost and John de Lange"
+      url: "https://aquainfo.nl/en/article/fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "Ron's Cichlids: Rostratus x Trout Cross breeder listing"
+      url: "https://ronscichlids.com/products/rostratus-trout-cross"
+      accessed: '2026-10-13'
+  problems:
+    text: "A cramped aquarium can turn a sudden escape dive into a collision. Sharp gravel may injure the snout\
+      \ or eyes, while insecure rocks can move as sand is displaced. Persistent bullying may leave a fish hiding\
+      \ and missing meals, and male rivalry can escalate quickly during breeding. Poor water quality, injuries and\
+      \ prolonged stress can increase infection risk. Overfeeding and unsuitable fatty foods add digestive risks,\
+      \ including swelling sometimes described as bloat. Swelling or refusal of food has several possible causes.\
+      \ Check water quality and social pressure promptly and seek qualified help for persistent symptoms."
+    sources:
+    - kind: literature
+      title: "Borstein, R. (2002). Fossorochromis rostratus. Greater Chicago Cichlid Association breeding report."
+      url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/62-fossorochromis-rostratus.html"
+      accessed: '2026-10-13'
+    - kind: database
+      title: "AquaInfo: Fossorochromis rostratus, by Walter Deproost and John de Lange"
+      url: "https://aquainfo.nl/en/article/fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    - kind: website
+      title: "The Fish Barn: Malawi Sand Diver retailer care guide"
+      url: "https://thefishbarn.co.uk/product/malawi-sand-diver-fossorochromis-rostratus/"
+      accessed: '2026-10-13'
+    - kind: archive
+      title: cichlids.com forum thread 39257
+      url: "https://www.cichlids.com/disc/read.php?2,39257"
+      accessed: '2026-10-13'
+    - kind: archive
+      title: cichlids.com forum thread 19315
+      url: "https://www.cichlids.com/disc/read.php?2,19315"
+      accessed: '2026-10-13'
+provenance:
+  runs:
+  - role: generator
+    model: gpt-6.1-sol
+    date: '2026-10-13'
+  - role: checker
+    model: gpt-6.1-sol
+    date: '2026-10-13'
+  - role: checker
+    model: gpt-6.1-sol
+    date: '2026-10-13'
+  - role: checker
+    model: gpt-6.1-sol
+    date: '2026-10-13'
+  - role: checker
+    model: gpt-6.1-sol
+    date: '2026-10-13'
+  - role: checker
+    model: gpt-6.1-sol
+    date: '2026-10-13'
+  - role: adjudicator
+    model: gpt-6.1-sol
+    date: '2026-10-13'
+  disagreements:
+  - field: features.origin
+    proposals:
+    - by: generator
+      value:
+        continent: Africa
+        region: Lake Malawi and its connected Lake Malombe system
+        waterbody: lake-malawi
+        localities:
+        - Chesese
+        - Otter Point
+        - Thumbi West Island
+        - Mbenji Island
+        - Mbamba Islands
+    - by: checker-a
+      value:
+        continent: Africa
+        region: Lake Malawi
+        waterbody: lake-malawi
+    - by: checker-b
+      value:
+        continent: Africa
+        region: Lake Malawi system
+        waterbody: lake-malawi
+        localities:
+        - Lake Malawi
+        - Lake Malombe
+    - by: checker-c
+      value:
+        continent: Africa
+        region: Lake Malawi and the connected Lake Malombe system
+        waterbody: lake-malawi
+    decision:
+      continent: Africa
+      region: Lake Malawi and its connected Lake Malombe system
+      waterbody: lake-malawi
+      localities:
+      - Chesese
+      - Otter Point
+      - Thumbi West Island
+      - Mbenji Island
+      - Mbamba Islands
+    rationale: All four runs identify Lake Malawi. Generator and checker-c include connected Lake Malombe; checker-b
+      uses Lake Malawi system with both lakes as localities; checker-a limits the value to Lake Malawi although
+      its rationale also notes Malombe. Retain the fuller regional description and the generator collection labels
+      because Malawi-Guru explicitly reports Malombe and illustrates those origins. These labels do not establish
+      separate inherited colour forms.
+  - field: features.maxSizeCm
+    proposals:
+    - by: generator
+      value:
+        male: 30
+        female: 25
+    - by: checker-a
+      value:
+        male: 35
+        female: 25
+    - by: checker-b
+      value:
+        male: 35
+        female: 25
+    - by: checker-c
+      value:
+        male: 35
+        female: 25
+    decision:
+      male: 35
+      female: 25
+    rationale: "Generator proposes a 30 cm male and 25 cm female; all three checkers propose 35 and 25. Use the\
+      \ explicit sex-specific aquarium account in AquaInfo, which describes 35 cm captive males as ordinary rather\
+      \ than exceptional. Its broader unsexed metadata range of 35 to 40 cm is not adopted. The retailer Fish Barn\
+      \ gives male 25 to 30 and female 20 to 25, and the Nordic register gives an unsexed 30 cm. FishBase 24.4 cm\
+      \ total length and Seriously Fish 25 cm standard length describe different measurement contexts and do not\
+      \ establish sex-specific captive maxima. Medium confidence reflects reliance on one detailed sex-specific\
+      \ account."
+  - field: features.predation
+    proposals:
+    - by: generator
+      value: 2
+    - by: checker-a
+      value: 1
+    - by: checker-b
+      value: 2
+    - by: checker-c
+      value: 2
+    - by: tiebreaker-1
+      value: 2
+    - by: tiebreaker-2
+      value: 2
+    decision: 2
+    rationale: "Generator, checker-b, checker-c and both tie-breakers propose level 2; checker-a proposes level\
+      \ 1. Retain the exact tally qualified-majority decision of level 2 with five agreeing votes out of six and\
+      \ low confidence. Seriously Fish and AquaInfo warn that small tankmates may be swallowed, without establishing\
+      \ a 2 cm ceiling or consumption frequency. Level 2 is an uncertain compatibility mapping of that mouth-size\
+      \ risk, rather than a measured frequency. FishBase and the Ribbink field account describe benthic invertebrate\
+      \ feeding. GCCA and Hulsey (2007) instead call the species piscivorous; the Hulsey (2022) table inherits diet\
+      \ categories from earlier work and is not a second independent diet observation. These broad labels do not\
+      \ outweigh the specific feeding descriptions. AQUAPORTAL reports refusal of small fish, so a confident predation\
+      \ assignment is not possible. Tally method: qualified-majority (5 of 6 votes)."
+  - field: features.diet
+    proposals:
+    - by: generator
+      value:
+        type: invertivore
+        bloatSensitive: false
+        foods:
+        - Sinking cichlid pellets
+        - Mysis shrimp
+        - Artemia
+        - Small portions of krill or chopped shrimp
+    - by: checker-a
+      value:
+        type: invertivore
+        bloatSensitive: false
+        foods:
+        - insect larvae
+        - small crustaceans
+        - zooplankton
+        - invertebrate-based sinking pellets
+    - by: checker-b
+      value:
+        type: invertivore
+        bloatSensitive: false
+        foods:
+        - insect larvae
+        - small crustaceans
+        - aquatic invertebrates
+        - sinking carnivore pellets
+        - Artemia
+        - mysis
+    - by: checker-c
+      value:
+        type: invertivore
+        bloatSensitive: false
+        foods:
+        - aquatic insect larvae
+        - small crustaceans
+        - zooplankton
+        - appropriate cichlid pellets
+    decision:
+      type: invertivore
+      bloatSensitive: false
+      foods:
+      - Sinking cichlid pellets
+      - Mysis shrimp
+      - Artemia
+      - Small portions of krill or chopped shrimp
+    rationale: "All four initial runs agree on invertivore and bloatSensitive false, retained exactly with unanimous\
+      \ verification and medium confidence. Their food suggestions differ; the full generator food list is preserved\
+      \ because the tally selects it unchanged. FishBase, the Ribbink field account, Malawi-Guru and Seriously Fish\
+      \ support invertebrate feeding in sand; the CRC public insect-feeding summary verifies that interpretation\
+      \ only. GCCA and Hulsey use a conflicting piscivore label, and Fish Barn uses omnivore. Specific prey accounts\
+      \ outweigh those broad labels. Hulsey (2022) repeats earlier diet classification and is not independent confirmation.\
+      \ False for bloatSensitive means no established conflict with an appropriate invertebrate-protein diet, rather\
+      \ than protection against intestinal disease. AquaInfo warnings about fatty foods and mammalian meat concern\
+      \ unsuitable feeding. Tally method: unanimous (4 of 4 votes)."
+  - field: features.aggressionConspecific
+    proposals:
+    - by: generator
+      value: 2
+    - by: checker-a
+      value: 3
+    - by: checker-b
+      value: 3
+    - by: checker-c
+      value: 3
+    decision: 3
+    rationale: "Generator proposes level 2; all three checkers propose 3. Adopt level 3 because large spawning territories\
+      \ and strong male rivalry make sustained reproductive pursuit a plausible risk even in a one-male harem. The\
+      \ Nordic register instead describes mild spawning aggression, and AquaInfo describes generally tolerant fish.\
+      \ GCCA documents a fatal rival attack with two males in an undersized 65 US gallon tank; that establishes\
+      \ danger from the wrong ratio and space, not routine level-4 behaviour under the stated adult setup. The exact\
+      \ chasing and injury rate in a 1000 L harem is not measured, so medium confidence is retained."
+  - field: features.habitatZones
+    proposals:
+    - by: generator
+      value:
+      - sand
+      - openWater
+    - by: checker-a
+      value:
+      - sand
+      - openWater
+    - by: checker-b
+      value:
+      - sand
+      - openWater
+      - rock
+    - by: checker-c
+      value:
+      - sand
+      - openWater
+    decision:
+    - sand
+    - openWater
+    - rock
+    rationale: "Generator, checker-a and checker-c propose sand and openWater; checker-b also includes rock. Retain\
+      \ all three because Ribbink directly observed rostratus mothers and broods over sand and over rock. Sand remains\
+      \ the essential feeding and escape substrate, and open water represents unobstructed movement above it. Rock\
+      \ denotes reproductive refuge and sparse peripheral structure; it does not justify replacing exposed sand\
+      \ with a rock-filled layout. The CRC public habitat line confirms sand and is verification only."
+  - field: features.hybridGroups
+    proposals:
+    - by: generator
+      value:
+      - fossorochromis-rostratus-champsochromis-caeruleus
+    - by: checker-a
+      value: []
+    - by: checker-b
+      value:
+      - fossorochromis-rostratus-champsochromis-caeruleus
+    - by: checker-c
+      value:
+      - fossorochromis-rostratus-champsochromis-caeruleus
+    - by: tiebreaker-1
+      value:
+      - fossorochromis-rostratus-champsochromis-caeruleus
+    - by: tiebreaker-2
+      value:
+      - fossorochromis-rostratus-champsochromis-caeruleus
+    decision:
+    - fossorochromis-rostratus-champsochromis-caeruleus
+    rationale: "Generator, checker-b, checker-c and both tie-breakers propose fossorochromis-rostratus-champsochromis-caeruleus;\
+      \ checker-a proposes an empty list. Retain the exact tally qualified-majority decision with five agreeing\
+      \ votes out of six and low confidence. Ron's Cichlids reports an accidental aquarium cross with those named\
+      \ parents. Conspecific mate availability, independent genetic parentage checks and fertility are unspecified,\
+      \ so the two-member group has basis presumed. Catalog entries confirm valid member names only, and species\
+      \ accounts without a cross report do not establish reproductive isolation. The crossing claim has one breeder-retailer\
+      \ website source and lacks two independent literature or database confirmations; contextual taxonomic evidence\
+      \ is explicitly not crossing evidence. No wider Malawi group is inferred. Tally method: qualified-majority\
+      \ (5 of 6 votes)."
+  - field: features.coloration
+    proposals:
+    - by: generator
+      value:
+        baseColors:
+        - blue
+        - green
+        - black
+        pattern: mixed
+    - by: checker-a
+      value:
+        baseColors:
+        - blue
+        - green
+        - black
+        pattern: plain
+    - by: checker-b
+      value:
+        baseColors:
+        - blue
+        - green
+        - black
+        pattern: plain
+    - by: checker-c
+      value:
+        baseColors:
+        - blue
+        - green
+        - black
+        pattern: plain
+    decision:
+      baseColors:
+      - blue
+      - green
+      - black
+      pattern: plain
+    rationale: "Generator proposes mixed; all three checkers propose plain with the same blue, green and black base\
+      \ colours. Adopt plain for a dominant adult male because AquaInfo describes fading flank spots with blue-green\
+      \ iridescence and a dark underside. Females and suppressed males retain conspicuous spots; some dominant males\
+      \ retain faint ones. The retailer Imperial account confirms this variation and mentions orange fin accents,\
+      \ which are secondary rather than dominant base colours. Medium confidence reflects differences with rank\
+      \ and reproductive condition."
+  - field: features.feedingSpeed
+    proposals:
+    - by: generator
+      value: hasty
+    - by: checker-a
+      value: normal
+    - by: checker-b
+      value: hasty
+    - by: checker-c
+      value: hasty
+    decision: hasty
+    rationale: "Generator, checker-b and checker-c propose hasty; checker-a proposes normal. Choose hasty because\
+      \ the firsthand GCCA account reports fast consumption of prepared foods. It does not quantify competitive\
+      \ food monopolisation or eating until every ration disappears, so the full rubric mapping remains uncertain\
+      \ and confidence is low. The archive describes timid newcomers missing meals, which concerns acclimation rather\
+      \ than the usual feeding response of settled adults."
+  - field: features.minTank
+    proposals:
+    - by: generator
+      value:
+        volumeL: 1000
+        lengthCm: 250
+        depthCm: 60
+    - by: checker-a
+      value:
+        volumeL: 1000
+        lengthCm: 250
+        depthCm: 70
+    - by: checker-b
+      value:
+        volumeL: 1000
+        lengthCm: 250
+        depthCm: 60
+    - by: checker-c
+      value:
+        volumeL: 1000
+        lengthCm: 250
+        depthCm: 60
+    decision:
+      volumeL: 1000
+      lengthCm: 250
+      depthCm: 60
+    rationale: "Generator, checker-b and checker-c propose 1000 L with 250 cm length and 60 cm front-to-back depth;\
+      \ checker-a proposes the same volume and length with 70 cm depth. Retain 60 cm because AquaInfo explicitly\
+      \ recommends that dimension, whereas 70 is an extra precaution without an independent threshold. Malawi-Guru\
+      \ supplies 1000 L and 250 cm for adults; both footprint and volume must be met for one male and three females.\
+      \ Smaller published minima include Seriously Fish about 257 L and 150 by 38 cm, the Nordic register 700 L\
+      \ and 200 cm, Abysse 800 L, and Einrichtungsbeispiele 960 L and 200 cm. These are not adopted for the large\
+      \ adult harem. Malawi-Guru multi-male recommendations of 2000 to 3000 L describe a different social unit;\
+      \ extra large companions also require more space."
+  - field: features.lifespanYears
+    proposals:
+    - by: generator
+      value:
+        min: 8
+        max: 10
+    - by: checker-a
+      value:
+        min: 5
+        max: 10
+    - by: checker-b
+      value:
+        min: 8
+        max: 10
+    - by: checker-c
+      value:
+        min: 8
+        max: 15
+    decision:
+      min: 8
+      max: 10
+    rationale: "Generator and checker-b propose 8 to 10 years; checker-a proposes the wider 5 to 10 and checker-c\
+      \ the wider 8 to 15. Retain the direct AquaInfo expectation of 8 to 10 years as a planning estimate. Aqua-Fish\
+      \ gives 5 to 8, Einrichtungsbeispiele 10 to 15, and Abysse a single 15-year figure. Fish Barn and my-fish\
+      \ also give 8 to 10, but their estimates are not established independent cohorts. The selected range is narrower\
+      \ than the combined care claims of 5 to 15 years; it is neither an assured lifespan nor a biological maximum.\
+      \ No validated longitudinal age data were found."
+  - field: features.ghDgh.tolerance
+    proposals:
+    - by: generator
+      value:
+        min: 3
+        max: 25
+    - by: checker-a
+      value:
+        min: 3
+        max: 25
+    - by: checker-b
+      value:
+        min: 3
+        max: 15
+    - by: checker-c
+      value:
+        min: 3
+        max: 25
+    - by: tiebreaker-1
+      value:
+        min: 3
+        max: 25
+    - by: tiebreaker-2
+      value:
+        min: 3
+        max: 25
+    decision:
+      min: 3
+      max: 25
+    rationale: "Generator, checker-a, checker-c and both tie-breakers propose 3 to 25 dGH; checker-b proposes 3\
+      \ to 15. Retain the exact tally qualified-majority decision of 3 to 25 with five agreeing votes out of six\
+      \ and medium confidence. Seriously Fish and the separately maintained Aquainfo.dk table give 10 to 25 dGH.\
+      \ The natural 3 to 5 dGH range supplies the lower endpoint. Aqua-Fish gives 10 to 18, AQUAPORTAL 8 to 18 and\
+      \ Einrichtungsbeispiele 5 to 15. AquaInfo gives 8 to 12 in its prose and 12 to 16 in its table. These narrower\
+      \ recommendations do not establish injury above 15 dGH. The upper endpoint remains care-sheet guidance, without\
+      \ a controlled chronic tolerance test or demonstrated independence of identical numbers. Tally method: qualified-majority\
+      \ (5 of 6 votes)."
+  - field: features.khDkh.tolerance
+    proposals:
+    - by: generator
+      value:
+        min: 5
+        max: 12
+    - by: checker-a
+      value:
+        min: 5
+        max: 10
+    - by: checker-b
+      value:
+        min: 5
+        max: 12
+    - by: checker-c
+      value:
+        min: 5
+        max: 12
+    decision:
+      min: 5
+      max: 12
+    rationale: "Generator, checker-b and checker-c propose 5 to 12 dKH; checker-a proposes 5 to 10. Retain the tally\
+      \ decision of 5 to 12 with unanimous verification and low confidence. The 2 dKH difference counts as agreement\
+      \ under the pipeline threshold, and the median of the agreeing upper endpoints is 12. Einrichtungsbeispiele\
+      \ gives 6 to 12 dKH, while retailer Abysse gives a target of 10. JBL supplies an independent literature recommendation\
+      \ near 7 dKH for a Malawi aquarium and a general buffering interval of 5 to 12, rather than a species-specific\
+      \ longevity trial. Natural 5 to 8 dKH supplies the lower boundary. The endpoints remain weakly established\
+      \ for continuous lifelong aquarium use. Tally method: unanimous (4 of 4 votes)."
