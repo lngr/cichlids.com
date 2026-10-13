@@ -21,7 +21,7 @@ public sealed class SlugGenerator
     /// </summary>
     public const string SecretEnvironmentVariable = "CICHLIDS_SLUG_SECRET";
 
-    private const int Length = 10;
+    private const int Length = 8;
     private const string Digits = "0123456789abcdefghijklmnopqrstuvwxyz";
 
     private static readonly ulong Modulus = Pow36(Length);
@@ -36,7 +36,7 @@ public sealed class SlugGenerator
 
     /// <summary>
     /// Returns the fixed-length, lowercase base36 slug for the given input, left-padded with '0'
-    /// when the reduced hash value does not fill all ten digits.
+    /// when the reduced hash value does not fill all eight digits.
     /// </summary>
     public string Generate(string input)
     {
