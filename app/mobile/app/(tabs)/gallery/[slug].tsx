@@ -98,7 +98,7 @@ export default function PictureDetailScreen() {
             <Text style={[theme.type.h2, { color: theme.colors.fg, marginTop: 20 }]}>
               {t("gallery.detail.comments", { count: Number(picture.commentCount) })}
             </Text>
-            <CommentComposer submit={submitComment} onPosted={onCommentPosted} />
+            <CommentComposer submit={submitComment} onPosted={onCommentPosted} ownerId={picture.author.id} />
           </View>
         </View>
       }

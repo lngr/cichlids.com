@@ -33,6 +33,14 @@ export function toCreateCommentRequest(draft: CommentDraft): CreateCommentReques
   return { body: body.length > 0 ? body : null, stars: draft.stars };
 }
 
+/**
+ * Whether the composer offers the star picker: not on content the signed-in member owns, since
+ * the API refuses ratings there. While the signed-in profile is unknown (null) the picker is offered.
+ */
+export function offersStars(ownerId: number | string, myProfileId: number | string | null): boolean {
+  return myProfileId === null || Number(ownerId) !== Number(myProfileId);
+}
+
 /** The stars (0 to MAX_STARS) of a comment's rating; 0 when the comment has no rating. */
 export function starsOf(comment: { stars?: number | string | null }): number {
   const stars = Number(comment.stars ?? 0);

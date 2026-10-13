@@ -111,7 +111,7 @@ export default function TankDetailScreen() {
             <MediaStrip title={t("tanks.detail.sectionTechnic")} items={tank.sections.technic} />
 
             <Text style={[theme.type.h2, { color: theme.colors.fg, marginTop: 20 }]}>{t("tanks.detail.comments")}</Text>
-            <CommentComposer submit={submitComment} onPosted={onCommentPosted} />
+            <CommentComposer submit={submitComment} onPosted={onCommentPosted} ownerId={tank.author.id} />
           </View>
         </View>
       }
