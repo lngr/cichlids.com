@@ -1,11 +1,13 @@
 import Constants from "expo-constants";
+import { pickRuntimeUrl } from "../config/appConfig";
 
-// Resolution order: EXPO_PUBLIC_KEYCLOAK_URL (inlined at build time) falls back to app.json's
-// expo.extra.keycloakUrl, then to the local Keycloak port of app/stack/compose.yaml.
-const keycloakUrl =
-  process.env.EXPO_PUBLIC_KEYCLOAK_URL ??
-  (Constants.expoConfig?.extra?.keycloakUrl as string | undefined) ??
-  "http://localhost:8180";
+// EXPO_PUBLIC_KEYCLOAK_URL is inlined at build time; app.config.ts writes the build's resolved
+// address into expo.extra.keycloakUrl (localhost only in development).
+const keycloakUrl = pickRuntimeUrl(
+  "EXPO_PUBLIC_KEYCLOAK_URL",
+  process.env.EXPO_PUBLIC_KEYCLOAK_URL,
+  Constants.expoConfig?.extra?.keycloakUrl as string | undefined,
+);
 
 const realm = "cichlids";
 

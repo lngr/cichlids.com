@@ -1,0 +1,35 @@
+{
+  "cli": {
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "env": {
+        "APP_VARIANT": "development"
+      },
+      "node": "24.21.0"
+    },
+    "staging": {
+      "distribution": "internal",
+      "channel": "staging",
+      "env": {
+        "APP_VARIANT": "staging",
+        "EXPO_PUBLIC_API_URL": "https://api.staging.cichlids.com",
+        "EXPO_PUBLIC_KEYCLOAK_URL": "https://auth.staging.cichlids.com"
+      },
+      "node": "24.21.0"
+    },
+    "production": {
+      "channel": "production",
+      "autoIncrement": true,
+      "env": {
+        "APP_VARIANT": "production",
+        "EXPO_PUBLIC_API_URL": "https://api.cichlids.com",
+        "EXPO_PUBLIC_KEYCLOAK_URL": "https://auth.cichlids.com"
+      },
+      "node": "24.21.0"
+    }
+  }
+}

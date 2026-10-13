@@ -1,13 +1,10 @@
 import Constants from "expo-constants";
 import { createCichlidsClient } from "@cichlids/client-core";
+import { pickRuntimeUrl } from "../config/appConfig";
 
-// Resolution order: EXPO_PUBLIC_API_URL (inlined at build time, works in all
-// environments incl. EAS builds) falls back to app.json's expo.extra.apiUrl,
-// then to the local Cichlids.Api dev port from launchSettings.json.
-const apiUrl =
-  process.env.EXPO_PUBLIC_API_URL ??
-  (Constants.expoConfig?.extra?.apiUrl as string | undefined) ??
-  "http://localhost:5045";
+// EXPO_PUBLIC_API_URL is inlined at build time; app.config.ts writes the build's resolved address
+// into expo.extra.apiUrl (localhost only in development).
+const apiUrl = pickRuntimeUrl("EXPO_PUBLIC_API_URL", process.env.EXPO_PUBLIC_API_URL, Constants.expoConfig?.extra?.apiUrl as string | undefined);
 
 type AccessTokenProvider = () => Promise<string | undefined>;
 
