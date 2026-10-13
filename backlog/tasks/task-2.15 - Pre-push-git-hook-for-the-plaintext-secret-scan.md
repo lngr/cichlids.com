@@ -4,7 +4,7 @@ title: Pre-push git hook for the plaintext-secret scan
 status: Done
 assignee: []
 created_date: '2026-06-05 20:29'
-updated_date: '2026-10-13 08:15'
+updated_date: '2026-10-13 08:20'
 labels:
   - infra
 milestone: m-0
@@ -35,6 +35,12 @@ backstop (hooks are local and bypassable with --no-verify).
 - The full enforcement remains the CI secrets-scan gate; this hook is a convenience/early filter.
 <!-- SECTION:DESCRIPTION:END -->
 
+## Acceptance Criteria
+<!-- AC:BEGIN -->
+- [x] #1 Given the pre-push hook is active (core.hooksPath=.githooks), When a tracked file holds a plaintext secret and the operator runs git push, Then the push is refused and the secret does not reach the remote
+- [x] #2 Given a tracked file with a planted secret, When the operator runs gitleaks dir . --config .gitleaks.toml, Then it names the secret's file and line and exits non-zero
+- [x] #3 Given the devcontainer, When postCreate/postStart runs, Then it sets core.hooksPath to .githooks so the committed hook is active (verifiable via git config core.hooksPath)
+<!-- AC:END -->
 
 ## Implementation Notes
 
@@ -58,12 +64,3 @@ backstop (hooks are local and bypassable with --no-verify).
 - [x] #2 A failing test was written first, then made to pass (red-green)
 - [x] #3 All CI test suites are fully green
 <!-- DOD:END -->
-
-
-
-## Acceptance Criteria
-<!-- AC:BEGIN -->
-- [x] #1 Given the pre-push hook is active (core.hooksPath=.githooks), When a tracked file holds a plaintext secret and the operator runs git push, Then the push is refused and the secret does not reach the remote
-- [x] #2 Given a tracked file with a planted secret, When the operator runs tools/check-no-plaintext-secrets.py, Then it names the secret's file and line and exits non-zero
-- [x] #3 Given the devcontainer, When postCreate/postStart runs, Then it sets core.hooksPath to .githooks so the committed hook is active (verifiable via git config core.hooksPath)
-<!-- AC:END -->
