@@ -1,0 +1,3946 @@
+schemaVersion: 1
+id: "parachromis-friedrichsthalii"
+legacyIds:
+- 765
+status: "described"
+taxonomy:
+  validName: "Parachromis friedrichsthalii"
+  genus: "Parachromis"
+  species: "friedrichsthalii"
+  author: "(Heckel, 1840)"
+  source:
+    kind: "catalog-of-fishes"
+    title: "Eschmeyer's Catalog of Fishes: Parachromis species, online update 21 September 2026"
+    url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Parachromis"
+    accessed: "2026-10-13"
+  synonyms:
+  - name: "Heros friedrichsthalii"
+    note: "Original combination."
+  - name: "Cichlasoma friedrichsthalii"
+    note: "Historical generic combination; many older biological accounts under this label instead concern P. multifasciatus."
+  - name: "Nandopsis friedrichsthalii"
+    note: "Historical generic combination."
+  - name: "Cichlasoma loisellei"
+    note: "Junior synonym following Morgenstern (2018)."
+  - name: "Parachromis loisellei"
+    note: "Junior synonym retained in older biological and husbandry databases."
+  - name: "Nandopsis loisellei"
+    note: "Historical combination of the junior synonym."
+  legacyNames:
+  - "Parachromis loisellei"
+  note: "The Catalog of Fishes confirms Parachromis friedrichsthalii (Heckel, 1840) and treats Cichlasoma loisellei\
+    \ as its junior synonym after Morgenstern (2018). The accessible revision abstract supports the same change.\
+    \ Former northern aquarium friedrichsthalii is P. multifasciatus; FishBase under friedrichsthalii, TropicalFreshwaterFish\
+    \ and AquaInfo still retain northern or mixed ecological content and do not establish this species diet or water\
+    \ needs. The FishBase loisellei account matches the southern species. Both Parachromis and the historical Cichlasoma\
+    \ genus lists were queried. Bussing and Morgenstern downloads exposed abstracts or repository descriptions only.\
+    \ The Wong CRC article could not be reopened within the timeout and is retained solely as earlier-checker verification\
+    \ context, without new endpoint support."
+names:
+  trade:
+    en:
+    - "Loiselle's cichlid"
+    - "Yellow jacket cichlid"
+    de:
+    - "Loiselles Buntbarsch"
+    es-419:
+    - "Guapote amarillo"
+variants: []
+features:
+  origin:
+    value:
+      continent: "Central America"
+      region: "Caribbean-slope lowlands from eastern Honduras to western Panama, including the Rio San Juan and\
+        \ Lake Nicaragua tributary drainages; reported Pacific occurrence in the Rio Tamarindo, Nicaragua"
+      waterbody: null
+      localities:
+      - "Rio Negro, Honduras"
+      - "Rio San Juan and Lake Nicaragua tributary drainages, Nicaragua and Costa Rica"
+      - "Sarapiqui drainage, Costa Rica"
+      - "Rio San Miguel in the Matina drainage, Costa Rica"
+      - "Cricamola and Laguna de Chiriqui coastal drainages, western Panama"
+      - "Rio Tamarindo, Nicaragua"
+    confidence: "high"
+    rationale: "All four profiles describe the southern Caribbean-slope species, with differing locality lists.\
+      \ Generator emphasizes eastern Honduras to Panama, checker-a adds the Lake Nicaragua and San Juan drainage,\
+      \ checker-b adds the Cricamola and Tamarindo records, and checker-c explicitly includes the Pacific Nicaraguan\
+      \ occurrence. Merge these regional records using the Catalog of Fishes, the Bussing and Morgenstern abstracts,\
+      \ FishBase under loisellei, and the Angulo Sarapiqui occurrence survey. Lake Nicaragua is a drainage and type-material\
+      \ reference, not proof of occupancy in open lake water; Beerlink specifically reports tributary habitat and\
+      \ avoidance of the open lake. Northern Mexico, Belize and Guatemala records under the former friedrichsthalii\
+      \ name concern multifasciatus."
+    sources:
+    - kind: "catalog-of-fishes"
+      title: "Eschmeyer's Catalog of Fishes: Parachromis species, online update 21 September 2026"
+      url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Parachromis"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Bussing (1989). Cichlasoma loisellei, a new nandopsis group cichlid fish from Central America. Abstract\
+        \ only."
+      url: "https://doi.org/10.15517/rbt.v37i2.23568"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Angulo et al. (2017). Fishes from the Tirimbina Biological Reserve, La Virgen de Sarapiqui, Heredia,\
+        \ Costa Rica."
+      url: "https://doi.org/10.15560/13.5.683"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishBase species summary: Parachromis loisellei, the southern taxon now called P. friedrichsthalii"
+      url: "https://www.fishbase.se/summary/Parachromis-loisellei.html"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Morgenstern, R. (2018). Fishes collected by Emanuel Ritter von Friedrichsthal in Central America between\
+        \ 1838-1841. Vertebrate Zoology 68(3) (abstract)"
+      url: "https://doi.org/10.3897/vz.68.e31614"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "catalog-of-fishes"
+        title: "Eschmeyer's Catalog of Fishes: Parachromis species, online update 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Parachromis"
+        accessed: "2026-10-13"
+      value:
+        continent: "Central America"
+        region: "Atlantic slope from Rio Negro in Honduras to Laguna de Chiriqui in Panama"
+    - source:
+        kind: "literature"
+        title: "Bussing (1989). Cichlasoma loisellei, a new nandopsis group cichlid fish from Central America. Abstract\
+          \ only."
+        url: "https://doi.org/10.15517/rbt.v37i2.23568"
+        accessed: "2026-10-13"
+      value: "Atlantic drainages from the Rio Negro, Honduras, to western Panama and Pacific-slope drainages of\
+        \ Nicaragua"
+      note: "abstract only"
+    - source:
+        kind: "literature"
+        title: "Morgenstern, R. (2018). Fishes collected by Emanuel Ritter von Friedrichsthal in Central America\
+          \ between 1838-1841. Vertebrate Zoology 68(3) (abstract)"
+        url: "https://doi.org/10.3897/vz.68.e31614"
+        accessed: "2026-10-13"
+      value: "Type material from the Rio San Juan or Lake Nicaragua drainage; loisellei synonymised"
+      note: "abstract only"
+    - source:
+        kind: "database"
+        title: "FishBase species summary: Parachromis loisellei, the southern taxon now called P. friedrichsthalii"
+        url: "https://www.fishbase.se/summary/Parachromis-loisellei.html"
+        accessed: "2026-10-13"
+      value:
+        continent: "Central America"
+        region: "Atlantic slope from Ulua to Cricamola and Tamarindo drainage in Nicaragua"
+  temperatureC:
+    value:
+      min: 24
+      max: 28
+    confidence: "low"
+    rationale: "The tally retains 24 to 28 C with unanimous agreement within its one-degree comparison rule. Generator\
+      \ and checker-c proposed 24 to 28, checker-a 24 to 29, and checker-b 24.9 to 27.2 C. Baronas measured 24.4\
+      \ to 27.2 C in selected regional surface waters; the stricter low-elevation selection is 24.9 to 27.2. Wider\
+      \ source ranges are Gutierrez-Fonseca 21.4 to 27.2, Clark et al. 22.3 to 28.5, the Juan Lopez study 25.8 to\
+      \ 30.3, and FishBase under loisellei 24 to 37 C. These are retained as evidence rather than collapsed into\
+      \ a claim of universal occupied-site limits. Lake Nicaragua surface water at 25 to 28 C is drainage context\
+      \ only, especially because Beerlink reports this fish in tributaries rather than the open lake. No concurrent\
+      \ fish census establishes occupancy at every chemistry station; confidence remains low."
+    sources:
+    - kind: "literature"
+      title: "Baronas et al. (2020). Ge and Si Isotope Behavior During Intense Tropical Weathering and Ecosystem\
+        \ Cycling."
+      url: "https://doi.org/10.1029/2019GB006522"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Baronas et al. (2020). HydroShare dataset: chemical composition of La Selva streams and associated\
+        \ waters, May 2010."
+      url: "https://doi.org/10.4211/hs.891fcba010e6490caa614a39d53dccec"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Gutierrez-Fonseca et al. (2018). Large-scale climatic phenomena drive fluctuations in macroinvertebrate\
+        \ assemblages in lowland tropical streams, Costa Rica."
+      url: "https://doi.org/10.1371/journal.pone.0191781"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishBase species summary: Parachromis loisellei, the southern taxon now called P. friedrichsthalii"
+      url: "https://www.fishbase.se/summary/Parachromis-loisellei.html"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Evaluando la diversidad de peces de agua dulce tropicales en el rio Sarapiqui, Costa Rica. Revista\
+        \ de Biologia Tropical (2026)"
+      url: "https://doi.org/10.15517/pcw7kw36"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Land Use and Land Cover Shape River Water Quality at a Continental Caribbean Land-Ocean Interface\
+        \ (Bocas del Toro, Panama). Frontiers in Water (2022)"
+      url: "https://doi.org/10.3389/frwa.2022.737920"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Diversidad de la comunidad de macroinvertebrados acuaticos en el rio Juan Lopez, Atlantida (Honduras)\
+        \ en epoca seca. Portal de la Ciencia (2023)"
+      url: "https://doi.org/10.5377/pc.v1i17.16067"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishBase: Parachromis friedrichsthalii (Yellowjacket cichlid)"
+      url: "https://www.fishbase.se/summary/Parachromis-friedrichsthalii.html"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Swain (1966). Bottom sediments of Lake Nicaragua and Lake Managua, western Nicaragua. Lake Nicaragua\
+        \ water measurements."
+      url: "https://doi.org/10.1306/74d71500-2b21-11d7-8648000102c1865d"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "literature"
+        title: "Gutierrez-Fonseca et al. (2018). Large-scale climatic phenomena drive fluctuations in macroinvertebrate\
+          \ assemblages in lowland tropical streams, Costa Rica."
+        url: "https://doi.org/10.1371/journal.pone.0191781"
+        accessed: "2026-10-13"
+      value:
+        min: 24
+        max: 27
+      note: "Regional lowland stream temperatures, not a species-specific thermal trial."
+    - source:
+        kind: "database"
+        title: "FishBase species summary: Parachromis loisellei, the southern taxon now called P. friedrichsthalii"
+        url: "https://www.fishbase.se/summary/Parachromis-loisellei.html"
+        accessed: "2026-10-13"
+      value:
+        min: 24
+        max: 37
+      note: "Species environment field under loisellei; lacks site and duration detail on the summary page."
+    - source:
+        kind: "literature"
+        title: "Evaluando la diversidad de peces de agua dulce tropicales en el rio Sarapiqui, Costa Rica. Revista\
+          \ de Biologia Tropical (2026)"
+        url: "https://doi.org/10.15517/pcw7kw36"
+        accessed: "2026-10-13"
+      value:
+        min: 20
+        max: 27
+      note: "river sites from 410 m to lowland; 27 C at the lowest sites"
+    - source:
+        kind: "literature"
+        title: "Land Use and Land Cover Shape River Water Quality at a Continental Caribbean Land-Ocean Interface\
+          \ (Bocas del Toro, Panama). Frontiers in Water (2022)"
+        url: "https://doi.org/10.3389/frwa.2022.737920"
+        accessed: "2026-10-13"
+      value:
+        min: 22.3
+        max: 28.5
+      note: "Caribbean Panama rivers, medians 24.2 to 25.6 C"
+    - source:
+        kind: "literature"
+        title: "Diversidad de la comunidad de macroinvertebrados acuaticos en el rio Juan Lopez, Atlantida (Honduras)\
+          \ en epoca seca. Portal de la Ciencia (2023)"
+        url: "https://doi.org/10.5377/pc.v1i17.16067"
+        accessed: "2026-10-13"
+      value:
+        min: 25.8
+        max: 30.3
+      note: "Caribbean Honduras river, single dry-season day"
+    - source:
+        kind: "database"
+        title: "FishBase: Parachromis friedrichsthalii (Yellowjacket cichlid)"
+        url: "https://www.fishbase.se/summary/Parachromis-friedrichsthalii.html"
+        accessed: "2026-10-13"
+      value:
+        min: 26
+        max: 30
+      note: "Excluded from species-specific support because this account retains the northern or mixed pre-2018\
+        \ species concept. environment line of the species"
+    - source:
+        kind: "literature"
+        title: "Swain (1966). Bottom sediments of Lake Nicaragua and Lake Managua, western Nicaragua. Lake Nicaragua\
+          \ water measurements."
+        url: "https://doi.org/10.1306/74d71500-2b21-11d7-8648000102c1865d"
+        accessed: "2026-10-13"
+      value:
+        min: 25
+        max: 28
+      note: "Measured Lake Nicaragua surface water in the broader type-locality drainage."
+    - source:
+        kind: "literature"
+        title: "Baronas et al. (2020). Ge and Si Isotope Behavior During Intense Tropical Weathering and Ecosystem\
+          \ Cycling."
+        url: "https://doi.org/10.1029/2019GB006522"
+        accessed: "2026-10-13"
+      value:
+        min: 24.4
+        max: 27.2
+      note: "May 2010 regional surface waters; the stricter low-elevation selection used by checker-b is 24.9 to\
+        \ 27.2 C. Paper and deposited data share one campaign; fish occupancy was not tested."
+    - source:
+        kind: "database"
+        title: "Baronas et al. (2020). HydroShare dataset: chemical composition of La Selva streams and associated\
+          \ waters, May 2010."
+        url: "https://doi.org/10.4211/hs.891fcba010e6490caa614a39d53dccec"
+        accessed: "2026-10-13"
+      value:
+        min: 24.4
+        max: 27.2
+      note: "May 2010 regional surface waters; the stricter low-elevation selection used by checker-b is 24.9 to\
+        \ 27.2 C. Paper and deposited data share one campaign; fish occupancy was not tested."
+    tolerance:
+      value:
+        min: 24
+        max: 30
+      confidence: "low"
+      verification:
+        method: "conservative"
+        votes:
+          agree: 3
+          total: 6
+      sources:
+      - kind: "database"
+        title: "FishProfiles.com: Parachromis loisellei"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Parachromis_loisellei/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Einrichtungsbeispiele species care sheet: Parachromis loisellei"
+        url: "https://www.einrichtungsbeispiele.de/zierfische/mittelamerika/parachromis-loisellei-slnk.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsallskapet species register: Parachromis friedrichsthalii, former Cichlasoma loisellei"
+        url: "https://ciklid.org/artregister/art.php?ID=196"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "TropicalFreshwaterFish.com: Friedrichsthali (Cichlasoma friedrichsthalii)"
+        url: "https://tropicalfreshwaterfish.com/species/Cichlasoma_friedrichsthalii.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Parachromis friedrichsthalii (Yellowjacket cichlid)"
+        url: "https://www.fishbase.se/summary/Parachromis-friedrichsthalii.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Zoopet: Parachromis loisellei"
+        url: "https://www.zoopet.com/fiskar/fisk.php?NR=1441"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Rybicky.net species atlas, Parachromis loisellei"
+        url: "https://rybicky.net/atlasryb/kancik_loiselleuv"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishFish, Parachromis loisellei care and breeding account"
+        url: "https://www.fishfish.fr/poisson/parachromis-loisellei"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase species summary: Parachromis loisellei, species 26778"
+        url: "https://www.fishbase.se/summary/26778"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Beerlink, R. Parachromis friedrichsthalii (Heckel, 1840). Nederlandse Vereniging van Cichlidenliefhebbers\
+          \ species article"
+        url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/parachromis-friedrichsthalii-heckel-1840"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Wong, D. (1997). Parachromis loisellei Bussing, 1989. Cichlid Room Companion, verification only"
+        url: "https://cichlidae.com/article.php?id=PySPUwqU_09FQ6ZifQsc2Q"
+        accessed: "2026-10-13"
+      evidence:
+      - source:
+          kind: "database"
+          title: "FishProfiles.com: Parachromis loisellei"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Parachromis_loisellei/"
+          accessed: "2026-10-13"
+        value:
+          min: 24
+          max: 30
+        note: "Aquarium recommendation."
+      - source:
+          kind: "database"
+          title: "Einrichtungsbeispiele species care sheet: Parachromis loisellei"
+          url: "https://www.einrichtungsbeispiele.de/zierfische/mittelamerika/parachromis-loisellei-slnk.html"
+          accessed: "2026-10-13"
+        value:
+          min: 24
+          max: 28
+        note: "Aquarium recommendation."
+      - source:
+          kind: "database"
+          title: "Nordiska Ciklidsallskapet species register: Parachromis friedrichsthalii, former Cichlasoma loisellei"
+          url: "https://ciklid.org/artregister/art.php?ID=196"
+          accessed: "2026-10-13"
+        value:
+          min: 25
+          max: 32
+        note: "Register recommendation is broader at the warm end; not adopted above 30 C."
+      - source:
+          kind: "website"
+          title: "TropicalFreshwaterFish.com: Friedrichsthali (Cichlasoma friedrichsthalii)"
+          url: "https://tropicalfreshwaterfish.com/species/Cichlasoma_friedrichsthalii.html"
+          accessed: "2026-10-13"
+        value:
+          min: 22
+          max: 28
+        note: "Excluded from species-specific support because this account retains the northern or mixed pre-2018\
+          \ species concept. "
+      - source:
+          kind: "database"
+          title: "FishBase: Parachromis friedrichsthalii (Yellowjacket cichlid)"
+          url: "https://www.fishbase.se/summary/Parachromis-friedrichsthalii.html"
+          accessed: "2026-10-13"
+        value:
+          min: 26
+          max: 30
+        note: "Excluded from species-specific support because this account retains the northern or mixed pre-2018\
+          \ species concept. "
+      - source:
+          kind: "database"
+          title: "Zoopet: Parachromis loisellei"
+          url: "https://www.zoopet.com/fiskar/fisk.php?NR=1441"
+          accessed: "2026-10-13"
+        value:
+          min: 25
+          max: 32
+      - source:
+          kind: "database"
+          title: "Rybicky.net species atlas, Parachromis loisellei"
+          url: "https://rybicky.net/atlasryb/kancik_loiselleuv"
+          accessed: "2026-10-13"
+        value:
+          min: 24
+          max: 30
+        note: "Aquarium recommendation."
+      - source:
+          kind: "database"
+          title: "FishFish, Parachromis loisellei care and breeding account"
+          url: "https://www.fishfish.fr/poisson/parachromis-loisellei"
+          accessed: "2026-10-13"
+        value:
+          min: 24
+          max: 28
+        note: "Aquarium recommendation."
+      - source:
+          kind: "literature"
+          title: "Wong, D. (1997). Parachromis loisellei Bussing, 1989. Cichlid Room Companion, verification only"
+          url: "https://cichlidae.com/article.php?id=PySPUwqU_09FQ6ZifQsc2Q"
+          accessed: "2026-10-13"
+        value:
+          min: 27.8
+          max: 27.8
+        note: "Earlier checker verification only; adjudicator access timed out, so this is not independent support\
+          \ for the adopted endpoints. Verification only: repeated captive reproduction at 82 F."
+      - source:
+          kind: "database"
+          title: "FishBase species summary: Parachromis loisellei, species 26778"
+          url: "https://www.fishbase.se/summary/26778"
+          accessed: "2026-10-13"
+        value:
+          min: 24
+          max: 37
+        note: "Natural environmental range, not evidence for years of aquarium health at the upper extreme."
+      rationale: "Conservative intersection decided by tally at 24 to 30 C with low confidence. Generator, checker-c\
+        \ and tiebreaker-2 proposed 24 to 30; checker-a 22 to 30; checker-b and tiebreaker-1 24 to 32. With no four-vote\
+        \ qualified majority, the intersection is 24 to 30 and already contains the natural 24 to 28. FishProfiles\
+        \ and Rybicky directly recommend 24 to 30. The wider Nordic and Zoopet recommendations of 25 to 32 are not\
+        \ adopted above 30; Einrichtungsbeispiele and FishFish are narrower at 24 to 28. The 22 C proposal drew\
+        \ on an old mixed-identity account. FishBase 24 to 37 describes environmental observations, not years of\
+        \ captive health. Wong was cited for verification by earlier checkers, but adjudicator access timed out\
+        \ and adds no independently read endpoint evidence."
+    verification:
+      method: "unanimous"
+      votes:
+        agree: 4
+        total: 4
+  ph:
+    value:
+      min: 5.8
+      max: 7.2
+    confidence: "low"
+    rationale: "Median decision from tally, with low confidence because six proposals did not reach a qualified\
+      \ majority. Generator proposed 6.4 to 7.2, checker-a 6.0 to 7.5, checker-b and tiebreaker-1 each 5.6 to 7.2,\
+      \ checker-c 6.5 to 8.9, and tiebreaker-2 5.4 to 7.2. The medians of all minima and maxima are 5.8 and 7.2.\
+      \ The verification count of 3/6 describes the largest agreeing proposal cluster, not three direct measurements\
+      \ of those final endpoints. Baronas surface waters span 5.42 to 7.17, or 5.64 to 7.17 in the stricter lowland\
+      \ subset; Pringle gives 6.4 to 6.9 and Oviedo-Vargas a mean of 6.4. Wider regional ranges include Clark et\
+      \ al. 4.4 to 8.4 and Swain lake-surface pH 8.2 to 8.9, with Harer reporting 8.59. The lake readings do not\
+      \ establish fish occupancy in open water. This decided interval is a regional compromise and does not exclude\
+      \ populations outside it."
+    sources:
+    - kind: "database"
+      title: "Baronas et al. (2020). HydroShare dataset: chemical composition of La Selva streams and associated\
+        \ waters, May 2010."
+      url: "https://doi.org/10.4211/hs.891fcba010e6490caa614a39d53dccec"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Baronas et al. (2020). Ge and Si Isotope Behavior During Intense Tropical Weathering and Ecosystem\
+        \ Cycling."
+      url: "https://doi.org/10.1029/2019GB006522"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Oviedo-Vargas et al. (2016). Chamber measurements of high CO2 emissions from a rainforest stream receiving\
+        \ old C-rich regional groundwater."
+      url: "https://doi.org/10.1007/s10533-016-0243-3"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Evaluando la diversidad de peces de agua dulce tropicales en el rio Sarapiqui, Costa Rica. Revista\
+        \ de Biologia Tropical (2026)"
+      url: "https://doi.org/10.15517/pcw7kw36"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Land Use and Land Cover Shape River Water Quality at a Continental Caribbean Land-Ocean Interface\
+        \ (Bocas del Toro, Panama). Frontiers in Water (2022)"
+      url: "https://doi.org/10.3389/frwa.2022.737920"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Diversidad de la comunidad de macroinvertebrados acuaticos en el rio Juan Lopez, Atlantida (Honduras)\
+        \ en epoca seca. Portal de la Ciencia (2023)"
+      url: "https://doi.org/10.5377/pc.v1i17.16067"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Swain (1966). Bottom sediments of Lake Nicaragua and Lake Managua, western Nicaragua. Lake Nicaragua\
+        \ water measurements."
+      url: "https://doi.org/10.1306/74d71500-2b21-11d7-8648000102c1865d"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Harer et al. (2022, online 2021). Heterogeneity across Neotropical aquatic environments affects prokaryotic\
+        \ and eukaryotic biodiversity based on environmental DNA. Table 1."
+      url: "https://doi.org/10.1002/edn3.267"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Angulo et al. (2017). Fishes from the Tirimbina Biological Reserve, La Virgen de Sarapiqui, Heredia,\
+        \ Costa Rica."
+      url: "https://doi.org/10.15560/13.5.683"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishBase species summary: Parachromis loisellei, species 26778"
+      url: "https://www.fishbase.se/summary/26778"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Beerlink, R. Parachromis friedrichsthalii (Heckel, 1840). Nederlandse Vereniging van Cichlidenliefhebbers\
+        \ species article"
+      url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/parachromis-friedrichsthalii-heckel-1840"
+      accessed: "2026-10-13"
+    - kind: "catalog-of-fishes"
+      title: "Eschmeyer's Catalog of Fishes: Parachromis species, online update 21 September 2026"
+      url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Parachromis"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Pringle, C. M., Paaby, P., Vaux, P. D. and Goldman, C. R. (1986). In situ nutrient assays of periphyton\
+        \ growth in a lowland Costa Rican stream. Hydrobiologia 134, 207-213. Table 2."
+      url: "https://doi.org/10.1007/BF00008489"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "literature"
+        title: "Oviedo-Vargas et al. (2016). Chamber measurements of high CO2 emissions from a rainforest stream\
+          \ receiving old C-rich regional groundwater."
+        url: "https://doi.org/10.1007/s10533-016-0243-3"
+        accessed: "2026-10-13"
+      value:
+        min: 6.4
+        max: 6.4
+      note: "Mean of weekly Arboleda pH measurements from 2010 to 2014, not minimum and maximum."
+    - source:
+        kind: "literature"
+        title: "Evaluando la diversidad de peces de agua dulce tropicales en el rio Sarapiqui, Costa Rica. Revista\
+          \ de Biologia Tropical (2026)"
+        url: "https://doi.org/10.15517/pcw7kw36"
+        accessed: "2026-10-13"
+      value:
+        min: 6
+        max: 7.5
+    - source:
+        kind: "literature"
+        title: "Land Use and Land Cover Shape River Water Quality at a Continental Caribbean Land-Ocean Interface\
+          \ (Bocas del Toro, Panama). Frontiers in Water (2022)"
+        url: "https://doi.org/10.3389/frwa.2022.737920"
+        accessed: "2026-10-13"
+      value:
+        min: 4.4
+        max: 8.4
+      note: "median 6.0"
+    - source:
+        kind: "literature"
+        title: "Diversidad de la comunidad de macroinvertebrados acuaticos en el rio Juan Lopez, Atlantida (Honduras)\
+          \ en epoca seca. Portal de la Ciencia (2023)"
+        url: "https://doi.org/10.5377/pc.v1i17.16067"
+        accessed: "2026-10-13"
+      value:
+        min: 5.6
+        max: 7.8
+      note: "freshwater sites 5.6 to 5.9, coastal 7.8"
+    - source:
+        kind: "literature"
+        title: "Swain (1966). Bottom sediments of Lake Nicaragua and Lake Managua, western Nicaragua. Lake Nicaragua\
+          \ water measurements."
+        url: "https://doi.org/10.1306/74d71500-2b21-11d7-8648000102c1865d"
+        accessed: "2026-10-13"
+      value:
+        min: 8.2
+        max: 8.9
+      note: "Lake Nicaragua surface water; deeper water was 7.4 to 7.8."
+    - source:
+        kind: "literature"
+        title: "Harer et al. (2022, online 2021). Heterogeneity across Neotropical aquatic environments affects\
+          \ prokaryotic and eukaryotic biodiversity based on environmental DNA. Table 1."
+        url: "https://doi.org/10.1002/edn3.267"
+        accessed: "2026-10-13"
+      value:
+        min: 8.59
+        max: 8.59
+      note: "Lake Nicaragua nearshore mean at 1 m depth in 2018."
+    - source:
+        kind: "literature"
+        title: "Pringle, C. M., Paaby, P., Vaux, P. D. and Goldman, C. R. (1986). In situ nutrient assays of periphyton\
+          \ growth in a lowland Costa Rican stream. Hydrobiologia 134, 207-213. Table 2."
+        url: "https://doi.org/10.1007/BF00008489"
+        accessed: "2026-10-13"
+      value:
+        min: 6.4
+        max: 6.9
+      note: "Field measurements in lower Quebrada Salto during September 1984; regional habitat proxy."
+    - source:
+        kind: "literature"
+        title: "Baronas et al. (2020). Ge and Si Isotope Behavior During Intense Tropical Weathering and Ecosystem\
+          \ Cycling."
+        url: "https://doi.org/10.1029/2019GB006522"
+        accessed: "2026-10-13"
+      value:
+        min: 5.42
+        max: 7.17
+      note: "Regional surface streams and lower Sarapiqui; the narrower selection at 70 m or lower is 5.64 to 7.17.\
+        \ Groundwater and upstream San Miguel are excluded; paper and dataset are the same observations."
+    - source:
+        kind: "database"
+        title: "Baronas et al. (2020). HydroShare dataset: chemical composition of La Selva streams and associated\
+          \ waters, May 2010."
+        url: "https://doi.org/10.4211/hs.891fcba010e6490caa614a39d53dccec"
+        accessed: "2026-10-13"
+      value:
+        min: 5.42
+        max: 7.17
+      note: "Regional surface streams and lower Sarapiqui; the narrower selection at 70 m or lower is 5.64 to 7.17.\
+        \ Groundwater and upstream San Miguel are excluded; paper and dataset are the same observations."
+    tolerance:
+      value:
+        min: 5.8
+        max: 8
+      confidence: "low"
+      verification:
+        method: "conservative"
+        votes:
+          agree: 3
+          total: 6
+      sources:
+      - kind: "database"
+        title: "FishProfiles.com: Parachromis loisellei"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Parachromis_loisellei/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Einrichtungsbeispiele species care sheet: Parachromis loisellei"
+        url: "https://www.einrichtungsbeispiele.de/zierfische/mittelamerika/parachromis-loisellei-slnk.html"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Oviedo-Vargas et al. (2016). Chamber measurements of high CO2 emissions from a rainforest stream\
+          \ receiving old C-rich regional groundwater."
+        url: "https://doi.org/10.1007/s10533-016-0243-3"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "TropicalFreshwaterFish.com: Friedrichsthali (Cichlasoma friedrichsthalii)"
+        url: "https://tropicalfreshwaterfish.com/species/Cichlasoma_friedrichsthalii.html"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Evaluando la diversidad de peces de agua dulce tropicales en el rio Sarapiqui, Costa Rica. Revista\
+          \ de Biologia Tropical (2026)"
+        url: "https://doi.org/10.15517/pcw7kw36"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsallskapet species register: Parachromis friedrichsthalii, former Cichlasoma loisellei"
+        url: "https://ciklid.org/artregister/art.php?ID=196"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Rybicky.net species atlas, Parachromis loisellei"
+        url: "https://rybicky.net/atlasryb/kancik_loiselleuv"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Zoopet: Parachromis loisellei"
+        url: "https://www.zoopet.com/fiskar/fisk.php?NR=1441"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Swain (1966). Bottom sediments of Lake Nicaragua and Lake Managua, western Nicaragua. Lake Nicaragua\
+          \ water measurements."
+        url: "https://doi.org/10.1306/74d71500-2b21-11d7-8648000102c1865d"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Beerlink, R. Parachromis friedrichsthalii (Heckel, 1840). Nederlandse Vereniging van Cichlidenliefhebbers\
+          \ species article"
+        url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/parachromis-friedrichsthalii-heckel-1840"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Wong, D. (1997). Parachromis loisellei Bussing, 1989. Cichlid Room Companion, verification only"
+        url: "https://cichlidae.com/article.php?id=PySPUwqU_09FQ6ZifQsc2Q"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Baronas et al. (2020). Ge and Si Isotope Behavior During Intense Tropical Weathering and Ecosystem\
+          \ Cycling."
+        url: "https://doi.org/10.1029/2019GB006522"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Werner, U. (2017). Ein behaebiger Buntbarsch aus Mittelamerika: Parachromis loisellei, der Gelbe\
+          \ Guapote. DCG-Informationen 48(1), 8-13. Indexed husbandry and feeding passages only."
+        url: "https://dcg-encyclopedia.de/wp-content/uploads/2016/12/2017-01-S-8-13.pdf"
+        accessed: "2026-10-13"
+      - kind: "model-knowledge"
+        title: "Generator husbandry inference. No independent species-specific measurement or long-term trial."
+        accessed: "2026-10-13"
+      - kind: "archive"
+        title: "cichlids.com forum thread 30356"
+        url: "https://www.cichlids.com/disc/read.php?1,30356"
+        accessed: "2026-10-13"
+      - kind: "forum"
+        title: "MonsterFishKeepers: Comparability Lose For Parachromis, retrospective loisellei husbandry account"
+        url: "https://www.monsterfishkeepers.com/forums/threads/comparability-lose-for-parachromis.767677/"
+        accessed: "2026-10-13"
+      evidence:
+      - source:
+          kind: "database"
+          title: "FishProfiles.com: Parachromis loisellei"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Parachromis_loisellei/"
+          accessed: "2026-10-13"
+        value:
+          min: 7
+          max: 8
+        note: "Explicit aquarium range."
+      - source:
+          kind: "database"
+          title: "Einrichtungsbeispiele species care sheet: Parachromis loisellei"
+          url: "https://www.einrichtungsbeispiele.de/zierfische/mittelamerika/parachromis-loisellei-slnk.html"
+          accessed: "2026-10-13"
+        value:
+          min: 7
+          max: 8
+        note: "Explicit aquarium range."
+      - source:
+          kind: "model-knowledge"
+          title: "Generator husbandry inference. No independent species-specific measurement or long-term trial."
+          accessed: "2026-10-13"
+        value:
+          min: 6.4
+          max: 8
+        note: "Provisional synthesis; the lower extension comes from regional habitat evidence."
+      - source:
+          kind: "website"
+          title: "TropicalFreshwaterFish.com: Friedrichsthali (Cichlasoma friedrichsthalii)"
+          url: "https://tropicalfreshwaterfish.com/species/Cichlasoma_friedrichsthalii.html"
+          accessed: "2026-10-13"
+        value:
+          min: 6.5
+          max: 8
+        note: "Excluded from species-specific support because this account retains the northern or mixed pre-2018\
+          \ species concept. "
+      - source:
+          kind: "archive"
+          title: "cichlids.com forum thread 30356"
+          url: "https://www.cichlids.com/disc/read.php?1,30356"
+          accessed: "2026-10-13"
+        value:
+          min: 6.6
+          max: 7.6
+        note: "forum advice"
+      - source:
+          kind: "database"
+          title: "Nordiska Ciklidsallskapet species register: Parachromis friedrichsthalii, former Cichlasoma loisellei"
+          url: "https://ciklid.org/artregister/art.php?ID=196"
+          accessed: "2026-10-13"
+        value:
+          min: 7
+          max: 8
+      - source:
+          kind: "forum"
+          title: "MonsterFishKeepers: Comparability Lose For Parachromis, retrospective loisellei husbandry account"
+          url: "https://www.monsterfishkeepers.com/forums/threads/comparability-lose-for-parachromis.767677/"
+          accessed: "2026-10-13"
+        value:
+          min: 8.2
+          max: 8.2
+        note: "Retrospective breeding account, not controlled testing"
+      - source:
+          kind: "database"
+          title: "Rybicky.net species atlas, Parachromis loisellei"
+          url: "https://rybicky.net/atlasryb/kancik_loiselleuv"
+          accessed: "2026-10-13"
+        value:
+          min: 6.5
+          max: 7.5
+        note: "Direct care interval."
+      - source:
+          kind: "database"
+          title: "Zoopet: Parachromis loisellei"
+          url: "https://www.zoopet.com/fiskar/fisk.php?NR=1441"
+          accessed: "2026-10-13"
+        value:
+          min: 7
+          max: 8
+        note: "Direct care interval."
+      - source:
+          kind: "literature"
+          title: "Swain (1966). Bottom sediments of Lake Nicaragua and Lake Managua, western Nicaragua. Lake Nicaragua\
+            \ water measurements."
+          url: "https://doi.org/10.1306/74d71500-2b21-11d7-8648000102c1865d"
+          accessed: "2026-10-13"
+        value:
+          min: 8.2
+          max: 8.9
+        note: "Native-range field context only, not an aquarium tolerance experiment."
+      - source:
+          kind: "literature"
+          title: "Wong, D. (1997). Parachromis loisellei Bussing, 1989. Cichlid Room Companion, verification only"
+          url: "https://cichlidae.com/article.php?id=PySPUwqU_09FQ6ZifQsc2Q"
+          accessed: "2026-10-13"
+        value:
+          min: 8
+          max: 8
+        note: "Earlier checker verification only; adjudicator access timed out, so this is not independent support\
+          \ for the adopted endpoints. Verification only: repeated captive reproduction at this pH."
+      - source:
+          kind: "literature"
+          title: "Baronas et al. (2020). Ge and Si Isotope Behavior During Intense Tropical Weathering and Ecosystem\
+            \ Cycling."
+          url: "https://doi.org/10.1029/2019GB006522"
+          accessed: "2026-10-13"
+        value:
+          min: 5.4
+          max: 7.2
+        note: "Natural regional proxy; not evidence of chronic aquarium tolerance."
+      - source:
+          kind: "literature"
+          title: "Werner, U. (2017). Ein behaebiger Buntbarsch aus Mittelamerika: Parachromis loisellei, der Gelbe\
+            \ Guapote. DCG-Informationen 48(1), 8-13. Indexed husbandry and feeding passages only."
+          url: "https://dcg-encyclopedia.de/wp-content/uploads/2016/12/2017-01-S-8-13.pdf"
+          accessed: "2026-10-13"
+        value:
+          min: 7.2
+          max: 7.5
+        note: "Indexed first-hand keeping and breeding passage only."
+      rationale: "Conservative decision from tally at 5.8 to 8.0, with low confidence. Generator proposed 6.4 to\
+        \ 8, checker-a 6 to 8, checker-b and tiebreaker-1 5.6 to 8.2, checker-c 6.5 to 8.9, and tiebreaker-2 5.4\
+        \ to 8. The intersection is 6.5 to 8, then tally widens its lower bound to 5.8 to contain the decided natural\
+        \ range. Rybicky recommends 6.5 to 7.5, and FishProfiles, Zoopet and the Nordic register 7 to 8; Werner\
+        \ reports breeding at 7.2 to 7.5 in the accessible indexed passage. Wider proposals include an unverified\
+        \ retrospective aquarium report at 8.2 and regional lake measurements up to 8.9, neither adopted as a chronic\
+        \ upper endpoint. Aquarium health for years at 5.8 is unproven: that extension is containment of a regional\
+        \ field proxy, not a husbandry target. Wong could not be reopened and is earlier-checker verification only."
+    verification:
+      method: "median"
+      votes:
+        agree: 3
+        total: 6
+  ghDgh:
+    value:
+      min: 0
+      max: 10
+    confidence: "low"
+    rationale: "Qualified majority of five of six votes, retained exactly as tally at 0 to 10 dGH with low confidence.\
+      \ Generator and checker-c proposed 2 to 10, checker-a 1 to 5, and checker-b plus both tiebreakers 0.1 to 10.\
+      \ The agreeing minima have median 0.1, which tally rounds to integer 0; this means very dilute water, not\
+      \ a measured zero-hardness requirement. Baronas paired Ca and Mg give about 0.14 to 9.55 dGH across regional\
+      \ surface streams. Pringle gives a bounding 0.63 to 2.37 from separately reported ion extrema; Swain lake-surface\
+      \ ions give about 3.30. The buffered-only selection omitted dilute streams, while checker-a inferred hardness\
+      \ from conductivity, which cannot uniquely determine GH. Use Ca mg/L divided by 7.14 plus Mg mg/L divided\
+      \ by 4.34. Field sites remain geographic proxies without contemporaneous fish presence."
+    sources:
+    - kind: "literature"
+      title: "Baronas et al. (2020). Ge and Si Isotope Behavior During Intense Tropical Weathering and Ecosystem\
+        \ Cycling."
+      url: "https://doi.org/10.1029/2019GB006522"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Baronas et al. (2020). HydroShare dataset: chemical composition of La Selva streams and associated\
+        \ waters, May 2010."
+      url: "https://doi.org/10.4211/hs.891fcba010e6490caa614a39d53dccec"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Swain (1966). Bottom sediments of Lake Nicaragua and Lake Managua, western Nicaragua. Lake Nicaragua\
+        \ water measurements."
+      url: "https://doi.org/10.1306/74d71500-2b21-11d7-8648000102c1865d"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Angulo et al. (2017). Fishes from the Tirimbina Biological Reserve, La Virgen de Sarapiqui, Heredia,\
+        \ Costa Rica."
+      url: "https://doi.org/10.15560/13.5.683"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishBase species summary: Parachromis loisellei, species 26778"
+      url: "https://www.fishbase.se/summary/26778"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Beerlink, R. Parachromis friedrichsthalii (Heckel, 1840). Nederlandse Vereniging van Cichlidenliefhebbers\
+        \ species article"
+      url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/parachromis-friedrichsthalii-heckel-1840"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Pringle, C. M., Paaby, P., Vaux, P. D. and Goldman, C. R. (1986). In situ nutrient assays of periphyton\
+        \ growth in a lowland Costa Rican stream. Hydrobiologia 134, 207-213. Table 2."
+      url: "https://doi.org/10.1007/BF00008489"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Evaluando la diversidad de peces de agua dulce tropicales en el rio Sarapiqui, Costa Rica. Revista\
+        \ de Biologia Tropical (2026)"
+      url: "https://doi.org/10.15517/pcw7kw36"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Land Use and Land Cover Shape River Water Quality at a Continental Caribbean Land-Ocean Interface\
+        \ (Bocas del Toro, Panama). Frontiers in Water (2022)"
+      url: "https://doi.org/10.3389/frwa.2022.737920"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Diversidad de la comunidad de macroinvertebrados acuaticos en el rio Juan Lopez, Atlantida (Honduras)\
+        \ en epoca seca. Portal de la Ciencia (2023)"
+      url: "https://doi.org/10.5377/pc.v1i17.16067"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "literature"
+        title: "Evaluando la diversidad de peces de agua dulce tropicales en el rio Sarapiqui, Costa Rica. Revista\
+          \ de Biologia Tropical (2026)"
+        url: "https://doi.org/10.15517/pcw7kw36"
+        accessed: "2026-10-13"
+      value: "conductivity about 40 to 150 uS/cm"
+      note: "Rejected conductivity-based hardness inference. The source reports conductivity, not GH or KH."
+    - source:
+        kind: "literature"
+        title: "Land Use and Land Cover Shape River Water Quality at a Continental Caribbean Land-Ocean Interface\
+          \ (Bocas del Toro, Panama). Frontiers in Water (2022)"
+        url: "https://doi.org/10.3389/frwa.2022.737920"
+        accessed: "2026-10-13"
+      value: "conductivity 39 to 565 uS/cm"
+      note: "Rejected conductivity-based hardness inference. The source reports conductivity, not GH or KH."
+    - source:
+        kind: "literature"
+        title: "Diversidad de la comunidad de macroinvertebrados acuaticos en el rio Juan Lopez, Atlantida (Honduras)\
+          \ en epoca seca. Portal de la Ciencia (2023)"
+        url: "https://doi.org/10.5377/pc.v1i17.16067"
+        accessed: "2026-10-13"
+      value: "conductivity 87 to 144 uS/cm at freshwater sites"
+      note: "Rejected conductivity-based hardness inference. The source reports conductivity, not GH or KH."
+    - source:
+        kind: "literature"
+        title: "Swain (1966). Bottom sediments of Lake Nicaragua and Lake Managua, western Nicaragua. Lake Nicaragua\
+          \ water measurements."
+        url: "https://doi.org/10.1306/74d71500-2b21-11d7-8648000102c1865d"
+        accessed: "2026-10-13"
+      value:
+        min: 3.3
+        max: 3.3
+      note: "Lake Nicaragua surface Ca 14.7 mg/L and Mg 5.4 mg/L; the extracted table does not resolve a separate\
+        \ bottom-water Ca/Mg pair."
+    - source:
+        kind: "literature"
+        title: "Pringle, C. M., Paaby, P., Vaux, P. D. and Goldman, C. R. (1986). In situ nutrient assays of periphyton\
+          \ growth in a lowland Costa Rican stream. Hydrobiologia 134, 207-213. Table 2."
+        url: "https://doi.org/10.1007/BF00008489"
+        accessed: "2026-10-13"
+      value:
+        min: 0.63
+        max: 2.37
+      note: "Bounding calculation from separately reported Ca and Mg extrema; not paired-sample extrema."
+    - source:
+        kind: "literature"
+        title: "Baronas et al. (2020). Ge and Si Isotope Behavior During Intense Tropical Weathering and Ecosystem\
+          \ Cycling."
+        url: "https://doi.org/10.1029/2019GB006522"
+        accessed: "2026-10-13"
+      value:
+        min: 0.14
+        max: 9.55
+      note: "Calculated from paired measured Ca and Mg in regional surface streams. Selected lowland samples alone\
+        \ give about 0.149 to 9.55; buffered-only selection gives 1.98 to 9.56. Not a fish-specific survey or independent\
+        \ replication."
+    - source:
+        kind: "database"
+        title: "Baronas et al. (2020). HydroShare dataset: chemical composition of La Selva streams and associated\
+          \ waters, May 2010."
+        url: "https://doi.org/10.4211/hs.891fcba010e6490caa614a39d53dccec"
+        accessed: "2026-10-13"
+      value:
+        min: 0.14
+        max: 9.55
+      note: "Calculated from paired measured Ca and Mg in regional surface streams. Selected lowland samples alone\
+        \ give about 0.149 to 9.55; buffered-only selection gives 1.98 to 9.56. Not a fish-specific survey or independent\
+        \ replication."
+    tolerance:
+      value:
+        min: 0
+        max: 20
+      confidence: "low"
+      verification:
+        method: "unanimous"
+        votes:
+          agree: 4
+          total: 4
+      sources:
+      - kind: "database"
+        title: "Einrichtungsbeispiele species care sheet: Parachromis loisellei"
+        url: "https://www.einrichtungsbeispiele.de/zierfische/mittelamerika/parachromis-loisellei-slnk.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishProfiles.com: Parachromis loisellei"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Parachromis_loisellei/"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "TropicalFreshwaterFish.com: Friedrichsthali (Cichlasoma friedrichsthalii)"
+        url: "https://tropicalfreshwaterfish.com/species/Cichlasoma_friedrichsthalii.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Parachromis friedrichsthalii (Yellowjacket cichlid)"
+        url: "https://www.fishbase.se/summary/Parachromis-friedrichsthalii.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Fischlexikon: Parachromis loisellei"
+        url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000001375"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Rybicky.net species atlas, Parachromis loisellei"
+        url: "https://rybicky.net/atlasryb/kancik_loiselleuv"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Trimar Aquaria structured care sheet, Loiselles cichlid"
+        url: "https://www.trimaraquaria.co.uk/product-page/lousielle-cichlid-small"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Baronas et al. (2020). Ge and Si Isotope Behavior During Intense Tropical Weathering and Ecosystem\
+          \ Cycling."
+        url: "https://doi.org/10.1029/2019GB006522"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Swain (1966). Bottom sediments of Lake Nicaragua and Lake Managua, western Nicaragua. Lake Nicaragua\
+          \ water measurements."
+        url: "https://doi.org/10.1306/74d71500-2b21-11d7-8648000102c1865d"
+        accessed: "2026-10-13"
+      - kind: "model-knowledge"
+        title: "Generator husbandry inference. No independent species-specific measurement or long-term trial."
+        accessed: "2026-10-13"
+      - kind: "archive"
+        title: "cichlids.com forum thread 30356"
+        url: "https://www.cichlids.com/disc/read.php?1,30356"
+        accessed: "2026-10-13"
+      evidence:
+      - source:
+          kind: "database"
+          title: "Einrichtungsbeispiele species care sheet: Parachromis loisellei"
+          url: "https://www.einrichtungsbeispiele.de/zierfische/mittelamerika/parachromis-loisellei-slnk.html"
+          accessed: "2026-10-13"
+        value:
+          min: 5
+          max: 20
+        note: "Aquarium GH recommendation."
+      - source:
+          kind: "database"
+          title: "FishProfiles.com: Parachromis loisellei"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Parachromis_loisellei/"
+          accessed: "2026-10-13"
+        value:
+          min: 10
+          max: 20
+        note: "Aquarium hardness recommendation interpreted as general hardness."
+      - source:
+          kind: "model-knowledge"
+          title: "Generator husbandry inference. No independent species-specific measurement or long-term trial."
+          accessed: "2026-10-13"
+        value:
+          min: 2
+          max: 20
+        note: "The lower extension is habitat-based and provisional."
+      - source:
+          kind: "website"
+          title: "TropicalFreshwaterFish.com: Friedrichsthali (Cichlasoma friedrichsthalii)"
+          url: "https://tropicalfreshwaterfish.com/species/Cichlasoma_friedrichsthalii.html"
+          accessed: "2026-10-13"
+        value:
+          min: 2
+          max: 25
+        note: "Excluded from species-specific support because this account retains the northern or mixed pre-2018\
+          \ species concept. "
+      - source:
+          kind: "archive"
+          title: "cichlids.com forum thread 30356"
+          url: "https://www.cichlids.com/disc/read.php?1,30356"
+          accessed: "2026-10-13"
+        value: "moderate hardness"
+        note: "forum advice"
+      - source:
+          kind: "database"
+          title: "Fischlexikon: Parachromis loisellei"
+          url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000001375"
+          accessed: "2026-10-13"
+        value:
+          min: 5
+          max: 20
+      - source:
+          kind: "database"
+          title: "Rybicky.net species atlas, Parachromis loisellei"
+          url: "https://rybicky.net/atlasryb/kancik_loiselleuv"
+          accessed: "2026-10-13"
+        value:
+          min: 10
+          max: 20
+        note: "Direct care interval."
+      - source:
+          kind: "website"
+          title: "Trimar Aquaria structured care sheet, Loiselles cichlid"
+          url: "https://www.trimaraquaria.co.uk/product-page/lousielle-cichlid-small"
+          accessed: "2026-10-13"
+        value:
+          min: 10
+          max: 20
+        note: "Retail care interval, given lower weight than independent atlases."
+      - source:
+          kind: "literature"
+          title: "Baronas et al. (2020). Ge and Si Isotope Behavior During Intense Tropical Weathering and Ecosystem\
+            \ Cycling."
+          url: "https://doi.org/10.1029/2019GB006522"
+          accessed: "2026-10-13"
+        value:
+          min: 1.98
+          max: 9.56
+        note: "Native drainage measurements support the inferred lower extension, not a captive trial."
+      rationale: "Unanimous tally decision within the two-dGH comparison rule, retained at 0 to 20 with low confidence.\
+        \ Generator and checker-c proposed 2 to 20, checker-a 1 to 20, and checker-b 0.1 to 20. Tally rounds the\
+        \ agreeing median lower bound and then extends it to 0 to contain the natural value. FishProfiles and Rybicky\
+        \ recommend 10 to 20, Einrichtungsbeispiele and Fischlexikon 5 to 20. The old mixed-identity care account\
+        \ gives a wider 2 to 25, but its 25 endpoint is not adopted. The near-zero extension lacks chronic aquarium\
+        \ confirmation and reflects natural-proxy containment only. Published care bands carry more weight for choosing\
+        \ routine water."
+    verification:
+      method: "qualified-majority"
+      votes:
+        agree: 5
+        total: 6
+  khDkh:
+    value:
+      min: 0
+      max: 13
+    confidence: "low"
+    rationale: "Retain the tally value of 0 to 13 dKH and low confidence; this plain natural-water fact intentionally\
+      \ has no verification object. Generator and checker-c proposed 1 to 14, checker-a 1 to 4, checker-b and tiebreaker-1\
+      \ 0.1 to 13.2, and tiebreaker-2 0.05 to 13.2. Five votes form the qualified-majority cluster; their median\
+      \ bounds round to 0 and 13. Baronas published rounded surface-water alkalinity equivalent to 0.056 to 13.104\
+      \ dKH; its deposited spreadsheet resolves the wider range of 0.0448 to 13.104 dKH, so the rounded upper limit\
+      \ is slightly narrower than the observation and is not a physiological boundary. Pringle gives 1.53 to 2.94\
+      \ and Swain lake water 3.36 to 3.64. Oviedo-Vargas DIC minus dissolved CO2 permits only an approximate bicarbonate\
+      \ estimate of 5.9 to 6.2. KH is an alkalinity equivalent; neither conductivity nor GH establishes it. Geographic\
+      \ transfer to the fish remains provisional."
+    sources:
+    - kind: "database"
+      title: "Baronas et al. (2020). HydroShare dataset: chemical composition of La Selva streams and associated\
+        \ waters, May 2010."
+      url: "https://doi.org/10.4211/hs.891fcba010e6490caa614a39d53dccec"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Baronas et al. (2020). Ge and Si Isotope Behavior During Intense Tropical Weathering and Ecosystem\
+        \ Cycling."
+      url: "https://doi.org/10.1029/2019GB006522"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Oviedo-Vargas et al. (2016). Chamber measurements of high CO2 emissions from a rainforest stream receiving\
+        \ old C-rich regional groundwater."
+      url: "https://doi.org/10.1007/s10533-016-0243-3"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Swain (1966). Bottom sediments of Lake Nicaragua and Lake Managua, western Nicaragua. Lake Nicaragua\
+        \ water measurements."
+      url: "https://doi.org/10.1306/74d71500-2b21-11d7-8648000102c1865d"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Angulo et al. (2017). Fishes from the Tirimbina Biological Reserve, La Virgen de Sarapiqui, Heredia,\
+        \ Costa Rica."
+      url: "https://doi.org/10.15560/13.5.683"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishBase species summary: Parachromis loisellei, species 26778"
+      url: "https://www.fishbase.se/summary/26778"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Beerlink, R. Parachromis friedrichsthalii (Heckel, 1840). Nederlandse Vereniging van Cichlidenliefhebbers\
+        \ species article"
+      url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/parachromis-friedrichsthalii-heckel-1840"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Pringle, C. M., Paaby, P., Vaux, P. D. and Goldman, C. R. (1986). In situ nutrient assays of periphyton\
+        \ growth in a lowland Costa Rican stream. Hydrobiologia 134, 207-213. Table 2."
+      url: "https://doi.org/10.1007/BF00008489"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Evaluando la diversidad de peces de agua dulce tropicales en el rio Sarapiqui, Costa Rica. Revista\
+        \ de Biologia Tropical (2026)"
+      url: "https://doi.org/10.15517/pcw7kw36"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Land Use and Land Cover Shape River Water Quality at a Continental Caribbean Land-Ocean Interface\
+        \ (Bocas del Toro, Panama). Frontiers in Water (2022)"
+      url: "https://doi.org/10.3389/frwa.2022.737920"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "literature"
+        title: "Oviedo-Vargas et al. (2016). Chamber measurements of high CO2 emissions from a rainforest stream\
+          \ receiving old C-rich regional groundwater."
+        url: "https://doi.org/10.1007/s10533-016-0243-3"
+        accessed: "2026-10-13"
+      value:
+        min: 5.9
+        max: 6.2
+      note: "Approximation from rounded annual DIC minus dissolved CO2 means, not a direct KH range."
+    - source:
+        kind: "literature"
+        title: "Evaluando la diversidad de peces de agua dulce tropicales en el rio Sarapiqui, Costa Rica. Revista\
+          \ de Biologia Tropical (2026)"
+        url: "https://doi.org/10.15517/pcw7kw36"
+        accessed: "2026-10-13"
+      value: "conductivity about 40 to 150 uS/cm"
+      note: "Rejected conductivity-based hardness inference. The source reports conductivity, not GH or KH."
+    - source:
+        kind: "literature"
+        title: "Land Use and Land Cover Shape River Water Quality at a Continental Caribbean Land-Ocean Interface\
+          \ (Bocas del Toro, Panama). Frontiers in Water (2022)"
+        url: "https://doi.org/10.3389/frwa.2022.737920"
+        accessed: "2026-10-13"
+      value: "median pH 6.0, conductivity 58 to 565 uS/cm"
+      note: "Rejected conductivity-based hardness inference. The source reports conductivity, not GH or KH."
+    - source:
+        kind: "literature"
+        title: "Swain (1966). Bottom sediments of Lake Nicaragua and Lake Managua, western Nicaragua. Lake Nicaragua\
+          \ water measurements."
+        url: "https://doi.org/10.1306/74d71500-2b21-11d7-8648000102c1865d"
+        accessed: "2026-10-13"
+      value:
+        min: 3.36
+        max: 3.64
+      note: "Lake Nicaragua water alkalinity of 60 to 65 mg/L as CaCO3, divided by 17.848."
+    - source:
+        kind: "literature"
+        title: "Pringle, C. M., Paaby, P., Vaux, P. D. and Goldman, C. R. (1986). In situ nutrient assays of periphyton\
+          \ growth in a lowland Costa Rican stream. Hydrobiologia 134, 207-213. Table 2."
+        url: "https://doi.org/10.1007/BF00008489"
+        accessed: "2026-10-13"
+      value:
+        min: 1.53
+        max: 2.94
+      note: "Total alkalinity divided by 17.848; lower Quebrada Salto field measurements."
+    - source:
+        kind: "literature"
+        title: "Baronas et al. (2020). Ge and Si Isotope Behavior During Intense Tropical Weathering and Ecosystem\
+          \ Cycling."
+        url: "https://doi.org/10.1029/2019GB006522"
+        accessed: "2026-10-13"
+      value:
+        min: 0.056
+        max: 13.104
+      note: "Surface-stream alkalinity in meq/L multiplied by 2.8; selected lowland stations give 0.162 to 13.104.\
+        \ Pure groundwater and wells excluded; dataset and publication share samples."
+    - source:
+        kind: "database"
+        title: "Baronas et al. (2020). HydroShare dataset: chemical composition of La Selva streams and associated\
+          \ waters, May 2010."
+        url: "https://doi.org/10.4211/hs.891fcba010e6490caa614a39d53dccec"
+        accessed: "2026-10-13"
+      value:
+        min: 0.0448
+        max: 13.104
+      note: "Deposited surface-stream alkalinity minimum is 0.016 meq/L, equivalent to 0.0448 dKH; the article rounds\
+        \ this to 0.02 meq/L. Same campaign as the paper; no concurrent fish census."
+    tolerance:
+      value:
+        min: 0
+        max: 15
+      confidence: "low"
+      verification:
+        method: "qualified-majority"
+        votes:
+          agree: 5
+          total: 6
+      sources:
+      - kind: "database"
+        title: "FishProfiles.com: Parachromis loisellei"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Parachromis_loisellei/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Einrichtungsbeispiele species care sheet: Parachromis loisellei"
+        url: "https://www.einrichtungsbeispiele.de/zierfische/mittelamerika/parachromis-loisellei-slnk.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Baronas et al. (2020). HydroShare dataset: chemical composition of La Selva streams and associated\
+          \ waters, May 2010."
+        url: "https://doi.org/10.4211/hs.891fcba010e6490caa614a39d53dccec"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Fischlexikon: Parachromis loisellei"
+        url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000001375"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "GarnelenTV structured care sheet, Parachromis friedrichsthali"
+        url: "https://garnelentv-shop.de/products/friedrichthals-buntbarsch-parachromis-friedrichsthali"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Baronas et al. (2020). Ge and Si Isotope Behavior During Intense Tropical Weathering and Ecosystem\
+          \ Cycling."
+        url: "https://doi.org/10.1029/2019GB006522"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Swain (1966). Bottom sediments of Lake Nicaragua and Lake Managua, western Nicaragua. Lake Nicaragua\
+          \ water measurements."
+        url: "https://doi.org/10.1306/74d71500-2b21-11d7-8648000102c1865d"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Beerlink, R. Parachromis friedrichsthalii (Heckel, 1840). Nederlandse Vereniging van Cichlidenliefhebbers\
+          \ species article"
+        url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/parachromis-friedrichsthalii-heckel-1840"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Wong, D. (1997). Parachromis loisellei Bussing, 1989. Cichlid Room Companion, verification only"
+        url: "https://cichlidae.com/article.php?id=PySPUwqU_09FQ6ZifQsc2Q"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Werner, U. (2017). Ein behaebiger Buntbarsch aus Mittelamerika: Parachromis loisellei, der Gelbe\
+          \ Guapote. DCG-Informationen 48(1), 8-13. Indexed husbandry and feeding passages only."
+        url: "https://dcg-encyclopedia.de/wp-content/uploads/2016/12/2017-01-S-8-13.pdf"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Pringle, C. M., Paaby, P., Vaux, P. D. and Goldman, C. R. (1986). In situ nutrient assays of periphyton\
+          \ growth in a lowland Costa Rican stream. Hydrobiologia 134, 207-213. Table 2."
+        url: "https://doi.org/10.1007/BF00008489"
+        accessed: "2026-10-13"
+      - kind: "model-knowledge"
+        title: "Generator husbandry inference. No independent species-specific measurement or long-term trial."
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "TropicalFreshwaterFish.com: Friedrichsthali (Cichlasoma friedrichsthalii)"
+        url: "https://tropicalfreshwaterfish.com/species/Cichlasoma_friedrichsthalii.html"
+        accessed: "2026-10-13"
+      - kind: "forum"
+        title: "MonsterFishKeepers: Comparability Lose For Parachromis, retrospective loisellei husbandry account"
+        url: "https://www.monsterfishkeepers.com/forums/threads/comparability-lose-for-parachromis.767677/"
+        accessed: "2026-10-13"
+      evidence:
+      - source:
+          kind: "database"
+          title: "FishProfiles.com: Parachromis loisellei"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Parachromis_loisellei/"
+          accessed: "2026-10-13"
+        value: null
+        note: "No KH value is published; pH and GH are not KH measurements."
+      - source:
+          kind: "database"
+          title: "Einrichtungsbeispiele species care sheet: Parachromis loisellei"
+          url: "https://www.einrichtungsbeispiele.de/zierfische/mittelamerika/parachromis-loisellei-slnk.html"
+          accessed: "2026-10-13"
+        value: null
+        note: "No KH value is published; this source does not establish KH tolerance."
+      - source:
+          kind: "model-knowledge"
+          title: "Generator husbandry inference. No independent species-specific measurement or long-term trial."
+          accessed: "2026-10-13"
+        value:
+          min: 1
+          max: 15
+        note: "Unverified long-term envelope; requires independent husbandry confirmation."
+      - source:
+          kind: "website"
+          title: "TropicalFreshwaterFish.com: Friedrichsthali (Cichlasoma friedrichsthalii)"
+          url: "https://tropicalfreshwaterfish.com/species/Cichlasoma_friedrichsthalii.html"
+          accessed: "2026-10-13"
+        value:
+          min: 2
+          max: 25
+        note: "Excluded from species-specific support because this account retains the northern or mixed pre-2018\
+          \ species concept. total hardness only"
+      - source:
+          kind: "forum"
+          title: "MonsterFishKeepers: Comparability Lose For Parachromis, retrospective loisellei husbandry account"
+          url: "https://www.monsterfishkeepers.com/forums/threads/comparability-lose-for-parachromis.767677/"
+          accessed: "2026-10-13"
+        value:
+          min: 16.8
+          max: 16.8
+        note: "Historical loisellei breeding account; 300 mg/L as CaCO3 divided by 17.848"
+      - source:
+          kind: "website"
+          title: "GarnelenTV structured care sheet, Parachromis friedrichsthali"
+          url: "https://garnelentv-shop.de/products/friedrichthals-buntbarsch-parachromis-friedrichsthali"
+          accessed: "2026-10-13"
+        value:
+          min: 4
+          max: 8
+        note: "Low-weight retailer recommendation with unreliable cave-breeding claims. Retail aquarium recommendation;\
+          \ species mapping plausible from the southern distribution and horizontal flank marking, but other biology\
+          \ is unreliable."
+      - source:
+          kind: "literature"
+          title: "Baronas et al. (2020). Ge and Si Isotope Behavior During Intense Tropical Weathering and Ecosystem\
+            \ Cycling."
+          url: "https://doi.org/10.1029/2019GB006522"
+          accessed: "2026-10-13"
+        value:
+          min: 0.056
+          max: 13.104
+        note: "Natural surface-stream alkalinity; not a long-term aquarium experiment."
+      - source:
+          kind: "literature"
+          title: "Swain (1966). Bottom sediments of Lake Nicaragua and Lake Managua, western Nicaragua. Lake Nicaragua\
+            \ water measurements."
+          url: "https://doi.org/10.1306/74d71500-2b21-11d7-8648000102c1865d"
+          accessed: "2026-10-13"
+        value:
+          min: 3.36
+          max: 3.64
+        note: "Native drainage field reference, not aquarium performance."
+      - source:
+          kind: "literature"
+          title: "Wong, D. (1997). Parachromis loisellei Bussing, 1989. Cichlid Room Companion, verification only"
+          url: "https://cichlidae.com/article.php?id=PySPUwqU_09FQ6ZifQsc2Q"
+          accessed: "2026-10-13"
+        value:
+          min: 3
+          max: 4
+        note: "Earlier checker verification only; adjudicator access timed out, so this is not independent support\
+          \ for the adopted endpoints. Verification only: successful repeated aquarium reproduction; does not establish\
+          \ either outer endpoint."
+      - source:
+          kind: "database"
+          title: "Baronas et al. (2020). HydroShare dataset: chemical composition of La Selva streams and associated\
+            \ waters, May 2010."
+          url: "https://doi.org/10.4211/hs.891fcba010e6490caa614a39d53dccec"
+          accessed: "2026-10-13"
+        value:
+          min: 0.162
+          max: 13.104
+        note: "Same habitat measurements as the paper, not independent husbandry evidence."
+      - source:
+          kind: "literature"
+          title: "Werner, U. (2017). Ein behaebiger Buntbarsch aus Mittelamerika: Parachromis loisellei, der Gelbe\
+            \ Guapote. DCG-Informationen 48(1), 8-13. Indexed husbandry and feeding passages only."
+          url: "https://dcg-encyclopedia.de/wp-content/uploads/2016/12/2017-01-S-8-13.pdf"
+          accessed: "2026-10-13"
+        value:
+          min: 11
+          max: 15
+        note: "Indexed first-hand keeping and breeding passage only."
+      - source:
+          kind: "literature"
+          title: "Pringle, C. M., Paaby, P., Vaux, P. D. and Goldman, C. R. (1986). In situ nutrient assays of periphyton\
+            \ growth in a lowland Costa Rican stream. Hydrobiologia 134, 207-213. Table 2."
+          url: "https://doi.org/10.1007/BF00008489"
+          accessed: "2026-10-13"
+        value:
+          min: 1.53
+          max: 2.94
+        note: "Natural stream alkalinity; ecological context only."
+      rationale: "Qualified-majority tally decision of 0 to 15 with low confidence. Generator proposed 1 to 15,\
+        \ checker-a 1 to 12, checker-b and tiebreaker-1 0.1 to 17, checker-c 1 to 14, and tiebreaker-2 0.05 to 15.\
+        \ Five votes agree within two dKH; their median minimum rounds to 0 and median maximum is 15. Werner reports\
+        \ keeping and reproduction at 11 to 15 dKH in the accessible indexed passage. A wider source claim of about\
+        \ 16.8 dKH, supporting the 17 proposals, comes from an unverified retrospective former-loisellei forum account\
+        \ and is not adopted as the upper endpoint. The retailer range of 4 to 8 has low weight. Baronas and Pringle\
+        \ provide alkalinity context, not chronic captive trials; FishProfiles and Einrichtungsbeispiele publish\
+        \ no KH limits. Wong is earlier-checker verification only because access timed out. No two independently\
+        \ read literature or database husbandry sources establish the full chronic interval, especially its near-zero\
+        \ lower end. The decided envelope remains provisional; GH and pH cannot substitute for KH."
+  maxSizeCm:
+    value:
+      male: 30
+      female: 25
+    confidence: "medium"
+    rationale: "Generator, checker-b and checker-c propose 30 cm males and 25 cm females; checker-a proposes 25\
+      \ and 20. FishProfiles supplies the larger sex-specific aquarium values, while the Nordic register and FishFish\
+      \ give 25 and 20. Beerlink independently reports aquarium adults approaching 30 cm. Retain 30 and 25 as normal\
+      \ upper planning expectations for well-kept fish. FishBase 18.5 cm is standard length excluding the tail;\
+      \ converting a wild specimen record cannot establish a sex-specific aquarium maximum."
+    sources:
+    - kind: "database"
+      title: "FishProfiles.com: Parachromis loisellei"
+      url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Parachromis_loisellei/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Nordiska Ciklidsallskapet species register: Parachromis friedrichsthalii, former Cichlasoma loisellei"
+      url: "https://ciklid.org/artregister/art.php?ID=196"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishBase species summary: Parachromis loisellei, the southern taxon now called P. friedrichsthalii"
+      url: "https://www.fishbase.se/summary/Parachromis-loisellei.html"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Angulo et al. (2017). Fishes from the Tirimbina Biological Reserve, La Virgen de Sarapiqui, Heredia,\
+        \ Costa Rica."
+      url: "https://doi.org/10.15560/13.5.683"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "TropicalFreshwaterFish.com: Friedrichsthali (Cichlasoma friedrichsthalii)"
+      url: "https://tropicalfreshwaterfish.com/species/Cichlasoma_friedrichsthalii.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishBase: Parachromis friedrichsthalii (Yellowjacket cichlid)"
+      url: "https://www.fishbase.se/summary/Parachromis-friedrichsthalii.html"
+      accessed: "2026-10-13"
+    - kind: "archive"
+      title: "cichlids.com forum thread 30356"
+      url: "https://www.cichlids.com/disc/read.php?1,30356"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishFish, Parachromis loisellei care and breeding account"
+      url: "https://www.fishfish.fr/poisson/parachromis-loisellei"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "database"
+        title: "FishProfiles.com: Parachromis loisellei"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Parachromis_loisellei/"
+        accessed: "2026-10-13"
+      value:
+        male: 30
+        female: 25
+      note: "Sex-specific aquarium figures."
+    - source:
+        kind: "database"
+        title: "Nordiska Ciklidsallskapet species register: Parachromis friedrichsthalii, former Cichlasoma loisellei"
+        url: "https://ciklid.org/artregister/art.php?ID=196"
+        accessed: "2026-10-13"
+      value:
+        male: 25
+        female: 20
+      note: "Male and female account."
+    - source:
+        kind: "literature"
+        title: "Angulo et al. (2017). Fishes from the Tirimbina Biological Reserve, La Virgen de Sarapiqui, Heredia,\
+          \ Costa Rica."
+        url: "https://doi.org/10.15560/13.5.683"
+        accessed: "2026-10-13"
+      value:
+        male: 22
+        female: 22
+      note: "185 mm SL converted to total length, sexes not separated"
+    - source:
+        kind: "website"
+        title: "TropicalFreshwaterFish.com: Friedrichsthali (Cichlasoma friedrichsthalii)"
+        url: "https://tropicalfreshwaterfish.com/species/Cichlasoma_friedrichsthalii.html"
+        accessed: "2026-10-13"
+      value:
+        male: 25
+        female: 25
+      note: "Excluded from species-specific support because this account retains the northern or mixed pre-2018\
+        \ species concept. "
+    - source:
+        kind: "database"
+        title: "FishBase: Parachromis friedrichsthalii (Yellowjacket cichlid)"
+        url: "https://www.fishbase.se/summary/Parachromis-friedrichsthalii.html"
+        accessed: "2026-10-13"
+      value:
+        male: 28
+        female: 28
+      note: "Excluded from species-specific support because this account retains the northern or mixed pre-2018\
+        \ species concept. 28 cm SL for the species including the northern population"
+    - source:
+        kind: "archive"
+        title: "cichlids.com forum thread 35710"
+        url: "https://www.cichlids.com/disc/read.php?1,35710"
+        accessed: "2026-10-13"
+      value:
+        male: 30
+        female: 25
+      note: "forum keeper, at most 12 inches"
+    - source:
+        kind: "archive"
+        title: "cichlids.com forum thread 30356"
+        url: "https://www.cichlids.com/disc/read.php?1,30356"
+        accessed: "2026-10-13"
+      value:
+        male: 30.48
+        female: null
+      note: "Low-weight keeper estimate of a 12-inch male; no precise female maximum."
+    - source:
+        kind: "database"
+        title: "FishFish, Parachromis loisellei care and breeding account"
+        url: "https://www.fishfish.fr/poisson/parachromis-loisellei"
+        accessed: "2026-10-13"
+      value:
+        male: 25
+        female: 20
+      note: "Smaller aquarium figures."
+  predation:
+    value: 2
+    confidence: "medium"
+    rationale: "Qualified-majority decision of 2 from generator, checker-b, checker-c and both tiebreakers; checker-a\
+      \ proposed 3. FishBase under loisellei describes mainly insects with occasional fish, while Zoopet, Rybicky\
+      \ and Einrichtungsbeispiele explicitly identify small aquarium companions as prey. This supports mouth-sized\
+      \ prey risk beyond incidental fry consumption without requiring a fish-dominated diet. Checker-a relied on\
+      \ the unrevised northern FishBase friedrichsthalii account and a pre-2018 hunting abstract with unresolved\
+      \ applicability; those do not establish level 3 for this southern species. CRC verifies insect feeding only.\
+      \ The frequency of fish feeding is not quantified, so confidence is medium."
+    sources:
+    - kind: "database"
+      title: "FishBase species summary: Parachromis loisellei, the southern taxon now called P. friedrichsthalii"
+      url: "https://www.fishbase.se/summary/Parachromis-loisellei.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Einrichtungsbeispiele species care sheet: Parachromis loisellei"
+      url: "https://www.einrichtungsbeispiele.de/zierfische/mittelamerika/parachromis-loisellei-slnk.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Nordiska Ciklidsallskapet species register: Parachromis friedrichsthalii, former Cichlasoma loisellei"
+      url: "https://ciklid.org/artregister/art.php?ID=196"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Cichlid Room Companion: Parachromis friedrichsthalii. Public summary used only for verification."
+      url: "https://cichlidae.com/species.php?id=8Dfo6JR1i79Ij6rJ-ESyYg"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishBase: ecology of Parachromis loisellei, after Conkel (1993)"
+      url: "https://www.fishbase.se/Ecology/FishEcologySummary.php?StockCode=20943&GenusName=Parachromis&SpeciesName=loisellei"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Zoopet: Parachromis loisellei"
+      url: "https://www.zoopet.com/fiskar/fisk.php?NR=1441"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Fischlexikon: Parachromis loisellei"
+      url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000001375"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishProfiles.com: Parachromis loisellei"
+      url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Parachromis_loisellei/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Rybicky.net species atlas, Parachromis loisellei"
+      url: "https://rybicky.net/atlasryb/kancik_loiselleuv"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Beerlink, R. Parachromis friedrichsthalii (Heckel, 1840). Nederlandse Vereniging van Cichlidenliefhebbers\
+        \ species article"
+      url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/parachromis-friedrichsthalii-heckel-1840"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishBase species summary: Parachromis loisellei, species 26778"
+      url: "https://www.fishbase.se/summary/26778"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishBase: Parachromis friedrichsthalii (Yellowjacket cichlid)"
+      url: "https://www.fishbase.se/summary/Parachromis-friedrichsthalii.html"
+      accessed: "2026-10-13"
+    - kind: "catalog-of-fishes"
+      title: "Eschmeyer's Catalog of Fishes: Parachromis species, online update 21 September 2026"
+      url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Parachromis"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Feigning death in the Central American cichlid Parachromis friedrichsthalii. Journal of Fish Biology\
+        \ (2005) (abstract)"
+      url: "https://doi.org/10.1111/j.0022-1112.2005.00648.x"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "TropicalFreshwaterFish.com: Friedrichsthali (Cichlasoma friedrichsthalii)"
+      url: "https://tropicalfreshwaterfish.com/species/Cichlasoma_friedrichsthalii.html"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "database"
+        title: "FishBase species summary: Parachromis loisellei, the southern taxon now called P. friedrichsthalii"
+        url: "https://www.fishbase.se/summary/Parachromis-loisellei.html"
+        accessed: "2026-10-13"
+      value: 1
+      note: "Rubric inference from occasional small fish in a mainly insect diet; the source does not state a 2\
+        \ cm prey limit."
+    - source:
+        kind: "database"
+        title: "Einrichtungsbeispiele species care sheet: Parachromis loisellei"
+        url: "https://www.einrichtungsbeispiele.de/zierfische/mittelamerika/parachromis-loisellei-slnk.html"
+        accessed: "2026-10-13"
+      value: 2
+      note: "Care sheet identifies small fish and anything within gape as prey."
+    - source:
+        kind: "database"
+        title: "Nordiska Ciklidsallskapet species register: Parachromis friedrichsthalii, former Cichlasoma loisellei"
+        url: "https://ciklid.org/artregister/art.php?ID=196"
+        accessed: "2026-10-13"
+      value: 2
+      note: "Insects and small fish, rather than obligatory fish feeding."
+    - source:
+        kind: "database"
+        title: "FishBase: Parachromis friedrichsthalii (Yellowjacket cichlid)"
+        url: "https://www.fishbase.se/summary/Parachromis-friedrichsthalii.html"
+        accessed: "2026-10-13"
+      value: 3
+      note: "Excluded from species-specific support because this account retains the northern or mixed pre-2018\
+        \ species concept. feeds primarily upon other live fishes"
+    - source:
+        kind: "literature"
+        title: "Feigning death in the Central American cichlid Parachromis friedrichsthalii. Journal of Fish Biology\
+          \ (2005) (abstract)"
+        url: "https://doi.org/10.1111/j.0022-1112.2005.00648.x"
+        accessed: "2026-10-13"
+      value: 3
+      note: "ambush hunting by feigning death; abstract only"
+    - source:
+        kind: "website"
+        title: "TropicalFreshwaterFish.com: Friedrichsthali (Cichlasoma friedrichsthalii)"
+        url: "https://tropicalfreshwaterfish.com/species/Cichlasoma_friedrichsthalii.html"
+        accessed: "2026-10-13"
+      value: 3
+      note: "Excluded from species-specific support because this account retains the northern or mixed pre-2018\
+        \ species concept. recommends live fish; tankmates only large and aggressive fish"
+    - source:
+        kind: "database"
+        title: "FishBase: ecology of Parachromis loisellei, after Conkel (1993)"
+        url: "https://www.fishbase.se/Ecology/FishEcologySummary.php?StockCode=20943&GenusName=Parachromis&SpeciesName=loisellei"
+        accessed: "2026-10-13"
+      value: 1
+      note: "Wild fish consumption is occasional; no prey-size ceiling given"
+    - source:
+        kind: "database"
+        title: "Zoopet: Parachromis loisellei"
+        url: "https://www.zoopet.com/fiskar/fisk.php?NR=1441"
+        accessed: "2026-10-13"
+      value: 2
+      note: "Small fish are eaten and companions must be larger"
+    - source:
+        kind: "database"
+        title: "Fischlexikon: Parachromis loisellei"
+        url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000001375"
+        accessed: "2026-10-13"
+      value: 2
+      note: "Small tankmates are prey"
+    - source:
+        kind: "database"
+        title: "Rybicky.net species atlas, Parachromis loisellei"
+        url: "https://rybicky.net/atlasryb/kancik_loiselleuv"
+        accessed: "2026-10-13"
+      value: 2
+      note: "Rubric mapping of small tankmates being consumed."
+    - source:
+        kind: "database"
+        title: "FishProfiles.com: Parachromis loisellei"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Parachromis_loisellei/"
+        accessed: "2026-10-13"
+      value: 2
+      note: "Fish accepted as food; prey-size threshold not quantified."
+    - source:
+        kind: "literature"
+        title: "Beerlink, R. Parachromis friedrichsthalii (Heckel, 1840). Nederlandse Vereniging van Cichlidenliefhebbers\
+          \ species article"
+        url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/parachromis-friedrichsthalii-heckel-1840"
+        accessed: "2026-10-13"
+      value: 2
+      note: "Small characins and livebearers are expected to become prey."
+    - source:
+        kind: "database"
+        title: "FishBase species summary: Parachromis loisellei, species 26778"
+        url: "https://www.fishbase.se/summary/26778"
+        accessed: "2026-10-13"
+      value: 2
+      note: "Insects dominate the account and small fish are secondary; level 2 combines this with explicit aquarium\
+        \ predation reports."
+    verification:
+      method: "qualified-majority"
+      votes:
+        agree: 5
+        total: 6
+  diet:
+    value:
+      type: "invertivore"
+      bloatSensitive: false
+      foods:
+      - "Complete carnivorous-cichlid pellets"
+      - "Aquatic insect larvae"
+      - "Earthworms in suitable pieces"
+      - "Mysis and shrimp"
+      - "Occasional fish-based frozen food"
+    confidence: "medium"
+    rationale: "Qualified-majority decision for invertivore and bloatSensitive false, from generator, checker-b,\
+      \ checker-c and both tiebreakers; checker-a proposed piscivore with the same false flag. FishBase under loisellei,\
+      \ the Nordic register, Fischlexikon and the indexed Werner passage emphasize insect prey, and CRC verifies\
+      \ that interpretation. Beerlink emphasizes small vertebrates, FishFish calls the fish piscivorous, and Rybicky\
+      \ uses omnivore for a broad captive menu; these conflicting accounts lack a quantitative stomach series that\
+      \ overrides the insect-focused evidence. The old northern FishBase account is excluded. Animal-based prepared\
+      \ food and varied invertebrates fit the decided food list, which is retained exactly from tally. The false\
+      \ bloat flag is a husbandry inference, not an experimental demonstration of disease immunity."
+    sources:
+    - kind: "database"
+      title: "FishBase species summary: Parachromis loisellei, the southern taxon now called P. friedrichsthalii"
+      url: "https://www.fishbase.se/summary/Parachromis-loisellei.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Nordiska Ciklidsallskapet species register: Parachromis friedrichsthalii, former Cichlasoma loisellei"
+      url: "https://ciklid.org/artregister/art.php?ID=196"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishProfiles.com: Parachromis loisellei"
+      url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Parachromis_loisellei/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Cichlid Room Companion: Parachromis friedrichsthalii. Public summary used only for verification."
+      url: "https://cichlidae.com/species.php?id=8Dfo6JR1i79Ij6rJ-ESyYg"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishBase: ecology of Parachromis loisellei, after Conkel (1993)"
+      url: "https://www.fishbase.se/Ecology/FishEcologySummary.php?StockCode=20943&GenusName=Parachromis&SpeciesName=loisellei"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Fischlexikon: Parachromis loisellei"
+      url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000001375"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishFish, Parachromis loisellei care and breeding account"
+      url: "https://www.fishfish.fr/poisson/parachromis-loisellei"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Rybicky.net species atlas, Parachromis loisellei"
+      url: "https://rybicky.net/atlasryb/kancik_loiselleuv"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "Trimar Aquaria structured care sheet, Loiselles cichlid"
+      url: "https://www.trimaraquaria.co.uk/product-page/lousielle-cichlid-small"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishBase species summary: Parachromis loisellei, species 26778"
+      url: "https://www.fishbase.se/summary/26778"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Beerlink, R. Parachromis friedrichsthalii (Heckel, 1840). Nederlandse Vereniging van Cichlidenliefhebbers\
+        \ species article"
+      url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/parachromis-friedrichsthalii-heckel-1840"
+      accessed: "2026-10-13"
+    - kind: "catalog-of-fishes"
+      title: "Eschmeyer's Catalog of Fishes: Parachromis species, online update 21 September 2026"
+      url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Parachromis"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Werner, U. (2017). Ein behaebiger Buntbarsch aus Mittelamerika: Parachromis loisellei, der Gelbe Guapote.\
+        \ DCG-Informationen 48(1), 8-13. Indexed husbandry and feeding passages only."
+      url: "https://dcg-encyclopedia.de/wp-content/uploads/2016/12/2017-01-S-8-13.pdf"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Zoopet: Parachromis loisellei"
+      url: "https://www.zoopet.com/fiskar/fisk.php?NR=1441"
+      accessed: "2026-10-13"
+    - kind: "model-knowledge"
+      title: "Generator husbandry inference. No independent species-specific measurement or long-term trial."
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishBase: Parachromis friedrichsthalii (Yellowjacket cichlid)"
+      url: "https://www.fishbase.se/summary/Parachromis-friedrichsthalii.html"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Feigning death in the Central American cichlid Parachromis friedrichsthalii. Journal of Fish Biology\
+        \ (2005) (abstract)"
+      url: "https://doi.org/10.1111/j.0022-1112.2005.00648.x"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "TropicalFreshwaterFish.com: Friedrichsthali (Cichlasoma friedrichsthalii)"
+      url: "https://tropicalfreshwaterfish.com/species/Cichlasoma_friedrichsthalii.html"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "database"
+        title: "FishBase species summary: Parachromis loisellei, the southern taxon now called P. friedrichsthalii"
+        url: "https://www.fishbase.se/summary/Parachromis-loisellei.html"
+        accessed: "2026-10-13"
+      value:
+        type: "invertivore"
+        bloatSensitive: false
+      note: "Insects dominate; bloat flag is inferred, not tested."
+    - source:
+        kind: "database"
+        title: "Nordiska Ciklidsallskapet species register: Parachromis friedrichsthalii, former Cichlasoma loisellei"
+        url: "https://ciklid.org/artregister/art.php?ID=196"
+        accessed: "2026-10-13"
+      value:
+        type: "invertivore"
+        bloatSensitive: false
+      note: "Insects and small fish; worms and mysis in captivity"
+    - source:
+        kind: "model-knowledge"
+        title: "Generator husbandry inference. No independent species-specific measurement or long-term trial."
+        accessed: "2026-10-13"
+      value:
+        bloatSensitive: false
+      note: "No demonstrated species-specific protein-related bloat sensitivity found."
+    - source:
+        kind: "database"
+        title: "FishBase: Parachromis friedrichsthalii (Yellowjacket cichlid)"
+        url: "https://www.fishbase.se/summary/Parachromis-friedrichsthalii.html"
+        accessed: "2026-10-13"
+      value: "piscivore"
+      note: "Excluded from species-specific support because this account retains the northern or mixed pre-2018\
+        \ species concept. feeds primarily upon other live fishes"
+    - source:
+        kind: "literature"
+        title: "Feigning death in the Central American cichlid Parachromis friedrichsthalii. Journal of Fish Biology\
+          \ (2005) (abstract)"
+        url: "https://doi.org/10.1111/j.0022-1112.2005.00648.x"
+        accessed: "2026-10-13"
+      value: "piscivore"
+      note: "predatory hunting strategy; abstract only"
+    - source:
+        kind: "website"
+        title: "TropicalFreshwaterFish.com: Friedrichsthali (Cichlasoma friedrichsthalii)"
+        url: "https://tropicalfreshwaterfish.com/species/Cichlasoma_friedrichsthalii.html"
+        accessed: "2026-10-13"
+      value: "carnivore, live fish and invertebrates plus pellets"
+      note: "Excluded from species-specific support because this account retains the northern or mixed pre-2018\
+        \ species concept. "
+    - source:
+        kind: "database"
+        title: "FishBase: ecology of Parachromis loisellei, after Conkel (1993)"
+        url: "https://www.fishbase.se/Ecology/FishEcologySummary.php?StockCode=20943&GenusName=Parachromis&SpeciesName=loisellei"
+        accessed: "2026-10-13"
+      value:
+        type: "invertivore"
+        bloatSensitive: false
+      note: "Insect-dominated feeding; false bloat flag inferred from animal-feeding ecology"
+    - source:
+        kind: "database"
+        title: "Cichlid Room Companion: Parachromis friedrichsthalii. Public summary used only for verification."
+        url: "https://cichlidae.com/species.php?id=8Dfo6JR1i79Ij6rJ-ESyYg"
+        accessed: "2026-10-13"
+      value:
+        type: "invertivore"
+        bloatSensitive: false
+      note: "Verification of feeding type only; no bloat evidence."
+    - source:
+        kind: "database"
+        title: "FishFish, Parachromis loisellei care and breeding account"
+        url: "https://www.fishfish.fr/poisson/parachromis-loisellei"
+        accessed: "2026-10-13"
+      value:
+        type: "piscivore"
+        bloatSensitive: false
+      note: "Conflicting hobby classification; no bloat test."
+    - source:
+        kind: "database"
+        title: "Rybicky.net species atlas, Parachromis loisellei"
+        url: "https://rybicky.net/atlasryb/kancik_loiselleuv"
+        accessed: "2026-10-13"
+      value:
+        type: "omnivore"
+        bloatSensitive: false
+      note: "Broad captive food list; no bloat test."
+    - source:
+        kind: "database"
+        title: "FishBase species summary: Parachromis loisellei, species 26778"
+        url: "https://www.fishbase.se/summary/26778"
+        accessed: "2026-10-13"
+      value:
+        type: "invertivore"
+        bloatSensitive: false
+      note: "Insect-dominated natural food account; the false flag is inferred from animal feeding, not explicitly\
+        \ measured."
+    - source:
+        kind: "literature"
+        title: "Beerlink, R. Parachromis friedrichsthalii (Heckel, 1840). Nederlandse Vereniging van Cichlidenliefhebbers\
+          \ species article"
+        url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/parachromis-friedrichsthalii-heckel-1840"
+        accessed: "2026-10-13"
+      value:
+        type: "piscivore"
+        bloatSensitive: false
+      note: "Conflicting emphasis on small vertebrates; animal feeding advice supports the false flag only indirectly."
+    - source:
+        kind: "database"
+        title: "Fischlexikon: Parachromis loisellei"
+        url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000001375"
+        accessed: "2026-10-13"
+      value:
+        type: "invertivore"
+        bloatSensitive: false
+      note: "Principal wild food is insects; no species-specific high-protein bloat susceptibility is stated."
+    - source:
+        kind: "literature"
+        title: "Werner, U. (2017). Ein behaebiger Buntbarsch aus Mittelamerika: Parachromis loisellei, der Gelbe\
+          \ Guapote. DCG-Informationen 48(1), 8-13. Indexed husbandry and feeding passages only."
+        url: "https://dcg-encyclopedia.de/wp-content/uploads/2016/12/2017-01-S-8-13.pdf"
+        accessed: "2026-10-13"
+      value:
+        type: "invertivore"
+        bloatSensitive: false
+      note: "Indexed passage describes insects, larvae and small fish plus sustained animal-based aquarium feeding;\
+        \ bloat flag inferred."
+    verification:
+      method: "qualified-majority"
+      votes:
+        agree: 5
+        total: 6
+  aggressionConspecific:
+    value: 3
+    confidence: "medium"
+    rationale: "Generator proposed 4; checker-a, checker-b and checker-c proposed 3. FishProfiles describes male\
+      \ pursuit requiring female retreats, while Rybicky removes surplus adults after pairing and Zoopet requires\
+      \ more room for additional males. These establish persistent chasing and injury risk under the rubric. The\
+      \ generator used a mixed-taxonomy AquaInfo account for fatal adult-group fighting; it does not establish routine\
+      \ killing or permanent injury within a compatible pair in adequate housing. Retain level 3 and provide separation\
+      \ capacity because pair acceptance can fail."
+    sources:
+    - kind: "database"
+      title: "FishProfiles.com: Parachromis loisellei"
+      url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Parachromis_loisellei/"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "AquaInfo: Parachromis friedrichsthalii. Husbandry statements used with taxonomic caution."
+      url: "https://aquainfo.nl/en/article/parachromis-friedrichsthalii/"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "TropicalFreshwaterFish.com: Friedrichsthali (Cichlasoma friedrichsthalii)"
+      url: "https://tropicalfreshwaterfish.com/species/Cichlasoma_friedrichsthalii.html"
+      accessed: "2026-10-13"
+    - kind: "archive"
+      title: "cichlids.com forum thread 30356"
+      url: "https://www.cichlids.com/disc/read.php?1,30356"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Zoopet: Parachromis loisellei"
+      url: "https://www.zoopet.com/fiskar/fisk.php?NR=1441"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Nordiska Ciklidsallskapet species register: Parachromis friedrichsthalii, former Cichlasoma loisellei"
+      url: "https://ciklid.org/artregister/art.php?ID=196"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Rybicky.net species atlas, Parachromis loisellei"
+      url: "https://rybicky.net/atlasryb/kancik_loiselleuv"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "database"
+        title: "FishProfiles.com: Parachromis loisellei"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Parachromis_loisellei/"
+        accessed: "2026-10-13"
+      value: 3
+      note: "Rubric mapping of male aggression and female refuge requirement."
+    - source:
+        kind: "website"
+        title: "AquaInfo: Parachromis friedrichsthalii. Husbandry statements used with taxonomic caution."
+        url: "https://aquainfo.nl/en/article/parachromis-friedrichsthalii/"
+        accessed: "2026-10-13"
+      value: 4
+      note: "Mixed northern and southern taxonomy reduces applicability; this page does not independently establish\
+        \ the assigned severity for the southern species."
+    - source:
+        kind: "website"
+        title: "TropicalFreshwaterFish.com: Friedrichsthali (Cichlasoma friedrichsthalii)"
+        url: "https://tropicalfreshwaterfish.com/species/Cichlasoma_friedrichsthalii.html"
+        accessed: "2026-10-13"
+      value: 3
+      note: "Excluded from species-specific support because this account retains the northern or mixed pre-2018\
+        \ species concept. highly aggressive, intolerant"
+    - source:
+        kind: "archive"
+        title: "cichlids.com forum thread 30356"
+        url: "https://www.cichlids.com/disc/read.php?1,30356"
+        accessed: "2026-10-13"
+      value: 3
+      note: "very territorial, less aggressive than jaguar cichlid or dovii"
+    - source:
+        kind: "database"
+        title: "Zoopet: Parachromis loisellei"
+        url: "https://www.zoopet.com/fiskar/fisk.php?NR=1441"
+        accessed: "2026-10-13"
+      value: 3
+      note: "Additional males require a substantially larger aquarium"
+    - source:
+        kind: "database"
+        title: "Rybicky.net species atlas, Parachromis loisellei"
+        url: "https://rybicky.net/atlasryb/kancik_loiselleuv"
+        accessed: "2026-10-13"
+      value: 3
+      note: "Rubric mapping of removing other adults after pair selection."
+  aggressionHeterospecific:
+    value: 3
+    confidence: "medium"
+    rationale: "All four profiles propose level 3. Zoopet, Rybicky and the Nordic register permit only robust larger\
+      \ companions, consistent with attacks requiring comparable strength. FishProfiles reports lethal breeding-pair\
+      \ attacks; this contextual severity remains explicit rather than being presented as routine level 4 for every\
+      \ adequately housed pair. Mixed-tank outcomes can change abruptly."
+    sources:
+    - kind: "database"
+      title: "Nordiska Ciklidsallskapet species register: Parachromis friedrichsthalii, former Cichlasoma loisellei"
+      url: "https://ciklid.org/artregister/art.php?ID=196"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishProfiles.com: Parachromis loisellei"
+      url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Parachromis_loisellei/"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "Nederlandse Vereniging van Cichlidenliefhebbers: mixed Central American aquarium containing Parachromis\
+        \ loisellei"
+      url: "https://www.nvcweb.nl/aquaria/midden-amerika/aquarium-van-tom-mulders-1"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "TropicalFreshwaterFish.com: Friedrichsthali (Cichlasoma friedrichsthalii)"
+      url: "https://tropicalfreshwaterfish.com/species/Cichlasoma_friedrichsthalii.html"
+      accessed: "2026-10-13"
+    - kind: "archive"
+      title: "cichlids.com forum thread 56688"
+      url: "https://www.cichlids.com/disc/read.php?1,56688"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Zoopet: Parachromis loisellei"
+      url: "https://www.zoopet.com/fiskar/fisk.php?NR=1441"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Fischlexikon: Parachromis loisellei"
+      url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000001375"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Rybicky.net species atlas, Parachromis loisellei"
+      url: "https://rybicky.net/atlasryb/kancik_loiselleuv"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "database"
+        title: "Nordiska Ciklidsallskapet species register: Parachromis friedrichsthalii, former Cichlasoma loisellei"
+        url: "https://ciklid.org/artregister/art.php?ID=196"
+        accessed: "2026-10-13"
+      value: 3
+      note: "Other Central American cichlids of similar temperament can be housed together"
+    - source:
+        kind: "database"
+        title: "FishProfiles.com: Parachromis loisellei"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Parachromis_loisellei/"
+        accessed: "2026-10-13"
+      value: 4
+      note: "Breeding-pair attacks can kill tankmates; context-specific upper severity."
+    - source:
+        kind: "website"
+        title: "TropicalFreshwaterFish.com: Friedrichsthali (Cichlasoma friedrichsthalii)"
+        url: "https://tropicalfreshwaterfish.com/species/Cichlasoma_friedrichsthalii.html"
+        accessed: "2026-10-13"
+      value: 3
+      note: "Excluded from species-specific support because this account retains the northern or mixed pre-2018\
+        \ species concept. only with large, aggressive fish"
+    - source:
+        kind: "archive"
+        title: "cichlids.com forum thread 56688"
+        url: "https://www.cichlids.com/disc/read.php?1,56688"
+        accessed: "2026-10-13"
+      value: 2
+      note: "young fish harassed by others while still small"
+    - source:
+        kind: "database"
+        title: "Zoopet: Parachromis loisellei"
+        url: "https://www.zoopet.com/fiskar/fisk.php?NR=1441"
+        accessed: "2026-10-13"
+      value: 3
+      note: "Rubric mapping of highly territorial fish with large companions."
+    - source:
+        kind: "database"
+        title: "Rybicky.net species atlas, Parachromis loisellei"
+        url: "https://rybicky.net/atlasryb/kancik_loiselleuv"
+        accessed: "2026-10-13"
+      value: 3
+      note: "Rubric mapping of strong aggression and similarly large tankmates."
+  territory:
+    value:
+      size: "large"
+      breedingOnly: false
+    confidence: "medium"
+    rationale: "All four profiles propose large territory with breedingOnly false. Adult rival restrictions and\
+      \ repeated territorial behavior in Zoopet and Rybicky support a substantial defended area outside spawning.\
+      \ No defended radius was measured; size is an aquarium-rubric inference. Brood defense strengthens the baseline\
+      \ behavior."
+    sources:
+    - kind: "database"
+      title: "FishProfiles.com: Parachromis loisellei"
+      url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Parachromis_loisellei/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Nordiska Ciklidsallskapet species register: Parachromis friedrichsthalii, former Cichlasoma loisellei"
+      url: "https://ciklid.org/artregister/art.php?ID=196"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Einrichtungsbeispiele species care sheet: Parachromis loisellei"
+      url: "https://www.einrichtungsbeispiele.de/zierfische/mittelamerika/parachromis-loisellei-slnk.html"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "TropicalFreshwaterFish.com: Friedrichsthali (Cichlasoma friedrichsthalii)"
+      url: "https://tropicalfreshwaterfish.com/species/Cichlasoma_friedrichsthalii.html"
+      accessed: "2026-10-13"
+    - kind: "archive"
+      title: "cichlids.com forum thread 30356"
+      url: "https://www.cichlids.com/disc/read.php?1,30356"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Zoopet: Parachromis loisellei"
+      url: "https://www.zoopet.com/fiskar/fisk.php?NR=1441"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Rybicky.net species atlas, Parachromis loisellei"
+      url: "https://rybicky.net/atlasryb/kancik_loiselleuv"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "website"
+        title: "TropicalFreshwaterFish.com: Friedrichsthali (Cichlasoma friedrichsthalii)"
+        url: "https://tropicalfreshwaterfish.com/species/Cichlasoma_friedrichsthalii.html"
+        accessed: "2026-10-13"
+      value: "large"
+      note: "Excluded from species-specific support because this account retains the northern or mixed pre-2018\
+        \ species concept. burrows, very pugnacious"
+    - source:
+        kind: "archive"
+        title: "cichlids.com forum thread 30356"
+        url: "https://www.cichlids.com/disc/read.php?1,30356"
+        accessed: "2026-10-13"
+      value: "large"
+      note: "very territorial"
+    - source:
+        kind: "database"
+        title: "Zoopet: Parachromis loisellei"
+        url: "https://www.zoopet.com/fiskar/fisk.php?NR=1441"
+        accessed: "2026-10-13"
+      value:
+        size: "large"
+        breedingOnly: false
+      note: "Rubric mapping of strongly territorial behavior, heightened during spawning."
+  habitatZones:
+    value:
+    - "sand"
+    - "plants"
+    - "wood"
+    - "rock"
+    confidence: "medium"
+    rationale: "Generator, checker-b and checker-c propose sand, plants, wood and rock; checker-a omits plants and\
+      \ proposes rock, sand and wood. FishBase identifies soft bottoms and dense vegetation, so plants must remain\
+      \ in the habitat set. Nordic and Zoopet care accounts support wood and stones as retreats and spawning surfaces.\
+      \ Sand maps the soft-bottom habitat to the aquarium rubric; rock is functional structure rather than a claim\
+      \ of obligatory rocky habitat."
+    sources:
+    - kind: "database"
+      title: "FishBase species summary: Parachromis loisellei, the southern taxon now called P. friedrichsthalii"
+      url: "https://www.fishbase.se/summary/Parachromis-loisellei.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Einrichtungsbeispiele species care sheet: Parachromis loisellei"
+      url: "https://www.einrichtungsbeispiele.de/zierfische/mittelamerika/parachromis-loisellei-slnk.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Nordiska Ciklidsallskapet species register: Parachromis friedrichsthalii, former Cichlasoma loisellei"
+      url: "https://ciklid.org/artregister/art.php?ID=196"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Angulo et al. (2017). Fishes from the Tirimbina Biological Reserve, La Virgen de Sarapiqui, Heredia,\
+        \ Costa Rica."
+      url: "https://doi.org/10.15560/13.5.683"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishBase: Parachromis friedrichsthalii (Yellowjacket cichlid)"
+      url: "https://www.fishbase.se/summary/Parachromis-friedrichsthalii.html"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "TropicalFreshwaterFish.com: Friedrichsthali (Cichlasoma friedrichsthalii)"
+      url: "https://tropicalfreshwaterfish.com/species/Cichlasoma_friedrichsthalii.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Zoopet: Parachromis loisellei"
+      url: "https://www.zoopet.com/fiskar/fisk.php?NR=1441"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "database"
+        title: "FishBase: Parachromis friedrichsthalii (Yellowjacket cichlid)"
+        url: "https://www.fishbase.se/summary/Parachromis-friedrichsthalii.html"
+        accessed: "2026-10-13"
+      value:
+      - "sand"
+      - "plants"
+      note: "Excluded from species-specific support because this account retains the northern or mixed pre-2018\
+        \ species concept. slow moving waters of rivers and lakes, benthopelagic"
+    - source:
+        kind: "website"
+        title: "TropicalFreshwaterFish.com: Friedrichsthali (Cichlasoma friedrichsthalii)"
+        url: "https://tropicalfreshwaterfish.com/species/Cichlasoma_friedrichsthalii.html"
+        accessed: "2026-10-13"
+      value:
+      - "rock"
+      - "wood"
+      - "sand"
+      note: "Excluded from species-specific support because this account retains the northern or mixed pre-2018\
+        \ species concept. roots, caves and rocks as hiding places; burrows"
+    - source:
+        kind: "database"
+        title: "FishBase species summary: Parachromis loisellei, the southern taxon now called P. friedrichsthalii"
+        url: "https://www.fishbase.se/summary/Parachromis-loisellei.html"
+        accessed: "2026-10-13"
+      value:
+      - "sand"
+      - "plants"
+      note: "Soft substrates and vegetated water; sand is the aquarium-zone interpretation."
+    - source:
+        kind: "database"
+        title: "Nordiska Ciklidsallskapet species register: Parachromis friedrichsthalii, former Cichlasoma loisellei"
+        url: "https://ciklid.org/artregister/art.php?ID=196"
+        accessed: "2026-10-13"
+      value:
+      - "wood"
+      - "rock"
+      note: "Roots and stones in aquarium accommodation"
+    - source:
+        kind: "database"
+        title: "Zoopet: Parachromis loisellei"
+        url: "https://www.zoopet.com/fiskar/fisk.php?NR=1441"
+        accessed: "2026-10-13"
+      value:
+      - "rock"
+      - "wood"
+      - "plants"
+      note: "Shelter, spawning surfaces and robust plants in the care account."
+  social:
+    value:
+      structure: "pair"
+    confidence: "high"
+    rationale: "All four profiles propose an adult pair. FishProfiles, Zoopet, Rybicky and FishFish independently\
+      \ describe partner selection and shared brood defense; CRC verifies monogamy. Juvenile groups are a means\
+      \ of forming compatible pairs rather than a stable adult group recommendation. Beerlink distinguishes temporary\
+      \ wild breeding bonds from potentially persistent captive pairs."
+    sources:
+    - kind: "database"
+      title: "Nordiska Ciklidsallskapet species register: Parachromis friedrichsthalii, former Cichlasoma loisellei"
+      url: "https://ciklid.org/artregister/art.php?ID=196"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishProfiles.com: Parachromis loisellei"
+      url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Parachromis_loisellei/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Einrichtungsbeispiele species care sheet: Parachromis loisellei"
+      url: "https://www.einrichtungsbeispiele.de/zierfische/mittelamerika/parachromis-loisellei-slnk.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Cichlid Room Companion: Parachromis friedrichsthalii. Public summary used only for verification."
+      url: "https://cichlidae.com/species.php?id=8Dfo6JR1i79Ij6rJ-ESyYg"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "TropicalFreshwaterFish.com: Friedrichsthali (Cichlasoma friedrichsthalii)"
+      url: "https://tropicalfreshwaterfish.com/species/Cichlasoma_friedrichsthalii.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishBase: Parachromis friedrichsthalii (Yellowjacket cichlid)"
+      url: "https://www.fishbase.se/summary/Parachromis-friedrichsthalii.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Zoopet: Parachromis loisellei"
+      url: "https://www.zoopet.com/fiskar/fisk.php?NR=1441"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Rybicky.net species atlas, Parachromis loisellei"
+      url: "https://rybicky.net/atlasryb/kancik_loiselleuv"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishFish, Parachromis loisellei care and breeding account"
+      url: "https://www.fishfish.fr/poisson/parachromis-loisellei"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "database"
+        title: "Nordiska Ciklidsallskapet species register: Parachromis friedrichsthalii, former Cichlasoma loisellei"
+        url: "https://ciklid.org/artregister/art.php?ID=196"
+        accessed: "2026-10-13"
+      value:
+        structure: "pair"
+    - source:
+        kind: "database"
+        title: "FishProfiles.com: Parachromis loisellei"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Parachromis_loisellei/"
+        accessed: "2026-10-13"
+      value:
+        structure: "pair"
+    - source:
+        kind: "website"
+        title: "TropicalFreshwaterFish.com: Friedrichsthali (Cichlasoma friedrichsthalii)"
+        url: "https://tropicalfreshwaterfish.com/species/Cichlasoma_friedrichsthalii.html"
+        accessed: "2026-10-13"
+      value: "pair"
+      note: "Excluded from species-specific support because this account retains the northern or mixed pre-2018\
+        \ species concept. pairs are excellent parents"
+    - source:
+        kind: "database"
+        title: "Zoopet: Parachromis loisellei"
+        url: "https://www.zoopet.com/fiskar/fisk.php?NR=1441"
+        accessed: "2026-10-13"
+      value:
+        structure: "pair"
+      note: "Pair-forming substrate breeder."
+    - source:
+        kind: "database"
+        title: "Cichlid Room Companion: Parachromis friedrichsthalii. Public summary used only for verification."
+        url: "https://cichlidae.com/species.php?id=8Dfo6JR1i79Ij6rJ-ESyYg"
+        accessed: "2026-10-13"
+      value:
+        structure: "pair"
+      note: "Verification only"
+    - source:
+        kind: "database"
+        title: "Rybicky.net species atlas, Parachromis loisellei"
+        url: "https://rybicky.net/atlasryb/kancik_loiselleuv"
+        accessed: "2026-10-13"
+      value:
+        structure: "pair"
+      note: "Retain one adult pair after selecting mates."
+    - source:
+        kind: "database"
+        title: "FishFish, Parachromis loisellei care and breeding account"
+        url: "https://www.fishfish.fr/poisson/parachromis-loisellei"
+        accessed: "2026-10-13"
+      value:
+        structure: "pair"
+      note: "Persistent breeding partnership."
+  speciesOnly:
+    value: false
+    confidence: "medium"
+    rationale: "All four full-profile votes propose false, as decided unanimously by tally with medium confidence.\
+      \ The Nordic register, Zoopet and Rybicky allow robust larger companions; a specialist NVC aquarium record\
+      \ documents mixed keeping. This permission requires much more room than the adult-pair minimum and does not\
+      \ make small or peaceful fish safe. FishProfiles reports potentially lethal attacks by spawning pairs. The\
+      \ old northern or mixed accounts listed by the tally are context rather than the origin of this decision."
+    sources:
+    - kind: "database"
+      title: "Nordiska Ciklidsallskapet species register: Parachromis friedrichsthalii, former Cichlasoma loisellei"
+      url: "https://ciklid.org/artregister/art.php?ID=196"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "AquaInfo: Parachromis friedrichsthalii. Husbandry statements used with taxonomic caution."
+      url: "https://aquainfo.nl/en/article/parachromis-friedrichsthalii/"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "TropicalFreshwaterFish.com: Friedrichsthali (Cichlasoma friedrichsthalii)"
+      url: "https://tropicalfreshwaterfish.com/species/Cichlasoma_friedrichsthalii.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishBase: Parachromis friedrichsthalii (Yellowjacket cichlid)"
+      url: "https://www.fishbase.se/summary/Parachromis-friedrichsthalii.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Zoopet: Parachromis loisellei"
+      url: "https://www.zoopet.com/fiskar/fisk.php?NR=1441"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Fischlexikon: Parachromis loisellei"
+      url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000001375"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Rybicky.net species atlas, Parachromis loisellei"
+      url: "https://rybicky.net/atlasryb/kancik_loiselleuv"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "Nederlandse Vereniging van Cichlidenliefhebbers: mixed Central American aquarium containing Parachromis\
+        \ loisellei"
+      url: "https://www.nvcweb.nl/aquaria/midden-amerika/aquarium-van-tom-mulders-1"
+      accessed: "2026-10-13"
+    - kind: "archive"
+      title: "cichlids.com forum thread 57310"
+      url: "https://www.cichlids.com/disc/read.php?1,57310"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "database"
+        title: "Nordiska Ciklidsallskapet species register: Parachromis friedrichsthalii, former Cichlasoma loisellei"
+        url: "https://ciklid.org/artregister/art.php?ID=196"
+        accessed: "2026-10-13"
+      value: false
+      note: "Similarly assertive Central American cichlids are allowed."
+    - source:
+        kind: "website"
+        title: "AquaInfo: Parachromis friedrichsthalii. Husbandry statements used with taxonomic caution."
+        url: "https://aquainfo.nl/en/article/parachromis-friedrichsthalii/"
+        accessed: "2026-10-13"
+      value: false
+      note: "Mixed northern and southern taxonomy reduces applicability; this page does not independently establish\
+        \ the assigned severity for the southern species."
+    - source:
+        kind: "website"
+        title: "Nederlandse Vereniging van Cichlidenliefhebbers: mixed Central American aquarium containing Parachromis\
+          \ loisellei"
+        url: "https://www.nvcweb.nl/aquaria/midden-amerika/aquarium-van-tom-mulders-1"
+        accessed: "2026-10-13"
+      value: false
+      note: "Mixed aquarium experience, without a controlled comparison."
+    - source:
+        kind: "archive"
+        title: "cichlids.com forum thread 57310"
+        url: "https://www.cichlids.com/disc/read.php?1,57310"
+        accessed: "2026-10-13"
+      value: false
+      note: "A loisellei was rehomed after aggression from another cichlid; mixed keeping can also fail."
+    - source:
+        kind: "website"
+        title: "TropicalFreshwaterFish.com: Friedrichsthali (Cichlasoma friedrichsthalii)"
+        url: "https://tropicalfreshwaterfish.com/species/Cichlasoma_friedrichsthalii.html"
+        accessed: "2026-10-13"
+      value: false
+      note: "Excluded from species-specific support because this account retains the northern or mixed pre-2018\
+        \ species concept. combine with large aggressive fish"
+    - source:
+        kind: "database"
+        title: "Zoopet: Parachromis loisellei"
+        url: "https://www.zoopet.com/fiskar/fisk.php?NR=1441"
+        accessed: "2026-10-13"
+      value: false
+      note: "Other larger fish permitted"
+    - source:
+        kind: "database"
+        title: "Fischlexikon: Parachromis loisellei"
+        url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000001375"
+        accessed: "2026-10-13"
+      value: false
+      note: "Central American cichlids permitted"
+    - source:
+        kind: "database"
+        title: "Rybicky.net species atlas, Parachromis loisellei"
+        url: "https://rybicky.net/atlasryb/kancik_loiselleuv"
+        accessed: "2026-10-13"
+      value: false
+      note: "Allows similar large robust fish."
+    verification:
+      method: "unanimous"
+      votes:
+        agree: 4
+        total: 4
+  hybridGroups:
+    value:
+    - "parachromis-dovii-friedrichsthalii"
+    confidence: "low"
+    rationale: "All four full-profile votes name only parachromis-dovii-friedrichsthalii, retained unanimously with\
+      \ low confidence. The existing curated pair already includes Parachromis friedrichsthalii and has basis presumed.\
+      \ Binns labels captive offspring as dovii crossed with loisellei, while the Catalog of Fishes and Morgenstern\
+      \ map that parental name to friedrichsthalii. The taxonomic sources establish identity, not crossing; the\
+      \ curated table is not independent biological confirmation. The single hobby gallery has neither verified\
+      \ pedigree nor demonstrated access to conspecific partners, and two independent literature or database reports\
+      \ of the cross were not found. No wider genus group or transitive crossing relationship is inferred."
+    sources:
+    - kind: "database"
+      title: "cichlids.com curated hybrid-group database: data/species/hybrid-groups.yaml, parachromis-dovii-friedrichsthalii"
+      accessed: "2026-10-13"
+    - kind: "catalog-of-fishes"
+      title: "Eschmeyer's Catalog of Fishes: Parachromis species, online update 21 September 2026"
+      url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Parachromis"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Morgenstern, R. (2018). Fishes collected by Emanuel Ritter von Friedrichsthal in Central America between\
+        \ 1838-1841. Vertebrate Zoology 68(3) (abstract)"
+      url: "https://doi.org/10.3897/vz.68.e31614"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "cichlids.com curated data/species/hybrid-groups.yaml, parachromis-dovii-friedrichsthalii"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "Binns Hybrid Encyclopedia: Dovii cross gallery, unverified aquarium labels"
+      url: "https://www.binnspedia.com/parachromis/dovii-parachromis-dovii"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "database"
+        title: "cichlids.com curated hybrid-group database: data/species/hybrid-groups.yaml, parachromis-dovii-friedrichsthalii"
+        accessed: "2026-10-13"
+      value:
+      - "parachromis-dovii-friedrichsthalii"
+      note: "Curated membership and presumed basis, not independent parentage evidence."
+    - source:
+        kind: "catalog-of-fishes"
+        title: "Eschmeyer's Catalog of Fishes: Parachromis species, online update 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Parachromis"
+        accessed: "2026-10-13"
+      value: "loisellei is a synonym of Parachromis friedrichsthalii"
+      note: "confirms the name mapping only"
+    - source:
+        kind: "literature"
+        title: "Morgenstern, R. (2018). Fishes collected by Emanuel Ritter von Friedrichsthal in Central America\
+          \ between 1838-1841. Vertebrate Zoology 68(3) (abstract)"
+        url: "https://doi.org/10.3897/vz.68.e31614"
+        accessed: "2026-10-13"
+      value:
+      - "parachromis-dovii-friedrichsthalii"
+      note: "Abstract confirms the synonym mapping only; no cross reported."
+    - source:
+        kind: "website"
+        title: "Binns Hybrid Encyclopedia: Dovii cross gallery, unverified aquarium labels"
+        url: "https://www.binnspedia.com/parachromis/dovii-parachromis-dovii"
+        accessed: "2026-10-13"
+      value:
+      - "parachromis-dovii-friedrichsthalii"
+      note: "Direct gallery labels for the named pair; unverified hobby evidence."
+    - source:
+        kind: "database"
+        title: "cichlids.com curated data/species/hybrid-groups.yaml, parachromis-dovii-friedrichsthalii"
+        accessed: "2026-10-13"
+      value:
+      - "parachromis-dovii-friedrichsthalii"
+      note: "Curated membership with presumed basis."
+    verification:
+      method: "unanimous"
+      votes:
+        agree: 4
+        total: 4
+  coloration:
+    value:
+      baseColors:
+      - "yellow"
+      - "green"
+      - "black"
+      pattern: "mixed"
+    confidence: "medium"
+    rationale: "Generator proposes yellow, brown and black with mixed pattern; checker-a yellow and black with stripes;\
+      \ checker-b and checker-c yellow, green and black with mixed pattern. The Nordic adult-male account identifies\
+      \ an olive background, FishProfiles includes a blue-green upper-body component, and Beerlink describes fine\
+      \ male reticulation as well as larger lateral markings. Retain yellow, green and black with mixed pattern.\
+      \ Brown remains a reported variation in Angulo but is not included among the dominant male colors. A lateral\
+      \ band alone does not describe the finer male pattern, and prominent northern-species vertical bars are excluded."
+    sources:
+    - kind: "literature"
+      title: "Angulo et al. (2017). Fishes from the Tirimbina Biological Reserve, La Virgen de Sarapiqui, Heredia,\
+        \ Costa Rica."
+      url: "https://doi.org/10.15560/13.5.683"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Nordiska Ciklidsallskapet species register: Parachromis friedrichsthalii, former Cichlasoma loisellei"
+      url: "https://ciklid.org/artregister/art.php?ID=196"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishProfiles.com: Parachromis loisellei"
+      url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Parachromis_loisellei/"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Bussing (1989). Cichlasoma loisellei, a new nandopsis group cichlid fish from Central America. Abstract\
+        \ only."
+      url: "https://doi.org/10.15517/rbt.v37i2.23568"
+      accessed: "2026-10-13"
+    - kind: "archive"
+      title: "cichlids.com forum thread 57192"
+      url: "https://www.cichlids.com/disc/read.php?1,57192"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Fischlexikon: Parachromis loisellei"
+      url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000001375"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Zoopet: Parachromis loisellei"
+      url: "https://www.zoopet.com/fiskar/fisk.php?NR=1441"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "literature"
+        title: "Angulo et al. (2017). Fishes from the Tirimbina Biological Reserve, La Virgen de Sarapiqui, Heredia,\
+          \ Costa Rica."
+        url: "https://doi.org/10.15560/13.5.683"
+        accessed: "2026-10-13"
+      value: "grey brown to yellowish brown with a dark lateral band"
+    - source:
+        kind: "literature"
+        title: "Bussing (1989). Cichlasoma loisellei, a new nandopsis group cichlid fish from Central America. Abstract\
+          \ only."
+        url: "https://doi.org/10.15517/rbt.v37i2.23568"
+        accessed: "2026-10-13"
+      value: "broad lateral stripe distinguishes loisellei from the barred form"
+      note: "abstract only"
+    - source:
+        kind: "archive"
+        title: "cichlids.com forum thread 57192"
+        url: "https://www.cichlids.com/disc/read.php?1,57192"
+        accessed: "2026-10-13"
+      value: "bright yellow male"
+      note: "forum keeper"
+    - source:
+        kind: "database"
+        title: "Nordiska Ciklidsallskapet species register: Parachromis friedrichsthalii, former Cichlasoma loisellei"
+        url: "https://ciklid.org/artregister/art.php?ID=196"
+        accessed: "2026-10-13"
+      value:
+        baseColors:
+        - "green"
+        - "yellow"
+        - "black"
+        pattern: "mixed"
+      note: "Olive male, yellow component and dark markings."
+    - source:
+        kind: "database"
+        title: "Fischlexikon: Parachromis loisellei"
+        url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000001375"
+        accessed: "2026-10-13"
+      value:
+        baseColors:
+        - "yellow"
+        - "black"
+        pattern: "mixed"
+      note: "Lateral blotches plus fine upper-body and head pattern"
+    - source:
+        kind: "database"
+        title: "FishProfiles.com: Parachromis loisellei"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Parachromis_loisellei/"
+        accessed: "2026-10-13"
+      value:
+        baseColors:
+        - "yellow"
+        - "black"
+        - "blue"
+        pattern: "mixed"
+      note: "Gold background and blue-green upper body, interpreted in the schema palette."
+  feedingSpeed:
+    value: "normal"
+    confidence: "low"
+    rationale: "Generator, checker-a and checker-b propose hasty; checker-c proposes normal. Read accounts establish\
+      \ food acceptance and predatory jaws, but none documents habitual monopolization or depletion of all available\
+      \ food, as required for hasty by the rubric. Normal is therefore a provisional neutral assignment rather than\
+      \ a measured rate. Morphology alone is insufficient to select hasty; actual feeding competition needs observation."
+    sources:
+    - kind: "database"
+      title: "FishProfiles.com: Parachromis loisellei"
+      url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Parachromis_loisellei/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Nordiska Ciklidsallskapet species register: Parachromis friedrichsthalii, former Cichlasoma loisellei"
+      url: "https://ciklid.org/artregister/art.php?ID=196"
+      accessed: "2026-10-13"
+    - kind: "model-knowledge"
+      title: "Adjudicator inference where species-specific measurements or chronic aquarium trials are absent."
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "model-knowledge"
+        title: "Adjudicator inference where species-specific measurements or chronic aquarium trials are absent."
+        accessed: "2026-10-13"
+      value: "normal"
+      note: "Unmeasured rubric inference; competitive feeding speed remains unresolved."
+  minTank:
+    value:
+      volumeL: 720
+      lengthCm: 200
+      depthCm: 60
+    confidence: "medium"
+    rationale: "Generator proposes 900 L at 200 x 75 cm, checker-a 400 L at 150 x 50, checker-b 720 L at 200 x 60,\
+      \ and checker-c 600 L at 200 x 60. Adopt checker-b: the current Nordic register explicitly recommends 720\
+      \ L and 200 cm. The 60 cm depth is a planning inference supported by the 200 x 60 cm footprint in the FishFish\
+      \ mixed-housing account, not an experimentally measured threshold. Published advice is wider: FishProfiles\
+      \ gives about 284 L for a pair, Rybicky 300 L, FishFish 450 L and 150 cm for a pair or 600 L for mixed housing,\
+      \ and Einrichtungsbeispiele 900 L. Nordic body text also retains older 325 L advice. The modern 720 L header\
+      \ better accommodates the larger adult expectation and refuges; 900 L is welcome extra room but not an established\
+      \ pair minimum. A community requires substantially more space and immediate separation capacity."
+    sources:
+    - kind: "database"
+      title: "Einrichtungsbeispiele species care sheet: Parachromis loisellei"
+      url: "https://www.einrichtungsbeispiele.de/zierfische/mittelamerika/parachromis-loisellei-slnk.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Nordiska Ciklidsallskapet species register: Parachromis friedrichsthalii, former Cichlasoma loisellei"
+      url: "https://ciklid.org/artregister/art.php?ID=196"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishProfiles.com: Parachromis loisellei"
+      url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Parachromis_loisellei/"
+      accessed: "2026-10-13"
+    - kind: "model-knowledge"
+      title: "Generator husbandry inference. No independent species-specific measurement or long-term trial."
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "TropicalFreshwaterFish.com: Friedrichsthali (Cichlasoma friedrichsthalii)"
+      url: "https://tropicalfreshwaterfish.com/species/Cichlasoma_friedrichsthalii.html"
+      accessed: "2026-10-13"
+    - kind: "model-knowledge"
+      title: "Conservative checker inference where species-specific quantitative evidence is absent"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishFish, Parachromis loisellei care and breeding account"
+      url: "https://www.fishfish.fr/poisson/parachromis-loisellei"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "database"
+        title: "Einrichtungsbeispiele species care sheet: Parachromis loisellei"
+        url: "https://www.einrichtungsbeispiele.de/zierfische/mittelamerika/parachromis-loisellei-slnk.html"
+        accessed: "2026-10-13"
+      value:
+        volumeL: 900
+    - source:
+        kind: "database"
+        title: "Nordiska Ciklidsallskapet species register: Parachromis friedrichsthalii, former Cichlasoma loisellei"
+        url: "https://ciklid.org/artregister/art.php?ID=196"
+        accessed: "2026-10-13"
+      value:
+        volumeL: 720
+        lengthCm: 200
+        depthCm: null
+      note: "Current register header; its body also contains an older smaller recommendation."
+    - source:
+        kind: "database"
+        title: "FishProfiles.com: Parachromis loisellei"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Parachromis_loisellei/"
+        accessed: "2026-10-13"
+      value:
+        volumeL: 283.91
+        lengthCm: null
+        depthCm: null
+      note: "75 US gallons for a breeding pair, with larger housing encouraged."
+    - source:
+        kind: "model-knowledge"
+        title: "Generator husbandry inference. No independent species-specific measurement or long-term trial."
+        accessed: "2026-10-13"
+      value:
+        volumeL: 900
+        lengthCm: 200
+        depthCm: 75
+      note: "Combined conservative planning dimensions; depth not a published measurement."
+    - source:
+        kind: "website"
+        title: "TropicalFreshwaterFish.com: Friedrichsthali (Cichlasoma friedrichsthalii)"
+        url: "https://tropicalfreshwaterfish.com/species/Cichlasoma_friedrichsthalii.html"
+        accessed: "2026-10-13"
+      value:
+        volumeL: 209
+        lengthCm: 122
+        depthCm: 50
+      note: "Excluded from species-specific support because this account retains the northern or mixed pre-2018\
+        \ species concept. depth assumed"
+    - source:
+        kind: "database"
+        title: "FishFish, Parachromis loisellei care and breeding account"
+        url: "https://www.fishfish.fr/poisson/parachromis-loisellei"
+        accessed: "2026-10-13"
+      value:
+        volumeL: 600
+        lengthCm: 200
+        depthCm: 60
+      note: "Published mixed-housing recommendation adopted conservatively for an adult pair; its smaller pair minimum\
+        \ is 450 L and 150 cm."
+  lifespanYears:
+    value:
+      min: 8
+      max: 15
+    confidence: "medium"
+    rationale: "Generator, checker-a and checker-b propose 8 to 12 years from general expectations; checker-c proposes\
+      \ 8 to 15. FishFish publishes 8 to 10 and Rybicky approximately 15 years. Retain the 8 to 15 envelope because\
+      \ these are species-specific aquarium estimates, while the 12-year ceiling has no stronger direct support.\
+      \ Their broad disagreement and lack of a longitudinal series keep confidence medium; neither endpoint is guaranteed."
+    sources:
+    - kind: "database"
+      title: "FishFish, Parachromis loisellei care and breeding account"
+      url: "https://www.fishfish.fr/poisson/parachromis-loisellei"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Rybicky.net species atlas, Parachromis loisellei"
+      url: "https://rybicky.net/atlasryb/kancik_loiselleuv"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "database"
+        title: "FishFish, Parachromis loisellei care and breeding account"
+        url: "https://www.fishfish.fr/poisson/parachromis-loisellei"
+        accessed: "2026-10-13"
+      value:
+        min: 8
+        max: 10
+      note: "Aquarium longevity estimate; no cohort follow-up."
+    - source:
+        kind: "database"
+        title: "Rybicky.net species atlas, Parachromis loisellei"
+        url: "https://rybicky.net/atlasryb/kancik_loiselleuv"
+        accessed: "2026-10-13"
+      value:
+        min: 15
+        max: 15
+      note: "Approximate aquarium longevity; no documented cohort."
+  breeding:
+    value: "open-substrate-spawner"
+    confidence: "high"
+    rationale: "All four profiles propose open-substrate-spawner. FishProfiles, Zoopet, the Nordic register and\
+      \ FishFish describe eggs on solid exposed surfaces with care by both parents. CRC verifies the category. The\
+      \ retailer cave-breeding claim is contradicted by these independent species accounts; shelter use does not\
+      \ establish obligatory cave spawning."
+    sources:
+    - kind: "database"
+      title: "FishProfiles.com: Parachromis loisellei"
+      url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Parachromis_loisellei/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Nordiska Ciklidsallskapet species register: Parachromis friedrichsthalii, former Cichlasoma loisellei"
+      url: "https://ciklid.org/artregister/art.php?ID=196"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Einrichtungsbeispiele species care sheet: Parachromis loisellei"
+      url: "https://www.einrichtungsbeispiele.de/zierfische/mittelamerika/parachromis-loisellei-slnk.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Cichlid Room Companion: Parachromis friedrichsthalii. Public summary used only for verification."
+      url: "https://cichlidae.com/species.php?id=8Dfo6JR1i79Ij6rJ-ESyYg"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "TropicalFreshwaterFish.com: Friedrichsthali (Cichlasoma friedrichsthalii)"
+      url: "https://tropicalfreshwaterfish.com/species/Cichlasoma_friedrichsthalii.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishBase: Parachromis friedrichsthalii (Yellowjacket cichlid)"
+      url: "https://www.fishbase.se/summary/Parachromis-friedrichsthalii.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Zoopet: Parachromis loisellei"
+      url: "https://www.zoopet.com/fiskar/fisk.php?NR=1441"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishFish, Parachromis loisellei care and breeding account"
+      url: "https://www.fishfish.fr/poisson/parachromis-loisellei"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "database"
+        title: "FishProfiles.com: Parachromis loisellei"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Parachromis_loisellei/"
+        accessed: "2026-10-13"
+      value: "open-substrate-spawner"
+      note: "Flat spawning surface and parental care."
+    - source:
+        kind: "database"
+        title: "Nordiska Ciklidsallskapet species register: Parachromis friedrichsthalii, former Cichlasoma loisellei"
+        url: "https://ciklid.org/artregister/art.php?ID=196"
+        accessed: "2026-10-13"
+      value: "open-substrate-spawner"
+    - source:
+        kind: "website"
+        title: "TropicalFreshwaterFish.com: Friedrichsthali (Cichlasoma friedrichsthalii)"
+        url: "https://tropicalfreshwaterfish.com/species/Cichlasoma_friedrichsthalii.html"
+        accessed: "2026-10-13"
+      value: "open-substrate-spawner"
+      note: "Excluded from species-specific support because this account retains the northern or mixed pre-2018\
+        \ species concept. eggs on cleaned stones"
+    - source:
+        kind: "database"
+        title: "Zoopet: Parachromis loisellei"
+        url: "https://www.zoopet.com/fiskar/fisk.php?NR=1441"
+        accessed: "2026-10-13"
+      value: "open-substrate-spawner"
+      note: "Pair-forming open substrate breeder."
+    - source:
+        kind: "database"
+        title: "Cichlid Room Companion: Parachromis friedrichsthalii. Public summary used only for verification."
+        url: "https://cichlidae.com/species.php?id=8Dfo6JR1i79Ij6rJ-ESyYg"
+        accessed: "2026-10-13"
+      value: "open-substrate-spawner"
+      note: "Verification only"
+    - source:
+        kind: "database"
+        title: "FishFish, Parachromis loisellei care and breeding account"
+        url: "https://www.fishfish.fr/poisson/parachromis-loisellei"
+        accessed: "2026-10-13"
+      value: "open-substrate-spawner"
+      note: "Eggs on a rock, with female and male sharing defense."
+  beginnerSuitability:
+    value: "demanding"
+    confidence: "medium"
+    rationale: "All four profiles propose demanding. The Nordic advanced rating and Rybicky difficult-care category\
+      \ fit the adult space, pair selection and aggression-management needs. Zoopet and CRC use intermediate ratings,\
+      \ while Fischlexikon is more permissive. Robust feeding and water adaptability do not remove the practical\
+      \ demands of keeping a compatible adult pair."
+    sources:
+    - kind: "database"
+      title: "Nordiska Ciklidsallskapet species register: Parachromis friedrichsthalii, former Cichlasoma loisellei"
+      url: "https://ciklid.org/artregister/art.php?ID=196"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishProfiles.com: Parachromis loisellei"
+      url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Parachromis_loisellei/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Cichlid Room Companion: Parachromis friedrichsthalii. Public summary used only for verification."
+      url: "https://cichlidae.com/species.php?id=8Dfo6JR1i79Ij6rJ-ESyYg"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "TropicalFreshwaterFish.com: Friedrichsthali (Cichlasoma friedrichsthalii)"
+      url: "https://tropicalfreshwaterfish.com/species/Cichlasoma_friedrichsthalii.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Zoopet: Parachromis loisellei"
+      url: "https://www.zoopet.com/fiskar/fisk.php?NR=1441"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Fischlexikon: Parachromis loisellei"
+      url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000001375"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Rybicky.net species atlas, Parachromis loisellei"
+      url: "https://rybicky.net/atlasryb/kancik_loiselleuv"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "website"
+        title: "TropicalFreshwaterFish.com: Friedrichsthali (Cichlasoma friedrichsthalii)"
+        url: "https://tropicalfreshwaterfish.com/species/Cichlasoma_friedrichsthalii.html"
+        accessed: "2026-10-13"
+      value: "demanding"
+      note: "Excluded from species-specific support because this account retains the northern or mixed pre-2018\
+        \ species concept. difficulty 6 of 10, highly aggressive"
+    - source:
+        kind: "database"
+        title: "Nordiska Ciklidsallskapet species register: Parachromis friedrichsthalii, former Cichlasoma loisellei"
+        url: "https://ciklid.org/artregister/art.php?ID=196"
+        accessed: "2026-10-13"
+      value: "demanding"
+      note: "Advanced care rating."
+    - source:
+        kind: "database"
+        title: "Zoopet: Parachromis loisellei"
+        url: "https://www.zoopet.com/fiskar/fisk.php?NR=1441"
+        accessed: "2026-10-13"
+      value: "moderate"
+    - source:
+        kind: "database"
+        title: "Fischlexikon: Parachromis loisellei"
+        url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000001375"
+        accessed: "2026-10-13"
+      value: "easy"
+    - source:
+        kind: "database"
+        title: "Rybicky.net species atlas, Parachromis loisellei"
+        url: "https://rybicky.net/atlasryb/kancik_loiselleuv"
+        accessed: "2026-10-13"
+      value: "demanding"
+      note: "Relatively difficult care."
+    - source:
+        kind: "database"
+        title: "Cichlid Room Companion: Parachromis friedrichsthalii. Public summary used only for verification."
+        url: "https://cichlidae.com/species.php?id=8Dfo6JR1i79Ij6rJ-ESyYg"
+        accessed: "2026-10-13"
+      value: "moderate"
+      note: "Intermediate aquarium classification, used only for verification."
+partners:
+  suitable:
+  - species: "Vieja melanurus"
+    reason: "An NVC aquarium account includes this large cichlid under the old synspila name alongside loisellei.\
+      \ This is one mixed-tank observation, not a reliable prediction of pair compatibility."
+    condition: "Much larger than the 720 L pair minimum; the reported aquarium measured 250 x 80 x 70 cm. Robust\
+      \ adults need distinct retreats, separate feeding and immediate separation capacity."
+  unsuitable:
+  - species: "Paracheirodon innesi"
+    reason: "Small adults are below the approximately 10 cm prey-size threshold used by the planner for a 30 cm\
+      \ level-2 predator."
+  - species: "Parachromis dovii"
+    reason: "Much greater size and aggression combine with the curated presumed crossing risk; it is not a suitable\
+      \ companion for breeding stock."
+  - species: "Symphysodon aequifasciatus"
+    reason: "Slow feeding and a calmer social style make a territorial large guapote an unsuitable companion even\
+      \ where temperature overlaps."
+profile:
+  overview:
+    text: "Parachromis friedrichsthalii is the valid name of the southern Central American fish formerly sold as\
+      \ P. loisellei. Older references often use friedrichsthalii for a northern species now called P. multifasciatus.\
+      \ Check that identification before applying care advice. Adults have a yellow or olive background with dark\
+      \ lateral markings and finer male patterning. This is a substantial territorial cichlid for keepers who can\
+      \ provide adult space and manage pair conflicts."
+    sources:
+    - kind: "catalog-of-fishes"
+      title: "Eschmeyer's Catalog of Fishes: Parachromis species, online update 21 September 2026"
+      url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Parachromis"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Nordiska Ciklidsallskapet species register: Parachromis friedrichsthalii, former Cichlasoma loisellei"
+      url: "https://ciklid.org/artregister/art.php?ID=196"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishProfiles.com: Parachromis loisellei"
+      url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Parachromis_loisellei/"
+      accessed: "2026-10-13"
+  habitat:
+    text: "The core range follows Caribbean drainages from eastern Honduras to western Panama, with a reported Pacific\
+      \ Nicaraguan occurrence. Small vegetated waters, soft bottoms and sheltered lowland river margins feature\
+      \ prominently in species accounts. The Lake Nicaragua type-material drainage does not establish occupancy\
+      \ of the open lake. Listed natural chemistry is a low-confidence regional synthesis: most water studies did\
+      \ not record this fish at each sampling station. Wider river and lake measurements remain visible in evidence\
+      \ and should not be mistaken for a proven aquarium tolerance."
+    sources:
+    - kind: "catalog-of-fishes"
+      title: "Eschmeyer's Catalog of Fishes: Parachromis species, online update 21 September 2026"
+      url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Parachromis"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishBase species summary: Parachromis loisellei, the southern taxon now called P. friedrichsthalii"
+      url: "https://www.fishbase.se/summary/Parachromis-loisellei.html"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Beerlink, R. Parachromis friedrichsthalii (Heckel, 1840). Nederlandse Vereniging van Cichlidenliefhebbers\
+        \ species article"
+      url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/parachromis-friedrichsthalii-heckel-1840"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Baronas et al. (2020). Ge and Si Isotope Behavior During Intense Tropical Weathering and Ecosystem\
+        \ Cycling."
+      url: "https://doi.org/10.1029/2019GB006522"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Swain (1966). Bottom sediments of Lake Nicaragua and Lake Managua, western Nicaragua. Lake Nicaragua\
+        \ water measurements."
+      url: "https://doi.org/10.1306/74d71500-2b21-11d7-8648000102c1865d"
+      accessed: "2026-10-13"
+  sizeAndGrowth:
+    text: "Plan for males up to about 30 cm and females up to about 25 cm in well-kept aquaria. Other species accounts\
+      \ give 25 and 20 cm, so these planning maxima carry medium confidence. A scientific standard length excludes\
+      \ the tail and cannot be substituted directly for aquarium total length. Growth increases the space needed\
+      \ for turning and the size of vulnerable companions. Published longevity estimates span 8 to 15 years, rather\
+      \ than defining a guaranteed lifespan."
+    sources:
+    - kind: "database"
+      title: "FishProfiles.com: Parachromis loisellei"
+      url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Parachromis_loisellei/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Nordiska Ciklidsallskapet species register: Parachromis friedrichsthalii, former Cichlasoma loisellei"
+      url: "https://ciklid.org/artregister/art.php?ID=196"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishFish, Parachromis loisellei care and breeding account"
+      url: "https://www.fishfish.fr/poisson/parachromis-loisellei"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Rybicky.net species atlas, Parachromis loisellei"
+      url: "https://rybicky.net/atlasryb/kancik_loiselleuv"
+      accessed: "2026-10-13"
+  husbandry:
+    text: "Provide at least 720 litres with a 200 cm length and a 60 cm depth for a compatible adult pair. The depth\
+      \ is a practical footprint inference; minimum published volumes vary widely. Arrange anchored wood and stable\
+      \ stones over a soft substrate so that each fish can retreat out of sight. Robust plants may be used but can\
+      \ be uprooted. Established filtration, regular water changes and a ready divider are essential. A routine\
+      \ temperature near 25 to 28 C and stable pH near 7 to 8 sit within the stronger captive recommendations. Very\
+      \ low GH or KH endpoints are provisional containment of habitat proxies, not demonstrated long-term targets."
+    sources:
+    - kind: "database"
+      title: "Nordiska Ciklidsallskapet species register: Parachromis friedrichsthalii, former Cichlasoma loisellei"
+      url: "https://ciklid.org/artregister/art.php?ID=196"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishProfiles.com: Parachromis loisellei"
+      url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Parachromis_loisellei/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Rybicky.net species atlas, Parachromis loisellei"
+      url: "https://rybicky.net/atlasryb/kancik_loiselleuv"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Einrichtungsbeispiele species care sheet: Parachromis loisellei"
+      url: "https://www.einrichtungsbeispiele.de/zierfische/mittelamerika/parachromis-loisellei-slnk.html"
+      accessed: "2026-10-13"
+  socialBehavior:
+    text: "A compatible adult pair is the recommended unit. Male pursuit and conflicts with surplus adults require\
+      \ close observation and refuges; simply buying one fish of each sex does not establish compatibility. Adult\
+      \ aggression is rated 3 toward both conspecifics and other species. A spawning pair may inflict much more\
+      \ severe injuries on companions, and formerly stable relationships can change. Separate a persistently excluded\
+      \ or injured fish promptly."
+    sources:
+    - kind: "database"
+      title: "FishProfiles.com: Parachromis loisellei"
+      url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Parachromis_loisellei/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Rybicky.net species atlas, Parachromis loisellei"
+      url: "https://rybicky.net/atlasryb/kancik_loiselleuv"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Beerlink, R. Parachromis friedrichsthalii (Heckel, 1840). Nederlandse Vereniging van Cichlidenliefhebbers\
+        \ species article"
+      url: "https://www.nvcweb.nl/visbeschrijvingen/midden-amerika/parachromis-friedrichsthalii-heckel-1840"
+      accessed: "2026-10-13"
+  diet:
+    text: "The decided natural feeding category is invertivore: insect prey receives the strongest species-specific\
+      \ support, although small fish are also eaten. Offer complete carnivorous-cichlid pellets with varied insect\
+      \ larvae, worms, mysis or shrimp and occasional fish-based frozen food. Check that both adults feed and remove\
+      \ leftovers. The sources differ about the importance of fish in the wild. The false bloat-sensitivity flag\
+      \ is an inference from animal-based feeding advice and does not imply freedom from digestive illness."
+    sources:
+    - kind: "database"
+      title: "FishBase species summary: Parachromis loisellei, the southern taxon now called P. friedrichsthalii"
+      url: "https://www.fishbase.se/summary/Parachromis-loisellei.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Nordiska Ciklidsallskapet species register: Parachromis friedrichsthalii, former Cichlasoma loisellei"
+      url: "https://ciklid.org/artregister/art.php?ID=196"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishProfiles.com: Parachromis loisellei"
+      url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Parachromis_loisellei/"
+      accessed: "2026-10-13"
+  breeding:
+    text: "Pairs lay eggs on a cleaned solid surface and defend eggs and young. Stones provide spawning surfaces,\
+      \ while the surrounding soft substrate allows brood pits. Shelter use does not make the fish an obligatory\
+      \ cave spawner. Pair formation and brood defense can disrupt a mixed aquarium, so prepare separate accommodation\
+      \ before breeding. Plan suitable food and space for juveniles and retain locality and parentage records."
+    sources:
+    - kind: "database"
+      title: "FishProfiles.com: Parachromis loisellei"
+      url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Parachromis_loisellei/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Rybicky.net species atlas, Parachromis loisellei"
+      url: "https://rybicky.net/atlasryb/kancik_loiselleuv"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishFish, Parachromis loisellei care and breeding account"
+      url: "https://www.fishfish.fr/poisson/parachromis-loisellei"
+      accessed: "2026-10-13"
+  sexing:
+    text: "Adult males generally grow larger and develop more intricate body and fin markings. Females often appear\
+      \ more uniformly yellow with clearer dark lateral markings. Age, lighting and mood affect these traits, and\
+      \ juveniles are harder to assess. Combine size and pattern observations rather than relying on a single photograph\
+      \ or assuming two differently colored fish will form a compatible pair."
+    sources:
+    - kind: "database"
+      title: "FishProfiles.com: Parachromis loisellei"
+      url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Parachromis_loisellei/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Nordiska Ciklidsallskapet species register: Parachromis friedrichsthalii, former Cichlasoma loisellei"
+      url: "https://ciklid.org/artregister/art.php?ID=196"
+      accessed: "2026-10-13"
+  compatibility:
+    text: "Small fish are potential prey at predation level 2. Larger robust companions are possible only in substantially\
+      \ bigger accommodation with distinct retreats and the ability to separate fish. A reported mixed aquarium\
+      \ included Vieja melanurus, but one successful arrangement is not a guarantee. The 720 L minimum applies to\
+      \ the adult pair. Parachromis dovii also shares a presumed crossing group with this fish; the report is an\
+      \ unverified labelled hobby cross, not an established free-choice mating study. A normal feeding-speed category\
+      \ remains provisional because competitive feeding rate was not measured."
+    sources:
+    - kind: "database"
+      title: "Rybicky.net species atlas, Parachromis loisellei"
+      url: "https://rybicky.net/atlasryb/kancik_loiselleuv"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Nordiska Ciklidsallskapet species register: Parachromis friedrichsthalii, former Cichlasoma loisellei"
+      url: "https://ciklid.org/artregister/art.php?ID=196"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishProfiles.com: Parachromis loisellei"
+      url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Parachromis_loisellei/"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "Nederlandse Vereniging van Cichlidenliefhebbers: mixed Central American aquarium containing Parachromis\
+        \ loisellei"
+      url: "https://www.nvcweb.nl/aquaria/midden-amerika/aquarium-van-tom-mulders-1"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "Binns Hybrid Encyclopedia: Dovii cross gallery, unverified aquarium labels"
+      url: "https://www.binnspedia.com/parachromis/dovii-parachromis-dovii"
+      accessed: "2026-10-13"
+  problems:
+    text: "Pair conflict, prey-sized companions and inadequate adult space are the main practical risks. Digging\
+      \ can undermine loose decorations and heavy feeding can strain filtration. Observe appetite, breathing, body\
+      \ condition and signs of exclusion during routine care. Poor water quality and social stress can occur together;\
+      \ a false bloat flag does not remove the need to investigate persistent swelling or loss of appetite. Choose\
+      \ stable maintenance conditions rather than repeatedly altering chemistry to force breeding."
+    sources:
+    - kind: "database"
+      title: "FishProfiles.com: Parachromis loisellei"
+      url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Parachromis_loisellei/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Rybicky.net species atlas, Parachromis loisellei"
+      url: "https://rybicky.net/atlasryb/kancik_loiselleuv"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Einrichtungsbeispiele species care sheet: Parachromis loisellei"
+      url: "https://www.einrichtungsbeispiele.de/zierfische/mittelamerika/parachromis-loisellei-slnk.html"
+      accessed: "2026-10-13"
+provenance:
+  runs:
+  - role: "generator"
+    model: "gpt-6.1-sol"
+    date: "2026-10-13"
+  - role: "checker"
+    model: "gpt-6.1-sol"
+    date: "2026-10-13"
+  - role: "checker"
+    model: "gpt-6.1-sol"
+    date: "2026-10-13"
+  - role: "checker"
+    model: "gpt-6.1-sol"
+    date: "2026-10-13"
+  - role: "checker"
+    model: "gpt-6.1-sol"
+    date: "2026-10-13"
+  - role: "checker"
+    model: "gpt-6.1-sol"
+    date: "2026-10-13"
+  - role: "adjudicator"
+    model: "gpt-6.1-sol"
+    date: "2026-10-13"
+  disagreements:
+  - field: "features.predation"
+    proposals:
+    - by: "generator"
+      value: 2
+    - by: "checker-a"
+      value: 3
+    - by: "checker-b"
+      value: 2
+    - by: "checker-c"
+      value: 2
+    - by: "tiebreaker-1"
+      value: 2
+    - by: "tiebreaker-2"
+      value: 2
+    decision: 2
+    rationale: "Tally method qualified-majority. Qualified-majority decision of 2 from generator, checker-b, checker-c\
+      \ and both tiebreakers; checker-a proposed 3. FishBase under loisellei describes mainly insects with occasional\
+      \ fish, while Zoopet, Rybicky and Einrichtungsbeispiele explicitly identify small aquarium companions as prey.\
+      \ This supports mouth-sized prey risk beyond incidental fry consumption without requiring a fish-dominated\
+      \ diet. Checker-a relied on the unrevised northern FishBase friedrichsthalii account and a pre-2018 hunting\
+      \ abstract with unresolved applicability; those do not establish level 3 for this southern species. CRC verifies\
+      \ insect feeding only. The frequency of fish feeding is not quantified, so confidence is medium."
+  - field: "features.diet"
+    proposals:
+    - by: "generator"
+      value:
+        type: "invertivore"
+        bloatSensitive: false
+        foods:
+        - "Complete carnivorous-cichlid pellets"
+        - "Aquatic insect larvae"
+        - "Earthworms in suitable pieces"
+        - "Mysis and shrimp"
+        - "Occasional fish-based frozen food"
+    - by: "checker-a"
+      value:
+        type: "piscivore"
+        bloatSensitive: false
+        foods:
+        - "live fish"
+        - "earthworms"
+        - "insects and larvae"
+        - "pellets"
+        - "chopped meat"
+    - by: "checker-b"
+      value:
+        type: "invertivore"
+        bloatSensitive: false
+        foods:
+        - "aquatic insects"
+        - "terrestrial insects"
+        - "worms"
+        - "crustaceans"
+        - "animal-based cichlid pellets"
+    - by: "checker-c"
+      value:
+        type: "invertivore"
+        bloatSensitive: false
+        foods:
+        - "Insects and insect larvae"
+        - "Crustaceans"
+        - "Earthworms"
+        - "Carnivore cichlid pellets"
+        - "Occasional fish pieces"
+    - by: "tiebreaker-1"
+      value:
+        type: "invertivore"
+        bloatSensitive: false
+    - by: "tiebreaker-2"
+      value:
+        type: "invertivore"
+        bloatSensitive: false
+    decision:
+      type: "invertivore"
+      bloatSensitive: false
+      foods:
+      - "Complete carnivorous-cichlid pellets"
+      - "Aquatic insect larvae"
+      - "Earthworms in suitable pieces"
+      - "Mysis and shrimp"
+      - "Occasional fish-based frozen food"
+    rationale: "Tally method qualified-majority. Qualified-majority decision for invertivore and bloatSensitive\
+      \ false, from generator, checker-b, checker-c and both tiebreakers; checker-a proposed piscivore with the\
+      \ same false flag. FishBase under loisellei, the Nordic register, Fischlexikon and the indexed Werner passage\
+      \ emphasize insect prey, and CRC verifies that interpretation. Beerlink emphasizes small vertebrates, FishFish\
+      \ calls the fish piscivorous, and Rybicky uses omnivore for a broad captive menu; these conflicting accounts\
+      \ lack a quantitative stomach series that overrides the insect-focused evidence. The old northern FishBase\
+      \ account is excluded. Animal-based prepared food and varied invertebrates fit the decided food list, which\
+      \ is retained exactly from tally. The false bloat flag is a husbandry inference, not an experimental demonstration\
+      \ of disease immunity."
+  - field: "features.temperatureC"
+    proposals:
+    - by: "generator"
+      value:
+        min: 24
+        max: 28
+    - by: "checker-a"
+      value:
+        min: 24
+        max: 29
+    - by: "checker-b"
+      value:
+        min: 24.9
+        max: 27.2
+    - by: "checker-c"
+      value:
+        min: 24
+        max: 28
+    decision:
+      min: 24
+      max: 28
+    rationale: "Tally method unanimous. The tally retains 24 to 28 C with unanimous agreement within its one-degree\
+      \ comparison rule. Generator and checker-c proposed 24 to 28, checker-a 24 to 29, and checker-b 24.9 to 27.2\
+      \ C. Baronas measured 24.4 to 27.2 C in selected regional surface waters; the stricter low-elevation selection\
+      \ is 24.9 to 27.2. Wider source ranges are Gutierrez-Fonseca 21.4 to 27.2, Clark et al. 22.3 to 28.5, the\
+      \ Juan Lopez study 25.8 to 30.3, and FishBase under loisellei 24 to 37 C. These are retained as evidence rather\
+      \ than collapsed into a claim of universal occupied-site limits. Lake Nicaragua surface water at 25 to 28\
+      \ C is drainage context only, especially because Beerlink reports this fish in tributaries rather than the\
+      \ open lake. No concurrent fish census establishes occupancy at every chemistry station; confidence remains\
+      \ low."
+  - field: "features.ph"
+    proposals:
+    - by: "generator"
+      value:
+        min: 6.4
+        max: 7.2
+    - by: "checker-a"
+      value:
+        min: 6
+        max: 7.5
+    - by: "checker-b"
+      value:
+        min: 5.6
+        max: 7.2
+    - by: "checker-c"
+      value:
+        min: 6.5
+        max: 8.9
+    - by: "tiebreaker-1"
+      value:
+        min: 5.6
+        max: 7.2
+    - by: "tiebreaker-2"
+      value:
+        min: 5.4
+        max: 7.2
+    decision:
+      min: 5.8
+      max: 7.2
+    rationale: "Tally method median. Median decision from tally, with low confidence because six proposals did not\
+      \ reach a qualified majority. Generator proposed 6.4 to 7.2, checker-a 6.0 to 7.5, checker-b and tiebreaker-1\
+      \ each 5.6 to 7.2, checker-c 6.5 to 8.9, and tiebreaker-2 5.4 to 7.2. The medians of all minima and maxima\
+      \ are 5.8 and 7.2. The verification count of 3/6 describes the largest agreeing proposal cluster, not three\
+      \ direct measurements of those final endpoints. Baronas surface waters span 5.42 to 7.17, or 5.64 to 7.17\
+      \ in the stricter lowland subset; Pringle gives 6.4 to 6.9 and Oviedo-Vargas a mean of 6.4. Wider regional\
+      \ ranges include Clark et al. 4.4 to 8.4 and Swain lake-surface pH 8.2 to 8.9, with Harer reporting 8.59.\
+      \ The lake readings do not establish fish occupancy in open water. This decided interval is a regional compromise\
+      \ and does not exclude populations outside it."
+  - field: "features.ghDgh"
+    proposals:
+    - by: "generator"
+      value:
+        min: 2
+        max: 10
+    - by: "checker-a"
+      value:
+        min: 1
+        max: 5
+    - by: "checker-b"
+      value:
+        min: 0.1
+        max: 10
+    - by: "checker-c"
+      value:
+        min: 2
+        max: 10
+    - by: "tiebreaker-1"
+      value:
+        min: 0.1
+        max: 10
+    - by: "tiebreaker-2"
+      value:
+        min: 0.1
+        max: 10
+    decision:
+      min: 0
+      max: 10
+    rationale: "Tally method qualified-majority. Qualified majority of five of six votes, retained exactly as tally\
+      \ at 0 to 10 dGH with low confidence. Generator and checker-c proposed 2 to 10, checker-a 1 to 5, and checker-b\
+      \ plus both tiebreakers 0.1 to 10. The agreeing minima have median 0.1, which tally rounds to integer 0; this\
+      \ means very dilute water, not a measured zero-hardness requirement. Baronas paired Ca and Mg give about 0.14\
+      \ to 9.55 dGH across regional surface streams. Pringle gives a bounding 0.63 to 2.37 from separately reported\
+      \ ion extrema; Swain lake-surface ions give about 3.30. The buffered-only selection omitted dilute streams,\
+      \ while checker-a inferred hardness from conductivity, which cannot uniquely determine GH. Use Ca mg/L divided\
+      \ by 7.14 plus Mg mg/L divided by 4.34. Field sites remain geographic proxies without contemporaneous fish\
+      \ presence."
+  - field: "features.khDkh"
+    proposals:
+    - by: "generator"
+      value:
+        min: 1
+        max: 14
+    - by: "checker-a"
+      value:
+        min: 1
+        max: 4
+    - by: "checker-b"
+      value:
+        min: 0.1
+        max: 13.2
+    - by: "checker-c"
+      value:
+        min: 1
+        max: 14
+    - by: "tiebreaker-1"
+      value:
+        min: 0.1
+        max: 13.2
+    - by: "tiebreaker-2"
+      value:
+        min: 0.05
+        max: 13.2
+    decision:
+      min: 0
+      max: 13
+    rationale: "Tally method qualified-majority. Retain the tally value of 0 to 13 dKH and low confidence; this\
+      \ plain natural-water fact intentionally has no verification object. Generator and checker-c proposed 1 to\
+      \ 14, checker-a 1 to 4, checker-b and tiebreaker-1 0.1 to 13.2, and tiebreaker-2 0.05 to 13.2. Five votes\
+      \ form the qualified-majority cluster; their median bounds round to 0 and 13. Baronas published rounded surface-water\
+      \ alkalinity equivalent to 0.056 to 13.104 dKH; its deposited spreadsheet resolves the wider range of 0.0448\
+      \ to 13.104 dKH, so the rounded upper limit is slightly narrower than the observation and is not a physiological\
+      \ boundary. Pringle gives 1.53 to 2.94 and Swain lake water 3.36 to 3.64. Oviedo-Vargas DIC minus dissolved\
+      \ CO2 permits only an approximate bicarbonate estimate of 5.9 to 6.2. KH is an alkalinity equivalent; neither\
+      \ conductivity nor GH establishes it. Geographic transfer to the fish remains provisional."
+  - field: "features.temperatureC.tolerance"
+    proposals:
+    - by: "generator"
+      value:
+        min: 24
+        max: 30
+    - by: "checker-a"
+      value:
+        min: 22
+        max: 30
+    - by: "checker-b"
+      value:
+        min: 24
+        max: 32
+    - by: "checker-c"
+      value:
+        min: 24
+        max: 30
+    - by: "tiebreaker-1"
+      value:
+        min: 24
+        max: 32
+    - by: "tiebreaker-2"
+      value:
+        min: 24
+        max: 30
+    decision:
+      min: 24
+      max: 30
+    rationale: "Tally method conservative. Conservative intersection decided by tally at 24 to 30 C with low confidence.\
+      \ Generator, checker-c and tiebreaker-2 proposed 24 to 30; checker-a 22 to 30; checker-b and tiebreaker-1\
+      \ 24 to 32. With no four-vote qualified majority, the intersection is 24 to 30 and already contains the natural\
+      \ 24 to 28. FishProfiles and Rybicky directly recommend 24 to 30. The wider Nordic and Zoopet recommendations\
+      \ of 25 to 32 are not adopted above 30; Einrichtungsbeispiele and FishFish are narrower at 24 to 28. The 22\
+      \ C proposal drew on an old mixed-identity account. FishBase 24 to 37 describes environmental observations,\
+      \ not years of captive health. Wong was cited for verification by earlier checkers, but adjudicator access\
+      \ timed out and adds no independently read endpoint evidence."
+  - field: "features.ph.tolerance"
+    proposals:
+    - by: "generator"
+      value:
+        min: 6.4
+        max: 8
+    - by: "checker-a"
+      value:
+        min: 6
+        max: 8
+    - by: "checker-b"
+      value:
+        min: 5.6
+        max: 8.2
+    - by: "checker-c"
+      value:
+        min: 6.5
+        max: 8.9
+    - by: "tiebreaker-1"
+      value:
+        min: 5.6
+        max: 8.2
+    - by: "tiebreaker-2"
+      value:
+        min: 5.4
+        max: 8
+    decision:
+      min: 5.8
+      max: 8
+    rationale: "Tally method conservative. Conservative decision from tally at 5.8 to 8.0, with low confidence.\
+      \ Generator proposed 6.4 to 8, checker-a 6 to 8, checker-b and tiebreaker-1 5.6 to 8.2, checker-c 6.5 to 8.9,\
+      \ and tiebreaker-2 5.4 to 8. The intersection is 6.5 to 8, then tally widens its lower bound to 5.8 to contain\
+      \ the decided natural range. Rybicky recommends 6.5 to 7.5, and FishProfiles, Zoopet and the Nordic register\
+      \ 7 to 8; Werner reports breeding at 7.2 to 7.5 in the accessible indexed passage. Wider proposals include\
+      \ an unverified retrospective aquarium report at 8.2 and regional lake measurements up to 8.9, neither adopted\
+      \ as a chronic upper endpoint. Aquarium health for years at 5.8 is unproven: that extension is containment\
+      \ of a regional field proxy, not a husbandry target. Wong could not be reopened and is earlier-checker verification\
+      \ only."
+  - field: "features.ghDgh.tolerance"
+    proposals:
+    - by: "generator"
+      value:
+        min: 2
+        max: 20
+    - by: "checker-a"
+      value:
+        min: 1
+        max: 20
+    - by: "checker-b"
+      value:
+        min: 0.1
+        max: 20
+    - by: "checker-c"
+      value:
+        min: 2
+        max: 20
+    decision:
+      min: 0
+      max: 20
+    rationale: "Tally method unanimous. Unanimous tally decision within the two-dGH comparison rule, retained at\
+      \ 0 to 20 with low confidence. Generator and checker-c proposed 2 to 20, checker-a 1 to 20, and checker-b\
+      \ 0.1 to 20. Tally rounds the agreeing median lower bound and then extends it to 0 to contain the natural\
+      \ value. FishProfiles and Rybicky recommend 10 to 20, Einrichtungsbeispiele and Fischlexikon 5 to 20. The\
+      \ old mixed-identity care account gives a wider 2 to 25, but its 25 endpoint is not adopted. The near-zero\
+      \ extension lacks chronic aquarium confirmation and reflects natural-proxy containment only. Published care\
+      \ bands carry more weight for choosing routine water."
+  - field: "features.khDkh.tolerance"
+    proposals:
+    - by: "generator"
+      value:
+        min: 1
+        max: 15
+    - by: "checker-a"
+      value:
+        min: 1
+        max: 12
+    - by: "checker-b"
+      value:
+        min: 0.1
+        max: 17
+    - by: "checker-c"
+      value:
+        min: 1
+        max: 14
+    - by: "tiebreaker-1"
+      value:
+        min: 0.1
+        max: 17
+    - by: "tiebreaker-2"
+      value:
+        min: 0.05
+        max: 15
+    decision:
+      min: 0
+      max: 15
+    rationale: "Tally method qualified-majority. Qualified-majority tally decision of 0 to 15 with low confidence.\
+      \ Generator proposed 1 to 15, checker-a 1 to 12, checker-b and tiebreaker-1 0.1 to 17, checker-c 1 to 14,\
+      \ and tiebreaker-2 0.05 to 15. Five votes agree within two dKH; their median minimum rounds to 0 and median\
+      \ maximum is 15. Werner reports keeping and reproduction at 11 to 15 dKH in the accessible indexed passage.\
+      \ A wider source claim of about 16.8 dKH, supporting the 17 proposals, comes from an unverified retrospective\
+      \ former-loisellei forum account and is not adopted as the upper endpoint. The retailer range of 4 to 8 has\
+      \ low weight. Baronas and Pringle provide alkalinity context, not chronic captive trials; FishProfiles and\
+      \ Einrichtungsbeispiele publish no KH limits. Wong is earlier-checker verification only because access timed\
+      \ out. No two independently read literature or database husbandry sources establish the full chronic interval,\
+      \ especially its near-zero lower end. The decided envelope remains provisional; GH and pH cannot substitute\
+      \ for KH."
+  - field: "features.origin"
+    proposals:
+    - by: "generator"
+      value:
+        continent: "Central America"
+        region: "Caribbean-slope lowlands from eastern Honduras to western Panama"
+        waterbody: null
+        localities:
+        - "Rio Negro, Honduras"
+        - "San Juan drainage, Nicaragua and Costa Rica"
+        - "Sarapiqui drainage, Costa Rica"
+        - "Rio San Miguel in the Matina drainage, Costa Rica"
+        - "Laguna de Chiriqui coastal drainages, Panama"
+    - by: "checker-a"
+      value:
+        continent: "Central America"
+        region: "Caribbean slope from eastern Honduras (Rio Negro) to western Panama, with the Lake Nicaragua and\
+          \ Rio San Juan drainage"
+        waterbody: null
+        localities:
+        - "Rio San Miguel (Matina drainage), Limon, Costa Rica"
+        - "Rio Sarapiqui basin, Costa Rica"
+        - "Lake Nicaragua and Rio San Juan, Nicaragua"
+    - by: "checker-b"
+      value:
+        continent: "Central America"
+        region: "Caribbean drainages from eastern Honduras to western Panama"
+        waterbody: null
+        localities:
+        - "Rio Negro"
+        - "Rio San Juan"
+        - "Rio Matina"
+        - "Rio Cricamola"
+    - by: "checker-c"
+      value:
+        continent: "Central America"
+        region: "Caribbean slope from eastern Honduras through Nicaragua and Costa Rica to western Panama, with\
+          \ a reported Pacific Nicaraguan occurrence"
+        waterbody: null
+        localities:
+        - "Rio Negro, Honduras"
+        - "Rio San Miguel in the Matina drainage, Costa Rica"
+        - "Rio San Juan drainage, Nicaragua"
+        - "Western Panamanian Caribbean drainages"
+        - "Rio Tamarindo, Nicaragua"
+    decision:
+      continent: "Central America"
+      region: "Caribbean-slope lowlands from eastern Honduras to western Panama, including the Rio San Juan and\
+        \ Lake Nicaragua tributary drainages; reported Pacific occurrence in the Rio Tamarindo, Nicaragua"
+      waterbody: null
+      localities:
+      - "Rio Negro, Honduras"
+      - "Rio San Juan and Lake Nicaragua tributary drainages, Nicaragua and Costa Rica"
+      - "Sarapiqui drainage, Costa Rica"
+      - "Rio San Miguel in the Matina drainage, Costa Rica"
+      - "Cricamola and Laguna de Chiriqui coastal drainages, western Panama"
+      - "Rio Tamarindo, Nicaragua"
+    rationale: "All four profiles describe the southern Caribbean-slope species, with differing locality lists.\
+      \ Generator emphasizes eastern Honduras to Panama, checker-a adds the Lake Nicaragua and San Juan drainage,\
+      \ checker-b adds the Cricamola and Tamarindo records, and checker-c explicitly includes the Pacific Nicaraguan\
+      \ occurrence. Merge these regional records using the Catalog of Fishes, the Bussing and Morgenstern abstracts,\
+      \ FishBase under loisellei, and the Angulo Sarapiqui occurrence survey. Lake Nicaragua is a drainage and type-material\
+      \ reference, not proof of occupancy in open lake water; Beerlink specifically reports tributary habitat and\
+      \ avoidance of the open lake. Northern Mexico, Belize and Guatemala records under the former friedrichsthalii\
+      \ name concern multifasciatus."
+  - field: "features.maxSizeCm"
+    proposals:
+    - by: "generator"
+      value:
+        male: 30
+        female: 25
+    - by: "checker-a"
+      value:
+        male: 25
+        female: 20
+    - by: "checker-b"
+      value:
+        male: 30
+        female: 25
+    - by: "checker-c"
+      value:
+        male: 30
+        female: 25
+    decision:
+      male: 30
+      female: 25
+    rationale: "Generator, checker-b and checker-c propose 30 cm males and 25 cm females; checker-a proposes 25\
+      \ and 20. FishProfiles supplies the larger sex-specific aquarium values, while the Nordic register and FishFish\
+      \ give 25 and 20. Beerlink independently reports aquarium adults approaching 30 cm. Retain 30 and 25 as normal\
+      \ upper planning expectations for well-kept fish. FishBase 18.5 cm is standard length excluding the tail;\
+      \ converting a wild specimen record cannot establish a sex-specific aquarium maximum."
+  - field: "features.aggressionConspecific"
+    proposals:
+    - by: "generator"
+      value: 4
+    - by: "checker-a"
+      value: 3
+    - by: "checker-b"
+      value: 3
+    - by: "checker-c"
+      value: 3
+    decision: 3
+    rationale: "Generator proposed 4; checker-a, checker-b and checker-c proposed 3. FishProfiles describes male\
+      \ pursuit requiring female retreats, while Rybicky removes surplus adults after pairing and Zoopet requires\
+      \ more room for additional males. These establish persistent chasing and injury risk under the rubric. The\
+      \ generator used a mixed-taxonomy AquaInfo account for fatal adult-group fighting; it does not establish routine\
+      \ killing or permanent injury within a compatible pair in adequate housing. Retain level 3 and provide separation\
+      \ capacity because pair acceptance can fail."
+  - field: "features.habitatZones"
+    proposals:
+    - by: "generator"
+      value:
+      - "sand"
+      - "plants"
+      - "wood"
+      - "rock"
+    - by: "checker-a"
+      value:
+      - "rock"
+      - "sand"
+      - "wood"
+    - by: "checker-b"
+      value:
+      - "sand"
+      - "plants"
+      - "wood"
+      - "rock"
+    - by: "checker-c"
+      value:
+      - "sand"
+      - "plants"
+      - "wood"
+      - "rock"
+    decision:
+    - "sand"
+    - "plants"
+    - "wood"
+    - "rock"
+    rationale: "Generator, checker-b and checker-c propose sand, plants, wood and rock; checker-a omits plants and\
+      \ proposes rock, sand and wood. FishBase identifies soft bottoms and dense vegetation, so plants must remain\
+      \ in the habitat set. Nordic and Zoopet care accounts support wood and stones as retreats and spawning surfaces.\
+      \ Sand maps the soft-bottom habitat to the aquarium rubric; rock is functional structure rather than a claim\
+      \ of obligatory rocky habitat."
+  - field: "features.coloration"
+    proposals:
+    - by: "generator"
+      value:
+        baseColors:
+        - "yellow"
+        - "brown"
+        - "black"
+        pattern: "mixed"
+    - by: "checker-a"
+      value:
+        baseColors:
+        - "yellow"
+        - "black"
+        pattern: "stripes"
+    - by: "checker-b"
+      value:
+        baseColors:
+        - "yellow"
+        - "green"
+        - "black"
+        pattern: "mixed"
+    - by: "checker-c"
+      value:
+        baseColors:
+        - "yellow"
+        - "green"
+        - "black"
+        pattern: "mixed"
+    decision:
+      baseColors:
+      - "yellow"
+      - "green"
+      - "black"
+      pattern: "mixed"
+    rationale: "Generator proposes yellow, brown and black with mixed pattern; checker-a yellow and black with stripes;\
+      \ checker-b and checker-c yellow, green and black with mixed pattern. The Nordic adult-male account identifies\
+      \ an olive background, FishProfiles includes a blue-green upper-body component, and Beerlink describes fine\
+      \ male reticulation as well as larger lateral markings. Retain yellow, green and black with mixed pattern.\
+      \ Brown remains a reported variation in Angulo but is not included among the dominant male colors. A lateral\
+      \ band alone does not describe the finer male pattern, and prominent northern-species vertical bars are excluded."
+  - field: "features.feedingSpeed"
+    proposals:
+    - by: "generator"
+      value: "hasty"
+    - by: "checker-a"
+      value: "hasty"
+    - by: "checker-b"
+      value: "hasty"
+    - by: "checker-c"
+      value: "normal"
+    decision: "normal"
+    rationale: "Generator, checker-a and checker-b propose hasty; checker-c proposes normal. Read accounts establish\
+      \ food acceptance and predatory jaws, but none documents habitual monopolization or depletion of all available\
+      \ food, as required for hasty by the rubric. Normal is therefore a provisional neutral assignment rather than\
+      \ a measured rate. Morphology alone is insufficient to select hasty; actual feeding competition needs observation."
+  - field: "features.minTank"
+    proposals:
+    - by: "generator"
+      value:
+        volumeL: 900
+        lengthCm: 200
+        depthCm: 75
+    - by: "checker-a"
+      value:
+        volumeL: 400
+        lengthCm: 150
+        depthCm: 50
+    - by: "checker-b"
+      value:
+        volumeL: 720
+        lengthCm: 200
+        depthCm: 60
+    - by: "checker-c"
+      value:
+        volumeL: 600
+        lengthCm: 200
+        depthCm: 60
+    decision:
+      volumeL: 720
+      lengthCm: 200
+      depthCm: 60
+    rationale: "Generator proposes 900 L at 200 x 75 cm, checker-a 400 L at 150 x 50, checker-b 720 L at 200 x 60,\
+      \ and checker-c 600 L at 200 x 60. Adopt checker-b: the current Nordic register explicitly recommends 720\
+      \ L and 200 cm. The 60 cm depth is a planning inference supported by the 200 x 60 cm footprint in the FishFish\
+      \ mixed-housing account, not an experimentally measured threshold. Published advice is wider: FishProfiles\
+      \ gives about 284 L for a pair, Rybicky 300 L, FishFish 450 L and 150 cm for a pair or 600 L for mixed housing,\
+      \ and Einrichtungsbeispiele 900 L. Nordic body text also retains older 325 L advice. The modern 720 L header\
+      \ better accommodates the larger adult expectation and refuges; 900 L is welcome extra room but not an established\
+      \ pair minimum. A community requires substantially more space and immediate separation capacity."
+  - field: "features.lifespanYears"
+    proposals:
+    - by: "generator"
+      value:
+        min: 8
+        max: 12
+    - by: "checker-a"
+      value:
+        min: 8
+        max: 12
+    - by: "checker-b"
+      value:
+        min: 8
+        max: 12
+    - by: "checker-c"
+      value:
+        min: 8
+        max: 15
+    decision:
+      min: 8
+      max: 15
+    rationale: "Generator, checker-a and checker-b propose 8 to 12 years from general expectations; checker-c proposes\
+      \ 8 to 15. FishFish publishes 8 to 10 and Rybicky approximately 15 years. Retain the 8 to 15 envelope because\
+      \ these are species-specific aquarium estimates, while the 12-year ceiling has no stronger direct support.\
+      \ Their broad disagreement and lack of a longitudinal series keep confidence medium; neither endpoint is guaranteed."
+  - field: "taxonomy.synonyms"
+    proposals:
+    - by: "generator"
+      value:
+      - name: "Heros friedrichsthalii"
+        note: "Original combination."
+      - name: "Cichlasoma loisellei"
+        note: "Bussing 1989 name synonymized by Morgenstern in 2018."
+      - name: "Parachromis loisellei"
+        note: "Former aquarium and database combination of the junior synonym."
+      - name: "Nandopsis loisellei"
+        note: "Historical generic combination of the junior synonym."
+      - name: "Cichlasoma friedrichsthalii"
+        note: "Historical combination; old records must be checked for northern multifasciatus misidentification."
+    - by: "checker-a"
+      value:
+      - name: "Heros friedrichsthalii Heckel, 1840"
+        note: "original combination"
+      - name: "Cichlasoma loisellei Bussing, 1989"
+        note: "synonym according to Morgenstern 2018; type locality Rio San Miguel, Matina drainage, Costa Rica"
+      - name: "Nandopsis friedrichsthalii"
+    - by: "checker-b"
+      value:
+      - name: "Heros friedrichsthalii"
+        note: "Original combination"
+      - name: "Cichlasoma loisellei"
+        note: "Junior synonym after Morgenstern (2018)"
+      - name: "Parachromis loisellei"
+        note: "Historical combination for the catalog fish"
+    - by: "checker-c"
+      value:
+      - name: "Heros friedrichsthalii"
+        note: "Original combination."
+      - name: "Cichlasoma friedrichsthalii"
+        note: "Historical generic combination; many older biological accounts under this label instead concern P.\
+          \ multifasciatus."
+      - name: "Nandopsis friedrichsthalii"
+        note: "Historical generic combination."
+      - name: "Cichlasoma loisellei"
+        note: "Junior synonym following Morgenstern (2018)."
+      - name: "Parachromis loisellei"
+        note: "Junior synonym retained in older biological and husbandry databases."
+      - name: "Nandopsis loisellei"
+        note: "Historical combination of the junior synonym."
+    decision:
+    - name: "Heros friedrichsthalii"
+      note: "Original combination."
+    - name: "Cichlasoma friedrichsthalii"
+      note: "Historical generic combination; many older biological accounts under this label instead concern P.\
+        \ multifasciatus."
+    - name: "Nandopsis friedrichsthalii"
+      note: "Historical generic combination."
+    - name: "Cichlasoma loisellei"
+      note: "Junior synonym following Morgenstern (2018)."
+    - name: "Parachromis loisellei"
+      note: "Junior synonym retained in older biological and husbandry databases."
+    - name: "Nandopsis loisellei"
+      note: "Historical combination of the junior synonym."
+    rationale: "All four inputs agree on the valid name and author but supply different historical-combination rosters.\
+      \ Merge the six combinations in checker-c, corroborated by the Catalog of Fishes. Normalize author-bearing\
+      \ synonyms from checker-a as name strings with the authority in taxonomy.author; older uses of friedrichsthalii\
+      \ need a species-identity check."
