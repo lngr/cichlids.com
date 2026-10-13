@@ -1,0 +1,3480 @@
+schemaVersion: 1
+id: pseudotropheus-johannii
+legacyIds:
+  - 372
+status: described
+taxonomy:
+  validName: Pseudotropheus johannii
+  genus: Pseudotropheus
+  species: johannii
+  author: "Eccles, 1973"
+  source:
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes: species of Pseudotropheus, online version updated 21 September 2026"
+    url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Pseudotropheus"
+    accessed: '2026-10-13'
+  synonyms:
+    - name: Melanochromis johannii
+      note: Former generic combination.
+    - name: Melanochromis johanni
+      note: Aquarium spelling with one final i; not a separate nominal species.
+  legacyNames:
+    - Melanochromis johannii
+  note: "The current Pseudotropheus list accepts Pseudotropheus johannii Eccles 1973 in its original genus,\
+    \ so the authority has no parentheses. The legacy Melanochromis list was also checked; the 2012 revision\
+    \ supports the transfer. Pseudotropheus interruptus and P. cyaneorhabdos remain separate valid species,\
+    \ and trade names do not establish their identity."
+names:
+  trade:
+    en:
+      - Johanni cichlid
+      - Bluegray mbuna
+      - Electric blue johanni
+    de:
+      - Kobalt-Orange-Buntbarsch
+      - Kobaltorangebarsch
+    es:
+      - Johanni
+    pt-BR:
+      - Johannii
+      - Electric blue johannii
+variants:
+  - name: Gome
+    kind: locality
+    note: Traceable eastern-shore population with the familiar striped males; recorded in the Nordic register
+      and Malawi.si.
+  - name: Chiloelo
+    kind: locality
+    note: Recognized collection locality in Mozambique; retain provenance rather than treating it as a separate
+      species.
+  - name: Chiofu
+    kind: locality
+    note: Listed collection locality; no separate husbandry values are established.
+  - name: Chuanga
+    kind: locality
+    note: Northern population; Malawi.si reports that males may have reduced or absent pale lateral bands.
+  - name: Metangula
+    kind: locality
+    note: Northern population with reported reduction of male stripes. It is not the maingano form.
+features:
+  origin:
+    value:
+      continent: Africa
+      region: Eastern shore of Lake Malawi in Malawi and Mozambique
+      waterbody: lake-malawi
+      localities:
+        - Cape Ngombo
+        - Masinje Rocks
+        - Gome Rock
+        - Chiloelo
+        - Chiofu
+        - Chuanga
+        - Metangula
+    confidence: high
+    rationale: "Generator proposed an eastern-shore range with Cape Ngombo, Masinje, Gome, Chiloelo, Chuanga\
+      \ and Metangula; checker-a retained Masinje and Cape Ngombo, checker-b added Chuanga and checker-c added\
+      \ Gome Rock. The Catalog establishes the native lake and type locality, while the Nordic register, Malawi.si\
+      \ and AquaInfo independently support the wider eastern-shore distribution. Their locality records are\
+      \ combined and the waterbody identifier is normalized to lake-malawi; introduced populations are excluded."
+    sources:
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: species of Pseudotropheus, online version updated 21 September\
+          \ 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Pseudotropheus"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase: Pseudotropheus johannii species summary"
+        url: "https://www.fishbase.se/summary/Pseudotropheus-johannii.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsällskapet species register: Pseudotropheus johannii"
+        url: "https://www.ciklid.org/artregister/art.php?ID=715"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Malawi.si: Pseudotropheus johannii locality directory"
+        url: "https://malawi.si/Malawi/Pseudotropheus/Pseudotropheus%20johannii/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase: Pseudotropheus johannii, Bluegray mbuna"
+        url: "https://www.fishbase.se/summary/Melanochromis-johannii.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Melanochromis johanni"
+        url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Malawi.si: Pseudotropheus johannii, unknown locality"
+        url: "https://www.malawi.si/Malawi/Pseudotropheus/Pseudotropheus%20johannii/slides/Pseudotropheus%20johannii.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Deproost: Pseudotropheus johannii, Bluegray Mbuna. AquaInfo"
+        url: "https://aquainfo.nl/en/article/pseudotropheus-johannii-bluegray-mbuna/"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: catalog-of-fishes
+          title: "Eschmeyer's Catalog of Fishes: species of Pseudotropheus"
+          url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Pseudotropheus"
+          accessed: '2026-10-13'
+        value:
+          continent: Africa
+          region: Lake Malawi
+          waterbody: lake-malawi
+      - source:
+          kind: database
+          title: "FishBase: Pseudotropheus johannii species summary"
+          url: "https://www.fishbase.se/summary/Pseudotropheus-johannii.html"
+          accessed: '2026-10-13'
+        value:
+          continent: Africa
+          region: Lake Malawi
+          waterbody: lake-malawi
+          localities:
+            - Masinje Rocks
+            - Cape Ngombo
+      - source:
+          kind: database
+          title: "Deproost: Pseudotropheus johannii, Bluegray Mbuna. AquaInfo"
+          url: "https://aquainfo.nl/en/article/pseudotropheus-johannii-bluegray-mbuna/"
+          accessed: '2026-10-13'
+        value:
+          continent: Africa
+          region: Eastern shore of Lake Malawi into Mozambique
+          waterbody: lake-malawi
+          localities:
+            - Cape Ngombo
+            - Gome Rock
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet: Pseudotropheus johannii species register"
+          url: "https://www.ciklid.org/artregister/art.php?ID=715"
+          accessed: '2026-10-13'
+        value:
+          continent: Africa
+          region: Lake Malawi
+          waterbody: lake-malawi
+          localities:
+            - Makanjila Point
+            - Chuanga
+      - source:
+          kind: database
+          title: "FishBase: Pseudotropheus johannii, Bluegray mbuna"
+          url: "https://www.fishbase.se/summary/Melanochromis-johannii.html"
+          accessed: '2026-10-13'
+        value:
+          region: Lake Malawi
+          localities:
+            - Masinje Rocks
+            - Cape Ngombo
+      - source:
+          kind: database
+          title: "Seriously Fish: Melanochromis johanni"
+          url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+          accessed: '2026-10-13'
+        value:
+          region: Lake Malawi
+          localities:
+            - Masinje Rocks
+            - Cape Ngombo
+  temperatureC:
+    value:
+      min: 21
+      max: 29
+    confidence: high
+    rationale: "The waterbody decision fixes the lake-wide seasonal envelope at 21 to 29 C for all Lake Malawi\
+      \ endemics. Branchu reports campaign means of 24.48 to 26.15 C, the FAO compilation reports 23 to 25\
+      \ C and Vollmer describes surface water reaching about 28 C with winter cooling below 24 C. Those narrower\
+      \ measurements support the lake context without being misrepresented as its full extrema. The broader\
+      \ prescribed envelope also draws on the Eccles and Ngochera work; their full texts were unavailable through\
+      \ the permitted DOI tool, so they are not cited as directly read endpoint evidence."
+    sources:
+      - kind: literature
+        title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E.\
+          \ et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern\
+          \ Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+        url: "https://doi.org/10.5194/hessd-7-4371-2010"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+          \ of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa physical and chemical data."
+        url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M.,\
+          \ Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology\
+          \ and Oceanography 50(2), 727-732."
+        url: "https://doi.org/10.4319/lo.2005.50.2.0727"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E.\
+            \ et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern\
+            \ Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7,\
+            \ 4371-4409."
+          url: "https://doi.org/10.5194/hessd-7-4371-2010"
+          accessed: '2026-10-13'
+        value:
+          min: 24.48
+          max: 26.15
+        note: Upper-layer mean temperatures across campaigns in Table 4; these are not annual extrema.
+      - source:
+          kind: literature
+          title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+            \ of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa physical and chemical data."
+          url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+          accessed: '2026-10-13'
+        value:
+          min: 23
+          max: 25
+        note: Surface temperature compiled from Jackson et al. (1963); seasonal snapshot.
+      - source:
+          kind: literature
+          title: "Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M.,\
+            \ Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa.\
+            \ Limnology and Oceanography 50(2), 727-732."
+          url: "https://doi.org/10.4319/lo.2005.50.2.0727"
+          accessed: '2026-10-13'
+        value:
+          min: 23.5
+          max: 28
+        note: Approximate seasonal epilimnetic span described in the study; summer surface water reaches about
+          28 C.
+    tolerance:
+      value:
+        min: 21
+        max: 29
+      confidence: low
+      rationale: "Generator, checker-a, checker-b and checker-c all proposed 21 to 29 C, retained by unanimous\
+        \ tally agreement with low confidence. The range includes the full natural envelope by rule. Seriously\
+        \ Fish recommends 23 to 27 C, Aqua-Fish 22 to 27 C, AquaInfo 22 to 26 C and the Nordic register and\
+        \ Aquario 23 to 28 C. Glaser instead favors 26 to 28 C. These recommendations do not demonstrate lifelong\
+        \ captive health at 21 or 29 C; stable routine maintenance around 24 to 26 C is better supported."
+      sources:
+        - kind: literature
+          title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E.\
+            \ et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern\
+            \ Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7,\
+            \ 4371-4409."
+          url: "https://doi.org/10.5194/hessd-7-4371-2010"
+          accessed: '2026-10-13'
+        - kind: literature
+          title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+            \ of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa physical and chemical data."
+          url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+          accessed: '2026-10-13'
+        - kind: literature
+          title: "Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M.,\
+            \ Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa.\
+            \ Limnology and Oceanography 50(2), 727-732."
+          url: "https://doi.org/10.4319/lo.2005.50.2.0727"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "Seriously Fish: Melanochromis johanni"
+          url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "Nordiska Ciklidsällskapet species register: Pseudotropheus johannii"
+          url: "https://www.ciklid.org/artregister/art.php?ID=715"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "FishBase: Pseudotropheus johannii, Bluegray mbuna"
+          url: "https://www.fishbase.se/summary/Melanochromis-johannii.html"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "Aqua-Fish.Net: Blue electric cichlid, Melanochromis johannii"
+          url: "https://en.aqua-fish.net/fish/blue-electric-cichlid"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "AquaInfo: Pseudotropheus johannii, Bluegray Mbuna"
+          url: "https://aquainfo.nl/en/article/pseudotropheus-johannii-bluegray-mbuna/"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "Aquario: Melanochromis johannii care sheet"
+          url: "https://aquario.me/fish/melanochromis-johannii"
+          accessed: '2026-10-13'
+        - kind: website
+          title: "Aquarium Glaser: Melanochromis johannii (F. Schaefer, 2021)"
+          url: "https://www.aquariumglaser.de/en/25-perchlike-fishes/melanochromis-johannii-2/"
+          accessed: '2026-10-13'
+      evidence:
+        - source:
+            kind: literature
+            title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu,\
+              \ E. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian\
+              \ Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions\
+              \ 7, 4371-4409."
+            url: "https://doi.org/10.5194/hessd-7-4371-2010"
+            accessed: '2026-10-13'
+          value:
+            min: 24.48
+            max: 26.15
+          note: Upper-layer mean temperatures across campaigns in Table 4; these are not annual extrema.
+        - source:
+            kind: literature
+            title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+              \ of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa physical and chemical\
+              \ data."
+            url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+            accessed: '2026-10-13'
+          value:
+            min: 23
+            max: 25
+          note: Surface temperature compiled from Jackson et al. (1963); seasonal snapshot.
+        - source:
+            kind: literature
+            title: "Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J.\
+              \ M., Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa.\
+              \ Limnology and Oceanography 50(2), 727-732."
+            url: "https://doi.org/10.4319/lo.2005.50.2.0727"
+            accessed: '2026-10-13'
+          value:
+            min: 23.5
+            max: 28
+          note: Approximate seasonal epilimnetic span described in the study; summer surface water reaches
+            about 28 C.
+        - source:
+            kind: database
+            title: "Seriously Fish: Melanochromis johanni"
+            url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+            accessed: '2026-10-13'
+          value:
+            min: 23
+            max: 27
+          note: Aquarium care recommendation.
+        - source:
+            kind: database
+            title: "Nordiska Ciklidsällskapet species register: Pseudotropheus johannii"
+            url: "https://www.ciklid.org/artregister/art.php?ID=715"
+            accessed: '2026-10-13'
+          value:
+            min: 23
+            max: 28
+          note: Species care recommendation.
+        - source:
+            kind: database
+            title: "Aqua-Fish.Net: Blue electric cichlid, Melanochromis johannii"
+            url: "https://en.aqua-fish.net/fish/blue-electric-cichlid"
+            accessed: '2026-10-13'
+          value:
+            min: 22
+            max: 27
+          note: Aquarium recommendation.
+        - source:
+            kind: database
+            title: "FishBase: Pseudotropheus johannii, Bluegray mbuna"
+            url: "https://www.fishbase.se/summary/Melanochromis-johannii.html"
+            accessed: '2026-10-13'
+          value:
+            min: 22
+            max: 25
+          note: Aquarium temperature given by FishBase.
+        - source:
+            kind: database
+            title: "AquaInfo: Pseudotropheus johannii, Bluegray Mbuna"
+            url: "https://aquainfo.nl/en/article/pseudotropheus-johannii-bluegray-mbuna/"
+            accessed: '2026-10-13'
+          value:
+            min: 22
+            max: 26
+          note: Aquarium recommendation.
+        - source:
+            kind: database
+            title: "Aquario: Melanochromis johannii care sheet"
+            url: "https://aquario.me/fish/melanochromis-johannii"
+            accessed: '2026-10-13'
+          value:
+            min: 23
+            max: 28
+          note: Species husbandry recommendation.
+        - source:
+            kind: website
+            title: "Aquarium Glaser: Melanochromis johannii (F. Schaefer, 2021)"
+            url: "https://www.aquariumglaser.de/en/25-perchlike-fishes/melanochromis-johannii-2/"
+            accessed: '2026-10-13'
+          value:
+            min: 26
+            max: 28
+          note: Advice not to keep the species cooler than 26 C.
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+  ph:
+    value:
+      min: 7.7
+      max: 8.6
+    confidence: high
+    rationale: "The lake surface range of 7.7 to 8.6 follows the waterbody decision and the Jackson measurements\
+      \ compiled by FAO. Branchu discusses 7.5 to 8.5 across the water column, a wider lower extension that\
+      \ includes deeper conditions and does not replace the prescribed surface range. Aquarium recommendations\
+      \ are assessed separately in the tolerance."
+    sources:
+      - kind: literature
+        title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E.\
+          \ et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern\
+          \ Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+        url: "https://doi.org/10.5194/hessd-7-4371-2010"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+          \ of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa physical and chemical data."
+        url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+            \ of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa physical and chemical data."
+          url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+          accessed: '2026-10-13'
+        value:
+          min: 7.7
+          max: 8.6
+        note: Lake surface range after Jackson et al. (1963).
+      - source:
+          kind: literature
+          title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E.\
+            \ et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern\
+            \ Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7,\
+            \ 4371-4409."
+          url: "https://doi.org/10.5194/hessd-7-4371-2010"
+          accessed: '2026-10-13'
+        value:
+          min: 7.5
+          max: 8.5
+        note: "Whole-column context, including deeper water; not the selected littoral envelope."
+    tolerance:
+      value:
+        min: 7.5
+        max: 8.8
+      confidence: medium
+      rationale: "Generator and checker-b proposed 7.5 to 8.8, checker-a 7.4 to 8.9 and checker-c 7.6 to 8.8.\
+        \ All four agree within the 0.3 pH comparison threshold, so the unanimous tally uses median endpoints\
+        \ of 7.5 and 8.8 with medium confidence. Aqua-Fish explicitly gives the wider 7.4 to 8.9 range, and\
+        \ Aquarium Ratgeber gives an even wider 7.2 to 9.5; neither broader recommendation is selected over\
+        \ the median. The Nordic register and Fischlexikon give 7.5 to 8.5 and Seriously Fish and Aquario 7.6\
+        \ to 8.8. The decision contains the natural range but is inferred from care advice rather than a controlled\
+        \ tolerance trial."
+      sources:
+        - kind: literature
+          title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E.\
+            \ et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern\
+            \ Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7,\
+            \ 4371-4409."
+          url: "https://doi.org/10.5194/hessd-7-4371-2010"
+          accessed: '2026-10-13'
+        - kind: literature
+          title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+            \ of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa physical and chemical data."
+          url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "Seriously Fish: Melanochromis johanni"
+          url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "Nordiska Ciklidsällskapet species register: Pseudotropheus johannii"
+          url: "https://www.ciklid.org/artregister/art.php?ID=715"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "Fischlexikon: Pseudotropheus johannii"
+          url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000002462"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "FishBase: Pseudotropheus johannii, Bluegray mbuna"
+          url: "https://www.fishbase.se/summary/Melanochromis-johannii.html"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "Aqua-Fish.Net: Blue electric cichlid, Melanochromis johannii"
+          url: "https://en.aqua-fish.net/fish/blue-electric-cichlid"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "AquaInfo: Pseudotropheus johannii, Bluegray Mbuna"
+          url: "https://aquainfo.nl/en/article/pseudotropheus-johannii-bluegray-mbuna/"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "Aquario: Melanochromis johannii care sheet"
+          url: "https://aquario.me/fish/melanochromis-johannii"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "Aquarium Ratgeber: Kobaltorange-Buntbarsch, Melanochromis johani"
+          url: "https://www.aquarium-ratgeber.com/fische/fischarten/malawi-buntbarsche/kobaltorange-buntbarsch/"
+          accessed: '2026-10-13'
+      evidence:
+        - source:
+            kind: literature
+            title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+              \ of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa physical and chemical\
+              \ data."
+            url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+            accessed: '2026-10-13'
+          value:
+            min: 7.7
+            max: 8.6
+          note: Lake surface range after Jackson et al. (1963).
+        - source:
+            kind: literature
+            title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu,\
+              \ E. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian\
+              \ Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions\
+              \ 7, 4371-4409."
+            url: "https://doi.org/10.5194/hessd-7-4371-2010"
+            accessed: '2026-10-13'
+          value:
+            min: 7.5
+            max: 8.5
+          note: "Whole-column context, including deeper water; not the selected littoral envelope."
+        - source:
+            kind: database
+            title: "Seriously Fish: Melanochromis johanni"
+            url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+            accessed: '2026-10-13'
+          value:
+            min: 7.6
+            max: 8.8
+        - source:
+            kind: database
+            title: "Nordiska Ciklidsällskapet species register: Pseudotropheus johannii"
+            url: "https://www.ciklid.org/artregister/art.php?ID=715"
+            accessed: '2026-10-13'
+          value:
+            min: 7.5
+            max: 8.5
+        - source:
+            kind: database
+            title: "Fischlexikon: Pseudotropheus johannii"
+            url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000002462"
+            accessed: '2026-10-13'
+          value:
+            min: 7.5
+            max: 8.5
+        - source:
+            kind: database
+            title: "Aqua-Fish.Net: Blue electric cichlid, Melanochromis johannii"
+            url: "https://en.aqua-fish.net/fish/blue-electric-cichlid"
+            accessed: '2026-10-13'
+          value:
+            min: 7.4
+            max: 8.9
+        - source:
+            kind: database
+            title: "FishBase: Pseudotropheus johannii, Bluegray mbuna"
+            url: "https://www.fishbase.se/summary/Melanochromis-johannii.html"
+            accessed: '2026-10-13'
+          value:
+            min: 8
+            max: 8
+          note: Single value.
+        - source:
+            kind: database
+            title: "AquaInfo: Pseudotropheus johannii, Bluegray Mbuna"
+            url: "https://aquainfo.nl/en/article/pseudotropheus-johannii-bluegray-mbuna/"
+            accessed: '2026-10-13'
+          value:
+            min: 7.5
+            max: 8.5
+        - source:
+            kind: database
+            title: "Aquario: Melanochromis johannii care sheet"
+            url: "https://aquario.me/fish/melanochromis-johannii"
+            accessed: '2026-10-13'
+          value:
+            min: 7.6
+            max: 8.8
+        - source:
+            kind: database
+            title: "Aquarium Ratgeber: Kobaltorange-Buntbarsch, Melanochromis johani"
+            url: "https://www.aquarium-ratgeber.com/fische/fischarten/malawi-buntbarsche/kobaltorange-buntbarsch/"
+            accessed: '2026-10-13'
+          value:
+            min: 7.2
+            max: 9.5
+          note: Broad species care recommendation; not selected as the tolerance.
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+  ghDgh:
+    value:
+      min: 3
+      max: 5
+    confidence: high
+    rationale: The waterbody decision retains 3 to 5 dGH. Branchu calcium and magnesium measurements give about
+      4.2 to 4.6 dGH; the historical concentrations compiled by FAO span about 3.5 to 4.9 dGH. The rounded
+      lake envelope reflects these measurements. Alkaline pH and bicarbonate buffering do not imply high calcium
+      and magnesium hardness.
+    sources:
+      - kind: literature
+        title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E.\
+          \ et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern\
+          \ Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+        url: "https://doi.org/10.5194/hessd-7-4371-2010"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+          \ of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa physical and chemical data."
+        url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E.\
+            \ et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern\
+            \ Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7,\
+            \ 4371-4409."
+          url: "https://doi.org/10.5194/hessd-7-4371-2010"
+          accessed: '2026-10-13'
+        value:
+          min: 4.2
+          max: 4.6
+        note: "Upper 50 m calcium and magnesium converted from micromoles to mg/L, then dGH = Ca/7.14 + Mg/4.34."
+      - source:
+          kind: literature
+          title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+            \ of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa physical and chemical data."
+          url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+          accessed: '2026-10-13'
+        value:
+          min: 3.5
+          max: 4.9
+        note: "Calcium and magnesium in the Jackson and Talling compilations, converted to dGH; approximate\
+          \ extrema across reported concentrations."
+    tolerance:
+      value:
+        min: 3
+        max: 20
+      confidence: low
+      rationale: "Generator, checker-a and tiebreaker-2 proposed 3 to 20 dGH; checker-b, checker-c and tiebreaker-1\
+        \ proposed 3 to 25 dGH. The three-to-three split has no qualified majority, so the tally takes the\
+        \ conservative intersection of 3 to 20 dGH and low confidence. Fischlexikon gives 5 to 20 and FishProfiles\
+        \ 10 to 20 dGH, whereas Seriously Fish and Aqua-Fish give the wider 10 to 25 and retailer Interaquaristik\
+        \ 8 to 25 dGH. Their upper extension is recorded but does not override the required tally intersection\
+        \ or demonstrate a chronic physiological limit. The native 3 to 5 dGH anchors the lower end; GH is\
+        \ distinct from KH."
+      sources:
+        - kind: literature
+          title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E.\
+            \ et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern\
+            \ Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7,\
+            \ 4371-4409."
+          url: "https://doi.org/10.5194/hessd-7-4371-2010"
+          accessed: '2026-10-13'
+        - kind: literature
+          title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+            \ of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa physical and chemical data."
+          url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "Aquarium Ratgeber: Kobaltorange-Buntbarsch, Melanochromis johani"
+          url: "https://www.aquarium-ratgeber.com/fische/fischarten/malawi-buntbarsche/kobaltorange-buntbarsch/"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "Fischlexikon: Pseudotropheus johannii"
+          url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000002462"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "Seriously Fish: Melanochromis johanni"
+          url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "FishBase: Pseudotropheus johannii, Bluegray mbuna"
+          url: "https://www.fishbase.se/summary/Melanochromis-johannii.html"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "Aqua-Fish.Net: Blue electric cichlid, Melanochromis johannii"
+          url: "https://en.aqua-fish.net/fish/blue-electric-cichlid"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "AquaInfo: Pseudotropheus johannii, Bluegray Mbuna"
+          url: "https://aquainfo.nl/en/article/pseudotropheus-johannii-bluegray-mbuna/"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "Aquario: Melanochromis johannii care and compatibility entry"
+          url: "https://aquario.me/fish/melanochromis-johannii"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "FishProfiles: Melanochromis johannii"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Melanochromis_johannii/"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "FishBase: Pseudotropheus johannii species summary"
+          url: "https://www.fishbase.se/summary/Pseudotropheus-johannii.html"
+          accessed: '2026-10-13'
+        - kind: website
+          title: "Interaquaristik: Kobalt-Orange-Buntbarsch, Melanochromis johannii, structured husbandry description"
+          url: "https://www.interaquaristik.de/tiere/zierfische/kobalt-orange-buntbarsch-melanochromis-johannii/a-10806"
+          accessed: '2026-10-13'
+        - kind: website
+          title: "Fishstores.org: Johanni Cichlid care guide"
+          url: "https://www.fishstores.org/species/johanni-cichlid"
+          accessed: '2026-10-13'
+      evidence:
+        - source:
+            kind: literature
+            title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu,\
+              \ E. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian\
+              \ Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions\
+              \ 7, 4371-4409."
+            url: "https://doi.org/10.5194/hessd-7-4371-2010"
+            accessed: '2026-10-13'
+          value:
+            min: 4.2
+            max: 4.6
+          note: "Upper 50 m calcium and magnesium converted from micromoles to mg/L, then dGH = Ca/7.14 + Mg/4.34."
+        - source:
+            kind: literature
+            title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+              \ of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa physical and chemical\
+              \ data."
+            url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+            accessed: '2026-10-13'
+          value:
+            min: 3.5
+            max: 4.9
+          note: "Calcium and magnesium in the Jackson and Talling compilations, converted to dGH; approximate\
+            \ extrema across reported concentrations."
+        - source:
+            kind: database
+            title: "Aquarium Ratgeber: Kobaltorange-Buntbarsch, Melanochromis johani"
+            url: "https://www.aquarium-ratgeber.com/fische/fischarten/malawi-buntbarsche/kobaltorange-buntbarsch/"
+            accessed: '2026-10-13'
+          value:
+            min: 3
+            max: 12
+          note: Species care table.
+        - source:
+            kind: database
+            title: "Fischlexikon: Pseudotropheus johannii"
+            url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000002462"
+            accessed: '2026-10-13'
+          value:
+            min: 5
+            max: 20
+          note: "Species care table, with a preferred subrange of 5 to 12 dGH."
+        - source:
+            kind: database
+            title: "Seriously Fish: Melanochromis johanni"
+            url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+            accessed: '2026-10-13'
+          value:
+            min: 10
+            max: 25
+          note: "Broader husbandry range, not a natural lake measurement."
+        - source:
+            kind: database
+            title: "Aqua-Fish.Net: Blue electric cichlid, Melanochromis johannii"
+            url: "https://en.aqua-fish.net/fish/blue-electric-cichlid"
+            accessed: '2026-10-13'
+          value:
+            min: 10
+            max: 25
+        - source:
+            kind: database
+            title: "FishBase: Pseudotropheus johannii, Bluegray mbuna"
+            url: "https://www.fishbase.se/summary/Melanochromis-johannii.html"
+            accessed: '2026-10-13'
+          value:
+            min: 9
+            max: 19
+        - source:
+            kind: database
+            title: "AquaInfo: Pseudotropheus johannii, Bluegray Mbuna"
+            url: "https://aquainfo.nl/en/article/pseudotropheus-johannii-bluegray-mbuna/"
+            accessed: '2026-10-13'
+          value:
+            min: 12
+            max: 16
+          note: Species aquarium range.
+        - source:
+            kind: database
+            title: "Aquario: Melanochromis johannii care and compatibility entry"
+            url: "https://aquario.me/fish/melanochromis-johannii"
+            accessed: '2026-10-13'
+          value:
+            min: 10
+            max: 18
+          note: Species aquarium range.
+        - source:
+            kind: database
+            title: "FishProfiles: Melanochromis johannii"
+            url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Melanochromis_johannii/"
+            accessed: '2026-10-13'
+          value:
+            min: 10
+            max: 20
+          note: "Aquarium hardness recommendation in German degrees, interpreted as general hardness."
+        - source:
+            kind: database
+            title: "FishBase: Pseudotropheus johannii species summary"
+            url: "https://www.fishbase.se/summary/Pseudotropheus-johannii.html"
+            accessed: '2026-10-13'
+          value:
+            min: 9
+            max: 19
+          note: "Summary dH listing. Used as supporting husbandry context only, not in place of the curated\
+            \ natural range."
+        - source:
+            kind: website
+            title: "Fishstores.org: Johanni Cichlid care guide"
+            url: "https://www.fishstores.org/species/johanni-cichlid"
+            accessed: '2026-10-13'
+          value:
+            min: 10
+            max: 20
+        - source:
+            kind: website
+            title: "Interaquaristik: Kobalt-Orange-Buntbarsch, Melanochromis johannii, structured husbandry\
+              \ description"
+            url: "https://www.interaquaristik.de/tiere/zierfische/kobalt-orange-buntbarsch-melanochromis-johannii/a-10806"
+            accessed: '2026-10-13'
+          value:
+            min: 8
+            max: 25
+          note: Species-specific aquarium care range explicitly labeled dGH.
+      verification:
+        method: conservative
+        votes:
+          agree: 3
+          total: 6
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+  khDkh:
+    value:
+      min: 5
+      max: 8
+    confidence: high
+    rationale: "The waterbody decision retains 5 to 8 dKH as a rounded envelope. Branchu alkalinity corresponds\
+      \ to about 6.5 to 6.9 dKH and the Jackson measurements compiled by FAO to 5.6 to 7.3 dKH. This is a buffering\
+      \ equivalent, distinct from calcium and magnesium hardness; sodium balances part of the bicarbonate.\
+      \ As a natural plain fact this field carries no verification object."
+    sources:
+      - kind: literature
+        title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E.\
+          \ et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern\
+          \ Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+        url: "https://doi.org/10.5194/hessd-7-4371-2010"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+          \ of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa physical and chemical data."
+        url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E.\
+            \ et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern\
+            \ Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7,\
+            \ 4371-4409."
+          url: "https://doi.org/10.5194/hessd-7-4371-2010"
+          accessed: '2026-10-13'
+        value:
+          min: 6.5
+          max: 6.9
+        note: Lake-profile alkalinity about 2.33 to 2.46 meq/L multiplied by 2.8; rounded dKH equivalents.
+      - source:
+          kind: literature
+          title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+            \ of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa physical and chemical data."
+          url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+          accessed: '2026-10-13'
+        value:
+          min: 5.6
+          max: 7.3
+        note: Jackson alkalinity of 2.00 to 2.59 meq/L multiplied by 2.8; rounded dKH equivalents.
+    tolerance:
+      value:
+        min: 5
+        max: 15
+      confidence: low
+      rationale: "Generator proposed 5 to 12 dKH, checker-a 5 to 18 and checker-b, checker-c, tiebreaker-1\
+        \ and tiebreaker-2 each 5 to 15. The four agreeing votes produce the qualified-majority decision of\
+        \ 5 to 15 dKH with low confidence. OATA recommends 10 to 15 dKH for Malawi cichlids collectively and\
+        \ TankMatcher lists 6 to 14 without primary support. AquariumDomain gives the wider 15 to 25 dKH and\
+        \ Fishstores 10 to 18; those extensions are not adopted. Aquarium Ratgeber labels 3 to 12 as KH but\
+        \ prints a GH unit, and unspecified hardness from other pages is not treated as KH evidence. The lower\
+        \ end includes native 5 to 8 dKH. No controlled species-specific chronic endpoint study was found."
+      sources:
+        - kind: literature
+          title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E.\
+            \ et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern\
+            \ Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7,\
+            \ 4371-4409."
+          url: "https://doi.org/10.5194/hessd-7-4371-2010"
+          accessed: '2026-10-13'
+        - kind: literature
+          title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+            \ of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa physical and chemical data."
+          url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "OATA: How to look after African Malawi cichlids"
+          url: "https://ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-freshwater-fish/how-to-look-after-african-malawi-cichlids/"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "AquariumDomain: Electric Blue Johannii species profile"
+          url: "https://www.aquariumdomain.com/SpeciesProfiles/AfricanCichlids/ElectricBlueJohannii.shtml"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "Aquarium Ratgeber: Kobaltorange-Buntbarsch, Melanochromis johani"
+          url: "https://www.aquarium-ratgeber.com/fische/fischarten/malawi-buntbarsche/kobaltorange-buntbarsch/"
+          accessed: '2026-10-13'
+        - kind: database
+          title: "Seriously Fish: Melanochromis johanni"
+          url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+          accessed: '2026-10-13'
+        - kind: website
+          title: "TankMatcher: Johanni Cichlid water parameters and overlap"
+          url: "https://tankmatcher.com/water-parameters/johanni-cichlid/"
+          accessed: '2026-10-13'
+        - kind: website
+          title: "Fishstores.org: Johanni Cichlid care guide"
+          url: "https://www.fishstores.org/species/johanni-cichlid"
+          accessed: '2026-10-13'
+      evidence:
+        - source:
+            kind: literature
+            title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu,\
+              \ E. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian\
+              \ Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions\
+              \ 7, 4371-4409."
+            url: "https://doi.org/10.5194/hessd-7-4371-2010"
+            accessed: '2026-10-13'
+          value:
+            min: 6.5
+            max: 6.9
+          note: Lake-profile alkalinity about 2.33 to 2.46 meq/L multiplied by 2.8; rounded dKH equivalents.
+        - source:
+            kind: literature
+            title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+              \ of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa physical and chemical\
+              \ data."
+            url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+            accessed: '2026-10-13'
+          value:
+            min: 5.6
+            max: 7.3
+          note: Jackson alkalinity of 2.00 to 2.59 meq/L multiplied by 2.8; rounded dKH equivalents.
+        - source:
+            kind: database
+            title: "Aquarium Ratgeber: Kobaltorange-Buntbarsch, Melanochromis johani"
+            url: "https://www.aquarium-ratgeber.com/fische/fischarten/malawi-buntbarsche/kobaltorange-buntbarsch/"
+            accessed: '2026-10-13'
+          value:
+            min: 3
+            max: 12
+          note: Entry explicitly headed KH; printed hardness unit is inconsistent.
+        - source:
+            kind: database
+            title: "AquariumDomain: Electric Blue Johannii species profile"
+            url: "https://www.aquariumdomain.com/SpeciesProfiles/AfricanCichlids/ElectricBlueJohannii.shtml"
+            accessed: '2026-10-13'
+          value:
+            min: 15
+            max: 25
+          note: Printed KH recommendation; not accepted as proof of long-term tolerance.
+        - source:
+            kind: database
+            title: "Seriously Fish: Melanochromis johanni"
+            url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+            accessed: '2026-10-13'
+          value:
+            min: 10
+            max: 25
+          note: Hardness without a stated type.
+        - source:
+            kind: database
+            title: "OATA: How to look after African Malawi cichlids"
+            url: "https://ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-freshwater-fish/how-to-look-after-african-malawi-cichlids/"
+            accessed: '2026-10-13'
+          value:
+            min: 10
+            max: 15
+          note: "General Malawi care guidance, not species trials."
+        - source:
+            kind: website
+            title: "Fishstores.org: Johanni Cichlid care guide"
+            url: "https://www.fishstores.org/species/johanni-cichlid"
+            accessed: '2026-10-13'
+          value:
+            min: 10
+            max: 18
+        - source:
+            kind: website
+            title: "TankMatcher: Johanni Cichlid water parameters and overlap"
+            url: "https://tankmatcher.com/water-parameters/johanni-cichlid/"
+            accessed: '2026-10-13'
+          value:
+            min: 6
+            max: 14
+          note: Species parameter database with no primary basis provided.
+      verification:
+        method: qualified-majority
+        votes:
+          agree: 4
+          total: 6
+  maxSizeCm:
+    value:
+      male: 12
+      female: 10
+    confidence: medium
+    rationale: "Generator, checker-a and checker-b proposed 12 cm males and 10 cm females; checker-c proposed\
+      \ 12 and 10.5 cm. Retain 12 and 10 as rounded adult aquarium planning sizes. Aquarium Guide and Glaser\
+      \ support fish reaching 12 cm, while Malawi.si gives 11 and 9 cm before unspecified captive enlargement.\
+      \ TropicalFreshwaterFish explicitly gives 12 and 10.5 but has inconsistent female coloration, so it does\
+      \ not outweigh the otherwise consistent sex difference. Seriously Fish displays 12 cm standard length,\
+      \ not an explicit female maximum; FishBase gives 10 cm total length for males or unsexed fish. These\
+      \ conventions and the inferred female ceiling keep confidence medium; they are not record sizes."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Melanochromis johanni"
+        url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aquarium Guide: Kobalt-Orange-Buntbarsch, Melanochromis johannii"
+        url: "https://www.aquarium-guide.de/kobalt-orange-buntbarsch.htm"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase: Pseudotropheus johannii species summary"
+        url: "https://www.fishbase.se/summary/Pseudotropheus-johannii.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase: Pseudotropheus johannii, Bluegray mbuna"
+        url: "https://www.fishbase.se/summary/Melanochromis-johannii.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Fish.Net: Blue electric cichlid, Melanochromis johannii"
+        url: "https://en.aqua-fish.net/fish/blue-electric-cichlid"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Malawi.si: Pseudotropheus johannii, unknown locality"
+        url: "https://www.malawi.si/Malawi/Pseudotropheus/Pseudotropheus%20johannii/slides/Pseudotropheus%20johannii.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "AquaInfo: Pseudotropheus johannii, Bluegray Mbuna"
+        url: "https://aquainfo.nl/en/article/pseudotropheus-johannii-bluegray-mbuna/"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Schäfer, F. (2021). Melanochromis johannii. Aquarium Glaser"
+        url: "https://www.aquariumglaser.de/fischarchiv/melanochromis-johannii/"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "TropicalFreshwaterFish: Johannii, Melanochromis johannii"
+        url: "https://tropicalfreshwaterfish.com/species/Melanochromis_johannii.html"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: database
+          title: "Aqua-Fish: Blue electric cichlid, Melanochromis johannii"
+          url: "https://en.aqua-fish.net/fish/blue-electric-cichlid"
+          accessed: '2026-10-13'
+        value:
+          male: 12
+        note: Unsexed 8 to 12 cm aquarium range; no separate female maximum given.
+      - source:
+          kind: database
+          title: "Deproost: Pseudotropheus johannii, Bluegray Mbuna. AquaInfo"
+          url: "https://aquainfo.nl/en/article/pseudotropheus-johannii-bluegray-mbuna/"
+          accessed: '2026-10-13'
+        value:
+          male: 10
+        note: Narrative male size; female described as smaller without a number.
+      - source:
+          kind: database
+          title: "FishBase: Pseudotropheus johannii species summary"
+          url: "https://www.fishbase.se/summary/Pseudotropheus-johannii.html"
+          accessed: '2026-10-13'
+        value:
+          male: 10
+        note: Male or unsexed total length.
+      - source:
+          kind: database
+          title: "Malawi.si: Pseudotropheus johannii, unknown locality"
+          url: "https://www.malawi.si/Malawi/Pseudotropheus/Pseudotropheus%20johannii/slides/Pseudotropheus%20johannii.html"
+          accessed: '2026-10-13'
+        value:
+          male: 11
+          female: 9
+        note: Reported maxima before the unspecified additional captive growth.
+      - source:
+          kind: database
+          title: "Seriously Fish: Melanochromis johanni"
+          url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+          accessed: '2026-10-13'
+        value:
+          male: 12
+          female: 12
+        note: Unsexed 12 cm standard length; not directly equivalent to total length.
+      - source:
+          kind: database
+          title: "FishBase: Pseudotropheus johannii, Bluegray mbuna"
+          url: "https://www.fishbase.se/summary/Melanochromis-johannii.html"
+          accessed: '2026-10-13'
+        value:
+          male: 10
+          female: 10
+        note: Male or unsexed.
+      - source:
+          kind: website
+          title: "TropicalFreshwaterFish: Johannii, Melanochromis johannii"
+          url: "https://tropicalfreshwaterfish.com/species/Melanochromis_johannii.html"
+          accessed: '2026-10-13'
+        value:
+          male: 12
+          female: 10.5
+        note: Explicit sex-specific upper sizes. Its inconsistent female colour description was not used.
+  predation:
+    value: 1
+    confidence: low
+    rationale: "Generator, checker-a, checker-c, tiebreaker-1 and tiebreaker-2 proposed level 1; checker-b\
+      \ proposed level 0. The tally therefore fixes level 1 by qualified majority, five of six votes, with\
+      \ low confidence. Aquarismo Paulista explicitly includes newborn fish among opportunistic foods and FishProfiles\
+      \ mentions feeding live fish, although its distribution field is erroneous. Seriously Fish and Fish Laboratory\
+      \ warn about fry losses without identifying the predator or measuring prey. Aquario instead calls the\
+      \ species nonpredatory, and the small FishBase field sample contains algae only. This supports a provisional\
+      \ fry-taking category, not habitual piscivory; the 2 cm boundary is the rubric convention rather than\
+      \ a measured prey limit."
+    sources:
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: Pseudotropheus species list, updated 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Pseudotropheus"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Rechi, E. (2020). Pseudotropheus johannii species care sheet, Aquarismo Paulista"
+        url: "https://www.aquarismopaulista.com/pseudotropheus-johannii/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Melanochromis johanni"
+        url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aquario: Melanochromis johannii care profile"
+        url: "https://aquario.me/es/fish/melanochromis-johannii"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase: Pseudotropheus johannii, Bluegray mbuna"
+        url: "https://www.fishbase.se/summary/Melanochromis-johannii.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aquario: Melanochromis johannii care sheet"
+        url: "https://aquario.me/fish/melanochromis-johannii"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase diet composition for Pseudotropheus johannii, after Reinthal (1990)"
+        url: "https://www.fishbase.se/trophiceco/DietCompoSummary.php?dietcode=1545&genusname=Pseudotropheus&speciesname=johannii"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishProfiles: Melanochromis johannii"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Melanochromis_johannii/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase: ecology of Pseudotropheus johannii"
+        url: "https://www.fishbase.se/Ecology/FishEcologySummary.php?StockCode=2540&GenusName=Pseudotropheus&SpeciesName=johannii"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Fish Laboratory: Johanni Cichlid (Pseudotropheus johannii), species care guide"
+        url: "https://www.fishlaboratory.com/fish/johanni-cichlid/"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Einrichtungsbeispiele: Dark Stones of Malawi, aquarium 20285"
+        url: "https://www.einrichtungsbeispiele.de/becken-beispiele/malawisee/dark-stones-of-malawi---nur-noch-als-beispiel-von-bossie1704_20285.html"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: database
+          title: "Rechi, E. (2020). Pseudotropheus johannii species care sheet, Aquarismo Paulista"
+          url: "https://www.aquarismopaulista.com/pseudotropheus-johannii/"
+          accessed: '2026-10-13'
+        value: 1
+        note: Opportunistic consumption of newborn fish; converted to the fry-taking rubric level.
+      - source:
+          kind: database
+          title: "Seriously Fish: Melanochromis johanni"
+          url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+          accessed: '2026-10-13'
+        value: 1
+        note: "Fry predation risk in a community; indirect support only, no prey-size measurement."
+      - source:
+          kind: database
+          title: "Aquario: Melanochromis johannii care profile"
+          url: "https://aquario.me/es/fish/melanochromis-johannii"
+          accessed: '2026-10-13'
+        value: 0
+        note: Explicit nonpredatory designation for small fish; conflicting care-sheet classification.
+      - source:
+          kind: database
+          title: "FishBase: Pseudotropheus johannii, Bluegray mbuna"
+          url: "https://www.fishbase.se/summary/Melanochromis-johannii.html"
+          accessed: '2026-10-13'
+        value: 1
+        note: Omnivorous on plant and animal matter; no mention of piscivory.
+      - source:
+          kind: database
+          title: "FishBase: Pseudotropheus johannii diet composition after Reinthal (1990)"
+          url: "https://www.fishbase.se/trophiceco/DietCompoSummary.php?dietcode=1545&genusname=Pseudotropheus&speciesname=johannii"
+          accessed: '2026-10-13'
+        value: 0
+        note: "Five fish from Cape Maclear, with about 100 percent algal and diatom contents after rounding;\
+          \ no fish prey reported."
+      - source:
+          kind: database
+          title: "Aquario: Melanochromis johannii care and compatibility entry"
+          url: "https://aquario.me/fish/melanochromis-johannii"
+          accessed: '2026-10-13'
+        value: 0
+        note: Explicit nonpredator classification toward small fish.
+      - source:
+          kind: database
+          title: "FishBase: ecology of Pseudotropheus johannii"
+          url: "https://www.fishbase.se/Ecology/FishEcologySummary.php?StockCode=2540&GenusName=Pseudotropheus&SpeciesName=johannii"
+          accessed: '2026-10-13'
+        value: 0
+        note: Plant-focused feeding and trophic level 2 support this classification indirectly.
+      - source:
+          kind: database
+          title: "FishProfiles: Melanochromis johannii"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Melanochromis_johannii/"
+          accessed: '2026-10-13'
+        value: 1
+        note: Live fish are included in feeding advice. Mapping to occasional small-fish consumption is inferred;
+          neither prey size nor frequency is given. The profile incorrectly labels the distribution as Central
+          America as well as Lake Malawi.
+      - source:
+          kind: website
+          title: "Fish Laboratory: Johanni Cichlid (Pseudotropheus johannii), species care guide"
+          url: "https://www.fishlaboratory.com/fish/johanni-cichlid/"
+          accessed: '2026-10-13'
+        value: 1
+        note: Rubric mapping from the warning to shelter fry until they are large enough to escape consumption;
+          the identity of the eater and prey size are not specified.
+      - source:
+          kind: website
+          title: "Einrichtungsbeispiele: Dark Stones of Malawi, aquarium 20285"
+          url: "https://www.einrichtungsbeispiele.de/becken-beispiele/malawisee/dark-stones-of-malawi---nur-noch-als-beispiel-von-bossie1704_20285.html"
+          accessed: '2026-10-13'
+        value: 1
+        note: A keeper species note includes occasional juvenile fish as food; no prey measurements or controlled
+          observations are supplied.
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 5
+        total: 6
+  diet:
+    value:
+      type: aufwuchs
+      bloatSensitive: true
+      foods:
+        - vegetable-rich mbuna pellets
+        - spirulina flakes
+        - algal biofilm
+        - small portions of Artemia or Daphnia
+        - blanched leafy vegetables
+    confidence: medium
+    rationale: "Generator, checker-a, checker-b, tiebreaker-1 and tiebreaker-2 proposed aufwuchs with bloatSensitive\
+      \ true; checker-c proposed omnivore with the same flag. Five of six votes fix aufwuchs by qualified majority\
+      \ with medium confidence. The foods are retained exactly from the generator as selected by the tally.\
+      \ FishBase records algae in all diet categories of a five-fish sample after Reinthal, while the Nordic\
+      \ register and Aquarium Guide independently describe rock grazing. FishBase summary, Aquario and AquariumDomain\
+      \ use omnivore and supplementary animals occur, but the rubric category expresses the dominant grazing\
+      \ niche and plant-rich staple. Aquarismo Paulista, Aqua-Fish and the Practical Fishkeeping mbuna article\
+      \ support the digestive-risk precaution; protein alone is not a demonstrated cause. Seriously Fish makes\
+      \ no explicit bloat claim. CRC confirms algal grazing only. The original Reinthal study was not readable\
+      \ as open access and the Squeaky retailer page failed to load, so neither is used as directly read evidence."
+    sources:
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: species of Pseudotropheus, update of 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Pseudotropheus"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Konings, A. F. and Stauffer, J. R. (2012). Review of the Lake Malawi genus Melanochromis (Teleostei:\
+          \ Cichlidae) with a description of a new species. Zootaxa 3258, 1-37."
+        url: "https://doi.org/10.11646/zootaxa.3258.1.1"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Gay, J. The mbuna keeper's survival guide. Practical Fishkeeping."
+        url: "https://www.practicalfishkeeping.co.uk/features/the-mbuna-keepers-survival-guide/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsällskapet species register: Pseudotropheus johannii"
+        url: "https://www.ciklid.org/artregister/art.php?ID=715"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aquarium Guide: Kobalt-Orange-Buntbarsch, Melanochromis johannii"
+        url: "https://www.aquarium-guide.de/kobalt-orange-buntbarsch.htm"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Rechi, E. (2020). Pseudotropheus johannii species care sheet, Aquarismo Paulista"
+        url: "https://www.aquarismopaulista.com/pseudotropheus-johannii/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase: Pseudotropheus johannii species summary"
+        url: "https://www.fishbase.se/summary/Pseudotropheus-johannii.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Cichlid Room Companion: Pseudotropheus johannii, public verification summary"
+        url: "https://cichlidae.com/species.php?id=W8CFHM4RsW2JNCTfUEJ_qA"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase: Pseudotropheus johannii, Bluegray mbuna"
+        url: "https://www.fishbase.se/summary/Melanochromis-johannii.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Melanochromis johanni"
+        url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase: Pseudotropheus johannii diet composition after Reinthal (1990)"
+        url: "https://www.fishbase.se/trophiceco/DietCompoSummary.php?dietcode=1545&genusname=Pseudotropheus&speciesname=johannii"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase: ecology of Pseudotropheus johannii"
+        url: "https://www.fishbase.se/Ecology/FishEcologySummary.php?StockCode=2540&GenusName=Pseudotropheus&SpeciesName=johannii"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "AquaInfo: Pseudotropheus johannii, Bluegray Mbuna"
+        url: "https://aquainfo.nl/en/article/pseudotropheus-johannii-bluegray-mbuna/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aquario: Melanochromis johannii care and compatibility entry"
+        url: "https://aquario.me/fish/melanochromis-johannii"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Malawi.si: Pseudotropheus johannii, unknown locality"
+        url: "https://www.malawi.si/Malawi/Pseudotropheus/Pseudotropheus%20johannii/slides/Pseudotropheus%20johannii.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "AquariumDomain: Electric Blue Johannii African Cichlid species profile"
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/AfricanCichlids/ElectricBlueJohannii.shtml"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Fish: Blue electric cichlid, Melanochromis johannii"
+        url: "https://en.aqua-fish.net/fish/blue-electric-cichlid"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "The Aquarium Wiki: Electric Blue Johannii, structured species care sheet"
+        url: "https://www.theaquariumwiki.com/wiki/Melanochromis_johannii"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Fish Laboratory: Johanni Cichlid (Pseudotropheus johannii), species care guide"
+        url: "https://www.fishlaboratory.com/fish/johanni-cichlid/"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Schäfer, F. (2021). Melanochromis johannii. Aquarium Glaser"
+        url: "https://www.aquariumglaser.de/fischarchiv/melanochromis-johannii/"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Aquarium Glaser: Melanochromis johannii (F. Schaefer, 2021)"
+        url: "https://www.aquariumglaser.de/en/25-perchlike-fishes/melanochromis-johannii-2/"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "AquariumNexus: Johanni Cichlid care guide"
+        url: "https://www.aquariumnexus.com/johanni-cichlid/"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: "Gay, J. The mbuna keeper's survival guide. Practical Fishkeeping."
+          url: "https://www.practicalfishkeeping.co.uk/features/the-mbuna-keepers-survival-guide/"
+          accessed: '2026-10-13'
+        value:
+          type: aufwuchs
+          bloatSensitive: true
+        note: General mbuna advice favors algae-based food with limited animal protein and associates rich
+          feeding with bloat while allowing other causes. Applied to this verified algae-grazing species.
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsällskapet species register: Pseudotropheus johannii"
+          url: "https://www.ciklid.org/artregister/art.php?ID=715"
+          accessed: '2026-10-13'
+        value:
+          type: aufwuchs
+          foods:
+            - algae
+            - plankton
+        note: Grazing is the main natural feeding activity; bloat sensitivity is not specified.
+      - source:
+          kind: database
+          title: "Aquarium Guide: Kobalt-Orange-Buntbarsch, Melanochromis johannii"
+          url: "https://www.aquarium-guide.de/kobalt-orange-buntbarsch.htm"
+          accessed: '2026-10-13'
+        value:
+          type: aufwuchs
+          foods:
+            - algae
+            - small invertebrates
+        note: Natural biofilm feeding; no explicit bloat flag.
+      - source:
+          kind: database
+          title: "Rechi, E. (2020). Pseudotropheus johannii species care sheet, Aquarismo Paulista"
+          url: "https://www.aquarismopaulista.com/pseudotropheus-johannii/"
+          accessed: '2026-10-13'
+        value:
+          type: omnivore
+          bloatSensitive: true
+        note: "Source category is omnivore, but its aquarium advice prioritizes plant food and restricts animal\
+          \ protein."
+      - source:
+          kind: database
+          title: "FishBase: Pseudotropheus johannii species summary"
+          url: "https://www.fishbase.se/summary/Pseudotropheus-johannii.html"
+          accessed: '2026-10-13'
+        value:
+          type: omnivore
+        note: Broad biological category includes both plants and animals.
+      - source:
+          kind: database
+          title: "FishBase: Pseudotropheus johannii, Bluegray mbuna"
+          url: "https://www.fishbase.se/summary/Melanochromis-johannii.html"
+          accessed: '2026-10-13'
+        value:
+          type: omnivore
+        note: Plant and animal matter.
+      - source:
+          kind: database
+          title: "Seriously Fish: Melanochromis johanni"
+          url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+          accessed: '2026-10-13'
+        value:
+          type: aufwuchs
+        note: Rubric mapping from a large vegetable component with supplementary animal food; bloat sensitivity
+          is not stated.
+      - source:
+          kind: database
+          title: "FishBase: Pseudotropheus johannii diet composition after Reinthal (1990)"
+          url: "https://www.fishbase.se/trophiceco/DietCompoSummary.php?dietcode=1545&genusname=Pseudotropheus&speciesname=johannii"
+          accessed: '2026-10-13'
+        value:
+          type: aufwuchs
+        note: All recorded contents in a five-fish sample are algal material; bloat not examined.
+      - source:
+          kind: database
+          title: "FishBase: ecology of Pseudotropheus johannii"
+          url: "https://www.fishbase.se/Ecology/FishEcologySummary.php?StockCode=2540&GenusName=Pseudotropheus&SpeciesName=johannii"
+          accessed: '2026-10-13'
+        value:
+          type: aufwuchs
+        note: Plant-focused grazing and trophic level 2.
+      - source:
+          kind: database
+          title: "Malawi.si: Pseudotropheus johannii, unknown locality"
+          url: "https://www.malawi.si/Malawi/Pseudotropheus/Pseudotropheus%20johannii/slides/Pseudotropheus%20johannii.html"
+          accessed: '2026-10-13'
+        value:
+          type: omnivore
+        note: "Algae, plankton and small invertebrates."
+      - source:
+          kind: database
+          title: "Aquario: Melanochromis johannii care and compatibility entry"
+          url: "https://aquario.me/fish/melanochromis-johannii"
+          accessed: '2026-10-13'
+        value:
+          type: omnivore
+          bloatSensitive: true
+        note: "Diet-related bloat warning, particularly for mammalian meat or insufficient plant matter."
+      - source:
+          kind: database
+          title: "AquariumDomain: Electric Blue Johannii species profile"
+          url: "https://www.aquariumdomain.com/SpeciesProfiles/AfricanCichlids/ElectricBlueJohannii.shtml"
+          accessed: '2026-10-13'
+        value:
+          type: omnivore
+        note: Algal biofilm and small invertebrates; no bloat assessment.
+      - source:
+          kind: database
+          title: "Aqua-Fish: Blue electric cichlid, Melanochromis johannii"
+          url: "https://en.aqua-fish.net/fish/blue-electric-cichlid"
+          accessed: '2026-10-13'
+        value:
+          type: omnivore
+          bloatSensitive: true
+        note: Mixed feeding with digestive-risk warning for excessive rich animal foods.
+      - source:
+          kind: database
+          title: "Deproost: Pseudotropheus johannii, Bluegray Mbuna. AquaInfo"
+          url: "https://aquainfo.nl/en/article/pseudotropheus-johannii-bluegray-mbuna/"
+          accessed: '2026-10-13'
+        value:
+          type: aufwuchs
+        note: Structured herbivore classification conflicts with its live-food recommendation.
+      - source:
+          kind: database
+          title: "Cichlid Room Companion: Pseudotropheus johannii, public verification summary"
+          url: "https://cichlidae.com/species.php?id=W8CFHM4RsW2JNCTfUEJ_qA"
+          accessed: '2026-10-13'
+        value:
+          type: aufwuchs
+        note: "Verification only: public algal-grazing category, not the origin of the selected value."
+      - source:
+          kind: website
+          title: "Aquarium Glaser: Melanochromis johannii (F. Schaefer, 2021)"
+          url: "https://www.aquariumglaser.de/en/25-perchlike-fishes/melanochromis-johannii-2/"
+          accessed: '2026-10-13'
+        value:
+          type: aufwuchs
+          bloatSensitive: true
+        note: "Rich in fibre and vitamins, not too fat or protein-rich."
+      - source:
+          kind: website
+          title: "The Aquarium Wiki: Electric Blue Johannii, structured species care sheet"
+          url: "https://www.theaquariumwiki.com/wiki/Melanochromis_johannii"
+          accessed: '2026-10-13'
+        value:
+          type: omnivore
+          bloatSensitive: true
+        note: "The overview uses omnivore, while the husbandry text recommends low protein and explicitly associates\
+          \ excess protein with bloat."
+      - source:
+          kind: website
+          title: "Fish Laboratory: Johanni Cichlid (Pseudotropheus johannii), species care guide"
+          url: "https://www.fishlaboratory.com/fish/johanni-cichlid/"
+          accessed: '2026-10-13'
+        value:
+          type: omnivore
+          bloatSensitive: true
+        note: "Bloat susceptibility is reported, but the connection with overfeeding is explicitly uncertain."
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 5
+        total: 6
+  aggressionConspecific:
+    value: 3
+    confidence: high
+    rationale: "All four main runs proposed level 3. Species databases describe strong male rivalry and repeated\
+      \ pursuit of females; the Schwarze breeding report separated mature males and recorded forceful courtship.\
+      \ A spacious one-male harem with refuges reduces the pressure. This fits persistent harassment and injury\
+      \ risk under poor housing, without establishing level 4 killing in the recommended adult unit."
+    sources:
+      - kind: literature
+        title: "Schwarze, K. Breeding Melanochromis johannii. Hamilton and District Aquarium Society breeding\
+          \ report, republished by AquaInfo"
+        url: "https://aquainfo.nl/en/breeding-melanochromis-johannii/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsällskapet species register: Pseudotropheus johannii"
+        url: "https://www.ciklid.org/artregister/art.php?ID=715"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Melanochromis johanni"
+        url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Fish.Net: Blue electric cichlid, Melanochromis johannii"
+        url: "https://en.aqua-fish.net/fish/blue-electric-cichlid"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Malawi.si: Pseudotropheus johannii, unknown locality"
+        url: "https://www.malawi.si/Malawi/Pseudotropheus/Pseudotropheus%20johannii/slides/Pseudotropheus%20johannii.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "AquariumDomain: Electric Blue Johannii species profile"
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/AfricanCichlids/ElectricBlueJohannii.shtml"
+        accessed: '2026-10-13'
+      - kind: archive
+        title: cichlids.com forum thread 322
+        url: "https://www.cichlids.com/disc/read.php?1,322"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: "Breeding Melanochromis johannii. AquaInfo, reproduced breeding report"
+          url: "https://aquainfo.nl/en/breeding-melanochromis-johannii/"
+          accessed: '2026-10-13'
+        value: 3
+        note: Adult males had to be housed separately.
+      - source:
+          kind: database
+          title: "Seriously Fish: Melanochromis johanni"
+          url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+          accessed: '2026-10-13'
+        value: 3
+        note: Male aggression and courtship pursuit mapped to rubric.
+      - source:
+          kind: database
+          title: "AquariumDomain: Electric Blue Johannii species profile"
+          url: "https://www.aquariumdomain.com/SpeciesProfiles/AfricanCichlids/ElectricBlueJohannii.shtml"
+          accessed: '2026-10-13'
+        value: 3
+        note: Subordinate males are strongly harassed; multiple males require a substantially larger aquarium.
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet: Pseudotropheus johannii species register"
+          url: "https://www.ciklid.org/artregister/art.php?ID=715"
+          accessed: '2026-10-13'
+        value: 3
+        note: Strong aggression especially toward its own species.
+      - source:
+          kind: database
+          title: "Aqua-Fish.Net: Blue electric cichlid, Melanochromis johannii"
+          url: "https://en.aqua-fish.net/fish/blue-electric-cichlid"
+          accessed: '2026-10-13'
+        value: 3
+        note: Described as aggressive and territorial towards its own species.
+      - source:
+          kind: archive
+          title: cichlids.com forum thread 322
+          url: "https://www.cichlids.com/disc/read.php?1,322"
+          accessed: '2026-10-13'
+        value: 3
+        note: An isolated keeper report describes persistent female pursuit of a male; weak contextual evidence.
+  aggressionHeterospecific:
+    value: 2
+    confidence: medium
+    rationale: "All four main runs proposed level 2. Seriously Fish, Malawi.si and Aquarismo Paulista allow\
+      \ suitable other mbuna and describe less pressure on them than on conspecifics. Fischlexikon and Aqua-Fish\
+      \ give stronger warnings, and the Schwarze report describes fin damage near a spawning site in a small\
+      \ mixed tank. Territorial exclusion in a suitable spacious tank fits level 2; the stronger accounts do\
+      \ not establish sustained attacks beyond the territory under those conditions."
+    sources:
+      - kind: literature
+        title: "Schwarze: Breeding Melanochromis johannii, Hamilton and District Aquarium Society bulletin,\
+          \ republished by AquaInfo"
+        url: "https://aquainfo.nl/en/breeding-melanochromis-johannii/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Melanochromis johanni"
+        url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Malawi.si: Pseudotropheus johannii 'Gome'"
+        url: "https://malawi.si/Malawi/Pseudotropheus/Pseudotropheus%20johannii/slides/Pseudotropheus%20johannii%20%27Gome%27.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Fischlexikon: Pseudotropheus johannii"
+        url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000002462"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Fish.Net: Blue electric cichlid, Melanochromis johannii"
+        url: "https://en.aqua-fish.net/fish/blue-electric-cichlid"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Malawi.si: Pseudotropheus johannii, unknown locality"
+        url: "https://www.malawi.si/Malawi/Pseudotropheus/Pseudotropheus%20johannii/slides/Pseudotropheus%20johannii.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aquario: Melanochromis johannii care sheet"
+        url: "https://aquario.me/fish/melanochromis-johannii"
+        accessed: '2026-10-13'
+      - kind: archive
+        title: cichlids.com forum thread 1409
+        url: "https://www.cichlids.com/disc/read.php?1,1409"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: "Schwarze: Breeding Melanochromis johannii, Hamilton and District Aquarium Society bulletin,\
+            \ republished by AquaInfo"
+          url: "https://aquainfo.nl/en/breeding-melanochromis-johannii/"
+          accessed: '2026-10-13'
+        value: 3
+        note: Fin damage to fish approaching the spawning site in a smaller mixed aquarium.
+      - source:
+          kind: database
+          title: "Seriously Fish: Melanochromis johanni"
+          url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+          accessed: '2026-10-13'
+        value: 2
+        note: Successful mixed mbuna keeping despite territorial aggression.
+      - source:
+          kind: database
+          title: "Aqua-Fish: Blue electric cichlid, Melanochromis johannii"
+          url: "https://en.aqua-fish.net/fish/blue-electric-cichlid"
+          accessed: '2026-10-13'
+        value: 3
+        note: Strong aggression summary and recommendation for robust companions mapped cautiously.
+      - source:
+          kind: database
+          title: "Aquario: Melanochromis johannii care sheet"
+          url: "https://aquario.me/fish/melanochromis-johannii"
+          accessed: '2026-10-13'
+        value: 2
+        note: Relative tolerance except toward similarly coloured fish.
+      - source:
+          kind: database
+          title: "Malawi.si: Pseudotropheus johannii, unknown locality"
+          url: "https://www.malawi.si/Malawi/Pseudotropheus/Pseudotropheus%20johannii/slides/Pseudotropheus%20johannii.html"
+          accessed: '2026-10-13'
+        value: 2
+        note: Other species generally tolerated in an appropriate group.
+      - source:
+          kind: database
+          title: "Fischlexikon: Pseudotropheus johannii"
+          url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000002462"
+          accessed: '2026-10-13'
+        value: 3
+        note: Broader interspecific aggression warning; stronger interpretation than the selected level.
+      - source:
+          kind: archive
+          title: cichlids.com forum thread 1409
+          url: "https://www.cichlids.com/disc/read.php?1,1409"
+          accessed: '2026-10-13'
+        value: 3
+        note: Community warning that johanni is aggressive; low weight and trade identity uncertain.
+  territory:
+    value:
+      size: small
+      breedingOnly: false
+    confidence: low
+    rationale: "Generator and checker-b proposed small with breedingOnly false; checker-a and checker-c proposed\
+      \ large with breedingOnly false. Select small as a provisional shelter-centered aquarium claim: the Schwarze\
+      \ report identifies a spawning place bounded by rocks, and the species care sheets emphasize caves and\
+      \ broken sightlines. No source measures a johannii territory against the rubric 30 or 50 cm scale. The\
+      \ large proposals infer extent from multi-male tank requirements or other mbuna and are less species-specific.\
+      \ Persistent aquarium male territoriality supports breedingOnly false, although Aquarium Ratgeber explicitly\
+      \ describes roaming fish without permanent natural territories. Spatial extent and aquarium-to-wild differences\
+      \ remain uncertain."
+    sources:
+      - kind: literature
+        title: "Schwarze, K. Breeding Melanochromis johannii. Hamilton and District Aquarium Society breeding\
+          \ report, republished by AquaInfo"
+        url: "https://aquainfo.nl/en/breeding-melanochromis-johannii/"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Genner and Turner (2005). The mbuna cichlids of Lake Malawi: a model for rapid speciation and\
+          \ adaptive radiation"
+        url: "https://doi.org/10.1111/j.1467-2679.2005.00173.x"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Melanochromis johanni"
+        url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aquarium Ratgeber: Kobaltorange-Buntbarsch, Melanochromis johani"
+        url: "https://www.aquarium-ratgeber.com/fische/fischarten/malawi-buntbarsche/kobaltorange-buntbarsch/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Fish.Net: Blue electric cichlid, Melanochromis johannii"
+        url: "https://en.aqua-fish.net/fish/blue-electric-cichlid"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "AquariumDomain: Electric Blue Johannii species profile"
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/AfricanCichlids/ElectricBlueJohannii.shtml"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: "Genner and Turner (2005). The mbuna cichlids of Lake Malawi: a model for rapid speciation\
+            \ and adaptive radiation"
+          url: "https://doi.org/10.1111/j.1467-2679.2005.00173.x"
+          accessed: '2026-10-13'
+        value:
+          breedingOnly: false
+        note: "General mbuna evidence for year-round territoriality, not a measured johannii territory."
+      - source:
+          kind: literature
+          title: "Schwarze: Breeding Melanochromis johannii, Hamilton and District Aquarium Society bulletin,\
+            \ republished by AquaInfo"
+          url: "https://aquainfo.nl/en/breeding-melanochromis-johannii/"
+          accessed: '2026-10-13'
+        value:
+          size: small
+          breedingOnly: true
+        note: A defended rock-enclosed spawning site; no dimensions reported.
+      - source:
+          kind: database
+          title: "AquariumDomain: Electric Blue Johannii species profile"
+          url: "https://www.aquariumdomain.com/SpeciesProfiles/AfricanCichlids/ElectricBlueJohannii.shtml"
+          accessed: '2026-10-13'
+        value:
+          size: large
+          breedingOnly: false
+        note: Inferred from severe male rivalry and much larger tank requirement for multiple males.
+      - source:
+          kind: database
+          title: "Seriously Fish: Melanochromis johanni"
+          url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+          accessed: '2026-10-13'
+        value:
+          size: small
+          breedingOnly: false
+        note: "Size inferred from rocky shelter-based husbandry, not measured."
+      - source:
+          kind: database
+          title: "Aquarium Ratgeber: Kobaltorange-Buntbarsch, Melanochromis johani"
+          url: "https://www.aquarium-ratgeber.com/fische/fischarten/malawi-buntbarsche/kobaltorange-buntbarsch/"
+          accessed: '2026-10-13'
+        value:
+          size: none
+          breedingOnly: false
+        note: Reports no lasting territory in the natural habitat.
+  habitatZones:
+    value:
+      - rock
+      - sand
+    confidence: high
+    rationale: "Generator proposed rock, sand and openWater; checker-a rock only; checker-b and checker-c rock\
+      \ and sand. The Nordic register and Malawi.si directly describe the rock-sand transition, corroborated\
+      \ by CRC, so rock and sand are retained. Plankton feeding above the substrate and swimming gaps between\
+      \ rocks do not establish a separate open-water habitat requirement. This is a rock-associated fish that\
+      \ also needs the sandy spaces of the intermediate habitat."
+    sources:
+      - kind: database
+        title: "Nordiska Ciklidsällskapet species register: Pseudotropheus johannii"
+        url: "https://www.ciklid.org/artregister/art.php?ID=715"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Malawi.si: Pseudotropheus johannii 'Gome'"
+        url: "https://malawi.si/Malawi/Pseudotropheus/Pseudotropheus%20johannii/slides/Pseudotropheus%20johannii%20%27Gome%27.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Cichlid Room Companion: Pseudotropheus johannii, public verification summary"
+        url: "https://cichlidae.com/species.php?id=W8CFHM4RsW2JNCTfUEJ_qA"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Melanochromis johanni"
+        url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase: Pseudotropheus johannii, Bluegray mbuna"
+        url: "https://www.fishbase.se/summary/Melanochromis-johannii.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Malawi.si: Pseudotropheus johannii, unknown locality"
+        url: "https://www.malawi.si/Malawi/Pseudotropheus/Pseudotropheus%20johannii/slides/Pseudotropheus%20johannii.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase: Pseudotropheus johannii species summary"
+        url: "https://www.fishbase.se/summary/Pseudotropheus-johannii.html"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: database
+          title: "FishBase: Pseudotropheus johannii species summary"
+          url: "https://www.fishbase.se/summary/Pseudotropheus-johannii.html"
+          accessed: '2026-10-13'
+        value:
+          - rock
+      - source:
+          kind: database
+          title: "Seriously Fish: Melanochromis johanni"
+          url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+          accessed: '2026-10-13'
+        value:
+          - rock
+          - sand
+        note: Aquarium habitat requirements.
+      - source:
+          kind: database
+          title: "Cichlid Room Companion: Pseudotropheus johannii, public verification summary"
+          url: "https://cichlidae.com/species.php?id=W8CFHM4RsW2JNCTfUEJ_qA"
+          accessed: '2026-10-13'
+        value:
+          - rock
+          - sand
+        note: "Verification only: intermediate lake habitat."
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet: Pseudotropheus johannii species register"
+          url: "https://www.ciklid.org/artregister/art.php?ID=715"
+          accessed: '2026-10-13'
+        value:
+          - rock
+          - sand
+        note: Intermediate habitat at 5 to 15 m.
+      - source:
+          kind: database
+          title: "Malawi.si: Pseudotropheus johannii, unknown locality"
+          url: "https://www.malawi.si/Malawi/Pseudotropheus/Pseudotropheus%20johannii/slides/Pseudotropheus%20johannii.html"
+          accessed: '2026-10-13'
+        value:
+          - rock
+          - sand
+        note: Rock-sand interface and rocky areas at 3 to 18 m.
+      - source:
+          kind: database
+          title: "FishBase: Pseudotropheus johannii, Bluegray mbuna"
+          url: "https://www.fishbase.se/summary/Melanochromis-johannii.html"
+          accessed: '2026-10-13'
+        value:
+          - rock
+        note: Rocky habitats of the shoreline.
+      - source:
+          kind: database
+          title: "Malawi.si: Pseudotropheus johannii 'Gome'"
+          url: "https://malawi.si/Malawi/Pseudotropheus/Pseudotropheus%20johannii/slides/Pseudotropheus%20johannii%20%27Gome%27.html"
+          accessed: '2026-10-13'
+        value:
+          - rock
+          - sand
+          - openWater
+  social:
+    value:
+      structure: harem
+      ratio: 3
+    confidence: high
+    rationale: "All four main runs recommend one male with at least three females. Seriously Fish, Malawi.si\
+      \ and Aquarismo Paulista independently support that unit to divide courtship pressure. The aquarium ratio\
+      \ does not imply exclusive mates or a lasting wild family; larger colonies require additional space."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Melanochromis johanni"
+        url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Rechi, E. (2020). Pseudotropheus johannii species care sheet, Aquarismo Paulista"
+        url: "https://www.aquarismopaulista.com/pseudotropheus-johannii/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Malawi.si: Pseudotropheus johannii 'Gome'"
+        url: "https://malawi.si/Malawi/Pseudotropheus/Pseudotropheus%20johannii/slides/Pseudotropheus%20johannii%20%27Gome%27.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase: Pseudotropheus johannii, Bluegray mbuna"
+        url: "https://www.fishbase.se/summary/Melanochromis-johannii.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Malawi.si: Pseudotropheus johannii, unknown locality"
+        url: "https://www.malawi.si/Malawi/Pseudotropheus/Pseudotropheus%20johannii/slides/Pseudotropheus%20johannii.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aquario: Melanochromis johannii care and compatibility entry"
+        url: "https://aquario.me/fish/melanochromis-johannii"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase: Pseudotropheus johannii species summary"
+        url: "https://www.fishbase.se/summary/Pseudotropheus-johannii.html"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Melanochromis johanni"
+          url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+          accessed: '2026-10-13'
+        value:
+          structure: harem
+          ratio: 3
+      - source:
+          kind: database
+          title: "Aquario: Melanochromis johannii care sheet"
+          url: "https://aquario.me/fish/melanochromis-johannii"
+          accessed: '2026-10-13'
+        value:
+          structure: harem
+          ratio: 3
+        note: Recommends three to four females per male.
+      - source:
+          kind: database
+          title: "FishBase: Pseudotropheus johannii species summary"
+          url: "https://www.fishbase.se/summary/Pseudotropheus-johannii.html"
+          accessed: '2026-10-13'
+        value:
+          structure: harem
+        note: Territorial male and multiple females; ratio not quantified.
+      - source:
+          kind: database
+          title: "Malawi.si: Pseudotropheus johannii, unknown locality"
+          url: "https://www.malawi.si/Malawi/Pseudotropheus/Pseudotropheus%20johannii/slides/Pseudotropheus%20johannii.html"
+          accessed: '2026-10-13'
+        value:
+          structure: harem
+          ratio: 3
+        note: At least three to four females per male.
+      - source:
+          kind: database
+          title: "FishBase: Pseudotropheus johannii, Bluegray mbuna"
+          url: "https://www.fishbase.se/summary/Melanochromis-johannii.html"
+          accessed: '2026-10-13'
+        value:
+          structure: harem
+        note: Males keep a harem of females.
+      - source:
+          kind: database
+          title: "Rechi, E. (2020). Pseudotropheus johannii species care sheet, Aquarismo Paulista"
+          url: "https://www.aquarismopaulista.com/pseudotropheus-johannii/"
+          accessed: '2026-10-13'
+        value:
+          structure: harem
+          ratio: 3
+      - source:
+          kind: database
+          title: "Malawi.si: Pseudotropheus johannii 'Gome'"
+          url: "https://malawi.si/Malawi/Pseudotropheus/Pseudotropheus%20johannii/slides/Pseudotropheus%20johannii%20%27Gome%27.html"
+          accessed: '2026-10-13'
+        value:
+          structure: harem
+          ratio: 3
+        note: Recommends at least three to four females per male.
+  speciesOnly:
+    value: false
+    confidence: high
+    rationale: "Generator, checker-a, checker-b and checker-c all proposed false, fixed by unanimous agreement\
+      \ with high confidence. Seriously Fish, Malawi.si, Aquarium Ratgeber, Aqua-Fish, Aquario and AquariumDomain\
+      \ permit selected mixed mbuna communities. A separate spawning tank protects fry and lineage identity\
+      \ but does not establish a species-only requirement for adult maintenance. Similar striped fish and unsuitable\
+      \ peaceful companions remain problematic."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Melanochromis johanni"
+        url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Malawi.si: Pseudotropheus johannii 'Gome'"
+        url: "https://malawi.si/Malawi/Pseudotropheus/Pseudotropheus%20johannii/slides/Pseudotropheus%20johannii%20%27Gome%27.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aquarium Ratgeber: Kobaltorange-Buntbarsch, Melanochromis johani"
+        url: "https://www.aquarium-ratgeber.com/fische/fischarten/malawi-buntbarsche/kobaltorange-buntbarsch/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Fish.Net: Blue electric cichlid, Melanochromis johannii"
+        url: "https://en.aqua-fish.net/fish/blue-electric-cichlid"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Malawi.si: Pseudotropheus johannii, unknown locality"
+        url: "https://www.malawi.si/Malawi/Pseudotropheus/Pseudotropheus%20johannii/slides/Pseudotropheus%20johannii.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aquario: Melanochromis johannii care and compatibility entry"
+        url: "https://aquario.me/fish/melanochromis-johannii"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "AquariumDomain: Electric Blue Johannii species profile"
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/AfricanCichlids/ElectricBlueJohannii.shtml"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Melanochromis johanni"
+          url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+          accessed: '2026-10-13'
+        value: false
+        note: Allows similarly sized mbuna.
+      - source:
+          kind: database
+          title: "Malawi.si: Pseudotropheus johannii 'Gome'"
+          url: "https://malawi.si/Malawi/Pseudotropheus/Pseudotropheus%20johannii/slides/Pseudotropheus%20johannii%20%27Gome%27.html"
+          accessed: '2026-10-13'
+        value: false
+        note: Allows robust grazing mbuna.
+      - source:
+          kind: database
+          title: "Aquarium Ratgeber: Kobaltorange-Buntbarsch, Melanochromis johani"
+          url: "https://www.aquarium-ratgeber.com/fische/fischarten/malawi-buntbarsche/kobaltorange-buntbarsch/"
+          accessed: '2026-10-13'
+        value: false
+        note: Allows other Lake Malawi rock cichlids.
+      - source:
+          kind: database
+          title: "Aqua-Fish.Net: Blue electric cichlid, Melanochromis johannii"
+          url: "https://en.aqua-fish.net/fish/blue-electric-cichlid"
+          accessed: '2026-10-13'
+        value: false
+        note: Suggested tankmates include Pseudotropheus crabro and Labidochromis caeruleus.
+      - source:
+          kind: database
+          title: "Malawi.si: Pseudotropheus johannii, unknown locality"
+          url: "https://www.malawi.si/Malawi/Pseudotropheus/Pseudotropheus%20johannii/slides/Pseudotropheus%20johannii.html"
+          accessed: '2026-10-13'
+        value: false
+        note: Recommends robust algae-feeding mbuna tankmates.
+      - source:
+          kind: database
+          title: "Aquario: Melanochromis johannii care and compatibility entry"
+          url: "https://aquario.me/fish/melanochromis-johannii"
+          accessed: '2026-10-13'
+        value: false
+        note: Lists other Lake Malawi cichlids as possible companions.
+      - source:
+          kind: database
+          title: "AquariumDomain: Electric Blue Johannii species profile"
+          url: "https://www.aquariumdomain.com/SpeciesProfiles/AfricanCichlids/ElectricBlueJohannii.shtml"
+          accessed: '2026-10-13'
+        value: false
+        note: Other mbuna allowed.
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  hybridGroups:
+    value:
+      - melanochromis
+    confidence: medium
+    rationale: "Generator, checker-a, checker-b and checker-c all proposed [melanochromis], fixed by unanimous\
+      \ agreement with medium confidence. Seriously Fish and the Nordic register independently warn against\
+      \ crossing with species historically called Melanochromis, and Oliver gives the corresponding genus warning\
+      \ for auratus. The existing group already includes Pseudotropheus johannii and has basis presumed. Neither\
+      \ the 2012 taxonomic transfer nor general laboratory hybrid fertility proves a free-choice cross involving\
+      \ this species. Archive thread 1510 claims a socolofi cross without secure identity or partner-choice\
+      \ information. Fish Laboratory also claims johannii-cyaneorhabdos hybrids without documenting an event;\
+      \ this does not change the decided group or justify a new one."
+    sources:
+      - kind: literature
+        title: "Konings, A. F. and Stauffer, J. R. (2012). Review of the Lake Malawi genus Melanochromis (Teleostei:\
+          \ Cichlidae) with a description of a new species. Zootaxa 3258, 1-37."
+        url: "https://doi.org/10.11646/zootaxa.3258.1.1"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Genner, M. J. and Turner, G. F. (2005). The mbuna cichlids of Lake Malawi: a model for rapid\
+          \ speciation and adaptive radiation. Fish and Fisheries 6, 1-34."
+        url: "https://doi.org/10.1111/j.1467-2679.2005.00173.x"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Melanochromis johanni"
+        url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsällskapet species register: Pseudotropheus johannii"
+        url: "https://www.ciklid.org/artregister/art.php?ID=715"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Oliver: Melanochromis auratus. The Cichlid Fishes of Lake Malawi"
+        url: "https://www.malawicichlids.com/mw09002a.htm"
+        accessed: '2026-10-13'
+      - kind: archive
+        title: cichlids.com forum thread 1510
+        url: "https://www.cichlids.com/disc/read.php?1,1510"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: "Genner, M. J. and Turner, G. F. (2005). The mbuna cichlids of Lake Malawi: a model for rapid\
+            \ speciation and adaptive radiation. Fish and Fisheries 6, 1-34."
+          url: "https://doi.org/10.1111/j.1467-2679.2005.00173.x"
+          accessed: '2026-10-13'
+        value:
+          - melanochromis
+        note: Mbuna of different species often interbreed in the laboratory to fertile hybrids; general support
+          only.
+      - source:
+          kind: literature
+          title: "Konings, A. F. and Stauffer, J. R. (2012). Review of the Lake Malawi genus Melanochromis\
+            \ (Teleostei: Cichlidae) with a description of a new species. Zootaxa 3258, 1-37."
+          url: "https://doi.org/10.11646/zootaxa.3258.1.1"
+          accessed: '2026-10-13'
+        value:
+          - melanochromis
+        note: Confirms nomenclatural transfer only; does not establish crosses involving johannii.
+      - source:
+          kind: database
+          title: "Seriously Fish: Melanochromis johanni"
+          url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+          accessed: '2026-10-13'
+        value:
+          - melanochromis
+        note: Genus-wide crossing warning under the former name.
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsällskapet species register: Pseudotropheus johannii"
+          url: "https://www.ciklid.org/artregister/art.php?ID=715"
+          accessed: '2026-10-13'
+        value:
+          - melanochromis
+        note: Independent warning against other Melanochromis species.
+      - source:
+          kind: database
+          title: "Oliver: Melanochromis auratus. The Cichlid Fishes of Lake Malawi"
+          url: "https://www.malawicichlids.com/mw09002a.htm"
+          accessed: '2026-10-13'
+        value:
+          - melanochromis
+        note: Independent genus-level warning under the older genus concept; no named johannii cross.
+      - source:
+          kind: archive
+          title: cichlids.com forum thread 1510
+          url: "https://www.cichlids.com/disc/read.php?1,1510"
+          accessed: '2026-10-13'
+        value: []
+        note: Unverified wider crossing report; insufficient to expand the curated set.
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  coloration:
+    value:
+      baseColors:
+        - blue
+        - black
+      pattern: stripes
+    confidence: high
+    rationale: Adult males usually have pale blue horizontal bands across a darker blue-black body. Females
+      and juveniles are yellow-orange. Some northern populations have reduced male stripes; the dominant Gome-type
+      male pattern is the compatibility value.
+    sources:
+      - kind: literature
+        title: "Genner and Turner (2005). The mbuna cichlids of Lake Malawi: a model for rapid speciation and\
+          \ adaptive radiation"
+        url: "https://doi.org/10.1111/j.1467-2679.2005.00173.x"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Melanochromis johanni"
+        url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsällskapet species register: Pseudotropheus johannii"
+        url: "https://www.ciklid.org/artregister/art.php?ID=715"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Malawi.si: Pseudotropheus johannii 'Gome'"
+        url: "https://malawi.si/Malawi/Pseudotropheus/Pseudotropheus%20johannii/slides/Pseudotropheus%20johannii%20%27Gome%27.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase: Pseudotropheus johannii species summary"
+        url: "https://www.fishbase.se/summary/Pseudotropheus-johannii.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase: Pseudotropheus johannii, Bluegray mbuna"
+        url: "https://www.fishbase.se/summary/Melanochromis-johannii.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Malawi.si: Pseudotropheus johannii, unknown locality"
+        url: "https://www.malawi.si/Malawi/Pseudotropheus/Pseudotropheus%20johannii/slides/Pseudotropheus%20johannii.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "USGS Nonindigenous Aquatic Species: blue mbuna"
+        url: "https://nas.er.usgs.gov/queries/factsheet.aspx?speciesid=461"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: "Genner and Turner (2005). The mbuna cichlids of Lake Malawi: a model for rapid speciation\
+            \ and adaptive radiation"
+          url: "https://doi.org/10.1111/j.1467-2679.2005.00173.x"
+          accessed: '2026-10-13'
+        value:
+          baseColors:
+            - blue
+            - black
+          pattern: stripes
+      - source:
+          kind: database
+          title: "USGS Nonindigenous Aquatic Species: blue mbuna"
+          url: "https://nas.er.usgs.gov/queries/factsheet.aspx?speciesid=461"
+          accessed: '2026-10-13'
+        value:
+          baseColors:
+            - blue
+            - black
+          pattern: stripes
+      - source:
+          kind: database
+          title: "Seriously Fish: Melanochromis johanni"
+          url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+          accessed: '2026-10-13'
+        value:
+          baseColors:
+            - blue
+            - black
+          pattern: stripes
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet: Pseudotropheus johannii species register"
+          url: "https://www.ciklid.org/artregister/art.php?ID=715"
+          accessed: '2026-10-13'
+        value:
+          baseColors:
+            - blue
+            - black
+          pattern: stripes
+      - source:
+          kind: database
+          title: "FishBase: Pseudotropheus johannii species summary"
+          url: "https://www.fishbase.se/summary/Pseudotropheus-johannii.html"
+          accessed: '2026-10-13'
+        value:
+          baseColors:
+            - blue
+            - black
+          pattern: mixed
+        note: Its checker-like diagnostic wording reflects interrupted markings.
+      - source:
+          kind: database
+          title: "FishBase: Pseudotropheus johannii, Bluegray mbuna"
+          url: "https://www.fishbase.se/summary/Melanochromis-johannii.html"
+          accessed: '2026-10-13'
+        value:
+          baseColors:
+            - blue
+          pattern: mixed
+        note: Sky blue to dark blue with a checkered pattern of light and dark patches.
+  feedingSpeed:
+    value: hasty
+    confidence: low
+    rationale: "All four main runs proposed hasty from the mbuna rubric example. None of the sources read directly\
+      \ measures adult johannii feeding competition, and juvenile behavior in the breeding report cannot establish\
+      \ adult feeding speed. This remains a group-based inference with low confidence."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Melanochromis johanni"
+        url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+        accessed: '2026-10-13'
+      - kind: model-knowledge
+        title: Generator inference from the mbuna feeding-speed rubric
+        accessed: '2026-10-13'
+      - kind: model-knowledge
+        title: General knowledge of mbuna feeding behaviour
+        accessed: '2026-10-13'
+      - kind: model-knowledge
+        title: General aquarium mbuna husbandry inference
+        accessed: '2026-10-13'
+      - kind: model-knowledge
+        title: Checker C inference from the species rubric
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: model-knowledge
+          title: Checker C inference from the species rubric
+          accessed: '2026-10-13'
+        value: hasty
+        note: Mbuna analogy; no species-specific competition measurement found.
+      - source:
+          kind: model-knowledge
+          title: General aquarium mbuna husbandry inference
+          accessed: '2026-10-13'
+        value: hasty
+        note: "Inference from general active mbuna feeding, not a species-specific experiment."
+      - source:
+          kind: model-knowledge
+          title: General knowledge of mbuna feeding behaviour
+          accessed: '2026-10-13'
+        value: hasty
+  minTank:
+    value:
+      volumeL: 300
+      lengthCm: 120
+      depthCm: 50
+    confidence: medium
+    rationale: "Generator and checker-b proposed 300 L with a 120 by 50 cm base; checker-a proposed 150 L at\
+      \ 90 by 45 cm and checker-c 200 L at 120 by 45 cm. Select 300 L and 120 by 50 cm for one adult male with\
+      \ at least three females, using Malawi.si 300 L and Fischlexikon 300 L and 120 cm as the larger species-specific\
+      \ recommendations. Fischlexikon applies its recommendation to a larger group, so this is a cautious husbandry\
+      \ choice rather than proof of an exact minimum for a harem. Seriously Fish accepts about 154 L at 90\
+      \ by 45 cm and the Nordic register 200 L at 100 cm. The selected 50 cm depth is a layout inference for\
+      \ shelters and escape routes; mixed adult communities need more space."
+    sources:
+      - kind: database
+        title: "Malawi.si: Pseudotropheus johannii 'Gome'"
+        url: "https://malawi.si/Malawi/Pseudotropheus/Pseudotropheus%20johannii/slides/Pseudotropheus%20johannii%20%27Gome%27.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Fischlexikon: Pseudotropheus johannii"
+        url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000002462"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsällskapet species register: Pseudotropheus johannii"
+        url: "https://www.ciklid.org/artregister/art.php?ID=715"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Melanochromis johanni"
+        url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Fish.Net: Blue electric cichlid, Melanochromis johannii"
+        url: "https://en.aqua-fish.net/fish/blue-electric-cichlid"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Malawi.si: Pseudotropheus johannii, unknown locality"
+        url: "https://www.malawi.si/Malawi/Pseudotropheus/Pseudotropheus%20johannii/slides/Pseudotropheus%20johannii.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "AquariumDomain: Electric Blue Johannii species profile"
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/AfricanCichlids/ElectricBlueJohannii.shtml"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "OATA: How to look after African Malawi Cichlids"
+        url: "https://ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-freshwater-fish/how-to-look-after-african-malawi-cichlids/"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Melanochromis johanni"
+          url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+          accessed: '2026-10-13'
+        value:
+          volumeL: 154
+          lengthCm: 90
+          depthCm: 45
+      - source:
+          kind: database
+          title: "Aqua-Fish: Blue electric cichlid, Melanochromis johannii"
+          url: "https://en.aqua-fish.net/fish/blue-electric-cichlid"
+          accessed: '2026-10-13'
+        value:
+          volumeL: 150
+        note: Single male with several females; dimensions absent.
+      - source:
+          kind: database
+          title: "AquariumDomain: Electric Blue Johannii species profile"
+          url: "https://www.aquariumdomain.com/SpeciesProfiles/AfricanCichlids/ElectricBlueJohannii.shtml"
+          accessed: '2026-10-13'
+        value:
+          volumeL: 208.2
+        note: 55 US gallons converted to litres; dimensions absent.
+      - source:
+          kind: database
+          title: "OATA: How to look after African Malawi Cichlids"
+          url: "https://ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-freshwater-fish/how-to-look-after-african-malawi-cichlids/"
+          accessed: '2026-10-13'
+        value:
+          volumeL: 200
+        note: "General Malawi community baseline, not a johannii-only experiment."
+      - source:
+          kind: database
+          title: "Malawi.si: Pseudotropheus johannii, unknown locality"
+          url: "https://www.malawi.si/Malawi/Pseudotropheus/Pseudotropheus%20johannii/slides/Pseudotropheus%20johannii.html"
+          accessed: '2026-10-13'
+        value:
+          volumeL: 300
+          lengthCm: null
+          depthCm: null
+        note: Direct volume recommendation; dimensions not supplied.
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet: Pseudotropheus johannii species register"
+          url: "https://www.ciklid.org/artregister/art.php?ID=715"
+          accessed: '2026-10-13'
+        value:
+          volumeL: 200
+          lengthCm: 100
+          depthCm: null
+      - source:
+          kind: database
+          title: "Malawi.si: Pseudotropheus johannii 'Gome'"
+          url: "https://malawi.si/Malawi/Pseudotropheus/Pseudotropheus%20johannii/slides/Pseudotropheus%20johannii%20%27Gome%27.html"
+          accessed: '2026-10-13'
+        value:
+          volumeL: 300
+        note: "Published species recommendation, no footprint supplied."
+      - source:
+          kind: database
+          title: "Fischlexikon: Pseudotropheus johannii"
+          url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000002462"
+          accessed: '2026-10-13'
+        value:
+          volumeL: 300
+          lengthCm: 120
+        note: Species setup; source proposes a larger social group.
+  lifespanYears:
+    value:
+      min: 5
+      max: 12
+    confidence: low
+    rationale: "Generator proposed 5 to 8 years, checker-a 5 to 12 and checker-b and checker-c 10 to 12. Keep\
+      \ the 5 to 12 union rather than an unsupported median lifespan. Aqua-Fish gives 10 to 12 and Aquario\
+      \ about 12, while the Aquarium Wiki and Coral Reef retailer give 5 to 8 and Aquarismo Paulista eight\
+      \ years or more. These are care estimates without cohort data or identified age records; the lower end\
+      \ is not a guaranteed lifespan and 12 is not an established biological ceiling."
+    sources:
+      - kind: database
+        title: "Rechi, E. (2020). Pseudotropheus johannii species care sheet, Aquarismo Paulista"
+        url: "https://www.aquarismopaulista.com/pseudotropheus-johannii/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Fish.Net: Blue electric cichlid, Melanochromis johannii"
+        url: "https://en.aqua-fish.net/fish/blue-electric-cichlid"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aquario: Melanochromis johannii care and compatibility entry"
+        url: "https://aquario.me/fish/melanochromis-johannii"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Coral Reef Aquatics: Melanochromis Johanni livestock care sheet"
+        url: "https://www.coralreefaquatics.co.uk/store/product/186_livestock/187_tropicals/190_african-cichlids/244_mbuna/2899_melanochromis-johanni/"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Fishstores.org: Johanni Cichlid care guide"
+        url: "https://www.fishstores.org/species/johanni-cichlid"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "AquariumNexus: Johanni Cichlid care guide"
+        url: "https://www.aquariumnexus.com/johanni-cichlid/"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "The Aquarium Wiki: Electric Blue Johannii, structured species care sheet"
+        url: "https://www.theaquariumwiki.com/wiki/Melanochromis_johannii"
+        accessed: '2026-10-13'
+      - kind: model-knowledge
+        title: General aquarium mbuna husbandry inference
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: database
+          title: "Aqua-Fish: Blue electric cichlid, Melanochromis johannii"
+          url: "https://en.aqua-fish.net/fish/blue-electric-cichlid"
+          accessed: '2026-10-13'
+        value:
+          min: 10
+          max: 12
+      - source:
+          kind: database
+          title: "Aquario: Melanochromis johannii care sheet"
+          url: "https://aquario.me/fish/melanochromis-johannii"
+          accessed: '2026-10-13'
+        value:
+          min: 12
+          max: 12
+        note: "Approximate stated lifespan, not a guaranteed minimum."
+      - source:
+          kind: database
+          title: "Rechi, E. (2020). Pseudotropheus johannii species care sheet, Aquarismo Paulista"
+          url: "https://www.aquarismopaulista.com/pseudotropheus-johannii/"
+          accessed: '2026-10-13'
+        value:
+          min: 8
+          max: 8
+        note: Eight years or more; the upper lifetime is not specified.
+      - source:
+          kind: website
+          title: "AquariumNexus: Johanni Cichlid care guide"
+          url: "https://www.aquariumnexus.com/johanni-cichlid/"
+          accessed: '2026-10-13'
+        value:
+          min: 12
+          max: 12
+        note: Unverified upper lifespan claim.
+      - source:
+          kind: website
+          title: "Fishstores.org: Johanni Cichlid care guide"
+          url: "https://www.fishstores.org/species/johanni-cichlid"
+          accessed: '2026-10-13'
+        value:
+          min: 5
+          max: 8
+      - source:
+          kind: website
+          title: "Coral Reef Aquatics: Melanochromis Johanni livestock care sheet"
+          url: "https://www.coralreefaquatics.co.uk/store/product/186_livestock/187_tropicals/190_african-cichlids/244_mbuna/2899_melanochromis-johanni/"
+          accessed: '2026-10-13'
+        value:
+          min: 5
+          max: 8
+      - source:
+          kind: website
+          title: "The Aquarium Wiki: Electric Blue Johannii, structured species care sheet"
+          url: "https://www.theaquariumwiki.com/wiki/Melanochromis_johannii"
+          accessed: '2026-10-13'
+        value:
+          min: 5
+          max: 8
+        note: General aquarium wiki estimate; no tracked cohort.
+      - source:
+          kind: model-knowledge
+          title: General aquarium mbuna husbandry inference
+          accessed: '2026-10-13'
+        value:
+          min: 10
+          max: 12
+        note: Approximate planning interval.
+  breeding:
+    value: maternal-mouthbrooder
+    confidence: high
+    rationale: "FishBase, the Nordic register and the independent breeding report agree that the female incubates\
+      \ the brood in her mouth. CRC verifies this breeding mode without providing the primary evidence."
+    sources:
+      - kind: literature
+        title: "Schwarze, K. Breeding Melanochromis johannii. Hamilton and District Aquarium Society breeding\
+          \ report, republished by AquaInfo"
+        url: "https://aquainfo.nl/en/breeding-melanochromis-johannii/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase: Pseudotropheus johannii species summary"
+        url: "https://www.fishbase.se/summary/Pseudotropheus-johannii.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsällskapet species register: Pseudotropheus johannii"
+        url: "https://www.ciklid.org/artregister/art.php?ID=715"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Cichlid Room Companion: Pseudotropheus johannii, public verification summary"
+        url: "https://cichlidae.com/species.php?id=W8CFHM4RsW2JNCTfUEJ_qA"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase: Pseudotropheus johannii, Bluegray mbuna"
+        url: "https://www.fishbase.se/summary/Melanochromis-johannii.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Melanochromis johanni"
+        url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Fish.Net: Blue electric cichlid, Melanochromis johannii"
+        url: "https://en.aqua-fish.net/fish/blue-electric-cichlid"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Malawi.si: Pseudotropheus johannii, unknown locality"
+        url: "https://www.malawi.si/Malawi/Pseudotropheus/Pseudotropheus%20johannii/slides/Pseudotropheus%20johannii.html"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: literature
+          title: "Schwarze: Breeding Melanochromis johannii, Hamilton and District Aquarium Society bulletin,\
+            \ republished by AquaInfo"
+          url: "https://aquainfo.nl/en/breeding-melanochromis-johannii/"
+          accessed: '2026-10-13'
+        value: maternal-mouthbrooder
+        note: Two observed clutches were released after 19 and 20 days.
+      - source:
+          kind: database
+          title: "FishBase: Pseudotropheus johannii species summary"
+          url: "https://www.fishbase.se/summary/Pseudotropheus-johannii.html"
+          accessed: '2026-10-13'
+        value: maternal-mouthbrooder
+      - source:
+          kind: database
+          title: "Seriously Fish: Melanochromis johanni"
+          url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+          accessed: '2026-10-13'
+        value: maternal-mouthbrooder
+      - source:
+          kind: database
+          title: "Cichlid Room Companion: Pseudotropheus johannii, public verification summary"
+          url: "https://cichlidae.com/species.php?id=W8CFHM4RsW2JNCTfUEJ_qA"
+          accessed: '2026-10-13'
+        value: maternal-mouthbrooder
+        note: Verification only.
+      - source:
+          kind: database
+          title: "Malawi.si: Pseudotropheus johannii, unknown locality"
+          url: "https://www.malawi.si/Malawi/Pseudotropheus/Pseudotropheus%20johannii/slides/Pseudotropheus%20johannii.html"
+          accessed: '2026-10-13'
+        value: maternal-mouthbrooder
+      - source:
+          kind: database
+          title: "FishBase: Pseudotropheus johannii, Bluegray mbuna"
+          url: "https://www.fishbase.se/summary/Melanochromis-johannii.html"
+          accessed: '2026-10-13'
+        value: maternal-mouthbrooder
+      - source:
+          kind: database
+          title: "Aqua-Fish.Net: Blue electric cichlid, Melanochromis johannii"
+          url: "https://en.aqua-fish.net/fish/blue-electric-cichlid"
+          accessed: '2026-10-13'
+        value: maternal-mouthbrooder
+        note: Incubation of two to three weeks.
+  beginnerSuitability:
+    value: moderate
+    confidence: medium
+    rationale: "All four main runs proposed moderate. Seriously Fish and the Nordic register support intermediate\
+      \ care demands, while AquariumDomain gives expert and Aqua-Fish discourages beginners. CRC and Aquarium\
+      \ Guide give more permissive beginner ratings. Moderate reflects routine water maintenance plus the need\
+      \ to manage adult rivalry, sex ratio and feeding, rather than a consensus that the fish is easy."
+    sources:
+      - kind: literature
+        title: "Schwarze: Breeding Melanochromis johannii, Hamilton and District Aquarium Society bulletin,\
+          \ republished by AquaInfo"
+        url: "https://aquainfo.nl/en/breeding-melanochromis-johannii/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsällskapet species register: Pseudotropheus johannii"
+        url: "https://www.ciklid.org/artregister/art.php?ID=715"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Melanochromis johanni"
+        url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "AquariumDomain: Electric Blue Johannii species profile"
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/AfricanCichlids/ElectricBlueJohannii.shtml"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Cichlid Room Companion: Pseudotropheus johannii, public verification summary"
+        url: "https://cichlidae.com/species.php?id=W8CFHM4RsW2JNCTfUEJ_qA"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Fish.Net: Blue electric cichlid, Melanochromis johannii"
+        url: "https://en.aqua-fish.net/fish/blue-electric-cichlid"
+        accessed: '2026-10-13'
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Melanochromis johanni"
+          url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+          accessed: '2026-10-13'
+        value: moderate
+      - source:
+          kind: database
+          title: "AquariumDomain: Electric Blue Johannii species profile"
+          url: "https://www.aquariumdomain.com/SpeciesProfiles/AfricanCichlids/ElectricBlueJohannii.shtml"
+          accessed: '2026-10-13'
+        value: demanding
+      - source:
+          kind: database
+          title: "Cichlid Room Companion: Pseudotropheus johannii, public verification summary"
+          url: "https://cichlidae.com/species.php?id=W8CFHM4RsW2JNCTfUEJ_qA"
+          accessed: '2026-10-13'
+        value: easy
+        note: Verification only; differs from the aggression-based care assessment.
+      - source:
+          kind: database
+          title: "Nordiska Ciklidsallskapet: Pseudotropheus johannii species register"
+          url: "https://www.ciklid.org/artregister/art.php?ID=715"
+          accessed: '2026-10-13'
+        value: moderate
+      - source:
+          kind: database
+          title: "Aqua-Fish.Net: Blue electric cichlid, Melanochromis johannii"
+          url: "https://en.aqua-fish.net/fish/blue-electric-cichlid"
+          accessed: '2026-10-13'
+        value: demanding
+        note: Not recommended for beginners.
+partners:
+  suitable:
+    - species: Labeotropheus trewavasae
+      reason: Robust rock grazer with a compatible plant-focused ration and a distinct body form.
+      condition: "Conditional candidate in a tank larger than the johannii harem minimum, with room and refuges\
+        \ for both adult social units; not a tested pairing guarantee."
+    - species: Labeotropheus fuelleborni
+      reason: Robust grazing mbuna with a different body shape; feeding requirements can overlap.
+      condition: "Alternative to L. trewavasae, with a larger adult community footprint and separate refuges;\
+        \ combining both Labeotropheus species adds their own hybrid risk."
+    - species: Maylandia greshakei
+      reason: Robust mbuna with a compatible plant-focused ration and a different pattern.
+      condition: A larger community tank and separate rock shelters are needed; blue coloration can still provoke
+        rivalry.
+  unsuitable:
+    - species: Pseudotropheus cyaneorhabdos
+      reason: Close striped appearance invites rivalry and both species share the presumed melanochromis crossing
+        group.
+    - species: Melanochromis auratus
+      reason: Strong aggression and overlapping appearance combine with shared presumed crossing risk.
+    - species: Pseudotropheus interruptus
+      reason: Close relative with difficult trade identification and plausible rivalry and crossing concerns;
+        no secure free-choice cross was verified.
+    - species: Aulonocara stuartgranti
+      reason: "A quieter peacock may be excluded from shelter or feeding by active mbuna. Some care sheets\
+        \ permit this, but it is not selected as a suitable pairing here."
+profile:
+  overview:
+    text: "The name Pseudotropheus johannii applies to the Malawi mbuna whose mature males are usually blue-black\
+      \ with pale longitudinal bands and whose females are yellow-orange. The older label Melanochromis johannii\
+      \ remains widespread, along with the spelling johanni. Neither electric blue johanni nor a blue male\
+      \ alone establishes identity: maingano, P. cyaneorhabdos, has blue-patterned females too, and P. interruptus\
+      \ is another distinct relative. A known locality and traceable parent stock are useful when building\
+      \ a breeding group. This small grazer can live with suitable other mbuna, but strong rivalry within its\
+      \ own species makes adult stocking and shelter central to its care."
+    sources:
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: species of Pseudotropheus, online version updated 21 September\
+          \ 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Pseudotropheus"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Konings, A. F. and Stauffer, J. R. (2012). Review of the Lake Malawi genus Melanochromis (Teleostei:\
+          \ Cichlidae) with a description of a new species. Zootaxa 3258, 1-37."
+        url: "https://doi.org/10.11646/zootaxa.3258.1.1"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase: Pseudotropheus johannii species summary"
+        url: "https://www.fishbase.se/summary/Pseudotropheus-johannii.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Melanochromis johanni"
+        url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+        accessed: '2026-10-13'
+  habitat:
+    text: "Native populations occur along the eastern shore of Lake Malawi in Malawi and Mozambique, including\
+      \ Cape Ngombo, Masinje and localities toward Chuanga. They use rocky stretches and the adjoining sand-rock\
+      \ transition. Plankton feeding above the bottom does not make them open-water specialists. Provide feeding\
+      \ surfaces on rocks, individual refuges and sandy gaps for movement. The lake-wide natural envelope is\
+      \ 21 to 29 C, pH 7.7 to 8.6, GH 3 to 5 dGH and KH 5 to 8 dKH. Calcium and magnesium hardness is low even\
+      \ though the lake is alkaline and buffered; GH and KH therefore need separate interpretation."
+    sources:
+      - kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: species of Pseudotropheus, online version updated 21 September\
+          \ 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Pseudotropheus"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E.\
+          \ et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern\
+          \ Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+        url: "https://doi.org/10.5194/hessd-7-4371-2010"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+          \ of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa physical and chemical data."
+        url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+        accessed: '2026-10-13'
+      - kind: literature
+        title: "Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M.,\
+          \ Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology\
+          \ and Oceanography 50(2), 727-732."
+        url: "https://doi.org/10.4319/lo.2005.50.2.0727"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsällskapet species register: Pseudotropheus johannii"
+        url: "https://www.ciklid.org/artregister/art.php?ID=715"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Malawi.si: Pseudotropheus johannii 'Gome'"
+        url: "https://malawi.si/Malawi/Pseudotropheus/Pseudotropheus%20johannii/slides/Pseudotropheus%20johannii%20%27Gome%27.html"
+        accessed: '2026-10-13'
+  sizeAndGrowth:
+    text: "Use approximately 12 cm for an aquarium male and 10 cm for a female when planning adult space. The\
+      \ female figure is a rounded estimate and publications mix standard length, total length and unspecified\
+      \ aquarium measurements. Avoid treating these sizes as feeding targets. Juvenile males initially resemble\
+      \ yellow-orange females, and rivalry can intensify when adult coloration appears. Fish that coexist while\
+      \ small may later need different housing. Lifespan estimates span roughly 5 to 12 years, with no reliable\
+      \ cohort study behind either endpoint; individual outcomes depend on care and are not guaranteed by that\
+      \ range."
+    sources:
+      - kind: database
+        title: "Aquarium Guide: Kobalt-Orange-Buntbarsch, Melanochromis johannii"
+        url: "https://www.aquarium-guide.de/kobalt-orange-buntbarsch.htm"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aqua-Fish.Net: Blue electric cichlid, Melanochromis johannii"
+        url: "https://en.aqua-fish.net/fish/blue-electric-cichlid"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Aquario: Melanochromis johannii care and compatibility entry"
+        url: "https://aquario.me/fish/melanochromis-johannii"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Aquarium Glaser: Melanochromis johannii (F. Schaefer, 2021)"
+        url: "https://www.aquariumglaser.de/en/25-perchlike-fishes/melanochromis-johannii-2/"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Coral Reef Aquatics: Melanochromis Johanni livestock care sheet"
+        url: "https://www.coralreefaquatics.co.uk/store/product/186_livestock/187_tropicals/190_african-cichlids/244_mbuna/2899_melanochromis-johanni/"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "The Aquarium Wiki: Electric Blue Johannii, structured species care sheet"
+        url: "https://www.theaquariumwiki.com/wiki/Melanochromis_johannii"
+        accessed: '2026-10-13'
+  husbandry:
+    text: "Plan a 300 litre aquarium with a base of at least 120 by 50 cm for one male and at least three females.\
+      \ Smaller recommendations exist, but this profile chooses more room for shelter and escape during adult\
+      \ pursuit. Build stable rock formations with several routes between refuges and clear gaps for swimming.\
+      \ Biological filtration, oxygenation and regular partial water changes support the stocking. A steady\
+      \ temperature near 24 to 26 C is a practical routine target. The decided aquarium envelopes are 21 to\
+      \ 29 C, pH 7.5 to 8.8, GH 3 to 20 dGH and KH 5 to 15 dKH; these inferred limits do not demonstrate lifelong\
+      \ health at every endpoint. Measure each parameter and match replacement water gradually."
+    sources:
+      - kind: database
+        title: "Malawi.si: Pseudotropheus johannii 'Gome'"
+        url: "https://malawi.si/Malawi/Pseudotropheus/Pseudotropheus%20johannii/slides/Pseudotropheus%20johannii%20%27Gome%27.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Fischlexikon: Pseudotropheus johannii"
+        url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000002462"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Melanochromis johanni"
+        url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "OATA: How to look after African Malawi cichlids"
+        url: "https://ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-freshwater-fish/how-to-look-after-african-malawi-cichlids/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "AquariumDomain: Electric Blue Johannii species profile"
+        url: "https://www.aquariumdomain.com/SpeciesProfiles/AfricanCichlids/ElectricBlueJohannii.shtml"
+        accessed: '2026-10-13'
+  socialBehavior:
+    text: "One male with at least three females is the minimum social unit used here. Each female needs cover\
+      \ that interrupts a pursuing male's view. Additional adult males require substantially more space and\
+      \ separate refuges; adding them to the minimum tank can turn repeated chasing into injury. The male may\
+      \ defend a rocky site outside an immediate spawning event, although the size of that claim has not been\
+      \ measured. The small-territory classification is provisional. Observe access to food and shelter as\
+      \ well as visible wounds, since a fish confined to one corner can already be under sustained pressure."
+    sources:
+      - kind: literature
+        title: "Schwarze, K. Breeding Melanochromis johannii. Hamilton and District Aquarium Society breeding\
+          \ report, republished by AquaInfo"
+        url: "https://aquainfo.nl/en/breeding-melanochromis-johannii/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsällskapet species register: Pseudotropheus johannii"
+        url: "https://www.ciklid.org/artregister/art.php?ID=715"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Melanochromis johanni"
+        url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+        accessed: '2026-10-13'
+  diet:
+    text: "Algae and the associated material on rocks are the main basis of the natural feeding niche. A small\
+      \ field sample reported through FishBase contained only algal categories, while other accounts also record\
+      \ plankton and small invertebrates. Use vegetable-rich mbuna food as the staple, with modest animal supplements\
+      \ rather than a rich meaty daily ration. The data category is aufwuchs even though several sources use\
+      \ omnivore. The bloat-sensitivity flag expresses reported husbandry concern, not proof that protein alone\
+      \ causes disease. Offer restrained portions and check that subordinate fish obtain food; rapid feeding\
+      \ is an inferred mbuna trait rather than a measured species-specific result."
+    sources:
+      - kind: literature
+        title: "Gay, J. The mbuna keeper's survival guide. Practical Fishkeeping."
+        url: "https://www.practicalfishkeeping.co.uk/features/the-mbuna-keepers-survival-guide/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase: Pseudotropheus johannii diet composition after Reinthal (1990)"
+        url: "https://www.fishbase.se/trophiceco/DietCompoSummary.php?dietcode=1545&genusname=Pseudotropheus&speciesname=johannii"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsällskapet species register: Pseudotropheus johannii"
+        url: "https://www.ciklid.org/artregister/art.php?ID=715"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Melanochromis johanni"
+        url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Rechi, E. (2020). Pseudotropheus johannii species care sheet, Aquarismo Paulista"
+        url: "https://www.aquarismopaulista.com/pseudotropheus-johannii/"
+        accessed: '2026-10-13'
+  breeding:
+    text: "The female carries eggs and developing young in her mouth, while the male may court other females.\
+      \ Schwarze reported two releases after 19 and 20 days; care sheets commonly describe about three weeks.\
+      \ Disturbance and harassment can disrupt incubation, so any move of a brooding female needs care. Reports\
+      \ differ about taking released young back into the mouth: some describe further shelter and the first-hand\
+      \ breeding account did not observe it. Do not assume released fry are safe among adults. Fine prepared\
+      \ food or Artemia nauplii can support their growth in protected rearing space. A breeding tank may protect\
+      \ fry without making species-only maintenance necessary throughout life."
+    sources:
+      - kind: literature
+        title: "Schwarze, K. Breeding Melanochromis johannii. Hamilton and District Aquarium Society breeding\
+          \ report, republished by AquaInfo"
+        url: "https://aquainfo.nl/en/breeding-melanochromis-johannii/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase: Pseudotropheus johannii species summary"
+        url: "https://www.fishbase.se/summary/Pseudotropheus-johannii.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsällskapet species register: Pseudotropheus johannii"
+        url: "https://www.ciklid.org/artregister/art.php?ID=715"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Melanochromis johanni"
+        url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+        accessed: '2026-10-13'
+  sexing:
+    text: "Established males usually have a blue-black body with pale blue longitudinal markings. Adult females\
+      \ are yellow to orange and tend to be smaller. Young males begin with similar warm colors, and social\
+      \ suppression can delay or mute the adult appearance. Some northern populations have reduced male bands,\
+      \ so pattern alone is an imperfect identification test. Blue females in a mature group suggest maingano\
+      \ or uncertain stock rather than confirming johannii. Orange females do not distinguish it from every\
+      \ relative, including interruptus. Evaluate a mature group together with its locality and parent-stock\
+      \ information."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Melanochromis johanni"
+        url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "FishBase: Pseudotropheus johannii species summary"
+        url: "https://www.fishbase.se/summary/Pseudotropheus-johannii.html"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Malawi.si: Pseudotropheus johannii 'Gome'"
+        url: "https://malawi.si/Malawi/Pseudotropheus/Pseudotropheus%20johannii/slides/Pseudotropheus%20johannii%20%27Gome%27.html"
+        accessed: '2026-10-13'
+      - kind: website
+        title: "Aquarium Glaser: Melanochromis johannii (F. Schaefer, 2021)"
+        url: "https://www.aquariumglaser.de/en/25-perchlike-fishes/melanochromis-johannii-2/"
+        accessed: '2026-10-13'
+      - kind: archive
+        title: cichlids.com forum thread 1649
+        url: "https://www.cichlids.com/disc/read.php?1,1649"
+        accessed: '2026-10-13'
+  compatibility:
+    text: "Mixed keeping is possible with robust, visibly distinct Malawi mbuna that share a plant-focused\
+      \ feeding plan. Labeotropheus trewavasae, L. fuelleborni and Maylandia greshakei are conditional candidates\
+      \ in a larger tank, based on the feeding and community guidance rather than a tested pairing guarantee.\
+      \ They are alternatives, and the two Labeotropheus species add their own crossing risk if combined. Close\
+      \ striped fish can provoke rivalry. P. cyaneorhabdos and Melanochromis auratus share the presumed melanochromis\
+      \ crossing group with johannii. The warning rests on general crossing advice, with no free-choice johannii\
+      \ cross established by the sources read. Very small fish and fry may still be taken opportunistically."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Melanochromis johanni"
+        url: "https://www.seriouslyfish.com/species/melanochromis-johanni/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Nordiska Ciklidsällskapet species register: Pseudotropheus johannii"
+        url: "https://www.ciklid.org/artregister/art.php?ID=715"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Labeotropheus trewavasae"
+        url: "https://www.seriouslyfish.com/species/labeotropheus-trewavasae/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Labeotropheus fuelleborni"
+        url: "https://www.seriouslyfish.com/species/labeotropheus-fuelleborni/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Seriously Fish: Maylandia greshakei"
+        url: "https://www.seriouslyfish.com/species/maylandia-greshakei/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Rechi, E. (2020). Pseudotropheus johannii species care sheet, Aquarismo Paulista"
+        url: "https://www.aquarismopaulista.com/pseudotropheus-johannii/"
+        accessed: '2026-10-13'
+  problems:
+    text: "Repeated pursuit, damaged fins and exclusion from feeding are reasons to reassess adult space, refuges\
+      \ and sex ratio. Young fish tolerating one another does not establish a lasting adult community. Rich\
+      \ feeding, stress and poor water quality can coincide with digestive illness; abdominal swelling and\
+      \ appetite loss alone do not identify a cause. Check water conditions and seek qualified help for persistent\
+      \ signs. Archive accounts describe uncertain trade identity and individual illness, but cannot confirm\
+      \ parentage or diagnose a disease. Keep new stock separate while assessing its health and identity before\
+      \ introducing it to a breeding group."
+    sources:
+      - kind: literature
+        title: "Schwarze, K. Breeding Melanochromis johannii. Hamilton and District Aquarium Society breeding\
+          \ report, republished by AquaInfo"
+        url: "https://aquainfo.nl/en/breeding-melanochromis-johannii/"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Fischlexikon: Pseudotropheus johannii"
+        url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000002462"
+        accessed: '2026-10-13'
+      - kind: database
+        title: "Rechi, E. (2020). Pseudotropheus johannii species care sheet, Aquarismo Paulista"
+        url: "https://www.aquarismopaulista.com/pseudotropheus-johannii/"
+        accessed: '2026-10-13'
+      - kind: archive
+        title: cichlids.com forum thread 3155
+        url: "https://www.cichlids.com/disc/read.php?1,3155"
+        accessed: '2026-10-13'
+      - kind: archive
+        title: cichlids.com forum thread 1649
+        url: "https://www.cichlids.com/disc/read.php?1,1649"
+        accessed: '2026-10-13'
+provenance:
+  runs:
+    - role: generator
+      model: gpt-6.1-sol
+      date: '2026-10-13'
+    - role: checker
+      model: gpt-6.1-sol
+      date: '2026-10-13'
+    - role: checker
+      model: gpt-6.1-sol
+      date: '2026-10-13'
+    - role: checker
+      model: gpt-6.1-sol
+      date: '2026-10-13'
+    - role: checker
+      model: gpt-6.1-sol
+      date: '2026-10-13'
+    - role: checker
+      model: gpt-6.1-sol
+      date: '2026-10-13'
+    - role: adjudicator
+      model: gpt-6.1-sol
+      date: '2026-10-13'
+  disagreements:
+    - field: features.predation
+      proposals:
+        - by: generator
+          value: 1
+        - by: checker-a
+          value: 1
+        - by: checker-b
+          value: 0
+        - by: checker-c
+          value: 1
+        - by: tiebreaker-1
+          value: 1
+        - by: tiebreaker-2
+          value: 1
+      decision: 1
+      rationale: "Generator, checker-a, checker-c, tiebreaker-1 and tiebreaker-2 proposed level 1; checker-b\
+        \ proposed level 0. The tally therefore fixes level 1 by qualified majority, five of six votes, with\
+        \ low confidence. Aquarismo Paulista explicitly includes newborn fish among opportunistic foods and\
+        \ FishProfiles mentions feeding live fish, although its distribution field is erroneous. Seriously\
+        \ Fish and Fish Laboratory warn about fry losses without identifying the predator or measuring prey.\
+        \ Aquario instead calls the species nonpredatory, and the small FishBase field sample contains algae\
+        \ only. This supports a provisional fry-taking category, not habitual piscivory; the 2 cm boundary\
+        \ is the rubric convention rather than a measured prey limit."
+    - field: features.diet
+      proposals:
+        - by: generator
+          value:
+            type: aufwuchs
+            bloatSensitive: true
+            foods:
+              - vegetable-rich mbuna pellets
+              - spirulina flakes
+              - algal biofilm
+              - small portions of Artemia or Daphnia
+              - blanched leafy vegetables
+        - by: checker-a
+          value:
+            type: aufwuchs
+            bloatSensitive: true
+            foods:
+              - spirulina flakes
+              - algae wafers
+              - blanched vegetables
+              - occasional live or frozen food
+        - by: checker-b
+          value:
+            type: aufwuchs
+            bloatSensitive: true
+            foods:
+              - Algae and attached biofilm
+              - Spirulina-based prepared food
+              - Leafy vegetable supplements
+              - Small incidental invertebrates
+        - by: checker-c
+          value:
+            type: omnivore
+            bloatSensitive: true
+            foods:
+              - Algae-rich flakes or pellets
+              - Blanched leafy vegetables
+              - Small crustaceans in limited amounts
+        - by: tiebreaker-1
+          value:
+            type: aufwuchs
+            bloatSensitive: true
+        - by: tiebreaker-2
+          value:
+            type: aufwuchs
+            bloatSensitive: true
+      decision:
+        type: aufwuchs
+        bloatSensitive: true
+        foods:
+          - vegetable-rich mbuna pellets
+          - spirulina flakes
+          - algal biofilm
+          - small portions of Artemia or Daphnia
+          - blanched leafy vegetables
+      rationale: "Generator, checker-a, checker-b, tiebreaker-1 and tiebreaker-2 proposed aufwuchs with bloatSensitive\
+        \ true; checker-c proposed omnivore with the same flag. Five of six votes fix aufwuchs by qualified\
+        \ majority with medium confidence. The foods are retained exactly from the generator as selected by\
+        \ the tally. FishBase records algae in all diet categories of a five-fish sample after Reinthal, while\
+        \ the Nordic register and Aquarium Guide independently describe rock grazing. FishBase summary, Aquario\
+        \ and AquariumDomain use omnivore and supplementary animals occur, but the rubric category expresses\
+        \ the dominant grazing niche and plant-rich staple. Aquarismo Paulista, Aqua-Fish and the Practical\
+        \ Fishkeeping mbuna article support the digestive-risk precaution; protein alone is not a demonstrated\
+        \ cause. Seriously Fish makes no explicit bloat claim. CRC confirms algal grazing only. The original\
+        \ Reinthal study was not readable as open access and the Squeaky retailer page failed to load, so neither\
+        \ is used as directly read evidence."
+    - field: features.ph.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 7.5
+            max: 8.8
+        - by: checker-a
+          value:
+            min: 7.4
+            max: 8.9
+        - by: checker-b
+          value:
+            min: 7.5
+            max: 8.8
+        - by: checker-c
+          value:
+            min: 7.6
+            max: 8.8
+      decision:
+        min: 7.5
+        max: 8.8
+      rationale: "Generator and checker-b proposed 7.5 to 8.8, checker-a 7.4 to 8.9 and checker-c 7.6 to 8.8.\
+        \ All four agree within the 0.3 pH comparison threshold, so the unanimous tally uses median endpoints\
+        \ of 7.5 and 8.8 with medium confidence. Aqua-Fish explicitly gives the wider 7.4 to 8.9 range, and\
+        \ Aquarium Ratgeber gives an even wider 7.2 to 9.5; neither broader recommendation is selected over\
+        \ the median. The Nordic register and Fischlexikon give 7.5 to 8.5 and Seriously Fish and Aquario 7.6\
+        \ to 8.8. The decision contains the natural range but is inferred from care advice rather than a controlled\
+        \ tolerance trial."
+    - field: features.ghDgh.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 3
+            max: 20
+        - by: checker-a
+          value:
+            min: 3
+            max: 20
+        - by: checker-b
+          value:
+            min: 3
+            max: 25
+        - by: checker-c
+          value:
+            min: 3
+            max: 25
+        - by: tiebreaker-1
+          value:
+            min: 3
+            max: 25
+        - by: tiebreaker-2
+          value:
+            min: 3
+            max: 20
+      decision:
+        min: 3
+        max: 20
+      rationale: "Generator, checker-a and tiebreaker-2 proposed 3 to 20 dGH; checker-b, checker-c and tiebreaker-1\
+        \ proposed 3 to 25 dGH. The three-to-three split has no qualified majority, so the tally takes the\
+        \ conservative intersection of 3 to 20 dGH and low confidence. Fischlexikon gives 5 to 20 and FishProfiles\
+        \ 10 to 20 dGH, whereas Seriously Fish and Aqua-Fish give the wider 10 to 25 and retailer Interaquaristik\
+        \ 8 to 25 dGH. Their upper extension is recorded but does not override the required tally intersection\
+        \ or demonstrate a chronic physiological limit. The native 3 to 5 dGH anchors the lower end; GH is\
+        \ distinct from KH."
+    - field: features.khDkh.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 5
+            max: 12
+        - by: checker-a
+          value:
+            min: 5
+            max: 18
+        - by: checker-b
+          value:
+            min: 5
+            max: 15
+        - by: checker-c
+          value:
+            min: 5
+            max: 15
+        - by: tiebreaker-1
+          value:
+            min: 5
+            max: 15
+        - by: tiebreaker-2
+          value:
+            min: 5
+            max: 15
+      decision:
+        min: 5
+        max: 15
+      rationale: "Generator proposed 5 to 12 dKH, checker-a 5 to 18 and checker-b, checker-c, tiebreaker-1\
+        \ and tiebreaker-2 each 5 to 15. The four agreeing votes produce the qualified-majority decision of\
+        \ 5 to 15 dKH with low confidence. OATA recommends 10 to 15 dKH for Malawi cichlids collectively and\
+        \ TankMatcher lists 6 to 14 without primary support. AquariumDomain gives the wider 15 to 25 dKH and\
+        \ Fishstores 10 to 18; those extensions are not adopted. Aquarium Ratgeber labels 3 to 12 as KH but\
+        \ prints a GH unit, and unspecified hardness from other pages is not treated as KH evidence. The lower\
+        \ end includes native 5 to 8 dKH. No controlled species-specific chronic endpoint study was found."
+    - field: features.origin
+      proposals:
+        - by: generator
+          value:
+            continent: Africa
+            region: Eastern shore of Lake Malawi in Malawi and Mozambique
+            waterbody: Lake Malawi
+            localities:
+              - Cape Ngombo
+              - Masinje Rocks
+              - Gome
+              - Chiloelo
+              - Chuanga
+              - Metangula
+        - by: checker-a
+          value:
+            continent: Africa
+            region: Lake Malawi
+            waterbody: lake-malawi
+            localities:
+              - Masinje Rocks
+              - Cape Ngombo
+        - by: checker-b
+          value:
+            continent: Africa
+            region: Eastern shoreline of Lake Malawi
+            waterbody: lake-malawi
+            localities:
+              - Cape Ngombo
+              - Masinje Rocks
+              - Chuanga
+        - by: checker-c
+          value:
+            continent: Africa
+            region: Eastern rocky shores of Lake Malawi
+            waterbody: lake-malawi
+            localities:
+              - Masinje Rocks
+              - Cape Ngombo
+              - Gome Rock
+      decision:
+        continent: Africa
+        region: Eastern shore of Lake Malawi in Malawi and Mozambique
+        waterbody: lake-malawi
+        localities:
+          - Cape Ngombo
+          - Masinje Rocks
+          - Gome Rock
+          - Chiloelo
+          - Chiofu
+          - Chuanga
+          - Metangula
+      rationale: "Generator proposed an eastern-shore range with Cape Ngombo, Masinje, Gome, Chiloelo, Chuanga\
+        \ and Metangula; checker-a retained Masinje and Cape Ngombo, checker-b added Chuanga and checker-c\
+        \ added Gome Rock. The Catalog establishes the native lake and type locality, while the Nordic register,\
+        \ Malawi.si and AquaInfo independently support the wider eastern-shore distribution. Their locality\
+        \ records are combined and the waterbody identifier is normalized to lake-malawi; introduced populations\
+        \ are excluded."
+    - field: features.maxSizeCm
+      proposals:
+        - by: generator
+          value:
+            male: 12
+            female: 10
+        - by: checker-a
+          value:
+            male: 12
+            female: 10
+        - by: checker-b
+          value:
+            male: 12
+            female: 10
+        - by: checker-c
+          value:
+            male: 12
+            female: 10.5
+      decision:
+        male: 12
+        female: 10
+      rationale: "Generator, checker-a and checker-b proposed 12 cm males and 10 cm females; checker-c proposed\
+        \ 12 and 10.5 cm. Retain 12 and 10 as rounded adult aquarium planning sizes. Aquarium Guide and Glaser\
+        \ support fish reaching 12 cm, while Malawi.si gives 11 and 9 cm before unspecified captive enlargement.\
+        \ TropicalFreshwaterFish explicitly gives 12 and 10.5 but has inconsistent female coloration, so it\
+        \ does not outweigh the otherwise consistent sex difference. Seriously Fish displays 12 cm standard\
+        \ length, not an explicit female maximum; FishBase gives 10 cm total length for males or unsexed fish.\
+        \ These conventions and the inferred female ceiling keep confidence medium; they are not record sizes."
+    - field: features.territory
+      proposals:
+        - by: generator
+          value:
+            size: small
+            breedingOnly: false
+        - by: checker-a
+          value:
+            size: large
+            breedingOnly: false
+        - by: checker-b
+          value:
+            size: small
+            breedingOnly: false
+        - by: checker-c
+          value:
+            size: large
+            breedingOnly: false
+      decision:
+        size: small
+        breedingOnly: false
+      rationale: "Generator and checker-b proposed small with breedingOnly false; checker-a and checker-c proposed\
+        \ large with breedingOnly false. Select small as a provisional shelter-centered aquarium claim: the\
+        \ Schwarze report identifies a spawning place bounded by rocks, and the species care sheets emphasize\
+        \ caves and broken sightlines. No source measures a johannii territory against the rubric 30 or 50\
+        \ cm scale. The large proposals infer extent from multi-male tank requirements or other mbuna and are\
+        \ less species-specific. Persistent aquarium male territoriality supports breedingOnly false, although\
+        \ Aquarium Ratgeber explicitly describes roaming fish without permanent natural territories. Spatial\
+        \ extent and aquarium-to-wild differences remain uncertain."
+    - field: features.habitatZones
+      proposals:
+        - by: generator
+          value:
+            - rock
+            - sand
+            - openWater
+        - by: checker-a
+          value:
+            - rock
+        - by: checker-b
+          value:
+            - rock
+            - sand
+        - by: checker-c
+          value:
+            - rock
+            - sand
+      decision:
+        - rock
+        - sand
+      rationale: "Generator proposed rock, sand and openWater; checker-a rock only; checker-b and checker-c\
+        \ rock and sand. The Nordic register and Malawi.si directly describe the rock-sand transition, corroborated\
+        \ by CRC, so rock and sand are retained. Plankton feeding above the substrate and swimming gaps between\
+        \ rocks do not establish a separate open-water habitat requirement. This is a rock-associated fish\
+        \ that also needs the sandy spaces of the intermediate habitat."
+    - field: features.minTank
+      proposals:
+        - by: generator
+          value:
+            volumeL: 300
+            lengthCm: 120
+            depthCm: 50
+        - by: checker-a
+          value:
+            volumeL: 150
+            lengthCm: 90
+            depthCm: 45
+        - by: checker-b
+          value:
+            volumeL: 300
+            lengthCm: 120
+            depthCm: 50
+        - by: checker-c
+          value:
+            volumeL: 200
+            lengthCm: 120
+            depthCm: 45
+      decision:
+        volumeL: 300
+        lengthCm: 120
+        depthCm: 50
+      rationale: "Generator and checker-b proposed 300 L with a 120 by 50 cm base; checker-a proposed 150 L\
+        \ at 90 by 45 cm and checker-c 200 L at 120 by 45 cm. Select 300 L and 120 by 50 cm for one adult male\
+        \ with at least three females, using Malawi.si 300 L and Fischlexikon 300 L and 120 cm as the larger\
+        \ species-specific recommendations. Fischlexikon applies its recommendation to a larger group, so this\
+        \ is a cautious husbandry choice rather than proof of an exact minimum for a harem. Seriously Fish\
+        \ accepts about 154 L at 90 by 45 cm and the Nordic register 200 L at 100 cm. The selected 50 cm depth\
+        \ is a layout inference for shelters and escape routes; mixed adult communities need more space."
+    - field: features.lifespanYears
+      proposals:
+        - by: generator
+          value:
+            min: 5
+            max: 8
+        - by: checker-a
+          value:
+            min: 5
+            max: 12
+        - by: checker-b
+          value:
+            min: 10
+            max: 12
+        - by: checker-c
+          value:
+            min: 10
+            max: 12
+      decision:
+        min: 5
+        max: 12
+      rationale: "Generator proposed 5 to 8 years, checker-a 5 to 12 and checker-b and checker-c 10 to 12.\
+        \ Keep the 5 to 12 union rather than an unsupported median lifespan. Aqua-Fish gives 10 to 12 and Aquario\
+        \ about 12, while the Aquarium Wiki and Coral Reef retailer give 5 to 8 and Aquarismo Paulista eight\
+        \ years or more. These are care estimates without cohort data or identified age records; the lower\
+        \ end is not a guaranteed lifespan and 12 is not an established biological ceiling."
+    - field: taxonomy.synonyms
+      proposals:
+        - by: generator
+          value:
+            - Melanochromis johannii
+            - Melanochromis johanni
+        - by: checker-a
+          value:
+            - Melanochromis johannii
+        - by: checker-b
+          value:
+            - Melanochromis johannii
+            - Melanochromis johanni
+        - by: checker-c
+          value:
+            - Melanochromis johannii
+            - Melanochromis johanni
+      decision:
+        - Melanochromis johannii
+        - Melanochromis johanni
+      rationale: "Generator, checker-b and checker-c include the one-i aquarium spelling alongside the former\
+        \ Melanochromis combination; checker-a lists only the former combination. Retain both strings with\
+        \ separate notes, so the misspelling is searchable without presenting it as a separately described\
+        \ taxon. All runs agree on the valid name and author."
