@@ -230,6 +230,8 @@ public sealed partial class KeycloakAdminClient : IDisposable
     /// Creates the given accounts through partial imports of at most one import chunk of users
     /// each, with their planned ids, required actions and federated identity links. Users that already exist
     /// are skipped by Keycloak and left unchanged. Returns the number of users Keycloak added.
+    /// A partial import grants no default roles, so every created user receives the realm's
+    /// default role explicitly; it holds the offline_access role a durable sign-in needs.
     /// </summary>
     public async Task<int> CreateUsersAsync(IReadOnlyList<PlannedAccount> accounts, CancellationToken cancellationToken)
     {
@@ -238,7 +240,7 @@ public sealed partial class KeycloakAdminClient : IDisposable
         {
             var body = new PartialImportRequest(
                 "SKIP",
-                chunk.Select(ToRepresentation).ToList());
+                chunk.Select(account => ToRepresentation(account, DefaultRolesName)).ToList());
 
             using var response = await SendAsync(HttpMethod.Post, "partialImport", body, cancellationToken);
             await EnsureSuccessAsync(response, "partial import", cancellationToken);
@@ -276,7 +278,10 @@ public sealed partial class KeycloakAdminClient : IDisposable
         }
     }
 
-    private static UserRepresentation ToRepresentation(PlannedAccount account) => new(
+    // Keycloak names the composite default role of a realm after the realm.
+    private string DefaultRolesName => $"default-roles-{_settings.Realm}";
+
+    private static UserRepresentation ToRepresentation(PlannedAccount account, string defaultRolesName) => new(
         account.KeycloakUserId.ToString(),
         account.Username,
         account.Email,
@@ -285,7 +290,8 @@ public sealed partial class KeycloakAdminClient : IDisposable
         account.RequiredActions,
         account.FederatedIdentities
             .Select(link => new FederatedIdentityRepresentation(link.Alias, link.UserId, link.UserId))
-            .ToList());
+            .ToList(),
+        [defaultRolesName]);
 
     private async Task EnsureTermsAndConditionsAsync(CancellationToken cancellationToken)
     {
@@ -587,7 +593,8 @@ public sealed partial class KeycloakAdminClient : IDisposable
         bool EmailVerified,
         bool Enabled,
         IReadOnlyList<string> RequiredActions,
-        IReadOnlyList<FederatedIdentityRepresentation> FederatedIdentities);
+        IReadOnlyList<FederatedIdentityRepresentation> FederatedIdentities,
+        IReadOnlyList<string> RealmRoles);
 
     private sealed record FederatedIdentityRepresentation(string IdentityProvider, string UserId, string UserName);
 }

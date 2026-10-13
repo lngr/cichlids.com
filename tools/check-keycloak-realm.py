@@ -17,7 +17,10 @@ contains a setting that only the local stack may have:
   - the two deployed files differ in more than the display name and the redirect URIs and web
     origins of the app client.
 
-It also asserts that the local realm file announces itself as local development only.
+It also fails when the offline sessions of a deployed realm expire: a maximum lifespan is
+enabled, the idle timeout is shorter than ten years, or the app client cannot request the
+offline_access scope. And it asserts that the local realm file announces itself as local
+development only.
 Python standard library only. `--self-test` exercises every rule against fixtures so the guard
 cannot silently rot.
 Story: task-2.27
@@ -48,6 +51,10 @@ FORBIDDEN_TEXT = (
     (re.compile(r"exp://", re.I), "exp://"),
     (re.compile(re.escape(LOCAL_ONLY_MARKER), re.I), LOCAL_ONLY_MARKER),
 )
+# Members stay signed in on a device until they sign out (ADR-0027): an offline session has no
+# maximum lifespan and an idle timeout far beyond any realistic pause.
+MIN_OFFLINE_IDLE_SECONDS = 10 * 365 * 24 * 60 * 60
+OFFLINE_SCOPE = "offline_access"
 HTTPS_URI = re.compile(r"^https://[A-Za-z0-9.-]+(:\d+)?(/[^\s?#]*)?$")
 HTTPS_ORIGIN = re.compile(r"^https://[A-Za-z0-9.-]+(:\d+)?$")
 
@@ -101,6 +108,13 @@ def check_deployed_realm(text, label):
     if realm.get("duplicateEmailsAllowed") is True:
         failures.append(f"{label}: duplicateEmailsAllowed must not be true")
 
+    if realm.get("offlineSessionMaxLifespanEnabled") is not False:
+        failures.append(f"{label}: offlineSessionMaxLifespanEnabled must be false")
+    idle = realm.get("offlineSessionIdleTimeout")
+    if not isinstance(idle, int) or isinstance(idle, bool) or idle < MIN_OFFLINE_IDLE_SECONDS:
+        failures.append(f"{label}: offlineSessionIdleTimeout must be at least {MIN_OFFLINE_IDLE_SECONDS} seconds "
+                        f"but is {idle!r}")
+
     frontend_url = (realm.get("attributes") or {}).get("frontendUrl")
     if frontend_url:
         failures += check_uri(label, "realm attribute frontendUrl", frontend_url, allow_app_scheme=False)
@@ -126,6 +140,10 @@ def check_deployed_realm(text, label):
         for origin in client.get("webOrigins") or []:
             if not HTTPS_ORIGIN.match(origin):
                 failures.append(f"{label}: client {name} web origin {origin!r} must be an exact https://host value")
+        if name == APP_CLIENT:
+            scopes = (client.get("optionalClientScopes") or []) + (client.get("defaultClientScopes") or [])
+            if OFFLINE_SCOPE not in scopes:
+                failures.append(f"{label}: client {name} must offer the {OFFLINE_SCOPE} client scope")
 
     for pattern, description in FORBIDDEN_TEXT:
         if pattern.search(text):
@@ -202,6 +220,8 @@ def good_realm():
         "verifyEmail": True,
         "bruteForceProtected": True,
         "duplicateEmailsAllowed": False,
+        "offlineSessionIdleTimeout": MIN_OFFLINE_IDLE_SECONDS,
+        "offlineSessionMaxLifespanEnabled": False,
         "identityProviders": [
             {"alias": "google", "enabled": False, "config": {"clientSecret": "not-configured"}},
         ],
@@ -212,7 +232,8 @@ def good_realm():
              "implicitFlowEnabled": False,
              "redirectUris": ["cichlids://auth", "https://staging.cichlids.com/auth"],
              "webOrigins": ["https://staging.cichlids.com"],
-             "attributes": {"pkce.code.challenge.method": "S256"}},
+             "attributes": {"pkce.code.challenge.method": "S256"},
+             "optionalClientScopes": [OFFLINE_SCOPE]},
         ],
     }
 
@@ -275,6 +296,14 @@ def self_test():
         ("verifyEmail off", mutate(set_key("verifyEmail", False)), 1),
         ("brute force protection off", mutate(set_key("bruteForceProtected", False)), 1),
         ("duplicate e-mails allowed", mutate(set_key("duplicateEmailsAllowed", True)), 1),
+        ("offline session lifespan enabled", mutate(set_key("offlineSessionMaxLifespanEnabled", True)), 1),
+        ("offline session lifespan flag missing", mutate(lambda r: r.pop("offlineSessionMaxLifespanEnabled")), 1),
+        ("offline session idle of 30 days", mutate(set_key("offlineSessionIdleTimeout", 2592000)), 1),
+        ("offline session idle missing", mutate(lambda r: r.pop("offlineSessionIdleTimeout")), 1),
+        ("offline session idle as text", mutate(set_key("offlineSessionIdleTimeout", "315360000")), 1),
+        ("offline scope as a default scope", mutate(lambda r: (set_app("optionalClientScopes", [])(r),
+                                                              set_app("defaultClientScopes", [OFFLINE_SCOPE])(r))), 0),
+        ("offline scope missing", mutate(set_app("optionalClientScopes", ["profile"])), 1),
         ("password grant", mutate(set_app("directAccessGrantsEnabled", True)), 1),
         ("password grant flag missing", mutate(drop_grant_flag), 1),
         ("implicit flow", mutate(set_app("implicitFlowEnabled", True)), 1),

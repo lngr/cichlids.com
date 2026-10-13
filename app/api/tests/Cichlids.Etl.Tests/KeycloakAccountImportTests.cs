@@ -94,6 +94,17 @@ public sealed class KeycloakAccountImportTests(KeycloakAccountImportTests.Scenar
     }
 
     [Fact]
+    [Trait("Story", "task-3.41")]
+    public async Task GivesACreatedUserTheDefaultRolesThatAllowOfflineSessions()
+    {
+        var userId = Uuidv5.Create(LegacyAccountPlanner.NamespaceId, "alice@example.test");
+
+        var roles = await scenario.Admin.GetArrayAsync($"users/{userId}/role-mappings/realm/composite");
+
+        Assert.Contains(roles, role => role.GetProperty("name").GetString() == "offline_access");
+    }
+
+    [Fact]
     public async Task GivesPasswordUsersUpdatePasswordAndTermsAndSocialOnlyUsersOnlyTerms()
     {
         Assert.Equal([TermsAndConditions, UpdatePassword], await RequiredActionsAsync("alice@example.test"));

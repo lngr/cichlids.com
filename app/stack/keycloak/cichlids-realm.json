@@ -5,6 +5,8 @@
   "sslRequired": "none",
   "registrationAllowed": false,
   "resetPasswordAllowed": true,
+  "offlineSessionIdleTimeout": 315360000,
+  "offlineSessionMaxLifespanEnabled": false,
   "requiredActions": [
     { "alias": "CONFIGURE_TOTP", "name": "Configure OTP", "providerId": "CONFIGURE_TOTP", "enabled": true, "defaultAction": false, "priority": 10, "config": {} },
     { "alias": "TERMS_AND_CONDITIONS", "name": "Terms and Conditions", "providerId": "TERMS_AND_CONDITIONS", "enabled": true, "defaultAction": false, "priority": 20, "config": {} },
@@ -235,7 +237,8 @@
         "roles",
         "email",
         "cichlids-api-audience"
-      ]
+      ],
+      "optionalClientScopes": ["offline_access"]
     }
   ],
   "users": [
@@ -248,7 +251,8 @@
       "lastName": "User",
       "credentials": [
         { "type": "password", "value": "dev-password", "temporary": false }
-      ]
+      ],
+      "realmRoles": ["default-roles-cichlids"]
     },
     {
       "username": "dev-mod",
@@ -260,7 +264,7 @@
       "credentials": [
         { "type": "password", "value": "dev-password", "temporary": false }
       ],
-      "realmRoles": ["moderator", "admin"]
+      "realmRoles": ["default-roles-cichlids", "moderator", "admin"]
     }
   ]
 }

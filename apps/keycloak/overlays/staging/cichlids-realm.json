@@ -4,6 +4,8 @@
   "enabled": true,
   "sslRequired": "all",
   "resetPasswordAllowed": true,
+  "offlineSessionIdleTimeout": 315360000,
+  "offlineSessionMaxLifespanEnabled": false,
   "verifyEmail": true,
   "bruteForceProtected": true,
   "duplicateEmailsAllowed": false,
@@ -238,7 +240,8 @@
         "roles",
         "email",
         "cichlids-api-audience"
-      ]
+      ],
+      "optionalClientScopes": ["offline_access"]
     }
   ]
 }

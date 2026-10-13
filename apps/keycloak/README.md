@@ -30,6 +30,8 @@ one of these rules:
 - Redirect URIs are `https://` URLs or exactly `cichlids://auth`, without `*`. Web origins are
   exact `https://host` values without `+` or `*`.
 - `verifyEmail` and `bruteForceProtected` are true and `duplicateEmailsAllowed` is not true.
+- `offlineSessionMaxLifespanEnabled` is false, `offlineSessionIdleTimeout` is at least ten years
+  and `cichlids-app` offers the `offline_access` client scope.
 - No local address, `.test` domain, development credential name or `exp://` URL appears.
 - Both files are equal apart from the allowed differences above.
 
@@ -43,6 +45,16 @@ The user profile of the realm carries a pattern validator on the username. It re
 placeholder profiles, on the registration form and in the admin API. The user profile is part of
 the realm file, so both deployed files and the local realm file hold the same definition. The API
 adds a second guard: a first login whose username is reserved gets a generated handle.
+
+## Offline sessions
+
+Members stay signed in on a device until they sign out
+([ADR-0027](../../docs/adr/0027-session-model-for-native-and-web-clients.md)). The app and the web
+backend request `offline_access`; offline sessions have no maximum lifespan and an idle timeout of
+ten years (`315360000` seconds). A user needs the `offline_access` realm role for that scope.
+Users created through the admin API or the registration form receive it through the default role
+`default-roles-cichlids`; `etl keycloak-import` assigns that role to every account it creates,
+since a partial import grants no default roles. A user without the role cannot sign in to the app.
 
 ## Check a fresh import
 

@@ -46,6 +46,26 @@ public sealed class DeployedRealmImportTests(DeployedRealmImportTests.StagingKey
     }
 
     [Fact]
+    [Trait("Story", "task-3.41")]
+    public async Task Offline_sessions_have_no_maximum_lifespan_and_an_idle_timeout_of_ten_years()
+    {
+        var realm = await keycloak.GetAsync($"admin/realms/{Realm}");
+
+        Assert.False(realm.GetProperty("offlineSessionMaxLifespanEnabled").GetBoolean());
+        Assert.Equal(10 * 365 * 24 * 60 * 60, realm.GetProperty("offlineSessionIdleTimeout").GetInt32());
+    }
+
+    [Fact]
+    [Trait("Story", "task-3.41")]
+    public async Task Public_client_offers_the_offline_access_scope()
+    {
+        var clients = await keycloak.GetAsync($"admin/realms/{Realm}/clients?clientId=cichlids-app");
+        var app = Assert.Single(clients.EnumerateArray().ToList());
+
+        Assert.Contains("offline_access", Strings(app.GetProperty("optionalClientScopes")));
+    }
+
+    [Fact]
     public async Task Realm_has_no_accounts()
     {
         var count = await keycloak.GetAsync($"admin/realms/{Realm}/users/count");
