@@ -1,0 +1,2191 @@
+schemaVersion: 1
+id: geophagus-surinamensis
+legacyIds:
+  - 734
+status: described
+taxonomy:
+  validName: Geophagus surinamensis
+  genus: Geophagus
+  species: surinamensis
+  author: '(Bloch, 1791)'
+  source: &id001
+    kind: catalog-of-fishes
+    title: 'Eschmeyer''s Catalog of Fishes: species of Geophagus, version of 21 September 2026'
+    url: 'https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Geophagus'
+    accessed: '2026-10-13'
+  synonyms:
+    - name: Sparus surinamensis
+      note: 'Original combination of Bloch, 1791.'
+    - name: Sparus trimaculatus
+      note: 'Objective junior synonym and unnecessary replacement name by Shaw in Shaw and Nodder, 1809.'
+  legacyNames:
+    - Geophagus surinamensis
+  note: 'Legacy entry 734 denotes the valid Guianan species Geophagus surinamensis (Bloch, 1791). Geophagus altifrons,
+    G. proximus, G. sveni and G. neambi are separate valid species, not current synonyms or variants. Unverified
+    aquarium stock and legacy photographs cannot be assigned from the trade label alone. The Catalog distribution
+    is broader than the restricted range in FishBase and the Nordic specialist register; it does not justify combining
+    Amazonian husbandry or ecology with native Guianan data. Ximenes and colleagues found five database sequences
+    labelled surinamensis that they interpreted as misidentified altifrons, without establishing the identity of
+    all traded fish. The public Cichlid Room Companion page confirms the accepted name and original combination
+    but exposes no feeding, breeding or habitat summary. The Maroni ion studies were unavailable to the input researchers
+    through fetch-oa, so their unseen tables do not support hardness endpoints.'
+names:
+  trade:
+    en:
+      - Redstriped eartheater
+      - Suriname eartheater
+      - Mother-of-pearl eartheater
+    de:
+      - Surinam-Erdfresser
+      - Surinam-Perlfisch
+    pt-BR:
+      - Acara tinga
+variants: []
+features:
+  origin:
+    value:
+      continent: South America
+      region: Coastal Guianan drainages of Suriname and French Guiana
+      waterbody: null
+      localities:
+        - Saramacca River
+        - Suriname River
+        - Marowijne River (Maroni)
+    confidence: high
+    rationale: 'All four profiles describe the same restricted Guianan species and the same three drainages; their
+      region wording and Maroni spelling differ. FishBase and the Nordic register specify Saramacca, Suriname and
+      Marowijne. The broader Catalog distribution is acknowledged as conflicting geographical context rather than
+      used to add Amazonian habitats.'
+    sources:
+      - &id002
+        kind: database
+        title: 'FishBase, Geophagus surinamensis summary'
+        url: 'https://www.fishbase.se/summary/Geophagus-surinamensis.html'
+        accessed: '2026-10-13'
+      - *id001
+      - &id004
+        kind: literature
+        title: 'Stalsberg, A. (1998). Collecting in Surinam. First-person collecting report.'
+        url: 'https://www.lem.net/alf/surinam-eng.htm'
+        accessed: '2026-10-13'
+      - &id003
+        kind: database
+        title: 'Nordiska Ciklidsallskapet: Geophagus surinamensis species register'
+        url: 'https://www.ciklid.org/artregister/art.php?ID=391'
+        accessed: '2026-10-13'
+      - &id007
+        kind: database
+        title: 'Seriously Fish: Geophagus altifrons, including identification of the surinamensis group'
+        url: 'https://www.seriouslyfish.com/species/geophagus-altifrons/'
+        accessed: '2026-10-13'
+    evidence:
+      - source: *id002
+        value:
+          continent: South America
+          region: 'Saramacca, Suriname and Marowijne river systems'
+      - source: *id003
+        value:
+          continent: South America
+          region: 'Saramacca, Suriname and Marowijne river systems'
+      - source: *id004
+        value:
+          continent: South America
+          region: Suriname River at Brokopondo
+        note: Direct collection of fish identified as surinamensis; dam-site specimens of uncertain identity excluded.
+      - source: *id001
+        value:
+          continent: South America
+          region: 'French Guiana, Brazil, Colombia and Suriname'
+        note: Broader distribution field conflicts with the restricted species accounts; nomenclature authority
+          does not resolve each historical locality.
+  temperatureC:
+    value:
+      min: 24
+      max: 32
+    confidence: low
+    rationale: 'The binding tally uses median verification with 3 of 6 votes supporting its leading range, because
+      no qualified majority emerged. Generator proposed 30 to 30 C, checker-a 22 to 25 C, checker-b 27 to 31 C,
+      and checker-c, tiebreaker-1 and tiebreaker-2 each 24.4 to 33.4 C. Median minima and maxima are 24.4 and 32.2
+      C, rounded to 24 and 32. Mol et al. actually report a wider regional envelope of 24.4 to 33.4 C, including
+      main-river observations of 25 to 33.4 C; the decided upper bound is a voting synthesis, not the measured maximum.
+      Stalsberg recorded 30 C beside collected fish. The Lely and Nassau survey concerns other stream fish communities,
+      and FishBase 22 to 25 C cites an aquarium atlas; neither establishes occupied lowland endpoints for this species.
+      This low-confidence interval is incomplete habitat context rather than a physiological limit.'
+    sources:
+      - &id005
+        kind: literature
+        title: 'Mol, de Merona, Ouboter and Sahdew (2007). The fish fauna of Brokopondo Reservoir, Suriname, during
+          40 years of impoundment.'
+        url: 'https://doi.org/10.1590/S1679-62252007000300015'
+        accessed: '2026-10-13'
+      - *id004
+      - &id006
+        kind: literature
+        title: 'Mol and colleagues (2007). Fishes of Lely and Nassau Mountains, Suriname. RAP Bulletin chapter 9.'
+        url: 'https://doi.org/10.1896/1-881173-98-4.107'
+        accessed: '2026-10-13'
+      - *id002
+      - kind: database
+        title: 'FishBase reference 1672: Riehl and Baensch (1991), Aquarien Atlas, volume 1.'
+        url: 'https://www.fishbase.se/references/FBRefSummary.php?ID=1672'
+        accessed: '2026-10-13'
+    evidence:
+      - source: *id005
+        value:
+          min: 24.4
+          max: 33.4
+        note: Table 1 union of pre-dam river 25 to 33.4 C and tributaries 24.4 to 28.6 C. Text summarizes 27 to
+          31 C; occupancy of each endpoint is unverified.
+      - source: *id004
+        value:
+          min: 30
+          max: 30
+        note: Species collected over fine sand at Brokopondo village. The 36 C site had no observed Geophagus and
+          is excluded.
+      - source: *id006
+        value:
+          min: 22.2
+          max: 24.8
+        note: 'Table 9.1 regional upland and foothill survey; no surinamensis listed in the sampled fauna, so rejected
+          as occupied-species endpoints.'
+      - source: *id002
+        value:
+          min: 22
+          max: 25
+        note: Climate entry cites aquarium-atlas reference 1672; excluded as a field measurement.
+    tolerance:
+      value:
+        min: 24
+        max: 32
+      confidence: low
+      rationale: 'The tally conservatively decides 24 to 32 C with low confidence. Generator proposed 24 to 30,
+        checker-a 22 to 29, checker-b 22 to 32, and checker-c, tiebreaker-1 and tiebreaker-2 each 22 to 33.4 C.
+        Their intersection is 24 to 29 C, widened to contain the decided natural range of 24 to 32 C. This explains
+        why the stored upper limit exceeds direct species-labelled care recommendations. NCS gives the wider lower-end
+        range of 22 to 30 C; FishFish gives 24 to 29, Zoopet 24 to 27 and Aqua-Fish 22 to 27. Seriously Fish allows
+        altifrons 26 to 32 and brokopondo 25 to 33, but these are different species. Mol et al. measure the wider
+        habitat envelope of 24.4 to 33.4 C, which is not a chronic aquarium trial. Long-term health at constant
+        32 C is unverified; ordinary maintenance around 26 to 29 C has better husbandry support.'
+      sources:
+        - *id003
+        - &id008
+          kind: database
+          title: 'FishFish: Geophagus surinamensis collaborative care profile'
+          url: 'https://www.fishfish.fr/poisson/geophagus-surinamensis'
+          accessed: '2026-10-13'
+        - *id002
+        - &id011
+          kind: database
+          title: 'Guidarium, Red Striped Eartheater care guide'
+          url: 'https://guidarium.com/fishes/red-striped-eartheater'
+          accessed: '2026-10-13'
+        - &id013
+          kind: database
+          title: 'Seriously Fish, Geophagus brachybranchus'
+          url: 'https://www.seriouslyfish.com/species/geophagus-brachybranchus/'
+          accessed: '2026-10-13'
+        - &id009
+          kind: database
+          title: 'Zoopet: Geophagus surinamensis species description'
+          url: 'https://www.zoopet.com/fiskar/fisk.php?NR=184'
+          accessed: '2026-10-13'
+        - *id007
+        - &id012
+          kind: database
+          title: 'AquaInfo: Geophagus surinamensis care and breeding account'
+          url: 'https://aquainfo.nl/artikel/geophagus-surinamensis/'
+          accessed: '2026-10-13'
+        - &id010
+          kind: database
+          title: 'Aqua-Fish: Red striped earth eater, Geophagus surinamensis'
+          url: 'https://en.aqua-fish.net/fish/red-striped-earth-eater'
+          accessed: '2026-10-13'
+        - &id014
+          kind: database
+          title: 'Seriously Fish: Geophagus brokopondo, comparison species and Suriname River habitat'
+          url: 'https://www.seriouslyfish.com/species/geophagus-brokopondo/'
+          accessed: '2026-10-13'
+        - *id005
+        - &id015
+          kind: website
+          title: 'Nicks Aquarium Oceanarium Terrarium: Geophagus surinamensis retailer care page'
+          url: 'https://nicksaquariumoceanariumterrarium.com.au/products/red-striped-earth-eater-geophagus-surinamensis'
+          accessed: '2026-10-13'
+      evidence:
+        - source: *id003
+          value:
+            min: 22
+            max: 30
+          note: Species-labelled aquarium recommendation.
+        - source: *id008
+          value:
+            min: 24
+            max: 29
+          note: Broad species-group treatment limits identity confidence.
+        - source: *id009
+          value:
+            min: 24
+            max: 27
+          note: Species-labelled aquarium guidance.
+        - source: *id010
+          value:
+            min: 22
+            max: 27
+          note: Trade-name care guidance.
+        - source: *id011
+          value:
+            min: 24
+            max: 28
+          note: Structured care guidance without native parental locality.
+        - source: *id012
+          value:
+            min: 22
+            max: 25
+          note: Historical species-labelled recommendation.
+        - source: *id013
+          value:
+            min: 26
+            max: 30
+          note: Brachybranchus comparison only.
+        - source: *id007
+          value:
+            min: 26
+            max: 32
+          note: Altifrons comparison only; no chronic surinamensis validation.
+        - source: *id014
+          value:
+            min: 25
+            max: 33
+          note: Brokopondo comparison only.
+        - source: *id015
+          value:
+            min: 24
+            max: 30
+          note: 'Retailer species table; website evidence, not an independent husbandry trial.'
+        - source: *id002
+          value:
+            min: 22
+            max: 25
+          note: Aquarium-atlas context rather than a captive tolerance experiment.
+        - source: *id005
+          value:
+            min: 24.4
+            max: 33.4
+          note: 'Field envelope supports habitat containment only, not years at its extremes.'
+      verification:
+        method: conservative
+        votes:
+          agree: 3
+          total: 6
+    verification:
+      method: median
+      votes:
+        agree: 3
+        total: 6
+  ph:
+    value:
+      min: 5.1
+      max: 6.9
+    confidence: medium
+    rationale: 'Retain the tally qualified majority of 5 of 6 votes at pH 5.1 to 6.9, with medium confidence. Generator,
+      checker-b, checker-c, tiebreaker-1 and tiebreaker-2 proposed that range; checker-a proposed 5.0 to 7.5. Mol
+      et al. report pre-dam main-river pH 5.1 to 6.0 and tributary pH 5.5 to 6.9, and Stalsberg measured 5.5 with
+      collected fish. The wider regional Lely and Nassau pH 6.5 to 7.5 concerns stations without a recorded surinamensis
+      capture, while FishBase 6 to 8 has no comparable station attribution. The selected interval is a native catchment
+      proxy, not a full seasonal survey of every population.'
+    sources:
+      - *id005
+      - *id004
+      - *id002
+      - *id006
+      - *id014
+    evidence:
+      - source: *id005
+        value:
+          min: 5.1
+          max: 6.9
+        note: Table 1 pre-dam main river and tributaries combined; species presence at each endpoint is not demonstrated.
+      - source: *id004
+        value:
+          min: 5.5
+          max: 5.5
+        note: Occupied river collection site.
+      - source: *id002
+        value:
+          min: 6
+          max: 8
+        note: Database range without native sampling stations; rejected for natural endpoints.
+    tolerance:
+      value:
+        min: 5.1
+        max: 7
+      confidence: medium
+      rationale: 'Retain the tally qualified majority of 4 of 6 votes at pH 5.1 to 7, with medium confidence. Generator,
+        checker-b, tiebreaker-1 and tiebreaker-2 proposed 5.1 to 7; checker-a proposed 5 to 8 and checker-c 5.1
+        to 7.5. NCS and Zoopet give 6 to 7, while FishFish and B-Aqua give 5.5 to 7. The lower boundary is extended
+        to contain measured native acidity rather than validated by a multiyear experiment. The decided interval
+        is narrower than Nicks and Guidarium 6 to 7.5, AquaInfo 7 to 7.5, and FishBase and Aqua-Fish 6 to 8. Trade
+        identity and the explicit specialist recommendation favor the selected ceiling, without establishing that
+        higher pH is lethal.'
+      sources:
+        - *id008
+        - *id003
+        - *id005
+        - *id009
+        - &id017
+          kind: database
+          title: 'Aqua-Fish: Perle du Suriname, Geophagus surinamensis'
+          url: 'https://fr.aqua-fish.net/poissons/perle-du-suriname'
+          accessed: '2026-10-13'
+        - &id016
+          kind: database
+          title: 'B-Aqua: Geophagus surinamensis, maintenance parameters.'
+          url: 'https://www.b-aqua.com/pages/fiche.aspx?id=1686&media=print'
+          accessed: '2026-10-13'
+        - *id015
+        - *id010
+        - *id002
+        - *id011
+        - *id012
+      evidence:
+        - source: *id003
+          value:
+            min: 6
+            max: 7
+        - source: *id009
+          value:
+            min: 6
+            max: 7
+        - source: *id008
+          value:
+            min: 5.5
+            max: 7
+          note: Broad species-group treatment.
+        - source: *id016
+          value:
+            min: 5.5
+            max: 7
+          note: Participatory database with broader historical distribution.
+        - source: *id015
+          value:
+            min: 6
+            max: 7.5
+          note: Retailer recommendation; lower weight.
+        - source: *id011
+          value:
+            min: 6
+            max: 7.5
+        - source: *id012
+          value:
+            min: 7
+            max: 7.5
+        - source: *id010
+          value:
+            min: 6
+            max: 8
+          note: Broader trade-name recommendation.
+        - source: *id017
+          value:
+            min: 6
+            max: 8
+          note: 'Language version of the same Aqua-Fish account, not an independent source.'
+        - source: *id002
+          value:
+            min: 6
+            max: 8
+          note: No long-term locality-confirmed trial supplied.
+        - source: *id005
+          value:
+            min: 5.1
+            max: 6.9
+          note: Field context for inclusion of the lower native bound only.
+      verification:
+        method: qualified-majority
+        votes:
+          agree: 4
+          total: 6
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 5
+        total: 6
+  ghDgh:
+    value:
+      min: 0
+      max: 1
+    confidence: low
+    rationale: 'The tally classifies agreement as unanimous under its 2 dGH matching threshold and retains 0 to
+      1 dGH with low confidence. Generator proposed 0 to 0, checker-a 0 to 3, and checker-b and checker-c 0 to 1;
+      the median upper bound is 1. Stalsberg reports dH 0 at an occupied site, with unspecified test resolution.
+      The chosen upper bound is inferred rather than a measured basin maximum. FishBase gives the wider 5 to 19
+      dH range without field-station attribution, which is rejected as native evidence. Mol et al. and the Lely
+      and Nassau survey corroborate low mineralization but supply no GH measurements. Checker-a inferred 0 to 3
+      from conductivity; that conversion is not accepted. A second independent numerical field GH source is absent,
+      so voting agreement cannot remove the evidence gap.'
+    sources:
+      - *id004
+      - *id005
+      - *id002
+      - *id006
+      - *id014
+    evidence:
+      - source: *id004
+        value:
+          min: 0
+          max: 0
+        note: Reported field-kit reading with unknown resolution; does not mean ion-free water.
+      - source: *id002
+        value:
+          min: 5
+          max: 19
+        note: Conflicting summary without a verified habitat station; excluded as native GH.
+      - source: *id005
+        value: null
+        note: No GH determination. Pre-dam main-river conductivity 16 to 36 uS/cm is qualitative context only.
+      - source: *id006
+        value: null
+        note: No GH determination; conductivity cannot establish the 0 to 3 dGH inferred by checker-a.
+      - source: *id014
+        value:
+          min: 0
+          max: 5
+        note: 'Aquarium advice for brokopondo; retained as a rejected natural-GH proxy, not a surinamensis field
+          measurement.'
+    tolerance:
+      value:
+        min: 0
+        max: 11
+      confidence: low
+      rationale: 'The tally retains 0 to 11 dGH with low confidence and unanimous verification under the 2 dGH agreement
+        threshold. Generator and checker-b proposed 0 to 10, while checker-a and checker-c proposed 0 to 12; the
+        median upper bound is 11. FishFish gives 1 to 10, Guidarium 2 to 10, AquaInfo 8 to 12 and generated Aqua-Pedia
+        data 2 to 12. The decided range is narrower than Aqua-Fish 4 to 18 and FishBase 5 to 19. None establishes
+        years of health at exactly 11 dGH in locality-confirmed fish. The lower zero contains the field-kit reading
+        and denotes very low detectable hardness rather than a requirement for unmineralized water. Very soft conditions
+        have stronger native support than the inferred upper endpoint.'
+      sources:
+        - *id008
+        - *id010
+        - *id004
+        - *id002
+        - *id011
+        - *id013
+        - *id017
+        - *id007
+        - *id012
+        - &id018
+          kind: database
+          title: 'Aqua-Pedia: Surinam eartheater care parameters'
+          url: 'https://www.aqua-pedia.com/en/species/geophagus-surinamensis-surinam-eartheater'
+          accessed: '2026-10-13'
+      evidence:
+        - source: *id008
+          value:
+            min: 1
+            max: 10
+          note: Broad trade-name account.
+        - source: *id011
+          value:
+            min: 2
+            max: 10
+        - source: *id012
+          value:
+            min: 8
+            max: 12
+        - source: *id018
+          value:
+            min: 2
+            max: 12
+          note: Generated and reviewed data with low reliability.
+        - source: *id010
+          value:
+            min: 4
+            max: 18
+          note: Wider recommendation downweighted for identity and breeding-description concerns.
+        - source: *id017
+          value:
+            min: 4
+            max: 18
+          note: 'Same Aqua-Fish account in another language, not independent confirmation.'
+        - source: *id002
+          value:
+            min: 5
+            max: 19
+          note: Unlocalized summary; no chronic aquarium trial.
+        - source: *id013
+          value:
+            min: 1
+            max: 10
+          note: Related species only.
+        - source: *id007
+          value:
+            min: 0
+            max: 5
+          note: Related species only.
+        - source: *id004
+          value:
+            min: 0
+            max: 0
+          note: 'Habitat context for the lower bound, not an aquarium longevity experiment.'
+      verification:
+        method: unanimous
+        votes:
+          agree: 4
+          total: 4
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  khDkh:
+    value:
+      min: 0
+      max: 1
+    confidence: low
+    rationale: 'Retain the tally natural value of 0 to 1 dKH and low confidence, without a verification object.
+      Generator proposed 0.5 to 0.5, checker-a 0 to 2, and checker-b and checker-c 0.1 to 0.5. Tally range matching
+      accepts these proposals and rounds median bounds of 0.1 and 0.5 to integers 0 and 1. Stalsberg measured 0.5
+      dKH with the species present. Landburg measured alkalinity 1.9 to 6.65 mg/L as CaCO3, equivalent to approximately
+      0.106 to 0.373 dKH, in the Palumeu watershed. Those stations are regional context without verified surinamensis
+      captures, and organic alkalinity may contribute. Zero and one are rounded synthesis bounds rather than observed
+      species endpoints. Checker-a inferred KH from conductivity and pH; that inference is rejected. WetWebMedia
+      2 to 3 dKH describes congener aquarium advice and is excluded from the natural value.'
+    sources:
+      - *id004
+      - &id020
+        kind: website
+        title: 'WetWebMedia: Geophagus correspondence, including Neale Monks on Tapajos redhead water chemistry,
+          9 August 2017'
+        url: 'http://www.wetwebmedia.com/FWSubWebIndex/eartheatfaqs.htm'
+        accessed: '2026-10-13'
+      - *id006
+      - &id019
+        kind: literature
+        title: 'Landburg (2013). Water Quality Assessment of the Palumeu River. RAP Bulletin 67, chapter 2.'
+        url: 'https://doi.org/10.1896/054.067.0110'
+        accessed: '2026-10-13'
+    evidence:
+      - source: *id004
+        value:
+          min: 0.5
+          max: 0.5
+        note: Direct reported KH at the collection site.
+      - source: *id019
+        value:
+          min: 0.106
+          max: 0.373
+        note: 'Appendix 2.1 alkalinity divided by 17.848. Regional operational KH equivalent, not pure carbonate
+          analysis or fish-matched stations.'
+      - source: *id006
+        value: null
+        note: No KH measurement; conductivity and pH do not yield the 0 to 2 dKH proposed by checker-a.
+      - source: *id020
+        value:
+          min: 2
+          max: 3
+        note: Aquarium advice for Tapajos redhead; excluded as natural surinamensis KH.
+    tolerance:
+      value:
+        min: 0
+        max: 3
+      confidence: low
+      rationale: 'The tally conservatively decides 0 to 3 dKH with low confidence. Generator and tiebreaker-1 proposed
+        0.5 to 3, checker-a 0 to 8, checker-b 0 to 6, checker-c 0.1 to 6, and tiebreaker-2 0 to 3. Their intersection
+        is 0.5 to 3, then widened to zero to contain the decided natural 0 to 1 dKH. The result is narrower than
+        Aqua-Pedia 1 to 6 and Monitarium 3 to 8. Aqua-Pedia discloses generated data and Monitarium contains identification
+        and breeding errors. Monks gives 2 to 3 dKH for the Tapajos redhead, providing congener analogy only. Stalsberg
+        and Landburg describe native or regional water rather than chronic captive limits. No two reliable numerical
+        species-specific husbandry sources establish these endpoints; the broader published KH ranges remain weak
+        evidence. GH and conductivity are not converted to KH.'
+      sources:
+        - *id020
+        - *id018
+        - *id004
+        - *id002
+        - *id013
+        - *id009
+        - &id021
+          kind: database
+          title: 'Monitarium: Geophagus surinamensis recommended water parameters'
+          url: 'https://monitarium.com/es/encyclopedia/geophagus-surinamensis'
+          accessed: '2026-10-13'
+        - *id019
+      evidence:
+        - source: *id020
+          value:
+            min: 2
+            max: 3
+          note: Expert website correspondence for Tapajos redhead; congener analogy only.
+        - source: *id018
+          value:
+            min: 1
+            max: 6
+          note: Generated care data without traceable chronic KH evidence.
+        - source: *id021
+          value:
+            min: 3
+            max: 8
+          note: Structured account with incorrect diagnostic and reproductive statements; low weight.
+        - source: *id004
+          value:
+            min: 0.5
+            max: 0.5
+          note: 'Occupied native site, not years of aquarium exposure.'
+        - source: *id019
+          value:
+            min: 0.106
+            max: 0.373
+          note: Regional alkalinity context only.
+        - source: *id009
+          value: null
+          note: No numerical KH recommendation.
+        - source: *id002
+          value: null
+          note: No numerical KH recommendation.
+        - source: *id013
+          value: null
+          note: No numerical KH recommendation.
+      verification:
+        method: conservative
+        votes:
+          agree: 3
+          total: 6
+  maxSizeCm:
+    value:
+      male: 25
+      female: 20
+    confidence: low
+    rationale: 'Generator and checker-b proposed 25 cm male and 20 cm female, checker-a 22 and 18, and checker-c
+      20 and 18. Retain 25 and 20 as provisional adult aquarium planning sizes. FishFish supplies this sex split
+      and Zoopet gives an unsexed 25 cm; the more species-focused NCS gives 20 cm overall with smaller females but
+      no female measurement. AquaInfo and Aqua-Fish give the wider unsexed 25 to 30 cm range, which is not selected
+      as a typical sex-specific maximum. FishBase 17.2 cm is standard length and its historical 30 cm figure is
+      total length; neither justifies an exact SL-to-TL conversion or a female estimate. Identity ambiguity and
+      absent verified sex-specific series require low confidence.'
+    sources:
+      - *id002
+      - *id011
+      - *id008
+      - *id003
+      - *id010
+      - *id009
+      - kind: model-knowledge
+        title: Checker inference where species-specific numerical evidence is absent
+        accessed: '2026-10-13'
+    evidence:
+      - source: *id008
+        value:
+          male: 25
+          female: 20
+        note: Sex-specific care figures under a broader species-group label.
+      - source: *id009
+        value:
+          male: 25
+          female: null
+        note: Unsexed 25 cm only; no female maximum.
+      - source: *id003
+        value:
+          male: 20
+          female: null
+        note: 'Overall 20 cm with smaller females described, without their numerical maximum.'
+      - source: *id002
+        value:
+          male: 17.2
+          female: null
+        note: Male or unsexed SL; excludes the tail. A separate historical narrative gives 30 cm TL.
+      - source: *id010
+        value:
+          male: 30
+          female: null
+        note: Unsexed care size 25 to 30 cm; no female split.
+      - source: *id011
+        value:
+          male: 25
+          female: null
+        note: 'Unsexed adult figure, not a verified male measurement.'
+  predation:
+    value: 1
+    confidence: medium
+    rationale: 'Retain level 1 and medium confidence from the tally qualified majority of 5 of 6 votes. Generator,
+      checker-b, checker-c, tiebreaker-1 and tiebreaker-2 proposed 1; checker-a proposed 0. NCS explicitly includes
+      occasional small fish in a mainly plant-and-insect diet, and Guidarium flags fry predation. Nicks repeats
+      a small-fish warning as lower-weight retailer evidence. Fish Laboratory claims even small companions are safe,
+      while Seriously Fish discusses negligible fish predation in brokopondo and altifrons, not securely identified
+      surinamensis. These do not outweigh the species-focused occasional-prey account. The approximately 2 cm threshold
+      belongs to the rubric and was not experimentally measured.'
+    sources:
+      - *id003
+      - *id008
+      - *id011
+      - *id002
+      - *id015
+      - &id022
+        kind: website
+        title: Fish Laboratory (2023). Geophagus Surinamensis care article.
+        url: 'https://www.fishlaboratory.com/fish/geophagus-surinamensis/'
+        accessed: '2026-10-13'
+      - *id001
+      - *id007
+      - *id014
+    evidence:
+      - source: *id003
+        value: 1
+        note: Occasional small fish eaten; prey length not quantified.
+      - source: *id011
+        value: 1
+        note: Fry-predation category mapped to the rubric.
+      - source: *id015
+        value: 1
+        note: Retailer warns of small tankmates being eaten; website evidence.
+      - source: *id022
+        value: 0
+        note: General hobby account claims small-fish safety; broad distribution and inconsistent temperature conversion
+          reduce weight.
+      - source: *id008
+        value: null
+        note: Peaceful coexistence with relatively small fish does not measure a fry-predation rate.
+      - source: *id002
+        value: null
+        note: Omnivory stated but no numerical predation class or prey limit.
+      - source: *id014
+        value: 0
+        note: Brokopondo comparison only; not direct evidence about true surinamensis.
+    verification:
+      method: qualified-majority
+      votes:
+        agree: 5
+        total: 6
+  diet:
+    value:
+      type: omnivore
+      bloatSensitive: false
+      foods:
+        - Fine sinking complete pellets
+        - Vegetable-containing prepared food
+        - Artemia
+        - Small insect larvae
+        - Finely divided crustaceans
+    confidence: medium
+    rationale: 'The tally unanimously retains omnivore and bloatSensitive false, with medium confidence, across
+      generator, checker-a, checker-b and checker-c. FishBase and NCS include plant and animal foods, supported
+      by Zoopet and AquaInfo. The agents proposed differently worded food lists; the tally selects the generator
+      list of fine complete pellets, vegetable-containing food, Artemia, small insect larvae and divided crustaceans.
+      The bloat flag records no demonstrated specialized high-protein syndrome, not freedom from digestive problems
+      or evidence from a dietary challenge trial.'
+    sources:
+      - *id002
+      - *id003
+      - *id010
+      - *id014
+      - *id009
+      - *id012
+      - &id023
+        kind: archive
+        title: cichlids.com forum thread 57752
+        url: 'https://www.cichlids.com/disc/read.php?1,57752'
+        accessed: '2026-10-13'
+    evidence:
+      - source: *id002
+        value:
+          type: omnivore
+        note: Mixed feeding with a plant component; no bloat-sensitivity experiment.
+      - source: *id003
+        value:
+          type: omnivore
+        note: Plants and insects plus occasional small fish; no bloat-sensitivity experiment.
+      - source: *id009
+        value:
+          type: omnivore
+        note: Animal foods with vegetable supplementation.
+      - source: *id012
+        value:
+          type: omnivore
+        note: Plant and animal aquarium foods.
+      - source: *id010
+        value:
+          type: omnivore
+        note: Mixed food recommendation.
+      - source: *id014
+        value:
+          type: omnivore
+        note: Different species; group-level feeding context only.
+      - source: *id023
+        value: null
+        note: Mixed-stock feeding question without identified parental locality or decisive diet evidence.
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  aggressionConspecific:
+    value: 2
+    confidence: medium
+    rationale: 'All four profiles propose level 2. Species-labelled group guidance and related-species hierarchy
+      accounts support recurrent chasing and pair formation, with injuries not expected in an adequate group. AquaInfo
+      emphasizes peaceful conspecific behavior, while Zoopet and Aqua-Fish use stronger generic aggression labels.
+      These do not quantify injury rates, so medium confidence is retained rather than treating agreement among
+      agents as independent behavioral observation.'
+    sources:
+      - *id014
+      - *id011
+      - *id003
+      - *id020
+      - *id010
+      - *id012
+      - *id009
+    evidence:
+      - source: *id012
+        value: 1
+        note: Peaceful conspecific maintenance with increased breeding aggression; qualitative mapping.
+      - source: *id014
+        value: 2
+        note: Comparison species G. brokopondo develops a dominance hierarchy; inference for group dynamics.
+      - source: *id010
+        value: 3
+        note: Generic aggressive/territorial label without frequency or injury data; low weight.
+      - source: *id011
+        value: 2
+        note: Pecking order and disproportionate bullying in undersized groups.
+      - source: *id009
+        value: 2
+        note: 'Aggression and group recommendation, translated to the rubric with some uncertainty.'
+      - source: *id003
+        value: 1
+        note: 'Group rather than solitary maintenance, with pair formation.'
+      - source: *id020
+        value: 2
+        note: Hierarchy and repeated pursuit when too few subordinates share a tank; trade identity uncertain.
+  aggressionHeterospecific:
+    value: 2
+    confidence: medium
+    rationale: 'Generator, checker-b and checker-c proposed 2; checker-a proposed 1. FishFish and AquaInfo allow
+      peaceful communities outside reproduction but report increased breeding aggression. Chasing neighbors from
+      the brood area fits level 2 better than display-only level 1. No evidence supports frequent injury or attacks
+      throughout a suitable aquarium.'
+    sources:
+      - *id014
+      - *id011
+      - *id008
+      - *id003
+      - *id010
+      - *id012
+      - *id009
+      - *id018
+    evidence:
+      - source: *id012
+        value: 2
+        note: Peaceful except during reproduction; rubric mapping.
+      - source: *id008
+        value: 2
+        note: Peaceful outside spawning and compatible with calm bottom fishes; rubric mapping.
+      - source: *id018
+        value: 2
+        note: 'Calm tankmates are possible, with increased breeding territoriality.'
+  territory:
+    value:
+      size: small
+      breedingOnly: true
+    confidence: low
+    rationale: 'Generator, checker-a and checker-c proposed a small breeding-only territory; checker-b proposed
+      large and breeding-only. NCS describes a prepared spawning surface and brood guarding, and AquaInfo describes
+      little territoriality outside reproduction. A localized brood area supports small provisionally; no source
+      measures either a 30 cm radius or a substantial fraction of tank length. Checker-b inferred large from adult
+      size without measured spatial evidence.'
+    sources:
+      - *id002
+      - *id014
+      - *id003
+      - *id012
+      - *id009
+      - *id008
+      - *id018
+      - &id025
+        kind: model-knowledge
+        title: Conservative aquarium-planning inference for true Geophagus surinamensis
+        accessed: '2026-10-13'
+    evidence:
+      - source: *id012
+        value:
+          size: small
+          breedingOnly: true
+        note: Rubric inference from localized reproductive defense; no dimensions supplied.
+      - source: *id003
+        value:
+          size: small
+          breedingOnly: true
+        note: Both parents defend the brood; no territory dimensions stated.
+      - source: *id018
+        value:
+          size: large
+          breedingOnly: true
+        note: Breeding territoriality is stated; spatial category is inferred.
+  habitatZones:
+    value:
+      - sand
+      - wood
+    confidence: high
+    rationale: 'Generator, checker-a and checker-c proposed sand and wood; checker-b added rock. The direct collection
+      and NCS identify sand feeding, with NCS adding fallen branches and forest-margin cover. Stones can provide
+      spawning surfaces, but their occasional presence does not establish an obligatory rock zone. Independent field
+      and specialist accounts support sand and wood.'
+    sources:
+      - *id002
+      - *id013
+      - *id004
+      - *id005
+      - *id003
+    evidence:
+      - source: *id004
+        value:
+          - sand
+        note: Species collected over fine sand in the Suriname River.
+      - source: *id003
+        value:
+          - sand
+          - wood
+        note: Sand feeding and branch cover in shallow margins.
+      - source: *id002
+        value:
+          - sand
+        note: Adults occupy sand and mud substrates.
+  social:
+    value:
+      structure: group
+      minGroup: 6
+    confidence: medium
+    rationale: 'Generator and checker-c proposed a group of six, checker-a five and checker-b seven. NCS explicitly
+      discourages solitary maintenance but gives no numerical minimum. FishFish specifies six to eight, while Zoopet
+      recommends three males and four to six females. Six follows the explicit group recommendation without imposing
+      a fixed ratio when sexing is difficult. Five is supported by Guidarium and related-species accounts, but the
+      adult planning unit retains a modest margin; seven is an alternative arrangement rather than a demonstrated
+      universal minimum.'
+    sources:
+      - *id014
+      - *id011
+      - *id003
+      - *id008
+      - *id020
+      - *id018
+      - *id009
+    evidence:
+      - source: *id003
+        value:
+          structure: group
+        note: 'Conspecific group preferred, no numerical minimum.'
+      - source: *id008
+        value:
+          structure: group
+          minGroup: 6
+        note: Six to eight animals.
+      - source: *id009
+        value:
+          structure: group
+          minGroup: 7
+        note: 'Three males with four to six females, not proof that six cannot be maintained.'
+      - source: *id011
+        value:
+          structure: group
+          minGroup: 5
+        note: 'Also permits solitary housing, which is downweighted against NCS.'
+      - source: *id014
+        value:
+          structure: group
+          minGroup: 5
+        note: 'Five to eight brokopondo, a related-species comparison.'
+  speciesOnly:
+    value: false
+    confidence: medium
+    rationale: The tally unanimously retains false with medium confidence across all four profiles. FishFish and
+      AquaInfo explicitly allow suitable peaceful companions. NCS requires conspecific company but does not require
+      excluding all other fishes. This distinguishes normal social-group provision from a dedicated breeding arrangement;
+      tiny fry remain at risk under predation level 1.
+    sources:
+      - *id003
+      - *id008
+      - *id014
+      - *id011
+      - *id018
+      - *id012
+    evidence:
+      - source: *id008
+        value: false
+        note: 'Calm companions, including catfish, are allowed.'
+      - source: *id012
+        value: false
+        note: Peaceful other cichlids allowed.
+      - source: *id018
+        value: false
+        note: Calm medium-sized companions suggested; generated data have low weight.
+      - source: *id003
+        value: false
+        note: Group maintenance advised without a species-tank requirement.
+      - source: *id011
+        value: false
+        note: 'Mixed community permitted, though its solitary-maintenance option conflicts with stronger social
+          evidence.'
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  hybridGroups:
+    value: []
+    confidence: low
+    rationale: 'The tally unanimously retains an empty list with low confidence across generator, checker-a, checker-b
+      and checker-c. NCS and the taxonomic and species-database accounts do not establish a named cross involving
+      identified true surinamensis. Ximenes and colleagues interpret five surinamensis-labelled sequences as misidentified
+      altifrons, which is identification evidence rather than demonstrated hybrids. The surinamensis species assemblage
+      alone does not establish all-pairs crossability. Empty membership means no supported curated hybrid conflict
+      in this adjudication, not proven reproductive isolation. No hybrid-group addition or membership edit follows
+      from this decision.'
+    sources:
+      - *id001
+      - *id003
+      - *id007
+      - *id014
+      - &id024
+        kind: literature
+        title: Ximenes and colleagues (2021). Mapping the hidden diversity of the Geophagus sensu stricto species
+          group from the Amazon basin.
+        url: 'https://doi.org/10.7717/peerj.12443'
+        accessed: '2026-10-13'
+    evidence:
+      - source: *id001
+        value: []
+        note: Taxonomy only; no named crossing report or evidence of reproductive isolation.
+      - source: *id003
+        value: []
+        note: No named interspecific cross reported in the species-focused account.
+      - source: *id007
+        value: []
+        note: Close species assemblage and trade confusion described; no identified surinamensis cross.
+      - source: *id014
+        value: []
+        note: Species-group context only; no true-surinamensis crossing report.
+      - source: *id024
+        value: []
+        note: 'Misidentified surinamensis-labelled sequence records, not demonstrated hybrids.'
+    verification:
+      method: unanimous
+      votes:
+        agree: 4
+        total: 4
+  coloration:
+    value:
+      baseColors:
+        - silver
+        - green
+        - blue
+        - red
+        - black
+      pattern: mixed
+    confidence: medium
+    rationale: 'Generator proposed silver, green, blue, red and black; checker-a silver and red; checker-b green,
+      blue, red and black; checker-c silver, green, blue and red. All proposed mixed pattern. Retain the inclusive
+      generator palette because pale metallic body coloration, green and blue reflections, red details and a dark
+      flank blotch are described across the accounts. The black blotch is included descriptively rather than treated
+      as a dark dominant body color. Color alone cannot identify trade juveniles. A dark gill-cover mark in Monitarium
+      is excluded because NCS explicitly distinguishes true surinamensis by its absence.'
+    sources:
+      - *id014
+      - *id008
+      - *id003
+      - *id007
+      - *id012
+      - *id018
+      - kind: model-knowledge
+        title: Trade appearance of the redstriped eartheater
+        accessed: '2026-10-13'
+    evidence:
+      - source: *id008
+        value:
+          baseColors:
+            - green
+            - blue
+            - red
+          pattern: mixed
+        note: Colored fin streaking and a conspicuous flank spot.
+      - source: *id012
+        value:
+          baseColors:
+            - blue
+            - green
+            - red
+          pattern: mixed
+        note: Iridescent adult colors.
+      - source: *id018
+        value:
+          baseColors:
+            - silver
+            - green
+            - blue
+            - orange
+          pattern: stripes
+        note: Lower reliability body-color description.
+  feedingSpeed:
+    value: normal
+    confidence: medium
+    rationale: 'All four profiles proposed normal. Repeated small sinking portions and substrate browsing in NCS
+      do not establish either habitual food monopolization or consistent loss to faster fish. FishFish describes
+      rapid intake of large portions, while WetWebMedia discusses feeding competition in trade-labelled eartheaters.
+      Normal is the provisional rubric mapping for a calm community, without a quantified feeding-speed study.'
+    sources:
+      - *id014
+      - *id003
+      - *id010
+      - *id020
+      - *id008
+    evidence:
+      - source: *id003
+        value: normal
+        note: Rubric inference from repeated small sinking meals and routine sand foraging.
+      - source: *id008
+        value: normal
+        note: Food also taken away from the bottom; no measured race for food.
+  minTank:
+    value:
+      volumeL: 600
+      lengthCm: 180
+      depthCm: 60
+    confidence: medium
+    rationale: 'Generator and checker-b proposed 600 L with a 180 by 60 cm floor, checker-a 500 L with 150 by 60
+      cm, and checker-c 540 L with 150 by 60 cm. Retain 600 L and 180 by 60 cm for the decided six-adult group and
+      provisional 25 cm male size. FishFish gives the 180 by 60 cm footprint; Zoopet gives 550 L and 160 cm; NCS
+      gives 500 L and 120 cm. The 600 L volume is a cautious planning synthesis, not an exact published biological
+      cutoff. Smaller 250 L and 120 cm advice in Guidarium does not justify the full adult group at these planning
+      sizes. Additional large tankmates require more space.'
+    sources:
+      - *id014
+      - *id011
+      - *id008
+      - *id003
+      - *id012
+      - *id009
+      - *id025
+    evidence:
+      - source: *id008
+        value:
+          lengthCm: 180
+          depthCm: 60
+        note: 'Six to eight animals, no volume supplied.'
+      - source: *id009
+        value:
+          volumeL: 550
+          lengthCm: 160
+        note: No depth supplied.
+      - source: *id003
+        value:
+          volumeL: 500
+          lengthCm: 120
+        note: No depth supplied.
+      - source: *id012
+        value:
+          lengthCm: 150
+        note: No volume or depth supplied.
+      - source: *id014
+        value:
+          volumeL: 540
+          lengthCm: 150
+          depthCm: 60
+        note: Brokopondo comparison only.
+      - source: *id011
+        value:
+          volumeL: 250
+          lengthCm: 120
+        note: Smaller recommendation with internally inconsistent solitary/group guidance.
+  lifespanYears:
+    value:
+      min: 8
+      max: 10
+    confidence: low
+    rationale: 'Generator, checker-b and checker-c proposed 8 to 10 years; checker-a proposed 8 to 12. Retain 8
+      to 10 as an approximate planning interval. Aqua-Fish gives an upper estimate of ten and FishFish says ten
+      or more without an upper bound. The wider River Park retailer claim of 10 to 12 years accompanies a 15 cm
+      adult size and Amazonian distribution, reducing its applicability to verified Guianan fish. No validated-age
+      cohort establishes the lower bound or a hard maximum, and well-kept individuals may exceed ten years.'
+    sources:
+      - &id026
+        kind: website
+        title: 'River Park Aquatics, guide to the redstriped eartheater'
+        url: 'https://riverparkaquatics.co.uk/redstriped-eartheater-geophagus-surinamensis-8-10cm'
+        accessed: '2026-10-13'
+      - *id010
+      - *id008
+      - *id021
+      - *id017
+      - kind: model-knowledge
+        title: Longevity of large Geophagus in aquaria
+        accessed: '2026-10-13'
+      - *id025
+    evidence:
+      - source: *id010
+        value:
+          max: 10
+        note: 'Upper care estimate, no minimum stated.'
+      - source: *id017
+        value:
+          max: 10
+        note: Same Aqua-Fish source in another language.
+      - source: *id008
+        value:
+          min: 10
+        note: 'Ten or more, with no finite upper bound.'
+      - source: *id026
+        value:
+          min: 10
+          max: 12
+        note: Retailer page with unresolved species identity.
+      - source: *id021
+        value:
+          min: 8
+          max: 8
+        note: Low-weight estimate from a page with identification errors.
+  breeding:
+    value: biparental-mouthbrooder
+    confidence: high
+    rationale: 'All four profiles propose biparental-mouthbrooder. NCS explicitly describes surface incubation followed
+      by uptake of hatched larvae by both parents, and Zoopet independently describes shared larval oral care. FishBase
+      labels the species larvophilous despite contradictory immediate egg uptake in its general narrative. The detailed
+      delayed-care accounts outweigh immediate egg-uptake descriptions in Aqua-Fish and AquaInfo, which may concern
+      other trade-labelled fish.'
+    sources:
+      - *id002
+      - *id014
+      - *id003
+      - *id010
+      - *id012
+      - *id009
+      - *id017
+    evidence:
+      - source: *id003
+        value: biparental-mouthbrooder
+        note: Eggs incubate on a surface before both adults take up larvae.
+      - source: *id009
+        value: biparental-mouthbrooder
+        note: Both parents carry larvae and use substrate depressions.
+      - source: *id002
+        value: biparental-mouthbrooder
+        note: Life-cycle classification supports larvophily; narrative disagrees about timing.
+      - source: *id010
+        value: biparental-mouthbrooder
+        note: 'Immediate female egg pickup described, but later male fry care also reported; timing is downweighted.'
+      - source: *id012
+        value: biparental-mouthbrooder
+        note: 'Both adults reported, with conflicting immediate egg uptake.'
+  beginnerSuitability:
+    value: moderate
+    confidence: medium
+    rationale: 'All four profiles propose moderate. NCS rates the fish relatively easy while Zoopet asks for informed
+      preparation. The large social group, sand substrate and sustained water-quality work justify moderate without
+      implying severe aggression or an exceptionally specialized diet.'
+    sources:
+      - *id014
+      - *id011
+      - *id003
+      - *id008
+      - *id010
+      - *id018
+      - *id009
+    evidence:
+      - source: *id003
+        value: easy
+        note: Register difficulty rating.
+      - source: *id018
+        value: moderate
+        note: Intermediate care classification.
+      - source: *id008
+        value: moderate
+        note: Average maintenance difficulty.
+      - source: *id009
+        value: moderate
+        note: Difficulty category 3 requires prior preparation.
+partners:
+  suitable:
+    - species: Large peaceful tetras
+      reason: Midwater shoals use a different feeding zone and can share warm soft water.
+      condition: 'Use adults comfortably above the approximately 2 cm opportunistic-prey category, with extra swimming
+        room and reliable sinking food for the eartheaters.'
+    - species: Peaceful catfish
+      reason: Calm catfish can share a sufficiently large sandy aquarium.
+      condition: 'Match water needs and adult size, reserve floor space and provide separate feeding access.'
+  unsuitable:
+    - species: Fish under about 2 cm and newly released fry
+      reason: Opportunistic ingestion is possible under decided predation level 1.
+    - species: Aggressive territorial cichlids
+      reason: Persistent attacks and feeding interference conflict with the eartheater group.
+    - species: Strongly alkaline hard-water specialists
+      reason: Their long-term chemistry needs can conflict with the decided soft-water tolerances.
+profile:
+  overview:
+    text: 'This profile applies to true Geophagus surinamensis from the Guianas. The shop name is also used for
+      other eartheaters, including altifrons, proximus, sveni and neambi, so locality and adult identification matter.
+      These are separate species rather than forms of surinamensis. A 2021 sequence study interpreted five records
+      bearing its name as misidentified altifrons; this small sample does not identify every fish in the trade.
+      Expect a large sand-sifting fish whose social group needs substantial floor space and regular care.'
+    sources:
+      - *id001
+      - *id002
+      - *id003
+      - *id024
+      - *id007
+  habitat:
+    text: 'The restricted native range includes the Saramacca, Suriname and Marowijne systems. Fine sandy margins
+      provide feeding ground, with branches and other cover nearby. One identified collection site measured 30 C,
+      pH 5.5, reported GH 0 and KH 0.5. Historical pre-dam catchment measurements cover 24.4 to 33.4 C and pH 5.1
+      to 6.9. The stored temperature of 24 to 32 C is a rounded vote synthesis within that wider context. Natural
+      GH 0 to 1 and KH 0 to 1 are provisional representations with little direct measurement; zero does not mean
+      chemically empty water.'
+    sources:
+      - *id002
+      - *id003
+      - *id004
+      - *id005
+      - *id019
+  sizeAndGrowth:
+    text: 'Use 25 cm for males and 20 cm for females as provisional adult aquarium planning sizes. The species-focused
+      register gives around 20 cm overall, while other care sources give larger fish and do not always distinguish
+      the true species. Scientific standard length excludes the tail, and cannot be substituted directly for total
+      length. Juveniles gain adult coloration as they mature. The approximate lifespan entry of eight to ten years
+      is poorly documented and is not an upper biological limit.'
+    sources:
+      - *id003
+      - *id009
+      - *id008
+      - *id002
+      - *id010
+  husbandry:
+    text: 'A group of six adults is planned for at least 600 litres and a floor of 180 by 60 cm. Leave broad areas
+      of smooth fine sand exposed, with secure woody shelter around the edges. Established biological filtration,
+      accessible mechanical filtration and regular water replacement help handle suspended particles and waste.
+      Match new water carefully and keep it well oxygenated. Routine maintenance around 26 to 29 C has better support
+      than constant heat near the stored 32 C ceiling. Decided tolerances are 24 to 32 C, pH 5.1 to 7, GH 0 to 11
+      and KH 0 to 3, with especially weak evidence for temperature and hardness endpoints.'
+    sources:
+      - *id003
+      - *id008
+      - *id009
+      - *id010
+      - *id007
+      - *id020
+  socialBehavior:
+    text: 'Keep a conspecific group and allow pairs to emerge. Six adults is the chosen planning unit; recommendations
+      elsewhere range from five to seven or more. A hierarchy can produce repeated chasing, and a breeding pair
+      can expel neighbors from its immediate brood area. Neither normal group behavior nor brood defense is expected
+      to cause regular injuries in adequate space. Check whether every subordinate eats and can rest under cover.
+      Sustained exclusion or fin damage calls for a review of space and social arrangements.'
+    sources:
+      - *id003
+      - *id008
+      - *id009
+      - *id012
+      - *id011
+      - *id014
+  diet:
+    text: 'Provide fine complete sinking food with animal and vegetable ingredients, supplemented with suitably
+      small invertebrate foods. Spread modest portions across feeding areas so subordinates can eat. Sand processing
+      supplies natural browsing opportunities but does not replace a balanced ration. The decided omnivore classification
+      includes occasional consumption of fry or fish around the rubric tiny-prey category. No specialized high-protein
+      bloat tendency is established for this species, although unsuitable portions, overfeeding and poor water quality
+      can still cause problems.'
+    sources:
+      - *id002
+      - *id003
+      - *id009
+      - *id010
+  breeding:
+    text: 'True surinamensis is treated as a biparental mouthbrooder with delayed larval uptake. Eggs initially
+      develop on a prepared surface; after hatching the parents provide oral protection. Both adults can guard the
+      brood, with stronger local territorial behavior during care. Immediate egg uptake reported in some broad trade-name
+      accounts is less reliable for the identified species. Released young are vulnerable to other fishes. Preserve
+      adult identification and locality records when maintaining a breeding line.'
+    sources:
+      - *id003
+      - *id009
+      - *id002
+      - *id010
+  sexing:
+    text: 'Adult females may be smaller and have shorter fin extensions than males, but these tendencies overlap.
+      Juveniles and stressed fish cannot be reliably sexed from coloration or a single fin detail. Letting partners
+      emerge from a group avoids relying on uncertain juvenile sex assignments. Observed spawning and parental behavior
+      provide stronger evidence than appearance alone, and species identification still requires more than a shop
+      label.'
+    sources:
+      - *id003
+      - *id009
+      - *id008
+  compatibility:
+    text: 'A calm community is possible alongside the conspecific group. Larger peaceful tetras and compatible catfish
+      are conditional choices when adult size, water conditions, space and feeding access fit. Fry and fishes under
+      about 2 cm face opportunistic predation, and forceful territorial cichlids can interfere with feeding and
+      rest. No hybrid group is assigned because no supported named true G. surinamensis cross was established; this
+      does not prove reproductive isolation. Lookalike Geophagus still require secure identification and parentage
+      records for breeding.'
+    sources:
+      - *id003
+      - *id008
+      - *id012
+      - *id011
+      - *id024
+  problems:
+    text: 'Insufficient floor space, rough substrate, an immature filter or accumulated waste can undermine keeping
+      success. Sifting suspends particles, so inspect mechanical filtration and secure decorations against digging.
+      Repeated hiding, missed meals, damaged fins or abnormal breathing merit a review of water quality and social
+      pressure. These signs alone do not diagnose a disease. Stock obtained under the broad surinamensis trade name
+      may also differ from the fish described here, changing adult size and breeding expectations.'
+    sources:
+      - *id003
+      - *id010
+      - *id014
+      - *id007
+provenance:
+  runs:
+    - role: generator
+      model: gpt-6.1-sol
+      date: '2026-10-13'
+    - role: checker
+      model: gpt-6.1-sol
+      date: '2026-10-13'
+    - role: checker
+      model: gpt-6.1-sol
+      date: '2026-10-13'
+    - role: checker
+      model: gpt-6.1-sol
+      date: '2026-10-13'
+    - role: checker
+      model: gpt-6.1-sol
+      date: '2026-10-13'
+    - role: checker
+      model: gpt-6.1-sol
+      date: '2026-10-13'
+    - role: adjudicator
+      model: gpt-6.1-sol
+      date: '2026-10-13'
+  disagreements:
+    - field: features.origin
+      proposals:
+        - by: generator
+          value:
+            continent: South America
+            region: Coastal Guianan river drainages of Suriname and French Guiana
+            waterbody: null
+            localities:
+              - Saramacca River
+              - Suriname River
+              - Marowijne River (Maroni)
+        - by: checker-a
+          value:
+            continent: South America
+            region: 'Guianas (Suriname and French Guiana), rivers Saramacca, Suriname and Marowijne'
+            waterbody: null
+            localities:
+              - Saramacca River
+              - Suriname River
+              - Marowijne River
+        - by: checker-b
+          value:
+            continent: South America
+            region: Coastal Guiana Shield drainages of Suriname and French Guiana
+            waterbody: null
+            localities:
+              - Saramacca River
+              - Suriname River
+              - Marowijne / Maroni River
+        - by: checker-c
+          value:
+            continent: South America
+            region: Coastal Guiana Shield drainages of Suriname and western French Guiana
+            waterbody: null
+            localities:
+              - Saramacca River
+              - Suriname River
+              - Marowijne / Maroni River
+      decision:
+        continent: South America
+        region: Coastal Guianan drainages of Suriname and French Guiana
+        waterbody: null
+        localities:
+          - Saramacca River
+          - Suriname River
+          - Marowijne River (Maroni)
+      rationale: 'All four profiles describe the same restricted Guianan species and the same three drainages; their
+        region wording and Maroni spelling differ. FishBase and the Nordic register specify Saramacca, Suriname
+        and Marowijne. The broader Catalog distribution is acknowledged as conflicting geographical context rather
+        than used to add Amazonian habitats.'
+    - field: features.temperatureC
+      proposals:
+        - by: generator
+          value:
+            min: 30
+            max: 30
+        - by: checker-a
+          value:
+            min: 22
+            max: 25
+        - by: checker-b
+          value:
+            min: 27
+            max: 31
+        - by: checker-c
+          value:
+            min: 24.4
+            max: 33.4
+        - by: tiebreaker-1
+          value:
+            min: 24.4
+            max: 33.4
+        - by: tiebreaker-2
+          value:
+            min: 24.4
+            max: 33.4
+      decision:
+        min: 24
+        max: 32
+      rationale: 'The binding tally uses median verification with 3 of 6 votes supporting its leading range, because
+        no qualified majority emerged. Generator proposed 30 to 30 C, checker-a 22 to 25 C, checker-b 27 to 31 C,
+        and checker-c, tiebreaker-1 and tiebreaker-2 each 24.4 to 33.4 C. Median minima and maxima are 24.4 and
+        32.2 C, rounded to 24 and 32. Mol et al. actually report a wider regional envelope of 24.4 to 33.4 C, including
+        main-river observations of 25 to 33.4 C; the decided upper bound is a voting synthesis, not the measured
+        maximum. Stalsberg recorded 30 C beside collected fish. The Lely and Nassau survey concerns other stream
+        fish communities, and FishBase 22 to 25 C cites an aquarium atlas; neither establishes occupied lowland
+        endpoints for this species. This low-confidence interval is incomplete habitat context rather than a physiological
+        limit.'
+    - field: features.temperatureC.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 24
+            max: 30
+        - by: checker-a
+          value:
+            min: 22
+            max: 29
+        - by: checker-b
+          value:
+            min: 22
+            max: 32
+        - by: checker-c
+          value:
+            min: 22
+            max: 33.4
+        - by: tiebreaker-1
+          value:
+            min: 22
+            max: 33.4
+        - by: tiebreaker-2
+          value:
+            min: 22
+            max: 33.4
+      decision:
+        min: 24
+        max: 32
+      rationale: 'The tally conservatively decides 24 to 32 C with low confidence. Generator proposed 24 to 30,
+        checker-a 22 to 29, checker-b 22 to 32, and checker-c, tiebreaker-1 and tiebreaker-2 each 22 to 33.4 C.
+        Their intersection is 24 to 29 C, widened to contain the decided natural range of 24 to 32 C. This explains
+        why the stored upper limit exceeds direct species-labelled care recommendations. NCS gives the wider lower-end
+        range of 22 to 30 C; FishFish gives 24 to 29, Zoopet 24 to 27 and Aqua-Fish 22 to 27. Seriously Fish allows
+        altifrons 26 to 32 and brokopondo 25 to 33, but these are different species. Mol et al. measure the wider
+        habitat envelope of 24.4 to 33.4 C, which is not a chronic aquarium trial. Long-term health at constant
+        32 C is unverified; ordinary maintenance around 26 to 29 C has better husbandry support.'
+    - field: features.ph
+      proposals:
+        - by: generator
+          value:
+            min: 5.1
+            max: 6.9
+        - by: checker-a
+          value:
+            min: 5.0
+            max: 7.5
+        - by: checker-b
+          value:
+            min: 5.1
+            max: 6.9
+        - by: checker-c
+          value:
+            min: 5.1
+            max: 6.9
+        - by: tiebreaker-1
+          value:
+            min: 5.1
+            max: 6.9
+        - by: tiebreaker-2
+          value:
+            min: 5.1
+            max: 6.9
+      decision:
+        min: 5.1
+        max: 6.9
+      rationale: 'Retain the tally qualified majority of 5 of 6 votes at pH 5.1 to 6.9, with medium confidence.
+        Generator, checker-b, checker-c, tiebreaker-1 and tiebreaker-2 proposed that range; checker-a proposed 5.0
+        to 7.5. Mol et al. report pre-dam main-river pH 5.1 to 6.0 and tributary pH 5.5 to 6.9, and Stalsberg measured
+        5.5 with collected fish. The wider regional Lely and Nassau pH 6.5 to 7.5 concerns stations without a recorded
+        surinamensis capture, while FishBase 6 to 8 has no comparable station attribution. The selected interval
+        is a native catchment proxy, not a full seasonal survey of every population. Binding tally method: qualified-majority.'
+    - field: features.ph.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 5.1
+            max: 7
+        - by: checker-a
+          value:
+            min: 5.0
+            max: 8.0
+        - by: checker-b
+          value:
+            min: 5.1
+            max: 7
+        - by: checker-c
+          value:
+            min: 5.1
+            max: 7.5
+        - by: tiebreaker-1
+          value:
+            min: 5.1
+            max: 7
+        - by: tiebreaker-2
+          value:
+            min: 5.1
+            max: 7
+      decision:
+        min: 5.1
+        max: 7
+      rationale: 'Retain the tally qualified majority of 4 of 6 votes at pH 5.1 to 7, with medium confidence. Generator,
+        checker-b, tiebreaker-1 and tiebreaker-2 proposed 5.1 to 7; checker-a proposed 5 to 8 and checker-c 5.1
+        to 7.5. NCS and Zoopet give 6 to 7, while FishFish and B-Aqua give 5.5 to 7. The lower boundary is extended
+        to contain measured native acidity rather than validated by a multiyear experiment. The decided interval
+        is narrower than Nicks and Guidarium 6 to 7.5, AquaInfo 7 to 7.5, and FishBase and Aqua-Fish 6 to 8. Trade
+        identity and the explicit specialist recommendation favor the selected ceiling, without establishing that
+        higher pH is lethal. Binding tally method: qualified-majority.'
+    - field: features.ghDgh
+      proposals:
+        - by: generator
+          value:
+            min: 0
+            max: 0
+        - by: checker-a
+          value:
+            min: 0
+            max: 3
+        - by: checker-b
+          value:
+            min: 0
+            max: 1
+        - by: checker-c
+          value:
+            min: 0
+            max: 1
+      decision:
+        min: 0
+        max: 1
+      rationale: 'The tally classifies agreement as unanimous under its 2 dGH matching threshold and retains 0 to
+        1 dGH with low confidence. Generator proposed 0 to 0, checker-a 0 to 3, and checker-b and checker-c 0 to
+        1; the median upper bound is 1. Stalsberg reports dH 0 at an occupied site, with unspecified test resolution.
+        The chosen upper bound is inferred rather than a measured basin maximum. FishBase gives the wider 5 to 19
+        dH range without field-station attribution, which is rejected as native evidence. Mol et al. and the Lely
+        and Nassau survey corroborate low mineralization but supply no GH measurements. Checker-a inferred 0 to
+        3 from conductivity; that conversion is not accepted. A second independent numerical field GH source is
+        absent, so voting agreement cannot remove the evidence gap.'
+    - field: features.ghDgh.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 0
+            max: 10
+        - by: checker-a
+          value:
+            min: 0
+            max: 12
+        - by: checker-b
+          value:
+            min: 0
+            max: 10
+        - by: checker-c
+          value:
+            min: 0
+            max: 12
+      decision:
+        min: 0
+        max: 11
+      rationale: 'The tally retains 0 to 11 dGH with low confidence and unanimous verification under the 2 dGH agreement
+        threshold. Generator and checker-b proposed 0 to 10, while checker-a and checker-c proposed 0 to 12; the
+        median upper bound is 11. FishFish gives 1 to 10, Guidarium 2 to 10, AquaInfo 8 to 12 and generated Aqua-Pedia
+        data 2 to 12. The decided range is narrower than Aqua-Fish 4 to 18 and FishBase 5 to 19. None establishes
+        years of health at exactly 11 dGH in locality-confirmed fish. The lower zero contains the field-kit reading
+        and denotes very low detectable hardness rather than a requirement for unmineralized water. Very soft conditions
+        have stronger native support than the inferred upper endpoint.'
+    - field: features.khDkh
+      proposals:
+        - by: generator
+          value:
+            min: 0.5
+            max: 0.5
+        - by: checker-a
+          value:
+            min: 0
+            max: 2
+        - by: checker-b
+          value:
+            min: 0.1
+            max: 0.5
+        - by: checker-c
+          value:
+            min: 0.1
+            max: 0.5
+      decision:
+        min: 0
+        max: 1
+      rationale: 'Retain the tally natural value of 0 to 1 dKH and low confidence, without a verification object.
+        Generator proposed 0.5 to 0.5, checker-a 0 to 2, and checker-b and checker-c 0.1 to 0.5. Tally range matching
+        accepts these proposals and rounds median bounds of 0.1 and 0.5 to integers 0 and 1. Stalsberg measured
+        0.5 dKH with the species present. Landburg measured alkalinity 1.9 to 6.65 mg/L as CaCO3, equivalent to
+        approximately 0.106 to 0.373 dKH, in the Palumeu watershed. Those stations are regional context without
+        verified surinamensis captures, and organic alkalinity may contribute. Zero and one are rounded synthesis
+        bounds rather than observed species endpoints. Checker-a inferred KH from conductivity and pH; that inference
+        is rejected. WetWebMedia 2 to 3 dKH describes congener aquarium advice and is excluded from the natural
+        value. The internal tally method is unanimous; natural KH intentionally carries no verification object.'
+    - field: features.khDkh.tolerance
+      proposals:
+        - by: generator
+          value:
+            min: 0.5
+            max: 3
+        - by: checker-a
+          value:
+            min: 0
+            max: 8
+        - by: checker-b
+          value:
+            min: 0
+            max: 6
+        - by: checker-c
+          value:
+            min: 0.1
+            max: 6
+        - by: tiebreaker-1
+          value:
+            min: 0.5
+            max: 3
+        - by: tiebreaker-2
+          value:
+            min: 0
+            max: 3
+      decision:
+        min: 0
+        max: 3
+      rationale: 'The tally conservatively decides 0 to 3 dKH with low confidence. Generator and tiebreaker-1 proposed
+        0.5 to 3, checker-a 0 to 8, checker-b 0 to 6, checker-c 0.1 to 6, and tiebreaker-2 0 to 3. Their intersection
+        is 0.5 to 3, then widened to zero to contain the decided natural 0 to 1 dKH. The result is narrower than
+        Aqua-Pedia 1 to 6 and Monitarium 3 to 8. Aqua-Pedia discloses generated data and Monitarium contains identification
+        and breeding errors. Monks gives 2 to 3 dKH for the Tapajos redhead, providing congener analogy only. Stalsberg
+        and Landburg describe native or regional water rather than chronic captive limits. No two reliable numerical
+        species-specific husbandry sources establish these endpoints; the broader published KH ranges remain weak
+        evidence. GH and conductivity are not converted to KH.'
+    - field: features.maxSizeCm
+      proposals:
+        - by: generator
+          value:
+            male: 25
+            female: 20
+        - by: checker-a
+          value:
+            male: 22
+            female: 18
+        - by: checker-b
+          value:
+            male: 25
+            female: 20
+        - by: checker-c
+          value:
+            male: 20
+            female: 18
+      decision:
+        male: 25
+        female: 20
+      rationale: 'Generator and checker-b proposed 25 cm male and 20 cm female, checker-a 22 and 18, and checker-c
+        20 and 18. Retain 25 and 20 as provisional adult aquarium planning sizes. FishFish supplies this sex split
+        and Zoopet gives an unsexed 25 cm; the more species-focused NCS gives 20 cm overall with smaller females
+        but no female measurement. AquaInfo and Aqua-Fish give the wider unsexed 25 to 30 cm range, which is not
+        selected as a typical sex-specific maximum. FishBase 17.2 cm is standard length and its historical 30 cm
+        figure is total length; neither justifies an exact SL-to-TL conversion or a female estimate. Identity ambiguity
+        and absent verified sex-specific series require low confidence.'
+    - field: features.predation
+      proposals:
+        - by: generator
+          value: 1
+        - by: checker-a
+          value: 0
+        - by: checker-b
+          value: 1
+        - by: checker-c
+          value: 1
+        - by: tiebreaker-1
+          value: 1
+        - by: tiebreaker-2
+          value: 1
+      decision: 1
+      rationale: 'Retain level 1 and medium confidence from the tally qualified majority of 5 of 6 votes. Generator,
+        checker-b, checker-c, tiebreaker-1 and tiebreaker-2 proposed 1; checker-a proposed 0. NCS explicitly includes
+        occasional small fish in a mainly plant-and-insect diet, and Guidarium flags fry predation. Nicks repeats
+        a small-fish warning as lower-weight retailer evidence. Fish Laboratory claims even small companions are
+        safe, while Seriously Fish discusses negligible fish predation in brokopondo and altifrons, not securely
+        identified surinamensis. These do not outweigh the species-focused occasional-prey account. The approximately
+        2 cm threshold belongs to the rubric and was not experimentally measured. Binding tally method: qualified-majority.'
+    - field: features.diet
+      proposals:
+        - by: generator
+          value:
+            type: omnivore
+            bloatSensitive: false
+            foods:
+              - Fine sinking complete pellets
+              - Vegetable-containing prepared food
+              - Artemia
+              - Small insect larvae
+              - Finely divided crustaceans
+        - by: checker-a
+          value:
+            type: omnivore
+            bloatSensitive: false
+            foods:
+              - fine sinking pellets
+              - frozen bloodworm and mosquito larvae
+              - brine shrimp and daphnia
+              - spirulina and vegetable matter
+        - by: checker-b
+          value:
+            type: omnivore
+            bloatSensitive: false
+            foods:
+              - Small sinking prepared foods
+              - Aquatic insect larvae
+              - Small crustaceans
+              - Plant-based food
+        - by: checker-c
+          value:
+            type: omnivore
+            bloatSensitive: false
+            foods:
+              - Small benthic invertebrates
+              - Insect larvae
+              - Plant material
+              - Fine sinking prepared food
+      decision:
+        type: omnivore
+        bloatSensitive: false
+        foods:
+          - Fine sinking complete pellets
+          - Vegetable-containing prepared food
+          - Artemia
+          - Small insect larvae
+          - Finely divided crustaceans
+      rationale: 'The tally unanimously retains omnivore and bloatSensitive false, with medium confidence, across
+        generator, checker-a, checker-b and checker-c. FishBase and NCS include plant and animal foods, supported
+        by Zoopet and AquaInfo. The agents proposed differently worded food lists; the tally selects the generator
+        list of fine complete pellets, vegetable-containing food, Artemia, small insect larvae and divided crustaceans.
+        The bloat flag records no demonstrated specialized high-protein syndrome, not freedom from digestive problems
+        or evidence from a dietary challenge trial.'
+    - field: features.aggressionHeterospecific
+      proposals:
+        - by: generator
+          value: 2
+        - by: checker-a
+          value: 1
+        - by: checker-b
+          value: 2
+        - by: checker-c
+          value: 2
+      decision: 2
+      rationale: 'Generator, checker-b and checker-c proposed 2; checker-a proposed 1. FishFish and AquaInfo allow
+        peaceful communities outside reproduction but report increased breeding aggression. Chasing neighbors from
+        the brood area fits level 2 better than display-only level 1. No evidence supports frequent injury or attacks
+        throughout a suitable aquarium.'
+    - field: features.territory
+      proposals:
+        - by: generator
+          value:
+            size: small
+            breedingOnly: true
+        - by: checker-a
+          value:
+            size: small
+            breedingOnly: true
+        - by: checker-b
+          value:
+            size: large
+            breedingOnly: true
+        - by: checker-c
+          value:
+            size: small
+            breedingOnly: true
+      decision:
+        size: small
+        breedingOnly: true
+      rationale: 'Generator, checker-a and checker-c proposed a small breeding-only territory; checker-b proposed
+        large and breeding-only. NCS describes a prepared spawning surface and brood guarding, and AquaInfo describes
+        little territoriality outside reproduction. A localized brood area supports small provisionally; no source
+        measures either a 30 cm radius or a substantial fraction of tank length. Checker-b inferred large from adult
+        size without measured spatial evidence.'
+    - field: features.habitatZones
+      proposals:
+        - by: generator
+          value:
+            - sand
+            - wood
+        - by: checker-a
+          value:
+            - sand
+            - wood
+        - by: checker-b
+          value:
+            - sand
+            - wood
+            - rock
+        - by: checker-c
+          value:
+            - sand
+            - wood
+      decision:
+        - sand
+        - wood
+      rationale: 'Generator, checker-a and checker-c proposed sand and wood; checker-b added rock. The direct collection
+        and NCS identify sand feeding, with NCS adding fallen branches and forest-margin cover. Stones can provide
+        spawning surfaces, but their occasional presence does not establish an obligatory rock zone. Independent
+        field and specialist accounts support sand and wood.'
+    - field: features.social
+      proposals:
+        - by: generator
+          value:
+            structure: group
+            minGroup: 6
+        - by: checker-a
+          value:
+            structure: group
+            minGroup: 5
+        - by: checker-b
+          value:
+            structure: group
+            minGroup: 7
+        - by: checker-c
+          value:
+            structure: group
+            minGroup: 6
+      decision:
+        structure: group
+        minGroup: 6
+      rationale: 'Generator and checker-c proposed a group of six, checker-a five and checker-b seven. NCS explicitly
+        discourages solitary maintenance but gives no numerical minimum. FishFish specifies six to eight, while
+        Zoopet recommends three males and four to six females. Six follows the explicit group recommendation without
+        imposing a fixed ratio when sexing is difficult. Five is supported by Guidarium and related-species accounts,
+        but the adult planning unit retains a modest margin; seven is an alternative arrangement rather than a demonstrated
+        universal minimum.'
+    - field: features.speciesOnly
+      proposals:
+        - by: generator
+          value: false
+        - by: checker-a
+          value: false
+        - by: checker-b
+          value: false
+        - by: checker-c
+          value: false
+      decision: false
+      rationale: The tally unanimously retains false with medium confidence across all four profiles. FishFish and
+        AquaInfo explicitly allow suitable peaceful companions. NCS requires conspecific company but does not require
+        excluding all other fishes. This distinguishes normal social-group provision from a dedicated breeding arrangement;
+        tiny fry remain at risk under predation level 1.
+    - field: features.hybridGroups
+      proposals:
+        - by: generator
+          value: []
+        - by: checker-a
+          value: []
+        - by: checker-b
+          value: []
+        - by: checker-c
+          value: []
+      decision: []
+      rationale: 'The tally unanimously retains an empty list with low confidence across generator, checker-a, checker-b
+        and checker-c. NCS and the taxonomic and species-database accounts do not establish a named cross involving
+        identified true surinamensis. Ximenes and colleagues interpret five surinamensis-labelled sequences as misidentified
+        altifrons, which is identification evidence rather than demonstrated hybrids. The surinamensis species assemblage
+        alone does not establish all-pairs crossability. Empty membership means no supported curated hybrid conflict
+        in this adjudication, not proven reproductive isolation. No hybrid-group addition or membership edit follows
+        from this decision.'
+    - field: features.coloration
+      proposals:
+        - by: generator
+          value:
+            baseColors:
+              - silver
+              - green
+              - blue
+              - red
+              - black
+            pattern: mixed
+        - by: checker-a
+          value:
+            baseColors:
+              - silver
+              - red
+            pattern: mixed
+        - by: checker-b
+          value:
+            baseColors:
+              - green
+              - blue
+              - red
+              - black
+            pattern: mixed
+        - by: checker-c
+          value:
+            baseColors:
+              - silver
+              - green
+              - blue
+              - red
+            pattern: mixed
+      decision:
+        baseColors:
+          - silver
+          - green
+          - blue
+          - red
+          - black
+        pattern: mixed
+      rationale: 'Generator proposed silver, green, blue, red and black; checker-a silver and red; checker-b green,
+        blue, red and black; checker-c silver, green, blue and red. All proposed mixed pattern. Retain the inclusive
+        generator palette because pale metallic body coloration, green and blue reflections, red details and a dark
+        flank blotch are described across the accounts. The black blotch is included descriptively rather than treated
+        as a dark dominant body color. Color alone cannot identify trade juveniles. A dark gill-cover mark in Monitarium
+        is excluded because NCS explicitly distinguishes true surinamensis by its absence.'
+    - field: features.minTank
+      proposals:
+        - by: generator
+          value:
+            volumeL: 600
+            lengthCm: 180
+            depthCm: 60
+        - by: checker-a
+          value:
+            volumeL: 500
+            lengthCm: 150
+            depthCm: 60
+        - by: checker-b
+          value:
+            volumeL: 600
+            lengthCm: 180
+            depthCm: 60
+        - by: checker-c
+          value:
+            volumeL: 540
+            lengthCm: 150
+            depthCm: 60
+      decision:
+        volumeL: 600
+        lengthCm: 180
+        depthCm: 60
+      rationale: 'Generator and checker-b proposed 600 L with a 180 by 60 cm floor, checker-a 500 L with 150 by
+        60 cm, and checker-c 540 L with 150 by 60 cm. Retain 600 L and 180 by 60 cm for the decided six-adult group
+        and provisional 25 cm male size. FishFish gives the 180 by 60 cm footprint; Zoopet gives 550 L and 160 cm;
+        NCS gives 500 L and 120 cm. The 600 L volume is a cautious planning synthesis, not an exact published biological
+        cutoff. Smaller 250 L and 120 cm advice in Guidarium does not justify the full adult group at these planning
+        sizes. Additional large tankmates require more space.'
+    - field: features.lifespanYears
+      proposals:
+        - by: generator
+          value:
+            min: 8
+            max: 10
+        - by: checker-a
+          value:
+            min: 8
+            max: 12
+        - by: checker-b
+          value:
+            min: 8
+            max: 10
+        - by: checker-c
+          value:
+            min: 8
+            max: 10
+      decision:
+        min: 8
+        max: 10
+      rationale: 'Generator, checker-b and checker-c proposed 8 to 10 years; checker-a proposed 8 to 12. Retain
+        8 to 10 as an approximate planning interval. Aqua-Fish gives an upper estimate of ten and FishFish says
+        ten or more without an upper bound. The wider River Park retailer claim of 10 to 12 years accompanies a
+        15 cm adult size and Amazonian distribution, reducing its applicability to verified Guianan fish. No validated-age
+        cohort establishes the lower bound or a hard maximum, and well-kept individuals may exceed ten years.'
+    - field: taxonomy.synonyms
+      proposals:
+        - by: generator
+          value:
+            - name: Sparus surinamensis
+              note: Original combination.
+            - name: Sparus trimaculatus
+              note: 'Objective junior synonym, Shaw in Shaw and Nodder 1809.'
+        - by: checker-a
+          value:
+            - name: 'Sparus surinamensis Bloch, 1791'
+              note: original combination
+            - name: 'Sparus trimaculatus Shaw, 1809'
+              note: unneeded replacement name and objective synonym
+        - by: checker-b
+          value:
+            - name: Sparus surinamensis
+              note: Original combination.
+            - name: Sparus trimaculatus
+              note: Objective junior synonym listed by the Catalog of Fishes.
+        - by: checker-c
+          value:
+            - name: Sparus surinamensis
+              note: Original combination.
+            - name: Sparus trimaculatus
+              note: Objective junior synonym listed by the Catalog of Fishes.
+      decision:
+        - name: Sparus surinamensis
+          note: 'Original combination of Bloch, 1791.'
+        - name: Sparus trimaculatus
+          note: 'Objective junior synonym and unnecessary replacement name by Shaw in Shaw and Nodder, 1809.'
+      rationale: 'All four runs identify the same original combination and replacement-name synonym. Checker-a includes
+        authorities in the name strings; the final list separates bare names from authority notes. The Catalog confirms
+        Sparus surinamensis Bloch 1791 and the unnecessary replacement Sparus trimaculatus Shaw in Shaw and Nodder
+        1809. Altifrons, proximus, sveni and neambi remain distinct valid species.'
+    - field: provenance.runs.model
+      proposals:
+        - by: generator
+          value:
+            - role: generator
+              model: gpt-6.1-sol
+              date: '2026-10-13'
+        - by: checker-a
+          value:
+            - role: checker
+              model: claude-sonnet-5-5
+              date: '2026-10-13'
+        - by: checker-b
+          value:
+            - role: checker
+              model: gpt-6.1-sol
+              date: '2026-10-13'
+        - by: checker-c
+          value:
+            - role: checker
+              model: gpt-6.1-sol
+              date: '2026-10-13'
+        - by: tiebreaker-1
+          value:
+            - role: checker
+              model: gpt-6.1-sol
+              date: '2026-10-13'
+        - by: tiebreaker-2
+          value:
+            - role: checker
+              model: gpt-6.1-sol
+              date: '2026-10-13'
+      decision: gpt-6.1-sol
+      rationale: 'The requested gpt-6.1-sol label is used in provenance.runs. Original input run metadata are preserved
+        in these proposals: checker-a declared claude-sonnet-5-5, while generator, checker-b, checker-c, tiebreaker-1
+        and tiebreaker-2 declared gpt-6.1-sol. This output label normalization does not claim that checker-a was
+        executed with another model or change any vote.'
