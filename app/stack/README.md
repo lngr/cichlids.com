@@ -204,11 +204,10 @@ docker compose -f app/stack/compose.yaml exec -T keycloak sh -c '
   /opt/keycloak/bin/kcadm.sh set-password -r cichlids --username alex --new-password alex-dev-password' # gitleaks:allow
 ```
 
-The app logs in through the public client `cichlids-app` (authorization code with PKCE). Its
-redirect URIs cover the web app on any localhost port and the native app scheme `cichlids://`;
-its web origins list the dev Expo web server (`http://localhost:8081`) and the write E2E stack
-(`http://localhost:8082`), since the web app calls the token endpoint cross-origin and Keycloak
-matches web origins exactly. `bootstrap.sh` imports the realm fresh from its file on every run. A
+The native app logs in through the public client `cichlids-app` (authorization code with PKCE).
+Its redirect URIs cover any localhost port and the native app scheme `cichlids://`; its web
+origins list the dev Expo web server (`http://localhost:8081`) and the write E2E stack
+(`http://localhost:8082`). `bootstrap.sh` imports the realm fresh from its file on every run. A
 realm kept outside `bootstrap.sh` (an older volume started with `docker compose up -d`, for
 instance) gets these client settings with:
 
@@ -220,6 +219,30 @@ docker compose -f app/stack/compose.yaml exec -T keycloak sh -c '
     -s "redirectUris=[\"http://localhost:*\",\"cichlids://*\"]" \
     -s "webOrigins=[\"http://localhost:8081\",\"http://localhost:8082\",\"+\"]"'
 ```
+
+### Web login
+
+The API signs in members of the web app through the confidential client `cichlids-web-bff`
+([ADR-0027](../../docs/adr/0027-session-model-for-native-and-web-clients.md)). The realm file
+gives it the local development secret `cichlids-web-bff-dev-secret`, which
+`app/api/src/Cichlids.Api/appsettings.Development.json` holds as `WebSession:ClientSecret`. Its
+redirect URIs are the callbacks of the dev API (`http://localhost:5045/api/auth/callback`) and of
+the write E2E stack (port 5046); a sign-out returns through Keycloak's end session endpoint to the
+Me tab of the dev web app (`http://localhost:8081/me`, `WebSession:PostLogoutRedirectUrl`) or of
+the write E2E stack (port 8082). A realm kept outside `bootstrap.sh` gets the client from the
+realm file with:
+
+```sh
+python3 -c 'import json; print(json.dumps(next(c for c in json.load(open("app/stack/keycloak/cichlids-realm.json"))["clients"] if c["clientId"] == "cichlids-web-bff")))' \
+  | docker compose -f app/stack/compose.yaml exec -T keycloak sh -c '
+  /opt/keycloak/bin/kcadm.sh config credentials --server http://localhost:8080 --realm master --user admin --password admin &&
+  /opt/keycloak/bin/kcadm.sh create clients -r cichlids -f -'
+```
+
+The API stores the tokens of web sessions encrypted with ASP.NET Core Data Protection. The dev
+API keeps its key ring in `app/stack/data-protection-keys/` (`DataProtection:KeyRingPath`,
+relative to the API's content root), which Git ignores and the API creates on the first web login.
+Deleting the directory ends every local web session.
 
 ## Media objects and their privacy
 
@@ -254,6 +277,22 @@ cannot be removed) and the undecodable originals that have a public copy (`copie
 `dotnet run` here defaults to the Development environment, which accepts the ETL's development
 slug secret. Any other environment (`ASPNETCORE_ENVIRONMENT` for the API, `DOTNET_ENVIRONMENT` for
 the ETL) refuses to start without `CICHLIDS_SLUG_SECRET` set to a secret of its own.
+
+Outside Development the API also refuses to start without `DataProtection:KeyRingPath` naming an
+existing directory. There it only reads the key ring, which comes from a SOPS-managed Secret
+mounted read-only, and creates no keys. `tools/create-data-protection-key.cs` adds a key to a key
+ring directory, valid for five years unless a number of years follows the directory:
+
+```sh
+dotnet run tools/create-data-protection-key.cs -- <directory> [<years valid>]
+```
+
+The files of the directory form the content of the Secret. A new key encrypts from the moment it
+is created and the older keys keep decrypting, so a rotation adds a key and replaces the Secret with
+the extended directory before the newest key expires. Web sign-in
+(`WebSession:CallbackUrl` set) also needs `WebSession:ClientSecret`, the secret of
+`cichlids-web-bff` from the secret store (see `apps/keycloak/README.md`), and
+`WebSession:PostLogoutRedirectUrl`, an HTTPS address on one of `WebSession:AllowedOrigins`.
 
 ```sh
 cd app/api/src/Cichlids.Api && ~/.dotnet/dotnet run
@@ -330,7 +369,9 @@ the already-running Postgres, RustFS and Keycloak containers above:
   policy as the dev bucket so the app can load uploaded images;
 - a second `Cichlids.Api` instance built in Release to a temp directory and run on
   `http://localhost:5046`, pointed at that database and bucket, with the outbox dispatcher
-  polling every second and giving events up after fifteen seconds;
+  polling every second and giving events up after fifteen seconds, its own Data Protection key
+  ring in the state directory (removed on `down`) and the Me tab of the write web build as the
+  return address after a web sign-out;
 - a static export of the Expo web app (`expo export --platform web`), built against that API and
   served on `http://localhost:8082`; `@cichlids/client-core` is compiled first, since the app
   imports its `dist/` output.
