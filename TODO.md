@@ -116,18 +116,18 @@ Prüfer C (Codex, gpt-6.1-sol) ab.
 
 Zu jeder Frage ist eine vorläufige Umsetzung in Gebrauch; sie wird bestätigt oder umgebaut.
 
-- [ ] **Natürliche Bereiche zu eng:** Ohne Mehrheit nimmt `tally.mjs` die Schnittmenge der
-  Stimmen. Bei natürlichen Wasserwerten entstehen so Bereiche, die enger sind als die Quellen
-  (Maylandia zebra GH 9-10 bei Quellen 3-14; Parachromis managuensis KH 4-10 bei Quellen etwa
-  3,5-16; Flowerhorn KH 4-8 bei etwa 4-12; Mesoheros festae 23-29 °C bei etwa 20-30 °C;
-  Amphilophus labiatus KH 4-10, wobei die Rundung der Schnittmenge 3,5 auf 4 die gemessenen
-  3,4-3,6 dKH des Nicaraguasees ausschließt).
-  Vorschlag: bei natürlichen Bereichen ohne Mehrheit den Median-Bereich nehmen, die Toleranzen
-  bleiben streng. Umbau: `conservativeValue` in `tally.mjs`, betroffene Profile neu zählen.
-- [ ] **Diskus neben Malawis ohne harte Warnung:** Die Toleranzen berühren sich am Rand (pH
-  4,8-7,5 gegen 7,2-8,8), deshalb greift die Regel "Toleranzen ohne gemeinsamen Bereich" nicht.
-  Optionen: Mindestbreite der Überlappung, Testfall auf "Achtung" ändern oder Toleranzen enger
-  fassen. Gehört zur Kalibrierung des Besatz-Planers (Abschnitt 5).
+- [ ] **Natürliche Bereiche ohne Mehrheit:** Entschieden: Natürliche Wasserbereiche ohne
+  qualifizierte Mehrheit bekommen den Median-Bereich aller Stimmen (Methode `median`, Sicherheit
+  low); die Toleranzen bleiben bei der Schnittmenge. Anlass waren Schnittmengen enger als die
+  Messungen (Hypsophrys nicaraguensis 29-30 °C bei Messungen von 19,5 bis 36 °C; Amphilophus
+  labiatus KH 4-10 bei gemessenen 3,4-3,6 dKH im Nicaraguasee). Offen: betroffene Profile neu
+  zählen (Maylandia zebra, Parachromis managuensis, Flowerhorn, Mesoheros festae, Amphilophus
+  labiatus und weitere mit Methode conservative bei natürlichen Werten).
+- [ ] **Wasserkonflikt nach Abstand vom Ideal:** Diskus und Malawis berühren sich in der
+  Toleranz am Rand (pH 4,8-7,5 gegen 7,2-8,8), deshalb greift "Toleranzen ohne gemeinsamen
+  Bereich" nicht. Vorgabe: Der Konflikt hängt von der Größe des gemeinsamen Bereichs und vom
+  Abstand zu den Idealen beider Arten ab, denn je weiter ein Fisch von seinem Ideal entfernt lebt,
+  desto größer sind Stress und Krankheitsrisiko. Umsetzung im Besatz-Planer, siehe Abschnitt 5.
 - [ ] **Quellenarten bekannter Seiten:** Fishkeeper gilt in manchen Profilen als database, in
   anderen als website; Tropical Freshwater Fish und FishProfiles sind als database eingestuft.
   Davon hängt ab, ob ein hartes Merkmal zwei externe Quellen hat. Ebenso offen: ob Cichlid Room
@@ -213,7 +213,13 @@ Zu jeder Frage ist eine vorläufige Umsetzung in Gebrauch; sie wird bestätigt o
 - [ ] Zuschnitt des Webs planen: Teaser ohne Login, Umfang für Suchmaschinen (Artenprofile,
   Fachartikel, Archiv), Startseite als Landingpage zur App, Web-App hinter dem Login. Davon hängen
   ADR-0001, ADR-0002, ADR-0004 und ADR-0006 ab (`MVP-VISION.md`, Abschnitt 9).
-- [ ] Verträglichkeitsprüfung kalibrieren: Konfliktfunktionen, Startgewichte und Schwellen
+- [ ] Verträglichkeitsprüfung kalibrieren: Konfliktfunktionen, Startgewichte und Schwellen.
+  Wasserwerte: Je Art gilt der natürliche Bereich als Ideal (Wohlbefinden 1), zur Toleranzgrenze
+  fällt es auf 0. Der Konflikt eines Paares ist 1 minus das beste Wohlbefinden der schlechter
+  gestellten Art im gemeinsamen Toleranzbereich (Diskus und Malawis beim pH etwa 0,9, also
+  Warnung). Schwellen für Achtung und Warnung festlegen; `MVP-VISION.md` (Konfliktfunktion
+  Wasserwerte) und den Fachartikel zum Besatz-Planer, die den Wasserkonflikt als reine
+  Überlappung beschreiben, entsprechend anpassen
 - [ ] Vision-Modell: Anbieter, Kontingent je Mitglied, Gesamtbudget
 - [ ] Gemini-Vergleich im Scanner-Spike ausführen; braucht einen Gemini-API-Schlüssel
   (`tools/scanner-spike/RESULTS.md`)
