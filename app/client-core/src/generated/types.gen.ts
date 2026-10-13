@@ -397,7 +397,7 @@ export type DeleteCommentErrors = {
     /**
      * Bad Request
      */
-    400: string;
+    400: ProblemDetails;
     /**
      * Forbidden
      */
@@ -603,9 +603,17 @@ export type UploadPhotoErrors = {
      */
     403: ProblemDetails;
     /**
+     * Conflict
+     */
+    409: ProblemDetails;
+    /**
      * Payload Too Large
      */
     413: unknown;
+    /**
+     * Too Many Requests
+     */
+    429: ProblemDetails;
 };
 
 export type UploadPhotoError = UploadPhotoErrors[keyof UploadPhotoErrors];
