@@ -403,25 +403,25 @@ features:
           note: natural water of Lake Nicaragua
 
   khDkh:
-    value: {min: 4, max: 10}
+    value: {min: 4, max: 16}
     verification:
-      method: conservative
+      method: median
       votes: {agree: 2, total: 5}
     confidence: low
     rationale: >-
-      The votes did not settle: the generator proposed 3 to 16 dKH, checker-a 3 to 10, checker-b
-      4 to 13, tie-breaker 1 4 to 16 and tie-breaker 2 3.5 to 24. The vote count therefore takes
-      the conservative value, the intersection of all proposals, 4 to 10 dKH. This intersection is
-      clearly narrower than the range the sources measure in the native habitat, which spans about
-      3.5 to 16 dKH and more: soft Lake Nicaragua holds a total alkalinity of 60 to 65 mg/L CaCO3,
-      about 3.4 to 3.6 dKH (Swain 1966; the compilation of Cole 1976 gives 1.25 to 1.35 meq/L, 3.5
-      to 3.8 dKH), while the bicarbonate-rich water of Lake Managua and its outflow, the Río
-      Tipitapa, reaches 82 to 280 mg/L CaCO3 (4.6 to 15.7 dKH, highest at the Lake Managua end in
-      the dry season), and the same compilation gives 8.7 meq/L, about 24 dKH, for Lake Managua
-      itself. The narrow value comes from the conversions in the votes: two of them read the
-      Tipitapa alkalinity as mg/L bicarbonate instead of CaCO3 and so ended at 10 to 13 dKH,
-      although the paper reports the bicarbonate in meq/L as well (1.64 to 5.54 meq/L, 4.6 to 15.5
-      dKH). The tolerance covers most of the natural range.
+      No proposal reached a qualified majority, so the vote count takes the median of all five
+      votes. The generator proposed 3 to 16 dKH, checker-a 3 to 10, checker-b 4 to 13,
+      tie-breaker 1 4 to 16 and tie-breaker 2 3.5 to 24. The minima 3, 3, 3.5, 4 and 4 have the
+      median 3.5, which rounds to 4; the maxima 10, 13, 16, 16 and 24 have the median 16. The
+      decided range of 4 to 16 dKH is narrower than the range the sources measure in the native
+      habitat, which spans about 3.4 dKH in Lake Nicaragua to about 24 dKH in Lake Managua: soft
+      Lake Nicaragua holds a total alkalinity of 60 to 65 mg/L CaCO3, about 3.4 to 3.6 dKH (Swain
+      1966; the compilation of Cole 1976 gives 1.25 to 1.35 meq/L, 3.5 to 3.8 dKH), while the
+      bicarbonate-rich water of Lake Managua and its outflow, the Río Tipitapa, reaches 82 to 280
+      mg/L CaCO3 (4.6 to 15.7 dKH, highest at the Lake Managua end in the dry season), and the
+      same compilation gives 8.7 meq/L, about 24 dKH, for Lake Managua itself. Checker-a ended at
+      10 dKH because it read the Tipitapa alkalinity as mg/L bicarbonate instead of CaCO3, although
+      the paper reports the bicarbonate in meq/L as well (1.64 to 5.54 meq/L, 4.6 to 15.5 dKH).
     sources:
       - *swain
       - *tip
@@ -466,17 +466,18 @@ features:
         value: {min: 4, max: 4}
         note: test-kit reading in the south of Lake Nicaragua
     tolerance:
-      value: {min: 3, max: 15}
+      value: {min: 3, max: 16}
       verification:
         method: unanimous
         votes: {agree: 3, total: 3}
       confidence: low
       rationale: >-
         Decided unanimously by the vote count (3 of 3; the generator proposed 3 to 16 dKH,
-        checker-a 3 to 15, checker-b 3 to 14). LiveAquaria recommends 10 to 15 dKH and FishBase
-        gives a hardness of 10 to 15 dH without naming the kind; Seriously Fish and Fishkeeper give
+        checker-a 3 to 15, checker-b 3 to 14). The decided 3 to 15 dKH is widened to 3 to 16 so that
+        it contains the natural 4 to 16 dKH. LiveAquaria recommends 10 to 15 dKH and FishBase gives
+        a hardness of 10 to 15 dH without naming the kind; Seriously Fish and Fishkeeper give
         general hardness only. The lower bound is the soft water of Lake Nicaragua, the upper bound
-        lies near the highest values of the Río Tipitapa. Lake Managua itself reaches about 24 dKH
+        equals the highest values of the Río Tipitapa. Lake Managua itself reaches about 24 dKH
         according to the compiled lake data, so the upper bound is cautious rather than a limit of
         the species.
       sources:
@@ -1228,22 +1229,23 @@ provenance:
         - {by: checker-b, value: {min: 4, max: 13}}
         - {by: tiebreaker-1, value: {min: 4, max: 16}}
         - {by: tiebreaker-2, value: {min: 3.5, max: 24}}
-      decision: {min: 4, max: 10}
+      decision: {min: 4, max: 16}
       rationale: >-
-        Decided by the vote count with method conservative (2 of 5 agree): the intersection of all
-        proposals. It is narrower than the measured natural range of about 3.5 dKH in Lake
-        Nicaragua to about 16 dKH in the Río Tipitapa and about 24 dKH in Lake Managua; two votes
-        converted the Tipitapa alkalinity as bicarbonate instead of CaCO3 and so ended too low.
-        The decided value is kept as the vote count set it.
+        Decided by the vote count with method median (confidence low), because no proposal reached
+        a qualified majority. The median of the minima 3, 3, 3.5, 4, 4 is 3.5, rounded to 4; the
+        median of the maxima 10, 13, 16, 16, 24 is 16. The measured natural range is wider, from
+        about 3.4 dKH in Lake Nicaragua to about 24 dKH in Lake Managua. Checker-a read the Tipitapa
+        alkalinity as bicarbonate instead of CaCO3 and so ended at 10 dKH.
     - field: features.khDkh.tolerance
       proposals:
         - {by: generator, value: {min: 3, max: 16}}
         - {by: checker-a, value: {min: 3, max: 15}}
         - {by: checker-b, value: {min: 3, max: 14}}
-      decision: {min: 3, max: 15}
+      decision: {min: 3, max: 16}
       rationale: >-
         Decided by the vote count with method unanimous (3 of 3); the proposals agree within 2
-        dKH. Evidence entries that attributed carbonate hardness values to Seriously Fish and
+        dKH. The upper bound of 15 is widened to 16 so that the tolerance contains the natural
+        range of 4 to 16 dKH. Evidence entries that attributed carbonate hardness values to Seriously Fish and
         Fishkeeper, which state general hardness only, are left out.
     - field: features.maxSizeCm
       proposals:

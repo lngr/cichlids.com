@@ -154,22 +154,24 @@ features:
         note: lists many Amazon tributaries plus Orinoco and Paraguay records of the broad concept
 
   temperatureC:
-    value: {min: 27, max: 31}
+    value: {min: 26, max: 32}
     confidence: low
     rationale: >-
       The five votes did not settle on one range: generator 24 to 32 C, checker-a 24 to 32 C,
-      checker-b 27 to 31 C, tiebreaker-1 26 to 32 C and tiebreaker-2 26 to 31 C. The vote count
-      therefore takes the conservative value, the intersection of all proposals, 27 to 31 C. It
-      covers the sustained temperature of the white-water floodplain where the species lives: the
-      water at the Lake Janauaca collection site of wild oscars measured 27.5 plus or minus 0.8 C
-      (Duncan et al. 2020), the Solimoes main channel 28.9 to 30.1 C (Queiroz et al. 2009), Lake
-      Catalao 27.8 to 32.0 C in diel profiles (Caraballo et al. 2014), and reviews give 28 to 31 or
-      28 to 32 C for Amazonian waters (Val et al. 2022; the UBC thesis). The wider proposals rested on
-      short events: a cold-air friagem cooled Lake Catalao to 24.5 C for a few days (Brito et al.
-      2014), and sun-heated shallows of Mamiraua lakes and a Colombian oxbow lake reached 34 to 37 C
-      at low water (Mamiraua study 2015; Correa 2008). The FishBase entry of 22 to 25 C comes from an
-      aquarium atlas and is no habitat value. No temperature series from an oscar locality over a full
-      flood cycle was found, hence the low confidence.
+      checker-b 27 to 31 C, tiebreaker-1 26 to 32 C and tiebreaker-2 26 to 31 C. No range reached
+      four agreeing votes, so the vote count takes the median of the proposals. The minima 24, 24,
+      26, 26 and 27 give a median of 26 C, the maxima 31, 31, 32, 32 and 32 give a median of 32 C,
+      hence 26 to 32 C. The decided range covers the sustained temperature of the white-water
+      floodplain where the species lives: the water at the Lake Janauaca collection site of wild
+      oscars measured 27.5 plus or minus 0.8 C (Duncan et al. 2020), the Solimoes main channel 28.9
+      to 30.1 C (Queiroz et al. 2009), Lake Catalao 27.8 to 32.0 C in diel profiles (Caraballo et
+      al. 2014), and reviews give 28 to 31 or 28 to 32 C for Amazonian waters (Val et al. 2022; the
+      UBC thesis). The measured extremes are wider than the decided range: a cold-air friagem cooled
+      Lake Catalao to 24.5 C for a few days (Brito et al. 2014), the Colombian oxbow lake fell to
+      24.4 C (Correa 2008), and sun-heated shallows of Mamiraua lakes and that oxbow lake reached 34
+      to 37 C at low water (Mamiraua study 2015; Correa 2008). The FishBase entry of 22 to 25 C comes
+      from an aquarium atlas and is no habitat value. No temperature series from an oscar locality
+      over a full flood cycle was found, hence the low confidence.
     sources:
       - *janauaca
       - &queiroz
@@ -273,20 +275,20 @@ features:
         value: {min: 22, max: 25}
         note: taken from an aquarium atlas; aquarium recommendation, not habitat
     verification:
-      method: conservative
+      method: median
       votes: {agree: 3, total: 5}
     tolerance:
-      value: {min: 22, max: 31}
+      value: {min: 22, max: 32}
       confidence: low
       rationale: >-
         The five votes did not settle on one tolerance: generator, checker-a and tiebreaker-1
         proposed 22 to 32 C, checker-b 20 to 31 C and tiebreaker-2 20 to 30 C. The vote count takes
-        the intersection of all proposals, 22 to 30 C, and widens it to contain the natural range,
-        which gives 22 to 31 C. The lower bound is the value most care sources share (FishBase,
+        the intersection of all proposals, 22 to 30 C, and widens it to contain the natural range of
+        26 to 32 C, which gives 22 to 32 C. The lower bound is the value most care sources share (FishBase,
         Animal Diversity Web, Aqualog, Fishipedia; Seriously Fish goes down to 20 C), and the cold
         side is the real risk: the lower lethal limit lies near 12 C (USGS), and feral Florida stocks
         collapse after cold winters. Care sheets stop at 25 to 28 C, but wild oscars live for months
-        in water of 28 to 31 C, so the tolerance follows the habitat on the warm side. Short-term
+        in water of 28 to 32 C, so the tolerance follows the habitat on the warm side. Short-term
         survival from 9 to 41 C in experiments (Gutierre et al. 2016) says nothing about keeping fish
         for years and does not widen the range. Most keepers hold oscars at 25 to 28 C.
       sources:
@@ -385,22 +387,24 @@ features:
         votes: {agree: 3, total: 5}
 
   ph:
-    value: {min: 6, max: 7}
+    value: {min: 5.9, max: 7.5}
     confidence: low
     rationale: >-
       The five votes did not settle on one range: generator 5.9 to 7.5, checker-a 5.8 to 7.6,
-      checker-b 6.0 to 7.0, tiebreaker-1 6.0 to 7.5 and tiebreaker-2 5.4 to 7.0. The vote count takes
-      the conservative value, the intersection of all proposals, pH 6.0 to 7.0. It is the
-      circumneutral range of the silt-laden white water the species favours: water from the Lake
-      Janauaca collection site had pH 6.6 plus or minus 0.4 (Duncan et al. 2020), the Solimoes main
-      channel 6.5 to 7.0 (Queiroz et al. 2009), and reviews give about 6 to 7.2 for white-water
-      rivers (Val et al. 2022; the Frontiers review of Amazon water types). Mixed-water Lake Catalao
-      ranged from 5.86 to 7.47 over a year (Brito et al. 2014), Andean-influenced tributaries reach
-      7.6 (Rocha da Silva et al. 2019), and isolated Mamiraua lakes rise to 8.5 at low water through
-      algal photosynthesis; these margins lie outside the decided range. The acid record of 5.3 to
-      5.7 from a Colombian blackwater oxbow (Correa 2008) carried the lowest proposal; black-water
-      oscars may belong to the uncertain A. rubroocellatus. FishBase gives 6 to 8 without saying
-      whether it is a habitat value, and Seriously Fish 6.0 to 7.5 for aquarium fish.
+      checker-b 6.0 to 7.0, tiebreaker-1 6.0 to 7.5 and tiebreaker-2 5.4 to 7.0. No range reached
+      four agreeing votes, so the vote count takes the median of the proposals. The minima 5.4, 5.8,
+      5.9, 6.0 and 6.0 give a median of 5.9, the maxima 7.0, 7.0, 7.5, 7.5 and 7.6 give a median of
+      7.5, hence pH 5.9 to 7.5. The core is the circumneutral range of the silt-laden white water
+      the species favours: water from the Lake Janauaca collection site had pH 6.6 plus or minus 0.4
+      (Duncan et al. 2020), the Solimoes main channel 6.5 to 7.0 (Queiroz et al. 2009), and reviews
+      give about 6 to 7.2 for white-water rivers (Val et al. 2022; the Frontiers review of Amazon
+      water types). Mixed-water Lake Catalao ranged from 5.86 to 7.47 over a year (Brito et al.
+      2014), which the decided range matches, and Andean-influenced tributaries reach 7.6 (Rocha da
+      Silva et al. 2019). The measured extremes are wider than the decided range: isolated Mamiraua
+      lakes rise to 8.5 at low water through algal photosynthesis, and a Colombian blackwater oxbow
+      was acid at 5.3 to 5.7 (Correa 2008); black-water oscars may belong to the uncertain A.
+      rubroocellatus. FishBase gives 6 to 8 without saying whether it is a habitat value, and
+      Seriously Fish 6.0 to 7.5 for aquarium fish.
     sources:
       - *janauaca
       - *queiroz
@@ -461,7 +465,7 @@ features:
         value: {min: 6, max: 7.5}
         note: aquarium recommendation, not a habitat value
     verification:
-      method: conservative
+      method: median
       votes: {agree: 3, total: 5}
     tolerance:
       value: {min: 5.9, max: 8}
@@ -1241,9 +1245,9 @@ profile:
       In the wild the oscar lives in the Amazon basin of Brazil, Peru, Colombia, Bolivia and French
       Guiana. It prefers calm, shallow water of floodplain lakes, oxbows and side channels, mostly in
       muddy white-water areas where it hides under submerged branches, roots and floating vegetation
-      over mud or sand. The water is warm, mostly 27 to 31 C, with brief drops to about 25 C during
+      over mud or sand. The water is warm, mostly 26 to 32 C, with brief drops to about 25 C during
       cold-air spells and higher readings only in sun-heated shallows. It is very soft (below 2 dGH,
-      1 to 2 dKH) and slightly acidic to neutral, about pH 6 to 7. Oxygen is often low, and the oscar
+      1 to 2 dKH) and slightly acidic to neutral, about pH 5.9 to 7.5. Oxygen is often low, and the oscar
       copes with long phases of hypoxia better than most fishes. Spawning starts with the rising
       water of the rainy season, when the forest floods. The Orinoco and Paraguay populations belong
       to separate species, and introduced oscars live in Florida, Hawaii, Puerto Rico and other warm
@@ -1266,7 +1270,7 @@ profile:
       plants or epiphytes on wood last longest. Oscars produce a lot of waste, so filter capacity
       should be generous and 30 to 50 percent of the water should be changed every week. Heaters
       are best placed outside the tank or behind a guard, since large oscars can break them.
-      Captive-bred oscars accept a wide range of water: 22 to 31 C (most keepers use 25 to 28 C), pH
+      Captive-bred oscars accept a wide range of water: 22 to 32 C (most keepers use 25 to 28 C), pH
       about 6 to 8, and soft to fairly hard water up to about 20 dGH and 12 dKH, as long as nitrate
       stays low. Temperatures below 22 C are a real risk for this warm-water fish.
     sources: [*sf, *yilmaz, *fishbase, *adw, *usgs]
@@ -1376,10 +1380,11 @@ provenance:
         - {by: checker-b, value: {min: 27, max: 31}}
         - {by: tiebreaker-1, value: {min: 26, max: 32}}
         - {by: tiebreaker-2, value: {min: 26, max: 31}}
-      decision: {min: 27, max: 31}
+      decision: {min: 26, max: 32}
       rationale: >-
-        Decided by the vote count: conservative, 3 of 5 votes for the top candidate, no qualified
-        majority; the intersection of all proposals is 27 to 31 C.
+        Decided by the vote count: median, 3 of 5 votes for the top candidate, no qualified
+        majority; the median of the minima 24, 24, 26, 26, 27 is 26 C and the median of the maxima
+        31, 31, 32, 32, 32 is 32 C.
     - field: features.temperatureC.tolerance
       proposals:
         - {by: generator, value: {min: 22, max: 32}}
@@ -1387,10 +1392,10 @@ provenance:
         - {by: checker-b, value: {min: 20, max: 31}}
         - {by: tiebreaker-1, value: {min: 22, max: 32}}
         - {by: tiebreaker-2, value: {min: 20, max: 30}}
-      decision: {min: 22, max: 31}
+      decision: {min: 22, max: 32}
       rationale: >-
         Decided by the vote count: conservative, 3 of 5 votes for the top candidate; the
-        intersection 22 to 30 C is widened to contain the natural range up to 31 C.
+        intersection 22 to 30 C is widened to contain the natural range of 26 to 32 C.
     - field: features.ph
       proposals:
         - {by: generator, value: {min: 5.9, max: 7.5}}
@@ -1398,10 +1403,11 @@ provenance:
         - {by: checker-b, value: {min: 6, max: 7}}
         - {by: tiebreaker-1, value: {min: 6, max: 7.5}}
         - {by: tiebreaker-2, value: {min: 5.4, max: 7}}
-      decision: {min: 6, max: 7}
+      decision: {min: 5.9, max: 7.5}
       rationale: >-
-        Decided by the vote count: conservative, 3 of 5 votes for the top candidate, no qualified
-        majority; the intersection of all proposals is pH 6.0 to 7.0.
+        Decided by the vote count: median, 3 of 5 votes for the top candidate, no qualified
+        majority; the median of the minima 5.4, 5.8, 5.9, 6.0, 6.0 is 5.9 and the median of the
+        maxima 7.0, 7.0, 7.5, 7.5, 7.6 is 7.5.
     - field: features.ph.tolerance
       proposals:
         - {by: generator, value: {min: 5.9, max: 8}}

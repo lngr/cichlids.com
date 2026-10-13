@@ -401,18 +401,22 @@ features:
       min: 4
       max: 5.5
     confidence: low
-    rationale: "Decided by the vote count with method conservative: no proposal reached 4 agreeing votes
-      (3 of 5 for the top candidate), so the value is the intersection of all five proposals
-      (generator 4.0 to 6.5, checker-a 4.0 to 5.5, checker-b 4.0 to 6.5, tiebreaker-1 3.5 to 5.5,
-      tiebreaker-2 3.7 to 5.5), which gives 4.0 to 5.5. The habitat data support this band. Staeck
-      and Schindler (2015, quoted by the USFWS screening) found the species only at extremely acidic
+    rationale: "Decided by the vote count with method median: no proposal reached 4 agreeing votes (3 of 5
+      for the top candidate), so for this natural water range the decided range is the median of the
+      minima and of the maxima of all five proposals (generator 4.0 to 6.5, checker-a 4.0 to 5.5,
+      checker-b 4.0 to 6.5, tiebreaker-1 3.5 to 5.5, tiebreaker-2 3.7 to 5.5). The sorted minima
+      are 3.5, 3.7, 4.0, 4.0, 4.0 with the median 4.0; the sorted maxima are 5.5, 5.5, 5.5, 6.5, 6.5
+      with the median 5.5, which gives 4.0 to 5.5. The habitat data support this band. Staeck and
+      Schindler (2015, quoted by the USFWS screening) found the species only at extremely acidic
       blackwater sites with pH 4.1 to 4.2. Laraque et al. measured 3.2 to 4.2 in the Guainía, the
       upper Rio Negro and the Casiquiare mouth and 5.0 to 5.9 in the upper Orinoco main channel;
       Pascoaloto and Bringel found pH below 5.5 throughout the upper Rio Negro; Englezou read 3.7 to
-      4.29 in the Atabapo. Rivers of the Brazilian Rio Negro basin span 3.9 to 6.1 (Küchler et al.).
-      The generator and checker-b extended the range to 6.5 after these less humic tributaries and
-      the FishBase value of 5.0 to 6.5, which rests on aquarium data. Readings below 4.0 occur in
-      the main blackwater channels and lie outside the decided range."
+      4.29 in the Atabapo. Rivers of the Brazilian Rio Negro basin span 3.9 to 6.1 (Küchler et al.),
+      and the generator and checker-b extended the range to 6.5 after these less humic tributaries
+      and the FishBase value of 5.0 to 6.5, which rests on aquarium data. The measured range is
+      wider than the decided one: readings below 4.0 occur in the main blackwater channels and
+      values above 5.5 in the Orinoco channel and in tributaries, and both lie outside the decided
+      range."
     sources:
       - kind: literature
         title: U.S. Fish and Wildlife Service (2026). Banded Cichlid (Heros severus), Ecological Risk
@@ -702,7 +706,7 @@ features:
           agree: 2
           total: 5
     verification:
-      method: conservative
+      method: median
       votes:
         agree: 3
         total: 5
@@ -2591,9 +2595,10 @@ provenance:
       decision:
         min: 4
         max: 5.5
-      rationale: "Decided by the vote count (conservative, 3 of 5): no candidate reached 4 votes, so the
-        conservative rule takes the intersection of all proposals; it matches the blackwater sites
-        where the species was collected."
+      rationale: "Decided by the vote count with method median (3 of 5, no candidate reached 4 votes): the
+        median of the minima (3.5, 3.7, 4.0, 4.0, 4.0 gives 4.0) and of the maxima (5.5, 5.5, 5.5,
+        6.5, 6.5 gives 5.5) over all five proposals; it matches the blackwater sites where the
+        species was collected."
     - field: features.ph.tolerance
       proposals:
         - by: generator

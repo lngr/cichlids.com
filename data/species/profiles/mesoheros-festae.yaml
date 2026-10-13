@@ -129,24 +129,24 @@ features:
         note: verification only; the Colombian record is not supported by the Catalog of Fishes
 
   temperatureC:
-    value: {min: 23, max: 29}
+    value: {min: 22, max: 30}
     confidence: low
-    verification: {method: conservative, votes: {agree: 3, total: 5}}
+    verification: {method: median, votes: {agree: 3, total: 5}}
     rationale: >-
-      The votes did not settle: the generator proposed 23 to 29 C, checker-a 20 to 29 C, checker-b
-      and tiebreaker-1 22 to 30 C and tiebreaker-2 20 to 30 C. No candidate reached four agreeing
-      votes, so the vote count took the intersection of all five proposals, 23 to 29 C, with low
-      confidence. This intersection is narrower than the range the sources measured where the
-      species lives. The river data span about 20 to 30 C: the Santiago-Cayapas streams of the
-      Esmeraldas drainage measured 22.0 to 29.9 C at control and downstream sites (23.7 to 28.4 C at
-      the unmined control sites), the Babahoyo River in the Guayas basin 19.7 C at the collecting
-      site of wild fish, the lowland rivers of the Guayas basin below 250 m 22.6 C upwards with a
-      mean of 26.0 C at the end of the dry season, and the long-term HYBAM stations means of 24.5 C
+      The five votes did not reach a qualified majority, so the count used the median method for a
+      natural water range. The proposals were 23 to 29 C (generator), 20 to 29 C (checker-a), 22 to
+      30 C (checker-b), 22 to 30 C (tiebreaker-1) and 20 to 30 C (tiebreaker-2). The minima sorted
+      are 20, 20, 22, 22, 23, whose median is 22 C; the maxima sorted are 29, 29, 30, 30, 30, whose
+      median is 30 C. The decided 22 to 30 C carries low confidence. It is narrower than the full
+      spread of the sources, about 20 to 30 C: the Santiago-Cayapas streams of the Esmeraldas
+      drainage measured 22.0 to 29.9 C at control and downstream sites (23.7 to 28.4 C at the
+      unmined control sites), the Babahoyo River in the Guayas basin 19.7 C at the collecting site
+      of wild fish, the lowland rivers of the Guayas basin below 250 m 22.6 C upwards with a mean of
+      26.0 C at the end of the dry season, and the long-term HYBAM stations means of 24.5 C
       (Esmeraldas, standard deviation 1 C) and 24.9 C (Tumbes). Single extremes of 19 C at foothill
-      sites and 34 C at a shallow exposed site lie outside this river range. The decided 23 to 29 C
-      therefore covers the core of the measurements and leaves out the cooler Guayas readings
-      between about 20 and 23 C and the warmest stream readings near 30 C. The 26 to 28 C in FishBase
-      comes from an aquarium atlas and is no habitat measurement.
+      sites and 34 C at a shallow exposed site lie outside this river range. The cooler Guayas
+      readings between about 20 and 22 C are therefore left out. The 26 to 28 C in FishBase comes
+      from an aquarium atlas and is no habitat measurement.
     sources:
       - &moquet
         kind: literature
@@ -220,19 +220,20 @@ features:
         value: {min: 26, max: 28}
         note: aquarium value after Baensch and Riehl, not a habitat measurement
     tolerance:
-      value: {min: 23, max: 29}
+      value: {min: 22, max: 30}
       confidence: low
       verification: {method: conservative, votes: {agree: 3, total: 5}}
       rationale: >-
-        The tolerance votes did not settle either: the generator proposed 23 to 29 C, checker-a and
-        tiebreaker-2 20 to 30 C, checker-b and tiebreaker-1 22 to 30 C. The vote count took the
-        intersection, 23 to 29 C, which already contains the decided natural range. Care sheets put
-        the long-term aquarium range between 24 and 29 C: Seriously Fish and Tropical Freshwater Fish
-        25 to 29 C, Fishkeeper 25 to 28 C, FishProfiles 24.4 to 27.8 C and FishBase, after an
-        aquarium atlas, 26 to 28 C. The wider proposals rest on the river measurements of about 20 to
-        30 C and on aquaculture stock held for a month at 19.5 C; these show that the fish survives
-        cooler and warmer phases, but no source documents years at the edges. The narrower range
-        warns earlier, which is the cautious side; keepers do best at 25 to 28 C.
+        The tolerance votes did not reach a qualified majority either: the generator proposed 23 to
+        29 C, checker-a and tiebreaker-2 20 to 30 C, checker-b and tiebreaker-1 22 to 30 C. The
+        conservative method takes the intersection of all five, 23 to 29 C, which is narrower than
+        the decided natural range of 22 to 30 C, so the tolerance was widened to contain that
+        natural range and is 22 to 30 C. Care sheets put the long-term aquarium range between 24 and
+        29 C: Seriously Fish and Tropical Freshwater Fish 25 to 29 C, Fishkeeper 25 to 28 C,
+        FishProfiles 24.4 to 27.8 C and FishBase, after an aquarium atlas, 26 to 28 C. The wider
+        proposals of 20 to 30 C rest on the river measurements and on aquaculture stock held for a
+        month at 19.5 C; these show that the fish survives cooler and warmer phases, but no source
+        documents years at the edges. Keepers do best at 25 to 28 C.
       sources:
         - &sf
           kind: database
@@ -1289,11 +1290,12 @@ provenance:
         - {by: checker-b, value: {min: 22, max: 30}}
         - {by: tiebreaker-1, value: {min: 22, max: 30}}
         - {by: tiebreaker-2, value: {min: 20, max: 30}}
-      decision: {min: 23, max: 29}
+      decision: {min: 22, max: 30}
       rationale: >-
-        Decided by the vote count with method conservative (3 of 5 votes for the top candidate, fewer
-        than the 4 needed): the intersection of all proposals. It is narrower than the measured river
-        range of about 20 to 30 C, which the rationale of the feature names.
+        Decided by the vote count with method median (3 of 5 votes for the top candidate, fewer than
+        the 4 needed): the median of the five minima (22) and of the five maxima (30). It is
+        narrower than the measured river range of about 20 to 30 C, which the rationale of the
+        feature names.
     - field: features.temperatureC.tolerance
       proposals:
         - {by: generator, value: {min: 23, max: 29}}
@@ -1301,10 +1303,10 @@ provenance:
         - {by: checker-b, value: {min: 22, max: 30}}
         - {by: tiebreaker-1, value: {min: 22, max: 30}}
         - {by: tiebreaker-2, value: {min: 20, max: 30}}
-      decision: {min: 23, max: 29}
+      decision: {min: 22, max: 30}
       rationale: >-
         Decided by the vote count with method conservative (3 of 5): the intersection of all
-        proposals, which contains the decided natural range of 23 to 29 C.
+        proposals, 23 to 29 C, widened to 22 to 30 C to contain the decided natural range.
     - field: features.diet
       proposals:
         - {by: generator, value: {type: omnivore, bloatSensitive: false}}

@@ -139,21 +139,25 @@ features:
         accessed: 2026-10-12
   temperatureC:
     value:
-      min: 28
-      max: 30
+      min: 26
+      max: 32
     confidence: low
-    rationale: "The five votes did not settle on one range: generator 26 to 32 C, checker-a 28 to 32 C,
-      checker-b 26 to 30 C, tiebreaker-1 28 to 32 C and tiebreaker-2 26 to 30 C. The vote count
-      therefore takes the conservative value, the intersection of all proposals, 28 to 30 C. It lies
-      inside every field series that was read: clear-water lagoons of the Tapajós and Trombetas, one
-      of them a discus site, averaged 29.6 to 31.8 C (Vieira et al. 2022), Lago Grande de Curuai, a
-      brown discus locality, averaged 28.8 C at high and 30.6 C at low water (Casali et al. 2011),
-      and the lower Xingu ranged from 28.3 to 32.5 C (Nascimento et al. 2021). The lower bounds of
-      26 C in FishBase, Seriously Fish and the review of Ribeiro et al. (2025) go back to aquarium
-      handbooks. Brief cold spells (friagem) cool floodplain lakes to about 24.5 C (Brito et al.
-      2014), and shallow pools and afternoon surface water exceed 32 C (Queiroz et al. 2009;
-      Livengood et al. 2009); neither represents sustained conditions. No study logged temperature
-      at discus collecting sites over a year, hence the low confidence."
+    rationale: "The five votes did not settle on one range and no range reached the qualified majority:
+      generator 26 to 32 C, checker-a 28 to 32 C, checker-b 26 to 30 C, tiebreaker-1 28 to 32 C and
+      tiebreaker-2 26 to 30 C. The vote count therefore takes the median of all proposals, method
+      median. The minima 26, 28, 26, 28 and 26 sort to 26, 26, 26, 28, 28 with the middle value 26;
+      the maxima 32, 32, 30, 32 and 30 sort to 30, 30, 32, 32, 32 with the middle value 32. The
+      decided range is 26 to 32 C. Field series that were read lie mostly inside it: clear-water
+      lagoons of the Tapajós and Trombetas, one of them a discus site, averaged 29.6 to 31.8 C
+      (Vieira et al. 2022), Lago Grande de Curuai, a brown discus locality, averaged 28.8 C at high
+      and 30.6 C at low water (Casali et al. 2011), and the lower Xingu ranged from 28.3 to 32.5 C
+      (Nascimento et al. 2021), which exceeds the decided maximum by half a degree. The lower bound
+      of 26 C appears in FishBase, Seriously Fish and the review of Ribeiro et al. (2025) and goes
+      back to aquarium handbooks, so the measured field series (28.3 C and above) are narrower than
+      the decided range at the cold end. Brief cold spells (friagem) cool floodplain lakes to about
+      24.5 C (Brito et al. 2014), and shallow pools and afternoon surface water exceed 32 C
+      (Queiroz et al. 2009; Livengood et al. 2009); neither represents sustained conditions. No
+      study logged temperature at discus collecting sites over a year, hence the low confidence."
     sources:
       - kind: literature
         title: Vieira, T. L. S., Silva, F. K. S., Santos, Z., Oliveira, L. S., Cajado, R. A., Oliveira, E.
@@ -337,7 +341,7 @@ features:
           min: 26
           max: 30
     verification:
-      method: conservative
+      method: median
       votes:
         agree: 2
         total: 5
@@ -479,21 +483,24 @@ features:
           total: 3
   ph:
     value:
-      min: 5.2
-      max: 6.9
+      min: 5
+      max: 7
     confidence: low
     rationale: "The votes were generator 4.8 to 6.9, checker-a 5.2 to 7.0, checker-b 5.2 to 7.7,
       tiebreaker-1 5.0 to 7.0 and tiebreaker-2 4.5 to 7.0. Three of the five agree within 0.3, one
-      short of the qualified majority, so the vote count takes the conservative value, the
-      intersection of all proposals: pH 5.2 to 6.9. The field readings at discus collecting sites by
-      Bleher et al. (2007), tabulated by Amado et al. (2011), span 5.2 to 6.9 for the brown, blue
-      and Xingu discus apart from a single Tapajós reading of 4.8, and nine Tapajós and Trombetas
-      lagoons averaged 5.2 to 6.9 (Vieira et al. 2022); a lower Purus floodplain lake read 5.3 to
-      6.4 (Queiroz et al. 2009). Values above 7 come from open lake water with algal photosynthesis
-      (Casali et al. 2011), from the Xingu main channel in the wet season (Nascimento et al. 2021),
-      from a hobby article (Practical Fishkeeping) and from the aquarium range of FishBase, not from
-      discus sites. Values below 5 belong to black water that hosts S. discus. The conservative
-      method sets the confidence low."
+      short of the qualified majority, so the vote count takes the median of all proposals, method
+      median. The minima 4.8, 5.2, 5.2, 5.0 and 4.5 sort to 4.5, 4.8, 5.0, 5.2, 5.2 with the middle
+      value 5.0; the maxima 6.9, 7.0, 7.7, 7.0 and 7.0 sort to 6.9, 7.0, 7.0, 7.0, 7.7 with the
+      middle value 7.0. The decided range is pH 5.0 to 7.0. The field readings at discus collecting
+      sites by Bleher et al. (2007), tabulated by Amado et al. (2011), span 5.2 to 6.9 for the
+      brown, blue and Xingu discus apart from a single Tapajós reading of 4.8, and nine Tapajós and
+      Trombetas lagoons averaged 5.2 to 6.9 (Vieira et al. 2022); a lower Purus floodplain lake
+      read 5.3 to 6.4 (Queiroz et al. 2009). The measured range of 4.8 to 6.9 is therefore wider at
+      the acidic end and narrower at the alkaline end than the decided range. Values above 7 come
+      from open lake water with algal photosynthesis (Casali et al. 2011), from the Xingu main
+      channel in the wet season (Nascimento et al. 2021), from a hobby article (Practical
+      Fishkeeping) and from the aquarium range of FishBase, not from discus sites. Values below 5
+      belong to black water that hosts S. discus. The median method sets the confidence low."
     sources:
       - kind: literature
         title: "Amado, M. V., Farias, I. P. and Hrbek, T. (2011). A molecular perspective on systematics,
@@ -699,7 +706,7 @@ features:
           min: 5
           max: 7
     verification:
-      method: conservative
+      method: median
       votes:
         agree: 3
         total: 5
@@ -2483,9 +2490,9 @@ profile:
         accessed: 2026-10-12
   habitat:
     text: Wild discus live in floodplain lakes, flooded forest and quiet side arms of the Amazon between
-      the Purus Arch and the Tocantins, not in the main river channel. The water is warm, about 28
-      to 30 C, acidic and extremely poor in minerals, with conductivity mostly below 80 microsiemens
-      and pH between about 5.2 and 6.9. During the dry season the fish crowd into the submerged
+      the Purus Arch and the Tocantins, not in the main river channel. The water is warm, about 26
+      to 32 C, acidic and extremely poor in minerals, with conductivity mostly below 80 microsiemens
+      and pH between about 5.0 and 7.0. During the dry season the fish crowd into the submerged
       crowns of fallen trees along lake shores, sometimes hundreds together. When the river rises by
       many metres they disperse into the flooded forest to feed and breed. Clear, black and mixed
       waters are all used, which explains why measured values vary between localities.
@@ -2899,10 +2906,10 @@ provenance:
             min: 26
             max: 30
       decision:
-        min: 28
-        max: 30
-      rationale: "Vote count, method conservative (2 of 5 agree): the intersection of all proposals. See
-        the rationale of the feature."
+        min: 26
+        max: 32
+      rationale: "Vote count, method median (2 of 5 agree, below the qualified majority of 4): the median
+        of the five minima (26) and of the five maxima (32). See the rationale of the feature."
     - field: features.ph.value
       proposals:
         - by: generator
@@ -2926,10 +2933,10 @@ provenance:
             min: 4.5
             max: 7
       decision:
-        min: 5.2
-        max: 6.9
-      rationale: "Vote count, method conservative (3 of 5 agree, below the qualified majority of 4): the
-        intersection of all proposals. See the rationale of the feature."
+        min: 5
+        max: 7
+      rationale: "Vote count, method median (3 of 5 agree, below the qualified majority of 4): the median
+        of the five minima (5.0) and of the five maxima (7.0). See the rationale of the feature."
     - field: features.ghDgh.tolerance.value
       proposals:
         - by: generator

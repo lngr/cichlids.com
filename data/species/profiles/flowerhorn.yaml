@@ -360,24 +360,25 @@ features:
           note: keeper report
 
   ph:
-    value: {min: 7.3, max: 8.5}
+    value: {min: 7, max: 9}
     confidence: low
     verification:
-      method: conservative
+      method: median
       votes: {agree: 3, total: 5}
     rationale: >-
-      The natural range rests on the habitats of the parents. The votes did not settle, so the vote
-      count took the intersection of all proposals: generator 7.0 to 9.0, checker-a 7.0 to 8.5,
-      checker-b 7.0 to 8.5, tiebreaker-1 7.2 to 9.0 and tiebreaker-2 7.3 to 9.3. The measured data
-      support a wider span of about 7.2 to 9.0: Lake Nicaragua 8.2 to 8.9 at the surface and 7.4 to
-      7.8 in deep water (Swain 1966) and 7.2 to 7.7 in an older fisheries survey; Lake Nicaragua
-      8.59, Lake Managua 8.69 and seven crater lakes with Midas cichlids 7.33 to 8.41 in 2018 (Härer
-      et al. 2021); the Rio Tipitapa between both lakes 8.0 to 8.9; Lake Petén Itzá, home of V.
-      melanurus, 8.2 to 8.5 at the surface (Pérez et al. 2010) and Petén lowland waters 7.4 to 8.5
-      (Pérez et al. 2013). Lake Managua reached 8.9 to 9.3 at the surface in one dry-season survey,
-      which reads as a photosynthetic peak. The intersection 7.3 to 8.5 thus cuts off the alkaline
-      surface water of the Nicaraguan lakes above 8.5 and the slightly lower readings around 7.2.
-      No pH measurement from the river and lagoon habitats of A. trimaculatus was found.
+      The natural range rests on the habitats of the parents. The votes did not reach a qualified
+      majority, so the vote count took the median of the bounds of all five proposals: generator
+      7.0 to 9.0, checker-a 7.0 to 8.5, checker-b 7.0 to 8.5, tiebreaker-1 7.2 to 9.0 and
+      tiebreaker-2 7.3 to 9.3. The minima 7.0, 7.0, 7.0, 7.2 and 7.3 have the median 7.0, the maxima
+      8.5, 8.5, 9.0, 9.0 and 9.3 have the median 9.0. The measured data fit this span: Lake
+      Nicaragua 8.2 to 8.9 at the surface and 7.4 to 7.8 in deep water (Swain 1966) and 7.2 to 7.7
+      in an older fisheries survey; Lake Nicaragua 8.59, Lake Managua 8.69 and seven crater lakes
+      with Midas cichlids 7.33 to 8.41 in 2018 (Härer et al. 2021); the Rio Tipitapa between both
+      lakes 8.0 to 8.9; Lake Petén Itzá, home of V. melanurus, 8.2 to 8.5 at the surface (Pérez et
+      al. 2010) and Petén lowland waters 7.4 to 8.5 (Pérez et al. 2013). Lake Managua reached 8.9
+      to 9.3 at the surface in one dry-season survey, which reads as a photosynthetic peak, so the
+      measured span of about 7.2 to 9.3 is slightly wider than the decided 7.0 to 9.0. No pH
+      measurement from the river and lagoon habitats of A. trimaculatus was found.
     sources:
       - *swain
       - &haerer
@@ -434,20 +435,21 @@ features:
         value: {min: 7.0, max: 8.0}
         note: parent V. melanurus, value from an aquarium reference
     tolerance:
-      value: {min: 6.5, max: 8.5}
+      value: {min: 6.5, max: 9}
       confidence: low
       verification:
         method: conservative
         votes: {agree: 2, total: 5}
       rationale: >-
-        The votes did not settle, so the vote count took the intersection of all proposals:
-        generator 6.5 to 9.0, checker-a 6.5 to 8.5, checker-b 6.5 to 8.5, tiebreaker-1 6.5 to 9.0
-        and tiebreaker-2 6.0 to 9.3. All votes agree on the lower bound of 6.5, the lowest value of
-        the care sheets written for the flowerhorn (Fishkeeper 6.5 to 7.8, LiveAquaria 6.5 to 8.0);
-        Seriously Fish keeps both Nicaraguan parents down to 6.0, and fish were reared at about
-        pH 6.9 to 7.6. No husbandry source tests water above pH 8.0, but the parents live in lakes
-        whose surface water reaches 8.9, so the sources support a tolerance of about 6.5 to 9.0.
-        The intersection stops at 8.5, which is narrower than that, and contains the natural range.
+        The votes did not reach a qualified majority, so the vote count took the intersection of all
+        proposals, widened to contain the natural range: generator 6.5 to 9.0, checker-a 6.5 to 8.5,
+        checker-b 6.5 to 8.5, tiebreaker-1 6.5 to 9.0 and tiebreaker-2 6.0 to 9.3. The intersection
+        is 6.5 to 8.5; the natural range 7.0 to 9.0 reaches higher, so the upper bound is widened to
+        9.0. All votes agree on the lower bound of 6.5, the lowest value of the care sheets written
+        for the flowerhorn (Fishkeeper 6.5 to 7.8, LiveAquaria 6.5 to 8.0); Seriously Fish keeps both
+        Nicaraguan parents down to 6.0, and fish were reared at about pH 6.9 to 7.6. No husbandry
+        source tests water above pH 8.0, but the parents live in lakes whose surface water reaches
+        8.9, which supports the widened upper bound.
       sources:
         - *fishkeeper
         - *sfCitrinellus
@@ -577,21 +579,22 @@ features:
           note: natural value of Lake Nicaragua, computed from calcium and magnesium
 
   khDkh:
-    value: {min: 5, max: 8}
+    value: {min: 4, max: 16}
     confidence: low
     verification:
-      method: conservative
+      method: median
       votes: {agree: 3, total: 5}
     rationale: >-
-      The natural range rests on the habitats of the parents. The votes did not settle, so the vote
-      count took the intersection of all proposals: generator 3 to 8, checker-a 4 to 16, checker-b
-      5 to 16, tiebreaker-1 4 to 16 and tiebreaker-2 3 to 8 dKH. The measurements support a much
-      wider span of about 3 to 16 dKH: Lake Nicaragua holds 60 to 65 mg/L CaCO3 total alkalinity
-      (3.4 to 3.6 dKH, Swain 1966) or 80 to 120 mg/L (4.5 to 6.7 dKH) in an older fisheries survey,
-      Lake Petén Itzá, home of V. melanurus, 1.9 to 2.2 meq/L bicarbonate (5.3 to 6.2 dKH), and the
-      Rio Tipitapa and the saline Lake Managua up to 280 mg/L (15.7 dKH). The intersection 5 to 8 dKH
-      leaves out both the soft water of Lake Nicaragua and the hard water of Lake Managua. No
-      alkalinity data exist for the habitats of A. trimaculatus.
+      The natural range rests on the habitats of the parents. The votes did not reach a qualified
+      majority, so the vote count took the median of the bounds of all five proposals: generator 3
+      to 8, checker-a 4 to 16, checker-b 5 to 16, tiebreaker-1 4 to 16 and tiebreaker-2 3 to 8 dKH.
+      The minima 3, 4, 4, 5 and 3 have the median 4, the maxima 8, 16, 16, 16 and 8 have the median
+      16. The measurements fit this span and reach slightly lower: Lake Nicaragua holds 60 to 65
+      mg/L CaCO3 total alkalinity (3.4 to 3.6 dKH, Swain 1966) or 80 to 120 mg/L (4.5 to 6.7 dKH)
+      in an older fisheries survey, Lake Petén Itzá, home of V. melanurus, 1.9 to 2.2 meq/L
+      bicarbonate (5.3 to 6.2 dKH), and the Rio Tipitapa and the saline Lake Managua up to 280 mg/L
+      (15.7 dKH). The measured span of about 3.4 to 15.7 dKH is thus a little wider at the lower end
+      than the decided 4 to 16 dKH. No alkalinity data exist for the habitats of A. trimaculatus.
     sources:
       - *swain
       - *bolanos
@@ -611,24 +614,24 @@ features:
         value: {min: 4.6, max: 15.7}
         note: total alkalinity of the river between lakes Managua and Nicaragua
     tolerance:
-      value: {min: 4, max: 8}
+      value: {min: 4, max: 16}
       confidence: low
       verification:
         method: conservative
         votes: {agree: 3, total: 6}
       rationale: >-
-        The votes did not settle, so the vote count took the intersection of all proposals:
-        generator 3 to 8, checker-a 4 to 16, tiebreaker-1 4 to 20, tiebreaker-2 3 to 12,
-        tiebreaker-3 3 to 12 and tiebreaker-4 4 to 12 dKH; checker-b gave no tolerance. The
-        intersection 4 to 8 dKH is clearly narrower than what the sources support. The only care
-        sheet that names a carbonate hardness, Modest Fish, gives 3 to 12 dKH, a keeper on
-        MonsterFishKeepers advises at least 4 dKH, and four of six votes reach 12 dKH or more.
-        LiveAquaria labels 9 to 20 as dKH, but this band equals the general hardness that other
-        sheets give, so it most likely is general hardness. The parents' habitats reach about 16
-        dKH. Together the sources support a tolerance of about 4 to 12 dKH, possibly up to 16 dKH;
-        the decided 4 to 8 dKH only makes the app warn earlier. General hardness figures of
-        Fishkeeper, Seriously Fish and FishBase say nothing about carbonate hardness and are not
-        listed as evidence here.
+        The votes did not reach a qualified majority, so the vote count took the intersection of all
+        proposals, widened to contain the natural range: generator 3 to 8, checker-a 4 to 16,
+        tiebreaker-1 4 to 20, tiebreaker-2 3 to 12, tiebreaker-3 3 to 12 and tiebreaker-4 4 to 12
+        dKH; checker-b gave no tolerance. The intersection is 4 to 8 dKH; the natural range 4 to 16
+        dKH reaches higher, so the upper bound is widened to 16. The only care sheet that names a
+        carbonate hardness, Modest Fish, gives 3 to 12 dKH, a keeper on MonsterFishKeepers advises
+        at least 4 dKH, and four of six votes reach 12 dKH or more. LiveAquaria labels 9 to 20 as
+        dKH, but this band equals the general hardness that other sheets give, so it most likely is
+        general hardness. The parents' habitats reach about 16 dKH. The care sheets alone support
+        about 4 to 12 dKH, so the decided upper end of 16 dKH rests on the habitat data. General
+        hardness figures of Fishkeeper, Seriously Fish and FishBase say nothing about carbonate
+        hardness and are not listed as evidence here.
       sources:
         - *swain
         - *tipitapa
@@ -1283,7 +1286,7 @@ profile:
       digs and moves loose decor. Plants are uprooted. Protect the heater with a guard or use an
       external heater, as the fish attacks equipment. Filtration must be strong and water changes
       large and frequent to keep nitrate low. Keep the water at 24 to 30 C with a pH of 6.5 to
-      8.5, a general hardness of 5 to 25 dGH and a moderate carbonate hardness that
+      9, a general hardness of 5 to 25 dGH and a moderate carbonate hardness that
       buffers the pH against the heavy waste load.
     sources:
       - *fishkeeper
@@ -1483,11 +1486,11 @@ provenance:
           value: {min: 7.2, max: 9.0}
         - by: tiebreaker-2
           value: {min: 7.3, max: 9.3}
-      decision: {min: 7.3, max: 8.5}
+      decision: {min: 7, max: 9}
       rationale: >-
-        Conservative decision of the vote count (3 of 5 votes agree on the top candidate): the
-        intersection of all votes. The measured habitat data support about 7.2 to 9.0, so the
-        intersection is narrower than the sources.
+        Median decision of the vote count (no qualified majority among 5 votes): the minima 7.0, 7.0,
+        7.0, 7.2 and 7.3 give the median 7.0, the maxima 8.5, 8.5, 9.0, 9.0 and 9.3 give 9.0. The
+        measured habitat data span about 7.2 to 9.3, so the decided range is close to the sources.
     - field: features.ghDgh
       proposals:
         - by: generator
@@ -1513,11 +1516,11 @@ provenance:
           value: {min: 4, max: 16}
         - by: tiebreaker-2
           value: {min: 3, max: 8}
-      decision: {min: 5, max: 8}
+      decision: {min: 4, max: 16}
       rationale: >-
-        Conservative decision of the vote count (3 of 5 votes agree on the top candidate): the
-        intersection of all votes. The measurements support about 3 to 16 dKH, so the intersection is
-        much narrower than the sources.
+        Median decision of the vote count (no qualified majority among 5 votes): the minima 3, 4, 4,
+        5 and 3 give the median 4, the maxima 8, 16, 16, 16 and 8 give 16. The measurements span
+        about 3.4 to 15.7 dKH, so the decided range is close to the sources.
     - field: features.temperatureC.tolerance
       proposals:
         - by: generator
@@ -1547,11 +1550,11 @@ provenance:
           value: {min: 6.5, max: 9.0}
         - by: tiebreaker-2
           value: {min: 6.0, max: 9.3}
-      decision: {min: 6.5, max: 8.5}
+      decision: {min: 6.5, max: 9}
       rationale: >-
         Conservative decision of the vote count (2 of 5 votes agree on the top candidate): the
-        intersection of all votes, which contains the natural range. Care sheets and habitat data
-        together support about 6.5 to 9.0.
+        intersection of all votes is 6.5 to 8.5, widened at the top to 9.0 to contain the natural
+        range. Care sheets and habitat data together support about 6.5 to 9.0.
     - field: features.khDkh.tolerance
       proposals:
         - by: generator
@@ -1566,12 +1569,12 @@ provenance:
           value: {min: 3, max: 12}
         - by: tiebreaker-4
           value: {min: 4, max: 12}
-      decision: {min: 4, max: 8}
+      decision: {min: 4, max: 16}
       rationale: >-
         Conservative decision of the vote count (3 of 6 votes agree on the top candidate; checker-b
-        gave no tolerance): the intersection of all votes, which contains the natural 5 to 8 dKH. The
-        only explicit carbonate hardness of a care sheet, 3 to 12 dKH, and the habitat values up to
-        about 16 dKH show that the intersection is narrower than the sources support.
+        gave no tolerance): the intersection of all votes is 4 to 8 dKH, widened at the top to 16 to
+        contain the natural 4 to 16 dKH. The only explicit carbonate hardness of a care sheet is 3
+        to 12 dKH; the habitat values up to about 16 dKH carry the upper end.
     - field: features.maxSizeCm
       proposals:
         - by: generator

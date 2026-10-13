@@ -125,20 +125,21 @@ features:
         accessed: 2026-10-12
 
   temperatureC:
-    value: {min: 22, max: 25}
+    value: {min: 20, max: 28}
     confidence: low
     rationale: >-
       The five votes did not settle on one range: generator 22 to 30 C, checker-a 20 to 28 C,
       checker-b 20 to 25 C, tiebreaker-1 20 to 28 C and tiebreaker-2 22 to 30 C. No proposal found
-      four agreeing votes, so the vote count takes the conservative value, the intersection of all
-      proposals, 22 to 25 C. This range lies on the cool side of the measured habitat. Capture sites
-      of wild fish had 19.7 to 24.7 C in the Babahoyo River (Gonzalez et al. 2021) and single
-      readings of 19.2 C in the fast Quevedo River and 26.1 C in the Mocache River
-      (Gonzalez-Martinez et al. 2021). The lowland rivers of the Guayas basin below 250 m averaged
-      26.0 C with a range of 22.6 to 34 C at the end of the dry season, the extremes depending on
-      the time of day (Damanik-Ambarita et al. 2016), and the Carrizal River in Manabí had 25.9 to
-      27.9 C. Many habitat readings are therefore warmer than 25 C; the tolerance of 20 to 28 C
-      covers them. The 22.5 to 28.2 C of Musilová et al. (2009) belong to the sister species
+      four agreeing votes, so the vote count uses the median method for natural water ranges. The
+      minima 22, 20, 20, 20 and 22 have the median 20 C, the maxima 30, 28, 25, 28 and 30 have the
+      median 28 C, which gives 20 to 28 C. The decided range is narrower than the measured habitat,
+      which spans about 19 to 34 C. Capture sites of wild fish had 19.7 to 24.7 C in the Babahoyo
+      River (Gonzalez et al. 2021) and single readings of 19.2 C in the fast Quevedo River and
+      26.1 C in the Mocache River (Gonzalez-Martinez et al. 2021). The lowland rivers of the Guayas
+      basin below 250 m averaged 26.0 C with a range of 22.6 to 34 C at the end of the dry season,
+      the extremes depending on the time of day (Damanik-Ambarita et al. 2016), and the Carrizal
+      River in Manabí had 25.9 to 27.9 C. The warmest midday readings above 28 C are short-term
+      peaks that the tolerance of 20 to 28 C does not exceed either. The 22.5 to 28.2 C of Musilová et al. (2009) belong to the sister species
       A. stalsbergi in Peru, and the 22 to 30 C of the Santiago-Cayapas study come from a basin
       north of the range whose rare A. rivulatus record may refer to another Andinoacara. The 20 to
       24 C in FishBase come from an aquarium atlas and are no habitat value. No temperature series
@@ -226,7 +227,7 @@ features:
         value: {min: 20, max: 24}
         note: taken from an aquarium atlas; an aquarium recommendation, not a habitat value
     verification:
-      method: conservative
+      method: median
       votes: {agree: 2, total: 5}
     tolerance:
       value: {min: 20, max: 28}
@@ -235,7 +236,7 @@ features:
         The five votes did not settle on one tolerance: generator 20 to 30 C, checker-a, checker-b
         and tiebreaker-1 20 to 28 C, tiebreaker-2 20 to 30 C. Three agreeing votes are one short of
         a qualified majority, so the vote count takes the intersection of all proposals, 20 to 28 C,
-        which already contains the natural range of 22 to 25 C. FishBase, Seriously Fish and the
+        which contains the natural range of 20 to 28 C. FishBase, Seriously Fish and the
         Maidenhead Aquatics data bank recommend 20 to 24 C, Fishipedia 25 to 28 C and an aquarium
         guide 20 to 27 C. Husbandry studies keep the species warmer without reported problems:
         broodstock at 26 C (Piesiewicz et al. 2025), farm and laboratory stocks at 27 to 28 C (Luo
@@ -415,20 +416,21 @@ features:
         votes: {agree: 3, total: 3}
 
   ghDgh:
-    value: {min: 4, max: 9}
+    value: {min: 2, max: 12}
     confidence: low
     rationale: >-
       The five votes did not settle on one range: generator 2 to 12 dGH, checker-a 2 to 9 dGH,
       checker-b 4 to 25 dGH, tiebreaker-1 1 to 14 dGH and tiebreaker-2 1 to 10 dGH. No proposal found
-      four agreeing votes, so the vote count takes the conservative value, the intersection of all
-      proposals, 4 to 9 dGH. No hardness titration from a documented collecting site exists. The
-      only measured total hardness within the range comes from the Carrizal River system in
+      four agreeing votes, so the vote count uses the median method for natural water ranges. The
+      minima 2, 2, 4, 1 and 1 have the median 2 dGH, the maxima 12, 9, 25, 14 and 10 have the
+      median 12 dGH, which gives 2 to 12 dGH. No hardness titration from a documented collecting
+      site exists. The only measured total hardness comes from the Carrizal River system in
       Manabí, 1.3 to 13.6 dGH at single stations with monthly means near 6.7 dGH (Aveiga Ortiz et
-      al. 2019); foothill rivers and streams at La Maná in the upper Guayas basin had 6.3 to 9.2
-      dGH. Conductivities in the Guayas lowlands (mean 263 uS/cm) and at the Babahoyo capture site
-      (about 145 uS/cm) point to soft to moderately hard water of roughly 2 to 8 dGH, an estimate
-      and no measurement. The decided range sits in the middle of these values; the tolerance of 2
-      to 25 dGH covers softer and harder water. The very soft Santiago-Cayapas rivers lie north of
+      al. 2019), a wider span than the decided range; foothill rivers and streams at La Maná in the
+      upper Guayas basin had 6.3 to 9.2 dGH. Conductivities in the Guayas lowlands (mean 263 uS/cm)
+      and at the Babahoyo capture site (about 145 uS/cm) point to soft to moderately hard water of
+      roughly 2 to 8 dGH, an estimate and no measurement. The decided range covers these values;
+      the tolerance of 2 to 25 dGH covers softer and harder water. The very soft Santiago-Cayapas rivers lie north of
       the range, the 15 to over 40 dGH of Peruvian waters belong to A. stalsbergi, and the 25 dGH
       of FishBase is an aquarium figure.
     sources:
@@ -471,7 +473,7 @@ features:
         value: {max: 25}
         note: aquarium figure without a lower limit
     verification:
-      method: conservative
+      method: median
       votes: {agree: 3, total: 5}
     tolerance:
       value: {min: 2, max: 25}
@@ -517,19 +519,21 @@ features:
         votes: {agree: 4, total: 5}
 
   khDkh:
-    value: {min: 3, max: 6}
+    value: {min: 2, max: 15}
     confidence: low
     rationale: >-
       The five votes did not settle on one range: generator and checker-a 2 to 15 dKH, checker-b 2
       to 8 dKH, tiebreaker-1 3 to 15 dKH and tiebreaker-2 1 to 6 dKH. No proposal found four
-      agreeing votes, so the vote count takes the conservative value, the intersection of all
-      proposals, 3 to 6 dKH. No carbonate hardness was measured at a documented collecting site.
-      Bicarbonate is the main anion of the Pacific Andean rivers (Moquet et al. 2018). The Guayas
-      lowland rivers and the Babahoyo capture site conduct little (about 145 to 263 uS/cm on
-      average), which suggests a few dKH; the decided range rests on these estimates. The only
-      measured alkalinity within the range, 14.7 to 14.9 dKH in the Carrizal River of the dry
-      Manabí coast, lies above it; that sodium-rich, partly impounded system is covered by the
-      tolerance of 2 to 15 dKH. The 4 to 15 dKH of Peruvian waters belong to A. stalsbergi.
+      agreeing votes, so the vote count uses the median method for natural water ranges. The
+      minima 2, 2, 2, 3 and 1 have the median 2 dKH, the maxima 15, 15, 8, 15 and 6 have the
+      median 15 dKH, which gives 2 to 15 dKH. No carbonate hardness was measured at a documented
+      collecting site. Bicarbonate is the main anion of the Pacific Andean rivers (Moquet et al.
+      2018). The Guayas lowland rivers and the Babahoyo capture site conduct little (about 145 to
+      263 uS/cm on average), which suggests a few dKH. The only measured alkalinity, 14.7 to 14.9
+      dKH in the Carrizal River of the dry Manabí coast, lies at the upper end of the decided
+      range; that sodium-rich, partly impounded system sets the upper bound, and the estimates for
+      the lowland rivers set the lower one. The tolerance is also 2 to 15 dKH. The 4 to 15 dKH of
+      Peruvian waters belong to A. stalsbergi.
     sources:
       - *aveiga
       - *moquet
@@ -552,7 +556,7 @@ features:
         value: {min: 4, max: 15}
         note: temporary hardness at sites of the sister species A. stalsbergi
     verification:
-      method: conservative
+      method: median
       votes: {agree: 3, total: 5}
     tolerance:
       value: {min: 2, max: 15}
@@ -1246,7 +1250,7 @@ profile:
       neutral to slightly alkaline (pH about 6.6 to 8.2) and soft to moderately hard. Its
       temperature varies with altitude, season and time of day: cool foothill rivers stay near
       20 C, while lowland rivers often reach 26 to 28 C. The natural range used for this species
-      is the cautious 22 to 25 C. Fish from the Esmeraldas basin in the north belong to a separate
+      is 20 to 28 C. Fish from the Esmeraldas basin in the north belong to a separate
       species, A. blombergi. Escaped or released green terrors have settled in Mexico and in the
       Amazonian part of Ecuador.
     sources:
@@ -1424,10 +1428,11 @@ provenance:
         - {by: checker-b, value: {min: 20, max: 25}}
         - {by: tiebreaker-1, value: {min: 20, max: 28}}
         - {by: tiebreaker-2, value: {min: 22, max: 30}}
-      decision: {min: 22, max: 25}
+      decision: {min: 20, max: 28}
       rationale: >-
-        Decided by the vote count with method conservative (2 of 5 agree): the intersection of all
-        proposals. Many habitat readings are warmer; the tolerance covers them.
+        Decided by the vote count with method median (2 of 5 agree, confidence low): the median of
+        the five minima (20) and of the five maxima (28). Single midday readings of the habitat
+        reach 34 C, above the decided range.
     - field: features.temperatureC.tolerance
       proposals:
         - {by: generator, value: {min: 20, max: 30}}
@@ -1446,10 +1451,11 @@ provenance:
         - {by: checker-b, value: {min: 4, max: 25}}
         - {by: tiebreaker-1, value: {min: 1, max: 14}}
         - {by: tiebreaker-2, value: {min: 1, max: 10}}
-      decision: {min: 4, max: 9}
+      decision: {min: 2, max: 12}
       rationale: >-
-        Decided by the vote count with method conservative (3 of 5 agree): the intersection of all
-        proposals.
+        Decided by the vote count with method median (3 of 5 agree, confidence low): the median of
+        the five minima (2) and of the five maxima (12). The measured Carrizal hardness of 1.3 to
+        13.6 dGH is slightly wider.
     - field: features.ghDgh.tolerance
       proposals:
         - {by: generator, value: {min: 2, max: 25}}
@@ -1468,10 +1474,11 @@ provenance:
         - {by: checker-b, value: {min: 2, max: 8}}
         - {by: tiebreaker-1, value: {min: 3, max: 15}}
         - {by: tiebreaker-2, value: {min: 1, max: 6}}
-      decision: {min: 3, max: 6}
+      decision: {min: 2, max: 15}
       rationale: >-
-        Decided by the vote count with method conservative (3 of 5 agree): the intersection of all
-        proposals. The measured Carrizal alkalinity lies above it and inside the tolerance.
+        Decided by the vote count with method median (3 of 5 agree, confidence low): the median of
+        the five minima (2) and of the five maxima (15). The measured Carrizal alkalinity of 14.7
+        to 14.9 dKH lies inside it.
     - field: features.diet.value
       proposals:
         - {by: generator, value: {type: omnivore, bloatSensitive: false}}

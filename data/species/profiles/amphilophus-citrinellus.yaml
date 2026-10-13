@@ -117,11 +117,11 @@ features:
         accessed: 2026-10-12
   temperatureC:
     value:
-      min: 28
-      max: 30
+      min: 25
+      max: 31
     confidence: low
     verification:
-      method: conservative
+      method: median
       votes:
         agree: 3
         total: 5
@@ -130,12 +130,14 @@ features:
       least 31 °C, after Cole 1976), checker-b 26 to 30 °C, tiebreaker-1 25 to 32 °C (Lake Nicaragua
       25.4 to 29.3 °C over a year, Lake Managua profiles of 26.5 to about 32 °C) and tiebreaker-2
       27.5 to 29.8 °C (single November readings in lakes Managua, Nicaragua and Masaya). Only three
-      votes agree within 1 °C, so no qualified majority exists, and the decided value is the most
-      cautious one: the intersection of all five proposals, 27.5 to 29.8 °C, rounded to 28 to 30 °C.
-      This conservative range is the warm core that every measurement covers; the lakes of the
-      species span about 24 to 32 °C over depth, season and time of day. FishBase gives 23 to 33 °C
-      without measurement details. Readings from lakes Apoyo and Xiloá, where other Midas species
-      live, fall within the same band."
+      votes agree within 1 °C, so no qualified majority exists and the method is the median of all
+      five votes. The minima 24, 24, 25, 26 and 27.5 have the median 25 °C; the maxima 29.8, 30, 31,
+      31 and 32 have the median 31 °C. The decided range is therefore 25 to 31 °C with low
+      confidence. The measurements span a wider band of about 24 to 32 °C over depth, season and
+      time of day, and FishBase gives 23 to 33 °C without measurement details. The median range
+      leaves out the coolest deep readings and the hottest surface profiles of Lake Managua.
+      Readings from lakes Apoyo and Xiloá, where other Midas species live, fall within the same
+      band."
     sources:
       - kind: literature
         title: "Cole, G. A. (1976). Limnology of the Great Lakes of Nicaragua. In: Thorson, T. B. (ed.),
@@ -830,10 +832,10 @@ features:
   khDkh:
     value:
       min: 3
-      max: 8
+      max: 16
     confidence: low
     verification:
-      method: conservative
+      method: median
       votes:
         agree: 2
         total: 5
@@ -842,13 +844,15 @@ features:
       reported by Lin 1961 in Cole 1976), checker-b 3 to 8 dKH, tiebreaker-2 3 to 12 dKH as an
       estimate without measurement, and tiebreaker-3 3 to 16 dKH (Lake Nicaragua 3.4 to 3.6 dKH
       after Swain 1966; Río Tipitapa, the outflow of Lake Managua, 4.6 to 15.7 dKH in 2016 and
-      2017). Only two votes agree within 2 dKH, so the decided value is the most cautious one: the
-      intersection of all proposals, 3 to 8 dKH. This range describes the soft water of Lake
-      Nicaragua, the main habitat and the source of most wild fish, and the lower site means of the
-      Tipitapa river; it leaves out the strongly buffered water of Lake Masaya and Lake Managua,
-      where the species lives as well. The alkalinity of Lake Managua is uncertain: the 1950s survey
-      found 6.7 to 15.7 dKH, the older chemical analysis about 24 dKH, and no recent lake
-      measurement was readable. Converted with 1 dKH = 17.85 mg/L CaCO3 = 0.357 meq/L."
+      2017). Only two votes agree within 2 dKH, so no qualified majority exists and the method is
+      the median of all five votes. The minima are all 3, giving the median 3 dKH; the maxima 8,
+      12, 16, 25 and 25 have the median 16 dKH. The decided range is therefore 3 to 16 dKH with low
+      confidence. It covers the soft water of Lake Nicaragua, the main habitat and the source of
+      most wild fish, the buffered Lake Masaya and the Tipitapa river up to its highest reading.
+      The measured and reported values reach higher, up to about 24 dKH in Lake Managua by the older
+      chemical analysis; the alkalinity of that lake is uncertain, since the 1950s survey found
+      6.7 to 15.7 dKH and no recent lake measurement was readable. Converted with 1 dKH = 17.85
+      mg/L CaCO3 = 0.357 meq/L."
     sources:
       - kind: literature
         title: "Cole, G. A. (1976). Limnology of the Great Lakes of Nicaragua. In: Thorson, T. B. (ed.),
@@ -948,7 +952,7 @@ features:
     tolerance:
       value:
         min: 3
-        max: 15
+        max: 16
       confidence: low
       verification:
         method: conservative
@@ -957,14 +961,14 @@ features:
           total: 5
       rationale: "Five votes were cast: generator, checker-a and tiebreaker-1 proposed 3 to 25 dKH,
         checker-b 3 to 20 and tiebreaker-2 3 to 15 dKH. Three votes agree, one short of a qualified
-        majority, so the decided value is the conservative one: the intersection of all proposals, 3
-        to 15 dKH, which contains the natural range of 3 to 8 dKH. No care sheet states a carbonate
-        hardness for the species; Seriously Fish and Fishkeeper give general hardness up to 25 dGH
-        only. The bounds therefore rest on the water the species lives in for life: about 3.5 to 4
-        dKH in Lake Nicaragua, 12 dKH in Lake Masaya and 6.7 to 15.7 dKH in Lake Managua water of
-        the 1950s and its outflow river. Higher alkalinity, as in parts of Lake Managua, is probably
-        tolerated as well but stays outside this cautious range. A stable, buffered tank matters
-        more than an exact value."
+        majority, so the method is conservative: the intersection of all proposals is 3 to 15 dKH.
+        The decided natural range is 3 to 16 dKH, so the tolerance is widened to contain it and
+        becomes 3 to 16 dKH. No care sheet states a carbonate hardness for the species; Seriously
+        Fish and Fishkeeper give general hardness up to 25 dGH only. The bounds therefore rest on
+        the water the species lives in for life: about 3.5 to 4 dKH in Lake Nicaragua, 12 dKH in
+        Lake Masaya and 6.7 to 15.7 dKH in Lake Managua water of the 1950s and its outflow river.
+        Higher alkalinity, as in parts of Lake Managua, is probably tolerated as well but stays
+        outside this cautious range. A stable, buffered tank matters more than an exact value."
       sources:
         - kind: literature
           title: "Cole, G. A. (1976). Limnology of the Great Lakes of Nicaragua. In: Thorson, T. B. (ed.),
@@ -2542,10 +2546,11 @@ provenance:
             min: 27.5
             max: 29.8
       decision:
-        min: 28
-        max: 30
-      rationale: conservative decision of the vote count (3 of 5 agreeing votes). No four votes agree
-        within 1 °C; the intersection of all proposals is 27.5 to 29.8 °C, rounded to 28 to 30 °C.
+        min: 25
+        max: 31
+      rationale: median decision of the vote count (3 of 5 agreeing votes). No four votes agree within
+        1 °C; the median of the minima 24, 24, 25, 26 and 27.5 is 25 °C and the median of the maxima
+        29.8, 30, 31, 31 and 32 is 31 °C. The measured band is wider, about 24 to 32 °C.
     - field: features.temperatureC.tolerance.value
       proposals:
         - by: generator
@@ -2681,9 +2686,10 @@ provenance:
             max: 16
       decision:
         min: 3
-        max: 8
-      rationale: conservative decision of the vote count (2 of 5 agreeing votes). Only two votes agree;
-        the intersection of all proposals is 3 to 8 dKH.
+        max: 16
+      rationale: median decision of the vote count (2 of 5 agreeing votes). Only two votes agree; the
+        minima are all 3 and the median of the maxima 8, 12, 16, 25 and 25 is 16 dKH. Reported
+        values reach about 24 dKH in Lake Managua.
     - field: features.khDkh.tolerance.value
       proposals:
         - by: generator
@@ -2708,6 +2714,7 @@ provenance:
             max: 15
       decision:
         min: 3
-        max: 15
+        max: 16
       rationale: conservative decision of the vote count (3 of 5 agreeing votes). Three votes agree; the
-        intersection of all proposals is 3 to 15 dKH and contains the natural range.
+        intersection of all proposals is 3 to 15 dKH, widened to 3 to 16 dKH to contain the natural
+        range.

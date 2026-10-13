@@ -757,24 +757,25 @@ features:
           total: 4
   khDkh:
     value:
-      min: 4
-      max: 10
+      min: 3
+      max: 15
     confidence: low
-    rationale: "The six votes did not settle (generator 3 to 13, checker-a 3 to 16, checker-b 3.5 to 10,
-      checker-c 3.3 to 24.5, tiebreaker-1 3 to 16, tiebreaker-2 3.4 to 13 dKH). The tally therefore
-      applies the conservative rule, the intersection of all votes, 3.5 to 10 dKH, decided in whole
-      numbers as 4 to 10 dKH with confidence low. The measured sources span a much wider range, and
-      the decided lower bound of 4 lies above the measured Lake Nicaragua alkalinity: Swain gives 60
-      to 65 mg/L as CaCO3 for Lake Nicaragua, about 3.4 to 3.6 dKH (dKH = mg/L CaCO3 / 17.85), while
-      Urist found about 3 mmol/L bicarbonate there (8.4 dKH). The Tipitapa River, which carries Lake
-      Managua water towards Lake Nicaragua, held 82 to 280 mg/L alkalinity, 3.8 to 12.9 dKH when
-      read as bicarbonate and 4.6 to 15.7 dKH when read as CaCO3. For Lake Managua itself only the
-      FAO compilation gives carbonate plus bicarbonate, about 24.4 dKH; the lake is an evaporative
-      sodium bicarbonate lake with about 1400 mg/L dissolved solids and a conductivity near 1770
-      microsiemens per cm in the 1980s baseline (Moreno and Pacheco), so its alkalinity may exceed
-      the decided upper bound. The sources thus range from about 3.4 to 24.4 dKH; the decided 4 to
-      10 dKH is the narrower band all votes share, and the tolerance below contains the soft Lake
-      Nicaragua end."
+    rationale: "No qualified majority formed among the six votes (generator 3 to 13, checker-a 3 to 16,
+      checker-b 3.5 to 10, checker-c 3.3 to 24.5, tiebreaker-1 3 to 16, tiebreaker-2 3.4 to 13
+      dKH), and a lake value does not apply because the water body is not decided. The tally
+      therefore takes the median of the minima and of the maxima of all votes, with confidence
+      low. The minima sort to 3, 3, 3, 3.3, 3.4, 3.5, whose middle pair averages 3.15, decided as 3
+      dKH; the maxima sort to 10, 13, 13, 16, 16, 24.5, whose middle pair averages 14.5, rounded to
+      15 dKH. The median range of 3 to 15 dKH contains the measured Lake Nicaragua alkalinity:
+      Swain gives 60 to 65 mg/L as CaCO3 there, about 3.4 to 3.6 dKH (dKH = mg/L CaCO3 / 17.85),
+      while Urist found about 3 mmol/L bicarbonate (8.4 dKH). The Tipitapa River, which carries
+      Lake Managua water towards Lake Nicaragua, held 82 to 280 mg/L alkalinity, 3.8 to 12.9 dKH
+      when read as bicarbonate and 4.6 to 15.7 dKH when read as CaCO3. The sources reach wider than
+      the decided range: for Lake Managua itself only the FAO compilation gives carbonate plus
+      bicarbonate, about 24.4 dKH; the lake is an evaporative sodium bicarbonate lake with about
+      1400 mg/L dissolved solids and a conductivity near 1770 microsiemens per cm in the 1980s
+      baseline (Moreno and Pacheco), so its alkalinity may exceed the decided upper bound of 15.
+      The measured sources thus range from about 3.4 to 24.4 dKH."
     sources:
       - kind: literature
         title: "Swain, F. M. (1966). Bottom sediments of Lake Nicaragua and Lake Managua, western Nicaragua.
@@ -849,7 +850,7 @@ features:
           max: 24.4
         note: converted from carbonate plus bicarbonate; Lake Nicaragua and Lake Managua
     verification:
-      method: conservative
+      method: median
       votes:
         agree: 2
         total: 6
@@ -864,8 +865,8 @@ features:
         hardness: AquariumDomain recommends 4 to 8 dKH and the retailer LiveAquaria 6 to 12 dKH,
         while Seriously Fish, Fishkeeper and Tropical Freshwater Fish state only general hardness up
         to about 25 degrees and describe a fish that adapts to soft and hard water. The lower end of
-        3 dKH contains the measured Lake Nicaragua alkalinity of about 3.4 to 3.6 dKH (Swain), which
-        lies below the decided natural lower bound of 4, and the upper end covers the Tipitapa River
+        3 dKH contains the measured Lake Nicaragua alkalinity of about 3.4 to 3.6 dKH (Swain), the
+        same lower bound as the decided natural range of 3 to 15 dKH, and the upper end covers the Tipitapa River
         values (Lacayo Morales and Picado Pavón). The FAO value of about 24 dKH for Lake Managua, on
         which checker-c based its wider range, lies outside the decided tolerance; no care source
         confirms years of health at such alkalinity."
@@ -2720,12 +2721,13 @@ provenance:
             min: 3.4
             max: 13
       decision:
-        min: 4
-        max: 10
-      rationale: "Decided by tally.yaml: conservative, 2 of 6 votes; the intersection of all votes in
-        whole numbers. The decided lower bound lies above the measured Lake Nicaragua alkalinity of
-        about 3.4 to 3.6 dKH (Swain), and the sources reach up to about 24 dKH for Lake Managua
-        (FAO); the tolerance of 3 to 15 dKH contains the Lake Nicaragua value."
+        min: 3
+        max: 15
+      rationale: "Decided by tally.yaml: median, 2 of 6 votes agree; no qualified majority. The
+        decided range is the median of the six minima (3.15, in whole numbers 3) and of the six
+        maxima (14.5, rounded to 15). It contains the measured Lake Nicaragua alkalinity of about
+        3.4 to 3.6 dKH (Swain), while the sources reach up to about 24 dKH for Lake Managua (FAO),
+        above the decided upper bound."
     - field: features.khDkh.tolerance
       proposals:
         - by: generator

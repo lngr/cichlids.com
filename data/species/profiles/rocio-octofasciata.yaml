@@ -290,13 +290,13 @@ features:
           note: laboratory acclimation range, a short-term physiological limit
 
   ph:
-    value: { min: 7.0, max: 8.0 }
+    value: { min: 6.5, max: 8.5 }
     confidence: low
     verification:
-      method: conservative
+      method: median
       votes: { agree: 2, total: 6 }
     rationale: >-
-      The natural range rests on habitat measurements from Lago Petén Itzá, the Grijalva and Usumacinta basins, Quintana Roo and Lake Izabal, and these waters differ. Lago Petén Itzá surface water reads 8.2 to 8.5. The Grijalva near Teapa measured 7.7 to 8.5 in the channel and 6.8 to 7.2 in a spring; the lower Usumacinta 7.5 to 8.9 at three bridge sites and its floodplain lagoons 6.9 to 7.4; the Lacantún sites 7.3 to 8.1. In Quintana Roo Laguna Caobas ranged from 6.55 to 8.23 (mean 6.99), the zone and season means of the south lie between 6.6 and 7.7, the Bacalar waters between 6.5 and 7.8, and the Sian Ka'an pools, where the species is abundant, reach seasonal means of 7.2 to 9.0. Lago de Izabal averages 7.8 at the surface, while a 1970s survey read mostly 6.0 to 7.0 with a meter accurate only to 0.5 units. The six votes proposed 6.5 to 8.5 (twice), 7.0 to 8.0, 6.0 to 8.0, 6.5 to 9.0 and 7.0 to 8.5; no proposal reached a qualified majority, so the value is the most cautious one, the intersection of all votes, 7.0 to 8.0. It is the core that every vote contains; many habitats of the species are somewhat more alkaline or slightly acidic. FishBase gives 7.0 to 8.0 from a trait database, not from field measurements.
+      The natural range rests on habitat measurements from Lago Petén Itzá, the Grijalva and Usumacinta basins, Quintana Roo and Lake Izabal, and these waters differ. Lago Petén Itzá surface water reads 8.2 to 8.5. The Grijalva near Teapa measured 7.7 to 8.5 in the channel and 6.8 to 7.2 in a spring; the lower Usumacinta 7.5 to 8.9 at three bridge sites and its floodplain lagoons 6.9 to 7.4; the Lacantún sites 7.3 to 8.1. In Quintana Roo Laguna Caobas ranged from 6.55 to 8.23 (mean 6.99), the zone and season means of the south lie between 6.6 and 7.7, the Bacalar waters between 6.5 and 7.8, and the Sian Ka'an pools, where the species is abundant, reach seasonal means of 7.2 to 9.0. Lago de Izabal averages 7.8 at the surface, while a 1970s survey read mostly 6.0 to 7.0 with a meter accurate only to 0.5 units. The six votes proposed 6.5 to 8.5 (generator and tiebreaker-2), 7.0 to 8.0 (checker-a), 6.0 to 8.0 (checker-b), 6.5 to 9.0 (tiebreaker-1) and 7.0 to 8.5 (tiebreaker-3). No proposal reached a qualified majority, so the value is the median of the minima and of the maxima of all votes. The minima sorted are 6.0, 6.5, 6.5, 6.5, 7.0, 7.0, and the median is the mean of the third and fourth, 6.5. The maxima sorted are 8.0, 8.0, 8.5, 8.5, 8.5, 9.0, and the median is the mean of the third and fourth, 8.5. The result, 6.5 to 8.5, is narrower than the measured spread of about 6.0 to 9.0 across the sites above; the extremes are single sites or seasons, and the median keeps the range most votes sit around. FishBase gives 7.0 to 8.0 from a trait database, not from field measurements.
     sources:
       - *perez
       - &musalem
@@ -409,13 +409,13 @@ features:
         value: { min: 7.0, max: 8.0 }
         note: environment field from a trait database, no field measurement
     tolerance:
-      value: { min: 6.5, max: 8.0 }
+      value: { min: 6.5, max: 8.5 }
       confidence: low
       verification:
         method: conservative
         votes: { agree: 2, total: 5 }
       rationale: >-
-        Five votes were cast: 6.5 to 9.0 (care range extended to the alkaline Sian Ka'an and Petén Itzá waters), 6.0 to 8.5 twice (lower bound from care sources that accept pH 6, upper bound raised to the habitat values of up to 8.5) and 6.5 to 8.0 twice (the bounds shared by Seriously Fish and most care sheets). Without a qualified majority the tolerance is the intersection of all votes, 6.5 to 8.0, which contains the natural range of 7.0 to 8.0. Seriously Fish gives 6.5 to 8.0; FishBase, Fishkeeper, FishProfiles and Practical Fishkeeping 7.0 to 8.0; AquariumSource, FishLore and the Aqualog text 6 to 8; Aqua-Fish.net reaches 8.5. Guides that recommend 6.0 to 7.0 contradict the habitat data. Wild fish live permanently at pH 8.2 to 8.5 in Lago Petén Itzá, so the upper bound is a cautious care limit rather than a physiological one.
+        Five votes were cast: 6.5 to 9.0 (care range extended to the alkaline Sian Ka'an and Petén Itzá waters), 6.0 to 8.5 twice (lower bound from care sources that accept pH 6, upper bound raised to the habitat values of up to 8.5) and 6.5 to 8.0 twice (the bounds shared by Seriously Fish and most care sheets). Without a qualified majority the tolerance is the intersection of all votes, 6.5 to 8.0 (the largest minimum and the smallest maximum). The natural range of 6.5 to 8.5 reaches beyond that upper bound, so the tolerance is widened to contain it and is 6.5 to 8.5. Seriously Fish gives 6.5 to 8.0; FishBase, Fishkeeper, FishProfiles and Practical Fishkeeping 7.0 to 8.0; AquariumSource, FishLore and the Aqualog text 6 to 8; Aqua-Fish.net reaches 8.5. Guides that recommend 6.0 to 7.0 contradict the habitat data. Wild fish live permanently at pH 8.2 to 8.5 in Lago Petén Itzá, so the upper bound is a cautious care limit rather than a physiological one.
       sources:
         - *sf
         - *fishbase
@@ -593,10 +593,13 @@ features:
           value: { min: 8, max: 12 }
 
   khDkh:
-    value: { min: 3, max: 10 }
+    value: { min: 5, max: 10 }
     confidence: low
+    verification:
+      method: unanimous
+      votes: { agree: 3, total: 3 }
     rationale: >-
-      Carbonate hardness is known from three water bodies or basins with records of the species, each converted with 1 meq/L = 2.8 dKH. Lago Petén Itzá carries 1.9 to 2.2 meq/L bicarbonate, about 5.3 to 6.2 dKH, beside a large sulfate share. The Lake Izabal basin showed a typical total alkalinity of 1.0 to 2.75 meq/L in lake, swamps and small rivers, about 2.8 to 7.7 dKH. The Usumacinta channel carries 2.86 meq/L bicarbonate plus 0.51 meq/L carbonate, about 9.4 dKH, and its floodplain lagoons mostly 3.3 to 10.4 dKH. The range 3 to 10 dKH covers these values. No carbonate measurement from Quintana Roo was found, and the gypsum water of Laguna Bacalar is left out as for total hardness. The proposals were 5 to 8 (Petén Itzá only), 5 to 12 (upper bound from general knowledge of karst water) and 3 to 10 dKH (Izabal data). The upper bound of 12 lacks a measurement, and the Izabal and Usumacinta data extend the range beyond 5 to 8, so 3 to 10 dKH is used. The values are converted from single studies and not measured at the collecting sites, hence the low confidence.
+      Carbonate hardness is known from three water bodies or basins with records of the species, each converted with 1 meq/L = 2.8 dKH. Lago Petén Itzá carries 1.9 to 2.2 meq/L bicarbonate, about 5.3 to 6.2 dKH, beside a large sulfate share. The Lake Izabal basin showed a typical total alkalinity of 1.0 to 2.75 meq/L in lake, swamps and small rivers, about 2.8 to 7.7 dKH. The Usumacinta channel carries 2.86 meq/L bicarbonate plus 0.51 meq/L carbonate, about 9.4 dKH, and its floodplain lagoons mostly 3.3 to 10.4 dKH. The range 3 to 10 dKH covers these values. No carbonate measurement from Quintana Roo was found, and the gypsum water of Laguna Bacalar is left out as for total hardness. The proposals were 5 to 8 (generator, Petén Itzá only), 5 to 12 (checker-a, upper bound from general knowledge of karst water) and 3 to 10 dKH (checker-b, Izabal data). All three agree within the tolerance of 2 dKH, so the tally calls the vote unanimous and takes the median of the agreeing minima and maxima: the minima 3, 5, 5 give 5, the maxima 8, 10, 12 sorted give 10. The decided range is 5 to 10 dKH. It is narrower than the measured spread of about 2.8 to 10.4 dKH, because the lowest values come from the Izabal basin alone and the highest from the floodplain lagoons of the Usumacinta, while Petén Itzá and the Usumacinta channel sit inside it. The values are converted from single studies and not measured at the collecting sites, hence the low confidence.
     sources:
       - *perez
       - *brinson
@@ -618,7 +621,7 @@ features:
         method: unanimous
         votes: { agree: 3, total: 3 }
       rationale: >-
-        All three votes agree (3 to 12, 4 to 10 and 3 to 12 dKH); the decided range is their median, 3 to 12 dKH, which contains the natural 3 to 10 dKH. Carbonate hardness is rarely stated for this species: Tankflare gives 3 to 12 dKH, Aquatic Arts 4 to 10 dKH and Modest Fish 72 to 107 ppm (4 to 6 dKH, mislabelled as general hardness). The habitats with data are moderately buffered, from about 3 dKH in the Izabal basin to about 9 dKH in the Usumacinta. All husbandry sources are hobby or retail pages, hence the low confidence.
+        All three votes agree (3 to 12, 4 to 10 and 3 to 12 dKH); the decided range is their median, 3 to 12 dKH, which contains the natural 5 to 10 dKH. Carbonate hardness is rarely stated for this species: Tankflare gives 3 to 12 dKH, Aquatic Arts 4 to 10 dKH and Modest Fish 72 to 107 ppm (4 to 6 dKH, mislabelled as general hardness). The habitats with data are moderately buffered, from about 3 dKH in the Izabal basin to about 9 dKH in the Usumacinta. All husbandry sources are hobby or retail pages, hence the low confidence.
       sources:
         - *tankflare
         - *aquaticarts
@@ -1047,7 +1050,7 @@ profile:
       - *fishkeeper
   habitat:
     text: >-
-      The species lives on the Atlantic side of Central America, from Veracruz in Mexico through the Grijalva-Usumacinta basin and the Yucatán Peninsula, Belize and Guatemala to the Ulúa in Honduras. It prefers slow water: the lower reaches of rivers, swamps, lagoons, canals and drainage ditches, often with mud or sand, dense plants and murky water. It also lives in lakes such as Lago Petén Itzá and Lago de Izabal and in karst lagoons and cenotes. The water is warm all year, about 24 to 30 °C, around neutral to alkaline (the core range is pH 7 to 8) and moderately hard to hard, because much of the range lies on limestone. Some habitats are exceptional, such as the gypsum-rich, very hard water of Laguna Bacalar. The species tolerates low oxygen well and moves between permanent ponds and flooded seasonal pools during the rainy season.
+      The species lives on the Atlantic side of Central America, from Veracruz in Mexico through the Grijalva-Usumacinta basin and the Yucatán Peninsula, Belize and Guatemala to the Ulúa in Honduras. It prefers slow water: the lower reaches of rivers, swamps, lagoons, canals and drainage ditches, often with mud or sand, dense plants and murky water. It also lives in lakes such as Lago Petén Itzá and Lago de Izabal and in karst lagoons and cenotes. The water is warm all year, about 24 to 30 °C, around neutral to alkaline (the usual range is pH 6.5 to 8.5) and moderately hard to hard, because much of the range lies on limestone. Some habitats are exceptional, such as the gypsum-rich, very hard water of Laguna Bacalar. The species tolerates low oxygen well and moves between permanent ponds and flooded seasonal pools during the rainy season.
     sources:
       - *fishbase
       - *sf
@@ -1068,7 +1071,7 @@ profile:
       - *fws
   husbandry:
     text: >-
-      A pair needs a tank of at least 120 cm length and about 240 litres; a community with other cichlids needs considerably more. Use sand or fine gravel, because the fish dig pits and move the substrate around. Provide caves from stones, roots or flowerpots, and place a few flat stones as spawning sites. Rooted plants are usually dug up, so floating plants or plants tied to wood work best. The species is sensitive to rising nitrate and poor water, so use strong filtration and change a large share of the water every week. Keep the water between 22 and 30 °C, at pH 6.5 to 8.0 and 5 to 20 dGH, with a carbonate hardness of about 3 to 12 dKH. Cover the tank well, since startled fish can jump.
+      A pair needs a tank of at least 120 cm length and about 240 litres; a community with other cichlids needs considerably more. Use sand or fine gravel, because the fish dig pits and move the substrate around. Provide caves from stones, roots or flowerpots, and place a few flat stones as spawning sites. Rooted plants are usually dug up, so floating plants or plants tied to wood work best. The species is sensitive to rising nitrate and poor water, so use strong filtration and change a large share of the water every week. Keep the water between 22 and 30 °C, at pH 6.5 to 8.5 and 5 to 20 dGH, with a carbonate hardness of about 3 to 12 dKH. Cover the tank well, since startled fish can jump.
     sources:
       - *sf
       - *pfk
@@ -1266,9 +1269,9 @@ provenance:
           value:
             min: 7
             max: 8.5
-      decision: { min: 7.0, max: 8.0 }
+      decision: { min: 6.5, max: 8.5 }
       rationale: >-
-        Tally method conservative (2 of 6 votes for the top candidate): intersection of all votes. Measured habitat values reach from about 6.5 to 8.5 and higher; the decided range is the core common to all votes.
+        Tally method median (2 of 6 votes for the top candidate, no qualified majority): median of the minima (6.0, 6.5, 6.5, 6.5, 7.0, 7.0, giving 6.5) and of the maxima (8.0, 8.0, 8.5, 8.5, 8.5, 9.0, giving 8.5) of all votes. Measured habitat values reach from about 6.0 to 9.0; the median range describes the habitat better than the intersection of 7.0 to 8.0.
     - field: features.ph.tolerance
       proposals:
         - by: tiebreaker-1
@@ -1291,9 +1294,9 @@ provenance:
           value:
             min: 6.5
             max: 8
-      decision: { min: 6.5, max: 8.0 }
+      decision: { min: 6.5, max: 8.5 }
       rationale: >-
-        Tally method conservative (2 of 5 votes for the top candidate): intersection of all votes, which contains the natural range of 7.0 to 8.0.
+        Tally method conservative (2 of 5 votes for the top candidate): intersection of all votes, 6.5 to 8.0, widened to 6.5 to 8.5 to contain the natural range of 6.5 to 8.5.
     - field: features.ghDgh
       proposals:
         - by: generator
@@ -1337,9 +1340,9 @@ provenance:
           value:
             min: 3
             max: 10
-      decision: { min: 3, max: 10 }
+      decision: { min: 5, max: 10 }
       rationale: >-
-        Measured alkalinity of Lago Petén Itzá (5.3 to 6.2 dKH), the Izabal basin (2.8 to 7.7 dKH) and the Usumacinta (about 9.4 dKH) spans 3 to 10 dKH; the upper bound of 12 rests on general knowledge only. The range lies within the tolerance of 3 to 12 dKH.
+        Tally method unanimous (3 of 3 votes): median of the minima (3, 5, 5) and maxima (8, 10, 12). Measured alkalinity of Lago Petén Itzá (5.3 to 6.2 dKH), the Izabal basin (2.8 to 7.7 dKH) and the Usumacinta (about 9.4 dKH, lagoons up to 10.4) is wider at the low end than the decided 5 to 10 dKH; the upper bound of 12 rests on general knowledge only. The range lies within the tolerance of 3 to 12 dKH.
     - field: features.maxSizeCm
       proposals:
         - by: generator
