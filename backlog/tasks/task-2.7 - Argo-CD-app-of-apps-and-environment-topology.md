@@ -1,10 +1,10 @@
 ---
 id: TASK-2.7
 title: Argo CD app-of-apps and environment topology
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-06-03 16:01'
-updated_date: '2026-06-05 10:25'
+updated_date: '2026-10-13 12:02'
 labels:
   - infra
   - argocd
@@ -58,3 +58,35 @@ Define the Argo CD bootstrap and the environment topology in Git.
 - [ ] #2 A failing test was written first, then made to pass (red-green)
 - [ ] #3 All CI test suites are fully green
 <!-- DOD:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+### Approach (test-first)
+- Red first: a CI check script (`tools/check-cluster-manifests.sh` or similar) that renders every
+  kustomization under `clusters/` and `apps/` and validates it with kubeconform against the
+  Kubernetes schemas plus pinned Argo CD CRD schemas, and asserts the Prune=false and finalizer
+  rules for stateful applications; it fails before the manifests exist.
+
+### Topology
+- `clusters/cichlids/apps/` (reconciled by the root Application of TASK-2.4): ApplicationSets for
+  the persistent environments `staging` and `prod`, using a Git directory generator over
+  `apps/*/overlays/<env>`, so a service joins an environment by adding its overlay directory.
+  Namespaces `cichlids-staging` and `cichlids-prod`.
+- Previews: an ApplicationSet with the GitHub pull request generator (public repository, no
+  token; requeue interval set), one namespace `pr-<number>` per open pull request from the shared
+  `overlays/preview` of each service, deleted on merge or close.
+- Single-node bounds: a ResourceQuota and LimitRange per preview namespace and a cap on parallel
+  previews (label filter on the pull requests, for example `preview`, plus a documented maximum).
+- Stateful applications (label `cichlids.com/stateful: "true"` on the Application template or a
+  dedicated ApplicationSet) carry `Prune=false` in their sync options and the
+  `resources-finalizer.argocd.argoproj.io` finalizer; non-stateful ones prune.
+- AppProject `cichlids` limiting source repository and destination namespaces.
+
+### CI
+- Job `manifests` in `.github/workflows/ci.yml` runs the check script (kustomize and kubeconform
+  from the pinned toolchain).
+
+### Docs
+- `clusters/README.md`: how environments and previews come from the directory layout.
+<!-- SECTION:PLAN:END -->
