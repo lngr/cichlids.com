@@ -1,0 +1,3144 @@
+schemaVersion: 1
+id: "placidochromis-milomo"
+legacyIds:
+  - 442
+status: "described"
+taxonomy:
+  validName: "Placidochromis milomo"
+  genus: "Placidochromis"
+  species: "milomo"
+  author: "Oliver, 1989"
+  source:
+    kind: "catalog-of-fishes"
+    title: "Eschmeyer's Catalog of Fishes: Placidochromis, updated 21 September 2026"
+    accessed: "2026-10-13"
+    url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Placidochromis"
+  synonyms: []
+  legacyNames:
+    - "Placidochromis milomo"
+  note: "The Catalog of Fishes accepts Placidochromis milomo Oliver, 1989 in its original genus and notes possible authorship involvement of Eccles and Trewavas. It records no formal synonym here; older hobby combinations remain informal historical labels. CRC independently verifies the accepted name and maternal mouthbrooding, but its detailed care and feeding content is restricted and supplies no new values."
+names:
+  trade:
+    en:
+      - "Super VC-10"
+      - "Super VC-10 hap"
+      - "Milomo"
+    de:
+      - "Milomo"
+      - "VC-10"
+variants: []
+features:
+  origin:
+    value:
+      continent: "Africa"
+      region: "Lake Malawi"
+      waterbody: "lake-malawi"
+      localities:
+        - "Thumbi Island West"
+        - "Nankumba Peninsula"
+        - "Nkhata Bay"
+        - "Zambo"
+        - "Chinyamwezi Island"
+        - "Maleri Islands"
+        - "Nakatenga Island"
+    confidence: "high"
+    rationale: "All four complete runs identify a Lake Malawi endemic. Generator and checker-b list southern island samples; checker-a lists only the three principal areas; checker-c adds Zambo and uses singular Maleri Island. The final list combines FishBase distribution records with the 2018 field collections, normalizes Thumbi West Island to Thumbi Island West and retains the paper spelling Nakatenga. These are occurrence records rather than named aquarium strains."
+    sources:
+      - kind: "catalog-of-fishes"
+        title: "Eschmeyer's Catalog of Fishes: Placidochromis species"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Placidochromis"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Placidochromis milomo species summary"
+        accessed: "2026-10-13"
+        url: "https://www.fishbase.se/summary/Placidochromis-milomo.html"
+      - kind: "literature"
+        title: "Hulsey et al. (2018). Phylogenomics of a putatively convergent novelty: did hypertrophied lips evolve once or repeatedly in Lake Malawi cichlid fishes?"
+        accessed: "2026-10-13"
+        url: "https://doi.org/10.1186/s12862-018-1296-9"
+      - kind: "database"
+        title: "Seriously Fish: Placidochromis milomo (Super VC 10 Hap)"
+        url: "https://www.seriouslyfish.com/species/placidochromis-milomo/"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "FishBase: Placidochromis milomo species summary"
+          accessed: "2026-10-13"
+          url: "https://www.fishbase.se/summary/Placidochromis-milomo.html"
+        value:
+          continent: "Africa"
+          region: "Lake Malawi"
+          waterbody: "lake-malawi"
+          localities:
+            - "Nkhata Bay"
+            - "Nankumba Peninsula"
+            - "Thumbi Island West"
+            - "Zambo"
+      - source:
+          kind: "literature"
+          title: "Hulsey et al. (2018). Phylogenomics of a putatively convergent novelty: did hypertrophied lips evolve once or repeatedly in Lake Malawi cichlid fishes?"
+          accessed: "2026-10-13"
+          url: "https://doi.org/10.1186/s12862-018-1296-9"
+        value:
+          localities:
+            - "Chinyamwezi Island"
+            - "Thumbi Island West"
+            - "Maleri Islands"
+            - "Nakatenga Island"
+        note: "Field collection sites in the 2018 genomic comparison; Mbenji fatlip was sampled as a separate taxon."
+  temperatureC:
+    value:
+      min: 21
+      max: 29
+    confidence: "high"
+    rationale: "The binding lake decision is 21 to 29 C with high confidence. Eccles reports southeastern inshore cooling to 21 C and upper-layer water near 27 C in May; Vollmer documents seasonal upper-water variation, and the FAO compilation gives an older 23 to 25 C snapshot. These studies cover different seasons and depths rather than a fixed aquarium target. The complete lake envelope is retained, including its 29 C upper endpoint; the Ngochera dissertation was read at abstract level only, so no endpoint is attributed to that abstract."
+    sources:
+      - kind: "literature"
+        title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+        url: "https://doi.org/10.5194/hessd-7-4371-2010"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology and Oceanography 19(5), 730-742 (abstract)."
+        url: "https://doi.org/10.4319/lo.1974.19.5.0730"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M., Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and Oceanography 50(2), 727-732."
+        url: "https://doi.org/10.4319/lo.2005.50.2.0727"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. PhD dissertation, University of Wisconsin-Milwaukee."
+        url: "https://minds.wisconsin.edu/handle/1793/91765"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology and Oceanography 19(5), 730-742 (abstract)."
+          url: "https://doi.org/10.4319/lo.1974.19.5.0730"
+          accessed: "2026-10-13"
+        value:
+          min: 21
+          max: 27
+        note: "Abstract reports cold inshore surface water and May upper-layer conditions; not the full annual envelope."
+      - source:
+          kind: "literature"
+          title: "Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M., Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and Oceanography 50(2), 727-732."
+          url: "https://doi.org/10.4319/lo.2005.50.2.0727"
+          accessed: "2026-10-13"
+        value:
+          min: 23.5
+          max: 28
+        note: "Approximate winter-to-summer epilimnetic interval from the seasonal discussion and figure; not all coastal extremes."
+      - source:
+          kind: "literature"
+          title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+          url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+          accessed: "2026-10-13"
+        value:
+          min: 23
+          max: 25
+        note: "Historical surface observations compiled from Jackson et al. (1963)."
+    tolerance:
+      value:
+        min: 21
+        max: 29
+      confidence: "low"
+      rationale: "Generator and checker-a, checker-b and checker-c all propose 21 to 29 C, retained by unanimous 4-of-4 verification with low confidence. Species care recommendations are narrower, including 24 to 28 C in Seriously Fish and 23 to 28 C in the Nordic register; Borstein bred fish at about 25.6 C. The endpoints extend those recommendations to contain the required natural interval. Long-term constant exposure to either endpoint has not been demonstrated."
+      sources:
+        - kind: "database"
+          title: "Seriously Fish: Placidochromis milomo"
+          url: "https://www.seriouslyfish.com/species/placidochromis-milomo/"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Coburg Aquarium species care sheet: Placidochromis milomo VC10"
+          url: "https://coburgaquarium.com.au/products/placidochromis-milomo-vc10-1"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Borstein, R. (2005). Placidochromis milomo husbandry and breeding report. Greater Chicago Cichlid Association."
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/82-placidochromis-mlomo.html"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Fishkeeper: Hap VC10 (Placidochromis milomo)"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/hap-vc-10"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Guidarium: Milomo Hap (Super VC10)"
+          url: "https://guidarium.com/fishes/milomo-hap-super-vc10"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Nordiska Ciklidsaellskapet: Placidochromis milomo species register"
+          url: "https://www.ciklid.org/artregister/art.php?ID=584"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Zoopet species description: Placidochromis milomo"
+          url: "https://www.zoopet.com/fiskar/fisk.php?NR=80"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+          url: "https://doi.org/10.5194/hessd-7-4371-2010"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+          url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology and Oceanography 19(5), 730-742 (abstract)."
+          url: "https://doi.org/10.4319/lo.1974.19.5.0730"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M., Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and Oceanography 50(2), 727-732."
+          url: "https://doi.org/10.4319/lo.2005.50.2.0727"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. PhD dissertation, University of Wisconsin-Milwaukee."
+          url: "https://minds.wisconsin.edu/handle/1793/91765"
+          accessed: "2026-10-13"
+      evidence:
+        - source:
+            kind: "database"
+            title: "Seriously Fish: Placidochromis milomo"
+            url: "https://www.seriouslyfish.com/species/placidochromis-milomo/"
+            accessed: "2026-10-13"
+          value:
+            min: 24
+            max: 28
+          note: "Aquarium recommendation."
+        - source:
+            kind: "website"
+            title: "Coburg Aquarium species care sheet: Placidochromis milomo VC10"
+            url: "https://coburgaquarium.com.au/products/placidochromis-milomo-vc10-1"
+            accessed: "2026-10-13"
+          value:
+            min: 24
+            max: 26
+          note: "Aquarium recommendation."
+        - source:
+            kind: "literature"
+            title: "Borstein, R. (2005). Placidochromis milomo husbandry and breeding report. Greater Chicago Cichlid Association."
+            url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/82-placidochromis-mlomo.html"
+            accessed: "2026-10-13"
+          value:
+            min: 25.6
+            max: 25.6
+          note: "Successful captive growth and breeding at 78 F."
+        - source:
+            kind: "database"
+            title: "Guidarium: Milomo Hap (Super VC10)"
+            url: "https://guidarium.com/fishes/milomo-hap-super-vc10"
+            accessed: "2026-10-13"
+          value:
+            min: 24
+            max: 28
+          note: "aquarium recommendation"
+        - source:
+            kind: "website"
+            title: "Fishkeeper: Hap VC10 (Placidochromis milomo)"
+            url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/hap-vc-10"
+            accessed: "2026-10-13"
+          value:
+            min: 24
+            max: 26
+          note: "aquarium recommendation"
+        - source:
+            kind: "database"
+            title: "Nordiska Ciklidsaellskapet: Placidochromis milomo species register"
+            url: "https://www.ciklid.org/artregister/art.php?ID=584"
+            accessed: "2026-10-13"
+          value:
+            min: 23
+            max: 28
+          note: "Aquarium recommendation."
+        - source:
+            kind: "database"
+            title: "Zoopet species description: Placidochromis milomo"
+            url: "https://www.zoopet.com/fiskar/fisk.php?NR=80"
+            accessed: "2026-10-13"
+          value:
+            min: 23
+            max: 27
+          note: "Aquarium recommendation."
+        - source:
+            kind: "literature"
+            title: "Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology and Oceanography 19(5), 730-742 (abstract)."
+            url: "https://doi.org/10.4319/lo.1974.19.5.0730"
+            accessed: "2026-10-13"
+          value:
+            min: 21
+            max: 27
+          note: "Abstract reports cold inshore surface water and May upper-layer conditions; not the full annual envelope."
+        - source:
+            kind: "literature"
+            title: "Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M., Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and Oceanography 50(2), 727-732."
+            url: "https://doi.org/10.4319/lo.2005.50.2.0727"
+            accessed: "2026-10-13"
+          value:
+            min: 23.5
+            max: 28
+          note: "Approximate winter-to-summer epilimnetic interval from the seasonal discussion and figure; not all coastal extremes."
+        - source:
+            kind: "literature"
+            title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+            url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+            accessed: "2026-10-13"
+          value:
+            min: 23
+            max: 25
+          note: "Historical surface observations compiled from Jackson et al. (1963)."
+      verification:
+        method: "unanimous"
+        votes:
+          agree: 4
+          total: 4
+    verification:
+      method: "waterbody"
+      waterbody: "lake-malawi"
+  ph:
+    value:
+      min: 7.7
+      max: 8.6
+    confidence: "high"
+    rationale: "The lake decision retains surface pH 7.7 to 8.6 with high confidence. The FAO compilation supplies those measurements; Branchu discusses 7.5 to 8.5 for the water column. The deeper-water context of the latter does not extend this surface-habitat interval downward. Aquarium pH recommendations are recorded separately."
+    sources:
+      - kind: "literature"
+        title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+        url: "https://doi.org/10.5194/hessd-7-4371-2010"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology and Oceanography 19(5), 730-742 (abstract)."
+        url: "https://doi.org/10.4319/lo.1974.19.5.0730"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M., Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and Oceanography 50(2), 727-732."
+        url: "https://doi.org/10.4319/lo.2005.50.2.0727"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. PhD dissertation, University of Wisconsin-Milwaukee."
+        url: "https://minds.wisconsin.edu/handle/1793/91765"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+          url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+          accessed: "2026-10-13"
+        value:
+          min: 7.7
+          max: 8.6
+        note: "Historical surface-water measurements."
+      - source:
+          kind: "literature"
+          title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+          url: "https://doi.org/10.5194/hessd-7-4371-2010"
+          accessed: "2026-10-13"
+        value:
+          min: 7.5
+          max: 8.5
+        note: "Lake water-column context, including water deeper than the occupied habitat."
+    tolerance:
+      value:
+        min: 7.5
+        max: 8.8
+      confidence: "medium"
+      rationale: "Generator proposes 7.6 to 8.8; checker-a, checker-b and checker-c propose 7.5 to 8.8. The lower endpoints agree within the 0.3 pH rule, producing unanimous 4-of-4 verification and the median lower endpoint 7.5. Seriously Fish supports an upper recommendation of 8.8, while Zoopet and the Nordic register reach down to 7.5. FishFish gives a wider 7.5 to 9.0 range, but its internally conflicting ecology weakens that higher endpoint; the tally interval remains 7.5 to 8.8 with medium confidence."
+      sources:
+        - kind: "database"
+          title: "Seriously Fish: Placidochromis milomo"
+          url: "https://www.seriouslyfish.com/species/placidochromis-milomo/"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Coburg Aquarium species care sheet: Placidochromis milomo VC10"
+          url: "https://coburgaquarium.com.au/products/placidochromis-milomo-vc10-1"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Fishkeeper: Hap VC10 (Placidochromis milomo)"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/hap-vc-10"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Guidarium: Milomo Hap (Super VC10)"
+          url: "https://guidarium.com/fishes/milomo-hap-super-vc10"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Einrichtungsbeispiele: Placidochromis milomo husbandry profile"
+          url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/placidochromis-milomo-slnk.html"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Nordiska Ciklidsaellskapet: Placidochromis milomo species register"
+          url: "https://www.ciklid.org/artregister/art.php?ID=584"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Zoopet species description: Placidochromis milomo"
+          url: "https://www.zoopet.com/fiskar/fisk.php?NR=80"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "FishFish collaborative species care sheet: Placidochromis milomo"
+          url: "https://www.fishfish.fr/poisson/placidochromis-milomo"
+          accessed: "2026-10-13"
+      evidence:
+        - source:
+            kind: "database"
+            title: "Seriously Fish: Placidochromis milomo"
+            url: "https://www.seriouslyfish.com/species/placidochromis-milomo/"
+            accessed: "2026-10-13"
+          value:
+            min: 7.6
+            max: 8.8
+        - source:
+            kind: "website"
+            title: "Coburg Aquarium species care sheet: Placidochromis milomo VC10"
+            url: "https://coburgaquarium.com.au/products/placidochromis-milomo-vc10-1"
+            accessed: "2026-10-13"
+          value:
+            min: 7.8
+            max: 8.6
+        - source:
+            kind: "database"
+            title: "Guidarium: Milomo Hap (Super VC10)"
+            url: "https://guidarium.com/fishes/milomo-hap-super-vc10"
+            accessed: "2026-10-13"
+          value:
+            min: 7.8
+            max: 8.6
+        - source:
+            kind: "website"
+            title: "Fishkeeper: Hap VC10 (Placidochromis milomo)"
+            url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/hap-vc-10"
+            accessed: "2026-10-13"
+          value:
+            min: 7.5
+            max: 8.5
+        - source:
+            kind: "database"
+            title: "Einrichtungsbeispiele: Placidochromis milomo husbandry profile"
+            url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/placidochromis-milomo-slnk.html"
+            accessed: "2026-10-13"
+          value:
+            min: 7.5
+            max: 8.5
+        - source:
+            kind: "database"
+            title: "Nordiska Ciklidsaellskapet: Placidochromis milomo species register"
+            url: "https://www.ciklid.org/artregister/art.php?ID=584"
+            accessed: "2026-10-13"
+          value:
+            min: 7.5
+            max: 8.5
+        - source:
+            kind: "database"
+            title: "Zoopet species description: Placidochromis milomo"
+            url: "https://www.zoopet.com/fiskar/fisk.php?NR=80"
+            accessed: "2026-10-13"
+          value:
+            min: 7.5
+            max: 8.5
+        - source:
+            kind: "database"
+            title: "FishFish collaborative species care sheet: Placidochromis milomo"
+            url: "https://www.fishfish.fr/poisson/placidochromis-milomo"
+            accessed: "2026-10-13"
+          value:
+            min: 7.5
+            max: 9
+          note: "Lower-weight collaborative recommendation with inconsistent species text."
+      verification:
+        method: "unanimous"
+        votes:
+          agree: 4
+          total: 4
+    verification:
+      method: "waterbody"
+      waterbody: "lake-malawi"
+  ghDgh:
+    value:
+      min: 3
+      max: 5
+    confidence: "high"
+    rationale: "The binding natural range is 3 to 5 dGH with high confidence. FAO calcium and magnesium records yield approximately 3.2 to 4.9 dGH across the two historical datasets. Branchu upper-50-m concentrations yield about 4.2 to 4.6 dGH using Ca mg/L divided by 7.14 plus Mg mg/L divided by 4.34. The rounded lake interval preserves these measurements; the harder aquarium intervals belong in tolerance."
+    sources:
+      - kind: "literature"
+        title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+        url: "https://doi.org/10.5194/hessd-7-4371-2010"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology and Oceanography 19(5), 730-742 (abstract)."
+        url: "https://doi.org/10.4319/lo.1974.19.5.0730"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M., Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and Oceanography 50(2), 727-732."
+        url: "https://doi.org/10.4319/lo.2005.50.2.0727"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. PhD dissertation, University of Wisconsin-Milwaukee."
+        url: "https://minds.wisconsin.edu/handle/1793/91765"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+          url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+          accessed: "2026-10-13"
+        value:
+          min: 3.2
+          max: 4.9
+        note: "Combined Jackson and Talling datasets converted from calcium and magnesium; the Jackson subset alone is about 3.5 to 4.9 dGH."
+      - source:
+          kind: "literature"
+          title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+          url: "https://doi.org/10.5194/hessd-7-4371-2010"
+          accessed: "2026-10-13"
+        value:
+          min: 4.2
+          max: 4.6
+        note: "Upper-50-m calcium and magnesium converted to total hardness."
+    tolerance:
+      value:
+        min: 3
+        max: 25
+      confidence: "medium"
+      rationale: "Generator and tiebreaker-2 propose 3 to 20 dGH; checker-a, checker-b, checker-c and tiebreaker-1 propose 3 to 25 dGH. Qualified-majority verification is 4 of 6 and retains 3 to 25 dGH with medium confidence. Seriously Fish gives 10 to 25 dGH, whereas Coburg and the Aquarium Wiki give 10 to 20, Rybicky 4 to 22 and Einrichtungsbeispiele 5 to 15. The lower endpoint includes measured lake water rather than imposing the care sheets lower limits. Fishkeeper states an upper limit of 25 without specifying a minimum; its evidence is therefore not support for zero dGH. This is a recommendation envelope without chronic-exposure trials."
+      sources:
+        - kind: "database"
+          title: "Seriously Fish: Placidochromis milomo"
+          url: "https://www.seriouslyfish.com/species/placidochromis-milomo/"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Fishkeeper: Hap VC10 (Placidochromis milomo)"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/hap-vc-10"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Guidarium: Milomo Hap (Super VC10)"
+          url: "https://guidarium.com/fishes/milomo-hap-super-vc10"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Einrichtungsbeispiele: Placidochromis milomo, species husbandry profile"
+          url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/placidochromis-milomo-slnk.html"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Sera freshwater care FAQ: raising pH while lowering hardness"
+          url: "https://www.sera.de/en/service/faq/faq-detail/raising-the-ph-value-while-lowering-the-hardness-at-the-same-time/"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "The Aquarium Wiki species care sheet: Placidochromis milomo"
+          url: "https://www.theaquariumwiki.com/wiki/Placidochromis_milomo"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Coburg Aquarium: Placidochromis milomo VC10 care sheet"
+          url: "https://coburgaquarium.com.au/products/placidochromis-milomo-vc10-1"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Rybicky.net fish atlas: Placidochromis milomo"
+          accessed: "2026-10-13"
+          url: "https://rybicky.net/atlasryb/tlamovec_milomo"
+        - kind: "literature"
+          title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+          url: "https://doi.org/10.5194/hessd-7-4371-2010"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+          url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology and Oceanography 19(5), 730-742 (abstract)."
+          url: "https://doi.org/10.4319/lo.1974.19.5.0730"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M., Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and Oceanography 50(2), 727-732."
+          url: "https://doi.org/10.4319/lo.2005.50.2.0727"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. PhD dissertation, University of Wisconsin-Milwaukee."
+          url: "https://minds.wisconsin.edu/handle/1793/91765"
+          accessed: "2026-10-13"
+      evidence:
+        - source:
+            kind: "website"
+            title: "Coburg Aquarium: Placidochromis milomo VC10 care sheet"
+            url: "https://coburgaquarium.com.au/products/placidochromis-milomo-vc10-1"
+            accessed: "2026-10-13"
+          value:
+            min: 10
+            max: 20
+          note: "Explicit species-specific dGH recommendation. Its separate ppm table is approximately consistent with this upper endpoint."
+        - source:
+            kind: "database"
+            title: "Rybicky.net fish atlas: Placidochromis milomo"
+            accessed: "2026-10-13"
+            url: "https://rybicky.net/atlasryb/tlamovec_milomo"
+          value:
+            min: 4
+            max: 22
+          note: "Species aquarium range."
+        - source:
+            kind: "database"
+            title: "Seriously Fish: Placidochromis milomo"
+            url: "https://www.seriouslyfish.com/species/placidochromis-milomo/"
+            accessed: "2026-10-13"
+          value:
+            min: 10
+            max: 25
+          note: "Species husbandry recommendation; the 25 dGH upper endpoint is adopted by the tally."
+        - source:
+            kind: "database"
+            title: "Guidarium: Milomo Hap (Super VC10)"
+            url: "https://guidarium.com/fishes/milomo-hap-super-vc10"
+            accessed: "2026-10-13"
+          value:
+            min: 10
+            max: 25
+        - source:
+            kind: "website"
+            title: "Fishkeeper: Hap VC10 (Placidochromis milomo)"
+            url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/hap-vc-10"
+            accessed: "2026-10-13"
+          value:
+            min: null
+            max: 25
+          note: "Upper recommendation only; no minimum hardness stated."
+        - source:
+            kind: "database"
+            title: "Einrichtungsbeispiele: Placidochromis milomo, species husbandry profile"
+            url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/placidochromis-milomo-slnk.html"
+            accessed: "2026-10-13"
+          value:
+            min: 5
+            max: 15
+          note: "Species-specific recommended total hardness."
+        - source:
+            kind: "website"
+            title: "Sera freshwater care FAQ: raising pH while lowering hardness"
+            url: "https://www.sera.de/en/service/faq/faq-detail/raising-the-ph-value-while-lowering-the-hardness-at-the-same-time/"
+            accessed: "2026-10-13"
+          value:
+            min: 5
+            max: 5
+          note: "Natural GH reference accompanying a qualitative statement of higher-hardness tolerance; no upper limit supplied."
+        - source:
+            kind: "database"
+            title: "The Aquarium Wiki species care sheet: Placidochromis milomo"
+            url: "https://www.theaquariumwiki.com/wiki/Placidochromis_milomo"
+            accessed: "2026-10-13"
+          value:
+            min: 10
+            max: 20
+        - source:
+            kind: "literature"
+            title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+            url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+            accessed: "2026-10-13"
+          value:
+            min: 3.2
+            max: 4.9
+          note: "Combined Jackson and Talling datasets converted from calcium and magnesium; the Jackson subset alone is about 3.5 to 4.9 dGH."
+        - source:
+            kind: "literature"
+            title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+            url: "https://doi.org/10.5194/hessd-7-4371-2010"
+            accessed: "2026-10-13"
+          value:
+            min: 4.2
+            max: 4.6
+          note: "Upper-50-m calcium and magnesium converted to total hardness."
+      verification:
+        method: "qualified-majority"
+        votes:
+          agree: 4
+          total: 6
+    verification:
+      method: "waterbody"
+      waterbody: "lake-malawi"
+  khDkh:
+    value:
+      min: 5
+      max: 8
+    confidence: "high"
+    rationale: "The natural lake decision is 5 to 8 dKH with high confidence and no verification object. FAO alkalinity of 2.00 to 2.59 meq/L converts to 5.6 to 7.3 dKH; Branchu values of 2.33 to 2.46 meq/L convert to 6.5 to 6.9 dKH, using a factor of 2.8. The rounded interval describes buffering rather than calcium-magnesium hardness."
+    sources:
+      - kind: "literature"
+        title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+        url: "https://doi.org/10.5194/hessd-7-4371-2010"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology and Oceanography 19(5), 730-742 (abstract)."
+        url: "https://doi.org/10.4319/lo.1974.19.5.0730"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M., Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and Oceanography 50(2), 727-732."
+        url: "https://doi.org/10.4319/lo.2005.50.2.0727"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. PhD dissertation, University of Wisconsin-Milwaukee."
+        url: "https://minds.wisconsin.edu/handle/1793/91765"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+          url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+          accessed: "2026-10-13"
+        value:
+          min: 5.6
+          max: 7.3
+        note: "Historical alkalinity multiplied by 2.8."
+      - source:
+          kind: "literature"
+          title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+          url: "https://doi.org/10.5194/hessd-7-4371-2010"
+          accessed: "2026-10-13"
+        value:
+          min: 6.5
+          max: 6.9
+        note: "Measured alkalinity multiplied by 2.8; the full profile includes deeper samples."
+    tolerance:
+      value:
+        min: 5
+        max: 10
+      confidence: "low"
+      rationale: "Generator, checker-a and tiebreaker-2 propose 5 to 15 dKH; checker-b proposes 5 to 10; checker-c and tiebreaker-1 propose 5 to 20. No qualified majority settles the endpoints, so conservative verification retains the intersection 5 to 10 dKH with votes 3 of 6 and low confidence. JBL gives 5 to 10 for a Malawi aquarium; wider recommendations are OATA 10 to 15, Sera instructions reproduced by ATZ 10 to 15, Aquarium.org.il 12 to 20 and Il Mio Acquario 8 to 18. The latter is genus-level guidance and the Israeli field does not explicitly spell out degrees. These recommendations explain the wider proposals without establishing a milomo physiological ceiling. The natural 5 to 8 dKH remains included. Monks could not be retrieved and adds no numerical support."
+      sources:
+        - kind: "literature"
+          title: "OATA: How to look after African Malawi Cichlids"
+          url: "https://ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-freshwater-fish/how-to-look-after-african-malawi-cichlids/"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Seriously Fish: Placidochromis milomo (Super VC 10 Hap)"
+          url: "https://www.seriouslyfish.com/species/placidochromis-milomo/"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Fishkeeper: Hap VC10 (Placidochromis milomo)"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/hap-vc-10"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "JBL Malawi Rocks: structured Malawi aquarium care parameters"
+          url: "https://www.jbl.de/de/areas/section/37/felsenriff-aquarientyp-jbl-malawi-rocks?country=de"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Sera freshwater care FAQ: raising pH while lowering hardness"
+          url: "https://www.sera.de/en/service/faq/faq-detail/raising-the-ph-value-while-lowering-the-hardness-at-the-same-time/"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Aquarium.org.il Wikifish: Placidochromis milomo, species husbandry profile"
+          url: "https://www.aquarium.org.il/%D7%95%D7%99%D7%A7%D7%99%D7%A4%D7%99%D7%A9-%D7%9E%D7%99%D7%9C%D7%95%D7%9E%D7%95-144"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Il Mio Acquario: Placidochromis, genus husbandry sheet"
+          url: "https://www.ilmioacquario.it/acqua-dolce/pesci/cichlidae/placidochromis/"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Sera KH/pH-plus care instructions, reproduced by ATZ"
+          url: "https://www.atz-shop.ch/sera-KH-pH-plus-500ml-zum-Karbonathaerte-und-pH-Wert-regeln"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+          url: "https://doi.org/10.5194/hessd-7-4371-2010"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+          url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology and Oceanography 19(5), 730-742 (abstract)."
+          url: "https://doi.org/10.4319/lo.1974.19.5.0730"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M., Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and Oceanography 50(2), 727-732."
+          url: "https://doi.org/10.4319/lo.2005.50.2.0727"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. PhD dissertation, University of Wisconsin-Milwaukee."
+          url: "https://minds.wisconsin.edu/handle/1793/91765"
+          accessed: "2026-10-13"
+      evidence:
+        - source:
+            kind: "literature"
+            title: "OATA: How to look after African Malawi Cichlids"
+            url: "https://ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-freshwater-fish/how-to-look-after-african-malawi-cichlids/"
+            accessed: "2026-10-13"
+          value:
+            min: 10
+            max: 15
+          note: "General Malawi aquarium KH recommendation. Species-specific requirements are explicitly left to additional advice."
+        - source:
+            kind: "website"
+            title: "Fishkeeper: Hap VC10 (Placidochromis milomo)"
+            url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/hap-vc-10"
+            accessed: "2026-10-13"
+          value: "hard, alkaline water; no dKH given"
+          note: "alkaline water required"
+        - source:
+            kind: "database"
+            title: "Seriously Fish: Placidochromis milomo (Super VC 10 Hap)"
+            url: "https://www.seriouslyfish.com/species/placidochromis-milomo/"
+            accessed: "2026-10-13"
+          value: "no dKH given; pH 7.6 to 8.8"
+          note: "alkaline water"
+        - source:
+            kind: "website"
+            title: "JBL Malawi Rocks: structured Malawi aquarium care parameters"
+            url: "https://www.jbl.de/de/areas/section/37/felsenriff-aquarientyp-jbl-malawi-rocks?country=de"
+            accessed: "2026-10-13"
+          value:
+            min: 5
+            max: 10
+          note: "General Malawi aquarium guidance, illustrated with mbuna rather than milomo."
+        - source:
+            kind: "website"
+            title: "Sera freshwater care FAQ: raising pH while lowering hardness"
+            url: "https://www.sera.de/en/service/faq/faq-detail/raising-the-ph-value-while-lowering-the-hardness-at-the-same-time/"
+            accessed: "2026-10-13"
+          value:
+            min: 7
+            max: 7
+          note: "Malawi chemistry in a freshwater care FAQ; not a species-specific tolerance interval."
+        - source:
+            kind: "database"
+            title: "Aquarium.org.il Wikifish: Placidochromis milomo, species husbandry profile"
+            url: "https://www.aquarium.org.il/%D7%95%D7%99%D7%A7%D7%99%D7%A4%D7%99%D7%A9-%D7%9E%D7%99%D7%9C%D7%95%D7%9E%D7%95-144"
+            accessed: "2026-10-13"
+          value:
+            min: 12
+            max: 20
+          note: "Species-specific KH field; degrees KH are inferred from aquarium convention because the printed field does not specify the unit."
+        - source:
+            kind: "database"
+            title: "Il Mio Acquario: Placidochromis, genus husbandry sheet"
+            url: "https://www.ilmioacquario.it/acqua-dolce/pesci/cichlidae/placidochromis/"
+            accessed: "2026-10-13"
+          value:
+            min: 8
+            max: 18
+          note: "Genus-level aquarium recommendation explicitly labelled KH in degrees; milomo is listed, but no species-specific tolerance experiment is reported."
+        - source:
+            kind: "website"
+            title: "Sera KH/pH-plus care instructions, reproduced by ATZ"
+            url: "https://www.atz-shop.ch/sera-KH-pH-plus-500ml-zum-Karbonathaerte-und-pH-Wert-regeln"
+            accessed: "2026-10-13"
+          value:
+            min: 10
+            max: 15
+          note: "Product instructions for both Malawi and Tanganyika cichlids. Broad husbandry guidance rather than a milomo study."
+        - source:
+            kind: "literature"
+            title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+            url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+            accessed: "2026-10-13"
+          value:
+            min: 5.6
+            max: 7.3
+          note: "Historical alkalinity multiplied by 2.8."
+        - source:
+            kind: "literature"
+            title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+            url: "https://doi.org/10.5194/hessd-7-4371-2010"
+            accessed: "2026-10-13"
+          value:
+            min: 6.5
+            max: 6.9
+          note: "Measured alkalinity multiplied by 2.8; the full profile includes deeper samples."
+      verification:
+        method: "conservative"
+        votes:
+          agree: 3
+          total: 6
+  maxSizeCm:
+    value:
+      male: 25
+      female: 20
+    confidence: "medium"
+    rationale: "All four complete runs propose 25 cm males and 20 cm females. Borstein supports a male near 25.4 cm; Guidarium and FishFish explicitly give the sex-specific 25/20 pair. Aquarium Wiki reports a wider upper size near 27.9 cm, which is not selected as the typical aquarium maximum. FishBase 18.7 cm and Seriously Fish 25 cm are labelled standard length, so neither is converted into total length or treated as a female maximum. The female estimate remains less secure."
+    sources:
+      - kind: "literature"
+        title: "Borstein, R. (2005). Placidochromis milomo husbandry and breeding report. Greater Chicago Cichlid Association."
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/82-placidochromis-mlomo.html"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Coburg Aquarium species care sheet: Placidochromis milomo VC10"
+        url: "https://coburgaquarium.com.au/products/placidochromis-milomo-vc10-1"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishFish collaborative species care sheet: Placidochromis milomo"
+        url: "https://www.fishfish.fr/poisson/placidochromis-milomo"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Cichlid-Forum: Placidochromis milomo profile"
+        url: "https://www.cichlid-forum.com/articles/p_milomo.php"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase species summary: Placidochromis milomo"
+        url: "https://www.fishbase.se/summary/Placidochromis-milomo.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Placidochromis milomo"
+        url: "https://www.seriouslyfish.com/species/placidochromis-milomo/"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Fishkeeper: Hap VC10 (Placidochromis milomo)"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/hap-vc-10"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Guidarium: Milomo Hap (Super VC10)"
+        url: "https://guidarium.com/fishes/milomo-hap-super-vc10"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsaellskapet: Placidochromis milomo species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=584"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "The Aquarium Wiki species care sheet: Placidochromis milomo"
+        url: "https://www.theaquariumwiki.com/wiki/Placidochromis_milomo"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Borstein, R. (2005). Placidochromis mlomo. Greater Chicago Cichlid Association breeding report."
+          accessed: "2026-10-13"
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/82-placidochromis-mlomo.html"
+        value:
+          male: 25.4
+          female: null
+        note: "Adult male maximum and qualitative smaller females; female number not supplied."
+      - source:
+          kind: "database"
+          title: "FishFish collaborative species care sheet: Placidochromis milomo"
+          url: "https://www.fishfish.fr/poisson/placidochromis-milomo"
+          accessed: "2026-10-13"
+        value:
+          male: 25
+          female: 20
+      - source:
+          kind: "website"
+          title: "Coburg Aquarium: Placidochromis milomo VC10 structured care sheet"
+          accessed: "2026-10-13"
+          url: "https://coburgaquarium.com.au/products/placidochromis-milomo-vc10-1"
+        value:
+          male: 25
+          female: null
+        note: "Upper aquarium size without a sex-specific female value."
+      - source:
+          kind: "website"
+          title: "Elieson, M. Placidochromis milomo. Cichlid-Forum species article."
+          accessed: "2026-10-13"
+          url: "https://www.cichlid-forum.com/articles/p_milomo.php"
+        value:
+          male: 20
+          female: null
+        note: "Unsexed maximum with unspecified length convention."
+      - source:
+          kind: "database"
+          title: "FishBase: Placidochromis milomo species summary"
+          accessed: "2026-10-13"
+          url: "https://www.fishbase.se/summary/Placidochromis-milomo.html"
+        value:
+          male: 18.7
+          female: null
+        note: "Standard length, not directly comparable to aquarium total length."
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Placidochromis milomo (Super VC 10 Hap)"
+          url: "https://www.seriouslyfish.com/species/placidochromis-milomo/"
+          accessed: "2026-10-13"
+        value: 25
+        note: "standard length"
+      - source:
+          kind: "website"
+          title: "Fishkeeper: Hap VC10 (Placidochromis milomo)"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/hap-vc-10"
+          accessed: "2026-10-13"
+        value: 25
+      - source:
+          kind: "database"
+          title: "Guidarium: Milomo Hap (Super VC10)"
+          url: "https://guidarium.com/fishes/milomo-hap-super-vc10"
+          accessed: "2026-10-13"
+        value:
+          male: 25
+          female: 20
+      - source:
+          kind: "database"
+          title: "FishBase: Placidochromis milomo Oliver, 1989"
+          url: "https://www.fishbase.se/summary/Placidochromis-milomo.html"
+          accessed: "2026-10-13"
+        value: 18.7
+        note: "SL, male or unsexed"
+      - source:
+          kind: "website"
+          title: "Cichlid-Forum: Placidochromis milomo profile"
+          url: "https://www.cichlid-forum.com/articles/p_milomo.php"
+          accessed: "2026-10-13"
+        value: 20
+        note: "wild fish"
+      - source:
+          kind: "literature"
+          title: "Borstein, R. (2005). Placidochromis milomo husbandry and breeding report. Greater Chicago Cichlid Association."
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/82-placidochromis-mlomo.html"
+          accessed: "2026-10-13"
+        value:
+          male: 25.4
+        note: "Male adult length converted from ten inches; females described only as smaller."
+      - source:
+          kind: "database"
+          title: "Nordiska Ciklidsaellskapet: Placidochromis milomo species register"
+          url: "https://www.ciklid.org/artregister/art.php?ID=584"
+          accessed: "2026-10-13"
+        value:
+          male: 25
+        note: "Species-level approximate size; no separate female maximum."
+      - source:
+          kind: "database"
+          title: "FishBase species summary: Placidochromis milomo"
+          url: "https://www.fishbase.se/summary/Placidochromis-milomo.html"
+          accessed: "2026-10-13"
+        value:
+          male: 18.7
+        note: "Wild male or unsexed standard length, not directly comparable to aquarium total length."
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Placidochromis milomo"
+          url: "https://www.seriouslyfish.com/species/placidochromis-milomo/"
+          accessed: "2026-10-13"
+        value:
+          male: 25
+        note: "Reported 25 cm maximum is labelled SL; no numerical female maximum."
+      - source:
+          kind: "website"
+          title: "Coburg Aquarium species care sheet: Placidochromis milomo VC10"
+          url: "https://coburgaquarium.com.au/products/placidochromis-milomo-vc10-1"
+          accessed: "2026-10-13"
+        value:
+          male: 25
+        note: "Sex-unspecified aquarium maximum mapped to the larger sex."
+      - source:
+          kind: "database"
+          title: "The Aquarium Wiki species care sheet: Placidochromis milomo"
+          url: "https://www.theaquariumwiki.com/wiki/Placidochromis_milomo"
+          accessed: "2026-10-13"
+        value:
+          male: 27.9
+        note: "Sex-unspecified upper care-sheet size; not selected as typical."
+  predation:
+    value: 1
+    confidence: "medium"
+    rationale: "All four complete runs select level 1, retained as unanimous 4 of 4 with medium confidence. Zoopet, Malawi-Guru and the Aquarium Wiki report fry capture alongside small invertebrates. FishBase lists arthropods only, which does not exclude occasional fry predation. The Israeli care sheet also describes such prey but inconsistently labels the fish a piscivore elsewhere. Level 1 represents fry and very small fish risk; the rubric 2 cm threshold has not been measured for milomo."
+    sources:
+      - kind: "website"
+        title: "Cichlid-Forum: Placidochromis milomo profile"
+        url: "https://www.cichlid-forum.com/articles/p_milomo.php"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "The Aquarium Wiki species care sheet: Placidochromis milomo"
+        url: "https://www.theaquariumwiki.com/wiki/Placidochromis_milomo"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase species summary: Placidochromis milomo"
+        url: "https://www.fishbase.se/summary/Placidochromis-milomo.html"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Borstein, R. (2005). Placidochromis mlomo. Greater Chicago Cichlid Association breeding report."
+        accessed: "2026-10-13"
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/82-placidochromis-mlomo.html"
+      - kind: "website"
+        title: "Fishkeeper: Hap VC10 (Placidochromis milomo)"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/hap-vc-10"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Guidarium: Milomo Hap (Super VC10)"
+        url: "https://guidarium.com/fishes/milomo-hap-super-vc10"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Placidochromis milomo food items"
+        url: "https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=2347&genus=Placidochromis&species=milomo"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Malawi-Guru: Placidochromis milomo, species directory by Bandhauer and Hoernlimann"
+        url: "https://malawi-guru.de/artentafel-placidochromis-milomo-buntbarsche/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsaellskapet: Placidochromis milomo species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=584"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Einrichtungsbeispiele: Placidochromis milomo husbandry profile"
+        url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/placidochromis-milomo-slnk.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Zoopet species description: Placidochromis milomo"
+        url: "https://www.zoopet.com/fiskar/fisk.php?NR=80"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Michael K. Oliver: Placidochromis milomo, The Cichlid Fishes of Lake Malawi"
+        url: "https://www.malawicichlids.com/mw08083.htm"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aquarium.org.il Wikifish species care sheet: Placidochromis milomo"
+        url: "https://www.aquarium.org.il/%D7%95%D7%99%D7%A7%D7%99%D7%A4%D7%99%D7%A9-%D7%9E%D7%99%D7%9C%D7%95%D7%9E%D7%95-144"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "website"
+          title: "Cichlid-Forum: Placidochromis milomo profile"
+          url: "https://www.cichlid-forum.com/articles/p_milomo.php"
+          accessed: "2026-10-13"
+        value: 1
+        note: "feeds on insect larvae, crustaceans and mbuna fry"
+      - source:
+          kind: "database"
+          title: "The Aquarium Wiki species care sheet: Placidochromis milomo"
+          url: "https://www.theaquariumwiki.com/wiki/Placidochromis_milomo"
+          accessed: "2026-10-13"
+        value: 1
+        note: "Small fry are eaten occasionally."
+      - source:
+          kind: "website"
+          title: "Fishkeeper: Hap VC10 (Placidochromis milomo)"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/hap-vc-10"
+          accessed: "2026-10-13"
+        value: 1
+        note: "feeds on small mbuna fry"
+      - source:
+          kind: "database"
+          title: "Guidarium: Milomo Hap (Super VC10)"
+          url: "https://guidarium.com/fishes/milomo-hap-super-vc10"
+          accessed: "2026-10-13"
+        value: 1
+        note: "described as fry predator"
+      - source:
+          kind: "database"
+          title: "FishBase: Placidochromis milomo food items"
+          url: "https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=2347&genus=Placidochromis&species=milomo"
+          accessed: "2026-10-13"
+        value: 0
+        note: "No fish among its two listed prey categories; absence alone cannot exclude fry predation."
+      - source:
+          kind: "database"
+          title: "Malawi-Guru: Placidochromis milomo, species directory by Bandhauer and Hoernlimann"
+          url: "https://malawi-guru.de/artentafel-placidochromis-milomo-buntbarsche/"
+          accessed: "2026-10-13"
+        value: 1
+        note: "Young mbuna are taken from rock pockets."
+      - source:
+          kind: "database"
+          title: "Nordiska Ciklidsaellskapet: Placidochromis milomo species register"
+          url: "https://www.ciklid.org/artregister/art.php?ID=584"
+          accessed: "2026-10-13"
+        value: 1
+        note: "The male can eat its offspring; small fish can be taken as food, with no size threshold supplied."
+      - source:
+          kind: "database"
+          title: "Einrichtungsbeispiele: Placidochromis milomo husbandry profile"
+          url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/placidochromis-milomo-slnk.html"
+          accessed: "2026-10-13"
+        value: 1
+        note: "Occasional mbuna offspring consumption."
+      - source:
+          kind: "database"
+          title: "Zoopet species description: Placidochromis milomo"
+          url: "https://www.zoopet.com/fiskar/fisk.php?NR=80"
+          accessed: "2026-10-13"
+        value: 1
+        note: "Occasional small mbuna fry alongside mainly small invertebrates."
+      - source:
+          kind: "database"
+          title: "Aquarium.org.il Wikifish species care sheet: Placidochromis milomo"
+          url: "https://www.aquarium.org.il/%D7%95%D7%99%D7%A7%D7%99%D7%A4%D7%99%D7%A9-%D7%9E%D7%99%D7%9C%D7%95%D7%9E%D7%95-144"
+          accessed: "2026-10-13"
+        value: 1
+        note: "Natural-history prey list fits level 1; its later piscivore label would imply level 3 and is internally inconsistent."
+    verification:
+      method: "unanimous"
+      votes:
+        agree: 4
+        total: 4
+  diet:
+    value:
+      type: "invertivore"
+      bloatSensitive: false
+      foods:
+        - "quality cichlid pellets"
+        - "small aquatic crustaceans"
+        - "insect larvae"
+        - "spirulina-containing prepared food"
+    confidence: "medium"
+    rationale: "Generator, checker-b, checker-c, tiebreaker-1 and tiebreaker-2 propose invertivore with bloatSensitive false; checker-a proposes omnivore with the same flag. Qualified-majority verification retains the exact generator food list and the 5-of-6 invertivore decision with medium confidence. FishBase natural prey, Oliver observations and Borstein feeding history support invertebrate feeding. Mixed aquarium foods and occasional algae intake explain the omnivore proposal but do not establish plant-dominated feeding. The false bloat flag is inferred from animal-food husbandry without a demonstrated species-specific protein restriction; no controlled disease study establishes immunity."
+    sources:
+      - kind: "database"
+        title: "FishBase: Placidochromis milomo species summary"
+        url: "https://www.fishbase.se/summary/Placidochromis-milomo.html"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Borstein, R. (2005). Placidochromis milomo husbandry and breeding report. Greater Chicago Cichlid Association."
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/82-placidochromis-mlomo.html"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Cichlid-Forum: Placidochromis milomo profile"
+        url: "https://www.cichlid-forum.com/articles/p_milomo.php"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Placidochromis milomo"
+        url: "https://www.seriouslyfish.com/species/placidochromis-milomo/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Placidochromis milomo food items"
+        url: "https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=2347&genus=Placidochromis&species=milomo"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Placidochromis milomo ecology table"
+        url: "https://www.fishbase.se/Ecology/FishEcologySummary.php?StockCode=2347&GenusName=Placidochromis&SpeciesName=milomo"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Zoopet species description: Placidochromis milomo"
+        url: "https://www.zoopet.com/fiskar/fisk.php?NR=80"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Michael K. Oliver: Placidochromis milomo, The Cichlid Fishes of Lake Malawi"
+        url: "https://www.malawicichlids.com/mw08083.htm"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Coburg Aquarium: Placidochromis milomo VC10 care sheet"
+        url: "https://coburgaquarium.com.au/products/placidochromis-milomo-vc10-1"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Bandhauer and Hoernlimann: Placidochromis milomo, Malawi-Guru species directory"
+        url: "https://malawi-guru.de/artentafel-placidochromis-milomo-buntbarsche/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Einrichtungsbeispiele: Placidochromis milomo, species husbandry profile"
+        url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/placidochromis-milomo-slnk.html"
+        accessed: "2026-10-13"
+      - kind: "catalog-of-fishes"
+        title: "Eschmeyer's Catalog of Fishes: species of Placidochromis"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Placidochromis"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Fishkeeper: Hap VC10 (Placidochromis milomo)"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/hap-vc-10"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "FishBase: Placidochromis milomo species summary"
+          url: "https://www.fishbase.se/summary/Placidochromis-milomo.html"
+          accessed: "2026-10-13"
+        value:
+          type: "invertivore"
+        note: "Natural prey are aquatic arthropods. No bloat susceptibility assessment is supplied."
+      - source:
+          kind: "literature"
+          title: "Borstein (2005): Placidochromis milomo care and breeding account, GCCA"
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/82-placidochromis-mlomo.html"
+          accessed: "2026-10-13"
+        value:
+          type: "invertivore"
+        note: "Natural crustacean feeding and successful breeding on assorted commercial foods. No controlled protein or bloat study."
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Placidochromis milomo"
+          url: "https://www.seriouslyfish.com/species/placidochromis-milomo/"
+          accessed: "2026-10-13"
+        value:
+          type: "omnivore"
+        note: "Rubric mapping of its mixed aquarium feeding advice and account of algae ingestion. This is weaker evidence for natural trophic dominance."
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Placidochromis milomo (Super VC 10 Hap)"
+          url: "https://www.seriouslyfish.com/species/placidochromis-milomo/"
+          accessed: "2026-10-13"
+        value: "omnivore"
+        note: "accepts live, frozen and dried foods; add vegetable matter"
+      - source:
+          kind: "website"
+          title: "Fishkeeper: Hap VC10 (Placidochromis milomo)"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/hap-vc-10"
+          accessed: "2026-10-13"
+        value: "omnivore"
+      - source:
+          kind: "website"
+          title: "Cichlid-Forum: Placidochromis milomo profile"
+          url: "https://www.cichlid-forum.com/articles/p_milomo.php"
+          accessed: "2026-10-13"
+        value: "omnivore"
+        note: "insect larvae, crustaceans, fry in the wild"
+      - source:
+          kind: "database"
+          title: "FishBase: Placidochromis milomo food items"
+          url: "https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=2347&genus=Placidochromis&species=milomo"
+          accessed: "2026-10-13"
+        value:
+          type: "invertivore"
+        note: "Two listed food categories are benthic crustaceans and insects."
+      - source:
+          kind: "database"
+          title: "FishBase: Placidochromis milomo ecology table"
+          url: "https://www.fishbase.se/Ecology/FishEcologySummary.php?StockCode=2347&GenusName=Placidochromis&SpeciesName=milomo"
+          accessed: "2026-10-13"
+        value:
+          type: "invertivore"
+        note: "Animal-feeding macrofauna hunter; the word predator does not imply piscivory."
+      - source:
+          kind: "literature"
+          title: "Borstein, R. (2005). Placidochromis milomo husbandry and breeding report. Greater Chicago Cichlid Association."
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/82-placidochromis-mlomo.html"
+          accessed: "2026-10-13"
+        value:
+          type: "invertivore"
+          bloatSensitive: false
+        note: "Rock-associated crustacean feeding and successful use of varied prepared foods; bloat flag inferred from dietary practice."
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Placidochromis milomo"
+          url: "https://www.seriouslyfish.com/species/placidochromis-milomo/"
+          accessed: "2026-10-13"
+        value:
+          bloatSensitive: false
+        note: "Varied live and frozen foods accepted; vegetable supplementation advised, without a stated protein restriction."
+      - source:
+          kind: "database"
+          title: "Zoopet species description: Placidochromis milomo"
+          url: "https://www.zoopet.com/fiskar/fisk.php?NR=80"
+          accessed: "2026-10-13"
+        value:
+          type: "invertivore"
+        note: "Mainly small invertebrates, occasional fry and acceptance of frozen and dry food."
+      - source:
+          kind: "database"
+          title: "Michael K. Oliver: Placidochromis milomo, The Cichlid Fishes of Lake Malawi"
+          url: "https://www.malawicichlids.com/mw08083.htm"
+          accessed: "2026-10-13"
+        value:
+          type: "invertivore"
+        note: "Natural feeding targets invertebrates under rocks."
+      - source:
+          kind: "website"
+          title: "Coburg Aquarium species care sheet: Placidochromis milomo VC10"
+          url: "https://coburgaquarium.com.au/products/placidochromis-milomo-vc10-1"
+          accessed: "2026-10-13"
+        value:
+          type: "omnivore"
+          bloatSensitive: false
+        note: "Explicit omnivore label; the false flag is inferred from its animal-protein feeding recommendation."
+      - source:
+          kind: "database"
+          title: "Bandhauer and Hoernlimann: Placidochromis milomo, Malawi-Guru species directory"
+          url: "https://malawi-guru.de/artentafel-placidochromis-milomo-buntbarsche/"
+          accessed: "2026-10-13"
+        value:
+          type: "invertivore"
+        note: "Invertebrates dominate the reported diet. Fish fry are additional prey."
+      - source:
+          kind: "database"
+          title: "Einrichtungsbeispiele: Placidochromis milomo, species husbandry profile"
+          url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/placidochromis-milomo-slnk.html"
+          accessed: "2026-10-13"
+        value:
+          type: "invertivore"
+        note: "Small crustaceans and occasional mbuna young are described; protein-rich aquarium food is recommended, supporting the flag by inference."
+      - source:
+          kind: "website"
+          title: "Coburg Aquarium: Placidochromis milomo VC10 care sheet"
+          url: "https://coburgaquarium.com.au/products/placidochromis-milomo-vc10-1"
+          accessed: "2026-10-13"
+        value:
+          type: "omnivore"
+        note: "Explicit omnivore classification with emphasis on animal foods. No species-specific protein restriction is stated."
+    verification:
+      method: "qualified-majority"
+      votes:
+        agree: 5
+        total: 6
+  aggressionConspecific:
+    value: 2
+    confidence: "medium"
+    rationale: "All four complete runs select level 2 for the recommended adult unit. Male competition described by Seriously Fish and Zoopet supports regular hierarchy and chasing. Borstein experienced milder behaviour, while warnings of intense conflict refer to smaller aquaria or competing males. The rubric grade is a contextual interpretation rather than an injury-frequency measurement."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Placidochromis milomo"
+        url: "https://www.seriouslyfish.com/species/placidochromis-milomo/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Borstein, R. (2005). Placidochromis milomo husbandry and breeding report. Greater Chicago Cichlid Association."
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/82-placidochromis-mlomo.html"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Coburg Aquarium species care sheet: Placidochromis milomo VC10"
+        url: "https://coburgaquarium.com.au/products/placidochromis-milomo-vc10-1"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Guidarium: Milomo Hap (Super VC10)"
+        url: "https://guidarium.com/fishes/milomo-hap-super-vc10"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Cichlid-Forum: Placidochromis milomo profile"
+        url: "https://www.cichlid-forum.com/articles/p_milomo.php"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Malawi-Guru: Placidochromis milomo, species directory by Bandhauer and Hoernlimann"
+        url: "https://malawi-guru.de/artentafel-placidochromis-milomo-buntbarsche/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Zoopet species description: Placidochromis milomo"
+        url: "https://www.zoopet.com/fiskar/fisk.php?NR=80"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "The Aquarium Wiki species care sheet: Placidochromis milomo"
+        url: "https://www.theaquariumwiki.com/wiki/Placidochromis_milomo"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Placidochromis milomo"
+          url: "https://www.seriouslyfish.com/species/placidochromis-milomo/"
+          accessed: "2026-10-13"
+        value: 2
+        note: "Rubric mapping from male rivalry and the one-male recommendation."
+      - source:
+          kind: "literature"
+          title: "Borstein, R. (2005). Placidochromis milomo husbandry and breeding report. Greater Chicago Cichlid Association."
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/82-placidochromis-mlomo.html"
+          accessed: "2026-10-13"
+        value: 1
+        note: "Mild group of eight juveniles and young adults."
+      - source:
+          kind: "website"
+          title: "Coburg Aquarium species care sheet: Placidochromis milomo VC10"
+          url: "https://coburgaquarium.com.au/products/placidochromis-milomo-vc10-1"
+          accessed: "2026-10-13"
+        value: 2
+        note: "Semi-aggressive breeding behaviour; no documented routine lethal aggression."
+      - source:
+          kind: "database"
+          title: "Guidarium: Milomo Hap (Super VC10)"
+          url: "https://guidarium.com/fishes/milomo-hap-super-vc10"
+          accessed: "2026-10-13"
+        value: 3
+        note: "intense in smaller tanks"
+      - source:
+          kind: "website"
+          title: "Cichlid-Forum: Placidochromis milomo profile"
+          url: "https://www.cichlid-forum.com/articles/p_milomo.php"
+          accessed: "2026-10-13"
+        value: 2
+        note: "males defend only against rival breeding males"
+      - source:
+          kind: "database"
+          title: "Malawi-Guru: Placidochromis milomo, species directory by Bandhauer and Hoernlimann"
+          url: "https://malawi-guru.de/artentafel-placidochromis-milomo-buntbarsche/"
+          accessed: "2026-10-13"
+        value: 1
+        note: "Low aggression under its large-tank conditions."
+      - source:
+          kind: "database"
+          title: "Zoopet species description: Placidochromis milomo"
+          url: "https://www.zoopet.com/fiskar/fisk.php?NR=80"
+          accessed: "2026-10-13"
+        value: 2
+        note: "Breeding territoriality and space-dependent male coexistence."
+  aggressionHeterospecific:
+    value: 1
+    confidence: "medium"
+    rationale: "All four complete runs select level 1. Borstein reports a subordinate mixed-tank group and Malawi-Guru describes only brief spawning-site defence. Broader semi-aggressive retailer wording does not establish persistent attacks on peers. Local displays best fit the adequately housed adult unit; fry predation is assessed separately."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Placidochromis milomo"
+        url: "https://www.seriouslyfish.com/species/placidochromis-milomo/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Borstein, R. (2005). Placidochromis milomo husbandry and breeding report. Greater Chicago Cichlid Association."
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/82-placidochromis-mlomo.html"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Coburg Aquarium species care sheet: Placidochromis milomo VC10"
+        url: "https://coburgaquarium.com.au/products/placidochromis-milomo-vc10-1"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Guidarium: Milomo Hap (Super VC10)"
+        url: "https://guidarium.com/fishes/milomo-hap-super-vc10"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Cichlid-Forum: Placidochromis milomo profile"
+        url: "https://www.cichlid-forum.com/articles/p_milomo.php"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Malawi-Guru: Placidochromis milomo, species directory by Bandhauer and Hoernlimann"
+        url: "https://malawi-guru.de/artentafel-placidochromis-milomo-buntbarsche/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Zoopet species description: Placidochromis milomo"
+        url: "https://www.zoopet.com/fiskar/fisk.php?NR=80"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "The Aquarium Wiki species care sheet: Placidochromis milomo"
+        url: "https://www.theaquariumwiki.com/wiki/Placidochromis_milomo"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Placidochromis milomo"
+          url: "https://www.seriouslyfish.com/species/placidochromis-milomo/"
+          accessed: "2026-10-13"
+        value: 1
+        note: "Peaceful larger Malawi community fish; grade is a rubric mapping."
+      - source:
+          kind: "literature"
+          title: "Borstein, R. (2005). Placidochromis mlomo. Greater Chicago Cichlid Association breeding report."
+          accessed: "2026-10-13"
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/82-placidochromis-mlomo.html"
+        value: 1
+        note: "Successfully bred with other cichlids and was subordinate in the aquarium."
+      - source:
+          kind: "website"
+          title: "Coburg Aquarium species care sheet: Placidochromis milomo VC10"
+          url: "https://coburgaquarium.com.au/products/placidochromis-milomo-vc10-1"
+          accessed: "2026-10-13"
+        value: 2
+        note: "Territorial semi-aggressive description could support a higher local-chasing grade, but behavioural detail is limited."
+      - source:
+          kind: "database"
+          title: "Guidarium: Milomo Hap (Super VC10)"
+          url: "https://guidarium.com/fishes/milomo-hap-super-vc10"
+          accessed: "2026-10-13"
+        value: 2
+        note: "semi-aggressive"
+      - source:
+          kind: "website"
+          title: "Cichlid-Forum: Placidochromis milomo profile"
+          url: "https://www.cichlid-forum.com/articles/p_milomo.php"
+          accessed: "2026-10-13"
+        value: 1
+        note: "not territorial outside breeding"
+      - source:
+          kind: "literature"
+          title: "Borstein, R. (2005). Placidochromis milomo husbandry and breeding report. Greater Chicago Cichlid Association."
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/82-placidochromis-mlomo.html"
+          accessed: "2026-10-13"
+        value: 0
+        note: "Subordinate in a mixed tank and no reported damage."
+      - source:
+          kind: "database"
+          title: "Malawi-Guru: Placidochromis milomo, species directory by Bandhauer and Hoernlimann"
+          url: "https://malawi-guru.de/artentafel-placidochromis-milomo-buntbarsche/"
+          accessed: "2026-10-13"
+        value: 1
+        note: "Very limited spawning-site defense."
+      - source:
+          kind: "database"
+          title: "Zoopet species description: Placidochromis milomo"
+          url: "https://www.zoopet.com/fiskar/fisk.php?NR=80"
+          accessed: "2026-10-13"
+        value: 1
+        note: "Generally peaceful outside spawning."
+  territory:
+    value:
+      size: "small"
+      breedingOnly: true
+    confidence: "low"
+    rationale: "All four complete runs agree on a small breeding-only territory. Malawi-Guru and the Nordic register link any defence to spawning, while Seriously Fish identifies a selected spawning site. The small category fits that localized behaviour, but its approximate 30 cm scale has not been measured."
+    sources:
+      - kind: "website"
+        title: "Cichlid-Forum: Placidochromis milomo profile"
+        url: "https://www.cichlid-forum.com/articles/p_milomo.php"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Placidochromis milomo"
+        url: "https://www.seriouslyfish.com/species/placidochromis-milomo/"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Fishkeeper: Hap VC10 (Placidochromis milomo)"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/hap-vc-10"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Malawi-Guru: Placidochromis milomo, species directory by Bandhauer and Hoernlimann"
+        url: "https://malawi-guru.de/artentafel-placidochromis-milomo-buntbarsche/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsaellskapet: Placidochromis milomo species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=584"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Zoopet species description: Placidochromis milomo"
+        url: "https://www.zoopet.com/fiskar/fisk.php?NR=80"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "The Aquarium Wiki species care sheet: Placidochromis milomo"
+        url: "https://www.theaquariumwiki.com/wiki/Placidochromis_milomo"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "website"
+          title: "Elieson, M. Placidochromis milomo. Cichlid-Forum species article."
+          accessed: "2026-10-13"
+          url: "https://www.cichlid-forum.com/articles/p_milomo.php"
+        value:
+          breedingOnly: true
+        note: "Territorial defense linked to breeding male encounters; area unmeasured."
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Placidochromis milomo"
+          url: "https://www.seriouslyfish.com/species/placidochromis-milomo/"
+          accessed: "2026-10-13"
+        value:
+          size: "small"
+          breedingOnly: true
+        note: "Site-focused spawning description; the size category is inferred, not measured."
+      - source:
+          kind: "website"
+          title: "Cichlid-Forum: Placidochromis milomo profile"
+          url: "https://www.cichlid-forum.com/articles/p_milomo.php"
+          accessed: "2026-10-13"
+        value: "small, breeding only"
+      - source:
+          kind: "website"
+          title: "Fishkeeper: Hap VC10 (Placidochromis milomo)"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/hap-vc-10"
+          accessed: "2026-10-13"
+        value: "spawning site on rock or dug depression"
+      - source:
+          kind: "database"
+          title: "Malawi-Guru: Placidochromis milomo, species directory by Bandhauer and Hoernlimann"
+          url: "https://malawi-guru.de/artentafel-placidochromis-milomo-buntbarsche/"
+          accessed: "2026-10-13"
+        value:
+          size: "small"
+          breedingOnly: true
+        note: "Limited defense during spawning; size inferred."
+      - source:
+          kind: "database"
+          title: "Nordiska Ciklidsaellskapet: Placidochromis milomo species register"
+          url: "https://www.ciklid.org/artregister/art.php?ID=584"
+          accessed: "2026-10-13"
+        value:
+          size: "small"
+          breedingOnly: true
+        note: "No guarded area outside possible breeding defense."
+      - source:
+          kind: "database"
+          title: "Zoopet species description: Placidochromis milomo"
+          url: "https://www.zoopet.com/fiskar/fisk.php?NR=80"
+          accessed: "2026-10-13"
+        value:
+          breedingOnly: true
+        note: "Spawning-associated territory, without dimensions."
+      - source:
+          kind: "database"
+          title: "The Aquarium Wiki species care sheet: Placidochromis milomo"
+          url: "https://www.theaquariumwiki.com/wiki/Placidochromis_milomo"
+          accessed: "2026-10-13"
+        value:
+          breedingOnly: true
+        note: "Male territoriality during breeding and courtship."
+  habitatZones:
+    value:
+      - "rock"
+      - "sand"
+    confidence: "high"
+    rationale: "All four complete runs propose rock and sand. FishBase and Oliver establish rocky feeding habitat, while Malawi-Guru explicitly includes the rock-sand transition. Sand also provides spawning substrate and space between aquarium structures. Open swimming room does not require an openWater specialist designation."
+    sources:
+      - kind: "database"
+        title: "FishBase species summary: Placidochromis milomo"
+        url: "https://www.fishbase.se/summary/Placidochromis-milomo.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Michael K. Oliver: Placidochromis milomo, The Cichlid Fishes of Lake Malawi"
+        url: "https://www.malawicichlids.com/mw08083.htm"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Placidochromis milomo"
+        url: "https://www.seriouslyfish.com/species/placidochromis-milomo/"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Fishkeeper: Hap VC10 (Placidochromis milomo)"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/hap-vc-10"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Guidarium: Milomo Hap (Super VC10)"
+        url: "https://guidarium.com/fishes/milomo-hap-super-vc10"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Malawi-Guru: Placidochromis milomo, species directory by Bandhauer and Hoernlimann"
+        url: "https://malawi-guru.de/artentafel-placidochromis-milomo-buntbarsche/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Masonick, Meyer and Hulsey (2022). Phylogenomic analyses show repeated evolution of hypertrophied lips among Lake Malawi cichlid fishes."
+        url: "https://doi.org/10.1093/gbe/evac051"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Cichlid Room Companion public verification: Placidochromis milomo"
+        url: "https://cichlidae.com/species.php?id=MDmMTVAFuPFecLMsNMf6ag"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "FishBase species summary: Placidochromis milomo"
+          url: "https://www.fishbase.se/summary/Placidochromis-milomo.html"
+          accessed: "2026-10-13"
+        value:
+          - "rock"
+        note: "Sediment-coated rocks, not a sand-following feeding guild."
+      - source:
+          kind: "database"
+          title: "Michael K. Oliver: Placidochromis milomo, The Cichlid Fishes of Lake Malawi"
+          url: "https://www.malawicichlids.com/mw08083.htm"
+          accessed: "2026-10-13"
+        value:
+          - "rock"
+        note: "Rock reef collection and invertebrate feeding."
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Placidochromis milomo"
+          url: "https://www.seriouslyfish.com/species/placidochromis-milomo/"
+          accessed: "2026-10-13"
+        value:
+          - "rock"
+          - "sand"
+        note: "Rock shelters and sandy aquarium substrate."
+      - source:
+          kind: "website"
+          title: "Fishkeeper: Hap VC10 (Placidochromis milomo)"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/hap-vc-10"
+          accessed: "2026-10-13"
+        value:
+          - "rock"
+          - "sand"
+      - source:
+          kind: "database"
+          title: "Guidarium: Milomo Hap (Super VC10)"
+          url: "https://guidarium.com/fishes/milomo-hap-super-vc10"
+          accessed: "2026-10-13"
+        value:
+          - "sand"
+        note: "soft sand needed for foraging"
+      - source:
+          kind: "database"
+          title: "Malawi-Guru: Placidochromis milomo, species directory by Bandhauer and Hoernlimann"
+          url: "https://malawi-guru.de/artentafel-placidochromis-milomo-buntbarsche/"
+          accessed: "2026-10-13"
+        value:
+          - "rock"
+          - "sand"
+        note: "Rock zone and intermediate habitat."
+      - source:
+          kind: "database"
+          title: "Cichlid Room Companion public verification: Placidochromis milomo"
+          url: "https://cichlidae.com/species.php?id=MDmMTVAFuPFecLMsNMf6ag"
+          accessed: "2026-10-13"
+        value:
+          - "rock"
+        note: "Verification of rocky lake habitat only."
+  social:
+    value:
+      structure: "harem"
+      ratio: 3
+    confidence: "medium"
+    rationale: "All four complete runs recommend one male and three females. Malawi-Guru allows two or three females and Rybicky recommends three to five; the Aquarium Wiki gives 1:3 directly. The Israeli sheet prefers five. Three is the shared practical lower choice rather than a measured optimum. Wild solitary foraging and CRC verification of multiple-partner mating do not imply a stable pair bond."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Placidochromis milomo (Super VC 10 Hap)"
+        url: "https://www.seriouslyfish.com/species/placidochromis-milomo/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Rybicky.net fish atlas: Placidochromis milomo"
+        accessed: "2026-10-13"
+        url: "https://rybicky.net/atlasryb/tlamovec_milomo"
+      - kind: "database"
+        title: "FishBase species summary: Placidochromis milomo"
+        url: "https://www.fishbase.se/summary/Placidochromis-milomo.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Cichlid Room Companion public verification: Placidochromis milomo"
+        url: "https://cichlidae.com/species.php?id=MDmMTVAFuPFecLMsNMf6ag"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Fishkeeper: Hap VC10 (Placidochromis milomo)"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/hap-vc-10"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Malawi-Guru: Placidochromis milomo, species directory by Bandhauer and Hoernlimann"
+        url: "https://malawi-guru.de/artentafel-placidochromis-milomo-buntbarsche/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "The Aquarium Wiki species care sheet: Placidochromis milomo"
+        url: "https://www.theaquariumwiki.com/wiki/Placidochromis_milomo"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aquarium.org.il Wikifish species care sheet: Placidochromis milomo"
+        url: "https://www.aquarium.org.il/%D7%95%D7%99%D7%A7%D7%99%D7%A4%D7%99%D7%A9-%D7%9E%D7%99%D7%9C%D7%95%D7%9E%D7%95-144"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Placidochromis milomo"
+          url: "https://www.seriouslyfish.com/species/placidochromis-milomo/"
+          accessed: "2026-10-13"
+        value:
+          structure: "harem"
+        note: "One male and several females; no exact ratio."
+      - source:
+          kind: "database"
+          title: "Rybicky.net fish atlas: Placidochromis milomo"
+          accessed: "2026-10-13"
+          url: "https://rybicky.net/atlasryb/tlamovec_milomo"
+        value:
+          structure: "harem"
+          ratio: 3
+        note: "Lower end of the recommended three to five females per male."
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Placidochromis milomo (Super VC 10 Hap)"
+          url: "https://www.seriouslyfish.com/species/placidochromis-milomo/"
+          accessed: "2026-10-13"
+        value: "one male with several females"
+      - source:
+          kind: "website"
+          title: "Fishkeeper: Hap VC10 (Placidochromis milomo)"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/hap-vc-10"
+          accessed: "2026-10-13"
+        value: "single fish or one male with several females"
+      - source:
+          kind: "database"
+          title: "Malawi-Guru: Placidochromis milomo, species directory by Bandhauer and Hoernlimann"
+          url: "https://malawi-guru.de/artentafel-placidochromis-milomo-buntbarsche/"
+          accessed: "2026-10-13"
+        value:
+          structure: "harem"
+          ratio: 3
+        note: "One male with two or three females is permitted."
+      - source:
+          kind: "database"
+          title: "The Aquarium Wiki species care sheet: Placidochromis milomo"
+          url: "https://www.theaquariumwiki.com/wiki/Placidochromis_milomo"
+          accessed: "2026-10-13"
+        value:
+          structure: "harem"
+          ratio: 3
+      - source:
+          kind: "database"
+          title: "Aquarium.org.il Wikifish species care sheet: Placidochromis milomo"
+          url: "https://www.aquarium.org.il/%D7%95%D7%99%D7%A7%D7%99%D7%A4%D7%99%D7%A9-%D7%9E%D7%99%D7%9C%D7%95%D7%9E%D7%95-144"
+          accessed: "2026-10-13"
+        value:
+          structure: "harem"
+          ratio: 5
+        note: "More female-heavy recommendation."
+      - source:
+          kind: "database"
+          title: "FishBase species summary: Placidochromis milomo"
+          url: "https://www.fishbase.se/summary/Placidochromis-milomo.html"
+          accessed: "2026-10-13"
+        value:
+          structure: "solitary"
+        note: "Wild foraging context, not an aquarium stocking rule."
+  speciesOnly:
+    value: false
+    confidence: "high"
+    rationale: "All four complete runs select false, retained unanimously with high confidence. Borstein reports successful mixed-species breeding, and Seriously Fish, Malawi-Guru and the Aquarium Wiki describe community keeping. A separate breeding setup is an option for brood protection rather than a lifetime requirement."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Placidochromis milomo"
+        url: "https://www.seriouslyfish.com/species/placidochromis-milomo/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Borstein, R. (2005). Placidochromis milomo husbandry and breeding report. Greater Chicago Cichlid Association."
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/82-placidochromis-mlomo.html"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Coburg Aquarium species care sheet: Placidochromis milomo VC10"
+        url: "https://coburgaquarium.com.au/products/placidochromis-milomo-vc10-1"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Fishkeeper: Hap VC10 (Placidochromis milomo)"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/hap-vc-10"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Malawi-Guru: Placidochromis milomo, species directory by Bandhauer and Hoernlimann"
+        url: "https://malawi-guru.de/artentafel-placidochromis-milomo-buntbarsche/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "The Aquarium Wiki species care sheet: Placidochromis milomo"
+        url: "https://www.theaquariumwiki.com/wiki/Placidochromis_milomo"
+        accessed: "2026-10-13"
+      - kind: "archive"
+        title: "cichlids.com forum thread 19188"
+        url: "https://www.cichlids.com/disc/read.php?2,19188"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Placidochromis milomo"
+          url: "https://www.seriouslyfish.com/species/placidochromis-milomo/"
+          accessed: "2026-10-13"
+        value: false
+        note: "Larger Malawi community recommended."
+      - source:
+          kind: "literature"
+          title: "Borstein, R. (2005). Placidochromis milomo husbandry and breeding report. Greater Chicago Cichlid Association."
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/82-placidochromis-mlomo.html"
+          accessed: "2026-10-13"
+        value: false
+        note: "Successful breeding in a mixed cichlid tank."
+      - source:
+          kind: "website"
+          title: "Coburg Aquarium species care sheet: Placidochromis milomo VC10"
+          url: "https://coburgaquarium.com.au/products/placidochromis-milomo-vc10-1"
+          accessed: "2026-10-13"
+        value: false
+        note: "Selected Malawi community permitted."
+      - source:
+          kind: "archive"
+          title: "cichlids.com forum thread 19188"
+          url: "https://www.cichlids.com/disc/read.php?2,19188"
+          accessed: "2026-10-13"
+        value: false
+        note: "Mixed haplochromine stocking described as feasible; anecdotal and untested."
+      - source:
+          kind: "website"
+          title: "Fishkeeper: Hap VC10 (Placidochromis milomo)"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/hap-vc-10"
+          accessed: "2026-10-13"
+        value: false
+        note: "suitable tankmates are other large rift lake species"
+      - source:
+          kind: "database"
+          title: "Malawi-Guru: Placidochromis milomo, species directory by Bandhauer and Hoernlimann"
+          url: "https://malawi-guru.de/artentafel-placidochromis-milomo-buntbarsche/"
+          accessed: "2026-10-13"
+        value: false
+        note: "Several nonmbuna and selected calm mbuna are suggested."
+      - source:
+          kind: "database"
+          title: "The Aquarium Wiki species care sheet: Placidochromis milomo"
+          url: "https://www.theaquariumwiki.com/wiki/Placidochromis_milomo"
+          accessed: "2026-10-13"
+        value: false
+        note: "Compatible similarly sized mild haplochromines and peacocks."
+    verification:
+      method: "unanimous"
+      votes:
+        agree: 4
+        total: 4
+  hybridGroups:
+    value: []
+    confidence: "low"
+    rationale: "All four complete runs propose an empty list, retained by unanimous 4-of-4 verification with low confidence. No named qualifying milomo cross appears in the read care accounts or archive results. Hulsey et al. found no corrected significant introgression tests in 2018; Masonick et al. found historical gene-flow signals in 2022 but the read main text does not identify a qualifying milomo pair. Neither study establishes aquarium reproductive isolation. The genus is not monophyletic, so the electra-phenochilus group and a group of all thick-lipped species cannot be inferred from genus names or lip shape alone."
+    sources:
+      - kind: "literature"
+        title: "Hulsey et al. (2018). Phylogenomics of a putatively convergent novelty: did hypertrophied lips evolve once or repeatedly in Lake Malawi cichlid fishes?"
+        accessed: "2026-10-13"
+        url: "https://doi.org/10.1186/s12862-018-1296-9"
+      - kind: "literature"
+        title: "Masonick, Meyer and Hulsey (2022). Phylogenomic analyses show repeated evolution of hypertrophied lips among Lake Malawi cichlid fishes."
+        url: "https://doi.org/10.1093/gbe/evac051"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Placidochromis milomo species care sheet"
+        accessed: "2026-10-13"
+        url: "https://www.seriouslyfish.com/species/placidochromis-milomo/"
+      - kind: "website"
+        title: "Fishkeeper: Hap VC10 (Placidochromis milomo)"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/hap-vc-10"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Hulsey et al. (2018). Phylogenomics of a putatively convergent novelty: did hypertrophied lips evolve once or repeatedly in Lake Malawi cichlid fishes?"
+          accessed: "2026-10-13"
+          url: "https://doi.org/10.1186/s12862-018-1296-9"
+        value: []
+        note: "No supported group inferred from the corrected tests; not evidence of infertility."
+      - source:
+          kind: "literature"
+          title: "Masonick, Meyer and Hulsey (2022). Phylogenomic analyses show repeated evolution of hypertrophied lips among Lake Malawi cichlid fishes."
+          url: "https://doi.org/10.1093/gbe/evac051"
+          accessed: "2026-10-13"
+        value: []
+        note: "The read main text reports general historical gene flow without a qualifying named milomo pair."
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Placidochromis milomo species care sheet"
+          accessed: "2026-10-13"
+          url: "https://www.seriouslyfish.com/species/placidochromis-milomo/"
+        value: []
+        note: "No named interspecific mate in the care account; absence is weak evidence."
+    verification:
+      method: "unanimous"
+      votes:
+        agree: 4
+        total: 4
+  coloration:
+    value:
+      baseColors:
+        - "blue"
+        - "black"
+        - "yellow"
+      pattern: "bars"
+    confidence: "medium"
+    rationale: "Generator proposes blue/black/yellow; checker-a blue/grey; checker-b blue/brown/yellow/black; checker-c blue/red/black. All retain bars. Blue and dark patterning have the strongest support, while Borstein and Rybicky also support gold or yellow tones that may be muted by dominance. Brown in checker-b is a broad interpretation of darker males; red in checker-c rests mainly on the Aquarium Wiki account of light-dependent appearance. The selected three-colour description follows the better supported male observations without treating every reported appearance as a universal colour."
+    sources:
+      - kind: "literature"
+        title: "Borstein, R. (2005). Placidochromis milomo husbandry and breeding report. Greater Chicago Cichlid Association."
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/82-placidochromis-mlomo.html"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Phylogenomics of a putatively convergent novelty: did hypertrophied lips evolve once or repeatedly in Lake Malawi cichlid fishes? BMC Evolutionary Biology"
+        url: "https://doi.org/10.1186/s12862-018-1296-9"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Rybicky.net fish atlas: Placidochromis milomo"
+        accessed: "2026-10-13"
+        url: "https://rybicky.net/atlasryb/tlamovec_milomo"
+      - kind: "database"
+        title: "Seriously Fish: Placidochromis milomo (Super VC 10 Hap)"
+        url: "https://www.seriouslyfish.com/species/placidochromis-milomo/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsaellskapet: Placidochromis milomo species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=584"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "The Aquarium Wiki species care sheet: Placidochromis milomo"
+        url: "https://www.theaquariumwiki.com/wiki/Placidochromis_milomo"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Coburg Aquarium species care sheet: Placidochromis milomo VC10"
+        url: "https://coburgaquarium.com.au/products/placidochromis-milomo-vc10-1"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Borstein, R. (2005). Placidochromis mlomo. Greater Chicago Cichlid Association breeding report."
+          accessed: "2026-10-13"
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/82-placidochromis-mlomo.html"
+        value:
+          baseColors:
+            - "blue"
+            - "black"
+            - "yellow"
+          pattern: "bars"
+        note: "Blue highlights in dominant males with dark and gold bars in subordinate fish."
+      - source:
+          kind: "literature"
+          title: "Phylogenomics of a putatively convergent novelty: did hypertrophied lips evolve once or repeatedly in Lake Malawi cichlid fishes? (2018)"
+          url: "https://doi.org/10.1186/s12862-018-1296-9"
+          accessed: "2026-10-13"
+        value:
+          pattern: "bars"
+        note: "Vertical bars explicitly described."
+      - source:
+          kind: "literature"
+          title: "Phylogenomics of a putatively convergent novelty: did hypertrophied lips evolve once or repeatedly in Lake Malawi cichlid fishes? BMC Evolutionary Biology"
+          url: "https://doi.org/10.1186/s12862-018-1296-9"
+          accessed: "2026-10-13"
+        value: "vertical bars"
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Placidochromis milomo (Super VC 10 Hap)"
+          url: "https://www.seriouslyfish.com/species/placidochromis-milomo/"
+          accessed: "2026-10-13"
+        value: "males much more colourful"
+      - source:
+          kind: "literature"
+          title: "Borstein, R. (2005). Placidochromis milomo husbandry and breeding report. Greater Chicago Cichlid Association."
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/82-placidochromis-mlomo.html"
+          accessed: "2026-10-13"
+        value:
+          baseColors:
+            - "blue"
+            - "yellow"
+            - "black"
+          pattern: "bars"
+        note: "Dominance changes the strength of the juvenile or subordinate bar pattern."
+      - source:
+          kind: "database"
+          title: "Nordiska Ciklidsaellskapet: Placidochromis milomo species register"
+          url: "https://www.ciklid.org/artregister/art.php?ID=584"
+          accessed: "2026-10-13"
+        value:
+          baseColors:
+            - "blue"
+            - "brown"
+          pattern: "bars"
+        note: "Darker males with blue head coloration; brown is an approximate color mapping."
+      - source:
+          kind: "database"
+          title: "The Aquarium Wiki species care sheet: Placidochromis milomo"
+          url: "https://www.theaquariumwiki.com/wiki/Placidochromis_milomo"
+          accessed: "2026-10-13"
+        value:
+          baseColors:
+            - "blue"
+            - "red"
+            - "black"
+          pattern: "bars"
+        note: "Male coloration and dark pattern; vertical orientation independently confirmed in the paper."
+      - source:
+          kind: "website"
+          title: "Coburg Aquarium species care sheet: Placidochromis milomo VC10"
+          url: "https://coburgaquarium.com.au/products/placidochromis-milomo-vc10-1"
+          accessed: "2026-10-13"
+        value:
+          baseColors:
+            - "blue"
+        note: "Blue male colour is explicit; the pattern is not stated in its text."
+  feedingSpeed:
+    value: "hasty"
+    confidence: "low"
+    rationale: "Generator and checker-a propose normal; checker-b and checker-c propose hasty. The Nordic register reports persistent appetite and FishFish describes vigorous food-taking, favouring hasty as a cautious compatibility mapping. Neither measures feeding races or exhaustion of the entire ration, and overfeeding advice alone cannot establish speed. Normal remains plausible in particular tanks; the selected grade therefore has low confidence."
+    sources:
+      - kind: "literature"
+        title: "Borstein, R. (2005). Placidochromis mlomo. Greater Chicago Cichlid Association breeding report."
+        accessed: "2026-10-13"
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/82-placidochromis-mlomo.html"
+      - kind: "database"
+        title: "Seriously Fish: Placidochromis milomo (Super VC 10 Hap)"
+        url: "https://www.seriouslyfish.com/species/placidochromis-milomo/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishFish collaborative species care sheet: Placidochromis milomo"
+        url: "https://www.fishfish.fr/poisson/placidochromis-milomo"
+        accessed: "2026-10-13"
+      - kind: "model-knowledge"
+        title: "Generator inference from adult size and the species-specific husbandry sources"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Cichlid-Forum: Placidochromis milomo profile"
+        url: "https://www.cichlid-forum.com/articles/p_milomo.php"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsaellskapet: Placidochromis milomo species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=584"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Coburg Aquarium species care sheet: Placidochromis milomo VC10"
+        url: "https://coburgaquarium.com.au/products/placidochromis-milomo-vc10-1"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "FishFish collaborative species care sheet: Placidochromis milomo"
+          url: "https://www.fishfish.fr/poisson/placidochromis-milomo"
+          accessed: "2026-10-13"
+        value: "hasty"
+        note: "Rubric mapping from reported voracity; no comparative timed feeding experiment."
+      - source:
+          kind: "model-knowledge"
+          title: "Generator inference from adult size and the species-specific husbandry sources"
+          accessed: "2026-10-13"
+        value: "normal"
+        note: "Provisional inference from acceptance of prepared foods; this source does not measure feeding competition."
+      - source:
+          kind: "website"
+          title: "Cichlid-Forum: Placidochromis milomo profile"
+          url: "https://www.cichlid-forum.com/articles/p_milomo.php"
+          accessed: "2026-10-13"
+        value: "normal"
+        note: "Provisional inference from acceptance of prepared foods; this source does not measure feeding competition."
+      - source:
+          kind: "database"
+          title: "Nordiska Ciklidsaellskapet: Placidochromis milomo species register"
+          url: "https://www.ciklid.org/artregister/art.php?ID=584"
+          accessed: "2026-10-13"
+        value: "hasty"
+        note: "Inferred from strong appetite and overfeeding risk, not timed feeding observations."
+  minTank:
+    value:
+      volumeL: 700
+      lengthCm: 200
+      depthCm: 60
+    confidence: "low"
+    rationale: "Generator proposes 600 L/200/60 cm; checker-a 300 L/150/50; checker-b 700 L/200/60; checker-c 500 L/160/60. The final value uses Malawi-Guru and Einrichtungsbeispiele recommendations of 700 L and 200 cm for large adults. Zoopet gives 500 L/160 cm and the Nordic register 500 L/150 cm while preferring 200 cm; Seriously Fish gives a much smaller 205 L/120/45 cm. Borstein used about 341 L/122 cm for juveniles and called for more room as they matured. FishFish gives the wider 1000 L recommendation without explaining the social unit. The chosen minimum prioritizes adult swimming space for one male and three females; the 60 cm depth is an explicit turning-space inference rather than a published threshold. Communities need additional room."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Placidochromis milomo"
+        url: "https://www.seriouslyfish.com/species/placidochromis-milomo/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Borstein, R. (2005). Placidochromis milomo husbandry and breeding report. Greater Chicago Cichlid Association."
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/82-placidochromis-mlomo.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Rybicky.net fish atlas: Placidochromis milomo"
+        accessed: "2026-10-13"
+        url: "https://rybicky.net/atlasryb/tlamovec_milomo"
+      - kind: "model-knowledge"
+        title: "Generator inference from adult size and the species-specific husbandry sources"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Fishkeeper: Hap VC10 (Placidochromis milomo)"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/hap-vc-10"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Guidarium: Milomo Hap (Super VC10)"
+        url: "https://guidarium.com/fishes/milomo-hap-super-vc10"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Malawi-Guru: Placidochromis milomo, species directory by Bandhauer and Hoernlimann"
+        url: "https://malawi-guru.de/artentafel-placidochromis-milomo-buntbarsche/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Einrichtungsbeispiele: Placidochromis milomo husbandry profile"
+        url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/placidochromis-milomo-slnk.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsaellskapet: Placidochromis milomo species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=584"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Zoopet species description: Placidochromis milomo"
+        url: "https://www.zoopet.com/fiskar/fisk.php?NR=80"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Coburg Aquarium species care sheet: Placidochromis milomo VC10"
+        url: "https://coburgaquarium.com.au/products/placidochromis-milomo-vc10-1"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aquarium.org.il Wikifish species care sheet: Placidochromis milomo"
+        url: "https://www.aquarium.org.il/%D7%95%D7%99%D7%A7%D7%99%D7%A4%D7%99%D7%A9-%D7%9E%D7%99%D7%9C%D7%95%D7%9E%D7%95-144"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "The Aquarium Wiki species care sheet: Placidochromis milomo"
+        url: "https://www.theaquariumwiki.com/wiki/Placidochromis_milomo"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishFish collaborative species care sheet: Placidochromis milomo"
+        url: "https://www.fishfish.fr/poisson/placidochromis-milomo"
+        accessed: "2026-10-13"
+      - kind: "model-knowledge"
+        title: "Checker inference from species-specific husbandry requirements"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Placidochromis milomo"
+          url: "https://www.seriouslyfish.com/species/placidochromis-milomo/"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 205
+          lengthCm: 120
+          depthCm: 45
+        note: "Much smaller listed footprint; not selected for the adult harem."
+      - source:
+          kind: "literature"
+          title: "Borstein, R. (2005). Placidochromis mlomo. Greater Chicago Cichlid Association breeding report."
+          accessed: "2026-10-13"
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/82-placidochromis-mlomo.html"
+        value:
+          volumeL: 340.7
+          lengthCm: 121.9
+        note: "90 US gallons and four feet; largest fish about 17.8 cm, with a recommendation to enlarge for adults."
+      - source:
+          kind: "database"
+          title: "Rybicky.net fish atlas: Placidochromis milomo"
+          accessed: "2026-10-13"
+          url: "https://rybicky.net/atlasryb/tlamovec_milomo"
+        value:
+          volumeL: 300
+          lengthCm: 150
+        note: "Published lower thresholds are above these numbers for breeding; depth not specified."
+      - source:
+          kind: "model-knowledge"
+          title: "Generator inference from adult size and the species-specific husbandry sources"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 600
+          lengthCm: 200
+          depthCm: 60
+        note: "Conservative adult harem recommendation synthesized from size and swimming requirements."
+      - source:
+          kind: "website"
+          title: "Fishkeeper: Hap VC10 (Placidochromis milomo)"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/hap-vc-10"
+          accessed: "2026-10-13"
+        value:
+          lengthCm: 183
+        note: "at least 6 ft"
+      - source:
+          kind: "database"
+          title: "Guidarium: Milomo Hap (Super VC10)"
+          url: "https://guidarium.com/fishes/milomo-hap-super-vc10"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 450
+          lengthCm: 150
+      - source:
+          kind: "database"
+          title: "Malawi-Guru: Placidochromis milomo, species directory by Bandhauer and Hoernlimann"
+          url: "https://malawi-guru.de/artentafel-placidochromis-milomo-buntbarsche/"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 700
+          lengthCm: 200
+      - source:
+          kind: "database"
+          title: "Einrichtungsbeispiele: Placidochromis milomo husbandry profile"
+          url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/placidochromis-milomo-slnk.html"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 700
+          lengthCm: 200
+      - source:
+          kind: "database"
+          title: "Nordiska Ciklidsaellskapet: Placidochromis milomo species register"
+          url: "https://www.ciklid.org/artregister/art.php?ID=584"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 500
+          lengthCm: 150
+        note: "Also prefers a length of 200 cm."
+      - source:
+          kind: "literature"
+          title: "Borstein, R. (2005). Placidochromis milomo husbandry and breeding report. Greater Chicago Cichlid Association."
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/82-placidochromis-mlomo.html"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 341
+          lengthCm: 122
+        note: "Eight fish no larger than about 18 cm at under one year; not a full-adult minimum."
+      - source:
+          kind: "database"
+          title: "Zoopet species description: Placidochromis milomo"
+          url: "https://www.zoopet.com/fiskar/fisk.php?NR=80"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 500
+          lengthCm: 160
+        note: "No front-to-back dimension specified."
+      - source:
+          kind: "website"
+          title: "Coburg Aquarium species care sheet: Placidochromis milomo VC10"
+          url: "https://coburgaquarium.com.au/products/placidochromis-milomo-vc10-1"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 450
+        note: "Preferred harem volume; 300 L is listed for a single adult or breeding group."
+      - source:
+          kind: "database"
+          title: "Aquarium.org.il Wikifish species care sheet: Placidochromis milomo"
+          url: "https://www.aquarium.org.il/%D7%95%D7%99%D7%A7%D7%99%D7%A4%D7%99%D7%A9-%D7%9E%D7%99%D7%9C%D7%95%D7%9E%D7%95-144"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 450
+        note: "Breeding recommendation with five females per male."
+      - source:
+          kind: "database"
+          title: "The Aquarium Wiki species care sheet: Placidochromis milomo"
+          url: "https://www.theaquariumwiki.com/wiki/Placidochromis_milomo"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 208
+        note: "Small listed minimum, despite adult length approaching 28 cm."
+      - source:
+          kind: "database"
+          title: "FishFish collaborative species care sheet: Placidochromis milomo"
+          url: "https://www.fishfish.fr/poisson/placidochromis-milomo"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 1000
+        note: "Collaborative minimum without an explained adult social unit."
+      - source:
+          kind: "model-knowledge"
+          title: "Checker inference from species-specific husbandry requirements"
+          accessed: "2026-10-13"
+        value:
+          depthCm: 60
+        note: "Inferred clearance and separation around rock structures."
+  lifespanYears:
+    value:
+      min: 8
+      max: 12
+    confidence: "low"
+    rationale: "Generator, checker-a and checker-c propose 8 to 12 years; checker-b proposes 8 to 10 from general haplochromine knowledge. Rybicky and the Aquarium Wiki explicitly give 8 to 12, while FishFish gives over eight without a maximum. The source-backed 8 to 12 interval is retained over the general estimate, but no tracked-age cohort was found, so confidence stays low."
+    sources:
+      - kind: "database"
+        title: "Rybicky.net fish atlas: Placidochromis milomo"
+        accessed: "2026-10-13"
+        url: "https://rybicky.net/atlasryb/tlamovec_milomo"
+      - kind: "database"
+        title: "The Aquarium Wiki species care sheet: Placidochromis milomo"
+        url: "https://www.theaquariumwiki.com/wiki/Placidochromis_milomo"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishFish collaborative species care sheet: Placidochromis milomo"
+        url: "https://www.fishfish.fr/poisson/placidochromis-milomo"
+        accessed: "2026-10-13"
+      - kind: "model-knowledge"
+        title: "General knowledge of large Lake Malawi haplochromines"
+      - kind: "model-knowledge"
+        title: "General husbandry estimate for a large Lake Malawi haplochromine"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Rybicky.net fish atlas: Placidochromis milomo"
+          accessed: "2026-10-13"
+          url: "https://rybicky.net/atlasryb/tlamovec_milomo"
+        value:
+          min: 8
+          max: 12
+        note: "Secondary atlas estimate."
+      - source:
+          kind: "database"
+          title: "The Aquarium Wiki species care sheet: Placidochromis milomo"
+          url: "https://www.theaquariumwiki.com/wiki/Placidochromis_milomo"
+          accessed: "2026-10-13"
+        value:
+          min: 8
+          max: 12
+      - source:
+          kind: "model-knowledge"
+          title: "General knowledge of large Lake Malawi haplochromines"
+        value:
+          min: 8
+          max: 12
+      - source:
+          kind: "database"
+          title: "FishFish collaborative species care sheet: Placidochromis milomo"
+          url: "https://www.fishfish.fr/poisson/placidochromis-milomo"
+          accessed: "2026-10-13"
+        value:
+          min: 8
+        note: "Reports more than eight years; no upper endpoint is stated."
+  breeding:
+    value: "maternal-mouthbrooder"
+    confidence: "high"
+    rationale: "All four complete runs agree on maternal mouthbrooding. FishBase identifies female incubation, Borstein reports an actual captive brood and Zoopet describes subsequent fry retrieval. CRC independently verifies the mode; the archive report is supplementary community experience."
+    sources:
+      - kind: "database"
+        title: "FishBase species summary: Placidochromis milomo"
+        url: "https://www.fishbase.se/summary/Placidochromis-milomo.html"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Borstein, R. (2005). Placidochromis milomo husbandry and breeding report. Greater Chicago Cichlid Association."
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/82-placidochromis-mlomo.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Placidochromis milomo"
+        url: "https://www.seriouslyfish.com/species/placidochromis-milomo/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Cichlid Room Companion public verification: Placidochromis milomo"
+        url: "https://cichlidae.com/species.php?id=MDmMTVAFuPFecLMsNMf6ag"
+        accessed: "2026-10-13"
+      - kind: "archive"
+        title: "cichlids.com forum thread 37846"
+        accessed: "2026-10-13"
+        url: "https://www.cichlids.com/disc/read.php?2,37846"
+      - kind: "website"
+        title: "Fishkeeper: Hap VC10 (Placidochromis milomo)"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/hap-vc-10"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Zoopet species description: Placidochromis milomo"
+        url: "https://www.zoopet.com/fiskar/fisk.php?NR=80"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "FishBase species summary: Placidochromis milomo"
+          url: "https://www.fishbase.se/summary/Placidochromis-milomo.html"
+          accessed: "2026-10-13"
+        value: "maternal-mouthbrooder"
+      - source:
+          kind: "literature"
+          title: "Borstein, R. (2005). Placidochromis milomo husbandry and breeding report. Greater Chicago Cichlid Association."
+          url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/82-placidochromis-mlomo.html"
+          accessed: "2026-10-13"
+        value: "maternal-mouthbrooder"
+        note: "Captive brood carried by a female."
+      - source:
+          kind: "database"
+          title: "Cichlid Room Companion public verification: Placidochromis milomo"
+          url: "https://cichlidae.com/species.php?id=MDmMTVAFuPFecLMsNMf6ag"
+          accessed: "2026-10-13"
+        value: "maternal-mouthbrooder"
+        note: "Verification only."
+      - source:
+          kind: "archive"
+          title: "cichlids.com forum thread 37846"
+          accessed: "2026-10-13"
+          url: "https://www.cichlids.com/disc/read.php?2,37846"
+        value: "maternal-mouthbrooder"
+        note: "Community account of a holding female."
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Placidochromis milomo"
+          url: "https://www.seriouslyfish.com/species/placidochromis-milomo/"
+          accessed: "2026-10-13"
+        value: "maternal-mouthbrooder"
+      - source:
+          kind: "website"
+          title: "Fishkeeper: Hap VC10 (Placidochromis milomo)"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/hap-vc-10"
+          accessed: "2026-10-13"
+        value: "maternal-mouthbrooder"
+      - source:
+          kind: "database"
+          title: "Zoopet species description: Placidochromis milomo"
+          url: "https://www.zoopet.com/fiskar/fisk.php?NR=80"
+          accessed: "2026-10-13"
+        value: "maternal-mouthbrooder"
+  beginnerSuitability:
+    value: "moderate"
+    confidence: "medium"
+    rationale: "All four complete runs choose moderate. The Nordic register and Zoopet both give intermediate difficulty, supported by the Aquarium Wiki rating. Easier labels in Seriously Fish and FishFish do not account fully for the adult tank commitment and male management. It is manageable with established Malawi husbandry rather than a small-aquarium starter species."
+    sources:
+      - kind: "website"
+        title: "Coburg Aquarium species care sheet: Placidochromis milomo VC10"
+        url: "https://coburgaquarium.com.au/products/placidochromis-milomo-vc10-1"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Placidochromis milomo"
+        url: "https://www.seriouslyfish.com/species/placidochromis-milomo/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Borstein, R. (2005). Placidochromis milomo husbandry and breeding report. Greater Chicago Cichlid Association."
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/82-placidochromis-mlomo.html"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Fishkeeper: Hap VC10 (Placidochromis milomo)"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/hap-vc-10"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Guidarium: Milomo Hap (Super VC10)"
+        url: "https://guidarium.com/fishes/milomo-hap-super-vc10"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsaellskapet: Placidochromis milomo species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=584"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Zoopet species description: Placidochromis milomo"
+        url: "https://www.zoopet.com/fiskar/fisk.php?NR=80"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "The Aquarium Wiki species care sheet: Placidochromis milomo"
+        url: "https://www.theaquariumwiki.com/wiki/Placidochromis_milomo"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishFish collaborative species care sheet: Placidochromis milomo"
+        url: "https://www.fishfish.fr/poisson/placidochromis-milomo"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "website"
+          title: "Coburg Aquarium species care sheet: Placidochromis milomo VC10"
+          url: "https://coburgaquarium.com.au/products/placidochromis-milomo-vc10-1"
+          accessed: "2026-10-13"
+        value: "moderate"
+        note: "Intermediate keeper recommendation."
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Placidochromis milomo"
+          url: "https://www.seriouslyfish.com/species/placidochromis-milomo/"
+          accessed: "2026-10-13"
+        value: "easy"
+      - source:
+          kind: "database"
+          title: "Guidarium: Milomo Hap (Super VC10)"
+          url: "https://guidarium.com/fishes/milomo-hap-super-vc10"
+          accessed: "2026-10-13"
+        value: "moderate"
+        note: "large tank, high waste"
+      - source:
+          kind: "database"
+          title: "Nordiska Ciklidsaellskapet: Placidochromis milomo species register"
+          url: "https://www.ciklid.org/artregister/art.php?ID=584"
+          accessed: "2026-10-13"
+        value: "moderate"
+        note: "Register difficulty category translated to the rubric."
+      - source:
+          kind: "database"
+          title: "Zoopet species description: Placidochromis milomo"
+          url: "https://www.zoopet.com/fiskar/fisk.php?NR=80"
+          accessed: "2026-10-13"
+        value: "moderate"
+        note: "Rubric mapping of difficulty 3 out of 5."
+      - source:
+          kind: "database"
+          title: "The Aquarium Wiki species care sheet: Placidochromis milomo"
+          url: "https://www.theaquariumwiki.com/wiki/Placidochromis_milomo"
+          accessed: "2026-10-13"
+        value: "moderate"
+      - source:
+          kind: "database"
+          title: "FishFish collaborative species care sheet: Placidochromis milomo"
+          url: "https://www.fishfish.fr/poisson/placidochromis-milomo"
+          accessed: "2026-10-13"
+        value: "easy"
+partners:
+  suitable:
+    - species: "Cyrtocara moorii"
+      reason: "Comparatively restrained Malawi hap with sufficient adult size and a compatible invertebrate-based feeding routine."
+      condition: "Use a community larger than the milomo minimum, with open sand and swimming room for both social units; watch blue male rivalry."
+    - species: "Copadichromis borleyi"
+      reason: "A relatively peaceful Malawi zooplankton feeder whose adult size and feeding needs can suit a restrained hap community."
+      condition: "Choose mature fish and a visibly different male color form; provide space for both female groups and separate spawning sites in a larger community tank."
+    - species: "Otopharynx lithobates"
+      reason: "A relatively mild Malawi hap that can share alkaline water and animal-focused aquarium foods."
+      condition: "Use established adults in a larger community, preserve rock refuges, and watch feeding access and breeding pursuit."
+  unsuitable:
+    - species: "Melanochromis auratus"
+      reason: "Persistent aggression can overwhelm a comparatively mild milomo even though water requirements overlap."
+    - species: "Maylandia zebra"
+      reason: "Territorial mbuna behavior and the more plant-focused feeding requirement make routine community keeping a poor fit."
+    - species: "Paracheirodon simulans"
+      reason: "Very small body size creates prey risk, and its soft, acidic community setting is incompatible with routine Malawi husbandry."
+profile:
+  overview:
+    text: "Milomo is a large Malawi haplochromine recognized for its enlarged lips and blue adult-male coloration over a barred body. Lip development varies in captivity. The accepted name remains Placidochromis milomo Oliver, 1989; Super VC-10 is a trade name. Nuclear genomic work places it among non-mbuna despite its rocky feeding habitat. Abactochromis labrosus and the separately sampled Mbenji fatlip should not be identified as milomo merely because their lips are enlarged."
+    sources:
+      - kind: "catalog-of-fishes"
+        title: "Eschmeyer's Catalog of Fishes: Placidochromis, updated 21 September 2026"
+        accessed: "2026-10-13"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Placidochromis"
+      - kind: "literature"
+        title: "Hulsey et al. (2018). Phylogenomics of a putatively convergent novelty: did hypertrophied lips evolve once or repeatedly in Lake Malawi cichlid fishes?"
+        accessed: "2026-10-13"
+        url: "https://doi.org/10.1186/s12862-018-1296-9"
+      - kind: "literature"
+        title: "Masonick, Meyer and Hulsey (2022). Phylogenomic analyses show repeated evolution of hypertrophied lips among Lake Malawi cichlid fishes."
+        url: "https://doi.org/10.1093/gbe/evac051"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Borstein, R. (2005). Placidochromis mlomo. Greater Chicago Cichlid Association breeding report."
+        accessed: "2026-10-13"
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/82-placidochromis-mlomo.html"
+  habitat:
+    text: "The feeding habitat is sediment-coated rock with nearby sandy transition areas. FishBase records depths of 4 to 35 m and southern Malawi shores plus Nkhata Bay; genomic collections add several southern islands. Natural lake values are 21 to 29 C, pH 7.7 to 8.6, GH 3 to 5 dGH and KH 5 to 8 dKH. Modest calcium-magnesium hardness can coexist with alkaline, buffered water."
+    sources:
+      - kind: "database"
+        title: "FishBase: Placidochromis milomo species summary"
+        accessed: "2026-10-13"
+        url: "https://www.fishbase.se/summary/Placidochromis-milomo.html"
+      - kind: "database"
+        title: "Malawi-Guru: Placidochromis milomo, species directory by Bandhauer and Hoernlimann"
+        url: "https://malawi-guru.de/artentafel-placidochromis-milomo-buntbarsche/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Hulsey et al. (2018). Phylogenomics of a putatively convergent novelty: did hypertrophied lips evolve once or repeatedly in Lake Malawi cichlid fishes?"
+        accessed: "2026-10-13"
+        url: "https://doi.org/10.1186/s12862-018-1296-9"
+      - kind: "literature"
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+        url: "https://doi.org/10.5194/hessd-7-4371-2010"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology and Oceanography 19(5), 730-742 (abstract)."
+        url: "https://doi.org/10.4319/lo.1974.19.5.0730"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M., Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and Oceanography 50(2), 727-732."
+        url: "https://doi.org/10.4319/lo.2005.50.2.0727"
+        accessed: "2026-10-13"
+  sizeAndGrowth:
+    text: "Plan for typical aquarium maxima near 25 cm for males and 20 cm for females, with less certainty about the female figure. Wild standard-length measurements exclude the tail and cannot be compared directly with aquarium total length. Borstein recorded rapid juvenile growth and explicitly recommended larger quarters as the fish matured. An 8 to 12 year lifespan is a secondary husbandry estimate without verified age records."
+    sources:
+      - kind: "literature"
+        title: "Borstein, R. (2005). Placidochromis mlomo. Greater Chicago Cichlid Association breeding report."
+        accessed: "2026-10-13"
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/82-placidochromis-mlomo.html"
+      - kind: "database"
+        title: "FishBase: Placidochromis milomo species summary"
+        accessed: "2026-10-13"
+        url: "https://www.fishbase.se/summary/Placidochromis-milomo.html"
+      - kind: "database"
+        title: "FishFish: collaborative Placidochromis milomo care sheet"
+        accessed: "2026-10-13"
+        url: "https://www.fishfish.fr/poisson/placidochromis-milomo"
+      - kind: "database"
+        title: "Rybicky.net fish atlas: Placidochromis milomo"
+        accessed: "2026-10-13"
+        url: "https://rybicky.net/atlasryb/tlamovec_milomo"
+      - kind: "database"
+        title: "The Aquarium Wiki: structured Placidochromis milomo species care sheet"
+        accessed: "2026-10-13"
+        url: "https://www.theaquariumwiki.com/wiki/Placidochromis_milomo"
+  husbandry:
+    text: "Allow at least 700 L with a 200 x 60 cm footprint for one adult male and three females. The depth is a planning inference; a mixed community needs more space. Place stable rock refuges around a clear swimming route and retain sand between them. Maintain established filtration and good oxygenation. A steady 24 to 26 C is a practical routine target. The catalog tolerances are 21 to 29 C, pH 7.5 to 8.8, GH 3 to 25 dGH and KH 5 to 10 dKH; they are recommendation envelopes with uncertain limits rather than optimal targets throughout. Test GH and KH separately."
+    sources:
+      - kind: "database"
+        title: "Malawi-Guru: Placidochromis milomo, species directory by Bandhauer and Hoernlimann"
+        url: "https://malawi-guru.de/artentafel-placidochromis-milomo-buntbarsche/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Einrichtungsbeispiele: Placidochromis milomo husbandry profile"
+        url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/placidochromis-milomo-slnk.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsaellskapet: Placidochromis milomo species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=584"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Placidochromis milomo species care sheet"
+        accessed: "2026-10-13"
+        url: "https://www.seriouslyfish.com/species/placidochromis-milomo/"
+      - kind: "literature"
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+        url: "https://doi.org/10.5194/hessd-7-4371-2010"
+        accessed: "2026-10-13"
+  socialBehavior:
+    text: "The recommended one-male, three-female unit spreads courtship attention and avoids routine competition between males. It is an aquarium arrangement rather than a permanent wild harem. Displays and chasing can increase during spawning, with a localized breeding site rather than a lasting large territory. Adult milomo is usually restrained toward other species. Persistent hiding or missed feeding indicates that space or social arrangements need attention."
+    sources:
+      - kind: "database"
+        title: "Malawi-Guru: Placidochromis milomo, species directory by Bandhauer and Hoernlimann"
+        url: "https://malawi-guru.de/artentafel-placidochromis-milomo-buntbarsche/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsaellskapet: Placidochromis milomo species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=584"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Zoopet species description: Placidochromis milomo"
+        url: "https://www.zoopet.com/fiskar/fisk.php?NR=80"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Borstein, R. (2005). Placidochromis mlomo. Greater Chicago Cichlid Association breeding report."
+        accessed: "2026-10-13"
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/82-placidochromis-mlomo.html"
+  diet:
+    text: "Aquatic arthropods are the principal recorded wild prey, with fry taken occasionally. Use complete cichlid pellets, small crustaceans and insect larvae, with some spirulina-containing food as variety. The invertivore classification follows natural feeding rather than acceptance of mixed aquarium rations. Vigorous appetite supports a provisional hasty feeding grade, so check access for quieter fish and avoid excessive portions. No special high-protein bloat sensitivity is established, although the false flag does not imply immunity to digestive illness."
+    sources:
+      - kind: "database"
+        title: "FishBase: Placidochromis milomo species summary"
+        accessed: "2026-10-13"
+        url: "https://www.fishbase.se/summary/Placidochromis-milomo.html"
+      - kind: "literature"
+        title: "Borstein, R. (2005). Placidochromis mlomo. Greater Chicago Cichlid Association breeding report."
+        accessed: "2026-10-13"
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/82-placidochromis-mlomo.html"
+      - kind: "database"
+        title: "Malawi-Guru: Placidochromis milomo, species directory by Bandhauer and Hoernlimann"
+        url: "https://malawi-guru.de/artentafel-placidochromis-milomo-buntbarsche/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsaellskapet: Placidochromis milomo species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=584"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishFish: collaborative Placidochromis milomo care sheet"
+        accessed: "2026-10-13"
+        url: "https://www.fishfish.fr/poisson/placidochromis-milomo"
+  breeding:
+    text: "Females incubate the brood in their mouths. Read care accounts commonly describe release around three weeks, with variation between reports. A holding female needs refuge from renewed courtship. Borstein removed developing young after twelve days, which is an intervention record rather than the normal release time. Released young can receive finely divided prepared food and newly hatched brine shrimp in a protected grow-out setting."
+    sources:
+      - kind: "database"
+        title: "FishBase: Placidochromis milomo species summary"
+        accessed: "2026-10-13"
+        url: "https://www.fishbase.se/summary/Placidochromis-milomo.html"
+      - kind: "database"
+        title: "Zoopet species description: Placidochromis milomo"
+        url: "https://www.zoopet.com/fiskar/fisk.php?NR=80"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Borstein, R. (2005). Placidochromis mlomo. Greater Chicago Cichlid Association breeding report."
+        accessed: "2026-10-13"
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/82-placidochromis-mlomo.html"
+      - kind: "database"
+        title: "The Aquarium Wiki: structured Placidochromis milomo species care sheet"
+        accessed: "2026-10-13"
+        url: "https://www.theaquariumwiki.com/wiki/Placidochromis_milomo"
+  sexing:
+    text: "Mature dominant males generally develop more blue coloration and grow larger; females retain quieter bars. Extended fins can help, but subordinate males and juveniles may resemble females. Judge mature fish over time rather than relying on one photograph or the absence of blue. Lip prominence varies with development and feeding conditions and is not a reliable sex indicator."
+    sources:
+      - kind: "literature"
+        title: "Borstein, R. (2005). Placidochromis mlomo. Greater Chicago Cichlid Association breeding report."
+        accessed: "2026-10-13"
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/82-placidochromis-mlomo.html"
+      - kind: "database"
+        title: "Nordiska Ciklidsaellskapet: Placidochromis milomo species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=584"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Placidochromis milomo species care sheet"
+        accessed: "2026-10-13"
+        url: "https://www.seriouslyfish.com/species/placidochromis-milomo/"
+      - kind: "literature"
+        title: "Hulsey et al. (2018). Phylogenomics of a putatively convergent novelty: did hypertrophied lips evolve once or repeatedly in Lake Malawi cichlid fishes?"
+        accessed: "2026-10-13"
+        url: "https://doi.org/10.1186/s12862-018-1296-9"
+  compatibility:
+    text: "Use similar-sized Malawi companions with restrained behaviour and compatible feeding needs. Cyrtocara moorii, Copadichromis borleyi and Otopharynx lithobates are conditional husbandry candidates in a larger community, rather than guaranteed pairings. Avoid persistent bullies such as Melanochromis auratus and protect fry and very small fish. No hybrid group is supported for milomo in this adjudication; missing named crossing records do not establish reproductive isolation."
+    sources:
+      - kind: "database"
+        title: "Malawi-Guru: Placidochromis milomo, species directory by Bandhauer and Hoernlimann"
+        url: "https://malawi-guru.de/artentafel-placidochromis-milomo-buntbarsche/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Placidochromis milomo species care sheet"
+        accessed: "2026-10-13"
+        url: "https://www.seriouslyfish.com/species/placidochromis-milomo/"
+      - kind: "literature"
+        title: "Hulsey et al. (2018). Phylogenomics of a putatively convergent novelty: did hypertrophied lips evolve once or repeatedly in Lake Malawi cichlid fishes?"
+        accessed: "2026-10-13"
+        url: "https://doi.org/10.1186/s12862-018-1296-9"
+      - kind: "literature"
+        title: "Masonick, Meyer and Hulsey (2022). Phylogenomic analyses show repeated evolution of hypertrophied lips among Lake Malawi cichlid fishes."
+        url: "https://doi.org/10.1093/gbe/evac051"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: copadichromis borleyi species care sheet"
+        accessed: "2026-10-13"
+        url: "https://www.seriouslyfish.com/species/copadichromis-borleyi/"
+      - kind: "database"
+        title: "Seriously Fish: otopharynx lithobates species care sheet"
+        accessed: "2026-10-13"
+        url: "https://www.seriouslyfish.com/species/otopharynx-lithobates/"
+  problems:
+    text: "Two practical concerns are inadequate adult swimming room and overfeeding a fish with a strong appetite. Bullying can prevent quieter individuals from eating even when the dominant fish appears healthy. Monitor condition and breathing alongside water quality, and keep ammonia and nitrite undetectable. Reduced lip prominence in captive fish is reported and by itself does not establish illness."
+    sources:
+      - kind: "database"
+        title: "Nordiska Ciklidsaellskapet: Placidochromis milomo species register"
+        url: "https://www.ciklid.org/artregister/art.php?ID=584"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Borstein, R. (2005). Placidochromis mlomo. Greater Chicago Cichlid Association breeding report."
+        accessed: "2026-10-13"
+        url: "https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/82-placidochromis-mlomo.html"
+      - kind: "database"
+        title: "Seriously Fish: Placidochromis milomo species care sheet"
+        accessed: "2026-10-13"
+        url: "https://www.seriouslyfish.com/species/placidochromis-milomo/"
+      - kind: "database"
+        title: "OATA: How to look after African Malawi Cichlids, general husbandry care sheet"
+        accessed: "2026-10-13"
+        url: "https://ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-freshwater-fish/how-to-look-after-african-malawi-cichlids/"
+provenance:
+  runs:
+    - role: "generator"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+    - role: "checker"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+    - role: "checker"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+    - role: "checker"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+    - role: "checker"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+    - role: "checker"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+    - role: "adjudicator"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+  disagreements:
+    - field: "features.origin"
+      proposals:
+        - by: "generator"
+          value:
+            continent: "Africa"
+            region: "Lake Malawi"
+            waterbody: "lake-malawi"
+            localities:
+              - "Thumbi Island West"
+              - "Nankumba Peninsula"
+              - "Nkhata Bay"
+              - "Chinyamwezi Island"
+              - "Maleri Islands"
+              - "Nakatenga Island"
+        - by: "checker-a"
+          value:
+            continent: "Africa"
+            region: "Lake Malawi"
+            waterbody: "lake-malawi"
+            localities:
+              - "Thumbi Island West"
+              - "Nankumba Peninsula"
+              - "Nkhata Bay"
+        - by: "checker-b"
+          value:
+            continent: "Africa"
+            region: "Lake Malawi"
+            waterbody: "lake-malawi"
+            localities:
+              - "Thumbi West Island"
+              - "Nkhata Bay"
+              - "Nankumba Peninsula"
+              - "Chinyamwezi Island"
+              - "Maleri Islands"
+              - "Nakantenga Island"
+        - by: "checker-c"
+          value:
+            continent: "Africa"
+            region: "Lake Malawi"
+            waterbody: "lake-malawi"
+            localities:
+              - "Nkhata Bay"
+              - "Nankumba Peninsula"
+              - "Thumbi Island West"
+              - "Zambo"
+              - "Chinyamwezi Island"
+              - "Maleri Island"
+              - "Nakatenga Island"
+      decision:
+        continent: "Africa"
+        region: "Lake Malawi"
+        waterbody: "lake-malawi"
+        localities:
+          - "Thumbi Island West"
+          - "Nankumba Peninsula"
+          - "Nkhata Bay"
+          - "Zambo"
+          - "Chinyamwezi Island"
+          - "Maleri Islands"
+          - "Nakatenga Island"
+      rationale: "All four complete runs identify a Lake Malawi endemic. Generator and checker-b list southern island samples; checker-a lists only the three principal areas; checker-c adds Zambo and uses singular Maleri Island. The final list combines FishBase distribution records with the 2018 field collections, normalizes Thumbi West Island to Thumbi Island West and retains the paper spelling Nakatenga. These are occurrence records rather than named aquarium strains."
+    - field: "features.ph.tolerance"
+      proposals:
+        - by: "generator"
+          value:
+            min: 7.6
+            max: 8.8
+        - by: "checker-a"
+          value:
+            min: 7.5
+            max: 8.8
+        - by: "checker-b"
+          value:
+            min: 7.5
+            max: 8.8
+        - by: "checker-c"
+          value:
+            min: 7.5
+            max: 8.8
+      decision:
+        min: 7.5
+        max: 8.8
+      rationale: "Generator proposes 7.6 to 8.8; checker-a, checker-b and checker-c propose 7.5 to 8.8. The lower endpoints agree within the 0.3 pH rule, producing unanimous 4-of-4 verification and the median lower endpoint 7.5. Seriously Fish supports an upper recommendation of 8.8, while Zoopet and the Nordic register reach down to 7.5. FishFish gives a wider 7.5 to 9.0 range, but its internally conflicting ecology weakens that higher endpoint; the tally interval remains 7.5 to 8.8 with medium confidence."
+    - field: "features.ghDgh.tolerance"
+      proposals:
+        - by: "generator"
+          value:
+            min: 3
+            max: 20
+        - by: "checker-a"
+          value:
+            min: 3
+            max: 25
+        - by: "checker-b"
+          value:
+            min: 3
+            max: 25
+        - by: "checker-c"
+          value:
+            min: 3
+            max: 25
+        - by: "tiebreaker-1"
+          value:
+            min: 3
+            max: 25
+        - by: "tiebreaker-2"
+          value:
+            min: 3
+            max: 20
+      decision:
+        min: 3
+        max: 25
+      rationale: "Generator and tiebreaker-2 propose 3 to 20 dGH; checker-a, checker-b, checker-c and tiebreaker-1 propose 3 to 25 dGH. Qualified-majority verification is 4 of 6 and retains 3 to 25 dGH with medium confidence. Seriously Fish gives 10 to 25 dGH, whereas Coburg and the Aquarium Wiki give 10 to 20, Rybicky 4 to 22 and Einrichtungsbeispiele 5 to 15. The lower endpoint includes measured lake water rather than imposing the care sheets lower limits. Fishkeeper states an upper limit of 25 without specifying a minimum; its evidence is therefore not support for zero dGH. This is a recommendation envelope without chronic-exposure trials."
+    - field: "features.khDkh.tolerance"
+      proposals:
+        - by: "generator"
+          value:
+            min: 5
+            max: 15
+        - by: "checker-a"
+          value:
+            min: 5
+            max: 15
+        - by: "checker-b"
+          value:
+            min: 5
+            max: 10
+        - by: "checker-c"
+          value:
+            min: 5
+            max: 20
+        - by: "tiebreaker-1"
+          value:
+            min: 5
+            max: 20
+        - by: "tiebreaker-2"
+          value:
+            min: 5
+            max: 15
+      decision:
+        min: 5
+        max: 10
+      rationale: "Generator, checker-a and tiebreaker-2 propose 5 to 15 dKH; checker-b proposes 5 to 10; checker-c and tiebreaker-1 propose 5 to 20. No qualified majority settles the endpoints, so conservative verification retains the intersection 5 to 10 dKH with votes 3 of 6 and low confidence. JBL gives 5 to 10 for a Malawi aquarium; wider recommendations are OATA 10 to 15, Sera instructions reproduced by ATZ 10 to 15, Aquarium.org.il 12 to 20 and Il Mio Acquario 8 to 18. The latter is genus-level guidance and the Israeli field does not explicitly spell out degrees. These recommendations explain the wider proposals without establishing a milomo physiological ceiling. The natural 5 to 8 dKH remains included. Monks could not be retrieved and adds no numerical support."
+    - field: "features.diet"
+      proposals:
+        - by: "generator"
+          value:
+            type: "invertivore"
+            bloatSensitive: false
+            foods:
+              - "quality cichlid pellets"
+              - "small aquatic crustaceans"
+              - "insect larvae"
+              - "spirulina-containing prepared food"
+        - by: "checker-a"
+          value:
+            type: "omnivore"
+            bloatSensitive: false
+            foods:
+              - "flake"
+              - "cichlid pellets"
+              - "frozen foods"
+              - "vegetable matter"
+        - by: "checker-b"
+          value:
+            type: "invertivore"
+            bloatSensitive: false
+            foods:
+              - "Benthic crustaceans"
+              - "Aquatic insect larvae"
+              - "Balanced cichlid pellets"
+              - "Frozen small invertebrates"
+              - "Supplementary vegetable material"
+        - by: "checker-c"
+          value:
+            type: "invertivore"
+            bloatSensitive: false
+            foods:
+              - "small crustaceans"
+              - "insect larvae"
+              - "protein-based cichlid pellets"
+              - "frozen invertebrates"
+              - "supplementary spirulina food"
+        - by: "tiebreaker-1"
+          value:
+            type: "invertivore"
+            bloatSensitive: false
+        - by: "tiebreaker-2"
+          value:
+            type: "invertivore"
+            bloatSensitive: false
+      decision:
+        type: "invertivore"
+        bloatSensitive: false
+        foods:
+          - "quality cichlid pellets"
+          - "small aquatic crustaceans"
+          - "insect larvae"
+          - "spirulina-containing prepared food"
+      rationale: "Generator, checker-b, checker-c, tiebreaker-1 and tiebreaker-2 propose invertivore with bloatSensitive false; checker-a proposes omnivore with the same flag. Qualified-majority verification retains the exact generator food list and the 5-of-6 invertivore decision with medium confidence. FishBase natural prey, Oliver observations and Borstein feeding history support invertebrate feeding. Mixed aquarium foods and occasional algae intake explain the omnivore proposal but do not establish plant-dominated feeding. The false bloat flag is inferred from animal-food husbandry without a demonstrated species-specific protein restriction; no controlled disease study establishes immunity."
+    - field: "features.coloration"
+      proposals:
+        - by: "generator"
+          value:
+            baseColors:
+              - "blue"
+              - "black"
+              - "yellow"
+            pattern: "bars"
+        - by: "checker-a"
+          value:
+            baseColors:
+              - "blue"
+              - "grey"
+            pattern: "bars"
+        - by: "checker-b"
+          value:
+            baseColors:
+              - "blue"
+              - "brown"
+              - "yellow"
+              - "black"
+            pattern: "bars"
+        - by: "checker-c"
+          value:
+            baseColors:
+              - "blue"
+              - "red"
+              - "black"
+            pattern: "bars"
+      decision:
+        baseColors:
+          - "blue"
+          - "black"
+          - "yellow"
+        pattern: "bars"
+      rationale: "Generator proposes blue/black/yellow; checker-a blue/grey; checker-b blue/brown/yellow/black; checker-c blue/red/black. All retain bars. Blue and dark patterning have the strongest support, while Borstein and Rybicky also support gold or yellow tones that may be muted by dominance. Brown in checker-b is a broad interpretation of darker males; red in checker-c rests mainly on the Aquarium Wiki account of light-dependent appearance. The selected three-colour description follows the better supported male observations without treating every reported appearance as a universal colour."
+    - field: "features.feedingSpeed"
+      proposals:
+        - by: "generator"
+          value: "normal"
+        - by: "checker-a"
+          value: "normal"
+        - by: "checker-b"
+          value: "hasty"
+        - by: "checker-c"
+          value: "hasty"
+      decision: "hasty"
+      rationale: "Generator and checker-a propose normal; checker-b and checker-c propose hasty. The Nordic register reports persistent appetite and FishFish describes vigorous food-taking, favouring hasty as a cautious compatibility mapping. Neither measures feeding races or exhaustion of the entire ration, and overfeeding advice alone cannot establish speed. Normal remains plausible in particular tanks; the selected grade therefore has low confidence."
+    - field: "features.minTank"
+      proposals:
+        - by: "generator"
+          value:
+            volumeL: 600
+            lengthCm: 200
+            depthCm: 60
+        - by: "checker-a"
+          value:
+            volumeL: 300
+            lengthCm: 150
+            depthCm: 50
+        - by: "checker-b"
+          value:
+            volumeL: 700
+            lengthCm: 200
+            depthCm: 60
+        - by: "checker-c"
+          value:
+            volumeL: 500
+            lengthCm: 160
+            depthCm: 60
+      decision:
+        volumeL: 700
+        lengthCm: 200
+        depthCm: 60
+      rationale: "Generator proposes 600 L/200/60 cm; checker-a 300 L/150/50; checker-b 700 L/200/60; checker-c 500 L/160/60. The final value uses Malawi-Guru and Einrichtungsbeispiele recommendations of 700 L and 200 cm for large adults. Zoopet gives 500 L/160 cm and the Nordic register 500 L/150 cm while preferring 200 cm; Seriously Fish gives a much smaller 205 L/120/45 cm. Borstein used about 341 L/122 cm for juveniles and called for more room as they matured. FishFish gives the wider 1000 L recommendation without explaining the social unit. The chosen minimum prioritizes adult swimming space for one male and three females; the 60 cm depth is an explicit turning-space inference rather than a published threshold. Communities need additional room."
+    - field: "features.lifespanYears"
+      proposals:
+        - by: "generator"
+          value:
+            min: 8
+            max: 12
+        - by: "checker-a"
+          value:
+            min: 8
+            max: 12
+        - by: "checker-b"
+          value:
+            min: 8
+            max: 10
+        - by: "checker-c"
+          value:
+            min: 8
+            max: 12
+      decision:
+        min: 8
+        max: 12
+      rationale: "Generator, checker-a and checker-c propose 8 to 12 years; checker-b proposes 8 to 10 from general haplochromine knowledge. Rybicky and the Aquarium Wiki explicitly give 8 to 12, while FishFish gives over eight without a maximum. The source-backed 8 to 12 interval is retained over the general estimate, but no tracked-age cohort was found, so confidence stays low."
