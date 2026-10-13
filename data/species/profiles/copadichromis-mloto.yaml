@@ -1,0 +1,3008 @@
+schemaVersion: 1
+id: "copadichromis-mloto"
+legacyIds:
+- 268
+status: "described"
+taxonomy:
+  validName: "Copadichromis mloto"
+  genus: "Copadichromis"
+  species: "mloto"
+  author: "(Iles, 1960)"
+  source:
+    kind: "catalog-of-fishes"
+    title: "Eschmeyer's Catalog of Fishes: Copadichromis species"
+    url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Copadichromis"
+    accessed: "2026-10-13"
+  synonyms:
+  - name: "Haplochromis mloto"
+    note: "Original combination of the described species."
+  - name: "Cyrtocara mloto"
+    note: "Former generic combination recorded by FishBase nomenclature and the Nordic register."
+  - name: "Copadichromis sp. 'virginalis kajose'"
+    note: "Informal identification applied to material largely reassigned to C. mloto by Turner and colleagues.\
+      \ Some northern fish carrying this label belong to other relatives; C. virginalis itself remains a valid separate\
+      \ species."
+  legacyNames:
+  - "Copadichromis mloto"
+  note: "The Catalog of Fishes accepts Copadichromis mloto (Iles, 1960); the current and original genus lists were\
+    \ queried. Legacy entry 268 retains its literal valid name because no specimen or locality evidence justifies\
+    \ a different identification. Turner et al. (2023, online 2022; https://doi.org/10.1007/s10750-022-05025-1)\
+    \ identify much of the former Kajose material as this species while retaining C. virginalis. Mloto is also an\
+    \ ambiguous trade label. The Nordic register (https://www.ciklid.org/artregister/art.php?ID=1340) and Imperial\
+    \ Tropicals (https://imperialtropicals.com/products/mloto-likoma-copadichromis-trewavasae) place Mloto Likoma\
+    \ under C. trewavasae; it is not entered as a variant here. Undu, Liuli, reef and firecrest labels are not securely\
+    \ identified locality forms of C. mloto. The public CRC entry verifies the name and maternal mouthbrooding but\
+    \ predates the revision and provides no accessible feeding or habitat detail. The later population paper, DOI\
+    \ 10.1007/s10750-024-05743-8, was refused as not open access by fetch-oa and supplies no evidence here."
+names:
+  trade:
+    en:
+    - "Mloto"
+    - "Mloto utaka"
+    de:
+    - "Mloto"
+variants: []
+features:
+  origin:
+    value:
+      continent: "Africa"
+      region: "Lake Malawi basin, including connected Lake Malombe"
+      waterbody: "lake-malawi"
+      localities:
+      - "Mayoka Point, Nkhata Bay"
+      - "Chiweta Beach, Chilumba"
+      - "Southeastern arm of Lake Malawi"
+      - "Southwestern arm of Lake Malawi"
+      - "Lake Malombe"
+    confidence: "high"
+    rationale: "All four runs identify the same lake basin. Generator gives the most specific collection sites;\
+      \ checker-a abbreviates the range, while checker-b and checker-c explicitly include connected Lake Malombe.\
+      \ The catalog confirms the type locality and the revision supplies southern and Malombe records. Natural chemistry\
+      \ here represents Lake Malawi populations and is not a measurement of Lake Malombe."
+    sources:
+    - kind: "catalog-of-fishes"
+      title: "Eschmeyer's Catalog of Fishes: Copadichromis species"
+      url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Copadichromis"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Turner et al. (2023; online 2022). Taxonomic investigation of the zooplanktivorous Lake Malawi cichlids\
+        \ Copadichromis mloto and C. virginalis"
+      url: "https://doi.org/10.1007/s10750-022-05025-1"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishBase: Copadichromis mloto species summary"
+      url: "https://www.fishbase.se/summary/Copadichromis-mloto.html"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "catalog-of-fishes"
+        title: "Eschmeyer's Catalog of Fishes: Copadichromis species"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Copadichromis"
+        accessed: "2026-10-13"
+      value:
+        continent: "Africa"
+        region: "Lake Malawi"
+        waterbody: "lake-malawi"
+        localities:
+        - "Mayoka Point, Nkhata Bay"
+    - source:
+        kind: "literature"
+        title: "Turner et al. (2023; online 2022). Taxonomic investigation of the zooplanktivorous Lake Malawi cichlids\
+          \ Copadichromis mloto and C. virginalis"
+        url: "https://doi.org/10.1007/s10750-022-05025-1"
+        accessed: "2026-10-13"
+      value:
+        continent: "Africa"
+        region: "Lake Malawi basin, including connected Lake Malombe"
+        waterbody: "lake-malawi"
+        localities:
+        - "Mayoka Point, Nkhata Bay"
+        - "Chiweta Beach, Chilumba"
+        - "Southeastern arm of Lake Malawi"
+        - "Southwestern arm of Lake Malawi"
+        - "Lake Malombe"
+      note: "Localities based on examined material; the lake-wide water envelope is applied separately."
+  temperatureC:
+    value:
+      min: 21
+      max: 29
+    confidence: "high"
+    rationale: "The waterbody decision fixes 21 to 29 C for Lake Malawi. Eccles reports 21 C inshore cooling and\
+      \ about 27 C in the upper layer in May; Vollmer describes seasonal surface warming to about 28 C. Branchu\
+      \ measured only 22.8 to 25.4 C during one northern campaign. These sampling intervals do not replace the adopted\
+      \ seasonal lake envelope. The 29 C endpoint is inherited from the limnological synthesis cited by the tally,\
+      \ not from an aquarium care sheet. The 1999 chapter and Ngochera thesis have no usable DOI for fetch-oa and\
+      \ their full texts were not independently retrieved; their inherited references remain background only."
+    sources:
+    - kind: "literature"
+      title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al.\
+        \ (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin: local\
+        \ versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+      url: "https://doi.org/10.5194/hessd-7-4371-2010"
+      accessed: "2026-10-12"
+    - kind: "literature"
+      title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of\
+        \ Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after Jackson\
+        \ et al. (1963) and Talling and Talling (1965)."
+      url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology\
+        \ and Oceanography 19(5), 730-742 (abstract)."
+      url: "https://doi.org/10.4319/lo.1974.19.5.0730"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M., Eccles,\
+        \ D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and Oceanography\
+        \ 50(2), 727-732."
+      url: "https://doi.org/10.4319/lo.2005.50.2.0727"
+      accessed: "2026-10-12"
+    - kind: "literature"
+      title: "Vollmer, M. K., Weiss, R. F. and Bootsma, H. A. (1999). Lake Malawi/Nyasa deep water renewal. In:\
+        \ Bootsma, H. A. and Hecky, R. E. (eds.), Water Quality Report, SADC/GEF Lake Malawi/Nyasa Biodiversity\
+        \ Conservation Project, chapter 4."
+      url: "https://sites.uwm.edu/hbootsma/files/2020/11/Ch4-Lake-Internal-Mixing.pdf"
+      accessed: "2026-10-12"
+    - kind: "literature"
+      title: "Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. PhD dissertation, University of Wisconsin-Milwaukee."
+      url: "https://minds.wisconsin.edu/handle/1793/91765"
+      accessed: "2026-10-12"
+    - kind: "literature"
+      title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al.\
+        \ (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin: local\
+        \ versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+      url: "https://doi.org/10.5194/hessd-7-4371-2010"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M., Eccles,\
+        \ D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and Oceanography\
+        \ 50(2), 727-732."
+      url: "https://doi.org/10.4319/lo.2005.50.2.0727"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "literature"
+        title: "Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology\
+          \ and Oceanography 19(5), 730-742 (abstract)."
+        url: "https://doi.org/10.4319/lo.1974.19.5.0730"
+        accessed: "2026-10-13"
+      value:
+        min: 21
+        max: 27
+      note: "Abstract only: cool inshore water and May upper-layer temperature, not a full-year maximum."
+    - source:
+        kind: "literature"
+        title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al.\
+          \ (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin:\
+          \ local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+        url: "https://doi.org/10.5194/hessd-7-4371-2010"
+        accessed: "2026-10-13"
+      value:
+        min: 22.8
+        max: 25.4
+      note: "October 1993 northern depth profile, surface to 240 m."
+    - source:
+        kind: "literature"
+        title: "Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M., Eccles,\
+          \ D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and Oceanography\
+          \ 50(2), 727-732."
+        url: "https://doi.org/10.4319/lo.2005.50.2.0727"
+        accessed: "2026-10-13"
+      value:
+        max: 28
+      note: "Approximate summer surface maximum; winter surface water is described as below 24 C."
+    - source:
+        kind: "literature"
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+          \ of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after\
+          \ Jackson et al. (1963) and Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+        accessed: "2026-10-13"
+      value:
+        min: 23
+        max: 25
+      note: "Jackson et al. surface temperatures reproduced in the FAO reference table; restricted sampling interval."
+    tolerance:
+      value:
+        min: 21
+        max: 29
+      confidence: "low"
+      rationale: "All four full-profile runs propose 21 to 29 C, and the tally confirms unanimous agreement with\
+        \ low confidence. Species-labelled guidance is narrower: the Nordic register gives 23 to 28 C, Einrichtungsbeispiele\
+        \ 24 to 26 C, B-Aqua 24 to 27 C and Clarke recommends 26 C. Related C. virginalis and C. chrysonotus sheets\
+        \ give 25 to 29 C; C. azureus gives 26 to 28 C. Malawi.si aquarium setup gives 23 to 28 C, while its separate\
+        \ water table targets 25 to 26 C. The natural envelope supplies the required 21 C lower boundary. Long-term\
+        \ aquarium health at both endpoints remains untested; 24 to 26 C has stronger direct care support."
+      sources:
+      - kind: "database"
+        title: "Nordiska Ciklidsallskapet species register: Copadichromis mloto"
+        url: "https://www.ciklid.org/artregister/art.php?ID=1335"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Einrichtungsbeispiele: Copadichromis mloto husbandry profile"
+        url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/copadichromis-mloto-slnk.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Copadichromis virginalis husbandry profile"
+        url: "https://www.seriouslyfish.com/species/copadichromis-virginalis/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Copadichromis chrysonotus"
+        url: "https://seriouslyfish.com/species/copadichromis-chrysonotus"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Copadichromis azureus"
+        url: "https://seriouslyfish.com/species/copadichromis-azureus"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Clarke, M. (2005). Copadichromis mloto. Practical Fishkeeping"
+        url: "https://www.practicalfishkeeping.co.uk/features/copadichromis-mloto/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "B-Aqua: Copadichromis mloto maintenance entry, revised 2 March 2026"
+        url: "https://www.b-aqua.com/pages/fiche.aspx?id=1175"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Malawi.si: Lake Malawi Aquarium Setup, general hobby guidance"
+        url: "https://www.malawi.si/slides/Lake%20Malawi%20Aquarium%20Setup.html"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology\
+          \ and Oceanography 19(5), 730-742 (abstract)."
+        url: "https://doi.org/10.4319/lo.1974.19.5.0730"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al.\
+          \ (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin:\
+          \ local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+        url: "https://doi.org/10.5194/hessd-7-4371-2010"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M., Eccles,\
+          \ D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and Oceanography\
+          \ 50(2), 727-732."
+        url: "https://doi.org/10.4319/lo.2005.50.2.0727"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+          \ of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after\
+          \ Jackson et al. (1963) and Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+        accessed: "2026-10-13"
+      evidence:
+      - source:
+          kind: "database"
+          title: "Nordiska Ciklidsallskapet species register: Copadichromis mloto"
+          url: "https://www.ciklid.org/artregister/art.php?ID=1335"
+          accessed: "2026-10-13"
+        value:
+          min: 23
+          max: 28
+        note: "Species-labelled aquarium advice, with trade-name ambiguity."
+      - source:
+          kind: "database"
+          title: "Einrichtungsbeispiele: Copadichromis mloto husbandry profile"
+          url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/copadichromis-mloto-slnk.html"
+          accessed: "2026-10-13"
+        value:
+          min: 24
+          max: 26
+        note: "Species-labelled aquarium recommendation."
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Copadichromis virginalis husbandry profile"
+          url: "https://www.seriouslyfish.com/species/copadichromis-virginalis/"
+          accessed: "2026-10-13"
+        value:
+          min: 25
+          max: 29
+        note: "Related taxon only; not proof of true mloto tolerance."
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Copadichromis chrysonotus"
+          url: "https://seriouslyfish.com/species/copadichromis-chrysonotus"
+          accessed: "2026-10-13"
+        value:
+          min: 25
+          max: 29
+        note: "genus relative"
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Copadichromis azureus"
+          url: "https://seriouslyfish.com/species/copadichromis-azureus"
+          accessed: "2026-10-13"
+        value:
+          min: 26
+          max: 28
+        note: "genus relative"
+      - source:
+          kind: "literature"
+          title: "Clarke, M. (2005). Copadichromis mloto. Practical Fishkeeping"
+          url: "https://www.practicalfishkeeping.co.uk/features/copadichromis-mloto/"
+          accessed: "2026-10-13"
+        value:
+          min: 26
+          max: 26
+        note: "single value for this species"
+      - source:
+          kind: "database"
+          title: "B-Aqua: Copadichromis mloto maintenance entry, revised 2 March 2026"
+          url: "https://www.b-aqua.com/pages/fiche.aspx?id=1175"
+          accessed: "2026-10-13"
+        value:
+          min: 24
+          max: 27
+        note: "Species-labelled maintenance range."
+      - source:
+          kind: "website"
+          title: "Malawi.si: Lake Malawi Aquarium Setup, general hobby guidance"
+          url: "https://www.malawi.si/slides/Lake%20Malawi%20Aquarium%20Setup.html"
+          accessed: "2026-10-13"
+        value:
+          min: 23
+          max: 28
+        note: "General Malawi aquarium guidance."
+      - source:
+          kind: "literature"
+          title: "Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology\
+            \ and Oceanography 19(5), 730-742 (abstract)."
+          url: "https://doi.org/10.4319/lo.1974.19.5.0730"
+          accessed: "2026-10-13"
+        value:
+          min: 21
+          max: 27
+        note: "Abstract only: cool inshore water and May upper-layer temperature, not a full-year maximum."
+      - source:
+          kind: "literature"
+          title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et\
+            \ al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin:\
+            \ local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+          url: "https://doi.org/10.5194/hessd-7-4371-2010"
+          accessed: "2026-10-13"
+        value:
+          min: 22.8
+          max: 25.4
+        note: "October 1993 northern depth profile, surface to 240 m."
+      - source:
+          kind: "literature"
+          title: "Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M., Eccles,\
+            \ D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and\
+            \ Oceanography 50(2), 727-732."
+          url: "https://doi.org/10.4319/lo.2005.50.2.0727"
+          accessed: "2026-10-13"
+        value:
+          max: 28
+        note: "Approximate summer surface maximum; winter surface water is described as below 24 C."
+      - source:
+          kind: "literature"
+          title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+            \ of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after\
+            \ Jackson et al. (1963) and Talling and Talling (1965)."
+          url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+          accessed: "2026-10-13"
+        value:
+          min: 23
+          max: 25
+        note: "Jackson et al. surface temperatures reproduced in the FAO reference table; restricted sampling interval."
+      verification:
+        method: "unanimous"
+        votes:
+          agree: 4
+          total: 4
+    verification:
+      method: "waterbody"
+      waterbody: "lake-malawi"
+  ph:
+    value:
+      min: 7.7
+      max: 8.6
+    confidence: "high"
+    rationale: "The waterbody decision fixes the Lake Malawi surface interval at pH 7.7 to 8.6. The FAO reference\
+      \ table reproduces Jackson et al. measurements with those endpoints. Branchu discusses 7.5 to 8.5 across the\
+      \ water column, including deeper water. Its lower pH is retained as contextual evidence without changing the\
+      \ mandated inhabited-lake envelope."
+    sources:
+    - kind: "literature"
+      title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al.\
+        \ (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin: local\
+        \ versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+      url: "https://doi.org/10.5194/hessd-7-4371-2010"
+      accessed: "2026-10-12"
+    - kind: "literature"
+      title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of\
+        \ Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after Jackson\
+        \ et al. (1963) and Talling and Talling (1965)."
+      url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology\
+        \ and Oceanography 19(5), 730-742 (abstract)."
+      url: "https://doi.org/10.4319/lo.1974.19.5.0730"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M., Eccles,\
+        \ D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and Oceanography\
+        \ 50(2), 727-732."
+      url: "https://doi.org/10.4319/lo.2005.50.2.0727"
+      accessed: "2026-10-12"
+    - kind: "literature"
+      title: "Vollmer, M. K., Weiss, R. F. and Bootsma, H. A. (1999). Lake Malawi/Nyasa deep water renewal. In:\
+        \ Bootsma, H. A. and Hecky, R. E. (eds.), Water Quality Report, SADC/GEF Lake Malawi/Nyasa Biodiversity\
+        \ Conservation Project, chapter 4."
+      url: "https://sites.uwm.edu/hbootsma/files/2020/11/Ch4-Lake-Internal-Mixing.pdf"
+      accessed: "2026-10-12"
+    - kind: "literature"
+      title: "Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. PhD dissertation, University of Wisconsin-Milwaukee."
+      url: "https://minds.wisconsin.edu/handle/1793/91765"
+      accessed: "2026-10-12"
+    - kind: "literature"
+      title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al.\
+        \ (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin: local\
+        \ versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+      url: "https://doi.org/10.5194/hessd-7-4371-2010"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "literature"
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+          \ of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after\
+          \ Jackson et al. (1963) and Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+        accessed: "2026-10-13"
+      value:
+        min: 7.7
+        max: 8.6
+      note: "Jackson et al. lake surface measurements compiled by FAO."
+    - source:
+        kind: "literature"
+        title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al.\
+          \ (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin:\
+          \ local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+        url: "https://doi.org/10.5194/hessd-7-4371-2010"
+        accessed: "2026-10-13"
+      value:
+        min: 7.5
+        max: 8.5
+      note: "Discussion gives water-column context that includes deeper water."
+    tolerance:
+      value:
+        min: 7.5
+        max: 8.6
+      confidence: "medium"
+      rationale: "Generator, checker-a and checker-c propose 7.5 to 8.6; checker-b proposes 7.5 to 8.7. The tally\
+        \ treats their bounds as agreement and takes the median upper bound of 8.6, with unanimous verification\
+        \ and medium confidence. Species-labelled sheets agree on 7.5 to 8.5 and the natural upper value requires\
+        \ inclusion of 8.6. The wider Malawi.si aquarium range of 7.6 to 8.7 is retained in evidence rather than\
+        \ presented as a demonstrated species-specific long-term limit."
+      sources:
+      - kind: "database"
+        title: "Einrichtungsbeispiele: Copadichromis mloto husbandry profile"
+        url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/copadichromis-mloto-slnk.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsallskapet species register: Copadichromis mloto"
+        url: "https://www.ciklid.org/artregister/art.php?ID=1335"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "OATA care sheet: African Malawi cichlids, general aquarium guidance"
+        url: "https://ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-freshwater-fish/how-to-look-after-african-malawi-cichlids/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Copadichromis chrysonotus"
+        url: "https://seriouslyfish.com/species/copadichromis-chrysonotus"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Copadichromis azureus"
+        url: "https://seriouslyfish.com/species/copadichromis-azureus"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Clarke, M. (2005). Copadichromis mloto. Practical Fishkeeping"
+        url: "https://www.practicalfishkeeping.co.uk/features/copadichromis-mloto/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "B-Aqua: Copadichromis mloto maintenance entry, revised 2 March 2026"
+        url: "https://www.b-aqua.com/pages/fiche.aspx?id=1175"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Malawi.si: Lake Malawi Aquarium Setup, general hobby guidance"
+        url: "https://www.malawi.si/slides/Lake%20Malawi%20Aquarium%20Setup.html"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+          \ of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after\
+          \ Jackson et al. (1963) and Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al.\
+          \ (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin:\
+          \ local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+        url: "https://doi.org/10.5194/hessd-7-4371-2010"
+        accessed: "2026-10-13"
+      evidence:
+      - source:
+          kind: "database"
+          title: "Einrichtungsbeispiele: Copadichromis mloto husbandry profile"
+          url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/copadichromis-mloto-slnk.html"
+          accessed: "2026-10-13"
+        value:
+          min: 7.5
+          max: 8.5
+      - source:
+          kind: "database"
+          title: "Nordiska Ciklidsallskapet species register: Copadichromis mloto"
+          url: "https://www.ciklid.org/artregister/art.php?ID=1335"
+          accessed: "2026-10-13"
+        value:
+          min: 7.5
+          max: 8.5
+      - source:
+          kind: "database"
+          title: "OATA care sheet: African Malawi cichlids, general aquarium guidance"
+          url: "https://ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-freshwater-fish/how-to-look-after-african-malawi-cichlids/"
+          accessed: "2026-10-13"
+        value:
+          min: 8
+          max: 8.6
+        note: "Malawi cichlids as a group."
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Copadichromis chrysonotus"
+          url: "https://seriouslyfish.com/species/copadichromis-chrysonotus"
+          accessed: "2026-10-13"
+        value:
+          min: 7.5
+          max: 8.5
+        note: "genus relative"
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Copadichromis azureus"
+          url: "https://seriouslyfish.com/species/copadichromis-azureus"
+          accessed: "2026-10-13"
+        value:
+          min: 7.5
+          max: 8.5
+        note: "genus relative"
+      - source:
+          kind: "literature"
+          title: "Clarke, M. (2005). Copadichromis mloto. Practical Fishkeeping"
+          url: "https://www.practicalfishkeeping.co.uk/features/copadichromis-mloto/"
+          accessed: "2026-10-13"
+        value:
+          min: 8.2
+          max: 8.2
+      - source:
+          kind: "database"
+          title: "B-Aqua: Copadichromis mloto maintenance entry, revised 2 March 2026"
+          url: "https://www.b-aqua.com/pages/fiche.aspx?id=1175"
+          accessed: "2026-10-13"
+        value:
+          min: 7.5
+          max: 8.5
+        note: "Species-labelled maintenance recommendation."
+      - source:
+          kind: "website"
+          title: "Malawi.si: Lake Malawi Aquarium Setup, general hobby guidance"
+          url: "https://www.malawi.si/slides/Lake%20Malawi%20Aquarium%20Setup.html"
+          accessed: "2026-10-13"
+        value:
+          min: 7.6
+          max: 8.7
+        note: "General Malawi aquarium tolerance guidance, not a species trial."
+      - source:
+          kind: "literature"
+          title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+            \ of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after\
+            \ Jackson et al. (1963) and Talling and Talling (1965)."
+          url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+          accessed: "2026-10-13"
+        value:
+          min: 7.7
+          max: 8.6
+        note: "Jackson et al. lake surface measurements compiled by FAO."
+      - source:
+          kind: "literature"
+          title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et\
+            \ al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin:\
+            \ local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+          url: "https://doi.org/10.5194/hessd-7-4371-2010"
+          accessed: "2026-10-13"
+        value:
+          min: 7.5
+          max: 8.5
+        note: "Discussion gives water-column context that includes deeper water."
+      verification:
+        method: "unanimous"
+        votes:
+          agree: 4
+          total: 4
+    verification:
+      method: "waterbody"
+      waterbody: "lake-malawi"
+  ghDgh:
+    value:
+      min: 3
+      max: 5
+    confidence: "high"
+    rationale: "The waterbody decision fixes 3 to 5 dGH. Branchu calcium and magnesium concentrations in the upper\
+      \ 50 m yield about 4.2 to 4.6 dGH. The earlier calcium and magnesium data compiled by FAO yield about 3.2\
+      \ to 4.9 dGH across the historical measurements. Rounding that measured span explains the lake interval; alkalinity\
+      \ and aquarium recommendations are separate quantities."
+    sources:
+    - kind: "literature"
+      title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al.\
+        \ (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin: local\
+        \ versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+      url: "https://doi.org/10.5194/hessd-7-4371-2010"
+      accessed: "2026-10-12"
+    - kind: "literature"
+      title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of\
+        \ Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after Jackson\
+        \ et al. (1963) and Talling and Talling (1965)."
+      url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology\
+        \ and Oceanography 19(5), 730-742 (abstract)."
+      url: "https://doi.org/10.4319/lo.1974.19.5.0730"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M., Eccles,\
+        \ D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and Oceanography\
+        \ 50(2), 727-732."
+      url: "https://doi.org/10.4319/lo.2005.50.2.0727"
+      accessed: "2026-10-12"
+    - kind: "literature"
+      title: "Vollmer, M. K., Weiss, R. F. and Bootsma, H. A. (1999). Lake Malawi/Nyasa deep water renewal. In:\
+        \ Bootsma, H. A. and Hecky, R. E. (eds.), Water Quality Report, SADC/GEF Lake Malawi/Nyasa Biodiversity\
+        \ Conservation Project, chapter 4."
+      url: "https://sites.uwm.edu/hbootsma/files/2020/11/Ch4-Lake-Internal-Mixing.pdf"
+      accessed: "2026-10-12"
+    - kind: "literature"
+      title: "Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. PhD dissertation, University of Wisconsin-Milwaukee."
+      url: "https://minds.wisconsin.edu/handle/1793/91765"
+      accessed: "2026-10-12"
+    - kind: "literature"
+      title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al.\
+        \ (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin: local\
+        \ versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+      url: "https://doi.org/10.5194/hessd-7-4371-2010"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "literature"
+        title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al.\
+          \ (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin:\
+          \ local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+        url: "https://doi.org/10.5194/hessd-7-4371-2010"
+        accessed: "2026-10-13"
+      value:
+        min: 4.2
+        max: 4.6
+      note: "Calculated from paired calcium and magnesium concentrations in Table 2, upper 50 m."
+    - source:
+        kind: "literature"
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+          \ of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after\
+          \ Jackson et al. (1963) and Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+        accessed: "2026-10-13"
+      value:
+        min: 3.2
+        max: 4.9
+      note: "Historical calcium and magnesium measurements converted to dGH; includes the Talling and Talling values."
+    tolerance:
+      value:
+        min: 3
+        max: 15
+      confidence: "medium"
+      rationale: "Generator, checker-b, checker-c, tiebreaker-1 and tiebreaker-2 propose 3 to 15 dGH; checker-a\
+        \ proposes 3 to 25 dGH. The tally decides 3 to 15 by qualified majority, 5 of 6 votes, with medium confidence.\
+        \ Einrichtungsbeispiele gives 5 to 15 dGH and the Malawi.si water table gives 3 to 15. The natural 3 to\
+        \ 5 dGH interval is included. Wider recommendations remain explicit: B-Aqua gives 10 to 25 dGH, related\
+        \ Copadichromis sheets give 10 to 25, and OATA gives 12 to 18 for Malawi cichlids collectively. Their higher\
+        \ endpoints lack secure species-specific chronic-health evidence and do not extend the decided ceiling.\
+        \ Clarke states no numerical GH range."
+      sources:
+      - kind: "database"
+        title: "Einrichtungsbeispiele: Copadichromis mloto husbandry profile"
+        url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/copadichromis-mloto-slnk.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "OATA care sheet: African Malawi cichlids, general aquarium guidance"
+        url: "https://ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-freshwater-fish/how-to-look-after-african-malawi-cichlids/"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Malawi.si: Lake Malawi Aquarium Setup, general hobby guidance"
+        url: "https://www.malawi.si/slides/Lake%20Malawi%20Aquarium%20Setup.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "B-Aqua: Copadichromis mloto maintenance entry, revised 2 March 2026"
+        url: "https://www.b-aqua.com/pages/fiche.aspx?id=1175"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Malawi.si: Lake Malawi Water, structured lake and aquarium parameter table"
+        url: "https://www.malawi.si/slides/Lake%20Malawi%20Water.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Copadichromis virginalis husbandry profile"
+        url: "https://www.seriouslyfish.com/species/copadichromis-virginalis/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Copadichromis chrysonotus"
+        url: "https://seriouslyfish.com/species/copadichromis-chrysonotus"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Copadichromis azureus"
+        url: "https://seriouslyfish.com/species/copadichromis-azureus"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Clarke, M. (2005). Copadichromis mloto. Practical Fishkeeping"
+        url: "https://www.practicalfishkeeping.co.uk/features/copadichromis-mloto/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al.\
+          \ (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin:\
+          \ local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+        url: "https://doi.org/10.5194/hessd-7-4371-2010"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+          \ of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after\
+          \ Jackson et al. (1963) and Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+        accessed: "2026-10-13"
+      evidence:
+      - source:
+          kind: "database"
+          title: "Einrichtungsbeispiele: Copadichromis mloto husbandry profile"
+          url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/copadichromis-mloto-slnk.html"
+          accessed: "2026-10-13"
+        value:
+          min: 5
+          max: 15
+        note: "Species-labelled recommendation."
+      - source:
+          kind: "database"
+          title: "OATA care sheet: African Malawi cichlids, general aquarium guidance"
+          url: "https://ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-freshwater-fish/how-to-look-after-african-malawi-cichlids/"
+          accessed: "2026-10-13"
+        value:
+          min: 12
+          max: 18
+        note: "Group guidance only; upper 18 is not adopted."
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Copadichromis chrysonotus"
+          url: "https://seriouslyfish.com/species/copadichromis-chrysonotus"
+          accessed: "2026-10-13"
+        value:
+          min: 10
+          max: 25
+        note: "genus relative"
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Copadichromis azureus"
+          url: "https://seriouslyfish.com/species/copadichromis-azureus"
+          accessed: "2026-10-13"
+        value:
+          min: 10
+          max: 25
+        note: "genus relative"
+      - source:
+          kind: "website"
+          title: "Malawi.si: Lake Malawi Aquarium Setup, general hobby guidance"
+          url: "https://www.malawi.si/slides/Lake%20Malawi%20Aquarium%20Setup.html"
+          accessed: "2026-10-13"
+        value:
+          min: 3
+          max: 15
+        note: "General Malawi aquarium guidance explicitly allows natural soft water."
+      - source:
+          kind: "database"
+          title: "B-Aqua: Copadichromis mloto maintenance entry, revised 2 March 2026"
+          url: "https://www.b-aqua.com/pages/fiche.aspx?id=1175"
+          accessed: "2026-10-13"
+        value:
+          min: 10
+          max: 25
+        note: "Wider care-sheet range; not treated as a habitat measurement."
+      - source:
+          kind: "database"
+          title: "Malawi.si: Lake Malawi Water, structured lake and aquarium parameter table"
+          url: "https://www.malawi.si/slides/Lake%20Malawi%20Water.html"
+          accessed: "2026-10-13"
+        value:
+          min: 3
+          max: 15
+        note: "General Malawi aquarium husbandry range, extrapolated to C. mloto."
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Copadichromis virginalis husbandry profile"
+          url: "https://www.seriouslyfish.com/species/copadichromis-virginalis/"
+          accessed: "2026-10-13"
+        value:
+          min: 10
+          max: 25
+        note: "Recommendation for C. virginalis; comparative congener evidence, not a securely identified C. mloto\
+          \ tolerance."
+      - source:
+          kind: "literature"
+          title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et\
+            \ al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin:\
+            \ local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+          url: "https://doi.org/10.5194/hessd-7-4371-2010"
+          accessed: "2026-10-13"
+        value:
+          min: 4.2
+          max: 4.6
+        note: "Calculated from paired calcium and magnesium concentrations in Table 2, upper 50 m."
+      - source:
+          kind: "literature"
+          title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+            \ of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after\
+            \ Jackson et al. (1963) and Talling and Talling (1965)."
+          url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+          accessed: "2026-10-13"
+        value:
+          min: 3.2
+          max: 4.9
+        note: "Historical calcium and magnesium measurements converted to dGH; includes the Talling and Talling\
+          \ values."
+      verification:
+        method: "qualified-majority"
+        votes:
+          agree: 5
+          total: 6
+    verification:
+      method: "waterbody"
+      waterbody: "lake-malawi"
+  khDkh:
+    value:
+      min: 5
+      max: 8
+    confidence: "high"
+    rationale: "The natural Lake Malawi value is exactly 5 to 8 dKH, with high confidence and no verification object.\
+      \ Branchu alkalinity of about 2.334 to 2.461 meq/L converts to 6.5 to 6.9 dKH, while the Jackson data in the\
+      \ FAO reference table convert to 5.6 to 7.3 dKH. The rounded lake envelope contains both. This is alkalinity\
+      \ expressed as aquarium KH, not a calcium and magnesium hardness measurement; sodium helps explain why KH\
+      \ can exceed GH."
+    sources:
+    - kind: "literature"
+      title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al.\
+        \ (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin: local\
+        \ versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+      url: "https://doi.org/10.5194/hessd-7-4371-2010"
+      accessed: "2026-10-12"
+    - kind: "literature"
+      title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of\
+        \ Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after Jackson\
+        \ et al. (1963) and Talling and Talling (1965)."
+      url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology\
+        \ and Oceanography 19(5), 730-742 (abstract)."
+      url: "https://doi.org/10.4319/lo.1974.19.5.0730"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M., Eccles,\
+        \ D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and Oceanography\
+        \ 50(2), 727-732."
+      url: "https://doi.org/10.4319/lo.2005.50.2.0727"
+      accessed: "2026-10-12"
+    - kind: "literature"
+      title: "Vollmer, M. K., Weiss, R. F. and Bootsma, H. A. (1999). Lake Malawi/Nyasa deep water renewal. In:\
+        \ Bootsma, H. A. and Hecky, R. E. (eds.), Water Quality Report, SADC/GEF Lake Malawi/Nyasa Biodiversity\
+        \ Conservation Project, chapter 4."
+      url: "https://sites.uwm.edu/hbootsma/files/2020/11/Ch4-Lake-Internal-Mixing.pdf"
+      accessed: "2026-10-12"
+    - kind: "literature"
+      title: "Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. PhD dissertation, University of Wisconsin-Milwaukee."
+      url: "https://minds.wisconsin.edu/handle/1793/91765"
+      accessed: "2026-10-12"
+    - kind: "literature"
+      title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al.\
+        \ (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin: local\
+        \ versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+      url: "https://doi.org/10.5194/hessd-7-4371-2010"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "literature"
+        title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al.\
+          \ (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin:\
+          \ local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+        url: "https://doi.org/10.5194/hessd-7-4371-2010"
+        accessed: "2026-10-13"
+      value:
+        min: 6.5
+        max: 6.9
+      note: "Table 2 alkalinity in meq/L multiplied by 2.8."
+    - source:
+        kind: "literature"
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+          \ of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after\
+          \ Jackson et al. (1963) and Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+        accessed: "2026-10-13"
+      value:
+        min: 5.6
+        max: 7.3
+      note: "Jackson alkalinity of 2.00 to 2.59 meq/L expressed in dKH."
+    tolerance:
+      value:
+        min: 5
+        max: 10
+      confidence: "low"
+      rationale: "Generator, checker-a and tiebreaker-2 propose 5 to 15 dKH; checker-b and tiebreaker-1 propose\
+        \ 5 to 12; checker-c proposes 5 to 10. No candidate reaches the required four agreeing votes. The tally\
+        \ therefore intersects all six proposals conservatively at 5 to 10 dKH and keeps confidence low; the natural\
+        \ 5 to 8 interval already fits inside it. JBL gives 5 to 10 in a commercial Malawi aquarium example. Wider\
+        \ source recommendations are 6 to 12 from Malawi.si, 6 to 15 from the Einrichtungsbeispiele genus article\
+        \ and 10 to 15 from OATA. Narrowing their upper extent is a planner precaution, not evidence that 12 or\
+        \ 15 dKH harms C. mloto. Related-species pH and GH figures cannot independently supply KH values, and no\
+        \ verified species-specific long-term KH study was found."
+      sources:
+      - kind: "website"
+        title: "Einrichtungsbeispiele: Copadichromis genus husbandry article"
+        url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/copadichromis-slnk.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "OATA care sheet: African Malawi cichlids, general aquarium guidance"
+        url: "https://ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-freshwater-fish/how-to-look-after-african-malawi-cichlids/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Copadichromis chrysonotus"
+        url: "https://seriouslyfish.com/species/copadichromis-chrysonotus"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Copadichromis azureus"
+        url: "https://seriouslyfish.com/species/copadichromis-azureus"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Malawi.si: Lake Malawi Aquarium Setup, general hobby guidance"
+        url: "https://www.malawi.si/slides/Lake%20Malawi%20Aquarium%20Setup.html"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "JBL: Malawi Rocks aquarium example and commercial water guidance"
+        url: "https://www.jbl.de/en/areas/section/37/rocky-reef-aquarium-type-jbl-malawi-rocks?country=us"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Malawi.si: Lake Malawi Water, structured lake and aquarium parameter table"
+        url: "https://www.malawi.si/slides/Lake%20Malawi%20Water.html"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al.\
+          \ (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin:\
+          \ local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+        url: "https://doi.org/10.5194/hessd-7-4371-2010"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+          \ of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after\
+          \ Jackson et al. (1963) and Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+        accessed: "2026-10-13"
+      evidence:
+      - source:
+          kind: "website"
+          title: "Einrichtungsbeispiele: Copadichromis genus husbandry article"
+          url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/copadichromis-slnk.html"
+          accessed: "2026-10-13"
+        value:
+          min: 6
+          max: 15
+        note: "Genus-level aquarium recommendation only."
+      - source:
+          kind: "database"
+          title: "OATA care sheet: African Malawi cichlids, general aquarium guidance"
+          url: "https://ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-freshwater-fish/how-to-look-after-african-malawi-cichlids/"
+          accessed: "2026-10-13"
+        value:
+          min: 10
+          max: 15
+        note: "General Malawi aquarium recommendation only."
+      - source:
+          kind: "website"
+          title: "Malawi.si: Lake Malawi Aquarium Setup, general hobby guidance"
+          url: "https://www.malawi.si/slides/Lake%20Malawi%20Aquarium%20Setup.html"
+          accessed: "2026-10-13"
+        value:
+          min: 6
+          max: 12
+        note: "General Malawi aquarium guidance."
+      - source:
+          kind: "website"
+          title: "JBL: Malawi Rocks aquarium example and commercial water guidance"
+          url: "https://www.jbl.de/en/areas/section/37/rocky-reef-aquarium-type-jbl-malawi-rocks?country=us"
+          accessed: "2026-10-13"
+        value:
+          min: 5
+          max: 10
+        note: "General Malawi aquarium water recommendation, not C. mloto-specific."
+      - source:
+          kind: "database"
+          title: "Malawi.si: Lake Malawi Water, structured lake and aquarium parameter table"
+          url: "https://www.malawi.si/slides/Lake%20Malawi%20Water.html"
+          accessed: "2026-10-13"
+        value:
+          min: 6
+          max: 12
+        note: "General Malawi aquarium alkalinity range, extrapolated to C. mloto."
+      - source:
+          kind: "literature"
+          title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et\
+            \ al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin:\
+            \ local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+          url: "https://doi.org/10.5194/hessd-7-4371-2010"
+          accessed: "2026-10-13"
+        value:
+          min: 6.5
+          max: 6.9
+        note: "Table 2 alkalinity in meq/L multiplied by 2.8."
+      - source:
+          kind: "literature"
+          title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources\
+            \ of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after\
+            \ Jackson et al. (1963) and Talling and Talling (1965)."
+          url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+          accessed: "2026-10-13"
+        value:
+          min: 5.6
+          max: 7.3
+        note: "Jackson alkalinity of 2.00 to 2.59 meq/L expressed in dKH."
+      verification:
+        method: "conservative"
+        votes:
+          agree: 3
+          total: 6
+  maxSizeCm:
+    value:
+      male: 14
+      female: 12
+    confidence: "low"
+    rationale: "Generator, checker-b and checker-c propose 14/12 cm; checker-a proposes 13/11. Retain 14/12 as a\
+      \ cautious typical aquarium estimate. FishBase gives 13.5 cm TL for male or unsexed fish, and the Nordic register\
+      \ gives 14 cm without a sex split. Clarke gives about 12 cm without separating sexes and mentions additional\
+      \ aquarium growth. The wider Einrichtungsbeispiele estimate is 16/12 cm, while B-Aqua gives 15 cm SL and FishFish\
+      \ gives 15/15 cm under uncertain trade identities. Standard length is not interchangeable with total length.\
+      \ Female 12 cm remains provisional; neither a reliable captive sex series nor a modern identity check establishes\
+      \ it."
+    sources:
+    - kind: "database"
+      title: "FishBase: Copadichromis mloto species summary"
+      url: "https://www.fishbase.se/summary/Copadichromis-mloto.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Nordiska Ciklidsallskapet species register: Copadichromis mloto"
+      url: "https://www.ciklid.org/artregister/art.php?ID=1335"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Clarke, M. (2005). Copadichromis mloto. Practical Fishkeeping"
+      url: "https://www.practicalfishkeeping.co.uk/features/copadichromis-mloto/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Einrichtungsbeispiele: Copadichromis mloto husbandry profile"
+      url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/copadichromis-mloto-slnk.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "B-Aqua: Copadichromis mloto maintenance entry, revised 2 March 2026"
+      url: "https://www.b-aqua.com/pages/fiche.aspx?id=1175"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishFish: Copadichromis mloto"
+      url: "https://www.fishfish.fr/poisson/copadichromis-mloto"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "database"
+        title: "FishBase: Copadichromis mloto species summary"
+        url: "https://www.fishbase.se/summary/Copadichromis-mloto.html"
+        accessed: "2026-10-13"
+      value:
+        male: 13.5
+      note: "Male or unsexed TL; female maximum unstated."
+    - source:
+        kind: "database"
+        title: "Nordiska Ciklidsallskapet species register: Copadichromis mloto"
+        url: "https://www.ciklid.org/artregister/art.php?ID=1335"
+        accessed: "2026-10-13"
+      value:
+        male: 14
+      note: "Unsexed register figure placed in the male field for comparison only."
+    - source:
+        kind: "literature"
+        title: "Clarke, M. (2005). Copadichromis mloto. Practical Fishkeeping"
+        url: "https://www.practicalfishkeeping.co.uk/features/copadichromis-mloto/"
+        accessed: "2026-10-13"
+      value:
+        male: 12
+      note: "Approximate unsexed figure; captive growth may exceed it."
+    - source:
+        kind: "database"
+        title: "Einrichtungsbeispiele: Copadichromis mloto husbandry profile"
+        url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/copadichromis-mloto-slnk.html"
+        accessed: "2026-10-13"
+      value:
+        male: 16
+        female: 12
+      note: "Older sheet combines several distinct mloto trade taxa."
+    - source:
+        kind: "database"
+        title: "FishFish: Copadichromis mloto"
+        url: "https://www.fishfish.fr/poisson/copadichromis-mloto"
+        accessed: "2026-10-13"
+      value:
+        male: 15
+        female: 15
+      note: "Community sheet also refers to an Ivory trade fish; identification uncertain."
+  predation:
+    value: 0
+    confidence: "medium"
+    rationale: "The tally decides level 0 by qualified majority: checker-a, checker-b, checker-c, tiebreaker-1 and\
+      \ tiebreaker-2 agree, against generator level 1. Turner describes the revised species as zooplanktivorous;\
+      \ Clarke and Oliver independently describe plankton feeding. Oliver qualifies the identity of his photographed\
+      \ specimens, so his observations corroborate rather than define the species. Level 0 permits incidental fry\
+      \ ingestion under the rubric. No consulted source demonstrates purposeful opportunistic capture of fish up\
+      \ to 2 cm; the generator proposal was a precautionary model inference rather than an observed threshold. Medium\
+      \ confidence does not guarantee fry survival."
+    sources:
+    - kind: "literature"
+      title: "Clarke, M. (2005). Copadichromis mloto. Practical Fishkeeping"
+      url: "https://www.practicalfishkeeping.co.uk/features/copadichromis-mloto/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Seriously Fish: Copadichromis chrysonotus"
+      url: "https://seriouslyfish.com/species/copadichromis-chrysonotus"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Turner et al. (2023; online 2022). Taxonomic investigation of the zooplanktivorous Lake Malawi cichlids\
+        \ Copadichromis mloto and C. virginalis"
+      url: "https://doi.org/10.1007/s10750-022-05025-1"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Oliver, M. K. The Cichlid Fishes of Lake Malawi: Copadichromis mloto"
+      url: "https://malawicichlids.com/mw08025.htm"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Anseeuw et al. (2012). Extensive introgression among ancestral mtDNA lineages in the Lake Malawi utaka"
+      url: "https://doi.org/10.1155/2012/865603"
+      accessed: "2026-10-13"
+    - kind: "catalog-of-fishes"
+      title: "Eschmeyer's Catalog of Fishes: Copadichromis species"
+      url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Copadichromis"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Nordiska Ciklidsallskapet species register: Copadichromis trewavasae"
+      url: "https://www.ciklid.org/artregister/art.php?ID=1340"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "Cichlid Room Companion, Copadichromis mloto"
+      url: "https://cichlidae.com/species.php?id=W77own6jU5OFiQib7CXTaA"
+      accessed: "2026-10-13"
+    - kind: "model-knowledge"
+      title: "Conservative aquarium planning inference for a small zooplanktivorous Malawi utaka"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "Imperial Tropicals retailer listing: Mloto Likoma, Copadichromis trewavasae"
+      url: "https://imperialtropicals.com/products/mloto-likoma-copadichromis-trewavasae"
+      accessed: "2026-10-13"
+    - kind: "archive"
+      title: "cichlids.com forum thread 67029"
+      url: "https://www.cichlids.com/disc/read.php?2,67029"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "literature"
+        title: "Turner et al. (2023; online 2022). Taxonomic investigation of the zooplanktivorous Lake Malawi cichlids\
+          \ Copadichromis mloto and C. virginalis"
+        url: "https://doi.org/10.1007/s10750-022-05025-1"
+        accessed: "2026-10-13"
+      value: 0
+      note: "Zooplanktivory supports non-piscivory; fry predation is not measured."
+    - source:
+        kind: "database"
+        title: "Oliver, M. K. The Cichlid Fishes of Lake Malawi: Copadichromis mloto"
+        url: "https://malawicichlids.com/mw08025.htm"
+        accessed: "2026-10-13"
+      value: 0
+      note: "Observed plankton capture; no fish prey report."
+    - source:
+        kind: "model-knowledge"
+        title: "Conservative aquarium planning inference for a small zooplanktivorous Malawi utaka"
+        accessed: "2026-10-13"
+      value: 1
+      note: "Precautionary inference for unprotected fry and very small fish."
+    - source:
+        kind: "literature"
+        title: "Clarke, M. (2005). Copadichromis mloto. Practical Fishkeeping"
+        url: "https://www.practicalfishkeeping.co.uk/features/copadichromis-mloto/"
+        accessed: "2026-10-13"
+      value: 0
+      note: "small plankton feeder"
+    - source:
+        kind: "database"
+        title: "Seriously Fish: Copadichromis chrysonotus"
+        url: "https://seriouslyfish.com/species/copadichromis-chrysonotus"
+        accessed: "2026-10-13"
+      value: 0
+      note: "Copadichromis are specialised zooplankton feeders"
+    - source:
+        kind: "literature"
+        title: "Anseeuw et al. (2012). Extensive introgression among ancestral mtDNA lineages in the Lake Malawi\
+          \ utaka"
+        url: "https://doi.org/10.1155/2012/865603"
+        accessed: "2026-10-13"
+      value: 0
+      note: "Rubric mapping from zooplanktivory of the former kajose taxon, now assigned largely to C. mloto."
+    verification:
+      method: "qualified-majority"
+      votes:
+        agree: 5
+        total: 6
+  diet:
+    value:
+      type: "invertivore"
+      bloatSensitive: false
+      foods:
+      - "Small aquatic crustaceans"
+      - "Cyclops or Daphnia"
+      - "Artemia"
+      - "Fine balanced cichlid pellets"
+      - "Small portions of mysis"
+    confidence: "medium"
+    rationale: "All four full-profile runs agree on invertivore and bloatSensitive false. The tally keeps the generator\
+      \ food list exactly, despite differences in food examples among checkers. Turner establishes zooplanktivory\
+      \ and Oliver describes capture of small crustaceans; Clarke supplies aquarium food experience. Prepared food\
+      \ containing plants does not establish a naturally omnivorous diet. The false bloat flag reflects the absence\
+      \ of evidence for the particular high-protein incompatibility defined in the rubric, not immunity to digestive\
+      \ disease. The tally assigns medium confidence."
+    sources:
+    - kind: "literature"
+      title: "Turner et al. (2023; online 2022). Taxonomic investigation of the zooplanktivorous Lake Malawi cichlids\
+        \ Copadichromis mloto and C. virginalis"
+      url: "https://doi.org/10.1007/s10750-022-05025-1"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Oliver, M. K. The Cichlid Fishes of Lake Malawi: Copadichromis mloto"
+      url: "https://malawicichlids.com/mw08025.htm"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Clarke, M. (2005). Copadichromis mloto. Practical Fishkeeping"
+      url: "https://www.practicalfishkeeping.co.uk/features/copadichromis-mloto/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Seriously Fish: Copadichromis azureus"
+      url: "https://seriouslyfish.com/species/copadichromis-azureus"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishBase: Copadichromis mloto species summary"
+      url: "https://www.fishbase.se/summary/Copadichromis-mloto.html"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Anseeuw et al. (2012). Extensive introgression among ancestral mtDNA lineages in the Lake Malawi utaka"
+      url: "https://doi.org/10.1155/2012/865603"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Seriously Fish: Copadichromis borleyi husbandry profile"
+      url: "https://www.seriouslyfish.com/species/copadichromis-borleyi/"
+      accessed: "2026-10-13"
+    - kind: "model-knowledge"
+      title: "Conservative aquarium planning inference for a small zooplanktivorous Malawi utaka"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "literature"
+        title: "Turner et al. (2023; online 2022). Taxonomic investigation of the zooplanktivorous Lake Malawi cichlids\
+          \ Copadichromis mloto and C. virginalis"
+        url: "https://doi.org/10.1007/s10750-022-05025-1"
+        accessed: "2026-10-13"
+      value:
+        type: "invertivore"
+      note: "Species and utaka ecology centre on zooplankton."
+    - source:
+        kind: "database"
+        title: "Oliver, M. K. The Cichlid Fishes of Lake Malawi: Copadichromis mloto"
+        url: "https://malawicichlids.com/mw08025.htm"
+        accessed: "2026-10-13"
+      value:
+        type: "invertivore"
+      note: "Small planktonic crustaceans are captured individually."
+    - source:
+        kind: "literature"
+        title: "Clarke, M. (2005). Copadichromis mloto. Practical Fishkeeping"
+        url: "https://www.practicalfishkeeping.co.uk/features/copadichromis-mloto/"
+        accessed: "2026-10-13"
+      value:
+        type: "invertivore"
+        foods:
+        - "Prepared flakes"
+        - "Mysis"
+        - "Artemia"
+      note: "Captive foods for fish labelled mloto."
+    - source:
+        kind: "model-knowledge"
+        title: "Conservative aquarium planning inference for a small zooplanktivorous Malawi utaka"
+        accessed: "2026-10-13"
+      value:
+        type: "invertivore"
+        bloatSensitive: false
+      note: "Flag inferred from feeding ecology, not a species-specific disease trial."
+    - source:
+        kind: "literature"
+        title: "Clarke, M. (2005). Copadichromis mloto. Practical Fishkeeping"
+        url: "https://www.practicalfishkeeping.co.uk/features/copadichromis-mloto/"
+        accessed: "2026-10-13"
+      value:
+        type: "invertivore"
+      note: "plankton feeder accepting frozen and dry foods"
+    - source:
+        kind: "database"
+        title: "Seriously Fish: Copadichromis azureus"
+        url: "https://seriouslyfish.com/species/copadichromis-azureus"
+        accessed: "2026-10-13"
+      value:
+        type: "invertivore"
+      note: "genus described as specialised zooplankton feeders"
+    - source:
+        kind: "database"
+        title: "FishBase: Copadichromis mloto species summary"
+        url: "https://www.fishbase.se/summary/Copadichromis-mloto.html"
+        accessed: "2026-10-13"
+      value:
+        type: "invertivore"
+      note: "estimated trophic level 3.4"
+    - source:
+        kind: "literature"
+        title: "Anseeuw et al. (2012). Extensive introgression among ancestral mtDNA lineages in the Lake Malawi\
+          \ utaka"
+        url: "https://doi.org/10.1155/2012/865603"
+        accessed: "2026-10-13"
+      value:
+        type: "invertivore"
+      note: "Kajose belongs to the midwater zooplanktivore assemblage; no bloat experiment."
+    - source:
+        kind: "literature"
+        title: "Clarke, M. (2005). Copadichromis mloto. Practical Fishkeeping"
+        url: "https://www.practicalfishkeeping.co.uk/features/copadichromis-mloto/"
+        accessed: "2026-10-13"
+      value:
+        type: "invertivore"
+        foods:
+        - "Artemia"
+        - "Mysis"
+        - "prepared flakes"
+        - "small insect larvae"
+      note: "Plankton feeding and animal aquarium foods support the diet assignment; no direct bloat-risk comparison."
+    - source:
+        kind: "literature"
+        title: "Clarke, M. (2005). Copadichromis mloto. Practical Fishkeeping"
+        url: "https://www.practicalfishkeeping.co.uk/features/copadichromis-mloto/"
+        accessed: "2026-10-13"
+      value:
+        type: "invertivore"
+        foods:
+        - "small frozen crustaceans"
+        - "prepared aquarium food"
+      note: "Species account supports invertebrate-rich feeding, but does not quantify bloat incidence."
+    - source:
+        kind: "database"
+        title: "Seriously Fish: Copadichromis borleyi husbandry profile"
+        url: "https://www.seriouslyfish.com/species/copadichromis-borleyi/"
+        accessed: "2026-10-13"
+      value:
+        type: "invertivore"
+      note: "Explicit feeding specialisation for the genus; secondary confirmation only."
+    verification:
+      method: "unanimous"
+      votes:
+        agree: 4
+        total: 4
+  aggressionConspecific:
+    value: 2
+    confidence: "low"
+    rationale: "Generator, checker-b and checker-c propose level 2; checker-a proposes level 1 because injuries\
+      \ are not reported. Retain level 2 as a cautious mapping of hierarchy and repeated courtship pursuit in a\
+      \ suitable female-biased adult unit. Clarke limits male numbers and congener guidance warns of rivalry and\
+      \ concentrated attention to females. No securely identified C. mloto study measures chase frequency or injury\
+      \ rates, so this is an inferred grade rather than an observed numerical score."
+    sources:
+    - kind: "literature"
+      title: "Clarke, M. (2005). Copadichromis mloto. Practical Fishkeeping"
+      url: "https://www.practicalfishkeeping.co.uk/features/copadichromis-mloto/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Einrichtungsbeispiele: Copadichromis mloto husbandry profile"
+      url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/copadichromis-mloto-slnk.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Seriously Fish: Copadichromis virginalis husbandry profile"
+      url: "https://www.seriouslyfish.com/species/copadichromis-virginalis/"
+      accessed: "2026-10-13"
+    - kind: "model-knowledge"
+      title: "Conservative aquarium planning inference for a small zooplanktivorous Malawi utaka"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Seriously Fish: Copadichromis chrysonotus"
+      url: "https://seriouslyfish.com/species/copadichromis-chrysonotus"
+      accessed: "2026-10-13"
+    - kind: "archive"
+      title: "cichlids.com forum thread 48580"
+      url: "https://www.cichlids.com/disc/read.php?2,48580"
+    evidence:
+    - source:
+        kind: "model-knowledge"
+        title: "Conservative aquarium planning inference for a small zooplanktivorous Malawi utaka"
+        accessed: "2026-10-13"
+      value: 2
+      note: "Rubric mapping, not an experimentally measured aggression score."
+    - source:
+        kind: "literature"
+        title: "Clarke, M. (2005). Copadichromis mloto. Practical Fishkeeping"
+        url: "https://www.practicalfishkeeping.co.uk/features/copadichromis-mloto/"
+        accessed: "2026-10-13"
+      value: 2
+      note: "Rubric inference from the recommended female group and limited number of males."
+    - source:
+        kind: "database"
+        title: "Seriously Fish: Copadichromis virginalis husbandry profile"
+        url: "https://www.seriouslyfish.com/species/copadichromis-virginalis/"
+        accessed: "2026-10-13"
+      value: 2
+      note: "Related species account describes rival territories and male pursuit; indirect support only."
+  aggressionHeterospecific:
+    value: 1
+    confidence: "medium"
+    rationale: "All four runs propose level 1. Independent species-labelled care accounts recommend quiet companions\
+      \ and describe limited competitive strength. Local defence around a spawning site is a reasonable rubric mapping;\
+      \ sustained attacks beyond it are not established. Independent support for mild behaviour justifies medium\
+      \ confidence, but the numeric grade remains an interpretation."
+    sources:
+    - kind: "literature"
+      title: "Clarke, M. (2005). Copadichromis mloto. Practical Fishkeeping"
+      url: "https://www.practicalfishkeeping.co.uk/features/copadichromis-mloto/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Einrichtungsbeispiele: Copadichromis mloto husbandry profile"
+      url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/copadichromis-mloto-slnk.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Seriously Fish: Copadichromis chrysonotus"
+      url: "https://seriouslyfish.com/species/copadichromis-chrysonotus"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "literature"
+        title: "Clarke, M. (2005). Copadichromis mloto. Practical Fishkeeping"
+        url: "https://www.practicalfishkeeping.co.uk/features/copadichromis-mloto/"
+        accessed: "2026-10-13"
+      value: 1
+      note: "Peaceful community recommendation mapped to the rubric."
+    - source:
+        kind: "database"
+        title: "Einrichtungsbeispiele: Copadichromis mloto husbandry profile"
+        url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/copadichromis-mloto-slnk.html"
+        accessed: "2026-10-13"
+      value: 1
+      note: "Low competitive strength mapped to the rubric."
+  territory:
+    value:
+      size: "small"
+      breedingOnly: true
+    confidence: "low"
+    rationale: "All four runs agree on a small breeding territory. Turner reports sand bowers, while care accounts\
+      \ associate defence with reproduction. No source measures the 30 cm scale used by the rubric or proves year-round\
+      \ absence of defence. Small and breedingOnly are therefore provisional mappings of the local spawning site,\
+      \ with low confidence despite agreement."
+    sources:
+    - kind: "literature"
+      title: "Turner et al. (2023; online 2022). Taxonomic investigation of the zooplanktivorous Lake Malawi cichlids\
+        \ Copadichromis mloto and C. virginalis"
+      url: "https://doi.org/10.1007/s10750-022-05025-1"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Einrichtungsbeispiele: Copadichromis mloto husbandry profile"
+      url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/copadichromis-mloto-slnk.html"
+      accessed: "2026-10-13"
+    - kind: "model-knowledge"
+      title: "Conservative aquarium planning inference for a small zooplanktivorous Malawi utaka"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Seriously Fish: Copadichromis chrysonotus"
+      url: "https://seriouslyfish.com/species/copadichromis-chrysonotus"
+      accessed: "2026-10-13"
+    - kind: "archive"
+      title: "cichlids.com forum thread 48580"
+      url: "https://www.cichlids.com/disc/read.php?2,48580"
+    - kind: "website"
+      title: "Einrichtungsbeispiele: Copadichromis genus husbandry article"
+      url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/copadichromis-slnk.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishFish: Copadichromis mloto"
+      url: "https://www.fishfish.fr/poisson/copadichromis-mloto"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "literature"
+        title: "Turner et al. (2023; online 2022). Taxonomic investigation of the zooplanktivorous Lake Malawi cichlids\
+          \ Copadichromis mloto and C. virginalis"
+        url: "https://doi.org/10.1007/s10750-022-05025-1"
+        accessed: "2026-10-13"
+      value:
+        breedingOnly: true
+      note: "Breeding males use bowers over sand."
+    - source:
+        kind: "model-knowledge"
+        title: "Conservative aquarium planning inference for a small zooplanktivorous Malawi utaka"
+        accessed: "2026-10-13"
+      value:
+        size: "small"
+        breedingOnly: true
+      note: "Spatial category inferred; actual defended dimensions unknown."
+    - source:
+        kind: "literature"
+        title: "Turner et al. (2023; online 2022). Taxonomic investigation of the zooplanktivorous Lake Malawi cichlids\
+          \ Copadichromis mloto and C. virginalis"
+        url: "https://doi.org/10.1007/s10750-022-05025-1"
+        accessed: "2026-10-13"
+      value:
+        size: "small"
+        breedingOnly: true
+      note: "Reports male bowers around 23 m depth; territory size and breeding-only status are inferred."
+    - source:
+        kind: "website"
+        title: "Einrichtungsbeispiele: Copadichromis genus husbandry article"
+        url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/copadichromis-slnk.html"
+        accessed: "2026-10-13"
+      value:
+        size: "small"
+        breedingOnly: true
+      note: "General genus breeding territories; does not quantify defended area."
+    - source:
+        kind: "database"
+        title: "FishFish: Copadichromis mloto"
+        url: "https://www.fishfish.fr/poisson/copadichromis-mloto"
+        accessed: "2026-10-13"
+      value:
+        size: "small"
+        breedingOnly: true
+      note: "Care-sheet male nest defence is seasonal, but this page also refers to the ambiguous Ivory trade form."
+  habitatZones:
+    value:
+    - "sand"
+    - "openWater"
+    confidence: "high"
+    rationale: "All four runs agree on sand and openWater. Turner identifies soft-bottom collections and sand bowers;\
+      \ Oliver independently describes water-column feeding shoals, while qualifying specimen identity. Sand represents\
+      \ the sand and mud habitat because the rubric has no mud category. The older Clarke account also mentions\
+      \ rocks with explicit uncertainty; that wider substrate description does not establish rock as a required\
+      \ zone for the revised species."
+    sources:
+    - kind: "literature"
+      title: "Turner et al. (2023; online 2022). Taxonomic investigation of the zooplanktivorous Lake Malawi cichlids\
+        \ Copadichromis mloto and C. virginalis"
+      url: "https://doi.org/10.1007/s10750-022-05025-1"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Oliver, M. K. The Cichlid Fishes of Lake Malawi: Copadichromis mloto"
+      url: "https://malawicichlids.com/mw08025.htm"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Clarke, M. (2005). Copadichromis mloto. Practical Fishkeeping"
+      url: "https://www.practicalfishkeeping.co.uk/features/copadichromis-mloto/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Seriously Fish: Copadichromis chrysonotus"
+      url: "https://seriouslyfish.com/species/copadichromis-chrysonotus"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Einrichtungsbeispiele: Copadichromis mloto husbandry profile"
+      url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/copadichromis-mloto-slnk.html"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "literature"
+        title: "Turner et al. (2023; online 2022). Taxonomic investigation of the zooplanktivorous Lake Malawi cichlids\
+          \ Copadichromis mloto and C. virginalis"
+        url: "https://doi.org/10.1007/s10750-022-05025-1"
+        accessed: "2026-10-13"
+      value:
+      - "sand"
+      - "openWater"
+      note: "Soft-bottom habitat with trawl records from 18 to 114 m."
+    - source:
+        kind: "database"
+        title: "Oliver, M. K. The Cichlid Fishes of Lake Malawi: Copadichromis mloto"
+        url: "https://malawicichlids.com/mw08025.htm"
+        accessed: "2026-10-13"
+      value:
+      - "openWater"
+      note: "Shoaling water-column feeding."
+    - source:
+        kind: "literature"
+        title: "Clarke, M. (2005). Copadichromis mloto. Practical Fishkeeping"
+        url: "https://www.practicalfishkeeping.co.uk/features/copadichromis-mloto/"
+        accessed: "2026-10-13"
+      value:
+      - "sand"
+      - "rock"
+      - "openWater"
+      note: "Older account suggests several substrates, including rocks; substrate attribution is explicitly uncertain."
+    - source:
+        kind: "database"
+        title: "Einrichtungsbeispiele: Copadichromis mloto husbandry profile"
+        url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/copadichromis-mloto-slnk.html"
+        accessed: "2026-10-13"
+      value:
+      - "sand"
+      - "openWater"
+      note: "Sand-based setup and schooling are recommended."
+  social:
+    value:
+      structure: "harem"
+      ratio: 4
+    confidence: "low"
+    rationale: "Generator proposes one male with four females; checker-a and checker-c propose one with three, while\
+      \ checker-b proposes a group of at least five but also recommends one male with four females at the minimum\
+      \ size. Choose harem with four females for the adult aquarium unit, combining the species-labelled five-fish\
+      \ recommendation with Clarke female-biased stocking and congener guidance. Natural feeding shoals do not establish\
+      \ a stable pair. The fourth female is a conservative distribution of courtship attention, not a measured natural\
+      \ ratio or a demonstrated species-specific threshold."
+    sources:
+    - kind: "literature"
+      title: "Clarke, M. (2005). Copadichromis mloto. Practical Fishkeeping"
+      url: "https://www.practicalfishkeeping.co.uk/features/copadichromis-mloto/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Einrichtungsbeispiele: Copadichromis mloto husbandry profile"
+      url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/copadichromis-mloto-slnk.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Seriously Fish: Copadichromis virginalis husbandry profile"
+      url: "https://www.seriouslyfish.com/species/copadichromis-virginalis/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Seriously Fish: Copadichromis chrysonotus"
+      url: "https://seriouslyfish.com/species/copadichromis-chrysonotus"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishBase: Copadichromis mloto species summary"
+      url: "https://www.fishbase.se/summary/Copadichromis-mloto.html"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "literature"
+        title: "Clarke, M. (2005). Copadichromis mloto. Practical Fishkeeping"
+        url: "https://www.practicalfishkeeping.co.uk/features/copadichromis-mloto/"
+        accessed: "2026-10-13"
+      value:
+        structure: "harem"
+      note: "Female-rich unit with one or two males in a large aquarium."
+    - source:
+        kind: "database"
+        title: "Einrichtungsbeispiele: Copadichromis mloto husbandry profile"
+        url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/copadichromis-mloto-slnk.html"
+        accessed: "2026-10-13"
+      value:
+        structure: "group"
+        minGroup: 5
+      note: "At least five fish; sexes not fixed."
+    - source:
+        kind: "database"
+        title: "Seriously Fish: Copadichromis virginalis husbandry profile"
+        url: "https://www.seriouslyfish.com/species/copadichromis-virginalis/"
+        accessed: "2026-10-13"
+      value:
+        structure: "harem"
+        ratio: 3
+      note: "Related-species recommendation of at least three females per male."
+    - source:
+        kind: "database"
+        title: "FishBase: Copadichromis mloto species summary"
+        url: "https://www.fishbase.se/summary/Copadichromis-mloto.html"
+        accessed: "2026-10-13"
+      value:
+        structure: "group"
+      note: "Schooling is explicit; no aquarium group minimum stated."
+    - source:
+        kind: "literature"
+        title: "Clarke, M. (2005). Copadichromis mloto. Practical Fishkeeping"
+        url: "https://www.practicalfishkeeping.co.uk/features/copadichromis-mloto/"
+        accessed: "2026-10-13"
+      value:
+        structure: "group"
+      note: "Supports a female group with one or two males; gives no numerical minimum."
+  speciesOnly:
+    value: false
+    confidence: "medium"
+    rationale: "All four full-profile runs agree on false, confirmed unanimously with medium confidence. Clarke\
+      \ and the species-labelled Einrichtungsbeispiele sheet allow placid companions from other genera; the congener\
+      \ care sheets corroborate that approach. Separate breeding stock may help establish parentage, but lifelong\
+      \ isolation with only conspecifics is not required. Older mloto care accounts have ambiguous taxonomic coverage."
+    sources:
+    - kind: "literature"
+      title: "Clarke, M. (2005). Copadichromis mloto. Practical Fishkeeping"
+      url: "https://www.practicalfishkeeping.co.uk/features/copadichromis-mloto/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Einrichtungsbeispiele: Copadichromis mloto husbandry profile"
+      url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/copadichromis-mloto-slnk.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Seriously Fish: Copadichromis chrysonotus"
+      url: "https://seriouslyfish.com/species/copadichromis-chrysonotus"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Seriously Fish: Copadichromis azureus"
+      url: "https://seriouslyfish.com/species/copadichromis-azureus"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "literature"
+        title: "Clarke, M. (2005). Copadichromis mloto. Practical Fishkeeping"
+        url: "https://www.practicalfishkeeping.co.uk/features/copadichromis-mloto/"
+        accessed: "2026-10-13"
+      value: false
+      note: "Permits placid Malawi tankmates."
+    - source:
+        kind: "database"
+        title: "Einrichtungsbeispiele: Copadichromis mloto husbandry profile"
+        url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/copadichromis-mloto-slnk.html"
+        accessed: "2026-10-13"
+      value: false
+      note: "Recommends only calm companion species, rather than complete isolation."
+    - source:
+        kind: "database"
+        title: "Seriously Fish: Copadichromis chrysonotus"
+        url: "https://seriouslyfish.com/species/copadichromis-chrysonotus"
+        accessed: "2026-10-13"
+      value: false
+      note: "tankmates other than Copadichromis and mbuna are fine"
+    verification:
+      method: "unanimous"
+      votes:
+        agree: 4
+        total: 4
+  hybridGroups:
+    value:
+    - "copadichromis"
+    confidence: "medium"
+    rationale: "All four full-profile runs agree on the existing copadichromis group, confirmed unanimously with\
+      \ medium confidence. Its basis is presumed. Seriously Fish repeats a genus-wide aquarium crossing warning\
+      \ on several profiles, but those pages share one editorial source. Anseeuw and colleagues infer ancient introgression\
+      \ involving Kajose ancestry and an unidentified donor; this is independent historical context, not a named\
+      \ contemporary cross or proof of every pair in the genus. The Catalog establishes genus membership only. C.\
+      \ mloto is already listed, so no group edit is needed."
+    sources:
+    - kind: "database"
+      title: "cichlids.com curated hybrid groups: copadichromis, presumed basis"
+      url: "file:/workspaces/cichlids.com/.claude/worktrees/species-profiles/data/species/hybrid-groups.yaml"
+      accessed: "2026-10-13"
+    - kind: "catalog-of-fishes"
+      title: "Eschmeyer's Catalog of Fishes: Copadichromis species"
+      url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Copadichromis"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Seriously Fish: Copadichromis borleyi husbandry profile"
+      url: "https://www.seriouslyfish.com/species/copadichromis-borleyi/"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Anseeuw et al. (2012). Extensive introgression among ancestral mtDNA lineages in the Lake Malawi utaka"
+      url: "https://doi.org/10.1155/2012/865603"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Seriously Fish: Copadichromis chrysonotus"
+      url: "https://seriouslyfish.com/species/copadichromis-chrysonotus"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Seriously Fish: Copadichromis azureus"
+      url: "https://seriouslyfish.com/species/copadichromis-azureus"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Turner et al. (2023; online 2022). Taxonomic investigation of the zooplanktivorous Lake Malawi cichlids\
+        \ Copadichromis mloto and C. virginalis"
+      url: "https://doi.org/10.1007/s10750-022-05025-1"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Seriously Fish: Copadichromis azureus"
+      url: "https://www.seriouslyfish.com/species/copadichromis-azureus/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Seriously Fish: Copadichromis virginalis husbandry profile"
+      url: "https://www.seriouslyfish.com/species/copadichromis-virginalis/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "cichlids.com curated hybrid groups: copadichromis, presumed basis"
+      url: "file:///workspaces/cichlids.com/.claude/worktrees/species-profiles/data/species/hybrid-groups.yaml"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "database"
+        title: "cichlids.com curated hybrid groups: copadichromis, presumed basis"
+        url: "file:/workspaces/cichlids.com/.claude/worktrees/species-profiles/data/species/hybrid-groups.yaml"
+        accessed: "2026-10-13"
+      value:
+      - "copadichromis"
+      note: "Exact curated membership; basis presumed."
+    - source:
+        kind: "catalog-of-fishes"
+        title: "Eschmeyer's Catalog of Fishes: Copadichromis species"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Copadichromis"
+        accessed: "2026-10-13"
+      value:
+      - "copadichromis"
+      note: "Valid genus assignment supports membership, not crossability."
+    - source:
+        kind: "database"
+        title: "Seriously Fish: Copadichromis borleyi husbandry profile"
+        url: "https://www.seriouslyfish.com/species/copadichromis-borleyi/"
+        accessed: "2026-10-13"
+      value:
+      - "copadichromis"
+      note: "Genus-wide aquarium caution; no mloto crossing pair identified."
+    - source:
+        kind: "literature"
+        title: "Anseeuw et al. (2012). Extensive introgression among ancestral mtDNA lineages in the Lake Malawi\
+          \ utaka"
+        url: "https://doi.org/10.1155/2012/865603"
+        accessed: "2026-10-13"
+      value:
+      - "copadichromis"
+      note: "Ancient introgression in kajose material; not proof of all pairwise tank crosses."
+    - source:
+        kind: "database"
+        title: "Seriously Fish: Copadichromis chrysonotus"
+        url: "https://seriouslyfish.com/species/copadichromis-chrysonotus"
+        accessed: "2026-10-13"
+      value:
+      - "copadichromis"
+      note: "advises against other Copadichromis because they can hybridise"
+    - source:
+        kind: "database"
+        title: "Seriously Fish: Copadichromis azureus"
+        url: "https://seriouslyfish.com/species/copadichromis-azureus"
+        accessed: "2026-10-13"
+      value:
+      - "copadichromis"
+      note: "same genus warning"
+    - source:
+        kind: "literature"
+        title: "Turner et al. (2023; online 2022). Taxonomic investigation of the zooplanktivorous Lake Malawi cichlids\
+          \ Copadichromis mloto and C. virginalis"
+        url: "https://doi.org/10.1007/s10750-022-05025-1"
+        accessed: "2026-10-13"
+      value:
+      - "copadichromis"
+      note: "reciprocally monophyletic sister clades with C. virginalis and shared ancestral variation"
+    - source:
+        kind: "database"
+        title: "Seriously Fish: Copadichromis azureus"
+        url: "https://www.seriouslyfish.com/species/copadichromis-azureus/"
+        accessed: "2026-10-13"
+      value:
+      - "copadichromis"
+      note: "Genus-wide aquarium hybrid warning, not a named C. mloto cross."
+    - source:
+        kind: "database"
+        title: "Seriously Fish: Copadichromis virginalis husbandry profile"
+        url: "https://www.seriouslyfish.com/species/copadichromis-virginalis/"
+        accessed: "2026-10-13"
+      value:
+      - "copadichromis"
+      note: "Same database repeats the genus warning; shared editorial origin."
+    - source:
+        kind: "database"
+        title: "cichlids.com curated hybrid groups: copadichromis, presumed basis"
+        url: "file:///workspaces/cichlids.com/.claude/worktrees/species-profiles/data/species/hybrid-groups.yaml"
+        accessed: "2026-10-13"
+      value:
+      - "copadichromis"
+      note: "Existing curated membership, basis presumed."
+    verification:
+      method: "unanimous"
+      votes:
+        agree: 4
+        total: 4
+  coloration:
+    value:
+      baseColors:
+      - "black"
+      - "grey"
+      - "yellow"
+      pattern: "plain"
+    confidence: "medium"
+    rationale: "Generator and checker-b propose black, grey and yellow; checker-a proposes black, blue and yellow;\
+      \ checker-c adds blue to black, grey and yellow. Prefer the modern, specimen-linked Turner description of\
+      \ dark grey to black breeding males with restricted yellow on the head or dorsal region. Clarke blue-headed\
+      \ aquarium fish predate the taxonomic clarification and may represent another mloto-labelled taxon. Plain\
+      \ describes the main unspotted body pattern. One decisive species-specific primary source supports medium\
+      \ rather than high confidence."
+    sources:
+    - kind: "literature"
+      title: "Turner et al. (2023; online 2022). Taxonomic investigation of the zooplanktivorous Lake Malawi cichlids\
+        \ Copadichromis mloto and C. virginalis"
+      url: "https://doi.org/10.1007/s10750-022-05025-1"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Clarke, M. (2005). Copadichromis mloto. Practical Fishkeeping"
+      url: "https://www.practicalfishkeeping.co.uk/features/copadichromis-mloto/"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "literature"
+        title: "Turner et al. (2023; online 2022). Taxonomic investigation of the zooplanktivorous Lake Malawi cichlids\
+          \ Copadichromis mloto and C. virginalis"
+        url: "https://doi.org/10.1007/s10750-022-05025-1"
+        accessed: "2026-10-13"
+      value:
+        baseColors:
+        - "black"
+        - "grey"
+        - "yellow"
+        pattern: "plain"
+      note: "Revised breeding-male phenotype."
+    - source:
+        kind: "literature"
+        title: "Clarke, M. (2005). Copadichromis mloto. Practical Fishkeeping"
+        url: "https://www.practicalfishkeeping.co.uk/features/copadichromis-mloto/"
+        accessed: "2026-10-13"
+      value:
+        baseColors:
+        - "blue"
+        - "black"
+        pattern: "plain"
+      note: "Older aquarium description with related white-top forms included."
+  feedingSpeed:
+    value: "normal"
+    confidence: "low"
+    rationale: "All four runs propose normal. Willing aquarium feeding and active selection of suspended prey make\
+      \ this a reasonable rubric inference. Neither Clarke nor Oliver measures feeding competition against tankmates,\
+      \ so agreement does not raise confidence above low."
+    sources:
+    - kind: "database"
+      title: "Oliver, M. K. The Cichlid Fishes of Lake Malawi: Copadichromis mloto"
+      url: "https://malawicichlids.com/mw08025.htm"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Clarke, M. (2005). Copadichromis mloto. Practical Fishkeeping"
+      url: "https://www.practicalfishkeeping.co.uk/features/copadichromis-mloto/"
+      accessed: "2026-10-13"
+    - kind: "model-knowledge"
+      title: "Conservative aquarium planning inference for a small zooplanktivorous Malawi utaka"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Seriously Fish: Copadichromis chrysonotus"
+      url: "https://seriouslyfish.com/species/copadichromis-chrysonotus"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Seriously Fish: Copadichromis borleyi husbandry profile"
+      url: "https://www.seriouslyfish.com/species/copadichromis-borleyi/"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "model-knowledge"
+        title: "Conservative aquarium planning inference for a small zooplanktivorous Malawi utaka"
+        accessed: "2026-10-13"
+      value: "normal"
+      note: "Rubric mapping inferred from feeding ecology."
+    - source:
+        kind: "literature"
+        title: "Clarke, M. (2005). Copadichromis mloto. Practical Fishkeeping"
+        url: "https://www.practicalfishkeeping.co.uk/features/copadichromis-mloto/"
+        accessed: "2026-10-13"
+      value: "normal"
+      note: "Rubric inference from willing feeding in captivity."
+    - source:
+        kind: "database"
+        title: "Oliver, M. K. The Cichlid Fishes of Lake Malawi: Copadichromis mloto"
+        url: "https://malawicichlids.com/mw08025.htm"
+        accessed: "2026-10-13"
+      value: "normal"
+      note: "Individual prey capture is described, without aquarium feeding-competition measurements."
+    - source:
+        kind: "database"
+        title: "Seriously Fish: Copadichromis borleyi husbandry profile"
+        url: "https://www.seriouslyfish.com/species/copadichromis-borleyi/"
+        accessed: "2026-10-13"
+      value: "normal"
+      note: "Genus-level prey picking and broad aquarium food acceptance; inferred pace."
+  minTank:
+    value:
+      volumeL: 500
+      lengthCm: 150
+      depthCm: 60
+    confidence: "low"
+    rationale: "Generator and checker-b propose 500 L with a 150 by 60 cm footprint; checker-a proposes 250 L and\
+      \ 120 by 45 cm; checker-c proposes 300 L and 150 by 45 cm for a smaller harem. Choose the larger proposal\
+      \ for the decided unit of one male and four females. Einrichtungsbeispiele explicitly recommends 500 L for\
+      \ at least five fish; the Nordic register gives 300 L and 150 cm, and Clarke gives at least 120 cm without\
+      \ a volume or depth. The congener 150 by 45 by 45 cm recommendation is about 304 L. Front-to-back depth 60\
+      \ cm is an inferred allowance for sand, retreat and swimming rather than a published C. mloto minimum. These\
+      \ differences and mixed trade identities keep confidence low."
+    sources:
+    - kind: "database"
+      title: "Einrichtungsbeispiele: Copadichromis mloto husbandry profile"
+      url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/copadichromis-mloto-slnk.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Nordiska Ciklidsallskapet species register: Copadichromis mloto"
+      url: "https://www.ciklid.org/artregister/art.php?ID=1335"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Clarke, M. (2005). Copadichromis mloto. Practical Fishkeeping"
+      url: "https://www.practicalfishkeeping.co.uk/features/copadichromis-mloto/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Seriously Fish: Copadichromis virginalis husbandry profile"
+      url: "https://www.seriouslyfish.com/species/copadichromis-virginalis/"
+      accessed: "2026-10-13"
+    - kind: "model-knowledge"
+      title: "Conservative aquarium planning inference for a small zooplanktivorous Malawi utaka"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "database"
+        title: "Einrichtungsbeispiele: Copadichromis mloto husbandry profile"
+        url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/copadichromis-mloto-slnk.html"
+        accessed: "2026-10-13"
+      value:
+        volumeL: 500
+      note: "Five-fish recommendation; dimensions unstated."
+    - source:
+        kind: "database"
+        title: "Nordiska Ciklidsallskapet species register: Copadichromis mloto"
+        url: "https://www.ciklid.org/artregister/art.php?ID=1335"
+        accessed: "2026-10-13"
+      value:
+        volumeL: 300
+        lengthCm: 150
+      note: "Species register; depth unstated."
+    - source:
+        kind: "literature"
+        title: "Clarke, M. (2005). Copadichromis mloto. Practical Fishkeeping"
+        url: "https://www.practicalfishkeeping.co.uk/features/copadichromis-mloto/"
+        accessed: "2026-10-13"
+      value:
+        lengthCm: 120
+      note: "Species magazine account; volume and depth unstated."
+    - source:
+        kind: "database"
+        title: "Seriously Fish: Copadichromis virginalis husbandry profile"
+        url: "https://www.seriouslyfish.com/species/copadichromis-virginalis/"
+        accessed: "2026-10-13"
+      value:
+        volumeL: 303.75
+        lengthCm: 150
+        depthCm: 45
+      note: "Different valid species; comparative dimensions only."
+    - source:
+        kind: "model-knowledge"
+        title: "Conservative aquarium planning inference for a small zooplanktivorous Malawi utaka"
+        accessed: "2026-10-13"
+      value:
+        volumeL: 500
+        lengthCm: 150
+        depthCm: 60
+      note: "Cautious combined aquarium plan; 60 cm depth inferred."
+  lifespanYears:
+    value:
+      min: 5
+      max: 6
+    confidence: "low"
+    rationale: "Generator proposes 6 to 10 years from general knowledge; checker-a proposes 5 to 8 as an estimate;\
+      \ checker-b proposes 6 to 12 by combining species and genus guidance; checker-c proposes 5 to 6 from two species-labelled\
+      \ sheets. Prefer the checker-c estimate because B-Aqua and FishFish both give about six years. Five years\
+      \ is a planning allowance, not an observed population minimum. The wider genus claim of 8 to 12 years in Einrichtungsbeispiele\
+      \ is not a verified longevity record for true C. mloto and does not support the longer proposals. Identification\
+      \ and survival data remain weak, so confidence stays low."
+    sources:
+    - kind: "database"
+      title: "B-Aqua: Copadichromis mloto maintenance entry, revised 2 March 2026"
+      url: "https://www.b-aqua.com/pages/fiche.aspx?id=1175"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishFish: Copadichromis mloto"
+      url: "https://www.fishfish.fr/poisson/copadichromis-mloto"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "Einrichtungsbeispiele: Copadichromis genus husbandry article"
+      url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/copadichromis-slnk.html"
+      accessed: "2026-10-13"
+    - kind: "model-knowledge"
+      title: "Conservative aquarium planning inference for a small zooplanktivorous Malawi utaka"
+      accessed: "2026-10-13"
+    - kind: "model-knowledge"
+      title: "Typical lifespan of small Lake Malawi haplochromines"
+    evidence:
+    - source:
+        kind: "database"
+        title: "B-Aqua: Copadichromis mloto maintenance entry, revised 2 March 2026"
+        url: "https://www.b-aqua.com/pages/fiche.aspx?id=1175"
+        accessed: "2026-10-13"
+      value:
+        min: 6
+        max: 6
+      note: "Species-labelled approximate longevity, without cohort data."
+    - source:
+        kind: "database"
+        title: "FishFish: Copadichromis mloto"
+        url: "https://www.fishfish.fr/poisson/copadichromis-mloto"
+        accessed: "2026-10-13"
+      value:
+        min: 6
+        max: 6
+      note: "Approximate six years; also covers an ambiguous Ivory label."
+    - source:
+        kind: "website"
+        title: "Einrichtungsbeispiele: Copadichromis genus husbandry article"
+        url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/copadichromis-slnk.html"
+        accessed: "2026-10-13"
+      value:
+        min: 8
+        max: 12
+      note: "Wider genus estimate, not a species-specific survival study."
+  breeding:
+    value: "maternal-mouthbrooder"
+    confidence: "high"
+    rationale: "All four full-profile runs agree. Clarke and Einrichtungsbeispiele independently describe female\
+      \ mouth incubation. Turner links correctly identified males to sand bowers; the public CRC summary verifies\
+      \ maternal mouthbrooding without providing the original evidence for the assignment."
+    sources:
+    - kind: "literature"
+      title: "Clarke, M. (2005). Copadichromis mloto. Practical Fishkeeping"
+      url: "https://www.practicalfishkeeping.co.uk/features/copadichromis-mloto/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Einrichtungsbeispiele: Copadichromis mloto husbandry profile"
+      url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/copadichromis-mloto-slnk.html"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Turner et al. (2023; online 2022). Taxonomic investigation of the zooplanktivorous Lake Malawi cichlids\
+        \ Copadichromis mloto and C. virginalis"
+      url: "https://doi.org/10.1007/s10750-022-05025-1"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "Cichlid Room Companion, Copadichromis mloto"
+      url: "https://cichlidae.com/species.php?id=W77own6jU5OFiQib7CXTaA"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Seriously Fish: Copadichromis chrysonotus"
+      url: "https://seriouslyfish.com/species/copadichromis-chrysonotus"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "literature"
+        title: "Clarke, M. (2005). Copadichromis mloto. Practical Fishkeeping"
+        url: "https://www.practicalfishkeeping.co.uk/features/copadichromis-mloto/"
+        accessed: "2026-10-13"
+      value: "maternal-mouthbrooder"
+    - source:
+        kind: "database"
+        title: "Einrichtungsbeispiele: Copadichromis mloto husbandry profile"
+        url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/copadichromis-mloto-slnk.html"
+        accessed: "2026-10-13"
+      value: "maternal-mouthbrooder"
+    - source:
+        kind: "website"
+        title: "Cichlid Room Companion, Copadichromis mloto"
+        url: "https://cichlidae.com/species.php?id=W77own6jU5OFiQib7CXTaA"
+        accessed: "2026-10-13"
+      value: "maternal-mouthbrooder"
+      note: "Verification only; not the origin of the assignment."
+  beginnerSuitability:
+    value: "moderate"
+    confidence: "medium"
+    rationale: "All four full-profile runs propose moderate. The Nordic register supplies an intermediate rating\
+      \ and independent husbandry accounts establish the need for substantial swimming space, stable water and quiet\
+      \ companions. Reliable stock identification adds care complexity, while ordinary invertebrate and prepared\
+      \ foods are accepted. This is a practical rubric judgement rather than a validated training-level threshold."
+    sources:
+    - kind: "database"
+      title: "Nordiska Ciklidsallskapet species register: Copadichromis mloto"
+      url: "https://www.ciklid.org/artregister/art.php?ID=1335"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Clarke, M. (2005). Copadichromis mloto. Practical Fishkeeping"
+      url: "https://www.practicalfishkeeping.co.uk/features/copadichromis-mloto/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Seriously Fish: Copadichromis chrysonotus"
+      url: "https://seriouslyfish.com/species/copadichromis-chrysonotus"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Einrichtungsbeispiele: Copadichromis mloto husbandry profile"
+      url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/copadichromis-mloto-slnk.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Seriously Fish: Copadichromis virginalis husbandry profile"
+      url: "https://www.seriouslyfish.com/species/copadichromis-virginalis/"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "database"
+        title: "Nordiska Ciklidsallskapet species register: Copadichromis mloto"
+        url: "https://www.ciklid.org/artregister/art.php?ID=1335"
+        accessed: "2026-10-13"
+      value: "moderate"
+      note: "Intermediate register rating mapped to the rubric."
+    - source:
+        kind: "literature"
+        title: "Clarke, M. (2005). Copadichromis mloto. Practical Fishkeeping"
+        url: "https://www.practicalfishkeeping.co.uk/features/copadichromis-mloto/"
+        accessed: "2026-10-13"
+      value: "moderate"
+      note: "Rubric inference from group housing and restrictions on companions."
+    - source:
+        kind: "database"
+        title: "Einrichtungsbeispiele: Copadichromis mloto husbandry profile"
+        url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/copadichromis-mloto-slnk.html"
+        accessed: "2026-10-13"
+      value: "moderate"
+      note: "Rubric inference from the 500 L recommendation and placid temperament."
+    - source:
+        kind: "database"
+        title: "Seriously Fish: Copadichromis virginalis husbandry profile"
+        url: "https://www.seriouslyfish.com/species/copadichromis-virginalis/"
+        accessed: "2026-10-13"
+      value: "moderate"
+      note: "Related-species care rating; used for corroboration, not identity substitution."
+partners:
+  suitable:
+  - species: "Placid Aulonocara species"
+    reason: "Clarke identifies this genus as a source of potential calm Malawi companions."
+    condition: "Choose adults of comparable size and low aggression; provide space for both social units. This is\
+      \ genus-level advice, not proof of every pairing."
+  - species: "Placid Lethrinops species"
+    reason: "Clarke identifies quiet Lethrinops as potential companions with compatible sand habitat."
+    condition: "Increase aquarium capacity for both groups and confirm that all individuals obtain food."
+  - species: "Cyrtocara moorii"
+    reason: "Species-labelled care literature names Cyrtocara among calm community candidates."
+    condition: "A larger aquarium must meet the adult requirements of both species; the mloto minimum alone does\
+      \ not establish sufficient capacity."
+  unsuitable:
+  - species: "Other Copadichromis species"
+    reason: "Shared presumed copadichromis group creates a genus-wide crossing caution; no named free-choice mloto\
+      \ cross was found."
+  - species: "Aggressive Lake Malawi mbuna"
+    reason: "Strong territorial or feeding competition can exclude this comparatively retiring utaka."
+  - species: "Large piscivorous Lake Malawi cichlids"
+    reason: "Juveniles and smaller individuals can become prey. This judgement concerns the companion predator,\
+      \ while mloto itself remains predation level 0."
+profile:
+  overview:
+    text: "The identity of aquarium stock matters particularly with this utaka. Legacy entry 268 is retained as\
+      \ the valid species Copadichromis mloto, an animal-plankton feeder of the Lake Malawi basin. A recent revision\
+      \ links much of the former Kajose material to this species while leaving C. virginalis separate. Mloto alone\
+      \ is an unreliable shop label: the Nordic register and Imperial Tropicals identify Mloto Likoma as C. trewavasae.\
+      \ Other locality labels may represent undescribed relatives and are not entered as variants here. Historical\
+      \ forum threads likewise use several mloto labels without confirming this catalog entry."
+    sources:
+    - kind: "catalog-of-fishes"
+      title: "Eschmeyer's Catalog of Fishes: Copadichromis species"
+      url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Copadichromis"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Turner et al. (2023; online 2022). Taxonomic investigation of the zooplanktivorous Lake Malawi cichlids\
+        \ Copadichromis mloto and C. virginalis"
+      url: "https://doi.org/10.1007/s10750-022-05025-1"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Nordiska Ciklidsallskapet species register: Copadichromis trewavasae"
+      url: "https://www.ciklid.org/artregister/art.php?ID=1340"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "Imperial Tropicals retailer listing: Mloto Likoma, Copadichromis trewavasae"
+      url: "https://imperialtropicals.com/products/mloto-likoma-copadichromis-trewavasae"
+      accessed: "2026-10-13"
+    - kind: "archive"
+      title: "cichlids.com forum thread 19197"
+      url: "https://www.cichlids.com/disc/read.php?2,19197"
+      accessed: "2026-10-13"
+  habitat:
+    text: "A broad open-water area above sand provides the central habitat in this aquarium. Confirmed records include\
+      \ soft lake bottoms, both southern arms of Malawi and connected Lake Malombe; the revision reports trawl depths\
+      \ from 18 to 114 m. Keep the sand accessible and place any refuge rocks securely without filling the swimming\
+      \ area. The natural water envelope here applies to Lake Malawi populations. Its low calcium and magnesium\
+      \ hardness is compatible with alkaline, buffered water, so GH and KH should be measured separately."
+    sources:
+    - kind: "literature"
+      title: "Turner et al. (2023; online 2022). Taxonomic investigation of the zooplanktivorous Lake Malawi cichlids\
+        \ Copadichromis mloto and C. virginalis"
+      url: "https://doi.org/10.1007/s10750-022-05025-1"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Oliver, M. K. The Cichlid Fishes of Lake Malawi: Copadichromis mloto"
+      url: "https://malawicichlids.com/mw08025.htm"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al.\
+        \ (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin: local\
+        \ versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+      url: "https://doi.org/10.5194/hessd-7-4371-2010"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of\
+        \ Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after Jackson\
+        \ et al. (1963) and Talling and Talling (1965)."
+      url: "https://www.fao.org/4/t0473e/T0473E05.htm"
+      accessed: "2026-10-13"
+  sizeAndGrowth:
+    text: "The provisional adult aquarium estimates are 14 cm for males and 12 cm for females. Published sizes mix\
+      \ unsexed fish, standard and total length, and uncertain trade stock, so the apparent precision should not\
+      \ be mistaken for a measured sex difference. Provide adult space from the start and check that smaller fish\
+      \ maintain growth and condition. About five to six years is the adopted lifespan estimate; two species-labelled\
+      \ sheets suggest six years, but securely identified survival records are missing."
+    sources:
+    - kind: "database"
+      title: "FishBase: Copadichromis mloto species summary"
+      url: "https://www.fishbase.se/summary/Copadichromis-mloto.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Nordiska Ciklidsallskapet species register: Copadichromis mloto"
+      url: "https://www.ciklid.org/artregister/art.php?ID=1335"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Einrichtungsbeispiele: Copadichromis mloto husbandry profile"
+      url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/copadichromis-mloto-slnk.html"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Clarke, M. (2005). Copadichromis mloto. Practical Fishkeeping"
+      url: "https://www.practicalfishkeeping.co.uk/features/copadichromis-mloto/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "B-Aqua: Copadichromis mloto maintenance entry, revised 2 March 2026"
+      url: "https://www.b-aqua.com/pages/fiche.aspx?id=1175"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishFish: Copadichromis mloto"
+      url: "https://www.fishfish.fr/poisson/copadichromis-mloto"
+      accessed: "2026-10-13"
+  husbandry:
+    text: "For the recommended one male and four females, allow at least 500 L with approximately 150 cm length\
+      \ and 60 cm front-to-back space. The width is a cautious planning allowance rather than a published physiological\
+      \ requirement. Use an established filter, surface movement and regular conditioned-water changes. A temperature\
+      \ target of 24 to 26 C is better supported by species care guidance than continuous use of the full 21 to\
+      \ 29 C tolerance. Adopted aquarium tolerances are pH 7.5 to 8.6, GH 3 to 15 dGH and KH 5 to 10 dKH. Keep conditions\
+      \ stable; the endpoints are practical planning bounds with uneven long-term evidence."
+    sources:
+    - kind: "database"
+      title: "Einrichtungsbeispiele: Copadichromis mloto husbandry profile"
+      url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/copadichromis-mloto-slnk.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Nordiska Ciklidsallskapet species register: Copadichromis mloto"
+      url: "https://www.ciklid.org/artregister/art.php?ID=1335"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "OATA care sheet: African Malawi cichlids, general aquarium guidance"
+      url: "https://ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-freshwater-fish/how-to-look-after-african-malawi-cichlids/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "B-Aqua: Copadichromis mloto maintenance entry, revised 2 March 2026"
+      url: "https://www.b-aqua.com/pages/fiche.aspx?id=1175"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Malawi.si: Lake Malawi Water, structured lake and aquarium parameter table"
+      url: "https://www.malawi.si/slides/Lake%20Malawi%20Water.html"
+      accessed: "2026-10-13"
+    - kind: "model-knowledge"
+      title: "Conservative aquarium planning inference for a small zooplanktivorous Malawi utaka"
+      accessed: "2026-10-13"
+  socialBehavior:
+    text: "The aquarium recommendation is a female-biased breeding unit rather than a claim that wild feeding shoals\
+      \ form permanent harems. Four females with one male spreads courtship attention while keeping at least five\
+      \ companions together. Some regular chasing and a hierarchy are expected, but injury frequency is not established\
+      \ for confirmed mloto. A displaying male may defend a local sand site. Extra males need substantially more\
+      \ space and females. A fish repeatedly kept away from food or refuge needs a change in the social arrangement."
+    sources:
+    - kind: "literature"
+      title: "Clarke, M. (2005). Copadichromis mloto. Practical Fishkeeping"
+      url: "https://www.practicalfishkeeping.co.uk/features/copadichromis-mloto/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Einrichtungsbeispiele: Copadichromis mloto husbandry profile"
+      url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/copadichromis-mloto-slnk.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Seriously Fish: Copadichromis virginalis husbandry profile"
+      url: "https://www.seriouslyfish.com/species/copadichromis-virginalis/"
+      accessed: "2026-10-13"
+    - kind: "model-knowledge"
+      title: "Conservative aquarium planning inference for a small zooplanktivorous Malawi utaka"
+      accessed: "2026-10-13"
+  diet:
+    text: "Small balanced prepared foods and aquatic crustaceans suit its plankton-feeding ecology. Cyclops, Daphnia,\
+      \ Artemia and modest mysis portions are practical options; distribute food so smaller females receive a share.\
+      \ Taking plant-containing pellets does not make it an algae-grazing mbuna. The profile assigns invertivore\
+      \ with bloatSensitive false, but the disease flag is an inference and does not rule out digestive illness\
+      \ or harm from excess feeding. Predation is level 0: purposeful small-fish hunting is unsupported, while incidental\
+      \ fry loss remains possible."
+    sources:
+    - kind: "literature"
+      title: "Turner et al. (2023; online 2022). Taxonomic investigation of the zooplanktivorous Lake Malawi cichlids\
+        \ Copadichromis mloto and C. virginalis"
+      url: "https://doi.org/10.1007/s10750-022-05025-1"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Oliver, M. K. The Cichlid Fishes of Lake Malawi: Copadichromis mloto"
+      url: "https://malawicichlids.com/mw08025.htm"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Clarke, M. (2005). Copadichromis mloto. Practical Fishkeeping"
+      url: "https://www.practicalfishkeeping.co.uk/features/copadichromis-mloto/"
+      accessed: "2026-10-13"
+    - kind: "model-knowledge"
+      title: "Conservative aquarium planning inference for a small zooplanktivorous Malawi utaka"
+      accessed: "2026-10-13"
+  breeding:
+    text: "A female incubates the brood in her mouth after spawning. Correctly identified males have been associated\
+      \ with sand bowers, so keep an open spawning patch. Older species-labelled advice suggests about three weeks\
+      \ of incubation, with limited modern confirmation of timing. A carrying female needs refuge from persistent\
+      \ courtship. Released fry can be vulnerable in a community. Record the identity and origin of both parents\
+      \ before distributing offspring; the copadichromis group represents a presumed crossing caution."
+    sources:
+    - kind: "literature"
+      title: "Turner et al. (2023; online 2022). Taxonomic investigation of the zooplanktivorous Lake Malawi cichlids\
+        \ Copadichromis mloto and C. virginalis"
+      url: "https://doi.org/10.1007/s10750-022-05025-1"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Einrichtungsbeispiele: Copadichromis mloto husbandry profile"
+      url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/copadichromis-mloto-slnk.html"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Clarke, M. (2005). Copadichromis mloto. Practical Fishkeeping"
+      url: "https://www.practicalfishkeeping.co.uk/features/copadichromis-mloto/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Seriously Fish: Copadichromis borleyi husbandry profile"
+      url: "https://www.seriouslyfish.com/species/copadichromis-borleyi/"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Anseeuw et al. (2012). Extensive introgression among ancestral mtDNA lineages in the Lake Malawi utaka"
+      url: "https://doi.org/10.1155/2012/865603"
+      accessed: "2026-10-13"
+  sexing:
+    text: "Colour becomes useful when adults enter breeding condition. The revised field series has dark grey or\
+      \ black males with restricted yellow on the upper head or dorsal region; females and inactive fish are much\
+      \ paler. This principal body pattern is plain rather than persistently spotted. An older blue-headed aquarium\
+      \ description is retained as conflicting evidence. A broad bright upper blaze or an ivory-headed trade label\
+      \ needs separate identification, and neither juvenile colour nor the provisional size estimate reliably establishes\
+      \ sex."
+    sources:
+    - kind: "literature"
+      title: "Turner et al. (2023; online 2022). Taxonomic investigation of the zooplanktivorous Lake Malawi cichlids\
+        \ Copadichromis mloto and C. virginalis"
+      url: "https://doi.org/10.1007/s10750-022-05025-1"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Clarke, M. (2005). Copadichromis mloto. Practical Fishkeeping"
+      url: "https://www.practicalfishkeeping.co.uk/features/copadichromis-mloto/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Nordiska Ciklidsallskapet species register: Copadichromis trewavasae"
+      url: "https://www.ciklid.org/artregister/art.php?ID=1340"
+      accessed: "2026-10-13"
+  compatibility:
+    text: "Choose calm companions that leave swimming space and allow the group to feed. Published genus-level candidates\
+      \ include placid Aulonocara and Lethrinops, plus Cyrtocara where its larger adult space needs are met. Strongly\
+      \ aggressive mbuna and large fish hunters can create behaviour or predation conflicts. Mixing breeding Copadichromis\
+      \ brings a presumed hybrid caution, not a verified cross between mloto and every congener. The fish can live\
+      \ with other species, and its predation level 0 does not guarantee survival of every community fry."
+    sources:
+    - kind: "literature"
+      title: "Clarke, M. (2005). Copadichromis mloto. Practical Fishkeeping"
+      url: "https://www.practicalfishkeeping.co.uk/features/copadichromis-mloto/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Einrichtungsbeispiele: Copadichromis mloto husbandry profile"
+      url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/copadichromis-mloto-slnk.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Seriously Fish: Copadichromis borleyi husbandry profile"
+      url: "https://www.seriouslyfish.com/species/copadichromis-borleyi/"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Anseeuw et al. (2012). Extensive introgression among ancestral mtDNA lineages in the Lake Malawi utaka"
+      url: "https://doi.org/10.1155/2012/865603"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Seriously Fish: Copadichromis virginalis husbandry profile"
+      url: "https://www.seriouslyfish.com/species/copadichromis-virginalis/"
+      accessed: "2026-10-13"
+  problems:
+    text: "Trade-name confusion can make otherwise careful husbandry inappropriate for the fish actually purchased.\
+      \ Review identity, water stability, food distribution and refuge access when a group fails to thrive. Monitor\
+      \ ammonia and nitrite as well as pH, GH and KH. Appetite loss, abdominal swelling or rapid breathing can have\
+      \ several causes and should prompt assessment of conditions and fish health. An archive account describes\
+      \ illness in an mloto-labelled community, but supplies neither confirmed species identity nor evidence of\
+      \ a special susceptibility."
+    sources:
+    - kind: "literature"
+      title: "Turner et al. (2023; online 2022). Taxonomic investigation of the zooplanktivorous Lake Malawi cichlids\
+        \ Copadichromis mloto and C. virginalis"
+      url: "https://doi.org/10.1007/s10750-022-05025-1"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "OATA care sheet: African Malawi cichlids, general aquarium guidance"
+      url: "https://ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-freshwater-fish/how-to-look-after-african-malawi-cichlids/"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "Einrichtungsbeispiele: Copadichromis genus husbandry article"
+      url: "https://www.einrichtungsbeispiele.de/zierfische/malawisee/copadichromis-slnk.html"
+      accessed: "2026-10-13"
+    - kind: "archive"
+      title: "cichlids.com forum thread 19556"
+      url: "https://www.cichlids.com/disc/read.php?2,19556"
+      accessed: "2026-10-13"
+provenance:
+  runs:
+  - role: "generator"
+    model: "gpt-6.1-sol"
+    date: "2026-10-13"
+  - role: "checker"
+    model: "claude-sonnet-5-5"
+    date: "2026-10-13"
+  - role: "checker"
+    model: "gpt-6.1-sol"
+    date: "2026-10-13"
+  - role: "checker"
+    model: "gpt-6.1-sol"
+    date: "2026-10-13"
+  - role: "checker"
+    model: "gpt-6.1-sol"
+    date: "2026-10-13"
+  - role: "checker"
+    model: "gpt-6.1-sol"
+    date: "2026-10-13"
+  - role: "adjudicator"
+    model: "gpt-6.1-sol"
+    date: "2026-10-13"
+  disagreements:
+  - field: "taxonomy.synonyms"
+    proposals:
+    - by: "generator"
+      value:
+      - name: "Haplochromis mloto"
+        note: "Original combination."
+      - name: "Cyrtocara mloto"
+        note: "Historical generic combination listed by the Nordic species register."
+    - by: "checker-a"
+      value:
+      - name: "Haplochromis mloto"
+        note: "Original combination of Iles 1960, type locality Mayoka Point, Nkhata Bay."
+    - by: "checker-b"
+      value:
+      - name: "Haplochromis mloto"
+        note: "Original combination."
+      - name: "Cyrtocara mloto"
+        note: "Former generic combination recorded by FishBase nomenclature."
+    - by: "checker-c"
+      value:
+      - name: "Haplochromis mloto"
+        note: "Original combination confirmed by the Catalog of Fishes."
+      - name: "Copadichromis sp. 'virginalis kajose'"
+        note: "Former identification of the Kajose form reassigned to C. mloto by Turner et al.; this does not synonymise\
+          \ the entire species C. virginalis."
+    decision:
+    - name: "Haplochromis mloto"
+      note: "Original combination of the described species."
+    - name: "Cyrtocara mloto"
+      note: "Former generic combination recorded by FishBase nomenclature and the Nordic register."
+    - name: "Copadichromis sp. 'virginalis kajose'"
+      note: "Informal identification applied to material largely reassigned to C. mloto by Turner and colleagues.\
+        \ Some northern fish carrying this label belong to other relatives; C. virginalis itself remains a valid\
+        \ separate species."
+    rationale: "Retain both attested generic combinations and add Kajose as an explicitly qualified informal former\
+      \ identification. Generator and checker-b list Cyrtocara, checker-a omits it, and checker-c adds Kajose. FishBase\
+      \ nomenclature confirms Cyrtocara; the modern revision supports the Kajose qualification without synonymising\
+      \ all C. virginalis or northern trade material."
+  - field: "features.origin"
+    proposals:
+    - by: "generator"
+      value:
+        continent: "Africa"
+        region: "Lake Malawi basin"
+        waterbody: "lake-malawi"
+        localities:
+        - "Mayoka Point, Nkhata Bay"
+        - "Chiweta Beach, Chilumba"
+        - "Southeastern arm of Lake Malawi"
+        - "Southwestern arm of Lake Malawi"
+        - "Lake Malombe"
+    - by: "checker-a"
+      value:
+        continent: "Africa"
+        region: "Lake Malawi"
+        waterbody: "lake-malawi"
+        localities:
+        - "Nkhata Bay"
+        - "Lake Malombe"
+        - "South East Arm"
+        - "Chiweta Beach"
+    - by: "checker-b"
+      value:
+        continent: "Africa"
+        region: "Lake Malawi basin, including connected Lake Malombe"
+        waterbody: "lake-malawi"
+        localities:
+        - "Nkhata Bay"
+        - "Chilumba"
+        - "South-east arm of Lake Malawi"
+        - "South-west arm of Lake Malawi"
+        - "Lake Malombe"
+    - by: "checker-c"
+      value:
+        continent: "Africa"
+        region: "Lake Malawi and connected Lake Malombe"
+        waterbody: "lake-malawi"
+        localities:
+        - "Nkhata Bay"
+        - "Chilumba"
+        - "Southwest arm of Lake Malawi"
+        - "Southeast arm of Lake Malawi"
+        - "Lake Malombe"
+    decision:
+      continent: "Africa"
+      region: "Lake Malawi basin, including connected Lake Malombe"
+      waterbody: "lake-malawi"
+      localities:
+      - "Mayoka Point, Nkhata Bay"
+      - "Chiweta Beach, Chilumba"
+      - "Southeastern arm of Lake Malawi"
+      - "Southwestern arm of Lake Malawi"
+      - "Lake Malombe"
+    rationale: "All four runs identify the same lake basin. Generator gives the most specific collection sites;\
+      \ checker-a abbreviates the range, while checker-b and checker-c explicitly include connected Lake Malombe.\
+      \ The catalog confirms the type locality and the revision supplies southern and Malombe records. Natural chemistry\
+      \ here represents Lake Malawi populations and is not a measurement of Lake Malombe."
+  - field: "features.ph.tolerance"
+    proposals:
+    - by: "generator"
+      value:
+        min: 7.5
+        max: 8.6
+    - by: "checker-a"
+      value:
+        min: 7.5
+        max: 8.6
+    - by: "checker-b"
+      value:
+        min: 7.5
+        max: 8.7
+    - by: "checker-c"
+      value:
+        min: 7.5
+        max: 8.6
+    decision:
+      min: 7.5
+      max: 8.6
+    rationale: "Generator, checker-a and checker-c propose 7.5 to 8.6; checker-b proposes 7.5 to 8.7. The tally\
+      \ treats their bounds as agreement and takes the median upper bound of 8.6, with unanimous verification and\
+      \ medium confidence. Species-labelled sheets agree on 7.5 to 8.5 and the natural upper value requires inclusion\
+      \ of 8.6. The wider Malawi.si aquarium range of 7.6 to 8.7 is retained in evidence rather than presented as\
+      \ a demonstrated species-specific long-term limit. Tally method: unanimous."
+  - field: "features.ghDgh.tolerance"
+    proposals:
+    - by: "generator"
+      value:
+        min: 3
+        max: 15
+    - by: "checker-a"
+      value:
+        min: 3
+        max: 25
+    - by: "checker-b"
+      value:
+        min: 3
+        max: 15
+    - by: "checker-c"
+      value:
+        min: 3
+        max: 15
+    - by: "tiebreaker-1"
+      value:
+        min: 3
+        max: 15
+    - by: "tiebreaker-2"
+      value:
+        min: 3
+        max: 15
+    decision:
+      min: 3
+      max: 15
+    rationale: "Generator, checker-b, checker-c, tiebreaker-1 and tiebreaker-2 propose 3 to 15 dGH; checker-a proposes\
+      \ 3 to 25 dGH. The tally decides 3 to 15 by qualified majority, 5 of 6 votes, with medium confidence. Einrichtungsbeispiele\
+      \ gives 5 to 15 dGH and the Malawi.si water table gives 3 to 15. The natural 3 to 5 dGH interval is included.\
+      \ Wider recommendations remain explicit: B-Aqua gives 10 to 25 dGH, related Copadichromis sheets give 10 to\
+      \ 25, and OATA gives 12 to 18 for Malawi cichlids collectively. Their higher endpoints lack secure species-specific\
+      \ chronic-health evidence and do not extend the decided ceiling. Clarke states no numerical GH range. Tally\
+      \ method: qualified-majority."
+  - field: "features.khDkh.tolerance"
+    proposals:
+    - by: "generator"
+      value:
+        min: 5
+        max: 15
+    - by: "checker-a"
+      value:
+        min: 5
+        max: 15
+    - by: "checker-b"
+      value:
+        min: 5
+        max: 12
+    - by: "checker-c"
+      value:
+        min: 5
+        max: 10
+    - by: "tiebreaker-1"
+      value:
+        min: 5
+        max: 12
+    - by: "tiebreaker-2"
+      value:
+        min: 5
+        max: 15
+    decision:
+      min: 5
+      max: 10
+    rationale: "Generator, checker-a and tiebreaker-2 propose 5 to 15 dKH; checker-b and tiebreaker-1 propose 5\
+      \ to 12; checker-c proposes 5 to 10. No candidate reaches the required four agreeing votes. The tally therefore\
+      \ intersects all six proposals conservatively at 5 to 10 dKH and keeps confidence low; the natural 5 to 8\
+      \ interval already fits inside it. JBL gives 5 to 10 in a commercial Malawi aquarium example. Wider source\
+      \ recommendations are 6 to 12 from Malawi.si, 6 to 15 from the Einrichtungsbeispiele genus article and 10\
+      \ to 15 from OATA. Narrowing their upper extent is a planner precaution, not evidence that 12 or 15 dKH harms\
+      \ C. mloto. Related-species pH and GH figures cannot independently supply KH values, and no verified species-specific\
+      \ long-term KH study was found. Tally method: conservative."
+  - field: "features.maxSizeCm"
+    proposals:
+    - by: "generator"
+      value:
+        male: 14
+        female: 12
+    - by: "checker-a"
+      value:
+        male: 13
+        female: 11
+    - by: "checker-b"
+      value:
+        male: 14
+        female: 12
+    - by: "checker-c"
+      value:
+        male: 14
+        female: 12
+    decision:
+      male: 14
+      female: 12
+    rationale: "Generator, checker-b and checker-c propose 14/12 cm; checker-a proposes 13/11. Retain 14/12 as a\
+      \ cautious typical aquarium estimate. FishBase gives 13.5 cm TL for male or unsexed fish, and the Nordic register\
+      \ gives 14 cm without a sex split. Clarke gives about 12 cm without separating sexes and mentions additional\
+      \ aquarium growth. The wider Einrichtungsbeispiele estimate is 16/12 cm, while B-Aqua gives 15 cm SL and FishFish\
+      \ gives 15/15 cm under uncertain trade identities. Standard length is not interchangeable with total length.\
+      \ Female 12 cm remains provisional; neither a reliable captive sex series nor a modern identity check establishes\
+      \ it."
+  - field: "features.predation"
+    proposals:
+    - by: "generator"
+      value: 1
+    - by: "checker-a"
+      value: 0
+    - by: "checker-b"
+      value: 0
+    - by: "checker-c"
+      value: 0
+    - by: "tiebreaker-1"
+      value: 0
+    - by: "tiebreaker-2"
+      value: 0
+    decision: 0
+    rationale: "The tally decides level 0 by qualified majority: checker-a, checker-b, checker-c, tiebreaker-1 and\
+      \ tiebreaker-2 agree, against generator level 1. Turner describes the revised species as zooplanktivorous;\
+      \ Clarke and Oliver independently describe plankton feeding. Oliver qualifies the identity of his photographed\
+      \ specimens, so his observations corroborate rather than define the species. Level 0 permits incidental fry\
+      \ ingestion under the rubric. No consulted source demonstrates purposeful opportunistic capture of fish up\
+      \ to 2 cm; the generator proposal was a precautionary model inference rather than an observed threshold. Medium\
+      \ confidence does not guarantee fry survival. Tally method: qualified-majority."
+  - field: "features.diet"
+    proposals:
+    - by: "generator"
+      value:
+        type: "invertivore"
+        bloatSensitive: false
+        foods:
+        - "Small aquatic crustaceans"
+        - "Cyclops or Daphnia"
+        - "Artemia"
+        - "Fine balanced cichlid pellets"
+        - "Small portions of mysis"
+    - by: "checker-a"
+      value:
+        type: "invertivore"
+        bloatSensitive: false
+        foods:
+        - "Artemia nauplii"
+        - "mysis"
+        - "bloodworm"
+        - "flake"
+        - "vegetable matter"
+    - by: "checker-b"
+      value:
+        type: "invertivore"
+        bloatSensitive: false
+        foods:
+        - "small crustacean zooplankton"
+        - "Artemia"
+        - "Mysis"
+        - "small prepared cichlid foods"
+    - by: "checker-c"
+      value:
+        type: "invertivore"
+        bloatSensitive: false
+        foods:
+        - "small aquatic crustaceans"
+        - "balanced prepared food"
+    decision:
+      type: "invertivore"
+      bloatSensitive: false
+      foods:
+      - "Small aquatic crustaceans"
+      - "Cyclops or Daphnia"
+      - "Artemia"
+      - "Fine balanced cichlid pellets"
+      - "Small portions of mysis"
+    rationale: "All four full-profile runs agree on invertivore and bloatSensitive false. The tally keeps the generator\
+      \ food list exactly, despite differences in food examples among checkers. Turner establishes zooplanktivory\
+      \ and Oliver describes capture of small crustaceans; Clarke supplies aquarium food experience. Prepared food\
+      \ containing plants does not establish a naturally omnivorous diet. The false bloat flag reflects the absence\
+      \ of evidence for the particular high-protein incompatibility defined in the rubric, not immunity to digestive\
+      \ disease. The tally assigns medium confidence. Tally method: unanimous."
+  - field: "features.aggressionConspecific"
+    proposals:
+    - by: "generator"
+      value: 2
+    - by: "checker-a"
+      value: 1
+    - by: "checker-b"
+      value: 2
+    - by: "checker-c"
+      value: 2
+    decision: 2
+    rationale: "Generator, checker-b and checker-c propose level 2; checker-a proposes level 1 because injuries\
+      \ are not reported. Retain level 2 as a cautious mapping of hierarchy and repeated courtship pursuit in a\
+      \ suitable female-biased adult unit. Clarke limits male numbers and congener guidance warns of rivalry and\
+      \ concentrated attention to females. No securely identified C. mloto study measures chase frequency or injury\
+      \ rates, so this is an inferred grade rather than an observed numerical score."
+  - field: "features.social"
+    proposals:
+    - by: "generator"
+      value:
+        structure: "harem"
+        ratio: 4
+    - by: "checker-a"
+      value:
+        structure: "harem"
+        ratio: 3
+    - by: "checker-b"
+      value:
+        structure: "group"
+        minGroup: 5
+    - by: "checker-c"
+      value:
+        structure: "harem"
+        ratio: 3
+    decision:
+      structure: "harem"
+      ratio: 4
+    rationale: "Generator proposes one male with four females; checker-a and checker-c propose one with three, while\
+      \ checker-b proposes a group of at least five but also recommends one male with four females at the minimum\
+      \ size. Choose harem with four females for the adult aquarium unit, combining the species-labelled five-fish\
+      \ recommendation with Clarke female-biased stocking and congener guidance. Natural feeding shoals do not establish\
+      \ a stable pair. The fourth female is a conservative distribution of courtship attention, not a measured natural\
+      \ ratio or a demonstrated species-specific threshold."
+  - field: "features.coloration"
+    proposals:
+    - by: "generator"
+      value:
+        baseColors:
+        - "black"
+        - "grey"
+        - "yellow"
+        pattern: "plain"
+    - by: "checker-a"
+      value:
+        baseColors:
+        - "black"
+        - "blue"
+        - "yellow"
+        pattern: "plain"
+    - by: "checker-b"
+      value:
+        baseColors:
+        - "black"
+        - "grey"
+        - "yellow"
+        pattern: "plain"
+    - by: "checker-c"
+      value:
+        baseColors:
+        - "black"
+        - "grey"
+        - "yellow"
+        - "blue"
+        pattern: "plain"
+    decision:
+      baseColors:
+      - "black"
+      - "grey"
+      - "yellow"
+      pattern: "plain"
+    rationale: "Generator and checker-b propose black, grey and yellow; checker-a proposes black, blue and yellow;\
+      \ checker-c adds blue to black, grey and yellow. Prefer the modern, specimen-linked Turner description of\
+      \ dark grey to black breeding males with restricted yellow on the head or dorsal region. Clarke blue-headed\
+      \ aquarium fish predate the taxonomic clarification and may represent another mloto-labelled taxon. Plain\
+      \ describes the main unspotted body pattern. One decisive species-specific primary source supports medium\
+      \ rather than high confidence."
+  - field: "features.minTank"
+    proposals:
+    - by: "generator"
+      value:
+        volumeL: 500
+        lengthCm: 150
+        depthCm: 60
+    - by: "checker-a"
+      value:
+        volumeL: 250
+        lengthCm: 120
+        depthCm: 45
+    - by: "checker-b"
+      value:
+        volumeL: 500
+        lengthCm: 150
+        depthCm: 60
+    - by: "checker-c"
+      value:
+        volumeL: 300
+        lengthCm: 150
+        depthCm: 45
+    decision:
+      volumeL: 500
+      lengthCm: 150
+      depthCm: 60
+    rationale: "Generator and checker-b propose 500 L with a 150 by 60 cm footprint; checker-a proposes 250 L and\
+      \ 120 by 45 cm; checker-c proposes 300 L and 150 by 45 cm for a smaller harem. Choose the larger proposal\
+      \ for the decided unit of one male and four females. Einrichtungsbeispiele explicitly recommends 500 L for\
+      \ at least five fish; the Nordic register gives 300 L and 150 cm, and Clarke gives at least 120 cm without\
+      \ a volume or depth. The congener 150 by 45 by 45 cm recommendation is about 304 L. Front-to-back depth 60\
+      \ cm is an inferred allowance for sand, retreat and swimming rather than a published C. mloto minimum. These\
+      \ differences and mixed trade identities keep confidence low."
+  - field: "features.lifespanYears"
+    proposals:
+    - by: "generator"
+      value:
+        min: 6
+        max: 10
+    - by: "checker-a"
+      value:
+        min: 5
+        max: 8
+    - by: "checker-b"
+      value:
+        min: 6
+        max: 12
+    - by: "checker-c"
+      value:
+        min: 5
+        max: 6
+    decision:
+      min: 5
+      max: 6
+    rationale: "Generator proposes 6 to 10 years from general knowledge; checker-a proposes 5 to 8 as an estimate;\
+      \ checker-b proposes 6 to 12 by combining species and genus guidance; checker-c proposes 5 to 6 from two species-labelled\
+      \ sheets. Prefer the checker-c estimate because B-Aqua and FishFish both give about six years. Five years\
+      \ is a planning allowance, not an observed population minimum. The wider genus claim of 8 to 12 years in Einrichtungsbeispiele\
+      \ is not a verified longevity record for true C. mloto and does not support the longer proposals. Identification\
+      \ and survival data remain weak, so confidence stays low."
