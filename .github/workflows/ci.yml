@@ -49,13 +49,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v6
         with:
           python-version: "3.x"
-      - name: Self-test of the secret detector
-        run: python3 tools/check-no-plaintext-secrets.py --self-test
-      - name: Scan tracked files for plaintext secrets
-        run: python3 tools/check-no-plaintext-secrets.py
+      - name: Install pinned core toolchain
+        run: bash tools/install-toolchain.sh
+      - name: Pre-push hook behaves as specified
+        run: bash tools/test-pre-push-hook.sh
+      - name: Scan the working tree with gitleaks
+        run: gitleaks dir . --config .gitleaks.toml --redact --verbose
+      - name: Scan the full history with gitleaks
+        run: gitleaks git . --config .gitleaks.toml --redact --verbose
       - name: Pre-push secret-scan hook is wired
         run: |
           python3 tools/check-git-hooks.py --self-test
