@@ -1005,11 +1005,15 @@ features:
       votes: {agree: 3, total: 3}
 
   hybridGroups:
-    value: []
+    value: [andinoacara-pulcher-rivulatus]
     confidence: low
     rationale: >-
       No cross of A. rivulatus with A. stalsbergi or A. pulcher is documented; the hobby claim of
       crosses with the blue acara rests on a paper that does not support it, so no group applies.
+      The curated hybrid-groups.yaml defines andinoacara-pulcher-rivulatus with basis presumed
+      from a specialist report of apparently fertile aquarium hybrids with uncertain blue-parent
+      identification and unverified access to same-species mates, supported by a general care-sheet
+      warning about mixed ancestry in commercial blue acaras.
     sources:
       - *cof
       - *musilova
@@ -1042,6 +1046,11 @@ features:
         kind: archive
         title: cichlids.com forum thread 2684
         url: https://www.cichlids.com/disc/read.php?1,2684
+      - &pulcherrivulatus
+        kind: database
+        title: "Andinoacara.com: Andinoacara cf. pulcher x Andinoacara rivulatus hybrid record"
+        url: https://andinoacara.com/species/pulchertype_x_rivulatus/
+        accessed: 2026-10-13
     evidence:
       - source: *cof
         value: null
@@ -1070,6 +1079,9 @@ features:
       - source: *t28910
         value: andinoacara-rivulatus-group
         note: gold saum female and silver saum male paired and preparing to spawn
+      - source: *pulcherrivulatus
+        value: [andinoacara-pulcher-rivulatus]
+        note: Apparently fertile aquarium hybrids attributed to rivulatus and pulcher or cf. pulcher; parent identity and mate choice remain uncertain.
     verification:
       method: qualified-majority
       votes: {agree: 4, total: 5}
