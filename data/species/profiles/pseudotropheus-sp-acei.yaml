@@ -1,0 +1,1292 @@
+schemaVersion: 1
+id: pseudotropheus-sp-acei
+legacyIds: [462]
+status: undescribed
+taxonomy:
+  validName: "Pseudotropheus sp. 'acei'"
+  genus: Pseudotropheus
+  species: null
+  author: null
+  source: &cof
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes, species of the genus Pseudotropheus (no name with the epithet acei)"
+    url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Pseudotropheus
+    accessed: 2026-10-13
+  synonyms:
+    - name: Pseudotropheus acei
+      note: >-
+        Trade and aquaculture name written like a binomial; no description exists, and the
+        attribution to Regan 1922 found in some aquaculture papers and hobby texts has no basis in the
+        Catalog of Fishes.
+    - name: Gephyrochromis acei
+      note: Trade name based on the outward likeness to Gephyrochromis; not an available scientific name.
+    - name: "Gephyrochromis sp. 'acei'"
+      note: Earlier hobby placement in Gephyrochromis; the fish has the stout bicuspid outer teeth of Pseudotropheus.
+  legacyNames:
+    - Pseudotropheus acei
+  note: >-
+    The Catalog of Fishes (accessed 2026-10-13) holds no name with the epithet acei in Pseudotropheus
+    or in the other mbuna genera checked by the runs (Gephyrochromis, Maylandia, Chindongo,
+    Cynotilapia, Melanochromis, Tropheops), so the fish carries the trade name
+    Pseudotropheus sp. 'acei'. Weighing a possible identity with Pseudotropheus elegans Trewavas 1935:
+    the catalog lists P. elegans as a valid species (type locality Deep or Chilumba Bay) without any
+    reference to acei. The redescription by Stauffer, Konings and Ryan (2016) includes the sp. 'acei'
+    of Konings (2007) in the list of earlier names of P. elegans, so at least one population that
+    Konings had shown as acei belongs to P. elegans; the redescribed material comes from Chilumba Bay
+    and Chitande Island and is a grey fish with green-edged scales and a pale yellow to clear dorsal
+    fin, not the violet-blue, yellow-finned or dark white-tailed trade forms. The Cichlid Room
+    Companion, curated by Konings and updated in 2018, still lists P. elegans and sp. 'acei' as two
+    separate species, and Seriously Fish keeps acei undescribed. A UK retailer sells the yellow-tail
+    acei under the name P. elegans, which this profile treats as a trade label, not as an
+    identification. Result: the trade acei stays undescribed and P. elegans is not listed as a
+    synonym; part of the pale acei-like populations may belong to P. elegans, and the trade forms may
+    turn out to be one or more species once described.
+names:
+  trade:
+    en: [Acei, Yellow-tail acei, Yellowtail acei, White-tail acei]
+    de: [Acei]
+variants:
+  - name: Yellow tail (Nkhata Bay to Bandawe, Msuli)
+    kind: locality
+    note: Violet-blue body with yellow fins in both sexes; the form most common in the trade.
+  - name: White tail (Ngara to Karonga)
+    kind: locality
+    note: Bluish to very dark body with white or pale fins.
+  - name: South Rukuru River to Ruarwe and Senga Bay
+    kind: locality
+    note: Pale populations that resemble Gephyrochromis; rarely traded.
+features:
+  origin:
+    value:
+      continent: Africa
+      region: Lake Malawi
+      waterbody: Lake Malawi
+      localities: [Nkhata Bay, Bandawe, Msuli, Luwala Reef, Ngara, Karonga, Ruarwe, South Rukuru River, Senga Bay]
+    confidence: high
+    rationale: >-
+      Endemic to Lake Malawi. All sources place the populations on the western (Malawian) shore
+      between Senga Bay in the south and Karonga in the north; Oliver points out that every locality
+      in Konings (1995) lies on the western shore. The fish lives on sandy and mixed shores around
+      sunken trees and branches. Msuli and Luwala Reef are the localities a retailer gives for the
+      yellow-tail form.
+    sources:
+      - &sf
+        kind: database
+        title: "Seriously Fish: Pseudotropheus sp. 'acei'"
+        url: https://www.seriouslyfish.com/species/pseudotropheus-sp-acei/
+        accessed: 2026-10-13
+      - &oliver
+        kind: database
+        title: "Oliver, M. K.: Pseudotropheus sp. 'acei', The Cichlid Fishes of Lake Malawi (malawicichlids.com), summarising Konings (1995)"
+        url: https://malawicichlids.com/mw09005e.htm
+        accessed: 2026-10-13
+      - &fishkeeper
+        kind: website
+        title: "Fishkeeper (Maidenhead Aquatics, retailer): Yellowtail Acei, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/yellow-tail-acei
+        accessed: 2026-10-13
+      - &cfArticle
+        kind: forum
+        title: "Cichlid-Forum: Pseudotropheus sp. 'Acei' (hobbyist species article, hosted as a forum thread)"
+        url: https://www.cichlid-forum.com/articles/ps_acei.php
+        accessed: 2026-10-13
+    evidence:
+      - source: *sf
+        value: {continent: Africa, region: Lake Malawi, waterbody: Lake Malawi}
+        note: western shore from Senga Bay to Karonga
+      - source: *oliver
+        value: {continent: Africa, region: Lake Malawi, waterbody: Lake Malawi}
+        note: sandy western shores with sunken wood
+      - source: *fishkeeper
+        value: {continent: Africa, region: Lake Malawi, waterbody: Lake Malawi}
+        note: Msuli Point and Luwala Reef
+  temperatureC:
+    value: {min: 21, max: 29}
+    confidence: high
+    rationale: >-
+      Lake Malawi endemic, so the natural value is the measured lake range: about 21 C inshore in
+      the cool, windy season and up to 29 C in summer surface water.
+    sources: &lakeSources
+      - &branchu
+        kind: literature
+        title: >-
+          Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et
+          al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian
+          Northern Basin: local versus global considerations. Hydrology and Earth System Sciences
+          Discussions 7, 4371-4409.
+        url: https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf
+        accessed: 2026-10-12
+      - &fao
+        kind: literature
+        title: >-
+          Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery
+          resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical
+          and chemical data after Jackson et al. (1963) and Talling and Talling (1965).
+        url: https://www.fao.org/4/t0473e/T0473E05.htm
+        accessed: 2026-10-12
+      - &eccles
+        kind: literature
+        title: >-
+          Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa).
+          Limnology and Oceanography 19(5), 730-742 (abstract).
+        url: https://doi.org/10.4319/lo.1974.19.5.0730
+        accessed: 2026-10-12
+      - &vollmer2005
+        kind: literature
+        title: >-
+          Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M.,
+          Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa.
+          Limnology and Oceanography 50(2), 727-732.
+        url: https://www.dora.lib4ri.ch/empa/dload/empa:1253/PDF/view
+        accessed: 2026-10-12
+      - &vollmer1999
+        kind: literature
+        title: >-
+          Vollmer, M. K., Weiss, R. F. and Bootsma, H. A. (1999). Lake Malawi/Nyasa deep water
+          renewal. In: Bootsma, H. A. and Hecky, R. E. (eds.), Water Quality Report, SADC/GEF Lake
+          Malawi/Nyasa Biodiversity Conservation Project, chapter 4.
+        url: https://sites.uwm.edu/hbootsma/files/2020/11/Ch4-Lake-Internal-Mixing.pdf
+        accessed: 2026-10-12
+      - &ngochera
+        kind: literature
+        title: Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. PhD dissertation, University of Wisconsin-Milwaukee.
+        url: https://minds.wisconsin.edu/handle/1793/91765
+        accessed: 2026-10-12
+    evidence:
+      - source: *eccles
+        value: {min: 21, max: 27}
+        note: inshore water of the south-east arm in the cool season up to the warm upper layer by May
+      - source: *vollmer2005
+        value: {min: 23.5, max: 28}
+        note: winter epilimnion to summer surface water
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value: {min: 21, max: 29}
+      confidence: medium
+      rationale: >-
+        The care sources name narrower ranges inside the lake range: 24 to 28 C (Seriously Fish,
+        LiveAquaria, AquaHoy, Guidarium), 22 to 28 C (Aqualog), 24 to 26 C (Fishkeeper), 23 to 27 C
+        (a dealer) and 26 to 28 C (a hobby article). Rearing trials kept the species healthy at 23 to
+        25 C, 26.7 C and 27 C, and a heat-exposure study found gill damage from 29 C upward while fish
+        at 25.4 C stayed unaffected. The tolerance has to contain the natural range of 21 to 29 C, and
+        no source shows harm inside it, so it equals the lake range; the experimental gill findings
+        argue against going beyond 29 C. The comfort zone that most keepers aim for is 24 to 28 C.
+      sources:
+        - *sf
+        - &aqualog
+          kind: database
+          title: "Aqualog.de fish lexicon: Pseudotropheus sp. Acei"
+          url: https://www.aqualog.de/?p=1128173
+          accessed: 2026-10-13
+        - &guroy
+          kind: literature
+          title: >-
+            Güroy, B., Güroy, D., Sahin, I., Altin, A. and Merrifield, D. L. (2012). Effect of dietary
+            protein level on growth performance and nitrogen excretion of the yellow tail cichlid,
+            Pseudotropheus acei. Israeli Journal of Aquaculture - Bamidgeh 64.
+          url: https://doi.org/10.46989/001c.20656
+          accessed: 2026-10-13
+        - &ongun
+          kind: literature
+          title: >-
+            Öngün, Ö., Bahadır Koca, S. and Koca, H. U. (2021). The effects of supplemented diets with
+            turmeric powder on pigmentation and growth of yellow tail cichlid Pseudotropheus acei. Acta
+            Aquatica Turcica 17(3), 386-394.
+          url: https://doi.org/10.22392/actaquatr.865465
+          accessed: 2026-10-13
+        - &redPepper
+          kind: literature
+          title: >-
+            The effects of dietary administration with high level red pepper (Capsicum annuum) on
+            growth performance, coloration, histology and protection against Aeromonas sobria in
+            yellow tail cichlid, Pseudotropheus acei (2019). Acta Aquatica Turcica.
+          url: https://doi.org/10.22392/actaquatr.529007
+          accessed: 2026-10-13
+        - &menba
+          kind: literature
+          title: >-
+            Farklı Sıcaklıklara Maruz Kalan Balık Solungaç Dokularındaki Değişimlerin Histolojik Olarak
+            İncelenmesi (2024). Menba Kastamonu Üniversitesi Su Ürünleri Fakültesi Dergisi.
+          url: https://doi.org/10.58626/menba.1513525
+          accessed: 2026-10-13
+        - *eccles
+        - *fishkeeper
+        - &liveaquaria
+          kind: website
+          title: "LiveAquaria (retailer): Acei Cichlid (Pseudotropheus sp. Acei), care facts"
+          url: https://www.liveaquaria.com/products/acei-cichlid
+          accessed: 2026-10-13
+        - &aquahoy
+          kind: website
+          title: "AquaHoy: Yellow Tail Acei (Pseudotropheus) care, types, feeding"
+          url: https://aquahoy.com/yellow-tail-acei-pseudotropheus-care-types-feeding/
+          accessed: 2026-10-13
+        - &guidarium
+          kind: website
+          title: "Guidarium: Pseudotropheus Acei"
+          url: https://guidarium.com/fishes/pseudotropheus-acei
+          accessed: 2026-10-13
+        - &garnelio
+          kind: website
+          title: "Garnelio (retailer): Pseudotropheus acei, product page"
+          url: https://www.garnelio.de/en/3x-blue-yellow-mouthbrooder-pseudotropheus-acei-trio-2w/1m-dnz-4-cm
+          accessed: 2026-10-13
+        - *cfArticle
+      evidence:
+        - source: *sf
+          value: {min: 24, max: 28}
+          note: aquarium recommendation
+        - source: *aqualog
+          value: {min: 22, max: 28}
+          note: aquarium recommendation
+        - source: *guroy
+          value: {min: 26.7, max: 26.7}
+          note: healthy growth over 12 weeks in a recirculating system
+        - source: *ongun
+          value: {min: 27, max: 27}
+          note: mean tank temperature of a 90-day broodstock trial
+        - source: *redPepper
+          value: {min: 23, max: 25}
+          note: 90-day growth trial with juveniles
+        - source: *menba
+          value: {min: 25.4, max: 29}
+          note: control at 25.4 C; gill lesions and more mucus cells from 29 C upward in short heat exposure
+        - source: *eccles
+          value: {min: 21, max: 27}
+          note: natural lake water, the lower bound of the tolerance
+        - source: *fishkeeper
+          value: {min: 24, max: 26}
+          note: aquarium recommendation
+        - source: *liveaquaria
+          value: {min: 24, max: 28}
+          note: 76 to 82 F converted
+        - source: *aquahoy
+          value: {min: 24, max: 28}
+          note: aquarium recommendation
+        - source: *garnelio
+          value: {min: 23, max: 27}
+          note: aquarium recommendation of a dealer
+        - source: *cfArticle
+          value: {min: 26, max: 28}
+          note: hobby recommendation
+      verification:
+        method: qualified-majority
+        votes: {agree: 4, total: 5}
+  ph:
+    value: {min: 7.7, max: 8.6}
+    confidence: high
+    rationale: >-
+      Lake Malawi endemic, so the natural value is the measured surface pH of the lake, 7.7 to 8.6;
+      lower values down to 7.5 occur only in deep water.
+    sources: *lakeSources
+    evidence:
+      - source: *fao
+        value: {min: 7.7, max: 8.6}
+        note: surface water after Jackson et al. (1963)
+      - source: *branchu
+        value: {min: 7.5, max: 8.5}
+        note: whole water column of the north basin, the low values in deep water
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value: {min: 7.5, max: 8.8}
+      confidence: medium
+      rationale: >-
+        Care sources agree on alkaline water: 7.6 to 8.8 (Seriously Fish), 7.5 to 8.5 (Fishkeeper),
+        7.8 to 8.6 (LiveAquaria, AquaHoy), at least 8 (Aquarium Glaser, a hobby article), and growth
+        trials ran at pH 8.1 to 8.2. Aqualog alone gives 7.0 to 8.0, which contradicts all other
+        sources including its partner wholesaler and is not followed for the lower bound. The range
+        7.5 to 8.8 contains the lake range; one run proposed 7.5 to 8.6, which lies within the
+        agreement threshold.
+      sources:
+        - *sf
+        - *aqualog
+        - *guroy
+        - *fishkeeper
+        - *liveaquaria
+        - &glaserNgara
+          kind: website
+          title: "Aquarium Glaser (wholesaler) fish archive: Pseudotropheus sp. 'Acei' White Tail Ngara"
+          url: https://www.aquariumglaser.de/en/25-perchlike-fishes/pseudotropheus-sp-acei-white-tail-ngara-2/
+          accessed: 2026-10-13
+        - *aquahoy
+        - *cfArticle
+      evidence:
+        - source: *sf
+          value: {min: 7.6, max: 8.8}
+          note: aquarium recommendation
+        - source: *aqualog
+          value: {min: 7.0, max: 8.0}
+          note: aquarium recommendation, lower than all other sources
+        - source: *guroy
+          value: {min: 8.1, max: 8.2}
+          note: water of a 12-week growth trial
+        - source: *fishkeeper
+          value: {min: 7.5, max: 8.5}
+          note: aquarium recommendation
+        - source: *liveaquaria
+          value: {min: 7.8, max: 8.6}
+          note: aquarium recommendation
+        - source: *glaserNgara
+          value: {min: 8.0, max: 8.6}
+          note: states only a minimum of pH 8
+        - source: *aquahoy
+          value: {min: 7.8, max: 8.6}
+          note: aquarium recommendation
+        - source: *cfArticle
+          value: {min: 8.0, max: 8.6}
+          note: recommends a pH above 8
+      verification:
+        method: unanimous
+        votes: {agree: 3, total: 3}
+  ghDgh:
+    value: {min: 3, max: 5}
+    confidence: high
+    rationale: >-
+      Lake Malawi endemic, so the natural value is the total hardness of the lake computed from its
+      calcium and magnesium, 3 to 5 dGH. The lake is soft water whose buffering comes from
+      bicarbonate, not from calcium and magnesium.
+    sources: *lakeSources
+    evidence:
+      - source: *branchu
+        value: {min: 4.2, max: 4.6}
+        note: upper 50 m of the north basin, computed from calcium and magnesium
+      - source: *fao
+        value: {min: 3.2, max: 4.9}
+        note: titrations of the 1960s, computed from calcium and magnesium
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value: {min: 3, max: 25}
+      confidence: medium
+      rationale: >-
+        The soft lake water of 3 to 5 dGH sets the lower bound. For the upper bound Seriously Fish
+        (10 to 25 dGH), Fishkeeper (up to 25), Guidarium (10 to 25) and a dealer (up to 30) accept hard
+        water, while AquaHoy stops at 20 and a hobby article names 10 to 12. The higher figures of the
+        care sheets reflect the habit of keeping Malawi cichlids in hard water rather than a need of
+        the fish; what matters is a stable, alkaline pH. Studies on the species report that it adapts
+        to strongly saline water, which indicates robust osmoregulation but does not test hardness
+        directly. The decided range runs from the lake value to the 25 dGH that the structured sources
+        accept.
+      sources:
+        - *sf
+        - *branchu
+        - &tuzluluk
+          kind: literature
+          title: >-
+            Tuzluluğa maruz bırakılan Pseudotropheus acei balığının solungaç mukus hücrelerinin
+            incelenmesi (2025). Afyon Kocatepe University Journal of Sciences and Engineering (abstract).
+          url: https://doi.org/10.35414/akufemubid.1514464
+          accessed: 2026-10-13
+        - *fishkeeper
+        - *guidarium
+        - *garnelio
+        - *aquahoy
+        - *cfArticle
+      evidence:
+        - source: *sf
+          value: {min: 10, max: 25}
+          note: aquarium recommendation
+        - source: *branchu
+          value: {min: 3, max: 5}
+          note: natural lake water, the lower bound of the tolerance
+        - source: *tuzluluk
+          value: {min: 3, max: 25}
+          note: abstract reports adaptation to high salinity; indirect support only
+        - source: *fishkeeper
+          value: {min: 3, max: 25}
+          note: gives only an upper limit of 25
+        - source: *guidarium
+          value: {min: 10, max: 25}
+          note: aquarium recommendation, probably taken from Seriously Fish
+        - source: *garnelio
+          value: {min: 10, max: 30}
+          note: aquarium recommendation of a dealer
+        - source: *aquahoy
+          value: {min: 10, max: 20}
+          note: aquarium recommendation
+        - source: *cfArticle
+          value: {min: 10, max: 12}
+          note: hobby recommendation
+      verification:
+        method: qualified-majority
+        votes: {agree: 4, total: 5}
+  khDkh:
+    value: {min: 5, max: 8}
+    confidence: high
+    rationale: >-
+      Lake Malawi endemic, so the natural value is the alkalinity of the lake, 2.0 to 2.6 meq/L or 5
+      to 8 dKH. Sodium bicarbonate makes the carbonate hardness higher than the total hardness.
+    sources: *lakeSources
+    evidence:
+      - source: *branchu
+        value: {min: 6.5, max: 6.9}
+        note: alkalinity profiles of the north basin
+      - source: *fao
+        value: {min: 5.6, max: 7.3}
+        note: alkalinity after Jackson et al. (1963)
+    tolerance:
+      value: {min: 5, max: 15}
+      confidence: low
+      rationale: >-
+        Only LiveAquaria and AquaHoy give a carbonate hardness for the species (10 to 15 dKH). Seriously
+        Fish and Fishkeeper give no number but ask for well-buffered, alkaline water, above all when
+        wood is used, and the hobby article asks for a pH above 8. The tolerance spans the natural 5 to
+        8 dKH of the lake up to the 15 dKH of the care sheets; values below 5 dKH risk pH drops and no
+        source supports them. The confidence stays low because no structured source states a figure.
+      sources:
+        - *branchu
+        - *fao
+        - *sf
+        - *liveaquaria
+        - *fishkeeper
+        - *aquahoy
+        - *cfArticle
+      evidence:
+        - source: *branchu
+          value: {min: 6.5, max: 6.9}
+          note: natural lake water, inside the lower part of the tolerance
+        - source: *fao
+          value: {min: 5.6, max: 7.3}
+          note: natural lake water, inside the lower part of the tolerance
+        - source: *liveaquaria
+          value: {min: 10, max: 15}
+          note: aquarium recommendation
+        - source: *aquahoy
+          value: {min: 10, max: 15}
+          note: aquarium recommendation, lower bound of the stated range
+        - source: *fishkeeper
+          value: {min: 5, max: 15}
+          note: asks for hard, alkaline, buffered water without a carbonate figure
+        - source: *cfArticle
+          value: {min: 5, max: 15}
+          note: alkaline water above pH 8, no explicit value
+      verification:
+        method: unanimous
+        votes: {agree: 3, total: 3}
+  maxSizeCm:
+    value: {male: 15, female: 12}
+    confidence: medium
+    rationale: >-
+      Aquarium sources give about 15 cm total length (Fishkeeper, Aqualog 12 to 15 cm, Seriously Fish
+      12.5 cm standard length, which is about 15 cm total length). Males grow larger than females.
+      Aquarium Glaser reports wild males of usually 12, rarely 14 cm and females of about 12 cm, and
+      single aquarium fish of almost 18 cm, which is a record and not typical. A hobby article gives
+      about 10 cm for females; since wild females already reach about 12 cm, well-fed aquarium
+      females are taken at 12 cm.
+    sources:
+      - *sf
+      - *aqualog
+      - *fishkeeper
+      - &glaserMsuli
+        kind: website
+        title: "Aquarium Glaser (wholesaler) fish archive: Pseudotropheus sp. 'Acei' (Msuli)"
+        url: https://www.aquariumglaser.de/en/fish-archives/pseudotropheus-sp-acei-2/
+        accessed: 2026-10-13
+      - *cfArticle
+    evidence:
+      - source: *sf
+        value: {male: 15, female: 15}
+        note: 12.5 cm standard length, sexes not separated
+      - source: *aqualog
+        value: {male: 15, female: 12}
+        note: range 12 to 15 cm, sexes not separated
+      - source: *fishkeeper
+        value: {male: 15, female: 15}
+        note: maximum size, sexes not separated
+      - source: *glaserMsuli
+        value: {male: 14, female: 12}
+        note: largest wild fish; single aquarium fish up to almost 18 cm
+      - source: *cfArticle
+        value: {male: 15, female: 10}
+        note: 6 and 4 inches
+  predation:
+    value: 1
+    confidence: low
+    rationale: >-
+      The votes split three to two between level 0 and level 1, which reaches no qualified majority,
+      so the conservative rule takes the higher level 1. The fish is an aufwuchs grazer with small
+      bicuspid scraping teeth that graze algae from sunken wood (Oliver after Konings, Seriously Fish;
+      the Cichlid Room Companion confirms the algae-scraping habit), and no source reports that it
+      hunts fish. The runs for level 0 read this as fry being taken at most by chance. The runs for
+      level 1 point to fry losses in the tank: Seriously Fish advises moving holding females so that
+      the young are not eaten, a care website marks the species as a fry predator, and keepers in the
+      cichlids.com archive lost broods in community tanks. For the compatibility check, level 1 means
+      that only fry and fish below about 2 cm count as prey, which matches these reports; it does not
+      mark the species as a hunter of larger fish.
+    sources:
+      - *sf
+      - *oliver
+      - *aqualog
+      - &crc
+        kind: database
+        title: "Cichlid Room Companion: Pseudotropheus sp. 'acei' (public summary, verification only)"
+        url: https://cichlidae.com/species.php?id=0l3Euanq-W7k3KfBH3Perg
+        accessed: 2026-10-13
+      - *fishkeeper
+      - *guidarium
+      - &arch14992
+        kind: archive
+        title: cichlids.com forum thread 14992
+        url: https://www.cichlids.com/disc/read.php?2,14992
+        accessed: 2026-10-13
+    evidence:
+      - source: *sf
+        value: 1
+        note: wood-grazing aufwuchs feeder; advises moving holding females so that the fry are not eaten in the tank
+      - source: *oliver
+        value: 0
+        note: grazes algae on submerged wood; no fish or fry in the diet mentioned
+      - source: *aqualog
+        value: 0
+        note: omnivore, no fish in the diet stated
+      - source: *crc
+        value: 0
+        note: feeding type algae scraper (verification only)
+      - source: *fishkeeper
+        value: 0
+        note: primarily vegetarian
+      - source: *aquahoy
+        value: 0
+        note: predominantly herbivorous diet, no fish
+      - source: *guidarium
+        value: 1
+        note: generic trait list marks it as a fry predator, without detail
+      - source: *arch14992
+        value: 1
+        note: brood lost to tankmates in a community tank
+    verification:
+      method: conservative
+      votes: {agree: 3, total: 5}
+  diet:
+    value:
+      type: aufwuchs
+      bloatSensitive: true
+      foods: [spirulina flakes and pellets, nori, blanched spinach and other greens, occasional small frozen crustaceans]
+    confidence: high
+    rationale: >-
+      In the lake it grazes the algae and biofilm on sunken logs and branches (Konings via Oliver,
+      Seriously Fish, Aquarium Glaser), with the bicuspid scraping teeth of rock-grazing mbuna; the
+      Cichlid Room Companion confirms the algae-scraping habit. Seriously Fish, Oliver, Fishkeeper and
+      Aquarium Glaser ask for a mainly plant-based diet and warn against red meat, frequent meaty food
+      or high protein because of Malawi bloat. Aqualog and Wikipedia call it an omnivore, which
+      describes what it accepts rather than what it needs. A growth trial found no benefit from
+      protein levels above a moderate share, in line with a low-protein grazer.
+    sources:
+      - *sf
+      - *oliver
+      - *aqualog
+      - *crc
+      - *guroy
+      - *fishkeeper
+      - *glaserNgara
+      - *aquahoy
+    evidence:
+      - source: *sf
+        value: {type: aufwuchs, bloatSensitive: true}
+        note: grazes wood in the lake; no red meat
+      - source: *oliver
+        value: {type: aufwuchs, bloatSensitive: true}
+        note: algae growing on wood; meaty foods at most weekly
+      - source: *aqualog
+        value: {type: omnivore, bloatSensitive: false}
+        note: food category only
+      - source: *crc
+        value: {type: aufwuchs, bloatSensitive: true}
+        note: feeding summary algae scraper (verification only)
+      - source: *guroy
+        value: {type: omnivore, bloatSensitive: false}
+        note: formulated feed in a growth trial; no gain above about 35 percent protein; natural diet not studied
+      - source: *fishkeeper
+        value: {type: aufwuchs, bloatSensitive: true}
+        note: mainly vegetarian; protein-rich food risks bloat
+      - source: *glaserNgara
+        value: {type: aufwuchs, bloatSensitive: true}
+        note: grazes fallen trees; avoid high-protein food
+      - source: *aquahoy
+        value: {type: aufwuchs, bloatSensitive: true}
+        note: aufwuchs feeder, bloat warning
+      - source: *cfArticle
+        value: {type: aufwuchs, bloatSensitive: true}
+        note: spirulina staple, brine shrimp as a treat
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+  aggressionConspecific:
+    value: 2
+    confidence: medium
+    rationale: >-
+      Milder than most mbuna. In the aquarium males claim a spawning site and chase rivals and
+      females, so each male needs several females; a single female kept with a male is harassed,
+      possibly to death. Several males can share a large tank. In the lake breeding males hold no
+      territories and the fish move in schools. With enough space and females, injuries are rare,
+      which is level 2; Oliver calls it quite aggressive in the tank, Aquarium Glaser hardly
+      aggressive, and these two views frame the middle level.
+    sources:
+      - *sf
+      - *oliver
+      - *fishkeeper
+      - *glaserNgara
+      - *aquahoy
+      - *cfArticle
+      - &arch15033
+        kind: archive
+        title: cichlids.com forum thread 15033
+        url: https://www.cichlids.com/disc/read.php?2,15033
+        accessed: 2026-10-13
+    evidence:
+      - source: *sf
+        value: 2
+        note: territorial males, but less than in most mbuna; several males possible
+      - source: *oliver
+        value: 3
+        note: territorial in the tank and can be quite aggressive
+      - source: *fishkeeper
+        value: 2
+        note: harem needed; a single female is harassed
+      - source: *glaserNgara
+        value: 1
+        note: hardly aggressive, forms no territories in the lake
+      - source: *aquahoy
+        value: 2
+        note: hierarchy and male aggression when females are few
+      - source: *cfArticle
+        value: 2
+        note: mock fights, standoffish males
+  aggressionHeterospecific:
+    value: 2
+    confidence: medium
+    rationale: >-
+      Seriously Fish reports that males chase other species in the tank, and breeding males drive
+      fish away from their spawning site; attacks beyond that are not reported, and sources call it
+      one of the calmer mbuna that fits peaceful Malawi communities. Level 2 (chasing other species
+      out of its territory without injuries) fits better than level 1 (display only); robust mbuna
+      tend to bully acei rather than the other way round.
+    sources:
+      - *sf
+      - *fishkeeper
+      - *cfArticle
+      - *guidarium
+    evidence:
+      - source: *sf
+        value: 2
+        note: males chase other species in the tank
+      - source: *fishkeeper
+        value: 2
+        note: moderately aggressive, less than most mbuna
+      - source: *cfArticle
+        value: 1
+        note: mock fights rather than biting; gets on with Labidochromis
+      - source: *guidarium
+        value: 1
+        note: mostly peaceful
+  territory:
+    value: {size: small, breedingOnly: true}
+    confidence: medium
+    rationale: >-
+      In the aquarium breeding males clean and defend a spawning site between rocks or on a flat
+      stone; in the lake breeding males were not seen holding territories or building nests (Konings
+      via Oliver, Seriously Fish). Outside breeding the fish move about as a loose group.
+    sources:
+      - *sf
+      - *oliver
+      - *glaserMsuli
+      - *cfArticle
+    evidence:
+      - source: *sf
+        value: {size: small, breedingOnly: true}
+        note: males defend a spawning site in the tank, not observed in the wild
+      - source: *oliver
+        value: {size: small, breedingOnly: true}
+        note: nests between rocks in captivity, none in the lake
+      - source: *glaserMsuli
+        value: {size: none, breedingOnly: false}
+        note: no territories in nature
+  habitatZones:
+    value: [sand, wood, rock, openWater]
+    confidence: medium
+    rationale: >-
+      Lives on sandy and mixed shores around sunken trees and branches and also near rocks; it feeds
+      from the wood. Unlike most mbuna it schools in the water column: Seriously Fish notes that it
+      keeps to the upper half of the aquarium and asks for open swimming space and rockwork reaching
+      high up, and Practical Fishkeeping compares its shoaling role to that of a midwater fish. The
+      tank needs open sand, rock piles for cover and spawning, swimming room and ideally some wood.
+    sources:
+      - *sf
+      - *oliver
+      - &pfkBeginners
+        kind: literature
+        title: "Practical Fishkeeping: What's the best Malawi cichlid for beginners? (first published in the Christmas 2009 issue)"
+        url: https://www.practicalfishkeeping.co.uk/features/articles/whats-the-best-malawi-cichlid-for-beginners
+        accessed: 2026-10-13
+      - *glaserMsuli
+      - *fishkeeper
+      - *cfArticle
+    evidence:
+      - source: *sf
+        value: [rock, sand, wood, openWater]
+        note: rocky and sandy shores; upper half of the tank
+      - source: *oliver
+        value: [sand, wood]
+        note: sandy shores with sunken wood
+      - source: *pfkBeginners
+        value: [openWater]
+        note: peaceful shoaling mbuna
+      - source: *glaserMsuli
+        value: [sand, wood]
+      - source: *fishkeeper
+        value: [rock, sand, wood]
+        note: shoreline with fallen branches
+  social:
+    value: {structure: group, minGroup: 5}
+    confidence: medium
+    rationale: >-
+      A schooling grazer: a few to several dozen fish gather around a log, at Ngara thousands. Aquarium
+      Glaser recommends at least five fish and leaves the sex ratio open, Practical Fishkeeping calls
+      it a shoaling mbuna, and the hobby article describes schools. Seriously Fish, Fishkeeper and
+      Oliver advise one male with three or four females for breeding, which fits within a group of
+      five or more with more females than males.
+    sources:
+      - *glaserNgara
+      - *pfkBeginners
+      - *sf
+      - *fishkeeper
+      - *oliver
+      - *aquahoy
+      - *cfArticle
+    evidence:
+      - source: *glaserNgara
+        value: {structure: group, minGroup: 5}
+        note: sex ratio a matter of taste
+      - source: *sf
+        value: {structure: harem, ratio: 3}
+        note: harem of one male and at least three females for breeding
+      - source: *fishkeeper
+        value: {structure: harem, ratio: 3}
+        note: several females per male
+      - source: *oliver
+        value: {structure: harem, ratio: 3}
+        note: one male with three or four females
+      - source: *aquahoy
+        value: {structure: group, minGroup: 5}
+        note: five to six fish with three to four females per male
+  speciesOnly:
+    value: false
+    confidence: high
+    rationale: >-
+      Seriously Fish places it with moderately aggressive mbuna and calm Malawi cichlids such as
+      Aulonocara and Copadichromis, and two Practical Fishkeeping articles recommend it as a placid
+      member of mixed mbuna communities and as a companion for Labidochromis caeruleus. Retail care
+      sheets and the hobby article agree. No source advises keeping it alone except for breeding; the
+      advice not to mix its colour forms concerns crossing, not a species-only requirement.
+    sources:
+      - *sf
+      - *pfkBeginners
+      - &pfkLabs
+        kind: literature
+        title: "Practical Fishkeeping: Malawi's finest: the Yellow lab, Labidochromis caeruleus"
+        url: https://www.practicalfishkeeping.co.uk/features/malawis-finest-the-yellow-lab-labidochromis-caeruleus/
+        accessed: 2026-10-13
+      - *fishkeeper
+      - *liveaquaria
+      - *guidarium
+      - *cfArticle
+    evidence:
+      - source: *sf
+        value: false
+        note: good with moderately aggressive mbuna and calm Malawi cichlids
+      - source: *pfkBeginners
+        value: false
+        note: recommended as a peaceful, shoaling member of a mixed mbuna tank
+      - source: *pfkLabs
+        value: false
+        note: named as a placid companion of Labidochromis
+      - source: *fishkeeper
+        value: false
+        note: Malawi cichlid community
+      - source: *liveaquaria
+        value: false
+        note: community of Malawi cichlids
+      - source: *guidarium
+        value: false
+        note: mostly peaceful
+      - source: *cfArticle
+        value: false
+        note: lives well with Labidochromis caeruleus and other moderate mbuna
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+  hybridGroup:
+    value: null
+    confidence: medium
+    rationale: >-
+      No source reports a cross between acei and another species, and no curated hybrid group
+      contains it. Seriously Fish warns only against mixing the colour forms of acei itself. Oliver
+      notes the outward likeness to Gephyrochromis lawsi and G. moorii and a possible close
+      relationship, and the retail label Pseudotropheus elegans points to another look-alike; both are
+      reasons to keep these fish apart, but no cross is documented.
+    sources:
+      - *sf
+      - *oliver
+      - *fishkeeper
+      - *cfArticle
+    evidence:
+      - source: *sf
+        value: null
+        note: crossing warning only between acei colour forms
+      - source: *oliver
+        value: null
+        note: resembles Gephyrochromis; no cross reported
+      - source: *fishkeeper
+        value: null
+        note: advises against similarly coloured tankmates; names no crossing partner
+      - source: *cfArticle
+        value: null
+        note: no cross reported
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+  coloration:
+    value: {baseColors: [blue, yellow], pattern: plain}
+    confidence: high
+    rationale: >-
+      The yellow-tail form, the standard of the trade, has a plain violet-blue body with yellow fins;
+      both sexes look alike, and dark bars show only when the fish is excited. The white-tail form is
+      bluish to very dark with white fins. Oliver, Seriously Fish, Fishkeeper and the hobby article
+      agree.
+    sources:
+      - *oliver
+      - *sf
+      - *fishkeeper
+      - *cfArticle
+    evidence:
+      - source: *oliver
+        value: {baseColors: [blue, yellow], pattern: plain}
+        note: blue body with yellow fins in both sexes
+      - source: *fishkeeper
+        value: {baseColors: [blue, yellow], pattern: plain}
+      - source: *cfArticle
+        value: {baseColors: [blue, yellow], pattern: plain}
+        note: blue to violet with cream to yellow fins
+  feedingSpeed:
+    value: hasty
+    confidence: low
+    rationale: >-
+      No structured source rates the feeding speed. A keeper in the archive describes the fish
+      darting towards the food container, and as an active schooling mbuna it competes for food like
+      other mbuna, the rubric example of hasty feeders.
+    sources:
+      - &arch18821
+        kind: archive
+        title: cichlids.com forum thread 18821
+        url: https://www.cichlids.com/disc/read.php?1,18821
+        accessed: 2026-10-13
+      - kind: model-knowledge
+        title: General knowledge of mbuna feeding behaviour
+    evidence:
+      - source: *arch18821
+        value: hasty
+        note: jumps toward the food container
+  minTank:
+    value: {volumeL: 240, lengthCm: 120, depthCm: 50}
+    confidence: medium
+    rationale: >-
+      For a group of five or more adults of up to 15 cm. Seriously Fish names a 120 cm tank as the
+      minimum for a breeding group, with larger tanks preferred; Aqualog gives 100 to 200 cm, Oliver
+      at least 150 litres, LiveAquaria about 190 litres, Guidarium 200 litres and 120 cm, AquaHoy 200
+      to 250 litres for five to six fish, and Fishkeeper asks for 150 cm. 120 cm and about 240 litres
+      are the lower end for this active swimmer; 150 cm is better.
+    sources:
+      - *sf
+      - *aqualog
+      - *oliver
+      - *fishkeeper
+      - *liveaquaria
+      - *guidarium
+      - *aquahoy
+    evidence:
+      - source: *sf
+        value: {volumeL: 240, lengthCm: 120, depthCm: 50}
+        note: 48 inch tank for a breeding harem
+      - source: *fishkeeper
+        value: {volumeL: 350, lengthCm: 150, depthCm: 50}
+        note: at least 5 ft long
+      - source: *liveaquaria
+        value: {volumeL: 190, lengthCm: 120, depthCm: 45}
+        note: 50 US gallons
+      - source: *guidarium
+        value: {volumeL: 200, lengthCm: 120, depthCm: 40}
+        note: 120 cm length
+  lifespanYears:
+    value: {min: 6, max: 10}
+    confidence: low
+    rationale: >-
+      No source gives a figure. Aquarium Glaser only states that aquarium fish live several times as
+      long as wild ones; mbuna of this size typically reach about 6 to 10 years in the aquarium.
+    sources:
+      - *glaserMsuli
+      - kind: model-knowledge
+        title: General knowledge of mbuna longevity in aquaria
+  breeding:
+    value: maternal-mouthbrooder
+    confidence: high
+    rationale: >-
+      The female lays her eggs on a flat stone or in a pit, takes them into her mouth and broods eggs
+      and fry for about three to four weeks; the male does not care for the young. Seriously Fish,
+      Oliver and the aquaculture trials agree, and the Cichlid Room Companion confirms maternal
+      mouthbrooding.
+    sources:
+      - *sf
+      - *oliver
+      - *ongun
+      - *crc
+      - *fishkeeper
+      - *cfArticle
+    evidence:
+      - source: *sf
+        value: maternal-mouthbrooder
+        note: brooding for 3 to 4 weeks
+      - source: *crc
+        value: maternal-mouthbrooder
+        note: breeding summary (verification only)
+      - source: *fishkeeper
+        value: maternal-mouthbrooder
+      - source: *cfArticle
+        value: maternal-mouthbrooder
+        note: 30 to 80 young
+  beginnerSuitability:
+    value: easy
+    confidence: medium
+    rationale: >-
+      Seriously Fish calls it an excellent beginner's species because it is calm for a mbuna and
+      breeds readily; Oliver calls it a good choice for newcomers to Malawi cichlids with a large
+      enough tank, Practical Fishkeeping recommends it for a beginner's mbuna tank, and the Cichlid
+      Room Companion lists it as a beginner species. The constraints are a long tank, a plant-based
+      diet and well-buffered water.
+    sources:
+      - *sf
+      - *oliver
+      - *pfkBeginners
+      - *crc
+      - *cfArticle
+    evidence:
+      - source: *sf
+        value: easy
+        note: text calls it an excellent beginner species; overall rating moderate because of tank size
+      - source: *oliver
+        value: easy
+        note: good choice for a novice with a large enough tank
+      - source: *pfkBeginners
+        value: easy
+        note: recommended for a beginner's mbuna tank
+      - source: *fishkeeper
+        value: moderate
+partners:
+  suitable:
+    - species: Labidochromis caeruleus
+      reason: Calm mbuna of similar size with a different colour pattern; recommended together in Practical Fishkeeping and hobby reports.
+    - species: Iodotropheus sprengerae
+      reason: Peaceful small mbuna that needs the same plant-based food and water.
+    - species: Copadichromis borleyi
+      reason: Calm open-water hap that tolerates the company of calm mbuna.
+      condition: Tank of at least 150 cm; no aggressive mbuna in the tank.
+    - species: Aulonocara stuartgranti
+      reason: Peaceful peacock named as a fitting tankmate by care sheets.
+      condition: Long tank with open sand; feed the acei a plant-based staple and give the peacock its share of small crustaceans.
+    - species: Synodontis njassae
+      reason: Lake Malawi catfish that shares the water values, stays near the bottom and ignores the cichlids.
+  unsuitable:
+    - species: "Pseudotropheus sp. 'acei' (other colour forms)"
+      reason: Yellow-tail and white-tail forms cross and lose their identity.
+    - species: Pseudotropheus elegans
+      reason: Very similar fish that may belong to the same species complex; provokes rival fights, and crossing cannot be ruled out.
+    - species: Gephyrochromis lawsi
+      reason: Look-alike and possible close relative that provokes rival fights; no cross is documented.
+    - species: Melanochromis auratus
+      reason: Much more aggressive mbuna that harasses the calm acei.
+    - species: Maylandia lombardoi
+      reason: Aggressive mbuna that Practical Fishkeeping advises leaving out of a calm mbuna tank.
+    - species: Maylandia estherae
+      reason: Robust, aggressive mbuna that dominates acei.
+    - species: Nimbochromis livingstonii
+      reason: Predatory hap that eats juvenile and small acei.
+    - species: Cyphotilapia frontosa
+      reason: Needs protein-rich food that causes bloat in acei and comes from a different lake.
+profile:
+  overview:
+    text: >-
+      Acei is one of the best-known mbuna of Lake Malawi and a long-standing favourite in the hobby,
+      yet science has never described it. It is traded as Pseudotropheus sp. 'acei', sometimes as
+      Pseudotropheus acei or Gephyrochromis acei, and some retailers label it Pseudotropheus elegans,
+      a described species that is related but treated as distinct. The usual trade form has a
+      violet-blue body with bright yellow fins. Unlike most mbuna it lives along sandy shores, grazes
+      algae from sunken logs and branches and swims in loose schools in the water column. In the
+      aquarium it counts as one of the calmer mbuna and breeds readily, which makes it a good first
+      Malawi cichlid for keepers who can offer a long tank and a mainly plant-based diet.
+    sources: [*sf, *oliver, *crc, *pfkBeginners, *fishkeeper, *cof]
+  habitat:
+    text: >-
+      Acei is endemic to Lake Malawi and lives along the western shore, from Senga Bay in the south via
+      Nkhata Bay and Bandawe to Ngara and Karonga in the north. It favours sandy stretches where trees
+      and branches have fallen into the water, but it also occurs near rocks. Groups of a few fish to
+      several dozen gather around a log, and at Ngara schools of thousands have been seen at a single
+      trunk. The lake water is warm, soft and alkaline: about 21 to 29 C, pH 7.7 to 8.6, 3 to 5 dGH and
+      5 to 8 dKH. In the aquarium it stays healthy within the same temperature span and at pH 7.5 to
+      8.8, with 24 to 28 C as the usual comfort zone, as long as the water is well buffered.
+    sources: [*oliver, *sf, *glaserNgara, *branchu, *fao, *eccles]
+  sizeAndGrowth:
+    text: >-
+      Males reach about 15 cm in the aquarium, females stay a little smaller at around 12 cm. Wild fish
+      are usually somewhat smaller, because their food is poorer than in the aquarium; single aquarium
+      males have grown to almost 18 cm. The body is more slender than that of most mbuna, and the fish
+      swims a lot, often in the upper half of the tank. Juveniles grow steadily on a plant-based diet;
+      fast growth on rich food is not a goal, because protein-heavy feeding harms the gut of this
+      grazer.
+    sources: [*fishkeeper, *glaserMsuli, *sf, *aqualog]
+  husbandry:
+    text: >-
+      A group of five or more, with more females than males, needs a tank of at least 120 cm length
+      and about 240 litres; 150 cm is better, because acei are active swimmers. Build stable rock piles
+      that reach high into the water column, leave open sand and swimming space in front, and add a
+      piece of wood only if the water is well buffered, since wood tends to lower the pH. Keep the
+      temperature around 24 to 28 C and the pH between 7.5 and 8.8 with steady carbonate hardness.
+      Strong filtration and large weekly water changes keep nitrate low, which matters for all Malawi
+      grazers. A darker substrate shows the colours better.
+    sources: [*sf, *fishkeeper, *liveaquaria, *oliver]
+  socialBehavior:
+    text: >-
+      Acei is a sociable fish that lives in loose schools. In the aquarium males become territorial
+      when they want to spawn: they clean a spot between rocks, display and chase other fish away from
+      it, but they rarely cause injuries. In the lake breeding males have not been seen holding
+      territories. A single female kept with a male gets harassed, so keep a group with several
+      females per male; in long tanks more than one male works. Compared with typical rock mbuna it is
+      mild, and robust mbuna may push it around instead.
+    sources: [*sf, *oliver, *glaserNgara, *fishkeeper, *cfArticle]
+  diet:
+    text: >-
+      In nature acei scrapes the algae and small organisms that grow on submerged wood, an unusual food
+      source among mbuna. Its gut is built for this low-protein fare. In the aquarium the staple should
+      be spirulina flakes or pellets for herbivorous cichlids, with nori, blanched spinach or other soft
+      greens as additions. Small frozen crustaceans can be offered as a rare treat, but red meat,
+      bloodworms and protein-rich food for predators should be avoided. Feed small portions several
+      times a day and leave out one day a week.
+    sources: [*sf, *oliver, *fishkeeper, *glaserNgara]
+  breeding:
+    text: >-
+      Acei is a maternal mouthbrooder and breeds throughout the year in the aquarium. The male picks a
+      flat stone or a pit in the sand and courts the females in intense colours. The female lays her
+      eggs, takes them into her mouth and collects the sperm while nipping at the egg spots on the
+      male's anal fin. She carries the brood for about three to four weeks without eating and then
+      releases a few dozen young, depending on her size. The fry take brine shrimp nauplii and crushed
+      flakes from the start. In a community tank many fry are lost, so breeders move the female before
+      release or raise the young in a separate tank.
+    sources: [*sf, *oliver, *fishkeeper, *cfArticle]
+  sexing:
+    text: >-
+      Sexing acei is harder than in most mbuna because both sexes share the same colour pattern and
+      both can show egg spots on the anal fin. Adult males grow larger, colour up more strongly in
+      breeding mood and usually carry more and brighter egg spots. Behaviour is the most reliable
+      sign: males display, spread their fins and chase, while females stay calmer in the school.
+      Venting is possible but needs experience. A group of six or more juveniles gives a good chance of
+      getting both sexes.
+    sources: [*sf, *fishkeeper, *cfArticle]
+  compatibility:
+    text: >-
+      Acei suits a Malawi community of calm to moderately aggressive species. Good partners are
+      Labidochromis caeruleus, Iodotropheus sprengerae and peaceful haps such as Copadichromis and
+      Aulonocara in a long tank. Very aggressive mbuna such as Melanochromis auratus, Maylandia
+      lombardoi or Maylandia estherae dominate it, and large predatory haps eat young acei. Do not mix
+      the yellow-tail and white-tail forms or look-alikes such as Gephyrochromis and Pseudotropheus
+      elegans, because similar fish fight like rivals and colour forms cross. Tankmates that need
+      meaty, protein-rich food, for example many Tanganyika and Central American cichlids, are a poor
+      match for a bloat-prone grazer. Adults leave other fish alone, but fry in the tank get eaten.
+    sources: [*sf, *pfkBeginners, *pfkLabs, *fishkeeper, *oliver]
+  problems:
+    text: >-
+      The most common problem is Malawi bloat, a gut disorder of algae-eating cichlids that often
+      follows protein-rich food, overfeeding, poor water or stress. A swollen belly, loss of appetite
+      and white stringy droppings are warning signs that call for advice from a fish veterinarian or
+      an experienced keeper. Acidic or poorly buffered water, for example after adding a lot of wood
+      without buffering, weakens the fish. A male kept with only one or two females wears them down,
+      and harassed holding females lose their brood. Mixing colour forms produces hybrids that can no
+      longer be passed on as a true form.
+    sources: [*fishkeeper, *sf, *oliver, *arch14992]
+provenance:
+  runs:
+    - role: generator
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-13
+    - role: adjudicator
+      model: claude-opus-5-5
+      date: 2026-10-13
+  disagreements:
+    - field: taxonomy.synonyms
+      proposals:
+        - by: generator
+          value: [Pseudotropheus acei, Gephyrochromis acei, Pseudotropheus elegans]
+        - by: checker-a
+          value: [Pseudotropheus acei, Gephyrochromis acei]
+        - by: checker-b
+          value: ["Gephyrochromis sp. 'acei'", Pseudotropheus acei]
+      decision: [Pseudotropheus acei, Gephyrochromis acei, "Gephyrochromis sp. 'acei'"]
+      rationale: >-
+        The trade names of all runs are merged. Pseudotropheus elegans is left out: the Catalog of
+        Fishes lists it as a separate valid species, its redescription covers grey, green-scaled fish
+        from Chilumba Bay and Chitande Island and claims only one population shown as acei by Konings
+        (2007), and the Cichlid Room Companion keeps P. elegans and sp. 'acei' apart. The question is
+        explained in the taxonomy note.
+    - field: features.origin.value
+      proposals:
+        - by: generator
+          value: {continent: Africa, region: "Lake Malawi, western shore", waterbody: Lake Malawi, localities: [Nkhata Bay, Bandawe, Msuli, Luwala Reef, Ngara, Karonga, Ruarwe, South Rukuru River, Senga Bay, Chimwalani Reef]}
+        - by: checker-a
+          value: {continent: Africa, region: Lake Malawi, waterbody: Lake Malawi, localities: [Nkhata Bay, Bandawe, Msuli, Ngara, Karonga, Ruarwe, South Rukuru River, Senga Bay]}
+        - by: checker-b
+          value: {continent: Africa, region: Lake Malawi, waterbody: Lake Malawi, localities: [Msuli, Luwala Reef, Nkhata Bay, Bandawe, Ngara, Karonga, Ruarwe, Senga Bay]}
+      decision: {continent: Africa, region: Lake Malawi, waterbody: Lake Malawi, localities: [Nkhata Bay, Bandawe, Msuli, Luwala Reef, Ngara, Karonga, Ruarwe, South Rukuru River, Senga Bay]}
+      rationale: >-
+        Region follows the water body name used by two runs; the western shore is stated in the
+        rationale. Localities are merged; Chimwalani Reef rests only on a photo caption of the Cichlid
+        Room Companion, which serves for verification and not as the origin of a value, so it is left
+        out.
+    - field: features.temperatureC.tolerance
+      proposals:
+        - by: generator
+          value: {min: 21, max: 29}
+        - by: checker-a
+          value: {min: 21, max: 29}
+        - by: checker-b
+          value: {min: 23, max: 28}
+        - by: tiebreaker-1
+          value: {min: 21, max: 29}
+        - by: tiebreaker-2
+          value: {min: 21, max: 29}
+      decision: {min: 21, max: 29}
+      rationale: >-
+        Decided by the vote count (qualified majority, 4 of 5). The tolerance must contain the
+        natural lake range of 21 to 29 C; the narrower 23 to 28 C describes a comfort zone.
+    - field: features.ghDgh.tolerance
+      proposals:
+        - by: generator
+          value: {min: 3, max: 25}
+        - by: checker-a
+          value: {min: 3, max: 25}
+        - by: checker-b
+          value: {min: 3, max: 20}
+        - by: tiebreaker-1
+          value: {min: 3, max: 25}
+        - by: tiebreaker-2
+          value: {min: 3, max: 25}
+      decision: {min: 3, max: 25}
+      rationale: >-
+        Decided by the vote count (qualified majority, 4 of 5). Seriously Fish and Fishkeeper accept up
+        to 25 dGH; only a blog stops at 20.
+    - field: features.predation
+      proposals:
+        - by: generator
+          value: 1
+        - by: checker-a
+          value: 1
+        - by: checker-b
+          value: 0
+        - by: tiebreaker-1
+          value: 0
+        - by: tiebreaker-2
+          value: 0
+      decision: 1
+      rationale: >-
+        Decided by the vote count with the conservative method: three votes for level 0 and two for
+        level 1 reach no qualified majority, so the highest proposed level applies, with confidence
+        low. All runs agree that the fish does not hunt fish; they differ only on whether fry losses
+        in the tank count as level 1.
+    - field: features.maxSizeCm
+      proposals:
+        - by: generator
+          value: {male: 15, female: 12}
+        - by: checker-a
+          value: {male: 15, female: 12}
+        - by: checker-b
+          value: {male: 15, female: 10}
+      decision: {male: 15, female: 12}
+      rationale: >-
+        Wild females already reach about 12 cm according to Aquarium Glaser and Aqualog gives 12 to 15
+        cm; the 10 cm of the hobby article underestimates well-fed aquarium females.
+    - field: features.aggressionHeterospecific
+      proposals:
+        - by: generator
+          value: 2
+        - by: checker-a
+          value: 2
+        - by: checker-b
+          value: 1
+      decision: 2
+      rationale: >-
+        Seriously Fish reports that males chase other species in the tank, which is level 2; level 1
+        (display only) rests on hobby pages that describe mock fights.
+    - field: features.habitatZones
+      proposals:
+        - by: generator
+          value: [sand, wood, rock]
+        - by: checker-a
+          value: [sand, wood, rock, openWater]
+        - by: checker-b
+          value: [rock, sand, wood]
+      decision: [sand, wood, rock, openWater]
+      rationale: >-
+        Seriously Fish states that the species keeps to the upper half of the tank and needs open
+        swimming space, and Practical Fishkeeping describes it as a shoaling midwater fish; the
+        generator's own rationale notes the same, so open water belongs to the zones it uses.
+    - field: features.social
+      proposals:
+        - by: generator
+          value: {structure: harem, ratio: 3}
+        - by: checker-a
+          value: {structure: group, minGroup: 5}
+        - by: checker-b
+          value: {structure: group, minGroup: 5}
+      decision: {structure: group, minGroup: 5}
+      rationale: >-
+        The fish schools in the lake and in the tank, and Aquarium Glaser recommends at least five
+        fish; the harem of one male with three females that Seriously Fish, Fishkeeper and Oliver name
+        for breeding fits within such a group and is kept as advice in the prose.
+    - field: features.minTank
+      proposals:
+        - by: generator
+          value: {volumeL: 240, lengthCm: 120, depthCm: 50}
+        - by: checker-a
+          value: {volumeL: 300, lengthCm: 150, depthCm: 50}
+        - by: checker-b
+          value: {volumeL: 200, lengthCm: 120, depthCm: 40}
+      decision: {volumeL: 240, lengthCm: 120, depthCm: 50}
+      rationale: >-
+        Seriously Fish, LiveAquaria and Guidarium support 120 cm as the minimum length; 240 litres at
+        50 cm depth is the middle proposal and lies within the 200 to 250 litres named for five to six
+        fish. The 150 cm of a retailer and checker-a is the recommended size, stated in the prose.
+    - field: features.lifespanYears
+      proposals:
+        - by: generator
+          value: {min: 6, max: 10}
+        - by: checker-a
+          value: {min: 8, max: 10}
+        - by: checker-b
+          value: {min: 6, max: 10}
+      decision: {min: 6, max: 10}
+      rationale: >-
+        No source gives a lifespan; all proposals rest on general knowledge, and the wider range of
+        two runs is kept with confidence low.
