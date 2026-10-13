@@ -96,17 +96,19 @@ System. Details in `PROJECT-STATUS.md`, Abschnitt 9.
 
 ## 3. Artenprofile
 
-Stand: 58 Profile in `data/species/profiles/`, alle validiert. Verfahren in
-`tools/species-data/README.md`. Je Art stimmen Generator, Prüfer A (Opus), Prüfer B (Sonnet) und
-Prüfer C (Codex, gpt-6.1-sol) ab.
+Stand: 70 Profile in `data/species/profiles/`, alle validiert. Verfahren in
+`tools/species-data/README.md`. Solange die Claude-Credits knapp sind, ist je Art nur Prüfer A ein
+Claude-Agent (Sonnet); Generator, Prüfer B und C, Tie-Breaker und Schiedsrichter laufen über Codex
+(gpt-6.1-sol). Die Codex-Stimmen fallen dabei öfter zusammen, etwa beim größten Mindestbecken.
 
 ### 3.1 Weitere Profile
 
-- [ ] Nächste Arten nach Fotoanzahl: 233 Aulonocara maylandi, 309 Fossorochromis rostratus,
-  738 Herichthys carpintis, 374 Melanochromis maingano, 557 Hemichromis bimaculatus,
-  318 Labeotropheus fuelleborni, 438 Placidochromis electra, 404 Nimbochromis fuscotaeniatus;
-  danach weiter nach Fotoanzahl, Synonym-Paare gemeinsam (etwa 739 Herichthys cyanoguttatus mit
-  685 Cichlasoma cyanoguttatum)
+- [ ] Nächste Arten nach Fotoanzahl: 659 Archocentrus spilurus, 686 Parachromis dovii,
+  257 Copadichromis azureus, 227 Aulonocara hueseri (alle in Arbeit), 457 Protomelas spilonotus,
+  590 Tilapia butterkofferi, 442 Placidochromis milomo, 797 Vieja argentea; danach weiter nach
+  Fotoanzahl, Synonym-Paare gemeinsam
+- [ ] Legacy 770 „Hybrid (man-made) Parrot Cichlid" (174 Fotos) ist keine Art: offen, ob und wie
+  die Zuchthybride ein Profil bekommt
 - [ ] Die harten Merkmale aller Arten sind vor Slice 4 gesichert
 - [ ] Das OpenAlex-Tagesbudget (1 USD, Reset 02:00 Uhr MESZ) reicht für etwa 12 Arten. Danach
   zahlt das Prepaid-Guthaben des Schlüssels (am 2026-10-13 etwa 10 USD), weil die Werkzeuge nur
