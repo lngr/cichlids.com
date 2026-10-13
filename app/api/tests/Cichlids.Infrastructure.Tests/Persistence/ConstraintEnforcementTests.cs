@@ -161,6 +161,66 @@ public sealed class ConstraintEnforcementTests
         await Assert.ThrowsAsync<DbUpdateException>(() => context.SaveChangesAsync());
     }
 
+    [Fact]
+    public async Task A_second_species_with_the_same_slug_is_rejected()
+    {
+        await using var context = _fixture.CreateContext();
+        var slug = $"slug-{Guid.NewGuid():N}";
+        context.Species.Add(NewSpecies(slug));
+        await context.SaveChangesAsync();
+
+        context.Species.Add(NewSpecies(slug));
+
+        await Assert.ThrowsAsync<DbUpdateException>(() => context.SaveChangesAsync());
+    }
+
+    [Fact]
+    public async Task Species_without_a_slug_are_accepted_in_any_number()
+    {
+        await using var context = _fixture.CreateContext();
+        context.Species.AddRange(NewSpecies(null), NewSpecies(null));
+
+        await context.SaveChangesAsync();
+    }
+
+    [Fact]
+    public async Task A_slug_alias_value_already_used_by_another_post_is_rejected()
+    {
+        await using var context = _fixture.CreateContext();
+        var profile = await TestDataBuilder.CreateProfileAsync(context);
+        var firstPost = await TestDataBuilder.CreatePostAsync(context, profile.Id);
+        var secondPost = await TestDataBuilder.CreatePostAsync(context, profile.Id);
+        var value = $"alias-{Guid.NewGuid():N}";
+
+        context.SlugAliases.Add(new SlugAlias
+        {
+            PostId = firstPost.Id,
+            Value = value,
+            IsCanonical = true,
+            CreatedAt = DateTimeOffset.UtcNow,
+        });
+        await context.SaveChangesAsync();
+
+        context.SlugAliases.Add(new SlugAlias
+        {
+            PostId = secondPost.Id,
+            Value = value,
+            IsCanonical = false,
+            CreatedAt = DateTimeOffset.UtcNow,
+        });
+
+        await Assert.ThrowsAsync<DbUpdateException>(() => context.SaveChangesAsync());
+    }
+
+    private static Species NewSpecies(string? slug) => new()
+    {
+        Genus = $"Genus{Guid.NewGuid():N}",
+        Name = $"name{Guid.NewGuid():N}",
+        DisplayName = "Test species",
+        Slug = slug,
+        CreatedAt = DateTimeOffset.UtcNow,
+    };
+
     // The enum converter never produces a value outside the check constraint's allowed set
     // through normal EF Core usage, so this goes around it with a raw insert to prove the
     // database itself, not just the application, rejects an invalid discussion category.
