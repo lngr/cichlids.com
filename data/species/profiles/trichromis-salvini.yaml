@@ -1,0 +1,1615 @@
+schemaVersion: 1
+id: trichromis-salvini
+legacyIds: [707]
+status: described
+
+taxonomy:
+  validName: Trichromis salvini
+  genus: Trichromis
+  species: salvini
+  author: (Günther, 1862)
+  source: &cof
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes: species of the genus Trichromis"
+    url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Trichromis
+    accessed: 2026-10-13
+  synonyms:
+    - name: Heros salvini
+      note: Original combination (Günther, 1862); syntypes from the Río de Santa Isabel and Lake Petén Itzá, Guatemala.
+    - name: Heros triagramma
+      note: Steindachner, 1864; a synonym of Trichromis salvini in the Catalog of Fishes; its type probably came from Laguna Bacalar, Quintana Roo.
+    - name: Cichlasoma salvini
+      note: Combination used in most literature and in the hobby before the genus Trichromis was erected in 2015.
+    - name: Nandopsis salvini
+      note: Combination used by Burgess (2000) and in the trade.
+  legacyNames:
+    - Cichlasoma salvini
+  note: >-
+    The Catalog of Fishes (online version updated 21 Sep. 2026, queried for Trichromis, Cichlasoma,
+    Heros and Amphilophus on 2026-10-13) lists the species as valid Trichromis salvini, the only
+    species of the genus Trichromis McMahan and Chakrabarty, 2015. Some hobby pages and older works
+    give Cichlasoma tenue Meek, 1906 as a synonym; the Catalog of Fishes treats that name as a
+    synonym of Amphilophus trimaculatus, so it is not listed here. A 2026 phylogenomic preprint
+    reports unrecognised genetic diversity within T. salvini, so the species may be split in future.
+
+names:
+  trade:
+    en:
+      - Salvin's cichlid
+      - Salvini
+      - Yellow-belly cichlid
+      - Tricolor cichlid
+    de:
+      - Salvins Buntbarsch
+    es-419:
+      - Mojarra pico de gallo
+      - Guapote tricolor
+      - Cola de fuego
+      - Azulita
+
+variants:
+  - name: Usumacinta
+    kind: locality
+    note: Fish from the Usumacinta drainage are known for an intense red belly; body colour varies by locality from greenish to bright lemon yellow.
+  - name: Laguna Miramar
+    kind: locality
+    note: A dwarf population from this lake in the Chiapas rainforest stays at about 8 cm.
+
+features:
+  origin:
+    value:
+      continent: Central America
+      region: Atlantic slope of southern Mexico, Guatemala and Belize (from the Papaloapan basin east through the Grijalva-Usumacinta system to the Yucatán Peninsula and the rivers of Belize)
+      waterbody: null
+      localities:
+        - Río de Santa Isabel, Guatemala (type locality)
+        - Lake Petén Itzá, Guatemala (type locality)
+        - Laguna Bacalar, Quintana Roo (probable type locality of Heros triagramma)
+        - Río Usumacinta
+        - Río Lacantún basin, Chiapas
+        - Río Tzendales, Chiapas
+        - Tacotalpa, Puyacatengo and Ixtapangajoya drainages (Grijalva), Tabasco and Chiapas
+        - Pantanos de Centla, Tabasco
+        - Río San Pedro, Tabasco
+        - Laguna Caobas, Quintana Roo
+        - Chile Verde Lagoon, Quintana Roo
+        - Los Petenes, Campeche
+        - Papaloapan drainage
+    confidence: high
+    rationale: >-
+      The Catalog of Fishes and FishBase place the species on the Atlantic slope of southern Mexico,
+      Guatemala and Belize; the USGS fact sheet and Fishkeeper name the Papaloapan basin as the
+      western limit. Field studies confirm it in the Lacantún and Tzendales rivers of the
+      Usumacinta basin, in Grijalva tributaries of Tabasco, in the Pantanos de Centla wetland, in
+      Laguna Caobas and Chile Verde Lagoon in southern Quintana Roo and in the Petenes of Campeche.
+      It lives in rivers, lagoons and lakes, none of them a lake of the waterbody table, so the
+      waterbody is empty. Some hobby pages add Honduras, which the Catalog of Fishes does not
+      list. The population established in Florida is introduced and not part of the native range.
+    sources:
+      - *cof
+      - &fishbase
+        kind: database
+        title: "FishBase: Trichromis salvini, species summary"
+        url: https://www.fishbase.se/summary/Trichromis-salvini.html
+        accessed: 2026-10-13
+      - &nas
+        kind: database
+        title: "USGS Nonindigenous Aquatic Species: Cichlasoma salvini fact sheet"
+        url: https://nas.er.usgs.gov/queries/FactSheet.aspx?SpeciesID=449
+        accessed: 2026-10-13
+      - &larre
+        kind: literature
+        title: "Larre-Campuzano, S., Espinosa-Pérez, H., Mercado-Silva, N., Rosales-Quintero, N. and Matamoros, W. A. (2023). Variation in patterns of fish assemblage and their environmental correlates in a tropical river basin from the Gulf of Mexico slope. Neotropical Ichthyology 21(2), e220098."
+        url: https://doi.org/10.1590/1982-0224-2022-0098
+        accessed: 2026-10-13
+      - &soria2008
+        kind: literature
+        title: "Soria-Barreto, M. and Rodiles-Hernández, R. (2008). Spatial distribution of cichlids in Tzendales River, Biosphere Reserve Montes Azules, Chiapas, Mexico. Environmental Biology of Fishes 83(4), 459-469 (abstract)."
+        url: https://doi.org/10.1007/s10641-008-9368-0
+        accessed: 2026-10-13
+      - &greenway
+        kind: literature
+        title: "Greenway, R., Arias-Rodriguez, L., Diaz, P. and Tobler, M. (2014). Patterns of macroinvertebrate and fish diversity in freshwater sulphide springs. Diversity 6(3), 597-632."
+        url: https://doi.org/10.3390/d6030597
+        accessed: 2026-10-13
+      - &macossay
+        kind: literature
+        title: "Macossay-Cortez, A., Sánchez, A. J., Florido, R., Huidobro, L. and Montalvo-Urgel, H. (2011). Historical and environmental distribution of ichthyofauna in the tropical wetland of Pantanos de Centla, southern Gulf of Mexico. Acta Ichthyologica et Piscatoria 41(3), 229-245."
+        url: https://doi.org/10.3750/aip2011.41.3.11
+        accessed: 2026-10-13
+      - &valtierra
+        kind: literature
+        title: "Valtierra-Vega, M. T. and Schmitter-Soto, J. J. (2000). Hábitos alimentarios de las mojarras (Perciformes: Cichlidae) de la laguna Caobas, Quintana Roo, México. Revista de Biología Tropical 48(2-3), 503-508."
+        url: https://doi.org/10.15517/rbt.v48i2-3.18819
+        accessed: 2026-10-13
+      - &peerj
+        kind: literature
+        title: "Uh-Navarrete, A. E., Valdez-Moreno, M., Callejas-Jiménez, M. E. and Vásquez-Yeomans, L. (2023). Discovering the fish fauna of a lagoon from the southeast of the Yucatan Peninsula, Mexico, using DNA barcodes. PeerJ 11, e16285."
+        url: https://doi.org/10.7717/peerj.16285
+        accessed: 2026-10-13
+      - &petenes
+        kind: literature
+        title: "Torres-Castro, I. L., Vega-Cendejas, M. E., Schmitter-Soto, J. J., Palacio-Aponte, G. and Rodiles-Hernández, R. (2009). Ictiofauna de sistemas cárstico-palustres con impacto antrópico: los petenes de Campeche, México. Revista de Biología Tropical 57(1-2)."
+        url: https://doi.org/10.15517/rbt.v57i1-2.11306
+        accessed: 2026-10-13
+      - &nordic
+        kind: database
+        title: "Nordiska Ciklidsällskapet species register: Trichromis salvini"
+        url: https://www.ciklid.org/artregister/art.php?ID=200
+        accessed: 2026-10-13
+      - &fishkeeper
+        kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Salvini Cichlid, Trichromis salvini, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/salvini-cichlid
+        accessed: 2026-10-13
+    evidence:
+      - source: *cof
+        value: {continent: Central America, region: Atlantic slope of southern Mexico, Guatemala and Belize}
+        note: Also records an established introduced population in Florida.
+      - source: *fishbase
+        value: {continent: Central America, region: Atlantic slope of southern Mexico, Guatemala and Belize}
+      - source: *larre
+        value: {continent: Central America, region: Río Lacantún basin, Usumacinta}
+        note: 163 fish caught at 13 sites of the basin, 2017 to 2019.
+
+  temperatureC:
+    value: {min: 23, max: 30}
+    confidence: medium
+    verification:
+      method: qualified-majority
+      votes: {agree: 5, total: 6}
+    rationale: >-
+      Decided by qualified majority: the generator (23 to 30 °C), checker-a and checker-b (24 to
+      30 °C) and both tie-breakers (23 to 30 °C) agree; checker-c proposed 24.1 to 32 °C. The range
+      rests on field measurements from habitats of the species: site means of 23.6 to 29.6 °C in
+      the Lacantún basin, 25.1 to 29.3 °C in Laguna Caobas, about 24 to 29 °C in Chile Verde
+      Lagoon, 25.4 to 30 °C in the upper water column of Lake Petén Itzá, a type locality, and
+      station means of 24.1 to 29.9 °C in the Centla wetland. Sources reach wider: the Usumacinta
+      main stem drops to 20.8 °C at one upstream station in the rainy season, single lower
+      Usumacinta sites reach 22.96 to 33.88 °C, spring channels of the Campeche petenes 31.8 °C,
+      shallow Centla lagoons 26 to 35 °C, one San Pedro collection of juveniles 32 °C, and AquaInfo
+      summarises the habitat as 24 to 32 °C. These higher readings come from shallow, sun-warmed
+      water in the dry season and describe short peaks rather than the typical habitat. FishBase
+      gives 22 to 32 °C from an aquarium reference, which is no habitat measurement. Medium
+      confidence because most values describe the basins rather than exact capture points.
+    sources:
+      - *larre
+      - &soria_reinoso
+        kind: literature
+        title: "Soria-Reinoso, I., Alcocer, J., Sánchez-Carrillo, S., García-Oliva, F., Cuevas-Lara, D., Cortés-Guzmán, D. and Oseguera, L. A. (2022). The Seasonal Dynamics of Organic and Inorganic Carbon along the Tropical Usumacinta River Basin (Mexico). Water 14(17), 2703."
+        url: https://doi.org/10.3390/w14172703
+        accessed: 2026-10-13
+      - &esj
+        kind: literature
+        title: "Cruz-Leyva, M. C., González-de la Cruz, J. U., Urbina, V. C. D., González, C. A. Á. and Cuenca-Soria, C. A. (2020). Resistencia de Salmonella spp. a antibióticos y fluctuación fisicoquímica del agua a nivel espacial en la cuenca media del río Usumacinta, México. European Scientific Journal 16(15), 43."
+        url: https://doi.org/10.19044/esj.2020.v16n15p43
+        accessed: 2026-10-13
+      - *peerj
+      - *valtierra
+      - &perez2010
+        kind: literature
+        title: "Pérez, L., Lorenschat, J., Bugja, R., Brenner, M., Scharf, B. and Schwalb, A. (2010). Distribution, diversity and ecology of modern freshwater ostracodes (Crustacea), and hydrochemical characteristics of Lago Petén Itzá, Guatemala. Journal of Limnology 69(1), 146-159."
+        url: https://doi.org/10.4081/jlimnol.2010.146
+        accessed: 2026-10-13
+      - &salcedo
+        kind: literature
+        title: "Salcedo-Garduño, M. G., Galaviz-Villa, I. and Pérez-Vázquez, A. (2022). Determining water quality of the lower basin of the Usumacinta River in Tabasco, Mexico. Agro Productividad 15(8)."
+        url: https://doi.org/10.32854/agrop.v15i8.2205
+        accessed: 2026-10-13
+      - *petenes
+      - &albarran
+        kind: literature
+        title: "Albarrán-Melzer, N. C., Rangel-Ruiz, L. J. and Gamboa-Aguilar, J. (2009). Distribución y abundancia de Melanoides tuberculata (Gastropoda: Thiaridae) en la Reserva de la Biosfera Pantanos de Centla, Tabasco, México. Acta Zoológica Mexicana (n.s.) 25(1), 93-104."
+        url: https://doi.org/10.21829/azm.2009.251599
+        accessed: 2026-10-13
+      - *macossay
+      - &aquainfo
+        kind: database
+        title: "AquaInfo: Trichromis salvini"
+        url: https://aquainfo.nl/en/article/trichromis-salvini/
+        accessed: 2026-10-13
+    evidence:
+      - source: *larre
+        value: {min: 23.6, max: 29.6}
+        note: Site means of 13 Lacantún basin sites where the species was caught.
+      - source: *valtierra
+        value: {min: 25.1, max: 29.3}
+        note: Laguna Caobas, dry and rainy season 1995; species sampled there.
+      - source: *peerj
+        value: {min: 24, max: 29}
+        note: Chile Verde Lagoon, February to May; species collected there.
+      - source: *perez2010
+        value: {min: 25.4, max: 30}
+        note: Lake Petén Itzá above the hypolimnion, type locality.
+      - source: *macossay
+        value: {min: 24.1, max: 29.9}
+        note: Station means at Centla sites with records of the species; species mean 28.7 °C.
+      - source: *soria_reinoso
+        value: {min: 20.8, max: 29.8}
+        note: Usumacinta main stem and tributaries, rainy and dry season; no fish survey.
+      - source: *esj
+        value: {min: 28.3, max: 30.2}
+        note: Six middle Usumacinta sites, dry season.
+      - source: *salcedo
+        value: {min: 22.96, max: 33.88}
+        note: Lower Usumacinta, extremes at single sites over the year.
+      - source: *petenes
+        value: {min: 26, max: 31.8}
+        note: Springs and spring channels of the Campeche petenes.
+      - source: *albarran
+        value: {min: 26, max: 35}
+        note: Shallow Centla lagoons in which the species is recorded.
+      - source: &sanchez2024
+          kind: literature
+          title: "Sánchez, A. J., Florido, R., Hernández-Trejo, H., Álvarez-Pliego, N., Salcedo, M. Á. and Barba, E. (2024). Ecological significance of a new record of Vallisneria americana Michx. in the conservation and sustainability of the Usumacinta Fluvial System. Discover Sustainability 5, 488."
+          url: https://doi.org/10.1007/s43621-024-00748-8
+          accessed: 2026-10-13
+        value: {min: 32, max: 32}
+        note: Single reading at a vegetated margin of the San Pedro River with juveniles.
+      - source: *aquainfo
+        value: {min: 24, max: 32}
+        note: Habitat range as summarised by the site.
+      - source: *fishbase
+        value: {min: 22, max: 32}
+        note: Aquarium reference, not a habitat measurement.
+    tolerance:
+      value: {min: 22, max: 30}
+      confidence: medium
+      verification:
+        method: qualified-majority
+        votes: {agree: 5, total: 6}
+      rationale: >-
+        Decided by qualified majority: the generator, checker-a, checker-b and both tie-breakers
+        proposed 22 to 30 °C; checker-c proposed 22 to 32 °C. Care sheets agree on 22 °C as the
+        lower limit and differ on the upper one: 26 °C (Seriously Fish), 27 °C (Fishkeeper,
+        Wikipedia), 28 °C (AquaInfo, Guidarium), 30 °C (Nordiska Ciklidsällskapet), 31 °C
+        (Tropical Freshwater Fish, which uses 26 to 30 °C for breeding) and 32 °C (FishBase, from
+        an aquarium reference). The tolerance contains the natural range of 23 to 30 °C; no source
+        reports lasting health above 30 °C, so the 32 °C of FishBase and the field peaks are left
+        out.
+      sources:
+        - &seriouslyfish
+          kind: database
+          title: "Seriously Fish: Cichlasoma salvini (Salvini)"
+          url: https://www.seriouslyfish.com/species/cichlasoma-salvini/
+          accessed: 2026-10-13
+        - *fishkeeper
+        - *fishbase
+        - &tff
+          kind: database
+          title: "Tropical Freshwater Fish: Salvini, Cichlasoma salvini"
+          url: https://tropicalfreshwaterfish.com/species/Cichlasoma_salvini.html
+          accessed: 2026-10-13
+        - *aquainfo
+        - &wiki_en
+          kind: website
+          title: "Wikipedia: Salvin's cichlid"
+          url: https://en.wikipedia.org/wiki/Trichromis_salvini
+          accessed: 2026-10-13
+        - &guidarium
+          kind: website
+          title: "Guidarium: Salvini Cichlid"
+          url: https://guidarium.com/fishes/salvini-cichlid
+          accessed: 2026-10-13
+      evidence:
+        - source: *seriouslyfish
+          value: {min: 22, max: 26}
+          note: Aquarium recommendation.
+        - source: *fishkeeper
+          value: {min: 22, max: 27}
+          note: Aquarium recommendation.
+        - source: *fishbase
+          value: {min: 22, max: 32}
+          note: Aquarium reference.
+        - source: *tff
+          value: {min: 22, max: 31}
+          note: Recommends 26 to 30 °C for breeding.
+        - source: *aquainfo
+          value: {min: 24, max: 28}
+          note: Aquarium values of the site.
+        - source: *nordic
+          value: {min: 24, max: 30}
+          note: Aquarium range of the species register.
+        - source: *wiki_en
+          value: {min: 22, max: 27}
+          note: Aquarium recommendation.
+        - source: *guidarium
+          value: {min: 22, max: 28}
+          note: Aquarium recommendation.
+
+  ph:
+    value: {min: 6.6, max: 8.5}
+    confidence: medium
+    verification:
+      method: qualified-majority
+      votes: {agree: 5, total: 6}
+    rationale: >-
+      Decided by qualified majority: checker-a (6.8 to 8.5), the generator (7.1 to 8.3), checker-c
+      (6.55 to 8.5), tie-breaker-1 (6.5 to 8.5) and tie-breaker-2 (6.55 to 8.5) agree, and the
+      decided range is the median of their bounds; checker-b proposed 7.3 to 8.5. The rivers of
+      the range drain limestone and are slightly alkaline: site means of 7.3 to 8.1 in the Lacantún
+      basin, 7.3 to 8.3 along the Usumacinta main stem and 7.1 to 7.9 at middle Usumacinta sites.
+      Lake Petén Itzá reaches 8.2 to 8.5 near the surface. Lagoons dip below neutral: Laguna
+      Caobas ranged from 6.55 to 8.23 with a mean of about 7.0, which contradicts the statement of
+      AquaInfo that the habitat water is always at pH 7.5 or more. Sources reach wider than the
+      decided range: Centla lagoons from 6.1 to 8.5, single lower Usumacinta readings up to 8.93
+      and Chile Verde Lagoon at a mean of 8.3 with a spread up to about 8.9. FishBase gives 7.0 to
+      8.0 from an aquarium reference.
+    sources:
+      - *larre
+      - *soria_reinoso
+      - *esj
+      - *peerj
+      - *valtierra
+      - *perez2010
+      - *sanchez2024
+      - &echeverria
+        kind: literature
+        title: "Echeverría-Galindo, P. G., Pérez, L., Correa-Metrio, A., Avendaño, C., Moguel, B., Brenner, M., Cohuo, S., Macario, L. and Schwalb, A. (2019). Tropical freshwater ostracodes as environmental indicators across an altitude gradient in Guatemala and Mexico. Revista de Biología Tropical 67(4)."
+        url: https://doi.org/10.15517/rbt.v67i4.33278
+        accessed: 2026-10-13
+      - *albarran
+      - *macossay
+      - *salcedo
+      - *aquainfo
+    evidence:
+      - source: *larre
+        value: {min: 7.3, max: 8.1}
+        note: Site means, Lacantún basin.
+      - source: *soria_reinoso
+        value: {min: 7.3, max: 8.3}
+        note: Usumacinta main stem, both seasons.
+      - source: *esj
+        value: {min: 7.1, max: 7.9}
+        note: Middle Usumacinta, dry season.
+      - source: *valtierra
+        value: {min: 6.55, max: 8.23}
+        note: Laguna Caobas, mean about 7.0; species sampled there.
+      - source: *perez2010
+        value: {min: 8.2, max: 8.5}
+        note: Lake Petén Itzá surface water; deep water down to 7.5.
+      - source: *echeverria
+        value: {min: 8.5, max: 8.5}
+        note: Lake Petén Itzá at 1 to 10 m depth.
+      - source: *peerj
+        value: {min: 7.7, max: 8.9}
+        note: Chile Verde Lagoon, mean 8.3 with a standard deviation of 0.58.
+      - source: *albarran
+        value: {min: 6.1, max: 8.5}
+        note: Centla lagoons; seasonal means 7.2 and 7.9.
+      - source: *salcedo
+        value: {min: 7.5, max: 8.93}
+        note: Lower Usumacinta river readings.
+      - source: *sanchez2024
+        value: {min: 7.1, max: 7.1}
+        note: Single reading at the San Pedro juvenile site.
+      - source: *fishbase
+        value: {min: 7.0, max: 8.0}
+        note: Aquarium reference.
+    tolerance:
+      value: {min: 6.5, max: 8.5}
+      confidence: medium
+      verification:
+        method: unanimous
+        votes: {agree: 4, total: 4}
+      rationale: >-
+        Decided unanimously: checker-a, checker-b and checker-c proposed 6.5 to 8.5 and the
+        generator 6.8 to 8.3, which lies within the agreement threshold. Care sheets give lower
+        limits of 6.5 (Seriously Fish), 6.8 (Fishkeeper, Tropical Freshwater Fish) and 7.0
+        (FishBase, AquaInfo) and upper limits of 8.0 (Seriously Fish, Fishkeeper, FishBase) to 8.5
+        (Tropical Freshwater Fish, AquaInfo); an importer reports keeping the species without losses
+        between 7.0 and 8.4. The tolerance spans these figures and contains the natural range of
+        6.6 to 8.5.
+      sources:
+        - *seriouslyfish
+        - *fishkeeper
+        - *fishbase
+        - *tff
+        - *aquainfo
+        - &aquaticarts
+          kind: website
+          title: "Aquatic Arts: Salvin's Cichlid Care Guide"
+          url: https://aquaticarts.com/pages/salvins-cichlid-care-guide
+          accessed: 2026-10-13
+      evidence:
+        - source: *seriouslyfish
+          value: {min: 6.5, max: 8.0}
+          note: Aquarium recommendation.
+        - source: *fishkeeper
+          value: {min: 6.8, max: 8.0}
+          note: Aquarium recommendation.
+        - source: *fishbase
+          value: {min: 7.0, max: 8.0}
+          note: Aquarium reference.
+        - source: *tff
+          value: {min: 6.8, max: 8.5}
+        - source: *aquainfo
+          value: {min: 7.0, max: 8.5}
+          note: Aquarium values of the site.
+        - source: *aquaticarts
+          value: {min: 7.0, max: 8.4}
+          note: Keeping experience of an importer.
+
+  ghDgh:
+    value: {min: 8, max: 20}
+    confidence: low
+    verification:
+      method: qualified-majority
+      votes: {agree: 4, total: 6}
+    rationale: >-
+      Decided by qualified majority: the generator (7 to 20 dGH), checker-a (8 to 18 dGH),
+      tie-breaker-1 (5 to 20 dGH) and tie-breaker-2 (8 to 20 dGH) agree, and the decided range is
+      the median of their bounds; checker-b proposed 5 to 14 dGH and checker-c 12.6 to 90.2 dGH.
+      Measured hardness exists for few habitats: middle Usumacinta sites held 14 to 20 dGH in the
+      dry season, Lake Petén Itzá about 12 to 18 dGH from its calcium and magnesium content, and
+      conductivity in Laguna Caobas and at most Lacantún sites points to roughly 8 to 23 dGH in
+      these calcium bicarbonate waters. Sources reach wider on both sides: the freshwater lagoons
+      of Pantanos de Centla, where the species is common, held 4.2 to 19.7 dGH in the rainy season
+      with a mean of about 7 dGH, and gypsum-rich karst water such as Laguna Bacalar, a locality of
+      the species, reaches 74 to 90 dGH; AquaInfo describes the range as 8 to more than 50 dGH.
+      The very hard sulphate waters are marginal habitats without a matching fish record and are
+      left out. Low confidence because the values rest on few measured sites and on estimates from
+      conductivity.
+    sources:
+      - *esj
+      - *albarran
+      - *perez2010
+      - *valtierra
+      - *larre
+      - *macossay
+      - *aquainfo
+      - &yanez
+        kind: literature
+        title: "Yanez-Montalvo, A., Águila, B., de León-Lorenzana, A. S., Bayona, A., Torrescano-Valle, N., Popoca, P. and Falcón, L. I. (2025). Karst-environments of the southeastern Yucatan Peninsula: Hotspots for modern freshwater microbialites. PLOS One 20(5), e0322625."
+        url: https://doi.org/10.1371/journal.pone.0322625
+        accessed: 2026-10-13
+      - &granados
+        kind: literature
+        title: "Granados-Dieseldorff, P., Christensen, M. F. and Kihn-Pineda, P. H. (2012). Fishes from Lachuá Lake, Upper Usumacinta Basin, Guatemala. Check List 8(1), 95."
+        url: https://doi.org/10.15560/8.1.095
+        accessed: 2026-10-13
+    evidence:
+      - source: *esj
+        value: {min: 14, max: 20}
+        note: Middle Usumacinta, dry season, converted from 250 to 352 mg/L CaCO3.
+      - source: *perez2010
+        value: {min: 12.3, max: 17.9}
+        note: Lake Petén Itzá, converted from measured calcium and magnesium.
+      - source: *echeverria
+        value: {min: 12.6, max: 15.8}
+        note: Lake Petén Itzá at 1 to 5 m depth, from calcium and magnesium.
+      - source: &hillesheim
+          kind: literature
+          title: "Hillesheim, M. B., Hodell, D. A., Leyden, B. W., Brenner, M., Curtis, J. H., Anselmetti, F. S., Ariztegui, D., Buck, D. G., Guilderson, T. P., Rosenmeier, M. F. and Schnurrenberger, D. W. (2005). Climate change in lowland Central America during the late deglacial and early Holocene. Journal of Quaternary Science 20(4), 363-376."
+          url: https://doi.org/10.1002/jqs.924
+          accessed: 2026-10-13
+        value: {min: 14, max: 14}
+        note: Lake Petén Itzá, mean of a 2002 survey.
+      - source: *albarran
+        value: {min: 4.2, max: 19.7}
+        note: Freshwater Centla lagoons, rainy season, converted from 75 to 351 mg/L CaCO3.
+      - source: *valtierra
+        value: {min: 7, max: 9}
+        note: Estimated from a conductivity of about 280 to 290 µS/cm; hardness not measured.
+      - source: *larre
+        value: {min: 8, max: 23}
+        note: Estimated from site conductivities of 283 to 840 µS/cm; hardness not measured.
+      - source: *yanez
+        value: {min: 73.6, max: 90.2}
+        note: Laguna Bacalar, sulphate-rich karst water; no simultaneous fish record.
+      - source: *aquainfo
+        value: {min: 8, max: 50}
+        note: Whole range including very hard karst water; upper limit given as more than 50 dGH.
+      - source: *fishbase
+        value: {min: 5, max: 20}
+        note: Aquarium reference, stated as dH.
+    tolerance:
+      value: {min: 5, max: 20}
+      confidence: medium
+      verification:
+        method: qualified-majority
+        votes: {agree: 5, total: 6}
+      rationale: >-
+        Decided by qualified majority: the generator, checker-a, checker-b and both tie-breakers
+        proposed 5 to 20 dGH; checker-c proposed 5 to 90.2 dGH so that the tolerance would contain
+        its natural range, while stating itself that no husbandry source supports such hard water.
+        FishBase and Guidarium give 5 to 20 dGH, Fishkeeper up to 20, Seriously Fish 8 to 15 and
+        Tropical Freshwater Fish the wider 6 to 25 dGH. The tolerance contains the natural range of
+        8 to 20 dGH.
+      sources:
+        - *fishbase
+        - *fishkeeper
+        - *seriouslyfish
+        - *tff
+        - *guidarium
+      evidence:
+        - source: *fishbase
+          value: {min: 5, max: 20}
+          note: Aquarium reference, stated as dH.
+        - source: *fishkeeper
+          value: {max: 20}
+          note: Upper limit only; calls the species adaptable.
+        - source: *seriouslyfish
+          value: {min: 8, max: 15}
+          note: Aquarium recommendation.
+        - source: *tff
+          value: {min: 6, max: 25}
+        - source: *guidarium
+          value: {min: 5, max: 20}
+
+  khDkh:
+    value: {min: 5, max: 10}
+    confidence: low
+    verification:
+      method: qualified-majority
+      votes: {agree: 5, total: 6}
+    rationale: >-
+      Decided by qualified majority: checker-a (5 to 10 dKH), the generator (6 to 11 dKH), checker-c
+      (5.2 to 9.1 dKH), tie-breaker-1 (5 to 11 dKH) and tie-breaker-2 (5 to 10 dKH) agree; checker-b
+      proposed 3 to 7 dKH. Measured alkalinity gives 7.2 to 7.6 dKH at middle Usumacinta sites in the
+      dry season and 6.5 to 11.1 dKH in the Centla lagoons across both seasons; bicarbonate in Lake
+      Petén Itzá corresponds to 5.3 to 6.2 dKH in one study and about 9 dKH in another, and Laguna
+      Bacalar to 5.8 to 8.1 dKH. Sources reach wider than the decided range: dissolved inorganic
+      carbon of the Usumacinta and its tributaries corresponds to about 3.5 to 10.7 dKH, the low end
+      being a single dry season reading, and the Centla lagoons reach 11.1 dKH. Low confidence
+      because no study measures carbonate hardness at a capture point and some values are derived
+      from carbon or conductivity data.
+    sources:
+      - *esj
+      - *albarran
+      - *soria_reinoso
+      - *perez2010
+      - *valtierra
+      - *echeverria
+      - *hillesheim
+      - *yanez
+      - *macossay
+      - *larre
+    evidence:
+      - source: *esj
+        value: {min: 7.2, max: 7.6}
+        note: Middle Usumacinta, dry season, converted from 128 to 135 mg/L CaCO3.
+      - source: *albarran
+        value: {min: 6.5, max: 11.1}
+        note: Centla lagoons, both seasons, converted from 116 to 198 mg/L CaCO3.
+      - source: *perez2010
+        value: {min: 5.3, max: 6.2}
+        note: Lake Petén Itzá, converted from measured bicarbonate.
+      - source: *echeverria
+        value: {min: 5.3, max: 5.3}
+        note: Lake Petén Itzá shallow water.
+      - source: *hillesheim
+        value: {min: 9.1, max: 9.1}
+        note: Lake Petén Itzá, 2002 survey mean.
+      - source: *yanez
+        value: {min: 5.8, max: 8.1}
+        note: Laguna Bacalar; no simultaneous fish record.
+      - source: *soria_reinoso
+        value: {min: 3.5, max: 10.7}
+        note: Derived from dissolved inorganic carbon taken as bicarbonate; mean about 7 dKH.
+      - source: *valtierra
+        value: {min: 7, max: 9}
+        note: Estimated from conductivity; alkalinity not measured.
+      - source: *larre
+        value: {min: 5, max: 10}
+        note: Estimated from conductivity and pH; alkalinity not measured.
+    tolerance:
+      value: {min: 4, max: 12}
+      confidence: low
+      verification:
+        method: qualified-majority
+        votes: {agree: 4, total: 6}
+      rationale: >-
+        Decided by qualified majority: checker-b (2 to 12 dKH), checker-c and both tie-breakers (4
+        to 12 dKH) agree; the generator and checker-a proposed the wider 4 to 15 dKH. Two retailer
+        care pages state carbonate hardness directly, 9 to 11 dKH (LiveAquaria) and 4 to 12 dKH
+        (Cuboid); the species databases give only total hardness (5 to 20 dGH) and pH (6.5 to 8.5),
+        which in tap water correspond to moderate carbonate hardness. The tolerance contains the
+        natural range of 5 to 10 dKH. Low confidence because the database figures are derived and
+        the direct figures come from retailer pages.
+      sources:
+        - *fishbase
+        - *seriouslyfish
+        - *fishkeeper
+        - &liveaquaria
+          kind: website
+          title: "LiveAquaria: Salvini Cichlid"
+          url: https://www.liveaquaria.com/products/salvini-cichlid
+          accessed: 2026-10-13
+        - &cuboid
+          kind: website
+          title: "Cuboid Nature Aquarium: Salvini Cichlid care parameters"
+          url: https://cuboidstore.com/products/salvini-cichlid
+          accessed: 2026-10-13
+        - kind: model-knowledge
+          title: Conversion of the care sheet hardness and pH ranges into a carbonate hardness range
+      evidence:
+        - source: *liveaquaria
+          value: {min: 9, max: 11}
+          note: Retailer aquarium range stated in dKH.
+        - source: *cuboid
+          value: {min: 4, max: 12}
+          note: Retailer aquarium range stated in dKH.
+        - source: *fishbase
+          value: {min: 3, max: 16}
+          note: No carbonate hardness stated; derived from the given 5 to 20 dH.
+        - source: *seriouslyfish
+          value: {min: 4, max: 15}
+          note: No carbonate hardness stated; derived from its pH and hardness figures.
+        - source: *perez2010
+          value: {min: 5.3, max: 6.2}
+          note: Natural value at the type locality Lake Petén Itzá.
+
+  maxSizeCm:
+    value: {male: 17, female: 12}
+    confidence: medium
+    rationale: >-
+      Seriously Fish gives about 15 cm standard length for males and 11.5 cm for females, which is
+      roughly 18 and 13.5 cm total length; AquaInfo reports 15 to 18 cm with 18 cm as the largest
+      fish measured; Tropical Freshwater Fish gives 15 cm for males and 10 cm for females; the USGS
+      fact sheet cites 13 cm standard length. Fishkeeper names 20 cm and FishBase records 22 cm
+      standard length; both are unsexed maxima or record sizes. Well-kept aquarium males reach about
+      16 to 18 cm total length and females about 11 to 13 cm, so 17 and 12 cm are used.
+    sources:
+      - *seriouslyfish
+      - *aquainfo
+      - *tff
+      - *nas
+      - *fishkeeper
+      - *fishbase
+      - &arch50
+        kind: archive
+        title: cichlids.com forum thread 50
+        url: https://www.cichlids.com/disc/read.php?1,50
+    evidence:
+      - source: *seriouslyfish
+        value: {male: 15.2, female: 11.4}
+        note: Male value as standard length.
+      - source: *aquainfo
+        value: {male: 18, female: 18}
+        note: Range 15 to 18 cm without sex; largest fish measured 18 cm.
+      - source: *tff
+        value: {male: 15, female: 10}
+      - source: *nas
+        value: {male: 13, female: 13}
+        note: Standard length, no sex given.
+      - source: *fishkeeper
+        value: {male: 20, female: 20}
+        note: Single maximum without sex.
+      - source: *fishbase
+        value: {male: 22, female: 22}
+        note: Maximum standard length, record value.
+
+  predation:
+    value: 2
+    confidence: medium
+    verification:
+      method: unanimous
+      votes: {agree: 4, total: 4}
+    rationale: >-
+      Decided unanimously at level 2. FishBase lists macroinvertebrates and small fishes as natural
+      food, a stomach-content study in the Lacantún region grouped the species with Parachromis
+      friedrichsthalii as a carnivore of invertebrates and fish, and a behavioural study used it as
+      a natural fish predator of Atlantic mollies. Seriously Fish and the Nordiska Ciklidsällskapet
+      register warn that it eats any fish small enough to swallow, and its fast-striking jaws place
+      it near the predatory cichlids. Fish are a regular but not the main part of the diet, so the
+      level is 2 rather than 3; English Wikipedia calls it a piscivore, which the field studies do
+      not support.
+    sources:
+      - *fishbase
+      - &soria2019
+        kind: literature
+        title: "Soria-Barreto, M., Rodiles-Hernández, R. and Winemiller, K. O. (2019). Trophic ecomorphology of cichlid fishes of Selva Lacandona, Usumacinta, Mexico. Environmental Biology of Fishes 102(7), 985-996 (abstract)."
+        url: https://doi.org/10.1007/s10641-019-00884-5
+        accessed: 2026-10-13
+      - *seriouslyfish
+      - &bierbach
+        kind: literature
+        title: "Bierbach, D., Schulte, M., Herrmann, N., Tobler, M., Stadler, S., Jung, C. T., Kunkel, B., Riesch, R., Klaus, S., Ziege, M., Indy, J. R., Arias-Rodriguez, L. and Plath, M. (2011). Predator-induced changes of female mating preferences: innate and experiential effects. BMC Evolutionary Biology 11, 190."
+        url: https://doi.org/10.1186/1471-2148-11-190
+        accessed: 2026-10-13
+      - &arbour
+        kind: literature
+        title: "Arbour, J. H. and López-Fernández, H. (2014). Adaptive landscape and functional diversity of Neotropical cichlids: implications for the ecology and evolution of Cichlinae (Cichlidae; Cichliformes). Journal of Evolutionary Biology 27(11), 2431-2442."
+        url: https://doi.org/10.1111/jeb.12486
+        accessed: 2026-10-13
+      - *nordic
+      - *wiki_en
+      - &glaser
+        kind: website
+        title: "Aquarium Glaser: Nandopsis salvini (fish archive, 2007)"
+        url: https://www.aquariumglaser.de/en/25-perchlike-fishes/25e-perchlike-fishes-5-remaining-cichlids-from-south-and-central-america/nandopsis_salvini_en/
+        accessed: 2026-10-13
+    evidence:
+      - source: *fishbase
+        value: 2
+        note: Feeds on macroinvertebrates and small fishes.
+      - source: *soria2019
+        value: 2
+        note: Carnivore of invertebrates and fish.
+      - source: *seriouslyfish
+        value: 2
+        note: Preys on any fish it can swallow.
+      - source: *bierbach
+        value: 2
+        note: Natural predator of mollies; also described as omnivorous.
+      - source: *arbour
+        value: 2
+        note: Fast-jaw extreme near Cichla and Crenicichla; supports predatory capability only.
+      - source: *nordic
+        value: 2
+        note: Smaller fish are prey; companions must be large enough.
+      - source: *wiki_en
+        value: 3
+        note: Calls it a piscivore.
+
+  diet:
+    value:
+      type: invertivore
+      bloatSensitive: false
+      foods:
+        - aquatic insects and their larvae
+        - crustaceans
+        - small fish
+        - cichlid pellets and granules
+        - frozen mysis, krill and bloodworm
+        - occasional vegetable food
+    confidence: medium
+    verification:
+      method: qualified-majority
+      votes: {agree: 5, total: 6}
+    rationale: >-
+      Decided by qualified majority: the generator, checker-a, checker-b and both tie-breakers voted
+      invertivore without bloat sensitivity; checker-c voted omnivore. Studies of wild fish point to
+      animal prey: FishBase lists macroinvertebrates and small fishes and a food item table without
+      plant matter (trophic level 3.7); the Lacantún study groups the species with carnivores of
+      invertebrates and fish; juveniles in Laguna Caobas ate mainly cladocerans, copepods,
+      chironomid larvae and ostracods. In permanent pools of the Campeche petenes the stomachs held
+      mainly detritus and aquatic insects, above all dragonfly larvae, which shows some dietary
+      flexibility. AquaInfo, Fishkeeper, Seriously Fish (for the aquarium) and the USGS fact sheet
+      call it omnivorous with a preference for meaty food, and the Cichlid Room Companion confirms
+      crustaceans and insects as the main food with an omnivorous component. No source reports
+      bloat on protein-rich food.
+    sources:
+      - *fishbase
+      - &fishbase_food
+        kind: database
+        title: "FishBase: food items reported for Trichromis salvini"
+        url: https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=4911&genus=Trichromis&species=salvini
+        accessed: 2026-10-13
+      - *soria2019
+      - *valtierra
+      - &hinojosa
+        kind: literature
+        title: "Hinojosa-Garro, D., Arceo-Gómez, J., Zambrano, L. and Escalera-Vázquez, L. H. (2013). Fish diet composition in permanent and semi-permanent pools in tropical wetlands of the Yucatan Peninsula. Neotropical Ichthyology 11(4)."
+        url: https://doi.org/10.1590/s1679-62252013000400016
+        accessed: 2026-10-13
+      - *seriouslyfish
+      - *fishkeeper
+      - *nas
+      - *aquainfo
+      - &crc
+        kind: database
+        title: "Cichlid Room Companion: Trichromis salvini (public summary)"
+        url: https://cichlidae.com/species.php?id=nSHE47FkkaJvrRS14-Tuyg
+        accessed: 2026-10-13
+      - *wiki_en
+    evidence:
+      - source: *fishbase
+        value: {type: invertivore, bloatSensitive: false}
+        note: Macroinvertebrates and small fishes; trophic level 3.7.
+      - source: *fishbase_food
+        value: {type: invertivore, bloatSensitive: false}
+        note: Small fishes, benthic invertebrates and zooplankton; no plant item.
+      - source: *soria2019
+        value: {type: invertivore, bloatSensitive: false}
+        note: Carnivore of invertebrates and fish.
+      - source: *valtierra
+        value: {type: invertivore, bloatSensitive: false}
+        note: Juveniles below 41 mm standard length; zooplankton and chironomids.
+      - source: *hinojosa
+        value: {type: omnivore, bloatSensitive: false}
+        note: Mainly detritus and aquatic insects in 31 fish from permanent pools; two thirds of the stomachs were empty.
+      - source: *seriouslyfish
+        value: {type: invertivore, bloatSensitive: false}
+        note: Wild diet of aquatic invertebrates and small fish; takes mixed food in the aquarium.
+      - source: *fishkeeper
+        value: {type: omnivore, bloatSensitive: false}
+        note: Omnivorous with a preference for meaty food.
+      - source: *nas
+        value: {type: omnivore, bloatSensitive: false}
+        note: Generalist omnivore.
+      - source: *aquainfo
+        value: {type: omnivore, bloatSensitive: false}
+        note: Omnivore with a plant share; the Caobas population almost purely carnivorous.
+      - source: *crc
+        value: {type: invertivore, bloatSensitive: false}
+        note: Crustacean and insect eater with omnivorous habits; verification only.
+      - source: *wiki_en
+        value: {type: piscivore, bloatSensitive: false}
+        note: Calls it a piscivore.
+
+  aggressionConspecific:
+    value: 3
+    confidence: medium
+    rationale: >-
+      Seriously Fish and Fishkeeper describe the species as very aggressive, especially when
+      breeding, and advise a true pair grown up from a group of juveniles, because adults that do
+      not pair fight. AquaInfo goes further: keeping a pair stays risky, the female often suffers,
+      above all after a failed spawning, and more than one pair per tank is hardly possible. Archive
+      keepers report a partner beaten in small tanks and parents fighting over the brood. Most
+      reports tie the injuries to cramped tanks, missing cover or unpaired adults, which is level 3;
+      level 4 was proposed on the strength of the AquaInfo account, but the other care sources do not
+      report routine killing of partners in adequate tanks with retreats and dither fish.
+    sources:
+      - *seriouslyfish
+      - *fishkeeper
+      - *aquainfo
+      - *arch50
+      - &arch1217
+        kind: archive
+        title: cichlids.com forum thread 1217
+        url: https://www.cichlids.com/disc/read.php?1,1217
+      - &arch1256
+        kind: archive
+        title: cichlids.com forum thread 1256
+        url: https://www.cichlids.com/disc/read.php?1,1256
+    evidence:
+      - source: *seriouslyfish
+        value: 3
+        note: Adults that do not pair turn on each other.
+      - source: *fishkeeper
+        value: 3
+        note: Very aggressive, best kept as a compatible pair.
+      - source: *aquainfo
+        value: 4
+        note: Pair keeping risky for the female; several pairs per tank hardly possible.
+
+  aggressionHeterospecific:
+    value: 3
+    confidence: medium
+    rationale: >-
+      Seriously Fish calls the species aggressive for its size and advises only similarly sized and
+      similarly forceful Central American cichlids as tankmates; Fishkeeper classes it as unsuitable
+      for community tanks and asks for robust companions in a tank of 180 cm or more; the Nordiska
+      Ciklidsällskapet register recommends only large cichlids and catfish. AquaInfo reports that in
+      the wild breeding pairs drive off much larger fish. Archive keepers rank it among the most
+      aggressive Central Americans of its size but keep it with Jack Dempseys, Texas cichlids and
+      convicts in large tanks. Tankmates must match it in size and robustness, which is level 3.
+    sources:
+      - *seriouslyfish
+      - *fishkeeper
+      - *nordic
+      - *aquainfo
+      - *arch50
+      - &arch359
+        kind: archive
+        title: cichlids.com forum thread 359
+        url: https://www.cichlids.com/disc/read.php?1,359
+    evidence:
+      - source: *seriouslyfish
+        value: 3
+        note: Only with similarly sized, similarly aggressive Central American cichlids.
+      - source: *fishkeeper
+        value: 3
+        note: Not a community fish; robust companions of similar size.
+      - source: *nordic
+        value: 3
+        note: Only large cichlids or large catfish as companions.
+
+  territory:
+    value: {size: large, breedingOnly: false}
+    confidence: low
+    rationale: >-
+      Outside breeding the species is a shy fish that holds a modest spot; an archive keeper saw a
+      female defend about 30 cm in a large community tank. Once a pair breeds, the defended area
+      grows sharply: AquaInfo reports wild pairs defending territories more than two metres across
+      against much larger fish, and Fishkeeper asks for 120 cm for a single pair because the pair
+      claims a wide area. Pairs spawn readily in the aquarium, so the value follows the breeding
+      pair and takes the larger class; the territory exists outside breeding as well, so
+      breedingOnly is false. Low confidence because no source measures the territory in the tank.
+    sources:
+      - *aquainfo
+      - *seriouslyfish
+      - *fishkeeper
+      - *arch50
+    evidence:
+      - source: *aquainfo
+        value: {size: large, breedingOnly: false}
+        note: Males hold bank territories; breeding pairs defend more than 2 m in the wild.
+      - source: *fishkeeper
+        value: {size: large, breedingOnly: false}
+        note: Territorial behaviour that intensifies when breeding; size class inferred.
+      - source: *arch50
+        value: {size: small, breedingOnly: false}
+        note: About 30 cm defended by a female in a large tank.
+
+  habitatZones:
+    value: [rock, sand, openWater, wood]
+    confidence: medium
+    rationale: >-
+      In the Tzendales River the species lives at deeper sites with current and rocky ground;
+      Seriously Fish notes that it hunts in the flowing middle of rivers, AquaInfo that juveniles
+      stay among stones in the current while older males hold territories under fallen branches
+      near the bank. The USGS fact sheet adds lagoons and swamps over sand, mud or rock. Juveniles in
+      the Centla wetland are often found in marginal vegetation, but adults rely on rock and wood for
+      cover. In the tank it needs sand for digging, rock and wood for cover and open swimming space.
+    sources:
+      - *soria2008
+      - *seriouslyfish
+      - *aquainfo
+      - *nas
+      - *macossay
+      - *fishkeeper
+
+  social:
+    value: {structure: pair}
+    confidence: high
+    rationale: >-
+      A monogamous open-substrate spawner with biparental care; Seriously Fish, Fishkeeper, AquaInfo
+      and the Nordiska Ciklidsällskapet register advise keeping one compatible pair, best formed by
+      growing up a group of juveniles and rehoming the surplus fish. The Cichlid Room Companion
+      confirms monogamy.
+    sources:
+      - *seriouslyfish
+      - *fishkeeper
+      - *aquainfo
+      - *nordic
+      - *crc
+
+  speciesOnly:
+    value: false
+    confidence: high
+    verification:
+      method: unanimous
+      votes: {agree: 4, total: 4}
+    rationale: >-
+      Decided unanimously. Seriously Fish, Fishkeeper, Tropical Freshwater Fish, the Nordiska
+      Ciklidsällskapet register and AquaInfo all name robust Central American cichlids or large
+      catfish as suitable companions in spacious tanks, and AquaInfo even calls a mixed tank safer
+      for the female than a pair kept alone. No source asks for a species-only tank; only a breeding
+      pair in a small tank is best left alone.
+    sources:
+      - *seriouslyfish
+      - *fishkeeper
+      - *tff
+      - *nordic
+      - *aquainfo
+      - *arch50
+      - &arch94
+        kind: archive
+        title: cichlids.com forum thread 94
+        url: https://www.cichlids.com/disc/read.php?1,94
+    evidence:
+      - source: *seriouslyfish
+        value: false
+        note: Recommends similarly sized, similarly aggressive Central American tankmates.
+      - source: *fishkeeper
+        value: false
+        note: Robust cichlids and medium-sized catfish as companions in spacious tanks.
+      - source: *tff
+        value: false
+      - source: *nordic
+        value: false
+        note: Allows sufficiently large cichlids and catfish.
+      - source: *aquainfo
+        value: false
+        note: Recommends larger or equally spirited Central American cichlids as companions.
+      - source: *arch50
+        value: false
+        note: Kept with Jack Dempsey, Texas cichlid, convict and firemouth.
+
+  hybridGroup:
+    value: null
+    confidence: low
+    verification:
+      method: unanimous
+      votes: {agree: 4, total: 4}
+    rationale: >-
+      Decided unanimously. The Catalog of Fishes lists Trichromis salvini as the only species of its
+      genus, and McMahan et al. (2015) and a 2026 phylogenomic preprint treat Trichromis as a
+      distinct lineage whose closest relatives, the firemouth cichlids of Thorichthys, form a
+      separate genus. No source reports crosses, and no curated hybrid group contains the species.
+      Low confidence because the absence of reports does not prove that crosses cannot occur.
+    sources:
+      - *cof
+      - &biorxiv
+        kind: literature
+        title: "Diversifying the Northern Neotropics: Phylogenomics and Evolutionary History of the Early-Diverging Herichthyine Cichlids Thorichthys and Trichromis. bioRxiv preprint (2026, abstract)."
+        url: https://doi.org/10.64898/2026.06.05.730467
+        accessed: 2026-10-13
+      - &mcmahan
+        kind: literature
+        title: "McMahan, C. D., Matamoros, W. A., Piller, K. R. and Chakrabarty, P. (2015). Taxonomy and systematics of the herichthyins (Cichlidae: Tribe Heroini), with the description of eight new Middle American genera. Zootaxa 3999(2), 211-234."
+        url: https://doi.org/10.11646/zootaxa.3999.2.3
+        accessed: 2026-10-13
+      - *fishbase
+      - *seriouslyfish
+    evidence:
+      - source: *cof
+        value: null
+        note: Trichromis holds only T. salvini; Heros triagramma is a synonym.
+      - source: *biorxiv
+        value: null
+        note: Trichromis and Thorichthys are distinct sister genera.
+      - source: *mcmahan
+        value: null
+        note: Monotypic genus; no crosses reported.
+      - source: *fishbase
+        value: null
+        note: Reports no hybrids.
+      - source: *seriouslyfish
+        value: null
+        note: Gives no hybridisation warning.
+
+  coloration:
+    value:
+      baseColors: [yellow, black, red, blue]
+      pattern: stripes
+    confidence: medium
+    rationale: >-
+      Adults have a yellow head and body, a dark midlateral band from the eye to the tail and a
+      second row of dark blotches above it that often merges into a second band; the belly is red,
+      most intensely in breeding females, and the fins and flanks carry blue to turquoise spangles.
+      The genus name refers to these three colours. The dominant markings run lengthwise, so the
+      pattern is stripes; the bands can break up into blotches and the head carries dark lines,
+      which led two runs to propose mixed.
+    sources:
+      - *seriouslyfish
+      - *aquainfo
+      - *tff
+      - *mcmahan
+      - *fishkeeper
+      - *wiki_en
+      - &wiki_de
+        kind: website
+        title: "Wikipedia (German): Salvins Buntbarsch"
+        url: https://de.wikipedia.org/wiki/Trichromis_salvini
+        accessed: 2026-10-13
+
+  feedingSpeed:
+    value: hasty
+    confidence: low
+    rationale: >-
+      An active predator of moving prey that takes every common food eagerly; Fishkeeper and an
+      importer describe it as an enthusiastic feeder, and keepers report it taking food before
+      slower tankmates. No source compares its feeding pace directly, so the value rests on feeding
+      ecology and hobby experience; hasty is kept because slow-feeding tankmates are at risk next to
+      it.
+    sources:
+      - *fishkeeper
+      - *aquaticarts
+      - *soria2019
+      - kind: model-knowledge
+        title: General knowledge of the feeding behaviour of predatory Central American cichlids
+
+  minTank:
+    value: {volumeL: 350, lengthCm: 150, depthCm: 50}
+    confidence: medium
+    rationale: >-
+      The recommendations for one pair diverge: Seriously Fish gives a base of 90 by 30 cm (about
+      100 L), Fishkeeper 120 cm, Tropical Freshwater Fish 122 cm and 190 L, AquaInfo and Aquarium
+      Glaser 150 cm, and the Nordiska Ciklidsällskapet register 160 cm and 540 L. Because partners
+      are often injured when the female cannot get away, the value follows the 150 cm of AquaInfo
+      and Aquarium Glaser with a depth of 50 cm, about 350 L. Tankmates need more room; Fishkeeper
+      asks for 180 cm or more for a pair with companions.
+    sources:
+      - *aquainfo
+      - *fishkeeper
+      - *tff
+      - *nordic
+      - *seriouslyfish
+      - *glaser
+      - *arch1217
+    evidence:
+      - source: *aquainfo
+        value: {lengthCm: 150}
+        note: Minimum length for a pair.
+      - source: *fishkeeper
+        value: {lengthCm: 120}
+        note: For a single pair; 180 cm or more with companions.
+      - source: *tff
+        value: {volumeL: 190, lengthCm: 122}
+      - source: *nordic
+        value: {volumeL: 540, lengthCm: 160}
+      - source: *seriouslyfish
+        value: {volumeL: 103, lengthCm: 90, depthCm: 30}
+        note: Minimum base for the species.
+
+  lifespanYears:
+    value: {min: 8, max: 12}
+    confidence: low
+    rationale: >-
+      No species database or study states a lifespan. A hobby care guide gives about ten years with
+      good care, and medium-sized Central American cichlids usually live about 8 to 12 years in the
+      aquarium; the range is an estimate.
+    sources:
+      - &fishlab
+        kind: website
+        title: "Fish Laboratory: Salvini Cichlid care guide"
+        url: https://www.fishlaboratory.com/fish/salvini-cichlid/
+        accessed: 2026-10-13
+      - kind: model-knowledge
+        title: General knowledge of lifespans of medium-sized Central American cichlids
+    evidence:
+      - source: *fishlab
+        value: {min: 10, max: 10}
+        note: Potential lifespan with good care.
+
+  breeding:
+    value: open-substrate-spawner
+    confidence: high
+    rationale: >-
+      Pairs clean a flat stone or another hard surface, sometimes inside a cave, lay several hundred
+      eggs (500 to 600 according to FishBase and Fishkeeper) and move the wrigglers between pits dug
+      in the sand; both parents guard the brood. Seriously Fish, Fishkeeper, Tropical Freshwater
+      Fish, AquaInfo and the Nordiska Ciklidsällskapet register agree, and the Cichlid Room Companion
+      confirms open-substrate spawning.
+    sources:
+      - *fishbase
+      - *seriouslyfish
+      - *fishkeeper
+      - *tff
+      - *aquainfo
+      - *nordic
+      - *crc
+
+  beginnerSuitability:
+    value: moderate
+    confidence: medium
+    rationale: >-
+      Hardy, undemanding about water and easy to feed, but its aggression and the difficulty of
+      forming a stable pair call for some experience. Seriously Fish rates the difficulty as
+      moderate but does not recommend it for beginners, and the Cichlid Room Companion places it at
+      intermediate level; an importer calls it a good first species for keepers moving on to larger
+      cichlids, while the Nordiska Ciklidsällskapet register rates it easy.
+    sources:
+      - *seriouslyfish
+      - *crc
+      - *fishkeeper
+      - *nordic
+      - *aquaticarts
+
+partners:
+  suitable:
+    - species: Rocio octofasciata
+      reason: Similar size and temperament and shares parts of the natural range; a common long-term companion in Central American tanks.
+      condition: Tank of at least 180 cm length with several separated territories.
+    - species: Mayaheros urophthalmus
+      reason: Robust cichlid from the same river systems that is large enough to hold its own against a breeding pair.
+      condition: At least 180 cm length.
+    - species: Herichthys cyanoguttatus
+      reason: Larger and robust enough to hold its own against a breeding pair.
+      condition: At least 180 cm length.
+    - species: Amatitlania nigrofasciata
+      reason: Equally tough and claims only a small territory; both species usually settle into a stable pecking order.
+      condition: At least 180 cm length with plenty of caves; expect conflicts when both pairs breed.
+    - species: Pterygoplichthys gibbiceps
+      reason: Large armoured catfish that is active at night and too big and well protected to be harmed.
+    - species: Platydoras armatulus
+      reason: Robust, nocturnal doradid catfish that keeps out of the way of the cichlids.
+  unsuitable:
+    - species: Paracheirodon innesi
+      reason: Small tetras fall below the prey size of Salvin's cichlid and are eaten.
+    - species: Pterophyllum scalare
+      reason: Slow, peaceful and long-finned; it is harassed and young angelfish are eaten.
+    - species: Symphysodon aequifasciatus
+      reason: Needs soft, warm water, eats slowly and cannot cope with the aggression.
+    - species: Parachromis dovii
+      reason: Large piscivore that eats Salvin's cichlid; the size difference is too great.
+    - species: Tropheus moorii
+      reason: Species-only keeping is recommended for Tropheus, and its plant-based diet and bloat sensitivity conflict with the meaty diet of Salvin's cichlid.
+    - species: Thorichthys meeki
+      reason: Related, similar in size but less forceful; hobby literature advises against the combination because a breeding salvini pair keeps firemouths under constant pressure.
+
+profile:
+  overview:
+    text: >-
+      Salvin's cichlid, also sold as yellow-belly or tricolor cichlid, is a medium-sized Central
+      American cichlid from the Atlantic slope of southern Mexico, Guatemala and Belize. Long kept as
+      Cichlasoma salvini, it is the only species of the genus Trichromis, whose closest relatives are
+      the firemouth cichlids of Thorichthys. The genus name refers to its three colours: a yellow
+      body, blue spangles and a red belly. Males reach about 17 cm and females about 12 cm in the
+      aquarium. It is hardy and copes with a wide range of water, but it is one of the most
+      aggressive cichlids of its size, above all when breeding. It suits a large Central American
+      tank with robust tankmates, provided the keeper plans for space and careful pairing.
+    sources:
+      - *cof
+      - *seriouslyfish
+      - *fishkeeper
+      - *aquainfo
+      - *wiki_de
+  habitat:
+    text: >-
+      The species lives in rivers, streams, lagoons and lakes of the lowlands and middle valleys
+      between the Papaloapan basin and Belize, including the Grijalva-Usumacinta system, the
+      Pantanos de Centla wetland, the karst country of the Yucatán Peninsula and Lake Petén Itzá,
+      one of its type localities. It is not found above about 500 m. In the Usumacinta tributaries
+      it favours deeper water flowing over rocky ground and hunts in the current more than many
+      relatives; it also enters calm lagoons, marshes and slightly brackish coastal water, where the
+      young often shelter in marginal vegetation. The water is warm, typically 23 to 30 °C, slightly
+      acid to alkaline at pH 6.6 to 8.5, moderately hard to hard at about 8 to 20 dGH and 5 to 10
+      dKH; shallow lagoons heat up further in the dry season, some lagoons are softer in the rainy
+      season and a few gypsum-rich karst lakes are far harder. Genetic work suggests that
+      populations from different basins may represent more than one species.
+    sources:
+      - *larre
+      - *soria2008
+      - *valtierra
+      - *perez2010
+      - *albarran
+      - *macossay
+      - *soria_reinoso
+      - *esj
+      - *aquainfo
+      - *nas
+      - *biorxiv
+  sizeAndGrowth:
+    text: >-
+      In good aquarium conditions males grow to about 16 to 18 cm total length and females to about
+      11 to 13 cm. Larger figures in the literature, up to 22 cm standard length, are rare maximum
+      values. Size also differs between populations: a dwarf form from Laguna Miramar in Chiapas
+      stays at about 8 cm. Growth is fast in the first year with regular feeding and frequent water
+      changes, and the fish start to breed well before they are fully grown. The body is oval and
+      laterally compressed, with a pointed, protrusible mouth suited to picking prey from the bottom
+      and snapping it from open water.
+    sources:
+      - *seriouslyfish
+      - *aquainfo
+      - *fishkeeper
+      - *fishbase
+      - *nas
+  husbandry:
+    text: >-
+      A pair needs a tank of about 150 cm length, 50 cm depth and 350 litres; with tankmates plan
+      180 cm or more. Use a sand bottom, since the fish dig pits for their young, and build caves
+      and visual barriers from stones and roots so that a harassed partner can get out of sight,
+      with an open area for swimming. Tough plants tied to wood, such as Java fern or Anubias, last
+      better than rooted plants. The species comes from flowing water: give strong filtration, good
+      oxygenation and a zone of current. Keep the water at about 24 to 28 °C and pH 7 to 8; the
+      species stays healthy long-term within 22 to 30 °C, pH 6.5 to 8.5, 5 to 20 dGH and 4 to 12
+      dKH, so most tap water suits it. Nitrate should stay low, so change a large part of the water
+      every week.
+    sources:
+      - *aquainfo
+      - *fishkeeper
+      - *seriouslyfish
+      - *fishbase
+      - *tff
+  socialBehavior:
+    text: >-
+      Salvin's cichlid forms monogamous pairs. Two adults bought separately often do not accept each
+      other and the weaker fish may be badly hurt, so it is best to raise five or six juveniles
+      together, let a pair form and rehome the others. Even an established pair can turn on each
+      other around spawning, particularly after a failed brood or in small tanks where the female
+      cannot retreat; robust dither fish draw some of the male's aggression away from her. More than
+      one pair per tank rarely works. Outside the breeding season the fish is fairly retiring, but a
+      breeding pair claims a large area and chases tankmates well beyond its spawning site.
+    sources:
+      - *seriouslyfish
+      - *fishkeeper
+      - *aquainfo
+      - *arch50
+      - *arch1217
+      - *arch1256
+  diet:
+    text: >-
+      In the wild the species feeds mainly on aquatic insects and their larvae, small crustaceans
+      and other invertebrates, takes small fish when it can and, in some pools, swallows a fair
+      amount of detritus with its prey. In the aquarium it accepts nearly every food. A good cichlid
+      pellet or granule can be the staple, supplemented several times a week with frozen mysis,
+      krill, shrimp, bloodworm or mosquito larvae; occasional vegetable food such as spirulina flakes
+      adds variety. Live feeder fish are unnecessary and carry a risk of disease. Feed small portions
+      once or twice a day; overfeeding mainly spoils the water.
+    sources:
+      - *fishbase
+      - *soria2019
+      - *valtierra
+      - *hinojosa
+      - *fishkeeper
+      - *seriouslyfish
+  breeding:
+    text: >-
+      Breeding is easy once a true pair has formed. Both fish colour up strongly, and the female,
+      who often takes the lead, cleans a flat stone or the floor of a cave while the male guards the
+      area. She lays about 500 to 600 eggs, which hatch after three to four days. The parents move
+      the wrigglers to pits dug in the sand, and the fry swim freely after another four to five
+      days. They take Artemia nauplii and fine powdered food at once and are led around the tank by
+      both parents for several weeks. During this time the pair is at its most aggressive, so
+      tankmates need room to keep away. Removing the fry early can leave the male to vent his
+      aggression on the female, so it is often safer to leave the young with the parents for a
+      while and to plan homes for them in advance.
+    sources:
+      - *fishkeeper
+      - *seriouslyfish
+      - *aquainfo
+      - *fishbase
+  sexing:
+    text: >-
+      Adult males are clearly larger and have longer, more pointed tips on the dorsal and anal fins.
+      Females stay smaller and usually carry a dark spot in the middle of the dorsal fin and another
+      at the lower edge of the gill cover; in some populations males show the dorsal spot as well.
+      The red of the belly is usually stronger in females, especially when they are ready to spawn,
+      while males tend to show a sharper contrast between the dark markings and the pale areas of the
+      body. Juveniles are hard to sex until the dorsal fin spot of the females appears.
+    sources:
+      - *seriouslyfish
+      - *aquainfo
+      - *fishkeeper
+      - *wiki_en
+  compatibility:
+    text: >-
+      Combine Salvin's cichlid only with fish of similar size and toughness, such as Jack Dempsey,
+      Mayan cichlids, Texas cichlids or convicts, and with large armoured catfish, in a tank of at
+      least 180 cm. Any fish small enough to be swallowed, from tetras to young angelfish, will be
+      eaten. Calm or slow species such as discus or angelfish are bullied and should not be kept with
+      it. Large predators such as Parachromis dovii are a danger to Salvin's cichlid itself.
+      Firemouths are related but are kept under constant pressure by a breeding salvini pair, and
+      hobby literature advises against the combination. Introducing all fish at the same time
+      reduces conflicts.
+    sources:
+      - *seriouslyfish
+      - *fishkeeper
+      - *aquainfo
+      - *nordic
+      - *arch50
+      - &arch675
+        kind: archive
+        title: cichlids.com forum thread 675
+        url: https://www.cichlids.com/disc/read.php?1,675
+  problems:
+    text: >-
+      The most common mistake is buying two adults and expecting them to pair; if they do not, one
+      fish is beaten up. A second mistake is keeping a pair in a tank that is too small or too open,
+      where the male may attack the female after spawning or after a failed brood. Watch the pair
+      closely, provide visual barriers and keep a divider ready. As a fish of flowing water it reacts
+      badly to high nitrate and low oxygen: poor water and an unbalanced diet are linked with
+      hole-in-the-head disease and faded colours. Like other cichlids it can bring white spot disease
+      in with new arrivals, so quarantine new fish. Feeding live fish carries a risk of parasites. In
+      warm, oxygen-poor tanks it breathes rapidly near the surface, a signal to increase aeration and
+      water changes.
+    sources:
+      - *fishkeeper
+      - *seriouslyfish
+      - *aquainfo
+      - *arch1217
+      - *arch1256
+
+provenance:
+  runs:
+    - role: generator
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-13
+    - role: checker
+      model: gpt-6.1-sol
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-13
+    - role: adjudicator
+      model: claude-opus-5-5
+      date: 2026-10-13
+  disagreements:
+    - field: taxonomy.synonyms
+      proposals:
+        - {by: generator, value: "Cichlasoma tenue not listed; the Catalog of Fishes returned no entry for it"}
+        - {by: checker-a, value: "Cichlasoma tenue not listed; a synonym of Amphilophus trimaculatus in the Catalog of Fishes"}
+      decision: Cichlasoma tenue not listed
+      rationale: >-
+        Both runs leave the name out, but for different reasons. The Catalog of Fishes entry under
+        Amphilophus shows Cichlasoma tenue Meek, 1906 as a synonym of Amphilophus trimaculatus, which
+        confirms checker-a; the taxonomy note says so.
+    - field: features.temperatureC
+      proposals:
+        - {by: generator, value: {min: 23, max: 30}}
+        - {by: checker-a, value: {min: 24, max: 30}}
+        - {by: checker-b, value: {min: 24, max: 30}}
+        - {by: checker-c, value: {min: 24.1, max: 32}}
+        - {by: tiebreaker-1, value: {min: 23, max: 30}}
+        - {by: tiebreaker-2, value: {min: 23, max: 30}}
+      decision: {min: 23, max: 30}
+      rationale: >-
+        Taken from the tally: qualified majority of 5 of 6 votes. Checker-c included a single 32 °C
+        reading from a shallow juvenile site; the other runs treat such readings as dry season
+        peaks.
+    - field: features.temperatureC.tolerance
+      proposals:
+        - {by: generator, value: {min: 22, max: 30}}
+        - {by: checker-a, value: {min: 22, max: 30}}
+        - {by: checker-b, value: {min: 22, max: 30}}
+        - {by: checker-c, value: {min: 22, max: 32}}
+        - {by: tiebreaker-1, value: {min: 22, max: 30}}
+        - {by: tiebreaker-2, value: {min: 22, max: 30}}
+      decision: {min: 22, max: 30}
+      rationale: Taken from the tally, qualified majority of 5 of 6 votes; no care source supports long-term keeping above 30 °C.
+    - field: features.ph
+      proposals:
+        - {by: generator, value: {min: 7.1, max: 8.3}}
+        - {by: checker-a, value: {min: 6.8, max: 8.5}}
+        - {by: checker-b, value: {min: 7.3, max: 8.5}}
+        - {by: checker-c, value: {min: 6.55, max: 8.5}}
+        - {by: tiebreaker-1, value: {min: 6.5, max: 8.5}}
+        - {by: tiebreaker-2, value: {min: 6.55, max: 8.5}}
+      decision: {min: 6.6, max: 8.5}
+      rationale: >-
+        Taken from the tally: qualified majority of 5 of 6 votes, median of the agreeing bounds.
+        Checker-b left out the lagoon readings below neutral from Laguna Caobas and the Centla
+        wetland.
+    - field: features.ghDgh
+      proposals:
+        - {by: generator, value: {min: 7, max: 20}}
+        - {by: checker-a, value: {min: 8, max: 18}}
+        - {by: checker-b, value: {min: 5, max: 14}}
+        - {by: checker-c, value: {min: 12.6, max: 90.2}}
+        - {by: tiebreaker-1, value: {min: 5, max: 20}}
+        - {by: tiebreaker-2, value: {min: 8, max: 20}}
+      decision: {min: 8, max: 20}
+      rationale: >-
+        Taken from the tally: qualified majority of 4 of 6 votes, median of the agreeing bounds,
+        confidence low. Checker-c included the sulphate-rich water of Laguna Bacalar (up to 90 dGH),
+        checker-b estimated softer river water from conductivity; the rainy season Centla lagoons
+        reach down to 4.2 dGH.
+    - field: features.ghDgh.tolerance
+      proposals:
+        - {by: generator, value: {min: 5, max: 20}}
+        - {by: checker-a, value: {min: 5, max: 20}}
+        - {by: checker-b, value: {min: 5, max: 20}}
+        - {by: checker-c, value: {min: 5, max: 90.2}}
+        - {by: tiebreaker-1, value: {min: 5, max: 20}}
+        - {by: tiebreaker-2, value: {min: 5, max: 20}}
+      decision: {min: 5, max: 20}
+      rationale: Taken from the tally, qualified majority of 5 of 6 votes; checker-c widened the tolerance only to contain its own natural range.
+    - field: features.khDkh
+      proposals:
+        - {by: generator, value: {min: 6, max: 11}}
+        - {by: checker-a, value: {min: 5, max: 10}}
+        - {by: checker-b, value: {min: 3, max: 7}}
+        - {by: checker-c, value: {min: 5.2, max: 9.1}}
+        - {by: tiebreaker-1, value: {min: 5, max: 11}}
+        - {by: tiebreaker-2, value: {min: 5, max: 10}}
+      decision: {min: 5, max: 10}
+      rationale: Taken from the tally, qualified majority of 5 of 6 votes, confidence low; checker-b assumed softer river water without a measurement.
+    - field: features.khDkh.tolerance
+      proposals:
+        - {by: generator, value: {min: 4, max: 15}}
+        - {by: checker-a, value: {min: 4, max: 15}}
+        - {by: checker-b, value: {min: 2, max: 12}}
+        - {by: checker-c, value: {min: 4, max: 12}}
+        - {by: tiebreaker-1, value: {min: 4, max: 12}}
+        - {by: tiebreaker-2, value: {min: 4, max: 12}}
+      decision: {min: 4, max: 12}
+      rationale: Taken from the tally, qualified majority of 4 of 6 votes, confidence low; the generator and checker-a derived a wider upper limit of 15 dKH without a stated carbonate figure.
+    - field: features.diet
+      proposals:
+        - {by: generator, value: {type: invertivore, bloatSensitive: false}}
+        - {by: checker-a, value: {type: invertivore, bloatSensitive: false}}
+        - {by: checker-b, value: {type: invertivore, bloatSensitive: false}}
+        - {by: checker-c, value: {type: omnivore, bloatSensitive: false}}
+        - {by: tiebreaker-1, value: {type: invertivore, bloatSensitive: false}}
+        - {by: tiebreaker-2, value: {type: invertivore, bloatSensitive: false}}
+      decision: {type: invertivore, bloatSensitive: false}
+      rationale: >-
+        Taken from the tally: qualified majority of 5 of 6 votes. The studies of wild fish show
+        mainly invertebrate prey; checker-c weighted the omnivorous aquarium diet named by care
+        sheets. The food list of the generator is kept.
+    - field: features.maxSizeCm
+      proposals:
+        - {by: generator, value: {male: 17, female: 12}}
+        - {by: checker-a, value: {male: 16, female: 11}}
+        - {by: checker-b, value: {male: 16, female: 12}}
+        - {by: checker-c, value: {male: 18, female: 12}}
+      decision: {male: 17, female: 12}
+      rationale: >-
+        The proposals lie within 2 cm of each other. Seriously Fish gives about 15 cm standard length
+        for males, roughly 18 cm total length, and AquaInfo 15 to 18 cm, so 17 cm sits in the middle
+        of the well-kept aquarium males; three runs agree on 12 cm for females.
+    - field: features.aggressionConspecific
+      proposals:
+        - {by: generator, value: 3}
+        - {by: checker-a, value: 3}
+        - {by: checker-b, value: 3}
+        - {by: checker-c, value: 4}
+      decision: 3
+      rationale: >-
+        AquaInfo reports a high risk for the female in a pair, which checker-c read as level 4. Seriously
+        Fish, Fishkeeper and the archive tie the injuries to unpaired adults, small tanks and missing
+        cover, which matches level 3; the risk is described in the profile text.
+    - field: features.territory
+      proposals:
+        - {by: generator, value: {size: small, breedingOnly: false}}
+        - {by: checker-a, value: {size: large, breedingOnly: false}}
+        - {by: checker-b, value: {size: small, breedingOnly: false}}
+        - {by: checker-c, value: {size: large, breedingOnly: false}}
+      decision: {size: large, breedingOnly: false}
+      rationale: >-
+        The small proposals rest on one archive report of a non-breeding female holding about 30 cm.
+        Breeding pairs, which form readily in the tank, defend much more (over 2 m in the wild after
+        AquaInfo, a wide area after Fishkeeper), so the larger class is taken; it errs on the side of
+        more warnings.
+    - field: features.habitatZones
+      proposals:
+        - {by: generator, value: [rock, sand, openWater, wood]}
+        - {by: checker-a, value: [openWater, rock, wood, sand]}
+        - {by: checker-b, value: [sand, rock, wood]}
+        - {by: checker-c, value: [rock, sand, openWater, plants, wood]}
+      decision: [rock, sand, openWater, wood]
+      rationale: >-
+        Three runs include open water, supported by the hunting in the river current that Seriously
+        Fish describes. Plants were proposed by checker-c from juveniles in Centla vegetation; adults
+        rely on rock and wood, and Seriously Fish only tolerates plants in the tank, so plants are
+        left out.
+    - field: features.coloration
+      proposals:
+        - {by: generator, value: {baseColors: [yellow, black, red, blue], pattern: stripes}}
+        - {by: checker-a, value: {baseColors: [yellow, red, black], pattern: stripes}}
+        - {by: checker-b, value: {baseColors: [yellow, black], pattern: mixed}}
+        - {by: checker-c, value: {baseColors: [yellow, red, blue, green, black], pattern: mixed}}
+      decision: {baseColors: [yellow, black, red, blue], pattern: stripes}
+      rationale: >-
+        All runs name yellow and black, three name red and two blue; the blue spangles are part of
+        the three colours behind the genus name, while green appears only as a sheen. The dominant
+        markings are a lengthwise band and a second row of blotches that AquaInfo describes as
+        merging into a second band, which is stripes.
+    - field: features.feedingSpeed
+      proposals:
+        - {by: generator, value: hasty}
+        - {by: checker-a, value: hasty}
+        - {by: checker-b, value: normal}
+        - {by: checker-c, value: normal}
+      decision: hasty
+      rationale: >-
+        No source rates the pace directly. Fishkeeper and an importer describe an eager feeder and
+        keepers report it outcompeting slower fish; hasty keeps the warning for slow-feeding
+        tankmates.
+    - field: features.minTank
+      proposals:
+        - {by: generator, value: {volumeL: 240, lengthCm: 120, depthCm: 45}}
+        - {by: checker-a, value: {volumeL: 240, lengthCm: 120, depthCm: 45}}
+        - {by: checker-b, value: {volumeL: 200, lengthCm: 100, depthCm: 40}}
+        - {by: checker-c, value: {volumeL: 540, lengthCm: 160, depthCm: 60}}
+      decision: {volumeL: 350, lengthCm: 150, depthCm: 50}
+      rationale: >-
+        Sources range from 90 cm (Seriously Fish) through 120 to 122 cm (Fishkeeper, Tropical
+        Freshwater Fish) to 150 cm (AquaInfo, Aquarium Glaser) and 160 cm with 540 L (Nordiska
+        Ciklidsällskapet). Given the documented risk to the female in cramped tanks, the 150 cm
+        named by two sources is taken, between the 120 cm of the generator and checker-a and the
+        160 cm of checker-c.
+    - field: features.lifespanYears
+      proposals:
+        - {by: generator, value: {min: 8, max: 12}}
+        - {by: checker-a, value: {min: 8, max: 13}}
+        - {by: checker-b, value: {min: 8, max: 12}}
+        - {by: checker-c, value: {min: 8, max: 10}}
+      decision: {min: 8, max: 12}
+      rationale: All proposals are estimates; the range of two runs is kept and the ten years of a hobby guide fall inside it.
+    - field: features.breeding
+      proposals:
+        - {by: generator, value: open-substrate-spawner}
+        - {by: checker-a, value: open-substrate-spawner}
+        - {by: checker-b, value: cave-spawner}
+        - {by: checker-c, value: open-substrate-spawner}
+      decision: open-substrate-spawner
+      rationale: >-
+        Checker-b found no source naming the spawning site. Seriously Fish, Fishkeeper, AquaInfo and
+        the Nordiska Ciklidsällskapet register describe spawning on a cleaned flat stone, and the
+        Cichlid Room Companion confirms open-substrate spawning.
+    - field: features.beginnerSuitability
+      proposals:
+        - {by: generator, value: moderate}
+        - {by: checker-a, value: moderate}
+        - {by: checker-b, value: moderate}
+        - {by: checker-c, value: demanding}
+      decision: moderate
+      rationale: >-
+        Seriously Fish rates the difficulty as moderate and the Cichlid Room Companion as
+        intermediate; the species is hardy and easy to feed. Checker-c weighted the aggression more
+        heavily, which the aggression levels and the profile text already express.
