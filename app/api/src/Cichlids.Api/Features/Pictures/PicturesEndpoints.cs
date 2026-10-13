@@ -82,7 +82,7 @@ public static class PicturesEndpoints
         return TypedResults.Ok(result);
     }
 
-    private static async Task<Results<Created<CommentCreatedDto>, BadRequest<string>, NotFound>> CreateCommentAsync(
+    private static async Task<Results<Created<CommentCreatedDto>, BadRequest<string>, NotFound, ProblemHttpResult>> CreateCommentAsync(
         PicturesQueryService picturesQueryService,
         CommentsWriteService commentsWriteService,
         CurrentProfileService currentProfileService,
@@ -104,6 +104,8 @@ public static class PicturesEndpoints
 
         var author = await currentProfileService.ResolveAsync(user, cancellationToken);
         var created = await commentsWriteService.CreateAsync(postId, tankId: null, author, body, stars, cancellationToken);
-        return TypedResults.Created($"/api/pictures/{slug}/comments", created);
+        return created is null
+            ? CommentsEndpoints.SelfRatingProblem()
+            : TypedResults.Created($"/api/pictures/{slug}/comments", created);
     }
 }

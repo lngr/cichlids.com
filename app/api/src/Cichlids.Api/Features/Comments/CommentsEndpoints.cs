@@ -18,6 +18,19 @@ public static class CommentsEndpoints
         return app;
     }
 
+    public const string SelfRatingCode = "self_rating";
+
+    /// <summary>
+    /// The 403 problem details answering stars on content owned by the author. The stable code
+    /// self_rating lets a client tell it from other refusals.
+    /// </summary>
+    public static ProblemHttpResult SelfRatingProblem() =>
+        TypedResults.Problem(
+            title: "Own content cannot be rated",
+            detail: "Members cannot rate their own pictures and tanks.",
+            statusCode: StatusCodes.Status403Forbidden,
+            extensions: new Dictionary<string, object?> { ["code"] = SelfRatingCode });
+
     /// <summary>
     /// Validates a comment post request: a non-empty body, stars between 1 and 5, and at least
     /// one of the two. Returns the trimmed body and narrowed stars for the write path, or an

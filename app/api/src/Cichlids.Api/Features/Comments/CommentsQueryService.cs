@@ -12,7 +12,9 @@ namespace Cichlids.Api.Features.Comments;
 /// given together with the comment. A comment and its rating are separate rows; they belong
 /// together when they share the legacy comment id (migrated rows) or, for comments written in
 /// this application, when they have the same target, author and creation moment (one request
-/// creates both).
+/// creates both). A member has one rating per target and a repeat rating takes the moment of the
+/// request that repeats it, so the stars show at the newest comment of the member and earlier
+/// comments of that member show none.
 /// </summary>
 public sealed class CommentsQueryService(CichlidsDbContext context, IObjectStore objectStore)
 {

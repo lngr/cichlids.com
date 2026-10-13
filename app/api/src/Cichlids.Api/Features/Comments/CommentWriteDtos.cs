@@ -3,12 +3,13 @@ namespace Cichlids.Api.Features.Comments;
 /// <summary>
 /// Body of a comment post request. At least one of the two fields must be provided: a non-empty
 /// body creates a comment, stars (1 to 5) create a rating, and both together create one of each,
-/// the same split the legacy data model migrated into.
+/// the same split the legacy data model migrated into. A member has one rating per target, so stars
+/// replace an earlier rating of the member. Stars on own content are refused with 403.
 /// </summary>
 public sealed record CreateCommentRequest(string? Body, int? Stars);
 
 /// <summary>
-/// Confirmation of a rating created by a comment post request.
+/// Confirmation of the rating a comment post request created or replaced.
 /// </summary>
 public sealed record CreatedRatingDto(long Id, short Stars);
 
