@@ -2,10 +2,9 @@
 id: TASK-2.4
 title: OpenTofu app tier and k3s plus Argo CD bootstrap
 status: In Progress
-assignee:
-  - '@claude'
+assignee: []
 created_date: '2026-06-03 16:00'
-updated_date: '2026-10-13 07:14'
+updated_date: '2026-10-13 07:24'
 labels:
   - infra
   - opentofu

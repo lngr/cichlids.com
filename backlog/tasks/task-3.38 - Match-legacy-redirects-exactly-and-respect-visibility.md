@@ -2,10 +2,9 @@
 id: TASK-3.38
 title: Match legacy redirects exactly and respect visibility
 status: In Review
-assignee:
-  - '@claude'
+assignee: []
 created_date: '2026-10-12 04:48'
-updated_date: '2026-10-13 07:22'
+updated_date: '2026-10-13 07:24'
 labels: []
 dependencies: []
 references:
