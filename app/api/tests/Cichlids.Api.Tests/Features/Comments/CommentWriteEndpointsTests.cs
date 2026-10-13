@@ -524,6 +524,108 @@ public class CommentWriteEndpointsTests(ApiFixture fixture)
         Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
     }
 
+    [Fact]
+    public async Task PostPictureComment_BodyOfMaximumLengthIsAccepted()
+    {
+        var (postId, slug) = await CreatePublishedPictureAsync();
+        var token = TestTokens.Create(Guid.NewGuid().ToString(), $"longest-{Guid.NewGuid():N}"[..24]);
+
+        var response = await SendPostAsync(token, $"/api/pictures/{slug}/comments", new CreateCommentRequest(new string('a', 10000), null));
+
+        Assert.Equal(HttpStatusCode.Created, response.StatusCode);
+
+        await SoftDeleteWriteTargetsAsync(postId: postId);
+    }
+
+    [Fact]
+    public async Task PostPictureComment_BodyAboveMaximumLengthIsRefusedWithCode()
+    {
+        var (postId, slug) = await CreatePublishedPictureAsync();
+        var token = TestTokens.Create(Guid.NewGuid().ToString(), $"toolong-{Guid.NewGuid():N}"[..24]);
+
+        var response = await SendPostAsync(token, $"/api/pictures/{slug}/comments", new CreateCommentRequest(new string('a', 10001), 4));
+
+        await AssertProblemAsync(response, HttpStatusCode.BadRequest, "comment_too_long");
+        await using var db = fixture.CreateDbContext();
+        Assert.False(await db.Comments.AnyAsync(c => c.PostId == postId));
+        Assert.False(await db.Ratings.AnyAsync(r => r.PostId == postId));
+
+        await SoftDeleteWriteTargetsAsync(postId: postId);
+    }
+
+    [Fact]
+    public async Task PostPictureComment_LengthIsMeasuredAfterTrimming()
+    {
+        var (postId, slug) = await CreatePublishedPictureAsync();
+        var token = TestTokens.Create(Guid.NewGuid().ToString(), $"trimmed-{Guid.NewGuid():N}"[..24]);
+
+        var response = await SendPostAsync(
+            token, $"/api/pictures/{slug}/comments", new CreateCommentRequest($"  {new string('a', 10000)}  ", null));
+
+        Assert.Equal(HttpStatusCode.Created, response.StatusCode);
+
+        await SoftDeleteWriteTargetsAsync(postId: postId);
+    }
+
+    [Fact]
+    public async Task PostTankComment_BodyAboveMaximumLengthIsRefusedWithCode()
+    {
+        var tankId = await CreatePublishedTankAsync();
+        var token = TestTokens.Create(Guid.NewGuid().ToString(), $"tanklong-{Guid.NewGuid():N}"[..24]);
+
+        var response = await SendPostAsync(token, $"/api/tanks/{tankId}/comments", new CreateCommentRequest(new string('a', 10001), null));
+
+        await AssertProblemAsync(response, HttpStatusCode.BadRequest, "comment_too_long");
+
+        await SoftDeleteWriteTargetsAsync(tankId: tankId);
+    }
+
+    [Fact]
+    public async Task DeleteComment_ReasonAboveMaximumLengthIsRefusedWithCode()
+    {
+        var (postId, slug) = await CreatePublishedPictureAsync();
+        var authorToken = TestTokens.Create(Guid.NewGuid().ToString(), $"author-{Guid.NewGuid():N}"[..24]);
+        var created = await PostCommentAsync(authorToken, slug, "still here");
+        var moderatorToken = TestTokens.Create(
+            Guid.NewGuid().ToString(), $"mod-{Guid.NewGuid():N}"[..24], roles: ["moderator"]);
+
+        var tooLong = await SendDeleteAsync(moderatorToken, created.Comment!.Id, new DeleteCommentRequest(new string('r', 501)));
+        await AssertProblemAsync(tooLong, HttpStatusCode.BadRequest, "reason_too_long");
+
+        var maximum = await SendDeleteAsync(moderatorToken, created.Comment!.Id, new DeleteCommentRequest(new string('r', 500)));
+        Assert.Equal(HttpStatusCode.NoContent, maximum.StatusCode);
+
+        await SoftDeleteWriteTargetsAsync(postId: postId);
+    }
+
+    [Fact]
+    public async Task PostComment_JsonBodyAbove64KilobytesIsRefusedWithCode()
+    {
+        var (postId, slug) = await CreatePublishedPictureAsync();
+        var token = TestTokens.Create(Guid.NewGuid().ToString(), $"huge-{Guid.NewGuid():N}"[..24]);
+        var payload = JsonSerializer.Serialize(new { body = "hello", padding = new string('x', 70 * 1024) });
+
+        using var request = new HttpRequestMessage(HttpMethod.Post, $"/api/pictures/{slug}/comments")
+        {
+            Content = new StringContent(payload, System.Text.Encoding.UTF8, "application/json"),
+        };
+        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+        var response = await fixture.Client.SendAsync(request);
+
+        await AssertProblemAsync(response, HttpStatusCode.RequestEntityTooLarge, "request_too_large");
+
+        await SoftDeleteWriteTargetsAsync(postId: postId);
+    }
+
+    private static async Task AssertProblemAsync(HttpResponseMessage response, HttpStatusCode status, string code)
+    {
+        Assert.Equal(status, response.StatusCode);
+        Assert.Equal("application/problem+json", response.Content.Headers.ContentType?.MediaType);
+        using var document = JsonDocument.Parse(await response.Content.ReadAsStringAsync());
+        Assert.Equal(code, document.RootElement.GetProperty("code").GetString());
+        Assert.False(string.IsNullOrWhiteSpace(document.RootElement.GetProperty("detail").GetString()));
+    }
+
     private async Task<CommentCreatedDto> PostCreatedAsync(string token, string url, CreateCommentRequest body)
     {
         var response = await SendPostAsync(token, url, body);

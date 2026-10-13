@@ -81,6 +81,11 @@ public static class TanksEndpoints
             return TypedResults.BadRequest(error);
         }
 
+        if (CommentsEndpoints.IsBodyTooLong(body))
+        {
+            return CommentsEndpoints.CommentTooLongProblem();
+        }
+
         if (!await tanksQueryService.IsVisibleAsync(id, cancellationToken))
         {
             return TypedResults.NotFound();

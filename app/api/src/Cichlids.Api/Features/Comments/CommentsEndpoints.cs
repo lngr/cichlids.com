@@ -1,5 +1,6 @@
 using System.Security.Claims;
 using Cichlids.Api.Features.Auth;
+using Cichlids.Api.Features.Common;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,23 +14,55 @@ public static class CommentsEndpoints
             .WithName("DeleteComment")
             .WithTags("Comments")
             .RequireAuthorization(AuthorizationPolicies.Moderator)
+            .ProducesProblem(StatusCodes.Status400BadRequest)
             .ProducesProblem(StatusCodes.Status403Forbidden);
 
         return app;
     }
 
+    public const int MaxBodyLength = 10000;
+    public const int MaxReasonLength = 500;
+    public const string CommentTooLongCode = "comment_too_long";
+    public const string ReasonTooLongCode = "reason_too_long";
     public const string SelfRatingCode = "self_rating";
+
+    /// <summary>
+    /// The 400 problem details answering a comment body above the maximum length. The stable
+    /// code comment_too_long lets a client tell it from other validation errors.
+    /// </summary>
+    public static ProblemHttpResult CommentTooLongProblem() =>
+        ApiProblems.WithCode(
+            StatusCodes.Status400BadRequest,
+            "Comment too long",
+            $"A comment must be at most {MaxBodyLength} characters.",
+            CommentTooLongCode);
+
+    /// <summary>
+    /// The 400 problem details answering a deletion reason above the maximum length, with the
+    /// code reason_too_long.
+    /// </summary>
+    public static ProblemHttpResult ReasonTooLongProblem() =>
+        ApiProblems.WithCode(
+            StatusCodes.Status400BadRequest,
+            "Reason too long",
+            $"A delete reason must be at most {MaxReasonLength} characters.",
+            ReasonTooLongCode);
 
     /// <summary>
     /// The 403 problem details answering stars on content owned by the author. The stable code
     /// self_rating lets a client tell it from other refusals.
     /// </summary>
     public static ProblemHttpResult SelfRatingProblem() =>
-        TypedResults.Problem(
-            title: "Own content cannot be rated",
-            detail: "Members cannot rate their own pictures and tanks.",
-            statusCode: StatusCodes.Status403Forbidden,
-            extensions: new Dictionary<string, object?> { ["code"] = SelfRatingCode });
+        ApiProblems.WithCode(
+            StatusCodes.Status403Forbidden,
+            "Own content cannot be rated",
+            "Members cannot rate their own pictures and tanks.",
+            SelfRatingCode);
+
+    /// <summary>
+    /// Whether a trimmed comment body is longer than MaxBodyLength characters.
+    /// </summary>
+    public static bool IsBodyTooLong(string? body) => body is { Length: > MaxBodyLength };
 
     /// <summary>
     /// Validates a comment post request: a non-empty body, stars between 1 and 5, and at least
@@ -63,7 +96,7 @@ public static class CommentsEndpoints
         return true;
     }
 
-    private static async Task<Results<NoContent, BadRequest<string>, NotFound>> DeleteAsync(
+    private static async Task<Results<NoContent, BadRequest<string>, NotFound, ProblemHttpResult>> DeleteAsync(
         CommentsWriteService commentsWriteService,
         CurrentProfileService currentProfileService,
         ClaimsPrincipal user,
@@ -75,6 +108,11 @@ public static class CommentsEndpoints
         if (string.IsNullOrEmpty(reason))
         {
             return TypedResults.BadRequest("A delete reason is required.");
+        }
+
+        if (reason.Length > MaxReasonLength)
+        {
+            return ReasonTooLongProblem();
         }
 
         var moderator = await currentProfileService.ResolveAsync(user, cancellationToken);

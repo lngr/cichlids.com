@@ -96,6 +96,11 @@ public static class PicturesEndpoints
             return TypedResults.BadRequest(error);
         }
 
+        if (CommentsEndpoints.IsBodyTooLong(body))
+        {
+            return CommentsEndpoints.CommentTooLongProblem();
+        }
+
         var postId = await picturesQueryService.ResolveVisiblePostIdAsync(slug, cancellationToken);
         if (postId is null)
         {

@@ -110,6 +110,8 @@ app.UseExceptionHandler(new ExceptionHandlerOptions
         : StatusCodes.Status500InternalServerError,
 });
 
+app.UseJsonRequestSizeLimit();
+
 app.MapOpenApi();
 app.MapScalarApiReference();
 
