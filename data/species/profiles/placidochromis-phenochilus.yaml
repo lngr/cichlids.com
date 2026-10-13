@@ -727,8 +727,8 @@ features:
     verification:
       method: unanimous
       votes: {agree: 3, total: 3}
-  hybridGroup:
-    value: placidochromis-electra-complex
+  hybridGroups:
+    value: [placidochromis-electra-complex]
     confidence: low
     rationale: >-
       A conservative decision of the vote count (3 of 5, no qualified majority, confidence low). The
@@ -1168,19 +1168,19 @@ provenance:
         Conservative decision of the vote count: no proposal reached four agreeing votes, so the
         intersection of all proposals applies, with confidence low. The care sources range from 8
         to 15 dGH (Fishipedia) up to 25 dGH (Garnelio, and Seriously Fish for P. electra).
-    - field: features.hybridGroup
+    - field: features.hybridGroups
       proposals:
         - by: generator
-          value: placidochromis-electra-complex
+          value: [placidochromis-electra-complex]
         - by: checker-a
-          value: null
+          value: []
         - by: checker-b
-          value: null
+          value: []
         - by: tiebreaker-1
-          value: placidochromis-electra-complex
+          value: [placidochromis-electra-complex]
         - by: tiebreaker-2
-          value: placidochromis-electra-complex
-      decision: placidochromis-electra-complex
+          value: [placidochromis-electra-complex]
+      decision: [placidochromis-electra-complex]
       rationale: >-
         Conservative decision of the vote count (3 of 5): the most common named group. It rests on
         Rizzo's warning that the two species hybridise and on their close relationship; no cross is

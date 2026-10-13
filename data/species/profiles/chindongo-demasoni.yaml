@@ -908,8 +908,8 @@ features:
         value: false
         note: retailer page
 
-  hybridGroup:
-    value: null
+  hybridGroups:
+    value: []
     confidence: medium
     verification:
       method: qualified-majority
@@ -1399,14 +1399,14 @@ provenance:
       model: claude-opus-5-5
       date: 2026-10-13
   disagreements:
-    - field: features.hybridGroup
+    - field: features.hybridGroups
       proposals:
-        - {by: generator, value: null}
-        - {by: checker-a, value: null}
-        - {by: checker-b, value: null}
-        - {by: checker-c, value: demasoni-cyaneorhabdos}
-        - {by: tiebreaker-1, value: null}
-      decision: null
+        - {by: generator, value: []}
+        - {by: checker-a, value: []}
+        - {by: checker-b, value: []}
+        - {by: checker-c, value: [demasoni-cyaneorhabdos]}
+        - {by: tiebreaker-1, value: []}
+      decision: []
       rationale: >-
         Decided by the tally as qualified majority with 4 of 5 votes. The proposed group rests on
         one forced laboratory cross with P. cyaneorhabdos, studied in two papers, in which the

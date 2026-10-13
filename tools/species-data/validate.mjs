@@ -26,12 +26,12 @@ const WATERBODIES_PATH = join(SPECIES_DIR, "waterbodies.yaml");
 
 // Features whose values lead to hard compatibility verdicts; each carries a verification object
 // that records how the value was verified automatically.
-export const HARD_FEATURES = ["temperatureC", "ph", "ghDgh", "predation", "diet", "speciesOnly", "hybridGroup"];
+export const HARD_FEATURES = ["temperatureC", "ph", "ghDgh", "predation", "diet", "speciesOnly", "hybridGroups"];
 // Water values that a lake table decides; the first three are hard features, khDkh is a plain fact.
 const WATERBODY_VERIFIED_FEATURES = ["temperatureC", "ph", "ghDgh"];
 const WATERBODY_VALUE_FEATURES = [...WATERBODY_VERIFIED_FEATURES, "khDkh"];
 // Hard features outside the water values need independent sources unless the value is conservative.
-const SOURCE_RULE_FEATURES = ["predation", "diet", "speciesOnly", "hybridGroup"];
+const SOURCE_RULE_FEATURES = ["predation", "diet", "speciesOnly", "hybridGroups"];
 const EXTERNAL_SOURCE_KINDS = ["catalog-of-fishes", "literature", "database"];
 const MIN_EXTERNAL_SOURCES = 2;
 // Water features carry a tolerance next to the natural-habitat value.
@@ -311,9 +311,13 @@ function semanticIssues(profile, { fileName, hybridGroupIds, waterbodies }, file
   issues.push(...toleranceIssues(features, file));
   if (waterbodies) issues.push(...waterbodyIssues(features, waterbodies, file));
 
-  const group = features.hybridGroup?.value;
-  if (typeof group === "string" && hybridGroupIds && !hybridGroupIds.has(group)) {
-    issues.push(warning("/features/hybridGroup/value", `hybrid group "${group}" is not listed in hybrid-groups.yaml`, file));
+  const groups = features.hybridGroups?.value;
+  if (Array.isArray(groups) && hybridGroupIds) {
+    groups.forEach((group, i) => {
+      if (typeof group === "string" && !hybridGroupIds.has(group)) {
+        issues.push(warning(`/features/hybridGroups/value/${i}`, `hybrid group "${group}" is not listed in hybrid-groups.yaml`, file));
+      }
+    });
   }
   return issues;
 }

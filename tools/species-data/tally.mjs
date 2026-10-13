@@ -22,7 +22,7 @@ const WATERBODIES_PATH = join(REPO_ROOT, "data", "species", "waterbodies.yaml");
 
 const WATERBODY_FEATURES = ["temperatureC", "ph", "ghDgh", "khDkh"];
 // khDkh is voted as well, so that a decided tolerance always contains the natural carbonate hardness.
-const VOTED_FEATURES = ["predation", "diet", "speciesOnly", "hybridGroup", "temperatureC", "ph", "ghDgh", "khDkh"];
+const VOTED_FEATURES = ["predation", "diet", "speciesOnly", "hybridGroups", "temperatureC", "ph", "ghDgh", "khDkh"];
 // Agreement thresholds and rounding of the water features; their tolerance entries use the same.
 const RANGE_TOLERANCE = { temperatureC: 1, ph: 0.3, ghDgh: 2, khDkh: 2 };
 const RANGE_DECIMALS = { temperatureC: 0, ph: 1, ghDgh: 0, khDkh: 0 };
@@ -57,7 +57,14 @@ function agrees(name, a, b) {
     return Math.abs(a.min - b.min) <= tolerance && Math.abs(a.max - b.max) <= tolerance;
   }
   if (name === "diet") return a.type === b.type && a.bloatSensitive === b.bloatSensitive;
+  if (name === "hybridGroups") return sameSet(a, b);
   return (a ?? null) === (b ?? null);
+}
+
+function sameSet(a, b) {
+  const left = new Set(a);
+  const right = new Set(b);
+  return left.size === right.size && [...left].every((v) => right.has(v));
 }
 
 function median(numbers) {
@@ -118,6 +125,15 @@ function mostCommon(values) {
   return best;
 }
 
+// Every group named by at least two votes; when no group reaches two votes, the group named first.
+function conservativeGroups(values) {
+  const counts = new Map();
+  for (const list of values) for (const group of new Set(list)) counts.set(group, (counts.get(group) ?? 0) + 1);
+  const repeated = [...counts].filter(([, n]) => n >= 2).map(([group]) => group);
+  if (repeated.length > 0) return repeated.sort();
+  return counts.size > 0 ? [mostCommon(values.flat())] : [];
+}
+
 // natural: the decided natural range for a tolerance entry; the tolerance is widened to contain it.
 function conservativeValue(name, votes, natural) {
   const values = votes.map((v) => v.value);
@@ -137,8 +153,8 @@ function conservativeValue(name, votes, natural) {
       return Math.max(...values);
     case "speciesOnly":
       return values.some((v) => v === true);
-    case "hybridGroup":
-      return mostCommon(values.filter((v) => typeof v === "string")) ?? null;
+    case "hybridGroups":
+      return conservativeGroups(values);
     case "diet":
       return {
         type: DIET_STRICTNESS.find((t) => values.some((v) => v.type === t)) ?? values[0].type,
@@ -176,7 +192,9 @@ function decideVoted(name, votes, natural) {
   const agree = top.agreeing.length;
   const sources = externalSources(top.agreeing);
   const evidence = collectEvidence(votes);
-  const decidedValue = isRange(name) ? medianRange(name, top.agreeing.map((v) => v.value)) : top.candidate.value;
+  let decidedValue = top.candidate.value;
+  if (isRange(name)) decidedValue = medianRange(name, top.agreeing.map((v) => v.value));
+  else if (name === "hybridGroups") decidedValue = [...new Set(decidedValue)].sort();
   const decided = (method, confidence) => ({
     decision: decidedValue,
     verification: { method, votes: { agree, total } },
@@ -248,6 +266,12 @@ function chooseWaterbody(files, waterbodies) {
   return key !== undefined && waterbodies.has(key) ? waterbodies.get(key) : null;
 }
 
+// Work files that predate the list value carry hybridGroup as one id or null.
+function legacyHybridGroups(feature) {
+  if (!feature || feature.value === undefined) return undefined;
+  return { ...feature, value: typeof feature.value === "string" ? [feature.value] : [] };
+}
+
 /**
  * Tallies the votes. files: [{ name, data }] with the parsed content of generator.yaml,
  * checker-a.yaml, checker-b.yaml, checker-c.yaml and tiebreaker-N.yaml (any order); waterbodies: Map from
@@ -263,7 +287,7 @@ export function tally(files, waterbodies = new Map()) {
   const castVotes = (name, pick) => {
     const votes = [];
     for (const f of ordered) {
-      const feature = pick(f.data?.features?.[name]);
+      const feature = pick(f.data?.features?.[name] ?? (name === "hybridGroups" ? legacyHybridGroups(f.data?.features?.hybridGroup) : undefined));
       if (feature && feature.value !== undefined) {
         votes.push({
           file: f.name,

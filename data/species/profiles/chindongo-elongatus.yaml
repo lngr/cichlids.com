@@ -661,8 +661,8 @@ features:
     verification:
       method: unanimous
       votes: {agree: 3, total: 3}
-  hybridGroup:
-    value: chindongo-elongatus-complex
+  hybridGroups:
+    value: [chindongo-elongatus-complex]
     confidence: low
     rationale: >-
       A conservative decision of the vote count (2 of 5, no qualified majority, confidence low). The
@@ -1053,14 +1053,14 @@ provenance:
         which takes the food list of the top candidate. It names the plant-based staples that all
         proposals share and limits animal food to small amounts, as Seriously Fish and FishProfiles
         advise.
-    - field: features.hybridGroup.value
+    - field: features.hybridGroups.value
       proposals:
-        - {by: generator, value: chindongo-elongatus-complex}
-        - {by: checker-a, value: chindongo}
-        - {by: checker-b, value: null}
-        - {by: tiebreaker-1, value: chindongo-elongatus-complex}
-        - {by: tiebreaker-2, value: null}
-      decision: chindongo-elongatus-complex
+        - {by: generator, value: [chindongo-elongatus-complex]}
+        - {by: checker-a, value: [chindongo]}
+        - {by: checker-b, value: []}
+        - {by: tiebreaker-1, value: [chindongo-elongatus-complex]}
+        - {by: tiebreaker-2, value: []}
+      decision: [chindongo-elongatus-complex]
       rationale: >-
         Decided by the vote count as the conservative value (2 of 5, no qualified majority,
         confidence low): the most common named group. The group rests on the crossing warnings of

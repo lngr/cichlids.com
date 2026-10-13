@@ -79,15 +79,52 @@ test("four of five agreeing votes are a qualified majority", () => {
 });
 
 test("five equal votes are a qualified majority", () => {
-  const f = decide("hybridGroup", ["tropheus", "tropheus", "tropheus", "tropheus", "tropheus"]);
+  const f = decide("hybridGroups", Array(5).fill(["tropheus"]));
   assert.equal(f.verification.method, "qualified-majority");
   assert.equal(f.verification.votes.agree, 5);
 });
 
-test("a null hybrid group agrees with null", () => {
-  const f = decide("hybridGroup", [null, null, null]);
-  assert.equal(f.decision, null);
+test("empty hybrid group lists agree with each other", () => {
+  const f = decide("hybridGroups", [[], [], []]);
+  assert.deepEqual(f.decision, []);
   assert.equal(f.verification.method, "unanimous");
+});
+
+test("hybrid group lists agree as sets regardless of order", () => {
+  const f = decide("hybridGroups", [["a", "b"], ["b", "a"], ["a", "b"]]);
+  assert.deepEqual(f.decision, ["a", "b"]);
+  assert.deepEqual(f.verification, { method: "unanimous", votes: { agree: 3, total: 3 } });
+});
+
+test("a different set of hybrid groups is a disagreement", () => {
+  const f = decide("hybridGroups", [["a", "b"], ["a"], ["a", "b"]]);
+  assert.equal(f.needsTiebreaker, true);
+  assert.equal(f.reason, "disagreement");
+});
+
+test("a decided hybrid group list is sorted", () => {
+  const f = decide("hybridGroups", [["b", "a"], ["b", "a"], ["a", "b"]]);
+  assert.deepEqual(f.decision, ["a", "b"]);
+});
+
+test("work files with the legacy hybridGroup value are read as lists", () => {
+  const files = [
+    file("generator.yaml", { hybridGroup: ["tropheus", TWO] }),
+    file("checker-a.yaml", { hybridGroups: [["tropheus"], TWO] }),
+    file("checker-b.yaml", { hybridGroup: ["tropheus", TWO] }),
+  ];
+  const f = tally(files).features.hybridGroups;
+  assert.deepEqual(f.decision, ["tropheus"]);
+  assert.equal(f.verification.method, "unanimous");
+  assert.deepEqual(f.proposals.map((p) => p.value), [["tropheus"], ["tropheus"], ["tropheus"]]);
+});
+
+test("a legacy null hybridGroup is read as an empty list", () => {
+  const files = ["generator.yaml", "checker-a.yaml", "checker-b.yaml"].map((n) => file(n, { hybridGroup: [null, TWO] }));
+  const f = tally(files).features.hybridGroups;
+  assert.deepEqual(f.decision, []);
+  assert.equal(f.verification.method, "unanimous");
+  assert.equal(tally(files).features.hybridGroup, undefined);
 });
 
 test("a 3 to 2 split of five votes is conservative", () => {
@@ -107,12 +144,24 @@ test("conservative speciesOnly is true when any vote says true", () => {
   assert.equal(f.verification.method, "conservative");
 });
 
-test("conservative hybridGroup is the most common named group", () => {
-  const f = decide("hybridGroup", [null, "a", "b", "b", null]);
-  assert.equal(f.decision, "b");
+test("conservative hybridGroups is the union of the groups named by two or more votes", () => {
+  const f = decide("hybridGroups", [["a", "b"], ["b", "c"], ["a"], [], ["d"]]);
+  assert.deepEqual(f.decision, ["a", "b"]);
   assert.equal(f.verification.method, "conservative");
-  assert.equal(decide("hybridGroup", [null, "a", null, "b", null]).decision, "a");
-  assert.equal(decide("hybridGroup", [null, null, null, "g", "h"]).decision, "g");
+  assert.equal(f.confidence, "low");
+});
+
+test("conservative hybridGroups falls back to the most named group when none reaches two votes", () => {
+  const f = decide("hybridGroups", [[], ["a"], ["b"], ["c"], []]);
+  assert.deepEqual(f.decision, ["a"]);
+  assert.equal(f.verification.method, "conservative");
+  assert.deepEqual(decide("hybridGroups", [[], [], [], ["g"], ["h"]]).decision, ["g"]);
+});
+
+test("conservative hybridGroups is empty when no vote names a group", () => {
+  const f = decide("hybridGroups", [[], [], [], [], []]);
+  assert.deepEqual(f.decision, []);
+  assert.equal(f.verification.method, "qualified-majority");
 });
 
 test("conservative diet takes the strictest type and any bloat sensitivity", () => {

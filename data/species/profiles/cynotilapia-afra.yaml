@@ -796,8 +796,8 @@ features:
       method: unanimous
       votes: {agree: 3, total: 3}
 
-  hybridGroup:
-    value: maylandia
+  hybridGroups:
+    value: [maylandia]
     confidence: low
     rationale: >-
       Decided by the vote count with the conservative method: generator, checker-a and
@@ -1246,14 +1246,14 @@ provenance:
         reached 3 of 5 votes, short of a qualified majority, so the intersection of all votes, 5
         to 12 dKH, applies with confidence low. The generator's 25 dKH rests on total hardness
         figures read as carbonate hardness.
-    - field: features.hybridGroup
+    - field: features.hybridGroups
       proposals:
-        - {by: generator, value: maylandia}
-        - {by: checker-a, value: maylandia}
-        - {by: checker-b, value: null}
-        - {by: tiebreaker-1, value: maylandia}
-        - {by: tiebreaker-2, value: null}
-      decision: maylandia
+        - {by: generator, value: [maylandia]}
+        - {by: checker-a, value: [maylandia]}
+        - {by: checker-b, value: []}
+        - {by: tiebreaker-1, value: [maylandia]}
+        - {by: tiebreaker-2, value: []}
+      decision: [maylandia]
       rationale: >-
         Decided by the vote count with the conservative method: 3 of 5 votes do not reach a
         qualified majority, so the most common named group applies with confidence low. The null

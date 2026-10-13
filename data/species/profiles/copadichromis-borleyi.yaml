@@ -1021,8 +1021,8 @@ features:
       - source: *aq
         value: false
         note: many Malawi genera suitable
-  hybridGroup:
-    value: copadichromis
+  hybridGroups:
+    value: [copadichromis]
     confidence: low
     verification:
       method: conservative
@@ -1543,19 +1543,19 @@ provenance:
           value: [zooplankton, Artemia, Daphnia, insect larvae, spirulina flake]
       decision: [zooplankton, small crustaceans, insect larvae, Artemia, Mysis, Daphnia, small pellets, flake food, spirulina flake]
       rationale: The tally decided the diet unanimously (3 of 3) on type invertivore and bloatSensitive false and took the food list of the first vote; it contains the items of the other lists except their wording.
-    - field: features.hybridGroup
+    - field: features.hybridGroups
       proposals:
         - by: generator
-          value: copadichromis
+          value: [copadichromis]
         - by: checker-a
-          value: null
+          value: []
         - by: checker-b
-          value: null
+          value: []
         - by: tiebreaker-1
-          value: copadichromis
+          value: [copadichromis]
         - by: tiebreaker-2
-          value: copadichromis
-      decision: copadichromis
+          value: [copadichromis]
+      decision: [copadichromis]
       rationale: Decided by the tally with method conservative (3 of 5 votes agree, below the qualified majority of 4); the most common named group applies with low confidence. The group is added to hybrid-groups.yaml with all 25 valid Copadichromis species, because the Seriously Fish warnings on five species pages are phrased for the whole genus; the narrower scopes of tiebreaker-2 (three species) and the generator (seven traded species) would leave species under the same warning without a conflict.
     - field: features.maxSizeCm
       proposals:

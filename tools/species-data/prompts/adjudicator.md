@@ -12,10 +12,11 @@ file:
    Natural water values decided by a water body get evidence entries from the lake studies behind
    `data/species/waterbodies.yaml`; cite these studies, never the table file itself. Every water
    feature carries the `tolerance` the tally decides.
-   When the tally decides a `hybridGroup` that `data/species/hybrid-groups.yaml` does not list, add
-   the group there: `id`, a one-sentence `description`, the valid names of its `members` and the
-   `sources` (literature or database) that report crosses. When the group exists but lacks this
-   species, add the species to its members.
+   For every group id in the `hybridGroups` the tally decides: when `data/species/hybrid-groups.yaml`
+   does not list the group, add it there with `id`, a one-sentence `description`, the valid names of
+   its `members` and the `sources` (literature or database) that report crosses. When the group
+   exists but lacks this species, add the species to its members. A species may be a member of
+   several groups.
 2. Compare taxonomy and every other feature value across all files. Values agree when they are
    equal, or for ranges when the bounds differ by at most 1 degree Celsius, 0.3 pH or 2 dGH.
 3. Where they agree, keep the value, merge the sources and raise the confidence where independent

@@ -95,11 +95,15 @@ species, such as Tropheus.
 (vertical), `stripes` (horizontal), `spots`, `plain` or `mixed`. Coloration counts towards conflicts
 because similar-looking species fight like rivals of their own species and cross more easily.
 
-## Hybrid group (`hybridGroup`)
+## Hybrid groups (`hybridGroups`)
 
-The identifier of a curated group of closely related species that cross in tanks, such as
-`maylandia-zebra-complex`. The groups and their members are listed in `hybrid-groups.yaml`. Two
-species of the same group in one tank are a hard conflict.
+The list of identifiers of the curated groups of species that cross in tanks, such as
+`maylandia-zebra-complex`, and the empty list for a species without such a group. A group means that
+every member may cross with every other member. A documented cross of two species without a wider
+group is a group of two members. Crossability is not transitive (A crosses with B and B with C, but
+A not with C), so a species belongs to every group whose crosses concern it. The groups and their
+members are listed in `hybrid-groups.yaml`. Two species that share at least one group are in hybrid
+conflict, which is a hard conflict in one tank.
 
 ## Minimum tank (`minTank`)
 

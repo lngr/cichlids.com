@@ -1780,8 +1780,8 @@ features:
           url: https://www.aquariumfishparadise.com.au/red-forest-jewel/
           accessed: 2026-10-13
         value: false
-  hybridGroup:
-    value: null
+  hybridGroups:
+    value: []
     confidence: medium
     verification:
       method: qualified-majority
@@ -2590,21 +2590,21 @@ provenance:
         min: 0
         max: 10
       rationale: "Tally: unanimous, 4 of 4 votes; median of the bounds."
-    - field: features.hybridGroup.value
+    - field: features.hybridGroups.value
       proposals:
         - by: generator
-          value: rubricatochromis
+          value: [rubricatochromis]
         - by: checker-a
-          value: null
+          value: []
         - by: checker-b
-          value: null
+          value: []
         - by: checker-c
-          value: null
+          value: []
         - by: tiebreaker-1
-          value: null
+          value: []
         - by: tiebreaker-2
-          value: null
-      decision: null
+          value: []
+      decision: []
       rationale: "Tally: qualified majority, 5 of 6 votes for no group. No documented cross with a named
         species; hybrid-groups.yaml stays unchanged."
     - field: features.diet.value.foods

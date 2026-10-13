@@ -981,8 +981,8 @@ features:
         value: true
         note: species tank recommended
 
-  hybridGroup:
-    value: melanochromis
+  hybridGroups:
+    value: [melanochromis]
     confidence: medium
     verification:
       method: qualified-majority
@@ -1457,14 +1457,14 @@ provenance:
       rationale: >-
         Decided by the vote count, qualified majority of 4 of 5. Wild stomach contents and the genus
         review show a biocover grazer; animal food is only a supplement.
-    - field: features.hybridGroup
+    - field: features.hybridGroups
       proposals:
-        - {by: generator, value: melanochromis}
-        - {by: checker-a, value: melanochromis}
-        - {by: checker-b, value: null}
-        - {by: checker-c, value: melanochromis}
-        - {by: tiebreaker-1, value: melanochromis}
-      decision: melanochromis
+        - {by: generator, value: [melanochromis]}
+        - {by: checker-a, value: [melanochromis]}
+        - {by: checker-b, value: []}
+        - {by: checker-c, value: [melanochromis]}
+        - {by: tiebreaker-1, value: [melanochromis]}
+      decision: [melanochromis]
       rationale: >-
         Decided by the vote count, qualified majority of 4 of 5. The proposals also differed on the
         scope of the new group: the generator named M. auratus, M. chipokae and M. loriae, checker-a

@@ -444,7 +444,7 @@
         "habitatZones",
         "social",
         "speciesOnly",
-        "hybridGroup",
+        "hybridGroups",
         "coloration",
         "feedingSpeed",
         "minTank",
@@ -781,7 +781,7 @@
             }
           }
         },
-        "hybridGroup": {
+        "hybridGroups": {
           "allOf": [
             {
               "$ref": "#/$defs/hardFact"
@@ -789,10 +789,11 @@
           ],
           "properties": {
             "value": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string"
+              }
             }
           }
         },

@@ -80,7 +80,7 @@ function makeProfile(overrides = {}) {
       habitatZones: fact(["rock"]),
       social: fact({ structure: "group", minGroup: 10 }),
       speciesOnly: hard(false),
-      hybridGroup: hard("tropheus"),
+      hybridGroups: hard(["tropheus"]),
       coloration: fact({ baseColors: ["black"], pattern: "mixed" }),
       feedingSpeed: fact("normal"),
       minTank: fact({ volumeL: 400, lengthCm: 150, depthCm: 50 }),
@@ -214,7 +214,7 @@ test("a species from a water body outside the table is not bound to it", () => {
 });
 
 test("a hard feature with one external source fails unless it is conservative", () => {
-  for (const name of ["predation", "diet", "speciesOnly", "hybridGroup"]) {
+  for (const name of ["predation", "diet", "speciesOnly", "hybridGroups"]) {
     const profile = makeProfile();
     profile.features[name].sources = [SOURCE, { kind: "forum", title: "Forum thread", url: "https://example.org/c" }];
     const found = errors(validateProfile(profile, options));
@@ -287,17 +287,40 @@ test("a duplicate id across two profiles fails", () => {
 
 test("an unknown hybrid group yields a warning only", () => {
   const profile = makeProfile();
-  profile.features.hybridGroup.value = "new-group";
+  profile.features.hybridGroups.value = ["tropheus", "new-group"];
   const issues = validateProfile(profile, options);
   assert.equal(errors(issues).length, 0, JSON.stringify(issues));
   assert.equal(warnings(issues).length, 1);
-  assert.equal(warnings(issues)[0].pointer, "/features/hybridGroup/value");
+  assert.equal(warnings(issues)[0].pointer, "/features/hybridGroups/value/1");
 });
 
-test("a null hybrid group is accepted", () => {
+test("a list of several hybrid groups is accepted", () => {
   const profile = makeProfile();
-  profile.features.hybridGroup.value = null;
+  profile.features.hybridGroups.value = ["tropheus", "other"];
+  const issues = validateProfile(profile, { ...options, hybridGroupIds: new Set(["tropheus", "other"]) });
+  assert.deepEqual(issues, []);
+});
+
+test("an empty hybrid group list is accepted", () => {
+  const profile = makeProfile();
+  profile.features.hybridGroups.value = [];
   assert.deepEqual(validateProfile(profile, options), []);
+});
+
+test("duplicate hybrid group ids and a non-list value are rejected", () => {
+  for (const value of [["tropheus", "tropheus"], "tropheus", null]) {
+    const profile = makeProfile();
+    profile.features.hybridGroups.value = value;
+    assert.ok(errors(validateProfile(profile, options)).length > 0, JSON.stringify(value));
+  }
+});
+
+test("the feature hybridGroup is rejected by the schema", () => {
+  const profile = makeProfile();
+  profile.features.hybridGroup = profile.features.hybridGroups;
+  delete profile.features.hybridGroups;
+  const found = errors(validateProfile(profile, options));
+  assert.ok(found.length > 0, JSON.stringify(found));
 });
 
 test("an archive source with legacy thread id and matching url passes", () => {
@@ -315,7 +338,7 @@ test("an archive source without url or with a mismatching url fails", () => {
 });
 
 test("a hard feature without evidence fails", () => {
-  for (const name of ["predation", "diet", "speciesOnly", "hybridGroup", "temperatureC", "ph", "ghDgh"]) {
+  for (const name of ["predation", "diet", "speciesOnly", "hybridGroups", "temperatureC", "ph", "ghDgh"]) {
     const profile = makeProfile();
     delete profile.features[name].evidence;
     const found = errors(validateProfile(profile, options));
@@ -391,8 +414,8 @@ test("a median water value above confidence low fails", () => {
   assert.ok(found.some((i) => i.pointer === "/features/ph/confidence"), JSON.stringify(found));
 });
 
-test("method median is rejected on predation, diet, speciesOnly and hybridGroup", () => {
-  for (const name of ["predation", "diet", "speciesOnly", "hybridGroup"]) {
+test("method median is rejected on predation, diet, speciesOnly and hybridGroups", () => {
+  for (const name of ["predation", "diet", "speciesOnly", "hybridGroups"]) {
     const profile = makeProfile();
     profile.features[name].confidence = "low";
     profile.features[name].verification = MEDIAN;

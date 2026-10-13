@@ -1000,8 +1000,8 @@ features:
       method: unanimous
       votes: {agree: 3, total: 3}
 
-  hybridGroup:
-    value: null
+  hybridGroups:
+    value: []
     confidence: low
     rationale: >-
       Four of five votes (checker-a, checker-b, tiebreaker-1 and tiebreaker-2) found no hybrid
@@ -1484,14 +1484,14 @@ provenance:
         Decided by the vote count with method conservative (2 of 5 agree): the strictest proposed
         type and the bloat flag of any vote apply. The food list is merged from the proposals and
         follows the invertebrate-based wild diet; beef heart is left out.
-    - field: features.hybridGroup
+    - field: features.hybridGroups
       proposals:
-        - {by: generator, value: andinoacara-rivulatus-group}
-        - {by: checker-a, value: null}
-        - {by: checker-b, value: null}
-        - {by: tiebreaker-1, value: null}
-        - {by: tiebreaker-2, value: null}
-      decision: null
+        - {by: generator, value: [andinoacara-rivulatus-group]}
+        - {by: checker-a, value: []}
+        - {by: checker-b, value: []}
+        - {by: tiebreaker-1, value: []}
+        - {by: tiebreaker-2, value: []}
+      decision: []
       rationale: >-
         Decided by the vote count with method qualified-majority (4 of 5 agree). No source
         documents a cross of A. rivulatus; hybrid-groups.yaml stays unchanged.

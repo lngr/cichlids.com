@@ -1860,8 +1860,8 @@ features:
       votes:
         agree: 4
         total: 4
-  hybridGroup:
-    value: null
+  hybridGroups:
+    value: []
     confidence: medium
     rationale: Decided by qualified majority (5 of 6 votes for no group; checker-c proposed
       amatitlania-nigrofasciata-complex). The species is the only valid member of its genus in the
@@ -2819,21 +2819,21 @@ provenance:
       decision: 1
       rationale: Decided by the tally with method qualified-majority (5 of 6 votes); the field literature
         names the species as a brood predator in Lake Xiloá.
-    - field: features.hybridGroup.value
+    - field: features.hybridGroups.value
       proposals:
         - by: generator
-          value: null
+          value: []
         - by: checker-a
-          value: null
+          value: []
         - by: checker-b
-          value: null
+          value: []
         - by: checker-c
-          value: amatitlania-nigrofasciata-complex
+          value: [amatitlania-nigrofasciata-complex]
         - by: tiebreaker-1
-          value: null
+          value: []
         - by: tiebreaker-2
-          value: null
-      decision: null
+          value: []
+      decision: []
       rationale: Decided by the tally with method qualified-majority (5 of 6 votes); one undocumented
         aquarium cross with the convict cichlid does not place the species in the Amatitlania group.
         hybrid-groups.yaml is unchanged.

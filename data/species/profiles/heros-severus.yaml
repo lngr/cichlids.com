@@ -1791,8 +1791,8 @@ features:
       votes:
         agree: 3
         total: 3
-  hybridGroup:
-    value: heros
+  hybridGroups:
+    value: [heros]
     confidence: low
     rationale: "Decided by the vote count with method conservative: the generator, tiebreaker-1 and
       tiebreaker-2 proposed the new group heros, checker-a and checker-b proposed no group (null);
@@ -2694,19 +2694,19 @@ provenance:
         min: 0
         max: 6
       rationale: Decided by the vote count (unanimous, 3 of 3); the median upper bound is 6 dKH.
-    - field: features.hybridGroup
+    - field: features.hybridGroups
       proposals:
         - by: generator
-          value: heros
+          value: [heros]
         - by: checker-a
-          value: null
+          value: []
         - by: checker-b
-          value: null
+          value: []
         - by: tiebreaker-1
-          value: heros
+          value: [heros]
         - by: tiebreaker-2
-          value: heros
-      decision: heros
+          value: [heros]
+      decision: [heros]
       rationale: "Decided by the vote count (conservative, 3 of 5): no candidate reached 4 votes, so the
         conservative rule takes the most common named group. The new group heros holds the five
         valid Heros species and is added to hybrid-groups.yaml; it rests on the close relationship,

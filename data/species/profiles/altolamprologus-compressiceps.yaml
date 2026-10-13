@@ -860,8 +860,8 @@ features:
         value: false
         note: No advice to keep it only with its own species.
 
-  hybridGroup:
-    value: null
+  hybridGroups:
+    value: []
     confidence: medium
     verification:
       method: qualified-majority
@@ -1309,14 +1309,14 @@ provenance:
       rationale: >-
         Decided by the vote count as a qualified majority of 4 of 5 votes. The husbandry sources
         warn against small adult fish of several centimetres, which exceeds level 1.
-    - field: features.hybridGroup
+    - field: features.hybridGroups
       proposals:
-        - {by: generator, value: null}
-        - {by: checker-a, value: null}
-        - {by: checker-b, value: altolamprologus}
-        - {by: tiebreaker-1, value: null}
-        - {by: tiebreaker-2, value: null}
-      decision: null
+        - {by: generator, value: []}
+        - {by: checker-a, value: []}
+        - {by: checker-b, value: [altolamprologus]}
+        - {by: tiebreaker-1, value: []}
+        - {by: tiebreaker-2, value: []}
+      decision: []
       rationale: >-
         Decided by the vote count as a qualified majority of 4 of 5 votes. No documented cross
         with A. calvus exists, the genetic studies find little if any gene flow, and the

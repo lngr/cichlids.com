@@ -927,8 +927,8 @@ features:
       method: conservative
       votes: {agree: 3, total: 5}
 
-  hybridGroup:
-    value: amatitlania-nigrofasciata-complex
+  hybridGroups:
+    value: [amatitlania-nigrofasciata-complex]
     confidence: low
     rationale: >-
       The vote count decided this group with the method conservative (3 of 5 votes agree). The
@@ -1479,14 +1479,14 @@ provenance:
         Decided by the vote count with method conservative (3 of 5 agree on false, one short of a
         qualified majority): true because two votes say true. Seriously Fish and Fishkeeper
         recommend a species tank.
-    - field: features.hybridGroup
+    - field: features.hybridGroups
       proposals:
-        - {by: generator, value: amatitlania-nigrofasciata-complex}
-        - {by: checker-a, value: null}
-        - {by: checker-b, value: null}
-        - {by: tiebreaker-1, value: amatitlania-nigrofasciata-complex}
-        - {by: tiebreaker-2, value: null}
-      decision: amatitlania-nigrofasciata-complex
+        - {by: generator, value: [amatitlania-nigrofasciata-complex]}
+        - {by: checker-a, value: []}
+        - {by: checker-b, value: []}
+        - {by: tiebreaker-1, value: [amatitlania-nigrofasciata-complex]}
+        - {by: tiebreaker-2, value: []}
+      decision: [amatitlania-nigrofasciata-complex]
       rationale: >-
         Decided by the vote count with method conservative (3 of 5 agree on null, one short of a
         qualified majority): the most common named group. The group is added to

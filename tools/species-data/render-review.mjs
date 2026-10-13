@@ -30,7 +30,7 @@ const articles = (existsSync(articleDir) ? readdirSync(articleDir).filter((f) =>
   return { meta: parse(m[1]), body: m[2] };
 });
 
-const HARD = ['temperatureC', 'ph', 'ghDgh', 'predation', 'diet', 'speciesOnly', 'hybridGroup'];
+const HARD = ['temperatureC', 'ph', 'ghDgh', 'predation', 'diet', 'speciesOnly', 'hybridGroups'];
 const LABELS = {
   origin: 'Herkunft',
   temperatureC: 'Temperatur (°C)',
@@ -46,7 +46,7 @@ const LABELS = {
   habitatZones: 'Lebensraumzonen',
   social: 'Sozialstruktur',
   speciesOnly: 'Nur Artbecken',
-  hybridGroup: 'Kreuzungsgruppe',
+  hybridGroups: 'Kreuzungsgruppen',
   coloration: 'Färbung',
   feedingSpeed: 'Fressgeschwindigkeit',
   minTank: 'Mindestbecken',
@@ -81,6 +81,7 @@ const esc = (s) =>
 function fmt(v) {
   if (v === null || v === undefined) return '<span class="muted">leer</span>';
   if (typeof v === 'boolean') return v ? 'ja' : 'nein';
+  if (Array.isArray(v) && v.length === 0) return '<span class="muted">keine</span>';
   if (Array.isArray(v)) return v.map((x) => (typeof x === 'object' ? fmt(x) : esc(x))).join(', ');
   if (typeof v === 'object') {
     const keys = Object.keys(v);
@@ -93,6 +94,7 @@ function fmt(v) {
 function short(v) {
   if (v === null || v === undefined) return '';
   if (typeof v === 'boolean') return v ? 'ja' : 'nein';
+  if (Array.isArray(v) && v.length === 0) return 'keine';
   if (Array.isArray(v)) return v.map(short).join(', ');
   if (typeof v === 'object') {
     if ('min' in v && 'max' in v && Object.keys(v).length === 2) return `${v.min}-${v.max}`;
@@ -239,7 +241,7 @@ function speciesPanel(p) {
 }
 
 function overview() {
-  const keys = ['temperatureC', 'ph', 'ghDgh', 'khDkh', 'maxSizeCm', 'predation', 'diet', 'aggressionConspecific', 'aggressionHeterospecific', 'territory', 'social', 'speciesOnly', 'hybridGroup', 'feedingSpeed', 'minTank', 'beginnerSuitability'];
+  const keys = ['temperatureC', 'ph', 'ghDgh', 'khDkh', 'maxSizeCm', 'predation', 'diet', 'aggressionConspecific', 'aggressionHeterospecific', 'territory', 'social', 'speciesOnly', 'hybridGroups', 'feedingSpeed', 'minTank', 'beginnerSuitability'];
   return `<section class="panel" id="p-overview">
   <h2>Pilotprofile im Vergleich</h2>
   <p>Je Art erzeugt ein Generator das Profil, zwei oder drei Prüfer bestimmen die Merkmale unabhängig, ein Schiedsrichter entscheidet die Abweichungen. Harte Merkmale (fett) tragen auf den Seiten der Arten ein Abzeichen mit der automatischen Verifikation: einstimmig, qualifizierte Mehrheit, vorsichtigster Wert oder Seewerte, jeweils mit der Zahl der übereinstimmenden Stimmen. Ein Klick auf eine Art öffnet ihr Profil, ein Klick auf einen Wert springt zum Merkmal.</p>

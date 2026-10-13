@@ -1,7 +1,10 @@
-# Curated hybrid groups: closely related species that cross in tanks. Two species of the same group
-# in one tank are a hard conflict of the compatibility check. Members are valid names; a species
-# belongs to at most one group. When the vote of the species pipeline decides a group that is not
-# listed, the adjudicator adds it with its members and the sources that report crosses.
+# Curated hybrid groups: closely related species that cross in tanks. Every member of a group may
+# cross with every other member, and a documented cross of two species without a wider group is a
+# group of two members. Two species that share at least one group are a hard conflict of the
+# compatibility check in one tank. Members are valid names. Crossability is not transitive, so a
+# species belongs to every group whose crosses concern it. When the vote of the species pipeline
+# decides a group that is not listed, the adjudicator adds it with its members and the sources that
+# report crosses.
 groups:
   - id: maylandia
     description: Species of Maylandia (Metriaclima), which cross readily in tanks, also across colour forms, together with the look-alike Cynotilapia afra, whose blue barred males resemble Maylandia zebra and which forms hybrids with it in the wild where it was introduced to Thumbi West Island in Lake Malawi.

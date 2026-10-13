@@ -9,7 +9,7 @@ when evidence is thin, say so through the confidence and the rationale.
 
 - `data/species/rubric.md`: the fixed meaning of every level and value. Use it literally.
 - `data/species/schema/species-profile.schema.json`: the file format.
-- `data/species/hybrid-groups.yaml`: the curated hybrid groups.
+- `data/species/hybrid-groups.yaml`: the curated hybrid groups and their members.
 
 ## Research tools
 
@@ -128,8 +128,13 @@ search and one page per species are enough.
   `literature` or `database`. Do not write a `verification` object for it either.
 - Maximum size is the typical maximum of well-kept adult aquarium fish per sex, not record sizes.
 - `minTank` is for the recommended social unit of adults (for example one male with three females).
-- Hard features (water values, predation, diet, species-only and hybrid group) are verified by
-  counting the votes of independent agents. Predation, diet, species-only and hybrid group each need
+- `hybridGroups` is the list of ids of every group of `hybrid-groups.yaml` whose crosses concern
+  the species, and `[]` when none does. A group means that every member may cross with every other
+  member; a documented cross of two species without a wider group is a group of two members. Crossing
+  is not transitive, so a species belongs to every group whose crosses concern it. Use the existing
+  id of a listed group and propose a new id only for a group the file does not list.
+- Hard features (water values, predation, diet, species-only and hybrid groups) are verified by
+  counting the votes of independent agents. Predation, diet, species-only and hybrid groups each need
   at least two sources of kind `catalog-of-fishes`, `literature` or `database`; forum and archive
   posts support them but do not count towards these two. Do not write a `verification` object;
   the vote count adds it.

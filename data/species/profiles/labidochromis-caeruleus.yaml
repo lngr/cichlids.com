@@ -903,8 +903,8 @@ features:
       method: unanimous
       votes: {agree: 3, total: 3}
 
-  hybridGroup:
-    value: labidochromis
+  hybridGroups:
+    value: [labidochromis]
     confidence: low
     rationale: >-
       A conservative decision: three of five votes chose a new group for the look-alike
@@ -1380,14 +1380,14 @@ provenance:
         true), which takes the food list of the top candidate. It covers the wild foods named by
         the Israeli checklist and Aquarium Glaser and the aquarium staples; algae as a wild food is
         documented only for the congener L. vellicans.
-    - field: features.hybridGroup.value
+    - field: features.hybridGroups.value
       proposals:
-        - {by: generator, value: labidochromis}
-        - {by: checker-a, value: labidochromis}
-        - {by: checker-b, value: null}
-        - {by: tiebreaker-1, value: labidochromis}
-        - {by: tiebreaker-2, value: null}
-      decision: labidochromis
+        - {by: generator, value: [labidochromis]}
+        - {by: checker-a, value: [labidochromis]}
+        - {by: checker-b, value: []}
+        - {by: tiebreaker-1, value: [labidochromis]}
+        - {by: tiebreaker-2, value: []}
+      decision: [labidochromis]
       rationale: >-
         Decided by the vote count as the conservative value (3 of 5, no qualified majority, confidence
         low): the most common named group. The null votes rightly note that no tank cross between
