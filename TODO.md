@@ -29,11 +29,12 @@ Umgesetzt und in `main` gemergt. TASK-3.29 ist Done, die übrigen stehen in Revi
 
 ### 1.2 Deployment (Strang A)
 
-- [ ] TASK-2.4 OpenTofu-App-Tier, k3s und Argo CD per SSH auf den bestehenden Node; schließt danach TASK-2.5 und AC #3 von TASK-2.21 ab
+- [ ] TASK-2.4 OpenTofu-App-Tier, k3s und Argo CD per SSH auf den bestehenden Node: umgesetzt, wartet auf den ersten Apply; schließt danach TASK-2.5 und AC #3 von TASK-2.21 ab
 - [ ] Hetzner-Cloud-Firewall für den Node im Plattform-Tier: SSH ist aus dem ganzen Internet erreichbar, nur die nötigen Ports freigeben
-- [ ] TASK-2.6 SOPS, age und KSOPS
-- [ ] TASK-2.7 Argo CD app-of-apps und Umgebungen
-- [ ] TASK-2.8 Ingress, TLS und Platzhalter-Workload
+- [ ] TASK-2.6 SOPS, age und KSOPS: umgesetzt, wartet auf den age-Schlüssel des Operators
+- [ ] TASK-2.7 Argo CD app-of-apps und Umgebungen: umgesetzt, abnehmen
+- [ ] TASK-2.8 Ingress (Traefik aus k3s), TLS per HTTP-01 und Platzhalter-Workload: umgesetzt, abnehmen
+- [ ] API und App als Workload in Staging: Overlays, Secrets (Slug-Secret, Data-Protection-Key-Ring, Secret des BFF-Clients), Web-App und API unter derselben Origin
 - [ ] TASK-2.9 CloudNativePG mit PITR
 - [ ] TASK-2.10 Erste getestete Restore-Übung
 - [ ] TASK-2.11 CI-Grün-Gate und Delivery-Pipeline
@@ -46,17 +47,17 @@ Umgesetzt und in `main` gemergt. TASK-3.29 ist Done, die übrigen stehen in Revi
 
 ### 1.3 Korrekturen aus dem MVP-Review, Priorität mittel und niedrig
 
-- [ ] TASK-3.36 Eine Bewertung pro Mitglied und Ziel, keine Selbstbewertung (R9); der ETL-Teil ist mit TASK-3.32 umgesetzt
-- [ ] TASK-3.37 Grenzen für Kommentare, Uploads und Entwürfe (R11, R13)
-- [ ] TASK-3.38 Exakte Legacy-Weiterleitungen mit Sichtbarkeitsprüfung (R29, R30)
-- [ ] TASK-3.39 Korrekturen der ETL-Regeln (R15, R16, R17, R19, R21, R35, R37)
-- [ ] TASK-3.40 Konfiguration und Fehlerzustände der App (R25, R26, R27, R41)
-- [ ] TASK-3.41 Dauerhafte Anmeldung pro Gerät (R8)
-- [ ] TASK-3.42 Code- und Doku-Korrekturen (R32, R39, R40, R42 bis R46)
+- [ ] TASK-3.36 Eine Bewertung pro Mitglied und Ziel, keine Selbstbewertung (R9); der ETL-Teil ist mit TASK-3.32 umgesetzt: umgesetzt, abnehmen
+- [ ] TASK-3.37 Grenzen für Kommentare, Uploads und Entwürfe (R11, R13): umgesetzt, abnehmen
+- [ ] TASK-3.38 Exakte Legacy-Weiterleitungen mit Sichtbarkeitsprüfung (R29, R30): umgesetzt, abnehmen
+- [ ] TASK-3.39 Korrekturen der ETL-Regeln (R15, R16, R17, R19, R21, R35, R37): umgesetzt, abnehmen
+- [ ] TASK-3.40 Konfiguration und Fehlerzustände der App (R25, R26, R27, R41): umgesetzt, abnehmen
+- [ ] TASK-3.41 Dauerhafte Anmeldung pro Gerät (R8): umgesetzt, abnehmen; ADR-0027 (Proposed) annehmen
+- [ ] TASK-3.42 Code- und Doku-Korrekturen (R32, R39, R40, R42 bis R46): umgesetzt bis auf R46 (PROJECT-STATUS.md)
 - [ ] TASK-3.28 Ich-Tab mit eigenen Bildern, Becken und Entwürfen
 - [ ] TASK-2.24 Playwright-Smoke mit anonymisierten Daten in CI
 - [ ] TASK-2.25 Maestro-Flows in CI (hängt an F13)
-- [ ] TASK-2.26 gitleaks statt Eigenbau-Scanner
+- [ ] TASK-2.26 gitleaks statt Eigenbau-Scanner: umgesetzt, abnehmen
 - [ ] TASK-2.29 Isolierter Webhook-Forwarder (ADR-0024)
 
 ### 1.4 Slices des Zielbilds (`MVP-VISION.md`, Abschnitt 8)
