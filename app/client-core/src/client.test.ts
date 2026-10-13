@@ -285,4 +285,29 @@ describe("createCichlidsClient", () => {
       message: "not a draft",
     });
   });
+
+  it("rejects with an ApiError exposing the problem details code, status and detail on a 403", async () => {
+    server.use(
+      http.post(`${baseUrl}/api/pictures/:slug/comments`, () =>
+        HttpResponse.json(
+          { title: "Forbidden", status: 403, detail: "You cannot rate your own picture.", code: "self_rating" },
+          { status: 403, headers: { "Content-Type": "application/problem+json" } },
+        ),
+      ),
+    );
+    const client = createCichlidsClient({ baseUrl, getAccessToken: () => "test-token" });
+
+    await expect(client.pictures.createComment("RRKaG", { body: "Nice fish!", stars: 5 })).rejects.toMatchObject({
+      name: "ApiError",
+      status: 403,
+      message: "You cannot rate your own picture.",
+      code: "self_rating",
+    });
+  });
+
+  it("leaves the code undefined for an error body without problem details", async () => {
+    const client = createCichlidsClient({ baseUrl, getAccessToken: () => "test-token" });
+
+    await expect(client.posts.discard(999)).rejects.toMatchObject({ status: 409, code: undefined });
+  });
 });
