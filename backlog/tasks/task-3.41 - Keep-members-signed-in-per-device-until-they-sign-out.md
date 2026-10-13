@@ -1,14 +1,21 @@
 ---
 id: TASK-3.41
 title: Keep members signed in per device until they sign out
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-10-12 04:48'
-updated_date: '2026-10-13 08:41'
+updated_date: '2026-10-13 09:29'
 labels: []
 dependencies: []
 references:
-  - REVIEW-MVP.md
+  - app/mobile/e2e/playwright/session.write.mjs
+  - app/api/tests/Cichlids.Api.Tests/Features/Auth/WebSessionTests.cs
+  - app/api/tests/Cichlids.Api.Tests/Features/Auth/KeycloakOidcClientTests.cs
+  - app/api/tests/Cichlids.Etl.Tests/KeycloakAccountImportTests.cs
+  - app/mobile/src/auth/tokenRefresh.test.ts
+  - app/mobile/src/auth/webSession.test.ts
+  - app/mobile/src/upload/savedUploadInput.test.ts
+  - docs/adr/0027-session-model-for-native-and-web-clients.md
 parent_task_id: TASK-3
 priority: medium
 ordinal: 65000
@@ -70,3 +77,44 @@ A member signs in once per device and stays signed in until signing out; no sign
   interception). AC #1 (three months) is covered by the realm settings and a unit test of the
   refresh path.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### Implemented
+- ADR-0027 "Session model for native and web clients" (Proposed).
+- Keycloak (dev, staging, production): offline sessions idle ten years, no max lifespan,
+  `offline_access` scope; realm check rules with self-test. The account import grants
+  `default-roles-cichlids`, without it imported accounts could not sign in with offline tokens.
+- Native: own refresh call; 400 and 401 end the session, every other failure keeps the tokens and
+  raises `SessionUnavailableError` (text `errors.connection`); a refresh at start and on return to
+  the foreground (at most every 5 minutes) enforces suspensions.
+- Web BFF: authorization code with PKCE on the server, tokens in table `web_session` (only the
+  SHA-256 of the session id stored, migration `AddWebSession`); cookie `__Host-cichlids-session`
+  (development over http `cichlids-session`), httpOnly, Secure, SameSite=Lax, 400 days, renewed on
+  app start; CSRF header `X-CSRF-Token` plus origin check; policy scheme: bearer first, else
+  cookie; refused refresh deletes the session, unreachable Keycloak answers 503
+  `identity_provider_unavailable`. Login start is a POST answered with JSON, so an unreachable
+  login service keeps the message with retry of TASK-3.40.
+- `prompt=login` on native and web login, so a shared device never signs the next person in
+  through the browser SSO session.
+- Upload input (title, description, topic, unfinished photo) stored per draft and account
+  (SecureStore in chunks natively, localStorage on the web), restored when the draft is opened.
+
+### Verified by the agent
+- `dotnet test`: Infrastructure 304, Api 385, Etl 341; client-core 13, mobile 173, typecheck;
+  realm check (53 cases); ADR index; `pnpm run e2e:write` 11 of 11 including `session.write.mjs`
+  (no script-visible token, signed in after three months, connection message, upload input after
+  sign-out, suspension signs out).
+- Not verified: native app on a device or emulator; Keycloak outage only in Api.Tests.
+
+### Open questions for the project owner
+- Encryption at rest of the tokens in `web_session`.
+- Public client `cichlids-app` with PKCE for the BFF, or a confidential client with secret.
+- `prompt=login` only, or additionally a front-channel logout of the browser SSO session.
+- Same-origin routing of web app and API for staging and production depends on the open web scope.
+
+### Follow-ups
+- Cleanup of orphaned `web_session` rows and Keycloak offline sessions.
+- A failed web login (refused or code exchange failed) returns without a message.
+<!-- SECTION:NOTES:END -->
