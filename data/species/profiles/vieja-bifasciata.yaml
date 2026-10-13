@@ -1,0 +1,3415 @@
+schemaVersion: 1
+id: "vieja-bifasciata"
+legacyIds:
+  - 798
+status: "described"
+taxonomy:
+  validName: "Vieja bifasciata"
+  genus: "Vieja"
+  species: "bifasciata"
+  author: "(Steindachner, 1864)"
+  source:
+    kind: "catalog-of-fishes"
+    title: "Eschmeyer's Catalog of Fishes: species of Vieja, version updated 21 September 2026"
+    url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Vi\
+      eja"
+    accessed: "2026-10-13"
+  synonyms:
+    - name: "Heros bifasciatus"
+      note: "Original combination recorded by the Catalog of Fishes."
+    - name: "Cichlasoma bifasciatum"
+      note: "Former generic combination recorded by the Catalog."
+    - name: "Paraneetroplus bifasciatus"
+      note: "Former combination recorded by the Catalog."
+    - name: "Paraneetroplus bifasciata"
+      note: "Historical spelling recorded in the Catalog bibliography."
+    - name: "Paratheraps bifasciatus"
+      note: "Historical aquarium name in the Nordic register."
+    - name: "Theraps bifasciatum"
+      note: "Historical aquarium name in the Beerlink account."
+  legacyNames:
+    - "Vieja bifasciata"
+  note: "The Catalog of Fishes directly confirms Vieja bifasciata as valid, with authority (Steindachner, 1864).
+    The current and legacy genus are identical, so the Vieja query covers both. The public CRC page verifies
+    the name and a Chacamax locality photograph but exposes no feeding, habitat or breeding summaries; it
+    supplies no feature origin. Synspilum names used for a crossing partner refer to Vieja melanurus. Searches
+    of the cichlids.com archive under bifasciata found no posts, while bifasciatum and bifasciatus returned
+    relevant historical threads."
+names:
+  trade:
+    en:
+      - "Twoband cichlid"
+      - "Red-spotted cichlid"
+    es-419:
+      - "Mojarra panza colorada"
+      - "Colorada"
+    pt-BR:
+      - "Ciclideo Duas Bandas"
+variants:
+  - name: "Rio Chacamax"
+    kind: "locality"
+    note: "Established aquarium locality label in the Nordic register and specialist accounts; keep provenance
+      with the fish."
+  - name: "Laguna Catazaja"
+    kind: "locality"
+    note: "Collector-reported locality stock; unusually red provisional cf. bifasciata forms have been collected
+      in the surrounding floodplain."
+  - name: "Rio Candelaria"
+    kind: "locality"
+    note: "Recognized locality label; contact with melanurus and uncertain intermediate fish complicate
+      identification."
+  - name: "Xanthic"
+    kind: "color-morph"
+    note: "Reported by the Nordic register; occurrence does not establish a widespread or taxonomically distinct
+      breeding line."
+  - name: "Albino"
+    kind: "color-morph"
+    note: "Reported by the Nordic register; verify identity and provenance before treating pale trade stock as
+      pure bifasciata."
+features:
+  origin:
+    value:
+      continent: "Central America"
+      region: "Atlantic slope of southern Mexico and northern Guatemala, principally the Grijalva and Usumacinta
+        systems with adjacent Candelaria records"
+      waterbody: null
+      localities:
+        - "Rio Usumacinta"
+        - "Rio Chacamax"
+        - "Laguna Catazaja"
+        - "Rio Candelaria"
+        - "San Pedro wetlands"
+        - "Lacantun sub-basin"
+    confidence: "high"
+    rationale: "The proposals share the same native Atlantic-slope core but name different localities. The Catalog
+      and FishBase support southern Mexico and northern Guatemala. Beerlink adds Candelaria records and
+      locality stocks; fish surveys record the species in San Pedro wetlands and the Lacantun sub-basin. These
+      compatible localities are combined, excluding introduced populations. No curated lake waterbody applies
+      to this river-distributed species."
+    sources:
+      - kind: "catalog-of-fishes"
+        title: "Eschmeyer's Catalog of Fishes: species of Vieja, version updated 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Vi\
+          eja"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase species summary: Vieja bifasciata"
+        url: "https://www.fishbase.se/summary/Vieja-bifasciata.html"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Beerlink. Vieja bifasciata. Nederlandse Cichliden Vereniging article reprinted by AquaInfo"
+        url: "https://aquainfo.nl/en/article/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Ictiofauna de los humedales del rio San Pedro, Balancan, Tabasco, Mexico"
+        url: "https://doi.org/10.15517/rbt.v0i0.3133"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "FishBase species summary: Vieja bifasciata"
+          url: "https://www.fishbase.se/summary/Vieja-bifasciata.html"
+          accessed: "2026-10-13"
+        value:
+          continent: "Central America"
+          region: "Grijalva and Usumacinta basins in Mexico and Guatemala"
+      - source:
+          kind: "literature"
+          title: "Beerlink. Vieja bifasciata. Nederlandse Cichliden Vereniging article reprinted by AquaInfo"
+          url: "https://aquainfo.nl/en/article/vieja-bifasciata/"
+          accessed: "2026-10-13"
+        value:
+          continent: "Central America"
+          region: "Candelaria, Usumacinta and Grijalva systems"
+      - source:
+          kind: "catalog-of-fishes"
+          title: "Eschmeyer's Catalog of Fishes: species of Vieja"
+          url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Vi\
+            eja"
+          accessed: "2026-10-13"
+        value:
+          continent: "Central America"
+          region: "Atlantic slope of southern Mexico and northern Guatemala"
+  temperatureC:
+    value:
+      min: 23
+      max: 32
+    confidence: "low"
+    rationale: "The tally fixes 23 to 32 C by the rounded median of six lower and upper bounds, with no qualified
+      majority. The lower endpoint is a regional habitat proxy, not a capture-linked physiological limit.
+      Soria-Reinoso et al. measured 20.8 to 29.8 C, Cruz-Leyva et al. report site means of 28.3 to 30.2 C, and
+      Frias-Quintana et al. collected voucher-identified juveniles at a mean of 32.1 C with SD 0.5 C. The SD
+      is not an observed minimum-to-maximum range. Wider measurements include 26 to 33 C in rainy-season
+      Centla lagoons, pooled 27 to 35 C in the dry season including saline stations, and 22.96 to 33.88 C in
+      the lower Usumacinta study. These wider source ranges are not replaced by the median. Exact occupancy at
+      their extremes remains uncertain. Beerlink's secondary 38.6 C account lacks independently verified
+      measurement context and is not adopted. Proposals: generator 28.3 to 32.1; checker-a 25 to 32; checker-b
+      26 to 33; checker-c 20.8 to 32.1; tiebreaker-1 20.8 to 32.1; tiebreaker-2 20.8 to 30.2."
+    sources:
+      - kind: "literature"
+        title: "Cruz-Leyva et al. (2020). Resistencia De Salmonella Spp A Antibioticos Y Fluctuacion Fisicoquimica Del
+          Agua A Nivel Espacial En La Cuenca Media Del Rio Usumacinta, Mexico. European Scientific Journal
+          16(15), 43-56"
+        url: "https://doi.org/10.19044/esj.2020.v16n15p43"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Frias-Quintana et al. (2021). Comparative characterization of digestive proteases in redhead cichlid
+          and twoband cichlid. Neotropical Ichthyology 19(1), e200095"
+        url: "https://doi.org/10.1590/1982-0224-2020-0095"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Soria-Reinoso et al. (2022). The Seasonal Dynamics of Organic and Inorganic Carbon along the Tropical
+          Usumacinta River Basin (Mexico). Water 14, 2703"
+        url: "https://doi.org/10.3390/w14172703"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Ictiofauna de los humedales del rio San Pedro, Balancan, Tabasco, Mexico"
+        url: "https://doi.org/10.15517/rbt.v0i0.3133"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Variation in patterns of fish assemblage and their environmental correlates in a tropical river basin
+          from the Gulf of Mexico slope"
+        url: "https://doi.org/10.1590/1982-0224-2022-0098"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Determining water quality of the lower basin of the Usumacinta River in Tabasco, Mexico"
+        url: "https://doi.org/10.32854/agrop.v15i8.2205"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase, Vieja bifasciata"
+        url: "https://www.fishbase.se/summary/Vieja-bifasciata.html"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Distribucion y abundancia de Melanoides tuberculata en la Reserva de la Biosfera Pantanos de Centla.
+          Acta Zoologica Mexicana 25(1) (2009)"
+        url: "https://doi.org/10.21829/azm.2009.251599"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Biotope Aquarium Project: Lago Lacanja, April 2016 collecting record submitted by Heiko Bleher"
+        url: "https://biotopeaquariumproject.com/bin/chiapas-laguna-lacanja-bleher/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Beerlink, R. Vieja bifasciata. NVC species article reproduced by AquaInfo"
+        url: "https://aquainfo.nl/en/article/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Gonzalez-Diaz et al. (2022). Geometric morphometric comparison of the oral jaw and lower pharyngeal
+          jaw of the closely-related cichlid, Vieja bifasciata, V. breidohri and V. hartwegi"
+        url: "https://doi.org/10.22201/ib.20078706e.2022.93.3861"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Cruz-Leyva et al. (2020). Resistencia De Salmonella Spp A Antibioticos Y Fluctuacion Fisicoquimica Del
+            Agua A Nivel Espacial En La Cuenca Media Del Rio Usumacinta, Mexico. European Scientific Journal
+            16(15), 43-56"
+          url: "https://doi.org/10.19044/esj.2020.v16n15p43"
+          accessed: "2026-10-13"
+        value:
+          min: 28.3
+          max: 30.2
+        note: "Dry-season river site means in April and May 2015; fish occupancy not checked at each station."
+      - source:
+          kind: "literature"
+          title: "Frias-Quintana et al. (2021). Comparative characterization of digestive proteases in redhead cichlid
+            and twoband cichlid. Neotropical Ichthyology 19(1), e200095"
+          url: "https://doi.org/10.1590/1982-0224-2020-0095"
+          accessed: "2026-10-13"
+        value:
+          min: 32.1
+          max: 32.1
+        note: "Juvenile collection-water mean; SD 0.5 C is not an observed range or a longevity test."
+      - source:
+          kind: "literature"
+          title: "Soria-Reinoso et al. (2022). The Seasonal Dynamics of Organic and Inorganic Carbon along the Tropical
+            Usumacinta River Basin (Mexico). Water 14, 2703"
+          url: "https://doi.org/10.3390/w14172703"
+          accessed: "2026-10-13"
+        value:
+          min: 20.8
+          max: 29.8
+        note: "Whole-basin survey including cooler tributaries; not adopted as the species-specific minimum."
+      - source:
+          kind: "literature"
+          title: "Ictiofauna de los humedales del rio San Pedro, Balancan, Tabasco, Mexico"
+          url: "https://doi.org/10.15517/rbt.v0i0.3133"
+          accessed: "2026-10-13"
+        value: null
+        note: "The accessible text confirms the species and seasonal water sampling, but its extracted table omits the
+          numeric cells; checker-a reports means of 25.1 to 32.5 C, unverified here."
+      - source:
+          kind: "literature"
+          title: "Variation in patterns of fish assemblage and their environmental correlates in a tropical river basin
+            from the Gulf of Mexico slope"
+          url: "https://doi.org/10.1590/1982-0224-2022-0098"
+          accessed: "2026-10-13"
+        value:
+          min: 23.6
+          max: 29.6
+        note: "13 sites of the Lacantun basin, the species is recorded there"
+      - source:
+          kind: "literature"
+          title: "Determining water quality of the lower basin of the Usumacinta River in Tabasco, Mexico"
+          url: "https://doi.org/10.32854/agrop.v15i8.2205"
+          accessed: "2026-10-13"
+        value:
+          min: 22.96
+          max: 33.88
+        note: "Wider dry-season surface-water extremes from the study text; occupancy at each extreme unverified."
+      - source:
+          kind: "database"
+          title: "FishBase, Vieja bifasciata"
+          url: "https://www.fishbase.se/summary/Vieja-bifasciata.html"
+          accessed: "2026-10-13"
+        value:
+          min: 26
+          max: 30
+        note: "environment line, based on a trade book"
+      - source:
+          kind: "literature"
+          title: "Distribucion y abundancia de Melanoides tuberculata en la Reserva de la Biosfera Pantanos de Centla.
+            Acta Zoologica Mexicana 25(1) (2009)"
+          url: "https://doi.org/10.21829/azm.2009.251599"
+          accessed: "2026-10-13"
+        value:
+          min: 26
+          max: 33
+        note: "Measured rainy-season water temperatures across Centla lagoons; dry-season pooled range was 27 to 35 C
+          and included saline stations."
+      - source:
+          kind: "database"
+          title: "Biotope Aquarium Project: Lago Lacanja, April 2016 collecting record submitted by Heiko Bleher"
+          url: "https://biotopeaquariumproject.com/bin/chiapas-laguna-lacanja-bleher/"
+          accessed: "2026-10-13"
+        value:
+          min: 29.2
+          max: 29.2
+        note: "Afternoon measurement at a lake where the account lists the species; presence identification was not
+          independently verified."
+      - source:
+          kind: "literature"
+          title: "Beerlink, R. Vieja bifasciata. NVC species article reproduced by AquaInfo"
+          url: "https://aquainfo.nl/en/article/vieja-bifasciata/"
+          accessed: "2026-10-13"
+        value:
+          min: 38.6
+          max: 38.6
+        note: "Secondary historical Laguna Terminos collecting account; original measurement could not be verified and
+          is excluded from the representative range."
+    tolerance:
+      value:
+        min: 23
+        max: 32
+      confidence: "low"
+      rationale: "The tally conservatively intersects the six proposed tolerance envelopes at 25 to 30.2 C, then
+        expands the result to 23 to 32 C to contain the decided natural interval. This is an algorithmic
+        planning envelope with low confidence, not two independent demonstrations of healthy aquarium survival
+        for years at both edges. Care recommendations are Seriously Fish 27 to 29, Zoopet 24 to 28, Aqua-Fish
+        22 to 28, Aquarismo Paulista 26 to 30 and Fishkeeper 24 to 30 C. The Nordic summary gives 25 to 30
+        while its narrative gives 22 to 28. The 2025 aquaculture review gives a wider group-level 24 to 32 C
+        range including bifasciata, not a species-specific longevity trial. Wider vote envelopes and regional
+        field observations are retained as evidence of uncertainty. The 32.1 C capture mean cannot establish
+        chronic tolerance, and about 27 to 28 C has the clearest overlap among the species care
+        recommendations. Proposals: generator 22 to 32.1; checker-a 24 to 32; checker-b 25 to 33; checker-c
+        20.8 to 32.1; tiebreaker-1 20.8 to 32.1; tiebreaker-2 20.8 to 30.2."
+      sources:
+        - kind: "database"
+          title: "Aqua-Fish: Twoband Cichlid, Vieja bifasciata, care and breeding guide"
+          url: "https://en.aqua-fish.net/fish/twoband-cichlid"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Rechi (2018). Ciclideo Duas Bandas, Vieja bifasciata. Aquarismo Paulista"
+          url: "https://www.aquarismopaulista.com/vieja-bifasciata/"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Nordiska Ciklidsallskapet species register: Vieja bifasciata"
+          url: "https://ciklid.org/artregister/art.php?ID=551"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Frias-Quintana et al. (2021). Comparative characterization of digestive proteases in redhead cichlid
+            and twoband cichlid. Neotropical Ichthyology 19(1), e200095"
+          url: "https://doi.org/10.1590/1982-0224-2020-0095"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Seriously Fish, Vieja bifasciata"
+          url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Fishkeeper (Maidenhead Aquatics), Bifasciatum Cichlid"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/bifasciatum-cichlid"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "FishBase, Vieja bifasciata"
+          url: "https://www.fishbase.se/summary/Vieja-bifasciata.html"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Beerlink: Vieja bifasciata. NVC species article published by AquaInfo"
+          url: "https://aquainfo.nl/en/article/vieja-bifasciata/"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Zoopet: Vieja bifasciata species record 2455"
+          url: "https://www.zoopet.com/fiskar/fisk.php?NR=2455"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Soria-Reinoso et al. (2022). The Seasonal Dynamics of Organic and Inorganic Carbon along the Tropical
+            Usumacinta River Basin (Mexico)"
+          url: "https://doi.org/10.3390/w14172703"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Feeding habits and nutritional requirements of native cichlids with aquaculture potential from Mexico
+            and Central America. A review (2025)"
+          url: "https://doi.org/10.3856/vol53-issue3-fulltext-3369"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "The Fish Farmer's Daughter: captive-bred Bifasciata Cichlid care listing"
+          url: "https://thefishfarmersdaughter.com/products/vieja-bifasiata"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Cruz-Leyva et al. (2020). Resistencia De Salmonella Spp A Antibioticos Y Fluctuacion Fisicoquimica Del
+            Agua A Nivel Espacial En La Cuenca Media Del Rio Usumacinta, Mexico. European Scientific Journal
+            16(15), 43"
+          url: "https://doi.org/10.19044/esj.2020.v16n15p43"
+          accessed: "2026-10-13"
+      evidence:
+        - source:
+            kind: "database"
+            title: "Aqua-Fish: Twoband Cichlid, Vieja bifasciata, care and breeding guide"
+            url: "https://en.aqua-fish.net/fish/twoband-cichlid"
+            accessed: "2026-10-13"
+          value:
+            min: 22
+            max: 28
+          note: "Aquarium recommendation."
+        - source:
+            kind: "website"
+            title: "Rechi (2018). Ciclideo Duas Bandas, Vieja bifasciata. Aquarismo Paulista"
+            url: "https://www.aquarismopaulista.com/vieja-bifasciata/"
+            accessed: "2026-10-13"
+          value:
+            min: 26
+            max: 30
+          note: "Aquarium recommendation."
+        - source:
+            kind: "database"
+            title: "Nordiska Ciklidsallskapet species register: Vieja bifasciata"
+            url: "https://ciklid.org/artregister/art.php?ID=551"
+            accessed: "2026-10-13"
+          value:
+            min: 25
+            max: 30
+          note: "Summary header; the body separately gives 22 to 28 C."
+        - source:
+            kind: "literature"
+            title: "Frias-Quintana et al. (2021). Comparative characterization of digestive proteases in redhead cichlid
+              and twoband cichlid. Neotropical Ichthyology 19(1), e200095"
+            url: "https://doi.org/10.1590/1982-0224-2020-0095"
+            accessed: "2026-10-13"
+          value:
+            min: 32.1
+            max: 32.1
+          note: "Field collection mean only; no demonstration of chronic aquarium tolerance."
+        - source:
+            kind: "database"
+            title: "Seriously Fish, Vieja bifasciata"
+            url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+            accessed: "2026-10-13"
+          value:
+            min: 27
+            max: 29
+        - source:
+            kind: "website"
+            title: "Fishkeeper (Maidenhead Aquatics), Bifasciatum Cichlid"
+            url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/bifasciatum-cichlid"
+            accessed: "2026-10-13"
+          value:
+            min: 24
+            max: 30
+        - source:
+            kind: "literature"
+            title: "Beerlink: Vieja bifasciata. NVC species article published by AquaInfo"
+            url: "https://aquainfo.nl/en/article/vieja-bifasciata/"
+            accessed: "2026-10-13"
+          value:
+            min: 25
+          note: "Minimum temperature recommended; no aquarium upper endpoint stated."
+        - source:
+            kind: "database"
+            title: "Zoopet: Vieja bifasciata species record 2455"
+            url: "https://www.zoopet.com/fiskar/fisk.php?NR=2455"
+            accessed: "2026-10-13"
+          value:
+            min: 24
+            max: 28
+          note: "Species husbandry recommendation."
+        - source:
+            kind: "literature"
+            title: "Feeding habits and nutritional requirements of native cichlids with aquaculture potential from Mexico
+              and Central America. A review (2025)"
+            url: "https://doi.org/10.3856/vol53-issue3-fulltext-3369"
+            accessed: "2026-10-13"
+          value:
+            min: 24
+            max: 32
+          note: "Group-level culture tolerance including bifasciata; not an isolated species-specific longevity test."
+        - source:
+            kind: "website"
+            title: "The Fish Farmer's Daughter: captive-bred Bifasciata Cichlid care listing"
+            url: "https://thefishfarmersdaughter.com/products/vieja-bifasiata"
+            accessed: "2026-10-13"
+          value:
+            min: 22.2
+            max: 27.8
+          note: "Breeder care recommendation converted from 72 to 82 F; no duration stated."
+        - source:
+            kind: "literature"
+            title: "Soria-Reinoso et al. (2022). The Seasonal Dynamics of Organic and Inorganic Carbon along the Tropical
+              Usumacinta River Basin (Mexico). Water 14, 2703"
+            url: "https://doi.org/10.3390/w14172703"
+            accessed: "2026-10-13"
+          value:
+            min: 20.8
+            max: 29.8
+          note: "Field exposure only, used for required containment; not aquarium tolerance evidence."
+        - source:
+            kind: "literature"
+            title: "Cruz-Leyva et al. (2020). Resistencia De Salmonella Spp A Antibioticos Y Fluctuacion Fisicoquimica Del
+              Agua A Nivel Espacial En La Cuenca Media Del Rio Usumacinta, Mexico. European Scientific Journal
+              16(15), 43"
+            url: "https://doi.org/10.19044/esj.2020.v16n15p43"
+            accessed: "2026-10-13"
+          value:
+            min: 28.3
+            max: 30.2
+          note: "Field site means only, used for required containment; not aquarium tolerance evidence."
+      verification:
+        method: "conservative"
+        votes:
+          agree: 2
+          total: 6
+    verification:
+      method: "median"
+      votes:
+        agree: 2
+        total: 6
+  ph:
+    value:
+      min: 7.2
+      max: 8.3
+    confidence: "medium"
+    rationale: "The tally treats all four proposals as agreeing within its pH threshold and chooses their rounded
+      median endpoints, 7.2 to 8.3, with unanimous verification. Soria-Reinoso et al. measured 7.3 to 8.3;
+      Cruz-Leyva et al. Table 1 spans site means of 7.4 to 7.9, although the results prose gives a conflicting
+      7.1 minimum. Wider source observations include 7.50 to 8.93 in the lower Usumacinta and a Lacanja
+      collection record of 8.55 attributed to Heiko Bleher. The latter species list has no independent
+      identification check. Checker-a also reports San Pedro site means of 6.7 to 7.8. Thus the decided
+      interval represents the tally consensus rather than all measured native conditions, and cannot exclude
+      these wider observations. Proposals: generator 7.3 to 8.3; checker-a 7 to 8.1; checker-b 7.1 to 8.3;
+      checker-c 7.3 to 8.55."
+    sources:
+      - kind: "literature"
+        title: "Soria-Reinoso et al. (2022). The Seasonal Dynamics of Organic and Inorganic Carbon along the Tropical
+          Usumacinta River Basin (Mexico). Water 14, 2703"
+        url: "https://doi.org/10.3390/w14172703"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Cruz-Leyva et al. (2020). Resistencia De Salmonella Spp A Antibioticos Y Fluctuacion Fisicoquimica Del
+          Agua A Nivel Espacial En La Cuenca Media Del Rio Usumacinta, Mexico. European Scientific Journal
+          16(15), 43-56"
+        url: "https://doi.org/10.19044/esj.2020.v16n15p43"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Ictiofauna de los humedales del rio San Pedro, Balancan, Tabasco, Mexico"
+        url: "https://doi.org/10.15517/rbt.v0i0.3133"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Variation in patterns of fish assemblage and their environmental correlates in a tropical river basin
+          from the Gulf of Mexico slope"
+        url: "https://doi.org/10.1590/1982-0224-2022-0098"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Determining water quality of the lower basin of the Usumacinta River in Tabasco, Mexico"
+        url: "https://doi.org/10.32854/agrop.v15i8.2205"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Biotope Aquarium Project: Lago Lacanja, April 2016 collecting record submitted by Heiko Bleher"
+        url: "https://biotopeaquariumproject.com/bin/chiapas-laguna-lacanja-bleher/"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Soria-Reinoso et al. (2022). The Seasonal Dynamics of Organic and Inorganic Carbon along the Tropical
+            Usumacinta River Basin (Mexico). Water 14, 2703"
+          url: "https://doi.org/10.3390/w14172703"
+          accessed: "2026-10-13"
+        value:
+          min: 7.3
+          max: 8.3
+        note: "Measured basin range in October 2017 and April 2018."
+      - source:
+          kind: "literature"
+          title: "Cruz-Leyva et al. (2020). Resistencia De Salmonella Spp A Antibioticos Y Fluctuacion Fisicoquimica Del
+            Agua A Nivel Espacial En La Cuenca Media Del Rio Usumacinta, Mexico. European Scientific Journal
+            16(15), 43-56"
+          url: "https://doi.org/10.19044/esj.2020.v16n15p43"
+          accessed: "2026-10-13"
+        value:
+          min: 7.4
+          max: 7.9
+        note: "Table 1 means; the conflicting prose minimum of 7.1 is recorded in the rationale."
+      - source:
+          kind: "literature"
+          title: "Ictiofauna de los humedales del rio San Pedro, Balancan, Tabasco, Mexico"
+          url: "https://doi.org/10.15517/rbt.v0i0.3133"
+          accessed: "2026-10-13"
+        value: null
+        note: "The accessible extracted table lacks numeric pH cells; checker-a reports site means of 6.7 to 7.8,
+          unverified here."
+      - source:
+          kind: "literature"
+          title: "Variation in patterns of fish assemblage and their environmental correlates in a tropical river basin
+            from the Gulf of Mexico slope"
+          url: "https://doi.org/10.1590/1982-0224-2022-0098"
+          accessed: "2026-10-13"
+        value:
+          min: 7.3
+          max: 8.09
+      - source:
+          kind: "literature"
+          title: "Determining water quality of the lower basin of the Usumacinta River in Tabasco, Mexico"
+          url: "https://doi.org/10.32854/agrop.v15i8.2205"
+          accessed: "2026-10-13"
+        value:
+          min: 7.5
+          max: 8.93
+        note: "Wider rainy-season surface-water measurements; not a species-specific preference interval."
+      - source:
+          kind: "database"
+          title: "Biotope Aquarium Project: Lago Lacanja, April 2016 collecting record submitted by Heiko Bleher"
+          url: "https://biotopeaquariumproject.com/bin/chiapas-laguna-lacanja-bleher/"
+          accessed: "2026-10-13"
+        value:
+          min: 8.55
+          max: 8.55
+        note: "April 2016 lake measurement; species occurrence is based on the collector account."
+    tolerance:
+      value:
+        min: 7
+        max: 8.5
+      confidence: "medium"
+      rationale: "The tally accepts four proposals within the pH threshold and fixes 7 to 8.5 by unanimous
+        verification. Generator, checker-a and checker-b propose 7 to 8.5; checker-c proposes the wider 7 to
+        8.6 to cover its 8.55 habitat record. Seriously Fish, Zoopet and the Nordic register give 7 to 8.5;
+        Aqua-Fish gives 7 to 7.9 and the two retailer/blog records 7 to 8. The decided range contains natural
+        pH 7.2 to 8.3, but cannot validate every population at every edge. Source repetition is not
+        independent experimentation. Proposals: generator 7 to 8.5; checker-a 7 to 8.5; checker-b 7 to 8.5;
+        checker-c 7 to 8.6."
+      sources:
+        - kind: "database"
+          title: "Seriously Fish: Vieja bifasciata, Red-spotted Cichlid"
+          url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Nordiska Ciklidsallskapet species register: Vieja bifasciata"
+          url: "https://ciklid.org/artregister/art.php?ID=551"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Rechi (2018). Ciclideo Duas Bandas, Vieja bifasciata. Aquarismo Paulista"
+          url: "https://www.aquarismopaulista.com/vieja-bifasciata/"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Fishkeeper (Maidenhead Aquatics), Bifasciatum Cichlid"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/bifasciatum-cichlid"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Aqua-Fish: Twoband cichlid species and husbandry record"
+          url: "https://en.aqua-fish.net/fish/twoband-cichlid"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Zoopet: Vieja bifasciata species record 2455"
+          url: "https://www.zoopet.com/fiskar/fisk.php?NR=2455"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Einrichtungsbeispiele: Vieja bifasciata husbandry recommendations"
+          url: "https://www.einrichtungsbeispiele.de/zierfische/mittelamerika/vieja-bifasciata-slnk.html"
+          accessed: "2026-10-13"
+      evidence:
+        - source:
+            kind: "database"
+            title: "Seriously Fish: Vieja bifasciata, Red-spotted Cichlid"
+            url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+            accessed: "2026-10-13"
+          value:
+            min: 7
+            max: 8.5
+        - source:
+            kind: "database"
+            title: "Nordiska Ciklidsallskapet species register: Vieja bifasciata"
+            url: "https://ciklid.org/artregister/art.php?ID=551"
+            accessed: "2026-10-13"
+          value:
+            min: 7
+            max: 8.5
+        - source:
+            kind: "website"
+            title: "Rechi (2018). Ciclideo Duas Bandas, Vieja bifasciata. Aquarismo Paulista"
+            url: "https://www.aquarismopaulista.com/vieja-bifasciata/"
+            accessed: "2026-10-13"
+          value:
+            min: 7
+            max: 8
+        - source:
+            kind: "website"
+            title: "Fishkeeper (Maidenhead Aquatics), Bifasciatum Cichlid"
+            url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/bifasciatum-cichlid"
+            accessed: "2026-10-13"
+          value:
+            min: 7
+            max: 8
+        - source:
+            kind: "database"
+            title: "Aqua-Fish: Twoband cichlid species and husbandry record"
+            url: "https://en.aqua-fish.net/fish/twoband-cichlid"
+            accessed: "2026-10-13"
+          value:
+            min: 7
+            max: 7.9
+        - source:
+            kind: "database"
+            title: "Zoopet: Vieja bifasciata species record 2455"
+            url: "https://www.zoopet.com/fiskar/fisk.php?NR=2455"
+            accessed: "2026-10-13"
+          value:
+            min: 7
+            max: 8.5
+        - source:
+            kind: "website"
+            title: "Einrichtungsbeispiele: Vieja bifasciata husbandry recommendations"
+            url: "https://www.einrichtungsbeispiele.de/zierfische/mittelamerika/vieja-bifasciata-slnk.html"
+            accessed: "2026-10-13"
+          value:
+            min: 7
+            max: 8.5
+      verification:
+        method: "unanimous"
+        votes:
+          agree: 4
+          total: 4
+    verification:
+      method: "unanimous"
+      votes:
+        agree: 4
+        total: 4
+  ghDgh:
+    value:
+      min: 9
+      max: 20
+    confidence: "low"
+    rationale: "The tally fixes 9 to 20 dGH from the rounded median endpoints of six proposals because only three
+      agree with its top candidate. Direct Cruz-Leyva et al. hardness means of 250 to 352 mg/L as CaCO3
+      convert to 14.0 to 19.7 dGH using 17.848 mg/L per degree. The Grijalva river and flood-zone values of
+      173 to 260 convert to 9.7 to 14.6 dGH if interpreted as mg/L, but the printed CaCO3/100 mL unit heading
+      is ambiguous. Centla freshwater lagoon categories extend to 4.2 to 16.8 dGH; saline pooled maxima are
+      inappropriate species endpoints. Seriously Fish reports a wider 8 to 33 dGH natural-water range without
+      its original field reference, so this care-sheet assertion is context rather than the numerical origin
+      of natural GH. Conductivity cannot establish GH without ion composition. Geographic and seasonal
+      coverage and species occupancy at each station are incomplete. Proposals: generator 9.7 to 19.7;
+      checker-a 8 to 20; checker-b 4 to 20; checker-c 8 to 33; tiebreaker-1 14 to 19.7; tiebreaker-2 9.7 to
+      19.7."
+    sources:
+      - kind: "literature"
+        title: "Cruz-Leyva et al. (2020). Resistencia De Salmonella Spp A Antibioticos Y Fluctuacion Fisicoquimica Del
+          Agua A Nivel Espacial En La Cuenca Media Del Rio Usumacinta, Mexico. European Scientific Journal
+          16(15), 43-56"
+        url: "https://doi.org/10.19044/esj.2020.v16n15p43"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Musalem-Castillejos et al. (2018). Water quality of the Grijalva river in the Chiapas and Tabasco
+          border. Ecosistemas y Recursos Agropecuarios 5(13), 55-64"
+        url: "https://doi.org/10.19136/era.a5n13.1334"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish, Vieja bifasciata"
+        url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Variation in patterns of fish assemblage and their environmental correlates in a tropical river basin
+          from the Gulf of Mexico slope"
+        url: "https://doi.org/10.1590/1982-0224-2022-0098"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Tropical freshwater ostracodes as environmental indicators across an altitude gradient in Guatemala
+          and Mexico"
+        url: "https://doi.org/10.15517/rbt.v67i4.33278"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Distribucion y abundancia de Melanoides tuberculata en la Reserva de la Biosfera Pantanos de Centla.
+          Acta Zoologica Mexicana 25(1) (2009)"
+        url: "https://doi.org/10.21829/azm.2009.251599"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Cruz-Leyva et al. (2020). Resistencia De Salmonella Spp A Antibioticos Y Fluctuacion Fisicoquimica Del
+            Agua A Nivel Espacial En La Cuenca Media Del Rio Usumacinta, Mexico. European Scientific Journal
+            16(15), 43-56"
+          url: "https://doi.org/10.19044/esj.2020.v16n15p43"
+          accessed: "2026-10-13"
+        value:
+          min: 14
+          max: 19.7
+        note: "250 to 352 mg/L as CaCO3, Table 1; dry-season means."
+      - source:
+          kind: "literature"
+          title: "Musalem-Castillejos et al. (2018). Water quality of the Grijalva river in the Chiapas and Tabasco
+            border. Ecosistemas y Recursos Agropecuarios 5(13), 55-64"
+          url: "https://doi.org/10.19136/era.a5n13.1334"
+          accessed: "2026-10-13"
+        value:
+          min: 9.7
+          max: 14.6
+        note: "173 to 260 interpreted as mg/L as CaCO3, Table 3 river/flood sites; unit heading ambiguous."
+      - source:
+          kind: "database"
+          title: "Seriously Fish, Vieja bifasciata"
+          url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+          accessed: "2026-10-13"
+        value:
+          min: 8
+          max: 33
+        note: "stated as natural range, origin of the figure unclear"
+      - source:
+          kind: "literature"
+          title: "Variation in patterns of fish assemblage and their environmental correlates in a tropical river basin
+            from the Gulf of Mexico slope"
+          url: "https://doi.org/10.1590/1982-0224-2022-0098"
+          accessed: "2026-10-13"
+        value: null
+        note: "Conductivity is reported but GH is not; checker-a derived 3 to 22 dGH without an ion-based conversion,
+          so that numerical inference is excluded."
+      - source:
+          kind: "literature"
+          title: "Distribucion y abundancia de Melanoides tuberculata en la Reserva de la Biosfera Pantanos de Centla.
+            Acta Zoologica Mexicana 25(1) (2009)"
+          url: "https://doi.org/10.21829/azm.2009.251599"
+          accessed: "2026-10-13"
+        value:
+          min: 4.2
+          max: 16.8
+        note: "Rainy-season freshwater and oligohaline lagoon categories; excludes very hard mesohaline Cometa."
+    tolerance:
+      value:
+        min: 9
+        max: 23
+      confidence: "low"
+      rationale: "The tally conservatively intersects all six proposed envelopes at 9 to 23 dGH, which already
+        contains decided natural GH 9 to 20. Only two votes support its top candidate, so confidence remains
+        low. Aqua-Fish recommends 10 to 23; Aquarismo Paulista gives the wider 9 to 33 and Seriously Fish and
+        Einrichtungsbeispiele 8 to 33. Decoulon instead gives 5 to 10 and Fishkeeper only an upper limit of
+        20, not a stated zero lower limit. The chosen 9 to 23 is an intersection of agent proposals rather
+        than a common intersection of all these source ranges. It deliberately discards broader proposed
+        tolerance edges for planning and does not prove harmfulness outside the decided interval. No multiyear
+        endpoint study was found. Proposals: generator 9 to 23; checker-a 8 to 25; checker-b 4 to 33;
+        checker-c 8 to 33; tiebreaker-1 5 to 33; tiebreaker-2 8 to 33."
+      sources:
+        - kind: "database"
+          title: "Aqua-Fish: Twoband Cichlid, Vieja bifasciata, care and breeding guide"
+          url: "https://en.aqua-fish.net/fish/twoband-cichlid"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Rechi (2018). Ciclideo Duas Bandas, Vieja bifasciata. Aquarismo Paulista"
+          url: "https://www.aquarismopaulista.com/vieja-bifasciata/"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Seriously Fish, Vieja bifasciata"
+          url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Fishkeeper (Maidenhead Aquatics), Bifasciatum Cichlid"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/bifasciatum-cichlid"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Distribucion y abundancia de Melanoides tuberculata en la Reserva de la Biosfera Pantanos de Centla.
+            Acta Zoologica Mexicana 25(1) (2009)"
+          url: "https://doi.org/10.21829/azm.2009.251599"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Einrichtungsbeispiele: Vieja bifasciata husbandry recommendations"
+          url: "https://www.einrichtungsbeispiele.de/zierfische/mittelamerika/vieja-bifasciata-slnk.html"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Decoulon aquarium society species sheet: Vieja bifasciata"
+          url: "https://www.decoulon.ch/Bourse/Kiosk/fiches/Vieja_bifasciata.html"
+          accessed: "2026-10-13"
+      evidence:
+        - source:
+            kind: "database"
+            title: "Aqua-Fish: Twoband Cichlid, Vieja bifasciata, care and breeding guide"
+            url: "https://en.aqua-fish.net/fish/twoband-cichlid"
+            accessed: "2026-10-13"
+          value:
+            min: 10
+            max: 23
+        - source:
+            kind: "website"
+            title: "Rechi (2018). Ciclideo Duas Bandas, Vieja bifasciata. Aquarismo Paulista"
+            url: "https://www.aquarismopaulista.com/vieja-bifasciata/"
+            accessed: "2026-10-13"
+          value:
+            min: 9
+            max: 33
+        - source:
+            kind: "database"
+            title: "Seriously Fish, Vieja bifasciata"
+            url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+            accessed: "2026-10-13"
+          value:
+            min: 8
+            max: 33
+        - source:
+            kind: "website"
+            title: "Fishkeeper (Maidenhead Aquatics), Bifasciatum Cichlid"
+            url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/bifasciatum-cichlid"
+            accessed: "2026-10-13"
+          value:
+            max: 20
+          note: "Only the upper GH limit is stated; a zero lower endpoint is not supported."
+        - source:
+            kind: "literature"
+            title: "Distribucion y abundancia de Melanoides tuberculata en la Reserva de la Biosfera Pantanos de Centla.
+              Acta Zoologica Mexicana 25(1) (2009)"
+            url: "https://doi.org/10.21829/azm.2009.251599"
+            accessed: "2026-10-13"
+          value:
+            min: 4.2
+            max: 16.8
+          note: "Habitat context for the provisional lower extension, not an aquarium tolerance trial."
+        - source:
+            kind: "website"
+            title: "Einrichtungsbeispiele: Vieja bifasciata husbandry recommendations"
+            url: "https://www.einrichtungsbeispiele.de/zierfische/mittelamerika/vieja-bifasciata-slnk.html"
+            accessed: "2026-10-13"
+          value:
+            min: 8
+            max: 33
+          note: "Explicit aquarium GH recommendation."
+        - source:
+            kind: "database"
+            title: "Decoulon aquarium society species sheet: Vieja bifasciata"
+            url: "https://www.decoulon.ch/Bourse/Kiosk/fiches/Vieja_bifasciata.html"
+            accessed: "2026-10-13"
+          value:
+            min: 5
+            max: 10
+          note: "Explicit GH aquarium care range."
+      verification:
+        method: "conservative"
+        votes:
+          agree: 2
+          total: 6
+    verification:
+      method: "median"
+      votes:
+        agree: 3
+        total: 6
+  khDkh:
+    value:
+      min: 5
+      max: 11
+    confidence: "low"
+    rationale: "The tally chooses a rounded median interval of 5 to 11 dKH from six proposals, with low
+      confidence; this plain natural-water fact intentionally has no verification object. Direct alkalinity
+      means of 128 to 135 mg/L as CaCO3 give 7.2 to 7.6 dKH, and the Centla survey's 116 to 198 mg/L give 6.5
+      to 11.1 dKH. The wider 3.3 to 11.3 proposal from checker-c and both tiebreakers is inferred from
+      Soria-Reinoso et al. DIC of 15.59 to 48.27 mg C/L and pH 7.3 to 8.3, using approximate
+      bicarbonate-dominated equilibrium and unpaired extrema. It is not a titrated KH range. Checker-a uses a
+      still wider regional-lake bicarbonate interpretation of about 5 to 21 dKH to propose 6 to 16, without
+      species-specific river measurements. The median does not encompass those wider estimates or demonstrate
+      their biological limits. GH is not used as KH. Proposals: generator 7.2 to 7.6; checker-a 6 to 16;
+      checker-b 6.5 to 11.1; checker-c 3.3 to 11.3; tiebreaker-1 3.3 to 11.3; tiebreaker-2 3.3 to 11.3."
+    sources:
+      - kind: "literature"
+        title: "Cruz-Leyva et al. (2020). Resistencia De Salmonella Spp A Antibioticos Y Fluctuacion Fisicoquimica Del
+          Agua A Nivel Espacial En La Cuenca Media Del Rio Usumacinta, Mexico. European Scientific Journal
+          16(15), 43-56"
+        url: "https://doi.org/10.19044/esj.2020.v16n15p43"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Tropical freshwater ostracodes as environmental indicators across an altitude gradient in Guatemala
+          and Mexico"
+        url: "https://doi.org/10.15517/rbt.v67i4.33278"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Variation in patterns of fish assemblage and their environmental correlates in a tropical river basin
+          from the Gulf of Mexico slope"
+        url: "https://doi.org/10.1590/1982-0224-2022-0098"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Distribucion y abundancia de Melanoides tuberculata en la Reserva de la Biosfera Pantanos de Centla.
+          Acta Zoologica Mexicana 25(1) (2009)"
+        url: "https://doi.org/10.21829/azm.2009.251599"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Soria-Reinoso et al. (2022). The Seasonal Dynamics of Organic and Inorganic Carbon along the Tropical
+          Usumacinta River Basin (Mexico)"
+        url: "https://doi.org/10.3390/w14172703"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Cruz-Leyva et al. (2020). Resistencia De Salmonella Spp A Antibioticos Y Fluctuacion Fisicoquimica Del
+            Agua A Nivel Espacial En La Cuenca Media Del Rio Usumacinta, Mexico. European Scientific Journal
+            16(15), 43-56"
+          url: "https://doi.org/10.19044/esj.2020.v16n15p43"
+          accessed: "2026-10-13"
+        value:
+          min: 7.2
+          max: 7.6
+        note: "128 to 135 mg/L alkalinity as CaCO3; range of site means, April and May 2015."
+      - source:
+          kind: "literature"
+          title: "Tropical freshwater ostracodes as environmental indicators across an altitude gradient in Guatemala
+            and Mexico"
+          url: "https://doi.org/10.15517/rbt.v67i4.33278"
+          accessed: "2026-10-13"
+        value: null
+        note: "Regional-lake ion measurements supply context; checker-a interpreted about 5 to 21 dKH, but its exact
+          selected range and occupancy cannot be verified from the accessible extracted table."
+      - source:
+          kind: "literature"
+          title: "Distribucion y abundancia de Melanoides tuberculata en la Reserva de la Biosfera Pantanos de Centla.
+            Acta Zoologica Mexicana 25(1) (2009)"
+          url: "https://doi.org/10.21829/azm.2009.251599"
+          accessed: "2026-10-13"
+        value:
+          min: 6.5
+          max: 11.1
+        note: "Measured total alkalinity of 116 to 198 mg/L across the two sampling seasons, converted to dKH."
+      - source:
+          kind: "literature"
+          title: "Soria-Reinoso et al. (2022). The Seasonal Dynamics of Organic and Inorganic Carbon along the Tropical
+            Usumacinta River Basin (Mexico)"
+          url: "https://doi.org/10.3390/w14172703"
+          accessed: "2026-10-13"
+        value:
+          min: 3.3
+          max: 11.3
+        note: "Approximate carbonate alkalinity derived from measured DIC and basin pH; the paper does not measure KH
+          directly."
+    tolerance:
+      value:
+        min: 2
+        max: 20
+      confidence: "low"
+      rationale: "The tally fixes 2 to 20 dKH by qualified majority, five of six votes under its range agreement
+        threshold, with low confidence. Generator proposes 2 to 8; checker-a 4 to 18; checker-b 5 to 20;
+        checker-c and both tiebreakers 2 to 20. The commercial Fish Farmer's Daughter listing states KH 5 to
+        20 without a defined degree scale or duration. Il Mio Acquario gives a wider-at-the-lower-edge 2 to 8
+        dKH for the genus and includes bifasciata, but its taxonomic history is inaccurate. Beerlink and
+        Seriously Fish discuss chemical flexibility without numeric KH limits. Their qualitative accounts
+        count as context only; two reliable independent species-specific numeric long-term KH sources were not
+        obtained. The 2 to 20 envelope contains natural KH 5 to 11, but neither endpoint is independently
+        validated for years of maintenance. Proposals: generator 2 to 8; checker-a 4 to 18; checker-b 5 to 20;
+        checker-c 2 to 20; tiebreaker-1 2 to 20; tiebreaker-2 2 to 20."
+      sources:
+        - kind: "database"
+          title: "Seriously Fish, Vieja bifasciata"
+          url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Fishkeeper (Maidenhead Aquatics), Bifasciatum Cichlid"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/bifasciatum-cichlid"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "The Fish Farmer's Daughter: Bifasciata Cichlid breeding and water-condition record"
+          url: "https://thefishfarmersdaughter.com/products/vieja-bifasiata"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Beerlink: Vieja bifasciata. NVC species article published by AquaInfo"
+          url: "https://aquainfo.nl/en/article/vieja-bifasciata/"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Il Mio Acquario: Vieja genus husbandry sheet"
+          url: "https://www.ilmioacquario.it/acqua-dolce/pesci/cichlidae/vieja/"
+          accessed: "2026-10-13"
+      evidence:
+        - source:
+            kind: "website"
+            title: "Il Mio Acquario: Vieja genus husbandry sheet"
+            url: "https://www.ilmioacquario.it/acqua-dolce/pesci/cichlidae/vieja/"
+            accessed: "2026-10-13"
+          value:
+            min: 2
+            max: 8
+          note: "Weak genus-level numeric KH guidance; erroneous genus-history text reduces reliability."
+        - source:
+            kind: "literature"
+            title: "Beerlink. Vieja bifasciata. Nederlandse Cichliden Vereniging article reprinted by AquaInfo"
+            url: "https://aquainfo.nl/en/article/vieja-bifasciata/"
+            accessed: "2026-10-13"
+          value: null
+          note: "Discusses flexible aquarium chemistry but does not state a numeric KH range."
+        - source:
+            kind: "website"
+            title: "The Fish Farmer's Daughter: Bifasciata Cichlid breeding and water-condition record"
+            url: "https://thefishfarmersdaughter.com/products/vieja-bifasiata"
+            accessed: "2026-10-13"
+          value:
+            min: 5
+            max: 20
+          note: "Commercial farm listing; German carbonate degrees assumed, duration and test method unstated."
+        - source:
+            kind: "database"
+            title: "Seriously Fish: Vieja bifasciata"
+            url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+            accessed: "2026-10-13"
+          value: null
+          note: "General water flexibility discussed; no numeric KH range."
+      verification:
+        method: "qualified-majority"
+        votes:
+          agree: 5
+          total: 6
+  maxSizeCm:
+    value:
+      male: 30
+      female: 25
+    confidence: "low"
+    rationale: "Generator proposes male 35 and female 30 cm; checker-a, checker-b and checker-c propose 30 and 25.
+      Aqua-Fish gives an unsexed aquarium range of 26 to 30 cm and Beerlink reports adults around 30 cm or
+      more. The Nordic register gives 35 cm, Zoopet 32 cm and Einrichtungsbeispiele gives the wider male 40
+      and female 30 maxima. Buchhauser's 35 to 40 cm males and 25 to over 30 cm females concern a provisional
+      cf. bifasciata form. FishBase and Seriously Fish report 30 cm standard length, which is not
+      interchangeable with total length. Retain 30/25 as a typical aquarium planning estimate; the female
+      endpoint lacks reliable sex-specific measurement and larger stock may exceed it."
+    sources:
+      - kind: "database"
+        title: "Nordiska Ciklidsallskapet species register: Vieja bifasciata"
+        url: "https://ciklid.org/artregister/art.php?ID=551"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aqua-Fish: Twoband Cichlid, Vieja bifasciata, care and breeding guide"
+        url: "https://en.aqua-fish.net/fish/twoband-cichlid"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Buchhauser. Vieja cf. bifasciata: collecting and aquarium breeding report"
+        url: "http://www.buchhauser-peter.de/vieja_cf_bifasciata.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase species summary: Vieja bifasciata"
+        url: "https://www.fishbase.se/summary/Vieja-bifasciata.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish, Vieja bifasciata"
+        url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Fishkeeper (Maidenhead Aquatics), Bifasciatum Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/bifasciatum-cichlid"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Beerlink: Vieja bifasciata. NVC species article published by AquaInfo"
+        url: "https://aquainfo.nl/en/article/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Zoopet: Vieja bifasciata species record 2455"
+        url: "https://www.zoopet.com/fiskar/fisk.php?NR=2455"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Einrichtungsbeispiele: Vieja bifasciata husbandry recommendations"
+        url: "https://www.einrichtungsbeispiele.de/zierfische/mittelamerika/vieja-bifasciata-slnk.html"
+        accessed: "2026-10-13"
+      - kind: "model-knowledge"
+        title: "Conservative inference where sex-specific size or feeding-speed observations were unavailable"
+        accessed: "2026-10-13"
+      - kind: "model-knowledge"
+        title: "Adjudicator inference for the unmeasured typical female maximum"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Nordiska Ciklidsallskapet species register: Vieja bifasciata"
+          url: "https://ciklid.org/artregister/art.php?ID=551"
+          accessed: "2026-10-13"
+        value:
+          male: 35
+          female: null
+        note: "35 cm without sex separation."
+      - source:
+          kind: "website"
+          title: "Buchhauser. Vieja cf. bifasciata: collecting and aquarium breeding report"
+          url: "http://www.buchhauser-peter.de/vieja_cf_bifasciata.html"
+          accessed: "2026-10-13"
+        value:
+          male: 40
+          female: 30
+        note: "Upper endpoints of the reported aquarium ranges; male identity explicitly cf. bifasciata."
+      - source:
+          kind: "database"
+          title: "Aqua-Fish: Twoband Cichlid, Vieja bifasciata, care and breeding guide"
+          url: "https://en.aqua-fish.net/fish/twoband-cichlid"
+          accessed: "2026-10-13"
+        value:
+          male: 30
+          female: 30
+        note: "Unsexed aquarium upper size applied to both sexes only for comparison."
+      - source:
+          kind: "database"
+          title: "Seriously Fish, Vieja bifasciata"
+          url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+          accessed: "2026-10-13"
+        value:
+          male: null
+          female: null
+        note: "30 cm standard length without a sex split; cannot verify a 30/25 cm total-length assignment."
+      - source:
+          kind: "website"
+          title: "Fishkeeper (Maidenhead Aquatics), Bifasciatum Cichlid"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/bifasciatum-cichlid"
+          accessed: "2026-10-13"
+        value:
+          male: 36
+          female: 36
+        note: "total length, sexes not separated"
+      - source:
+          kind: "literature"
+          title: "Beerlink: Vieja bifasciata. NVC species article published by AquaInfo"
+          url: "https://aquainfo.nl/en/article/vieja-bifasciata/"
+          accessed: "2026-10-13"
+        value:
+          male: 30
+          female: null
+        note: "Aquarium size about 30 cm or more, without a measured female maximum."
+      - source:
+          kind: "model-knowledge"
+          title: "Conservative inference where sex-specific size or feeding-speed observations were unavailable"
+          accessed: "2026-10-13"
+        value:
+          male: 30
+          female: 25
+        note: "Sex-specific planning estimate from the external overall size and qualitative dimorphism."
+      - source:
+          kind: "database"
+          title: "Zoopet: Vieja bifasciata species record 2455"
+          url: "https://www.zoopet.com/fiskar/fisk.php?NR=2455"
+          accessed: "2026-10-13"
+        value:
+          male: 32
+          female: null
+        note: "32 cm, no sex split."
+      - source:
+          kind: "website"
+          title: "Einrichtungsbeispiele: Vieja bifasciata husbandry recommendations"
+          url: "https://www.einrichtungsbeispiele.de/zierfische/mittelamerika/vieja-bifasciata-slnk.html"
+          accessed: "2026-10-13"
+        value:
+          male: 40
+          female: 30
+        note: "Larger stated sex-specific maxima."
+      - source:
+          kind: "database"
+          title: "FishBase species summary: Vieja bifasciata"
+          url: "https://www.fishbase.se/summary/Vieja-bifasciata.html"
+          accessed: "2026-10-13"
+        value:
+          male: 30
+          female: null
+        note: "30 cm standard length for male or unsexed specimens; not typical sex-specific aquarium total length."
+  predation:
+    value: 1
+    confidence: "low"
+    rationale: "The tally fixes level 1 by qualified majority, four of six votes, with low confidence.
+      Frias-Quintana et al. include small fish larvae in a joint dietary account of bifasciata and melanurus;
+      Decoulon independently warns of consumption of smaller fish. These support occasional fry feeding, not
+      routine piscivory or a measured 2 cm prey limit. The approximately 2 cm cutoff is supplied by the
+      rubric. The two Bierbach studies classify bifasciata as non-piscivorous, while FishBase and Seriously
+      Fish emphasize detritus and plants; that supports the two level-0 votes without proving absence of
+      opportunistic fry feeding. Size, aggression and killing alone are not feeding evidence. Proposals:
+      generator 1; checker-a 1; checker-b 1; checker-c 0; tiebreaker-1 1; tiebreaker-2 0."
+    sources:
+      - kind: "literature"
+        title: "Frias-Quintana et al. (2021). Comparative characterization of digestive proteases in redhead cichlid
+          and twoband cichlid. Neotropical Ichthyology 19(1), e200095"
+        url: "https://doi.org/10.1590/1982-0224-2020-0095"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase species summary: Vieja bifasciata"
+        url: "https://www.fishbase.se/summary/Vieja-bifasciata.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Vieja bifasciata, Red-spotted Cichlid"
+        url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Fishkeeper (Maidenhead Aquatics), Bifasciatum Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/bifasciatum-cichlid"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Predator Avoidance in Extremophile Fish. Life 3:161-180 (2013)"
+        url: "https://doi.org/10.3390/life3010161"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Vieja bifasciata food items"
+        url: "https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=20947&genus=Vieja&species=bifasciata"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Decoulon aquarium society species sheet: Vieja bifasciata"
+        url: "https://www.decoulon.ch/Bourse/Kiosk/fiches/Vieja_bifasciata.html"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Bierbach et al. (2011). Predator-induced changes of female mating preferences: innate and experiential
+          effects. BMC Evolutionary Biology 11, 190"
+        url: "https://doi.org/10.1186/1471-2148-11-190"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Gonzalez-Diaz et al. (2022). Geometric morphometric comparison of the oral jaw and lower pharyngeal
+          jaw of the closely-related cichlid, Vieja bifasciata, V. breidohri and V. hartwegi"
+        url: "https://doi.org/10.22201/ib.20078706e.2022.93.3861"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Frias-Quintana et al. (2021). Comparative characterization of digestive proteases in redhead cichlid
+            and twoband cichlid. Neotropical Ichthyology 19(1), e200095"
+          url: "https://doi.org/10.1590/1982-0224-2020-0095"
+          accessed: "2026-10-13"
+        value: 1
+        note: "Small fish larvae mentioned in the introductory dietary account for both study species; opportunistic
+          feeding inferred."
+      - source:
+          kind: "database"
+          title: "FishBase species summary: Vieja bifasciata"
+          url: "https://www.fishbase.se/summary/Vieja-bifasciata.html"
+          accessed: "2026-10-13"
+        value: 0
+        note: "Recorded foods are chiefly detritus and plants; the level-0 mapping is an inference from these
+          records."
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Vieja bifasciata, Red-spotted Cichlid"
+          url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+          accessed: "2026-10-13"
+        value: 0
+        note: "Plant and detritus emphasis mapped to level 0 by dissenting readers; this is not an ingestion
+          experiment excluding fry consumption."
+      - source:
+          kind: "website"
+          title: "Fishkeeper (Maidenhead Aquatics), Bifasciatum Cichlid"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/bifasciatum-cichlid"
+          accessed: "2026-10-13"
+        value: 1
+        note: "not for small fish"
+      - source:
+          kind: "literature"
+          title: "Predator Avoidance in Extremophile Fish. Life 3:161-180 (2013)"
+          url: "https://doi.org/10.3390/life3010161"
+          accessed: "2026-10-13"
+        value: 0
+        note: "Classified as non-piscivorous and used as the non-predatory cichlid control."
+      - source:
+          kind: "database"
+          title: "FishBase: Vieja bifasciata food items"
+          url: "https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=20947&genus=Vieja&species=bifasciata"
+          accessed: "2026-10-13"
+        value: 0
+        note: "Only detritus, algae and terrestrial plant items recorded."
+      - source:
+          kind: "database"
+          title: "Decoulon aquarium society species sheet: Vieja bifasciata"
+          url: "https://www.decoulon.ch/Bourse/Kiosk/fiches/Vieja_bifasciata.html"
+          accessed: "2026-10-13"
+        value: 1
+        note: "Smaller fish can be eaten despite a mainly herbivorous and detritivorous diet; prey size and frequency
+          are unspecified."
+      - source:
+          kind: "literature"
+          title: "Bierbach et al. (2011). Predator-induced changes of female mating preferences: innate and experiential
+            effects. BMC Evolutionary Biology 11, 190"
+          url: "https://doi.org/10.1186/1471-2148-11-190"
+          accessed: "2026-10-13"
+        value: 0
+        note: "Rubric mapping from explicit non-piscivorous classification; experimental stimulus rather than a direct
+          ingestion trial."
+      - source:
+          kind: "literature"
+          title: "Gonzalez-Diaz et al. (2022). Geometric morphometric comparison of the oral jaw and lower pharyngeal
+            jaw of the closely-related cichlid, Vieja bifasciata, V. breidohri and V. hartwegi"
+          url: "https://doi.org/10.22201/ib.20078706e.2022.93.3861"
+          accessed: "2026-10-13"
+        value: 0
+        note: "Rubric mapping from a diet of detritus, plants and algae; no fish prey reported."
+    verification:
+      method: "qualified-majority"
+      votes:
+        agree: 4
+        total: 6
+  diet:
+    value:
+      type: "omnivore"
+      bloatSensitive: false
+      foods:
+        - "Vegetable-rich complete pellets"
+        - "Algae and biofilm"
+        - "Plant detritus"
+        - "Soft aquatic vegetation"
+        - "Blanched leafy vegetables"
+        - "Small crustaceans"
+        - "Occasional insect larvae"
+    confidence: "medium"
+    rationale: "The tally unanimously fixes omnivore and bloatSensitive false across four votes, retaining the
+      generator's complete food list. All food-list proposals describe plant-rich feeding with limited
+      invertebrate supplements. The Nordic register and Beerlink describe mixed feeding; digestive-protease
+      research finds omnivore-like capacity. FishBase and the jaw study emphasize detritus and plants, so
+      vegetable material should dominate. The false flag records absence of an established species-specific
+      protein-induced bloat syndrome, not demonstrated safety of animal-heavy feeding. The 45 percent protein
+      laboratory diet lasted only 30 days and is not a lifelong recommendation. Proposals: generator
+      {\"type\":\"omnivore\",\"bloatSensitive\":false,\"foods\":[\"Vegetable-rich complete pellets\",\"Algae
+      and biofilm\",\"Plant detritus\",\"Soft aquatic vegetation\",\"Blanched leafy vegetables\",\"Small
+      crustaceans\",\"Occasional insect larvae\"]}; checker-a
+      {\"type\":\"omnivore\",\"bloatSensitive\":false,\"foods\":[\"vegetable-based pellets\",\"algae
+      wafers\",\"blanched vegetables\",\"detritus\",\"small benthic invertebrates\"]}; checker-b
+      {\"type\":\"omnivore\",\"bloatSensitive\":false,\"foods\":[\"plant-rich prepared
+      foods\",\"algae\",\"detritus\",\"aquatic and terrestrial plant matter\",\"small quantities of aquatic
+      invertebrates\"]}; checker-c {\"type\":\"omnivore\",\"bloatSensitive\":false,\"foods\":[\"plant-based
+      cichlid pellets\",\"algae and spirulina\",\"leafy vegetables\",\"small quantities of aquatic
+      invertebrates\"]}."
+    sources:
+      - kind: "literature"
+        title: "Frias-Quintana et al. (2021). Comparative characterization of digestive proteases in redhead cichlid
+          and twoband cichlid. Neotropical Ichthyology 19(1), e200095"
+        url: "https://doi.org/10.1590/1982-0224-2020-0095"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Gonzalez-Diaz et al. (2022). Geometric morphometric comparison of the oral jaw and lower pharyngeal
+          jaw of the closely-related cichlid, Vieja bifasciata, V. breidohri and V. hartwegi"
+        url: "https://doi.org/10.22201/ib.20078706e.2022.93.3861"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsallskapet species register: Vieja bifasciata"
+        url: "https://ciklid.org/artregister/art.php?ID=551"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase species summary: Vieja bifasciata"
+        url: "https://www.fishbase.se/summary/Vieja-bifasciata.html"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Beerlink. Vieja bifasciata. Nederlandse Cichliden Vereniging article reprinted by AquaInfo"
+        url: "https://aquainfo.nl/en/article/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish, Vieja bifasciata"
+        url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Vieja bifasciata ecology summary"
+        url: "https://www.fishbase.se/Ecology/FishEcologySummary.php?StockCode=20947&GenusName=Vieja&SpeciesName=bifa\
+          sciata"
+        accessed: "2026-10-13"
+      - kind: "archive"
+        title: "cichlids.com forum thread 61968"
+        url: "https://www.cichlids.com/disc/read.php?1,61968"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Frias-Quintana et al. (2021). Comparative characterization of digestive proteases in redhead cichlid
+            and twoband cichlid. Neotropical Ichthyology 19(1), e200095"
+          url: "https://doi.org/10.1590/1982-0224-2020-0095"
+          accessed: "2026-10-13"
+        value:
+          type: "omnivore"
+          bloatSensitive: null
+        note: "Digestive physiology and mixed food account; no species-specific bloat assessment."
+      - source:
+          kind: "database"
+          title: "Nordiska Ciklidsallskapet species register: Vieja bifasciata"
+          url: "https://ciklid.org/artregister/art.php?ID=551"
+          accessed: "2026-10-13"
+        value:
+          type: "omnivore"
+          bloatSensitive: null
+        note: "Mixed feeding with a required vegetable component; no bloat assessment."
+      - source:
+          kind: "database"
+          title: "FishBase species summary: Vieja bifasciata"
+          url: "https://www.fishbase.se/summary/Vieja-bifasciata.html"
+          accessed: "2026-10-13"
+        value:
+          type: "aufwuchs"
+          bloatSensitive: null
+        note: "Plant-biased record mapped approximately to the plant-grazing category by some readers; no bloat test."
+      - source:
+          kind: "literature"
+          title: "Beerlink. Vieja bifasciata. Nederlandse Cichliden Vereniging article reprinted by AquaInfo"
+          url: "https://aquainfo.nl/en/article/vieja-bifasciata/"
+          accessed: "2026-10-13"
+        value:
+          type: "omnivore"
+          bloatSensitive: null
+        note: "Plant-heavy omnivory; small animal foods are secondary, without a diagnosed bloat syndrome."
+      - source:
+          kind: "literature"
+          title: "Gonzalez-Diaz et al. (2022). Geometric morphometric comparison of the oral jaw and lower pharyngeal
+            jaw of the closely-related cichlid, Vieja bifasciata, V. breidohri and V. hartwegi"
+          url: "https://doi.org/10.22201/ib.20078706e.2022.93.3861"
+          accessed: "2026-10-13"
+        value:
+          type: "omnivore"
+          bloatSensitive: null
+        note: "Soft plant and detritus foods; the rubric mapping is inferred and protein-induced bloat is not tested."
+      - source:
+          kind: "database"
+          title: "Seriously Fish, Vieja bifasciata"
+          url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+          accessed: "2026-10-13"
+        value:
+          type: "omnivore"
+          bloatSensitive: null
+        note: "Vegetation and detritus plus incidental invertebrates; no species-specific bloat assessment."
+      - source:
+          kind: "database"
+          title: "FishBase: Vieja bifasciata ecology summary"
+          url: "https://www.fishbase.se/Ecology/FishEcologySummary.php?StockCode=20947&GenusName=Vieja&SpeciesName=bifa\
+            sciata"
+          accessed: "2026-10-13"
+        value:
+          type: "aufwuchs"
+          bloatSensitive: false
+        note: "Database feeding type is plants and detritus; mapping to the nearest plant-biased rubric category is
+          approximate."
+    verification:
+      method: "unanimous"
+      votes:
+        agree: 4
+        total: 4
+  aggressionConspecific:
+    value: 4
+    confidence: "high"
+    rationale: "Generator, checker-b and checker-c propose level 4; checker-a proposes 3. Seriously Fish and
+      Beerlink describe severe sudden attacks on established partners and possible female death, requiring
+      refuge space and separation even after pairing. Level 4 therefore better captures the documented
+      husbandry risk. Aqua-Fish's peaceful summary label is weakened by its own narrative about abrupt pair
+      aggression."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Vieja bifasciata, Red-spotted Cichlid"
+        url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Beerlink. Vieja bifasciata. Nederlandse Cichliden Vereniging article reprinted by AquaInfo"
+        url: "https://aquainfo.nl/en/article/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Buchhauser. Vieja cf. bifasciata: collecting and aquarium breeding report"
+        url: "http://www.buchhauser-peter.de/vieja_cf_bifasciata.html"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Fishkeeper (Maidenhead Aquatics), Bifasciatum Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/bifasciatum-cichlid"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aqua-Fish: Twoband cichlid species and husbandry record"
+        url: "https://en.aqua-fish.net/fish/twoband-cichlid"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Vieja bifasciata, Red-spotted Cichlid"
+          url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+          accessed: "2026-10-13"
+        value: 4
+        note: "Partner may be injured without warning; divider recommended."
+      - source:
+          kind: "literature"
+          title: "Beerlink. Vieja bifasciata. Nederlandse Cichliden Vereniging article reprinted by AquaInfo"
+          url: "https://aquainfo.nl/en/article/vieja-bifasciata/"
+          accessed: "2026-10-13"
+        value: 4
+        note: "Female mortality risk after sudden male aggression; larger mixed-age communities suggested instead of
+          isolated pairs."
+      - source:
+          kind: "database"
+          title: "Aqua-Fish: Twoband cichlid species and husbandry record"
+          url: "https://en.aqua-fish.net/fish/twoband-cichlid"
+          accessed: "2026-10-13"
+        value: 1
+        note: "Peaceful label qualified in the narrative by sudden partner aggression."
+  aggressionHeterospecific:
+    value: 3
+    confidence: "medium"
+    rationale: "Generator, checker-b and checker-c propose 3; checker-a proposes 2. Detailed specialist accounts
+      permit communities only with substantial robust fish and stress unpredictable aggression. Level 3
+      captures the need for comparable size and resilience. The archive reports tankmate deaths in one case
+      without adequate tank and size context, so it cannot establish routine level 4 in an appropriate adult
+      setup."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Vieja bifasciata, Red-spotted Cichlid"
+        url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Beerlink. Vieja bifasciata. Nederlandse Cichliden Vereniging article reprinted by AquaInfo"
+        url: "https://aquainfo.nl/en/article/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Buchhauser. Vieja cf. bifasciata: collecting and aquarium breeding report"
+        url: "http://www.buchhauser-peter.de/vieja_cf_bifasciata.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aqua-Fish: Twoband Cichlid, Vieja bifasciata, care and breeding guide"
+        url: "https://en.aqua-fish.net/fish/twoband-cichlid"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Fishkeeper (Maidenhead Aquatics), Bifasciatum Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/bifasciatum-cichlid"
+        accessed: "2026-10-13"
+      - kind: "archive"
+        title: "cichlids.com forum thread 1160"
+        url: "https://www.cichlids.com/disc/read.php?1,1160"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Vieja bifasciata, Red-spotted Cichlid"
+          url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+          accessed: "2026-10-13"
+        value: 3
+        note: "Robust large-cichlid communities sometimes work, with strong individual variation."
+      - source:
+          kind: "website"
+          title: "Buchhauser. Vieja cf. bifasciata: collecting and aquarium breeding report"
+          url: "http://www.buchhauser-peter.de/vieja_cf_bifasciata.html"
+          accessed: "2026-10-13"
+        value: 3
+        note: "Provisional red form bred among large aggressive cichlids."
+      - source:
+          kind: "archive"
+          title: "cichlids.com forum thread 1160"
+          url: "https://www.cichlids.com/disc/read.php?1,1160"
+          accessed: "2026-10-13"
+        value: 4
+        note: "Single keeper report of tankmate deaths; unverified community experience."
+      - source:
+          kind: "literature"
+          title: "Beerlink: Vieja bifasciata. NVC species article published by AquaInfo"
+          url: "https://aquainfo.nl/en/article/vieja-bifasciata/"
+          accessed: "2026-10-13"
+        value: 3
+        note: "Robust Central American cichlids and large companions suggested."
+  territory:
+    value:
+      size: "large"
+      breedingOnly: false
+    confidence: "medium"
+    rationale: "All four profiles agree on a large territory beyond breeding alone. The pair footprint and
+      recurring conflicts require sight barriers and meaningful retreat space outside spawning; brood care
+      increases defense. The precise territorial radius is not measured."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Vieja bifasciata, Red-spotted Cichlid"
+        url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Beerlink. Vieja bifasciata. Nederlandse Cichliden Vereniging article reprinted by AquaInfo"
+        url: "https://aquainfo.nl/en/article/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsallskapet species register: Vieja bifasciata"
+        url: "https://ciklid.org/artregister/art.php?ID=551"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Fishkeeper (Maidenhead Aquatics), Bifasciatum Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/bifasciatum-cichlid"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Vieja bifasciata"
+          url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+          accessed: "2026-10-13"
+        value:
+          size: "large"
+          breedingOnly: false
+        note: "Large pair footprint and territorial separation at pairing."
+      - source:
+          kind: "literature"
+          title: "Beerlink: Vieja bifasciata. NVC species article published by AquaInfo"
+          url: "https://aquainfo.nl/en/article/vieja-bifasciata/"
+          accessed: "2026-10-13"
+        value:
+          size: "large"
+          breedingOnly: false
+        note: "Large aquarium and refuges needed outside successful spawning as well."
+  habitatZones:
+    value:
+      - "sand"
+      - "rock"
+      - "wood"
+      - "plants"
+    confidence: "medium"
+    rationale: "Generator and checker-c include openWater in addition to sand, rock, wood and plants; checker-a
+      and checker-b propose the four latter zones. Native vegetation and soft-bottom foraging plus rock and
+      wood refuges are directly supported. Beerlink reports open-water movement in loose groups, but no
+      specialized pelagic habitat requirement; retain the four supported substrate and cover zones for the
+      aquarium. Plants describe habitat and food use rather than guaranteed survival of ornamental planting."
+    sources:
+      - kind: "database"
+        title: "FishBase species summary: Vieja bifasciata"
+        url: "https://www.fishbase.se/summary/Vieja-bifasciata.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Vieja bifasciata, Red-spotted Cichlid"
+        url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsallskapet species register: Vieja bifasciata"
+        url: "https://ciklid.org/artregister/art.php?ID=551"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aqua-Fish: Twoband Cichlid, Vieja bifasciata, care and breeding guide"
+        url: "https://en.aqua-fish.net/fish/twoband-cichlid"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Buchhauser. Vieja cf. bifasciata: collecting and aquarium breeding report"
+        url: "http://www.buchhauser-peter.de/vieja_cf_bifasciata.html"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "AquaInfo: Vieja bifasciata, husbandry account by Rene Beerlink"
+        url: "https://aquainfo.nl/en/article/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Biotope Aquarium Project: Lago Lacanja, April 2016 collecting record submitted by Heiko Bleher"
+        url: "https://biotopeaquariumproject.com/bin/chiapas-laguna-lacanja-bleher/"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Nordiska Ciklidsallskapet: Vieja bifasciata species register"
+          url: "https://ciklid.org/artregister/art.php?ID=551"
+          accessed: "2026-10-13"
+        value:
+          - "sand"
+          - "wood"
+          - "rock"
+        note: "Sand, stones and roots with territorial boundaries."
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Vieja bifasciata"
+          url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+          accessed: "2026-10-13"
+        value:
+          - "sand"
+          - "plants"
+          - "wood"
+          - "rock"
+        note: "Vegetated quiet habitat and soft sand with boulders, branches and driftwood."
+  social:
+    value:
+      structure: "pair"
+    confidence: "medium"
+    rationale: "All four profiles propose pair. Biparental breeding supports a bonded pair as the adult planning
+      unit, with retreat space and a divider available. Beerlink also favors mixed-age communities to diffuse
+      aggression but provides no repeatable minimum adult group size. Two arbitrary adults are not a reliable
+      pair."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Vieja bifasciata, Red-spotted Cichlid"
+        url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Beerlink. Vieja bifasciata. Nederlandse Cichliden Vereniging article reprinted by AquaInfo"
+        url: "https://aquainfo.nl/en/article/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsallskapet species register: Vieja bifasciata"
+        url: "https://ciklid.org/artregister/art.php?ID=551"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Fishkeeper (Maidenhead Aquatics), Bifasciatum Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/bifasciatum-cichlid"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aqua-Fish: Twoband cichlid species and husbandry record"
+        url: "https://en.aqua-fish.net/fish/twoband-cichlid"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Vieja bifasciata, Red-spotted Cichlid"
+          url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+          accessed: "2026-10-13"
+        value:
+          structure: "pair"
+        note: "A self-selected pair, with immediate separation available."
+      - source:
+          kind: "literature"
+          title: "Beerlink. Vieja bifasciata. Nederlandse Cichliden Vereniging article reprinted by AquaInfo"
+          url: "https://aquainfo.nl/en/article/vieja-bifasciata/"
+          accessed: "2026-10-13"
+        value:
+          structure: "group"
+          minGroup: null
+        note: "Mixed-age group in a community; no safe minimum group number stated."
+      - source:
+          kind: "database"
+          title: "Aqua-Fish: Twoband cichlid species and husbandry record"
+          url: "https://en.aqua-fish.net/fish/twoband-cichlid"
+          accessed: "2026-10-13"
+        value:
+          structure: "pair"
+        note: "Bonded pair and biparental spawning account."
+  speciesOnly:
+    value: false
+    confidence: "high"
+    rationale: "All four voters support false, and the tally assigns unanimous verification and high confidence.
+      Seriously Fish, Beerlink and Aqua-Fish allow mixed aquaria with substantial robust companions, while
+      Buchhauser reports a community containing a provisional cf. bifasciata form. This supports conditional
+      heterospecific keeping; it does not guarantee pair stability or community success in the minimum pair
+      aquarium. Proposals: generator false; checker-a false; checker-b false; checker-c false."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Vieja bifasciata, Red-spotted Cichlid"
+        url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Buchhauser. Vieja cf. bifasciata: collecting and aquarium breeding report"
+        url: "http://www.buchhauser-peter.de/vieja_cf_bifasciata.html"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Beerlink. Vieja bifasciata. Nederlandse Cichliden Vereniging article reprinted by AquaInfo"
+        url: "https://aquainfo.nl/en/article/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aqua-Fish: Twoband Cichlid, Vieja bifasciata, care and breeding guide"
+        url: "https://en.aqua-fish.net/fish/twoband-cichlid"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Fishkeeper (Maidenhead Aquatics), Bifasciatum Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/bifasciatum-cichlid"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Vieja bifasciata, Red-spotted Cichlid"
+          url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+          accessed: "2026-10-13"
+        value: false
+        note: "Mixed large-cichlid communities possible but unpredictable."
+      - source:
+          kind: "website"
+          title: "Buchhauser. Vieja cf. bifasciata: collecting and aquarium breeding report"
+          url: "http://www.buchhauser-peter.de/vieja_cf_bifasciata.html"
+          accessed: "2026-10-13"
+        value: false
+        note: "Direct aquarium spawning in a mixed community, involving a cf. bifasciata form."
+      - source:
+          kind: "literature"
+          title: "Beerlink. Vieja bifasciata. Nederlandse Cichliden Vereniging article reprinted by AquaInfo"
+          url: "https://aquainfo.nl/en/article/vieja-bifasciata/"
+          accessed: "2026-10-13"
+        value: false
+        note: "Lists robust cichlid and non-cichlid tankmates."
+      - source:
+          kind: "website"
+          title: "Fishkeeper (Maidenhead Aquatics), Bifasciatum Cichlid"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/bifasciatum-cichlid"
+          accessed: "2026-10-13"
+        value: false
+        note: "combinable with robust cichlids"
+      - source:
+          kind: "database"
+          title: "Aqua-Fish: Twoband Cichlid, Vieja bifasciata"
+          url: "https://en.aqua-fish.net/fish/twoband-cichlid"
+          accessed: "2026-10-13"
+        value: false
+        note: "Allows large robust Central American cichlid companions."
+    verification:
+      method: "unanimous"
+      votes:
+        agree: 4
+        total: 4
+  hybridGroups:
+    value:
+      - "vieja-bifasciata-breidohri"
+      - "vieja-bifasciata-fenestrata"
+      - "vieja-bifasciata-hartwegi"
+      - "vieja-bifasciata-maculicauda"
+      - "vieja-bifasciata-melanurus"
+      - "vieja-bifasciata-zonata"
+    confidence: "low"
+    rationale: "The tally conservatively selects the six shorter pairwise IDs rather than assigning a qualified
+      majority: three of six votes have that exact set. Generator proposes melanurus only, checker-a none,
+      checker-b and both tiebreakers all six shorter IDs, and checker-c the same parental pairs under six
+      different IDs containing a second vieja segment. IDs named by at least two votes form the conservative
+      union; checker-c's alternative IDs are not created as duplicates. Each group concerns bifasciata and one
+      named partner and has basis presumed. Binns Hybrid Encyclopedia labels all six captive parental pairs
+      without verified pedigrees, original breeding locations or demonstrated access to conspecific mates.
+      Beerlink gives a broad congener warning and specifically discusses melanurus and intermediate wild
+      phenotypes attributed to Artigas Azas; the jaw study supports close relationships to breidohri and
+      hartwegi but reports no crosses. Reliable independent offspring reports are missing for several pairs.
+      Synspilum is normalized to melanurus through the Catalog. Ambiguous Coatzacoalcos, Red Isletas and
+      compound offspring labels establish no additional pair, and crossability is not inferred transitively.
+      Proposals: generator [\"vieja-bifasciata-melanurus\"]; checker-a []; checker-b
+      [\"vieja-bifasciata-breidohri\",\"vieja-bifasciata-fenestrata\",\"vieja-bifasciata-hartwegi\",\"vieja-b\
+      ifasciata-maculicauda\",\"vieja-bifasciata-melanurus\",\"vieja-bifasciata-zonata\"]; checker-c
+      [\"vieja-bifasciata-vieja-breidohri\",\"vieja-bifasciata-vieja-fenestrata\",\"vieja-bifasciata-vieja-ha\
+      rtwegi\",\"vieja-bifasciata-vieja-maculicauda\",\"vieja-bifasciata-vieja-melanurus\",\"vieja-bifasciata\
+      -vieja-zonata\"]; tiebreaker-1
+      [\"vieja-bifasciata-breidohri\",\"vieja-bifasciata-fenestrata\",\"vieja-bifasciata-hartwegi\",\"vieja-b\
+      ifasciata-maculicauda\",\"vieja-bifasciata-melanurus\",\"vieja-bifasciata-zonata\"]; tiebreaker-2
+      [\"vieja-bifasciata-breidohri\",\"vieja-bifasciata-fenestrata\",\"vieja-bifasciata-hartwegi\",\"vieja-b\
+      ifasciata-maculicauda\",\"vieja-bifasciata-melanurus\",\"vieja-bifasciata-zonata\"]. The current curated
+      table also names this species in the broad group vieja, which the supplied tally does not decide. Exact
+      tally values are preserved, that unrelated existing group is left unchanged, and the validator reports
+      the missing reciprocal membership as a warning. The supplementary Cichlidamerique page did not expose
+      readable crossing evidence in this fetch, so its inherited crossing claim is not cited."
+    sources:
+      - kind: "literature"
+        title: "Beerlink. Vieja bifasciata. Nederlandse Cichliden Vereniging article reprinted by AquaInfo"
+        url: "https://aquainfo.nl/en/article/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Buchhauser. Vieja cf. bifasciata: collecting and aquarium breeding report"
+        url: "http://www.buchhauser-peter.de/vieja_cf_bifasciata.html"
+        accessed: "2026-10-13"
+      - kind: "catalog-of-fishes"
+        title: "Eschmeyer's Catalog of Fishes: species of Vieja, version updated 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Vi\
+          eja"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish, Vieja bifasciata"
+        url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Fishkeeper (Maidenhead Aquatics), Bifasciatum Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/bifasciatum-cichlid"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Binns Hybrid Encyclopedia: Vieja bifasciata cross examples"
+        url: "https://www.binnspedia.com/vieja/bifasciata"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Gonzalez-Diaz et al. (2022). Geometric morphometric comparison of the oral jaw and lower pharyngeal
+          jaw of the closely-related cichlid, Vieja bifasciata, V. breidohri and V. hartwegi"
+        url: "https://doi.org/10.22201/ib.20078706e.2022.93.3861"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Binns Hybrid Encyclopedia: Breidohri cross examples"
+        url: "https://www.binnspedia.com/vieja/breidorhi"
+        accessed: "2026-10-13"
+      - kind: "archive"
+        title: "cichlids.com forum thread 2272"
+        url: "https://www.cichlids.com/disc/read.php?1,2272"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Beerlink. Vieja bifasciata. Nederlandse Cichliden Vereniging article reprinted by AquaInfo"
+          url: "https://aquainfo.nl/en/article/vieja-bifasciata/"
+          accessed: "2026-10-13"
+        value:
+          - "vieja-bifasciata-melanurus"
+        note: "Specific aquarium warning and possible wild intermediates; proposed presumed group only."
+      - source:
+          kind: "website"
+          title: "Buchhauser. Vieja cf. bifasciata: collecting and aquarium breeding report"
+          url: "http://www.buchhauser-peter.de/vieja_cf_bifasciata.html"
+          accessed: "2026-10-13"
+        value: []
+        note: "Both taxa observed in the Usumacinta and Candelaria; no hybrid reported, so coexistence alone is not
+          crossing evidence."
+      - source:
+          kind: "catalog-of-fishes"
+          title: "Eschmeyer's Catalog of Fishes: species of Vieja, version updated 21 September 2026"
+          url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Vi\
+            eja"
+          accessed: "2026-10-13"
+        value: []
+        note: "Valid names and synspilum synonym mapping only; no crossing claim."
+      - source:
+          kind: "archive"
+          title: "cichlids.com forum thread 2272"
+          url: "https://www.cichlids.com/disc/read.php?1,2272"
+          accessed: "2026-10-13"
+        value:
+          - "vieja-bifasciata-melanurus"
+        note: "Speculation under older Theraps names; does not document offspring."
+      - source:
+          kind: "database"
+          title: "Seriously Fish, Vieja bifasciata"
+          url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+          accessed: "2026-10-13"
+        value: []
+        note: "no crossing reported"
+      - source:
+          kind: "website"
+          title: "Fishkeeper (Maidenhead Aquatics), Bifasciatum Cichlid"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/bifasciatum-cichlid"
+          accessed: "2026-10-13"
+        value: []
+        note: "no crossing reported"
+      - source:
+          kind: "website"
+          title: "Binns Hybrid Encyclopedia: Bifasciata cross examples"
+          url: "https://www.binnspedia.com/vieja/bifasciata"
+          accessed: "2026-10-13"
+        value:
+          - "vieja-bifasciata-breidohri"
+          - "vieja-bifasciata-fenestrata"
+          - "vieja-bifasciata-hartwegi"
+          - "vieja-bifasciata-maculicauda"
+          - "vieja-bifasciata-melanurus"
+          - "vieja-bifasciata-zonata"
+        note: "Named captive-offspring photograph labels; same compilation, no verified pedigree or mate choice."
+      - source:
+          kind: "website"
+          title: "Binns Hybrid Encyclopedia: Breidohri cross examples"
+          url: "https://www.binnspedia.com/vieja/breidorhi"
+          accessed: "2026-10-13"
+        value:
+          - "vieja-bifasciata-breidohri"
+        note: "Additional page of the same compilation, not independent confirmation."
+      - source:
+          kind: "literature"
+          title: "Gonzalez-Diaz et al. (2022). Geometric morphometric comparison of the oral jaw and lower pharyngeal
+            jaw of the closely-related cichlid, Vieja bifasciata, V. breidohri and V. hartwegi"
+          url: "https://doi.org/10.22201/ib.20078706e.2022.93.3861"
+          accessed: "2026-10-13"
+        value:
+          - "vieja-bifasciata-breidohri"
+          - "vieja-bifasciata-hartwegi"
+        note: "Relationship-based presumed assignments inferred from very small genetic differences. The paper does
+          not report crossing."
+    verification:
+      method: "conservative"
+      votes:
+        agree: 3
+        total: 6
+  coloration:
+    value:
+      baseColors:
+        - "blue"
+        - "red"
+        - "yellow"
+        - "black"
+      pattern: "mixed"
+    confidence: "high"
+    rationale: "Generator, checker-b and checker-c propose the same four colors in different orders; checker-a
+      adds silver and omits black. The descriptions directly support blue or turquoise flanks, red anterior
+      markings, yellow or gold areas and dark longitudinal bands. Mixed represents both spotting and variable
+      band visibility. Silver is not retained as a dominant male color from general knowledge alone."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Vieja bifasciata, Red-spotted Cichlid"
+        url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsallskapet species register: Vieja bifasciata"
+        url: "https://ciklid.org/artregister/art.php?ID=551"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Buchhauser. Vieja cf. bifasciata: collecting and aquarium breeding report"
+        url: "http://www.buchhauser-peter.de/vieja_cf_bifasciata.html"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Beerlink: Vieja bifasciata. NVC species article published by AquaInfo"
+        url: "https://aquainfo.nl/en/article/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Aquarismo Paulista: Vieja bifasciata species care sheet"
+        url: "https://www.aquarismopaulista.com/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "model-knowledge"
+        title: "Model knowledge of the body pattern"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Vieja bifasciata"
+          url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+          accessed: "2026-10-13"
+        value:
+          baseColors:
+            - "blue"
+            - "red"
+            - "yellow"
+            - "black"
+          pattern: "mixed"
+        note: "Male face and throat red; gold/yellow/blue flanks with dark horizontal marks."
+      - source:
+          kind: "literature"
+          title: "Beerlink: Vieja bifasciata. NVC species article published by AquaInfo"
+          url: "https://aquainfo.nl/en/article/vieja-bifasciata/"
+          accessed: "2026-10-13"
+        value:
+          baseColors:
+            - "blue"
+            - "red"
+            - "yellow"
+            - "black"
+          pattern: "mixed"
+        note: "Red head spots and two longitudinal dark flank markings; locality-dependent background."
+  feedingSpeed:
+    value: "normal"
+    confidence: "low"
+    rationale: "All four profiles infer normal feeding speed. Ready food acceptance and benthic browsing are
+      described, but no comparative feeding-rate measurement establishes slow or hasty behavior. The rubric
+      assignment remains provisional."
+    sources:
+      - kind: "database"
+        title: "Nordiska Ciklidsallskapet species register: Vieja bifasciata"
+        url: "https://ciklid.org/artregister/art.php?ID=551"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Buchhauser. Vieja cf. bifasciata: collecting and aquarium breeding report"
+        url: "http://www.buchhauser-peter.de/vieja_cf_bifasciata.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish, Vieja bifasciata"
+        url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aqua-Fish: Twoband cichlid species and husbandry record"
+        url: "https://en.aqua-fish.net/fish/twoband-cichlid"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Aquarismo Paulista: Vieja bifasciata species care sheet"
+        url: "https://www.aquarismopaulista.com/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "model-knowledge"
+        title: "Generator husbandry inference from the cited evidence"
+        accessed: "2026-10-13"
+      - kind: "model-knowledge"
+        title: "Conservative inference where sex-specific size or feeding-speed observations were unavailable"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Aqua-Fish: Twoband cichlid species and husbandry record"
+          url: "https://en.aqua-fish.net/fish/twoband-cichlid"
+          accessed: "2026-10-13"
+        value: "normal"
+        note: "Inferred from broad food acceptance; no explicit comparative speed."
+      - source:
+          kind: "model-knowledge"
+          title: "Conservative inference where sex-specific size or feeding-speed observations were unavailable"
+          accessed: "2026-10-13"
+        value: "normal"
+        note: "Provisional rubric assignment."
+  minTank:
+    value:
+      volumeL: 700
+      lengthCm: 200
+      depthCm: 60
+    confidence: "medium"
+    rationale: "Generator, checker-b and checker-c propose 700 L with 200 cm length and 60 cm front-to-back depth;
+      checker-a proposes 400 L with 150 by 60 cm footprint. The Nordic register and Zoopet state 700 L and 200
+      cm; 60 cm depth is carried over from the Seriously Fish pair footprint. That source's smaller 150 by 60
+      by 45 cm dimensions imply about 405 L, while Aqua-Fish suggests over 300 L and Einrichtungsbeispiele the
+      larger 960 L. Choose the spacious 700 L adult-pair planning minimum to address partner aggression,
+      without treating it as a demonstrated safe threshold. Communities and exceptionally large or
+      incompatible adults need more space or separation."
+    sources:
+      - kind: "database"
+        title: "Nordiska Ciklidsallskapet species register: Vieja bifasciata"
+        url: "https://ciklid.org/artregister/art.php?ID=551"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Beerlink. Vieja bifasciata. Nederlandse Cichliden Vereniging article reprinted by AquaInfo"
+        url: "https://aquainfo.nl/en/article/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Vieja bifasciata, Red-spotted Cichlid"
+        url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Fishkeeper (Maidenhead Aquatics), Bifasciatum Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/bifasciatum-cichlid"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aqua-Fish: Twoband cichlid species and husbandry record"
+        url: "https://en.aqua-fish.net/fish/twoband-cichlid"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Zoopet: Vieja bifasciata species record 2455"
+        url: "https://www.zoopet.com/fiskar/fisk.php?NR=2455"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Einrichtungsbeispiele: Vieja bifasciata husbandry recommendations"
+        url: "https://www.einrichtungsbeispiele.de/zierfische/mittelamerika/vieja-bifasciata-slnk.html"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Nordiska Ciklidsallskapet species register: Vieja bifasciata"
+          url: "https://ciklid.org/artregister/art.php?ID=551"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 700
+          lengthCm: 200
+          depthCm: null
+        note: "Depth not supplied."
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Vieja bifasciata, Red-spotted Cichlid"
+          url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 405
+          lengthCm: 150
+          depthCm: 60
+        note: "Pair minimum of 150 by 60 by 45 cm; gross volume calculated from dimensions."
+      - source:
+          kind: "database"
+          title: "Aqua-Fish: Twoband cichlid species and husbandry record"
+          url: "https://en.aqua-fish.net/fish/twoband-cichlid"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 300
+          lengthCm: null
+          depthCm: null
+        note: "Over 300 L suggested for a pair, without a footprint."
+      - source:
+          kind: "database"
+          title: "Zoopet: Vieja bifasciata species record 2455"
+          url: "https://www.zoopet.com/fiskar/fisk.php?NR=2455"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 700
+          lengthCm: 200
+          depthCm: null
+        note: "Minimum volume and length; depth absent."
+      - source:
+          kind: "website"
+          title: "Einrichtungsbeispiele: Vieja bifasciata husbandry recommendations"
+          url: "https://www.einrichtungsbeispiele.de/zierfische/mittelamerika/vieja-bifasciata-slnk.html"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 960
+          lengthCm: null
+          depthCm: null
+        note: "Larger minimum volume, no dimensions stated in the care text."
+  lifespanYears:
+    value:
+      min: 5
+      max: 8
+    confidence: "low"
+    rationale: "Generator proposes 8 to 12 years, checker-a 10 to 15, and checker-b and checker-c 5 to 8.
+      Aqua-Fish explicitly gives 5 to 8 with longer survival possible; Aquarismo Paulista gives eight years or
+      more without an upper limit. The 8 to 12 genus estimate and 10 to 15 model-based estimate are not
+      reliable species-specific longevity measurements. Retain the explicit 5 to 8 record cautiously, without
+      treating eight as a biological maximum."
+    sources:
+      - kind: "website"
+        title: "Rechi (2018). Ciclideo Duas Bandas, Vieja bifasciata. Aquarismo Paulista"
+        url: "https://www.aquarismopaulista.com/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aqua-Fish: Twoband Cichlid, Vieja bifasciata, care and breeding guide"
+        url: "https://en.aqua-fish.net/fish/twoband-cichlid"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Il Mio Acquario: Vieja genus care sheet, including Vieja bifasciata"
+        url: "https://www.ilmioacquario.it/acqua-dolce/pesci/cichlidae/vieja/"
+        accessed: "2026-10-13"
+      - kind: "model-knowledge"
+        title: "Model knowledge of large Middle American cichlids"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "website"
+          title: "Rechi (2018). Ciclideo Duas Bandas, Vieja bifasciata. Aquarismo Paulista"
+          url: "https://www.aquarismopaulista.com/vieja-bifasciata/"
+          accessed: "2026-10-13"
+        value:
+          min: 8
+        note: "Eight years or more; the source supplies no finite upper endpoint."
+      - source:
+          kind: "database"
+          title: "Aqua-Fish: Twoband Cichlid, Vieja bifasciata, care and breeding guide"
+          url: "https://en.aqua-fish.net/fish/twoband-cichlid"
+          accessed: "2026-10-13"
+        value:
+          min: 5
+          max: 8
+      - source:
+          kind: "website"
+          title: "Il Mio Acquario: Vieja genus care sheet, including Vieja bifasciata"
+          url: "https://www.ilmioacquario.it/acqua-dolce/pesci/cichlidae/vieja/"
+          accessed: "2026-10-13"
+        value:
+          min: 8
+          max: 12
+        note: "Genus-level expectation only."
+  breeding:
+    value: "open-substrate-spawner"
+    confidence: "high"
+    rationale: "All four profiles agree on exposed-substrate spawning with care by both parents. Seriously Fish,
+      Beerlink and the Nordic register describe eggs on hard surfaces and subsequent movement of larvae into
+      sediment depressions. Clutch counts and timing vary without changing the breeding-mode decision."
+    sources:
+      - kind: "database"
+        title: "Nordiska Ciklidsallskapet species register: Vieja bifasciata"
+        url: "https://ciklid.org/artregister/art.php?ID=551"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Vieja bifasciata, Red-spotted Cichlid"
+        url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Buchhauser. Vieja cf. bifasciata: collecting and aquarium breeding report"
+        url: "http://www.buchhauser-peter.de/vieja_cf_bifasciata.html"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Fishkeeper (Maidenhead Aquatics), Bifasciatum Cichlid"
+        url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/bifasciatum-cichlid"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Beerlink: Vieja bifasciata. NVC species article published by AquaInfo"
+        url: "https://aquainfo.nl/en/article/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Aquarismo Paulista: Vieja bifasciata species care sheet"
+        url: "https://www.aquarismopaulista.com/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Einrichtungsbeispiele: Vieja bifasciata husbandry recommendations"
+        url: "https://www.einrichtungsbeispiele.de/zierfische/mittelamerika/vieja-bifasciata-slnk.html"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Nordiska Ciklidsallskapet species register: Vieja bifasciata"
+          url: "https://ciklid.org/artregister/art.php?ID=551"
+          accessed: "2026-10-13"
+        value: "open-substrate-spawner"
+      - source:
+          kind: "website"
+          title: "Buchhauser. Vieja cf. bifasciata: collecting and aquarium breeding report"
+          url: "http://www.buchhauser-peter.de/vieja_cf_bifasciata.html"
+          accessed: "2026-10-13"
+        value: "open-substrate-spawner"
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Vieja bifasciata"
+          url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+          accessed: "2026-10-13"
+        value: "open-substrate-spawner"
+      - source:
+          kind: "literature"
+          title: "Beerlink: Vieja bifasciata. NVC species article published by AquaInfo"
+          url: "https://aquainfo.nl/en/article/vieja-bifasciata/"
+          accessed: "2026-10-13"
+        value: "open-substrate-spawner"
+  beginnerSuitability:
+    value: "demanding"
+    confidence: "high"
+    rationale: "Generator, checker-b and checker-c propose demanding; checker-a proposes moderate. Severe partner
+      risk, adult footprint and the need for prompt physical separation outweigh flexible chemistry or
+      straightforward spawning. The Nordic register's advanced rating and detailed specialist husbandry
+      accounts support demanding."
+    sources:
+      - kind: "database"
+        title: "Nordiska Ciklidsallskapet species register: Vieja bifasciata"
+        url: "https://ciklid.org/artregister/art.php?ID=551"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Vieja bifasciata, Red-spotted Cichlid"
+        url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Beerlink. Vieja bifasciata. Nederlandse Cichliden Vereniging article reprinted by AquaInfo"
+        url: "https://aquainfo.nl/en/article/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Einrichtungsbeispiele: Vieja bifasciata husbandry recommendations"
+        url: "https://www.einrichtungsbeispiele.de/zierfische/mittelamerika/vieja-bifasciata-slnk.html"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Nordiska Ciklidsallskapet: Vieja bifasciata species register"
+          url: "https://ciklid.org/artregister/art.php?ID=551"
+          accessed: "2026-10-13"
+        value: "demanding"
+        note: "Advanced difficulty rating."
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Vieja bifasciata"
+          url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+          accessed: "2026-10-13"
+        value: "demanding"
+        note: "Large adult-pair footprint, refuges and divider management."
+      - source:
+          kind: "literature"
+          title: "Beerlink: Vieja bifasciata. NVC species article published by AquaInfo"
+          url: "https://aquainfo.nl/en/article/vieja-bifasciata/"
+          accessed: "2026-10-13"
+        value: "demanding"
+        note: "Potential sudden partner loss and difficult adult pairing."
+partners:
+  suitable:
+    - species: "Chuco intermedium"
+      reason: "Beerlink names this substantial regional cichlid among possible robust companions."
+      condition: "Comparable-sized adults only in a community substantially larger than the pair minimum, with
+        independent refuges and removal space."
+    - species: "Oscura heterospila"
+      reason: "Beerlink lists it among regional community candidates."
+      condition: "Substantial adults only with protected feeding access and escape routes in a larger community;
+        compatibility remains individual-dependent."
+    - species: "Rocio octofasciata"
+      reason: "Beerlink lists it as a potential robust companion."
+      condition: "Large adults only, with separate defended areas and prompt separation when bullying persists."
+  unsuitable:
+    - species: "Vieja breidohri"
+      reason: "Shares a decided presumed pairwise crossing group; parentage and free partner choice are unverified,
+        and territorial similarity adds concern."
+    - species: "Vieja fenestrata"
+      reason: "Shares a decided presumed pairwise crossing group; parentage and free partner choice are unverified,
+        and territorial similarity adds concern."
+    - species: "Vieja hartwegi"
+      reason: "Shares a decided presumed pairwise crossing group; parentage and free partner choice are unverified,
+        and territorial similarity adds concern."
+    - species: "Vieja maculicauda"
+      reason: "Shares a decided presumed pairwise crossing group; parentage and free partner choice are unverified,
+        and territorial similarity adds concern."
+    - species: "Vieja melanurus"
+      reason: "Shares a decided presumed pairwise crossing group; parentage and free partner choice are unverified,
+        and territorial similarity adds concern."
+    - species: "Vieja zonata"
+      reason: "Shares a decided presumed pairwise crossing group; parentage and free partner choice are unverified,
+        and territorial similarity adds concern."
+    - species: "Paracheirodon innesi"
+      reason: "Small adults lack the size and resilience needed to escape territorial attacks; fry and very small
+        fish also face opportunistic predation."
+    - species: "Symphysodon aequifasciatus"
+      reason: "Deliberate feeding and timid responses are a poor fit for forceful territorial pursuit."
+    - species: "Parachromis dovii"
+      reason: "Its exceptional adult size and aggression make it unsuitable for recommendation in the selected
+        minimum pair aquarium."
+profile:
+  overview:
+    text: "A bonded pair can become incompatible with little warning, which makes separation space central to
+      keeping this cichlid. Vieja bifasciata develops conspicuous red, blue and yellow coloring as it matures,
+      with dark markings that vary among locality stocks. The current genus remains Vieja. It is an
+      experienced-keeper species whose attractive adult appearance comes with substantial space and
+      observation demands."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Vieja bifasciata"
+        url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Beerlink, R. Vieja bifasciata. Nederlandse Vereniging van Cichlidenliefhebbers article reproduced by
+          AquaInfo"
+        url: "https://aquainfo.nl/en/article/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsallskapet: Vieja bifasciata species register"
+        url: "https://ciklid.org/artregister/art.php?ID=551"
+        accessed: "2026-10-13"
+  habitat:
+    text: "Native records center on the Atlantic-slope Grijalva and Usumacinta systems in Mexico and Guatemala,
+      with adjacent Candelaria records. Vegetated margins and soft bottoms supply grazing opportunities and
+      cover. Natural values here are the tally decisions: 23 to 32 C, pH 7.2 to 8.3, GH 9 to 20 and KH 5 to
+      11. Regional studies include wider conditions and often do not verify the species at each chemistry
+      station. These intervals are provisional summaries, not complete distribution limits."
+    sources:
+      - kind: "database"
+        title: "FishBase: Vieja bifasciata species summary"
+        url: "https://www.fishbase.se/summary/Vieja-bifasciata.html"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Soria-Reinoso et al. (2022). The Seasonal Dynamics of Organic and Inorganic Carbon along the Tropical
+          Usumacinta River Basin (Mexico). Water 14, 2703"
+        url: "https://doi.org/10.3390/w14172703"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Cruz-Leyva et al. (2020). Resistencia De Salmonella Spp A Antibioticos Y Fluctuacion Fisicoquimica Del
+          Agua A Nivel Espacial En La Cuenca Media Del Rio Usumacinta, Mexico. European Scientific Journal
+          16(15), 43"
+        url: "https://doi.org/10.19044/esj.2020.v16n15p43"
+        accessed: "2026-10-13"
+  sizeAndGrowth:
+    text: "Use about 30 cm for males and 25 cm for females as provisional typical aquarium planning sizes. The
+      female figure is an estimate, and some stocks become substantially larger; reports reach 35 to 40 cm for
+      males, sometimes involving fish identified only as cf. bifasciata. Standard-length records do not
+      measure the tail-inclusive aquarium size. A modest juvenile needs permanent adult housing arranged
+      before its growth and territorial behavior intensify."
+    sources:
+      - kind: "database"
+        title: "Aqua-Fish.Net: Twoband Cichlid care guide"
+        url: "https://en.aqua-fish.net/fish/twoband-cichlid"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Beerlink, R. Vieja bifasciata. Nederlandse Vereniging van Cichlidenliefhebbers article reproduced by
+          AquaInfo"
+        url: "https://aquainfo.nl/en/article/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsallskapet: Vieja bifasciata species register"
+        url: "https://ciklid.org/artregister/art.php?ID=551"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Vieja bifasciata species summary"
+        url: "https://www.fishbase.se/summary/Vieja-bifasciata.html"
+        accessed: "2026-10-13"
+  husbandry:
+    text: "For a compatible adult pair, the selected minimum is 700 L with 200 cm length and 60 cm front-to-back
+      space. Place secure wood and stones to break sight lines and provide several escape routes over soft
+      substrate. Keep separation equipment ready and maintain effective filtration with regular water changes.
+      The decided tolerance envelopes are 23 to 32 C, pH 7 to 8.5, GH 9 to 23 and KH 2 to 20. Their weakly
+      supported edges are not permanent maintenance targets; around 27 to 28 C has clearer agreement among
+      species care recommendations."
+    sources:
+      - kind: "database"
+        title: "Nordiska Ciklidsallskapet: Vieja bifasciata species register"
+        url: "https://ciklid.org/artregister/art.php?ID=551"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Zoopet: Vieja bifasciata species and aquarium care record"
+        url: "https://www.zoopet.com/fiskar/fisk.php?NR=2455"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Vieja bifasciata"
+        url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aqua-Fish.Net: Twoband Cichlid care guide"
+        url: "https://en.aqua-fish.net/fish/twoband-cichlid"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Beerlink, R. Vieja bifasciata. Nederlandse Vereniging van Cichlidenliefhebbers article reproduced by
+          AquaInfo"
+        url: "https://aquainfo.nl/en/article/vieja-bifasciata/"
+        accessed: "2026-10-13"
+  socialBehavior:
+    text: "Established adults may injure a partner, especially when readiness to breed differs. A compatible pair
+      is the catalog planning unit, rather than a promise that any male and female will accept each other.
+      Refuge areas and daily attention remain necessary. Raising juveniles together can produce a
+      self-selected pair, but surplus adults require other accommodation. Mixed-age communities appear in
+      specialist accounts without a dependable minimum adult group number."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Vieja bifasciata"
+        url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Beerlink, R. Vieja bifasciata. Nederlandse Vereniging van Cichlidenliefhebbers article reproduced by
+          AquaInfo"
+        url: "https://aquainfo.nl/en/article/vieja-bifasciata/"
+        accessed: "2026-10-13"
+  diet:
+    text: "Choose a complete staple with a substantial vegetable component and modest invertebrate supplements.
+      The species processes mixed food but usually grazes plant material and detritus. Predation level 1
+      allows opportunistic fry consumption; it does not describe a dedicated fish hunter. No established
+      species-specific protein-induced bloat syndrome supports setting the flag true. That uncertainty and a
+      short laboratory feeding trial do not justify an animal-heavy lifelong diet."
+    sources:
+      - kind: "literature"
+        title: "Frias-Quintana et al. (2021). Comparative characterization of digestive proteases in redhead cichlid
+          (Vieja melanurus) and twoband cichlid (Vieja bifasciata) (Percoidei: Cichlidae)"
+        url: "https://doi.org/10.1590/1982-0224-2020-0095"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Gonzalez-Diaz et al. (2022). Geometric morphometric comparison of the oral jaw and lower pharyngeal
+          jaw of the closely-related cichlid, Vieja bifasciata, V. breidohri and V. hartwegi"
+        url: "https://doi.org/10.22201/ib.20078706e.2022.93.3861"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Beerlink, R. Vieja bifasciata. Nederlandse Vereniging van Cichlidenliefhebbers article reproduced by
+          AquaInfo"
+        url: "https://aquainfo.nl/en/article/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsallskapet: Vieja bifasciata species register"
+        url: "https://ciklid.org/artregister/art.php?ID=551"
+        accessed: "2026-10-13"
+  breeding:
+    text: "Both parents tend a brood laid on an exposed firm surface, then move larvae among shallow excavations
+      before free swimming. Timing and clutch size depend on conditions and adult size. Offer suitably small
+      fry food while maintaining water quality. Spawning can expand territorial defense and destabilize the
+      pair, so monitor both parents as well as the brood and arrange space for growing young before
+      encouraging reproduction."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Vieja bifasciata"
+        url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Beerlink, R. Vieja bifasciata. Nederlandse Vereniging van Cichlidenliefhebbers article reproduced by
+          AquaInfo"
+        url: "https://aquainfo.nl/en/article/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsallskapet: Vieja bifasciata species register"
+        url: "https://ciklid.org/artregister/art.php?ID=551"
+        accessed: "2026-10-13"
+  sexing:
+    text: "Mature males usually grow larger and show stronger coloration and a steeper forehead; older males may
+      develop a pronounced hump. These differences are unreliable in juveniles and vary with locality and
+      social condition. A presumed sex difference cannot guarantee a compatible pair. Keep locality and
+      identity records with breeding stock, since superficially similar Vieja and provisional forms complicate
+      identification."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Vieja bifasciata"
+        url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsallskapet: Vieja bifasciata species register"
+        url: "https://ciklid.org/artregister/art.php?ID=551"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Beerlink, R. Vieja bifasciata. Nederlandse Vereniging van Cichlidenliefhebbers article reproduced by
+          AquaInfo"
+        url: "https://aquainfo.nl/en/article/vieja-bifasciata/"
+        accessed: "2026-10-13"
+  compatibility:
+    text: "Communities require comparable-sized robust residents and an aquarium substantially larger than the
+      pair minimum. Small or timid fish face harassment and possible consumption, and every candidate remains
+      conditional on actual behavior. Six pairwise presumed crossing cautions concern breidohri, fenestrata,
+      hartwegi, maculicauda, melanurus and zonata. They rest chiefly on unverified captive labels and
+      specialist warnings rather than established free-choice parentage. No all-to-all crossing group or
+      transitive ancestry claim follows from these pairs."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Vieja bifasciata"
+        url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Beerlink, R. Vieja bifasciata. Nederlandse Vereniging van Cichlidenliefhebbers article reproduced by
+          AquaInfo"
+        url: "https://aquainfo.nl/en/article/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Binns Hybrid Encyclopedia: Bifasciata cross examples"
+        url: "https://www.binnspedia.com/vieja/bifasciata"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Gonzalez-Diaz et al. (2022). Geometric morphometric comparison of the oral jaw and lower pharyngeal
+          jaw of the closely-related cichlid, Vieja bifasciata, V. breidohri and V. hartwegi"
+        url: "https://doi.org/10.22201/ib.20078706e.2022.93.3861"
+        accessed: "2026-10-13"
+  problems:
+    text: "Persistent pursuit or confinement to a corner warrants separation; extra feeding does not resolve
+      partner incompatibility. Digging may destabilize ornaments, while a large appetite places substantial
+      demand on filtration and maintenance. Check water quality and social interactions when behavior changes.
+      Neither regional field extremes nor short feeding experiments establish healthy lifelong aquarium
+      endpoints. The 5 to 8 year lifespan entry is a cautious husbandry estimate, with longer survival
+      possible and no reliable species-specific maximum-age study."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Vieja bifasciata"
+        url: "https://www.seriouslyfish.com/species/vieja-bifasciata/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aqua-Fish.Net: Twoband Cichlid care guide"
+        url: "https://en.aqua-fish.net/fish/twoband-cichlid"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Frias-Quintana et al. (2021). Comparative characterization of digestive proteases in redhead cichlid
+          (Vieja melanurus) and twoband cichlid (Vieja bifasciata) (Percoidei: Cichlidae)"
+        url: "https://doi.org/10.1590/1982-0224-2020-0095"
+        accessed: "2026-10-13"
+provenance:
+  runs:
+    - role: "generator"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+    - role: "checker"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+    - role: "checker"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+    - role: "checker"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+    - role: "checker"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+    - role: "checker"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+    - role: "adjudicator"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+  disagreements:
+    - field: "features.predation"
+      proposals:
+        - by: "generator"
+          value: 1
+        - by: "checker-a"
+          value: 1
+        - by: "checker-b"
+          value: 1
+        - by: "checker-c"
+          value: 0
+        - by: "tiebreaker-1"
+          value: 1
+        - by: "tiebreaker-2"
+          value: 0
+      decision: 1
+      rationale: "Tally method qualified-majority; 4 agreeing of 6 votes. The tally fixes level 1 by qualified
+        majority, four of six votes, with low confidence. Frias-Quintana et al. include small fish larvae in a
+        joint dietary account of bifasciata and melanurus; Decoulon independently warns of consumption of
+        smaller fish. These support occasional fry feeding, not routine piscivory or a measured 2 cm prey
+        limit. The approximately 2 cm cutoff is supplied by the rubric. The two Bierbach studies classify
+        bifasciata as non-piscivorous, while FishBase and Seriously Fish emphasize detritus and plants; that
+        supports the two level-0 votes without proving absence of opportunistic fry feeding. Size, aggression
+        and killing alone are not feeding evidence."
+    - field: "features.diet"
+      proposals:
+        - by: "generator"
+          value:
+            type: "omnivore"
+            bloatSensitive: false
+            foods:
+              - "Vegetable-rich complete pellets"
+              - "Algae and biofilm"
+              - "Plant detritus"
+              - "Soft aquatic vegetation"
+              - "Blanched leafy vegetables"
+              - "Small crustaceans"
+              - "Occasional insect larvae"
+        - by: "checker-a"
+          value:
+            type: "omnivore"
+            bloatSensitive: false
+            foods:
+              - "vegetable-based pellets"
+              - "algae wafers"
+              - "blanched vegetables"
+              - "detritus"
+              - "small benthic invertebrates"
+        - by: "checker-b"
+          value:
+            type: "omnivore"
+            bloatSensitive: false
+            foods:
+              - "plant-rich prepared foods"
+              - "algae"
+              - "detritus"
+              - "aquatic and terrestrial plant matter"
+              - "small quantities of aquatic invertebrates"
+        - by: "checker-c"
+          value:
+            type: "omnivore"
+            bloatSensitive: false
+            foods:
+              - "plant-based cichlid pellets"
+              - "algae and spirulina"
+              - "leafy vegetables"
+              - "small quantities of aquatic invertebrates"
+      decision:
+        type: "omnivore"
+        bloatSensitive: false
+        foods:
+          - "Vegetable-rich complete pellets"
+          - "Algae and biofilm"
+          - "Plant detritus"
+          - "Soft aquatic vegetation"
+          - "Blanched leafy vegetables"
+          - "Small crustaceans"
+          - "Occasional insect larvae"
+      rationale: "Tally method unanimous; 4 agreeing of 4 votes. The tally unanimously fixes omnivore and
+        bloatSensitive false across four votes, retaining the generator's complete food list. All food-list
+        proposals describe plant-rich feeding with limited invertebrate supplements. The Nordic register and
+        Beerlink describe mixed feeding; digestive-protease research finds omnivore-like capacity. FishBase
+        and the jaw study emphasize detritus and plants, so vegetable material should dominate. The false flag
+        records absence of an established species-specific protein-induced bloat syndrome, not demonstrated
+        safety of animal-heavy feeding. The 45 percent protein laboratory diet lasted only 30 days and is not
+        a lifelong recommendation."
+    - field: "features.hybridGroups"
+      proposals:
+        - by: "generator"
+          value:
+            - "vieja-bifasciata-melanurus"
+        - by: "checker-a"
+          value: []
+        - by: "checker-b"
+          value:
+            - "vieja-bifasciata-breidohri"
+            - "vieja-bifasciata-fenestrata"
+            - "vieja-bifasciata-hartwegi"
+            - "vieja-bifasciata-maculicauda"
+            - "vieja-bifasciata-melanurus"
+            - "vieja-bifasciata-zonata"
+        - by: "checker-c"
+          value:
+            - "vieja-bifasciata-vieja-breidohri"
+            - "vieja-bifasciata-vieja-fenestrata"
+            - "vieja-bifasciata-vieja-hartwegi"
+            - "vieja-bifasciata-vieja-maculicauda"
+            - "vieja-bifasciata-vieja-melanurus"
+            - "vieja-bifasciata-vieja-zonata"
+        - by: "tiebreaker-1"
+          value:
+            - "vieja-bifasciata-breidohri"
+            - "vieja-bifasciata-fenestrata"
+            - "vieja-bifasciata-hartwegi"
+            - "vieja-bifasciata-maculicauda"
+            - "vieja-bifasciata-melanurus"
+            - "vieja-bifasciata-zonata"
+        - by: "tiebreaker-2"
+          value:
+            - "vieja-bifasciata-breidohri"
+            - "vieja-bifasciata-fenestrata"
+            - "vieja-bifasciata-hartwegi"
+            - "vieja-bifasciata-maculicauda"
+            - "vieja-bifasciata-melanurus"
+            - "vieja-bifasciata-zonata"
+      decision:
+        - "vieja-bifasciata-breidohri"
+        - "vieja-bifasciata-fenestrata"
+        - "vieja-bifasciata-hartwegi"
+        - "vieja-bifasciata-maculicauda"
+        - "vieja-bifasciata-melanurus"
+        - "vieja-bifasciata-zonata"
+      rationale: "Tally method conservative; 3 agreeing of 6 votes. The tally conservatively selects the six shorter
+        pairwise IDs rather than assigning a qualified majority: three of six votes have that exact set.
+        Generator proposes melanurus only, checker-a none, checker-b and both tiebreakers all six shorter IDs,
+        and checker-c the same parental pairs under six different IDs containing a second vieja segment. IDs
+        named by at least two votes form the conservative union; checker-c's alternative IDs are not created
+        as duplicates. Each group concerns bifasciata and one named partner and has basis presumed. Binns
+        Hybrid Encyclopedia labels all six captive parental pairs without verified pedigrees, original
+        breeding locations or demonstrated access to conspecific mates. Beerlink gives a broad congener
+        warning and specifically discusses melanurus and intermediate wild phenotypes attributed to Artigas
+        Azas; the jaw study supports close relationships to breidohri and hartwegi but reports no crosses.
+        Reliable independent offspring reports are missing for several pairs. Synspilum is normalized to
+        melanurus through the Catalog. Ambiguous Coatzacoalcos, Red Isletas and compound offspring labels
+        establish no additional pair, and crossability is not inferred transitively. The current curated table
+        also names this species in the broad group vieja, which the supplied tally does not decide. Exact
+        tally values are preserved, that unrelated existing group is left unchanged, and the validator reports
+        the missing reciprocal membership as a warning."
+    - field: "features.temperatureC"
+      proposals:
+        - by: "generator"
+          value:
+            min: 28.3
+            max: 32.1
+        - by: "checker-a"
+          value:
+            min: 25
+            max: 32
+        - by: "checker-b"
+          value:
+            min: 26
+            max: 33
+        - by: "checker-c"
+          value:
+            min: 20.8
+            max: 32.1
+        - by: "tiebreaker-1"
+          value:
+            min: 20.8
+            max: 32.1
+        - by: "tiebreaker-2"
+          value:
+            min: 20.8
+            max: 30.2
+      decision:
+        min: 23
+        max: 32
+      rationale: "Tally method median; 2 agreeing of 6 votes. The tally fixes 23 to 32 C by the rounded median of
+        six lower and upper bounds, with no qualified majority. The lower endpoint is a regional habitat
+        proxy, not a capture-linked physiological limit. Soria-Reinoso et al. measured 20.8 to 29.8 C,
+        Cruz-Leyva et al. report site means of 28.3 to 30.2 C, and Frias-Quintana et al. collected
+        voucher-identified juveniles at a mean of 32.1 C with SD 0.5 C. The SD is not an observed
+        minimum-to-maximum range. Wider measurements include 26 to 33 C in rainy-season Centla lagoons, pooled
+        27 to 35 C in the dry season including saline stations, and 22.96 to 33.88 C in the lower Usumacinta
+        study. These wider source ranges are not replaced by the median. Exact occupancy at their extremes
+        remains uncertain. Beerlink's secondary 38.6 C account lacks independently verified measurement
+        context and is not adopted."
+    - field: "features.ph"
+      proposals:
+        - by: "generator"
+          value:
+            min: 7.3
+            max: 8.3
+        - by: "checker-a"
+          value:
+            min: 7
+            max: 8.1
+        - by: "checker-b"
+          value:
+            min: 7.1
+            max: 8.3
+        - by: "checker-c"
+          value:
+            min: 7.3
+            max: 8.55
+      decision:
+        min: 7.2
+        max: 8.3
+      rationale: "Tally method unanimous; 4 agreeing of 4 votes. The tally treats all four proposals as agreeing
+        within its pH threshold and chooses their rounded median endpoints, 7.2 to 8.3, with unanimous
+        verification. Soria-Reinoso et al. measured 7.3 to 8.3; Cruz-Leyva et al. Table 1 spans site means of
+        7.4 to 7.9, although the results prose gives a conflicting 7.1 minimum. Wider source observations
+        include 7.50 to 8.93 in the lower Usumacinta and a Lacanja collection record of 8.55 attributed to
+        Heiko Bleher. The latter species list has no independent identification check. Checker-a also reports
+        San Pedro site means of 6.7 to 7.8. Thus the decided interval represents the tally consensus rather
+        than all measured native conditions, and cannot exclude these wider observations."
+    - field: "features.ghDgh"
+      proposals:
+        - by: "generator"
+          value:
+            min: 9.7
+            max: 19.7
+        - by: "checker-a"
+          value:
+            min: 8
+            max: 20
+        - by: "checker-b"
+          value:
+            min: 4
+            max: 20
+        - by: "checker-c"
+          value:
+            min: 8
+            max: 33
+        - by: "tiebreaker-1"
+          value:
+            min: 14
+            max: 19.7
+        - by: "tiebreaker-2"
+          value:
+            min: 9.7
+            max: 19.7
+      decision:
+        min: 9
+        max: 20
+      rationale: "Tally method median; 3 agreeing of 6 votes. The tally fixes 9 to 20 dGH from the rounded median
+        endpoints of six proposals because only three agree with its top candidate. Direct Cruz-Leyva et al.
+        hardness means of 250 to 352 mg/L as CaCO3 convert to 14.0 to 19.7 dGH using 17.848 mg/L per degree.
+        The Grijalva river and flood-zone values of 173 to 260 convert to 9.7 to 14.6 dGH if interpreted as
+        mg/L, but the printed CaCO3/100 mL unit heading is ambiguous. Centla freshwater lagoon categories
+        extend to 4.2 to 16.8 dGH; saline pooled maxima are inappropriate species endpoints. Seriously Fish
+        reports a wider 8 to 33 dGH natural-water range without its original field reference, so this
+        care-sheet assertion is context rather than the numerical origin of natural GH. Conductivity cannot
+        establish GH without ion composition. Geographic and seasonal coverage and species occupancy at each
+        station are incomplete."
+    - field: "features.khDkh"
+      proposals:
+        - by: "generator"
+          value:
+            min: 7.2
+            max: 7.6
+        - by: "checker-a"
+          value:
+            min: 6
+            max: 16
+        - by: "checker-b"
+          value:
+            min: 6.5
+            max: 11.1
+        - by: "checker-c"
+          value:
+            min: 3.3
+            max: 11.3
+        - by: "tiebreaker-1"
+          value:
+            min: 3.3
+            max: 11.3
+        - by: "tiebreaker-2"
+          value:
+            min: 3.3
+            max: 11.3
+      decision:
+        min: 5
+        max: 11
+      rationale: "Tally method median; 3 agreeing of 6 votes. The tally chooses a rounded median interval of 5 to 11
+        dKH from six proposals, with low confidence; this plain natural-water fact intentionally has no
+        verification object. Direct alkalinity means of 128 to 135 mg/L as CaCO3 give 7.2 to 7.6 dKH, and the
+        Centla survey's 116 to 198 mg/L give 6.5 to 11.1 dKH. The wider 3.3 to 11.3 proposal from checker-c
+        and both tiebreakers is inferred from Soria-Reinoso et al. DIC of 15.59 to 48.27 mg C/L and pH 7.3 to
+        8.3, using approximate bicarbonate-dominated equilibrium and unpaired extrema. It is not a titrated KH
+        range. Checker-a uses a still wider regional-lake bicarbonate interpretation of about 5 to 21 dKH to
+        propose 6 to 16, without species-specific river measurements. The median does not encompass those
+        wider estimates or demonstrate their biological limits. GH is not used as KH."
+    - field: "features.temperatureC.tolerance"
+      proposals:
+        - by: "generator"
+          value:
+            min: 22
+            max: 32.1
+        - by: "checker-a"
+          value:
+            min: 24
+            max: 32
+        - by: "checker-b"
+          value:
+            min: 25
+            max: 33
+        - by: "checker-c"
+          value:
+            min: 20.8
+            max: 32.1
+        - by: "tiebreaker-1"
+          value:
+            min: 20.8
+            max: 32.1
+        - by: "tiebreaker-2"
+          value:
+            min: 20.8
+            max: 30.2
+      decision:
+        min: 23
+        max: 32
+      rationale: "Tally method conservative; 2 agreeing of 6 votes. The tally conservatively intersects the six
+        proposed tolerance envelopes at 25 to 30.2 C, then expands the result to 23 to 32 C to contain the
+        decided natural interval. This is an algorithmic planning envelope with low confidence, not two
+        independent demonstrations of healthy aquarium survival for years at both edges. Care recommendations
+        are Seriously Fish 27 to 29, Zoopet 24 to 28, Aqua-Fish 22 to 28, Aquarismo Paulista 26 to 30 and
+        Fishkeeper 24 to 30 C. The Nordic summary gives 25 to 30 while its narrative gives 22 to 28. The 2025
+        aquaculture review gives a wider group-level 24 to 32 C range including bifasciata, not a
+        species-specific longevity trial. Wider vote envelopes and regional field observations are retained as
+        evidence of uncertainty. The 32.1 C capture mean cannot establish chronic tolerance, and about 27 to
+        28 C has the clearest overlap among the species care recommendations."
+    - field: "features.ph.tolerance"
+      proposals:
+        - by: "generator"
+          value:
+            min: 7
+            max: 8.5
+        - by: "checker-a"
+          value:
+            min: 7
+            max: 8.5
+        - by: "checker-b"
+          value:
+            min: 7
+            max: 8.5
+        - by: "checker-c"
+          value:
+            min: 7
+            max: 8.6
+      decision:
+        min: 7
+        max: 8.5
+      rationale: "Tally method unanimous; 4 agreeing of 4 votes. The tally accepts four proposals within the pH
+        threshold and fixes 7 to 8.5 by unanimous verification. Generator, checker-a and checker-b propose 7
+        to 8.5; checker-c proposes the wider 7 to 8.6 to cover its 8.55 habitat record. Seriously Fish, Zoopet
+        and the Nordic register give 7 to 8.5; Aqua-Fish gives 7 to 7.9 and the two retailer/blog records 7 to
+        8. The decided range contains natural pH 7.2 to 8.3, but cannot validate every population at every
+        edge. Source repetition is not independent experimentation."
+    - field: "features.ghDgh.tolerance"
+      proposals:
+        - by: "generator"
+          value:
+            min: 9
+            max: 23
+        - by: "checker-a"
+          value:
+            min: 8
+            max: 25
+        - by: "checker-b"
+          value:
+            min: 4
+            max: 33
+        - by: "checker-c"
+          value:
+            min: 8
+            max: 33
+        - by: "tiebreaker-1"
+          value:
+            min: 5
+            max: 33
+        - by: "tiebreaker-2"
+          value:
+            min: 8
+            max: 33
+      decision:
+        min: 9
+        max: 23
+      rationale: "Tally method conservative; 2 agreeing of 6 votes. The tally conservatively intersects all six
+        proposed envelopes at 9 to 23 dGH, which already contains decided natural GH 9 to 20. Only two votes
+        support its top candidate, so confidence remains low. Aqua-Fish recommends 10 to 23; Aquarismo
+        Paulista gives the wider 9 to 33 and Seriously Fish and Einrichtungsbeispiele 8 to 33. Decoulon
+        instead gives 5 to 10 and Fishkeeper only an upper limit of 20, not a stated zero lower limit. The
+        chosen 9 to 23 is an intersection of agent proposals rather than a common intersection of all these
+        source ranges. It deliberately discards broader proposed tolerance edges for planning and does not
+        prove harmfulness outside the decided interval. No multiyear endpoint study was found."
+    - field: "features.khDkh.tolerance"
+      proposals:
+        - by: "generator"
+          value:
+            min: 2
+            max: 8
+        - by: "checker-a"
+          value:
+            min: 4
+            max: 18
+        - by: "checker-b"
+          value:
+            min: 5
+            max: 20
+        - by: "checker-c"
+          value:
+            min: 2
+            max: 20
+        - by: "tiebreaker-1"
+          value:
+            min: 2
+            max: 20
+        - by: "tiebreaker-2"
+          value:
+            min: 2
+            max: 20
+      decision:
+        min: 2
+        max: 20
+      rationale: "Tally method qualified-majority; 5 agreeing of 6 votes. The tally fixes 2 to 20 dKH by qualified
+        majority, five of six votes under its range agreement threshold, with low confidence. Generator
+        proposes 2 to 8; checker-a 4 to 18; checker-b 5 to 20; checker-c and both tiebreakers 2 to 20. The
+        commercial Fish Farmer's Daughter listing states KH 5 to 20 without a defined degree scale or
+        duration. Il Mio Acquario gives a wider-at-the-lower-edge 2 to 8 dKH for the genus and includes
+        bifasciata, but its taxonomic history is inaccurate. Beerlink and Seriously Fish discuss chemical
+        flexibility without numeric KH limits. Their qualitative accounts count as context only; two reliable
+        independent species-specific numeric long-term KH sources were not obtained. The 2 to 20 envelope
+        contains natural KH 5 to 11, but neither endpoint is independently validated for years of
+        maintenance."
+    - field: "features.origin"
+      proposals:
+        - by: "generator"
+          value:
+            continent: "Central America"
+            region: "Atlantic slope of southern Mexico and northern Guatemala, principally the Usumacinta and lower
+              Grijalva systems"
+            waterbody: null
+            localities:
+              - "Rio Usumacinta"
+              - "Rio Chacamax"
+              - "Laguna Catazaja"
+              - "Rio Candelaria"
+              - "Tabasco"
+              - "Chiapas"
+              - "Northern Guatemala"
+        - by: "checker-a"
+          value:
+            continent: "Central America"
+            region: "Grijalva and Usumacinta river basins (southern Mexico and northern Guatemala), Atlantic slope"
+            waterbody: null
+            localities:
+              - "San Pedro river wetlands"
+              - "Lacantun river basin"
+        - by: "checker-b"
+          value:
+            continent: "Central America"
+            region: "Atlantic-slope Grijalva and Usumacinta basins of southern Mexico and northern Guatemala"
+            waterbody: null
+            localities:
+              - "Rio Chacamax"
+              - "Rio Usumacinta near Tenosique"
+              - "Pantanos de Centla"
+        - by: "checker-c"
+          value:
+            continent: "Central America"
+            region: "Atlantic-slope southern Mexico and northern Guatemala, principally the Grijalva and Usumacinta
+              drainages"
+            waterbody: null
+            localities:
+              - "Rio Chacamax"
+              - "Rio Tulija"
+              - "Rio Teapa"
+              - "Laguna Catazaja"
+              - "Rio Candelaria"
+      decision:
+        continent: "Central America"
+        region: "Atlantic slope of southern Mexico and northern Guatemala, principally the Grijalva and Usumacinta
+          systems with adjacent Candelaria records"
+        waterbody: null
+        localities:
+          - "Rio Usumacinta"
+          - "Rio Chacamax"
+          - "Laguna Catazaja"
+          - "Rio Candelaria"
+          - "San Pedro wetlands"
+          - "Lacantun sub-basin"
+      rationale: "The proposals share the same native Atlantic-slope core but name different localities. The Catalog
+        and FishBase support southern Mexico and northern Guatemala. Beerlink adds Candelaria records and
+        locality stocks; fish surveys record the species in San Pedro wetlands and the Lacantun sub-basin.
+        These compatible localities are combined, excluding introduced populations. No curated lake waterbody
+        applies to this river-distributed species."
+    - field: "features.maxSizeCm"
+      proposals:
+        - by: "generator"
+          value:
+            male: 35
+            female: 30
+        - by: "checker-a"
+          value:
+            male: 30
+            female: 25
+        - by: "checker-b"
+          value:
+            male: 30
+            female: 25
+        - by: "checker-c"
+          value:
+            male: 30
+            female: 25
+      decision:
+        male: 30
+        female: 25
+      rationale: "Generator proposes male 35 and female 30 cm; checker-a, checker-b and checker-c propose 30 and 25.
+        Aqua-Fish gives an unsexed aquarium range of 26 to 30 cm and Beerlink reports adults around 30 cm or
+        more. The Nordic register gives 35 cm, Zoopet 32 cm and Einrichtungsbeispiele gives the wider male 40
+        and female 30 maxima. Buchhauser's 35 to 40 cm males and 25 to over 30 cm females concern a
+        provisional cf. bifasciata form. FishBase and Seriously Fish report 30 cm standard length, which is
+        not interchangeable with total length. Retain 30/25 as a typical aquarium planning estimate; the
+        female endpoint lacks reliable sex-specific measurement and larger stock may exceed it."
+    - field: "features.aggressionConspecific"
+      proposals:
+        - by: "generator"
+          value: 4
+        - by: "checker-a"
+          value: 3
+        - by: "checker-b"
+          value: 4
+        - by: "checker-c"
+          value: 4
+      decision: 4
+      rationale: "Generator, checker-b and checker-c propose level 4; checker-a proposes 3. Seriously Fish and
+        Beerlink describe severe sudden attacks on established partners and possible female death, requiring
+        refuge space and separation even after pairing. Level 4 therefore better captures the documented
+        husbandry risk. Aqua-Fish's peaceful summary label is weakened by its own narrative about abrupt pair
+        aggression."
+    - field: "features.aggressionHeterospecific"
+      proposals:
+        - by: "generator"
+          value: 3
+        - by: "checker-a"
+          value: 2
+        - by: "checker-b"
+          value: 3
+        - by: "checker-c"
+          value: 3
+      decision: 3
+      rationale: "Generator, checker-b and checker-c propose 3; checker-a proposes 2. Detailed specialist accounts
+        permit communities only with substantial robust fish and stress unpredictable aggression. Level 3
+        captures the need for comparable size and resilience. The archive reports tankmate deaths in one case
+        without adequate tank and size context, so it cannot establish routine level 4 in an appropriate adult
+        setup."
+    - field: "features.habitatZones"
+      proposals:
+        - by: "generator"
+          value:
+            - "sand"
+            - "wood"
+            - "rock"
+            - "plants"
+            - "openWater"
+        - by: "checker-a"
+          value:
+            - "sand"
+            - "rock"
+            - "wood"
+            - "plants"
+        - by: "checker-b"
+          value:
+            - "sand"
+            - "plants"
+            - "wood"
+            - "rock"
+        - by: "checker-c"
+          value:
+            - "sand"
+            - "rock"
+            - "plants"
+            - "wood"
+            - "openWater"
+      decision:
+        - "sand"
+        - "rock"
+        - "wood"
+        - "plants"
+      rationale: "Generator and checker-c include openWater in addition to sand, rock, wood and plants; checker-a
+        and checker-b propose the four latter zones. Native vegetation and soft-bottom foraging plus rock and
+        wood refuges are directly supported. Beerlink reports open-water movement in loose groups, but no
+        specialized pelagic habitat requirement; retain the four supported substrate and cover zones for the
+        aquarium. Plants describe habitat and food use rather than guaranteed survival of ornamental
+        planting."
+    - field: "features.coloration"
+      proposals:
+        - by: "generator"
+          value:
+            baseColors:
+              - "red"
+              - "blue"
+              - "yellow"
+              - "black"
+            pattern: "mixed"
+        - by: "checker-a"
+          value:
+            baseColors:
+              - "silver"
+              - "red"
+              - "yellow"
+              - "blue"
+            pattern: "mixed"
+        - by: "checker-b"
+          value:
+            baseColors:
+              - "blue"
+              - "red"
+              - "yellow"
+              - "black"
+            pattern: "mixed"
+        - by: "checker-c"
+          value:
+            baseColors:
+              - "blue"
+              - "yellow"
+              - "red"
+              - "black"
+            pattern: "mixed"
+      decision:
+        baseColors:
+          - "blue"
+          - "red"
+          - "yellow"
+          - "black"
+        pattern: "mixed"
+      rationale: "Generator, checker-b and checker-c propose the same four colors in different orders; checker-a
+        adds silver and omits black. The descriptions directly support blue or turquoise flanks, red anterior
+        markings, yellow or gold areas and dark longitudinal bands. Mixed represents both spotting and
+        variable band visibility. Silver is not retained as a dominant male color from general knowledge
+        alone."
+    - field: "features.minTank"
+      proposals:
+        - by: "generator"
+          value:
+            volumeL: 700
+            lengthCm: 200
+            depthCm: 60
+        - by: "checker-a"
+          value:
+            volumeL: 400
+            lengthCm: 150
+            depthCm: 60
+        - by: "checker-b"
+          value:
+            volumeL: 700
+            lengthCm: 200
+            depthCm: 60
+        - by: "checker-c"
+          value:
+            volumeL: 700
+            lengthCm: 200
+            depthCm: 60
+      decision:
+        volumeL: 700
+        lengthCm: 200
+        depthCm: 60
+      rationale: "Generator, checker-b and checker-c propose 700 L with 200 cm length and 60 cm front-to-back depth;
+        checker-a proposes 400 L with 150 by 60 cm footprint. The Nordic register and Zoopet state 700 L and
+        200 cm; 60 cm depth is carried over from the Seriously Fish pair footprint. That source's smaller 150
+        by 60 by 45 cm dimensions imply about 405 L, while Aqua-Fish suggests over 300 L and
+        Einrichtungsbeispiele the larger 960 L. Choose the spacious 700 L adult-pair planning minimum to
+        address partner aggression, without treating it as a demonstrated safe threshold. Communities and
+        exceptionally large or incompatible adults need more space or separation."
+    - field: "features.lifespanYears"
+      proposals:
+        - by: "generator"
+          value:
+            min: 8
+            max: 12
+        - by: "checker-a"
+          value:
+            min: 10
+            max: 15
+        - by: "checker-b"
+          value:
+            min: 5
+            max: 8
+        - by: "checker-c"
+          value:
+            min: 5
+            max: 8
+      decision:
+        min: 5
+        max: 8
+      rationale: "Generator proposes 8 to 12 years, checker-a 10 to 15, and checker-b and checker-c 5 to 8.
+        Aqua-Fish explicitly gives 5 to 8 with longer survival possible; Aquarismo Paulista gives eight years
+        or more without an upper limit. The 8 to 12 genus estimate and 10 to 15 model-based estimate are not
+        reliable species-specific longevity measurements. Retain the explicit 5 to 8 record cautiously,
+        without treating eight as a biological maximum."
+    - field: "features.beginnerSuitability"
+      proposals:
+        - by: "generator"
+          value: "demanding"
+        - by: "checker-a"
+          value: "moderate"
+        - by: "checker-b"
+          value: "demanding"
+        - by: "checker-c"
+          value: "demanding"
+      decision: "demanding"
+      rationale: "Generator, checker-b and checker-c propose demanding; checker-a proposes moderate. Severe partner
+        risk, adult footprint and the need for prompt physical separation outweigh flexible chemistry or
+        straightforward spawning. The Nordic register's advanced rating and detailed specialist husbandry
+        accounts support demanding."
+    - field: "taxonomy.synonyms"
+      proposals:
+        - by: "generator"
+          value:
+            - name: "Heros bifasciatus"
+              note: "Original combination."
+            - name: "Cichlasoma bifasciatum"
+              note: "Former generic combination."
+            - name: "Paraneetroplus bifasciatus"
+              note: "Former generic combination."
+            - name: "Theraps bifasciatum"
+              note: "Historical aquarium usage recorded in care sources."
+            - name: "Paratheraps bifasciatus"
+              note: "Former aquarium and database usage."
+        - by: "checker-a"
+          value:
+            - name: "Heros bifasciatus"
+              note: "original combination"
+            - name: "Cichlasoma bifasciatum"
+            - name: "Paraneetroplus bifasciatus"
+            - name: "Paratheraps bifasciatus"
+              note: "listed as a synonym by a hobby databank"
+            - name: "Theraps bifasciatum"
+              note: "listed as a synonym by a hobby databank"
+        - by: "checker-b"
+          value:
+            - name: "Heros bifasciatus"
+              note: "Original combination."
+            - name: "Cichlasoma bifasciatum"
+              note: "Earlier combination."
+            - name: "Paraneetroplus bifasciatus"
+              note: "Earlier combination recorded by the Catalog of Fishes."
+        - by: "checker-c"
+          value:
+            - name: "Heros bifasciatus"
+              note: "Original combination."
+            - name: "Cichlasoma bifasciatum"
+              note: "Earlier combination recorded in the catalog."
+            - name: "Paraneetroplus bifasciatus"
+              note: "Earlier combination recorded in the catalog."
+            - name: "Paraneetroplus bifasciata"
+              note: "Historical spelling noted in the catalog."
+            - name: "Theraps bifasciatum"
+              note: "Historical combination listed by species care databases."
+            - name: "Paratheraps bifasciatus"
+              note: "Historical combination listed by the husbandry database."
+      decision:
+        - name: "Heros bifasciatus"
+          note: "Original combination recorded by the Catalog of Fishes."
+        - name: "Cichlasoma bifasciatum"
+          note: "Former generic combination recorded by the Catalog."
+        - name: "Paraneetroplus bifasciatus"
+          note: "Former combination recorded by the Catalog."
+        - name: "Paraneetroplus bifasciata"
+          note: "Historical spelling recorded in the Catalog bibliography."
+        - name: "Paratheraps bifasciatus"
+          note: "Historical aquarium name in the Nordic register."
+        - name: "Theraps bifasciatum"
+          note: "Historical aquarium name in the Beerlink account."
+      rationale: "All four profiles agree on the valid name, genus and authority. Combine the Catalog-recorded
+        original and former combinations with explicitly marked historical aquarium usages. The spelling
+        Paraneetroplus bifasciata is retained as historical usage rather than a second valid species."
