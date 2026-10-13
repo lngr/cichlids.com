@@ -4,7 +4,7 @@ title: Auth0 account import into Keycloak
 status: In Review
 assignee: []
 created_date: '2026-07-08 18:58'
-updated_date: '2026-09-28 14:38'
+updated_date: '2026-10-13 11:55'
 labels: []
 dependencies:
   - TASK-3.13
@@ -36,6 +36,15 @@ Import legacy accounts into Keycloak so returning members keep their identity, s
 - [ ] #1 Given the Auth0 export and migrated profiles, When the import runs, Then every active account exists in Keycloak linked to its profile, duplicate emails are consolidated per the agreed merge rules, and password users require a reset on first login
 - [ ] #2 Given the Auth0 export and the legacy user table, When the import runs twice, Then every account with a known email exists exactly once in Keycloak with the agreed required actions, profile-linked where a profile exists, and accounts without contact data and without profile are absent
 <!-- AC:END -->
+
+## Definition of Done
+<!-- DOD:BEGIN -->
+- [ ] #1 At least one Given-When-Then acceptance criterion is specified
+- [ ] #2 A failing test was written first, then made to pass (red-green)
+- [ ] #3 An automated end-to-end test for the user path runs green
+- [ ] #4 Authoritative domain logic is covered by unit/integration tests
+- [ ] #5 All CI test suites are fully green
+<!-- DOD:END -->
 
 ## Implementation Plan
 
@@ -79,7 +88,7 @@ New ETL command `keycloak-import` in Cichlids.Etl. It builds one account per kno
 ### Risks and assumptions
 - The Auth0 export has no password hashes; imported password users can only get in through a reset or an execute-actions email (campaign, DRAFT-1). The local stack has no SMTP; the observable proof is the pending required actions.
 - Social logins work only once google/facebook client credentials exist; links are stored ahead of that.
-- Importing all emails blocks self registration with a legacy email (duplicate emails are rejected), which protects the email fallback in CurrentProfileService from takeover by an unverified registration.
+- Importing all emails blocks self registration with a legacy email (duplicate emails are rejected), so a legacy email cannot be taken over by a new registration. The API links a login to a profile only through the oidc identity the import creates (ADR-0023), never through the email.
 - AC wording mentions active accounts: all fe_users rows are deleted=0 and disable=0, so every account with a known email counts as active.
 <!-- SECTION:PLAN:END -->
 
@@ -90,7 +99,7 @@ New ETL command `keycloak-import` in Cichlids.Etl. It builds one account per kno
 - ETL command keycloak-import (app/api/src/Cichlids.Etl/Identity): Auth0ExportReader, LegacyAccountPlanner (merge rules), KeycloakAdminClient (realm prerequisites, user paging, partialImport), KeycloakUserIndex (matching existing users), KeycloakAccountImportCommand (orchestration, oidc profile links, summary).
 - Realm prerequisites ensured idempotently: TERMS_AND_CONDITIONS enabled, disabled google/facebook identity providers, email_verified mapper on the email client scope. Realm file carries the same (full default required-action list, because a listed set replaces the defaults).
 - Existing Keycloak users: matched by email only for email accounts; linked only with a verified email; a username-only collision is a conflict (username_taken), an unverified existing email is a conflict (existing_unverified).
-- API: CurrentProfileService links by email identity only when the token claim email_verified is true.
+- API: CurrentProfileService resolves the profile through the oidc identity of the token subject only; the email and the email_verified claim play no part (ADR-0023).
 - bootstrap.sh runs the import after the realm step when the Auth0 export exists (CICHLIDS_AUTH0_EXPORT). ADR-0022 records the principles.
 
 ### Tests
@@ -105,12 +114,3 @@ The import was not executed against the local dev Keycloak and database. Ground-
 - SQL: select count(*) from profile_identity where provider = 'oidc'; roughly the number of member profiles plus logins.
 - Second run: planned equals existing, created 0.
 <!-- SECTION:NOTES:END -->
-
-## Definition of Done
-<!-- DOD:BEGIN -->
-- [ ] #1 At least one Given-When-Then acceptance criterion is specified
-- [ ] #2 A failing test was written first, then made to pass (red-green)
-- [ ] #3 An automated end-to-end test for the user path runs green
-- [ ] #4 Authoritative domain logic is covered by unit/integration tests
-- [ ] #5 All CI test suites are fully green
-<!-- DOD:END -->
