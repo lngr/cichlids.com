@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../../base
+patches:
+- target:
+    kind: Ingress
+    name: placeholder
+  patch: |
+    - op: replace
+      path: /spec/rules/0/host
+      value: cichlids.com
+    - op: replace
+      path: /spec/tls/0/hosts/0
+      value: cichlids.com
+namespace: cichlids-prod
