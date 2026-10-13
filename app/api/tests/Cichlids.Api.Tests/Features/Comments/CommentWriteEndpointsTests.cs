@@ -238,6 +238,220 @@ public class CommentWriteEndpointsTests(ApiFixture fixture)
     }
 
     [Fact]
+    public async Task PostPictureComment_RepeatRatingReplacesTheRatingAndRecomputesTheAggregate()
+    {
+        var (postId, slug) = await CreatePublishedPictureAsync();
+        var token = TestTokens.Create(Guid.NewGuid().ToString(), $"again-{Guid.NewGuid():N}"[..24]);
+
+        var first = await PostCreatedAsync(token, $"/api/pictures/{slug}/comments", new CreateCommentRequest("First", 2));
+        var second = await PostCreatedAsync(token, $"/api/pictures/{slug}/comments", new CreateCommentRequest("Second", 5));
+
+        Assert.Equal(first.Rating!.Id, second.Rating!.Id);
+        Assert.Equal((short)5, second.Rating.Stars);
+
+        await using (var db = fixture.CreateDbContext())
+        {
+            var rating = await db.Ratings.SingleAsync(r => r.PostId == postId);
+            Assert.Equal((short)5, rating.Stars);
+
+            var secondComment = await db.Comments.SingleAsync(c => c.Id == second.Comment!.Id);
+            Assert.Equal(secondComment.CreatedAt, rating.CreatedAt);
+
+            var post = await db.Posts.SingleAsync(p => p.Id == postId);
+            Assert.Equal(1, post.RatingCount);
+            Assert.Equal(5, post.RatingAverage);
+
+            Assert.Equal(1, await db.OutboxEvents.CountAsync(
+                e => e.EventType == "rating.created" && e.AggregateId == postId.ToString()));
+            var updated = await db.OutboxEvents.SingleAsync(
+                e => e.EventType == "rating.updated" && e.AggregateId == postId.ToString());
+            using var payload = JsonDocument.Parse(updated.Payload);
+            Assert.Equal(first.Rating.Id, payload.RootElement.GetProperty("ratingId").GetInt64());
+            Assert.Equal(5, payload.RootElement.GetProperty("stars").GetInt32());
+            Assert.Equal(2, payload.RootElement.GetProperty("previousStars").GetInt32());
+        }
+
+        // The stars show at the newest comment of the member, the rating row pairs with it by timestamp.
+        var list = await ListCommentsAsync($"/api/pictures/{slug}/comments");
+        Assert.Null(list.Items.Single(c => c.Id == first.Comment!.Id).Stars);
+        Assert.Equal((short)5, list.Items.Single(c => c.Id == second.Comment!.Id).Stars);
+
+        await SoftDeleteWriteTargetsAsync(postId: postId);
+    }
+
+    [Fact]
+    public async Task PostPictureComment_RepeatRatingOfAMigratedRatingMovesTheStarsToTheNewComment()
+    {
+        var (postId, slug) = await CreatePublishedPictureAsync();
+        var username = $"migrated-{Guid.NewGuid():N}"[..24];
+        var token = TestTokens.Create(Guid.NewGuid().ToString(), username);
+        var raterId = await EnsureProfileAsync(token, username);
+
+        var legacyId = Random.Shared.Next(900_000_000, int.MaxValue);
+        var legacyCreatedAt = DateTimeOffset.UtcNow.AddDays(-3);
+        long legacyCommentId;
+        await using (var db = fixture.CreateDbContext())
+        {
+            var legacyComment = new Comment
+            {
+                LegacyId = legacyId, PostId = postId, AuthorProfileId = raterId, Body = "Legacy", CreatedAt = legacyCreatedAt,
+            };
+            db.Comments.Add(legacyComment);
+            db.Ratings.Add(new Rating
+            {
+                LegacyCommentId = legacyId, PostId = postId, ProfileId = raterId, Stars = 1, CreatedAt = legacyCreatedAt,
+            });
+            await db.SaveChangesAsync();
+            legacyCommentId = legacyComment.Id;
+        }
+
+        var created = await PostCreatedAsync(token, $"/api/pictures/{slug}/comments", new CreateCommentRequest("New", 4));
+
+        await using (var db = fixture.CreateDbContext())
+        {
+            var rating = await db.Ratings.SingleAsync(r => r.PostId == postId);
+            Assert.Equal((short)4, rating.Stars);
+            Assert.Null(rating.LegacyCommentId);
+        }
+
+        var list = await ListCommentsAsync($"/api/pictures/{slug}/comments");
+        Assert.Null(list.Items.Single(c => c.Id == legacyCommentId).Stars);
+        Assert.Equal((short)4, list.Items.Single(c => c.Id == created.Comment!.Id).Stars);
+
+        await SoftDeleteWriteTargetsAsync(postId: postId);
+    }
+
+    [Fact]
+    public async Task PostTankComment_RepeatRatingReplacesTheRating()
+    {
+        var tankId = await CreatePublishedTankAsync();
+        var token = TestTokens.Create(Guid.NewGuid().ToString(), $"tankagain-{Guid.NewGuid():N}"[..24]);
+
+        var first = await PostCreatedAsync(token, $"/api/tanks/{tankId}/comments", new CreateCommentRequest(null, 1));
+        var second = await PostCreatedAsync(token, $"/api/tanks/{tankId}/comments", new CreateCommentRequest(null, 4));
+
+        Assert.Equal(first.Rating!.Id, second.Rating!.Id);
+
+        await using (var db = fixture.CreateDbContext())
+        {
+            Assert.Equal((short)4, (await db.Ratings.SingleAsync(r => r.TankId == tankId)).Stars);
+            Assert.True(await db.OutboxEvents.AnyAsync(
+                e => e.EventType == "rating.updated" && e.AggregateType == "tank" && e.AggregateId == tankId.ToString()));
+        }
+
+        await SoftDeleteWriteTargetsAsync(tankId: tankId);
+    }
+
+    [Fact]
+    public async Task PostPictureComment_ParallelRepeatRatingsLeaveOneRating()
+    {
+        var (postId, slug) = await CreatePublishedPictureAsync();
+        var username = $"parallel-{Guid.NewGuid():N}"[..24];
+        var token = TestTokens.Create(Guid.NewGuid().ToString(), username);
+        await EnsureProfileAsync(token, username);
+
+        var responses = await Task.WhenAll(Enumerable.Range(1, 5).Select(stars =>
+            SendPostAsync(token, $"/api/pictures/{slug}/comments", new CreateCommentRequest(null, stars))));
+
+        Assert.All(responses, r => Assert.Equal(HttpStatusCode.Created, r.StatusCode));
+
+        await using (var db = fixture.CreateDbContext())
+        {
+            var rating = await db.Ratings.SingleAsync(r => r.PostId == postId);
+            var post = await db.Posts.SingleAsync(p => p.Id == postId);
+            Assert.Equal(1, post.RatingCount);
+            Assert.Equal(rating.Stars, post.RatingAverage);
+        }
+
+        await SoftDeleteWriteTargetsAsync(postId: postId);
+    }
+
+    [Fact]
+    public async Task PostPictureComment_AnonymousLegacyRatingsStayAndDoNotCountAsTheMembersRating()
+    {
+        var (postId, slug) = await CreatePublishedPictureAsync();
+        await using (var db = fixture.CreateDbContext())
+        {
+            db.Ratings.AddRange(
+                new Rating { PostId = postId, Stars = 1, CreatedAt = DateTimeOffset.UtcNow.AddDays(-5) },
+                new Rating { PostId = postId, Stars = 1, CreatedAt = DateTimeOffset.UtcNow.AddDays(-4) });
+            await db.SaveChangesAsync();
+        }
+
+        var token = TestTokens.Create(Guid.NewGuid().ToString(), $"member-{Guid.NewGuid():N}"[..24]);
+        await PostCreatedAsync(token, $"/api/pictures/{slug}/comments", new CreateCommentRequest(null, 5));
+
+        await using (var db = fixture.CreateDbContext())
+        {
+            Assert.Equal(3, await db.Ratings.CountAsync(r => r.PostId == postId));
+            var post = await db.Posts.SingleAsync(p => p.Id == postId);
+            Assert.Equal(3, post.RatingCount);
+        }
+
+        await SoftDeleteWriteTargetsAsync(postId: postId);
+    }
+
+    [Fact]
+    public async Task PostPictureComment_RatingOwnPictureIsForbiddenAndWritesNothing()
+    {
+        var username = $"owner-{Guid.NewGuid():N}"[..24];
+        var token = TestTokens.Create(Guid.NewGuid().ToString(), username);
+        var ownerId = await EnsureProfileAsync(token, username);
+        var (postId, slug) = await CreatePublishedPictureAsync(ownerId);
+
+        var response = await SendPostAsync(token, $"/api/pictures/{slug}/comments", new CreateCommentRequest("Mine", 5));
+
+        await AssertSelfRatingRefusedAsync(response);
+        await using (var db = fixture.CreateDbContext())
+        {
+            Assert.False(await db.Ratings.AnyAsync(r => r.PostId == postId));
+            Assert.False(await db.Comments.AnyAsync(c => c.PostId == postId));
+            Assert.False(await db.OutboxEvents.AnyAsync(e => e.AggregateType == "post" && e.AggregateId == postId.ToString()));
+        }
+
+        await SoftDeleteWriteTargetsAsync(postId: postId);
+    }
+
+    [Fact]
+    public async Task PostPictureComment_CommentWithoutStarsOnOwnPictureIsAllowed()
+    {
+        var username = $"ownertext-{Guid.NewGuid():N}"[..24];
+        var token = TestTokens.Create(Guid.NewGuid().ToString(), username);
+        var ownerId = await EnsureProfileAsync(token, username);
+        var (postId, slug) = await CreatePublishedPictureAsync(ownerId);
+
+        var created = await PostCreatedAsync(token, $"/api/pictures/{slug}/comments", new CreateCommentRequest("Thanks all", null));
+
+        Assert.NotNull(created.Comment);
+        Assert.Null(created.Rating);
+
+        await SoftDeleteWriteTargetsAsync(postId: postId);
+    }
+
+    [Fact]
+    public async Task PostTankComment_RatingOwnTankIsForbiddenAndWritesNothing()
+    {
+        var username = $"tankowner-{Guid.NewGuid():N}"[..24];
+        var token = TestTokens.Create(Guid.NewGuid().ToString(), username);
+        var ownerId = await EnsureProfileAsync(token, username);
+        var tankId = await CreatePublishedTankAsync(ownerId);
+
+        var response = await SendPostAsync(token, $"/api/tanks/{tankId}/comments", new CreateCommentRequest("Mine", 5));
+
+        await AssertSelfRatingRefusedAsync(response);
+        await using (var db = fixture.CreateDbContext())
+        {
+            Assert.False(await db.Ratings.AnyAsync(r => r.TankId == tankId));
+            Assert.False(await db.Comments.AnyAsync(c => c.TankId == tankId));
+        }
+
+        var textOnly = await PostCreatedAsync(token, $"/api/tanks/{tankId}/comments", new CreateCommentRequest("Update", null));
+        Assert.NotNull(textOnly.Comment);
+
+        await SoftDeleteWriteTargetsAsync(tankId: tankId);
+    }
+
+    [Fact]
     public async Task DeleteComment_WithoutModeratorRoleReturnsForbidden()
     {
         var (postId, slug) = await CreatePublishedPictureAsync();
@@ -310,6 +524,44 @@ public class CommentWriteEndpointsTests(ApiFixture fixture)
         Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
     }
 
+    private async Task<CommentCreatedDto> PostCreatedAsync(string token, string url, CreateCommentRequest body)
+    {
+        var response = await SendPostAsync(token, url, body);
+        Assert.Equal(HttpStatusCode.Created, response.StatusCode);
+        return JsonSerializer.Deserialize<CommentCreatedDto>(
+            await response.Content.ReadAsStringAsync(), TestJson.Options)!;
+    }
+
+    private async Task<PagedResponse<CommentDto>> ListCommentsAsync(string url)
+    {
+        var response = await fixture.Client.GetAsync(url);
+        response.EnsureSuccessStatusCode();
+        return JsonSerializer.Deserialize<PagedResponse<CommentDto>>(
+            await response.Content.ReadAsStringAsync(), TestJson.Options)!;
+    }
+
+    /// <summary>
+    /// Makes the first request of a login so its profile exists, and returns the profile id.
+    /// </summary>
+    private async Task<long> EnsureProfileAsync(string token, string username)
+    {
+        using var request = new HttpRequestMessage(HttpMethod.Get, "/api/me");
+        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+        var response = await fixture.Client.SendAsync(request);
+        response.EnsureSuccessStatusCode();
+
+        await using var db = fixture.CreateDbContext();
+        return (await db.Profiles.SingleAsync(p => p.Username == username)).Id;
+    }
+
+    private static async Task AssertSelfRatingRefusedAsync(HttpResponseMessage response)
+    {
+        Assert.Equal(HttpStatusCode.Forbidden, response.StatusCode);
+        Assert.Equal("application/problem+json", response.Content.Headers.ContentType?.MediaType);
+        using var document = JsonDocument.Parse(await response.Content.ReadAsStringAsync());
+        Assert.Equal("self_rating", document.RootElement.GetProperty("code").GetString());
+    }
+
     private async Task<CommentCreatedDto> PostCommentAsync(string token, string slug, string body)
     {
         var response = await SendPostAsync(token, $"/api/pictures/{slug}/comments", new CreateCommentRequest(body, null));
@@ -366,13 +618,13 @@ public class CommentWriteEndpointsTests(ApiFixture fixture)
     /// Creates a published picture post of its own for each test, so writes never disturb the
     /// shared read-endpoint seed's comment lists and rating aggregates.
     /// </summary>
-    private async Task<(long PostId, string Slug)> CreatePublishedPictureAsync()
+    private async Task<(long PostId, string Slug)> CreatePublishedPictureAsync(long? authorProfileId = null)
     {
         await using var db = fixture.CreateDbContext();
 
         var post = new Post
         {
-            AuthorProfileId = fixture.Seed.Alice.Id,
+            AuthorProfileId = authorProfileId ?? fixture.Seed.Alice.Id,
             Kind = PostKind.Single,
             Topic = PostTopic.Cichlids,
             Title = "Write Target",
@@ -393,13 +645,13 @@ public class CommentWriteEndpointsTests(ApiFixture fixture)
         return (post.Id, slug);
     }
 
-    private async Task<long> CreatePublishedTankAsync()
+    private async Task<long> CreatePublishedTankAsync(long? ownerProfileId = null)
     {
         await using var db = fixture.CreateDbContext();
 
         var tank = new Tank
         {
-            ProfileId = fixture.Seed.Bob.Id,
+            ProfileId = ownerProfileId ?? fixture.Seed.Bob.Id,
             Title = "Write Target Tank",
             State = TankState.Published,
             CreatedAt = DateTimeOffset.UtcNow.AddDays(-1),
