@@ -127,6 +127,12 @@ Claude-Agent (Sonnet); Generator, Prüfer B und C, Tie-Breaker und Schiedsrichte
 
 Zu jeder Frage ist eine vorläufige Umsetzung in Gebrauch; sie wird bestätigt oder umgebaut.
 
+- [ ] **Median bei zweigeteilten Stimmen:** Teilen sich die Stimmen in zwei Lager, ergibt der
+  Median einen Wert, den keine Stimme vorschlägt, und die Toleranz übernimmt ihn. Bei
+  Cribroheros robertsoni stehen drei Stimmen für etwa 12 bis 15 dGH (Petén Itzá) gegen drei für
+  12 bis 91 dGH (Bacalar-Lagune); entschieden ist 12 bis 53 dGH, die Toleranz reicht bis 53 dGH.
+  Offen: Median beibehalten, oder bei zwei Lagern den Bereich des Lagers mit den direkt am
+  Fundort der Art gemessenen Werten nehmen
 - [ ] **Wasserkonflikt nach Abstand vom Ideal:** Diskus und Malawis berühren sich in der
   Toleranz am Rand (pH 4,8-7,5 gegen 7,2-8,8), deshalb greift "Toleranzen ohne gemeinsamen
   Bereich" nicht. Vorgabe: Der Konflikt hängt von der Größe des gemeinsamen Bereichs und vom
