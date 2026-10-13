@@ -1,0 +1,3658 @@
+schemaVersion: 1
+id: "pundamilia-nyererei"
+legacyIds:
+  - 546
+status: "described"
+taxonomy:
+  validName: "Pundamilia nyererei"
+  genus: "Pundamilia"
+  species: "nyererei"
+  author: "(Witte-Maas & Witte, 1985)"
+  source:
+    kind: "catalog-of-fishes"
+    title: "Eschmeyer's Catalog of Fishes: species of Pundamilia, updated 21 September 2026"
+    url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Pu\
+      ndamilia"
+    accessed: "2026-10-13"
+  synonyms:
+    - name: "Haplochromis nyererei"
+      note: "Original combination; FishBase provisionally retains this genus while acknowledging the Catalog of
+        Fishes placement."
+  legacyNames:
+    - "Pundamilia nyererei"
+  note: "The Catalog of Fishes confirms Pundamilia nyererei as valid. The public Cichlid Room Companion page
+    independently confirms the name and original combination; feeding, habitat and breeding summaries were not
+    publicly available there. Historical Python and Luanso labels can include distinct or admixed lineages."
+names:
+  trade:
+    en:
+      - "Nyerere's cichlid"
+      - "Nyererei cichlid"
+      - "Flameback"
+    de:
+      - "Nyereres Viktoriabuntbarsch"
+      - "Nyereres Buntbarsch"
+variants:
+  - name: "Makobe Island"
+    kind: "locality"
+    note: "Documented population used in ecological and mate-choice studies. Keep a traceable collection line."
+  - name: "Ruti Island"
+    kind: "locality"
+    note: "Widely traded collection label; listed by the Nordic register and FishFish."
+  - name: "Mwanza red"
+    kind: "locality"
+    note: "Aquarium locality label illustrated by AquaInfo, not a separately described taxon."
+  - name: "Python Island"
+    kind: "locality"
+    note: "Historical aquarium nyererei label. Genomic literature distinguishes the population as Pundamilia sp.
+      'nyererei-like'; do not assume equivalence to Makobe fish or mix these lines."
+  - name: "Luanso Island"
+    kind: "locality"
+    note: "Historical trade label for a colour-variable population with evidence of admixture. Identification as
+      pure P. nyererei is not established."
+features:
+  origin:
+    value:
+      continent: "Africa"
+      region: "Southern Lake Victoria, Tanzania"
+      waterbody: "lake-victoria"
+      localities:
+        - "Mwanza Gulf"
+        - "Speke Gulf"
+        - "Makobe Island"
+        - "Ruti Island"
+    confidence: "high"
+    rationale: "Generator, checker-b and checker-c use a representative southern Tanzanian list: Mwanza Gulf,
+      Speke Gulf, Makobe Island and Ruti Island. Checker-a proposes the wider historical list including Zue,
+      Igombe, Python, Kissenda, Luanso, Anchor and Ukerewe islands. Retain the representative list because
+      modern genomic work distinguishes some historical nyererei labels from the nominal Makobe lineage;
+      omission does not assert absence."
+    sources:
+      - kind: "catalog-of-fishes"
+        title: "Eschmeyer's Catalog of Fishes: species of Pundamilia"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Pu\
+          ndamilia"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Pundamilia nyererei"
+        url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Svensson et al. (2024, published online 2023). Sympatry and parapatry among rocky reef cichlids of
+          Lake Victoria explained by female mating preferences. Journal of Evolutionary Biology."
+        url: "https://doi.org/10.1093/jeb/voad006"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase, Pundamilia nyererei species summary"
+        url: "https://www.fishbase.se/summary/Pundamilia-nyererei.html"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Meier et al. (2016) Demographic modelling with whole-genome data reveals parallel origin of similar
+          Pundamilia cichlid species after hybridization"
+        url: "https://doi.org/10.1111/mec.13838"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "catalog-of-fishes"
+          title: "Eschmeyer's Catalog of Fishes: species of Pundamilia, updated 21 September 2026"
+          url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Pu\
+            ndamilia"
+          accessed: "2026-10-13"
+        value:
+          continent: "Africa"
+          region: "Lake Victoria"
+          waterbody: "lake-victoria"
+        note: "Catalog distribution."
+      - source:
+          kind: "literature"
+          title: "Svensson et al. (2023, volume published 2024). Sympatry and parapatry among rocky reef cichlids of
+            Lake Victoria explained by female mating preferences."
+          url: "https://doi.org/10.1093/jeb/voad006"
+          accessed: "2026-10-13"
+        value:
+          continent: "Africa"
+          region: "Southern Lake Victoria, Tanzania"
+          localities:
+            - "Makobe Island"
+            - "Ruti Island"
+        note: "Study populations and sympatric distribution; not every historical red form is the same lineage."
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Pundamilia nyererei"
+          url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+          accessed: "2026-10-13"
+        value:
+          continent: "Africa"
+          region: "Southern Lake Victoria in Tanzania"
+          waterbody: "lake-victoria"
+      - source:
+          kind: "database"
+          title: "FishBase: Haplochromis nyererei species summary"
+          url: "https://www.fishbase.se/summary/Pundamilia-nyererei.html"
+          accessed: "2026-10-13"
+        value:
+          continent: "Africa"
+          region: "Lake Victoria"
+          waterbody: "lake-victoria"
+  temperatureC:
+    value:
+      min: 22
+      max: 30
+    confidence: "high"
+    rationale: "The decided lake-wide range is 22 to 30 C. FAO summarizes historical surface water at 23 to 28 C;
+      Orina and colleagues report Kenyan beach means of 23.4 to 29.5 C, while the BCO-DMO time series reaches
+      29.7 C. These are different localities and sampling periods, not a single collection site or a permanent
+      heater setting."
+    sources:
+      - kind: "literature"
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of
+          Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Victoria: physical and chemical data after
+          EAFRO (1952, 1954), Graham (1929) and Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E12.htm"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Deirmendjian, L., Descy, J.-P., Morana, C., Okello, W., Stoyneva-Gaertner, M. P., Bouillon, S. and
+          Borges, A. V. (2021). Limnological changes in Lake Victoria since the mid-20th century. Freshwater
+          Biology 66, 1630-1647."
+        url: "https://doi.org/10.1111/fwb.13780"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Mbonde, A. S., Sitoki, L. and Kurmayer, R. (2015). Phytoplankton composition and microcystin
+          concentrations in open and closed bays of Lake Victoria, Tanzania. Aquatic Ecosystem Health and
+          Management (Table 1)."
+        url: "https://doi.org/10.1080/14634988.2015.1011030"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Orina, P. S., Onyango, D. M., Lungayia, H., Oduor, A., Sifuna, A. W., Otuya, P., Owigar, R. A.,
+          Kowenje, C. B. and Hinzano, S. M. (2020). Water quality of selected fishing beaches of Lake Victoria
+          Kenyan Gulf. Open Journal of Ecology 10, 22-35."
+        url: "https://doi.org/10.4236/oje.2020.101002"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "BCO-DMO dataset 931936, Metagenomic Time Series of Winam Gulf, Lake Victoria from 2022-2023 (pH,
+          temperature, conductivity)."
+        url: "https://erddap.bco-dmo.org/erddap/tabledap/bcodmo_dataset_931936_v1"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of
+            Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Victoria: physical and chemical data after
+            EAFRO (1952, 1954), Graham (1929) and Talling and Talling (1965)."
+          url: "https://www.fao.org/4/t0473e/T0473E12.htm"
+          accessed: "2026-10-13"
+        value:
+          min: 23
+          max: 28
+        note: "Historical lake surface measurements summarized by FAO."
+      - source:
+          kind: "literature"
+          title: "Orina, P. S., Onyango, D. M., Lungayia, H., Oduor, A., Sifuna, A. W., Otuya, P., Owigar, R. A.,
+            Kowenje, C. B. and Hinzano, S. M. (2020). Water quality of selected fishing beaches of Lake
+            Victoria Kenyan Gulf. Open Journal of Ecology 10, 22-35."
+          url: "https://doi.org/10.4236/oje.2020.101002"
+          accessed: "2026-10-13"
+        value:
+          min: 23.4
+          max: 29.5
+        note: "Reported Kenyan beach means, not species-specific collection stations."
+      - source:
+          kind: "database"
+          title: "BCO-DMO dataset 931936, Metagenomic Time Series of Winam Gulf, Lake Victoria from 2022-2023 (pH,
+            temperature, conductivity)."
+          url: "https://erddap.bco-dmo.org/erddap/tabledap/bcodmo_dataset_931936_v1"
+          accessed: "2026-10-13"
+        value:
+          min: 24.8
+          max: 29.7
+        note: "Dataset actual_range metadata across sampled stations and dates."
+    verification:
+      method: "waterbody"
+      waterbody: "lake-victoria"
+    tolerance:
+      value:
+        min: 22
+        max: 30
+      confidence: "low"
+      rationale: "All four runs propose 22 to 30 C, and the tally is unanimous at 4 of 4 with low confidence.
+        Seriously Fish recommends 23 to 27 C, the Nordic register 23 to 28 C, FishProfiles 22 to 28 C and the
+        laboratory study used 24 C with approximately 1 C variation. Inclusion of the decided natural range
+        extends the upper limit to 30 C; none of these sources demonstrates years of good health at that
+        endpoint."
+      sources:
+        - kind: "database"
+          title: "Seriously Fish: Pundamilia nyererei"
+          url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Nordiska Ciklidsallskapet artregister: Pundamilia nyererei"
+          url: "https://ciklid.org/artregister/art.php?ID=190"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "FishBase: Haplochromis nyererei species summary, including its Pundamilia taxonomic placement"
+          url: "https://www.fishbase.se/summary/Pundamilia-nyererei.html"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "FishProfiles: Pundamilia nyererei"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Pundamilia_nyererei/"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Van der Sluijs et al. (2008). Female mating preference functions predict sexual selection against
+            hybrids between sibling species of cichlid fish."
+          url: "https://doi.org/10.1098/rstb.2008.0045"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "AquaBota: Haplochromis nyererei husbandry sheet"
+          url: "https://www.aquabota.com/fr/cichlides-africains/20979-haplochromis-nyererei-4-6cm.html"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Cichlid Fish Forum profile"
+          url: "https://www.cichlid-forum.com/posts/3155209"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of
+            Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Victoria: physical and chemical data after
+            EAFRO (1952, 1954), Graham (1929) and Talling and Talling (1965)."
+          url: "https://www.fao.org/4/t0473e/T0473E12.htm"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Orina, P. S., Onyango, D. M., Lungayia, H., Oduor, A., Sifuna, A. W., Otuya, P., Owigar, R. A.,
+            Kowenje, C. B. and Hinzano, S. M. (2020). Water quality of selected fishing beaches of Lake
+            Victoria Kenyan Gulf. Open Journal of Ecology 10, 22-35."
+          url: "https://doi.org/10.4236/oje.2020.101002"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "BCO-DMO dataset 931936, Metagenomic Time Series of Winam Gulf, Lake Victoria from 2022-2023 (pH,
+            temperature, conductivity)."
+          url: "https://erddap.bco-dmo.org/erddap/tabledap/bcodmo_dataset_931936_v1"
+          accessed: "2026-10-13"
+      evidence:
+        - source:
+            kind: "database"
+            title: "Seriously Fish: Pundamilia nyererei"
+            url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+            accessed: "2026-10-13"
+          value:
+            min: 23
+            max: 27
+          note: "Aquarium recommendation."
+        - source:
+            kind: "database"
+            title: "Nordiska Ciklidsallskapet artregister: Pundamilia nyererei"
+            url: "https://ciklid.org/artregister/art.php?ID=190"
+            accessed: "2026-10-13"
+          value:
+            min: 23
+            max: 28
+          note: "Aquarium recommendation."
+        - source:
+            kind: "database"
+            title: "FishBase: Haplochromis nyererei species summary, including its Pundamilia taxonomic placement"
+            url: "https://www.fishbase.se/summary/Pundamilia-nyererei.html"
+            accessed: "2026-10-13"
+          value:
+            min: 22
+            max: 28
+          note: "Database temperature band, not a multiyear tolerance experiment."
+        - source:
+            kind: "website"
+            title: "Cichlid Fish Forum profile"
+            url: "https://www.cichlid-forum.com/posts/3155209"
+            accessed: "2026-10-13"
+          value:
+            min: 23.3
+            max: 25.6
+          note: "74 to 78 F, Makobe Island form"
+        - source:
+            kind: "database"
+            title: "FishProfiles: Pundamilia nyererei"
+            url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Pundamilia_nyererei/"
+            accessed: "2026-10-13"
+          value:
+            min: 22
+            max: 28
+          note: "Aquarium care range."
+        - source:
+            kind: "literature"
+            title: "Van der Sluijs et al. (2008). Female mating preference functions predict sexual selection against
+              hybrids between sibling species of cichlid fish."
+            url: "https://doi.org/10.1098/rstb.2008.0045"
+            accessed: "2026-10-13"
+          value:
+            min: 23
+            max: 25
+          note: "Laboratory maintenance at 24 C with a 1 C variation; not a tolerance experiment."
+        - source:
+            kind: "website"
+            title: "AquaBota: Haplochromis nyererei husbandry sheet"
+            url: "https://www.aquabota.com/fr/cichlides-africains/20979-haplochromis-nyererei-4-6cm.html"
+            accessed: "2026-10-13"
+          value:
+            min: 24
+            max: 27
+          note: "Aquarium care range, not habitat measurements."
+        - source:
+            kind: "literature"
+            title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of
+              Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Victoria: physical and chemical data after
+              EAFRO (1952, 1954), Graham (1929) and Talling and Talling (1965)."
+            url: "https://www.fao.org/4/t0473e/T0473E12.htm"
+            accessed: "2026-10-13"
+          value:
+            min: 23
+            max: 28
+          note: "Historical lake surface measurements summarized by FAO. Natural baseline only, not a chronic aquarium
+            endpoint test."
+        - source:
+            kind: "literature"
+            title: "Orina, P. S., Onyango, D. M., Lungayia, H., Oduor, A., Sifuna, A. W., Otuya, P., Owigar, R. A.,
+              Kowenje, C. B. and Hinzano, S. M. (2020). Water quality of selected fishing beaches of Lake
+              Victoria Kenyan Gulf. Open Journal of Ecology 10, 22-35."
+            url: "https://doi.org/10.4236/oje.2020.101002"
+            accessed: "2026-10-13"
+          value:
+            min: 23.4
+            max: 29.5
+          note: "Reported Kenyan beach means, not species-specific collection stations. Natural baseline only, not a
+            chronic aquarium endpoint test."
+        - source:
+            kind: "database"
+            title: "BCO-DMO dataset 931936, Metagenomic Time Series of Winam Gulf, Lake Victoria from 2022-2023 (pH,
+              temperature, conductivity)."
+            url: "https://erddap.bco-dmo.org/erddap/tabledap/bcodmo_dataset_931936_v1"
+            accessed: "2026-10-13"
+          value:
+            min: 24.8
+            max: 29.7
+          note: "Dataset actual_range metadata across sampled stations and dates. Natural baseline only, not a chronic
+            aquarium endpoint test."
+      verification:
+        method: "unanimous"
+        votes:
+          agree: 4
+          total: 4
+  ph:
+    value:
+      min: 6.8
+      max: 9.4
+    confidence: "high"
+    rationale: "The decided lake-wide range is pH 6.8 to 9.4. FAO reports open-lake pH 8.0 to 8.5 and gulf values
+      up to 9.0; Orina and colleagues report beach means of 7.08 to 9.3, with uncertainty reaching 9.4. The
+      BCO-DMO series spans 6.7 to 9.0, wider at the lower end than the retained range; that low harbour
+      endpoint is excluded from the curated envelope. Photosynthesis, place and sampling time affect pH."
+    sources:
+      - kind: "literature"
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of
+          Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Victoria: physical and chemical data after
+          EAFRO (1952, 1954), Graham (1929) and Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E12.htm"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Deirmendjian, L., Descy, J.-P., Morana, C., Okello, W., Stoyneva-Gaertner, M. P., Bouillon, S. and
+          Borges, A. V. (2021). Limnological changes in Lake Victoria since the mid-20th century. Freshwater
+          Biology 66, 1630-1647."
+        url: "https://doi.org/10.1111/fwb.13780"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Mbonde, A. S., Sitoki, L. and Kurmayer, R. (2015). Phytoplankton composition and microcystin
+          concentrations in open and closed bays of Lake Victoria, Tanzania. Aquatic Ecosystem Health and
+          Management (Table 1)."
+        url: "https://doi.org/10.1080/14634988.2015.1011030"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Orina, P. S., Onyango, D. M., Lungayia, H., Oduor, A., Sifuna, A. W., Otuya, P., Owigar, R. A.,
+          Kowenje, C. B. and Hinzano, S. M. (2020). Water quality of selected fishing beaches of Lake Victoria
+          Kenyan Gulf. Open Journal of Ecology 10, 22-35."
+        url: "https://doi.org/10.4236/oje.2020.101002"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "BCO-DMO dataset 931936, Metagenomic Time Series of Winam Gulf, Lake Victoria from 2022-2023 (pH,
+          temperature, conductivity)."
+        url: "https://erddap.bco-dmo.org/erddap/tabledap/bcodmo_dataset_931936_v1"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of
+            Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Victoria: physical and chemical data after
+            EAFRO (1952, 1954), Graham (1929) and Talling and Talling (1965)."
+          url: "https://www.fao.org/4/t0473e/T0473E12.htm"
+          accessed: "2026-10-13"
+        value:
+          min: 8
+          max: 9
+        note: "Open lake 8.0 to 8.5 and historical Kavirondo Gulf up to 9.0."
+      - source:
+          kind: "literature"
+          title: "Orina, P. S., Onyango, D. M., Lungayia, H., Oduor, A., Sifuna, A. W., Otuya, P., Owigar, R. A.,
+            Kowenje, C. B. and Hinzano, S. M. (2020). Water quality of selected fishing beaches of Lake
+            Victoria Kenyan Gulf. Open Journal of Ecology 10, 22-35."
+          url: "https://doi.org/10.4236/oje.2020.101002"
+          accessed: "2026-10-13"
+        value:
+          min: 7.08
+          max: 9.3
+        note: "Reported beach means; maximum uncertainty reaches 9.4."
+      - source:
+          kind: "database"
+          title: "BCO-DMO dataset 931936, Metagenomic Time Series of Winam Gulf, Lake Victoria from 2022-2023 (pH,
+            temperature, conductivity)."
+          url: "https://erddap.bco-dmo.org/erddap/tabledap/bcodmo_dataset_931936_v1"
+          accessed: "2026-10-13"
+        value:
+          min: 6.7
+          max: 9
+        note: "Full dataset range; the curated natural envelope excludes the lower outlier."
+    verification:
+      method: "waterbody"
+      waterbody: "lake-victoria"
+    tolerance:
+      value:
+        min: 6.8
+        max: 9.4
+      confidence: "low"
+      rationale: "All four runs propose pH 6.8 to 9.4, and the tally is unanimous at 4 of 4 with low confidence.
+        Seriously Fish gives 7.0 to 8.5, the Nordic register 7.0 to 8.0, FishFish 7.6 to 8.4 and FishProfiles
+        8.0 to 9.0. Both outer endpoints are included to contain the decided natural envelope, rather than
+        established by a chronic aquarium trial. Stable conditions in the overlapping alkaline care bands have
+        stronger support."
+      sources:
+        - kind: "database"
+          title: "Seriously Fish: Pundamilia nyererei"
+          url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "FishFish: Pundamilia nyererei, collaborative husbandry record"
+          url: "https://www.fishfish.fr/poisson/pundamilia-nyererei"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Nordiska Ciklidsallskapet artregister: Pundamilia nyererei"
+          url: "https://ciklid.org/artregister/art.php?ID=190"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "FishProfiles, Pundamilia nyererei"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Pundamilia_nyererei/"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Home of Cichlids: Flameback Cichlid species care sheet"
+          url: "https://homeofcichlids.com.au/product/flameback/"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "NageoireBleue: Nyerere Cichlid husbandry sheet"
+          url: "https://www.nageoirebleue.com/en/products/cichlide-nyererei-livraison-seulement"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Cichlid Fish Forum profile"
+          url: "https://www.cichlid-forum.com/posts/3155209"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of
+            Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Victoria: physical and chemical data after
+            EAFRO (1952, 1954), Graham (1929) and Talling and Talling (1965)."
+          url: "https://www.fao.org/4/t0473e/T0473E12.htm"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Orina, P. S., Onyango, D. M., Lungayia, H., Oduor, A., Sifuna, A. W., Otuya, P., Owigar, R. A.,
+            Kowenje, C. B. and Hinzano, S. M. (2020). Water quality of selected fishing beaches of Lake
+            Victoria Kenyan Gulf. Open Journal of Ecology 10, 22-35."
+          url: "https://doi.org/10.4236/oje.2020.101002"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "BCO-DMO dataset 931936, Metagenomic Time Series of Winam Gulf, Lake Victoria from 2022-2023 (pH,
+            temperature, conductivity)."
+          url: "https://erddap.bco-dmo.org/erddap/tabledap/bcodmo_dataset_931936_v1"
+          accessed: "2026-10-13"
+      evidence:
+        - source:
+            kind: "database"
+            title: "Seriously Fish: Pundamilia nyererei"
+            url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+            accessed: "2026-10-13"
+          value:
+            min: 7
+            max: 8.5
+          note: "Aquarium recommendation."
+        - source:
+            kind: "database"
+            title: "FishFish: Pundamilia nyererei, collaborative husbandry record"
+            url: "https://www.fishfish.fr/poisson/pundamilia-nyererei"
+            accessed: "2026-10-13"
+          value:
+            min: 7.6
+            max: 8.4
+          note: "Collaborative aquarium recommendation."
+        - source:
+            kind: "database"
+            title: "Nordiska Ciklidsallskapet artregister: Pundamilia nyererei"
+            url: "https://ciklid.org/artregister/art.php?ID=190"
+            accessed: "2026-10-13"
+          value:
+            min: 7
+            max: 8
+          note: "Aquarium recommendation."
+        - source:
+            kind: "database"
+            title: "FishProfiles Pundamilia nyererei"
+            url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Pundamilia_nyererei/"
+            accessed: "2026-10-13"
+          value:
+            min: 8
+            max: 9
+        - source:
+            kind: "website"
+            title: "Cichlid Fish Forum profile"
+            url: "https://www.cichlid-forum.com/posts/3155209"
+            accessed: "2026-10-13"
+          value:
+            min: 7.2
+            max: 8.6
+        - source:
+            kind: "website"
+            title: "Home of Cichlids: Flameback Cichlid species care sheet"
+            url: "https://homeofcichlids.com.au/product/flameback/"
+            accessed: "2026-10-13"
+          value:
+            min: 7.5
+            max: 8.5
+          note: "Aquarium care range."
+        - source:
+            kind: "website"
+            title: "NageoireBleue: Nyerere Cichlid husbandry sheet"
+            url: "https://www.nageoirebleue.com/en/products/cichlide-nyererei-livraison-seulement"
+            accessed: "2026-10-13"
+          value:
+            min: 7.5
+            max: 8.4
+          note: "Aquarium care range, not habitat measurements."
+        - source:
+            kind: "literature"
+            title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of
+              Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Victoria: physical and chemical data after
+              EAFRO (1952, 1954), Graham (1929) and Talling and Talling (1965)."
+            url: "https://www.fao.org/4/t0473e/T0473E12.htm"
+            accessed: "2026-10-13"
+          value:
+            min: 8
+            max: 9
+          note: "Open lake 8.0 to 8.5 and historical Kavirondo Gulf up to 9.0. Natural baseline only, not a chronic
+            aquarium endpoint test."
+        - source:
+            kind: "literature"
+            title: "Orina, P. S., Onyango, D. M., Lungayia, H., Oduor, A., Sifuna, A. W., Otuya, P., Owigar, R. A.,
+              Kowenje, C. B. and Hinzano, S. M. (2020). Water quality of selected fishing beaches of Lake
+              Victoria Kenyan Gulf. Open Journal of Ecology 10, 22-35."
+            url: "https://doi.org/10.4236/oje.2020.101002"
+            accessed: "2026-10-13"
+          value:
+            min: 7.08
+            max: 9.3
+          note: "Reported beach means; maximum uncertainty reaches 9.4. Natural baseline only, not a chronic aquarium
+            endpoint test."
+        - source:
+            kind: "database"
+            title: "BCO-DMO dataset 931936, Metagenomic Time Series of Winam Gulf, Lake Victoria from 2022-2023 (pH,
+              temperature, conductivity)."
+            url: "https://erddap.bco-dmo.org/erddap/tabledap/bcodmo_dataset_931936_v1"
+            accessed: "2026-10-13"
+          value:
+            min: 6.7
+            max: 9
+          note: "Full dataset range; the curated natural envelope excludes the lower outlier. Natural baseline only, not
+            a chronic aquarium endpoint test."
+      verification:
+        method: "unanimous"
+        votes:
+          agree: 4
+          total: 4
+  ghDgh:
+    value:
+      min: 1
+      max: 3
+    confidence: "high"
+    rationale: "The decided lake-wide range is 1 to 3 dGH. FAO records historical calcium of 5 to 7 mg/L and
+      magnesium of 2.3 to 3.5 mg/L, equivalent to 1.23 to 1.79 dGH using Ca/7.14 + Mg/4.34. Its Talling and
+      Talling record gives about 1.38 dGH. These open-lake values support naturally soft water; the decided
+      rounded lake-wide envelope also includes gulf measurements. Alkalinity must not be substituted for
+      calcium and magnesium hardness."
+    sources:
+      - kind: "literature"
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of
+          Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Victoria: physical and chemical data after
+          EAFRO (1952, 1954), Graham (1929) and Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E12.htm"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of
+            Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Victoria: physical and chemical data after
+            EAFRO (1952, 1954), Graham (1929) and Talling and Talling (1965)."
+          url: "https://www.fao.org/4/t0473e/T0473E12.htm"
+          accessed: "2026-10-13"
+        value:
+          min: 1.23
+          max: 1.79
+        note: "Calculated from historical calcium and magnesium bounds; not the rounded lake-wide envelope."
+    verification:
+      method: "waterbody"
+      waterbody: "lake-victoria"
+    tolerance:
+      value:
+        min: 1
+        max: 15
+      confidence: "low"
+      rationale: "Generator, checker-a, checker-b, tiebreaker-1 and tiebreaker-2 propose 1 to 15 dGH; checker-c
+        proposes 1 to 20 dGH. The tally fixes 1 to 15 dGH by qualified majority, 5 of 6, with low confidence.
+        Seriously Fish gives 4 to 15 dGH, FishFish 9 to 12 dGH and Akvazin a soft-water point of 1.5 dGH.
+        Uncle Bill's 72 to 270 ppm converts to about 4.04 to 15.13 dGH if it means CaCO3 equivalents. The
+        lower endpoint contains the natural 1 to 3 dGH. FishProfiles gives the wider 15 to 20 dH
+        recommendation; AquaBota gives 8 to 16 dGH, NageoireBleue 8 to 18 dGH, and Fishkeeper an upper limit
+        of 25 dH without a lower bound. These higher ceilings have no documented long-term endpoint tests and
+        do not overturn the decided upper limit. AquaExperience gives the narrower 5 to 12 dGH band but has
+        unrelated factual inconsistencies."
+      sources:
+        - kind: "database"
+          title: "Seriously Fish: Pundamilia nyererei"
+          url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "FishFish: Pundamilia nyererei, collaborative husbandry record"
+          url: "https://www.fishfish.fr/poisson/pundamilia-nyererei"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "FishProfiles.com: Pundamilia nyererei"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Pundamilia_nyererei/"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "AquaExperience species care sheet: Pundamilia nyererei"
+          url: "https://aquaexperience.it/pundamilia-nyererei-it.html"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Maidenhead Aquatics Fishkeeper: Hap Nyererei, Pundamilia nyererei"
+          url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/hap-nyererei"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "AquaBota species care sheet: Haplochromis nyererei, 4 to 6 cm"
+          url: "https://www.aquabota.com/fr/cichlides-africains/20979-haplochromis-nyererei-4-6cm.html"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "NageoireBleue species care sheet: Nyerere Cichlid, Pundamilia nyererei"
+          url: "https://www.nageoirebleue.com/en/products/cichlide-nyererei-livraison-seulement"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Uncle Bill's: Pundamilia Nyererei, structured aquarium care data."
+          url: "https://www.unclebills.com/pets-and-pet-supplies/aquatics/popular-freshwater-fish/popular-freshwater-fi\
+            sh/2019/07/24/pundamilia-nyererei"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Dolenc, B. Pundamilia nyererei. Akvazin species database, preserved 2007 version."
+          url: "https://www.akvazin.si/?ID=150&kat=030103"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of
+            Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Victoria: physical and chemical data after
+            EAFRO (1952, 1954), Graham (1929) and Talling and Talling (1965)."
+          url: "https://www.fao.org/4/t0473e/T0473E12.htm"
+          accessed: "2026-10-13"
+      evidence:
+        - source:
+            kind: "database"
+            title: "Seriously Fish: Pundamilia nyererei"
+            url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+            accessed: "2026-10-13"
+          value:
+            min: 4
+            max: 15
+          note: "Aquarium recommendation."
+        - source:
+            kind: "database"
+            title: "FishFish: Pundamilia nyererei, collaborative husbandry record"
+            url: "https://www.fishfish.fr/poisson/pundamilia-nyererei"
+            accessed: "2026-10-13"
+          value:
+            min: 9
+            max: 12
+          note: "Collaborative aquarium recommendation."
+        - source:
+            kind: "database"
+            title: "FishProfiles.com: Pundamilia nyererei"
+            url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Pundamilia_nyererei/"
+            accessed: "2026-10-13"
+          value:
+            min: 15
+            max: 20
+          note: "Conflicting harder-water recommendation, excluded from the adopted upper limit."
+        - source:
+            kind: "website"
+            title: "AquaBota: Haplochromis nyererei husbandry sheet"
+            url: "https://www.aquabota.com/fr/cichlides-africains/20979-haplochromis-nyererei-4-6cm.html"
+            accessed: "2026-10-13"
+          value:
+            min: 8
+            max: 16
+          note: "Aquarium care range, not habitat measurements."
+        - source:
+            kind: "website"
+            title: "AquaExperience species care sheet: Pundamilia nyererei"
+            url: "https://aquaexperience.it/pundamilia-nyererei-it.html"
+            accessed: "2026-10-13"
+          value:
+            min: 5
+            max: 12
+          note: "Published care range; provides no controlled long-term tolerance trial and contains unrelated factual
+            inconsistencies."
+        - source:
+            kind: "website"
+            title: "Maidenhead Aquatics Fishkeeper: Hap Nyererei, Pundamilia nyererei"
+            url: "https://www.fishkeeper.co.uk/fish/freshwater/cichlids/hap-nyererei"
+            accessed: "2026-10-13"
+          value:
+            min: null
+            max: 25
+          note: "Only the upper limit is stated; null preserves the unreported lower bound. The source labels hardness
+            dH."
+        - source:
+            kind: "website"
+            title: "NageoireBleue species care sheet: Nyerere Cichlid, Pundamilia nyererei"
+            url: "https://www.nageoirebleue.com/en/products/cichlide-nyererei-livraison-seulement"
+            accessed: "2026-10-13"
+          value:
+            min: 8
+            max: 18
+          note: "Commercial care recommendation without a stated experimental basis."
+        - source:
+            kind: "website"
+            title: "Uncle Bill's: Pundamilia Nyererei, structured aquarium care data."
+            url: "https://www.unclebills.com/pets-and-pet-supplies/aquatics/popular-freshwater-fish/popular-freshwater-fi\
+              sh/2019/07/24/pundamilia-nyererei"
+            accessed: "2026-10-13"
+          value:
+            min: 4.04
+            max: 15.13
+          note: "72 to 270 ppm divided by 17.848 ppm per dGH; assumes the unspecified hardness scale uses CaCO3
+            equivalents."
+        - source:
+            kind: "database"
+            title: "Dolenc, B. Pundamilia nyererei. Akvazin species database, preserved 2007 version."
+            url: "https://www.akvazin.si/?ID=150&kat=030103"
+            accessed: "2026-10-13"
+          value:
+            min: 1.5
+            max: 1.5
+          note: "Species description gives a soft-water point at 1.5 dGH, without a tested long-term range."
+        - source:
+            kind: "literature"
+            title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of
+              Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Victoria: physical and chemical data after
+              EAFRO (1952, 1954), Graham (1929) and Talling and Talling (1965)."
+            url: "https://www.fao.org/4/t0473e/T0473E12.htm"
+            accessed: "2026-10-13"
+          value:
+            min: 1.23
+            max: 1.79
+          note: "Calculated from historical calcium and magnesium bounds; not the rounded lake-wide envelope. Natural
+            baseline only, not a chronic aquarium endpoint test."
+      verification:
+        method: "qualified-majority"
+        votes:
+          agree: 5
+          total: 6
+  khDkh:
+    value:
+      min: 2
+      max: 6
+    confidence: "high"
+    rationale: "The decided lake-wide alkalinity envelope is 2 to 6 dKH. FAO reports bicarbonate-dominated values
+      of 54.9 to 67.1 mg/L, equivalent to approximately 2.52 to 3.08 dKH using meq/L times 2.8. This directly
+      supports the open-lake segment; the wider decided envelope includes gulf observations. This is a measure
+      of buffering, separate from GH."
+    sources:
+      - kind: "literature"
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of
+          Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Victoria: physical and chemical data after
+          EAFRO (1952, 1954), Graham (1929) and Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E12.htm"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of
+            Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Victoria: physical and chemical data after
+            EAFRO (1952, 1954), Graham (1929) and Talling and Talling (1965)."
+          url: "https://www.fao.org/4/t0473e/T0473E12.htm"
+          accessed: "2026-10-13"
+        value:
+          min: 2.52
+          max: 3.08
+        note: "Calculated from bicarbonate-dominated alkalinity; not the full gulf envelope."
+    tolerance:
+      value:
+        min: 2
+        max: 12
+      confidence: "low"
+      rationale: "Generator, checker-a, checker-c, tiebreaker-1 and tiebreaker-2 propose 2 to 12 dKH; checker-b
+        proposes 2 to 6 dKH. The tally fixes 2 to 12 dKH by qualified majority, 5 of 6, with low confidence.
+        AquaBota and NageoireBleue explicitly recommend 6 to 12 dKH, AquaExperience 4 to 10 dKH and Akvazin
+        states 2.5 dKH. The lower endpoint contains the natural 2 to 6 dKH. Water and Garden gives the wider
+        10 to 20 kH band with no clear unit and text about an unrelated Firefish; Aquarium.org.il gives the
+        wider 14 to 24 KH band with uncertain stock identity. Neither justifies raising the ceiling. Checker-a
+        derives KH from GH, which is not a valid conversion and is excluded from the evidence. The adopted
+        endpoints remain provisional because no longitudinal aquarium study was found."
+      sources:
+        - kind: "website"
+          title: "NageoireBleue: Nyerere's Cichlid species care sheet"
+          url: "https://www.nageoirebleue.com/en/products/cichlide-nyererei-livraison-seulement"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "Water and Garden: Pundamilia nyererei structured husbandry sheet"
+          url: "https://waterandgarden.hu/termek/viktoria-tavi-voroshatu-zebrasuger-pundamilia-nyererei/"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Seriously Fish, Pundamilia nyererei"
+          url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "FishProfiles, Pundamilia nyererei"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Pundamilia_nyererei/"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "AquaBota: Haplochromis nyererei husbandry sheet"
+          url: "https://www.aquabota.com/fr/cichlides-africains/20979-haplochromis-nyererei-4-6cm.html"
+          accessed: "2026-10-13"
+        - kind: "website"
+          title: "AquaExperience species care sheet: Pundamilia nyererei"
+          url: "https://aquaexperience.it/pundamilia-nyererei-it.html"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Dolenc, B. Pundamilia nyererei. Akvazin species database, preserved 2007 version."
+          url: "https://www.akvazin.si/?ID=150&kat=030103"
+          accessed: "2026-10-13"
+        - kind: "database"
+          title: "Aquarium.org.il Wikifish: Pundamilia nyererei care profile"
+          url: "https://www.aquarium.org.il/%D7%95%D7%99%D7%A7%D7%99%D7%A4%D7%99%D7%A9-%D7%92%D7%91-%D7%90%D7%A9-436"
+          accessed: "2026-10-13"
+        - kind: "literature"
+          title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of
+            Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Victoria: physical and chemical data after
+            EAFRO (1952, 1954), Graham (1929) and Talling and Talling (1965)."
+          url: "https://www.fao.org/4/t0473e/T0473E12.htm"
+          accessed: "2026-10-13"
+      evidence:
+        - source:
+            kind: "website"
+            title: "NageoireBleue: Nyerere's Cichlid species care sheet"
+            url: "https://www.nageoirebleue.com/en/products/cichlide-nyererei-livraison-seulement"
+            accessed: "2026-10-13"
+          value:
+            min: 6
+            max: 12
+          note: "Explicit dKH recommendation in the species care sheet."
+        - source:
+            kind: "website"
+            title: "Water and Garden: Pundamilia nyererei structured husbandry sheet"
+            url: "https://waterandgarden.hu/termek/viktoria-tavi-voroshatu-zebrasuger-pundamilia-nyererei/"
+            accessed: "2026-10-13"
+          value:
+            min: 10
+            max: 20
+          note: "Listed as kH without an explicit degree unit; treated provisionally as dKH, with cross-species text
+            contamination reducing reliability."
+        - source:
+            kind: "database"
+            title: "Aquarium.org.il Wikifish: Pundamilia nyererei care profile"
+            url: "https://www.aquarium.org.il/%D7%95%D7%99%D7%A7%D7%99%D7%A4%D7%99%D7%A9-%D7%92%D7%91-%D7%90%D7%A9-436"
+            accessed: "2026-10-13"
+          value:
+            min: 14
+            max: 24
+          note: "Published KH recommendation; not a controlled long-term result and stock identity is problematic."
+        - source:
+            kind: "website"
+            title: "AquaBota: Haplochromis nyererei husbandry sheet"
+            url: "https://www.aquabota.com/fr/cichlides-africains/20979-haplochromis-nyererei-4-6cm.html"
+            accessed: "2026-10-13"
+          value:
+            min: 6
+            max: 12
+          note: "Aquarium care range, not habitat measurements."
+        - source:
+            kind: "website"
+            title: "AquaExperience species care sheet: Pundamilia nyererei"
+            url: "https://aquaexperience.it/pundamilia-nyererei-it.html"
+            accessed: "2026-10-13"
+          value:
+            min: 4
+            max: 10
+          note: "Care range is lower than the other two upper bounds; no underlying KH experiment is provided."
+        - source:
+            kind: "database"
+            title: "Dolenc, B. Pundamilia nyererei. Akvazin species database, preserved 2007 version."
+            url: "https://www.akvazin.si/?ID=150&kat=030103"
+            accessed: "2026-10-13"
+          value:
+            min: 2.5
+            max: 2.5
+          note: "Explicit species-specific carbonate-hardness point; the sheet does not separate habitat chemistry from
+            a validated aquarium tolerance experiment."
+        - source:
+            kind: "literature"
+            title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of
+              Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Victoria: physical and chemical data after
+              EAFRO (1952, 1954), Graham (1929) and Talling and Talling (1965)."
+            url: "https://www.fao.org/4/t0473e/T0473E12.htm"
+            accessed: "2026-10-13"
+          value:
+            min: 2.52
+            max: 3.08
+          note: "Calculated from bicarbonate-dominated alkalinity; not the full gulf envelope. Natural baseline only,
+            not a chronic aquarium endpoint test."
+      verification:
+        method: "qualified-majority"
+        votes:
+          agree: 5
+          total: 6
+  maxSizeCm:
+    value:
+      male: 12
+      female: 9
+    confidence: "medium"
+    rationale: "Generator, checker-b and checker-c propose male 12 cm and female 9 cm; checker-a proposes 11 and 9
+      cm. Retain 12 and 9 cm as typical aquarium planning maxima: FishFish gives these sex-specific figures,
+      while AquaInfo and the Nordic register support about 12 cm without separating sexes. The female maximum
+      rests chiefly on one collaborative record and is approximate. FishBase gives 7.7 cm SL and Seriously
+      Fish 8 cm SL, excluding the tail; these are not directly comparable total lengths. The multi-species
+      mating study reports initial males at 9.9 to 10.9 cm TL and spawning females at 6.5 to 9.7 cm TL, a
+      wider female range than the retained 9 cm typical value but not a species-specific maximum series. The
+      hobby claim of 17.8 cm aquarium males is excluded as atypical and poorly supported."
+    sources:
+      - kind: "database"
+        title: "FishFish: Pundamilia nyererei, collaborative husbandry record"
+        url: "https://www.fishfish.fr/poisson/pundamilia-nyererei"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsallskapet artregister: Pundamilia nyererei"
+        url: "https://ciklid.org/artregister/art.php?ID=190"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "AquaInfo: Pundamilia nyererei, husbandry account credited to IG-Victoriasee Cichliden"
+        url: "https://www.aquainfo.nl/artikel/pundamilia-nyererei/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Haplochromis nyererei species summary, including its Pundamilia taxonomic placement"
+        url: "https://www.fishbase.se/summary/Pundamilia-nyererei.html"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Correlating head shape with ecological variables in rock-dwelling haplochromines from Lake Victoria"
+        url: "https://doi.org/10.1046/j.1095-8312.2002.00046.x"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Sympatry and parapatry among rocky reef cichlids of Lake Victoria explained by female mating
+          preferences"
+        url: "https://doi.org/10.1093/jeb/voad006"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish, Pundamilia nyererei"
+        url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Home of Cichlids: Flameback Cichlid species care sheet"
+        url: "https://homeofcichlids.com.au/product/flameback/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishProfiles: Pundamilia nyererei"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Pundamilia_nyererei/"
+        accessed: "2026-10-13"
+      - kind: "model-knowledge"
+        title: "Checker inference where species-specific measurements were not found"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "AquaBota: Haplochromis nyererei husbandry sheet"
+        url: "https://www.aquabota.com/fr/cichlides-africains/20979-haplochromis-nyererei-4-6cm.html"
+        accessed: "2026-10-13"
+      - kind: "model-knowledge"
+        title: "Checker interpretation of the feature rubric"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "FishFish: Pundamilia nyererei, collaborative husbandry record"
+          url: "https://www.fishfish.fr/poisson/pundamilia-nyererei"
+          accessed: "2026-10-13"
+        value:
+          male: 12
+          female: 9
+        note: "Sex-specific aquarium lengths."
+      - source:
+          kind: "database"
+          title: "Nordiska Ciklidsallskapet artregister: Pundamilia nyererei"
+          url: "https://ciklid.org/artregister/art.php?ID=190"
+          accessed: "2026-10-13"
+        value:
+          male: 12
+        note: "Species length, sex unspecified; supports the male planning size."
+      - source:
+          kind: "database"
+          title: "AquaInfo: Pundamilia nyererei, husbandry account credited to IG-Victoriasee Cichliden"
+          url: "https://www.aquainfo.nl/artikel/pundamilia-nyererei/"
+          accessed: "2026-10-13"
+        value:
+          male: 12
+        note: "Species maximum around 12 cm, not separated by sex."
+      - source:
+          kind: "literature"
+          title: "Correlating head shape (Biol. J. Linn. Soc. 2002)"
+          url: "https://doi.org/10.1046/j.1095-8312.2002.00046.x"
+          accessed: "2026-10-13"
+        value:
+          male: 10.3
+          female: 9
+        note: "largest mature male 103 mm SL; female value not stated, estimated from the lab data"
+      - source:
+          kind: "literature"
+          title: "Sympatry and parapatry among rocky reef cichlids (J. Evol. Biol. 2024)"
+          url: "https://doi.org/10.1093/jeb/voad006"
+          accessed: "2026-10-13"
+        value:
+          male: 10.9
+          female: 9.7
+        note: "total length of laboratory fish"
+      - source:
+          kind: "database"
+          title: "Seriously Fish Pundamilia nyererei"
+          url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+          accessed: "2026-10-13"
+        value:
+          male: 8
+          female: 8
+        note: "standard length"
+      - source:
+          kind: "database"
+          title: "FishBase Pundamilia nyererei"
+          url: "https://www.fishbase.se/summary/Pundamilia-nyererei.html"
+          accessed: "2026-10-13"
+        value:
+          male: 7.7
+          female: 7.7
+        note: "standard length, male or unsexed"
+      - source:
+          kind: "website"
+          title: "Home of Cichlids: Flameback Cichlid species care sheet"
+          url: "https://homeofcichlids.com.au/product/flameback/"
+          accessed: "2026-10-13"
+        value:
+          male: 12
+        note: "Upper end of the aquarium adult-size band; sexes are not quantified separately."
+      - source:
+          kind: "database"
+          title: "FishProfiles: Pundamilia nyererei"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Pundamilia_nyererei/"
+          accessed: "2026-10-13"
+        value:
+          male: 7
+          female: 7
+        note: "Smaller care-sheet values without a stated length convention."
+      - source:
+          kind: "model-knowledge"
+          title: "Checker inference where species-specific measurements were not found"
+          accessed: "2026-10-13"
+        value:
+          female: 9
+        note: "Provisional female planning size inferred from sexual size difference."
+      - source:
+          kind: "website"
+          title: "AquaBota: Haplochromis nyererei husbandry sheet"
+          url: "https://www.aquabota.com/fr/cichlides-africains/20979-haplochromis-nyererei-4-6cm.html"
+          accessed: "2026-10-13"
+        value:
+          male: 12
+          female: null
+        note: "Adult range 10 to 12 cm, without sex-specific maxima."
+      - source:
+          kind: "model-knowledge"
+          title: "Checker interpretation of the feature rubric"
+          accessed: "2026-10-13"
+        value:
+          male: 12
+          female: 9
+        note: "Female maximum estimated from smaller female size, not directly measured."
+  predation:
+    value: 0
+    confidence: "medium"
+    rationale: "Generator and tiebreaker-2 propose level 1; checker-a, checker-b, checker-c and tiebreaker-1
+      propose level 0. The tally decides 0 by qualified majority, 4 of 6, with medium confidence. Bouton's
+      feeding-study abstract, Maan's field study and Henning's ecological account identify zooplankton and
+      insects as main prey; FishBase reports algae and insects, without fish items. This fits level 0 with
+      chance fry uptake still possible. Akvazin includes small fish among feeds and two keeper reports
+      describe fry being eaten; these low-weight observations explain the level-1 proposals but do not
+      override the decided vote. Level 0 is a rubric interpretation, not proof that fry are always safe."
+    sources:
+      - kind: "literature"
+        title: "Fitness correlates of male coloration in a Lake Victoria cichlid fish"
+        url: "https://doi.org/10.1093/beheco/ark020"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Sympatry and parapatry among rocky reef cichlids of Lake Victoria explained by female mating
+          preferences"
+        url: "https://doi.org/10.1093/jeb/voad006"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase, Pundamilia nyererei species summary"
+        url: "https://www.fishbase.se/summary/Pundamilia-nyererei.html"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Henning et al. (2017). Genetic dissection of adaptive form and function in rapidly speciating cichlid
+          fishes."
+        url: "https://doi.org/10.1111/evo.13206"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Bouton, van Os and Witte (1998). Feeding performance of Lake Victoria rock cichlids: testing
+          predictions from morphology. Abstract only."
+        url: "https://doi.org/10.1006/jfbi.1998.0823"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: food items of Haplochromis nyererei"
+        url: "https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=7121&genus=Haplochromis&species=nyerere\
+          i"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aquario: Haplochromis nyererei husbandry sheet"
+        url: "https://aquario.me/fish/haplochromis-nyererei"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Pundamilia nyererei"
+        url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "AquaInfo: Pundamilia nyererei, account by IG-Victoriasee Cichliden"
+        url: "https://www.aquainfo.nl/artikel/pundamilia-nyererei/"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Tropical Fish Keeping: Crimson Tide Cichlid husbandry sheet"
+        url: "https://tropical-fish-keeping.com/crimson-tide-cichlid-pundamilia-nyererei.html"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Stelkens et al. (2009). Phenotypic novelty in experimental hybrids is predicted by the genetic
+          distance between species of cichlid fish."
+        url: "https://doi.org/10.1186/1471-2148-9-283"
+        accessed: "2026-10-13"
+      - kind: "forum"
+        title: "Forociclidos: Pundamilia nyererei aquarium keeping and breeding report, 2012"
+        url: "https://www.forociclidos.com/foro/viewtopic.php?t=1801"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Dolenc, B. Pundamilia nyererei. Akvazin species database, preserved 2007 version."
+        url: "https://www.akvazin.si/?ID=150&kat=030103"
+        accessed: "2026-10-13"
+      - kind: "forum"
+        title: "WaFishBox: The Journey of Breeding Freshwater Fish, aquarium breeding report."
+        url: "https://www.wafishbox.com/forums/threads/the-journey-of-breeding-freshwater-fish.7096/"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Bouton, van Os and Witte (1998). Feeding performance of Lake Victoria rock cichlids: testing
+            predictions from morphology. Abstract only."
+          url: "https://doi.org/10.1006/jfbi.1998.0823"
+          accessed: "2026-10-13"
+        value: 0
+        note: "Abstract supports invertebrate suction feeding; level 0 is a rubric interpretation, not a fry-feeding
+          test."
+      - source:
+          kind: "literature"
+          title: "Fitness correlates of male coloration in a Lake Victoria cichlid fish"
+          url: "https://doi.org/10.1093/beheco/ark020"
+          accessed: "2026-10-13"
+        value: 0
+        note: "Field diet dominated by zooplankton, with insects and Nostoc; accidental fry ingestion was not tested."
+      - source:
+          kind: "literature"
+          title: "Henning et al. (2017). Genetic dissection of adaptive form and function in rapidly speciating cichlid
+            fishes."
+          url: "https://doi.org/10.1111/evo.13206"
+          accessed: "2026-10-13"
+        value: 0
+        note: "Predominantly zooplankton and insects; no quantified fish-prey test."
+      - source:
+          kind: "database"
+          title: "FishBase: food items of Haplochromis nyererei"
+          url: "https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=7121&genus=Haplochromis&species=nyerere\
+            i"
+          accessed: "2026-10-13"
+        value: 0
+        note: "Seven listed food records concern algae and insects; absence of fish is not proof of zero fry
+          consumption."
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Pundamilia nyererei"
+          url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+          accessed: "2026-10-13"
+        value: 0
+        note: "Chiefly aquatic invertebrates and zooplankton; rubric mapping."
+      - source:
+          kind: "database"
+          title: "AquaInfo: Pundamilia nyererei, account by IG-Victoriasee Cichliden"
+          url: "https://www.aquainfo.nl/artikel/pundamilia-nyererei/"
+          accessed: "2026-10-13"
+        value: 0
+        note: "Insect larvae and bryozoans; rubric mapping."
+      - source:
+          kind: "database"
+          title: "Aquario: Haplochromis nyererei husbandry sheet"
+          url: "https://aquario.me/fish/haplochromis-nyererei"
+          accessed: "2026-10-13"
+        value: 0
+        note: "Explicit nonpredator category for small fish, without a stated observational method."
+      - source:
+          kind: "literature"
+          title: "Stelkens et al. (2009). Phenotypic novelty in experimental hybrids is predicted by the genetic
+            distance between species of cichlid fish."
+          url: "https://doi.org/10.1186/1471-2148-9-283"
+          accessed: "2026-10-13"
+        value: 0
+        note: "Methods describe a reef planktivore; no direct predation test."
+      - source:
+          kind: "database"
+          title: "Dolenc, B. Pundamilia nyererei. Akvazin species database, preserved 2007 version."
+          url: "https://www.akvazin.si/?ID=150&kat=030103"
+          accessed: "2026-10-13"
+        value: 1
+        note: "Small fish are included among suggested feeds, without a measured prey-size limit."
+      - source:
+          kind: "website"
+          title: "Tropical Fish Keeping: Crimson Tide Cichlid husbandry sheet"
+          url: "https://tropical-fish-keeping.com/crimson-tide-cichlid-pundamilia-nyererei.html"
+          accessed: "2026-10-13"
+        value: 1
+        note: "General hobby page mentions small fish but confuses other forms and gives an unusually large maximum
+          size."
+      - source:
+          kind: "forum"
+          title: "Forociclidos: Pundamilia nyererei aquarium keeping and breeding report, 2012"
+          url: "https://www.forociclidos.com/foro/viewtopic.php?t=1801"
+          accessed: "2026-10-13"
+        value: 1
+        note: "A keeper reports consuming escaped fry; exact prey sizes and routine frequency are unknown."
+      - source:
+          kind: "forum"
+          title: "WaFishBox: The Journey of Breeding Freshwater Fish, aquarium breeding report."
+          url: "https://www.wafishbox.com/forums/threads/the-journey-of-breeding-freshwater-fish.7096/"
+          accessed: "2026-10-13"
+        value: 1
+        note: "A keeper reports adult females consuming introduced albino young; exact sizes and frequency unknown."
+    verification:
+      method: "qualified-majority"
+      votes:
+        agree: 4
+        total: 6
+  diet:
+    value:
+      type: "invertivore"
+      bloatSensitive: false
+      foods:
+        - "Aquatic insect larvae"
+        - "Zooplankton"
+        - "Artemia"
+        - "Daphnia"
+        - "Balanced cichlid pellets with vegetable ingredients"
+    confidence: "medium"
+    rationale: "All four full-profile runs agree on invertivore and bloatSensitive false; the tally is unanimous,
+      4 of 4, with medium confidence. Bouton's feeding abstract and the studies by Maan, Henning and Svensson
+      support a diet dominated by plankton and other invertebrates. FishBase and several care databases use
+      omnivore because algae and plants also occur; its two older diet records report plant contributions of
+      55 and 69 percent, so the category must not imply an exclusively animal diet. FishProfiles discourages
+      high protein without documenting a specific bloat syndrome. False means that the special high-protein
+      conflict flag is not established, not that digestive disease is impossible. Food-list wording differs
+      among generator, checker-a, checker-b and checker-c; preserve the generator list exactly as the tally
+      decides."
+    sources:
+      - kind: "literature"
+        title: "Svensson et al. (2024, published online 2023). Sympatry and parapatry among rocky reef cichlids of
+          Lake Victoria explained by female mating preferences. Journal of Evolutionary Biology."
+        url: "https://doi.org/10.1093/jeb/voad006"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsallskapet artregister: Pundamilia nyererei"
+        url: "https://ciklid.org/artregister/art.php?ID=190"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "AquaInfo: Pundamilia nyererei, husbandry account credited to IG-Victoriasee Cichliden"
+        url: "https://www.aquainfo.nl/artikel/pundamilia-nyererei/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Haplochromis nyererei species summary, including its Pundamilia taxonomic placement"
+        url: "https://www.fishbase.se/summary/Pundamilia-nyererei.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Pundamilia nyererei"
+        url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishProfiles.com: Pundamilia nyererei"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Pundamilia_nyererei/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Fitness correlates of male coloration in a Lake Victoria cichlid fish"
+        url: "https://doi.org/10.1093/beheco/ark020"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Henning et al. (2017). Genetic dissection of adaptive form and function in rapidly speciating cichlid
+          fishes."
+        url: "https://doi.org/10.1111/evo.13206"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Bouton, van Os and Witte (1998). Feeding performance of Lake Victoria rock cichlids: testing
+          predictions from morphology. Abstract only."
+        url: "https://doi.org/10.1006/jfbi.1998.0823"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: diet composition of Haplochromis nyererei, after Fermon (1997)"
+        url: "https://www.fishbase.se/TrophicEco/DietCompoList.php?ID=6800&GenusName=Haplochromis&SpeciesName=nyerere\
+          i&fc=349&StockCode=7121"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: ecology of Haplochromis nyererei"
+        url: "https://www.fishbase.se/Ecology/FishEcologySummary.php?StockCode=7121&GenusName=Haplochromis&SpeciesNam\
+          e=nyererei"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Van der Sluijs et al. (2008). Female mating preference functions predict sexual selection against
+          hybrids between sibling species of cichlid fish."
+        url: "https://doi.org/10.1098/rstb.2008.0045"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Bouton, van Os and Witte (1998). Feeding performance of Lake Victoria rock cichlids: testing
+            predictions from morphology. Abstract only."
+          url: "https://doi.org/10.1006/jfbi.1998.0823"
+          accessed: "2026-10-13"
+        value:
+          type: "invertivore"
+        note: "Abstract identifies zooplankton and insect larvae."
+      - source:
+          kind: "literature"
+          title: "Fitness correlates of male coloration in a Lake Victoria cichlid fish"
+          url: "https://doi.org/10.1093/beheco/ark020"
+          accessed: "2026-10-13"
+        value:
+          type: "invertivore"
+        note: "Zooplankton predominates; insects and Nostoc are also recorded."
+      - source:
+          kind: "literature"
+          title: "Henning et al. (2017). Genetic dissection of adaptive form and function in rapidly speciating cichlid
+            fishes."
+          url: "https://doi.org/10.1111/evo.13206"
+          accessed: "2026-10-13"
+        value:
+          type: "invertivore"
+        note: "Zooplankton with a smaller insect contribution."
+      - source:
+          kind: "literature"
+          title: "Svensson et al. (2023, volume published 2024). Sympatry and parapatry among rocky reef cichlids of
+            Lake Victoria explained by female mating preferences."
+          url: "https://doi.org/10.1093/jeb/voad006"
+          accessed: "2026-10-13"
+        value:
+          type: "invertivore"
+        note: "Rocky-reef fish feeding largely on plankton and benthic invertebrates; bloat is not studied."
+      - source:
+          kind: "database"
+          title: "Nordiska Ciklidsallskapet artregister: Pundamilia nyererei"
+          url: "https://ciklid.org/artregister/art.php?ID=190"
+          accessed: "2026-10-13"
+        value:
+          type: "invertivore"
+          bloatSensitive: false
+        note: "Register recommends zooplankton and animal foods; no special sensitivity is reported."
+      - source:
+          kind: "database"
+          title: "AquaInfo: Pundamilia nyererei, account by IG-Victoriasee Cichliden"
+          url: "https://www.aquainfo.nl/artikel/pundamilia-nyererei/"
+          accessed: "2026-10-13"
+        value:
+          type: "invertivore"
+          bloatSensitive: false
+        note: "Animal prey with plant-containing supplementary feeds; no special sensitivity is reported."
+      - source:
+          kind: "database"
+          title: "FishBase: Haplochromis nyererei species summary, including its Pundamilia taxonomic placement"
+          url: "https://www.fishbase.se/summary/Pundamilia-nyererei.html"
+          accessed: "2026-10-13"
+        value:
+          type: "omnivore"
+        note: "Database reports algae and insects."
+      - source:
+          kind: "database"
+          title: "FishBase: diet composition of Haplochromis nyererei, after Fermon (1997)"
+          url: "https://www.fishbase.se/TrophicEco/DietCompoList.php?ID=6800&GenusName=Haplochromis&SpeciesName=nyerere\
+            i&fc=349&StockCode=7121"
+          accessed: "2026-10-13"
+        value:
+          type: "omnivore"
+        note: "Historical records list plant components of 55 and 69 percent; no locality information on this page."
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Pundamilia nyererei"
+          url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+          accessed: "2026-10-13"
+        value:
+          type: "invertivore"
+          bloatSensitive: false
+        note: "Uses an omnivore label, but main wild foods fit the invertivore rubric; bloat flag is an inference."
+      - source:
+          kind: "database"
+          title: "FishProfiles.com: Pundamilia nyererei"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Pundamilia_nyererei/"
+          accessed: "2026-10-13"
+        value:
+          type: "omnivore"
+        note: "Recommends protein restriction without documenting a species-specific bloat diagnosis."
+      - source:
+          kind: "literature"
+          title: "Van der Sluijs et al. (2008). Female mating preference functions predict sexual selection against
+            hybrids between sibling species of cichlid fish."
+          url: "https://doi.org/10.1098/rstb.2008.0045"
+          accessed: "2026-10-13"
+        value:
+          type: "omnivore"
+        note: "Captive ration combines shrimp, peas and pellets; not a natural feeding or bloat trial."
+    verification:
+      method: "unanimous"
+      votes:
+        agree: 4
+        total: 4
+  aggressionConspecific:
+    value: 3
+    confidence: "medium"
+    rationale: "Generator and checker-a propose 3; checker-b and checker-c propose 4. Choose 3 for the stipulated
+      adult social unit of one male with at least three females, sufficient cover and the minimum tank.
+      Seriously Fish describes lethal male rivalry when cover is insufficient and targeting of females; those
+      failures explain the more severe proposals but do not establish unavoidable killing in the correctly
+      arranged harem. AquaInfo reports less severe aggression. Persistent pursuit and the consequences of an
+      unsuitable ratio fit level 3."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Pundamilia nyererei"
+        url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishFish: Pundamilia nyererei, collaborative husbandry record"
+        url: "https://www.fishfish.fr/poisson/pundamilia-nyererei"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsallskapet artregister: Pundamilia nyererei"
+        url: "https://ciklid.org/artregister/art.php?ID=190"
+        accessed: "2026-10-13"
+      - kind: "archive"
+        title: "cichlids.com forum thread 17485"
+        url: "https://www.cichlids.com/disc/read.php?2,17485"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Cichlid Fish Forum profile, Pundamilia nyererei (Makobe Island)"
+        url: "https://www.cichlid-forum.com/posts/3155209"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishProfiles: Pundamilia nyererei"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Pundamilia_nyererei/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "AquaInfo: Pundamilia nyererei, account by IG-Victoriasee Cichliden"
+        url: "https://www.aquainfo.nl/artikel/pundamilia-nyererei/"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Pundamilia nyererei"
+          url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+          accessed: "2026-10-13"
+        value: 3
+        note: "Rubric mapping from female targeting and potentially lethal male rivalry without cover."
+      - source:
+          kind: "database"
+          title: "FishFish: Pundamilia nyererei, collaborative husbandry record"
+          url: "https://www.fishfish.fr/poisson/pundamilia-nyererei"
+          accessed: "2026-10-13"
+        value: 3
+        note: "One male with several females recommended because of harassment."
+      - source:
+          kind: "archive"
+          title: "cichlids.com forum thread 17485"
+          url: "https://www.cichlids.com/disc/read.php?2,17485"
+          accessed: "2026-10-13"
+        value: 3
+        note: "Archive experience reinforces strong aggression, but has low evidential weight."
+      - source:
+          kind: "website"
+          title: "Cichlid Fish Forum profile"
+          url: "https://www.cichlid-forum.com/posts/3155209"
+          accessed: "2026-10-13"
+        value: 3
+        note: "aggressive towards its own species"
+      - source:
+          kind: "database"
+          title: "FishProfiles: Pundamilia nyererei"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Pundamilia_nyererei/"
+          accessed: "2026-10-13"
+        value: 4
+        note: "Care account advises against keeping two males together."
+      - source:
+          kind: "database"
+          title: "AquaInfo: Pundamilia nyererei, account by IG-Victoriasee Cichliden"
+          url: "https://www.aquainfo.nl/artikel/pundamilia-nyererei/"
+          accessed: "2026-10-13"
+        value: 2
+        note: "Moderate aggression within the species."
+  aggressionHeterospecific:
+    value: 3
+    confidence: "medium"
+    rationale: "Generator and checker-b propose 3; checker-a and checker-c propose 2. Choose 3 as a cautious
+      aquarium classification because FishFish reports substantial attacks on community fish and FishProfiles
+      describes extreme aggression toward other haplochromine males. AquaInfo reports good coexistence with
+      unlike patterns and the archive describes only one dominant individual. The evidence is variable, but it
+      supports robust, similarly sized adult companions rather than assuming all aggression stays within a
+      small territory."
+    sources:
+      - kind: "database"
+        title: "FishFish: Pundamilia nyererei, collaborative husbandry record"
+        url: "https://www.fishfish.fr/poisson/pundamilia-nyererei"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "AquaInfo: Pundamilia nyererei, husbandry account credited to IG-Victoriasee Cichliden"
+        url: "https://www.aquainfo.nl/artikel/pundamilia-nyererei/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishProfiles.com: Pundamilia nyererei"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Pundamilia_nyererei/"
+        accessed: "2026-10-13"
+      - kind: "archive"
+        title: "cichlids.com forum thread 17437"
+        url: "https://www.cichlids.com/disc/read.php?2,17437"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish, Pundamilia nyererei"
+        url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Cichlid Fish Forum profile, Pundamilia nyererei (Makobe Island)"
+        url: "https://www.cichlid-forum.com/posts/3155209"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aquarium.org.il Wikifish: Pundamilia nyererei care profile"
+        url: "https://www.aquarium.org.il/%D7%95%D7%99%D7%A7%D7%99%D7%A4%D7%99%D7%A9-%D7%92%D7%91-%D7%90%D7%A9-436"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Meier et al. (2016 online, 2017 volume). Demographic modelling with whole-genome data reveals parallel
+          origin of similar Pundamilia cichlid species after hybridization."
+        url: "https://doi.org/10.1111/mec.13838"
+        accessed: "2026-10-13"
+      - kind: "archive"
+        title: "cichlids.com forum thread 16388"
+        url: "https://www.cichlids.com/disc/read.php?2,16388"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Tropical Fish Keeping: Crimson Tide Cichlid husbandry sheet"
+        url: "https://tropical-fish-keeping.com/crimson-tide-cichlid-pundamilia-nyererei.html"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "FishFish: Pundamilia nyererei, collaborative husbandry record"
+          url: "https://www.fishfish.fr/poisson/pundamilia-nyererei"
+          accessed: "2026-10-13"
+        value: 3
+        note: "Rubric mapping from attacks on community fish."
+      - source:
+          kind: "database"
+          title: "AquaInfo: Pundamilia nyererei, husbandry account credited to IG-Victoriasee Cichliden"
+          url: "https://www.aquainfo.nl/artikel/pundamilia-nyererei/"
+          accessed: "2026-10-13"
+        value: 1
+        note: "Different-looking species are usually left alone in this account; source is less severe."
+      - source:
+          kind: "database"
+          title: "FishProfiles.com: Pundamilia nyererei"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Pundamilia_nyererei/"
+          accessed: "2026-10-13"
+        value: 3
+        note: "Severe aggression toward other haplochromine males."
+      - source:
+          kind: "archive"
+          title: "cichlids.com forum thread 17437"
+          url: "https://www.cichlids.com/disc/read.php?2,17437"
+          accessed: "2026-10-13"
+        value: 3
+        note: "Reported dominance of mixed tanks, a low-weight community observation."
+      - source:
+          kind: "database"
+          title: "Aquarium.org.il Wikifish: Pundamilia nyererei care profile"
+          url: "https://www.aquarium.org.il/%D7%95%D7%99%D7%A7%D7%99%D7%A4%D7%99%D7%A9-%D7%92%D7%91-%D7%90%D7%A9-436"
+          accessed: "2026-10-13"
+        value: 3
+        note: "Recommends other aggressive Victorian cichlids as companions."
+      - source:
+          kind: "literature"
+          title: "Meier et al. (2016 online, 2017 volume). Demographic modelling with whole-genome data reveals parallel
+            origin of similar Pundamilia cichlid species after hybridization."
+          url: "https://doi.org/10.1111/mec.13838"
+          accessed: "2026-10-13"
+        value: 3
+        note: "Discusses nyererei dominance over pundamilia in male competition; rubric mapping is inferential."
+      - source:
+          kind: "archive"
+          title: "cichlids.com forum thread 16388"
+          url: "https://www.cichlids.com/disc/read.php?2,16388"
+          accessed: "2026-10-13"
+        value: 3
+        note: "A reported individual dominated a mbuna community; anecdotal supporting evidence only."
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Pundamilia nyererei"
+          url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+          accessed: "2026-10-13"
+        value: 2
+        note: "Compatibility-based rubric interpretation, not a scored aggression study."
+      - source:
+          kind: "website"
+          title: "Tropical Fish Keeping: Crimson Tide Cichlid husbandry sheet"
+          url: "https://tropical-fish-keeping.com/crimson-tide-cichlid-pundamilia-nyererei.html"
+          accessed: "2026-10-13"
+        value: 4
+        note: "Reports lethal attacks on similarly colored species; lower-weight care sheet."
+  territory:
+    value:
+      size: "large"
+      breedingOnly: false
+    confidence: "low"
+    rationale: "Generator and checker-b propose large with breedingOnly false; checker-a proposes small with
+      false; checker-c proposes small with true. Retain large and false as a cautious spatial-planning
+      inference from persistent dominance and territorial accounts. Maan and colleagues directly measured
+      defended areas across repeated days and recorded many rocks per territory, but the accessible text does
+      not supply a clear aquarium-equivalent boundary for the 30 cm versus 50 cm rubric. A spawning spot alone
+      therefore does not establish a small territory, and courtship increases defence without proving that
+      defence occurs only during one breeding episode. No precise defended aquarium diameter is claimed."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Pundamilia nyererei"
+        url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishProfiles.com: Pundamilia nyererei"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Pundamilia_nyererei/"
+        accessed: "2026-10-13"
+      - kind: "archive"
+        title: "cichlids.com forum thread 17485"
+        url: "https://www.cichlids.com/disc/read.php?2,17485"
+        accessed: "2026-10-13"
+      - kind: "model-knowledge"
+        title: "Generator inference from adult territorial cichlid husbandry, not a measured species-specific
+          experiment"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Fitness correlates of male coloration in a Lake Victoria cichlid fish"
+        url: "https://doi.org/10.1093/beheco/ark020"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Van der Sluijs et al. (2008). Female mating preference functions predict sexual selection against
+          hybrids between sibling species of cichlid fish."
+        url: "https://doi.org/10.1098/rstb.2008.0045"
+        accessed: "2026-10-13"
+      - kind: "model-knowledge"
+        title: "Checker inference where species-specific measurements were not found"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Fitness correlates of male coloration in a Lake Victoria cichlid fish"
+          url: "https://doi.org/10.1093/beheco/ark020"
+          accessed: "2026-10-13"
+        value:
+          size: "large"
+          breedingOnly: false
+        note: "Rubric inference from sustained defended territories; precise aquarium dimensions are unmeasured."
+      - source:
+          kind: "model-knowledge"
+          title: "Generator inference from adult territorial cichlid husbandry, not a measured species-specific
+            experiment"
+          accessed: "2026-10-13"
+        value:
+          size: "large"
+          breedingOnly: false
+        note: "Spatial rubric inference, not a measured home range."
+      - source:
+          kind: "literature"
+          title: "Van der Sluijs et al. (2008). Female mating preference functions predict sexual selection against
+            hybrids between sibling species of cichlid fish."
+          url: "https://doi.org/10.1098/rstb.2008.0045"
+          accessed: "2026-10-13"
+        value:
+          size: "large"
+        note: "Experimental males used separate 50 cm wide compartments; this is not a natural territory measurement."
+      - source:
+          kind: "model-knowledge"
+          title: "Checker inference where species-specific measurements were not found"
+          accessed: "2026-10-13"
+        value:
+          size: "large"
+          breedingOnly: false
+        note: "Spatial planning inference from persistent male territorial behavior."
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Pundamilia nyererei"
+          url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+          accessed: "2026-10-13"
+        value:
+          size: "small"
+          breedingOnly: true
+        note: "Interpretation of defended spawning site; no territory dimensions."
+      - source:
+          kind: "database"
+          title: "FishProfiles: Pundamilia nyererei"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Pundamilia_nyererei/"
+          accessed: "2026-10-13"
+        value:
+          size: "small"
+          breedingOnly: false
+        note: "Territorial throughout the account; no territory dimensions."
+  habitatZones:
+    value:
+      - "rock"
+      - "openWater"
+    confidence: "high"
+    rationale: "Generator and checker-b propose rock plus openWater; checker-a and checker-c propose rock alone.
+      The Nordic register explicitly describes adjacent open water, and Svensson and colleagues place female
+      foraging in the water column above male rocky territories. Include both zones, with openWater limited to
+      space above and beside the reef. This does not call for an offshore pelagic tank or displace the need
+      for extensive rock refuges."
+    sources:
+      - kind: "database"
+        title: "Nordiska Ciklidsallskapet artregister: Pundamilia nyererei"
+        url: "https://ciklid.org/artregister/art.php?ID=190"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Svensson et al. (2024, published online 2023). Sympatry and parapatry among rocky reef cichlids of
+          Lake Victoria explained by female mating preferences. Journal of Evolutionary Biology."
+        url: "https://doi.org/10.1093/jeb/voad006"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Pundamilia nyererei"
+        url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase, Pundamilia nyererei species summary"
+        url: "https://www.fishbase.se/summary/Pundamilia-nyererei.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "AquaInfo: Pundamilia nyererei, account by IG-Victoriasee Cichliden"
+        url: "https://www.aquainfo.nl/artikel/pundamilia-nyererei/"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Nordiska Ciklidsallskapet artregister: Pundamilia nyererei"
+          url: "https://ciklid.org/artregister/art.php?ID=190"
+          accessed: "2026-10-13"
+        value:
+          - "rock"
+          - "openWater"
+        note: "Rock crevices and adjacent water column."
+      - source:
+          kind: "literature"
+          title: "Svensson et al. (2024, published online 2023). Sympatry and parapatry among rocky reef cichlids of
+            Lake Victoria explained by female mating preferences. Journal of Evolutionary Biology."
+          url: "https://doi.org/10.1093/jeb/voad006"
+          accessed: "2026-10-13"
+        value:
+          - "rock"
+          - "openWater"
+        note: "Territorial males use reefs and females forage above them."
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Pundamilia nyererei"
+          url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+          accessed: "2026-10-13"
+        value:
+          - "rock"
+        note: "Rock shelves and littoral island habitat."
+      - source:
+          kind: "database"
+          title: "FishBase: Haplochromis nyererei species summary"
+          url: "https://www.fishbase.se/summary/Pundamilia-nyererei.html"
+          accessed: "2026-10-13"
+        value:
+          - "rock"
+        note: "Occurs beside rocky shores and islands."
+      - source:
+          kind: "database"
+          title: "AquaInfo: Pundamilia nyererei, account by IG-Victoriasee Cichliden"
+          url: "https://www.aquainfo.nl/artikel/pundamilia-nyererei/"
+          accessed: "2026-10-13"
+        value:
+          - "rock"
+  social:
+    value:
+      structure: "harem"
+      ratio: 3
+    confidence: "high"
+    rationale: "All four runs agree on one male with at least three females. Seriously Fish states that ratio,
+      FishProfiles supports several females per male and the Nordic register recommends starting with
+      juveniles that grow together. The Aquarium.org.il recommendation is six females, a larger alternative
+      social unit rather than proof that three cannot work. This is an aquarium stocking unit for a polygynous
+      mouthbrooder, not a permanent bonded pair."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Pundamilia nyererei"
+        url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishProfiles.com: Pundamilia nyererei"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Pundamilia_nyererei/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Fischlexikon: Nyereres Viktoriabuntbarsch, Haplochromis nyererei"
+        url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000001444"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Water and Garden: Pundamilia nyererei structured care sheet"
+        url: "https://waterandgarden.hu/termek/viktoria-tavi-voroshatu-zebrasuger-pundamilia-nyererei/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aquarium.org.il Wikifish: Pundamilia nyererei care profile"
+        url: "https://www.aquarium.org.il/%D7%95%D7%99%D7%A7%D7%99%D7%A4%D7%99%D7%A9-%D7%92%D7%91-%D7%90%D7%A9-436"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "AquaBota: Haplochromis nyererei husbandry sheet"
+        url: "https://www.aquabota.com/fr/cichlides-africains/20979-haplochromis-nyererei-4-6cm.html"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Pundamilia nyererei"
+          url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+          accessed: "2026-10-13"
+        value:
+          structure: "harem"
+          ratio: 3
+        note: "Single male with at least three females for breeding."
+      - source:
+          kind: "database"
+          title: "Fischlexikon: Nyereres Viktoriabuntbarsch, Haplochromis nyererei"
+          url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000001444"
+          accessed: "2026-10-13"
+        value:
+          structure: "harem"
+          ratio: 3
+        note: "One male with two to three females; choose the larger recommended ratio."
+      - source:
+          kind: "website"
+          title: "Water and Garden: Pundamilia nyererei structured care sheet"
+          url: "https://waterandgarden.hu/termek/viktoria-tavi-voroshatu-zebrasuger-pundamilia-nyererei/"
+          accessed: "2026-10-13"
+        value:
+          structure: "harem"
+          ratio: 3
+      - source:
+          kind: "database"
+          title: "Aquarium.org.il Wikifish: Pundamilia nyererei care profile"
+          url: "https://www.aquarium.org.il/%D7%95%D7%99%D7%A7%D7%99%D7%A4%D7%99%D7%A9-%D7%92%D7%91-%D7%90%D7%A9-436"
+          accessed: "2026-10-13"
+        value:
+          structure: "harem"
+          ratio: 6
+      - source:
+          kind: "database"
+          title: "FishProfiles: Pundamilia nyererei"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Pundamilia_nyererei/"
+          accessed: "2026-10-13"
+        value:
+          structure: "harem"
+        note: "Several females for one male; no fixed ratio."
+      - source:
+          kind: "website"
+          title: "AquaBota: Haplochromis nyererei husbandry sheet"
+          url: "https://www.aquabota.com/fr/cichlides-africains/20979-haplochromis-nyererei-4-6cm.html"
+          accessed: "2026-10-13"
+        value:
+          structure: "harem"
+          ratio: 3
+        note: "Two to three females per male."
+  speciesOnly:
+    value: false
+    confidence: "high"
+    rationale: "All four full-profile runs propose false; the tally is unanimous, 4 of 4, with high confidence.
+      Seriously Fish and the Nordic register independently permit carefully selected Victorian companions, and
+      Seriously Fish also permits selected mbuna. A separate breeding group helps preserve identity but is not
+      a universal species-only requirement. The more restrictive summary on Tropical Fish Keeping conflicts
+      with its own community suggestions; documented and presumed crossing partners still warrant exclusion
+      from a breeding display."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Pundamilia nyererei"
+        url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsallskapet artregister: Pundamilia nyererei"
+        url: "https://ciklid.org/artregister/art.php?ID=190"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "AquaInfo: Pundamilia nyererei, husbandry account credited to IG-Victoriasee Cichliden"
+        url: "https://www.aquainfo.nl/artikel/pundamilia-nyererei/"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Cichlid Fish Forum profile, Pundamilia nyererei (Makobe Island)"
+        url: "https://www.cichlid-forum.com/posts/3155209"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aquarium.org.il Wikifish: Pundamilia nyererei care profile"
+        url: "https://www.aquarium.org.il/%D7%95%D7%99%D7%A7%D7%99%D7%A4%D7%99%D7%A9-%D7%92%D7%91-%D7%90%D7%A9-436"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Home of Cichlids: Flameback Cichlid species care sheet"
+        url: "https://homeofcichlids.com.au/product/flameback/"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "NageoireBleue: Nyerere Cichlid husbandry sheet"
+        url: "https://www.nageoirebleue.com/en/products/cichlide-nyererei-livraison-seulement"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Tropical Fish Keeping: Crimson Tide Cichlid husbandry sheet"
+        url: "https://tropical-fish-keeping.com/crimson-tide-cichlid-pundamilia-nyererei.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishProfiles Pundamilia nyererei"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Pundamilia_nyererei/"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Pundamilia nyererei"
+          url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+          accessed: "2026-10-13"
+        value: false
+        note: "Allows selected Victorian species and Malawi mbuna."
+      - source:
+          kind: "database"
+          title: "Nordiska Ciklidsallskapet artregister: Pundamilia nyererei"
+          url: "https://ciklid.org/artregister/art.php?ID=190"
+          accessed: "2026-10-13"
+        value: false
+        note: "Allows other suitable rock-dwelling and mollusc-feeding Victorian cichlids."
+      - source:
+          kind: "database"
+          title: "AquaInfo: Pundamilia nyererei, husbandry account credited to IG-Victoriasee Cichliden"
+          url: "https://www.aquainfo.nl/artikel/pundamilia-nyererei/"
+          accessed: "2026-10-13"
+        value: false
+        note: "Permits species with different colour patterns."
+      - source:
+          kind: "database"
+          title: "FishProfiles Pundamilia nyererei"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Pundamilia_nyererei/"
+          accessed: "2026-10-13"
+        value: false
+        note: "only males of other Haplochromis are named as a problem"
+      - source:
+          kind: "database"
+          title: "Aquarium.org.il Wikifish: Pundamilia nyererei care profile"
+          url: "https://www.aquarium.org.il/%D7%95%D7%99%D7%A7%D7%99%D7%A4%D7%99%D7%A9-%D7%92%D7%91-%D7%90%D7%A9-436"
+          accessed: "2026-10-13"
+        value: false
+        note: "Recommends other aggressive Victorian cichlids."
+      - source:
+          kind: "website"
+          title: "Home of Cichlids: Flameback Cichlid species care sheet"
+          url: "https://homeofcichlids.com.au/product/flameback/"
+          accessed: "2026-10-13"
+        value: false
+        note: "Permits similarly sized and tempered cichlids; its suggestion of other Pundamilia is rejected because
+          of hybridization evidence."
+      - source:
+          kind: "website"
+          title: "NageoireBleue: Nyerere Cichlid husbandry sheet"
+          url: "https://www.nageoirebleue.com/en/products/cichlide-nyererei-livraison-seulement"
+          accessed: "2026-10-13"
+        value: false
+      - source:
+          kind: "website"
+          title: "Tropical Fish Keeping: Crimson Tide Cichlid husbandry sheet"
+          url: "https://tropical-fish-keeping.com/crimson-tide-cichlid-pundamilia-nyererei.html"
+          accessed: "2026-10-13"
+        value: true
+        note: "Summary advises a species aquarium although narrative also lists community companions."
+    verification:
+      method: "unanimous"
+      votes:
+        agree: 4
+        total: 4
+  hybridGroups:
+    value:
+      - "haplochromis-chilotes-pundamilia-nyererei"
+      - "pundamilia-nyererei-azurea"
+      - "pundamilia-nyererei-igneopinnis"
+      - "pundamilia-nyererei-pundamilia"
+    confidence: "low"
+    rationale: "The tally applies the conservative rule after six votes fail to reach a four-vote majority.
+      Generator proposes the three nyererei pairs with pundamilia, igneopinnis and azurea; checker-a proposes
+      a single nyererei-complex group; checker-b and tiebreaker-2 propose those three pairs plus chilotes;
+      checker-c proposes only the pundamilia pair; tiebreaker-1 proposes all four pairs plus calliptera.
+      Retain the union of identifiers supported by at least two runs, giving exactly the four decided pairs
+      and low confidence with 2 of 6 agreeing on the whole set. The complex identifier and calliptera
+      identifier each have only one vote and are excluded. Meier and colleagues infer wild nyererei-pundamilia
+      admixture, supporting documented basis. Svensson and colleagues genetically confirm nyererei-igneopinnis
+      mating with conspecific males available, also documented. The azurea and chilotes crosses were forced
+      without conspecific male choice, so their basis is presumed; Svensson's free-choice experiment found no
+      pure nyererei-azurea mating. Stelkens (2009) explicitly labels a calliptera cross as nyererei, whereas
+      the 2019 study uses the distinct nyererei-like lineage; this identity discrepancy remains unresolved and
+      exclusion by the tally support rule must not be read as proof of incompatibility. Crossing is not
+      transitive."
+    sources:
+      - kind: "literature"
+        title: "Meier et al. (2017). Demographic modelling with whole-genome data reveals parallel origin of similar
+          Pundamilia cichlid species after hybridization. Molecular Ecology."
+        url: "https://doi.org/10.1111/mec.13838"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Svensson et al. (2024, published online 2023). Sympatry and parapatry among rocky reef cichlids of
+          Lake Victoria explained by female mating preferences. Journal of Evolutionary Biology."
+        url: "https://doi.org/10.1093/jeb/voad006"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Selz et al. (2014). Female preference for male color is necessary and sufficient for assortative
+          mating in 2 cichlid sister species. Behavioral Ecology."
+        url: "https://doi.org/10.1093/beheco/aru024"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Pundamilia nyererei"
+        url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Van der Sluijs et al. (2008). Female mating preference functions predict sexual selection against
+          hybrids between sibling species of cichlid fish."
+        url: "https://doi.org/10.1098/rstb.2008.0045"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Henning et al. (2017). Genetic dissection of adaptive form and function in rapidly speciating cichlid
+          fishes."
+        url: "https://doi.org/10.1111/evo.13206"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Meier et al. (2018). Genomics of Parallel Ecological Speciation in Lake Victoria Cichlids"
+        url: "https://doi.org/10.1093/molbev/msy051"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Stelkens et al. (2009). Phenotypic novelty in experimental hybrids is predicted by the genetic
+          distance between species of cichlid fish."
+        url: "https://doi.org/10.1186/1471-2148-9-283"
+        accessed: "2026-10-13"
+      - kind: "catalog-of-fishes"
+        title: "Eschmeyer's Catalog of Fishes: species of Pundamilia, updated 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Pu\
+          ndamilia"
+        accessed: "2026-10-13"
+      - kind: "catalog-of-fishes"
+        title: "Eschmeyer's Catalog of Fishes: species of Haplochromis"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Ha\
+          plochromis"
+        accessed: "2026-10-13"
+      - kind: "catalog-of-fishes"
+        title: "Eschmeyer's Catalog of Fishes: species of Astatotilapia"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=As\
+          tatotilapia"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Interspecific hybridization can generate functional novelty in cichlid fish (2019)."
+        url: "https://doi.org/10.1098/rspb.2019.1621"
+        accessed: "2026-10-13"
+      - kind: "archive"
+        title: "cichlids.com forum thread 11386"
+        url: "https://www.cichlids.com/disc/read.php?1,11386"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Meier et al. (2017). Demographic modelling with whole-genome data reveals parallel origin of similar
+            Pundamilia cichlid species after hybridization. Molecular Ecology."
+          url: "https://doi.org/10.1111/mec.13838"
+          accessed: "2026-10-13"
+        value:
+          - "pundamilia-nyererei-pundamilia"
+        note: "Wild admixture inferred from demographic genomic models; documented pair."
+      - source:
+          kind: "literature"
+          title: "Meier et al. (2018). Genomics of Parallel Ecological Speciation in Lake Victoria Cichlids"
+          url: "https://doi.org/10.1093/molbev/msy051"
+          accessed: "2026-10-13"
+        value:
+          - "pundamilia-nyererei-pundamilia"
+        note: "Complementary genomic analysis with overlapping authors and data, not an independent field
+          replication."
+      - source:
+          kind: "literature"
+          title: "Svensson et al. (2023, volume published 2024). Sympatry and parapatry among rocky reef cichlids of
+            Lake Victoria explained by female mating preferences."
+          url: "https://doi.org/10.1093/jeb/voad006"
+          accessed: "2026-10-13"
+        value:
+          - "pundamilia-nyererei-igneopinnis"
+          - "pundamilia-nyererei-azurea"
+          - "pundamilia-nyererei-pundamilia"
+        note: "Free-choice crosses only with igneopinnis; initial forced crosses with azurea and pundamilia also
+          produced offspring."
+      - source:
+          kind: "literature"
+          title: "Henning et al. (2017). Genetic dissection of adaptive form and function in rapidly speciating cichlid
+            fishes."
+          url: "https://doi.org/10.1111/evo.13206"
+          accessed: "2026-10-13"
+        value:
+          - "haplochromis-chilotes-pundamilia-nyererei"
+        note: "A chilotes male with three nyererei females produced fertile F1 and F2 offspring without conspecific
+          male options."
+      - source:
+          kind: "literature"
+          title: "Stelkens et al. (2009). Phenotypic novelty in experimental hybrids is predicted by the genetic
+            distance between species of cichlid fish."
+          url: "https://doi.org/10.1186/1471-2148-9-283"
+          accessed: "2026-10-13"
+        value:
+          - "haplochromis-chilotes-pundamilia-nyererei"
+          - "astatotilapia-calliptera-pundamilia-nyererei"
+        note: "Forced crosses under the older nyererei label; calliptera identifier is not retained by the tally
+          because only one run proposed it."
+      - source:
+          kind: "literature"
+          title: "Interspecific hybridization can generate functional novelty in cichlid fish (2019)."
+          url: "https://doi.org/10.1098/rspb.2019.1621"
+          accessed: "2026-10-13"
+        value: []
+        note: "Calliptera and Neochromis crosses in this later study use Pundamilia sp. nyererei-like, not nominal P.
+          nyererei."
+      - source:
+          kind: "literature"
+          title: "Selz et al. (2014). Female preference for male color is necessary and sufficient for assortative
+            mating in 2 cichlid sister species. Behavioral Ecology."
+          url: "https://doi.org/10.1093/beheco/aru024"
+          accessed: "2026-10-13"
+        value:
+          - "pundamilia-nyererei-pundamilia"
+        note: "Masking male colour reduces assortment; historical population labels require care."
+      - source:
+          kind: "literature"
+          title: "Van der Sluijs et al. (2008). Female mating preference functions predict sexual selection against
+            hybrids between sibling species of cichlid fish."
+          url: "https://doi.org/10.1098/rstb.2008.0045"
+          accessed: "2026-10-13"
+        value:
+          - "pundamilia-nyererei-pundamilia"
+        note: "Reports occasional wild hybridization and studies laboratory hybrids under historical names."
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Pundamilia nyererei"
+          url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+          accessed: "2026-10-13"
+        value:
+          - "pundamilia-nyererei-azurea"
+          - "pundamilia-nyererei-igneopinnis"
+          - "pundamilia-nyererei-pundamilia"
+        note: "General congener warning supports caution but does not establish every pair or its basis."
+      - source:
+          kind: "archive"
+          title: "cichlids.com forum thread 11386"
+          url: "https://www.cichlids.com/disc/read.php?1,11386"
+          accessed: "2026-10-13"
+        value:
+          - "pundamilia-nyererei-pundamilia"
+        note: "Secondary community account of light-dependent mating; low weight."
+    verification:
+      method: "conservative"
+      votes:
+        agree: 2
+        total: 6
+  coloration:
+    value:
+      baseColors:
+        - "red"
+        - "yellow"
+        - "black"
+        - "blue"
+      pattern: "bars"
+    confidence: "high"
+    rationale: "Generator, checker-b and checker-c propose red, yellow, black and blue with vertical bars;
+      checker-a lists red and yellow with bars. Retain the fuller typical male palette: red dorsal areas,
+      yellow flanks and dark bars are consistently described, while AquaInfo records blue throat colour. Blue
+      varies among localities and dominance states. The red/yellow-only proposal omits well-supported
+      secondary colours rather than contradicting their presence."
+    sources:
+      - kind: "literature"
+        title: "Selz et al. (2014). Female preference for male color is necessary and sufficient for assortative
+          mating in 2 cichlid sister species. Behavioral Ecology."
+        url: "https://doi.org/10.1093/beheco/aru024"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "AquaInfo: Pundamilia nyererei, husbandry account credited to IG-Victoriasee Cichliden"
+        url: "https://www.aquainfo.nl/artikel/pundamilia-nyererei/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Fischlexikon: Nyereres Viktoriabuntbarsch, Haplochromis nyererei"
+        url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000001444"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Demographic modelling with whole-genome data reveals parallel origin of similar Pundamilia cichlid
+          species after hybridization"
+        url: "https://doi.org/10.1111/mec.13838"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Cichlid Fish Forum profile, Pundamilia nyererei (Makobe Island)"
+        url: "https://www.cichlid-forum.com/posts/3155209"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Van der Sluijs et al. (2008). Female mating preference functions predict sexual selection against
+          hybrids between sibling species of cichlid fish."
+        url: "https://doi.org/10.1098/rstb.2008.0045"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Home of Cichlids: Flameback Cichlid species care sheet"
+        url: "https://homeofcichlids.com.au/product/flameback/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Meier et al. (2018). Genomics of Parallel Ecological Speciation in Lake Victoria Cichlids"
+        url: "https://doi.org/10.1093/molbev/msy051"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishProfiles: Pundamilia nyererei"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Pundamilia_nyererei/"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "literature"
+          title: "Selz et al. (2014). Female preference for male color is necessary and sufficient for assortative
+            mating in 2 cichlid sister species. Behavioral Ecology."
+          url: "https://doi.org/10.1093/beheco/aru024"
+          accessed: "2026-10-13"
+        value:
+          baseColors:
+            - "red"
+            - "yellow"
+            - "black"
+          pattern: "bars"
+        note: "Male colour description in the study system."
+      - source:
+          kind: "database"
+          title: "AquaInfo: Pundamilia nyererei, husbandry account credited to IG-Victoriasee Cichliden"
+          url: "https://www.aquainfo.nl/artikel/pundamilia-nyererei/"
+          accessed: "2026-10-13"
+        value:
+          baseColors:
+            - "red"
+            - "yellow"
+            - "black"
+            - "blue"
+          pattern: "bars"
+        note: "Includes blue throat and dark vertical flank markings."
+      - source:
+          kind: "literature"
+          title: "Van der Sluijs et al. (2008). Female mating preference functions predict sexual selection against
+            hybrids between sibling species of cichlid fish."
+          url: "https://doi.org/10.1098/rstb.2008.0045"
+          accessed: "2026-10-13"
+        value:
+          baseColors:
+            - "red"
+            - "yellow"
+            - "black"
+          pattern: "bars"
+        note: "Red dorsum, yellow flanks and approximately six to eight narrow vertical bars."
+      - source:
+          kind: "literature"
+          title: "Meier et al. (2016 online, 2017 volume). Demographic modelling with whole-genome data reveals parallel
+            origin of similar Pundamilia cichlid species after hybridization."
+          url: "https://doi.org/10.1111/mec.13838"
+          accessed: "2026-10-13"
+        value:
+          baseColors:
+            - "red"
+            - "yellow"
+            - "blue"
+          pattern: "bars"
+        note: "Population differences include the presence or absence of a bluish belly."
+      - source:
+          kind: "literature"
+          title: "Meier et al. (2018). Genomics of Parallel Ecological Speciation in Lake Victoria Cichlids"
+          url: "https://doi.org/10.1093/molbev/msy051"
+          accessed: "2026-10-13"
+        value:
+          baseColors:
+            - "red"
+        note: "Red-backed male phenotype is explicit; this paper does not supply the complete color palette."
+      - source:
+          kind: "database"
+          title: "FishProfiles: Pundamilia nyererei"
+          url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Pundamilia_nyererei/"
+          accessed: "2026-10-13"
+        value:
+          baseColors:
+            - "orange"
+            - "yellow"
+            - "grey"
+          pattern: "bars"
+        note: "The database color fields omit parts of the nuptial palette."
+  feedingSpeed:
+    value: "normal"
+    confidence: "low"
+    rationale: "All four runs propose normal. Sources establish acceptance of common aquarium foods and small-prey
+      feeding but do not measure competitive feeding speed. Normal remains a provisional rubric inference;
+      dominant fish can still deny females access to food."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Pundamilia nyererei"
+        url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "AquaInfo: Pundamilia nyererei, husbandry account credited to IG-Victoriasee Cichliden"
+        url: "https://www.aquainfo.nl/artikel/pundamilia-nyererei/"
+        accessed: "2026-10-13"
+      - kind: "model-knowledge"
+        title: "Generator inference from adult territorial cichlid husbandry, not a measured species-specific
+          experiment"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Bouton, van Os and Witte (1998). Feeding performance of Lake Victoria rock cichlids: testing
+          predictions from morphology. Abstract only."
+        url: "https://doi.org/10.1006/jfbi.1998.0823"
+        accessed: "2026-10-13"
+      - kind: "model-knowledge"
+        title: "Checker inference where species-specific measurements were not found"
+        accessed: "2026-10-13"
+      - kind: "model-knowledge"
+        title: "Checker interpretation of the feature rubric"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "model-knowledge"
+          title: "Generator inference from adult territorial cichlid husbandry, not a measured species-specific
+            experiment"
+          accessed: "2026-10-13"
+        value: "normal"
+        note: "Provisional rubric assignment, not a quantified species measurement."
+      - source:
+          kind: "model-knowledge"
+          title: "Checker inference where species-specific measurements were not found"
+          accessed: "2026-10-13"
+        value: "normal"
+        note: "Unmeasured aquarium feeding-speed assignment."
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Pundamilia nyererei"
+          url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+          accessed: "2026-10-13"
+        value: "normal"
+        note: "Inference from food acceptance, no measured feeding-speed category."
+      - source:
+          kind: "model-knowledge"
+          title: "Checker interpretation of the feature rubric"
+          accessed: "2026-10-13"
+        value: "normal"
+        note: "Provisional category pending direct comparative husbandry evidence."
+  minTank:
+    value:
+      volumeL: 250
+      lengthCm: 120
+      depthCm: 45
+    confidence: "medium"
+    rationale: "Generator and checker-b propose 250 L with a 120 by 45 cm base; checker-a and checker-c propose
+      240 L with the same base. Retain 250 L, using FishFish's group minimum and rounding upward from
+      Seriously Fish's approximately 243 L example; AquaInfo specifies 240 L. This is for one male and three
+      females with visual barriers. The Nordic register lists a lower 180 L at 120 cm, AquaBota gives 200 L
+      for a smaller trio and NageoireBleue recommends 300 L; these differently specified recommendations do
+      not justify reducing the selected harem floor. Community stocking requires more space."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Pundamilia nyererei"
+        url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "AquaInfo: Pundamilia nyererei, husbandry account credited to IG-Victoriasee Cichliden"
+        url: "https://www.aquainfo.nl/artikel/pundamilia-nyererei/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishFish: Pundamilia nyererei, collaborative husbandry record"
+        url: "https://www.fishfish.fr/poisson/pundamilia-nyererei"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aquarium.org.il Wikifish: Pundamilia nyererei care profile"
+        url: "https://www.aquarium.org.il/%D7%95%D7%99%D7%A7%D7%99%D7%A4%D7%99%D7%A9-%D7%92%D7%91-%D7%90%D7%A9-436"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Water and Garden: Pundamilia nyererei structured care sheet"
+        url: "https://waterandgarden.hu/termek/viktoria-tavi-voroshatu-zebrasuger-pundamilia-nyererei/"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "NageoireBleue: Nyerere Cichlid husbandry sheet"
+        url: "https://www.nageoirebleue.com/en/products/cichlide-nyererei-livraison-seulement"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "AquaBota: Haplochromis nyererei husbandry sheet"
+        url: "https://www.aquabota.com/fr/cichlides-africains/20979-haplochromis-nyererei-4-6cm.html"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Pundamilia nyererei"
+          url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+          accessed: "2026-10-13"
+        value:
+          lengthCm: 120
+          depthCm: 45
+        note: "Explicit minimum base dimensions."
+      - source:
+          kind: "database"
+          title: "AquaInfo: Pundamilia nyererei, husbandry account credited to IG-Victoriasee Cichliden"
+          url: "https://www.aquainfo.nl/artikel/pundamilia-nyererei/"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 240
+        note: "Aquarium minimum for a group."
+      - source:
+          kind: "database"
+          title: "FishFish: Pundamilia nyererei, collaborative husbandry record"
+          url: "https://www.fishfish.fr/poisson/pundamilia-nyererei"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 250
+        note: "Aquarium minimum with rockwork and sand."
+      - source:
+          kind: "database"
+          title: "Aquarium.org.il Wikifish: Pundamilia nyererei care profile"
+          url: "https://www.aquarium.org.il/%D7%95%D7%99%D7%A7%D7%99%D7%A4%D7%99%D7%A9-%D7%92%D7%91-%D7%90%D7%A9-436"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 250
+        note: "Lower end of its 250 to 300 litre recommendation; the source prefers more females."
+      - source:
+          kind: "website"
+          title: "Water and Garden: Pundamilia nyererei structured care sheet"
+          url: "https://waterandgarden.hu/termek/viktoria-tavi-voroshatu-zebrasuger-pundamilia-nyererei/"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 200
+        note: "Smaller commercial recommendation; not adopted."
+      - source:
+          kind: "website"
+          title: "NageoireBleue: Nyerere Cichlid husbandry sheet"
+          url: "https://www.nageoirebleue.com/en/products/cichlide-nyererei-livraison-seulement"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 300
+          lengthCm: null
+          depthCm: null
+      - source:
+          kind: "website"
+          title: "AquaBota: Haplochromis nyererei husbandry sheet"
+          url: "https://www.aquabota.com/fr/cichlides-africains/20979-haplochromis-nyererei-4-6cm.html"
+          accessed: "2026-10-13"
+        value:
+          volumeL: 200
+          lengthCm: null
+          depthCm: null
+        note: "For one male and two females, rather than the chosen harem."
+  lifespanYears:
+    value:
+      min: 5
+      max: 7
+    confidence: "low"
+    rationale: "Generator proposes 3.5 to 4 years; checker-a 5 to 8; checker-b 6 to 8; checker-c 5 to 7. Retain
+      the directly stated 5 to 7 year estimate from AquaBota, corroborated only approximately by Aquario's
+      six-year point. FishFish supports the shorter generator estimate, Home of Cichlids supports checker-b's
+      6 to 8 years, and checker-a relies on general haplochromine inference. Tropical Fish Keeping gives the
+      wider source range of 4 to 10 years and AquaExperience gives 5 to 8 with possible survival to 10. None
+      supplies a verified longitudinal series; Fischlexikon says maximum age is unknown. The selected range is
+      an uncertain planning estimate, not a biological maximum."
+    sources:
+      - kind: "database"
+        title: "FishFish: Pundamilia nyererei, collaborative husbandry record"
+        url: "https://www.fishfish.fr/poisson/pundamilia-nyererei"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Fischlexikon: Nyereres Viktoriabuntbarsch, Haplochromis nyererei"
+        url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000001444"
+        accessed: "2026-10-13"
+      - kind: "model-knowledge"
+        title: "General knowledge of small haplochromine cichlids"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Home of Cichlids: Flameback Cichlid species care sheet"
+        url: "https://homeofcichlids.com.au/product/flameback/"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "AquaBota: Haplochromis nyererei husbandry sheet"
+        url: "https://www.aquabota.com/fr/cichlides-africains/20979-haplochromis-nyererei-4-6cm.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aquario: Haplochromis nyererei husbandry sheet"
+        url: "https://aquario.me/fish/haplochromis-nyererei"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Tropical Fish Keeping: Crimson Tide Cichlid husbandry sheet"
+        url: "https://tropical-fish-keeping.com/crimson-tide-cichlid-pundamilia-nyererei.html"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "FishFish: Pundamilia nyererei, collaborative husbandry record"
+          url: "https://www.fishfish.fr/poisson/pundamilia-nyererei"
+          accessed: "2026-10-13"
+        value:
+          min: 3.5
+          max: 4
+        note: "Published collaborative estimate, with possible longer survival."
+      - source:
+          kind: "website"
+          title: "Home of Cichlids: Flameback Cichlid species care sheet"
+          url: "https://homeofcichlids.com.au/product/flameback/"
+          accessed: "2026-10-13"
+        value:
+          min: 6
+          max: 8
+        note: "Aquarium longevity estimate without supporting age data."
+      - source:
+          kind: "website"
+          title: "AquaBota: Haplochromis nyererei husbandry sheet"
+          url: "https://www.aquabota.com/fr/cichlides-africains/20979-haplochromis-nyererei-4-6cm.html"
+          accessed: "2026-10-13"
+        value:
+          min: 5
+          max: 7
+      - source:
+          kind: "database"
+          title: "Aquario: Haplochromis nyererei husbandry sheet"
+          url: "https://aquario.me/fish/haplochromis-nyererei"
+          accessed: "2026-10-13"
+        value:
+          min: 6
+          max: 6
+      - source:
+          kind: "website"
+          title: "Tropical Fish Keeping: Crimson Tide Cichlid husbandry sheet"
+          url: "https://tropical-fish-keeping.com/crimson-tide-cichlid-pundamilia-nyererei.html"
+          accessed: "2026-10-13"
+        value:
+          min: 4
+          max: 10
+  breeding:
+    value: "maternal-mouthbrooder"
+    confidence: "high"
+    rationale: "All four runs agree. FishBase, the Nordic register and independent husbandry accounts identify
+      female mouthbrooding, and Svensson and colleagues directly sampled broods from females for paternity
+      analysis. Incubation is commonly about three weeks, followed by a short period of fry guarding."
+    sources:
+      - kind: "database"
+        title: "FishBase: Haplochromis nyererei species summary, including its Pundamilia taxonomic placement"
+        url: "https://www.fishbase.se/summary/Pundamilia-nyererei.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Pundamilia nyererei"
+        url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsallskapet artregister: Pundamilia nyererei"
+        url: "https://ciklid.org/artregister/art.php?ID=190"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "AquaInfo: Pundamilia nyererei, husbandry account credited to IG-Victoriasee Cichliden"
+        url: "https://www.aquainfo.nl/artikel/pundamilia-nyererei/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "The genetics of mate preferences in hybrids between two young and sympatric Lake Victoria cichlid
+          species"
+        url: "https://doi.org/10.1098/rspb.2016.2332"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Sympatry and parapatry among rocky reef cichlids of Lake Victoria explained by female mating
+          preferences"
+        url: "https://doi.org/10.1093/jeb/voad006"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Van der Sluijs et al. (2008). Female mating preference functions predict sexual selection against
+          hybrids between sibling species of cichlid fish."
+        url: "https://doi.org/10.1098/rstb.2008.0045"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "FishBase: Haplochromis nyererei species summary, including its Pundamilia taxonomic placement"
+          url: "https://www.fishbase.se/summary/Pundamilia-nyererei.html"
+          accessed: "2026-10-13"
+        value: "maternal-mouthbrooder"
+        note: "Explicit female mouthbrooding."
+      - source:
+          kind: "database"
+          title: "Nordiska Ciklidsallskapet artregister: Pundamilia nyererei"
+          url: "https://ciklid.org/artregister/art.php?ID=190"
+          accessed: "2026-10-13"
+        value: "maternal-mouthbrooder"
+        note: "Female incubation around three weeks."
+      - source:
+          kind: "database"
+          title: "AquaInfo: Pundamilia nyererei, husbandry account credited to IG-Victoriasee Cichliden"
+          url: "https://www.aquainfo.nl/artikel/pundamilia-nyererei/"
+          accessed: "2026-10-13"
+        value: "maternal-mouthbrooder"
+        note: "Female incubation around 21 days."
+      - source:
+          kind: "literature"
+          title: "Svensson et al. (2023, volume published 2024). Sympatry and parapatry among rocky reef cichlids of
+            Lake Victoria explained by female mating preferences."
+          url: "https://doi.org/10.1093/jeb/voad006"
+          accessed: "2026-10-13"
+        value: "maternal-mouthbrooder"
+        note: "Experimental clutches were recovered from females."
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Pundamilia nyererei"
+          url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+          accessed: "2026-10-13"
+        value: "maternal-mouthbrooder"
+  beginnerSuitability:
+    value: "moderate"
+    confidence: "medium"
+    rationale: "All four runs propose moderate. Seriously Fish and the Nordic register independently rate care at
+      an intermediate level. Feeding and routine maintenance are straightforward, but adult aggression,
+      refuges, sex ratio and preserving collection identity require preparation. Akvazin and Tropical Fish
+      Keeping give stronger experience warnings, without evidence that the correct single-male unit
+      universally requires specialist intervention."
+    sources:
+      - kind: "database"
+        title: "Nordiska Ciklidsallskapet artregister: Pundamilia nyererei"
+        url: "https://ciklid.org/artregister/art.php?ID=190"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishFish: Pundamilia nyererei, collaborative husbandry record"
+        url: "https://www.fishfish.fr/poisson/pundamilia-nyererei"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Pundamilia nyererei"
+        url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Cichlid Fish Forum profile, Pundamilia nyererei (Makobe Island)"
+        url: "https://www.cichlid-forum.com/posts/3155209"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishProfiles: Pundamilia nyererei"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Pundamilia_nyererei/"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Home of Cichlids: Flameback Cichlid species care sheet"
+        url: "https://homeofcichlids.com.au/product/flameback/"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "NageoireBleue: Nyerere Cichlid husbandry sheet"
+        url: "https://www.nageoirebleue.com/en/products/cichlide-nyererei-livraison-seulement"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Tropical Fish Keeping: Crimson Tide Cichlid husbandry sheet"
+        url: "https://tropical-fish-keeping.com/crimson-tide-cichlid-pundamilia-nyererei.html"
+        accessed: "2026-10-13"
+    evidence:
+      - source:
+          kind: "database"
+          title: "Nordiska Ciklidsallskapet artregister: Pundamilia nyererei"
+          url: "https://ciklid.org/artregister/art.php?ID=190"
+          accessed: "2026-10-13"
+        value: "moderate"
+        note: "Intermediate husbandry rating."
+      - source:
+          kind: "database"
+          title: "FishFish: Pundamilia nyererei, collaborative husbandry record"
+          url: "https://www.fishfish.fr/poisson/pundamilia-nyererei"
+          accessed: "2026-10-13"
+        value: "moderate"
+        note: "Intermediate maintenance rating."
+      - source:
+          kind: "database"
+          title: "Seriously Fish: Pundamilia nyererei"
+          url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+          accessed: "2026-10-13"
+        value: "moderate"
+        note: "Database difficulty classification."
+      - source:
+          kind: "website"
+          title: "Home of Cichlids: Flameback Cichlid species care sheet"
+          url: "https://homeofcichlids.com.au/product/flameback/"
+          accessed: "2026-10-13"
+        value: "moderate"
+        note: "Hardy fish requiring deliberate territorial layout; rubric mapping rather than a published difficulty
+          label."
+      - source:
+          kind: "website"
+          title: "NageoireBleue: Nyerere Cichlid husbandry sheet"
+          url: "https://www.nageoirebleue.com/en/products/cichlide-nyererei-livraison-seulement"
+          accessed: "2026-10-13"
+        value: "moderate"
+        note: "Rubric interpretation of territorial harem and space requirements."
+      - source:
+          kind: "website"
+          title: "Tropical Fish Keeping: Crimson Tide Cichlid husbandry sheet"
+          url: "https://tropical-fish-keeping.com/crimson-tide-cichlid-pundamilia-nyererei.html"
+          accessed: "2026-10-13"
+        value: "demanding"
+partners:
+  suitable:
+    - species: "Selected robust Lake Victoria cichlids"
+      reason: "Seriously Fish and the Nordic register permit a carefully chosen community; this is a group-level
+        option rather than a tested guarantee for any named pair."
+      condition: "Use distinctly patterned, similarly sized adults with matching feeding and water requirements,
+        their own social groups and separate retreats in a tank larger than the 250 L harem minimum; exclude
+        the four listed crossing partners."
+  unsuitable:
+    - species: "Pundamilia pundamilia"
+      reason: "Documented wild admixture creates a crossing conflict, even though some full-spectrum choice trials
+        show strong isolation."
+    - species: "Pundamilia igneopinnis"
+      reason: "Genetically assigned hybrids occurred when females could also choose males of their own species."
+    - species: "Pundamilia azurea"
+      reason: "Fertile forced laboratory crosses support a presumed pairwise risk; a free-choice trial found no
+        crossing between pure parents."
+    - species: "Haplochromis chilotes"
+      reason: "Fertile forced laboratory F1 and F2 crosses support a presumed pairwise risk. The older
+        Paralabidochromis chilotes recommendation is removed from suitable partners."
+    - species: "Small or timid community fish"
+      reason: "Persistent territorial pressure and unequal feeding access make these unsuitable, independently of
+        the decided predation level 0."
+profile:
+  overview:
+    text: "This red-backed cichlid inhabits rocky parts of southern Lake Victoria in Tanzania. Adult males combine
+      conspicuous colour with strong territorial behaviour, so its small size does not make it a peaceful
+      community fish. A single male with several females is the usual aquarium unit. The species is also a
+      major research system for female mate choice, speciation and hybridization. Collection records matter:
+      some fish historically labelled Python Island or Luanso nyererei represent distinct or admixed lineages
+      rather than a verified population of the nominal species."
+    sources:
+      - kind: "catalog-of-fishes"
+        title: "Eschmeyer's Catalog of Fishes: species of Pundamilia, updated 21 September 2026"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Pu\
+          ndamilia"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Meier et al. (2017). Demographic modelling with whole-genome data reveals parallel origin of similar
+          Pundamilia cichlid species after hybridization. Molecular Ecology."
+        url: "https://doi.org/10.1111/mec.13838"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Meier et al. (2018). Genomics of Parallel Ecological Speciation in Lake Victoria Cichlids"
+        url: "https://doi.org/10.1093/molbev/msy051"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Svensson et al. (2023, volume published 2024). Sympatry and parapatry among rocky reef cichlids of
+          Lake Victoria explained by female mating preferences."
+        url: "https://doi.org/10.1093/jeb/voad006"
+        accessed: "2026-10-13"
+  habitat:
+    text: "Rocks provide shelter and male spawning territories; females also forage in the water above the reef.
+      Makobe and Ruti are representative study localities. Older databases often give a depth band of 1 to 4
+      m, while Maan and colleagues observed Makobe male territories at about 4 to 7 m, so depth varies by
+      population and sampling context. Lake Victoria is naturally soft, with the decided lake-wide ranges of 1
+      to 3 dGH and 2 to 6 dKH. Its temperature and pH ranges combine different places and seasons and should
+      not be treated as constant conditions at every island."
+    sources:
+      - kind: "literature"
+        title: "Svensson et al. (2023, volume published 2024). Sympatry and parapatry among rocky reef cichlids of
+          Lake Victoria explained by female mating preferences."
+        url: "https://doi.org/10.1093/jeb/voad006"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Fitness correlates of male coloration in a Lake Victoria cichlid fish"
+        url: "https://doi.org/10.1093/beheco/ark020"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Haplochromis nyererei species summary, including its Pundamilia taxonomic placement"
+        url: "https://www.fishbase.se/summary/Pundamilia-nyererei.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsallskapet artregister: Pundamilia nyererei"
+        url: "https://ciklid.org/artregister/art.php?ID=190"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of
+          Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Victoria: physical and chemical data after
+          EAFRO (1952, 1954), Graham (1929) and Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E12.htm"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Orina, P. S., Onyango, D. M., Lungayia, H., Oduor, A., Sifuna, A. W., Otuya, P., Owigar, R. A.,
+          Kowenje, C. B. and Hinzano, S. M. (2020). Water quality of selected fishing beaches of Lake Victoria
+          Kenyan Gulf. Open Journal of Ecology 10, 22-35."
+        url: "https://doi.org/10.4236/oje.2020.101002"
+        accessed: "2026-10-13"
+  sizeAndGrowth:
+    text: "Plan for an adult male around 12 cm and a female around 9 cm in total length. The female figure is
+      approximate and chiefly supported by one collaborative aquarium record. FishBase's 7.7 cm and Seriously
+      Fish's 8 cm figures use standard length and leave out the tail. Young or subordinate males can remain
+      inconspicuous until social conditions change. The retained lifespan estimate is 5 to 7 years with low
+      confidence; published care estimates span 3.5 to 10 years and lack verified long-term survival records."
+    sources:
+      - kind: "database"
+        title: "FishFish: Pundamilia nyererei, collaborative husbandry record"
+        url: "https://www.fishfish.fr/poisson/pundamilia-nyererei"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "AquaInfo: Pundamilia nyererei, account by IG-Victoriasee Cichliden"
+        url: "https://www.aquainfo.nl/artikel/pundamilia-nyererei/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsallskapet artregister: Pundamilia nyererei"
+        url: "https://ciklid.org/artregister/art.php?ID=190"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: Haplochromis nyererei species summary, including its Pundamilia taxonomic placement"
+        url: "https://www.fishbase.se/summary/Pundamilia-nyererei.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Pundamilia nyererei"
+        url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "AquaBota: Haplochromis nyererei husbandry sheet"
+        url: "https://www.aquabota.com/fr/cichlides-africains/20979-haplochromis-nyererei-4-6cm.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aquario: Haplochromis nyererei husbandry sheet"
+        url: "https://aquario.me/fish/haplochromis-nyererei"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Tropical Fish Keeping: Crimson Tide Cichlid husbandry sheet"
+        url: "https://tropical-fish-keeping.com/crimson-tide-cichlid-pundamilia-nyererei.html"
+        accessed: "2026-10-13"
+  husbandry:
+    text: "Provide at least 250 litres with a 120 by 45 cm base for one male and three females. Stable rocks,
+      several exits from refuges and complete breaks in sight lines are more useful than extra tank height.
+      Keep an established filter, good oxygenation and regular partial water changes. Routine temperatures
+      around 24 to 26 C and a stable pH within the central alkaline care bands have stronger husbandry support
+      than continuous exposure to the natural extremes. The recorded tolerance envelopes are 22 to 30 C, pH
+      6.8 to 9.4, 1 to 15 dGH and 2 to 12 dKH, all with low confidence. Habitat inclusion supplies some outer
+      endpoints; they are not proven permanent aquarium setpoints."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Pundamilia nyererei"
+        url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsallskapet artregister: Pundamilia nyererei"
+        url: "https://ciklid.org/artregister/art.php?ID=190"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishFish: Pundamilia nyererei, collaborative husbandry record"
+        url: "https://www.fishfish.fr/poisson/pundamilia-nyererei"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishProfiles: Pundamilia nyererei"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Pundamilia_nyererei/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of
+          Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Victoria: physical and chemical data after
+          EAFRO (1952, 1954), Graham (1929) and Talling and Talling (1965)."
+        url: "https://www.fao.org/4/t0473e/T0473E12.htm"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "AquaBota: Haplochromis nyererei husbandry sheet"
+        url: "https://www.aquabota.com/fr/cichlides-africains/20979-haplochromis-nyererei-4-6cm.html"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "NageoireBleue: Nyerere Cichlid husbandry sheet"
+        url: "https://www.nageoirebleue.com/en/products/cichlide-nyererei-livraison-seulement"
+        accessed: "2026-10-13"
+  socialBehavior:
+    text: "A male may repeatedly chase rivals and females and can dominate much of the aquarium. Use at least
+      three females per male and enough retreats for a persecuted fish to disappear from view. Rival adult
+      males need substantially more room and should not be assumed safe in the minimum harem tank. Juveniles
+      raised together can become less tolerant as they mature. Watch for damaged fins, continual hiding and
+      missed meals, and provide a separate place for a fish that cannot escape pursuit."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Pundamilia nyererei"
+        url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishFish: Pundamilia nyererei, collaborative husbandry record"
+        url: "https://www.fishfish.fr/poisson/pundamilia-nyererei"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishProfiles: Pundamilia nyererei"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Pundamilia_nyererei/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsallskapet artregister: Pundamilia nyererei"
+        url: "https://ciklid.org/artregister/art.php?ID=190"
+        accessed: "2026-10-13"
+  diet:
+    text: "Plankton and other small invertebrates dominate the stronger ecological accounts, so the retained
+      category is invertivore. Algae also occur in recorded diets, and some databases use the broader label
+      omnivore. Offer a balanced prepared cichlid food with plant ingredients alongside suitable invertebrate
+      foods such as Artemia, Daphnia and insect larvae. Spread small portions across several feeding points so
+      females receive food. The special high-protein bloat-sensitivity flag is not established, although
+      excessive feeding and an unbalanced ration can still cause problems."
+    sources:
+      - kind: "literature"
+        title: "Bouton, van Os and Witte (1998). Feeding performance of Lake Victoria rock cichlids: testing
+          predictions from morphology. Abstract only."
+        url: "https://doi.org/10.1006/jfbi.1998.0823"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Fitness correlates of male coloration in a Lake Victoria cichlid fish"
+        url: "https://doi.org/10.1093/beheco/ark020"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Henning et al. (2017). Genetic dissection of adaptive form and function in rapidly speciating cichlid
+          fishes."
+        url: "https://doi.org/10.1111/evo.13206"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Svensson et al. (2023, volume published 2024). Sympatry and parapatry among rocky reef cichlids of
+          Lake Victoria explained by female mating preferences."
+        url: "https://doi.org/10.1093/jeb/voad006"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Pundamilia nyererei"
+        url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsallskapet artregister: Pundamilia nyererei"
+        url: "https://ciklid.org/artregister/art.php?ID=190"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase: diet composition of Haplochromis nyererei, after Fermon (1997)"
+        url: "https://www.fishbase.se/TrophicEco/DietCompoList.php?ID=6800&GenusName=Haplochromis&SpeciesName=nyerere\
+          i&fc=349&StockCode=7121"
+        accessed: "2026-10-13"
+  breeding:
+    text: "The female collects the eggs and incubates them in her mouth, commonly for about three weeks. The male
+      defends the spawning area and does not form a parenting pair. A brooding female needs quiet cover and
+      protection from repeated pursuit; returning an isolated female can require careful observation of the
+      established group. Newly released fry can take Artemia nauplii and suitably fine prepared foods.
+      Although predation is classified as level 0, chance fry consumption is possible and keeper reports
+      include deliberate fry taking, so successful grow-out should not depend on adults leaving every young
+      fish unharmed."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Pundamilia nyererei"
+        url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Svensson et al. (2023, volume published 2024). Sympatry and parapatry among rocky reef cichlids of
+          Lake Victoria explained by female mating preferences."
+        url: "https://doi.org/10.1093/jeb/voad006"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsallskapet artregister: Pundamilia nyererei"
+        url: "https://ciklid.org/artregister/art.php?ID=190"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Fitness correlates of male coloration in a Lake Victoria cichlid fish"
+        url: "https://doi.org/10.1093/beheco/ark020"
+        accessed: "2026-10-13"
+      - kind: "forum"
+        title: "Forociclidos: Pundamilia nyererei aquarium keeping and breeding report, 2012"
+        url: "https://www.forociclidos.com/foro/viewtopic.php?t=1801"
+        accessed: "2026-10-13"
+      - kind: "forum"
+        title: "WaFishBox: The Journey of Breeding Freshwater Fish, aquarium breeding report."
+        url: "https://www.wafishbox.com/forums/threads/the-journey-of-breeding-freshwater-fish.7096/"
+        accessed: "2026-10-13"
+  sexing:
+    text: "Mature males are larger and usually display red dorsal areas, yellow flanks, black vertical bars and
+      locality-dependent blue highlights. Females tend to remain grey-brown with less intense markings.
+      Juvenile and subordinate males may resemble females, so colour alone is unreliable in a newly acquired
+      group. Anal-fin egg spots can help when considered with size, behaviour and mature colour, but
+      collection records are necessary for identifying a locality line."
+    sources:
+      - kind: "database"
+        title: "AquaInfo: Pundamilia nyererei, account by IG-Victoriasee Cichliden"
+        url: "https://www.aquainfo.nl/artikel/pundamilia-nyererei/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Selz et al. (2014). Female preference for male color is necessary and sufficient for assortative
+          mating in 2 cichlid sister species. Behavioral Ecology."
+        url: "https://doi.org/10.1093/beheco/aru024"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsallskapet artregister: Pundamilia nyererei"
+        url: "https://ciklid.org/artregister/art.php?ID=190"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Seriously Fish: Pundamilia nyererei"
+        url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+        accessed: "2026-10-13"
+  compatibility:
+    text: "Selected robust cichlids with different patterns may share a larger, well-structured aquarium when
+      feeding and water requirements overlap. The species-only flag is false, but a small harem tank is not a
+      general community minimum. Avoid small or timid fish because territorial attacks and poor access to food
+      remain concerns even at predation level 0. The crossing pairs with pundamilia and igneopinnis have
+      documented evidence. Azurea and Haplochromis chilotes carry presumed risks from fertile forced
+      laboratory crosses. Chilotes is therefore excluded as a recommended companion despite an older hobby
+      list naming it. Pairwise evidence does not establish that every Pundamilia species can cross with every
+      other member."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Pundamilia nyererei"
+        url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsallskapet artregister: Pundamilia nyererei"
+        url: "https://ciklid.org/artregister/art.php?ID=190"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishFish: Pundamilia nyererei, collaborative husbandry record"
+        url: "https://www.fishfish.fr/poisson/pundamilia-nyererei"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Meier et al. (2017). Demographic modelling with whole-genome data reveals parallel origin of similar
+          Pundamilia cichlid species after hybridization. Molecular Ecology."
+        url: "https://doi.org/10.1111/mec.13838"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Svensson et al. (2023, volume published 2024). Sympatry and parapatry among rocky reef cichlids of
+          Lake Victoria explained by female mating preferences."
+        url: "https://doi.org/10.1093/jeb/voad006"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Henning et al. (2017). Genetic dissection of adaptive form and function in rapidly speciating cichlid
+          fishes."
+        url: "https://doi.org/10.1111/evo.13206"
+        accessed: "2026-10-13"
+  problems:
+    text: "Repeated pursuit and lack of escape routes are common causes of poor condition. Check whether every
+      fish can feed and rest away from the dominant male before adding more stock. Maintain clean, oxygenated
+      water and quarantine new arrivals. Appetite loss, abdominal swelling or unusual breathing need
+      investigation rather than being automatically labelled bloat. Seek qualified fish-health advice when
+      symptoms persist. Mixed collection lines and unverified trade names are another avoidable problem,
+      especially when offspring are distributed as a pure population."
+    sources:
+      - kind: "database"
+        title: "Seriously Fish: Pundamilia nyererei"
+        url: "https://www.seriouslyfish.com/species/pundamilia-nyererei/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishProfiles: Pundamilia nyererei"
+        url: "https://fishprofiles.com/profiles/freshwater/Cichlids/Pundamilia_nyererei/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Nordiska Ciklidsallskapet artregister: Pundamilia nyererei"
+        url: "https://ciklid.org/artregister/art.php?ID=190"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Fischlexikon: Nyereres Viktoriabuntbarsch, Haplochromis nyererei"
+        url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000001444"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Meier et al. (2017). Demographic modelling with whole-genome data reveals parallel origin of similar
+          Pundamilia cichlid species after hybridization. Molecular Ecology."
+        url: "https://doi.org/10.1111/mec.13838"
+        accessed: "2026-10-13"
+provenance:
+  runs:
+    - role: "generator"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+    - role: "checker"
+      model: "claude-sonnet-5-5"
+      date: "2026-10-13"
+    - role: "checker"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+    - role: "checker"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+    - role: "checker"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+    - role: "checker"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+    - role: "adjudicator"
+      model: "gpt-6.1-sol"
+      date: "2026-10-13"
+  disagreements:
+    - field: "taxonomy.synonyms"
+      proposals:
+        - by: "generator"
+          value:
+            - name: "Haplochromis nyererei"
+              note: "Original combination; FishBase retains the broad Haplochromis treatment pending a comprehensive
+                revision."
+        - by: "checker-a"
+          value:
+            - name: "Haplochromis nyererei Witte-Maas & Witte, 1985"
+              note: "original combination; FishBase still keeps the species in Haplochromis"
+        - by: "checker-b"
+          value:
+            - name: "Haplochromis nyererei"
+              note: "Original combination retained by FishBase under its broader genus policy."
+        - by: "checker-c"
+          value:
+            - name: "Haplochromis nyererei"
+              note: "Original combination retained by FishBase under its provisional broad Haplochromis classification."
+      decision:
+        - name: "Haplochromis nyererei"
+          note: "Original combination; FishBase provisionally retains this genus while acknowledging the Catalog of
+            Fishes placement."
+      rationale: "All four runs identify the same original combination. Checker-a includes the authority in the
+        synonym string, while the other runs keep it in taxonomy.author; use the name alone and retain
+        authorship separately."
+    - field: "features.origin"
+      proposals:
+        - by: "generator"
+          value:
+            continent: "Africa"
+            region: "Southern Lake Victoria, Tanzania"
+            waterbody: "lake-victoria"
+            localities:
+              - "Mwanza Gulf"
+              - "Speke Gulf"
+              - "Makobe Island"
+              - "Ruti Island"
+        - by: "checker-a"
+          value:
+            continent: "Africa"
+            region: "Lake Victoria"
+            waterbody: "lake-victoria"
+            localities:
+              - "Makobe Island"
+              - "Ruti Island"
+              - "Zue Island"
+              - "Igombe Island"
+              - "Python Islands"
+              - "Kissenda Island"
+              - "Luanso Island"
+              - "Anchor Island"
+              - "Ukerewe (Nansio) Island"
+        - by: "checker-b"
+          value:
+            continent: "Africa"
+            region: "Southern Lake Victoria in Tanzania"
+            waterbody: "lake-victoria"
+            localities:
+              - "Mwanza Gulf"
+              - "Speke Gulf"
+              - "Makobe Island"
+              - "Ruti Island"
+        - by: "checker-c"
+          value:
+            continent: "Africa"
+            region: "Southern Lake Victoria, Tanzania"
+            waterbody: "lake-victoria"
+            localities:
+              - "Mwanza Gulf"
+              - "Speke Gulf"
+              - "Makobe Island"
+              - "Ruti Island"
+      decision:
+        continent: "Africa"
+        region: "Southern Lake Victoria, Tanzania"
+        waterbody: "lake-victoria"
+        localities:
+          - "Mwanza Gulf"
+          - "Speke Gulf"
+          - "Makobe Island"
+          - "Ruti Island"
+      rationale: "Generator, checker-b and checker-c use a representative southern Tanzanian list: Mwanza Gulf,
+        Speke Gulf, Makobe Island and Ruti Island. Checker-a proposes the wider historical list including Zue,
+        Igombe, Python, Kissenda, Luanso, Anchor and Ukerewe islands. Retain the representative list because
+        modern genomic work distinguishes some historical nyererei labels from the nominal Makobe lineage;
+        omission does not assert absence. Proposals: generator {\"continent\":\"Africa\",\"region\":\"Southern
+        Lake Victoria, Tanzania\",\"waterbody\":\"lake-victoria\",\"localities\":[\"Mwanza Gulf\",\"Speke
+        Gulf\",\"Makobe Island\",\"Ruti Island\"]}; checker-a {\"continent\":\"Africa\",\"region\":\"Lake
+        Victoria\",\"waterbody\":\"lake-victoria\",\"localities\":[\"Makobe Island\",\"Ruti Island\",\"Zue
+        Island\",\"Igombe Island\",\"Python Islands\",\"Kissenda Island\",\"Luanso Island\",\"Anchor
+        Island\",\"Ukerewe (Nansio) Island\"]}; checker-b {\"continent\":\"Africa\",\"region\":\"Southern Lake
+        Victoria in Tanzania\",\"waterbody\":\"lake-victoria\",\"localities\":[\"Mwanza Gulf\",\"Speke
+        Gulf\",\"Makobe Island\",\"Ruti Island\"]}; checker-c {\"continent\":\"Africa\",\"region\":\"Southern
+        Lake Victoria, Tanzania\",\"waterbody\":\"lake-victoria\",\"localities\":[\"Mwanza Gulf\",\"Speke
+        Gulf\",\"Makobe Island\",\"Ruti Island\"]}."
+    - field: "features.ghDgh.tolerance"
+      proposals:
+        - by: "generator"
+          value:
+            min: 1
+            max: 15
+        - by: "checker-a"
+          value:
+            min: 1
+            max: 15
+        - by: "checker-b"
+          value:
+            min: 1
+            max: 15
+        - by: "checker-c"
+          value:
+            min: 1
+            max: 20
+        - by: "tiebreaker-1"
+          value:
+            min: 1
+            max: 15
+        - by: "tiebreaker-2"
+          value:
+            min: 1
+            max: 15
+      decision:
+        min: 1
+        max: 15
+      rationale: "Generator, checker-a, checker-b, tiebreaker-1 and tiebreaker-2 propose 1 to 15 dGH; checker-c
+        proposes 1 to 20 dGH. The tally fixes 1 to 15 dGH by qualified majority, 5 of 6, with low confidence.
+        Seriously Fish gives 4 to 15 dGH, FishFish 9 to 12 dGH and Akvazin a soft-water point of 1.5 dGH.
+        Uncle Bill's 72 to 270 ppm converts to about 4.04 to 15.13 dGH if it means CaCO3 equivalents. The
+        lower endpoint contains the natural 1 to 3 dGH. FishProfiles gives the wider 15 to 20 dH
+        recommendation; AquaBota gives 8 to 16 dGH, NageoireBleue 8 to 18 dGH, and Fishkeeper an upper limit
+        of 25 dH without a lower bound. These higher ceilings have no documented long-term endpoint tests and
+        do not overturn the decided upper limit. AquaExperience gives the narrower 5 to 12 dGH band but has
+        unrelated factual inconsistencies."
+    - field: "features.khDkh.tolerance"
+      proposals:
+        - by: "generator"
+          value:
+            min: 2
+            max: 12
+        - by: "checker-a"
+          value:
+            min: 2
+            max: 12
+        - by: "checker-b"
+          value:
+            min: 2
+            max: 6
+        - by: "checker-c"
+          value:
+            min: 2
+            max: 12
+        - by: "tiebreaker-1"
+          value:
+            min: 2
+            max: 12
+        - by: "tiebreaker-2"
+          value:
+            min: 2
+            max: 12
+      decision:
+        min: 2
+        max: 12
+      rationale: "Generator, checker-a, checker-c, tiebreaker-1 and tiebreaker-2 propose 2 to 12 dKH; checker-b
+        proposes 2 to 6 dKH. The tally fixes 2 to 12 dKH by qualified majority, 5 of 6, with low confidence.
+        AquaBota and NageoireBleue explicitly recommend 6 to 12 dKH, AquaExperience 4 to 10 dKH and Akvazin
+        states 2.5 dKH. The lower endpoint contains the natural 2 to 6 dKH. Water and Garden gives the wider
+        10 to 20 kH band with no clear unit and text about an unrelated Firefish; Aquarium.org.il gives the
+        wider 14 to 24 KH band with uncertain stock identity. Neither justifies raising the ceiling. Checker-a
+        derives KH from GH, which is not a valid conversion and is excluded from the evidence. The adopted
+        endpoints remain provisional because no longitudinal aquarium study was found."
+    - field: "features.predation"
+      proposals:
+        - by: "generator"
+          value: 1
+        - by: "checker-a"
+          value: 0
+        - by: "checker-b"
+          value: 0
+        - by: "checker-c"
+          value: 0
+        - by: "tiebreaker-1"
+          value: 0
+        - by: "tiebreaker-2"
+          value: 1
+      decision: 0
+      rationale: "Generator and tiebreaker-2 propose level 1; checker-a, checker-b, checker-c and tiebreaker-1
+        propose level 0. The tally decides 0 by qualified majority, 4 of 6, with medium confidence. Bouton's
+        feeding-study abstract, Maan's field study and Henning's ecological account identify zooplankton and
+        insects as main prey; FishBase reports algae and insects, without fish items. This fits level 0 with
+        chance fry uptake still possible. Akvazin includes small fish among feeds and two keeper reports
+        describe fry being eaten; these low-weight observations explain the level-1 proposals but do not
+        override the decided vote. Level 0 is a rubric interpretation, not proof that fry are always safe."
+    - field: "features.diet"
+      proposals:
+        - by: "generator"
+          value:
+            type: "invertivore"
+            bloatSensitive: false
+            foods:
+              - "Aquatic insect larvae"
+              - "Zooplankton"
+              - "Artemia"
+              - "Daphnia"
+              - "Balanced cichlid pellets with vegetable ingredients"
+        - by: "checker-a"
+          value:
+            type: "invertivore"
+            bloatSensitive: false
+            foods:
+              - "zooplankton"
+              - "insect larvae"
+              - "brine shrimp"
+              - "daphnia"
+              - "mosquito larvae"
+              - "quality flakes with vegetable content"
+        - by: "checker-b"
+          value:
+            type: "invertivore"
+            bloatSensitive: false
+            foods:
+              - "zooplankton"
+              - "insect larvae"
+              - "Artemia"
+              - "Daphnia"
+              - "balanced cichlid pellets"
+              - "some vegetable matter"
+        - by: "checker-c"
+          value:
+            type: "invertivore"
+            bloatSensitive: false
+            foods:
+              - "zooplankton"
+              - "insect larvae"
+              - "small aquatic crustaceans"
+              - "bryozoans"
+              - "balanced cichlid pellets"
+              - "vegetable supplements"
+      decision:
+        type: "invertivore"
+        bloatSensitive: false
+        foods:
+          - "Aquatic insect larvae"
+          - "Zooplankton"
+          - "Artemia"
+          - "Daphnia"
+          - "Balanced cichlid pellets with vegetable ingredients"
+      rationale: "All four full-profile runs agree on invertivore and bloatSensitive false; the tally is unanimous,
+        4 of 4, with medium confidence. Bouton's feeding abstract and the studies by Maan, Henning and
+        Svensson support a diet dominated by plankton and other invertebrates. FishBase and several care
+        databases use omnivore because algae and plants also occur; its two older diet records report plant
+        contributions of 55 and 69 percent, so the category must not imply an exclusively animal diet.
+        FishProfiles discourages high protein without documenting a specific bloat syndrome. False means that
+        the special high-protein conflict flag is not established, not that digestive disease is impossible.
+        Food-list wording differs among generator, checker-a, checker-b and checker-c; preserve the generator
+        list exactly as the tally decides."
+    - field: "features.hybridGroups"
+      proposals:
+        - by: "generator"
+          value:
+            - "pundamilia-nyererei-pundamilia"
+            - "pundamilia-nyererei-igneopinnis"
+            - "pundamilia-nyererei-azurea"
+        - by: "checker-a"
+          value:
+            - "pundamilia-nyererei-complex"
+        - by: "checker-b"
+          value:
+            - "pundamilia-nyererei-pundamilia"
+            - "pundamilia-nyererei-igneopinnis"
+            - "pundamilia-nyererei-azurea"
+            - "haplochromis-chilotes-pundamilia-nyererei"
+        - by: "checker-c"
+          value:
+            - "pundamilia-nyererei-pundamilia"
+        - by: "tiebreaker-1"
+          value:
+            - "pundamilia-nyererei-pundamilia"
+            - "pundamilia-nyererei-igneopinnis"
+            - "pundamilia-nyererei-azurea"
+            - "haplochromis-chilotes-pundamilia-nyererei"
+            - "astatotilapia-calliptera-pundamilia-nyererei"
+        - by: "tiebreaker-2"
+          value:
+            - "pundamilia-nyererei-pundamilia"
+            - "pundamilia-nyererei-igneopinnis"
+            - "pundamilia-nyererei-azurea"
+            - "haplochromis-chilotes-pundamilia-nyererei"
+      decision:
+        - "haplochromis-chilotes-pundamilia-nyererei"
+        - "pundamilia-nyererei-azurea"
+        - "pundamilia-nyererei-igneopinnis"
+        - "pundamilia-nyererei-pundamilia"
+      rationale: "The tally applies the conservative rule after six votes fail to reach a four-vote majority.
+        Generator proposes the three nyererei pairs with pundamilia, igneopinnis and azurea; checker-a
+        proposes a single nyererei-complex group; checker-b and tiebreaker-2 propose those three pairs plus
+        chilotes; checker-c proposes only the pundamilia pair; tiebreaker-1 proposes all four pairs plus
+        calliptera. Retain the union of identifiers supported by at least two runs, giving exactly the four
+        decided pairs and low confidence with 2 of 6 agreeing on the whole set. The complex identifier and
+        calliptera identifier each have only one vote and are excluded. Meier and colleagues infer wild
+        nyererei-pundamilia admixture, supporting documented basis. Svensson and colleagues genetically
+        confirm nyererei-igneopinnis mating with conspecific males available, also documented. The azurea and
+        chilotes crosses were forced without conspecific male choice, so their basis is presumed; Svensson's
+        free-choice experiment found no pure nyererei-azurea mating. Stelkens (2009) explicitly labels a
+        calliptera cross as nyererei, whereas the 2019 study uses the distinct nyererei-like lineage; this
+        identity discrepancy remains unresolved and exclusion by the tally support rule must not be read as
+        proof of incompatibility. Crossing is not transitive."
+    - field: "features.maxSizeCm"
+      proposals:
+        - by: "generator"
+          value:
+            male: 12
+            female: 9
+        - by: "checker-a"
+          value:
+            male: 11
+            female: 9
+        - by: "checker-b"
+          value:
+            male: 12
+            female: 9
+        - by: "checker-c"
+          value:
+            male: 12
+            female: 9
+      decision:
+        male: 12
+        female: 9
+      rationale: "Generator, checker-b and checker-c propose male 12 cm and female 9 cm; checker-a proposes 11 and 9
+        cm. Retain 12 and 9 cm as typical aquarium planning maxima: FishFish gives these sex-specific figures,
+        while AquaInfo and the Nordic register support about 12 cm without separating sexes. The female
+        maximum rests chiefly on one collaborative record and is approximate. FishBase gives 7.7 cm SL and
+        Seriously Fish 8 cm SL, excluding the tail; these are not directly comparable total lengths. The
+        multi-species mating study reports initial males at 9.9 to 10.9 cm TL and spawning females at 6.5 to
+        9.7 cm TL, a wider female range than the retained 9 cm typical value but not a species-specific
+        maximum series. The hobby claim of 17.8 cm aquarium males is excluded as atypical and poorly
+        supported. Proposals: generator {\"male\":12,\"female\":9}; checker-a {\"male\":11,\"female\":9};
+        checker-b {\"male\":12,\"female\":9}; checker-c {\"male\":12,\"female\":9}."
+    - field: "features.aggressionConspecific"
+      proposals:
+        - by: "generator"
+          value: 3
+        - by: "checker-a"
+          value: 3
+        - by: "checker-b"
+          value: 4
+        - by: "checker-c"
+          value: 4
+      decision: 3
+      rationale: "Generator and checker-a propose 3; checker-b and checker-c propose 4. Choose 3 for the stipulated
+        adult social unit of one male with at least three females, sufficient cover and the minimum tank.
+        Seriously Fish describes lethal male rivalry when cover is insufficient and targeting of females;
+        those failures explain the more severe proposals but do not establish unavoidable killing in the
+        correctly arranged harem. AquaInfo reports less severe aggression. Persistent pursuit and the
+        consequences of an unsuitable ratio fit level 3. Proposals: generator 3; checker-a 3; checker-b 4;
+        checker-c 4."
+    - field: "features.aggressionHeterospecific"
+      proposals:
+        - by: "generator"
+          value: 3
+        - by: "checker-a"
+          value: 2
+        - by: "checker-b"
+          value: 3
+        - by: "checker-c"
+          value: 2
+      decision: 3
+      rationale: "Generator and checker-b propose 3; checker-a and checker-c propose 2. Choose 3 as a cautious
+        aquarium classification because FishFish reports substantial attacks on community fish and
+        FishProfiles describes extreme aggression toward other haplochromine males. AquaInfo reports good
+        coexistence with unlike patterns and the archive describes only one dominant individual. The evidence
+        is variable, but it supports robust, similarly sized adult companions rather than assuming all
+        aggression stays within a small territory. Proposals: generator 3; checker-a 2; checker-b 3; checker-c
+        2."
+    - field: "features.territory"
+      proposals:
+        - by: "generator"
+          value:
+            size: "large"
+            breedingOnly: false
+        - by: "checker-a"
+          value:
+            size: "small"
+            breedingOnly: false
+        - by: "checker-b"
+          value:
+            size: "large"
+            breedingOnly: false
+        - by: "checker-c"
+          value:
+            size: "small"
+            breedingOnly: true
+      decision:
+        size: "large"
+        breedingOnly: false
+      rationale: "Generator and checker-b propose large with breedingOnly false; checker-a proposes small with
+        false; checker-c proposes small with true. Retain large and false as a cautious spatial-planning
+        inference from persistent dominance and territorial accounts. Maan and colleagues directly measured
+        defended areas across repeated days and recorded many rocks per territory, but the accessible text
+        does not supply a clear aquarium-equivalent boundary for the 30 cm versus 50 cm rubric. A spawning
+        spot alone therefore does not establish a small territory, and courtship increases defence without
+        proving that defence occurs only during one breeding episode. No precise defended aquarium diameter is
+        claimed. Proposals: generator {\"size\":\"large\",\"breedingOnly\":false}; checker-a
+        {\"size\":\"small\",\"breedingOnly\":false}; checker-b {\"size\":\"large\",\"breedingOnly\":false};
+        checker-c {\"size\":\"small\",\"breedingOnly\":true}."
+    - field: "features.habitatZones"
+      proposals:
+        - by: "generator"
+          value:
+            - "rock"
+            - "openWater"
+        - by: "checker-a"
+          value:
+            - "rock"
+        - by: "checker-b"
+          value:
+            - "rock"
+            - "openWater"
+        - by: "checker-c"
+          value:
+            - "rock"
+      decision:
+        - "rock"
+        - "openWater"
+      rationale: "Generator and checker-b propose rock plus openWater; checker-a and checker-c propose rock alone.
+        The Nordic register explicitly describes adjacent open water, and Svensson and colleagues place female
+        foraging in the water column above male rocky territories. Include both zones, with openWater limited
+        to space above and beside the reef. This does not call for an offshore pelagic tank or displace the
+        need for extensive rock refuges. Proposals: generator [\"rock\",\"openWater\"]; checker-a [\"rock\"];
+        checker-b [\"rock\",\"openWater\"]; checker-c [\"rock\"]."
+    - field: "features.coloration"
+      proposals:
+        - by: "generator"
+          value:
+            baseColors:
+              - "red"
+              - "yellow"
+              - "black"
+              - "blue"
+            pattern: "bars"
+        - by: "checker-a"
+          value:
+            baseColors:
+              - "red"
+              - "yellow"
+            pattern: "bars"
+        - by: "checker-b"
+          value:
+            baseColors:
+              - "red"
+              - "yellow"
+              - "black"
+              - "blue"
+            pattern: "bars"
+        - by: "checker-c"
+          value:
+            baseColors:
+              - "red"
+              - "yellow"
+              - "black"
+              - "blue"
+            pattern: "bars"
+      decision:
+        baseColors:
+          - "red"
+          - "yellow"
+          - "black"
+          - "blue"
+        pattern: "bars"
+      rationale: "Generator, checker-b and checker-c propose red, yellow, black and blue with vertical bars;
+        checker-a lists red and yellow with bars. Retain the fuller typical male palette: red dorsal areas,
+        yellow flanks and dark bars are consistently described, while AquaInfo records blue throat colour.
+        Blue varies among localities and dominance states. The red/yellow-only proposal omits well-supported
+        secondary colours rather than contradicting their presence. Proposals: generator
+        {\"baseColors\":[\"red\",\"yellow\",\"black\",\"blue\"],\"pattern\":\"bars\"}; checker-a
+        {\"baseColors\":[\"red\",\"yellow\"],\"pattern\":\"bars\"}; checker-b
+        {\"baseColors\":[\"red\",\"yellow\",\"black\",\"blue\"],\"pattern\":\"bars\"}; checker-c
+        {\"baseColors\":[\"red\",\"yellow\",\"black\",\"blue\"],\"pattern\":\"bars\"}."
+    - field: "features.minTank"
+      proposals:
+        - by: "generator"
+          value:
+            volumeL: 250
+            lengthCm: 120
+            depthCm: 45
+        - by: "checker-a"
+          value:
+            volumeL: 240
+            lengthCm: 120
+            depthCm: 45
+        - by: "checker-b"
+          value:
+            volumeL: 250
+            lengthCm: 120
+            depthCm: 45
+        - by: "checker-c"
+          value:
+            volumeL: 240
+            lengthCm: 120
+            depthCm: 45
+      decision:
+        volumeL: 250
+        lengthCm: 120
+        depthCm: 45
+      rationale: "Generator and checker-b propose 250 L with a 120 by 45 cm base; checker-a and checker-c propose
+        240 L with the same base. Retain 250 L, using FishFish's group minimum and rounding upward from
+        Seriously Fish's approximately 243 L example; AquaInfo specifies 240 L. This is for one male and three
+        females with visual barriers. The Nordic register lists a lower 180 L at 120 cm, AquaBota gives 200 L
+        for a smaller trio and NageoireBleue recommends 300 L; these differently specified recommendations do
+        not justify reducing the selected harem floor. Community stocking requires more space. Proposals:
+        generator {\"volumeL\":250,\"lengthCm\":120,\"depthCm\":45}; checker-a
+        {\"volumeL\":240,\"lengthCm\":120,\"depthCm\":45}; checker-b
+        {\"volumeL\":250,\"lengthCm\":120,\"depthCm\":45}; checker-c
+        {\"volumeL\":240,\"lengthCm\":120,\"depthCm\":45}."
+    - field: "features.lifespanYears"
+      proposals:
+        - by: "generator"
+          value:
+            min: 3.5
+            max: 4
+        - by: "checker-a"
+          value:
+            min: 5
+            max: 8
+        - by: "checker-b"
+          value:
+            min: 6
+            max: 8
+        - by: "checker-c"
+          value:
+            min: 5
+            max: 7
+      decision:
+        min: 5
+        max: 7
+      rationale: "Generator proposes 3.5 to 4 years; checker-a 5 to 8; checker-b 6 to 8; checker-c 5 to 7. Retain
+        the directly stated 5 to 7 year estimate from AquaBota, corroborated only approximately by Aquario's
+        six-year point. FishFish supports the shorter generator estimate, Home of Cichlids supports
+        checker-b's 6 to 8 years, and checker-a relies on general haplochromine inference. Tropical Fish
+        Keeping gives the wider source range of 4 to 10 years and AquaExperience gives 5 to 8 with possible
+        survival to 10. None supplies a verified longitudinal series; Fischlexikon says maximum age is
+        unknown. The selected range is an uncertain planning estimate, not a biological maximum. Proposals:
+        generator {\"min\":3.5,\"max\":4}; checker-a {\"min\":5,\"max\":8}; checker-b {\"min\":6,\"max\":8};
+        checker-c {\"min\":5,\"max\":7}."
