@@ -1,7 +1,19 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import type { PagedResponse } from "@cichlids/client-core";
-import { applyFirstPage, applyNextPage, applyPrepend, emptyPagedItems, hasMorePages, nextPageOffset, type PagedItems } from "./pagedListState";
+import {
+  applyFirstPage,
+  applyNextPage,
+  applyPrepend,
+  beginLoad,
+  emptyPagedItems,
+  finishLoad,
+  hasMorePages,
+  idleLoadStatus,
+  nextPageOffset,
+  type LoadStatus,
+  type PagedItems,
+} from "./pagedListState";
 
 const PAGE_SIZE = 20;
 
@@ -32,8 +44,7 @@ export function usePagedList<T>(
   keyOf?: (item: T) => string | number,
 ): UsePagedListState<T> {
   const [state, setState] = useState<PagedItems<T>>(emptyPagedItems);
-  const [loading, setLoading] = useState(true);
-  const [loadingMore, setLoadingMore] = useState(false);
+  const [{ loading, loadingMore }, setStatus] = useState<LoadStatus>({ ...idleLoadStatus, loading: true });
   const [error, setError] = useState<string | null>(null);
   const requestId = useRef(0);
   const { t } = useTranslation();
@@ -41,7 +52,7 @@ export function usePagedList<T>(
   const load = useCallback(
     async (offset: number, append: boolean) => {
       const id = ++requestId.current;
-      append ? setLoadingMore(true) : setLoading(true);
+      setStatus((current) => beginLoad(current, append));
       setError(null);
       try {
         const page = await fetchPage(offset, PAGE_SIZE);
@@ -52,7 +63,7 @@ export function usePagedList<T>(
         setError(err instanceof Error ? err.message : t("common.unknownError"));
       } finally {
         if (id !== requestId.current) return;
-        append ? setLoadingMore(false) : setLoading(false);
+        setStatus((current) => finishLoad(current, append));
       }
     },
     [fetchPage, keyOf],

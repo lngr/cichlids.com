@@ -54,3 +54,30 @@ export function nextPageOffset<T>(state: PagedItems<T>): number {
 export function hasMorePages<T>(state: PagedItems<T>): boolean {
   return state.received < state.serverTotal;
 }
+
+/** Whether a first page or a further page is currently being fetched. */
+export interface LoadStatus {
+  loading: boolean;
+  loadingMore: boolean;
+}
+
+export const idleLoadStatus: LoadStatus = { loading: false, loadingMore: false };
+
+/**
+ * The status when a fetch starts. A first-page fetch (append false) supersedes a load-more that is
+ * still pending, so it clears the load-more flag: the superseded fetch never reports back.
+ */
+export function beginLoad(status: LoadStatus, append: boolean): LoadStatus {
+  return append ? { ...status, loadingMore: true } : { loading: true, loadingMore: false };
+}
+
+/** The status when the latest fetch ends. */
+export function finishLoad(status: LoadStatus, append: boolean): LoadStatus {
+  return append ? { ...status, loadingMore: false } : { ...status, loading: false };
+}
+
+/** What a list shows in place of its items: loading, the load error with a retry, or the empty message. */
+export function listEmptyState(status: { loading: boolean; error: string | null }): "loading" | "error" | "empty" {
+  if (status.loading) return "loading";
+  return status.error ? "error" : "empty";
+}
