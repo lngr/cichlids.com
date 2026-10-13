@@ -1,0 +1,1587 @@
+schemaVersion: 1
+id: aulonocara-jacobfreibergi-eureka
+legacyIds: [223]
+status: domestic-form
+
+taxonomy:
+  validName: "Aulonocara jacobfreibergi 'Eureka'"
+  genus: Aulonocara
+  species: jacobfreibergi
+  author: (Johnson, 1974)
+  source: &cof
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes, species of the genus Aulonocara"
+    url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Aulonocara
+    accessed: 2026-10-13
+  synonyms:
+    - name: Trematocranus jacobfreibergi
+      note: Original combination of the parent species (Johnson 1974); the Catalog of Fishes treats it as valid as Aulonocara jacobfreibergi.
+  legacyNames:
+    - Aulonocara eureka
+  parents:
+    - aulonocara-jacobfreibergi
+  note: >-
+    The Catalog of Fishes holds no nominal species eureka, neither in Aulonocara nor in
+    Trematocranus (both genus lists queried on 2026-10-13), so "Aulonocara eureka" is a trade label
+    without zoological standing. Ad Konings (Practical Fishkeeping), Seriously Fish, the Cichlid-Forum
+    species profile and the Victorian Cichlid Society sheet all describe the Eureka as an aquarium
+    line selected for red colour from the wild Otter Point population of A. jacobfreibergi; the
+    Cichlid-Forum profile states expressly that it is line-bred and not a hybrid. A hobby claim that
+    the line also carries blood of the 'Swallowtail' form is not backed by any breeding record. The
+    profile therefore treats the fish as a domestic form of A. jacobfreibergi, which takes the
+    habitat and water values of its Lake Malawi parent species. Trade names vary between "Eureka"
+    and "Eureka Red"; the shorter form matches the legacy name and the literature.
+
+names:
+  trade:
+    en:
+      - Eureka peacock
+      - Eureka red peacock
+      - Eureka Red
+      - Eureka red jake
+    de:
+      - Feenbuntbarsch Eureka
+      - Aulonocara Eureka Red
+      - Kaiserbuntbarsch Eureka
+
+variants:
+  - name: Albino Eureka
+    kind: color-morph
+    note: Albino form of the line with a red body and pale eyes; the Victorian Cichlid Society lists it as a variety, and its descent from pure Eureka stock is not documented.
+
+features:
+  origin:
+    value:
+      continent: captive-bred
+      region: Lake Malawi
+      waterbody: Lake Malawi
+      localities:
+        - Otter Point, southern Lake Malawi (wild stock of the line)
+    confidence: high
+    rationale: >-
+      The Eureka exists only in aquaria. Konings, Seriously Fish, the Cichlid-Forum profile and the
+      Victorian Cichlid Society agree that it was selected in captivity from A. jacobfreibergi of
+      Otter Point in the south of Lake Malawi, and FishBase confirms Lake Malawi as the home of the
+      parent species. The waterbody entry carries the water values of the parent species over to the
+      line. All runs agree on a captive origin with Lake Malawi ancestry; several independent sources
+      support it, hence high confidence.
+    sources:
+      - &pfk
+        kind: literature
+        title: "Konings, A. Cichlids with a sixth sense. Practical Fishkeeping (online feature)"
+        url: https://www.practicalfishkeeping.co.uk/features/cichlids-with-a-sixth-sense/
+        accessed: 2026-10-13
+      - &sf
+        kind: database
+        title: "Seriously Fish: Aulonocara jacobfreibergi (Malawi Butterfly)"
+        url: https://www.seriouslyfish.com/species/aulonocara-jacobfreibergi/
+        accessed: 2026-10-13
+      - &cfe
+        kind: database
+        title: "Cichlid-Forum species profile: Aulonocara jacobfreibergi 'Eureka'"
+        url: https://www.cichlid-forum.com/threads/aulonocara-jacobfreibergi-eureka.456952/
+        accessed: 2026-10-13
+      - &vcs
+        kind: database
+        title: "Victorian Cichlid Society: Aulonocara jacobfreibergi 'Eureka'"
+        url: https://cichlidpower.org.au/VCS_3/PRF/HTM/Aulonocara%20jacobfreibergi%20Eureka%20Red.html
+        accessed: 2026-10-13
+      - &fb
+        kind: database
+        title: "FishBase species summary: Aulonocara jacobfreibergi (Fairy cichlid)"
+        url: https://www.fishbase.se/summary/Aulonocara-jacobfreibergi.html
+        accessed: 2026-10-13
+      - &a14302
+        kind: archive
+        title: cichlids.com forum thread 14302
+        url: https://www.cichlids.com/disc/read.php?2,14302
+        accessed: 2026-10-13
+    evidence:
+      - source: *pfk
+        value: {continent: captive-bred, region: Lake Malawi}
+        note: line selected in the Netherlands from Otter Point stock
+      - source: *sf
+        value: {continent: captive-bred, region: Lake Malawi}
+        note: listed among the ornamental forms bred from the species
+      - source: *cfe
+        value: {continent: captive-bred, region: Lake Malawi}
+        note: origin given as aquarium; line-bred, not a hybrid
+      - source: *vcs
+        value: {continent: captive-bred, region: Lake Malawi}
+        note: line-bred aquarium strain
+      - source: *fb
+        value: {continent: Africa, region: Lake Malawi}
+        note: parent species, endemic to Lake Malawi
+      - source: *a14302
+        value: {continent: captive-bred, region: Lake Malawi}
+        note: traded as a jacobfreibergi peacock
+
+  temperatureC:
+    value: {min: 21, max: 29}
+    confidence: high
+    verification: {method: waterbody, waterbody: lake-malawi}
+    rationale: >-
+      The vote count fixes the Lake Malawi range for the parent species, and all four runs proposed
+      it. Eccles (1974) found about 27 C in the upper 60 m at the end of the warm season and 21 C in
+      inshore water of the south-east arm during the cool, windy months; Vollmer et al. (2005) give
+      winter epilimnion values near 23.5 C and summer surface water near 28 C, and later campaigns
+      measured up to 29 C. Aquarium recommendations belong to the tolerance, not to this natural
+      range.
+    sources:
+      - &eccles
+        kind: literature
+        title: >-
+          Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa).
+          Limnology and Oceanography 19(5), 730-742 (abstract).
+        url: https://doi.org/10.4319/lo.1974.19.5.0730
+        accessed: 2026-10-12
+      - &vollmer05
+        kind: literature
+        title: >-
+          Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M.,
+          Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East
+          Africa. Limnology and Oceanography 50(2), 727-732.
+        url: https://www.dora.lib4ri.ch/empa/dload/empa:1253/PDF/view
+        accessed: 2026-10-12
+      - &vollmer99
+        kind: literature
+        title: >-
+          Vollmer, M. K., Weiss, R. F. and Bootsma, H. A. (1999). Lake Malawi/Nyasa deep water
+          renewal. In: Bootsma, H. A. and Hecky, R. E. (eds.), Water Quality Report, SADC/GEF Lake
+          Malawi/Nyasa Biodiversity Conservation Project, chapter 4.
+        url: https://sites.uwm.edu/hbootsma/files/2020/11/Ch4-Lake-Internal-Mixing.pdf
+        accessed: 2026-10-12
+      - &ngochera
+        kind: literature
+        title: >-
+          Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. PhD dissertation, University of
+          Wisconsin-Milwaukee.
+        url: https://minds.wisconsin.edu/handle/1793/91765
+        accessed: 2026-10-12
+      - &fao
+        kind: literature
+        title: >-
+          Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery
+          resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical
+          and chemical data after Jackson et al. (1963) and Talling and Talling (1965).
+        url: https://www.fao.org/4/t0473e/T0473E05.htm
+        accessed: 2026-10-12
+    evidence:
+      - source: *eccles
+        value: {min: 21, max: 27}
+        note: upper 60 m at the end of the warm season; cool-season inshore water in the south-east arm
+      - source: *vollmer05
+        value: {min: 23.5, max: 28}
+        note: epilimnion in winter and summer
+      - source: *fao
+        value: {min: 23, max: 25}
+        note: older surface observations covering part of the seasonal range
+    tolerance:
+      value: {min: 21, max: 29}
+      confidence: medium
+      verification:
+        method: unanimous
+        votes: {agree: 4, total: 4}
+      rationale: >-
+        All four runs proposed 21 to 29 C. Husbandry sources for the species and the Eureka line
+        span 23 to 29 C, most of them 24 to 28 C: Seriously Fish and Tropical Freshwater Fish
+        accept up to 29 C, The Fish Barn names 23 C as its lower limit. No care source documents
+        long-term keeping at 21 C; the lower bound comes from the natural lake range, which the
+        tolerance has to contain, so the cool end describes seasonal lake water rather than a
+        recommended aquarium temperature.
+      sources:
+        - *sf
+        - *fb
+        - &tff
+          kind: database
+          title: "Tropical Freshwater Fish: Lake Malawi Butterfly Cichlid (Aulonocara jacobfreibergi)"
+          url: https://tropicalfreshwaterfish.com/species/Aulonocara_jacobfreibergi.html
+          accessed: 2026-10-13
+        - &fpd
+          kind: database
+          title: "Fishipedia: Aulonocara jacobfreibergi 'Otter'"
+          url: https://www.fishipedia.fr/fr/poissons/aulonocara-jacobfreibergi-otter
+          accessed: 2026-10-13
+        - *vcs
+        - *cfe
+        - &gcca
+          kind: literature
+          title: Stigliano, J. (1999). Aulonocara jacobfreibergi. Greater Chicago Cichlid Association.
+          url: https://www.gcca.net/art-pics/cichlid-profiles-list/malawi-cichlids/50-aulonocara-jacobfreibergi.html
+          accessed: 2026-10-13
+        - &ag
+          kind: database
+          title: "Aquarium Guide: Aulonocara jacobfreibergi (Feenbuntbarsch)"
+          url: https://www.aquarium-guide.de/aulonocara_jacobfreibergi.htm
+          accessed: 2026-10-13
+        - &eb
+          kind: database
+          title: "Einrichtungsbeispiele species directory: Aulonocara jacobfreibergi 'Eureka'"
+          url: https://www.einrichtungsbeispiele.de/aulonocara-jacobfreibergi-eureka_art42.html
+          accessed: 2026-10-13
+        - &fk
+          kind: website
+          title: "Fishkeeper (Maidenhead Aquatics): Freiberg's Peacock, Aulonocara jacobfreibergi"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/freiberg-s-peacock
+          accessed: 2026-10-13
+        - &barn
+          kind: website
+          title: "The Fish Barn: Aulonocara Eureka (Aulonocara jacobfreibergi 'Eureka')"
+          url: https://thefishbarn.co.uk/product/aulonocara-eureka/
+          accessed: 2026-10-13
+        - &guid
+          kind: website
+          title: "Guidarium: Butterfly Peacock Cichlid (Aulonocara jacobfreibergi)"
+          url: https://guidarium.com/fishes/butterfly-peacock-cichlid
+          accessed: 2026-10-13
+        - &gensou
+          kind: website
+          title: "Gensou: Aulonocara jacobfreibergi care guide, the Eureka red peacock"
+          url: https://gensou.sg/aulonocara-jacobfreibergi-care-guide/
+          accessed: 2026-10-13
+        - &myfish
+          kind: website
+          title: "my-fish: Zuchtaktion Aulonocara jacobfreibergi 'Eureka' (breeding report)"
+          url: https://my-fish.org/aulonocara-jacobfreibergi-eureka-2/
+          accessed: 2026-10-13
+        - *eccles
+      evidence:
+        - source: *sf
+          value: {min: 25, max: 29}
+          note: aquarium recommendation for the species
+        - source: *fb
+          value: {min: 24, max: 26}
+          note: aquarium range taken from an aquarium atlas
+        - source: *tff
+          value: {min: 25, max: 29}
+        - source: *fpd
+          value: {min: 24, max: 26}
+        - source: *vcs
+          value: {min: 24, max: 26}
+          note: Eureka line
+        - source: *cfe
+          value: {min: 25.6, max: 27.8}
+          note: 78 to 82 F, Eureka line
+        - source: *gcca
+          value: {min: 24.4, max: 27.8}
+          note: 76 to 82 F, converted
+        - source: *ag
+          value: {min: 24, max: 26}
+        - source: *eb
+          value: {min: 25, max: 27}
+          note: Eureka line
+        - source: *fk
+          value: {min: 24, max: 26}
+        - source: *barn
+          value: {min: 23, max: 26}
+          note: retailer sheet for the Eureka line
+        - source: *guid
+          value: {min: 24, max: 28}
+        - source: *gensou
+          value: {min: 24, max: 27}
+          note: care guide for the Eureka line
+        - source: *myfish
+          value: {min: 24, max: 28}
+          note: breeding report on the Eureka line
+        - source: *eccles
+          value: {min: 21, max: 27}
+          note: natural lake range, which the tolerance contains
+
+  ph:
+    value: {min: 7.7, max: 8.6}
+    confidence: high
+    verification: {method: waterbody, waterbody: lake-malawi}
+    rationale: >-
+      The vote count fixes the Lake Malawi range, proposed by all four runs. Jackson et al. (1963),
+      compiled by FAO, measured pH 7.7 to 8.6 in surface water. Branchu et al. (2010) report 7.5 to
+      8.5 over the whole water column, where the lower values belong to deep water that the fish do
+      not use.
+    sources:
+      - *fao
+      - &branchu
+        kind: literature
+        title: >-
+          Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E.
+          et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian
+          Northern Basin: local versus global considerations. Hydrology and Earth System Sciences
+          Discussions 7, 4371-4409.
+        url: https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf
+        accessed: 2026-10-12
+      - *eccles
+      - *vollmer05
+    evidence:
+      - source: *fao
+        value: {min: 7.7, max: 8.6}
+        note: lake surface water, Jackson et al. 1963
+      - source: *branchu
+        value: {min: 7.5, max: 8.5}
+        note: whole water column including deep water
+    tolerance:
+      value: {min: 7.5, max: 8.7}
+      confidence: medium
+      verification:
+        method: unanimous
+        votes: {agree: 4, total: 4}
+      rationale: >-
+        The four runs proposed lower limits of 7.5 and upper limits of 8.6 (generator, checker-b),
+        8.8 (checker-a) and 9.0 (checker-c); these agree within 0.3 pH of each other, and the vote
+        count takes the median of the upper limits, 8.7. Husbandry sources ask for alkaline water:
+        most give 7.5 or 7.8 as the lower limit and 8.0 to 8.8 as the upper limit. Wider ranges
+        exist: Seriously Fish accepts 7.5 to 9.0 and Aquarium-Ratgeber 7.3 to 9.5, while Fishipedia
+        recommends 7.2 to 8.0 for the aquarium. These outer values rest on single sources and are
+        not adopted. The tolerance contains the lake range of 7.7 to 8.6.
+      sources:
+        - *sf
+        - *fb
+        - *tff
+        - *fpd
+        - *vcs
+        - *cfe
+        - &ar
+          kind: database
+          title: "Aquarium-Ratgeber: Feenbuntbarsch (Aulonocara jacobfreibergi)"
+          url: https://www.aquarium-ratgeber.com/fische/fischarten/malawi-buntbarsche/feenbuntbarsch/
+          accessed: 2026-10-13
+        - *ag
+        - *eb
+        - *fk
+        - *barn
+        - *guid
+        - *gensou
+      evidence:
+        - source: *sf
+          value: {min: 7.5, max: 9.0}
+        - source: *fb
+          value: {min: 7.5, max: 8.0}
+        - source: *tff
+          value: {min: 7.5, max: 8.8}
+        - source: *fpd
+          value: {min: 7.2, max: 8.0}
+          note: aquarium recommendation; the page gives 7.5 to 8.5 for the habitat
+        - source: *vcs
+          value: {min: 7.8, max: 8.6}
+          note: Eureka line
+        - source: *cfe
+          value: {min: 7.8, max: 8.6}
+          note: Eureka line
+        - source: *ar
+          value: {min: 7.3, max: 9.5}
+        - source: *ag
+          value: {min: 7.5, max: 8.5}
+        - source: *eb
+          value: {min: 7.8, max: 8.5}
+          note: Eureka line
+        - source: *fk
+          value: {min: 7.5, max: 8.5}
+        - source: *barn
+          value: {min: 8.0, max: 8.4}
+          note: retailer sheet for the Eureka line
+        - source: *guid
+          value: {min: 7.8, max: 8.6}
+        - source: *gensou
+          value: {min: 7.5, max: 8.2}
+
+  ghDgh:
+    value: {min: 3, max: 5}
+    confidence: high
+    verification: {method: waterbody, waterbody: lake-malawi}
+    rationale: >-
+      The vote count fixes the Lake Malawi range, proposed by all four runs. The lake holds little
+      calcium and magnesium: Branchu et al. (2010) measured values in the upper 50 m that correspond
+      to 4.2 to 4.6 dGH, and the titrations of Jackson et al. (1963) and Talling and Talling (1965)
+      correspond to 3.2 to 4.9 dGH. The lake is soft, bicarbonate-buffered water; the hard-water
+      figures of care sheets describe aquarium practice, not the habitat.
+    sources:
+      - *branchu
+      - *fao
+    evidence:
+      - source: *branchu
+        value: {min: 4.2, max: 4.6}
+        note: calculated from calcium and magnesium of the upper 50 m, north basin
+      - source: *fao
+        value: {min: 3.2, max: 4.9}
+        note: calculated from the calcium and magnesium titrations of the 1960s
+    tolerance:
+      value: {min: 3, max: 20}
+      confidence: medium
+      verification:
+        method: qualified-majority
+        votes: {agree: 4, total: 6}
+      rationale: >-
+        The runs proposed upper limits of 20 (generator, tiebreaker-1, tiebreaker-2), 19
+        (checker-b) and 25 dGH (checker-a, checker-c), all starting at the lake value of 3 dGH;
+        four of six votes agree on 3 to 20. Care sheets recommend clearly harder water than the
+        lake: FishBase and Fishipedia give 9 to 19 dGH, Aquarium Guide 5 to 19, the OATA sheet for
+        Malawi cichlids 12 to 18 and the Eureka retailer sheet 10 to 20. Seriously Fish, Tropical
+        Freshwater Fish, Aqua-Fish and Guidarium accept up to 25 dGH; this wider limit rests mainly
+        on Seriously Fish and on sheets that resemble it, so it is not adopted, and 20 dGH is the
+        highest value that nearly all sources accept. The lower bound follows the soft lake water,
+        which the tolerance has to contain; no care source documents years of keeping in water that
+        soft.
+      sources:
+        - *sf
+        - *fb
+        - *fpd
+        - *tff
+        - *ag
+        - &oata
+          kind: database
+          title: Ornamental Aquatic Trade Association (2022). How to care for African Malawi cichlids. Care sheet
+          url: https://ornamentalfish.org/wp-content/uploads/African-Malawi-cichlids-Sept-2022.pdf
+          accessed: 2026-10-13
+        - &aqf
+          kind: database
+          title: "Aqua-Fish: Lake Malawi Butterfly Cichlid (Aulonocara jacobfreibergi) Care Guide"
+          url: https://en.aqua-fish.net/fish/lake-malawi-butterfly-cichlid
+          accessed: 2026-10-13
+        - *branchu
+        - *fk
+        - &fkh
+          kind: website
+          title: "Fishkeeper (Maidenhead Aquatics): Hybrid Peacock (Calico Peacock)"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/calico-peacock
+          accessed: 2026-10-13
+        - *barn
+        - *guid
+        - *gensou
+        - *myfish
+      evidence:
+        - source: *sf
+          value: {min: 10, max: 25}
+        - source: *fb
+          value: {min: 9, max: 19}
+          note: aquarium range after an aquarium atlas
+        - source: *fpd
+          value: {min: 9, max: 19}
+        - source: *tff
+          value: {min: 10, max: 25}
+        - source: *ag
+          value: {min: 5, max: 19}
+        - source: *oata
+          value: {min: 12, max: 18}
+          note: Lake Malawi cichlids in general
+        - source: *aqf
+          value: {min: 10, max: 25}
+        - source: *branchu
+          value: {min: 3, max: 5}
+          note: natural lake range, which the tolerance contains
+        - source: *fk
+          value: {max: 25}
+          note: upper limit only
+        - source: *fkh
+          value: {max: 25}
+          note: hybrid peacocks, upper limit only
+        - source: *barn
+          value: {min: 10, max: 20}
+          note: retailer sheet for the Eureka line
+        - source: *guid
+          value: {min: 10, max: 25}
+        - source: *gensou
+          value: {min: 8, max: 15}
+          note: care guide for the Eureka line
+        - source: *myfish
+          value: {min: 10}
+          note: lower limit only, breeding report on the Eureka line
+
+  khDkh:
+    value: {min: 5, max: 8}
+    confidence: high
+    verification: {method: waterbody, waterbody: lake-malawi}
+    rationale: >-
+      The vote count fixes the Lake Malawi range, proposed by all four runs. Alkalinity of 2.33 to
+      2.46 meq/L in the profiles of Branchu et al. (2010) and 2.00 to 2.59 meq/L in Jackson et al.
+      (1963) corresponds to about 6.5 to 6.9 and 5.6 to 7.3 dKH. Sodium balances part of the
+      bicarbonate, so the carbonate hardness of the lake exceeds its total hardness.
+    sources:
+      - *branchu
+      - *fao
+    evidence:
+      - source: *branchu
+        value: {min: 6.5, max: 6.9}
+        note: converted from alkalinity, north basin profiles
+      - source: *fao
+        value: {min: 5.6, max: 7.3}
+        note: converted from alkalinity, Jackson et al. 1963
+    tolerance:
+      value: {min: 5, max: 14}
+      confidence: low
+      verification:
+        method: qualified-majority
+        votes: {agree: 5, total: 6}
+      rationale: >-
+        The runs proposed 5 to 12 (generator, tiebreaker-2), 5 to 15 (checker-a, tiebreaker-1), 4
+        to 14 (checker-b) and 5 to 10 dKH (checker-c); five of six votes agree, and the median of
+        their upper limits gives 14. Carbonate hardness values are scarce: Seriously Fish and
+        FishBase state only total hardness. The Eureka entry of Einrichtungsbeispiele gives 5 to 10
+        dKH, Aquarium-Ratgeber 3 to 12, the OATA sheet for Malawi cichlids in general 10 to 15, a
+        rift lake chemistry page 10 to 12, and the my-fish breeding report kept its Eureka group
+        above 5 dKH. The widest sourced range thus runs from 3 (Aquarium-Ratgeber) to 15 dKH
+        (OATA); the tolerance starts at the lake value of 5 and ends below the general Malawi
+        figure of 15. A peacock care page with 4 to 6 dKH contradicts the lake data and is not
+        followed. Confidence is low because no species database states an upper carbonate
+        hardness for the species or the line.
+      sources:
+        - *eb
+        - *ar
+        - *oata
+        - *branchu
+        - *fao
+        - *myfish
+        - &furry
+          kind: website
+          title: "Furry Critter: Rift lake water chemistry for African cichlids"
+          url: https://furrycritter.com/pages/articles/fish/rift_lake_chemistry.htm
+          accessed: 2026-10-13
+        - &aqsrc
+          kind: website
+          title: "Aquarium Source: Peacock Cichlid care guide"
+          url: https://www.aquariumsource.com/peacock-cichlid/
+          accessed: 2026-10-13
+      evidence:
+        - source: *eb
+          value: {min: 5, max: 10}
+          note: Eureka line
+        - source: *ar
+          value: {min: 3, max: 12}
+        - source: *oata
+          value: {min: 10, max: 15}
+          note: Lake Malawi cichlids in general
+        - source: *branchu
+          value: {min: 6.5, max: 6.9}
+          note: natural lake water, which the tolerance contains
+        - source: *fao
+          value: {min: 5.6, max: 7.3}
+          note: natural lake water, which the tolerance contains
+        - source: *myfish
+          value: {min: 5}
+          note: lower limit only, breeding group of the Eureka line
+        - source: *furry
+          value: {min: 10, max: 12}
+          note: Lake Malawi cichlids in general
+        - source: *aqsrc
+          value: {min: 4, max: 6}
+          note: whole genus; contradicts the lake values
+
+  maxSizeCm:
+    value: {male: 15, female: 10}
+    confidence: medium
+    rationale: >-
+      Well-kept males of the line reach about 15 cm total length: FishBase gives 15 cm for the
+      species, Aquarium Guide 14 cm, Fishipedia 15 cm for dominant males, and the my-fish breeding
+      report and the Gensou care guide 12 to 15 cm for Eureka males. Seriously Fish quotes 15 to 17
+      cm standard length, the Cichlid-Forum profile 7 inches and the Victorian Cichlid Society 22
+      cm; these are exceptional fish, not the typical adult. Female sizes are given only by
+      Eureka-specific sources: 8 cm (Einrichtungsbeispiele), about 10 cm (my-fish) and 10 to 12 cm
+      (Gensou). The runs proposed 10 cm (generator, checker-c) and 11 cm (checker-a, checker-b);
+      10 cm is the middle of the three statements, so it is kept, with medium confidence.
+    sources:
+      - *fb
+      - *ag
+      - *fpd
+      - *eb
+      - *sf
+      - *cfe
+      - *vcs
+      - *tff
+      - *pfk
+      - *myfish
+      - *gensou
+    evidence:
+      - source: *fb
+        value: {male: 15}
+        note: maximum total length, male or unsexed
+      - source: *ag
+        value: {male: 14}
+      - source: *fpd
+        value: {male: 15}
+        note: average about 10 cm; only dominant males reach 15 cm
+      - source: *eb
+        value: {male: 12, female: 8}
+        note: Eureka line
+      - source: *sf
+        value: {male: 17}
+        note: males 15 to 17 cm standard length
+      - source: *cfe
+        value: {male: 17.8}
+        note: 7 inches, Eureka line
+      - source: *vcs
+        value: {male: 22}
+        note: upper size claim for the species
+      - source: *tff
+        value: {male: 13}
+      - source: *pfk
+        value: {male: 10}
+        note: wild fish; aquarium fish on rich food can exceed 15 cm
+      - source: *myfish
+        value: {male: 15, female: 10}
+        note: males 12 to 15 cm, females about 10 cm
+      - source: *gensou
+        value: {male: 15, female: 12}
+        note: males 13 to 15 cm, females 10 to 12 cm
+
+  predation:
+    value: 1
+    confidence: medium
+    verification:
+      method: qualified-majority
+      votes: {agree: 5, total: 6}
+    rationale: >-
+      Five of six votes chose level 1; checker-c voted 0. The parent species hunts small
+      invertebrates over sand, located with the widened lateral-line canals of its head (Konings;
+      Schwalbe et al. 2012 for the genus), and FishBase lists only invertebrate food with an
+      estimated trophic level of 3.6, so fish are no regular part of the diet and levels 2 and 3 do
+      not apply. A hunter of 15 cm that strikes at small moving prey also takes fry and very small
+      fish when they appear: Seriously Fish advises moving brooding females to raise more young,
+      the OATA sheet notes that few fry survive in a mixed Malawi tank, and retailer and hobby
+      sheets name the male among the fry predators. That is the opportunistic behaviour of level 1.
+      The vote for 0 rested on the absence of fish in the natural diet (Konings, Stigliano), which
+      describes the main food but not the intake of fry. The Cichlid Room Companion lists the
+      species as a crustacean and insect eater, which agrees.
+    sources:
+      - *sf
+      - *pfk
+      - *fb
+      - &schwalbe12
+        kind: literature
+        title: >-
+          Schwalbe, M. A. B., Bassett, D. K. and Webb, J. F. (2012). Feeding in the dark:
+          lateral-line-mediated prey detection in the peacock cichlid Aulonocara stuartgranti.
+          Journal of Experimental Biology 215, 2060-2071 (abstract).
+        url: https://doi.org/10.1242/jeb.065920
+        accessed: 2026-10-13
+      - *oata
+      - *gcca
+      - *aqf
+      - *barn
+      - *guid
+      - &crc
+        kind: website
+        title: "Cichlid Room Companion: Aulonocara jacobfreibergi (public species summary, verification only)"
+        url: https://cichlidae.com/species.php?id=N1w3LC4UlLjlNDNT066MiA
+        accessed: 2026-10-13
+      - &a21278
+        kind: archive
+        title: cichlids.com forum thread 21278
+        url: https://www.cichlids.com/disc/read.php?2,21278
+        accessed: 2026-10-13
+    evidence:
+      - source: *sf
+        value: 1
+        note: hunts small moving prey over sand; no fish in the diet; brooding females best moved
+      - source: *pfk
+        value: 1
+        note: crustaceans, snails and other invertebrates taken from the sand
+      - source: *pfk
+        value: 0
+        note: observed prey only invertebrates; level inferred from the natural diet
+      - source: *fb
+        value: 1
+        note: invertebrate food items, trophic level 3.6 estimated from relatives
+      - source: *schwalbe12
+        value: 1
+        note: genus feeds on invertebrate prey in sandy substrate
+      - source: *schwalbe12
+        value: 0
+        note: invertebrate prey only; says nothing about fish
+      - source: *oata
+        value: 1
+        note: Lake Malawi cichlids in general; few fry survive in a mixed tank
+      - source: *gcca
+        value: 0
+        note: wild diet of insect larvae and crustaceans; no fish prey reported
+      - source: *aqf
+        value: 0
+        note: fry protection advised without a stated fish-eating habit
+      - source: *barn
+        value: 1
+        note: retailer sheet; tankmates including the male eat released fry
+      - source: *guid
+        value: 1
+        note: tagged as fry predator
+      - source: *crc
+        value: 1
+        note: crustacean and insect eater, no piscivory
+
+  diet:
+    value:
+      type: invertivore
+      bloatSensitive: false
+      foods:
+        - high-quality sinking pellets and flakes for carnivorous cichlids
+        - frozen mysis, brine shrimp and mosquito larvae
+        - small share of plant-based food such as spirulina
+    confidence: medium
+    verification:
+      method: unanimous
+      votes: {agree: 4, total: 4}
+    rationale: >-
+      All four votes chose an invertivore without bloat sensitivity. Peacocks hover over the sand,
+      detect moving invertebrates with their enlarged head pores and take them with a mouthful of
+      substrate (Konings; Schwalbe et al. 2012 and Schwalbe 2013 for the genus; Seriously Fish).
+      Stigliano reports insect larvae and crustaceans as the wild diet, FishBase lists invertebrate
+      food items, and the Cichlid Room Companion classes the species as a crustacean and insect
+      eater. Care sources recommend animal-based food with a small plant share; they warn against
+      fatty meat such as beef heart and overfeeding, but none describes the intolerance of a
+      protein-rich diet that marks aufwuchs grazers, so the flag is false. Fishkeeper calls the
+      species omnivorous, which refers to aquarium feeding. The foods list follows the decided
+      vote; the other runs named insect larvae, small crustaceans, brine shrimp, fine pellets and
+      some vegetable matter.
+    sources:
+      - *sf
+      - *pfk
+      - *schwalbe12
+      - &schwalbe13
+        kind: literature
+        title: >-
+          Schwalbe, M. A. B. (2013). The role of flow sensing by the lateral line system in prey
+          detection in two African cichlid fishes. PhD dissertation, University of Rhode Island.
+        url: https://doi.org/10.23860/diss-schwalbe-margot-anita-2013
+        accessed: 2026-10-13
+      - &schwalbewebb
+        kind: literature
+        title: >-
+          Schwalbe, M. A. B. and Webb, J. F. (2013). Sensory basis for detection of benthic prey in
+          two Lake Malawi cichlids. Zoology (abstract).
+        url: https://doi.org/10.1016/j.zool.2013.09.003
+        accessed: 2026-10-13
+      - *gcca
+      - *fb
+      - *tff
+      - *cfe
+      - *barn
+      - *fk
+      - *crc
+    evidence:
+      - source: *sf
+        value: {type: invertivore, bloatSensitive: false}
+        note: sifts the substrate and hunts small invertebrates; some plant content in dry food
+      - source: *pfk
+        value: {type: invertivore, bloatSensitive: false}
+        note: crustaceans, snails and other invertebrates in the sand
+      - source: *schwalbe12
+        value: {type: invertivore, bloatSensitive: false}
+        note: invertebrate prey in sandy substrate, genus level
+      - source: *schwalbe13
+        value: {type: invertivore}
+        note: congener A. stuartgranti feeds on benthic invertebrates in sand
+      - source: *schwalbewebb
+        value: {type: invertivore}
+        note: abstract only; benthic prey detection in related Aulonocara
+      - source: *gcca
+        value: {type: invertivore, bloatSensitive: false}
+        note: wild diet of insect larvae and crustaceans; animal-based aquarium food
+      - source: *fb
+        value: {type: invertivore, bloatSensitive: false}
+        note: estimated trophic level 3.6
+      - source: *tff
+        value: {type: invertivore, bloatSensitive: false}
+        note: recommends insect larvae, crustaceans, snails and worms besides pellets
+      - source: *cfe
+        value: {type: invertivore}
+        note: listed as carnivore
+      - source: *barn
+        value: {type: invertivore, bloatSensitive: true}
+        note: retailer sheet; warns of bloat after poor food, beef heart or overfeeding
+      - source: *fk
+        value: {type: omnivore}
+        note: aquarium feeding with frozen food plus vegetables
+      - source: *crc
+        value: {type: invertivore}
+        note: crustacean eater and insectivore
+
+  aggressionConspecific:
+    value: 3
+    confidence: medium
+    rationale: >-
+      The runs split evenly: generator and checker-c chose 3, checker-a and checker-b 2. Males
+      defend a cave or spawning site against other males and court females persistently, which is
+      why Seriously Fish asks for one male with four to six females and warns against several
+      males in ordinary tanks. Stigliano reports severe fights between males that had lived
+      together peacefully, Aquarium-Ratgeber notes injuries from attacks on rivals and unready
+      females, the Cichlid-Forum profile rates the line as aggressive towards its own kind, and the
+      Victorian Cichlid Society calls the species more aggressive than most of its genus. Level 3,
+      persistent chasing with frequent injuries when space, cover or the ratio are wrong, fits these
+      reports better than level 2. Fishkeeper and Fishipedia describe milder behaviour, hence
+      medium confidence.
+    sources:
+      - *sf
+      - *gcca
+      - *ar
+      - *cfe
+      - *vcs
+      - *fpd
+      - *fk
+      - *gensou
+    evidence:
+      - source: *sf
+        value: 3
+        note: males pursue females hard; one male with four to six females
+      - source: *gcca
+        value: 3
+        note: males that tolerated each other can start fighting badly
+      - source: *ar
+        value: 3
+        note: attacks on rivals and unready females can injure
+      - source: *cfe
+        value: 3
+        note: conspecific temperament rated aggressive
+      - source: *vcs
+        value: 3
+        note: temperament mildly aggressive to aggressive
+      - source: *fpd
+        value: 2
+        note: medium aggression, territorial
+      - source: *fk
+        value: 2
+        note: relatively peaceful for a Malawi cichlid
+      - source: *gensou
+        value: 2
+
+  aggressionHeterospecific:
+    value: 2
+    confidence: medium
+    rationale: >-
+      All runs chose level 2. Males chase other fish out of their territory and react most strongly
+      to fish of similar colour or shape, while calm, differently coloured Malawi cichlids are
+      named as suitable companions by Seriously Fish, Aquarium-Ratgeber and others. The
+      Cichlid-Forum profile rates the general temperament as mildly aggressive. An archive report of
+      a Eureka male killing tankmates concerns a tank of about 110 litres, far below the minimum.
+    sources:
+      - *sf
+      - *ar
+      - *gcca
+      - *cfe
+      - *tff
+      - *fk
+      - *a21278
+    evidence:
+      - source: *sf
+        value: 2
+        note: aggressive mainly towards similarly coloured fish
+      - source: *ar
+        value: 2
+        note: territorial, but several Malawi genera accepted as companions
+      - source: *gcca
+        value: 2
+        note: intruders driven from the cave territory
+      - source: *cfe
+        value: 2
+        note: temperament rated mildly aggressive
+      - source: *tff
+        value: 1
+        note: called peaceful with robust tankmates
+      - source: *fk
+        value: 2
+        note: relatively peaceful for a Malawi cichlid
+      - source: *a21278
+        value: 3
+        note: single report from an undersized tank
+
+  territory:
+    value: {size: small, breedingOnly: false}
+    confidence: medium
+    rationale: >-
+      All runs agree on a small territory; checker-c set breedingOnly to true, the other three runs
+      to false. In the lake, males of the parent species hold caves in the rocky and intermediate
+      zone, sometimes several males in one large cave, and breed throughout the year (Konings;
+      FishBase; Seriously Fish). A territory that is defended in every season by adult males is
+      held permanently in practice, so the flag is false.
+    sources:
+      - *pfk
+      - *sf
+      - *fb
+    evidence:
+      - source: *pfk
+        value: {size: small, breedingOnly: false}
+        note: cave territories; breeding throughout the year
+      - source: *sf
+        value: {size: small, breedingOnly: false}
+        note: cave territories, several males per large cave
+      - source: *fb
+        value: {size: small, breedingOnly: false}
+        note: males of southern populations occupy small caves
+
+  habitatZones:
+    value: [rock, sand]
+    confidence: high
+    rationale: >-
+      All runs agree. The parent species lives where rocky shores meet sand: males hold caves among
+      the rocks, and the fish forage on the sand in front of them. The tank needs rockwork with
+      caves and open fine sand.
+    sources:
+      - *sf
+      - *fb
+      - *pfk
+      - *gcca
+      - *ag
+    evidence:
+      - source: *sf
+        value: [rock, sand]
+      - source: *fb
+        value: [rock, sand]
+        note: rocky habitat in the north, intermediate habitat in the south
+      - source: *pfk
+        value: [rock, sand]
+      - source: *gcca
+        value: [rock, sand]
+      - source: *ag
+        value: [rock, sand]
+        note: spacious caves between rock and sand zones
+
+  social:
+    value: {structure: harem, ratio: 4}
+    confidence: high
+    rationale: >-
+      All runs agree on one male with four females. Seriously Fish and Stigliano recommend four to
+      six females per male, Fishipedia, Aquarium-Ratgeber and the Eureka retailer sheet at least
+      three, and Einrichtungsbeispiele several. Four spreads the male's courtship and is the common
+      middle value.
+    sources:
+      - *sf
+      - *gcca
+      - *fpd
+      - *ar
+      - *eb
+      - *barn
+      - *gensou
+    evidence:
+      - source: *sf
+        value: {structure: harem, ratio: 4}
+        note: four to six females per male
+      - source: *gcca
+        value: {structure: harem, ratio: 4}
+        note: four to six females per male
+      - source: *fpd
+        value: {structure: harem, ratio: 3}
+      - source: *ar
+        value: {structure: harem, ratio: 3}
+      - source: *barn
+        value: {structure: harem, ratio: 3}
+        note: three or more females per male
+      - source: *gensou
+        value: {structure: harem, ratio: 3.5}
+        note: three to four females per male
+
+  speciesOnly:
+    value: false
+    confidence: high
+    verification:
+      method: unanimous
+      votes: {agree: 4, total: 4}
+    rationale: >-
+      All four votes chose false. Seriously Fish suggests Copadichromis, Placidochromis, Otopharynx
+      lithobates and Labidochromis caeruleus as companions, Aquarium-Ratgeber and Fishipedia allow
+      suitable Malawi genera, and Tropical Freshwater Fish and Aqua-Fish describe the species as fit
+      for a community of robust Malawi cichlids. Sources exclude only other peacocks, because of
+      crossing, and boisterous mbuna; that is a restriction of partners, which the hybrid group and
+      the aggression levels cover.
+    sources:
+      - *sf
+      - *ar
+      - *fpd
+      - *tff
+      - *aqf
+      - *fk
+      - *barn
+      - &a22114
+        kind: archive
+        title: cichlids.com forum thread 22114
+        url: https://www.cichlids.com/disc/read.php?2,22114
+        accessed: 2026-10-13
+    evidence:
+      - source: *sf
+        value: false
+        note: names Copadichromis, Placidochromis, Otopharynx lithobates and Labidochromis caeruleus
+      - source: *ar
+        value: false
+        note: allows Placidochromis, Otopharynx and other suitable genera
+      - source: *fpd
+        value: false
+        note: gives a larger volume for keeping with more robust species
+      - source: *tff
+        value: false
+        note: suited to a community of robust fish
+      - source: *aqf
+        value: false
+        note: mixed Malawi communities with attention to size and temperament
+      - source: *fk
+        value: false
+        note: Malawi community with midwater haps and calm mbuna
+      - source: *barn
+        value: false
+        note: lists other haps and docile mbuna as tankmates
+      - source: *a22114
+        value: false
+        note: kept with Labidochromis and other mbuna in a large tank
+
+  hybridGroup:
+    value: aulonocara
+    confidence: high
+    verification:
+      method: unanimous
+      votes: {agree: 4, total: 4}
+    rationale: >-
+      All four votes chose the curated group aulonocara, to which the parent species belongs.
+      Seriously Fish advises against keeping other Aulonocara with A. jacobfreibergi because most
+      of them cross with it, and the Fishipedia profile of the Otter Point form, the wild stock of
+      the Eureka, warns against mixing species of the genus or varieties of the species for the same
+      reason. Retailer sheets give the same warning, and the trade sells several peacock strains
+      that arose from such crosses. Females of all peacocks look alike, so crosses go unnoticed;
+      keeping the Eureka with wild forms of its own species also dilutes the line.
+    sources:
+      - *sf
+      - *fpd
+      - *cfe
+      - *fk
+      - *fkh
+      - &bay
+        kind: website
+        title: "Bay Bridge Aquarium: Lemon Jake Cichlid (Aulonocara jacobfreibergi)"
+        url: https://www.baybridgeaquarium.com/products/lemon-jake-cichlid
+        accessed: 2026-10-13
+      - *a22114
+    evidence:
+      - source: *sf
+        value: aulonocara
+        note: other Aulonocara best avoided because most can cross with it
+      - source: *fpd
+        value: aulonocara
+        note: do not mix species of the genus or varieties of the species, to avoid crosses
+      - source: *fk
+        value: aulonocara
+        note: retailer sheet; keep only one peacock species per tank
+      - source: *fkh
+        value: aulonocara
+        note: retailer sheet describing trade peacocks as aquarium crosses
+      - source: *bay
+        value: aulonocara
+        note: retailer sheet; Aulonocara species and forms cross
+      - source: *a22114
+        value: aulonocara
+        note: peacocks may cross with each other
+
+  coloration:
+    value:
+      baseColors: [red, orange, blue]
+      pattern: mixed
+    confidence: medium
+    rationale: >-
+      Adult males show red to orange flanks and back, a blue face and throat and a broad pale
+      margin on the dorsal fin; faint bars can appear under stress. These blocks of different colour
+      make a mixed pattern. Generator, checker-a and checker-c chose red, orange and blue with a
+      mixed pattern; checker-b chose red and blue with a plain pattern, which leaves out the
+      orange tones and the separate colour fields named by Einrichtungsbeispiele and the retailer
+      sheets. Females are grey to brownish with darker bars.
+    sources:
+      - *eb
+      - *barn
+      - &ron
+        kind: website
+        title: "Ron's Cichlids: Eureka Red Jake Peacock (Aulonocara jacobfreibergi 'Eureka')"
+        url: https://ronscichlids.com/products/eureka-red-jake
+        accessed: 2026-10-13
+      - *myfish
+      - *gensou
+      - &a14593
+        kind: archive
+        title: cichlids.com forum thread 14593
+        url: https://www.cichlids.com/disc/read.php?2,14593
+        accessed: 2026-10-13
+    evidence:
+      - source: *eb
+        value: {baseColors: [red, orange, blue], pattern: mixed}
+        note: males red and orange with blue
+      - source: *barn
+        value: {baseColors: [blue, red, orange], pattern: mixed}
+      - source: *ron
+        value: {baseColors: [red, orange, blue], pattern: mixed}
+      - source: *myfish
+        value: {baseColors: [red, blue], pattern: mixed}
+      - source: *a14593
+        value: {baseColors: [red, orange, blue, grey], pattern: mixed}
+        note: grey body that turns blue during display
+
+  feedingSpeed:
+    value: normal
+    confidence: low
+    rationale: >-
+      All runs chose normal. Peacocks take prepared food readily and feed actively, but less
+      frantically than mbuna, which outcompete them; no source rates the feeding pace directly, so
+      the value rests on these descriptions and the comparison with the rubric example Cyrtocara
+      moorii.
+    sources:
+      - *sf
+      - *gcca
+      - *gensou
+    evidence:
+      - source: *gcca
+        value: normal
+        note: accepts flakes, pellets and live food readily
+      - source: *gensou
+        value: normal
+        note: boisterous mbuna outcompete it at feeding time
+
+  minTank:
+    value: {volumeL: 350, lengthCm: 120, depthCm: 60}
+    confidence: medium
+    rationale: >-
+      For one male with four females, Seriously Fish asks for a base of 120 by 60 cm, and
+      Fishkeeper, Aquarium Guide and Guidarium for at least 120 cm length. Volumes range from 250
+      litres (Aquarium Guide) over 280 to 300 litres (The Fish Barn, Stigliano, Fishipedia,
+      Einrichtungsbeispiele, Gensou) to about 430 litres for the full 120 by 60 cm base.
+      Einrichtungsbeispiele asks for 150 cm length. The runs proposed 350 L, 120 by 60 cm
+      (generator), 300 L, 120 by 60 cm (checker-a), 300 L, 120 by 50 cm (checker-b) and 400 L, 150
+      by 60 cm (checker-c). The decision keeps the 120 by 60 cm base of Seriously Fish, the most
+      detailed source, with 350 litres, which covers all volume statements but the largest one.
+    sources:
+      - *sf
+      - *ag
+      - *fpd
+      - *eb
+      - *gcca
+      - *fk
+      - *barn
+      - *guid
+      - *gensou
+    evidence:
+      - source: *sf
+        value: {lengthCm: 120, depthCm: 60}
+        note: minimum base 120 by 60 cm
+      - source: *ag
+        value: {volumeL: 250, lengthCm: 120}
+      - source: *fpd
+        value: {volumeL: 300}
+      - source: *eb
+        value: {volumeL: 300, lengthCm: 150}
+        note: Eureka line
+      - source: *gcca
+        value: {volumeL: 284}
+        note: 75 US gallons for a breeding colony
+      - source: *fk
+        value: {lengthCm: 120}
+      - source: *barn
+        value: {volumeL: 280}
+        note: one male with a harem
+      - source: *guid
+        value: {volumeL: 208, lengthCm: 120}
+      - source: *gensou
+        value: {volumeL: 300}
+
+  lifespanYears:
+    value: {min: 6, max: 10}
+    confidence: medium
+    rationale: >-
+      Sources state 5 to 8 years (Aqua-Fish), 7 years (Fishipedia), up to 12 years (Aquarium
+      Guide) and 10 to 12 years (Bay Bridge Aquarium, retailer sheet). The runs proposed 6 to 10
+      (generator), 7 to 10 (checker-a), 8 to 10 (checker-b) and 5 to 8 years (checker-c). Six to ten
+      years lies in the middle of these statements and of the proposals; the sources agree only
+      roughly.
+    sources:
+      - *aqf
+      - *fpd
+      - *ag
+      - *bay
+    evidence:
+      - source: *aqf
+        value: {min: 5, max: 8}
+      - source: *fpd
+        value: {min: 7, max: 7}
+      - source: *ag
+        value: {max: 12}
+      - source: *bay
+        value: {min: 10, max: 12}
+        note: retailer sheet for another form of the species
+
+  breeding:
+    value: maternal-mouthbrooder
+    confidence: high
+    rationale: >-
+      All runs and all sources agree. The female takes the eggs into her mouth right after laying
+      them, fertilisation takes place at the egg spots of the male's anal fin, and she broods for
+      about three to four weeks. The Cichlid Room Companion confirms maternal mouthbrooding.
+    sources:
+      - *sf
+      - *fpd
+      - *cfe
+      - *vcs
+      - *eb
+      - *myfish
+    evidence:
+      - source: *sf
+        value: maternal-mouthbrooder
+        note: brooding up to four weeks
+      - source: *fpd
+        value: maternal-mouthbrooder
+      - source: *cfe
+        value: maternal-mouthbrooder
+      - source: *vcs
+        value: maternal-mouthbrooder
+      - source: *eb
+        value: maternal-mouthbrooder
+        note: brooding about two to three weeks
+      - source: *myfish
+        value: maternal-mouthbrooder
+        note: 21 days, 20 to 50 young
+
+  beginnerSuitability:
+    value: moderate
+    confidence: medium
+    rationale: >-
+      All runs chose moderate. The line is hardy and easy to feed, but it needs a tank of at least
+      120 cm, a harem, stable alkaline water and careful choice of tankmates to avoid crosses and
+      colour rivals. Seriously Fish rates the species moderate and stresses its sensitivity to
+      declining water quality, the Cichlid-Forum profile gives difficulty 2, and the Cichlid Room
+      Companion places it at the intermediate level. Tropical Freshwater Fish rates it easy.
+    sources:
+      - *sf
+      - *cfe
+      - *tff
+    evidence:
+      - source: *sf
+        value: moderate
+        note: very sensitive to declining water quality
+      - source: *cfe
+        value: moderate
+        note: difficulty 2
+      - source: *tff
+        value: easy
+        note: hardy peacock
+
+partners:
+  suitable:
+    - species: Labidochromis caeruleus
+      reason: Calm mbuna with a different shape and colour and the same water needs; named as a companion by Seriously Fish.
+    - species: Copadichromis borleyi
+      reason: Open-water utaka that uses another zone of the tank and looks different.
+      condition: Tank of at least 150 cm.
+    - species: Otopharynx lithobates
+      reason: Calm hap of similar size with a different colour pattern; named as a companion by Seriously Fish.
+      condition: Tank of at least 150 cm.
+    - species: Cyrtocara moorii
+      reason: Calm, slow hap with a plain blue colour and a different body shape.
+      condition: Tank of at least 150 cm.
+    - species: Placidochromis phenochilus
+      reason: Peaceful sand-dwelling hap that does not rival the Eureka male.
+      condition: Tank of at least 180 cm.
+  unsuitable:
+    - species: Aulonocara stuartgranti
+      reason: Same hybrid group; the females look alike and the species cross readily.
+    - species: Aulonocara baenschi
+      reason: Same hybrid group; crosses with the Eureka and spoils both lines.
+    - species: "Aulonocara jacobfreibergi (wild forms such as 'Otter Point' or 'Lemon Jake')"
+      reason: Same species; interbreeding blurs the Eureka line and the wild forms, and males fight as rivals.
+    - species: Maylandia zebra
+      reason: Hasty, boisterous mbuna that takes the food and wears the peacock down.
+    - species: Protomelas taeniolatus
+      reason: Males with blue and red colour are attacked as rivals and attack in turn.
+    - species: Tropheus moorii
+      reason: Lake Tanganyika aufwuchs grazer that needs a low-protein diet and is kept only with its own species.
+
+profile:
+  overview:
+    text: >-
+      The Eureka peacock, often sold as Eureka Red, is an aquarium line of the Lake Malawi peacock
+      cichlid Aulonocara jacobfreibergi and not a species of its own. Breeders selected it for red
+      colour from fish of the Otter Point population in southern Malawi, and it has never lived in
+      the lake; the shop name Aulonocara eureka has no scientific standing. Adult males combine red
+      and orange flanks with a blue face and a pale-edged dorsal fin, which has made the line one
+      of the most popular peacocks. In the tank it behaves like the wild species: a cave-holding
+      sand forager whose males are persistent towards rivals and females but mostly tolerant of
+      unlike fish. It suits a Malawi community as one male with several females, kept away from
+      every other Aulonocara because peacocks cross easily.
+    sources:
+      - *pfk
+      - *sf
+      - *cfe
+      - *cof
+  habitat:
+    text: >-
+      As a captive line the Eureka has no habitat of its own; its needs follow the parent species.
+      Aulonocara jacobfreibergi lives only in the southern half of Lake Malawi, at sites such as
+      Otter Point, Cape Maclear and Monkey Bay, in the transition zone where rocky shores give way
+      to sand. Males hold territories inside caves, at times several in one large cave, while
+      females and young forage on the sand nearby. The lake water is warm, about 21 to 29 C, and
+      soft at 3 to 5 dGH, but bicarbonate at 5 to 8 dKH buffers it to a pH of about 7.7 to 8.6. In
+      the aquarium this means fine sand, stacked rock with caves and stable alkaline water.
+    sources:
+      - *sf
+      - *fb
+      - *pfk
+      - *branchu
+      - *fao
+      - *eccles
+  sizeAndGrowth:
+    text: >-
+      Well-kept aquarium males usually reach about 15 cm total length; females stay smaller at
+      around 10 cm. Wild A. jacobfreibergi rarely grow beyond 10 cm, but captive fish on rich food
+      get larger, and a few show males pass 15 cm. Young Eurekas are grey and plain; males begin to
+      colour at a few centimetres and can be recognised at about four months. They mature at around
+      six months, while the full red and blue of a male takes a year or more. Growth depends on
+      clean water and several small, varied meals a day.
+    sources:
+      - *fb
+      - *pfk
+      - *sf
+      - *myfish
+  husbandry:
+    text: >-
+      Plan a tank of at least 120 by 60 cm and about 350 litres for one male and four females. Fine
+      sand matters, because the fish sift it for food and coarse gravel can hurt the gills; build
+      stable rock piles with caves and leave open sand between them. Hardy plants such as Anubias
+      or Vallisneria are left alone. Aim for about 24 to 28 C, a pH between 7.5 and 8.7, total
+      hardness up to about 20 dGH and enough carbonate hardness, at least the lake value of 5 dKH,
+      to keep the pH steady. The line reacts badly to rising nitrate and sudden changes, so filter
+      generously and change a third to half of the water every week. Add new fish only to a mature
+      tank.
+    sources:
+      - *sf
+      - *fb
+      - *eb
+      - *barn
+  socialBehavior:
+    text: >-
+      A male defends a cave or a spot near the rockwork and displays to every female that passes,
+      with spread fins and heightened colour. Kept with a single female he wears her out, so one
+      male with at least four females spreads his attention. Rival males chase each other
+      persistently and can fight badly even after a quiet period; several males live together
+      only in large tanks with many caves, and all-male peacock tanks are a common alternative when
+      breeding is not wanted. Towards other species the male is mostly tolerant but drives fish of
+      similar colour or shape from his area. He holds his territory all year, not only while
+      spawning.
+    sources:
+      - *sf
+      - *gcca
+      - *cfe
+      - *pfk
+  diet:
+    text: >-
+      In nature the parent species hovers just above the sand and senses prey through the enlarged
+      pores of its lateral-line system on the head. When it notices a moving crustacean, insect
+      larva or snail, it bites into the sand, sorts out the prey and lets the sand escape through
+      the gills. In the aquarium the Eureka takes good sinking pellets and flakes for carnivorous
+      cichlids together with frozen mysis, brine shrimp and mosquito larvae, plus a small share of
+      food with spirulina. Several small meals a day suit its foraging habit better than one large
+      one. Fatty mammal meat such as beef heart and overfeeding are best avoided.
+    sources:
+      - *pfk
+      - *sf
+      - *schwalbe12
+      - *gcca
+  breeding:
+    text: >-
+      The Eureka breeds readily in a well-run tank. The male cleans a flat stone or a spot on the
+      sand near his cave, intensifies his colour and leads a ripe female there with quivering
+      displays. She lays a few eggs at a time and takes them up at once; when she nibbles at the egg
+      spots on his anal fin he releases milt, and the eggs are fertilised in her mouth. The female
+      carries the brood for about three weeks, barely eating, and then releases 20 to 50
+      free-swimming young that take brine shrimp nauplii and fine dry food at once. Since tankmates
+      and the male eat fry, moving her to a separate tank shortly before release raises the yield,
+      but a long absence can cost her rank in the group.
+    sources:
+      - *sf
+      - *myfish
+      - *eb
+  sexing:
+    text: >-
+      Adult males are easy to tell apart: they grow larger, show the red to orange body and blue
+      head of the line, and develop longer, pointed dorsal and anal fins with a broad pale margin
+      and egg spots on the anal fin. Females stay grey to brownish with darker bars and only a hint
+      of colour, and they resemble the females of other peacocks, which is why mixed peacock tanks
+      so often produce crosses. Juveniles cannot be sexed reliably; the first male colours usually
+      show at about four months, and slow-colouring young can still turn out to be males.
+    sources:
+      - *sf
+      - *eb
+      - *barn
+  compatibility:
+    text: >-
+      Good companions are calm Malawi cichlids that look different and keep out of the male's way:
+      Labidochromis caeruleus, utaka such as Copadichromis borleyi, and quiet haps like Otopharynx
+      lithobates or Cyrtocara moorii in a correspondingly larger tank. Every other Aulonocara and
+      every other form of A. jacobfreibergi is out, because the females cannot be told apart and
+      the fish cross freely. Boisterous mbuna such as Maylandia zebra take the food and wear the
+      peacock down, and males of other species with blue and red colour, for example Protomelas
+      taeniolatus, are attacked as rivals. Fry and very small fish are eaten when caught, so small
+      community fish do not belong with it, nor do fish from soft, acidic water.
+    sources:
+      - *sf
+      - *fpd
+      - *barn
+  problems:
+    text: >-
+      The commonest mistake is mixing the Eureka with other peacocks: the hybrid young spoil the
+      line and can hardly be recognised later. A cramped tank or a single female leads to constant
+      chasing and injured, stressed females. Coarse gravel interferes with sand sifting and can
+      damage the gills. Poor water, high nitrate and an unstable pH quickly cause stress, faded
+      colour and infections such as white spot or bacterial disease. Bloat appears in peacocks
+      mainly after overfeeding, fatty meat such as beef heart or neglected water care, so feed
+      modest amounts of suitable food. Red line-bred fish are often inbred; buy from breeders with
+      healthy, well-shaped stock.
+    sources:
+      - *sf
+      - *barn
+      - *gcca
+
+provenance:
+  runs:
+    - role: generator
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-13
+    - role: checker
+      model: gpt-6.1-sol
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-13
+    - role: adjudicator
+      model: claude-opus-5-5
+      date: 2026-10-13
+  disagreements:
+    - field: id
+      proposals:
+        - {by: generator, value: aulonocara-jacobfreibergi-eureka}
+        - {by: checker-a, value: aulonocara-jacobfreibergi-eureka-red}
+        - {by: checker-b, value: aulonocara-jacobfreibergi-eureka}
+        - {by: checker-c, value: aulonocara-jacobfreibergi-eureka}
+      decision: aulonocara-jacobfreibergi-eureka
+      rationale: >-
+        Three of four runs use 'Eureka'. It matches the legacy name Aulonocara eureka and the name
+        used by Konings, Seriously Fish, the Cichlid-Forum profile and the Victorian Cichlid
+        Society; 'Eureka Red' is a common trade variant and is kept among the trade names.
+    - field: taxonomy.validName
+      proposals:
+        - {by: generator, value: "Aulonocara jacobfreibergi 'Eureka'"}
+        - {by: checker-a, value: "Aulonocara jacobfreibergi 'Eureka Red'"}
+        - {by: checker-b, value: "Aulonocara jacobfreibergi 'Eureka'"}
+        - {by: checker-c, value: "Aulonocara jacobfreibergi 'Eureka'"}
+      decision: "Aulonocara jacobfreibergi 'Eureka'"
+      rationale: Follows the decision on the id; the line name in the literature is 'Eureka'.
+    - field: taxonomy.author
+      proposals:
+        - {by: generator, value: "(Johnson, 1974)"}
+        - {by: checker-a, value: "(Johnson, 1974)"}
+        - {by: checker-b, value: null}
+        - {by: checker-c, value: "(Johnson, 1974)"}
+      decision: "(Johnson, 1974)"
+      rationale: The Catalog of Fishes gives Johnson 1974 as the author of the parent species, described in Trematocranus, hence the parentheses.
+    - field: features.origin.value.region
+      proposals:
+        - {by: generator, value: Lake Malawi}
+        - {by: checker-a, value: Lake Malawi}
+        - {by: checker-b, value: "Captive line of Aulonocara jacobfreibergi, a species of Lake Malawi"}
+        - {by: checker-c, value: Captive-selected Eureka line of Lake Malawi Aulonocara jacobfreibergi}
+      decision: Lake Malawi
+      rationale: The region names the lake or river system; the captive status is expressed by the continent value captive-bred.
+    - field: features.maxSizeCm.value.female
+      proposals:
+        - {by: generator, value: 10}
+        - {by: checker-a, value: 11}
+        - {by: checker-b, value: 11}
+        - {by: checker-c, value: 10}
+      decision: 10
+      rationale: >-
+        Only Eureka-specific sources state a female size: 8 cm (Einrichtungsbeispiele), about 10 cm
+        (my-fish) and 10 to 12 cm (Gensou). 10 cm is the middle statement; the 11 cm of checker-b
+        rested on a female value that Seriously Fish does not state.
+    - field: features.predation.value
+      proposals:
+        - {by: generator, value: 1}
+        - {by: checker-a, value: 1}
+        - {by: checker-b, value: 1}
+        - {by: checker-c, value: 0}
+        - {by: tiebreaker-1, value: 1}
+        - {by: tiebreaker-2, value: 1}
+      decision: 1
+      rationale: Decided by the vote count as qualified majority, 5 of 6 votes.
+    - field: features.diet.value.foods
+      proposals:
+        - {by: generator, value: [high-quality sinking pellets and flakes for carnivorous cichlids, "frozen mysis, brine shrimp and mosquito larvae", small share of plant-based food such as spirulina]}
+        - {by: checker-a, value: [insect larvae, small crustaceans, benthic invertebrates from sand]}
+        - {by: checker-b, value: [chironomid larvae, brine shrimp, mosquito larvae, quality pellets, spirulina]}
+        - {by: checker-c, value: [Small crustaceans, Insect larvae, Balanced fine cichlid pellets, Artemia, Supplementary vegetable matter]}
+      decision: [high-quality sinking pellets and flakes for carnivorous cichlids, "frozen mysis, brine shrimp and mosquito larvae", small share of plant-based food such as spirulina]
+      rationale: Type and bloat flag are unanimous; the vote count takes the foods list of the first agreeing vote, and the other lists name the same food groups.
+    - field: features.aggressionConspecific.value
+      proposals:
+        - {by: generator, value: 3}
+        - {by: checker-a, value: 2}
+        - {by: checker-b, value: 2}
+        - {by: checker-c, value: 3}
+      decision: 3
+      rationale: >-
+        Seriously Fish, Stigliano, Aquarium-Ratgeber, the Cichlid-Forum profile and the Victorian
+        Cichlid Society report persistent pursuit of rivals and females and injuries under poor
+        conditions, which is level 3; the milder descriptions of Fishipedia and Fishkeeper lower the
+        confidence to medium.
+    - field: features.territory.value.breedingOnly
+      proposals:
+        - {by: generator, value: false}
+        - {by: checker-a, value: false}
+        - {by: checker-b, value: false}
+        - {by: checker-c, value: true}
+      decision: false
+      rationale: Males hold cave territories in every season and breed throughout the year, so the territory is permanent in practice.
+    - field: features.coloration.value
+      proposals:
+        - {by: generator, value: {baseColors: [red, orange, blue], pattern: mixed}}
+        - {by: checker-a, value: {baseColors: [red, orange, blue], pattern: mixed}}
+        - {by: checker-b, value: {baseColors: [red, blue], pattern: plain}}
+        - {by: checker-c, value: {baseColors: [red, orange, blue], pattern: mixed}}
+      decision: {baseColors: [red, orange, blue], pattern: mixed}
+      rationale: Three runs and the descriptions of Einrichtungsbeispiele and the retailer sheets name orange as well as red and blue, in separate colour fields.
+    - field: features.minTank.value
+      proposals:
+        - {by: generator, value: {volumeL: 350, lengthCm: 120, depthCm: 60}}
+        - {by: checker-a, value: {volumeL: 300, lengthCm: 120, depthCm: 60}}
+        - {by: checker-b, value: {volumeL: 300, lengthCm: 120, depthCm: 50}}
+        - {by: checker-c, value: {volumeL: 400, lengthCm: 150, depthCm: 60}}
+      decision: {volumeL: 350, lengthCm: 120, depthCm: 60}
+      rationale: >-
+        Keeps the 120 by 60 cm base of Seriously Fish, which most sources support for the length;
+        350 litres lies above the 250 to 300 litres of most care sheets and below the volume of the
+        full base. The 150 cm of checker-c rests on one directory entry.
+    - field: features.lifespanYears.value
+      proposals:
+        - {by: generator, value: {min: 6, max: 10}}
+        - {by: checker-a, value: {min: 7, max: 10}}
+        - {by: checker-b, value: {min: 8, max: 10}}
+        - {by: checker-c, value: {min: 5, max: 8}}
+      decision: {min: 6, max: 10}
+      rationale: Sources state 5 to 12 years; 6 to 10 lies in the middle of the statements and of the proposals.
+    - field: features.ph.tolerance.value
+      proposals:
+        - {by: generator, value: {min: 7.5, max: 8.6}}
+        - {by: checker-a, value: {min: 7.5, max: 8.8}}
+        - {by: checker-b, value: {min: 7.5, max: 8.6}}
+        - {by: checker-c, value: {min: 7.5, max: 9.0}}
+      decision: {min: 7.5, max: 8.7}
+      rationale: Decided by the vote count as unanimous (all four within 0.3 pH), with the median of the upper limits.
+    - field: features.ghDgh.tolerance.value
+      proposals:
+        - {by: generator, value: {min: 3, max: 20}}
+        - {by: checker-a, value: {min: 3, max: 25}}
+        - {by: checker-b, value: {min: 3, max: 19}}
+        - {by: checker-c, value: {min: 3, max: 25}}
+        - {by: tiebreaker-1, value: {min: 3, max: 20}}
+        - {by: tiebreaker-2, value: {min: 3, max: 20}}
+      decision: {min: 3, max: 20}
+      rationale: Decided by the vote count as qualified majority, 4 of 6 votes.
+    - field: features.khDkh.tolerance.value
+      proposals:
+        - {by: generator, value: {min: 5, max: 12}}
+        - {by: checker-a, value: {min: 5, max: 15}}
+        - {by: checker-b, value: {min: 4, max: 14}}
+        - {by: checker-c, value: {min: 5, max: 10}}
+        - {by: tiebreaker-1, value: {min: 5, max: 15}}
+        - {by: tiebreaker-2, value: {min: 5, max: 12}}
+      decision: {min: 5, max: 14}
+      rationale: Decided by the vote count as qualified majority, 5 of 6 votes, with the median of the agreeing upper limits.
