@@ -160,6 +160,12 @@ Data persists in named volumes across `down`/`up` cycles; add `-v` to `down` to 
 | RustFS   | 9000 | access/secret key `cichlids`/`cichlids-dev-secret` |
 | Keycloak | 8180 | admin console user/pass `admin`/`admin` |
 
+Postgres always publishes on `127.0.0.1`. RustFS and Keycloak publish on the address in
+`CICHLIDS_STACK_BIND`, which defaults to `127.0.0.1`. The devcontainer sets it to `0.0.0.0`,
+because the devcontainer's own port publishing to the host reaches the stack only through the
+container's interfaces and itself binds to the host loopback. Outside the devcontainer, set the
+variable only to expose RustFS and Keycloak to other machines deliberately.
+
 Keycloak's `cichlids` realm has two seeded local users (password `dev-password` for both):
 `dev-user` (no realm role) and `dev-mod` (`moderator` and `admin` realm roles).
 
@@ -309,7 +315,7 @@ cd app/mobile && pnpm run e2e:web
 It expects the app at `PLAYWRIGHT_BASE_URL` (default `http://localhost:8081`, matching the `expo
 start --web --port 8081` above) and the API reachable at the app's configured API URL (default
 `http://localhost:5045`, see `app/mobile/src/api/client.ts`). Screenshots are written to
-`app-screens/` at the repo root (override with `PLAYWRIGHT_OUT_DIR`).
+`app-screens/` at the repo root, which `.gitignore` excludes (override with `PLAYWRIGHT_OUT_DIR`).
 
 ## Write E2E stack
 

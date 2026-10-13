@@ -20,7 +20,8 @@
     }
   },
   "containerEnv": {
-    "TZ": "Europe/Berlin"
+    "TZ": "Europe/Berlin",
+    "CICHLIDS_STACK_BIND": "0.0.0.0"
   },
   "forwardPorts": [6480],
   "portsAttributes": {
