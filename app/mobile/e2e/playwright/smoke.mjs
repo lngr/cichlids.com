@@ -2,8 +2,7 @@
 // Playwright-driven smoke test for the Expo web build of the mobile app,
 // covering the same ground as the Maestro flows in e2e/maestro/ (gallery,
 // tank detail) plus the rest of the primary screens. Used as a fallback
-// where a local Maestro web device is not available; see this package's
-// README/task report for details.
+// where a local Maestro web device is not available.
 //
 // Also covers i18n: a plain load exercises the English fallback locale (the
 // default in a headless browser with no forced language), and a `?lang=de`
@@ -20,7 +19,7 @@ import fs from "node:fs";
 import { fileURLToPath } from "node:url";
 
 const BASE_URL = process.env.PLAYWRIGHT_BASE_URL ?? "http://localhost:8081";
-const OUT_DIR = process.env.PLAYWRIGHT_OUT_DIR ?? path.join(fileURLToPath(new URL(".", import.meta.url)), "../../../../..", "app-screens");
+const OUT_DIR = process.env.PLAYWRIGHT_OUT_DIR ?? path.join(fileURLToPath(new URL(".", import.meta.url)), "../../../..", "app-screens");
 fs.mkdirSync(OUT_DIR, { recursive: true });
 
 function shot(page, name) {
