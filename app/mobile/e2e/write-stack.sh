@@ -39,6 +39,7 @@ API_LOG="$STATE_DIR/api.log"
 WEB_LOG="$STATE_DIR/web.log"
 API_BUILD_DIR="$STATE_DIR/api-build"
 WEB_EXPORT_DIR="$STATE_DIR/web-e2e"
+KEY_RING_DIR="$STATE_DIR/data-protection-keys"
 
 log() { printf '[write-stack] %s\n' "$1"; }
 
@@ -126,7 +127,8 @@ start_api() {
     cd "$API_BUILD_DIR"
     # The outbox dispatcher polls every second and gives an event up after fifteen seconds, so
     # the webhook spec observes retries, a given-up event and its redelivery within seconds. The
-    # web login returns from Keycloak to this API's callback.
+    # web login returns from Keycloak to this API's callback. The key ring that encrypts the stored
+    # web session tokens lives in the state directory and goes with the database on down.
     ASPNETCORE_URLS="http://0.0.0.0:${API_PORT}" \
     ASPNETCORE_ENVIRONMENT=Development \
     ConnectionStrings__Cichlids="$DB_CONNECTION" \
@@ -136,6 +138,7 @@ start_api() {
     OutboxDispatcher__PollInterval=00:00:01 \
     OutboxDispatcher__GiveUpAfter=00:00:15 \
     WebSession__CallbackUrl="${API_URL}/api/auth/callback" \
+    DataProtection__KeyRingPath="$KEY_RING_DIR" \
     nohup "$DOTNET" "$API_BUILD_DIR/Cichlids.Api.dll" >"$API_LOG" 2>&1 &
     echo $! >"$API_PID_FILE"
   )
@@ -200,7 +203,7 @@ cmd_down() {
   mkdir -p "$STATE_DIR"
   stop_pid_file "$WEB_PID_FILE" "static-server.mjs"
   stop_pid_file "$API_PID_FILE" "Cichlids.Api.dll"
-  rm -rf "$WEB_EXPORT_DIR" "$API_BUILD_DIR"
+  rm -rf "$WEB_EXPORT_DIR" "$API_BUILD_DIR" "$KEY_RING_DIR"
   bucket_tool delete "$BUCKET_NAME"
   drop_database
   log "Write stack down."

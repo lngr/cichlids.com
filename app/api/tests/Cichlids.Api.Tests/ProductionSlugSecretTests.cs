@@ -25,9 +25,11 @@ public sealed class ProductionSlugSecretTests
             using var factory = new WebApplicationFactory<Program>().WithWebHostBuilder(builder =>
             {
                 builder.UseEnvironment("Production");
-                // Host settings reach the configuration before the authentication settings are
-                // resolved, so the startup check passes and the slug secret check is reached.
+                // Host settings reach the configuration before the authentication and key ring
+                // settings are resolved, so their startup checks pass and the slug secret check is
+                // reached.
                 builder.UseSetting("Authentication:Authority", "https://issuer.test");
+                builder.UseSetting("DataProtection:KeyRingPath", Path.GetTempPath());
                 builder.ConfigureAppConfiguration((_, configBuilder) =>
                     configBuilder.AddInMemoryCollection(new Dictionary<string, string?>
                     {

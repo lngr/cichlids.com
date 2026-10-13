@@ -64,6 +64,10 @@ builder.Services.AddSingleton(authenticationSettings);
 // or a callback that are not HTTPS refuses to start.
 var webSessionSettings = WebSessionSettings.Resolve(builder.Configuration, builder.Environment.EnvironmentName);
 builder.Services.AddSingleton(webSessionSettings);
+// Resolved before the host is built so a deployment outside Development without the key ring
+// that encrypts the stored web session tokens refuses to start.
+var keyRingSettings = KeyRingSettings.Resolve(builder.Configuration, builder.Environment.EnvironmentName, builder.Environment.ContentRootPath);
+builder.Services.AddKeyRing(keyRingSettings);
 builder.Services.AddHttpClient(KeycloakOidcClient.HttpClientName, client => client.Timeout = TimeSpan.FromSeconds(15));
 builder.Services.AddSingleton<KeycloakOidcClient>();
 builder.Services.AddSingleton<WebSessionLocks>();
