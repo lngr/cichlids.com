@@ -40,6 +40,7 @@ public sealed class WebSessionTests(WebSessionFixture fixture)
         Assert.False(string.IsNullOrEmpty(query["code_challenge"].ToString()));
         Assert.False(string.IsNullOrEmpty(query["state"].ToString()));
         Assert.Contains("offline_access", query["scope"].ToString().Split(' '));
+        Assert.Equal("login", query["prompt"].ToString());
 
         var cookie = SetCookie(response, LoginCookie);
         Assert.True(cookie.HttpOnly);

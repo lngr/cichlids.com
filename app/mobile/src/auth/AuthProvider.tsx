@@ -6,6 +6,7 @@ import {
   exchangeCodeAsync,
   fetchDiscoveryAsync,
   makeRedirectUri,
+  Prompt,
   ResponseType,
   useAuthRequest,
   useAutoDiscovery,
@@ -77,6 +78,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       responseType: ResponseType.Code,
       usePKCE: true,
       state: requestState,
+      // Signing out ends the offline session; the Keycloak sign-in in the system browser may
+      // outlive it, so every login asks for credentials.
+      prompt: Prompt.Login,
     },
     discovery,
   );

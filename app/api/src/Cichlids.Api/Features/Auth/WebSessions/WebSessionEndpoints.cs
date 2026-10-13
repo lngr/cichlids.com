@@ -89,6 +89,9 @@ public static class WebSessionEndpoints
             ["state"] = login.State,
             ["code_challenge"] = challenge,
             ["code_challenge_method"] = "S256",
+            // The Keycloak sign-in of an earlier member may still live in this browser after their
+            // sign-out, so every login asks for credentials.
+            ["prompt"] = "login",
         });
         return TypedResults.Ok(new WebLoginDto(location));
     }
