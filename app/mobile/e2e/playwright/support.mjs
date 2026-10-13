@@ -13,6 +13,7 @@ export const USERNAME = "dev-user";
 export const PASSWORD = "dev-password"; // gitleaks:allow
 export const EXPECTED_NAMES = ["dev-user", "Dev User"];
 export const AUTHORIZATION_ENDPOINT = `${KEYCLOAK_URL}/realms/cichlids/protocol/openid-connect/auth`;
+export const END_SESSION_ENDPOINT = `${KEYCLOAK_URL}/realms/cichlids/protocol/openid-connect/logout`;
 
 /** The locator of an element by its React Native testID (data-testid on the web). */
 export function byTestId(page, testId) {
@@ -23,17 +24,32 @@ export function byTestId(page, testId) {
  * Presses the given login button and submits the dev user's credentials on the Keycloak page. On
  * the web the app asks the API to start the login and navigates the page to Keycloak; after the
  * credentials, Keycloak returns through the API's callback to the page the login started from.
- * Resolves once the credentials are submitted; the caller waits for its own logged-in state.
+ * When the browser is still signed in to Keycloak, Keycloak asks for the password alone. Resolves
+ * once the credentials are submitted; the caller waits for its own logged-in state.
  */
 export async function submitKeycloakLogin(page, loginButton, username = USERNAME, password = PASSWORD) {
   await loginButton.waitFor({ timeout: 20000 });
   await loginButton.click();
   await page.waitForURL((url) => url.href.startsWith(AUTHORIZATION_ENDPOINT), { timeout: 20000 });
-  await page.waitForSelector("#username", { timeout: 20000 });
-  await page.fill("#username", username);
+  await page.waitForSelector("#password", { timeout: 20000 });
+  if ((await page.locator("#username").count()) > 0) await page.fill("#username", username);
   await page.fill("#password", password);
   await page.click("#kc-login");
   await page.waitForURL((url) => url.href.startsWith(WEB_URL), { timeout: 30000 });
+}
+
+/**
+ * Presses the logout button and waits until the page has passed Keycloak's end session endpoint
+ * and is back on the Me tab of the web app, signed out. Resolves with the address of the end
+ * session request.
+ */
+export async function signOutThroughKeycloak(page) {
+  const endSession = page.waitForRequest((request) => request.url().startsWith(END_SESSION_ENDPOINT), { timeout: 20000 });
+  await byTestId(page, "logout-button").click({ timeout: 20000 });
+  const request = await endSession;
+  await page.waitForURL(`${WEB_URL}/me`, { timeout: 30000 });
+  await byTestId(page, "login-button").waitFor({ timeout: 30000 });
+  return new URL(request.url());
 }
 
 /**

@@ -1,11 +1,11 @@
 // Logs in through the real Keycloak login page as the local dev user and checks that the Me tab
-// shows the profile from GET /api/me. Logs out and logs in a second time on the same page: Keycloak
-// asks for credentials again, and the second authorization request has a fresh state and PKCE
+// shows the profile from GET /api/me. Logs out through Keycloak's end session endpoint and logs in a
+// second time on the same page: Keycloak asks for credentials again, and the second authorization request has a fresh state and PKCE
 // challenge. A page reload keeps the session, and after the final logout a reload keeps the
 // anonymous state. Runs on the isolated write stack only (see
 // e2e/write-stack.sh): the first /api/me call of a user creates their profile row.
 import { chromium } from "playwright";
-import { AUTHORIZATION_ENDPOINT, WEB_URL, byTestId, logInThroughKeycloak } from "./support.mjs";
+import { AUTHORIZATION_ENDPOINT, WEB_URL, byTestId, logInThroughKeycloak, signOutThroughKeycloak } from "./support.mjs";
 
 const browser = await chromium.launch();
 try {
@@ -22,8 +22,7 @@ try {
   const meName = byTestId(page, "me-name");
 
   async function logOut() {
-    await byTestId(page, "logout-button").click();
-    await loginButton.waitFor({ timeout: 20000 });
+    await signOutThroughKeycloak(page);
     if ((await meName.count()) !== 0) throw new Error("The profile name is visible after logging out");
   }
 

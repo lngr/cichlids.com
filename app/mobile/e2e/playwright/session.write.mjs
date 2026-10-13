@@ -8,6 +8,11 @@
 //   the app opens, and the member stays signed in.
 // - Without a connection, a screen shows the connection message and the member stays signed in;
 //   once the connection is back, the retry loads the screen.
+// - Signing out passes the browser through Keycloak's end session endpoint: afterwards Keycloak
+//   has no sign-in and no offline session of the member, the browser holds no Keycloak cookie, an
+//   authorization request without prompt=login shows the login form, and a new login asks for
+//   username and password. The member signs in to Keycloak through another client before the
+//   first web login, so the browser holds a Keycloak sign-in that the sign-out has to end.
 // - The title and description typed for an uploaded photo survive a sign-out: after signing in
 //   again, the draft opens with them.
 // - After the account is suspended in Keycloak, opening the app signs the member out and the API
@@ -22,7 +27,15 @@ import { execFileSync } from "node:child_process";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
-import { API_URL, AUTHORIZATION_ENDPOINT, KEYCLOAK_URL, WEB_URL, byTestId, submitKeycloakLogin } from "./support.mjs";
+import {
+  API_URL,
+  AUTHORIZATION_ENDPOINT,
+  KEYCLOAK_URL,
+  WEB_URL,
+  byTestId,
+  signOutThroughKeycloak,
+  submitKeycloakLogin,
+} from "./support.mjs";
 
 const SPEC_DIR = path.dirname(fileURLToPath(import.meta.url));
 const COMPOSE_FILE = path.resolve(SPEC_DIR, "../../../stack/compose.yaml");
@@ -31,6 +44,8 @@ const UPLOAD_INPUT_KEY = "cichlids.upload.input";
 const CONNECTION_MESSAGE = "The connection failed. You stay signed in; please try again in a moment.";
 const LOGIN_FAILED_MESSAGE = "Login failed. Please try again.";
 const JWT = /eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+/;
+const BFF_CLIENT = "cichlids-web-bff";
+const KEYCLOAK_SIGN_IN_COOKIES = ["KEYCLOAK_IDENTITY", "KEYCLOAK_IDENTITY_LEGACY", "KEYCLOAK_SESSION", "KEYCLOAK_SESSION_LEGACY"];
 
 // Runs one statement against the write database and returns its unaligned output.
 function sql(statement) {
@@ -78,6 +93,31 @@ async function createMember(username, password) {
 }
 
 // The stored session of the member: its encrypted token columns and whether the access token is valid.
+// The Keycloak sessions of the member: the browser sign-ins and the offline sessions of the web backend.
+async function keycloakSessions(userId) {
+  const sessions = await (await adminRequest("GET", `users/${userId}/sessions`)).json();
+  const clients = await (await adminRequest("GET", `clients?clientId=${BFF_CLIENT}`)).json();
+  if (clients.length !== 1) throw new Error(`Expected one Keycloak client ${BFF_CLIENT}, found ${clients.length}`);
+  const offline = await (await adminRequest("GET", `users/${userId}/offline-sessions/${clients[0].id}`)).json();
+  return { sessions, offline };
+}
+
+// An authorization request without prompt=login, which Keycloak answers with a redirect when the
+// browser still has a Keycloak sign-in and with the login form otherwise.
+function silentAuthorizationUrl(clientId, redirectUri) {
+  const verifier = crypto.randomBytes(32).toString("base64url");
+  const params = new URLSearchParams({
+    client_id: clientId,
+    redirect_uri: redirectUri,
+    response_type: "code",
+    scope: "openid",
+    state: crypto.randomBytes(16).toString("base64url"),
+    code_challenge: crypto.createHash("sha256").update(verifier).digest("base64url"),
+    code_challenge_method: "S256",
+  });
+  return `${AUTHORIZATION_ENDPOINT}?${params}`;
+}
+
 function sessionRow(subject) {
   const row = sql(
     `SELECT encrypted_access_token, encrypted_refresh_token, coalesce(encrypted_id_token, ''), access_token_expires_at > now() ` +
@@ -102,6 +142,15 @@ try {
   page.on("pageerror", (err) => pageErrors.push(String(err)));
   const meName = byTestId(page, "me-name");
   const loginButton = byTestId(page, "login-button");
+
+  // The member first signs in to Keycloak in this browser through another client, so Keycloak
+  // keeps a sign-in for the browser that the web login reuses and the web sign-out has to end.
+  await page.goto(silentAuthorizationUrl("cichlids-app", `${WEB_URL}/`), { waitUntil: "networkidle", timeout: 60000 });
+  await page.waitForSelector("#username", { timeout: 20000 });
+  await page.fill("#username", username);
+  await page.fill("#password", password);
+  await page.click("#kc-login");
+  await page.waitForURL((url) => url.href.startsWith(WEB_URL), { timeout: 30000 });
 
   await page.goto(`${WEB_URL}/me`, { waitUntil: "networkidle", timeout: 60000 });
   await submitKeycloakLogin(page, loginButton, username, password);
@@ -172,8 +221,44 @@ try {
     { timeout: 10000 },
   );
   await page.goto(`${WEB_URL}/me`, { waitUntil: "networkidle", timeout: 60000 });
-  await byTestId(page, "logout-button").click({ timeout: 20000 });
-  await loginButton.waitFor({ timeout: 20000 });
+  await meName.waitFor({ timeout: 30000 });
+  const before = await keycloakSessions(memberId);
+  if (before.sessions.length === 0) throw new Error("The member has no Keycloak sign-in before the sign-out");
+  if (before.offline.length === 0) throw new Error("The member has no offline session of the web backend before the sign-out");
+  const endSession = await signOutThroughKeycloak(page);
+  for (const [name, expected] of [
+    ["client_id", BFF_CLIENT],
+    ["post_logout_redirect_uri", `${WEB_URL}/me`],
+  ]) {
+    if (endSession.searchParams.get(name) !== expected) {
+      throw new Error(`The end session request has ${name}=${endSession.searchParams.get(name)}, expected ${expected}`);
+    }
+  }
+  if (!JWT.test(endSession.searchParams.get("id_token_hint") ?? "")) throw new Error("The end session request has no id_token_hint");
+  console.log("Signing out passes the browser through Keycloak's end session endpoint and back to the Me tab");
+
+  // Keycloak keeps no sign-in for this browser: no session of the member, no Keycloak cookie, and an
+  // authorization request without prompt=login shows the login form.
+  const after = await keycloakSessions(memberId);
+  if (after.sessions.length !== 0) throw new Error(`Keycloak keeps ${after.sessions.length} sign-in(s) of the member after the sign-out`);
+  if (after.offline.length !== 0) throw new Error(`Keycloak keeps ${after.offline.length} offline session(s) of the web backend after the sign-out`);
+  const keycloakCookies = (await context.cookies(`${KEYCLOAK_URL}/realms/cichlids/`)).filter(
+    (cookie) => KEYCLOAK_SIGN_IN_COOKIES.includes(cookie.name) && cookie.value.length > 0,
+  );
+  if (keycloakCookies.length > 0) {
+    throw new Error(`The browser keeps the Keycloak cookies ${keycloakCookies.map((cookie) => cookie.name).join(", ")}`);
+  }
+  await page.goto(silentAuthorizationUrl(BFF_CLIENT, `${API_URL}/api/auth/callback`), { waitUntil: "networkidle", timeout: 60000 });
+  await page.waitForSelector("#username", { timeout: 20000 });
+  if (!page.url().startsWith(KEYCLOAK_URL)) throw new Error(`The authorization request left Keycloak for ${page.url()}`);
+  await page.goto(`${WEB_URL}/me`, { waitUntil: "networkidle", timeout: 60000 });
+  await loginButton.click({ timeout: 30000 });
+  await page.waitForURL((url) => url.href.startsWith(AUTHORIZATION_ENDPOINT), { timeout: 20000 });
+  await page.waitForSelector("#username", { timeout: 20000 });
+  console.log("After the sign-out Keycloak has no sign-in for this browser, and a new login asks for username and password");
+  await page.goto(`${WEB_URL}/me`, { waitUntil: "networkidle", timeout: 60000 });
+  await loginButton.waitFor({ timeout: 30000 });
+
   const keptWhileSignedOut = await keptInput(UPLOAD_INPUT_KEY);
   if (!keptWhileSignedOut.includes(keptTitle)) throw new Error("The typed upload input is gone after the sign-out");
   if (JWT.test(keptWhileSignedOut)) throw new Error("The kept upload input holds a token");
