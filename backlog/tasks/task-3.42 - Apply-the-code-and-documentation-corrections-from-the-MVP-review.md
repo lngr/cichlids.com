@@ -1,9 +1,10 @@
 ---
 id: TASK-3.42
 title: Apply the code and documentation corrections from the MVP review
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-10-12 04:49'
+updated_date: '2026-10-13 11:54'
 labels: []
 dependencies: []
 references:
@@ -36,3 +37,29 @@ The development CORS check rejects invalid origins instead of failing. Postgres 
 - [ ] #4 Authoritative domain logic is covered by unit/integration tests
 - [ ] #5 All CI test suites are fully green
 <!-- DOD:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+### Approach
+- Test-first where behaviour changes (R32, R42); the documentation items are plain corrections.
+- Split by file area, so the work does not collide with the TASK-3.41 security changes in the
+  auth code: first everything outside `Features/Auth`, `Program.cs` and the mobile auth folder,
+  then R32 and the remaining auth comments.
+
+### Items
+- R32: the Development CORS check rejects an invalid origin such as `null` instead of throwing;
+  Api test.
+- R39: Postgres binds to 127.0.0.1; RustFS and Keycloak bind to an address from an environment
+  variable (default 127.0.0.1); the devcontainer sets it to 0.0.0.0.
+- R40: `postCreateCommand.sh` warns clearly when pnpm is missing.
+- R42: the outbox concurrency test uses many events and parallel dispatchers; tests for poison
+  message, non-HTTP URL, backoff after a stall, double rating where not covered; the client-core
+  test asserts the ApiError type; `HasPendingModelChanges` in the schema tests; unique constraints
+  of slugs; direct ImageProcessor tests. Maestro findings belong to TASK-2.25.
+- R43: no inline tags in C# doc comments under `app/api`.
+- R44: the notes of TASK-3.13 and TASK-3.15 describe linking through the oidc identity only.
+- R45: the listed comments and the README screenshot statement match the behaviour; `OUT_DIR` of
+  `smoke.mjs` points into an ignored directory inside the repository.
+- R46: `PROJECT-STATUS.md` reflects the merged state.
+<!-- SECTION:PLAN:END -->
