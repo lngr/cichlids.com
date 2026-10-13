@@ -4,11 +4,17 @@ title: 'Limit comment length, uploads and drafts'
 status: In Progress
 assignee: []
 created_date: '2026-10-12 04:48'
-updated_date: '2026-10-13 08:41'
+updated_date: '2026-10-13 08:52'
 labels: []
 dependencies: []
 references:
-  - REVIEW-MVP.md
+  - app/mobile/e2e/playwright/limits.write.mjs
+  - >-
+    app/api/tests/Cichlids.Api.Tests/Features/Comments/CommentWriteEndpointsTests.cs
+  - >-
+    app/api/tests/Cichlids.Api.Tests/Features/Common/JsonRequestSizeLimitTests.cs
+  - app/api/tests/Cichlids.Api.Tests/Features/Uploads/UploadLimitsTests.cs
+  - app/mobile/src/components/commentComposerState.test.ts
 parent_task_id: TASK-3
 priority: medium
 ordinal: 61000
@@ -65,3 +71,38 @@ Comments have at most 10000 characters and deletion reasons at most 500; JSON re
 - Api.Tests for each limit and the cleanup; mobile tests for counter and messages; write spec
   tagged TASK-3.37 for the draft limit message (AC #2) and the long comment (AC #1).
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### Implemented
+- Comments: at most 10000 characters after trimming (400 `comment_too_long`), deletion reasons at
+  most 500 (400 `reason_too_long`). JSON requests: a declared body above 64 KB gets 413
+  `request_too_large`; bodies without length are capped at 64 KB; multipart uploads keep their own
+  limit.
+- Uploads: 50 open drafts give 409 `draft_limit_reached` (checked first), the hourly limit 429
+  `upload_rate_limited`, counted from `media_item.created_at`. Two parallel uploads at the limit can
+  both pass (soft by one or two).
+- Cleanup: `DraftCleanupHostedService` with `DraftCleanupService` deletes stale drafts through the
+  discard path including objects; the condition sits in the delete statement, so parallel runs are
+  safe.
+- Configuration (`appsettings.json`, positive values enforced at start): `UploadLimits:MaxUploadsPerHour`
+  30, `UploadLimits:MaxOpenDrafts` 50, `DraftCleanup:Enabled` true, `DraftCleanup:Interval`
+  01:00:00, `DraftCleanup:Retention` 30.00:00:00, `DraftCleanup:BatchSize` 100.
+- App: counter "n / 10000" in the composer, sending disabled above the limit; English and German
+  texts for the four codes.
+
+### Verified by the agent
+- `dotnet test`: Infrastructure 304, Api 347, Etl 338; client-core 13; mobile 114 and typecheck;
+  `pnpm run e2e:write` 10 of 10 including `limits.write.mjs` (AC #1 and #2); AC #3 by the API
+  cleanup test.
+- Red phase not observed: the tests were written before the code but not run against the old
+  code.
+
+### Open before review
+- The draft age is `post.created_at`; R13 says untouched for 30 days. Needs a change timestamp on
+  drafts (migration) and the cleanup on it.
+- `client-core/openapi.json` and the generated client are not regenerated for the new problem
+  responses.
+- The chunked 413 path is tested with a fake body-size feature only.
+<!-- SECTION:NOTES:END -->
