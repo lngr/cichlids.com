@@ -1,0 +1,1575 @@
+schemaVersion: 1
+id: maylandia-lombardoi
+legacyIds: [480]
+status: described
+taxonomy:
+  validName: Maylandia lombardoi
+  genus: Maylandia
+  species: lombardoi
+  author: (Burgess, 1977)
+  source:
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes, species of the genus Maylandia"
+    url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Maylandia
+    accessed: 2026-10-13
+  synonyms:
+    - name: Pseudotropheus lombardoi Burgess, 1977
+      note: Original combination; type locality Lake Malawi, probably Mbenji Island.
+    - name: Metriaclima lombardoi (Burgess, 1977)
+      note: Combination used by Stauffer et al. (1997), Konings and Stauffer (2006), Konings (2016) and the Cichlid Room Companion.
+    - name: Pseudotropheus liliancinius Staeck, 1977
+      note: Nomen nudum from the Mbenji Islands, placed in the synonymy of this species by the Catalog of Fishes; also seen as a trade name.
+  legacyNames:
+    - Pseudotropheus lombardoi
+  note: >-
+    The Catalog of Fishes (queried 2026-10-13 under Maylandia, Metriaclima and Pseudotropheus)
+    lists the species as valid in Maylandia; the other two genera hold no separate valid
+    lombardoi. The genus name is disputed: Konings, Geerts and Stauffer (2026, Taxonomy 6(1),
+    doi 10.3390/taxonomy6010003) argue that Maylandia is a nomen nudum, and part of the
+    literature, the Cichlid Room Companion and much of the hobby use Metriaclima. The species
+    epithet and the species concept are not in question; the profile follows the Catalog of
+    Fishes.
+names:
+  trade:
+    en:
+      - Kenyi cichlid
+      - Kennyi
+      - Lombardoi mbuna
+    de:
+      - Kenyi
+variants:
+  - name: Mbenji Islands
+    kind: locality
+    note: Natural population around the Mbenji island group; the origin of the original trade stock.
+  - name: Nkhomo Reef
+    kind: locality
+    note: Second natural population on a reef off the central western shore.
+  - name: Namalenje Island
+    kind: locality
+    note: Population most likely introduced by people.
+
+features:
+  origin:
+    value:
+      continent: Africa
+      region: Lake Malawi
+      waterbody: Lake Malawi
+      localities:
+        - Mbenji Islands
+        - Nkhomo Reef
+        - Namalenje Island (introduced)
+    confidence: high
+    rationale: >-
+      Endemic to Lake Malawi with a very small natural range at the Mbenji Islands and Nkhomo
+      Reef in the central part of the lake. FishBase, Seriously Fish, Malawi-Guru and the Malawi
+      pages of M. K. Oliver (after Konings) agree; the Catalog of Fishes gives Lake Malawi as the
+      distribution and probably Mbenji Island as the type locality. A population at Namalenje
+      Island goes back to an introduction by people and is listed with that label.
+    sources:
+      - &cof
+        kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes, species of the genus Maylandia"
+        url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Maylandia
+        accessed: 2026-10-13
+      - &fishbase
+        kind: database
+        title: "FishBase species summary: Maylandia lombardoi"
+        url: https://www.fishbase.se/summary/Maylandia-lombardoi.html
+        accessed: 2026-10-13
+      - &sf
+        kind: database
+        title: "Seriously Fish: Pseudotropheus lombardoi (Kennyi)"
+        url: https://www.seriouslyfish.com/species/pseudotropheus-lombardoi/
+        accessed: 2026-10-13
+      - &oliver
+        kind: database
+        title: "Oliver, M. K.: Maylandia lombardoi, malawicichlids.com (after Konings 1995)"
+        url: https://www.malawicichlids.com/mw09007z.htm
+        accessed: 2026-10-13
+      - &mg
+        kind: database
+        title: "Malawi-Guru: Metriaclima lombardoi species account"
+        url: https://malawi-guru.de/fischverzeichnis-metriaclima-lombardoi-mbuna/
+        accessed: 2026-10-13
+      - &glaser
+        kind: website
+        title: "Aquarium Glaser fish archive, Maylandia lombardoi (wholesaler)"
+        url: https://www.aquariumglaser.de/en/fish-archives/maylandia-lombardoi/
+        accessed: 2026-10-13
+    evidence:
+      - source: *fishbase
+        value: {continent: Africa, region: Lake Malawi, localities: [Mbenji Island, Namalenje Island (introduced)]}
+      - source: *sf
+        value: {continent: Africa, region: Lake Malawi, localities: [Mbenji Islands, Nkhomo Reef, Namalenje Island (introduced)]}
+      - source: *oliver
+        value: {continent: Africa, region: Lake Malawi, localities: [Mbenji Island, Nkhomo Reef]}
+
+  temperatureC:
+    value: {min: 21, max: 29}
+    confidence: high
+    verification: {method: waterbody, waterbody: lake-malawi}
+    rationale: >-
+      Natural value of Lake Malawi, decided by the water body. Eccles (1974) reports about 27 C
+      in the upper 60 m by May and 21 C inshore in the south-east arm during the cool, windy
+      season; Vollmer et al. (2005) give winter values of the mixed layer from about 23.5 C and
+      summer surface water near 28 C, and later campaigns reach 29 C. The species lives at about
+      6 to 30 m, inside the layer these measurements describe. Care sheet figures such as the
+      24 to 26 C of FishBase are aquarium recommendations and belong to the tolerance.
+    sources:
+      - &eccles
+        kind: literature
+        title: "Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology and Oceanography 19(5), 730-742 (abstract)."
+        url: https://doi.org/10.4319/lo.1974.19.5.0730
+        accessed: 2026-10-13
+      - &vollmer2005
+        kind: literature
+        title: "Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M., Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and Oceanography 50(2), 727-732."
+        url: https://www.dora.lib4ri.ch/empa/dload/empa:1253/PDF/view
+        accessed: 2026-10-13
+      - &vollmer1999
+        kind: literature
+        title: "Vollmer, M. K., Weiss, R. F. and Bootsma, H. A. (1999). Lake Malawi/Nyasa deep water renewal. In: Bootsma, H. A. and Hecky, R. E. (eds.), Water Quality Report, SADC/GEF Lake Malawi/Nyasa Biodiversity Conservation Project, chapter 4."
+        url: https://sites.uwm.edu/hbootsma/files/2020/11/Ch4-Lake-Internal-Mixing.pdf
+        accessed: 2026-10-13
+      - &ngochera
+        kind: literature
+        title: "Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. PhD dissertation, University of Wisconsin-Milwaukee."
+        url: https://minds.wisconsin.edu/handle/1793/91765
+        accessed: 2026-10-13
+      - &fao
+        kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+        url: https://www.fao.org/4/t0473e/T0473E05.htm
+        accessed: 2026-10-13
+      - &branchu
+        kind: literature
+        title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+        url: https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf
+        accessed: 2026-10-13
+    evidence:
+      - source: *eccles
+        value: {min: 21, max: 27}
+        note: inshore cool-season minimum and upper 60 m in May
+      - source: *vollmer2005
+        value: {min: 23.5, max: 28}
+        note: winter mixed layer and summer surface water
+      - source: *fao
+        value: {min: 23, max: 25}
+        note: lake surface water, single 1960s survey
+      - source: *branchu
+        value: {min: 24.5, max: 26.2}
+        note: campaign means of the upper layer, north basin
+    tolerance:
+      value: {min: 21, max: 29}
+      confidence: medium
+      verification:
+        method: unanimous
+        votes: {agree: 4, total: 4}
+      rationale: >-
+        All four runs proposed 21 to 29 C. Care sheets agree on a band of about 23 to 28 C for
+        long-term keeping (Seriously Fish 24 to 28, The Tropical Tank 23 to 28, Aqua-Fish and
+        Tropical Freshwater Fish 23 to 27, FishBase and Fishkeeper 24 to 26, LiveAquaria about 24
+        to 28), and a rearing trial kept the species at 26 to 28 C. No source reports harm within
+        the lake range, which the tolerance has to contain, so it equals the natural range. The
+        ends at 21 and 29 C rest on the lake measurements and are seasonal extremes rather than
+        targets for a tank.
+      sources:
+        - *sf
+        - &tt
+          kind: database
+          title: "The Tropical Tank: Metriaclima lombardoi (Kenyi cichlid), archived copy of 2026-03-13"
+          url: https://web.archive.org/web/20260313052510/http://thetropicaltank.co.uk/Fishindx/m_lombardoi.htm
+          accessed: 2026-10-13
+        - &af
+          kind: database
+          title: "Aqua-Fish: Kenyi Cichlid care guide"
+          url: https://en.aqua-fish.net/fish/kenyi-cichlid
+          accessed: 2026-10-13
+        - &tff
+          kind: database
+          title: "Tropical Freshwater Fish: Kennyi, Pseudotropheus lombardoi"
+          url: https://tropicalfreshwaterfish.com/species/Pseudotropheus_lombardoi.html
+          accessed: 2026-10-13
+        - *fishbase
+        - &kfas
+          kind: literature
+          title: "Physiological changes in the cichlid fish Maylandia lombardoi according to various calcium concentrations in rearing water (2016). Korean Journal of Fisheries and Aquatic Sciences 49."
+          url: https://doi.org/10.5657/kfas.2016.0184
+          accessed: 2026-10-13
+        - &fishkeeper
+          kind: website
+          title: "Fishkeeper (Maidenhead Aquatics): Kenyi, Maylandia lombardoi, species profile"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/kenyi
+          accessed: 2026-10-13
+        - &la
+          kind: website
+          title: "LiveAquaria: Kenyi Cichlid, Metriaclima lombardoi, care sheet"
+          url: https://www.liveaquaria.com/products/kenyi-cichlid
+          accessed: 2026-10-13
+      evidence:
+        - source: *sf
+          value: {min: 24, max: 28}
+          note: aquarium recommendation
+        - source: *tt
+          value: {min: 23, max: 28}
+          note: aquarium recommendation
+        - source: *af
+          value: {min: 23, max: 27}
+          note: aquarium recommendation
+        - source: *tff
+          value: {min: 23, max: 27}
+          note: aquarium recommendation
+        - source: *fishbase
+          value: {min: 24, max: 26}
+          note: aquarium value after Baensch and Riehl
+        - source: *kfas
+          value: {min: 26, max: 28}
+          note: rearing temperature of the trial
+        - source: *fishkeeper
+          value: {min: 24, max: 26}
+          note: retailer care sheet
+        - source: *la
+          value: {min: 24.4, max: 27.8}
+          note: retailer care sheet, converted from 76 to 82 F
+
+  ph:
+    value: {min: 7.7, max: 8.6}
+    confidence: high
+    verification: {method: waterbody, waterbody: lake-malawi}
+    rationale: >-
+      Natural value of Lake Malawi, decided by the water body: surface pH 7.7 to 8.6 after
+      Jackson et al. (1963) in the FAO source book. Branchu et al. (2010) measured 7.5 to 8.5 over
+      the whole column; the lower values belong to deep water that this rock dweller does not use.
+    sources:
+      - *fao
+      - *branchu
+      - *eccles
+      - *vollmer2005
+      - *vollmer1999
+      - *ngochera
+    evidence:
+      - source: *fao
+        value: {min: 7.7, max: 8.6}
+        note: lake surface water
+      - source: *branchu
+        value: {min: 7.5, max: 8.5}
+        note: whole water column, lowest values in deep water
+    tolerance:
+      value: {min: 7.5, max: 8.8}
+      confidence: medium
+      verification:
+        method: unanimous
+        votes: {agree: 4, total: 4}
+      rationale: >-
+        The runs proposed 7.5 to 8.8 (generator, checker-a), 7.2 to 8.8 (checker-b) and 7.6 to 8.8
+        (checker-c); all lie within the agreement threshold and the vote settles on 7.5 to 8.8,
+        which contains the lake range. Species care sheets put the lower end between 7.5 and 7.8
+        and the upper end between 8.5 and 8.9 (Seriously Fish and my-fish 7.6 to 8.8, The Tropical
+        Tank 7.6 to 8.6, Aqua-Fish 7.5 to 8.9, Fishkeeper 7.5 to 8.5, LiveAquaria 7.8 to 8.6);
+        FishBase gives only a lower limit of 8.0 and the OATA group sheet for Malawi cichlids 8.0
+        to 8.6. Tropical Freshwater Fish allows up to 9.0, a single value without support. The
+        7.2 of checker-b rests on general mbuna experience, not on a species figure.
+      sources:
+        - *sf
+        - &myfish
+          kind: database
+          title: "my-fish: Maylandia lombardoi species account"
+          url: https://my-fish.org/my-fishothek/pseudotropheus-lombardoi-pseudotropheus-lombardoi/
+          accessed: 2026-10-13
+        - *tt
+        - *af
+        - *tff
+        - *fishbase
+        - &oata
+          kind: literature
+          title: "Ornamental Aquatic Trade Association (2022). African Malawi cichlids care sheet."
+          url: https://ornamentalfish.org/wp-content/uploads/African-Malawi-cichlids-Sept-2022.pdf
+          accessed: 2026-10-13
+        - *fishkeeper
+        - *la
+        - &jk
+          kind: website
+          title: "J&K Aquatics: Kenyi Mbuna (Pseudotropheus Lombardoi) 3-4CM"
+          url: https://jnk-aquatics.co.uk/products/livestock/kenyi-mbuna-pseudotropheus-lombardoi-3-4cm
+          accessed: 2026-10-13
+      evidence:
+        - source: *sf
+          value: {min: 7.6, max: 8.8}
+          note: aquarium recommendation
+        - source: *myfish
+          value: {min: 7.6, max: 8.8}
+          note: aquarium recommendation
+        - source: *tt
+          value: {min: 7.6, max: 8.6}
+          note: aquarium recommendation
+        - source: *af
+          value: {min: 7.5, max: 8.9}
+          note: aquarium recommendation
+        - source: *tff
+          value: {min: 7.5, max: 9.0}
+          note: aquarium recommendation, optimum 8.1
+        - source: *fishbase
+          value: {min: 8.0}
+          note: lower limit only, after Baensch and Riehl
+        - source: *oata
+          value: {min: 8.0, max: 8.6}
+          note: general guide for all Malawi cichlids
+        - source: *fishkeeper
+          value: {min: 7.5, max: 8.5}
+          note: retailer care sheet
+        - source: *la
+          value: {min: 7.8, max: 8.6}
+          note: retailer care sheet
+        - source: *jk
+          value: {min: 7.6, max: 8.6}
+          note: retailer care sheet
+
+  ghDgh:
+    value: {min: 3, max: 5}
+    confidence: high
+    verification: {method: waterbody, waterbody: lake-malawi}
+    rationale: >-
+      Natural value of Lake Malawi, decided by the water body. Calcium and magnesium of the upper
+      50 m in the north basin (Branchu et al. 2010) give 4.2 to 4.6 dGH, the 1960s titrations in
+      the FAO source book 3.2 to 4.9 dGH. The lake is soft water with moderate alkalinity; the
+      10 to 25 dGH of care sheets confuse alkalinity with hardness and belong to the tolerance.
+    sources:
+      - *branchu
+      - *fao
+      - *eccles
+      - *vollmer2005
+      - *vollmer1999
+      - *ngochera
+    evidence:
+      - source: *branchu
+        value: {min: 4.2, max: 4.6}
+        note: calculated from calcium and magnesium of the upper 50 m, north basin
+      - source: *fao
+        value: {min: 3.2, max: 4.9}
+        note: calculated from the 1960s calcium and magnesium titrations
+    tolerance:
+      value: {min: 3, max: 25}
+      confidence: medium
+      verification:
+        method: qualified-majority
+        votes: {agree: 4, total: 5}
+      rationale: >-
+        Four of five votes (generator, checker-a, checker-c, tiebreaker-1) proposed 3 to 25 dGH;
+        checker-b proposed 3 to 20 dGH after FishBase. The lower end is the natural lake hardness,
+        which the tolerance has to contain; care sheets name minimums around 10 dGH only because
+        they treat the alkaline lake as hard water. The upper end follows Seriously Fish (10 to 25
+        dGH), Aqua-Fish and Tropical Freshwater Fish (12 to 25); FishBase and FishProfiles stop at
+        20, Animal-World at 15 and the OATA group sheet at 18, while two shop sheets go up to 30.
+        A rearing trial with up to 8 mM added calcium found lowered cortisol, which shows
+        short-term tolerance of very hard water but nothing about years. Stable pH and carbonate
+        hardness matter more than total hardness.
+      sources:
+        - *sf
+        - *af
+        - *tff
+        - *fishbase
+        - &fp
+          kind: database
+          title: "FishProfiles: Pseudotropheus lombardoi"
+          url: https://fishprofiles.com/profiles/freshwater/Cichlids/Pseudotropheus_lombardoi/
+          accessed: 2026-10-13
+        - &aw
+          kind: database
+          title: "Animal-World: Kenyi Cichlid (archived copy)"
+          url: https://web.archive.org/web/20191225140609/https://animal-world.com/encyclo/fresh/cichlid/KenyiCichlid.php
+          accessed: 2026-10-13
+        - *tt
+        - *oata
+        - *kfas
+        - *branchu
+        - *fao
+        - *fishkeeper
+        - *jk
+        - &garnelio
+          kind: website
+          title: "Garnelio care sheet, Pseudotropheus lombardoi (shop)"
+          url: https://www.garnelio.de/en/2x-purple-perch-pseudotropheus-lombardoi-dnz-pair
+          accessed: 2026-10-13
+      evidence:
+        - source: *sf
+          value: {min: 10, max: 25}
+          note: aquarium recommendation
+        - source: *af
+          value: {min: 12, max: 25}
+          note: given in German degrees, equal to dGH
+        - source: *tff
+          value: {min: 12, max: 25}
+          note: aquarium recommendation
+        - source: *fishbase
+          value: {min: 10, max: 20}
+          note: dH after Baensch and Riehl
+        - source: *fp
+          value: {min: 10, max: 20}
+          note: aquarium recommendation
+        - source: *aw
+          value: {min: 10, max: 15}
+          note: aquarium recommendation
+        - source: *tt
+          value: {min: 7}
+          note: lower limit only
+        - source: *oata
+          value: {min: 12, max: 18}
+          note: general guide for all Malawi cichlids
+        - source: *kfas
+          value: {max: 45}
+          note: added calcium up to 8 mM, roughly 45 dGH from calcium alone; short-term trial (abstract)
+        - source: *branchu
+          value: {min: 4.2, max: 4.6}
+          note: natural lake water
+        - source: *fao
+          value: {min: 3.2, max: 4.9}
+          note: natural lake water
+        - source: *fishkeeper
+          value: {max: 25}
+          note: retailer care sheet, upper limit only
+        - source: *jk
+          value: {min: 15, max: 30}
+          note: retailer care sheet
+        - source: *garnelio
+          value: {min: 10, max: 30}
+          note: shop care sheet
+
+  khDkh:
+    value: {min: 5, max: 8}
+    confidence: high
+    verification: {method: waterbody, waterbody: lake-malawi}
+    rationale: >-
+      Natural value of Lake Malawi, decided by the water body: alkalinity of 2.33 to 2.46 meq/L
+      in the Branchu et al. (2010) profiles and 2.00 to 2.59 meq/L in the 1960s data of the FAO
+      source book correspond to about 5.6 to 7.3 dKH. Sodium balances part of the bicarbonate, so
+      carbonate hardness exceeds total hardness in the lake.
+    sources:
+      - *branchu
+      - *fao
+      - *eccles
+      - *vollmer2005
+      - *vollmer1999
+      - *ngochera
+    evidence:
+      - source: *branchu
+        value: {min: 6.5, max: 6.9}
+        note: alkalinity of 2.33 to 2.46 meq/L
+      - source: *fao
+        value: {min: 5.6, max: 7.3}
+        note: alkalinity of 2.00 to 2.59 meq/L
+    tolerance:
+      value: {min: 5, max: 15}
+      confidence: low
+      verification:
+        method: qualified-majority
+        votes: {agree: 4, total: 5}
+      rationale: >-
+        Four of five votes support 5 to 15 dKH (generator, checker-a and tiebreaker-1 exactly,
+        checker-b with 4 to 15 within the threshold); checker-c proposed 5 to 12 dKH after a shop
+        sheet. Few sources state carbonate hardness: The Tropical Tank asks for at least 6 and
+        ideally 10 to 12 dKH, the OATA group sheet for Malawi cichlids 10 to 15 dKH, and the
+        retailers LiveAquaria and J&K Aquatics 10 to 15 dKH; GarnelenTv names 6 to 12 dKH. The
+        lower end is the natural alkalinity of the lake, which the tolerance has to contain. Only
+        one species database gives a figure and the upper bound rests on group-level and retailer
+        advice, hence the low confidence.
+      sources:
+        - *tt
+        - *oata
+        - *branchu
+        - *fao
+        - &pfk
+          kind: literature
+          title: "Practical Fishkeeping: The mbuna keeper's survival guide"
+          url: https://www.practicalfishkeeping.co.uk/features/the-mbuna-keepers-survival-guide/
+          accessed: 2026-10-13
+        - *la
+        - *jk
+        - &garnelentv
+          kind: website
+          title: "GarnelenTv: Lilaprachtbarsch Pseudotropheus lombardoi care sheet (shop)"
+          url: https://garnelentv-shop.de/collections/buntbarsche/products/lilaprachtbarsch-pseudotropheus-lombardoi
+          accessed: 2026-10-13
+      evidence:
+        - source: *tt
+          value: {min: 6, max: 12}
+          note: at least 6, ideally 10 to 12
+        - source: *oata
+          value: {min: 10, max: 15}
+          note: general guide for all Malawi cichlids
+        - source: *branchu
+          value: {min: 6.5, max: 6.9}
+          note: natural lake water
+        - source: *fao
+          value: {min: 5.6, max: 7.3}
+          note: natural lake water
+        - source: *la
+          value: {min: 10, max: 15}
+          note: retailer care sheet
+        - source: *jk
+          value: {min: 10, max: 15}
+          note: retailer care sheet
+        - source: *garnelentv
+          value: {min: 6, max: 12}
+          note: shop care sheet
+
+  maxSizeCm:
+    value: {male: 13, female: 10}
+    confidence: medium
+    rationale: >-
+      Sources split into two clusters. About 12 to 13 cm total length for adult males: Fishkeeper
+      12.5, The Tropical Tank 10 to 12.5, FishProfiles 12, Wikipedia 13, Aquarium Glaser 10 to 12.
+      About 15 cm: Seriously Fish (given as standard length), Tropical Freshwater Fish, my-fish,
+      LiveAquaria, J&K Aquatics and the Cichlid-Forum article, while Aqua-Fish names 13 to 16 cm.
+      FishBase records 8.7 cm standard length for wild fish, roughly 11 cm total length. Since
+      the feature is the typical size of well-kept adults and not the largest fish reported, 13
+      cm is taken for males; the 15 cm figures read as upper extremes. Females stay clearly
+      smaller: the Cichlid-Forum article puts them at about two thirds of the male length and The
+      Tropical Tank's range starts at 10 cm, so 10 cm is taken for females. Proposals ranged from
+      13 to 15 cm for males and 10 to 12 cm for females.
+    sources:
+      - *fishbase
+      - *sf
+      - *tt
+      - *tff
+      - *af
+      - *fp
+      - *myfish
+      - *fishkeeper
+      - *la
+      - *glaser
+      - &cfa
+        kind: website
+        title: "Elieson, M.: Metriaclima lombardoi, species article on Cichlid-Forum"
+        url: https://www.cichlid-forum.com/articles/m_lombardoi.php
+        accessed: 2026-10-13
+      - &wiki
+        kind: website
+        title: "Wikipedia: Maylandia lombardoi"
+        url: https://en.wikipedia.org/wiki/Maylandia_lombardoi
+        accessed: 2026-10-13
+    evidence:
+      - source: *fishbase
+        value: {male: 11}
+        note: 8.7 cm standard length of wild fish, about 11 cm total length
+      - source: *sf
+        value: {male: 15, female: 15}
+        note: given as standard length, sexes not separated
+      - source: *tt
+        value: {male: 12.5, female: 10}
+        note: 10 to 12.5 cm without sexes
+      - source: *tff
+        value: {male: 15, female: 14}
+      - source: *af
+        value: {male: 16}
+        note: 13 to 16 cm as usual aquarium size, sexes not separated
+      - source: *fp
+        value: {male: 12, female: 12}
+      - source: *myfish
+        value: {male: 15, female: 14}
+      - source: *fishkeeper
+        value: {male: 12.5}
+        note: one value for both sexes
+      - source: *la
+        value: {male: 15}
+        note: 6 inches, sexes not separated
+      - source: *cfa
+        value: {male: 15, female: 10}
+        note: females about two thirds of male length
+
+  predation:
+    value: 0
+    confidence: medium
+    verification:
+      method: qualified-majority
+      votes: {agree: 4, total: 5}
+    rationale: >-
+      Four of five votes (generator, checker-a, checker-b, tiebreaker-1) decided level 0;
+      checker-c proposed level 1. Every diet statement from the literature and the species
+      databases describes a grazer and plankton picker: FishBase reports loose algae combed from
+      rocks plus plankton, and its food-item table holds algae, plants and plankton but no fish;
+      Genner and Turner (2005) place Maylandia among the algae combers; Seriously Fish asks for a
+      plant-dominated diet; The Tropical Tank and the sera encyclopedia describe aufwuchs and
+      plankton or class it as herbivorous; the Cichlid Room Companion confirms the algae comber
+      type. No such source reports that adults hunt fish. FishProfiles lists small fish among
+      foods and an old Animal-World page claims that juveniles kill feeder guppies; checker-c
+      read the Seriously Fish advice to remove brooding females from mixed tanks as a fry risk.
+      Like most mbuna it will swallow free-swimming fry that cross its path, which the rubric
+      still counts as level 0.
+    sources:
+      - *fishbase
+      - &fbfood
+        kind: database
+        title: "FishBase food items, Maylandia lombardoi"
+        url: https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=2568&genus=Maylandia&species=lombardoi
+        accessed: 2026-10-13
+      - &genner
+        kind: literature
+        title: "Genner, M. J. and Turner, G. F. (2005). The mbuna cichlids of Lake Malawi: a model for rapid speciation and adaptive radiation. Fish and Fisheries 6, 1-34."
+        url: https://doi.org/10.1111/j.1467-2679.2005.00173.x
+        accessed: 2026-10-13
+      - *sf
+      - *tt
+      - &sera
+        kind: database
+        title: "sera fish encyclopedia, Kennyi (Pseudotropheus lombardoi)"
+        url: https://www.sera.de/en/service/encyclopedia/detail/kennyi
+        accessed: 2026-10-13
+      - &crc
+        kind: database
+        title: "Cichlid Room Companion: Metriaclima lombardoi (public summary)"
+        url: https://cichlidae.com/species.php?id=N5pzgOkLkHA5LTZp-mGT2Q
+        accessed: 2026-10-13
+      - *fp
+      - *aw
+    evidence:
+      - source: *fishbase
+        value: 0
+        note: loose algae from rocks and plankton, trophic level 2.7
+      - source: *fbfood
+        value: 0
+        note: food items list algae, plants and plankton, no fish
+      - source: *genner
+        value: 0
+        note: genus level; Maylandia comb algae and take plankton
+      - source: *sf
+        value: 0
+        note: plant-dominated diet; warns of fry losses in mixed tanks without naming this species as predator
+      - source: *tt
+        value: 0
+        note: aufwuchs and plankton
+      - source: *sera
+        value: 0
+        note: classed as herbivorous
+      - source: *crc
+        value: 0
+        note: verification only; algae comber
+      - source: *fp
+        value: 1
+        note: lists small fish among foods, without a prey size
+      - source: *aw
+        value: 1
+        note: claims juveniles kill feeder guppies
+
+  diet:
+    value:
+      type: aufwuchs
+      bloatSensitive: true
+      foods:
+        - spirulina flakes and pellets
+        - algae
+        - blanched vegetables such as spinach and courgette
+        - small crustaceans such as Mysis as an occasional addition
+    confidence: high
+    verification:
+      method: unanimous
+      votes: {agree: 4, total: 4}
+    rationale: >-
+      All four runs decided an aufwuchs feeder that is sensitive to bloat. In the lake it combs
+      loose algae and biofilm from rocks with widely spaced bicuspid teeth and takes plankton
+      when it is abundant (FishBase; Genner and Turner 2005 for Maylandia; the Cichlid Room
+      Companion lists it as an algae comber). Seriously Fish and Aqua-Fish want a mainly
+      vegetable diet and warn against red meat and rich animal food; Fishkeeper warns that
+      protein-rich food may cause Malawi bloat. The Tropical Tank and J&K Aquatics call it an
+      omnivore, but describe the same aufwuchs and plankton diet or simply what it accepts in the
+      tank.
+    sources:
+      - *fishbase
+      - *genner
+      - *sf
+      - *af
+      - *crc
+      - *sera
+      - *mg
+      - *tt
+      - *fishkeeper
+      - *la
+      - *jk
+    evidence:
+      - source: *fishbase
+        value: {type: aufwuchs}
+        note: brushes loose algae from rocks, also plankton
+      - source: *genner
+        value: {type: aufwuchs}
+        note: Maylandia comb algae and periphyton from rock
+      - source: *sf
+        value: {type: aufwuchs, bloatSensitive: true}
+        note: vegetable food as a large share; no red meat
+      - source: *af
+        value: {type: aufwuchs, bloatSensitive: true}
+        note: plant staples and limits on rich animal food
+      - source: *crc
+        value: {type: aufwuchs}
+        note: verification only; algae comber
+      - source: *sera
+        value: {type: aufwuchs}
+        note: classed as herbivorous
+      - source: *tt
+        value: {type: omnivore}
+        note: omnivore that feeds on aufwuchs and plankton
+      - source: *fishkeeper
+        value: {type: aufwuchs, bloatSensitive: true}
+        note: primarily vegetarian; warns of Malawi bloat
+      - source: *la
+        value: {type: aufwuchs}
+        note: listed as herbivore
+      - source: *jk
+        value: {type: omnivore}
+        note: lists a broader mixed diet without a view on bloat
+
+  aggressionConspecific:
+    value: 4
+    confidence: high
+    rationale: >-
+      All runs agree on level 4, and several independent sources support it. Seriously Fish counts
+      it among the most aggressive mbuna and advises a single male unless the tank is very large;
+      Animal-World reports that males kill other males; Malawi-Guru and my-fish describe large
+      territories and injurious male fights; Fishkeeper warns that a lone female is harassed to
+      death; Aquarium Glaser recalls that pairs bought in the early days often ended badly.
+      Forum reports describe a dominant male that controlled most of a heavily stocked 830-litre
+      tank. Keeping it needs crowding, a harem, many hiding places and experience.
+    sources:
+      - *sf
+      - *aw
+      - *mg
+      - *myfish
+      - *fishkeeper
+      - *glaser
+      - &a19164
+        kind: archive
+        title: cichlids.com forum thread 19164
+        url: https://www.cichlids.com/disc/read.php?2,19164
+        accessed: 2026-10-13
+      - &a9086
+        kind: archive
+        title: cichlids.com forum thread 9086
+        url: https://www.cichlids.com/disc/read.php?1,9086
+        accessed: 2026-10-13
+    evidence:
+      - source: *sf
+        value: 4
+        note: among the most aggressive mbuna; one male unless the tank is very large
+      - source: *aw
+        value: 4
+        note: males kill other males
+      - source: *mg
+        value: 4
+        note: large territories; several males only in very large tanks
+      - source: *myfish
+        value: 4
+        note: male fights can cause injuries
+      - source: *fishkeeper
+        value: 4
+        note: a lone female may be harassed to death
+      - source: *glaser
+        value: 4
+        note: needs large groups in large tanks
+      - source: *a19164
+        value: 4
+        note: hyper-dominant males; subdominant males at risk
+
+  aggressionHeterospecific:
+    value: 3
+    confidence: medium
+    rationale: >-
+      All runs agree on level 3. Seriously Fish rules out peaceful Malawi cichlids such as peacocks
+      and utaka and allows only robust mbuna that do not look like it; Animal-World, Malawi-Guru,
+      The Tropical Tank and Fishkeeper also restrict it to robust or more aggressive mbuna. It
+      attacks beyond its spawning site, but robust, differently coloured mbuna of equal size are
+      not usually injured in a large, crowded rock tank, so level 3 fits better than 4. Field
+      observations reported by USGS describe less hostility towards other species in the lake,
+      while forum posts report severe harm to zebra-type tankmates; confidence stays medium.
+    sources:
+      - *sf
+      - *aw
+      - *mg
+      - *tt
+      - &usgs
+        kind: database
+        title: "USGS Nonindigenous Aquatic Species: Maylandia lombardoi"
+        url: https://nas.er.usgs.gov/queries/FactSheet.aspx?speciesID=3805
+        accessed: 2026-10-13
+      - *fishkeeper
+      - &a15669
+        kind: archive
+        title: cichlids.com forum thread 15669
+        url: https://www.cichlids.com/disc/read.php?2,15669
+        accessed: 2026-10-13
+      - *a9086
+    evidence:
+      - source: *sf
+        value: 3
+        note: only with robust mbuna of different pattern
+      - source: *aw
+        value: 3
+        note: only with large mbuna; not with peaceful cichlids
+      - source: *mg
+        value: 3
+        note: companions must be robust
+      - source: *tt
+        value: 3
+        note: with larger or more aggressive mbuna in a large tank
+      - source: *usgs
+        value: 1
+        note: field observations, little hostility towards other species
+      - source: *a15669
+        value: 3
+        note: harasses placid peacocks and haplochromines
+      - source: *a9086
+        value: 4
+        note: warns of severe harm to zebra tankmates
+
+  territory:
+    value:
+      size: large
+      breedingOnly: false
+    confidence: medium
+    rationale: >-
+      All runs agree. Males defend nests dug in the sand between rocks or a flat stone all year
+      (FishBase after Ribbink et al. 1983), and Malawi-Guru reports natural territories several
+      metres across with courtship not confined to a season. Mbuna males hold their sites for
+      months (Genner and Turner 2005). Care sheets call it one of the most territorial mbuna, and
+      a forum report describes a male that ruled about two thirds of a large tank. No source
+      measures an aquarium territory, so the confidence is medium.
+    sources:
+      - *fishbase
+      - *mg
+      - *genner
+      - *sf
+      - *tff
+      - *a19164
+    evidence:
+      - source: *fishbase
+        value: {breedingOnly: false}
+        note: males defend sand-dug nests in the wild
+      - source: *mg
+        value: {size: large, breedingOnly: false}
+        note: natural territories about 3 to 5 m across
+      - source: *genner
+        value: {breedingOnly: false}
+        note: mbuna males hold territories for many months
+      - source: *sf
+        value: {size: small, breedingOnly: false}
+        note: spawning site defended against all other fish
+      - source: *tff
+        value: {size: large}
+        note: adults need large areas to defend
+      - source: *a19164
+        value: {size: large}
+        note: dominant male controlled most of an 830-litre tank
+
+  habitatZones:
+    value: [rock, sand]
+    confidence: high
+    rationale: >-
+      It lives in the sediment-rich transition where rock rubble meets sand, mostly around 10 m
+      deep, and males dig nests in the sand between rocks (FishBase, Seriously Fish, M. K. Oliver,
+      Malawi-Guru; the Cichlid Room Companion summary confirms a sediment-rich rocky habitat). It
+      takes plankton from the water just above the rocks, which checker-c counted as open water;
+      it does not leave the rock zone for open water and needs no open-water zone in the tank,
+      only rock piles with caves plus open sand.
+    sources:
+      - *fishbase
+      - *sf
+      - *oliver
+      - *mg
+      - *crc
+      - *fishkeeper
+    evidence:
+      - source: *fishbase
+        value: [rock, sand]
+        note: sandy and muddy patches between rocks, 6 to 30 m; plankton taken in the water column
+      - source: *sf
+        value: [rock, sand]
+      - source: *oliver
+        value: [rock, sand]
+        note: intermediate rock and sand areas rich in sediment, mostly around 10 m
+      - source: *mg
+        value: [rock, sand, openWater]
+      - source: *fishkeeper
+        value: [rock, sand]
+        note: rock-sand interface in sediment-rich water
+
+  social:
+    value:
+      structure: harem
+      ratio: 4
+    confidence: medium
+    rationale: >-
+      All sources advise one male with several females. Malawi-Guru names three to four females
+      per male, J&K Aquatics and a forum post at least three; Seriously Fish and Fishkeeper say
+      several and warn that a single female is at risk. Two runs proposed three and two proposed
+      four females; for a species at the highest aggression level the upper end of the specialist
+      range spreads the male's pressure better, so four is taken. Aquarium Glaser prefers large
+      mixed groups of 10 to 20 in tanks of 150 cm or more, which also spreads aggression.
+    sources:
+      - *mg
+      - *sf
+      - *fishkeeper
+      - *jk
+      - *glaser
+      - *a15669
+    evidence:
+      - source: *mg
+        value: {structure: harem, ratio: 4}
+        note: three to four females per male
+      - source: *sf
+        value: {structure: harem}
+        note: one male with several females unless the tank is very large
+      - source: *fishkeeper
+        value: {structure: harem}
+      - source: *jk
+        value: {structure: harem, ratio: 3}
+        note: at least three females per male
+      - source: *glaser
+        value: {structure: group, minGroup: 10}
+        note: large mixed group in a tank of 150 cm or more
+      - source: *a15669
+        value: {structure: harem, ratio: 3}
+
+  speciesOnly:
+    value: false
+    confidence: high
+    verification:
+      method: unanimous
+      votes: {agree: 4, total: 4}
+    rationale: >-
+      All four runs decided false. Seriously Fish allows robust mbuna of other patterns and notes
+      that other species help spread aggression; The Tropical Tank recommends larger or more
+      aggressive mbuna as company; Tropical Freshwater Fish and Malawi-Guru name robust mbuna as
+      tankmates; Animal-World prefers a species tank but accepts large mbuna; mbuna live in mixed
+      rocky communities in the lake (Genner and Turner 2005). Aqua-Fish advises a species tank
+      only to avoid crossing, which the hybrid group covers, and Seriously Fish a species tank
+      only for breeding.
+    sources:
+      - *sf
+      - *tt
+      - *tff
+      - *mg
+      - *aw
+      - *genner
+      - *af
+      - *fishkeeper
+      - *jk
+    evidence:
+      - source: *sf
+        value: false
+        note: other robust mbuna dilute aggression
+      - source: *tt
+        value: false
+        note: with larger or more aggressive mbuna
+      - source: *tff
+        value: false
+        note: with other robust mbuna
+      - source: *mg
+        value: false
+        note: recommends robust mbuna companions
+      - source: *aw
+        value: false
+        note: species tank preferred, but large mbuna are possible tankmates
+      - source: *genner
+        value: false
+        note: mbuna live in mixed rocky communities
+      - source: *af
+        value: true
+        note: species tank advised to avoid hybridisation
+      - source: *fishkeeper
+        value: false
+        note: Malawi cichlid community
+      - source: *jk
+        value: false
+        note: allows a Malawi cichlid community
+
+  hybridGroup:
+    value: maylandia
+    confidence: medium
+    verification:
+      method: unanimous
+      votes: {agree: 4, total: 4}
+    rationale: >-
+      All four runs decided the group maylandia, which lists this species. The Catalog of Fishes
+      places it in Maylandia and M. K. Oliver counts it to the Maylandia zebra complex. Within
+      the complex, Maylandia (Metriaclima) zebra and the look-alike Cynotilapia afra cross where
+      they meet (Streelman et al. 2004). Aqua-Fish warns of hybridisation, and Seriously Fish
+      advises against tankmates of similar pattern; the blue barred females and subdominant males
+      of the kenyi resemble M. zebra, M. callainos and C. afra. No documented cross involving M.
+      lombardoi itself was found, so the assignment rests on the close relationship and the hobby
+      warnings.
+    sources:
+      - *cof
+      - *oliver
+      - &streelman
+        kind: literature
+        title: "Streelman, J. T., Gmyrek, S. L., Kidd, M. R., Kidd, C., Robinson, R. L., Hert, E., Ambali, A. J. and Kocher, T. D. (2004). Hybridization and contemporary evolution in an introduced cichlid fish from Lake Malawi National Park. Molecular Ecology 13(8), 2471-2479 (abstract)."
+        url: https://doi.org/10.1111/j.1365-294x.2004.02240.x
+        accessed: 2026-10-13
+      - *sf
+      - *af
+      - *fishkeeper
+    evidence:
+      - source: *cof
+        value: maylandia
+        note: valid as Maylandia lombardoi
+      - source: *oliver
+        value: maylandia
+        note: member of the Maylandia zebra complex
+      - source: *streelman
+        value: maylandia
+        note: crosses of C. afra and Maylandia (Metriaclima) zebra; genus-level evidence
+      - source: *sf
+        value: maylandia
+        note: avoid tankmates of similar pattern
+      - source: *af
+        value: maylandia
+        note: warns of hybridisation in mixed tanks
+
+  coloration:
+    value:
+      baseColors: [yellow]
+      pattern: bars
+    confidence: medium
+    rationale: >-
+      The colours reverse the usual mbuna scheme: dominant males turn yellow to orange-yellow with
+      faint brownish bars that may fade during courtship, while females, juveniles and
+      subdominant males are pale blue with dark blue vertical bars (Seriously Fish, USGS,
+      FishProfiles, Malawi-Guru, Fishkeeper, Aquarium Glaser). Brooding or dominant females may
+      take on yellow tones. Yellow is the dominant colour of the adult male; orange is a shade of
+      the same colour and the bars are brownish rather than black, so neither is a second base
+      colour. The bars are faint but present, so the pattern is bars rather than plain.
+      Tankmates that are blue barred like the females or bright yellow like the males are both
+      likely targets.
+    sources:
+      - *sf
+      - *usgs
+      - *fp
+      - *mg
+      - *tt
+      - *fishkeeper
+      - *glaser
+      - *cfa
+      - *wiki
+    evidence:
+      - source: *sf
+        value: {baseColors: [yellow], pattern: bars}
+        note: females and subdominant males blue
+      - source: *usgs
+        value: {baseColors: [yellow, black], pattern: bars}
+        note: male bars may disappear during mating
+      - source: *fp
+        value: {baseColors: [yellow], pattern: bars}
+      - source: *tt
+        value: {baseColors: [yellow]}
+        note: males turn yellow at about 5 cm
+      - source: *fishkeeper
+        value: {baseColors: [yellow]}
+      - source: *cfa
+        value: {baseColors: [yellow, orange]}
+
+  feedingSpeed:
+    value: hasty
+    confidence: low
+    rationale: >-
+      All runs agree on hasty: like other Maylandia it rushes food and eats until nothing is
+      left, and the rubric uses the genus as the example of a hasty feeder. A forum post
+      describes the fish as greedy at feeding time, and care sheets describe it as an active,
+      unselective feeder. No care sheet or paper rates the feeding speed directly, so the value
+      rests on the genus and hobby reports, hence the low confidence.
+    sources:
+      - *sf
+      - *af
+      - *tff
+      - &a9352
+        kind: archive
+        title: cichlids.com forum thread 9352
+        url: https://www.cichlids.com/disc/read.php?1,9352
+        accessed: 2026-10-13
+      - kind: model-knowledge
+        title: Feeding behaviour of Maylandia mbuna in aquaria
+    evidence:
+      - source: *a9352
+        value: hasty
+        note: greedy at feeding time
+
+  minTank:
+    value:
+      volumeL: 250
+      lengthCm: 120
+      depthCm: 45
+    confidence: medium
+    rationale: >-
+      Most sources converge on 120 cm and 200 to 285 litres for one male with several females:
+      Seriously Fish sets 120 x 45 cm (about 205 litres) as the absolute minimum because of the
+      aggression, Fishkeeper asks for at least 120 cm, Tropical Freshwater Fish 122 cm and 266
+      litres, Aqua-Fish 200 litres, J&K Aquatics 240 litres, LiveAquaria about 190 litres and the
+      Cichlid-Forum article about 284 litres; a forum post passes on 250 litres from Ad Konings.
+      Proposals were 250, 240 and 280 litres at 120 x 45 cm and 500 litres at 150 x 60 cm. The
+      500 litres and 150 cm of Malawi-Guru and the 150 cm of Aquarium Glaser for large groups are
+      the most generous recommendations and apply to mixed communities and several males; for
+      one male with four females 120 cm length, 45 cm depth and about 250 litres is the minimum.
+    sources:
+      - *sf
+      - *tff
+      - *af
+      - *mg
+      - *fishkeeper
+      - *jk
+      - *la
+      - *glaser
+      - *cfa
+      - *garnelentv
+      - &a18071
+        kind: archive
+        title: cichlids.com forum thread 18071
+        url: https://www.cichlids.com/disc/read.php?2,18071
+        accessed: 2026-10-13
+    evidence:
+      - source: *sf
+        value: {volumeL: 205, lengthCm: 120, depthCm: 45}
+        note: absolute minimum
+      - source: *tff
+        value: {volumeL: 266, lengthCm: 122}
+        note: for adults
+      - source: *af
+        value: {volumeL: 200}
+      - source: *mg
+        value: {volumeL: 500, lengthCm: 150}
+        note: depth not stated
+      - source: *fishkeeper
+        value: {lengthCm: 120}
+      - source: *jk
+        value: {volumeL: 240, lengthCm: 120}
+      - source: *la
+        value: {volumeL: 189}
+        note: 50 US gallons
+      - source: *glaser
+        value: {lengthCm: 150}
+        note: for groups of 10 or more
+      - source: *cfa
+        value: {volumeL: 284}
+        note: 75 US gallons when more than one fish is kept
+      - source: *garnelentv
+        value: {volumeL: 300}
+      - source: *a18071
+        value: {volumeL: 250}
+
+  lifespanYears:
+    value: {min: 8, max: 10}
+    confidence: medium
+    rationale: >-
+      All runs agree. Aqua-Fish and Animal-World give up to 10 years with good care, my-fish about
+      8 to 12, J&K Aquatics up to 10 and Riverpark Aquatics 8 to 10 years; GarnelenTv names 6 to 8.
+      No scientific source gives an age for this species, so the value rests on care sheets.
+    sources:
+      - *af
+      - *aw
+      - *myfish
+      - *jk
+      - &riverpark
+        kind: website
+        title: "Riverpark Aquatics: Kenyi Cichlid (Maylandia lombardoi), shop profile"
+        url: https://riverparkaquatics.co.uk/kenyi-cichlid-maylandia-lombardoi/
+        accessed: 2026-10-13
+      - *garnelentv
+    evidence:
+      - source: *af
+        value: {max: 10}
+      - source: *aw
+        value: {max: 10}
+      - source: *myfish
+        value: {min: 8, max: 12}
+      - source: *jk
+        value: {max: 10}
+      - source: *riverpark
+        value: {min: 8, max: 10}
+      - source: *garnelentv
+        value: {min: 6, max: 8}
+
+  breeding:
+    value: maternal-mouthbrooder
+    confidence: high
+    rationale: >-
+      Females brood the eggs in the mouth for about three weeks after spawning on a flat stone or
+      in a sand pit; fertilisation follows the egg-spot mechanism, and Couldridge (2002) studied
+      female preference for male egg spots in this very species. FishBase, Seriously Fish, USGS
+      and Genner and Turner (2005) for all mbuna agree; the Cichlid Room Companion summary
+      confirms it.
+    sources:
+      - *fishbase
+      - *sf
+      - *usgs
+      - *genner
+      - &couldridge
+        kind: literature
+        title: "Couldridge, V. C. K. (2002). Experimental manipulation of male eggspots demonstrates female preference for one large spot in Pseudotropheus lombardoi. Journal of Fish Biology 60(3) (abstract)."
+        url: https://doi.org/10.1111/j.1095-8649.2002.tb01696.x
+        accessed: 2026-10-13
+      - *crc
+    evidence:
+      - source: *fishbase
+        value: maternal-mouthbrooder
+      - source: *sf
+        value: maternal-mouthbrooder
+        note: about three weeks of brooding
+      - source: *usgs
+        value: maternal-mouthbrooder
+      - source: *genner
+        value: maternal-mouthbrooder
+        note: all mbuna
+      - source: *crc
+        value: maternal-mouthbrooder
+        note: verification only
+
+  beginnerSuitability:
+    value: moderate
+    confidence: medium
+    rationale: >-
+      Water, food and breeding are simple, but the aggression requires a large, crowded rock tank,
+      a harem and careful choice of tankmates. Seriously Fish rates the difficulty as moderate and
+      advises against it for novices, the Cichlid Room Companion and Animal-World name
+      intermediate aquarists, and LiveAquaria calls care easy. Checker-c proposed demanding,
+      following J&K Aquatics and the warning of the Cichlid-Forum article that the fish is often
+      sold to beginners who are then overwhelmed. Since water and diet are undemanding and only
+      the social management needs experience, moderate fits the weight of the sources.
+    sources:
+      - *sf
+      - *crc
+      - *aw
+      - *la
+      - *jk
+      - *cfa
+    evidence:
+      - source: *sf
+        value: moderate
+        note: not for novices
+      - source: *crc
+        value: moderate
+        note: intermediate aquarists
+      - source: *la
+        value: easy
+      - source: *jk
+        value: demanding
+        note: for experienced Malawi keepers
+      - source: *cfa
+        value: demanding
+        note: not for beginners because of its temper
+
+partners:
+  suitable:
+    - species: Melanochromis auratus
+      reason: An equally robust mbuna of similar size whose horizontal stripes differ clearly from the yellow males and barred females of the kenyi.
+      condition: Tank of at least 150 cm, one male of each species, many caves.
+    - species: Labeotropheus trewavasae
+      reason: A robust algae-scraping mbuna with the same diet and water needs, different body shape and colour, able to hold its own.
+      condition: Tank of at least 150 cm with plenty of rock.
+    - species: Tropheops tropheops
+      reason: A robust rock-dwelling mbuna with a similar plant-based diet and enough temper to cope; colours differ from both sexes of the kenyi.
+      condition: Large tank with many rock piles to break lines of sight.
+    - species: Synodontis multipunctatus
+      reason: An armoured, fast catfish that uses the bottom and caves at dusk and is ignored by the cichlids; it needs the same alkaline water.
+      condition: Kept in a group of several fish.
+  unsuitable:
+    - species: Maylandia zebra
+      reason: Same hybrid group; blue barred females and subdominant males look alike, which leads to fights and crosses.
+    - species: Cynotilapia afra
+      reason: Same hybrid group; blue barred males resemble kenyi females and are attacked as rivals.
+    - species: Chindongo saulosi
+      reason: Blue barred males and yellow females copy the colours of both kenyi sexes and draw constant attacks; it is also smaller and weaker.
+    - species: Labidochromis caeruleus
+      reason: Smaller and more peaceful, and its bright yellow resembles a dominant kenyi male, which invites harassment.
+    - species: Aulonocara stuartgranti
+      reason: Peaceful peacock that cannot cope with the aggression of the kenyi and needs a protein-rich diet.
+    - species: Copadichromis borleyi
+      reason: Calm open-water utaka that is harassed by the kenyi; Seriously Fish rules out utaka as tankmates.
+    - species: Pterophyllum scalare
+      reason: Peaceful soft-water cichlid with different water needs and no defence against mbuna.
+
+profile:
+  overview:
+    text: >-
+      Maylandia lombardoi, sold as the kenyi, is a rock-dwelling mbuna from a few spots in Lake
+      Malawi. It has been in the hobby since the 1970s and is bred in large numbers. Its colours
+      are unusual for a mbuna: grown males turn yellow, while females and young fish stay pale blue
+      with dark bars. Behind the pretty juveniles in the shop is one of the most quarrelsome mbuna
+      of all. Kept in a large, densely stocked rock tank with one male and four females, or in a
+      big mixed group, it is hardy, easy to feed and breeds readily. In small tanks, in pairs or
+      with calm cichlids it causes injuries and losses. Many books and shops use the names
+      Pseudotropheus lombardoi or Metriaclima lombardoi for the same fish.
+    sources:
+      - *cof
+      - *sf
+      - *glaser
+      - *fishkeeper
+  habitat:
+    text: >-
+      The species is endemic to Lake Malawi and lives naturally only around the Mbenji Islands and
+      on Nkhomo Reef; a population at Namalenje Island was most likely introduced. It prefers the
+      transition zone where rock rubble meets sand and fine sediment covers the stones, mostly a
+      few metres to about 30 m deep, and picks plankton from the water just above the rocks. Lake
+      Malawi water is soft but alkaline: about 3 to 5 dGH, 5 to 8 dKH and pH 7.7 to 8.6 at the
+      surface, with temperatures between about 21 and 29 degrees over the year. Aquarium care
+      sheets usually ask for harder water, which the fish also tolerate well, but a stable pH
+      above 7.5 and good buffering matter more than total hardness.
+    sources:
+      - *fishbase
+      - *sf
+      - *oliver
+      - *branchu
+      - *fao
+      - *eccles
+  sizeAndGrowth:
+    text: >-
+      Juveniles grow quickly and males begin to turn yellow at about 5 cm. Well-kept males reach
+      about 12 to 13 cm in total length, females stay near 10 cm. Wild fish measured for science
+      are smaller, around 11 cm in total length, which is typical for mbuna: they grow larger in
+      the aquarium than in the lake, where food is scarce. Several care sheets mention 15 cm
+      fish, but these are the upper extreme. With good care the kenyi lives about eight to ten
+      years.
+    sources:
+      - *fishkeeper
+      - *tt
+      - *fishbase
+      - *af
+      - *sf
+  husbandry:
+    text: >-
+      Plan for a tank of at least 120 cm length, 45 cm front-to-back depth and about 250 litres
+      for one male and four females; a mixed mbuna community or more than one male needs 150 cm or
+      more. Build stable piles of rock from the floor to near the surface with many caves and gaps
+      that break the line of sight, and leave some open sand where males can dig. Set rocks on the
+      bottom glass before adding sand, because the fish dig under them. Strong filtration and
+      large weekly water changes are needed, since mbuna tanks are kept densely stocked to spread
+      aggression. Keep the temperature around 24 to 27 degrees, the pH between 7.5 and 8.5 and the
+      carbonate hardness at about 6 dKH or more; crushed coral or aragonite in the filter helps
+      with buffering.
+    sources:
+      - *sf
+      - *tt
+      - *mg
+      - *fishkeeper
+      - *la
+      - *a18071
+  socialBehavior:
+    text: >-
+      Males are fiercely territorial and treat other males, unready females and similar-looking
+      fish as rivals. A single female with a male will be chased constantly and may be killed, so
+      one male needs at least three and better four females, and two males need a much larger
+      tank. Subdominant males often keep the blue female colour to avoid attacks; once they turn
+      yellow the dominant male may hunt them down. A large, crowded group of ten or more fish in a
+      150 cm tank spreads aggression best. Towards other species the kenyi is pushy as well and
+      chases fish far beyond its spawning site.
+    sources:
+      - *sf
+      - *mg
+      - *aw
+      - *fishkeeper
+      - *glaser
+      - *a19164
+  diet:
+    text: >-
+      In the lake the kenyi combs loose algae and the small animals living in them from the rocks
+      and also feeds on plankton. In the tank it needs a mainly plant-based diet: spirulina flakes
+      or pellets for herbivorous cichlids, algae and blanched vegetables such as spinach or
+      courgette. Small crustaceans such as Mysis are fine as an occasional addition. Avoid beef
+      heart, other red meat and protein-rich foods as a staple, since they upset the gut and
+      favour bloat. Feed small portions several times a day rather than one large meal; the fish
+      rush food and overeat easily.
+    sources:
+      - *genner
+      - *fishbase
+      - *sf
+      - *af
+      - *fishkeeper
+  breeding:
+    text: >-
+      The kenyi breeds readily in the aquarium. The male cleans a flat stone or digs a pit in the
+      sand and displays in full colour to lure females. The female lays her eggs in small batches
+      and takes them into her mouth at once; she collects the sperm while nipping at the egg spots
+      on the male's anal fin. She broods for about three weeks without eating and then releases
+      fully formed young; broods hold from about 15 to 50 fry. Move the female carefully to a
+      separate tank if you want to raise many fry, since stressed females may spit or eat the
+      brood. The young accept newly hatched brine shrimp and fine flake food immediately.
+    sources:
+      - *sf
+      - *fishbase
+      - *couldridge
+      - *fishkeeper
+      - *cfa
+  sexing:
+    text: >-
+      Adult sexes are easy to tell apart once the fish are mature. Dominant males are yellow to
+      orange-yellow with faint brownish bars and carry a large yellow egg spot on the anal fin.
+      Females keep the juvenile colours of light blue with dark blue to almost black vertical bars
+      and lack egg spots. Two exceptions confuse beginners: subdominant males may stay blue like
+      females, but still show the egg spot, and brooding or dominant females can turn partly yellow.
+      Males also grow larger. Before about 5 cm all juveniles look blue.
+    sources:
+      - *sf
+      - *tt
+      - *glaser
+      - *fishkeeper
+  compatibility:
+    text: >-
+      Only robust mbuna of similar size suit the kenyi, and they should look different from both
+      sexes. Good choices are strongly built species such as Melanochromis auratus, Labeotropheus
+      trewavasae or Tropheops, together with a group of Synodontis multipunctatus as bottom
+      dwellers. Avoid other Maylandia and Cynotilapia afra, which look alike and may cross, and
+      species such as Chindongo saulosi or Labidochromis caeruleus whose colours copy those of the
+      kenyi. Peaceful Malawi cichlids such as peacocks and utaka, and all soft-water fish, do not
+      belong in its tank. Stock densely and add all fish at the same time where possible.
+    sources:
+      - *sf
+      - *tt
+      - *mg
+      - *fishkeeper
+      - *a15669
+  problems:
+    text: >-
+      The most common mistake is buying a pair or a few juveniles for a small tank: once the male
+      colours up he chases the others until they are injured or die. Sudden losses of females or
+      subdominant males usually trace back to too little space, too few females or too few hiding
+      places. Protein-rich food and overfeeding lead to bloat, a digestive disorder of mbuna that
+      can be fatal; a swollen belly, loss of appetite and white, stringy faeces are warning signs.
+      Unstable or acidic water and nitrate build-up in densely stocked tanks weaken the fish. Many
+      tank-bred kenyi in the trade are of mediocre colour compared with wild fish; keeping no other
+      Maylandia in the same tank keeps the line pure.
+    sources:
+      - *sf
+      - *fishkeeper
+      - *glaser
+      - *a19164
+
+provenance:
+  runs:
+    - role: generator
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-13
+    - role: checker
+      model: gpt-6.1-sol
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: adjudicator
+      model: claude-opus-5-5
+      date: 2026-10-13
+  disagreements:
+    - field: features.origin.value.localities
+      proposals:
+        - {by: generator, value: [Mbenji Islands, Nkhomo Reef, Namalenje Island (introduced)]}
+        - {by: checker-a, value: [Mbenji Islands, Nkhomo Reef, Namalenje Island (introduced)]}
+        - {by: checker-b, value: [Mbenji Island, Nkhomo Reef]}
+        - {by: checker-c, value: [Mbenji Island, Nkhomo Reef]}
+      decision: [Mbenji Islands, Nkhomo Reef, Namalenje Island (introduced)]
+      rationale: >-
+        All runs agree on the natural range; checker-b and checker-c mention the Namalenje
+        population in their rationale but leave it out of the list. It is kept with the label
+        introduced, as FishBase and Seriously Fish list it, so that the list is complete without
+        presenting it as native.
+    - field: features.maxSizeCm.value
+      proposals:
+        - {by: generator, value: {male: 13, female: 10}}
+        - {by: checker-a, value: {male: 13, female: 11}}
+        - {by: checker-b, value: {male: 15, female: 10}}
+        - {by: checker-c, value: {male: 15, female: 12}}
+      decision: {male: 13, female: 10}
+      rationale: >-
+        The 15 cm figures of several care sheets (one of them given as standard length) read as
+        upper extremes, while Fishkeeper, The Tropical Tank, FishProfiles and Wikipedia give 12 to
+        13 cm and wild fish measure about 11 cm total length; the feature asks for the typical
+        size of well-kept adults. Females are about two thirds of the male length according to
+        the Cichlid-Forum article and at the 10 cm lower end of The Tropical Tank; the equal or
+        near-equal female sizes of FishProfiles and my-fish do not separate the sexes.
+    - field: features.predation.value
+      proposals:
+        - {by: generator, value: 0}
+        - {by: checker-a, value: 0}
+        - {by: checker-b, value: 0}
+        - {by: checker-c, value: 1}
+        - {by: tiebreaker-1, value: 0}
+      decision: 0
+      rationale: >-
+        Decided by the vote count as qualified majority, 4 of 5. Literature and species databases
+        describe only algae, plants and plankton; the fry and small-fish hints of FishProfiles,
+        Animal-World and a Seriously Fish breeding note fit chance pick-up of fry (level 0).
+    - field: features.ghDgh.tolerance.value
+      proposals:
+        - {by: generator, value: {min: 3, max: 25}}
+        - {by: checker-a, value: {min: 3, max: 25}}
+        - {by: checker-b, value: {min: 3, max: 20}}
+        - {by: checker-c, value: {min: 3, max: 25}}
+        - {by: tiebreaker-1, value: {min: 3, max: 25}}
+      decision: {min: 3, max: 25}
+      rationale: >-
+        Decided by the vote count as qualified majority, 4 of 5. The upper end follows Seriously
+        Fish, Aqua-Fish and Tropical Freshwater Fish; checker-b followed the 20 dGH of FishBase.
+    - field: features.khDkh.tolerance.value
+      proposals:
+        - {by: generator, value: {min: 5, max: 15}}
+        - {by: checker-a, value: {min: 5, max: 15}}
+        - {by: checker-b, value: {min: 4, max: 15}}
+        - {by: checker-c, value: {min: 5, max: 12}}
+        - {by: tiebreaker-1, value: {min: 5, max: 15}}
+      decision: {min: 5, max: 15}
+      rationale: >-
+        Decided by the vote count as qualified majority, 4 of 5 (checker-b agrees within the
+        threshold). The upper end follows the OATA group sheet and two retailer sheets;
+        checker-c took the more cautious 12 dKH of The Tropical Tank and a shop sheet.
+    - field: features.habitatZones.value
+      proposals:
+        - {by: generator, value: [rock, sand]}
+        - {by: checker-a, value: [rock, sand]}
+        - {by: checker-b, value: [rock, sand]}
+        - {by: checker-c, value: [rock, sand, openWater]}
+      decision: [rock, sand]
+      rationale: >-
+        The species takes plankton in the water just above the rocks but stays in the rock-sand
+        zone; it needs no open-water zone in the tank.
+    - field: features.social.value.ratio
+      proposals:
+        - {by: generator, value: 3}
+        - {by: checker-a, value: 4}
+        - {by: checker-b, value: 3}
+        - {by: checker-c, value: 4}
+      decision: 4
+      rationale: >-
+        Malawi-Guru names three to four females per male, other sources at least three or
+        several. For a species at aggression level 4 the upper end spreads the male's pressure
+        better, so four is recommended; three is the absolute floor named in the prose.
+    - field: features.coloration.value
+      proposals:
+        - {by: generator, value: {baseColors: [yellow], pattern: bars}}
+        - {by: checker-a, value: {baseColors: [yellow], pattern: bars}}
+        - {by: checker-b, value: {baseColors: [yellow, orange], pattern: plain}}
+        - {by: checker-c, value: {baseColors: [yellow, black], pattern: bars}}
+      decision: {baseColors: [yellow], pattern: bars}
+      rationale: >-
+        Yellow is the dominant male colour; orange-yellow is a shade of it and the faint bars are
+        brownish rather than black. The bars are faint but present, so the pattern is bars.
+    - field: features.minTank.value
+      proposals:
+        - {by: generator, value: {volumeL: 250, lengthCm: 120, depthCm: 45}}
+        - {by: checker-a, value: {volumeL: 240, lengthCm: 120, depthCm: 45}}
+        - {by: checker-b, value: {volumeL: 280, lengthCm: 120, depthCm: 45}}
+        - {by: checker-c, value: {volumeL: 500, lengthCm: 150, depthCm: 60}}
+      decision: {volumeL: 250, lengthCm: 120, depthCm: 45}
+      rationale: >-
+        Most sources converge on 120 cm and about 200 to 285 litres for one male with several
+        females; 250 litres is the median of the three proposals at that footprint. The 500
+        litres and 150 cm of Malawi-Guru, which checker-c followed, and the 150 cm of Aquarium
+        Glaser fit mixed communities and large groups and are named in the prose.
+    - field: features.beginnerSuitability.value
+      proposals:
+        - {by: generator, value: moderate}
+        - {by: checker-a, value: moderate}
+        - {by: checker-b, value: moderate}
+        - {by: checker-c, value: demanding}
+      decision: moderate
+      rationale: >-
+        Seriously Fish, the Cichlid Room Companion and Animal-World place it at the intermediate
+        level; only the social management needs experience, while water and diet are simple.
+        The demanding rating of checker-c rests on a retailer and a forum article.
