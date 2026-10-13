@@ -11,9 +11,9 @@ using Testcontainers.PostgreSql;
 namespace Cichlids.Api.Tests;
 
 /// <summary>
-/// Starts one Postgres container and one <see cref="WebApplicationFactory{Program}"/> for the
+/// Starts one Postgres container and one WebApplicationFactory for the
 /// whole test collection, applies the EF Core migrations once, and seeds the single shared
-/// <see cref="SeedData"/> graph every read-endpoint test runs its assertions against. The object
+/// SeedData graph every read-endpoint test runs its assertions against. The object
 /// store is configured but never reaches a real S3-compatible service, since building a public URL
 /// is pure string formatting and no endpoint under test downloads or checks object existence.
 /// </summary>

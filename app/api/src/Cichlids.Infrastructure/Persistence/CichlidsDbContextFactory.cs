@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Design;
 namespace Cichlids.Infrastructure.Persistence;
 
 /// <summary>
-/// Builds a <see cref="CichlidsDbContext"/> for the dotnet-ef design-time tooling (creating and
+/// Builds a CichlidsDbContext for the dotnet-ef design-time tooling (creating and
 /// applying migrations). The connection string here is never opened; the tooling only needs a
 /// syntactically valid one to build the model.
 /// </summary>

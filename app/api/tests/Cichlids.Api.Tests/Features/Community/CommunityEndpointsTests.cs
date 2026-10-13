@@ -119,7 +119,7 @@ public class CommunityEndpointsTests(ApiFixture fixture)
 
     /// <summary>
     /// Postgres' timestamptz has microsecond precision, one digit coarser than a .NET
-    /// <see cref="DateTimeOffset"/> tick, so a seeded value that round-tripped through the
+    /// DateTimeOffset tick, so a seeded value that round-tripped through the
     /// database can be up to a tick off from the in-memory value the test seeded it with.
     /// </summary>
     private static void AssertCloseEnough(DateTimeOffset? expected, DateTimeOffset? actual) =>

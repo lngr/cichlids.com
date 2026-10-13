@@ -7,7 +7,7 @@ namespace Cichlids.Infrastructure.Persistence;
 /// <summary>
 /// The single EF Core model for the application schema, shared by API write paths and the
 /// legacy ETL. Table and column mapping follows the accepted relational domain schema; every
-/// mapping detail beyond naming lives in the <see cref="Configurations"/> classes applied here.
+/// mapping detail beyond naming lives in the Configurations classes applied here.
 /// </summary>
 public class CichlidsDbContext : DbContext
 {
