@@ -4,7 +4,7 @@ title: Keep members signed in per device until they sign out
 status: In Progress
 assignee: []
 created_date: '2026-10-12 04:48'
-updated_date: '2026-10-13 10:03'
+updated_date: '2026-10-13 11:53'
 labels: []
 dependencies: []
 references:
@@ -131,4 +131,10 @@ A member signs in once per device and stays signed in until signing out; no sign
 ### Decided by the project owner
 - The tokens in `web_session` are stored encrypted (ASP.NET Data Protection, key ring outside the
   database as a SOPS-managed cluster secret, a development key locally). To implement.
+
+- The API signs in web members through its own confidential Keycloak client (for example
+  `cichlids-web-bff`) with a client secret (SOPS in staging and production, a development secret
+  locally); PKCE stays on; the native app keeps the public client.
+- Signing out on the web also ends the Keycloak browser session (RP-initiated logout through the
+  end session endpoint and back to the app); `prompt=login` stays.
 <!-- SECTION:NOTES:END -->
