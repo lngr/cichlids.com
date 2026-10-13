@@ -1,0 +1,2361 @@
+schemaVersion: 1
+id: nimbochromis-venustus
+legacyIds:
+  - 410
+status: described
+taxonomy:
+  validName: Nimbochromis venustus
+  genus: Nimbochromis
+  species: venustus
+  author: (Boulenger, 1908)
+  source:
+    kind: catalog-of-fishes
+    title: Eschmeyer's Catalog of Fishes, species of Nimbochromis
+    url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Nimbochromis
+    accessed: 2026-10-13
+  synonyms:
+    - name: Haplochromis venustus
+      note: Original combination of Boulenger (1908), described from Lake Malawi and the Shire River.
+    - name: Haplochromis simulans
+      note: Regan (1922); a synonym of Nimbochromis venustus according to the Catalog of Fishes (Eccles
+        and Trewavas 1989, Snoeks and Manuel 2004).
+    - name: Cyrtocara venusta
+      note: Combination of the hobby literature of the 1980s, when most Malawi haplochromines were placed
+        in Cyrtocara; not an available name of its own.
+  legacyNames:
+    - Nimbochromis venustus
+  note: The Catalog of Fishes lists the species as valid in Nimbochromis (Eccles and Trewavas 1989,
+    Marechal 1991, Snoeks and Manuel 2004, Konings 2016) with Haplochromis simulans as its only
+    synonym. The Cichlid Room Companion uses the same name.
+names:
+  trade:
+    en:
+      - Venustus
+      - Venustus hap
+      - Giraffe hap
+      - Giraffe cichlid
+    de:
+      - Goldstirnmaulbrüter
+      - Pfauenmaulbrüter
+      - Venustus
+features:
+  origin:
+    value:
+      continent: Africa
+      region: Lake Malawi
+      waterbody: Lake Malawi
+      localities:
+        - Lake Malawi, lakewide
+        - Shire River (type series)
+    confidence: high
+    rationale: Endemic to Lake Malawi and widespread there (Catalog of Fishes, FishBase, Seriously
+      Fish). The original type series came from the lake and from the Shire River, its outflow.
+    sources:
+      - kind: catalog-of-fishes
+        title: Eschmeyer's Catalog of Fishes, species of Nimbochromis
+        url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Nimbochromis
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishBase species summary: Nimbochromis venustus"
+        url: https://www.fishbase.se/summary/Nimbochromis-venustus.html
+        accessed: 2026-10-13
+      - kind: database
+        title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+        url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+        accessed: 2026-10-13
+      - kind: website
+        title: "Cichlid Room Companion: Nimbochromis venustus (public part of the species page)"
+        url: https://cichlidae.com/species.php?id=pPAUjvy7EPQghPJRQZgNzQ
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: catalog-of-fishes
+          title: Eschmeyer's Catalog of Fishes, species of Nimbochromis
+          url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Nimbochromis
+          accessed: 2026-10-13
+        value: Lake Malawi
+        note: distribution Lake Malawi; type series from the lake and the Shire River
+      - source:
+          kind: database
+          title: "FishBase species summary: Nimbochromis venustus"
+          url: https://www.fishbase.se/summary/Nimbochromis-venustus.html
+          accessed: 2026-10-13
+        value: Lake Malawi
+        note: endemic and widely distributed
+      - source:
+          kind: database
+          title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+          url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+          accessed: 2026-10-13
+        value: Lake Malawi
+        note: endemic, fairly widespread in the lake
+  temperatureC:
+    value:
+      min: 21
+      max: 29
+    confidence: high
+    rationale: Lake Malawi endemic, so the natural range is the measured lake range decided by the water
+      body lake-malawi; generator, checker-a and checker-b all proposed 21 to 29 C. The lake is
+      about 21 C inshore in the cool, windy season (Eccles 1974), 23.5 to 24 C in the winter
+      epilimnion and about 28 C in summer surface water (Vollmer et al. 2005), with later campaigns
+      reaching 29 C. The FishBase line of 25 to 27 C is an aquarium figure and belongs to the
+      tolerance.
+    sources:
+      - kind: literature
+        title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E.
+          et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian
+          Northern Basin: local versus global considerations. Hydrology and Earth System Sciences
+          Discussions 7, 4371-4409."
+        url: https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf
+        accessed: 2026-10-12
+      - kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery
+          resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical
+          and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+        url: https://www.fao.org/4/t0473e/T0473E05.htm
+        accessed: 2026-10-12
+      - kind: literature
+        title: Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa).
+          Limnology and Oceanography 19(5), 730-742 (abstract).
+        url: https://doi.org/10.4319/lo.1974.19.5.0730
+        accessed: 2026-10-12
+      - kind: literature
+        title: Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M.,
+          Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East
+          Africa. Limnology and Oceanography 50(2), 727-732.
+        url: https://www.dora.lib4ri.ch/empa/dload/empa:1253/PDF/view
+        accessed: 2026-10-12
+      - kind: literature
+        title: "Vollmer, M. K., Weiss, R. F. and Bootsma, H. A. (1999). Lake Malawi/Nyasa deep water
+          renewal. In: Bootsma, H. A. and Hecky, R. E. (eds.), Water Quality Report, SADC/GEF Lake
+          Malawi/Nyasa Biodiversity Conservation Project, chapter 4."
+        url: https://sites.uwm.edu/hbootsma/files/2020/11/Ch4-Lake-Internal-Mixing.pdf
+        accessed: 2026-10-12
+      - kind: literature
+        title: Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. PhD dissertation, University of
+          Wisconsin-Milwaukee.
+        url: https://minds.wisconsin.edu/handle/1793/91765
+        accessed: 2026-10-12
+    evidence:
+      - source:
+          kind: literature
+          title: Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa).
+            Limnology and Oceanography 19(5), 730-742 (abstract).
+          url: https://doi.org/10.4319/lo.1974.19.5.0730
+          accessed: 2026-10-12
+        value:
+          min: 21
+          max: 27
+        note: cool-season inshore water to the warm upper layer in May
+      - source:
+          kind: literature
+          title: Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M.,
+            Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East
+            Africa. Limnology and Oceanography 50(2), 727-732.
+          url: https://www.dora.lib4ri.ch/empa/dload/empa:1253/PDF/view
+          accessed: 2026-10-12
+        value:
+          min: 23.5
+          max: 28
+        note: winter epilimnion to summer surface water
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value:
+        min: 21
+        max: 29
+      confidence: medium
+      rationale: "Unanimous tally (3 of 3): generator, checker-a and checker-b all proposed 21 to 29 C.
+        Care sheets name 24 to 28 C (Seriously Fish), 25 to 27 C (FishBase), 24 to 26 C (Fishkeeper)
+        and about 24 to 28 C (LiveAquaria); hobby guides range from 23 to 29 C, and a laboratory
+        rearing study kept the fish at 26 to 28 C. The tolerance spans the lake range because wild
+        fish live through the cool season near 21 C; 24 to 28 C is the usual target for long-term
+        keeping. The tally decides the tolerance by agent votes; the lake range of the water body
+        lies inside it."
+      sources:
+        - kind: database
+          title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+          url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+          accessed: 2026-10-13
+        - kind: database
+          title: "FishBase species summary: Nimbochromis venustus"
+          url: https://www.fishbase.se/summary/Nimbochromis-venustus.html
+          accessed: 2026-10-13
+        - kind: literature
+          title: Developmental morphology and growth patterns of laboratory-reared giraffe cichlid,
+            Nimbochromis venustus Boulenger, 1908. International Journal of Aquatic Biology 6(3),
+            2018
+          url: https://doi.org/10.22034/ijab.v6i3.525
+          accessed: 2026-10-13
+        - kind: database
+          title: "Fishkeeper (Maidenhead Aquatics): Venustus Hap, Nimbochromis venustus, species profile"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/venustus-hap
+          accessed: 2026-10-13
+        - kind: website
+          title: "LiveAquaria: Venustus Cichlid, Nimbochromis venustus, retailer care sheet"
+          url: https://www.liveaquaria.com/products/venustus-cichlid
+          accessed: 2026-10-13
+        - kind: website
+          title: "Tropical Freshwater Fish: Venustus, Nimbochromis venustus"
+          url: https://tropicalfreshwaterfish.com/species/Nimbochromis_venustus.html
+          accessed: 2026-10-13
+        - kind: website
+          title: "Riverpark Aquatics: Venustus Cichlid (Nimbochromis venustus), care guide"
+          url: https://riverparkaquatics.co.uk/venustus-cichlid-nimbochromis-venustus/
+          accessed: 2026-10-13
+        - kind: website
+          title: "Aquarium Fish Paradise: Venustus, Nimbochromis venustus"
+          url: https://www.aquariumfishparadise.com.au/?p=3165
+          accessed: 2026-10-13
+        - kind: website
+          title: "Aquarium Source: Venustus Cichlid care guide"
+          url: https://www.aquariumsource.com/venustus-cichlid
+          accessed: 2026-10-13
+      evidence:
+        - source:
+            kind: database
+            title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+            url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+            accessed: 2026-10-13
+          value:
+            min: 24
+            max: 28
+          note: aquarium recommendation; 25 to 27 C for breeding
+        - source:
+            kind: database
+            title: "FishBase species summary: Nimbochromis venustus"
+            url: https://www.fishbase.se/summary/Nimbochromis-venustus.html
+            accessed: 2026-10-13
+          value:
+            min: 25
+            max: 27
+        - source:
+            kind: literature
+            title: Developmental morphology and growth patterns of laboratory-reared giraffe cichlid,
+              Nimbochromis venustus Boulenger, 1908. International Journal of Aquatic Biology 6(3),
+              2018
+            url: https://doi.org/10.22034/ijab.v6i3.525
+            accessed: 2026-10-13
+          value:
+            min: 26
+            max: 28
+          note: laboratory breeding and rearing conditions
+        - source:
+            kind: database
+            title: "Fishkeeper (Maidenhead Aquatics): Venustus Hap, Nimbochromis venustus, species profile"
+            url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/venustus-hap
+            accessed: 2026-10-13
+          value:
+            min: 24
+            max: 26
+          note: aquarium recommendation
+        - source:
+            kind: website
+            title: "LiveAquaria: Venustus Cichlid, Nimbochromis venustus, retailer care sheet"
+            url: https://www.liveaquaria.com/products/venustus-cichlid
+            accessed: 2026-10-13
+          value:
+            min: 24.4
+            max: 27.8
+          note: converted from 76 to 82 F
+        - source:
+            kind: website
+            title: "Tropical Freshwater Fish: Venustus, Nimbochromis venustus"
+            url: https://tropicalfreshwaterfish.com/species/Nimbochromis_venustus.html
+            accessed: 2026-10-13
+          value:
+            min: 25
+            max: 29
+        - source:
+            kind: website
+            title: "Riverpark Aquatics: Venustus Cichlid (Nimbochromis venustus), care guide"
+            url: https://riverparkaquatics.co.uk/venustus-cichlid-nimbochromis-venustus/
+            accessed: 2026-10-13
+          value:
+            min: 24
+            max: 28
+        - source:
+            kind: website
+            title: "Aquarium Fish Paradise: Venustus, Nimbochromis venustus"
+            url: https://www.aquariumfishparadise.com.au/?p=3165
+            accessed: 2026-10-13
+          value:
+            min: 23
+            max: 26
+        - source:
+            kind: website
+            title: "Aquarium Source: Venustus Cichlid care guide"
+            url: https://www.aquariumsource.com/venustus-cichlid
+            accessed: 2026-10-13
+          value:
+            min: 22.8
+            max: 27.8
+          note: converted from 73 to 82 F
+      verification:
+        method: unanimous
+        votes:
+          agree: 3
+          total: 3
+  ph:
+    value:
+      min: 7.7
+      max: 8.6
+    confidence: high
+    rationale: Lake Malawi endemic; the natural range is the surface pH of the lake decided by the water
+      body lake-malawi, which generator, checker-a and checker-b all proposed. Surface water
+      measures 7.7 to 8.6 (Jackson et al. 1963 in the FAO source book); the lower readings of 7.5 in
+      the whole-column profiles of Branchu et al. (2010) belong to deep water below the sandy
+      shallows the species uses.
+    sources:
+      - kind: literature
+        title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E.
+          et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian
+          Northern Basin: local versus global considerations. Hydrology and Earth System Sciences
+          Discussions 7, 4371-4409."
+        url: https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf
+        accessed: 2026-10-12
+      - kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery
+          resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical
+          and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+        url: https://www.fao.org/4/t0473e/T0473E05.htm
+        accessed: 2026-10-12
+      - kind: literature
+        title: Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa).
+          Limnology and Oceanography 19(5), 730-742 (abstract).
+        url: https://doi.org/10.4319/lo.1974.19.5.0730
+        accessed: 2026-10-12
+      - kind: literature
+        title: Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M.,
+          Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East
+          Africa. Limnology and Oceanography 50(2), 727-732.
+        url: https://www.dora.lib4ri.ch/empa/dload/empa:1253/PDF/view
+        accessed: 2026-10-12
+      - kind: literature
+        title: "Vollmer, M. K., Weiss, R. F. and Bootsma, H. A. (1999). Lake Malawi/Nyasa deep water
+          renewal. In: Bootsma, H. A. and Hecky, R. E. (eds.), Water Quality Report, SADC/GEF Lake
+          Malawi/Nyasa Biodiversity Conservation Project, chapter 4."
+        url: https://sites.uwm.edu/hbootsma/files/2020/11/Ch4-Lake-Internal-Mixing.pdf
+        accessed: 2026-10-12
+      - kind: literature
+        title: Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. PhD dissertation, University of
+          Wisconsin-Milwaukee.
+        url: https://minds.wisconsin.edu/handle/1793/91765
+        accessed: 2026-10-12
+    evidence:
+      - source:
+          kind: literature
+          title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery
+            resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical
+            and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+          url: https://www.fao.org/4/t0473e/T0473E05.htm
+          accessed: 2026-10-12
+        value:
+          min: 7.7
+          max: 8.6
+        note: lake surface water after Jackson et al. 1963
+      - source:
+          kind: literature
+          title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E.
+            et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa),
+            Tanzanian Northern Basin: local versus global considerations. Hydrology and Earth System
+            Sciences Discussions 7, 4371-4409."
+          url: https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf
+          accessed: 2026-10-12
+        value:
+          min: 7.5
+          max: 8.5
+        note: whole water column; the low values come from deep water
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value:
+        min: 7.5
+        max: 8.8
+      confidence: medium
+      rationale: "Unanimous tally (3 of 3): generator, checker-a and checker-b all proposed 7.5 to 8.8.
+        Husbandry sources agree on alkaline water: Seriously Fish 7.6 to 8.8, Fishkeeper 7.5 to 8.5,
+        LiveAquaria 7.8 to 8.6 and hobby guides 7.5 to 8.8. FishBase alone reaches down to 7.2,
+        which no care sheet supports, so the lower bound stays at 7.5. The tally decides the
+        tolerance by agent votes; the lake range of the water body lies inside it."
+      sources:
+        - kind: database
+          title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+          url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+          accessed: 2026-10-13
+        - kind: database
+          title: "FishBase species summary: Nimbochromis venustus"
+          url: https://www.fishbase.se/summary/Nimbochromis-venustus.html
+          accessed: 2026-10-13
+        - kind: database
+          title: "Fishkeeper (Maidenhead Aquatics): Venustus Hap, Nimbochromis venustus, species profile"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/venustus-hap
+          accessed: 2026-10-13
+        - kind: website
+          title: "LiveAquaria: Venustus Cichlid, Nimbochromis venustus, retailer care sheet"
+          url: https://www.liveaquaria.com/products/venustus-cichlid
+          accessed: 2026-10-13
+        - kind: website
+          title: "Riverpark Aquatics: Venustus Cichlid (Nimbochromis venustus), care guide"
+          url: https://riverparkaquatics.co.uk/venustus-cichlid-nimbochromis-venustus/
+          accessed: 2026-10-13
+        - kind: website
+          title: "Tropical Freshwater Fish: Venustus, Nimbochromis venustus"
+          url: https://tropicalfreshwaterfish.com/species/Nimbochromis_venustus.html
+          accessed: 2026-10-13
+        - kind: website
+          title: "Aquarium Source: Venustus Cichlid care guide"
+          url: https://www.aquariumsource.com/venustus-cichlid
+          accessed: 2026-10-13
+      evidence:
+        - source:
+            kind: database
+            title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+            url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+            accessed: 2026-10-13
+          value:
+            min: 7.6
+            max: 8.8
+          note: aquarium recommendation; 8.0 to 8.5 for breeding
+        - source:
+            kind: database
+            title: "FishBase species summary: Nimbochromis venustus"
+            url: https://www.fishbase.se/summary/Nimbochromis-venustus.html
+            accessed: 2026-10-13
+          value:
+            min: 7.2
+            max: 8.8
+        - source:
+            kind: database
+            title: "Fishkeeper (Maidenhead Aquatics): Venustus Hap, Nimbochromis venustus, species profile"
+            url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/venustus-hap
+            accessed: 2026-10-13
+          value:
+            min: 7.5
+            max: 8.5
+        - source:
+            kind: website
+            title: "LiveAquaria: Venustus Cichlid, Nimbochromis venustus, retailer care sheet"
+            url: https://www.liveaquaria.com/products/venustus-cichlid
+            accessed: 2026-10-13
+          value:
+            min: 7.8
+            max: 8.6
+        - source:
+            kind: website
+            title: "Riverpark Aquatics: Venustus Cichlid (Nimbochromis venustus), care guide"
+            url: https://riverparkaquatics.co.uk/venustus-cichlid-nimbochromis-venustus/
+            accessed: 2026-10-13
+          value:
+            min: 7.5
+            max: 8.5
+        - source:
+            kind: website
+            title: "Tropical Freshwater Fish: Venustus, Nimbochromis venustus"
+            url: https://tropicalfreshwaterfish.com/species/Nimbochromis_venustus.html
+            accessed: 2026-10-13
+          value:
+            min: 7.5
+            max: 8.8
+        - source:
+            kind: website
+            title: "Aquarium Source: Venustus Cichlid care guide"
+            url: https://www.aquariumsource.com/venustus-cichlid
+            accessed: 2026-10-13
+          value:
+            min: 7.5
+            max: 8.8
+      verification:
+        method: unanimous
+        votes:
+          agree: 3
+          total: 3
+  ghDgh:
+    value:
+      min: 3
+      max: 5
+    confidence: high
+    rationale: "Lake Malawi endemic; the natural range is decided by the water body lake-malawi, which
+      generator, checker-a and checker-b all proposed. The lake is soft: calcium and magnesium of
+      the upper 50 m in the north basin give 4.2 to 4.6 dGH (Branchu et al. 2010), and the 1960s
+      titrations compiled by FAO give 3.2 to 4.9 dGH. The 10 to 25 dGH of care sheets confuse the
+      alkalinity of the lake with hardness and belong to the tolerance."
+    sources:
+      - kind: literature
+        title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E.
+          et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian
+          Northern Basin: local versus global considerations. Hydrology and Earth System Sciences
+          Discussions 7, 4371-4409."
+        url: https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf
+        accessed: 2026-10-12
+      - kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery
+          resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical
+          and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+        url: https://www.fao.org/4/t0473e/T0473E05.htm
+        accessed: 2026-10-12
+      - kind: literature
+        title: Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa).
+          Limnology and Oceanography 19(5), 730-742 (abstract).
+        url: https://doi.org/10.4319/lo.1974.19.5.0730
+        accessed: 2026-10-12
+      - kind: literature
+        title: Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M.,
+          Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East
+          Africa. Limnology and Oceanography 50(2), 727-732.
+        url: https://www.dora.lib4ri.ch/empa/dload/empa:1253/PDF/view
+        accessed: 2026-10-12
+      - kind: literature
+        title: "Vollmer, M. K., Weiss, R. F. and Bootsma, H. A. (1999). Lake Malawi/Nyasa deep water
+          renewal. In: Bootsma, H. A. and Hecky, R. E. (eds.), Water Quality Report, SADC/GEF Lake
+          Malawi/Nyasa Biodiversity Conservation Project, chapter 4."
+        url: https://sites.uwm.edu/hbootsma/files/2020/11/Ch4-Lake-Internal-Mixing.pdf
+        accessed: 2026-10-12
+      - kind: literature
+        title: Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. PhD dissertation, University of
+          Wisconsin-Milwaukee.
+        url: https://minds.wisconsin.edu/handle/1793/91765
+        accessed: 2026-10-12
+    evidence:
+      - source:
+          kind: literature
+          title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E.
+            et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa),
+            Tanzanian Northern Basin: local versus global considerations. Hydrology and Earth System
+            Sciences Discussions 7, 4371-4409."
+          url: https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf
+          accessed: 2026-10-12
+        value:
+          min: 4.2
+          max: 4.6
+        note: computed from calcium and magnesium of the upper 50 m, north basin
+      - source:
+          kind: literature
+          title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery
+            resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical
+            and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+          url: https://www.fao.org/4/t0473e/T0473E05.htm
+          accessed: 2026-10-12
+        value:
+          min: 3.2
+          max: 4.9
+        note: computed from the 1960s calcium and magnesium titrations
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value:
+        min: 3
+        max: 20
+      confidence: medium
+      rationale: "Unanimous tally (3 of 3): generator and checker-a proposed 3 to 20 dGH, checker-b 3 to
+        18 dGH, which agrees within 2 dGH; the median of the maxima gives 20. Care sheets ask for
+        medium hard to hard water: FishBase 10 to 18, Fishkeeper up to 20, Seriously Fish 10 to 25
+        and hobby guides 10 to 15 and 12 to 30. The upper bound of 20 is where most of them meet. No
+        husbandry source names a lower bound under 10; the lower bound of 3 dGH is the soft lake
+        water the species lives in, which the tolerance has to contain. The tally decides the
+        tolerance by agent votes; the lake range of the water body lies inside it."
+      sources:
+        - kind: database
+          title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+          url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+          accessed: 2026-10-13
+        - kind: database
+          title: "FishBase species summary: Nimbochromis venustus"
+          url: https://www.fishbase.se/summary/Nimbochromis-venustus.html
+          accessed: 2026-10-13
+        - kind: database
+          title: "Fishkeeper (Maidenhead Aquatics): Venustus Hap, Nimbochromis venustus, species profile"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/venustus-hap
+          accessed: 2026-10-13
+        - kind: literature
+          title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E.
+            et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa),
+            Tanzanian Northern Basin: local versus global considerations. Hydrology and Earth System
+            Sciences Discussions 7, 4371-4409."
+          url: https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf
+          accessed: 2026-10-12
+        - kind: literature
+          title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery
+            resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical
+            and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+          url: https://www.fao.org/4/t0473e/T0473E05.htm
+          accessed: 2026-10-12
+        - kind: website
+          title: "Aquarium Source: Venustus Cichlid care guide"
+          url: https://www.aquariumsource.com/venustus-cichlid
+          accessed: 2026-10-13
+        - kind: website
+          title: "Tropical Freshwater Fish: Venustus, Nimbochromis venustus"
+          url: https://tropicalfreshwaterfish.com/species/Nimbochromis_venustus.html
+          accessed: 2026-10-13
+      evidence:
+        - source:
+            kind: database
+            title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+            url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+            accessed: 2026-10-13
+          value:
+            min: 10
+            max: 25
+          note: aquarium recommendation
+        - source:
+            kind: database
+            title: "FishBase species summary: Nimbochromis venustus"
+            url: https://www.fishbase.se/summary/Nimbochromis-venustus.html
+            accessed: 2026-10-13
+          value:
+            min: 10
+            max: 18
+        - source:
+            kind: database
+            title: "Fishkeeper (Maidenhead Aquatics): Venustus Hap, Nimbochromis venustus, species profile"
+            url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/venustus-hap
+            accessed: 2026-10-13
+          value:
+            max: 20
+          note: only an upper bound of 20 degrees hardness is given
+        - source:
+            kind: literature
+            title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E.
+              et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa),
+              Tanzanian Northern Basin: local versus global considerations. Hydrology and Earth
+              System Sciences Discussions 7, 4371-4409."
+            url: https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf
+            accessed: 2026-10-12
+          value:
+            min: 4.2
+            max: 4.6
+          note: natural lake water, which the tolerance contains
+        - source:
+            kind: literature
+            title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery
+              resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa:
+              physical and chemical data after Jackson et al. (1963) and Talling and Talling
+              (1965)."
+            url: https://www.fao.org/4/t0473e/T0473E05.htm
+            accessed: 2026-10-12
+          value:
+            min: 3.2
+            max: 4.9
+          note: natural lake water, which the tolerance contains
+        - source:
+            kind: website
+            title: "Aquarium Source: Venustus Cichlid care guide"
+            url: https://www.aquariumsource.com/venustus-cichlid
+            accessed: 2026-10-13
+          value:
+            min: 10
+            max: 15
+        - source:
+            kind: website
+            title: "Tropical Freshwater Fish: Venustus, Nimbochromis venustus"
+            url: https://tropicalfreshwaterfish.com/species/Nimbochromis_venustus.html
+            accessed: 2026-10-13
+          value:
+            min: 12
+            max: 30
+      verification:
+        method: unanimous
+        votes:
+          agree: 3
+          total: 3
+  khDkh:
+    value:
+      min: 5
+      max: 8
+    confidence: high
+    rationale: "Lake Malawi endemic; the natural range is decided by the water body lake-malawi, which
+      generator, checker-a and checker-b all proposed. Bicarbonate dominates the lake water:
+      alkalinity is 2.33 to 2.46 meq/L in the Branchu et al. (2010) profiles and 2.00 to 2.59 meq/L
+      in the 1960s data compiled by FAO, which is 5.6 to 7.3 dKH. Carbonate hardness therefore
+      exceeds total hardness."
+    sources:
+      - kind: literature
+        title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E.
+          et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian
+          Northern Basin: local versus global considerations. Hydrology and Earth System Sciences
+          Discussions 7, 4371-4409."
+        url: https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf
+        accessed: 2026-10-12
+      - kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery
+          resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical
+          and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+        url: https://www.fao.org/4/t0473e/T0473E05.htm
+        accessed: 2026-10-12
+      - kind: literature
+        title: Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa).
+          Limnology and Oceanography 19(5), 730-742 (abstract).
+        url: https://doi.org/10.4319/lo.1974.19.5.0730
+        accessed: 2026-10-12
+      - kind: literature
+        title: Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M.,
+          Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East
+          Africa. Limnology and Oceanography 50(2), 727-732.
+        url: https://www.dora.lib4ri.ch/empa/dload/empa:1253/PDF/view
+        accessed: 2026-10-12
+      - kind: literature
+        title: "Vollmer, M. K., Weiss, R. F. and Bootsma, H. A. (1999). Lake Malawi/Nyasa deep water
+          renewal. In: Bootsma, H. A. and Hecky, R. E. (eds.), Water Quality Report, SADC/GEF Lake
+          Malawi/Nyasa Biodiversity Conservation Project, chapter 4."
+        url: https://sites.uwm.edu/hbootsma/files/2020/11/Ch4-Lake-Internal-Mixing.pdf
+        accessed: 2026-10-12
+      - kind: literature
+        title: Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. PhD dissertation, University of
+          Wisconsin-Milwaukee.
+        url: https://minds.wisconsin.edu/handle/1793/91765
+        accessed: 2026-10-12
+    evidence:
+      - source:
+          kind: literature
+          title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E.
+            et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa),
+            Tanzanian Northern Basin: local versus global considerations. Hydrology and Earth System
+            Sciences Discussions 7, 4371-4409."
+          url: https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf
+          accessed: 2026-10-12
+        value:
+          min: 6.5
+          max: 6.9
+        note: computed from the alkalinity profiles
+      - source:
+          kind: literature
+          title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery
+            resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical
+            and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+          url: https://www.fao.org/4/t0473e/T0473E05.htm
+          accessed: 2026-10-12
+        value:
+          min: 5.6
+          max: 7.3
+        note: computed from the 1960s alkalinity values
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    tolerance:
+      value:
+        min: 5
+        max: 15
+      confidence: low
+      rationale: "Qualified majority of the tally (4 of 5): generator, checker-a, tiebreaker-1 and
+        tiebreaker-2 proposed 5 to 15 dKH, checker-b 5 to 12 dKH, which lies 3 dKH below and so
+        outside the 2 dKH agreement. The only species care sheet with an explicit carbonate hardness
+        is the LiveAquaria retailer page (10 to 15 dKH); a general Malawi guide recommends 10 to 12
+        dKH. Seriously Fish, FishBase and Fishkeeper give only pH and general hardness for hard,
+        alkaline water, which needs good buffering but is no carbonate hardness figure. A keeper in
+        the cichlids.com archive reports healthy fish at 9 dKH. The lower bound of 5 dKH is the lake
+        value from the alkalinity measurements of Branchu et al. (2010) and the FAO source book,
+        which the tolerance has to contain. Confidence is low because the upper bound rests on one
+        retailer figure."
+      sources:
+        - kind: literature
+          title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E.
+            et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa),
+            Tanzanian Northern Basin: local versus global considerations. Hydrology and Earth System
+            Sciences Discussions 7, 4371-4409."
+          url: https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf
+          accessed: 2026-10-12
+        - kind: literature
+          title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery
+            resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical
+            and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+          url: https://www.fao.org/4/t0473e/T0473E05.htm
+          accessed: 2026-10-12
+        - kind: database
+          title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+          url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+          accessed: 2026-10-13
+        - kind: database
+          title: "FishBase species summary: Nimbochromis venustus"
+          url: https://www.fishbase.se/summary/Nimbochromis-venustus.html
+          accessed: 2026-10-13
+        - kind: database
+          title: "Fishkeeper (Maidenhead Aquatics): Venustus Hap, Nimbochromis venustus, species profile"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/venustus-hap
+          accessed: 2026-10-13
+        - kind: website
+          title: "LiveAquaria: Venustus Cichlid, Nimbochromis venustus, retailer care sheet"
+          url: https://www.liveaquaria.com/products/venustus-cichlid
+          accessed: 2026-10-13
+        - kind: website
+          title: FurryCritter, Rift lake water chemistry for African cichlids
+          url: https://furrycritter.com/pages/articles/fish/rift_lake_chemistry.htm
+          accessed: 2026-10-13
+        - kind: archive
+          title: cichlids.com forum thread 9341
+          url: https://www.cichlids.com/disc/read.php?1,9341
+          accessed: 2026-10-13
+      evidence:
+        - source:
+            kind: literature
+            title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E.
+              et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa),
+              Tanzanian Northern Basin: local versus global considerations. Hydrology and Earth
+              System Sciences Discussions 7, 4371-4409."
+            url: https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf
+            accessed: 2026-10-12
+          value:
+            min: 6.5
+            max: 6.9
+          note: natural lake water, which the tolerance contains
+        - source:
+            kind: literature
+            title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery
+              resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa:
+              physical and chemical data after Jackson et al. (1963) and Talling and Talling
+              (1965)."
+            url: https://www.fao.org/4/t0473e/T0473E05.htm
+            accessed: 2026-10-12
+          value:
+            min: 5.6
+            max: 7.3
+          note: lake alkalinity of 2.00 to 2.59 meq/L, converted
+        - source:
+            kind: website
+            title: "LiveAquaria: Venustus Cichlid, Nimbochromis venustus, retailer care sheet"
+            url: https://www.liveaquaria.com/products/venustus-cichlid
+            accessed: 2026-10-13
+          value:
+            min: 10
+            max: 15
+          note: aquarium recommendation stated as dKH
+        - source:
+            kind: website
+            title: FurryCritter, Rift lake water chemistry for African cichlids
+            url: https://furrycritter.com/pages/articles/fish/rift_lake_chemistry.htm
+            accessed: 2026-10-13
+          value:
+            min: 10
+            max: 12
+          note: general recommendation for Malawi haps, peacocks and mbuna
+        - source:
+            kind: archive
+            title: cichlids.com forum thread 9341
+            url: https://www.cichlids.com/disc/read.php?1,9341
+            accessed: 2026-10-13
+          value:
+            min: 9
+            max: 9
+          note: keeper report from a mixed Malawi tank without losses
+      verification:
+        method: qualified-majority
+        votes:
+          agree: 4
+          total: 5
+  maxSizeCm:
+    value:
+      male: 25
+      female: 20
+    confidence: medium
+    rationale: All three runs agree on 25 cm for males and 20 cm for females. FishBase gives 25 cm TL as
+      maximum (22.5 cm common length), Seriously Fish 25 cm SL with up to 30 cm recorded in the
+      wild, Fishkeeper 28 cm and German Wikipedia 25 cm. Females stay clearly smaller according to
+      Seriously Fish and Wikipedia; only a hobby guide puts a number on it (about 20 cm), so the
+      female value is less certain.
+    sources:
+      - kind: database
+        title: "FishBase species summary: Nimbochromis venustus"
+        url: https://www.fishbase.se/summary/Nimbochromis-venustus.html
+        accessed: 2026-10-13
+      - kind: database
+        title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+        url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Venustus Hap, Nimbochromis venustus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/venustus-hap
+        accessed: 2026-10-13
+      - kind: website
+        title: "Wikipedia (Deutsch): Nimbochromis venustus"
+        url: https://de.wikipedia.org/wiki/Nimbochromis_venustus
+        accessed: 2026-10-13
+      - kind: website
+        title: "Guidarium: Venustus Cichlid (Giraffe Hap)"
+        url: https://guidarium.com/fishes/venustus-cichlid-giraffe-hap
+        accessed: 2026-10-13
+      - kind: website
+        title: "Aquarium Source: Venustus Cichlid care guide"
+        url: https://www.aquariumsource.com/venustus-cichlid
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "FishBase species summary: Nimbochromis venustus"
+          url: https://www.fishbase.se/summary/Nimbochromis-venustus.html
+          accessed: 2026-10-13
+        value:
+          male: 25
+        note: maximum total length, male or unsexed; common length 22.5 cm
+      - source:
+          kind: database
+          title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+          url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+          accessed: 2026-10-13
+        value:
+          male: 25
+        note: standard length; up to 30 cm in nature
+      - source:
+          kind: database
+          title: "Fishkeeper (Maidenhead Aquatics): Venustus Hap, Nimbochromis venustus, species profile"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/venustus-hap
+          accessed: 2026-10-13
+        value:
+          male: 28
+      - source:
+          kind: website
+          title: "Wikipedia (Deutsch): Nimbochromis venustus"
+          url: https://de.wikipedia.org/wiki/Nimbochromis_venustus
+          accessed: 2026-10-13
+        value:
+          male: 25
+        note: females stay smaller
+      - source:
+          kind: website
+          title: "Guidarium: Venustus Cichlid (Giraffe Hap)"
+          url: https://guidarium.com/fishes/venustus-cichlid-giraffe-hap
+          accessed: 2026-10-13
+        value:
+          male: 25
+          female: 20
+      - source:
+          kind: website
+          title: "Aquarium Source: Venustus Cichlid care guide"
+          url: https://www.aquariumsource.com/venustus-cichlid
+          accessed: 2026-10-13
+        value:
+          male: 25
+        note: typical aquarium size; up to 30 cm in the wild
+  predation:
+    value: 3
+    confidence: high
+    rationale: "Unanimous tally (3 of 3): generator, checker-a and checker-b all proposed level 3. The
+      species is an ambush piscivore: half-grown fish lie motionless, partly buried in the sand,
+      until small fish come within reach, and small fish are its main food with some invertebrates
+      (FishBase, the laboratory rearing study). Seriously Fish calls it an exclusive piscivore in
+      nature that eats smaller mbuna and young fish in the aquarium, and Fishkeeper warns that its
+      ambush hunting must guide the choice of tankmates. The Cichlid Room Companion confirms the
+      piscivorous feeding."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+        url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishBase species summary: Nimbochromis venustus"
+        url: https://www.fishbase.se/summary/Nimbochromis-venustus.html
+        accessed: 2026-10-13
+      - kind: literature
+        title: Developmental morphology and growth patterns of laboratory-reared giraffe cichlid,
+          Nimbochromis venustus Boulenger, 1908. International Journal of Aquatic Biology 6(3), 2018
+        url: https://doi.org/10.22034/ijab.v6i3.525
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Venustus Hap, Nimbochromis venustus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/venustus-hap
+        accessed: 2026-10-13
+      - kind: website
+        title: "Cichlid Room Companion: Nimbochromis venustus (public part of the species page)"
+        url: https://cichlidae.com/species.php?id=pPAUjvy7EPQghPJRQZgNzQ
+        accessed: 2026-10-13
+      - kind: website
+        title: "Wikipedia: Nimbochromis venustus"
+        url: https://en.wikipedia.org/wiki/Nimbochromis_venustus
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+          url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+          accessed: 2026-10-13
+        value: 3
+        note: exclusive piscivore in nature; eats small mbuna and young fish
+      - source:
+          kind: database
+          title: "FishBase species summary: Nimbochromis venustus"
+          url: https://www.fishbase.se/summary/Nimbochromis-venustus.html
+          accessed: 2026-10-13
+        value: 3
+        note: feeds on small fish and invertebrates; ambush behaviour of half-grown fish
+      - source:
+          kind: literature
+          title: Developmental morphology and growth patterns of laboratory-reared giraffe cichlid,
+            Nimbochromis venustus Boulenger, 1908. International Journal of Aquatic Biology 6(3),
+            2018
+          url: https://doi.org/10.22034/ijab.v6i3.525
+          accessed: 2026-10-13
+        value: 3
+        note: small fish and invertebrates, ambush from the sand
+      - source:
+          kind: database
+          title: "Fishkeeper (Maidenhead Aquatics): Venustus Hap, Nimbochromis venustus, species profile"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/venustus-hap
+          accessed: 2026-10-13
+        value: 3
+        note: ambushes smaller fish; choose tankmates accordingly
+      - source:
+          kind: website
+          title: "Cichlid Room Companion: Nimbochromis venustus (public part of the species page)"
+          url: https://cichlidae.com/species.php?id=pPAUjvy7EPQghPJRQZgNzQ
+          accessed: 2026-10-13
+        value: 3
+        note: feeding listed as piscivorous
+    verification:
+      method: unanimous
+      votes:
+        agree: 3
+        total: 3
+  diet:
+    value:
+      type: piscivore
+      bloatSensitive: false
+      foods:
+        - small fish
+        - invertebrates
+        - prawns and shrimp
+        - krill and mysis
+        - whitebait or lancefish
+        - cichlid pellets
+    confidence: high
+    rationale: "Unanimous tally (3 of 3): generator, checker-a and checker-b all proposed a piscivore
+      that is not bloat sensitive; their food lists differ in wording only, and the tally takes the
+      list of the generator. Fish are the main food in the wild (FishBase, Seriously Fish, the
+      laboratory study), with invertebrates as additional prey. In the aquarium it takes dead meaty
+      food such as prawns, lancefish and whitebait and frozen foods with pellets, so live fish are
+      unnecessary; Seriously Fish advises against mammal meat. No source reports bloat as a problem
+      of the species. LiveAquaria lists it as an omnivore, a retailer category that the natural diet
+      does not support."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+        url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishBase species summary: Nimbochromis venustus"
+        url: https://www.fishbase.se/summary/Nimbochromis-venustus.html
+        accessed: 2026-10-13
+      - kind: literature
+        title: Developmental morphology and growth patterns of laboratory-reared giraffe cichlid,
+          Nimbochromis venustus Boulenger, 1908. International Journal of Aquatic Biology 6(3), 2018
+        url: https://doi.org/10.22034/ijab.v6i3.525
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Venustus Hap, Nimbochromis venustus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/venustus-hap
+        accessed: 2026-10-13
+      - kind: website
+        title: "Cichlid Room Companion: Nimbochromis venustus (public part of the species page)"
+        url: https://cichlidae.com/species.php?id=pPAUjvy7EPQghPJRQZgNzQ
+        accessed: 2026-10-13
+      - kind: website
+        title: "LiveAquaria: Venustus Cichlid, Nimbochromis venustus, retailer care sheet"
+        url: https://www.liveaquaria.com/products/venustus-cichlid
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+          url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+          accessed: 2026-10-13
+        value:
+          type: piscivore
+        note: exclusive piscivore in nature; accepts prawns, lancefish and whitebait in the aquarium
+      - source:
+          kind: database
+          title: "FishBase species summary: Nimbochromis venustus"
+          url: https://www.fishbase.se/summary/Nimbochromis-venustus.html
+          accessed: 2026-10-13
+        value:
+          type: piscivore
+        note: small fish plus invertebrates
+      - source:
+          kind: literature
+          title: Developmental morphology and growth patterns of laboratory-reared giraffe cichlid,
+            Nimbochromis venustus Boulenger, 1908. International Journal of Aquatic Biology 6(3),
+            2018
+          url: https://doi.org/10.22034/ijab.v6i3.525
+          accessed: 2026-10-13
+        value:
+          type: piscivore
+      - source:
+          kind: database
+          title: "Fishkeeper (Maidenhead Aquatics): Venustus Hap, Nimbochromis venustus, species profile"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/venustus-hap
+          accessed: 2026-10-13
+        value:
+          type: piscivore
+        note: varied meaty frozen foods plus pellets in the aquarium
+      - source:
+          kind: website
+          title: "Cichlid Room Companion: Nimbochromis venustus (public part of the species page)"
+          url: https://cichlidae.com/species.php?id=pPAUjvy7EPQghPJRQZgNzQ
+          accessed: 2026-10-13
+        value:
+          type: piscivore
+      - source:
+          kind: website
+          title: "LiveAquaria: Venustus Cichlid, Nimbochromis venustus, retailer care sheet"
+          url: https://www.liveaquaria.com/products/venustus-cichlid
+          accessed: 2026-10-13
+        value:
+          type: omnivore
+        note: retailer classification; meaty foods plus flakes with vegetable matter
+    verification:
+      method: unanimous
+      votes:
+        agree: 3
+        total: 3
+  aggressionConspecific:
+    value: 3
+    confidence: medium
+    rationale: All three runs agree on level 3. Males are quite aggressive towards each other, so
+      Seriously Fish advises a single fish or one male with several females, and Fishkeeper allows
+      only one male per tank. With too few females the male presses a single partner hard, and a
+      brooding female kept apart too long can lose her rank in the group.
+    sources:
+      - kind: database
+        title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+        url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Venustus Hap, Nimbochromis venustus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/venustus-hap
+        accessed: 2026-10-13
+      - kind: website
+        title: "Tropical Freshwater Fish: Venustus, Nimbochromis venustus"
+        url: https://tropicalfreshwaterfish.com/species/Nimbochromis_venustus.html
+        accessed: 2026-10-13
+      - kind: archive
+        title: cichlids.com forum thread 307
+        url: https://www.cichlids.com/disc/read.php?1,307
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+          url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+          accessed: 2026-10-13
+        value: 3
+        note: males quite aggressive towards one another; harem recommended
+      - source:
+          kind: database
+          title: "Fishkeeper (Maidenhead Aquatics): Venustus Hap, Nimbochromis venustus, species profile"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/venustus-hap
+          accessed: 2026-10-13
+        value: 3
+        note: only one male per tank
+      - source:
+          kind: website
+          title: "Tropical Freshwater Fish: Venustus, Nimbochromis venustus"
+          url: https://tropicalfreshwaterfish.com/species/Nimbochromis_venustus.html
+          accessed: 2026-10-13
+        value: 3
+        note: intolerant of its own species
+      - source:
+          kind: archive
+          title: cichlids.com forum thread 307
+          url: https://www.cichlids.com/disc/read.php?1,307
+          accessed: 2026-10-13
+        value: 3
+        note: at least two, better three to four females per male
+  aggressionHeterospecific:
+    value: 2
+    confidence: medium
+    rationale: All three runs agree on level 2. Apart from eating small fish, which predation covers, it
+      is generally peaceful with species too large to swallow (Seriously Fish) and fits a community
+      of Malawi cichlids of similar size (Fishkeeper); the breeding male drives others away from his
+      spawning site. LiveAquaria labels it aggressive, Tropical Freshwater Fish non-aggressive
+      towards other species.
+    sources:
+      - kind: database
+        title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+        url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Venustus Hap, Nimbochromis venustus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/venustus-hap
+        accessed: 2026-10-13
+      - kind: website
+        title: "LiveAquaria: Venustus Cichlid, Nimbochromis venustus, retailer care sheet"
+        url: https://www.liveaquaria.com/products/venustus-cichlid
+        accessed: 2026-10-13
+      - kind: website
+        title: "Tropical Freshwater Fish: Venustus, Nimbochromis venustus"
+        url: https://tropicalfreshwaterfish.com/species/Nimbochromis_venustus.html
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+          url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+          accessed: 2026-10-13
+        value: 1
+        note: generally peaceful with species too big to eat
+      - source:
+          kind: database
+          title: "Fishkeeper (Maidenhead Aquatics): Venustus Hap, Nimbochromis venustus, species profile"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/venustus-hap
+          accessed: 2026-10-13
+        value: 2
+        note: community of Malawi cichlids of similar size and temperament
+      - source:
+          kind: website
+          title: "LiveAquaria: Venustus Cichlid, Nimbochromis venustus, retailer care sheet"
+          url: https://www.liveaquaria.com/products/venustus-cichlid
+          accessed: 2026-10-13
+        value: 3
+        note: temperament aggressive
+      - source:
+          kind: website
+          title: "Tropical Freshwater Fish: Venustus, Nimbochromis venustus"
+          url: https://tropicalfreshwaterfish.com/species/Nimbochromis_venustus.html
+          accessed: 2026-10-13
+        value: 1
+        note: usually non-aggressive to other species
+  territory:
+    value:
+      size: small
+      breedingOnly: true
+    confidence: low
+    rationale: All three runs agree. In the wild it is a solitary ambush hunter without a lasting
+      territory; a ripe male cleans a flat rock or digs a pit in the sand as spawning site and
+      defends it (Seriously Fish, Fishkeeper). No source states the size of the defended area, which
+      may exceed 30 cm for a fish of 25 cm.
+    sources:
+      - kind: database
+        title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+        url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Venustus Hap, Nimbochromis venustus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/venustus-hap
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+          url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+          accessed: 2026-10-13
+        value:
+          size: small
+          breedingOnly: true
+        note: male chooses a flat rock or digs a depression
+      - source:
+          kind: database
+          title: "Fishkeeper (Maidenhead Aquatics): Venustus Hap, Nimbochromis venustus, species profile"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/venustus-hap
+          accessed: 2026-10-13
+        value:
+          size: small
+          breedingOnly: true
+        note: flat stones near a cave as spawning site
+  habitatZones:
+    value:
+      - sand
+      - rock
+    confidence: medium
+    rationale: All three runs agree. Adults hunt over sand, juveniles stay near rocks in shallow water
+      (FishBase); Seriously Fish names rocky shores as well as sand and mud bottoms down to about 15
+      m. The tank needs a sandy bottom with stable rock piles and open swimming space.
+    sources:
+      - kind: database
+        title: "FishBase species summary: Nimbochromis venustus"
+        url: https://www.fishbase.se/summary/Nimbochromis-venustus.html
+        accessed: 2026-10-13
+      - kind: database
+        title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+        url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Venustus Hap, Nimbochromis venustus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/venustus-hap
+        accessed: 2026-10-13
+      - kind: website
+        title: "Wikipedia (Deutsch): Nimbochromis venustus"
+        url: https://de.wikipedia.org/wiki/Nimbochromis_venustus
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "FishBase species summary: Nimbochromis venustus"
+          url: https://www.fishbase.se/summary/Nimbochromis-venustus.html
+          accessed: 2026-10-13
+        value:
+          - sand
+          - rock
+        note: juveniles near rocks, adults over sand
+      - source:
+          kind: database
+          title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+          url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+          accessed: 2026-10-13
+        value:
+          - rock
+          - sand
+      - source:
+          kind: database
+          title: "Fishkeeper (Maidenhead Aquatics): Venustus Hap, Nimbochromis venustus, species profile"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/venustus-hap
+          accessed: 2026-10-13
+        value:
+          - sand
+        note: soft sand with rock outcrops in the aquarium
+  social:
+    value:
+      structure: harem
+      ratio: 3
+    confidence: medium
+    rationale: All runs propose a harem; the ratio differs (generator 3, checker-a and checker-b 4).
+      Seriously Fish recommends one male with three to six females for breeding, Fishkeeper one or
+      two females in a mixed tank and four or more in a species tank, and a keeper in the archive
+      three to four. Three females per male is the lower end on which the sources meet; more females
+      spread the male's attention further in a species tank. A single fish without conspecifics is
+      possible as well.
+    sources:
+      - kind: database
+        title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+        url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Venustus Hap, Nimbochromis venustus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/venustus-hap
+        accessed: 2026-10-13
+      - kind: website
+        title: "Aquarium Fish Paradise: Venustus, Nimbochromis venustus"
+        url: https://www.aquariumfishparadise.com.au/?p=3165
+        accessed: 2026-10-13
+      - kind: archive
+        title: cichlids.com forum thread 307
+        url: https://www.cichlids.com/disc/read.php?1,307
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+          url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+          accessed: 2026-10-13
+        value:
+          structure: harem
+          ratio: 3
+        note: one male with three to six females
+      - source:
+          kind: database
+          title: "Fishkeeper (Maidenhead Aquatics): Venustus Hap, Nimbochromis venustus, species profile"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/venustus-hap
+          accessed: 2026-10-13
+        value:
+          structure: harem
+          ratio: 4
+        note: four or more females in a species tank, one or two in a mixed tank
+      - source:
+          kind: website
+          title: "Aquarium Fish Paradise: Venustus, Nimbochromis venustus"
+          url: https://www.aquariumfishparadise.com.au/?p=3165
+          accessed: 2026-10-13
+        value:
+          structure: harem
+          ratio: 3
+      - source:
+          kind: archive
+          title: cichlids.com forum thread 307
+          url: https://www.cichlids.com/disc/read.php?1,307
+          accessed: 2026-10-13
+        value:
+          structure: harem
+          ratio: 3
+        note: three to four females per male
+  speciesOnly:
+    value: false
+    confidence: high
+    rationale: "Unanimous tally (3 of 3): generator, checker-a and checker-b all proposed false.
+      Seriously Fish names Frontosa, Dimidiochromis compressiceps, larger mbuna and other large Rift
+      Lake species as tankmates, and Fishkeeper places it with Malawi cichlids of similar size,
+      large predatory haps and Synodontis catfish. The limits are its predation on small fish and
+      its rivalry with look-alike species, not a need for a species tank; LiveAquaria and keepers in
+      the archive also keep it with other cichlids."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+        url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Venustus Hap, Nimbochromis venustus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/venustus-hap
+        accessed: 2026-10-13
+      - kind: website
+        title: "LiveAquaria: Venustus Cichlid, Nimbochromis venustus, retailer care sheet"
+        url: https://www.liveaquaria.com/products/venustus-cichlid
+        accessed: 2026-10-13
+      - kind: archive
+        title: cichlids.com forum thread 13679
+        url: https://www.cichlids.com/disc/read.php?2,13679
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+          url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+          accessed: 2026-10-13
+        value: false
+        note: names large Rift Lake cichlids as tankmates
+      - source:
+          kind: database
+          title: "Fishkeeper (Maidenhead Aquatics): Venustus Hap, Nimbochromis venustus, species profile"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/venustus-hap
+          accessed: 2026-10-13
+        value: false
+        note: Malawi community of similar size, also with Synodontis
+      - source:
+          kind: website
+          title: "LiveAquaria: Venustus Cichlid, Nimbochromis venustus, retailer care sheet"
+          url: https://www.liveaquaria.com/products/venustus-cichlid
+          accessed: 2026-10-13
+        value: false
+      - source:
+          kind: archive
+          title: cichlids.com forum thread 13679
+          url: https://www.cichlids.com/disc/read.php?2,13679
+          accessed: 2026-10-13
+        value: false
+        note: kept with other cichlids
+    verification:
+      method: unanimous
+      votes:
+        agree: 3
+        total: 3
+  hybridGroup:
+    value: null
+    confidence: medium
+    rationale: "Unanimous tally (3 of 3): generator, checker-a and checker-b all proposed no group. The
+      Catalog of Fishes treats it as a distinct valid species, and neither FishBase nor Seriously
+      Fish nor Fishkeeper reports crosses. Fishkeeper advises against similar-looking tankmates,
+      which concerns the other blotched Nimbochromis and sand-dwelling haps, but none of them
+      belongs to a curated hybrid group."
+    sources:
+      - kind: catalog-of-fishes
+        title: Eschmeyer's Catalog of Fishes, species of Nimbochromis
+        url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Nimbochromis
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishBase species summary: Nimbochromis venustus"
+        url: https://www.fishbase.se/summary/Nimbochromis-venustus.html
+        accessed: 2026-10-13
+      - kind: database
+        title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+        url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Venustus Hap, Nimbochromis venustus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/venustus-hap
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: catalog-of-fishes
+          title: Eschmeyer's Catalog of Fishes, species of Nimbochromis
+          url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Nimbochromis
+          accessed: 2026-10-13
+        value: null
+        note: valid species without hybrid record
+      - source:
+          kind: database
+          title: "FishBase species summary: Nimbochromis venustus"
+          url: https://www.fishbase.se/summary/Nimbochromis-venustus.html
+          accessed: 2026-10-13
+        value: null
+        note: no hybridisation noted
+      - source:
+          kind: database
+          title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+          url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+          accessed: 2026-10-13
+        value: null
+        note: no crossing risk mentioned
+      - source:
+          kind: database
+          title: "Fishkeeper (Maidenhead Aquatics): Venustus Hap, Nimbochromis venustus, species profile"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/venustus-hap
+          accessed: 2026-10-13
+        value: null
+        note: avoid look-alikes as tankmates, no crosses mentioned
+    verification:
+      method: unanimous
+      votes:
+        agree: 3
+        total: 3
+  coloration:
+    value:
+      baseColors:
+        - blue
+        - yellow
+      pattern: spots
+    confidence: medium
+    rationale: Adult males have an intensely blue head and yellow flanks (Seriously Fish, German
+      Wikipedia, Fishkeeper); the large brown blotches that give the giraffe name mark females and
+      juveniles and show only faintly or not at all in coloured males, so brown is no dominant
+      colour of the male. The blotches are irregular patches, neither bars nor stripes, so the
+      pattern is spots.
+    sources:
+      - kind: database
+        title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+        url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Venustus Hap, Nimbochromis venustus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/venustus-hap
+        accessed: 2026-10-13
+      - kind: website
+        title: "Wikipedia (Deutsch): Nimbochromis venustus"
+        url: https://de.wikipedia.org/wiki/Nimbochromis_venustus
+        accessed: 2026-10-13
+      - kind: website
+        title: "LiveAquaria: Venustus Cichlid, Nimbochromis venustus, retailer care sheet"
+        url: https://www.liveaquaria.com/products/venustus-cichlid
+        accessed: 2026-10-13
+      - kind: website
+        title: "Aquarium Source: Venustus Cichlid care guide"
+        url: https://www.aquariumsource.com/venustus-cichlid
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+          url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+          accessed: 2026-10-13
+        value:
+          baseColors:
+            - blue
+            - yellow
+          pattern: spots
+        note: male blue and yellow; irregular dark markings
+      - source:
+          kind: database
+          title: "Fishkeeper (Maidenhead Aquatics): Venustus Hap, Nimbochromis venustus, species profile"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/venustus-hap
+          accessed: 2026-10-13
+        value:
+          baseColors:
+            - blue
+        note: mature males blue, most intense on the head
+      - source:
+          kind: website
+          title: "Wikipedia (Deutsch): Nimbochromis venustus"
+          url: https://de.wikipedia.org/wiki/Nimbochromis_venustus
+          accessed: 2026-10-13
+        value:
+          baseColors:
+            - blue
+            - yellow
+          pattern: spots
+        note: blotches of males faint or absent
+      - source:
+          kind: website
+          title: "LiveAquaria: Venustus Cichlid, Nimbochromis venustus, retailer care sheet"
+          url: https://www.liveaquaria.com/products/venustus-cichlid
+          accessed: 2026-10-13
+        value:
+          baseColors:
+            - blue
+            - yellow
+      - source:
+          kind: website
+          title: "Aquarium Source: Venustus Cichlid care guide"
+          url: https://www.aquariumsource.com/venustus-cichlid
+          accessed: 2026-10-13
+        value:
+          baseColors:
+            - yellow
+            - brown
+            - blue
+        note: blotched pattern with blue accents
+  feedingSpeed:
+    value: normal
+    confidence: low
+    rationale: All three runs agree. It takes dead and prepared food readily (Seriously Fish) but is no
+      frantic feeder like the mbuna; no source rates its feeding pace directly.
+    sources:
+      - kind: database
+        title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+        url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+        accessed: 2026-10-13
+      - kind: model-knowledge
+        title: General knowledge of the feeding behaviour of large Malawi haplochromines
+  minTank:
+    value:
+      volumeL: 500
+      lengthCm: 180
+      depthCm: 60
+    confidence: medium
+    rationale: For one male with three females of 20 to 25 cm, Fishkeeper asks for at least 180 by 60 by
+      60 cm, Guidarium about 475 L and 180 cm, Aquarium Source and an archive keeper about 470 L.
+      The 120 by 45 cm base of Seriously Fish suits a single fish only. The depth of 60 cm follows
+      Fishkeeper and gives the large fish room to turn.
+    sources:
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Venustus Hap, Nimbochromis venustus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/venustus-hap
+        accessed: 2026-10-13
+      - kind: database
+        title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+        url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+        accessed: 2026-10-13
+      - kind: website
+        title: "Guidarium: Venustus Cichlid (Giraffe Hap)"
+        url: https://guidarium.com/fishes/venustus-cichlid-giraffe-hap
+        accessed: 2026-10-13
+      - kind: website
+        title: "Aquarium Source: Venustus Cichlid care guide"
+        url: https://www.aquariumsource.com/venustus-cichlid
+        accessed: 2026-10-13
+      - kind: archive
+        title: cichlids.com forum thread 307
+        url: https://www.cichlids.com/disc/read.php?1,307
+        accessed: 2026-10-13
+      - kind: archive
+        title: cichlids.com forum thread 10
+        url: https://www.cichlids.com/disc/read.php?1,10
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "Fishkeeper (Maidenhead Aquatics): Venustus Hap, Nimbochromis venustus, species profile"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/venustus-hap
+          accessed: 2026-10-13
+        value:
+          volumeL: 650
+          lengthCm: 183
+          depthCm: 61
+        note: 6 by 2 by 2 ft; volume computed
+      - source:
+          kind: database
+          title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+          url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+          accessed: 2026-10-13
+        value:
+          volumeL: 205
+          lengthCm: 120
+          depthCm: 45
+        note: base for a single fish
+      - source:
+          kind: website
+          title: "Guidarium: Venustus Cichlid (Giraffe Hap)"
+          url: https://guidarium.com/fishes/venustus-cichlid-giraffe-hap
+          accessed: 2026-10-13
+        value:
+          volumeL: 475
+          lengthCm: 180
+      - source:
+          kind: website
+          title: "Aquarium Source: Venustus Cichlid care guide"
+          url: https://www.aquariumsource.com/venustus-cichlid
+          accessed: 2026-10-13
+        value:
+          volumeL: 473
+          lengthCm: 183
+        note: 125 US gallons for adults
+      - source:
+          kind: archive
+          title: cichlids.com forum thread 307
+          url: https://www.cichlids.com/disc/read.php?1,307
+          accessed: 2026-10-13
+        value:
+          volumeL: 473
+        note: 125 gallons or larger
+  lifespanYears:
+    value:
+      min: 8
+      max: 12
+    confidence: low
+    rationale: "Only hobby guides give an age: 8 to 10 years (Riverpark Aquatics), about 10 and up to 12
+      years (Aquarium Source) and 10 to 12 years (Aquarium Fish Paradise). No database or scientific
+      source states a lifespan."
+    sources:
+      - kind: website
+        title: "Riverpark Aquatics: Venustus Cichlid (Nimbochromis venustus), care guide"
+        url: https://riverparkaquatics.co.uk/venustus-cichlid-nimbochromis-venustus/
+        accessed: 2026-10-13
+      - kind: website
+        title: "Aquarium Source: Venustus Cichlid care guide"
+        url: https://www.aquariumsource.com/venustus-cichlid
+        accessed: 2026-10-13
+      - kind: website
+        title: "Aquarium Fish Paradise: Venustus, Nimbochromis venustus"
+        url: https://www.aquariumfishparadise.com.au/?p=3165
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: website
+          title: "Riverpark Aquatics: Venustus Cichlid (Nimbochromis venustus), care guide"
+          url: https://riverparkaquatics.co.uk/venustus-cichlid-nimbochromis-venustus/
+          accessed: 2026-10-13
+        value:
+          min: 8
+          max: 10
+      - source:
+          kind: website
+          title: "Aquarium Source: Venustus Cichlid care guide"
+          url: https://www.aquariumsource.com/venustus-cichlid
+          accessed: 2026-10-13
+        value:
+          min: 10
+          max: 12
+      - source:
+          kind: website
+          title: "Aquarium Fish Paradise: Venustus, Nimbochromis venustus"
+          url: https://www.aquariumfishparadise.com.au/?p=3165
+          accessed: 2026-10-13
+        value:
+          min: 10
+          max: 12
+  breeding:
+    value: maternal-mouthbrooder
+    confidence: high
+    rationale: All three runs agree. The female takes the eggs into her mouth, broods them for about
+      three weeks without feeding and guards the free-swimming young for about ten more days
+      (FishBase, Seriously Fish, Fishkeeper); the Cichlid Room Companion confirms maternal
+      mouthbrooding.
+    sources:
+      - kind: database
+        title: "FishBase species summary: Nimbochromis venustus"
+        url: https://www.fishbase.se/summary/Nimbochromis-venustus.html
+        accessed: 2026-10-13
+      - kind: database
+        title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+        url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Venustus Hap, Nimbochromis venustus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/venustus-hap
+        accessed: 2026-10-13
+      - kind: literature
+        title: Developmental morphology and growth patterns of laboratory-reared giraffe cichlid,
+          Nimbochromis venustus Boulenger, 1908. International Journal of Aquatic Biology 6(3), 2018
+        url: https://doi.org/10.22034/ijab.v6i3.525
+        accessed: 2026-10-13
+      - kind: website
+        title: "Cichlid Room Companion: Nimbochromis venustus (public part of the species page)"
+        url: https://cichlidae.com/species.php?id=pPAUjvy7EPQghPJRQZgNzQ
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "FishBase species summary: Nimbochromis venustus"
+          url: https://www.fishbase.se/summary/Nimbochromis-venustus.html
+          accessed: 2026-10-13
+        value: maternal-mouthbrooder
+        note: female takes the brood into her mouth
+      - source:
+          kind: database
+          title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+          url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+          accessed: 2026-10-13
+        value: maternal-mouthbrooder
+        note: polygamous; up to 120 eggs for about three weeks
+      - source:
+          kind: database
+          title: "Fishkeeper (Maidenhead Aquatics): Venustus Hap, Nimbochromis venustus, species profile"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/venustus-hap
+          accessed: 2026-10-13
+        value: maternal-mouthbrooder
+        note: about 21 days of mouthbrooding
+      - source:
+          kind: website
+          title: "Cichlid Room Companion: Nimbochromis venustus (public part of the species page)"
+          url: https://cichlidae.com/species.php?id=pPAUjvy7EPQghPJRQZgNzQ
+          accessed: 2026-10-13
+        value: maternal-mouthbrooder
+  beginnerSuitability:
+    value: moderate
+    confidence: medium
+    rationale: All three runs agree. It is undemanding in water and food but needs a large tank, a harem
+      ratio and tankmates too big to eat. Seriously Fish rates it moderate (5 of 8) and Aquarium
+      Source intermediate; the LiveAquaria retailer page calls it easy, which ignores the space and
+      stocking demands.
+    sources:
+      - kind: database
+        title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+        url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+        accessed: 2026-10-13
+      - kind: website
+        title: "Aquarium Source: Venustus Cichlid care guide"
+        url: https://www.aquariumsource.com/venustus-cichlid
+        accessed: 2026-10-13
+      - kind: website
+        title: "LiveAquaria: Venustus Cichlid, Nimbochromis venustus, retailer care sheet"
+        url: https://www.liveaquaria.com/products/venustus-cichlid
+        accessed: 2026-10-13
+      - kind: archive
+        title: cichlids.com forum thread 10
+        url: https://www.cichlids.com/disc/read.php?1,10
+        accessed: 2026-10-13
+    evidence:
+      - source:
+          kind: database
+          title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+          url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+          accessed: 2026-10-13
+        value: moderate
+        note: 5 of 8
+      - source:
+          kind: website
+          title: "Aquarium Source: Venustus Cichlid care guide"
+          url: https://www.aquariumsource.com/venustus-cichlid
+          accessed: 2026-10-13
+        value: moderate
+        note: intermediate level
+      - source:
+          kind: website
+          title: "LiveAquaria: Venustus Cichlid, Nimbochromis venustus, retailer care sheet"
+          url: https://www.liveaquaria.com/products/venustus-cichlid
+          accessed: 2026-10-13
+        value: easy
+partners:
+  suitable:
+    - species: Cyrtocara moorii
+      reason: Large, calm sand-dwelling hap of the same lake, too big to be eaten and plain blue instead
+        of blotched.
+      condition: Tank of at least 180 cm.
+    - species: Dimidiochromis compressiceps
+      reason: Another large Malawi predator of similar size that holds its own; named as a tankmate by
+        Seriously Fish.
+      condition: Tank of at least 200 cm with plenty of open water.
+    - species: Sciaenochromis fryeri
+      reason: Robust hap of the same habitat that outgrows the gape of venustus and shares the water
+        values.
+      condition: Tank of at least 180 cm; add as adults or large juveniles.
+    - species: Copadichromis borleyi
+      reason: Open-water hap of medium size that stays out of the way of the sand-dwelling venustus.
+      condition: Add as adults of at least 12 cm.
+    - species: Synodontis njassae
+      reason: Lake Malawi catfish of sufficient size; Fishkeeper names suitably sized Synodontis as
+        companions.
+      condition: Choose adult catfish.
+  unsuitable:
+    - species: Pseudotropheus demasoni
+      reason: Small mbuna below the prey size; it will be eaten.
+    - species: Nimbochromis livingstonii
+      reason: Similar blotched look; Fishkeeper advises against look-alikes, which fight as rivals.
+    - species: Fossorochromis rostratus
+      reason: Blotched sand-dwelling hap of similar shape and pattern, so rivalry with the male venustus
+        is likely.
+    - species: Tropheus moorii
+      reason: Needs a species tank and a low-protein plant diet; different water of Lake Tanganyika.
+    - species: Amatitlania nigrofasciata
+      reason: Very aggressive Central American substrate spawner that defends its brood fiercely; an
+        archive keeper reports convicts killing a venustus.
+    - species: Neolamprologus multifasciatus
+      reason: Tiny shell dweller that is easy prey.
+profile:
+  overview:
+    text: "Nimbochromis venustus, sold as venustus or giraffe hap, is a large haplochromine cichlid
+      found only in Lake Malawi. Its trade name refers to the irregular brown blotches on a pale
+      body, which recall the coat of a giraffe. In nature it hunts from ambush: it lies still on the
+      sand, sometimes half buried, until a small fish comes close enough to grab. In the aquarium it
+      grows to about 25 cm and becomes tame and eager for food. Mature males turn into a vivid
+      yellow fish with a deep blue face. Because of its size and its appetite for small fish it
+      belongs in a large tank with robust Lake Malawi haps of similar size, not in a community of
+      small mbuna or young peacocks."
+    sources:
+      - kind: database
+        title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+        url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishBase species summary: Nimbochromis venustus"
+        url: https://www.fishbase.se/summary/Nimbochromis-venustus.html
+        accessed: 2026-10-13
+      - kind: literature
+        title: Developmental morphology and growth patterns of laboratory-reared giraffe cichlid,
+          Nimbochromis venustus Boulenger, 1908. International Journal of Aquatic Biology 6(3), 2018
+        url: https://doi.org/10.22034/ijab.v6i3.525
+        accessed: 2026-10-13
+      - kind: website
+        title: "Wikipedia: Nimbochromis venustus"
+        url: https://en.wikipedia.org/wiki/Nimbochromis_venustus
+        accessed: 2026-10-13
+  habitat:
+    text: "The species lives all around Lake Malawi. Young fish stay in shallow water close to rocks,
+      while adults patrol sandy bottoms and the transitions between sand and rock, mostly in the
+      upper 15 to 23 m. The lake water is soft but alkaline and well buffered: about 3 to 5 dGH, 5
+      to 8 dKH and a pH of 7.7 to 8.6, at 21 to 29 C depending on season and depth. In the aquarium
+      it does well at 24 to 28 C in alkaline water with a pH between 7.5 and 8.8, a general hardness
+      up to about 20 dGH and a carbonate hardness up to about 15 dKH. Fine sand matters because it
+      rests on and digs in the substrate."
+    sources:
+      - kind: database
+        title: "FishBase species summary: Nimbochromis venustus"
+        url: https://www.fishbase.se/summary/Nimbochromis-venustus.html
+        accessed: 2026-10-13
+      - kind: database
+        title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+        url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Venustus Hap, Nimbochromis venustus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/venustus-hap
+        accessed: 2026-10-13
+      - kind: literature
+        title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E.
+          et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian
+          Northern Basin: local versus global considerations. Hydrology and Earth System Sciences
+          Discussions 7, 4371-4409."
+        url: https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf
+        accessed: 2026-10-12
+      - kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery
+          resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical
+          and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+        url: https://www.fao.org/4/t0473e/T0473E05.htm
+        accessed: 2026-10-12
+      - kind: literature
+        title: Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa).
+          Limnology and Oceanography 19(5), 730-742 (abstract).
+        url: https://doi.org/10.4319/lo.1974.19.5.0730
+        accessed: 2026-10-12
+      - kind: literature
+        title: Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M.,
+          Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East
+          Africa. Limnology and Oceanography 50(2), 727-732.
+        url: https://www.dora.lib4ri.ch/empa/dload/empa:1253/PDF/view
+        accessed: 2026-10-12
+  sizeAndGrowth:
+    text: Males reach about 25 cm in a good aquarium; larger fish up to 30 cm are reported from the
+      wild. Females stay noticeably smaller, at roughly 20 cm. Juveniles grow quickly on a rich
+      diet, which often surprises owners who bought small fish for a medium tank. The body is deep
+      and robust, with a large, wide mouth. With good care the species lives about 8 to 12 years.
+    sources:
+      - kind: database
+        title: "FishBase species summary: Nimbochromis venustus"
+        url: https://www.fishbase.se/summary/Nimbochromis-venustus.html
+        accessed: 2026-10-13
+      - kind: database
+        title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+        url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+        accessed: 2026-10-13
+      - kind: literature
+        title: Developmental morphology and growth patterns of laboratory-reared giraffe cichlid,
+          Nimbochromis venustus Boulenger, 1908. International Journal of Aquatic Biology 6(3), 2018
+        url: https://doi.org/10.22034/ijab.v6i3.525
+        accessed: 2026-10-13
+      - kind: website
+        title: "Aquarium Source: Venustus Cichlid care guide"
+        url: https://www.aquariumsource.com/venustus-cichlid
+        accessed: 2026-10-13
+      - kind: website
+        title: "Riverpark Aquatics: Venustus Cichlid (Nimbochromis venustus), care guide"
+        url: https://riverparkaquatics.co.uk/venustus-cichlid-nimbochromis-venustus/
+        accessed: 2026-10-13
+  husbandry:
+    text: Plan for a tank of at least 180 cm length and about 500 litres, with a sandy bottom and a few
+      stable rock piles along the back; the middle should stay free for swimming. Venustus digs, so
+      rocks must stand on the glass, not on the sand. Strong filtration and generous weekly water
+      changes matter, because a group of large predators produces much waste. Keep the water
+      alkaline and buffered, for example with an aragonite substrate, and avoid sudden changes in
+      temperature or pH. Flat stones near a cave give the male a place to spawn.
+    sources:
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Venustus Hap, Nimbochromis venustus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/venustus-hap
+        accessed: 2026-10-13
+      - kind: database
+        title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+        url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+        accessed: 2026-10-13
+      - kind: website
+        title: "Aquarium Source: Venustus Cichlid care guide"
+        url: https://www.aquariumsource.com/venustus-cichlid
+        accessed: 2026-10-13
+      - kind: website
+        title: "LiveAquaria: Venustus Cichlid, Nimbochromis venustus, retailer care sheet"
+        url: https://www.liveaquaria.com/products/venustus-cichlid
+        accessed: 2026-10-13
+  socialBehavior:
+    text: Venustus lives solitary in the lake and males do not tolerate each other. Keep one male per
+      tank, either as a single fish among other large haps or with at least three females, and with
+      four or more in a species tank, so that the male does not single out one partner. Towards
+      other species it is mostly calm as long as they are too large to swallow, although the
+      breeding male chases intruders away from his spawning site. Smaller fish disappear, because
+      the predator lies motionless near the bottom and strikes suddenly.
+    sources:
+      - kind: database
+        title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+        url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Venustus Hap, Nimbochromis venustus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/venustus-hap
+        accessed: 2026-10-13
+      - kind: website
+        title: "Tropical Freshwater Fish: Venustus, Nimbochromis venustus"
+        url: https://tropicalfreshwaterfish.com/species/Nimbochromis_venustus.html
+        accessed: 2026-10-13
+      - kind: archive
+        title: cichlids.com forum thread 307
+        url: https://www.cichlids.com/disc/read.php?1,307
+        accessed: 2026-10-13
+  diet:
+    text: In the lake small fish make up most of the diet, with some invertebrates. Live feeder fish are
+      unnecessary and bring disease risks; venustus learns to take dead food quickly. Offer a varied
+      menu of frozen shrimp and prawns, krill, mysis and whole small fish such as lancefish or
+      whitebait, plus good sinking pellets for large cichlids as a staple. Meat of mammals or birds
+      is hard to digest and should not be fed. Juveniles take flakes, small pellets and frozen
+      foods. Feed adults moderately once or twice a day so that they do not become fat.
+    sources:
+      - kind: database
+        title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+        url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Venustus Hap, Nimbochromis venustus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/venustus-hap
+        accessed: 2026-10-13
+      - kind: database
+        title: "FishBase species summary: Nimbochromis venustus"
+        url: https://www.fishbase.se/summary/Nimbochromis-venustus.html
+        accessed: 2026-10-13
+  breeding:
+    text: Venustus is a maternal mouthbrooder. A coloured male cleans a flat stone or digs a shallow pit
+      and courts the females. The female lays her eggs in small batches, the male fertilises them
+      and she takes them into her mouth. She carries up to about 120 eggs and larvae for roughly
+      three weeks without eating, then releases fry that are large enough to eat brine shrimp
+      nauplii. For about ten more days the fry flee back into her mouth when disturbed. Stressed
+      females tend to spit out the brood early, so move a brooding female only with care, or raise
+      the fry separately.
+    sources:
+      - kind: database
+        title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+        url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Venustus Hap, Nimbochromis venustus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/venustus-hap
+        accessed: 2026-10-13
+      - kind: literature
+        title: Developmental morphology and growth patterns of laboratory-reared giraffe cichlid,
+          Nimbochromis venustus Boulenger, 1908. International Journal of Aquatic Biology 6(3), 2018
+        url: https://doi.org/10.22034/ijab.v6i3.525
+        accessed: 2026-10-13
+  sexing:
+    text: Young fish of both sexes show the blotched giraffe pattern on a sandy to ivory body. As males
+      mature, the head turns intensely blue and the flanks and dorsal fin yellow, while the blotches
+      fade until they are faint or gone. Fully coloured males are also larger. Females keep the
+      brown blotches on a pale ground. Subdominant males may stay in the female colours for a long
+      time, so an apparent group of females can still hold more than one male.
+    sources:
+      - kind: website
+        title: "Wikipedia (Deutsch): Nimbochromis venustus"
+        url: https://de.wikipedia.org/wiki/Nimbochromis_venustus
+        accessed: 2026-10-13
+      - kind: database
+        title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+        url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Venustus Hap, Nimbochromis venustus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/venustus-hap
+        accessed: 2026-10-13
+      - kind: website
+        title: "Aquarium Source: Venustus Cichlid care guide"
+        url: https://www.aquariumsource.com/venustus-cichlid
+        accessed: 2026-10-13
+  compatibility:
+    text: Good companions are large and robust Lake Malawi cichlids that share the water values and are
+      too big to swallow, for example Cyrtocara moorii, Dimidiochromis compressiceps, Sciaenochromis
+      fryeri or Copadichromis borleyi, and sturdy Synodontis catfish. Avoid small mbuna, young
+      peacocks and any fish shorter than about a third of the venustus, because they become prey.
+      Similar-looking blotched haps such as Nimbochromis livingstonii or Fossorochromis rostratus
+      are treated as rivals. Aggressive Central American cichlids and Tanganyika specialists such as
+      Tropheus need other conditions and do not belong in the same tank.
+    sources:
+      - kind: database
+        title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+        url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Venustus Hap, Nimbochromis venustus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/venustus-hap
+        accessed: 2026-10-13
+      - kind: archive
+        title: cichlids.com forum thread 1439
+        url: https://www.cichlids.com/disc/read.php?1,1439
+        accessed: 2026-10-13
+  problems:
+    text: The most common mistake is buying juveniles for a tank that is far too small; the fish outgrow
+      it within a year and become stressed and aggressive. Another is mixing them with small mbuna,
+      which are eaten. Too many males lead to constant fights. Large predators produce much waste,
+      and poor water leads to fin damage, rapid breathing and losses; regular water changes prevent
+      this. Live feeder fish can introduce parasites and diseases. Overfeeding and mammal meat make
+      the fish fat. Brooding females lose condition or their brood if they are disturbed or moved
+      roughly.
+    sources:
+      - kind: database
+        title: "Seriously Fish: Nimbochromis venustus (Venustus)"
+        url: https://www.seriouslyfish.com/species/nimbochromis-venustus/
+        accessed: 2026-10-13
+      - kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Venustus Hap, Nimbochromis venustus, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/venustus-hap
+        accessed: 2026-10-13
+      - kind: website
+        title: "LiveAquaria: Venustus Cichlid, Nimbochromis venustus, retailer care sheet"
+        url: https://www.liveaquaria.com/products/venustus-cichlid
+        accessed: 2026-10-13
+      - kind: archive
+        title: cichlids.com forum thread 10
+        url: https://www.cichlids.com/disc/read.php?1,10
+        accessed: 2026-10-13
+      - kind: archive
+        title: cichlids.com forum thread 2471
+        url: https://www.cichlids.com/disc/read.php?1,2471
+        accessed: 2026-10-13
+provenance:
+  runs:
+    - role: generator
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-13
+    - role: adjudicator
+      model: claude-opus-5-5
+      date: 2026-10-13
+  disagreements:
+    - field: taxonomy.synonyms
+      proposals:
+        - by: generator
+          value:
+            - Haplochromis venustus
+            - Haplochromis simulans
+            - Cyrtocara venusta
+        - by: checker-a
+          value:
+            - Haplochromis venustus
+            - Haplochromis simulans
+            - Cyrtocara venusta
+        - by: checker-b
+          value:
+            - Haplochromis venustus
+            - Haplochromis simulans
+      decision:
+        - Haplochromis venustus
+        - Haplochromis simulans
+        - Cyrtocara venusta
+      rationale: The Catalog of Fishes lists Haplochromis venustus and Haplochromis simulans. Cyrtocara
+        venusta is kept as a combination of the older hobby literature, marked as such, because
+        keepers meet the name in books and dealer lists.
+    - field: features.origin.value
+      proposals:
+        - by: generator
+          value:
+            continent: Africa
+            region: Lake Malawi
+            waterbody: Lake Malawi
+        - by: checker-a
+          value:
+            continent: Africa
+            region: Lake Malawi
+            waterbody: Lake Malawi
+            localities:
+              - Lake Malawi, lakewide
+              - Shire River (type series)
+              - Senga Bay
+        - by: checker-b
+          value:
+            continent: Africa
+            region: Lake Malawi
+            waterbody: lake-malawi
+      decision:
+        continent: Africa
+        region: Lake Malawi
+        waterbody: Lake Malawi
+        localities:
+          - Lake Malawi, lakewide
+          - Shire River (type series)
+      rationale: All runs name the same water body (checker-b by its table id). The localities of
+        checker-a are kept except Senga Bay, which rests only on a photograph of the Cichlid Room
+        Companion, a source for verification only.
+    - field: features.diet.value.foods
+      proposals:
+        - by: generator
+          value:
+            - small fish
+            - invertebrates
+            - prawns and shrimp
+            - krill and mysis
+            - whitebait or lancefish
+            - cichlid pellets
+        - by: checker-a
+          value:
+            - small fish
+            - prawns and shrimp
+            - krill and mysis
+            - lancefish and whitebait
+            - cichlid pellets
+        - by: checker-b
+          value:
+            - fish
+            - prawn
+            - lancefish
+            - whitebait
+      decision:
+        - small fish
+        - invertebrates
+        - prawns and shrimp
+        - krill and mysis
+        - whitebait or lancefish
+        - cichlid pellets
+      rationale: "Hard feature decided by tally.yaml, method unanimous (3 of 3): all runs agree on
+        piscivore and bloatSensitive false; the food lists differ in wording only and the tally
+        takes the list of the generator."
+    - field: features.ghDgh.tolerance.value
+      proposals:
+        - by: generator
+          value:
+            min: 3
+            max: 20
+        - by: checker-a
+          value:
+            min: 3
+            max: 20
+        - by: checker-b
+          value:
+            min: 3
+            max: 18
+      decision:
+        min: 3
+        max: 20
+      rationale: "Decided by tally.yaml, method unanimous (3 of 3): the proposals agree within 2 dGH, and
+        the median of the maxima is 20."
+    - field: features.khDkh.tolerance.value
+      proposals:
+        - by: generator
+          value:
+            min: 5
+            max: 15
+        - by: checker-a
+          value:
+            min: 5
+            max: 15
+        - by: checker-b
+          value:
+            min: 5
+            max: 12
+        - by: tiebreaker-1
+          value:
+            min: 5
+            max: 15
+        - by: tiebreaker-2
+          value:
+            min: 5
+            max: 15
+      decision:
+        min: 5
+        max: 15
+      rationale: "Decided by tally.yaml, method qualified-majority (4 of 5) with confidence low: the upper
+        bound of checker-b differs by 3 dKH and so falls outside the agreement threshold of 2 dKH;
+        two tie-breakers sided with 15 dKH."
+    - field: features.social.value
+      proposals:
+        - by: generator
+          value:
+            structure: harem
+            ratio: 3
+        - by: checker-a
+          value:
+            structure: harem
+            ratio: 4
+        - by: checker-b
+          value:
+            structure: harem
+            ratio: 4
+      decision:
+        structure: harem
+        ratio: 3
+      rationale: Seriously Fish recommends three to six females, Fishkeeper one or two in a mixed tank and
+        four or more in a species tank, an archive keeper three to four. The checkers took a middle
+        value of four, but three is the lower end that all sources accept for the recommended unit;
+        the prose advises more females in a species tank.
+    - field: features.coloration.value
+      proposals:
+        - by: generator
+          value:
+            baseColors:
+              - blue
+              - yellow
+            pattern: spots
+        - by: checker-a
+          value:
+            baseColors:
+              - yellow
+              - blue
+              - brown
+            pattern: spots
+        - by: checker-b
+          value:
+            baseColors:
+              - yellow
+              - brown
+              - blue
+            pattern: mixed
+      decision:
+        baseColors:
+          - blue
+          - yellow
+        pattern: spots
+      rationale: baseColors describe the adult male, whose blotches are faint or absent according to
+        German Wikipedia and whose colours Seriously Fish and Fishkeeper give as blue and yellow;
+        brown dominates only females and juveniles. The blotches are irregular patches, so spots
+        fits better than mixed.
+    - field: features.minTank.value
+      proposals:
+        - by: generator
+          value:
+            volumeL: 500
+            lengthCm: 180
+            depthCm: 60
+        - by: checker-a
+          value:
+            volumeL: 500
+            lengthCm: 180
+            depthCm: 60
+        - by: checker-b
+          value:
+            volumeL: 470
+            lengthCm: 180
+            depthCm: 50
+      decision:
+        volumeL: 500
+        lengthCm: 180
+        depthCm: 60
+      rationale: Fishkeeper, the only database with dimensions for a harem, asks for 6 by 2 by 2 ft (about
+        180 by 60 cm); 500 L lies between the 470 to 475 L of the hobby guides and the gross volume
+        of that tank.
+    - field: features.lifespanYears.value
+      proposals:
+        - by: generator
+          value:
+            min: 8
+            max: 12
+        - by: checker-a
+          value:
+            min: 8
+            max: 12
+        - by: checker-b
+          value:
+            min: 10
+            max: 12
+      decision:
+        min: 8
+        max: 12
+      rationale: Riverpark Aquatics gives 8 to 10 years, the other hobby guides 10 to 12; the range covers
+        all of them.
