@@ -36,6 +36,14 @@ one of these rules:
 Run `python3 tools/check-keycloak-realm.py --self-test` and `python3 tools/check-keycloak-realm.py`
 before committing a change to a realm file.
 
+## Reserved usernames
+
+The user profile of the realm carries a pattern validator on the username. It refuses
+`community-archive`, `former-member-<id>` and `forum-member-<id>`, the names of the system and
+placeholder profiles, on the registration form and in the admin API. The user profile is part of
+the realm file, so both deployed files and the local realm file hold the same definition. The API
+adds a second guard: a first login whose username is reserved gets a generated handle.
+
 ## Check a fresh import
 
 ```sh
