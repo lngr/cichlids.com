@@ -26,4 +26,4 @@ paths = ['''(^|/)[^/]*\.env\.example$''']
 
 [[allowlists]]
 description = "Public test-only age key for the CI round-trip fixture"
-paths = ['''^tools/fixtures/secrets/age-test-key\.txt$''']
+paths = ['''(^|/)tools/fixtures/secrets/age-test-key\.txt$''']
