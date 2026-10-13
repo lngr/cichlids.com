@@ -1,0 +1,1606 @@
+schemaVersion: 1
+id: chindongo-socolofi
+legacyIds: [489]
+status: described
+
+taxonomy:
+  validName: Chindongo socolofi
+  genus: Chindongo
+  species: socolofi
+  author: (Johnson, 1974)
+  source: &cof
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes, species of the genus Chindongo"
+    url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Chindongo
+    accessed: 2026-10-13
+  synonyms:
+    - name: Pseudotropheus socolofi
+      note: Original combination (Johnson 1974); transferred to Chindongo by Li, Konings and Stauffer (2016), which the Catalog of Fishes follows.
+  legacyNames:
+    - Pseudotropheus socolofi
+  note: >-
+    The Catalog of Fishes lists the species as valid in Chindongo and cites Li et al. (2016) for
+    the transfer; the species list of Pseudotropheus no longer holds socolofi, because the catalog
+    files every species under its current genus. FishBase and the public summary of the Cichlid
+    Room Companion use the same name. The type locality lies off Likoma Island, while the natural
+    range is the facing Mozambican shore. The trade name Pseudotropheus 'pindani' was never an
+    available scientific name.
+
+names:
+  trade:
+    en: [Pindani, Powder Blue Cichlid, "Eduard's Mbuna", Socolofi]
+    de: [Eisblauer Maulbrüter, Pindani]
+
+variants:
+  - name: Albino (Snow White)
+    kind: color-morph
+    note: Aquarium-bred albino form with a white body and red eyes; it produces clearly fewer eggs and young than the blue form.
+  - name: Populations without the dark dorsal band
+    kind: locality
+    note: In some wild populations the dark band near the edge of the dorsal fin is missing.
+
+features:
+  origin:
+    value:
+      continent: Africa
+      region: Lake Malawi
+      waterbody: lake-malawi
+      localities:
+        - Mozambican coast between Cobue and Tumbi Point, with Mara Rocks and Mbweca Rocks
+        - off Likoma Island (type locality)
+        - Thumbi West Island and Otter Point (probably introduced)
+    confidence: high
+    rationale: >-
+      Endemic to Lake Malawi. FishBase, Seriously Fish and AquaInfo place the natural range on a
+      short stretch of the Mozambican east coast from Cobue to Tumbi Point, opposite Likoma Island,
+      off which the Catalog of Fishes puts the type locality. FishBase regards the fish at Thumbi
+      West Island and Otter Point on the Malawian side as introduced. Almost all fish in the trade
+      are bred in captivity.
+    sources:
+      - *cof
+      - &fb
+        kind: database
+        title: "FishBase species summary: Chindongo socolofi, Pindani"
+        url: https://www.fishbase.se/summary/Chindongo-socolofi.html
+        accessed: 2026-10-13
+      - &sf
+        kind: database
+        title: "Seriously Fish: Pseudotropheus socolofi (Powder Blue Cichlid)"
+        url: https://www.seriouslyfish.com/species/pseudotropheus-socolofi/
+        accessed: 2026-10-13
+      - &aqi
+        kind: database
+        title: "AquaInfo: Chindongo socolofi"
+        url: https://aquainfo.nl/en/article/chindongo-socolofi/
+        accessed: 2026-10-13
+      - &fk
+        kind: website
+        title: "Fishkeeper (Maidenhead Aquatics, retailer): Pindani, Chindongo socolofi"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/pindani
+        accessed: 2026-10-13
+      - &crc
+        kind: database
+        title: "Cichlid Room Companion: Chindongo socolofi (public summary, verification only)"
+        url: https://cichlidae.com/species.php?id=1mUsr82Xyq0RgR67yyzV0A
+        accessed: 2026-10-13
+    evidence:
+      - source: *cof
+        value: {continent: Africa, region: Lake Malawi, localities: [off Likoma Island]}
+        note: type locality
+      - source: *fb
+        value: {continent: Africa, region: Lake Malawi, localities: [Mozambique coast, Otter Point (introduced), Thumbi West Island (introduced)]}
+      - source: *sf
+        value: {continent: Africa, region: Lake Malawi, localities: [Cobue to Tumbi Point]}
+      - source: *aqi
+        value: {continent: Africa, region: Lake Malawi, localities: [Cobue, Mala Point, Mara Rocks, Mbweca Rocks, Tumbi Point]}
+      - source: *fk
+        value: {continent: Africa, region: Lake Malawi, localities: [Thumbi to Cobue, east side of the lake]}
+
+  temperatureC:
+    value: {min: 21, max: 29}
+    confidence: high
+    verification: {method: waterbody, waterbody: lake-malawi}
+    rationale: >-
+      A Lake Malawi endemic takes the measured lake values. Inshore water cools to about 21 C in
+      the windy cool season, and the surface warms to about 28 to 29 C in summer; the upper water
+      column lies between these values for most of the year.
+    sources: &lakeSources
+      - &branchu
+        kind: literature
+        title: >-
+          Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M.,
+          Pons-Branchu, E. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi
+          (Nyasa), Tanzanian Northern Basin: local versus global considerations. Hydrology and Earth
+          System Sciences Discussions 7, 4371-4409.
+        url: https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf
+        accessed: 2026-10-12
+      - &fao
+        kind: literature
+        title: >-
+          Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery
+          resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical
+          and chemical data after Jackson et al. (1963) and Talling and Talling (1965).
+        url: https://www.fao.org/4/t0473e/T0473E05.htm
+        accessed: 2026-10-12
+      - &eccles
+        kind: literature
+        title: >-
+          Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa).
+          Limnology and Oceanography 19(5), 730-742 (abstract).
+        url: https://doi.org/10.4319/lo.1974.19.5.0730
+        accessed: 2026-10-12
+      - &vollmer2005
+        kind: literature
+        title: >-
+          Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M.,
+          Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East
+          Africa. Limnology and Oceanography 50(2), 727-732.
+        url: https://www.dora.lib4ri.ch/empa/dload/empa:1253/PDF/view
+        accessed: 2026-10-12
+      - kind: literature
+        title: >-
+          Vollmer, M. K., Weiss, R. F. and Bootsma, H. A. (1999). Lake Malawi/Nyasa deep water
+          renewal. In: Bootsma, H. A. and Hecky, R. E. (eds.), Water Quality Report, SADC/GEF Lake
+          Malawi/Nyasa Biodiversity Conservation Project, chapter 4.
+        url: https://sites.uwm.edu/hbootsma/files/2020/11/Ch4-Lake-Internal-Mixing.pdf
+        accessed: 2026-10-12
+      - kind: literature
+        title: "Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. PhD dissertation, University of Wisconsin-Milwaukee."
+        url: https://minds.wisconsin.edu/handle/1793/91765
+        accessed: 2026-10-12
+    evidence:
+      - source: *eccles
+        value: {min: 21, max: 27}
+        note: inshore cool-season minimum and upper water column by May
+      - source: *vollmer2005
+        value: {min: 23.5, max: 28}
+        note: winter epilimnion and summer surface water
+      - source: *branchu
+        value: {min: 22.8, max: 25.4}
+        note: October profile of the north basin, including deeper water
+    tolerance:
+      value: {min: 21, max: 29}
+      confidence: low
+      verification:
+        method: unanimous
+        votes: {agree: 4, total: 4}
+      rationale: >-
+        All four votes proposed 21 to 29 C. Care sheets and culture studies keep the fish between
+        about 22 and 29 C, most of them at 24 to 28 C, and breeding groups in two Turkish studies
+        were held at 26 to 28 C. Because the tolerance has to contain the natural lake range, its
+        lower edge is the cool-season lake minimum of 21 C; that edge rests on the lake
+        measurements and suits short seasonal dips rather than permanent keeping. No source tests
+        long-term health at the edges, hence the low confidence.
+      sources:
+        - *sf
+        - *fb
+        - *aqi
+        - &tff
+          kind: database
+          title: "Tropical Freshwater Fish: Eduard's Mbuna (Pseudotropheus socolofi)"
+          url: https://tropicalfreshwaterfish.com/species/Pseudotropheus_socolofi.html
+          accessed: 2026-10-13
+        - &fp
+          kind: database
+          title: "FishProfiles: Pseudotropheus socolofi"
+          url: https://fishprofiles.com/profiles/freshwater/Cichlids/Pseudotropheus_socolofi/
+          accessed: 2026-10-13
+        - &tt
+          kind: database
+          title: "The Tropical Tank: Pseudotropheus socolofi (archived copy)"
+          url: https://web.archive.org/web/2024/https://thetropicaltank.co.uk/Fishindx/socolofi.htm
+          accessed: 2026-10-13
+        - &nbfgr
+          kind: database
+          title: "ICAR-NBFGR Ganga Aquarium: Albino Pindani, Pseudotropheus socolofi"
+          url: https://www.nbfgr.res.in/Ganga_Aquarium/1.html
+          accessed: 2026-10-13
+        - &karadal
+          kind: literature
+          title: >-
+            Karadal, O. and Güroy, D. (2015). Effect of albinism on reproductive performance on
+            cichlid fish: Example of powder blue and snow white (Pseudotropheus socolofi) cichlids.
+            Ege Journal of Fisheries and Aquatic Sciences 32(3), 159-163.
+          url: https://doi.org/10.12714/egejfas.2015.32.3.06
+          accessed: 2026-10-13
+        - &erdogan
+          kind: literature
+          title: >-
+            Erdogan, F., Erdogan, M. and Gumus, E. (2012). Effects of dietary protein and lipid
+            levels on growth performances of two African cichlids (Pseudotropheus socolofi and
+            Haplochromis ahli). Turkish Journal of Fisheries and Aquatic Sciences 12(3).
+          url: https://doi.org/10.4194/1303-2712-v12_3_11
+          accessed: 2026-10-13
+        - &pazar
+          kind: literature
+          title: >-
+            Pazar, M., Bahadır Koca, S. and Özmen, Ö. (2024). Effects of dietary soybean meal levels
+            on reproduction parameters, the growth and gonad, gut, hepatopancreas histology of
+            female African cichlids Pseudotropheus socolofi. Journal of Limnology and Freshwater
+            Fisheries Research 10(1), 47-54.
+          url: https://doi.org/10.17216/limnofish.1347489
+          accessed: 2026-10-13
+        - *fk
+        - &gar
+          kind: website
+          title: "Garnelio (retailer): Eisblauer Maulbrüter, Chindongo socolofi, care profile"
+          url: https://www.garnelio.de/en/ice-blue-mouthbrooder-dnz-pseudotropheus-socolofi
+          accessed: 2026-10-13
+        - &gui
+          kind: website
+          title: "Guidarium: Socolofi Cichlid (Chindongo socolofi)"
+          url: https://guidarium.com/fishes/socolofi-cichlid-pseudotropheus-socolofi
+          accessed: 2026-10-13
+        - *eccles
+      evidence:
+        - source: *sf
+          value: {min: 24, max: 28}
+          note: aquarium recommendation; 25 to 26.5 C for breeding
+        - source: *fb
+          value: {min: 24, max: 26}
+          note: aquarium range taken from an aquarium reference work
+        - source: *aqi
+          value: {min: 22, max: 26}
+          note: aquarium recommendation
+        - source: *tff
+          value: {min: 23, max: 27}
+          note: aquarium recommendation
+        - source: *fp
+          value: {min: 24, max: 29}
+          note: aquarium recommendation
+        - source: *tt
+          value: {min: 23, max: 28}
+          note: aquarium recommendation
+        - source: *nbfgr
+          value: {min: 23, max: 27}
+          note: optimum for aquarium keeping
+        - source: *karadal
+          value: {min: 26, max: 27}
+          note: breeding groups held at 26.5 C plus or minus 0.5 C for twelve weeks
+        - source: *erdogan
+          value: {min: 25, max: 27}
+          note: culture tanks of a feeding trial
+        - source: *pazar
+          value: {min: 26, max: 28}
+          note: broodstock tanks at 27 C plus or minus 1 C for 90 days
+        - source: *fk
+          value: {min: 24, max: 26}
+          note: aquarium recommendation
+        - source: *gar
+          value: {min: 24, max: 28}
+          note: aquarium recommendation
+        - source: *gui
+          value: {min: 24, max: 28}
+          note: aquarium recommendation
+        - source: *eccles
+          value: {min: 21, max: 27}
+          note: natural lake range, source of the lower edge
+
+  ph:
+    value: {min: 7.7, max: 8.6}
+    confidence: high
+    verification: {method: waterbody, waterbody: lake-malawi}
+    rationale: >-
+      A Lake Malawi endemic takes the measured lake values. The surface water the species lives in
+      has a pH of 7.7 to 8.6; the somewhat lower values of the whole water column belong to deep
+      water that the species does not use.
+    sources: *lakeSources
+    evidence:
+      - source: *fao
+        value: {min: 7.7, max: 8.6}
+        note: lake surface water after Jackson et al. (1963)
+      - source: *branchu
+        value: {min: 7.5, max: 8.5}
+        note: whole water column; the low values belong to deep water
+    tolerance:
+      value: {min: 7.5, max: 8.8}
+      confidence: medium
+      verification:
+        method: unanimous
+        votes: {agree: 4, total: 4}
+      rationale: >-
+        Three votes proposed 7.5 to 8.8 and one 7.5 to 8.6, which lies within the agreement
+        threshold. Care sheets start at 7.5 to 7.8 and end at 8.5 to 8.8, with one reaching 9.0;
+        Seriously Fish advises 8.2 to 8.5 for breeding. The range 7.5 to 8.8 covers the bulk of
+        these figures and contains the lake range. One forum keeper kept the fish at pH 6.8 to 7.0,
+        an anecdote below anything the care literature supports.
+      sources:
+        - *sf
+        - *aqi
+        - *tff
+        - *fp
+        - *tt
+        - *nbfgr
+        - *erdogan
+        - *fk
+        - *gar
+        - *gui
+        - &arc1103
+          kind: archive
+          title: cichlids.com forum thread 1103
+          url: https://www.cichlids.com/disc/read.php?1,1103
+          accessed: 2026-10-13
+      evidence:
+        - source: *sf
+          value: {min: 7.6, max: 8.8}
+          note: aquarium recommendation; 8.2 to 8.5 for breeding
+        - source: *aqi
+          value: {min: 7.5, max: 8.5}
+          note: aquarium recommendation
+        - source: *tff
+          value: {min: 7.5, max: 9.0}
+          note: aquarium recommendation
+        - source: *fp
+          value: {min: 7.5, max: 8.5}
+          note: aquarium recommendation
+        - source: *tt
+          value: {min: 7.6, max: 8.6}
+          note: aquarium recommendation
+        - source: *nbfgr
+          value: {min: 7.8, max: 8.6}
+          note: aquarium recommendation
+        - source: *erdogan
+          value: {min: 7.7, max: 7.9}
+          note: culture tanks of a feeding trial
+        - source: *fk
+          value: {min: 7.5, max: 8.5}
+          note: aquarium recommendation
+        - source: *gar
+          value: {min: 7.5, max: 8.5}
+          note: aquarium recommendation
+        - source: *gui
+          value: {min: 7.6, max: 8.6}
+          note: aquarium recommendation
+        - source: *arc1103
+          value: {min: 6.8, max: 7.0}
+          note: one keeper's mixed Malawi tank, anecdotal
+
+  ghDgh:
+    value: {min: 3, max: 5}
+    confidence: high
+    verification: {method: waterbody, waterbody: lake-malawi}
+    rationale: >-
+      A Lake Malawi endemic takes the measured lake values. Calcium and magnesium are low in the
+      lake, so its water is soft at 3 to 5 dGH even though it is well buffered.
+    sources: *lakeSources
+    evidence:
+      - source: *branchu
+        value: {min: 4.2, max: 4.6}
+        note: computed from calcium and magnesium of the upper 50 m, north basin
+      - source: *fao
+        value: {min: 3.2, max: 4.9}
+        note: computed from the titrations of the 1960s
+    tolerance:
+      value: {min: 3, max: 25}
+      confidence: medium
+      verification:
+        method: qualified-majority
+        votes: {agree: 4, total: 6}
+      rationale: >-
+        The generator, checker-a and both tie-breakers proposed 3 to 25 dGH, checker-b and
+        checker-c 3 to 20 dGH. Seriously Fish (10 to 25), Tropical Freshwater Fish (12 to 25) and
+        Fishkeeper (up to 25) share an upper limit of 25 dGH, while Garnelio (5 to 20), FishProfiles
+        (12 to 20), Einrichtungsbeispiele (5 to 15), Fishipedia (8 to 15) and NBFGR (12 to 15) give
+        narrower comfort bands. The lower edge is the natural lake value of 3 dGH, which the
+        tolerance has to contain; the high minima of the care sheets reflect the hobby habit of
+        treating Malawi water as hard rather than a need of the fish. The care sheets partly copy
+        each other, so the confidence stays medium.
+      sources:
+        - *sf
+        - *tff
+        - *fp
+        - *tt
+        - *nbfgr
+        - &fip
+          kind: database
+          title: "Fishipedia: Pseudotropheus socolofi"
+          url: https://www.fishipedia.fr/fr/poissons/pseudotropheus-socolofi
+          accessed: 2026-10-13
+        - *branchu
+        - *fk
+        - *gar
+        - *gui
+        - &eb
+          kind: website
+          title: "Einrichtungsbeispiele: Pseudotropheus socolofi im Aquarium halten"
+          url: https://www.einrichtungsbeispiele.de/zierfische/malawisee/pseudotropheus-socolofi-slnk.html
+          accessed: 2026-10-13
+      evidence:
+        - source: *sf
+          value: {min: 10, max: 25}
+          note: aquarium recommendation
+        - source: *tff
+          value: {min: 12, max: 25}
+          note: aquarium recommendation; 10 to 16 for breeding
+        - source: *fp
+          value: {min: 12, max: 20}
+          note: aquarium recommendation
+        - source: *tt
+          value: {min: 7}
+          note: lower limit only
+        - source: *nbfgr
+          value: {min: 12, max: 15}
+          note: optimum band
+        - source: *fip
+          value: {min: 8, max: 15}
+          note: comfort band
+        - source: *branchu
+          value: {min: 4.2, max: 4.6}
+          note: natural lake water, source of the lower edge
+        - source: *fk
+          value: {max: 25}
+          note: upper limit only
+        - source: *gar
+          value: {min: 5, max: 20}
+          note: aquarium recommendation
+        - source: *gui
+          value: {min: 10, max: 25}
+          note: aquarium recommendation
+        - source: *eb
+          value: {min: 5, max: 15}
+          note: aquarium recommendation
+
+  khDkh:
+    value: {min: 5, max: 8}
+    confidence: high
+    rationale: >-
+      A Lake Malawi endemic takes the measured lake values. An alkalinity of 2.0 to 2.6 meq/L gives
+      5 to 8 dKH; sodium balances part of the bicarbonate, so the carbonate hardness exceeds the
+      total hardness.
+    sources: *lakeSources
+    evidence:
+      - source: *branchu
+        value: {min: 6.5, max: 6.9}
+        note: computed from alkalinity, north basin profiles
+      - source: *fao
+        value: {min: 5.6, max: 7.3}
+        note: computed from alkalinity after Jackson et al. (1963)
+    tolerance:
+      value: {min: 5, max: 12}
+      confidence: low
+      verification:
+        method: conservative
+        votes: {agree: 3, total: 6}
+      rationale: >-
+        The votes did not settle: the generator, checker-a and tiebreaker-1 proposed 5 to 20 dKH,
+        checker-b and checker-c 5 to 12 dKH and tiebreaker-2 5 to 15 dKH. The conservative rule
+        takes the intersection of all votes, 5 to 12 dKH, because a narrower tolerance warns
+        earlier. The sources reach wider: the Garnelio dealer sheet allows 4 to 20 dKH, Aquarium
+        Ratgeber prints 3 to 12 under carbonate hardness with an unclear unit, Einrichtungsbeispiele
+        recommends 7 to 12 dKH, and The Tropical Tank calls 10 to 12 dKH ideal and 5 to 6 the
+        least, without a maximum. Fishkeeper, Guidarium and Seriously Fish give no carbonate
+        hardness at all. The lower edge is the natural lake minimum. Few and weak sources, hence
+        the low confidence; a stable buffer that holds the pH above 7.5 matters more than the
+        exact figure.
+      sources:
+        - *tt
+        - *branchu
+        - *fao
+        - *gar
+        - *eb
+        - &ar
+          kind: website
+          title: "Aquarium Ratgeber: Eisblauer Maulbrüter"
+          url: https://www.aquarium-ratgeber.com/fische/fischarten/malawi-buntbarsche/eisblauer-maulbrueter/
+          accessed: 2026-10-13
+      evidence:
+        - source: *tt
+          value: {min: 5, max: 12}
+          note: at least 5 to 6, ideal 10 to 12, no stated maximum
+        - source: *branchu
+          value: {min: 6.5, max: 6.9}
+          note: natural lake water
+        - source: *fao
+          value: {min: 5.6, max: 7.3}
+          note: natural lake water
+        - source: *gar
+          value: {min: 4, max: 20}
+          note: aquarium recommendation
+        - source: *eb
+          value: {min: 7, max: 12}
+          note: aquarium recommendation
+        - source: *ar
+          value: {min: 3, max: 12}
+          note: listed as carbonate hardness with an inconsistent unit; read tentatively as dKH
+
+  maxSizeCm:
+    value: {male: 12, female: 10}
+    confidence: medium
+    rationale: >-
+      Total length of well-kept aquarium adults. Care sheets give 10 to 12 cm, most of them 11.5 to
+      12 cm for males (Seriously Fish about 11.5 cm standard length, AquaInfo and Fishkeeper 12 cm),
+      and the sex-specific figures put females near 10 cm. Wild fish stay much smaller (FishBase
+      6.7 cm standard length), and breeding adults in a Turkish study averaged 8.1 cm total length.
+      A single sheet quoting 15 cm stands alone.
+    sources:
+      - *sf
+      - *aqi
+      - *tff
+      - *tt
+      - *fb
+      - *karadal
+      - *fk
+      - *gar
+      - *gui
+      - &dewiki
+        kind: website
+        title: "Wikipedia (de): Eisblauer Maulbrüter"
+        url: https://de.wikipedia.org/wiki/Chindongo_socolofi
+        accessed: 2026-10-13
+    evidence:
+      - source: *sf
+        value: {male: 11.5, female: 11.5}
+        note: standard length without sex difference
+      - source: *aqi
+        value: {male: 12}
+        note: aquarium maximum; 8 cm as minimum adult length
+      - source: *tff
+        value: {male: 11, female: 10}
+      - source: *tt
+        value: {male: 10, female: 10}
+        note: one figure for both sexes
+      - source: *fb
+        value: {male: 6.7, female: 6.7}
+        note: wild specimens, standard length
+      - source: *karadal
+        value: {male: 8.1, female: 8.1}
+        note: mean total length of adult breeders
+      - source: *fk
+        value: {male: 12, female: 12}
+        note: one figure for both sexes
+      - source: *gar
+        value: {male: 12, female: 8}
+        note: final size 8 to 12 cm
+      - source: *gui
+        value: {male: 12, female: 10}
+      - source: *dewiki
+        value: {male: 7, female: 7}
+        note: wild fish, males slightly larger
+
+  predation:
+    value: 0
+    confidence: medium
+    verification:
+      method: qualified-majority
+      votes: {agree: 4, total: 6}
+    rationale: >-
+      Checker-a, checker-b and both tie-breakers voted for level 0, the generator and checker-c for
+      level 1. No source reports the species taking fish. In the lake it grazes the biocover of
+      rocks and sand (FishBase), the genus is diagnosed by a small mouth with bicuspid front teeth
+      of a grazer (Li et al. 2016, abstract), and the Cichlid Room Companion counts it among the
+      algae gardeners. Seriously Fish and The Tropical Tank describe a plant eater for peaceful
+      Malawi communities. The level-1 votes rested on AquaInfo, which notes that a female eats her
+      own fry a few hours after releasing them, on the advice to separate holding females, on a
+      dealer warning about shrimp and on one forum report of lost dither fish of unknown size.
+      Fry taken by chance in a crowded rock tank fit level 0 of the rubric, so the decided level
+      is 0; tankmates' fry are still at risk.
+    sources:
+      - *fb
+      - &li2016
+        kind: literature
+        title: >-
+          Li, S., Konings, A. F. and Stauffer, J. R. (2016). A revision of the Pseudotropheus
+          elongatus species group (Teleostei: Cichlidae) with description of a new genus and seven
+          new species. Zootaxa 4168(2), 353-381 (abstract).
+        url: https://doi.org/10.11646/zootaxa.4168.2.9
+        accessed: 2026-10-13
+      - *sf
+      - *tt
+      - *crc
+      - *aqi
+      - *fk
+      - *gar
+      - &arc15406
+        kind: archive
+        title: cichlids.com forum thread 15406
+        url: https://www.cichlids.com/disc/read.php?2,15406
+        accessed: 2026-10-13
+    evidence:
+      - source: *fb
+        value: 0
+        note: feeds on biocover of rock and sand; no fish in the diet
+      - source: *li2016
+        value: 0
+        note: inferred from the small mouth and bicuspid front teeth of the genus
+      - source: *sf
+        value: 0
+        note: vegetable-based diet, kept with peaceful mbuna and haplochromines; advises moving holding females
+      - source: *tt
+        value: 0
+        note: inferred; listed as herbivore for a mixed mbuna tank
+      - source: *crc
+        value: 0
+        note: classed among the algae gardeners
+      - source: *fk
+        value: 0
+        note: mainly vegetarian diet
+      - source: *aqi
+        value: 1
+        note: female eats her own fry after release; read as opportunistic fry predation
+      - source: *gar
+        value: 1
+        note: advises against shrimp and dwarf crayfish as tankmates; nothing on fish
+      - source: *arc15406
+        value: 1
+        note: one keeper lost dither fish of unknown size; low weight
+
+  diet:
+    value:
+      type: aufwuchs
+      bloatSensitive: true
+      foods:
+        - spirulina or algae flakes and pellets
+        - blanched spinach, peas, nori
+        - occasional brine shrimp or mysis
+    confidence: medium
+    verification:
+      method: qualified-majority
+      votes: {agree: 4, total: 6}
+    rationale: >-
+      The generator, checker-a, checker-b and tiebreaker-1 voted for aufwuchs with bloat
+      sensitivity; checker-c proposed omnivore with bloat sensitivity, and tiebreaker-2 proposed
+      aufwuchs as well but recorded the bloat flag outside its value, so its vote did not count as
+      agreeing. In the lake the species grazes the biocover on rocks and sand (FishBase), and the
+      Cichlid Room Companion places it among the algae gardeners. Seriously Fish asks for a large
+      share of plant food and no red meat, Fishkeeper calls the diet mainly vegetarian and warns of
+      bloat from animal protein, and The Tropical Tank and Fishipedia call it a herbivore. Several
+      aquaculture feeding trials label it omnivorous, but they test pellets on captive fish and
+      take the label from hobby literature, so they say little about the natural diet; one of them
+      (Royes et al. 2004) found severe fatty changes of the liver on a rich trout pellet, which
+      supports the bloat flag. Biocover also holds small invertebrates, which keeps the confidence
+      at medium.
+    sources:
+      - *fb
+      - *sf
+      - *crc
+      - *tt
+      - *fip
+      - &royes2004
+        kind: literature
+        title: >-
+          Royes, J.-A. B., Murie, D. J., Francis-Floyd, R. and Terrell, S. (2004). An evaluation of
+          two commercially prepared feeds on growth performance and liver condition of juvenile
+          African cichlids Pseudotropheus socolofi and Haplochromis ahli. North American Journal of
+          Aquaculture 66(4), 285-292 (abstract).
+        url: https://doi.org/10.1577/a03-035.1
+        accessed: 2026-10-13
+      - &royes2006
+        kind: literature
+        title: >-
+          Royes, J.-A. B., Murie, D. J. and Francis-Floyd, R. (2006). Effects of varying dietary
+          protein and lipid levels on growth performance and hepatocyte changes in juvenile African
+          cichlids (Pseudotropheus socolofi and Haplochromis ahli). Journal of the World Aquaculture
+          Society 37(1), 48-59 (abstract).
+        url: https://doi.org/10.1111/j.1749-7345.2006.00006.x
+        accessed: 2026-10-13
+      - *erdogan
+      - *pazar
+      - *aqi
+      - *nbfgr
+      - *fp
+      - *fk
+      - *gar
+      - *gui
+      - *eb
+    evidence:
+      - source: *fb
+        value: {type: aufwuchs}
+        note: wild diet of biocover on rock and sand; bloat not addressed
+      - source: *sf
+        value: {type: aufwuchs, bloatSensitive: true}
+        note: large share of plant food; red meat harms digestion
+      - source: *crc
+        value: {type: aufwuchs}
+        note: algae gardener; bloat not addressed
+      - source: *tt
+        value: {type: aufwuchs}
+        note: herbivore; bloat not addressed
+      - source: *fip
+        value: {type: aufwuchs}
+        note: herbivore
+      - source: *aqi
+        value: {type: aufwuchs}
+        note: database category herbivore; the text also mentions small animals and crustacean supplements
+      - source: *royes2004
+        value: {type: omnivore, bloatSensitive: true}
+        note: severe fatty vacuolation of the liver on a high-protein, high-fat trout pellet
+      - source: *royes2006
+        value: {type: omnivore}
+        note: label in a feeding trial on captive juveniles
+      - source: *erdogan
+        value: {type: omnivore}
+        note: label in a feeding trial; best growth at 38 percent protein and 9 percent lipid
+      - source: *pazar
+        value: {type: omnivore}
+        note: broodstock on mixed fishmeal and soy diets; very high soy caused gut inflammation
+      - source: *nbfgr
+        value: {type: omnivore}
+        note: omnivore with a mostly vegetable diet
+      - source: *fp
+        value: {type: omnivore}
+        note: takes animal food but needs plant matter
+      - source: *fk
+        value: {type: aufwuchs, bloatSensitive: true}
+        note: mainly vegetarian; animal protein can cause fatal bloat
+      - source: *gar
+        value: {type: aufwuchs}
+        note: grazer on algal growth
+      - source: *gui
+        value: {type: aufwuchs, bloatSensitive: true}
+        note: grazes algae; bloat warning for protein-rich food
+      - source: *eb
+        value: {type: omnivore, bloatSensitive: true}
+        note: plant-oriented omnivore; bloat warning for rich food
+
+  aggressionConspecific:
+    value: 2
+    confidence: medium
+    rationale: >-
+      Males hold a site and drive off rival males and females that are not ready to spawn. The
+      species-specific care sources rate it as mild for a mbuna: Seriously Fish calls it not
+      especially aggressive for the group, AquaInfo mildly aggressive with male territories of
+      only about 20 cm, Tropical Freshwater Fish one of the most peaceful of its former genus and
+      Fishkeeper relatively peaceful, while all of them warn that a male kept with a single female
+      harasses her and ask for several females per male. With the recommended harem and enough rock
+      this is a clear hierarchy with regular chasing and rare injuries. Guidarium rates the
+      species highly aggressive, but its text is partly generic; a soybean feeding trial notes
+      that males killed each other where several were kept together, which concerns more than one
+      male per tank. Forum keepers report anything from calmer than their other mbuna to the most
+      aggressive fish in the tank.
+    sources:
+      - *sf
+      - *aqi
+      - *tff
+      - *pazar
+      - *karadal
+      - *fk
+      - *gui
+      - &arc359
+        kind: archive
+        title: cichlids.com forum thread 359
+        url: https://www.cichlids.com/disc/read.php?1,359
+        accessed: 2026-10-13
+      - &arc945
+        kind: archive
+        title: cichlids.com forum thread 945
+        url: https://www.cichlids.com/disc/read.php?1,945
+        accessed: 2026-10-13
+    evidence:
+      - source: *sf
+        value: 2
+        note: not especially aggressive for a mbuna; several females per male
+      - source: *aqi
+        value: 2
+        note: mildly aggressive; male territory about 20 cm
+      - source: *tff
+        value: 2
+        note: among the most peaceful of its group
+      - source: *karadal
+        value: 2
+        note: moderately aggressive towards its own and other species in tanks
+      - source: *pazar
+        value: 3
+        note: males killed each other where several were kept in one tank
+      - source: *fk
+        value: 2
+        note: relatively peaceful; a pair alone leads to constant harassment
+      - source: *gui
+        value: 3
+        note: rated highly aggressive, hostile to its own species
+      - source: *arc359
+        value: 3
+        note: one keeper ranks it the most aggressive fish of his tank
+      - source: *arc945
+        value: 1
+        note: one keeper finds it calmer than his other mbuna
+
+  aggressionHeterospecific:
+    value: 2
+    confidence: medium
+    rationale: >-
+      Males chase other fish away from their rock site but do not pursue them through the tank.
+      Seriously Fish, AquaInfo and Fishkeeper recommend calm mbuna such as Labidochromis
+      caeruleus, Aulonocara and Copadichromis as tankmates and advise against large or aggressive
+      mbuna, by which the species itself is pushed around. Guidarium is harsher about
+      look-alikes, and forum reports range from calm mixed colonies to single dominant males.
+    sources:
+      - *sf
+      - *aqi
+      - *tff
+      - *fp
+      - *fk
+      - *gar
+      - *gui
+      - &arc14228
+        kind: archive
+        title: cichlids.com forum thread 14228
+        url: https://www.cichlids.com/disc/read.php?2,14228
+        accessed: 2026-10-13
+      - &arc14302
+        kind: archive
+        title: cichlids.com forum thread 14302
+        url: https://www.cichlids.com/disc/read.php?2,14302
+        accessed: 2026-10-13
+      - *arc1103
+    evidence:
+      - source: *sf
+        value: 2
+        note: males chase other fish; unsuited to large aggressive mbuna
+      - source: *aqi
+        value: 2
+        note: combines well with calmer utaka and Aulonocara
+      - source: *tff
+        value: 2
+        note: territorial but does well with peaceful mbuna and peacocks
+      - source: *fk
+        value: 2
+        note: fits Aulonocara, Copadichromis and easygoing mbuna
+      - source: *gui
+        value: 3
+        note: rated aggressive, hostile to look-alikes
+      - source: *arc14228
+        value: 3
+        note: one keeper finds it more aggressive than Cynotilapia afra
+      - source: *arc14302
+        value: 2
+        note: a mixed mbuna colony with few serious disputes
+      - source: *arc1103
+        value: 2
+        note: counted among the less aggressive mbuna
+
+  territory:
+    value: {size: small, breedingOnly: false}
+    confidence: medium
+    rationale: >-
+      Dominant males hold a spot at the rocks all year; AquaInfo puts the defended area at about
+      20 cm and reports up to fifteen fish sharing a square metre in the wild. FishBase and
+      Seriously Fish describe territorial males outside a strict spawning context, while Garnelio
+      stresses territoriality during courtship; the claim is local and lasting.
+    sources:
+      - *aqi
+      - *fb
+      - *sf
+      - &genner
+        kind: literature
+        title: >-
+          Genner, M. J. and Turner, G. F. (2005). The mbuna cichlids of Lake Malawi: a model for
+          rapid speciation and adaptive radiation. Fish and Fisheries 6(1), 1-34 (abstract).
+        url: https://doi.org/10.1111/j.1467-2679.2005.00173.x
+        accessed: 2026-10-13
+      - *gar
+      - *crc
+    evidence:
+      - source: *aqi
+        value: {size: small, breedingOnly: false}
+        note: male territory about 20 cm
+      - source: *fb
+        value: {size: small, breedingOnly: false}
+        note: territorial males stay close to rocks
+      - source: *sf
+        value: {size: small, breedingOnly: false}
+        note: territorial males display at a chosen spawning site
+      - source: *genner
+        value: {size: small, breedingOnly: false}
+        note: mbuna males hold territories for long periods and breed year-round
+      - source: *crc
+        value: {size: small}
+        note: algae gardener
+
+  habitatZones:
+    value: [rock, sand]
+    confidence: high
+    rationale: >-
+      Lives at about 4 to 10 m in the intermediate zone where rocky shore gives way to sand; it
+      grazes on both surfaces and males stay near the rocks. The tank needs rock piles with caves
+      and open sand between them.
+    sources:
+      - *fb
+      - *sf
+      - *aqi
+      - *crc
+      - *fk
+    evidence:
+      - source: *fb
+        value: [sand, rock]
+        note: mostly over sand, territorial males near rocks, 4 to 10 m
+      - source: *sf
+        value: [rock, sand]
+        note: intermediate zone
+      - source: *crc
+        value: [rock, sand]
+        note: intermediate habitat
+      - source: *fk
+        value: [rock, sand]
+        note: intermediate habitat
+
+  social:
+    value: {structure: harem, ratio: 3}
+    confidence: high
+    rationale: >-
+      A polygynous maternal mouthbrooder. Seriously Fish asks for at least three females per male,
+      Garnelio for one male with three females and Guidarium for three to four; AquaInfo calls one
+      male with four females ideal for breeding, and breeding studies used one male to four or five
+      females. Three females per male is the smallest ratio the sources support; more females
+      spread the male's attention further.
+    sources:
+      - *sf
+      - *aqi
+      - *karadal
+      - *pazar
+      - *genner
+      - *fk
+      - *gar
+      - *gui
+    evidence:
+      - source: *sf
+        value: {structure: harem, ratio: 3}
+        note: at least three females per male
+      - source: *aqi
+        value: {structure: harem, ratio: 4}
+        note: ideal breeding group
+      - source: *karadal
+        value: {structure: harem, ratio: 4}
+        note: breeding groups of one male to four females
+      - source: *pazar
+        value: {structure: harem, ratio: 5}
+        note: experimental broodstock ratio
+      - source: *fk
+        value: {structure: harem, ratio: 3}
+        note: several females per male
+      - source: *gar
+        value: {structure: harem, ratio: 3}
+      - source: *gui
+        value: {structure: harem, ratio: 3}
+        note: three to four females per male
+
+  speciesOnly:
+    value: false
+    confidence: high
+    verification:
+      method: unanimous
+      votes: {agree: 4, total: 4}
+    rationale: >-
+      All four votes agree. Seriously Fish names Aulonocara, Copadichromis and calm mbuna such as
+      Labidochromis caeruleus as tankmates, AquaInfo allows the calmer utaka and Aulonocara,
+      Tropical Freshwater Fish and FishProfiles suggest other mbuna and small haplochromines, and
+      The Tropical Tank lists it for mixed mbuna tanks. No source asks for a species tank except
+      to raise fry.
+    sources:
+      - *sf
+      - *aqi
+      - *tff
+      - *fp
+      - *tt
+      - *fk
+      - *gar
+      - *gui
+    evidence:
+      - source: *sf
+        value: false
+        note: names Aulonocara, Copadichromis and Labidochromis caeruleus as tankmates
+      - source: *aqi
+        value: false
+        note: allows selected other Malawi cichlids
+      - source: *tff
+        value: false
+        note: suggests small haplochromines and mbuna
+      - source: *fp
+        value: false
+        note: recommends keeping with other mbuna
+      - source: *fk
+        value: false
+        note: versatile in Malawi community tanks
+      - source: *gar
+        value: false
+        note: fits almost any mbuna tank
+      - source: *gui
+        value: false
+        note: only look-alikes to avoid
+
+  hybridGroup:
+    value: null
+    confidence: medium
+    verification:
+      method: unanimous
+      votes: {agree: 4, total: 4}
+    rationale: >-
+      All four votes agree. No source reports crosses of this species with a named species, and
+      it belongs to no curated hybrid group. Li et al. (2016) place it in Chindongo, but the
+      crossing warnings in that genus concern the barred elongatus complex, which does not include
+      it. Care sheets advise against similarly coloured tankmates because of rivalry; plain blue
+      mbuna are still best avoided as a precaution, which the colour rule of the compatibility
+      check covers.
+    sources:
+      - *cof
+      - *li2016
+      - *sf
+      - *aqi
+      - *fk
+    evidence:
+      - source: *cof
+        value: null
+        note: distinct valid species; no crossing information
+      - source: *li2016
+        value: null
+        note: places it in Chindongo; reports no crosses
+      - source: *sf
+        value: null
+        note: no crossing warning
+      - source: *aqi
+        value: null
+        note: no crossing warning
+      - source: *fk
+        value: null
+        note: advises against fish of similar colour without naming crosses
+
+  coloration:
+    value: {baseColors: [blue, black], pattern: plain}
+    confidence: medium
+    rationale: >-
+      Both sexes are a pale powder blue with dark, nearly black bands along the dorsal, anal and
+      pelvic fins and dark rays in the tail. Juveniles, females and subordinate males may show nine
+      or ten faint dark bars, which fade completely in dominant males, so the adult male pattern is
+      plain. The dark fin bands are conspicuous enough to count as a second colour.
+    sources:
+      - *sf
+      - *aqi
+      - *fk
+      - *tff
+      - *dewiki
+    evidence:
+      - source: *sf
+        value: {baseColors: [blue], pattern: plain}
+        note: same powder blue in both sexes
+      - source: *aqi
+        value: {baseColors: [blue, black], pattern: plain}
+        note: black fin bands; body bars disappear in dominant males
+      - source: *fk
+        value: {baseColors: [blue, black], pattern: plain}
+        note: dark band in the dorsal fin, missing in some populations
+      - source: *dewiki
+        value: {baseColors: [blue, black], pattern: plain}
+        note: bars only in females, juveniles and subordinate males
+
+  feedingSpeed:
+    value: hasty
+    confidence: low
+    rationale: >-
+      Like other mbuna it rushes food and eats until nothing is left, and the rubric names mbuna as
+      the example of hasty feeders. No species source rates the feeding pace; one forum keeper
+      describes a male that begs actively for food, and care sheets stress small, frequent meals.
+    sources:
+      - kind: model-knowledge
+        title: General hobby knowledge of mbuna feeding behaviour
+      - *arc945
+      - *fk
+
+  minTank:
+    value: {volumeL: 240, lengthCm: 120, depthCm: 45}
+    confidence: medium
+    rationale: >-
+      For one male with three females and the rock work they need. Seriously Fish gives a base of
+      90 by 45 cm, Tropical Freshwater Fish 100 cm and 150 L, Guidarium 120 cm and 200 L, AquaInfo
+      a length of 120 cm, Garnelio 250 to 300 L at about 120 cm, Einrichtungsbeispiele 300 L and
+      Fishkeeper 150 cm. A tank of 120 by 45 cm with about 240 L gives the females room to escape
+      the male and leaves space for a few calm tankmates.
+    sources:
+      - *sf
+      - *tff
+      - *aqi
+      - *tt
+      - *gui
+      - *gar
+      - *eb
+      - *fk
+    evidence:
+      - source: *sf
+        value: {volumeL: 154, lengthCm: 90, depthCm: 45}
+      - source: *tff
+        value: {volumeL: 150, lengthCm: 100, depthCm: 40}
+      - source: *aqi
+        value: {lengthCm: 120}
+      - source: *tt
+        value: {lengthCm: 120}
+        note: 120 cm or more
+      - source: *gui
+        value: {volumeL: 200, lengthCm: 120}
+      - source: *gar
+        value: {volumeL: 250, lengthCm: 120}
+        note: 250 to 300 L at about 120 cm
+      - source: *eb
+        value: {volumeL: 300}
+      - source: *fk
+        value: {lengthCm: 150}
+        note: length of at least 5 feet
+
+  lifespanYears:
+    value: {min: 5, max: 10}
+    confidence: low
+    rationale: >-
+      Three care sheets give a figure: NBFGR 5 to 8 years, Garnelio 5 to 10 and
+      Einrichtungsbeispiele 8 to 10. The range 5 to 10 years covers all of them and fits other mbuna
+      of this size; no study measures it.
+    sources:
+      - *nbfgr
+      - *gar
+      - *eb
+    evidence:
+      - source: *nbfgr
+        value: {min: 5, max: 8}
+      - source: *gar
+        value: {min: 5, max: 10}
+      - source: *eb
+        value: {min: 8, max: 10}
+
+  breeding:
+    value: maternal-mouthbrooder
+    confidence: high
+    rationale: >-
+      The female takes the eggs into her mouth right after laying and carries them for about three
+      weeks; the male takes no part in brood care. Breeding studies collect the eggs from the
+      females' mouths, and the Cichlid Room Companion confirms the mode.
+    sources:
+      - *fb
+      - *sf
+      - *aqi
+      - *karadal
+      - *pazar
+      - *genner
+      - *crc
+    evidence:
+      - source: *fb
+        value: maternal-mouthbrooder
+      - source: *sf
+        value: maternal-mouthbrooder
+        note: female holds the brood for 3 to 4 weeks
+      - source: *aqi
+        value: maternal-mouthbrooder
+        note: young released after about three weeks
+      - source: *pazar
+        value: maternal-mouthbrooder
+        note: eggs taken from the mouths of females
+      - source: *genner
+        value: maternal-mouthbrooder
+        note: all mbuna are maternal mouthbrooders
+      - source: *crc
+        value: maternal-mouthbrooder
+
+  beginnerSuitability:
+    value: easy
+    confidence: medium
+    rationale: >-
+      Seriously Fish recommends it strongly as a mbuna for beginners, although the site's
+      automatic difficulty score comes out as moderate, and AquaInfo and Garnelio call it suitable
+      for newcomers to Malawi cichlids. It is hardy, tank-bred and milder than most mbuna. The
+      keeper still has to provide a rock tank, a harem and a lean, plant-based diet, as for any
+      mbuna.
+    sources:
+      - *sf
+      - *aqi
+      - *gar
+    evidence:
+      - source: *sf
+        value: easy
+        note: recommended to beginners; the site's computed difficulty is moderate
+      - source: *aqi
+        value: easy
+        note: suitable for novice Malawi keepers in a proper tank
+      - source: *gar
+        value: easy
+        note: rated suitable for beginners
+
+partners:
+  suitable:
+    - species: Labidochromis caeruleus
+      reason: Calm mbuna of similar size whose yellow colour does not read as a rival; it also takes a plant-rich diet.
+    - species: Aulonocara jacobfreibergi
+      reason: Peaceful peacock that uses the sand and open water rather than the rock sites; same water.
+      condition: Only one Aulonocara species per tank; tank of at least 150 cm.
+    - species: Copadichromis borleyi
+      reason: Open-water haplochromine that ignores the rock sites and is neither prey nor predator for it.
+      condition: Tank of at least 150 cm because the Copadichromis grows to about 15 cm.
+    - species: Iodotropheus sprengerae
+      reason: Small, mild mbuna with brownish violet colour and the same lean diet.
+    - species: Synodontis njassae
+      reason: Catfish of Lake Malawi itself that shares the water, feeds at night and stays out of the cichlids' disputes.
+  unsuitable:
+    - species: Maylandia callainos
+      reason: Plain blue, more forceful mbuna that looks like a rival; constant fights over the shared colour.
+    - species: Melanochromis auratus
+      reason: Highly aggressive mbuna that harasses the milder Chindongo socolofi.
+    - species: Chindongo saulosi
+      reason: Close relative whose males are also blue with dark markings; rivalry, and no source has tested whether the two cross.
+    - species: Nimbochromis livingstonii
+      reason: Piscivorous haplochromine that eats juveniles and small adults.
+    - species: Symphysodon aequifasciatus
+      reason: Needs soft, acidic water and calm surroundings; incompatible with mbuna in every respect.
+    - species: Tropheus moorii
+      reason: Tanganyika grazer that must be kept only with its own species and reacts badly to mbuna aggression.
+
+profile:
+  overview:
+    text: >-
+      The pindani, sold as powder blue cichlid and long known as Pseudotropheus socolofi, is a
+      small mbuna from the Mozambican coast of Lake Malawi and has belonged to the genus Chindongo
+      since 2016. Males and females wear the same soft blue with dark fin edges, so a group looks
+      even and calm. It ranks among the gentler rock cichlids and is a classic of the Malawi hobby;
+      nearly every fish on sale is tank-bred, and an albino line called snow white is common. Given
+      a tank of rock and sand, a mainly plant-based diet and more females than males, it is hardy,
+      breeds readily and suits a first Malawi tank, as long as its tankmates are not much rougher.
+    sources:
+      - *cof
+      - *sf
+      - *aqi
+      - *li2016
+  habitat:
+    text: >-
+      The wild range is a short stretch of the eastern shore of Lake Malawi, from Cobue to Tumbi
+      Point in Mozambique, facing Likoma Island. Fish on the Malawian side at Thumbi West Island and
+      Otter Point were probably released there. The species keeps to shallow water of about 4 to
+      10 m in the zone where rocks thin out into sand and grazes the film of algae and tiny
+      organisms on both surfaces; many fish share small patches of rock. The lake water is warm,
+      clear and soft at only 3 to 5 dGH, yet well buffered with 5 to 8 dKH and a pH of 7.7 to 8.6.
+      Temperatures range from about 21 C in the cool season to 29 C at the surface in summer.
+    sources:
+      - *fb
+      - *sf
+      - *aqi
+      - *branchu
+      - *fao
+      - *eccles
+  sizeAndGrowth:
+    text: >-
+      Wild fish stay small at about 7 cm. Tank-raised fish grow larger: males usually reach 11 to
+      12 cm, females stop at around 10 cm. Breeding adults in an aquaculture study averaged about
+      8 cm, so fish of that size are mature. Young fish are slender and fill out with age. Growth
+      is steady on a lean diet; fast growth on rich food is no sign of good health here, because
+      surplus fat and protein strain the liver and gut. Well kept, the fish live 5 to 10 years.
+    sources:
+      - *fb
+      - *sf
+      - *aqi
+      - *karadal
+      - *nbfgr
+      - *gar
+  husbandry:
+    text: >-
+      A tank of 120 cm and about 240 litres houses one male and three females together with a few
+      calm tankmates. Stack stable rock piles with plenty of caves and gaps that rise well into the
+      water column and leave open sand between them, as in the natural transition zone. Set the
+      rocks on the bottom glass so that digging cannot topple them. Strong filtration and generous
+      weekly water changes keep nitrate low. Aim for 24 to 28 C, pH 7.5 to 8.8, moderately hard
+      water and a carbonate hardness of about 5 to 12 dKH, which keeps the pH steady; very soft,
+      acidic tap water needs a buffer. Plants are optional, and tough species are mostly left
+      alone.
+    sources:
+      - *sf
+      - *aqi
+      - *tff
+      - *tt
+      - *fk
+      - *gar
+  socialBehavior:
+    text: >-
+      Each dominant male claims a cave or a small patch of rock, often no more than about 20 cm
+      across, and chases other males and unready females from it. For a mbuna the aggression is
+      moderate: with several females per male and enough hiding places the chasing seldom causes
+      injuries, whereas a lone female with a male gets no peace. A harem of one male and three or
+      more females spreads his attention. Several males can share a large tank only if each has
+      its own rock pile; crowded males in small tanks may fight to the death. Other species are
+      driven from the male's spot but not hunted through the tank, and the pindani itself is
+      easily bullied by large or very aggressive mbuna.
+    sources:
+      - *sf
+      - *aqi
+      - *tff
+      - *pazar
+      - *genner
+  diet:
+    text: >-
+      In the lake the pindani grazes the growth on rocks and sand. In the tank a good spirulina or
+      algae flake or pellet makes the staple, with blanched spinach, peas or nori as extras. Small
+      frozen foods such as brine shrimp or mysis are an occasional treat, never the main food, and
+      beef heart or other red meat should never be fed. Feeding trials found fatty changes in the
+      liver of this species on rich trout pellets, which backs a lean, plant-based diet. Several
+      small meals a day suit its grazing habit better than one large one.
+    sources:
+      - *fb
+      - *sf
+      - *royes2004
+      - *fk
+  breeding:
+    text: >-
+      Breeding takes no special effort in a harem tank. The male cleans a flat stone or a spot on
+      the sand, shows his brightest colours and leads ripe females there with quivering displays.
+      The female releases a few eggs at a time and turns at once to gather them, then nibbles at
+      the egg spots on the male's anal fin and so takes in the sperm that fertilises the eggs in
+      her mouth. A brood holds about 20 to 60 eggs. She carries it for about three weeks, eating
+      little or nothing, and then lets out free-swimming young that take crushed flakes and brine
+      shrimp nauplii. Within hours of release she treats her own young as food, and other fish do
+      the same, so move a holding female after about two weeks if the brood should be raised;
+      moving her earlier risks a lost clutch. Breeders keep the water at about 25 to 27 C and pH
+      8.2 to 8.5. Albino females produce clearly fewer eggs than blue ones.
+    sources:
+      - *sf
+      - *aqi
+      - *fk
+      - *karadal
+  sexing:
+    text: >-
+      Sexing is tricky, because both sexes share the same blue. Adult males grow a little larger,
+      carry bigger and brighter egg spots on the anal fin and have somewhat longer pelvic fins.
+      Females and subordinate fish often show faint dark bars that dominant males lack. Behaviour
+      helps most: males guard a spot and chase, females move about in loose groups. Venting is
+      reliable but best left to experienced keepers. For a harem, raise six or more young fish
+      together and take out surplus males later.
+    sources:
+      - *sf
+      - *aqi
+      - *fk
+      - *dewiki
+  compatibility:
+    text: >-
+      The pindani fits a Malawi tank with other calm fish of similar size. Good companions are the
+      yellow Labidochromis caeruleus, Iodotropheus sprengerae, peacocks of the genus Aulonocara
+      and open-water Copadichromis in tanks of 150 cm or more. Robust, aggressive mbuna such as
+      Melanochromis auratus or large Maylandia outcompete it. Plain blue mbuna such as Maylandia
+      callainos and the related Chindongo saulosi are best left out, because similar colours
+      provoke constant rivalry. Predatory haplochromines such as Nimbochromis eat young fish, and
+      soft-water fish such as discus or other lake cichlids such as Tropheus need different water
+      or care.
+    sources:
+      - *sf
+      - *aqi
+      - *tff
+      - *fk
+  problems:
+    text: >-
+      The commonest mistake is a protein-rich diet: bloodworms, beef heart or fatty pellets as
+      staple food can trigger Malawi bloat, a swollen belly with loss of appetite that often ends
+      in death, and they strain the liver. Feed a lean, plant-based diet instead. A male with a
+      single female, too few hiding places or rough tankmates cause stress, torn fins and harassed
+      females that spit their broods. Soft, acidic water and a pH that drops between water changes
+      weaken the fish. Farm-bred imports can carry gill flukes, so quarantine new fish. Albino fish
+      breed less well than the blue form and should not share a tank with pushy species.
+    sources:
+      - *sf
+      - *fk
+      - *royes2004
+      - *karadal
+      - &tripathi
+        kind: literature
+        title: >-
+          Tripathi, A., Matey, C., Pariselle, A. and Vanhove, M. P. M. (2025). Monogeneans on exotic
+          Indian freshwater fish. 8. Co-translocation of Cichlidogyrus tilapiae (Monogenea,
+          Dactylogyridae) with pindani Chindongo socolofi (Cichliformes, Cichlidae). Parasite 32, 47.
+        url: https://doi.org/10.1051/parasite/2025046
+        accessed: 2026-10-13
+
+provenance:
+  runs:
+    - role: generator
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-13
+    - role: checker
+      model: gpt-6.1-sol
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-13
+    - role: adjudicator
+      model: claude-opus-5-5
+      date: 2026-10-13
+  disagreements:
+    - field: features.origin.value
+      proposals:
+        - by: generator
+          value: {continent: Africa, region: Lake Malawi, waterbody: Lake Malawi, localities: [Mozambican coast between Cobue and Tumbi Point, Thumbi West Island (probably introduced), Otter Point (probably introduced)]}
+        - by: checker-a
+          value: {continent: Africa, region: Lake Malawi, waterbody: Lake Malawi, localities: [Mozambique coast between Cobue and Tumbi Point, Likoma Island (type locality)]}
+        - by: checker-b
+          value: {continent: Africa, region: Lake Malawi, waterbody: lake-malawi, localities: ["Thumbi West Island to Cobue (eastern shore, Mozambique coast)", Likoma Island (type locality)]}
+        - by: checker-c
+          value: {continent: Africa, region: "Lake Malawi, Mozambique shore", waterbody: lake-malawi, localities: [Cobue, Tumbi Point, Mara Point, Mbweca]}
+      decision: {continent: Africa, region: Lake Malawi, waterbody: lake-malawi, localities: ["Mozambican coast between Cobue and Tumbi Point, with Mara Rocks and Mbweca Rocks", off Likoma Island (type locality), Thumbi West Island and Otter Point (probably introduced)]}
+      rationale: >-
+        All runs agree on Lake Malawi and the Mozambican shore; they differ only in which places
+        they list. The decision joins the native stretch with the site names of AquaInfo (which
+        lists Mara Rocks rather than Mara Point), the type locality and the Malawian sites that
+        FishBase marks as introduced, so that Thumbi West Island is not shown as part of the
+        natural range.
+    - field: features.maxSizeCm.value
+      proposals:
+        - by: generator
+          value: {male: 12, female: 10}
+        - by: checker-a
+          value: {male: 11, female: 9}
+        - by: checker-b
+          value: {male: 12, female: 10}
+        - by: checker-c
+          value: {male: 12, female: 10}
+      decision: {male: 12, female: 10}
+      rationale: >-
+        Three runs agree on 12 and 10 cm. AquaInfo, Fishkeeper, Guidarium and Garnelio give 12 cm
+        for males and the sex-specific sheets about 10 cm for females; checker-a's 11 and 9 cm sits
+        at the low end of the care sheets.
+    - field: features.predation.value
+      proposals:
+        - {by: generator, value: 1}
+        - {by: checker-a, value: 0}
+        - {by: checker-b, value: 0}
+        - {by: checker-c, value: 1}
+        - {by: tiebreaker-1, value: 0}
+        - {by: tiebreaker-2, value: 0}
+      decision: 0
+      rationale: >-
+        Decided by tally.yaml with a qualified majority of 4 of 6 votes. No source reports fish as
+        food; fry taken by chance, such as a female eating her own released young, fall under
+        level 0 of the rubric.
+    - field: features.diet.value
+      proposals:
+        - by: generator
+          value: {type: aufwuchs, bloatSensitive: true, foods: [spirulina or algae flakes and pellets, "blanched spinach, peas, nori", occasional brine shrimp or mysis]}
+        - by: checker-a
+          value: {type: aufwuchs, bloatSensitive: true, foods: [spirulina and vegetable-based flakes and granules, "blanched spinach, peas and other greens", occasional small crustaceans such as Mysis or Daphnia]}
+        - by: checker-b
+          value: {type: aufwuchs, bloatSensitive: true, foods: [spirulina flakes, vegetable pellets, blanched greens, occasional frozen food]}
+        - by: checker-c
+          value: {type: omnivore, bloatSensitive: true, foods: [algae and biofilm, small invertebrates, plant-rich prepared food, occasional small crustaceans]}
+        - by: tiebreaker-1
+          value: {type: aufwuchs, bloatSensitive: true, foods: [algae, biocover (aufwuchs) from rock and sand]}
+        - by: tiebreaker-2
+          value: aufwuchs
+      decision: {type: aufwuchs, bloatSensitive: true, foods: [spirulina or algae flakes and pellets, "blanched spinach, peas, nori", occasional brine shrimp or mysis]}
+      rationale: >-
+        Decided by tally.yaml with a qualified majority of 4 of 6 votes for aufwuchs with bloat
+        sensitivity. The omnivore label comes from feeding trials on captive fish; the field
+        sources and the care sheets describe a grazer that needs a lean, plant-based diet.
+        Tiebreaker-2 also proposed aufwuchs with bloat sensitivity but set the flag outside its
+        value, so the tally did not count it as agreeing.
+    - field: features.aggressionConspecific.value
+      proposals:
+        - {by: generator, value: 2}
+        - {by: checker-a, value: 2}
+        - {by: checker-b, value: 3}
+        - {by: checker-c, value: 3}
+      decision: 2
+      rationale: >-
+        Seriously Fish, AquaInfo, Tropical Freshwater Fish and Fishkeeper, which the adjudicator
+        read again, all rate the species as mild for a mbuna and describe chasing that stays
+        harmless with a harem and enough rock, which is level 2. Checker-b leaned on Guidarium's
+        high aggression rating, whose text is partly generic; checker-c read Seriously Fish's
+        harem advice as persistent pursuit and cited a feeding trial in which males killed each
+        other, but that concerned several males per tank, not the recommended single-male harem.
+    - field: features.social.value
+      proposals:
+        - by: generator
+          value: {structure: harem, ratio: 3}
+        - by: checker-a
+          value: {structure: harem, ratio: 3}
+        - by: checker-b
+          value: {structure: harem, ratio: 3}
+        - by: checker-c
+          value: {structure: harem, ratio: 4}
+      decision: {structure: harem, ratio: 3}
+      rationale: >-
+        Seriously Fish, Garnelio and Guidarium set the minimum at three females per male. The ratio
+        of four favoured by AquaInfo and the breeding studies is an ideal for breeding, which the
+        rationale and the profile text mention.
+    - field: features.coloration.value
+      proposals:
+        - by: generator
+          value: {baseColors: [blue, black], pattern: plain}
+        - by: checker-a
+          value: {baseColors: [blue, black], pattern: plain}
+        - by: checker-b
+          value: {baseColors: [blue, grey], pattern: plain}
+        - by: checker-c
+          value: {baseColors: [blue], pattern: plain}
+      decision: {baseColors: [blue, black], pattern: plain}
+      rationale: >-
+        All runs agree on a plain blue fish. AquaInfo, Fishkeeper and the German Wikipedia describe
+        black bands in the dorsal, anal and pelvic fins, which are a striking second colour; no
+        source describes grey.
+    - field: features.minTank.value
+      proposals:
+        - by: generator
+          value: {volumeL: 240, lengthCm: 120, depthCm: 45}
+        - by: checker-a
+          value: {volumeL: 200, lengthCm: 120, depthCm: 45}
+        - by: checker-b
+          value: {volumeL: 200, lengthCm: 120, depthCm: 40}
+        - by: checker-c
+          value: {volumeL: 270, lengthCm: 120, depthCm: 45}
+      decision: {volumeL: 240, lengthCm: 120, depthCm: 45}
+      rationale: >-
+        All runs agree on 120 cm, three on a depth of 45 cm as in Seriously Fish. A 120 by 45 cm
+        tank of normal height holds about 240 L, between the 200 L of Guidarium and the 250 to
+        300 L of Garnelio and Einrichtungsbeispiele; 200 L does not fit that footprint.
+    - field: features.lifespanYears.value
+      proposals:
+        - by: generator
+          value: {min: 5, max: 10}
+        - by: checker-a
+          value: {min: 5, max: 10}
+        - by: checker-b
+          value: {min: 8, max: 10}
+        - by: checker-c
+          value: {min: 8, max: 10}
+      decision: {min: 5, max: 10}
+      rationale: >-
+        NBFGR gives 5 to 8 years, Garnelio 5 to 10 and Einrichtungsbeispiele 8 to 10. Checker-b's
+        range had no source, checker-c's rested on one sheet; 5 to 10 years covers all three
+        sheets.
+    - field: features.beginnerSuitability.value
+      proposals:
+        - {by: generator, value: easy}
+        - {by: checker-a, value: easy}
+        - {by: checker-b, value: moderate}
+        - {by: checker-c, value: moderate}
+      decision: easy
+      rationale: >-
+        Seriously Fish, AquaInfo and Garnelio explicitly recommend the species to beginners.
+        Checker-b and checker-c chose moderate because of the harem, rock tank and lean diet it
+        needs and because of Seriously Fish's computed difficulty score; these are demands of any
+        mbuna, which the profile states, and they do not outweigh the explicit recommendations.
+    - field: features.ph.tolerance.value
+      proposals:
+        - by: generator
+          value: {min: 7.5, max: 8.8}
+        - by: checker-a
+          value: {min: 7.5, max: 8.8}
+        - by: checker-b
+          value: {min: 7.5, max: 8.6}
+        - by: checker-c
+          value: {min: 7.5, max: 8.8}
+      decision: {min: 7.5, max: 8.8}
+      rationale: >-
+        Decided by tally.yaml as unanimous with 4 of 4 votes, since checker-b's upper bound of 8.6
+        lies within the agreement threshold of 0.3; Seriously Fish supports 8.8.
+    - field: features.ghDgh.tolerance.value
+      proposals:
+        - by: generator
+          value: {min: 3, max: 25}
+        - by: checker-a
+          value: {min: 3, max: 25}
+        - by: checker-b
+          value: {min: 3, max: 20}
+        - by: checker-c
+          value: {min: 3, max: 20}
+        - by: tiebreaker-1
+          value: {min: 3, max: 25}
+        - by: tiebreaker-2
+          value: {min: 3, max: 25}
+      decision: {min: 3, max: 25}
+      rationale: >-
+        Decided by tally.yaml with a qualified majority of 4 of 6 votes. Three care sheets share
+        25 dGH as the upper limit; the cap of 20 dGH was a cautious cut without a source of its
+        own.
+    - field: features.khDkh.tolerance.value
+      proposals:
+        - by: generator
+          value: {min: 5, max: 20}
+        - by: checker-a
+          value: {min: 5, max: 20}
+        - by: checker-b
+          value: {min: 5, max: 12}
+        - by: checker-c
+          value: {min: 5, max: 12}
+        - by: tiebreaker-1
+          value: {min: 5, max: 20}
+        - by: tiebreaker-2
+          value: {min: 5, max: 15}
+      decision: {min: 5, max: 12}
+      rationale: >-
+        Decided by tally.yaml with the conservative method, because no proposal reached four
+        agreeing votes: the intersection of all votes is 5 to 12 dKH. The sources reach up to
+        20 dKH (Garnelio, 4 to 20 dKH), so the range is narrower than the widest care sheet.
