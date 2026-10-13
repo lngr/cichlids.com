@@ -1,7 +1,7 @@
 import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
 import { http, HttpResponse } from "msw";
 import { setupServer } from "msw/node";
-import { createCichlidsClient } from "./client.js";
+import { ApiError, createCichlidsClient } from "./client.js";
 
 const baseUrl = "http://cichlids-mock.test";
 
@@ -178,7 +178,10 @@ describe("createCichlidsClient", () => {
   it("rejects with an ApiError when no access token is supplied for an authorized endpoint", async () => {
     const client = createCichlidsClient({ baseUrl });
 
-    await expect(client.pictures.createComment("RRKaG", { body: "Nice fish!", stars: 5 })).rejects.toThrow();
+    const rejection = client.pictures.createComment("RRKaG", { body: "Nice fish!", stars: 5 });
+
+    await expect(rejection).rejects.toBeInstanceOf(ApiError);
+    await expect(rejection).rejects.toMatchObject({ name: "ApiError", status: 401 });
   });
 
   it("uploads a Blob as a multipart file part with the bearer token", async () => {
