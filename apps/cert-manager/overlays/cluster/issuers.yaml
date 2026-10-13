@@ -14,7 +14,7 @@ spec:
     solvers:
     - http01:
         ingress:
-          ingressClassName: nginx
+          ingressClassName: traefik
           serviceType: ClusterIP
           podTemplate:
             spec:
@@ -42,7 +42,7 @@ spec:
     solvers:
     - http01:
         ingress:
-          ingressClassName: nginx
+          ingressClassName: traefik
           serviceType: ClusterIP
           podTemplate:
             spec:

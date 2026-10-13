@@ -55,8 +55,11 @@ class EdgeDelivery(unittest.TestCase):
             self.assertFalse(owners[0]['spec']['syncPolicy']['automated']['prune'])
             self.assertNotIn(check.FINALIZER, owners[0]['metadata'].get('finalizers', []))
             self.assertIn('RespectIgnoreDifferences=true', owners[0]['spec']['syncPolicy']['syncOptions'])
-            self.assertTrue(all(rule['jqPathExpressions'] == ['.webhooks[]?.clientConfig.caBundle']
-                                for rule in owners[0]['spec']['ignoreDifferences']))
+            if service == 'cert-manager':
+                self.assertTrue(all(rule['jqPathExpressions'] == ['.webhooks[]?.clientConfig.caBundle']
+                                    for rule in owners[0]['spec']['ignoreDifferences']))
+            else:
+                self.assertNotIn('ignoreDifferences', owners[0]['spec'])
             for env in ['staging', 'prod', 'preview']:
                 self.assertFalse((ROOT / f'apps/{service}/overlays/{env}').exists())
             for doc in build(f'apps/{service}/overlays/cluster'):

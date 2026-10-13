@@ -104,6 +104,21 @@ def main():
         (DEST / f'{kind.lower()}-cert-manager-v1.json').write_text(
             json.dumps(schema, indent=2, sort_keys=True) + '\n')
         provenance[kind.lower()] = {'url': source['url'], 'sha256': source['sha256']}
+    url = ('https://raw.githubusercontent.com/k3s-io/helm-controller/'
+           '71be4991f2652515a2bb7f7464399f6733297964/'
+           'pkg/crds/yaml/generated/helm.cattle.io_helmchartconfigs.yaml')
+    data = download(url)
+    crd = yaml.safe_load(data)
+    schema = next(v['schema']['openAPIV3Schema'] for v in crd['spec']['versions']
+                  if v['name'] == 'v1')
+    schema['$schema'] = 'http://json-schema.org/draft-04/schema#'
+    schema['properties']['metadata'] = metadata
+    schema['properties']['apiVersion'] = {'enum': ['helm.cattle.io/v1']}
+    schema['properties']['kind'] = {'enum': ['HelmChartConfig']}
+    strict(schema)
+    (DEST / 'helmchartconfig-helm-v1.json').write_text(
+        json.dumps(schema, indent=2, sort_keys=True) + '\n')
+    provenance['helmchartconfig'] = {'url': url, 'sha256': hashlib.sha256(data).hexdigest()}
     (DEST / 'sources.json').write_text(json.dumps(provenance, indent=2, sort_keys=True) + '\n')
 
 

@@ -1,0 +1,37 @@
+apiVersion: helm.cattle.io/v1
+kind: HelmChartConfig
+metadata:
+  name: traefik
+  namespace: kube-system
+  annotations:
+    argocd.argoproj.io/sync-options: Prune=false,Delete=false
+spec:
+  valuesContent: |
+    deployment:
+      replicas: 1
+    service:
+      type: LoadBalancer
+    ports:
+      web:
+        exposedPort: 80
+      websecure:
+        exposedPort: 443
+    providers:
+      file:
+        enabled: true
+        content: |
+          http:
+            routers:
+              https-redirect:
+                entryPoints:
+                - web
+                rule: '!PathPrefix(`/.well-known/acme-challenge/`)'
+                priority: 2147483646
+                middlewares:
+                - https-redirect
+                service: noop@internal
+            middlewares:
+              https-redirect:
+                redirectScheme:
+                  scheme: https
+                  permanent: true
