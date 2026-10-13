@@ -1,0 +1,3370 @@
+schemaVersion: 1
+id: "heterotilapia-buettikoferi"
+legacyIds:
+- 590
+status: "described"
+taxonomy:
+  validName: "Heterotilapia buettikoferi"
+  genus: "Heterotilapia"
+  species: "buettikoferi"
+  author: "(Hubrecht, 1881)"
+  source:
+    kind: "catalog-of-fishes"
+    title: "Eschmeyer's Catalog of Fishes: species of Heterotilapia"
+    url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Heterotilapia"
+    accessed: "2026-10-13"
+  synonyms:
+  - name: "Chromis buttikoferi"
+    note: "Original combination; epithet subsequently corrected under ICZN Article 32.5.2.1."
+  - name: "Tilapia buttikoferi"
+    note: "Former generic combination and historical spelling."
+  - name: "Heterotilapia buttikoferi"
+    note: "Historical epithet spelling retained by many sources."
+  - name: "Tilapia buettikoferi"
+    note: "Former generic combination with corrected epithet."
+  - name: "Tilapia ansorgii"
+    note: "Junior synonym recognized by the Catalog of Fishes."
+  legacyNames:
+  - "Tilapia butterkofferi"
+  note: "Eschmeyer's Catalog validates Heterotilapia buettikoferi (Hubrecht, 1881), including the mandatory correction\
+    \ of the patronym under ICZN Article 32.5.2.1. Both the current Heterotilapia query and the legacy Tilapia query\
+    \ were read on 2026-10-13; the latter URL is https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Tilapia.\
+    \ CRC confirms the genus while retaining buttikoferi. The legacy butterkofferi is a spelling error; Pelmatochromis\
+    \ buettikoferi is a different species. Former combinations and historical spellings are retained as search aliases,\
+    \ not additional valid species."
+names:
+  trade:
+    en:
+    - "Zebra tilapia"
+    - "Buttikofer's tilapia"
+    - "Hornet tilapia"
+    de:
+    - "Zebratilapia"
+    - "Hornissenbarsch"
+    pt-BR:
+    - "Tilápia Zebra"
+    - "Tilápia Buttikoferi"
+variants: []
+features:
+  origin:
+    value:
+      continent: "Africa"
+      region: "Lower coastal rivers from Guinea-Bissau through Guinea and Sierra Leone to western Liberia"
+      waterbody: null
+      localities:
+      - "Geba River"
+      - "Corubal River"
+      - "Rokel River"
+      - "Jong River"
+      - "St. Paul River"
+      - "St. John River"
+    confidence: "high"
+    rationale: "All profiles describe the same coastal West African range in different words and with different\
+      \ locality subsets. Catalog and FishBase establish the wider range, rather than restricting origin to Sierra\
+      \ Leone and Guinea. FishBase's Sierra Leone occurrence record adds Rokel and Jong; St. Paul is the type locality.\
+      \ Introduced populations are excluded."
+    sources:
+    - kind: "catalog-of-fishes"
+      title: "Eschmeyer's Catalog of Fishes: species of Heterotilapia"
+      url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Heterotilapia"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishBase species summary: Heterotilapia buettikoferi"
+      url: "https://www.fishbase.se/summary/Heterotilapia-buettikoferi.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Nordiska Ciklidsallskapet species register: Heterotilapia buttikoferi"
+      url: "https://www.ciklid.org/artregister/art.php?ID=539"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishBase Sierra Leone occurrence summary: Heterotilapia buettikoferi"
+      url: "https://www.fishbase.se/country/CountrySpeciesSummary.php?c_code=694&id=8902"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "catalog-of-fishes"
+        title: "Eschmeyer's Catalog of Fishes: species of Heterotilapia"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Heterotilapia"
+        accessed: "2026-10-13"
+      value:
+        continent: "Africa"
+        region: "Guinea-Bissau to western Liberia"
+    - source:
+        kind: "database"
+        title: "FishBase species summary: Heterotilapia buettikoferi"
+        url: "https://www.fishbase.se/summary/Heterotilapia-buettikoferi.html"
+        accessed: "2026-10-13"
+      value:
+        continent: "Africa"
+        region: "Lower coastal rivers from Geba and Corubal to St. John"
+    - source:
+        kind: "database"
+        title: "FishBase Sierra Leone occurrence summary: Heterotilapia buettikoferi"
+        url: "https://www.fishbase.se/country/CountrySpeciesSummary.php?c_code=694&id=8902"
+        accessed: "2026-10-13"
+      value:
+        localities:
+        - "Rokel River"
+        - "Jong River"
+      note: "Native Sierra Leone occurrence record also lists additional coastal rivers."
+  temperatureC:
+    value:
+      min: 24
+      max: 30
+    confidence: "low"
+    rationale: "Qualified majority, 5 of 6 votes, fixes 24 to 30 C after integer rounding of the agreeing proposal\
+      \ bounds. The wider measured Rokel/Seli source envelope is 23.5 to 30.2 C, from Konoyima and Barrie; the decided\
+      \ interval is not its full union. Waanje reports 23.2 to 25.6 C, Wanjei 26.5 to 32.3 C and the older FAO Jong\
+      \ directory 28 to 34 C. These additional rivers do not establish occupied microhabitats at the extremes. The\
+      \ tally retains the Rokel-based selection rather than the broader regional envelope. Field temperature and\
+      \ pH remain useful although some ionic rows in these studies are problematic. FishBase confirms native Rokel\
+      \ occurrence, but none of the water studies measured identified individuals alongside the endpoints. Confidence\
+      \ stays low. Proposals: generator 23.5 to 30.2; checker-a 23 to 28; checker-b 23.9 to 30.2; checker-c 23.5\
+      \ to 30.2; tiebreaker-1 23.9 to 30.2; tiebreaker-2 23.5 to 30.2."
+    sources:
+    - kind: "literature"
+      title: "Konoyima et al. (2020). Lengthz-Weight Relationship and Condition Factor of Coelotilapia joka in the\
+        \ Rokel/Seli River, West Africa."
+      url: "https://doi.org/10.18052/www.scipress.com/ilns.77.27"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Barrie, A., Agodzo, S. K., Frazer-Williams, R., Awuah, E. and Bessah, E. (2023). A multivariate statistical\
+        \ approach and water quality index for water quality assessment for the Rokel river in Sierra Leone. Heliyon\
+        \ 9, e16196."
+      url: "https://doi.org/10.1016/j.heliyon.2023.e16196"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "BEDGIS-SL: TRANSCO CLSG river water monitoring workbook, November 2017 field and laboratory data"
+      url: "https://www.bedgis-sl.website/images/Docs/TRANSCOEnvironmentalData_Water.xlsx"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishBase species summary: Heterotilapia buettikoferi"
+      url: "https://www.fishbase.se/summary/Heterotilapia-buettikoferi.html"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Mabey et al. (2026). Assessment of Physico-Chemical Parameters of Selected Sites along the Wanjei\
+        \ River, Pujehun District, Sierra Leone"
+      url: "https://doi.org/10.4236/ojapps.2026.163057"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa, volume\
+        \ 2: Sierra Leone waterbody directory"
+      url: "https://www.fao.org/4/t0360e/t0360e10.htm"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishBase Sierra Leone occurrence summary: Heterotilapia buettikoferi"
+      url: "https://www.fishbase.se/country/CountrySpeciesSummary.php?c_code=694&id=8902"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Lamboj A. and Mansaray A., Ecological conditions and fish diversity of the Upper and Middle Waanje\
+        \ River in Sierra Leone (abstract, University of Vienna)"
+      url: "https://evolution.univie.ac.at/news-and-events/detailansicht/news/anton-lamboj-1"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "literature"
+        title: "Konoyima et al. (2020). Lengthz-Weight Relationship and Condition Factor of Coelotilapia joka in\
+          \ the Rokel/Seli River, West Africa."
+        url: "https://doi.org/10.18052/www.scipress.com/ilns.77.27"
+        accessed: "2026-10-13"
+      value:
+        min: 23.5
+        max: 29.5
+      note: "Rokel/Seli water measurements in 2012; target fish was Coelotilapia joka."
+    - source:
+        kind: "literature"
+        title: "Barrie, A., Agodzo, S. K., Frazer-Williams, R., Awuah, E. and Bessah, E. (2023). A multivariate\
+          \ statistical approach and water quality index for water quality assessment for the Rokel river in Sierra\
+          \ Leone. Heliyon 9, e16196."
+        url: "https://doi.org/10.1016/j.heliyon.2023.e16196"
+        accessed: "2026-10-13"
+      value:
+        min: 23.9
+        max: 30.2
+      note: "Rokel river stations in two seasons of 2019; no simultaneous buettikoferi capture."
+    - source:
+        kind: "literature"
+        title: "Lamboj A. and Mansaray A., Ecological conditions and fish diversity of the Upper and Middle Waanje\
+          \ River in Sierra Leone (abstract, University of Vienna)"
+        url: "https://evolution.univie.ac.at/news-and-events/detailansicht/news/anton-lamboj-1"
+        accessed: "2026-10-13"
+      value:
+        min: 23.2
+        max: 25.6
+      note: "Public abstract of a four-year upper and middle Waanje survey."
+    - source:
+        kind: "database"
+        title: "BEDGIS-SL: TRANSCO CLSG river water monitoring workbook, November 2017 field and laboratory data"
+        url: "https://www.bedgis-sl.website/images/Docs/TRANSCOEnvironmentalData_Water.xlsx"
+        accessed: "2026-10-13"
+      value:
+        min: 26.08
+        max: 28.31
+      note: "November 2017 measurements across coastal river stations."
+    - source:
+        kind: "literature"
+        title: "Mabey et al. (2026). Assessment of Physico-Chemical Parameters of Selected Sites along the Wanjei\
+          \ River, Pujehun District, Sierra Leone"
+        url: "https://doi.org/10.4236/ojapps.2026.163057"
+        accessed: "2026-10-13"
+      value:
+        min: 26.5
+        max: 32.3
+      note: "Wanjei measurements excluded from the decided endpoints; chemistry inconsistencies reduce weight."
+    - source:
+        kind: "literature"
+        title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa, volume\
+          \ 2: Sierra Leone waterbody directory"
+        url: "https://www.fao.org/4/t0360e/t0360e10.htm"
+        accessed: "2026-10-13"
+      value:
+        min: 28
+        max: 34
+      note: "Jong seasonal directory values; sampling depth and duration unspecified."
+    - source:
+        kind: "database"
+        title: "FishBase species summary: Heterotilapia buettikoferi"
+        url: "https://www.fishbase.se/summary/Heterotilapia-buettikoferi.html"
+        accessed: "2026-10-13"
+      value:
+        min: 23
+        max: 25
+      note: "Aquarium-atlas range, not a natural-site measurement."
+    tolerance:
+      value:
+        min: 22
+        max: 30
+      confidence: "low"
+      rationale: "Qualified majority, 5 of 6 votes, fixes 22 to 30 C at low confidence. Aqua-Fish and Israquarium\
+        \ support the lower endpoint, while most care advice ends at 25 to 29 C and Interaquaristik reaches 30 C.\
+        \ The five agreeing 22 to 30.2 C proposals are rounded to 22 to 30 C, narrower than both those proposals\
+        \ and the Barrie field maximum of 30.2 C. Containment applies to the tally's rounded natural 24 to 30 C\
+        \ range. No retrieved source demonstrates years of health at the outer endpoints; routine maintenance near\
+        \ 24 to 27 C has stronger practical support. Proposals: generator 22 to 30.2; checker-a 23 to 28; checker-b\
+        \ 22 to 30.2; checker-c 22 to 30.2; tiebreaker-1 22 to 30.2; tiebreaker-2 22 to 30.2."
+      sources:
+      - kind: "database"
+        title: "Aqua-Fish.Net: Zebra cichlid, Tilapia buttikoferi"
+        url: "https://en.aqua-fish.net/fish/zebra-cichlid"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Israquarium fish index: Tilapia buttikoferi"
+        url: "https://www.israquarium.co.il/Fish/FishIndex/Tilapia%20buttikoferi.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "My-fish Fishothek: Heterotilapia buettikoferi, Zebratilapia"
+        url: "https://my-fish.org/my-fishothek/tilapia-buttikoferi-zebratilapia/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aquarismo Paulista: Tilapia Zebra, Heterotilapia buettikoferi species care sheet (June 2026)"
+        url: "https://www.aquarismopaulista.com/zebra-heterotilapia-buettikoferi/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Barrie, A., Agodzo, S. K., Frazer-Williams, R., Awuah, E. and Bessah, E. (2023). A multivariate\
+          \ statistical approach and water quality index for water quality assessment for the Rokel river in Sierra\
+          \ Leone. Heliyon 9, e16196."
+        url: "https://doi.org/10.1016/j.heliyon.2023.e16196"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Interaquaristik: Zebratilapia, Tilapia buttikoferi species care sheet"
+        url: "https://www.interaquaristik.de/tiere/zierfische/barsche-und-skalare/zebratilapia-tilapia-buttikoferi/a-85121"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Zoopet: Tilapia buttikoferi species profile"
+        url: "https://www.zoopet.com/fiskar/fisk.php?NR=165"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Tropical Fish Site: Zebra Tilapia, Tilapia Buttikoferi"
+        url: "https://www.tropicalfishsite.com/zebra-tilapia-tilapia-buttikoferi/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase species summary: Heterotilapia buettikoferi"
+        url: "https://www.fishbase.se/summary/Heterotilapia-buettikoferi.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Guidarium, Zebra Tilapia"
+        url: "https://guidarium.com/fishes/zebra-tilapia"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "TropicalFreshwaterFish: Buttikoferi, Tilapia buttikoferi"
+        url: "https://tropicalfreshwaterfish.com/species/Tilapia_buttikoferi.html"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Riverpark Aquatics, Zebra Tilapia care guide"
+        url: "https://riverparkaquatics.co.uk/zebra-tilapia-heterotilapia-buttikoferi-4-5cm/"
+        accessed: "2026-10-13"
+      evidence:
+      - source:
+          kind: "database"
+          title: "Aqua-Fish.Net: Zebra cichlid, Tilapia buttikoferi"
+          url: "https://en.aqua-fish.net/fish/zebra-cichlid"
+          accessed: "2026-10-13"
+        value:
+          min: 22
+          max: 25
+      - source:
+          kind: "database"
+          title: "Israquarium fish index: Tilapia buttikoferi"
+          url: "https://www.israquarium.co.il/Fish/FishIndex/Tilapia%20buttikoferi.html"
+          accessed: "2026-10-13"
+        value:
+          min: 22
+          max: 29
+      - source:
+          kind: "database"
+          title: "My-fish Fishothek: Heterotilapia buettikoferi, Zebratilapia"
+          url: "https://my-fish.org/my-fishothek/tilapia-buttikoferi-zebratilapia/"
+          accessed: "2026-10-13"
+        value:
+          min: 23
+          max: 28
+      - source:
+          kind: "website"
+          title: "Interaquaristik: Zebratilapia, Tilapia buttikoferi species care sheet"
+          url: "https://www.interaquaristik.de/tiere/zierfische/barsche-und-skalare/zebratilapia-tilapia-buttikoferi/a-85121"
+          accessed: "2026-10-13"
+        value:
+          min: 22
+          max: 30
+        note: "Retail recommendation."
+      - source:
+          kind: "website"
+          title: "Tropical Fish Site: Zebra Tilapia, Tilapia Buttikoferi"
+          url: "https://www.tropicalfishsite.com/zebra-tilapia-tilapia-buttikoferi/"
+          accessed: "2026-10-13"
+        value:
+          min: 22
+          max: 28
+        note: "General hobby recommendation."
+      - source:
+          kind: "database"
+          title: "Zoopet: Tilapia buttikoferi species profile"
+          url: "https://www.zoopet.com/fiskar/fisk.php?NR=165"
+          accessed: "2026-10-13"
+        value:
+          min: 22
+          max: 25
+      - source:
+          kind: "database"
+          title: "Aquarismo Paulista: Tilapia Zebra, Heterotilapia buettikoferi species care sheet (June 2026)"
+          url: "https://www.aquarismopaulista.com/zebra-heterotilapia-buettikoferi/"
+          accessed: "2026-10-13"
+        value:
+          min: 22
+          max: 28
+      - source:
+          kind: "literature"
+          title: "Barrie, A., Agodzo, S. K., Frazer-Williams, R., Awuah, E. and Bessah, E. (2023). A multivariate\
+            \ statistical approach and water quality index for water quality assessment for the Rokel river in Sierra\
+            \ Leone. Heliyon 9, e16196."
+          url: "https://doi.org/10.1016/j.heliyon.2023.e16196"
+          accessed: "2026-10-13"
+        value:
+          min: 23.9
+          max: 30.2
+        note: "Field range informs containment only; not an aquarium trial."
+      verification:
+        method: "qualified-majority"
+        votes:
+          agree: 5
+          total: 6
+    verification:
+      method: "qualified-majority"
+      votes:
+        agree: 5
+        total: 6
+  ph:
+    value:
+      min: 5.6
+      max: 8
+    confidence: "low"
+    rationale: "Median decision, with 3 of 6 votes agreeing with the top candidate and no qualified majority, fixes\
+      \ pH 5.6 to 8.0 at low confidence. Ordered proposed lower bounds are 5.4, 5.4, 5.4, 5.8, 5.8 and 6.5, so the\
+      \ middle two average to 5.6; the median upper bound is 8.0. The wider measured Rokel/Seli envelope is 5.4\
+      \ to 8.0 across Konoyima and Barrie. The selected lower bound therefore excludes a reported 5.4 reading and\
+      \ is an adjudicated summary, not a measurement or a complete habitat envelope. Freshwater Jong and Waanje\
+      \ results confirm regional variation, while human impacts and unconfirmed fish occupancy prevent stronger\
+      \ confidence. Proposals: generator 5.4 to 8; checker-a 6.5 to 7.6; checker-b 5.8 to 8; checker-c 5.4 to 8;\
+      \ tiebreaker-1 5.8 to 8; tiebreaker-2 5.4 to 8."
+    sources:
+    - kind: "literature"
+      title: "Konoyima et al. (2020). Lengthz-Weight Relationship and Condition Factor of Coelotilapia joka in the\
+        \ Rokel/Seli River, West Africa."
+      url: "https://doi.org/10.18052/www.scipress.com/ilns.77.27"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Barrie, A., Agodzo, S. K., Frazer-Williams, R., Awuah, E. and Bessah, E. (2023). A multivariate statistical\
+        \ approach and water quality index for water quality assessment for the Rokel river in Sierra Leone. Heliyon\
+        \ 9, e16196."
+      url: "https://doi.org/10.1016/j.heliyon.2023.e16196"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Evaluating the Mattru Jong Water Supply System in Sierra Leone (2016). Table 3."
+      url: "https://doi.org/10.21474/ijar01/2173"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Lamboj A. and Mansaray A., Ecological conditions and fish diversity of the Upper and Middle Waanje\
+        \ River in Sierra Leone (abstract, University of Vienna)"
+      url: "https://evolution.univie.ac.at/news-and-events/detailansicht/news/anton-lamboj-1"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "BEDGIS-SL: TRANSCO CLSG river water monitoring workbook, November 2017 field and laboratory data"
+      url: "https://www.bedgis-sl.website/images/Docs/TRANSCOEnvironmentalData_Water.xlsx"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishBase species summary: Heterotilapia buettikoferi"
+      url: "https://www.fishbase.se/summary/Heterotilapia-buettikoferi.html"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa, volume\
+        \ 2: Sierra Leone waterbody directory"
+      url: "https://www.fao.org/4/t0360e/t0360e10.htm"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishBase Sierra Leone occurrence summary: Heterotilapia buettikoferi"
+      url: "https://www.fishbase.se/country/CountrySpeciesSummary.php?c_code=694&id=8902"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "literature"
+        title: "Konoyima et al. (2020). Lengthz-Weight Relationship and Condition Factor of Coelotilapia joka in\
+          \ the Rokel/Seli River, West Africa."
+        url: "https://doi.org/10.18052/www.scipress.com/ilns.77.27"
+        accessed: "2026-10-13"
+      value:
+        min: 5.4
+        max: 7.1
+      note: "Measured Rokel/Seli pH; no species-specific endpoint occupancy."
+    - source:
+        kind: "literature"
+        title: "Barrie, A., Agodzo, S. K., Frazer-Williams, R., Awuah, E. and Bessah, E. (2023). A multivariate\
+          \ statistical approach and water quality index for water quality assessment for the Rokel river in Sierra\
+          \ Leone. Heliyon 9, e16196."
+        url: "https://doi.org/10.1016/j.heliyon.2023.e16196"
+        accessed: "2026-10-13"
+      value:
+        min: 6.5
+        max: 8
+      note: "Rokel field observations in 2019."
+    - source:
+        kind: "literature"
+        title: "Evaluating the Mattru Jong Water Supply System in Sierra Leone (2016). Table 3."
+        url: "https://doi.org/10.21474/ijar01/2173"
+        accessed: "2026-10-13"
+      value:
+        min: 5.87
+        max: 5.94
+      note: "Freshwater JON 2 and JON 3; boreholes and potentially estuarine JON 1 excluded."
+    - source:
+        kind: "literature"
+        title: "Lamboj A. and Mansaray A., Ecological conditions and fish diversity of the Upper and Middle Waanje\
+          \ River in Sierra Leone (abstract, University of Vienna)"
+        url: "https://evolution.univie.ac.at/news-and-events/detailansicht/news/anton-lamboj-1"
+        accessed: "2026-10-13"
+      value:
+        min: 6.6
+        max: 7.6
+      note: "Waanje survey abstract."
+    - source:
+        kind: "database"
+        title: "BEDGIS-SL: TRANSCO CLSG river water monitoring workbook, November 2017 field and laboratory data"
+        url: "https://www.bedgis-sl.website/images/Docs/TRANSCOEnvironmentalData_Water.xlsx"
+        accessed: "2026-10-13"
+      value:
+        min: 6.26
+        max: 7.09
+      note: "Coastal river field readings in November 2017."
+    - source:
+        kind: "literature"
+        title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa, volume\
+          \ 2: Sierra Leone waterbody directory"
+        url: "https://www.fao.org/4/t0360e/t0360e10.htm"
+        accessed: "2026-10-13"
+      value:
+        min: 5.4
+        max: 7.4
+      note: "Regional freshwater directory envelope; individual sampling series poorly specified."
+    - source:
+        kind: "database"
+        title: "FishBase species summary: Heterotilapia buettikoferi"
+        url: "https://www.fishbase.se/summary/Heterotilapia-buettikoferi.html"
+        accessed: "2026-10-13"
+      value:
+        min: 6.5
+        max: 7
+      note: "Compiled environment band lacks field sampling context."
+    tolerance:
+      value:
+        min: 5.6
+        max: 8
+      confidence: "low"
+      rationale: "Conservative decision, with 3 of 6 votes agreeing with the top candidate, first intersects all\
+        \ proposals at 6.0 to 8.0 and then expands the lower bound to contain the median natural minimum of 5.6.\
+        \ The decided tolerance is therefore 5.6 to 8.0 at low confidence. It is narrower than generator and checker-c's\
+        \ 5.4 to 8.0 and tiebreaker-2's 5.4 to 8.6. LiveAquaria and Tropical Fish Site give 7.8 to 8.6, but their\
+        \ alkaline extreme lacks chronic-health verification and is not retained by the conservative rule. Neutral\
+        \ care recommendations have better overlap; 5.6 is habitat-derived rather than a tested captive endpoint.\
+        \ Proposals: generator 5.4 to 8; checker-a 6 to 8; checker-b 5.8 to 8; checker-c 5.4 to 8; tiebreaker-1\
+        \ 5.8 to 8; tiebreaker-2 5.4 to 8.6."
+      sources:
+      - kind: "database"
+        title: "Aqua-Fish.Net: Zebra cichlid, Tilapia buttikoferi"
+        url: "https://en.aqua-fish.net/fish/zebra-cichlid"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "TropicalFreshwaterFish: Buttikoferi, Tilapia buttikoferi"
+        url: "https://tropicalfreshwaterfish.com/species/Tilapia_buttikoferi.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Israquarium fish index: Tilapia buttikoferi"
+        url: "https://www.israquarium.co.il/Fish/FishIndex/Tilapia%20buttikoferi.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase species summary: Heterotilapia buettikoferi"
+        url: "https://www.fishbase.se/summary/Heterotilapia-buettikoferi.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Guidarium, Zebra Tilapia"
+        url: "https://guidarium.com/fishes/zebra-tilapia"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "My-fish Fishothek: Heterotilapia buettikoferi, Zebratilapia"
+        url: "https://my-fish.org/my-fishothek/tilapia-buttikoferi-zebratilapia/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Evaluating the Mattru Jong Water Supply System in Sierra Leone (2016). Table 3."
+        url: "https://doi.org/10.21474/ijar01/2173"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Barrie, A., Agodzo, S. K., Frazer-Williams, R., Awuah, E. and Bessah, E. (2023). A multivariate\
+          \ statistical approach and water quality index for water quality assessment for the Rokel river in Sierra\
+          \ Leone. Heliyon 9, e16196."
+        url: "https://doi.org/10.1016/j.heliyon.2023.e16196"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Interaquaristik: Zebratilapia, Tilapia buttikoferi species care sheet"
+        url: "https://www.interaquaristik.de/tiere/zierfische/barsche-und-skalare/zebratilapia-tilapia-buttikoferi/a-85121"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "LiveAquaria: Butterikoferi Cichlid species care sheet"
+        url: "https://www.liveaquaria.com/products/butterikoferi-cichlid"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Tropical Fish Site: Zebra Tilapia, Tilapia Buttikoferi"
+        url: "https://www.tropicalfishsite.com/zebra-tilapia-tilapia-buttikoferi/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "TropicalFreshwaterFish species directory: Zebra Tilapia, Tilapia buttikoferi."
+        url: "https://tropicalfreshwaterfish.com/other_african_cichlids.htm"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Konoyima et al. (2020). Lengthz-Weight Relationship and Condition Factor of Coelotilapia joka in\
+          \ the Rokel/Seli River, West Africa."
+        url: "https://doi.org/10.18052/www.scipress.com/ilns.77.27"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Riverpark Aquatics, Zebra Tilapia care guide"
+        url: "https://riverparkaquatics.co.uk/zebra-tilapia-heterotilapia-buttikoferi-4-5cm/"
+        accessed: "2026-10-13"
+      evidence:
+      - source:
+          kind: "database"
+          title: "Aqua-Fish.Net: Zebra cichlid, Tilapia buttikoferi"
+          url: "https://en.aqua-fish.net/fish/zebra-cichlid"
+          accessed: "2026-10-13"
+        value:
+          min: 6.5
+          max: 7.3
+      - source:
+          kind: "database"
+          title: "TropicalFreshwaterFish: Buttikoferi, Tilapia buttikoferi"
+          url: "https://tropicalfreshwaterfish.com/species/Tilapia_buttikoferi.html"
+          accessed: "2026-10-13"
+        value:
+          min: 6
+          max: 7.5
+      - source:
+          kind: "database"
+          title: "Israquarium fish index: Tilapia buttikoferi"
+          url: "https://www.israquarium.co.il/Fish/FishIndex/Tilapia%20buttikoferi.html"
+          accessed: "2026-10-13"
+        value:
+          min: 6.8
+          max: 8
+      - source:
+          kind: "database"
+          title: "My-fish Fishothek: Heterotilapia buettikoferi, Zebratilapia"
+          url: "https://my-fish.org/my-fishothek/tilapia-buttikoferi-zebratilapia/"
+          accessed: "2026-10-13"
+        value:
+          min: 6
+          max: 7.5
+      - source:
+          kind: "website"
+          title: "LiveAquaria: Butterikoferi Cichlid species care sheet"
+          url: "https://www.liveaquaria.com/products/butterikoferi-cichlid"
+          accessed: "2026-10-13"
+        value:
+          min: 7.8
+          max: 8.6
+        note: "Retail claim, not a measured long-term upper limit."
+      - source:
+          kind: "website"
+          title: "Tropical Fish Site: Zebra Tilapia, Tilapia Buttikoferi"
+          url: "https://www.tropicalfishsite.com/zebra-tilapia-tilapia-buttikoferi/"
+          accessed: "2026-10-13"
+        value:
+          min: 7.8
+          max: 8.6
+        note: "Conflicting general hobby recommendation."
+      - source:
+          kind: "literature"
+          title: "Konoyima et al. (2020). Lengthz-Weight Relationship and Condition Factor of Coelotilapia joka\
+            \ in the Rokel/Seli River, West Africa."
+          url: "https://doi.org/10.18052/www.scipress.com/ilns.77.27"
+          accessed: "2026-10-13"
+        value:
+          min: 5.4
+          max: 7.1
+        note: "Natural river support only; not aquarium longevity evidence."
+      verification:
+        method: "conservative"
+        votes:
+          agree: 3
+          total: 6
+    verification:
+      method: "median"
+      votes:
+        agree: 3
+        total: 6
+  ghDgh:
+    value:
+      min: 0
+      max: 1
+    confidence: "low"
+    rationale: "The tally calls all four proposals unanimous within its 2 dGH agreement threshold and rounds their\
+      \ median bounds to 0 to 1 dGH, with low confidence. Zero is a rounded endpoint, not evidence of mineral-free\
+      \ water. Jong and BEDGIS indicate very soft rivers. The chosen upper bound is narrower than the Waanje source\
+      \ range of 0 to 2 dGH and excludes the Livingstone Sonapiti value of about 1.37 dGH, which helped produce\
+      \ the generator proposal of 0.2 to 1.4. Barrie's calcium-carbonate row would imply 1.4 to 6.2 dGH if interpreted\
+      \ as hardness, but its identity and consistency with TDS are insufficient for that conversion. These regional\
+      \ measurements are not a complete species-wide range. Proposals: generator 0.2 to 1.4; checker-a 0 to 2; checker-b\
+      \ 0.2 to 0.7; checker-c 0.2 to 0.5."
+    sources:
+    - kind: "literature"
+      title: "Evaluating the Mattru Jong Water Supply System in Sierra Leone (2016). Table 3."
+      url: "https://doi.org/10.21474/ijar01/2173"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Livingstone, D. A. (1963). Chemical composition of rivers and lakes. USGS Professional Paper 440-G.\
+        \ Table 69, Konkoure River at Sonapiti."
+      url: "https://doi.org/10.3133/pp440g"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Lamboj A. and Mansaray A., Ecological conditions and fish diversity of the Upper and Middle Waanje\
+        \ River in Sierra Leone (abstract, University of Vienna)"
+      url: "https://evolution.univie.ac.at/news-and-events/detailansicht/news/anton-lamboj-1"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Barrie, A., Agodzo, S. K., Frazer-Williams, R., Awuah, E. and Bessah, E. (2023). A multivariate statistical\
+        \ approach and water quality index for water quality assessment for the Rokel river in Sierra Leone. Heliyon\
+        \ 9, e16196."
+      url: "https://doi.org/10.1016/j.heliyon.2023.e16196"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "BEDGIS-SL: TRANSCO CLSG river water monitoring workbook, November 2017 field and laboratory data"
+      url: "https://www.bedgis-sl.website/images/Docs/TRANSCOEnvironmentalData_Water.xlsx"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishBase species summary: Heterotilapia buettikoferi"
+      url: "https://www.fishbase.se/summary/Heterotilapia-buettikoferi.html"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Mabey et al. (2026). Assessment of Physico-Chemical Parameters of Selected Sites along the Wanjei\
+        \ River, Pujehun District, Sierra Leone"
+      url: "https://doi.org/10.4236/ojapps.2026.163057"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa, volume\
+        \ 2: Sierra Leone waterbody directory"
+      url: "https://www.fao.org/4/t0360e/t0360e10.htm"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "literature"
+        title: "Evaluating the Mattru Jong Water Supply System in Sierra Leone (2016). Table 3."
+        url: "https://doi.org/10.21474/ijar01/2173"
+        accessed: "2026-10-13"
+      value:
+        min: 0.224
+        max: 0.336
+      note: "JON 2 and JON 3 total hardness 4 to 6 mg/L divided by 17.848; dissolved calcium and magnesium broadly\
+        \ agree."
+    - source:
+        kind: "literature"
+        title: "Livingstone, D. A. (1963). Chemical composition of rivers and lakes. USGS Professional Paper 440-G.\
+          \ Table 69, Konkoure River at Sonapiti."
+        url: "https://doi.org/10.3133/pp440g"
+        accessed: "2026-10-13"
+      value:
+        min: 1.37
+        max: 1.37
+      note: "Konkoure at Sonapiti in April 1957; Ca 6.5 and Mg 2 mg/L converted to dGH."
+    - source:
+        kind: "literature"
+        title: "Lamboj A. and Mansaray A., Ecological conditions and fish diversity of the Upper and Middle Waanje\
+          \ River in Sierra Leone (abstract, University of Vienna)"
+        url: "https://evolution.univie.ac.at/news-and-events/detailansicht/news/anton-lamboj-1"
+        accessed: "2026-10-13"
+      value:
+        min: 0
+        max: 2
+      note: "Reported Waanje GH range; regional rather than species-specific."
+    - source:
+        kind: "database"
+        title: "BEDGIS-SL: TRANSCO CLSG river water monitoring workbook, November 2017 field and laboratory data"
+        url: "https://www.bedgis-sl.website/images/Docs/TRANSCOEnvironmentalData_Water.xlsx"
+        accessed: "2026-10-13"
+      value:
+        min: 0.28
+        max: 0.67
+      note: "Calculated river hardness 5 to 12 mg/L as CaCO3."
+    - source:
+        kind: "literature"
+        title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa, volume\
+          \ 2: Sierra Leone waterbody directory"
+        url: "https://www.fao.org/4/t0360e/t0360e10.htm"
+        accessed: "2026-10-13"
+      value:
+        min: 0.223
+        max: 0.44
+      note: "Jong seasonal Ca/7.14 + Mg/4.34 conversion."
+    - source:
+        kind: "literature"
+        title: "Barrie, A., Agodzo, S. K., Frazer-Williams, R., Awuah, E. and Bessah, E. (2023). A multivariate\
+          \ statistical approach and water quality index for water quality assessment for the Rokel river in Sierra\
+          \ Leone. Heliyon 9, e16196."
+        url: "https://doi.org/10.1016/j.heliyon.2023.e16196"
+        accessed: "2026-10-13"
+      value:
+        min: 1.4
+        max: 6.2
+      note: "Rejected GH interpretation of a row labelled calcium carbonate; ambiguity and low TDS prevent treating\
+        \ it as validated hardness."
+    - source:
+        kind: "database"
+        title: "FishBase species summary: Heterotilapia buettikoferi"
+        url: "https://www.fishbase.se/summary/Heterotilapia-buettikoferi.html"
+        accessed: "2026-10-13"
+      value: null
+      note: "An incomplete 15 to unknown dH band supplies no field hardness envelope."
+    tolerance:
+      value:
+        min: 0
+        max: 16
+      confidence: "low"
+      rationale: "Unanimous agreement of four proposals within 2 dGH gives rounded median bounds of 0 to 16 dGH\
+        \ at low confidence. Published maintenance bands include Aqua-Fish 4 to 16, TropicalFreshwaterFish 4 to\
+        \ 15 and Israquarium 6 to 20 dGH. The decision is narrower than Israquarium's 6 to 20 at the upper end;\
+        \ 20 is not independently established as a long-term healthy boundary. The zero lower end follows rounding\
+        \ and natural-range containment, not an aquarium trial. Routine moderate hardness has better direct husbandry\
+        \ support than either outer limit. Proposals: generator 0.2 to 16; checker-a 0 to 15; checker-b 0.2 to 15;\
+        \ checker-c 0.2 to 16."
+      sources:
+      - kind: "database"
+        title: "Aqua-Fish.Net: Zebra cichlid, Tilapia buttikoferi"
+        url: "https://en.aqua-fish.net/fish/zebra-cichlid"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "TropicalFreshwaterFish: Buttikoferi, Tilapia buttikoferi"
+        url: "https://tropicalfreshwaterfish.com/species/Tilapia_buttikoferi.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Israquarium fish index: Tilapia buttikoferi"
+        url: "https://www.israquarium.co.il/Fish/FishIndex/Tilapia%20buttikoferi.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase species summary: Heterotilapia buettikoferi"
+        url: "https://www.fishbase.se/summary/Heterotilapia-buettikoferi.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Guidarium, Zebra Tilapia"
+        url: "https://guidarium.com/fishes/zebra-tilapia"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "My-fish Fishothek: Heterotilapia buettikoferi, Zebratilapia"
+        url: "https://my-fish.org/my-fishothek/tilapia-buttikoferi-zebratilapia/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aquarismo Paulista: Tilapia Zebra, Heterotilapia buettikoferi species care sheet (June 2026)"
+        url: "https://www.aquarismopaulista.com/zebra-heterotilapia-buettikoferi/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Evaluating the Mattru Jong Water Supply System in Sierra Leone (2016). Table 3."
+        url: "https://doi.org/10.21474/ijar01/2173"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "BEDGIS-SL: TRANSCO CLSG river water monitoring workbook, November 2017 field and laboratory data"
+        url: "https://www.bedgis-sl.website/images/Docs/TRANSCOEnvironmentalData_Water.xlsx"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Interaquaristik: Zebratilapia, Tilapia buttikoferi species care sheet"
+        url: "https://www.interaquaristik.de/tiere/zierfische/barsche-und-skalare/zebratilapia-tilapia-buttikoferi/a-85121"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Practical Fishkeeping: Six best pet cichlids"
+        url: "https://www.practicalfishkeeping.co.uk/features/six-best-pet-cichlids/"
+        accessed: "2026-10-13"
+      evidence:
+      - source:
+          kind: "database"
+          title: "Aqua-Fish.Net: Zebra cichlid, Tilapia buttikoferi"
+          url: "https://en.aqua-fish.net/fish/zebra-cichlid"
+          accessed: "2026-10-13"
+        value:
+          min: 4
+          max: 16
+      - source:
+          kind: "database"
+          title: "TropicalFreshwaterFish: Buttikoferi, Tilapia buttikoferi"
+          url: "https://tropicalfreshwaterfish.com/species/Tilapia_buttikoferi.html"
+          accessed: "2026-10-13"
+        value:
+          min: 4
+          max: 15
+      - source:
+          kind: "database"
+          title: "Israquarium fish index: Tilapia buttikoferi"
+          url: "https://www.israquarium.co.il/Fish/FishIndex/Tilapia%20buttikoferi.html"
+          accessed: "2026-10-13"
+        value:
+          min: 6
+          max: 20
+        note: "Broader care-sheet range than the decided upper bound."
+      - source:
+          kind: "database"
+          title: "My-fish Fishothek: Heterotilapia buettikoferi, Zebratilapia"
+          url: "https://my-fish.org/my-fishothek/tilapia-buttikoferi-zebratilapia/"
+          accessed: "2026-10-13"
+        value:
+          min: 8
+          max: 15
+      - source:
+          kind: "database"
+          title: "Aquarismo Paulista: Tilapia Zebra, Heterotilapia buettikoferi species care sheet (June 2026)"
+          url: "https://www.aquarismopaulista.com/zebra-heterotilapia-buettikoferi/"
+          accessed: "2026-10-13"
+        value:
+          min: 4
+          max: 15
+      - source:
+          kind: "website"
+          title: "Interaquaristik: Zebratilapia, Tilapia buttikoferi species care sheet"
+          url: "https://www.interaquaristik.de/tiere/zierfische/barsche-und-skalare/zebratilapia-tilapia-buttikoferi/a-85121"
+          accessed: "2026-10-13"
+        value:
+          min: 5
+          max: 15
+        note: "Retail care recommendation."
+      verification:
+        method: "unanimous"
+        votes:
+          agree: 4
+          total: 4
+    verification:
+      method: "unanimous"
+      votes:
+        agree: 4
+        total: 4
+  khDkh:
+    value:
+      min: 0
+      max: 1
+    confidence: "low"
+    rationale: "The tally considers four proposals unanimous within 2 dKH and rounds their median bounds to 0 to\
+      \ 1 dKH at low confidence. This plain natural-water fact carries no verification object. The rounded interval\
+      \ is narrower than Waanje's 0 to 2 dKH, excludes Livingstone's approximately 1.19 dKH Sonapiti reading and\
+      \ slightly truncates the BEDGIS 1.01 dKH upper value. Zero is a rounding result. Bicarbonate or measured alkalinity\
+      \ is converted to equivalent carbonate buffering, with no GH or conductivity substitution. Jong groundwater\
+      \ and the inconsistent total-alkalinity row are excluded, as is the potentially estuarine JON 1 station. The\
+      \ resulting interval is an uncertain regional summary. Proposals: generator 0.2 to 1.2; checker-a 0 to 2;\
+      \ checker-b 0.3 to 1.1; checker-c 0.2 to 0.8."
+    sources:
+    - kind: "literature"
+      title: "Evaluating the Mattru Jong Water Supply System in Sierra Leone (2016). Table 3."
+      url: "https://doi.org/10.21474/ijar01/2173"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Livingstone, D. A. (1963). Chemical composition of rivers and lakes. USGS Professional Paper 440-G.\
+        \ Table 69, Konkoure River at Sonapiti."
+      url: "https://doi.org/10.3133/pp440g"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Lamboj A. and Mansaray A., Ecological conditions and fish diversity of the Upper and Middle Waanje\
+        \ River in Sierra Leone (abstract, University of Vienna)"
+      url: "https://evolution.univie.ac.at/news-and-events/detailansicht/news/anton-lamboj-1"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "BEDGIS-SL: TRANSCO CLSG river water monitoring workbook, November 2017 field and laboratory data"
+      url: "https://www.bedgis-sl.website/images/Docs/TRANSCOEnvironmentalData_Water.xlsx"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa, volume\
+        \ 2: Sierra Leone waterbody directory"
+      url: "https://www.fao.org/4/t0360e/t0360e10.htm"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "literature"
+        title: "Evaluating the Mattru Jong Water Supply System in Sierra Leone (2016). Table 3."
+        url: "https://doi.org/10.21474/ijar01/2173"
+        accessed: "2026-10-13"
+      value:
+        min: 0.312
+        max: 0.312
+      note: "Freshwater JON 2 and JON 3 bicarbonate 6.8 mg/L divided by 21.8; inconsistent total-alkalinity row\
+        \ excluded."
+    - source:
+        kind: "literature"
+        title: "Livingstone, D. A. (1963). Chemical composition of rivers and lakes. USGS Professional Paper 440-G.\
+          \ Table 69, Konkoure River at Sonapiti."
+        url: "https://doi.org/10.3133/pp440g"
+        accessed: "2026-10-13"
+      value:
+        min: 1.19
+        max: 1.19
+      note: "Konkoure at Sonapiti bicarbonate 26 mg/L divided by 21.8."
+    - source:
+        kind: "literature"
+        title: "Lamboj A. and Mansaray A., Ecological conditions and fish diversity of the Upper and Middle Waanje\
+          \ River in Sierra Leone (abstract, University of Vienna)"
+        url: "https://evolution.univie.ac.at/news-and-events/detailansicht/news/anton-lamboj-1"
+        accessed: "2026-10-13"
+      value:
+        min: 0
+        max: 2
+      note: "Waanje carbonate hardness reported in the public abstract."
+    - source:
+        kind: "database"
+        title: "BEDGIS-SL: TRANSCO CLSG river water monitoring workbook, November 2017 field and laboratory data"
+        url: "https://www.bedgis-sl.website/images/Docs/TRANSCOEnvironmentalData_Water.xlsx"
+        accessed: "2026-10-13"
+      value:
+        min: 0.45
+        max: 1.01
+      note: "Total alkalinity 8 to 18 mg/L as CaCO3 divided by 17.848; a buffering proxy."
+    - source:
+        kind: "literature"
+        title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa, volume\
+          \ 2: Sierra Leone waterbody directory"
+        url: "https://www.fao.org/4/t0360e/t0360e10.htm"
+        accessed: "2026-10-13"
+      value:
+        min: 0.266
+        max: 0.757
+      note: "Seasonal Jong bicarbonate divided by 21.8."
+    tolerance:
+      value:
+        min: 0
+        max: 15
+      confidence: "low"
+      rationale: "Qualified majority, 4 of 6 votes, fixes 0 to 15 dKH with low confidence. The four 0.2 to 15 proposals\
+        \ agree; their lower bound is rounded and expanded to contain the decided natural zero. Checker-a proposed\
+        \ 0 to 10 without direct KH limits, whereas checker-b kept 0.3 to 1.1 as a habitat-only placeholder. Retail\
+        \ pages and Tropical Fish Keeping repeat 10 to 15 dKH, potentially from shared templates. Aquarium.org.il\
+        \ gives the wider 14 to 24 dKH, whose 24 endpoint is not corroborated. Practical Fishkeeping offers qualitative\
+        \ adaptability rather than numerical KH limits. The retrieved literature and structured index do not establish\
+        \ two independent long-term numerical endpoints; that evidence gap is explicit despite validation of the\
+        \ format. pH and GH recommendations are not KH evidence. Proposals: generator 0.2 to 15; checker-a 0 to\
+        \ 10; checker-b 0.3 to 1.1; checker-c 0.2 to 15; tiebreaker-1 0.2 to 15; tiebreaker-2 0.2 to 15."
+      sources:
+      - kind: "website"
+        title: "Thai Hoa Aquarium (2014): Buttikoferi Cichlid care sheet"
+        url: "https://cacanhthaihoa.com/ca-canh/ca-ali/ca-hoang-tu-chau-phi-ky-lan-buttikoferi-cichlid-tilapia-butterkofferi.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Aquarium.org.il ornamental fish index: Zebra Tilapia"
+        url: "https://www.aquarium.org.il/%D7%95%D7%99%D7%A7%D7%99%D7%A4%D7%99%D7%A9-%D7%96%D7%91%D7%A8%D7%94-%D7%98%D7%99%D7%9C%D7%A4%D7%99%D7%94-453"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "LiveAquaria: Butterikoferi Cichlid species care sheet"
+        url: "https://www.liveaquaria.com/products/butterikoferi-cichlid"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Practical Fishkeeping: Six best pet cichlids"
+        url: "https://www.practicalfishkeeping.co.uk/features/six-best-pet-cichlids/"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Vanden Bossche and Bernacsek (1990). Source book for the inland fishery resources of Africa, volume\
+          \ 2: Sierra Leone waterbody directory"
+        url: "https://www.fao.org/4/t0360e/t0360e10.htm"
+        accessed: "2026-10-13"
+      - kind: "literature"
+        title: "Evaluating the Mattru Jong Water Supply System in Sierra Leone (2016). Table 3."
+        url: "https://doi.org/10.21474/ijar01/2173"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Tropical Fish Keeping: Hornet Cichlid, Tilapia buttikoferi"
+        url: "https://tropical-fish-keeping.com/hornet-cichlid-tilapia-buttikoferi.html"
+        accessed: "2026-10-13"
+      - kind: "website"
+        title: "Blue Reef Aquatics structured care listing: Tila. Buttikoferi"
+        url: "https://www.bluereefaquatics.com/shop/livestock/freshwater-fish/cichlids/african-cichlids/tila-buttikoferi/"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "FishBase species summary: Heterotilapia buettikoferi"
+        url: "https://www.fishbase.se/summary/Heterotilapia-buettikoferi.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "Guidarium, Zebra Tilapia"
+        url: "https://guidarium.com/fishes/zebra-tilapia"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "BEDGIS-SL: TRANSCO CLSG river water monitoring workbook, November 2017 field and laboratory data"
+        url: "https://www.bedgis-sl.website/images/Docs/TRANSCOEnvironmentalData_Water.xlsx"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "TropicalFreshwaterFish: Buttikoferi, Tilapia buttikoferi"
+        url: "https://tropicalfreshwaterfish.com/species/Tilapia_buttikoferi.html"
+        accessed: "2026-10-13"
+      - kind: "database"
+        title: "My-fish Fishothek: Heterotilapia buettikoferi, Zebratilapia"
+        url: "https://my-fish.org/my-fishothek/tilapia-buttikoferi-zebratilapia/"
+        accessed: "2026-10-13"
+      - kind: "model-knowledge"
+        title: "Checker B: cautious inference where species-specific long-term evidence is missing"
+        accessed: "2026-10-13"
+      evidence:
+      - source:
+          kind: "website"
+          title: "LiveAquaria: Butterikoferi Cichlid species care sheet"
+          url: "https://www.liveaquaria.com/products/butterikoferi-cichlid"
+          accessed: "2026-10-13"
+        value:
+          min: 10
+          max: 15
+        note: "Retail dKH recommendation; chronic exposure duration unreported."
+      - source:
+          kind: "website"
+          title: "Tropical Fish Keeping: Hornet Cichlid, Tilapia buttikoferi"
+          url: "https://tropical-fish-keeping.com/hornet-cichlid-tilapia-buttikoferi.html"
+          accessed: "2026-10-13"
+        value:
+          min: 10
+          max: 15
+        note: "General hobby care table; independence from commercial templates is unknown."
+      - source:
+          kind: "website"
+          title: "Blue Reef Aquatics structured care listing: Tila. Buttikoferi"
+          url: "https://www.bluereefaquatics.com/shop/livestock/freshwater-fish/cichlids/african-cichlids/tila-buttikoferi/"
+          accessed: "2026-10-13"
+        value:
+          min: 10
+          max: 15
+        note: "Retail listing, not an independent physiological trial."
+      - source:
+          kind: "website"
+          title: "Thai Hoa Aquarium (2014): Buttikoferi Cichlid care sheet"
+          url: "https://cacanhthaihoa.com/ca-canh/ca-ali/ca-hoang-tu-chau-phi-ky-lan-buttikoferi-cichlid-tilapia-butterkofferi.html"
+          accessed: "2026-10-13"
+        value:
+          min: 10
+          max: 15
+        note: "Retail listing."
+      - source:
+          kind: "database"
+          title: "Aquarium.org.il ornamental fish index: Zebra Tilapia"
+          url: "https://www.aquarium.org.il/%D7%95%D7%99%D7%A7%D7%99%D7%A4%D7%99%D7%A9-%D7%96%D7%91%D7%A8%D7%94-%D7%98%D7%99%D7%9C%D7%A4%D7%99%D7%94-453"
+          accessed: "2026-10-13"
+        value:
+          min: 14
+          max: 24
+        note: "Structured hobby fish index; unusually high upper recommendation is uncorroborated."
+      - source:
+          kind: "literature"
+          title: "Practical Fishkeeping: Six best pet cichlids"
+          url: "https://www.practicalfishkeeping.co.uk/features/six-best-pet-cichlids/"
+          accessed: "2026-10-13"
+        value: null
+        note: "Published husbandry discussion supports broad chemistry adaptability but supplies no numerical KH\
+          \ boundaries."
+      - source:
+          kind: "literature"
+          title: "Evaluating the Mattru Jong Water Supply System in Sierra Leone (2016). Table 3."
+          url: "https://doi.org/10.21474/ijar01/2173"
+          accessed: "2026-10-13"
+        value:
+          min: 0.312
+          max: 0.312
+        note: "Freshwater Jong buffering proxy only, not aquarium tolerance."
+      - source:
+          kind: "literature"
+          title: "Livingstone, D. A. (1963). Chemical composition of rivers and lakes. USGS Professional Paper 440-G.\
+            \ Table 69, Konkoure River at Sonapiti."
+          url: "https://doi.org/10.3133/pp440g"
+          accessed: "2026-10-13"
+        value:
+          min: 1.19
+          max: 1.19
+        note: "Natural-region buffering proxy only, not aquarium tolerance."
+      verification:
+        method: "qualified-majority"
+        votes:
+          agree: 4
+          total: 6
+  maxSizeCm:
+    value:
+      male: 30
+      female: 25
+    confidence: "medium"
+    rationale: "Generator and checker-b proposed 35 cm male and 30 cm female; checker-a and checker-c proposed 30\
+      \ and 25. Choose 30 and 25 as typical aquarium planning maxima, matching Bailey's usual male length and the\
+      \ observed 28 to 30 cm male and 25 cm female in Murphy and Block. Aqua-Fish lists unsexed adults at 28 to\
+      \ 31 cm. The 35/30 proposal allows for larger individuals but is less directly supported as typical; my-fish\
+      \ reports 30 to 38 cm and occasional 40 cm fish, so larger individuals remain possible. The female maximum\
+      \ remains an estimate from sparse observations. FishBase's 30.8 cm and Israquarium's 30/25 cm are standard\
+      \ lengths and are not converted to total lengths."
+    sources:
+    - kind: "database"
+      title: "Aqua-Fish.Net: Zebra cichlid, Tilapia buttikoferi"
+      url: "https://en.aqua-fish.net/fish/zebra-cichlid"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "My-fish Fishothek: Heterotilapia buettikoferi, Zebratilapia"
+      url: "https://my-fish.org/my-fishothek/tilapia-buttikoferi-zebratilapia/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Israquarium fish index: Tilapia buttikoferi"
+      url: "https://www.israquarium.co.il/Fish/FishIndex/Tilapia%20buttikoferi.html"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Murphy, J. B. and Block, J. A. (2026). Zebra Tilapia Husbandry: Icthyological Architects during Reproduction.\
+        \ Exotica Esoterica, 19 July 2026."
+      url: "https://www.exoticaesoterica.com/magazine/zebra-tilapia"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishBase species summary: Heterotilapia buettikoferi"
+      url: "https://www.fishbase.se/summary/Heterotilapia-buettikoferi.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "TropicalFreshwaterFish: Buttikoferi, Tilapia buttikoferi"
+      url: "https://tropicalfreshwaterfish.com/species/Tilapia_buttikoferi.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Guidarium, Zebra Tilapia"
+      url: "https://guidarium.com/fishes/zebra-tilapia"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Aquarismo Paulista: Tilapia Zebra, Heterotilapia buettikoferi species care sheet (June 2026)"
+      url: "https://www.aquarismopaulista.com/zebra-heterotilapia-buettikoferi/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Zoopet: Tilapia buttikoferi species profile"
+      url: "https://www.zoopet.com/fiskar/fisk.php?NR=165"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Practical Fishkeeping: Six best pet cichlids"
+      url: "https://www.practicalfishkeeping.co.uk/features/six-best-pet-cichlids/"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Bailey, M. The 10 biggest and best cichlids. Practical Fishkeeping."
+      url: "https://www.practicalfishkeeping.co.uk/features/the-10-biggest-and-best-cichlids/"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "literature"
+        title: "Bailey, M. The 10 biggest and best cichlids. Practical Fishkeeping."
+        url: "https://www.practicalfishkeeping.co.uk/features/the-10-biggest-and-best-cichlids/"
+        accessed: "2026-10-13"
+      value:
+        male: 30
+        female: null
+      note: "Usual male size; larger 40 cm males also mentioned."
+    - source:
+        kind: "literature"
+        title: "Murphy, J. B. and Block, J. A. (2026). Zebra Tilapia Husbandry: Icthyological Architects during\
+          \ Reproduction. Exotica Esoterica, 19 July 2026."
+        url: "https://www.exoticaesoterica.com/magazine/zebra-tilapia"
+        accessed: "2026-10-13"
+      value:
+        male: 28
+        female: 25
+      note: "Observed total lengths of one pair in 2026; earlier male length described as approximately 30 cm."
+    - source:
+        kind: "database"
+        title: "Aqua-Fish.Net: Zebra cichlid, Tilapia buttikoferi"
+        url: "https://en.aqua-fish.net/fish/zebra-cichlid"
+        accessed: "2026-10-13"
+      value:
+        male: 31
+        female: 31
+      note: "Unsexed 28 to 31 cm aquarium-size range; duplicated upper bound does not establish equal sex maxima."
+    - source:
+        kind: "database"
+        title: "My-fish Fishothek: Heterotilapia buettikoferi, Zebratilapia"
+        url: "https://my-fish.org/my-fishothek/tilapia-buttikoferi-zebratilapia/"
+        accessed: "2026-10-13"
+      value:
+        male: null
+        female: null
+      note: "Unsexed 30 to 38 cm range with larger males; no separately measured sex maxima."
+    - source:
+        kind: "database"
+        title: "FishBase species summary: Heterotilapia buettikoferi"
+        url: "https://www.fishbase.se/summary/Heterotilapia-buettikoferi.html"
+        accessed: "2026-10-13"
+      value:
+        male: 30.8
+        female: null
+      note: "Standard length of male or unsexed fish; excludes caudal fin and is not the profile total-length estimate."
+  predation:
+    value: 2
+    confidence: "medium"
+    rationale: "Qualified majority selects level 2 with 5 of 6 votes and medium confidence. Israquarium explicitly\
+      \ ties consumption to mouth size, TropicalFreshwaterFish reports smaller fish as prey and Bailey reports partial\
+      \ fish feeding. None restricts prey to fry or 2 cm, so the checker-a level-1 interpretation underestimates\
+      \ the reported risk. Plant-biased omnivory does not remove mouth-fit predation; it also does not support fish\
+      \ as the main food required for level 3. Frequency and maximum prey length are not quantified. Proposals:\
+      \ generator 2; checker-a 1; checker-b 2; checker-c 2; tiebreaker-1 2; tiebreaker-2 2."
+    sources:
+    - kind: "database"
+      title: "TropicalFreshwaterFish: Buttikoferi, Tilapia buttikoferi"
+      url: "https://tropicalfreshwaterfish.com/species/Tilapia_buttikoferi.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Israquarium fish index: Tilapia buttikoferi"
+      url: "https://www.israquarium.co.il/Fish/FishIndex/Tilapia%20buttikoferi.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishBase species summary: Heterotilapia buettikoferi"
+      url: "https://www.fishbase.se/summary/Heterotilapia-buettikoferi.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Aquarismo Paulista: Tilapia Zebra, Heterotilapia buettikoferi species care sheet (June 2026)"
+      url: "https://www.aquarismopaulista.com/zebra-heterotilapia-buettikoferi/"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "Magic World fish index: Heterotilapia buttikoferi species care sheet"
+      url: "https://www.magicworldsy.com/sw-marine/fish-index/cichlids/buttikoferi-cichlid/"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "Interaquaristik: Zebratilapia, Tilapia buttikoferi species care sheet"
+      url: "https://www.interaquaristik.de/tiere/zierfische/barsche-und-skalare/zebratilapia-tilapia-buttikoferi/a-85121"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Practical Fishkeeping: Six best pet cichlids"
+      url: "https://www.practicalfishkeeping.co.uk/features/six-best-pet-cichlids/"
+      accessed: "2026-10-13"
+    - kind: "catalog-of-fishes"
+      title: "Eschmeyer's Catalog of Fishes: species of Heterotilapia"
+      url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Heterotilapia"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Bailey, M. The 10 biggest and best cichlids. Practical Fishkeeping."
+      url: "https://www.practicalfishkeeping.co.uk/features/the-10-biggest-and-best-cichlids/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "TropicalFreshwaterFish species directory: Zebra Tilapia, Tilapia buttikoferi."
+      url: "https://tropicalfreshwaterfish.com/other_african_cichlids.htm"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Guidarium, Zebra Tilapia"
+      url: "https://guidarium.com/fishes/zebra-tilapia"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "database"
+        title: "TropicalFreshwaterFish: Buttikoferi, Tilapia buttikoferi"
+        url: "https://tropicalfreshwaterfish.com/species/Tilapia_buttikoferi.html"
+        accessed: "2026-10-13"
+      value: 2
+      note: "Predation on smaller tankmates maps to level 2; exact frequency and prey length unmeasured."
+    - source:
+        kind: "database"
+        title: "Israquarium fish index: Tilapia buttikoferi"
+        url: "https://www.israquarium.co.il/Fish/FishIndex/Tilapia%20buttikoferi.html"
+        accessed: "2026-10-13"
+      value: 2
+      note: "Mouth-sized fish consumption maps to level 2."
+    - source:
+        kind: "database"
+        title: "Aquarismo Paulista: Tilapia Zebra, Heterotilapia buettikoferi species care sheet (June 2026)"
+        url: "https://www.aquarismopaulista.com/zebra-heterotilapia-buettikoferi/"
+        accessed: "2026-10-13"
+      value: 2
+      note: "Consumption of smaller companions maps to level 2."
+    - source:
+        kind: "literature"
+        title: "Bailey, M. The 10 biggest and best cichlids. Practical Fishkeeping."
+        url: "https://www.practicalfishkeeping.co.uk/features/the-10-biggest-and-best-cichlids/"
+        accessed: "2026-10-13"
+      value: 2
+      note: "Published article describes partial fish feeding and tankmates as prey."
+    - source:
+        kind: "database"
+        title: "FishBase species summary: Heterotilapia buettikoferi"
+        url: "https://www.fishbase.se/summary/Heterotilapia-buettikoferi.html"
+        accessed: "2026-10-13"
+      value: null
+      note: "Plant-biased generalist feeding does not specify a prey-length threshold."
+    verification:
+      method: "qualified-majority"
+      votes:
+        agree: 5
+        total: 6
+  diet:
+    value:
+      type: "omnivore"
+      bloatSensitive: false
+      foods:
+      - "Complete cichlid pellets with plant ingredients"
+      - "Spirulina foods and algae wafers"
+      - "Blanched leafy vegetables"
+      - "Occasional aquatic invertebrate foods"
+    confidence: "medium"
+    rationale: "All four complete profiles agree on omnivore and bloatSensitive false, giving unanimous verification\
+      \ and medium confidence. Their food lists differ, but the tally retains the generator's complete pellet, algae,\
+      \ vegetable and occasional invertebrate suggestions exactly. FishBase, Aqua-Fish and Israquarium support mixed\
+      \ feeding with an important plant component. False records that a specific protein-associated bloat tendency\
+      \ was not demonstrated; it does not certify an exclusively animal diet as healthy. Proposals: generator {\"\
+      type\": \"omnivore\", \"bloatSensitive\": false, \"foods\": [\"Complete cichlid pellets with plant ingredients\"\
+      , \"Spirulina foods and algae wafers\", \"Blanched leafy vegetables\", \"Occasional aquatic invertebrate foods\"\
+      ]}; checker-a {\"type\": \"omnivore\", \"bloatSensitive\": false, \"foods\": [\"algae and plant matter\",\
+      \ \"vegetables\", \"cichlid pellets\", \"insect larvae\", \"crustaceans\"]}; checker-b {\"type\": \"omnivore\"\
+      , \"bloatSensitive\": false, \"foods\": [\"Algae and plant material\", \"Aquatic invertebrates and molluscs\"\
+      , \"Small fish when available\", \"Vegetable-rich prepared food\"]}; checker-c {\"type\": \"omnivore\", \"\
+      bloatSensitive\": false, \"foods\": [\"Plant material\", \"Algae-based pellets\", \"Aquatic invertebrates\"\
+      , \"Occasional small fish\"]}."
+    sources:
+    - kind: "database"
+      title: "FishBase species summary: Heterotilapia buettikoferi"
+      url: "https://www.fishbase.se/summary/Heterotilapia-buettikoferi.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Aqua-Fish.Net: Zebra cichlid, Tilapia buttikoferi"
+      url: "https://en.aqua-fish.net/fish/zebra-cichlid"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Israquarium fish index: Tilapia buttikoferi"
+      url: "https://www.israquarium.co.il/Fish/FishIndex/Tilapia%20buttikoferi.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Cichlid Room Companion: Heterotilapia buttikoferi, public verification only"
+      url: "https://cichlidae.com/species.php?id=0yFWu_eyshCQdGkjwSSafw"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "TropicalFreshwaterFish: Buttikoferi, Tilapia buttikoferi"
+      url: "https://tropicalfreshwaterfish.com/species/Tilapia_buttikoferi.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Aquarismo Paulista: Tilapia Zebra, Heterotilapia buettikoferi species care sheet (June 2026)"
+      url: "https://www.aquarismopaulista.com/zebra-heterotilapia-buettikoferi/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "My-fish Fishothek: Heterotilapia buettikoferi, Zebratilapia"
+      url: "https://my-fish.org/my-fishothek/tilapia-buttikoferi-zebratilapia/"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "Interaquaristik: Zebratilapia, Tilapia buttikoferi species care sheet"
+      url: "https://www.interaquaristik.de/tiere/zierfische/barsche-und-skalare/zebratilapia-tilapia-buttikoferi/a-85121"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "LiveAquaria: Butterikoferi Cichlid species care sheet"
+      url: "https://www.liveaquaria.com/products/butterikoferi-cichlid"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "Riverpark Aquatics, Zebra Tilapia care guide"
+      url: "https://riverparkaquatics.co.uk/zebra-tilapia-heterotilapia-buttikoferi-4-5cm/"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "database"
+        title: "FishBase species summary: Heterotilapia buettikoferi"
+        url: "https://www.fishbase.se/summary/Heterotilapia-buettikoferi.html"
+        accessed: "2026-10-13"
+      value:
+        type: "omnivore"
+      note: "Generalist feeding with a plant preference; no specific bloat assessment."
+    - source:
+        kind: "database"
+        title: "Aqua-Fish.Net: Zebra cichlid, Tilapia buttikoferi"
+        url: "https://en.aqua-fish.net/fish/zebra-cichlid"
+        accessed: "2026-10-13"
+      value:
+        type: "omnivore"
+      note: "Prepared plant and animal foods both recommended."
+    - source:
+        kind: "database"
+        title: "Aquarismo Paulista: Tilapia Zebra, Heterotilapia buettikoferi species care sheet (June 2026)"
+        url: "https://www.aquarismopaulista.com/zebra-heterotilapia-buettikoferi/"
+        accessed: "2026-10-13"
+      value:
+        type: "omnivore"
+      note: "Plant-biased mixed diet; digestive warnings do not establish a bloat syndrome."
+    - source:
+        kind: "database"
+        title: "Israquarium fish index: Tilapia buttikoferi"
+        url: "https://www.israquarium.co.il/Fish/FishIndex/Tilapia%20buttikoferi.html"
+        accessed: "2026-10-13"
+      value:
+        type: "omnivore"
+      note: "Animal foods plus plant supplementation."
+    - source:
+        kind: "database"
+        title: "Cichlid Room Companion: Heterotilapia buttikoferi, public verification only"
+        url: "https://cichlidae.com/species.php?id=0yFWu_eyshCQdGkjwSSafw"
+        accessed: "2026-10-13"
+      value:
+        type: "omnivore"
+      note: "CRC verification only; public categories include plant and mixed feeding."
+    verification:
+      method: "unanimous"
+      votes:
+        agree: 4
+        total: 4
+  aggressionConspecific:
+    value: 4
+    confidence: "high"
+    rationale: "All four profiles assign level 4. My-fish reports group injuries and deaths; Interaquaristik explicitly\
+      \ warns that adult males may kill females. These fit the rubric despite Aqua-Fish's conflicting peaceful label.\
+      \ A large aquarium and a proven pair reduce risk but do not guarantee partner safety."
+    sources:
+    - kind: "database"
+      title: "My-fish Fishothek: Heterotilapia buettikoferi, Zebratilapia"
+      url: "https://my-fish.org/my-fishothek/tilapia-buttikoferi-zebratilapia/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Israquarium fish index: Tilapia buttikoferi"
+      url: "https://www.israquarium.co.il/Fish/FishIndex/Tilapia%20buttikoferi.html"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Murphy, J. B. and Block, J. A. (2026). Zebra Tilapia Husbandry: Icthyological Architects during Reproduction.\
+        \ Exotica Esoterica, 19 July 2026."
+      url: "https://www.exoticaesoterica.com/magazine/zebra-tilapia"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Aqua-Fish.Net: Zebra cichlid, Tilapia buttikoferi"
+      url: "https://en.aqua-fish.net/fish/zebra-cichlid"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Guidarium, Zebra Tilapia"
+      url: "https://guidarium.com/fishes/zebra-tilapia"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "TropicalFreshwaterFish: Buttikoferi, Tilapia buttikoferi"
+      url: "https://tropicalfreshwaterfish.com/species/Tilapia_buttikoferi.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishBase species summary: Heterotilapia buettikoferi"
+      url: "https://www.fishbase.se/summary/Heterotilapia-buettikoferi.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Aquarismo Paulista: Tilapia Zebra, Heterotilapia buettikoferi species care sheet (June 2026)"
+      url: "https://www.aquarismopaulista.com/zebra-heterotilapia-buettikoferi/"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "Interaquaristik: Zebratilapia, Tilapia buttikoferi species care sheet"
+      url: "https://www.interaquaristik.de/tiere/zierfische/barsche-und-skalare/zebratilapia-tilapia-buttikoferi/a-85121"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Practical Fishkeeping: Six best pet cichlids"
+      url: "https://www.practicalfishkeeping.co.uk/features/six-best-pet-cichlids/"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "database"
+        title: "My-fish Fishothek: Heterotilapia buettikoferi, Zebratilapia"
+        url: "https://my-fish.org/my-fishothek/tilapia-buttikoferi-zebratilapia/"
+        accessed: "2026-10-13"
+      value: 4
+      note: "Reported group losses and female-directed aggression."
+    - source:
+        kind: "website"
+        title: "Interaquaristik: Zebratilapia, Tilapia buttikoferi species care sheet"
+        url: "https://www.interaquaristik.de/tiere/zierfische/barsche-und-skalare/zebratilapia-tilapia-buttikoferi/a-85121"
+        accessed: "2026-10-13"
+      value: 4
+      note: "Retail warning of male killing a female."
+    - source:
+        kind: "literature"
+        title: "Murphy, J. B. and Block, J. A. (2026). Zebra Tilapia Husbandry: Icthyological Architects during\
+          \ Reproduction. Exotica Esoterica, 19 July 2026."
+        url: "https://www.exoticaesoterica.com/magazine/zebra-tilapia"
+        accessed: "2026-10-13"
+      value: 3
+      note: "Repeated female harassment before spawning, without reported permanent injury in that large aquarium."
+    - source:
+        kind: "database"
+        title: "Aqua-Fish.Net: Zebra cichlid, Tilapia buttikoferi"
+        url: "https://en.aqua-fish.net/fish/zebra-cichlid"
+        accessed: "2026-10-13"
+      value: 0
+      note: "Conflicting general peaceful label is rejected."
+  aggressionHeterospecific:
+    value: 4
+    confidence: "medium"
+    rationale: "Generator and checker-a proposed 3; checker-b and checker-c proposed 4. Choose 4 because Practical\
+      \ Fishkeeping explicitly warns that an adult male can kill companions, and my-fish restricts mixed housing\
+      \ to unusually robust adults in very large tanks. This fits level 4's exceptional mixed-tank clause. Murphy\
+      \ and Block report no permanent injury in their 945 L aquarium; that is important contrary evidence, but a\
+      \ single successful setup does not establish level 3 as a reliable adult default. Confidence remains medium\
+      \ because behaviour varies with individual and enclosure."
+    sources:
+    - kind: "database"
+      title: "Israquarium fish index: Tilapia buttikoferi"
+      url: "https://www.israquarium.co.il/Fish/FishIndex/Tilapia%20buttikoferi.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "My-fish Fishothek: Heterotilapia buettikoferi, Zebratilapia"
+      url: "https://my-fish.org/my-fishothek/tilapia-buttikoferi-zebratilapia/"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Murphy, J. B. and Block, J. A. (2026). Zebra Tilapia Husbandry: Icthyological Architects during Reproduction.\
+        \ Exotica Esoterica, 19 July 2026."
+      url: "https://www.exoticaesoterica.com/magazine/zebra-tilapia"
+      accessed: "2026-10-13"
+    - kind: "archive"
+      title: "cichlids.com forum thread 388"
+      url: "https://www.cichlids.com/disc/read.php?1,388"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "TropicalFreshwaterFish: Buttikoferi, Tilapia buttikoferi"
+      url: "https://tropicalfreshwaterfish.com/species/Tilapia_buttikoferi.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Guidarium, Zebra Tilapia"
+      url: "https://guidarium.com/fishes/zebra-tilapia"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Aquarismo Paulista: Tilapia Zebra, Heterotilapia buettikoferi species care sheet (June 2026)"
+      url: "https://www.aquarismopaulista.com/zebra-heterotilapia-buettikoferi/"
+      accessed: "2026-10-13"
+    - kind: "archive"
+      title: "cichlids.com forum thread 359"
+      url: "https://www.cichlids.com/disc/read.php?1,359"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Practical Fishkeeping: Six best pet cichlids"
+      url: "https://www.practicalfishkeeping.co.uk/features/six-best-pet-cichlids/"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "Interaquaristik: Zebratilapia, Tilapia buttikoferi species care sheet"
+      url: "https://www.interaquaristik.de/tiere/zierfische/barsche-und-skalare/zebratilapia-tilapia-buttikoferi/a-85121"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "LiveAquaria: Butterikoferi Cichlid species care sheet"
+      url: "https://www.liveaquaria.com/products/butterikoferi-cichlid"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "literature"
+        title: "Practical Fishkeeping: Six best pet cichlids"
+        url: "https://www.practicalfishkeeping.co.uk/features/six-best-pet-cichlids/"
+        accessed: "2026-10-13"
+      value: 4
+      note: "Adult lethal-aggression warning maps to the rubric."
+    - source:
+        kind: "database"
+        title: "My-fish Fishothek: Heterotilapia buettikoferi, Zebratilapia"
+        url: "https://my-fish.org/my-fishothek/tilapia-buttikoferi-zebratilapia/"
+        accessed: "2026-10-13"
+      value: 4
+      note: "Severe adult aggression and exceptional large mixed-tank conditions."
+    - source:
+        kind: "database"
+        title: "Israquarium fish index: Tilapia buttikoferi"
+        url: "https://www.israquarium.co.il/Fish/FishIndex/Tilapia%20buttikoferi.html"
+        accessed: "2026-10-13"
+      value: 3
+      note: "Attacks on larger companions; comparable-size mortality not specifically established."
+    - source:
+        kind: "literature"
+        title: "Murphy, J. B. and Block, J. A. (2026). Zebra Tilapia Husbandry: Icthyological Architects during\
+          \ Reproduction. Exotica Esoterica, 19 July 2026."
+        url: "https://www.exoticaesoterica.com/magazine/zebra-tilapia"
+        accessed: "2026-10-13"
+      value: 2
+      note: "Territorial expulsion without permanent injuries in one large aquarium."
+    - source:
+        kind: "archive"
+        title: "cichlids.com forum thread 359"
+        url: "https://www.cichlids.com/disc/read.php?1,359"
+        accessed: "2026-10-13"
+      value: 4
+      note: "Archive reputation for exceptional aggression; unstandardized community opinion."
+  territory:
+    value:
+      size: "large"
+      breedingOnly: false
+    confidence: "high"
+    rationale: "All four profiles select a large territory outside breeding as well as during it. My-fish describes\
+      \ adult aquarium territoriality, while Murphy and Block observed a cleared spawning area approximately 152\
+      \ by 50 cm. FishBase's extensive territory description concerns reproduction and does not alone establish\
+      \ the nonbreeding flag."
+    sources:
+    - kind: "database"
+      title: "FishBase species summary: Heterotilapia buettikoferi"
+      url: "https://www.fishbase.se/summary/Heterotilapia-buettikoferi.html"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Murphy, J. B. and Block, J. A. (2026). Zebra Tilapia Husbandry: Icthyological Architects during Reproduction.\
+        \ Exotica Esoterica, 19 July 2026."
+      url: "https://www.exoticaesoterica.com/magazine/zebra-tilapia"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "My-fish Fishothek: Heterotilapia buettikoferi, Zebratilapia"
+      url: "https://my-fish.org/my-fishothek/tilapia-buttikoferi-zebratilapia/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "TropicalFreshwaterFish: Buttikoferi, Tilapia buttikoferi"
+      url: "https://tropicalfreshwaterfish.com/species/Tilapia_buttikoferi.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Guidarium, Zebra Tilapia"
+      url: "https://guidarium.com/fishes/zebra-tilapia"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Aquarismo Paulista: Tilapia Zebra, Heterotilapia buettikoferi species care sheet (June 2026)"
+      url: "https://www.aquarismopaulista.com/zebra-heterotilapia-buettikoferi/"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "Interaquaristik: Zebratilapia, Tilapia buttikoferi species care sheet"
+      url: "https://www.interaquaristik.de/tiere/zierfische/barsche-und-skalare/zebratilapia-tilapia-buttikoferi/a-85121"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "LiveAquaria: Butterikoferi Cichlid species care sheet"
+      url: "https://www.liveaquaria.com/products/butterikoferi-cichlid"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "database"
+        title: "FishBase species summary: Heterotilapia buettikoferi"
+        url: "https://www.fishbase.se/summary/Heterotilapia-buettikoferi.html"
+        accessed: "2026-10-13"
+      value:
+        size: "large"
+        breedingOnly: true
+      note: "Natural-history statement specifically concerns spawning pairs."
+    - source:
+        kind: "database"
+        title: "My-fish Fishothek: Heterotilapia buettikoferi, Zebratilapia"
+        url: "https://my-fish.org/my-fishothek/tilapia-buttikoferi-zebratilapia/"
+        accessed: "2026-10-13"
+      value:
+        size: "large"
+        breedingOnly: false
+      note: "Adult territoriality before spawning."
+    - source:
+        kind: "literature"
+        title: "Murphy, J. B. and Block, J. A. (2026). Zebra Tilapia Husbandry: Icthyological Architects during\
+          \ Reproduction. Exotica Esoterica, 19 July 2026."
+        url: "https://www.exoticaesoterica.com/magazine/zebra-tilapia"
+        accessed: "2026-10-13"
+      value:
+        size: "large"
+        breedingOnly: true
+      note: "Measured cleared area about 152 by 50 cm during reproductive preparation."
+  habitatZones:
+    value:
+    - "rock"
+    - "sand"
+    confidence: "medium"
+    rationale: "Generator, checker-a and checker-c proposed rock and sand; checker-b additionally included wood.\
+      \ FishBase directly supports rocky river channels. Sand represents movable spawning substrate and aquarium\
+      \ digging provision, rather than a universal wild sediment measurement. Wood is optional aquarium shelter\
+      \ with no evidence of an obligatory natural association, so it is omitted."
+    sources:
+    - kind: "database"
+      title: "FishBase species summary: Heterotilapia buettikoferi"
+      url: "https://www.fishbase.se/summary/Heterotilapia-buettikoferi.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Israquarium fish index: Tilapia buttikoferi"
+      url: "https://www.israquarium.co.il/Fish/FishIndex/Tilapia%20buttikoferi.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Cichlid Room Companion: Heterotilapia buttikoferi, public verification only"
+      url: "https://cichlidae.com/species.php?id=0yFWu_eyshCQdGkjwSSafw"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "Riverpark Aquatics, Zebra Tilapia care guide"
+      url: "https://riverparkaquatics.co.uk/zebra-tilapia-heterotilapia-buttikoferi-4-5cm/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "My-fish Fishothek: Heterotilapia buettikoferi, Zebratilapia"
+      url: "https://my-fish.org/my-fishothek/tilapia-buttikoferi-zebratilapia/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Aquarismo Paulista: Tilapia Zebra, Heterotilapia buettikoferi species care sheet (June 2026)"
+      url: "https://www.aquarismopaulista.com/zebra-heterotilapia-buettikoferi/"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "Interaquaristik: Zebratilapia, Tilapia buttikoferi species care sheet"
+      url: "https://www.interaquaristik.de/tiere/zierfische/barsche-und-skalare/zebratilapia-tilapia-buttikoferi/a-85121"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "database"
+        title: "FishBase species summary: Heterotilapia buettikoferi"
+        url: "https://www.fishbase.se/summary/Heterotilapia-buettikoferi.html"
+        accessed: "2026-10-13"
+      value:
+      - "rock"
+      note: "Adult natural habitat."
+    - source:
+        kind: "database"
+        title: "Aquarismo Paulista: Tilapia Zebra, Heterotilapia buettikoferi species care sheet (June 2026)"
+        url: "https://www.aquarismopaulista.com/zebra-heterotilapia-buettikoferi/"
+        accessed: "2026-10-13"
+      value:
+      - "rock"
+      - "sand"
+      note: "Rocky natural setting and diggable aquarium substrate."
+    - source:
+        kind: "database"
+        title: "My-fish Fishothek: Heterotilapia buettikoferi, Zebratilapia"
+        url: "https://my-fish.org/my-fishothek/tilapia-buttikoferi-zebratilapia/"
+        accessed: "2026-10-13"
+      value:
+      - "rock"
+      - "sand"
+      - "wood"
+      note: "Aquarium furnishings, not proof of obligatory wild wood use."
+  social:
+    value:
+      structure: "solitary"
+    confidence: "medium"
+    rationale: "Generator and checker-a proposed pair; checker-b and checker-c proposed solitary. Choose one adult\
+      \ as the routine aquarium social unit because my-fish, Aquarismo Paulista and Practical Fishkeeping explicitly\
+      \ recommend it and partner aggression can be lethal. FishBase establishes natural pair bonding, and Murphy\
+      \ and Block demonstrate a long-lived breeding pair in a 945 L aquarium. A managed pair remains a reproductive\
+      \ option with more space and ready separation, rather than the default social unit."
+    sources:
+    - kind: "database"
+      title: "FishBase species summary: Heterotilapia buettikoferi"
+      url: "https://www.fishbase.se/summary/Heterotilapia-buettikoferi.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Israquarium fish index: Tilapia buttikoferi"
+      url: "https://www.israquarium.co.il/Fish/FishIndex/Tilapia%20buttikoferi.html"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Murphy, J. B. and Block, J. A. (2026). Zebra Tilapia Husbandry: Icthyological Architects during Reproduction.\
+        \ Exotica Esoterica, 19 July 2026."
+      url: "https://www.exoticaesoterica.com/magazine/zebra-tilapia"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "My-fish Fishothek: Heterotilapia buettikoferi, Zebratilapia"
+      url: "https://my-fish.org/my-fishothek/tilapia-buttikoferi-zebratilapia/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Aquarismo Paulista: Tilapia Zebra, Heterotilapia buettikoferi species care sheet (June 2026)"
+      url: "https://www.aquarismopaulista.com/zebra-heterotilapia-buettikoferi/"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Practical Fishkeeping: Six best pet cichlids"
+      url: "https://www.practicalfishkeeping.co.uk/features/six-best-pet-cichlids/"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "Interaquaristik: Zebratilapia, Tilapia buttikoferi species care sheet"
+      url: "https://www.interaquaristik.de/tiere/zierfische/barsche-und-skalare/zebratilapia-tilapia-buttikoferi/a-85121"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "database"
+        title: "My-fish Fishothek: Heterotilapia buettikoferi, Zebratilapia"
+        url: "https://my-fish.org/my-fishothek/tilapia-buttikoferi-zebratilapia/"
+        accessed: "2026-10-13"
+      value:
+        structure: "solitary"
+      note: "Preferred adult maintenance."
+    - source:
+        kind: "database"
+        title: "Aquarismo Paulista: Tilapia Zebra, Heterotilapia buettikoferi species care sheet (June 2026)"
+        url: "https://www.aquarismopaulista.com/zebra-heterotilapia-buettikoferi/"
+        accessed: "2026-10-13"
+      value:
+        structure: "solitary"
+      note: "Single adult is the minimum stocking unit."
+    - source:
+        kind: "literature"
+        title: "Practical Fishkeeping: Six best pet cichlids"
+        url: "https://www.practicalfishkeeping.co.uk/features/six-best-pet-cichlids/"
+        accessed: "2026-10-13"
+      value:
+        structure: "solitary"
+      note: "Pet-fish adult recommendation."
+    - source:
+        kind: "database"
+        title: "FishBase species summary: Heterotilapia buettikoferi"
+        url: "https://www.fishbase.se/summary/Heterotilapia-buettikoferi.html"
+        accessed: "2026-10-13"
+      value:
+        structure: "pair"
+      note: "Natural reproductive organization."
+    - source:
+        kind: "literature"
+        title: "Murphy, J. B. and Block, J. A. (2026). Zebra Tilapia Husbandry: Icthyological Architects during\
+          \ Reproduction. Exotica Esoterica, 19 July 2026."
+        url: "https://www.exoticaesoterica.com/magazine/zebra-tilapia"
+        accessed: "2026-10-13"
+      value:
+        structure: "pair"
+      note: "One observed established pair; substantial female harassment before reproduction."
+  speciesOnly:
+    value: true
+    confidence: "low"
+    rationale: "Conservative verification fixes true at low confidence because the six votes split equally: generator,\
+      \ checker-a and tiebreaker-2 proposed false; checker-b, checker-c and tiebreaker-1 proposed true. With no\
+      \ qualified majority, any true vote activates the restrictive default. My-fish, Aquarismo Paulista and Practical\
+      \ Fishkeeping support dedicated adult housing. TropicalFreshwaterFish and the Murphy and Block aquarium account\
+      \ support exceptional mixed maintenance, so exclusivity is a conservative planning recommendation rather than\
+      \ proof that coexistence never succeeds. Heterospecific partner recommendations are consequently omitted.\
+      \ Proposals: generator false; checker-a false; checker-b true; checker-c true; tiebreaker-1 true; tiebreaker-2\
+      \ false."
+    sources:
+    - kind: "database"
+      title: "TropicalFreshwaterFish: Buttikoferi, Tilapia buttikoferi"
+      url: "https://tropicalfreshwaterfish.com/species/Tilapia_buttikoferi.html"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Murphy, J. B. and Block, J. A. (2026). Zebra Tilapia Husbandry: Icthyological Architects during Reproduction.\
+        \ Exotica Esoterica, 19 July 2026."
+      url: "https://www.exoticaesoterica.com/magazine/zebra-tilapia"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "My-fish Fishothek: Heterotilapia buettikoferi, Zebratilapia"
+      url: "https://my-fish.org/my-fishothek/tilapia-buttikoferi-zebratilapia/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Guidarium, Zebra Tilapia"
+      url: "https://guidarium.com/fishes/zebra-tilapia"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Aquarismo Paulista: Tilapia Zebra, Heterotilapia buettikoferi species care sheet (June 2026)"
+      url: "https://www.aquarismopaulista.com/zebra-heterotilapia-buettikoferi/"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Practical Fishkeeping: Six best pet cichlids"
+      url: "https://www.practicalfishkeeping.co.uk/features/six-best-pet-cichlids/"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "Interaquaristik: Zebratilapia, Tilapia buttikoferi species care sheet"
+      url: "https://www.interaquaristik.de/tiere/zierfische/barsche-und-skalare/zebratilapia-tilapia-buttikoferi/a-85121"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "LiveAquaria: Butterikoferi Cichlid species care sheet"
+      url: "https://www.liveaquaria.com/products/butterikoferi-cichlid"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "Tropical Fish Keeping: Hornet Cichlid, Tilapia buttikoferi"
+      url: "https://tropical-fish-keeping.com/hornet-cichlid-tilapia-buttikoferi.html"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Practical Fishkeeping: Cichlid communities, When cultures collide"
+      url: "https://www.practicalfishkeeping.co.uk/features/cichlid-communities-when-cultures-collide/"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "Tropical Fish Site: Zebra Tilapia, Tilapia Buttikoferi"
+      url: "https://www.tropicalfishsite.com/zebra-tilapia-tilapia-buttikoferi/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "TropicalFreshwaterFish species directory: Zebra Tilapia, Tilapia buttikoferi."
+      url: "https://tropicalfreshwaterfish.com/other_african_cichlids.htm"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Aqua-Fish.Net: Zebra cichlid, Tilapia buttikoferi"
+      url: "https://en.aqua-fish.net/fish/zebra-cichlid"
+      accessed: "2026-10-13"
+    - kind: "archive"
+      title: "cichlids.com forum thread 1547"
+      url: "https://www.cichlids.com/disc/read.php?1,1547"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "database"
+        title: "My-fish Fishothek: Heterotilapia buettikoferi, Zebratilapia"
+        url: "https://my-fish.org/my-fishothek/tilapia-buttikoferi-zebratilapia/"
+        accessed: "2026-10-13"
+      value: true
+      note: "Routine single-adult recommendation; giant mixed tanks described as exceptions."
+    - source:
+        kind: "database"
+        title: "Aquarismo Paulista: Tilapia Zebra, Heterotilapia buettikoferi species care sheet (June 2026)"
+        url: "https://www.aquarismopaulista.com/zebra-heterotilapia-buettikoferi/"
+        accessed: "2026-10-13"
+      value: true
+      note: "Single adult preferred."
+    - source:
+        kind: "literature"
+        title: "Practical Fishkeeping: Six best pet cichlids"
+        url: "https://www.practicalfishkeeping.co.uk/features/six-best-pet-cichlids/"
+        accessed: "2026-10-13"
+      value: true
+      note: "Published adult-housing advice favours isolation or physical separation."
+    - source:
+        kind: "literature"
+        title: "Practical Fishkeeping: Cichlid communities, When cultures collide"
+        url: "https://www.practicalfishkeeping.co.uk/features/cichlid-communities-when-cultures-collide/"
+        accessed: "2026-10-13"
+      value: true
+      note: "Advises leaving this species out of cichlid communities."
+    - source:
+        kind: "database"
+        title: "TropicalFreshwaterFish: Buttikoferi, Tilapia buttikoferi"
+        url: "https://tropicalfreshwaterfish.com/species/Tilapia_buttikoferi.html"
+        accessed: "2026-10-13"
+      value: false
+      note: "Robust other-species companions permitted."
+    - source:
+        kind: "literature"
+        title: "Murphy, J. B. and Block, J. A. (2026). Zebra Tilapia Husbandry: Icthyological Architects during\
+          \ Reproduction. Exotica Esoterica, 19 July 2026."
+        url: "https://www.exoticaesoterica.com/magazine/zebra-tilapia"
+        accessed: "2026-10-13"
+      value: false
+      note: "One long-term 945 L aquarium held a pair and other fish without permanent injury in the reported interactions."
+    - source:
+        kind: "website"
+        title: "Tropical Fish Keeping: Hornet Cichlid, Tilapia buttikoferi"
+        url: "https://tropical-fish-keeping.com/hornet-cichlid-tilapia-buttikoferi.html"
+        accessed: "2026-10-13"
+      value: true
+      note: "Dedicated-tank default, with robust-companion exceptions."
+    - source:
+        kind: "website"
+        title: "LiveAquaria: Butterikoferi Cichlid species care sheet"
+        url: "https://www.liveaquaria.com/products/butterikoferi-cichlid"
+        accessed: "2026-10-13"
+      value: false
+      note: "Retail listing allows comparable-size companions."
+    - source:
+        kind: "archive"
+        title: "cichlids.com forum thread 1547"
+        url: "https://www.cichlids.com/disc/read.php?1,1547"
+        accessed: "2026-10-13"
+      value: false
+      note: "Archive keeper reported mixed housing of an approximately 20 cm fish; adult outcome and duration unverified."
+    verification:
+      method: "conservative"
+      votes:
+        agree: 3
+        total: 6
+  hybridGroups:
+    value: []
+    confidence: "low"
+    rationale: "All four complete profiles propose an empty list, retained with unanimous 4 of 4 verification and\
+      \ low confidence. The Catalog, FishBase and Sampaio article plus targeted literature and archive searches\
+      \ supply no eligible named crossing group. General statements about hybrid tilapia mostly concern other lineages\
+      \ and cannot define this species' partners. No group is invented solely from its congener or the obsolete\
+      \ broad genus Tilapia. The inherited DOI-free USFWS PDF reference could not be reopened through the permitted\
+      \ full-text tool and is excluded from factual support. An empty list means no substantiated group was identified,\
+      \ not that crossing is biologically impossible."
+    sources:
+    - kind: "catalog-of-fishes"
+      title: "Eschmeyer's Catalog of Fishes: species of Heterotilapia"
+      url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Heterotilapia"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishBase species summary: Heterotilapia buettikoferi"
+      url: "https://www.fishbase.se/summary/Heterotilapia-buettikoferi.html"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Sampaio et al. (2017). Heterotilapia buttikoferi, an introduced exotic fish in the upper Parana river\
+        \ basin"
+      url: "https://doi.org/10.15560/13.4.245"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "catalog-of-fishes"
+        title: "Eschmeyer's Catalog of Fishes: species of Heterotilapia"
+        url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Heterotilapia"
+        accessed: "2026-10-13"
+      value: []
+      note: "Taxonomy establishes distinct species but reports no named cross; limited negative information."
+    - source:
+        kind: "database"
+        title: "FishBase species summary: Heterotilapia buettikoferi"
+        url: "https://www.fishbase.se/summary/Heterotilapia-buettikoferi.html"
+        accessed: "2026-10-13"
+      value: []
+      note: "No named crossing partner in the read summary; not proof of reproductive isolation."
+    - source:
+        kind: "literature"
+        title: "Sampaio et al. (2017). Heterotilapia buttikoferi, an introduced exotic fish in the upper Parana\
+          \ river basin"
+        url: "https://doi.org/10.15560/13.4.245"
+        accessed: "2026-10-13"
+      value: []
+      note: "Article discusses a two-species genus and general invasive risks, without a cross involving this species."
+    verification:
+      method: "unanimous"
+      votes:
+        agree: 4
+        total: 4
+  coloration:
+    value:
+      baseColors:
+      - "black"
+      - "white"
+      - "yellow"
+      pattern: "bars"
+    confidence: "high"
+    rationale: "All profiles agree on black, pale white and yellow adult colours with vertical bars; checker-a only\
+      \ changes the list order. FishBase, TropicalFreshwaterFish and Sampaio support the bars, while the pale ground\
+      \ colour varies with age and condition."
+    sources:
+    - kind: "database"
+      title: "TropicalFreshwaterFish: Buttikoferi, Tilapia buttikoferi"
+      url: "https://tropicalfreshwaterfish.com/species/Tilapia_buttikoferi.html"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "Thai Hoa Aquarium (2014): Buttikoferi Cichlid care sheet"
+      url: "https://cacanhthaihoa.com/ca-canh/ca-ali/ca-hoang-tu-chau-phi-ky-lan-buttikoferi-cichlid-tilapia-butterkofferi.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "My-fish Fishothek: Heterotilapia buettikoferi, Zebratilapia"
+      url: "https://my-fish.org/my-fishothek/tilapia-buttikoferi-zebratilapia/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishBase species summary: Heterotilapia buettikoferi"
+      url: "https://www.fishbase.se/summary/Heterotilapia-buettikoferi.html"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "Wikipedia, Heterotilapia buttikoferi"
+      url: "https://en.wikipedia.org/wiki/Heterotilapia_buttikoferi"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Sampaio et al. (2017). Heterotilapia buttikoferi, an introduced exotic fish in the upper Parana river\
+        \ basin"
+      url: "https://doi.org/10.15560/13.4.245"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "LiveAquaria: Butterikoferi Cichlid species care sheet"
+      url: "https://www.liveaquaria.com/products/butterikoferi-cichlid"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "database"
+        title: "TropicalFreshwaterFish: Buttikoferi, Tilapia buttikoferi"
+        url: "https://tropicalfreshwaterfish.com/species/Tilapia_buttikoferi.html"
+        accessed: "2026-10-13"
+      value:
+        baseColors:
+        - "black"
+        - "yellow"
+        pattern: "bars"
+    - source:
+        kind: "database"
+        title: "My-fish Fishothek: Heterotilapia buettikoferi, Zebratilapia"
+        url: "https://my-fish.org/my-fishothek/tilapia-buttikoferi-zebratilapia/"
+        accessed: "2026-10-13"
+      value:
+        baseColors:
+        - "black"
+        - "white"
+        - "yellow"
+        pattern: "bars"
+    - source:
+        kind: "literature"
+        title: "Sampaio et al. (2017). Heterotilapia buttikoferi, an introduced exotic fish in the upper Parana\
+          \ river basin"
+        url: "https://doi.org/10.15560/13.4.245"
+        accessed: "2026-10-13"
+      value:
+        baseColors:
+        - "black"
+        pattern: "bars"
+      note: "Diagnostic dark bars with a lighter background; pale colour not specified."
+  feedingSpeed:
+    value: "hasty"
+    confidence: "low"
+    rationale: "Generator proposed normal; checker-a, checker-b and checker-c proposed hasty. The Magic World index\
+      \ describes intense food-taking motivation, which makes hasty a plausible rubric interpretation. Appetite\
+      \ and aggression do not directly measure capture speed or prove competitive feeding, so confidence stays low\
+      \ rather than adopting checker-b's medium assessment."
+    sources:
+    - kind: "model-knowledge"
+      title: "Generator inference where no species-specific measurement or observation is available"
+    - kind: "model-knowledge"
+      title: "Inference from size and aggression"
+    - kind: "website"
+      title: "Magic World fish index: Heterotilapia buttikoferi species care sheet"
+      url: "https://www.magicworldsy.com/sw-marine/fish-index/cichlids/buttikoferi-cichlid/"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "Interaquaristik: Zebratilapia, Tilapia buttikoferi species care sheet"
+      url: "https://www.interaquaristik.de/tiere/zierfische/barsche-und-skalare/zebratilapia-tilapia-buttikoferi/a-85121"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "LiveAquaria: Butterikoferi Cichlid species care sheet"
+      url: "https://www.liveaquaria.com/products/butterikoferi-cichlid"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "website"
+        title: "Magic World fish index: Heterotilapia buttikoferi species care sheet"
+        url: "https://www.magicworldsy.com/sw-marine/fish-index/cichlids/buttikoferi-cichlid/"
+        accessed: "2026-10-13"
+      value: "hasty"
+      note: "Inference from vigorous feeding motivation; no timed or comparative speed observation."
+  minTank:
+    value:
+      volumeL: 800
+      lengthCm: 220
+      depthCm: 60
+    confidence: "medium"
+    rationale: "Generator proposed 1000 L, 240 by 80 cm for a pair; checker-a 450 L, 150 by 55 cm for a pair; checker-b\
+      \ 800 L, 220 by 60 cm for one adult; checker-c 450 L, 180 by 60 cm for one adult. Choose checker-b's 800 L\
+      \ and 220 by 60 cm for the decided single-adult social unit. My-fish's prose recommends 700 to 900 L for one\
+      \ adult, but its summary also gives 1080 L at 220 cm, showing internal inconsistency. Zoopet's 450 L/150 cm\
+      \ and other smaller care-sheet minima give weaker allowance for full adult movement and enclosure use. The\
+      \ 60 cm depth is an inferred turning-space provision, not a measured threshold. Pairs call for about 1000\
+      \ L and a larger footprint; none of these minima is experimentally established."
+    sources:
+    - kind: "database"
+      title: "My-fish Fishothek: Heterotilapia buettikoferi, Zebratilapia"
+      url: "https://my-fish.org/my-fishothek/tilapia-buttikoferi-zebratilapia/"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Murphy, J. B. and Block, J. A. (2026). Zebra Tilapia Husbandry: Icthyological Architects during Reproduction.\
+        \ Exotica Esoterica, 19 July 2026."
+      url: "https://www.exoticaesoterica.com/magazine/zebra-tilapia"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Aquarium.org.il ornamental fish index: Zebra Tilapia"
+      url: "https://www.aquarium.org.il/%D7%95%D7%99%D7%A7%D7%99%D7%A4%D7%99%D7%A9-%D7%96%D7%91%D7%A8%D7%94-%D7%98%D7%99%D7%9C%D7%A4%D7%99%D7%94-453"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Guidarium, Zebra Tilapia"
+      url: "https://guidarium.com/fishes/zebra-tilapia"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "Riverpark Aquatics, Zebra Tilapia care guide"
+      url: "https://riverparkaquatics.co.uk/zebra-tilapia-heterotilapia-buttikoferi-4-5cm/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "TropicalFreshwaterFish: Buttikoferi, Tilapia buttikoferi"
+      url: "https://tropicalfreshwaterfish.com/species/Tilapia_buttikoferi.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Aquarismo Paulista: Tilapia Zebra, Heterotilapia buettikoferi species care sheet (June 2026)"
+      url: "https://www.aquarismopaulista.com/zebra-heterotilapia-buettikoferi/"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "Magic World fish index: Heterotilapia buttikoferi species care sheet"
+      url: "https://www.magicworldsy.com/sw-marine/fish-index/cichlids/buttikoferi-cichlid/"
+      accessed: "2026-10-13"
+    - kind: "model-knowledge"
+      title: "Checker B: cautious inference where species-specific long-term evidence is missing"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Zoopet: Tilapia buttikoferi species profile"
+      url: "https://www.zoopet.com/fiskar/fisk.php?NR=165"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Practical Fishkeeping: Six best pet cichlids"
+      url: "https://www.practicalfishkeeping.co.uk/features/six-best-pet-cichlids/"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "Interaquaristik: Zebratilapia, Tilapia buttikoferi species care sheet"
+      url: "https://www.interaquaristik.de/tiere/zierfische/barsche-und-skalare/zebratilapia-tilapia-buttikoferi/a-85121"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Aqua-Fish.Net: Zebra cichlid, Tilapia buttikoferi"
+      url: "https://en.aqua-fish.net/fish/zebra-cichlid"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "database"
+        title: "My-fish Fishothek: Heterotilapia buettikoferi, Zebratilapia"
+        url: "https://my-fish.org/my-fishothek/tilapia-buttikoferi-zebratilapia/"
+        accessed: "2026-10-13"
+      value:
+        volumeL: 700
+        lengthCm: 220
+      note: "Prose gives 700 to 900 L; summary gives 1080 L for one adult, and depth is unspecified."
+    - source:
+        kind: "database"
+        title: "Zoopet: Tilapia buttikoferi species profile"
+        url: "https://www.zoopet.com/fiskar/fisk.php?NR=165"
+        accessed: "2026-10-13"
+      value:
+        volumeL: 450
+        lengthCm: 150
+      note: "Smaller adult recommendation, not selected."
+    - source:
+        kind: "database"
+        title: "Aquarismo Paulista: Tilapia Zebra, Heterotilapia buettikoferi species care sheet (June 2026)"
+        url: "https://www.aquarismopaulista.com/zebra-heterotilapia-buettikoferi/"
+        accessed: "2026-10-13"
+      value:
+        volumeL: 300
+        lengthCm: 150
+        depthCm: 50
+      note: "Smaller single-adult recommendation; pair proposal is 800 to 1000 L or more."
+    - source:
+        kind: "literature"
+        title: "Murphy, J. B. and Block, J. A. (2026). Zebra Tilapia Husbandry: Icthyological Architects during\
+          \ Reproduction. Exotica Esoterica, 19 July 2026."
+        url: "https://www.exoticaesoterica.com/magazine/zebra-tilapia"
+        accessed: "2026-10-13"
+      value:
+        volumeL: 945
+        lengthCm: 245
+        depthCm: 80
+      note: "Actual reported pair aquarium; water volume is author-stated, not calculated cuboid capacity."
+  lifespanYears:
+    value:
+      min: 10
+      max: 15
+    confidence: "medium"
+    rationale: "Generator, checker-a and checker-b proposed 10 to 15 years; checker-c proposed 8 to 10 with an inferred\
+      \ lower bound. My-fish gives 10 to 15 and Murphy and Block describe fish introduced in 2011 still alive in\
+      \ 2026. Aqua-Fish's ten-year expectancy is a shorter general estimate, not a demonstrated upper lifespan limit.\
+      \ Retain 10 to 15 as an aquarium expectation rather than a measured survival distribution."
+    sources:
+    - kind: "database"
+      title: "Aqua-Fish.Net: Zebra cichlid, Tilapia buttikoferi"
+      url: "https://en.aqua-fish.net/fish/zebra-cichlid"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "My-fish Fishothek: Heterotilapia buettikoferi, Zebratilapia"
+      url: "https://my-fish.org/my-fishothek/tilapia-buttikoferi-zebratilapia/"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Murphy, J. B. and Block, J. A. (2026). Zebra Tilapia Husbandry: Icthyological Architects during Reproduction.\
+        \ Exotica Esoterica, 19 July 2026."
+      url: "https://www.exoticaesoterica.com/magazine/zebra-tilapia"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "Riverpark Aquatics, Zebra Tilapia care guide"
+      url: "https://riverparkaquatics.co.uk/zebra-tilapia-heterotilapia-buttikoferi-4-5cm/"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "The Aquarium Wiki: Zebra Tilapia"
+      url: "https://www.theaquariumwiki.com/wiki/Tilapia_buttikoferi"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "database"
+        title: "My-fish Fishothek: Heterotilapia buettikoferi, Zebratilapia"
+        url: "https://my-fish.org/my-fishothek/tilapia-buttikoferi-zebratilapia/"
+        accessed: "2026-10-13"
+      value:
+        min: 10
+        max: 15
+    - source:
+        kind: "database"
+        title: "Aqua-Fish.Net: Zebra cichlid, Tilapia buttikoferi"
+        url: "https://en.aqua-fish.net/fish/zebra-cichlid"
+        accessed: "2026-10-13"
+      value:
+        min: null
+        max: 10
+      note: "Stated expectancy only; no measured lower bound."
+    - source:
+        kind: "literature"
+        title: "Murphy, J. B. and Block, J. A. (2026). Zebra Tilapia Husbandry: Icthyological Architects during\
+          \ Reproduction. Exotica Esoterica, 19 July 2026."
+        url: "https://www.exoticaesoterica.com/magazine/zebra-tilapia"
+        accessed: "2026-10-13"
+      value:
+        min: 15
+        max: 15
+      note: "Approximately fifteen years since introduction as subadults, not exact fish ages."
+  breeding:
+    value: "open-substrate-spawner"
+    confidence: "high"
+    rationale: "All four profiles select open-substrate-spawner. FishBase and Israquarium establish biparental guarding\
+      \ on exposed substrate; Murphy and Block observed deposition on the aquarium floor. CRC confirms the mode\
+      \ only. Aqua-Fish's cave-spawning description conflicts with the stronger evidence and is rejected."
+    sources:
+    - kind: "database"
+      title: "FishBase species summary: Heterotilapia buettikoferi"
+      url: "https://www.fishbase.se/summary/Heterotilapia-buettikoferi.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Israquarium fish index: Tilapia buttikoferi"
+      url: "https://www.israquarium.co.il/Fish/FishIndex/Tilapia%20buttikoferi.html"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Murphy, J. B. and Block, J. A. (2026). Zebra Tilapia Husbandry: Icthyological Architects during Reproduction.\
+        \ Exotica Esoterica, 19 July 2026."
+      url: "https://www.exoticaesoterica.com/magazine/zebra-tilapia"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Cichlid Room Companion: Heterotilapia buttikoferi, public verification only"
+      url: "https://cichlidae.com/species.php?id=0yFWu_eyshCQdGkjwSSafw"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Aqua-Fish.Net: Zebra cichlid, Tilapia buttikoferi"
+      url: "https://en.aqua-fish.net/fish/zebra-cichlid"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Aquarismo Paulista: Tilapia Zebra, Heterotilapia buettikoferi species care sheet (June 2026)"
+      url: "https://www.aquarismopaulista.com/zebra-heterotilapia-buettikoferi/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "My-fish Fishothek: Heterotilapia buettikoferi, Zebratilapia"
+      url: "https://my-fish.org/my-fishothek/tilapia-buttikoferi-zebratilapia/"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "LiveAquaria: Butterikoferi Cichlid species care sheet"
+      url: "https://www.liveaquaria.com/products/butterikoferi-cichlid"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "database"
+        title: "FishBase species summary: Heterotilapia buettikoferi"
+        url: "https://www.fishbase.se/summary/Heterotilapia-buettikoferi.html"
+        accessed: "2026-10-13"
+      value: "open-substrate-spawner"
+    - source:
+        kind: "database"
+        title: "Israquarium fish index: Tilapia buttikoferi"
+        url: "https://www.israquarium.co.il/Fish/FishIndex/Tilapia%20buttikoferi.html"
+        accessed: "2026-10-13"
+      value: "open-substrate-spawner"
+    - source:
+        kind: "literature"
+        title: "Murphy, J. B. and Block, J. A. (2026). Zebra Tilapia Husbandry: Icthyological Architects during\
+          \ Reproduction. Exotica Esoterica, 19 July 2026."
+        url: "https://www.exoticaesoterica.com/magazine/zebra-tilapia"
+        accessed: "2026-10-13"
+      value: "open-substrate-spawner"
+      note: "Observed aquarium-floor egg deposition."
+    - source:
+        kind: "database"
+        title: "Cichlid Room Companion: Heterotilapia buttikoferi, public verification only"
+        url: "https://cichlidae.com/species.php?id=0yFWu_eyshCQdGkjwSSafw"
+        accessed: "2026-10-13"
+      value: "open-substrate-spawner"
+      note: "Public verification only."
+    - source:
+        kind: "database"
+        title: "Aqua-Fish.Net: Zebra cichlid, Tilapia buttikoferi"
+        url: "https://en.aqua-fish.net/fish/zebra-cichlid"
+        accessed: "2026-10-13"
+      value: "cave-spawner"
+      note: "Conflicting care-sheet description rejected."
+  beginnerSuitability:
+    value: "demanding"
+    confidence: "high"
+    rationale: "All four profiles choose demanding. Long adult commitment, severe aggression, large-tank requirements\
+      \ and separation management outweigh easy or moderate labels that mostly describe physical hardiness. CRC's\
+      \ public intermediate-aquarist rating is a verification disagreement; it does not outweigh the specific adult-housing\
+      \ risks."
+    sources:
+    - kind: "database"
+      title: "My-fish Fishothek: Heterotilapia buettikoferi, Zebratilapia"
+      url: "https://my-fish.org/my-fishothek/tilapia-buttikoferi-zebratilapia/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Israquarium fish index: Tilapia buttikoferi"
+      url: "https://www.israquarium.co.il/Fish/FishIndex/Tilapia%20buttikoferi.html"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Murphy, J. B. and Block, J. A. (2026). Zebra Tilapia Husbandry: Icthyological Architects during Reproduction.\
+        \ Exotica Esoterica, 19 July 2026."
+      url: "https://www.exoticaesoterica.com/magazine/zebra-tilapia"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Guidarium, Zebra Tilapia"
+      url: "https://guidarium.com/fishes/zebra-tilapia"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "TropicalFreshwaterFish: Buttikoferi, Tilapia buttikoferi"
+      url: "https://tropicalfreshwaterfish.com/species/Tilapia_buttikoferi.html"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "Riverpark Aquatics, Zebra Tilapia care guide"
+      url: "https://riverparkaquatics.co.uk/zebra-tilapia-heterotilapia-buttikoferi-4-5cm/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Aquarismo Paulista: Tilapia Zebra, Heterotilapia buettikoferi species care sheet (June 2026)"
+      url: "https://www.aquarismopaulista.com/zebra-heterotilapia-buettikoferi/"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "Magic World fish index: Heterotilapia buttikoferi species care sheet"
+      url: "https://www.magicworldsy.com/sw-marine/fish-index/cichlids/buttikoferi-cichlid/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Cichlid Room Companion: Heterotilapia buttikoferi, public verification only"
+      url: "https://cichlidae.com/species.php?id=0yFWu_eyshCQdGkjwSSafw"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "Interaquaristik: Zebratilapia, Tilapia buttikoferi species care sheet"
+      url: "https://www.interaquaristik.de/tiere/zierfische/barsche-und-skalare/zebratilapia-tilapia-buttikoferi/a-85121"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Practical Fishkeeping: Six best pet cichlids"
+      url: "https://www.practicalfishkeeping.co.uk/features/six-best-pet-cichlids/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Nordiska Ciklidsallskapet species register: Heterotilapia buttikoferi"
+      url: "https://www.ciklid.org/artregister/art.php?ID=539"
+      accessed: "2026-10-13"
+    - kind: "website"
+      title: "LiveAquaria: Butterikoferi Cichlid species care sheet"
+      url: "https://www.liveaquaria.com/products/butterikoferi-cichlid"
+      accessed: "2026-10-13"
+    evidence:
+    - source:
+        kind: "database"
+        title: "My-fish Fishothek: Heterotilapia buettikoferi, Zebratilapia"
+        url: "https://my-fish.org/my-fishothek/tilapia-buttikoferi-zebratilapia/"
+        accessed: "2026-10-13"
+      value: "demanding"
+    - source:
+        kind: "database"
+        title: "Aquarismo Paulista: Tilapia Zebra, Heterotilapia buettikoferi species care sheet (June 2026)"
+        url: "https://www.aquarismopaulista.com/zebra-heterotilapia-buettikoferi/"
+        accessed: "2026-10-13"
+      value: "demanding"
+      note: "Inference from adult requirements despite an easy summary label."
+    - source:
+        kind: "database"
+        title: "Cichlid Room Companion: Heterotilapia buttikoferi, public verification only"
+        url: "https://cichlidae.com/species.php?id=0yFWu_eyshCQdGkjwSSafw"
+        accessed: "2026-10-13"
+      value: "moderate"
+      note: "Public intermediate category, used only for verification."
+partners:
+  suitable: []
+  unsuitable:
+  - species: "Paracheirodon innesi"
+    reason: "Adults are small enough to be swallowed and cannot resist territorial attacks."
+  - species: "Pelvicachromis pulcher"
+    reason: "A smaller territorial fish is vulnerable to persistent attack; the decided default excludes other species."
+  - species: "Symphysodon aequifasciatus"
+    reason: "Quiet large fish remain vulnerable to severe aggression even when outside swallowing size."
+  - species: "Synodontis species"
+    reason: "Historical mixed-tank successes are exceptions; the conservative speciesOnly decision does not recommend\
+      \ heterospecific partners."
+profile:
+  overview:
+    text: "The zebra tilapia combines striking vertical bands with the strength and territorial behaviour of a large\
+      \ adult cichlid. Heterotilapia buettikoferi is the accepted name; the former Tilapia name and several spelling\
+      \ variants remain common in trade. Its native home is coastal West Africa. This profile recommends a dedicated\
+      \ aquarium for one adult, with experienced care and a long-term space commitment."
+    sources:
+    - kind: "catalog-of-fishes"
+      title: "Eschmeyer's Catalog of Fishes: species of Heterotilapia"
+      url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Heterotilapia"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishBase species summary: Heterotilapia buettikoferi"
+      url: "https://www.fishbase.se/summary/Heterotilapia-buettikoferi.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "My-fish Fishothek: Heterotilapia buettikoferi, Zebratilapia"
+      url: "https://my-fish.org/my-fishothek/tilapia-buttikoferi-zebratilapia/"
+      accessed: "2026-10-13"
+  habitat:
+    text: "Adults inhabit rocky channels of larger coastal rivers from Guinea-Bissau to western Liberia, including\
+      \ Guinea and Sierra Leone. Regional river studies indicate warm and often very soft water with seasonally\
+      \ variable pH. The selected natural ranges summarize regional evidence and have been rounded or decided by\
+      \ median voting; they do not enclose every published measurement. Exact water conditions beside identified\
+      \ fish at the study endpoints remain unknown."
+    sources:
+    - kind: "database"
+      title: "FishBase species summary: Heterotilapia buettikoferi"
+      url: "https://www.fishbase.se/summary/Heterotilapia-buettikoferi.html"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Konoyima et al. (2020). Lengthz-Weight Relationship and Condition Factor of Coelotilapia joka in the\
+        \ Rokel/Seli River, West Africa."
+      url: "https://doi.org/10.18052/www.scipress.com/ilns.77.27"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Barrie, A., Agodzo, S. K., Frazer-Williams, R., Awuah, E. and Bessah, E. (2023). A multivariate statistical\
+        \ approach and water quality index for water quality assessment for the Rokel river in Sierra Leone. Heliyon\
+        \ 9, e16196."
+      url: "https://doi.org/10.1016/j.heliyon.2023.e16196"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Evaluating the Mattru Jong Water Supply System in Sierra Leone (2016). Table 3."
+      url: "https://doi.org/10.21474/ijar01/2173"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Livingstone, D. A. (1963). Chemical composition of rivers and lakes. USGS Professional Paper 440-G.\
+        \ Table 69, Konkoure River at Sonapiti."
+      url: "https://doi.org/10.3133/pp440g"
+      accessed: "2026-10-13"
+  sizeAndGrowth:
+    text: "Use about 30 cm for a typical adult male and 25 cm for a female when planning space. The sex-specific\
+      \ limits are estimates from sparse aquarium observations, and larger individuals occur. Standard-length records\
+      \ exclude the tail and should not be treated as total aquarium length. The expected captive lifespan is roughly\
+      \ 10 to 15 years, so a juvenile purchase requires an adult housing plan."
+    sources:
+    - kind: "literature"
+      title: "Bailey, M. The 10 biggest and best cichlids. Practical Fishkeeping."
+      url: "https://www.practicalfishkeeping.co.uk/features/the-10-biggest-and-best-cichlids/"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Murphy, J. B. and Block, J. A. (2026). Zebra Tilapia Husbandry: Icthyological Architects during Reproduction.\
+        \ Exotica Esoterica, 19 July 2026."
+      url: "https://www.exoticaesoterica.com/magazine/zebra-tilapia"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Aqua-Fish.Net: Zebra cichlid, Tilapia buttikoferi"
+      url: "https://en.aqua-fish.net/fish/zebra-cichlid"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "My-fish Fishothek: Heterotilapia buettikoferi, Zebratilapia"
+      url: "https://my-fish.org/my-fishothek/tilapia-buttikoferi-zebratilapia/"
+      accessed: "2026-10-13"
+  husbandry:
+    text: "For one adult, use the planning minimum of 800 litres with at least 220 cm length and 60 cm front-to-back\
+      \ depth. Provide open movement space and sheltered areas around securely supported rocks. Keep rocks stable\
+      \ when the fish removes substrate beneath them and protect exposed equipment. Effective filtration, oxygenation\
+      \ and regular partial water changes support the substantial waste load. Maintain stable conditions near the\
+      \ better-supported care ranges, such as 24 to 27 C and pH around 6.5 to 7.5. The broad low-confidence tolerances\
+      \ do not establish healthy chronic exposure at every endpoint, especially the KH extremes."
+    sources:
+    - kind: "database"
+      title: "My-fish Fishothek: Heterotilapia buettikoferi, Zebratilapia"
+      url: "https://my-fish.org/my-fishothek/tilapia-buttikoferi-zebratilapia/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Israquarium fish index: Tilapia buttikoferi"
+      url: "https://www.israquarium.co.il/Fish/FishIndex/Tilapia%20buttikoferi.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Aqua-Fish.Net: Zebra cichlid, Tilapia buttikoferi"
+      url: "https://en.aqua-fish.net/fish/zebra-cichlid"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Aquarismo Paulista: Tilapia Zebra, Heterotilapia buettikoferi species care sheet (June 2026)"
+      url: "https://www.aquarismopaulista.com/zebra-heterotilapia-buettikoferi/"
+      accessed: "2026-10-13"
+  socialBehavior:
+    text: "Keep one adult as the routine arrangement. Groups and unproven male-female combinations can lead to persistent\
+      \ harassment or death. A bonded pair is the natural reproductive unit and can be maintained by experienced\
+      \ keepers in a larger dedicated setup, with separate housing or a divider ready. Pair management generally\
+      \ calls for about 1000 litres and more refuge space than the single-adult minimum. Calm juvenile behaviour\
+      \ does not establish future compatibility."
+    sources:
+    - kind: "database"
+      title: "My-fish Fishothek: Heterotilapia buettikoferi, Zebratilapia"
+      url: "https://my-fish.org/my-fishothek/tilapia-buttikoferi-zebratilapia/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "FishBase species summary: Heterotilapia buettikoferi"
+      url: "https://www.fishbase.se/summary/Heterotilapia-buettikoferi.html"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Murphy, J. B. and Block, J. A. (2026). Zebra Tilapia Husbandry: Icthyological Architects during Reproduction.\
+        \ Exotica Esoterica, 19 July 2026."
+      url: "https://www.exoticaesoterica.com/magazine/zebra-tilapia"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Israquarium fish index: Tilapia buttikoferi"
+      url: "https://www.israquarium.co.il/Fish/FishIndex/Tilapia%20buttikoferi.html"
+      accessed: "2026-10-13"
+  diet:
+    text: "Provide complete cichlid pellets with plant ingredients and vary them with algae foods and suitable vegetables.\
+      \ Aquatic invertebrate foods can supplement the plant component. This fish is a flexible omnivore and can\
+      \ consume smaller fishes, so feeding preference does not make small tankmates safe. The false bloat flag means\
+      \ that a specific protein-associated syndrome was not established; balanced nutrition remains important."
+    sources:
+    - kind: "database"
+      title: "FishBase species summary: Heterotilapia buettikoferi"
+      url: "https://www.fishbase.se/summary/Heterotilapia-buettikoferi.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Aqua-Fish.Net: Zebra cichlid, Tilapia buttikoferi"
+      url: "https://en.aqua-fish.net/fish/zebra-cichlid"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Israquarium fish index: Tilapia buttikoferi"
+      url: "https://www.israquarium.co.il/Fish/FishIndex/Tilapia%20buttikoferi.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Aquarismo Paulista: Tilapia Zebra, Heterotilapia buettikoferi species care sheet (June 2026)"
+      url: "https://www.aquarismopaulista.com/zebra-heterotilapia-buettikoferi/"
+      accessed: "2026-10-13"
+  breeding:
+    text: "Breeding pairs clear a substantial area and place eggs on exposed solid substrate. Both adults defend\
+      \ eggs and young, often increasing their pressure on fish nearby. Mouth transport of young does not change\
+      \ the classification to mouthbrooding. A detailed aquarium report observed spawning after prolonged female\
+      \ harassment and later suspected catfish predation when the brood disappeared. Fry require small foods and\
+      \ separate rearing capacity; a breeding setup must also allow immediate adult separation."
+    sources:
+    - kind: "database"
+      title: "FishBase species summary: Heterotilapia buettikoferi"
+      url: "https://www.fishbase.se/summary/Heterotilapia-buettikoferi.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Israquarium fish index: Tilapia buttikoferi"
+      url: "https://www.israquarium.co.il/Fish/FishIndex/Tilapia%20buttikoferi.html"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Murphy, J. B. and Block, J. A. (2026). Zebra Tilapia Husbandry: Icthyological Architects during Reproduction.\
+        \ Exotica Esoterica, 19 July 2026."
+      url: "https://www.exoticaesoterica.com/magazine/zebra-tilapia"
+      accessed: "2026-10-13"
+  sexing:
+    text: "The sexes share the barred colour pattern. Adult males commonly grow larger and may develop a more prominent\
+      \ forehead, but neither clue reliably sexes juveniles. Observed egg deposition provides clearer identification\
+      \ of the female than size or colour alone. Sex identification does not establish that two adults will form\
+      \ a safe pair."
+    sources:
+    - kind: "database"
+      title: "Israquarium fish index: Tilapia buttikoferi"
+      url: "https://www.israquarium.co.il/Fish/FishIndex/Tilapia%20buttikoferi.html"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Aquarismo Paulista: Tilapia Zebra, Heterotilapia buettikoferi species care sheet (June 2026)"
+      url: "https://www.aquarismopaulista.com/zebra-heterotilapia-buettikoferi/"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Murphy, J. B. and Block, J. A. (2026). Zebra Tilapia Husbandry: Icthyological Architects during Reproduction.\
+        \ Exotica Esoterica, 19 July 2026."
+      url: "https://www.exoticaesoterica.com/magazine/zebra-tilapia"
+      accessed: "2026-10-13"
+  compatibility:
+    text: "The decided stocking default excludes other species. Both mouth-fit predation and severe territorial\
+      \ aggression matter, so being too large to swallow does not ensure safety. Published accounts allow exceptionally\
+      \ robust companions, and Murphy and Block described coexistence with catfish in a large aquarium. Those exceptions\
+      \ explain the low-confidence species-only decision but do not create routine suitable-partner recommendations.\
+      \ Small tetras, dwarf cichlids and delicate large fish are poor choices. No substantiated hybrid group was\
+      \ identified; that evidence gap does not prove reproductive isolation."
+    sources:
+    - kind: "literature"
+      title: "Practical Fishkeeping: Six best pet cichlids"
+      url: "https://www.practicalfishkeeping.co.uk/features/six-best-pet-cichlids/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "TropicalFreshwaterFish: Buttikoferi, Tilapia buttikoferi"
+      url: "https://tropicalfreshwaterfish.com/species/Tilapia_buttikoferi.html"
+      accessed: "2026-10-13"
+    - kind: "literature"
+      title: "Murphy, J. B. and Block, J. A. (2026). Zebra Tilapia Husbandry: Icthyological Architects during Reproduction.\
+        \ Exotica Esoterica, 19 July 2026."
+      url: "https://www.exoticaesoterica.com/magazine/zebra-tilapia"
+      accessed: "2026-10-13"
+    - kind: "catalog-of-fishes"
+      title: "Eschmeyer's Catalog of Fishes: species of Heterotilapia"
+      url: "https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Heterotilapia"
+      accessed: "2026-10-13"
+  problems:
+    text: "Adult aggression and powerful excavation are the main management difficulties. A fish that cannot rest\
+      \ or feed safely needs prompt separation even before injuries appear. Digging can undermine furnishings and\
+      \ destroy plants, while insufficient filtration and maintenance can allow waste to accumulate. Investigate\
+      \ appetite changes, abnormal breathing or wounds together with water quality and social conditions. Physiological\
+      \ hardiness does not remove these husbandry demands."
+    sources:
+    - kind: "database"
+      title: "My-fish Fishothek: Heterotilapia buettikoferi, Zebratilapia"
+      url: "https://my-fish.org/my-fishothek/tilapia-buttikoferi-zebratilapia/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Aquarismo Paulista: Tilapia Zebra, Heterotilapia buettikoferi species care sheet (June 2026)"
+      url: "https://www.aquarismopaulista.com/zebra-heterotilapia-buettikoferi/"
+      accessed: "2026-10-13"
+    - kind: "database"
+      title: "Aqua-Fish.Net: Zebra cichlid, Tilapia buttikoferi"
+      url: "https://en.aqua-fish.net/fish/zebra-cichlid"
+      accessed: "2026-10-13"
+provenance:
+  runs:
+  - role: "generator"
+    model: "gpt-6.1-sol"
+    date: "2026-10-13"
+  - role: "checker"
+    model: "claude-sonnet-5-5"
+    date: "2026-10-13"
+  - role: "checker"
+    model: "gpt-6.1-sol"
+    date: "2026-10-13"
+  - role: "checker"
+    model: "gpt-6.1-sol"
+    date: "2026-10-13"
+  - role: "checker"
+    model: "gpt-6.1-sol"
+    date: "2026-10-13"
+  - role: "checker"
+    model: "gpt-6.1-sol"
+    date: "2026-10-13"
+  - role: "adjudicator"
+    model: "gpt-6.1-sol"
+    date: "2026-10-13"
+  disagreements:
+  - field: "features.predation"
+    proposals:
+    - by: "generator"
+      value: 2
+    - by: "checker-a"
+      value: 1
+    - by: "checker-b"
+      value: 2
+    - by: "checker-c"
+      value: 2
+    - by: "tiebreaker-1"
+      value: 2
+    - by: "tiebreaker-2"
+      value: 2
+    decision: 2
+    rationale: "Qualified majority selects level 2 with 5 of 6 votes and medium confidence. Israquarium explicitly\
+      \ ties consumption to mouth size, TropicalFreshwaterFish reports smaller fish as prey and Bailey reports partial\
+      \ fish feeding. None restricts prey to fry or 2 cm, so the checker-a level-1 interpretation underestimates\
+      \ the reported risk. Plant-biased omnivory does not remove mouth-fit predation; it also does not support fish\
+      \ as the main food required for level 3. Frequency and maximum prey length are not quantified. Proposals:\
+      \ generator 2; checker-a 1; checker-b 2; checker-c 2; tiebreaker-1 2; tiebreaker-2 2."
+  - field: "features.diet"
+    proposals:
+    - by: "generator"
+      value:
+        type: "omnivore"
+        bloatSensitive: false
+        foods:
+        - "Complete cichlid pellets with plant ingredients"
+        - "Spirulina foods and algae wafers"
+        - "Blanched leafy vegetables"
+        - "Occasional aquatic invertebrate foods"
+    - by: "checker-a"
+      value:
+        type: "omnivore"
+        bloatSensitive: false
+        foods:
+        - "algae and plant matter"
+        - "vegetables"
+        - "cichlid pellets"
+        - "insect larvae"
+        - "crustaceans"
+    - by: "checker-b"
+      value:
+        type: "omnivore"
+        bloatSensitive: false
+        foods:
+        - "Algae and plant material"
+        - "Aquatic invertebrates and molluscs"
+        - "Small fish when available"
+        - "Vegetable-rich prepared food"
+    - by: "checker-c"
+      value:
+        type: "omnivore"
+        bloatSensitive: false
+        foods:
+        - "Plant material"
+        - "Algae-based pellets"
+        - "Aquatic invertebrates"
+        - "Occasional small fish"
+    decision:
+      type: "omnivore"
+      bloatSensitive: false
+      foods:
+      - "Complete cichlid pellets with plant ingredients"
+      - "Spirulina foods and algae wafers"
+      - "Blanched leafy vegetables"
+      - "Occasional aquatic invertebrate foods"
+    rationale: "All four complete profiles agree on omnivore and bloatSensitive false, giving unanimous verification\
+      \ and medium confidence. Their food lists differ, but the tally retains the generator's complete pellet, algae,\
+      \ vegetable and occasional invertebrate suggestions exactly. FishBase, Aqua-Fish and Israquarium support mixed\
+      \ feeding with an important plant component. False records that a specific protein-associated bloat tendency\
+      \ was not demonstrated; it does not certify an exclusively animal diet as healthy. Proposals: generator {\"\
+      type\": \"omnivore\", \"bloatSensitive\": false, \"foods\": [\"Complete cichlid pellets with plant ingredients\"\
+      , \"Spirulina foods and algae wafers\", \"Blanched leafy vegetables\", \"Occasional aquatic invertebrate foods\"\
+      ]}; checker-a {\"type\": \"omnivore\", \"bloatSensitive\": false, \"foods\": [\"algae and plant matter\",\
+      \ \"vegetables\", \"cichlid pellets\", \"insect larvae\", \"crustaceans\"]}; checker-b {\"type\": \"omnivore\"\
+      , \"bloatSensitive\": false, \"foods\": [\"Algae and plant material\", \"Aquatic invertebrates and molluscs\"\
+      , \"Small fish when available\", \"Vegetable-rich prepared food\"]}; checker-c {\"type\": \"omnivore\", \"\
+      bloatSensitive\": false, \"foods\": [\"Plant material\", \"Algae-based pellets\", \"Aquatic invertebrates\"\
+      , \"Occasional small fish\"]}."
+  - field: "features.speciesOnly"
+    proposals:
+    - by: "generator"
+      value: false
+    - by: "checker-a"
+      value: false
+    - by: "checker-b"
+      value: true
+    - by: "checker-c"
+      value: true
+    - by: "tiebreaker-1"
+      value: true
+    - by: "tiebreaker-2"
+      value: false
+    decision: true
+    rationale: "Conservative verification fixes true at low confidence because the six votes split equally: generator,\
+      \ checker-a and tiebreaker-2 proposed false; checker-b, checker-c and tiebreaker-1 proposed true. With no\
+      \ qualified majority, any true vote activates the restrictive default. My-fish, Aquarismo Paulista and Practical\
+      \ Fishkeeping support dedicated adult housing. TropicalFreshwaterFish and the Murphy and Block aquarium account\
+      \ support exceptional mixed maintenance, so exclusivity is a conservative planning recommendation rather than\
+      \ proof that coexistence never succeeds. Heterospecific partner recommendations are consequently omitted.\
+      \ Proposals: generator false; checker-a false; checker-b true; checker-c true; tiebreaker-1 true; tiebreaker-2\
+      \ false."
+  - field: "features.temperatureC"
+    proposals:
+    - by: "generator"
+      value:
+        min: 23.5
+        max: 30.2
+    - by: "checker-a"
+      value:
+        min: 23
+        max: 28
+    - by: "checker-b"
+      value:
+        min: 23.9
+        max: 30.2
+    - by: "checker-c"
+      value:
+        min: 23.5
+        max: 30.2
+    - by: "tiebreaker-1"
+      value:
+        min: 23.9
+        max: 30.2
+    - by: "tiebreaker-2"
+      value:
+        min: 23.5
+        max: 30.2
+    decision:
+      min: 24
+      max: 30
+    rationale: "Qualified majority, 5 of 6 votes, fixes 24 to 30 C after integer rounding of the agreeing proposal\
+      \ bounds. The wider measured Rokel/Seli source envelope is 23.5 to 30.2 C, from Konoyima and Barrie; the decided\
+      \ interval is not its full union. Waanje reports 23.2 to 25.6 C, Wanjei 26.5 to 32.3 C and the older FAO Jong\
+      \ directory 28 to 34 C. These additional rivers do not establish occupied microhabitats at the extremes. The\
+      \ tally retains the Rokel-based selection rather than the broader regional envelope. Field temperature and\
+      \ pH remain useful although some ionic rows in these studies are problematic. FishBase confirms native Rokel\
+      \ occurrence, but none of the water studies measured identified individuals alongside the endpoints. Confidence\
+      \ stays low. Proposals: generator 23.5 to 30.2; checker-a 23 to 28; checker-b 23.9 to 30.2; checker-c 23.5\
+      \ to 30.2; tiebreaker-1 23.9 to 30.2; tiebreaker-2 23.5 to 30.2."
+  - field: "features.ph"
+    proposals:
+    - by: "generator"
+      value:
+        min: 5.4
+        max: 8
+    - by: "checker-a"
+      value:
+        min: 6.5
+        max: 7.6
+    - by: "checker-b"
+      value:
+        min: 5.8
+        max: 8
+    - by: "checker-c"
+      value:
+        min: 5.4
+        max: 8
+    - by: "tiebreaker-1"
+      value:
+        min: 5.8
+        max: 8
+    - by: "tiebreaker-2"
+      value:
+        min: 5.4
+        max: 8
+    decision:
+      min: 5.6
+      max: 8
+    rationale: "Median decision, with 3 of 6 votes agreeing with the top candidate and no qualified majority, fixes\
+      \ pH 5.6 to 8.0 at low confidence. Ordered proposed lower bounds are 5.4, 5.4, 5.4, 5.8, 5.8 and 6.5, so the\
+      \ middle two average to 5.6; the median upper bound is 8.0. The wider measured Rokel/Seli envelope is 5.4\
+      \ to 8.0 across Konoyima and Barrie. The selected lower bound therefore excludes a reported 5.4 reading and\
+      \ is an adjudicated summary, not a measurement or a complete habitat envelope. Freshwater Jong and Waanje\
+      \ results confirm regional variation, while human impacts and unconfirmed fish occupancy prevent stronger\
+      \ confidence. Proposals: generator 5.4 to 8; checker-a 6.5 to 7.6; checker-b 5.8 to 8; checker-c 5.4 to 8;\
+      \ tiebreaker-1 5.8 to 8; tiebreaker-2 5.4 to 8."
+  - field: "features.ghDgh"
+    proposals:
+    - by: "generator"
+      value:
+        min: 0.2
+        max: 1.4
+    - by: "checker-a"
+      value:
+        min: 0
+        max: 2
+    - by: "checker-b"
+      value:
+        min: 0.2
+        max: 0.7
+    - by: "checker-c"
+      value:
+        min: 0.2
+        max: 0.5
+    decision:
+      min: 0
+      max: 1
+    rationale: "The tally calls all four proposals unanimous within its 2 dGH agreement threshold and rounds their\
+      \ median bounds to 0 to 1 dGH, with low confidence. Zero is a rounded endpoint, not evidence of mineral-free\
+      \ water. Jong and BEDGIS indicate very soft rivers. The chosen upper bound is narrower than the Waanje source\
+      \ range of 0 to 2 dGH and excludes the Livingstone Sonapiti value of about 1.37 dGH, which helped produce\
+      \ the generator proposal of 0.2 to 1.4. Barrie's calcium-carbonate row would imply 1.4 to 6.2 dGH if interpreted\
+      \ as hardness, but its identity and consistency with TDS are insufficient for that conversion. These regional\
+      \ measurements are not a complete species-wide range. Proposals: generator 0.2 to 1.4; checker-a 0 to 2; checker-b\
+      \ 0.2 to 0.7; checker-c 0.2 to 0.5."
+  - field: "features.khDkh"
+    proposals:
+    - by: "generator"
+      value:
+        min: 0.2
+        max: 1.2
+    - by: "checker-a"
+      value:
+        min: 0
+        max: 2
+    - by: "checker-b"
+      value:
+        min: 0.3
+        max: 1.1
+    - by: "checker-c"
+      value:
+        min: 0.2
+        max: 0.8
+    decision:
+      min: 0
+      max: 1
+    rationale: "The tally considers four proposals unanimous within 2 dKH and rounds their median bounds to 0 to\
+      \ 1 dKH at low confidence. This plain natural-water fact carries no verification object. The rounded interval\
+      \ is narrower than Waanje's 0 to 2 dKH, excludes Livingstone's approximately 1.19 dKH Sonapiti reading and\
+      \ slightly truncates the BEDGIS 1.01 dKH upper value. Zero is a rounding result. Bicarbonate or measured alkalinity\
+      \ is converted to equivalent carbonate buffering, with no GH or conductivity substitution. Jong groundwater\
+      \ and the inconsistent total-alkalinity row are excluded, as is the potentially estuarine JON 1 station. The\
+      \ resulting interval is an uncertain regional summary. Proposals: generator 0.2 to 1.2; checker-a 0 to 2;\
+      \ checker-b 0.3 to 1.1; checker-c 0.2 to 0.8."
+  - field: "features.temperatureC.tolerance"
+    proposals:
+    - by: "generator"
+      value:
+        min: 22
+        max: 30.2
+    - by: "checker-a"
+      value:
+        min: 23
+        max: 28
+    - by: "checker-b"
+      value:
+        min: 22
+        max: 30.2
+    - by: "checker-c"
+      value:
+        min: 22
+        max: 30.2
+    - by: "tiebreaker-1"
+      value:
+        min: 22
+        max: 30.2
+    - by: "tiebreaker-2"
+      value:
+        min: 22
+        max: 30.2
+    decision:
+      min: 22
+      max: 30
+    rationale: "Qualified majority, 5 of 6 votes, fixes 22 to 30 C at low confidence. Aqua-Fish and Israquarium\
+      \ support the lower endpoint, while most care advice ends at 25 to 29 C and Interaquaristik reaches 30 C.\
+      \ The five agreeing 22 to 30.2 C proposals are rounded to 22 to 30 C, narrower than both those proposals and\
+      \ the Barrie field maximum of 30.2 C. Containment applies to the tally's rounded natural 24 to 30 C range.\
+      \ No retrieved source demonstrates years of health at the outer endpoints; routine maintenance near 24 to\
+      \ 27 C has stronger practical support. Proposals: generator 22 to 30.2; checker-a 23 to 28; checker-b 22 to\
+      \ 30.2; checker-c 22 to 30.2; tiebreaker-1 22 to 30.2; tiebreaker-2 22 to 30.2."
+  - field: "features.ph.tolerance"
+    proposals:
+    - by: "generator"
+      value:
+        min: 5.4
+        max: 8
+    - by: "checker-a"
+      value:
+        min: 6
+        max: 8
+    - by: "checker-b"
+      value:
+        min: 5.8
+        max: 8
+    - by: "checker-c"
+      value:
+        min: 5.4
+        max: 8
+    - by: "tiebreaker-1"
+      value:
+        min: 5.8
+        max: 8
+    - by: "tiebreaker-2"
+      value:
+        min: 5.4
+        max: 8.6
+    decision:
+      min: 5.6
+      max: 8
+    rationale: "Conservative decision, with 3 of 6 votes agreeing with the top candidate, first intersects all proposals\
+      \ at 6.0 to 8.0 and then expands the lower bound to contain the median natural minimum of 5.6. The decided\
+      \ tolerance is therefore 5.6 to 8.0 at low confidence. It is narrower than generator and checker-c's 5.4 to\
+      \ 8.0 and tiebreaker-2's 5.4 to 8.6. LiveAquaria and Tropical Fish Site give 7.8 to 8.6, but their alkaline\
+      \ extreme lacks chronic-health verification and is not retained by the conservative rule. Neutral care recommendations\
+      \ have better overlap; 5.6 is habitat-derived rather than a tested captive endpoint. Proposals: generator\
+      \ 5.4 to 8; checker-a 6 to 8; checker-b 5.8 to 8; checker-c 5.4 to 8; tiebreaker-1 5.8 to 8; tiebreaker-2\
+      \ 5.4 to 8.6."
+  - field: "features.ghDgh.tolerance"
+    proposals:
+    - by: "generator"
+      value:
+        min: 0.2
+        max: 16
+    - by: "checker-a"
+      value:
+        min: 0
+        max: 15
+    - by: "checker-b"
+      value:
+        min: 0.2
+        max: 15
+    - by: "checker-c"
+      value:
+        min: 0.2
+        max: 16
+    decision:
+      min: 0
+      max: 16
+    rationale: "Unanimous agreement of four proposals within 2 dGH gives rounded median bounds of 0 to 16 dGH at\
+      \ low confidence. Published maintenance bands include Aqua-Fish 4 to 16, TropicalFreshwaterFish 4 to 15 and\
+      \ Israquarium 6 to 20 dGH. The decision is narrower than Israquarium's 6 to 20 at the upper end; 20 is not\
+      \ independently established as a long-term healthy boundary. The zero lower end follows rounding and natural-range\
+      \ containment, not an aquarium trial. Routine moderate hardness has better direct husbandry support than either\
+      \ outer limit. Proposals: generator 0.2 to 16; checker-a 0 to 15; checker-b 0.2 to 15; checker-c 0.2 to 16."
+  - field: "features.khDkh.tolerance"
+    proposals:
+    - by: "generator"
+      value:
+        min: 0.2
+        max: 15
+    - by: "checker-a"
+      value:
+        min: 0
+        max: 10
+    - by: "checker-b"
+      value:
+        min: 0.3
+        max: 1.1
+    - by: "checker-c"
+      value:
+        min: 0.2
+        max: 15
+    - by: "tiebreaker-1"
+      value:
+        min: 0.2
+        max: 15
+    - by: "tiebreaker-2"
+      value:
+        min: 0.2
+        max: 15
+    decision:
+      min: 0
+      max: 15
+    rationale: "Qualified majority, 4 of 6 votes, fixes 0 to 15 dKH with low confidence. The four 0.2 to 15 proposals\
+      \ agree; their lower bound is rounded and expanded to contain the decided natural zero. Checker-a proposed\
+      \ 0 to 10 without direct KH limits, whereas checker-b kept 0.3 to 1.1 as a habitat-only placeholder. Retail\
+      \ pages and Tropical Fish Keeping repeat 10 to 15 dKH, potentially from shared templates. Aquarium.org.il\
+      \ gives the wider 14 to 24 dKH, whose 24 endpoint is not corroborated. Practical Fishkeeping offers qualitative\
+      \ adaptability rather than numerical KH limits. The retrieved literature and structured index do not establish\
+      \ two independent long-term numerical endpoints; that evidence gap is explicit despite validation of the format.\
+      \ pH and GH recommendations are not KH evidence. Proposals: generator 0.2 to 15; checker-a 0 to 10; checker-b\
+      \ 0.3 to 1.1; checker-c 0.2 to 15; tiebreaker-1 0.2 to 15; tiebreaker-2 0.2 to 15."
+  - field: "features.origin"
+    proposals:
+    - by: "generator"
+      value:
+        continent: "Africa"
+        region: "Upper Guinean coastal river systems from Guinea-Bissau to western Liberia"
+        waterbody: null
+        localities:
+        - "Geba River"
+        - "Corubal River"
+        - "Guinea coastal rivers"
+        - "Sierra Leone coastal rivers"
+        - "St. Paul River"
+        - "St. John River"
+    - by: "checker-a"
+      value:
+        continent: "Africa"
+        region: "Lower reaches of coastal rivers of West Africa from Guinea-Bissau to western Liberia"
+        waterbody: null
+        localities:
+        - "Geba River"
+        - "Corubal River"
+        - "St. John River"
+        - "St. Paul River (type locality)"
+    - by: "checker-b"
+      value:
+        continent: "Africa"
+        region: "Lower coastal rivers from Guinea-Bissau through Guinea and Sierra Leone to western Liberia"
+        waterbody: null
+        localities:
+        - "Geba River"
+        - "Corubal River"
+        - "St. Paul River"
+        - "St. John River"
+    - by: "checker-c"
+      value:
+        continent: "Africa"
+        region: "Coastal West African rivers from Guinea-Bissau to western Liberia"
+        waterbody: null
+        localities:
+        - "Geba River"
+        - "Corubal River"
+        - "Coastal rivers of Guinea and Sierra Leone"
+        - "St. Paul River"
+        - "St. John River"
+    decision:
+      continent: "Africa"
+      region: "Lower coastal rivers from Guinea-Bissau through Guinea and Sierra Leone to western Liberia"
+      waterbody: null
+      localities:
+      - "Geba River"
+      - "Corubal River"
+      - "Rokel River"
+      - "Jong River"
+      - "St. Paul River"
+      - "St. John River"
+    rationale: "All profiles describe the same coastal West African range in different words and with different\
+      \ locality subsets. Catalog and FishBase establish the wider range, rather than restricting origin to Sierra\
+      \ Leone and Guinea. FishBase's Sierra Leone occurrence record adds Rokel and Jong; St. Paul is the type locality.\
+      \ Introduced populations are excluded."
+  - field: "features.maxSizeCm"
+    proposals:
+    - by: "generator"
+      value:
+        male: 35
+        female: 30
+    - by: "checker-a"
+      value:
+        male: 30
+        female: 25
+    - by: "checker-b"
+      value:
+        male: 35
+        female: 30
+    - by: "checker-c"
+      value:
+        male: 30
+        female: 25
+    decision:
+      male: 30
+      female: 25
+    rationale: "Generator and checker-b proposed 35 cm male and 30 cm female; checker-a and checker-c proposed 30\
+      \ and 25. Choose 30 and 25 as typical aquarium planning maxima, matching Bailey's usual male length and the\
+      \ observed 28 to 30 cm male and 25 cm female in Murphy and Block. Aqua-Fish lists unsexed adults at 28 to\
+      \ 31 cm. The 35/30 proposal allows for larger individuals but is less directly supported as typical; my-fish\
+      \ reports 30 to 38 cm and occasional 40 cm fish, so larger individuals remain possible. The female maximum\
+      \ remains an estimate from sparse observations. FishBase's 30.8 cm and Israquarium's 30/25 cm are standard\
+      \ lengths and are not converted to total lengths."
+  - field: "features.aggressionHeterospecific"
+    proposals:
+    - by: "generator"
+      value: 3
+    - by: "checker-a"
+      value: 3
+    - by: "checker-b"
+      value: 4
+    - by: "checker-c"
+      value: 4
+    decision: 4
+    rationale: "Generator and checker-a proposed 3; checker-b and checker-c proposed 4. Choose 4 because Practical\
+      \ Fishkeeping explicitly warns that an adult male can kill companions, and my-fish restricts mixed housing\
+      \ to unusually robust adults in very large tanks. This fits level 4's exceptional mixed-tank clause. Murphy\
+      \ and Block report no permanent injury in their 945 L aquarium; that is important contrary evidence, but a\
+      \ single successful setup does not establish level 3 as a reliable adult default. Confidence remains medium\
+      \ because behaviour varies with individual and enclosure."
+  - field: "features.habitatZones"
+    proposals:
+    - by: "generator"
+      value:
+      - "rock"
+      - "sand"
+    - by: "checker-a"
+      value:
+      - "rock"
+      - "sand"
+    - by: "checker-b"
+      value:
+      - "rock"
+      - "sand"
+      - "wood"
+    - by: "checker-c"
+      value:
+      - "rock"
+      - "sand"
+    decision:
+    - "rock"
+    - "sand"
+    rationale: "Generator, checker-a and checker-c proposed rock and sand; checker-b additionally included wood.\
+      \ FishBase directly supports rocky river channels. Sand represents movable spawning substrate and aquarium\
+      \ digging provision, rather than a universal wild sediment measurement. Wood is optional aquarium shelter\
+      \ with no evidence of an obligatory natural association, so it is omitted."
+  - field: "features.social"
+    proposals:
+    - by: "generator"
+      value:
+        structure: "pair"
+    - by: "checker-a"
+      value:
+        structure: "pair"
+    - by: "checker-b"
+      value:
+        structure: "solitary"
+    - by: "checker-c"
+      value:
+        structure: "solitary"
+    decision:
+      structure: "solitary"
+    rationale: "Generator and checker-a proposed pair; checker-b and checker-c proposed solitary. Choose one adult\
+      \ as the routine aquarium social unit because my-fish, Aquarismo Paulista and Practical Fishkeeping explicitly\
+      \ recommend it and partner aggression can be lethal. FishBase establishes natural pair bonding, and Murphy\
+      \ and Block demonstrate a long-lived breeding pair in a 945 L aquarium. A managed pair remains a reproductive\
+      \ option with more space and ready separation, rather than the default social unit."
+  - field: "features.coloration"
+    proposals:
+    - by: "generator"
+      value:
+        baseColors:
+        - "black"
+        - "white"
+        - "yellow"
+        pattern: "bars"
+    - by: "checker-a"
+      value:
+        baseColors:
+        - "black"
+        - "yellow"
+        - "white"
+        pattern: "bars"
+    - by: "checker-b"
+      value:
+        baseColors:
+        - "black"
+        - "white"
+        - "yellow"
+        pattern: "bars"
+    - by: "checker-c"
+      value:
+        baseColors:
+        - "black"
+        - "white"
+        - "yellow"
+        pattern: "bars"
+    decision:
+      baseColors:
+      - "black"
+      - "white"
+      - "yellow"
+      pattern: "bars"
+    rationale: "All profiles agree on black, pale white and yellow adult colours with vertical bars; checker-a only\
+      \ changes the list order. FishBase, TropicalFreshwaterFish and Sampaio support the bars, while the pale ground\
+      \ colour varies with age and condition."
+  - field: "features.feedingSpeed"
+    proposals:
+    - by: "generator"
+      value: "normal"
+    - by: "checker-a"
+      value: "hasty"
+    - by: "checker-b"
+      value: "hasty"
+    - by: "checker-c"
+      value: "hasty"
+    decision: "hasty"
+    rationale: "Generator proposed normal; checker-a, checker-b and checker-c proposed hasty. The Magic World index\
+      \ describes intense food-taking motivation, which makes hasty a plausible rubric interpretation. Appetite\
+      \ and aggression do not directly measure capture speed or prove competitive feeding, so confidence stays low\
+      \ rather than adopting checker-b's medium assessment."
+  - field: "features.minTank"
+    proposals:
+    - by: "generator"
+      value:
+        volumeL: 1000
+        lengthCm: 240
+        depthCm: 80
+    - by: "checker-a"
+      value:
+        volumeL: 450
+        lengthCm: 150
+        depthCm: 55
+    - by: "checker-b"
+      value:
+        volumeL: 800
+        lengthCm: 220
+        depthCm: 60
+    - by: "checker-c"
+      value:
+        volumeL: 450
+        lengthCm: 180
+        depthCm: 60
+    decision:
+      volumeL: 800
+      lengthCm: 220
+      depthCm: 60
+    rationale: "Generator proposed 1000 L, 240 by 80 cm for a pair; checker-a 450 L, 150 by 55 cm for a pair; checker-b\
+      \ 800 L, 220 by 60 cm for one adult; checker-c 450 L, 180 by 60 cm for one adult. Choose checker-b's 800 L\
+      \ and 220 by 60 cm for the decided single-adult social unit. My-fish's prose recommends 700 to 900 L for one\
+      \ adult, but its summary also gives 1080 L at 220 cm, showing internal inconsistency. Zoopet's 450 L/150 cm\
+      \ and other smaller care-sheet minima give weaker allowance for full adult movement and enclosure use. The\
+      \ 60 cm depth is an inferred turning-space provision, not a measured threshold. Pairs call for about 1000\
+      \ L and a larger footprint; none of these minima is experimentally established."
+  - field: "features.lifespanYears"
+    proposals:
+    - by: "generator"
+      value:
+        min: 10
+        max: 15
+    - by: "checker-a"
+      value:
+        min: 10
+        max: 15
+    - by: "checker-b"
+      value:
+        min: 10
+        max: 15
+    - by: "checker-c"
+      value:
+        min: 8
+        max: 10
+    decision:
+      min: 10
+      max: 15
+    rationale: "Generator, checker-a and checker-b proposed 10 to 15 years; checker-c proposed 8 to 10 with an inferred\
+      \ lower bound. My-fish gives 10 to 15 and Murphy and Block describe fish introduced in 2011 still alive in\
+      \ 2026. Aqua-Fish's ten-year expectancy is a shorter general estimate, not a demonstrated upper lifespan limit.\
+      \ Retain 10 to 15 as an aquarium expectation rather than a measured survival distribution."
+  - field: "taxonomy.synonyms"
+    proposals:
+    - by: "generator"
+      value:
+      - "Chromis buttikoferi"
+      - "Tilapia buttikoferi"
+      - "Heterotilapia buttikoferi"
+      - "Tilapia buettikoferi"
+      - "Tilapia ansorgii"
+    - by: "checker-a"
+      value:
+      - "Chromis buttikoferi"
+      - "Tilapia buettikoferi"
+      - "Tilapia ansorgii"
+    - by: "checker-b"
+      value:
+      - "Chromis buttikoferi"
+      - "Tilapia buttikoferi"
+      - "Tilapia buettikoferi"
+      - "Heterotilapia buttikoferi"
+      - "Tilapia ansorgii"
+    - by: "checker-c"
+      value:
+      - "Chromis buttikoferi"
+      - "Tilapia buttikoferi"
+      - "Tilapia buettikoferi"
+      - "Heterotilapia buttikoferi"
+      - "Tilapia ansorgii"
+    decision:
+    - "Chromis buttikoferi"
+    - "Tilapia buttikoferi"
+    - "Heterotilapia buttikoferi"
+    - "Tilapia buettikoferi"
+    - "Tilapia ansorgii"
+    rationale: "All four agree on the valid name and authority. Checker-a omits two historical spelling and combination\
+      \ aliases that generator, checker-b and checker-c retain. Keep the union as search aliases; Catalog explicitly\
+      \ validates the current spelling and the ansorgii synonym."
