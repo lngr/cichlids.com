@@ -4,7 +4,7 @@ title: Apply the code and documentation corrections from the MVP review
 status: In Progress
 assignee: []
 created_date: '2026-10-12 04:49'
-updated_date: '2026-10-13 11:54'
+updated_date: '2026-10-13 12:00'
 labels: []
 dependencies: []
 references:
@@ -63,3 +63,28 @@ The development CORS check rejects invalid origins instead of failing. Postgres 
   `smoke.mjs` points into an ignored directory inside the repository.
 - R46: `PROJECT-STATUS.md` reflects the merged state.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### Part one (outside the auth code)
+- R39: Postgres binds to 127.0.0.1; RustFS and Keycloak to `${CICHLIDS_STACK_BIND:-127.0.0.1}`;
+  `.devcontainer/devcontainer.json` sets `CICHLIDS_STACK_BIND=0.0.0.0` (effective after a rebuild
+  or reopen of the devcontainer); `docker compose config` shows the host IPs with and without the
+  variable.
+- R40: `postCreateCommand.sh` warns with the install command when pnpm is missing.
+- R42: already covered by TASK-3.34 and TASK-3.36 (concurrency with 60 events and 3
+  dispatchers, poison message, non-HTTP URL, backoff after a stall, double rating,
+  `HasPendingModelChanges`, ImageProcessor tests). Added: the client-core test asserts `ApiError`
+  and status 401; unique constraints of species slugs and slug aliases; truncated JPEG and PNG.
+- Bug found by the new test: truncated JPEG and PNG sources were accepted and gave variants with a
+  grey tail; `ImageProcessor.DecodeToSrgb` loads with `fail_on=truncated`. The media seed reports
+  truncated legacy originals as broken.
+- R43: inline tags removed in 65 lines of 25 files; the generated migrations keep their
+  block-level `<inheritdoc />`.
+- R45: `smoke.mjs` writes screenshots to the ignored `app-screens/` in the repository; the README
+  statement and the legacy comment payload comment are corrected; the other listed comments were
+  already correct.
+- Verified: `dotnet test` Infrastructure 310, Api 395, Etl 341; client-core 13.
+- Open: R32 and the AuthProvider comment of R45 (auth code, after the TASK-3.41 changes); R46.
+<!-- SECTION:NOTES:END -->
