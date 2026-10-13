@@ -1,13 +1,13 @@
 # Projektstatus cichlids.com
 
-**Stand: 2026-10-01**
+**Stand: 2026-10-13**
 
 Dieses Dokument ist der Einstiegspunkt, um die Arbeit an cichlids.com ohne Vorwissen aufzunehmen. Es
 beschreibt, wo das Projekt steht, welche Arbeitsstränge es gibt und welche Fäden offen sind.
 
 Pflege: Ist ein Faden aus Abschnitt 9 erledigt, wird er dort abgehakt, und das Datum oben wird
 aktualisiert. Dauerhafte Entscheidungen gehören in die ADRs (`docs/adr/`), Arbeitspakete in den
-Backlog (`backlog/`). Dieses Dokument verweist auf beide und wiederholt sie nur so weit, wie es für
+Backlog (`backlog/`). Dieses Dokument verweist auf beide und fasst sie nur so weit, wie es für
 den Überblick nötig ist.
 
 Weitere Leitdokumente:
@@ -18,15 +18,13 @@ Weitere Leitdokumente:
 - [`AGENTS.md`](AGENTS.md): verbindliche Arbeitsregeln für Agents.
 - [`TODO.md`](TODO.md): alle offenen Punkte an einer Stelle.
 - [`infra/README.md`](infra/README.md): Betriebs-Runbook der Infrastruktur.
-- [`HANDOFF.md`](HANDOFF.md) (untracked, transient): Übergabenotiz zur Infrastruktur mit Stand
-  2026-07-08. Ihr Inhalt ist in Abschnitt 5 eingearbeitet.
 
 ---
 
 ## 1. Das Projekt in Kürze
 
-cichlids.com war eine Community für Aquarianer mit Schwerpunkt Cichliden (Buntbarsche). Die
-Plattform ist seit 2023 offline. Aus dem Host-Backup "frontosa" vom 2023-09-20 sind gerettet:
+cichlids.com ist eine Community für Aquarianer mit Schwerpunkt Cichliden (Buntbarsche). Die
+Plattform ist seit 2023 offline. Die gerettete Datenbasis aus dem Host-Backup "frontosa" umfasst:
 
 - MySQL-5.7-Datenbanken:
   - `cichlids_typo3` enthält die Kerndaten: 189.571 Bilder, 1,65 Mio. Kommentare, 6.729 Becken,
@@ -41,7 +39,7 @@ Streaks) erzeugt aus denselben Daten eine öffentliche Stolz-Sicht (Timeline, Ze
 Meilensteine). Ein reiner Foto-Stream gilt als die PMF-Schwäche der alten Plattform. Details stehen
 in `PRODUCT-VISION.md`.
 
-**Zielstack** laut `PLAN.md` und den ADRs 0002 bis 0018:
+**Zielstack** laut `PLAN.md` und den angenommenen ADRs 0002 bis 0026:
 
 - ASP.NET-Core-API mit OpenAPI als einzigem Vertrag
 - Postgres (CloudNativePG mit PITR)
@@ -71,70 +69,50 @@ Danach folgt der Cutover: finale ETL, Medienmigration, Auth0 nach Keycloak, Go-L
 
 | Pfad | Inhalt |
 |---|---|
-| `/workspaces/cichlids.com` | Haupt-Worktree, Branch `main`. Enthält Doku, ADRs, Backlog, `app/` (API, ETL, Client, Mobile, lokaler Stack), `infra/`, `policy/`, `tools/`, `design-system/` und `workspace-legacy/`. |
-| `/workspaces/cichlids.com/workspace-legacy/` | Bestandsaufnahme des Altsystems: HTML-Report, `findings/` 01 bis 10, kuratierte Altquellen, `legacy-stack/` (Compose für MySQL 5.7 und phpMyAdmin), Server-Konfigurationen, `tools/verify_images.py`. |
-| `/workspaces/legacy-data/db-dump/` | `frontosa-mysql-2023-09-20-06-00.sql.gz` (382 MB) |
+| `/workspaces/cichlids.com` | Projekt-Worktree auf `main`. Enthält Doku, ADRs, Backlog, `app/` (API, ETL, Client, Mobile, lokaler Stack), `infra/`, `clusters/`, `apps/`, `policy/`, `tools/`, `design-system/` und `workspace-legacy/`. |
+| `workspace-legacy/` | Bestandsaufnahme des Altsystems: HTML-Report, `findings/` 01 bis 10, kuratierte Altquellen, `legacy-stack/` (Compose für MySQL 5.7 und phpMyAdmin), Server-Konfigurationen und Verifikationswerkzeuge. |
+| `/workspaces/legacy-data/db-dump/` | MySQL-Dump des Host-Backups |
 | `/workspaces/legacy-data/images/userpics/` | Originalbilder (235 GB) |
-| `/workspaces/legacy-data/auth0/` | `auth0-cichlids.json` (NDJSON) |
-| `/workspaces/legacy-source/` | Alte Codebasen: Angular-7-SSR-Frontend, C#-Lambdas, .NET-Core-2.0/Orleans-Prototyp, Fuse-Template, Mail-Templates und Notizdateien |
+| `/workspaces/legacy-data/auth0/` | Auth0-Export (NDJSON) |
+| `/workspaces/legacy-source/` | Alte Codebasen und Notizen |
 | `/workspaces/_extract/` | Entpacktes Host-Backup mit Verifikationsartefakten |
-| `/workspaces/app-screens/` | Screenshots der MVP-App (2026-07-09) |
-| `/workspaces/NOTIZEN.md` | Idee: das alte Phorum wiederbeleben (umgesetzt als Community-Archiv in Strang B) |
-| `~/.config/cichlids/cichlids.env` | Echte Cloud-Credentials auf dem Operator-Host, git-ignoriert. Vorlage: `infra/cichlids.env.example`. |
+| `app-screens/` | Git-ignorierte Screenshots des Web-Smokes |
+| `infra/cichlids.env.example` | Vorlage für die lokale Credential-Datei des Operators; deren Ort konfiguriert `CICHLIDS_ENV`. |
 
-**Docker-Dienste auf dieser Maschine:**
+**Laufende Docker-Dienste:**
 
-- **Laufen:**
-  - `cichlids-legacy-db-1` (MySQL 5.7, 127.0.0.1:3306, root/legacy), Volume `cichlids-legacy_db_data` mit bereits importiertem Dump
-  - `cichlids-legacy-phpmyadmin-1` (127.0.0.1:8085)
-  - Die Container des MVP-Stacks `stack-postgres-1`, `stack-rustfs-1` und `stack-keycloak-1` mit den
-    Volumes `stack_postgres-data`, `stack_rustfs-data` (270 GB), `stack_rustfs-logs` und
-    `stack_keycloak-data`. Geprüft am 2026-09-28: die migrierten Daten und Medien sind vollständig,
-    `etl verify` meldet 0 Abweichungen.
-- Die Grant-Tabellen der Legacy-MySQL stammten nach dem Dump-Import vom Altserver; `root/legacy` ist
-  per Grant-Reset wiederhergestellt. Rezept und Import ohne `mysql`-Schema: `app/stack/README.md`.
+- `cichlids-legacy-db-1` (MySQL 5.7, Port 3306, lokale Zugangsdaten root/legacy), Volume
+  `cichlids-legacy_db_data` mit importiertem Dump
+- `cichlids-legacy-phpmyadmin-1` (Port 8085)
+- `stack-postgres-1`, `stack-rustfs-1` und `stack-keycloak-1` mit den persistenten Volumes des
+  MVP-Stacks. Die dokumentierte Vollmigration umfasst Daten und Medien; die Verify-Ergebnisse
+  stehen in Abschnitt 6.4.
+
+Postgres bindet an Loopback; RustFS und Keycloak binden an `CICHLIDS_STACK_BIND` (Standard:
+Loopback, im Devcontainer alle Interfaces). Dump-Import ohne das `mysql`-Schema und Grant-Reset
+für root/legacy beschreibt `app/stack/README.md`.
 
 ---
 
 ## 3. Git-Topologie
 
-Remote: `origin = git@github.com:lngr/cichlids.com.git`. Ein Abgleich mit dem Remote ist aus dem
-Devcontainer heraus nicht möglich, weil die SSH-Host-Key-Prüfung fehlschlägt. Der Operator pusht
-vom eigenen Host.
+Remote: `origin = git@github.com:lngr/cichlids.com.git`. Der lokale Stand liegt vor der lokal
+bekannten Referenz `origin/main`. Die Prüfung des Remote-Stands über SSH ist als F3 offen;
+der Operator pusht vom eigenen Host.
 
 | Branch | Worktree | Stand |
 |---|---|---|
-| `main` | `/workspaces/cichlids.com` | Mehrere Commits vor `origin/main`, Push durch den Operator ausstehend |
-| `backup/pre-secret-scrub` | keiner | Historienstand vor dem Entfernen von AWS- und Auth0-Secrets. Er enthält vermutlich genau diese Secrets und wird nicht gepusht. |
+| `main` | `/workspaces/cichlids.com` | Plattform-Code und Legacy-Parity-MVP einschließlich Review-Korrekturen; Operator-Push ausstehend |
 
-**Details zu den Commits:**
+`feat/legacy-mvp` und `fix/mvp-review` sind in `main` gemergt (Merge-Commits `2f5f959` und
+`07b000d`).
 
-- `fa6e35c` auf `main` und `e8cfea9` auf `feat/legacy-mvp` haben dieselbe Devcontainer-Änderung.
-  `fa6e35c` enthält zusätzlich Änderungen an `postCreateCommand.sh` und `postStartCommand.sh`
-  (unter anderem `core.hooksPath`). Das Autor-Datum von `fa6e35c` ist 2026-07-08, das Commit-Datum
-  2026-09-28.
-- `feat/legacy-mvp` (Strang B) und `fix/mvp-review` (Korrekturen aus dem MVP-Review) sind in
-  `main` gemergt.
+**Untracked auf `main`:** `PRECHECK-IN-REVIEW.md`, `.claude/`, `prototypes/` sowie lokale
+Operator-Dateien. Lokale Operator- und Handoff-Dateien sind nicht versioniert und gehören
+nicht zu den öffentlichen Projektquellen.
 
-**Untracked auf `main`:** `HANDOFF.md` (siehe F4) und `.claude/settings.local.json` (lokale
-Einstellungen).
-
-**Nie committet (per `.gitignore`):** die Open-Design-Wegwerfartefakte (`*.artifact.json`,
-`mpz*-image.png`, `.od-skills/`).
-
-### Zeitlinie
-
-| Datum | Ereignis |
-|---|---|
-| 2026-06-02 | Devcontainer, Datenrettung aus dem Host-Backup |
-| 2026-06-03 | ADRs 0001 bis 0015, Backlog.md mit CI-Gating |
-| 2026-06-04 | Produktvision, Design-System und Prototypen, Epic TASK-2, Toolchain, erster OpenTofu-Tier |
-| 2026-06-05 bis 06-09 | State-Backend (ADR-0016), Secret-Scan, Pre-Push-Hook, Projekttrennung (ADR-0017), Live-Deployment auf Hetzner. Letzter Infra-Commit: `c8ad766`. |
-| danach bis 2026-07-08 | Uncommittete Durchsicht der Tasks 2.x (Abschluss-Durchgang, siehe 5.6) |
-| 2026-07-08 18:42 | `HANDOFF.md` für einen Maschinenwechsel geschrieben |
-| 2026-07-08 20:50 bis 07-09 16:48 | Branch `feat/legacy-mvp`: Epic TASK-3, 79 Commits |
-| 2026-09-28 | Diese Bestandsaufnahme; Scanner-Fix auf `feat/legacy-mvp`, Branch gepusht; Stand von `main` committet |
-| 2026-09-28 | Autonome Umsetzung auf `feat/legacy-mvp`: Stack lauffähig, Doku-Fäden F17 bis F19, Forum-ETL-Fix, Stories 3.15, 3.16, 3.21, 3.22 in Review |
+**Git-ignoriert:** Open-Design-Wegwerfartefakte (`*.artifact.json`, `mpz*-image.png`,
+`.od-skills/`) und `app-screens/`.
 
 ---
 
@@ -144,9 +122,9 @@ Einstellungen).
 |---|---|---|
 | Epic | TASK-2 "Foundation and strict GitOps platform" | TASK-3 "Legacy parity MVP on local stack" |
 | Ort | Hetzner Cloud (live) | Lokaler Compose-Stack |
-| Ergebnis | Server, Volume, Buckets, DNS-Zone und unveränderliche Backups per OpenTofu, mit Schutzschichten | API, ETL, Medien-Pipeline, Keycloak und Expo-App mit vollständig migrierten Altdaten |
-| Backlog | 8 Done, 4 In Progress, 10 To Do | 22 In Review, 4 To Do, 1 Draft, 0 Done |
-| Nächster Bau-Schritt | TASK-2.4: k3s und Argo CD | TASK-3.15: Auth0-Import nach Keycloak |
+| Ergebnis | Cloud-Ressourcen und Backups; App-Tier, Secret-Verwaltung, Argo-CD-Topologie und Ingress sind implementiert, Live-Abnahme offen | API, ETL, Medien-Pipeline, Keycloak und Expo-App mit vollständig migrierten Altdaten |
+| Backlog | 6 Done, 5 In Progress, 6 In Review, 11 To Do (aktive Untertasks; zusätzlich 2 unter `completed/`) | 1 Done, 39 In Review, 1 In Progress, 1 To Do (Untertasks) |
+| Offene Arbeit | Operator-Apply und Live-Prüfungen von TASK-2.4, 2.6 bis 2.8; Staging-Workloads und Datenbank | Review-Abnahmen, Abschluss TASK-3.42 und Ich-Tab TASK-3.28 |
 
 Wie die Stränge zusammenhängen, steht in Abschnitt 7.
 
@@ -159,11 +137,12 @@ Wie die Stränge zusammenhängen, steht in Abschnitt 7.
 Die Begründung steht in ADR-0017, ergänzt durch ADR-0014, ADR-0016, ADR-0013, ADR-0009 und
 ADR-0010. Ein Credential des einen Projekts kann im anderen nichts ausrichten.
 
-- **`cichlids`** enthält die gesamte live betriebene, wiederaufbaubare Infrastruktur und den eigenen
+- **`cichlids`** enthält die gesamte live betriebene, rekonstruierbare Infrastruktur und den eigenen
   OpenTofu-State-Bucket. CI/GitOps verwaltet das Projekt per OpenTofu. `prevent_destroy` und
   `delete_protection` schützen es gegen Unfälle. Es hat das **einzige** Cloud-Token.
   - Code in `infra/platform/`: Node, DB-Volume, Media-Master-Bucket, DNS-Zone.
-  - Später kommt `infra/app/` hinzu (k3s, Argo CD; noch nicht gebaut).
+  - Code in `infra/app/`: k3s und Argo CD auf dem bestehenden Node per SSH, eigener State und
+    eigene Passphrase, ohne Cloud-Token. Der erste Apply und die Live-Prüfungen sind offen.
 - **`cichlids-backup`** enthält ausschließlich die unveränderlichen Backups (Object Lock
   Compliance) und den eigenen State-Bucket.
   - Das Projekt hat kein Cloud-Token.
@@ -171,17 +150,17 @@ ADR-0010. Ein Credential des einen Projekts kann im anderen nichts ausrichten.
   - Code in `infra/backup/`; der Operator wendet ihn out-of-band an.
 
 Nur die unveränderlichen Backups sind unersetzlich. Alles in `cichlids` lässt sich aus ihnen
-wiederherstellen, deshalb darf CI es frei verwalten.
+rekonstruieren, deshalb darf CI es frei verwalten.
 
 ### 5.2 Live-Ressourcen (Region nbg1)
 
 | Projekt | Ressource | Details |
 |---|---|---|
-| cichlids | `hcloud_server.node` | `cichlids-node`, CX33, IPv4 91.99.55.7, Delete- und Rebuild-Protection, `prevent_destroy` |
+| cichlids | `hcloud_server.node` | `cichlids-node`, CX33, Node-IP über `infra/tofu.sh platform output`, Delete- und Rebuild-Protection, `prevent_destroy` |
 | cichlids | `hcloud_volume.database` | `cichlids-db`, 10 GB, Delete-Protection, `prevent_destroy`, angehängt |
 | cichlids | `hcloud_ssh_key.operator` | `cichlids-operator` |
 | cichlids | `aws_s3_bucket.media_master` | `cichlids-media-master`, Object Lock Governance, Versionierung |
-| cichlids | `hcloud_zone.primary` | Zone `cichlids.com` (4 Records), Delete-Protection, `prevent_destroy` |
+| cichlids | `hcloud_zone.primary` | Zone `cichlids.com`, Delete-Protection, `prevent_destroy` |
 | cichlids | State | `cichlids-platform-tfstate`, Key `platform/terraform.tfstate`, verschlüsselt |
 | cichlids-backup | `aws_s3_bucket.database_backup` | `cichlids-db-backup`, Object Lock Compliance |
 | cichlids-backup | `aws_s3_bucket.media_master_backup` | `cichlids-media-backup`, Object Lock Compliance |
@@ -190,12 +169,12 @@ wiederherstellen, deshalb darf CI es frei verwalten.
 - Beide State-Buckets sind versioniert. Der State ist nativ verschlüsselt (pbkdf2, aes_gcm).
 - Provider-Pins: hcloud `~> 1.64` (aufgelöst 1.65.0), aws `~> 6.0` (aufgelöst 6.49.0), OpenTofu
   `>= 1.12.0`.
-- Auf dem Node läuft noch keine Anwendung. Die Ressourcen kosten trotzdem Geld;
+- Der Live-Nachweis für k3s, Argo CD und Workloads auf dem Node ist offen. Die Ressourcen kosten Geld;
   `PLAN.md` schätzt die Startphase auf 15 bis 25 Euro im Monat.
 - Ob die Domain `cichlids.com` beim Registrar an die Hetzner-Nameserver delegiert ist, ist offen.
   Die Nameserver liefert `infra/tofu.sh platform output dns_zone_nameservers`.
 - `cichlids-db-backup` enthält das Beweisobjekt `layer4-immutability-test.txt`. Seine Compliance-Frist
-  lief bis ca. 2026-06-23, das Objekt ist also löschbar.
+  ist abgelaufen, das Objekt ist löschbar.
 
 ### 5.3 Schutzschichten gegen destruktive Änderungen (ADR-0014)
 
@@ -203,15 +182,17 @@ wiederherstellen, deshalb darf CI es frei verwalten.
 |---|---|---|
 | 1 | `prevent_destroy` und Delete-Protection bei Hetzner | Erbracht: `plan -destroy` wird abgelehnt, die Konsole verweigert das Löschen |
 | 2 | Projekttrennung, der `cichlids`-Key erreicht `cichlids-backup` nicht | Erbracht mit `tools/verify-project-isolation.sh` |
-| 3 | Fail-closed Plan-Diff-Gate (`policy/destroy_gate.rego`, Conftest) auf einem echten CI-Plan | **Offen**: Policy und Unit-Tests existieren, eine CI-Apply-Pipeline gibt es noch nicht (TASK-2.4, 2.11) |
+| 3 | Fail-closed Plan-Diff-Gate (`policy/destroy_gate.rego`, Conftest) auf einem echten CI-Plan | **Offen**: Policy, Unit-Tests und App-Tier-Plan/Apply-Workflow existieren; Nachweis am echten CI-Plan und Apply ausstehend (TASK-2.4, 2.5, 2.21) |
 | 4 | Object Lock Compliance auf den Backups | Erbracht mit `tools/verify-backup-immutability.sh` |
 
 ### 5.4 Werkzeuge und Credentials
 
-- `infra/tofu.sh <platform|backup> <tofu-args>` liest `~/.config/cichlids/cichlids.env` und setzt je
+- `infra/tofu.sh <platform|backup|app> <tofu-args>` liest die lokale Credential-Datei und setzt je
   Tier die passenden Variablen:
   - `platform`: Cloud-Token, `cichlids`-S3-Key und SSH-Key
   - `backup`: nur den Backup-S3-Key
+  - `app`: CI-SSH-Key, Node-Adresse und Host-Key, Primary-S3-Key für den State und eigene
+    App-State-Passphrase; kein Cloud-Token
 - Credential-Keys:
   - `CICHLIDS_HCLOUD_TOKEN`
   - `CICHLIDS_S3_PRIMARY_*`
@@ -223,73 +204,77 @@ wiederherstellen, deshalb darf CI es frei verwalten.
 - Toolchain:
   - Auf dem Host über das `Brewfile`.
   - In CI und Devcontainer über das gepinnte `install-toolchain.sh`.
-- Ein Pre-Push-Hook in `.githooks/` scannt nach Klartext-Secrets. Er ist nur aktiv, wenn
-  `core.hooksPath` gesetzt ist; `postStartCommand.sh` setzt ihn. Nicht umgehbar ist der
+- Ein Pre-Push-Hook in `.githooks/` prüft die gepushten Commits mit gitleaks auf Klartext-Secrets.
+  Er ist nur aktiv, wenn `core.hooksPath` gesetzt ist; `postStartCommand.sh` setzt ihn. Nicht umgehbar ist der
   Secrets-Scan in CI.
 
-### 5.5 Backlog-Stand TASK-2 (Milestone m-0)
+### 5.5 Backlog-Stand TASK-2
+
+Die CLI listet 28 aktive Untertasks: 6 Done, 5 In Progress, 6 In Review und 11 To Do.
+TASK-2 selbst steht In Progress. TASK-2.1 und TASK-2.2 liegen zusätzlich unter
+`backlog/completed/` und erscheinen nicht in `backlog task list --plain`. TASK-1 ist ein
+separater Task und steht To Do.
 
 | Task | Titel (gekürzt) | Status |
 |---|---|---|
-| 2.1 | Reproducible toolchain | Done (in `backlog/completed/`) |
-| 2.2 | OpenTofu foundation tier with safeguards | Done (in `backlog/completed/`) |
+| 2.1 | Reproducible toolchain | Done (`completed/`) |
+| 2.2 | OpenTofu foundation tier with safeguards | Done (`completed/`) |
 | 2.3 | Bootstrap runbook and credential tiers | Done |
-| 2.4 | OpenTofu app tier, k3s, Argo CD bootstrap | To Do |
-| 2.5 | Fail-closed Conftest plan-diff gate | In Progress (bewusst offen bis 2.4) |
-| 2.6 | SOPS, age, KSOPS | To Do |
-| 2.7 | Argo CD app-of-apps, Environments | To Do |
-| 2.8 | Ingress, TLS, Platzhalter-Workload | To Do |
+| 2.4 | OpenTofu app tier, k3s und Argo CD per SSH | In Progress, implementiert, erster Apply und Operator-Prüfungen offen |
+| 2.5 | Fail-closed Conftest plan-diff gate | In Progress, Live-Nachweis offen |
+| 2.6 | SOPS, age, KSOPS | In Review, Operator-Schlüssel und Cluster-Prüfung offen |
+| 2.7 | Argo CD app-of-apps und Umgebungen | In Review, Live-Abnahme offen |
+| 2.8 | Traefik, HTTP-01-TLS und Platzhalter | In Review, DNS-Apply und Live-Abnahme offen |
 | 2.9 | CloudNativePG mit PITR | To Do |
 | 2.10 | Erste getestete Restore-Übung | To Do |
 | 2.11 | CI-Grün-Gate und Delivery-Pipeline | To Do |
 | 2.12 | Branch-Protection auf `main` | To Do |
 | 2.13 | Remote State Backend | Done |
-| 2.14 | Toolchain-Pins aktualisiert | Done |
+| 2.14 | Toolchain-Pins | Done |
 | 2.15 | Pre-Push-Hook | Done |
-| 2.16 | Drei Hetzner-Projekte | Done (abgelöst durch 2.22) |
-| 2.17 | Environment-Daten (anonymisierter Snapshot, CoW-Klon, Medien-Overlay) | To Do |
-| 2.18 | DNS auf Hetzner Cloud DNS, Provider-Pins | In Progress: AC #2, #4 und #5 abgehakt, #1 und #3 offen |
+| 2.16 | Drei Hetzner-Projekte | Done, Architektur maßgeblich in ADR-0017 und TASK-2.22 |
+| 2.17 | Umgebungsdaten | To Do |
+| 2.18 | Hetzner Cloud DNS und Provider-Pins | In Progress, AC #1 und #3 offen |
 | 2.19 | Renovate | To Do |
-| 2.20 | State nach Vertrauensgrenze trennen | Done (abgelöst durch 2.22) |
-| 2.21 | Schutzschichten live verifizieren | In Progress: AC #1, #2 und #4 abgehakt, #3 wartet auf 2.4 |
+| 2.20 | State nach Vertrauensgrenze trennen | Done, Architektur maßgeblich in ADR-0017 und TASK-2.22 |
+| 2.21 | Schutzschichten live verifizieren | In Progress, AC #3 offen |
 | 2.22 | Zwei Projekte | In Progress |
-| TASK-1 | Erster grüner E2E-Smoke-Pfad | To Do |
+| 2.23 | Slug-Secret für Staging und Produktion | To Do |
+| 2.24 | Playwright-Smoke mit anonymisierten Daten in CI | To Do |
+| 2.25 | Maestro-Flows in CI | To Do |
+| 2.26 | gitleaks | In Review, Operator-Prüfungen in CI und auf dem Host offen |
+| 2.27 | Keycloak-Realm-Dateien je Umgebung | In Review |
+| 2.28 | App-Tests in CI | In Review |
+| 2.29 | Isolierter Webhook-Forwarder | To Do |
+| 2.30 | Keycloak in Staging und Produktion deployen | To Do |
 
-### 5.6 Offener Abschluss-Durchgang
+### 5.6 Implementierung und offene Abnahme
 
-In einem Abschluss-Durchgang werden die In-Progress-Tasks nacheinander abgenommen. Die
-Akzeptanzkriterien werden dabei in **Ground-Truth-Form** gebracht: Der Operator prüft sie am echten
-System, also an der Hetzner-Konsole, mit echten Tools gegen die Realität oder durch ein beobachtetes
-Ablehnungsverhalten. Ein Skript des Agents, das "OK" ausgibt, zählt nicht. Ein AC wird erst
-abgehakt, wenn der Operator es selbst beobachtet hat.
+Akzeptanzkriterien werden am echten System geprüft. Die offenen Operator-Prüfungen und
+Nachweise stehen in den jeweiligen Task-Notizen und Runbooks.
 
-**TASK-2.18 abschließen** (nur lesende Prüfungen):
-
-```sh
-# AC #1: Provider sind hcloud und aws, kein germanbrew
-grep 'source ' infra/platform/versions.tf
-grep -rn germanbrew infra/
-# plus: CI-Job "OpenTofu tiers validate" war auf c8ad766 grün
-
-# AC #3: Destroy-Gate lehnt das Löschen der DNS-Zone ab
-echo '{"resource_changes":[{"address":"hcloud_zone.primary","type":"hcloud_zone","change":{"actions":["delete"],"after":null}}]}' | conftest test - -p policy/destroy_gate.rego
-# erwartet: 1 test, 0 passed, 1 failure ("critical resource hcloud_zone.primary would be destroyed")
-```
-
-Danach setzt folgender Befehl die Häkchen und den Status:
-
-```sh
-backlog task edit TASK-2.18 --check-ac 1 --check-ac 3 --check-dod 1 --check-dod 2 --check-dod 3 -s Done
-```
-
-Anschließend den Status prüfen und `node tools/check-story-test-binding.mjs` laufen lassen.
-
-**TASK-2.22 abschließen:** Die ACs in Ground-Truth-Form bringen und am echten System prüfen:
-
-- Genau zwei Projekte existieren (Hetzner-Konsole).
-- Die Isolation hält (Schicht 2).
-- Die Schutzmechanismen sind an den Live-Ressourcen vorhanden.
-- ADRs und README beschreiben zwei Projekte.
+- **TASK-2.4:** `infra/app/` installiert k3s und Argo CD über SSH mit geprüftem Host-Key auf
+  dem bestehenden Node. Der Workflow `infra-app` plant und prüft Änderungen am PR und führt
+  den Apply auf `main` aus. CI-Schlüssel, GitHub-Konfiguration, erster Apply und der beobachtete
+  Plan/Apply-Pfad sind offen (`infra/README.md`).
+- **TASK-2.6:** SOPS/age-Regeln für die öffentliche Test-Fixture, KSOPS im Argo-CD-Repo-Server,
+  Klartext-Secret-Prüfung und Roundtrip in CI sind implementiert. Für echte Secrets fehlen der
+  öffentliche age-Empfänger in `.sops.yaml`, der private Schlüssel im Cluster-Secret `sops-age`
+  und die beobachtete Entschlüsselung im Cluster.
+- **TASK-2.7:** Root-Application und ApplicationSets definieren Staging, Produktion und
+  PR-Previews. Previews sind auf zwei zugelassene PRs und 48 Stunden begrenzt; Quotas begrenzen
+  ihre Ressourcen. Stateful-Ressourcen haben Schutz gegen Prune und Delete. Discovery, Sync
+  und Abbau sind am laufenden Argo CD zu prüfen (`clusters/README.md`).
+- **TASK-2.8:** k3s bündelt Traefik und ServiceLB; Argo CD verwaltet das `HelmChartConfig`.
+  cert-manager stellt HTTP-01-Zertifikate je Host aus. Der Platzhalter hat Overlays für
+  `staging.cichlids.com`, `cichlids.com` und `pr-<nummer>.dev.cichlids.com`. A-Records für `@`,
+  `staging` und `*.dev` zeigen im Plattform-Code auf die Node-IP. Offen sind ACME-Kontakt,
+  DNS-Apply, öffentliche Auflösung, Ports 80/443, HTTPS und der Abbau eines Previews.
+- **TASK-2.26:** gitleaks prüft die gepushten Commits im Hook sowie Arbeitsbaum und komplette
+  Historie in CI. Die Operator-Prüfungen umfassen einen absichtlich fehlschlagenden CI-Scan
+  auf einem Prüfbranch und die Installation auf dem Host.
+- **TASK-2.18 und TASK-2.22:** Provider, DNS-Destroy-Gate, Projekttrennung und Schutzmechanismen
+  am echten System abnehmen. TASK-2.5 und AC #3 von TASK-2.21 benötigen den echten CI-Plan.
 
 ### 5.7 Stolperfallen
 
@@ -299,9 +284,8 @@ Anschließend den Status prüfen und `node tools/check-story-test-binding.mjs` l
 - Object Lock schützt geschriebene Objekte. Ein leerer Compliance-Bucket lässt sich in der Konsole
   löschen.
 - `tofu providers`, `plan` und `apply` brauchen `CICHLIDS_STATE_PASSPHRASE` (native
-  State-Verschlüsselung). Vorher die Umgebung laden:
-  `set -a; . ~/.config/cichlids/cichlids.env; set +a`. `tofu validate -backend=false` kommt ohne
-  sie aus.
+  State-Verschlüsselung). `infra/tofu.sh` lädt die Credential-Datei. Statische Validierung mit
+  `tofu init -backend=false` und `tofu validate` benötigt keinen Zugriff auf den State.
 - Git führt committete Hooks nie automatisch aus. Nach einem frischen Clone ist einmal
   `git config core.hooksPath .githooks` nötig.
 - DNS läuft projektbezogen über den `hcloud`-Provider (`hcloud_zone`, `hcloud_zone_rrset`).
@@ -351,24 +335,36 @@ Anschließend den Status prüfen und `node tools/check-story-test-binding.mjs` l
 | `app/stack/` | `compose.yaml` (postgres:17, RustFS als S3, Keycloak 26.6), deklarativer Realm `keycloak/cichlids-realm.json`, `bootstrap.sh`, `README.md` |
 | Workspace | pnpm (`app/pnpm-workspace.yaml`) |
 
-### 6.3 Neue ADRs auf dem Branch (alle Accepted)
+### 6.3 ADRs für Anwendung, Migration und Auth
+
+Der Index `docs/adr/index.md` enthält ADR-0001 bis ADR-0027. ADR-0019 bis ADR-0026 sind
+Accepted; ADR-0027 ist Proposed.
 
 - ADR-0019 Persistence and Migration Tooling
 - ADR-0020 Relational Domain Schema
 - ADR-0021 Community Discussion Archive
+- ADR-0022 Legacy Account Import into Keycloak
+- ADR-0023 Identity Model: User, Logins and Public Handle
+- ADR-0024 Webhook Delivery Boundary and Redelivery
+- ADR-0025 Keycloak Realm Configuration per Environment
+- ADR-0026 Legacy Import Runs Once Against an Empty Target
+- ADR-0027 Session Model for Native and Web Clients (Proposed)
 
 ### 6.4 Ergebnisse der Datenmigration (laut Task-Notizen)
 
 - **ETL-Verify** rechnet die Erwartungswerte unabhängig aus der Legacy-Quelle nach. Ergebnis:
-  34 Prüfungen, 0 Abweichungen.
-- **Medien-Seed:**
+  0 Abweichungen bei der dokumentierten Vollmigration und dem isolierten Prüflauf von TASK-3.30.
+- **Dokumentierter Umfang des Voll-Seeds (TASK-3.9):**
   - 179.337 von 179.340 Medien im Object Store (3 Quelldateien fehlen)
   - 623.220 Varianten (200/400/800/1600 px, ohne Hochskalieren)
-  - 283 GB in 94 Minuten übertragen
+  - 283 GB, Laufzeit 94 Minuten
+- **Medien-Pipeline (TASK-3.29 und TASK-3.31):**
+  - Originale sind privat und werden bereinigt gespeichert; öffentliche Varianten enthalten
+    keine Standort-Metadaten. TASK-3.29 belegt dies auf einem isolierten Voll-Seed.
   - Jeder Lauf prüft Originale und Varianten gegen den Object Store (SHA-256 der Quelldatei und
     Pipeline-Version als Objekt-Metadaten) und lädt nur Fehlendes oder Abweichendes hoch. Nach einem
     Datenbank-Reset schreibt er die Metadaten ohne Uploads in die Datenbank, und verlorene Objekte werden
-    wiederhergestellt.
+    aus der Quelle ergänzt.
 - **934 Altdateien** lassen sich nicht dekodieren, die meisten sind BMP-Dateien. Ist eine davon in
   einem Format, das Browser darstellen, legt der Medien-Seed eine bereinigte öffentliche Kopie unter
   `variants/copy/` an, und die App zeigt das Bild aus dieser Kopie. Leere Dateien und Nicht-Bilder
@@ -387,22 +383,51 @@ Anschließend den Status prüfen und `node tools/check-story-test-binding.mjs` l
 
 ### 6.5 Backlog-Stand TASK-3
 
-Kein Task ist Done, kein AC ist abgehakt (Stand 2026-09-28).
+Die CLI listet 42 Untertasks. Das Epic TASK-3 steht To Do; sein Status ist unabhängig von den
+Statuswerten der Untertasks. TASK-3.42 steht In Progress, die Umsetzung einschließlich R46
+ist in diesem Dokument beschrieben. Der Statuswechsel und die Abnahme sind offen.
 
 | Status | Tasks |
 |---|---|
-| In Review (26) | 3.1 Schema; 3.2 bis 3.9 ETL (Arten, User, Becken, Bilder, Kommentare/Ratings, Galerien, Verify, Medien); 3.10 bis 3.14 (Pictures-, Tanks-, Species-API, Keycloak, Comments/Ratings-API); 3.15 Auth0-Import nach Keycloak; 3.16 Foto-Upload mit Varianten; 3.17 Outbox; 3.18 TS-Client; 3.19, 3.20 und 3.27 Mobile-Screens; 3.21 Mobile Login und Upload; 3.22 Mobile Kommentieren und Bewerten; 3.23 Bootstrap-Smoke; 3.24 Forum-ETL; 3.25 Community-API; 3.26 Legacy-Redirects |
-| Draft (5) | DRAFT-1 Mail-Kampagne zur Rückgewinnung alter Mitglieder (Mail-Provider für ca. 12k Mails und rechtliche Prüfung offen); DRAFT-2 gitleaks statt Eigenbau-Scanner; DRAFT-3 gespeicherter Link zwischen Bewertung und Kommentar; DRAFT-4 wie oft ein Mitglied dasselbe Ziel bewerten darf; DRAFT-5 View-Zählung durch Smokes in der geseedeten Dev-DB |
+| Done (1) | 3.29 private Originale und bereinigte Metadaten |
+| In Review (39) | 3.1 bis 3.27: Schema, ETL, Medien, APIs, Auth, Outbox, Client und Mobile; 3.30 bis 3.41: Review-Korrekturen |
+| In Progress (1) | 3.42 Code- und Doku-Korrekturen aus dem Review |
+| To Do (1) | 3.28 Ich-Tab mit eigenen Bildern, Becken und Entwürfen |
 
-- 3.15 importiert jedes Legacy-Konto mit bekannter E-Mail (ca. 12.050 Konten) mit den Required
-  Actions "update password" und "terms", idempotent über die E-Mail; Grundsätze in ADR-0022. Der
-  Import ist nicht gegen den Dev-Stack gelaufen; die Prüfbefehle stehen in den Task-Notizen.
-- 3.16, 3.21 und 3.22 liefern Upload, Login (PKCE) und Kommentieren mit Bewertung. Schreibende
-  E2E-Tests laufen auf einem isolierten Schreib-Stack (`app/mobile/e2e/write-stack.sh`: DB
-  `cichlids_e2e`, Bucket `cichlids-e2e`, API :5046, Web :8082), nie gegen die geseedete Dev-DB.
-- Die Maestro-Flows der ACs von 3.21 und 3.22 sind geschrieben, aber nicht ausführbar (F13).
-- Eine Vorprüfung aller 22 älteren In-Review-Tasks liegt als `PRECHECK-IN-REVIEW.md` (untracked) im
-  Haupt-Worktree `/workspaces/cichlids.com`.
+**Review-Korrekturen:** TASK-3.29 bis TASK-3.42 sind implementiert. Sie umfassen Medienprivatheit,
+Import- und Verify-Regeln, Konto-Import, Webhooks, atomare Profilanlage, Bewertungen, Grenzen für
+Kommentare und Uploads, Redirects, App-Fehlerzustände, dauerhafte Anmeldung und Code-/Doku-Prüfungen.
+Die Zuordnung zu R1 bis R46 steht in `REVIEW-MVP.md`, Abschnitt "Umsetzung". Done ist TASK-3.29;
+die übrigen Review-Tasks benötigen die dokumentierten Abnahmen und Nachweise.
+
+**Aktive Drafts (7):**
+
+- DRAFT-1 Mail-Kampagne an Bestandsmitglieder, Mail-Provider und rechtliche Prüfung offen
+- DRAFT-3 gespeicherter Link zwischen Bewertung und Kommentar
+- DRAFT-6 Änderung des öffentlichen Handles
+- DRAFT-7 Google- und Facebook-Login mit den Legacy-Apps
+- DRAFT-8 hochgeladenes Foto einem eigenen Becken zuordnen
+- DRAFT-9 Arten beim Veröffentlichen eines Fotos markieren
+- DRAFT-10 jeden API-Abruf als Ereignis erfassen und Views daraus ableiten
+
+DRAFT-4 (Bewertungen) ist durch R9 entschieden und archiviert. DRAFT-5 (Views durch Smokes)
+liegt in `backlog/archive/drafts/`. gitleaks ist TASK-2.26 zugeordnet; ein aktiver DRAFT-2
+existiert nicht.
+
+- TASK-3.15 importiert ca. 12.050 Legacy-Konten mit den Required Actions `UPDATE_PASSWORD`
+  für Passwortkonten und `TERMS_AND_CONDITIONS` für alle importierten Konten. Das dokumentierte
+  Dev-Ergebnis umfasst 12.050 angelegte Konten und 6.447 Profil-Verknüpfungen; der Folgelauf
+  erzeugt 0 Konten. Die Operator-Abnahme der ACs ist F21. TASK-3.33 schützt die Identitäten
+  und begrenzt Profil-Verknüpfungen auf Mitgliederprofile.
+- TASK-3.16, 3.21 und 3.22 liefern Upload, Login und Kommentieren mit Bewertung. Schreibende
+  E2E-Tests verwenden den isolierten Schreib-Stack (`app/mobile/e2e/write-stack.sh`: DB
+  `cichlids_e2e`, Bucket `cichlids-e2e`, API :5046, Web :8082).
+- TASK-3.41 hält native Tokens in SecureStore und verwaltet Web-Sitzungen in der API hinter
+  einem httpOnly-Cookie mit CSRF-Schutz. Die Tokens der Web-Sitzungen sind mit Data Protection
+  verschlüsselt. Key-Ring, BFF-Client-Secret und Routing unter derselben Origin gehören zum
+  offenen Deployment der API und Web-App.
+- Die Maestro-Abnahme ist offen (F13). Die lokale Vorprüfung `PRECHECK-IN-REVIEW.md` ist
+  untracked; maßgeblich sind die Task-Notizen und die Definition of Done.
 
 ### 6.6 Lokal starten
 
@@ -418,12 +443,13 @@ Die Anleitung steht in `app/stack/README.md`.
    - `CICHLIDS_LEGACY_STACK_DIR` zeigt standardmäßig auf `workspace-legacy/legacy-stack` im
      Repository.
    - Nur die Dienste starten: `docker compose -f app/stack/compose.yaml up -d`.
-3. API starten: `dotnet run` in `Cichlids.Api` (http://0.0.0.0:5045).
+3. API starten: `dotnet run` in `Cichlids.Api` (Port 5045).
 4. App starten: `pnpm exec expo start --web --port 8081`. Web-Smoke: `pnpm run e2e:web`; schreibende
    E2E-Specs: `pnpm run e2e:write`.
 
-Das .NET-SDK installiert der Devcontainer bei der Erstellung über `tools/install-dotnet.sh` nach
-`~/.dotnet`, dazu pnpm-Abhängigkeiten und Playwright-Chromium.
+Das .NET-SDK installiert der Devcontainer bei der Erstellung über `tools/install-dotnet.sh`
+in den lokalen SDK-Installationspfad. Die Einrichtung umfasst auch pnpm-Abhängigkeiten und
+Playwright-Chromium.
 
 Ports:
 
@@ -442,52 +468,43 @@ Dev-User in Keycloak: `dev-user` und `dev-mod` (Moderator und Admin), Passwort j
 
 ### 6.7 Lose Enden in Strang B
 
-- Die Maestro-Flows liefen nie, weil der Runner beim Device-Attach blockiert. 3.23 hat deshalb eine
-  offene Lücke zum AC; als Ersatz gibt es nur den Playwright-Web-Smoke.
-- Für 3.1 stehen der Merge nach `main` und ein E2E-Lauf auf einem deployten Stack aus. Beides
-  braucht die Delivery-Pipeline aus TASK-2.
-- Der Dev-Realm von Keycloak ist per kcadm angepasst (cichlids-app: webOrigins 8081 und 8082,
-  Redirect `cichlids://*`). Den `email_verified`-Mapper ergänzt der Account-Import beim ersten Lauf.
-- Jeder Aufruf eines Bilddetails zählt einen View, auch im Web-Smoke (DRAFT-5).
-- In `app/` gibt es keine TODO- oder FIXME-Marker und keine übersprungenen Tests.
+- Der Maestro-Runner blockiert beim Device-Attach (F13). TASK-2.25 umfasst die CI-Ausführung;
+  der Playwright-Web-Smoke beweist den Web-Pfad.
+- Die E2E-Abnahme am deployten Stack und das CI-Grün-Gate sind offen. Die Stories in Review
+  sind trotz des Merges in `main` unabgenommen.
+- `app/stack/keycloak/cichlids-realm.json` gilt ausschließlich lokal. Die deployten Umgebungen
+  verwenden `apps/keycloak/overlays/staging/cichlids-realm.json` und
+  `apps/keycloak/overlays/prod/cichlids-realm.json` gemäß ADR-0025. Diese verlangen TLS und
+  exakte Redirects und enthalten keine Konten oder Secrets. Registrierung ist Laufzeitzustand;
+  Produktion öffnet sie nach vollständigem Konto-Import, Staging hält sie geschlossen.
+- Native Anmeldung verwendet den öffentlichen Client `cichlids-app` mit PKCE. Das Web verwendet
+  den vertraulichen Client `cichlids-web-bff` mit PKCE und Secret in der API. Staging hat den
+  API-Callback `https://staging.cichlids.com/api/auth/callback`; der Produktionsclient hat keine
+  Login-Redirect-URI. Der Operator setzt das BFF-Secret aus SOPS nach jedem Realm-Import in
+  Keycloak. Details: `apps/keycloak/README.md`.
+- Realm-Dateien sind Konfigurationsartefakte; das Keycloak-Deployment ist TASK-2.30.
+- Bilddetail-Abrufe erhöhen den View-Zähler. DRAFT-5 ist archiviert; DRAFT-10 beschreibt die
+  offene Ereignis-Erfassung für Abrufe.
+- ADR-0027 ist Proposed. Native Abnahme auf einem Gerät, Same-Origin-Deployment und das
+  Verhalten beim Logout während eines Keycloak-Ausfalls sind offene Prüf- und Betriebspunkte.
 
 ---
 
 ## 7. Wie hängen die beiden Stränge zusammen?
 
-Eine schriftliche Begründung für Strang B existiert nicht. Was sich belegen lässt:
+Strang A stellt die abgesicherte Plattform und GitOps-Auslieferung bereit. Strang B liefert
+API, Auth, ETL und Medien-Pipeline als lauffähige Anwendung mit den geretteten Altdaten. TASK-3
+grenzt das Produktions-Deployment ausdrücklich aus; dieses gehört zum Plattformstrang.
 
-1. **Strang A stand vor dem Schritt, der eine Anwendung braucht.** Das Cloud-Substrat ist live und
-   abgesichert. Der nächste Bau-Schritt 2.4 (k3s und Argo CD) und das offene Gate aus Schicht 3
-   brauchen einen Workload und eine Delivery-Pipeline. Eine deploybare App gab es nicht.
-2. **Strang B entstand direkt nach dem Maschinenwechsel.** `HANDOFF.md` wurde am 2026-07-08 um
-   18:42 geschrieben. Um 20:50 desselben Abends begann `feat/legacy-mvp` in einem eigenen Worktree.
-3. **TASK-3 grenzt sich ausdrücklich von der Plattform ab:** "Production deployment (the GitOps app
-   tier is separate work)" steht unter Out of scope. Beide Stränge waren also bewusst entkoppelt.
-4. **Strang B zieht Teile späterer Phasen lokal vor:**
-   - Keycloak (Phase 2)
-   - Outbox und Webhooks (Phase 3)
-   - Medien-Pipeline und ETL (Phase 4)
-   - Becken und Arten (Phase 5, in Legacy-Form)
-5. **Strang B zielt auf Legacy-Parität,** also die Funktionen der alten Plattform mit den alten
-   Daten. Die Produktvision beschreibt dagegen die Pflege- und Stolz-Sicht als Kern. Keine der
-   Vision-Funktionen (Pflege-Logs, Timeline, Streaks) ist in TASK-3 enthalten.
-6. **DRAFT-1 und die Neuausrichtung von 3.15** zielen auf einen Relaunch für die rund 12k
-   Bestandsmitglieder.
+Die Rolle des Legacy-Parity-MVP ist als O1 geklärt: Er beweist die Migration und bildet die
+Relaunch-Basis für die rund 12.000 Bestandsmitglieder. DRAFT-1 beschreibt die Mail-Kampagne.
+Die Produktvision mit Pflege-Logs, Timeline und Rückblicken baut auf dieser Anwendung auf.
+`MVP-VISION.md`, Abschnitt 8, beschreibt die vorführbaren Slices des Zielbilds.
 
-**Naheliegende Lesart** (unbestätigt, vom Projektinhaber zu klären): Die Plattform war so weit, dass
-sie eine echte Anwendung brauchte. Strang B sollte deshalb schnell eine lauffähige Anwendung mit den
-echten Altdaten liefern. Zugleich sollte er die Migration beweisen und eine Relaunch-Basis für die
-Rückgewinnung der Bestandsmitglieder schaffen. Die Vision-Funktionen bauen später darauf auf.
-
-**Offene Frage O1:** Ist diese Lesart richtig, und wie verhält sich der Legacy-Parity-MVP zur
-Produktvision? Denkbar sind zwei Rollen:
-
-- ein Relaunch-Zwischenschritt,
-- eine reine Migrations- und Datenbasis.
-
-Die Antwort bestimmt, ob als Nächstes Strang A (Deployment) oder Strang B (Login, Upload,
-Kampagne) Vorrang hat.
+O2 legt Deployment zuerst fest. Der gemergte MVP dient als erster Staging-Workload. Seine
+Abnahmen und die Operator-Prüfungen der für Staging relevanten Review-Tasks sind offen.
+Die Slices des Zielbilds beginnen mit einem laufenden Staging-System; Scanner-Spike,
+Taxonomie-Zuordnung und Profildaten-Pipeline sind parallel bearbeitbare Arbeit.
 
 ---
 
@@ -504,7 +521,7 @@ Kampagne) Vorrang hat.
   Landingpage zur App, Web-App hinter dem Login) ist offen und wird eigens geplant
   (`MVP-VISION.md`, Abschnitt 9).
 - Die MVP-App in Strang B leitet ihr Theme aus diesen Tokens ab. Screenshots liegen in
-  `/workspaces/app-screens/`.
+  `app-screens/`.
 
 ---
 
@@ -514,28 +531,14 @@ Die IDs sind stabil, damit sich die Fäden einzeln abarbeiten und abhaken lassen
 
 ### Sicherung (dringend)
 
-- [x] **F1** Den uncommitteten Stand auf `main` committen (Doku-Bereinigung, Tooling, Backlog, dieses
-  Dokument). Der Push von `main` ist Sache des Operators.
-- [x] **F2** `feat/legacy-mvp` zu `origin` pushen.
-- [x] **F20** Die Treffer des Secret-Scanners auf `feat/legacy-mvp` beheben. Keiner der Treffer ist
-  ein echtes Secret:
-  - Fehlalarme bei Zuweisungen von Bezeichner zu Bezeichner, zum Beispiel die Property
-    `CancellationToken` mit der Variablen `cancellationToken` als Wert. Die Heuristik "credential
-    assignment" wertet jeden Bezeichner ab 16 Zeichen auf der rechten Seite als Wert.
-  - Bewusst lokale Dev- und Testwerte: `cichlids-dev-secret` (RustFS in `app/stack/compose.yaml`
-    und in den Test-Fixtures), `cichlids-local-dev-slug-secret` (`EtlContext.cs`) und
-    `matching-subscriber-secret` (`OutboxDispatchServiceTests.cs`).
-
-  Die Korrektur ist auf `feat/legacy-mvp` committet und gepusht:
-  - Der Scanner wertet unquotierte Bezeichner nicht als Wert und akzeptiert Zeilen mit dem
-    Marker `gitleaks:allow`. Der Self-Test deckt beides ab.
-  - Die sieben Zeilen mit Dev- und Testwerten haben den Marker.
-  - Hook und Scan laufen grün.
-
-  Der Ersatz des Eigenbaus durch gitleaks steht als TASK-2.26 im Backlog.
+- [x] **F1** Der Projektstand ist lokal auf `main` committet. Der Push ist Sache des Operators.
+- [x] **F2** Die Sicherung von `feat/legacy-mvp` auf `origin` ist abgeschlossen.
+- [x] **F20** Der Secret-Scan ist durch lokale Prüfungen belegt. TASK-2.26 implementiert gitleaks
+  im Pre-Push-Hook und in CI; die Operator-Abnahme des Tasks ist offen.
 - [ ] **F3** Den SSH-Zugriff auf GitHub aus dem Devcontainer reparieren (Host-Key-Prüfung), damit
   der Remote-Stand prüfbar ist.
-- [x] **F4** `HANDOFF.md` gelöscht; dieses Dokument deckt ihren Inhalt ab.
+- [x] **F4** Die Infrastruktur-Dokumentation steht in den versionierten Projektquellen.
+  Lokale Handoff-Dateien gehören nicht zu diesen Quellen.
 
 ### Strang A
 
@@ -544,40 +547,43 @@ Die IDs sind stabil, damit sich die Fäden einzeln abarbeiten und abhaken lassen
 - [ ] **F7** Die Delegation der Domain `cichlids.com` beim Registrar prüfen oder durchführen.
 - [ ] **F8** Den Umgang mit dem Beweisobjekt `layer4-immutability-test.txt` klären: Die Frist ist
   abgelaufen, es lässt sich also löschen oder behalten.
-- [ ] **F9** Die laufenden Kosten der Live-Ressourcen gegen den Nutzen abwägen, solange kein
-  Workload läuft.
-- [ ] **F10** TASK-2.4 (k3s und Argo CD) als nächsten Bau-Schritt planen. Damit werden 2.5 und
-  2.21 AC #3 abschließbar.
+- [ ] **F9** Die laufenden Kosten der Live-Ressourcen gegen den Nutzen abwägen, solange
+  der Live-Nachweis des Workloads offen ist.
+- [ ] **F10** TASK-2.4 ist implementiert: k3s und Argo CD per SSH. Ersten Apply und CI-Pfad
+  abnehmen; dazu die Live-Prüfungen von TASK-2.6, 2.7, 2.8 und 2.26 durchführen. TASK-2.5 und
+  AC #3 von TASK-2.21 benötigen den echten CI-Plan.
+- [ ] **F29** Hetzner-Cloud-Firewall für den Node im Plattform-Tier umsetzen. `TODO.md` führt
+  öffentlich erreichbares SSH als offenen Punkt; nur die nötigen Ports freigeben.
 
 ### Strang B
 
 - [x] **F11** Docker-Volumes des MVP-Stacks geprüft und Stack gestartet: Daten vollständig,
   `bootstrap.sh` grün, `etl verify` 0 Abweichungen, Playwright-Web-Smoke grün. Das .NET-SDK
   installiert der Devcontainer über `tools/install-dotnet.sh`.
-- [ ] **F12** Die MVP-Stories in Review später abnehmen (bewusst zurückgestellt, siehe O2). Prüfbefehle je
-  Story: `/workspaces/cichlids.com/PRECHECK-IN-REVIEW.md` (untracked) und die Notizen von 3.15, 3.16, 3.21
-  und 3.22.
+- [ ] **F12** Die MVP-Stories in Review abnehmen (siehe O2). Maßgeblich sind die Task-Notizen
+  und die Definition of Done; `PRECHECK-IN-REVIEW.md` ist eine lokale, untracked Vorprüfung.
 - [ ] **F13** Den Maestro-Runner zum Laufen bringen oder den AC von 3.23 bewusst anpassen.
-- [x] **F14** `feat/legacy-mvp` ist in `main` gemergt, der lokale Sicherungs-Branch
-  `backup/pre-fold-2026-09-29` ist gelöscht.
+- [x] **F14** `feat/legacy-mvp` und `fix/mvp-review` sind in `main` gemergt.
 - [x] **F15** Die MVP-Stories 3.15, 3.16, 3.21 und 3.22 sind umgesetzt und stehen in Review.
   DRAFT-1 (Mail-Kampagne) ist offen.
-- [ ] **F21** Die ACs von 3.15 am Dev-Stack beobachten. Der Import lief am 2026-09-29: 12.050 Konten
-  angelegt, 6.447 Profil-Verknüpfungen, 20 Datensätze ohne Kontakt und Profil verworfen; der zweite
-  Lauf legte nichts an.
-- [x] **F22** Die Interims-Entscheidungen der autonomen Umsetzung sind am 2026-09-29 mit dem Projektinhaber
-  durchgesehen; die Ergebnisse stehen in ADR-0022, ADR-0023, den Task-Notizen und DRAFT-6 bis DRAFT-10.
-- [ ] **F23** Über DRAFT-3 (gespeicherter Link Bewertung zu Kommentar), DRAFT-4 (wiederholte
-  Bewertungen) und DRAFT-5 (View-Zählung in der geseedeten Dev-DB) entscheiden.
+- [ ] **F21** Die ACs von TASK-3.15 am Dev-Stack abnehmen. Das dokumentierte Import-Ergebnis
+  umfasst 12.050 angelegte Konten, 6.447 Profil-Verknüpfungen und 20 verworfene Datensätze ohne
+  Kontakt und Profil. Der idempotente Folgelauf erzeugt 0 Konten. Die Abnahme ist offen.
+- [x] **F22** Die Entscheidungen zu Konto-Import, Identitäten und Registrierung stehen in
+  ADR-0022, ADR-0023 und den Task-Notizen. DRAFT-6 bis DRAFT-10 beschreiben offene Funktionen.
+- [ ] **F23** Über DRAFT-3 (gespeicherter Link Bewertung zu Kommentar) entscheiden. DRAFT-4 ist
+  durch R9 entschieden und archiviert, DRAFT-5 ist archiviert; aktive Drafts stehen in 6.5.
 - [x] **F24** Die Android-Package-ID `com.cichlids.app` ist bestätigt.
 - [x] **F27** Die Befunde des Reviews des gemergten MVP (`REVIEW-MVP.md`, R1 bis R46) sind einzeln
   besprochen und entschieden. Die Webhook-Entscheidung steht in ADR-0024.
-- [ ] **F28** Die Entscheidungen aus `REVIEW-MVP.md` umsetzen. Sie stehen als Tasks im Backlog
-  (Zuordnung im Abschnitt "Umsetzung" von `REVIEW-MVP.md`); die neun Tasks mit Priorität hoch sind
-  als Abhängigkeiten von TASK-2.4 eingetragen. Reihenfolge (entschieden am 2026-10-12): zuerst die
-  für Staging wichtigen Fixes (Sicherheit, Datenintegrität des Imports, Stabilität der API,
-  CI-Gate), dann TASK-2.4, danach die übrigen Punkte, die dauerhafte Anmeldung (R8) und der
-  externe Webhook-Forwarder (ADR-0024).
+- [ ] **F28** Die Review-Korrekturen TASK-3.29 bis TASK-3.42 sind in `main` implementiert.
+  TASK-3.29 ist Done; TASK-3.30 bis TASK-3.41 stehen In Review, TASK-3.42 steht In Progress
+  und umfasst diese Statusdokumentation (R46). Die Review-Tasks TASK-2.27, 2.28 und 2.26
+  sind implementiert und stehen In Review. Offen sind deren Abnahmen und CI-/Live-Nachweise,
+  der Abschluss von TASK-3.42, die Annahme von ADR-0027 sowie TASK-2.24 (anonymisierter
+  Playwright-Smoke), TASK-2.25 (Maestro in CI) und TASK-2.29 (isolierter Webhook-Forwarder).
+  Die Zuordnung steht in `REVIEW-MVP.md`, Abschnitt "Umsetzung"; die hoch priorisierten
+  Review-Tasks sind Voraussetzungen für TASK-2.4.
 - [ ] **F26** (TASK-2.23) Slug-Secret für Staging und Produktion erzeugen, sicher verwahren (SOPS, TASK-2.6) und
   identisch für ETL und API setzen, bevor der Produktiv-Import läuft. Aus ihm entstehen Bild-Slugs,
   `user<zahl>`-Handles, Login-Usernames und `guest_<nummer>`-Gastnamen; ein anderer Schlüssel ergäbe andere
@@ -601,25 +607,29 @@ Die IDs sind stabil, damit sich die Fäden einzeln abarbeiten und abhaken lassen
 - [x] **O1** Die Rolle des Legacy-Parity-MVP ist geklärt: Er liefert eine lauffähige Anwendung mit
   den echten Altdaten, beweist die Migration und ist die Relaunch-Basis für die Rückgewinnung der
   ca. 12k Bestandsmitglieder. Die Vision-Funktionen bauen später darauf auf.
-- [x] **O2** Priorität: zuerst das Deployment (Strang A). Der MVP wird nach `main` gemergt und dient als
-  Testobjekt für ein Staging-System; seine Stories bleiben bewusst unabgenommen (In Review).
+- [x] **O2** Priorität: zuerst das Deployment (Strang A). Der MVP ist in `main` gemergt und dient als
+  Testobjekt für Staging; die Stories in Review benötigen ihre Abnahme.
 - [x] **O3** ADR-0015 (Backlog.md) ist angenommen.
 
 ---
 
-## 10. Vorgeschlagene Reihenfolge für den Wiedereinstieg
+## 10. Lese- und Arbeitsreihenfolge
 
-1. **Sichern:** F1 bis F4. Das kostet wenig und verhindert Datenverlust.
-2. **Klären:** O1 und O2. Davon hängt alles Weitere ab.
-3. **Strang A sauber abschließen:** F5 und F6 sind je nur wenige Befehle. Danach sind nur noch die
-   Tasks offen, die bewusst auf 2.4 warten.
-4. **Strang B sichtbar machen:** F11. Den Stack hochfahren und die App ansehen. Das hilft auch bei
-   der Entscheidung zu O1.
-5. **Doku-Korrekturen:** F16 bis F19.
-6. **Je nach O2:**
-   - *Deployment zuerst:* F10 (TASK-2.4), dann 2.6 bis 2.11. Der MVP ist dann der erste echte
-     Workload auf k3s.
-   - *MVP zuerst:* F12 bis F15. Das Deployment folgt danach.
+1. `AGENTS.md` und `PROJECT-CONTEXT.md`, insbesondere die Dokumentations-Landkarte in Abschnitt 0.
+2. Dieses Statusdokument und `TODO.md` für Stand und offene Arbeit; `PRODUCT-VISION.md` und
+   `MVP-VISION.md` für Produktziel und Zuschnitt.
+3. `docs/adr/index.md` und die relevanten ADRs. Für Arbeit an Stories den Skill
+   `skills/backlog-workflow/SKILL.md` und die Backlog-MCP-Anleitung lesen; Task-Details sind
+   maßgeblich für Scope, ACs und Nachweise.
+4. `REVIEW-MVP.md`, insbesondere die Umsetzungstabelle, für die Zuordnung der Review-Befunde.
+5. `infra/README.md`, `clusters/README.md` und `apps/keycloak/README.md` für Apply, GitOps,
+   DNS/TLS und Auth; `app/stack/README.md` für den lokalen Anwendungspfad.
+
+Die Arbeitspriorität ist O2: Staging mit dem MVP als erstem Workload. Dafür sind die relevanten
+Review-Tasks abzunehmen und die Operator-Schritte aus F10 sowie DNS, Secrets und Node-Firewall
+zu bearbeiten. API, Web-App, Keycloak und Datenbank benötigen Deployments und Secrets. Die
+übrigen Review-Abnahmen und CI-Pfade stehen in F28; die Slices des Zielbilds folgen dem
+laufenden Staging-System.
 
 ---
 
@@ -627,12 +637,20 @@ Die IDs sind stabil, damit sich die Fäden einzeln abarbeiten und abhaken lassen
 
 Die vollständigen Regeln stehen in `AGENTS.md`.
 
-- Agents committen, pushen und mergen nie. Der Operator macht alle Git-Operationen. Commit-Messages
-  folgen Conventional Commits, ohne Co-Authored-By-Trailer.
-- Der Backlog wird über die `backlog`-CLI gepflegt, und ACs werden in Ground-Truth-Form
-  formuliert. Ein AC wird erst abgehakt, wenn der Operator es beobachtet hat.
-- OpenTofu-Applies macht der Operator auf dem eigenen Host.
-- Für Doku und Kommentare gilt: nur der Ist-Zustand und zeitlose Begründungen, keine Em- oder
-  En-Dashes.
-- READMEs sind reine Anleitungen. Begründungen stehen in den ADRs.
-- Neue Artefakte (Code, ADRs) werden auf Englisch geschrieben, Planungsdokumente auf Deutsch.
+- Agents committen lokal mit Conventional Commits und ohne Trailer. Der Operator pusht.
+  Destruktive Git-Operationen benötigen eine Freigabe.
+- Agents greifen auf Tasks über den MCP-Server `backlog` zu und lesen zuerst dessen
+  Workflow-Anleitung. Task-Dateien werden ausschließlich über die Tools gepflegt. Agents
+  setzen keinen Assignee; Zuweisungen vergibt nur der Projektinhaber.
+- Stories sind auf Englisch und spezifizieren einen Given-When-Then-Pfad vor der Umsetzung.
+  Red-Green, grüne E2E-Tests, Abdeckung der maßgeblichen Logik und vollständig grünes CI sind
+  Teil der Definition of Done. Story und E2E-Test sind bidirektional verknüpft.
+- Infra-Abnahmen prüfen die offenen ACs am echten System. OpenTofu-Applies führt der Operator
+  aus; Agents prüfen statisch.
+- Doku und Kommentare beschreiben den aktuellen Zustand und zeitlose Begründungen im Präsens.
+  Session-Bezüge und Beschreibungen von Vorzuständen sind ausgeschlossen. Gedankenstriche
+  werden als gewöhnliche Bindestriche geschrieben.
+- Die öffentliche Doku enthält keine Secrets, personenbezogenen Daten, konkreten Node-IPs
+  oder Host-Key-Fingerprints. Node-Werte liefert `infra/tofu.sh platform output`.
+- Die UI folgt den Design-Tokens und Referenz-Screens: mobile-first, Android und iOS
+  gleichwertig, Light und Dark, WCAG AA und Touch-Ziele von mindestens 48 dp.
