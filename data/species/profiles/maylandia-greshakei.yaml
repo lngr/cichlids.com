@@ -1,0 +1,1191 @@
+schemaVersion: 1
+id: maylandia-greshakei
+legacyIds:
+  - 478
+status: described
+taxonomy:
+  validName: Maylandia greshakei
+  genus: Maylandia
+  species: greshakei
+  author: (Meyer & Förster, 1984)
+  source: &cof
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes, species of the genus Maylandia, entry greshakei, Pseudotropheus"
+    url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Maylandia
+    accessed: 2026-10-13
+  synonyms:
+    - name: Pseudotropheus greshakei
+      note: Original combination of Meyer and Förster (1984); type locality Makokola in the southeastern arm of Lake Malawi.
+    - name: Metriaclima greshakei
+      note: Combination used by Stauffer et al. (1997), later revisions and the Cichlid Room Companion, by authors who regard Maylandia as unavailable.
+  legacyNames:
+    - Pseudotropheus greshakei
+  note: >-
+    The Catalog of Fishes lists the species as valid in Maylandia and treats Metriaclima as a
+    later name for the same genus; the species is the type species of Maylandia. The Pseudotropheus
+    and Metriaclima queries hold no separate valid entry for greshakei. The genus name stays
+    disputed: Konings, Geerts and Stauffer (2026, Taxonomy 6(1), 3, doi 10.3390/taxonomy6010003,
+    known from its bibliographic record) hold that Maylandia is a nomen nudum and use Metriaclima,
+    as does the Cichlid Room Companion. Both names denote the same species; this profile follows
+    the Catalog of Fishes. The legacy name Pseudotropheus greshakei is not a separate species.
+names:
+  trade:
+    en:
+      - Red Top Ice Blue Zebra
+      - Ice Blue Zebra
+      - Red Top Ice Blue Cichlid
+    de:
+      - Ice Blue
+      - Red Top Ice Blue
+variants:
+  - name: Makokola Reef
+    kind: locality
+    note: Type locality and origin of the wild stock; the species is known only from reefs in this part of the southeastern arm.
+  - name: Albino
+    kind: color-morph
+    note: Captive-bred albino line, common in the trade; males are whitish with orange in the dorsal fin.
+features:
+  origin:
+    value:
+      continent: Africa
+      region: Lake Malawi
+      waterbody: Lake Malawi
+      localities:
+        - Makokola Reef
+        - Crocodile Reef south of Boadzulu Island
+    confidence: high
+    rationale: >-
+      Endemic to Lake Malawi with a very small range in the southeastern arm. The Catalog of
+      Fishes gives Makokola as type locality, FishBase and Seriously Fish restrict the species to
+      the Makokola area, and the Fishkeeper data bank adds the reef at Crocodile Rocks south of
+      Boadzulu Island. The inputs name this second site Crocodile Reef or Crocodile Rocks; both
+      mean the same place. FishBase reports the IUCN assessment of 2018 as Near Threatened because
+      of the small range; Fishkeeper still calls the species Vulnerable, which is an older status,
+      and one checker followed it.
+    sources:
+      - *cof
+      - &fb
+        kind: database
+        title: "FishBase species summary: Maylandia greshakei"
+        url: https://www.fishbase.se/summary/Maylandia-greshakei.html
+        accessed: 2026-10-13
+      - &sf
+        kind: database
+        title: "Seriously Fish: Maylandia greshakei (Red Top Ice Blue Zebra)"
+        url: https://www.seriouslyfish.com/species/maylandia-greshakei/
+        accessed: 2026-10-13
+      - &fk
+        kind: database
+        title: "Fishkeeper (Maidenhead Aquatics) data bank: Red-top Ice-blue Zebra, Maylandia greshakei"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-top-ice-blue-zebra-
+        accessed: 2026-10-13
+      - &glaser
+        kind: website
+        title: "Aquarium Glaser fish archive: Maylandia greshakei (F. Schäfer, 2017)"
+        url: https://www.aquariumglaser.de/en/25-perchlike-fishes/maylandia-greshakei-2/
+        accessed: 2026-10-13
+    evidence:
+      - source: *cof
+        value: {continent: Africa, region: Lake Malawi, waterbody: Lake Malawi, localities: [Makokola]}
+        note: type locality in the southeastern arm
+      - source: *fb
+        value: {continent: Africa, region: Lake Malawi, waterbody: Lake Malawi, localities: [Makokola]}
+      - source: *sf
+        value: {continent: Africa, region: Lake Malawi, waterbody: Lake Malawi, localities: [Makokola]}
+      - source: *fk
+        value: {continent: Africa, region: Lake Malawi, waterbody: Lake Malawi, localities: [Makokola Reef, Crocodile Reef south of Boadzulu Island]}
+  temperatureC:
+    value: {min: 21, max: 29}
+    confidence: high
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    rationale: >-
+      The species is a Lake Malawi endemic, so the natural range is the measured lake range. Eccles
+      (1974) found about 21 C inshore in the southeastern arm during the cool, windy season and 27 C
+      in the upper 60 m in May; Vollmer et al. (2005) give winter epilimnion values of about 23.5 C
+      and summer surface water of about 28 C; a 2013 campaign (Ngochera 2018) measured 24 to 29 C.
+      FishBase lists 24 to 26 C, which is an aquarium figure and not a habitat measurement. All
+      three votes gave the lake range.
+    sources: &lakeSources
+      - &branchu
+        kind: literature
+        title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+        url: https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf
+        accessed: 2026-10-12
+      - &fao
+        kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+        url: https://www.fao.org/4/t0473e/T0473E05.htm
+        accessed: 2026-10-12
+      - &eccles
+        kind: literature
+        title: "Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology and Oceanography 19(5), 730-742 (abstract)."
+        url: https://doi.org/10.4319/lo.1974.19.5.0730
+        accessed: 2026-10-12
+      - &vollmer05
+        kind: literature
+        title: "Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M., Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and Oceanography 50(2), 727-732."
+        url: https://www.dora.lib4ri.ch/empa/dload/empa:1253/PDF/view
+        accessed: 2026-10-12
+      - &vollmer99
+        kind: literature
+        title: "Vollmer, M. K., Weiss, R. F. and Bootsma, H. A. (1999). Lake Malawi/Nyasa deep water renewal. In: Bootsma, H. A. and Hecky, R. E. (eds.), Water Quality Report, SADC/GEF Lake Malawi/Nyasa Biodiversity Conservation Project, chapter 4."
+        url: https://sites.uwm.edu/hbootsma/files/2020/11/Ch4-Lake-Internal-Mixing.pdf
+        accessed: 2026-10-12
+      - &ngochera
+        kind: literature
+        title: "Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. PhD dissertation, University of Wisconsin-Milwaukee."
+        url: https://minds.wisconsin.edu/handle/1793/91765
+        accessed: 2026-10-12
+    evidence:
+      - source: *eccles
+        value: {min: 21, max: 27}
+        note: inshore water in the cool season to the warm upper layer in May
+      - source: *vollmer05
+        value: {min: 23.5, max: 28}
+        note: winter epilimnion to summer surface water
+      - source: *ngochera
+        value: {min: 24, max: 29}
+        note: 2013 measurement campaign
+    tolerance:
+      value: {min: 21, max: 29}
+      confidence: medium
+      verification:
+        method: unanimous
+        votes: {agree: 3, total: 3}
+      rationale: >-
+        All three votes gave 21 to 29 C. Care sheets recommend 24 to 28 C (Seriously Fish,
+        Riverpark) or 24 to 26 C (Fishkeeper), and captive-bred males in a research colony stayed
+        healthy for more than two years at about 25 C (Snellgrove and Alexander 2011). These
+        aquarium ranges lie inside the lake range, which the wild fish experience over the seasons,
+        so the tolerance equals the natural range. No source tests long-term keeping at the cool or
+        warm ends, which is why the confidence stays medium.
+      sources:
+        - *sf
+        - *fk
+        - &snell
+          kind: literature
+          title: "Snellgrove, D. L. and Alexander, L. G. (2011). Haematology and plasma chemistry of the red top ice blue mbuna cichlid (Metriaclima greshakei). British Journal of Nutrition 106(S1), S154-S157."
+          url: https://doi.org/10.1017/s0007114511002108
+          accessed: 2026-10-13
+        - &rp
+          kind: website
+          title: "Riverpark Aquatics (retailer): Red Top Ice Blue Zebra Cichlid (Maylandia greshakei), product page with care notes"
+          url: https://riverparkaquatics.co.uk/product/maylandia-greshakei
+          accessed: 2026-10-13
+        - *branchu
+      evidence:
+        - source: *sf
+          value: {min: 24, max: 28}
+          note: aquarium recommendation
+        - source: *fk
+          value: {min: 24, max: 26}
+          note: aquarium recommendation
+        - source: *snell
+          value: {min: 24.8, max: 24.8}
+          note: research colony of captive-bred males, healthy at 28 months
+        - source: *rp
+          value: {min: 24, max: 28}
+          note: retailer care notes
+  ph:
+    value: {min: 7.7, max: 8.6}
+    confidence: high
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    rationale: >-
+      Lake Malawi endemic; the natural range is the surface pH of the lake, 7.7 to 8.6 after
+      Jackson et al. (1963) in the FAO compilation. Branchu et al. (2010) report 7.5 to 8.5 for the
+      whole water column of the north basin; the lower values belong to deep water below the reef
+      zone of this species. All three votes gave the lake range.
+    sources: *lakeSources
+    evidence:
+      - source: *fao
+        value: {min: 7.7, max: 8.6}
+        note: lake surface water
+      - source: *branchu
+        value: {min: 7.5, max: 8.5}
+        note: whole water column, lowest values in deep water
+    tolerance:
+      value: {min: 7.5, max: 8.8}
+      confidence: medium
+      verification:
+        method: unanimous
+        votes: {agree: 3, total: 3}
+      rationale: >-
+        The generator and checker-a proposed 7.5 to 8.8 and checker-b 7.3 to 8.8; the bounds lie
+        within 0.3 of each other, so the votes agree and the median gives 7.5 to 8.8. Care sheets
+        give 7.6 to 8.8 (Seriously Fish), 7.5 to 8.5 (Fishkeeper) and 7.8 to 8.6 (Riverpark), and
+        Aquarium Glaser asks for a pH of at least 8. A research colony of captive-bred males stayed
+        healthy for more than two years at about pH 7.3 (Snellgrove and Alexander 2011); as a single
+        report under laboratory conditions it does not lower the bound below the husbandry
+        consensus of 7.5. The range contains the natural lake range.
+      sources:
+        - *sf
+        - *fk
+        - *snell
+        - *rp
+        - *glaser
+      evidence:
+        - source: *sf
+          value: {min: 7.6, max: 8.8}
+          note: aquarium recommendation
+        - source: *fk
+          value: {min: 7.5, max: 8.5}
+          note: aquarium recommendation
+        - source: *snell
+          value: {min: 7.3, max: 7.3}
+          note: mean pH of the holding system of a healthy research colony
+        - source: *rp
+          value: {min: 7.8, max: 8.6}
+          note: retailer care notes
+        - source: *glaser
+          value: {min: 8, max: 8.6}
+          note: only a lower limit of 8 is stated; upper value taken from the lake
+  ghDgh:
+    value: {min: 3, max: 5}
+    confidence: high
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    rationale: >-
+      Lake Malawi endemic; the natural range is the lake value. Calcium and magnesium in the upper
+      50 m of the north basin give about 4.2 to 4.6 dGH (Branchu et al. 2010), and the titrations of
+      the 1960s compiled by FAO give 3.2 to 4.9 dGH. The lake is soft water; care sheets that call
+      it hard describe aquarium practice and confuse hardness with alkalinity. All three votes gave
+      the lake range.
+    sources: *lakeSources
+    evidence:
+      - source: *branchu
+        value: {min: 4.2, max: 4.6}
+        note: computed from calcium and magnesium of the upper 50 m
+      - source: *fao
+        value: {min: 3.2, max: 4.9}
+        note: computed from calcium and magnesium after Jackson et al. and Talling and Talling
+    tolerance:
+      value: {min: 3, max: 20}
+      confidence: medium
+      verification:
+        method: qualified-majority
+        votes: {agree: 4, total: 5}
+      rationale: >-
+        Four of five votes (checker-a, checker-b, tiebreaker-1, tiebreaker-2) gave 3 to 20 dGH; the
+        generator proposed 3 to 25 dGH. The lower bound is the soft lake water itself, in which the
+        species lives. For the upper bound Seriously Fish gives 10 to 25 dGH, the Fishkeeper data
+        bank up to 20 degrees German hardness, the OATA care sheet for Malawi cichlids in general 12
+        to 18 dGH and a retailer care guide 10 to 20 dGH; only Seriously Fish goes beyond 20, so 20
+        dGH is the limit that most sources support. No source reports harm from hard water inside
+        this span.
+      sources:
+        - *sf
+        - *fk
+        - &oata
+          kind: database
+          title: "OATA care sheet: How to care for African Malawi cichlids (Sept 2022)"
+          url: https://ornamentalfish.org/wp-content/uploads/African-Malawi-cichlids-Sept-2022.pdf
+          accessed: 2026-10-13
+        - *snell
+        - *branchu
+        - &allfish
+          kind: website
+          title: "allfish2u (retailer): Greshakei Ice Blue Cichlid, product page with care guide"
+          url: https://allfish2u.au/greshakei-ice-blue-cichlid-4-5cm/
+          accessed: 2026-10-13
+        - *glaser
+      evidence:
+        - source: *sf
+          value: {min: 10, max: 25}
+          note: aquarium recommendation
+        - source: *fk
+          value: {min: 3, max: 20}
+          note: only an upper limit of 20 is stated; lower value taken from the lake
+        - source: *oata
+          value: {min: 12, max: 18}
+          note: general guide for Malawi cichlids, not species-specific
+        - source: *branchu
+          value: {min: 3, max: 5}
+          note: measured lake water, natural range
+        - source: *allfish
+          value: {min: 10, max: 20}
+          note: retailer care guide
+  khDkh:
+    value: {min: 5, max: 8}
+    confidence: high
+    rationale: >-
+      Lake Malawi endemic; the natural range is the lake value. Alkalinity of 2.33 to 2.46 meq/L
+      (Branchu et al. 2010) and 2.00 to 2.59 meq/L (Jackson et al. 1963 in the FAO compilation)
+      converts to about 5.6 to 7.3 dKH. Sodium balances part of the bicarbonate, so carbonate
+      hardness exceeds total hardness in the lake. All three votes gave the lake range.
+    sources: *lakeSources
+    evidence:
+      - source: *branchu
+        value: {min: 6.5, max: 6.9}
+        note: from the alkalinity of the upper water column
+      - source: *fao
+        value: {min: 5.6, max: 7.3}
+        note: from the alkalinity after Jackson et al.
+    tolerance:
+      value: {min: 5, max: 15}
+      confidence: low
+      verification:
+        method: qualified-majority
+        votes: {agree: 4, total: 5}
+      rationale: >-
+        Four of five votes (generator, checker-b, tiebreaker-1, tiebreaker-2) gave 5 to 15 dKH;
+        checker-a proposed 5 to 20 dKH from the single hardness figures of Seriously Fish and
+        Fishkeeper, which do not separate carbonate from total hardness. No species-specific source
+        states a carbonate hardness. The OATA care sheet for Malawi cichlids in general gives 10 to
+        15 dKH, and the LiveAquaria sheets for the congeners M. estherae and M. callainos give the
+        same span. The lower bound is the measured lake value. Confidence is low because the upper
+        bound rests on group-level and congener figures only; a stable buffer matters more than
+        the exact number, because it keeps the pH from falling.
+      sources:
+        - *oata
+        - *fk
+        - *sf
+        - *branchu
+        - &gt
+          kind: literature
+          title: "Genner, M. J. and Turner, G. F. (2005). The mbuna cichlids of Lake Malawi: a model for rapid speciation and adaptive radiation. Fish and Fisheries 6(1), 1-34."
+          url: https://doi.org/10.1111/j.1467-2679.2005.00173.x
+          accessed: 2026-10-13
+        - &laEst
+          kind: website
+          title: "LiveAquaria (retailer) care sheet: Red Zebra Cichlid (Maylandia estherae), congener"
+          url: https://www.liveaquaria.com/products/red-zebra-cichlid
+          accessed: 2026-10-13
+        - &laCal
+          kind: website
+          title: "LiveAquaria (retailer) care sheet: Cobalt Blue Zebra Cichlid (Maylandia callainos), congener"
+          url: https://www.liveaquaria.com/products/cobalt-blue-zebra-cichlid
+          accessed: 2026-10-13
+      evidence:
+        - source: *oata
+          value: {min: 10, max: 15}
+          note: general guide for Malawi cichlids, not species-specific
+        - source: *fk
+          value: {min: 5, max: 20}
+          note: only an upper hardness limit is stated, not split into GH and KH; lower value taken from the lake
+        - source: *sf
+          value: {min: 10, max: 25}
+          note: single hardness figure, not split into GH and KH
+        - source: *branchu
+          value: {min: 5, max: 8}
+          note: measured lake alkalinity, natural range
+        - source: *laEst
+          value: {min: 10, max: 15}
+          note: congener M. estherae, aquarium recommendation
+        - source: *laCal
+          value: {min: 10, max: 15}
+          note: congener M. callainos, aquarium recommendation
+  maxSizeCm:
+    value: {male: 13.5, female: 11}
+    confidence: medium
+    rationale: >-
+      FishBase gives 13.4 cm total length for males or unsexed fish, Seriously Fish 13.5 cm,
+      Fishkeeper 12.5 cm and the Riverpark care notes 10 to 12 cm; Aquarium Glaser reports up to
+      15 cm for the largest aquarium males, and a forum keeper describes a male of about 13 cm.
+      Males of about 13.5 cm are therefore the typical maximum of well-kept fish. No source gives a
+      separate female size; as in other Maylandia females stay clearly smaller, estimated at about
+      11 cm.
+    sources:
+      - *fb
+      - *sf
+      - *fk
+      - *snell
+      - *glaser
+      - *rp
+      - &ar52041
+        kind: archive
+        title: cichlids.com forum thread 52041
+        url: https://www.cichlids.com/disc/read.php?1,52041
+    evidence:
+      - source: *fb
+        value: {male: 13.4, female: 13.4}
+        note: total length, male or unsexed
+      - source: *sf
+        value: {male: 13.5, female: 13.5}
+        note: sex not stated
+      - source: *fk
+        value: {male: 12.5, female: 12.5}
+        note: sex not stated
+      - source: *glaser
+        value: {male: 15, female: 15}
+        note: largest aquarium specimens
+      - source: *rp
+        value: {male: 12, female: 10}
+        note: adult range of 10 to 12 cm, sex not stated
+      - source: *ar52041
+        value: {male: 12.7, female: 12.7}
+        note: one male of about 5 inches in a hobby tank
+  predation:
+    value: 1
+    confidence: low
+    verification:
+      method: conservative
+      votes: {agree: 3, total: 5}
+    rationale: >-
+      The votes did not settle: generator and checker-a proposed level 1, checker-b, tiebreaker-1
+      and tiebreaker-2 level 0. Level 0 reached three of five votes, one short of the qualified
+      majority, so the conservative rule applies and takes the highest proposed level, 1. Every
+      species-specific source describes a plankton and aufwuchs feeder without fish in the diet:
+      FishBase lists phytoplankton as the only natural food item, territorial males graze the rock
+      cover, the Cichlid Room Companion classes the species as algae comber and planktivore, and
+      Seriously Fish and Fishkeeper ask for a mainly vegetable diet. Level 1 rests on group-level
+      statements: Genner and Turner (2005) count fish fry among the foods of mbuna, and the OATA
+      care sheet notes that only some fry survive in a mixed Malawi tank. The fry remark of
+      Seriously Fish concerns stressed holding females that spit or swallow their own brood, not
+      predation on other fish. Level 1 is the cautious value for the compatibility check; with
+      the threshold of 2 cm it affects only fry and the smallest tankmates.
+    sources:
+      - *fb
+      - &fbFood
+        kind: database
+        title: "FishBase food items list, Maylandia greshakei"
+        url: https://www.fishbase.se/TrophicEco/FoodItemsList.php?vstockcode=2563&genus=Maylandia&species=greshakei
+        accessed: 2026-10-13
+      - *gt
+      - *oata
+      - *sf
+      - *fk
+      - &crc
+        kind: database
+        title: "Cichlid Room Companion: Metriaclima greshakei (public summary)"
+        url: https://cichlidae.com/species.php?id=lcumGJOOIV-4X0Nd4qnyPQ
+        accessed: 2026-10-13
+    evidence:
+      - source: *fb
+        value: 0
+        note: phytoplankton and rock cover, no fish in the diet
+      - source: *fbFood
+        value: 0
+        note: only natural food item is phytoplankton; trophic level 2.0
+      - source: *gt
+        value: 1
+        note: group-level statement that mbuna eat algae, plankton, small invertebrates or fish fry
+      - source: *oata
+        value: 1
+        note: group-level statement that only some fry survive in a mixed Malawi tank
+      - source: *sf
+        value: 0
+        note: vegetable diet with live and frozen supplements; brood loss only by stressed holding females
+      - source: *fk
+        value: 0
+        note: mainly vegetarian diet, no fish mentioned
+      - source: *crc
+        value: 0
+        note: algae comber and planktivore
+  diet:
+    value:
+      type: aufwuchs
+      bloatSensitive: true
+      foods:
+        - spirulina flakes and pellets
+        - blanched spinach and other soft vegetables
+        - algae wafers
+        - small crustaceans such as Mysis, sparingly
+    confidence: high
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+    rationale: >-
+      All three votes gave aufwuchs with bloat sensitivity. In the wild the species takes
+      phytoplankton above the reef while territorial males graze the algal cover of the rocks
+      (FishBase), and the Cichlid Room Companion confirms algae combing and plankton feeding.
+      Genner and Turner (2005) describe the zebra group of mbuna as combers of rock algae that also
+      use plankton. Seriously Fish asks for vegetable matter as a large share of the diet, and
+      Fishkeeper wants a mainly vegetarian diet and warns that food rich in animal protein can cause
+      Malawi bloat. The plant-based, low-protein requirement fits the aufwuchs class even though
+      much of the natural food is phytoplankton. The Riverpark retail notes call the species an
+      omnivore and suggest bloodworms; they stand alone against the other sources.
+    sources:
+      - *fb
+      - *gt
+      - *sf
+      - *fk
+      - *crc
+      - *rp
+    evidence:
+      - source: *fb
+        value: {type: aufwuchs}
+        note: phytoplankton in open water and rock cover; says nothing on bloat
+      - source: *gt
+        value: {type: aufwuchs}
+        note: genus-level statement on algae combing and plankton feeding
+      - source: *sf
+        value: {type: aufwuchs}
+        note: vegetable matter as a large share of the diet; no bloat warning
+      - source: *fk
+        value: {type: aufwuchs, bloatSensitive: true}
+        note: mainly vegetarian; protein-rich food can cause Malawi bloat
+      - source: *crc
+        value: {type: aufwuchs}
+        note: algae comber and planktivore
+      - source: *rp
+        value: {type: omnivore}
+        note: retailer care notes
+  aggressionConspecific:
+    value: 3
+    confidence: medium
+    rationale: >-
+      Seriously Fish calls the species very aggressive towards its own kind and asks for several
+      females per male and a crowded tank; Fishkeeper warns that a single female is harassed
+      continually and may die. The research colony of Snellgrove and Alexander (2011) housed adult
+      males singly because of their aggression. Persistent chasing with injuries at the wrong ratio
+      or with too little space matches level 3; deaths are reported only for a wrong social
+      structure, which keeps it below level 4.
+    sources:
+      - *sf
+      - *fk
+      - *snell
+      - *rp
+    evidence:
+      - source: *sf
+        value: 3
+        note: very aggressive to conspecifics, harem advised
+      - source: *fk
+        value: 3
+        note: a lone female may be harassed to death
+      - source: *snell
+        value: 3
+        note: males kept in single tanks because of aggression
+      - source: *rp
+        value: 2
+        note: aggressive towards conspecifics, especially when breeding
+  aggressionHeterospecific:
+    value: 3
+    confidence: medium
+    rationale: >-
+      Seriously Fish and the Riverpark notes describe an aggressive, territorial mbuna that must not
+      be kept with peaceful species such as peacocks and utaka but suits other mbuna; Fishkeeper
+      calls it moderately aggressive and notes that males attack look-alike species hardest.
+      Because tankmates need comparable size and robustness, level 3 fits better than level 2,
+      which assumes no injuries in a suitable tank; level 3 is also the cautious value for the
+      compatibility check.
+    sources:
+      - *sf
+      - *fk
+      - *rp
+    evidence:
+      - source: *sf
+        value: 3
+        note: not with peaceful species, fine with other mbuna
+      - source: *fk
+        value: 2
+        note: moderately aggressive, hardest on look-alikes
+      - source: *rp
+        value: 3
+        note: with Malawi cichlids of similar size and temperament only
+  territory:
+    value: {size: small, breedingOnly: false}
+    confidence: medium
+    rationale: >-
+      Males hold permanent territories on the rocks and graze their algal cover (FishBase), and
+      Genner and Turner (2005) report that mbuna males keep territories for many months. In the
+      tank a male defends a cave or rock pile with a spawning site; no source describes a defended
+      area of a third of the tank.
+    sources:
+      - *fb
+      - *gt
+      - *sf
+      - *fk
+    evidence:
+      - source: *fb
+        value: {size: small, breedingOnly: false}
+        note: territorial males feed inside their rock territory
+      - source: *gt
+        value: {size: small, breedingOnly: false}
+        note: mbuna males hold territories for long periods; size not given
+      - source: *sf
+        value: {size: small, breedingOnly: false}
+  habitatZones:
+    value: [rock, openWater]
+    confidence: high
+    rationale: >-
+      The species lives on the upper parts of sediment-covered rocky reefs at about 15 to 35 m and
+      leaves the reef to take phytoplankton from the open water next to it (FishBase, Seriously
+      Fish); the Cichlid Room Companion confirms the rocky habitat. The tank needs rockwork with
+      caves and open swimming space; sand is the advised substrate but not a zone the wild fish
+      depend on.
+    sources:
+      - *fb
+      - *sf
+      - *crc
+      - *fk
+    evidence:
+      - source: *fb
+        value: [rock, openWater]
+        note: depth 15 to 35 m on sediment-covered rocks
+      - source: *sf
+        value: [rock, openWater]
+        note: upper parts of reefs next to open water
+      - source: *crc
+        value: [rock]
+        note: rocky habitat rich in sediment
+      - source: *fk
+        value: [rock]
+  social:
+    value: {structure: harem, ratio: 3}
+    confidence: high
+    rationale: >-
+      Seriously Fish advises one male with at least three females, Fishkeeper one male with several
+      females; mbuna are polygynous and females raise the young alone (Genner and Turner 2005).
+    sources:
+      - *sf
+      - *fk
+      - *gt
+      - *crc
+    evidence:
+      - source: *sf
+        value: {structure: harem, ratio: 3}
+      - source: *fk
+        value: {structure: harem, ratio: 3}
+        note: several females per male
+  speciesOnly:
+    value: false
+    confidence: high
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+    rationale: >-
+      All three votes gave false. Seriously Fish and Fishkeeper both recommend the species for
+      mixed mbuna tanks, and the Riverpark notes name other Lake Malawi cichlids of similar size
+      and temperament as companions. Only peaceful species, other Maylandia and look-alikes are to
+      be avoided, and the latter are covered by the hybrid group; a species tank is advised only for
+      controlled breeding.
+    sources:
+      - *sf
+      - *fk
+      - *rp
+    evidence:
+      - source: *sf
+        value: false
+        note: can be combined with other mbuna
+      - source: *fk
+        value: false
+        note: kept successfully with other outgoing mbuna
+      - source: *rp
+        value: false
+        note: with other Malawi cichlids of similar size
+  hybridGroup:
+    value: maylandia
+    confidence: medium
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+    rationale: >-
+      All three votes gave maylandia, and the curated group lists Maylandia greshakei. The species
+      is valid in Maylandia (Catalog of Fishes) and is its type species. The key of Stauffer et al.
+      (2013) places it in the zebra complex next to M. mbenjii, from which only the colour of the
+      male pectoral fin separates it, and O'Quin et al. (2013) raised fertile hybrids of two species
+      of the genus in the laboratory, so the barriers within the genus are behavioural. Genner and
+      Turner (2005) report fertile laboratory hybrids between mbuna species, Fishkeeper warns that
+      many Maylandia species cross in tanks, and Streelman et al. (2004) and Stauffer et al. (1996)
+      document crosses of M. zebra with Cynotilapia afra in the lake. A forum keeper reports a male
+      greshakei that spawned with a female Labeotropheus trewavasae. No published source
+      documents a cross of M. greshakei itself, which is why the confidence is medium.
+    sources:
+      - *cof
+      - *gt
+      - *fk
+      - &st13
+        kind: literature
+        title: "Stauffer, J. R., Black, K. and Konings, A. F. (2013). Descriptions of five new species of Metriaclima (Teleostei: Cichlidae) from Lake Malawi, Africa. Zootaxa 3647(1), 101-136, key to the described species of Metriaclima (via Plazi)."
+        url: https://treatment.plazi.org/id/039DED3D-A24F-3D7B-03E7-CA989AD5FEF9
+        accessed: 2026-10-13
+      - &oquin
+        kind: literature
+        title: "O'Quin, C. T., Drilea, A. C., Conte, M. A. and Kocher, T. D. (2013). Mapping of pigmentation QTL on an anchored genome assembly of the cichlid fish, Metriaclima zebra. BMC Genomics 14, 287."
+        url: https://doi.org/10.1186/1471-2164-14-287
+        accessed: 2026-10-13
+      - &streelman
+        kind: literature
+        title: "Streelman, J. T., Gmyrek, S. L., Kidd, M. R., Kidd, C., Robinson, R. L., Hert, E., Ambali, A. J. and Kocher, T. D. (2004). Hybridization and contemporary evolution in an introduced cichlid fish from Lake Malawi National Park. Molecular Ecology 13(8), 2471-2479 (abstract)."
+        url: https://doi.org/10.1111/j.1365-294x.2004.02240.x
+        accessed: 2026-10-12
+      - &stauffer96
+        kind: literature
+        title: "Stauffer, J. R., Bowers, N. J., Kocher, T. D. and McKaye, K. R. (1996). Evidence of hybridization between Cynotilapia afra and Pseudotropheus zebra (Teleostei: Cichlidae) following an intralacustrine translocation in Lake Malawi. Copeia 1996(1), 203-208."
+        url: https://doi.org/10.2307/1446959
+        accessed: 2026-10-12
+      - &glaserTh
+        kind: website
+        title: "Aquarium Glaser fish archive: Bright blue Maylandia from Thailand (2021)"
+        url: https://www.aquariumglaser.de/en/25-perchlike-fishes/bright-blue-maylandia-from-thailand/
+        accessed: 2026-10-13
+      - &ar60069
+        kind: archive
+        title: cichlids.com forum thread 60069
+        url: https://www.cichlids.com/disc/read.php?2,60069
+    evidence:
+      - source: *cof
+        value: maylandia
+        note: valid in Maylandia, type species of the genus
+      - source: *gt
+        value: maylandia
+        note: fertile laboratory hybrids between mbuna species
+      - source: *fk
+        value: maylandia
+        note: many Maylandia species cross in the aquarium
+      - source: *st13
+        value: maylandia
+        note: placed in the zebra complex next to M. mbenjii
+      - source: *oquin
+        value: maylandia
+        note: fertile laboratory hybrids of two species of the genus
+      - source: *streelman
+        value: maylandia
+        note: crosses of M. zebra and C. afra in the lake; evidence for the group, not for greshakei
+      - source: *stauffer96
+        value: maylandia
+        note: same finding as Streelman et al.
+      - source: *glaserTh
+        value: maylandia
+        note: Maylandia species interbreed readily in aquaria
+      - source: *ar60069
+        value: maylandia
+        note: keeper reports a spawning with Labeotropheus trewavasae
+  coloration:
+    value:
+      baseColors: [blue, orange]
+      pattern: plain
+    confidence: medium
+    rationale: >-
+      Adult males are pale ice blue without distinct vertical bars and carry an orange to red
+      dorsal fin (key of Stauffer et al. 2013; Fishkeeper calls it red-orange); in breeding dress
+      they turn almost white. Females are greyish brown with orange-tinted fins and much duller.
+      Faint bars can show under stress, and the barred look-alike M. pyrsonotos is told apart from
+      this species by its bars (forum). The fin colour is recorded as orange, the term both the
+      species key and the majority of the inputs use.
+    sources:
+      - *st13
+      - *fk
+      - *sf
+      - *glaser
+      - &ar49213
+        kind: archive
+        title: cichlids.com forum thread 49213
+        url: https://www.cichlids.com/disc/read.php?2,49213
+    evidence:
+      - source: *st13
+        value: {baseColors: [blue, orange], pattern: plain}
+        note: males without distinct bars, orange to red dorsal fin
+      - source: *fk
+        value: {baseColors: [blue, red], pattern: plain}
+        note: ice-blue male with red-orange dorsal fin
+      - source: *sf
+        value: {baseColors: [blue], pattern: plain}
+        note: males far more colourful than females
+      - source: *ar49213
+        value: {baseColors: [blue, orange], pattern: plain}
+        note: unbarred, unlike the barred M. pyrsonotos
+  feedingSpeed:
+    value: hasty
+    confidence: low
+    rationale: >-
+      No source describes the feeding pace of this species directly. Like its congeners it rushes
+      food and eats until nothing is left, which the rubric names as the example for Maylandia; the
+      care sheets advise small portions several times a day for the same reason.
+    sources:
+      - &mkFeed
+        kind: model-knowledge
+        title: Feeding behaviour of Maylandia mbuna in aquaria
+    evidence:
+      - source: *mkFeed
+        value: hasty
+  minTank:
+    value: {volumeL: 200, lengthCm: 120, depthCm: 45}
+    confidence: medium
+    rationale: >-
+      Seriously Fish gives a 90 by 45 cm base (about 154 litres) as the basic minimum and a 120 cm
+      tank for a breeding harem; Fishkeeper asks for at least 120 cm and the Riverpark notes for at
+      least 200 litres for a small group. For one male with three females of up to 13.5 cm, a tank
+      of 120 by 45 cm and about 200 litres fits these figures. LiveAquaria gives about 190 litres
+      for the related M. estherae.
+    sources:
+      - *sf
+      - *fk
+      - *rp
+      - *laEst
+    evidence:
+      - source: *sf
+        value: {volumeL: 154, lengthCm: 90, depthCm: 45}
+        note: basic minimum; 120 cm advised for a breeding harem
+      - source: *fk
+        value: {volumeL: 200, lengthCm: 120, depthCm: 45}
+        note: only the length of at least 4 ft is stated; volume and depth derived
+      - source: *rp
+        value: {volumeL: 200, lengthCm: 120, depthCm: 45}
+        note: only the volume of 200 litres is stated; length and depth derived
+  lifespanYears:
+    value: {min: 8, max: 10}
+    confidence: low
+    rationale: >-
+      Only the Riverpark retail notes state a life span (8 to 10 years); this agrees with the
+      usual experience for mbuna of this size but lacks a database or literature source. The OATA
+      care sheet says only that Malawi cichlids live several years.
+    sources:
+      - *rp
+      - &mkLife
+        kind: model-knowledge
+        title: Typical aquarium life span of Maylandia mbuna
+    evidence:
+      - source: *rp
+        value: {min: 8, max: 10}
+        note: retailer care notes
+      - source: *mkLife
+        value: {min: 5, max: 10}
+        note: general experience with mbuna
+  breeding:
+    value: maternal-mouthbrooder
+    confidence: high
+    rationale: >-
+      All mbuna are maternal mouthbrooders (Genner and Turner 2005). Seriously Fish and Fishkeeper
+      describe the female taking up the eggs at the male's spawning site and brooding them for
+      about three to four weeks, and the Cichlid Room Companion confirms maternal mouthbrooding.
+    sources:
+      - *gt
+      - *sf
+      - *fk
+      - *crc
+      - &ar24899
+        kind: archive
+        title: cichlids.com forum thread 24899
+        url: https://www.cichlids.com/disc/read.php?2,24899
+    evidence:
+      - source: *gt
+        value: maternal-mouthbrooder
+      - source: *sf
+        value: maternal-mouthbrooder
+      - source: *fk
+        value: maternal-mouthbrooder
+      - source: *crc
+        value: maternal-mouthbrooder
+      - source: *ar24899
+        value: maternal-mouthbrooder
+        note: keeper with a holding female
+  beginnerSuitability:
+    value: moderate
+    confidence: medium
+    rationale: >-
+      Seriously Fish rates the species as moderate, mainly because of tank size and temperament,
+      and the Cichlid Room Companion places it with intermediate aquarists. It is hardy and widely
+      bred, but it needs a large rock tank, a harem and a plant-based diet, which beginners often
+      get wrong.
+    sources:
+      - *sf
+      - *crc
+      - *fk
+    evidence:
+      - source: *sf
+        value: moderate
+      - source: *crc
+        value: moderate
+        note: intermediate aquarists
+      - source: *laEst
+        value: easy
+        note: congener M. estherae
+partners:
+  suitable:
+    - species: Labidochromis caeruleus
+      reason: Yellow mbuna of a different genus, hybrid group and body shape, so the blue males do not treat it as a rival; it shares the water values and holds its own in a mixed mbuna tank.
+      condition: Feed both a plant-based staple, because the yellow lab takes more animal food in the wild.
+    - species: Iodotropheus sprengerae
+      reason: Rust-brown mbuna of moderate size with a plant-based diet; its colour and shape differ clearly from the ice-blue males.
+    - species: Pseudotropheus crabro
+      reason: Robust mbuna with yellow and brown bars that stands up to territorial Maylandia males and needs the same water.
+      condition: Tank of at least 150 cm with plenty of rock, because both species are territorial.
+    - species: Synodontis multipunctatus
+      reason: Bottom-dwelling catfish that does well in the same hard, alkaline aquarium water and keeps out of the way of the cichlids.
+      condition: Keep it in a group; it lays its eggs among the spawn of mouthbrooders, so broods of the cichlids may be lost.
+  unsuitable:
+    - species: Maylandia callainos
+      reason: Same hybrid group and blue colouring; males fight as rivals and the species cross readily.
+    - species: Maylandia estherae
+      reason: Same hybrid group; the species cross and their females look alike.
+    - species: Maylandia lombardoi
+      reason: Same hybrid group; its blue-barred females and juveniles resemble greshakei and the species cross.
+    - species: Cynotilapia afra
+      reason: Member of the maylandia hybrid group with blue males; it crosses with Maylandia even in the wild.
+    - species: Labeotropheus trewavasae
+      reason: Its red-topped blue males look similar, which provokes rival fights, and a keeper reports a cross between the two.
+    - species: Aulonocara stuartgranti
+      reason: Peaceful peacock from sandy habitats that needs more protein; the territorial mbuna males harass it and it loses out at feeding time.
+    - species: Copadichromis borleyi
+      reason: Calm open-water utaka that suffers from mbuna aggression and needs a more protein-rich diet.
+profile:
+  overview:
+    text: >-
+      The red top ice blue zebra, Maylandia greshakei, is a rock-dwelling mbuna from a small
+      stretch of the southeastern arm of Lake Malawi. Males are pale icy blue with a bright orange
+      dorsal fin, while females are a plain greyish brown with orange hints. The trade still uses
+      the older names Pseudotropheus greshakei and Metriaclima greshakei, and an albino line is
+      widespread. Almost all fish on sale are captive-bred, which matters because the wild
+      population has a very small range and is assessed as Near Threatened. In the aquarium it is a
+      robust and attractive fish for a mixed mbuna tank, provided it gets a large rock layout, a
+      harem of one male with several females and a plant-based diet. Its males are territorial and
+      harsh towards rivals and look-alikes, and it crosses readily with other Maylandia species, so
+      tankmates need careful choice.
+    sources:
+      - *cof
+      - *fb
+      - *sf
+      - *fk
+  habitat:
+    text: >-
+      Wild fish are known only from Makokola Reef and the nearby reef at Crocodile Rocks south of
+      Boadzulu Island in the southeastern arm of Lake Malawi. They live in the upper part of rocky
+      reefs at about 15 to 35 m, where the stones carry a layer of sediment, close to open water.
+      The fish rise from the rocks to feed on plankton, while territorial males stay near the
+      stones and graze the algal cover. Lake Malawi water is soft and moderately alkaline: about 21
+      to 29 C over the year, pH 7.7 to 8.6, 3 to 5 dGH and 5 to 8 dKH, with sodium bicarbonate
+      supplying most of the buffer. In the aquarium the species also does well in harder water, as
+      long as the pH stays alkaline and the carbonate buffer is stable.
+    sources:
+      - *fb
+      - *sf
+      - *fk
+      - *branchu
+      - *fao
+      - *eccles
+  sizeAndGrowth:
+    text: >-
+      Well-kept males reach about 13.5 cm total length; the reference sizes in FishBase and the
+      care sheets lie between 12.5 and 13.5 cm, and exceptionally large aquarium males can reach
+      about 15 cm. Females stay smaller, at roughly 10 to 11 cm. Captive-bred males in a laboratory
+      study weighed around 100 g at 28 months, so aquarium fish can become quite heavy-bodied. Fish
+      fed sparingly on plant-based food grow steadily without becoming fat. With good care a life
+      span of about 8 to 10 years is reported.
+    sources:
+      - *fb
+      - *sf
+      - *fk
+      - *glaser
+      - *snell
+      - *rp
+  husbandry:
+    text: >-
+      A tank of at least 120 cm and about 200 litres suits one male with three or more females;
+      larger tanks make the aggression easier to manage. Build stable piles of rock from the bottom
+      glass up to near the surface, with many caves and crevices, and set the stones before adding
+      the sand so that digging cannot topple them. Sand is the best substrate. The water should be
+      well oxygenated and strongly filtered, with a weekly change of a large share of the volume,
+      because these tanks are usually heavily stocked. Keep the temperature between 24 and 28 C and
+      the pH between 7.5 and 8.8; a general hardness up to about 20 dGH and a carbonate hardness of
+      roughly 5 to 15 dKH work well, and the carbonate buffer matters most because it holds the pH
+      steady. Live plants are usually eaten or uprooted.
+    sources:
+      - *sf
+      - *fk
+      - *rp
+      - *oata
+  socialBehavior:
+    text: >-
+      Males hold a territory around a rock or cave and defend it against rival males all year, not
+      only while breeding. They chase females persistently when courting, so a male needs at least
+      three females to spread his attention; a lone female can be harassed to death. Two males in
+      one tank work only in large setups with many visual barriers. Towards other species the
+      males are clearly aggressive, most of all towards fish of similar shape or colour. A crowded
+      mbuna tank with several species of different appearance helps, because the aggression is
+      shared out and no single fish becomes the only target.
+    sources:
+      - *sf
+      - *fk
+      - *rp
+      - *gt
+  diet:
+    text: >-
+      In the lake the species feeds on phytoplankton above the reef and on the algal cover of the
+      rocks. In the aquarium the staple should be a spirulina-based flake or small pellet made for
+      mbuna, together with soft vegetables such as blanched spinach, peas or cucumber. Small
+      crustaceans such as Mysis can be offered now and then as a treat. Avoid regular feeding of
+      bloodworms, beef heart and protein-rich pellets, because they promote intestinal problems
+      and bloat. Feed small portions two or three times a day rather than one large meal, since the
+      fish eat greedily and leftovers spoil the water.
+    sources:
+      - *fb
+      - *sf
+      - *fk
+      - *gt
+  breeding:
+    text: >-
+      Maylandia greshakei is a maternal mouthbrooder and breeds readily in a well-run tank. The
+      male cleans a flat stone or digs a shallow pit, turns almost white in breeding colour and
+      leads ready females to the site. The female lays a few eggs at a time and takes them into her
+      mouth at once; fertilisation follows when she nips at the egg spots on the male's anal fin
+      while he releases sperm. She then carries the brood for about three to four weeks without
+      eating, and a large female can hold up to about sixty young. The fry eat brine shrimp
+      nauplii and crushed flakes from the start. Stressed females may spit out or swallow the
+      brood, so move them only with care and preferably late in the brooding period.
+    sources:
+      - *sf
+      - *fk
+      - *gt
+  sexing:
+    text: >-
+      Adult males are easy to recognise by their pale blue body and the bright orange dorsal fin;
+      females are greyish brown with orange-tinted fins and look much plainer. Males also grow
+      larger and carry more distinct egg spots on the anal fin. Juveniles look alike and develop
+      the adult colours as they mature. Females can be confused with females of other Maylandia
+      species, which is one reason why different Maylandia should not share a tank.
+    sources:
+      - *sf
+      - *fk
+      - &ar49563
+        kind: archive
+        title: cichlids.com forum thread 49563
+        url: https://www.cichlids.com/disc/read.php?2,49563
+  compatibility:
+    text: >-
+      This species belongs in a Lake Malawi mbuna tank. Good companions are robust mbuna of other
+      genera that look clearly different, such as the yellow Labidochromis caeruleus, the
+      rust-brown Iodotropheus sprengerae or, in larger tanks, Pseudotropheus crabro. Do not combine
+      it with other Maylandia or with Cynotilapia afra, because they cross readily and the blue
+      males fight as rivals. Avoid fish with a similar red-topped blue pattern, such as
+      Labeotropheus trewavasae. Peaceful haplochromines such as peacocks (Aulonocara) and utaka
+      (Copadichromis) suffer from the constant pressure and need a richer diet that does not suit
+      mbuna. Fry and very small fish may be eaten when the chance arises, and fish from soft-water
+      habitats do not match its water needs.
+    sources:
+      - *sf
+      - *fk
+      - *rp
+      - *gt
+      - *ar60069
+  problems:
+    text: >-
+      The most common problem is Malawi bloat, a serious intestinal disease linked to protein-rich
+      food, overfeeding and poor water quality; a plant-based diet and regular water changes are
+      the best protection. Keeping a male with too few females, or several males in a small tank,
+      leads to torn fins and stressed, hiding fish. Because Maylandia species cross readily, buy
+      from breeders who keep the species pure. In poorly buffered water the pH can drift down
+      over time, which stresses the fish, and heavy stocking quickly raises nitrate. Loose rock
+      structures may collapse when the fish dig underneath. Holding females can be harassed or
+      lose their brood, so watch them closely, and seek advice from an experienced keeper or a
+      veterinarian when fish stop eating or swell.
+    sources:
+      - *fk
+      - *sf
+      - &ar39721
+        kind: archive
+        title: cichlids.com forum thread 39721
+        url: https://www.cichlids.com/disc/read.php?2,39721
+provenance:
+  runs:
+    - role: generator
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-13
+    - role: adjudicator
+      model: claude-opus-5-5
+      date: 2026-10-13
+  disagreements:
+    - field: features.predation
+      proposals:
+        - {by: generator, value: 1}
+        - {by: checker-a, value: 1}
+        - {by: checker-b, value: 0}
+        - {by: tiebreaker-1, value: 0}
+        - {by: tiebreaker-2, value: 0}
+      decision: 1
+      rationale: >-
+        Decided by the tally with the conservative method (3 of 5 votes for level 0, one short of
+        the qualified majority); the rule takes the highest proposed level. Species sources show no
+        fish in the diet, while group-level sources on mbuna and Malawi tanks report that fry get
+        eaten.
+    - field: features.ghDgh.tolerance
+      proposals:
+        - {by: generator, value: {min: 3, max: 25}}
+        - {by: checker-a, value: {min: 3, max: 20}}
+        - {by: checker-b, value: {min: 3, max: 20}}
+        - {by: tiebreaker-1, value: {min: 3, max: 20}}
+        - {by: tiebreaker-2, value: {min: 3, max: 20}}
+      decision: {min: 3, max: 20}
+      rationale: >-
+        Decided by the tally with a qualified majority of 4 of 5 votes. The upper limit of 25 dGH
+        rests on Seriously Fish alone; Fishkeeper, a retailer care guide and the OATA sheet stay
+        at or below 20 dGH.
+    - field: features.khDkh.tolerance
+      proposals:
+        - {by: generator, value: {min: 5, max: 15}}
+        - {by: checker-a, value: {min: 5, max: 20}}
+        - {by: checker-b, value: {min: 5, max: 15}}
+        - {by: tiebreaker-1, value: {min: 5, max: 15}}
+        - {by: tiebreaker-2, value: {min: 5, max: 15}}
+      decision: {min: 5, max: 15}
+      rationale: >-
+        Decided by the tally with a qualified majority of 4 of 5 votes. The upper limit of 20 dKH
+        was read from single hardness figures that do not separate carbonate from total hardness;
+        the only explicit carbonate figures (OATA, LiveAquaria for congeners) end at 15 dKH.
+    - field: features.diet.value.foods
+      proposals:
+        - {by: generator, value: [spirulina flakes and pellets, blanched spinach and other soft vegetables, algae wafers, "small crustaceans such as Mysis, sparingly"]}
+        - {by: checker-a, value: [spirulina flakes and pellets, vegetable matter such as blanched spinach or cucumber, occasional small frozen crustaceans]}
+        - {by: checker-b, value: [phytoplankton, rock biocover, spirulina flake, blanched spinach, algae wafers]}
+      decision: [spirulina flakes and pellets, blanched spinach and other soft vegetables, algae wafers, "small crustaceans such as Mysis, sparingly"]
+      rationale: >-
+        Type and bloat sensitivity agree in all votes; the tally takes the food list of the first
+        vote. The lists differ only in wording and in naming the natural foods, which the
+        rationale covers.
+    - field: features.maxSizeCm
+      proposals:
+        - {by: generator, value: {male: 14, female: 11}}
+        - {by: checker-a, value: {male: 13, female: 10}}
+        - {by: checker-b, value: {male: 13.5, female: 11}}
+      decision: {male: 13.5, female: 11}
+      rationale: >-
+        FishBase (13.4 cm) and Seriously Fish (13.5 cm) put the typical male maximum at about 13.5
+        cm; 14 cm was extrapolated from body weight and 13 cm lies below both references. No source
+        gives a female size; two of three votes estimate 11 cm, which fits the 10 to 12 cm adult
+        range of the Riverpark notes.
+    - field: features.aggressionHeterospecific
+      proposals:
+        - {by: generator, value: 3}
+        - {by: checker-a, value: 3}
+        - {by: checker-b, value: 2}
+      decision: 3
+      rationale: >-
+        Seriously Fish and the Riverpark notes exclude peaceful tankmates and require fish of
+        similar size and temperament, which is the rubric description of level 3; Fishkeeper's
+        moderately aggressive rating with hard attacks on look-alikes does not argue for less. Level
+        3 is also the cautious value for the compatibility check.
+    - field: features.coloration.value.baseColors
+      proposals:
+        - {by: generator, value: [blue, orange]}
+        - {by: checker-a, value: [blue, orange]}
+        - {by: checker-b, value: [blue, red]}
+      decision: [blue, orange]
+      rationale: >-
+        The fin is described as orange to red (Stauffer et al. 2013) or red-orange (Fishkeeper);
+        orange is the term of the species key and of two of three votes.
+    - field: features.minTank
+      proposals:
+        - {by: generator, value: {volumeL: 200, lengthCm: 120, depthCm: 45}}
+        - {by: checker-a, value: {volumeL: 240, lengthCm: 120, depthCm: 45}}
+        - {by: checker-b, value: {volumeL: 200, lengthCm: 120, depthCm: 45}}
+      decision: {volumeL: 200, lengthCm: 120, depthCm: 45}
+      rationale: >-
+        All votes agree on 120 by 45 cm. The volume of 200 litres is the figure the Riverpark notes
+        state for a small group; 240 litres was derived from the outer dimensions and no source
+        names it.
+    - field: features.lifespanYears
+      proposals:
+        - {by: generator, value: {min: 8, max: 10}}
+        - {by: checker-a, value: {min: 8, max: 10}}
+        - {by: checker-b, value: {min: 5, max: 10}}
+      decision: {min: 8, max: 10}
+      rationale: >-
+        8 to 10 years is the only stated figure (Riverpark notes); checker-b found no source and
+        proposed 5 to 10 years from general knowledge. The confidence stays low.
