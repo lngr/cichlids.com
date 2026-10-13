@@ -1001,7 +1001,7 @@ features:
         value: false
 
   hybridGroups:
-    value: [amphilophus-citrinellus-complex, amphilophus-trimaculatus-midas, parachromis-dovii-flowerhorn, vieja-melanurus-midas]
+    value: [amphilophus-citrinellus-complex, amphilophus-trimaculatus-midas, nandopsis-tetracanthus-flowerhorn, parachromis-dovii-flowerhorn, vieja-melanurus-midas]
     confidence: medium
     verification:
       method: unanimous
@@ -1014,6 +1014,11 @@ features:
       A. citrinellus. The line is fertile and has spread on its own in Lake Matano (Herder et al.
       2012).
       The curated hybrid-groups.yaml file defines parachromis-dovii-flowerhorn as a presumed pairwise crossing group based on hobby photographs labelled as captive offspring, without a verified domestic pedigree or documented access to conspecific mates.
+      The curated data/species/hybrid-groups.yaml file defines
+      nandopsis-tetracanthus-flowerhorn as a presumed pairwise crossing group based on
+      unverified hobby reports of captive offspring labelled as Cuban cichlid and Flowerhorn
+      crosses, with uncertain domestic pedigrees and access to fitting conspecific mates and
+      no proof of crosses with each ancestral species.
     sources:
       - &tarkhani
         kind: literature
@@ -1050,6 +1055,11 @@ features:
         title: "Binns Hybrid Encyclopedia: Dovii cross examples, an unverified hobby compilation"
         url: https://www.binnspedia.com/parachromis/dovii-parachromis-dovii
         accessed: 2026-10-13
+      - &cubanCross
+        kind: website
+        title: "Binns Hybrid Encyclopedia: Cuban cross examples"
+        accessed: 2026-10-13
+        url: https://www.binnspedia.com/nandopsis/cuban
     evidence:
       - source: *tarkhani
         value: amphilophus-trimaculatus-midas
@@ -1085,6 +1095,10 @@ features:
           - parachromis-dovii-flowerhorn
         note: Hobby photographs label captive crosses; parentage and access to conspecific mates are
           unverified.
+      - source: *cubanCross
+        value: [nandopsis-tetracanthus-flowerhorn]
+        note: Labels captive Cuban and Flowerhorn offspring; domestic pedigrees and mate choice are unverified.
+
   coloration:
     value:
       baseColors: [red, silver, black]

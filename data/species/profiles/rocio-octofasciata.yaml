@@ -910,7 +910,7 @@ features:
         note: with robust large tankmates in spacious tanks
 
   hybridGroups:
-    value: [vieja-melanurus-rocio-octofasciata]
+    value: [nandopsis-tetracanthus-rocio-octofasciata, vieja-melanurus-rocio-octofasciata]
     confidence: medium
     verification:
       method: unanimous
@@ -920,6 +920,11 @@ features:
       rare in the trade. The origin of the Electric Blue strain is disputed and not documented as a
       cross, so no group applies.
       The curated hybrid-groups.yaml file defines vieja-melanurus-rocio-octofasciata as a presumed pairwise crossing group based on unverified hobby photographs of captive offspring labelled with the melanurus or synspilum name, with catalog taxonomy supporting the name rather than the cross.
+      The curated data/species/hybrid-groups.yaml file defines
+      nandopsis-tetracanthus-rocio-octofasciata as a presumed pairwise crossing group based on
+      labelled hobby photographs and an independent aquarium account of adult Cuban cichlid
+      and Jack Dempsey offspring, without verified parentage or documented access to
+      conspecific mates.
     sources:
       - *cof
       - *sf
@@ -931,6 +936,16 @@ features:
       - kind: catalog-of-fishes
         title: Eschmeyer's Catalog of Fishes, species of the genus Vieja
         url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Vieja
+        accessed: 2026-10-13
+      - &cubanCross
+        kind: website
+        title: "Binns Hybrid Encyclopedia: Cuban cross examples"
+        accessed: 2026-10-13
+        url: https://www.binnspedia.com/nandopsis/cuban
+      - &cubanJackDempsey
+        kind: website
+        title: "Fishopolis: Cuban x Jack Dempsey All Grown Up (2011)"
+        url: https://fishopolis.wordpress.com/tag/cuban-jack-dempsey-nandopsis-tetracanthus-rocio-octofasciatus-hybrid-cichlid/
         accessed: 2026-10-13
     evidence:
       - source: *cof
@@ -960,6 +975,12 @@ features:
           - vieja-melanurus-rocio-octofasciata
         note: Catalog taxonomy identifies Vieja melanurus and its synspilum name; it does not verify
           crossing.
+      - source: *cubanCross
+        value: [nandopsis-tetracanthus-rocio-octofasciata]
+        note: Labels captive Cuban and Jack Dempsey offspring; parentage and mate choice are unverified.
+      - source: *cubanJackDempsey
+        value: [nandopsis-tetracanthus-rocio-octofasciata]
+        note: Independent aquarium account of adult offspring; parentage and access to conspecific mates are unverified.
 
   coloration:
     value: { baseColors: [ brown, black, blue ], pattern: mixed }

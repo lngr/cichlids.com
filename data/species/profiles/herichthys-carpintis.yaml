@@ -2245,6 +2245,7 @@ features:
       - "herichthys-carpintis-pantostictus"
       - "herichthys-carpintis-tamasopoensis"
       - "herichthys-carpintis-tepehua"
+      - nandopsis-tetracanthus-herichthys-carpintis
     confidence: "low"
     rationale: "The tally selects six separate pair groups by qualified majority, 4 of 6 votes, with
       low confidence. generator proposed herichthys-carpintis-cyanoguttatus,
@@ -2274,7 +2275,8 @@ features:
       nuclear or mitochondrial discordance and asks for denser sampling; pame depends especially on
       poorly resolving COI. The archive's ambiguous Texas and Flowerhorn labels establish no
       additional named pair. Shared URLs or reproduced Beerlink text are not independent
-      confirmation."
+      confirmation.
+      The curated data/species/hybrid-groups.yaml file defines nandopsis-tetracanthus-herichthys-carpintis as a presumed pairwise crossing group based on labelled hobby photographs of captive offspring, without verified parentage or documented access to conspecific mates."
     sources:
       - kind: "catalog-of-fishes"
         title: "Eschmeyer's Catalog of Fishes: species of Herichthys"
@@ -2339,6 +2341,11 @@ features:
         title: "cichlids.com forum thread 13104"
         url: "https://www.cichlids.com/disc/read.php?1,13104"
         accessed: "2026-10-13"
+      - &cubanCross
+        kind: website
+        title: "Binns Hybrid Encyclopedia: Cuban cross examples"
+        accessed: 2026-10-13
+        url: https://www.binnspedia.com/nandopsis/cuban
     evidence:
       - source:
           kind: "catalog-of-fishes"
@@ -2468,6 +2475,9 @@ features:
           accessed: "2026-10-13"
         value: []
         note: "Archive search completed; ambiguous Texas and hybrid labels do not prove a named crossing."
+      - source: *cubanCross
+        value: [nandopsis-tetracanthus-herichthys-carpintis]
+        note: Labels captive Cuban and carpintis offspring; parentage and mate choice are unverified.
     verification:
       method: "qualified-majority"
       votes:

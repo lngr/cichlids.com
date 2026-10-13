@@ -831,7 +831,7 @@ features:
         note: recommends a single fish, not a species tank
 
   hybridGroups:
-    value: [parachromis-dovii-managuensis]
+    value: [nandopsis-tetracanthus-parachromis-managuensis, parachromis-dovii-managuensis]
     verification:
       method: unanimous
       votes: {agree: 3, total: 3}
@@ -841,6 +841,10 @@ features:
       species databases read; a forum report of a cross with a Texas cichlid gives no group, so no
       group applies.
       The curated hybrid-groups.yaml file defines parachromis-dovii-managuensis as a presumed pairwise crossing group based on aquarium spawning reports, labelled hobby photographs and a published morphological ancestry hypothesis, without genetic parentage confirmation or demonstrated free conspecific mate choice.
+      The curated data/species/hybrid-groups.yaml file defines
+      nandopsis-tetracanthus-parachromis-managuensis as a presumed pairwise crossing group
+      based on labelled hobby photographs of captive offspring, without verified parentage or
+      documented access to conspecific mates.
     sources:
       - *cof
       - *fb
@@ -866,6 +870,11 @@ features:
         title: "AquariaCentral: My Big Dovii and Jaguar, captive spawning report from 2013"
         url: https://www.aquariacentral.com/forums/threads/my-big-dovii-jaguar.272317/page-2
         accessed: 2026-10-13
+      - &cubanCross
+        kind: website
+        title: "Binns Hybrid Encyclopedia: Cuban cross examples"
+        accessed: 2026-10-13
+        url: https://www.binnspedia.com/nandopsis/cuban
     evidence:
       - source: *cof
         value: null
@@ -912,6 +921,9 @@ features:
           - parachromis-dovii-managuensis
         note: Captive spawning and developing offspring reported without a female dovii available;
           parentage is unverified.
+      - source: *cubanCross
+        value: [nandopsis-tetracanthus-parachromis-managuensis]
+        note: Labels captive Cuban and managuensis offspring; parentage and mate choice are unverified.
 
   coloration:
     value: {baseColors: [silver, yellow, black], pattern: spots}
