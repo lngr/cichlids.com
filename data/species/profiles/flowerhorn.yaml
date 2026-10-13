@@ -1,0 +1,1675 @@
+schemaVersion: 1
+id: flowerhorn
+legacyIds: [771]
+status: domestic-form
+
+taxonomy:
+  validName: Flowerhorn
+  genus: Amphilophus
+  species: null
+  author: null
+  parents:
+    - amphilophus-trimaculatus
+    - amphilophus-citrinellus
+    - amphilophus-labiatus
+    - vieja-melanurus
+  legacyNames:
+    - Hybrid (man-made) Flowerhorn
+  note: >-
+    The flowerhorn is a line bred in captivity from crosses of several Central American cichlids.
+    It has no scientific name and no natural range, and the Catalog of Fishes lists no name for it.
+    The breeders never documented the pedigree. Published works name Amphilophus trimaculatus
+    crossed with A. labiatus (Tarkhani et al. 2016, Abe et al. 2020) or with A. citrinellus
+    (Magalhães et al. 2017, Manassila et al. 2025), and a COI barcoding study lists A. citrinellus,
+    A. labiatus, Vieja melanurus and A. trimaculatus as the species crossed into the strains;
+    V. melanurus enters through blood parrot lines, and Fishkeeper reports that Herichthys was
+    later crossed in for pearl scales. All six strains barcoded by Sari et al. (2023) carry the
+    mitochondrial lineage of A. trimaculatus, so the maternal line traces back to that species.
+    The genus field holds Amphilophus as the genus of the main parents, not as a formal placement.
+    The Catalog of Fishes lists A. trimaculatus (Günther 1867), A. citrinellus (Günther 1864),
+    A. labiatus (Günther 1864) and V. melanurus (Günther 1862) as valid; Cichlasoma synspilum
+    (Vieja synspila) is a synonym of V. melanurus. Since the line is selected and propagated in
+    captivity, its status is domestic-form, with the reported parent species kept under parents.
+  source:
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes: species of Amphilophus"
+    url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Amphilophus
+    accessed: 2026-10-13
+
+names:
+  trade:
+    en: [Flowerhorn, Flowerhorn cichlid, Flower horn, Luohan, Louhan, Hua Luo Han]
+    de: [Flowerhorn, Flowerhorn-Buntbarsch]
+    id: [Ikan louhan]
+
+variants:
+  - name: Kamfa
+    kind: color-morph
+    note: Strain with a very large nuchal hump; King Kamfa and Kamfa x Malau crosses derive from it.
+  - name: Zhen Zhu
+    kind: color-morph
+    note: Pearl-scaled strain with a rounded tail, large mouth and red eyes.
+  - name: Golden Monkey
+    kind: color-morph
+    note: Highly priced strain with a golden to red body.
+  - name: Golden Base
+    kind: color-morph
+    note: Group of strains, including faders and the golden trimac, that turn golden as they grow.
+  - name: Thai Silk
+    kind: color-morph
+    note: Strain with a smooth, often white to pink body; barcoded with the other strains as A. trimaculatus lineage.
+  - name: Kirin
+    kind: color-morph
+    note: Strain sampled in the COI barcoding study together with Cencu, Kamfa, Thai Silk, Parrot and Vieja types.
+
+features:
+  origin:
+    value:
+      continent: captive-bred
+      region: Captive breeding in Malaysia from the 1990s; parent species from Central America and southern Mexico
+      waterbody: null
+      localities: []
+    confidence: high
+    rationale: >-
+      The line has no natural range: all sources describe it as bred in captivity from Central
+      American cichlids, and it was first seen in the Malaysian trade in the 1990s. The parents live
+      in Pacific-slope rivers and lagoons of Mexico, Guatemala and El Salvador (A. trimaculatus), in
+      the Nicaraguan Great Lakes and the Atlantic slope of Nicaragua and Costa Rica (A. citrinellus,
+      A. labiatus) and on the Atlantic slope of Belize, Guatemala and southern Mexico (V. melanurus).
+      Feral populations in Southeast Asia, such as in Lake Matano on Sulawesi, are introductions and
+      not an origin.
+    sources:
+      - &fishkeeper
+        kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Flowerhorn Cichlid, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/flowerhorn-cichlid
+        accessed: 2026-10-13
+      - &sari
+        kind: literature
+        title: >-
+          Sari, D. W. K., Achmad, H., Rahman, H. and Bimasuci, H. (2023). Molecular identification of
+          several morphologically distinct flowerhorn fish using mitochondrial COI gene marker.
+          Journal of Tropical Biodiversity and Biotechnology 8(2), 78459 (abstract and reference list).
+        url: https://doi.org/10.22146/jtbb.78459
+        accessed: 2026-10-13
+      - &cofAmphilophus
+        kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: species of Amphilophus"
+        url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Amphilophus
+        accessed: 2026-10-13
+      - &cofVieja
+        kind: catalog-of-fishes
+        title: "Eschmeyer's Catalog of Fishes: species of Vieja"
+        url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Vieja
+        accessed: 2026-10-13
+      - &herder
+        kind: literature
+        title: >-
+          Herder, F., Schliewen, U., Geiger, M., Hadiaty, R., Gray, S., McKinnon, J., Walter, R. and
+          Pfaender, J. (2012). Alien invasion in Wallace's Dreamponds: records of the hybridogenic
+          flowerhorn cichlid in Lake Matano, with an annotated checklist of fish species introduced
+          to the Malili Lakes system in Sulawesi. Aquatic Invasions 7(4), 521-535.
+        url: https://doi.org/10.3391/ai.2012.7.4.009
+        accessed: 2026-10-13
+      - &wikipedia
+        kind: website
+        title: "Wikipedia: Flowerhorn cichlid"
+        url: https://en.wikipedia.org/wiki/Flowerhorn_cichlid
+        accessed: 2026-10-13
+    evidence:
+      - source: *fishkeeper
+        value: {continent: captive-bred, region: first seen in Malaysia in the 1990s}
+        note: man-made hybrid, parentage kept secret by the breeders
+      - source: *sari
+        value: {continent: captive-bred, region: artificial cross of Central American cichlids}
+      - source: *wikipedia
+        value: {continent: captive-bred, region: Malaysia}
+        note: low-weight general page
+
+  temperatureC:
+    value: {min: 24, max: 30}
+    confidence: low
+    verification:
+      method: qualified-majority
+      votes: {agree: 4, total: 5}
+    rationale: >-
+      The line has no habitat of its own, so the natural range rests on the habitats of the parent
+      species. Measured water temperatures: Tres Palos lagoon on the Mexican Pacific coast, a
+      habitat of the maternal species A. trimaculatus, 24.2 to 26.7 C over a year of sampling;
+      surface water of Lake Nicaragua 25 to 28 C and of Lake Managua 24.7 to 26 C, the lakes of A.
+      citrinellus and A. labiatus (Swain 1966); Lake Petén Itzá in the Usumacinta basin, the
+      type locality of V. melanurus, 25.6 to 30 C, and single readings in nearby Petén lowland
+      waters up to 30.9 C (Pérez et al. 2010, 2013). The FishBase ranges of the four parents (21 to
+      30, 23 to 33, 28 to 33 and 24 to 30 C) go back to aquarium books and only corroborate. Four of
+      five votes agree on about 24 to 30 C (generator and checker-b 24 to 30, tiebreaker-1 24 to 31,
+      tiebreaker-2 24 to 29); checker-a proposed the union of the FishBase ranges, 21 to 33 C.
+      Confidence stays low because no single data set covers all parent habitats and the
+      readings from the Rio Tipitapa between the two Nicaraguan lakes reach 32.4 C.
+    sources:
+      - &tresPalos
+        kind: literature
+        title: >-
+          Violante-González, J., Díaz-Gallegos, A., Gallegos-Navarro, Y. et al. (2026). Temporal
+          dynamics of parasite community in the three-spot cichlid Amphilophus trimaculatus from
+          Tres Palos Lagoon, Guerrero, Mexico. Folia Parasitologica 73.
+        url: https://doi.org/10.14411/fp.2026.004
+        accessed: 2026-10-13
+      - &swain
+        kind: literature
+        title: >-
+          Swain, F. M. (1966). Bottom sediments of Lake Nicaragua and Lake Managua, western
+          Nicaragua. Journal of Sedimentary Research 36(2), 522-540 (water temperature, pH and
+          water analysis).
+        url: https://doi.org/10.1306/74d71500-2b21-11d7-8648000102c1865d
+        accessed: 2026-10-13
+      - &perez2010
+        kind: literature
+        title: >-
+          Pérez, L., Lorenschat, J., Bugja, R. et al. (2010). Distribution, diversity and ecology of
+          modern freshwater ostracodes (Crustacea), and hydrochemical characteristics of Lago Petén
+          Itzá, Guatemala. Journal of Limnology 69(1), 146-159.
+        url: https://doi.org/10.4081/jlimnol.2010.146
+        accessed: 2026-10-13
+      - &perez2013
+        kind: literature
+        title: >-
+          Pérez, L., Lorenschat, J., Massaferro, J. et al. (2013). Bioindicators of climate and trophic
+          state in lowland and highland aquatic ecosystems of the Northern Neotropics. Revista de
+          Biología Tropical 61(2), Table 1.
+        url: https://doi.org/10.15517/rbt.v61i2.11164
+        accessed: 2026-10-13
+      - &collado
+        kind: literature
+        title: >-
+          Collado, J., Leal-Cardín, M., Riesgo, A. et al. (2026). Beyond cichlid diversification:
+          environmental drivers of biodiversity across the Nicaraguan lake system. Hydrobiologia.
+        url: https://doi.org/10.1007/s10750-026-06401-x
+        accessed: 2026-10-13
+      - &tipitapa
+        kind: literature
+        title: >-
+          Lacayo Morales, R. and Picado Pavón, F. J. (2022). Calidad y uso potencial de las aguas del
+          río Tipitapa. Revista Torreón Universitario 11(31), 134-146.
+        url: https://doi.org/10.5377/rtu.v11i31.14292
+        accessed: 2026-10-13
+      - &fbTrimaculatus
+        kind: database
+        title: "FishBase species summary: Amphilophus trimaculatus"
+        url: https://www.fishbase.se/summary/Amphilophus-trimaculatus.html
+        accessed: 2026-10-13
+      - &fbCitrinellus
+        kind: database
+        title: "FishBase species summary: Amphilophus citrinellus"
+        url: https://www.fishbase.se/summary/Amphilophus-citrinellus.html
+        accessed: 2026-10-13
+      - &fbLabiatus
+        kind: database
+        title: "FishBase species summary: Amphilophus labiatus"
+        url: https://www.fishbase.se/summary/Amphilophus-labiatus.html
+        accessed: 2026-10-13
+      - &fbMelanurus
+        kind: database
+        title: "FishBase species summary: Vieja melanurus"
+        url: https://www.fishbase.se/summary/Vieja-melanurus.html
+        accessed: 2026-10-13
+    evidence:
+      - source: *tresPalos
+        value: {min: 24.2, max: 26.7}
+        note: lagoon habitat of A. trimaculatus, monthly readings 2019 to 2020
+      - source: *swain
+        value: {min: 24.7, max: 28}
+        note: surface water of Lake Nicaragua (25 to 28) and Lake Managua (24.7 to 26), dry season
+      - source: *perez2010
+        value: {min: 25.6, max: 30}
+        note: Lake Petén Itzá, water column in November and February, epilimnion up to 30 in August
+      - source: *perez2013
+        value: {min: 25.9, max: 30.9}
+        note: single surface readings in Petén lowland lakes and rivers
+      - source: *collado
+        value: {min: 24, max: 29}
+        note: stated only qualitatively; crater lakes warmer than the great lakes
+      - source: *tipitapa
+        value: {min: 28.5, max: 32.4}
+        note: river linking lakes Managua and Nicaragua, dry and rainy season
+      - source: *fbTrimaculatus
+        value: {min: 21, max: 30}
+        note: parent A. trimaculatus, value from an aquarium reference
+      - source: *fbCitrinellus
+        value: {min: 23, max: 33}
+        note: parent A. citrinellus, value from an aquarium reference
+      - source: *fbLabiatus
+        value: {min: 28, max: 33}
+        note: parent A. labiatus, value from an aquarium reference
+      - source: *fbMelanurus
+        value: {min: 24, max: 30}
+        note: parent V. melanurus, value from an aquarium reference
+    tolerance:
+      value: {min: 24, max: 30}
+      confidence: low
+      verification:
+        method: conservative
+        votes: {agree: 3, total: 5}
+      rationale: >-
+        The votes did not settle, so the vote count took the most cautious value, the intersection
+        of all proposals: generator 24 to 30, checker-a 21 to 33, checker-b 22 to 31, tiebreaker-1
+        22 to 31 and tiebreaker-2 22 to 30 C. Three votes agree on about 22 to 31 C, and the
+        sources support that wider span: Fishkeeper keeps the flowerhorn at 24 to 29 C, LiveAquaria
+        at 22 to 27 C, Riverpark Aquatics at 26 to 30 C, Seriously Fish keeps the parents at 21 to 26
+        C (A. citrinellus), 22 to 28 C (A. labiatus) and 23 to 30 C (A. trimaculatus), and larvae were
+        reared at about 28 C. The intersection 24 to 30 C is therefore narrower than the evidence,
+        which supports roughly 22 to 31 C; the narrower range only makes the app warn earlier.
+      sources:
+        - *fishkeeper
+        - &sfCitrinellus
+          kind: database
+          title: "Seriously Fish: Amphilophus citrinellus"
+          url: https://www.seriouslyfish.com/species/amphilophus-citrinellus/
+          accessed: 2026-10-13
+        - &sfLabiatus
+          kind: database
+          title: "Seriously Fish: Amphilophus labiatus"
+          url: https://www.seriouslyfish.com/species/amphilophus-labiatus/
+          accessed: 2026-10-13
+        - &sfTrimaculatus
+          kind: database
+          title: "Seriously Fish: Cichlasoma trimaculatum"
+          url: https://www.seriouslyfish.com/species/cichlasoma-trimaculatum/
+          accessed: 2026-10-13
+        - &fkMidas
+          kind: database
+          title: "Fishkeeper (Maidenhead Aquatics): Midas Cichlid, Amphilophus citrinellus, species profile"
+          url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/midas-cichlid
+          accessed: 2026-10-13
+        - &abe
+          kind: literature
+          title: >-
+            Abe, H. A., Reis, R. G. A., Barros, F. A. L., Paixão, P. E. G., Meneses, J. O., Souza, J.
+            C. N. and Fujimoto, R. Y. (2020). Optimal management improves Flowerhorn fish
+            larviculture. Aquaculture Research 52(5), 2353-2358.
+          url: https://doi.org/10.1111/are.15085
+          accessed: 2026-10-13
+        - *fbMelanurus
+        - &liveaquaria
+          kind: website
+          title: "LiveAquaria (retailer): Flowerhorn Cichlid, product care data"
+          url: https://www.liveaquaria.com/products/flowerhorn-cichlid-6-5-wysiwyg-2
+          accessed: 2026-10-13
+        - &riverpark
+          kind: website
+          title: "Riverpark Aquatics (retailer): Flowerhorn Cichlid (Hybrid), care sheet"
+          url: https://riverparkaquatics.co.uk/flowerhorn-cichlid-hybrid-5cm/
+          accessed: 2026-10-13
+        - &fkw
+          kind: website
+          title: "Fishkeeping World: Flowerhorn Cichlid care guide"
+          url: https://www.fishkeepingworld.com/flowerhorn-cichlid/
+          accessed: 2026-10-13
+        - &tankarium
+          kind: website
+          title: "Tankarium: Flowerhorn care guide"
+          url: https://www.tankarium.com/flowerhorn/
+          accessed: 2026-10-13
+        - &guidarium
+          kind: website
+          title: "Guidarium: Flowerhorn Cichlid"
+          url: https://guidarium.com/fishes/flowerhorn-cichlid
+          accessed: 2026-10-13
+        - &archive3537
+          kind: archive
+          title: cichlids.com forum thread 3537
+          url: https://www.cichlids.com/disc/read.php?1,3537
+      evidence:
+        - source: *fishkeeper
+          value: {min: 24, max: 29}
+          note: aquarium recommendation for the flowerhorn
+        - source: *sfCitrinellus
+          value: {min: 21, max: 26}
+          note: aquarium recommendation for the parent A. citrinellus
+        - source: *sfLabiatus
+          value: {min: 22, max: 28}
+          note: aquarium recommendation for the parent A. labiatus
+        - source: *sfTrimaculatus
+          value: {min: 23, max: 30}
+          note: aquarium recommendation for the parent A. trimaculatus
+        - source: *fkMidas
+          value: {min: 23, max: 26}
+          note: aquarium recommendation for the parent A. citrinellus
+        - source: *abe
+          value: {min: 28, max: 28.5}
+          note: rearing temperature of larvae
+        - source: *fbMelanurus
+          value: {min: 24, max: 30}
+          note: parent V. melanurus
+        - source: *liveaquaria
+          value: {min: 22, max: 27}
+          note: data box; the description text names 26 to 28
+        - source: *riverpark
+          value: {min: 26, max: 30}
+          note: aquarium recommendation for the flowerhorn
+        - source: *fkw
+          value: {min: 26.7, max: 31.7}
+          note: stated as 80 to 89 F
+        - source: *tankarium
+          value: {min: 24, max: 30}
+          note: hobby care guide
+        - source: *guidarium
+          value: {min: 26, max: 30}
+          note: hobby care guide
+        - source: *archive3537
+          value: {min: 28, max: 28}
+          note: keeper report
+
+  ph:
+    value: {min: 7.3, max: 8.5}
+    confidence: low
+    verification:
+      method: conservative
+      votes: {agree: 3, total: 5}
+    rationale: >-
+      The natural range rests on the habitats of the parents. The votes did not settle, so the vote
+      count took the intersection of all proposals: generator 7.0 to 9.0, checker-a 7.0 to 8.5,
+      checker-b 7.0 to 8.5, tiebreaker-1 7.2 to 9.0 and tiebreaker-2 7.3 to 9.3. The measured data
+      support a wider span of about 7.2 to 9.0: Lake Nicaragua 8.2 to 8.9 at the surface and 7.4 to
+      7.8 in deep water (Swain 1966) and 7.2 to 7.7 in an older fisheries survey; Lake Nicaragua
+      8.59, Lake Managua 8.69 and seven crater lakes with Midas cichlids 7.33 to 8.41 in 2018 (Härer
+      et al. 2021); the Rio Tipitapa between both lakes 8.0 to 8.9; Lake Petén Itzá, home of V.
+      melanurus, 8.2 to 8.5 at the surface (Pérez et al. 2010) and Petén lowland waters 7.4 to 8.5
+      (Pérez et al. 2013). Lake Managua reached 8.9 to 9.3 at the surface in one dry-season survey,
+      which reads as a photosynthetic peak. The intersection 7.3 to 8.5 thus cuts off the alkaline
+      surface water of the Nicaraguan lakes above 8.5 and the slightly lower readings around 7.2.
+      No pH measurement from the river and lagoon habitats of A. trimaculatus was found.
+    sources:
+      - *swain
+      - &haerer
+        kind: literature
+        title: >-
+          Härer, A., Ibrahim, A., Torres-Dowdall, J. et al. (2021). Heterogeneity across Neotropical
+          aquatic environments affects prokaryotic and eukaryotic biodiversity based on
+          environmental DNA. Environmental DNA 4(2), 469-484 (Table 1, abiotic characteristics).
+        url: https://doi.org/10.1002/edn3.267
+        accessed: 2026-10-13
+      - &bolanos
+        kind: literature
+        title: >-
+          Article on the inland fisheries of Nicaragua (Lago de Nicaragua, Lago de Managua, crater
+          lakes), reporting a mid-20th-century fisheries survey; digitised in the Biblioteca Enrique
+          Bolaños as document 888, title not legible in the scan.
+        url: https://sajurin.enriquebolanos.org/docs/888.pdf
+        accessed: 2026-10-13
+      - *tipitapa
+      - *perez2010
+      - *perez2013
+      - &karst
+        kind: literature
+        title: >-
+          Vega-Cendejas, M. E., Santillana, M. H. and Norris, S. (2013). Habitat characteristics and
+          environmental parameters influencing fish assemblages of karstic pools in southern Mexico.
+          Neotropical Ichthyology 11(4), 859-870.
+        url: https://doi.org/10.1590/s1679-62252013000400014
+        accessed: 2026-10-13
+      - *fbMelanurus
+    evidence:
+      - source: *swain
+        value: {min: 7.4, max: 9.3}
+        note: Lake Nicaragua surface 8.2 to 8.9 and deep water 7.4 to 7.8; Lake Managua surface 8.9 to 9.3
+      - source: *haerer
+        value: {min: 7.33, max: 8.69}
+        note: Lakes Nicaragua and Managua and seven crater lakes at 1 m depth, 2018
+      - source: *bolanos
+        value: {min: 7.2, max: 8.4}
+        note: Lake Nicaragua 7.2 to 7.7, Lake Managua 7.8 to 8.4
+      - source: *tipitapa
+        value: {min: 8.0, max: 8.9}
+        note: river between the two lakes; 8.9 only once at the Lake Managua outflow
+      - source: *perez2010
+        value: {min: 8.2, max: 8.5}
+        note: Lake Petén Itzá surface water; 7.5 in deep water
+      - source: *perez2013
+        value: {min: 7.4, max: 8.5}
+        note: single readings in Petén lowland lakes and rivers
+      - source: *karst
+        value: {min: 7.9, max: 8.4}
+        note: mean pH of karst pool groups on the Yucatán peninsula, not a confirmed V. melanurus habitat
+      - source: *fbMelanurus
+        value: {min: 7.0, max: 8.0}
+        note: parent V. melanurus, value from an aquarium reference
+    tolerance:
+      value: {min: 6.5, max: 8.5}
+      confidence: low
+      verification:
+        method: conservative
+        votes: {agree: 2, total: 5}
+      rationale: >-
+        The votes did not settle, so the vote count took the intersection of all proposals:
+        generator 6.5 to 9.0, checker-a 6.5 to 8.5, checker-b 6.5 to 8.5, tiebreaker-1 6.5 to 9.0
+        and tiebreaker-2 6.0 to 9.3. All votes agree on the lower bound of 6.5, the lowest value of
+        the care sheets written for the flowerhorn (Fishkeeper 6.5 to 7.8, LiveAquaria 6.5 to 8.0);
+        Seriously Fish keeps both Nicaraguan parents down to 6.0, and fish were reared at about
+        pH 6.9 to 7.6. No husbandry source tests water above pH 8.0, but the parents live in lakes
+        whose surface water reaches 8.9, so the sources support a tolerance of about 6.5 to 9.0.
+        The intersection stops at 8.5, which is narrower than that, and contains the natural range.
+      sources:
+        - *fishkeeper
+        - *sfCitrinellus
+        - *sfLabiatus
+        - *sfTrimaculatus
+        - *fkMidas
+        - *abe
+        - &manassila
+          kind: literature
+          title: >-
+            Manassila, P., Sangsawad, P., Boonanuntanasarn, S., Kaewda, J., Boonchuen, P., Limkul, S.
+            and Nakharuthai, C. (2025). Transcriptomic analysis reveals glycolysis and
+            gluconeogenesis pathway activation underlying growth enhancement by duck-blood protein
+            hydrolysate in flowerhorn cichlid fish. International Journal of Molecular Sciences
+            26(19), 9563.
+          url: https://doi.org/10.3390/ijms26199563
+          accessed: 2026-10-13
+        - *fbMelanurus
+        - *liveaquaria
+        - *riverpark
+        - *fkw
+        - *tankarium
+        - *archive3537
+      evidence:
+        - source: *fishkeeper
+          value: {min: 6.5, max: 7.8}
+          note: aquarium recommendation for the flowerhorn
+        - source: *sfCitrinellus
+          value: {min: 6.0, max: 8.0}
+          note: parent A. citrinellus
+        - source: *sfLabiatus
+          value: {min: 6.0, max: 8.0}
+          note: parent A. labiatus
+        - source: *sfTrimaculatus
+          value: {min: 7.0, max: 7.0}
+          note: single value given for the parent A. trimaculatus
+        - source: *fkMidas
+          value: {min: 6.5, max: 8.0}
+          note: parent A. citrinellus
+        - source: *abe
+          value: {min: 6.9, max: 7.6}
+          note: larval rearing water, means 7.1 and 7.3 with their deviations
+        - source: *manassila
+          value: {min: 7.0, max: 7.6}
+          note: rearing water of juveniles over 90 days
+        - source: *fbMelanurus
+          value: {min: 7.0, max: 8.0}
+          note: parent V. melanurus
+        - source: *liveaquaria
+          value: {min: 6.5, max: 8.0}
+          note: aquarium recommendation for the flowerhorn
+        - source: *riverpark
+          value: {min: 6.5, max: 7.5}
+          note: aquarium recommendation for the flowerhorn
+        - source: *fkw
+          value: {min: 6.5, max: 7.8}
+          note: aquarium recommendation for the flowerhorn
+        - source: *tankarium
+          value: {min: 6.5, max: 8.0}
+          note: hobby care guide
+        - source: *archive3537
+          value: {min: 6.5, max: 8.0}
+          note: keeper reports
+
+  ghDgh:
+    value: {min: 5, max: 20}
+    confidence: low
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+    rationale: >-
+      The natural range rests on the habitats of the parents. The Rio Tipitapa between lakes Managua
+      and Nicaragua, in the range of A. citrinellus and A. labiatus, holds a mean total hardness of
+      about 100 to 137 mg/L CaCO3, which is 5.6 to 7.7 dGH. FishBase gives 9 to 20 dGH for V.
+      melanurus, a figure taken from an aquarium reference. Swain (1966) lists calcium and
+      magnesium for Lake Nicaragua that give only about 3 to 4 dGH, but the column assignment of
+      the scanned table is not fully clear; the generator's lower bound of 3 dGH rests on it, the
+      checkers proposed 5 and 6 dGH, and the decided lower bound of 5 dGH is their median. The
+      upper bound rests on the V. melanurus figure alone, and no hardness data exist for the
+      habitats of A. trimaculatus, hence low confidence.
+    sources:
+      - *tipitapa
+      - *fbMelanurus
+      - *swain
+    evidence:
+      - source: *tipitapa
+        value: {min: 5.6, max: 7.7}
+        note: site means of total hardness converted from mg/L CaCO3
+      - source: *fbMelanurus
+        value: {min: 9, max: 20}
+        note: parent V. melanurus, value from an aquarium reference
+      - source: *swain
+        value: {min: 3, max: 4}
+        note: Lake Nicaragua surface water, computed from calcium and magnesium
+    tolerance:
+      value: {min: 5, max: 25}
+      confidence: medium
+      verification:
+        method: unanimous
+        votes: {agree: 3, total: 3}
+      rationale: >-
+        Seriously Fish keeps both Nicaraguan parents at 5 to 25 dGH, Fishkeeper keeps the Midas
+        cichlid in water up to 25 degrees and the flowerhorn up to 20 degrees. Flowerhorns therefore
+        live for years in soft to hard water; the range contains the natural 5 to 20 dGH. None of the
+        flowerhorn care sheets gives a lower limit.
+      sources:
+        - *fishkeeper
+        - *sfCitrinellus
+        - *sfLabiatus
+        - *fkMidas
+        - *swain
+      evidence:
+        - source: *fishkeeper
+          value: {min: 0, max: 20}
+          note: upper limit only
+        - source: *sfCitrinellus
+          value: {min: 5, max: 25}
+          note: parent A. citrinellus
+        - source: *sfLabiatus
+          value: {min: 5, max: 25}
+          note: parent A. labiatus
+        - source: *fkMidas
+          value: {min: 0, max: 25}
+          note: parent A. citrinellus, upper limit only
+        - source: *swain
+          value: {min: 3, max: 4}
+          note: natural value of Lake Nicaragua, computed from calcium and magnesium
+
+  khDkh:
+    value: {min: 5, max: 8}
+    confidence: low
+    verification:
+      method: conservative
+      votes: {agree: 3, total: 5}
+    rationale: >-
+      The natural range rests on the habitats of the parents. The votes did not settle, so the vote
+      count took the intersection of all proposals: generator 3 to 8, checker-a 4 to 16, checker-b
+      5 to 16, tiebreaker-1 4 to 16 and tiebreaker-2 3 to 8 dKH. The measurements support a much
+      wider span of about 3 to 16 dKH: Lake Nicaragua holds 60 to 65 mg/L CaCO3 total alkalinity
+      (3.4 to 3.6 dKH, Swain 1966) or 80 to 120 mg/L (4.5 to 6.7 dKH) in an older fisheries survey,
+      Lake Petén Itzá, home of V. melanurus, 1.9 to 2.2 meq/L bicarbonate (5.3 to 6.2 dKH), and the
+      Rio Tipitapa and the saline Lake Managua up to 280 mg/L (15.7 dKH). The intersection 5 to 8 dKH
+      leaves out both the soft water of Lake Nicaragua and the hard water of Lake Managua. No
+      alkalinity data exist for the habitats of A. trimaculatus.
+    sources:
+      - *swain
+      - *bolanos
+      - *perez2010
+      - *tipitapa
+    evidence:
+      - source: *swain
+        value: {min: 3.4, max: 3.6}
+        note: total alkalinity of Lake Nicaragua, surface and bottom water
+      - source: *bolanos
+        value: {min: 4.5, max: 15.7}
+        note: methyl-orange alkalinity; Lake Nicaragua 4.5 to 6.7, Lake Managua 6.7 to 15.7
+      - source: *perez2010
+        value: {min: 5.3, max: 6.2}
+        note: bicarbonate of Lake Petén Itzá surface water
+      - source: *tipitapa
+        value: {min: 4.6, max: 15.7}
+        note: total alkalinity of the river between lakes Managua and Nicaragua
+    tolerance:
+      value: {min: 4, max: 8}
+      confidence: low
+      verification:
+        method: conservative
+        votes: {agree: 3, total: 6}
+      rationale: >-
+        The votes did not settle, so the vote count took the intersection of all proposals:
+        generator 3 to 8, checker-a 4 to 16, tiebreaker-1 4 to 20, tiebreaker-2 3 to 12,
+        tiebreaker-3 3 to 12 and tiebreaker-4 4 to 12 dKH; checker-b gave no tolerance. The
+        intersection 4 to 8 dKH is clearly narrower than what the sources support. The only care
+        sheet that names a carbonate hardness, Modest Fish, gives 3 to 12 dKH, a keeper on
+        MonsterFishKeepers advises at least 4 dKH, and four of six votes reach 12 dKH or more.
+        LiveAquaria labels 9 to 20 as dKH, but this band equals the general hardness that other
+        sheets give, so it most likely is general hardness. The parents' habitats reach about 16
+        dKH. Together the sources support a tolerance of about 4 to 12 dKH, possibly up to 16 dKH;
+        the decided 4 to 8 dKH only makes the app warn earlier. General hardness figures of
+        Fishkeeper, Seriously Fish and FishBase say nothing about carbonate hardness and are not
+        listed as evidence here.
+      sources:
+        - *swain
+        - *tipitapa
+        - &modestfish
+          kind: website
+          title: "Modest Fish: Flowerhorn Cichlid care guide and tank set-up (care sheet with parameter table)"
+          url: https://modestfish.com/?p=6961
+          accessed: 2026-10-13
+        - *liveaquaria
+        - &mfk
+          kind: forum
+          title: "MonsterFishKeepers: Flowerhorn tank parameters (thread, page 2)"
+          url: https://www.monsterfishkeepers.com/forums/goto/post?id=8182110
+          accessed: 2026-10-13
+      evidence:
+        - source: *modestfish
+          value: {min: 3, max: 12}
+          note: aquarium recommendation, given as dKH next to a separate general hardness range
+        - source: *liveaquaria
+          value: {min: 9, max: 20}
+          note: labelled dKH, but matches general hardness figures of other sheets
+        - source: *swain
+          value: {min: 3.4, max: 3.6}
+          note: natural value of Lake Nicaragua
+        - source: *tipitapa
+          value: {min: 4.6, max: 15.7}
+          note: natural value between lakes Managua and Nicaragua
+
+  maxSizeCm:
+    value: {male: 30, female: 25}
+    confidence: medium
+    rationale: >-
+      Well-kept adult males typically reach about 30 cm. Fishkeeper gives 40 cm and Fishkeeping
+      World 10 to 16 inches, which describe exceptional show fish; a Brazilian trade survey lists an
+      adult size of 35 cm without separating the sexes, and archive keepers report adults from under
+      20 cm to over 30 cm depending on the strain. All sources agree that females stay clearly
+      smaller; the maternal parent A. trimaculatus reaches about 25 cm in females, which fits the
+      female value. Feral fish in Javanese reservoirs stay much smaller (males about 20 cm, females
+      about 15 cm).
+    sources:
+      - *fishkeeper
+      - &magalhaes
+        kind: literature
+        title: >-
+          Magalhães, A. L. B., Orsi, M. L., Pelicice, F. M., Azevedo-Santos, V. M., Vitule, J. R. S.,
+          Lima-Junior, D. P. and Brito, M. F. G. (2017). Small size today, aquarium dumping
+          tomorrow: sales of juvenile non-native large fish as an important threat in Brazil.
+          Neotropical Ichthyology 15(4), e170033.
+        url: https://doi.org/10.1590/1982-0224-20170033
+        accessed: 2026-10-13
+      - *fbTrimaculatus
+      - &putri
+        kind: literature
+        title: >-
+          Putri, A., Cahyaningrum, D. A., Afiyah, N. N., Eshananda, Y. and Parawangsa, I. N. Y.
+          (2026). Biological parameters of flowerhorn cichlid in Panglima Besar Soedirman Reservoir,
+          Indonesia. Malaysian Journal of Fundamental and Applied Sciences 22(1), 156-165.
+        url: https://doi.org/10.11113/mjfas.v22n1.4990
+        accessed: 2026-10-13
+      - *riverpark
+      - *fkw
+      - *archive3537
+    evidence:
+      - source: *fishkeeper
+        value: {male: 40, female: 40}
+        note: maximum size without sex split; females shorter
+      - source: *magalhaes
+        value: {male: 35, female: 35}
+        note: adult size in the trade, sexes not separated
+      - source: *fbTrimaculatus
+        value: {male: 36.5, female: 25}
+        note: maternal parent, male as standard length
+      - source: *putri
+        value: {male: 20, female: 14.6}
+        note: feral fish, total length
+      - source: *riverpark
+        value: {male: 30, female: 30}
+        note: adult length without sex split
+      - source: *fkw
+        value: {male: 40, female: 40}
+        note: stated as up to 16 inches
+      - source: *archive3537
+        value: {male: 30, female: 20}
+        note: keeper reports, strain-dependent
+
+  predation:
+    value: 2
+    confidence: medium
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+    rationale: >-
+      All three votes give level 2. Feral flowerhorns eat fish: Herder et al. (2012) see in stomach
+      contents a threat to the native fauna of Lake Matano through predation, and Hedianto and
+      Sentosa (2019) found fish and fish eggs in the stomachs in every sampling month, though as a
+      small share of 0.75 to 2.6 percent next to snails, insects and shrimp. Magalhães et al. (2017)
+      cite predation on an endemic goby in Sulawesi. The maternal parent A. trimaculatus feeds on
+      small fishes besides invertebrates (FishBase, Seriously Fish), and adult Midas cichlids eat
+      snails, aufwuchs and fish (Barlow and Munsey 1976). Any fish that fits into the mouth is at
+      risk in the tank, but fish are no main part of the diet, so level 3 does not apply.
+    sources:
+      - *herder
+      - &hedianto
+        kind: literature
+        title: >-
+          Hedianto, D. A. and Sentosa, A. A. (2019). Interaksi trofik komunitas ikan di Danau Matano,
+          Sulawesi Selatan pasca berkembangnya ikan asing invasif (trophic interactions of the fish
+          community in Lake Matano after the spread of invasive alien fishes). Jurnal Penelitian
+          Perikanan Indonesia 25(2), 117-133.
+        url: https://doi.org/10.15578/jppi.25.2.2019.117-133
+        accessed: 2026-10-13
+      - *magalhaes
+      - *fbTrimaculatus
+      - *sfTrimaculatus
+      - &barlowMunsey
+        kind: literature
+        title: >-
+          Barlow, G. W. and Munsey, J. W. (1976). The red devil-Midas-arrow cichlid species complex in
+          Nicaragua. In: Thorson, T. B. (ed.), Investigations of the Ichthyofauna of Nicaraguan
+          Lakes, University of Nebraska-Lincoln (abstract).
+        url: http://digitalcommons.unl.edu/ichthynicar/23
+        accessed: 2026-10-13
+      - *sfCitrinellus
+      - *fishkeeper
+    evidence:
+      - source: *herder
+        value: 2
+        note: stomach contents support predation on native fauna
+      - source: *hedianto
+        value: 2
+        note: fish 0.75 to 2.6 percent of the diet index in all months
+      - source: *magalhaes
+        value: 2
+        note: cites predation on an endemic goby in Sulawesi
+      - source: *fbTrimaculatus
+        value: 2
+        note: parent eats small fishes, macro-invertebrates and insects
+      - source: *sfTrimaculatus
+        value: 2
+        note: parent described as predatory on fish and invertebrates
+      - source: *barlowMunsey
+        value: 2
+        note: adult Midas cichlids eat snails, aufwuchs and fish
+      - source: *sfCitrinellus
+        value: 2
+        note: parent eats smaller fish in nature
+      - source: *fishkeeper
+        value: 2
+        note: only tankmates of similar size advised
+
+  diet:
+    value:
+      type: omnivore
+      bloatSensitive: false
+      foods: [snails, insects and insect larvae, shrimp, small fish, aquatic plants, cichlid pellets, frozen crustaceans, vegetables]
+    confidence: high
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+    rationale: >-
+      All three votes give an omnivore without bloat sensitivity. In Lake Matano the feral fish
+      switch with the season between snails, insects and their larvae, shrimp and water plants and
+      are classed as opportunistic generalists (Hedianto and Sentosa 2019); a Javanese study names
+      omnivory among their invasive traits (Putri et al. 2026). Fishkeeper calls the flowerhorn
+      omnivorous and asks for a vegetable share, and the Midas parent eats plant and animal food
+      (FishBase, Seriously Fish, Barlow and Munsey 1976). Seriously Fish advises against heavy red
+      meat for the Midas cichlid, but no source reports a tendency to bloat.
+    sources:
+      - *hedianto
+      - *putri
+      - *fishkeeper
+      - *fbCitrinellus
+      - *barlowMunsey
+      - *sfCitrinellus
+      - *riverpark
+    evidence:
+      - source: *hedianto
+        value: {type: omnivore, bloatSensitive: false}
+        note: diet shifts between gastropods, insects, shrimp and macrophytes
+      - source: *putri
+        value: {type: omnivore, bloatSensitive: false}
+        note: omnivory named as an invasive trait
+      - source: *fishkeeper
+        value: {type: omnivore, bloatSensitive: false}
+      - source: *fbCitrinellus
+        value: {type: omnivore, bloatSensitive: false}
+        note: parent A. citrinellus, trophic level 3.2
+      - source: *barlowMunsey
+        value: {type: omnivore, bloatSensitive: false}
+        note: parent A. citrinellus
+      - source: *sfCitrinellus
+        value: {type: omnivore, bloatSensitive: false}
+        note: parent eats almost anything, including plant matter
+      - source: *riverpark
+        value: {type: omnivore, bloatSensitive: false}
+
+  aggressionConspecific:
+    value: 4
+    confidence: high
+    rationale: >-
+      Fishkeeper calls the flowerhorn exceptionally pugnacious, advises keeping it singly and warns
+      that a male may kill a female that is not ready to spawn, so a divider must be at hand.
+      Seriously Fish reports the same for the Midas parent, whose males often kill females added
+      without a divider, and archive keepers agree that two fish in one tank fight. Pairs form only
+      from juveniles raised together, and the surplus fish must then be removed.
+    sources:
+      - *fishkeeper
+      - *sfCitrinellus
+      - *fkMidas
+      - *archive3537
+    evidence:
+      - source: *fishkeeper
+        value: 4
+      - source: *sfCitrinellus
+        value: 4
+        note: parent A. citrinellus; males kill unready partners
+      - source: *fkMidas
+        value: 4
+        note: parent A. citrinellus, best kept singly
+      - source: *fkw
+        value: 3
+        note: calls the flowerhorn semi-aggressive to aggressive and recommends pairs
+      - source: *archive3537
+        value: 4
+        note: keepers advise against two fish in one tank
+
+  aggressionHeterospecific:
+    value: 4
+    confidence: high
+    rationale: >-
+      Fishkeeper calls the flowerhorn highly aggressive, able to dominate most tankmates, and allows
+      only Central and South American cichlids of similar size and temperament or large armoured
+      catfish, under close watch and with a means of separation. Seriously Fish allows robust
+      tankmates for the Midas parent only in tanks above 1000 litres, and a Brazilian trade survey
+      classes the flowerhorn as aggressive. A spawning pair turns on every other fish in the tank.
+    sources:
+      - *fishkeeper
+      - *sfCitrinellus
+      - *fkMidas
+      - *magalhaes
+      - &archive347
+        kind: archive
+        title: cichlids.com forum thread 347
+        url: https://www.cichlids.com/disc/read.php?1,347
+    evidence:
+      - source: *fishkeeper
+        value: 4
+      - source: *sfCitrinellus
+        value: 4
+        note: parent A. citrinellus; tankmates only in tanks above 1000 litres
+      - source: *fkMidas
+        value: 4
+        note: parent A. citrinellus
+      - source: *fkw
+        value: 3
+      - source: *archive347
+        value: 3
+        note: kept with a Jack Dempsey and a red terror in a large tank
+
+  territory:
+    value: {size: large, breedingOnly: false}
+    confidence: medium
+    rationale: >-
+      A single adult claims and rearranges the whole tank, digs constantly and attacks equipment and
+      the keeper's hands, most of all while guarding fry. The territory is held permanently, as in
+      the Nicaraguan and Pacific-slope parents.
+    sources:
+      - *fishkeeper
+      - *sfLabiatus
+      - *sfCitrinellus
+      - *sfTrimaculatus
+      - *fkMidas
+    evidence:
+      - source: *fishkeeper
+        value: {size: large, breedingOnly: false}
+      - source: *sfLabiatus
+        value: {size: large, breedingOnly: false}
+        note: parent A. labiatus
+
+  habitatZones:
+    value: [rock, sand]
+    confidence: low
+    rationale: >-
+      The line has no natural habitat. Feral fish spread along the rocky and sandy inshore zone of
+      Lake Matano, the Midas parent forages along rocky walls and crevices, and A. trimaculatus lives
+      over mud and sand among roots and weeds. In the tank the flowerhorn needs open sand for digging
+      and heavy, secured rocks or slate for spawning; driftwood can serve as decor but is not
+      required, and plants are uprooted.
+    sources:
+      - *herder
+      - *sfCitrinellus
+      - *fbTrimaculatus
+      - *fishkeeper
+      - *fkMidas
+    evidence:
+      - source: *herder
+        value: [rock, sand]
+        note: inshore habitats of Lake Matano
+      - source: *sfCitrinellus
+        value: [rock]
+        note: parent A. citrinellus favours rocky walls
+      - source: *fbTrimaculatus
+        value: [sand, plants]
+        note: parent A. trimaculatus over mud and sand among roots and weeds
+      - source: *fishkeeper
+        value: [rock, sand]
+        note: sand or rounded gravel with secured rocks; driftwood optional
+
+  social:
+    value: {structure: solitary}
+    confidence: high
+    rationale: >-
+      The hobby keeps the flowerhorn as a single display fish. Fishkeeper and archive keepers advise
+      one fish per tank, and the Fishkeeper profile of the Midas parent prefers a single specimen as
+      well. Pairs are kept only for breeding, from juveniles raised together and with a divider at
+      hand; Seriously Fish rates the Midas cichlid best as a pair, which matches that breeding setup
+      rather than the usual way of keeping the hybrid.
+    sources:
+      - *fishkeeper
+      - *fkMidas
+      - *sfCitrinellus
+      - *archive3537
+    evidence:
+      - source: *fishkeeper
+        value: {structure: solitary}
+      - source: *fkMidas
+        value: {structure: solitary}
+        note: parent A. citrinellus
+      - source: *sfCitrinellus
+        value: {structure: pair}
+        note: parent A. citrinellus
+      - source: *fkw
+        value: {structure: pair}
+        note: pairs in a very large tank
+      - source: *archive3537
+        value: {structure: solitary}
+
+  speciesOnly:
+    value: false
+    confidence: medium
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+    rationale: >-
+      All three votes leave the flag unset. The flowerhorn is advised to be kept alone, not in a
+      group of its own kind, and Fishkeeper names robust Central American cichlids and large
+      armoured catfish as possible tankmates under close watch; Seriously Fish allows such tankmates
+      for the Midas parent in tanks above 1000 litres, and the Fishkeeper profile of the Midas
+      cichlid calls it a non-community fish. The restriction is expressed by the solitary structure
+      and the heterospecific aggression level 4, not by this flag.
+    sources:
+      - *fishkeeper
+      - *sfCitrinellus
+      - *fkMidas
+      - *archive347
+    evidence:
+      - source: *fishkeeper
+        value: false
+        note: robust tankmates possible with close watch
+      - source: *sfCitrinellus
+        value: false
+        note: parent; robust tankmates in tanks above 1000 litres
+      - source: *fkMidas
+        value: false
+        note: parent; non-community fish
+      - source: *archive347
+        value: false
+
+  hybridGroup:
+    value: amphilophus-citrinellus-complex
+    confidence: medium
+    verification:
+      method: unanimous
+      votes: {agree: 3, total: 3}
+    rationale: >-
+      All three votes give amphilophus-citrinellus-complex. The flowerhorn descends from crosses of
+      A. trimaculatus with members of that group: A. labiatus x A. trimaculatus (Tarkhani et al.
+      2016, Abe et al. 2020) and A. citrinellus x A. trimaculatus (Magalhães et al. 2017, Manassila
+      et al. 2025); Sari et al. (2023) list A. citrinellus and A. labiatus among the species crossed
+      into the strains, and Seriously Fish names the Midas cichlid as a source species. Breeders
+      keep crossing new species into existing lines, so a flowerhorn kept with a Midas cichlid, a
+      red devil or a three-spot cichlid can produce hybrid fry. A. trimaculatus is listed as a
+      member of the group because these works document its crosses with A. citrinellus and A.
+      labiatus.
+    sources:
+      - &tarkhani
+        kind: literature
+        title: >-
+          Tarkhani, R., Imani, A., Jamali, H. and Sarvi Moghanlou, K. (2016). Anaesthetic efficacy of
+          eugenol on Flowerhorn (Amphilophus labiatus x Amphilophus trimaculatus). Aquaculture
+          Research 48(6), 3207-3215 (abstract).
+        url: https://doi.org/10.1111/are.13151
+        accessed: 2026-10-13
+      - *abe
+      - *magalhaes
+      - *manassila
+      - *sari
+      - *sfCitrinellus
+      - *fishkeeper
+      - &kautt
+        kind: literature
+        title: >-
+          Kautt, A. F., Machado-Schiaffino, G. and Meyer, A. (2016). Multispecies outcomes of
+          sympatric speciation after admixture with the source population in two radiations of
+          Nicaraguan crater lake cichlids. PLoS Genetics 12(6), e1006157.
+        url: https://doi.org/10.1371/journal.pgen.1006157
+        accessed: 2026-10-13
+    evidence:
+      - source: *tarkhani
+        value: amphilophus-citrinellus-complex
+        note: flowerhorn given as A. labiatus x A. trimaculatus
+      - source: *abe
+        value: amphilophus-citrinellus-complex
+        note: flowerhorn given as A. labiatus x A. trimaculatus
+      - source: *magalhaes
+        value: amphilophus-citrinellus-complex
+        note: flowerhorn given as A. trimaculatus x A. citrinellus
+      - source: *manassila
+        value: amphilophus-citrinellus-complex
+        note: flowerhorn given as A. citrinellus x Cichlasoma trimaculatum
+      - source: *sari
+        value: amphilophus-citrinellus-complex
+        note: A. citrinellus and A. labiatus named among the crossed species
+      - source: *sfCitrinellus
+        value: amphilophus-citrinellus-complex
+        note: Midas cichlid named as a source species of the flowerhorn
+      - source: *fishkeeper
+        value: amphilophus-citrinellus-complex
+        note: further species crossed into existing lines
+
+  coloration:
+    value:
+      baseColors: [red, silver, black]
+      pattern: mixed
+    confidence: low
+    rationale: >-
+      Colour varies strongly between strains and with age. The common type has a red to pink head
+      and front body, a grey to bluish flank covered with silvery white pearl spots in pearl strains,
+      and a row of black blotches along the side; golden strains replace the red with yellow or
+      orange, and many lines shimmer green or blue. Spots and the blotch row combine into a mixed
+      pattern.
+    sources:
+      - *fishkeeper
+      - *abe
+      - *wikipedia
+    evidence:
+      - source: *abe
+        value: {baseColors: [red, green, blue, yellow], pattern: mixed}
+        note: shades named for the hybrid in general
+      - source: *wikipedia
+        value: {baseColors: [silver], pattern: spots}
+        note: pearl strains with silvery white spots
+
+  feedingSpeed:
+    value: hasty
+    confidence: medium
+    rationale: >-
+      Care sheets describe a greedy, messy feeder that takes every food with great eagerness and
+      appears always hungry; the parents count among the least fussy feeders in the hobby.
+    sources:
+      - *fishkeeper
+      - *sfLabiatus
+      - *sfCitrinellus
+      - *fkw
+    evidence:
+      - source: *fishkeeper
+        value: hasty
+      - source: *sfLabiatus
+        value: hasty
+        note: parent A. labiatus
+      - source: *sfCitrinellus
+        value: hasty
+        note: parent A. citrinellus
+
+  minTank:
+    value: {volumeL: 400, lengthCm: 150, depthCm: 45}
+    confidence: medium
+    rationale: >-
+      The recommended unit is one adult. Seriously Fish sets a base of 150 x 45 cm as the minimum for
+      a single adult of either Nicaraguan parent, which are of similar size, which gives about 400
+      litres at 60 cm height, and Fishkeeper asks for a voluminous tank with oversized filtration. A
+      breeding pair needs a considerably larger tank with a divider.
+    sources:
+      - *sfLabiatus
+      - *sfCitrinellus
+      - *fishkeeper
+      - *fkw
+    evidence:
+      - source: *sfLabiatus
+        value: {volumeL: 400, lengthCm: 150, depthCm: 45}
+        note: base 150 x 45 cm for one adult; volume computed for 60 cm height
+      - source: *sfCitrinellus
+        value: {volumeL: 400, lengthCm: 150, depthCm: 45}
+        note: base 150 x 45 cm for one adult; volume computed for 60 cm height
+      - source: *fkw
+        value: {volumeL: 570, lengthCm: 180, depthCm: 50}
+        note: about 150 gallons for a pair; dimensions estimated
+
+  lifespanYears:
+    value: {min: 10, max: 12}
+    confidence: low
+    rationale: >-
+      Two care sheets, Riverpark Aquatics and Fishkeeping World, give 10 to 12 years, and Aquarium
+      Source gives 8 to 12 years. No database or paper states a lifespan, so the value rests on
+      low-weight care sheets.
+    sources:
+      - *riverpark
+      - *fkw
+      - &aquariumSource
+        kind: website
+        title: "Aquarium Source: Flowerhorn Cichlid care guide"
+        url: https://www.aquariumsource.com/flowerhorn-cichlid/
+        accessed: 2026-10-13
+    evidence:
+      - source: *riverpark
+        value: {min: 10, max: 12}
+      - source: *fkw
+        value: {min: 10, max: 12}
+      - source: *aquariumSource
+        value: {min: 8, max: 12}
+
+  breeding:
+    value: open-substrate-spawner
+    confidence: high
+    rationale: >-
+      Eggs are laid on a vertical slate, a flat piece of driftwood or in a rocky cave, the larvae are
+      moved to pits dug in the sand, and both parents guard the brood for about six weeks. The
+      maternal parent A. trimaculatus spawns on flat stones as well. The occasional use of a cave
+      does not make the flowerhorn a cave spawner, since the eggs lie open on a hard surface.
+    sources:
+      - *fishkeeper
+      - *sfTrimaculatus
+      - *sfCitrinellus
+      - &crcTrimaculatus
+        kind: website
+        title: "Cichlid Room Companion: Amphilophus trimaculatus (public summary, verification only)"
+        url: https://cichlidae.com/species.php?id=KQWm52sOGrzvPz1Y4olLuw
+        accessed: 2026-10-13
+    evidence:
+      - source: *fishkeeper
+        value: open-substrate-spawner
+      - source: *sfTrimaculatus
+        value: open-substrate-spawner
+        note: parent A. trimaculatus
+      - source: *sfCitrinellus
+        value: cave-spawner
+        note: parent A. citrinellus, spawns on rocks and in flowerpots
+      - source: *crcTrimaculatus
+        value: open-substrate-spawner
+        note: parent A. trimaculatus, verification only
+
+  beginnerSuitability:
+    value: moderate
+    confidence: medium
+    rationale: >-
+      The flowerhorn is hardy and eats anything, so a single fish is not hard to keep, but it needs
+      a very large tank, strong filtration, frequent water changes and secured equipment, and its
+      aggression rules out community tanks and makes breeding risky. Seriously Fish rates the
+      Nicaraguan parents as moderate.
+    sources:
+      - *sfLabiatus
+      - *sfCitrinellus
+      - *fishkeeper
+    evidence:
+      - source: *sfLabiatus
+        value: moderate
+        note: parent A. labiatus
+      - source: *sfCitrinellus
+        value: moderate
+        note: parent A. citrinellus
+      - source: *fishkeeper
+        value: moderate
+
+partners:
+  suitable:
+    - species: Pterygoplichthys pardalis
+      reason: Large armoured catfish that keeps to the bottom, grows too big to be eaten and is protected by its bony plates.
+      condition: Only in a very large tank, under close watch and with a means of separating the fish.
+    - species: Pterygoplichthys gibbiceps
+      reason: Large armoured catfish of similar adult size that ignores the cichlid and withstands its attacks.
+      condition: Only in a very large tank with cover for the catfish and a means of separating the fish.
+    - species: Parachromis managuensis
+      reason: Equally robust Central American cichlid of similar size and temperament that can hold its own.
+      condition: Only in tanks of about 1000 litres or more, under close watch and with a divider at hand.
+  unsuitable:
+    - species: Amphilophus trimaculatus
+      reason: Maternal parent species in the same hybrid group; the fish cross readily and fight hard.
+    - species: Amphilophus labiatus
+      reason: Parent species in the same hybrid group; the fish cross readily and fight hard.
+    - species: Amphilophus citrinellus
+      reason: Parent species in the same hybrid group; the fish cross readily and fight hard.
+    - species: Paracheirodon innesi
+      reason: Small fish that the flowerhorn hunts and eats.
+    - species: Pterophyllum scalare
+      reason: Slow, tall-finned fish that is bullied, injured or eaten.
+    - species: Maylandia zebra
+      reason: Mid-sized mbuna that is chased and injured by the much larger and more aggressive flowerhorn.
+
+profile:
+  overview:
+    text: >-
+      The flowerhorn is not a species but a line bred in captivity, first sold in Malaysia in the
+      1990s and soon popular across Asia. Breeders crossed several Central American cichlids: the
+      three-spot cichlid Amphilophus trimaculatus is the main parent, the red devil and the Midas
+      cichlid joined it, and the redhead cichlid Vieja melanurus entered some lines through the
+      blood parrot. All strains studied so far carry the mitochondrial DNA of A. trimaculatus. The
+      fish is prized for its bright colours and the large fatty hump on the forehead, and in parts
+      of Asia it is seen as a bringer of luck. Many hobbyists reject it as a hybrid of unclear
+      ancestry. Released fish have become invasive in Southeast Asian lakes and reservoirs, so it
+      must never be set free.
+    sources:
+      - *fishkeeper
+      - *sari
+      - *herder
+      - *wikipedia
+  habitat:
+    text: >-
+      There is no natural habitat. The parent species live in Central America and southern Mexico:
+      A. trimaculatus in rivers and coastal lagoons of the Pacific slope from Mexico to El
+      Salvador, the red devil and the Midas cichlid in the Nicaraguan Great Lakes, and V. melanurus
+      on the Atlantic slope of Belize, Guatemala and southern Mexico. These waters are warm, around
+      24 to 30 C, and mostly alkaline, with surface values of pH 8.2 to 8.9 in Lake Nicaragua and
+      8.2 to 8.5 in Lake Petén Itzá, and range from soft to moderately hard. The natural water values of this
+      profile are derived from those parent habitats, which were measured only in part. Feral
+      flowerhorns thrive in Lake Matano on Sulawesi, where they dominate the catch along the shore,
+      and in several reservoirs on Java.
+    sources:
+      - *cofAmphilophus
+      - *cofVieja
+      - *swain
+      - *perez2010
+      - *tresPalos
+      - *herder
+      - *hedianto
+  sizeAndGrowth:
+    text: >-
+      Well-fed males reach about 30 cm, show fish even more, while females stay smaller and fuller in
+      the body at around 25 cm. The fish grows quickly in its first year when fed generously, and
+      the nuchal hump develops with age; it is usually larger in males, but females can show one
+      too. The size of the hump depends on strain, food and water quality. Feral fish in Indonesian
+      reservoirs stay smaller, with males around 20 cm. Adults are heavy fish, which matters for the
+      choice of decor and its fixing.
+    sources:
+      - *riverpark
+      - *fishkeeper
+      - *putri
+  husbandry:
+    text: >-
+      Plan a tank of at least 150 cm length and about 400 litres for one adult, with a heavy,
+      firmly closed cover because the fish jumps. Use sand or fine, rounded gravel and only a few
+      large rocks or roots glued together or set directly on the glass bottom, since the flowerhorn
+      digs and moves loose decor. Plants are uprooted. Protect the heater with a guard or use an
+      external heater, as the fish attacks equipment. Filtration must be strong and water changes
+      large and frequent to keep nitrate low. Keep the water at 24 to 30 C with a pH of 6.5 to
+      8.5, a general hardness of 5 to 25 dGH and a moderate carbonate hardness that
+      buffers the pH against the heavy waste load.
+    sources:
+      - *fishkeeper
+      - *sfLabiatus
+      - *sfCitrinellus
+  socialBehavior:
+    text: >-
+      The flowerhorn is among the most aggressive aquarium cichlids. It claims the whole tank, and
+      most keepers hold it alone as a pet that recognises its owner and follows it along the glass.
+      Two adults in one tank usually fight, and a male may kill a female that is not ready to spawn.
+      If a pair is wanted, raise several juveniles together, let a pair form, rehome the others and
+      keep a divider ready. Tankmates are possible only in very large tanks and only with robust
+      cichlids of similar size or large armoured catfish, and even then the keeper must watch
+      closely.
+    sources:
+      - *fishkeeper
+      - *sfCitrinellus
+      - *archive3537
+  diet:
+    text: >-
+      In the wild the hybrid eats almost anything it finds: snails, insects, shrimp, plant matter and
+      small fish, changing its main food with the season. In the tank a quality cichlid pellet or
+      stick is the staple, supplemented with frozen shrimp, krill and mussel meat and with vegetables
+      such as peas or spinach. A varied diet keeps the colours bright. Live feeder fish are not
+      needed and bring a risk of disease. Feed modest amounts once or twice a day, because the fish
+      always appears hungry and leftovers quickly spoil the water.
+    sources:
+      - *hedianto
+      - *fishkeeper
+      - *sfLabiatus
+  breeding:
+    text: >-
+      Flowerhorns are open-substrate spawners, and both parents care for the brood. After vigorous
+      courtship with mouth wrestling and tail slapping, the female lays up to about 1000 eggs on a
+      flat stone, a piece of driftwood or in a rocky cave. The larvae hatch after about three days
+      and are moved into pits dug in the sand; a few days later they swim freely and take newly
+      hatched brine shrimp. The parents guard the young for around six weeks. A large share of the
+      males is sterile, and a guarding male may attack his partner or the keeper's hands. A pair can
+      spawn often and in large numbers, so plan for the offspring before breeding.
+    sources:
+      - *fishkeeper
+      - *abe
+      - *wikipedia
+  sexing:
+    text: >-
+      Adult males are larger, usually have the bigger nuchal hump and the brighter colours, and grow
+      longer, pointed dorsal and anal fins. Females stay shorter but look fuller, may also develop a
+      small hump, and often show black spots in the dorsal fin. At spawning time the genital papilla
+      helps: it is pointed in males and blunt in females. Young fish are hard to sex, which is why
+      breeders raise groups and wait for pairs to form.
+    sources:
+      - *fishkeeper
+      - *wikipedia
+  compatibility:
+    text: >-
+      The safest setup is a single flowerhorn. In very large tanks, large armoured catfish such as
+      Pterygoplichthys or equally tough Central American cichlids of similar size can work, the
+      latter only from about 1000 litres and with a divider at hand. Small or slow fish such as
+      tetras and angelfish are hunted or harassed. Never combine it with Midas cichlids, red devils
+      or three-spot cichlids: they belong to the same hybrid group, cross readily with the flowerhorn
+      and fight hard. The water needs fit most robust Central American cichlids, but temperament, not
+      water, decides whether a tankmate survives.
+    sources:
+      - *fishkeeper
+      - *sfCitrinellus
+      - *sari
+      - *tarkhani
+      - *magalhaes
+  problems:
+    text: >-
+      The most common mistake is buying a small, colourful juvenile for a small tank or a community
+      aquarium; the fish soon outgrows both and kills or wounds its tankmates. Poor water quality from
+      overfeeding and weak filtration stresses the fish and fades its colours, and hole-in-head
+      disease can kill valuable fish. A veterinary report describes a kidney tumour that spread to
+      the spleen in an older fish, so a fish with a growing abdomen, protruding eyes or breathing
+      trouble should be seen by a fish vet. Never release unwanted fish: feral flowerhorns harm
+      native fish in Southeast Asia, and Australia bans their import.
+    sources:
+      - &renal
+        kind: literature
+        title: >-
+          Rahmati-Holasoo, H., Shokrpoor, S., Masoudifard, M., Ebrahimzadeh Mousavi, H., Haddadi, A.
+          and Tavakkoli, A. (2017). Renal cystic adenocarcinoma in a flowerhorn cichlid with
+          metastatic involvement of the spleen. Journal of Aquatic Animal Health 29(3), 158-164
+          (abstract).
+        url: https://doi.org/10.1080/08997659.2017.1349008
+        accessed: 2026-10-13
+      - *fishkeeper
+      - *herder
+      - *magalhaes
+      - *wikipedia
+
+provenance:
+  runs:
+    - role: generator
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-13
+    - role: adjudicator
+      model: claude-opus-5-5
+      date: 2026-10-13
+  disagreements:
+    - field: status
+      proposals:
+        - by: generator
+          value: hybrid
+        - by: checker-a
+          value: hybrid
+        - by: checker-b
+          value: hybrid
+      decision: domestic-form
+      rationale: >-
+        The task text of the agents named hybrid by mistake; the pipeline instructions and the schema
+        name the flowerhorn as the example of domestic-form, a line bred and selected in captivity.
+        The generator and checker-a pointed out this conflict themselves. The reported parent
+        species are kept under taxonomy.parents.
+    - field: taxonomy.validName
+      proposals:
+        - by: generator
+          value: Flowerhorn
+        - by: checker-a
+          value: Flowerhorn (Amphilophus hybrid)
+        - by: checker-b
+          value: Amphilophus x Vieja hybrid line 'Flowerhorn'
+      decision: Flowerhorn
+      rationale: >-
+        The line has no scientific name, so its established trade name serves as the name. Genus
+        prefixes would suggest a placement within one genus or a fixed parentage, which the sources
+        do not support; the parents, the status and the note carry that information.
+    - field: taxonomy.parents
+      proposals:
+        - by: generator
+          value: [amphilophus-trimaculatus, amphilophus-labiatus, amphilophus-citrinellus, vieja-melanurus]
+        - by: checker-a
+          value: [amphilophus-trimaculatus, amphilophus-citrinellus, amphilophus-labiatus, vieja-melanurus]
+        - by: checker-b
+          value: [amphilophus-citrinellus, amphilophus-labiatus, amphilophus-trimaculatus, vieja-melanura]
+      decision: [amphilophus-trimaculatus, amphilophus-citrinellus, amphilophus-labiatus, vieja-melanurus]
+      rationale: >-
+        All runs name the same four parents. The Catalog of Fishes spells the valid name Vieja
+        melanurus and notes that the epithet is an indeclinable noun, so the id is vieja-melanurus.
+        The maternal species A. trimaculatus comes first.
+    - field: taxonomy.legacyNames
+      proposals:
+        - by: generator
+          value: [Flowerhorn]
+        - by: checker-a
+          value: [Flowerhorn]
+        - by: checker-b
+          value: [Flowerhorn]
+      decision: [Hybrid (man-made) Flowerhorn]
+      rationale: >-
+        The legacy catalog holds entry 771 with the genus field "Hybrid (man-made)" and the species
+        field "Flowerhorn"; like the other profiles, the legacy name joins both fields.
+    - field: features.temperatureC
+      proposals:
+        - by: generator
+          value: {min: 24, max: 30}
+        - by: checker-a
+          value: {min: 21, max: 33}
+        - by: checker-b
+          value: {min: 24, max: 30}
+        - by: tiebreaker-1
+          value: {min: 24, max: 31}
+        - by: tiebreaker-2
+          value: {min: 24, max: 29}
+      decision: {min: 24, max: 30}
+      rationale: >-
+        Qualified majority of the vote count (4 of 5 votes agree); the decided range is the median of
+        the agreeing bounds. Checker-a took the union of FishBase ranges that go back to aquarium books.
+    - field: features.ph
+      proposals:
+        - by: generator
+          value: {min: 7.0, max: 9.0}
+        - by: checker-a
+          value: {min: 7.0, max: 8.5}
+        - by: checker-b
+          value: {min: 7.0, max: 8.5}
+        - by: tiebreaker-1
+          value: {min: 7.2, max: 9.0}
+        - by: tiebreaker-2
+          value: {min: 7.3, max: 9.3}
+      decision: {min: 7.3, max: 8.5}
+      rationale: >-
+        Conservative decision of the vote count (3 of 5 votes agree on the top candidate): the
+        intersection of all votes. The measured habitat data support about 7.2 to 9.0, so the
+        intersection is narrower than the sources.
+    - field: features.ghDgh
+      proposals:
+        - by: generator
+          value: {min: 3, max: 20}
+        - by: checker-a
+          value: {min: 5, max: 20}
+        - by: checker-b
+          value: {min: 6, max: 20}
+      decision: {min: 5, max: 20}
+      rationale: >-
+        Unanimous decision of the vote count (3 of 3 votes within 2 dGH of the top candidate); the
+        lower bound is the median of 3, 5 and 6 dGH. The generator's 3 dGH rests on a hardness
+        computed from a scanned table whose columns are not fully clear.
+    - field: features.khDkh
+      proposals:
+        - by: generator
+          value: {min: 3, max: 8}
+        - by: checker-a
+          value: {min: 4, max: 16}
+        - by: checker-b
+          value: {min: 5, max: 16}
+        - by: tiebreaker-1
+          value: {min: 4, max: 16}
+        - by: tiebreaker-2
+          value: {min: 3, max: 8}
+      decision: {min: 5, max: 8}
+      rationale: >-
+        Conservative decision of the vote count (3 of 5 votes agree on the top candidate): the
+        intersection of all votes. The measurements support about 3 to 16 dKH, so the intersection is
+        much narrower than the sources.
+    - field: features.temperatureC.tolerance
+      proposals:
+        - by: generator
+          value: {min: 24, max: 30}
+        - by: checker-a
+          value: {min: 21, max: 33}
+        - by: checker-b
+          value: {min: 22, max: 31}
+        - by: tiebreaker-1
+          value: {min: 22, max: 31}
+        - by: tiebreaker-2
+          value: {min: 22, max: 30}
+      decision: {min: 24, max: 30}
+      rationale: >-
+        Conservative decision of the vote count (3 of 5 votes agree on the top candidate): the
+        intersection of all votes, which contains the natural range. The care sheets support about 22
+        to 31 C.
+    - field: features.ph.tolerance
+      proposals:
+        - by: generator
+          value: {min: 6.5, max: 9.0}
+        - by: checker-a
+          value: {min: 6.5, max: 8.5}
+        - by: checker-b
+          value: {min: 6.5, max: 8.5}
+        - by: tiebreaker-1
+          value: {min: 6.5, max: 9.0}
+        - by: tiebreaker-2
+          value: {min: 6.0, max: 9.3}
+      decision: {min: 6.5, max: 8.5}
+      rationale: >-
+        Conservative decision of the vote count (2 of 5 votes agree on the top candidate): the
+        intersection of all votes, which contains the natural range. Care sheets and habitat data
+        together support about 6.5 to 9.0.
+    - field: features.khDkh.tolerance
+      proposals:
+        - by: generator
+          value: {min: 3, max: 8}
+        - by: checker-a
+          value: {min: 4, max: 16}
+        - by: tiebreaker-1
+          value: {min: 4, max: 20}
+        - by: tiebreaker-2
+          value: {min: 3, max: 12}
+        - by: tiebreaker-3
+          value: {min: 3, max: 12}
+        - by: tiebreaker-4
+          value: {min: 4, max: 12}
+      decision: {min: 4, max: 8}
+      rationale: >-
+        Conservative decision of the vote count (3 of 6 votes agree on the top candidate; checker-b
+        gave no tolerance): the intersection of all votes, which contains the natural 5 to 8 dKH. The
+        only explicit carbonate hardness of a care sheet, 3 to 12 dKH, and the habitat values up to
+        about 16 dKH show that the intersection is narrower than the sources support.
+    - field: features.maxSizeCm
+      proposals:
+        - by: generator
+          value: {male: 30, female: 25}
+        - by: checker-a
+          value: {male: 35, female: 25}
+        - by: checker-b
+          value: {male: 30, female: 25}
+      decision: {male: 30, female: 25}
+      rationale: >-
+        The value describes typical well-kept adults, not show fish. The 35 cm of a Brazilian trade
+        survey does not separate the sexes and lies between the typical 30 cm of care sheets and
+        keepers and the 40 cm record of Fishkeeper.
+    - field: features.habitatZones
+      proposals:
+        - by: generator
+          value: [rock, sand]
+        - by: checker-a
+          value: [sand, rock]
+        - by: checker-b
+          value: [rock, sand, wood]
+      decision: [rock, sand]
+      rationale: >-
+        All runs agree on rock and sand. Driftwood appears in the care sheets only as optional decor,
+        and the fish does not need it.
+    - field: features.social
+      proposals:
+        - by: generator
+          value: {structure: solitary}
+        - by: checker-a
+          value: {structure: solitary}
+        - by: checker-b
+          value: {structure: pair}
+      decision: {structure: solitary}
+      rationale: >-
+        The flowerhorn-specific sources advise keeping a single fish; pairs are kept only for
+        breeding with a divider at hand. Checker-b followed the Seriously Fish advice for the Midas
+        parent.
+    - field: features.coloration
+      proposals:
+        - by: generator
+          value: {baseColors: [red, silver, black], pattern: spots}
+        - by: checker-a
+          value: {baseColors: [red, grey, black], pattern: mixed}
+        - by: checker-b
+          value: {baseColors: [red, orange, black], pattern: mixed}
+      decision: {baseColors: [red, silver, black], pattern: mixed}
+      rationale: >-
+        Red head and black lateral blotches are common to all proposals; the silvery pearl spots mark
+        the most common strains. Pearl spots and the blotch row together form a mixed pattern, as two
+        runs proposed.
+    - field: features.minTank
+      proposals:
+        - by: generator
+          value: {volumeL: 400, lengthCm: 150, depthCm: 45}
+        - by: checker-a
+          value: {volumeL: 350, lengthCm: 150, depthCm: 50}
+        - by: checker-b
+          value: {volumeL: 570, lengthCm: 180, depthCm: 50}
+      decision: {volumeL: 400, lengthCm: 150, depthCm: 45}
+      rationale: >-
+        The recommended unit is one adult, for which Seriously Fish sets a base of 150 x 45 cm; 400
+        litres follow at 60 cm height. Checker-b sized the tank for a breeding pair.
+    - field: features.lifespanYears
+      proposals:
+        - by: generator
+          value: {min: 10, max: 12}
+        - by: checker-a
+          value: {min: 8, max: 12}
+        - by: checker-b
+          value: {min: 10, max: 12}
+      decision: {min: 10, max: 12}
+      rationale: >-
+        Two independent care sheets give 10 to 12 years; the 8 years of a third sheet stand alone.
+        All are low-weight sources, hence low confidence.
+    - field: features.breeding
+      proposals:
+        - by: generator
+          value: open-substrate-spawner
+        - by: checker-a
+          value: open-substrate-spawner
+        - by: checker-b
+          value: cave-spawner
+      decision: open-substrate-spawner
+      rationale: >-
+        Fishkeeper describes eggs on slate, driftwood or in a rocky cave and the maternal parent
+        spawns on flat stones; the eggs lie open on a hard surface. Checker-b followed the Midas
+        parent's preference for cavities.
+    - field: features.beginnerSuitability
+      proposals:
+        - by: generator
+          value: moderate
+        - by: checker-a
+          value: moderate
+        - by: checker-b
+          value: demanding
+      decision: moderate
+      rationale: >-
+        Kept singly, the hybrid is hardy and easy to feed, and Seriously Fish rates the parents as
+        moderate. Checker-b weighted the risks of breeding pairs, which the aggression levels and the
+        solitary structure express.
