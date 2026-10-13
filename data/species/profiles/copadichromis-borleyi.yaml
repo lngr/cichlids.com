@@ -1,0 +1,1609 @@
+schemaVersion: 1
+id: copadichromis-borleyi
+legacyIds:
+  - 259
+status: described
+taxonomy:
+  validName: Copadichromis borleyi
+  genus: Copadichromis
+  species: borleyi
+  author: (Iles, 1960)
+  source: &cof
+    kind: catalog-of-fishes
+    title: "Eschmeyer's Catalog of Fishes, species of the genus Copadichromis"
+    url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Copadichromis
+    accessed: 2026-10-13
+  synonyms:
+    - name: Haplochromis borleyi
+      note: Original combination of Iles (1960), type locality Nkhata Bay; the Catalog of Fishes lists the species as valid in Copadichromis since Eccles and Trewavas (1989), most recently in Fricke et al. (2024).
+    - name: Cyrtocara borleyi
+      note: Combination of the aquarium literature of the 1980s, when many Malawi haplochromines were placed in Cyrtocara; not a separate nominal species.
+  legacyNames:
+    - Copadichromis borleyi
+  note: >-
+    The Catalog of Fishes (queried for Copadichromis on 2026-10-13) lists Copadichromis borleyi (Iles
+    1960) as valid, described as Haplochromis borleyi from Nkhata Bay in Lake Malawi in the issue dated
+    May 1959 that appeared in 1960, and records an introduced population in Morelos, Mexico. No other
+    nominal species is a synonym of it. The Cichlid Room Companion confirms the name and places the
+    species in the quadrimaculatus group. Trade names such as Haplochromis 'Red Kadango', red fin and
+    yellow fin borleyi refer to colour forms of this species; the OB (orange blotch) borleyi of the
+    trade is a cross with a peacock and no pure form.
+names:
+  trade:
+    en:
+      - Red fin borleyi
+      - Redfin Kadango
+      - Kadango red fin
+      - Yellow fin borleyi
+      - Redfin hap
+      - Goldfin hap
+      - Haplochromis borleyi
+variants:
+  - name: Kadango
+    kind: locality
+    note: Red-finned form from the south-western shore near Kadango; the best-known form in the trade, also sold as red fin or Kadango red.
+  - name: Mbenji
+    kind: locality
+    note: Form from Mbenji Island, listed by Fishkeeper and Seriously Fish.
+  - name: Namalenje
+    kind: locality
+    note: Form from Namalenje Island, listed by Fishkeeper.
+  - name: Mara Point
+    kind: locality
+    note: Form from Mara Point, listed by Fishkeeper.
+  - name: Yellow fin
+    kind: color-morph
+    note: Trade group of forms whose females and juveniles have yellow instead of red fins; usually sold without a locality.
+features:
+  origin:
+    value:
+      continent: Africa
+      region: Lake Malawi
+      waterbody: Lake Malawi
+      localities:
+        - Nkhata Bay
+        - Kadango
+        - Mbenji Island
+        - Mpanga Rocks
+        - Chimwalani Reef
+        - Namalenje
+        - Mara Point
+        - Tchulutcha Reef
+        - Crocodile Rocks
+        - Cape Ngombo
+        - Ipembi Rocks
+        - Nkhungu Reef
+        - Tawain Reef
+        - Selena-Kasinda
+    confidence: high
+    rationale: >-
+      Endemic to Lake Malawi, where it lives along the rocky coasts of Malawi, Mozambique and Tanzania.
+      The type locality is Nkhata Bay (Catalog of Fishes). Seriously Fish lists a long series of
+      collecting sites, Fishkeeper names the localities of the traded colour forms, and the Cichlid Room
+      Companion shows a male from Chimwalani Reef. The Catalog of Fishes and a 2022 survey of the
+      Amacuzac river record a population released in Morelos, Mexico, which does not change the native
+      range.
+    sources:
+      - *cof
+      - &fb
+        kind: database
+        title: "FishBase species summary: Copadichromis borleyi"
+        url: https://www.fishbase.se/summary/Copadichromis-borleyi.html
+        accessed: 2026-10-13
+      - &sf
+        kind: database
+        title: "Seriously Fish: Copadichromis borleyi"
+        url: https://www.seriouslyfish.com/species/copadichromis-borleyi/
+        accessed: 2026-10-13
+      - &fk
+        kind: database
+        title: "Fishkeeper (Maidenhead Aquatics): Redfin Kadango, Copadichromis borleyi, species profile"
+        url: https://www.fishkeeper.co.uk/fish/freshwater/cichlids/red-fin-kadango
+        accessed: 2026-10-13
+      - &crc
+        kind: database
+        title: "Cichlid Room Companion: Copadichromis borleyi (public summary)"
+        url: https://cichlidae.com/species.php?id=Vr-33HE_4NYL-HVxNN-zgQ
+        accessed: 2026-10-13
+      - &amacuzac
+        kind: literature
+        title: "Diversidad específica y taxonómica de la ictiofauna del Río Amacuzac, Morelos, México (2022). Revista de Biología Tropical 70(1) (abstract)"
+        url: https://doi.org/10.15517/rev.biol.trop..v70i1.48830
+        accessed: 2026-10-13
+    evidence:
+      - source: *cof
+        value:
+          continent: Africa
+          region: Lake Malawi
+          waterbody: Lake Malawi
+          localities:
+            - Nkhata Bay
+        note: type locality; introduced in Morelos, Mexico
+      - source: *sf
+        value:
+          continent: Africa
+          region: Lake Malawi
+          waterbody: Lake Malawi
+          localities:
+            - Kadango
+            - Nkhata Bay
+            - Mpanga Rocks
+            - Mbenji Island
+            - Ipembi Rocks
+            - Tchulutcha Reef
+            - Crocodile Rocks
+            - Cape Ngombo
+            - Nkhungu Reef
+            - Tawain Reef
+            - Selena-Kasinda
+        note: collecting sites
+      - source: *fk
+        value:
+          continent: Africa
+          region: Lake Malawi
+          localities:
+            - Mara Point
+            - Mbenji Island
+            - Namalenje
+        note: localities of the traded colour forms
+  temperatureC:
+    value:
+      min: 21
+      max: 29
+    confidence: high
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    rationale: >-
+      Lake Malawi endemic, so the natural range is the measured lake range: about 21 C inshore in the
+      cool, windy season in the south-east arm (Eccles 1974) up to about 28 to 29 C in summer surface
+      water (Vollmer et al. 2005; a 2013 campaign in Ngochera 2018). FishBase gives 24 to 26 C, which is
+      an aquarium recommendation after Baensch and Riehl and no habitat measurement.
+    sources:
+      - &branchu
+        kind: literature
+        title: "Branchu, P., Bergonzini, L., Ambrosi, J.-P., Cardinal, D., Delalande, M., Pons-Branchu, E. et al. (2010). Hydrochemistry (major and trace elements) of Lake Malawi (Nyasa), Tanzanian Northern Basin: local versus global considerations. Hydrology and Earth System Sciences Discussions 7, 4371-4409."
+        url: https://hess.copernicus.org/preprints/7/4371/2010/hessd-7-4371-2010.pdf
+        accessed: 2026-10-12
+      - &fao
+        kind: literature
+        title: "Vanden Bossche, J.-P. and Bernacsek, G. M. (1990). Source book for the inland fishery resources of Africa, Vol. 1, CIFA Technical Paper 18/1, FAO. Lake Malawi/Nyasa: physical and chemical data after Jackson et al. (1963) and Talling and Talling (1965)."
+        url: https://www.fao.org/4/t0473e/T0473E05.htm
+        accessed: 2026-10-12
+      - &eccles
+        kind: literature
+        title: "Eccles, D. H. (1974). An outline of the physical limnology of Lake Malawi (Lake Nyasa). Limnology and Oceanography 19(5), 730-742 (abstract)."
+        url: https://doi.org/10.4319/lo.1974.19.5.0730
+        accessed: 2026-10-12
+      - &vollmer05
+        kind: literature
+        title: "Vollmer, M. K., Bootsma, H. A., Hecky, R. E., Patterson, G., Halfman, J. D., Edmond, J. M., Eccles, D. H. and Weiss, R. F. (2005). Deep-water warming trend in Lake Malawi, East Africa. Limnology and Oceanography 50(2), 727-732."
+        url: https://www.dora.lib4ri.ch/empa/dload/empa:1253/PDF/view
+        accessed: 2026-10-12
+      - &vollmer99
+        kind: literature
+        title: "Vollmer, M. K., Weiss, R. F. and Bootsma, H. A. (1999). Lake Malawi/Nyasa deep water renewal. In: Bootsma, H. A. and Hecky, R. E. (eds.), Water Quality Report, SADC/GEF Lake Malawi/Nyasa Biodiversity Conservation Project, chapter 4."
+        url: https://sites.uwm.edu/hbootsma/files/2020/11/Ch4-Lake-Internal-Mixing.pdf
+        accessed: 2026-10-12
+      - &ngochera
+        kind: literature
+        title: "Ngochera (2018). Carbon Dynamics in Tropical Lake Malawi. PhD dissertation, University of Wisconsin-Milwaukee."
+        url: https://minds.wisconsin.edu/handle/1793/91765
+        accessed: 2026-10-12
+    evidence:
+      - source: *eccles
+        value:
+          min: 21
+          max: 27
+        note: 21 C inshore in the cool season, 27 C in the upper 60 m by May
+      - source: *vollmer05
+        value:
+          min: 23.5
+          max: 28
+        note: winter epilimnion to summer surface water
+      - source: *ngochera
+        value:
+          min: 24
+          max: 29
+        note: surface water in a 2013 campaign
+    tolerance:
+      value:
+        min: 21
+        max: 29
+      confidence: medium
+      verification:
+        method: unanimous
+        votes:
+          agree: 3
+          total: 3
+      rationale: >-
+        Care sheets recommend between 23 and 29 C: OATA 23 to 27 C for Malawi cichlids, Fishkeeper,
+        FishBase and FishProfiles 24 to 26 C, LiveAquaria and Guidarium 24 to 28 C and Seriously Fish
+        25 to 29 C. The upper bound of 29 C rests on Seriously Fish and matches the warm lake surface.
+        The tolerance has to contain the natural lake range, so the lower bound follows the cool-season
+        lake minimum of 21 C; no husbandry source reports harm there, but none recommends keeping the
+        fish below about 23 C for long periods, and 24 to 27 C is the comfortable core.
+      sources:
+        - *sf
+        - *fk
+        - &la
+          kind: database
+          title: "LiveAquaria: Yellowfin Borleyi Cichlid, care sheet"
+          url: https://www.liveaquaria.com/products/yellowfin-borleyi-cichlid
+          accessed: 2026-10-13
+        - &oata
+          kind: literature
+          title: "OATA, How to look after African Malawi cichlids (care sheet)"
+          url: https://ornamentalfish.org/what-we-do/advice-information/care-sheets/caresheets-tropical-freshwater-fish/how-to-look-after-african-malawi-cichlids/
+          accessed: 2026-10-13
+        - *fb
+        - *eccles
+        - &fp
+          kind: website
+          title: "FishProfiles.com: Copadichromis borleyi"
+          url: https://fishprofiles.com/profiles/freshwater/Cichlids/Copadichromis_borleyi
+          accessed: 2026-10-13
+        - &guid
+          kind: website
+          title: "Guidarium: Red Fin Borleyi"
+          url: https://guidarium.com/fishes/red-fin-borleyi
+          accessed: 2026-10-13
+      evidence:
+        - source: *sf
+          value:
+            min: 25
+            max: 29
+          note: aquarium recommendation
+        - source: *fk
+          value:
+            min: 24
+            max: 26
+          note: aquarium recommendation
+        - source: *la
+          value:
+            min: 24
+            max: 28
+          note: 76 to 82 F, aquarium recommendation
+        - source: *oata
+          value:
+            min: 23
+            max: 27
+          note: recommendation for Malawi cichlids in general
+        - source: *fb
+          value:
+            min: 24
+            max: 26
+          note: after an aquarium atlas
+        - source: *eccles
+          value:
+            min: 21
+            max: 27
+          note: natural lake range, which the tolerance contains
+        - source: *fp
+          value:
+            min: 24
+            max: 26
+          note: community care sheet
+        - source: *guid
+          value:
+            min: 24
+            max: 28
+          note: hobby care page
+  ph:
+    value:
+      min: 7.7
+      max: 8.6
+    confidence: high
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    rationale: >-
+      Lake Malawi endemic, so the natural range is the measured lake range: surface pH 7.7 to 8.6 after
+      Jackson et al. (1963) in the FAO source book. Branchu et al. (2010) give 7.5 to 8.5 for the whole
+      water column, the lower values belonging to deep water below the habitat of this shallow-water
+      species. The FishBase value of 8.0 to 8.5 is an aquarium figure and lies inside the lake range.
+    sources:
+      - *branchu
+      - *fao
+      - *eccles
+      - *vollmer05
+      - *vollmer99
+      - *ngochera
+    evidence:
+      - source: *fao
+        value:
+          min: 7.7
+          max: 8.6
+        note: lake surface water
+      - source: *branchu
+        value:
+          min: 7.5
+          max: 8.5
+        note: whole water column, lower values in deep water
+    tolerance:
+      value:
+        min: 7.5
+        max: 8.6
+      confidence: medium
+      verification:
+        method: unanimous
+        votes:
+          agree: 3
+          total: 3
+      rationale: >-
+        Husbandry sources agree closely: Seriously Fish and Fishkeeper give 7.5 to 8.5, LiveAquaria and
+        a retailer 7.8 to 8.6, OATA 8.0 to 8.6 for Malawi cichlids and FishBase 8.0 to 8.5. The lower
+        bound follows the two main care sheets and the upper bound the lake maximum, which the tolerance
+        has to contain. One retailer page gives 7.0 to 8.0, which lies below all other values and is
+        not followed. A stable pH matters more than the exact figure.
+      sources:
+        - *sf
+        - *fk
+        - *la
+        - *oata
+        - *fb
+        - &ifish
+          kind: website
+          title: "The iFish Store: Redfin Borleyi (retailer page)"
+          url: https://theifishstore.com/products/redfin-borleyi
+          accessed: 2026-10-13
+        - &rp
+          kind: website
+          title: "Riverpark Aquatics: OB Red Fin Borleyi (Copadichromis borleyi), retailer care notes"
+          url: https://riverparkaquatics.co.uk/ob-red-fin-borleyi-copadichromis-borleyi-6-7cm/
+          accessed: 2026-10-13
+      evidence:
+        - source: *sf
+          value:
+            min: 7.5
+            max: 8.5
+          note: aquarium recommendation
+        - source: *fk
+          value:
+            min: 7.5
+            max: 8.5
+          note: aquarium recommendation
+        - source: *la
+          value:
+            min: 7.8
+            max: 8.6
+          note: aquarium recommendation
+        - source: *oata
+          value:
+            min: 8
+            max: 8.6
+          note: recommendation for Malawi cichlids in general
+        - source: *fb
+          value:
+            min: 8
+            max: 8.5
+          note: after an aquarium atlas
+        - source: *ifish
+          value:
+            min: 7
+            max: 8
+          note: retailer value, outlier
+        - source: *rp
+          value:
+            min: 7.8
+            max: 8.6
+          note: retailer care notes
+  ghDgh:
+    value:
+      min: 3
+      max: 5
+    confidence: high
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    rationale: >-
+      Lake Malawi endemic, so the natural range is the measured lake range: calcium and magnesium
+      measured in the north basin in 1993 (Branchu et al. 2010) and the titrations of the 1960s compiled
+      by FAO give 3 to 5 dGH. Care sheets that ask for 10 dGH and more describe aquarium practice, not
+      the habitat.
+    sources:
+      - *branchu
+      - *fao
+      - *eccles
+      - *vollmer05
+      - *vollmer99
+      - *ngochera
+    evidence:
+      - source: *branchu
+        value:
+          min: 4.2
+          max: 4.6
+        note: north basin, upper 50 m, 1993
+      - source: *fao
+        value:
+          min: 3.2
+          max: 4.9
+        note: titrations of the 1960s
+    tolerance:
+      value:
+        min: 3
+        max: 25
+      confidence: medium
+      verification:
+        method: unanimous
+        votes:
+          agree: 3
+          total: 3
+      rationale: >-
+        Care sheets ask for much harder water than the lake has: Seriously Fish 10 to 25 dGH, Fishkeeper
+        up to 25, FishProfiles 12 to 20, OATA 12 to 18 for Malawi cichlids and FishBase from 15; one
+        retailer gives 6 to 10. The upper bound is the highest care-sheet value. The species lives in
+        the lake at 3 to 5 dGH, so the tolerance starts there to contain the natural range. No source
+        reports problems from soft or hard water as long as the carbonate hardness keeps the pH up.
+      sources:
+        - *sf
+        - *fk
+        - *oata
+        - *fb
+        - *branchu
+        - *fp
+        - *ifish
+      evidence:
+        - source: *sf
+          value:
+            min: 10
+            max: 25
+          note: aquarium recommendation
+        - source: *fk
+          value:
+            max: 25
+          note: states only an upper limit
+        - source: *oata
+          value:
+            min: 12
+            max: 18
+          note: recommendation for Malawi cichlids in general
+        - source: *fb
+          value:
+            min: 15
+          note: states only a lower limit, after an aquarium atlas
+        - source: *branchu
+          value:
+            min: 4.2
+            max: 4.6
+          note: natural lake value, which the tolerance contains
+        - source: *fp
+          value:
+            min: 12
+            max: 20
+          note: community care sheet
+        - source: *ifish
+          value:
+            min: 6
+            max: 10
+          note: retailer value
+  khDkh:
+    value:
+      min: 5
+      max: 8
+    confidence: high
+    verification:
+      method: waterbody
+      waterbody: lake-malawi
+    rationale: >-
+      Lake Malawi endemic, so the natural range is the measured lake range: an alkalinity of 2.0 to 2.6
+      meq/L (Jackson et al. 1963 in the FAO source book; Branchu et al. 2010) corresponds to 5 to 8 dKH.
+      Carbonate hardness exceeds total hardness because sodium balances part of the bicarbonate.
+    sources:
+      - *branchu
+      - *fao
+      - *eccles
+      - *vollmer05
+      - *vollmer99
+      - *ngochera
+    evidence:
+      - source: *branchu
+        value:
+          min: 6.5
+          max: 6.9
+        note: 2.33 to 2.46 meq/L alkalinity
+      - source: *fao
+        value:
+          min: 5.6
+          max: 7.3
+        note: 2.00 to 2.59 meq/L alkalinity, 1960s
+    tolerance:
+      value:
+        min: 5
+        max: 15
+      confidence: low
+      verification:
+        method: unanimous
+        votes:
+          agree: 3
+          total: 3
+      rationale: >-
+        Carbonate hardness figures are scarce: LiveAquaria gives 10 to 15 dKH for this species and OATA
+        the same range for Malawi cichlids in general, while Seriously Fish and FishBase state only total
+        hardness and pH and stress hard, alkaline, stable water. The lower bound is the natural lake
+        value of 5 dKH, which the tolerance contains, and the upper bound follows the two care-sheet
+        figures. A stable, well-buffered pH matters more than the exact value; the thin evidence keeps
+        the confidence low.
+      sources:
+        - *la
+        - *oata
+        - *branchu
+        - *sf
+        - *fb
+      evidence:
+        - source: *la
+          value:
+            min: 10
+            max: 15
+          note: aquarium recommendation
+        - source: *oata
+          value:
+            min: 10
+            max: 15
+          note: recommendation for Malawi cichlids in general
+        - source: *branchu
+          value:
+            min: 6.5
+            max: 6.9
+          note: natural lake value, which the tolerance contains
+  maxSizeCm:
+    value:
+      male: 16
+      female: 13
+    confidence: medium
+    rationale: >-
+      The sources vary widely. Wikipedia, after Staeck and Linke and after Konings, gives 13 to 16 cm
+      total length for males and about 13 cm for females; German Wikipedia cites Spreinat with up to
+      17 cm, Animal-World 15 to 17 cm, and FishBase lists 14 cm from the CLOFFA checklist. Hobby care
+      sheets give larger figures: Fishkeeper 18 cm, LiveAquaria up to 20 cm and Seriously Fish 20 cm
+      standard length, which look like exceptional males or rounded values. Well-kept aquarium males
+      typically reach about 16 cm and females about 13 cm; all sources that separate the sexes call the
+      females clearly smaller.
+    sources:
+      - *fb
+      - *sf
+      - *fk
+      - *la
+      - &aw
+        kind: database
+        title: "Animal-World: Red Fin Kadango, Haplochromis borleyi redfin (archived care sheet)"
+        url: https://web.archive.org/web/20210422171848/https://animal-world.com/encyclo/fresh/cichlid/RedFinKadango.php
+        accessed: 2026-10-13
+      - &wikien
+        kind: website
+        title: "Wikipedia (English): Copadichromis borleyi"
+        url: https://en.wikipedia.org/wiki/Copadichromis_borleyi
+        accessed: 2026-10-13
+      - &wikide
+        kind: website
+        title: "Wikipedia (German): Copadichromis borleyi"
+        url: https://de.wikipedia.org/wiki/Copadichromis_borleyi
+        accessed: 2026-10-13
+      - &arch41467
+        kind: archive
+        title: cichlids.com forum thread 41467
+        url: https://www.cichlids.com/disc/read.php?2,41467
+        accessed: 2026-10-13
+    evidence:
+      - source: *fb
+        value:
+          male: 14
+        note: 14 cm total length, male or unsexed
+      - source: *sf
+        value:
+          male: 20
+        note: 200 mm standard length, unsexed maximum; females considerably smaller
+      - source: *fk
+        value:
+          male: 18
+        note: unsexed maximum
+      - source: *la
+        value:
+          male: 20
+          female: 18
+        note: 8 inches, females slightly smaller
+      - source: *aw
+        value:
+          male: 17
+        note: 15 to 17 cm, sometimes larger in tanks
+      - source: *wikien
+        value:
+          male: 16
+          female: 13
+        note: males 13 to 16 cm, females about 13 cm
+      - source: *wikide
+        value:
+          male: 17
+          female: 13
+        note: up to 17 cm, females clearly smaller
+      - source: *arch41467
+        value:
+          male: 20
+        note: a keeper gives about 8 inches
+  predation:
+    value: 1
+    confidence: low
+    verification:
+      method: conservative
+      votes:
+        agree: 3
+        total: 5
+    rationale: >-
+      The vote did not settle: generator, checker-a and tiebreaker-1 proposed level 1, checker-b and
+      tiebreaker-2 level 0, so the tally took the most cautious proposal, level 1, with low confidence.
+      Every source written about the species describes a specialised zooplankton feeder (FishBase,
+      Seriously Fish, Kassam et al. 2003, the Cichlid Room Companion, the utaka literature), and none
+      names fish as food, which by itself fits level 0. The case for level 1 rests on indirect and
+      low-weight evidence: the congener C. quadrimaculatus switches to larval and juvenile lake sardines
+      when they are available (Allison et al. 1996), a breeder in the cichlids.com archive reports small
+      fish taken besides crustaceans, a retailer calls the fish peaceful only towards tankmates too large
+      for its mouth, and the highly protrusible mouth that catches free-swimming plankton also takes
+      free-swimming fry. Against this, stomachs of C. virginalis held almost only zooplankton with scales
+      as the sole fish remains (Duponchelle et al.). Fry and fish up to about 2 cm in the tank should
+      therefore be regarded as at risk; larger tankmates are never hunted.
+    sources:
+      - *fb
+      - *sf
+      - &kassam03
+        kind: literature
+        title: "Kassam, D., Adams, D., Ambali, A. and Yamaoka, K. (2003). Body shape variation in relation to resource partitioning within cichlid trophic guilds coexisting along the rocky shore of Lake Malawi. Animal Biology 53(1), 59-70 (abstract)."
+        url: https://doi.org/10.1163/157075603769682585
+        accessed: 2026-10-13
+      - &anseeuw
+        kind: literature
+        title: "Anseeuw, D., Nevado, B., Busselen, P., Snoeks, J. and Verheyen, E. (2012). Extensive introgression among ancestral mtDNA lineages: phylogenetic relationships of the Utaka within the Lake Malawi cichlid flock. International Journal of Evolutionary Biology 2012, 865603."
+        url: https://doi.org/10.1155/2012/865603
+        accessed: 2026-10-13
+      - *crc
+      - *aw
+      - &allison
+        kind: literature
+        title: "Allison, E. H., Irvine, K., Thompson, A. B. and Ngatunga, B. P. (1996). Diets and food consumption rates of pelagic fish in Lake Malawi, Africa. Freshwater Biology 35(3) (abstract)."
+        url: https://ueaeprints.uea.ac.uk/id/eprint/45382/
+        accessed: 2026-10-13
+      - &duponchelle
+        kind: literature
+        title: "Duponchelle, F., Bootsma, H., Ribbink, A. J., Davis, C., Msukwa, A., Mafuka, J. and Mandere, D. Chapter 4: Temporal diet patterns of some Lake Malawi demersal fish species as revealed by stomach contents and stable isotope analysis. In: Lake Malawi/Nyasa/Niassa Biodiversity Conservation Project report."
+        url: https://malawicichlids.com/duponchelle_ch4.pdf
+        accessed: 2026-10-13
+      - &hydrobio22
+        kind: literature
+        title: "Taxonomic investigation of the zooplanktivorous Lake Malawi cichlids Copadichromis mloto (Iles) and C. virginalis (Iles). Hydrobiologia (2022)."
+        url: https://doi.org/10.1007/s10750-022-05025-1
+        accessed: 2026-10-13
+      - &it
+        kind: website
+        title: "Imperial Tropicals: OB Borleyi (retailer page)"
+        url: https://imperialtropicals.com/products/copadichromis-borleyi-ob
+        accessed: 2026-10-13
+      - &arch15160
+        kind: archive
+        title: cichlids.com forum thread 15160
+        url: https://www.cichlids.com/disc/read.php?2,15160
+        accessed: 2026-10-13
+    evidence:
+      - source: *fb
+        value: 0
+        note: plankton feeder, fish not mentioned
+      - source: *sf
+        value: 0
+        note: zooplankton feeder; fry in community tanks survive poorly
+      - source: *kassam03
+        value: 0
+        note: zooplankton feeder of the rocky shore
+      - source: *anseeuw
+        value: 0
+        note: utaka as zooplanktivorous midwater feeders
+      - source: *crc
+        value: 0
+        note: feeding type planktivorous; verification only
+      - source: *allison
+        value: 1
+        note: congener C. quadrimaculatus switches to larval and juvenile fish in the wild
+      - source: *duponchelle
+        value: 0
+        note: congener C. virginalis, stomachs over 95 percent zooplankton with scales as the only fish remains
+      - source: *hydrobio22
+        value: 0
+        note: genus described as zooplanktivorous
+      - source: *it
+        value: 1
+        note: peaceful as long as tankmates do not fit into its mouth
+      - source: *arch15160
+        value: 1
+        note: a breeder reports small fish taken besides crustaceans
+  diet:
+    value:
+      type: invertivore
+      bloatSensitive: false
+      foods:
+        - zooplankton
+        - small crustaceans
+        - insect larvae
+        - Artemia
+        - Mysis
+        - Daphnia
+        - small pellets
+        - flake food
+        - spirulina flake
+    confidence: high
+    verification:
+      method: unanimous
+      votes:
+        agree: 3
+        total: 3
+    rationale: >-
+      All three votes agree. In the lake the species picks zooplankton from the open water with a highly
+      protrusible mouth: the original description of Iles (1960) treats it among a group of zooplankton
+      feeders, FishBase lists plankton, Kassam et al. (2003, 2004) study it as a member of the
+      zooplankton-feeding guild, and Seriously Fish, Fishkeeper and M. K. Oliver call it a planktivore;
+      the Cichlid Room Companion confirms this. That is an invertivore diet in the sense of the rubric.
+      In the tank it accepts almost any small meaty or dry food, and Seriously Fish advises some plant
+      matter as well. No source describes it as prone to bloat, and it is no grazer, so bloatSensitive
+      is false. LiveAquaria calls it an omnivore that feeds on sediment-covered rocks, which contradicts
+      all other sources and probably confuses it with another species.
+    sources:
+      - *fb
+      - *sf
+      - *kassam03
+      - &oliver
+        kind: literature
+        title: "Oliver, M. K. (2019). What is an Utaka? malawicichlids.com"
+        url: https://malawicichlids.com/mw01018.htm
+        accessed: 2026-10-13
+      - *crc
+      - *la
+      - &iles
+        kind: literature
+        title: "Iles, T. D. (1960). A group of zooplankton feeders of the genus Haplochromis (Cichlidae) in Lake Nyasa. Annals and Magazine of Natural History (Series 13) 2, 257-280 (bibliographic record in the Catalog of Fishes)."
+        url: https://researcharchive.calacademy.org/research/ichthyology/catalog/fishcatget.asp?tbl=species&genus=Copadichromis
+        accessed: 2026-10-13
+      - &kassam04
+        kind: literature
+        title: "Kassam, D., Adams, D. and Yamaoka, K. (2004). Functional significance of variation in trophic morphology within feeding microhabitat-differentiated cichlid species in Lake Malawi. Animal Biology 54(1), 77-90 (abstract)."
+        url: https://doi.org/10.1163/157075604323010060
+        accessed: 2026-10-13
+      - *fk
+      - *anseeuw
+    evidence:
+      - source: *fb
+        value:
+          type: invertivore
+          bloatSensitive: false
+        note: plankton, trophic level 3.4
+      - source: *sf
+        value:
+          type: invertivore
+          bloatSensitive: false
+        note: specialised zooplankton feeder, unfussy in tanks, some plant matter advised
+      - source: *kassam03
+        value:
+          type: invertivore
+          bloatSensitive: false
+        note: zooplankton feeding guild
+      - source: *oliver
+        value:
+          type: invertivore
+          bloatSensitive: false
+        note: utaka feed on small planktonic crustaceans
+      - source: *crc
+        value:
+          type: invertivore
+          bloatSensitive: false
+        note: planktivorous
+      - source: *la
+        value:
+          type: omnivore
+          bloatSensitive: false
+        note: retailer care sheet, contradicts the other sources
+      - source: *iles
+        value:
+          type: invertivore
+          bloatSensitive: false
+        note: original description places it among zooplankton feeders; bloat not addressed
+      - source: *fk
+        value:
+          type: invertivore
+          bloatSensitive: false
+        note: planktivore in the wild, meaty frozen foods in the tank
+      - source: *anseeuw
+        value:
+          type: invertivore
+        note: utaka as midwater zooplanktivores
+  aggressionConspecific:
+    value: 2
+    confidence: medium
+    rationale: >-
+      All votes agree. Outside breeding the fish shoal peacefully, but mature males claim a spawning
+      site and court females hard. Seriously Fish therefore advises one male with at least three
+      females and several males only in large tanks with room for separate sites; Fishkeeper reports
+      the same and notes rising aggression before spawning. Injuries are not reported as typical with
+      that ratio and space, which fits level 2.
+    sources:
+      - *sf
+      - *fk
+      - *fb
+      - *wikide
+    evidence:
+      - source: *sf
+        value: 2
+        note: rival males need space; harem advised
+      - source: *fk
+        value: 2
+        note: several males only in large tanks; aggression rises at spawning
+      - source: *wikide
+        value: 2
+        note: wild males defend boulder tops against neighbours with displays
+  aggressionHeterospecific:
+    value: 1
+    confidence: medium
+    rationale: >-
+      All votes agree. Seriously Fish calls the species generally peaceful and suited to a calm Malawi
+      community, Fishkeeper relatively peaceful, and Aquatropic a peaceful planktivore; next to rowdy
+      tankmates it is more often the victim than the cause, and a keeper in the archive found his male
+      the weakest fish of a mixed tank outside feeding time. A breeding male displays at fish near his
+      spawning site, and Seriously Fish warns that similarly coloured fish may provoke him. Some
+      retailers call it semi-aggressive, which fits the defence of the spawning site rather than attacks
+      on other species.
+    sources:
+      - *sf
+      - *fk
+      - &aq
+        kind: website
+        title: "Aquatropic (Quality Marine): Red Fin Borleyi Cichlid (Copadichromis borleyi)"
+        url: https://www.qualitymarine.com/news/red-fin-borleyi-cichlid-copadichromis-borleyi/
+        accessed: 2026-10-13
+      - *fp
+      - &arch15794
+        kind: archive
+        title: cichlids.com forum thread 15794
+        url: https://www.cichlids.com/disc/read.php?2,15794
+        accessed: 2026-10-13
+    evidence:
+      - source: *sf
+        value: 1
+        note: generally peaceful; similarly coloured fish may provoke it
+      - source: *fk
+        value: 1
+        note: relatively peaceful community fish
+      - source: *aq
+        value: 1
+        note: peaceful planktivore
+      - source: *arch15794
+        value: 0
+        note: male bullied by tankmates outside feeding time
+  territory:
+    value:
+      size: small
+      breedingOnly: true
+    confidence: medium
+    rationale: >-
+      All votes agree. Only breeding males hold a site: a flat rock face, the top of a boulder or a small
+      sand bower on it (FishBase); in the tank a male claims a flat stone or a shallow pit near rocks
+      (Seriously Fish, Fishkeeper). In the lake such a site with its slopes can cover a few square
+      metres (Spreinat in German Wikipedia), but in the tank it shrinks to a stone and its surroundings.
+      Females and non-breeding fish roam in shoals without a territory.
+    sources:
+      - *fb
+      - *sf
+      - *fk
+      - *wikide
+    evidence:
+      - source: *fb
+        value:
+          size: small
+          breedingOnly: true
+        note: males defend spawning sites on boulders
+      - source: *sf
+        value:
+          size: small
+          breedingOnly: true
+        note: shoaling species; males set up individual spawning territories
+      - source: *fk
+        value:
+          size: small
+          breedingOnly: true
+        note: male cleans a flat rock or pit when ready to spawn
+      - source: *wikide
+        value:
+          size: large
+          breedingOnly: true
+        note: wild male defends at least 2 by 2 m around a boulder top
+  habitatZones:
+    value:
+      - rock
+      - openWater
+      - sand
+    confidence: high
+    rationale: >-
+      All votes agree, and three independent databases support the value. The species lives in the
+      water column above rocky shores and isolated boulders, often where rocks meet sand, at about 5 to
+      20 m depth (FishBase, Seriously Fish, Fishkeeper; the Cichlid Room Companion confirms a
+      sediment-rich rocky habitat). In the tank it needs free swimming space, a sand bottom and rock
+      piles or flat stones as spawning sites.
+    sources:
+      - *fb
+      - *sf
+      - *fk
+      - *crc
+    evidence:
+      - source: *fb
+        value:
+          - rock
+          - openWater
+          - sand
+        note: near large boulders; schools at rocky islets on sand
+      - source: *sf
+        value:
+          - rock
+          - openWater
+          - sand
+        note: open water near rocks; sand substrate with rock piles in the tank
+      - source: *fk
+        value:
+          - rock
+          - openWater
+          - sand
+        note: open sand with some rocky areas
+      - source: *crc
+        value:
+          - rock
+        note: sediment-rich rocky habitat
+  social:
+    value:
+      structure: harem
+      ratio: 3
+    confidence: high
+    rationale: >-
+      All votes agree. A shoaling species of which only the males hold breeding sites. Seriously Fish
+      advises one male with at least three females, Fishkeeper one male with several females, FishProfiles
+      two males with five to six females, and M. K. Oliver a group of at least six utaka with preferably a
+      single male. Several males need a larger tank, each with its own females.
+    sources:
+      - *sf
+      - *fk
+      - *oliver
+      - *fp
+      - *aw
+    evidence:
+      - source: *sf
+        value:
+          structure: harem
+          ratio: 3
+        note: one male with at least three females
+      - source: *fk
+        value:
+          structure: harem
+          ratio: 3
+        note: one male with several females
+      - source: *oliver
+        value:
+          structure: harem
+          ratio: 5
+        note: group of at least six, preferably one male
+      - source: *fp
+        value:
+          structure: harem
+          ratio: 2.75
+        note: two males with five to six females
+      - source: *aw
+        value:
+          structure: harem
+          ratio: 3
+        note: one male with three or more females
+  speciesOnly:
+    value: false
+    confidence: high
+    verification:
+      method: unanimous
+      votes:
+        agree: 3
+        total: 3
+    rationale: >-
+      All three votes agree. The species is a standard member of peaceful Lake Malawi communities:
+      Seriously Fish names Aulonocara and peaceful haps such as Cyrtocara moorii as tankmates, Fishkeeper
+      lists it for the Malawi cichlid community, and Aquatropic names several genera of peaceful haps. No
+      source asks for a species-only tank; the advice against other Copadichromis and against mbuna is
+      covered by the hybrid group and the aggression features, and a species tank only raises fry
+      survival.
+    sources:
+      - *sf
+      - *fk
+      - *fb
+      - *aq
+    evidence:
+      - source: *sf
+        value: false
+        note: community with Aulonocara and peaceful haps
+      - source: *fk
+        value: false
+        note: Malawi cichlid community
+      - source: *aq
+        value: false
+        note: many Malawi genera suitable
+  hybridGroup:
+    value: copadichromis
+    confidence: low
+    verification:
+      method: conservative
+      votes:
+        agree: 3
+        total: 5
+    rationale: >-
+      The vote did not settle: generator, tiebreaker-1 and tiebreaker-2 proposed the group copadichromis,
+      checker-a and checker-b proposed null, so the tally took the named group as the cautious choice
+      with low confidence. Seriously Fish warns on all five of its Copadichromis profiles (C. borleyi,
+      C. azureus, C. chrysonotus, C. virginalis and C. ilesi) that other species of the genus must not
+      be added because they can hybridise with one another, and a retailer gives the same warning;
+      females and juveniles of the genus are silvery with dark spots and hard to tell apart. Anseeuw et
+      al. (2012) explain divergent mtDNA lineages in several Copadichromis species by past hybridisation
+      in the lake, although C. borleyi itself carried no introgressed lineage. No documented cross between
+      C. borleyi and another named Copadichromis was found, so the group rests on the hobby warnings and
+      the close relationship, as checker-a and checker-b point out. The votes differed on the scope:
+      tiebreaker-2 named only the three species whose warnings it read, the generator the seven
+      Copadichromis of the trade, tiebreaker-1 all 25 valid species. Because every warning is phrased for
+      the whole genus and not for named pairs, the group in hybrid-groups.yaml contains all 25 valid
+      species of the Catalog of Fishes. Crosses with peacocks (the OB borleyi of the trade, and
+      Animal-World's report that peacock males court borleyi females) concern Aulonocara, which has a
+      group of its own.
+    sources:
+      - *sf
+      - &sfaz
+        kind: database
+        title: "Seriously Fish: Copadichromis azureus"
+        url: https://www.seriouslyfish.com/species/copadichromis-azureus/
+        accessed: 2026-10-13
+      - &sfch
+        kind: database
+        title: "Seriously Fish: Copadichromis chrysonotus"
+        url: https://www.seriouslyfish.com/species/copadichromis-chrysonotus/
+        accessed: 2026-10-13
+      - &sfvi
+        kind: database
+        title: "Seriously Fish: Copadichromis virginalis"
+        url: https://www.seriouslyfish.com/species/copadichromis-virginalis/
+        accessed: 2026-10-13
+      - &sfil
+        kind: database
+        title: "Seriously Fish: Copadichromis ilesi"
+        url: https://www.seriouslyfish.com/species/copadichromis-ilesi/
+        accessed: 2026-10-13
+      - *anseeuw
+      - *cof
+      - *aw
+      - *it
+    evidence:
+      - source: *sf
+        value: copadichromis
+        note: other Copadichromis to be kept out because the species can hybridise
+      - source: *sfaz
+        value: copadichromis
+        note: same genus-wide warning on the profile of C. azureus
+      - source: *sfch
+        value: copadichromis
+        note: same genus-wide warning on the profile of C. chrysonotus
+      - source: *sfvi
+        value: copadichromis
+        note: same genus-wide warning on the profile of C. virginalis
+      - source: *sfil
+        value: copadichromis
+        note: same genus-wide warning on the profile of C. ilesi
+      - source: *anseeuw
+        value: copadichromis
+        note: past introgression among utaka in the lake; no aquarium cross
+      - source: *cof
+        value: copadichromis
+        note: 25 valid species including C. borleyi; membership basis only, no statement on crosses
+      - source: *it
+        value: copadichromis
+        note: retailer warns against mixing Copadichromis species; OB borleyi is a cross with a peacock
+  coloration:
+    value:
+      baseColors:
+        - blue
+        - red
+        - orange
+        - yellow
+      pattern: plain
+    confidence: medium
+    rationale: >-
+      Adult males have a metallic blue head and back and red, orange or, in the yellow fin forms, yellow
+      flanks and fins, without bars or stripes. Females and juveniles are silvery grey to brownish with
+      two or three dark spots on the flank and red or yellow fins. Yellow is kept among the base colours
+      because the yellow fin forms are traded as this species, and leaving it out would hide their
+      similarity to yellow males of other species.
+    sources:
+      - *wikien
+      - *wikide
+      - *aq
+      - *fk
+      - *fp
+      - *sf
+      - *guid
+    evidence:
+      - source: *wikien
+        value:
+          baseColors:
+            - blue
+            - red
+            - yellow
+          pattern: plain
+        note: blue head, yellow to red flanks; females with three spots
+      - source: *wikide
+        value:
+          baseColors:
+            - blue
+            - orange
+          pattern: plain
+        note: blue male with orange-spotted scales on the flanks
+      - source: *aq
+        value:
+          baseColors:
+            - blue
+            - red
+          pattern: plain
+        note: metallic blue with crimson flanks
+      - source: *fk
+        value:
+          baseColors:
+            - blue
+            - red
+          pattern: plain
+        note: females and juveniles silver with red fins
+      - source: *fp
+        value:
+          baseColors:
+            - blue
+            - orange
+          pattern: plain
+        note: blue face and fins, orange body
+  feedingSpeed:
+    value: hasty
+    confidence: low
+    rationale: >-
+      No database rates the feeding pace. As a plankton picker the fish snaps food out of the water
+      column before it sinks, and a keeper in the archive reports his otherwise timid male as the
+      fastest and pushiest fish at feeding time. Checker-a argued for normal because care sheets do not
+      describe it as a glutton like mbuna and it can become shy next to boisterous species; the
+      generator and checker-b chose hasty. Hasty is kept, as it follows the only direct report and
+      protects slow-feeding tankmates in the compatibility check.
+    sources:
+      - *arch15794
+      - *sf
+    evidence:
+      - source: *arch15794
+        value: hasty
+        note: fastest fish in the tank at feeding time
+  minTank:
+    value:
+      volumeL: 300
+      lengthCm: 150
+      depthCm: 45
+    confidence: medium
+    rationale: >-
+      An active open-water fish of about 16 cm, kept as one male with three or more females. Seriously
+      Fish sets 150 by 45 by 45 cm (about 300 litres) as the lower limit for the species and Fishkeeper
+      at least 150 cm length. M. K. Oliver recommends at least about 380 litres, but for utaka groups of
+      six or more, which is larger than the social unit of one male with three females. The tank base of
+      150 by 45 cm and about 300 litres follow the species-specific database.
+    sources:
+      - *sf
+      - *fk
+      - *oliver
+      - *la
+    evidence:
+      - source: *sf
+        value:
+          volumeL: 304
+          lengthCm: 150
+          depthCm: 45
+        note: minimum for the species
+      - source: *fk
+        value:
+          lengthCm: 150
+        note: states only a minimum length of about 5 ft
+      - source: *oliver
+        value:
+          volumeL: 380
+        note: states only at least 100 US gallons for utaka groups
+      - source: *la
+        value:
+          volumeL: 265
+        note: 70 US gallons
+  lifespanYears:
+    value:
+      min: 8
+      max: 10
+    confidence: low
+    rationale: >-
+      No literature or species database gives a life span for this species. A retailer states 8 to 10
+      years and another 7 years, and Animal-World gives 7 to 10 years for Lake Malawi cichlids in
+      general. Similar Malawi haps of this size live about that long in good care.
+    sources:
+      - *rp
+      - *ifish
+      - *aw
+    evidence:
+      - source: *rp
+        value:
+          min: 8
+          max: 10
+        note: retailer value
+      - source: *ifish
+        value:
+          min: 7
+          max: 7
+        note: retailer value
+      - source: *aw
+        value:
+          min: 7
+          max: 10
+        note: average for Lake Malawi cichlids in general
+  breeding:
+    value: maternal-mouthbrooder
+    confidence: high
+    rationale: >-
+      All votes agree. A polygynous maternal mouthbrooder: the male spawns on a rock face or in a small
+      sand bower on top of a boulder, and the female carries about 60 eggs and fry for roughly three to
+      four weeks (FishBase, Seriously Fish, Fishkeeper; confirmed by the Cichlid Room Companion).
+    sources:
+      - *fb
+      - *sf
+      - *fk
+      - *crc
+    evidence:
+      - source: *fb
+        value: maternal-mouthbrooder
+        note: about 60 eggs
+      - source: *sf
+        value: maternal-mouthbrooder
+        note: holds three to four weeks
+      - source: *fk
+        value: maternal-mouthbrooder
+        note: holds up to 25 days
+      - source: *crc
+        value: maternal-mouthbrooder
+  beginnerSuitability:
+    value: moderate
+    confidence: medium
+    rationale: >-
+      All votes agree. Hardy and unfussy about food, but it needs a large tank, stable alkaline water, a
+      harem and calm tankmates. Seriously Fish rates it moderate and the Cichlid Room Companion lists it
+      for intermediate aquarists, while LiveAquaria calls it easy.
+    sources:
+      - *sf
+      - *crc
+      - *la
+    evidence:
+      - source: *sf
+        value: moderate
+        note: difficulty 5 of 8
+      - source: *crc
+        value: moderate
+        note: intermediate aquarists
+      - source: *la
+        value: easy
+        note: care level easy
+partners:
+  suitable:
+    - species: Aulonocara stuartgranti
+      reason: Peaceful peacock of similar size that uses the rocks and the bottom while the borleyi shoal swims higher; Seriously Fish names Aulonocara as good tankmates.
+      condition: Avoid peacock males with the same blue and red colours as the borleyi male, never keep OB peacocks with it, and do not breed from mixed tanks, as peacock males may court borleyi females.
+    - species: Cyrtocara moorii
+      reason: Calm sand-dwelling hap of the same water and temperament; named as a good tankmate by Seriously Fish.
+      condition: Tank of at least 150 cm length.
+    - species: Placidochromis electra
+      reason: Peaceful sand hap that does not compete for the open water.
+      condition: Feed so that the slower hap gets its share.
+    - species: Otopharynx lithobates
+      reason: Mild hap of rocky shores with similar size and needs.
+    - species: Labidochromis caeruleus
+      reason: One of the mildest mbuna; it keeps to the rocks and leaves the open-water shoal alone. Fishkeeper accepts mild mbuna, while Seriously Fish advises against mbuna in general.
+      condition: Large tank with plenty of rockwork and the mbuna diet without excess protein.
+    - species: Synodontis multipunctatus
+      reason: Bottom-dwelling catfish of the African lakes, a common partner in Malawi communities (Fishkeeper names Synodontis).
+  unsuitable:
+    - species: Copadichromis azureus
+      reason: Another utaka of the same genus and hybrid group; the species may hybridise and their silvery females are hard to tell apart.
+    - species: Copadichromis trewavasae
+      reason: Same genus and hybrid group with a similar build; risk of hybrids and of rivalry between blue males.
+    - species: Melanochromis auratus
+      reason: Aggressive mbuna that harasses calm open-water haps; Seriously Fish advises against any mbuna company.
+    - species: Maylandia estherae
+      reason: Robust, quarrelsome mbuna that claims most of the tank and stresses the peaceful utaka.
+    - species: Nimbochromis venustus
+      reason: Large predatory hap that eats juveniles and females of borleyi size and dominates the open water.
+    - species: Tropheus moorii
+      reason: Aggressive Tanganyika herbivore that needs a different diet and attacks fish entering its space.
+profile:
+  overview:
+    text: >-
+      Copadichromis borleyi is a utaka, one of the Lake Malawi haplochromines that live in shoals above
+      the rocks and feed on drifting plankton. In the hobby it is best known as the red fin borleyi or
+      Kadango, after the red-finned form from the south-western shore. Mature males turn metallic blue
+      on the head and back with red, orange or yellow flanks, while females keep the silvery juvenile
+      dress with dark spots and coloured fins. It is a calm fish for a large Malawi tank with peaceful
+      haps and peacocks. Its demands are mainly space, stable alkaline water and a harem of one male
+      with several females. Mbuna and other Copadichromis are poor company, the first because of their
+      aggression, the second because the species of the genus may cross.
+    sources:
+      - *fb
+      - *sf
+      - *fk
+      - *aq
+      - *crc
+  habitat:
+    text: >-
+      The species is endemic to Lake Malawi and occurs along many rocky coasts of Malawi, Mozambique and
+      Tanzania. It keeps to the water column near large boulders and reefs, usually between about 5 and
+      20 metres depth, often where rocks border sandy areas. Shoals of females and young drift above the
+      rocks, sometimes mixed with other utaka, and face the gentle current to pick out passing plankton.
+      Breeding males stay near a boulder top that serves as their spawning site. The lake water there
+      is warm, between about 21 and 29 C, soft at 3 to 5 dGH and alkaline at pH 7.7 to 8.6, with more
+      carbonate hardness than total hardness. A population released by fishkeepers lives in the
+      Amacuzac river in Mexico.
+    sources:
+      - *fb
+      - *sf
+      - *fk
+      - *crc
+      - *oliver
+      - *branchu
+      - *fao
+      - *eccles
+      - *amacuzac
+  sizeAndGrowth:
+    text: >-
+      Males usually grow to about 16 cm in the aquarium, females stay noticeably smaller at around 13 cm.
+      Hobby sources sometimes give 18 to 20 cm, which describes exceptional males rather than the typical
+      adult. The body is fairly deep for a utaka and the eyes are large. Juveniles of both sexes look
+      like females, silvery with dark flank spots and red or yellow fins. Males gain their blue colour
+      gradually as they mature, so a group of young fish shows its sexes only after some months. With
+      good care these fish live for many years; retailers give about eight to ten.
+    sources:
+      - *wikien
+      - *wikide
+      - *fb
+      - *sf
+      - *fk
+      - *rp
+  husbandry:
+    text: >-
+      Plan a tank of at least 150 cm length, 45 cm front to back and about 300 litres for one male and
+      three or more females; a larger group of utaka needs more room. The fish swim in the upper and
+      middle water, so leave most of the volume open and place rock piles at the ends or the back, with
+      a few flat stones that a male can use as a spawning site. A sand bottom suits the species. Hardy
+      plants such as Vallisneria or Anubias are usually left alone. Strong filtration and regular
+      partial water changes keep nitrate low. Aim for 24 to 27 C and a stable pH around 8; the fish
+      tolerate soft water like the lake as well as moderately hard tap water, provided the carbonate
+      hardness keeps the pH steady.
+    sources:
+      - *sf
+      - *fk
+      - *oata
+      - *oliver
+      - *it
+      - *branchu
+  socialBehavior:
+    text: >-
+      Outside spawning these utaka are sociable shoaling fish that rarely fight. Once a male matures he
+      claims a stone or a spot on top of a rock pile, darkens to full colour and displays to every
+      female that swims past. His courtship can be rough, so a single female would be chased constantly;
+      three or more spread his attention. Two males need a long tank with separate spawning sites, each
+      with its own females. Towards other species the borleyi is mild and more often the victim than the
+      bully, especially next to mbuna. A breeding male may still chase fish with similar blue and red
+      colouring away from his site.
+    sources:
+      - *sf
+      - *fk
+      - *wikide
+      - *arch15794
+  diet:
+    text: >-
+      In the lake the borleyi eats zooplankton. It spots single tiny crustaceans in the current and sucks
+      them in by shooting its mouth forward into a short tube. In the aquarium it accepts nearly any food
+      of the right size. A good base is a quality flake or small sinking pellet, supplemented with frozen
+      Mysis, Artemia, Daphnia and similar small crustaceans, and some food with spirulina or other plant
+      matter. Feed small portions two or three times a day rather than one large meal. The fish feed
+      eagerly in open water and grab food quickly, so slow sand haps in the same tank should get their
+      share as well. Fry and very small fish may be eaten.
+    sources:
+      - *fb
+      - *sf
+      - *oliver
+      - *kassam03
+      - *fk
+      - *arch15794
+      - *arch15160
+  breeding:
+    text: >-
+      The borleyi is a maternal mouthbrooder. A ripe male cleans a flat stone or scoops a shallow pit and
+      courts females with quivering displays. The female lays a few eggs at a time and takes them into
+      her mouth at once; the male fertilises them as she nibbles at the egg spots on his anal fin. A
+      brood holds up to about 60 eggs. The female carries them for three to four weeks and eats little
+      during that time. Stress can make her spit or swallow the brood, so move her with care or leave
+      her in the group. The released fry are large enough for Artemia nauplii and crushed flakes. A
+      species tank with one male and three or four females gives the best results.
+    sources:
+      - *fb
+      - *sf
+      - *fk
+      - *crc
+  sexing:
+    text: >-
+      Adult males are easy to recognise: they are larger, have longer fins and show a metallic blue head
+      and back with red, orange or yellow flanks according to the form, plus egg spots on the anal fin
+      and light edges on the dorsal and pelvic fins. Females stay silvery grey to brownish with two or
+      three dark spots along the side and coloured but shorter fins. Juveniles look like females, so
+      young groups cannot be sexed reliably. The first sign of a male is usually a bluish sheen on the
+      head. Buying six or more juveniles and keeping one male later is a practical approach.
+    sources:
+      - *wikien
+      - *sf
+      - *fk
+      - *aq
+  compatibility:
+    text: >-
+      Good companions are other calm Lake Malawi fish of similar size: peacocks of the genus Aulonocara,
+      Cyrtocara moorii, Placidochromis and Otopharynx species, and Synodontis catfish. Mild rock
+      dwellers such as Labidochromis caeruleus can work in large, well-structured tanks, although
+      Seriously Fish advises against mbuna altogether. Avoid robust mbuna like Melanochromis or
+      Maylandia, which hound the peaceful utaka, and large predatory haps that can swallow females. Do
+      not keep a second Copadichromis species, as the genus is reported to hybridise, and avoid male
+      peacocks with the same blue and red colours, which provoke rivalry and may court borleyi females.
+      Very small fish and the fry of other species are at risk. Tanganyika cichlids such as Tropheus
+      need other food and are no match.
+    sources:
+      - *sf
+      - *fk
+      - *aq
+      - *it
+      - *aw
+  problems:
+    text: >-
+      The most common mistake is a tank that is too small or too crowded with aggressive mbuna, which
+      leaves the borleyi stressed, hiding and pale. A single female with a male is another frequent
+      error, because she is driven hard. Unstable pH after missed water changes and rising nitrate
+      stress the fish over time. Large, rich meals make the fish fat and foul the water; small, varied
+      portions are safer. Females that are stripped or moved while holding may lose condition. Be
+      careful with the trade name: fish sold as OB borleyi are hybrids with peacocks and should not be
+      bred with pure stock. Keepers in the archive report external parasites on borleyi, so quarantine
+      new arrivals before adding them.
+    sources:
+      - *sf
+      - *fk
+      - *it
+      - *oata
+      - kind: archive
+        title: cichlids.com forum thread 15720
+        url: https://www.cichlids.com/disc/read.php?2,15720
+        accessed: 2026-10-13
+provenance:
+  runs:
+    - role: generator
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-opus-5-5
+      date: 2026-10-13
+    - role: checker
+      model: claude-sonnet-5-5
+      date: 2026-10-13
+    - role: adjudicator
+      model: claude-opus-5-5
+      date: 2026-10-13
+  disagreements:
+    - field: taxonomy.synonyms
+      proposals:
+        - by: generator
+          value: [Haplochromis borleyi, Cyrtocara borleyi]
+        - by: checker-a
+          value: [Haplochromis borleyi, Cyrtocara borleyi]
+        - by: checker-b
+          value: [Haplochromis borleyi]
+      decision: [Haplochromis borleyi, Cyrtocara borleyi]
+      rationale: Cyrtocara borleyi is a combination of the aquarium literature of the 1980s under which the species was sold; listing it helps users find the species and is marked as no separate nominal species.
+    - field: features.origin.value
+      proposals:
+        - by: generator
+          value: {waterbody: Lake Malawi, localities: [Nkhata Bay, Kadango, Mbenji Island, Mpanga Rocks, Chimwalani Reef, Namalenje, Mara Point, Tchulutcha Reef, Crocodile Rocks, Cape Ngombo]}
+        - by: checker-a
+          value: {waterbody: Lake Malawi, localities: [Nkhata Bay, Kadango, Mbenji Islands, Mara Point, Namalenje, Chimwalani Reef]}
+        - by: checker-b
+          value: {waterbody: lake-malawi, localities: [Nkhata Bay, Kadango, Mbenji Island, Chimwalani Reef]}
+      decision: {waterbody: Lake Malawi, localities: [Nkhata Bay, Kadango, Mbenji Island, Mpanga Rocks, Chimwalani Reef, Namalenje, Mara Point, Tchulutcha Reef, Crocodile Rocks, Cape Ngombo, Ipembi Rocks, Nkhungu Reef, Tawain Reef, Selena-Kasinda]}
+      rationale: The waterbody spellings name the same table entry, so the readable name is kept. The localities are the union of all proposals plus the further collecting sites listed by Seriously Fish, which the adjudicator read.
+    - field: features.predation
+      proposals:
+        - by: generator
+          value: 1
+        - by: checker-a
+          value: 1
+        - by: checker-b
+          value: 0
+        - by: tiebreaker-1
+          value: 1
+        - by: tiebreaker-2
+          value: 0
+      decision: 1
+      rationale: Decided by the tally with method conservative (3 of 5 votes agree, below the qualified majority of 4); the most cautious proposal, level 1, applies with low confidence.
+    - field: features.diet.value.foods
+      proposals:
+        - by: generator
+          value: [zooplankton, small crustaceans, insect larvae, Artemia, Mysis, Daphnia, small pellets, flake food, spirulina flake]
+        - by: checker-a
+          value: [zooplankton, Artemia, Mysis, Daphnia, small frozen foods, flake and pellets, some plant matter]
+        - by: checker-b
+          value: [zooplankton, Artemia, Daphnia, insect larvae, spirulina flake]
+      decision: [zooplankton, small crustaceans, insect larvae, Artemia, Mysis, Daphnia, small pellets, flake food, spirulina flake]
+      rationale: The tally decided the diet unanimously (3 of 3) on type invertivore and bloatSensitive false and took the food list of the first vote; it contains the items of the other lists except their wording.
+    - field: features.hybridGroup
+      proposals:
+        - by: generator
+          value: copadichromis
+        - by: checker-a
+          value: null
+        - by: checker-b
+          value: null
+        - by: tiebreaker-1
+          value: copadichromis
+        - by: tiebreaker-2
+          value: copadichromis
+      decision: copadichromis
+      rationale: Decided by the tally with method conservative (3 of 5 votes agree, below the qualified majority of 4); the most common named group applies with low confidence. The group is added to hybrid-groups.yaml with all 25 valid Copadichromis species, because the Seriously Fish warnings on five species pages are phrased for the whole genus; the narrower scopes of tiebreaker-2 (three species) and the generator (seven traded species) would leave species under the same warning without a conflict.
+    - field: features.maxSizeCm
+      proposals:
+        - by: generator
+          value: {male: 16, female: 13}
+        - by: checker-a
+          value: {male: 16, female: 13}
+        - by: checker-b
+          value: {male: 16, female: 12}
+      decision: {male: 16, female: 13}
+      rationale: Wikipedia, after Konings and Staeck and Linke, gives about 13 cm for females; the 12 cm of checker-b is an estimate from the dimorphism without a source.
+    - field: features.coloration
+      proposals:
+        - by: generator
+          value: {baseColors: [blue, red, orange, yellow], pattern: plain}
+        - by: checker-a
+          value: {baseColors: [blue, red, orange], pattern: plain}
+        - by: checker-b
+          value: {baseColors: [orange, red, blue], pattern: plain}
+      decision: {baseColors: [blue, red, orange, yellow], pattern: plain}
+      rationale: The yellow fin forms are traded as this species and English Wikipedia describes yellow to red flanks in males, so yellow stays among the base colours; leaving it out would hide look-alike conflicts with yellow species.
+    - field: features.feedingSpeed
+      proposals:
+        - by: generator
+          value: hasty
+        - by: checker-a
+          value: normal
+        - by: checker-b
+          value: hasty
+      decision: hasty
+      rationale: The only direct report (archive thread 15794) describes the male as the fastest at feeding, and hasty protects slow-feeding tankmates; checker-a's argument that care sheets do not describe a glutton is noted in the rationale, and the confidence stays low.
+    - field: features.minTank
+      proposals:
+        - by: generator
+          value: {volumeL: 375, lengthCm: 150, depthCm: 50}
+        - by: checker-a
+          value: {volumeL: 300, lengthCm: 150, depthCm: 45}
+        - by: checker-b
+          value: {volumeL: 300, lengthCm: 150, depthCm: 45}
+      decision: {volumeL: 300, lengthCm: 150, depthCm: 45}
+      rationale: Seriously Fish gives 150 by 45 by 45 cm and about 300 litres as the species minimum; the larger figure of the generator leans on M. K. Oliver's 380 litres, which applies to utaka groups of six or more rather than to one male with three females.
+    - field: features.lifespanYears
+      proposals:
+        - by: generator
+          value: {min: 8, max: 10}
+        - by: checker-a
+          value: {min: 8, max: 10}
+        - by: checker-b
+          value: {min: 8, max: 12}
+      decision: {min: 8, max: 10}
+      rationale: A retailer states 8 to 10 years and Animal-World 7 to 10 years for Lake Malawi cichlids; the upper bound of 12 years of checker-b rests on general knowledge only.
