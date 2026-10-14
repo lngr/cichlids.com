@@ -36,6 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TF_VAR_ssh_private_key: ${{ secrets.CICHLIDS_APP_SSH_PRIVATE_KEY }}
+      TF_VAR_database_volume_id: ${{ vars.CICHLIDS_DATABASE_VOLUME_ID }}
       TF_VAR_node_ipv4: ${{ vars.CICHLIDS_NODE_IPV4 }}
       TF_VAR_node_host_key: ${{ vars.CICHLIDS_NODE_HOST_KEY }}
       TF_VAR_state_encryption_passphrase: ${{ secrets.CICHLIDS_APP_STATE_PASSPHRASE }}

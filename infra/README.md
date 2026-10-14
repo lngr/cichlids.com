@@ -174,13 +174,26 @@ token. Steps in order, each with its expected result.
    **Expected result:** the fingerprints are identical.
 4. Choose an app state passphrase (at least 16 characters) and store it out-of-band.
    **Expected result:** a passphrase distinct from the platform one.
-5. Set the GitHub secrets `CICHLIDS_APP_SSH_PRIVATE_KEY` (content of `ci-app`),
+5. Read the attached database volume ID from the platform state:
+
+   ```sh
+   infra/tofu.sh platform output -raw database_volume_id
+   ```
+
+   Alternatively use `hcloud volume list` with the operator's primary-project
+   credentials and select the volume attached to this node. Set
+   `CICHLIDS_DATABASE_VOLUME_ID` in the local credential file and as a GitHub
+   repository variable. The app tier receives `database_volume_id` as a string;
+   direct callers set `TF_VAR_database_volume_id`. It reads no platform state.
+   **Expected result:** the numeric ID identifies the protected ext4 database volume.
+6. Set the GitHub secrets `CICHLIDS_APP_SSH_PRIVATE_KEY` (content of `ci-app`),
    `CICHLIDS_APP_STATE_PASSPHRASE`, `CICHLIDS_S3_PRIMARY_ACCESS_KEY` and
    `CICHLIDS_S3_PRIMARY_SECRET_KEY`, and the GitHub variables `CICHLIDS_NODE_IPV4` and
    `CICHLIDS_NODE_HOST_KEY` (the full `ssh-ed25519 AAAA...` line from step 3).
-   **Expected result:** four secrets and two variables in the repository settings.
-6. For a local apply, add `CICHLIDS_APP_STATE_PASSPHRASE`, `CICHLIDS_NODE_IPV4`,
-   `CICHLIDS_NODE_HOST_KEY` and `CICHLIDS_APP_SSH_PRIVATE_KEY_FILE` (path of `ci-app`) to the
+   **Expected result:** four secrets and three variables in the repository settings.
+7. For a local apply, add `CICHLIDS_APP_STATE_PASSPHRASE`, `CICHLIDS_NODE_IPV4`,
+   `CICHLIDS_NODE_HOST_KEY`, `CICHLIDS_DATABASE_VOLUME_ID` and
+   `CICHLIDS_APP_SSH_PRIVATE_KEY_FILE` (path of `ci-app`) to the
    credential file, then run:
 
    ```sh
@@ -192,12 +205,24 @@ token. Steps in order, each with its expected result.
    Alternatively run the `infra-app` workflow on `main` via workflow dispatch.
    **Expected result:** state under `app/terraform.tfstate` in `cichlids-platform-tfstate`; the plan
    shows two `terraform_data` resources and the apply finishes without error.
-7. Check the cluster over SSH (`ssh root@<ip>`):
+8. Check the cluster over SSH (`ssh root@<ip>`):
    - `kubectl get nodes` lists one node in status `Ready`.
    - `kubectl -n argocd get pods` lists all pods `Running` and ready.
    - `kubectl -n argocd get application root` shows the application `Synced` and `Healthy`.
 
    **Expected result:** all three checks pass.
+
+The app bootstrap verifies `/dev/disk/by-id/scsi-0HC_Volume_<id>` as a block
+device with an ext4 filesystem and mounts it at `/var/lib/cichlids-db`.
+It records an exact `ext4 defaults,nofail 0 2` entry in `/etc/fstab`.
+Missing devices, other filesystems and conflicting fstab entries stop bootstrap.
+Formatting belongs to the platform volume creation. The mount script performs
+no formatting. A k3s systemd drop-in requires the mount, binds service lifetime
+to it and verifies the device before each start. `nofail` permits node boot with
+an unavailable volume; k3s startup requires the database mount.
+
+Operator checks on the node are `findmnt -M /var/lib/cichlids-db` and
+`systemctl cat k3s`. Confirm ext4 on the expected device and the mount dependency.
 
 The k3s bootstrap writes `/etc/rancher/k3s/config.yaml` with mode 0600 and
 `write-kubeconfig-mode: "0600"`. It compares the desired file with the installed

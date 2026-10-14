@@ -96,6 +96,12 @@ def check(text):
         if not re.search(r"(?m)^\s*timeout\s*=", body):
             failures.append("connection block lacks a timeout")
 
+    k3s = blocks(text, r'resource\s+"terraform_data"\s+"k3s"')
+    if not k3s or not all(part in k3s[0] for part in [
+            'var.database_volume_id', 'scripts/mount-database.sh', 'mount-database.sh']):
+        failures.append("database mount bootstrap is missing")
+    elif not (0 <= k3s[0].find('bash ${local.remote_dir}/mount-database.sh') < k3s[0].find('bash ${local.remote_dir}/install-k3s.sh')):
+        failures.append("database mount must precede k3s installation")
     return failures
 
 
@@ -116,6 +122,10 @@ terraform {
 }
 variable "ssh_private_key" {}
 resource "terraform_data" "k3s" {
+  triggers_replace = [var.database_volume_id, "scripts/mount-database.sh", "postgres/storage.yaml"]
+  provisioner "remote-exec" {
+    inline = ["bash ${local.remote_dir}/mount-database.sh", "bash ${local.remote_dir}/install-k3s.sh", "storage.yaml"]
+  }
   connection {
     type        = "ssh"
     host        = var.node_ipv4
@@ -131,6 +141,11 @@ resource "terraform_data" "k3s" {
 def self_test():
     cases = [
         ("good", GOOD, 0),
+        ("missing mount", GOOD.replace('scripts/mount-database.sh', 'scripts/other.sh'), 1),
+        ("missing mount invocation", GOOD.replace('bash ${local.remote_dir}/mount-database.sh', 'echo mount-database.sh'), 1),
+        ("missing volume input", GOOD.replace('var.database_volume_id', 'var.other'), 1),
+        ("mount order", GOOD.replace('inline = ["bash ${local.remote_dir}/mount-database.sh", "bash ${local.remote_dir}/install-k3s.sh"',
+                                    'inline = ["bash ${local.remote_dir}/install-k3s.sh", "bash ${local.remote_dir}/mount-database.sh"'), 1),
         ("hcloud provider", GOOD + '\nprovider "hcloud" {}\n', 1),
         ("aws required provider",
          GOOD.replace('other = { source = "x/y" }', 'aws = { source = "hashicorp/aws" }'), 1),
@@ -159,6 +174,9 @@ def self_test():
 
 
 def main(argv):
+    mount = subprocess.run([sys.executable, os.path.join(HERE, "scripts/mount-database.test.py")])
+    if mount.returncode:
+        return mount.returncode
     bootstrap = subprocess.run([sys.executable, os.path.join(HERE, "scripts/install-k3s.test.py")])
     if bootstrap.returncode:
         return bootstrap.returncode

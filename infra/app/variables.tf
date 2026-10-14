@@ -31,3 +31,13 @@ variable "argocd_version" {
   type        = string
   default     = "v3.5.5"
 }
+
+variable "database_volume_id" {
+  description = "Numeric Hetzner ID of the attached, platform-formatted ext4 database volume."
+  type        = string
+
+  validation {
+    condition     = can(regex("^[1-9][0-9]*$", var.database_volume_id))
+    error_message = "database_volume_id must be a positive numeric volume ID."
+  }
+}

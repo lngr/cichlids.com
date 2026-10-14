@@ -83,11 +83,12 @@ case "$TIER" in
   app)
     # No cloud token by design. The object-storage key reaches the state backend only.
     require CICHLIDS_S3_PRIMARY_ACCESS_KEY CICHLIDS_S3_PRIMARY_SECRET_KEY \
-      CICHLIDS_NODE_IPV4 CICHLIDS_NODE_HOST_KEY CICHLIDS_APP_SSH_PRIVATE_KEY_FILE
+      CICHLIDS_NODE_IPV4 CICHLIDS_NODE_HOST_KEY CICHLIDS_APP_SSH_PRIVATE_KEY_FILE CICHLIDS_DATABASE_VOLUME_ID
     if [ ! -r "$CICHLIDS_APP_SSH_PRIVATE_KEY_FILE" ]; then
       echo "not readable: CICHLIDS_APP_SSH_PRIVATE_KEY_FILE=$CICHLIDS_APP_SSH_PRIVATE_KEY_FILE" >&2
       exit 2
     fi
+    export TF_VAR_database_volume_id="$CICHLIDS_DATABASE_VOLUME_ID"
     export TF_VAR_node_ipv4="$CICHLIDS_NODE_IPV4"
     export TF_VAR_node_host_key="$CICHLIDS_NODE_HOST_KEY"
     TF_VAR_ssh_private_key="$(cat "$CICHLIDS_APP_SSH_PRIVATE_KEY_FILE")"

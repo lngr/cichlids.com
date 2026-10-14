@@ -11,6 +11,8 @@ locals {
 resource "terraform_data" "k3s" {
   triggers_replace = [
     var.k3s_version,
+    var.database_volume_id,
+    filesha256("${path.module}/scripts/mount-database.sh"),
     filesha256("${path.module}/scripts/install-k3s.sh"),
   ]
 
@@ -32,8 +34,17 @@ resource "terraform_data" "k3s" {
     destination = "${local.remote_dir}/install-k3s.sh"
   }
 
+  provisioner "file" {
+    source      = "${path.module}/scripts/mount-database.sh"
+    destination = "${local.remote_dir}/mount-database.sh"
+  }
+
   provisioner "remote-exec" {
-    inline = ["bash ${local.remote_dir}/install-k3s.sh '${var.k3s_version}'"]
+    inline = [
+      "bash ${local.remote_dir}/mount-database.sh '${var.database_volume_id}'",
+      "bash ${local.remote_dir}/install-k3s.sh '${var.k3s_version}'",
+      "KUBECONFIG=/etc/rancher/k3s/k3s.yaml kubectl label node --all cichlids.com/database-volume=true --overwrite",
+    ]
   }
 }
 
