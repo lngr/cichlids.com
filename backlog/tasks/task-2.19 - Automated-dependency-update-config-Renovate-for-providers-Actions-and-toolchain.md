@@ -3,10 +3,10 @@ id: TASK-2.19
 title: >-
   Automated dependency-update config (Renovate) for providers, Actions, and
   toolchain
-status: In Progress
+status: In Review
 assignee: []
 created_date: '2026-06-09 06:16'
-updated_date: '2026-10-14 10:51'
+updated_date: '2026-10-14 10:57'
 labels:
   - infra
   - ci
@@ -16,6 +16,7 @@ dependencies:
   - TASK-2.18
 references:
   - renovate.json
+  - renovate.json5
 parent_task_id: TASK-2
 priority: medium
 ordinal: 21000
@@ -69,3 +70,22 @@ Stop provider/toolchain pins from silently going stale (the root cause behind th
 - Validation with `renovate-config-validator` (pinned through npx) as a CI step; a local
   `renovate --platform=local` dry run shows the detected dependencies (AC #2 to #4).
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+### Implemented
+- `renovate.json5`: terraform manager (hcloud, aws, `required_version`), github-actions (SHA pins
+  with version comments), npm/pnpm, NuGet, Dockerfile and kustomize image digests, custom regex
+  managers for `tools/toolchain.versions` and `tools/install-toolchain.sh` (tofu, kubectl, helm,
+  kustomize, sops, age, conftest, kind, kubeconform, gitleaks, node, .NET, Maestro, actionlint),
+  KSOPS, k3s and Argo CD; weekly schedule, groups, majors separate, no automerge.
+- CI runs `renovate-config-validator --strict`; the runbook names the operator step (Renovate
+  GitHub App or a self-hosted run). The platform tier lives in `infra/platform/` (AC #2 names the
+  former `infra/foundation/`). No separate OPA pin exists.
+
+### Verified by the agent (Codex)
+- Validator: "Config validated successfully"; local `--platform=local --dry-run=extract` detects
+  all managers listed above; actionlint clean.
+- Not verified: release lookups and real update pull requests (need the app or a token).
+<!-- SECTION:NOTES:END -->
