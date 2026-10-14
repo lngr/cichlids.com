@@ -936,24 +936,32 @@ features:
         note: "Bicarbonate plus twice carbonate in Table 2, converted to dKH."
     tolerance:
       value:
-        min: 15
+        min: 6
         max: 20
       confidence: low
       verification:
-        method: qualified-majority
+        method: adjudicated
+        replaced:
+          min: 15
+          max: 20
+        replacedMethod: qualified-majority
         votes:
           agree: 4
           total: 6
-      rationale: "Qualified-majority verification selects 15 to 20 dKH, four of six votes, with low confidence.
-        Checker-b, checker-c and both tie-breakers propose 15 to 20; generator proposes the wider 10 to 20 and
-        checker-a the wider 6 to 20. Fischlexikon and Aquaristik Profi explicitly give 15 to 20, but their
-        erroneous habitat-zone and reproduction entries and untraceable underlying references reduce
-        reliability and possible independence. The Tropical Tank allows 6 to 20, Monitarium 10 to 20, OATA
-        gives 10 to 15 for African lake cichlids generally and Tanganyika.si 11 to 22 for the lake community.
-        These wider or lower recommendations remain visible as contrary evidence; they do not establish
-        species-specific lifelong endpoints. The selected interval includes the entire natural range and is a
-        provisional supported interval, not proof that lower stable KH causes disease."
+      rationale: "The qualified-majority 15 to 20 dKH decision equates the aquarium allowance with lake
+        chemistry without evidence of harm below 15. The adjudicated tolerance is 6 to 20 dKH:
+        The Tropical Tank gives a minimum of 6 and an ideal interval of 14 to 20, while
+        Seriously Fish recommends pH 7.8 to 9.0 and GH 10 to 25 dGH. The profile pH tolerance of
+        7.8 to 9.4 and GH tolerance of 8 to 25 dGH are consistent with stable buffered aquarium
+        water outside lake alkalinity. OATA supplies supporting group guidance of 10 to 15 dKH.
+        Natural 15 to 20 dKH is contained. Low confidence reflects care-sheet estimates without
+        controlled lifetime endpoints; GH is not converted to KH."
       sources:
+        - kind: "database"
+          title: "Seriously Fish: Cyprichromis leptosoma"
+          url: "https://www.seriouslyfish.com/species/cyprichromis-leptosoma/"
+          archived: "seriouslyfish.com/species/cyprichromis-leptosoma/2026-10-14T095718Z"
+          accessed: "2026-10-14"
         - kind: database
           title: "Fischlexikon: Cyprichromis leptosoma"
           url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000000412"
@@ -1002,6 +1010,14 @@ features:
           archived: doi.org/10.18174_121977/2026-10-13T092439Z
           accessed: 2026-10-13
       evidence:
+        - source:
+            kind: "database"
+            title: "Seriously Fish: Cyprichromis leptosoma"
+            url: "https://www.seriouslyfish.com/species/cyprichromis-leptosoma/"
+            archived: "seriouslyfish.com/species/cyprichromis-leptosoma/2026-10-14T095718Z"
+            accessed: "2026-10-14"
+          value: "pH 7.8 to 9.0 and GH 10 to 25 dGH; no numerical KH range"
+          note: "Alkaline aquarium guidance supports buffering; the numerical KH allowance comes from The Tropical Tank."
         - source:
             kind: database
             title: "OATA: How to look after African lake cichlids, general aquarium care sheet"
@@ -2687,7 +2703,7 @@ profile:
       enough water height to meet the volume requirement. Keep a continuous open swimming area above
       restrained rockwork and cover escape openings. More room benefits several reproductive males. Routine
       temperatures around 24 to 26 C have stronger care support than constant exposure to 29 C. Recorded
-      tolerances are 23 to 29 C, pH 7.8 to 9.4, GH 8 to 25 dGH and KH 15 to 20 dKH. Temperature and KH
+      tolerances are 23 to 29 C, pH 7.8 to 9.4, GH 8 to 25 dGH and KH 6 to 20 dKH. Temperature and KH
       endpoints remain weakly established; these are planning envelopes rather than targets. Maintain stable
       prepared water, effective filtration and good oxygenation."
     sources:
@@ -3058,17 +3074,16 @@ provenance:
             min: 15
             max: 20
       decision:
-        min: 15
+        min: 6
         max: 20
-      rationale: "Qualified-majority verification selects 15 to 20 dKH, four of six votes, with low confidence.
-        Checker-b, checker-c and both tie-breakers propose 15 to 20; generator proposes the wider 10 to 20 and
-        checker-a the wider 6 to 20. Fischlexikon and Aquaristik Profi explicitly give 15 to 20, but their
-        erroneous habitat-zone and reproduction entries and untraceable underlying references reduce
-        reliability and possible independence. The Tropical Tank allows 6 to 20, Monitarium 10 to 20, OATA
-        gives 10 to 15 for African lake cichlids generally and Tanganyika.si 11 to 22 for the lake community.
-        These wider or lower recommendations remain visible as contrary evidence; they do not establish
-        species-specific lifelong endpoints. The selected interval includes the entire natural range and is a
-        provisional supported interval, not proof that lower stable KH causes disease."
+      rationale: "The qualified-majority 15 to 20 dKH decision equates the aquarium allowance with lake
+        chemistry without evidence of harm below 15. The adjudicated tolerance is 6 to 20 dKH: The
+        Tropical Tank gives a minimum of 6 and an ideal interval of 14 to 20, while Seriously Fish
+        recommends pH 7.8 to 9.0 and GH 10 to 25 dGH. The profile pH tolerance of 7.8 to 9.4 and
+        GH tolerance of 8 to 25 dGH are consistent with stable buffered aquarium water outside
+        lake alkalinity. OATA supplies supporting group guidance of 10 to 15 dKH. Natural 15 to 20
+        dKH is contained. Low confidence reflects care-sheet estimates without controlled lifetime
+        endpoints; GH is not converted to KH."
     - field: features.maxSizeCm
       proposals:
         - by: generator

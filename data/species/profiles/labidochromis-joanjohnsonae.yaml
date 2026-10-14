@@ -1028,10 +1028,15 @@ features:
     tolerance:
       value:
         min: 5
-        max: 8
+        max: 15
       confidence: "low"
-      rationale: "The qualified majority retains 5 to 8 dKH with five of six votes: generator, checker-b, checker-c and both tie-breakers propose 5 to 8, while checker-a proposes 5 to 15. The blog explicitly recommends 6 to 8 dKH and a keeper reports 5 dKH with this species and offspring present; JBL's general Malawi target is about 7 dKH. Fishkeeper gives no numerical KH range, so checker-a's wider 5 to 15 was an inference from buffered water, not a sourced limit. Another keeper reports 14 dKH in a newly stocked tank, retained as wider observational evidence without years of healthy exposure. The decided interval is narrower than that 14 dKH report and the 5 to 15 proposal because sustained outcomes outside 5 to 8 are unverified. It contains natural alkalinity and stays at low confidence; 8 dKH is an evidence limit rather than a demonstrated threshold of harm."
+      rationale: "The qualified-majority 5 to 8 dKH decision treats natural Malawi alkalinity as a captive ceiling without evidence of harm above 8. The adjudicated tolerance is 5 to 15 dKH, derived from JBL recommendations for Malawi cichlids including Labidochromis yellow and other mbuna. Fishkeeper recommends buffered alkaline water at pH 7.5 to 8.5 and general hardness up to 25 dH without numerical KH limits. This fits the profile pH tolerance of 7.5 to 8.8 and GH tolerance of 3 to 25 dGH; GH does not determine KH. Species care advice of 6 to 8 dKH supports routine conditions within this allowance, and natural 5 to 8 dKH is contained. Low confidence reflects extrapolation from group husbandry without sustained species-specific endpoint outcomes."
       sources:
+        - kind: "literature"
+          title: "JBL: Cichlids, correct feeding for a good husbandry"
+          url: "https://s3-eu-west-1.amazonaws.com/fishkeeper-craft/downloads/JBL-Correct-Feeding-of-Cichlids.pdf"
+          archived: "s3-eu-west-1.amazonaws.com/fishkeeper-craft/downloads/jbl-correct-feeding-of-cichlids.pdf/2026-10-14T131039Z"
+          accessed: "2026-10-14"
         - *a11
         - *a19
         - *a17
@@ -1046,6 +1051,16 @@ features:
         - *a27
         - *a28
       evidence:
+        - source:
+            kind: "literature"
+            title: "JBL: Cichlids, correct feeding for a good husbandry"
+            url: "https://s3-eu-west-1.amazonaws.com/fishkeeper-craft/downloads/JBL-Correct-Feeding-of-Cichlids.pdf"
+            archived: "s3-eu-west-1.amazonaws.com/fishkeeper-craft/downloads/jbl-correct-feeding-of-cichlids.pdf/2026-10-14T131039Z"
+            accessed: "2026-10-14"
+          value:
+            min: 5
+            max: 15
+          note: "Group husbandry recommendation; application to this species is an inference without a controlled lifetime endpoint trial."
         - source: *a11
           value:
             min: 5
@@ -1106,7 +1121,11 @@ features:
             max: 8
           note: "Curated natural Malawi range, included as a containment constraint rather than a demonstrated aquarium tolerance. Retained pipeline lake-range synthesis from Eccles, Vollmer, Branchu and the FAO compilation; this interval is not a measurement reported by this single study."
       verification:
-        method: "qualified-majority"
+        method: "adjudicated"
+        replaced:
+          min: 5
+          max: 8
+        replacedMethod: "qualified-majority"
         votes:
           agree: 5
           total: 6
@@ -2228,7 +2247,7 @@ profile:
       - *a49
       - *a30
   husbandry:
-    text: "Provide at least 250 litres with a footprint of about 120 by 40 cm for one adult male and at least three females. Arrange secure rock clusters with multiple shelters and routes out of a defended area, while leaving accessible swimming space between them. A mixed community requires additional room for its other social units. Strong filtration and oxygenation help keep feeding and stocking demands manageable. Care sheets most often recommend roughly 24 to 28 C and alkaline water; the broader temperature tolerance of 21 to 29 C includes the natural lake range with weak evidence for lifelong exposure at its edges. The tallied aquarium envelopes are pH 7.5 to 8.8, GH 3 to 25 dGH and KH 5 to 8 dKH. Their endpoints are evidence-based planning estimates, not experimentally established physiological boundaries."
+    text: "Provide at least 250 litres with a footprint of about 120 by 40 cm for one adult male and at least three females. Arrange secure rock clusters with multiple shelters and routes out of a defended area, while leaving accessible swimming space between them. A mixed community requires additional room for its other social units. Strong filtration and oxygenation help keep feeding and stocking demands manageable. Care sheets most often recommend roughly 24 to 28 C and alkaline water; the broader temperature tolerance of 21 to 29 C includes the natural lake range with weak evidence for lifelong exposure at its edges. The aquarium envelopes are pH 7.5 to 8.8, GH 3 to 25 dGH and KH 5 to 15 dKH. Their endpoints are evidence-based planning estimates, not experimentally established physiological boundaries."
     sources:
       - *a33
       - *a19
@@ -2563,8 +2582,8 @@ provenance:
             max: 8
       decision:
         min: 5
-        max: 8
-      rationale: "The qualified majority retains 5 to 8 dKH with five of six votes: generator, checker-b, checker-c and both tie-breakers propose 5 to 8, while checker-a proposes 5 to 15. The blog explicitly recommends 6 to 8 dKH and a keeper reports 5 dKH with this species and offspring present; JBL's general Malawi target is about 7 dKH. Fishkeeper gives no numerical KH range, so checker-a's wider 5 to 15 was an inference from buffered water, not a sourced limit. Another keeper reports 14 dKH in a newly stocked tank, retained as wider observational evidence without years of healthy exposure. The decided interval is narrower than that 14 dKH report and the 5 to 15 proposal because sustained outcomes outside 5 to 8 are unverified. It contains natural alkalinity and stays at low confidence; 8 dKH is an evidence limit rather than a demonstrated threshold of harm. Tally method: qualified-majority."
+        max: 15
+      rationale: "The qualified-majority 5 to 8 dKH decision treats natural Malawi alkalinity as a captive ceiling without evidence of harm above 8. The adjudicated tolerance is 5 to 15 dKH, derived from JBL recommendations for Malawi cichlids including Labidochromis yellow and other mbuna. Fishkeeper recommends buffered alkaline water at pH 7.5 to 8.5 and general hardness up to 25 dH without numerical KH limits. This fits the profile pH tolerance of 7.5 to 8.8 and GH tolerance of 3 to 25 dGH; GH does not determine KH. Species care advice of 6 to 8 dKH supports routine conditions within this allowance, and natural 5 to 8 dKH is contained. Low confidence reflects extrapolation from group husbandry without sustained species-specific endpoint outcomes."
     - field: "features.origin"
       proposals:
         - by: "generator"

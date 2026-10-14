@@ -765,21 +765,23 @@ features:
       note: Table 2 has 6 mmol/L bicarbonate plus 0.28 mmol/L carbonate; charge equivalents multiplied by 2.8.
     tolerance:
       value:
-        min: 15
-        max: 20
+        min: 8
+        max: 25
       confidence: low
-      rationale: "The proposals in vote order are 15 to 20, 10 to 20, 10 to 20, 15 to 25, 15 to 20, 15 to 20\
-        \ (dKH). Without a qualified majority, the medians of all proposed minima and maxima are 15\
-        \ and 20, rounded to 15 to 20 dKH. The median 15 to 20 dKH contains the natural 15 to 20 range\
-        \ without widening. Fischlexikon recommends 15 to 20 and AquariumDomain the wider 15 to 25.\
-        \ GarnelenTv gives 10 to 16 and Aquabota 8 to 15, both conflicting retailer recommendations;\
-        \ neither establishes long-term health at the lower endpoints. Aquatics Unlimited lacks\
-        \ readable source support for its proposed 10 to 20. Fishkeeper states no KH range, so its\
-        \ general hard-water advice is not converted into numerical KH evidence. The median 15 to 20\
-        \ dKH agrees with explicit care advice and contains lake alkalinity near 18 to 19 dKH, making\
-        \ it plausible for stable, buffered Tanganyika aquaria. Confidence is low because endpoint\
-        \ support is incomplete."
+      rationale: "The median 15 to 20 dKH decision restricts aquarium tolerance to lake chemistry without\
+        \ evidence of harm outside that interval. The adjudicated tolerance is 8 to 25 dKH, derived\
+        \ from JBL Tanganyika guidance of 8 to 20 for species including N. longior and\
+        \ AquariumDomain species advice of 15 to 25. Fishkeeper recommends carbonate-bearing\
+        \ substrate and pH 8 to 9 without numerical KH limits. The profile pH tolerance of 7.8 to\
+        \ 9.5 and GH tolerance of 10 to 20 dGH support stable alkaline husbandry as the context, not\
+        \ a conversion from GH to KH. Natural 15 to 20 dKH is contained. Low confidence reflects\
+        \ extrapolation from congener care and uncertain species-specific lifetime endpoints."
       sources:
+      - kind: "literature"
+        title: "JBL: Cichlids, correct feeding for a good husbandry"
+        url: "https://s3-eu-west-1.amazonaws.com/fishkeeper-craft/downloads/JBL-Correct-Feeding-of-Cichlids.pdf"
+        archived: "s3-eu-west-1.amazonaws.com/fishkeeper-craft/downloads/jbl-correct-feeding-of-cichlids.pdf/2026-10-14T131039Z"
+        accessed: "2026-10-14"
       - kind: database
         title: "Fischlexikon: Gestreifter Tanganjikabuntbarsch"
         url: "https://www.fischlexikon.eu/fischlexikon/fische-suchen.php?fisch_id=0000000801"
@@ -827,6 +829,16 @@ features:
         archived: doi.org/10.5194_hess-8-256-2004/2026-10-13T103646Z
         accessed: '2026-10-13'
       evidence:
+      - source:
+          kind: "literature"
+          title: "JBL: Cichlids, correct feeding for a good husbandry"
+          url: "https://s3-eu-west-1.amazonaws.com/fishkeeper-craft/downloads/JBL-Correct-Feeding-of-Cichlids.pdf"
+          archived: "s3-eu-west-1.amazonaws.com/fishkeeper-craft/downloads/jbl-correct-feeding-of-cichlids.pdf/2026-10-14T131039Z"
+          accessed: "2026-10-14"
+        value:
+          min: 8
+          max: 20
+        note: "Group husbandry recommendation; application to this species is an inference without a controlled lifetime endpoint trial."
       - source:
           kind: database
           title: "Fischlexikon: Gestreifter Tanganjikabuntbarsch"
@@ -902,7 +914,11 @@ features:
         note: "Table 2 has 6 mmol/L bicarbonate plus 0.28 mmol/L carbonate; charge equivalents multiplied by 2.8.\
           \ Natural water evidence only; included for containment, not chronic aquarium tolerance."
       verification:
-        method: median
+        method: adjudicated
+        replaced:
+          min: 15
+          max: 20
+        replacedMethod: median
         votes:
           agree: 3
           total: 6
@@ -2494,7 +2510,7 @@ profile:
       \ rock shelters with broken sight lines and several escape routes. Juvenile pair selection and a mixed community\
       \ require more space. Mature filtration, regular maintenance and good oxygenation are essential. Routine temperatures\
       \ around 24 to 27 C have stronger husbandry support than continuously using either tolerance endpoint. Recorded\
-      \ tolerances are 23 to 29 C, pH 7.8 to 9.5, GH 10 to 20 dGH and KH 15 to 20 dKH. Keep chemistry stable and\
+      \ tolerances are 23 to 29 C, pH 7.8 to 9.5, GH 10 to 20 dGH and KH 8 to 25 dKH. Keep chemistry stable and\
       \ measure GH and KH separately; these boundaries are care estimates rather than experimental lifetime limits.\
       \ Have a divider or spare aquarium available before introducing adults."
     sources:
@@ -2981,19 +2997,16 @@ provenance:
         min: 15
         max: 20
     decision:
-      min: 15
-      max: 20
-    rationale: "The proposals in vote order are 15 to 20, 10 to 20, 10 to 20, 15 to 25, 15 to 20, 15 to 20\
-      \ (dKH). Without a qualified majority, the medians of all proposed minima and maxima are 15 and\
-      \ 20, rounded to 15 to 20 dKH. The median 15 to 20 dKH contains the natural 15 to 20 range\
-      \ without widening. Fischlexikon recommends 15 to 20 and AquariumDomain the wider 15 to 25.\
-      \ GarnelenTv gives 10 to 16 and Aquabota 8 to 15, both conflicting retailer recommendations;\
-      \ neither establishes long-term health at the lower endpoints. Aquatics Unlimited lacks readable\
-      \ source support for its proposed 10 to 20. Fishkeeper states no KH range, so its general\
-      \ hard-water advice is not converted into numerical KH evidence. The median 15 to 20 dKH agrees\
-      \ with explicit care advice and contains lake alkalinity near 18 to 19 dKH, making it plausible\
-      \ for stable, buffered Tanganyika aquaria. Confidence is low because endpoint support is\
-      \ incomplete."
+      min: 8
+      max: 25
+    rationale: "The median 15 to 20 dKH decision restricts aquarium tolerance to lake chemistry without\
+      \ evidence of harm outside that interval. The adjudicated tolerance is 8 to 25 dKH, derived\
+      \ from JBL Tanganyika guidance of 8 to 20 for species including N. longior and\
+      \ AquariumDomain species advice of 15 to 25. Fishkeeper recommends carbonate-bearing\
+      \ substrate and pH 8 to 9 without numerical KH limits. The profile pH tolerance of 7.8 to\
+      \ 9.5 and GH tolerance of 10 to 20 dGH support stable alkaline husbandry as the context, not\
+      \ a conversion from GH to KH. Natural 15 to 20 dKH is contained. Low confidence reflects\
+      \ extrapolation from congener care and uncertain species-specific lifetime endpoints."
   - field: features.origin
     proposals:
     - by: generator

@@ -1044,19 +1044,24 @@ features:
         note: "Reported alkalinity 6.71 meq/L converted to dKH; one chemistry estimate rather than the full envelope."
     tolerance:
       value:
-        min: 15
-        max: 20
-      confidence: "medium"
-      rationale: "The tally decides 15 to 20 dKH by qualified majority, five of six votes, with medium confidence.
-        Generator, checker-b, checker-c, tiebreaker-1 and tiebreaker-2 proposed 15 to 20; checker-a proposed 9
-        to 25. DRTA explicitly gives 15 to 20 dKH for aquarium care and Fischlexikon gives the same full
-        interval, with 15 to 18 preferred. The decision is narrower than the 9 to 25 dKH interval actually
-        printed by Midas Cichlid and excludes the 10 to 15 portion of Atlarium's 10 to 20 claim; both remain
-        in evidence. These lower-trust broader claims do not outweigh the explicit DRTA husbandry account.
-        Seriously Fish's 9 to 25 figure is GH and supplies no KH interval. Agreement between two care pages
-        does not demonstrate independent physiological trials. The decision contains the complete natural lake
-        interval."
+        min: 8
+        max: 25
+      confidence: "low"
+      rationale: "The qualified-majority 15 to 20 dKH decision treats lake chemistry and matching care
+        recommendations as tolerance boundaries without evidence of harm outside them. The
+        adjudicated tolerance is 8 to 25 dKH, derived from JBL Tanganyika guidance of 8 to 20 for
+        species including N. longior and the explicit Midas Cichlid species recommendation of 9 to
+        25. DRTA and Fischlexikon support routine care at 15 to 20 without establishing harmful
+        thresholds. Seriously Fish recommends pH 8 to 9 and GH 9 to 25 dGH, consistent with the
+        profile pH tolerance of 7.8 to 9.4 and GH tolerance of 9 to 25 dGH. GH is not a KH
+        conversion. Natural 15 to 20 dKH is contained. Low confidence reflects congener
+        extrapolation and weak evidence for lifetime exposure at either endpoint."
       sources:
+        - kind: "literature"
+          title: "JBL: Cichlids, correct feeding for a good husbandry"
+          url: "https://s3-eu-west-1.amazonaws.com/fishkeeper-craft/downloads/JBL-Correct-Feeding-of-Cichlids.pdf"
+          archived: "s3-eu-west-1.amazonaws.com/fishkeeper-craft/downloads/jbl-correct-feeding-of-cichlids.pdf/2026-10-14T131039Z"
+          accessed: "2026-10-14"
         - *a35
         - *a14
         - *a15
@@ -1130,6 +1135,16 @@ features:
           accessed: "2026-10-13"
           archived: 'fishkeeper.co.uk/fish/freshwater/cichlids/red-lined-fairy-cichlid/2026-10-14T110621Z'
       evidence:
+        - source:
+            kind: "literature"
+            title: "JBL: Cichlids, correct feeding for a good husbandry"
+            url: "https://s3-eu-west-1.amazonaws.com/fishkeeper-craft/downloads/JBL-Correct-Feeding-of-Cichlids.pdf"
+            archived: "s3-eu-west-1.amazonaws.com/fishkeeper-craft/downloads/jbl-correct-feeding-of-cichlids.pdf/2026-10-14T131039Z"
+            accessed: "2026-10-14"
+          value:
+            min: 8
+            max: 20
+          note: "Group husbandry recommendation; application to this species is an inference without a controlled lifetime endpoint trial."
         - source: *a35
           value:
             min: 15
@@ -1209,7 +1224,11 @@ features:
           note: "Rounded lake envelope synthesized from the cited limnological studies; retained input value. Natural
             lake range used only to check containment; not an independent aquarium tolerance experiment."
       verification:
-        method: "qualified-majority"
+        method: "adjudicated"
+        replaced:
+          min: 15
+          max: 20
+        replacedMethod: "qualified-majority"
         votes:
           agree: 5
           total: 6
@@ -3295,17 +3314,17 @@ provenance:
             min: 15
             max: 20
       decision:
-        min: 15
-        max: 20
-      rationale: "The tally decides 15 to 20 dKH by qualified majority, five of six votes, with medium confidence.
-        Generator, checker-b, checker-c, tiebreaker-1 and tiebreaker-2 proposed 15 to 20; checker-a proposed 9
-        to 25. DRTA explicitly gives 15 to 20 dKH for aquarium care and Fischlexikon gives the same full
-        interval, with 15 to 18 preferred. The decision is narrower than the 9 to 25 dKH interval actually
-        printed by Midas Cichlid and excludes the 10 to 15 portion of Atlarium's 10 to 20 claim; both remain
-        in evidence. These lower-trust broader claims do not outweigh the explicit DRTA husbandry account.
-        Seriously Fish's 9 to 25 figure is GH and supplies no KH interval. Agreement between two care pages
-        does not demonstrate independent physiological trials. The decision contains the complete natural lake
-        interval."
+        min: 8
+        max: 25
+      rationale: "The qualified-majority 15 to 20 dKH decision treats lake chemistry and matching care
+        recommendations as tolerance boundaries without evidence of harm outside them. The
+        adjudicated tolerance is 8 to 25 dKH, derived from JBL Tanganyika guidance of 8 to 20 for
+        species including N. longior and the explicit Midas Cichlid species recommendation of 9 to
+        25. DRTA and Fischlexikon support routine care at 15 to 20 without establishing harmful
+        thresholds. Seriously Fish recommends pH 8 to 9 and GH 9 to 25 dGH, consistent with the
+        profile pH tolerance of 7.8 to 9.4 and GH tolerance of 9 to 25 dGH. GH is not a KH
+        conversion. Natural 15 to 20 dKH is contained. Low confidence reflects congener
+        extrapolation and weak evidence for lifetime exposure at either endpoint."
     - field: "features.maxSizeCm"
       proposals:
         - by: "generator"

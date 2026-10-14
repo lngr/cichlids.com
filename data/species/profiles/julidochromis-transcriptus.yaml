@@ -1563,18 +1563,18 @@ features:
         note: "Source-book alkalinity of 6.71 meq/L multiplied by 2.8; approximate dKH."
     tolerance:
       value:
-        min: 15
+        min: 8
         max: 20
       confidence: "low"
-      rationale: "The qualified-majority tally selects 15 to 20 dKH with four of six agreeing votes and low
-        confidence. Generator, checker-b, checker-c and tiebreaker-1 propose 15 to 20; checker-a proposes the
-        wider 10 to 20; tiebreaker-2 proposes the wider 8 to 20. The selected interval repeats the natural
-        lake chemistry as a provisional aquarium allowance. Zierfische-Direkt states 8 to 18 dKH for this
-        species, while the JBL brochure gives the wider 8 to 20 dKH interval for Tanganyika cichlids including
-        marlieri, without naming transcriptus. These lower KH claims are preserved but do not change the
-        settled tally. Maidenhead buffering advice supplies no KH endpoints, and its GH numbers cannot be
-        converted into KH. No reliable species-specific long-term experiment establishes the chosen floor; the
-        decision does not demonstrate harm below 15 dKH."
+      rationale: "The qualified-majority 15 to 20 dKH decision treats natural lake alkalinity as an
+        aquarium boundary without evidence of harm below 15. The adjudicated tolerance is 8 to
+        20 dKH, derived from JBL guidance for Tanganyika cichlids including the close relative
+        J. marlieri and the species-specific 8 to 18 dKH recommendation from Zierfische-Direkt.
+        Fishkeeper recommends pH 8 to 9 and carbonate-bearing substrate for buffering without
+        numerical KH limits. These recommendations fit the profile pH tolerance of 7.8 to 9.4
+        and GH tolerance of 9 to 25 dGH; GH supplies context, not a KH conversion. The interval
+        contains natural 15 to 20 dKH. Low confidence reflects extrapolation from
+        related-species husbandry and limited species-specific endpoint evidence."
       sources:
         - kind: "literature"
           title: "Plisnier, P.-D., Langenberg, V., Mwape, L., Chitamwembwa, D., Tshibangu, K. and Coenen, E. (1996).
@@ -1695,7 +1695,11 @@ features:
             max: 20
           note: "General Tanganyikan husbandry guidance including marlieri; transcriptus is not named."
       verification:
-        method: "qualified-majority"
+        method: "adjudicated"
+        replaced:
+          min: 15
+          max: 20
+        replacedMethod: "qualified-majority"
         votes:
           agree: 4
           total: 6
@@ -4665,8 +4669,8 @@ profile:
   husbandry:
     text: "An established pair needs at least 80 litres with a footprint of 60 by 30 cm, stable filtration and
       secure caves. Leave separate retreats and interrupt direct lines of sight; other adults and community
-      companions need more room. The recorded aquarium allowances are 23 to 29 C, pH 8.0 to 9.4, 9 to 25 dGH
-      and 15 to 20 dKH, with the pH and KH boundaries especially uncertain. Stable conditions within these
+      companions need more room. The recorded aquarium allowances are 23 to 29 C, pH 7.8 to 9.4, 9 to 25 dGH
+      and 8 to 20 dKH, with the pH and KH boundaries especially uncertain. Stable conditions within these
       allowances matter more than chasing their extremes. Keep replacement water compatible with the tank and
       guard against jumping during pursuit."
     sources:
@@ -5187,17 +5191,17 @@ provenance:
             min: 8
             max: 20
       decision:
-        min: 15
+        min: 8
         max: 20
-      rationale: "qualified-majority decision from tally.yaml. The qualified-majority tally selects 15 to 20 dKH
-        with four of six agreeing votes and low confidence. Generator, checker-b, checker-c and tiebreaker-1
-        propose 15 to 20; checker-a proposes the wider 10 to 20; tiebreaker-2 proposes the wider 8 to 20. The
-        selected interval repeats the natural lake chemistry as a provisional aquarium allowance.
-        Zierfische-Direkt states 8 to 18 dKH for this species, while the JBL brochure gives the wider 8 to 20
-        dKH interval for Tanganyika cichlids including marlieri, without naming transcriptus. These lower KH
-        claims are preserved but do not change the settled tally. Maidenhead buffering advice supplies no KH
-        endpoints, and its GH numbers cannot be converted into KH. No reliable species-specific long-term
-        experiment establishes the chosen floor; the decision does not demonstrate harm below 15 dKH."
+      rationale: "The qualified-majority 15 to 20 dKH decision treats natural lake alkalinity as an aquarium
+        boundary without evidence of harm below 15. The adjudicated tolerance is 8 to 20 dKH,
+        derived from JBL guidance for Tanganyika cichlids including the close relative J. marlieri
+        and the species-specific 8 to 18 dKH recommendation from Zierfische-Direkt. Fishkeeper
+        recommends pH 8 to 9 and carbonate-bearing substrate for buffering without numerical KH
+        limits. These recommendations fit the profile pH tolerance of 7.8 to 9.4 and GH tolerance
+        of 9 to 25 dGH; GH supplies context, not a KH conversion. The interval contains natural 15
+        to 20 dKH. Low confidence reflects extrapolation from related-species husbandry and
+        limited species-specific endpoint evidence."
     - field: "features.maxSizeCm"
       proposals:
         - by: "generator"
