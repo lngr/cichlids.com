@@ -35,13 +35,13 @@ this topology defines no image build or promotion automation.
 
 ## Cluster add-ons and TLS
 
-Deploy cluster-wide services through the fixed `traefik` and
-`cert-manager` Applications in `clusters/cichlids/apps/addons.yaml`. Each uses
+Deploy cluster-wide services through the fixed `traefik`, `cert-manager`, `cloudnative-pg` and
+`barman-cloud` Applications in `clusters/cichlids/apps/addons.yaml`. Each uses
 its service's `overlays/cluster` at `main`. The environment generators discover
 only `staging`, `prod` and `preview` overlays, so each add-on has one owner.
 
 Use the `cichlids-addons` AppProject for these Applications. Its destinations
-are `cert-manager` and `kube-system` (Traefik configuration and cert-manager
+are `cnpg-system`, `cert-manager` and `kube-system` (Traefik configuration and cert-manager
 leader election RBAC). Its explicit resource allowlists permit the upstream RBAC,
 webhooks, cert-manager CRDs, ClusterIssuers and namespaced HelmChartConfig. Workload
 Applications use the separate `cichlids` project.
@@ -261,7 +261,7 @@ Each preview namespace has a ResourceQuota:
 | CPU requests / limits | 1 / 2 cores |
 | Memory requests / limits | 1 GiB / 2 GiB |
 | Pods | 10 |
-| PVCs | 0 |
+| PVCs / storage requests | 1 / 1 GiB |
 | LoadBalancer / NodePort services | 0 |
 
 A LimitRange supplies per-container requests of 100m CPU and 128Mi memory,
@@ -269,7 +269,9 @@ default limits of 500m CPU and 256Mi memory, and maxima of 1 CPU and 1Gi memory.
 The namespace sync wave precedes the quota and limits. Service Applications
 reconcile independently and can retry while their namespace is created.
 Preview service overlays must contain disposable workloads and cannot own
-Namespaces, ResourceQuotas, LimitRanges or persistent data.
+Namespaces, ResourceQuotas or LimitRanges. The postgres preview overlay is the
+scoped exception for disposable database storage, with empty initialization,
+one 1Gi PVC and no production restore or backup access.
 
 Closing or merging the PR, removing admission or reaching expiry removes it
 from the generator result. Preview ApplicationSets permit deletion and their
@@ -337,3 +339,15 @@ for plaintext Secret payloads. The `secrets-scan` job runs this guard and a
 SOPS age round-trip through KSOPS alongside gitleaks. Run
 `python3 tools/test-sops-roundtrip.py` with the pinned plugin installed to
 verify the dedicated public test fixture.
+
+## PostgreSQL
+
+The [PostgreSQL runbook](../apps/postgres/README.md) defines the singleton
+CloudNativePG v1.30.1 and Barman Cloud v0.15.1 add-ons, production WAL and
+scheduled backups, PVC protection and the disposable preview database exception.
+The add-on project permits their RBAC, CRDs, cert-manager Issuer and Certificate
+resources in `cnpg-system`. Server-side apply handles the large controller CRDs.
+The environment generators discover the PostgreSQL overlays alongside the
+placeholder. Staging and previews initialize empty and never restore production
+data. The operator provisions the primary-project writer key through the backup
+bucket policy and the production Secret before verifying backup readiness.

@@ -113,6 +113,15 @@ code), not by hand.
 
 ### 8. Apply the backup tier
 
+Create the dedicated database writer key in the primary project and set
+`CICHLIDS_PRIMARY_PROJECT_ID` and `CICHLIDS_S3_DB_WRITER_ACCESS_KEY` in the
+operator credential file before applying. Record its secret key as
+`CICHLIDS_S3_DB_WRITER_SECRET_KEY` for the operator probe and Kubernetes Secret.
+The wrapper passes only the primary project ID and writer access key ID to the
+backup tier. The writer secret key is removed from its OpenTofu environment.
+See the [database operator procedure](../apps/postgres/README.md#operator-procedure)
+for key creation, backup policy application, permission proof and Secret provisioning.
+
 ```sh
 infra/tofu.sh backup init
 infra/tofu.sh backup plan
@@ -342,3 +351,16 @@ Require pull requests and passing CI checks before merge (ADR-0005).
 > then the green gate is enforced by convention: do not merge a PR whose checks are red.
 
 <!-- Story↔test binding (ADR-0015): task-2.3, task-2.16 -->
+
+## Database backup capability
+
+The database backup bucket grants a dedicated primary-project key the Barman
+write/read actions. The backup-project key belongs only to the operator.
+The database's default Compliance lock and expiry are 400 days to cover twelve
+monthly backups with margin. Daily backups and WAL receive the same lock.
+Hetzner lifecycle uses expiration, `NoncurrentDays`, delete-marker cleanup and
+incomplete multipart cleanup. Object Lock protects each version until its deadline.
+The bucket is private; the manifests configure no at-rest encryption because
+Hetzner offers SSE-C with a separate customer key, and no SSE-S3 or SSE-KMS.
+The [database runbook](../apps/postgres/README.md) lists supported actions,
+provider sources, credential provisioning and runtime verification.
