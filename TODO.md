@@ -107,9 +107,6 @@ Claude-Agent (Sonnet); Generator, Prüfer B und C, Tie-Breaker und Schiedsrichte
   Fotoanzahl. 748 Heros appendiculatum wartet
   auf die Heros-Entscheidung. Legacy-Einträge unter älteren Namen einer Art mit
   Profil werden dem Profil zugeordnet (Abgleich über Namen und Synonyme)
-- [ ] Legacy 589 „Tilapia aurea" (0 Fotos, Kategorie African) ist vermutlich Oreochromis aureus;
-  das Profil von Melanochromis auratus führt Tilapia aurea als Synonym nach Goren (1974). Prüfen,
-  ob dieses Synonym stimmt
 - [ ] Die harten Merkmale aller Arten sind vor Slice 4 gesichert
 - [ ] Das OpenAlex-Tagesbudget (1 USD, Reset 02:00 Uhr MESZ) reicht für etwa 12 Arten. Danach
   zahlt das Prepaid-Guthaben des Schlüssels (am 2026-10-13 etwa 10 USD), weil die Werkzeuge nur
