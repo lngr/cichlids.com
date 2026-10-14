@@ -590,20 +590,17 @@ features:
   ghDgh:
     value:
       min: 4
-      max: 4
+      max: 6
     confidence: low
-    rationale: "The tally retains the point interval 4 to 4 dGH by qualified-majority, 5 of 6 votes, at low
-      confidence. generator proposed {\"min\":4,\"max\":4}; checker-a proposed {\"min\":5,\"max\":12};
-      checker-b proposed {\"min\":5.83,\"max\":5.83}; checker-c proposed {\"min\":4,\"max\":4}; tiebreaker-1
-      proposed {\"min\":4,\"max\":4}; tiebreaker-2 proposed {\"min\":4,\"max\":4}. Checker-b's 5.83 point lies
-      within the 2 dGH agreement threshold and therefore joins the leading cluster, whose median remains 4.
-      Stalsberg and the Nordic record separately publish 4 dH from what is probably one Trinidad collection;
-      two pages do not constitute independent measurements. The Nordic locality metadata support the Trinidad
-      narrative while Stalsberg's printed coordinates conflict, and the pages disagree on conductivity.
-      Checker-a's wider 5 to 12 estimate and broad care-sheet intervals are not substituted for measured
-      native GH. The reported Tumpuna proxy behind checker-b and excluded Orinoco chemistry do not establish
-      species-linked station measurements. The chosen point is a provisional sampling anchor rather than
-      constant hardness throughout the native range; conductivity is not converted to GH."
+    rationale: "The qualified-majority 4 to 4 dGH point decision, with 5 of 6 votes, represents one
+      collecting event reported by Stalsberg and the Nordic register, rather than a natural range. The
+      adjudicated 4 to 6 dGH range combines that reading with regional Tumpuna River chemistry in Grant's
+      UNIDO report, Table 21: total hardness 104 mg/L as CaCO3 equals 5.83 dGH,
+      using 17.848 mg/L per degree. The regional endpoint rounds outward to a whole degree. Tumpuna supplies
+      a comparable freshwater river measurement in the native Trinidad Caroni drainage, without confirmation
+      of the species at the sampling station. The report treats its chemistry as comparable to the neighbouring
+      Guanapo. Sparse site and seasonal coverage and conflicting collecting metadata limit confidence. The
+      4 to 25 dGH aquarium tolerance contains this regional range."
     sources:
       - kind: literature
         title: "Stalsberg, A.: Andinoacara collecting account, Trinidad section"
@@ -615,7 +612,23 @@ features:
         url: "https://www.ciklid.org/artregister/art_fangstplats.php?ID=442"
         archived: ciklid.org/artregister/art_fangstplats.php/q-02d941f0/2026-10-14T094409Z
         accessed: 2026-10-13
+      - kind: literature
+        title: "Grant (1968). Report on a paper industry for Trinidad and Tobago, Table 21"
+        url: "https://downloads.unido.org/ot/46/83/4683494/00001-10000_00707.pdf"
+        archived: downloads.unido.org/ot/46/83/4683494/00001-10000_00707.pdf/2026-10-14T230356Z
+        accessed: 2026-10-15
     evidence:
+      - source:
+          kind: literature
+          title: "Grant (1968). Report on a paper industry for Trinidad and Tobago, Table 21"
+          url: "https://downloads.unido.org/ot/46/83/4683494/00001-10000_00707.pdf"
+          archived: downloads.unido.org/ot/46/83/4683494/00001-10000_00707.pdf/2026-10-14T230356Z
+          accessed: 2026-10-15
+        value:
+          min: 5.83
+          max: 5.83
+        note: "total hardness 104 mg/L as CaCO3 / 17.848; Tumpuna River, 13 September 1966, Table 21, p. 116.
+          Regional river proxy without a fish inventory; a single reading, not a seasonal range."
       - source:
           kind: literature
           title: "Stalsberg, A.: Andinoacara collecting account, Trinidad section"
@@ -638,10 +651,14 @@ features:
         note: "Species-linked reading dated 29 September 1998; probably the same event, not independent field
           replication."
     verification:
-      method: qualified-majority
+      method: adjudicated
       votes:
         agree: 5
         total: 6
+      replaced:
+        min: 4
+        max: 4
+      replacedMethod: qualified-majority
     tolerance:
       value:
         min: 4
@@ -651,7 +668,7 @@ features:
         proposed {\"min\":4,\"max\":25}; checker-a proposed {\"min\":5,\"max\":25}; checker-b proposed
         {\"min\":5,\"max\":25}; checker-c proposed {\"min\":1,\"max\":25}; tiebreaker-1 proposed
         {\"min\":4,\"max\":25}; tiebreaker-2 proposed {\"min\":4,\"max\":25}. Seriously Fish and Fishkeeping
-        recommend 5 to 25 dGH; the lower endpoint is extended to contain the decided natural 4 dGH. Fishkeeper
+        recommend 5 to 25 dGH; the lower endpoint is extended to contain the decided natural 4 to 6 dGH range. Fishkeeper
         states only an upper limit of 25, not zero as a measured lower endpoint. Akvaforum gives the wider 1
         to 25 dGH source interval, which checker-c adopted; 1 to 4 is not included in the final tolerance.
         Andinoacara.com instead recommends 1 to 5 dGH and warns about sustained harder conditions, while
@@ -784,20 +801,19 @@ features:
           total: 6
   khDkh:
     value:
-      min: 7
+      min: 6
       max: 7
     confidence: low
-    rationale: "The tally retains the point interval 7 to 7 dKH by qualified-majority, 5 of 6 votes, at low
-      confidence. generator proposed {\"min\":7,\"max\":7}; checker-a proposed {\"min\":3,\"max\":8};
-      checker-b proposed {\"min\":6.47,\"max\":6.47}; checker-c proposed {\"min\":7,\"max\":7}; tiebreaker-1
-      proposed {\"min\":7,\"max\":7}; tiebreaker-2 proposed {\"min\":7,\"max\":7}. The 6.47 dKH proxy of
-      checker-b falls within the 2 dKH agreement threshold, but the leading cluster median remains 7. The same
-      probable Trinidad collecting event is reported by Stalsberg and the Nordic record as kH 7, separately
-      from dH 4. Their locality and conductivity inconsistencies prevent treating the two pages as replicated
-      field measurements. Checker-a's wider 3 to 8 interval was inferred from other chemistry and does not
-      supply an observed native range. The Tumpuna alkalinity proxy and excluded Orinoco comparison in
-      checker-b lack fish confirmation at their stations. This point records provisional field evidence rather
-      than a fixed natural requirement. GH, pH and conductivity are not substitutes for KH."
+    rationale: "The qualified-majority 7 to 7 dKH point decision, with 5 of 6 votes, represents one
+      collecting event reported by Stalsberg and the Nordic register, rather than a natural range. The
+      adjudicated 6 to 7 dKH range combines that reading with regional Tumpuna River chemistry in Grant's
+      UNIDO report, Table 21: methyl-orange alkalinity 115.5 mg/L as CaCO3 equals 6.47 dKH,
+      using 17.848 mg/L per degree. The regional endpoint rounds outward to a whole degree. Tumpuna supplies
+      a comparable freshwater river measurement in the native Trinidad Caroni drainage, without confirmation
+      of the species at the sampling station. The report treats its chemistry as comparable to the neighbouring
+      Guanapo. Sparse site and seasonal coverage and conflicting collecting metadata limit confidence. The
+      alkalinity-based KH proxy uses the reported carbonate and bicarbonate chemistry, not GH or conductivity. The
+      3 to 8 dKH aquarium tolerance contains this regional range."
     sources:
       - kind: literature
         title: "Stalsberg, A.: Andinoacara collecting account, Trinidad section"
@@ -809,7 +825,23 @@ features:
         url: "https://www.ciklid.org/artregister/art_fangstplats.php?ID=442"
         archived: ciklid.org/artregister/art_fangstplats.php/q-02d941f0/2026-10-14T094409Z
         accessed: 2026-10-13
+      - kind: literature
+        title: "Grant (1968). Report on a paper industry for Trinidad and Tobago, Table 21"
+        url: "https://downloads.unido.org/ot/46/83/4683494/00001-10000_00707.pdf"
+        archived: downloads.unido.org/ot/46/83/4683494/00001-10000_00707.pdf/2026-10-14T230356Z
+        accessed: 2026-10-15
     evidence:
+      - source:
+          kind: literature
+          title: "Grant (1968). Report on a paper industry for Trinidad and Tobago, Table 21"
+          url: "https://downloads.unido.org/ot/46/83/4683494/00001-10000_00707.pdf"
+          archived: downloads.unido.org/ot/46/83/4683494/00001-10000_00707.pdf/2026-10-14T230356Z
+          accessed: 2026-10-15
+        value:
+          min: 6.47
+          max: 6.47
+        note: "methyl-orange alkalinity 115.5 mg/L as CaCO3 / 17.848; Tumpuna River, 13 September 1966, Table 21, p. 116.
+          Regional river proxy without a fish inventory; a single reading, not a seasonal range."
       - source:
           kind: literature
           title: "Stalsberg, A.: Andinoacara collecting account, Trinidad section"
@@ -830,6 +862,15 @@ features:
           min: 7
           max: 7
         note: Species-linked collection dated 29 September 1998; likely the same event as Stalsberg.
+    verification:
+      method: adjudicated
+      votes:
+        agree: 5
+        total: 6
+      replaced:
+        min: 7
+        max: 7
+      replacedMethod: qualified-majority
     tolerance:
       value:
         min: 3
@@ -842,7 +883,7 @@ features:
         its summary table but 2 to 6 in its prose; Aqua-Pedia publishes the wider 3 to 12 source interval and
         discloses generated, manually reviewed data. The retailer independently gives 3 to 8, while the
         general Turkish hobby page gives 2 to 8 but unreliable stocking advice. These conflicting lower-weight
-        accounts support a provisional 3 to 8 interval that contains the decided native 7 dKH, rather than
+        accounts support a provisional 3 to 8 interval that contains the decided native 6 to 7 dKH range, rather than
         checker-b's wider 3 to 12. Checker-a's 2 to 15 was inferred from GH and pH and is not an explicit
         Seriously Fish KH recommendation. No major reference retrieved here establishes years of health at the
         endpoints, and neither habitat containment nor GH can prove a KH tolerance."
@@ -2295,10 +2336,16 @@ profile:
       Trinidad field observations provide the strongest locality-linked environmental evidence. The profile
       stores 24 to 30 C and pH 7.5 to 8.1 as low-confidence median decisions across conflicting proposals, not
       the exact endpoints of one survey. The directly checked 2022 data span 23.97 to 29.58 C at 134
-      observations with the species present. GH 4 dGH and KH 7 dKH are provisional point values from a
-      collecting event apparently repeated on two pages. The conflicting location metadata and limited
-      seasonal coverage mean these figures cannot describe every native population."
+      observations with the species present. The natural hardness envelopes are GH 4 to 6 dGH and KH 6 to 7 dKH, combining a
+      species-linked collection with regional Tumpuna River chemistry in the Caroni drainage. The Tumpuna
+      station has no accompanying fish inventory. Conflicting collection metadata and sparse seasonal
+      coverage limit how well these envelopes represent every native population."
     sources:
+      - kind: literature
+        title: "Grant (1968). Report on a paper industry for Trinidad and Tobago, Table 21"
+        url: "https://downloads.unido.org/ot/46/83/4683494/00001-10000_00707.pdf"
+        archived: downloads.unido.org/ot/46/83/4683494/00001-10000_00707.pdf/2026-10-14T230356Z
+        accessed: 2026-10-15
       - kind: literature
         title: Zanghi et al. (2024). Multiple environmental stressors affect predation pressure in a tropical
           freshwater system
@@ -2927,19 +2974,16 @@ provenance:
             max: 4
       decision:
         min: 4
-        max: 4
-      rationale: "The tally retains the point interval 4 to 4 dGH by qualified-majority, 5 of 6 votes, at low
-        confidence. generator proposed {\"min\":4,\"max\":4}; checker-a proposed {\"min\":5,\"max\":12};
-        checker-b proposed {\"min\":5.83,\"max\":5.83}; checker-c proposed {\"min\":4,\"max\":4}; tiebreaker-1
-        proposed {\"min\":4,\"max\":4}; tiebreaker-2 proposed {\"min\":4,\"max\":4}. Checker-b's 5.83 point
-        lies within the 2 dGH agreement threshold and therefore joins the leading cluster, whose median
-        remains 4. Stalsberg and the Nordic record separately publish 4 dH from what is probably one Trinidad
-        collection; two pages do not constitute independent measurements. The Nordic locality metadata support
-        the Trinidad narrative while Stalsberg's printed coordinates conflict, and the pages disagree on
-        conductivity. Checker-a's wider 5 to 12 estimate and broad care-sheet intervals are not substituted
-        for measured native GH. The reported Tumpuna proxy behind checker-b and excluded Orinoco chemistry do
-        not establish species-linked station measurements. The chosen point is a provisional sampling anchor
-        rather than constant hardness throughout the native range; conductivity is not converted to GH."
+        max: 6
+      rationale: "The qualified-majority 4 to 4 dGH point decision, with 5 of 6 votes, represents one
+        collecting event reported by Stalsberg and the Nordic register, rather than a natural range. The
+        adjudicated 4 to 6 dGH range combines that reading with regional Tumpuna River chemistry in Grant's
+        UNIDO report, Table 21: total hardness 104 mg/L as CaCO3 equals 5.83 dGH,
+        using 17.848 mg/L per degree. The regional endpoint rounds outward to a whole degree. Tumpuna supplies
+        a comparable freshwater river measurement in the native Trinidad Caroni drainage, without confirmation
+        of the species at the sampling station. The report treats its chemistry as comparable to the neighbouring
+        Guanapo. Sparse site and seasonal coverage and conflicting collecting metadata limit confidence. The
+        4 to 25 dGH aquarium tolerance contains this regional range."
     - field: features.khDkh
       proposals:
         - by: generator
@@ -2967,20 +3011,18 @@ provenance:
             min: 7
             max: 7
       decision:
-        min: 7
+        min: 6
         max: 7
-      rationale: "The tally retains the point interval 7 to 7 dKH by qualified-majority, 5 of 6 votes, at low
-        confidence. generator proposed {\"min\":7,\"max\":7}; checker-a proposed {\"min\":3,\"max\":8};
-        checker-b proposed {\"min\":6.47,\"max\":6.47}; checker-c proposed {\"min\":7,\"max\":7}; tiebreaker-1
-        proposed {\"min\":7,\"max\":7}; tiebreaker-2 proposed {\"min\":7,\"max\":7}. The 6.47 dKH proxy of
-        checker-b falls within the 2 dKH agreement threshold, but the leading cluster median remains 7. The
-        same probable Trinidad collecting event is reported by Stalsberg and the Nordic record as kH 7,
-        separately from dH 4. Their locality and conductivity inconsistencies prevent treating the two pages
-        as replicated field measurements. Checker-a's wider 3 to 8 interval was inferred from other chemistry
-        and does not supply an observed native range. The Tumpuna alkalinity proxy and excluded Orinoco
-        comparison in checker-b lack fish confirmation at their stations. This point records provisional field
-        evidence rather than a fixed natural requirement. GH, pH and conductivity are not substitutes for KH;
-        no verification object is attached to this natural non-hard feature."
+      rationale: "The qualified-majority 7 to 7 dKH point decision, with 5 of 6 votes, represents one
+        collecting event reported by Stalsberg and the Nordic register, rather than a natural range. The
+        adjudicated 6 to 7 dKH range combines that reading with regional Tumpuna River chemistry in Grant's
+        UNIDO report, Table 21: methyl-orange alkalinity 115.5 mg/L as CaCO3 equals 6.47 dKH,
+        using 17.848 mg/L per degree. The regional endpoint rounds outward to a whole degree. Tumpuna supplies
+        a comparable freshwater river measurement in the native Trinidad Caroni drainage, without confirmation
+        of the species at the sampling station. The report treats its chemistry as comparable to the neighbouring
+        Guanapo. Sparse site and seasonal coverage and conflicting collecting metadata limit confidence. The
+        alkalinity-based KH proxy uses the reported carbonate and bicarbonate chemistry, not GH or conductivity. The
+        3 to 8 dKH aquarium tolerance contains this regional range."
     - field: features.temperatureC.tolerance
       proposals:
         - by: generator
@@ -3093,7 +3135,7 @@ provenance:
         proposed {\"min\":4,\"max\":25}; checker-a proposed {\"min\":5,\"max\":25}; checker-b proposed
         {\"min\":5,\"max\":25}; checker-c proposed {\"min\":1,\"max\":25}; tiebreaker-1 proposed
         {\"min\":4,\"max\":25}; tiebreaker-2 proposed {\"min\":4,\"max\":25}. Seriously Fish and Fishkeeping
-        recommend 5 to 25 dGH; the lower endpoint is extended to contain the decided natural 4 dGH. Fishkeeper
+        recommend 5 to 25 dGH; the lower endpoint is extended to contain the decided natural 4 to 6 dGH range. Fishkeeper
         states only an upper limit of 25, not zero as a measured lower endpoint. Akvaforum gives the wider 1
         to 25 dGH source interval, which checker-c adopted; 1 to 4 is not included in the final tolerance.
         Andinoacara.com instead recommends 1 to 5 dGH and warns about sustained harder conditions, while
@@ -3136,7 +3178,7 @@ provenance:
         its summary table but 2 to 6 in its prose; Aqua-Pedia publishes the wider 3 to 12 source interval and
         discloses generated, manually reviewed data. The retailer independently gives 3 to 8, while the
         general Turkish hobby page gives 2 to 8 but unreliable stocking advice. These conflicting lower-weight
-        accounts support a provisional 3 to 8 interval that contains the decided native 7 dKH, rather than
+        accounts support a provisional 3 to 8 interval that contains the decided native 6 to 7 dKH range, rather than
         checker-b's wider 3 to 12. Checker-a's 2 to 15 was inferred from GH and pH and is not an explicit
         Seriously Fish KH recommendation. No major reference retrieved here establishes years of health at the
         endpoints, and neither habitat containment nor GH can prove a KH tolerance."
