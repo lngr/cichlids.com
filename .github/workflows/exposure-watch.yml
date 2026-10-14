@@ -1,0 +1,24 @@
+name: exposure-watch
+
+on:
+  schedule:
+    - cron: '17 */3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  public-exposure:
+    name: Backups and media originals are private
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '24'
+      - name: Probe anonymously over HTTPS
+        run: node tools/check-public-exposure.mjs
