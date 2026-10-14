@@ -6,3 +6,21 @@ metadata:
     cichlids.com/stateful: 'true'
 resources:
 - ../../base
+- ../../keycloak
+patches:
+- target:
+    kind: Cluster
+    name: postgres
+  patch: |
+    apiVersion: postgresql.cnpg.io/v1
+    kind: Cluster
+    metadata:
+      name: postgres
+    spec:
+      managed:
+        roles:
+        - name: keycloak
+          ensure: present
+          login: true
+          passwordSecret:
+            name: keycloak-db

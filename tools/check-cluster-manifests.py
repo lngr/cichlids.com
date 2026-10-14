@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parent.parent
 REPO = 'https://github.com/lngr/cichlids.com.git'
 FINALIZER = 'resources-finalizer.argocd.argoproj.io'
 EXPECTED = {'staging', 'prod', 'preview', 'preview-environments'}
-CRITICAL = {'PersistentVolumeClaim', 'Namespace', 'Cluster', 'StatefulSet'}
+CRITICAL = {'PersistentVolumeClaim', 'Namespace', 'Cluster', 'StatefulSet', 'Database'}
 
 
 def run(*args):
@@ -126,7 +126,7 @@ def check_application(app):
 
 
 def check_resources(docs, path):
-    stateful = any(d['kind'] in {'PersistentVolumeClaim', 'StatefulSet', 'Cluster'} for d in docs)
+    stateful = any(d['kind'] in {'PersistentVolumeClaim', 'StatefulSet', 'Cluster', 'Database'} for d in docs)
     for doc in docs:
         if doc['kind'] in CRITICAL:
             options = doc['metadata'].get('annotations', {}).get('argocd.argoproj.io/sync-options', '')
@@ -176,11 +176,11 @@ def main():
                {'number': 19, 'sha': 'c' * 40, 'state': 'open', 'labels': ['preview']}]
         for name, appset in sets.items():
             current = generate(appset, ROOT, [], chart)
-            require(len(current) == (2 if name in {'staging', 'prod'} else 0),
-                    f'{name}: repository discovers placeholder and postgres, with no unrequested previews')
+            require(len(current) == (3 if name in {'staging', 'prod'} else 0),
+                    f'{name}: repository discovers placeholder, postgres and keycloak, with no unrequested previews')
             for app in current:
                 check_application(app)
-                require(app['metadata']['name'] in {f'placeholder-{name}', f'postgres-{name}'},
+                require(app['metadata']['name'] in {f'placeholder-{name}', f'postgres-{name}', f'keycloak-{name}'},
                         'Deployable services join environment discovery')
                 rendered.append(app)
             fixture = generate(appset, ROOT / 'tools/fixtures/cluster-manifests', prs, chart)

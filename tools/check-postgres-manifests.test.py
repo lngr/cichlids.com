@@ -188,7 +188,7 @@ class Postgres(unittest.TestCase):
             path.write_text(yaml.safe_dump_all(docs))
             result = subprocess.run(command, capture_output=True, text=True)
             self.assertNotEqual(result.returncode, 0)
-            self.assertIn('Invalid: 4', result.stdout)
+            self.assertIn('Invalid: 5', result.stdout)
 
 
 if __name__ == '__main__':

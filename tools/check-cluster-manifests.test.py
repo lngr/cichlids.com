@@ -50,7 +50,7 @@ class Safeguards(unittest.TestCase):
                 check.check_resources([pvc], overlay)
 
     def test_preview_service_cannot_own_namespace_or_data(self):
-        for kind in ['Namespace', 'ResourceQuota', 'LimitRange', 'PersistentVolumeClaim', 'Cluster']:
+        for kind in ['Namespace', 'ResourceQuota', 'LimitRange', 'PersistentVolumeClaim', 'Cluster', 'Database']:
             with self.subTest(kind=kind), self.assertRaisesRegex(AssertionError, 'cannot own'):
                 check.check_resources([{'kind': kind, 'metadata': {}}], Path('apps/service/overlays/preview'))
 

@@ -10,6 +10,24 @@ CX33 node alongside the cluster services. A single node provides no availability
 replica. Production requests 8Gi and staging requests 20Gi; confirm free space on the
 database volume for production and on the node disk for staging.
 
+## Keycloak database
+
+Provision `keycloak-db` in each persistent namespace with keys `username` and
+`password`; set the username to `keycloak`, the Secret type to
+`kubernetes.io/basic-auth` and the label `cnpg.io/reload` to `"true"`. The persistent overlays reconcile a
+managed login role and a `Database/keycloak` owned by that role in the `postgres`
+Cluster. The Database uses `databaseReclaimPolicy: retain`, Argo CD deletion
+protection and the resource finalizer. Previews initialize only the application
+database and have no Keycloak login role.
+
+Production base backups and WAL include the Keycloak database through the same
+Barman Cloud plugin and ObjectStore. A restore recovers all databases in the
+Cluster. Provision the password Secret before syncing PostgreSQL and verify role
+and Database readiness before syncing Keycloak. See the
+[Keycloak operator procedure](../keycloak/README.md#operator-rollout) for the
+complete secret contract and rollout order. For SOPS, give `keycloak-db` one
+owner in the PostgreSQL overlay; Keycloak references the existing Secret.
+
 ## Production storage
 
 The app-tier bootstrap mounts the platform-created ext4 volume at

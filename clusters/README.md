@@ -25,9 +25,11 @@ apps/<service>/overlays/preview/kustomization.yaml
 ```
 
 The generator matches `apps/*/overlays/<environment>/kustomization.yaml`.
-Adding that file makes a service eligible. The `placeholder` service supplies all three environment overlays. Realm JSON
-files in `apps/keycloak/overlays/` are configuration assets; these directories
-contain no deployable Kustomization.
+Adding that file makes a service eligible. The `placeholder` service supplies all three environment overlays. Keycloak supplies
+staging and production overlays. Its persistent accounts use the environment
+PostgreSQL Cluster; Keycloak has no disposable preview overlay. Follow the
+[Keycloak rollout instructions](../apps/keycloak/README.md#operator-rollout) for
+secrets, realm apply, private administration and authentication checks.
 
 Application names are `<service>-staging` and `<service>-prod`. Both use `main`
 and their respective overlays. Image promotion updates the overlay content;
@@ -120,7 +122,7 @@ DNS records:
 tofu -chdir=infra/platform apply
 ```
 
-The A RRsets `@`, `staging` and `*.dev` use
+The A RRsets `@`, `staging`, `*.dev`, `auth` and `auth.staging` use
 `hcloud_server.node.ipv4_address` with a 300-second TTL and `prevent_destroy`.
 The platform manages IPv4 ingress records. Review any existing AAAA records
 for these names so clients and ACME validation reach the same serving node.

@@ -1,0 +1,15 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: keycloak
+  annotations:
+    argocd.argoproj.io/sync-options: Prune=false,Delete=false
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  name: keycloak
+  owner: keycloak
+  cluster:
+    name: postgres
+  ensure: present
+  databaseReclaimPolicy: retain

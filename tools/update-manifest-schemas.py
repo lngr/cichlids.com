@@ -120,7 +120,7 @@ def main():
         json.dumps(schema, indent=2, sort_keys=True) + '\n')
     provenance['helmchartconfig'] = {'url': url, 'sha256': hashlib.sha256(data).hexdigest()}
     sources = json.loads((DEST.parent / 'addon-sources.json').read_text())
-    for addon, kinds, group in [('cloudnative-pg', ['Cluster', 'ScheduledBackup'], 'postgresql.cnpg.io'),
+    for addon, kinds, group in [('cloudnative-pg', ['Cluster', 'ScheduledBackup', 'Database'], 'postgresql.cnpg.io'),
                                 ('barman-cloud', ['ObjectStore'], 'barmancloud.cnpg.io')]:
         source = sources[addon]
         data = download(source['url'])
