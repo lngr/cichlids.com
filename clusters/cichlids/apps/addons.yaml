@@ -58,3 +58,73 @@ spec:
     kind: MutatingWebhookConfiguration
     jqPathExpressions:
     - .webhooks[]?.clientConfig.caBundle
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cloudnative-pg
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: '0'
+spec:
+  project: cichlids-addons
+  source:
+    repoURL: https://github.com/lngr/cichlids.com.git
+    targetRevision: main
+    path: apps/cloudnative-pg/overlays/cluster
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: cnpg-system
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
+    syncOptions:
+    - ServerSideApply=true
+    - Prune=false
+    - FailOnSharedResource=true
+    - RespectIgnoreDifferences=true
+  ignoreDifferences:
+  - group: admissionregistration.k8s.io
+    kind: ValidatingWebhookConfiguration
+    jqPathExpressions:
+    - .webhooks[]?.clientConfig.caBundle
+  - group: admissionregistration.k8s.io
+    kind: MutatingWebhookConfiguration
+    jqPathExpressions:
+    - .webhooks[]?.clientConfig.caBundle
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: barman-cloud
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: '1'
+spec:
+  project: cichlids-addons
+  source:
+    repoURL: https://github.com/lngr/cichlids.com.git
+    targetRevision: main
+    path: apps/barman-cloud/overlays/cluster
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: cnpg-system
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
+    syncOptions:
+    - ServerSideApply=true
+    - Prune=false
+    - FailOnSharedResource=true
+    - RespectIgnoreDifferences=true
+  ignoreDifferences:
+  - group: admissionregistration.k8s.io
+    kind: ValidatingWebhookConfiguration
+    jqPathExpressions:
+    - .webhooks[]?.clientConfig.caBundle
+  - group: admissionregistration.k8s.io
+    kind: MutatingWebhookConfiguration
+    jqPathExpressions:
+    - .webhooks[]?.clientConfig.caBundle

@@ -28,14 +28,12 @@ def policy(docs, environment):
     assert spec['resources']['requests'] == {'cpu': '250m', 'memory': '512Mi'}
     if environment == 'preview':
         assert not cluster['metadata'].get('finalizers')
-        assert not spec['storage']['pvcTemplate']['metadata'].get('finalizers')
         assert 'argocd.argoproj.io/sync-options' not in cluster['metadata'].get('annotations', {})
     else:
         assert FINALIZER in cluster['metadata']['finalizers']
         assert cluster['metadata']['annotations']['argocd.argoproj.io/sync-options'] == 'Prune=false,Delete=false'
-        assert spec['inheritedMetadata']['annotations']['argocd.argoproj.io/sync-options'] == 'Prune=false,Delete=false'
-        pvc = spec['storage']['pvcTemplate']['metadata']
-        assert 'kubernetes.io/pvc-protection' in pvc['finalizers']
+        assert spec['inheritedMetadata']['annotations'].get('argocd.argoproj.io/sync-options') == 'Prune=false,Delete=false'
+        assert spec['storage']['pvcTemplate']['accessModes'] == ['ReadWriteOnce']
     if environment != 'prod':
         assert not any(d['kind'] in {'ObjectStore', 'ScheduledBackup', 'Secret'} for d in docs)
         assert 'plugins' not in spec and 'backup' not in spec
@@ -76,6 +74,7 @@ class Postgres(unittest.TestCase):
         mutations = [lambda: cluster['spec']['plugins'].clear(),
                      lambda: cluster['spec']['postgresql']['parameters'].update(archive_timeout='600s'),
                      lambda: cluster['metadata']['finalizers'].clear(),
+                     lambda: cluster['spec']['inheritedMetadata']['annotations'].clear(),
                      lambda: store['spec'].update(retentionPolicy='14d'),
                      lambda: docs.pop(next(i for i,d in enumerate(docs) if d['kind']=='ScheduledBackup'))]
         for mutate in mutations:
@@ -86,6 +85,15 @@ class Postgres(unittest.TestCase):
             docs = saved
             cluster = next(d for d in docs if d['kind'] == 'Cluster')
             store = next(d for d in docs if d['kind'] == 'ObjectStore')
+
+    def test_nonproduction_rejects_production_access(self):
+        for environment in ['staging', 'preview']:
+            for key, value in [('plugins', [{'name': PLUGIN}]),
+                               ('externalClusters', [{'name': 'production'}])]:
+                docs = build(environment)
+                next(d for d in docs if d['kind'] == 'Cluster')['spec'][key] = value
+                with self.assertRaises(AssertionError):
+                    policy(docs, environment)
 
     def test_schemas_reject_unknown_fields(self):
         docs = build('prod')

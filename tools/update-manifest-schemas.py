@@ -92,7 +92,7 @@ def main():
         raise SystemExit('cert-manager upstream SHA-256 mismatch')
     crds = {d['spec']['names']['kind']: d for d in yaml.safe_load_all(data)
             if d and d['kind'] == 'CustomResourceDefinition'}
-    for kind in ['Certificate', 'ClusterIssuer']:
+    for kind in ['Certificate', 'ClusterIssuer', 'Issuer']:
         crd = crds[kind]
         schema = next(v['schema']['openAPIV3Schema'] for v in crd['spec']['versions']
                       if v['name'] == 'v1')
@@ -119,6 +119,26 @@ def main():
     (DEST / 'helmchartconfig-helm-v1.json').write_text(
         json.dumps(schema, indent=2, sort_keys=True) + '\n')
     provenance['helmchartconfig'] = {'url': url, 'sha256': hashlib.sha256(data).hexdigest()}
+    sources = json.loads((DEST.parent / 'addon-sources.json').read_text())
+    for addon, kinds, group in [('cloudnative-pg', ['Cluster', 'ScheduledBackup'], 'postgresql.cnpg.io'),
+                                ('barman-cloud', ['ObjectStore'], 'barmancloud.cnpg.io')]:
+        source = sources[addon]
+        data = download(source['url'])
+        if hashlib.sha256(data).hexdigest() != source['source_sha256']:
+            raise SystemExit(f'{addon}: upstream SHA-256 mismatch')
+        crds = {d['spec']['names']['kind']: d for d in yaml.safe_load_all(data)
+                if d and d['kind'] == 'CustomResourceDefinition'}
+        for kind in kinds:
+            schema = next(v['schema']['openAPIV3Schema'] for v in crds[kind]['spec']['versions']
+                          if v['name'] == 'v1')
+            schema['$schema'] = 'http://json-schema.org/draft-04/schema#'
+            schema['properties']['metadata'] = metadata
+            schema['properties']['apiVersion'] = {'enum': [group + '/v1']}
+            schema['properties']['kind'] = {'enum': [kind]}
+            strict(schema)
+            key = kind.lower() + '-' + group.split('.')[0] + '-v1'
+            (DEST / (key + '.json')).write_text(json.dumps(schema, indent=2, sort_keys=True) + '\n')
+            provenance[key] = {'url': source['url'], 'sha256': source['source_sha256']}
     (DEST / 'sources.json').write_text(json.dumps(provenance, indent=2, sort_keys=True) + '\n')
 
 

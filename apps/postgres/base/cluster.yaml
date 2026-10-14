@@ -1,0 +1,34 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: postgres
+  annotations:
+    argocd.argoproj.io/sync-options: Prune=false,Delete=false
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  instances: 1
+  imageName: ghcr.io/cloudnative-pg/postgresql:18.6-system-trixie
+  bootstrap:
+    initdb:
+      database: cichlids
+      owner: cichlids
+  inheritedMetadata:
+    annotations:
+      argocd.argoproj.io/sync-options: Prune=false,Delete=false
+  storage:
+    storageClass: local-path
+    size: 20Gi
+    pvcTemplate:
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 20Gi
+  resources:
+    requests:
+      cpu: 250m
+      memory: 512Mi
+    limits:
+      cpu: '1'
+      memory: 1Gi

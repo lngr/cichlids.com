@@ -15,6 +15,10 @@
     "sha256": "e03b668ec8675214af6b0a671699d088f2601fa3878e0dbe1b41d3feafd1879f",
     "url": "https://github.com/cert-manager/cert-manager/releases/download/v1.21.2/cert-manager.yaml"
   },
+  "cluster-postgresql-v1": {
+    "sha256": "37237f145d8138256ea25ae830f87759255665ff08f8d552fdd8224a5ec032fb",
+    "url": "https://github.com/cloudnative-pg/cloudnative-pg/releases/download/v1.30.1/cnpg-1.30.1.yaml"
+  },
   "clusterissuer": {
     "sha256": "e03b668ec8675214af6b0a671699d088f2601fa3878e0dbe1b41d3feafd1879f",
     "url": "https://github.com/cert-manager/cert-manager/releases/download/v1.21.2/cert-manager.yaml"
@@ -51,6 +55,10 @@
     "sha256": "7a92c21dcb17add498b881563e66adfa23bc2ee75bd208c6d818adb9dd2aa31f",
     "url": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/817113f21a2643311cbc3e992bb44ffe1c416c54/v1.36.0-standalone-strict/ingressclass-networking-v1.json"
   },
+  "issuer": {
+    "sha256": "e03b668ec8675214af6b0a671699d088f2601fa3878e0dbe1b41d3feafd1879f",
+    "url": "https://github.com/cert-manager/cert-manager/releases/download/v1.21.2/cert-manager.yaml"
+  },
   "job-batch-v1": {
     "sha256": "f49fee30367890a492146d63c3c433a7853e9088ebfe9e25cc792ec4b1400f18",
     "url": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/817113f21a2643311cbc3e992bb44ffe1c416c54/v1.36.0-standalone-strict/job-batch-v1.json"
@@ -67,6 +75,10 @@
     "sha256": "324fae677b98d1a6d54340db0c334d053e8ffbafceb3f73326e41de2610d5843",
     "url": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/817113f21a2643311cbc3e992bb44ffe1c416c54/v1.36.0-standalone-strict/namespace-v1.json"
   },
+  "objectstore-barmancloud-v1": {
+    "sha256": "8f377ff4a7d0d3f74fc64b0f7ac4f449fc38ca9e83a40107cca2f9315a9bd920",
+    "url": "https://github.com/cloudnative-pg/plugin-barman-cloud/releases/download/v0.15.1/manifest.yaml"
+  },
   "persistentvolumeclaim-v1": {
     "sha256": "6136871ac0337f11a48da5231a2807407c7386967e3432f344141b902f6a538c",
     "url": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/817113f21a2643311cbc3e992bb44ffe1c416c54/v1.36.0-standalone-strict/persistentvolumeclaim-v1.json"
@@ -82,6 +94,10 @@
   "rolebinding-rbac-v1": {
     "sha256": "b12ea4163fc37df2e02192b4291b1b7c28836e3e7665d989dd538bfcffa10076",
     "url": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/817113f21a2643311cbc3e992bb44ffe1c416c54/v1.36.0-standalone-strict/rolebinding-rbac-v1.json"
+  },
+  "scheduledbackup-postgresql-v1": {
+    "sha256": "37237f145d8138256ea25ae830f87759255665ff08f8d552fdd8224a5ec032fb",
+    "url": "https://github.com/cloudnative-pg/cloudnative-pg/releases/download/v1.30.1/cnpg-1.30.1.yaml"
   },
   "service-v1": {
     "sha256": "8bf019854daed511e7c174896a898173fa65d88ec5937c687a37303d4cc9351b",

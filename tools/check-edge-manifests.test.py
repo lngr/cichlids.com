@@ -40,13 +40,13 @@ class EdgeDelivery(unittest.TestCase):
         project = resource(topology, 'AppProject', 'cichlids-addons')['spec']
         self.assertEqual(project['sourceRepos'], [check.REPO])
         self.assertEqual({d['namespace'] for d in project['destinations']},
-                         {'cert-manager', 'kube-system'})
+                         {'cert-manager', 'kube-system', 'cnpg-system'})
         self.assertTrue(all(d['server'] == 'https://kubernetes.default.svc'
                             for d in project['destinations']))
         allowed = {(d['group'], d['kind']) for d in project['clusterResourceWhitelist']}
         self.assertNotIn(('*', '*'), allowed)
         namespaced = {(d['group'], d['kind']) for d in project['namespaceResourceWhitelist']}
-        for service in ['traefik', 'cert-manager']:
+        for service in ['traefik', 'cert-manager', 'cloudnative-pg', 'barman-cloud']:
             owners = [d for d in topology if d['kind'] == 'Application' and
                       d['spec']['source']['path'] == f'apps/{service}/overlays/cluster']
             self.assertEqual(len(owners), 1)
@@ -55,7 +55,7 @@ class EdgeDelivery(unittest.TestCase):
             self.assertFalse(owners[0]['spec']['syncPolicy']['automated']['prune'])
             self.assertNotIn(check.FINALIZER, owners[0]['metadata'].get('finalizers', []))
             self.assertIn('RespectIgnoreDifferences=true', owners[0]['spec']['syncPolicy']['syncOptions'])
-            if service == 'cert-manager':
+            if service != 'traefik':
                 self.assertTrue(all(rule['jqPathExpressions'] == ['.webhooks[]?.clientConfig.caBundle']
                                     for rule in owners[0]['spec']['ignoreDifferences']))
             else:
@@ -73,7 +73,7 @@ class EdgeDelivery(unittest.TestCase):
 
     def test_upstream_copies_match_recorded_checksums(self):
         sources = json.loads((ROOT / 'tools/addon-sources.json').read_text())
-        self.assertEqual(set(sources), {'cert-manager'})
+        self.assertEqual(set(sources), {'cert-manager', 'cloudnative-pg', 'barman-cloud'})
         for entry in sources.values():
             self.assertEqual(hashlib.sha256((ROOT / entry['path']).read_bytes()).hexdigest(), entry['sha256'])
             self.assertRegex(entry['version'], r'v\d+\.\d+\.\d+$')

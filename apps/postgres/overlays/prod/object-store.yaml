@@ -1,0 +1,29 @@
+apiVersion: barmancloud.cnpg.io/v1
+kind: ObjectStore
+metadata:
+  name: database-backup
+  annotations:
+    argocd.argoproj.io/sync-options: Prune=false,Delete=false
+spec:
+  configuration:
+    destinationPath: s3://cichlids-db-backup/
+    endpointURL: https://nbg1.your-objectstorage.com
+    s3Credentials:
+      accessKeyId:
+        name: postgres-backup-writer
+        key: ACCESS_KEY_ID
+      secretAccessKey:
+        name: postgres-backup-writer
+        key: ACCESS_SECRET_KEY
+    wal:
+      compression: gzip
+    data:
+      compression: gzip
+  instanceSidecarConfiguration:
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 500m
+        memory: 256Mi

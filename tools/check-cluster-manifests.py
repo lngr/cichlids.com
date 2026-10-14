@@ -107,8 +107,9 @@ def check_application(app):
     require(spec['destination']['server'] == 'https://kubernetes.default.svc', 'Local cluster only')
     if spec['project'] == 'cichlids-addons':
         require(spec['source']['path'] in {'apps/traefik/overlays/cluster',
-                                          'apps/cert-manager/overlays/cluster'}, 'Add-on source restriction')
-        require(spec['destination']['namespace'] in {'kube-system', 'cert-manager'},
+                                          'apps/cert-manager/overlays/cluster', 'apps/cloudnative-pg/overlays/cluster',
+                                          'apps/barman-cloud/overlays/cluster'}, 'Add-on source restriction')
+        require(spec['destination']['namespace'] in {'kube-system', 'cert-manager', 'cnpg-system'},
                 'Add-on namespace restriction')
         require(spec['syncPolicy']['automated']['prune'] is False, 'Add-ons require deliberate pruning')
         require('Prune=false' in spec['syncPolicy']['syncOptions'], 'Add-ons have Prune=false')
@@ -133,13 +134,21 @@ def check_resources(docs, path):
                 require('Prune=false' in options and 'Delete=false' in options,
                         f'{path}: persistent {doc["kind"]} needs Prune=false,Delete=false')
     if path.name == 'preview' and 'overlays' in path.parts:
-        require(not any(d['kind'] in CRITICAL | {'ResourceQuota', 'LimitRange', 'StatefulSet'}
-                        for d in docs), 'Preview service overlay cannot own namespace bounds or persistent data')
-    if stateful and 'overlays' in path.parts:
+        forbidden = CRITICAL | {'ResourceQuota', 'LimitRange', 'StatefulSet'}
+        if path.parts[-3:] == ('postgres', 'overlays', 'preview'):
+            forbidden -= {'Cluster'}
+            cluster = next(d for d in docs if d['kind'] == 'Cluster')
+            require('initdb' in cluster['spec']['bootstrap'] and
+                    'plugins' not in cluster['spec'] and 'externalClusters' not in cluster['spec'],
+                    'Preview database starts empty and has no production access')
+        require(not any(d['kind'] in forbidden for d in docs),
+                'Preview service overlay cannot own namespace bounds or persistent data')
+    if stateful and 'overlays' in path.parts and path.parts[-3:] != ('postgres', 'overlays', 'preview'):
         config = yaml.safe_load((path / 'kustomization.yaml').read_text())
         marker = config.get('metadata', {}).get('annotations', {}).get('cichlids.com/stateful')
         require(marker == 'true', f'{path}: stateful overlay needs explicit marker')
-        require(path.name != 'preview', 'Persistent data cannot join disposable previews')
+        require(path.name != 'preview' or path.parts[-3:] == ('postgres', 'overlays', 'preview'),
+                'Persistent data cannot join disposable previews')
 
 
 def main():
@@ -167,11 +176,12 @@ def main():
                {'number': 19, 'sha': 'c' * 40, 'state': 'open', 'labels': ['preview']}]
         for name, appset in sets.items():
             current = generate(appset, ROOT, [], chart)
-            require(len(current) == (1 if name in {'staging', 'prod'} else 0),
-                    f'{name}: repository discovers one persistent placeholder and no unrequested previews')
+            require(len(current) == (2 if name in {'staging', 'prod'} else 0),
+                    f'{name}: repository discovers placeholder and postgres, with no unrequested previews')
             for app in current:
                 check_application(app)
-                require(app['metadata']['name'] == f'placeholder-{name}', 'Only placeholder joins environment discovery')
+                require(app['metadata']['name'] in {f'placeholder-{name}', f'postgres-{name}'},
+                        'Deployable services join environment discovery')
                 rendered.append(app)
             fixture = generate(appset, ROOT / 'tools/fixtures/cluster-manifests', prs, chart)
             require(len(fixture) == (2 if name in {'staging', 'prod'} else 1), f'{name}: fixture count')
@@ -223,7 +233,7 @@ def main():
         quota = next(d for d in preview_docs if d['kind'] == 'ResourceQuota')
         require(quota['spec']['hard'] == {'requests.cpu': '1', 'requests.memory': '1Gi',
                                         'limits.cpu': '2', 'limits.memory': '2Gi', 'pods': '10',
-                                        'persistentvolumeclaims': '0', 'services.loadbalancers': '0',
+                                        'persistentvolumeclaims': '1', 'requests.storage': '1Gi', 'services.loadbalancers': '0',
                                         'services.nodeports': '0'}, 'Preview footprint bounds')
         require(any(d['kind'] == 'LimitRange' for d in preview_docs), 'Preview default requests and limits')
         for app in rendered:

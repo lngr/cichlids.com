@@ -13,6 +13,8 @@ spec:
     namespace: cert-manager
   - server: https://kubernetes.default.svc
     namespace: kube-system
+  - server: https://kubernetes.default.svc
+    namespace: cnpg-system
   clusterResourceWhitelist:
   - group: ''
     kind: Namespace
@@ -45,5 +47,9 @@ spec:
     kind: Deployment
   - group: batch
     kind: Job
+  - group: cert-manager.io
+    kind: Issuer
+  - group: cert-manager.io
+    kind: Certificate
   orphanedResources:
     warn: true

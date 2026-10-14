@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- upstream.yaml
+patches:
+- target:
+    kind: Namespace
+  patch: "- op: add\n  path: /metadata/annotations\n  value:\n    argocd.argoproj.io/sync-options:\
+    \ Prune=false,Delete=false\n"
+- target:
+    kind: CustomResourceDefinition
+  patch: "- op: add\n  path: /metadata/annotations\n  value:\n    argocd.argoproj.io/sync-options:\
+    \ Prune=false,Delete=false\n"

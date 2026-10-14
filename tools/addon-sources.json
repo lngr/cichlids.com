@@ -1,8 +1,22 @@
 {
+  "barman-cloud": {
+    "path": "apps/barman-cloud/base/upstream.yaml",
+    "sha256": "0cade8325dd750f48cc3354e110e149b4205711f9e48a4f23368cfbad74b1303",
+    "source_sha256": "8f377ff4a7d0d3f74fc64b0f7ac4f449fc38ca9e83a40107cca2f9315a9bd920",
+    "url": "https://github.com/cloudnative-pg/plugin-barman-cloud/releases/download/v0.15.1/manifest.yaml",
+    "version": "v0.15.1"
+  },
   "cert-manager": {
     "path": "apps/cert-manager/base/upstream.yaml",
     "sha256": "e03b668ec8675214af6b0a671699d088f2601fa3878e0dbe1b41d3feafd1879f",
     "url": "https://github.com/cert-manager/cert-manager/releases/download/v1.21.2/cert-manager.yaml",
     "version": "v1.21.2"
+  },
+  "cloudnative-pg": {
+    "path": "apps/cloudnative-pg/base/upstream.yaml",
+    "sha256": "37237f145d8138256ea25ae830f87759255665ff08f8d552fdd8224a5ec032fb",
+    "source_sha256": "37237f145d8138256ea25ae830f87759255665ff08f8d552fdd8224a5ec032fb",
+    "url": "https://github.com/cloudnative-pg/cloudnative-pg/releases/download/v1.30.1/cnpg-1.30.1.yaml",
+    "version": "v1.30.1"
   }
 }
