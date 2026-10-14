@@ -1,9 +1,10 @@
 ---
 id: TASK-2.25
 title: Run the Maestro flows of the native app in CI
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-10-09 21:28'
+updated_date: '2026-10-14 11:01'
 labels: []
 milestone: m-0
 dependencies: []
@@ -33,3 +34,22 @@ The Maestro flows in app/mobile/e2e/maestro (browse-gallery, tank-detail, commun
 - [ ] #4 Authoritative domain logic is covered by unit/integration tests
 - [ ] #5 All CI test suites are fully green
 <!-- DOD:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+### Approach
+- Fix the flow defects of R42 first, test-first where possible: locale-independent assertions
+  (test ids or both languages), a final assertion that proves the target screen, the appId from
+  the build configuration instead of a hardcoded value.
+- CI job `maestro` on push to main and on dispatch: enable KVM on the ubuntu runner, start the
+  compose stack with synthetic data (not the migrated legacy data), build the Android app for the
+  emulator (debug build of the staging-free development variant pointing at the stack through
+  the emulator host address), start an emulator (pinned system image, reactivecircus
+  android-emulator-runner pinned by SHA), run all flows once with locale en and once with de,
+  upload the Maestro report.
+- AC #3: a documented negative check (for example a flow run against a build without the
+  picture detail route in a test branch) instead of a permanent red job.
+- Devcontainer: grant the KVM group so the emulator can run locally (operator rebuilds the
+  devcontainer); F13 in `PROJECT-STATUS.md` names it.
+<!-- SECTION:PLAN:END -->
