@@ -11,6 +11,9 @@ Parses the .tf sources directly (brace-matched resource blocks) so it needs no c
 credentials and runs offline in CI.
 Story: task-2.2, task-2.18, task-2.22
 """
+import contextlib
+import io
+import copy
 import glob
 import os
 import re
@@ -46,8 +49,9 @@ def load_blocks():
     return blocks
 
 
-def main():
-    blocks = load_blocks()
+def main(blocks=None):
+    if blocks is None:
+        blocks = load_blocks()
     failures = []
 
     for rtype, rname, needs_dp in CRITICAL:
@@ -74,5 +78,30 @@ def main():
     return 0
 
 
+def self_test():
+    """Exercise missing resources, deletion guards and disabled versioning offline."""
+    good = load_blocks()
+    cases = [("protected platform", good, 0)]
+    for rtype, name, needs_dp in CRITICAL:
+        missing = copy.deepcopy(good)
+        missing.pop((rtype, name))
+        cases.append((f"missing {name}", missing, 1))
+        for flag in ['prevent_destroy'] + (['delete_protection'] if needs_dp else []):
+            changed = copy.deepcopy(good)
+            changed[(rtype, name)] = re.sub(flag + r"\s*=\s*true", flag + " = false", changed[(rtype, name)])
+            cases.append((f"{name}/{flag}", changed, 1))
+    changed = copy.deepcopy(good)
+    changed[("aws_s3_bucket_versioning", "media_master")] = 'status = "Suspended"'
+    cases.append(("disabled versioning", changed, 1))
+    for label, blocks, expected in cases:
+        with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+            got = main(blocks)
+        if got != expected:
+            print(f"platform guardrails self-test FAILED: {label}", file=sys.stderr)
+            return 1
+    print(f"platform guardrails self-test OK ({len(cases)} cases)")
+    return 0
+
+
 if __name__ == "__main__":
-    sys.exit(main())
+    sys.exit(self_test() if '--self-test' in sys.argv else main())

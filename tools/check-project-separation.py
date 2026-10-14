@@ -73,8 +73,12 @@ def check_writer_policy(tf_text):
     principal = 'arn:aws:iam:::user/p${var.database_writer_primary_project_id}:${var.database_writer_access_key_id}'
     if body.count(principal) != 2 or len(re.findall(r'Principal\s*=', body)) != 2:
         failures.append("backup: writer principal must use the primary project and access key variables")
+    if re.search(r'\b(NotAction|NotPrincipal|NotResource)\s*=', body):
+        failures.append("backup: writer policy must use positive action, principal and resource allowlists")
     if len(re.findall(r'Effect\s*=\s*"Allow"', body)) != 2:
         failures.append("backup: writer policy requires two explicit Allow statements")
+    if len(re.findall(r'\bSid\s*=', body)) != 2:
+        failures.append("backup: writer policy must contain exactly the bucket and object statements")
     if not re.search(r'bucket\s*=\s*aws_s3_bucket.database_backup.id', body):
         failures.append("backup: writer policy must bind the database backup bucket")
     resources = re.findall(r'Resource\s*=\s*([^\n]+)', body)
@@ -185,6 +189,7 @@ def self_test():
         ("backup project principal", good_policy.replace('var.database_writer_primary_project_id', 'var.project_name'), 1),
         ("missing policy", re.sub(r'resource "aws_s3_bucket_policy"', 'resource "missing_policy"', good_policy), 1),
         ("short retention", re.sub(r'default\s*=\s*400', 'default = 14', good_policy), 1),
+        ("negative allowlist", good_policy.replace('Action    = ["s3:ListBucket"]', 'NotAction = ["s3:ListBucket"]'), 1),
         ("writer secret", good_policy + 'variable "database_writer_secret" {}', 1),
         ("configuration wildcard", good_policy.replace('"s3:PutObject"', '"s3:Put*Configuration"'), 1),
     ]

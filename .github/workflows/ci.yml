@@ -147,9 +147,15 @@ jobs:
           tofu -chdir=infra/app init -backend=false
           tofu -chdir=infra/app validate
       - name: Platform guardrails (ADR-0014 Layer 1)
-        run: python3 infra/platform/guardrails_test.py
+        run: |
+          python3 infra/platform/guardrails_test.py --self-test
+          python3 infra/platform/guardrails_test.py
       - name: Backup guardrails (ADR-0014 Layer 1)
-        run: python3 infra/backup/guardrails_test.py
+        run: |
+          python3 infra/backup/guardrails_test.py --self-test
+          python3 infra/backup/guardrails_test.py
+          python3 tools/verify-backup-writer-policy.test.py
+          bash -n tools/verify-backup-writer-policy.sh
       - name: App guardrails (ADR-0014 Layer 2)
         run: |
           python3 infra/app/guardrails_test.py --self-test
