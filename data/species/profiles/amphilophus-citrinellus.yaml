@@ -1910,8 +1910,8 @@ features:
         value: false
         note: medium to large cichlids
   hybridGroups:
-    value: [amphilophus-citrinellus-blood-parrot, amphilophus-citrinellus-complex,
-      amphilophus-trimaculatus-midas, vieja-melanurus-midas]
+    value: [amphilophus, amphilophus-citrinellus-blood-parrot, amphilophus-citrinellus-complex,
+      amphilophus-citrinellus-lyonsi, amphilophus-trimaculatus-midas, vieja-melanurus-midas]
     confidence: high
     verification:
       method: unanimous
@@ -1929,7 +1929,12 @@ features:
       The curated data/species/hybrid-groups.yaml file defines
       amphilophus-citrinellus-blood-parrot as presumed from a preliminary laboratory report of
       viable offspring produced by artificially fertilizing female blood parrot eggs with Midas
-      sperm, without evidence of free partner choice.
+      sperm, without evidence of free partner choice. The amphilophus group is presumed from a
+      breeder's general warning that lyonsi may cross with Amphilophus congeners, without a named
+      spawning report, and is defined in the curated hybrid-groups.yaml file. The
+      amphilophus-citrinellus-lyonsi group is presumed from the same general breeder warning and a
+      comparison of the two species, without reported offspring, and is defined in the curated
+      hybrid-groups.yaml file.
     sources:
       - kind: literature
         title: "Barlow, G. W. and Munsey, J. W. (1976). The red devil-Midas-arrow cichlid species complex in
@@ -2074,6 +2079,14 @@ features:
       - source: *hyb28
         value: [amphilophus-citrinellus-blood-parrot]
         note: Reports viable offspring from stripped blood parrot eggs fertilized with Midas sperm; free partner choice was not tested.
+      - source:
+          kind: website
+          title: "Imperial Tropicals: Lyon's Cichlid care and breeding"
+          url: https://imperialtropicals.com/products/lyons-cichlid-amphilophus-lyonsi
+          archived: imperialtropicals.com/products/lyons-cichlid-amphilophus-lyonsi/2026-10-14T212145Z
+          accessed: 2026-10-13
+        value: [amphilophus, amphilophus-citrinellus-lyonsi]
+        note: General warning that lyonsi may hybridize with congeners; no named spawning or verified offspring is described.
   coloration:
     value:
       baseColors:

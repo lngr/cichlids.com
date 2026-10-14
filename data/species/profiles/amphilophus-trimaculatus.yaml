@@ -4781,6 +4781,8 @@ features:
         total: 4
   hybridGroups:
     value:
+    - amphilophus
+    - amphilophus-lyonsi-trimaculatus
     - amphilophus-trimaculatus-midas
     - amphilophus-trimaculatus-petenia-splendida
     confidence: medium
@@ -4791,7 +4793,12 @@ features:
       \ ancestry in six Flowerhorn morphotypes. These reports support involvement in hybrid lines, but\
       \ maternal barcoding and lists of ancestors do not independently verify every pairwise crossing\
       \ or free partner choice. Retain the existing group unchanged as instructed and do not infer additional\
-      \ crosses transitively with Vieja or other Flowerhorn ancestors. The curated data/species/hybrid-groups.yaml\
+      \ crosses transitively with Vieja or other Flowerhorn ancestors. The amphilophus group is presumed\
+      \ from a breeder's general warning that lyonsi may cross with Amphilophus congeners, without a named\
+      \ spawning report, and is defined in the curated hybrid-groups.yaml file. The\
+      \ amphilophus-lyonsi-trimaculatus group is presumed from that warning, an explicit comparison of the\
+      \ species and an uncertain hobby identification, and is defined in the curated hybrid-groups.yaml\
+      \ file. The curated data/species/hybrid-groups.yaml\
       \ file defines amphilophus-trimaculatus-petenia-splendida as a presumed pairwise group based on Binns\
       \ Hybrid Encyclopedia reports of captive offspring, which do not verify parentage or free choice among\
       \ conspecific mates."
@@ -4958,6 +4965,25 @@ features:
       value:
       - amphilophus-trimaculatus-midas
       note: Historical concern about modified trimac-like stock; no verified pedigree.
+    - source:
+        kind: website
+        title: "Imperial Tropicals: Lyon's Cichlid care and breeding"
+        url: "https://imperialtropicals.com/products/lyons-cichlid-amphilophus-lyonsi"
+        archived: imperialtropicals.com/products/lyons-cichlid-amphilophus-lyonsi/2026-10-14T212145Z
+        accessed: '2026-10-13'
+      value:
+      - amphilophus
+      - amphilophus-lyonsi-trimaculatus
+      note: General congener crossing warning and explicit trimaculatus comparison; no verified cross is reported.
+    - source:
+        kind: forum
+        title: "WaFishBox: Trimac or Flowerhorn..."
+        url: "https://www.wafishbox.com/forums/threads/trimac-or-flowerhorn.5128/post-47068"
+        accessed: '2026-10-13'
+        archived: wafishbox.com/forums/threads/trimac-or-flowerhorn.5128/post-47068/2026-10-14T213215Z
+      value:
+      - amphilophus-lyonsi-trimaculatus
+      note: A photographed fish is suggested as a hybrid by appearance; its parents and partner choice are unknown.
     verification:
       method: unanimous
       votes:

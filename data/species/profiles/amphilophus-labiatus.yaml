@@ -1851,7 +1851,7 @@ features:
         agree: 4
         total: 4
   hybridGroups:
-    value: [amphilophus-citrinellus-complex, amphilophus-trimaculatus-midas, parachromis-dovii-amphilophus-labiatus]
+    value: [amphilophus, amphilophus-citrinellus-complex, amphilophus-trimaculatus-midas, parachromis-dovii-amphilophus-labiatus]
     confidence: high
     rationale: >-
       The red devil is a member of the documented Midas complex through wild introgression with A.
@@ -1860,6 +1860,7 @@ features:
       the documented origins of the flowerhorn (Tarkhani et al. 2016, Sari et al. 2023), which makes
       it a member of the group amphilophus-trimaculatus-midas.
       The curated hybrid-groups.yaml file defines parachromis-dovii-amphilophus-labiatus as a presumed pairwise crossing group based on hobby photographs labelled as captive offspring, without verified parentage or documented access to conspecific mates.
+      The amphilophus group is presumed from a breeder's general warning that lyonsi may cross with Amphilophus congeners, without a named spawning report, and is defined in the curated hybrid-groups.yaml file.
     sources:
       - kind: literature
         title: "Barlow, G. W. and Munsey, J. W. (1976). The red devil-Midas-arrow cichlid species complex in
@@ -2043,6 +2044,15 @@ features:
           - parachromis-dovii-amphilophus-labiatus
         note: Hobby photographs label captive crosses; parentage and access to conspecific mates are
           unverified.
+      - source:
+          kind: website
+          title: "Imperial Tropicals: Lyon's Cichlid care and breeding"
+          url: https://imperialtropicals.com/products/lyons-cichlid-amphilophus-lyonsi
+          archived: imperialtropicals.com/products/lyons-cichlid-amphilophus-lyonsi/2026-10-14T212145Z
+          accessed: '2026-10-13'
+        value:
+          - amphilophus
+        note: General warning that lyonsi may hybridize with congeners; no named spawning or verified offspring is described.
     verification:
       method: unanimous
       votes:
